@@ -5,7 +5,7 @@
 
 🌟 _Most *starred* & *forked* Astro theme in 2022, 2023 & 2024_. 🌟
 
-**AstroWind** is a free and open-source template to make your website using **[Astro 5.0](https://astro.build/) + [Tailwind CSS](https://tailwindcss.com/)**. Ready to start a new project and designed taking into account web best practices.
+**AsSG AI 观察是一个专注于新加坡人工智能发展的非官方信息平台，基于 AstroWind 模板构建。
 
 - ✅ **Production-ready** scores in **PageSpeed Insights** reports.
 - ✅ Integration with **Tailwind CSS** supporting **Dark mode** and **_RTL_**.
@@ -52,7 +52,7 @@
 
 ## Demo
 
-📌 [https://astrowind.vercel.app/](https://astrowind.vercel.app/)
+📌 [https://aisg.io](https://aisg.io)
 
 <br>
 
@@ -64,11 +64,11 @@ We're embarking on an exciting journey with **AstroWind 2.0**, and we want you t
 
 <br>
 
-## TL;DR
+## 新增模块：国会 AI 焦点
 
-```shell
-npm create astro@latest -- --template arthelokyo/astrowind
-```
+深入分析新加坡议会 2015-2026 年间 132 条 AI 相关辩论，提供 AI 驱动的中文摘要、议员立场分析、政策演变脉络与深度洞察。
+
+数据采集与分析流程见 [`scripts/hansard/README.md`](./scripts/hansard/README.md)。
 
 ## Getting started
 

@@ -1,0 +1,432 @@
+{
+  "stats": {
+    "by_year": {
+      "2015": 2,
+      "2016": 2,
+      "2017": 2,
+      "2018": 5,
+      "2019": 10,
+      "2020": 8,
+      "2021": 4,
+      "2022": 6,
+      "2023": 21,
+      "2024": 34,
+      "2025": 28,
+      "2026": 10
+    },
+    "by_type": {
+      "Budget": 42,
+      "Oral Answers to Questions": 38,
+      "Written Answers to Questions": 48,
+      "Motions": 4
+    },
+    "topic_counts": {
+      "AI Economy & Industry": 76,
+      "AI & National Security": 74,
+      "AI Governance & Regulation": 56,
+      "AI in Public Sector": 56,
+      "AI Infrastructure & Research": 47,
+      "AI Safety & Ethics": 46,
+      "AI & Employment": 43,
+      "AI in Education": 39,
+      "AI in Healthcare": 15,
+      "AI Strategy": 14,
+      "Deepfakes & Disinformation": 4
+    },
+    "top_speakers": {
+      "Gerald Giam Yean Song": 25,
+      "Patrick Tay Teck Guan": 22,
+      "Pritam Singh": 21,
+      "Vikram Nair": 21,
+      "Josephine Teo": 19,
+      "Sylvia Lim": 19,
+      "Desmond Choo": 16,
+      "Tan Wu Meng": 15,
+      "Janil Puthucheary": 14,
+      "Assoc Prof Jamus Jerome Lim": 13,
+      "Sharael Taha": 13,
+      "Tin Pei Ling": 13,
+      "Shawn Huang Wei Zhong": 13,
+      "Minister for Communications and Information": 13,
+      "Jessica Tan Soon Neo": 12
+    },
+    "controversy_dist": {
+      "2": 68,
+      "4": 3,
+      "3": 61
+    },
+    "high_controversy": [
+      {
+        "id": "oral-answer-1900",
+        "title": "HIV数据泄露防范措施",
+        "en_title": "Preventive Measures Implemented Following Data Leak Involvin",
+        "date": "2019-02-12",
+        "level": 4,
+        "zh_summary": "议员质询涉及1.42万名HIV患者数据泄露后的具体防范措施，包括数据访问权限、数据泄露追踪、受害者心理保护及社会歧视应对。政府需回应如何防止数据扩散、保障患者权益及维护公众对HIV检测的信任。核心争议点在于数据安全管理漏洞、信息公开透明度及社会歧视问题。",
+        "topics": [
+          "AI Governance & Regulation",
+          "AI in Healthcare",
+          "AI in Public Sector"
+        ]
+      },
+      {
+        "id": "oral-answer-2352",
+        "title": "TraceTogether数据使用法律保障",
+        "en_title": "Legal Provisions and Safeguards in Using TraceTogether Data",
+        "date": "2021-01-04",
+        "level": 4,
+        "zh_summary": "议员质询TraceTogether数据是否会用于刑事调查及相关法律保障。政府回应称警方可依刑事程序法获取数据，且设有严格访问权限和处罚措施保护数据安全。争议焦点在于数据是否仅限于防疫用途，及使用于刑事调查是否影响公众信任和应用率。",
+        "topics": [
+          "AI Governance & Regulation",
+          "AI & National Security",
+          "AI in Public Sector",
+          "AI Strategy"
+        ]
+      },
+      {
+        "id": "oral-answer-4023",
+        "title": "新加坡AI经济与数据主权",
+        "en_title": "Projected Expenditure on Government's Pursuit of Global Lead",
+        "date": "2026-02-12",
+        "level": 4,
+        "zh_summary": "议员质询政府在推动AI经济及全球领导地位上的预算安排，探讨是否设立政府AI公司以保障数据主权及公共利益。政府回应强调国家AI战略2.0，注重数据安全、技术效能及国际合作。核心争议在于如何防止全球科技巨头主导本地AI市场，避免数据流失及技术依赖，及对外资使用公共数据的监管和收益分配问题。",
+        "topics": [
+          "AI Economy & Industry",
+          "AI & Employment",
+          "AI & National Security",
+          "AI Infrastructure & Research"
+        ]
+      }
+    ]
+  },
+  "patterns": {
+    "policy_evolution": [
+      {
+        "period": "2015-2017 萌芽期",
+        "years": "2015-2017",
+        "theme": "AI基础设施与初步监管探索",
+        "description": "此阶段聚焦AI基础设施建设和初步的政策框架探索，强调技术潜力及风险意识，政府开始关注AI对就业和经济的影响，监管尚处于起步阶段。",
+        "key_debates": [
+          "版权法防范深度伪造",
+          "公共服务智能化与人力政策"
+        ]
+      },
+      {
+        "period": "2018-2020 发展期",
+        "years": "2018-2020",
+        "theme": "AI人才培养与产业应用推广",
+        "description": "重点推动AI人才培养和产业应用，SkillsFuture培训体系逐步完善，教育领域开始引入AI教学元素，关注劳动力转型和技能升级。",
+        "key_debates": [
+          "SkillsFuture AI培训参与率及支持",
+          "强化工程人才培养路径"
+        ]
+      },
+      {
+        "period": "2021-2023 成熟期",
+        "years": "2021-2023",
+        "theme": "数据主权与AI治理强化",
+        "description": "随着AI技术成熟，数据主权和治理成为焦点，政府加强对AI企业收购监管，推动AI伦理和安全法规，兼顾创新与风险控制。",
+        "key_debates": [
+          "Meta收购Manus的监管评估",
+          "物业代理AI编辑图像声明"
+        ]
+      },
+      {
+        "period": "2024-2026 深化期",
+        "years": "2024-2026",
+        "theme": "AI经济安全与包容性转型",
+        "description": "聚焦AI对经济安全、就业结构调整及社会包容性，强化数据主权，推动本地人才培养和技能转移，教育领域强调AI与脑科学融合。",
+        "key_debates": [
+          "新加坡AI经济与数据主权",
+          "AI企业收购与本地人才保障",
+          "AI对中小企业劳动力影响研究"
+        ]
+      }
+    ],
+    "recurring_controversies": [
+      {
+        "issue": "数据主权与外资监管",
+        "description": "担忧外资企业主导本地AI市场，数据流失及技术依赖风险。",
+        "frequency": 4,
+        "government_position": "推动数据安全与国际合作",
+        "opposition_position": "担忧外企主导与依赖",
+        "resolution_status": "ongoing"
+      },
+      {
+        "issue": "AI对就业影响",
+        "description": "AI替代与互补效应，裁员透明度及劳动力转型支持。",
+        "frequency": 5,
+        "government_position": "支持劳动力转型与再培训",
+        "opposition_position": "关注裁员数据透明与影响",
+        "resolution_status": "ongoing"
+      },
+      {
+        "issue": "AI企业并购监管",
+        "description": "是否应强化对AI初创企业被大企业收购的审查。",
+        "frequency": 3,
+        "government_position": "维持灵活自愿申报制度",
+        "opposition_position": "质疑监管是否充分",
+        "resolution_status": "ongoing"
+      },
+      {
+        "issue": "AI伦理与信息透明",
+        "description": "AI生成内容声明及广告透明规范的必要性。",
+        "frequency": 3,
+        "government_position": "支持更新指引保障消费者",
+        "opposition_position": "要求明确AI编辑声明",
+        "resolution_status": "ongoing"
+      },
+      {
+        "issue": "技能培训与资金支持",
+        "description": "AI培训课程参与率、课程定制及资金支持力度争议。",
+        "frequency": 3,
+        "government_position": "鼓励终身学习，持续优化支持",
+        "opposition_position": "建议定制课程及增加资金",
+        "resolution_status": "ongoing"
+      },
+      {
+        "issue": "版权法与深度伪造治理",
+        "description": "是否利用版权法打击AI深度伪造内容的争议。",
+        "frequency": 2,
+        "government_position": "版权法非主要治理工具",
+        "opposition_position": "借鉴国外版权法加强保护",
+        "resolution_status": "ongoing"
+      },
+      {
+        "issue": "教育公平与AI技能培养",
+        "description": "如何平衡学术严谨与创新能力培养及资源分配。",
+        "frequency": 3,
+        "government_position": "强调多元教学与能力培养",
+        "opposition_position": "关注教学公平与国际经验",
+        "resolution_status": "ongoing"
+      }
+    ],
+    "mp_profiles": [
+      {
+        "name": "Desmond Lee",
+        "zh_name": "李显龙",
+        "role": "执政党",
+        "focus_areas": [
+          "AI教育",
+          "AI公共服务",
+          "AI治理"
+        ],
+        "stance": "支持多元融合，注重教育公平与AI应用",
+        "debate_count": 7,
+        "notable_position": "推动分龄AI教育指导与脑科学融合"
+      },
+      {
+        "name": "Tan See Leng",
+        "zh_name": "陈志令",
+        "role": "执政党",
+        "focus_areas": [
+          "AI就业",
+          "劳动力转型",
+          "AI经济"
+        ],
+        "stance": "强调包容性劳动力转型与技能再培训",
+        "debate_count": 6,
+        "notable_position": "支持中年员工再培训及就业转型图"
+      },
+      {
+        "name": "Low Wu Yang Andre",
+        "zh_name": "刘武扬",
+        "role": "执政党",
+        "focus_areas": [
+          "AI企业监管",
+          "AI经济",
+          "人才培养"
+        ],
+        "stance": "尊重商业协议，促进本地人才发展",
+        "debate_count": 4,
+        "notable_position": "强调技能转移与防止空壳公司利用"
+      },
+      {
+        "name": "Janil Puthucheary",
+        "zh_name": "贾尼尔·普图查里",
+        "role": "执政党",
+        "focus_areas": [
+          "AI教育",
+          "技能培训",
+          "就业"
+        ],
+        "stance": "鼓励终身学习，优化培训支持",
+        "debate_count": 3,
+        "notable_position": "推动个性化AI培训及资金支持"
+      },
+      {
+        "name": "Patrick Tay Teck Guan",
+        "zh_name": "郑德源",
+        "role": "执政党",
+        "focus_areas": [
+          "AI就业",
+          "AI经济",
+          "网络安全"
+        ],
+        "stance": "关注AI裁员透明度及网络安全",
+        "debate_count": 3,
+        "notable_position": "要求公开AI裁员及再就业数据"
+      },
+      {
+        "name": "Gerald Giam Yean Song",
+        "zh_name": "江源松",
+        "role": "反对党",
+        "focus_areas": [
+          "AI经济",
+          "数据主权",
+          "国际合作"
+        ],
+        "stance": "担忧外企主导与技术依赖",
+        "debate_count": 2,
+        "notable_position": "强调防止全球科技巨头垄断"
+      },
+      {
+        "name": "Assoc Prof Jamus Jerome Lim",
+        "zh_name": "林志明",
+        "role": "反对党",
+        "focus_areas": [
+          "AI教育",
+          "教师福利",
+          "公共资源"
+        ],
+        "stance": "关注教师负担与教育资源公平",
+        "debate_count": 2,
+        "notable_position": "建议优化教师工作分配减负"
+      },
+      {
+        "name": "Chee Hong Tat",
+        "zh_name": "徐芳达",
+        "role": "执政党",
+        "focus_areas": [
+          "AI伦理",
+          "广告规范",
+          "消费者保护"
+        ],
+        "stance": "推动AI广告透明及行业规范",
+        "debate_count": 2,
+        "notable_position": "支持AI编辑图像声明指引更新"
+      }
+    ],
+    "key_insights": [
+      {
+        "title": "数据主权成核心议题",
+        "description": "随着AI产业发展，数据主权和防止外资垄断成为持续关注焦点，政府强调国际合作与安全防护并重。",
+        "evidence": "新加坡AI经济与数据主权，AI企业收购与本地人才保障",
+        "significance": "high"
+      },
+      {
+        "title": "劳动力转型政策深化",
+        "description": "政府推动包容性劳动力转型，支持中年员工再培训及技能转移，回应AI替代与互补争议。",
+        "evidence": "AI对中小企业劳动力影响研究，就业转型图及中年员工支持",
+        "significance": "high"
+      },
+      {
+        "title": "AI教育多元融合",
+        "description": "教育政策强调分龄AI使用指导、脑科学融合及多元教学法，平衡学术严谨与创新能力培养。",
+        "evidence": "分龄生成式AI使用框架，脑科学与自适应AI教育合作，PSLE学术严谨与AI技能平衡",
+        "significance": "medium"
+      },
+      {
+        "title": "监管机制趋于灵活",
+        "description": "AI企业并购采用自愿申报，监管强调创新与竞争平衡，存在监管充分性争议。",
+        "evidence": "Meta收购Manus的监管评估",
+        "significance": "medium"
+      },
+      {
+        "title": "AI伦理与透明度提升",
+        "description": "针对AI生成内容声明及广告规范，政府推动指引更新，兼顾消费者保护与行业创新。",
+        "evidence": "物业代理AI编辑图像声明",
+        "significance": "medium"
+      },
+      {
+        "title": "技能培训资金支持不足",
+        "description": "AI相关培训课程参与度提升，资金支持及课程定制仍为争议焦点，政府持续优化。",
+        "evidence": "SkillsFuture AI培训参与率及支持，扩展SkillsFuture信用涵盖AI工具订阅",
+        "significance": "medium"
+      }
+    ],
+    "policy_signals": [
+      {
+        "signal": "加强AI相关投资与风险管理",
+        "year": "2026",
+        "status": "进行中",
+        "context": "应对全球地缘政治紧张与经济不确定性"
+      },
+      {
+        "signal": "加强数据主权与知识产权保护",
+        "year": "2026",
+        "status": "进行中",
+        "context": "防止外资主导及数据流失风险"
+      },
+      {
+        "signal": "强化本地人才培养与技能转移",
+        "year": "2026",
+        "status": "进行中",
+        "context": "保障AI企业收购后本地劳动力利益"
+      },
+      {
+        "signal": "推动包容性劳动力转型",
+        "year": "2026",
+        "status": "进行中",
+        "context": "支持被替代员工转岗和再培训"
+      },
+      {
+        "signal": "推动个性化AI培训支持",
+        "year": "2026",
+        "status": "进行中",
+        "context": "提升SkillsFuture培训质量与覆盖"
+      },
+      {
+        "signal": "推动AI广告透明规范",
+        "year": "2026",
+        "status": "进行中",
+        "context": "防止误导消费者，规范行业行为"
+      },
+      {
+        "signal": "持续跟踪AI采纳数据",
+        "year": "2026",
+        "status": "进行中",
+        "context": "监测不同规模企业AI应用差异"
+      },
+      {
+        "signal": "推动AI与人力协同发展",
+        "year": "2025",
+        "status": "进行中",
+        "context": "公共服务智能化与岗位调整"
+      }
+    ],
+    "tension_map": [
+      {
+        "dimension": "创新速度 vs 监管安全",
+        "side_a": "鼓励快速创新与市场活力",
+        "side_b": "强调风险控制与公平竞争",
+        "current_balance": "采用灵活监管，鼓励自愿申报"
+      },
+      {
+        "dimension": "数据开放 vs 数据主权",
+        "side_a": "推动国际数据合作与共享",
+        "side_b": "防范外资垄断与数据流失",
+        "current_balance": "强调数据安全与国际合作并重"
+      },
+      {
+        "dimension": "AI替代 vs 劳动力转型",
+        "side_a": "AI替代部分岗位提升效率",
+        "side_b": "保障就业，支持再培训转岗",
+        "current_balance": "推动包容性转型与技能提升"
+      },
+      {
+        "dimension": "教育公平 vs 创新能力培养",
+        "side_a": "注重学术严谨与核心能力",
+        "side_b": "强调探究式与协作式创新学习",
+        "current_balance": "融合多元教学，兼顾公平与创新"
+      },
+      {
+        "dimension": "资金支持 vs 培训课程定制",
+        "side_a": "增加资金支持扩大培训覆盖",
+        "side_b": "优化课程内容满足多样需求",
+        "current_balance": "持续优化课程与资金配置"
+      }
+    ]
+  },
+  "generated_at": "2026-03-01"
+}

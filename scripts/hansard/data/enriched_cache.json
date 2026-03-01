@@ -1,0 +1,1850 @@
+{
+  "budget-2844": {
+    "zh_title": "2026财年预算与全球变局",
+    "zh_summary": "质询聚焦全球多边体系弱化及经济脆弱性，政府回应强调新全球秩序下经济韧性和AI投资的重要性，核心争议在于如何应对地缘政治紧张与经济不确定性。",
+    "key_points": [
+      "全球多边体系弱化",
+      "经济增长依赖AI投资",
+      "地缘政治紧张加剧"
+    ],
+    "government_stance": "强调经济韧性与AI发展",
+    "opposition_stance": null,
+    "controversy_level": 2,
+    "policy_signal": "加强AI相关投资与风险管理",
+    "notable_quote": "Growth in the major economies held up, supported in part by strong investment in artificial intelligence (AI)-related activities."
+  },
+  "oral-answer-4023": {
+    "zh_title": "新加坡AI经济与数据主权",
+    "zh_summary": "议员质询政府在推动AI经济及全球领导地位上的预算安排，探讨是否设立政府AI公司以保障数据主权及公共利益。政府回应强调国家AI战略2.0，注重数据安全、技术效能及国际合作。核心争议在于如何防止全球科技巨头主导本地AI市场，避免数据流失及技术依赖，及对外资使用公共数据的监管和收益分配问题。",
+    "key_points": [
+      "政府AI战略投入",
+      "数据主权与安全",
+      "防止技术依赖"
+    ],
+    "government_stance": "推动AI发展兼顾数据安全与国际合作",
+    "opposition_stance": "担忧外企主导数据与技术依赖",
+    "controversy_level": 4,
+    "policy_signal": "加强数据主权与知识产权保护",
+    "notable_quote": "We have robust data protection framework to facilitate the secure processing of data."
+  },
+  "oral-answer-4013": {
+    "zh_title": "AI企业收购与本地人才保障",
+    "zh_summary": "议员质询新加坡AI初创企业Manus被Meta收购后，本地员工比例、保留及技术转移保障情况。政府回应收购为商业协议，不干预具体条款，强调遵守新加坡劳工法及公平聘用，经济发展局推动技能转移和人才培养。质询方关注企业借新加坡营商环境便利，收购后是否真正惠及本地劳动力，提出对红地公司设定本地雇佣目标及防止“空壳公司”利用的建议。",
+    "key_points": [
+      "收购属商业协议",
+      "政府不披露员工数据",
+      "推动技能转移培训"
+    ],
+    "government_stance": "尊重商业协议，促进本地技能发展",
+    "opposition_stance": "担忧红地公司利用新加坡便利",
+    "controversy_level": 3,
+    "policy_signal": "强化本地人才培养与技能转移",
+    "notable_quote": "The Ministry of Manpower (MOM) does not intervene in such acquisition agreements."
+  },
+  "written-answer-21904": {
+    "zh_title": "新加坡AI采纳情况评估",
+    "zh_summary": "议员质询政府是否有针对新加坡中小企业与跨国公司及个人的人工智能软件采纳情况进行研究。政府回应称，自2023年以来，信息通信媒体发展局通过年度数字经济报告跟踪不同规模企业及员工的AI采纳数据。核心争议点在于不同主体的AI使用差异及数据透明度。",
+    "key_points": [
+      "AI采纳有官方数据",
+      "区分中小企与跨国公司",
+      "关注个人AI使用情况"
+    ],
+    "government_stance": "持续跟踪AI采纳数据",
+    "opposition_stance": "关注不同主体采纳差异",
+    "controversy_level": 2,
+    "policy_signal": "加强数字经济数据监测",
+    "notable_quote": "The Government tracks artificial intelligence (AI) adoption as part of broader efforts to develop the digital economy."
+  },
+  "written-answer-21915": {
+    "zh_title": "AI对中小企业劳动力影响研究",
+    "zh_summary": "议员质询政府是否开展研究，区分AI对劳动力的替代与互补效应，及中小企业与跨国公司差异。政府回应正研究AI对劳动力市场的影响，强调影响取决于业务性质和岗位类型，而非企业规模。政府支持所有企业进行岗位重塑和员工再培训，帮助被替代员工转岗，体现包容性劳动力转型策略。",
+    "key_points": [
+      "AI影响因岗位而异",
+      "企业规模非主要因素",
+      "支持岗位重塑与再培训"
+    ],
+    "government_stance": "支持劳动力转型与再培训",
+    "opposition_stance": "关注AI替代与互补差异",
+    "controversy_level": 2,
+    "policy_signal": "推动包容性劳动力转型",
+    "notable_quote": "The impact of AI on workers and firms depends more on the nature of business activities and job roles than on firm size."
+  },
+  "oral-answer-3992": {
+    "zh_title": "SkillsFuture AI培训参与率及支持",
+    "zh_summary": "议员质询SkillsFuture支持的AI相关培训课程的参与率及是否设定PME群体的培训目标。政府回应去年有约10.5万人次参与，未设具体目标，但鼓励终身学习并提供补贴。质询方关注课程选择困难及高阶课程费用，建议优化课程推荐和增加针对PME的资金支持。政府表示将持续优化课程指引和与业界合作，推动个性化培训方案。",
+    "key_points": [
+      "AI课程参与人数多",
+      "无具体PME培训目标",
+      "将优化课程推荐"
+    ],
+    "government_stance": "鼓励终身学习，持续优化支持",
+    "opposition_stance": "建议定制课程及增加资金支持",
+    "controversy_level": 2,
+    "policy_signal": "推动个性化AI培训支持",
+    "notable_quote": "We are working with the industry to look to see how we develop the list of tasks and map them to the courses."
+  },
+  "oral-answer-3994": {
+    "zh_title": "教师复杂挑战下的班级规模政策",
+    "zh_summary": "议员质询教育部关于教师面临多样化学生需求及心理健康挑战下的最优班级规模政策。教育部长回应，班级规模依据学生学习需求调整，特殊教育和早期干预班级规模更小，同时增加辅导员和特教人员支持。核心争议在于如何平衡资源分配与教学质量，确保多样化需求学生获得足够支持。",
+    "key_points": [
+      "班级规模因需而异",
+      "特殊教育班规模更小",
+      "辅导员数量持续增加"
+    ],
+    "government_stance": "根据学生需求调整班级规模，强化支持",
+    "opposition_stance": "关注教师负担与学生多样需求",
+    "controversy_level": 3,
+    "policy_signal": "持续优化班级规模与资源配置",
+    "notable_quote": "The Ministry of Education's approach for class sizes is guided by the learning needs of our students."
+  },
+  "written-answer-21666": {
+    "zh_title": "Meta收购Manus的监管评估",
+    "zh_summary": "议员质询新加坡竞争监管机构是否审查Meta收购本地AI初创Manus，及此类收购对本地AI创新生态的影响。政府回应当前无审查行动，强调采用自愿合并申报制度，鼓励创新同时防范反竞争风险。核心争议在于监管框架是否足够应对快速发展的AI产业并购。",
+    "key_points": [
+      "采用自愿合并申报",
+      "无当前审查行动",
+      "关注AI市场竞争"
+    ],
+    "government_stance": "支持自愿申报，保障创新与竞争",
+    "opposition_stance": "关注监管是否充分",
+    "controversy_level": 2,
+    "policy_signal": "维持灵活合并监管机制",
+    "notable_quote": "Singapore adopts a voluntary merger notification regime to balance between effective regulatory oversight while keeping compliance costs low and not stifling innovation."
+  },
+  "written-answer-21302": {
+    "zh_title": "AI裁员统计公开质询",
+    "zh_summary": "议员质询是否公布季度AI相关裁员及再就业数据，政府回应以业务重组为主因，包含AI技术影响，且将继续研究技术对就业的影响。核心争议在于AI裁员数据透明度及具体影响评估。",
+    "key_points": [
+      "质询AI裁员数据公开",
+      "裁员多因业务重组",
+      "政府持续研究技术影响"
+    ],
+    "government_stance": "业务重组为主因，继续研究AI影响",
+    "opposition_stance": "要求公开AI裁员及再就业数据",
+    "controversy_level": 3,
+    "policy_signal": "关注AI对就业影响的持续研究",
+    "notable_quote": "Business restructuring may stem from productivity improvements or work efficiency gains arising from the adoption of artificial intelligence (AI) or other technological advances."
+  },
+  "written-answer-21309": {
+    "zh_title": "物业代理AI编辑图像声明",
+    "zh_summary": "议员质询是否更新物业代理伦理守则，要求声明AI编辑的房源图像视频。政府回应现有守则要求广告材料准确描述物业，建议提供AI使用免责声明，避免误导消费者。CEA正审查相关指引，旨在平衡消费者保护与行业创新发展，核心争议在于如何规范AI技术应用与信息透明。",
+    "key_points": [
+      "要求声明AI编辑图像",
+      "广告材料须准确描述",
+      "审查指引平衡保护创新"
+    ],
+    "government_stance": "支持更新指引保障消费者",
+    "opposition_stance": "要求明确声明AI编辑内容",
+    "controversy_level": 2,
+    "policy_signal": "推动AI广告透明规范",
+    "notable_quote": "agents should provide sufficient disclaimers to inform consumers of the use of artificial intelligence (AI) to alter or enhance images or videos"
+  },
+  "written-answer-21161": {
+    "zh_title": "公共服务智能化与人力政策",
+    "zh_summary": "议员质询政府关于在公共服务中部署具代理能力的人工智能系统以自动化工作职能的计划，以及针对因AI导致岗位冗余的公务员的人力资源政策。政府回应称将谨慎推进AI部署，强调提升公务员技能以配合AI，聚焦复杂问题分析和解决方案设计，体现对效率提升与风险控制的平衡。",
+    "key_points": [
+      "代理型AI定义与功能",
+      "谨慎推进AI应用",
+      "公务员技能提升"
+    ],
+    "government_stance": "谨慎部署AI，注重技能培训",
+    "opposition_stance": "关注岗位冗余与人力支持",
+    "controversy_level": 3,
+    "policy_signal": "推动AI与人力协同发展",
+    "notable_quote": "Agentic AI systems are AI tools capable of initiating and carrying out actions."
+  },
+  "oral-answer-3923": {
+    "zh_title": "教师压力与心理支持措施",
+    "zh_summary": "议员质询教师压力高企及心理健康支持，关注年轻教师比例偏低及非教学工作负担。教育部长回应强调教师职业的崇高与责任，承认教师工作量大，表示将审视并改进非教学任务分配，保障教师福祉。核心争议在于如何有效减轻教师负担及吸引年轻教师留任。",
+    "key_points": [
+      "教师压力高企",
+      "年轻教师比例低",
+      "减轻非教学负担"
+    ],
+    "government_stance": "重视教师福祉，优化工作分配",
+    "opposition_stance": null,
+    "controversy_level": 3,
+    "policy_signal": "减负增援教师心理支持",
+    "notable_quote": "Teaching is, at its heart, a profoundly human endeavour."
+  },
+  "oral-answer-3927": {
+    "zh_title": "PSLE学术严谨与AI技能平衡",
+    "zh_summary": "议员质询PSLE是否侧重死记硬背，是否培养终身学习兴趣，以及与探究式、协作式学习的比较。教育部回应PSLE注重核心概念和批判思维，强调多元教学法和21世纪能力培养，且国际评比显示学生具备复杂问题解决能力。质询关注低收入及高需求学校的教学落实及国际经验借鉴，教育部强调教师培训中融入探究与协作技能。核心争议在于如何在学术严谨与创新能力培养间取得平衡。",
+    "key_points": [
+      "PSLE非死记硬背",
+      "多元教学促进能力",
+      "教师培训重探究协作"
+    ],
+    "government_stance": "强调多元教学与21世纪能力培养",
+    "opposition_stance": "关注教学公平与国际经验借鉴",
+    "controversy_level": 3,
+    "policy_signal": "推动探究协作教学融合",
+    "notable_quote": "PSLE does not emphasise rote learning or test-taking skills."
+  },
+  "written-answer-20811": {
+    "zh_title": "分龄生成式AI使用框架",
+    "zh_summary": "议员质询教育部是否制定分龄的生成式AI使用框架及家长指导方案。教育部回应已通过《数字素养与技术技能指南》向学校提供年龄适宜的AI使用指导，并为家长提供相关资源，支持学生在家合理使用AI。核心争议在于如何系统化分龄指导及家校协同支持。",
+    "key_points": [
+      "分龄AI使用框架需求",
+      "学校已有指导资源",
+      "家长支持资源提供"
+    ],
+    "government_stance": "支持分龄指导并已提供相关资源",
+    "opposition_stance": "建议完善分龄及家长指导框架",
+    "controversy_level": 2,
+    "policy_signal": "推动分龄AI教育指导",
+    "notable_quote": "The Ministry of Education has provided schools with guidance on age-appropriate AI use in education."
+  },
+  "written-answer-20810": {
+    "zh_title": "扩展SkillsFuture信用涵盖AI工具订阅",
+    "zh_summary": "议员质询是否将SkillsFuture信用扩展至订阅优质AI生产力工具以促进实践学习。政府回应目前支持AI相关课程及工具使用，强调课程内含实用工具，且AI领域快速发展，将持续关注并支持相关技能培养。核心争议在于是否直接将订阅工具纳入信用使用范围。",
+    "key_points": [
+      "质询扩展信用范围",
+      "课程含AI工具支持",
+      "持续关注AI发展"
+    ],
+    "government_stance": "暂不扩展订阅工具范围",
+    "opposition_stance": "支持扩大信用使用",
+    "controversy_level": 2,
+    "policy_signal": "持续支持AI技能培训",
+    "notable_quote": "Today, individuals can use their SkillsFuture Credit to sign up for artificial intelligence (AI)-related courses."
+  },
+  "written-answer-20819": {
+    "zh_title": "强化工程人才培养路径",
+    "zh_summary": "议员质询为何学生对传统工程专业兴趣下降，如何调整课程与薪酬以匹配新兴产业，以及公共部门招聘和奖学金政策是否调整。政府回应称教育部与经济机构合作，调整课程内容，推动跨学科工程教育，同时通过行业任务组解决建筑环境行业人才短缺和薪酬竞争问题，并加强职业指导和公共部门招聘力度。核心争议在于行业薪酬与工作环境对人才吸引力的影响。",
+    "key_points": [
+      "工程毕业生供需匹配",
+      "课程更新与跨学科融合",
+      "行业薪酬与人才流失"
+    ],
+    "government_stance": "积极调整教育和招聘政策",
+    "opposition_stance": "关注学生专业选择原因",
+    "controversy_level": 3,
+    "policy_signal": "强化工程人才培养与公共招聘",
+    "notable_quote": "Students do not just choose a course of study. Their choices are also influenced by the future careers associated with the course of study."
+  },
+  "written-answer-20821": {
+    "zh_title": "脑科学与自适应AI教育合作",
+    "zh_summary": "议员质询教育部是否推动国立教育学院与早期儿童发展局合作，研究不同学习类型的脑科学学习方法，并建议成立跨学科工作组推动脑科学与自适应AI融合教育。教育部回应已有多方合作，课程设计基于神经科学和教育心理学理论，体现专家意见，未明确承诺新工作组成立。核心争议在于是否需要新专门团队推动脑科学与AI深度融合。",
+    "key_points": [
+      "推动脑科学学习研究",
+      "建议成立跨学科工作组",
+      "已有多方教育研究合作"
+    ],
+    "government_stance": "支持多方合作，基于科学理论设计课程",
+    "opposition_stance": "建议设立专门跨学科团队",
+    "controversy_level": 2,
+    "policy_signal": "强化脑科学与AI融合教育",
+    "notable_quote": "MOE grounds its curriculum design and pedagogies in educational theories which draws from various research fields, including neuroscience and educational psychology."
+  },
+  "written-answer-20835": {
+    "zh_title": "就业转型图及中年员工支持",
+    "zh_summary": "质询聚焦就业转型图的最新进展、中年员工适应行业转变的支持措施，以及重组行业受影响员工的援助。政府回应介绍了19个就业转型图覆盖170万员工，强调通过职业转换计划帮助中年员工再培训，并结合行业洞察推动重组行业的技能提升和岗位重塑。核心争议点在于如何有效落实转型图建议，确保中年员工和重组行业工人顺利转型。",
+    "key_points": [
+      "19个就业转型图发布",
+      "中年员工职业转换支持",
+      "重组行业技能提升"
+    ],
+    "government_stance": "积极推动就业转型和再培训",
+    "opposition_stance": null,
+    "controversy_level": 2,
+    "policy_signal": "强化中年员工再培训支持",
+    "notable_quote": "To date, 19 Jobs Transformation Maps (JTMs) have been launched, covering about 1.7 million employed residents."
+  },
+  "written-answer-20058": {
+    "zh_title": "版权法防范深度伪造",
+    "zh_summary": "议员质询新加坡是否借鉴丹麦利用版权法打击深度伪造。政府回应表示重视深度伪造带来的网络伤害，将通过新立法增强受害者救济权利。强调版权法主要支持创新创作，不适用于规制技术滥用，相关侵权行为可通过其他知识产权法律处理。核心争议在于版权法是否适合用于深度伪造治理。",
+    "key_points": [
+      "深度伪造引发网络伤害",
+      "版权法支持创新非规制",
+      "其他知识产权可补充治理"
+    ],
+    "government_stance": "版权法非治理深度伪造主途径",
+    "opposition_stance": "借鉴丹麦版权法加强保护",
+    "controversy_level": 3,
+    "policy_signal": "拟推新法增强网络安全",
+    "notable_quote": "The primary purpose of our copyright law is to support innovation and incentivise creativity."
+  },
+  "oral-answer-3873": {
+    "zh_title": "毕业生就业与GRIT计划分析",
+    "zh_summary": "议员质询新加坡应届毕业生全职就业比例下降的周期性与结构性原因，探讨政府推行的GRaduate Industry Traineeships (GRIT) 计划如何缓解就业难题。辩论聚焦GRIT计划的实施细节、质量保障、长期收益及对战略行业的支持。政府强调通过结构化培训和企业参与提升毕业生就业竞争力，质询方关注计划成效及公平转换机制，核心争议在于计划能否真正提升毕业生长期就业质量。",
+    "key_points": [
+      "就业比例下降原因",
+      "GRIT计划作用",
+      "培训质量保障"
+    ],
+    "government_stance": "通过GRIT提升毕业生就业质量",
+    "opposition_stance": "关注计划成效与公平性",
+    "controversy_level": 3,
+    "policy_signal": "强化毕业生实习培训机制",
+    "notable_quote": "How does the GRaduate Industry Traineeships Programme address these factors?"
+  },
+  "written-answer-19797": {
+    "zh_title": "毕业生就业与技能更新框架",
+    "zh_summary": "议员质询政府如何与高等院校合作，制定框架以审视课程并追踪毕业生技能过时风险，以及如何衡量毕业生长期就业能力。政府回应通过就业调查监测毕业生就业状况，强调课程定期与产业需求对接，强化校企合作和实习安排，提升学生AI及跨领域能力。核心争议在于如何有效应对AI快速发展带来的技能更新挑战。",
+    "key_points": [
+      "就业数据持续监测",
+      "课程与产业紧密结合",
+      "强化校企合作实习"
+    ],
+    "government_stance": "积极推动校企合作与课程更新",
+    "opposition_stance": null,
+    "controversy_level": 2,
+    "policy_signal": "加强AI技能培养与就业跟踪",
+    "notable_quote": "The Institutes of Higher Learning seek to align their curriculum with evolving industry needs."
+  },
+  "written-answer-19800": {
+    "zh_title": "课程定期更新与产业对接",
+    "zh_summary": "质询了教育部如何确保课程定期更新以匹配未来经济需求，特别是数字化、可持续发展及医疗领域。政府回应称通过定期审查、行业咨询及教师产业实践，确保课程内容紧跟行业发展，学校课程每6-8年审查一次，IHL课程更频繁，重点领域如AI更新更快。核心争议点在于课程更新频率与行业需求的匹配度。",
+    "key_points": [
+      "课程定期审查",
+      "行业深度参与",
+      "重点领域快速更新"
+    ],
+    "government_stance": "定期更新课程，强化行业合作",
+    "opposition_stance": "关注课程更新频率与实效",
+    "controversy_level": 2,
+    "policy_signal": "强化产教融合，推动技能匹配",
+    "notable_quote": "The Ministry of Education and our Institutes of Higher Learning regularly review the curriculum to ensure students develop competencies needed to thrive in the future economy."
+  },
+  "written-answer-19554": {
+    "zh_title": "政府合同评估中的AI应用",
+    "zh_summary": "质询方关注审计署对合同管理和招标评估中存在的错误，询问公共服务部门是否采用AI及技术手段提升效率和减少错误。政府回应称已积极探索并在适当领域开始应用AI技术，以确保合同评审符合政府采购原则。核心争议点在于如何有效利用AI工具提升政府采购透明度和效率。",
+    "key_points": [
+      "审计署发现合同管理问题",
+      "政府探索AI提升效率",
+      "确保合同符合采购原则"
+    ],
+    "government_stance": "积极采用AI提升采购效率",
+    "opposition_stance": "关注错误减少与合规性",
+    "controversy_level": 2,
+    "policy_signal": "推动AI技术应用于政府采购",
+    "notable_quote": "the Government has been actively exploring the use of technology, including artificial intelligence, in procurement"
+  },
+  "oral-answer-3852": {
+    "zh_title": "金融科技平台消费者保护",
+    "zh_summary": "议员质询金融管理局（MAS）如何确保金融科技平台及非银行机构维持流动性、管理资金提取风险，并加强零售投资者保护。政府回应指出相关投资平台受资本市场服务牌照监管，客户资产与平台资产隔离，提现按规定时间有序进行。政府强调近期提现激增事件中，平台的风险管理机制发挥了作用，但对部分即时提现及关联借记卡功能进行了限制，体现监管灵活性与风险防控的平衡。",
+    "key_points": [
+      "投资平台受资本市场服务牌照监管",
+      "客户资产与平台资产严格隔离",
+      "提现功能受限以防风险扩散"
+    ],
+    "government_stance": "强调监管机制有效保障消费者权益",
+    "opposition_stance": null,
+    "controversy_level": 3,
+    "policy_signal": "加强金融科技平台风险监管",
+    "notable_quote": "The recent incident involving a surge in withdrawals from an investment platform illustrate that the safeguards worked as intended."
+  },
+  "budget-2620": {
+    "zh_title": "数字基础设施与安全发展",
+    "zh_summary": "议员质询数字基础设施的韧性与安全保障措施，关注云服务和数据中心的安全指南。政府强调新加坡数字经济增长显著，已发布指导提升基础设施安全，确保数字转型可持续且包容。核心争议在于如何进一步强化基础设施以应对全天候运营风险。",
+    "key_points": [
+      "数字经济快速增长",
+      "数字基础设施安全关键",
+      "发布云服务安全指南"
+    ],
+    "government_stance": "加强数字基础设施韧性与安全",
+    "opposition_stance": "关注基础设施安全与持续发展",
+    "controversy_level": 2,
+    "policy_signal": "强化数字基础设施安全",
+    "notable_quote": "A small failure in our digital infrastructure can cause major disruptions to our economic activities and daily lives."
+  },
+  "budget-2612": {
+    "zh_title": "新加坡劳动力老龄化应对策略",
+    "zh_summary": "议员质询人力部关于退休保障、劳动力素质提升及包容性职场建设成效，重点关注劳动力老龄化带来的挑战。质询方提出通过助力技术改造岗位、设立专门培训中心等措施提升老年人就业率。政府尚未明确回应，辩论聚焦如何应对老龄化劳动力短缺及经济影响。",
+    "key_points": [
+      "退休保障成效质询",
+      "老龄劳动力岗位重塑",
+      "专设培训支持老年工"
+    ],
+    "government_stance": null,
+    "opposition_stance": "推动技术助老与培训支持",
+    "controversy_level": 3,
+    "policy_signal": "推动老龄劳动力再就业",
+    "notable_quote": "We must adopt such innovations widely. Singapore can, and should, become a hub for such innovations."
+  },
+  "budget-2610": {
+    "zh_title": "贸易与工业预算辩论摘要",
+    "zh_summary": "议员质询了地缘政治紧张对新加坡经济的潜在影响，特别是贸易保护主义和关税战的风险。政府回应指出全球多边自由贸易体系受压，贸易战可能扰乱供应链，影响投资和经济增长。核心争议在于如何应对外部不确定性及国内资源限制，保障经济持续发展。",
+    "key_points": [
+      "全球贸易体系受压",
+      "贸易战扰乱供应链",
+      "国内资源紧张挑战"
+    ],
+    "government_stance": "坚持开放经济与长期规划",
+    "opposition_stance": "关注预算削减与风险应对",
+    "controversy_level": 3,
+    "policy_signal": "强化经济韧性与开放合作",
+    "notable_quote": "Our economic success did not happen by chance. It was the result of a combination of factors."
+  },
+  "budget-2614": {
+    "zh_title": "劳动力市场复苏与保障措施",
+    "zh_summary": "议员质询疫情后就业恢复、通胀压力及弱势群体保障。人力部部长回应新加坡失业率降至2.8%，通过技能培训、渐进式工资模式及退休保障等多项措施支持不同年龄和弱势群体就业，强调收入增长超过通胀，整体劳动力市场稳健。核心争议聚焦于如何持续提升低收入者福利及应对全球经济不确定性。",
+    "key_points": [
+      "疫情后就业恢复",
+      "低收入者工资提升",
+      "弱势群体保障加强"
+    ],
+    "government_stance": "推动技能培训与收入保障",
+    "opposition_stance": null,
+    "controversy_level": 2,
+    "policy_signal": "强化就业支持与退休保障",
+    "notable_quote": "We helped workers and businesses to emerge stronger."
+  },
+  "budget-2605": {
+    "zh_title": "推动经济持续增长的挑战与对策",
+    "zh_summary": "议员质询新加坡经济能否超越2025年1%-3%的增长预期，强调经济增长对就业和国际竞争力的重要性。政府回应需克服土地、劳动力及碳排放限制，通过结构性生产力提升、企业转型和基础设施建设实现增长。核心争议在于如何在资源受限下实现更高增长。",
+    "key_points": [
+      "经济增长高于预期",
+      "需突破土地与劳动力限制",
+      "结构性生产力提升关键"
+    ],
+    "government_stance": "推动结构性改革促进经济增长",
+    "opposition_stance": null,
+    "controversy_level": 3,
+    "policy_signal": "强调创新与生产力提升",
+    "notable_quote": "To do that, it requires us to steadfastly work on overcoming our tight constraints on land and workforce and now also carbon."
+  },
+  "budget-2593": {
+    "zh_title": "新加坡国际争端解决竞争力",
+    "zh_summary": "议员质询新加坡如何保持作为国际争端解决中心的竞争优势，特别面对阿布扎比等新兴竞争对手。政府强调新加坡凭借法治、专业人才及创新优势，持续吸引跨境争端案件，并推动调解国际公约。核心争议在于如何应对全球竞争及吸引人才，确保新加坡领先地位不被削弱。",
+    "key_points": [
+      "新加坡国际争端中心地位",
+      "全球竞争加剧挑战",
+      "需持续吸引人才投资"
+    ],
+    "government_stance": "持续强化法治与创新优势",
+    "opposition_stance": "关注竞争压力与人才流失",
+    "controversy_level": 3,
+    "policy_signal": "强化国际争端解决能力",
+    "notable_quote": "Singapore has to: first, stay open... second, stay ahead of the competition and ahead of the curve."
+  },
+  "budget-2592": {
+    "zh_title": "内政部预算与AI安全议题",
+    "zh_summary": "议员质询内政部预算及应对技术犯罪措施，政府回应通过新清关概念提升边境安全和效率，利用AI技术加强风险评估和自动化，减少人力需求。辩论聚焦AI带来的犯罪挑战与人力资源压力，政府强调转型与再培训，反映出对未来安全与技术融合的重视。",
+    "key_points": [
+      "新清关概念提升效率",
+      "AI助力风险评估",
+      "人力资源转型升级"
+    ],
+    "government_stance": "推动AI技术强化安全与效率",
+    "opposition_stance": "关注预算削减与技术风险",
+    "controversy_level": 3,
+    "policy_signal": "加强AI在边境安全应用",
+    "notable_quote": "Criminals are exploiting technology, in particular, artificial intelligence (AI), to carry out more sophisticated crimes and to hit more victims."
+  },
+  "budget-2585": {
+    "zh_title": "维护种族宗教和谐与信任",
+    "zh_summary": "议员质询政府如何与社区组织及公众合作，维护新加坡的种族宗教和谐，并应对全球普遍存在的公共机构信任赤字。质询强调谣言和错误信息对社会和谐的威胁，呼吁多方共同努力。政府回应尚未包含在节选中，核心争议在于如何平衡政策执行与社区参与，增强公众对执法机构的信任。",
+    "key_points": [
+      "维护种族宗教和谐",
+      "打击错误信息传播",
+      "提升公众对机构信任"
+    ],
+    "government_stance": null,
+    "opposition_stance": "强调社区与公众共担和谐责任",
+    "controversy_level": 3,
+    "policy_signal": "加强社区参与与信任建设",
+    "notable_quote": "Trust in public institutions, especially those responsible for law and order, is essential."
+  },
+  "budget-2583": {
+    "zh_title": "国防预算与国际安全形势",
+    "zh_summary": "议员质询当前国际安全环境变化及其对新加坡国防预算的影响，重点关注美中关系紧张、国际规则体系的动摇及区域安全风险。政府强调国防和武装力量对保障国家安全的重要性，呼吁维持强大防御能力以应对复杂多变的国际局势。核心争议在于国际联盟的稳定性及新加坡应如何调整国防策略。",
+    "key_points": [
+      "国际规则体系受挑战",
+      "美中竞争加剧",
+      "区域安全风险上升"
+    ],
+    "government_stance": "强调加强国防保障国家安全",
+    "opposition_stance": "关注国际局势变化影响预算",
+    "controversy_level": 3,
+    "policy_signal": "强化国防应对复杂国际局势",
+    "notable_quote": "the rules based system and the alliances that formed post-World War II appears to be under threat."
+  },
+  "oral-answer-3822": {
+    "zh_title": "公职人员使用DeepSeek限制",
+    "zh_summary": "议员质询政府是否考虑限制公职人员使用DeepSeek，类似他国对政府设备的禁令。政府回应称有政策框架评估技术适用性，强调安全与创新并重，但未直接回应DeepSeek限制问题。质询方追问政府自研AI工具Pair是否依赖国外商业平台，政府未详细说明，表示可私下跟进。核心争议在于政府对具体商业AI产品的态度及数据安全透明度。",
+    "key_points": [
+      "政府有技术使用政策",
+      "未明确限制DeepSeek",
+      "Pair AI工具细节未公开"
+    ],
+    "government_stance": "通过政策框架保障安全创新",
+    "opposition_stance": "要求明确DeepSeek限制措施",
+    "controversy_level": 3,
+    "policy_signal": "持续评估AI安全与合规",
+    "notable_quote": "The Government has policies, frameworks and processes to guide the use of technology in the public sector."
+  },
+  "budget-2570": {
+    "zh_title": "2025年度预算中的AI发展策略",
+    "zh_summary": "议会辩论围绕2025年度预算展开，重点关注如何应对全球政治经济变局及科技变革，特别是人工智能等前沿技术对经济和社会的影响。政府强调在支持家庭和企业的同时，积极布局未来经济增长，推动科技创新和人才培养。核心争议点在于如何平衡短期支持与长期转型，以及AI技术带来的就业和治理挑战。",
+    "key_points": [
+      "支持家庭和企业",
+      "应对全球变局",
+      "推动科技创新"
+    ],
+    "government_stance": "积极应对变革，推动AI发展",
+    "opposition_stance": null,
+    "controversy_level": 2,
+    "policy_signal": "加快AI与未来经济布局",
+    "notable_quote": "Game-changing technologies like artificial intelligence (AI), quantum computing, 5G/6G... will change how we work and live."
+  },
+  "oral-answer-3785": {
+    "zh_title": "美出口管制对新加坡芯片业影响",
+    "zh_summary": "议员质询美出口管制对新加坡半导体产业及经济的影响，及政府如何防止企业利用新加坡规避美国限制。政府强调新加坡作为法治透明的国际商业枢纽，严厉打击违法行为，维护国家信誉。核心争议在于新加坡是否被列为美出口管制第二等级，及如何修复与美国的信任关系。",
+    "key_points": [
+      "防止规避美出口管制",
+      "维护国际商业信誉",
+      "争取提升出口管制等级"
+    ],
+    "government_stance": "坚持法治严惩违规，维护国际信誉",
+    "opposition_stance": "关注美出口管制对产业影响及政策应对",
+    "controversy_level": 3,
+    "policy_signal": "强化出口管制合规监管",
+    "notable_quote": "Singapore is a stable, trusted, reliable and well-connected international business hub."
+  },
+  "written-answer-18677": {
+    "zh_title": "美AI出口管制对新加坡影响",
+    "zh_summary": "议员质询美国2025年新AI扩散政策及出口管制对新加坡进口高端芯片及AI竞争力的影响。政府回应政策尚未最终确定，正密切监测并与企业沟通，必要时将采取措施保障新加坡企业获取美国高端技术。核心争议点在于新加坡未获例外名单资格，可能影响技术进口和竞争力。",
+    "key_points": [
+      "美国AI政策未定",
+      "新加坡未获例外",
+      "政府密切监测"
+    ],
+    "government_stance": "积极监测并考虑保障措施",
+    "opposition_stance": "关注进口限制影响",
+    "controversy_level": 2,
+    "policy_signal": "可能出台保障技术进口措施",
+    "notable_quote": "We are closely monitoring the situation and engaging companies on the potential impact."
+  },
+  "written-answer-18417": {
+    "zh_title": "停止部分遮蔽身份证号原因",
+    "zh_summary": "议员质询政府为何停止部分遮蔽身份证号码，及AI时代是否加剧个人数据被逆向工程风险。政府回应将于次日通过部长声明详细说明，核心争议在于数据隐私保护与技术发展带来的安全挑战之间的平衡。",
+    "key_points": [
+      "停止部分遮蔽身份证号",
+      "AI加速数据逆向风险",
+      "政府将发布部长声明"
+    ],
+    "government_stance": "将通过部长声明详述理由",
+    "opposition_stance": "关注数据隐私与安全风险",
+    "controversy_level": 3,
+    "policy_signal": "加强个人数据使用规范",
+    "notable_quote": "This Parliamentary Question will be addressed through a Ministerial Statement by the Minister for Digital Development and Information."
+  },
+  "oral-answer-3729": {
+    "zh_title": "AI招聘晋升工具偏见防范",
+    "zh_summary": "议员质询政府是否考虑制定指导方针，规范雇主使用自动化决策工具以防止招聘和晋升中的偏见，并建议进行偏见审计及信息披露。人力部长回应现有《公平就业三方指引》已涵盖公平就业原则，且无相关投诉，强调AI技术快速发展，政府将持续监测并与相关机构合作评估现有规范的适用性。质询方补充关注数据隐私和员工同意问题，政府表示将考虑改进但不宜过度限制。",
+    "key_points": [
+      "现有公平就业指引适用",
+      "无AI歧视投诉记录",
+      "关注数据隐私与同意"
+    ],
+    "government_stance": "依托现有指引，持续监测AI发展",
+    "opposition_stance": "建议加强偏见审计与数据同意",
+    "controversy_level": 2,
+    "policy_signal": "持续完善AI就业监管框架",
+    "notable_quote": "AI technologies are evolving at a fast pace. In deploying AI-powered HR tools, organisations should refer to the guidelines introduced by the Government."
+  },
+  "oral-answer-3738": {
+    "zh_title": "IT与AI人才转型进展",
+    "zh_summary": "议员质询过去三年通过职业转换计划培养IT及AI专业人才的进展及未来三至五年规划。政府回应介绍了技能未来及职业转换计划的培训成效，强调扩大中年职工培训及企业合作。质询方关注AI专业人才数量与目标差距，及私营部门参与情况，体现人才培养规模与目标之间的核心争议。",
+    "key_points": [
+      "多路径技能培训",
+      "中年职工转型支持",
+      "私企参与培训"
+    ],
+    "government_stance": "扩大培训规模，强化企业合作",
+    "opposition_stance": "质疑AI人才培养数量不足",
+    "controversy_level": 3,
+    "policy_signal": "加大中年人才AI转型力度",
+    "notable_quote": "The Ministry has stated that they want to convert 5,000 mid-career professionals to AI professionals over the next three to five years."
+  },
+  "written-answer-18326": {
+    "zh_title": "新加坡AI算力与国家云规划",
+    "zh_summary": "议员质询新加坡现有AI专用算力规模、国家云建设计划及相关法律框架。政府回应新加坡数据中心容量领先区域，AI算力动态调配，依托国家超级计算中心和商业云满足需求，暂不强制私营数据中心贡献算力。核心争议在于是否应立法强制私营部门参与国家云建设。",
+    "key_points": [
+      "数据中心容量领先",
+      "AI算力动态调配",
+      "无强制私营贡献"
+    ],
+    "government_stance": "依托多元资源满足AI算力需求",
+    "opposition_stance": "关注国家云算力保障及法律框架",
+    "controversy_level": 3,
+    "policy_signal": "推动高性能计算支持AI发展",
+    "notable_quote": "Our compute needs for AI research are being met through a combination of on-premise and commercial cloud capacities."
+  },
+  "written-answer-18175": {
+    "zh_title": "社交媒体与AI加速青年激进化",
+    "zh_summary": "质询聚焦社交媒体如何加速青年激进化、AI未来五年在激进化中的作用及应对计划。政府回应指出网络平台和算法助长极端内容传播，AI将加速激进化并助力恐怖宣传。政府通过立法和跨部门合作，采取阻断极端内容及社区外展等综合措施应对。核心争议在于技术带来的激进化速度提升及内容监管难度。",
+    "key_points": [
+      "社交媒体助长极端内容传播",
+      "AI加速激进化与恐怖宣传",
+      "政府多管齐下防范激进化"
+    ],
+    "government_stance": "加强立法与跨部门合作防范激进化",
+    "opposition_stance": "质询政府应对措施及未来规划",
+    "controversy_level": 3,
+    "policy_signal": "强化网络内容监管与反激进化",
+    "notable_quote": "AI can quickly auto-translate existing propaganda into multiple languages and create personalised messages at scale."
+  },
+  "written-answer-18184": {
+    "zh_title": "AI课程男女生入学毕业率",
+    "zh_summary": "质询了过去五年新加坡高校AI与机器学习课程中女性学生的入学及毕业率，并与男性学生进行比较，同时询问提升女性参与度的具体措施。政府回应女性占约四分之一入学比例，毕业率超过90%，并介绍了多项促进女性参与AI/STEM的项目和合作计划。核心争议点在于女性参与度偏低及如何有效提升。",
+    "key_points": [
+      "女性占AI课程四分之一",
+      "女性毕业率超90%",
+      "多项目促进女性参与"
+    ],
+    "government_stance": "支持提升女性AI教育参与",
+    "opposition_stance": "关注女性参与比例偏低",
+    "controversy_level": 2,
+    "policy_signal": "推动女性STEM教育",
+    "notable_quote": "female students comprised about a quarter of enrolment in artificial intelligence (AI) and machine learning programmes"
+  },
+  "oral-answer-3677": {
+    "zh_title": "新加坡AI性别差距与推广举措",
+    "zh_summary": "质询聚焦新加坡人工智能（尤其是生成式AI）采纳中的性别差距及相关群体的接受度。政府回应指出新加坡女性在科技领域比例优于全球平均，生成式AI用户中女性占比亦较高。政府介绍多项针对不同群体的AI教育和培训计划，强调包容性和广泛普及。核心争议在于如何进一步针对特定群体设计有效推广策略。",
+    "key_points": [
+      "女性科技从业比例较高",
+      "生成式AI女性用户占优",
+      "多样化AI教育培训举措"
+    ],
+    "government_stance": "推动包容性AI普及与培训",
+    "opposition_stance": "关注特定群体采纳难题",
+    "controversy_level": 2,
+    "policy_signal": "强化AI教育与技能培训",
+    "notable_quote": "Women in Singapore are doing well compared to the global average."
+  },
+  "written-answer-17376": {
+    "zh_title": "深伪检测与政治讽刺界定",
+    "zh_summary": "议员质询政府当前深伪检测技术的准确率、如何区分有害深伪与合法政治讽刺及误判处理。政府回应技术不断更新且不公开准确率，强调依据《反网络虚假信息法》处理有害内容，讽刺不构成违法。政府关注国际经验，研究是否需进一步保障选举安全。核心争议在于技术透明度与言论自由的平衡。",
+    "key_points": [
+      "深伪检测技术持续更新",
+      "讽刺不自动违法",
+      "误判可司法申诉"
+    ],
+    "government_stance": "技术保密，依法打击虚假信息",
+    "opposition_stance": "关注技术准确率与误判风险",
+    "controversy_level": 3,
+    "policy_signal": "加强AI虚假信息监管",
+    "notable_quote": "We do not publish their accuracy levels as our tools are constantly being updated to keep up with technology."
+  },
+  "written-answer-17447": {
+    "zh_title": "产业转型图纳入AI培训影响",
+    "zh_summary": "议员质询是否更新产业转型图以纳入AI对技能培训的影响，及是否设立培训连续图保障深度技能人才培养。政府回应已刷新23个产业转型图，推出岗位转型图支持岗位重塑和再培训，推动多项AI相关培训计划，强调通过政府与企业合作提升国人AI技能，促进就业转型。核心争议在于如何平衡AI替代与深度技能人才培养。",
+    "key_points": [
+      "产业转型图动态更新",
+      "岗位转型图支持再培训",
+      "多方合作推动AI培训"
+    ],
+    "government_stance": "积极推动AI技能培训与岗位转型",
+    "opposition_stance": "关注深度技能人才培训保障",
+    "controversy_level": 2,
+    "policy_signal": "强化AI技能培训与就业转型",
+    "notable_quote": "ITMs are dynamic plans that respond to changes in the operating environment, such as the emergence of potentially disruptive technologies."
+  },
+  "written-answer-17287": {
+    "zh_title": "深度伪造诈骗追踪情况",
+    "zh_summary": "议员Christopher de Souza质询警方是否追踪通过深度伪造视频和图像实施的诈骗案件数量。内政部长K Shanmugam回应称警方未专门追踪此类案件，虽然收到一些举报，但数量不多。核心争议在于政府对深度伪造诈骗的重视程度及数据透明度。",
+    "key_points": [
+      "未专门追踪深伪诈骗",
+      "已有少量举报案件",
+      "案件数量不高"
+    ],
+    "government_stance": "警方未追踪深伪诈骗案件",
+    "opposition_stance": "关注深伪诈骗数据透明",
+    "controversy_level": 2,
+    "policy_signal": "暂无专项追踪计划",
+    "notable_quote": "the Police have not been tracking the number of such cases."
+  },
+  "written-answer-17278": {
+    "zh_title": "新加坡吸引跨国企业策略",
+    "zh_summary": "议员质询跨国公司是否因成本因素迁出樟宜商务园及新加坡商业吸引力下降的原因与对策。政府回应新加坡经济竞争力强，持续吸引大型投资，承认部分企业因市场及工作模式变化调整布局。政府将通过投资研发、人才培养及财政激励措施保持商业环境吸引力。核心争议在于如何平衡成本与创新，防止企业外迁。",
+    "key_points": [
+      "新加坡经济竞争力强",
+      "部分企业调整运营布局",
+      "财政与非财政双重支持"
+    ],
+    "government_stance": "持续提升创新与投资环境",
+    "opposition_stance": "关注企业外迁趋势",
+    "controversy_level": 2,
+    "policy_signal": "引入可退还投资税收抵免",
+    "notable_quote": "We will introduce a new Refundable Investment Credit for firms anchoring high-value and substantive economic activities in Singapore."
+  },
+  "oral-answer-3564": {
+    "zh_title": "AI语音克隆诈骗趋势",
+    "zh_summary": "议员质询新加坡AI语音克隆诈骗案件数量及政府应对措施。政府回应称相关案件数量不高，警方未专门追踪此类诈骗，但已采取包括终止涉诈通讯线路、限制后付费SIM卡数量等措施。强调全社会共同防范诈骗的重要性，呼吁公众增强防范意识。核心争议在于诈骗案件具体数据缺乏透明及技术威胁的现实性。",
+    "key_points": [
+      "诈骗案件数量不高",
+      "加强通讯渠道监管",
+      "公众需提高防范意识"
+    ],
+    "government_stance": "案件数量不多，强化多方协作防范",
+    "opposition_stance": "要求明确诈骗案件具体数据",
+    "controversy_level": 2,
+    "policy_signal": "加强通讯监管与公众教育",
+    "notable_quote": "If each of us play our part, we can collectively have a better chance of reducing our losses to scammers."
+  },
+  "written-answer-16262": {
+    "zh_title": "个人数据删除权及救济机制",
+    "zh_summary": "议员质询个人数据保护法中是否包含个人数据删除权及相关救济机制。政府回应指出，法律规定组织在数据不再需要时必须停止保留或妥善处理，无论是否有同意，且个人数据保护委员会有权指令组织销毁数据或停止使用。核心争议在于是否存在明确的“删除权”条款及其执行保障。",
+    "key_points": [
+      "无明确删除权条款",
+      "数据保留有严格限制",
+      "监管机构有执法权"
+    ],
+    "government_stance": "支持现行法律规定及监管机制",
+    "opposition_stance": "质疑缺乏明确删除权保障",
+    "controversy_level": 3,
+    "policy_signal": "强化数据保留与销毁监管",
+    "notable_quote": "The Personal Data Protection Commission (PDPC) has the power to direct the organisation to destroy, or stop collecting, using or disclosing, the personal data concerned."
+  },
+  "oral-answer-3551": {
+    "zh_title": "反钓鱼诈骗共责框架发布",
+    "zh_summary": "议员质询钓鱼诈骗共责框架发布时间、Money Lock功能使用率及是否强制银行参与。政府回应将于2024年内公布框架，Money Lock账户超7.8万个，主要用户为50岁以上，MAS暂不强制银行参与。质询关注国际经验及老年人数字素养，政府强调提升宣传力度。",
+    "key_points": [
+      "共责框架年底发布",
+      "Money Lock用户分布",
+      "暂不强制银行参与"
+    ],
+    "government_stance": "积极推广Money Lock，年底推共责框架",
+    "opposition_stance": "关注老年人数字素养及宣传不足",
+    "controversy_level": 2,
+    "policy_signal": "强化银行防诈骗措施",
+    "notable_quote": "The Government will take into account suggestions and feedback received from the public consultation on the Shared Responsibility Framework."
+  },
+  "budget-2378": {
+    "zh_title": "医疗居家护理与补贴政策质询",
+    "zh_summary": "议员质询卫生部关于医院居家护理服务的进展及规模化情况，探讨MediShield Life和MediSave是否可支持居家医疗理赔。同时质疑现行活动能力评估（ADL）标准是否合理，呼吁更灵活考量患者实际需求。核心争议在于居家护理政策的覆盖范围及补贴机制是否足够支持患者及其家庭。",
+    "key_points": [
+      "推动居家医疗服务",
+      "理赔政策需更灵活",
+      "ADL评估标准质疑"
+    ],
+    "government_stance": null,
+    "opposition_stance": "呼吁扩大居家护理补贴范围",
+    "controversy_level": 3,
+    "policy_signal": "推动居家医疗与补贴创新",
+    "notable_quote": "Can the Ministry of Health (MOH) provide an update on the progress of these efforts? Are they being scaled up?"
+  },
+  "oral-answer-3518": {
+    "zh_title": "教师对新兴职业路径认知",
+    "zh_summary": "议员质询教育部是否要求中学教师熟悉未来经济集群下的新兴职业路径及技能需求。教育部回应教师可通过教育及职业指导顾问及行业交流活动了解相关信息，且总部定期发送季度通讯。学生被鼓励主动利用MySkillsFuture平台及相关组织资源。核心争议在于教师对新兴职业信息的更新频率及深度是否足够。",
+    "key_points": [
+      "教师通过ECG了解职业",
+      "定期行业交流活动",
+      "季度通讯更新信息"
+    ],
+    "government_stance": "通过多渠道提升教师职业认知",
+    "opposition_stance": "建议加强教师对新兴职业培训",
+    "controversy_level": 2,
+    "policy_signal": "强化教师职业指导能力",
+    "notable_quote": "Our secondary school teachers can learn about trends in career pathways and skills in demand from Education and Career Guidance (ECG) counsellors in the school."
+  },
+  "written-answer-16024": {
+    "zh_title": "面部识别技术风险与监管",
+    "zh_summary": "议员质询面部识别技术在新加坡的风险与收益、监管框架及公众参与情况。政府回应强调面部图像作为生物识别数据受个人数据保护法约束，指出安全用途为主，已有相关指南和治理框架确保技术负责任和伦理使用。核心争议在于如何平衡技术应用与隐私保护。 ",
+    "key_points": [
+      "面部图像属个人数据",
+      "安全用途为主导",
+      "已有监管与指导框架"
+    ],
+    "government_stance": "强调法规与伦理指导保障",
+    "opposition_stance": "质询风险与公众参与",
+    "controversy_level": 2,
+    "policy_signal": "加强生物识别数据监管",
+    "notable_quote": "Facial images as a form of biometric data, can be considered personal data when associated with other information about an individual."
+  },
+  "budget-2361": {
+    "zh_title": "新加坡经济增长与AI挑战",
+    "zh_summary": "议员质询新加坡如何在土地、劳动力和碳排放限制下推动经济增长，特别关注生成式人工智能等新兴技术带来的机遇与挑战。政府回应强调保持投资吸引力，强化制造业和服务业，提升基础设施和人才培养，确保政策稳定以应对全球竞争和技术变革。核心争议点在于如何平衡创新发展与经济基础的稳固。",
+    "key_points": [
+      "经济增长面临多重限制",
+      "新兴AI技术带来挑战机遇",
+      "需持续吸引高价值投资"
+    ],
+    "government_stance": "推动创新与稳固经济基础",
+    "opposition_stance": null,
+    "controversy_level": 2,
+    "policy_signal": "强化AI与高端投资支持",
+    "notable_quote": "The rapid rise of new disruptive technologies such as generative artificial intelligence (GenAI) presents both challenges and opportunities to Singapore."
+  },
+  "budget-2362": {
+    "zh_title": "新加坡AI战略与数字基础设施投资",
+    "zh_summary": "议员质询新加坡在AI时代如何加强数字基础设施建设及人才培养，强调AI既带来机遇也有风险，需保持人类控制。政府回应将继续加大投资，推动国家AI战略2.0，提升网络速度和计算能力，保障数字信任。核心争议在于如何平衡技术发展与安全伦理，以及投资力度是否足够。",
+    "key_points": [
+      "AI是未来关键技术",
+      "需加强数字基础设施",
+      "保持技术人类控制"
+    ],
+    "government_stance": "积极推进AI战略与基础设施建设",
+    "opposition_stance": null,
+    "controversy_level": 3,
+    "policy_signal": "加大AI基础设施与人才投资",
+    "notable_quote": "Singapore believes that AI can be a potent force for good – to uplift human potential and to unlock economic opportunities."
+  },
+  "budget-2363": {
+    "zh_title": "教育多元发展与AI应对策略",
+    "zh_summary": "议员强调教育需适应快速技术变革，特别是生成式人工智能带来的挑战，呼吁拓展技能提升课程，支持学生多元发展。政府认可教育系统的韧性与国际表现，致力推动学生具备应变能力和创新精神。核心争议在于如何平衡传统教学与新兴技能培养，以及资金使用范围的扩展。",
+    "key_points": [
+      "教育需适应技术变革",
+      "推动多元课程发展",
+      "提升学生综合能力"
+    ],
+    "government_stance": "支持教育创新与技能多元发展",
+    "opposition_stance": "呼吁扩大技能补贴范围",
+    "controversy_level": 3,
+    "policy_signal": "推动教育多元与技能提升",
+    "notable_quote": "We do not rely on a single vitamin for our health needs. Why then should we expect learners to follow a singular academic path?"
+  },
+  "oral-answer-3495": {
+    "zh_title": "AI引发就业置换风险质询",
+    "zh_summary": "议员质询新加坡作为亚太区生成式AI最快采用国，是否低估了AI驱动的就业流失风险，是否会评估AI带来的就业置换规模，以及如何推动企业提前投资员工技能提升。政府回应该议题将在通讯及资讯部预算辩论中详细讨论，未直接回应具体问题，体现出议题尚处于政策研判阶段，存在信息透明度和应对策略的关注点。",
+    "key_points": [
+      "担忧AI就业流失被低估",
+      "计划评估就业置换规模",
+      "推动企业投资员工再培训"
+    ],
+    "government_stance": "议题将在预算辩论中详细讨论",
+    "opposition_stance": "关注AI就业风险及培训激励",
+    "controversy_level": 2,
+    "policy_signal": "加强AI就业影响评估与培训",
+    "notable_quote": "I seek his understanding that this topic will be addressed at the Committee of Supply debate for the Ministry of Communications and Information."
+  },
+  "budget-2346": {
+    "zh_title": "国防预算与安全趋势质询",
+    "zh_summary": "议员质询国防部关于全球及区域安全趋势的监测情况，特别关注俄乌战争及中东冲突对新加坡安全的影响。政府回应强调国际秩序动荡、网络战与信息战的挑战，表明将持续关注并调整国防策略以应对复杂多变的安全环境。核心争议点在于如何平衡预算分配与应对新兴安全威胁。",
+    "key_points": [
+      "国际法与安全秩序",
+      "非国家行为体威胁",
+      "网络与信息战挑战"
+    ],
+    "government_stance": "强化国防应对复杂安全环境",
+    "opposition_stance": "关注预算合理性与安全威胁",
+    "controversy_level": 3,
+    "policy_signal": "加强网络战与信息战防御",
+    "notable_quote": "The world is likely be more volatile and unpredictable in the coming year."
+  },
+  "budget-2336": {
+    "zh_title": "2024财年预算中的未来挑战",
+    "zh_summary": "议员Sharael Taha质询预算中对未来可持续发展的关注，指出居民对短期补贴的期待与对长期发展担忧的矛盾。政府副总理黄循财回应国际环境复杂多变，强调新冷战后世界更具冲突与不确定性。核心争议在于如何平衡当前民生需求与未来经济安全，及新形势下的政策应对。",
+    "key_points": [
+      "居民期待短期补贴",
+      "国际环境更趋复杂",
+      "新冷战时代挑战大"
+    ],
+    "government_stance": "保持谨慎乐观，应对不确定风险",
+    "opposition_stance": null,
+    "controversy_level": 3,
+    "policy_signal": "强调未来经济可持续与安全",
+    "notable_quote": "The three decades of peace and stability in the post-Cold War era is now over."
+  },
+  "budget-2338": {
+    "zh_title": "2024年财政预算中的经济增长与AI挑战",
+    "zh_summary": "本次辩论聚焦于新加坡2024年财政预算中经济增长的路径，特别是在全球经济放缓、高通胀及地缘政治不确定性加剧的背景下。政府强调通过结构性改革和支持企业与家庭应对挑战，推动长期可持续发展。辩论中提及技术创新、自动化和人工智能对就业及产业竞争力的影响，反映出对AI治理与产业发展的关注。核心争议点在于如何平衡经济增长与社会保障，以及应对全球保护主义带来的挑战。",
+    "key_points": [
+      "经济结构需结构性改革",
+      "AI与自动化重塑就业",
+      "全球环境趋向保护主义"
+    ],
+    "government_stance": "推动结构性政策支持经济转型",
+    "opposition_stance": null,
+    "controversy_level": 3,
+    "policy_signal": "加大对AI产业与劳工支持",
+    "notable_quote": "Technological innovations, including automation and AI, are reshaping jobs and competitiveness across industries and countries."
+  },
+  "budget-2328": {
+    "zh_title": "2024年预算案中的共享未来",
+    "zh_summary": "辩论围绕2024年预算案展开，质询方关注政府信息透明度、社会公平及退休保障等问题。政府回应部分采纳反对党建议，如临时失业援助计划。核心争议在于政府是否真正开放接受多元意见及如何缩小理想与现实差距。",
+    "key_points": [
+      "信息透明度不足",
+      "理想与现实脱节",
+      "退休保障需加强"
+    ],
+    "government_stance": "支持预算，采纳部分反对党建议",
+    "opposition_stance": "呼吁更多开放与公平保障",
+    "controversy_level": 3,
+    "policy_signal": "强化社会保障与包容发展",
+    "notable_quote": "The real challenge to the People's Action Party (PAP), however, is for it to be open, and the extent to which it is prepared to accommodate the diverse views of Singaporeans."
+  },
+  "oral-answer-3478": {
+    "zh_title": "新加坡计算能力全球份额目标",
+    "zh_summary": "议员质询政府是否设定未来5至10年新加坡在全球计算能力的具体目标，政府回应未设具体目标，强调计算资源需求动态变化。议员进一步关切数据中心建设及其可持续性，政府表示支持建设符合环保标准的数据中心，并推动数字化带来就业和技能提升。核心争议点在于是否应设定明确目标及如何平衡发展与环保。",
+    "key_points": [
+      "未设具体计算能力目标",
+      "支持建设环保数据中心",
+      "推动数字化提升就业技能"
+    ],
+    "government_stance": "未设具体目标，支持绿色数据中心",
+    "opposition_stance": "建议设定明确计算能力目标",
+    "controversy_level": 3,
+    "policy_signal": "推动绿色数据中心建设",
+    "notable_quote": "No such target has been set. The amount of computing resources needed in Singapore will depend on the workloads."
+  },
+  "budget-2325": {
+    "zh_title": "2024财年预算展望与挑战",
+    "zh_summary": "议员质询全球经济不确定性及地缘政治风险对新加坡经济的影响。政府回应指出2023年经济增长虽缓但避免衰退，2024年展望谨慎乐观，强调全球冲突加剧带来的挑战。核心争议在于如何平衡经济增长与地缘政治风险，以及政府财政政策的应对策略。",
+    "key_points": [
+      "经济增长谨慎乐观",
+      "地缘政治风险加剧",
+      "全球通胀压力缓解"
+    ],
+    "government_stance": "积极应对经济与地缘风险",
+    "opposition_stance": null,
+    "controversy_level": 2,
+    "policy_signal": "加强经济韧性与风险管理",
+    "notable_quote": "The post-Cold War era that began in the early 1990s and fostered three decades of peace and stability is over."
+  },
+  "written-answer-15541": {
+    "zh_title": "打击深度伪造诈骗监管措施",
+    "zh_summary": "议员质询政府针对深度伪造软件被用于诈骗的监管和防范措施。政府回应通过《网络刑事危害法》授权监管网络平台，推动技术研发和行业合作，强化公众教育，提升检测和应对能力。核心争议在于如何有效遏制深伪技术滥用，保障网络安全与公众利益。",
+    "key_points": [
+      "多部门协作防范深伪",
+      "《网络刑事危害法》赋权",
+      "公众教育与技术研发"
+    ],
+    "government_stance": "积极监管与技术防范深伪诈骗",
+    "opposition_stance": "质询监管措施落实情况",
+    "controversy_level": 2,
+    "policy_signal": "强化深伪技术监管与公众防骗",
+    "notable_quote": "The Online Criminal Harms Act (OCHA) allows the Government to issue directions to online platforms to prevent potential scam related accounts or content."
+  },
+  "written-answer-15542": {
+    "zh_title": "提升公众科技素养防范网络诈骗",
+    "zh_summary": "议员质询政府如何帮助公众理解人工智能及其能力，以应对网络诈骗和深度伪造内容威胁。政府回应指出多部门协作保障网络安全，强调《线上刑事危害法》赋权监管平台，推动深度伪造检测技术研发，并开展多项公众教育活动。核心争议点在于如何有效结合技术与教育手段，提升公众防范意识和能力。",
+    "key_points": [
+      "多部门协作保障安全",
+      "《线上刑事危害法》监管",
+      "公众教育与技术研发"
+    ],
+    "government_stance": "加强技术监管与公众教育",
+    "opposition_stance": "质询政府提升公众理解",
+    "controversy_level": 2,
+    "policy_signal": "强化深度伪造检测与防范",
+    "notable_quote": "The Online Criminal Harms Act (OCHA) allows the Government to issue directions to online platforms to prevent potential scam related accounts or content."
+  },
+  "motion-2294": {
+    "zh_title": "构建包容安全数字社会",
+    "zh_summary": "议员质询数字化进程中信任危机与网络安全挑战，强调诈骗等网络危害日益严重。政府回应强调新加坡数字经济发展成就及前瞻性基础设施建设，承诺采取全社会协作应对数字风险。核心争议在于如何平衡数字化发展与保障公众安全及信任。",
+    "key_points": [
+      "数字经济快速增长",
+      "网络诈骗威胁加剧",
+      "需全社会协作应对"
+    ],
+    "government_stance": "支持数字化并强化网络安全",
+    "opposition_stance": null,
+    "controversy_level": 2,
+    "policy_signal": "推动数字信任与安全建设",
+    "notable_quote": "Scams often operate in the dark corners of the digital realm, exploiting vulnerabilities and thriving in unsuspecting spaces."
+  },
+  "motion-2296": {
+    "zh_title": "构建包容安全的数字社会",
+    "zh_summary": "议员质询数字化对劳动力、人工智能影响及心理健康问题，政府回应强调AI带来的机遇，推行技能提升计划支持转型，注重数字包容与心理健康，核心争议在于AI对就业和社会的影响及应对策略。",
+    "key_points": [
+      "AI影响劳动力",
+      "技能提升支持",
+      "关注心理健康"
+    ],
+    "government_stance": "积极拥抱AI，支持劳工转型",
+    "opposition_stance": null,
+    "controversy_level": 3,
+    "policy_signal": "推动数字技能培训与包容发展",
+    "notable_quote": "The competition is not between \"man\" and \"machine\" but which economy and society can better use technology to improve our competitiveness and our lives."
+  },
+  "oral-answer-3393": {
+    "zh_title": "学生AI素养发展措施",
+    "zh_summary": "议员质询教育部关于除新加坡学生学习空间AI工具外，如何提升学生AI基础素养，包括AI编程课程的计划及实施主体。教育部长回应，教育部通过课程融合、师资培训及校外项目如AI学生推广计划，推动学生理解AI及其伦理，强调网络健康教育防范AI风险。核心争议在于如何有效提升学生AI技能及扩大项目参与度。",
+    "key_points": [
+      "推广AI基础知识",
+      "师资培训与资源支持",
+      "AI学生推广计划"
+    ],
+    "government_stance": "推动AI教育，强化师资与课程",
+    "opposition_stance": null,
+    "controversy_level": 2,
+    "policy_signal": "加强AI素养与安全教育",
+    "notable_quote": "MOE develops students’ foundational knowledge of AI and promotes its safe and responsible use."
+  },
+  "written-answer-15270": {
+    "zh_title": "AI影响下高风险工种与再培训",
+    "zh_summary": "议员质询政府关于哪些工种因AI面临最高失业风险及相关人数，并询问扩大再培训计划。政府回应强调AI影响难以完全预测，推行行业转型图谱及SkillsFuture等培训项目，支持工人技能提升和职业转换，鼓励向AI技术岗位转型，体现积极应对AI挑战的态度。核心争议在于AI对就业的具体影响及再培训成效。",
+    "key_points": [
+      "AI影响难以完全预测",
+      "推行业转型图谱辅助准备",
+      "扩大技能提升与转换计划"
+    ],
+    "government_stance": "积极推动技能提升与职业转换",
+    "opposition_stance": "关注AI导致工人失业风险",
+    "controversy_level": 2,
+    "policy_signal": "强化再培训与职业转换支持",
+    "notable_quote": "Artificial intelligence (AI) development is changing every day and its impact on the workforce is not fully predictable."
+  },
+  "written-answer-15269": {
+    "zh_title": "AI算力与能源可持续平衡",
+    "zh_summary": "议员质询政府如何在推动国家AI战略2.0所需的算力增长与能源可持续目标之间取得平衡。政府回应强调通过提升数据中心能效、推广液冷技术、制定绿色标准及支持绿色计算方法，确保AI基础设施环保可持续。核心争议在于如何兼顾AI发展需求与气候承诺的矛盾。",
+    "key_points": [
+      "提升数据中心能效",
+      "推广液冷节能技术",
+      "发展绿色计算方法"
+    ],
+    "government_stance": "推动绿色高效AI算力发展",
+    "opposition_stance": "关注算力与能源平衡",
+    "controversy_level": 2,
+    "policy_signal": "加强绿色数据中心建设",
+    "notable_quote": "The Government is committed to anchoring the necessary compute power and growing the DC sector in a sustainable manner."
+  },
+  "written-answer-15268": {
+    "zh_title": "学生编程普及及AI教育进展",
+    "zh_summary": "议员质询自2019年以来参与“Code for Fun”编程项目的学生比例，未参与学生如何获得数字素养，以及未来如何更新课程以培养AI人才。政府回应指出小学高年级自2020年起强制参与，近三分之二中学提供该项目，且每年覆盖逾5万学生。课程将于2025年引入AI与数据素养内容，配合正式课程和课外活动推动数字及AI素养培养。核心争议在于如何确保未参与学生的基础数字能力及课程的持续更新。",
+    "key_points": [
+      "小学高年级强制编程",
+      "中学项目逐年普及",
+      "2025年引入AI内容"
+    ],
+    "government_stance": "推动编程普及与AI教育升级",
+    "opposition_stance": "关注未参与学生数字素养保障",
+    "controversy_level": 2,
+    "policy_signal": "强化AI与数字素养教育",
+    "notable_quote": "Since 2020, it has been mandatory for all upper primary school students to go through CFF or a comparable coding programme."
+  },
+  "oral-answer-3383": {
+    "zh_title": "购物会员数据泄露事件质询",
+    "zh_summary": "议员质询关于新加坡奢侈度假村运营商购物会员数据泄露事件的报告时间及延迟通知原因。通讯及资讯部长回应事件已按规定时间向监管机构报告，解释延迟通知因需优先控制泄露、评估影响及确认通知要求。监管机构正调查事件是否对个人造成重大伤害及通知是否及时。",
+    "key_points": [
+      "事件按规定及时报告",
+      "延迟通知因优先控制泄露",
+      "监管机构正在调查"
+    ],
+    "government_stance": "重视数据保护，严格执法",
+    "opposition_stance": "关注通知延迟及调查进度",
+    "controversy_level": 2,
+    "policy_signal": "强化数据泄露管理规范",
+    "notable_quote": "Singapore takes breaches of personal data seriously."
+  },
+  "written-answer-15158": {
+    "zh_title": "新加坡AI安全治理政策",
+    "zh_summary": "议员质询政府关于新加坡安全且负责任发展人工智能的政策及后续治理步骤。政府回应强调已有多次详细说明，支持国际合作与标准对齐，推动企业参与AI伦理认证，并通过双边及多边机制深化AI治理合作。核心争议点在于如何平衡技术发展与伦理安全，以及国际合作的具体落实。",
+    "key_points": [
+      "持续推动AI伦理标准",
+      "支持国际AI治理合作",
+      "鼓励企业参与AI认证"
+    ],
+    "government_stance": "推动安全负责任AI发展",
+    "opposition_stance": "质询政府AI治理措施",
+    "controversy_level": 2,
+    "policy_signal": "加强国际合作与本地认证",
+    "notable_quote": "Singapore has been consistent in our support for international efforts that enhance alignment on AI governance."
+  },
+  "oral-answer-3375": {
+    "zh_title": "发展本土AI基础模型能力",
+    "zh_summary": "议员质询政府是否有整体计划发展本土AI基础模型能力，包括设立国家研究机构。政府回应新加坡AI研究实力强，但不强调完全依赖本土能力，倾向快速采用国际先进技术。核心争议在于是否应自主研发基础模型及相关长期风险。",
+    "key_points": [
+      "新加坡AI研究实力强",
+      "无整体本土基础模型计划",
+      "倾向快速采用国际技术"
+    ],
+    "government_stance": "支持快速采用国际AI技术，重视人才与创新",
+    "opposition_stance": "质疑缺乏整体本土AI基础模型计划",
+    "controversy_level": 3,
+    "policy_signal": "强调引进与本土研发并重",
+    "notable_quote": "It is not usually necessary or beneficial to rely solely on indigenous capabilities to advance our economic interests."
+  },
+  "written-answer-14629": {
+    "zh_title": "警务中的人工智能应用",
+    "zh_summary": "议员质询新加坡警察部队如何将人工智能应用于执法工作，是否带来成效，以及未来发展方向。政府回应指出，AI已用于打击儿童性虐待材料和诈骗信息识别，提升调查效率，并将继续与相关机构合作，推动AI技术在警务中的应用。辩论核心在于AI技术的实际效果及未来潜力。",
+    "key_points": [
+      "AI提升执法效率",
+      "打击儿童性虐待材料",
+      "防范诈骗信息"
+    ],
+    "government_stance": "积极推动AI提升警务能力",
+    "opposition_stance": "质询AI应用成效与前景",
+    "controversy_level": 2,
+    "policy_signal": "深化AI在公共安全应用",
+    "notable_quote": "The Singapore Police Force (SPF) has been leveraging artificial intelligence (AI) to enhance its capabilities and operational effectiveness."
+  },
+  "written-answer-13935": {
+    "zh_title": "人工智能对金融交易平台影响",
+    "zh_summary": "质询关注AI在金融交易平台中可能导致的“羊群效应”风险及利益冲突问题。政府回应称，新加坡金融管理局（MAS）已实施技术中立的监管措施，推行FEAT原则保障公平与透明，认为当前AI模型应用尚处初期，风险较低，但将持续监控并与业界合作推动负责任使用AI。",
+    "key_points": [
+      "监管要求防范利益冲突",
+      "推行FEAT原则保障公平",
+      "AI交易风险目前较低"
+    ],
+    "government_stance": "强调监管与持续监控AI风险",
+    "opposition_stance": "关注AI引发的利益冲突与羊群效应",
+    "controversy_level": 2,
+    "policy_signal": "推动负责任AI金融应用",
+    "notable_quote": "MAS requires regulated financial institutions to have controls in place to avoid or mitigate conflicts between their interests and those of their customers."
+  },
+  "oral-answer-3295": {
+    "zh_title": "新加坡AI监管机构可行性",
+    "zh_summary": "质询方询问政府是否研究设立AI监管机构及国际合作情况。政府回应强调采用实用且基于风险的治理方式，反对一刀切监管，介绍了现有IMDA和PDPC的多项AI治理举措，并强调国际合作重要性。核心争议在于是否设立专门监管机构及如何平衡创新与风险管理。",
+    "key_points": [
+      "反对一刀切监管",
+      "推行风险为本治理",
+      "加强国际合作"
+    ],
+    "government_stance": "支持实用风险导向AI治理",
+    "opposition_stance": "关注设立专门监管机构",
+    "controversy_level": 3,
+    "policy_signal": "强化多边合作与风险治理",
+    "notable_quote": "We cannot and should not adopt a one-size-fits-all approach to regulate it."
+  },
+  "motion-2194": {
+    "zh_title": "支持医疗健康发展",
+    "zh_summary": "辩论聚焦疫情后持续支持医疗健康，特别强调学术界心理健康问题。议员指出学术压力导致研究人员和研究生焦虑抑郁比例高，呼吁关注精神健康。政府未直接回应，核心争议在于如何平衡学术绩效压力与心理健康保障。",
+    "key_points": [
+      "学术界心理健康问题突出",
+      "学术压力导致焦虑抑郁",
+      "需持续支持医疗健康"
+    ],
+    "government_stance": null,
+    "opposition_stance": null,
+    "controversy_level": 2,
+    "policy_signal": "关注学术心理健康",
+    "notable_quote": "graduate students are more than six times as likely to experience anxiety and depression compared to the general population."
+  },
+  "motion-2190": {
+    "zh_title": "支持后疫情时代医疗保障",
+    "zh_summary": "议员Tan Yia Swam质询医疗体系在后疫情时代的可持续支持，强调医生与患者关系的复杂性及医疗资源有限。她呼吁政府采取全方位措施，关注医疗支出、慢性病管理及医疗服务质量。辩论聚焦医疗费用、患者权益与医生责任的平衡，体现对医疗系统长期发展的关切。",
+    "key_points": [
+      "医生应关爱患者",
+      "患者更自主质疑医生",
+      "医疗支出需持续支持"
+    ],
+    "government_stance": null,
+    "opposition_stance": null,
+    "controversy_level": 3,
+    "policy_signal": "推动全政府医疗支持",
+    "notable_quote": "Why does anyone stand up to advocate for certain causes? We want to leave behind a better world than what we were born in."
+  },
+  "oral-answer-3240": {
+    "zh_title": "确保伦理AI标准发展维护",
+    "zh_summary": "质询关注如何推动符合人类价值观的伦理AI发展及其标准维护。政府回应介绍了新加坡已有的AI治理框架、自测工具及个人数据使用指导，强调责任制和数据安全。质询方关注责任归属及AI身份标识，核心争议在于如何落实责任和透明度。",
+    "key_points": [
+      "推广负责任AI发展",
+      "引入AI治理框架",
+      "强调责任与透明"
+    ],
+    "government_stance": "支持负责任且安全的AI发展",
+    "opposition_stance": "关注AI责任与透明度",
+    "controversy_level": 2,
+    "policy_signal": "强化AI责任与数据保护",
+    "notable_quote": "Singapore supports the responsible development and deployment of artificial intelligence (AI), so that its benefits may be enjoyed in a trusted and safe manner."
+  },
+  "written-answer-13437": {
+    "zh_title": "新加坡政府AI技术应用",
+    "zh_summary": "议员质询政府如何利用ChatGPT等新型人工智能技术提升电子政务服务，是否会替代现有聊天机器人以改善用户体验。政府回应已在多项数字服务中应用AI，强调新技术可提升服务质量和效率，但需确保准确性和可靠性，且将制定使用指南保障责任和数据安全。核心争议点在于技术应用的安全性与实用性平衡。",
+    "key_points": [
+      "政府已应用AI服务",
+      "新技术提升服务质量",
+      "强调准确性与安全"
+    ],
+    "government_stance": "积极探索AI提升政务服务",
+    "opposition_stance": "关注技术替代与用户体验",
+    "controversy_level": 2,
+    "policy_signal": "推动AI安全应用于公共服务",
+    "notable_quote": "We must, however, ensure the accuracy and reliability of responses before such service enhancements can be deployed for public use."
+  },
+  "oral-answer-3212": {
+    "zh_title": "不可分割安全概念解析",
+    "zh_summary": "质询围绕“不可分割安全”概念及其在俄乌战争中的应用。政府回应强调主权、自决和领土完整为国际法基本原则，俄方以不可分割安全为由入侵乌克兰不被认可。核心争议在于不可分割安全是否为国际法原则，政府明确否认其法律地位，指出该概念被俄美双方引用但不具法律效力。",
+    "key_points": [
+      "主权与自决为国际法基石",
+      "俄乌战争违反国际法",
+      "不可分割安全非法律原则"
+    ],
+    "government_stance": "不可分割安全不能为侵略辩护",
+    "opposition_stance": null,
+    "controversy_level": 2,
+    "policy_signal": "坚持国际法基本原则",
+    "notable_quote": "Indivisible Security is not of the same status as self-determination, sovereignty, or territorial integrity and the non-recourse to use of force."
+  },
+  "oral-answer-3225": {
+    "zh_title": "未收到短信OTP的银行交易纠纷",
+    "zh_summary": "质询涉及客户未收到短信OTP却发生未授权银行交易的争议，政府回应此类情况极为罕见，警方无相关报告，金融纠纷调解中心仅接获少数争议案例。政府强调客户应及时联系银行及警方，银行需公平处理纠纷并可提供善意赔偿，客户可诉诸调解或法律途径。质询方关注银行与电信记录冲突时的复核机制及防范未来诈骗的准备。",
+    "key_points": [
+      "未授权交易极罕见",
+      "银行需公平处理纠纷",
+      "客户可诉诸调解和法律"
+    ],
+    "government_stance": "强调银行责任与客户保护",
+    "opposition_stance": "关注复核机制与防诈骗准备",
+    "controversy_level": 3,
+    "policy_signal": "加强金融诈骗防范与纠纷机制",
+    "notable_quote": "MAS expects banks to treat customers fairly in all cases of disputes over unauthorised transactions."
+  },
+  "written-answer-13336": {
+    "zh_title": "AI诊断方案的可信度与监管",
+    "zh_summary": "质询聚焦于AI诊断方案的可信度及其广泛应用的监管考量。政府回应指出新加坡已在医疗领域广泛应用AI，强调安全、临床有效性和成本效益为采用前提，介绍了现有的监管框架和未来发布的治理指南，同时关注伦理问题。核心争议在于如何平衡技术创新与安全监管。",
+    "key_points": [
+      "AI广泛应用医疗",
+      "安全有效为前提",
+      "完善监管与伦理"
+    ],
+    "government_stance": "支持安全有效的AI医疗应用",
+    "opposition_stance": "关注AI诊断可信度与监管",
+    "controversy_level": 2,
+    "policy_signal": "加强AI医疗监管框架",
+    "notable_quote": "The Ministry of Health (MOH) is open to the use of AI technologies in healthcare where they are proven to be safe, clinically efficacious and cost-effective."
+  },
+  "oral-answer-3193": {
+    "zh_title": "新加坡人工智能监管框架",
+    "zh_summary": "质询方关注新加坡是否借鉴欧盟和中国的AI监管框架，重点领域及立法时间表。政府回应介绍现有的《AI治理模型框架》和AI Verify工具，强调持续审视监管策略，并计划发布个人数据保护指导。质询方进一步关注AI诈骗等具体风险，政府指出AI技术多样性，强调区别对待不同AI技术的必要性，体现审慎推进监管的态度。",
+    "key_points": [
+      "支持负责任AI发展",
+      "已有AI治理框架",
+      "关注AI诈骗风险"
+    ],
+    "government_stance": "审慎推进AI监管，持续评估调整",
+    "opposition_stance": "关注AI诈骗等具体保护措施",
+    "controversy_level": 2,
+    "policy_signal": "完善AI伦理与数据保护",
+    "notable_quote": "AI is a group of technologies. Currently, there is a lot of excitement around ChatGPT."
+  },
+  "budget-2078": {
+    "zh_title": "新加坡劳动力老龄化挑战",
+    "zh_summary": "议员质询新加坡劳动力老龄化及人口结构变化对经济的影响，指出部分行业老年员工比例高，未来劳动力可能快速流失。强调技术变革与工作态度转变带来的挑战，呼吁政府关注灵活工作安排。政府回应未见，核心争议在于如何应对老龄化与技术变革带来的就业结构调整。",
+    "key_points": [
+      "人口老龄化加剧",
+      "部分行业老年工人多",
+      "技术与工作态度变化"
+    ],
+    "government_stance": null,
+    "opposition_stance": "关注老龄化影响与就业调整",
+    "controversy_level": 3,
+    "policy_signal": "推动灵活就业与技能培训",
+    "notable_quote": "Technology, digitisation and artificial intelligence (AI) have already changed the nature of many jobs."
+  },
+  "budget-2072": {
+    "zh_title": "数字经济与网络安全监管",
+    "zh_summary": "议员质询了新加坡在数字经济发展中如何平衡数据利用与用户保护，关注在线安全法案实施进展及元宇宙等新兴领域的监管。强调法规需保护用户同时避免抑制创新，特别是中小企业的数字化发展。政府回应尚未详述，核心争议在于如何在促进数字经济与保障网络安全之间取得平衡。",
+    "key_points": [
+      "数据驱动创新与风险",
+      "在线安全法案实施",
+      "监管与创新平衡"
+    ],
+    "government_stance": null,
+    "opposition_stance": "强调保护用户与支持中小企业数字化",
+    "controversy_level": 3,
+    "policy_signal": "加强网络安全与数字经济协调发展",
+    "notable_quote": "We must protect our people online just as we do in the real world."
+  },
+  "budget-2073": {
+    "zh_title": "教育经费与职业发展支持",
+    "zh_summary": "议员质询教育预算及职业指导支持，强调疫情期间教育工作者的贡献及未来技能培养的重要性。提出加强青年及在职人士的职业辅导，建议扩大SkillsFuture学分使用范围以促进终身学习。政府回应未见，核心争议在于如何更好支持青年职业发展及技能匹配。",
+    "key_points": [
+      "加强青年职业指导",
+      "提升继续教育培训",
+      "扩大技能学分使用"
+    ],
+    "government_stance": null,
+    "opposition_stance": "支持扩大职业辅导及技能发展",
+    "controversy_level": 3,
+    "policy_signal": "推动终身学习与职业辅导",
+    "notable_quote": "We owe it to our youth, especially those who have given up much during the pandemic years, to help them get a strong footing on the career ladder."
+  },
+  "budget-2054": {
+    "zh_title": "国防预算与安全趋势质询",
+    "zh_summary": "议员质询国防部关于当前全球及区域安全形势的评估，特别关注美中战略竞争、俄乌战争及朝鲜导弹试验等风险。政府回应了对多边主义衰退和地区安全复杂化的关注，强调新加坡需加强防务准备以应对不确定性。核心争议在于如何平衡国防投入与区域外交策略，确保国家安全与稳定。",
+    "key_points": [
+      "多边主义承诺减弱",
+      "美中战略竞争加剧",
+      "区域安全环境复杂"
+    ],
+    "government_stance": "加强防务准备应对复杂安全环境",
+    "opposition_stance": "关注国防预算及安全威胁评估",
+    "controversy_level": 3,
+    "policy_signal": "强化国防应对区域风险",
+    "notable_quote": "Every time an act of aggression takes place without consequences for the aggressor, the more each country has to fear for its own safety."
+  },
+  "written-answer-12799": {
+    "zh_title": "学校人工智能工具管理",
+    "zh_summary": "质询了教育部如何管理学校中ChatGPT等人工智能工具的使用。政府回应指出，AI工具既有机遇也有挑战，强调通过教师指导、数字素养教育和多元评估防范滥用，培养学生诚信和责任感。核心争议在于如何平衡AI辅助学习与防止学术不端。",
+    "key_points": [
+      "AI具机遇与挑战",
+      "加强数字素养教育",
+      "多元评估防止滥用"
+    ],
+    "government_stance": "支持合理利用AI促进学习",
+    "opposition_stance": "关注AI工具管理风险",
+    "controversy_level": 2,
+    "policy_signal": "推动AI教育规范与素养培养",
+    "notable_quote": "When used appropriately, these tools can support students in their learning when students have mastered basic concepts and thinking skills."
+  },
+  "oral-answer-3032": {
+    "zh_title": "学生使用AI技术考试作业",
+    "zh_summary": "议员质询AI技术如ChatGPT对学生作业和考试的影响、作弊问题及教育应对措施。教育部长回应，AI带来机遇与挑战，教育部提供指导资源，鼓励合理利用AI，同时强调基础知识掌握，防止过度依赖和作弊。核心争议在于如何平衡AI辅助学习与防范学术不端。",
+    "key_points": [
+      "AI带来机遇与挑战",
+      "提供教师指导资源",
+      "防范学生作弊行为"
+    ],
+    "government_stance": "支持合理利用AI防止作弊",
+    "opposition_stance": "关注AI作弊风险与监管",
+    "controversy_level": 3,
+    "policy_signal": "推动AI教育规范与防作弊",
+    "notable_quote": "ChatGPT can be a useful tool for learning only when students have mastered basic concepts and thinking skills."
+  },
+  "written-answer-12692": {
+    "zh_title": "保障在线考试诚信",
+    "zh_summary": "质询关注AI技术（如ChatGPT）对学生在线考试和作业诚信的影响，政府回应强调技术既带来机遇也有挑战，学校和高等院校通过明确规则、监考措施及多元评估防范学术不端，持续教育学生诚信重要性，并将随AI发展调整应对策略。核心争议在于如何平衡AI辅助学习与防止作弊。",
+    "key_points": [
+      "AI既是机遇也是挑战",
+      "严格监考防止作弊",
+      "多元评估识别异常"
+    ],
+    "government_stance": "支持利用AI同时防范学术不端",
+    "opposition_stance": "关注AI对考试诚信影响",
+    "controversy_level": 2,
+    "policy_signal": "加强学术诚信与AI监管",
+    "notable_quote": "ChatGPT and similar generative artificial intelligence (AI) tools present both opportunities and challenges for teaching and learning."
+  },
+  "written-answer-12075": {
+    "zh_title": "马来西亚诉讼对新加坡珊瑚礁影响",
+    "zh_summary": "质询马来西亚拟在国际法院继续诉讼是否影响新加坡珊瑚礁开发。外交部长回应称2008年判决终局且时效已过，未收到马方具体诉讼细节。新加坡准备应对任何法律行动，开发活动均符合法律，核心争议在于主权维护与法律程序时效。",
+    "key_points": [
+      "2008年判决终局",
+      "诉讼时效已过",
+      "开发符合法律"
+    ],
+    "government_stance": "坚定维护珊瑚礁主权",
+    "opposition_stance": "关注法律诉讼影响",
+    "controversy_level": 2,
+    "policy_signal": "坚持国际法与主权维护",
+    "notable_quote": "Singapore stands ready to deal with whatever legal action Malaysia may pursue."
+  },
+  "oral-answer-2914": {
+    "zh_title": "社交媒体年龄验证实施情况",
+    "zh_summary": "质询涉及是否设定社交媒体最低年龄限制及借鉴海外年龄验证经验。政府回应指出现行多数平台要求13岁以上注册，采用AI等技术检测未成年账户，但年龄验证技术难度大且涉及儿童数据保护问题。政府将推行线上安全行为守则，强化对年轻用户保护，同时鼓励家长积极引导。核心争议在于年龄验证技术的可行性与数据隐私保护的平衡。",
+    "key_points": [
+      "多数平台要求13岁以上",
+      "AI技术辅助年龄检测",
+      "数据保护与技术难题"
+    ],
+    "government_stance": "支持技术与守则并行保护青少年",
+    "opposition_stance": "鼓励家长积极引导孩子",
+    "controversy_level": 3,
+    "policy_signal": "推行线上安全守则强化保护",
+    "notable_quote": "Age verification, to a high degree of certainty, is technically difficult and the technology continues to evolve."
+  },
+  "budget-1862": {
+    "zh_title": "数字转型与包容性平衡",
+    "zh_summary": "议员质询政府如何在推动数字基础设施和技术创新（如6G、Web 4.0）的同时，保障弱势群体数字包容，防止数字鸿沟扩大。关注数字监管的及时性与适度性，尤其是加密货币和元宇宙等新兴领域的风险与机遇。政府需在经济活力与社会凝聚力之间寻求平衡，确保全民赋能与安全防护。",
+    "key_points": [
+      "数字基础设施领先布局",
+      "数字包容防止边缘化",
+      "数字监管需及时适度"
+    ],
+    "government_stance": "推动技术创新与包容发展并重",
+    "opposition_stance": null,
+    "controversy_level": 3,
+    "policy_signal": "强化数字包容与监管创新",
+    "notable_quote": "Singapore has to continually invest in next bound infrastructure and our people."
+  },
+  "budget-1851": {
+    "zh_title": "国防部医疗分类系统优化",
+    "zh_summary": "议员质询国防部关于更新医疗分类系统的进展，关注如何实现更全面的服役能力评估及岗位匹配。政府回应该系统旨在提升人力资源运用效率，结合服役者技能与职业背景。核心争议在于如何确保评估的全面性及实际部署中技能的合理匹配。",
+    "key_points": [
+      "医疗分类系统更新",
+      "服役能力全面评估",
+      "技能与岗位匹配"
+    ],
+    "government_stance": "优化国防人力资源配置，提升服役效率",
+    "opposition_stance": "关注评估全面性及技能匹配合理性",
+    "controversy_level": 3,
+    "policy_signal": "推动服役人员能力精准匹配",
+    "notable_quote": "The review will focus on the operational effectiveness of each individual instead of a binary classification."
+  },
+  "budget-1846": {
+    "zh_title": "国防预算与安全挑战",
+    "zh_summary": "议员质询国防预算，强调俄乌战争暴露小国自卫重要性及信息战威胁。辩论聚焦地缘政治紧张、技术竞争及网络信息战的安全影响。政府回应强调加强自卫能力与技术防御，核心争议在于如何平衡预算与应对新兴安全威胁。",
+    "key_points": [
+      "小国自卫重要性",
+      "信息战与假旗行动",
+      "美中技术竞争加剧"
+    ],
+    "government_stance": "加强国防与技术防御能力",
+    "opposition_stance": "预算应更审慎分配",
+    "controversy_level": 3,
+    "policy_signal": "强化国防科技与信息安全",
+    "notable_quote": "We cannot assume other countries will come to our assistance when we are at war."
+  },
+  "written-answer-9674": {
+    "zh_title": "科技助力国防应对少子化",
+    "zh_summary": "议员质询新加坡低生育率对武装部队兵力的影响，国防部长回应指出，国防部早已将人力需求纳入战略规划，通过技术提升兵力效能，如自动化雷达、无人舰艇及AI应用，持续优化人力资源，确保国防力量不因兵源减少而削弱。",
+    "key_points": [
+      "低生育率影响兵力",
+      "技术提升人力效率",
+      "持续优化作业流程"
+    ],
+    "government_stance": "通过技术创新保障国防实力",
+    "opposition_stance": "关注少子化对兵力影响",
+    "controversy_level": 2,
+    "policy_signal": "推动AI与自动化军事应用",
+    "notable_quote": "The SAF will have to incorporate advancements in robotics, data analytics and artificial intelligence (AI) to further improve its work processes and raise productivity."
+  },
+  "written-answer-9318": {
+    "zh_title": "新加坡人工智能生态建设举措",
+    "zh_summary": "议员质询新加坡通讯与资讯部关于发展人工智能生态系统及其应用的举措。政府回应介绍了国家人工智能战略及五大国家AI项目，强调通过产学研合作、资金投入及人才培养推动AI创新与应用，同时注重AI治理与国际合作。核心争议点在于如何平衡技术发展与伦理监管，确保AI安全可信。",
+    "key_points": [
+      "国家人工智能战略",
+      "五大国家AI项目",
+      "AI治理与国际合作"
+    ],
+    "government_stance": "推动AI创新应用与安全监管并重",
+    "opposition_stance": null,
+    "controversy_level": 2,
+    "policy_signal": "加强AI研发与治理框架",
+    "notable_quote": "The National Artificial Intelligence (AI) Strategy outlines our plans for Singapore to be a leader in developing and deploying scalable, impactful AI solutions."
+  },
+  "written-answer-8049": {
+    "zh_title": "学校自适应学习计划进展",
+    "zh_summary": "质询聚焦于学校自适应学习计划的最新进展、试点安排及基础设施建设。教育部长回应称该计划是国家AI战略的一部分，强调教师核心作用，计划2022年先在部分学校试点数学科目，后续将推广至更多科目和年级。系统将整合入新加坡学生学习空间，确保便捷访问和资源融合。核心争议点在于如何平衡技术与教师角色，以及试点成效如何影响推广。",
+    "key_points": [
+      "AI支持个性化学习",
+      "2022年数学试点启动",
+      "整合国家在线平台"
+    ],
+    "government_stance": "推动AI辅助教学，重视教师作用",
+    "opposition_stance": "关注试点及基础设施需求",
+    "controversy_level": 2,
+    "policy_signal": "推进AI教育系统建设",
+    "notable_quote": "The system will use machine learning to tell how each student responds to learning materials and activities, and customise learning for each student."
+  },
+  "budget-1605": {
+    "zh_title": "新加坡数字人才与性别多样性",
+    "zh_summary": "议员质询政府如何培养数字领导人才及推动女性进入科技领域，建议设立导师计划并关注性别比例失衡。政府已推出多项人才培养计划，但具体针对数字领导和女性参与的措施尚未明确。核心争议在于如何有效吸引和留住高端科技人才及缩小性别差距。",
+    "key_points": [
+      "数字人才培养",
+      "导师计划建议",
+      "女性科技参与"
+    ],
+    "government_stance": "已推多项人才计划，关注技能提升",
+    "opposition_stance": "建议设立导师计划，促进女性参与",
+    "controversy_level": 2,
+    "policy_signal": "加强数字人才培养与性别多样性",
+    "notable_quote": "We need data to innovate and we need people to get things done."
+  },
+  "oral-answer-2352": {
+    "zh_title": "TraceTogether数据使用法律保障",
+    "zh_summary": "议员质询TraceTogether数据是否会用于刑事调查及相关法律保障。政府回应称警方可依刑事程序法获取数据，且设有严格访问权限和处罚措施保护数据安全。争议焦点在于数据是否仅限于防疫用途，及使用于刑事调查是否影响公众信任和应用率。",
+    "key_points": [
+      "警方可依法获取数据",
+      "数据访问权限严格",
+      "担忧影响公众信任"
+    ],
+    "government_stance": "数据仅限授权用途，严防滥用",
+    "opposition_stance": "担忧隐私保护与信任下降",
+    "controversy_level": 4,
+    "policy_signal": "强化数据使用法律监管",
+    "notable_quote": "The Government is the custodian of the TT data submitted by individuals, and stringent measures are in place to safeguard this personal data."
+  },
+  "written-answer-6772": {
+    "zh_title": "以2020年CPF记录评估GST券资格",
+    "zh_summary": "议员质询是否可用2020年CPF缴纳记录替代2018年收入等标准，尤其关注自雇人士低收入情况。政府回应称，GST券资格以综合评估收入为准，CPF记录仅反映部分收入，且已有灵活申诉机制和疫情专项补助，确保援助精准。核心争议点在于是否应调整资格标准以反映疫情影响。",
+    "key_points": [
+      "GST券支持中低收入户",
+      "资格以综合收入评估",
+      "CPF记录覆盖有限收入"
+    ],
+    "government_stance": "坚持综合收入标准，兼顾灵活申诉",
+    "opposition_stance": "建议用2020年CPF记录评估资格",
+    "controversy_level": 3,
+    "policy_signal": "强化收入评估与灵活援助机制",
+    "notable_quote": "AI is more comprehensive, and is a better reflection of an individual's means and income, regardless of source."
+  },
+  "oral-answer-2283": {
+    "zh_title": "公共采购培训与IT漏洞应对",
+    "zh_summary": "议员质询政府公务员在采购流程培训及IT控制漏洞问题，关注是否有定期培训及系统性问题。政府回应承认审计报告指出的IT控制薄弱环节，说明政府IT系统复杂且分散，依赖人工调整权限易出错，正由智慧国与数字政府组推动自动化改进，逐步部署新工具以减少错误。",
+    "key_points": [
+      "公务员采购培训问题",
+      "IT权限管理漏洞",
+      "推动自动化改进"
+    ],
+    "government_stance": "重视审计意见，推动系统自动化",
+    "opposition_stance": "关注培训及系统性漏洞",
+    "controversy_level": 2,
+    "policy_signal": "推进政府IT系统自动化",
+    "notable_quote": "Actions have been taken at the whole-of-Government level to address the gaps identified."
+  },
+  "written-answer-5800": {
+    "zh_title": "本地AI系统监管考量",
+    "zh_summary": "议员质询政府是否考虑制定对本地部署AI系统具有约束力的法规，以确保AI的伦理和安全使用。政府回应称AI技术尚处于初期阶段，暂无立即立法计划，但已推出多项举措促进安全和伦理使用，包括模型治理框架、伦理咨询委员会及相关研究项目，并强调将持续关注全球动态，平衡监管与创新。",
+    "key_points": [
+      "暂无立即立法计划",
+      "推行模型治理框架",
+      "持续监测全球动态"
+    ],
+    "government_stance": "暂不立法，推动伦理治理",
+    "opposition_stance": "建议制定约束性法规",
+    "controversy_level": 2,
+    "policy_signal": "强化伦理治理框架",
+    "notable_quote": "As AI technology is still nascent, MCI does not have immediate plans to introduce new laws to regulate AI."
+  },
+  "budget-1313": {
+    "zh_title": "数字化与AI治理议题质询",
+    "zh_summary": "议员质询数字化转型中的数据共享、隐私保护、设计思维创新及AI伦理框架等问题，关注新加坡在数据量不足和中小企业数字化能力上的挑战。政府回应涉及数字贸易协定、数据隐私原则及推动创新的措施，强调制定AI伦理框架。核心争议点在于如何平衡数据共享与隐私保护，以及提升本地企业数字化能力。",
+    "key_points": [
+      "数字化推动经济转型",
+      "数据共享与隐私权衡",
+      "AI伦理框架建设"
+    ],
+    "government_stance": "推动数字贸易协定，制定数据隐私及AI伦理原则",
+    "opposition_stance": null,
+    "controversy_level": 3,
+    "policy_signal": "加强数字贸易与AI伦理监管",
+    "notable_quote": "Traditional factors like land, labour, capital, or ageing population are no longer hard constraints in the digital economy."
+  },
+  "budget-1306": {
+    "zh_title": "国防预算与未来威胁应对",
+    "zh_summary": "议员质询国防预算及新兴威胁应对，强调全球大国竞争及区域不稳定带来的安全挑战。政府回应指出新加坡需通过科技创新和装备升级（如F-35战机）应对人力减少和训练空间有限等问题。核心争议在于如何平衡有限资源与不断演变的安全威胁。",
+    "key_points": [
+      "全球大国竞争加剧",
+      "区域政治不稳定",
+      "科技创新应对挑战"
+    ],
+    "government_stance": "推动科技升级，保持防卫能力",
+    "opposition_stance": "关注预算效率与威胁多样性",
+    "controversy_level": 3,
+    "policy_signal": "强化科技驱动国防现代化",
+    "notable_quote": "The only way forward for SAF is to evolve, to invest in technology so that we can do more with less resources."
+  },
+  "budget-1308": {
+    "zh_title": "新加坡经济国际化与连接力",
+    "zh_summary": "议员质询政府在支持企业国际化方面的措施是否充足，特别是在新兴和边缘市场的布局与能力建设。强调疫情凸显市场多元化的重要性，关注政府如何通过经济机构和商会帮助企业应对复杂的国际环境。核心争议点在于政府支持力度及市场多元化策略的有效性。",
+    "key_points": [
+      "提升市场连接力",
+      "支持企业国际化",
+      "拓展新兴市场"
+    ],
+    "government_stance": null,
+    "opposition_stance": "质疑政府支持企业国际化力度",
+    "controversy_level": 2,
+    "policy_signal": "强化国际市场多元化",
+    "notable_quote": "We need to continually expand and upgrade our network of trade partnerships and investment agreements."
+  },
+  "oral-answer-2113": {
+    "zh_title": "政府公开投诉个人资料规范",
+    "zh_summary": "质询政府在公众投诉中披露个人资料的考虑和保障措施，政府回应称为纠正错误信息维护公众信任，披露限于必要范围且保护隐私，同时强调多渠道服务保障公众诉求。核心争议在于如何平衡信息公开与个人隐私保护。",
+    "key_points": [
+      "纠正错误信息",
+      "披露限于必要",
+      "保障公众诉求"
+    ],
+    "government_stance": "为维护公众信任，必要时披露个人资料",
+    "opposition_stance": "关注个人隐私保护与公开透明平衡",
+    "controversy_level": 3,
+    "policy_signal": "加强个人资料披露规范",
+    "notable_quote": "Government agencies sometimes need to disclose personal data in the public interest, to counter inaccuracies about the Government’s processes or policies."
+  },
+  "written-answer-5627": {
+    "zh_title": "伦理数据使用咨询会工作汇报",
+    "zh_summary": "质询关于2018年成立的伦理数据使用咨询会的工作进展。政府回应该咨询会推动了新加坡AI治理框架的制定和推广，促进组织负责任使用AI和数据，提升公众信任。核心争议点在于如何确保数据在未获知情同意情况下的商业使用符合伦理标准。",
+    "key_points": [
+      "咨询会推动AI治理",
+      "制定模型治理框架",
+      "促进公众信任AI"
+    ],
+    "government_stance": "支持伦理AI治理，推广模型框架",
+    "opposition_stance": "关注数据伦理使用进展",
+    "controversy_level": 2,
+    "policy_signal": "强化AI伦理治理框架",
+    "notable_quote": "The Advisory Council on the Ethical Use of AI and Data was formed in 2018 to provide guidance to the Government on the responsible development and deployment of AI."
+  },
+  "oral-answer-2047": {
+    "zh_title": "强化新加坡科技人才核心",
+    "zh_summary": "质询方关注在当前经济形势下，Tech@SG计划是否仍需继续以协助科技企业雇佣外籍人才。政府回应强调科技人才短缺的全球竞争，必须加快培养本地科技人才，同时通过培训和教育扩大人才池，确保新加坡在全球科技生态中保持竞争力。核心争议点在于如何平衡引进外籍人才与优先发展本地人才。",
+    "key_points": [
+      "科技人才全球短缺",
+      "加速本地人才培养",
+      "科技企业需专业人才"
+    ],
+    "government_stance": "加快培养本地科技人才，保持竞争力",
+    "opposition_stance": "质疑是否仍需依赖外籍人才",
+    "controversy_level": 3,
+    "policy_signal": "优先发展本地科技人才",
+    "notable_quote": "If Singapore sits back and does nothing, we will almost certainly be left behind."
+  },
+  "written-answer-4736": {
+    "zh_title": "公共机构数据保护免责问题",
+    "zh_summary": "议员质询公共机构是否享有《个人数据保护法》豁免权及其数据泄露责任。政府回应指出公共机构受《公共部门治理法》和《指令手册8》等法规约束，设有刑事处罚和内部纪律处分，并通过技术和管理措施防范数据泄露。核心争议在于公共机构数据保护责任的法律基础及执行力度。",
+    "key_points": [
+      "公共机构受多法规约束",
+      "刑事及纪律处分并行",
+      "技术管理措施严格"
+    ],
+    "government_stance": "公共机构严格承担数据保护责任",
+    "opposition_stance": "质询公共机构免责条款及责任",
+    "controversy_level": 3,
+    "policy_signal": "强化公共部门数据安全管理",
+    "notable_quote": "The PSGA criminalises the acts of unauthorised disclosure of data, misuse of data and the re-identification of individuals from anonymised data."
+  },
+  "oral-answer-1955": {
+    "zh_title": "个人数据保护调查职能",
+    "zh_summary": "议员质询个人数据保护委员会（PDPC）在血液捐赠者数据泄露事件中的调查职责及公共机构是否应受《个人数据保护法》（PDPA）约束。政府回应PDPC正调查涉事私营IT供应商，公共机构受其他法规监管，数据保护标准不低于PDPA。核心争议在于公共机构是否应免于PDPA监管及其问责机制。",
+    "key_points": [
+      "PDPC调查私营供应商",
+      "公共机构受别法规监管",
+      "公共机构数据保护标准高"
+    ],
+    "government_stance": "公共机构受专门法规监管，非PDPA",
+    "opposition_stance": "质疑公共机构免于PDPA合理性",
+    "controversy_level": 3,
+    "policy_signal": "强化公共机构数据保护监管",
+    "notable_quote": "Public sector agencies have to comply with the Government Instruction Manuals and the Public Sector (Governance) Act."
+  },
+  "budget-1131": {
+    "zh_title": "推动企业数字化转型",
+    "zh_summary": "议员质询新加坡企业，尤其是中小企业在数字化转型中的挑战，关注如何帮助企业克服资金、技术和人才适应等问题。政府强调数字经济对提升生产力和应对人口老龄化的重要性，支持企业创新与能力建设。核心争议点在于中小企业数字化的实际困难及政府支持的有效性。",
+    "key_points": [
+      "数字经济促进生产力",
+      "中小企业数字化难题",
+      "人口老龄化带来压力"
+    ],
+    "government_stance": "支持企业数字化转型，提供资金与技术援助",
+    "opposition_stance": null,
+    "controversy_level": 2,
+    "policy_signal": "推动中小企业数字化升级",
+    "notable_quote": "Digitalisation is transforming companies, economies and our very way of life."
+  },
+  "budget-1120": {
+    "zh_title": "国防预算与区域安全合作",
+    "zh_summary": "议员质询国防预算及安全部署，政府回应强调新加坡在国际重大活动中加强安保，部署大量军力保障安全，并推动区域反恐合作。核心争议点在于国防开支的合理性及应对新兴安全威胁的能力。",
+    "key_points": [
+      "国防预算获跨党派支持",
+      "重大国际活动强化安保",
+      "推动区域反恐信息共享"
+    ],
+    "government_stance": "支持加强国防与区域安全合作",
+    "opposition_stance": "建议适度调整国防预算",
+    "controversy_level": 2,
+    "policy_signal": "强化国防与区域反恐合作",
+    "notable_quote": "It is particularly gratifying and reassuring for our future, for Singapore's future, that despite Defence, Security, Home Affairs and Foreign Affairs accounting for one-third of our expenditure, that we have got support across the aisle."
+  },
+  "budget-1114": {
+    "zh_title": "国防预算与未来威胁应对",
+    "zh_summary": "议员质询新加坡武装部队面临的地缘政治和安全威胁，包括大国竞争、地区紧张局势及恐怖主义威胁。讨论了兵源减少和训练空间受限的挑战，强调需依赖自动化和先进装备提升防御能力。政府回应聚焦提升科技应用以应对新型威胁，核心争议在于如何平衡传统训练与未来科技投入。",
+    "key_points": [
+      "地缘政治威胁升级",
+      "兵源减少挑战",
+      "依赖自动化装备"
+    ],
+    "government_stance": "加强科技装备应对未来威胁",
+    "opposition_stance": "关注预算调整与战略适应性",
+    "controversy_level": 3,
+    "policy_signal": "推动国防自动化与智能化",
+    "notable_quote": "Our only hope appears to be that if we rely more on automation and sophisticated equipment"
+  },
+  "budget-1112": {
+    "zh_title": "公共服务数字化转型",
+    "zh_summary": "质询聚焦公共服务如何利用AI和数据分析提升效率，整合服务，满足市民需求。强调技术应以市民为中心，避免机械执法。政府需推动公共部门高科技、高触感和高适应性转型，提升生产力和服务质量。",
+    "key_points": [
+      "公共服务需数字化转型",
+      "技术应以市民需求为本",
+      "AI助力提升服务效率"
+    ],
+    "government_stance": null,
+    "opposition_stance": "推动公共服务智能化转型",
+    "controversy_level": 2,
+    "policy_signal": "推动公共部门智能化升级",
+    "notable_quote": "Technology is a potential game changer that can allow us to overcome our resource constraints and embark on a new S curve in our growth trajectory."
+  },
+  "oral-answer-1935": {
+    "zh_title": "马来西亚扣押希腊船只事件",
+    "zh_summary": "质询马来西亚政府是否在新加坡领海行使主权，以及如何保障新加坡船只不受外国管辖。外交部长回应事件发生在新加坡领海内，新加坡警方在场并记录，马来西亚未在新加坡水域扣押船只，强调不允许外国政府在新加坡水域行使权力。核心争议为外国政府是否有权在新加坡领海执法及新加坡的应对措施。",
+    "key_points": [
+      "马来西亚未在新加坡水域扣押",
+      "新加坡不容外国行使主权",
+      "船只应听从新加坡海事局"
+    ],
+    "government_stance": "坚决维护新加坡领海主权",
+    "opposition_stance": "关注外国船只管辖风险",
+    "controversy_level": 3,
+    "policy_signal": "强化领海主权执法",
+    "notable_quote": "We will not allow foreign government vessels to assert any authority in our waters."
+  },
+  "oral-answer-1900": {
+    "zh_title": "HIV数据泄露防范措施",
+    "zh_summary": "议员质询涉及1.42万名HIV患者数据泄露后的具体防范措施，包括数据访问权限、数据泄露追踪、受害者心理保护及社会歧视应对。政府需回应如何防止数据扩散、保障患者权益及维护公众对HIV检测的信任。核心争议点在于数据安全管理漏洞、信息公开透明度及社会歧视问题。",
+    "key_points": [
+      "加强数据访问控制",
+      "保护患者心理健康",
+      "防止社会歧视扩散"
+    ],
+    "government_stance": null,
+    "opposition_stance": "要求透明调查与保护措施",
+    "controversy_level": 4,
+    "policy_signal": "强化数据安全与公众教育",
+    "notable_quote": "what specific measures will be taken to reduce the spread of, and access to, the personal data and HIV status of the affected persons"
+  },
+  "oral-answer-1902": {
+    "zh_title": "公共机构数据保护豁免审议",
+    "zh_summary": "议员质询是否应修订个人数据保护法，取消公共机构豁免条款以应对数据泄露风险。政府回应公共部门已有多重法律和政策保障数据安全，强调公共部门数据管理与私营部门不同，采用不同法律体系，且将持续审视相关法规。核心争议在于公共机构数据保护是否应纳入个人数据保护法统一监管。",
+    "key_points": [
+      "公共部门数据有多重法律保护",
+      "公共部门数据管理与私营部门不同",
+      "将持续审视相关法律法规"
+    ],
+    "government_stance": "公共部门数据由多法规保障，维持现行豁免",
+    "opposition_stance": "建议取消公共机构数据保护豁免",
+    "controversy_level": 3,
+    "policy_signal": "持续强化公共部门数据治理",
+    "notable_quote": "Because of these important differences, we need and have adopted different approaches to the protection of personal data in the public and in the private sectors."
+  },
+  "budget-832": {
+    "zh_title": "新加坡数字经济与公共服务转型",
+    "zh_summary": "议员质询数字经济发展及公共部门数字化转型，政府回应介绍了数字化提升民众生活便利和企业运营效率的具体案例，强调数字经济和数字素养提升的重要性。辩论聚焦于如何通过技术创新促进经济发展和社会包容，争议较低，更多为政策宣示和成效展示。",
+    "key_points": [
+      "数字化提升生活便利",
+      "推动数字经济发展",
+      "加强数字素养培训"
+    ],
+    "government_stance": "积极推动数字经济与全民数字素养",
+    "opposition_stance": null,
+    "controversy_level": 2,
+    "policy_signal": "加快数字经济与公共服务融合",
+    "notable_quote": "Digitalisation has created many exciting opportunities and improved Singaporeans’ lives."
+  },
+  "budget-842": {
+    "zh_title": "数字经济与信息产业发展",
+    "zh_summary": "议员质询政府如何推动数字经济发展，特别关注信息通信媒体（ICM）行业的数字化转型、国际化及创新能力。政府介绍了物流、零售等行业的数字化计划及中小企业支持措施，并强调通过人工智能、金融科技等深科技领域推动ICM行业成长。核心争议在于如何更有效帮助本地企业国际化及提升竞争力。",
+    "key_points": [
+      "数字经济带来机遇",
+      "推动中小企业数字化",
+      "支持ICM行业国际化"
+    ],
+    "government_stance": "推动数字转型与国际化发展",
+    "opposition_stance": null,
+    "controversy_level": 2,
+    "policy_signal": "深化数字经济与产业升级",
+    "notable_quote": "The Ministry has launched several initiatives to help the various industries transform and thrive in the digital era."
+  },
+  "budget-847": {
+    "zh_title": "国防预算与安全挑战",
+    "zh_summary": "议员质询新加坡国防预算，强调国防自主的重要性及面临的多元安全威胁，包括恐怖主义、核武风险及网络安全。政府回应需持续投资国防力量和维护国际防务联盟，以应对复杂且不断演变的安全环境。核心争议在于如何平衡有限资源与不断增长的安全需求。",
+    "key_points": [
+      "国防自主迫切需求",
+      "多元安全威胁增加",
+      "维护国际防务联盟"
+    ],
+    "government_stance": "持续投资国防与联盟建设",
+    "opposition_stance": "支持国防预算但关注资源分配",
+    "controversy_level": 3,
+    "policy_signal": "加强国防投入与多边合作",
+    "notable_quote": "Singapore needs to be a strong and valued partner in order for other countries to want to form alliances with us."
+  },
+  "written-answer-4214": {
+    "zh_title": "新加坡创业青年趋势与成效",
+    "zh_summary": "质询新加坡年轻人创业趋势及创业公司成功率，政府回应指出本地年轻创业者比例上升，创业意愿增强，创业生态系统稳步发展，且国际排名优异。核心争议在于如何定义创业成功及与其他国家的比较。",
+    "key_points": [
+      "年轻创业者比例提升",
+      "创业生态持续成长",
+      "国际排名表现良好"
+    ],
+    "government_stance": "支持创业，营造创新环境",
+    "opposition_stance": "关注创业成功率及国际对比",
+    "controversy_level": 2,
+    "policy_signal": "推动青年创业与创新生态",
+    "notable_quote": "Singapore's startup ecosystem has seen significant progress over the past decade."
+  },
+  "oral-answer-1504": {
+    "zh_title": "人工智能法规引入讨论",
+    "zh_summary": "议员质询随着人工智能和自动机器的发展，是否会制定新法规或修订现有法律以涵盖伦理、道德、紧急停止装置及责任问题。政府回应强调将采取领域特定的监管策略，举例交通领域的自动驾驶车辆安全测试和保险要求，以及金融领域的算法监管。政府还提到将提升相关技术能力，推动智慧国建设。核心争议在于如何平衡技术发展与风险管理，确保公众利益和安全。",
+    "key_points": [
+      "领域特定监管策略",
+      "自动驾驶严格安全测试",
+      "持续提升技术能力"
+    ],
+    "government_stance": "采取领域专属监管，保障安全与责任",
+    "opposition_stance": "关注伦理、道德及责任问题",
+    "controversy_level": 2,
+    "policy_signal": "推动领域差异化AI监管",
+    "notable_quote": "The regulatory approach would thus also have to be domain-specific."
+  },
+  "written-answer-3762": {
+    "zh_title": "教师批改与行政工作时间",
+    "zh_summary": "议员质询教师在批改作业及行政工作上所花时间及减负措施，政府回应强调教师批改作业的重要性，介绍了教学指导及团队合作分担批改工作，同时采用技术自动批改选择题和数字测验，未来将继续推动技术应用与简化流程。核心争议在于如何平衡教师专业职责与减轻工作负担。",
+    "key_points": [
+      "教师批改作业重要",
+      "团队合作分担批改",
+      "技术辅助自动批改"
+    ],
+    "government_stance": "支持技术减负并保障教学质量",
+    "opposition_stance": "关注教师工作负担减轻",
+    "controversy_level": 2,
+    "policy_signal": "推动教育技术应用",
+    "notable_quote": "Teachers will deploy technology in assessment work when it is educationally purposeful to support teaching and learning."
+  },
+  "budget-929": {
+    "zh_title": "国防预算与安全挑战质询",
+    "zh_summary": "议员质询国防部当前面临的主要安全威胁，包括地区大国冲突、朝鲜核试验、恐怖主义及网络攻击。政府强调多元威胁并重视网络安全，呼吁加强防御能力。核心争议在于如何平衡传统与非传统安全威胁的资源分配及应对策略。",
+    "key_points": [
+      "地区大国安全威胁",
+      "恐怖主义持续存在",
+      "网络攻击成新挑战"
+    ],
+    "government_stance": "重视多元安全威胁，强化网络防御",
+    "opposition_stance": "预算应更审慎，关注威胁多样性",
+    "controversy_level": 3,
+    "policy_signal": "加强网络安全防御",
+    "notable_quote": "The security threats we face come from far, wide, in many forms, and MINDEF is very much in the frontline."
+  },
+  "budget-711": {
+    "zh_title": "国防预算与安全挑战",
+    "zh_summary": "议员质询新加坡国防预算，强调国家安全环境复杂多变，包括恐怖主义威胁、南海争端、朝鲜核威胁及海盗问题。政府回应强调新加坡武装力量的建设成就及应对多元安全威胁的必要性。核心争议点在于如何平衡有限资源与多重安全挑战的防御需求。",
+    "key_points": [
+      "恐怖主义持续威胁",
+      "南海局势紧张",
+      "朝鲜核威胁升级"
+    ],
+    "government_stance": "加强军力应对多重威胁",
+    "opposition_stance": "关注预算合理性与安全挑战",
+    "controversy_level": 3,
+    "policy_signal": "强化国防科技与人才培养",
+    "notable_quote": "The Singapore Armed Forces (SAF) is now one of the most respected armed forces in the region."
+  },
+  "oral-answer-1251": {
+    "zh_title": "新加坡科技新岗位质量分析",
+    "zh_summary": "议员质询新加坡科技与IT行业新增1.5万个岗位的类型、分布、层级及技能要求。政府回应称岗位涵盖多个行业，主要为专业及技术职位，技能需求多样，包括编程、网络安全和数据分析。政府强调技术岗位需求持续增长，配合智慧国战略。核心争议点在于岗位质量及技能匹配，政府承诺后续推出人力发展计划。",
+    "key_points": [
+      "岗位涵盖多行业",
+      "主要为技术与管理岗",
+      "技能需求多样化"
+    ],
+    "government_stance": "推动智慧国，强化技术人才培养",
+    "opposition_stance": null,
+    "controversy_level": 2,
+    "policy_signal": "加强信息通信人才培养",
+    "notable_quote": "Demand for technical specialists has been growing by 6.3% annually from 2011 to 2014."
+  },
+  "budget-444": {
+    "zh_title": "教育预算与就业匹配",
+    "zh_summary": "质询方关注新加坡大学毕业生就业匹配问题，借鉴韩国、中国毕业生高失业率案例，担忧新加坡青年失业风险。强调教育应注重实用技能，呼吁政府通过SkillsFuture推动终身学习，提升就业竞争力。政府回应聚焦投资公民技能，支持未来就业准备。核心争议在于教育与就业市场需求的匹配及青年失业风险防范。",
+    "key_points": [
+      "毕业生就业匹配问题",
+      "教育应注重实用技能",
+      "推动终身学习机制"
+    ],
+    "government_stance": "支持SkillsFuture促进技能提升",
+    "opposition_stance": "担忧青年失业与教育脱节",
+    "controversy_level": 3,
+    "policy_signal": "强化技能培训与终身学习",
+    "notable_quote": "Singaporeans cannot take full employment for granted."
+  },
+  "budget-437": {
+    "zh_title": "国防与国民服役回顾",
+    "zh_summary": "议员质询国防部关于SAF50纪念活动及国民服役历史，强调国民服役需认同防卫对象。政府回应介绍SAF志愿者招募情况，强调国民服役的重要性及历史教训。核心争议在于国民服役的认同感及其演变过程。",
+    "key_points": [
+      "SAF50纪念意义",
+      "国民服役历史回顾",
+      "服役认同感重要"
+    ],
+    "government_stance": "支持国民服役及志愿者计划",
+    "opposition_stance": null,
+    "controversy_level": 2,
+    "policy_signal": "强化国防认同与志愿服役",
+    "notable_quote": "The most powerful weapon that Singapore and SAF ha"
+  }
+}

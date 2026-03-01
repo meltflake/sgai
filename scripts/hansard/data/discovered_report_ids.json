@@ -1,0 +1,665 @@
+{
+  "total": 132,
+  "report_ids": [
+    {
+      "report_id": "budget-1112",
+      "discovered_via": "AI governance",
+      "title_snippet": "COMMITTEE OF SUPPLY − HEAD U (PRIME MINISTER'S OFFICE)"
+    },
+    {
+      "report_id": "budget-1114",
+      "discovered_via": "AI military defence",
+      "title_snippet": "COMMITTEE OF SUPPLY - HEAD J (MINISTRY OF DEFENCE)"
+    },
+    {
+      "report_id": "budget-1120",
+      "discovered_via": "AI military defence",
+      "title_snippet": "COMMITTEE OF SUPPLY – HEAD J (MINISTRY OF DEFENCE)"
+    },
+    {
+      "report_id": "budget-1131",
+      "discovered_via": "AI governance",
+      "title_snippet": "COMMITTEE OF SUPPLY - HEAD Q (MINISTRY OF COMMUNICATIONS AND INFORMATION)"
+    },
+    {
+      "report_id": "budget-1306",
+      "discovered_via": "AI military defence",
+      "title_snippet": "COMMITTEE OF SUPPLY – HEAD J (MINISTRY OF DEFENCE)"
+    },
+    {
+      "report_id": "budget-1308",
+      "discovered_via": "AI startups",
+      "title_snippet": "COMMITTEE OF SUPPLY – HEAD V (MINISTRY OF TRADE AND INDUSTRY)"
+    },
+    {
+      "report_id": "budget-1313",
+      "discovered_via": "digital economy AI",
+      "title_snippet": "COMMITTEE OF SUPPLY – HEAD Q (MINISTRY OF COMMUNICATIONS AND INFORMATION)"
+    },
+    {
+      "report_id": "budget-1605",
+      "discovered_via": "AI economy",
+      "title_snippet": "COMMITTEE OF SUPPLY – HEAD Q (MINISTRY OF COMMUNICATIONS AND INFORMATION)\n\nCreating a future-ready economy and workforce"
+    },
+    {
+      "report_id": "budget-1846",
+      "discovered_via": "AI military defence",
+      "title_snippet": "COMMITTEE OF SUPPLY – HEAD J (MINISTRY OF DEFENCE)\n\nSecuring our place in the world"
+    },
+    {
+      "report_id": "budget-1851",
+      "discovered_via": "AI military defence",
+      "title_snippet": "COMMITTEE OF SUPPLY – HEAD J (MINISTRY OF DEFENCE)\n\nSecuring our place in the world"
+    },
+    {
+      "report_id": "budget-1862",
+      "discovered_via": "AI governance",
+      "title_snippet": "COMMITTEE OF SUPPLY – HEAD Q (MINISTRY OF COMMUNICATIONS AND INFORMATION)\n\nBuilding a strong and vibrant economy, and future-ready workforce"
+    },
+    {
+      "report_id": "budget-2054",
+      "discovered_via": "AI military defence",
+      "title_snippet": "COMMITTEE OF SUPPLY – HEAD J (MINISTRY OF DEFENCE)\n\nA safe and secure nation in turbulent times"
+    },
+    {
+      "report_id": "budget-2072",
+      "discovered_via": "AI research",
+      "title_snippet": "COMMITTEE OF SUPPLY – HEAD Q (MINISTRY OF COMMUNICATIONS AND INFORMATION)\n\nA vibrant economy and a resilient workforce"
+    },
+    {
+      "report_id": "budget-2073",
+      "discovered_via": "AI education schools",
+      "title_snippet": "COMMITTEE OF SUPPLY – HEAD K (MINISTRY OF EDUCATION)\n\nA Vibrant Economy and a Resilient Workforce"
+    },
+    {
+      "report_id": "budget-2078",
+      "discovered_via": "AI workforce",
+      "title_snippet": "COMMITTEE OF SUPPLY – HEAD S (MINISTRY OF MANPOWER)\n\nA vibrant economy and a resilient workforce"
+    },
+    {
+      "report_id": "budget-2325",
+      "discovered_via": "national AI strategy",
+      "title_snippet": "ANNUAL BUDGET STATEMENT"
+    },
+    {
+      "report_id": "budget-2328",
+      "discovered_via": "deepfake",
+      "title_snippet": "DEBATE ON ANNUAL BUDGET STATEMENT"
+    },
+    {
+      "report_id": "budget-2336",
+      "discovered_via": "AI governance",
+      "title_snippet": "DEBATE ON ANNUAL BUDGET STATEMENT"
+    },
+    {
+      "report_id": "budget-2338",
+      "discovered_via": "AI employment jobs",
+      "title_snippet": "DEBATE ON ANNUAL BUDGET STATEMENT"
+    },
+    {
+      "report_id": "budget-2346",
+      "discovered_via": "AI military defence",
+      "title_snippet": "COMMITTEE OF SUPPLY – HEAD J (MINISTRY OF DEFENCE)\n\nA safe and resilient nation in turbulent times"
+    },
+    {
+      "report_id": "budget-2361",
+      "discovered_via": "generative AI",
+      "title_snippet": "COMMITTEE OF SUPPLY – HEAD V (MINISTRY OF TRADE AND INDUSTRY)\n\nA resilient economy with diverse pathways and opportunities for all"
+    },
+    {
+      "report_id": "budget-2362",
+      "discovered_via": "AI governance",
+      "title_snippet": "COMMITTEE OF SUPPLY – HEAD Q (MINISTRY OF COMMUNICATIONS AND INFORMATION)\n\nA resilient economy with diverse pathways and opportunities for all"
+    },
+    {
+      "report_id": "budget-2363",
+      "discovered_via": "AI education schools",
+      "title_snippet": "COMMITTEE OF SUPPLY – HEAD K (MINISTRY OF EDUCATION)\n\nA resilient economy with diverse pathways and opportunities for all"
+    },
+    {
+      "report_id": "budget-2378",
+      "discovered_via": "AI healthcare",
+      "title_snippet": "COMMITTEE OF SUPPLY – HEAD O (MINISTRY OF HEALTH)\n\nBuilding a caring and inclusive society together"
+    },
+    {
+      "report_id": "budget-2570",
+      "discovered_via": "AI financial sector",
+      "title_snippet": "DEBATE ON ANNUAL BUDGET STATEMENT"
+    },
+    {
+      "report_id": "budget-2583",
+      "discovered_via": "AI military defence",
+      "title_snippet": "COMMITTEE OF SUPPLY – HEAD J (MINISTRY OF DEFENCE)\n\nA united, safe and resilient nation in turbulent times"
+    },
+    {
+      "report_id": "budget-2585",
+      "discovered_via": "AI healthcare",
+      "title_snippet": "COMMITTEE OF SUPPLY – HEAD P (MINISTRY OF HOME AFFAIRS)\n\nA united, safe and resilient nation in turbulent times"
+    },
+    {
+      "report_id": "budget-2592",
+      "discovered_via": "AI governance",
+      "title_snippet": "COMMITTEE OF SUPPLY – HEAD P (MINISTRY OF HOME AFFAIRS)\n\nA united, safe and resilient nation in turbulent times"
+    },
+    {
+      "report_id": "budget-2593",
+      "discovered_via": "AI ethics",
+      "title_snippet": "COMMITTEE OF SUPPLY – HEAD R (MINISTRY OF LAW)\n\nA united, safe and resilient nation in turbulent times"
+    },
+    {
+      "report_id": "budget-2605",
+      "discovered_via": "AI startups",
+      "title_snippet": "COMMITTEE OF SUPPLY – HEAD V (MINISTRY OF TRADE AND INDUSTRY)\n\nAn open and resilient economy, with diverse pathways and opportunities for all"
+    },
+    {
+      "report_id": "budget-2610",
+      "discovered_via": "national AI strategy",
+      "title_snippet": "COMMITTEE OF SUPPLY – HEAD V (MINISTRY OF TRADE AND INDUSTRY)\n\nAn open and resilient economy, with diverse pathways and opportunities for all"
+    },
+    {
+      "report_id": "budget-2612",
+      "discovered_via": "AI employment jobs",
+      "title_snippet": "COMMITTEE OF SUPPLY – HEAD S (MINISTRY OF MANPOWER)\n\nAn open and resilient economy, with diverse pathways and opportunities for all"
+    },
+    {
+      "report_id": "budget-2614",
+      "discovered_via": "AI employment jobs",
+      "title_snippet": "COMMITTEE OF SUPPLY – HEAD S (MINISTRY OF MANPOWER)\n\nAn open and resilient economy, with diverse pathways and opportunities for all"
+    },
+    {
+      "report_id": "budget-2620",
+      "discovered_via": "AI governance",
+      "title_snippet": "COMMITTEE OF SUPPLY – HEAD Q (MINISTRY OF DIGITAL DEVELOPMENT AND INFORMATION)\n\nAn open and resilient economy, with diverse pathways and opportunities"
+    },
+    {
+      "report_id": "budget-2844",
+      "discovered_via": "AI regulation",
+      "title_snippet": "ANNUAL BUDGET STATEMENT\n\nSecuring Our Future Together in a Changed World"
+    },
+    {
+      "report_id": "budget-437",
+      "discovered_via": "AI military defence",
+      "title_snippet": "HEAD J – MINISTRY OF DEFENCE\n\nCommittee of Supply"
+    },
+    {
+      "report_id": "budget-444",
+      "discovered_via": "machine learning",
+      "title_snippet": "COMMITTEE OF SUPPLY – HEAD K (MINISTRY OF EDUCATION)"
+    },
+    {
+      "report_id": "budget-711",
+      "discovered_via": "AI military defence",
+      "title_snippet": "COMMITTEE OF SUPPLY - HEAD J (MINISTRY OF DEFENCE)"
+    },
+    {
+      "report_id": "budget-832",
+      "discovered_via": "AI economy",
+      "title_snippet": "COMMITTEE OF SUPPLY – HEAD Q (MINISTRY OF COMMUNICATIONS AND INFORMATION)"
+    },
+    {
+      "report_id": "budget-842",
+      "discovered_via": "AI ethics",
+      "title_snippet": "COMMITTEE OF SUPPLY – HEAD Q (MINISTRY OF COMMUNICATIONS AND INFORMATION)"
+    },
+    {
+      "report_id": "budget-847",
+      "discovered_via": "AI military defence",
+      "title_snippet": "COMMITTEE OF SUPPLY – HEAD J (MINISTRY OF DEFENCE)"
+    },
+    {
+      "report_id": "budget-929",
+      "discovered_via": "AI military defence",
+      "title_snippet": "COMMITTEE OF SUPPLY − HEAD J (MINISTRY OF DEFENCE)"
+    },
+    {
+      "report_id": "motion-2190",
+      "discovered_via": "AI healthcare",
+      "title_snippet": "SUPPORTING HEALTHCARE\n\nMotion"
+    },
+    {
+      "report_id": "motion-2194",
+      "discovered_via": "AI healthcare",
+      "title_snippet": "SUPPORTING HEALTHCARE\n\nMotion"
+    },
+    {
+      "report_id": "motion-2294",
+      "discovered_via": "AI governance",
+      "title_snippet": "BUILDING AN INCLUSIVE AND SAFE DIGITAL SOCIETY\n\nMotion"
+    },
+    {
+      "report_id": "motion-2296",
+      "discovered_via": "AI governance",
+      "title_snippet": "BUILDING AN INCLUSIVE AND SAFE DIGITAL SOCIETY\n\nMotion"
+    },
+    {
+      "report_id": "oral-answer-1251",
+      "discovered_via": "machine learning",
+      "title_snippet": "QUALITY OF UPCOMING NEW JOBS IN TECH AND IT SECTOR"
+    },
+    {
+      "report_id": "oral-answer-1504",
+      "discovered_via": "artificial intelligence",
+      "title_snippet": "INTRODUCTION OF REGULATIONS WITH ADVENT OF ARTIFICIAL INTELLIGENCE AND AUTONOMOUS MACHINES"
+    },
+    {
+      "report_id": "oral-answer-1900",
+      "discovered_via": "data sovereignty",
+      "title_snippet": "PREVENTIVE MEASURES IMPLEMENTED FOLLOWING DATA LEAK INVOLVING PERSONS WITH HIV"
+    },
+    {
+      "report_id": "oral-answer-1902",
+      "discovered_via": "data sovereignty",
+      "title_snippet": "REVIEW OF PUBLIC AGENCIES EXEMPTION PROVISIONS IN PERSONAL DATA PROTECTION ACT\n\nIn response to recent data breaches"
+    },
+    {
+      "report_id": "oral-answer-1935",
+      "discovered_via": "data sovereignty",
+      "title_snippet": "MALAYSIAN GOVERNMENT'S DETENTION OF GREEK VESSEL PIRAES AND CREW"
+    },
+    {
+      "report_id": "oral-answer-1955",
+      "discovered_via": "data sovereignty",
+      "title_snippet": "ROLE OF PERSONAL DATA PROTECTION COMMISSION IN INVESTIGATING BLOOD DONORS' DATA LEAK"
+    },
+    {
+      "report_id": "oral-answer-2047",
+      "discovered_via": "machine learning",
+      "title_snippet": "HIRING, DEVELOPING AND STRENGTHENING SINGAPOREAN CORE\n\nRole of Tech@SG for hiring of tech talent"
+    },
+    {
+      "report_id": "oral-answer-2113",
+      "discovered_via": "data sovereignty",
+      "title_snippet": "DISCLOSURE OF PERSONAL DATA WHEN GOVERNMENT ADDRESSES PUBLIC COMPLAINTS"
+    },
+    {
+      "report_id": "oral-answer-2283",
+      "discovered_via": "machine learning",
+      "title_snippet": "TRAINING FOR PUBLIC SERVICE STAFF IN PROCUREMENT AND MEASURES TO TACKLE RECURRENT IT LAPSES HIGHLIGHTED IN AUDITOR-GENERAL'S REPORTS"
+    },
+    {
+      "report_id": "oral-answer-2352",
+      "discovered_via": "data sovereignty",
+      "title_snippet": "LEGAL PROVISIONS AND SAFEGUARDS IN USING TRACETOGETHER DATA"
+    },
+    {
+      "report_id": "oral-answer-2914",
+      "discovered_via": "machine learning",
+      "title_snippet": "SUCCESSFUL IMPLEMENTATION OF AGE VERIFICATION FOR JOINING SOCIAL MEDIA PLATFORMS"
+    },
+    {
+      "report_id": "oral-answer-3032",
+      "discovered_via": "artificial intelligence",
+      "title_snippet": "STUDENTS USING ARTIFICIAL INTELLIGENCE TECHNOLOGIES FOR EXAMS AND ASSIGNMENTS"
+    },
+    {
+      "report_id": "oral-answer-3193",
+      "discovered_via": "AI governance",
+      "title_snippet": "REGULATORY FRAMEWORK FOR ARTIFICIAL INTELLIGENCE GOVERNANCE IN SINGAPORE"
+    },
+    {
+      "report_id": "oral-answer-3212",
+      "discovered_via": "data sovereignty",
+      "title_snippet": "CONCEPT OF \"INDIVISIBLE SECURITY” IN SPEECH ON RUSSIA-UKRAINE WAR AND IMPACT ON SOUTHEAST ASIA"
+    },
+    {
+      "report_id": "oral-answer-3225",
+      "discovered_via": "deepfake",
+      "title_snippet": "REPORTS OF UNAUTHORISED BANK TRANSACTION TAKING PLACE DESPITE ABSENCE OF ALERTS ON CUSTOMER'S TELEPHONE RECORDS"
+    },
+    {
+      "report_id": "oral-answer-3240",
+      "discovered_via": "artificial intelligence",
+      "title_snippet": "ENSURING DEVELOPMENT AND MAINTENANCE OF ETHICAL ARTIFICIAL INTELLIGENCE STANDARDS"
+    },
+    {
+      "report_id": "oral-answer-3295",
+      "discovered_via": "AI governance",
+      "title_snippet": "FEASIBILITY OF ESTABLISHING BODY TO REGULATE ARTIFICIAL INTELLIGENCE"
+    },
+    {
+      "report_id": "oral-answer-3375",
+      "discovered_via": "artificial intelligence",
+      "title_snippet": "DEVELOPING INDIGENOUS CAPABILITIES FOR ARTIFICIAL INTELLIGENCE SOLUTIONS"
+    },
+    {
+      "report_id": "oral-answer-3383",
+      "discovered_via": "data sovereignty",
+      "title_snippet": "DATA SECURITY INCIDENT INVOLVING PERSONAL DATA OF MEMBERS OF SHOPPING LOYALTY PROGRAMME"
+    },
+    {
+      "report_id": "oral-answer-3393",
+      "discovered_via": "AI safety",
+      "title_snippet": "MEASURES TO DEVELOP BASELINE ARTIFICIAL INTELLIGENCE LITERACY OF STUDENTS"
+    },
+    {
+      "report_id": "oral-answer-3478",
+      "discovered_via": "national AI strategy",
+      "title_snippet": "SPECIFIC TARGETS FOR SINGAPORE'S GLOBAL SHARE OF AGGREGATE COMPUTING POWER"
+    },
+    {
+      "report_id": "oral-answer-3495",
+      "discovered_via": "AI employment jobs",
+      "title_snippet": "POTENTIAL SCALE AND SCOPE OF JOB DISPLACEMENT DUE TO AI ADOPTION"
+    },
+    {
+      "report_id": "oral-answer-3518",
+      "discovered_via": "AI education schools",
+      "title_snippet": "SCHOOL EDUCATORS' AWARENESS OF ACADEMIC AND PRACTICE PATHWAYS FOR EMERGING CAREERS"
+    },
+    {
+      "report_id": "oral-answer-3551",
+      "discovered_via": "deepfake",
+      "title_snippet": "UNVEILING OF SHARED RESPONSIBILITY FRAMEWORK FOR PHISHING SCAMS"
+    },
+    {
+      "report_id": "oral-answer-3564",
+      "discovered_via": "deepfake",
+      "title_snippet": "TREND IN NUMBER OF ARTIFICIAL INTELLIGENCE VOICE-CLONING SCAMS"
+    },
+    {
+      "report_id": "oral-answer-3677",
+      "discovered_via": "AI employment jobs",
+      "title_snippet": "GENDER GAPS IN AI-ADOPTION AND INITIATIVES TO ENCOURAGE BETTER AI TECHNOLOGIES ADOPTION IN EDUCATIONAL AND WORKPLACE SETTINGS"
+    },
+    {
+      "report_id": "oral-answer-3729",
+      "discovered_via": "AI governance",
+      "title_snippet": "GUIDELINES FOR EMPLOYERS' USE OF AUTOMATED DECISION-MAKING TOOLS FOR HIRING OR PROMOTING TO PREVENT BIASES"
+    },
+    {
+      "report_id": "oral-answer-3738",
+      "discovered_via": "AI employment jobs",
+      "title_snippet": "PROGRESS OF DEVELOPING IT AND AI PROFESSIONALS THROUGH CAREER CONVERSION PROGRAMMES"
+    },
+    {
+      "report_id": "oral-answer-3785",
+      "discovered_via": "AI regulation",
+      "title_snippet": "IMPACT OF US EXPORT CONTROLS ON SINGAPORE'S SEMI-CONDUCTOR INDUSTRY AND ENSURING SINGAPORE-BASED CHIP COMPANIES ABIDE BY NEW RULES TO SAFEGUARD COUNTR"
+    },
+    {
+      "report_id": "oral-answer-3822",
+      "discovered_via": "AI public sector",
+      "title_snippet": "RESTRICTIONS FOR USE OF DEEPSEEK BY PUBLIC OFFICERS"
+    },
+    {
+      "report_id": "oral-answer-3852",
+      "discovered_via": "AI bias",
+      "title_snippet": "PROTECTION FOR CONSUMERS OF FINTECH PLATFORMS AND NON-BANK INSTITUTIONS, AND REGULATIONS ON LIQUIDITY LEVELS AND RESPONSIBLE MARKETING"
+    },
+    {
+      "report_id": "oral-answer-3873",
+      "discovered_via": "AI employment jobs",
+      "title_snippet": "REASONS FOR LOWER PROPORTION OF FRESH GRADUATES IN FULL-TIME EMPLOYMENT AND EXTENT OF HELP FROM GRADUATE INDUSTRY TRAINEESHIP PROGRAMME"
+    },
+    {
+      "report_id": "oral-answer-3923",
+      "discovered_via": "AI education schools",
+      "title_snippet": "ADDRESSING TEACHERS' STRESS LEVELS AND SUPPORTING THEIR MENTAL WELL-BEING"
+    },
+    {
+      "report_id": "oral-answer-3927",
+      "discovered_via": "AI education schools",
+      "title_snippet": "BALANCING ACADEMIC RIGOUR REQUIRED TO EXCEL AT PSLE WITH SKILLS TO THRIVE IN AI-DRIVEN ECONOMY"
+    },
+    {
+      "report_id": "oral-answer-3992",
+      "discovered_via": "AI ethics",
+      "title_snippet": "TAKE-UP RATE OF SKILLSFUTURE-SUPPORTED AI-RELATED TRAINING COURSE"
+    },
+    {
+      "report_id": "oral-answer-3994",
+      "discovered_via": "AI education schools",
+      "title_snippet": "POLICY ON OPTIMAL CLASS SIZES GIVEN INCREASINGLY COMPLEX CHALLENGES FACED BY TEACHERS"
+    },
+    {
+      "report_id": "oral-answer-4013",
+      "discovered_via": "AI startups",
+      "title_snippet": "HEADCOUNT RETENTION AND TECHNOLOGY TRANSFER FOR CITIZEN WORKFORCE OF SINGAPORE-BASED AI COMPANY RECENTLY ACQUIRED BY META"
+    },
+    {
+      "report_id": "oral-answer-4023",
+      "discovered_via": "national AI strategy",
+      "title_snippet": "PROJECTED EXPENDITURE ON GOVERNMENT'S PURSUIT OF GLOBAL LEADERSHIP IN GROWTH AREAS AND AI-EMPOWERED ECONOMY"
+    },
+    {
+      "report_id": "written-answer-12075",
+      "discovered_via": "data sovereignty",
+      "title_snippet": "IMPACT OF MALAYSIA'S INTENDED LEGAL ACTION AT ICJ ON SINGAPORE'S DEVELOPMENT PLANS IN AND AROUND PEDRA BRANCA"
+    },
+    {
+      "report_id": "written-answer-12692",
+      "discovered_via": "artificial intelligence",
+      "title_snippet": "ENSURING INTEGRITY OF ONLINE EXAMINATIONS AND ASSIGNMENTS GIVEN AVAILABILITY OF ARTIFICIAL INTELLIGENCE TECHNOLOGIES"
+    },
+    {
+      "report_id": "written-answer-12799",
+      "discovered_via": "AI education schools",
+      "title_snippet": "MANAGE USE OF ARTIFICIAL INTELLIGENCE BOTS IN SCHOOLS"
+    },
+    {
+      "report_id": "written-answer-13336",
+      "discovered_via": "AI governance",
+      "title_snippet": "CREDIBILITY AND ADOPTION OF AI-BASED DIAGNOSTIC SOLUTIONS"
+    },
+    {
+      "report_id": "written-answer-13437",
+      "discovered_via": "artificial intelligence",
+      "title_snippet": "LEVERAGING NEW ARTIFICIAL INTELLIGENCE TECHNOLOGIES IN E-GOVERNMENT SERVICES"
+    },
+    {
+      "report_id": "written-answer-13935",
+      "discovered_via": "artificial intelligence",
+      "title_snippet": "IMPACT OF ARTIFICIAL INTELLIGENCE ON TRADING PLATFORMS IN FINANCIAL MARKETS"
+    },
+    {
+      "report_id": "written-answer-14629",
+      "discovered_via": "artificial intelligence",
+      "title_snippet": "USE OF ARTIFICIAL INTELLIGENCE IN SINGAPORE POLICE FORCE'S ENFORCEMENT WORK"
+    },
+    {
+      "report_id": "written-answer-15158",
+      "discovered_via": "artificial intelligence",
+      "title_snippet": "GOVERNMENT'S APPROACH AND POLICY ON GOVERNING SAFE AND RESPONSIBLE ARTIFICIAL INTELLIGENCE DEVELOPMENT"
+    },
+    {
+      "report_id": "written-answer-15268",
+      "discovered_via": "digital economy AI",
+      "title_snippet": "PROPORTION OF STUDENTS WHO HAVE UNDERGONE CODE FOR FUN ENRICHMENT PROGRAMME"
+    },
+    {
+      "report_id": "written-answer-15269",
+      "discovered_via": "artificial intelligence",
+      "title_snippet": "NATIONAL ARTIFICIAL INTELLIGENCE STRATEGY 2.0 VS ENERGY AND ENVIRONMENTAL SUSTAINABILITY"
+    },
+    {
+      "report_id": "written-answer-15270",
+      "discovered_via": "AI employment jobs",
+      "title_snippet": "WORKERS FACING HIGHEST RISK OF DISPLACEMENT FROM ARTIFICIAL INTELLIGENCE AND RESKILLING PROGRAMMES AVAILABLE"
+    },
+    {
+      "report_id": "written-answer-15541",
+      "discovered_via": "deepfake",
+      "title_snippet": "REGULATIONS TO TACKLE DEEPFAKE SOFTWARE BEING USED IN SCAM AND FRAUD CASES"
+    },
+    {
+      "report_id": "written-answer-15542",
+      "discovered_via": "artificial intelligence",
+      "title_snippet": "MEASURES TO ENHANCE PUBLIC TECHNOLOGICAL UNDERSTANDING TO COMBAT CYBERCRIME AND DEEPFAKE CONTENT"
+    },
+    {
+      "report_id": "written-answer-16024",
+      "discovered_via": "AI governance",
+      "title_snippet": "RISKS AND BENEFITS FROM WIDESPREAD ADOPTION OF FACIAL RECOGNITION TECHNOLOGY AND OVERSIGHT MECHANISMS TO ENSURE RESPONSIBLE AND ETHICAL USE"
+    },
+    {
+      "report_id": "written-answer-16262",
+      "discovered_via": "data sovereignty",
+      "title_snippet": "PROVISION FOR DELETION OF PERSONAL DATA UPON REQUEST UNDER PERSONAL DATA PROTECTION ACT 2012 AND RECOURSE AVAILABLE TO INDIVIDUALS"
+    },
+    {
+      "report_id": "written-answer-17278",
+      "discovered_via": "AI investment",
+      "title_snippet": "STRATEGIES AND MITIGATION EFFORTS TO COUNTER DECLINE IN SINGAPORE'S APPEAL TO MNCS"
+    },
+    {
+      "report_id": "written-answer-17287",
+      "discovered_via": "deepfake",
+      "title_snippet": "TRACKING OF SCAMS PERPETUATED THROUGH DEEPFAKE VIDEO AND IMAGES"
+    },
+    {
+      "report_id": "written-answer-17376",
+      "discovered_via": "deepfake",
+      "title_snippet": "ACCURACY OF DEEPFAKE DETECTION TECHNOLOGIES AND DIFFERENTIATING BETWEEN HARMFUL DEEPFAKES AND LEGITIMATE POLITICAL SATIRE OR MEMES"
+    },
+    {
+      "report_id": "written-answer-17447",
+      "discovered_via": "AI employment jobs",
+      "title_snippet": "UPDATING INDUSTRY TRANSFORMATION MAPS TO CONSIDER AI IMPACT ON SKILLED WORK TRAINING"
+    },
+    {
+      "report_id": "written-answer-18175",
+      "discovered_via": "deepfake",
+      "title_snippet": "SOCIAL MEDIA AND ARTIFICIAL INTELLIGENCE'S ROLE IN ACCELERATING RADICALISATION OF YOUTHS AND PLANS TO ADDRESS IMPACT"
+    },
+    {
+      "report_id": "written-answer-18184",
+      "discovered_via": "machine learning",
+      "title_snippet": "ENROLMENT AND GRADUATION RATES OF FEMALE VIS-A-VIS MALE STUDENTS IN ARTIFICIAL INTELLIGENCE AND MACHINE LEARNING COURSES"
+    },
+    {
+      "report_id": "written-answer-18326",
+      "discovered_via": "national AI strategy",
+      "title_snippet": "CURRENT AND PROJECTED AI-SPECIFIC COMPUTING POWER AVAILABLE AND PLANS FOR NATIONAL CLOUD"
+    },
+    {
+      "report_id": "written-answer-18417",
+      "discovered_via": "machine learning",
+      "title_snippet": "REASONS BEHIND GOVERNMENT'S DECISION TO STOP PRACTICE OF PARTIALLY MASKING NRIC NUMBERS"
+    },
+    {
+      "report_id": "written-answer-18677",
+      "discovered_via": "artificial intelligence",
+      "title_snippet": "IMPACT OF US' AI DIFFUSION POLICY AND EXPORT CONTROLS ON SINGAPORE'S COMPETITIVENESS AND TECH BUSINESSES"
+    },
+    {
+      "report_id": "written-answer-19554",
+      "discovered_via": "artificial intelligence",
+      "title_snippet": "USE OF AI AND TECHNOLOGY TOOLS TO REDUCE ERRORS AND INCREASE EFFICIENCY IN GOVERNMENT CONTRACT EVALUATION, AWARD AND MANAGEMENT"
+    },
+    {
+      "report_id": "written-answer-19797",
+      "discovered_via": "AI employment jobs",
+      "title_snippet": "DEVELOPMENT OF FRAMEWORKS TO TRACK RECENT GRADUATES' LONG-TERM EMPLOYABILITY AND MITIGATE RISKS OF SKILLS OBSOLESCENCE"
+    },
+    {
+      "report_id": "written-answer-19800",
+      "discovered_via": "AI education schools",
+      "title_snippet": "REGULAR CURRICULUM REVIEWS AND INDUSTRY CONSULTATION TO ALIGN STUDENTS' SKILLS WITH FUTURE ECONOMY NEEDS"
+    },
+    {
+      "report_id": "written-answer-20058",
+      "discovered_via": "deepfake",
+      "title_snippet": "USE OF COPYRIGHT LAW TO STRENGTHEN PROTECTION AGAINST DEEPFAKES"
+    },
+    {
+      "report_id": "written-answer-20810",
+      "discovered_via": "AI education schools",
+      "title_snippet": "EXPANDING SKILLSFUTURE CREDIT ELIGIBILITY FOR SUBSCRIPTION TO AI PRODUCTIVITY TOOLS"
+    },
+    {
+      "report_id": "written-answer-20811",
+      "discovered_via": "AI education schools",
+      "title_snippet": "DEVELOPING AGE-PROGRESSIVE FRAMEWORK FOR RESPONSIBLE USE OF GENAI FOR STUDENTS AND PARENTS ACROSS EDUCATIONAL LEVELS"
+    },
+    {
+      "report_id": "written-answer-20819",
+      "discovered_via": "AI talent",
+      "title_snippet": "STRENGTHENING ENGINEERING TALENT PIPELINES THROUGH ALIGNING WITH EMERGING INDUSTRIES AND PUBLIC SECTOR HIRING"
+    },
+    {
+      "report_id": "written-answer-20821",
+      "discovered_via": "AI education schools",
+      "title_snippet": "ESTABLISHING COLLABORATION BETWEEN NIE AND ECDA FOR BRAIN-BASED LEARNING ACROSS LEARNING PROFILES AND INTEGRATING ADAPTIVE AI IN EDUCATION SYSTEM"
+    },
+    {
+      "report_id": "written-answer-20835",
+      "discovered_via": "generative AI",
+      "title_snippet": "UPDATE ON JOBS TRANSFORMATION MAPS AND SUPPORT AVAILABLE FOR MID-CAREER EMPLOYEES AND SECTORS UNDERGOING RESTRUCTURING"
+    },
+    {
+      "report_id": "written-answer-21161",
+      "discovered_via": "AI ethics",
+      "title_snippet": "DEPLOYMENT OF AGENTIC AI SYSTEMS IN CIVIL SERVICE AND HR POLICIES TO SUPPORT OFFICERS MADE REDUNDANT"
+    },
+    {
+      "report_id": "written-answer-21302",
+      "discovered_via": "AI employment jobs",
+      "title_snippet": "PUBLICATION OF QUARTERLY STATISTICS ON AI-RELATED RETRENCHMENT AND REDEPLOYMENT OF AFFECTED WORKERS"
+    },
+    {
+      "report_id": "written-answer-21309",
+      "discovered_via": "AI ethics",
+      "title_snippet": "UPDATE CODE OF ETHICS AND PROFESSIONAL CLIENT CARE FOR PROPERTY AGENTS TO DECLARE USE OF AI-EDITED IMAGES AND VIDEOS OF PROPERTY LISTINGS"
+    },
+    {
+      "report_id": "written-answer-21666",
+      "discovered_via": "artificial intelligence",
+      "title_snippet": "REVIEW ON LOCAL AI START-UP MANUS'S ACQUISITION BY META AND IMPLICATIONS ON SINGAPORE'S AI ECOSYSTEM"
+    },
+    {
+      "report_id": "written-answer-21904",
+      "discovered_via": "artificial intelligence",
+      "title_snippet": "ASSESSMENT OF AI TECHNOLOGY UPTAKE AMONG SINGAPOREAN SMES VERSUS MNCS, AND INDIVIDUALS"
+    },
+    {
+      "report_id": "written-answer-21915",
+      "discovered_via": "artificial intelligence",
+      "title_snippet": "STUDY ON LABOUR IMPACTED BY AI IN SMES AND PLANS TO SUPPORT WORKERS SUBSTITUTED BY AI"
+    },
+    {
+      "report_id": "written-answer-3762",
+      "discovered_via": "machine learning",
+      "title_snippet": "TIME SPENT BY TEACHERS ON MARKING ASSIGNMENTS AND ADMINISTRATIVE WORK"
+    },
+    {
+      "report_id": "written-answer-4214",
+      "discovered_via": "AI startups",
+      "title_snippet": "PROFILE AND SUCCESS RATE OF SINGAPORE STARTUPS"
+    },
+    {
+      "report_id": "written-answer-4736",
+      "discovered_via": "data sovereignty",
+      "title_snippet": "PUBLIC AGENCIES’ EXEMPTION FROM PERSONAL DATA PROTECTION ACT"
+    },
+    {
+      "report_id": "written-answer-5627",
+      "discovered_via": "AI governance",
+      "title_snippet": "UPDATE ON WORK OF ADVISORY COUNCIL SET UP IN 2019 TO PROMOTE ETHICAL COLLECTION AND USE OF DATA OBTAINED FROM PERSONS WITHOUT THEIR KNOWLEDGE OR CONSE"
+    },
+    {
+      "report_id": "written-answer-5800",
+      "discovered_via": "AI governance",
+      "title_snippet": "CONSIDERATION TO FORMULATE REGULATIONS BINDING ON ARTIFICIAL INTELLIGENCE SYSTEMS DEPLOYED LOCALLY"
+    },
+    {
+      "report_id": "written-answer-6772",
+      "discovered_via": "AI ethics",
+      "title_snippet": "USE OF CPF CONTRIBUTION HISTORY IN 2020 AS ALTERNATIVE CRITERIA TO DETERMINE ELIGIBILITY FOR GST VOUCHERS"
+    },
+    {
+      "report_id": "written-answer-8049",
+      "discovered_via": "AI education schools",
+      "title_snippet": "UPDATE ON PROGRESS OF ADAPTIVE LEARNING INITIATIVE IN SCHOOLS"
+    },
+    {
+      "report_id": "written-answer-9318",
+      "discovered_via": "artificial intelligence",
+      "title_snippet": "INITIATIVES TO DEVELOP ARTIFICIAL INTELLIGENCE ECOSYSTEM AND ITS DEPLOYMENT IN SINGAPORE"
+    },
+    {
+      "report_id": "written-answer-9674",
+      "discovered_via": "AI military defence",
+      "title_snippet": "ENSURING FORMIDABLE AND MISSION-READY SINGAPORE ARMED FORCES USING TECHNOLOGICAL ADVANCEMENT"
+    }
+  ]
+}
