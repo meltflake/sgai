@@ -9,6 +9,7 @@ export const headerData = {
         { text: '政策文件', href: getPermalink('/policies') },
         { text: '发展时间线', href: getPermalink('/timeline') },
         { text: '生态地图', href: getPermalink('/ecosystem') },
+        { text: '🏛️ 国会 AI 焦点', href: getPermalink('/debates') },
       ],
     },
     {
@@ -41,6 +42,7 @@ export const footerData = {
         { text: '政策文件', href: getPermalink('/policies') },
         { text: '发展时间线', href: getPermalink('/timeline') },
         { text: '生态地图', href: getPermalink('/ecosystem') },
+        { text: '国会 AI 焦点', href: getPermalink('/debates') },
       ],
     },
     {
