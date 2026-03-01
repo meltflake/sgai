@@ -413,7 +413,7 @@ const debatesJson = JSON.stringify(debates.map(d => ({
             <option value="Oral Answers to Questions">口头答复</option>
             <option value="Written Answers to Questions">书面答复</option>
             <option value="Budget">预算辩论</option>
-            <option value="Motion">动议</option>
+            <option value="Motions">动议</option>
           </select>
           <select id="topic-filter" class="border border-gray-200 dark:border-slate-600 rounded-lg px-3 py-2 text-sm bg-white dark:bg-slate-700 text-gray-800 dark:text-gray-200">
             <option value="">所有议题</option>
@@ -631,7 +631,7 @@ function renderDebates(filtered) {
     ).join('<span class="text-gray-300 mx-1">·</span>');
 
     return `
-      <div class="bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-gray-100 dark:border-slate-700 overflow-hidden">
+      <div data-debate-card class="bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-gray-100 dark:border-slate-700 overflow-hidden">
         <div class="p-5">
           <!-- Header row -->
           <div class="flex flex-wrap items-start gap-2 mb-3">
@@ -688,8 +688,10 @@ function renderDebates(filtered) {
 }
 
 function toggleFullText(btn) {
-  const card = btn.closest('.bg-white, .dark\\:bg-slate-800');
+  const card = btn.closest('[data-debate-card]');
+  if (!card) return;
   const ft = card.querySelector('.full-text');
+  if (!ft) return;
   if (ft.classList.contains('hidden')) {
     ft.classList.remove('hidden');
     btn.textContent = '收起原文 ▲';
@@ -698,6 +700,7 @@ function toggleFullText(btn) {
     btn.textContent = '展开原文 ▼';
   }
 }
+window.toggleFullText = toggleFullText;
 
 function applyFilters() {
   const search = document.getElementById('search-input')?.value.toLowerCase() || '';
