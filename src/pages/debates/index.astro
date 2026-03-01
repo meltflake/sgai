@@ -74,6 +74,12 @@ const topicZh: Record<string, string> = {
 
 const maxCount = Math.max(...Object.values(DEBATE_STATS.byYear));
 
+// Compute real debate counts per controversy topic (build-time)
+const controversyDebateCounts = RECURRING_CONTROVERSIES.map(c => {
+  const relTopics = (c as any).relatedTopics as string[] || [];
+  return debates.filter(d => relTopics.some(t => d.topics.includes(t))).length;
+});
+
 const debatesJson = JSON.stringify(debates.map(d => ({
   id: d.id,
   title: d.title,
@@ -202,7 +208,7 @@ const debatesJson = JSON.stringify(debates.map(d => ({
       <div class="grid md:grid-cols-2 gap-4">
         {RECURRING_CONTROVERSIES.map(c => (
           <button
-            onclick={`filterBy('keyword','${c.issue.replace(/'/g, "\\'")}')`}
+            onclick={`filterBy('topics','${((c as any).relatedTopics as string[]).join(',')}')`}
             class="text-left bg-white dark:bg-slate-800 rounded-xl p-5 shadow-sm border border-gray-100 dark:border-slate-700 hover:border-orange-400 hover:shadow-md transition-all group"
           >
             <div class="flex items-start justify-between mb-3">
@@ -211,7 +217,7 @@ const debatesJson = JSON.stringify(debates.map(d => ({
                 <p class="text-sm text-gray-500 mt-1">{c.description}</p>
               </div>
               <div class="flex flex-col items-end gap-1 ml-3 shrink-0">
-                <span class="text-xs bg-gray-100 dark:bg-slate-700 text-gray-600 dark:text-gray-400 px-2 py-1 rounded-full">出现 {c.frequency} 次</span>
+                <span class="text-xs bg-gray-100 dark:bg-slate-700 text-gray-600 dark:text-gray-400 px-2 py-1 rounded-full">相关 {controversyDebateCounts[RECURRING_CONTROVERSIES.indexOf(c)]} 条</span>
                 <span class={`text-xs px-2 py-1 rounded-full ${statusColors[c.resolutionStatus] || 'bg-gray-100 text-gray-600'}`}>
                   {statusLabels[c.resolutionStatus] || c.resolutionStatus}
                 </span>
@@ -227,7 +233,7 @@ const debatesJson = JSON.stringify(debates.map(d => ({
                 <div class="text-xs text-gray-700 dark:text-gray-300">{c.oppositionPosition}</div>
               </div>
             </div>
-            <div class="mt-3 text-xs text-orange-500 opacity-0 group-hover:opacity-100 transition-opacity">点击查看相关辩论 →</div>
+            <div class="mt-3 text-xs text-orange-500 opacity-0 group-hover:opacity-100 transition-opacity">点击查看 {controversyDebateCounts[RECURRING_CONTROVERSIES.indexOf(c)]} 条相关辩论 →</div>
           </button>
         ))}
       </div>
@@ -456,15 +462,23 @@ let activeFilters = {
   search: '',
   type: '',
   topic: '',
+  topicsOr: [],   // array of topics for OR matching (from controversy clicks)
   year: '',
   controversy: '',
   speaker: '',
+  _yearRange: null,
 };
 
 // ── Public API called by onclick handlers ──────────────────────────────────
 window.filterBy = function(dimension, value) {
-  // Reset all filters first, then apply the chosen one
-  activeFilters = { search: '', type: '', topic: '', year: '', controversy: '', speaker: '' };
+  // Reset all filters AND DOM controls first, then apply the chosen one
+  activeFilters = { search: '', type: '', topic: '', topicsOr: [], year: '', controversy: '', speaker: '', _yearRange: null };
+  setInputValue('search-input', '');
+  setSelectValue('type-filter', '');
+  setSelectValue('topic-filter', '');
+  setSelectValue('year-filter', '');
+  setSelectValue('controversy-filter', '');
+  setInputValue('speaker-filter', '');
 
   if (dimension === 'type') {
     activeFilters.type = value;
@@ -478,6 +492,15 @@ window.filterBy = function(dimension, value) {
   } else if (dimension === 'speaker') {
     activeFilters.speaker = value;
     setInputValue('speaker-filter', value);
+  } else if (dimension === 'topics') {
+    // Multi-topic OR filter (from controversy clicks)
+    activeFilters.topicsOr = value.split(',').map(t => t.trim()).filter(Boolean);
+    // Also update the topic dropdown if only one topic
+    if (activeFilters.topicsOr.length === 1) {
+      setSelectValue('topic-filter', activeFilters.topicsOr[0]);
+      activeFilters.topic = activeFilters.topicsOr[0];
+      activeFilters.topicsOr = [];
+    }
   } else if (dimension === 'keyword') {
     // Keyword search: put into search box
     activeFilters.search = value;
@@ -496,7 +519,7 @@ window.filterBy = function(dimension, value) {
 };
 
 window.clearFilters = function() {
-  activeFilters = { search: '', type: '', topic: '', year: '', controversy: '', speaker: '' };
+  activeFilters = { search: '', type: '', topic: '', topicsOr: [], year: '', controversy: '', speaker: '', _yearRange: null };
   setInputValue('search-input', '');
   setSelectValue('type-filter', '');
   setSelectValue('topic-filter', '');
@@ -536,6 +559,7 @@ function updateActiveFilterBar(filtered) {
   if (activeFilters.speaker) parts.push(`议员：${activeFilters.speaker}`);
   if (activeFilters.controversy) parts.push(`争议度筛选`);
   if (activeFilters._yearRange) parts.push(`时期：${activeFilters._yearRange[0]}–${activeFilters._yearRange[1]}`);
+  if (activeFilters.topicsOr && activeFilters.topicsOr.length > 0) parts.push(`议题：${activeFilters.topicsOr.map(t => topicZh[t] || t).join(' / ')}`);
 
   if (parts.length > 0) {
     label.textContent = parts.join('  ·  ') + `  （共 ${filtered.length} 条）`;
@@ -686,10 +710,15 @@ function applyFilters() {
   // Sync activeFilters from inputs
   activeFilters.search = search;
   activeFilters.type = type;
-  activeFilters.topic = topic;
   activeFilters.year = year;
   activeFilters.controversy = controversy;
   activeFilters.speaker = speaker;
+  // Only update topic from DOM if it changed (don't clear topicsOr when DOM is empty)
+  if (topic !== activeFilters.topic) {
+    activeFilters.topic = topic;
+    // If user manually picks a topic from dropdown, clear topicsOr
+    activeFilters.topicsOr = [];
+  }
 
   let filtered = debates;
 
@@ -705,6 +734,10 @@ function applyFilters() {
 
   if (type) filtered = filtered.filter(d => d.type === type);
   if (topic) filtered = filtered.filter(d => (d.topics || []).includes(topic));
+  // Multi-topic OR filter (from controversy clicks)
+  if (activeFilters.topicsOr && activeFilters.topicsOr.length > 0) {
+    filtered = filtered.filter(d => activeFilters.topicsOr.some(t => (d.topics || []).includes(t)));
+  }
   if (year) filtered = filtered.filter(d => d.date.startsWith(year));
   if (speaker) filtered = filtered.filter(d => (d.speakers || []).some(s => s.toLowerCase().includes(speaker)));
 
@@ -737,11 +770,17 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  ['type-filter', 'topic-filter', 'year-filter', 'controversy-filter'].forEach(id => {
+  ['type-filter', 'year-filter', 'controversy-filter'].forEach(id => {
     document.getElementById(id)?.addEventListener('change', () => {
       activeFilters._yearRange = null;
       applyFilters();
     });
+  });
+  // topic-filter change: clear topicsOr first
+  document.getElementById('topic-filter')?.addEventListener('change', () => {
+    activeFilters._yearRange = null;
+    activeFilters.topicsOr = [];  // clear multi-topic OR when user picks from dropdown
+    applyFilters();
   });
 });
 </script>
