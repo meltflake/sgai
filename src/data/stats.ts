@@ -8,7 +8,7 @@ export const stats = [
 export const features = [
   {
     title: '📋 AI 政策库',
-    description: '19 份核心政策文档，含中英标题、来源机构、摘要与原文链接。从 Smart Nation 到 Agentic AI 治理框架。',
+    description: '20 份核心政策文档，含中英标题、来源机构、摘要与原文链接。从 Smart Nation 到 Agentic AI 治理框架。',
     icon: 'tabler:file-text',
   },
   {
