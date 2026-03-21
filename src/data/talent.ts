@@ -73,7 +73,12 @@ export const programmes: TalentProgramme[] = [
       { label: '课程类型', value: '在线自学' },
       { label: '补贴', value: 'SkillsFuture 可报销' },
     ],
-    highlights: ['从入门到进阶全覆盖', 'AI for Everyone / AI for Industry 系列', 'SkillsFuture Credit 可报销', '灵活在线学习'],
+    highlights: [
+      '从入门到进阶全覆盖',
+      'AI for Everyone / AI for Industry 系列',
+      'SkillsFuture Credit 可报销',
+      '灵活在线学习',
+    ],
     url: 'https://learn.aisingapore.org/',
   },
   {

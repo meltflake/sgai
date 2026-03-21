@@ -9,23 +9,41 @@ import { sections } from '~/data/references';
     <Headline title="📚 参考资料库" subtitle="新加坡 AI 政策相关的官方文件、研究报告、新闻报道和分析文章。" />
 
     <div class="space-y-8">
-      {sections.map((section) => (
-        <div>
-          <h2 class="text-xl font-bold mb-3">{section.icon} {section.title}</h2>
-          <ul class="space-y-2">
-            {section.links.map((link) => (
-              <li class="flex items-start gap-2">
-                <span class="text-blue-500 mt-1">•</span>
-                <div>
-                  <a href={link.url} target="_blank" rel="noopener" class="text-blue-600 dark:text-blue-400 hover:underline">{link.text}</a>
-                  {link.translation && <a href={link.translation} class="text-sm text-green-600 dark:text-green-400 hover:underline ml-2">[中文翻译]</a>}
-                  {link.note && <span class="text-sm text-muted ml-2">— {link.note}</span>}
-                </div>
-              </li>
-            ))}
-          </ul>
-        </div>
-      ))}
+      {
+        sections.map((section) => (
+          <div>
+            <h2 class="text-xl font-bold mb-3">
+              {section.icon} {section.title}
+            </h2>
+            <ul class="space-y-2">
+              {section.links.map((link) => (
+                <li class="flex items-start gap-2">
+                  <span class="text-blue-500 mt-1">•</span>
+                  <div>
+                    <a
+                      href={link.url}
+                      target="_blank"
+                      rel="noopener"
+                      class="text-blue-600 dark:text-blue-400 hover:underline"
+                    >
+                      {link.text}
+                    </a>
+                    {link.translation && (
+                      <a
+                        href={link.translation}
+                        class="text-sm text-green-600 dark:text-green-400 hover:underline ml-2"
+                      >
+                        [中文翻译]
+                      </a>
+                    )}
+                    {link.note && <span class="text-sm text-muted ml-2">— {link.note}</span>}
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
     </div>
 
     <p class="mt-8 text-sm text-muted">共 30+ 条参考资料，持续更新中。欢迎提交新资源。</p>

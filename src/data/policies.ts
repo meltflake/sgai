@@ -28,7 +28,8 @@ export const categories: PolicyCategory[] = [
         date: '2026-01',
         source: '数字发展与信息部 (MDDI)',
         sourceOrgUrl: 'https://www.mddi.gov.sg/',
-        sourceUrl: 'https://www.mddi.gov.sg/newsroom/singapore-invests-over-s-1-billion-in-national-ai-research-and-development-plan-to-strengthen-ai-research-capabilities-and-our-position-as-global-ai-hub/',
+        sourceUrl:
+          'https://www.mddi.gov.sg/newsroom/singapore-invests-over-s-1-billion-in-national-ai-research-and-development-plan-to-strengthen-ai-research-capabilities-and-our-position-as-global-ai-hub/',
         summary: '10 亿新元（7.79 亿美元）公共 AI 研究投资，聚焦负责任和资源高效的 AI。',
         content: `2026 年 1 月 24 日，数字发展与信息部宣布 2026-2030 年间投资超 10 亿新元（约 7.79 亿美元）用于公共 AI 研究。三大方向：一是"负责任和资源高效的 AI"研究，延续 AI Verify 等可信赖 AI 路线；二是全链条 AI 人才培养，从高中预科到大学教师培训；三是支持产业应用，缩短研究到商业化路径。这是继 2024 年 5 亿新元高性能计算资源投资后的又一重大投入，标志着新加坡从"试点探索"进入"规模化建设"阶段。人均 AI 投资达 139 美元，远高于美国（33 美元）和中国（7 美元）。`,
       },
@@ -74,7 +75,8 @@ export const categories: PolicyCategory[] = [
         source: '总理办公室 (PMO)',
         sourceOrgUrl: 'https://www.pmo.gov.sg/',
         sourceUrl: 'https://www.smartnation.gov.sg/about/our-vision/smart-nation-vision/',
-        pdfUrl: 'https://www.pmo.gov.sg/Newsroom/transcript-prime-minister-lee-hsien-loongs-speech-smart-nation-launch-24-november',
+        pdfUrl:
+          'https://www.pmo.gov.sg/Newsroom/transcript-prime-minister-lee-hsien-loongs-speech-smart-nation-launch-24-november',
         translatedPdfUrl: '/aisg/pdfs/smart-nation-initiative-zh.pdf',
         summary: '新加坡数字化转型总体框架，为后续 AI 战略奠定基础。',
         content: `2014 年，新加坡总理李显龙宣布 Smart Nation Initiative，这是全面数字化转型的总体战略框架。核心目标包括利用数字技术改善市民生活、创造更多经济机会、建设更紧密联系的社区。虽非专门的 AI 政策，但为后续 AI 战略提供了制度基础和政策框架。`,
@@ -91,7 +93,8 @@ export const categories: PolicyCategory[] = [
         date: '2026-01',
         source: '资讯通信媒体发展局 (IMDA)',
         sourceOrgUrl: 'https://www.imda.gov.sg/',
-        sourceUrl: 'https://www.imda.gov.sg/resources/press-releases-factsheets-and-speeches/press-releases/2026/new-model-ai-governance-framework-for-agentic-ai',
+        sourceUrl:
+          'https://www.imda.gov.sg/resources/press-releases-factsheets-and-speeches/press-releases/2026/new-model-ai-governance-framework-for-agentic-ai',
         translatedPdfUrl: '/aisg/pdfs/agentic-ai-governance-zh.pdf',
         summary: '针对自主 AI Agent 的治理框架，应对 AI 自主决策带来的新挑战。',
         content: `随着 Agentic AI（自主 AI 代理）快速发展，IMDA 于 2026 年 1 月发布专门的治理框架。聚焦 AI Agent 的自主决策边界、人类监督机制、责任归属、安全防护等核心议题。`,
@@ -102,7 +105,8 @@ export const categories: PolicyCategory[] = [
         date: '2024-01',
         source: '资讯通信媒体发展局 (IMDA)',
         sourceOrgUrl: 'https://www.imda.gov.sg/',
-        sourceUrl: 'https://www.imda.gov.sg/resources/press-releases-factsheets-and-speeches/factsheets/2024/gen-ai-and-digital-foss-ai-governance-playbook',
+        sourceUrl:
+          'https://www.imda.gov.sg/resources/press-releases-factsheets-and-speeches/factsheets/2024/gen-ai-and-digital-foss-ai-governance-playbook',
         translatedPdfUrl: '/aisg/pdfs/genai-governance-zh.pdf',
         summary: '专门针对生成式 AI 的治理框架提案，应对大模型带来的新挑战。',
         content: `全球较早的专门针对生成式 AI 的治理框架提案。九大维度：问责制、数据治理、可信开发与部署、事件报告、测试与保证、安全、内容来源、使用者素养、辅助措施。采用多利益相关方方法，强调"沙盒式"治理。`,
@@ -125,7 +129,8 @@ export const categories: PolicyCategory[] = [
         source: '资讯通信媒体发展局 (IMDA)',
         sourceOrgUrl: 'https://www.imda.gov.sg/',
         sourceUrl: 'https://www.pdpc.gov.sg/help-and-resources/2020/01/model-ai-governance-framework',
-        pdfUrl: 'https://www.pdpc.gov.sg/-/media/files/pdpc/pdf-files/resource-for-organisation/ai/sgmodelaigovframework2.pdf',
+        pdfUrl:
+          'https://www.pdpc.gov.sg/-/media/files/pdpc/pdf-files/resource-for-organisation/ai/sgmodelaigovframework2.pdf',
         translatedPdfUrl: '/aisg/pdfs/ai-governance-model-zh.pdf',
         summary: '亚洲首个 AI 治理框架，提出可解释、透明、以人为本的 AI 治理原则。',
         content: `2019 年在达沃斯发布，亚洲首个 AI 治理框架。四大核心原则：内部治理结构与措施、决策中的人类参与、运营管理、利益相关方互动与沟通。被 OECD 引用为最佳实践。`,
@@ -153,7 +158,8 @@ export const categories: PolicyCategory[] = [
         date: '2024-10',
         source: '网络安全局 (CSA)',
         sourceOrgUrl: 'https://www.csa.gov.sg/',
-        sourceUrl: 'https://www.csa.gov.sg/resources/publications/guidelines-and-companion-guide-on-securing-ai-systems/',
+        sourceUrl:
+          'https://www.csa.gov.sg/resources/publications/guidelines-and-companion-guide-on-securing-ai-systems/',
         translatedPdfUrl: '/aisg/pdfs/csa-ai-security-zh.pdf',
         summary: 'AI 系统全生命周期安全最佳实践指南。',
         content: `CSA 于 2024 年 10 月发布 AI 系统安全指南及配套实践手册，填补了 AI 安全领域的治理空白。指南覆盖 AI 系统全生命周期：规划与设计阶段的威胁建模、开发阶段的数据与模型安全、部署阶段的安全测试、运维阶段的监控与事件响应。重点关注对抗性攻击防御、数据投毒防范、模型窃取防护、供应链安全等 AI 特有风险。`,
@@ -165,7 +171,8 @@ export const categories: PolicyCategory[] = [
         source: '新加坡最高法院 (Supreme Court)',
         sourceOrgUrl: 'https://www.judiciary.gov.sg/',
         sourceUrl: 'https://www.judiciary.gov.sg/news-and-resources/news',
-        pdfUrl: 'https://www.judiciary.gov.sg/docs/default-source/news-and-resources-docs/guide-on-the-use-of-generative-ai-tools-by-court-users.pdf',
+        pdfUrl:
+          'https://www.judiciary.gov.sg/docs/default-source/news-and-resources-docs/guide-on-the-use-of-generative-ai-tools-by-court-users.pdf',
         translatedPdfUrl: '/aisg/pdfs/court-genai-guide-zh.pdf',
         summary: '法律诉讼中使用生成式 AI 工具的原则和指引。',
         content: `新加坡最高法院于 2024 年发布生成式 AI 使用指南（Registrar's Circular No. 1 of 2024），适用于所有法院体系。核心原则：律师和当事人对提交法院的所有内容负最终责任，无论是否使用 AI 生成；使用 GenAI 辅助准备的法律文件须披露 AI 使用情况；引用的案例和法律条文须经人工核实。体现了司法系统对 AI 工具的务实态度——不禁止使用，但强调人类责任不可转移。`,
@@ -204,7 +211,8 @@ export const categories: PolicyCategory[] = [
         date: '2026-02',
         source: '财政部 (MOF)',
         sourceOrgUrl: 'https://www.mof.gov.sg/',
-        sourceUrl: 'https://www.singaporebudget.gov.sg/budget-speech/budget-statement/c-harness-ai-as-a-strategic-advantage',
+        sourceUrl:
+          'https://www.singaporebudget.gov.sg/budget-speech/budget-statement/c-harness-ai-as-a-strategic-advantage',
         translatedPdfUrl: '/aisg/pdfs/budget-2026-zh.pdf',
         summary: '成立国家 AI 委员会、AI 税收减免、one-north AI 园区、AI Mission 计划。',
         content: `2026 年预算案将 AI 推进提升到前所未有的高度。核心举措：成立由总理亲自主持的 National AI Council；Enterprise Innovation Scheme 的 400% 税务扣除扩展至 AI 相关支出；启动 one-north AI 园区建设；推出 AI Mission 计划聚焦关键领域应用；设立 National AI Literacy Programme 提升全民 AI 素养。这是新加坡 AI 政策从战略到全面执行的标志性预算。`,
@@ -215,7 +223,8 @@ export const categories: PolicyCategory[] = [
         date: '2026-03',
         source: '卫生部 (MOH)',
         sourceOrgUrl: 'https://www.moh.gov.sg/',
-        sourceUrl: 'https://www.straitstimes.com/singapore/politics/ai-genetic-screening-and-flexible-financing-to-bolster-preventive-medicine-for-super-aged-spore-ong',
+        sourceUrl:
+          'https://www.straitstimes.com/singapore/politics/ai-genetic-screening-and-flexible-financing-to-bolster-preventive-medicine-for-super-aged-spore-ong',
         summary: 'ACE-AI 预测工具部署、BRCA1/2 基因检测补贴、MediShield Life 覆盖预防性手术、MediSave 限额提升。',
         content: `2026 年 3 月卫生部供给委员会辩论，卫生部长王乙康宣布新加坡正式成为超老龄社会（65 岁以上人口超 21%）。核心措施：一、ACE-AI 预测工具（由国家医疗科技局 Synapxe 开发），预测 3 年内糖尿病及高脂血症风险，>75% 风险者由 3 年一检提升至每年检查，2027 年初推广至所有约 1,100 家 Healthier SG 诊所，坚持"AI 增强而非 AI 决定"原则，临床医生保持在决策回路中；二、BRCA1/2 基因检测从 2026 年 12 月起获最高 70% 补贴，每年 2,000+ 人符合条件；三、MediShield Life 扩展覆盖预防性乳房切除术（Q3 2026）及风险降低型输卵管卵巢切除术（Q4 2026）；四、MediSave 慢性病与预防护理限额从 500/700 提至 700/1000（2027 年 1 月起），惠及 91 万+ 患者。`,
       },
@@ -253,7 +262,8 @@ export const categories: PolicyCategory[] = [
         date: '2024-05',
         source: '外交部 (MFA)',
         sourceOrgUrl: 'https://www.mfa.gov.sg/',
-        sourceUrl: 'https://www.mfa.gov.sg/Newsroom/Press-Statements-Transcripts-and-Photos/2024/05/Artificial-Intelligence-Seoul-Summit',
+        sourceUrl:
+          'https://www.mfa.gov.sg/Newsroom/Press-Statements-Transcripts-and-Photos/2024/05/Artificial-Intelligence-Seoul-Summit',
         translatedPdfUrl: '/aisg/pdfs/seoul-ai-summit-zh.pdf',
         summary: '参与 Seoul AI Safety Summit，进一步推进 AI 安全治理承诺。',
         content: `2024 年 5 月，新加坡参加在韩国首尔举行的第二届 AI 安全峰会，签署 Seoul AI Safety Commitment。在 Bletchley Declaration 基础上进一步深化承诺：推动前沿 AI 安全评估标准的制定、支持 AI 安全研究所之间的国际协作、促进 AI 安全测试方法论的共享。新加坡连续参与两届峰会，持续巩固其在全球 AI 治理中的积极参与者角色。`,
@@ -264,7 +274,8 @@ export const categories: PolicyCategory[] = [
         date: '2023-11',
         source: '外交部 (MFA)',
         sourceOrgUrl: 'https://www.mfa.gov.sg/',
-        sourceUrl: 'https://www.mfa.gov.sg/Newsroom/Press-Statements-Transcripts-and-Photos/2023/11/20231102---PM-AI-Summit',
+        sourceUrl:
+          'https://www.mfa.gov.sg/Newsroom/Press-Statements-Transcripts-and-Photos/2023/11/20231102---PM-AI-Summit',
         pdfUrl: 'https://www.gov.uk/government/publications/ai-safety-summit-2023-the-bletchley-declaration',
         translatedPdfUrl: '/aisg/pdfs/bletchley-park-zh.pdf',
         summary: '签署 Bletchley Declaration，承诺 AI 安全国际合作。',

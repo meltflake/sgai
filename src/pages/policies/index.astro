@@ -8,36 +8,76 @@ import { categories } from '~/data/policies';
   <section class="px-4 py-16 sm:px-6 mx-auto lg:px-8 max-w-6xl">
     <Headline title="📋 AI 政策库" subtitle="新加坡核心 AI 相关政策文档汇编，按分类整理，每类按时间倒序排列。" />
 
-    {categories.map((cat) => (
-      <div class="mb-12">
-        <h2 class="text-2xl font-bold mb-6 border-b-2 border-blue-600 dark:border-blue-400 pb-2">
-          {cat.icon} {cat.name}
-          <span class="text-sm font-normal text-muted ml-2">({cat.policies.length} 份)</span>
-        </h2>
-        <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {cat.policies.map((policy) => (
-            <div class="bg-white dark:bg-slate-900 rounded-lg shadow-md p-6 border border-slate-200 dark:border-slate-700 hover:shadow-lg transition-shadow">
-              <h3 class="text-lg font-bold mb-1">{policy.title}</h3>
-              <p class="text-sm text-muted mb-2">{policy.titleEn}</p>
-              <div class="flex gap-2 mb-3 flex-wrap">
-                {policy.sourceOrgUrl ? (
-                  <a href={policy.sourceOrgUrl} target="_blank" rel="noopener" class="text-xs bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 px-2 py-1 rounded hover:underline">{policy.source}</a>
-                ) : (
-                  <span class="text-xs bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 px-2 py-1 rounded">{policy.source}</span>
-                )}
-                <span class="text-xs bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 px-2 py-1 rounded">{policy.date}</span>
+    {
+      categories.map((cat) => (
+        <div class="mb-12">
+          <h2 class="text-2xl font-bold mb-6 border-b-2 border-blue-600 dark:border-blue-400 pb-2">
+            {cat.icon} {cat.name}
+            <span class="text-sm font-normal text-muted ml-2">({cat.policies.length} 份)</span>
+          </h2>
+          <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {cat.policies.map((policy) => (
+              <div class="bg-white dark:bg-slate-900 rounded-lg shadow-md p-6 border border-slate-200 dark:border-slate-700 hover:shadow-lg transition-shadow">
+                <h3 class="text-lg font-bold mb-1">{policy.title}</h3>
+                <p class="text-sm text-muted mb-2">{policy.titleEn}</p>
+                <div class="flex gap-2 mb-3 flex-wrap">
+                  {policy.sourceOrgUrl ? (
+                    <a
+                      href={policy.sourceOrgUrl}
+                      target="_blank"
+                      rel="noopener"
+                      class="text-xs bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 px-2 py-1 rounded hover:underline"
+                    >
+                      {policy.source}
+                    </a>
+                  ) : (
+                    <span class="text-xs bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 px-2 py-1 rounded">
+                      {policy.source}
+                    </span>
+                  )}
+                  <span class="text-xs bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 px-2 py-1 rounded">
+                    {policy.date}
+                  </span>
+                </div>
+                <p class="text-sm font-medium mb-2">{policy.summary}</p>
+                <p class="text-sm text-muted mb-3">{policy.content}</p>
+                <div class="flex gap-2 flex-wrap">
+                  {policy.sourceUrl && (
+                    <a
+                      href={policy.sourceUrl}
+                      target="_blank"
+                      rel="noopener"
+                      class="text-sm text-blue-600 dark:text-blue-400 hover:underline"
+                    >
+                      🔗 来源
+                    </a>
+                  )}
+                  {policy.pdfUrl && (
+                    <a
+                      href={policy.pdfUrl}
+                      target="_blank"
+                      rel="noopener"
+                      class="text-sm text-blue-600 dark:text-blue-400 hover:underline"
+                    >
+                      📄 原文
+                    </a>
+                  )}
+                  {policy.translatedPdfUrl && (
+                    <a
+                      href={policy.translatedPdfUrl}
+                      target="_blank"
+                      rel="noopener"
+                      class="text-sm text-green-600 dark:text-green-400 hover:underline"
+                    >
+                      🈶 中文翻译
+                    </a>
+                  )}
+                </div>
               </div>
-              <p class="text-sm font-medium mb-2">{policy.summary}</p>
-              <p class="text-sm text-muted mb-3">{policy.content}</p>
-              <div class="flex gap-2 flex-wrap">
-                {policy.sourceUrl && <a href={policy.sourceUrl} target="_blank" rel="noopener" class="text-sm text-blue-600 dark:text-blue-400 hover:underline">🔗 来源</a>}
-                {policy.pdfUrl && <a href={policy.pdfUrl} target="_blank" rel="noopener" class="text-sm text-blue-600 dark:text-blue-400 hover:underline">📄 原文</a>}
-                {policy.translatedPdfUrl && <a href={policy.translatedPdfUrl} target="_blank" rel="noopener" class="text-sm text-green-600 dark:text-green-400 hover:underline">🈶 中文翻译</a>}
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      </div>
-    ))}
+      ))
+    }
   </section>
 </Layout>

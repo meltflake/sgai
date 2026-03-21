@@ -6,33 +6,45 @@ import { ecosystemCategories } from '~/data/ecosystem';
 
 <Layout metadata={{ title: '生态地图' }}>
   <section class="px-4 py-16 sm:px-6 mx-auto lg:px-8 max-w-6xl">
-    <Headline title="🗺️ 新加坡 AI 生态地图" subtitle="AI Singapore 七大支柱与关键参与者，呈现新加坡 AI 生态系统全貌。" />
+    <Headline
+      title="🗺️ 新加坡 AI 生态地图"
+      subtitle="AI Singapore 七大支柱与关键参与者，呈现新加坡 AI 生态系统全貌。"
+    />
 
     <div class="space-y-12">
-      {ecosystemCategories.map((cat) => (
-        <div>
-          <div class="mb-4">
-            <h2 class="text-2xl font-bold border-b-2 border-blue-600 dark:border-blue-400 pb-2">
-              {cat.icon} {cat.name}
-            </h2>
-            <p class="text-sm text-muted mt-2">{cat.description}</p>
+      {
+        ecosystemCategories.map((cat) => (
+          <div>
+            <div class="mb-4">
+              <h2 class="text-2xl font-bold border-b-2 border-blue-600 dark:border-blue-400 pb-2">
+                {cat.icon} {cat.name}
+              </h2>
+              <p class="text-sm text-muted mt-2">{cat.description}</p>
+            </div>
+            <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+              {cat.entities.map((entity) => (
+                <div class="bg-white dark:bg-slate-900 rounded-lg shadow-md p-5 border border-slate-200 dark:border-slate-700 hover:shadow-lg transition-shadow">
+                  <h3 class="text-base font-bold mb-1">
+                    {entity.url ? (
+                      <a
+                        href={entity.url}
+                        target="_blank"
+                        rel="noopener"
+                        class="text-blue-600 dark:text-blue-400 hover:underline"
+                      >
+                        {entity.name} ↗
+                      </a>
+                    ) : (
+                      entity.name
+                    )}
+                  </h3>
+                  <p class="text-sm text-muted">{entity.description}</p>
+                </div>
+              ))}
+            </div>
           </div>
-          <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-            {cat.entities.map((entity) => (
-              <div class="bg-white dark:bg-slate-900 rounded-lg shadow-md p-5 border border-slate-200 dark:border-slate-700 hover:shadow-lg transition-shadow">
-                <h3 class="text-base font-bold mb-1">
-                  {entity.url ? (
-                    <a href={entity.url} target="_blank" rel="noopener" class="text-blue-600 dark:text-blue-400 hover:underline">{entity.name} ↗</a>
-                  ) : (
-                    entity.name
-                  )}
-                </h3>
-                <p class="text-sm text-muted">{entity.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      ))}
+        ))
+      }
     </div>
 
     <p class="mt-12 text-sm text-muted text-center">数据来源：AI Singapore 官网及公开信息。生态持续演进，欢迎补充。</p>
