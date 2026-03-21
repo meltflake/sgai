@@ -63,7 +63,7 @@ export const debates: Debate[] = [
 3.30 pm
 The Prime Minister and Minister for Finance (Mr Lawrence Wong)
 : Mr Speaker, I move, "That Parliament approves the financial policy of the Government for the Financial Year 1 April 2026 to 31 March 2027."
-This is our first Budget in this new term of Government. It comes as we enter a post-SG60 phase in our nation building journey.
+This is our first Budget in this new term of Government. It comes as we enter a post-SG60 phase in our nation building journey.
 We begin this next phase at a time of profound global change. For nearly eight decades, the world benefited from an international order that supported stability and economic cooperat`,
     sourceUrl: "https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=budget-2844",
   },
@@ -85,7 +85,7 @@ We begin this next phase at a time of profound global change. For nearly eight d
     notableQuote: "We have robust data protection framework to facilitate the secure processing of data.",
     summary: `11
 Mr Gerald Giam Yean Song
-asked the Minister for Digital Development and Information (a) what is the projected expenditure on the Government’s strategies for global leadership in growth areas and an AI-empowered economy; (b) whether the Government will fund ambitious exploratory projects with breakout growth potential through a Government-owned AI corporation; and (c) whether the Government considers such entities more effective than foreign entities at pursuing projects where data sovereignty and public interest are paramount.
+asked the Minister for Digital Development and Information (a) what is the projected expenditure on the Government’s strategies for global leadership in growth areas and an AI-empowered economy; (b) whether the Government will fund ambitious exploratory projects with breakout growth potential through a Government-owned AI corporation; and (c) whether the Government considers such entities more effective than foreign entities at pursuing projects where data sovereignty and public interest are paramount.
 The Senior Minister of State for Digital Development and Informa`,
     sourceUrl: "https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=oral-answer-4023",
   },
@@ -132,7 +132,7 @@ The Senior Minister of State for Manpower (Dr Koh Poh Koon) (for the Minister fo
 Mr Chua Kheng Wee Louis
 asked the Minister for Digital Development and Information whether the Government has conducted studies on the adoption and active usage of artificial intelligence software by (i) companies with a breakdown between small and medium enterprises versus multinational corporations and (ii) individuals in Singapore.
 Mrs Josephine Teo
-: The Government tracks artificial intelligence (AI) adoption as part of broader efforts to develop the digital economy. Since 2023, the Infocomm Media Development Authority has been publishing the annual Singapore Digital Economy Report, whi`,
+: The Government tracks artificial intelligence (AI) adoption as part of broader efforts to develop the digital economy. Since 2023, the Infocomm Media Development Authority has been publishing the annual Singapore Digital Economy Report, whi`,
     sourceUrl: "https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=written-answer-21904",
   },
   {
@@ -155,7 +155,7 @@ Mrs Josephine Teo
 Mr Shawn Loh
 asked the Minister for Manpower with SMEs employing 70% of the workforce (a) whether the Government can consider conducting a study to better estimate for whom artificial intelligence (AI) is complementary and for whom AI is a substitute for their labour; and (b) whether there are differences between SMEs and MNCs so that the Government can have more targeted plans for those substituted.
 Dr Tan See Leng
-: The Government is studying the impact of the rapid evolution of artificial intelligence (AI) on Singapore's labour market, including how AI may substitute or complement differ`,
+: The Government is studying the impact of the rapid evolution of artificial intelligence (AI) on Singapore's labour market, including how AI may substitute or complement differ`,
     sourceUrl: "https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=written-answer-21915",
   },
   {
@@ -224,7 +224,7 @@ The Minister for Education (Mr Desmond Lee)
 Mr Low Wu Yang Andre
 asked the Deputy Prime Minister and Minister for Trade and Industry (a) whether the Competition and Consumer Commission of Singapore is reviewing Meta's acquisition of local AI start-up Manus; (b) how the Ministry assesses the impact of such acquisitions on the competitiveness of Singapore's domestic AI innovation ecosystem; and (c) whether the current merger notification framework remains adequate.
 Mr Gan Kim Yong
-: Singapore adopts a voluntary merger notification regime to balance between effective regulatory oversight while keeping compliance costs low and not stiflin`,
+: Singapore adopts a voluntary merger notification regime to balance between effective regulatory oversight while keeping compliance costs low and not stiflin`,
     sourceUrl: "https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=written-answer-21666",
   },
   {
@@ -247,7 +247,7 @@ Mr Gan Kim Yong
 Mr Patrick Tay Teck Guan
 asked the Minister for Manpower (a) whether the Ministry will publish quarterly statistics on (i) retrenchments citing AI being one of the reasons for redundancy (ii) the redeployment rates of such affected workers and (iii) the average time for these affected workers to re-enter employment; and (b) if not, why not.
 Dr Tan See Leng
-: The Ministry of Manpower (MOM) surveys businesses on the reasons for carrying out retrenchments, with business restructuring being one of the categories. The proportion of retrenchments due to business restructuring has generally ranged`,
+: The Ministry of Manpower (MOM) surveys businesses on the reasons for carrying out retrenchments, with business restructuring being one of the categories. The proportion of retrenchments due to business restructuring has generally ranged`,
     sourceUrl: "https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=written-answer-21302",
   },
   {
@@ -270,7 +270,7 @@ Dr Tan See Leng
 Mr Melvin Yong Yik Chye
 asked the Minister for National Development whether the Council for Estate Agencies has any plans to update the Code of Ethics and Professional Client Care to specifically require property agents to declare images and videos portrayed on property listings that have been edited by artificial intelligence.
 Mr Chee Hong Tat
-: The Council for Estate Agencies (CEA) Code of Ethics and Professional Client Care requires property agents to ensure that all materials that advertise or promote a property accurately describe the property. In line with this, agents should provide`,
+: The Council for Estate Agencies (CEA) Code of Ethics and Professional Client Care requires property agents to ensure that all materials that advertise or promote a property accurately describe the property. In line with this, agents should provide`,
     sourceUrl: "https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=written-answer-21309",
   },
   {
@@ -340,7 +340,7 @@ asked the Minister for Education given the OECD Teaching and Learning Internatio
     notableQuote: "PSLE does not emphasise rote learning or test-taking skills.",
     summary: `9
 Mr Dennis Tan Lip Fong
-asked the Minister for Education whether the Ministry considers that the academic rigour required to excel in the PSLE, such as rote memorisation and test-taking abilities (i) reflects the skills our youths need to thrive in the AI-driven economy, (ii) nurtures a lifelong love of learning and (iii) compares favourably with inquiry-based and collaborative learning approaches more common in other internationally recognised primary school curricula.
+asked the Minister for Education whether the Ministry considers that the academic rigour required to excel in the PSLE, such as rote memorisation and test-taking abilities (i) reflects the skills our youths need to thrive in the AI-driven economy, (ii) nurtures a lifelong love of learning and (iii) compares favourably with inquiry-based and collaborative learning approaches more common in other internationally recognised primary school curricula.
 The Senior Minister of State for Education (Dr Janil Puthucheary) (for the Minister for Education)
 : Mr Speaker, the Primary`,
     sourceUrl: "https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=oral-answer-3927",
@@ -365,7 +365,7 @@ The Senior Minister of State for Education (Dr Janil Puthucheary) (for the Minis
 Mr David Hoe
 asked the Minister for Education (a) whether the Ministry will consider developing and publishing an age-progressive framework for the responsible use of generative AI across primary, secondary and post-secondary education levels; and (b) whether guidance could also be developed and published for parents to support younger students' learning and use of AI at home.
 Mr Desmond Lee
-: The question on guidance to schools and institutes of higher learning on the use of artificial intelligence (AI) has been addressed in written answer to Question Nos 41 and 42, taken on 24 September 2`,
+: The question on guidance to schools and institutes of higher learning on the use of artificial intelligence (AI) has been addressed in written answer to Question Nos 41 and 42, taken on 24 September 2`,
     sourceUrl: "https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=written-answer-20811",
   },
   {
@@ -388,7 +388,7 @@ Mr Desmond Lee
 Mr Kenneth Tiong Boon Kiat
 asked the Minister for Education (a) whether the Ministry will expand SkillsFuture Credit eligibility to include subscriptions for curated, high-quality AI productivity tools to facilitate hands-on learning; and (b) if not, why not.
 Mr Desmond Lee
-: Today, individuals can use their SkillsFuture Credit to sign up for artificial intelligence (AI)-related courses. Where relevant to the training, these courses may provide access to suitable AI tools, including premium versions. This approach helps learners to acquire relevant AI skills by applying practical tools to r`,
+: Today, individuals can use their SkillsFuture Credit to sign up for artificial intelligence (AI)-related courses. Where relevant to the training, these courses may provide access to suitable AI tools, including premium versions. This approach helps learners to acquire relevant AI skills by applying practical tools to r`,
     sourceUrl: "https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=written-answer-20810",
   },
   {
@@ -411,7 +411,7 @@ Mr Desmond Lee
 Mr Jackson Lam
 asked the Minister for Education (a) whether the Ministry has studied why students are turning away from traditional engineering disciplines despite national infrastructure needs; (b) how curricula and pay expectations can be better aligned with emerging industries; and (c) whether public sector hiring and scholarships will be recalibrated to strengthen local engineering talent pipelines.
 Mr Desmond Lee
-: The Ministry of Education (MOE) works closely with economic agencies to ensure that the supply of places in the Institutes of Higher Learning (IHLs), including in engineerin`,
+: The Ministry of Education (MOE) works closely with economic agencies to ensure that the supply of places in the Institutes of Higher Learning (IHLs), including in engineerin`,
     sourceUrl: "https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=written-answer-20819",
   },
   {
@@ -434,7 +434,7 @@ Mr Desmond Lee
 Mr Victor Lye
 asked the Minister for Education (a) whether the Ministry will advise the National Institute of Education to collaborate with the Early Childhood Development Agency to study how students learn best across diverse learning profiles; and (b) if not, whether the Ministry will consider establishing an interdisciplinary taskforce comprising educators, neuroscientists, psychologists, and technologists to chart a roadmap for integrating brain-based learning and adaptive AI across the education system.
 Mr Desmond Lee
-: There are ongoing education research collaborations involving enti`,
+: There are ongoing education research collaborations involving enti`,
     sourceUrl: "https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=written-answer-20821",
   },
   {
@@ -457,7 +457,7 @@ Mr Desmond Lee
 Dr Charlene Chen
 asked the Minister for Manpower (a) whether the Ministry can provide an update on the Jobs Transformation Maps; (b) how these initiatives support mid-career employees adapting to industry shifts; and (c) what assistance is provided to help sectors that are undergoing restructuring to equip affected workers for new or redesigned roles.
 Dr Tan See Leng
-: To date, 19 Jobs Transformation Maps (JTMs) have been launched, covering about 1.7 million employed residents.
+: To date, 19 Jobs Transformation Maps (JTMs) have been launched, covering about 1.7 million employed residents.
 To support mid-career employees in adapting to industry shifts, Workforce Singapore (WSG) uses the insights from J`,
     sourceUrl: "https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=written-answer-20835",
   },
@@ -481,7 +481,7 @@ To support mid-career employees in adapting to industry shifts, Workforce Singap
 Mr Patrick Tay Teck Guan
 asked the Minister for Law whether Singapore is studying Denmark’s decision to use copyright law to strengthen protection against deepfakes, by providing individuals with a legal basis to demand illegal digital imitations be removed from tech platforms.
 Mr Edwin Tong Chun Fai
-: Countries around the world have different approaches to dealing with the issue of deepfakes. Singapore similarly takes the issue seriously.
+: Countries around the world have different approaches to dealing with the issue of deepfakes. Singapore similarly takes the issue seriously.
 The Government recognises that deepfake technology can be misused to harass or cause other online harm to individuals. In this regard, the Ministry of La`,
     sourceUrl: "https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=written-answer-20058",
   },
@@ -529,7 +529,7 @@ asked the Minister for Manpower (a) whether the GRaduate Industry Traineeships (
 Mr Low Wu Yang Andre
 asked the Minister for Education in view of the rapid advancements of AI (a) what frameworks are being developed with our Institutes of Higher Learning to (i) guide the review of curricula and (ii) track and mitigate the risk of skills obsolescence for recent graduates; and (b) what new metrics will be used to measure the long-term employability of recent graduates in an AI-driven economy.
 Mr Desmond Lee
-: The Government closely monitors the employment outcomes of fresh graduates and workers through (a) the Ministry of Education's (MOE's) Graduate Employment Survey (GES`,
+: The Government closely monitors the employment outcomes of fresh graduates and workers through (a) the Ministry of Education's (MOE's) Graduate Employment Survey (GES`,
     sourceUrl: "https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=written-answer-19797",
   },
   {
@@ -552,7 +552,7 @@ Mr Desmond Lee
 Dr Charlene Chen
 asked the Minister for Education (a) how does the Ministry ensure school curricula are regularly updated to equip students with skills relevant to the future economy, particularly in growth areas like digitalisation, sustainability, healthcare, and allied healthcare; (b) how frequently are such reviews conducted in consultation with industry; and (c) how is alignment ensured between education pathways and sectors with strong and emerging manpower demand.
 Mr Desmond Lee
-: The Ministry of Education and our Institutes of Higher Learning (IHLs) regularly review the curriculum i`,
+: The Ministry of Education and our Institutes of Higher Learning (IHLs) regularly review the curriculum i`,
     sourceUrl: "https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=written-answer-19800",
   },
   {
@@ -597,7 +597,7 @@ Yes, the Government has been actively exploring the use of technology, including
     notableQuote: "The recent incident involving a surge in withdrawals from an investment platform illustrate that the safeguards worked as intended.",
     summary: `7
 Mr Mark Lee
-asked the Prime Minister and Minister for Finance (a) how does MAS ensure that financial technology platforms and non-bank financial institutions offering high-yield investment products maintain sufficient liquidity and manage fund withdrawal risks; (b) whether MAS is considering additional safeguards to enhance consumer protection for retail investors engaging with such platforms, given recent liquidity challenges faced by fintech firms; and (c) what measures are in place to ensure that the public fully understands the risks of using financial services from non-bank entities, pa`,
+asked the Prime Minister and Minister for Finance (a) how does MAS ensure that financial technology platforms and non-bank financial institutions offering high-yield investment products maintain sufficient liquidity and manage fund withdrawal risks; (b) whether MAS is considering additional safeguards to enhance consumer protection for retail investors engaging with such platforms, given recent liquidity challenges faced by fintech firms; and (c) what measures are in place to ensure that the public fully understands the risks of using financial services from non-bank entities, pa`,
     sourceUrl: "https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=oral-answer-3852",
   },
   {
@@ -617,11 +617,11 @@ asked the Prime Minister and Minister for Finance (a) how does MAS ensure that 
     policySignal: "强化数字基础设施安全",
     notableQuote: "A small failure in our digital infrastructure can cause major disruptions to our economic activities and daily lives.",
     summary: `The Chairman
-: Head Q, Ministry of Digital Development and Information. Ms Tin Pei Ling.
+: Head Q, Ministry of Digital Development and Information. Ms Tin Pei Ling.
 12.26 pm
 Sustainable and Safe Digital Growth
 Ms Tin Pei Ling (MacPherson)
-: Chairman, I move, "That the total sum to be allocated for Head Q of the Estimates be reduced by $100."
+: Chairman, I move, "That the total sum to be allocated for Head Q of the Estimates be reduced by $100."
 Digitalisation is our present reality and an inevitable future. This transformation is not just about technological upgrades, but fundamentally reshaping our society, economy and way of life. It presents vast economic opportunities, promising a better quality of life for future generations.
 Singapore has always been unafraid of tr`,
     sourceUrl: "https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=budget-2620",
@@ -647,7 +647,7 @@ Singapore has always been unafraid of tr`,
 5.23 pm
 Manpower Policies
 Mr Desmond Choo (Tampines)
-: Mr Chairman, I move, "That the total sum to be allocated for Head S of the Estimates be reduced by $100."
+: Mr Chairman, I move, "That the total sum to be allocated for Head S of the Estimates be reduced by $100."
 Over the current term of Government, the Ministry of Manpower (MOM) has undertaken bold reforms to steer our workforce from crisis to recovery, from downturn to growth.
 We introduced the Complementarity Assessment (COMPASS) framework to ensure foreign talent complements and never displaces our Singaporean core. We legislated the world's first Platform Workers Act to prot`,
     sourceUrl: "https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=budget-2612",
@@ -668,15 +668,15 @@ We introduced the Complementarity Assessment (COMPASS) framework to ensure forei
     controversyLevel: 3,
     policySignal: "强化经济韧性与开放合作",
     notableQuote: "Our economic success did not happen by chance. It was the result of a combination of factors.",
-    summary: `[(proc text) Head V (cont) – (proc text)]
+    summary: `[(proc text) Head V (cont) – (proc text)]
 [(proc text) Resumption of Debate on Question [5 March 2025], (proc text)]
-[(proc text) "That the total sum to be allocated for Head V of the Estimates be reduced by $100." – [Mr Liang Eng Hwa]. (proc text)]
+[(proc text) "That the total sum to be allocated for Head V of the Estimates be reduced by $100." – [Mr Liang Eng Hwa]. (proc text)]
 [(proc text) Question again proposed. (proc text)]
 12.17 pm
 The Chairman
 : Deputy Prime Minister and Minister for Trade and Industry Gan Kim Yong.
 The Minister for Trade and Industry (Mr Gan Kim Yong)
-: Chairman, let me first thank Members for their very constructive comments and suggestions. The year 2024 has been a relatively good year. The gross`,
+: Chairman, let me first thank Members for their very constructive comments and suggestions. The year 2024 has been a relatively good year. The gross`,
     sourceUrl: "https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=budget-2610",
   },
   {
@@ -698,7 +698,7 @@ The Minister for Trade and Industry (Mr Gan Kim Yong)
     summary: `[(proc text) Debate resumed. (proc text)]
 6.36 pm
 The Minister for Manpower (Dr Tan See Leng)
-: Mr Chairman, I thank the Government Parliamentary Committee (GPC) Members of Parliament and Members who have spoken for our workers as well as our employers. It has been five years since the COVID-19 pandemic. Fortunately, we managed to recover fairly quickly.
+: Mr Chairman, I thank the Government Parliamentary Committee (GPC) Members of Parliament and Members who have spoken for our workers as well as our employers. It has been five years since the COVID-19 pandemic. Fortunately, we managed to recover fairly quickly.
 During COVID-19, resident unemployment peaked at 4.8%. MOM's priority then was to protect livelihoods. Through the SGUnited Jobs and Skills Package, we assisted more than 200,000 jobseekers. Now, resident unemployment is at 2.8%, amongst the l`,
     sourceUrl: "https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=budget-2614",
   },
@@ -723,7 +723,7 @@ During COVID-19, resident unemployment peaked at 4.8%. MOM's priority then was t
 5.37 pm
 Growing Our Economy and Trade
 Mr Liang Eng Hwa (Bukit Panjang)
-: Mr Chairman, I seek to move, "That the total sum to be allocated for Head V of the Estimates be reduced by $100".
+: Mr Chairman, I seek to move, "That the total sum to be allocated for Head V of the Estimates be reduced by $100".
 Sir, the Singapore economy surprised on the upsize with a higher-than-expected growth of 4.4% in 2024; significantly above the guided range of 1% to 3% that we came to expect. This is good news for Singapore as it meant more economic activities, better jobs opportunities, more tax revenues to strengthen our fiscal position and better stan`,
     sourceUrl: "https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=budget-2605",
   },
@@ -748,7 +748,7 @@ Sir, the Singapore economy surprised on the upsize with a higher-than-expected g
 1.00 pm
 Singapore as an International Dispute Hub
 Mr Zhulkarnain Abdul Rahim (Chua Chu Kang)
-: Chairman, I move, "That the total sum to be allocated for Head R of the Estimates be reduced by $100."
+: Chairman, I move, "That the total sum to be allocated for Head R of the Estimates be reduced by $100."
 Chairman, I am a disputes lawyer in an international arbitration practice. Singapore has firmly established itself as a leading international dispute resolution hub, attracting parties from all over the world seeking a neutral, efficient and trusted venue for resolving their disputes. Our strategic location, strong rule of law and w`,
     sourceUrl: "https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=budget-2593",
   },
@@ -774,7 +774,7 @@ Chairman, I am a disputes lawyer in an international arbitration practice. Singa
 [(proc text) Question again proposed. (proc text)]
 11.31 am
 The Chairman
-: Minister Josephine Teo.
+: Minister Josephine Teo.
 The Second Minister for Home Affairs (Mrs Josephine Teo)
 : Mr Chairman, I thank Members for their support of the Ministry of Home Affairs (MHA). My colleagues and I will address the points that they raised. Minister of State Sun Xueling will`,
     sourceUrl: "https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=budget-2592",
@@ -800,8 +800,8 @@ The Second Minister for Home Affairs (Mrs Josephine Teo)
 6.54 pm
 Trust, Racial and Religious Harmony
 Mr Zhulkarnain Abdul Rahim (Chua Chu Kang)
-: Chairman, I move, "That the total sum to be allocated for Head P of the Estimates be reduced by $100".
-In today’s world, where divisions and distrust are rising, preserving trust and safeguarding racial and religious harmony are more important than ever. Many societies, including ours, are facing challenges such as misinformation, external influences and global conflicts that can strain social cohesion. In such times, it is not ju`,
+: Chairman, I move, "That the total sum to be allocated for Head P of the Estimates be reduced by $100".
+In today’s world, where divisions and distrust are rising, preserving trust and safeguarding racial and religious harmony are more important than ever. Many societies, including ours, are facing challenges such as misinformation, external influences and global conflicts that can strain social cohesion. In such times, it is not ju`,
     sourceUrl: "https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=budget-2585",
   },
   {
@@ -825,7 +825,7 @@ In today’s world, where divisions and distrust are rising, preserving trust an
 12.03 pm
 Security Situation
 Mr Vikram Nair (Sembawang)
-: Chairman, I seek to move, "That the sum to be allocated for Head J of the Estimates be reduced by $100".
+: Chairman, I seek to move, "That the sum to be allocated for Head J of the Estimates be reduced by $100".
 Sir, 10 years ago, at the Shangri-La Dialogue 2015, also the year Singapore celebrated 50 years of Independence, Minister for Defence Dr Ng Eng Hen gave a speech titled "New Century – New Players, New Rules?". Within which, Dr Ng described the changing international order in the decades post-World War II, and how the United States (US) and the leading western powers reconstructed, rebuilt and redefined t`,
     sourceUrl: "https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=budget-2583",
   },
@@ -847,9 +847,9 @@ Sir, 10 years ago, at the Shangri-La Dialogue 2015, also the year Singapore cele
     notableQuote: "The Government has policies, frameworks and processes to guide the use of technology in the public sector.",
     summary: `4
 Mr Gerald Giam Yean Song
-asked  the Minister for Digital Development and Information (a) whether the Government is considering restrictions on the use of DeepSeek by public officers, similar to bans imposed by some other countries on its use on Government devices; (b) if not, what factors justify a different approach in Singapore; and (c) how does the Government determine which AI models are deemed secure enough for public sector use.
-The Senior Minister of State for Digital Development and Information (Dr Janil Puthucheary) (for Minister for Digital Development and Information)
-: Sir, the G`,
+asked  the Minister for Digital Development and Information (a) whether the Government is considering restrictions on the use of DeepSeek by public officers, similar to bans imposed by some other countries on its use on Government devices; (b) if not, what factors justify a different approach in Singapore; and (c) how does the Government determine which AI models are deemed secure enough for public sector use.
+The Senior Minister of State for Digital Development and Information (Dr Janil Puthucheary) (for Minister for Digital Development and Information)
+: Sir, the G`,
     sourceUrl: "https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=oral-answer-3822",
   },
   {
@@ -875,7 +875,7 @@ Mr Speaker
 : Deputy Prime Minister Heng Swee Keat.
 11.35 am
 The Deputy Prime Minister (Mr Heng Swee Keat)
-: Mr Speaker, Sir, I rise in support of the Budget. Budget 2025 is a Budget for all Singaporeans. It provides immediate support for families`,
+: Mr Speaker, Sir, I rise in support of the Budget. Budget 2025 is a Budget for all Singaporeans. It provides immediate support for families`,
     sourceUrl: "https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=budget-2570",
   },
   {
@@ -899,7 +899,7 @@ Mr Yip Hon Weng
 asked the Deputy Prime Minister and Minister for Trade and Industry (a) how does the Ministry ensure that the ease of doing business in Singapore is not exploited by companies seeking to bypass US trade restrictions; and (b) whether the Ministry can provide an update on its assessment of the effects of the US chips export control rules on our semi-conductor industry and the broader economy.
 4
 Ms Joan Pereira
-asked the Deputy Prime Minister and Minister for Trade and Industry whether there are measures in place to ensure that entities operating in Singapore are compliant with`,
+asked the Deputy Prime Minister and Minister for Trade and Industry whether there are measures in place to ensure that entities operating in Singapore are compliant with`,
     sourceUrl: "https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=oral-answer-3785",
   },
   {
@@ -922,7 +922,7 @@ asked the Deputy Prime Minister and Minister for Trade and Industry whether the
 Mr Chua Kheng Wee Louis
 asked the Deputy Prime Minister and Minister for Trade and Industry in view of the new artificial intelligence diffusion policy and export controls by the United States introduced in January 2025, where Singapore is not listed as among the 18 countries granted exceptions, what is the Government's assessment of (i) the ability of Singapore-based entities to import high-end chips and technologies from the United States and (ii) Singapore's artificial intelligence competitiveness.
 Mr Gan Kim Yong
-: The new artificial intelligence (AI) diffusion rule has not been finalise`,
+: The new artificial intelligence (AI) diffusion rule has not been finalise`,
     sourceUrl: "https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=written-answer-18677",
   },
   {
@@ -945,7 +945,7 @@ Mr Gan Kim Yong
 Dr Tan Wu Meng
 asked the Minister for Digital Development and Information (a) what is the rationale for the Government's intention to stop the practice of partially masking NRIC numbers and why at the present time; and (b) whether the era of artificial intelligence and machine learning has accelerated the likelihood of organisations reverse engineering significant portions of the NRIC database through scraping and collating existing personal data collections, including lucky draw registrants and customer lists from the pre-PDPA era.
 Mrs Josephine Teo
-: This Parliamentary Question will be ad`,
+: This Parliamentary Question will be ad`,
     sourceUrl: "https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=written-answer-18417",
   },
   {
@@ -966,9 +966,9 @@ Mrs Josephine Teo
     notableQuote: "AI technologies are evolving at a fast pace. In deploying AI-powered HR tools, organisations should refer to the guidelines introduced by the Government.",
     summary: `3
 Mr Patrick Tay Teck Guan
-asked the Minister for Manpower whether the Ministry will consider introducing guidelines or regulations on employer's use of Automated Employment Decision Tools (AEDT), which are artificial intelligence technologies that substantially assist or replace discretionary decision-making in hiring or promotions, in order to prevent biases and including measures such as requiring companies to conduct a bias audit or to make disclosure where such tools are used to rank candidates or assess employees for promotion.
+asked the Minister for Manpower whether the Ministry will consider introducing guidelines or regulations on employer's use of Automated Employment Decision Tools (AEDT), which are artificial intelligence technologies that substantially assist or replace discretionary decision-making in hiring or promotions, in order to prevent biases and including measures such as requiring companies to conduct a bias audit or to make disclosure where such tools are used to rank candidates or assess employees for promotion.
 The Minister for Manpower (Dr Tan See Leng)
-: Mr Speaker, re`,
+: Mr Speaker, re`,
     sourceUrl: "https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=oral-answer-3729",
   },
   {
@@ -989,7 +989,7 @@ The Minister for Manpower (Dr Tan See Leng)
     notableQuote: "The Ministry has stated that they want to convert 5,000 mid-career professionals to AI professionals over the next three to five years.",
     summary: `13
 Mr Ang Wei Neng
-asked the Minister for Digital Development and Information (a) in the past three years, what has been the progress of developing more Information and Technology (IT) and Artificial Intelligence (AI) professionals under the Career Conversion Programme; and (b) what is the Ministry’s plan in further developing this in the next three to five years.
+asked the Minister for Digital Development and Information (a) in the past three years, what has been the progress of developing more Information and Technology (IT) and Artificial Intelligence (AI) professionals under the Career Conversion Programme; and (b) what is the Ministry’s plan in further developing this in the next three to five years.
 The Senior Minister of State for Digital Development and Information (Mr Tan Kiat How) (for the Minister for Digital Development and Information)
 : Sir, there are multiple pathways for Singaporeans to acquire relevant skills for tech`,
     sourceUrl: "https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=oral-answer-3738",
@@ -1014,7 +1014,7 @@ The Senior Minister of State for Digital Development and Information (Mr Tan Kia
 Ms He Ting Ru
 asked the Minister for Digital Development and Information (a) what is the estimated total of AI-specific computing power currently available in Singapore's data centres; (b) whether there are plans to establish a national cloud for AI research and education; (c) if so, what percentage of this computing power does it aim to secure; (d) what legal frameworks are being considered to mandate contributions from private AI data centres to such a national cloud; and (e) how do these potential frameworks compare to those in other leading AI nations.
 Mrs Josephine Teo
-: Singapore is a`,
+: Singapore is a`,
     sourceUrl: "https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=written-answer-18326",
   },
   {
@@ -1037,7 +1037,7 @@ Mrs Josephine Teo
 Mr Desmond Choo
 asked the Minister for Home Affairs (a) how has social media accelerated the radicalisation of youths; (b) how will artificial intelligence (AI) play a role in the radicalisation of youths in the next five years; and (c) what are the plans to address the adverse impact of social media and AI on youth radicalisation.
 Mr K Shanmugam
-: Youth radicalisation is a pressing concern. Since 2015, following the rise of the Islamic State in Iraq and Syria (ISIS), the Internal Security Department (ISD) has dealt with 14 youths, aged 20 or below, under the Internal Security Act. Six had i`,
+: Youth radicalisation is a pressing concern. Since 2015, following the rise of the Islamic State in Iraq and Syria (ISIS), the Internal Security Department (ISD) has dealt with 14 youths, aged 20 or below, under the Internal Security Act. Six had i`,
     sourceUrl: "https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=written-answer-18175",
   },
   {
@@ -1060,7 +1060,7 @@ Mr K Shanmugam
 Ms He Ting Ru
 asked the Minister for Education over the past five years (a) what are the enrolment and graduation rates of female students in artificial intelligence (AI) and machine learning courses across Singapore's universities and polytechnics; (b) how do these figures compare to that of the male counterparts; and (c) what targeted measures are being implemented to increase female participation and retention in AI-related academic programmes.
 Mr Chan Chun Sing
-: Over the past five years, female students comprised about a quarter of enrolment in artificial intelligence (AI) and machine`,
+: Over the past five years, female students comprised about a quarter of enrolment in artificial intelligence (AI) and machine`,
     sourceUrl: "https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=written-answer-18184",
   },
   {
@@ -1081,7 +1081,7 @@ Mr Chan Chun Sing
     notableQuote: "Women in Singapore are doing well compared to the global average.",
     summary: `13
 Ms He Ting Ru
-asked the Minister for Digital Development and Information (a) whether any research has been done on whether there is a gender gap in the adoption rates of artificial intelligence (AI) tools in Singapore, particularly in generative AI; (b) whether any groups have been identified as being more reluctant in adopting such AI technologies; and (c) whether there will be targeted initiatives to encourage these groups to better adopt AI technologies in educational and workplace settings.
+asked the Minister for Digital Development and Information (a) whether any research has been done on whether there is a gender gap in the adoption rates of artificial intelligence (AI) tools in Singapore, particularly in generative AI; (b) whether any groups have been identified as being more reluctant in adopting such AI technologies; and (c) whether there will be targeted initiatives to encourage these groups to better adopt AI technologies in educational and workplace settings.
 The Minister of State for Digital Development and Information (Ms Rahayu Mahzam) (for the Ministe`,
     sourceUrl: "https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=oral-answer-3677",
   },
@@ -1105,7 +1105,7 @@ The Minister of State for Digital Development and Information (Ms Rahayu Mahzam)
 Ms He Ting Ru
 asked the Minister for Digital Development and Information (a) what is the current accuracy rate of the Government’s deepfake detection technologies for AI-generated content; (b) how will the Government differentiate between harmful deepfakes and legitimate political satire or memes using similar technologies; and (c) what happens if videos are wrongly identified as deepfakes.
 Mrs Josephine Teo
-: There are a variety of tools and techniques available to the Government to detect, identify and assess manipulated content, including artificial intelligence (AI)-generated content su`,
+: There are a variety of tools and techniques available to the Government to detect, identify and assess manipulated content, including artificial intelligence (AI)-generated content su`,
     sourceUrl: "https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=written-answer-17376",
   },
   {
@@ -1126,9 +1126,9 @@ Mrs Josephine Teo
     notableQuote: "ITMs are dynamic plans that respond to changes in the operating environment, such as the emergence of potentially disruptive technologies.",
     summary: `3
 Dr Tan Wu Meng
-asked the Deputy Prime Minister and Minister for Trade and Industry (a) whether the existing Industry Transformation Maps can be updated to consider the impact of artificial intelligence (AI) on the apprenticeship and on-the-job training aspects of skilled work; and (b) whether this update can include Industry Training Continuity Maps to maintain a training pipeline for deeply skilled human workers who cannot be replaced by AI, even when AI can undertake work previously done by less deeply skilled apprentices and trainees.
+asked the Deputy Prime Minister and Minister for Trade and Industry (a) whether the existing Industry Transformation Maps can be updated to consider the impact of artificial intelligence (AI) on the apprenticeship and on-the-job training aspects of skilled work; and (b) whether this update can include Industry Training Continuity Maps to maintain a training pipeline for deeply skilled human workers who cannot be replaced by AI, even when AI can undertake work previously done by less deeply skilled apprentices and trainees.
 Mr Gan Kim Yong
-:  The 23 Industry Transformation Maps`,
+:  The 23 Industry Transformation Maps`,
     sourceUrl: "https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=written-answer-17447",
   },
   {
@@ -1151,7 +1151,7 @@ Mr Gan Kim Yong
 Mr Christopher de Souza
 asked the Minister for Home Affairs whether the number of scams perpetuated through deepfake video and images is being tracked and, if so, what are the numbers of such reported scams to date.
 Mr K Shanmugam
-: As replied to two similar Parliamentary Questions in the April 2024 Sittings, the Police have not been tracking the number of such cases. While we have received some reports, the number is not high.`,
+: As replied to two similar Parliamentary Questions in the April 2024 Sittings, the Police have not been tracking the number of such cases. While we have received some reports, the number is not high.`,
     sourceUrl: "https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=written-answer-17287",
   },
   {
@@ -1193,7 +1193,7 @@ asked the Deputy Prime Minister and Minister for Trade and Industry given report
     notableQuote: "If each of us play our part, we can collectively have a better chance of reducing our losses to scammers.",
     summary: `13
 Mr Gerald Giam Yean Song
-asked the Minister for Home Affairs (a) whether there has been an increase in the number of artificial intelligence voice cloning scams in Singapore; (b) how many of such scams have occurred this year to date; and (c) how is the Government dealing with these types of scams, including in the areas of enforcement, public education and implementation of technological solutions to prevent their occurrence.
+asked the Minister for Home Affairs (a) whether there has been an increase in the number of artificial intelligence voice cloning scams in Singapore; (b) how many of such scams have occurred this year to date; and (c) how is the Government dealing with these types of scams, including in the areas of enforcement, public education and implementation of technological solutions to prevent their occurrence.
 The Minister of State for Home Affairs (Assoc Prof Dr Muhammad Faishal Ibrahim) (for the Minister for Home Affairs)
 : The Singapore Police Force (SPF), has not been t`,
     sourceUrl: "https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=oral-answer-3564",
@@ -1218,7 +1218,7 @@ The Minister of State for Home Affairs (Assoc Prof Dr Muhammad Faishal Ibrahim) 
 Mr Chua Kheng Wee Louis
 asked the Minister for Communications and Information given the absence of a 'right to erasure' clause, whether the Personal Data Protection Act 2012 provides for (i) individuals who have not given consent for the collection, use, or disclosure of their personal data and requiring an organisation to delete their personal data upon request and (ii) the recourse for such individuals if the organisation does not do so.
 Mrs Josephine Teo
-: The Personal Data Protection Act (PDPA) requires an organisation to cease retention of personal data or dispose of it in a proper man`,
+: The Personal Data Protection Act (PDPA) requires an organisation to cease retention of personal data or dispose of it in a proper man`,
     sourceUrl: "https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=written-answer-16262",
   },
   {
@@ -1261,11 +1261,11 @@ The Minister of State for Culture, Community and Youth and Trade and Industry (M
     policySignal: "推动居家医疗与补贴创新",
     notableQuote: "Can the Ministry of Health (MOH) provide an update on the progress of these efforts? Are they being scaled up?",
     summary: `The Chairman
-: Head O, Ministry of Health. Dr Tan Wu Meng.
+: Head O, Ministry of Health. Dr Tan Wu Meng.
 6.16 pm
 Health and Care – Thinking Outside the Box
 Dr Tan Wu Meng (Jurong)
-: Chairman, I beg to move, "That the total sum to be allocated for Head O of the Estimates be reduced by $100".
+: Chairman, I beg to move, "That the total sum to be allocated for Head O of the Estimates be reduced by $100".
 I declare that I am a doctor working at a public hospital. I will speak on our healthcare system and thinking outside the box.
 Today, we have already started thinking outside the box in healthcare policy. Subsidising health screening in Healthier SG so that illness can be detected earlier, treated upstream, reducing the burden of human suffering down t`,
     sourceUrl: "https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=budget-2378",
@@ -1288,7 +1288,7 @@ Today, we have already started thinking outside the box in healthcare policy. Su
     notableQuote: "Our secondary school teachers can learn about trends in career pathways and skills in demand from Education and Career Guidance (ECG) counsellors in the school.",
     summary: `8
 Ms See Jinli Jean
-asked the Minister for Education (a) whether the Ministry requires all secondary school educators to be familiarised with the academic and practice pathways to benchmark and emerging careers under the future economic clusters; and (b) if not, whether the Ministry will consider doing so.
+asked the Minister for Education (a) whether the Ministry requires all secondary school educators to be familiarised with the academic and practice pathways to benchmark and emerging careers under the future economic clusters; and (b) if not, whether the Ministry will consider doing so.
 The Minister of State for Education (Ms Gan Siow Huang) (for the Minister for Education)
 : Mr Speaker, our secondary school teachers can learn about trends in career pathways and skills in demand from Education and Career Guidance (ECG) counsellors in the school. The Ministry of Education (M`,
     sourceUrl: "https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=oral-answer-3518",
@@ -1313,7 +1313,7 @@ The Minister of State for Education (Ms Gan Siow Huang) (for the Minister for Ed
 Mr Yip Hon Weng
 asked the Minister for Communications and Information (a) what are the risks and benefits associated with widespread adoption of facial recognition technology (FRT) in Singapore; (b) what are the frameworks and oversight mechanisms currently in place to ensure the responsible and ethical use of FRT in Singapore; and (c) what steps are being taken to engage with the public and relevant stakeholders about the responsible development and application of AI technologies to FRT.
 Mrs Josephine Teo
-: Facial images as a form of biometric data, can be considered personal data when ass`,
+: Facial images as a form of biometric data, can be considered personal data when ass`,
     sourceUrl: "https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=written-answer-16024",
   },
   {
@@ -1333,11 +1333,11 @@ Mrs Josephine Teo
     policySignal: "强化AI与高端投资支持",
     notableQuote: "The rapid rise of new disruptive technologies such as generative artificial intelligence (GenAI) presents both challenges and opportunities to Singapore.",
     summary: `The Chairman
-: Head V, Ministry of Trade and Industry. Mr Liang Eng Hwa.
+: Head V, Ministry of Trade and Industry. Mr Liang Eng Hwa.
 Growing Our Economy
 Mr Liang Eng Hwa (Bukit Panjang)
-: Mr Chairman, I beg to move, "That the total sum to be allocated for Head V of the Estimates be reduced by $100."
-Sir, having a growing and vibrant economy is very much a part of our efforts to build a strong social compact. We need a growing economy to create good, fulfilling jobs for Singaporeans and to generate the resources to tackle our social and longer-term challenges. If our economy stagnates, it will dampen aspirations and hopes for a better future and may lea`,
+: Mr Chairman, I beg to move, "That the total sum to be allocated for Head V of the Estimates be reduced by $100."
+Sir, having a growing and vibrant economy is very much a part of our efforts to build a strong social compact. We need a growing economy to create good, fulfilling jobs for Singaporeans and to generate the resources to tackle our social and longer-term challenges. If our economy stagnates, it will dampen aspirations and hopes for a better future and may lea`,
     sourceUrl: "https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=budget-2361",
   },
   {
@@ -1358,7 +1358,7 @@ Sir, having a growing and vibrant economy is very much a part of our efforts to 
     notableQuote: "Singapore believes that AI can be a potent force for good – to uplift human potential and to unlock economic opportunities.",
     summary: `4.15 pm
 The Chairman
-: Head Q, Ministry of Communications and Information. Ms Tin Pei Ling.
+: Head Q, Ministry of Communications and Information. Ms Tin Pei Ling.
 Investing in Smart Future
 Ms Tin Pei Ling (MacPherson)
 : Mdm Chairman, I beg to move, "That the total sum to be allocated for Head Q of the Estimates be reduced by $100".
@@ -1382,7 +1382,7 @@ Throughout history, the mastery of technology has been essential for a nation's 
     policySignal: "推动教育多元与技能提升",
     notableQuote: "We do not rely on a single vitamin for our health needs. Why then should we expect learners to follow a singular academic path?",
     summary: `The Chairman
-: Head K, Ministry of Education. Mr Patrick Tay.
+: Head K, Ministry of Education. Mr Patrick Tay.
 Education for Life
 Mr Patrick Tay Teck Guan (Pioneer)
 : Sir, I beg to move, "That the total sum to be allocated for Head K of the Estimates be reduced by $100".
@@ -1407,7 +1407,7 @@ We are living in a disruptive world where the pace of change is rapid and relent
     notableQuote: "I seek his understanding that this topic will be addressed at the Committee of Supply debate for the Ministry of Communications and Information.",
     summary: `3
 Mr Yip Hon Weng
-asked the Minister for Communications and Information (a) whether there are concerns that the extent of artificial intelligence (AI)-driven job losses in Singapore may be underestimated with Singapore being the fastest adopter of generative AI in the Asia Pacific; (b) whether the Ministry will be conducting assessments to evaluate the potential scale and scope of job displacement due to AI adoption; and (c) how is the Ministry engaging with stakeholders to encourage and incentivise proactive investment in upskilling programmes for their employees in anticipation of AI adoptio`,
+asked the Minister for Communications and Information (a) whether there are concerns that the extent of artificial intelligence (AI)-driven job losses in Singapore may be underestimated with Singapore being the fastest adopter of generative AI in the Asia Pacific; (b) whether the Ministry will be conducting assessments to evaluate the potential scale and scope of job displacement due to AI adoption; and (c) how is the Ministry engaging with stakeholders to encourage and incentivise proactive investment in upskilling programmes for their employees in anticipation of AI adoptio`,
     sourceUrl: "https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=oral-answer-3495",
   },
   {
@@ -1433,7 +1433,7 @@ Mr Vikram Nair (Sembawang)
 :
 Chairman, I beg to move,
 "That the total sum to be allocated for Head J of the Estimates be reduced by $100".
-Sir, we live in a dangerous world. Following the end of World War II, the great powers of the world came together to build a cooperative framework for international relations. This included the setting up of the United Nations and the Bretton Woods institutions – namely the World Bank and the International Monetary Fund.
+Sir, we live in a dangerous world. Following the end of World War II, the great powers of the world came together to build a cooperative framework for international relations. This included the setting up of the United Nations and the Bretton Woods institutions – namely the World Bank and the International Monetary Fund.
 The Charter of the United Nations enshrines the prohibition against the use of forc`,
     sourceUrl: "https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=budget-2346",
   },
@@ -1482,8 +1482,8 @@ Mr Speaker
 : Deputy Prime Minister Heng Swee Keat.
 12.22 pm
 The Deputy Prime Minister (Mr Heng Swee Keat)
-: Mr Speaker, Sir, first, let me thank the Leader and all Members of this House for giving your assent for me to give a very long speech. I hope that your patience will pay off in that you will enjoy your lunch when you are much hungrier.
-I rise in support of the Budget, which lays out a confident path forward for Singapore, as our domestic and global environments change. I would like to focus on one aspect of the Budget Statement, growing the econ`,
+: Mr Speaker, Sir, first, let me thank the Leader and all Members of this House for giving your assent for me to give a very long speech. I hope that your patience will pay off in that you will enjoy your lunch when you are much hungrier.
+I rise in support of the Budget, which lays out a confident path forward for Singapore, as our domestic and global environments change. I would like to focus on one aspect of the Budget Statement, growing the econ`,
     sourceUrl: "https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=budget-2338",
   },
   {
@@ -1530,7 +1530,7 @@ Mr Pritam Singh (Aljunied)
     notableQuote: "No such target has been set. The amount of computing resources needed in Singapore will depend on the workloads.",
     summary: `4
 Mr Gerald Giam Yean Song
-asked the Minister for Communications and Information (a) whether the Government has set specific targets for Singapore's global share of aggregate computing power over the next five to 10 years; (b) if so, what is this target share and by when; (c) which agency is responsible for this initiative; and (d) what interim milestones will the Government use to track progress.
+asked the Minister for Communications and Information (a) whether the Government has set specific targets for Singapore's global share of aggregate computing power over the next five to 10 years; (b) if so, what is this target share and by when; (c) which agency is responsible for this initiative; and (d) what interim milestones will the Government use to track progress.
 The Senior Minister of State for Communications and Information (Dr Janil Puthucheary) (for the Minister for Communications)
 : Sir, no such target has been set. The amount of computing resources need`,
     sourceUrl: "https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=oral-answer-3478",
@@ -1552,12 +1552,12 @@ The Senior Minister of State for Communications and Information (Dr Janil Puthuc
     policySignal: "加强经济韧性与风险管理",
     notableQuote: "The post-Cold War era that began in the early 1990s and fostered three decades of peace and stability is over.",
     summary: `Mr Speaker
-: Order. The Clerk will now proceed to read the Notice of Motion.
+: Order. The Clerk will now proceed to read the Notice of Motion.
 3.30 pm
 The Deputy Prime Minister and Minister for Finance (Mr Lawrence Wong)
-: Mr Speaker, Sir, I beg to move, "That Parliament approves the financial policy of the Government for the Financial Year 1 April 2024 to 31 March 2025."
+: Mr Speaker, Sir, I beg to move, "That Parliament approves the financial policy of the Government for the Financial Year 1 April 2024 to 31 March 2025."
 Mr Speaker, Sir, I beg to move, "That Parliament approves the financial policy of the Government for the Financial Year 1 April 2024 to 31 March 2025."
-The past year has not been easy. The international environment was troubled. The global economy was subdued. Our economy grew by a modest 1`,
+The past year has not been easy. The international environment was troubled. The global economy was subdued. Our economy grew by a modest 1`,
     sourceUrl: "https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=budget-2325",
   },
   {
@@ -1580,7 +1580,7 @@ The past year has not been easy. The international environment was troubled. Th
 Mr Christopher de Souza
 asked the Minister for Communications and Information what safeguards and regulations are being put in place to tackle the issue of deepfake software being used in scam and fraud cases.
 Mrs Josephine Teo
-: Artificial intelligence can be exploited for malicious purposes, including scams and fraud. Agencies, such as the Ministry of Communications and Information, the Ministry of Home Affairs, the Singapore Police Force (SPF), the Infocomm Media Development Authority and the Cybersecurity Agency of Singapore (CSA), are working closely to ensure that Singaporeans can go`,
+: Artificial intelligence can be exploited for malicious purposes, including scams and fraud. Agencies, such as the Ministry of Communications and Information, the Ministry of Home Affairs, the Singapore Police Force (SPF), the Infocomm Media Development Authority and the Cybersecurity Agency of Singapore (CSA), are working closely to ensure that Singaporeans can go`,
     sourceUrl: "https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=written-answer-15541",
   },
   {
@@ -1603,7 +1603,7 @@ Mrs Josephine Teo
 Mr Christopher de Souza
 asked the Minister for Communications and Information how is the Government helping the public to better understand artificial intelligence and its capabilities to build a population grounded in technological understanding so as to combat the threat of cybercrime and deepfake content.
 Mrs Josephine Teo
-: Artificial intelligence can be exploited for malicious purposes, including scams and fraud. Agencies, such as the Ministry of Communications and Information, the Ministry of Home Affairs, the Singapore Police Force (SPF), the Infocomm Media Development Authority, and`,
+: Artificial intelligence can be exploited for malicious purposes, including scams and fraud. Agencies, such as the Ministry of Communications and Information, the Ministry of Home Affairs, the Singapore Police Force (SPF), the Infocomm Media Development Authority, and`,
     sourceUrl: "https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=written-answer-15542",
   },
   {
@@ -1624,8 +1624,8 @@ Mrs Josephine Teo
     notableQuote: "Scams often operate in the dark corners of the digital realm, exploiting vulnerabilities and thriving in unsuspecting spaces.",
     summary: `1.31 pm
 Ms Tin Pei Ling (MacPherson)
-: Sir, I beg to move*, "That this House reaffirms our commitment to adopt a whole-of-nation approach to sustain trust by building an inclusive and safe digital society."
-[(proc text) *The Motion also stood in the names of Mr Sharael Taha, Ms Hany Soh, Ms Jessica Tan and Mr Alex Yam. (proc text)]
+: Sir, I beg to move*, "That this House reaffirms our commitment to adopt a whole-of-nation approach to sustain trust by building an inclusive and safe digital society."
+[(proc text) *The Motion also stood in the names of Mr Sharael Taha, Ms Hany Soh, Ms Jessica Tan and Mr Alex Yam. (proc text)]
 Speaker, Sir, the Government Parliamentary Committee (GPC) for Communications and Information, comprising People's Action Party Members of Parliament Ms Jessica Tan, Mr Christopher de Souza, Mr Alex Yam, Mr Sharael Taha, Ms Hany Soh and me as the GPC Chair, is movin`,
     sourceUrl: "https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=motion-2294",
   },
@@ -1651,7 +1651,7 @@ Mr Speaker
 6.24 pm
 The Senior Minister of State for Communications and Information (Mr Tan Kiat How)
 : Sir, I rise in support of the Motion in the name of Ms Tin Pei Ling.
-I thank Members for their thoughtful suggestions on building a safe and inclusive digital society. I will speak on the topic of digital inclusion and Minister Josephine Teo will speak on issues related to digital trust and safety.
+I thank Members for their thoughtful suggestions on building a safe and inclusive digital society. I will speak on the topic of digital inclusion and Minister Josephine Teo will speak on issues related to digital trust and safety.
 With your permission, Sir, may I ask the Clerk to distribute to Members supplementary materials on the topics that`,
     sourceUrl: "https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=motion-2296",
   },
@@ -1673,10 +1673,10 @@ With your permission, Sir, may I ask the Clerk to distribute to Members suppleme
     notableQuote: "MOE develops students’ foundational knowledge of AI and promotes its safe and responsible use.",
     summary: `3
 Mr Ong Hua Han
-asked the Minister for Education (a) what other programmes beyond the artificial intelligence (AI)-enabled tools on Singapore Student Learning Space will be put in place to develop baseline AI literacy of students; (b) whether there are plans to launch AI coding programmes in the curriculum; (c) if so, when will such programmes be targeted to be launched; and (d) whether such programmes will be run by teachers or third party service providers.
+asked the Minister for Education (a) what other programmes beyond the artificial intelligence (AI)-enabled tools on Singapore Student Learning Space will be put in place to develop baseline AI literacy of students; (b) whether there are plans to launch AI coding programmes in the curriculum; (c) if so, when will such programmes be targeted to be launched; and (d) whether such programmes will be run by teachers or third party service providers.
 4
 Mr Ong Hua Han
-asked the Minister for Education (a) how many students have applied to join the Artificial Intelligence Student Outrea`,
+asked the Minister for Education (a) how many students have applied to join the Artificial Intelligence Student Outrea`,
     sourceUrl: "https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=oral-answer-3393",
   },
   {
@@ -1699,7 +1699,7 @@ asked the Minister for Education (a) how many students have applied to join the
 Mr Gerald Giam Yean Song
 asked the Minister for Communications and Information (a) which categories of workers has the Ministry assessed to face the highest risk of displacement as a result of artificial intelligence (AI); (b) what are the projected numbers for each such category; and (c) what expanded programmes are being instituted to scale up reskilling and encourage workers to switch careers before they face job displacement due to AI.
 Mrs Josephine Teo
-: Artificial intelligence (AI) development is changing every day and its impact on the workforce is not fully predictable. As with othe`,
+: Artificial intelligence (AI) development is changing every day and its impact on the workforce is not fully predictable. As with othe`,
     sourceUrl: "https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=written-answer-15270",
   },
   {
@@ -1722,7 +1722,7 @@ Mrs Josephine Teo
 Dr Lim Wee Kiak
 asked the Minister for Communications and Information with regard to the National Artificial Intelligence (AI) Strategy 2.0 (a) how does the Government plan to balance the increased computing power necessary for AI developments with Singapore's energy sustainability goals; and (b) what initiatives or strategies are in place to ensure that the infrastructure and computing power needed for AI growth remain environmentally sustainable.
 Mrs Josephine Teo
-: An important enabler of our National Artificial Intelligence Strategy (NAIS) 2.0 strategy is artificial intelligence (AI) co`,
+: An important enabler of our National Artificial Intelligence Strategy (NAIS) 2.0 strategy is artificial intelligence (AI) co`,
     sourceUrl: "https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=written-answer-15269",
   },
   {
@@ -1745,7 +1745,7 @@ Mrs Josephine Teo
 Ms See Jinli Jean
 asked the Minister for Communications and Information for each year since the Code for Fun enrichment programme was launched in 2019 (a) what proportion of each cohort of primary school and secondary school students respectively have undergone the programme; (b) for students who did not undergo the programme, how does the Ministry ensure that they can attain the foundational digital quotient; and (c) what are the Ministry's plans to update the programme and its delivery to contribute to developing an artificial intelligence-ready workforce.
 Mrs Josephine Teo
-: The Infocomm`,
+: The Infocomm`,
     sourceUrl: "https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=written-answer-15268",
   },
   {
@@ -1791,7 +1791,7 @@ The Minister for Communications and Information (Mrs Josephine Teo)
 Mr Chua Kheng Wee Louis
 asked the Minister for Communications and Information (a) what is the Government's approach and policy governing the safe and responsible development of artificial intelligence (AI) in Singapore; and (b) what are the subsequent steps that the Government is planning to take in AI governance following the signing of the Bletchley Declaration.
 Mrs Josephine Teo
-: Singapore's approach to the responsible development and deployment of a
+: Singapore's approach to the responsible development and deployment of a
 rtificial intelligence (
 AI) has been explained at the Sittings on:
 (a) 21 April 2023; [
@@ -1816,9 +1816,9 @@ Please refer to "Regulatory Framework for Artific`,
     notableQuote: "It is not usually necessary or beneficial to rely solely on indigenous capabilities to advance our economic interests.",
     summary: `14
 Mr Gerald Giam Yean Song
-asked the Prime Minister (a) whether there exists a whole-of-Government plan to develop indigenous capabilities in creating and deploying artificial intelligence (AI) foundation models, including establishing a National Foundation Model Research Institute, so as to help local researchers build core AI foundation model expertise; and (b) if such an AI foundation model plan already exists, what are its core and strategic aims.
+asked the Prime Minister (a) whether there exists a whole-of-Government plan to develop indigenous capabilities in creating and deploying artificial intelligence (AI) foundation models, including establishing a National Foundation Model Research Institute, so as to help local researchers build core AI foundation model expertise; and (b) if such an AI foundation model plan already exists, what are its core and strategic aims.
 The Senior Minister of State for Communications and Information (Dr Janil Puthucheary) (for the Prime Minister)
-: Sir, Singapore's research cap`,
+: Sir, Singapore's research cap`,
     sourceUrl: "https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=oral-answer-3375",
   },
   {
@@ -1841,7 +1841,7 @@ The Senior Minister of State for Communications and Information (Dr Janil Puthuc
 Mr Desmond Choo
 asked the Minister for Home Affairs (a) how has the Singapore Police Force incorporated artificial intelligence (AI) into its enforcement work; (b) whether this has led to improved outcomes; and (c) what is the future role of AI in policing.
 Mr K Shanmugam
-: The Singapore Police Force (SPF) has been leveraging artificial intelligence (AI) to enhance its capabilities and operational effectiveness.
+: The Singapore Police Force (SPF) has been leveraging artificial intelligence (AI) to enhance its capabilities and operational effectiveness.
 For example, it has used AI in its efforts against child sexual abuse materials. Investigators use an AI programme to sieve out possible obscene materials from seized devices. This`,
     sourceUrl: "https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=written-answer-14629",
   },
@@ -1865,7 +1865,7 @@ For example, it has used AI in its efforts against child sexual abuse materials.
 Dr Tan Wu Meng
 asked the Prime Minister whether MAS has assessed the impact of artificial intelligence (AI) on trading platforms in financial markets for (i) the risk of "herding" where individual actors make similar decisions due to similar trained AI models or similar data aggregates and (ii) the potential for conflict of interest when a trading AI platform system is simultaneously considering both the platform's interest and the customers' interests, especially if without disclosure to customers.
 Mr Lawrence Wong (for the Prime Minister)
-: The Monetary Authority of Singapore (MAS) require`,
+: The Monetary Authority of Singapore (MAS) require`,
     sourceUrl: "https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=written-answer-13935",
   },
   {
@@ -1908,13 +1908,13 @@ The Minister for Communications and Information (Mrs Josephine Teo)
     policySignal: "关注学术心理健康",
     notableQuote: "graduate students are more than six times as likely to experience anxiety and depression compared to the general population.",
     summary: `[(proc text) Order read for the Resumption of Debate on Question [9 May 2023]. (proc text)]
-[(proc text) "That this House commits to supporting healthcare beyond the COVID-19 pandemic and the whole-of-Government efforts for consistent and sustainable support.” – [Dr Tan Yia Swam] (proc text)]
+[(proc text) "That this House commits to supporting healthcare beyond the COVID-19 pandemic and the whole-of-Government efforts for consistent and sustainable support.” – [Dr Tan Yia Swam] (proc text)]
 [(proc text) Question again proposed. (proc text)]
 Mr Deputy Speaker
 : Prof Koh Lian Pin.
 1.39 pm
 Prof Koh Lian Pin (Nominated Member)
-: Mr Deputy Speaker, I stand in support of this Motion. I would like to join the debate today by highlighting a growing healthcare issue facing the academic community.
+: Mr Deputy Speaker, I stand in support of this Motion. I would like to join the debate today by highlighting a growing healthcare issue facing the academic community.
 Our`,
     sourceUrl: "https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=motion-2194",
   },
@@ -1935,14 +1935,14 @@ Our`,
     policySignal: "推动全政府医疗支持",
     notableQuote: "Why does anyone stand up to advocate for certain causes? We want to leave behind a better world than what we were born in.",
     summary: `Mdm Deputy Speaker
-: Dr Tan Yia Swam.
+: Dr Tan Yia Swam.
 4.01 pm
 Dr Tan Yia Swam (Nominated Member)
-: Madam, I beg to move*, "That this House commits to supporting healthcare beyond the COVID-19 pandemic and the whole-of-Government efforts for consistent and sustainable support".
+: Madam, I beg to move*, "That this House commits to supporting healthcare beyond the COVID-19 pandemic and the whole-of-Government efforts for consistent and sustainable support".
 [(proc text) *
-The Motion also stood in the name of Mr Abdul Samad and Dr Shahira Abdullah.
+The Motion also stood in the name of Mr Abdul Samad and Dr Shahira Abdullah.
 (proc text)]
-I declare my interest as a breast surgeon in private practice and my various medical leadership roles as an appointed member of the Singapore Medical Council and the Vice President of the Singapore Medical Association. More important`,
+I declare my interest as a breast surgeon in private practice and my various medical leadership roles as an appointed member of the Singapore Medical Council and the Vice President of the Singapore Medical Association. More important`,
     sourceUrl: "https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=motion-2190",
   },
   {
@@ -1963,7 +1963,7 @@ I declare my interest as a breast surgeon in private practice and my various med
     notableQuote: "Singapore supports the responsible development and deployment of artificial intelligence (AI), so that its benefits may be enjoyed in a trusted and safe manner.",
     summary: `16
 Dr Tan Wu Meng
-asked the Minister for Communications and Information considering the advances in artificial intelligence (AI) with platforms such as ChatGPT and the GPT-4 architecture, what attention is being given to promoting and ensuring (i) the development of ethical AI which responds in a manner consistent with human values and (ii) maintenance of ethical standards in the development, dataset training and deployment of AI.
+asked the Minister for Communications and Information considering the advances in artificial intelligence (AI) with platforms such as ChatGPT and the GPT-4 architecture, what attention is being given to promoting and ensuring (i) the development of ethical AI which responds in a manner consistent with human values and (ii) maintenance of ethical standards in the development, dataset training and deployment of AI.
 The Senior Minister of State for Communications and Information (Dr Janil Puthucheary) (for the Minister for Communications and Information)
 : Madam, Singapore suppo`,
     sourceUrl: "https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=oral-answer-3240",
@@ -1988,7 +1988,7 @@ The Senior Minister of State for Communications and Information (Dr Janil Puthuc
 Mr Melvin Yong Yik Chye
 asked the Prime Minister (a) how does the Public Service intend to leverage new artificial intelligence technologies, such as ChatGPT, in e-Government services; and (b) whether such tools will augment and replace existing chatbot services to provide a better user experience for citizens.
 Mrs Josephine Teo (for the Prime Minister)
-: The Government has integrated artificial intelligence (AI) in digital services, such as chatbots on Government websites, the OneService Chatbot for reporting municipal issues through social messaging platforms, and the SG Translate Together`,
+: The Government has integrated artificial intelligence (AI) in digital services, such as chatbots on Government websites, the OneService Chatbot for reporting municipal issues through social messaging platforms, and the SG Translate Together`,
     sourceUrl: "https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=written-answer-13437",
   },
   {
@@ -2009,11 +2009,11 @@ Mrs Josephine Teo (for the Prime Minister)
     notableQuote: "Indivisible Security is not of the same status as self-determination, sovereignty, or territorial integrity and the non-recourse to use of force.",
     summary: `The following question stood in the name of
 Mr Vikram Nair –
-8 To ask the Minister for Law whether he can elaborate on the concept of “indivisible security” as referenced in his speech entitled “The Russia-Ukraine War and Southeast Asia One Year On: Implications and Outlook” that was delivered on 8 March 2023 at the ISEAS-Yusof Ishak Institute workshop.
+8 To ask the Minister for Law whether he can elaborate on the concept of “indivisible security” as referenced in his speech entitled “The Russia-Ukraine War and Southeast Asia One Year On: Implications and Outlook” that was delivered on 8 March 2023 at the ISEAS-Yusof Ishak Institute workshop.
 Mr Murali Pillai (Bukit Batok)
 : Question No 8.
 The Minister for Law (Mr K Shanmugam)
-: Thank you, Mr Deputy Speaker. I will first start with the point of sovereignty. Self-determination, sovereignty and territorial integrity as well as the non`,
+: Thank you, Mr Deputy Speaker. I will first start with the point of sovereignty. Self-determination, sovereignty and territorial integrity as well as the non`,
     sourceUrl: "https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=oral-answer-3212",
   },
   {
@@ -2059,7 +2059,7 @@ The Minister of State for Trade and Industry (Mr Alvin Tan) (for the Prime Minis
 Assoc Prof Jamus Jerome Lim
 asked the Minister for Health (a) whether the Ministry has explored the credibility of AI-based diagnostic solutions; and (b) if so, what are the regulatory considerations that will be most important if there are more widespread adoption of such technologies.
 Mr Ong Ye Kung
-: Artificial intelligence (AI) is ubiquitous and being used in healthcare in Singapore. For example, it is used in JARVISDHL, a programme by SingHealth and NUS to prevent diabetes, hypertension, hyperlipidemia. It is the engine for SELENA+ (Singapore Eye LEsioN Analyzer plus) to diagnose diabe`,
+: Artificial intelligence (AI) is ubiquitous and being used in healthcare in Singapore. For example, it is used in JARVISDHL, a programme by SingHealth and NUS to prevent diabetes, hypertension, hyperlipidemia. It is the engine for SELENA+ (Singapore Eye LEsioN Analyzer plus) to diagnose diabe`,
     sourceUrl: "https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=written-answer-13336",
   },
   {
@@ -2080,7 +2080,7 @@ Mr Ong Ye Kung
     notableQuote: "AI is a group of technologies. Currently, there is a lot of excitement around ChatGPT.",
     summary: `19
 Ms He Ting Ru
-asked the Minister for Communications and Information in view of the proposed regulatory frameworks for artificial intelligence (AI) governance in the European Union and China (a) whether the current approach to AI regulation in Singapore is being reviewed; (b) whether there are any areas in the field that are currently being prioritised for regulation; and (c) what is the anticipated timeline for the introduction of any regulation.
+asked the Minister for Communications and Information in view of the proposed regulatory frameworks for artificial intelligence (AI) governance in the European Union and China (a) whether the current approach to AI regulation in Singapore is being reviewed; (b) whether there are any areas in the field that are currently being prioritised for regulation; and (c) what is the anticipated timeline for the introduction of any regulation.
 The Senior Minister of State for Communications and Information (Dr Janil Puthucheary) (for the Minister for Communications and Information)
 : Mr`,
     sourceUrl: "https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=oral-answer-3193",
@@ -2107,7 +2107,7 @@ The Senior Minister of State for Communications and Information (Dr Janil Puthuc
 Workforce for New Era
 Mr Desmond Choo (Tampines)
 : Chairman, I beg to move, "That the total sum to be allocated for Head S of the Estimates to be reduced by $100".
-When it was reported in January this year that China's population declined for the first time since 1961, the Chinese stock markets wobbled. It was widely expected because of its ageing population and declining fertility. But it was still a sobering reality. A reality of potential shrinking consumption and most certainly, a declining workforce. It faces perhaps a`,
+When it was reported in January this year that China's population declined for the first time since 1961, the Chinese stock markets wobbled. It was widely expected because of its ageing population and declining fertility. But it was still a sobering reality. A reality of potential shrinking consumption and most certainly, a declining workforce. It faces perhaps a`,
     sourceUrl: "https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=budget-2078",
   },
   {
@@ -2127,7 +2127,7 @@ When it was reported in January this year that China's population declined for t
     policySignal: "加强网络安全与数字经济协调发展",
     notableQuote: "We must protect our people online just as we do in the real world.",
     summary: `The Chairman
-: Head Q, Ministry of Communications and Information. Ms Tin Pei Ling.
+: Head Q, Ministry of Communications and Information. Ms Tin Pei Ling.
 Building and Protecting Singapore
 Ms Tin Pei Ling (MacPherson)
 : Chairman, I beg leave to move "that the total sum to be allocated for Head Q of the Estimates be reduced by $100".
@@ -2152,7 +2152,7 @@ But along with new capabilities com`,
     policySignal: "推动终身学习与职业辅导",
     notableQuote: "We owe it to our youth, especially those who have given up much during the pandemic years, to help them get a strong footing on the career ladder.",
     summary: `The Chairman
-: Head K, Ministry of Education. Mr Patrick Tay.
+: Head K, Ministry of Education. Mr Patrick Tay.
 5.30 pm
 Education and the Way Forward
 Mr Patrick Tay Teck Guan (Pioneer)
@@ -2177,11 +2177,11 @@ The past few years have undoubtedly been a test of mettle. Especially so for our
     policySignal: "强化国防应对区域风险",
     notableQuote: "Every time an act of aggression takes place without consequences for the aggressor, the more each country has to fear for its own safety.",
     summary: `The Chairman
-: Head J, Ministry of Defence. Mr Vikram Nair.
+: Head J, Ministry of Defence. Mr Vikram Nair.
 Security Trends
 Mr Vikram Nair (Sembawang)
 : Chairman, I beg to move "That the total sum to be allocated for Head J of the Estimates be reduced by $100".
-Singapore had a turbulent journey to Independence, with our pioneer generation of leaders living through both World War II, and at the cusp of independence, the Konfrontasi between Indonesia and Malaysia. We started National Service in 1967 and over the years, have slowly and steadily built the SAF into a strong and credible defence force. Singapore has lived with relative peace and`,
+Singapore had a turbulent journey to Independence, with our pioneer generation of leaders living through both World War II, and at the cusp of independence, the Konfrontasi between Indonesia and Malaysia. We started National Service in 1967 and over the years, have slowly and steadily built the SAF into a strong and credible defence force. Singapore has lived with relative peace and`,
     sourceUrl: "https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=budget-2054",
   },
   {
@@ -2204,7 +2204,7 @@ Singapore had a turbulent journey to Independence, with our pioneer generation o
 Mr Shawn Huang Wei Zhong
 asked the Minister for Education how will the Ministry manage the use of artificial intelligence (AI) bots such as ChatGPT in schools given the proliferation of AI toolkits.
 Mr Chan Chun Sing
-: As with any technology, generative AI tools such as ChatGPT present both opportunities and challenges. When used appropriately, these tools can support students in their learning when students have mastered basic concepts and thinking skills.
+: As with any technology, generative AI tools such as ChatGPT present both opportunities and challenges. When used appropriately, these tools can support students in their learning when students have mastered basic concepts and thinking skills.
 The Ministry of Education (MOE) provides teachers with guidance and resources to effectively harness the use of digital technology to e`,
     sourceUrl: "https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=written-answer-12799",
   },
@@ -2226,10 +2226,10 @@ The Ministry of Education (MOE) provides teachers with guidance and resources to
     notableQuote: "ChatGPT can be a useful tool for learning only when students have mastered basic concepts and thinking skills.",
     summary: `19
 Dr Tan Wu Meng
-asked the Minister for Education (a) whether artificial intelligence (AI) technologies such as ChatGPT are expected to affect student coursework and open-book assessments and, if so, how; (b) what challenges and opportunities exist in the educational and skills landscape due to the rise of such AI; and (c) what is being done to inculcate life skills, soft skills, and other competencies so that human workers can remain competitive and relevant amidst a landscape encompassing international competition and AI advancements.
+asked the Minister for Education (a) whether artificial intelligence (AI) technologies such as ChatGPT are expected to affect student coursework and open-book assessments and, if so, how; (b) what challenges and opportunities exist in the educational and skills landscape due to the rise of such AI; and (c) what is being done to inculcate life skills, soft skills, and other competencies so that human workers can remain competitive and relevant amidst a landscape encompassing international competition and AI advancements.
 20
 Dr Wan Rizal
-asked the Minister for Education (a) whe`,
+asked the Minister for Education (a) whe`,
     sourceUrl: "https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=oral-answer-3032",
   },
   {
@@ -2252,7 +2252,7 @@ asked the Minister for Education (a) whe`,
 Mr Melvin Yong Yik Chye
 asked the Minister for Education with the advent of ChatGPT and other artificial intelligence technologies readily available to students of all levels, what safeguards will schools and educators put in place to ensure the integrity of online examinations and assignments.
 Mr Chan Chun Sing
-: As with any technology, ChatGPT and similar generative artificial intelligence (AI) tools present both opportunities and challenges for teaching and learning. When used judiciously, these tools can help teachers in the planning and delivery of lessons and can support students in t`,
+: As with any technology, ChatGPT and similar generative artificial intelligence (AI) tools present both opportunities and challenges for teaching and learning. When used judiciously, these tools can help teachers in the planning and delivery of lessons and can support students in t`,
     sourceUrl: "https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=written-answer-12692",
   },
   {
@@ -2273,9 +2273,9 @@ Mr Chan Chun Sing
     notableQuote: "Singapore stands ready to deal with whatever legal action Malaysia may pursue.",
     summary: `3
 Mr Gerald Giam Yean Song
-asked the Minister for Foreign Affairs (a) whether Malaysia's intention to continue legal action at the International Court of Justice in the case concerning Singapore's sovereignty over Pedra Branca, Middle Rocks and South Ledge impacts Singapore's existing and planned development and land reclamation works in and around Pedra Branca; and (b) if so, how.
+asked the Minister for Foreign Affairs (a) whether Malaysia's intention to continue legal action at the International Court of Justice in the case concerning Singapore's sovereignty over Pedra Branca, Middle Rocks and South Ledge impacts Singapore's existing and planned development and land reclamation works in and around Pedra Branca; and (b) if so, how.
 Dr Vivian Balakrishnan
-: After the International Court of Justice's (ICJ’s) judgment in 2008 awarding sovereignty over Pedra Branca to Singapore, both Singapore and Malaysia publicly announced that they will accept`,
+: After the International Court of Justice's (ICJ’s) judgment in 2008 awarding sovereignty over Pedra Branca to Singapore, both Singapore and Malaysia publicly announced that they will accept`,
     sourceUrl: "https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=written-answer-12075",
   },
   {
@@ -2296,7 +2296,7 @@ Dr Vivian Balakrishnan
     notableQuote: "Age verification, to a high degree of certainty, is technically difficult and the technology continues to evolve.",
     summary: `7
 Mr Melvin Yong Yik Chye
-asked the Minister for Communications and Information (a) whether the Ministry is considering a minimum age limit for children to join social media platforms, to mitigate the potential harm that social media sites can cause on young children; and (b) whether the Ministry has studied any overseas jurisdictions that have successfully implemented age verification for the use of social media platforms.
+asked the Minister for Communications and Information (a) whether the Ministry is considering a minimum age limit for children to join social media platforms, to mitigate the potential harm that social media sites can cause on young children; and (b) whether the Ministry has studied any overseas jurisdictions that have successfully implemented age verification for the use of social media platforms.
 The Senior Minister of State for Communications and Information (Dr Janil Puthucheary) (for the Minister for Communications and Information)
 : Sir, currently, most major so`,
     sourceUrl: "https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=oral-answer-2914",
@@ -2318,12 +2318,12 @@ The Senior Minister of State for Communications and Information (Dr Janil Puthuc
     policySignal: "强化数字包容与监管创新",
     notableQuote: "Singapore has to continually invest in next bound infrastructure and our people.",
     summary: `The Chairman
-: Head Q, Ministry of Communications and Information. Ms Tin Pei Ling.
+: Head Q, Ministry of Communications and Information. Ms Tin Pei Ling.
 Balancing Competing Considerations
 Ms Tin Pei Ling (MacPherson)
 : Mr Chairman, I beg to move, "That the total sum to be allocated for Head Q of the Estimates by reduced by $100."
-Singapore is progressing surely and steadily in our digital transformation. With this comes several competing considerations that we need to balance.
-On the one hand, for survival and to keep relevant, Singapore has to continually invest in next bound infrastructure and our people. When others look at 5G, we must look at 6G and when ot`,
+Singapore is progressing surely and steadily in our digital transformation. With this comes several competing considerations that we need to balance.
+On the one hand, for survival and to keep relevant, Singapore has to continually invest in next bound infrastructure and our people. When others look at 5G, we must look at 6G and when ot`,
     sourceUrl: "https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=budget-1862",
   },
   {
@@ -2347,10 +2347,10 @@ On the one hand, for survival and to keep relevant, Singapore has to continuall
 [(proc text) "That the total sum to be allocated for Head J of the Estimates be reduced by $100." – [Mr Vikram Nair]. (proc text)]
 [(proc text) Question again proposed. (proc text)]
 The Chairman
-: Mr Alex Yam. Not here. Mr Mohd Fahmi Bin Aliman.
+: Mr Alex Yam. Not here. Mr Mohd Fahmi Bin Aliman.
 Medical Classification System
 Mr Mohd Fahmi Bin Aliman (Marine Parade)
-: Chairman, at the COS debate last year, the Minister for Defence mentioned that the Singapore Armed Forces (SAF) would use, update and refresh the medical classifica`,
+: Chairman, at the COS debate last year, the Minister for Defence mentioned that the Singapore Armed Forces (SAF) would use, update and refresh the medical classifica`,
     sourceUrl: "https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=budget-1851",
   },
   {
@@ -2370,10 +2370,10 @@ Mr Mohd Fahmi Bin Aliman (Marine Parade)
     policySignal: "强化国防科技与信息安全",
     notableQuote: "We cannot assume other countries will come to our assistance when we are at war.",
     summary: `The Chairman
-: Head J, Ministry of Defence. Mr Vikram Nair.
+: Head J, Ministry of Defence. Mr Vikram Nair.
 Security Trends and SAF's Priorities
 Mr Vikram Nair (Sembawang)
-: Chairman, I beg to move "That the total sum to be allocated for Head J of the Estimates be reduced by $100".
+: Chairman, I beg to move "That the total sum to be allocated for Head J of the Estimates be reduced by $100".
 We live in a dangerous world. In the past week, we have witnessed Russia's invasion of Ukraine, the largest war on the European continent since World War II. The signs of this conflict had been brewing for a long time. The Russian troop build-up along the Ukrainian border had taken place over many months and various NATO countries, including the US, had anticipat`,
     sourceUrl: "https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=budget-1846",
   },
@@ -2395,9 +2395,9 @@ We live in a dangerous world. In the past week, we have witnessed Russia's invas
     notableQuote: "The SAF will have to incorporate advancements in robotics, data analytics and artificial intelligence (AI) to further improve its work processes and raise productivity.",
     summary: `2
 Mr Christopher de Souza
-asked the Minister for Defence in light of the falling total fertility rate in Singapore to 1.1 in 2020, how will the Singapore Armed Forces use technological advancement to ensure its forces continue to be formidable and mission-ready.
+asked the Minister for Defence in light of the falling total fertility rate in Singapore to 1.1 in 2020, how will the Singapore Armed Forces use technological advancement to ensure its forces continue to be formidable and mission-ready.
 Dr Ng Eng Hen
-: MINDEF agrees with the hon Member Christopher de Souza that Singapore's low fertility rates represent a significant structural challenge to SAF in maintaining a strong national defence. SAF has indeed recognised this as a core challenge some three decades ago by incorporating manpower requirements for all operations as`,
+: MINDEF agrees with the hon Member Christopher de Souza that Singapore's low fertility rates represent a significant structural challenge to SAF in maintaining a strong national defence. SAF has indeed recognised this as a core challenge some three decades ago by incorporating manpower requirements for all operations as`,
     sourceUrl: "https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=written-answer-9674",
   },
   {
@@ -2418,9 +2418,9 @@ Dr Ng Eng Hen
     notableQuote: "The National Artificial Intelligence (AI) Strategy outlines our plans for Singapore to be a leader in developing and deploying scalable, impactful AI solutions.",
     summary: `36
 Mr Shawn Huang Wei Zhong
-asked the Minister for Communications and Information what are the initiatives undertaken by the Ministry to develop the artificial intelligence ecosystem and its deployment in Singapore.
+asked the Minister for Communications and Information what are the initiatives undertaken by the Ministry to develop the artificial intelligence ecosystem and its deployment in Singapore.
 Mrs Josephine Teo
-: The National Artificial Intelligence (AI) Strategy outlines our plans for Singapore to be a leader in developing and deploying scalable, impactful AI solutions, in key sectors of high value and relevance to our citizens and businesses, by 2030.
+: The National Artificial Intelligence (AI) Strategy outlines our plans for Singapore to be a leader in developing and deploying scalable, impactful AI solutions, in key sectors of high value and relevance to our citizens and businesses, by 2030.
 Under the Strategy, five National AI Projects in logistics, smart estates, education, healthcare and border security, a`,
     sourceUrl: "https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=written-answer-9318",
   },
@@ -2442,9 +2442,9 @@ Under the Strategy, five National AI Projects in logistics, smart estates, educa
     notableQuote: "The system will use machine learning to tell how each student responds to learning materials and activities, and customise learning for each student.",
     summary: `39
 Mr Shawn Huang Wei Zhong
-asked the Minister for Education (a) whether he will provide an update on the progress of the adaptive learning initiative in schools; (b) whether there are pilot programmes planned in schools which will facilitate the adaptive learning initiative; and (c) what infrastructure developments are necessary to be undertaken in schools that will facilitate adaptive learning.
+asked the Minister for Education (a) whether he will provide an update on the progress of the adaptive learning initiative in schools; (b) whether there are pilot programmes planned in schools which will facilitate the adaptive learning initiative; and (c) what infrastructure developments are necessary to be undertaken in schools that will facilitate adaptive learning.
 Mr Chan Chun Sing
-: Developing an AI-enabled adaptive learning system to support teaching and learning in our schools is part of MOE’s plans under Singapore’s National AI Strategy. This approach compl`,
+: Developing an AI-enabled adaptive learning system to support teaching and learning in our schools is part of MOE’s plans under Singapore’s National AI Strategy. This approach compl`,
     sourceUrl: "https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=written-answer-8049",
   },
   {
@@ -2464,7 +2464,7 @@ Mr Chan Chun Sing
     policySignal: "加强数字人才培养与性别多样性",
     notableQuote: "We need data to innovate and we need people to get things done.",
     summary: `The Chairman
-: Head Q, Ministry of Communications and Information. Ms Tin Pei Ling.
+: Head Q, Ministry of Communications and Information. Ms Tin Pei Ling.
 Industry Capabilities and Leaders
 Ms Tin Pei Ling (MacPherson)
 : Chairman, I beg to move, "That the total sum to be allocated for Head Q of the Estimates be reduced by $100".
@@ -2490,9 +2490,9 @@ In my Budget debate speech in February 2020, I talked about the need for a high 
     notableQuote: "The Government is the custodian of the TT data submitted by individuals, and stringent measures are in place to safeguard this personal data.",
     summary: `15
 Mr Christopher de Souza
-asked the Minister for Home Affairs whether TraceTogether data will be used for criminal investigations and, if so, what are the legal provisions and safeguards in using such data.
+asked the Minister for Home Affairs whether TraceTogether data will be used for criminal investigations and, if so, what are the legal provisions and safeguards in using such data.
 The Minister of State for Home Affairs (Mr Desmond Tan) (for the Minister for Home Affairs)
-: Mr Speaker, the Singapore Police Force is empowered under the Criminal Procedure Code or CPC to obtain any data, including TraceTogether or TT data, for criminal investigations.
+: Mr Speaker, the Singapore Police Force is empowered under the Criminal Procedure Code or CPC to obtain any data, including TraceTogether or TT data, for criminal investigations.
 The Government is the custodian of the TT data submitted by individuals, and stringent measures are in place to safeguar`,
     sourceUrl: "https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=oral-answer-2352",
   },
@@ -2514,7 +2514,7 @@ The Government is the custodian of the TT data submitted by individuals, and str
     notableQuote: "AI is more comprehensive, and is a better reflection of an individual's means and income, regardless of source.",
     summary: `1
 Mr Leon Perera
-asked the Deputy Prime Minister and Minister for Finance in light of the effect of the COVID-19 pandemic on incomes in 2020, whether the Government will consider (i) using Singaporean citizens' CPF contribution history in 2020 as an alternative criteria to the current criteria of income earned in 2018, annual value of home, and HDB flat type to determine their eligibility for GST Vouchers and (ii) allowing self-employed persons who are not mandatorily subject to the CPF contribution scheme and who are receiving no or low income in 2020 to receive GST vouchers through reporting`,
+asked the Deputy Prime Minister and Minister for Finance in light of the effect of the COVID-19 pandemic on incomes in 2020, whether the Government will consider (i) using Singaporean citizens' CPF contribution history in 2020 as an alternative criteria to the current criteria of income earned in 2018, annual value of home, and HDB flat type to determine their eligibility for GST Vouchers and (ii) allowing self-employed persons who are not mandatorily subject to the CPF contribution scheme and who are receiving no or low income in 2020 to receive GST vouchers through reporting`,
     sourceUrl: "https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=written-answer-6772",
   },
   {
@@ -2559,11 +2559,11 @@ asked the Deputy Prime Minister and Minister for Finance in view of the recurrin
     notableQuote: "As AI technology is still nascent, MCI does not have immediate plans to introduce new laws to regulate AI.",
     summary: `4
 Mr Leon Perera
-asked the Minister for Communications and Information whether the Government is considering formulating regulations binding on artificial intelligence (AI) systems deployed locally so as to ensure the ethical and safe use of AI.
+asked the Minister for Communications and Information whether the Government is considering formulating regulations binding on artificial intelligence (AI) systems deployed locally so as to ensure the ethical and safe use of AI.
 Mr S Iswaran
-: As AI technology is still nascent, MCI does not have immediate plans to introduce new laws to regulate AI.
-However, MCI has launched several initiatives to ensure the safe and ethical use of AI, and to promote consumer trust and innovation. These include:
-(a)  A Model AI Governance Framework ("Model Framework") which translates ethical A`,
+: As AI technology is still nascent, MCI does not have immediate plans to introduce new laws to regulate AI.
+However, MCI has launched several initiatives to ensure the safe and ethical use of AI, and to promote consumer trust and innovation. These include:
+(a)  A Model AI Governance Framework ("Model Framework") which translates ethical A`,
     sourceUrl: "https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=written-answer-5800",
   },
   {
@@ -2606,11 +2606,11 @@ As a result of the digital economy, many of our top companies in the world are n
     policySignal: "强化科技驱动国防现代化",
     notableQuote: "The only way forward for SAF is to evolve, to invest in technology so that we can do more with less resources.",
     summary: `The Chairman
-: Head J, Ministry of Defence, Mr Vikram Nair.
+: Head J, Ministry of Defence, Mr Vikram Nair.
 Next Generation SAF
 Mr Vikram Nair (Sembawang)
-: Chairman, I beg to move, "That the total sum to be allocated for Head J of the Estimates be reduced by $100".
-The last year has seen global tensions rise on multiple fronts. The rivalry between China and the US is playing out on many fronts, including the South China Sea, in the context of a trade war and even over the 5G network and the next generation of technologies. The tensions between Russia and the West are also continuing, with President Putin recently declaring he is ready for`,
+: Chairman, I beg to move, "That the total sum to be allocated for Head J of the Estimates be reduced by $100".
+The last year has seen global tensions rise on multiple fronts. The rivalry between China and the US is playing out on many fronts, including the South China Sea, in the context of a trade war and even over the 5G network and the next generation of technologies. The tensions between Russia and the West are also continuing, with President Putin recently declaring he is ready for`,
     sourceUrl: "https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=budget-1306",
   },
   {
@@ -2632,8 +2632,8 @@ The last year has seen global tensions rise on multiple fronts. The rivalry bet
     summary: `5.45 pm
 Growing Our Economy
 Mr Liang Eng Hwa (Holland-Bukit Timah)
-: Mr Chairman, Sir, I beg to move, "That the total sum to be allocated for Head V of the Estimates be reduced by $100."
-As a small and open economy, Singapore can only be a price-taker in the global marketplace realistically. Staying competitive is a given but that just puts you in the starting line. We need to develop both value-adding capabilities, which I will touch on later, and, equally important, our market connectivity capabilities, so that we can sell our products and services to the consumers of the world. Having both`,
+: Mr Chairman, Sir, I beg to move, "That the total sum to be allocated for Head V of the Estimates be reduced by $100."
+As a small and open economy, Singapore can only be a price-taker in the global marketplace realistically. Staying competitive is a given but that just puts you in the starting line. We need to develop both value-adding capabilities, which I will touch on later, and, equally important, our market connectivity capabilities, so that we can sell our products and services to the consumers of the world. Having both`,
     sourceUrl: "https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=budget-1308",
   },
   {
@@ -2654,7 +2654,7 @@ As a small and open economy, Singapore can only be a price-taker in the global m
     notableQuote: "Government agencies sometimes need to disclose personal data in the public interest, to counter inaccuracies about the Government’s processes or policies.",
     summary: `11
 Assoc Prof Walter Theseira
-asked the Prime Minister when individuals publicise complaints or petitions to Government agencies which may contain inaccuracies (a) what are the considerations behind whether Government agencies may publicly disclose identifying information and personal details of these individuals; (b) what safeguards exist to ensure that only the minimum personal information is disclosed to establish the facts of the case; and (c) what can be done to ensure that individuals with genuine grievances or unmet needs are not deterred from seeking help publicly
+asked the Prime Minister when individuals publicise complaints or petitions to Government agencies which may contain inaccuracies (a) what are the considerations behind whether Government agencies may publicly disclose identifying information and personal details of these individuals; (b) what safeguards exist to ensure that only the minimum personal information is disclosed to establish the facts of the case; and (c) what can be done to ensure that individuals with genuine grievances or unmet needs are not deterred from seeking help publicly
 The Senior Minister o`,
     sourceUrl: "https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=oral-answer-2113",
   },
@@ -2676,10 +2676,10 @@ The Senior Minister o`,
     notableQuote: "The Advisory Council on the Ethical Use of AI and Data was formed in 2018 to provide guidance to the Government on the responsible development and deployment of AI.",
     summary: `21
 Mr Murali Pillai
-asked the Minister for Communications and Information whether he can provide an update on the work of the advisory council set up in 2018 to promote the ethical collection and use of data obtained from persons without their specific knowledge or consent for commercial use.
+asked the Minister for Communications and Information whether he can provide an update on the work of the advisory council set up in 2018 to promote the ethical collection and use of data obtained from persons without their specific knowledge or consent for commercial use.
 Mr S Iswaran
-: The Advisory Council on the Ethical Use of AI and Data was formed in 2018 to provide guidance to the Government on the responsible development and deployment of AI.
-It has made a good start in helping organisations improve their AI governance practices. It obtained industry views and advise`,
+: The Advisory Council on the Ethical Use of AI and Data was formed in 2018 to provide guidance to the Government on the responsible development and deployment of AI.
+It has made a good start in helping organisations improve their AI governance practices. It obtained industry views and advise`,
     sourceUrl: "https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=written-answer-5627",
   },
   {
@@ -2700,9 +2700,9 @@ It has made a good start in helping organisations improve their AI governance pr
     notableQuote: "If Singapore sits back and does nothing, we will almost certainly be left behind.",
     summary: `13
 Mr Patrick Tay Teck Guan
-asked the Minister for Trade and Industry in light of the current economic conditions and our focus on hiring, developing and strengthening the Singaporean Core, whether there is a need for the Tech@SG programme which facilitates technology firms in the hiring of foreign talent.
+asked the Minister for Trade and Industry in light of the current economic conditions and our focus on hiring, developing and strengthening the Singaporean Core, whether there is a need for the Tech@SG programme which facilitates technology firms in the hiring of foreign talent.
 The Minister for Trade and Industry (Mr Chan Chun Sing)
-: Mr Speaker, Sir, deep tech industries and companies are the lynchpin for the future economy. Digital technologies have transformed the way we work and live. Today, technology companies are among the fastest growing in the world and oc`,
+: Mr Speaker, Sir, deep tech industries and companies are the lynchpin for the future economy. Digital technologies have transformed the way we work and live. Today, technology companies are among the fastest growing in the world and oc`,
     sourceUrl: "https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=oral-answer-2047",
   },
   {
@@ -2723,7 +2723,7 @@ The Minister for Trade and Industry (Mr Chan Chun Sing)
     notableQuote: "The PSGA criminalises the acts of unauthorised disclosure of data, misuse of data and the re-identification of individuals from anonymised data.",
     summary: `1
 Ms Irene Quay Siew Ching
-asked the Prime Minister with regard to public agencies' exemption from the Personal Data Protection Act (a) whether he can list out the specific clauses in the current laws and instruction manuals that provide for public agencies' accountability on data breaches (not misuse of data) in public IT systems; and (b) whether he can explain how these clauses in the laws collectively impose a high standard of responsibility on all public agencies.
+asked the Prime Minister with regard to public agencies' exemption from the Personal Data Protection Act (a) whether he can list out the specific clauses in the current laws and instruction manuals that provide for public agencies' accountability on data breaches (not misuse of data) in public IT systems; and (b) whether he can explain how these clauses in the laws collectively impose a high standard of responsibility on all public agencies.
 Mr Teo Chee Hean (for the Prime Minister):
 Public agencies and their officers are subject to data protection provisions set out`,
     sourceUrl: "https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=written-answer-4736",
@@ -2746,10 +2746,10 @@ Public agencies and their officers are subject to data protection provisions set
     notableQuote: "Public sector agencies have to comply with the Government Instruction Manuals and the Public Sector (Governance) Act.",
     summary: `13
 Ms Sylvia Lim
-asked the Minister for Communications and Information regarding the recent data leak of more than 800,000 blood donors' personal information from the database of HSA (a) what is the role of the Personal Data Protection Commission in investigating this incident; and (b) whether any review is being done to ascertain whether HSA has acted reasonably in protecting the personal data including whether the contractual obligations between HSA and its IT vendor reasonably safeguarded the personal information entrusted to these parties.
+asked the Minister for Communications and Information regarding the recent data leak of more than 800,000 blood donors' personal information from the database of HSA (a) what is the role of the Personal Data Protection Commission in investigating this incident; and (b) whether any review is being done to ascertain whether HSA has acted reasonably in protecting the personal data including whether the contractual obligations between HSA and its IT vendor reasonably safeguarded the personal information entrusted to these parties.
 14
 Ms Irene Quay Siew Ching
-asked the Minister for`,
+asked the Minister for`,
     sourceUrl: "https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=oral-answer-1955",
   },
   {
@@ -2774,8 +2774,8 @@ Digital Economy
 –
 For Businesses
 Mr Cedric Foo Chee Keng (Pioneer)
-: Mr Chairman, Sir, I beg to move, "That the total sum to be allocated for Head Q of the Estimates be reduced by $100".
-One of the basic building blocks of a strong nation is a vibrant economy. An economy that is driven by competitive companies with skilled and creative employees, and underpinned by an efficient infrastructure. Strong business and productivity growth are pre-conditions for higher wages for our workers. Hence, it is critically impo`,
+: Mr Chairman, Sir, I beg to move, "That the total sum to be allocated for Head Q of the Estimates be reduced by $100".
+One of the basic building blocks of a strong nation is a vibrant economy. An economy that is driven by competitive companies with skilled and creative employees, and underpinned by an efficient infrastructure. Strong business and productivity growth are pre-conditions for higher wages for our workers. Hence, it is critically impo`,
     sourceUrl: "https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=budget-1131",
   },
   {
@@ -2872,7 +2872,7 @@ The global operating environment is evolving rapidly. There are many growth oppo
     notableQuote: "We will not allow foreign government vessels to assert any authority in our waters.",
     summary: `4
 Assoc Prof Walter Theseira
-asked the Minister for Foreign Affairs (a) whether the Malaysian government's detention of Greek vessel Piraes and crew, which collided with the Malaysian vessel Polaris in Singapore territorial waters, represents an exercise of foreign sovereignty in Singapore territorial waters; and (b) what measures can be taken to ensure that vessels, crew and passengers, particularly Singapore-flagged, will not be subject to foreign authority whilst in Singapore territorial waters or for acts committed in Singapore territorial waters.
+asked the Minister for Foreign Affairs (a) whether the Malaysian government's detention of Greek vessel Piraes and crew, which collided with the Malaysian vessel Polaris in Singapore territorial waters, represents an exercise of foreign sovereignty in Singapore territorial waters; and (b) what measures can be taken to ensure that vessels, crew and passengers, particularly Singapore-flagged, will not be subject to foreign authority whilst in Singapore territorial waters or for acts committed in Singapore territorial waters.
 The Minister for Foreign Affairs (Dr Vivia`,
     sourceUrl: "https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=oral-answer-1935",
   },
@@ -2894,10 +2894,10 @@ The Minister for Foreign Affairs (Dr Vivia`,
     notableQuote: "what specific measures will be taken to reduce the spread of, and access to, the personal data and HIV status of the affected persons",
     summary: `1
 Ms Anthea Ong
-asked the Minister for Health with the data leak involving 14,200 people with HIV, what specific measures will be taken to (i) reduce the spread of, and access to, the personal data and HIV status of the affected persons (ii) ensure that the psychosocial welfare of these persons are protected in view of the stigmatisation and discrimination that exists at the workplace and in society and (iii) ensure that this incident does not negate years of painstaking efforts in providing a safe climate for people to come forward for HIV testing.
+asked the Minister for Health with the data leak involving 14,200 people with HIV, what specific measures will be taken to (i) reduce the spread of, and access to, the personal data and HIV status of the affected persons (ii) ensure that the psychosocial welfare of these persons are protected in view of the stigmatisation and discrimination that exists at the workplace and in society and (iii) ensure that this incident does not negate years of painstaking efforts in providing a safe climate for people to come forward for HIV testing.
 2
 Mr Leon Perera
-asked the Minister for Heal`,
+asked the Minister for Heal`,
     sourceUrl: "https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=oral-answer-1900",
   },
   {
@@ -2918,9 +2918,9 @@ asked the Minister for Heal`,
     notableQuote: "Because of these important differences, we need and have adopted different approaches to the protection of personal data in the public and in the private sectors.",
     summary: `12
 Ms Sylvia Lim
-asked the Minister for Communications and Information given the gravity of data protection breaches in the public sector, whether the Personal Data Protection Act should be amended to remove the exemptions for public agencies.
+asked the Minister for Communications and Information given the gravity of data protection breaches in the public sector, whether the Personal Data Protection Act should be amended to remove the exemptions for public agencies.
 The Minister for Communications and Information (Mr S Iswaran)
-: Mr Speaker, the Personal Data Protection Act (PDPA) came into force in 2012. With the gathering pace of digitalisation, we recognised the need to strengthen data protection in the private sector. The PDPA establishes a baseline standard for data protection in the private sector, balanced ag`,
+: Mr Speaker, the Personal Data Protection Act (PDPA) came into force in 2012. With the gathering pace of digitalisation, we recognised the need to strengthen data protection in the private sector. The PDPA establishes a baseline standard for data protection in the private sector, balanced ag`,
     sourceUrl: "https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=oral-answer-1902",
   },
   {
@@ -2944,7 +2944,7 @@ The Minister for Communications and Information (Mr S Iswaran)
 [(proc text) "That the total sum to be allocated for Head Q of the Estimates to be reduced by $100." – [Mr Zaqy Mohamad.] (proc text)]
 [(proc text) Question again proposed. (proc text)]
 The Chairman
-: Order. In view of the Statement made in Parliament earlier on and the amount of time used, I will now revise the guillotine time for Head Q – Ministry of Communications and Information to 11.40 am. Hon Members will be notified of the revised conclusion times for the subsequent Heads of Expenditure. Head Q –`,
+: Order. In view of the Statement made in Parliament earlier on and the amount of time used, I will now revise the guillotine time for Head Q – Ministry of Communications and Information to 11.40 am. Hon Members will be notified of the revised conclusion times for the subsequent Heads of Expenditure. Head Q –`,
     sourceUrl: "https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=budget-832",
   },
   {
@@ -2965,7 +2965,7 @@ The Chairman
     notableQuote: "The Ministry has launched several initiatives to help the various industries transform and thrive in the digital era.",
     summary: `Gearing the Economy for a Digital Future
 Mr Zaqy Mohamad (Chua Chu Kang)
-: Sir, I beg to move, "That the total sum to be allocated for Head Q of the Estimates be reduced by $100".
+: Sir, I beg to move, "That the total sum to be allocated for Head Q of the Estimates be reduced by $100".
 Thank you, Sir, for allowing me to speak on the Digital Economy, which presents many opportunities for Singapore and Singaporeans.
 We are living in a world where industries and businesses are swarmed by digital disruption. Yet, the infocomm industry and technology-based startups that have emerged could form a key growth sector of our future economy, as it provides good jobs, stronger businesses and a better quality o`,
     sourceUrl: "https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=budget-842",
@@ -3035,10 +3035,10 @@ Young Singaporeans increasingly recognise entrepreneurship as a viable career pa
     notableQuote: "The regulatory approach would thus also have to be domain-specific.",
     summary: `7
 Mr Patrick Tay Teck Guan
-asked the Prime Minister with the advent and drive towards the use of artificial intelligence and autonomous machines, whether new laws and regulations will be promulgated or existing ones reviewed to ensure we address the issues of ethics, morality, provision of kill switches as well as liability.
+asked the Prime Minister with the advent and drive towards the use of artificial intelligence and autonomous machines, whether new laws and regulations will be promulgated or existing ones reviewed to ensure we address the issues of ethics, morality, provision of kill switches as well as liability.
 8
 Dr Tan Wu Meng
-asked the Prime Minister what policy principles and legal frameworks are being developed to update Singapore's governance and laws to address the issues arising from autonomous algorithms and devices.
+asked the Prime Minister what policy principles and legal frameworks are being developed to update Singapore's governance and laws to address the issues arising from autonomous algorithms and devices.
 The Senior Minister of State for Communications and Inf`,
     sourceUrl: "https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=oral-answer-1504",
   },

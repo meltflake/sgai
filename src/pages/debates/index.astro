@@ -76,7 +76,7 @@ const maxCount = Math.max(...Object.values(DEBATE_STATS.byYear));
 
 // Compute real debate counts per controversy topic (build-time)
 const controversyDebateCounts = RECURRING_CONTROVERSIES.map(c => {
-  const relTopics = (c as any).relatedTopics as string[] || [];
+  const relTopics = (c as { relatedTopics: string[] }).relatedTopics || [];
   return debates.filter(d => relTopics.some(t => d.topics.includes(t))).length;
 });
 
@@ -208,7 +208,7 @@ const debatesJson = JSON.stringify(debates.map(d => ({
       <div class="grid md:grid-cols-2 gap-4">
         {RECURRING_CONTROVERSIES.map(c => (
           <button
-            onclick={`filterBy('topics','${((c as any).relatedTopics as string[]).join(',')}')`}
+            onclick={`filterBy('topics','${((c as { relatedTopics: string[] }).relatedTopics).join(',')}')`}
             class="text-left bg-white dark:bg-slate-800 rounded-xl p-5 shadow-sm border border-gray-100 dark:border-slate-700 hover:border-orange-400 hover:shadow-md transition-all group"
           >
             <div class="flex items-start justify-between mb-3">
