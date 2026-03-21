@@ -5,7 +5,7 @@
 
 🌟 _Most *starred* & *forked* Astro theme in 2022, 2023 & 2024_. 🌟
 
-**AsSG AI 观察是一个专注于新加坡人工智能发展的非官方信息平台，基于 AstroWind 模板构建。
+\*\*AsSG AI 观察是一个专注于新加坡人工智能发展的非官方信息平台，基于 AstroWind 模板构建。
 
 - ✅ **Production-ready** scores in **PageSpeed Insights** reports.
 - ✅ Integration with **Tailwind CSS** supporting **Dark mode** and **_RTL_**.
