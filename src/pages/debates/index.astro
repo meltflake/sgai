@@ -164,6 +164,41 @@ const debatesJson = JSON.stringify(
       }
     </div>
 
+    <!-- ===== YEAR TREND — clickable bars ===== -->
+    <section class="mb-12">
+      <h2 class="text-xl font-bold text-gray-800 dark:text-white mb-2 flex items-center gap-2">
+        <span>📅</span> 历年辩论趋势
+      </h2>
+      <p class="text-sm text-gray-400 mb-5">点击任意年份柱状图，查看该年所有辩论</p>
+      <div class="bg-white dark:bg-slate-800 rounded-xl p-6 shadow-sm border border-gray-100 dark:border-slate-700">
+        <div class="flex items-end gap-2 h-40">
+          {
+            Object.entries(DEBATE_STATS.byYear)
+              .sort()
+              .map(([year, count]) => (
+                <button
+                  onclick={`filterBy('year','${year}')`}
+                  class="flex-1 flex flex-col items-center gap-1 group"
+                  title={`${year}年：${count} 条辩论，点击查看`}
+                >
+                  <span class="text-xs text-gray-500 font-medium group-hover:text-blue-600 transition-colors">
+                    {count}
+                  </span>
+                  <div
+                    class="w-full bg-gradient-to-t from-blue-500 to-purple-400 rounded-t-sm transition-all group-hover:from-blue-600 group-hover:to-purple-500 group-hover:scale-105 origin-bottom"
+                    style={`height: ${Math.round((count / maxCount) * 120)}px; min-height: 4px;`}
+                  />
+                  <span class="text-xs text-gray-400 group-hover:text-blue-600 transition-colors">{year.slice(2)}</span>
+                </button>
+              ))
+          }
+        </div>
+        <p class="text-xs text-gray-400 mt-3 text-center">
+          2023 年起 AI 相关辩论数量急剧增加，反映政策关注度的爆发式增长
+        </p>
+      </div>
+    </section>
+
     <!-- ===== INSIGHTS SECTION ===== -->
     <section class="mb-12">
       <h2 class="text-xl font-bold text-gray-800 dark:text-white mb-5 flex items-center gap-2">
@@ -403,41 +438,6 @@ const debatesJson = JSON.stringify(
             </button>
           ))
         }
-      </div>
-    </section>
-
-    <!-- ===== YEAR TREND — clickable bars ===== -->
-    <section class="mb-12">
-      <h2 class="text-xl font-bold text-gray-800 dark:text-white mb-2 flex items-center gap-2">
-        <span>📅</span> 历年辩论趋势
-      </h2>
-      <p class="text-sm text-gray-400 mb-5">点击任意年份柱状图，查看该年所有辩论</p>
-      <div class="bg-white dark:bg-slate-800 rounded-xl p-6 shadow-sm border border-gray-100 dark:border-slate-700">
-        <div class="flex items-end gap-2 h-40">
-          {
-            Object.entries(DEBATE_STATS.byYear)
-              .sort()
-              .map(([year, count]) => (
-                <button
-                  onclick={`filterBy('year','${year}')`}
-                  class="flex-1 flex flex-col items-center gap-1 group"
-                  title={`${year}年：${count} 条辩论，点击查看`}
-                >
-                  <span class="text-xs text-gray-500 font-medium group-hover:text-blue-600 transition-colors">
-                    {count}
-                  </span>
-                  <div
-                    class="w-full bg-gradient-to-t from-blue-500 to-purple-400 rounded-t-sm transition-all group-hover:from-blue-600 group-hover:to-purple-500 group-hover:scale-105 origin-bottom"
-                    style={`height: ${Math.round((count / maxCount) * 120)}px; min-height: 4px;`}
-                  />
-                  <span class="text-xs text-gray-400 group-hover:text-blue-600 transition-colors">{year.slice(2)}</span>
-                </button>
-              ))
-          }
-        </div>
-        <p class="text-xs text-gray-400 mt-3 text-center">
-          2023 年起 AI 相关辩论数量急剧增加，反映政策关注度的爆发式增长
-        </p>
       </div>
     </section>
 
