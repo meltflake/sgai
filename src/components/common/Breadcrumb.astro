@@ -1,0 +1,51 @@
+---
+import { SITE } from 'astrowind:config';
+import { getPermalink } from '~/utils/permalinks';
+
+export interface BreadcrumbItem {
+  label: string;
+  href?: string;
+}
+
+export interface Props {
+  items: BreadcrumbItem[];
+}
+
+const { items } = Astro.props;
+
+const homeItem = { label: '首页', href: getPermalink('/') };
+const allItems = [homeItem, ...items];
+
+const siteUrl = SITE?.site || 'https://meltflake.com';
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: allItems.map((item, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    name: item.label,
+    ...(item.href ? { item: `${siteUrl}${item.href}` } : {}),
+  })),
+};
+---
+
+<nav aria-label="Breadcrumb" class="max-w-6xl mx-auto px-4 sm:px-6 pt-4 pb-2">
+  <ol class="flex flex-wrap items-center gap-1 text-sm text-gray-500 dark:text-gray-400">
+    {
+      allItems.map((crumb, index) => (
+        <li class="flex items-center">
+          {index > 0 && <span class="mx-1">/</span>}
+          {crumb.href && index < allItems.length - 1 ? (
+            <a href={crumb.href} class="hover:text-primary dark:hover:text-blue-400 transition-colors">
+              {crumb.label}
+            </a>
+          ) : (
+            <span class="text-gray-700 dark:text-gray-300">{crumb.label}</span>
+          )}
+        </li>
+      ))
+    }
+  </ol>
+</nav>
+<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />

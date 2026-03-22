@@ -6,13 +6,16 @@ import Announcement from '~/components/widgets/Announcement.astro';
 
 import { headerData, footerData } from '~/navigation';
 
+import Breadcrumb from '~/components/common/Breadcrumb.astro';
+import type { BreadcrumbItem } from '~/components/common/Breadcrumb.astro';
 import type { MetaData } from '~/types';
 
 export interface Props {
   metadata?: MetaData;
+  breadcrumbs?: BreadcrumbItem[];
 }
 
-const { metadata } = Astro.props;
+const { metadata, breadcrumbs } = Astro.props;
 ---
 
 <Layout metadata={metadata}>
@@ -23,6 +26,7 @@ const { metadata } = Astro.props;
     <Header {...headerData} isSticky showRssFeed showToggleTheme />
   </slot>
   <main>
+    {breadcrumbs && breadcrumbs.length > 0 && <Breadcrumb items={breadcrumbs} />}
     <slot />
   </main>
   <slot name="footer">

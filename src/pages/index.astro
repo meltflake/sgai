@@ -4,16 +4,38 @@ import Hero from '~/components/widgets/Hero.astro';
 import Features from '~/components/widgets/Features.astro';
 import Stats from '~/components/widgets/Stats.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
+import JsonLd from '~/components/common/JsonLd.astro';
 import { stats, features } from '~/data/stats';
 import { DEBATE_STATS, KEY_INSIGHTS } from '~/data/debates';
 
 const metadata = {
   title: 'SG AI 观察',
   ignoreTitleTemplate: true,
+  description: '深度观察新加坡 AI 生态与战略——追踪核心政策、国会辩论、创业生态与关键指标，独立视角的中文分析平台。',
+};
+
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'SG AI 观察',
+  url: 'https://meltflake.com/aisg/',
+  logo: 'https://meltflake.com/aisg/favicon.svg',
+  description: '深度观察新加坡 AI 生态与战略的中文分析平台',
+  sameAs: ['https://github.com/meltflake/aisg'],
+};
+
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'SG AI 观察',
+  url: 'https://meltflake.com/aisg/',
+  inLanguage: 'zh-CN',
 };
 ---
 
 <Layout metadata={metadata}>
+  <JsonLd schema={organizationSchema} />
+  <JsonLd schema={websiteSchema} />
   <Hero
     actions={[
       {

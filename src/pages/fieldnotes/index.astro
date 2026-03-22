@@ -4,7 +4,13 @@ import Headline from '~/components/ui/Headline.astro';
 import { fieldNotes } from '~/data/fieldnotes';
 ---
 
-<Layout metadata={{ title: '实战经验' }}>
+<Layout
+  metadata={{
+    title: '实战经验',
+    description: '在新加坡从事 AI 工作的一线观察与实战经验分享，按主题聚合，帮你少走弯路。',
+  }}
+  breadcrumbs={[{ label: '实战经验' }]}
+>
   <section class="px-4 py-16 sm:px-6 mx-auto lg:px-8 max-w-5xl">
     <Headline title="🗂️ 实战经验" subtitle="来自社区的真实落地经验。按主题聚合，匿名化处理，帮你少走弯路。" />
 

@@ -1,8 +1,12 @@
 ---
-import { getAsset } from '~/utils/permalinks';
+import { getAsset, getCanonical } from '~/utils/permalinks';
 ---
 
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#8D46E7" />
 
 <link rel="sitemap" href={getAsset('/sitemap-index.xml')} />
+<link rel="manifest" href={getAsset('/manifest.json')} />
+<link rel="alternate" hreflang="zh-CN" href={String(getCanonical(String(Astro.url.pathname)))} />
+<link rel="alternate" hreflang="x-default" href={String(getCanonical(String(Astro.url.pathname)))} />

@@ -7,6 +7,7 @@ import Layout from '~/layouts/PageLayout.astro';
 import SinglePost from '~/components/blog/SinglePost.astro';
 import ToBlogLink from '~/components/blog/ToBlogLink.astro';
 
+import JsonLd from '~/components/common/JsonLd.astro';
 import { getCanonical, getPermalink } from '~/utils/permalinks';
 import { getStaticPathsBlogPost, blogPostRobots } from '~/utils/blog';
 import { findImage } from '~/utils/images';
@@ -43,9 +44,29 @@ const metadata = merge(
   },
   { ...(post?.metadata ? { ...post.metadata, canonical: post.metadata?.canonical || url } : {}) }
 ) as MetaData;
+
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: post.title,
+  description: post.excerpt || '',
+  datePublished: post.publishDate ? new Date(post.publishDate).toISOString() : undefined,
+  ...(post.updateDate ? { dateModified: new Date(post.updateDate).toISOString() } : {}),
+  author: { '@type': 'Organization', name: 'SG AI 观察' },
+  publisher: {
+    '@type': 'Organization',
+    name: 'SG AI 观察',
+    logo: { '@type': 'ImageObject', url: 'https://meltflake.com/aisg/favicon.svg' },
+  },
+  mainEntityOfPage: { '@type': 'WebPage', '@id': String(url) },
+  inLanguage: 'zh-CN',
+};
+
+const breadcrumbs = [{ label: '深度分析', href: getPermalink('/blog') }, { label: post.title }];
 ---
 
-<Layout metadata={metadata}>
+<Layout metadata={metadata} breadcrumbs={breadcrumbs}>
+  <JsonLd schema={articleSchema} />
   <SinglePost post={{ ...post, image: image }} url={url}>
     {post.Content ? <post.Content /> : <Fragment set:html={post.content || ''} />}
   </SinglePost>

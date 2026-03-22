@@ -4,7 +4,13 @@ import Headline from '~/components/ui/Headline.astro';
 import { regions, regionDetails, insights, dataDate, dataDisclaimer } from '~/data/benchmarking';
 ---
 
-<Layout metadata={{ title: '国际对标' }}>
+<Layout
+  metadata={{
+    title: '国际对标',
+    description: '新加坡 AI 战略国际对标——与美国、英国、中国、欧盟等主要经济体的对比分析。',
+  }}
+  breadcrumbs={[{ label: '国际对标' }]}
+>
   <section class="px-4 py-16 sm:px-6 mx-auto lg:px-8 max-w-6xl">
     <Headline title="🌏 国际对标" subtitle="新加坡与全球先进经济体的 AI 战略对比" />
 
