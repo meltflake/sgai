@@ -80,6 +80,20 @@ const controversyDebateCounts = RECURRING_CONTROVERSIES.map((c) => {
   return debates.filter((d) => relTopics.some((t) => d.topics.includes(t))).length;
 });
 
+// Build-time: compute speakers with 3+ appearances, sorted by frequency
+const speakerCounts = new Map<string, number>();
+for (const d of debates) {
+  for (const s of d.speakers) {
+    if (s && s.length > 1) {
+      speakerCounts.set(s, (speakerCounts.get(s) || 0) + 1);
+    }
+  }
+}
+const frequentSpeakers = [...speakerCounts.entries()]
+  .filter(([, count]) => count >= 3)
+  .sort((a, b) => b[1] - a[1])
+  .map(([name, count]) => ({ name, count }));
+
 const debatesJson = JSON.stringify(
   debates.map((d) => ({
     id: d.id,
@@ -523,6 +537,19 @@ const debatesJson = JSON.stringify(
         </div>
         <div class="flex gap-3 mt-3 flex-wrap">
           <select
+            id="speaker-filter"
+            class="border border-gray-200 dark:border-slate-600 rounded-lg px-3 py-2 text-sm bg-white dark:bg-slate-700 text-gray-800 dark:text-gray-200"
+          >
+            <option value="">所有议员</option>
+            {
+              frequentSpeakers.map((sp) => (
+                <option value={sp.name}>
+                  {sp.name}（{sp.count}）
+                </option>
+              ))
+            }
+          </select>
+          <select
             id="year-filter"
             class="border border-gray-200 dark:border-slate-600 rounded-lg px-3 py-2 text-sm bg-white dark:bg-slate-700 text-gray-800 dark:text-gray-200"
           >
@@ -543,12 +570,6 @@ const debatesJson = JSON.stringify(
             <option value="3">中等（3级）</option>
             <option value="1">低争议（1-2级）</option>
           </select>
-          <input
-            id="speaker-filter"
-            type="text"
-            placeholder="按议员姓名筛选..."
-            class="border border-gray-200 dark:border-slate-600 rounded-lg px-3 py-2 text-sm bg-white dark:bg-slate-700 text-gray-800 dark:text-gray-200"
-          />
           <div id="result-count" class="text-sm text-gray-500 self-center ml-auto"></div>
         </div>
       </div>
@@ -594,7 +615,7 @@ const debatesJson = JSON.stringify(
     setSelectValue('topic-filter', '');
     setSelectValue('year-filter', '');
     setSelectValue('controversy-filter', '');
-    setInputValue('speaker-filter', '');
+    setSelectValue('speaker-filter', '');
 
     if (dimension === 'type') {
       activeFilters.type = value;
@@ -607,7 +628,7 @@ const debatesJson = JSON.stringify(
       setSelectValue('year-filter', value);
     } else if (dimension === 'speaker') {
       activeFilters.speaker = value;
-      setInputValue('speaker-filter', value);
+      setSelectValue('speaker-filter', value);
     } else if (dimension === 'topics') {
       // Multi-topic OR filter (from controversy clicks)
       activeFilters.topicsOr = value
@@ -653,7 +674,7 @@ const debatesJson = JSON.stringify(
     setSelectValue('topic-filter', '');
     setSelectValue('year-filter', '');
     setSelectValue('controversy-filter', '');
-    setInputValue('speaker-filter', '');
+    setSelectValue('speaker-filter', '');
     applyFilters();
   };
 
@@ -849,7 +870,7 @@ const debatesJson = JSON.stringify(
     const topic = document.getElementById('topic-filter')?.value || '';
     const year = document.getElementById('year-filter')?.value || '';
     const controversy = document.getElementById('controversy-filter')?.value || '';
-    const speaker = document.getElementById('speaker-filter')?.value.toLowerCase() || '';
+    const speaker = document.getElementById('speaker-filter')?.value || '';
 
     // Sync activeFilters from inputs
     activeFilters.search = search;
@@ -884,7 +905,7 @@ const debatesJson = JSON.stringify(
       filtered = filtered.filter((d) => activeFilters.topicsOr.some((t) => (d.topics || []).includes(t)));
     }
     if (year) filtered = filtered.filter((d) => d.date.startsWith(year));
-    if (speaker) filtered = filtered.filter((d) => (d.speakers || []).some((s) => s.toLowerCase().includes(speaker)));
+    if (speaker) filtered = filtered.filter((d) => (d.speakers || []).includes(speaker));
 
     // Year range filter (from policy evolution clicks)
     if (activeFilters._yearRange) {
@@ -908,14 +929,14 @@ const debatesJson = JSON.stringify(
   document.addEventListener('DOMContentLoaded', () => {
     renderDebates(debates);
 
-    ['search-input', 'speaker-filter'].forEach((id) => {
+    ['search-input'].forEach((id) => {
       document.getElementById(id)?.addEventListener('input', () => {
         activeFilters._yearRange = null;
         applyFilters();
       });
     });
 
-    ['type-filter', 'year-filter', 'controversy-filter'].forEach((id) => {
+    ['type-filter', 'year-filter', 'controversy-filter', 'speaker-filter'].forEach((id) => {
       document.getElementById(id)?.addEventListener('change', () => {
         activeFilters._yearRange = null;
         applyFilters();
