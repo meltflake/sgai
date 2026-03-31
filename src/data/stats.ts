@@ -5,7 +5,7 @@ export const stats = [
   { title: '追踪指标', amount: '42' },
   { title: '专题页面', amount: '16' },
   { title: '对标地区', amount: '10' },
-  { title: 'AI 视频', amount: '35' },
+  { title: 'AI 视频', amount: '46' },
 ];
 
 export const features = [

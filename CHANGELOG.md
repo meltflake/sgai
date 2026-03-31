@@ -1,5 +1,29 @@
 # Changelog
 
+## 0.0.16 — 2026-04-01
+
+### Feature: AI 视频观点页面
+
+- **新页面：AI 视频观点** (`/videos/`) — 收录新加坡政府官员、学者和行业领袖关于 AI 的 YouTube 演讲与访谈
+  - 46 条视频，覆盖 2019–2026 年
+  - 按 5 大主题分类：AI 战略与愿景、AI 治理与监管、AI 人才与教育、AI 产业与应用、国际合作与对标
+  - 三维筛选：主题 / 年份 / 演讲者类型（政府官员 / 学者 / 行业领袖）
+  - 统计行：视频总数、演讲者人数、覆盖年份
+  - 卡片式展示：中文标题、演讲者、身份、日期、时长、摘要、来源频道
+  - 点击跳转 YouTube 观看
+- 新数据文件：`src/data/videos.ts`，含 `VideoItem` / `VideoCategory` 接口
+- 导航栏「AI 追踪」分组新增「AI 视频观点」入口（头部 + 底部）
+- 首页统计新增 AI 视频数量，features 新增视频观点板块
+
+### Chore: YouTube 视频采集脚本
+
+- 新增 `scripts/videos/` 目录，基于 YouTube RSS feed 的频道扫描脚本
+  - `01_scan_channels.py` — 扫描 7 个 YouTube 频道，用关键词过滤 AI 相关视频，支持按天数和频道筛选
+  - `02_review_and_merge.py` — 交互式审核候选视频，生成 TypeScript 代码片段
+  - 监控频道：CNA、The Straits Times、govsg、Smart Nation、AI Singapore、WEF、Bloomberg
+  - 无需 API key，依赖 `requests` + `feedparser`
+- Bumped version to 0.0.16
+
 ## 0.0.11 — 2026-03-01
 
 ### Feature: 国会 AI 焦点页面全面升级
