@@ -3,8 +3,9 @@ import { getPermalink } from '~/utils/permalinks';
 export const stats = [
   { title: '核心政策', amount: '20' },
   { title: '追踪指标', amount: '42' },
-  { title: '专题页面', amount: '15' },
+  { title: '专题页面', amount: '16' },
   { title: '对标地区', amount: '10' },
+  { title: 'AI 视频', amount: '35' },
 ];
 
 export const features = [
@@ -49,5 +50,10 @@ export const features = [
     description: '不只是信息整理——我们提出自己的观点。从能源枢纽类比到制度护城河，探究新加坡 AI 战略的底层逻辑。',
     icon: 'tabler:pencil',
     callToAction: { text: '阅读分析', href: getPermalink('/blog') },
+  },
+  {
+    title: 'AI 视频观点',
+    description: '新加坡政府官员、学者和行业领袖关于 AI 的 YouTube 演讲与访谈，按主题分类，支持筛选。',
+    icon: 'tabler:player-play',
   },
 ];
