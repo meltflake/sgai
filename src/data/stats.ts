@@ -55,10 +55,12 @@ export const features = [
     title: 'AI 视频观点',
     description: '新加坡政府官员、学者和行业领袖关于 AI 的 YouTube 演讲与访谈，按主题分类，支持筛选。',
     icon: 'tabler:player-play',
+    callToAction: { text: '查看视频', href: getPermalink('/videos') },
   },
   {
     title: 'AI 影响力图谱',
     description: '新加坡 AI 关键人物与核心机构的官方信息渠道，及 56 篇 MDDI AI 相关演讲稿全文链接。',
     icon: 'tabler:users',
+    callToAction: { text: '查看图谱', href: getPermalink('/voices') },
   },
 ];
