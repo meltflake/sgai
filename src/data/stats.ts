@@ -3,7 +3,7 @@ import { getPermalink } from '~/utils/permalinks';
 export const stats = [
   { title: '核心政策', amount: '20' },
   { title: '追踪指标', amount: '42' },
-  { title: '专题页面', amount: '16' },
+  { title: '专题页面', amount: '17' },
   { title: '对标地区', amount: '10' },
   { title: 'AI 视频', amount: '46' },
 ];
@@ -55,5 +55,10 @@ export const features = [
     title: 'AI 视频观点',
     description: '新加坡政府官员、学者和行业领袖关于 AI 的 YouTube 演讲与访谈，按主题分类，支持筛选。',
     icon: 'tabler:player-play',
+  },
+  {
+    title: 'AI 影响力图谱',
+    description: '新加坡 AI 关键人物与核心机构的官方信息渠道，及 56 篇 MDDI AI 相关演讲稿全文链接。',
+    icon: 'tabler:users',
   },
 ];

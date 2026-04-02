@@ -21,6 +21,7 @@ export const headerData = {
         { text: '产学研开源生态', href: getPermalink('/community-opensource') },
         { text: 'AI 创业生态', href: getPermalink('/startups') },
         { text: 'AI 视频观点', href: getPermalink('/videos') },
+        { text: 'AI 影响力图谱', href: getPermalink('/voices') },
       ],
     },
     {
@@ -56,6 +57,7 @@ export const footerData = {
         { text: '产学研开源生态', href: getPermalink('/community-opensource') },
         { text: 'AI 创业生态', href: getPermalink('/startups') },
         { text: 'AI 视频观点', href: getPermalink('/videos') },
+        { text: 'AI 影响力图谱', href: getPermalink('/voices') },
       ],
     },
     {

@@ -1,5 +1,25 @@
 # Changelog
 
+## 0.0.17 — 2026-04-02
+
+### Feature: AI 影响力图谱页面
+
+- **新页面：AI 影响力图谱** (`/voices/`) — 新加坡 AI 领域关键人物与核心机构信息渠道
+  - 7 位关键人物：杨莉明、黄循财、维文、尚达曼、陈杰豪、何德华、刘劲松
+  - 6 个核心机构：MDDI、IMDA、AI Singapore、Smart Nation、AI Verify Foundation、PDPC
+  - 每个人物/机构展示所有官方信息渠道（Twitter、LinkedIn、Facebook、官网等），标注主力渠道
+  - 56 篇 MDDI AI 相关演讲稿全文链接（2017–2026），支持按年份和演讲者筛选
+- 新数据文件：`src/data/voices.ts`
+- 导航栏「AI 追踪」分组新增「AI 影响力图谱」入口
+
+### Chore: MDDI 演讲稿采集脚本
+
+- 新增 `scripts/voices/01_scan_mddi.py`，基于 MDDI sitemap.xml 的演讲稿采集脚本
+  - 从 sitemap 获取全部新闻室 URL，用关键词过滤 AI 相关演讲稿
+  - 自动提取标题、日期、演讲者信息
+  - 支持按年份过滤和排除已有
+- Bumped version to 0.0.17
+
 ## 0.0.16 — 2026-04-01
 
 ### Feature: AI 视频观点页面
