@@ -256,18 +256,19 @@ const videosSorted = [...videos].sort((a, b) => b.date.localeCompare(a.date));
                     rel="noopener noreferrer"
                     class="text-sm font-medium text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors leading-snug block mb-1"
                   >
-                    {speech.title}
+                    {speech.zhTitle}
                   </a>
+                  <div class="text-xs text-gray-400 dark:text-gray-500 mb-1.5 leading-snug">{speech.title}</div>
                   <div class="flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400">
                     {speech.speaker && (
                       <span class="font-medium text-gray-700 dark:text-gray-300">{speech.speaker}</span>
                     )}
                     {speech.speaker && speech.speakerTitle && <span>&middot;</span>}
                     {speech.speakerTitle && <span>{speech.speakerTitle}</span>}
-                    {speech.event && (
+                    {speech.zhEvent && (
                       <>
                         <span>&middot;</span>
-                        <span class="italic truncate">{speech.event}</span>
+                        <span class="italic truncate">{speech.zhEvent}</span>
                       </>
                     )}
                   </div>
