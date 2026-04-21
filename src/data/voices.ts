@@ -233,6 +233,26 @@ export const institutions: Institution[] = [
 
 export const mddiSpeeches: MddiSpeech[] = [
   {
+    title: 'Speech by MOS Rahayu Mahzam at the Design AI and Tech Awards 2026',
+    zhTitle: 'Rahayu Mahzam 政务次长在 2026 Design AI and Tech Awards 上的演讲',
+    speaker: 'Rahayu Mahzam',
+    speakerTitle: 'MDDI 政务次长',
+    date: '2026-04-15',
+    url: 'https://www.mddi.gov.sg/newsroom/speech-by-mos-rahayu-mahzam-at-the-design-ai-and-tech-awards-2026/',
+    event: 'Design AI and Tech Awards 2026',
+    zhEvent: '2026 Design AI and Tech Awards',
+  },
+  {
+    title: "Transcript of SMS Tan Kiat How's Keynote Speech at Singapore Computer Society (SCS) AI Conference",
+    zhTitle: '陈杰豪高级政务部长在新加坡电脑协会 AI 大会上的主旨演讲实录',
+    speaker: 'Tan Kiat How',
+    speakerTitle: 'MDDI 高级政务部长',
+    date: '2026-04-10',
+    url: 'https://www.mddi.gov.sg/newsroom/transcript-of-sms-tan-kiat-how-s-keynote-speech-at-singapore-computer-society--scs--ai-conference/',
+    event: 'Singapore Computer Society (SCS) AI Conference',
+    zhEvent: '新加坡电脑协会 (SCS) AI 大会',
+  },
+  {
     title: 'Speech by Minister Josephine Teo at the Digital Leaders Accelerator Bootcamp Launch Reception',
     zhTitle: '杨莉明部长在数码领袖加速训练营启动招待会上的演讲',
     speaker: 'Josephine Teo',

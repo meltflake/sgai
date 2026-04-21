@@ -56,6 +56,34 @@ export const SPEAKER_TYPE_LABELS: Record<string, string> = {
 
 export const videos: VideoItem[] = [
   {
+    id: 'v053',
+    title: '逾 250 名 AI 专家齐聚新加坡 共商全球测试标准',
+    speaker: 'CNA',
+    speakerTitle: '亚洲新闻台报道',
+    speakerType: 'industry',
+    date: '2026-04-20',
+    duration: '03:46',
+    summary:
+      '新加坡提出的 AI 安全测试标准成为 ISO 国际会议焦点，逾 250 名来自美、中、日、韩等国的专家与会，这是该标准工作组首次在东盟举行。目前已发布或在研的 AI 标准近百项，是一年前的三倍。',
+    topic: 'AI 治理与监管',
+    youtubeUrl: 'https://www.youtube.com/watch?v=4u0eyvFHSuI',
+    channel: 'CNA',
+  },
+  {
+    id: 'v054',
+    title: '新加坡 ONE Pass 新增 AI 与科技赛道 吸引全球顶尖人才',
+    speaker: 'CNA',
+    speakerTitle: '亚洲新闻台报道',
+    speakerType: 'industry',
+    date: '2026-04-19',
+    duration: '02:54',
+    summary:
+      'ONE Pass 新增 AI 与科技赛道，自 2023 年推出以来已吸引 8,000 余名专业人才。新版放宽条件、认可股权激励，初创与高成长公司更易引才。',
+    topic: 'AI 人才与教育',
+    youtubeUrl: 'https://www.youtube.com/watch?v=PmA-WbsHVnE',
+    channel: 'CNA',
+  },
+  {
     id: 'v001',
     title: '王乙康谈 AI、基因筛查与超老龄化新加坡的准备',
     speaker: 'Ong Ye Kung',
