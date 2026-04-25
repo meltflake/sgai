@@ -7,6 +7,8 @@ export const headerData = {
       text: '政策观察',
       links: [
         { text: '政策文件', href: getPermalink('/policies') },
+        { text: '🎯 国家 AI 抓手图谱', href: getPermalink('/levers') },
+        { text: '⚖️ AI 法律框架', href: getPermalink('/legal-ai') },
         { text: '发展时间线', href: getPermalink('/timeline') },
         { text: '生态地图', href: getPermalink('/ecosystem') },
         { text: '🏛️ 国会 AI 焦点', href: getPermalink('/debates') },
@@ -48,6 +50,8 @@ export const footerData = {
       title: '政策观察',
       links: [
         { text: '政策文件', href: getPermalink('/policies') },
+        { text: '国家 AI 抓手图谱', href: getPermalink('/levers') },
+        { text: 'AI 法律框架', href: getPermalink('/legal-ai') },
         { text: '发展时间线', href: getPermalink('/timeline') },
         { text: '生态地图', href: getPermalink('/ecosystem') },
         { text: '国会 AI 焦点', href: getPermalink('/debates') },

@@ -1,0 +1,131 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import Headline from '~/components/ui/Headline.astro';
+import { levers, transmissionExplainer, dataDate } from '~/data/levers';
+---
+
+<Layout
+  metadata={{
+    title: '国家 AI 抓手图谱',
+    description:
+      '新加坡国家级 AI-native 转型不能按部门理解，要按"AI 引入路径"理解：基建、治理、人才、应用、政府自用、外交六个抓手，跨部委的完整执行管线。',
+  }}
+  breadcrumbs={[{ label: '国家 AI 抓手图谱' }]}
+>
+  <section class="px-4 py-16 sm:px-6 mx-auto lg:px-8 max-w-6xl">
+    <Headline
+      title="🎯 国家 AI 抓手图谱"
+      subtitle={`数据更新：${dataDate}。把新加坡 Budget 2026 + 各部委的 AI 政策按"AI 引入路径"重新分类，6 个抓手跨多部委——这比按部门分类更能看出整体形状。`}
+    />
+
+    <div class="bg-blue-50 dark:bg-blue-950 border-l-4 border-blue-500 p-6 rounded-lg mb-12 text-sm leading-relaxed">
+      <p class="font-bold text-base mb-2">为什么按抓手分类？</p>
+      <p class="mb-2">
+        多数 AI 政策文章把"国家"和"企业"并列分析——错过了嵌套关系。新加坡战略的本质是<strong
+          >把整个国家当成企业 AI-native 转型的"包装层"</strong
+        >：国家自己不必成为 AI-native，只要把企业转型速度放大就够了。
+      </p>
+      <p>
+        6 个抓手按"AI 引入路径"分类（基建 → 治理 → 人才 → 应用 → 政府自用 →
+        外交）。每个抓手都跨多个部委，串起来才是完整的执行管线。
+      </p>
+    </div>
+
+    <div class="space-y-16">
+      {
+        levers.map((lever) => (
+          <div class="border border-slate-200 dark:border-slate-700 rounded-xl p-8 bg-white dark:bg-slate-900 shadow-md">
+            <div class="flex items-start gap-4 mb-6 flex-wrap">
+              <div class="text-5xl">{lever.icon}</div>
+              <div class="flex-1 min-w-[280px]">
+                <div class="flex items-center gap-3 flex-wrap mb-1">
+                  <h2 class="text-2xl font-bold m-0">
+                    抓手 {lever.number} · {lever.name}
+                  </h2>
+                  {lever.transmissionMode === 'direct' ? (
+                    <span class="text-xs font-bold bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200 px-2 py-1 rounded">
+                      国家直接做
+                    </span>
+                  ) : (
+                    <span class="text-xs font-bold bg-amber-100 dark:bg-amber-900 text-amber-800 dark:text-amber-200 px-2 py-1 rounded">
+                      穿透到企业
+                    </span>
+                  )}
+                </div>
+                <p class="text-base text-muted m-0">{lever.subtitle}</p>
+              </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-4 mb-6 text-sm">
+              <div class="bg-slate-50 dark:bg-slate-800 p-4 rounded-lg">
+                <div class="text-xs font-bold uppercase tracking-wide text-slate-500 mb-1">国家直接做的事</div>
+                <div>{lever.whatStateDoes}</div>
+              </div>
+              <div class="bg-slate-50 dark:bg-slate-800 p-4 rounded-lg">
+                <div class="text-xs font-bold uppercase tracking-wide text-slate-500 mb-1">解决企业的什么瓶颈</div>
+                <div>{lever.bottleneckSolved}</div>
+              </div>
+            </div>
+
+            {lever.groups.map((group) => (
+              <div class="mb-6">
+                <h3 class="text-lg font-bold mb-3 border-b border-slate-200 dark:border-slate-700 pb-1">
+                  {group.title}
+                </h3>
+                <div class="grid gap-3 md:grid-cols-2">
+                  {group.items.map((item) => (
+                    <div class="border border-slate-200 dark:border-slate-700 rounded-lg p-4 hover:shadow-md transition-shadow">
+                      <div class="flex items-start gap-2 flex-wrap mb-2">
+                        <h4 class="text-base font-bold m-0 flex-1 min-w-0">{item.name}</h4>
+                        <span class="text-xs bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 px-2 py-1 rounded shrink-0">
+                          {item.ministry}
+                        </span>
+                      </div>
+                      {item.scale && (
+                        <div class="text-sm font-mono font-bold text-slate-700 dark:text-slate-300 mb-1">
+                          {item.scale}
+                        </div>
+                      )}
+                      <p class="text-sm text-muted m-0 mb-2">{item.description}</p>
+                      {item.sourceUrl && (
+                        <a
+                          href={item.sourceUrl}
+                          target="_blank"
+                          rel="noopener"
+                          class="text-xs text-blue-600 dark:text-blue-400 hover:underline"
+                        >
+                          🔗 来源
+                        </a>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+
+            {lever.insight && (
+              <div class="bg-amber-50 dark:bg-amber-950 border-l-4 border-amber-500 p-4 rounded mt-4 text-sm italic">
+                💡 {lever.insight}
+              </div>
+            )}
+          </div>
+        ))
+      }
+    </div>
+
+    <div
+      class="mt-16 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-950 dark:to-purple-950 rounded-xl p-8 border border-blue-200 dark:border-blue-800"
+    >
+      <h2 class="text-2xl font-bold mb-4">{transmissionExplainer.title}</h2>
+      <pre
+        class="text-sm whitespace-pre-wrap leading-relaxed bg-transparent p-0 border-0 m-0">{transmissionExplainer.body}</pre>
+    </div>
+
+    <div class="mt-12 text-sm text-muted text-center">
+      延伸阅读：
+      <a href="/blog/singapore-ai-native-companies-vs-nations" class="text-blue-600 dark:text-blue-400 hover:underline">
+        从 50 人到 5,700,000 人——同一种 AI-native 架构，两个尺度
+      </a>
+    </div>
+  </section>
+</Layout>

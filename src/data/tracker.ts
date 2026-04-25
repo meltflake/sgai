@@ -11,7 +11,7 @@ export interface TrackerSection {
   rows: TrackerRow[];
 }
 
-export const dataDate = '2026-03-06';
+export const dataDate = '2026-04-26';
 
 export const sections: TrackerSection[] = [
   {
@@ -82,6 +82,85 @@ export const sections: TrackerSection[] = [
         sourceUrl:
           'https://www.singaporebudget.gov.sg/budget-speech/budget-statement/c-harness-ai-as-a-strategic-advantage',
       },
+      {
+        name: 'Microsoft 数据中心投资',
+        value: 'S$5.5B（2024-2028）',
+        source: 'EDB / Microsoft, 2024',
+        sourceUrl:
+          'https://news.microsoft.com/source/asia/2024/05/07/microsoft-announces-singapore-investment-and-skilling-initiatives/',
+      },
+      {
+        name: 'AWS 数据中心投资',
+        value: 'S$12B（2024-2028）',
+        source: 'EDB / AWS, 2024',
+        sourceUrl: 'https://www.aboutamazon.com/news/aws/aws-singapore-12-billion-investment',
+      },
+      {
+        name: 'Google 数据中心 + AI 投资',
+        value: 'US$9B / ~S$11.6B + DeepMind 实验室',
+        source: 'Google / EDB, 2026',
+        sourceUrl: 'https://www.edb.gov.sg/en/our-industries/artificial-intelligence-in-singapore.html',
+      },
+      {
+        name: 'Enterprise Compute Initiative (ECI)',
+        value: 'S$150M（企业算力补贴）',
+        source: 'IMDA, 2026.2',
+        sourceUrl: 'https://www.imda.gov.sg/',
+      },
+      {
+        name: 'Anchor Fund @ 65 第二批',
+        value: 'S$1.5B（IPO 锚定基金，2026）',
+        source: 'Budget 2026, 2026.2',
+        sourceUrl: 'https://www.singaporebudget.gov.sg/',
+      },
+      {
+        name: 'Future Sectors Development Fund (FSDF)',
+        value: 'S$1.5B（2026 启动）',
+        source: 'Budget 2026',
+        sourceUrl: 'https://www.singaporebudget.gov.sg/',
+      },
+      {
+        name: 'EQDP 私募股权基金扩张',
+        value: 'S$6.5B（2026）',
+        source: 'Budget 2026',
+        sourceUrl: 'https://www.singaporebudget.gov.sg/',
+      },
+      {
+        name: 'BCA BETC Grant',
+        value: 'S$100M（建造业数字基建，2025 起）',
+        source: 'BCA, 2025',
+        sourceUrl: 'https://www.bca.gov.sg/',
+      },
+      {
+        name: 'Built Environment AI CoE',
+        value: 'S$30M（2024 起）',
+        source: 'BCA / NUS / NTU, 2024',
+        sourceUrl: 'https://www.bca.gov.sg/',
+      },
+      {
+        name: 'NEA Weather Science Programme',
+        value: 'S$25M（2024 起）',
+        source: 'NEA, 2024',
+        sourceUrl: 'https://www.nea.gov.sg/',
+      },
+      {
+        name: 'HTX 人形机器人中心 (H2RC)',
+        value: 'S$100M（2026 Q2 启动）',
+        source: 'HTX, 2026',
+        sourceUrl: 'https://www.htx.gov.sg/',
+      },
+      {
+        name: 'National Multimodal LLM Programme',
+        value: 'S$70M（A*STAR 主导）',
+        source: 'A*STAR / AISG',
+        sourceUrl: 'https://www.a-star.edu.sg/',
+      },
+      {
+        name: 'Singapore AI Safety Institute (AISI)',
+        value: 'S$10M/年（治理研究）',
+        source: 'IMDA / AISI, 2024',
+        sourceUrl: 'https://aiverifyfoundation.sg/',
+      },
     ],
   },
   {
@@ -136,6 +215,30 @@ export const sections: TrackerSection[] = [
         value: '300 家企业，每家最高 S$600K 补贴',
         source: 'EDB, 2025 Q3',
         sourceUrl: 'https://www.edb.gov.sg/en/our-industries/artificial-intelligence-in-singapore.html',
+      },
+      {
+        name: 'NAIIP 国家 AI 影响计划',
+        value: '10K 企业 + 100K 工人（2026-2029）',
+        source: 'IMDA + ESG, 2026.2',
+        sourceUrl: 'https://www.imda.gov.sg/',
+      },
+      {
+        name: 'AI Bilingual 100K 计划',
+        value: '首批落地：会计 (ISCA) + 法律 (SAL/SCCA)，1H 2026 上线',
+        source: 'MDDI COS 2026',
+        sourceUrl: 'https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=budget-2895',
+      },
+      {
+        name: 'SkillsFuture AI 课程补贴',
+        value: '50% / 70% 分层补贴 + Mid-Career S$4,000 Credit',
+        source: 'SSG, 2026',
+        sourceUrl: 'https://www.skillsfuture.gov.sg/',
+      },
+      {
+        name: '100E Programme（AI Singapore）',
+        value: '每项目 S$150K 共投，累计 100+ 完成',
+        source: 'AISG',
+        sourceUrl: 'https://aisingapore.org/innovation/100e/',
       },
     ],
   },
@@ -242,6 +345,54 @@ export const sections: TrackerSection[] = [
         source: 'Smart Nation 2.0, 2024.10',
         sourceUrl: 'https://www.smartnation.gov.sg/',
       },
+      {
+        name: 'Note Buddy 临床 AI 助手',
+        value: '5,000+ 医护使用，67K 病历记录（截至 2025-12）',
+        source: 'Synapxe / SingHealth, 2025',
+        sourceUrl: 'https://www.synapxe.sg/',
+      },
+      {
+        name: 'GovTech Pair 公务员 AI',
+        value: '150K 公务员目标',
+        source: 'GovTech',
+        sourceUrl: 'https://www.tech.gov.sg/products-and-services/pair/',
+      },
+      {
+        name: 'Punggol 自动驾驶巴士',
+        value: '首批商业化 AV，3 条线路（2025-12 上线）',
+        source: 'LTA',
+        sourceUrl: 'https://www.lta.gov.sg/',
+      },
+      {
+        name: 'PSA Tuas Mega Port',
+        value: '2040s 全球最大全自动港',
+        source: 'PSA Singapore',
+        sourceUrl: 'https://www.singaporepsa.com/our-commitment/innovation/tuas-port',
+      },
+      {
+        name: 'Changi 机场 AI 治理认证',
+        value: '全球首张 ISO/IEC 42001 AI 治理认证',
+        source: 'Changi Airport Group, 2025',
+        sourceUrl: 'https://www.changiairport.com/',
+      },
+      {
+        name: 'HDB Tengah 智能能源镇',
+        value: '首座智能能源镇，4.2 万户',
+        source: 'HDB',
+        sourceUrl: 'https://www.hdb.gov.sg/about-us/news-and-publications/news/details/tengah',
+      },
+      {
+        name: 'JTC Punggol Digital District',
+        value: '首个全区智能区，能耗预计降 30%',
+        source: 'JTC',
+        sourceUrl: 'https://www.jtc.gov.sg/our-work/spaces/punggol-digital-district',
+      },
+      {
+        name: 'AI Verify Sandbox',
+        value: '10+ 跨国大企业参与（IMDA Global AI Assurance Pilot）',
+        source: 'IMDA, 2025',
+        sourceUrl: 'https://aiverifyfoundation.sg/',
+      },
     ],
   },
   {
@@ -289,6 +440,78 @@ export const sections: TrackerSection[] = [
         value: '95%+ 独立组网全国覆盖（2022.7 达成，提前 3 年）',
         source: 'Singtel / CNA, 2022',
         sourceUrl: 'https://www.imda.gov.sg/',
+      },
+      {
+        name: 'HTX NGINE — 家国安全算力',
+        value: 'NVIDIA B200 DGX SuperPOD（自有）',
+        source: 'HTX',
+        sourceUrl: 'https://www.htx.gov.sg/',
+      },
+      {
+        name: 'Synapxe HEALIX',
+        value: '国家医疗数据 + AI 基础设施',
+        source: 'Synapxe',
+        sourceUrl: 'https://www.synapxe.sg/',
+      },
+      {
+        name: 'URA Virtual Singapore',
+        value: '国家级数字孪生 + ePlanner 3D + Smart Planning Assistant',
+        source: 'URA',
+        sourceUrl: 'https://www.ura.gov.sg/',
+      },
+      {
+        name: 'GovTech Agentspace',
+        value: '亚洲首例 air-gapped agentic AI（公共部门）',
+        source: 'GovTech',
+        sourceUrl: 'https://www.tech.gov.sg/',
+      },
+    ],
+  },
+  {
+    icon: '🌐',
+    title: '国际治理影响力',
+    rows: [
+      {
+        name: 'Singapore Consensus on AI Safety',
+        value: '11 国签署（含中美）',
+        source: 'IMDA / AISI, 2024',
+        sourceUrl: 'https://aiverifyfoundation.sg/',
+      },
+      {
+        name: 'ASEAN Guide on AI Governance',
+        value: '10 国采纳（新加坡主导起草）',
+        source: 'ASEAN Digital Ministers, 2024',
+        sourceUrl: 'https://asean.org/',
+      },
+      {
+        name: 'REAIM Seoul Summit 2024',
+        value: '新加坡作为联合主办方（5 国）',
+        source: 'MFA / MINDEF, 2024',
+        sourceUrl: 'https://www.mfa.gov.sg/',
+      },
+      {
+        name: 'AI Safety Summits 出席',
+        value: 'Bletchley 2023 + Seoul 2024 + Paris 2025 全部参与',
+        source: 'MFA',
+        sourceUrl: 'https://www.mfa.gov.sg/',
+      },
+      {
+        name: 'International Scientific Exchange (ISESEA)',
+        value: '已办两届（2024 + 2026）',
+        source: 'IMDA / AISI',
+        sourceUrl: 'https://aiverifyfoundation.sg/',
+      },
+      {
+        name: 'UN Global Dialogue on AI Governance',
+        value: '新加坡参与 Independent International Scientific Panel',
+        source: 'UN / MFA',
+        sourceUrl: 'https://www.un.org/techenvoy/ai-advisory-body',
+      },
+      {
+        name: 'MAS Project MindForge',
+        value: '24 家机构 + Microsoft / AWS / Google / NVIDIA',
+        source: 'MAS',
+        sourceUrl: 'https://www.mas.gov.sg/',
       },
     ],
   },

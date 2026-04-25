@@ -1,19 +1,34 @@
 import { getPermalink } from '~/utils/permalinks';
 
 export const stats = [
-  { title: '核心政策', amount: '20' },
-  { title: '追踪指标', amount: '42' },
-  { title: '专题页面', amount: '17' },
-  { title: '对标地区', amount: '10' },
+  { title: '核心政策', amount: '28' },
+  { title: '追踪指标', amount: '70+' },
+  { title: '专题页面', amount: '19' },
+  { title: '国家 AI 抓手', amount: '6' },
   { title: 'AI 视频', amount: '46' },
 ];
 
 export const features = [
   {
     title: '📋 AI 政策库',
-    description: '20 份核心政策文档，含中英标题、来源机构、摘要与原文链接。从 Smart Nation 到 Agentic AI 治理框架。',
+    description:
+      '28 份核心政策文档，含中英标题、来源机构、摘要与原文链接。从 Smart Nation 到 Agentic AI 治理框架与 Singapore Consensus。',
     icon: 'tabler:file-text',
     callToAction: { text: '查看政策库', href: getPermalink('/policies') },
+  },
+  {
+    title: '🎯 国家 AI 抓手图谱',
+    description:
+      'Budget 2026 + 各部委 AI 政策按"基建/治理/人才/应用/政府自用/外交"6 抓手分类，每个抓手跨多部委——这比按部门看更能看出国家级 AI-native 整体形状。',
+    icon: 'tabler:target',
+    callToAction: { text: '查看抓手图谱', href: getPermalink('/levers') },
+  },
+  {
+    title: '⚖️ AI 法律框架',
+    description:
+      '"训练宽松 + 输出严管"双轨——Copyright §244 全球最宽松的 AI 训练例外，配合 OCHA + Elections Bill + Criminal Law Bill + Online Safety Bill 四件套输出严管。',
+    icon: 'tabler:scale',
+    callToAction: { text: '查看法律框架', href: getPermalink('/legal-ai') },
   },
   {
     title: '📈 发展时间线',
