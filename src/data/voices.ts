@@ -12,6 +12,7 @@ export { people } from './people';
 export interface Institution {
   id: string;
   name: string;
+  nameEn?: string; // Full English name (when `name` is an abbreviation)
   zhName: string;
   role: string; // 一句话职能定位
   roleEn?: string; // English sibling of role
@@ -39,6 +40,7 @@ export const institutions: Institution[] = [
   {
     id: 'mddi',
     name: 'MDDI',
+    nameEn: 'Ministry of Digital Development and Information',
     zhName: '数码发展及新闻部',
     role: '新加坡 AI 政策的顶层设计和统筹协调部门，发布演讲稿、政策文件和官方回应。',
     roleEn:
@@ -52,6 +54,7 @@ export const institutions: Institution[] = [
   {
     id: 'imda',
     name: 'IMDA',
+    nameEn: 'Infocomm Media Development Authority',
     zhName: '资讯通信媒体发展局',
     role: 'AI 治理框架制定和行业推广的执行机构，发布 AI Verify、Model AI Governance Framework。',
     roleEn:
@@ -66,6 +69,7 @@ export const institutions: Institution[] = [
   {
     id: 'aisg',
     name: 'AI Singapore',
+    nameEn: 'AI Singapore (AISG)',
     zhName: '新加坡人工智能计划',
     role: '国家 AI 研究与人才培养平台，运营 SEA-LION、AIAP、100E、LADP 等核心项目。',
     roleEn:
@@ -82,6 +86,7 @@ export const institutions: Institution[] = [
   {
     id: 'smart-nation',
     name: 'Smart Nation Singapore',
+    nameEn: 'Smart Nation and Digital Government Office (SNDGO)',
     zhName: '智慧国家计划',
     role: '新加坡数字化转型的总体框架，涵盖 AI、数字基础设施和数字包容。',
     roleEn:
@@ -95,6 +100,7 @@ export const institutions: Institution[] = [
   {
     id: 'ai-verify',
     name: 'AI Verify Foundation',
+    nameEn: 'AI Verify Foundation',
     zhName: 'AI Verify 基金会',
     role: '开源 AI 治理测试工具，推动 AI 可信赖性的国际标准。',
     roleEn: 'Open-source AI governance testing toolkit; advances international standards for trustworthy AI.',
@@ -106,6 +112,7 @@ export const institutions: Institution[] = [
   {
     id: 'pdpc',
     name: 'PDPC',
+    nameEn: 'Personal Data Protection Commission',
     zhName: '个人数据保护委员会',
     role: '数据保护与 AI 伦理治理的监管机构，发布 Model AI Governance Framework。',
     roleEn: 'Regulator for data protection and AI ethics governance; publisher of the Model AI Governance Framework.',

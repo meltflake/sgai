@@ -1,5 +1,137 @@
 # Changelog
 
+记录 SG AI 观察 / SG AI Observatory 的版本变化。日期使用本地时间（新加坡）。
+
+---
+
+## 0.3.1 — 2026-05-02
+
+### Fix: 多语言切换 + Header 重排
+
+- **修复语言切换按钮无效**：Astro `<ClientRouter>` 视图转场会 swap DOM，把绑定到 `#lang-toggle` 的 click 监听器丢掉。改用 document-level 事件委托（`[data-lang-toggle]`，挂在 `document` 上），监听器跨 view transition 存活。同方案应用到 LangBanner 切换链接。
+- **Header 顶部重叠修复**：1440px 视口下 "About" 和 Search 框相互覆盖。Header 改用 flex 布局（不再用 3-col grid），Search 按钮改为图标-only（去掉 "Search" 文字，kbd 提示从 xl 起显示），LanguageToggle 加 min-width 防抖。
+- **导航大瘦身**：去掉主题切换 / RSS / GitHub 按钮 / "关于"菜单——这些下放到 Footer 的社交行。Header 现只保留 Logo + 4 组 Nav + Search + 语言切换。
+- **浏览器自动语言检测**：首次访问 `/`，读 `navigator.languages[0]`，是 EN 偏好就跳 `/en/`，写 `sgai_lang` 到 localStorage。返回访客尊重已存选择。Bots 无 JS 仍看到 canonical 页。
+- **Footer 增强**：新增 ToggleTheme + GitHub + RSS + 关于链接。
+- **署名修正**：`由 wulujia 维护` / `Maintained by wulujia`，去掉链接。About 页 lead 也改为 wulujia。
+
+## 0.3.0 — 2026-05-02
+
+### Feature: 完整双语站（中文 + 英文）
+
+中文站留在 `/`（保 SEO，不破坏既有外链），英文站镜像在 `/en/`。两套都是完整内容，不留半截。
+
+#### 架构
+
+- `astro.config.ts` 启用 i18n：`{ defaultLocale: 'zh', locales: ['zh', 'en'], prefixDefaultLocale: false, fallback: { en: 'zh' } }`
+- 新建 `src/i18n/index.ts`：双语字典 + `pickLocalized()`（自动 fallback）+ `getLangFromPath()` / `localizedHref()` 工具
+- `src/navigation.ts` 改为 `getHeaderData(lang)` / `getFooterData(lang)` 函数，nav 标签全部走字典
+- `PageLayout` / `Layout` / `Header` / `Logo` / `SearchModal` / `ToBlogLink` / `Breadcrumb` 全部从 URL 检测 lang
+- 新增 `LanguageToggle` 组件（header 切换芯片）+ `LangBanner`（顶部非阻塞条幅）
+
+#### 数据 schema 双语化（EN sibling 字段）
+
+- `Policy.{summaryEn, contentEn, sourceEn}` + `PolicyCategory.nameEn`
+- `Debate.{summaryShortEn, keyPointsEn, governmentStanceEn, oppositionStanceEn, policySignalEn, notableQuoteEn}`
+- `Lever.{nameEn, subtitleEn, whatStateDoesEn, bottleneckSolvedEn, insightEn}` + `LeverGroup.titleEn` + `LeverItem.{nameEn, scaleEn, descriptionEn}` + `transmissionExplainer.{titleEn, bodyEn}`
+- `TimelineEvent.{titleEn, descriptionEn}`
+- `Person.summaryEn`（核心 7 人 + 213 议员 stub 标 "Profile pending."）
+- `Institution.roleEn` / `MddiSpeech.speakerTitleEn`（voices.ts）
+- 博客 frontmatter `lang: 'zh' | 'en'`；EN 文件存放在 `src/data/post/en/<slug>.md` 子目录
+
+#### 翻译（4 个并行 agents）
+
+- 30/30 政策、150/150 国会辩论、112 抓手项 + 30 group + 6 lever + transmissionExplainer、11/11 时间线、4/4 博客全文、字典 ~70 chrome 字符串
+- DEBATE_STATS 6 个 metadata exports（POLICY_EVOLUTION / RECURRING_CONTROVERSIES / MP_PROFILES / KEY_INSIGHTS / POLICY_SIGNALS / TENSION_MAP）
+
+#### 镜像 EN 路由（23 个页面）
+
+- `/en/index.astro`（editorial homepage，独立 voice）+ `/en/about/`（去除中文 framing）
+- `/en/blog/[...page].astro` + `/en/rss.xml.ts`
+- `/en/policies/` + `[id].astro`、`/en/debates/` + `[id].astro`、`/en/people/[id].astro`
+- `/en/levers/`、`/en/timeline/`、`/en/voices/`、`/en/videos/`、`/en/tracker/`、`/en/benchmarking/`、`/en/talent/`、`/en/opensource/`、`/en/community-opensource/`、`/en/startups/`、`/en/ecosystem/`、`/en/legal-ai/`、`/en/references/`、`/en/fieldnotes/`、`/en/evolution/`、`/en/challenges/`
+
+#### 关键陷阱
+
+Astro glob loader 把 `.` 当 slug 分隔符（`foo.en.md` → id `fooen`），所以 EN 博客文件改用 `post/en/<slug>.md` 子目录方案。
+
+#### 验证
+
+`npm run check` 0 errors / 901 HTML / 4.77 MB compressed / 54 核心页面 200 / 760 内部链接全 200。
+
+## 0.2.0 — 2026-05-01
+
+### Feature: Pagefind 全文搜索 + 实体详情页
+
+- **搜索**：Pagefind `/` 键唤起，懒加载 UI bundle，主题色 vermillion
+- **`/policies/[id]` × 30** 政策详情：完整内容、作者解析、RelatedRail
+- **`/debates/[id]` × 150** 辩论详情：keyPoints / 立场 / 政策信号 / 完整 speaker 列表 + Hansard 原文折叠
+
+### Feature: 长文打磨
+
+- `Footnotes.astro` + `Cite.astro`：frontmatter `citations` 驱动，空数组时零渲染
+- 接入 `[...blog]/index.astro` SinglePost 之后
+
+### Polish: 移动 + a11y
+
+- `/debates` 筛选行 < md 折叠为 `<details>` drawer，桌面保持展开
+- `:focus-visible` ring 改为 vermillion 主题色
+
+### Fix: 链接审计
+
+- 27 采样页 × 397 unique hrefs，修复 6 处断链（旧 `/blog/<slug>` 前缀 + 缺尾斜杠）
+
+### Refactor: About 页清洗
+
+- 去掉真名、公司列表、wlj.me、Person schema
+- 仅保留 "Luca"，反馈渠道收窄到 GitHub Issues（v0.3.1 进一步改成 wulujia）
+
+## 0.1.0 — 2026-05-01
+
+### Feature: 视觉识别 + 导航重构 + Editorial 首页
+
+- **字体**：Source Serif 4（拉丁）+ Noto Serif SC（chinese-simplified 子集 400/600/700），浏览器按字符 fallback，CJK fallback 不闪烁
+- **主色**：Vermillion `#C8102E` + 暖纸 `#FAF7F2` + Ink 中性栈，dark mode 单独 token
+- **导航**：17 项 / 4 dropdown → 5 组扁平化，"深度分析"提到顶级，全站 chrome 去 emoji
+- **首页重写**：杀掉 11 张 feature card，改 editorial 模板（Hero + freshness strip + 最新分析 + 抓手图谱 + 最近辩论 + 引言收尾）
+- **新建 `/about` 页**：定位、方法论、利益声明、CC BY 4.0 授权
+
+## 0.0.30 — 2026-05-01
+
+### Feature: 长文阅读体验（Phase 2）
+
+- TOC（自动生成自 h2/h3，安全降级）
+- AuthorBio（解析 people.ts，含频道）
+- NextPrevPost（基于 publishDate 排序，前后篇导航）
+- ReadingProgress（顶部 2px 进度条，IntersectionObserver 驱动）
+- TOC 视觉 bug 修复：1500-1700px 视口下侧栏覆盖正文，改为内联 `<details>` 折叠
+
+## 0.0.20 — 2026-04-30
+
+### Feature: 知识图谱 schema（Phase 1）
+
+- 新建 `src/data/people.ts`（核心 7 人 + JSON 导入 213 议员 stub）+ `src/utils/people.ts`（模糊匹配 / honorific stripping）
+- 所有数据接口加外键：`debates → personIds / topicIds / relatedPolicyIds / relatedLeverNumbers / relatedTimelineYears / relatedPostSlugs`，policies / levers / timeline 同
+- 博客 frontmatter 加 cross-ref schema
+- `src/utils/graph.ts`：`getRelated(EntityRef)` 跨实体查询，反向索引
+- `RelatedRail` 组件（compact + full 两种 variant，empty 时零渲染）
+- `scripts/audit-speakers.ts` + `codemod-debates.ts` + `codemod-policies.ts` + `codemod-levers.ts` + `verify-graph.ts`
+- `/people/[id]` 个人页（核心 7 人 + 213 stub）
+
+### Feature: 性能 + a11y 基线（Phase 0）
+
+- 删除 `/debates` 内联 ~302 KB JSON，改为 SSG 渲染卡片 + URL 参数筛选
+- 字体：删除 Inter（无 CJK 字形），先加载 fontsource 包等待 Phase 3 接入
+- 全站 `:focus-visible` ring + `.overflow-x-auto` 滚动阴影
+
+## 部署 / 仓库变化
+
+- 2026-05 仓库重命名 `aisg → sgai`（避免与 AI Singapore 缩写撞名）
+- 从 meltflake-site 子站毕业为独立站点，部署到 Cloudflare Pages，绑定 `https://sgai.md`
+- CI：`npm run check`（astro check + eslint + prettier + verify-graph）
+
+---
+
 ## 0.0.17 — 2026-04-02
 
 ### Feature: AI 影响力图谱页面

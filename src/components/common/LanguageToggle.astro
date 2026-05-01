@@ -1,9 +1,12 @@
 ---
-// i18n (v0.3.0) — header language toggle.
+// i18n — header language toggle.
 //
-// Renders a small ZH ↔ EN switch in the Header. Clicking it goes to the
-// equivalent URL in the other locale and persists the choice in
-// localStorage so the LangBanner stops nagging.
+// Renders a small ZH ↔ EN switch. Clicking it navigates to the equivalent
+// URL in the other locale and persists the choice in localStorage.
+//
+// IMPORTANT: uses document-level event delegation because Astro's
+// <ClientRouter> swaps the DOM during view transitions; per-element
+// listeners would be lost after the first navigation.
 
 import { type Lang, t } from '~/i18n';
 
@@ -20,8 +23,8 @@ const ariaLabel = currentLang === 'en' ? t(currentLang, 'langToggleLabel') : '�
 ---
 
 <button
-  id="lang-toggle"
   type="button"
+  data-lang-toggle
   data-other-lang={otherLang}
   aria-label={ariaLabel}
   title={ariaLabel}
@@ -31,26 +34,32 @@ const ariaLabel = currentLang === 'en' ? t(currentLang, 'langToggleLabel') : '�
   <span class="sr-only">{ariaLabel}</span>
 </button>
 
-<script>
-  (() => {
-    const btn = document.getElementById('lang-toggle') as HTMLButtonElement | null;
-    if (!btn) return;
-    const otherLang = btn.dataset.otherLang as 'zh' | 'en';
-
-    function siblingUrl(): string {
-      const path = location.pathname;
-      if (otherLang === 'en') {
-        if (path === '/' || path === '') return '/en/';
-        return '/en' + path;
+<script is:inline>
+  // Document-level delegation: bound once, survives ClientRouter swaps.
+  if (!window.__sgaiLangToggleBound) {
+    window.__sgaiLangToggleBound = true;
+    document.addEventListener('click', function (e) {
+      const target = e.target;
+      if (!(target instanceof Element)) return;
+      const btn = target.closest('[data-lang-toggle]');
+      if (!btn) return;
+      const otherLang = btn.getAttribute('data-other-lang');
+      if (otherLang !== 'zh' && otherLang !== 'en') return;
+      try {
+        localStorage.setItem('sgai_lang', otherLang);
+      } catch {
+        /* private mode */
       }
-      if (path === '/en' || path === '/en/') return '/';
-      if (path.startsWith('/en/')) return path.slice(3);
-      return path;
-    }
-
-    btn.addEventListener('click', () => {
-      localStorage.setItem('sgai_lang', otherLang);
-      location.assign(siblingUrl());
+      const path = location.pathname;
+      let dest;
+      if (otherLang === 'en') {
+        dest = path === '/' || path === '' ? '/en/' : '/en' + path;
+      } else {
+        if (path === '/en' || path === '/en/') dest = '/';
+        else if (path.indexOf('/en/') === 0) dest = path.slice(3);
+        else dest = path;
+      }
+      location.assign(dest + location.search + location.hash);
     });
-  })();
+  }
 </script>

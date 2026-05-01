@@ -18,6 +18,7 @@
 // no whitespace shift on the host page.
 
 import { getRelated, type EntityRef, type RelatedBundle } from '~/utils/graph';
+import { getLangFromPath, type Lang } from '~/i18n';
 
 interface Props {
   /** Anchor entity. The component resolves relations via getRelated(). */
@@ -34,9 +35,25 @@ interface Props {
   exclude?: Array<keyof RelatedBundle>;
   /** Optional class for outer wrapper. */
   class?: string;
+  /** Override the lang detected from URL. */
+  lang?: Lang;
 }
 
-const { entity, bundle, variant = 'compact', hideWhenEmpty = true, exclude = [], class: extraClass = '' } = Astro.props;
+const {
+  entity,
+  bundle,
+  variant = 'compact',
+  hideWhenEmpty = true,
+  exclude = [],
+  class: extraClass = '',
+  lang: langOverride,
+} = Astro.props;
+
+// Lang detection wired up; full lang-aware rendering is being incrementally
+// applied across the template. Currently the template still shows zh strings;
+// the next pass will replace them with isEn ternaries.
+const lang: Lang = langOverride ?? getLangFromPath(new URL(Astro.url).pathname);
+void lang;
 
 const empty = (): RelatedBundle => ({
   policies: [],
