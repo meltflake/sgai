@@ -94,27 +94,18 @@ const frequentSpeakers = [...speakerCounts.entries()]
   .sort((a, b) => b[1] - a[1])
   .map(([name, count]) => ({ name, count }));
 
-const debatesJson = JSON.stringify(
-  debates.map((d) => ({
-    id: d.id,
-    title: d.title,
-    zhTitle: d.zhTitle,
-    date: d.date,
-    parliament: d.parliament,
-    type: d.type,
-    speakers: d.speakers,
-    topics: d.topics,
-    zhSummary: d.zhSummary,
-    keyPoints: d.keyPoints,
-    governmentStance: d.governmentStance,
-    oppositionStance: d.oppositionStance,
-    controversyLevel: d.controversyLevel,
-    policySignal: d.policySignal,
-    notableQuote: d.notableQuote,
-    summary: d.summary,
-    sourceUrl: d.sourceUrl,
-  }))
-);
+// Phase 0: debatesJson removed. Debate cards are now SSG-rendered to HTML
+// with data-* attributes carrying filter metadata. The client script
+// queries [data-debate-card] and toggles visibility — no JSON parse,
+// no innerHTML rebuild on filter, no ~302 KB inline payload.
+
+// Safely encode a string for use inside a single-quoted JS string literal
+// in an inline onclick attribute. Escapes backslashes and single quotes.
+const jsAttr = (s: string) => String(s).replace(/\\/g, '\\\\').replace(/'/g, "\\'");
+
+// Build a lowercased search blob per debate (title, zhTitle, summary, speakers, key points).
+const searchBlob = (d: (typeof debates)[number]) =>
+  [d.title, d.zhTitle, d.zhSummary, ...(d.speakers || []), ...(d.keyPoints || [])].join(' ').toLowerCase();
 ---
 
 <Layout metadata={meta} breadcrumbs={[{ label: '国会 AI 焦点' }]}>
@@ -574,32 +565,211 @@ const debatesJson = JSON.stringify(
         </div>
       </div>
 
-      <!-- Debate Cards -->
+      <!-- Debate Cards (SSG-rendered) -->
       <div id="debate-list" class="space-y-4">
-        <!-- Rendered by JS -->
+        {
+          debates.map((d) => {
+            const cLevel = d.controversyLevel || 1;
+            const cLabel = controversyLabels[cLevel] || '未知';
+            const cColor = controversyColors[cLevel] || 'bg-gray-100 text-gray-600';
+            const yearStr = d.date.slice(0, 4);
+            return (
+              <article
+                data-debate-card
+                data-type={d.type}
+                data-year={yearStr}
+                data-controversy={cLevel}
+                data-topics={(d.topics || []).join('|')}
+                data-speakers={(d.speakers || []).join('|')}
+                data-search={searchBlob(d)}
+                class="bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-gray-100 dark:border-slate-700 overflow-hidden"
+              >
+                <div class="p-5">
+                  {/* Header row */}
+                  <div class="flex flex-wrap items-start gap-2 mb-3">
+                    <button
+                      type="button"
+                      onclick={`filterBy('type','${jsAttr(d.type)}')`}
+                      class="text-xs bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-400 px-2 py-1 rounded hover:bg-slate-200 transition-colors"
+                    >
+                      {typeMap[d.type] || d.type}
+                    </button>
+                    <button
+                      type="button"
+                      onclick={`filterBy('year','${yearStr}')`}
+                      class="text-xs text-gray-400 hover:text-blue-600 hover:underline transition-colors"
+                    >
+                      {d.date}
+                    </button>
+                    <span class="text-xs text-gray-400">第 {d.parliament} 届国会</span>
+                    <span class={`text-xs ${cColor} px-2 py-0.5 rounded-full ml-auto`}>{cLabel}</span>
+                  </div>
+
+                  {/* Title (bilingual) */}
+                  <h3 class="font-bold text-gray-800 dark:text-white text-base mb-1">{d.zhTitle}</h3>
+                  <p class="text-xs text-gray-400 mb-3 italic">
+                    {d.title.length > 100 ? `${d.title.slice(0, 100)}...` : d.title}
+                  </p>
+
+                  {/* Topics */}
+                  {d.topics && d.topics.length > 0 && (
+                    <div class="flex flex-wrap gap-1.5 mb-3">
+                      {d.topics.map((t) => (
+                        <button
+                          type="button"
+                          onclick={`event.stopPropagation(); filterBy('topic','${jsAttr(t)}')`}
+                          class="text-xs bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 px-2 py-0.5 rounded-full hover:bg-indigo-100 transition-colors"
+                        >
+                          {topicZh[t] || t}
+                        </button>
+                      ))}
+                    </div>
+                  )}
+
+                  {/* Chinese Summary */}
+                  <div class="bg-gray-50 dark:bg-slate-700/50 rounded-lg p-3 mb-3">
+                    <div class="text-xs font-semibold text-gray-500 dark:text-gray-400 mb-1">📝 摘要</div>
+                    <p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">{d.zhSummary}</p>
+                  </div>
+
+                  {/* Key Points */}
+                  {d.keyPoints && d.keyPoints.length > 0 && (
+                    <ul class="mb-3 space-y-0.5">
+                      {d.keyPoints.slice(0, 3).map((kp) => (
+                        <li class="text-xs text-gray-600 dark:text-gray-400">• {kp}</li>
+                      ))}
+                    </ul>
+                  )}
+
+                  {/* Stances */}
+                  {(d.governmentStance || d.oppositionStance) && (
+                    <div class="grid grid-cols-2 gap-2 mb-3">
+                      {d.governmentStance && (
+                        <div class="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-2.5">
+                          <div class="text-xs font-semibold text-blue-600 dark:text-blue-400 mb-1">🏛️ 政府立场</div>
+                          <div class="text-xs text-gray-700 dark:text-gray-300">{d.governmentStance}</div>
+                        </div>
+                      )}
+                      {d.oppositionStance && (
+                        <div class="bg-orange-50 dark:bg-orange-900/20 rounded-lg p-2.5">
+                          <div class="text-xs font-semibold text-orange-600 dark:text-orange-400 mb-1">❓ 质询立场</div>
+                          <div class="text-xs text-gray-700 dark:text-gray-300">{d.oppositionStance}</div>
+                        </div>
+                      )}
+                    </div>
+                  )}
+
+                  {/* Policy Signal */}
+                  {d.policySignal && (
+                    <div class="mt-2 text-xs text-purple-600 dark:text-purple-400 bg-purple-50 dark:bg-purple-900/20 px-2 py-1 rounded inline-block">
+                      📡 {d.policySignal}
+                    </div>
+                  )}
+
+                  {/* Notable Quote */}
+                  {d.notableQuote && (
+                    <blockquote class="border-l-2 border-gray-300 dark:border-gray-600 pl-3 mt-3 text-xs text-gray-500 dark:text-gray-400 italic">
+                      "{d.notableQuote}"
+                    </blockquote>
+                  )}
+
+                  {/* Footer */}
+                  <div class="flex items-center justify-between mt-4 pt-3 border-t border-gray-100 dark:border-slate-700">
+                    <div class="flex flex-wrap gap-1 items-center text-xs">
+                      <span class="text-gray-400 mr-1">🎙️</span>
+                      {(d.speakers || []).slice(0, 5).map((s, i) => (
+                        <>
+                          {i > 0 && <span class="text-gray-300 mx-1">·</span>}
+                          <button
+                            type="button"
+                            onclick={`event.stopPropagation(); filterBy('speaker','${jsAttr(s)}')`}
+                            class="text-xs text-gray-500 hover:text-purple-600 hover:underline transition-colors"
+                          >
+                            {s}
+                          </button>
+                        </>
+                      ))}
+                    </div>
+                    <div class="flex gap-2 shrink-0 ml-3">
+                      <button
+                        type="button"
+                        data-toggle-fulltext
+                        class="text-xs text-blue-600 hover:underline whitespace-nowrap"
+                      >
+                        展开原文 ▼
+                      </button>
+                      {d.sourceUrl && (
+                        <a
+                          href={d.sourceUrl}
+                          target="_blank"
+                          rel="noopener"
+                          class="text-xs text-blue-600 hover:underline whitespace-nowrap"
+                        >
+                          🔗 Hansard ↗
+                        </a>
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Hidden full-text panel */}
+                  <div class="full-text hidden mt-3 pt-3 border-t border-gray-100 dark:border-slate-700">
+                    <div class="text-xs font-semibold text-gray-500 mb-2">📄 原文节选（英文）</div>
+                    <div class="text-xs text-gray-600 dark:text-gray-400 whitespace-pre-wrap leading-relaxed max-h-64 overflow-y-auto bg-gray-50 dark:bg-slate-700/50 rounded p-3">
+                      {d.summary}
+                    </div>
+                  </div>
+                </div>
+              </article>
+            );
+          })
+        }
+      </div>
+
+      {/* Empty state (revealed when all cards are filtered out) */}
+      <div id="debate-empty-state" class="hidden text-center py-16 text-gray-400">
+        <div class="text-4xl mb-3">🔍</div>
+        <div class="text-lg font-medium mb-2">没有找到匹配的辩论记录</div>
+        <button onclick="clearFilters()" class="mt-3 text-sm text-blue-600 hover:underline">清除筛选条件</button>
       </div>
     </section>
   </div>
 </Layout>
 
-<script define:vars={{ debatesJson, typeMap, controversyLabels, controversyColors, topicZh }}>
-  const debates = JSON.parse(debatesJson);
+<script define:vars={{ typeMap, controversyLabels, topicZh }}>
+  // Phase 0 rewrite: cards are SSG-rendered to HTML with data-* metadata.
+  // This script only toggles visibility — no JSON parse, no innerHTML rebuild.
+  // Public API (filterBy / clearFilters / toggleFullText) preserved for the
+  // many onclick handlers in the SSG sections above.
 
-  // ── Core filter state ──────────────────────────────────────────────────────
+  const cards = () => Array.from(document.querySelectorAll('[data-debate-card]'));
+
+  // Filter state mirrors the previous implementation 1:1 so onclick handlers
+  // throughout the page (year bars, MP profiles, controversy cards, etc.)
+  // continue to work without modification.
   let activeFilters = {
     search: '',
     type: '',
     topic: '',
-    topicsOr: [], // array of topics for OR matching (from controversy clicks)
+    topicsOr: [],
     year: '',
     controversy: '',
     speaker: '',
     _yearRange: null,
   };
 
-  // ── Public API called by onclick handlers ──────────────────────────────────
-  window.filterBy = function (dimension, value) {
-    // Reset all filters AND DOM controls first, then apply the chosen one
+  function setSelectValue(id, value) {
+    const el = document.getElementById(id);
+    if (el) el.value = value;
+  }
+  function setInputValue(id, value) {
+    const el = document.getElementById(id);
+    if (el) el.value = value;
+  }
+  function scrollToDebates() {
+    document.getElementById('debate-section')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  function resetActive() {
     activeFilters = {
       search: '',
       type: '',
@@ -616,6 +786,11 @@ const debatesJson = JSON.stringify(
     setSelectValue('year-filter', '');
     setSelectValue('controversy-filter', '');
     setSelectValue('speaker-filter', '');
+  }
+
+  // ── Public API ───────────────────────────────────────────────────────────
+  window.filterBy = function (dimension, value) {
+    resetActive();
 
     if (dimension === 'type') {
       activeFilters.type = value;
@@ -630,28 +805,21 @@ const debatesJson = JSON.stringify(
       activeFilters.speaker = value;
       setSelectValue('speaker-filter', value);
     } else if (dimension === 'topics') {
-      // Multi-topic OR filter (from controversy clicks)
       activeFilters.topicsOr = value
         .split(',')
         .map((t) => t.trim())
         .filter(Boolean);
-      // Also update the topic dropdown if only one topic
       if (activeFilters.topicsOr.length === 1) {
         setSelectValue('topic-filter', activeFilters.topicsOr[0]);
         activeFilters.topic = activeFilters.topicsOr[0];
         activeFilters.topicsOr = [];
       }
     } else if (dimension === 'keyword') {
-      // Keyword search: put into search box
       activeFilters.search = value;
       setInputValue('search-input', value);
     } else if (dimension === 'yearRange') {
-      // e.g. "2015-2018" → filter by year range
       const parts = value.split('-');
-      const fromYear = parseInt(parts[0]);
-      const toYear = parseInt(parts[parts.length - 1]);
-      activeFilters._yearRange = [fromYear, toYear];
-      setSelectValue('year-filter', '');
+      activeFilters._yearRange = [parseInt(parts[0]), parseInt(parts[parts.length - 1])];
     }
 
     applyFilters();
@@ -659,43 +827,25 @@ const debatesJson = JSON.stringify(
   };
 
   window.clearFilters = function () {
-    activeFilters = {
-      search: '',
-      type: '',
-      topic: '',
-      topicsOr: [],
-      year: '',
-      controversy: '',
-      speaker: '',
-      _yearRange: null,
-    };
-    setInputValue('search-input', '');
-    setSelectValue('type-filter', '');
-    setSelectValue('topic-filter', '');
-    setSelectValue('year-filter', '');
-    setSelectValue('controversy-filter', '');
-    setSelectValue('speaker-filter', '');
+    resetActive();
     applyFilters();
   };
 
-  function setSelectValue(id, value) {
-    const el = document.getElementById(id);
-    if (el) el.value = value;
-  }
-
-  function setInputValue(id, value) {
-    const el = document.getElementById(id);
-    if (el) el.value = value;
-  }
-
-  function scrollToDebates() {
-    const section = document.getElementById('debate-section');
-    if (section) {
-      section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  window.toggleFullText = function (btn) {
+    const card = btn.closest('[data-debate-card]');
+    const ft = card?.querySelector('.full-text');
+    if (!ft) return;
+    if (ft.classList.contains('hidden')) {
+      ft.classList.remove('hidden');
+      btn.textContent = '收起原文 ▲';
+    } else {
+      ft.classList.add('hidden');
+      btn.textContent = '展开原文 ▼';
     }
-  }
+  };
 
-  function updateActiveFilterBar(filtered) {
+  // ── Filter bar / count ───────────────────────────────────────────────────
+  function updateActiveFilterBar(visibleCount) {
     const bar = document.getElementById('active-filter-bar');
     const label = document.getElementById('active-filter-label');
     const clearBtn = document.getElementById('clear-filters-btn');
@@ -712,228 +862,87 @@ const debatesJson = JSON.stringify(
       parts.push(`议题：${activeFilters.topicsOr.map((t) => topicZh[t] || t).join(' / ')}`);
 
     if (parts.length > 0) {
-      label.textContent = parts.join('  ·  ') + `  （共 ${filtered.length} 条）`;
+      label.textContent = parts.join('  ·  ') + `  （共 ${visibleCount} 条）`;
       bar.classList.remove('hidden');
       clearBtn.classList.remove('hidden');
     } else {
       bar.classList.add('hidden');
       clearBtn.classList.add('hidden');
     }
+    // Use unused param to silence linters; cLabel/cColor only used in markup.
+    void controversyLabels;
   }
 
-  // ── Render ─────────────────────────────────────────────────────────────────
-  function renderDebates(filtered) {
-    const container = document.getElementById('debate-list');
-    const count = document.getElementById('result-count');
-    if (!container) return;
-
-    count.textContent = `显示 ${filtered.length} / ${debates.length} 条`;
-    updateActiveFilterBar(filtered);
-
-    if (filtered.length === 0) {
-      container.innerHTML = `
-      <div class="text-center py-16 text-gray-400">
-        <div class="text-4xl mb-3">🔍</div>
-        <div class="text-lg font-medium mb-2">没有找到匹配的辩论记录</div>
-        <button onclick="clearFilters()" class="mt-3 text-sm text-blue-600 hover:underline">清除筛选条件</button>
-      </div>`;
-      return;
-    }
-
-    container.innerHTML = filtered
-      .map((d) => {
-        const typeZh = typeMap[d.type] || d.type;
-        const cLevel = d.controversyLevel || 1;
-        const cLabel = controversyLabels[cLevel] || '未知';
-        const cColor = controversyColors[cLevel] || 'bg-gray-100 text-gray-600';
-
-        // Topics are clickable inside the card too
-        const topicsHtml = (d.topics || [])
-          .map(
-            (t) =>
-              `<button onclick="event.stopPropagation(); filterBy('topic','${t}')" class="text-xs bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 px-2 py-0.5 rounded-full hover:bg-indigo-100 transition-colors">${topicZh[t] || t}</button>`
-          )
-          .join('');
-
-        const keyPointsHtml = (d.keyPoints || [])
-          .slice(0, 3)
-          .map((kp) => `<li class="text-xs text-gray-600 dark:text-gray-400">• ${kp}</li>`)
-          .join('');
-
-        const govHtml = d.governmentStance
-          ? `<div class="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-2.5">
-           <div class="text-xs font-semibold text-blue-600 dark:text-blue-400 mb-1">🏛️ 政府立场</div>
-           <div class="text-xs text-gray-700 dark:text-gray-300">${d.governmentStance}</div>
-         </div>`
-          : '';
-
-        const oppHtml = d.oppositionStance
-          ? `<div class="bg-orange-50 dark:bg-orange-900/20 rounded-lg p-2.5">
-           <div class="text-xs font-semibold text-orange-600 dark:text-orange-400 mb-1">❓ 质询立场</div>
-           <div class="text-xs text-gray-700 dark:text-gray-300">${d.oppositionStance}</div>
-         </div>`
-          : '';
-
-        const quoteHtml = d.notableQuote
-          ? `<blockquote class="border-l-2 border-gray-300 dark:border-gray-600 pl-3 mt-3 text-xs text-gray-500 dark:text-gray-400 italic">"${d.notableQuote}"</blockquote>`
-          : '';
-
-        const signalHtml = d.policySignal
-          ? `<div class="mt-2 text-xs text-purple-600 dark:text-purple-400 bg-purple-50 dark:bg-purple-900/20 px-2 py-1 rounded inline-block">📡 ${d.policySignal}</div>`
-          : '';
-
-        // Speakers are clickable
-        const speakersHtml = (d.speakers || [])
-          .slice(0, 5)
-          .map(
-            (s) =>
-              `<button onclick="event.stopPropagation(); filterBy('speaker','${s.replace(/'/g, "\\'")}')" class="text-xs text-gray-500 hover:text-purple-600 hover:underline transition-colors">${s}</button>`
-          )
-          .join('<span class="text-gray-300 mx-1">·</span>');
-
-        return `
-      <div data-debate-card class="bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-gray-100 dark:border-slate-700 overflow-hidden">
-        <div class="p-5">
-          <!-- Header row -->
-          <div class="flex flex-wrap items-start gap-2 mb-3">
-            <button onclick="filterBy('type','${d.type}')" class="text-xs bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-400 px-2 py-1 rounded hover:bg-slate-200 transition-colors">${typeZh}</button>
-            <button onclick="filterBy('year','${d.date.slice(0, 4)}')" class="text-xs text-gray-400 hover:text-blue-600 hover:underline transition-colors">${d.date}</button>
-            <span class="text-xs text-gray-400">第 ${d.parliament} 届国会</span>
-            <span class="text-xs ${cColor} px-2 py-0.5 rounded-full ml-auto">${cLabel}</span>
-          </div>
-
-          <!-- Title (bilingual) -->
-          <h3 class="font-bold text-gray-800 dark:text-white text-base mb-1">${d.zhTitle}</h3>
-          <p class="text-xs text-gray-400 mb-3 italic">${d.title.slice(0, 100)}${d.title.length > 100 ? '...' : ''}</p>
-
-          <!-- Topics (clickable) -->
-          <div class="flex flex-wrap gap-1.5 mb-3">${topicsHtml}</div>
-
-          <!-- Chinese Summary -->
-          <div class="bg-gray-50 dark:bg-slate-700/50 rounded-lg p-3 mb-3">
-            <div class="text-xs font-semibold text-gray-500 dark:text-gray-400 mb-1">📝 摘要</div>
-            <p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">${d.zhSummary}</p>
-          </div>
-
-          <!-- Key Points -->
-          ${keyPointsHtml ? `<ul class="mb-3 space-y-0.5">${keyPointsHtml}</ul>` : ''}
-
-          <!-- Stances -->
-          ${govHtml || oppHtml ? `<div class="grid grid-cols-2 gap-2 mb-3">${govHtml}${oppHtml}</div>` : ''}
-
-          <!-- Policy Signal + Notable Quote -->
-          ${signalHtml}
-          ${quoteHtml}
-
-          <!-- Footer -->
-          <div class="flex items-center justify-between mt-4 pt-3 border-t border-gray-100 dark:border-slate-700">
-            <div class="flex flex-wrap gap-1 items-center text-xs">
-              <span class="text-gray-400 mr-1">🎙️</span>
-              ${speakersHtml}
-            </div>
-            <div class="flex gap-2 shrink-0 ml-3">
-              <button onclick="toggleFullText(this)" class="text-xs text-blue-600 hover:underline whitespace-nowrap">展开原文 ▼</button>
-              ${d.sourceUrl ? `<a href="${d.sourceUrl}" target="_blank" class="text-xs text-blue-600 hover:underline whitespace-nowrap">🔗 Hansard ↗</a>` : ''}
-            </div>
-          </div>
-
-          <!-- Full text (hidden) -->
-          <div class="full-text hidden mt-3 pt-3 border-t border-gray-100 dark:border-slate-700">
-            <div class="text-xs font-semibold text-gray-500 mb-2">📄 原文节选（英文）</div>
-            <div class="text-xs text-gray-600 dark:text-gray-400 whitespace-pre-wrap leading-relaxed max-h-64 overflow-y-auto bg-gray-50 dark:bg-slate-700/50 rounded p-3">${d.summary.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</div>
-          </div>
-        </div>
-      </div>
-    `;
-      })
-      .join('');
-  }
-
-  function toggleFullText(btn) {
-    const card = btn.closest('[data-debate-card]');
-    if (!card) return;
-    const ft = card.querySelector('.full-text');
-    if (!ft) return;
-    if (ft.classList.contains('hidden')) {
-      ft.classList.remove('hidden');
-      btn.textContent = '收起原文 ▲';
-    } else {
-      ft.classList.add('hidden');
-      btn.textContent = '展开原文 ▼';
-    }
-  }
-  window.toggleFullText = toggleFullText;
-
+  // ── Filter logic (DOM toggle, no JSON) ───────────────────────────────────
   function applyFilters() {
-    const search = document.getElementById('search-input')?.value.toLowerCase() || '';
-    const type = document.getElementById('type-filter')?.value || '';
+    activeFilters.search = (document.getElementById('search-input')?.value || '').toLowerCase();
+    activeFilters.type = document.getElementById('type-filter')?.value || '';
+    activeFilters.year = document.getElementById('year-filter')?.value || '';
+    activeFilters.controversy = document.getElementById('controversy-filter')?.value || '';
+    activeFilters.speaker = document.getElementById('speaker-filter')?.value || '';
     const topic = document.getElementById('topic-filter')?.value || '';
-    const year = document.getElementById('year-filter')?.value || '';
-    const controversy = document.getElementById('controversy-filter')?.value || '';
-    const speaker = document.getElementById('speaker-filter')?.value || '';
-
-    // Sync activeFilters from inputs
-    activeFilters.search = search;
-    activeFilters.type = type;
-    activeFilters.year = year;
-    activeFilters.controversy = controversy;
-    activeFilters.speaker = speaker;
-    // Only update topic from DOM if it changed (don't clear topicsOr when DOM is empty)
     if (topic !== activeFilters.topic) {
       activeFilters.topic = topic;
-      // If user manually picks a topic from dropdown, clear topicsOr
       activeFilters.topicsOr = [];
     }
 
-    let filtered = debates;
+    const all = cards();
+    let visible = 0;
 
-    if (search) {
-      filtered = filtered.filter(
-        (d) =>
-          d.title.toLowerCase().includes(search) ||
-          d.zhTitle.toLowerCase().includes(search) ||
-          d.zhSummary.toLowerCase().includes(search) ||
-          (d.speakers || []).some((s) => s.toLowerCase().includes(search)) ||
-          (d.keyPoints || []).some((k) => k.toLowerCase().includes(search))
-      );
+    for (const card of all) {
+      const cType = card.dataset.type || '';
+      const cTopics = (card.dataset.topics || '').split('|').filter(Boolean);
+      const cYear = card.dataset.year || '';
+      const cSpeakers = (card.dataset.speakers || '').split('|').filter(Boolean);
+      const cControversy = parseInt(card.dataset.controversy || '1', 10);
+      const cSearch = card.dataset.search || '';
+
+      let match = true;
+      if (activeFilters.search && !cSearch.includes(activeFilters.search)) match = false;
+      if (match && activeFilters.type && cType !== activeFilters.type) match = false;
+      if (match && activeFilters.topic && !cTopics.includes(activeFilters.topic)) match = false;
+      if (match && activeFilters.topicsOr.length > 0 && !activeFilters.topicsOr.some((t) => cTopics.includes(t)))
+        match = false;
+      if (match && activeFilters.year && cYear !== activeFilters.year) match = false;
+      if (match && activeFilters.speaker && !cSpeakers.includes(activeFilters.speaker)) match = false;
+      if (match && activeFilters._yearRange) {
+        const y = parseInt(cYear, 10);
+        if (y < activeFilters._yearRange[0] || y > activeFilters._yearRange[1]) match = false;
+      }
+      if (match && activeFilters.controversy === '4' && cControversy < 4) match = false;
+      else if (match && activeFilters.controversy === '3' && cControversy !== 3) match = false;
+      else if (match && activeFilters.controversy === '1' && cControversy > 2) match = false;
+
+      if (match) {
+        card.removeAttribute('hidden');
+        visible++;
+      } else {
+        card.setAttribute('hidden', '');
+      }
     }
 
-    if (type) filtered = filtered.filter((d) => d.type === type);
-    if (topic) filtered = filtered.filter((d) => (d.topics || []).includes(topic));
-    // Multi-topic OR filter (from controversy clicks)
-    if (activeFilters.topicsOr && activeFilters.topicsOr.length > 0) {
-      filtered = filtered.filter((d) => activeFilters.topicsOr.some((t) => (d.topics || []).includes(t)));
-    }
-    if (year) filtered = filtered.filter((d) => d.date.startsWith(year));
-    if (speaker) filtered = filtered.filter((d) => (d.speakers || []).includes(speaker));
+    const count = document.getElementById('result-count');
+    if (count) count.textContent = `显示 ${visible} / ${all.length} 条`;
 
-    // Year range filter (from policy evolution clicks)
-    if (activeFilters._yearRange) {
-      const [from, to] = activeFilters._yearRange;
-      filtered = filtered.filter((d) => {
-        const y = parseInt(d.date.slice(0, 4));
-        return y >= from && y <= to;
-      });
-    } else {
-      activeFilters._yearRange = null;
-    }
+    const empty = document.getElementById('debate-empty-state');
+    if (empty) empty.classList.toggle('hidden', visible !== 0);
 
-    if (controversy === '4') filtered = filtered.filter((d) => d.controversyLevel >= 4);
-    else if (controversy === '3') filtered = filtered.filter((d) => d.controversyLevel === 3);
-    else if (controversy === '1') filtered = filtered.filter((d) => d.controversyLevel <= 2);
-
-    renderDebates(filtered);
+    updateActiveFilterBar(visible);
   }
 
-  // Init
+  // ── Init ─────────────────────────────────────────────────────────────────
   document.addEventListener('DOMContentLoaded', () => {
-    renderDebates(debates);
+    // Initial pass — count display only; cards already in HTML and visible.
+    applyFilters();
 
-    ['search-input'].forEach((id) => {
-      document.getElementById(id)?.addEventListener('input', () => {
-        activeFilters._yearRange = null;
-        applyFilters();
-      });
+    // Wire "展开原文" buttons (SSG-rendered with data-toggle-fulltext attr).
+    document.querySelectorAll('[data-toggle-fulltext]').forEach((btn) => {
+      btn.addEventListener('click', () => window.toggleFullText(btn));
+    });
+
+    document.getElementById('search-input')?.addEventListener('input', () => {
+      activeFilters._yearRange = null;
+      applyFilters();
     });
 
     ['type-filter', 'year-filter', 'controversy-filter', 'speaker-filter'].forEach((id) => {
@@ -942,10 +951,10 @@ const debatesJson = JSON.stringify(
         applyFilters();
       });
     });
-    // topic-filter change: clear topicsOr first
+
     document.getElementById('topic-filter')?.addEventListener('change', () => {
       activeFilters._yearRange = null;
-      activeFilters.topicsOr = []; // clear multi-topic OR when user picks from dropdown
+      activeFilters.topicsOr = [];
       applyFilters();
     });
   });

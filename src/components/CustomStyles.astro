@@ -1,22 +1,10 @@
 ---
-import '@fontsource-variable/inter';
-
-// 'DM Sans'
-// Nunito
-// Dosis
-// Outfit
-// Roboto
-// Literata
-// 'IBM Plex Sans'
-// Karla
-// Poppins
-// 'Fira Sans'
-// 'Libre Franklin'
-// Inconsolata
-// Raleway
-// Oswald
-// 'Space Grotesk'
-// Urbanist
+// Phase 0: Inter removed (no CJK glyphs). New serif stack
+// (@fontsource/source-serif-4 + @fontsource/noto-serif-sc)
+// is installed and will be wired up in Phase 3 (visual identity).
+// During Phase 0-2 the CSS vars below resolve to system fallback
+// (ui-sans-serif / system-ui), which on macOS/iOS is PingFang SC
+// for Chinese — already better than the previous Inter-only stack.
 ---
 
 <style is:inline>

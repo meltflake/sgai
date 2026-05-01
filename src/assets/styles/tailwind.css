@@ -90,3 +90,39 @@
 .dd *:first-child {
   margin-top: 0;
 }
+
+/* Global focus-visible ring for keyboard users (Phase 0 a11y baseline). */
+*:focus {
+  outline: none;
+}
+*:focus-visible {
+  outline: 2px solid rgb(1 97 239);
+  outline-offset: 2px;
+  border-radius: 0.25rem;
+}
+.dark *:focus-visible {
+  outline-color: rgb(96 165 250);
+}
+
+/* Scroll-shadow affordance on horizontally scrollable containers
+   (Phase 0 mobile UX baseline; especially for /tracker, /benchmarking tables). */
+.overflow-x-auto {
+  background:
+    linear-gradient(to right, var(--aw-color-bg-page, white), var(--aw-color-bg-page, white)) left center / 24px 100%
+      no-repeat,
+    linear-gradient(to right, var(--aw-color-bg-page, white), var(--aw-color-bg-page, white)) right center / 24px 100%
+      no-repeat,
+    linear-gradient(to right, rgba(0, 0, 0, 0.12), rgba(0, 0, 0, 0)) left center / 16px 100% no-repeat,
+    linear-gradient(to left, rgba(0, 0, 0, 0.12), rgba(0, 0, 0, 0)) right center / 16px 100% no-repeat;
+  background-attachment: local, local, scroll, scroll;
+}
+.dark .overflow-x-auto {
+  background:
+    linear-gradient(to right, var(--aw-color-bg-page-dark, #030621), var(--aw-color-bg-page-dark, #030621)) left
+      center / 24px 100% no-repeat,
+    linear-gradient(to right, var(--aw-color-bg-page-dark, #030621), var(--aw-color-bg-page-dark, #030621)) right
+      center / 24px 100% no-repeat,
+    linear-gradient(to right, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0)) left center / 16px 100% no-repeat,
+    linear-gradient(to left, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0)) right center / 16px 100% no-repeat;
+  background-attachment: local, local, scroll, scroll;
+}

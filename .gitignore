@@ -38,3 +38,6 @@ scripts/logs/
 scripts/data/
 scripts/videos/data/
 scripts/voices/data/
+
+# Phase 1 codemod intermediate outputs (regenerated from sources)
+scripts/out/
