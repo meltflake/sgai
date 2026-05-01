@@ -134,7 +134,7 @@ const breadcrumbs = [{ label: '国会 AI 焦点', href: getPermalink('/debates')
       (debate.governmentStance || debate.oppositionStance) && (
         <section class="mb-8 grid md:grid-cols-2 gap-4">
           {debate.governmentStance && (
-            <div class="border border-gray-200 dark:border-slate-700 rounded-lg p-4">
+            <div class="border border-subtle rounded-lg p-4">
               <div class="text-xs font-semibold uppercase tracking-wider text-blue-600 dark:text-blue-400 mb-2">
                 政府立场
               </div>
@@ -142,7 +142,7 @@ const breadcrumbs = [{ label: '国会 AI 焦点', href: getPermalink('/debates')
             </div>
           )}
           {debate.oppositionStance && (
-            <div class="border border-gray-200 dark:border-slate-700 rounded-lg p-4">
+            <div class="border border-subtle rounded-lg p-4">
               <div class="text-xs font-semibold uppercase tracking-wider text-orange-600 dark:text-orange-400 mb-2">
                 质询立场
               </div>
@@ -174,7 +174,7 @@ const breadcrumbs = [{ label: '国会 AI 焦点', href: getPermalink('/debates')
 
     {
       speakers.length > 0 && (
-        <section class="mb-8 mt-10 pt-6 border-t border-gray-200 dark:border-slate-700">
+        <section class="mb-8 mt-10 pt-6 border-t border-subtle">
           <h2 class="text-sm uppercase tracking-wider text-gray-500 dark:text-gray-400 font-semibold mb-3">
             参与人员（{speakers.length}）
           </h2>
@@ -199,7 +199,7 @@ const breadcrumbs = [{ label: '国会 AI 焦点', href: getPermalink('/debates')
       )
     }
 
-    <details class="my-8 border border-gray-200 dark:border-slate-700 rounded-lg">
+    <details class="my-8 border border-subtle rounded-lg">
       <summary
         class="cursor-pointer px-4 py-3 text-sm font-semibold text-gray-700 dark:text-gray-300 hover:text-primary"
       >
@@ -230,7 +230,7 @@ const breadcrumbs = [{ label: '国会 AI 焦点', href: getPermalink('/debates')
 
     <RelatedRail entity={{ type: 'debate', id: debate.id }} variant="full" hideWhenEmpty={true} class="mt-12" />
 
-    <nav class="mt-12 pt-6 border-t border-gray-200 dark:border-slate-700">
+    <nav class="mt-12 pt-6 border-t border-subtle">
       <a href="/debates/" class="text-sm text-primary hover:text-secondary font-medium inline-flex items-center gap-1">
         <Icon name="tabler:arrow-left" class="w-4 h-4" />
         返回辩论库

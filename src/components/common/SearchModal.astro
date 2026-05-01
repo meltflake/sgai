@@ -17,23 +17,23 @@ const lang = getLangFromPath(new URL(Astro.url).pathname);
 <button
   id="search-trigger"
   type="button"
-  class="text-muted dark:text-gray-400 hover:text-primary dark:hover:text-white inline-flex items-center gap-1.5 p-2 rounded-md text-sm border border-gray-200 dark:border-slate-700 hover:border-primary transition-colors"
+  class="text-muted dark:text-gray-400 hover:text-primary dark:hover:text-white inline-flex items-center gap-1.5 p-2 rounded-md text-sm border border-subtle hover:border-primary transition-colors"
   aria-label={t(lang, 'search')}
   aria-keyshortcuts="/"
 >
   <Icon name="tabler:search" class="w-4 h-4" />
   <kbd
-    class="hidden xl:inline-flex items-center font-mono text-[0.65rem] text-gray-400 dark:text-gray-500 border border-gray-200 dark:border-slate-700 rounded px-1.5 py-0.5"
+    class="hidden xl:inline-flex items-center font-mono text-[0.65rem] text-gray-400 dark:text-gray-500 border border-subtle rounded px-1.5 py-0.5"
     >/</kbd
   >
 </button>
 
 <dialog
   id="search-dialog"
-  class="rounded-lg p-0 backdrop:bg-black/60 backdrop:backdrop-blur-sm w-full max-w-2xl bg-white dark:bg-slate-900 dark:text-gray-100 shadow-2xl"
+  class="rounded-lg p-0 backdrop:bg-black/60 backdrop:backdrop-blur-sm w-full max-w-2xl bg-surface dark:text-gray-100 shadow-2xl"
   aria-label={lang === 'en' ? 'Site search' : '站内搜索'}
 >
-  <div class="flex items-center justify-between px-4 py-3 border-b border-gray-200 dark:border-slate-700">
+  <div class="flex items-center justify-between px-4 py-3 border-b border-subtle">
     <span class="text-sm font-semibold text-gray-700 dark:text-gray-200">
       {lang === 'en' ? 'Site search' : '站内搜索'}
     </span>

@@ -44,7 +44,7 @@ This is one of the structural reasons OpenAI, Anthropic, DeepMind, Mistral and o
       subtitle={`Last updated: ${dataDate}. "Permissive on training + strict on outputs" — a dual track that makes Singapore one of the world's most predictable jurisdictions for AI companies today.`}
     />
 
-    <div class="bg-blue-50 dark:bg-blue-950 border-l-4 border-blue-500 p-6 rounded-lg mb-12 text-sm leading-relaxed">
+    <div class="callout-note rounded-lg mb-12 leading-relaxed">
       <p class="font-bold text-base mb-3">Core Position</p>
       <pre class="text-sm whitespace-pre-wrap leading-relaxed bg-transparent p-0 border-0 m-0">{introBodyEn}</pre>
     </div>
@@ -59,7 +59,7 @@ This is one of the structural reasons OpenAI, Anthropic, DeepMind, Mistral and o
 
           <div class="space-y-4">
             {section.items.map((item) => (
-              <div class="border border-slate-200 dark:border-slate-700 rounded-lg p-6 bg-white dark:bg-slate-900 hover:shadow-md transition-shadow">
+              <div class="border border-subtle rounded-lg p-6 bg-surface hover:shadow-md transition-shadow">
                 <div class="flex items-start gap-2 flex-wrap mb-2">
                   <h3 class="text-lg font-bold m-0 flex-1 min-w-0">{item.titleEn}</h3>
                   <span class={`text-xs font-bold px-2 py-1 rounded shrink-0 ${scopeLabel[item.scope].color}`}>
@@ -108,9 +108,7 @@ This is one of the structural reasons OpenAI, Anthropic, DeepMind, Mistral and o
       ))
     }
 
-    <div
-      class="mt-12 bg-gradient-to-br from-amber-50 to-emerald-50 dark:from-amber-950 dark:to-emerald-950 rounded-xl p-8 border border-amber-200 dark:border-amber-800"
-    >
+    <div class="mt-12 bg-surface rounded-xl p-8 border border-subtle">
       <h2 class="text-xl font-bold mb-4">Why this combination is attractive to AI companies</h2>
       <pre class="text-sm whitespace-pre-wrap leading-relaxed bg-transparent p-0 border-0 m-0">{conclusionEn}</pre>
     </div>

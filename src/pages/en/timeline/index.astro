@@ -39,7 +39,7 @@ const lang = 'en' as const;
               <div
                 class={`ml-12 md:ml-0 md:w-[calc(50%-2rem)] ${index % 2 === 0 ? 'md:mr-auto md:pr-8 md:text-right' : 'md:ml-auto md:pl-8'}`}
               >
-                <div class="bg-white dark:bg-slate-900 rounded-lg shadow-md p-6 border border-slate-200 dark:border-slate-700 hover:shadow-lg transition-shadow">
+                <div class="bg-surface rounded-lg shadow-md p-6 border border-subtle hover:shadow-lg transition-shadow">
                   <div class={`flex items-center gap-3 mb-2 ${index % 2 === 0 ? 'md:flex-row-reverse' : ''}`}>
                     <span class="text-2xl font-bold text-blue-600 dark:text-blue-400">{event.year}</span>
                     {event.tags && (

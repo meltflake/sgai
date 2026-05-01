@@ -39,6 +39,12 @@ import '@fontsource/noto-serif-sc/chinese-simplified-700.css';
     --aw-color-text-muted: rgb(107 107 102);
     --aw-color-bg-page: rgb(250 247 242);
 
+    /* Surface = card / chip background, slightly elevated from page bg.
+       Border-subtle = consistent divider used everywhere. Both warm-tinted
+       to keep the FT/Stratechery editorial feel coherent across components. */
+    --aw-color-bg-surface: rgb(255 252 247);
+    --aw-color-border-subtle: rgb(228 222 211);
+
     --aw-color-bg-page-dark: rgb(15 15 18);
 
     /* Optional: accent-growth reserved for charts only (not surfaced as a
@@ -55,14 +61,19 @@ import '@fontsource/noto-serif-sc/chinese-simplified-700.css';
     --aw-font-serif: 'Source Serif 4', 'Noto Serif SC', ui-serif, Georgia, 'PingFang SC', 'Microsoft YaHei', serif;
     --aw-font-heading: 'Source Serif 4', 'Noto Serif SC', ui-serif, Georgia, 'PingFang SC', 'Microsoft YaHei', serif;
 
-    --aw-color-primary: rgb(232 64 90);
-    --aw-color-secondary: rgb(200 16 46);
+    --aw-color-primary: rgb(244 96 116);
+    --aw-color-secondary: rgb(232 64 90);
     --aw-color-accent: rgb(72 187 120);
 
     --aw-color-text-heading: rgb(247 245 240);
     --aw-color-text-default: rgb(229 226 220);
     --aw-color-text-muted: rgb(160 158 152);
     --aw-color-bg-page: rgb(15 15 18);
+
+    /* Dark surface: warm-tinted lift from page bg (#0F0F12 → #16161A).
+       Same hue, just brighter, so cards don't introduce a cool slate-blue. */
+    --aw-color-bg-surface: rgb(22 22 26);
+    --aw-color-border-subtle: rgb(48 47 52);
 
     ::selection {
       background-color: rgb(232 64 90 / 28%);

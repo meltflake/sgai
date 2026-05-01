@@ -47,10 +47,10 @@ if (items.length < minHeadings) {
 {
   items.length >= minHeadings && (
     <details class={`toc-mobile not-prose mb-6 mx-auto max-w-3xl px-4 sm:px-6 ${extraClass}`} id={id} aria-label="目录">
-      <summary class="cursor-pointer text-sm font-semibold text-gray-700 dark:text-gray-300 py-2 border-y border-gray-200 dark:border-slate-700 select-none">
+      <summary class="cursor-pointer text-sm font-semibold text-gray-700 dark:text-gray-300 py-2 border-y border-subtle select-none">
         📑 目录（{items.length} 节）
       </summary>
-      <ol class="mt-3 space-y-1.5 text-sm border-l border-gray-200 dark:border-slate-700 pl-3">
+      <ol class="mt-3 space-y-1.5 text-sm border-l border-subtle pl-3">
         {items.map((h) => (
           <li class={h.depth === 2 ? 'font-medium' : 'pl-3 text-gray-500 dark:text-gray-400'}>
             <a

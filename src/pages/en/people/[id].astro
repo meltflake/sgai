@@ -66,15 +66,15 @@ const categoryColors: Record<Person['category'], string> = {
     </div>
 
     <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-6">
-      <div class="bg-white dark:bg-slate-800 rounded-xl p-4 shadow-sm border border-gray-100 dark:border-slate-700">
+      <div class="bg-surface rounded-xl p-4 shadow-sm border border-subtle">
         <div class="text-2xl font-bold text-blue-600">{counts.debateCount}</div>
         <div class="text-xs text-gray-500 mt-0.5">Parliamentary speeches</div>
       </div>
-      <div class="bg-white dark:bg-slate-800 rounded-xl p-4 shadow-sm border border-gray-100 dark:border-slate-700">
+      <div class="bg-surface rounded-xl p-4 shadow-sm border border-subtle">
         <div class="text-2xl font-bold text-purple-600">{counts.policyAuthorCount}</div>
         <div class="text-xs text-gray-500 mt-0.5">Policies championed</div>
       </div>
-      <div class="bg-white dark:bg-slate-800 rounded-xl p-4 shadow-sm border border-gray-100 dark:border-slate-700">
+      <div class="bg-surface rounded-xl p-4 shadow-sm border border-subtle">
         <div class="text-2xl font-bold text-amber-600">
           {(person.affiliations || []).slice(0, 2).join(' / ') || '—'}
         </div>
@@ -84,14 +84,14 @@ const categoryColors: Record<Person['category'], string> = {
 
     {
       !isStub && summary && (
-        <div class="bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-500 p-5 rounded-lg mb-6">
+        <div class="callout-note p-5 rounded-lg mb-6">
           <p class="text-gray-800 dark:text-gray-200 leading-relaxed">{summary}</p>
         </div>
       )
     }
     {
       isStub && (
-        <div class="bg-amber-50 dark:bg-amber-900/20 border-l-4 border-amber-500 p-4 rounded-lg mb-6 text-sm">
+        <div class="callout-muted p-4 rounded-lg mb-6 text-sm">
           <p class="text-amber-900 dark:text-amber-200">
             Profile pending. The list below is auto-generated from this person's parliamentary appearances.
           </p>
@@ -137,7 +137,7 @@ const categoryColors: Record<Person['category'], string> = {
             {related.debates.slice(0, 30).map((d) => (
               <a
                 href={`/en/debates/${d.id}/`}
-                class="block bg-white dark:bg-slate-800 rounded-lg p-4 border border-gray-100 dark:border-slate-700 hover:border-blue-300 hover:shadow-sm transition-all"
+                class="block bg-surface rounded-lg p-4 border border-subtle hover:border-blue-300 hover:shadow-sm transition-all"
               >
                 <div class="flex items-start justify-between gap-3 flex-wrap">
                   <div class="flex-1 min-w-0">
@@ -176,7 +176,7 @@ const categoryColors: Record<Person['category'], string> = {
             {related.policies.map((p) => (
               <a
                 href={`/en/policies/${p.id}/`}
-                class="block bg-white dark:bg-slate-800 rounded-lg p-4 border border-gray-100 dark:border-slate-700 hover:border-purple-300 hover:shadow-sm transition-all"
+                class="block bg-surface rounded-lg p-4 border border-subtle hover:border-purple-300 hover:shadow-sm transition-all"
               >
                 <h3 class="font-semibold text-gray-800 dark:text-white text-sm">{p.titleEn || p.title}</h3>
                 <p class="text-xs text-gray-500 mt-0.5">{p.date}</p>

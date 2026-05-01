@@ -12,17 +12,45 @@
   .bg-light {
     background-color: var(--aw-color-bg-page);
   }
+  .bg-surface {
+    background-color: var(--aw-color-bg-surface);
+  }
+  .border-subtle {
+    border-color: var(--aw-color-border-subtle);
+  }
   .text-page {
     color: var(--aw-color-text-page);
   }
   .text-muted {
     color: var(--aw-color-text-muted);
   }
+  /* Two-tone callout system replacing the blue/amber/purple confetti. */
+  .callout-note {
+    border-left: 4px solid var(--aw-color-primary);
+    background-color: rgb(200 16 46 / 0.06);
+    @apply rounded-r-lg p-5 text-sm;
+  }
+  .dark .callout-note {
+    background-color: rgb(244 96 116 / 0.1);
+  }
+  .callout-muted {
+    border-left: 4px solid var(--aw-color-border-subtle);
+    background-color: var(--aw-color-bg-surface);
+    @apply rounded-r-lg p-5 text-sm;
+  }
 }
 
 @layer components {
   .btn {
-    @apply inline-flex items-center justify-center rounded-full border-gray-400 border bg-transparent font-medium text-center text-base text-page leading-snug transition py-3.5 px-6 md:px-8 ease-in duration-200 focus:ring-blue-500 focus:ring-offset-blue-200 focus:ring-2 focus:ring-offset-2 hover:bg-gray-100 hover:border-gray-600 dark:text-slate-300 dark:border-slate-500 dark:hover:bg-slate-800 dark:hover:border-slate-800 cursor-pointer;
+    @apply inline-flex items-center justify-center rounded-full border bg-transparent font-medium text-center text-base text-default leading-snug transition py-3.5 px-6 md:px-8 ease-in duration-200 focus:ring-2 focus:ring-offset-2 cursor-pointer;
+    border-color: var(--aw-color-border-subtle);
+  }
+  .btn:hover {
+    background-color: color-mix(in srgb, var(--aw-color-primary) 6%, transparent);
+    border-color: var(--aw-color-primary);
+  }
+  .dark .btn:hover {
+    background-color: color-mix(in srgb, var(--aw-color-primary) 14%, transparent);
   }
 
   .btn-primary {
@@ -39,12 +67,15 @@
 }
 
 #header.scroll > div:first-child {
-  @apply bg-page md:bg-white/90 md:backdrop-blur-md;
+  background-color: color-mix(in srgb, var(--aw-color-bg-page) 92%, transparent);
+  @apply md:backdrop-blur-md;
   box-shadow: 0 0.375rem 1.5rem 0 rgb(140 152 164 / 13%);
 }
 .dark #header.scroll > div:first-child,
 #header.scroll.dark > div:first-child {
-  @apply bg-page md:bg-[#030621e6] border-b border-gray-500/20;
+  background-color: color-mix(in srgb, var(--aw-color-bg-page) 92%, transparent);
+  @apply md:backdrop-blur-md border-b;
+  border-color: var(--aw-color-border-subtle);
   box-shadow: none;
 }
 /* #header.scroll > div:last-child {
@@ -119,11 +150,9 @@
 }
 .dark .overflow-x-auto {
   background:
-    linear-gradient(to right, var(--aw-color-bg-page-dark, #030621), var(--aw-color-bg-page-dark, #030621)) left
-      center / 24px 100% no-repeat,
-    linear-gradient(to right, var(--aw-color-bg-page-dark, #030621), var(--aw-color-bg-page-dark, #030621)) right
-      center / 24px 100% no-repeat,
-    linear-gradient(to right, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0)) left center / 16px 100% no-repeat,
-    linear-gradient(to left, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0)) right center / 16px 100% no-repeat;
+    linear-gradient(to right, var(--aw-color-bg-page), var(--aw-color-bg-page)) left center / 24px 100% no-repeat,
+    linear-gradient(to right, var(--aw-color-bg-page), var(--aw-color-bg-page)) right center / 24px 100% no-repeat,
+    linear-gradient(to right, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0)) left center / 16px 100% no-repeat,
+    linear-gradient(to left, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0)) right center / 16px 100% no-repeat;
   background-attachment: local, local, scroll, scroll;
 }

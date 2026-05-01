@@ -12,6 +12,11 @@ export default {
         accent: 'var(--aw-color-accent)',
         default: 'var(--aw-color-text-default)',
         muted: 'var(--aw-color-text-muted)',
+        // Warm-tinted surface (card / chip / modal bg) and divider tone.
+        // Both auto-flip in dark mode via CustomStyles CSS variables.
+        surface: 'var(--aw-color-bg-surface)',
+        subtle: 'var(--aw-color-border-subtle)',
+        page: 'var(--aw-color-bg-page)',
       },
       fontFamily: {
         sans: ['var(--aw-font-sans, ui-sans-serif)', ...defaultTheme.fontFamily.sans],

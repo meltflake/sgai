@@ -19,7 +19,7 @@ import { levers, transmissionExplainer, dataDate } from '~/data/levers';
       subtitle={`数据更新：${dataDate}。把新加坡 Budget 2026 + 各部委的 AI 政策按"AI 引入路径"重新分类，6 个抓手跨多部委——这比按部门分类更能看出整体形状。`}
     />
 
-    <div class="bg-blue-50 dark:bg-blue-950 border-l-4 border-blue-500 p-6 rounded-lg mb-12 text-sm leading-relaxed">
+    <div class="callout-note rounded-lg mb-12 leading-relaxed">
       <p class="font-bold text-base mb-2">为什么按抓手分类？</p>
       <p class="mb-2">
         多数 AI 政策文章把"国家"和"企业"并列分析——错过了嵌套关系。新加坡战略的本质是<strong
@@ -35,7 +35,7 @@ import { levers, transmissionExplainer, dataDate } from '~/data/levers';
     <div class="space-y-16">
       {
         levers.map((lever) => (
-          <div class="border border-slate-200 dark:border-slate-700 rounded-xl p-8 bg-white dark:bg-slate-900 shadow-md">
+          <div class="border border-subtle rounded-xl p-8 bg-surface shadow-md">
             <div class="flex items-start gap-4 mb-6 flex-wrap">
               <div class="text-5xl">{lever.icon}</div>
               <div class="flex-1 min-w-[280px]">
@@ -70,12 +70,10 @@ import { levers, transmissionExplainer, dataDate } from '~/data/levers';
 
             {lever.groups.map((group) => (
               <div class="mb-6">
-                <h3 class="text-lg font-bold mb-3 border-b border-slate-200 dark:border-slate-700 pb-1">
-                  {group.title}
-                </h3>
+                <h3 class="text-lg font-bold mb-3 border-b border-subtle pb-1">{group.title}</h3>
                 <div class="grid gap-3 md:grid-cols-2">
                   {group.items.map((item) => (
-                    <div class="border border-slate-200 dark:border-slate-700 rounded-lg p-4 hover:shadow-md transition-shadow">
+                    <div class="border border-subtle rounded-lg p-4 hover:shadow-md transition-shadow">
                       <div class="flex items-start gap-2 flex-wrap mb-2">
                         <h4 class="text-base font-bold m-0 flex-1 min-w-0">{item.name}</h4>
                         <span class="text-xs bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 px-2 py-1 rounded shrink-0">
@@ -104,20 +102,14 @@ import { levers, transmissionExplainer, dataDate } from '~/data/levers';
               </div>
             ))}
 
-            {lever.insight && (
-              <div class="bg-amber-50 dark:bg-amber-950 border-l-4 border-amber-500 p-4 rounded mt-4 text-sm italic">
-                💡 {lever.insight}
-              </div>
-            )}
+            {lever.insight && <div class="callout-muted rounded mt-4 italic">💡 {lever.insight}</div>}
             <RelatedRail entity={{ type: 'lever', id: lever.number }} variant="compact" />
           </div>
         ))
       }
     </div>
 
-    <div
-      class="mt-16 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-950 dark:to-purple-950 rounded-xl p-8 border border-blue-200 dark:border-blue-800"
-    >
+    <div class="mt-16 bg-surface rounded-xl p-8 border border-subtle">
       <h2 class="text-2xl font-bold mb-4">{transmissionExplainer.title}</h2>
       <pre
         class="text-sm whitespace-pre-wrap leading-relaxed bg-transparent p-0 border-0 m-0">{transmissionExplainer.body}</pre>

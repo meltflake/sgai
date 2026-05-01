@@ -23,7 +23,7 @@ const lang = 'en' as const;
       subtitle={`${t(lang, 'freshnessUpdated')}: ${dataDate}. Re-classifying Singapore's Budget 2026 plus all ministry-level AI policies along "AI-injection paths" yields six cross-ministry levers — a clearer view of the whole shape than reading them department by department.`}
     />
 
-    <div class="bg-blue-50 dark:bg-blue-950 border-l-4 border-blue-500 p-6 rounded-lg mb-12 text-sm leading-relaxed">
+    <div class="callout-note rounded-lg mb-12 leading-relaxed">
       <p class="font-bold text-base mb-2">Why classify by lever?</p>
       <p class="mb-2">
         Most analyses treat the state and the enterprise as parallel actors — and miss the nesting relationship. The
@@ -41,7 +41,7 @@ const lang = 'en' as const;
     <div class="space-y-16">
       {
         levers.map((lever) => (
-          <div class="border border-slate-200 dark:border-slate-700 rounded-xl p-8 bg-white dark:bg-slate-900 shadow-md">
+          <div class="border border-subtle rounded-xl p-8 bg-surface shadow-md">
             <div class="flex items-start gap-4 mb-6 flex-wrap">
               <div class="text-5xl">{lever.icon}</div>
               <div class="flex-1 min-w-[280px]">
@@ -78,12 +78,12 @@ const lang = 'en' as const;
 
             {lever.groups.map((group) => (
               <div class="mb-6">
-                <h3 class="text-lg font-bold mb-3 border-b border-slate-200 dark:border-slate-700 pb-1">
+                <h3 class="text-lg font-bold mb-3 border-b border-subtle pb-1">
                   {pickLocalized(group, 'title', 'titleEn', lang)}
                 </h3>
                 <div class="grid gap-3 md:grid-cols-2">
                   {group.items.map((item) => (
-                    <div class="border border-slate-200 dark:border-slate-700 rounded-lg p-4 hover:shadow-md transition-shadow">
+                    <div class="border border-subtle rounded-lg p-4 hover:shadow-md transition-shadow">
                       <div class="flex items-start gap-2 flex-wrap mb-2">
                         <h4 class="text-base font-bold m-0 flex-1 min-w-0">
                           {pickLocalized(item, 'name', 'nameEn', lang)}
@@ -117,7 +117,7 @@ const lang = 'en' as const;
             ))}
 
             {lever.insight && (
-              <div class="bg-amber-50 dark:bg-amber-950 border-l-4 border-amber-500 p-4 rounded mt-4 text-sm italic">
+              <div class="callout-muted rounded mt-4 italic">
                 💡 {pickLocalized(lever, 'insight', 'insightEn', lang)}
               </div>
             )}
@@ -127,9 +127,7 @@ const lang = 'en' as const;
       }
     </div>
 
-    <div
-      class="mt-16 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-950 dark:to-purple-950 rounded-xl p-8 border border-blue-200 dark:border-blue-800"
-    >
+    <div class="mt-16 bg-surface rounded-xl p-8 border border-subtle">
       <h2 class="text-2xl font-bold mb-4">{pickLocalized(transmissionExplainer, 'title', 'titleEn', lang)}</h2>
       <pre
         class="text-sm whitespace-pre-wrap leading-relaxed bg-transparent p-0 border-0 m-0">{pickLocalized(transmissionExplainer, 'body', 'bodyEn', lang)}</pre>

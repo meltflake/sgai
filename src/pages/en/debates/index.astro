@@ -37,17 +37,17 @@ const controversyLabels: Record<number, string> = {
 };
 
 const controversyColors: Record<number, string> = {
-  1: 'bg-slate-100 text-slate-600',
-  2: 'bg-blue-100 text-blue-700',
-  3: 'bg-yellow-100 text-yellow-700',
-  4: 'bg-orange-100 text-orange-700',
-  5: 'bg-red-100 text-red-700',
+  1: 'bg-surface text-muted border border-subtle',
+  2: 'bg-surface text-muted border border-subtle',
+  3: 'bg-surface text-default border border-subtle',
+  4: 'bg-primary/10 text-primary border border-primary/30',
+  5: 'bg-primary/15 text-primary border border-primary/40 font-semibold',
 };
 
 const statusColors: Record<string, string> = {
-  ongoing: 'bg-amber-100 text-amber-700',
-  escalating: 'bg-red-100 text-red-700',
-  resolved: 'bg-green-100 text-green-700',
+  ongoing: 'bg-surface text-muted border border-subtle',
+  escalating: 'bg-primary/10 text-primary border border-primary/30',
+  resolved: 'bg-surface text-default border border-subtle',
 };
 
 const statusLabels: Record<string, string> = {
@@ -57,9 +57,9 @@ const statusLabels: Record<string, string> = {
 };
 
 const significanceColors: Record<string, string> = {
-  high: 'border-l-red-500',
-  medium: 'border-l-yellow-500',
-  low: 'border-l-blue-400',
+  high: 'border-l-primary',
+  medium: 'border-l-subtle',
+  low: 'border-l-subtle',
 };
 
 // Topic translation map — keys match the canonical English topics in debate.topics.
@@ -151,9 +151,7 @@ const searchBlob = (d: (typeof debates)[number]) => {
 
     <!-- Stats Row — clickable by type -->
     <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
-      <div
-        class="bg-white dark:bg-slate-800 rounded-xl p-5 shadow-sm border border-gray-100 dark:border-slate-700 text-center"
-      >
+      <div class="bg-surface rounded-xl p-5 shadow-sm border border-subtle text-center">
         <div class="text-3xl font-bold text-blue-600">{DEBATE_STATS.total}</div>
         <div class="text-sm text-gray-500 mt-1">Total debate records</div>
       </div>
@@ -161,7 +159,7 @@ const searchBlob = (d: (typeof debates)[number]) => {
         Object.entries(DEBATE_STATS.byType).map(([type, count]) => (
           <button
             onclick={`filterBy('type','${type}')`}
-            class="bg-white dark:bg-slate-800 rounded-xl p-5 shadow-sm border border-gray-100 dark:border-slate-700 text-center hover:border-blue-400 hover:shadow-md transition-all cursor-pointer group"
+            class="bg-surface rounded-xl p-5 shadow-sm border border-subtle text-center hover:border-blue-400 hover:shadow-md transition-all cursor-pointer group"
             title={`View all ${typeMap[type] || type}`}
           >
             <div class="text-2xl font-bold text-purple-600 group-hover:text-blue-600 transition-colors">{count}</div>
@@ -180,7 +178,7 @@ const searchBlob = (d: (typeof debates)[number]) => {
         <span>📅</span> Debate Volume by Year
       </h2>
       <p class="text-sm text-gray-400 mb-5">Click any year to view all debates from that year.</p>
-      <div class="bg-white dark:bg-slate-800 rounded-xl p-6 shadow-sm border border-gray-100 dark:border-slate-700">
+      <div class="bg-surface rounded-xl p-6 shadow-sm border border-subtle">
         <div class="flex items-end gap-2 h-40">
           {
             Object.entries(DEBATE_STATS.byYear)
@@ -219,7 +217,7 @@ const searchBlob = (d: (typeof debates)[number]) => {
         {
           KEY_INSIGHTS.map((ins) => (
             <div
-              class={`bg-white dark:bg-slate-800 rounded-xl p-5 shadow-sm border-l-4 ${significanceColors[ins.significance]} border border-gray-100 dark:border-slate-700`}
+              class={`bg-surface rounded-xl p-5 shadow-sm border-l-4 ${significanceColors[ins.significance]} border border-subtle`}
             >
               <div class="flex items-start justify-between mb-2">
                 <h3 class="font-semibold text-gray-800 dark:text-white text-sm">{ins.title}</h3>
@@ -253,7 +251,7 @@ const searchBlob = (d: (typeof debates)[number]) => {
                 </div>
                 <button
                   onclick={`filterBy('yearRange','${period.years}')`}
-                  class="w-full text-left bg-white dark:bg-slate-800 rounded-xl p-5 shadow-sm border border-gray-100 dark:border-slate-700 hover:border-blue-400 hover:shadow-md transition-all group"
+                  class="w-full text-left bg-surface rounded-xl p-5 shadow-sm border border-subtle hover:border-blue-400 hover:shadow-md transition-all group"
                 >
                   <div class="flex flex-wrap items-center gap-3 mb-2">
                     <span class="text-xs bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300 px-2 py-1 rounded-full font-mono">
@@ -296,7 +294,7 @@ const searchBlob = (d: (typeof debates)[number]) => {
           RECURRING_CONTROVERSIES.map((c) => (
             <button
               onclick={`filterBy('topics','${(c as { relatedTopics: string[] }).relatedTopics.join(',')}')`}
-              class="text-left bg-white dark:bg-slate-800 rounded-xl p-5 shadow-sm border border-gray-100 dark:border-slate-700 hover:border-orange-400 hover:shadow-md transition-all group"
+              class="text-left bg-surface rounded-xl p-5 shadow-sm border border-subtle hover:border-orange-400 hover:shadow-md transition-all group"
             >
               <div class="flex items-start justify-between mb-3">
                 <div>
@@ -345,7 +343,7 @@ const searchBlob = (d: (typeof debates)[number]) => {
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
         {
           TENSION_MAP.map((tn) => (
-            <div class="bg-white dark:bg-slate-800 rounded-xl p-5 shadow-sm border border-gray-100 dark:border-slate-700">
+            <div class="bg-surface rounded-xl p-5 shadow-sm border border-subtle">
               <h3 class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-3">
                 {tn.dimension}
               </h3>
@@ -379,7 +377,7 @@ const searchBlob = (d: (typeof debates)[number]) => {
           MP_PROFILES.map((mp) => (
             <button
               onclick={`filterBy('speaker','${mp.name.replace(/'/g, "\\'")}')`}
-              class="text-left bg-white dark:bg-slate-800 rounded-xl p-4 shadow-sm border border-gray-100 dark:border-slate-700 hover:border-purple-400 hover:shadow-md transition-all group cursor-pointer"
+              class="text-left bg-surface rounded-xl p-4 shadow-sm border border-subtle hover:border-purple-400 hover:shadow-md transition-all group cursor-pointer"
             >
               <div class="flex items-start justify-between mb-2">
                 <div>
@@ -425,7 +423,7 @@ const searchBlob = (d: (typeof debates)[number]) => {
           POLICY_SIGNALS.map((sig) => (
             <button
               onclick={`filterBy('year','${sig.year}')`}
-              class="text-left bg-white dark:bg-slate-800 rounded-xl p-4 shadow-sm border border-gray-100 dark:border-slate-700 hover:border-green-400 hover:shadow-md transition-all group flex items-start gap-3"
+              class="text-left bg-surface rounded-xl p-4 shadow-sm border border-subtle hover:border-green-400 hover:shadow-md transition-all group flex items-start gap-3"
             >
               <div class="shrink-0 mt-0.5">
                 {sig.status === '已落实' && <span class="text-green-500 text-lg">✅</span>}
@@ -512,7 +510,7 @@ const searchBlob = (d: (typeof debates)[number]) => {
 
       <!-- Filters: collapsible drawer on mobile, always-open on md+. -->
       <details
-        class="md:open:opacity-100 md:[&>summary]:hidden bg-white dark:bg-slate-800 rounded-xl p-4 shadow-sm border border-gray-100 dark:border-slate-700 mb-5"
+        class="md:open:opacity-100 md:[&>summary]:hidden bg-surface rounded-xl p-4 shadow-sm border border-subtle mb-5"
         open
       >
         <summary
@@ -608,7 +606,7 @@ const searchBlob = (d: (typeof debates)[number]) => {
                 data-topics={(d.topics || []).join('|')}
                 data-speakers={(d.speakers || []).join('|')}
                 data-search={searchBlob(d)}
-                class="bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-gray-100 dark:border-slate-700 overflow-hidden"
+                class="bg-surface rounded-xl shadow-sm border border-subtle overflow-hidden"
               >
                 <div class="p-5">
                   {/* Header row */}
@@ -706,7 +704,7 @@ const searchBlob = (d: (typeof debates)[number]) => {
                   )}
 
                   {/* Footer */}
-                  <div class="flex items-center justify-between mt-4 pt-3 border-t border-gray-100 dark:border-slate-700">
+                  <div class="flex items-center justify-between mt-4 pt-3 border-t border-subtle">
                     <div class="flex flex-wrap gap-1 items-center text-xs">
                       <span class="text-gray-400 mr-1">🎙️</span>
                       {(d.speakers || []).slice(0, 5).map((s, i) => {
@@ -754,7 +752,7 @@ const searchBlob = (d: (typeof debates)[number]) => {
                   </div>
 
                   {/* Hidden full-text panel */}
-                  <div class="full-text hidden mt-3 pt-3 border-t border-gray-100 dark:border-slate-700">
+                  <div class="full-text hidden mt-3 pt-3 border-t border-subtle">
                     <div class="text-xs font-semibold text-gray-500 mb-2">📄 Original transcript (English)</div>
                     <div class="text-xs text-gray-600 dark:text-gray-400 whitespace-pre-wrap leading-relaxed max-h-64 overflow-y-auto bg-gray-50 dark:bg-slate-700/50 rounded p-3">
                       {d.summary}

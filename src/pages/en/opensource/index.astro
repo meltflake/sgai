@@ -45,29 +45,21 @@ const lang = 'en' as const;
       <h2 class="text-2xl font-bold mb-6">🦁 SEA-LION Model Ecosystem</h2>
 
       <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-        <div
-          class="bg-white dark:bg-slate-900 rounded-lg shadow-md border border-slate-200 dark:border-slate-700 p-4 text-center"
-        >
+        <div class="bg-surface rounded-lg shadow-md border border-subtle p-4 text-center">
           <div class="text-2xl font-bold text-blue-600 dark:text-blue-400">{seaLionStats.totalModels}</div>
           <div class="text-xs text-muted">Total models</div>
         </div>
-        <div
-          class="bg-white dark:bg-slate-900 rounded-lg shadow-md border border-slate-200 dark:border-slate-700 p-4 text-center"
-        >
+        <div class="bg-surface rounded-lg shadow-md border border-subtle p-4 text-center">
           <div class="text-2xl font-bold text-blue-600 dark:text-blue-400">
             {seaLionStats.totalDownloads.toLocaleString()}
           </div>
           <div class="text-xs text-muted">Total downloads</div>
         </div>
-        <div
-          class="bg-white dark:bg-slate-900 rounded-lg shadow-md border border-slate-200 dark:border-slate-700 p-4 text-center"
-        >
+        <div class="bg-surface rounded-lg shadow-md border border-subtle p-4 text-center">
           <div class="text-2xl font-bold text-blue-600 dark:text-blue-400">{seaLionStats.totalLikes}</div>
           <div class="text-xs text-muted">Total likes</div>
         </div>
-        <div
-          class="bg-white dark:bg-slate-900 rounded-lg shadow-md border border-slate-200 dark:border-slate-700 p-4 text-center"
-        >
+        <div class="bg-surface rounded-lg shadow-md border border-subtle p-4 text-center">
           <div class="text-2xl font-bold text-blue-600 dark:text-blue-400">
             {seaLionStats.topModelDownloads.toLocaleString()}
           </div>
@@ -76,11 +68,9 @@ const lang = 'en' as const;
       </div>
 
       <div class="overflow-x-auto mb-6">
-        <table
-          class="w-full text-sm bg-white dark:bg-slate-900 rounded-lg shadow-md border border-slate-200 dark:border-slate-700"
-        >
+        <table class="w-full text-sm bg-surface rounded-lg shadow-md border border-subtle">
           <thead>
-            <tr class="border-b border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800">
+            <tr class="border-b border-subtle bg-slate-50 dark:bg-slate-800">
               <th class="px-4 py-3 text-left font-semibold">Version</th>
               <th class="px-4 py-3 text-right font-semibold">Models</th>
               <th class="px-4 py-3 text-right font-semibold">Downloads</th>
@@ -124,7 +114,7 @@ const lang = 'en' as const;
     <div class="mb-16">
       <h2 class="text-2xl font-bold mb-6">🛡️ SEA-Guard Safety Models</h2>
 
-      <div class="bg-white dark:bg-slate-900 rounded-lg shadow-md border border-slate-200 dark:border-slate-700 p-6">
+      <div class="bg-surface rounded-lg shadow-md border border-subtle p-6">
         <div class="flex flex-wrap gap-6 mb-4">
           <div>
             <span class="text-2xl font-bold text-blue-600 dark:text-blue-400">{seaGuardStats.totalModels}</span>
@@ -153,7 +143,7 @@ const lang = 'en' as const;
     <div class="mb-16">
       <h2 class="text-2xl font-bold mb-6">✅ AI Verify Governance Framework</h2>
 
-      <div class="bg-white dark:bg-slate-900 rounded-lg shadow-md border border-slate-200 dark:border-slate-700 p-6">
+      <div class="bg-surface rounded-lg shadow-md border border-subtle p-6">
         <p class="text-lg font-semibold mb-1">{aiVerify.name}</p>
         <p class="text-sm text-muted mb-4">{aiVerify.description} · Open-sourced {aiVerify.openSourceDate}</p>
 
@@ -197,7 +187,7 @@ const lang = 'en' as const;
       <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         {
           openSourceProjects.map((proj) => (
-            <div class="bg-white dark:bg-slate-900 rounded-lg shadow-md border border-slate-200 dark:border-slate-700 p-5 hover:shadow-lg transition-shadow">
+            <div class="bg-surface rounded-lg shadow-md border border-subtle p-5 hover:shadow-lg transition-shadow">
               <div class="flex items-start justify-between mb-2">
                 <h3 class="font-bold">{proj.name}</h3>
                 <div class="flex items-center gap-2">
@@ -231,7 +221,7 @@ const lang = 'en' as const;
       <div class="space-y-4">
         {
           papers.map((paper) => (
-            <div class="bg-white dark:bg-slate-900 rounded-lg shadow-md border border-slate-200 dark:border-slate-700 p-5">
+            <div class="bg-surface rounded-lg shadow-md border border-subtle p-5">
               <div class="flex items-start justify-between">
                 <div>
                   <h3 class="font-bold text-sm mb-1">{paper.title}</h3>

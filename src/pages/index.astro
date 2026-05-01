@@ -95,7 +95,7 @@ const totalLeverItems = levers.reduce((sum, lv) => sum + lv.groups.flatMap((g) =
   </section>
 
   {/* Freshness strip — unobtrusive ticker showing the breadth of the dataset. */}
-  <section class="border-y border-gray-200 dark:border-slate-800 bg-gray-50/50 dark:bg-slate-900/40">
+  <section class="border-y border-subtle">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 py-5">
       <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-sm">
         <div>
@@ -139,7 +139,7 @@ const totalLeverItems = levers.reduce((sum, lv) => sum + lv.groups.flatMap((g) =
       <ol class="space-y-8 md:space-y-10">
         {
           latestPosts.map((post, idx) => (
-            <li class="border-b border-gray-200 dark:border-slate-800 pb-8 last:border-b-0 last:pb-0">
+            <li class="border-b border-subtle pb-8 last:border-b-0 last:pb-0">
               <a href={getPermalink(post.permalink, 'post')} class="group block">
                 <div class="flex items-baseline gap-4 mb-2">
                   <span class="font-serif text-sm text-primary tabular-nums">{String(idx + 1).padStart(2, '0')}</span>
@@ -170,7 +170,7 @@ const totalLeverItems = levers.reduce((sum, lv) => sum + lv.groups.flatMap((g) =
   </section>
 
   {/* Levers — 4 chosen, FT-tile shape: number + name + bottleneck. */}
-  <section class="py-12 md:py-16 border-t border-gray-200 dark:border-slate-800">
+  <section class="py-12 md:py-16 border-t border-subtle">
     <div class="max-w-5xl mx-auto px-4 sm:px-6">
       <div class="flex items-baseline justify-between mb-2">
         <h2 class="font-serif text-2xl md:text-3xl font-semibold text-gray-900 dark:text-white">国家 AI 抓手图谱</h2>
@@ -189,7 +189,7 @@ const totalLeverItems = levers.reduce((sum, lv) => sum + lv.groups.flatMap((g) =
           featuredLevers.map((lv) => (
             <a
               href={`/levers/#lever-${lv.number}`}
-              class="group block border-l-2 border-gray-200 dark:border-slate-700 hover:border-primary pl-4 py-1 transition-colors"
+              class="group block border-l-2 border-subtle hover:border-primary pl-4 py-1 transition-colors"
             >
               <div class="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-1 tabular-nums">
                 抓手 {String(lv.number).padStart(2, '0')}
@@ -206,7 +206,7 @@ const totalLeverItems = levers.reduce((sum, lv) => sum + lv.groups.flatMap((g) =
   </section>
 
   {/* Latest debates — flat list, dates first, FT-style. */}
-  <section class="py-12 md:py-16 border-t border-gray-200 dark:border-slate-800">
+  <section class="py-12 md:py-16 border-t border-subtle">
     <div class="max-w-5xl mx-auto px-4 sm:px-6">
       <div class="flex items-baseline justify-between mb-2">
         <h2 class="font-serif text-2xl md:text-3xl font-semibold text-gray-900 dark:text-white">最近国会辩论</h2>
@@ -252,7 +252,7 @@ const totalLeverItems = levers.reduce((sum, lv) => sum + lv.groups.flatMap((g) =
   </section>
 
   {/* Closing thesis tile. */}
-  <section class="py-12 md:py-20 border-t border-gray-200 dark:border-slate-800">
+  <section class="py-12 md:py-20 border-t border-subtle">
     <div class="max-w-3xl mx-auto px-4 sm:px-6 text-center">
       <p class="font-serif text-xl md:text-2xl text-gray-700 dark:text-gray-300 leading-[1.7] mb-6 italic">
         "新加坡的 AI 马六甲海峡在哪里？真正的护城河不在算法，在制度——快速识别问题并果断转向的能力。"

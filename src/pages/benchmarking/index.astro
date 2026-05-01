@@ -21,13 +21,13 @@ import { regions, regionDetails, insights, dataDate, dataDisclaimer } from '~/da
         <table class="w-full text-sm border-collapse min-w-[900px]">
           <thead>
             <tr class="bg-slate-100 dark:bg-slate-800">
-              <th class="text-left p-3 border border-slate-200 dark:border-slate-700">地区</th>
-              <th class="text-left p-3 border border-slate-200 dark:border-slate-700">核心战略</th>
-              <th class="text-left p-3 border border-slate-200 dark:border-slate-700">年份</th>
-              <th class="text-left p-3 border border-slate-200 dark:border-slate-700">投资规模</th>
-              <th class="text-left p-3 border border-slate-200 dark:border-slate-700">治理模式</th>
-              <th class="text-left p-3 border border-slate-200 dark:border-slate-700">核心优势</th>
-              <th class="text-left p-3 border border-slate-200 dark:border-slate-700">AI 排名</th>
+              <th class="text-left p-3 border border-subtle">地区</th>
+              <th class="text-left p-3 border border-subtle">核心战略</th>
+              <th class="text-left p-3 border border-subtle">年份</th>
+              <th class="text-left p-3 border border-subtle">投资规模</th>
+              <th class="text-left p-3 border border-subtle">治理模式</th>
+              <th class="text-left p-3 border border-subtle">核心优势</th>
+              <th class="text-left p-3 border border-subtle">AI 排名</th>
             </tr>
           </thead>
           <tbody>
@@ -40,15 +40,15 @@ import { regions, regionDetails, insights, dataDate, dataDisclaimer } from '~/da
                       : 'hover:bg-slate-50 dark:hover:bg-slate-800/50'
                   }
                 >
-                  <td class="p-3 border border-slate-200 dark:border-slate-700 whitespace-nowrap">
+                  <td class="p-3 border border-subtle whitespace-nowrap">
                     {r.flag} {r.name}
                   </td>
-                  <td class="p-3 border border-slate-200 dark:border-slate-700">{r.strategy}</td>
-                  <td class="p-3 border border-slate-200 dark:border-slate-700">{r.strategyYear}</td>
-                  <td class="p-3 border border-slate-200 dark:border-slate-700">{r.investment}</td>
-                  <td class="p-3 border border-slate-200 dark:border-slate-700">{r.governance}</td>
-                  <td class="p-3 border border-slate-200 dark:border-slate-700">{r.strength}</td>
-                  <td class="p-3 border border-slate-200 dark:border-slate-700 text-muted">{r.aiRanking || '—'}</td>
+                  <td class="p-3 border border-subtle">{r.strategy}</td>
+                  <td class="p-3 border border-subtle">{r.strategyYear}</td>
+                  <td class="p-3 border border-subtle">{r.investment}</td>
+                  <td class="p-3 border border-subtle">{r.governance}</td>
+                  <td class="p-3 border border-subtle">{r.strength}</td>
+                  <td class="p-3 border border-subtle text-muted">{r.aiRanking || '—'}</td>
                 </tr>
               ))
             }
@@ -63,7 +63,7 @@ import { regions, regionDetails, insights, dataDate, dataDisclaimer } from '~/da
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         {
           insights.map((insight) => (
-            <div class="p-5 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800">
+            <div class="p-5 rounded-lg border border-subtle bg-surface">
               <h3 class="font-bold text-lg mb-2">{insight.title}</h3>
               <p class="text-muted text-sm">{insight.text}</p>
             </div>
@@ -78,7 +78,7 @@ import { regions, regionDetails, insights, dataDate, dataDisclaimer } from '~/da
       <div class="space-y-8">
         {
           regionDetails.map((region) => (
-            <details class="border border-slate-200 dark:border-slate-700 rounded-lg overflow-hidden">
+            <details class="border border-subtle rounded-lg overflow-hidden">
               <summary class="p-4 bg-slate-50 dark:bg-slate-800 cursor-pointer hover:bg-slate-100 dark:hover:bg-slate-700 font-bold text-lg">
                 {region.flag} {region.name} — {region.fullName}
               </summary>
@@ -108,19 +108,17 @@ import { regions, regionDetails, insights, dataDate, dataDisclaimer } from '~/da
                     <table class="w-full text-sm border-collapse">
                       <thead>
                         <tr class="bg-slate-100 dark:bg-slate-800">
-                          <th class="text-left p-2 border border-slate-200 dark:border-slate-700">项目</th>
-                          <th class="text-left p-2 border border-slate-200 dark:border-slate-700">金额</th>
-                          <th class="text-left p-2 border border-slate-200 dark:border-slate-700">备注</th>
+                          <th class="text-left p-2 border border-subtle">项目</th>
+                          <th class="text-left p-2 border border-subtle">金额</th>
+                          <th class="text-left p-2 border border-subtle">备注</th>
                         </tr>
                       </thead>
                       <tbody>
                         {region.investment.map((inv) => (
                           <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50">
-                            <td class="p-2 border border-slate-200 dark:border-slate-700">{inv.item}</td>
-                            <td class="p-2 border border-slate-200 dark:border-slate-700 font-semibold">
-                              {inv.amount}
-                            </td>
-                            <td class="p-2 border border-slate-200 dark:border-slate-700 text-muted">{inv.note}</td>
+                            <td class="p-2 border border-subtle">{inv.item}</td>
+                            <td class="p-2 border border-subtle font-semibold">{inv.amount}</td>
+                            <td class="p-2 border border-subtle text-muted">{inv.note}</td>
                           </tr>
                         ))}
                       </tbody>
@@ -193,7 +191,7 @@ import { regions, regionDetails, insights, dataDate, dataDisclaimer } from '~/da
     </div>
 
     <!-- 数据说明 -->
-    <div class="p-4 rounded-lg bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+    <div class="p-4 rounded-lg bg-slate-50 dark:bg-slate-800 border border-subtle">
       <p class="text-sm text-muted">⚠️ {dataDisclaimer}</p>
       <p class="text-xs text-muted mt-1">数据更新日期：{dataDate}</p>
     </div>
