@@ -2,7 +2,10 @@ site:
   name: SG AI 观察
   site: 'https://sgai.md'
   base: '/'
-  trailingSlash: false
+  # Cloudflare Pages serves /debates/ for /debates/index.html and 308-redirects
+  # /debates → /debates/. Emit trailing-slash URLs from getPermalink() so
+  # internal navigation lands directly without a round-trip redirect.
+  trailingSlash: true
 
 metadata:
   title:

@@ -24,6 +24,11 @@ const whenExternalScripts = (items: (() => AstroIntegration) | (() => AstroInteg
 export default defineConfig({
   site: 'https://sgai.md',
   output: 'static',
+  // Cloudflare Pages 308-redirects /foo → /foo/ for static directories.
+  // Force Astro (and downstream sitemap/RSS integrations) to emit
+  // trailing-slash URLs so internal navigation lands directly.
+  trailingSlash: 'always',
+  build: { format: 'directory' },
 
   integrations: [
     tailwind({

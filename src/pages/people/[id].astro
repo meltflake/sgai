@@ -48,7 +48,7 @@ const categoryColors: Record<Person['category'], string> = {
 
 <Layout
   metadata={meta}
-  breadcrumbs={[{ label: 'AI 影响力图谱', href: '/voices' }, { label: person.zhName || person.name }]}
+  breadcrumbs={[{ label: 'AI 影响力图谱', href: '/voices/' }, { label: person.zhName || person.name }]}
 >
   <section class="max-w-4xl mx-auto px-4 sm:px-6 py-10">
     {/* ── Header ── */}
@@ -143,7 +143,7 @@ const categoryColors: Record<Person['category'], string> = {
           <div class="space-y-3">
             {related.debates.slice(0, 30).map((d) => (
               <a
-                href="/debates"
+                href="/debates/"
                 class="block bg-white dark:bg-slate-800 rounded-lg p-4 border border-gray-100 dark:border-slate-700 hover:border-blue-300 hover:shadow-sm transition-all"
               >
                 <div class="flex items-start justify-between gap-3 flex-wrap">
@@ -183,7 +183,7 @@ const categoryColors: Record<Person['category'], string> = {
           <div class="grid gap-3">
             {related.policies.map((p) => (
               <a
-                href="/policies"
+                href="/policies/"
                 class="block bg-white dark:bg-slate-800 rounded-lg p-4 border border-gray-100 dark:border-slate-700 hover:border-purple-300 hover:shadow-sm transition-all"
               >
                 <h3 class="font-semibold text-gray-800 dark:text-white text-sm">{p.title}</h3>

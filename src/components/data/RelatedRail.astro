@@ -76,7 +76,7 @@ const skip = isEmpty && hideWhenEmpty;
       <div class="inline-flex flex-wrap gap-x-2 gap-y-1 align-baseline">
         {filtered.people.map((p) => (
           <a
-            href={`/people/${p.id}`}
+            href={`/people/${p.id}/`}
             class="text-blue-600 dark:text-blue-400 hover:underline"
             title={p.name}
             aria-label={`相关人物：${p.zhName || p.name}`}
@@ -86,7 +86,7 @@ const skip = isEmpty && hideWhenEmpty;
         ))}
         {filtered.policies.map((p) => (
           <a
-            href="/policies"
+            href="/policies/"
             class="text-purple-600 dark:text-purple-400 hover:underline"
             aria-label={`相关政策：${p.title}`}
           >
@@ -95,7 +95,7 @@ const skip = isEmpty && hideWhenEmpty;
         ))}
         {filtered.debates.slice(0, 5).map((d) => (
           <a
-            href="/debates"
+            href="/debates/"
             class="text-amber-700 dark:text-amber-400 hover:underline"
             aria-label={`相关辩论：${d.zhTitle}`}
           >
@@ -105,7 +105,7 @@ const skip = isEmpty && hideWhenEmpty;
         {filtered.debates.length > 5 && <span class="text-gray-400">+{filtered.debates.length - 5} 条辩论</span>}
         {filtered.levers.map((lv) => (
           <a
-            href="/levers"
+            href="/levers/"
             class="text-emerald-700 dark:text-emerald-400 hover:underline"
             aria-label={`相关抓手：${lv.name}`}
           >
@@ -114,7 +114,7 @@ const skip = isEmpty && hideWhenEmpty;
         ))}
         {filtered.timeline.map((e) => (
           <a
-            href="/timeline"
+            href="/timeline/"
             class="text-rose-700 dark:text-rose-400 hover:underline"
             aria-label={`相关时间节点：${e.year} ${e.title}`}
           >
@@ -123,7 +123,7 @@ const skip = isEmpty && hideWhenEmpty;
         ))}
         {filtered.postSlugs.map((slug) => (
           <a
-            href={`/${slug}`}
+            href={`/${slug}/`}
             class="text-indigo-700 dark:text-indigo-400 hover:underline"
             aria-label={`相关分析：${slug}`}
           >
@@ -155,7 +155,7 @@ const skip = isEmpty && hideWhenEmpty;
               <ul class="space-y-1.5">
                 {filtered.people.map((p) => (
                   <li>
-                    <a href={`/people/${p.id}`} class="text-sm text-blue-600 dark:text-blue-400 hover:underline">
+                    <a href={`/people/${p.id}/`} class="text-sm text-blue-600 dark:text-blue-400 hover:underline">
                       {p.zhName || p.name}
                     </a>
                     {p.zhTitle && <span class="text-xs text-gray-500 ml-2">{p.zhTitle}</span>}
@@ -171,7 +171,7 @@ const skip = isEmpty && hideWhenEmpty;
               <ul class="space-y-1.5">
                 {filtered.policies.map((p) => (
                   <li class="text-sm">
-                    <a href="/policies" class="text-purple-600 dark:text-purple-400 hover:underline">
+                    <a href="/policies/" class="text-purple-600 dark:text-purple-400 hover:underline">
                       {p.title}
                     </a>
                     {p.date && <span class="text-xs text-gray-500 ml-2">{p.date}</span>}
@@ -189,7 +189,7 @@ const skip = isEmpty && hideWhenEmpty;
               <ul class="space-y-1.5">
                 {filtered.debates.slice(0, 8).map((d) => (
                   <li class="text-sm">
-                    <a href="/debates" class="text-amber-700 dark:text-amber-400 hover:underline">
+                    <a href="/debates/" class="text-amber-700 dark:text-amber-400 hover:underline">
                       {d.zhTitle}
                     </a>
                     <span class="text-xs text-gray-500 ml-2">{d.date}</span>
@@ -208,7 +208,7 @@ const skip = isEmpty && hideWhenEmpty;
               <ul class="space-y-1.5">
                 {filtered.levers.map((lv) => (
                   <li class="text-sm">
-                    <a href="/levers" class="text-emerald-700 dark:text-emerald-400 hover:underline">
+                    <a href="/levers/" class="text-emerald-700 dark:text-emerald-400 hover:underline">
                       抓手 {lv.number}：{lv.name}
                     </a>
                     <span class="text-xs text-gray-500 ml-2">{lv.subtitle}</span>
@@ -226,7 +226,7 @@ const skip = isEmpty && hideWhenEmpty;
               <ul class="space-y-1.5">
                 {filtered.timeline.map((e) => (
                   <li class="text-sm">
-                    <a href="/timeline" class="text-rose-700 dark:text-rose-400 hover:underline">
+                    <a href="/timeline/" class="text-rose-700 dark:text-rose-400 hover:underline">
                       {e.year} · {e.title}
                     </a>
                   </li>
@@ -243,7 +243,7 @@ const skip = isEmpty && hideWhenEmpty;
               <ul class="space-y-1.5">
                 {filtered.postSlugs.map((slug) => (
                   <li class="text-sm">
-                    <a href={`/${slug}`} class="text-indigo-700 dark:text-indigo-400 hover:underline">
+                    <a href={`/${slug}/`} class="text-indigo-700 dark:text-indigo-400 hover:underline">
                       {slug}
                     </a>
                   </li>
