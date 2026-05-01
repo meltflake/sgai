@@ -219,8 +219,8 @@ def scan_ids(prefix, start, end):
 # 用法：scan_ids('oral-answer', 4088, 4120)
 ```
 
-### 部署链
+### 部署
 
-sgai push → `.github/workflows/trigger-deploy.yml`(repository_dispatch) → meltflake-site `rebuild.yml` → `build.sh`(克隆子仓库) → Cloudflare Pages
+独立部署在 Cloudflare Pages，绑定 `sgai.md`。push main 分支后 Cloudflare 自动构建（`npm run build` → `dist/`）。
 
-**注意**：meltflake-site 的 GitHub 账号是 `meltflake`（不是 `wulujia`），操作时需 `gh auth switch --user meltflake`。
+CI gating 由 `.github/workflows/actions.yaml` 跑 build matrix + `npm run check`，与 Cloudflare 部署相互独立。
