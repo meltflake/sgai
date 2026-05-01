@@ -10,6 +10,7 @@ import {
   POLICY_SIGNALS,
   TENSION_MAP,
 } from '~/data/debates';
+import { findPersonId, getPerson } from '~/utils/people';
 
 const meta = {
   title: '国会 AI 焦点 — 新加坡议会辩论记录',
@@ -677,18 +678,28 @@ const searchBlob = (d: (typeof debates)[number]) =>
                   <div class="flex items-center justify-between mt-4 pt-3 border-t border-gray-100 dark:border-slate-700">
                     <div class="flex flex-wrap gap-1 items-center text-xs">
                       <span class="text-gray-400 mr-1">🎙️</span>
-                      {(d.speakers || []).slice(0, 5).map((s, i) => (
-                        <>
-                          {i > 0 && <span class="text-gray-300 mx-1">·</span>}
-                          <button
-                            type="button"
-                            onclick={`event.stopPropagation(); filterBy('speaker','${jsAttr(s)}')`}
-                            class="text-xs text-gray-500 hover:text-purple-600 hover:underline transition-colors"
-                          >
-                            {s}
-                          </button>
-                        </>
-                      ))}
+                      {(d.speakers || []).slice(0, 5).map((s, i) => {
+                        const pid = findPersonId(s);
+                        const display = pid ? getPerson(pid)?.zhName || s : s;
+                        return (
+                          <>
+                            {i > 0 && <span class="text-gray-300 mx-1">·</span>}
+                            {pid ? (
+                              <a
+                                href={`/people/${pid}`}
+                                class="text-xs text-gray-500 hover:text-purple-600 hover:underline transition-colors"
+                                title={s}
+                              >
+                                {display}
+                              </a>
+                            ) : (
+                              <span class="text-xs text-gray-500" title={s}>
+                                {display}
+                              </span>
+                            )}
+                          </>
+                        );
+                      })}
                     </div>
                     <div class="flex gap-2 shrink-0 ml-3">
                       <button

@@ -1,12 +1,22 @@
 export interface TimelineEvent {
+  // Phase 1: id is `evt-${year}` for single-event years; multi-event years
+  // get `evt-${year}-${slug}` disambiguation. Hand-curated for stability.
+  id?: string;
   year: number;
+  date?: string; // optional precise YYYY-MM-DD
   title: string;
   description: string;
   tags?: string[];
+  // Phase 1 cross-refs (hand-curated over time).
+  personIds?: string[];
+  relatedPolicyIds?: string[];
+  relatedDebateIds?: string[];
+  relatedPostSlugs?: string[];
 }
 
 export const timelineEvents: TimelineEvent[] = [
   {
+    id: 'evt-2027',
     year: 2027,
     title: '新加坡主办国际 AI 奥林匹克竞赛',
     description:
@@ -14,6 +24,7 @@ export const timelineEvents: TimelineEvent[] = [
     tags: ['人才', '国际'],
   },
   {
+    id: 'evt-2026',
     year: 2026,
     title: 'NAIRD 发布 + 财政预算：AI 全面加速',
     description:
@@ -21,6 +32,7 @@ export const timelineEvents: TimelineEvent[] = [
     tags: ['预算', '战略', '国际', '医疗'],
   },
   {
+    id: 'evt-2025',
     year: 2025,
     title: 'Agentic AI 治理与科技巨头落地',
     description:
@@ -28,6 +40,7 @@ export const timelineEvents: TimelineEvent[] = [
     tags: ['治理', '技术', '预算', '产业'],
   },
   {
+    id: 'evt-2024',
     year: 2024,
     title: '智慧国家 2.0 落地与 AI 预算井喷',
     description:
@@ -35,6 +48,7 @@ export const timelineEvents: TimelineEvent[] = [
     tags: ['战略', '技术', '国际'],
   },
   {
+    id: 'evt-2023',
     year: 2023,
     title: 'NAIS 2.0 发布与 AI Verify 开源',
     description:
@@ -42,6 +56,7 @@ export const timelineEvents: TimelineEvent[] = [
     tags: ['战略', '治理', '国际'],
   },
   {
+    id: 'evt-2022',
     year: 2022,
     title: 'AI Verify 发布与 NAISC 启动',
     description:
@@ -49,6 +64,7 @@ export const timelineEvents: TimelineEvent[] = [
     tags: ['治理', '人才'],
   },
   {
+    id: 'evt-2020',
     year: 2020,
     title: 'PDPA 修订与 GPAI 创始',
     description:
@@ -56,6 +72,7 @@ export const timelineEvents: TimelineEvent[] = [
     tags: ['治理', '国际', '预算'],
   },
   {
+    id: 'evt-2019',
     year: 2019,
     title: 'NAIS 1.0 发布',
     description:
@@ -63,6 +80,7 @@ export const timelineEvents: TimelineEvent[] = [
     tags: ['战略', '治理'],
   },
   {
+    id: 'evt-2018',
     year: 2018,
     title: 'AIAP 与 100E 计划启动',
     description:
@@ -70,6 +88,7 @@ export const timelineEvents: TimelineEvent[] = [
     tags: ['人才', '创新'],
   },
   {
+    id: 'evt-2017',
     year: 2017,
     title: 'AI Singapore 成立',
     description:
@@ -77,6 +96,7 @@ export const timelineEvents: TimelineEvent[] = [
     tags: ['战略', '预算'],
   },
   {
+    id: 'evt-2014',
     year: 2014,
     title: '智慧国家倡议启动',
     description:

@@ -61,6 +61,27 @@ const postCollection = defineCollection({
     tags: z.array(z.string()).optional(),
     author: z.string().optional(),
 
+    // Phase 1 cross-references — bi-directional knowledge graph between
+    // blog posts and data pages. Hand-curated in frontmatter; consumed
+    // by RelatedRail (Phase 2) and verify-graph.ts (Phase 1.14).
+    relatedPolicyIds: z.array(z.string()).optional(),
+    relatedDebateIds: z.array(z.string()).optional(),
+    relatedLeverNumbers: z.array(z.number()).optional(),
+    relatedTimelineYears: z.array(z.number()).optional(),
+    relatedPersonIds: z.array(z.string()).optional(),
+
+    // Phase 2 long-form features.
+    citations: z
+      .array(
+        z.object({
+          id: z.string(),
+          text: z.string(),
+          url: z.string().url().optional(),
+        })
+      )
+      .optional(),
+    tocDepth: z.number().min(1).max(4).optional(),
+
     metadata: metadataDefinition(),
   }),
 });

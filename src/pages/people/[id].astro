@@ -1,0 +1,201 @@
+---
+// Phase 1.13 — individual person page. Built from src/data/people.ts
+// allPeople (curated 7 + auto-seeded mp stubs). Shows the person's
+// debate appearances, authored policies, and channels.
+//
+// Route: /people/[id], e.g. /people/josephine-teo
+//
+// IMPORTANT: this page exists today primarily so the /debates renderer
+// (Phase 1.7) can link speaker chips here. Stub records have empty
+// summaries / channels — they'll get a "[需补充]" notice and a list of
+// debate appearances pulled from the graph. Hand-curate over time.
+
+import Layout from '~/layouts/PageLayout.astro';
+import { allPeople, type Person } from '~/data/people';
+import { getRelated, getPersonCounts } from '~/utils/graph';
+
+export async function getStaticPaths() {
+  return allPeople.map((p) => ({ params: { id: p.id }, props: { person: p } }));
+}
+
+interface Props {
+  person: Person;
+}
+
+const { person } = Astro.props;
+const related = getRelated({ type: 'person', id: person.id });
+const counts = getPersonCounts(person.id);
+
+const isStub = !person.summary || person.summary.startsWith('[需补充]');
+
+const meta = {
+  title: `${person.zhName || person.name} — SG AI 观察`,
+  description: person.summary || `${person.name} 在新加坡 AI 政策中的发言与立场记录。`,
+};
+
+const categoryLabels: Record<Person['category'], string> = {
+  government: '政府',
+  academic: '学术',
+  industry: '产业',
+};
+
+const categoryColors: Record<Person['category'], string> = {
+  government: 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300',
+  academic: 'bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-300',
+  industry: 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300',
+};
+---
+
+<Layout
+  metadata={meta}
+  breadcrumbs={[{ label: 'AI 影响力图谱', href: '/voices' }, { label: person.zhName || person.name }]}
+>
+  <section class="max-w-4xl mx-auto px-4 sm:px-6 py-10">
+    {/* ── Header ── */}
+    <div class="mb-6">
+      <div class="flex items-start justify-between flex-wrap gap-3">
+        <div>
+          <h1 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">{person.zhName || person.name}</h1>
+          {person.zhName && <p class="text-lg text-gray-500 dark:text-gray-400 mt-1">{person.name}</p>}
+        </div>
+        <span class={`text-xs font-semibold px-2.5 py-1 rounded-full shrink-0 ${categoryColors[person.category]}`}>
+          {categoryLabels[person.category]}
+        </span>
+      </div>
+      {person.zhTitle && <p class="text-gray-700 dark:text-gray-300 mt-2 font-medium">{person.zhTitle}</p>}
+      {
+        person.title && person.title !== person.zhTitle && (
+          <p class="text-sm text-gray-500 dark:text-gray-400 italic">{person.title}</p>
+        )
+      }
+    </div>
+
+    {/* ── Counts strip ── */}
+    <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-6">
+      <div class="bg-white dark:bg-slate-800 rounded-xl p-4 shadow-sm border border-gray-100 dark:border-slate-700">
+        <div class="text-2xl font-bold text-blue-600">{counts.debateCount}</div>
+        <div class="text-xs text-gray-500 mt-0.5">国会发言</div>
+      </div>
+      <div class="bg-white dark:bg-slate-800 rounded-xl p-4 shadow-sm border border-gray-100 dark:border-slate-700">
+        <div class="text-2xl font-bold text-purple-600">{counts.policyAuthorCount}</div>
+        <div class="text-xs text-gray-500 mt-0.5">主导政策</div>
+      </div>
+      <div class="bg-white dark:bg-slate-800 rounded-xl p-4 shadow-sm border border-gray-100 dark:border-slate-700">
+        <div class="text-2xl font-bold text-amber-600">
+          {(person.affiliations || []).slice(0, 2).join(' / ') || '—'}
+        </div>
+        <div class="text-xs text-gray-500 mt-0.5">所属部委</div>
+      </div>
+    </div>
+
+    {/* ── Summary ── */}
+    {
+      !isStub && person.summary && (
+        <div class="bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-500 p-5 rounded-lg mb-6">
+          <p class="text-gray-800 dark:text-gray-200 leading-relaxed">{person.summary}</p>
+        </div>
+      )
+    }
+    {
+      isStub && (
+        <div class="bg-amber-50 dark:bg-amber-900/20 border-l-4 border-amber-500 p-4 rounded-lg mb-6 text-sm">
+          <p class="text-amber-900 dark:text-amber-200">
+            📝 此人物档案待补充。下方根据现有数据自动汇总其国会发言记录。
+          </p>
+        </div>
+      )
+    }
+
+    {/* ── Channels ── */}
+    {
+      person.channels && person.channels.length > 0 && (
+        <div class="mb-8">
+          <h2 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-3">官方渠道</h2>
+          <div class="flex flex-wrap gap-2">
+            {person.channels.map((ch) => (
+              <a
+                href={ch.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class={`inline-flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-full border transition-all hover:shadow-sm ${
+                  ch.primary
+                    ? 'bg-blue-50 border-blue-300 text-blue-700 font-semibold dark:bg-blue-900/30 dark:border-blue-600 dark:text-blue-300'
+                    : 'bg-gray-50 border-gray-200 text-gray-600 hover:border-gray-300 dark:bg-slate-700 dark:border-slate-600 dark:text-gray-300'
+                }`}
+              >
+                {ch.label || ch.platform}
+              </a>
+            ))}
+          </div>
+        </div>
+      )
+    }
+
+    {/* ── Debate appearances ── */}
+    <section class="mb-10">
+      <h2 class="text-xl font-bold text-gray-800 dark:text-white mb-4 flex items-center gap-2">
+        <span>🏛️</span> 国会发言（{related.debates.length}）
+      </h2>
+      {
+        related.debates.length === 0 ? (
+          <p class="text-sm text-gray-400 italic">暂无关联辩论记录。</p>
+        ) : (
+          <div class="space-y-3">
+            {related.debates.slice(0, 30).map((d) => (
+              <a
+                href="/debates"
+                class="block bg-white dark:bg-slate-800 rounded-lg p-4 border border-gray-100 dark:border-slate-700 hover:border-blue-300 hover:shadow-sm transition-all"
+              >
+                <div class="flex items-start justify-between gap-3 flex-wrap">
+                  <div class="flex-1 min-w-0">
+                    <h3 class="font-semibold text-gray-800 dark:text-white text-sm leading-snug">{d.zhTitle}</h3>
+                    <p class="text-xs text-gray-400 mt-0.5">
+                      {d.title.length > 80 ? d.title.slice(0, 80) + '…' : d.title}
+                    </p>
+                  </div>
+                  <div class="text-xs text-gray-500 shrink-0 text-right">
+                    <div>{d.date}</div>
+                    <div class="text-gray-400">第 {d.parliament} 届</div>
+                  </div>
+                </div>
+                {d.zhSummary && (
+                  <p class="text-xs text-gray-600 dark:text-gray-400 mt-2 leading-relaxed line-clamp-3">
+                    {d.zhSummary}
+                  </p>
+                )}
+              </a>
+            ))}
+            {related.debates.length > 30 && (
+              <p class="text-xs text-gray-400 italic text-center pt-2">仅显示最新 30 条；前往 /debates 浏览全部。</p>
+            )}
+          </div>
+        )
+      }
+    </section>
+
+    {/* ── Authored policies ── */}
+    {
+      related.policies.length > 0 && (
+        <section class="mb-10">
+          <h2 class="text-xl font-bold text-gray-800 dark:text-white mb-4 flex items-center gap-2">
+            <span>📋</span> 主导政策（{related.policies.length}）
+          </h2>
+          <div class="grid gap-3">
+            {related.policies.map((p) => (
+              <a
+                href="/policies"
+                class="block bg-white dark:bg-slate-800 rounded-lg p-4 border border-gray-100 dark:border-slate-700 hover:border-purple-300 hover:shadow-sm transition-all"
+              >
+                <h3 class="font-semibold text-gray-800 dark:text-white text-sm">{p.title}</h3>
+                <p class="text-xs text-gray-500 mt-0.5">
+                  {p.titleEn} · {p.date}
+                </p>
+                <p class="text-xs text-gray-600 dark:text-gray-400 mt-2">{p.summary}</p>
+              </a>
+            ))}
+          </div>
+        </section>
+      )
+    }
+  </section>
+</Layout>

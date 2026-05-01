@@ -6,11 +6,15 @@
 // 是国家直接做的；其他 4 个抓手都是国家穿透到企业的杠杆。
 
 export interface LeverItem {
+  id?: string; // Phase 1: kebab-case from name, populated by codemod-levers.ts
   name: string;
   ministry: string; // 部委或机构
   scale?: string; // 金额、规模、KPI
   description: string;
   sourceUrl?: string;
+  // Phase 1 cross-refs (hand-curated over time).
+  relatedPolicyIds?: string[];
+  relatedDebateIds?: string[];
 }
 
 export interface LeverGroup {
@@ -28,6 +32,10 @@ export interface Lever {
   transmissionMode: 'direct' | 'transmitted'; // 国家直接做 vs 穿透到企业
   groups: LeverGroup[];
   insight?: string; // 一句锐利判断
+  // Phase 1 cross-refs (hand-curated over time).
+  championPersonIds?: string[];
+  relatedPolicyIds?: string[];
+  relatedPostSlugs?: string[];
 }
 
 export const dataDate = '2026-04-26';
@@ -46,6 +54,7 @@ export const levers: Lever[] = [
         title: '外资引进的算力（EDB）',
         items: [
           {
+            id: 'microsoft-数据中心',
             name: 'Microsoft 数据中心',
             ministry: 'EDB',
             scale: 'S$5.5B',
@@ -54,6 +63,7 @@ export const levers: Lever[] = [
               'https://news.microsoft.com/source/asia/2024/05/07/microsoft-announces-singapore-investment-and-skilling-initiatives/',
           },
           {
+            id: 'aws-数据中心',
             name: 'AWS 数据中心',
             ministry: 'EDB',
             scale: 'S$12B',
@@ -61,6 +71,7 @@ export const levers: Lever[] = [
             sourceUrl: 'https://www.aboutamazon.com/news/aws/aws-singapore-12-billion-investment',
           },
           {
+            id: 'google-数据中心-ai',
             name: 'Google 数据中心 + AI',
             ministry: 'EDB',
             scale: 'US$9B / ~S$11.6B',
@@ -68,6 +79,7 @@ export const levers: Lever[] = [
             sourceUrl: 'https://www.edb.gov.sg/en/our-industries/artificial-intelligence-in-singapore.html',
           },
           {
+            id: 'nvidia-sit-singtel-ai-accelerator',
             name: 'NVIDIA × SIT / Singtel / AI Accelerator',
             ministry: 'EDB',
             scale: '多重合作',
@@ -75,6 +87,7 @@ export const levers: Lever[] = [
             sourceUrl: 'https://www.edb.gov.sg/',
           },
           {
+            id: 'openai-apac-区域总部',
             name: 'OpenAI APAC 区域总部',
             ministry: 'EDB',
             scale: '已落地',
@@ -87,6 +100,7 @@ export const levers: Lever[] = [
         title: '本土补贴的算力',
         items: [
           {
+            id: 'enterprise-compute-initiative-eci',
             name: 'Enterprise Compute Initiative (ECI)',
             ministry: 'IMDA',
             scale: 'S$150M',
@@ -94,6 +108,7 @@ export const levers: Lever[] = [
             sourceUrl: 'https://www.imda.gov.sg/',
           },
           {
+            id: 'one-north-ai-park-kampong-ai',
             name: 'one-north AI Park / Kampong AI',
             ministry: 'MOF / JTC',
             scale: '物理基建',
@@ -106,6 +121,7 @@ export const levers: Lever[] = [
         title: '资金平台',
         items: [
           {
+            id: 'anchor-fund-65-第二批',
             name: 'Anchor Fund @ 65 第二批',
             ministry: 'MOF',
             scale: 'S$1.5B',
@@ -113,6 +129,7 @@ export const levers: Lever[] = [
             sourceUrl: 'https://www.singaporebudget.gov.sg/',
           },
           {
+            id: 'future-sectors-development-fund-fsdf',
             name: 'Future Sectors Development Fund (FSDF)',
             ministry: 'MOF',
             scale: 'S$1.5B',
@@ -120,6 +137,7 @@ export const levers: Lever[] = [
             sourceUrl: 'https://www.singaporebudget.gov.sg/',
           },
           {
+            id: 'eqdp-私募股权基金扩张',
             name: 'EQDP 私募股权基金扩张',
             ministry: 'MOF',
             scale: 'S$6.5B',
@@ -132,6 +150,7 @@ export const levers: Lever[] = [
         title: '国家级数据底座',
         items: [
           {
+            id: 'healix',
             name: 'HEALIX',
             ministry: 'MOH / Synapxe',
             scale: '国家医疗数据 + AI 基础设施',
@@ -139,6 +158,7 @@ export const levers: Lever[] = [
             sourceUrl: 'https://www.synapxe.sg/',
           },
           {
+            id: 'virtual-singapore',
             name: 'Virtual Singapore',
             ministry: 'URA',
             scale: '国家级数字孪生',
@@ -146,6 +166,7 @@ export const levers: Lever[] = [
             sourceUrl: 'https://www.ura.gov.sg/',
           },
           {
+            id: 'punggol-digital-district-open-digital-platform',
             name: 'Punggol Digital District + Open Digital Platform',
             ministry: 'JTC',
             scale: '首个全区智能区',
@@ -158,6 +179,7 @@ export const levers: Lever[] = [
         title: '家国安全侧算力',
         items: [
           {
+            id: 'htx-ngine-nvidia-b200-superpod',
             name: 'HTX NGINE — NVIDIA B200 SuperPOD',
             ministry: 'HTX',
             scale: '自有算力',
@@ -182,6 +204,7 @@ export const levers: Lever[] = [
         title: '通用治理框架（IMDA）',
         items: [
           {
+            id: 'model-ai-governance-framework',
             name: 'Model AI Governance Framework',
             ministry: 'IMDA',
             scale: '2019',
@@ -189,6 +212,7 @@ export const levers: Lever[] = [
             sourceUrl: 'https://www.pdpc.gov.sg/help-and-resources/2020/01/model-ai-governance-framework',
           },
           {
+            id: 'ai-verify-ai-verify-sandbox',
             name: 'AI Verify + AI Verify Sandbox',
             ministry: 'IMDA',
             scale: '10+ 跨国大企业参与',
@@ -196,6 +220,7 @@ export const levers: Lever[] = [
             sourceUrl: 'https://aiverifyfoundation.sg/',
           },
           {
+            id: 'genai-eval-sandbox-genai-sandbox-20',
             name: 'GenAI Eval Sandbox / GenAI Sandbox 2.0',
             ministry: 'IMDA',
             scale: '2024–2025',
@@ -203,6 +228,7 @@ export const levers: Lever[] = [
             sourceUrl: 'https://www.imda.gov.sg/',
           },
           {
+            id: 'generative-ai-治理框架',
             name: 'Generative AI 治理框架',
             ministry: 'IMDA',
             scale: '2024',
@@ -210,6 +236,7 @@ export const levers: Lever[] = [
             sourceUrl: 'https://www.imda.gov.sg/',
           },
           {
+            id: 'agentic-ai-governance-framework',
             name: 'Agentic AI Governance Framework',
             ministry: 'IMDA',
             scale: '2026-01-22 达沃斯发布',
@@ -218,6 +245,7 @@ export const levers: Lever[] = [
               'https://www.imda.gov.sg/resources/press-releases-factsheets-and-speeches/press-releases/2026/new-model-ai-governance-framework-for-agentic-ai',
           },
           {
+            id: 'trusted-data-sharing-dptm-升级',
             name: 'Trusted Data Sharing + DPTM 升级',
             ministry: 'IMDA',
             scale: 'SS 714:2025',
@@ -230,6 +258,7 @@ export const levers: Lever[] = [
         title: '金融业治理 5 层堆栈（MAS）',
         items: [
           {
+            id: 'feat-principles',
             name: 'FEAT Principles',
             ministry: 'MAS',
             scale: '2018',
@@ -237,6 +266,7 @@ export const levers: Lever[] = [
             sourceUrl: 'https://www.mas.gov.sg/publications/monographs-or-information-paper/2018/FEAT',
           },
           {
+            id: 'veritas-initiative-v1-v2-v3',
             name: 'Veritas Initiative v1 / v2 / v3',
             ministry: 'MAS',
             scale: '2021–',
@@ -244,6 +274,7 @@ export const levers: Lever[] = [
             sourceUrl: 'https://www.mas.gov.sg/schemes-and-initiatives/veritas',
           },
           {
+            id: 'project-mindforge',
             name: 'Project MindForge',
             ministry: 'MAS',
             scale: '24 家机构 + Microsoft / AWS / Google / NVIDIA',
@@ -251,6 +282,7 @@ export const levers: Lever[] = [
             sourceUrl: 'https://www.mas.gov.sg/news/media-releases/2024/project-mindforge',
           },
           {
+            id: 'ai-risk-management-guidelines',
             name: 'AI Risk Management Guidelines',
             ministry: 'MAS',
             scale: '2024-12',
@@ -258,6 +290,7 @@ export const levers: Lever[] = [
             sourceUrl: 'https://www.mas.gov.sg/regulation/notices/notice-fsm-n29',
           },
           {
+            id: 'buildfinai',
             name: 'BuildFin.ai',
             ministry: 'MAS',
             scale: '继任平台',
@@ -270,6 +303,7 @@ export const levers: Lever[] = [
         title: '网络安全治理（CSA）',
         items: [
           {
+            id: 'securing-ai-systems-guidelines-companion-guide',
             name: 'Securing AI Systems Guidelines + Companion Guide',
             ministry: 'CSA',
             scale: '2024-10',
@@ -277,6 +311,7 @@ export const levers: Lever[] = [
             sourceUrl: 'https://www.csa.gov.sg/',
           },
           {
+            id: 'securing-agentic-ai-增补稿',
             name: 'Securing Agentic AI 增补稿',
             ministry: 'CSA',
             scale: '2025（公开咨询）',
@@ -284,6 +319,7 @@ export const levers: Lever[] = [
             sourceUrl: 'https://www.csa.gov.sg/',
           },
           {
+            id: 'frontier-ai-risk-advisory',
             name: 'Frontier AI Risk Advisory',
             ministry: 'CSA',
             scale: '2025',
@@ -291,6 +327,7 @@ export const levers: Lever[] = [
             sourceUrl: 'https://www.csa.gov.sg/',
           },
           {
+            id: 'cyber-trust-mark-ai-安全维度',
             name: 'Cyber Trust Mark — AI 安全维度',
             ministry: 'CSA',
             scale: 'AI 维度扩展',
@@ -303,6 +340,7 @@ export const levers: Lever[] = [
         title: '法律治理（MINLAW + IPOS）',
         items: [
           {
+            id: 'copyright-act-244-ai-训练例外',
             name: 'Copyright Act §244 — AI 训练例外',
             ministry: 'MINLAW',
             scale: '2021',
@@ -310,6 +348,7 @@ export const levers: Lever[] = [
             sourceUrl: 'https://sso.agc.gov.sg/Act/CA2021?ProvIds=P14-#pr244-',
           },
           {
+            id: 'ipos-when-code-creates-report',
             name: 'IPOS "When Code Creates" 报告',
             ministry: 'IPOS',
             scale: '2024',
@@ -317,6 +356,7 @@ export const levers: Lever[] = [
             sourceUrl: 'https://www.ipos.gov.sg/',
           },
           {
+            id: '输出端严管四件套',
             name: '输出端严管四件套',
             ministry: 'MINLAW + MHA + MDDI',
             scale: '2024–2025',
@@ -342,6 +382,7 @@ export const levers: Lever[] = [
         title: '全民层（MDDI）',
         items: [
           {
+            id: 'ai-bilingual-100k-工人计划',
             name: 'AI Bilingual 100K 工人计划',
             ministry: 'MDDI',
             scale: '100K 工人，首批 1H 2026',
@@ -349,6 +390,7 @@ export const levers: Lever[] = [
             sourceUrl: 'https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=budget-2895',
           },
           {
+            id: 'national-ai-literacy-programme',
             name: 'National AI Literacy Programme',
             ministry: 'MDDI',
             scale: '全民 AI 素养',
@@ -361,6 +403,7 @@ export const levers: Lever[] = [
         title: '专业层（IMDA + AISG）',
         items: [
           {
+            id: 'techskills-accelerator-tesa-ai-扩展',
             name: 'TechSkills Accelerator (TeSA) AI 扩展',
             ministry: 'IMDA',
             scale: '21K 就业 + 340K 提升',
@@ -368,6 +411,7 @@ export const levers: Lever[] = [
             sourceUrl: 'https://www.imda.gov.sg/',
           },
           {
+            id: 'ai-apprenticeship-programme-aiap',
             name: 'AI Apprenticeship Programme (AIAP)',
             ministry: 'AISG',
             scale: '16 批 410+ 学徒，新一批 800 名额',
@@ -375,6 +419,7 @@ export const levers: Lever[] = [
             sourceUrl: 'https://aiap.sg/apprenticeship/',
           },
           {
+            id: '100e-programme',
             name: '100E Programme',
             ministry: 'AISG',
             scale: '每项 S$150K 共投，累计 100+ 完成',
@@ -387,6 +432,7 @@ export const levers: Lever[] = [
         title: '教育系统层（MOE + NIE）',
         items: [
           {
+            id: 'sls-student-learning-space-ai-工具栈',
             name: 'SLS (Student Learning Space) AI 工具栈',
             ministry: 'MOE',
             scale: '8 类工具',
@@ -394,6 +440,7 @@ export const levers: Lever[] = [
             sourceUrl: 'https://www.moe.gov.sg/',
           },
           {
+            id: 'genai-使用指引-ai-ethics-framework',
             name: 'GenAI 使用指引 + AI Ethics Framework',
             ministry: 'MOE',
             scale: '2024–2026',
@@ -401,6 +448,7 @@ export const levers: Lever[] = [
             sourceUrl: 'https://www.moe.gov.sg/',
           },
           {
+            id: 'edtech-masterplan-2030',
             name: 'EdTech Masterplan 2030',
             ministry: 'MOE',
             scale: '2024 发布',
@@ -408,6 +456,7 @@ export const levers: Lever[] = [
             sourceUrl: 'https://www.moe.gov.sg/',
           },
           {
+            id: 'nie-ainie-certificate-in-ai-for-education',
             name: 'NIE AI@NIE + Certificate in AI for Education',
             ministry: 'NIE',
             scale: '教师 AI 素养证书',
@@ -415,6 +464,7 @@ export const levers: Lever[] = [
             sourceUrl: 'https://www.nie.edu.sg/',
           },
           {
+            id: 'nus-ntu-smu-sutd-ai-课改',
             name: 'NUS / NTU / SMU / SUTD AI 课改',
             ministry: '高等教育',
             scale: '全面铺开',
@@ -427,6 +477,7 @@ export const levers: Lever[] = [
         title: '财政补贴层（SSG + WSG）',
         items: [
           {
+            id: 'skillsfuture-ai-课程补贴',
             name: 'SkillsFuture AI 课程补贴',
             ministry: 'SSG',
             scale: '50% / 70% 分层',
@@ -434,6 +485,7 @@ export const levers: Lever[] = [
             sourceUrl: 'https://www.skillsfuture.gov.sg/',
           },
           {
+            id: 'mid-career-ai-credit',
             name: 'Mid-Career AI Credit',
             ministry: 'SSG',
             scale: 'S$4,000',
@@ -441,6 +493,7 @@ export const levers: Lever[] = [
             sourceUrl: 'https://www.skillsfuture.gov.sg/',
           },
           {
+            id: 'wsg-ssg-合并',
             name: 'WSG × SSG 合并',
             ministry: 'MOM + MOE',
             scale: '2025',
@@ -453,6 +506,7 @@ export const levers: Lever[] = [
         title: '中年再训练层（MOM）',
         items: [
           {
+            id: 'job-redesign',
             name: 'Job Redesign+',
             ministry: 'MOM / WSG',
             scale: '"人+AI 岗位重设计"',
@@ -460,6 +514,7 @@ export const levers: Lever[] = [
             sourceUrl: 'https://www.wsg.gov.sg/',
           },
           {
+            id: 'career-conversion-programme-ccp',
             name: 'Career Conversion Programme (CCP)',
             ministry: 'MOM / WSG',
             scale: '中年再训练',
@@ -467,6 +522,7 @@ export const levers: Lever[] = [
             sourceUrl: 'https://www.wsg.gov.sg/',
           },
           {
+            id: 'enterprise-workforce-transformation-package-ewtp',
             name: 'Enterprise Workforce Transformation Package (EWTP)',
             ministry: 'MOM',
             scale: '企业层面',
@@ -491,6 +547,7 @@ export const levers: Lever[] = [
         title: '产业旗舰（MTI）',
         items: [
           {
+            id: 'national-ai-missions',
             name: 'National AI Missions',
             ministry: 'MTI',
             scale: '4 大先锋行业',
@@ -498,6 +555,7 @@ export const levers: Lever[] = [
             sourceUrl: 'https://www.mti.gov.sg/',
           },
           {
+            id: 'ai-centres-of-excellence',
             name: 'AI Centres of Excellence',
             ministry: 'MTI',
             scale: '多机构联合',
@@ -505,6 +563,7 @@ export const levers: Lever[] = [
             sourceUrl: 'https://www.mti.gov.sg/',
           },
           {
+            id: 'embodied-ai-具身智能-rd',
             name: 'Embodied AI 具身智能 R&D',
             ministry: 'MTI / A*STAR',
             scale: '研发项目',
@@ -517,6 +576,7 @@ export const levers: Lever[] = [
         title: '研究旗舰（A*STAR）',
         items: [
           {
+            id: 'astar-cfar-centre-for-frontier-ai-research',
             name: 'A*STAR CFAR (Centre for Frontier AI Research)',
             ministry: 'A*STAR',
             scale: '5 大研究支柱',
@@ -524,6 +584,7 @@ export const levers: Lever[] = [
             sourceUrl: 'https://www.a-star.edu.sg/',
           },
           {
+            id: 'ai-manufacturing-2030',
             name: 'AI Manufacturing 2030',
             ministry: 'A*STAR',
             scale: 'Mencast 螺旋桨案例',
@@ -531,6 +592,7 @@ export const levers: Lever[] = [
             sourceUrl: 'https://www.a-star.edu.sg/',
           },
           {
+            id: 'ai-材料筛选',
             name: 'AI 材料筛选',
             ministry: 'A*STAR',
             scale: '50–100x 加速',
@@ -538,6 +600,7 @@ export const levers: Lever[] = [
             sourceUrl: 'https://www.a-star.edu.sg/',
           },
           {
+            id: 'national-multimodal-llm-programme',
             name: 'National Multimodal LLM Programme',
             ministry: 'A*STAR + AISG',
             scale: 'S$70M',
@@ -550,6 +613,7 @@ export const levers: Lever[] = [
         title: '区域 LLM 旗舰（AISG）',
         items: [
           {
+            id: 'sea-lion-v3-v4-guard',
             name: 'SEA-LION v3 / v4 / Guard',
             ministry: 'AISG',
             scale: '11+ 语言，4B–33B 参数',
@@ -557,6 +621,7 @@ export const levers: Lever[] = [
             sourceUrl: 'https://sea-lion.ai/',
           },
           {
+            id: 'seald',
             name: 'SEALD',
             ministry: 'AISG',
             scale: '区域语言数据集',
@@ -569,6 +634,7 @@ export const levers: Lever[] = [
         title: '企业普及（IMDA + ESG）',
         items: [
           {
+            id: 'naiip-national-ai-impact-programme',
             name: 'NAIIP — National AI Impact Programme',
             ministry: 'IMDA + ESG',
             scale: '10K 企业 + 100K 工人 / 2026–2029',
@@ -576,6 +642,7 @@ export const levers: Lever[] = [
             sourceUrl: 'https://www.imda.gov.sg/',
           },
           {
+            id: 'champions-of-ai',
             name: 'Champions of AI',
             ministry: 'IMDA + ESG',
             scale: '旗舰企业',
@@ -583,6 +650,7 @@ export const levers: Lever[] = [
             sourceUrl: 'https://www.imda.gov.sg/',
           },
           {
+            id: 'psg-ai-补贴',
             name: 'PSG AI 补贴',
             ministry: 'ESG',
             scale: '30% → 50%',
@@ -590,6 +658,7 @@ export const levers: Lever[] = [
             sourceUrl: 'https://www.enterprisesg.gov.sg/',
           },
           {
+            id: 'smes-go-digital-ai-模块',
             name: 'SMEs Go Digital AI 模块',
             ministry: 'IMDA',
             scale: '中小企业',
@@ -602,6 +671,7 @@ export const levers: Lever[] = [
         title: '医疗（MOH + Synapxe）',
         items: [
           {
+            id: 'note-buddy-genai-临床记录助手',
             name: 'Note Buddy GenAI 临床记录助手',
             ministry: 'Synapxe',
             scale: '5,000+ 医护，67K 病历（2025-12）',
@@ -609,6 +679,7 @@ export const levers: Lever[] = [
             sourceUrl: 'https://www.synapxe.sg/',
           },
           {
+            id: 'healthhub-ai',
             name: 'HealthHub AI',
             ministry: 'Synapxe',
             scale: '4.5/5 评分（公测）',
@@ -616,6 +687,7 @@ export const levers: Lever[] = [
             sourceUrl: 'https://www.synapxe.sg/',
           },
           {
+            id: 'aimsg',
             name: 'AimSG',
             ministry: 'Synapxe',
             scale: '国家级影像 AI',
@@ -623,6 +695,7 @@ export const levers: Lever[] = [
             sourceUrl: 'https://www.synapxe.sg/',
           },
           {
+            id: 'selena',
             name: 'SELENA+',
             ministry: 'Synapxe',
             scale: '全国部署',
@@ -630,6 +703,7 @@ export const levers: Lever[] = [
             sourceUrl: 'https://www.synapxe.sg/',
           },
           {
+            id: 'ace-ai-慢病预测',
             name: 'ACE-AI 慢病预测',
             ministry: 'Synapxe',
             scale: '2027 年初推广至 1,100+ Healthier SG 诊所',
@@ -638,6 +712,7 @@ export const levers: Lever[] = [
               'https://www.straitstimes.com/singapore/politics/ai-genetic-screening-and-flexible-financing-to-bolster-preventive-medicine-for-super-aged-spore-ong',
           },
           {
+            id: 'apollo-国家级-ct-冠脉-ai',
             name: 'APOLLO 国家级 CT 冠脉 AI',
             ministry: 'Synapxe',
             scale: '冠脉 AI 国家平台',
@@ -650,6 +725,7 @@ export const levers: Lever[] = [
         title: '交通（MOT + LTA + PSA + CAG）',
         items: [
           {
+            id: 'punggol-av-公共穿梭车',
             name: 'Punggol AV 公共穿梭车',
             ministry: 'LTA',
             scale: '3 条线路，2025-12 上线',
@@ -657,6 +733,7 @@ export const levers: Lever[] = [
             sourceUrl: 'https://www.lta.gov.sg/',
           },
           {
+            id: 'cetran-av-国家测试中心',
             name: 'CETRAN AV 国家测试中心',
             ministry: 'LTA',
             scale: '国家级测试设施',
@@ -664,6 +741,7 @@ export const levers: Lever[] = [
             sourceUrl: 'https://www.lta.gov.sg/',
           },
           {
+            id: 'psa-tuas-mega-port',
             name: 'PSA Tuas Mega Port',
             ministry: 'PSA',
             scale: '2040s 全球最大全自动港',
@@ -671,6 +749,7 @@ export const levers: Lever[] = [
             sourceUrl: 'https://www.singaporepsa.com/our-commitment/innovation/tuas-port',
           },
           {
+            id: 'changi-全球首张-isoiec-42001-ai-治理认证',
             name: 'Changi 全球首张 ISO/IEC 42001 AI 治理认证',
             ministry: 'CAG',
             scale: '全球首张',
@@ -683,6 +762,7 @@ export const levers: Lever[] = [
         title: '建造与城市（MND + HDB + BCA + URA + JTC）',
         items: [
           {
+            id: 'built-environment-ai-coe',
             name: 'Built Environment AI CoE',
             ministry: 'BCA',
             scale: 'S$30M',
@@ -690,6 +770,7 @@ export const levers: Lever[] = [
             sourceUrl: 'https://www.bca.gov.sg/',
           },
           {
+            id: 'bca-integrated-digital-delivery',
             name: 'BCA Integrated Digital Delivery',
             ministry: 'BCA',
             scale: '国家级数字交付标准',
@@ -697,6 +778,7 @@ export const levers: Lever[] = [
             sourceUrl: 'https://www.bca.gov.sg/',
           },
           {
+            id: 'hdb-tengah-智能能源镇',
             name: 'HDB Tengah 智能能源镇',
             ministry: 'HDB',
             scale: '4.2 万户',
@@ -704,6 +786,7 @@ export const levers: Lever[] = [
             sourceUrl: 'https://www.hdb.gov.sg/about-us/news-and-publications/news/details/tengah',
           },
           {
+            id: 'hdb-askjudy-mso-oneservice',
             name: 'HDB AskJudy + MSO OneService',
             ministry: 'HDB / MSO',
             scale: '虚拟助手',
@@ -716,6 +799,7 @@ export const levers: Lever[] = [
         title: '环境与水务（MSE + NEA + PUB）',
         items: [
           {
+            id: 'nea-weather-science-programme',
             name: 'NEA Weather Science Programme',
             ministry: 'NEA',
             scale: 'S$25M',
@@ -723,6 +807,7 @@ export const levers: Lever[] = [
             sourceUrl: 'https://www.nea.gov.sg/',
           },
           {
+            id: '登革热-ai-预测-蚊媒控制',
             name: '登革热 AI 预测 + 蚊媒控制',
             ministry: 'NEA',
             scale: '全国部署',
@@ -730,6 +815,7 @@ export const levers: Lever[] = [
             sourceUrl: 'https://www.nea.gov.sg/',
           },
           {
+            id: 'pub-smart-water-meter',
             name: 'PUB Smart Water Meter',
             ministry: 'PUB',
             scale: '全国铺开',
@@ -737,6 +823,7 @@ export const levers: Lever[] = [
             sourceUrl: 'https://www.pub.gov.sg/',
           },
           {
+            id: 'pub-joint-operations-centre',
             name: 'PUB Joint Operations Centre',
             ministry: 'PUB',
             scale: '实时洪水监控',
@@ -761,6 +848,7 @@ export const levers: Lever[] = [
         title: '民事政府（GovTech）',
         items: [
           {
+            id: 'pair-公务员-ai-助手',
             name: 'Pair 公务员 AI 助手',
             ministry: 'GovTech',
             scale: '150K 公务员目标',
@@ -768,6 +856,7 @@ export const levers: Lever[] = [
             sourceUrl: 'https://www.tech.gov.sg/products-and-services/pair/',
           },
           {
+            id: 'pair-search',
             name: 'Pair Search',
             ministry: 'GovTech',
             scale: 'Hansard + 法院 + 立法',
@@ -775,6 +864,7 @@ export const levers: Lever[] = [
             sourceUrl: 'https://www.tech.gov.sg/',
           },
           {
+            id: 'launchpad',
             name: 'LaunchPad',
             ministry: 'GovTech',
             scale: '3K MAU / 400 ideas',
@@ -782,6 +872,7 @@ export const levers: Lever[] = [
             sourceUrl: 'https://www.tech.gov.sg/',
           },
           {
+            id: 'ai-trailblazers-10-20',
             name: 'AI Trailblazers 1.0 + 2.0',
             ministry: 'GovTech',
             scale: '部委级 AI 落地项目',
@@ -789,6 +880,7 @@ export const levers: Lever[] = [
             sourceUrl: 'https://www.tech.gov.sg/',
           },
           {
+            id: 'litmus-sentinel',
             name: 'Litmus + Sentinel',
             ministry: 'GovTech',
             scale: 'AI 安全双件套',
@@ -796,6 +888,7 @@ export const levers: Lever[] = [
             sourceUrl: 'https://www.tech.gov.sg/',
           },
           {
+            id: 'agentspace-air-gapped-agentic-ai',
             name: 'Agentspace — air-gapped agentic AI',
             ministry: 'GovTech',
             scale: '亚洲首例',
@@ -808,6 +901,7 @@ export const levers: Lever[] = [
         title: '国防（MINDEF + DSTA + DSO + DIS）',
         items: [
           {
+            id: 'dis-saf-digital-and-intelligence-service',
             name: 'DIS — SAF Digital and Intelligence Service',
             ministry: 'MINDEF',
             scale: '2022 第四军种',
@@ -815,6 +909,7 @@ export const levers: Lever[] = [
             sourceUrl: 'https://www.mindef.gov.sg/news-and-events/latest-releases/28oct22_speech',
           },
           {
+            id: 'dis-ai-singapore-mou-sentinel-programme',
             name: 'DIS × AI Singapore MoU + Sentinel Programme',
             ministry: 'DIS',
             scale: '军方-国研合作',
@@ -822,6 +917,7 @@ export const levers: Lever[] = [
             sourceUrl: 'https://www.mindef.gov.sg/',
           },
           {
+            id: 'dsta-shield-ai-thales-anduril',
             name: 'DSTA × Shield AI / Thales / Anduril',
             ministry: 'DSTA',
             scale: '多重商业 AI 合作',
@@ -829,6 +925,7 @@ export const levers: Lever[] = [
             sourceUrl: 'https://www.dsta.gov.sg/',
           },
           {
+            id: 'dsta-rsn-计算机视觉舰船分类',
             name: 'DSTA × RSN 计算机视觉舰船分类',
             ministry: 'DSTA',
             scale: '海军 AI',
@@ -836,6 +933,7 @@ export const levers: Lever[] = [
             sourceUrl: 'https://www.dsta.gov.sg/',
           },
           {
+            id: 'dsta-自研-genai-dsta-mit-csail',
             name: 'DSTA 自研 GenAI + DSTA × MIT CSAIL',
             ministry: 'DSTA',
             scale: '自研 + 顶级合作',
@@ -843,6 +941,7 @@ export const levers: Lever[] = [
             sourceUrl: 'https://www.dsta.gov.sg/',
           },
           {
+            id: 'dso-mistral-ai-国防-genai',
             name: 'DSO × Mistral AI 国防 GenAI',
             ministry: 'DSO',
             scale: '与 Mistral 合作',
@@ -855,6 +954,7 @@ export const levers: Lever[] = [
         title: '家国安全（HTX + SPF + ICA）',
         items: [
           {
+            id: 'htx-phoenix-llm',
             name: 'HTX Phoenix LLM',
             ministry: 'HTX',
             scale: '自训',
@@ -862,6 +962,7 @@ export const levers: Lever[] = [
             sourceUrl: 'https://www.htx.gov.sg/',
           },
           {
+            id: 'htx-h2rc-人形机器人中心',
             name: 'HTX H2RC 人形机器人中心',
             ministry: 'HTX',
             scale: 'S$100M（2026 Q2 启动）',
@@ -869,6 +970,7 @@ export const levers: Lever[] = [
             sourceUrl: 'https://www.htx.gov.sg/',
           },
           {
+            id: 'htx-google-cloud-microsoft-mistral-singtel-st',
             name: 'HTX × Google Cloud / Microsoft / Mistral / Singtel / ST',
             ministry: 'HTX',
             scale: '多重商业合作',
@@ -876,6 +978,7 @@ export const levers: Lever[] = [
             sourceUrl: 'https://www.htx.gov.sg/',
           },
           {
+            id: 'spf-anti-scam-centre-anti-scam-command',
             name: 'SPF Anti-Scam Centre / Anti-Scam Command',
             ministry: 'SPF',
             scale: 'RPA + AI',
@@ -883,6 +986,7 @@ export const levers: Lever[] = [
             sourceUrl: 'https://www.police.gov.sg/',
           },
           {
+            id: 'spf-polcam-gibson-smart-glasses',
             name: 'SPF PolCam + GIBSON + Smart Glasses',
             ministry: 'SPF',
             scale: '城市监控 + 机场机器人 + 智能眼镜',
@@ -890,6 +994,7 @@ export const levers: Lever[] = [
             sourceUrl: 'https://www.police.gov.sg/',
           },
           {
+            id: 'ica-multi-modal-biometrics-system-mmbs',
             name: 'ICA Multi-Modal Biometrics System (MMBS)',
             ministry: 'ICA',
             scale: '虹膜 + 人脸',
@@ -914,6 +1019,7 @@ export const levers: Lever[] = [
         title: '新加坡发起的全球性框架',
         items: [
           {
+            id: 'singapore-ai-safety-institute-aisi',
             name: 'Singapore AI Safety Institute (AISI)',
             ministry: 'IMDA',
             scale: 'S$10M/年',
@@ -921,6 +1027,7 @@ export const levers: Lever[] = [
             sourceUrl: 'https://aiverifyfoundation.sg/',
           },
           {
+            id: 'singapore-consensus-on-ai-safety',
             name: 'Singapore Consensus on AI Safety',
             ministry: 'IMDA / AISI',
             scale: '11 国签署（含中美）',
@@ -928,6 +1035,7 @@ export const levers: Lever[] = [
             sourceUrl: 'https://aiverifyfoundation.sg/',
           },
           {
+            id: 'international-scientific-exchange-isesea-i-ii',
             name: 'International Scientific Exchange (ISESEA) I + II',
             ministry: 'IMDA / AISI',
             scale: '2024 + 2026',
@@ -935,6 +1043,7 @@ export const levers: Lever[] = [
             sourceUrl: 'https://aiverifyfoundation.sg/',
           },
           {
+            id: 'imda-humane-intelligence-多元红队挑战',
             name: 'IMDA × Humane Intelligence 多元红队挑战',
             ministry: 'IMDA',
             scale: '全球红队赛',
@@ -947,6 +1056,7 @@ export const levers: Lever[] = [
         title: 'ASEAN 区域',
         items: [
           {
+            id: 'asean-working-group-on-ai-governance-wg-ai',
             name: 'ASEAN Working Group on AI Governance (WG-AI)',
             ministry: 'IMDA',
             scale: '区域工作组',
@@ -954,6 +1064,7 @@ export const levers: Lever[] = [
             sourceUrl: 'https://asean.org/',
           },
           {
+            id: 'asean-guide-on-ai-governance-and-ethics',
             name: 'ASEAN Guide on AI Governance and Ethics',
             ministry: 'ASEAN Digital Ministers / IMDA',
             scale: '10 国采纳',
@@ -962,6 +1073,7 @@ export const levers: Lever[] = [
               'https://asean.org/wp-content/uploads/2024/02/ASEAN-Guide-on-AI-Governance-and-Ethics_beautified_201223_v2.pdf',
           },
           {
+            id: 'asean-hanoi-declaration-2026',
             name: 'ASEAN Hanoi Declaration 2026',
             ministry: 'ASEAN Digital Ministers',
             scale: '2026',
@@ -974,6 +1086,7 @@ export const levers: Lever[] = [
         title: '双边合作',
         items: [
           {
+            id: 'us-singapore-smart-cities-digital-economic-cooperation',
             name: 'US-Singapore Smart Cities + Digital Economic Cooperation',
             ministry: 'MFA',
             scale: '双边合作框架',
@@ -981,6 +1094,7 @@ export const levers: Lever[] = [
             sourceUrl: 'https://www.mfa.gov.sg/',
           },
           {
+            id: 'rok-双边-ai-合作',
             name: 'ROK 双边 AI 合作',
             ministry: 'MFA',
             scale: '韩国合作',
@@ -988,6 +1102,7 @@ export const levers: Lever[] = [
             sourceUrl: 'https://www.mfa.gov.sg/',
           },
           {
+            id: 'eu-asean-ai-治理对话',
             name: 'EU-ASEAN AI 治理对话',
             ministry: 'MFA / IMDA',
             scale: '欧盟 × ASEAN',
@@ -1000,6 +1115,7 @@ export const levers: Lever[] = [
         title: '军事 / 安全',
         items: [
           {
+            id: 'reaim-asia-regional-consultations',
             name: 'REAIM Asia Regional Consultations',
             ministry: 'MFA / MINDEF',
             scale: '新加坡共同主持',
@@ -1007,6 +1123,7 @@ export const levers: Lever[] = [
             sourceUrl: 'https://www.mfa.gov.sg/',
           },
           {
+            id: 'reaim-seoul-summit-2024',
             name: 'REAIM Seoul Summit 2024',
             ministry: 'MFA',
             scale: '5 国联合主办',
@@ -1014,6 +1131,7 @@ export const levers: Lever[] = [
             sourceUrl: 'https://www.mfa.gov.sg/Newsroom/Press-Statements-Transcripts-and-Photos/2024/09/20240910-REAIM',
           },
           {
+            id: 'bletchley-seoul-paris-ai-safety-summits',
             name: 'Bletchley / Seoul / Paris AI Safety Summits',
             ministry: 'MFA',
             scale: '全部参与',
@@ -1026,6 +1144,7 @@ export const levers: Lever[] = [
         title: '联合国 + 全球',
         items: [
           {
+            id: 'un-global-dialogue-on-ai-governance',
             name: 'UN Global Dialogue on AI Governance',
             ministry: 'MFA',
             scale: 'Independent International Scientific Panel',
@@ -1033,6 +1152,7 @@ export const levers: Lever[] = [
             sourceUrl: 'https://www.un.org/techenvoy/ai-advisory-body',
           },
           {
+            id: 'ai-singapore-undp-全球-ai-素养',
             name: 'AI Singapore × UNDP 全球 AI 素养',
             ministry: 'AISG / UNDP',
             scale: '全球项目',
