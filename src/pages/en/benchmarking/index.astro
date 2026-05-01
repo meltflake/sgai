@@ -1,0 +1,205 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import Headline from '~/components/ui/Headline.astro';
+import { regions, regionDetails, insights, dataDate, dataDisclaimer } from '~/data/benchmarking';
+
+const lang = 'en' as const;
+---
+
+<Layout
+  metadata={{
+    title: 'International Benchmarks',
+    description:
+      "International benchmarks for Singapore's AI strategy — comparison with the United States, the United Kingdom, China, the EU and other major economies.",
+  }}
+  breadcrumbs={[{ label: 'International Benchmarks' }]}
+  lang={lang}
+>
+  <section class="px-4 py-16 sm:px-6 mx-auto lg:px-8 max-w-6xl">
+    <Headline title="🌏 International Benchmarks" subtitle="Singapore's AI strategy compared to leading economies." />
+
+    <!-- Overview comparison table -->
+    <div class="mb-12">
+      <h2 class="text-xl font-bold mb-4">📊 Overview Comparison</h2>
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm border-collapse min-w-[900px]">
+          <thead>
+            <tr class="bg-slate-100 dark:bg-slate-800">
+              <th class="text-left p-3 border border-slate-200 dark:border-slate-700">Region</th>
+              <th class="text-left p-3 border border-slate-200 dark:border-slate-700">Core strategy</th>
+              <th class="text-left p-3 border border-slate-200 dark:border-slate-700">Year</th>
+              <th class="text-left p-3 border border-slate-200 dark:border-slate-700">Investment</th>
+              <th class="text-left p-3 border border-slate-200 dark:border-slate-700">Governance</th>
+              <th class="text-left p-3 border border-slate-200 dark:border-slate-700">Strength</th>
+              <th class="text-left p-3 border border-slate-200 dark:border-slate-700">AI ranking</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              regions.map((r, i) => (
+                <tr
+                  class={
+                    i === 0
+                      ? 'bg-blue-50 dark:bg-blue-900/20 font-semibold'
+                      : 'hover:bg-slate-50 dark:hover:bg-slate-800/50'
+                  }
+                >
+                  <td class="p-3 border border-slate-200 dark:border-slate-700 whitespace-nowrap">
+                    {r.flag} {r.name}
+                  </td>
+                  <td class="p-3 border border-slate-200 dark:border-slate-700">{r.strategy}</td>
+                  <td class="p-3 border border-slate-200 dark:border-slate-700">{r.strategyYear}</td>
+                  <td class="p-3 border border-slate-200 dark:border-slate-700">{r.investment}</td>
+                  <td class="p-3 border border-slate-200 dark:border-slate-700">{r.governance}</td>
+                  <td class="p-3 border border-slate-200 dark:border-slate-700">{r.strength}</td>
+                  <td class="p-3 border border-slate-200 dark:border-slate-700 text-muted">{r.aiRanking || '—'}</td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Key insights -->
+    <div class="mb-12">
+      <h2 class="text-xl font-bold mb-4">💡 Key Insights</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {
+          insights.map((insight) => (
+            <div class="p-5 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800">
+              <h3 class="font-bold text-lg mb-2">{insight.title}</h3>
+              <p class="text-muted text-sm">{insight.text}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+
+    <!-- Region details -->
+    <div class="mb-12">
+      <h2 class="text-xl font-bold mb-6">🔍 Region Profiles</h2>
+      <div class="space-y-8">
+        {
+          regionDetails.map((region) => (
+            <details class="border border-slate-200 dark:border-slate-700 rounded-lg overflow-hidden">
+              <summary class="p-4 bg-slate-50 dark:bg-slate-800 cursor-pointer hover:bg-slate-100 dark:hover:bg-slate-700 font-bold text-lg">
+                {region.flag} {region.name} — {region.fullName}
+              </summary>
+              <div class="p-5 space-y-5">
+                {/* Overview */}
+                <p class="text-muted">{region.overview}</p>
+
+                {/* Core strategies */}
+                <div>
+                  <h4 class="font-semibold mb-2">📋 Core Strategies</h4>
+                  <div class="space-y-1">
+                    {region.strategies.map((s) => (
+                      <div class="flex gap-2 text-sm">
+                        <span class="font-mono text-blue-600 dark:text-blue-400 whitespace-nowrap">{s.year}</span>
+                        <span>
+                          <strong>{s.name}</strong> — {s.description}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Investment */}
+                <div>
+                  <h4 class="font-semibold mb-2">💰 Investment</h4>
+                  <div class="overflow-x-auto">
+                    <table class="w-full text-sm border-collapse">
+                      <thead>
+                        <tr class="bg-slate-100 dark:bg-slate-800">
+                          <th class="text-left p-2 border border-slate-200 dark:border-slate-700">Item</th>
+                          <th class="text-left p-2 border border-slate-200 dark:border-slate-700">Amount</th>
+                          <th class="text-left p-2 border border-slate-200 dark:border-slate-700">Note</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {region.investment.map((inv) => (
+                          <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50">
+                            <td class="p-2 border border-slate-200 dark:border-slate-700">{inv.item}</td>
+                            <td class="p-2 border border-slate-200 dark:border-slate-700 font-semibold">
+                              {inv.amount}
+                            </td>
+                            <td class="p-2 border border-slate-200 dark:border-slate-700 text-muted">{inv.note}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+
+                {/* Governance */}
+                <div>
+                  <h4 class="font-semibold mb-2">⚖️ Governance Model</h4>
+                  <p class="text-sm text-muted">{region.governance}</p>
+                </div>
+
+                {/* Key initiatives */}
+                <div>
+                  <h4 class="font-semibold mb-2">🎯 Key Initiatives</h4>
+                  <ul class="list-disc list-inside text-sm space-y-1">
+                    {region.keyInitiatives.map((item) => (
+                      <li>{item}</li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Strengths and weaknesses */}
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <h4 class="font-semibold mb-2 text-green-600 dark:text-green-400">✅ Strengths vs Singapore</h4>
+                    <ul class="text-sm space-y-1">
+                      {region.strengths.map((s) => (
+                        <li class="text-green-700 dark:text-green-300">• {s}</li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold mb-2 text-red-600 dark:text-red-400">❌ Weaknesses vs Singapore</h4>
+                    <ul class="text-sm space-y-1">
+                      {region.weaknesses.map((w) => (
+                        <li class="text-red-700 dark:text-red-300">• {w}</li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+
+                {/* Key bodies */}
+                <div>
+                  <h4 class="font-semibold mb-2">🏛️ Key Bodies</h4>
+                  <div class="space-y-1 text-sm">
+                    {region.keyBodies.map((body) => (
+                      <div>
+                        <strong>{body.name}</strong> — {body.role}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Sources */}
+                <div>
+                  <h4 class="font-semibold mb-2 text-muted">📚 Sources</h4>
+                  <ul class="text-xs text-muted space-y-0.5">
+                    {region.sources.map((src) => (
+                      <li>• {src}</li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </details>
+          ))
+        }
+      </div>
+    </div>
+
+    <!-- Data note -->
+    <div class="p-4 rounded-lg bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+      <p class="text-sm text-muted">⚠️ {dataDisclaimer}</p>
+      <p class="text-xs text-muted mt-1">Last updated: {dataDate}</p>
+    </div>
+  </section>
+</Layout>

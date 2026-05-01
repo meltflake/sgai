@@ -12,7 +12,8 @@ export const GET = async () => {
     });
   }
 
-  const posts = await fetchPosts();
+  // zh-only feed at /rss.xml. EN feed lives at /en/rss.xml.
+  const posts = (await fetchPosts()).filter((p) => (p.lang ?? 'zh') === 'zh');
 
   const rss = await getRssString({
     title: `${SITE.name}’s Blog`,

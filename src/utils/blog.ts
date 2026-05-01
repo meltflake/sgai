@@ -63,9 +63,24 @@ const getNormalizedPost = async (post: CollectionEntry<'post'>): Promise<Post> =
     relatedPersonIds,
     citations,
     tocDepth,
+    lang: rawLang,
   } = data;
 
-  const slug = cleanSlug(id); // cleanSlug(rawSlug.split('/').pop());
+  // i18n: detect lang from frontmatter or filename. Files like
+  // `foo.en.md` (or astro-stripped `foo.en`) are EN posts; their canonical
+  // slug strips the `.en` infix so EN renders at /en/foo/ (mirrors zh /foo/).
+  // Astro's content collection id may or may not retain the `.md` extension
+  // depending on loader version — handle both shapes.
+  // i18n: posts under `src/data/post/en/<slug>.md` are EN; everything else
+  // defaults to zh. Astro slugifies the `id` so the `en/` prefix becomes a
+  // simple `en/` path or `en-` prefix depending on loader version — handle
+  // both shapes. Frontmatter `lang: 'en'` is the authoritative override.
+  const idNoMd = id.replace(/\.(md|mdx)$/i, '');
+  const isEnFromName = /^en[/\\-]/i.test(idNoMd);
+  const lang: 'zh' | 'en' = (rawLang as 'zh' | 'en' | undefined) ?? (isEnFromName ? 'en' : 'zh');
+  const canonicalBasename = idNoMd.replace(/^en[/\\-]/i, '');
+  const baseSlug = cleanSlug(canonicalBasename);
+  const slug = baseSlug; // canonical slug (shared across langs)
   const publishDate = new Date(rawPublishDate);
   const updateDate = rawUpdateDate ? new Date(rawUpdateDate) : undefined;
 
@@ -81,10 +96,15 @@ const getNormalizedPost = async (post: CollectionEntry<'post'>): Promise<Post> =
     title: tag,
   }));
 
+  const basePermalink = await generatePermalink({ id, slug, publishDate, category: category?.slug });
+  const permalink =
+    lang === 'en' ? '/en' + (basePermalink.startsWith('/') ? basePermalink : '/' + basePermalink) : basePermalink;
+
   return {
     id: id,
     slug: slug,
-    permalink: await generatePermalink({ id, slug, publishDate, category: category?.slug }),
+    lang,
+    permalink,
 
     publishDate: publishDate,
     updateDate: updateDate,
@@ -191,9 +211,17 @@ export const findLatestPosts = async ({ count }: { count?: number }): Promise<Ar
 };
 
 /** */
-export const getStaticPathsBlogList = async ({ paginate }: { paginate: PaginateFunction }) => {
+export const getStaticPathsBlogList = async ({
+  paginate,
+  lang,
+}: {
+  paginate: PaginateFunction;
+  lang?: 'zh' | 'en';
+}) => {
   if (!isBlogEnabled || !isBlogListRouteEnabled) return [];
-  return paginate(await fetchPosts(), {
+  const all = await fetchPosts();
+  const filtered = lang ? all.filter((p) => (p.lang ?? 'zh') === lang) : all.filter((p) => (p.lang ?? 'zh') === 'zh');
+  return paginate(filtered, {
     params: { blog: BLOG_BASE || undefined },
     pageSize: blogPostsPerPage,
   });

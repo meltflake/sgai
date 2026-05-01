@@ -1,0 +1,73 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import Headline from '~/components/ui/Headline.astro';
+import { sections } from '~/data/tracker';
+
+const lang = 'en' as const;
+---
+
+<Layout
+  metadata={{
+    title: 'Key Metrics',
+    description:
+      'Singapore AI key metrics tracker — investment, talent counts, compute infrastructure and other indicators of strategy execution.',
+  }}
+  breadcrumbs={[{ label: 'Key Metrics' }]}
+  lang={lang}
+>
+  <section class="px-4 py-16 sm:px-6 mx-auto lg:px-8 max-w-5xl">
+    <Headline
+      title="📊 Execution Tracker"
+      subtitle="Tracking the key indicators of Singapore's AI strategy. Sourced from public official channels."
+    />
+
+    <div class="space-y-8">
+      {
+        sections.map((section) => (
+          <div>
+            <h2 class="text-xl font-bold mb-4">
+              {section.icon} {section.title}
+            </h2>
+            <div class="overflow-x-auto">
+              <table class="w-full text-sm border-collapse">
+                <thead>
+                  <tr class="bg-slate-100 dark:bg-slate-800">
+                    <th class="text-left p-3 border border-slate-200 dark:border-slate-700">Indicator</th>
+                    <th class="text-left p-3 border border-slate-200 dark:border-slate-700">Value</th>
+                    <th class="text-left p-3 border border-slate-200 dark:border-slate-700">Source / date</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {section.rows.map((row) => (
+                    <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50">
+                      <td class="p-3 border border-slate-200 dark:border-slate-700">{row.name}</td>
+                      <td class="p-3 border border-slate-200 dark:border-slate-700 font-semibold">{row.value}</td>
+                      <td class="p-3 border border-slate-200 dark:border-slate-700 text-muted">
+                        {row.sourceUrl ? (
+                          <a
+                            href={row.sourceUrl}
+                            target="_blank"
+                            rel="noopener"
+                            class="text-blue-600 dark:text-blue-400 hover:underline"
+                          >
+                            {row.source} ↗
+                          </a>
+                        ) : (
+                          row.source
+                        )}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+
+    <p class="mt-8 text-sm text-muted">
+      ⚠️ Data current to end-2024; some figures are estimates. Updates and corrections welcome.
+    </p>
+  </section>
+</Layout>

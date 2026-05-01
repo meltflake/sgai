@@ -13,6 +13,11 @@ export interface Policy {
   translatedPdfUrl?: string;
   summary: string;
   content: string;
+  // i18n (v0.3.0). EN renderer prefers these; falls back to zh fields if
+  // missing. Translation pass populates them in batches.
+  summaryEn?: string;
+  contentEn?: string;
+  sourceEn?: string;
   // Phase 1 knowledge-graph fields (all optional during migration; hand-
   // curated over time. Empty arrays mean "no known links yet").
   ministry?: string; // matches Affiliation values in src/data/people.ts
@@ -25,6 +30,7 @@ export interface Policy {
 
 export interface PolicyCategory {
   name: string;
+  nameEn?: string;
   icon: string;
   policies: Policy[];
 }
@@ -32,6 +38,7 @@ export interface PolicyCategory {
 export const categories: PolicyCategory[] = [
   {
     name: '国家战略',
+    nameEn: 'National Strategy',
     icon: '🏛️',
     policies: [
       {
@@ -45,6 +52,10 @@ export const categories: PolicyCategory[] = [
           'https://www.mddi.gov.sg/newsroom/singapore-invests-over-s-1-billion-in-national-ai-research-and-development-plan-to-strengthen-ai-research-capabilities-and-our-position-as-global-ai-hub/',
         summary: '10 亿新元（7.79 亿美元）公共 AI 研究投资，聚焦负责任和资源高效的 AI。',
         content: `2026 年 1 月 24 日，数字发展与信息部宣布 2026-2030 年间投资超 10 亿新元（约 7.79 亿美元）用于公共 AI 研究。三大方向：一是"负责任和资源高效的 AI"研究，延续 AI Verify 等可信赖 AI 路线；二是全链条 AI 人才培养，从高中预科到大学教师培训；三是支持产业应用，缩短研究到商业化路径。这是继 2024 年 5 亿新元高性能计算资源投资后的又一重大投入，标志着新加坡从"试点探索"进入"规模化建设"阶段。人均 AI 投资达 139 美元，远高于美国（33 美元）和中国（7 美元）。`,
+        summaryEn:
+          'S$1 billion (US$779 million) in public AI research investment, focused on responsible and resource-efficient AI.',
+        contentEn: `On 24 January 2026, the Ministry of Digital Development and Information announced over S$1 billion (about US$779 million) in public AI research investment for 2026-2030. Three priorities: first, research on "responsible and resource-efficient AI," extending the trusted-AI track that includes AI Verify; second, full-pipeline AI talent development, from junior college pre-tertiary programmes to university faculty training; third, support for industry applications, shortening the research-to-commercialisation path. Following the S$500 million high-performance computing investment in 2024, this is another major commitment, marking Singapore's shift from "pilot exploration" into "scaled build-out." Per-capita AI investment reaches US$139, far above the US (US$33) and China (US$7).`,
+        sourceEn: 'Ministry of Digital Development and Information (MDDI)',
         ministry: undefined,
         authorPersonIds: [],
         relatedDebateIds: [],
@@ -64,6 +75,10 @@ export const categories: PolicyCategory[] = [
         translatedPdfUrl: '/pdfs/nais-2.0-zh.pdf',
         summary: '升级版国家 AI 战略，提出 AI for Public Good、AI for Growth 双轨目标，确定九大优先领域。',
         content: `NAIS 2.0 将 AI 战略从"重点应用"升级为"系统性赋能"。双轨目标：AI for Public Good 和 AI for Growth。涵盖十五大行动，追加拨款至 10 亿新元以上，建设国家 AI 计算基础设施。确定九大优先领域：交通物流、制造业、金融、安全、网络安全、智慧城市、医疗、教育和政府服务，其中医疗和金融科技获最高投资比重。`,
+        summaryEn:
+          'Upgraded national AI strategy with twin tracks — AI for Public Good and AI for Growth — and nine priority sectors.',
+        contentEn: `NAIS 2.0 upgrades Singapore's AI strategy from "targeted applications" to "systemic enablement." Twin objectives: AI for Public Good and AI for Growth. The strategy spans fifteen action lines, raises the funding envelope above S$1 billion, and builds out national AI compute infrastructure. Nine priority sectors are designated: transport and logistics, manufacturing, finance, safety and security, cybersecurity, smart cities, healthcare, education, and government services — with healthcare and fintech receiving the largest investment weighting.`,
+        sourceEn: 'Smart Nation and Digital Government Office (SNDGO)',
         ministry: 'MDDI',
         authorPersonIds: ['josephine-teo', 'lawrence-wong'],
         relatedDebateIds: [],
@@ -82,6 +97,10 @@ export const categories: PolicyCategory[] = [
         translatedPdfUrl: '/pdfs/smart-nation-2.0-zh.pdf',
         summary: '数字基础设施升级蓝图，涵盖数字政府、数字经济、数字社会三大支柱。',
         content: `Smart Nation 2.0 是 2014 年智慧国家倡议的全面升级，于 2023 年 10 月发布。三大支柱：数字政府——推动政府服务全面数字化和 AI 化；数字经济——支持企业数字化转型和 AI 采纳；数字社会——确保全民具备数字素养，缩小数字鸿沟。2024 年 10 月启动具体落地计划，包括 1.2 亿新元 AI 应用基金，支持五大国家 AI 项目：智能货运规划、市政服务、慢性病预测与管理、个性化教育和边境清关。在基础设施层面，规划了国家级 AI 计算平台、数据共享基础设施和安全的数字身份体系。`,
+        summaryEn:
+          'Digital infrastructure upgrade blueprint built on three pillars: Digital Government, Digital Economy, Digital Society.',
+        contentEn: `Smart Nation 2.0, released in October 2023, is a comprehensive upgrade of the 2014 Smart Nation Initiative. Three pillars: Digital Government — driving end-to-end digitalisation and AI adoption across public services; Digital Economy — supporting enterprise digital transformation and AI adoption; Digital Society — ensuring universal digital literacy and closing the digital divide. In October 2024, an implementation plan was launched, including a S$120 million AI application fund supporting five national AI projects: intelligent freight planning, municipal services, chronic disease prediction and management, personalised education, and border clearance. At the infrastructure layer, the plan covers a national AI compute platform, data-sharing infrastructure, and a secure digital identity system.`,
+        sourceEn: 'Smart Nation and Digital Government Office (SNDGO)',
         ministry: undefined,
         authorPersonIds: [],
         relatedDebateIds: [],
@@ -101,6 +120,9 @@ export const categories: PolicyCategory[] = [
         translatedPdfUrl: '/pdfs/nais-1.0-zh.pdf',
         summary: '新加坡首份国家级 AI 战略，确立五大重点领域和三大推动力。',
         content: `NAIS 1.0 标志着 AI 从技术议题上升为国家战略。五大重点领域：智能交通与物流、智慧城市、医疗健康、教育、安全与保障。三大推动力：三重螺旋合作、AI 人才管道、数据架构与可信 AI。催生了 AI Singapore 项目和 100 Experiments 计划。`,
+        summaryEn: "Singapore's first national AI strategy, identifying five focus sectors and three enablers.",
+        contentEn: `NAIS 1.0 marked the elevation of AI from a technology topic to a national strategy. Five focus sectors: intelligent transport and logistics, smart cities, healthcare, education, and safety and security. Three enablers: triple-helix collaboration, an AI talent pipeline, and data architecture plus trusted AI. The strategy spawned AI Singapore and the 100 Experiments programme.`,
+        sourceEn: 'Smart Nation and Digital Government Office (SNDGO)',
         ministry: undefined,
         authorPersonIds: [],
         relatedDebateIds: [],
@@ -121,6 +143,10 @@ export const categories: PolicyCategory[] = [
         translatedPdfUrl: '/pdfs/smart-nation-initiative-zh.pdf',
         summary: '新加坡数字化转型总体框架，为后续 AI 战略奠定基础。',
         content: `2014 年，新加坡总理李显龙宣布 Smart Nation Initiative，这是全面数字化转型的总体战略框架。核心目标包括利用数字技术改善市民生活、创造更多经济机会、建设更紧密联系的社区。虽非专门的 AI 政策，但为后续 AI 战略提供了制度基础和政策框架。`,
+        summaryEn:
+          "Singapore's overarching digital transformation framework, laying the institutional foundation for subsequent AI strategies.",
+        contentEn: `In 2014, Prime Minister Lee Hsien Loong announced the Smart Nation Initiative as a whole-of-nation strategic framework for digital transformation. Core objectives: harness digital technology to improve citizens' lives, create more economic opportunities, and build more tightly connected communities. Although not an AI-specific policy, it provided the institutional and policy foundation for subsequent AI strategies.`,
+        sourceEn: "Prime Minister's Office (PMO)",
         ministry: undefined,
         authorPersonIds: [],
         relatedDebateIds: [],
@@ -138,6 +164,10 @@ export const categories: PolicyCategory[] = [
         sourceUrl: 'https://www.mindef.gov.sg/news-and-events/latest-releases/28oct22_speech',
         summary: 'SAF 第四军种成立——把 AI 与数字情报写进军种结构本身。',
         content: `2022 年 10 月，新加坡国防部正式成立 SAF Digital and Intelligence Service (DIS)，作为陆军、海军、空军之外的第四军种，专责数字与情报作战、网络防御、AI 决策支持。2025 年 DIS 进一步重组为 DCCOM（数字网络指挥部）和 SAFC4DC（C4 与防务计算指挥部）两个司令部。这是新加坡国家级 AI-native 战略最深的结构性动作——把 AI 写进军种本身，而非作为某个部门的项目。配套：DIS × AI Singapore MoU、DIS Sentinel Programme + AI 课程、SAF Digital Range / CyTEC 升级。`,
+        summaryEn:
+          "Establishment of the SAF's fourth Service — embedding AI and digital intelligence into the force structure itself.",
+        contentEn: `In October 2022, Singapore's Ministry of Defence formally established the SAF Digital and Intelligence Service (DIS) as the fourth Service alongside the Army, Navy, and Air Force, with sole responsibility for digital and intelligence operations, cyber defence, and AI decision support. In 2025, DIS was further reorganised into two commands: DCCOM (Digital Cyber Command) and SAFC4DC (C4 and Defence Computing Command). This is the deepest structural move in Singapore's national AI-native strategy — writing AI into the Service structure itself rather than running it as a departmental project. Supporting elements include the DIS × AI Singapore MoU, the DIS Sentinel Programme with AI curriculum, and upgrades to the SAF Digital Range / CyTEC.`,
+        sourceEn: 'Ministry of Defence (MINDEF)',
         ministry: undefined,
         authorPersonIds: [],
         relatedDebateIds: [],
@@ -155,6 +185,10 @@ export const categories: PolicyCategory[] = [
         sourceUrl: 'https://aiverifyfoundation.sg/',
         summary: '前沿 AI 安全研究的国家级研究所，承担 Singapore Consensus 协调职能。',
         content: `Singapore AI Safety Institute (AISI) 于 2024 年成立，年度预算 S$10M，由 IMDA 与 Digital Trust Centre 联合运营，挂靠 NTU。承担前沿 AI 模型的红队评估、对齐研究、可追溯性测试三类核心研究。AISI 还作为 Singapore Consensus on Global AI Safety Research Priorities（11 国签署，含中美）的协调中心，并主办 International Scientific Exchange on AI Safety（ISESEA）I + II。AISI 是新加坡"用 0.07% 全球人口撬动 G7 级 AI 治理话语权"战略最关键的机构。`,
+        summaryEn:
+          'National research institute for frontier AI safety, hosting the Singapore Consensus coordination function.',
+        contentEn: `The Singapore AI Safety Institute (AISI) was established in 2024 with an annual budget of S$10M, jointly operated by IMDA and the Digital Trust Centre and hosted at NTU. It covers three core research areas on frontier AI models: red-team evaluation, alignment research, and traceability testing. AISI also serves as the coordination centre for the Singapore Consensus on Global AI Safety Research Priorities (signed by 11 countries, including the US and China) and hosts the International Scientific Exchange on AI Safety (ISESEA) I + II. AISI is the most critical institution in Singapore's strategy of "leveraging 0.07% of the world's population into G7-level AI governance influence."`,
+        sourceEn: 'IMDA / Digital Trust Centre',
         ministry: undefined,
         authorPersonIds: [],
         relatedDebateIds: [],
@@ -166,6 +200,7 @@ export const categories: PolicyCategory[] = [
   },
   {
     name: '治理框架',
+    nameEn: 'AI Governance Frameworks',
     icon: '⚖️',
     policies: [
       {
@@ -180,6 +215,10 @@ export const categories: PolicyCategory[] = [
         translatedPdfUrl: '/pdfs/agentic-ai-governance-zh.pdf',
         summary: '针对自主 AI Agent 的治理框架，应对 AI 自主决策带来的新挑战。',
         content: `随着 Agentic AI（自主 AI 代理）快速发展，IMDA 于 2026 年 1 月发布专门的治理框架。聚焦 AI Agent 的自主决策边界、人类监督机制、责任归属、安全防护等核心议题。`,
+        summaryEn:
+          'Dedicated governance framework for autonomous AI agents, addressing the new challenges posed by AI making independent decisions.',
+        contentEn: `Responding to the rapid rise of Agentic AI (autonomous AI agents), IMDA released a dedicated governance framework in January 2026. It focuses on core issues for AI agents: autonomous decision boundaries, human oversight mechanisms, accountability assignment, and safety safeguards.`,
+        sourceEn: 'Infocomm Media Development Authority (IMDA)',
         ministry: undefined,
         authorPersonIds: [],
         relatedDebateIds: [],
@@ -199,6 +238,10 @@ export const categories: PolicyCategory[] = [
         translatedPdfUrl: '/pdfs/genai-governance-zh.pdf',
         summary: '专门针对生成式 AI 的治理框架提案，应对大模型带来的新挑战。',
         content: `全球较早的专门针对生成式 AI 的治理框架提案。九大维度：问责制、数据治理、可信开发与部署、事件报告、测试与保证、安全、内容来源、使用者素养、辅助措施。采用多利益相关方方法，强调"沙盒式"治理。`,
+        summaryEn:
+          'Dedicated governance framework proposal for generative AI, addressing the new challenges posed by large models.',
+        contentEn: `One of the world's earliest dedicated governance framework proposals for generative AI. Nine dimensions: accountability, data governance, trusted development and deployment, incident reporting, testing and assurance, security, content provenance, user literacy, and supporting measures. The framework adopts a multi-stakeholder approach and emphasises "sandbox-style" governance.`,
+        sourceEn: 'Infocomm Media Development Authority (IMDA)',
         ministry: undefined,
         authorPersonIds: [],
         relatedDebateIds: [],
@@ -217,6 +260,10 @@ export const categories: PolicyCategory[] = [
         translatedPdfUrl: '/pdfs/ai-verify-zh.pdf',
         summary: '全球首个 AI 治理测试框架和工具包，支持企业自测 AI 系统合规性。',
         content: `全球首个 AI 治理测试框架与工具包。11 项可测试指标，开源工具包，与国际标准对齐。2023 年成立 AI Verify Foundation 推动全球协作。将 AI 治理从"原则"推向"可操作"。`,
+        summaryEn:
+          "The world's first AI governance testing framework and toolkit, enabling enterprises to self-assess AI system compliance.",
+        contentEn: `The world's first AI governance testing framework and toolkit. Eleven testable indicators, an open-source toolkit, and alignment with international standards. The AI Verify Foundation was established in 2023 to drive global collaboration. The framework moves AI governance from "principles" to "operational practice."`,
+        sourceEn: 'Infocomm Media Development Authority (IMDA)',
         ministry: undefined,
         authorPersonIds: [],
         relatedDebateIds: [],
@@ -237,6 +284,10 @@ export const categories: PolicyCategory[] = [
         translatedPdfUrl: '/pdfs/ai-governance-model-zh.pdf',
         summary: '亚洲首个 AI 治理框架，提出可解释、透明、以人为本的 AI 治理原则。',
         content: `2019 年在达沃斯发布，亚洲首个 AI 治理框架。四大核心原则：内部治理结构与措施、决策中的人类参与、运营管理、利益相关方互动与沟通。被 OECD 引用为最佳实践。`,
+        summaryEn:
+          "Asia's first AI governance framework, articulating principles of explainability, transparency, and human-centric AI governance.",
+        contentEn: `Released at Davos in 2019, this is Asia's first AI governance framework. Four core principles: internal governance structures and measures, human involvement in AI-augmented decision-making, operations management, and stakeholder interaction and communication. The framework has been cited by the OECD as a best practice.`,
+        sourceEn: 'Infocomm Media Development Authority (IMDA)',
         ministry: undefined,
         authorPersonIds: [],
         relatedDebateIds: [],
@@ -255,6 +306,9 @@ export const categories: PolicyCategory[] = [
         translatedPdfUrl: '/pdfs/pdpa-zh.pdf',
         summary: '新加坡核心数据保护法律，2020 年修订加入 AI 相关条款。',
         content: `核心数据保护法律，2012 年通过，2020 年重大修订。引入合法利益例外（Business Improvement Exception）、数据可携带权、加强执法力度。为 AI 数据使用划定法律边界。`,
+        summaryEn: "Singapore's core data protection law, with AI-relevant provisions added in the 2020 amendments.",
+        contentEn: `Singapore's core data protection law, enacted in 2012 and substantially amended in 2020. The amendments introduced a Business Improvement Exception, data portability rights, and stronger enforcement powers — setting the legal perimeter for AI data use.`,
+        sourceEn: 'Personal Data Protection Commission (PDPC)',
         ministry: undefined,
         authorPersonIds: [],
         relatedDebateIds: [],
@@ -272,6 +326,10 @@ export const categories: PolicyCategory[] = [
         sourceUrl: 'https://www.mas.gov.sg/news/media-releases/2024/project-mindforge',
         summary: 'GenAI 在金融业的风险框架，24 家机构 + 四大云厂商（Microsoft / AWS / Google / NVIDIA）共建。',
         content: `Project MindForge 是 MAS 主导的金融业 GenAI 风险框架，于 2024 年启动。Consortium 成员包括 24 家金融机构（DBS、UOB、OCBC、HSBC、JPMorgan 等）+ 四大云与 AI 厂商（Microsoft、AWS、Google、NVIDIA）+ 监管机构。框架围绕七大风险维度：模型幻觉、数据泄露、偏差与公平、供应链依赖、可解释性、对抗性攻击、责任分配。MindForge 的特殊之处在于让监管机构、被监管金融机构、技术供应商三方在同一桌上协调——这是新加坡 AI 治理"训练宽松 + 输出严管"哲学在金融业的具体落地，也是 FEAT → Veritas → MindForge → BuildFin.ai 五层堆栈中第三层。`,
+        summaryEn:
+          'GenAI risk framework for the financial sector, co-developed by 24 institutions and four major cloud/AI providers (Microsoft / AWS / Google / NVIDIA).',
+        contentEn: `Project MindForge is a MAS-led GenAI risk framework for the financial sector, launched in 2024. Consortium members include 24 financial institutions (DBS, UOB, OCBC, HSBC, JPMorgan, and others), the four major cloud and AI providers (Microsoft, AWS, Google, NVIDIA), and the regulator. The framework is organised around seven risk dimensions: model hallucination, data leakage, bias and fairness, supply chain dependency, explainability, adversarial attacks, and accountability assignment. MindForge is distinctive in bringing regulators, regulated financial institutions, and technology providers to the same table — the concrete sectoral instantiation of Singapore's "permissive training + strict output" AI governance philosophy in finance, and the third layer in the FEAT → Veritas → MindForge → BuildFin.ai five-layer stack.`,
+        sourceEn: 'Monetary Authority of Singapore (MAS)',
         ministry: undefined,
         authorPersonIds: [],
         relatedDebateIds: [],
@@ -289,6 +347,10 @@ export const categories: PolicyCategory[] = [
         sourceUrl: 'https://www.mas.gov.sg/regulation/notices/notice-fsm-n29',
         summary: '金融业 AI 模型风险管理的监管期望书，正式约束银行使用 AI。',
         content: `MAS 于 2024 年 12 月发布 AI Risk Management Guidelines，把 FEAT / Veritas / MindForge 多年累积的实践经验固化为正式监管期望书。覆盖：模型治理（数据、训练、验证、上线）、第三方 AI 风险（云厂商、模型供应商、API）、模型监控（漂移、偏差、性能）、人在回路、事件应对与责任。配套 BuildFin.ai 平台让被监管机构能持续测试和报告。这是全球首批专门针对银行业 AI 的监管文件，比欧盟 AI Act 金融条款落地更快。`,
+        summaryEn:
+          'Supervisory expectations document for AI model risk management in the financial sector, formally constraining how banks use AI.',
+        contentEn: `MAS released the AI Risk Management Guidelines in December 2024, codifying years of practical experience from FEAT, Veritas, and MindForge into formal supervisory expectations. Coverage includes: model governance (data, training, validation, deployment), third-party AI risk (cloud providers, model vendors, APIs), model monitoring (drift, bias, performance), human-in-the-loop, and incident response and accountability. The accompanying BuildFin.ai platform enables regulated institutions to test and report on a continuous basis. These are among the world's first dedicated supervisory documents for AI in banking, landing ahead of the EU AI Act's financial provisions.`,
+        sourceEn: 'Monetary Authority of Singapore (MAS)',
         ministry: undefined,
         authorPersonIds: [],
         relatedDebateIds: [],
@@ -300,6 +362,7 @@ export const categories: PolicyCategory[] = [
   },
   {
     name: '行业监管',
+    nameEn: 'Sector Regulation',
     icon: '🏢',
     policies: [
       {
@@ -314,6 +377,9 @@ export const categories: PolicyCategory[] = [
         translatedPdfUrl: '/pdfs/csa-ai-security-zh.pdf',
         summary: 'AI 系统全生命周期安全最佳实践指南。',
         content: `CSA 于 2024 年 10 月发布 AI 系统安全指南及配套实践手册，填补了 AI 安全领域的治理空白。指南覆盖 AI 系统全生命周期：规划与设计阶段的威胁建模、开发阶段的数据与模型安全、部署阶段的安全测试、运维阶段的监控与事件响应。重点关注对抗性攻击防御、数据投毒防范、模型窃取防护、供应链安全等 AI 特有风险。`,
+        summaryEn: 'Best-practice guidelines for end-to-end security across the AI system lifecycle.',
+        contentEn: `In October 2024, CSA released the Guidelines on Securing AI Systems together with a companion practice handbook, filling a governance gap in the AI security space. The guidelines cover the full AI system lifecycle: threat modelling at the planning and design stage, data and model security during development, security testing at deployment, and monitoring and incident response in operations. They focus on AI-specific risks including adversarial attack defence, data poisoning prevention, model theft protection, and supply chain security.`,
+        sourceEn: 'Cyber Security Agency (CSA)',
         ministry: undefined,
         authorPersonIds: [],
         relatedDebateIds: [],
@@ -334,6 +400,9 @@ export const categories: PolicyCategory[] = [
         translatedPdfUrl: '/pdfs/court-genai-guide-zh.pdf',
         summary: '法律诉讼中使用生成式 AI 工具的原则和指引。',
         content: `新加坡最高法院于 2024 年发布生成式 AI 使用指南（Registrar's Circular No. 1 of 2024），适用于所有法院体系。核心原则：律师和当事人对提交法院的所有内容负最终责任，无论是否使用 AI 生成；使用 GenAI 辅助准备的法律文件须披露 AI 使用情况；引用的案例和法律条文须经人工核实。体现了司法系统对 AI 工具的务实态度——不禁止使用，但强调人类责任不可转移。`,
+        summaryEn: 'Principles and guidance on the use of generative AI tools in legal proceedings.',
+        contentEn: `In 2024, the Supreme Court of Singapore issued the Guide on the Use of Generative AI Tools by Court Users (Registrar's Circular No. 1 of 2024), applicable across the entire court system. Core principles: lawyers and parties bear ultimate responsibility for all materials submitted to court, regardless of whether AI was used to generate them; legal documents prepared with GenAI assistance must disclose the AI use; cited cases and statutory provisions must be verified by a human. The guide reflects the judiciary's pragmatic stance on AI tools — not banning their use, but making clear that human responsibility cannot be transferred.`,
+        sourceEn: 'Supreme Court of Singapore',
         ministry: undefined,
         authorPersonIds: [],
         relatedDebateIds: [],
@@ -352,6 +421,10 @@ export const categories: PolicyCategory[] = [
         translatedPdfUrl: '/pdfs/mas-veritas-zh.pdf',
         summary: '将 FEAT 原则转化为可操作的评估工具包，提供开源方法论。',
         content: `Veritas 倡议是 FEAT 原则的实践延伸，由 MAS 联合金融机构共同开发。项目目标是创建一套开源、可操作的评估方法论和工具包，帮助金融机构将 FEAT 原则落地到具体 AI 应用中。涵盖客户营销公平性评估、信用风险评分透明度评估等场景。Veritas 持续更新迭代，体现新加坡"原则→工具→实践"的渐进式 AI 治理路径。`,
+        summaryEn:
+          'Translates the FEAT principles into an operational assessment toolkit, with an open-source methodology.',
+        contentEn: `The Veritas initiative is the practical extension of the FEAT principles, jointly developed by MAS and partner financial institutions. The project's goal is to build an open-source, operational assessment methodology and toolkit that helps financial institutions translate FEAT principles into concrete AI applications. Use cases covered include fairness assessments for customer marketing and transparency assessments for credit risk scoring. Veritas is iterated continuously, embodying Singapore's incremental "principles → tools → practice" AI governance path.`,
+        sourceEn: 'Monetary Authority of Singapore (MAS)',
         ministry: undefined,
         authorPersonIds: [],
         relatedDebateIds: [],
@@ -370,6 +443,9 @@ export const categories: PolicyCategory[] = [
         translatedPdfUrl: '/pdfs/mas-feat-zh.pdf',
         summary: '金融业 AI 使用的公平性、伦理、问责和透明度原则。',
         content: `MAS 于 2018 年发布 FEAT 原则，为金融机构使用 AI 和数据分析提供治理指引。四大原则：公平性（Fairness）——确保 AI 决策不产生歧视；伦理（Ethics）——AI 使用符合道德标准；问责（Accountability）——明确 AI 决策的责任归属；透明度（Transparency）——AI 决策过程可理解、可解释。2022 年更新版纳入更多实践指导。`,
+        summaryEn: 'Fairness, Ethics, Accountability, and Transparency principles for AI use in the financial sector.',
+        contentEn: `MAS issued the FEAT principles in 2018 to provide governance guidance for financial institutions using AI and data analytics. Four principles: Fairness — ensuring AI decisions do not produce discrimination; Ethics — AI use aligns with ethical standards; Accountability — clear assignment of responsibility for AI decisions; Transparency — AI decision processes are understandable and explainable. The 2022 update incorporated additional practical guidance.`,
+        sourceEn: 'Monetary Authority of Singapore (MAS)',
         ministry: undefined,
         authorPersonIds: [],
         relatedDebateIds: [],
@@ -387,6 +463,10 @@ export const categories: PolicyCategory[] = [
         sourceUrl: 'https://sso.agc.gov.sg/Act/CA2021?ProvIds=P14-#pr244-',
         summary: 'AI 训练免责条款——与日本并列全球最宽松的 AI 训练版权立场。',
         content: `Copyright Act 2021 第 244 条 "Computational Data Analysis" 给 AI 训练数据使用提供明确的免责条款：合法获取的内容（不论是否有版权）可用于 AI 模型训练、文本与数据挖掘等"计算分析"用途，不构成版权侵权。这与日本《著作权法》第 30-4 条并列为全球最宽松的 AI 训练版权立场——美国仍在 fair use 案例法争议中、欧盟需依赖 Text and Data Mining Exception 的 opt-out 机制。配合 IPOS 的 "When Code Creates" 报告（2024）和"训练宽松 + 输出严管"哲学（OCHA + Elections Bill + Criminal Law Bill + Online Safety Bill 四件套），新加坡为 AI 公司提供了**全球最清晰的法律边界之一**——这是 EDB 能引进 OpenAI / Anthropic / DeepMind 等机构的关键背景之一。`,
+        summaryEn:
+          'AI-training safe harbour — alongside Japan, the most permissive copyright stance on AI training in the world.',
+        contentEn: `Section 244 of the Copyright Act 2021, "Computational Data Analysis," provides an explicit safe harbour for AI training data use: lawfully accessed content (whether or not copyrighted) may be used for AI model training, text and data mining, and other "computational analysis" purposes without constituting copyright infringement. Together with Article 30-4 of Japan's Copyright Act, this is the world's most permissive copyright stance on AI training — the US is still navigating fair use case law, while the EU relies on the opt-out mechanism in its Text and Data Mining Exception. Combined with IPOS's "When Code Creates" report (2024) and the "permissive training + strict output" philosophy (the OCHA + Elections Bill + Criminal Law Bill + Online Safety Bill quartet), Singapore offers AI companies **one of the clearest legal perimeters in the world** — a key part of the backdrop that lets EDB attract institutions like OpenAI, Anthropic, and DeepMind.`,
+        sourceEn: 'Ministry of Law (MINLAW) / IPOS',
         ministry: undefined,
         authorPersonIds: [],
         relatedDebateIds: [],
@@ -398,6 +478,7 @@ export const categories: PolicyCategory[] = [
   },
   {
     name: '预算与资金',
+    nameEn: 'Budget & Funding',
     icon: '💰',
     policies: [
       {
@@ -412,6 +493,10 @@ export const categories: PolicyCategory[] = [
         translatedPdfUrl: '/pdfs/budget-2026-zh.pdf',
         summary: '成立国家 AI 委员会、AI 税收减免、one-north AI 园区、AI Mission 计划。',
         content: `2026 年预算案将 AI 推进提升到前所未有的高度。核心举措：成立由总理亲自主持的 National AI Council；Enterprise Innovation Scheme 的 400% 税务扣除扩展至 AI 相关支出；启动 one-north AI 园区建设；推出 AI Mission 计划聚焦关键领域应用；设立 National AI Literacy Programme 提升全民 AI 素养。这是新加坡 AI 政策从战略到全面执行的标志性预算。`,
+        summaryEn:
+          'Establishment of the National AI Council, AI tax incentives, the one-north AI district, and the AI Mission programme.',
+        contentEn: `Budget 2026 elevates AI to an unprecedented level of priority. Core measures: establishment of the National AI Council, chaired by the Prime Minister; extension of the 400% tax deduction under the Enterprise Innovation Scheme to AI-related expenditure; launch of the one-north AI district; introduction of the AI Mission programme focused on applications in critical sectors; and creation of the National AI Literacy Programme to raise AI literacy across the population. This is the milestone budget that takes Singapore's AI policy from strategy into full-scale execution.`,
+        sourceEn: 'Ministry of Finance (MOF)',
         ministry: 'MOF',
         authorPersonIds: ['lawrence-wong'],
         relatedDebateIds: ['cos-mddi-2026', 'cos-mti-2026'],
@@ -430,6 +515,10 @@ export const categories: PolicyCategory[] = [
           'https://www.straitstimes.com/singapore/politics/ai-genetic-screening-and-flexible-financing-to-bolster-preventive-medicine-for-super-aged-spore-ong',
         summary: 'ACE-AI 预测工具部署、BRCA1/2 基因检测补贴、MediShield Life 覆盖预防性手术、MediSave 限额提升。',
         content: `2026 年 3 月卫生部供给委员会辩论，卫生部长王乙康宣布新加坡正式成为超老龄社会（65 岁以上人口超 21%）。核心措施：一、ACE-AI 预测工具（由国家医疗科技局 Synapxe 开发），预测 3 年内糖尿病及高脂血症风险，>75% 风险者由 3 年一检提升至每年检查，2027 年初推广至所有约 1,100 家 Healthier SG 诊所，坚持"AI 增强而非 AI 决定"原则，临床医生保持在决策回路中；二、BRCA1/2 基因检测从 2026 年 12 月起获最高 70% 补贴，每年 2,000+ 人符合条件；三、MediShield Life 扩展覆盖预防性乳房切除术（Q3 2026）及风险降低型输卵管卵巢切除术（Q4 2026）；四、MediSave 慢性病与预防护理限额从 500/700 提至 700/1000（2027 年 1 月起），惠及 91 万+ 患者。`,
+        summaryEn:
+          'Deployment of the ACE-AI prediction tool, BRCA1/2 genetic testing subsidies, MediShield Life coverage for preventive surgery, and increased MediSave limits.',
+        contentEn: `In the March 2026 Committee of Supply debate, Minister for Health Ong Ye Kung announced that Singapore has formally become a super-aged society (population aged 65+ exceeds 21%). Core measures: (1) ACE-AI, a prediction tool developed by national health tech agency Synapxe, forecasts 3-year risk of diabetes and hyperlipidaemia. Patients with >75% risk move from triennial to annual screening, with rollout in early 2027 to all roughly 1,100 Healthier SG clinics, following the principle of "AI augmentation, not AI decision-making" with clinicians remaining in the loop. (2) BRCA1/2 genetic testing receives subsidies of up to 70% from December 2026, with 2,000+ eligible people each year. (3) MediShield Life coverage expands to include preventive mastectomy (Q3 2026) and risk-reducing salpingo-oophorectomy (Q4 2026). (4) MediSave chronic and preventive care limits rise from 500/700 to 700/1000 (effective January 2027), benefiting 910,000+ patients.`,
+        sourceEn: 'Ministry of Health (MOH)',
         ministry: undefined,
         authorPersonIds: [],
         relatedDebateIds: [],
@@ -448,6 +537,9 @@ export const categories: PolicyCategory[] = [
         translatedPdfUrl: '/pdfs/budget-2025-zh.pdf',
         summary: '黄循财首份预算案，释放大规模 AI 投入信号。',
         content: `2025 年预算案是黄循财出任总理后的首份预算案，首次将 AI 列为财政优先事项。重点措施包括：加速企业数字化转型拨款、扩大 AI 技能培训计划覆盖面、增加 AI 研发投入。预算案为后续 NAIS 2.0 的落地执行提供了财政保障，标志着 AI 从战略规划正式进入财政拨款阶段。`,
+        summaryEn: "Lawrence Wong's first budget as Prime Minister, signalling large-scale AI investment.",
+        contentEn: `Budget 2025 is Lawrence Wong's first budget as Prime Minister and the first to designate AI as a fiscal priority. Key measures include: increased grants to accelerate enterprise digital transformation, expanded coverage of AI skills training programmes, and additional AI R&D funding. The budget provides the fiscal foundation for executing NAIS 2.0 and marks the formal transition of AI from strategic planning into the appropriations phase.`,
+        sourceEn: 'Ministry of Finance (MOF)',
         ministry: undefined,
         authorPersonIds: [],
         relatedDebateIds: [],
@@ -466,6 +558,9 @@ export const categories: PolicyCategory[] = [
         translatedPdfUrl: '/pdfs/rie2025-zh.pdf',
         summary: '250 亿新元五年研发计划，AI 列为重点投资领域。',
         content: `RIE2025 计划覆盖 2021-2025 年，总投入 250 亿新元，是新加坡历史上最大规模的研发投资。四大战略领域：制造贸易与连接、人类健康与潜能、城市可持续发展与智慧国家、数字经济。AI 贯穿各领域，是核心使能技术。计划支持 AI Singapore 等国家级 AI 研究项目，资助 AI 人才培养、基础研究和产业应用。`,
+        summaryEn: 'S$25 billion five-year R&D plan, with AI designated as a priority investment area.',
+        contentEn: `The RIE2025 plan covers 2021-2025 with a total commitment of S$25 billion — the largest R&D investment in Singapore's history. Four strategic domains: Manufacturing, Trade and Connectivity; Human Health and Potential; Urban Solutions and Sustainability and Smart Nation; and Digital Economy. AI runs across all domains as a core enabling technology. The plan supports national AI research programmes such as AI Singapore and funds AI talent development, fundamental research, and industrial applications.`,
+        sourceEn: 'National Research Foundation (NRF)',
         ministry: undefined,
         authorPersonIds: [],
         relatedDebateIds: [],
@@ -477,6 +572,7 @@ export const categories: PolicyCategory[] = [
   },
   {
     name: '国际合作',
+    nameEn: 'International Collaboration',
     icon: '🌏',
     policies: [
       {
@@ -491,6 +587,9 @@ export const categories: PolicyCategory[] = [
         translatedPdfUrl: '/pdfs/seoul-ai-summit-zh.pdf',
         summary: '参与 Seoul AI Safety Summit，进一步推进 AI 安全治理承诺。',
         content: `2024 年 5 月，新加坡参加在韩国首尔举行的第二届 AI 安全峰会，签署 Seoul AI Safety Commitment。在 Bletchley Declaration 基础上进一步深化承诺：推动前沿 AI 安全评估标准的制定、支持 AI 安全研究所之间的国际协作、促进 AI 安全测试方法论的共享。新加坡连续参与两届峰会，持续巩固其在全球 AI 治理中的积极参与者角色。`,
+        summaryEn: 'Participation in the Seoul AI Safety Summit, advancing further AI safety governance commitments.',
+        contentEn: `In May 2024, Singapore participated in the second AI Safety Summit, held in Seoul, and signed the Seoul AI Safety Commitment. Building on the Bletchley Declaration, the commitment goes further on: developing safety evaluation standards for frontier AI, supporting international collaboration among AI Safety Institutes, and promoting the sharing of AI safety testing methodologies. By participating in two consecutive summits, Singapore continues to consolidate its role as an active player in global AI governance.`,
+        sourceEn: 'Ministry of Foreign Affairs (MFA)',
         ministry: undefined,
         authorPersonIds: [],
         relatedDebateIds: [],
@@ -511,6 +610,9 @@ export const categories: PolicyCategory[] = [
         translatedPdfUrl: '/pdfs/bletchley-park-zh.pdf',
         summary: '签署 Bletchley Declaration，承诺 AI 安全国际合作。',
         content: `2023 年 11 月，新加坡作为 28 个签署国之一参与了在英国 Bletchley Park 举行的首届全球 AI 安全峰会。签署 Bletchley Declaration，核心承诺包括：识别前沿 AI 带来的共同风险、各国承担 AI 安全的相应责任、加强 AI 安全研究的国际合作。宣言特别关注前沿 AI 模型的潜在风险，包括网络安全威胁、生物技术风险和虚假信息。`,
+        summaryEn: 'Signed the Bletchley Declaration, committing to international cooperation on AI safety.',
+        contentEn: `In November 2023, Singapore joined 28 signatories at the first global AI Safety Summit at Bletchley Park, UK. By signing the Bletchley Declaration, signatories committed to: identifying shared risks posed by frontier AI, taking on national responsibilities for AI safety, and strengthening international collaboration on AI safety research. The declaration places particular emphasis on potential risks from frontier AI models, including cybersecurity threats, biotechnology risks, and disinformation.`,
+        sourceEn: 'Ministry of Foreign Affairs (MFA)',
         ministry: undefined,
         authorPersonIds: [],
         relatedDebateIds: [],
@@ -529,6 +631,10 @@ export const categories: PolicyCategory[] = [
         translatedPdfUrl: '/pdfs/gpai-zh.pdf',
         summary: '新加坡成为 GPAI 创始成员，参与负责任 AI 国际治理。',
         content: `新加坡于 2020 年成为 GPAI 创始成员国之一。GPAI 是由多国政府发起的国际倡议，旨在通过多利益相关方合作推动负责任 AI 的发展和使用。新加坡积极参与 GPAI 的工作组，包括负责任 AI、数据治理、未来工作、创新与商业化等方向。加入 GPAI 体现了新加坡在 AI 治理领域的国际参与意愿，也为本国政策制定引入国际视角和最佳实践。`,
+        summaryEn:
+          'Singapore became a founding member of GPAI, participating in international governance for responsible AI.',
+        contentEn: `Singapore became a founding member of GPAI in 2020. GPAI is a multi-government international initiative that promotes the responsible development and use of AI through multi-stakeholder collaboration. Singapore actively participates in GPAI working groups, including Responsible AI, Data Governance, Future of Work, and Innovation and Commercialisation. Joining GPAI reflects Singapore's commitment to international engagement on AI governance and brings international perspectives and best practices into domestic policymaking.`,
+        sourceEn: 'SNDGO / Ministry of Foreign Affairs (MFA)',
         ministry: undefined,
         authorPersonIds: [],
         relatedDebateIds: [],
@@ -546,6 +652,10 @@ export const categories: PolicyCategory[] = [
         sourceUrl: 'https://aiverifyfoundation.sg/news/singapore-consensus/',
         summary: '新加坡发起、11 国签署（含中美）的全球 AI 安全研究优先级共识。',
         content: `Singapore Consensus 是新加坡 2024 年 4 月在 ICLR 期间召开的国际科学交流会议（ISESEA I）成果，最终由 11 个国家或地区共同签署，**罕见地把中美都纳入同一份 AI 安全文件**。共识围绕三大研究优先级：(1) 风险评估方法论标准化；(2) 跨国前沿模型红队协作；(3) 关键基础设施 AI 部署的安全门槛。这是新加坡国家 AI-native 战略最具杠杆的产出之一——用 0.07% 的全球人口建立起 AI 治理领域的"中立坐标"。配套机制包括 ISESEA II（2026）持续更新共识、AISI 作为协调中心、Bletchley/Seoul/Paris AI Summits 持续输出。`,
+        summaryEn:
+          'Singapore-initiated consensus on global AI safety research priorities, signed by 11 countries — including the US and China.',
+        contentEn: `The Singapore Consensus emerged from the International Scientific Exchange on AI Safety (ISESEA I), convened by Singapore alongside ICLR in April 2024, and was ultimately signed by 11 countries or jurisdictions — **rare in bringing both the US and China into the same AI safety document**. The consensus is organised around three research priorities: (1) standardisation of risk assessment methodologies; (2) cross-border red-teaming collaboration on frontier models; (3) safety thresholds for AI deployment in critical infrastructure. This is one of the highest-leverage outputs of Singapore's national AI-native strategy — using 0.07% of the world's population to establish a "neutral coordinate" in AI governance. Supporting mechanisms include ISESEA II (2026) for ongoing consensus updates, AISI as the coordination centre, and continuing output through the Bletchley / Seoul / Paris AI Summits.`,
+        sourceEn: 'IMDA / Singapore AI Safety Institute',
         ministry: undefined,
         authorPersonIds: [],
         relatedDebateIds: [],
@@ -564,6 +674,10 @@ export const categories: PolicyCategory[] = [
           'https://asean.org/wp-content/uploads/2024/02/ASEAN-Guide-on-AI-Governance-and-Ethics_beautified_201223_v2.pdf',
         summary: 'ASEAN 10 国采纳的 AI 治理指南，新加坡主导起草，IMDA 承担秘书处职能。',
         content: `ASEAN Guide on AI Governance and Ethics 由新加坡主导起草，2024 年 2 月由 ASEAN 数字部长会议正式通过，10 个成员国采纳。指南直接基于新加坡 Model AI Governance Framework，是新加坡治理模板的"区域化版本"。覆盖：组织治理、数据治理、AI 系统全生命周期管理、人在回路、风险分级。新加坡通过 ASEAN Working Group on AI Governance（WG-AI）持续承担秘书处职能。这是新加坡战略的关键杠杆——把本国治理标准变成区域默认标准，让外资在东南亚部署 AI 时**自然地遵循新加坡定义的边界**。延伸：2026 年 ASEAN Hanoi Declaration 进一步深化数字部长合作。`,
+        summaryEn:
+          "AI governance guide adopted by all 10 ASEAN member states, drafted under Singapore's leadership, with IMDA serving as secretariat.",
+        contentEn: `The ASEAN Guide on AI Governance and Ethics was drafted under Singapore's leadership and formally adopted by the ASEAN Digital Ministers Meeting in February 2024 across all 10 member states. The guide is built directly on Singapore's Model AI Governance Framework — effectively the "regionalised version" of Singapore's governance template. Coverage includes: organisational governance, data governance, AI system lifecycle management, human-in-the-loop, and risk tiering. Singapore continues to hold the secretariat function through the ASEAN Working Group on AI Governance (WG-AI). This is a key lever in Singapore's strategy — turning its domestic governance standard into the regional default, so that **foreign capital deploying AI in Southeast Asia naturally operates within boundaries defined by Singapore**. Extension: the 2026 ASEAN Hanoi Declaration further deepens digital ministerial cooperation.`,
+        sourceEn: 'ASEAN Digital Ministers / IMDA',
         ministry: undefined,
         authorPersonIds: [],
         relatedDebateIds: [],
@@ -581,6 +695,10 @@ export const categories: PolicyCategory[] = [
         sourceUrl: 'https://www.mfa.gov.sg/Newsroom/Press-Statements-Transcripts-and-Photos/2024/09/20240910-REAIM',
         summary: 'REAIM Seoul Summit 五个联合主办国之一，把"军事 AI 责任使用"推向国际议程。',
         content: `Responsible AI in the Military Domain (REAIM) Seoul Summit 2024 是 REAIM 系列的第二届，新加坡作为五个联合主办国之一（与韩国、荷兰、英国、肯尼亚），把军事 AI 的责任使用推到国际议程。Summit 通过《Blueprint for Action》——首个把军事 AI 治理写成可操作步骤的多边文件，覆盖：人在指挥链中的位置、自主武器边界、AI 决策的国际人道法适用、跨国信任建立机制。新加坡同时主持 REAIM Asia Regional Consultations，把对话扩到东南亚。这是新加坡用"治理中立区"定位介入最敏感议题（军事 AI）的标志性动作——不靠武力，靠规则起草权。`,
+        summaryEn:
+          'One of five co-hosts of the REAIM Seoul Summit, putting responsible military AI on the international agenda.',
+        contentEn: `The Responsible AI in the Military Domain (REAIM) Seoul Summit 2024 is the second edition in the REAIM series. As one of five co-hosts (alongside South Korea, the Netherlands, the UK, and Kenya), Singapore helped place the responsible use of military AI on the international agenda. The Summit adopted the Blueprint for Action — the first multilateral document to translate military AI governance into operational steps, covering: the position of humans in the command chain, the boundaries of autonomous weapons, the application of international humanitarian law to AI decision-making, and cross-border trust-building mechanisms. Singapore also chairs the REAIM Asia Regional Consultations, extending the dialogue across Southeast Asia. This is a flagship move in Singapore's "governance neutral zone" positioning, intervening on the most sensitive AI topic (military AI) — not through hard power, but through rule-drafting authority.`,
+        sourceEn: 'Ministry of Foreign Affairs (MFA) / Ministry of Defence (MINDEF)',
         ministry: undefined,
         authorPersonIds: [],
         relatedDebateIds: [],
@@ -598,6 +716,10 @@ export const categories: PolicyCategory[] = [
         sourceUrl: 'https://aiverifyfoundation.sg/',
         summary: 'ICLR 期间召开的全球 AI 安全科学交流会，已办两届，是 Singapore Consensus 的孵化平台。',
         content: `International Scientific Exchange on AI Safety（ISESEA）由 IMDA 和 Singapore AI Safety Institute 联合主办，借势 ICLR（国际学习表征会议）每年在新加坡或合作地举办。2024 年 ISESEA I 孵化出 Singapore Consensus；2026 年 ISESEA II 继续更新共识、扩展研究优先级。会议定位刻意"科学家+政府+产业"三层混合，避免单纯外交场合的政治化。这是新加坡 AI 国际治理战略的"温和入口"——用学术活动建立非政治化共识，再让政府层面采纳。`,
+        summaryEn:
+          'Global AI safety scientific exchange convened alongside ICLR — now in its second edition — and the incubation platform for the Singapore Consensus.',
+        contentEn: `The International Scientific Exchange on AI Safety (ISESEA) is co-hosted by IMDA and the Singapore AI Safety Institute, leveraging ICLR (the International Conference on Learning Representations) and convened annually in Singapore or in partner venues. ISESEA I in 2024 incubated the Singapore Consensus; ISESEA II in 2026 continues to refresh the consensus and extend research priorities. The conference is deliberately positioned as a three-way mix of "scientists + government + industry," avoiding the politicisation of purely diplomatic settings. This is the "soft entry point" of Singapore's international AI governance strategy — building depoliticised consensus through academic activity, then letting governments adopt it.`,
+        sourceEn: 'IMDA / AISI',
         ministry: undefined,
         authorPersonIds: [],
         relatedDebateIds: [],

@@ -1,0 +1,110 @@
+---
+// i18n (v0.3.0) — non-blocking language banner.
+//
+// Behaviour:
+//  - On first visit, if no `sgai_lang` cookie/localStorage is set and the
+//    browser preference points to the OTHER language than the page currently
+//    rendered, show a slim banner offering to switch.
+//  - When the user clicks the toggle (in Header) or the banner switch link,
+//    we set localStorage to remember the choice; the banner stays dismissed.
+//  - Choosing "dismiss" also stores the current lang as preference so it
+//    won't reappear.
+// SAFE BY DEFAULT: emits SSR-rendered hidden DOM. Visibility is decided
+// client-side, so the banner never flashes on subsequent navigations.
+
+import { type Lang, t } from '~/i18n';
+
+interface Props {
+  currentLang: Lang;
+}
+
+const { currentLang } = Astro.props;
+const otherLang: Lang = currentLang === 'en' ? 'zh' : 'en';
+
+const message = otherLang === 'en' ? t(otherLang, 'langBannerEn') : '中文版可用';
+const switchLabel = otherLang === 'en' ? t(otherLang, 'langBannerSwitch') : '阅读中文版 →';
+const dismissLabel = currentLang === 'en' ? t(currentLang, 'langBannerDismiss') : '关闭';
+---
+
+<div
+  id="lang-banner"
+  data-current-lang={currentLang}
+  data-other-lang={otherLang}
+  class="hidden bg-primary/5 dark:bg-primary/10 border-b border-primary/20"
+  aria-live="polite"
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-2 flex items-center justify-between gap-4 text-sm">
+    <span class="text-gray-700 dark:text-gray-300">
+      <span class="font-medium">{message}</span>
+    </span>
+    <div class="flex items-center gap-3 shrink-0">
+      <a
+        id="lang-banner-switch"
+        href="#"
+        class="text-primary hover:text-secondary font-semibold underline-offset-4 hover:underline"
+      >
+        {switchLabel}
+      </a>
+      <button
+        type="button"
+        id="lang-banner-dismiss"
+        class="text-xs text-gray-400 hover:text-gray-600 dark:hover:text-gray-200"
+        aria-label={dismissLabel}
+      >
+        {dismissLabel}
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+  (() => {
+    const banner = document.getElementById('lang-banner') as HTMLElement | null;
+    if (!banner) return;
+    const currentLang = banner.dataset.currentLang as 'zh' | 'en';
+    const otherLang = banner.dataset.otherLang as 'zh' | 'en';
+
+    const stored = localStorage.getItem('sgai_lang');
+
+    // Decide whether to suggest a switch.
+    const shouldSuggest = (() => {
+      if (stored) return false; // user has chosen
+      const prefs = (navigator.languages?.length ? navigator.languages : [navigator.language]).map((l) =>
+        l.toLowerCase()
+      );
+      const prefersEn = prefs.some((p) => p.startsWith('en'));
+      const prefersZh = prefs.some((p) => p.startsWith('zh'));
+      // Suggest switch only when the user's strongest preference disagrees
+      // with the current page lang.
+      if (currentLang === 'zh' && prefersEn && !prefersZh) return otherLang === 'en';
+      if (currentLang === 'en' && prefersZh && !prefersEn) return otherLang === 'zh';
+      return false;
+    })();
+
+    if (shouldSuggest) banner.classList.remove('hidden');
+
+    // Helper: compute the URL for the same logical page in the other lang.
+    function siblingUrl(): string {
+      const path = location.pathname;
+      if (otherLang === 'en') {
+        // current zh -> /en/<path>
+        if (path === '/' || path === '') return '/en/';
+        return '/en' + path;
+      }
+      // current en -> drop /en prefix
+      if (path === '/en' || path === '/en/') return '/';
+      if (path.startsWith('/en/')) return path.slice(3);
+      return path;
+    }
+
+    document.getElementById('lang-banner-switch')?.addEventListener('click', (e) => {
+      e.preventDefault();
+      localStorage.setItem('sgai_lang', otherLang);
+      location.assign(siblingUrl());
+    });
+    document.getElementById('lang-banner-dismiss')?.addEventListener('click', () => {
+      localStorage.setItem('sgai_lang', currentLang);
+      banner.classList.add('hidden');
+    });
+  })();
+</script>

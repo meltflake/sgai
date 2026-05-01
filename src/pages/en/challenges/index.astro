@@ -1,0 +1,75 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import Headline from '~/components/ui/Headline.astro';
+
+const lang = 'en' as const;
+
+const challenges = [
+  {
+    icon: '👥',
+    title: '1. Talent Scarcity and Competition',
+    content:
+      "Singapore's AI talent pool is structurally limited (population ~5.7 million) and faces fierce competition from Silicon Valley, China, and London. The AI Apprenticeship Programme and Tech.Pass visa help, but high-end AI research talent attrition remains a concern. Local AI talent production cannot keep pace with demand.",
+  },
+  {
+    icon: '📦',
+    title: '2. Data Access and Quality',
+    content:
+      'A small country has naturally limited dataset scale. PDPA balances protection and innovation, but cross-border data flows still see friction. The lack of large-scale bilingual (English-Chinese) corpora also constrains local large model development. Government data openness has progressed (data.gov.sg), but inter-agency data silos persist.',
+  },
+  {
+    icon: '⚖️',
+    title: '3. Ethics and Governance Balance',
+    content:
+      "The 'soft law' governance model (voluntary compliance first) is flexible but may lack enforceability. As AI penetrates critical sectors like healthcare and finance, voluntary frameworks alone may be insufficient. AI Verify adoption has yet to reach mass scale; enterprise participation needs to grow.",
+  },
+  {
+    icon: '🔗',
+    title: '4. Technology Dependency Risk',
+    content:
+      "Singapore's AI ecosystem depends heavily on foreign technology: GPUs from NVIDIA, cloud platforms from AWS/Azure/GCP, foundation models from OpenAI/Google/Meta. This dependency could become a strategic vulnerability under geopolitical stress. SEA-LION and other local large models are important attempts, but the gap to the frontier remains wide.",
+  },
+  {
+    icon: '🏗️',
+    title: '5. Execution Gap',
+    content:
+      'Policy quality is high, but the gap between paper and ground is real. Large enterprises and government agencies have higher AI adoption rates, but SMEs — which form the bulk of the economy — show low AI penetration. Scaling beyond the 100 Experiments programme also faces challenges.',
+  },
+  {
+    icon: '🌏',
+    title: '6. Intensifying Regional Competition',
+    content:
+      "Within ASEAN, Malaysia (AI data centre investment), Indonesia (population data scale), and Vietnam (AI talent cost) are all accelerating. Globally, the US-China AI race may compress Singapore's role as 'middle ground'. Singapore needs to keep differentiating its positioning.",
+  },
+];
+---
+
+<Layout
+  metadata={{
+    title: 'Challenges',
+    description:
+      "Core challenges in Singapore's AI development — talent competition, data limitations, compute constraints, and ethics-governance tradeoffs.",
+  }}
+  breadcrumbs={[{ label: 'Challenges' }]}
+  lang={lang}
+>
+  <section class="px-4 py-16 sm:px-6 mx-auto lg:px-8 max-w-4xl">
+    <Headline
+      title="⚠️ Challenges and Constraints"
+      subtitle="Six core challenges Singapore faces as it advances its AI strategy."
+    />
+
+    <div class="space-y-6">
+      {
+        challenges.map((c) => (
+          <div class="bg-white dark:bg-slate-900 rounded-lg shadow-md p-6 border border-slate-200 dark:border-slate-700">
+            <h2 class="text-lg font-bold mb-2">
+              {c.icon} {c.title}
+            </h2>
+            <p class="text-sm leading-relaxed">{c.content}</p>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+</Layout>

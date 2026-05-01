@@ -1,0 +1,171 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import Headline from '~/components/ui/Headline.astro';
+
+const lang = 'en' as const;
+
+const phases = [
+  {
+    period: '2014–2017',
+    title: 'Phase 1: Digital Foundation',
+    event: 'Smart Nation Initiative (2014)',
+    description:
+      'The focus was laying the digital infrastructure foundation. Singapore launched the Smart Nation Initiative, kicked off GovTech reforms, and built nationwide sensor networks and data-sharing platforms. AI was not yet a standalone strategic priority, but the data infrastructure investments paved the way for everything that followed.',
+    items: [
+      'GovTech founded (2016)',
+      'National digital identity SingPass upgraded',
+      'Smart Nation Sensor Platform launched',
+    ],
+  },
+  {
+    period: '2017–2019',
+    title: 'Phase 2: AI Strategy Launch',
+    event: 'AI Singapore founded (2017), NAIS 1.0 (2019)',
+    description:
+      'Singapore began treating AI as an independent strategic priority. AI Singapore launched in 2017 with S$150 million in funding. The first National AI Strategy was published in 2019, defining five priority domains. The Model AI Governance Framework was released the same year.',
+    items: [
+      'AI Singapore 100 Experiments programme',
+      'AI Apprenticeship Programme (AIAP)',
+      "Asia's first AI governance framework released",
+    ],
+  },
+  {
+    period: '2019–2022',
+    title: 'Phase 3: Governance Maturation',
+    event: 'AI Verify (2022), Model AI Governance Framework v2',
+    description:
+      'Concentrated effort on perfecting the AI governance ecosystem. Singapore moved from principle-level frameworks to testable tools (AI Verify), establishing its signature "soft law" approach. PDPA 2020 amendments drew the legal boundaries for AI data use.',
+    items: [
+      "AI Verify — the world's first AI governance testing framework",
+      'PDPA amended, introducing the business improvement exception',
+      'Advisory Council on Ethical Use of AI and Data',
+    ],
+  },
+  {
+    period: '2023–2024',
+    title: 'Phase 4: Full Acceleration',
+    event: 'NAIS 2.0 (2023), Generative AI Governance Framework (2024)',
+    description:
+      'The generative AI wave triggered a comprehensive strategy upgrade. NAIS 2.0 set twin objectives and significantly increased funding. A dedicated generative AI governance framework was published to address the new challenges from large models.',
+    items: [
+      'AI funding raised above S$1 billion',
+      'National AI compute infrastructure planning',
+      'AI Verify Foundation established',
+      'Generative AI sandbox testing',
+    ],
+  },
+  {
+    period: '2024–present',
+    title: 'Phase 5: Ecosystem Deepening',
+    event: 'Multiple execution programmes land',
+    description:
+      'Focus shifts to strategy execution. Priorities include: scaling the AI talent pipeline, building GPU clusters and other compute infrastructure, driving sector-specific AI applications, and deepening international cooperation.',
+    items: [
+      'NVIDIA, Google Cloud and others build AI infrastructure in Singapore',
+      'AI skills framework refreshed',
+      'ASEAN AI governance guidelines',
+    ],
+  },
+];
+---
+
+<Layout
+  metadata={{
+    title: 'Singapore AI Policy Evolution',
+    description:
+      "Singapore's AI policy evolution — the strategic transformation arc from the 2014 Smart Nation Initiative to the 2024 generative AI governance framework.",
+  }}
+  breadcrumbs={[{ label: 'Policy Evolution' }]}
+  lang={lang}
+>
+  <section class="px-4 py-16 sm:px-6 mx-auto lg:px-8 max-w-4xl">
+    <Headline
+      title="📈 Singapore AI Policy Evolution"
+      subtitle="From the 2014 Smart Nation Initiative to the 2024 generative AI governance framework, Singapore's AI policy has moved through five distinct phases."
+    />
+
+    <div class="space-y-8">
+      {
+        phases.map((phase, i) => (
+          <div class="relative pl-8 border-l-4 border-blue-500 dark:border-blue-400">
+            <div class="absolute -left-3 top-0 w-6 h-6 bg-blue-500 dark:bg-blue-400 rounded-full flex items-center justify-center text-white text-xs font-bold">
+              {i + 1}
+            </div>
+            <div class="bg-white dark:bg-slate-900 rounded-lg shadow-md p-6 border border-slate-200 dark:border-slate-700">
+              <span class="text-sm font-mono text-blue-600 dark:text-blue-400">{phase.period}</span>
+              <h2 class="text-xl font-bold mt-1 mb-2">{phase.title}</h2>
+              <p class="text-sm text-muted mb-2">
+                <strong>Defining event: </strong>
+                {phase.event}
+              </p>
+              <p class="text-sm mb-3">{phase.description}</p>
+              <ul class="list-disc list-inside text-sm space-y-1 text-muted">
+                {phase.items.map((item) => (
+                  <li>{item}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+
+    <a
+      href="/en/singapore-ai-vs-smart-nation-two-transformations/"
+      class="block mt-12 group rounded-lg border-2 border-blue-500 dark:border-blue-400 bg-gradient-to-br from-blue-50 to-white dark:from-slate-800 dark:to-slate-900 p-6 transition hover:shadow-lg"
+    >
+      <div class="flex items-start gap-4">
+        <div class="flex-shrink-0 mt-1 text-blue-600 dark:text-blue-400">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="32"
+            height="32"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M14 3v4a1 1 0 0 0 1 1h4"></path>
+            <path d="M17 21H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2z"></path>
+            <path d="M9 17h6"></path>
+            <path d="M9 13h6"></path>
+          </svg>
+        </div>
+        <div class="flex-1">
+          <p class="text-xs font-mono uppercase tracking-wider text-blue-600 dark:text-blue-400 mb-1">
+            Further reading · Long analysis
+          </p>
+          <h3 class="text-lg font-bold mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition">
+            From Digitalisation to AI: Singapore's Second National Transformation
+          </h3>
+          <p class="text-sm text-muted mb-2">
+            In 2014, Smart Nation moved processes from paper to screen. In 2026, the AI strategy is moving judgement
+            from human cognition into models. The same script for two national mobilisations — but a different stress
+            profile. Why the white-collar middle class is in the firing line this time, and why the narrative is framed
+            as crisis rather than progress.
+          </p>
+          <span class="inline-flex items-center gap-1 text-sm font-medium text-blue-600 dark:text-blue-400">
+            Read the full piece
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="transition group-hover:translate-x-1"
+            >
+              <path d="M5 12h14"></path>
+              <path d="M12 5l7 7-7 7"></path>
+            </svg>
+          </span>
+        </div>
+      </div>
+    </a>
+  </section>
+</Layout>

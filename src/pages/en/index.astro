@@ -1,0 +1,277 @@
+---
+// Homepage (EN) — editorial layout mirroring zh /, all chrome strings
+// from the dictionary. Latest analyses are filtered to lang='en'.
+
+import Layout from '~/layouts/PageLayout.astro';
+import JsonLd from '~/components/common/JsonLd.astro';
+import { Icon } from 'astro-icon/components';
+import { fetchPosts } from '~/utils/blog';
+import { getPermalink } from '~/utils/permalinks';
+import { debates, DEBATE_STATS } from '~/data/debates';
+import { levers } from '~/data/levers';
+import { categories as policyCategories } from '~/data/policies';
+import { SITE_UPDATED } from '~/version';
+import { t, pickLocalized } from '~/i18n';
+
+const lang = 'en' as const;
+
+const metadata = {
+  title: t(lang, 'siteName'),
+  ignoreTitleTemplate: true,
+  description: t(lang, 'siteDescription'),
+};
+
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: t(lang, 'siteName'),
+  url: 'https://sgai.md/en/',
+  logo: 'https://sgai.md/favicon.svg',
+  description: t(lang, 'siteDescription'),
+  sameAs: ['https://github.com/meltflake/sgai'],
+};
+
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: t(lang, 'siteName'),
+  url: 'https://sgai.md/en/',
+  inLanguage: 'en',
+};
+
+const allPosts = await fetchPosts();
+const latestPosts = allPosts.filter((p) => p.lang === 'en').slice(0, 3);
+
+const featuredLevers = levers.slice(0, 4);
+
+const latestDebates = [...debates].sort((a, b) => (a.date < b.date ? 1 : -1)).slice(0, 5);
+
+const totalPolicies = policyCategories.flatMap((c) => c.policies).length;
+const totalDebates = DEBATE_STATS.total;
+const totalLeverItems = levers.reduce((sum, lv) => sum + lv.groups.flatMap((g) => g.items).length, 0);
+---
+
+<Layout metadata={metadata} lang={lang}>
+  <JsonLd schema={organizationSchema} />
+  <JsonLd schema={websiteSchema} />
+
+  <section class="relative pt-12 md:pt-20 pb-10 md:pb-14">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6">
+      <p class="text-xs uppercase tracking-[0.18em] text-primary font-semibold mb-4">{t(lang, 'heroEyebrow')}</p>
+      <h1
+        class="font-serif text-3xl md:text-5xl leading-[1.2] font-semibold text-gray-900 dark:text-white mb-6 tracking-tight"
+      >
+        {t(lang, 'heroHeadline')}<br class="hidden md:inline" />{t(lang, 'heroHeadline2')}
+      </h1>
+      <p class="text-base md:text-lg leading-[1.85] text-gray-700 dark:text-gray-300 mb-8 max-w-prose">
+        {t(lang, 'heroSubtitle')}
+      </p>
+      <div class="flex flex-wrap gap-4 items-center">
+        <a
+          href="/en/singapore-ai-strategy-the-real-moat/"
+          class="inline-flex items-center gap-2 bg-primary hover:bg-secondary text-white font-semibold px-5 py-3 rounded-md transition-colors text-sm"
+        >
+          {t(lang, 'ctaReadCore')}
+          <Icon name="tabler:arrow-right" class="w-4 h-4" />
+        </a>
+        <a
+          href="/en/blog/"
+          class="inline-flex items-center gap-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-primary transition-colors underline-offset-4 hover:underline"
+        >
+          {t(lang, 'ctaBrowseAll')}
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="border-y border-gray-200 dark:border-slate-800 bg-gray-50/50 dark:bg-slate-900/40">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 py-5">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-sm">
+        <div>
+          <div class="text-2xl font-serif font-semibold text-gray-900 dark:text-white tabular-nums">
+            {totalPolicies}
+          </div>
+          <div class="text-gray-500 dark:text-gray-400 text-xs uppercase tracking-wider mt-1">
+            {t(lang, 'freshnessPolicies')}
+          </div>
+        </div>
+        <div>
+          <div class="text-2xl font-serif font-semibold text-gray-900 dark:text-white tabular-nums">{totalDebates}</div>
+          <div class="text-gray-500 dark:text-gray-400 text-xs uppercase tracking-wider mt-1">
+            {t(lang, 'freshnessDebates')}
+          </div>
+        </div>
+        <div>
+          <div class="text-2xl font-serif font-semibold text-gray-900 dark:text-white tabular-nums">
+            {totalLeverItems}
+          </div>
+          <div class="text-gray-500 dark:text-gray-400 text-xs uppercase tracking-wider mt-1">
+            {t(lang, 'freshnessLevers')}
+          </div>
+        </div>
+        <div>
+          <div class="text-2xl font-serif font-semibold text-gray-900 dark:text-white tabular-nums">
+            {SITE_UPDATED}
+          </div>
+          <div class="text-gray-500 dark:text-gray-400 text-xs uppercase tracking-wider mt-1">
+            {t(lang, 'freshnessUpdated')}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-12 md:py-16">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6">
+      <div class="flex items-baseline justify-between mb-8">
+        <h2 class="font-serif text-2xl md:text-3xl font-semibold text-gray-900 dark:text-white">
+          {t(lang, 'latestAnalyses')}
+        </h2>
+        <a
+          href="/en/blog/"
+          class="text-sm text-gray-500 hover:text-primary dark:text-gray-400 transition-colors hidden sm:inline"
+        >
+          {t(lang, 'viewAll')}
+        </a>
+      </div>
+      {
+        latestPosts.length > 0 ? (
+          <ol class="space-y-8 md:space-y-10">
+            {latestPosts.map((post, idx) => (
+              <li class="border-b border-gray-200 dark:border-slate-800 pb-8 last:border-b-0 last:pb-0">
+                <a href={getPermalink(post.permalink, 'post')} class="group block">
+                  <div class="flex items-baseline gap-4 mb-2">
+                    <span class="font-serif text-sm text-primary tabular-nums">{String(idx + 1).padStart(2, '0')}</span>
+                    <span class="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400">
+                      {post.category?.title ?? 'Analysis'} ·{' '}
+                      {new Date(post.publishDate).toLocaleDateString('en-SG', {
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric',
+                      })}
+                    </span>
+                  </div>
+                  <h3 class="font-serif text-xl md:text-2xl font-semibold text-gray-900 dark:text-white mb-3 leading-snug group-hover:text-primary transition-colors">
+                    {post.title}
+                  </h3>
+                  {post.excerpt && (
+                    <p class="text-gray-600 dark:text-gray-400 leading-[1.85] max-w-prose">{post.excerpt}</p>
+                  )}
+                </a>
+              </li>
+            ))}
+          </ol>
+        ) : (
+          <p class="text-gray-500 dark:text-gray-400 italic">
+            English translations of the analysis archive are being added.
+          </p>
+        )
+      }
+      <div class="mt-8 sm:hidden">
+        <a href="/en/blog/" class="text-sm text-primary hover:text-secondary font-medium">
+          {t(lang, 'ctaBrowseAll')}
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-12 md:py-16 border-t border-gray-200 dark:border-slate-800">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6">
+      <div class="flex items-baseline justify-between mb-2">
+        <h2 class="font-serif text-2xl md:text-3xl font-semibold text-gray-900 dark:text-white">
+          {t(lang, 'leversSection')}
+        </h2>
+        <a
+          href="/en/levers/"
+          class="text-sm text-gray-500 hover:text-primary dark:text-gray-400 transition-colors hidden sm:inline"
+        >
+          {t(lang, 'viewAllLeversCta')}
+        </a>
+      </div>
+      <p class="text-gray-600 dark:text-gray-400 mb-8 max-w-prose leading-relaxed">
+        {t(lang, 'leversBlurb').replace('{count}', String(totalLeverItems))}
+      </p>
+      <div class="grid sm:grid-cols-2 gap-x-8 gap-y-6">
+        {
+          featuredLevers.map((lv) => (
+            <a
+              href={`/en/levers/#lever-${lv.number}`}
+              class="group block border-l-2 border-gray-200 dark:border-slate-700 hover:border-primary pl-4 py-1 transition-colors"
+            >
+              <div class="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-1 tabular-nums">
+                {t(lang, 'leverWord')} {String(lv.number).padStart(2, '0')}
+              </div>
+              <div class="font-serif text-lg font-semibold text-gray-900 dark:text-white group-hover:text-primary transition-colors mb-1">
+                {pickLocalized(lv, 'name', 'nameEn', lang)}
+              </div>
+              <div class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                {pickLocalized(lv, 'subtitle', 'subtitleEn', lang)}
+              </div>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="py-12 md:py-16 border-t border-gray-200 dark:border-slate-800">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6">
+      <div class="flex items-baseline justify-between mb-2">
+        <h2 class="font-serif text-2xl md:text-3xl font-semibold text-gray-900 dark:text-white">
+          {t(lang, 'recentDebatesSection')}
+        </h2>
+        <a
+          href="/en/debates/"
+          class="text-sm text-gray-500 hover:text-primary dark:text-gray-400 transition-colors hidden sm:inline"
+        >
+          {t(lang, 'viewAllDebatesCta').replace('{count}', String(totalDebates))}
+        </a>
+      </div>
+      <p class="text-gray-600 dark:text-gray-400 mb-8 max-w-prose leading-relaxed">
+        {
+          t(lang, 'recentDebatesBlurb')
+            .replace('{from}', String(DEBATE_STATS.yearRange.from))
+            .replace('{to}', String(DEBATE_STATS.yearRange.to))
+        }
+      </p>
+      <ul class="divide-y divide-gray-200 dark:divide-slate-800">
+        {
+          latestDebates.map((d) => (
+            <li class="py-4">
+              <a href={`/en/debates/${d.id}/`} class="group block">
+                <div class="flex items-baseline gap-4">
+                  <span class="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 tabular-nums w-24 shrink-0">
+                    {d.date}
+                  </span>
+                  <div class="flex-1 min-w-0">
+                    <div class="font-medium text-gray-900 dark:text-white group-hover:text-primary transition-colors leading-snug">
+                      {d.title}
+                    </div>
+                    <div class="text-xs text-gray-500 dark:text-gray-400 mt-1 truncate">
+                      {d.type} · {d.topics.slice(0, 2).join(' · ')}
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <section class="py-12 md:py-20 border-t border-gray-200 dark:border-slate-800">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 text-center">
+      <p class="font-serif text-xl md:text-2xl text-gray-700 dark:text-gray-300 leading-[1.7] mb-6 italic">
+        "{t(lang, 'closingThesis')}"
+      </p>
+      <a
+        href="/en/singapore-ai-strategy-the-real-moat/"
+        class="inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-secondary transition-colors underline underline-offset-4"
+      >
+        {t(lang, 'closingCta')}
+        <Icon name="tabler:arrow-right" class="w-4 h-4" />
+      </a>
+    </div>
+  </section>
+</Layout>

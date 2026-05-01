@@ -73,6 +73,7 @@ export interface Person {
   affiliations: string[];
   party?: string | null;
   summary: string;
+  summaryEn?: string;
   channels: SocialChannel[];
   // Build-time computed (set by getRelated() / verify-graph script).
   debateCount?: number;
@@ -94,6 +95,8 @@ export const people: Person[] = [
     affiliations: ['MDDI', 'PMO'],
     party: 'PAP',
     summary: '新加坡 AI 政策的核心推动者，主导国家 AI 战略、Agentic AI 治理框架、AI 双语人才计划。',
+    summaryEn:
+      "The primary driver of Singapore's AI policy agenda; leads the National AI Strategy, the Agentic AI governance framework, and the bilingual AI talent programme.",
     channels: [
       { platform: 'twitter', url: 'https://x.com/joteo_ylm', label: '@joteo_ylm' },
       {
@@ -117,6 +120,8 @@ export const people: Person[] = [
     affiliations: ['PMO', 'MOF'],
     party: 'PAP',
     summary: '亲自担任国家 AI 委员会主席，2026 预算案将 AI 列为国家优先事项。',
+    summaryEn:
+      'Personally chairs the National AI Council; Budget 2026 elevated AI to a national priority under his direction.',
     channels: [
       {
         platform: 'facebook',
@@ -138,6 +143,8 @@ export const people: Person[] = [
     affiliations: ['MFA'],
     party: 'PAP',
     summary: 'Smart Nation 倡议发起人，推动新加坡 AI 国际合作，包括新韩 AI 连接峰会。',
+    summaryEn:
+      "Architect of the Smart Nation initiative; drives Singapore's international AI cooperation, including the Singapore–Korea AI Connectivity Summit.",
     channels: [
       {
         platform: 'facebook',
@@ -159,6 +166,8 @@ export const people: Person[] = [
     affiliations: ['PMO'],
     party: null,
     summary: '在国际论坛频繁发声谈 AI 治理与社会影响，推动全球 AI 安全对话。',
+    summaryEn:
+      'A frequent voice at international forums on AI governance and societal impact; advances the global AI safety dialogue.',
     channels: [{ platform: 'website', url: 'https://www.istana.gov.sg/', label: 'Istana 官网', primary: true }],
   },
   {
@@ -173,6 +182,8 @@ export const people: Person[] = [
     affiliations: ['MDDI', 'IMDA'],
     party: 'PAP',
     summary: '前 IMDA CEO，主管数字经济、AI 治理、数据中心政策的具体落地。',
+    summaryEn:
+      'Former CEO of IMDA; oversees the operational rollout of digital economy, AI governance and data centre policy.',
     channels: [
       {
         platform: 'linkedin',
@@ -194,6 +205,8 @@ export const people: Person[] = [
     affiliations: ['NTU', 'AISG'],
     party: null,
     summary: 'AI Singapore 创始人，推动 SEA-LION、AIAP 等核心项目，新加坡 AI 研究生态的奠基者。',
+    summaryEn:
+      "Founder of AI Singapore; drives flagship programmes including SEA-LION and AIAP, and is the founding figure of Singapore's AI research ecosystem.",
     channels: [
       {
         platform: 'website',
@@ -215,6 +228,8 @@ export const people: Person[] = [
     affiliations: ['AISG'],
     party: null,
     summary: '100E、AIAP、LearnAI 计划的推动者，20 万+新加坡人接受 AI 教育，GPAI 创新商业化联合主席。',
+    summaryEn:
+      "Drives the 100E, AIAP and LearnAI programmes — 200,000+ Singaporeans have received AI education through these initiatives; co-chairs GPAI's Innovation and Commercialisation working group.",
     channels: [
       {
         platform: 'linkedin',

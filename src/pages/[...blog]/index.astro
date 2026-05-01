@@ -25,6 +25,7 @@ import { levers } from '~/data/levers';
 import { timelineEvents } from '~/data/timeline';
 import { allPeople } from '~/data/people';
 import type { RelatedBundle } from '~/utils/graph';
+import { t, type Lang } from '~/i18n';
 
 export const prerender = true;
 
@@ -35,6 +36,7 @@ export const getStaticPaths = (async () => {
 type Props = InferGetStaticPropsType<typeof getStaticPaths>;
 
 const { post } = Astro.props as Props;
+const lang: Lang = (post.lang as Lang | undefined) ?? 'zh';
 
 const url = getCanonical(getPermalink(post.permalink, 'post'));
 const image = (await findImage(post.image)) as ImageMetadata | string | undefined;
@@ -57,6 +59,7 @@ const metadata = merge(
   { ...(post?.metadata ? { ...post.metadata, canonical: post.metadata?.canonical || url } : {}) }
 ) as MetaData;
 
+const orgName = lang === 'en' ? 'SG AI Observatory' : 'SG AI 观察';
 const articleSchema = {
   '@context': 'https://schema.org',
   '@type': 'Article',
@@ -64,17 +67,18 @@ const articleSchema = {
   description: post.excerpt || '',
   datePublished: post.publishDate ? new Date(post.publishDate).toISOString() : undefined,
   ...(post.updateDate ? { dateModified: new Date(post.updateDate).toISOString() } : {}),
-  author: { '@type': 'Organization', name: 'SG AI 观察' },
+  author: { '@type': 'Organization', name: orgName },
   publisher: {
     '@type': 'Organization',
-    name: 'SG AI 观察',
+    name: orgName,
     logo: { '@type': 'ImageObject', url: 'https://sgai.md/favicon.svg' },
   },
   mainEntityOfPage: { '@type': 'WebPage', '@id': String(url) },
-  inLanguage: 'zh-CN',
+  inLanguage: lang === 'en' ? 'en' : 'zh-CN',
 };
 
-const breadcrumbs = [{ label: '深度分析', href: getPermalink('/blog') }, { label: post.title }];
+const blogBase = lang === 'en' ? '/en/blog' : '/blog';
+const breadcrumbs = [{ label: t(lang, 'navAnalysis'), href: getPermalink(blogBase) }, { label: post.title }];
 
 // Build a RelatedBundle from frontmatter cross-refs. Each list is filtered
 // against actual data so a typo in frontmatter degrades silently rather
@@ -98,7 +102,7 @@ const relatedBundle: RelatedBundle = {
 };
 ---
 
-<Layout metadata={metadata} breadcrumbs={breadcrumbs}>
+<Layout metadata={metadata} breadcrumbs={breadcrumbs} lang={lang}>
   <JsonLd schema={articleSchema} />
   <ReadingProgress />
   <TableOfContents headings={post.headings || []} />

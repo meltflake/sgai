@@ -1,0 +1,55 @@
+---
+// i18n (v0.3.0) — header language toggle.
+//
+// Renders a small ZH ↔ EN switch in the Header. Clicking it goes to the
+// equivalent URL in the other locale and persists the choice in
+// localStorage so the LangBanner stops nagging.
+
+import { type Lang, t } from '~/i18n';
+
+interface Props {
+  currentLang: Lang;
+  /** Optional class on the wrapper. */
+  class?: string;
+}
+
+const { currentLang, class: extraClass = '' } = Astro.props;
+const otherLang: Lang = currentLang === 'en' ? 'zh' : 'en';
+const otherLabel = otherLang === 'en' ? 'EN' : '中';
+const ariaLabel = currentLang === 'en' ? t(currentLang, 'langToggleLabel') : '切换语言';
+---
+
+<button
+  id="lang-toggle"
+  type="button"
+  data-other-lang={otherLang}
+  aria-label={ariaLabel}
+  class={`inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400 hover:text-primary border border-gray-200 dark:border-slate-700 hover:border-primary rounded-md px-2 py-1.5 transition-colors ${extraClass}`}
+>
+  <span aria-hidden="true">{otherLabel}</span>
+  <span class="sr-only">{ariaLabel}</span>
+</button>
+
+<script>
+  (() => {
+    const btn = document.getElementById('lang-toggle') as HTMLButtonElement | null;
+    if (!btn) return;
+    const otherLang = btn.dataset.otherLang as 'zh' | 'en';
+
+    function siblingUrl(): string {
+      const path = location.pathname;
+      if (otherLang === 'en') {
+        if (path === '/' || path === '') return '/en/';
+        return '/en' + path;
+      }
+      if (path === '/en' || path === '/en/') return '/';
+      if (path.startsWith('/en/')) return path.slice(3);
+      return path;
+    }
+
+    btn.addEventListener('click', () => {
+      localStorage.setItem('sgai_lang', otherLang);
+      location.assign(siblingUrl());
+    });
+  })();
+</script>

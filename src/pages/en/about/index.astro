@@ -1,0 +1,147 @@
+---
+// About page (EN). Independent voice; no Chinese-language framing.
+
+import Layout from '~/layouts/PageLayout.astro';
+import { Icon } from 'astro-icon/components';
+import { SITE_VERSION, SITE_UPDATED } from '~/version';
+
+const metadata = {
+  title: 'About',
+  description:
+    "About SG AI Observatory — an independently-maintained research platform tracking Singapore's AI strategy. Methodology, conflict-of-interest disclosure, feedback channels.",
+};
+---
+
+<Layout metadata={metadata} breadcrumbs={[{ label: 'About' }]} lang="en">
+  <article class="prose prose-lg dark:prose-invert max-w-3xl mx-auto px-4 sm:px-6 py-12 md:py-16 font-serif">
+    <p class="not-prose text-xs uppercase tracking-[0.18em] text-primary font-semibold mb-4">About</p>
+    <h1 class="font-serif !text-3xl md:!text-5xl !leading-[1.2] !font-semibold !mb-6 tracking-tight">
+      Why I track Singapore's AI strategy
+    </h1>
+
+    <p class="lead !text-lg md:!text-xl !leading-[1.85] text-gray-700 dark:text-gray-300">
+      I'm Luca, based in Singapore. SG AI Observatory is independently maintained and operates with no institutional or
+      government backing.
+    </p>
+
+    <h2>What this site does</h2>
+    <p>
+      Singapore is a city-state — population 5.9 million, GDP US$390 billion — but its national-scale moves in the AI
+      era far outweigh its size. Smart Nation, National AI Strategy 1.0/2.0, the Budget 2026 AI mega-bet, the SEA-LION
+      model, the AI Verify governance framework — some of these are underrated abroad and others are overrated locally.
+    </p>
+    <p>This site tracks them systematically:</p>
+    <ul>
+      <li>
+        <strong>Policy library</strong> — every key document from Smart Nation 2014 to NAIRD 2026, organised by ministry,
+        traceable to the original PDF.
+      </li>
+      <li>
+        <strong>Parliamentary debates</strong> — 150 Hansard records indexed by topic, MP, and year, each with a digest and
+        policy-signal analysis.
+      </li>
+      <li>
+        <strong>Lever map</strong> — 110+ concrete projects across ministries, mapped to 6 national-scale "AI-injection paths"
+        so you can see the whole shape.
+      </li>
+      <li>
+        <strong>Legal framework</strong> — the dual-track structure of Copyright §244 (permissive training) plus the Online
+        Safety Bill (strict outputs).
+      </li>
+      <li>
+        <strong>Startup ecosystem</strong> — 650+ AI companies, 9 unicorns, segmented by vertical and funding stage.
+      </li>
+    </ul>
+
+    <h2>Methodology</h2>
+    <p>
+      All data comes from public sources: parliament.gov.sg / sprs.parl.gov.sg for Hansard records, ministry sites for
+      policy text, official statistics, listed-company filings, media reports. Every record carries a sourceUrl for
+      traceability.
+    </p>
+    <p>
+      The <a href="/en/blog/" class="text-primary hover:text-secondary">Analysis</a> section reflects my personal views,
+      which deliberately diverge from official narratives — otherwise there would be no reason to run this site.
+    </p>
+    <p>
+      Update cadence: new debates are added 1-2 weeks after each parliamentary sitting; policy documents are reviewed
+      monthly; metrics are revisited quarterly. Each refresh updates the "Last updated" date on every page.
+    </p>
+
+    <h2>Conflict of interest</h2>
+    <p>
+      This site is independently operated. It does not accept funding from the Singapore government or from any
+      organisation discussed on the site.
+    </p>
+    <p>
+      We <strong>do not accept sponsorship, advertising, or paid subscriptions</strong>. All content is freely
+      available; the source is <a
+        href="https://github.com/meltflake/sgai"
+        target="_blank"
+        rel="noopener"
+        class="text-primary hover:text-secondary">public on GitHub</a
+      >. Hosting (domain + Cloudflare) is paid for personally.
+    </p>
+    <p>
+      If a future conflict of interest arises — e.g. an organisation tracked here entering a commercial relationship
+      with me — it will be disclosed at the top of the relevant pages.
+    </p>
+
+    <h2>Who reads this site</h2>
+    <p>Three primary audiences:</p>
+    <ul>
+      <li>
+        <strong>Founders / technical decision-makers</strong> — evaluating Singapore as a base for AI work: policy environment,
+        talent pool, compliance posture.
+      </li>
+      <li>
+        <strong>Policy researchers</strong> — needing first-hand Singapore data when comparing cross-economy AI policies.
+      </li>
+      <li>
+        <strong>Journalists / analysts</strong> — needing a reliable factual base when writing about Singapore's AI scene.
+      </li>
+    </ul>
+
+    <h2>Feedback &amp; corrections</h2>
+    <p>Found an error? Disagree with an analysis? Open an issue on GitHub:</p>
+    <ul>
+      <li>
+        <a
+          href="https://github.com/meltflake/sgai/issues"
+          target="_blank"
+          rel="noopener"
+          class="text-primary hover:text-secondary">GitHub Issues</a
+        > — preferred channel, fully traceable
+      </li>
+    </ul>
+
+    <h2>Versioning &amp; archive</h2>
+    <p
+      class="not-prose text-sm text-gray-500 dark:text-gray-400 border-t border-gray-200 dark:border-slate-700 pt-6 mt-12"
+    >
+      Current version <span class="font-semibold text-gray-700 dark:text-gray-300">v{SITE_VERSION}</span>, last updated <span
+        class="font-semibold text-gray-700 dark:text-gray-300">{SITE_UPDATED}</span
+      >.<br />
+      Source code MIT-licensed; content CC BY 4.0 — attribution required.
+    </p>
+
+    <div class="not-prose mt-10 flex flex-wrap gap-4">
+      <a
+        href="/en/blog/"
+        class="inline-flex items-center gap-2 bg-primary hover:bg-secondary text-white font-semibold px-5 py-3 rounded-md transition-colors text-sm"
+      >
+        Read the analyses
+        <Icon name="tabler:arrow-right" class="w-4 h-4" />
+      </a>
+      <a
+        href="https://github.com/meltflake/sgai"
+        target="_blank"
+        rel="noopener"
+        class="inline-flex items-center gap-2 border border-gray-300 dark:border-slate-700 hover:border-primary text-gray-700 dark:text-gray-300 hover:text-primary font-medium px-5 py-3 rounded-md transition-colors text-sm"
+      >
+        <Icon name="tabler:brand-github" class="w-4 h-4" />
+        GitHub source
+      </a>
+    </div>
+  </article>
+</Layout>

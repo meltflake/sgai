@@ -1,102 +1,142 @@
 import { getPermalink, getAsset } from './utils/permalinks';
 import { SITE_VERSION, SITE_UPDATED } from './version';
+import { localizedHref, t, type Lang } from './i18n';
 
-// Phase 3: navigation flattened from 4 dropdowns + 17 items to 5 groups
-// with 观点 (深度分析) promoted to a top-level link. Emojis stripped from
-// chrome — the only place emojis are allowed is inside narrative posts.
+// i18n (v0.3.0): navigation is now a function of lang. Header passes the
+// current lang from URL; Footer uses the same. Both groups + sub-links
+// resolve their labels through the dictionary.
 
-export const headerData = {
-  links: [
-    { text: '深度分析', href: getPermalink('/blog') },
-    {
-      text: '政策与战略',
-      links: [
-        { text: '政策文件', href: getPermalink('/policies') },
-        { text: '国家 AI 抓手图谱', href: getPermalink('/levers') },
-        { text: 'AI 法律框架', href: getPermalink('/legal-ai') },
-        { text: '发展时间线', href: getPermalink('/timeline') },
-        { text: '生态地图', href: getPermalink('/ecosystem') },
-      ],
-    },
-    {
-      text: '辩论与声音',
-      links: [
-        { text: '国会 AI 焦点', href: getPermalink('/debates') },
-        { text: 'AI 影响力图谱', href: getPermalink('/voices') },
-        { text: 'AI 视频观点', href: getPermalink('/videos') },
-      ],
-    },
-    {
-      text: '数据追踪',
-      links: [
-        { text: '关键指标', href: getPermalink('/tracker') },
-        { text: 'AI 创业生态', href: getPermalink('/startups') },
-        { text: '人才培养', href: getPermalink('/talent') },
-        { text: '官方开源与研究', href: getPermalink('/opensource') },
-        { text: '产学研开源生态', href: getPermalink('/community-opensource') },
-        { text: '国际对标', href: getPermalink('/benchmarking') },
-      ],
-    },
-    {
-      text: '关于',
-      links: [
-        { text: '关于本站', href: getPermalink('/about') },
-        { text: '实战经验', href: getPermalink('/fieldnotes') },
-        { text: '参考资源', href: getPermalink('/references') },
-      ],
-    },
-  ],
-  actions: [{ text: 'GitHub', href: 'https://github.com/meltflake/sgai', target: '_blank' }],
-};
+const labelKeys = {
+  analysis: 'navAnalysis',
+  policy: 'navPolicy',
+  debates: 'navDebates',
+  data: 'navData',
+  about: 'navAbout',
+  policies: 'navPolicies',
+  levers: 'navLevers',
+  legalAi: 'navLegalAi',
+  timeline: 'navTimeline',
+  ecosystem: 'navEcosystem',
+  parliament: 'navParliament',
+  voices: 'navVoices',
+  videos: 'navVideos',
+  tracker: 'navTracker',
+  startups: 'navStartups',
+  talent: 'navTalent',
+  opensource: 'navOpensource',
+  communityOpensource: 'navCommunityOpensource',
+  benchmarking: 'navBenchmarking',
+  aboutSite: 'navAboutSite',
+  fieldnotes: 'navFieldnotes',
+  references: 'navReferences',
+} as const;
 
-export const footerData = {
-  links: [
-    {
-      title: '深度分析',
-      links: [
-        { text: '全部文章', href: getPermalink('/blog') },
-        { text: '关于本站', href: getPermalink('/about') },
-      ],
-    },
-    {
-      title: '政策与战略',
-      links: [
-        { text: '政策文件', href: getPermalink('/policies') },
-        { text: '国家 AI 抓手图谱', href: getPermalink('/levers') },
-        { text: 'AI 法律框架', href: getPermalink('/legal-ai') },
-        { text: '发展时间线', href: getPermalink('/timeline') },
-        { text: '生态地图', href: getPermalink('/ecosystem') },
-      ],
-    },
-    {
-      title: '辩论与声音',
-      links: [
-        { text: '国会 AI 焦点', href: getPermalink('/debates') },
-        { text: 'AI 影响力图谱', href: getPermalink('/voices') },
-        { text: 'AI 视频观点', href: getPermalink('/videos') },
-      ],
-    },
-    {
-      title: '数据追踪',
-      links: [
-        { text: '关键指标', href: getPermalink('/tracker') },
-        { text: 'AI 创业生态', href: getPermalink('/startups') },
-        { text: '人才培养', href: getPermalink('/talent') },
-        { text: '官方开源与研究', href: getPermalink('/opensource') },
-        { text: '产学研开源生态', href: getPermalink('/community-opensource') },
-        { text: '国际对标', href: getPermalink('/benchmarking') },
-      ],
-    },
-  ],
-  secondaryLinks: [],
-  socialLinks: [
-    { ariaLabel: 'Github', icon: 'tabler:brand-github', href: 'https://github.com/meltflake/sgai' },
-    { ariaLabel: 'RSS', icon: 'tabler:rss', href: getAsset('/rss.xml') },
-  ],
-  footNote:
-    'SG AI 观察 v' +
-    SITE_VERSION +
-    ' · 最近更新 ' +
-    SITE_UPDATED +
-    ' · 由 <a class="text-primary underline hover:text-secondary" href="https://github.com/meltflake">meltflake</a> 维护',
-};
+function lh(path: string, lang: Lang): string {
+  return localizedHref(getPermalink(path), lang);
+}
+
+export function getHeaderData(lang: Lang) {
+  return {
+    links: [
+      { text: t(lang, labelKeys.analysis), href: lh('/blog', lang) },
+      {
+        text: t(lang, labelKeys.policy),
+        links: [
+          { text: t(lang, labelKeys.policies), href: lh('/policies', lang) },
+          { text: t(lang, labelKeys.levers), href: lh('/levers', lang) },
+          { text: t(lang, labelKeys.legalAi), href: lh('/legal-ai', lang) },
+          { text: t(lang, labelKeys.timeline), href: lh('/timeline', lang) },
+          { text: t(lang, labelKeys.ecosystem), href: lh('/ecosystem', lang) },
+        ],
+      },
+      {
+        text: t(lang, labelKeys.debates),
+        links: [
+          { text: t(lang, labelKeys.parliament), href: lh('/debates', lang) },
+          { text: t(lang, labelKeys.voices), href: lh('/voices', lang) },
+          { text: t(lang, labelKeys.videos), href: lh('/videos', lang) },
+        ],
+      },
+      {
+        text: t(lang, labelKeys.data),
+        links: [
+          { text: t(lang, labelKeys.tracker), href: lh('/tracker', lang) },
+          { text: t(lang, labelKeys.startups), href: lh('/startups', lang) },
+          { text: t(lang, labelKeys.talent), href: lh('/talent', lang) },
+          { text: t(lang, labelKeys.opensource), href: lh('/opensource', lang) },
+          { text: t(lang, labelKeys.communityOpensource), href: lh('/community-opensource', lang) },
+          { text: t(lang, labelKeys.benchmarking), href: lh('/benchmarking', lang) },
+        ],
+      },
+      {
+        text: t(lang, labelKeys.about),
+        links: [
+          { text: t(lang, labelKeys.aboutSite), href: lh('/about', lang) },
+          { text: t(lang, labelKeys.fieldnotes), href: lh('/fieldnotes', lang) },
+          { text: t(lang, labelKeys.references), href: lh('/references', lang) },
+        ],
+      },
+    ],
+    actions: [{ text: 'GitHub', href: 'https://github.com/meltflake/sgai', target: '_blank' }],
+  };
+}
+
+export function getFooterData(lang: Lang) {
+  const updatedLabel = lang === 'en' ? 'Last updated' : '最近更新';
+  const maintainedBy = lang === 'en' ? 'Maintained by' : '由';
+  const closing = lang === 'en' ? '' : '维护';
+  return {
+    links: [
+      {
+        title: t(lang, labelKeys.analysis),
+        links: [
+          { text: lang === 'en' ? 'All articles' : '全部文章', href: lh('/blog', lang) },
+          { text: t(lang, labelKeys.aboutSite), href: lh('/about', lang) },
+        ],
+      },
+      {
+        title: t(lang, labelKeys.policy),
+        links: [
+          { text: t(lang, labelKeys.policies), href: lh('/policies', lang) },
+          { text: t(lang, labelKeys.levers), href: lh('/levers', lang) },
+          { text: t(lang, labelKeys.legalAi), href: lh('/legal-ai', lang) },
+          { text: t(lang, labelKeys.timeline), href: lh('/timeline', lang) },
+          { text: t(lang, labelKeys.ecosystem), href: lh('/ecosystem', lang) },
+        ],
+      },
+      {
+        title: t(lang, labelKeys.debates),
+        links: [
+          { text: t(lang, labelKeys.parliament), href: lh('/debates', lang) },
+          { text: t(lang, labelKeys.voices), href: lh('/voices', lang) },
+          { text: t(lang, labelKeys.videos), href: lh('/videos', lang) },
+        ],
+      },
+      {
+        title: t(lang, labelKeys.data),
+        links: [
+          { text: t(lang, labelKeys.tracker), href: lh('/tracker', lang) },
+          { text: t(lang, labelKeys.startups), href: lh('/startups', lang) },
+          { text: t(lang, labelKeys.talent), href: lh('/talent', lang) },
+          { text: t(lang, labelKeys.opensource), href: lh('/opensource', lang) },
+          { text: t(lang, labelKeys.communityOpensource), href: lh('/community-opensource', lang) },
+          { text: t(lang, labelKeys.benchmarking), href: lh('/benchmarking', lang) },
+        ],
+      },
+    ],
+    secondaryLinks: [],
+    socialLinks: [
+      { ariaLabel: 'Github', icon: 'tabler:brand-github', href: 'https://github.com/meltflake/sgai' },
+      { ariaLabel: 'RSS', icon: 'tabler:rss', href: getAsset(lang === 'en' ? '/en/rss.xml' : '/rss.xml') },
+    ],
+    footNote:
+      `${t(lang, 'siteName')} v${SITE_VERSION} · ${updatedLabel} ${SITE_UPDATED} · ${maintainedBy} ` +
+      `<a class="text-primary underline hover:text-secondary" href="https://github.com/meltflake">meltflake</a>${closing ? ' ' + closing : ''}`,
+  };
+}
+
+// Backwards-compatibility shims for any caller still importing the old
+// constants. These resolve to the zh variant. New callers should use the
+// getter functions above.
+export const headerData = getHeaderData('zh');
+export const footerData = getFooterData('zh');

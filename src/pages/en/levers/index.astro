@@ -1,0 +1,145 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import Headline from '~/components/ui/Headline.astro';
+import RelatedRail from '~/components/data/RelatedRail.astro';
+import { levers, transmissionExplainer, dataDate } from '~/data/levers';
+import { t, pickLocalized } from '~/i18n';
+
+const lang = 'en' as const;
+---
+
+<Layout
+  metadata={{
+    title: 'National AI Levers',
+    description:
+      "Singapore's national-scale AI-native transformation cannot be read by ministry — read it by AI-injection path: infrastructure, governance, talent, applications, government self-use, and diplomacy. Six levers spanning multiple ministries form the full execution pipeline.",
+  }}
+  breadcrumbs={[{ label: 'National AI Levers' }]}
+  lang={lang}
+>
+  <section class="px-4 py-16 sm:px-6 mx-auto lg:px-8 max-w-6xl">
+    <Headline
+      title="🎯 National AI Levers"
+      subtitle={`${t(lang, 'freshnessUpdated')}: ${dataDate}. Re-classifying Singapore's Budget 2026 plus all ministry-level AI policies along "AI-injection paths" yields six cross-ministry levers — a clearer view of the whole shape than reading them department by department.`}
+    />
+
+    <div class="bg-blue-50 dark:bg-blue-950 border-l-4 border-blue-500 p-6 rounded-lg mb-12 text-sm leading-relaxed">
+      <p class="font-bold text-base mb-2">Why classify by lever?</p>
+      <p class="mb-2">
+        Most analyses treat the state and the enterprise as parallel actors — and miss the nesting relationship. The
+        essence of Singapore's strategy is to <strong
+          >treat the entire state as the wrapper layer for enterprise AI-native transformation</strong
+        >: the state itself need not become AI-native; it is enough to amplify the speed at which enterprises do.
+      </p>
+      <p>
+        The six levers map "AI-injection paths" (infrastructure → governance → talent → applications → government
+        self-use → diplomacy). Each lever crosses multiple ministries; chained together, they form the full execution
+        pipeline.
+      </p>
+    </div>
+
+    <div class="space-y-16">
+      {
+        levers.map((lever) => (
+          <div class="border border-slate-200 dark:border-slate-700 rounded-xl p-8 bg-white dark:bg-slate-900 shadow-md">
+            <div class="flex items-start gap-4 mb-6 flex-wrap">
+              <div class="text-5xl">{lever.icon}</div>
+              <div class="flex-1 min-w-[280px]">
+                <div class="flex items-center gap-3 flex-wrap mb-1">
+                  <h2 class="text-2xl font-bold m-0">
+                    Lever {lever.number} · {pickLocalized(lever, 'name', 'nameEn', lang)}
+                  </h2>
+                  {lever.transmissionMode === 'direct' ? (
+                    <span class="text-xs font-bold bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200 px-2 py-1 rounded">
+                      State-direct
+                    </span>
+                  ) : (
+                    <span class="text-xs font-bold bg-amber-100 dark:bg-amber-900 text-amber-800 dark:text-amber-200 px-2 py-1 rounded">
+                      Transmitted to enterprise
+                    </span>
+                  )}
+                </div>
+                <p class="text-base text-muted m-0">{pickLocalized(lever, 'subtitle', 'subtitleEn', lang)}</p>
+              </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-4 mb-6 text-sm">
+              <div class="bg-slate-50 dark:bg-slate-800 p-4 rounded-lg">
+                <div class="text-xs font-bold uppercase tracking-wide text-slate-500 mb-1">What the state does</div>
+                <div>{pickLocalized(lever, 'whatStateDoes', 'whatStateDoesEn', lang)}</div>
+              </div>
+              <div class="bg-slate-50 dark:bg-slate-800 p-4 rounded-lg">
+                <div class="text-xs font-bold uppercase tracking-wide text-slate-500 mb-1">
+                  Enterprise bottleneck solved
+                </div>
+                <div>{pickLocalized(lever, 'bottleneckSolved', 'bottleneckSolvedEn', lang)}</div>
+              </div>
+            </div>
+
+            {lever.groups.map((group) => (
+              <div class="mb-6">
+                <h3 class="text-lg font-bold mb-3 border-b border-slate-200 dark:border-slate-700 pb-1">
+                  {pickLocalized(group, 'title', 'titleEn', lang)}
+                </h3>
+                <div class="grid gap-3 md:grid-cols-2">
+                  {group.items.map((item) => (
+                    <div class="border border-slate-200 dark:border-slate-700 rounded-lg p-4 hover:shadow-md transition-shadow">
+                      <div class="flex items-start gap-2 flex-wrap mb-2">
+                        <h4 class="text-base font-bold m-0 flex-1 min-w-0">
+                          {pickLocalized(item, 'name', 'nameEn', lang)}
+                        </h4>
+                        <span class="text-xs bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 px-2 py-1 rounded shrink-0">
+                          {item.ministry}
+                        </span>
+                      </div>
+                      {item.scale && (
+                        <div class="text-sm font-mono font-bold text-slate-700 dark:text-slate-300 mb-1">
+                          {pickLocalized(item, 'scale', 'scaleEn', lang)}
+                        </div>
+                      )}
+                      <p class="text-sm text-muted m-0 mb-2">
+                        {pickLocalized(item, 'description', 'descriptionEn', lang)}
+                      </p>
+                      {item.sourceUrl && (
+                        <a
+                          href={item.sourceUrl}
+                          target="_blank"
+                          rel="noopener"
+                          class="text-xs text-blue-600 dark:text-blue-400 hover:underline"
+                        >
+                          🔗 {t(lang, 'source')}
+                        </a>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+
+            {lever.insight && (
+              <div class="bg-amber-50 dark:bg-amber-950 border-l-4 border-amber-500 p-4 rounded mt-4 text-sm italic">
+                💡 {pickLocalized(lever, 'insight', 'insightEn', lang)}
+              </div>
+            )}
+            <RelatedRail entity={{ type: 'lever', id: lever.number }} variant="compact" />
+          </div>
+        ))
+      }
+    </div>
+
+    <div
+      class="mt-16 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-950 dark:to-purple-950 rounded-xl p-8 border border-blue-200 dark:border-blue-800"
+    >
+      <h2 class="text-2xl font-bold mb-4">{pickLocalized(transmissionExplainer, 'title', 'titleEn', lang)}</h2>
+      <pre
+        class="text-sm whitespace-pre-wrap leading-relaxed bg-transparent p-0 border-0 m-0">{pickLocalized(transmissionExplainer, 'body', 'bodyEn', lang)}</pre>
+    </div>
+
+    <div class="mt-12 text-sm text-muted text-center">
+      Further reading:
+      <a href="/en/singapore-ai-native-companies-vs-nations/" class="text-blue-600 dark:text-blue-400 hover:underline">
+        From 50 to 5,700,000 — the same AI-native architecture, two scales
+      </a>
+    </div>
+  </section>
+</Layout>

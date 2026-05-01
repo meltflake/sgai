@@ -1,0 +1,72 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import Headline from '~/components/ui/Headline.astro';
+import RelatedRail from '~/components/data/RelatedRail.astro';
+import { timelineEvents } from '~/data/timeline';
+import { pickLocalized } from '~/i18n';
+
+const lang = 'en' as const;
+---
+
+<Layout
+  metadata={{
+    title: 'Timeline',
+    description:
+      "Singapore's AI development timeline: from the 2014 Smart Nation Initiative through NAIS 2.0 to the 2027 International AI Olympiad — key milestones in chronological order.",
+  }}
+  breadcrumbs={[{ label: 'Timeline' }]}
+  lang={lang}
+>
+  <section class="px-4 py-16 sm:px-6 mx-auto lg:px-8 max-w-4xl">
+    <Headline
+      title="📅 Singapore AI Development Timeline"
+      subtitle="From the 2014 Smart Nation Initiative to the 2027 International AI Olympiad — key milestones in Singapore's AI strategy."
+    />
+
+    <div class="relative">
+      {/* Vertical line */}
+      <div class="absolute left-4 md:left-1/2 md:-translate-x-px top-0 bottom-0 w-0.5 bg-blue-200 dark:bg-blue-800">
+      </div>
+
+      <div class="space-y-12">
+        {
+          timelineEvents.map((event, index) => (
+            <div class={`relative flex items-start gap-6 ${index % 2 === 0 ? 'md:flex-row-reverse' : ''}`}>
+              {/* Dot */}
+              <div class="absolute left-4 md:left-1/2 -translate-x-1/2 w-4 h-4 bg-blue-600 dark:bg-blue-400 rounded-full border-4 border-white dark:border-slate-900 z-10" />
+
+              {/* Content */}
+              <div
+                class={`ml-12 md:ml-0 md:w-[calc(50%-2rem)] ${index % 2 === 0 ? 'md:mr-auto md:pr-8 md:text-right' : 'md:ml-auto md:pl-8'}`}
+              >
+                <div class="bg-white dark:bg-slate-900 rounded-lg shadow-md p-6 border border-slate-200 dark:border-slate-700 hover:shadow-lg transition-shadow">
+                  <div class={`flex items-center gap-3 mb-2 ${index % 2 === 0 ? 'md:flex-row-reverse' : ''}`}>
+                    <span class="text-2xl font-bold text-blue-600 dark:text-blue-400">{event.year}</span>
+                    {event.tags && (
+                      <div class="flex gap-1 flex-wrap">
+                        {event.tags.map((tag) => (
+                          <span class="text-xs bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 px-2 py-0.5 rounded">
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                  <h3 class="text-lg font-bold mb-2">{pickLocalized(event, 'title', 'titleEn', lang)}</h3>
+                  <p class="text-sm text-muted leading-relaxed">
+                    {pickLocalized(event, 'description', 'descriptionEn', lang)}
+                  </p>
+                  {event.id && <RelatedRail entity={{ type: 'timeline', id: event.id }} variant="compact" />}
+                </div>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+
+    <p class="mt-12 text-sm text-muted text-center">
+      Sources: AI Singapore, SNDGO, MOF, IMDA and other public official channels.
+    </p>
+  </section>
+</Layout>

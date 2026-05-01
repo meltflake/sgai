@@ -42,7 +42,9 @@ const websiteSchema = {
 
 // ---- Editorial blocks (build-time computed) ----------------------------
 
-const latestPosts = await findLatestPosts({ count: 3 });
+// Filter to zh-only posts on the zh homepage.
+const allLatestPosts = await findLatestPosts({ count: 20 });
+const latestPosts = allLatestPosts.filter((p) => (p.lang ?? 'zh') === 'zh').slice(0, 3);
 
 // 4 levers chosen for cross-section visibility — keep the Hero strip honest
 // rather than chasing a "most-active" metric we don't yet maintain.

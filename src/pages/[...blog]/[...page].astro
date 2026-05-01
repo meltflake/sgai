@@ -12,7 +12,7 @@ import { blogListRobots, getStaticPathsBlogList } from '~/utils/blog';
 export const prerender = true;
 
 export const getStaticPaths = (async ({ paginate }) => {
-  return await getStaticPathsBlogList({ paginate });
+  return await getStaticPathsBlogList({ paginate, lang: 'zh' });
 }) satisfies GetStaticPaths;
 
 type Props = InferGetStaticPropsType<typeof getStaticPaths>;
@@ -38,7 +38,7 @@ const metadata = {
 const breadcrumbs = [{ label: '深度分析' }];
 ---
 
-<Layout metadata={metadata} breadcrumbs={breadcrumbs}>
+<Layout metadata={metadata} breadcrumbs={breadcrumbs} lang="zh">
   <section class="px-6 sm:px-6 py-12 sm:py-16 lg:py-20 mx-auto max-w-4xl">
     <Headline subtitle="新加坡 AI 生态的研究文章与评论">深度分析</Headline>
     <BlogList posts={page.data} />

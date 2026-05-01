@@ -1,0 +1,129 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import Headline from '~/components/ui/Headline.astro';
+import { sections, dataDate } from '~/data/legal-ai';
+
+const lang = 'en' as const;
+
+const scopeLabel: Record<string, { label: string; color: string }> = {
+  training: { label: 'Training', color: 'bg-emerald-100 dark:bg-emerald-900 text-emerald-800 dark:text-emerald-200' },
+  output: { label: 'Output', color: 'bg-rose-100 dark:bg-rose-900 text-rose-800 dark:text-rose-200' },
+  liability: { label: 'Liability', color: 'bg-amber-100 dark:bg-amber-900 text-amber-800 dark:text-amber-200' },
+  governance: { label: 'Governance', color: 'bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200' },
+};
+
+const introBodyEn = `Singapore's AI legal framework reduces to a single line: **permissive on training + strict on outputs**.
+
+- **Training side**: Legally acquired content (with or without copyright) can be used to train AI — among the world's most permissive regimes, on par with Japan.
+- **Output side**: Deepfakes, AI-generated intimate images, AI-driven disinformation, and election manipulation — strictly governed by a four-piece legislative bundle.
+
+This combination makes Singapore one of the **most predictable legal jurisdictions for AI companies** today: the boundaries of what you can and cannot do are clear. It is one of the key reasons EDB has been able to attract OpenAI, Anthropic, DeepMind, Mistral and others to set up here.`;
+
+const conclusionEn = `**Why this legal package is attractive to AI companies**:
+
+1. **Permissive training, strict outputs** — clear boundaries; you know what is and isn't allowed.
+2. **One-stop governance** — IMDA + MAS + CSA + MINLAW form a unified framework, no policy fragmentation.
+3. **Soft law as the default** — voluntary frameworks first, hard law only when the soft law is exceeded; gives industry room to adjust.
+4. **English common-law system** — judicial reasoning is highly transparent and reusable for cross-border legal opinions.
+
+This is one of the structural reasons OpenAI, Anthropic, DeepMind, Mistral and others have set up regional headquarters in Singapore — beyond capital, talent, and infrastructure, the legal certainty is itself a moat.`;
+---
+
+<Layout
+  metadata={{
+    title: 'AI Legal Framework',
+    description:
+      "Singapore's AI legal framework — 'permissive on training, strict on outputs' dual track: Copyright §244 (one of the world's most permissive AI training exceptions) paired with the OCHA + Elections Bill + Criminal Law Bill + Online Safety Bill quartet on outputs.",
+  }}
+  breadcrumbs={[{ label: 'AI Legal Framework' }]}
+  lang={lang}
+>
+  <section class="px-4 py-16 sm:px-6 mx-auto lg:px-8 max-w-5xl">
+    <Headline
+      title="⚖️ Singapore AI Legal Framework"
+      subtitle={`Last updated: ${dataDate}. "Permissive on training + strict on outputs" — a dual track that makes Singapore one of the world's most predictable jurisdictions for AI companies today.`}
+    />
+
+    <div class="bg-blue-50 dark:bg-blue-950 border-l-4 border-blue-500 p-6 rounded-lg mb-12 text-sm leading-relaxed">
+      <p class="font-bold text-base mb-3">Core Position</p>
+      <pre class="text-sm whitespace-pre-wrap leading-relaxed bg-transparent p-0 border-0 m-0">{introBodyEn}</pre>
+    </div>
+
+    {
+      sections.map((section, sectionIdx) => (
+        <div class="mb-16">
+          <h2 class="text-2xl font-bold mb-3 border-b-2 border-blue-600 dark:border-blue-400 pb-2">
+            {sectionIdx + 1}. {section.title}
+          </h2>
+          <p class="text-sm italic text-muted mb-6">{section.philosophy}</p>
+
+          <div class="space-y-4">
+            {section.items.map((item) => (
+              <div class="border border-slate-200 dark:border-slate-700 rounded-lg p-6 bg-white dark:bg-slate-900 hover:shadow-md transition-shadow">
+                <div class="flex items-start gap-2 flex-wrap mb-2">
+                  <h3 class="text-lg font-bold m-0 flex-1 min-w-0">{item.titleEn}</h3>
+                  <span class={`text-xs font-bold px-2 py-1 rounded shrink-0 ${scopeLabel[item.scope].color}`}>
+                    {scopeLabel[item.scope].label}
+                  </span>
+                  <span class="text-xs bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 px-2 py-1 rounded shrink-0">
+                    {item.status}
+                  </span>
+                </div>
+                <p class="text-sm text-muted mb-3">{item.title}</p>
+                <div class="flex gap-2 mb-3 flex-wrap text-xs">
+                  {item.authorityUrl ? (
+                    <a
+                      href={item.authorityUrl}
+                      target="_blank"
+                      rel="noopener"
+                      class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 px-2 py-1 rounded hover:underline"
+                    >
+                      {item.authority}
+                    </a>
+                  ) : (
+                    <span class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 px-2 py-1 rounded">
+                      {item.authority}
+                    </span>
+                  )}
+                  <span class="bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 px-2 py-1 rounded">
+                    {item.date}
+                  </span>
+                </div>
+                <p class="text-sm font-medium mb-2">{item.summary}</p>
+                <p class="text-sm text-muted mb-3">{item.body}</p>
+                {item.sourceUrl && (
+                  <a
+                    href={item.sourceUrl}
+                    target="_blank"
+                    rel="noopener"
+                    class="text-sm text-blue-600 dark:text-blue-400 hover:underline"
+                  >
+                    🔗 Statute text
+                  </a>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      ))
+    }
+
+    <div
+      class="mt-12 bg-gradient-to-br from-amber-50 to-emerald-50 dark:from-amber-950 dark:to-emerald-950 rounded-xl p-8 border border-amber-200 dark:border-amber-800"
+    >
+      <h2 class="text-xl font-bold mb-4">Why this combination is attractive to AI companies</h2>
+      <pre class="text-sm whitespace-pre-wrap leading-relaxed bg-transparent p-0 border-0 m-0">{conclusionEn}</pre>
+    </div>
+
+    <div class="mt-12 text-sm text-muted text-center">
+      Further reading:
+      <a href="/en/singapore-ai-native-companies-vs-nations/" class="text-blue-600 dark:text-blue-400 hover:underline">
+        From 50 to 5,700,000 — the same AI-native architecture
+      </a>
+      ·
+      <a href="/en/levers/" class="text-blue-600 dark:text-blue-400 hover:underline">National AI Levers</a>
+      ·
+      <a href="/en/policies/" class="text-blue-600 dark:text-blue-400 hover:underline">Full policy library</a>
+    </div>
+  </section>
+</Layout>

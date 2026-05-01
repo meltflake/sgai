@@ -1,6 +1,7 @@
 ---
 import { SITE } from 'astrowind:config';
 import { getPermalink } from '~/utils/permalinks';
+import { getLangFromPath } from '~/i18n';
 
 export interface BreadcrumbItem {
   label: string;
@@ -13,7 +14,10 @@ export interface Props {
 
 const { items } = Astro.props;
 
-const homeItem = { label: '首页', href: getPermalink('/') };
+const lang = getLangFromPath(new URL(Astro.url).pathname);
+const homeLabel = lang === 'en' ? 'Home' : '首页';
+const homeHref = lang === 'en' ? '/en/' : getPermalink('/');
+const homeItem = { label: homeLabel, href: homeHref };
 const allItems = [homeItem, ...items];
 
 const siteUrl = SITE?.site || 'https://meltflake.com';

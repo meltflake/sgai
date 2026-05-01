@@ -9,17 +9,20 @@
 // but reports "Search index not built yet" — expected.
 
 import { Icon } from 'astro-icon/components';
+import { getLangFromPath, t } from '~/i18n';
+
+const lang = getLangFromPath(new URL(Astro.url).pathname);
 ---
 
 <button
   id="search-trigger"
   type="button"
   class="text-muted dark:text-gray-400 hover:text-primary dark:hover:text-white inline-flex items-center gap-2 px-3 py-2 rounded-md text-sm border border-gray-200 dark:border-slate-700 hover:border-primary transition-colors"
-  aria-label="搜索"
+  aria-label={t(lang, 'search')}
   aria-keyshortcuts="/"
 >
   <Icon name="tabler:search" class="w-4 h-4" />
-  <span class="hidden lg:inline text-xs">搜索</span>
+  <span class="hidden lg:inline text-xs">{t(lang, 'search')}</span>
   <kbd
     class="hidden lg:inline-flex items-center font-mono text-[0.65rem] text-gray-400 dark:text-gray-500 border border-gray-200 dark:border-slate-700 rounded px-1.5 py-0.5"
     >/</kbd
@@ -29,22 +32,28 @@ import { Icon } from 'astro-icon/components';
 <dialog
   id="search-dialog"
   class="rounded-lg p-0 backdrop:bg-black/60 backdrop:backdrop-blur-sm w-full max-w-2xl bg-white dark:bg-slate-900 dark:text-gray-100 shadow-2xl"
-  aria-label="站内搜索"
+  aria-label={lang === 'en' ? 'Site search' : '站内搜索'}
 >
   <div class="flex items-center justify-between px-4 py-3 border-b border-gray-200 dark:border-slate-700">
-    <span class="text-sm font-semibold text-gray-700 dark:text-gray-200">站内搜索</span>
+    <span class="text-sm font-semibold text-gray-700 dark:text-gray-200">
+      {lang === 'en' ? 'Site search' : '站内搜索'}
+    </span>
     <button
       id="search-close"
       type="button"
       class="text-gray-400 hover:text-primary dark:hover:text-white"
-      aria-label="关闭搜索"
+      aria-label={t(lang, 'closeSearch')}
     >
       <Icon name="tabler:x" class="w-5 h-5" />
     </button>
   </div>
   <div id="search" class="p-2 min-h-[60vh]">
     <p id="search-fallback" class="hidden p-6 text-sm text-gray-500 dark:text-gray-400 leading-relaxed">
-      搜索索引尚未构建。请运行 <code class="font-mono text-xs">npm run build</code> 后再试，或访问已部署的 sgai.md 使用搜索。
+      {
+        lang === 'en'
+          ? 'Search index not yet built. Run npm run build first, or visit the deployed sgai.md.'
+          : '搜索索引尚未构建。请运行 npm run build 后再试，或访问已部署的 sgai.md 使用搜索。'
+      }
     </p>
   </div>
 </dialog>
@@ -75,25 +84,48 @@ import { Icon } from 'astro-icon/components';
       // at build time. We inject it via <script src> so Vite doesn't try
       // to resolve it during dev/build.
       await loadScript('/pagefind/pagefind-ui.js');
+      // Detect current page lang from the URL so we can pre-filter results.
+      const isEn = location.pathname === '/en' || location.pathname.startsWith('/en/');
+      const cfg = isEn
+        ? {
+            element: '#search',
+            showSubResults: true,
+            showImages: false,
+            mergeIndex: [],
+            translations: {
+              placeholder: 'Search policies, debates, levers, people, articles…',
+              clear_search: 'Clear',
+              load_more: 'Load more',
+              search_label: 'Site search',
+              filters_label: 'Filters',
+              zero_results: 'No results for "[SEARCH_TERM]"',
+              many_results: '[COUNT] results for "[SEARCH_TERM]"',
+              one_result: '[COUNT] result for "[SEARCH_TERM]"',
+              alt_search: 'No results for "[SEARCH_TERM]". Showing results for "[DIFFERENT_TERM]" instead',
+              search_suggestion: 'No results for "[SEARCH_TERM]". Try one of the following:',
+              searching: 'Searching for "[SEARCH_TERM]"…',
+            },
+          }
+        : {
+            element: '#search',
+            showSubResults: true,
+            showImages: false,
+            translations: {
+              placeholder: '搜索政策、辩论、抓手、人物、博文……',
+              clear_search: '清空',
+              load_more: '加载更多',
+              search_label: '站内搜索',
+              filters_label: '过滤',
+              zero_results: '"[SEARCH_TERM]" 未找到结果',
+              many_results: '为 "[SEARCH_TERM]" 找到 [COUNT] 条结果',
+              one_result: '为 "[SEARCH_TERM]" 找到 [COUNT] 条结果',
+              alt_search: '"[SEARCH_TERM]" 未找到结果。改用 "[DIFFERENT_TERM]" 显示结果',
+              search_suggestion: '"[SEARCH_TERM]" 未找到结果。试试这些建议：',
+              searching: '正在搜索 "[SEARCH_TERM]"……',
+            },
+          };
       // @ts-expect-error - PagefindUI is exposed as a global by the script above
-      new window.PagefindUI({
-        element: '#search',
-        showSubResults: true,
-        showImages: false,
-        translations: {
-          placeholder: '搜索政策、辩论、抓手、人物、博文……',
-          clear_search: '清空',
-          load_more: '加载更多',
-          search_label: '站内搜索',
-          filters_label: '过滤',
-          zero_results: '"[SEARCH_TERM]" 未找到结果',
-          many_results: '为 "[SEARCH_TERM]" 找到 [COUNT] 条结果',
-          one_result: '为 "[SEARCH_TERM]" 找到 [COUNT] 条结果',
-          alt_search: '"[SEARCH_TERM]" 未找到结果。改用 "[DIFFERENT_TERM]" 显示结果',
-          search_suggestion: '"[SEARCH_TERM]" 未找到结果。试试这些建议：',
-          searching: '正在搜索 "[SEARCH_TERM]"……',
-        },
-      });
+      new window.PagefindUI(cfg);
     } catch (err) {
       const fb = document.getElementById('search-fallback');
       if (fb) fb.classList.remove('hidden');

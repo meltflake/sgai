@@ -3,8 +3,10 @@ import Layout from '~/layouts/Layout.astro';
 import Header from '~/components/widgets/Header.astro';
 import Footer from '~/components/widgets/Footer.astro';
 import Announcement from '~/components/widgets/Announcement.astro';
+import LangBanner from '~/components/common/LangBanner.astro';
 
-import { headerData, footerData } from '~/navigation';
+import { getHeaderData, getFooterData } from '~/navigation';
+import { getLangFromPath, type Lang } from '~/i18n';
 
 import Breadcrumb from '~/components/common/Breadcrumb.astro';
 import type { BreadcrumbItem } from '~/components/common/Breadcrumb.astro';
@@ -13,18 +15,25 @@ import type { MetaData } from '~/types';
 export interface Props {
   metadata?: MetaData;
   breadcrumbs?: BreadcrumbItem[];
+  /** Override detected lang. Use only when the page genuinely owns the
+   *  declaration (e.g. dynamic routes that pass lang explicitly). */
+  lang?: Lang;
 }
 
-const { metadata, breadcrumbs } = Astro.props;
+const { metadata, breadcrumbs, lang: langOverride } = Astro.props;
+const lang: Lang = langOverride ?? getLangFromPath(new URL(Astro.url).pathname);
+const headerData = getHeaderData(lang);
+const footerData = getFooterData(lang);
 ---
 
-<Layout metadata={metadata}>
+<Layout metadata={metadata} lang={lang}>
   <slot name="announcement">
     <Announcement />
   </slot>
   <slot name="header">
-    <Header {...headerData} isSticky showRssFeed showToggleTheme />
+    <Header {...headerData} isSticky showRssFeed showToggleTheme lang={lang} />
   </slot>
+  <LangBanner currentLang={lang} />
   <main>
     {breadcrumbs && breadcrumbs.length > 0 && <Breadcrumb items={breadcrumbs} />}
     <slot />

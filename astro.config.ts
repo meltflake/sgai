@@ -31,6 +31,20 @@ export default defineConfig({
   trailingSlash: 'always',
   build: { format: 'directory' },
 
+  // i18n architecture (v0.3.0):
+  //   defaultLocale 'zh' stays at the unprefixed root (preserves all
+  //   existing SEO and inbound links). English mirror lives under /en/.
+  //   `prefixDefaultLocale: false` is the default. Pages we translate
+  //   exist at both /<path>/ (zh) and /en/<path>/ (en). Pages we have
+  //   not yet translated only exist at /<path>/; the LanguageToggle
+  //   gracefully falls back to /en/ home in that case.
+  i18n: {
+    defaultLocale: 'zh',
+    locales: ['zh', 'en'],
+    routing: { prefixDefaultLocale: false, redirectToDefaultLocale: false },
+    fallback: { en: 'zh' },
+  },
+
   integrations: [
     tailwind({
       applyBaseStyles: false,

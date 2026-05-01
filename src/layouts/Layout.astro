@@ -19,14 +19,16 @@ import type { MetaData as MetaDataType } from '~/types';
 
 export interface Props {
   metadata?: MetaDataType;
+  lang?: 'zh' | 'en';
 }
 
-const { metadata = {} } = Astro.props;
+const { metadata = {}, lang } = Astro.props;
 const { language, textDirection } = I18N;
+const htmlLang = lang === 'en' ? 'en' : lang === 'zh' ? 'zh-CN' : language;
 ---
 
 <!doctype html>
-<html lang={language} dir={textDirection} class="2xl:text-[20px]">
+<html lang={htmlLang} dir={textDirection} class="2xl:text-[20px]">
   <head>
     <CommonMeta />
     <Favicons />
