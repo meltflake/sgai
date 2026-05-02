@@ -9,6 +9,14 @@
 export type Trend = 'up' | 'flat' | 'down'; // visual: ↗ → ↘
 export type DimensionId = 'investment' | 'talent' | 'compute' | 'adoption' | 'research' | 'governance';
 
+/**
+ * External evidence anchor for a dimension.
+ * Despite the name, not strictly a "ranking" — it covers any authoritative
+ * external signal: third-party rankings (Tortoise / Oxford / WIPO / Stanford),
+ * policy facts (Budget 2026 line items), signed international agreements
+ * (Singapore Consensus / ASEAN Guide), etc. The `rank` field carries the
+ * concrete claim (e.g. "#3", "11 countries signed", "400% tax deduction").
+ */
 export interface RankingAnchor {
   source: string;
   sourceEn?: string;
