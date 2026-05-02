@@ -13,6 +13,10 @@ import { levers } from '~/data/levers';
 import { leverSlug } from '~/utils/entity-pages';
 import { categories as policyCategories } from '~/data/policies';
 import { SITE_UPDATED } from '~/version';
+import { dimensions, dataDate as trackerDataDate } from '~/data/tracker';
+import { t, localizedHref } from '~/i18n';
+
+const lang = 'zh' as const;
 
 const metadata = {
   title: '新加坡 AI 观察',
@@ -89,6 +93,35 @@ const totalLeverItems = levers.reduce((sum, lv) => sum + lv.groups.flatMap((g) =
           浏览全部分析 →
         </a>
       </div>
+    </div>
+  </section>
+
+  {/* Tracker dashboard summary — links to the 6-dimension dashboard. */}
+  <section class="px-4 py-10 sm:px-6 mx-auto lg:px-8 max-w-6xl">
+    <div class="callout-note rounded-lg p-6">
+      <h2 class="text-xl font-bold mb-3 m-0">{t(lang, 'trackerHomeSummaryTitle')}</h2>
+      <p class="text-sm text-muted mb-3">
+        {t(lang, 'trackerLastUpdated')}：{trackerDataDate}
+      </p>
+      <div class="flex flex-wrap gap-x-4 gap-y-1 text-sm font-mono mb-4">
+        {
+          dimensions.map((dim) => {
+            const tt = dim.title;
+            const arrow = dim.trend === 'up' ? '↗' : dim.trend === 'down' ? '↘' : '→';
+            return (
+              <span>
+                <span class="text-slate-500">{dim.icon}</span> {tt} <span class="text-slate-400">{arrow}</span>
+              </span>
+            );
+          })
+        }
+      </div>
+      <a
+        href={localizedHref('/tracker/', lang)}
+        class="text-sm font-semibold text-blue-600 dark:text-blue-400 hover:underline"
+      >
+        {t(lang, 'trackerHomeSummaryCta')} →
+      </a>
     </div>
   </section>
 
