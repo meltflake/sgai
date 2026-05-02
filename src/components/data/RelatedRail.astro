@@ -19,6 +19,7 @@
 
 import { getRelated, type EntityRef, type RelatedBundle } from '~/utils/graph';
 import { getLangFromPath, localizedHref, type Lang } from '~/i18n';
+import { leverSlug } from '~/utils/entity-pages';
 
 interface Props {
   /** Anchor entity. The component resolves relations via getRelated(). */
@@ -85,8 +86,6 @@ const leverSub = (lv: { subtitle: string; subtitleEn?: string }) => (isEn ? lv.s
 const tlTitle = (e: { title: string; titleEn?: string }) => (isEn ? e.titleEn || e.title : e.title);
 
 const linkPolicies = localizedHref('/policies/', lang);
-const linkDebates = localizedHref('/debates/', lang);
-const linkLevers = localizedHref('/levers/', lang);
 const linkTimeline = localizedHref('/timeline/', lang);
 
 const empty = (): RelatedBundle => ({
@@ -129,7 +128,7 @@ const skip = isEmpty && hideWhenEmpty;
           const name = personLabel(p);
           return (
             <a
-              href={localizedHref(`/people/${p.id}/`, lang)}
+              href={localizedHref(`/voices/${p.id}/`, lang)}
               class="text-blue-600 dark:text-blue-400 hover:underline"
               title={p.name}
               aria-label={L.ariaPerson(name)}
@@ -142,7 +141,7 @@ const skip = isEmpty && hideWhenEmpty;
           const title = policyLabel(p);
           return (
             <a
-              href={linkPolicies}
+              href={p.id ? localizedHref(`/policies/${p.id}/`, lang) : linkPolicies}
               class="text-purple-600 dark:text-purple-400 hover:underline"
               aria-label={L.ariaPolicy(title)}
             >
@@ -155,7 +154,7 @@ const skip = isEmpty && hideWhenEmpty;
           const trimmed = title.length > 24 ? title.slice(0, 24) + '…' : title;
           return (
             <a
-              href={linkDebates}
+              href={localizedHref(`/debates/${d.id}/`, lang)}
               class="text-amber-700 dark:text-amber-400 hover:underline"
               aria-label={L.ariaDebate(title)}
             >
@@ -170,7 +169,7 @@ const skip = isEmpty && hideWhenEmpty;
           const name = leverNameLabel(lv);
           return (
             <a
-              href={linkLevers}
+              href={localizedHref(`/levers/${leverSlug(lv)}/`, lang)}
               class="text-emerald-700 dark:text-emerald-400 hover:underline"
               aria-label={L.ariaLever(lv.number, name)}
             >
@@ -223,7 +222,7 @@ const skip = isEmpty && hideWhenEmpty;
                   return (
                     <li>
                       <a
-                        href={localizedHref(`/people/${p.id}/`, lang)}
+                        href={localizedHref(`/voices/${p.id}/`, lang)}
                         class="text-sm text-blue-600 dark:text-blue-400 hover:underline"
                       >
                         {personLabel(p)}
@@ -244,7 +243,10 @@ const skip = isEmpty && hideWhenEmpty;
               <ul class="space-y-1.5">
                 {filtered.policies.map((p) => (
                   <li class="text-sm">
-                    <a href={linkPolicies} class="text-purple-600 dark:text-purple-400 hover:underline">
+                    <a
+                      href={p.id ? localizedHref(`/policies/${p.id}/`, lang) : linkPolicies}
+                      class="text-purple-600 dark:text-purple-400 hover:underline"
+                    >
                       {policyLabel(p)}
                     </a>
                     {p.date && <span class="text-xs text-gray-500 ml-2">{p.date}</span>}
@@ -262,7 +264,10 @@ const skip = isEmpty && hideWhenEmpty;
               <ul class="space-y-1.5">
                 {filtered.debates.slice(0, 8).map((d) => (
                   <li class="text-sm">
-                    <a href={linkDebates} class="text-amber-700 dark:text-amber-400 hover:underline">
+                    <a
+                      href={localizedHref(`/debates/${d.id}/`, lang)}
+                      class="text-amber-700 dark:text-amber-400 hover:underline"
+                    >
                       {debateLabel(d)}
                     </a>
                     <span class="text-xs text-gray-500 ml-2">{d.date}</span>
@@ -283,7 +288,10 @@ const skip = isEmpty && hideWhenEmpty;
               <ul class="space-y-1.5">
                 {filtered.levers.map((lv) => (
                   <li class="text-sm">
-                    <a href={linkLevers} class="text-emerald-700 dark:text-emerald-400 hover:underline">
+                    <a
+                      href={localizedHref(`/levers/${leverSlug(lv)}/`, lang)}
+                      class="text-emerald-700 dark:text-emerald-400 hover:underline"
+                    >
                       {L.leverTag(lv.number, leverNameLabel(lv))}
                     </a>
                     <span class="text-xs text-gray-500 ml-2">{leverSub(lv)}</span>

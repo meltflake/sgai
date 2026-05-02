@@ -3,6 +3,7 @@ import Layout from '~/layouts/PageLayout.astro';
 import Headline from '~/components/ui/Headline.astro';
 import { regions, regionDetails, insights, dataDate, dataDisclaimerEn, dataDisclaimer } from '~/data/benchmarking';
 import { pickLocalized } from '~/i18n';
+import { regionSlug } from '~/utils/entity-pages';
 
 const lang = 'en' as const;
 const disclaimer = dataDisclaimerEn || dataDisclaimer;
@@ -47,7 +48,9 @@ const disclaimer = dataDisclaimerEn || dataDisclaimer;
                   }
                 >
                   <td class="p-3 border border-subtle whitespace-nowrap">
-                    {r.flag} {r.nameEn || r.name}
+                    <a href={`/en/benchmarking/${regionSlug(r)}/`} class="text-primary hover:text-secondary">
+                      {r.flag} {r.nameEn || r.name}
+                    </a>
                   </td>
                   <td class="p-3 border border-subtle">{r.strategyEn || r.strategy}</td>
                   <td class="p-3 border border-subtle">{r.strategyYear}</td>
@@ -89,6 +92,12 @@ const disclaimer = dataDisclaimerEn || dataDisclaimer;
                 {region.flag} {region.nameEn || region.name} — {region.fullNameEn || region.fullName}
               </summary>
               <div class="p-5 space-y-5">
+                <a
+                  href={`/en/benchmarking/${regionSlug(region)}/`}
+                  class="inline-flex text-sm text-blue-600 dark:text-blue-400 hover:underline"
+                >
+                  Open detail page →
+                </a>
                 {/* Overview */}
                 <p class="text-muted">{region.overviewEn || region.overview}</p>
 

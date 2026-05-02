@@ -19,6 +19,7 @@
     "check:prettier": "prettier --check .",
     "check:graph": "tsx scripts/verify-graph.ts",
     "check:i18n": "node scripts/i18n-check.mjs",
+    "fetch:video-transcripts": "tsx scripts/videos/fetch-transcripts.ts",
     "fix": "npm run fix:eslint && npm run fix:prettier",
     "fix:eslint": "eslint --fix .",
     "fix:prettier": "prettier -w ."

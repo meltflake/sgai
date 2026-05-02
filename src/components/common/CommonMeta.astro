@@ -1,5 +1,36 @@
 ---
 import { getAsset, getCanonical } from '~/utils/permalinks';
+import { localizedHref, unprefixed } from '~/i18n';
+
+const pathname = String(Astro.url.pathname);
+const defaultPath = unprefixed(pathname);
+const rootSegment = defaultPath.replace(/^\/+/, '').split('/')[0] || '';
+const mirroredRoots = new Set([
+  '',
+  'about',
+  'benchmarking',
+  'challenges',
+  'community-opensource',
+  'debates',
+  'ecosystem',
+  'evolution',
+  'fieldnotes',
+  'legal-ai',
+  'levers',
+  'opensource',
+  'people',
+  'policies',
+  'references',
+  'startups',
+  'talent',
+  'timeline',
+  'tracker',
+  'videos',
+  'voices',
+]);
+const hasEnglishMirror = mirroredRoots.has(rootSegment);
+const zhCanonical = String(getCanonical(defaultPath));
+const enCanonical = String(getCanonical(localizedHref(defaultPath, 'en')));
 ---
 
 <meta charset="UTF-8" />
@@ -8,5 +39,6 @@ import { getAsset, getCanonical } from '~/utils/permalinks';
 
 <link rel="sitemap" href={getAsset('/sitemap-index.xml')} />
 <link rel="manifest" href={getAsset('/manifest.json')} />
-<link rel="alternate" hreflang="zh-CN" href={String(getCanonical(String(Astro.url.pathname)))} />
-<link rel="alternate" hreflang="x-default" href={String(getCanonical(String(Astro.url.pathname)))} />
+<link rel="alternate" hreflang="zh-CN" href={zhCanonical} />
+{hasEnglishMirror && <link rel="alternate" hreflang="en" href={enCanonical} />}
+<link rel="alternate" hreflang="x-default" href={zhCanonical} />

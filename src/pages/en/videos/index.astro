@@ -40,7 +40,7 @@ const allYears = [...new Set(videos.map((v) => v.date.slice(0, 4)))].sort().reve
         intelligence.
       </p>
       <p class="text-gray-400 dark:text-gray-500 text-sm mt-1">
-        Click any video card to watch on YouTube. Titles and summaries are in the original language.
+        Click any video card for the readable transcript, summary, and related videos.
       </p>
     </div>
 
@@ -172,9 +172,7 @@ const allYears = [...new Set(videos.map((v) => v.date.slice(0, 4)))].sort().reve
             <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
               {group.videos.map((video) => (
                 <a
-                  href={video.youtubeUrl}
-                  target="_blank"
-                  rel="noopener"
+                  href={`/en/videos/${video.id}/`}
                   data-video-id={video.id}
                   data-topic={video.topic}
                   data-year={video.date.slice(0, 4)}

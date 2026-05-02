@@ -2,6 +2,7 @@
 import Layout from '~/layouts/PageLayout.astro';
 import Headline from '~/components/ui/Headline.astro';
 import { sections, dataDate } from '~/data/legal-ai';
+import { legalItemSlug } from '~/utils/entity-pages';
 
 const lang = 'en' as const;
 
@@ -61,7 +62,14 @@ This is one of the structural reasons OpenAI, Anthropic, DeepMind, Mistral and o
             {section.items.map((item) => (
               <div class="border border-subtle rounded-lg p-6 bg-surface hover:shadow-md transition-shadow">
                 <div class="flex items-start gap-2 flex-wrap mb-2">
-                  <h3 class="text-lg font-bold m-0 flex-1 min-w-0">{item.titleEn}</h3>
+                  <h3 class="text-lg font-bold m-0 flex-1 min-w-0">
+                    <a
+                      href={`/en/legal-ai/${legalItemSlug(item)}/`}
+                      class="hover:text-blue-600 dark:hover:text-blue-400"
+                    >
+                      {item.titleEn}
+                    </a>
+                  </h3>
                   <span class={`text-xs font-bold px-2 py-1 rounded shrink-0 ${scopeLabel[item.scope].color}`}>
                     {scopeLabel[item.scope].label}
                   </span>
@@ -90,6 +98,12 @@ This is one of the structural reasons OpenAI, Anthropic, DeepMind, Mistral and o
                 </div>
                 <p class="text-sm font-medium mb-2">{item.summaryEn || item.summary}</p>
                 <p class="text-sm text-muted mb-3">{item.bodyEn || item.body}</p>
+                <a
+                  href={`/en/legal-ai/${legalItemSlug(item)}/`}
+                  class="text-sm text-blue-600 dark:text-blue-400 hover:underline mr-4"
+                >
+                  Detail →
+                </a>
                 {item.sourceUrl && (
                   <a
                     href={item.sourceUrl}

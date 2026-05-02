@@ -4,6 +4,27 @@
 
 ---
 
+## 0.6.0 — 2026-05-02
+
+### SEO / GEO：程序化详情页 + LLM 抓取入口
+
+本轮把“列表页里的卡片内容”拆成可索引、可引用、可互链的独立页面，目标是让搜索引擎和 LLM 都能抓到完整事实页，而不是只看到总览列表。
+
+- **新增程序化详情页**：
+  - `/voices/[id]/` + `/en/voices/[id]/`：人物档案，关联国会发言、主导政策、视频观点；旧 `/people/[id]/` 保留并 canonical 到 `/voices/[id]/`。
+  - `/videos/[id]/` + `/en/videos/[id]/`：每条视频独立页，含摘要、YouTube embed、`VideoObject` JSON-LD、关联视频、可读字幕。
+  - `/benchmarking/[region]/` + `/en/benchmarking/[region]/`：每个国家 / 地区一个对标页，含战略、投资、治理、优势 / 劣势、来源。
+  - `/levers/[id]/` + `/en/levers/[id]/`：6 个国家 AI 抓手 + 112 个具体项目独立页。
+  - `/legal-ai/[id]/` + `/en/legal-ai/[id]/`：10 个法律框架卡片独立页，含主管机构、状态、正文、来源、同组关联。
+- **内链升级**：`RelatedRail`、debates / policies / voices / videos / levers / legal-ai / benchmarking 列表页都改为指向详情页，不再只回到列表页。
+- **Transcript Pipeline**：新增 `npm run fetch:video-transcripts`，基于本机 `yt-dlp` 抓 YouTube 字幕，生成 `src/data/video-transcripts.ts`。本轮 54 条视频中 51 条抓到英文字幕。
+- **GEO 入口**：新增 `/llms.txt` 和 `/llms-full.txt`，列出高价值页面与全量详情页索引；`robots.txt` 显式允许 GPTBot、ClaudeBot、PerplexityBot、Google-Extended、Bytespider、CCBot，并声明 sitemap。
+- **技术 SEO**：`CommonMeta` 生成 zh-CN / en / x-default hreflang（仅对有镜像的核心路径启用），详情页补 Article / Person / VideoObject / GovernmentService / Legislation 等 JSON-LD。
+- **复用工具**：新增 `src/utils/entity-pages.ts` 统一生成国家、抓手项目、法律卡片的稳定 slug，后续加数据会自动生成页面。
+- **维护文档**：新增 `docs/20260502-programmatic-seo-geo.md`，记录详情页生成、i18n 完整性、transcript 刷新和 GEO 验收规则。
+
+验证：`npm run check` 通过；`npm run build` 生成 1697 页；`npm run check:i18n` 扫描 864 个 EN 页面，中文残留 0。
+
 ## 0.5.0 — 2026-05-02
 
 ### i18n 多语言化收尾 + 第二轮残留清理

@@ -2,6 +2,7 @@
 import Layout from '~/layouts/PageLayout.astro';
 import Headline from '~/components/ui/Headline.astro';
 import { regions, regionDetails, insights, dataDate, dataDisclaimer } from '~/data/benchmarking';
+import { regionSlug } from '~/utils/entity-pages';
 ---
 
 <Layout
@@ -41,7 +42,9 @@ import { regions, regionDetails, insights, dataDate, dataDisclaimer } from '~/da
                   }
                 >
                   <td class="p-3 border border-subtle whitespace-nowrap">
-                    {r.flag} {r.name}
+                    <a href={`/benchmarking/${regionSlug(r)}/`} class="text-primary hover:text-secondary">
+                      {r.flag} {r.name}
+                    </a>
                   </td>
                   <td class="p-3 border border-subtle">{r.strategy}</td>
                   <td class="p-3 border border-subtle">{r.strategyYear}</td>
@@ -83,6 +86,12 @@ import { regions, regionDetails, insights, dataDate, dataDisclaimer } from '~/da
                 {region.flag} {region.name} — {region.fullName}
               </summary>
               <div class="p-5 space-y-5">
+                <a
+                  href={`/benchmarking/${regionSlug(region)}/`}
+                  class="inline-flex text-sm text-blue-600 dark:text-blue-400 hover:underline"
+                >
+                  查看独立详情页 →
+                </a>
                 {/* 概述 */}
                 <p class="text-muted">{region.overview}</p>
 

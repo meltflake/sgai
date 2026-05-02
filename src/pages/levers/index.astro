@@ -3,6 +3,7 @@ import Layout from '~/layouts/PageLayout.astro';
 import Headline from '~/components/ui/Headline.astro';
 import RelatedRail from '~/components/data/RelatedRail.astro';
 import { levers, transmissionExplainer, dataDate } from '~/data/levers';
+import { leverItemSlug, leverSlug } from '~/utils/entity-pages';
 ---
 
 <Layout
@@ -41,7 +42,9 @@ import { levers, transmissionExplainer, dataDate } from '~/data/levers';
               <div class="flex-1 min-w-[280px]">
                 <div class="flex items-center gap-3 flex-wrap mb-1">
                   <h2 class="text-2xl font-bold m-0">
-                    抓手 {lever.number} · {lever.name}
+                    <a href={`/levers/${leverSlug(lever)}/`} class="hover:text-blue-600 dark:hover:text-blue-400">
+                      抓手 {lever.number} · {lever.name}
+                    </a>
                   </h2>
                   {lever.transmissionMode === 'direct' ? (
                     <span class="text-xs font-bold bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200 px-2 py-1 rounded">
@@ -75,7 +78,14 @@ import { levers, transmissionExplainer, dataDate } from '~/data/levers';
                   {group.items.map((item) => (
                     <div class="border border-subtle rounded-lg p-4 hover:shadow-md transition-shadow">
                       <div class="flex items-start gap-2 flex-wrap mb-2">
-                        <h4 class="text-base font-bold m-0 flex-1 min-w-0">{item.name}</h4>
+                        <h4 class="text-base font-bold m-0 flex-1 min-w-0">
+                          <a
+                            href={`/levers/${leverItemSlug(item)}/`}
+                            class="hover:text-blue-600 dark:hover:text-blue-400"
+                          >
+                            {item.name}
+                          </a>
+                        </h4>
                         <span class="text-xs bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 px-2 py-1 rounded shrink-0">
                           {item.ministry}
                         </span>
@@ -87,14 +97,22 @@ import { levers, transmissionExplainer, dataDate } from '~/data/levers';
                       )}
                       <p class="text-sm text-muted m-0 mb-2">{item.description}</p>
                       {item.sourceUrl && (
-                        <a
-                          href={item.sourceUrl}
-                          target="_blank"
-                          rel="noopener"
-                          class="text-xs text-blue-600 dark:text-blue-400 hover:underline"
-                        >
-                          🔗 来源
-                        </a>
+                        <div class="flex flex-wrap gap-3">
+                          <a
+                            href={`/levers/${leverItemSlug(item)}/`}
+                            class="text-xs text-blue-600 dark:text-blue-400 hover:underline"
+                          >
+                            详情 →
+                          </a>
+                          <a
+                            href={item.sourceUrl}
+                            target="_blank"
+                            rel="noopener"
+                            class="text-xs text-blue-600 dark:text-blue-400 hover:underline"
+                          >
+                            🔗 来源
+                          </a>
+                        </div>
                       )}
                     </div>
                   ))}

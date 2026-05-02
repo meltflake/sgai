@@ -94,7 +94,11 @@ const videosSorted = [...videos].sort((a, b) => b.date.localeCompare(a.date));
             <div class="bg-surface rounded-xl p-6 shadow-sm border border-subtle">
               <div class="flex items-start justify-between mb-3">
                 <div>
-                  <h3 class="font-bold text-gray-900 dark:text-white text-lg leading-snug">{person.name}</h3>
+                  <h3 class="font-bold text-gray-900 dark:text-white text-lg leading-snug">
+                    <a href={`/en/voices/${person.id}/`} class="hover:text-blue-600 dark:hover:text-blue-400">
+                      {person.name}
+                    </a>
+                  </h3>
                   {/* person.zhName intentionally hidden on EN page */}
                 </div>
                 <span
@@ -401,9 +405,7 @@ const videosSorted = [...videos].sort((a, b) => b.date.localeCompare(a.date));
                 <div class="shrink-0 text-xs text-gray-400 dark:text-gray-500 font-mono mt-0.5 w-24">{video.date}</div>
                 <div class="flex-1 min-w-0">
                   <a
-                    href={video.youtubeUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    href={`/en/videos/${video.id}/`}
                     class="text-sm font-medium text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors leading-snug block mb-1"
                   >
                     {pickLocalized(video, 'title', 'titleEn', lang)}

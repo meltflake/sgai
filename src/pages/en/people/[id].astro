@@ -26,6 +26,7 @@ const isStub = !summary || summary === 'Profile pending.' || summary.startsWith(
 const meta = {
   title: `${person.name} — Singapore AI Observatory`,
   description: summary || `${person.name}'s positions in Singapore's AI policy debates.`,
+  canonical: `https://sgai.md/en/voices/${person.id}/`,
 };
 
 const categoryLabels: Record<Person['category'], string> = {

@@ -4,6 +4,7 @@ import Headline from '~/components/ui/Headline.astro';
 import RelatedRail from '~/components/data/RelatedRail.astro';
 import { levers, transmissionExplainer, dataDate } from '~/data/levers';
 import { t, pickLocalized } from '~/i18n';
+import { leverItemSlug, leverSlug } from '~/utils/entity-pages';
 
 const lang = 'en' as const;
 ---
@@ -47,7 +48,9 @@ const lang = 'en' as const;
               <div class="flex-1 min-w-[280px]">
                 <div class="flex items-center gap-3 flex-wrap mb-1">
                   <h2 class="text-2xl font-bold m-0">
-                    Lever {lever.number} · {pickLocalized(lever, 'name', 'nameEn', lang)}
+                    <a href={`/en/levers/${leverSlug(lever)}/`} class="hover:text-blue-600 dark:hover:text-blue-400">
+                      Lever {lever.number} · {pickLocalized(lever, 'name', 'nameEn', lang)}
+                    </a>
                   </h2>
                   {lever.transmissionMode === 'direct' ? (
                     <span class="text-xs font-bold bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200 px-2 py-1 rounded">
@@ -86,7 +89,12 @@ const lang = 'en' as const;
                     <div class="border border-subtle rounded-lg p-4 hover:shadow-md transition-shadow">
                       <div class="flex items-start gap-2 flex-wrap mb-2">
                         <h4 class="text-base font-bold m-0 flex-1 min-w-0">
-                          {pickLocalized(item, 'name', 'nameEn', lang)}
+                          <a
+                            href={`/en/levers/${leverItemSlug(item)}/`}
+                            class="hover:text-blue-600 dark:hover:text-blue-400"
+                          >
+                            {pickLocalized(item, 'name', 'nameEn', lang)}
+                          </a>
                         </h4>
                         <span class="text-xs bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 px-2 py-1 rounded shrink-0">
                           {item.ministryEn || item.ministry}
@@ -101,14 +109,22 @@ const lang = 'en' as const;
                         {pickLocalized(item, 'description', 'descriptionEn', lang)}
                       </p>
                       {item.sourceUrl && (
-                        <a
-                          href={item.sourceUrl}
-                          target="_blank"
-                          rel="noopener"
-                          class="text-xs text-blue-600 dark:text-blue-400 hover:underline"
-                        >
-                          🔗 {t(lang, 'source')}
-                        </a>
+                        <div class="flex flex-wrap gap-3">
+                          <a
+                            href={`/en/levers/${leverItemSlug(item)}/`}
+                            class="text-xs text-blue-600 dark:text-blue-400 hover:underline"
+                          >
+                            Detail →
+                          </a>
+                          <a
+                            href={item.sourceUrl}
+                            target="_blank"
+                            rel="noopener"
+                            class="text-xs text-blue-600 dark:text-blue-400 hover:underline"
+                          >
+                            🔗 {t(lang, 'source')}
+                          </a>
+                        </div>
                       )}
                     </div>
                   ))}

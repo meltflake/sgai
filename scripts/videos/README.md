@@ -54,6 +54,26 @@ npm run fix:prettier
 npm run check
 ```
 
+### 4. 抓取字幕并生成 transcript 数据
+
+详情页 `/videos/[id]/` 会读取 `src/data/video-transcripts.ts`。该文件由脚本生成，原始 VTT / JSON 缓存在 `scripts/videos/data/transcripts/`（已 gitignore）。
+
+```bash
+# 抓取全部视频字幕并生成 src/data/video-transcripts.ts
+npm run fetch:video-transcripts
+
+# 只抓前 5 条，方便测试
+npm run fetch:video-transcripts -- --limit=5
+
+# 只抓指定视频
+npm run fetch:video-transcripts -- --ids=v053,v054
+
+# 强制重新抓取已有缓存
+npm run fetch:video-transcripts -- --force
+```
+
+脚本依赖本机 `yt-dlp`，优先抓 `en` 字幕，再尝试 `zh-Hans` / `zh-Hant` / `zh`。不是每条 YouTube 视频都有可抓字幕；没有字幕的记录会保留在缓存 JSON，但不会写入页面数据。
+
 ## 监控的频道
 
 | 频道 | 类型 | 说明 |
