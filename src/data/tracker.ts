@@ -139,13 +139,19 @@ export const dimensions: Dimension[] = [
     kind: 'quantified',
     icon: '💰',
     title: '投入强度',
+    titleEn: 'Investment Intensity',
     oneLiner: '政府舍得花钱吗？',
+    oneLinerEn: 'Is the government willing to spend?',
     trend: 'up',
     headline: 'S$139/人',
+    headlineEn: 'S$139 per person',
     benchmark: 'vs US $33 / 中国 $7（人均）',
+    benchmarkEn: 'vs US $33 / China $7 (per capita)',
     progress: {
       description:
         '政府 AI 专项 > S$2B（NAIS 2.0 + 公共 AI 研究 2026–2030 + ECI）；Budget 2026 加码（400% 税收激励、S$1.5B FSDF）',
+      descriptionEn:
+        'Government AI commitments > S$2B (NAIS 2.0 + Public AI R&D 2026–2030 + ECI); Budget 2026 adds 400% tax incentive + S$1.5B FSDF',
     },
     rankingAnchors: [
       {
@@ -161,8 +167,12 @@ export const dimensions: Dimension[] = [
     ],
     judgment:
       '人均 S$139 是美国 4.2 倍、中国 19 倍。Budget 2026 在已有 S$2B 基础上加 S$70M Multimodal LLM、S$1.5B FSDF、400% 税收激励——节奏不放缓。RIE2030 总盘 S$37B 兜底未来 5 年。资金强度处于全球第一梯队。',
+    judgmentEn:
+      "S$139 per capita is 4.2× the US and 19× China. Budget 2026 adds S$70M Multimodal LLM, S$1.5B FSDF, and a 400% tax incentive on top of an existing S$2B base — pace is not slowing. RIE2030's S$37B total backstops the next 5 years. Investment intensity sits in the global top tier.",
     shortcoming:
       '私有部门跟投比例偏低，仍是政府推为主；钱花在算力和大企业上较多，SME 端补贴渗透不够；估算和披露口径偶尔不一致，跨年比较要小心。',
+    shortcomingEn:
+      'Private sector co-investment ratio is low — government still drives most of the spend. Capital flows mostly to compute and large enterprises; SME-side subsidies underpenetrate. Disclosure conventions occasionally diverge year-over-year, so cross-year comparisons need care.',
     metrics: [
       {
         name: '政府 AI 专项投入',
@@ -392,13 +402,19 @@ export const dimensions: Dimension[] = [
     kind: 'quantified',
     icon: '👩‍💻',
     title: '人才储备',
+    titleEn: 'Talent Pipeline',
     oneLiner: '人够不够、自给率多少？',
+    oneLinerEn: 'Are there enough people, and how self-sufficient is the supply?',
     trend: 'up',
     headline: '5,000 / 15,000',
+    headlineEn: '5,000 / 15,000',
     benchmark: '目标 2029 完成 33%（外籍占比 35%）',
+    benchmarkEn: '33% of 2029 target (35% foreign)',
     progress: {
       current: '5,000',
+      currentEn: '5,000',
       target: '15,000 by 2029',
+      targetEn: '15,000 by 2029',
       pct: 33,
       url: 'https://www.mddi.gov.sg/newsroom/singapore-invests-over-s-1-billion-in-national-ai-research-and-development-plan-to-strengthen-ai-research-capabilities-and-our-position-as-global-ai-hub/',
     },
@@ -421,8 +437,12 @@ export const dimensions: Dimension[] = [
     ],
     judgment:
       '盘子在涨——SkillsFuture 105K 入读、TeSA 安置 21K、AIAP 22 批毕业 ~500–600 人——但目标完成度 33% 和外籍占比 35% 说明自给率仍是结构性问题。Tortoise Talent 子项在 #6–8 区间，距离美国差一截。',
+    judgmentEn:
+      'The pool is growing — 105K SkillsFuture enrolments, 21K TeSA placements, ~500–600 AIAP graduates over 22 cohorts — but 33% completion against the 15K target and a steady 35% foreign share point to a structural self-sufficiency gap. Tortoise Talent sits in the #6–8 range, well behind the US.',
     shortcoming:
       'AIAP 60 人/批是产能瓶颈；本地名校 AI 博士流失率高（去美/去工业界）；"AI Bilingual 100K" H1 2026 才上线（会计/法律首批），效果未知；非工程岗位（产品、设计、销售）培训供给薄弱。',
+    shortcomingEn:
+      'AIAP capacity is capped at ~60 apprentices per cohort. Top local AI PhDs leak to the US or industry. "AI Bilingual 100K" only launches H1 2026 (accounting/legal first) — outcomes unknown. Non-engineering AI roles (PM, design, sales) are undersupplied.',
     metrics: [
       {
         name: 'AI 专业人才目标',
@@ -541,12 +561,18 @@ export const dimensions: Dimension[] = [
     kind: 'quantified',
     icon: '🖥️',
     title: '算力底座',
+    titleEn: 'Compute Stack',
     oneLiner: '跑得起前沿模型吗？',
+    oneLinerEn: 'Can it run frontier models?',
     trend: 'flat',
     headline: '1.4 GW',
+    headlineEn: '1.4 GW',
     benchmark: '数据中心容量 + 70+ 设施 + NSCC ASPIRE 2A+ 20 PFLOPS',
+    benchmarkEn: 'Data centre capacity + 70+ facilities + NSCC ASPIRE 2A+ at 20 PFLOPS',
     progress: {
       description: '额外 300MW 已分配 + 80MW 试点 2026–2028（增量在路上，但电力是天花板）',
+      descriptionEn:
+        '300MW additional capacity allocated + 80MW pilot 2026–2028 (incremental supply on the way, but power is the ceiling)',
     },
     rankingAnchors: [
       {
@@ -567,8 +593,12 @@ export const dimensions: Dimension[] = [
     ],
     judgment:
       'NSCC ASPIRE 2A+（H100, 20 PFLOPS）+ 商用集群（SMC 2,048 H100/集群）+ Singtel GPU-as-a-Service + 国家计算网格 + HTX NGINE B200 SuperPOD——分层覆盖完整，企业、科研、政府自用都够用。Tortoise 基建排 #2，仅次美国。趋势 → 而非 ↗ 是因为电力配额是天花板。',
+    judgmentEn:
+      'NSCC ASPIRE 2A+ (H100, 20 PFLOPS) + commercial clusters (SMC up to 2,048 H100s) + Singtel GPU-as-a-Service + National Compute Grid + HTX NGINE B200 SuperPOD — full-stack coverage for enterprise, research, and government use. Tortoise ranks infrastructure #2 globally, behind only the US. The trend is flat (→) rather than up because power quotas are the ceiling.',
     shortcoming:
       '电力配额 vs 绿电承诺的张力会卡未来 5 年扩张；前沿芯片（H100/B200）依赖进口，地缘风险存在；自研芯片或定制 ASIC 缺位；东南亚邻国（马来西亚、印尼）正在抢容量，新加坡的"算力中心"地位不是天然的。',
+    shortcomingEn:
+      'The tension between data-centre power quotas and green-energy commitments will cap expansion over the next 5 years. Frontier chips (H100 / B200) remain import-dependent — geopolitical exposure exists. Domestic chip or custom-ASIC capability is absent. Regional rivals (Malaysia, Indonesia) are competing for capacity — Singapore\'s "compute hub" status is not a given.',
     metrics: [
       // 11 rows from old "基础设施" section
       {
@@ -707,12 +737,17 @@ export const dimensions: Dimension[] = [
     kind: 'quantified',
     icon: '🏢',
     title: '产业渗透',
+    titleEn: 'Industry Adoption',
     oneLiner: '企业真在用吗？',
+    oneLinerEn: 'Are enterprises actually using AI?',
     trend: 'up',
     headline: '62.5% 大企业 / 14.5% SME',
+    headlineEn: '62.5% large enterprises / 14.5% SMEs',
     benchmark: 'SME YoY 3 倍增长（2023 4.2% → 2024 14.5%）',
+    benchmarkEn: 'SME adoption tripled YoY (4.2% in 2023 → 14.5% in 2024)',
     progress: {
       description: 'NAIIP 目标 10K 企业 + 100K 工人（2026–2029）',
+      descriptionEn: 'NAIIP target: 10K firms + 100K workers (2026–2029)',
       url: 'https://www.imda.gov.sg/',
     },
     rankingAnchors: [
@@ -734,8 +769,12 @@ export const dimensions: Dimension[] = [
     ],
     judgment:
       '大企业达标——Microsoft 测全球 #2、DBS 等头部样板成熟。SME 14.5% YoY 3 倍是真增长，但绝对值仍低，离普及还远。政府自用（Pair / AIBots / VICA）目标 150K 公务员、Note Buddy 5K 医护、AV 巴士、ISO/IEC 42001 全球首张——案例厚但公开渗透率有限。',
+    judgmentEn:
+      "Large enterprises clear the bar — Microsoft puts Singapore #2 globally, with mature flagships like DBS. SME adoption at 14.5% is a real 3× YoY jump but absolute level is still low — broad penetration is 2–3 years out. Government use (Pair / AIBots / VICA) targets 150K civil servants; Note Buddy is in 5K clinicians; Punggol AV buses live; Changi holds the world's first ISO/IEC 42001 certification — case studies are thick but disclosed penetration rates are limited.",
     shortcoming:
       'SME 14.5% 看起来涨快、绝对值仍低，普惠 AI 还要 2–3 年；政府自用以效率工具为主，决策类 AI 渗透浅；NAIIP 拨款规模未公开，执行力存疑；政府公开渗透率仅有目标无进度，对账困难。',
+    shortcomingEn:
+      'SME 14.5% looks fast-growing but absolute level is low — broad-based AI usage takes another 2–3 years. Government use is mostly productivity tools; decision-grade AI is shallow. NAIIP funding sizing is not public — execution is hard to assess. Government-side public penetration data has targets but no tracked progress.',
     metrics: [
       // 17 rows from old "产业采用" section + 1 row from old "国际排名" (东南亚深科技融资份额) = 18 total
       {
@@ -949,12 +988,17 @@ export const dimensions: Dimension[] = [
     kind: 'quantified',
     icon: '🔬',
     title: '研究质量',
+    titleEn: 'Research Quality',
     oneLiner: '有真东西出来吗？',
+    oneLinerEn: 'Is original research coming out?',
     trend: 'flat',
     headline: '人均论文全球 #1',
+    headlineEn: 'Per-capita papers #1 globally',
     benchmark: 'NTU AI #3（仅次 MIT/CMU）· NUS AI #9',
+    benchmarkEn: 'NTU AI #3 (after MIT/CMU) · NUS AI #9',
     progress: {
       description: 'SEA-LION v4（11 语言、4B–33B 参数）+ 100E 100+ 项目 + ICLR 2025 主办',
+      descriptionEn: 'SEA-LION v4 (11 languages, 4B–33B params) + 100E (100+ projects) + ICLR 2025 hosted',
     },
     rankingAnchors: [
       {
@@ -975,8 +1019,12 @@ export const dimensions: Dimension[] = [
     ],
     judgment:
       '产出量级和学校排名都很硬——人均论文 #1、NTU AI #3、NUS #9、ICLR 2025 主办、SEA-LION 是少有的非英美中有规模的基座模型。但顶级原创（FAIR/DeepMind 级 frontier work）仍少一档：顶会一作占比、被引大于 1000 的代表作、自研基座的市场份额都还差。',
+    judgmentEn:
+      'Volume and university rankings are strong — per-capita papers #1, NTU AI #3, NUS #9, ICLR 2025 hosted, SEA-LION is one of the few non-US/UK/China foundation models at scale. But frontier-grade originality (FAIR / DeepMind tier) still trails by a step: first-author share at top venues, signature works with >1000 citations, market share of self-developed foundation models — all behind.',
     shortcoming:
       '顶会一作占比、被引数、自研基座市场份额都还差一档；顶尖博士流失率高；产学研转化对企业自用强但对外输出弱（无 OpenAI / Anthropic 量级的 spinoff）；原创研究的国际可见度依赖少数明星教授。',
+    shortcomingEn:
+      'First-author share at top venues, citation counts, and self-developed foundation-model market share all trail by a step. Top PhD outflow is high. Research-to-industry transfer is strong for in-house enterprise use but weak as international export — no OpenAI / Anthropic-tier spinout. International visibility hinges on a small number of star professors.',
     metrics: [
       {
         name: 'AI 论文人均发表量',
@@ -1048,11 +1096,16 @@ export const dimensions: Dimension[] = [
     kind: 'qualitative',
     icon: '🌐',
     title: '治理影响力',
+    titleEn: 'Governance Influence',
     oneLiner: '规则上是不是话事人？',
+    oneLinerEn: 'Is Singapore writing the rules?',
     trend: 'up',
     badge: '规则制定者',
+    badgeEn: 'Rule-maker',
     judgment:
       'Singapore Consensus on AI Safety 11 国签署（含中美）、ASEAN Guide on AI Governance 10 国采纳（新加坡主导起草）、AI Verify Foundation 在全球被引、REAIM 联合主办、ISESEA 已办两届——新加坡是规则制定者而不是接受者，话语权显著超出体量。Bletchley、Seoul、Paris 三届 AI Safety Summit 全程参与；MAS Project MindForge 拉到 24 家机构 + 四大云厂；UN Independent International Scientific Panel 有席位。',
+    judgmentEn:
+      "Singapore Consensus on AI Safety signed by 11 countries (incl. US and China); ASEAN Guide on AI Governance adopted by all 10 ASEAN states (drafted under Singapore's lead); AI Verify Foundation cited globally; REAIM co-hosted; ISESEA held twice — Singapore is a rule-maker, not a rule-taker, with influence well above its size. Full participation in Bletchley, Seoul, and Paris AI Safety Summits; MAS Project MindForge has 24 institutions + the four major cloud vendors; UN Independent International Scientific Panel includes Singapore.",
     rankingAnchors: [
       {
         source: 'Oxford Government AI Readiness 2024',
@@ -1072,6 +1125,8 @@ export const dimensions: Dimension[] = [
     ],
     shortcoming:
       '规则制定 ≠ 规则被遵守——AI Verify 框架被采纳但执法层面影响力弱；中美 AI 治理分裂时新加坡的"居间者"定位可持续性存疑——任一方要求选边，回旋空间会塌；治理研究投入（AISI S$10M/年）和影响力规模不匹配，结构性投入偏轻。',
+    shortcomingEn:
+      'Setting rules ≠ rules being enforced — AI Verify is widely adopted but enforcement-side influence is weak. As US-China AI governance fragments, Singapore\'s "broker" position is hard to sustain — if either side demands picking a side, the room narrows fast. Governance-research investment (AISI at S$10M/year) is mismatched with influence scale — structurally underfunded.',
     metrics: [
       {
         name: 'Singapore Consensus on AI Safety',
