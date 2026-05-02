@@ -104,11 +104,15 @@ const resolvedMetrics: ResolvedMetric[] = dim.metrics.map((row: MetricRow) => ({
         dim.kind === 'quantified' && (
           <>
             <div class="bg-surface border border-subtle rounded-lg p-4">
-              <div class="text-xs uppercase tracking-wider text-gray-500 mb-1">Headline</div>
+              <div class="text-xs uppercase tracking-wider text-gray-500 mb-1">
+                {t(lang, 'trackerDetailCardHeadline')}
+              </div>
               <div class="text-2xl font-bold text-primary">{headline}</div>
             </div>
             <div class="bg-surface border border-subtle rounded-lg p-4">
-              <div class="text-xs uppercase tracking-wider text-gray-500 mb-1">Benchmark</div>
+              <div class="text-xs uppercase tracking-wider text-gray-500 mb-1">
+                {t(lang, 'trackerDetailCardBenchmark')}
+              </div>
               <div class="font-semibold">{benchmark}</div>
             </div>
           </>
@@ -117,13 +121,13 @@ const resolvedMetrics: ResolvedMetric[] = dim.metrics.map((row: MetricRow) => ({
       {
         dim.kind === 'qualitative' && (
           <div class="bg-surface border border-subtle rounded-lg p-4 md:col-span-2">
-            <div class="text-xs uppercase tracking-wider text-gray-500 mb-1">Badge</div>
+            <div class="text-xs uppercase tracking-wider text-gray-500 mb-1">{t(lang, 'trackerDetailCardBadge')}</div>
             <div class="font-semibold">{badge}</div>
           </div>
         )
       }
       <div class="bg-surface border border-subtle rounded-lg p-4">
-        <div class="text-xs uppercase tracking-wider text-gray-500 mb-1">Trend</div>
+        <div class="text-xs uppercase tracking-wider text-gray-500 mb-1">{t(lang, 'trackerDetailCardTrend')}</div>
         <div class="font-semibold font-mono">{trendArrow} {trendLabel}</div>
       </div>
     </section>
