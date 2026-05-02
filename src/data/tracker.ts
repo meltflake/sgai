@@ -100,12 +100,37 @@ export interface OverallSummary {
 
 export const dataDate = '2026-05-02';
 
-// TODO(Task 8): fill oneLiner / oneLinerEn / topRankings / methodologyNote / methodologyNoteEn
 export const overallSummary: OverallSummary = {
-  oneLiner: '',
+  oneLiner:
+    '6 个维度看新加坡 AI：投入强、治理强、基建强；人才自给率低、原创研究偏少是结构性短板。数字和编辑解读各自呈现，访客自己判断。',
+  oneLinerEn:
+    'Six dimensions on Singapore AI: strong investment, governance, and infrastructure; low talent self-sufficiency and limited frontier research are structural weaknesses. Numbers and editorial interpretation are shown side by side — readers decide.',
   asOf: dataDate,
-  topRankings: [],
-  methodologyNote: '',
+  topRankings: [
+    {
+      source: 'Tortoise Global AI Index 2024',
+      rank: '#3',
+      url: 'https://www.tortoisemedia.com/intelligence/global-ai/',
+    },
+    {
+      source: 'Oxford Government AI Readiness 2024',
+      rank: '#2',
+      url: 'https://oxfordinsights.com/ai-readiness/ai-readiness-index/',
+    },
+    {
+      source: 'Microsoft AI Adoption 2026',
+      rank: '#2 (60.9%)',
+      url: 'https://www.microsoft.com/en-us/corporate-responsibility/topics/ai-economy-institute/reports/global-ai-adoption-2025/',
+    },
+    {
+      source: 'WIPO Global Innovation Index 2025',
+      rank: '#5',
+      url: 'https://www.wipo.int/',
+    },
+  ],
+  methodologyNote: '每个维度呈现核心数字 + 第三方排名 + 目标进度 + 趋势 + 编辑解读，不打总评分。',
+  methodologyNoteEn:
+    'Each dimension shows headline numbers + third-party rankings + target progress + trend + editorial interpretation — no overall grade.',
 };
 
 export const dimensions: Dimension[] = [
