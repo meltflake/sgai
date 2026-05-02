@@ -1,7 +1,9 @@
 # Tracker 改造方案：从"指标参考表"到"政策信号追踪器"
 
 日期：2026-05-02
-状态：proposal（待评审）
+状态：**superseded**（被 `20260502-tracker-dashboard-design.md` 取代）
+
+> 本文档保留作为历史记录。"信号雷达"方向在第二轮 brainstorm 中被替换为"评判仪表盘"——见 `docs/20260502-tracker-dashboard-design.md`。
 关联：`src/data/tracker.ts`、`src/pages/tracker/index.astro`、`src/data/levers.ts`
 
 ## 一、问题诊断
