@@ -157,11 +157,13 @@ export const dimensions: Dimension[] = [
       {
         source: 'Stanford AI Index 2025',
         rank: '人均政府 AI 投入全球前列',
+        rankEn: 'Per-capita government AI spend among global top',
         url: 'https://hai.stanford.edu/ai-index/2025-ai-index-report/economy',
       },
       {
         source: 'Budget 2026',
         rank: '400% AI 税收激励（创新政策）',
+        rankEn: '400% AI tax incentive (innovation policy)',
         url: 'https://www.singaporebudget.gov.sg/budget-speech/budget-statement/c-harness-ai-as-a-strategic-advantage',
       },
     ],
@@ -421,17 +423,20 @@ export const dimensions: Dimension[] = [
     rankingAnchors: [
       {
         source: 'Tortoise Global AI Index Talent 子项',
+        sourceEn: 'Tortoise Global AI Index — Talent sub-score',
         rank: '~#6–8',
         url: 'https://www.tortoisemedia.com/intelligence/global-ai/',
       },
       {
         source: 'SkillsFuture (2025)',
         rank: '105K 人 / 1,600 课程',
+        rankEn: '105K people / 1,600 courses',
         url: 'https://www.skillsfuture.gov.sg/',
       },
       {
         source: 'TeSA',
         rank: '21K 本地人就业 + 340K 技能提升',
+        rankEn: '21K locals placed + 340K reskilled',
         url: 'https://www.imda.gov.sg/',
       },
     ],
@@ -583,11 +588,13 @@ export const dimensions: Dimension[] = [
       {
         source: 'NVIDIA Singapore (2025)',
         rank: '占全球营收 15%（人均 $600）',
+        rankEn: '15% of global revenue (~$600 per capita)',
         url: 'https://www.edb.gov.sg/en/our-industries/artificial-intelligence-in-singapore.html',
       },
       {
         source: 'Introl 2025',
         rank: '全球数据中心市场 $4.16B（2024）',
+        rankEn: 'Global data centre market $4.16B (2024)',
         url: 'https://www.imda.gov.sg/',
       },
     ],
@@ -754,16 +761,19 @@ export const dimensions: Dimension[] = [
       {
         source: 'Microsoft AI Economy Institute 2026',
         rank: '全球第 2（60.9%，仅次 UAE）',
+        rankEn: '#2 globally (60.9%, behind UAE only)',
         url: 'https://www.microsoft.com/en-us/corporate-responsibility/topics/ai-economy-institute/reports/global-ai-adoption-2025/',
       },
       {
         source: 'IMDA SGDE 2025',
         rank: '数字经济占 GDP 18.6%（2024）',
+        rankEn: 'Digital economy 18.6% of GDP (2024)',
         url: 'https://www.imda.gov.sg/',
       },
       {
         source: 'DBS (2024)',
         rank: '800+ 模型 / 350+ 用例 / S$750M 经济价值',
+        rankEn: '800+ models / 350+ use cases / S$750M economic value',
         url: 'https://www.mas.gov.sg/',
       },
     ],
@@ -1004,6 +1014,7 @@ export const dimensions: Dimension[] = [
       {
         source: 'Wiley 2024',
         rank: '人均 AI 论文全球 #1（每百万人 250 篇，2022）',
+        rankEn: '#1 globally for AI papers per capita (250 per million people, 2022)',
         url: 'https://aiindex.stanford.edu/',
       },
       {
@@ -1110,16 +1121,19 @@ export const dimensions: Dimension[] = [
       {
         source: 'Oxford Government AI Readiness 2024',
         rank: '#2（仅次美国）',
+        rankEn: '#2 (behind the US only)',
         url: 'https://oxfordinsights.com/ai-readiness/ai-readiness-index/',
       },
       {
         source: 'Singapore Consensus',
         rank: '11 国签署',
+        rankEn: 'Signed by 11 countries',
         url: 'https://aiverifyfoundation.sg/',
       },
       {
         source: 'ASEAN Guide on AI Governance',
         rank: '10 国采纳',
+        rankEn: 'Adopted by 10 ASEAN states',
         url: 'https://asean.org/',
       },
     ],
