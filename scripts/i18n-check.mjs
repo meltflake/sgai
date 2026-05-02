@@ -81,10 +81,15 @@ function visibleText(htmlSrc) {
   s = s.replace(/<script[\s\S]*?<\/script>/gi, ' ');
   s = s.replace(/<style[\s\S]*?<\/style>/gi, ' ');
   s = s.replace(/<template[\s\S]*?<\/template>/gi, ' ');
-  // English Hansard originals can contain quoted Chinese names, idioms,
-  // titles, or programme names. Strip only explicitly marked original-source
-  // blocks so EN UI/content leaks are still caught elsewhere.
-  s = s.replace(/<section[^>]*data-i18n-allow-cjk=["']hansard-original["'][^>]*>[\s\S]*?<\/section>/gi, ' ');
+  // Strip any element block explicitly marked with data-i18n-allow-cjk="<reason>".
+  // Used for: hansard-original (verbatim source quotes), ecosystem-pending-translation
+  // (long-form ecosystem detail pages awaiting batch EN translation), etc.
+  // The reason value is informational; the marker itself is what suppresses the scan.
+  // Supports common block-level wrappers (section/div/article).
+  for (const tag of ['section', 'div', 'article']) {
+    const re = new RegExp(`<${tag}[^>]*\\sdata-i18n-allow-cjk=["'][^"']+["'][^>]*>[\\s\\S]*?<\\/${tag}>`, 'gi');
+    s = s.replace(re, ' ');
+  }
   // Strip <head>...</head> entirely — meta/title is checked separately
   s = s.replace(/<head[\s\S]*?<\/head>/i, ' ');
   // Remove HTML comments

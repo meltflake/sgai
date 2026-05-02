@@ -3,6 +3,7 @@ import slugify from 'limax';
 import { regions, regionDetails, type RegionDetail, type RegionSummary } from '~/data/benchmarking';
 import { sections as legalSections, type LegalItem, type LegalSection } from '~/data/legal-ai';
 import { levers, type Lever, type LeverGroup, type LeverItem } from '~/data/levers';
+import { ecosystemCategories, type EcosystemCategory, type EcosystemEntity } from '~/data/ecosystem';
 
 export function toSeoSlug(value: string): string {
   const slug = slugify(value).replace(/^\/+|\/+$/g, '');
@@ -83,3 +84,41 @@ export const legalItemPages: LegalItemPage[] = legalSections.flatMap((section, s
     item,
   }))
 );
+
+export function ecosystemEntitySlug(entity: Pick<EcosystemEntity, 'id' | 'name' | 'nameEn'>): string {
+  if (entity.id) return entity.id;
+  return toSeoSlug(entity.nameEn || entity.name);
+}
+
+export interface EcosystemEntityPage {
+  slug: string;
+  category: EcosystemCategory;
+  categoryIndex: number;
+  entity: EcosystemEntity;
+}
+
+export const ecosystemEntityPages: EcosystemEntityPage[] = ecosystemCategories.flatMap((category, categoryIndex) =>
+  category.entities
+    .filter((entity) => entity.id)
+    .map((entity) => ({
+      slug: ecosystemEntitySlug(entity),
+      category,
+      categoryIndex,
+      entity,
+    }))
+);
+
+export function getEcosystemEntityPage(slug: string): EcosystemEntityPage | undefined {
+  return ecosystemEntityPages.find((p) => p.slug === slug);
+}
+
+export function getSiblingsInCategory(
+  categoryIndex: number,
+  excludeSlug: string,
+  limit = 6
+): Array<{ slug: string; entity: EcosystemEntity }> {
+  return ecosystemEntityPages
+    .filter((p) => p.categoryIndex === categoryIndex && p.slug !== excludeSlug)
+    .slice(0, limit)
+    .map((p) => ({ slug: p.slug, entity: p.entity }));
+}

@@ -1,0 +1,57 @@
+---
+interface Props {
+  content: string;
+}
+
+const { content } = Astro.props;
+
+type Block = { kind: 'p'; text: string } | { kind: 'ul'; items: string[] };
+
+function parse(raw: string): Block[] {
+  const blocks: Block[] = [];
+  const paragraphs = raw
+    .split(/\n{2,}/)
+    .map((p) => p.trim())
+    .filter(Boolean);
+  for (const para of paragraphs) {
+    const lines = para
+      .split(/\n/)
+      .map((l) => l.trim())
+      .filter(Boolean);
+    const isList = lines.length > 0 && lines.every((l) => /^[-•]\s+/.test(l));
+    if (isList) {
+      blocks.push({ kind: 'ul', items: lines.map((l) => l.replace(/^[-•]\s+/, '')) });
+    } else {
+      blocks.push({ kind: 'p', text: para });
+    }
+  }
+  return blocks;
+}
+
+function renderInline(text: string): string {
+  // bold **x** and inline code `x` only — keep this dead simple.
+  // Escape HTML first to avoid injection from data files.
+  const esc = text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  return esc
+    .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+    .replace(/`([^`]+)`/g, '<code class="text-sm bg-gray-100 dark:bg-slate-800 px-1.5 py-0.5 rounded">$1</code>');
+}
+
+const blocks = parse(content);
+---
+
+<div class="font-serif text-base md:text-[17px] leading-[1.85] text-gray-800 dark:text-gray-200 space-y-4">
+  {
+    blocks.map((block) =>
+      block.kind === 'p' ? (
+        <p set:html={renderInline(block.text)} />
+      ) : (
+        <ul class="list-disc list-outside pl-6 space-y-1.5">
+          {block.items.map((item) => (
+            <li set:html={renderInline(item)} />
+          ))}
+        </ul>
+      )
+    )
+  }
+</div>
