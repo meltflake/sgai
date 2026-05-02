@@ -259,7 +259,7 @@ const totalLeverItems = levers.reduce((sum, lv) => sum + lv.groups.flatMap((g) =
         {
           latestDebates.map((d) => (
             <li class="py-4">
-              <a href="/debates/" class="group block">
+              <a href={`/debates/${d.id}/`} class="group block">
                 <div class="flex items-baseline gap-4">
                   <span class="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 tabular-nums w-24 shrink-0">
                     {d.date}
