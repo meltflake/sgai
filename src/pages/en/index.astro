@@ -9,6 +9,7 @@ import { fetchPosts } from '~/utils/blog';
 import { getPermalink } from '~/utils/permalinks';
 import { debates, DEBATE_STATS } from '~/data/debates';
 import { levers } from '~/data/levers';
+import { leverSlug } from '~/utils/entity-pages';
 import { categories as policyCategories } from '~/data/policies';
 import { SITE_UPDATED } from '~/version';
 import { t, pickLocalized } from '~/i18n';
@@ -43,7 +44,9 @@ const allPosts = await fetchPosts();
 const latestPosts = allPosts.filter((p) => p.lang === 'en').slice(0, 3);
 const [featuredPost, ...secondaryPosts] = latestPosts;
 
-const featuredLevers = levers.slice(0, 4);
+const leverProjectCount = (lv: (typeof levers)[number]) => lv.groups.flatMap((g) => g.items).length;
+const passThroughLevers = levers.filter((lv) => lv.transmissionMode === 'transmitted');
+const directLevers = levers.filter((lv) => lv.transmissionMode === 'direct');
 
 const latestDebates = [...debates].sort((a, b) => (a.date < b.date ? 1 : -1)).slice(0, 5);
 
@@ -56,13 +59,17 @@ const totalLeverItems = levers.reduce((sum, lv) => sum + lv.groups.flatMap((g) =
   <JsonLd schema={organizationSchema} />
   <JsonLd schema={websiteSchema} />
 
-  <section class="relative pt-12 md:pt-20 pb-10 md:pb-14">
-    <div class="max-w-3xl mx-auto px-4 sm:px-6">
+  {
+    /* Hero — thesis + lever map in one fold. The structure (4 pass-through
+      vs 2 direct) is the argument; copy is intentionally compact. */
+  }
+  <section class="relative pt-12 md:pt-16 pb-8 md:pb-10">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6">
       <p class="text-xs uppercase tracking-[0.18em] text-primary font-semibold mb-4">{t(lang, 'heroEyebrow')}</p>
       <h1
-        class="font-serif text-3xl md:text-5xl leading-[1.2] font-semibold text-gray-900 dark:text-white mb-6 tracking-tight"
+        class="font-serif text-3xl md:text-5xl leading-[1.15] font-semibold text-gray-900 dark:text-white mb-6 tracking-tight max-w-3xl"
       >
-        {t(lang, 'heroHeadline')}<br class="hidden md:inline" />{t(lang, 'heroHeadline2')}
+        {t(lang, 'heroHeadline')}<br class="hidden md:inline" />{` ${t(lang, 'heroHeadline2')}`}
       </h1>
       <p class="text-base md:text-lg leading-[1.85] text-gray-700 dark:text-gray-300 mb-8 max-w-prose">
         {t(lang, 'heroSubtitle')}
@@ -85,6 +92,114 @@ const totalLeverItems = levers.reduce((sum, lv) => sum + lv.groups.flatMap((g) =
     </div>
   </section>
 
+  {
+    /* Lever map — visual evidence for the hero thesis. Two columns by
+      transmissionMode: pass-through (4) wide-left, direct (2) narrow-right. */
+  }
+  <section class="pb-12 md:pb-16">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6">
+      <div class="flex items-baseline justify-between mb-2 gap-4 flex-wrap">
+        <h2 class="font-serif text-xl md:text-2xl font-semibold text-gray-900 dark:text-white">
+          {t(lang, 'leversSection')}
+        </h2>
+        <a href="/en/levers/" class="text-sm text-gray-500 hover:text-primary dark:text-gray-400 transition-colors">
+          {t(lang, 'viewAllLeversCta')}
+        </a>
+      </div>
+      <p class="text-sm text-gray-600 dark:text-gray-400 mb-6 max-w-prose leading-relaxed">
+        {t(lang, 'leversBlurb').replace('{count}', String(totalLeverItems))}
+      </p>
+
+      <div class="grid gap-6 md:grid-cols-[2fr_1fr] md:gap-8">
+        {/* Pass-through column (4 levers) */}
+        <div>
+          <div class="flex items-center gap-2 mb-4">
+            <span class="text-xs uppercase tracking-[0.18em] text-primary font-semibold">
+              {t(lang, 'leverMapColPassThrough')}
+            </span>
+            <span class="text-xs text-gray-400 dark:text-gray-500 tabular-nums">
+              {passThroughLevers.length}
+            </span>
+          </div>
+          <p class="text-xs text-gray-500 dark:text-gray-400 mb-4 leading-relaxed">
+            {t(lang, 'leverMapColPassThroughHint')}
+          </p>
+          <div class="grid sm:grid-cols-2 gap-x-6 gap-y-5">
+            {
+              passThroughLevers.map((lv) => (
+                <a
+                  href={`/en/levers/${leverSlug(lv)}/`}
+                  class="group block border-l-2 border-subtle hover:border-primary pl-4 py-1 transition-colors"
+                >
+                  <div class="flex items-baseline justify-between gap-2 mb-1">
+                    <div class="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 tabular-nums">
+                      {t(lang, 'leverWord')} {String(lv.number).padStart(2, '0')}
+                    </div>
+                    <div class="text-xs text-gray-400 dark:text-gray-500 tabular-nums">
+                      {leverProjectCount(lv)} {t(lang, 'leverProjectsSuffix')}
+                    </div>
+                  </div>
+                  <div class="font-serif text-base md:text-lg font-semibold text-gray-900 dark:text-white group-hover:text-primary transition-colors mb-1">
+                    {lv.icon} {pickLocalized(lv, 'name', 'nameEn', lang)}
+                  </div>
+                  <div class="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">
+                    {pickLocalized(lv, 'subtitle', 'subtitleEn', lang)}
+                  </div>
+                </a>
+              ))
+            }
+          </div>
+        </div>
+
+        {/* Direct column (2 levers) */}
+        <div class="md:border-l md:border-subtle md:pl-8">
+          <div class="flex items-center gap-2 mb-4">
+            <span class="text-xs uppercase tracking-[0.18em] text-amber-700 dark:text-amber-400 font-semibold">
+              {t(lang, 'leverMapColDirect')}
+            </span>
+            <span class="text-xs text-gray-400 dark:text-gray-500 tabular-nums">{directLevers.length}</span>
+          </div>
+          <p class="text-xs text-gray-500 dark:text-gray-400 mb-4 leading-relaxed">
+            {t(lang, 'leverMapColDirectHint')}
+          </p>
+          <div class="grid gap-y-5">
+            {
+              directLevers.map((lv) => (
+                <a
+                  href={`/en/levers/${leverSlug(lv)}/`}
+                  class="group block border-l-2 border-amber-200 dark:border-amber-900/60 hover:border-amber-600 pl-4 py-1 transition-colors"
+                >
+                  <div class="flex items-baseline justify-between gap-2 mb-1">
+                    <div class="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 tabular-nums">
+                      {t(lang, 'leverWord')} {String(lv.number).padStart(2, '0')}
+                    </div>
+                    <div class="text-xs text-gray-400 dark:text-gray-500 tabular-nums">
+                      {leverProjectCount(lv)} {t(lang, 'leverProjectsSuffix')}
+                    </div>
+                  </div>
+                  <div class="font-serif text-base md:text-lg font-semibold text-gray-900 dark:text-white group-hover:text-primary transition-colors mb-1">
+                    {lv.icon} {pickLocalized(lv, 'name', 'nameEn', lang)}
+                  </div>
+                  <div class="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">
+                    {pickLocalized(lv, 'subtitle', 'subtitleEn', lang)}
+                  </div>
+                </a>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-6 pt-6 border-t border-subtle text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+        {t(lang, 'transmissionFootnote')}{' '}
+        <a href="/en/levers/" class="text-primary hover:text-secondary underline underline-offset-4">
+          {t(lang, 'transmissionFootnoteCta')}
+        </a>
+      </div>
+    </div>
+  </section>
+
+  {/* Freshness strip — pushed below the map; data breadth signal. */}
   <section class="border-y border-subtle">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 py-5">
       <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-sm">
@@ -206,45 +321,6 @@ const totalLeverItems = levers.reduce((sum, lv) => sum + lv.groups.flatMap((g) =
         <a href="/en/blog/" class="text-sm text-primary hover:text-secondary font-medium">
           {t(lang, 'ctaBrowseAll')}
         </a>
-      </div>
-    </div>
-  </section>
-
-  <section class="py-12 md:py-16 border-t border-subtle">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6">
-      <div class="flex items-baseline justify-between mb-2">
-        <h2 class="font-serif text-2xl md:text-3xl font-semibold text-gray-900 dark:text-white">
-          {t(lang, 'leversSection')}
-        </h2>
-        <a
-          href="/en/levers/"
-          class="text-sm text-gray-500 hover:text-primary dark:text-gray-400 transition-colors hidden sm:inline"
-        >
-          {t(lang, 'viewAllLeversCta')}
-        </a>
-      </div>
-      <p class="text-gray-600 dark:text-gray-400 mb-8 max-w-prose leading-relaxed">
-        {t(lang, 'leversBlurb').replace('{count}', String(totalLeverItems))}
-      </p>
-      <div class="grid sm:grid-cols-2 gap-x-8 gap-y-6">
-        {
-          featuredLevers.map((lv) => (
-            <a
-              href={`/en/levers/#lever-${lv.number}`}
-              class="group block border-l-2 border-subtle hover:border-primary pl-4 py-1 transition-colors"
-            >
-              <div class="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-1 tabular-nums">
-                {t(lang, 'leverWord')} {String(lv.number).padStart(2, '0')}
-              </div>
-              <div class="font-serif text-lg font-semibold text-gray-900 dark:text-white group-hover:text-primary transition-colors mb-1">
-                {pickLocalized(lv, 'name', 'nameEn', lang)}
-              </div>
-              <div class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
-                {pickLocalized(lv, 'subtitle', 'subtitleEn', lang)}
-              </div>
-            </a>
-          ))
-        }
       </div>
     </div>
   </section>

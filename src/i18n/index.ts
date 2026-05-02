@@ -220,10 +220,9 @@ export const zh = {
 
   // Homepage chrome
   heroEyebrow: '新加坡 AI 观察',
-  heroHeadline: '新加坡的 AI 战略，',
-  heroHeadline2: '真正的护城河不在技术，在制度。',
-  heroSubtitle:
-    '这里追踪一个城邦在 AI 时代的国家级转型——政策文件、国会辩论、抓手图谱、创业生态、法律框架。不只是信息整理，更是独立的中文分析。',
+  heroHeadline: '新加坡的 AI 战略不在算法。',
+  heroHeadline2: '在 6 个抓手。',
+  heroSubtitle: '把整个国家当作企业 AI-native 转型的"包装层"——国家自己不必成为 AI-native，只要把企业转型速度放大就够。',
   heroSubtitleNeutral: '一个城邦在 AI 时代的国家级转型——政策文件、国会辩论、抓手图谱、创业生态、法律框架的独立分析。',
   ctaReadCore: '阅读核心论证',
   ctaBrowseAll: '浏览全部分析 →',
@@ -235,8 +234,15 @@ export const zh = {
   viewAll: '查看全部 →',
   viewAllLeversCta: '完整图谱 →',
   viewAllDebatesCta: '全部 {count} 场 →',
-  leversSection: '国家 AI 抓手图谱',
-  leversBlurb: '新加坡 AI 战略不能按部门理解，要按"AI 引入路径"理解。{count} 个具体落地项目，归到 6 个国家级抓手。',
+  leversSection: '国家级 AI-native 抓手图谱',
+  leversBlurb: '6 个抓手覆盖 {count} 个具体落地项目。按"AI 引入路径"重新切片，跨多个部委串成完整执行管线。',
+  leverMapColPassThrough: '穿透到企业',
+  leverMapColDirect: '国家直接做',
+  leverMapColPassThroughHint: '国家通过这些抓手把企业 AI 转型放大',
+  leverMapColDirectHint: '国家自己直接做，不依赖企业',
+  leverProjectsSuffix: '项目',
+  transmissionFootnote: '7 条传导杠杆里，只有 2 条是国家直接做的；其他 5 条都是国家穿透到企业的杠杆。',
+  transmissionFootnoteCta: '了解 7 条传导杠杆 →',
   recentDebatesSection: '最近国会辩论',
   recentDebatesBlurb: '从 {from} 到 {to}，议会围绕 AI 的每一次质询、答复与辩论。',
   closingThesis: '新加坡的 AI 马六甲海峡在哪里？真正的护城河不在算法，在制度——快速识别问题并果断转向的能力。',
@@ -322,10 +328,10 @@ export const en: Partial<Record<keyof typeof zh, string>> = {
   controversyLevel: 'Controversy',
 
   heroEyebrow: 'Singapore AI Observatory',
-  heroHeadline: 'Singapore’s AI strategy:',
-  heroHeadline2: 'the real moat is institutional, not technical.',
+  heroHeadline: 'Singapore’s AI strategy isn’t algorithms.',
+  heroHeadline2: 'It’s 6 levers.',
   heroSubtitle:
-    'Tracking how one city-state is reorganising itself for the AI era — policies, parliamentary debates, levers, startups, and law. Not just a feed. Independent analysis.',
+    'The state wraps itself around enterprise AI-native transformation. The state itself doesn’t need to become AI-native — it just needs to amplify how fast enterprises do.',
   heroSubtitleNeutral:
     'How one city-state is reorganising itself for the AI era — independent analysis of policy, parliament, levers, startups, and law.',
   ctaReadCore: 'Read the core argument',
@@ -338,9 +344,17 @@ export const en: Partial<Record<keyof typeof zh, string>> = {
   viewAll: 'View all →',
   viewAllLeversCta: 'Full lever map →',
   viewAllDebatesCta: 'All {count} debates →',
-  leversSection: 'National AI Levers',
+  leversSection: 'National AI-Native Lever Map',
   leversBlurb:
-    'Singapore’s AI strategy doesn’t map cleanly to ministries — read it by how AI gets pushed in. {count} concrete projects, 6 national-level levers.',
+    'Six levers, {count} concrete projects. Re-sliced by "how AI gets pushed in" — cutting across ministries into a single execution pipeline.',
+  leverMapColPassThrough: 'Pass-through',
+  leverMapColDirect: 'Direct',
+  leverMapColPassThroughHint: 'The state amplifies enterprise AI adoption through these levers',
+  leverMapColDirectHint: 'The state acts directly — not via enterprises',
+  leverProjectsSuffix: 'projects',
+  transmissionFootnote:
+    'Of 7 transmission channels, only 2 are run directly by the state; the other 5 transmit through to enterprises.',
+  transmissionFootnoteCta: 'Read the 7 transmission channels →',
   recentDebatesSection: 'Recent Parliamentary Debates',
   recentDebatesBlurb: 'Every parliamentary question, response, and debate on AI from {from} to {to}.',
   closingThesis:

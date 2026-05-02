@@ -13,6 +13,7 @@ import { findLatestPosts } from '~/utils/blog';
 import { getPermalink } from '~/utils/permalinks';
 import { debates, DEBATE_STATS } from '~/data/debates';
 import { levers } from '~/data/levers';
+import { leverSlug } from '~/utils/entity-pages';
 import { categories as policyCategories } from '~/data/policies';
 import { SITE_UPDATED } from '~/version';
 
@@ -47,9 +48,11 @@ const allLatestPosts = await findLatestPosts({ count: 20 });
 const latestPosts = allLatestPosts.filter((p) => (p.lang ?? 'zh') === 'zh').slice(0, 3);
 const [featuredPost, ...secondaryPosts] = latestPosts;
 
-// 4 levers chosen for cross-section visibility — keep the Hero strip honest
-// rather than chasing a "most-active" metric we don't yet maintain.
-const featuredLevers = levers.slice(0, 4);
+// Levers split by transmission mode — the structure itself is the argument.
+// Pass-through (state → enterprises) is the larger column; Direct is small.
+const leverProjectCount = (lv: (typeof levers)[number]) => lv.groups.flatMap((g) => g.items).length;
+const passThroughLevers = levers.filter((lv) => lv.transmissionMode === 'transmitted');
+const directLevers = levers.filter((lv) => lv.transmissionMode === 'direct');
 
 // Latest 5 debates by date (string sort works because YYYY-MM-DD format).
 const latestDebates = [...debates].sort((a, b) => (a.date < b.date ? 1 : -1)).slice(0, 5);
@@ -64,18 +67,20 @@ const totalLeverItems = levers.reduce((sum, lv) => sum + lv.groups.flatMap((g) =
   <JsonLd schema={organizationSchema} />
   <JsonLd schema={websiteSchema} />
 
-  {/* Hero — single thesis, single CTA. Vermillion eyebrow + serif headline. */}
-  <section class="relative pt-12 md:pt-20 pb-10 md:pb-14">
-    <div class="max-w-3xl mx-auto px-4 sm:px-6">
+  {
+    /* Hero — thesis + lever map in one fold. The structure (4 pass-through
+      vs 2 direct) is the argument; copy is intentionally compact. */
+  }
+  <section class="relative pt-12 md:pt-16 pb-8 md:pb-10">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6">
       <p class="text-xs uppercase tracking-[0.18em] text-primary font-semibold mb-4">新加坡 AI 观察</p>
       <h1
-        class="font-serif text-3xl md:text-5xl leading-[1.2] font-semibold text-gray-900 dark:text-white mb-6 tracking-tight"
+        class="font-serif text-3xl md:text-5xl leading-[1.15] font-semibold text-gray-900 dark:text-white mb-6 tracking-tight max-w-3xl"
       >
-        新加坡的 AI 战略，<br class="hidden md:inline" />真正的护城河不在技术，在制度。
+        新加坡的 AI 战略不在算法。<br class="hidden md:inline" />在 6 个抓手。
       </h1>
       <p class="text-base md:text-lg leading-[1.85] text-gray-700 dark:text-gray-300 mb-8 max-w-prose">
-        这里追踪一个城邦在 AI
-        时代的国家级转型——政策文件、国会辩论、抓手图谱、创业生态、法律框架。不只是信息整理，更是独立的中文分析。
+        把整个国家当作企业 AI-native 转型的"包装层"——国家自己不必成为 AI-native，只要把企业转型速度放大就够。
       </p>
       <div class="flex flex-wrap gap-4 items-center">
         <a
@@ -95,7 +100,106 @@ const totalLeverItems = levers.reduce((sum, lv) => sum + lv.groups.flatMap((g) =
     </div>
   </section>
 
-  {/* Freshness strip — unobtrusive ticker showing the breadth of the dataset. */}
+  {
+    /* Lever map — visual evidence for the hero thesis. Two columns by
+      transmissionMode: pass-through (4) wide-left, direct (2) narrow-right. */
+  }
+  <section class="pb-12 md:pb-16">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6">
+      <div class="flex items-baseline justify-between mb-2 gap-4 flex-wrap">
+        <h2 class="font-serif text-xl md:text-2xl font-semibold text-gray-900 dark:text-white">
+          国家级 AI-native 抓手图谱
+        </h2>
+        <a href="/levers/" class="text-sm text-gray-500 hover:text-primary dark:text-gray-400 transition-colors">
+          完整图谱 →
+        </a>
+      </div>
+      <p class="text-sm text-gray-600 dark:text-gray-400 mb-6 max-w-prose leading-relaxed">
+        6 个抓手覆盖 {totalLeverItems} 个具体落地项目。按"AI 引入路径"重新切片，跨多个部委串成完整执行管线。
+      </p>
+
+      <div class="grid gap-6 md:grid-cols-[2fr_1fr] md:gap-8">
+        {/* Pass-through column (4 levers) */}
+        <div>
+          <div class="flex items-center gap-2 mb-4">
+            <span class="text-xs uppercase tracking-[0.18em] text-primary font-semibold">穿透到企业</span>
+            <span class="text-xs text-gray-400 dark:text-gray-500 tabular-nums">
+              {passThroughLevers.length}
+            </span>
+          </div>
+          <p class="text-xs text-gray-500 dark:text-gray-400 mb-4 leading-relaxed">
+            国家通过这些抓手把企业 AI 转型放大
+          </p>
+          <div class="grid sm:grid-cols-2 gap-x-6 gap-y-5">
+            {
+              passThroughLevers.map((lv) => (
+                <a
+                  href={`/levers/${leverSlug(lv)}/`}
+                  class="group block border-l-2 border-subtle hover:border-primary pl-4 py-1 transition-colors"
+                >
+                  <div class="flex items-baseline justify-between gap-2 mb-1">
+                    <div class="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 tabular-nums">
+                      抓手 {String(lv.number).padStart(2, '0')}
+                    </div>
+                    <div class="text-xs text-gray-400 dark:text-gray-500 tabular-nums">
+                      {leverProjectCount(lv)} 项目
+                    </div>
+                  </div>
+                  <div class="font-serif text-base md:text-lg font-semibold text-gray-900 dark:text-white group-hover:text-primary transition-colors mb-1">
+                    {lv.icon} {lv.name}
+                  </div>
+                  <div class="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">{lv.subtitle}</div>
+                </a>
+              ))
+            }
+          </div>
+        </div>
+
+        {/* Direct column (2 levers) */}
+        <div class="md:border-l md:border-subtle md:pl-8">
+          <div class="flex items-center gap-2 mb-4">
+            <span class="text-xs uppercase tracking-[0.18em] text-amber-700 dark:text-amber-400 font-semibold">
+              国家直接做
+            </span>
+            <span class="text-xs text-gray-400 dark:text-gray-500 tabular-nums">{directLevers.length}</span>
+          </div>
+          <p class="text-xs text-gray-500 dark:text-gray-400 mb-4 leading-relaxed">国家自己直接做，不依赖企业</p>
+          <div class="grid gap-y-5">
+            {
+              directLevers.map((lv) => (
+                <a
+                  href={`/levers/${leverSlug(lv)}/`}
+                  class="group block border-l-2 border-amber-200 dark:border-amber-900/60 hover:border-amber-600 pl-4 py-1 transition-colors"
+                >
+                  <div class="flex items-baseline justify-between gap-2 mb-1">
+                    <div class="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 tabular-nums">
+                      抓手 {String(lv.number).padStart(2, '0')}
+                    </div>
+                    <div class="text-xs text-gray-400 dark:text-gray-500 tabular-nums">
+                      {leverProjectCount(lv)} 项目
+                    </div>
+                  </div>
+                  <div class="font-serif text-base md:text-lg font-semibold text-gray-900 dark:text-white group-hover:text-primary transition-colors mb-1">
+                    {lv.icon} {lv.name}
+                  </div>
+                  <div class="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">{lv.subtitle}</div>
+                </a>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-6 pt-6 border-t border-subtle text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+        7 条传导杠杆里，只有 2 条是国家直接做的；其他 5 条都是国家穿透到企业的杠杆。{' '}
+        <a href="/levers/" class="text-primary hover:text-secondary underline underline-offset-4">
+          了解 7 条传导杠杆 →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  {/* Freshness strip — pushed below the map; data breadth signal. */}
   <section class="border-y border-subtle">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 py-5">
       <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-sm">
@@ -200,42 +304,6 @@ const totalLeverItems = levers.reduce((sum, lv) => sum + lv.groups.flatMap((g) =
       </div>
       <div class="mt-8 sm:hidden">
         <a href="/blog/" class="text-sm text-primary hover:text-secondary font-medium">查看全部分析 →</a>
-      </div>
-    </div>
-  </section>
-
-  {/* Levers — 4 chosen, FT-tile shape: number + name + bottleneck. */}
-  <section class="py-12 md:py-16 border-t border-subtle">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6">
-      <div class="flex items-baseline justify-between mb-2">
-        <h2 class="font-serif text-2xl md:text-3xl font-semibold text-gray-900 dark:text-white">国家 AI 抓手图谱</h2>
-        <a
-          href="/levers/"
-          class="text-sm text-gray-500 hover:text-primary dark:text-gray-400 transition-colors hidden sm:inline"
-        >
-          完整图谱 →
-        </a>
-      </div>
-      <p class="text-gray-600 dark:text-gray-400 mb-8 max-w-prose leading-relaxed">
-        新加坡 AI 战略不能按部门理解，要按"AI 引入路径"理解。{totalLeverItems} 个具体落地项目，归到 6 个国家级抓手。
-      </p>
-      <div class="grid sm:grid-cols-2 gap-x-8 gap-y-6">
-        {
-          featuredLevers.map((lv) => (
-            <a
-              href={`/levers/#lever-${lv.number}`}
-              class="group block border-l-2 border-subtle hover:border-primary pl-4 py-1 transition-colors"
-            >
-              <div class="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-1 tabular-nums">
-                抓手 {String(lv.number).padStart(2, '0')}
-              </div>
-              <div class="font-serif text-lg font-semibold text-gray-900 dark:text-white group-hover:text-primary transition-colors mb-1">
-                {lv.name}
-              </div>
-              <div class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">{lv.subtitle}</div>
-            </a>
-          ))
-        }
       </div>
     </div>
   </section>
