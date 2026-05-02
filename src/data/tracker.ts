@@ -361,9 +361,6 @@ export const dimensions: Dimension[] = [
       },
     ],
     relatedLeverNumbers: [1],
-    relatedPolicyIds: [],
-    relatedDebateIds: [],
-    relatedPostSlugs: [],
   },
   {
     id: 'talent',
