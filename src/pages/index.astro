@@ -96,35 +96,6 @@ const totalLeverItems = levers.reduce((sum, lv) => sum + lv.groups.flatMap((g) =
     </div>
   </section>
 
-  {/* Tracker dashboard summary — links to the 6-dimension dashboard. */}
-  <section class="px-4 py-10 sm:px-6 mx-auto lg:px-8 max-w-6xl">
-    <div class="callout-note rounded-lg p-6">
-      <h2 class="text-xl font-bold mb-3 m-0">{t(lang, 'trackerHomeSummaryTitle')}</h2>
-      <p class="text-sm text-muted mb-3">
-        {t(lang, 'trackerLastUpdated')}：{trackerDataDate}
-      </p>
-      <div class="flex flex-wrap gap-x-4 gap-y-1 text-sm font-mono mb-4">
-        {
-          dimensions.map((dim) => {
-            const tt = dim.title;
-            const arrow = dim.trend === 'up' ? '↗' : dim.trend === 'down' ? '↘' : '→';
-            return (
-              <span>
-                <span class="text-slate-500">{dim.icon}</span> {tt} <span class="text-slate-400">{arrow}</span>
-              </span>
-            );
-          })
-        }
-      </div>
-      <a
-        href={localizedHref('/tracker/', lang)}
-        class="text-sm font-semibold text-blue-600 dark:text-blue-400 hover:underline"
-      >
-        {t(lang, 'trackerHomeSummaryCta')} →
-      </a>
-    </div>
-  </section>
-
   {
     /* Lever map — visual evidence for the hero thesis. Two columns by
       transmissionMode: pass-through (4) wide-left, direct (2) narrow-right. */
@@ -152,10 +123,7 @@ const totalLeverItems = levers.reduce((sum, lv) => sum + lv.groups.flatMap((g) =
           <div class="grid sm:grid-cols-2 gap-x-8 gap-y-7">
             {
               passThroughLevers.map((lv) => (
-                <a
-                  href={`/levers/${leverSlug(lv)}/`}
-                  class="group block border-l-2 border-subtle hover:border-primary pl-4 transition-colors"
-                >
+                <a href={`/levers/${leverSlug(lv)}/`} class="group block transition-colors">
                   <div class="font-serif text-lg md:text-xl font-semibold text-gray-900 dark:text-white group-hover:text-primary transition-colors mb-1.5 leading-tight">
                     <span class="mr-1.5">{lv.icon}</span>
                     {lv.name}
@@ -178,10 +146,7 @@ const totalLeverItems = levers.reduce((sum, lv) => sum + lv.groups.flatMap((g) =
           <div class="grid gap-y-7">
             {
               directLevers.map((lv) => (
-                <a
-                  href={`/levers/${leverSlug(lv)}/`}
-                  class="group block border-l-2 border-amber-200 dark:border-amber-900/60 hover:border-amber-600 pl-4 transition-colors"
-                >
+                <a href={`/levers/${leverSlug(lv)}/`} class="group block transition-colors">
                   <div class="font-serif text-lg md:text-xl font-semibold text-gray-900 dark:text-white group-hover:text-primary transition-colors mb-1.5 leading-tight">
                     <span class="mr-1.5">{lv.icon}</span>
                     {lv.name}
@@ -195,6 +160,50 @@ const totalLeverItems = levers.reduce((sum, lv) => sum + lv.groups.flatMap((g) =
             }
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  {
+    /* Tracker dashboard — editorial style matching the lever map. 6 dimensions
+      live as a flat strip, no card. Sits between the qualitative lever map
+      and the quantitative freshness strip — both are "data signal". */
+  }
+  <section class="pb-12 md:pb-16 border-t border-subtle pt-12 md:pt-16">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6">
+      <div class="flex items-baseline justify-between mb-3 gap-4 flex-wrap">
+        <h2 class="font-serif text-xl md:text-2xl font-semibold text-gray-900 dark:text-white">新加坡 AI 仪表盘</h2>
+        <a
+          href={localizedHref('/tracker/', lang)}
+          class="text-sm text-gray-500 hover:text-primary dark:text-gray-400 transition-colors"
+        >
+          完整仪表盘 →
+        </a>
+      </div>
+      <p class="text-sm text-gray-600 dark:text-gray-400 mb-8 max-w-prose leading-relaxed">
+        6 个维度的当下读数，按月更新。{t(lang, 'trackerLastUpdated')}：{trackerDataDate}。
+      </p>
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-x-6 gap-y-5">
+        {
+          dimensions.map((dim) => {
+            const arrow = dim.trend === 'up' ? '↗' : dim.trend === 'down' ? '↘' : '→';
+            const arrowColor =
+              dim.trend === 'up'
+                ? 'text-emerald-600 dark:text-emerald-400'
+                : dim.trend === 'down'
+                  ? 'text-rose-600 dark:text-rose-400'
+                  : 'text-gray-400 dark:text-gray-500';
+            return (
+              <div class="leading-tight">
+                <div class="font-serif text-base md:text-lg font-semibold text-gray-900 dark:text-white mb-1">
+                  <span class="mr-1.5">{dim.icon}</span>
+                  {dim.title}
+                </div>
+                <div class={`text-sm tabular-nums ${arrowColor}`}>{arrow}</div>
+              </div>
+            );
+          })
+        }
       </div>
     </div>
   </section>
@@ -275,17 +284,21 @@ const totalLeverItems = levers.reduce((sum, lv) => sum + lv.groups.flatMap((g) =
     </div>
   </section>
 
-  {/* Closing thesis tile. */}
+  {
+    /* Closing thesis tile — the solution. Hero opens with the problem
+    (algorithm isn't the moat), closing answers with the proposal
+    (AI-native country = architecture, not scale). */
+  }
   <section class="py-12 md:py-20 border-t border-subtle">
     <div class="max-w-3xl mx-auto px-4 sm:px-6 text-center">
       <p class="font-serif text-xl md:text-2xl text-gray-700 dark:text-gray-300 leading-[1.7] mb-6 italic">
-        "新加坡的 AI 马六甲海峡在哪里？真正的护城河不在算法，在制度——快速识别问题并果断转向的能力。"
+        "AI-native 不是规模，是架构。国家不可能'自己'AI-native——它必须穿透到企业。"
       </p>
       <a
-        href="/singapore-ai-strategy-the-real-moat/"
+        href="/singapore-ai-native-companies-vs-nations/"
         class="inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-secondary transition-colors underline underline-offset-4"
       >
-        读完整论证
+        读"AI-native 国家"全文
         <Icon name="tabler:arrow-right" class="w-4 h-4" />
       </a>
     </div>
