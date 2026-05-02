@@ -95,7 +95,7 @@ const videosSorted = [...videos].sort((a, b) => b.date.localeCompare(a.date));
               <div class="flex items-start justify-between mb-3">
                 <div>
                   <h3 class="font-bold text-gray-900 dark:text-white text-lg leading-snug">{person.name}</h3>
-                  <p class="text-gray-500 dark:text-gray-400 text-sm">{person.zhName}</p>
+                  {/* person.zhName intentionally hidden on EN page */}
                 </div>
                 <span
                   class={`shrink-0 ml-3 text-xs font-semibold px-2.5 py-1 rounded-full ${categoryColors[person.category]}`}

@@ -5,6 +5,9 @@ export interface LegalItem {
   title: string;
   titleEn: string;
   date: string;
+  /** English sibling of `date`. Required if `date` contains CJK
+   *  (e.g. "2012 / 2020 修订" → dateEn: "2012 / 2020 (amended)"). */
+  dateEn?: string;
   authority: string; // 主管机构
   authorityEn?: string; // English sibling of authority
   authorityUrl?: string;
@@ -231,6 +234,7 @@ export const sections: LegalSection[] = [
         title: 'PDPA × AI 边界',
         titleEn: 'Personal Data Protection Act (PDPA) — AI Application',
         date: '2012 / 2020 修订',
+        dateEn: '2012 / 2020 (amended)',
         authority: 'PDPC',
         authorityEn: 'Personal Data Protection Commission (PDPC)',
         authorityUrl: 'https://www.pdpc.gov.sg/',

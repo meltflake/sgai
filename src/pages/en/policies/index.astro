@@ -39,7 +39,7 @@ const lang = 'en' as const;
                     policy.titleEn
                   )}
                 </h3>
-                <p class="text-sm text-muted mb-2">{policy.title}</p>
+                {/* policy.title (zh) intentionally hidden on EN page */}
                 <div class="flex gap-2 mb-3 flex-wrap">
                   {policy.sourceOrgUrl ? (
                     <a

@@ -1,46 +1,68 @@
 #!/usr/bin/env node
-// i18n consistency check — scans dist/en/ for Chinese residue.
+// i18n consistency check — scans a built locale directory for residue
+// of any other locale's script.
 //
 // Run after `npm run build`:
-//   node scripts/i18n-check.mjs
+//   node scripts/i18n-check.mjs                   # default: scan dist/en for CJK
+//   node scripts/i18n-check.mjs --lang en         # same as above
+//   node scripts/i18n-check.mjs --lang ja         # scan dist/ja for non-Japanese leaks (CJK ok except CN-only)
+//   node scripts/i18n-check.mjs --lang en --root dist
 //
 // Strategy:
-//   1. Walk dist/en/**.html
-//   2. Strip <script>, <style>, HTML comments, attributes
-//   3. Find CJK Unified Ideographs (一-鿿) in remaining text
+//   1. Walk dist/<lang>/**.html
+//   2. Strip <script>, <style>, <head>, HTML comments, attributes
+//   3. Match the "foreign script" regex defined per target lang
 //   4. Allow-list a small set of intentional cross-lang strings
-//      (lang banner copy, switcher label "中", zhName ruby sub-line, etc.)
+//      (lang banner copy, switcher labels)
 //   5. Report unique residual strings per page; exit non-zero if any
 //
-// Allow-list rule of thumb: any phrase shown to invite the user to switch
-// languages, OR a documented bilingual sub-display (e.g. zhName under the
-// English name on /people/* cards) is allowed. Everything else is a bug.
+// The default config below targets EN pages and flags CJK Unified
+// Ideographs. To support a new locale L, add a config entry under
+// LANG_CONFIG. The script is locale-agnostic; only the regex and
+// allow-list change per target.
 
 import { readFileSync, readdirSync, statSync } from 'node:fs';
 import { join, relative } from 'node:path';
 import process from 'node:process';
 
-const ROOT = 'dist/en';
-
-// Strings that ARE allowed to appear in zh on EN-rendered HTML.
-// Keep this list short and well-justified.
-const ALLOW_PATTERNS = [
-  // LangBanner: invite user to switch to zh
-  '中文版可用',
-  '阅读中文版',
-  // LanguageToggle: button label that leads to zh page
-  '中', // single character, used as toggle target label
-  // zhName ruby sub-display below English name on /people/* and /voices/
-  // Names get a separate allowance: any 2-4 char string in <p class="...zhName...">
-  // We can't reliably scope by class via regex, so we accept short pure-CJK runs
-  // (≤ 6 chars) when they look like proper names. See PROPER_NAME_HEURISTIC below.
-];
-
-// Proper-name heuristic: stand-alone short CJK runs (2-6 chars) that appear
-// inside known bilingual sub-display contexts. We approximate by length.
-function isLikelyZhName(s) {
-  return /^[一-鿿·\s]{2,8}$/.test(s);
+// Parse --lang and --root flags.
+const argv = process.argv.slice(2);
+function arg(name, fallback) {
+  const i = argv.indexOf(name);
+  return i >= 0 && argv[i + 1] ? argv[i + 1] : fallback;
 }
+const LANG = arg('--lang', 'en');
+const ROOT_BASE = arg('--root', 'dist');
+const ROOT = `${ROOT_BASE}/${LANG}`;
+
+// Per-target-lang config. Each entry says "what foreign script should
+// NOT appear on a page in this locale", plus intentional exceptions.
+const LANG_CONFIG = {
+  en: {
+    // Match CJK Unified Ideographs runs.
+    foreignRegex: /[一-鿿]+(?:[一-鿿\s·。，、！？：；'-]*[一-鿿]+)*/g,
+    // Strings that ARE allowed despite containing CJK.
+    allowPatterns: [
+      // LangBanner: invite user to switch to zh.
+      '中文版可用',
+      '阅读中文版',
+      // LanguageToggle: target-language button label.
+      '中',
+    ],
+  },
+  // Example future locale: ja. The foreignRegex would flag CJK Unified
+  // Ideographs that aren't valid Japanese kanji + kana — but in practice
+  // a coarse "any zh-only character" filter is hard. For now if/when JA
+  // ships, we can refine. Today the only active scan is EN.
+};
+
+const conf = LANG_CONFIG[LANG];
+if (!conf) {
+  console.error(`[i18n-check] No config for lang "${LANG}". Add an entry to LANG_CONFIG.`);
+  process.exit(2);
+}
+
+const ALLOW_PATTERNS = conf.allowPatterns;
 
 function listHtml(dir) {
   const out = [];
@@ -108,15 +130,14 @@ function metaText(htmlSrc) {
   return out;
 }
 
-function findCjk(text) {
-  const re = /[一-鿿]+(?:[一-鿿\s·。，、！？：；'-]*[一-鿿]+)*/g;
-  return [...text.matchAll(re)].map((m) => m[0]);
+function findForeign(text) {
+  // Reset stateful regex's lastIndex so repeated calls on different texts work.
+  conf.foreignRegex.lastIndex = 0;
+  return [...text.matchAll(conf.foreignRegex)].map((m) => m[0]);
 }
 
 function isAllowed(s) {
-  if (ALLOW_PATTERNS.some((p) => s.includes(p))) return true;
-  if (isLikelyZhName(s)) return true;
-  return false;
+  return ALLOW_PATTERNS.some((p) => s.includes(p));
 }
 
 function scanFile(file) {
@@ -125,13 +146,13 @@ function scanFile(file) {
 
   // 1) Visible body text
   const body = visibleText(html);
-  for (const hit of findCjk(body)) {
+  for (const hit of findForeign(body)) {
     if (!isAllowed(hit)) findings.push({ where: 'body', hit });
   }
 
   // 2) Meta tags & <title>
   for (const [name, content] of metaText(html)) {
-    for (const hit of findCjk(content)) {
+    for (const hit of findForeign(content)) {
       if (!isAllowed(hit)) findings.push({ where: name, hit });
     }
   }
@@ -174,7 +195,8 @@ function main() {
 
   perPage.sort((a, b) => b.findings.length - a.findings.length);
 
-  console.log(`[i18n-check] Scanned ${totalPages} EN pages.`);
+  console.log(`[i18n-check] lang=${LANG}, root=${ROOT}`);
+  console.log(`[i18n-check] Scanned ${totalPages} pages.`);
   console.log(`[i18n-check] Pages with residue: ${dirtyPages}`);
   console.log(`[i18n-check] Total residue findings: ${totalHits}`);
 
@@ -194,7 +216,8 @@ function main() {
     console.log(`\n[i18n-check] FAIL — fix the residue above.`);
     process.exit(1);
   } else {
-    console.log(`\n[i18n-check] OK — no Chinese residue on EN pages.`);
+    const what = LANG === 'en' ? 'Chinese residue on EN' : `foreign-script residue on ${LANG.toUpperCase()}`;
+    console.log(`\n[i18n-check] OK — no ${what} pages.`);
   }
 }
 

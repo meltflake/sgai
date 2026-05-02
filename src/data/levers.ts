@@ -9,7 +9,9 @@ export interface LeverItem {
   id?: string; // Phase 1: kebab-case from name, populated by codemod-levers.ts
   name: string;
   nameEn?: string;
-  ministry: string; // 部委或机构
+  ministry: string; // 部委或机构（中文，遇到 CJK 必须配 ministryEn）
+  /** English sibling of `ministry`. Required if `ministry` contains CJK. */
+  ministryEn?: string;
   scale?: string; // 金额、规模、KPI
   scaleEn?: string;
   description: string;
@@ -641,6 +643,7 @@ export const levers: Lever[] = [
             name: 'NUS / NTU / SMU / SUTD AI 课改',
             nameEn: 'NUS / NTU / SMU / SUTD AI Curriculum Reform',
             ministry: '高等教育',
+            ministryEn: 'Higher Education',
             scale: '全面铺开',
             scaleEn: 'Fully rolled out',
             description: '本科到 EMBA 全层级 AI 课程升级',

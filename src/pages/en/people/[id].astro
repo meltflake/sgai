@@ -51,7 +51,7 @@ const categoryColors: Record<Person['category'], string> = {
       <div class="flex items-start justify-between flex-wrap gap-3">
         <div>
           <h1 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">{person.name}</h1>
-          {person.zhName && <p class="text-lg text-gray-500 dark:text-gray-400 mt-1">{person.zhName}</p>}
+          {/* person.zhName intentionally hidden on EN page */}
         </div>
         <span class={`text-xs font-semibold px-2.5 py-1 rounded-full shrink-0 ${categoryColors[person.category]}`}>
           {categoryLabels[person.category]}

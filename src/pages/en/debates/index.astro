@@ -401,7 +401,7 @@ const searchBlob = (d: (typeof debates)[number]) => {
                   <div class="font-semibold text-gray-800 dark:text-white text-sm group-hover:text-purple-600 transition-colors">
                     {mp.name}
                   </div>
-                  {mp.zhName && <div class="text-xs text-gray-500">{mp.zhName}</div>}
+                  {/* mp.zhName intentionally hidden on EN page */}
                 </div>
                 <span
                   class={`text-xs px-2 py-0.5 rounded-full shrink-0 ml-1 ${mp.role === '反对党' ? 'bg-orange-100 text-orange-700' : 'bg-blue-100 text-blue-700'}`}

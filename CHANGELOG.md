@@ -4,6 +4,19 @@
 
 ---
 
+## 0.5.0 — 2026-05-02
+
+### i18n 多语言化收尾 + 第二轮残留清理
+
+抽查 `/en/voices/` 和 `/en/policies/` 时发现仍有大量中文残留。原因：上一轮 i18n-check 脚本宽容了"短姓名作 zhName 注音"的副显示。撤销这个例外，再扫 → 87 处真实残留全部修复。
+
+- **EN 页面副显示一律隐藏**：人物卡片下的 zhName、政策标题下的 zh title、辩论 zhTitle、MP profile zhName 全部去掉。EN 页面现在是纯英文。
+- **数据补齐 `*En` 字段**：`LegalItem.dateEn`、`LeverItem.ministryEn`、`SocialChannel.labelEn` 等。`policies` 数据本来就有 `titleEn`，问题在页面层错把 zh title 当副标题渲染。
+- **`pickLocalized` 升级到 N 语言通用形态**：新签名 `pickLocalized(record, baseKey, lang)` 自动按 lang 算 sibling 字段名（`title` → `titleJa` → ...）。旧 4-参形态保留兼容，新代码用新形态。
+- **`localizedHref` / `unprefixed` / `localePrefix` / `getLangFromPath` 全 N-locale 化**：加新语言只需扩 `LOCALES` 数组与 `FALLBACK_CHAINS`，不需要改路由逻辑。
+- **`scripts/i18n-check.mjs` 接受 `--lang` 参数**：未来加 ja/ko 时复用同一脚本，每个 lang 在 `LANG_CONFIG` 注册自己的 foreign-script 正则与白名单。
+- [`docs/i18n.md`](docs/i18n.md) 加"如何新增一门语言"步骤清单。
+
 ## 0.4.0 — 2026-05-02
 
 ### Brand: 全名 + 新 Logo + 红色主色调

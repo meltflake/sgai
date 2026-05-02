@@ -89,7 +89,7 @@ const lang = 'en' as const;
                           {pickLocalized(item, 'name', 'nameEn', lang)}
                         </h4>
                         <span class="text-xs bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 px-2 py-1 rounded shrink-0">
-                          {item.ministry}
+                          {item.ministryEn || item.ministry}
                         </span>
                       </div>
                       {item.scale && (

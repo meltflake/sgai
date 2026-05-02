@@ -57,14 +57,10 @@ const breadcrumbs = [
       {policy._categoryIcon}
       {categoryName} · {policy.date}
     </p>
-    <h1 class="font-serif text-3xl md:text-4xl leading-tight font-semibold text-gray-900 dark:text-white mb-3">
+    <h1 class="font-serif text-3xl md:text-4xl leading-tight font-semibold text-gray-900 dark:text-white mb-6">
       {policy.titleEn || policy.title}
     </h1>
-    {
-      policy.title && policy.titleEn !== policy.title && (
-        <p class="text-base md:text-lg text-gray-500 dark:text-gray-400 italic mb-6">{policy.title}</p>
-      )
-    }
+    {/* zh policy.title intentionally hidden on EN page */}
 
     <div class="flex flex-wrap gap-2 mb-8">
       {

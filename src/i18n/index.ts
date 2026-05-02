@@ -1,53 +1,123 @@
-// i18n core (v0.3.0).
+// i18n core (v0.5.0).
 //
-// Two-locale site: zh (default, unprefixed) + en (under /en/).
-// All chrome strings live in dictionaries below; data records carry their
-// own zh + EN sibling fields. `pickLocalized()` returns the right field
-// with safe fallback.
+// Multi-locale site. zh = default (unprefixed at /). Every other locale
+// is prefixed (/en/, /ja/, /ko/, ...). All chrome strings live in
+// dictionaries below; data records carry zh as the default field plus
+// optional `*<Cap-Lang>` siblings (titleEn, titleJa, titleKo, ...).
+//
+// To add a new locale L:
+//   1. Add 'L' to the Lang union and LOCALES array.
+//   2. Add an `<L>` dictionary export below (mirroring `zh`'s keys).
+//   3. Backfill `titleL` / `descriptionL` / etc. on user-visible data
+//      fields you want translated (otherwise pickLocalized falls back
+//      to zh — visible to the reader as "not yet translated").
+//   4. Add a fallback chain entry for L in `FALLBACK_CHAINS` if you
+//      want a different fallback than direct → zh.
+//   5. Run `npm run check:i18n` (set ROOT=dist/L) to verify.
 
 export type Lang = 'zh' | 'en';
 
 export const LOCALES: Lang[] = ['zh', 'en'];
 export const DEFAULT_LOCALE: Lang = 'zh';
 
+/** Per-locale fallback chain. Looked up in order; the first non-empty
+ *  hit wins. Always ends with `DEFAULT_LOCALE`. */
+const FALLBACK_CHAINS: Record<Lang, Lang[]> = {
+  zh: ['zh'],
+  en: ['en', 'zh'],
+};
+
+/** Capitalize first char for sibling-field naming.
+ *  zh → '' (uses bare `key`), en → 'En', ja → 'Ja', ... */
+function siblingSuffix(lang: Lang): string {
+  if (lang === DEFAULT_LOCALE) return '';
+  return lang.charAt(0).toUpperCase() + lang.slice(1);
+}
+
 /** Read locale from a URL pathname. /en/foo → 'en', /foo → 'zh'. */
 export function getLangFromPath(pathname: string): Lang {
-  const seg = pathname.replace(/^\/+/, '').split('/')[0];
-  return seg === 'en' ? 'en' : 'zh';
+  const seg = pathname.replace(/^\/+/, '').split('/')[0] as Lang;
+  return LOCALES.includes(seg) && seg !== DEFAULT_LOCALE ? seg : DEFAULT_LOCALE;
 }
 
 /** Return URL prefix for a locale. zh → '', en → '/en'. */
 export function localePrefix(lang: Lang): string {
-  return lang === 'en' ? '/en' : '';
+  return lang === DEFAULT_LOCALE ? '' : `/${lang}`;
 }
 
 /** Build a localized href. localizedHref('/policies/', 'en') → '/en/policies/' */
 export function localizedHref(path: string, lang: Lang): string {
   if (!path.startsWith('/')) path = '/' + path;
-  if (lang === 'zh') return path;
-  // Already prefixed?
-  if (path === '/en' || path.startsWith('/en/')) return path;
-  return '/en' + path;
+  if (lang === DEFAULT_LOCALE) return path;
+  const prefix = `/${lang}`;
+  if (path === prefix || path.startsWith(prefix + '/')) return path;
+  return prefix + path;
 }
 
-/** Strip /en/ prefix to recover the canonical zh path. */
+/** Strip locale prefix to recover the canonical default-locale path. */
 export function unprefixed(path: string): string {
-  if (path === '/en' || path === '/en/') return '/';
-  if (path.startsWith('/en/')) return path.slice(3);
+  for (const lang of LOCALES) {
+    if (lang === DEFAULT_LOCALE) continue;
+    const prefix = `/${lang}`;
+    if (path === prefix || path === prefix + '/') return '/';
+    if (path.startsWith(prefix + '/')) return path.slice(prefix.length);
+  }
   return path;
 }
 
-/** Pick a localized field from an object. Falls back to the zh field
- *  when EN sibling is missing. The record is typed loosely so that any
- *  data interface (Person, Policy, Debate, etc.) works at the call site
- *  without ceremonial casting. */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function pickLocalized(record: any, zhKey: string, enKey: string, lang: Lang): string | null | undefined {
-  if (lang === 'en') {
-    const v = record?.[enKey];
+/** Pick a localized field from an object using the lang's fallback chain.
+ *
+ *  Two call shapes (kept compatible with the existing call sites):
+ *
+ *    pickLocalized(record, 'title', lang)              // shape A: scales to N langs
+ *    pickLocalized(record, 'title', 'titleEn', lang)   // shape B: legacy 2-lang
+ *
+ *  Shape A computes the sibling field name automatically:
+ *    lang='zh' → record.title
+ *    lang='en' → record.titleEn   (fallback record.title)
+ *    lang='ja' → record.titleJa   (fallback record.title)
+ *
+ *  Shape B is the legacy explicit form; both keys are honoured but the
+ *  function only looks up exactly those two. New code should prefer
+ *  shape A. */
+export function pickLocalized<T = string>(record: unknown, baseKey: string, lang: Lang): T | null | undefined;
+export function pickLocalized<T = string>(
+  record: unknown,
+  zhKey: string,
+  enKey: string,
+  lang: Lang
+): T | null | undefined;
+export function pickLocalized(
+  record: unknown,
+  baseOrZhKey: string,
+  enKeyOrLang: string | Lang,
+  maybeLang?: Lang
+): string | null | undefined {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const r = record as any;
+  if (r == null) return undefined;
+
+  // Shape B (legacy): (record, zhKey, enKey, lang)
+  if (typeof maybeLang === 'string') {
+    const lang = maybeLang as Lang;
+    const zhKey = baseOrZhKey;
+    const enKey = enKeyOrLang as string;
+    if (lang === 'en') {
+      const v = r[enKey];
+      if (v != null && v !== '') return v as string;
+    }
+    return r[zhKey] as string | null | undefined;
+  }
+
+  // Shape A: (record, baseKey, lang)
+  const lang = enKeyOrLang as Lang;
+  const baseKey = baseOrZhKey;
+  for (const candidate of FALLBACK_CHAINS[lang] || [lang, DEFAULT_LOCALE]) {
+    const key = candidate === DEFAULT_LOCALE ? baseKey : `${baseKey}${siblingSuffix(candidate)}`;
+    const v = r[key];
     if (v != null && v !== '') return v as string;
   }
-  return record?.[zhKey] as string | null | undefined;
+  return r[baseKey] as string | null | undefined;
 }
 
 /** Default English labels for known social-channel platforms. Pages may
