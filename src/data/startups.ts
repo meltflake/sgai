@@ -380,14 +380,15 @@ export interface Exit {
 export const exits: Exit[] = [
   {
     name: 'Manus',
-    description: 'AI Agent 平台',
-    descriptionEn: 'AI agent platform',
-    acquirer: 'Meta',
-    acquirerEn: 'Meta',
-    amount: '$2B+',
+    description: 'AI Agent 平台（Butterfly Effect 旗下）',
+    descriptionEn: 'AI agent platform (operated by Butterfly Effect)',
+    acquirer: 'Meta（已被中国 NDRC 否决）',
+    acquirerEn: 'Meta (blocked by China NDRC)',
+    amount: '$2B (blocked)',
     year: 2025,
-    note: '新加坡最大 AI 收购案',
-    noteEn: "Singapore's largest AI acquisition",
+    note: '2025-12 宣布拟收购，2026-04-27 中国国家发改委以国家安全为由叫停（AI 领域首例外资并购否决，三条红线：技术主权 / 数据主权 / 国家安全）。新加坡作为「AI 离岸中转枢纽」战略首次被来源国监管显式划红线。',
+    noteEn:
+      'Acquisition announced December 2025; blocked by China\'s NDRC on 27 April 2026 on national-security grounds — the first foreign acquisition vetoed in the AI sector, citing three red lines: technology sovereignty, data sovereignty, and national security. Singapore\'s "AI offshore transit hub" strategy was, for the first time, explicitly red-lined by a source-country regulator.',
   },
   {
     name: 'AIDA Technologies',

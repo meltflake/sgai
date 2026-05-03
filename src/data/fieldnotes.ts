@@ -96,6 +96,7 @@ export const fieldNotes: FieldNote[] = [
           'EDB 深度介入：提前与人力部沟通、拆分人员批次',
           '预期是要放弃一部分原有团队',
           '结论：正常公司走正常流程，成功率更高。特殊协助只出现在"已经没有第二种选择"的情况下',
+          '后续验证（2026-04-27）：中国国家发改委以国安为由叫停 Meta 对 Manus 的 20 亿美元收购，划三条红线（技术主权/数据主权/国家安全）。EDB 当时所说的「时间窗口压力」与「迁出核心团队」事后被证实是源自来源国监管走向——单凭迁注册地不足以脱离来源国管辖，这是「Singapore washing」策略的第一次被显式驳回。',
         ],
         pointsEn: [
           'EDB raised Manus on its own initiative, but made clear that it was a special case.',
@@ -103,6 +104,7 @@ export const fieldNotes: FieldNote[] = [
           'EDB engaged deeply: coordinating in advance with the Ministry of Manpower and breaking the relocation into batches.',
           'The expectation was that part of the original team would have to be left behind.',
           'Bottom line: ordinary companies should follow the ordinary process, where success rates are higher. Special assistance is reserved for situations where there is no alternative.',
+          'Follow-up (27 April 2026): China\'s NDRC blocked Meta\'s US$2B acquisition of Manus on national-security grounds, drawing three red lines (technology sovereignty, data sovereignty, national security). The "time-window pressure" and the "core-team relocation" EDB referenced were, in hindsight, downstream of source-country regulatory direction — re-domiciling alone is not enough to exit source-country jurisdiction, and the "Singapore washing" play was, for the first time, explicitly rejected.',
         ],
       },
       {

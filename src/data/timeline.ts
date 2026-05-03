@@ -29,6 +29,19 @@ export const timelineEvents: TimelineEvent[] = [
     tags: ['人才', '国际'],
   },
   {
+    id: 'evt-2026-manus-blocked',
+    year: 2026,
+    date: '2026-04-27',
+    title: 'Meta–Manus 收购被中国 NDRC 否决：「Singapore washing」红线划定',
+    titleEn: 'China Blocks Meta–Manus Acquisition: A Red Line Against "Singapore Washing"',
+    description:
+      '4 月 27 日，中国国家发展和改革委员会（NDRC）正式叫停 Meta 对 Manus 的 20 亿美元收购，援引"国家安全"理由——这是中国首例以国安为由否决 AI 领域外资并购。NDRC 划定三条红线：技术主权、数据主权、国家安全。Manus 母公司 Butterfly Effect 由肖弘、季逸超 2022 年在中国创立，2025 年中将总部迁至新加坡（约 40 名核心技术员从北京搬迁，120 人团队多数被裁），由新加坡 Butterfly Effect 实体接管海外业务。Meta 于 2025 年 12 月宣布收购。2026 年 1 月中国监管启动审查，3 月末肖弘与季逸超被约谈并限制出境。事件直接挑战新加坡作为「AI 离岸中转枢纽」的战略叙事——多家国际媒体（Asia Times、Foreign Policy）将此案定义为「Singapore washing 的极限」，意指仅靠迁注册地无法绕开来源国监管。对 sgai 既有数据点的影响：startups.ts `exits[]` 中 Manus 由「已完成 $2B exit」调整为被否；fieldnotes.ts EDB「Manus 是特例」一节获得后续验证。',
+    descriptionEn:
+      'On 27 April, China\'s National Development and Reform Commission (NDRC) formally blocked Meta\'s US$2B acquisition of Manus on national-security grounds — the first time China has vetoed a foreign AI acquisition under that rationale. NDRC drew three red lines: technology sovereignty, data sovereignty, and national security. Manus\'s parent Butterfly Effect was founded in China in 2022 by Xiao Hong and Ji Yichao, then relocated its HQ to Singapore in mid-2025 (~40 core technical staff moved from Beijing while most of the 120-person team was laid off), with the Singapore Butterfly Effect entity taking over operations outside China. Meta announced the acquisition in December 2025. Chinese regulators opened a review in January 2026; by late March, Xiao and Ji had been summoned to NDRC and barred from leaving China. The case directly challenges Singapore\'s strategic narrative as an "AI offshore transit hub" — international press (Asia Times, Foreign Policy) framed it as "the limits of Singapore washing," meaning that re-domiciling alone cannot escape source-country oversight. Impact on existing sgai data: in startups.ts the Manus entry in `exits[]` is reframed from a completed $2B exit to a blocked deal; the fieldnotes "Manus is a special case" section gains follow-up confirmation.',
+    tags: ['治理', '产业', '国际', '数据主权'],
+    relatedPostSlugs: [],
+  },
+  {
     id: 'evt-2026-sc42-plenary',
     year: 2026,
     date: '2026-04-20',
