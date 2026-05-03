@@ -31,19 +31,18 @@ export default defineConfig({
   trailingSlash: 'always',
   build: { format: 'directory' },
 
-  // i18n architecture (v0.3.0):
-  //   defaultLocale 'zh' stays at the unprefixed root (preserves all
-  //   existing SEO and inbound links). English mirror lives under /en/.
-  //   `prefixDefaultLocale: false` is the default. Pages we translate
-  //   exist at both /<path>/ (zh) and /en/<path>/ (en). Pages we have
-  //   not yet translated only exist at /<path>/; the LanguageToggle
-  //   gracefully falls back to /en/ home in that case.
-  i18n: {
-    defaultLocale: 'zh',
-    locales: ['zh', 'en'],
-    routing: { prefixDefaultLocale: false, redirectToDefaultLocale: false },
-    fallback: { en: 'zh' },
-  },
+  // i18n architecture (v0.6.0):
+  //   We manage the zh/en routing layout manually — zh stays at the
+  //   unprefixed root, EN lives under `src/pages/en/...` and EN blog
+  //   posts get `en/` prefixed onto their permalinks at build time.
+  //
+  //   We deliberately do NOT use Astro's `i18n` config block. Enabling
+  //   it (especially with `fallback: { en: 'zh' }`) causes Astro to
+  //   re-emit every prerendered route under `/en/...` as a fallback,
+  //   which collides with our hand-built EN routes and produces
+  //   duplicate `/en/en/<slug>/` paths in `dist/`. Doing the routing
+  //   ourselves keeps the build output canonical (`/foo/` for zh,
+  //   `/en/foo/` for en, no duplicates).
 
   integrations: [
     tailwind({

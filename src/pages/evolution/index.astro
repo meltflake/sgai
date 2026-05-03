@@ -1,62 +1,10 @@
 ---
-import Layout from '~/layouts/PageLayout.astro';
-import Headline from '~/components/ui/Headline.astro';
+// Policy evolution page (zh) — thin wrapper.
 
-const phases = [
-  {
-    period: '2014–2017',
-    title: '第一阶段：数字基础建设期',
-    event: 'Smart Nation Initiative（2014）',
-    description:
-      '核心是奠定数字化基础设施。新加坡推出智慧国家倡议，启动 GovTech 改革，建设全国传感器网络和数据共享平台。AI 尚未被单独列为战略重点，但数据基础设施的投资为后续 AI 发展铺平了道路。',
-    items: ['GovTech 成立（2016）', '国家数字身份系统 SingPass 升级', 'Smart Nation Sensor Platform 启动'],
-  },
-  {
-    period: '2017–2019',
-    title: '第二阶段：AI 战略启动期',
-    event: 'AI Singapore 成立（2017）、NAIS 1.0（2019）',
-    description:
-      '新加坡开始将 AI 视为独立的战略优先级。2017 年启动 AI Singapore 项目，投入 1.5 亿新元。2019 年发布首份国家 AI 战略，确定五大重点应用领域。同年推出 Model AI Governance Framework。',
-    items: [
-      'AI Singapore 100 Experiments 计划',
-      'AI 学徒计划（AI Apprenticeship Programme）',
-      '亚洲首个 AI 治理框架发布',
-    ],
-  },
-  {
-    period: '2019–2022',
-    title: '第三阶段：治理框架成熟期',
-    event: 'AI Verify（2022）、Model AI Governance Framework 第二版',
-    description:
-      '集中精力完善 AI 治理生态。从原则性框架发展到可测试工具（AI Verify），建立了"软法"治理特色。同时，PDPA 2020 年修订版为 AI 数据使用划定法律边界。',
-    items: [
-      'AI Verify — 全球首个 AI 治理测试框架',
-      'PDPA 修订，引入商业改进例外',
-      'Advisory Council on Ethical Use of AI and Data',
-    ],
-  },
-  {
-    period: '2023–2024',
-    title: '第四阶段：全面加速期',
-    event: 'NAIS 2.0（2023）、生成式 AI 治理框架（2024）',
-    description:
-      '生成式 AI 浪潮推动新加坡全面升级战略。NAIS 2.0 提出双轨目标，大幅增加投资。专门发布生成式 AI 治理框架，应对大模型带来的新挑战。',
-    items: [
-      'AI 投资追加至 10 亿新元以上',
-      '国家 AI 计算基础设施规划',
-      'AI Verify Foundation 成立',
-      '生成式 AI 沙盒测试',
-    ],
-  },
-  {
-    period: '2024–至今',
-    title: '第五阶段：生态深化期',
-    event: '多项执行计划落地',
-    description:
-      '聚焦于战略落地执行。重点包括：扩大 AI 人才管道、建设 GPU 集群等计算基础设施、推动行业特定 AI 应用、加强国际合作。',
-    items: ['NVIDIA、Google Cloud 等在新加坡建设 AI 基础设施', 'AI 技能框架更新', '东盟 AI 治理指南'],
-  },
-];
+import Layout from '~/layouts/PageLayout.astro';
+import EvolutionPage from '~/components/evolution/EvolutionPage.astro';
+
+const lang = 'zh' as const;
 ---
 
 <Layout
@@ -65,93 +13,7 @@ const phases = [
     description: '新加坡 AI 政策演进全景——从 2014 年智慧国家到 2024 年 NAIS 2.0 的战略转型历程。',
   }}
   breadcrumbs={[{ label: '政策演进分析' }]}
+  lang={lang}
 >
-  <section class="px-4 py-16 sm:px-6 mx-auto lg:px-8 max-w-4xl">
-    <Headline
-      title="📈 新加坡 AI 政策演进全景"
-      subtitle="从 2014 年智慧国家倡议到 2024 年生成式 AI 治理框架，新加坡 AI 政策经历了五个关键阶段。"
-    />
-
-    <div class="space-y-8">
-      {
-        phases.map((phase, i) => (
-          <div class="relative pl-8 border-l-4 border-blue-500 dark:border-blue-400">
-            <div class="absolute -left-3 top-0 w-6 h-6 bg-blue-500 dark:bg-blue-400 rounded-full flex items-center justify-center text-white text-xs font-bold">
-              {i + 1}
-            </div>
-            <div class="bg-surface rounded-lg shadow-md p-6 border border-subtle">
-              <span class="text-sm font-mono text-blue-600 dark:text-blue-400">{phase.period}</span>
-              <h2 class="text-xl font-bold mt-1 mb-2">{phase.title}</h2>
-              <p class="text-sm text-muted mb-2">
-                <strong>标志事件：</strong>
-                {phase.event}
-              </p>
-              <p class="text-sm mb-3">{phase.description}</p>
-              <ul class="list-disc list-inside text-sm space-y-1 text-muted">
-                {phase.items.map((item) => (
-                  <li>{item}</li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        ))
-      }
-    </div>
-
-    <a
-      href="/singapore-ai-vs-smart-nation-two-transformations/"
-      class="block mt-12 group rounded-lg border-2 border-blue-500 dark:border-blue-400 bg-gradient-to-br bg-surface p-6 transition hover:shadow-lg"
-    >
-      <div class="flex items-start gap-4">
-        <div class="flex-shrink-0 mt-1 text-blue-600 dark:text-blue-400">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="32"
-            height="32"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <path d="M14 3v4a1 1 0 0 0 1 1h4"></path>
-            <path d="M17 21H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2z"></path>
-            <path d="M9 17h6"></path>
-            <path d="M9 13h6"></path>
-          </svg>
-        </div>
-        <div class="flex-1">
-          <p class="text-xs font-mono uppercase tracking-wider text-blue-600 dark:text-blue-400 mb-1">
-            延伸阅读 · 观点
-          </p>
-          <h3 class="text-lg font-bold mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition">
-            从数字化到 AI：新加坡的第二次国家级转型
-          </h3>
-          <p class="text-sm text-muted mb-2">
-            2014 年 Smart Nation 把流程从纸上搬到屏幕上，2026 年 AI
-            战略把判断从人脑搬进模型里。两次国家级动员的相同剧本和不同压力——为什么这次轮到中产白领，为什么这次叙事是危机而不是发展。
-          </p>
-          <span class="inline-flex items-center gap-1 text-sm font-medium text-blue-600 dark:text-blue-400">
-            阅读全文
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="transition group-hover:translate-x-1"
-            >
-              <path d="M5 12h14"></path>
-              <path d="M12 5l7 7-7 7"></path>
-            </svg>
-          </span>
-        </div>
-      </div>
-    </a>
-  </section>
+  <EvolutionPage lang={lang} />
 </Layout>

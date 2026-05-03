@@ -1,306 +1,42 @@
 ---
-// Editorial homepage — thesis-first.
-//
-// Hero (thesis + CTA) → breathing room → lever map (visual evidence) →
-// freshness strip (data signal) → debates (recency) → closing thesis.
-// Build-time data only. The "latest analyses" feed lives at /blog/.
+// Editorial homepage (zh) — thin wrapper. All structure and copy live in
+// `src/components/home/HomePage.astro`; this file supplies metadata + JSON-LD.
+// To change the page layout, edit the shared component, not this file.
 
 import Layout from '~/layouts/PageLayout.astro';
 import JsonLd from '~/components/common/JsonLd.astro';
-import { Icon } from 'astro-icon/components';
-import { debates, DEBATE_STATS } from '~/data/debates';
-import { levers } from '~/data/levers';
-import { leverSlug } from '~/utils/entity-pages';
-import { categories as policyCategories } from '~/data/policies';
-import { SITE_UPDATED } from '~/version';
-import { dimensions, dataDate as trackerDataDate } from '~/data/tracker';
-import { t, localizedHref } from '~/i18n';
+import HomePage from '~/components/home/HomePage.astro';
+import { t } from '~/i18n';
 
 const lang = 'zh' as const;
 
 const metadata = {
-  title: '新加坡 AI 观察',
+  title: t(lang, 'siteName'),
   ignoreTitleTemplate: true,
-  description: '深度观察新加坡 AI 生态与战略——独立视角的中文分析平台。追踪政策、辩论、抓手与生态。',
+  description: t(lang, 'siteDescription'),
 };
 
 const organizationSchema = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
-  name: '新加坡 AI 观察',
+  name: t(lang, 'siteName'),
   url: 'https://sgai.md/',
   logo: 'https://sgai.md/favicon.svg',
-  description: '深度观察新加坡 AI 生态与战略的中文分析平台',
+  description: t(lang, 'siteDescription'),
   sameAs: ['https://github.com/meltflake/sgai'],
 };
 
 const websiteSchema = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
-  name: '新加坡 AI 观察',
+  name: t(lang, 'siteName'),
   url: 'https://sgai.md/',
   inLanguage: 'zh-CN',
 };
-
-// ---- Editorial blocks (build-time computed) ----------------------------
-
-// Levers split by transmission mode — the structure itself is the argument.
-// Pass-through (state → enterprises) is the larger column; Direct is small.
-const leverProjectCount = (lv: (typeof levers)[number]) => lv.groups.flatMap((g) => g.items).length;
-const passThroughLevers = levers.filter((lv) => lv.transmissionMode === 'transmitted');
-const directLevers = levers.filter((lv) => lv.transmissionMode === 'direct');
-
-// Latest 5 debates by date (string sort works because YYYY-MM-DD format).
-const latestDebates = [...debates].sort((a, b) => (a.date < b.date ? 1 : -1)).slice(0, 5);
-
-// Counts for the freshness strip.
-const totalPolicies = policyCategories.flatMap((c) => c.policies).length;
-const totalDebates = DEBATE_STATS.total;
-const totalLeverItems = levers.reduce((sum, lv) => sum + lv.groups.flatMap((g) => g.items).length, 0);
 ---
 
 <Layout metadata={metadata}>
   <JsonLd schema={organizationSchema} />
   <JsonLd schema={websiteSchema} />
-
-  {
-    /* Hero — thesis + lever map in one fold. The structure (4 pass-through
-      vs 2 direct) is the argument; copy is intentionally compact. */
-  }
-  <section class="relative pt-16 md:pt-24 pb-20 md:pb-32">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6">
-      <p class="text-xs uppercase tracking-[0.18em] text-primary font-semibold mb-4">新加坡 AI 观察</p>
-      <h1
-        class="font-serif text-3xl md:text-5xl leading-[1.15] font-semibold text-gray-900 dark:text-white mb-6 tracking-tight max-w-3xl"
-      >
-        新加坡的 AI 战略不在算法。<br class="hidden md:inline" />在 6 个抓手。
-      </h1>
-      <p class="text-base md:text-lg leading-[1.85] text-gray-700 dark:text-gray-300 mb-8 max-w-prose">
-        把整个国家当作企业 AI-native 转型的"包装层"——国家自己不必成为 AI-native，只要把企业转型速度放大就够。
-      </p>
-      <div class="flex flex-wrap gap-4 items-center">
-        <a
-          href="/singapore-ai-strategy-the-real-moat/"
-          class="inline-flex items-center gap-2 bg-primary hover:bg-secondary text-white font-semibold px-5 py-3 rounded-md transition-colors text-sm"
-        >
-          阅读核心论证
-          <Icon name="tabler:arrow-right" class="w-4 h-4" />
-        </a>
-        <a
-          href="/blog/"
-          class="inline-flex items-center gap-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-primary transition-colors underline-offset-4 hover:underline"
-        >
-          浏览全部观点 →
-        </a>
-      </div>
-    </div>
-  </section>
-
-  {
-    /* Lever map — visual evidence for the hero thesis. Two columns by
-      transmissionMode: pass-through (4) wide-left, direct (2) narrow-right. */
-  }
-  <section class="pb-16 md:pb-24">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6">
-      <div class="flex items-baseline justify-between mb-3 gap-4 flex-wrap">
-        <h2 class="font-serif text-xl md:text-2xl font-semibold text-gray-900 dark:text-white">
-          国家级 AI-native 抓手图谱
-        </h2>
-        <a href="/levers/" class="text-sm text-gray-500 hover:text-primary dark:text-gray-400 transition-colors">
-          完整图谱 →
-        </a>
-      </div>
-      <p class="text-sm text-gray-600 dark:text-gray-400 mb-10 max-w-prose leading-relaxed">
-        6 个抓手覆盖 {totalLeverItems} 个具体落地项目。按"AI 引入路径"重新切片，跨多个部委串成完整执行管线。
-      </p>
-
-      <div class="grid gap-10 md:grid-cols-[2fr_1fr] md:gap-12">
-        {/* Pass-through column (4 levers) */}
-        <div>
-          <div class="text-xs uppercase tracking-[0.18em] text-primary font-semibold mb-6">
-            穿透到企业 · 国家通过这些抓手放大企业转型
-          </div>
-          <div class="grid sm:grid-cols-2 gap-x-8 gap-y-7">
-            {
-              passThroughLevers.map((lv) => (
-                <a href={`/levers/${leverSlug(lv)}/`} class="group block transition-colors">
-                  <div class="font-serif text-lg md:text-xl font-semibold text-gray-900 dark:text-white group-hover:text-primary transition-colors mb-1.5 leading-tight">
-                    <span class="mr-1.5">{lv.icon}</span>
-                    {lv.name}
-                  </div>
-                  <div class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
-                    {lv.subtitle}
-                    <span class="text-gray-400 dark:text-gray-500 tabular-nums"> · {leverProjectCount(lv)} 项目</span>
-                  </div>
-                </a>
-              ))
-            }
-          </div>
-        </div>
-
-        {/* Direct column (2 levers) */}
-        <div class="md:border-l md:border-subtle md:pl-12">
-          <div class="text-xs uppercase tracking-[0.18em] text-amber-700 dark:text-amber-400 font-semibold mb-6">
-            国家直接做 · 不依赖企业
-          </div>
-          <div class="grid gap-y-7">
-            {
-              directLevers.map((lv) => (
-                <a href={`/levers/${leverSlug(lv)}/`} class="group block transition-colors">
-                  <div class="font-serif text-lg md:text-xl font-semibold text-gray-900 dark:text-white group-hover:text-primary transition-colors mb-1.5 leading-tight">
-                    <span class="mr-1.5">{lv.icon}</span>
-                    {lv.name}
-                  </div>
-                  <div class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
-                    {lv.subtitle}
-                    <span class="text-gray-400 dark:text-gray-500 tabular-nums"> · {leverProjectCount(lv)} 项目</span>
-                  </div>
-                </a>
-              ))
-            }
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  {
-    /* Tracker dashboard — editorial style matching the lever map. 6 dimensions
-      live as a flat strip, no card. Sits between the qualitative lever map
-      and the quantitative freshness strip — both are "data signal". */
-  }
-  <section class="pb-12 md:pb-16 border-t border-subtle pt-12 md:pt-16">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6">
-      <div class="flex items-baseline justify-between mb-3 gap-4 flex-wrap">
-        <h2 class="font-serif text-xl md:text-2xl font-semibold text-gray-900 dark:text-white">新加坡 AI 仪表盘</h2>
-        <a
-          href={localizedHref('/tracker/', lang)}
-          class="text-sm text-gray-500 hover:text-primary dark:text-gray-400 transition-colors"
-        >
-          完整仪表盘 →
-        </a>
-      </div>
-      <p class="text-sm text-gray-600 dark:text-gray-400 mb-8 max-w-prose leading-relaxed">
-        6 个维度的当下读数，按月更新。{t(lang, 'trackerLastUpdated')}：{trackerDataDate}。
-      </p>
-      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-x-6 gap-y-5">
-        {
-          dimensions.map((dim) => {
-            const arrow = dim.trend === 'up' ? '↗' : dim.trend === 'down' ? '↘' : '→';
-            const arrowColor =
-              dim.trend === 'up'
-                ? 'text-emerald-600 dark:text-emerald-400'
-                : dim.trend === 'down'
-                  ? 'text-rose-600 dark:text-rose-400'
-                  : 'text-gray-400 dark:text-gray-500';
-            return (
-              <div class="leading-tight">
-                <div class="font-serif text-base md:text-lg font-semibold text-gray-900 dark:text-white mb-1">
-                  <span class="mr-1.5">{dim.icon}</span>
-                  {dim.title}
-                </div>
-                <div class={`text-sm tabular-nums ${arrowColor}`}>{arrow}</div>
-              </div>
-            );
-          })
-        }
-      </div>
-    </div>
-  </section>
-
-  {/* Freshness strip — pushed below the map; data breadth signal. */}
-  <section class="border-y border-subtle">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 py-5">
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-sm">
-        <div>
-          <div class="text-2xl font-serif font-semibold text-gray-900 dark:text-white tabular-nums">
-            {totalPolicies}
-          </div>
-          <div class="text-gray-500 dark:text-gray-400 text-xs uppercase tracking-wider mt-1">核心政策</div>
-        </div>
-        <div>
-          <div class="text-2xl font-serif font-semibold text-gray-900 dark:text-white tabular-nums">{totalDebates}</div>
-          <div class="text-gray-500 dark:text-gray-400 text-xs uppercase tracking-wider mt-1">国会辩论</div>
-        </div>
-        <div>
-          <div class="text-2xl font-serif font-semibold text-gray-900 dark:text-white tabular-nums">
-            {totalLeverItems}
-          </div>
-          <div class="text-gray-500 dark:text-gray-400 text-xs uppercase tracking-wider mt-1">抓手项目</div>
-        </div>
-        <div>
-          <div class="text-2xl font-serif font-semibold text-gray-900 dark:text-white tabular-nums">
-            {SITE_UPDATED}
-          </div>
-          <div class="text-gray-500 dark:text-gray-400 text-xs uppercase tracking-wider mt-1">最近更新</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  {/* Latest debates — flat list, dates first, FT-style. */}
-  <section class="py-12 md:py-16 border-t border-subtle">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6">
-      <div class="flex items-baseline justify-between mb-2">
-        <h2 class="font-serif text-2xl md:text-3xl font-semibold text-gray-900 dark:text-white">最近国会辩论</h2>
-        <a
-          href="/debates/"
-          class="text-sm text-gray-500 hover:text-primary dark:text-gray-400 transition-colors hidden sm:inline"
-        >
-          全部 {totalDebates} 场 →
-        </a>
-      </div>
-      <p class="text-gray-600 dark:text-gray-400 mb-8 max-w-prose leading-relaxed">
-        从 {DEBATE_STATS.yearRange.from} 到 {DEBATE_STATS.yearRange.to}，议会围绕 AI 的每一次质询、答复与辩论。
-      </p>
-      <ul class="divide-y divide-gray-200 dark:divide-slate-800">
-        {
-          latestDebates.map((d) => (
-            <li class="py-4">
-              <a href={`/debates/${d.id}/`} class="group block">
-                <div class="flex items-baseline gap-4">
-                  <span class="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 tabular-nums w-24 shrink-0">
-                    {d.date}
-                  </span>
-                  <div class="flex-1 min-w-0">
-                    <div class="font-medium text-gray-900 dark:text-white group-hover:text-primary transition-colors leading-snug">
-                      {d.zhTitle || d.title}
-                    </div>
-                    <div class="text-xs text-gray-500 dark:text-gray-400 mt-1 truncate">
-                      {d.type} · {d.topics.slice(0, 2).join(' · ')}
-                    </div>
-                  </div>
-                </div>
-              </a>
-            </li>
-          ))
-        }
-      </ul>
-      <div class="mt-8 sm:hidden">
-        <a href="/debates/" class="text-sm text-primary hover:text-secondary font-medium">
-          全部 {totalDebates} 场辩论 →
-        </a>
-      </div>
-    </div>
-  </section>
-
-  {
-    /* Closing thesis tile — the solution. Hero opens with the problem
-    (algorithm isn't the moat), closing answers with the proposal
-    (AI-native country = architecture, not scale). */
-  }
-  <section class="py-12 md:py-20 border-t border-subtle">
-    <div class="max-w-3xl mx-auto px-4 sm:px-6 text-center">
-      <p class="font-serif text-xl md:text-2xl text-gray-700 dark:text-gray-300 leading-[1.7] mb-6 italic">
-        "AI-native 不是规模，是架构。国家不可能'自己'AI-native——它必须穿透到企业。"
-      </p>
-      <a
-        href="/singapore-ai-native-companies-vs-nations/"
-        class="inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-secondary transition-colors underline underline-offset-4"
-      >
-        读"AI-native 国家"全文
-        <Icon name="tabler:arrow-right" class="w-4 h-4" />
-      </a>
-    </div>
-  </section>
+  <HomePage lang={lang} />
 </Layout>

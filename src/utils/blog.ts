@@ -97,8 +97,11 @@ const getNormalizedPost = async (post: CollectionEntry<'post'>): Promise<Post> =
   }));
 
   const basePermalink = await generatePermalink({ id, slug, publishDate, category: category?.slug });
-  const permalink =
-    lang === 'en' ? '/en' + (basePermalink.startsWith('/') ? basePermalink : '/' + basePermalink) : basePermalink;
+  // Note: no leading slash on the EN prefix. A leading "/" in the catch-all
+  // [...blog] params makes Astro emit duplicate routes (e.g. both /en/foo/
+  // and /en/en/foo/). All consumers run permalinks through getPermalink()
+  // which calls trimSlash, so leading-slashlessness is the canonical form.
+  const permalink = lang === 'en' ? `en/${basePermalink}` : basePermalink;
 
   return {
     id: id,

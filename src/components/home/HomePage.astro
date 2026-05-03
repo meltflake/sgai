@@ -1,0 +1,301 @@
+---
+// Lang-aware homepage body. Single source of structure for both
+// `src/pages/index.astro` (zh) and `src/pages/en/index.astro` (en).
+// Page files are thin wrappers that supply metadata + JSON-LD; all
+// section ordering, layout, and copy lookups live here.
+
+import { Icon } from 'astro-icon/components';
+import { debates, DEBATE_STATS } from '~/data/debates';
+import { levers } from '~/data/levers';
+import { leverSlug } from '~/utils/entity-pages';
+import { categories as policyCategories } from '~/data/policies';
+import { SITE_UPDATED } from '~/version';
+import { dimensions, dataDate as trackerDataDate } from '~/data/tracker';
+import { t, pickLocalized, localizedHref, type Lang } from '~/i18n';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+
+const leverProjectCount = (lv: (typeof levers)[number]) => lv.groups.flatMap((g) => g.items).length;
+const passThroughLevers = levers.filter((lv) => lv.transmissionMode === 'transmitted');
+const directLevers = levers.filter((lv) => lv.transmissionMode === 'direct');
+
+const latestDebates = [...debates].sort((a, b) => (a.date < b.date ? 1 : -1)).slice(0, 5);
+
+const totalPolicies = policyCategories.flatMap((c) => c.policies).length;
+const totalDebates = DEBATE_STATS.total;
+const totalLeverItems = levers.reduce((sum, lv) => sum + lv.groups.flatMap((g) => g.items).length, 0);
+
+// Debate titles store English as `title` and Chinese as `zhTitle` (reverse
+// of the usual *En sibling pattern). Pick per lang with fallback.
+const debateTitle = (d: (typeof debates)[number]) =>
+  lang === 'zh' ? (d.zhTitle ?? d.title) : (d.title ?? d.zhTitle ?? '');
+---
+
+{
+  /* Hero — thesis + lever map in one fold. The structure (4 pass-through
+    vs 2 direct) is the argument; copy is intentionally compact. */
+}
+<section class="relative pt-16 md:pt-24 pb-20 md:pb-32">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6">
+    <p class="text-xs uppercase tracking-[0.18em] text-primary font-semibold mb-4">{t(lang, 'heroEyebrow')}</p>
+    <h1 class="t-display text-gray-900 dark:text-white mb-6 max-w-3xl">
+      {t(lang, 'heroHeadline')}<br class="hidden md:inline" />{lang === 'zh' ? '' : ' '}{t(lang, 'heroHeadline2')}
+    </h1>
+    <p class="text-base md:text-lg leading-[1.85] text-gray-700 dark:text-gray-300 mb-8 max-w-prose">
+      {t(lang, 'heroSubtitle')}
+    </p>
+    <div class="flex flex-wrap gap-4 items-center">
+      <a
+        href={localizedHref('/singapore-ai-strategy-the-real-moat/', lang)}
+        class="inline-flex items-center gap-2 bg-primary hover:bg-secondary text-white font-semibold px-5 py-3 rounded-md transition-colors text-sm"
+      >
+        {t(lang, 'ctaReadCore')}
+        <Icon name="tabler:arrow-right" class="w-4 h-4" />
+      </a>
+      <a
+        href={localizedHref('/blog/', lang)}
+        class="inline-flex items-center gap-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-primary transition-colors underline-offset-4 hover:underline"
+      >
+        {t(lang, 'ctaBrowseAll')}
+      </a>
+    </div>
+  </div>
+</section>
+
+{
+  /* Lever map — visual evidence for the hero thesis. Two columns by
+    transmissionMode: pass-through (4) wide-left, direct (2) narrow-right. */
+}
+<section class="pb-16 md:pb-24">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6">
+    <div class="flex items-baseline justify-between mb-3 gap-4 flex-wrap">
+      <h2 class="font-serif text-xl md:text-2xl font-semibold text-gray-900 dark:text-white">
+        {t(lang, 'leversSection')}
+      </h2>
+      <a
+        href={localizedHref('/levers/', lang)}
+        class="text-sm text-gray-500 hover:text-primary dark:text-gray-400 transition-colors"
+      >
+        {t(lang, 'viewAllLeversCta')}
+      </a>
+    </div>
+    <p class="text-sm text-gray-600 dark:text-gray-400 mb-10 max-w-prose leading-relaxed">
+      {t(lang, 'leversBlurb').replace('{count}', String(totalLeverItems))}
+    </p>
+
+    <div class="grid gap-10 md:grid-cols-[2fr_1fr] md:gap-12">
+      {/* Pass-through column (4 levers) */}
+      <div>
+        <div class="text-xs uppercase tracking-[0.18em] text-primary font-semibold mb-6">
+          {t(lang, 'leverMapColPassThroughHint')}
+        </div>
+        <div class="grid sm:grid-cols-2 gap-x-8 gap-y-7">
+          {
+            passThroughLevers.map((lv) => (
+              <a href={localizedHref(`/levers/${leverSlug(lv)}/`, lang)} class="group block transition-colors">
+                <div class="font-serif text-lg md:text-xl font-semibold text-gray-900 dark:text-white group-hover:text-primary transition-colors mb-1.5 leading-tight">
+                  <span class="mr-1.5">{lv.icon}</span>
+                  {pickLocalized(lv, 'name', lang)}
+                </div>
+                <div class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                  {pickLocalized(lv, 'subtitle', lang)}
+                  <span class="text-gray-400 dark:text-gray-500 tabular-nums">
+                    {' '}
+                    · {leverProjectCount(lv)} {t(lang, 'leverProjectsSuffix')}
+                  </span>
+                </div>
+              </a>
+            ))
+          }
+        </div>
+      </div>
+
+      {/* Direct column (2 levers) */}
+      <div class="md:border-l md:border-subtle md:pl-12">
+        <div class="text-xs uppercase tracking-[0.18em] text-amber-700 dark:text-amber-400 font-semibold mb-6">
+          {t(lang, 'leverMapColDirectHint')}
+        </div>
+        <div class="grid gap-y-7">
+          {
+            directLevers.map((lv) => (
+              <a href={localizedHref(`/levers/${leverSlug(lv)}/`, lang)} class="group block transition-colors">
+                <div class="font-serif text-lg md:text-xl font-semibold text-gray-900 dark:text-white group-hover:text-primary transition-colors mb-1.5 leading-tight">
+                  <span class="mr-1.5">{lv.icon}</span>
+                  {pickLocalized(lv, 'name', lang)}
+                </div>
+                <div class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                  {pickLocalized(lv, 'subtitle', lang)}
+                  <span class="text-gray-400 dark:text-gray-500 tabular-nums">
+                    {' '}
+                    · {leverProjectCount(lv)} {t(lang, 'leverProjectsSuffix')}
+                  </span>
+                </div>
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{
+  /* Tracker dashboard — editorial style matching the lever map. 6 dimensions
+    live as a flat strip, no card. Sits between the qualitative lever map
+    and the quantitative freshness strip — both are "data signal". */
+}
+<section class="pb-12 md:pb-16 border-t border-subtle pt-12 md:pt-16">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6">
+    <div class="flex items-baseline justify-between mb-3 gap-4 flex-wrap">
+      <h2 class="font-serif text-xl md:text-2xl font-semibold text-gray-900 dark:text-white">
+        {t(lang, 'homeTrackerSection')}
+      </h2>
+      <a
+        href={localizedHref('/tracker/', lang)}
+        class="text-sm text-gray-500 hover:text-primary dark:text-gray-400 transition-colors"
+      >
+        {t(lang, 'homeTrackerCta')}
+      </a>
+    </div>
+    <p class="text-sm text-gray-600 dark:text-gray-400 mb-8 max-w-prose leading-relaxed">
+      {t(lang, 'homeTrackerBlurb')}
+      {t(lang, 'trackerLastUpdated')}: {trackerDataDate}.
+    </p>
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-x-6 gap-y-5">
+      {
+        dimensions.map((dim) => {
+          const arrow = dim.trend === 'up' ? '↗' : dim.trend === 'down' ? '↘' : '→';
+          const arrowColor =
+            dim.trend === 'up'
+              ? 'text-emerald-600 dark:text-emerald-400'
+              : dim.trend === 'down'
+                ? 'text-rose-600 dark:text-rose-400'
+                : 'text-gray-400 dark:text-gray-500';
+          const dimTitle = pickLocalized(dim, 'title', lang);
+          return (
+            <div class="leading-tight">
+              <div class="font-serif text-base md:text-lg font-semibold text-gray-900 dark:text-white mb-1">
+                <span class="mr-1.5">{dim.icon}</span>
+                {dimTitle}
+              </div>
+              <div class={`text-sm tabular-nums ${arrowColor}`}>{arrow}</div>
+            </div>
+          );
+        })
+      }
+    </div>
+  </div>
+</section>
+
+{/* Freshness strip — pushed below the map; data breadth signal. */}
+<section class="border-y border-subtle">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 py-5">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-sm">
+      <div>
+        <div class="text-2xl font-serif font-semibold text-gray-900 dark:text-white tabular-nums">
+          {totalPolicies}
+        </div>
+        <div class="text-gray-500 dark:text-gray-400 text-xs uppercase tracking-wider mt-1">
+          {t(lang, 'freshnessPolicies')}
+        </div>
+      </div>
+      <div>
+        <div class="text-2xl font-serif font-semibold text-gray-900 dark:text-white tabular-nums">{totalDebates}</div>
+        <div class="text-gray-500 dark:text-gray-400 text-xs uppercase tracking-wider mt-1">
+          {t(lang, 'freshnessDebates')}
+        </div>
+      </div>
+      <div>
+        <div class="text-2xl font-serif font-semibold text-gray-900 dark:text-white tabular-nums">
+          {totalLeverItems}
+        </div>
+        <div class="text-gray-500 dark:text-gray-400 text-xs uppercase tracking-wider mt-1">
+          {t(lang, 'freshnessLevers')}
+        </div>
+      </div>
+      <div>
+        <div class="text-2xl font-serif font-semibold text-gray-900 dark:text-white tabular-nums">
+          {SITE_UPDATED}
+        </div>
+        <div class="text-gray-500 dark:text-gray-400 text-xs uppercase tracking-wider mt-1">
+          {t(lang, 'freshnessUpdated')}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{/* Latest debates — flat list, dates first, FT-style. */}
+<section class="py-12 md:py-16 border-t border-subtle">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6">
+    <div class="flex items-baseline justify-between mb-2">
+      <h2 class="font-serif text-2xl md:text-3xl font-semibold text-gray-900 dark:text-white">
+        {t(lang, 'recentDebatesSection')}
+      </h2>
+      <a
+        href={localizedHref('/debates/', lang)}
+        class="text-sm text-gray-500 hover:text-primary dark:text-gray-400 transition-colors hidden sm:inline"
+      >
+        {t(lang, 'viewAllDebatesCta').replace('{count}', String(totalDebates))}
+      </a>
+    </div>
+    <p class="text-gray-600 dark:text-gray-400 mb-8 max-w-prose leading-relaxed">
+      {
+        t(lang, 'recentDebatesBlurb')
+          .replace('{from}', String(DEBATE_STATS.yearRange.from))
+          .replace('{to}', String(DEBATE_STATS.yearRange.to))
+      }
+    </p>
+    <ul class="divide-y divide-gray-200 dark:divide-slate-800">
+      {
+        latestDebates.map((d) => (
+          <li class="py-4">
+            <a href={localizedHref(`/debates/${d.id}/`, lang)} class="group block">
+              <div class="flex items-baseline gap-4">
+                <span class="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 tabular-nums w-24 shrink-0">
+                  {d.date}
+                </span>
+                <div class="flex-1 min-w-0">
+                  <div class="font-medium text-gray-900 dark:text-white group-hover:text-primary transition-colors leading-snug">
+                    {debateTitle(d)}
+                  </div>
+                  <div class="text-xs text-gray-500 dark:text-gray-400 mt-1 truncate">
+                    {d.type} · {d.topics.slice(0, 2).join(' · ')}
+                  </div>
+                </div>
+              </div>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+    <div class="mt-8 sm:hidden">
+      <a href={localizedHref('/debates/', lang)} class="text-sm text-primary hover:text-secondary font-medium">
+        {t(lang, 'viewAllDebatesCta').replace('{count}', String(totalDebates))}
+      </a>
+    </div>
+  </div>
+</section>
+
+{
+  /* Closing thesis tile — the solution. Hero opens with the problem
+  (algorithm isn't the moat), closing answers with the proposal
+  (AI-native country = architecture, not scale). */
+}
+<section class="py-12 md:py-20 border-t border-subtle">
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 text-center">
+    <p class="font-serif text-xl md:text-2xl text-gray-700 dark:text-gray-300 leading-[1.7] mb-6 italic">
+      "{t(lang, 'closingThesis')}"
+    </p>
+    <a
+      href={localizedHref('/singapore-ai-native-companies-vs-nations/', lang)}
+      class="inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-secondary transition-colors underline underline-offset-4"
+    >
+      {t(lang, 'closingCta')}
+      <Icon name="tabler:arrow-right" class="w-4 h-4" />
+    </a>
+  </div>
+</section>

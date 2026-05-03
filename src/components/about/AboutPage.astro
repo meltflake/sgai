@@ -1,0 +1,218 @@
+---
+// Lang-aware about-page body. Single source for both `src/pages/about/index.astro`
+// and `src/pages/en/about/index.astro`. Long-form prose is kept inline in a per-lang
+// COPY block (rather than in the global i18n dict) since this content is page-local
+// and editorial, not chrome.
+
+import { Icon } from 'astro-icon/components';
+import { SITE_VERSION, SITE_UPDATED } from '~/version';
+import { localizedHref, type Lang } from '~/i18n';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+
+type Block = { kind: 'p'; html: string } | { kind: 'h2'; text: string } | { kind: 'ul'; items: string[] };
+
+interface AboutCopy {
+  eyebrow: string;
+  headline: string;
+  lead: string;
+  body: Block[];
+  versionLine: (v: string, d: string) => string;
+  ctaRead: string;
+  ctaSource: string;
+}
+
+const COPY: Record<Lang, AboutCopy> = {
+  zh: {
+    eyebrow: '关于本站',
+    headline: '为什么记录新加坡的 AI 战略',
+    lead: '我是 wulujia，坐标新加坡。新加坡 AI 观察由我个人维护，独立运营，没有任何机构或政府背景。',
+    body: [
+      { kind: 'h2', text: '这个站做什么' },
+      {
+        kind: 'p',
+        html: '新加坡是一个城邦——人口 590 万，GDP 5300 亿美元——但它在 AI 时代的国家级动作远超体量。Smart Nation、National AI Strategy 1.0/2.0、Budget 2026 AI 千亿赌注、SEA-LION 大模型、AI Verify 治理框架……这些动作中有一部分被海外低估，另一部分被本地高估。',
+      },
+      { kind: 'p', html: '这个站系统性地追踪：' },
+      {
+        kind: 'ul',
+        items: [
+          '<strong>政策原文</strong>——从 Smart Nation 2014 到 NAIRD 2026，按机构归类，可追溯到原始 PDF。',
+          '<strong>国会辩论</strong>——150 场 Hansard 记录，按议题、议员、年份索引，每条带摘要和政策信号分析。',
+          '<strong>抓手图谱</strong>——把跨部委的 110+ 个落地项目归到 6 个国家级"AI 引入路径"，看清整体形状。',
+          '<strong>法律框架</strong>——Copyright §244 训练宽松 + Online Safety Bill 输出严管的双轨结构。',
+          '<strong>创业生态</strong>——650+ AI 公司、9 家独角兽，按垂直领域和融资轮次。',
+        ],
+      },
+      { kind: 'h2', text: '方法论' },
+      {
+        kind: 'p',
+        html: '所有数据来源于公开渠道：parliament.gov.sg / sprs.parl.gov.sg 的国会记录、各部委的政策原文、官方统计、上市公司财报、媒体报道。每条记录都标注 sourceUrl，可追溯。',
+      },
+      {
+        kind: 'p',
+        html: `<a href="${localizedHref('/blog/', lang)}" class="text-primary hover:text-secondary">观点</a> 栏目是我的个人立场，会显著偏离官方叙事——这是有意为之，否则没必要做这个站。`,
+      },
+      {
+        kind: 'p',
+        html: '数据更新频率：国会 sitting 后 1-2 周内补充新辩论；政策文件月度审视；指标季度复盘。每次更新都会刷新页面顶部"数据更新"日期。',
+      },
+      { kind: 'h2', text: '利益声明' },
+      { kind: 'p', html: '本站独立运营，不接受新加坡政府或本站讨论的任何机构、公司的资助。' },
+      {
+        kind: 'p',
+        html: '本站 <strong>不接受赞助、广告、付费订阅</strong>。所有内容免费开放，源码 <a href="https://github.com/meltflake/sgai" target="_blank" rel="noopener" class="text-primary hover:text-secondary">在 GitHub 公开</a>。维护成本（域名 + Cloudflare）由我个人承担。',
+      },
+      {
+        kind: 'p',
+        html: '如果未来出现利益冲突——比如某家被新加坡 AI 观察追踪的公司与我产生商业关系——我会在相关页面顶部明确标注。',
+      },
+      { kind: 'h2', text: '谁在用这个站' },
+      { kind: 'p', html: '主要受众有三类：' },
+      {
+        kind: 'ul',
+        items: [
+          '<strong>创业者 / 技术决策者</strong>——评估在新加坡设立 AI 业务的政策环境、人才池、合规要求。',
+          '<strong>政策研究者</strong>——做跨经济体对标时需要新加坡的一手数据。',
+          '<strong>媒体 / 分析师</strong>——写新加坡 AI 相关报道时需要可信赖的事实底座。',
+        ],
+      },
+      { kind: 'h2', text: '反馈与更正' },
+      { kind: 'p', html: '数据有错？分析有偏？欢迎通过 GitHub 告诉我：' },
+      {
+        kind: 'ul',
+        items: [
+          '<a href="https://github.com/meltflake/sgai/issues" target="_blank" rel="noopener" class="text-primary hover:text-secondary">GitHub Issues</a>——最佳渠道，可追溯',
+        ],
+      },
+      { kind: 'h2', text: '版本与归档' },
+    ],
+    versionLine: (v, d) =>
+      `当前版本 <span class="font-semibold text-gray-700 dark:text-gray-300">v${v}</span>，最近更新 <span class="font-semibold text-gray-700 dark:text-gray-300">${d}</span>。<br />源代码 MIT 许可证；内容 CC BY 4.0——转载注明出处即可，无需联系。`,
+    ctaRead: '阅读观点',
+    ctaSource: 'GitHub 源码',
+  },
+  en: {
+    eyebrow: 'About',
+    headline: "Why I track Singapore's AI strategy",
+    lead: "I'm wulujia, based in Singapore. Singapore AI Observatory is independently maintained and operates with no institutional or government backing.",
+    body: [
+      { kind: 'h2', text: 'What this site does' },
+      {
+        kind: 'p',
+        html: 'Singapore is a city-state — population 5.9 million, GDP US$390 billion — but its national-scale moves in the AI era far outweigh its size. Smart Nation, National AI Strategy 1.0/2.0, the Budget 2026 AI mega-bet, the SEA-LION model, the AI Verify governance framework — some of these are underrated abroad and others are overrated locally.',
+      },
+      { kind: 'p', html: 'This site tracks them systematically:' },
+      {
+        kind: 'ul',
+        items: [
+          '<strong>Policy library</strong> — every key document from Smart Nation 2014 to NAIRD 2026, organised by ministry, traceable to the original PDF.',
+          '<strong>Parliamentary debates</strong> — 150 Hansard records indexed by topic, MP, and year, each with a digest and policy-signal analysis.',
+          '<strong>Lever map</strong> — 110+ concrete projects across ministries, mapped to 6 national-scale "AI-injection paths" so you can see the whole shape.',
+          '<strong>Legal framework</strong> — the dual-track structure of Copyright §244 (permissive training) plus the Online Safety Bill (strict outputs).',
+          '<strong>Startup ecosystem</strong> — 650+ AI companies, 9 unicorns, segmented by vertical and funding stage.',
+        ],
+      },
+      { kind: 'h2', text: 'Methodology' },
+      {
+        kind: 'p',
+        html: 'All data comes from public sources: parliament.gov.sg / sprs.parl.gov.sg for Hansard records, ministry sites for policy text, official statistics, listed-company filings, media reports. Every record carries a sourceUrl for traceability.',
+      },
+      {
+        kind: 'p',
+        html: `The <a href="${localizedHref('/blog/', lang)}" class="text-primary hover:text-secondary">Opinion</a> section reflects my personal views, which deliberately diverge from official narratives — otherwise there would be no reason to run this site.`,
+      },
+      {
+        kind: 'p',
+        html: 'Update cadence: new debates are added 1-2 weeks after each parliamentary sitting; policy documents are reviewed monthly; metrics are revisited quarterly. Each refresh updates the "Last updated" date on every page.',
+      },
+      { kind: 'h2', text: 'Conflict of interest' },
+      {
+        kind: 'p',
+        html: 'This site is independently operated. It does not accept funding from the Singapore government or from any organisation discussed on the site.',
+      },
+      {
+        kind: 'p',
+        html: 'We <strong>do not accept sponsorship, advertising, or paid subscriptions</strong>. All content is freely available; the source is <a href="https://github.com/meltflake/sgai" target="_blank" rel="noopener" class="text-primary hover:text-secondary">public on GitHub</a>. Hosting (domain + Cloudflare) is paid for personally.',
+      },
+      {
+        kind: 'p',
+        html: 'If a future conflict of interest arises — e.g. an organisation tracked here entering a commercial relationship with me — it will be disclosed at the top of the relevant pages.',
+      },
+      { kind: 'h2', text: 'Who reads this site' },
+      { kind: 'p', html: 'Three primary audiences:' },
+      {
+        kind: 'ul',
+        items: [
+          '<strong>Founders / technical decision-makers</strong> — evaluating Singapore as a base for AI work: policy environment, talent pool, compliance posture.',
+          '<strong>Policy researchers</strong> — needing first-hand Singapore data when comparing cross-economy AI policies.',
+          "<strong>Journalists / analysts</strong> — needing a reliable factual base when writing about Singapore's AI scene.",
+        ],
+      },
+      { kind: 'h2', text: 'Feedback &amp; corrections' },
+      { kind: 'p', html: 'Found an error? Disagree with an analysis? Open an issue on GitHub:' },
+      {
+        kind: 'ul',
+        items: [
+          '<a href="https://github.com/meltflake/sgai/issues" target="_blank" rel="noopener" class="text-primary hover:text-secondary">GitHub Issues</a> — preferred channel, fully traceable',
+        ],
+      },
+      { kind: 'h2', text: 'Versioning &amp; archive' },
+    ],
+    versionLine: (v, d) =>
+      `Current version <span class="font-semibold text-gray-700 dark:text-gray-300">v${v}</span>, last updated <span class="font-semibold text-gray-700 dark:text-gray-300">${d}</span>.<br />Source code MIT-licensed; content CC BY 4.0 — attribution required.`,
+    ctaRead: 'Read the opinions',
+    ctaSource: 'GitHub source',
+  },
+};
+
+const c = COPY[lang];
+---
+
+<article class="prose prose-lg dark:prose-invert max-w-3xl mx-auto px-4 sm:px-6 py-12 md:py-16 font-serif">
+  <p class="not-prose text-xs uppercase tracking-[0.18em] text-primary font-semibold mb-4">{c.eyebrow}</p>
+  <h1 class="t-display !mb-6 not-prose">{c.headline}</h1>
+
+  <p class="lead !text-lg md:!text-xl !leading-[1.85] text-gray-700 dark:text-gray-300">{c.lead}</p>
+
+  {
+    c.body.map((b) => {
+      if (b.kind === 'h2') return <h2>{b.text}</h2>;
+      if (b.kind === 'p') return <p set:html={b.html} />;
+      return (
+        <ul>
+          {b.items.map((it) => (
+            <li set:html={it} />
+          ))}
+        </ul>
+      );
+    })
+  }
+
+  <p
+    class="not-prose text-sm text-gray-500 dark:text-gray-400 border-t border-subtle pt-6 mt-12"
+    set:html={c.versionLine(SITE_VERSION, SITE_UPDATED)}
+  />
+
+  <div class="not-prose mt-10 flex flex-wrap gap-4">
+    <a
+      href={localizedHref('/blog/', lang)}
+      class="inline-flex items-center gap-2 bg-primary hover:bg-secondary text-white font-semibold px-5 py-3 rounded-md transition-colors text-sm"
+    >
+      {c.ctaRead}
+      <Icon name="tabler:arrow-right" class="w-4 h-4" />
+    </a>
+    <a
+      href="https://github.com/meltflake/sgai"
+      target="_blank"
+      rel="noopener"
+      class="inline-flex items-center gap-2 border border-gray-300 dark:border-slate-700 hover:border-primary text-gray-700 dark:text-gray-300 hover:text-primary font-medium px-5 py-3 rounded-md transition-colors text-sm"
+    >
+      <Icon name="tabler:brand-github" class="w-4 h-4" />
+      {c.ctaSource}
+    </a>
+  </div>
+</article>

@@ -1,0 +1,90 @@
+---
+// Lang-aware timeline page. Year-by-year list driven by `~/data/timeline`.
+// Shared body for `/timeline/` and `/en/timeline/`.
+
+import Headline from '~/components/ui/Headline.astro';
+import RelatedRail from '~/components/data/RelatedRail.astro';
+import { timelineEvents } from '~/data/timeline';
+import { pickLocalized, type Lang } from '~/i18n';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+
+// Tag set is small and stable — translate inline rather than threading per-tag EN siblings.
+const TAG_EN: Record<string, string> = {
+  人才: 'Talent',
+  国际: 'International',
+  预算: 'Budget',
+  战略: 'Strategy',
+  医疗: 'Healthcare',
+  治理: 'Governance',
+  技术: 'Tech',
+  产业: 'Industry',
+  创新: 'Innovation',
+  标准: 'Standards',
+};
+const tagText = (tag: string) => (lang === 'en' ? (TAG_EN[tag] ?? tag) : tag);
+
+const COPY: Record<Lang, { title: string; subtitle: string; sources: string }> = {
+  zh: {
+    title: '📅 新加坡 AI 发展时间线',
+    subtitle: '从 2014 年智慧国家倡议到 2027 年国际 AI 奥林匹克，回顾新加坡 AI 战略的关键里程碑。',
+    sources: '数据来源：AI Singapore、SNDGO、MOF、IMDA 等官方公开信息。',
+  },
+  en: {
+    title: '📅 Singapore AI Development Timeline',
+    subtitle:
+      "From the 2014 Smart Nation Initiative to the 2027 International AI Olympiad — key milestones in Singapore's AI strategy.",
+    sources: 'Sources: AI Singapore, SNDGO, MOF, IMDA and other public official channels.',
+  },
+};
+
+const c = COPY[lang];
+---
+
+<section class="px-4 py-16 sm:px-6 mx-auto lg:px-8 max-w-4xl">
+  <Headline title={c.title} subtitle={c.subtitle} />
+
+  <div class="relative">
+    {/* Vertical line */}
+    <div class="absolute left-4 md:left-1/2 md:-translate-x-px top-0 bottom-0 w-0.5 bg-blue-200 dark:bg-blue-800"></div>
+
+    <div class="space-y-12">
+      {
+        timelineEvents.map((event, index) => (
+          <div class={`relative flex items-start gap-6 ${index % 2 === 0 ? 'md:flex-row-reverse' : ''}`}>
+            {/* Dot */}
+            <div class="absolute left-4 md:left-1/2 -translate-x-1/2 w-4 h-4 bg-blue-600 dark:bg-blue-400 rounded-full border-4 border-white dark:border-slate-900 z-10" />
+
+            {/* Content */}
+            <div
+              class={`ml-12 md:ml-0 md:w-[calc(50%-2rem)] ${index % 2 === 0 ? 'md:mr-auto md:pr-8 md:text-right' : 'md:ml-auto md:pl-8'}`}
+            >
+              <div class="bg-surface rounded-lg shadow-md p-6 border border-subtle hover:shadow-lg transition-shadow">
+                <div class={`flex items-center gap-3 mb-2 ${index % 2 === 0 ? 'md:flex-row-reverse' : ''}`}>
+                  <span class="t-stat text-blue-600 dark:text-blue-400">{event.year}</span>
+                  {event.tags && (
+                    <div class="flex gap-1 flex-wrap">
+                      {event.tags.map((tag) => (
+                        <span class="text-xs bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 px-2 py-0.5 rounded">
+                          {tagText(tag)}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                </div>
+                <h3 class="text-lg font-bold mb-2">{pickLocalized(event, 'title', lang)}</h3>
+                <p class="text-sm text-muted leading-relaxed">{pickLocalized(event, 'description', lang)}</p>
+                {event.id && <RelatedRail entity={{ type: 'timeline', id: event.id }} variant="compact" />}
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+
+  <p class="mt-12 text-sm text-muted text-center">{c.sources}</p>
+</section>

@@ -1,63 +1,19 @@
 ---
+// Timeline page (zh) — thin wrapper.
+
 import Layout from '~/layouts/PageLayout.astro';
-import Headline from '~/components/ui/Headline.astro';
-import RelatedRail from '~/components/data/RelatedRail.astro';
-import { timelineEvents } from '~/data/timeline';
+import TimelinePage from '~/components/timeline/TimelinePage.astro';
+
+const lang = 'zh' as const;
 ---
 
 <Layout
   metadata={{
     title: '发展时间线',
-    description: '新加坡 AI 发展时间线：从 2019 年 NAIS 1.0 到 2024 年 NAIS 2.0，关键里程碑按时间排列。',
+    description: '新加坡 AI 发展时间线：从 2014 年智慧国家到 2027 年国际 AI 奥林匹克，关键里程碑按时间排列。',
   }}
   breadcrumbs={[{ label: '发展时间线' }]}
+  lang={lang}
 >
-  <section class="px-4 py-16 sm:px-6 mx-auto lg:px-8 max-w-4xl">
-    <Headline
-      title="📅 新加坡 AI 发展时间线"
-      subtitle="从 2014 年智慧国家倡议到 2027 年国际 AI 奥林匹克，回顾新加坡 AI 战略的关键里程碑。"
-    />
-
-    <div class="relative">
-      {/* Vertical line */}
-      <div class="absolute left-4 md:left-1/2 md:-translate-x-px top-0 bottom-0 w-0.5 bg-blue-200 dark:bg-blue-800">
-      </div>
-
-      <div class="space-y-12">
-        {
-          timelineEvents.map((event, index) => (
-            <div class={`relative flex items-start gap-6 ${index % 2 === 0 ? 'md:flex-row-reverse' : ''}`}>
-              {/* Dot */}
-              <div class="absolute left-4 md:left-1/2 -translate-x-1/2 w-4 h-4 bg-blue-600 dark:bg-blue-400 rounded-full border-4 border-white dark:border-slate-900 z-10" />
-
-              {/* Content */}
-              <div
-                class={`ml-12 md:ml-0 md:w-[calc(50%-2rem)] ${index % 2 === 0 ? 'md:mr-auto md:pr-8 md:text-right' : 'md:ml-auto md:pl-8'}`}
-              >
-                <div class="bg-surface rounded-lg shadow-md p-6 border border-subtle hover:shadow-lg transition-shadow">
-                  <div class={`flex items-center gap-3 mb-2 ${index % 2 === 0 ? 'md:flex-row-reverse' : ''}`}>
-                    <span class="text-2xl font-bold text-blue-600 dark:text-blue-400">{event.year}</span>
-                    {event.tags && (
-                      <div class="flex gap-1 flex-wrap">
-                        {event.tags.map((tag) => (
-                          <span class="text-xs bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 px-2 py-0.5 rounded">
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                  <h3 class="text-lg font-bold mb-2">{event.title}</h3>
-                  <p class="text-sm text-muted leading-relaxed">{event.description}</p>
-                  {event.id && <RelatedRail entity={{ type: 'timeline', id: event.id }} variant="compact" />}
-                </div>
-              </div>
-            </div>
-          ))
-        }
-      </div>
-    </div>
-
-    <p class="mt-12 text-sm text-muted text-center">数据来源：AI Singapore、SNDGO、MOF、IMDA 等官方公开信息。</p>
-  </section>
+  <TimelinePage lang={lang} />
 </Layout>

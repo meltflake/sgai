@@ -245,9 +245,12 @@ export const zh = {
   transmissionFootnoteCta: '了解 7 条传导杠杆 →',
   recentDebatesSection: '最近国会辩论',
   recentDebatesBlurb: '从 {from} 到 {to}，议会围绕 AI 的每一次质询、答复与辩论。',
-  closingThesis: '新加坡的 AI 马六甲海峡在哪里？真正的护城河不在算法，在制度——快速识别问题并果断转向的能力。',
-  closingCta: '读完整论证',
+  closingThesis: 'AI-native 不是规模，是架构。国家不可能"自己"AI-native——它必须穿透到企业。',
+  closingCta: '读"AI-native 国家"全文',
   leverWord: '抓手',
+  homeTrackerSection: '新加坡 AI 仪表盘',
+  homeTrackerBlurb: '6 个维度的当下读数，按月更新。',
+  homeTrackerCta: '完整仪表盘 →',
 
   // Listings / categories
   policiesPageTitle: 'AI 政策库',
@@ -394,9 +397,12 @@ export const en: Partial<Record<keyof typeof zh, string>> = {
   recentDebatesSection: 'Recent Parliamentary Debates',
   recentDebatesBlurb: 'Every parliamentary question, response, and debate on AI from {from} to {to}.',
   closingThesis:
-    'Where is Singapore’s AI Strait of Malacca? The real moat isn’t the algorithm — it’s the state’s ability to spot problems early and turn the ship fast.',
-  closingCta: 'Read the full argument',
+    'AI-native isn’t scale — it’s architecture. A country cannot be AI-native "on its own"; it has to transmit through to enterprises.',
+  closingCta: 'Read the "AI-native country" essay',
   leverWord: 'Lever',
+  homeTrackerSection: 'Singapore AI Dashboard',
+  homeTrackerBlurb: 'Six dimensions, current reading, refreshed monthly.',
+  homeTrackerCta: 'Full dashboard →',
 
   policiesPageTitle: 'AI Policy Library',
   policiesPageBlurb: 'Singapore’s core AI policy documents, grouped by category, newest first within each.',
