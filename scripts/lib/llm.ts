@@ -111,8 +111,16 @@ export async function callLlm(userPrompt: string, options: LlmCallOptions = {}):
   }
 
   return new Promise<string>((resolve, reject) => {
+    // CRITICAL: run in /tmp so Claude Code doesn't load the project's
+    // CLAUDE.md, MCP tools, skills, agents into the session — those are
+    // ~30 K cached tokens of irrelevant context that:
+    //   (a) cost ~$0.04 per call, and
+    //   (b) cause the model to enter agent mode and respond with
+    //       "I'm ready, what should I do?" instead of executing the prompt.
+    // Running in /tmp keeps `claude -p` as a stateless LLM completion.
     const child = spawn(bin, args, {
       stdio: ['pipe', 'pipe', 'pipe'],
+      cwd: '/tmp',
     });
 
     let stdout = '';

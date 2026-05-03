@@ -210,8 +210,15 @@ async function main(): Promise<void> {
     process.stderr.write(`No targets matched --file=${onlyFile}\n`);
     process.exit(1);
   }
-  if (!process.env.GITHUB_TOKEN) {
-    process.stdout.write('⚠ GITHUB_TOKEN not set — using unauthenticated API (60 req/hour cap).\n');
+  // Token auto-resolves: env var → `gh auth token` → unauthenticated (60 req/h)
+  const { spawnSync } = await import('node:child_process');
+  const ghToken = spawnSync('gh', ['auth', 'token'], { encoding: 'utf8' });
+  if (process.env.GITHUB_TOKEN) {
+    process.stdout.write('GitHub auth: GITHUB_TOKEN env (5000 req/h)\n');
+  } else if (ghToken.status === 0 && ghToken.stdout.toString().trim()) {
+    process.stdout.write('GitHub auth: gh CLI keychain (5000 req/h)\n');
+  } else {
+    process.stdout.write('⚠ no GitHub token — unauthenticated (60 req/h). Run `gh auth login` or set GITHUB_TOKEN.\n');
   }
 
   const startedAt = Date.now();
@@ -234,8 +241,17 @@ async function main(): Promise<void> {
     }
   }
 
+  const totalErrors = allChanges.filter((r) => r.error).length;
+  const allErrored = totalErrors === allChanges.length && allChanges.length > 0;
+
   if (dryRun || filesWritten.length === 0 || noCommit) {
-    process.stdout.write(`\n${dryRun ? '[dry-run]' : '[no-commit]'} done.\n`);
+    let label: string;
+    if (dryRun) label = '[dry-run]';
+    else if (noCommit) label = '[no-commit]';
+    else if (allErrored) label = '[all-errored]';
+    else label = '[no-changes]';
+    process.stdout.write(`\n${label} done.\n`);
+    if (allErrored && !dryRun) process.exit(2); // signal real failure to caller
     return;
   }
 

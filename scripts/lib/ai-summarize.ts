@@ -124,16 +124,25 @@ async function callClaudeSummarize(
   input: SummaryInput,
   options: { model: string; systemPrompt: string }
 ): Promise<Required<Omit<ModelOutput, 'reasonForLowConfidence'>> & { reasonForLowConfidence?: string }> {
-  const userPayload = {
-    sourceUrl: input.sourceUrl,
-    title: input.title,
-    contentText: input.contentText.slice(0, 12000),
-  };
+  // Wrap input in an explicit instruction so the model executes the
+  // summarisation task instead of returning a generic "I'm ready" reply.
+  const inputJson = JSON.stringify(
+    {
+      sourceUrl: input.sourceUrl,
+      title: input.title,
+      contentText: input.contentText.slice(0, 12000),
+    },
+    null,
+    2
+  );
+  const userPayload =
+    `Summarise the following page using the JSON schema in your system prompt. ` +
+    `Output ONLY raw JSON (no markdown, no commentary). The page:\n\n${inputJson}`;
 
   let lastError = '';
   for (let attempt = 1; attempt <= 4; attempt += 1) {
     try {
-      const out = await callLlmJson<ModelOutput>(JSON.stringify(userPayload), {
+      const out = await callLlmJson<ModelOutput>(userPayload, {
         systemPrompt: options.systemPrompt,
         model: options.model,
       });

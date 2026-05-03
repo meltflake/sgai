@@ -86,18 +86,32 @@ export function getCurrentBranch(): string {
 /**
  * Returns paths that are dirty (untracked or modified) outside the
  * `allowDirtyPaths` whitelist. Empty array = clean.
+ *
+ * Bypasses gitOk() because that helper trim()s the output, which would
+ * eat the leading space on the first porcelain line and corrupt the
+ * first path. Parses XY-prefix via regex for robustness.
  */
 export function getUnexpectedDirty(allowDirtyPaths: string[] = [], targetFiles: string[] = []): string[] {
-  const r = gitOk(['status', '--porcelain']);
-  if (!r) return [];
-  const lines = r.split('\n').filter(Boolean);
+  const r = git(['status', '--porcelain']);
+  if (r.code !== 0) {
+    throw new Error(`git status --porcelain failed: ${r.stderr.trim()}`);
+  }
+  // Match: 2-char status (any chars incl. space), 1+ whitespace, then path to end of line.
+  // Handles `?? path`, ` M path`, `M  path`, `MM path`, etc.
+  const lineRe = /^.{2}\s+(.+)$/;
+  const lines = r.stdout.split('\n');
   const allowed = new Set(targetFiles);
-  return lines
-    .map((line) => line.slice(3)) // strip "XY "
-    .filter((path) => {
-      if (allowed.has(path)) return false;
-      return !allowDirtyPaths.some((prefix) => path.startsWith(prefix));
-    });
+  const dirty: string[] = [];
+  for (const line of lines) {
+    if (!line) continue;
+    const m = line.match(lineRe);
+    if (!m) continue;
+    const path = m[1];
+    if (allowed.has(path)) continue;
+    if (allowDirtyPaths.some((prefix) => path.startsWith(prefix))) continue;
+    dirty.push(path);
+  }
+  return dirty;
 }
 
 /**

@@ -9,6 +9,8 @@
 //   const repo = parseGithubUrl('https://github.com/aisingapore/sealion');
 //   const stats = await fetchRepoStats(repo.owner, repo.repo);
 
+import { spawnSync } from 'node:child_process';
+
 export interface ParsedRepo {
   owner: string;
   repo: string;
@@ -43,17 +45,43 @@ export function parseGithubUrl(url: string): ParsedRepo | null {
 }
 
 /**
- * Fetch repo stats from the GitHub API. Set GITHUB_TOKEN env var to lift
- * the unauthenticated 60 req/hour cap to 5000 req/hour.
+ * Resolve a GitHub token. Priority:
+ *   1. GITHUB_TOKEN env var
+ *   2. `gh auth token` (uses the keychain token from gh CLI login)
+ *   3. unauthenticated (60 req/hour cap)
+ */
+function resolveGithubToken(): string | null {
+  if (process.env.GITHUB_TOKEN) return process.env.GITHUB_TOKEN;
+  try {
+    const r = spawnSync('gh', ['auth', 'token'], { encoding: 'utf8' });
+    if (r.status === 0) {
+      const token = r.stdout.toString().trim();
+      if (token) return token;
+    }
+  } catch {
+    /* gh not installed; fall through to unauthenticated */
+  }
+  return null;
+}
+
+let _cachedToken: string | null | undefined;
+function getGithubToken(): string | null {
+  if (_cachedToken === undefined) _cachedToken = resolveGithubToken();
+  return _cachedToken;
+}
+
+/**
+ * Fetch repo stats from the GitHub API. Auto-resolves auth from
+ * GITHUB_TOKEN or `gh auth token`. Falls back to unauthenticated
+ * (60 req/hour) only if neither is available.
  */
 export async function fetchRepoStats(owner: string, repo: string): Promise<RepoStats> {
   const headers: Record<string, string> = {
     Accept: 'application/vnd.github+json',
     'User-Agent': 'sgai-refresh',
   };
-  if (process.env.GITHUB_TOKEN) {
-    headers.Authorization = `Bearer ${process.env.GITHUB_TOKEN}`;
-  }
+  const token = getGithubToken();
+  if (token) headers.Authorization = `Bearer ${token}`;
   const response = await fetch(`https://api.github.com/repos/${owner}/${repo}`, { headers });
   if (!response.ok) {
     const text = await response.text();
@@ -61,6 +89,11 @@ export async function fetchRepoStats(owner: string, repo: string): Promise<RepoS
   }
   const data = (await response.json()) as RepoStats;
   return data;
+}
+
+/** Test-only: clear the cached token resolution (lets tests swap env vars). */
+export function _resetGithubTokenCache(): void {
+  _cachedToken = undefined;
 }
 
 /**

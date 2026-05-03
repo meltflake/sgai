@@ -119,7 +119,12 @@ async function callClaudeTranslate(
 
   for (let attempt = 1; attempt <= 4; attempt += 1) {
     try {
-      const userPrompt = JSON.stringify({ paragraphs });
+      // Wrap the JSON in an explicit instruction so the model executes the
+      // translation task instead of returning a generic "I'm ready" reply.
+      const userPrompt =
+        `Translate the paragraphs below using the system prompt's rules. ` +
+        `Output ONLY raw JSON {"paragraphs":["..."]} with the same array length. ` +
+        `Input:\n${JSON.stringify({ paragraphs })}`;
       const parsed = await callLlmJson<{ paragraphs?: unknown }>(userPrompt, {
         systemPrompt: options.systemPrompt,
         model: options.model,
