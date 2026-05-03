@@ -204,6 +204,48 @@ export const categories: PolicyCategory[] = [
     icon: '⚖️',
     policies: [
       {
+        id: 'iso-iec-42119-8-generative-ai-testing-standard',
+        title: 'ISO/IEC 42119-8 生成式 AI 测试标准（提案）',
+        titleEn: 'ISO/IEC 42119-8 Generative AI Testing Standard (Proposal)',
+        date: '2026-04',
+        source: '资讯通信媒体发展局 (IMDA) / Enterprise Singapore',
+        sourceOrgUrl: 'https://www.imda.gov.sg/',
+        sourceUrl:
+          'https://www.imda.gov.sg/resources/press-releases-factsheets-and-speeches/press-releases/2026/singapore-champions-new-global-ai-testing-standardisation-efforts',
+        summary: '新加坡在第 17 届 ISO/IEC JTC 1/SC 42 全会提交的全球首个生成式 AI 测试国际标准草案。',
+        content: `2026 年 4 月 20 日，第 17 届 ISO/IEC JTC 1/SC 42 全体会议在新加坡开幕（首次在东盟举办，由 IMDA 与 Enterprise Singapore 联合主办，35+ 国家、250+ 专家参与）。新加坡正式提交 **ISO/IEC 42119-8** 标准草案——如果通过，这将是全球首个针对生成式 AI 系统的国际测试标准。
+
+**两个核心方向**：
+- **基准测试（Benchmarking）**：用统一数据集衡量 AI 性能，解决"考什么、怎么评分"的可比性问题
+- **红队测试（Red Teaming）**：模拟攻击找出系统漏洞，标准化"隐藏风险怎么找出来"
+
+提案建立在 IMDA 已有的国内测试基础设施之上：AI Verify Toolkit、Starter Kit for Testing of LLM-Based Applications、Global AI Assurance Sandbox。樟宜机场 2025 年 2 月获得的全球首张 ISO/IEC 42001 AI 管理体系认证，则提供了"AI 治理可被外部审计"的可执行案例。
+
+IMDA 现任 CEO **Ng Cher Pong**（2025-11 上任）在开幕致辞中说："标准的制定不能以龟速推进——否则将被 AI 高速变革所淘汰。"他同时强调标准应在行业、文化和语言层面具有代表性，东南亚作为全球文化最多元的地区之一必须接入标准制定。
+
+国际 ISO 标准从提案到正式发布通常需要数年。但提案一旦提出，等于把全球后续讨论的框架定下来了——这正是新加坡"用 0.07% 全球人口撬动 G7 级 AI 治理话语权"的典型操作。`,
+        summaryEn:
+          "Singapore's draft of the world's first international standard for testing generative AI systems, tabled at the 17th ISO/IEC JTC 1/SC 42 plenary.",
+        contentEn: `On 20 April 2026, the 17th ISO/IEC JTC 1/SC 42 plenary opened in Singapore — the first time in ASEAN, co-organised by IMDA and Enterprise Singapore, with 35+ national bodies and 250+ AI experts participating. Singapore formally tabled **ISO/IEC 42119-8**, which, if adopted, will be the world's first international standard for testing generative AI systems.
+
+**Two core pillars:**
+- **Benchmarking** — using shared datasets to measure AI performance, solving the comparability problem of "what to test and how to score"
+- **Red Teaming** — simulating attacks to surface hidden risks, standardising "how to find what's hidden"
+
+The proposal builds on IMDA's domestic testing infrastructure: the AI Verify Toolkit, the Starter Kit for Testing of LLM-Based Applications, and the Global AI Assurance Sandbox. Changi Airport's February 2025 ISO/IEC 42001 AI Management System certification — the world's first for an airport — supplied a working precedent that AI governance can be externally audited.
+
+IMDA CEO **Ng Cher Pong** (in post since November 2025), in his opening address, said: "Standards setting cannot move at a glacial pace" — or it risks being outpaced by AI itself. He also stressed that standards must be representative across sectors, cultures and languages, and that Southeast Asia — one of the world's most diverse regions — must be plugged into standards-making.
+
+ISO standards typically take years from proposal to publication. But once a proposal is on the table, the framing for global discussion is set — which is precisely how Singapore translates 0.07% of the world's population into G7-tier AI governance influence.`,
+        sourceEn: 'Infocomm Media Development Authority (IMDA) / Enterprise Singapore',
+        ministry: 'MDDI',
+        authorPersonIds: [],
+        relatedDebateIds: [],
+        relatedLeverNumbers: [5, 6],
+        relatedTimelineYears: [2025, 2026],
+        relatedPostSlugs: [],
+      },
+      {
         id: 'model-ai-governance-framework-for-agentic-ai',
         title: 'Agentic AI 治理框架',
         titleEn: 'Model AI Governance Framework for Agentic AI',
@@ -366,6 +408,70 @@ export const categories: PolicyCategory[] = [
     icon: '🏢',
     policies: [
       {
+        id: 'ai-in-healthcare-guidelines-aihgle',
+        title: '医疗 AI 联合指南 (AIHGle)',
+        titleEn: 'Artificial Intelligence in Healthcare Guidelines (AIHGle)',
+        date: '2021-10',
+        source: '卫生部 (MOH) / 卫生科学局 (HSA) / 国家医疗科技局 (Synapxe)',
+        sourceOrgUrl: 'https://www.moh.gov.sg/',
+        sourceUrl:
+          'https://www.moh.gov.sg/news-highlights/details/release-of-the-artificial-intelligence-in-healthcare-guidelines-(aihgle)',
+        summary: '面向医院、医生与 AI 开发者的医疗 AI 安全使用与良好实践指南。',
+        content: `Artificial Intelligence in Healthcare Guidelines (AIHGle) 于 2021 年 10 月由卫生部 (MOH)、卫生科学局 (HSA) 与当时的 Integrated Health Information Systems (IHiS，2023 年改组为 Synapxe) 联合发布，是新加坡医疗 AI 的核心非约束性指南。两个目标：一是支持安全有效的医疗 AI 部署，二是补充 HSA 对 AI-Medical Devices (AI-MD) 的硬性监管要求。覆盖 AI 开发者与医疗机构两侧的全生命周期：开发阶段的临床有效性证据要求、部署阶段的临床工作流融入与人在回路、上线后的持续监控与不良事件报告、患者沟通与知情同意。AIHGle 与 HSA 基于 Health Products Act 的医疗器械注册要求形成"软指南 + 硬法"双层结构，是 ACE-AI、Synapxe AI 平台等国家级医疗 AI 项目的合规底座。`,
+        summaryEn:
+          'Joint guidelines on the safe use and good practice of AI in healthcare for hospitals, clinicians, and AI developers.',
+        contentEn: `The Artificial Intelligence in Healthcare Guidelines (AIHGle) were jointly released in October 2021 by the Ministry of Health (MOH), the Health Sciences Authority (HSA), and the then Integrated Health Information Systems (IHiS, reorganised as Synapxe in 2023). They are Singapore's core non-binding guidance on healthcare AI. Two objectives: support the safe and effective deployment of AI in healthcare, and complement HSA's binding regulation of AI-Medical Devices (AI-MD). The guidelines cover the full lifecycle on both the developer and healthcare-institution sides: evidence of clinical validity at the development stage, integration into clinical workflows and human-in-the-loop at deployment, post-market monitoring and adverse event reporting, and patient communication and informed consent. Together with HSA's medical-device registration requirements under the Health Products Act, AIHGle creates a "soft guidance + hard law" two-layer structure — the compliance baseline beneath national healthcare-AI initiatives like ACE-AI and Synapxe's AI platforms.`,
+        sourceEn: 'Ministry of Health (MOH) / Health Sciences Authority (HSA) / Synapxe',
+        ministry: 'MOH',
+        authorPersonIds: [],
+        relatedDebateIds: [],
+        relatedLeverNumbers: [],
+        relatedTimelineYears: [],
+        relatedPostSlugs: [],
+      },
+      {
+        id: 'health-products-act-ai-medical-devices',
+        title: 'Health Products Act — AI 医疗器械注册',
+        titleEn: 'Health Products Act — AI-Medical Device (AI-MD) Regulation',
+        date: '2007',
+        source: '卫生科学局 (HSA)',
+        sourceOrgUrl: 'https://www.hsa.gov.sg/',
+        sourceUrl: 'https://www.hsa.gov.sg/medical-devices/regulatory-overview',
+        summary: '含 AI 的医疗器械须在 HSA 注册——硬法层面的医疗 AI 准入门槛。',
+        content: `Health Products Act 2007 是新加坡医疗器械的核心法律，由卫生科学局 (HSA) 执行。含 AI 组件的医疗设备（AI-Medical Device, AI-MD）——无论是独立软件 (Software as a Medical Device, SaMD) 还是嵌入设备的算法——必须按风险等级在 HSA 注册后方可在新加坡上市或临床使用。配套监管文件：Regulatory Guidelines for Software Medical Devices（2022 修订）专章覆盖 AI-MD 的训练数据质量、模型变更管理 (Change Control Plan)、持续学习系统 (Continuous Learning) 的特殊要求、临床证据等级、网络安全和数据保护。AI-MD 还须遵循 Good Machine Learning Practice (GMLP) 原则，与 FDA 和 Health Canada 的多边协调框架一致。这一条是 W&C tracker 单列的两条 AI 相关存量立法之一——它说明新加坡"没有专门 AI 法"的真实含义：用既有行业法的现代化修订把 AI 纳入硬法监管，而不是另立一部横切法。`,
+        summaryEn:
+          'AI-containing medical devices must be registered with HSA — the hard-law gate for healthcare AI market access.',
+        contentEn: `The Health Products Act 2007 is Singapore's core law for medical devices, administered by the Health Sciences Authority (HSA). Medical devices containing AI components (AI-Medical Devices, AI-MD) — whether standalone Software as a Medical Device (SaMD) or algorithms embedded in hardware — must be registered with HSA according to risk class before they can be marketed or used clinically in Singapore. Supporting regulation includes the Regulatory Guidelines for Software Medical Devices (revised 2022), which contains a dedicated section on AI-MD covering training data quality, change-control plans for model updates, the special requirements for continuous-learning systems, levels of clinical evidence, cybersecurity, and data protection. AI-MDs are also expected to follow Good Machine Learning Practice (GMLP) principles, aligned with the multilateral framework agreed with the US FDA and Health Canada. This is one of the two pieces of pre-existing legislation that the W&C tracker singles out as AI-relevant — a concrete illustration of what "Singapore has no dedicated AI law" actually means: AI is brought into hard-law regulation through modernised sector statutes, not through a horizontal AI act.`,
+        sourceEn: 'Health Sciences Authority (HSA)',
+        ministry: 'MOH',
+        authorPersonIds: [],
+        relatedDebateIds: [],
+        relatedLeverNumbers: [],
+        relatedTimelineYears: [],
+        relatedPostSlugs: [],
+      },
+      {
+        id: 'road-traffic-act-autonomous-vehicles',
+        title: 'Road Traffic Act — 自动驾驶授权',
+        titleEn: 'Road Traffic Act — Autonomous Vehicle Trials and Use',
+        date: '2017-03',
+        source: '陆路交通管理局 (LTA) / 交通部 (MOT)',
+        sourceOrgUrl: 'https://www.lta.gov.sg/',
+        sourceUrl: 'https://sso.agc.gov.sg/Act/RTA1961?ProvIds=P1A6C-#pr6C-',
+        summary: '2017 修订引入第 6C 节，授权 LTA 监管自动驾驶车辆测试与使用。',
+        content: `Road Traffic Act 1961 通过 2017 年的 Road Traffic (Amendment) Act 增设第 6C 节（Trials and use of autonomous motor vehicles），把自动驾驶 (AV) 写入硬法。核心条款：陆路交通管理局 (LTA) 获授权制定细则、签发 AV 测试与运营许可、设定保险与安全要求、在划定区域 (designated area) 进行豁免。配套是 2017 年颁布的 Road Traffic (Autonomous Motor Vehicles) Rules，覆盖：测试申请与审批、安全员要求、数据记录与事件报告（黑匣子）、与 LTA 的持续报告义务、最低保险额度。新加坡同步建立了 CETRAN (Centre of Excellence for Testing and Research of AVs) 测试中心和 one-north 自动驾驶试验区，把法律授权落到物理基础设施。这条与 Health Products Act 共同构成 W&C tracker 单列的"用既有行业法管 AI"的两个核心样本——也是 NAIS 1.0 五大重点领域之一"智能交通与物流"的法律基座。`,
+        summaryEn:
+          'A 2017 amendment introduced Section 6C, empowering LTA to regulate autonomous vehicle trials and use.',
+        contentEn: `The Road Traffic Act 1961 was amended in 2017 (Road Traffic (Amendment) Act 2017) to insert Section 6C — "Trials and use of autonomous motor vehicles" — bringing AVs into hard law. Core provisions: the Land Transport Authority (LTA) is empowered to make subsidiary regulations, issue trial and operational permits for AVs, set insurance and safety requirements, and grant exemptions within designated areas. The accompanying Road Traffic (Autonomous Motor Vehicles) Rules 2017 cover trial applications and approvals, safety driver requirements, data logging and incident reporting (black-box), ongoing reporting obligations to LTA, and minimum insurance thresholds. In parallel, Singapore established CETRAN (Centre of Excellence for Testing and Research of Autonomous Vehicles) and the one-north AV trial zone, anchoring the legal authorisation in physical infrastructure. Together with the Health Products Act, this is one of the two core examples that the W&C tracker singles out for "regulating AI through existing sector statutes" — and the legal foundation for "intelligent transport and logistics," one of the five priority sectors of NAIS 1.0.`,
+        sourceEn: 'Land Transport Authority (LTA) / Ministry of Transport (MOT)',
+        ministry: 'MOT',
+        authorPersonIds: [],
+        relatedDebateIds: [],
+        relatedLeverNumbers: [],
+        relatedTimelineYears: [],
+        relatedPostSlugs: [],
+      },
+      {
         id: 'guidelines-on-securing-ai-systems',
         title: 'CSA AI 系统安全指南',
         titleEn: 'Guidelines on Securing AI Systems',
@@ -425,6 +531,28 @@ export const categories: PolicyCategory[] = [
           'Translates the FEAT principles into an operational assessment toolkit, with an open-source methodology.',
         contentEn: `The Veritas initiative is the practical extension of the FEAT principles, jointly developed by MAS and partner financial institutions. The project's goal is to build an open-source, operational assessment methodology and toolkit that helps financial institutions translate FEAT principles into concrete AI applications. Use cases covered include fairness assessments for customer marketing and transparency assessments for credit risk scoring. Veritas is iterated continuously, embodying Singapore's incremental "principles → tools → practice" AI governance path.`,
         sourceEn: 'Monetary Authority of Singapore (MAS)',
+        ministry: undefined,
+        authorPersonIds: [],
+        relatedDebateIds: [],
+        relatedLeverNumbers: [],
+        relatedTimelineYears: [],
+        relatedPostSlugs: [],
+      },
+      {
+        id: 'pdpc-advisory-guidelines-on-use-of-personal-data-in-ai',
+        title: 'PDPC 个人数据 AI 使用咨询指南',
+        titleEn: 'Advisory Guidelines on Use of Personal Data in AI Recommendation and Decision Systems',
+        date: '2024-03',
+        source: '个人数据保护委员会 (PDPC)',
+        sourceOrgUrl: 'https://www.pdpc.gov.sg/',
+        sourceUrl:
+          'https://www.pdpc.gov.sg/guidelines-and-consultation/2024/02/advisory-guidelines-on-use-of-personal-data-in-ai-recommendation-and-decision-systems',
+        summary: 'PDPC 明确 PDPA 在 AI 推荐与决策系统中的合规边界——为企业用个人数据训练和运行 AI 提供确定性。',
+        content: `PDPC 于 2024 年 3 月发布《Advisory Guidelines on Use of Personal Data in AI Recommendation and Decision Systems》，把 PDPA 在 AI 场景下的具体适用方式讲清楚。覆盖三类常见情形：(1) 用个人数据训练、测试、监控 AI 模型——可援引 Business Improvement Exception 或 Research Exception，但需通过合理性测试、数据最小化、去标识化等门槛；(2) 用 AI 进行推荐或决策——须履行通知和同意义务，决策类应用须告知数据主体；(3) 数据保护影响评估（DPIA）的最佳实践模板。这是 PDPC 把 PDPA 2020 修订（合法利益例外、Business Improvement Exception）转化为 AI 落地操作手册的关键文件，与 Copyright Act §244 共同构成新加坡 AI 训练侧"双重法律基础"。`,
+        summaryEn:
+          'PDPC clarifies how PDPA applies to AI recommendation and decision systems — giving organisations certainty when using personal data to train and run AI.',
+        contentEn: `In March 2024, PDPC issued the Advisory Guidelines on Use of Personal Data in AI Recommendation and Decision Systems, spelling out how the PDPA applies in concrete AI scenarios. The guidelines cover three common situations: (1) using personal data to train, test, and monitor AI models — which can rely on the Business Improvement Exception or Research Exception, subject to reasonableness, data minimisation, and de-identification thresholds; (2) using AI for recommendations or decision-making — which triggers notification and consent obligations, and where decision-making applications must inform data subjects; (3) best-practice templates for Data Protection Impact Assessments (DPIA). This is the key document by which PDPC translates the 2020 PDPA amendments (legitimate interests, Business Improvement Exception) into an operational handbook for AI deployment, forming — together with Section 244 of the Copyright Act — Singapore's dual legal foundation on the training side.`,
+        sourceEn: 'Personal Data Protection Commission (PDPC)',
         ministry: undefined,
         authorPersonIds: [],
         relatedDebateIds: [],
