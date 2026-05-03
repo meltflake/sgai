@@ -3,6 +3,7 @@ import Layout from '~/layouts/PageLayout.astro';
 import Headline from '~/components/ui/Headline.astro';
 import { sections, dataDate, introBody, conclusion } from '~/data/legal-ai';
 import { legalItemSlug } from '~/utils/entity-pages';
+import { renderInlineMarkdown } from '~/utils/inline-markdown';
 
 const scopeLabel: Record<string, { label: string; color: string }> = {
   training: { label: '训练侧', color: 'bg-emerald-100 dark:bg-emerald-900 text-emerald-800 dark:text-emerald-200' },
@@ -28,7 +29,7 @@ const scopeLabel: Record<string, { label: string; color: string }> = {
 
     <div class="callout-note rounded-lg mb-12 leading-relaxed">
       <p class="font-bold text-base mb-3">核心立场</p>
-      <pre class="text-sm whitespace-pre-wrap leading-relaxed bg-transparent p-0 border-0 m-0">{introBody}</pre>
+      <div class="text-sm leading-relaxed space-y-3" set:html={renderInlineMarkdown(introBody)} />
     </div>
 
     {
@@ -41,12 +42,15 @@ const scopeLabel: Record<string, { label: string; color: string }> = {
 
           <div class="space-y-4">
             {section.items.map((item) => (
-              <div class="border border-subtle rounded-lg p-6 bg-surface hover:shadow-md transition-shadow">
+              <div class="group relative border border-subtle rounded-lg p-6 bg-surface hover:shadow-md hover:border-blue-300 dark:hover:border-blue-700 transition-all">
+                <a
+                  href={`/legal-ai/${legalItemSlug(item)}/`}
+                  class="absolute inset-0 z-0 rounded-lg"
+                  aria-label={`查看 ${item.title} 详情`}
+                />
                 <div class="flex items-start gap-2 flex-wrap mb-2">
-                  <h3 class="text-lg font-bold m-0 flex-1 min-w-0">
-                    <a href={`/legal-ai/${legalItemSlug(item)}/`} class="hover:text-blue-600 dark:hover:text-blue-400">
-                      {item.title}
-                    </a>
+                  <h3 class="text-lg font-bold m-0 flex-1 min-w-0 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                    {item.title}
                   </h3>
                   <span class={`text-xs font-bold px-2 py-1 rounded shrink-0 ${scopeLabel[item.scope].color}`}>
                     {scopeLabel[item.scope].label}
@@ -62,7 +66,7 @@ const scopeLabel: Record<string, { label: string; color: string }> = {
                       href={item.authorityUrl}
                       target="_blank"
                       rel="noopener"
-                      class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 px-2 py-1 rounded hover:underline"
+                      class="relative z-10 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 px-2 py-1 rounded hover:underline"
                     >
                       {item.authority}
                     </a>
@@ -77,18 +81,12 @@ const scopeLabel: Record<string, { label: string; color: string }> = {
                 </div>
                 <p class="text-sm font-medium mb-2">{item.summary}</p>
                 <p class="text-sm text-muted mb-3">{item.body}</p>
-                <a
-                  href={`/legal-ai/${legalItemSlug(item)}/`}
-                  class="text-sm text-blue-600 dark:text-blue-400 hover:underline mr-4"
-                >
-                  查看详情 →
-                </a>
                 {item.sourceUrl && (
                   <a
                     href={item.sourceUrl}
                     target="_blank"
                     rel="noopener"
-                    class="text-sm text-blue-600 dark:text-blue-400 hover:underline"
+                    class="relative z-10 text-sm text-blue-600 dark:text-blue-400 hover:underline"
                   >
                     🔗 法律原文
                   </a>
@@ -102,7 +100,7 @@ const scopeLabel: Record<string, { label: string; color: string }> = {
 
     <div class="mt-12 bg-surface rounded-xl p-8 border border-subtle">
       <h2 class="text-xl font-bold mb-4">为什么这套组合对 AI 公司有吸引力</h2>
-      <pre class="text-sm whitespace-pre-wrap leading-relaxed bg-transparent p-0 border-0 m-0">{conclusion}</pre>
+      <div class="text-sm leading-relaxed space-y-3" set:html={renderInlineMarkdown(conclusion)} />
     </div>
 
     <div class="mt-12 text-sm text-muted text-center">
