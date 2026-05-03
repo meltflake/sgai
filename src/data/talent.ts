@@ -203,3 +203,68 @@ export const programmes: TalentProgramme[] = [
     ],
   },
 ];
+
+export interface AutoDiscoveredEntry {
+  title: string;
+  titleEn: string;
+  description: string;
+  descriptionEn: string;
+  category: string;
+  confidence: 'high' | 'medium' | 'low';
+  sourceUrl: string;
+  discoveredAt: string;
+  reasonForLowConfidence?: string;
+}
+
+export const autoDiscovered: AutoDiscoveredEntry[] = [
+  {
+    title: '新加坡政府科技局招聘',
+    titleEn: 'Careers at GovTech Singapore',
+    description: '新加坡政府科技局（GovTech）的招聘页面，介绍了工作专业人士和学生毕业生的职业机会。提供的项目包括实习、Smart Nation奖学金和技术助理项目。该页面强调通过创新、协作文化和有影响力的工作来塑造新加坡数字未来的机会。',
+    descriptionEn: 'The careers page of Singapore\'s Government Technology Agency (GovTech), presenting employment opportunities for working professionals and students/graduates. Programmes include internships, Smart Nation Scholarship, and Technology Associate Programme. The page emphasizes opportunities to shape Singapore\'s digital future through innovation, collaborative culture, and impactful work.',
+    category: '企业上手',
+    confidence: 'medium',
+    sourceUrl: 'https://www.tech.gov.sg/careers/',
+    discoveredAt: '2026-05-03',
+  },
+  {
+    title: '为什么加入 GovTech',
+    titleEn: 'Why join GovTech',
+    description: '介绍政府技术局（GovTech）作为新加坡科技人才雇主的优势，强调通过创新、协作文化和有影响力的工作来塑造新加坡数字未来的机会。页面概述了 GovTech 的职业发展前景、招聘流程和工作文化。',
+    descriptionEn: 'A career overview page for the Government Technology Agency of Singapore (GovTech) highlighting why it is an employer of choice for tech talents. The page outlines opportunities to shape Singapore\'s digital future through innovation, describes the hiring process, and emphasizes a collaborative work culture.',
+    category: '企业上手',
+    confidence: 'medium',
+    sourceUrl: 'https://www.tech.gov.sg/careers/why-join-govtech/',
+    discoveredAt: '2026-05-03',
+  },
+  {
+    title: 'GovTech职业生涯概览',
+    titleEn: 'Overview of GovTech Careers',
+    description: '新加坡政府科技局(GovTech)的职业招聘页面，介绍了该机构作为雇主的优势。GovTech员工的工作与新加坡智慧国建设密切相关，通过数字化转型项目直接改善市民和居民的生活。机构提供丰富的学习发展机会、内部流动和晋升途径，致力于将员工培养为未来领袖，同时重视工作-生活平衡、混合办公模式和多元包容的工作环境。',
+    descriptionEn: 'A career overview page from Singapore\'s Government Technology Agency (GovTech) highlighting why the organization is an employer of choice. GovTech employees contribute to Singapore\'s Smart Nation initiative through digital transformation projects that directly impact citizens\' lives. The organization offers continuous learning and development opportunities, internal mobility, leadership development pathways, flexible work arrangements, and a diverse and inclusive workplace culture.',
+    category: '专业人才培养',
+    confidence: 'high',
+    sourceUrl: 'https://www.tech.gov.sg/careers/why-join-govtech/overview/',
+    discoveredAt: '2026-05-03',
+  },
+  {
+    title: '我们如何招聘',
+    titleEn: 'How we hire',
+    description: '新加坡政府技术局（GovTech）介绍其招聘流程和用人标准。招聘分为申请、面试和决策三个阶段，重点考察候选人的技术能力、问题解决能力以及与GovTech价值观（敏捷、大胆、协作）的契合度。为帮助候选人脱颖而出，GovTech建议优化简历、充分准备面试、以及管理个人数字足迹。',
+    descriptionEn: 'GovTech Singapore outlines its hiring process and candidate evaluation criteria. The three-stage process includes application submission, interviews with hiring managers and potential teammates, and final decision by the hiring team based on established frameworks. To succeed, candidates are advised to craft well-formatted CVs highlighting quantifiable accomplishments, prepare thoroughly for interviews by understanding job scope and demonstrating critical thinking, and maintain a professional digital presence through LinkedIn and clean social media profiles.',
+    category: '企业上手',
+    confidence: 'high',
+    sourceUrl: 'https://www.tech.gov.sg/careers/why-join-govtech/how-we-hire/',
+    discoveredAt: '2026-05-03',
+  },
+  {
+    title: '我们的工作方式',
+    titleEn: 'How we work',
+    description: '新加坡政府技术局（GovTech）介绍其工作文化和价值观。GovTech 倡导以公共利益为目标的创新文化，强调敏捷、大胆和协作的价值观。组织鼓励员工在安全的创意空间中提出想法、承担风险、学习成长，同时提供混合工作安排、员工资源小组和志愿服务机会，培养高绩效的职场环境。',
+    descriptionEn: 'The Government Technology Agency of Singapore (GovTech) describes its work culture and values. GovTech fosters an innovation-driven environment centered on public good, emphasizing Agile, Bold, and Collaborative values. The organization encourages employees to propose ideas, take calculated risks, and learn in a safe creative space while offering hybrid work arrangements, employee resource groups, and volunteer opportunities to build a high-performing workplace.',
+    category: '企业上手',
+    confidence: 'medium',
+    sourceUrl: 'https://www.tech.gov.sg/careers/why-join-govtech/how-we-work/',
+    discoveredAt: '2026-05-03',
+  },
+];
