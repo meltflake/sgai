@@ -1,7 +1,7 @@
 ---
 publishDate: 2026-04-25
 updateDate: 2026-05-03
-title: '从 50 人到 5,700,000 人——同一种 AI-native 架构，两个尺度'
+title: 'AI-native 的公司与国家'
 excerpt: '2026 年同时在跑两类 AI-native 试验——50 人的公司和 570 万人的城邦。把它们并排放，会看到一个被忽视的事实：50 人的公司和 570 万人的国家，可以用同一种 AI-native 架构，规模只决定杠杆，不决定本质。新加坡 Budget 2026 的真正赌注，是把整个国家当成本土企业 AI-native 转型的包装层。'
 category: '观点'
 tags:
@@ -44,7 +44,7 @@ relatedPersonIds:
 >
 > AI 不应该只是公司在用的工具，它应该是公司运行的操作系统。
 
-另一类是 **570 万人的城邦**。新加坡 Budget 2026 把 AI 列为整份预算案的战略核心，黄循财亲挂帅 National AI Council，跨 11 个部委的 Committee of Supply 全部围绕 AI——这是迄今为止**唯一一个明确把 AI-native 国家作为战略目标**的主权国家。
+另一类是 **570 万人的城邦**。新加坡先有 NAIS 2.0（National AI Strategy 2.0，2023 年发布）把 AI 立为国家战略，又在 2026 年 Budget 把 AI 升级为整份预算案的战略主线，黄循财亲挂帅 National AI Council，跨 11 个部委的 Committee of Supply 全部围绕 AI。**从战略层级、组织安排、财政投入三件事一起看，新加坡是迄今为止唯一一个把"做一个 AI-native 的国家"当成显性国家战略的主权国家。**
 
 把这两个并排放，会看到一个被忽视的事实：**50 人的公司和 570 万人的国家，可以用同一种 AI-native 架构。规模只决定杠杆，不决定本质。**
 
