@@ -29,7 +29,20 @@ export const timelineEvents: TimelineEvent[] = [
     tags: ['人才', '国际'],
   },
   {
-    id: 'evt-2026',
+    id: 'evt-2026-sc42-plenary',
+    year: 2026,
+    date: '2026-04-20',
+    title: 'ISO/IEC 42119-8 提案：全球首个生成式 AI 测试国际标准',
+    titleEn: 'ISO/IEC 42119-8: First International Standard for Testing Generative AI',
+    description:
+      '4 月 20-24 日，第 17 届 ISO/IEC JTC 1/SC 42 全体会议在新加坡举行——这是 SC 42（全球 AI 标准制定核心机构）首次在东盟召开，由 IMDA 与 Enterprise Singapore 联合主办，汇集 35 个以上国家、250 多位 AI 专家（含美、英、中、日、德、法、韩）。开幕日新加坡正式提交 ISO/IEC 42119-8 标准草案，聚焦生成式 AI 测试方法标准化，两个核心方向：基准测试（benchmarking）统一"考什么、怎么评分"，红队测试（red teaming）标准化"隐藏风险怎么找出来"。如获通过将是全球首个针对生成式 AI 系统的国际测试标准。提案建立在 IMDA 已有的 AI Verify Toolkit、LLM 应用测试 Starter Kit 和 Global AI Assurance Sandbox 基础上。IMDA 现任 CEO Ng Cher Pong 在开幕致辞中表示："标准制定不能以龟速推进——否则将被 AI 高速变革所淘汰。"会议同期，IMDA 与 EnterpriseSG 还为东盟成员国举办了能力建设培训。',
+    descriptionEn:
+      "From 20–24 April, the 17th ISO/IEC JTC 1/SC 42 plenary convened in Singapore — the first time SC 42 (the core international body for AI standards) has met in ASEAN, co-organised by IMDA and Enterprise Singapore. Over 35 national bodies and 250+ AI experts attended, including delegates from the US, UK, China, Japan, Germany, France and South Korea. On the opening day Singapore formally tabled the ISO/IEC 42119-8 draft, the first international standard targeting testing methodology for generative AI systems, with two pillars: benchmarking (standardising 'what to test and how to score') and red teaming (standardising 'how to surface hidden risks'). The proposal builds on IMDA's prior work — the AI Verify Toolkit, the Starter Kit for Testing of LLM-Based Applications, and the Global AI Assurance Sandbox. IMDA CEO Ng Cher Pong, in his opening address, said: \"Standards setting cannot move at a glacial pace\" — or it risks being outpaced by AI itself. Capacity-building workshops for ASEAN member states ran on the sidelines.",
+    tags: ['治理', '国际', '标准'],
+    relatedPolicyIds: ['iso-iec-42119-8-generative-ai-testing-standard'],
+  },
+  {
+    id: 'evt-2026-naird-budget',
     year: 2026,
     title: 'NAIRD 发布 + 财政预算：AI 全面加速',
     titleEn: 'NAIRD Launch + Budget 2026: Full-Spectrum AI Acceleration',
@@ -47,7 +60,19 @@ export const timelineEvents: TimelineEvent[] = [
     relatedPostSlugs: ['singapore-ai-native-companies-vs-nations', 'singapore-ai-vs-smart-nation-two-transformations'],
   },
   {
-    id: 'evt-2025',
+    id: 'evt-2025-changi-iso42001',
+    year: 2025,
+    date: '2025-02',
+    title: '樟宜机场获全球首张 ISO/IEC 42001 AI 管理体系认证',
+    titleEn: "Changi Airport Earns World's First ISO/IEC 42001 AI Management System Certification",
+    description:
+      '2 月，樟宜机场集团（CAG）由 SGS 颁发 ISO/IEC 42001:2023 AI 管理体系（AIMS）认证，经新加坡认证理事会（SAC）认可——这是全球首张针对机场客户服务的 ISO/IEC 42001 证书，覆盖 5 套面向旅客和商业的 AI 应用（含客户终身价值 CLV、产品推荐、倾向预测等）。该认证为新加坡此后在 SC 42 国际舞台主张 AI 测试与治理标准积累了实证案例。',
+    descriptionEn:
+      'In February, Changi Airport Group (CAG) became the first airport globally to be certified to ISO/IEC 42001:2023 (AI Management System), audited by SGS and accredited by the Singapore Accreditation Council (SAC). The scope covered five passenger- and commercial-facing AI applications, including Customer Lifetime Value (CLV), product recommender and propensity prediction. The certification became a working proof point that Singapore would later draw on at SC 42 when arguing for international AI testing and governance standards.',
+    tags: ['治理', '产业', '标准'],
+  },
+  {
+    id: 'evt-2025-agentic-bigtech',
     year: 2025,
     title: 'Agentic AI 治理与科技巨头落地',
     titleEn: 'Agentic AI Governance and Big Tech Land in Singapore',

@@ -49,7 +49,7 @@ export interface Lever {
   relatedPostSlugs?: string[];
 }
 
-export const dataDate = '2026-04-26';
+export const dataDate = '2026-05-03';
 
 export const levers: Lever[] = [
   {
@@ -1395,6 +1395,19 @@ export const levers: Lever[] = [
         title: '新加坡发起的全球性框架',
         titleEn: 'Global Frameworks Initiated by Singapore',
         items: [
+          {
+            id: 'iso-iec-42119-8-genai-testing-standard',
+            name: 'ISO/IEC 42119-8 生成式 AI 测试标准',
+            nameEn: 'ISO/IEC 42119-8 Generative AI Testing Standard',
+            ministry: 'IMDA / Enterprise Singapore',
+            scale: '35+ 国家、250+ 专家（2026-04 SC 42 第 17 届全会）',
+            scaleEn: '35+ national bodies, 250+ experts (17th SC 42 plenary, Apr 2026)',
+            description: '全球首个生成式 AI 测试国际标准提案；聚焦 benchmarking + red teaming',
+            descriptionEn:
+              "World's first proposed international standard for testing generative AI; benchmarking + red teaming",
+            sourceUrl:
+              'https://www.imda.gov.sg/resources/press-releases-factsheets-and-speeches/press-releases/2026/singapore-champions-new-global-ai-testing-standardisation-efforts',
+          },
           {
             id: 'singapore-ai-safety-institute-aisi',
             name: 'Singapore AI Safety Institute (AISI)',
