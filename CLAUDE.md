@@ -87,16 +87,26 @@ ESLint `no-irregular-whitespace` 规则会报错。**粘贴外部文本后，注
 npx prettier --write src/
 ```
 
-### 5. i18n 双字段约定（关键）
+### 5. i18n 双字段约定（关键 — 最高优先级）
 
-完整规范见 [`docs/i18n.md`](docs/i18n.md)。最常踩的几个点：
+> **🔴 顶层硬规则：sgai 是 zh + en 双语站点。任何 `src/data/*.ts` 的数据更新——无论是 agent 自动 PR、手动编辑、批量 codemod、回填，还是粘贴翻译——必须中英文同步写入。不允许只更新单语种。**
+>
+> - ✅ 加新条目：`title` 和 `titleEn`、`description` 和 `descriptionEn` 必须同时给值，同一次 commit。
+> - ✅ 改老条目：改了 `title` 必须连带改 `titleEn`，反之亦然。同一次 commit。
+> - ❌ 禁止「先 commit 中文版，下一个 PR 补英文」这种分两步的操作。EN 页面会立刻渲染断裂。
+> - 不会写英文？用 [scripts/lib/translate.ts](scripts/lib/translate.ts) 的 `translateRecords(records, ['title','description'], { direction: 'zh→en' })` 一行调出来。Claude haiku，零 API key，已带 sha256 缓存。
+> - 真要「这个字段我现在没法翻译」时，**必须**在该字段所在行上面注释 `// i18n-allow-unpaired` 显式豁免，否则 [scripts/lib/i18n-pair.ts](scripts/lib/i18n-pair.ts) 会 fail。
 
-- 数据接口：用户可见的中文字段都要加 `*En` 兄弟字段（`title` / `titleEn`、`description` / `descriptionEn` ...）。
+完整规范见 [`docs/i18n.md`](docs/i18n.md)。其他常踩点：
+
+- 数据接口：用户可见的中文字段都要加 `*En` 兄弟字段（`title` / `titleEn`、`description` / `descriptionEn` ...）。含 CJK 的 `label` / `ministry` / `scale` 等也要 `*En`。
 - EN 页面渲染：**永远不要**直接 `{record.title}`。用 `pickLocalized(record, 'title', 'titleEn', lang)` 或 `record.titleEn || record.title`。
 - 内部链接：用 `localizedHref(path, lang)`，不要硬编码 `/en/` 前缀也不要直接给裸路径。
 - 共享组件（zh + EN 都用的）：组件顶部 `getLangFromPath(new URL(Astro.url).pathname)` 推断 lang，所有展示文案、链接、字段都按 lang 走。
 - SocialChannel：含 CJK 的 `label` 必须配对 `labelEn`。
-- 提交前：`npm run build && node scripts/i18n-check.mjs` 必须通过。脚本会扫 `dist/en/**/*.html` 报告所有中文残留。
+- 提交前必跑：`npx tsx scripts/lib/i18n-pair.ts <动过的文件>`（emit 时已自动跑，但手工编辑也要跑）+ `npm run build && node scripts/i18n-check.mjs`。前者扫源码，后者扫 `dist/en/**/*.html` 中文残留。
+- 自动管线已强制：`scripts/lib/auto-discovered-emit.ts` 和各 `emit.ts` 在 emit 后跑 `findUnpairedFields` baseline-vs-after diff，新引入 unpaired 自动 rollback；不会"偷偷"放出单语种数据。
+- 未来扩展到 ja / ko 等语言时，本规则升级为"有几个语言就更新几个，所有目标语种同 commit 同步"。当前 (2026-05) 范围是 zh + en。
 
 ## 项目结构
 
