@@ -306,6 +306,14 @@ export const zh = {
   trackerBackToDashboard: '返回仪表盘',
   trackerLastUpdated: '数据更新',
 
+  // Voice profile sections (curated)
+  voiceSignatureWork: '主导工作',
+  voiceNotableQuotes: '公开发声',
+  voiceSpeakingRecord: '近期演讲',
+  voiceExternalRoles: '跨机构身份',
+  voiceSinceLabel: '自',
+  voiceSourceLabel: '来源',
+
   // Misc
   viewSource: '查看源码',
   countSuffix: '场',
@@ -453,6 +461,13 @@ export const en: Partial<Record<keyof typeof zh, string>> = {
   trackerEditorialAttribution: 'sgai editorial interpretation',
   trackerBackToDashboard: 'Back to dashboard',
   trackerLastUpdated: 'Data updated',
+
+  voiceSignatureWork: 'Signature Work',
+  voiceNotableQuotes: 'Public Statements',
+  voiceSpeakingRecord: 'Recent Talks',
+  voiceExternalRoles: 'External Roles',
+  voiceSinceLabel: 'Since',
+  voiceSourceLabel: 'Source',
 
   viewSource: 'View source',
   countSuffix: '',

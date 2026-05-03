@@ -62,6 +62,57 @@ export interface SocialChannel {
   primary?: boolean;
 }
 
+/** A program / policy / initiative this person owns or co-leads.
+ *  Curated by hand (3–5 max). The bar: AISG/IMDA/etc. publicly attributes
+ *  this person as lead or co-lead. Don't list things they merely worked on. */
+export interface SignatureWork {
+  title: string; // zh display
+  titleEn: string;
+  /** One sentence: what is it, why it matters. */
+  description: string;
+  descriptionEn: string;
+  /** ISO date or year (e.g. '2023-06' or '2025'). */
+  since?: string;
+  /** Authoritative source attributing leadership. */
+  sourceUrl?: string;
+}
+
+/** A pull-quote from public record. Source URL is required so EN/zh readers
+ *  can verify. Quote may stay in original language; translate via *Zh sibling. */
+export interface NotableQuote {
+  /** Quote in original language (usually English). */
+  quote: string;
+  /** Optional zh translation. */
+  quoteZh?: string;
+  /** Where + when (e.g. 'SCAI 2025 keynote', 'NTU statement, 2026-01'). */
+  context: string;
+  contextEn: string;
+  date?: string; // ISO
+  sourceUrl: string;
+}
+
+/** A notable speaking engagement (keynote, panel, official remarks).
+ *  Cap at ~5 most recent / most significant. */
+export interface SpeakingEntry {
+  event: string;
+  eventEn: string;
+  role?: string; // 'keynote', 'panel', 'opening remarks'
+  roleEn?: string;
+  date: string; // ISO
+  sourceUrl?: string;
+}
+
+/** External role beyond primary affiliation — board seat, working-group chair,
+ *  international council membership. */
+export interface ExternalRole {
+  role: string;
+  roleEn: string;
+  organization: string;
+  organizationEn: string;
+  since?: string;
+  sourceUrl?: string;
+}
+
 export interface Person {
   id: string; // kebab-case stable, e.g. 'josephine-teo'
   name: string; // Latin canonical
@@ -80,6 +131,12 @@ export interface Person {
   summary: string;
   summaryEn?: string;
   channels: SocialChannel[];
+  // Curated extensions — populated for high-signal voices via
+  // scripts/voices-prospect.mjs (proposes) + manual review (commits).
+  signatureWork?: SignatureWork[];
+  notableQuotes?: NotableQuote[];
+  speakingRecord?: SpeakingEntry[];
+  externalRoles?: ExternalRole[];
   // Build-time computed (set by getRelated() / verify-graph script).
   debateCount?: number;
   videoCount?: number;
@@ -262,6 +319,101 @@ export const people: Person[] = [
         labelEn: 'AI-First Nation blog',
       },
     ],
+    signatureWork: [
+      {
+        title: '100 Experiments（100E）',
+        titleEn: '100 Experiments (100E)',
+        description: 'AISG 的旗舰产学合作项目，撮合企业和 AI 研究者共同落地真实世界 AI 应用，Laurence 是项目架构师。',
+        descriptionEn:
+          "AISG's flagship industry–research matchmaking programme, pairing enterprises with AI researchers to ship real-world deployments. Laurence is the architect.",
+        since: '2018',
+        sourceUrl:
+          'https://aifirstnation.org/singapores-journey-from-local-innovation-to-global-impact-with-the-ai-apprenticeship-programme-aiap/',
+      },
+      {
+        title: 'AI Apprenticeship Programme（AIAP）',
+        titleEn: 'AI Apprenticeship Programme (AIAP)',
+        description: '新加坡培养 AI 工程师的标杆项目，已建立 200+ 人的 AI Engineering 团队，并通过 AIAPX 输出到多国。',
+        descriptionEn:
+          "Singapore's signature pipeline for AI engineers — has built a 200-strong in-house AI engineering team and been exported to multiple countries via AIAPX.",
+        since: '2018',
+        sourceUrl:
+          'https://govinsider.asia/intl-en/article/how-did-ai-singapore-build-a-200-strong-ai-engineering-team-with-the-blue-ocean-strategy-laurence-liew',
+      },
+      {
+        title: 'LearnAI（AI4E / AI4I）',
+        titleEn: 'LearnAI (AI4E / AI4I)',
+        description: 'AI for Everyone 与 AI for Industry 的全国 AI 普及计划；超过 20 万新加坡人通过这条线接触 AI。',
+        descriptionEn:
+          'National AI literacy programmes (AI for Everyone, AI for Industry) — 200,000+ Singaporeans have been trained through this track.',
+        since: '2019',
+      },
+    ],
+    notableQuotes: [
+      {
+        quote:
+          'Ethics, governance and standards go hand in hand. More companies will use standards to ensure the quality of AI products.',
+        quoteZh: '伦理、治理、标准三者一体——会有越来越多公司用标准来保证 AI 产品的质量。',
+        context: 'SFF 2025 sidelines, IMDA + Enterprise Singapore AI 标准委员会主席身份发言',
+        contextEn: 'SFF 2025 sidelines, speaking as chair of the IMDA + Enterprise Singapore AI standards committee',
+        date: '2025-11',
+        sourceUrl:
+          'https://www.theasianbanker.com/updates-and-articles/ai-singapore-strengthens-the-talent-and-governance-foundations-for-ai-adoption',
+      },
+    ],
+    speakingRecord: [
+      {
+        event: 'TechWeek Singapore',
+        eventEn: 'TechWeek Singapore',
+        role: 'Speaker',
+        roleEn: 'Speaker',
+        date: '2026',
+        sourceUrl: 'https://www.singaporetechnologyweek.com/speakers/laurence-liew',
+      },
+      {
+        event: 'Legal Innovation Festival SE Asia',
+        eventEn: 'Legal Innovation Festival SE Asia',
+        role: 'Speaker',
+        roleEn: 'Speaker',
+        date: '2026',
+        sourceUrl: 'https://www.legalinnovationsea.com/speakers/laurence-liew',
+      },
+      {
+        event: 'Singapore FinTech Festival 2025',
+        eventEn: 'Singapore FinTech Festival 2025',
+        role: 'Sidelines briefing',
+        roleEn: 'Sidelines briefing',
+        date: '2025-11',
+        sourceUrl:
+          'https://www.theasianbanker.com/updates-and-articles/ai-singapore-strengthens-the-talent-and-governance-foundations-for-ai-adoption',
+      },
+      {
+        event: 'SEMICON Southeast Asia',
+        eventEn: 'SEMICON Southeast Asia',
+        role: 'Panelist',
+        roleEn: 'Panelist',
+        date: '2025',
+        sourceUrl: 'https://www.semiconsea.org/speakers/Laurence-LIEW-AI-SG',
+      },
+    ],
+    externalRoles: [
+      {
+        role: '联合主席（创新与商业化工作组）',
+        roleEn: 'Co-chair, Innovation & Commercialisation Working Group',
+        organization: 'GPAI（全球 AI 伙伴关系）',
+        organizationEn: 'Global Partnership on AI (GPAI)',
+        sourceUrl:
+          'https://aifirstnation.org/singapores-journey-from-local-innovation-to-global-impact-with-the-ai-apprenticeship-programme-aiap/',
+      },
+      {
+        role: '首任主席',
+        roleEn: 'Founding Chair',
+        organization: '新加坡 AI 标准委员会（IMDA + Enterprise Singapore）',
+        organizationEn: 'Singapore AI Standards Committee (IMDA + Enterprise Singapore)',
+        sourceUrl:
+          'https://www.theasianbanker.com/updates-and-articles/ai-singapore-strengthens-the-talent-and-governance-foundations-for-ai-adoption',
+      },
+    ],
   },
   {
     id: 'leslie-teo',
@@ -283,6 +435,77 @@ export const people: Person[] = [
         platform: 'linkedin',
         url: 'https://www.linkedin.com/in/leslieteo01/',
         primary: true,
+      },
+    ],
+    signatureWork: [
+      {
+        title: 'SEA-LION 东南亚多语言大模型',
+        titleEn: 'SEA-LION Southeast Asian LLM',
+        description:
+          'AISG 的旗舰开源东南亚多语言大模型项目。Leslie 操盘从 v1 迭代到 v3（70B），并推动 SEA-LION 成为政府 AI 服务的底层模型。',
+        descriptionEn:
+          "AISG's flagship open-source Southeast Asian multilingual LLM. Leslie has driven the model from v1 through v3 (70B) and pushed SEA-LION to become the foundation for government AI services.",
+        since: '2023',
+        sourceUrl: 'https://sea-lion.ai/blog/sea-lion-summit-2025-powering-southeast-asias-ai-future/',
+      },
+      {
+        title: 'Qwen-SEA-LION-v4（与阿里云合作）',
+        titleEn: 'Qwen-SEA-LION-v4 (Alibaba Cloud collaboration)',
+        description:
+          '2025 年 11 月发布的合作版本，以阿里云 Qwen 为底座、强化东南亚语种覆盖；Leslie 是公开发声的代言人。',
+        descriptionEn:
+          "November 2025 collaboration that uses Alibaba Cloud's Qwen as the base and strengthens Southeast Asian language coverage; Leslie was the public spokesperson.",
+        since: '2025-11',
+        sourceUrl:
+          'https://www.computerweekly.com/news/366635316/Sea-Lion-powering-AI-tools-for-migrant-workers-local-businesses',
+      },
+    ],
+    notableQuotes: [
+      {
+        quote:
+          'Scaling LLMs for Southeast Asian languages is the challenge — and the opportunity. The community is what makes SEA-LION work.',
+        quoteZh: '把大模型规模化到东南亚语种，既是挑战也是机会——SEA-LION 真正跑起来靠的是社区。',
+        context: 'SEA-LION Summit 2025 闭幕致辞',
+        contextEn: 'Closing remarks, SEA-LION Summit 2025',
+        date: '2025-12',
+        sourceUrl: 'https://sea-lion.ai/blog/sea-lion-summit-2025-powering-southeast-asias-ai-future/',
+      },
+      {
+        quote:
+          'The collaboration with Alibaba will help advance AI inclusivity and make SEA-LION more representative of Southeast Asia.',
+        quoteZh: '与阿里云合作能推动 AI 包容性，让 SEA-LION 更能代表东南亚。',
+        context: 'Computer Weekly 报道 Qwen-SEA-LION-v4 发布',
+        contextEn: 'Computer Weekly report on Qwen-SEA-LION-v4 release',
+        date: '2025-11',
+        sourceUrl:
+          'https://www.computerweekly.com/news/366635316/Sea-Lion-powering-AI-tools-for-migrant-workers-local-businesses',
+      },
+    ],
+    speakingRecord: [
+      {
+        event: 'SEA-LION Summit 2025（首届）',
+        eventEn: 'SEA-LION Summit 2025 (inaugural)',
+        role: '闭幕致辞 + Panel',
+        roleEn: 'Closing remarks + Panel',
+        date: '2025-12',
+        sourceUrl: 'https://sea-lion.ai/blog/sea-lion-summit-2025-powering-southeast-asias-ai-future/',
+      },
+      {
+        event: 'ITU AI for Good Global Summit',
+        eventEn: 'ITU AI for Good Global Summit',
+        role: 'Speaker',
+        roleEn: 'Speaker',
+        date: '2024',
+        sourceUrl: 'https://aiforgood.itu.int/speaker/leslie-teo/',
+      },
+      {
+        event: 'Echelon X（e27）',
+        eventEn: 'Echelon X (e27)',
+        role: 'Speaker（SEA-LION 专题）',
+        roleEn: 'Speaker (SEA-LION feature)',
+        date: '2024-08',
+        sourceUrl:
+          'https://e27.co/echelon-x-dr-leslie-teo-on-tailoring-ai-for-southeast-asias-diverse-needs-with-sea-lion-20240807/',
       },
     ],
   },
@@ -344,6 +567,74 @@ export const people: Person[] = [
         labelEn: 'NTU faculty profile',
       },
     ],
+    signatureWork: [
+      {
+        title: 'AISG 基础研究方向',
+        titleEn: 'AISG Foundational Research Pillar',
+        description:
+          '作为 AISG 首席科学家，统筹基础研究方向；与副执行主席（研究）Phoon Kok Kwang 共同主导 NAIS 2.0 与 RIE2030 框架下的国家 AI 研究议程。',
+        descriptionEn:
+          "As AISG's Chief Scientist, leads foundational research; co-steers the national AI research agenda under NAIS 2.0 and RIE2030 alongside Deputy Executive Chairman (Research) Phoon Kok Kwang.",
+        since: '2024',
+        sourceUrl: 'https://aisingapore.org/home/the-team/',
+      },
+      {
+        title: 'NTU 计算与数据科学学院（CCDS）',
+        titleEn: 'NTU College of Computing and Data Science (CCDS)',
+        description:
+          '2024 年 5 月任 NTU AI 与数字经济副校长 + CCDS 创院院长，把 NTU 的 AI 教学、科研与产业接口整合到一所新学院。',
+        descriptionEn:
+          "Appointed Vice President (AI & Digital Economy) and founding Dean of NTU CCDS in May 2024 — consolidates NTU's AI teaching, research and industry interfaces under one college.",
+        since: '2024-05',
+        sourceUrl:
+          'https://www.ntu.edu.sg/computing/news-events/news/detail/learning-with-ai--strengthening-computing-education-in-an-ai-shaped-world',
+      },
+    ],
+    notableQuotes: [
+      {
+        quote: 'Artificial intelligence is a multiplier. But if the multiplicand is zero, the outcome is zero.',
+        quoteZh: 'AI 是一个乘数。但如果被乘数是零，结果还是零。',
+        context: 'NTU CCDS 关于强化计算教育的声明',
+        contextEn: 'NTU CCDS statement on strengthening computing education',
+        date: '2026',
+        sourceUrl:
+          'https://www.ntu.edu.sg/computing/news-events/news/detail/learning-with-ai--strengthening-computing-education-in-an-ai-shaped-world',
+      },
+    ],
+    speakingRecord: [
+      {
+        event: 'Singapore Conference on AI (SCAI) 2025',
+        eventEn: 'Singapore Conference on AI (SCAI) 2025',
+        role: 'Participant',
+        roleEn: 'Participant',
+        date: '2025',
+        sourceUrl: 'https://www.scai.gov.sg/2025/participants-of-scai-2025/luke-ong/',
+      },
+      {
+        event: 'NTU–Europe Dialogue on Digital Trust and Safe AI',
+        eventEn: 'NTU–Europe Dialogue on Digital Trust and Safe AI',
+        role: 'Welcome remarks',
+        roleEn: 'Welcome remarks',
+        date: '2025',
+        sourceUrl: 'https://www.ntu.edu.sg/dtc/ntu-singapore-europe-dialogue-on-digital-trust-and-safe-ai/agenda',
+      },
+      {
+        event: 'HUN-REN AI Symposium 2025',
+        eventEn: 'HUN-REN AI Symposium 2025',
+        role: 'Speaker',
+        roleEn: 'Speaker',
+        date: '2025',
+        sourceUrl: 'https://hun-ren.hu/ai-symposium-2025/luke-ong.html',
+      },
+      {
+        event: 'Singapore International Cyber Week (SICW)',
+        eventEn: 'Singapore International Cyber Week (SICW)',
+        role: 'Speaker',
+        roleEn: 'Speaker',
+        date: '2025',
+        sourceUrl: 'https://www.sicw.gov.sg/speakers/prof-luke-ong/',
+      },
+    ],
   },
   {
     id: 'phoon-kok-kwang',
@@ -371,6 +662,60 @@ export const people: Person[] = [
         url: 'https://www.sutd.edu.sg/',
         label: 'SUTD 校长办公室',
         labelEn: 'SUTD President office',
+      },
+    ],
+    signatureWork: [
+      {
+        title: 'AISG 研究方向（NAIS 2.0 / RIE2030 对齐）',
+        titleEn: 'AISG Research Pillar (aligned with NAIS 2.0 / RIE2030)',
+        description:
+          '2025-08-01 起任 AISG 副执行主席（研究），任期两年，对齐国家 AI 战略 2.0、National AI R&D 计划与 RIE2030。',
+        descriptionEn:
+          'Took up the AISG Deputy Executive Chairman (Research) role on 1 August 2025 for a two-year term, aligned with NAIS 2.0, the National AI R&D Plan and RIE2030.',
+        since: '2025-08',
+        sourceUrl:
+          'https://www.sutd.edu.sg/achievements-listing/prof-phoon-kok-kwang-appointed-deputy-executive-chairman-research-aisg/',
+      },
+      {
+        title: 'SUTD 转型为 Design·AI 大学',
+        titleEn: "SUTD's pivot to a Design·AI university",
+        description:
+          '作为 SUTD 校长，把学校重新定位为「全球首个 Design·AI 大学」，并扩展旗舰 Design AI 学位、首次把社会科学整合进技术学位。',
+        descriptionEn:
+          "As SUTD President, repositioned the school as the world's first Design·AI university and expanded the flagship Design AI degree — the first to fold social sciences into a technology degree.",
+        since: '2024',
+        sourceUrl:
+          'https://www.sutd.edu.sg/media-releases-listing/sutd-broadens-scope-of-flagship-design-and-ai-degree-first-university-to-integrate-social-sciences-into-technology-degree/',
+      },
+    ],
+    speakingRecord: [
+      {
+        event: 'BT-SUTD Design AI and Tech Awards',
+        eventEn: 'BT-SUTD Design AI and Tech Awards',
+        role: 'Opening address',
+        roleEn: 'Opening address',
+        date: '2025',
+        sourceUrl:
+          'https://www.sutd.edu.sg/speeches-listing/bt-sutd-design-ai-and-tech-awards-opening-address-prof-phoon-kok-kwang',
+      },
+    ],
+    externalRoles: [
+      {
+        role: '副执行主席（研究）',
+        roleEn: 'Deputy Executive Chairman (Research)',
+        organization: 'AI Singapore（AISG）',
+        organizationEn: 'AI Singapore (AISG)',
+        since: '2025-08',
+        sourceUrl:
+          'https://www.sutd.edu.sg/achievements-listing/prof-phoon-kok-kwang-appointed-deputy-executive-chairman-research-aisg/',
+      },
+      {
+        role: '新加坡首位入选成员',
+        roleEn: "Singapore's first appointee",
+        organization: '国际工程理事会（Global Engineering Council）',
+        organizationEn: 'Global Engineering Council',
+        sourceUrl:
+          'https://www.sutd.edu.sg/media-releases-listing/sutd-president-appointed-to-prestigious-global-engineering-council-the-first-for-singapore/',
       },
     ],
   },
@@ -792,6 +1137,66 @@ export const people: Person[] = [
         platform: 'linkedin',
         url: 'https://sg.linkedin.com/in/ong-chenhui',
         primary: true,
+      },
+    ],
+    signatureWork: [
+      {
+        title: 'AI Verify Foundation',
+        titleEn: 'AI Verify Foundation',
+        description:
+          '新加坡牵头的开源 AI 治理测试框架与全球开源社区，2023-06 由 IMDA 在 Ong Chen Hui 主导下发起，旨在塑造国际 AI 标准。',
+        descriptionEn:
+          "Singapore-led open-source AI governance testing framework and global community. Launched by IMDA under Ong Chen Hui's lead in June 2023 to shape international AI standards.",
+        since: '2023-06',
+        sourceUrl: 'https://aiverifyfoundation.sg/',
+      },
+      {
+        title: 'IMDA BizTech 业务群',
+        titleEn: 'IMDA BizTech Group',
+        description: '统筹 IMDA 在新兴技术（AI、AI 治理、5G、6G 研究、信任技术）方向的产业与研究生态建设。',
+        descriptionEn:
+          "Oversees IMDA's industry and research ecosystem development across emerging tech — AI, AI governance, 5G, 6G research, and trust technologies.",
+        sourceUrl: 'https://www.imda.gov.sg/about-imda/who-we-are/our-team/our-senior-management/biztech',
+      },
+      {
+        title: 'IMDA × SAL LawNet AI 搜索引擎',
+        titleEn: 'IMDA × SAL LawNet AI search engine',
+        description: '2025-09 与新加坡法律学会合作发布的 AI 法律检索工具，Ong Chen Hui 是 IMDA 一侧的官方代言人。',
+        descriptionEn:
+          "AI-powered legal search engine launched September 2025 with the Singapore Academy of Law; Ong was IMDA's named spokesperson.",
+        since: '2025-09',
+        sourceUrl:
+          'https://www.imda.gov.sg/resources/press-releases-factsheets-and-speeches/factsheets/2025/imda-and-sal-launched-ai-powered-search-engine-in-lawnet',
+      },
+    ],
+    notableQuotes: [
+      {
+        quote:
+          'Critical to the success of [AI Verify] will be the collective wisdom of the global open-source community.',
+        quoteZh: 'AI Verify 能不能成功，关键在全球开源社区的集体智慧。',
+        context: 'AI Verify Foundation 启动声明',
+        contextEn: 'AI Verify Foundation launch announcement',
+        date: '2023-06',
+        sourceUrl: 'https://govinsider.asia/intl-en/article/why-singapores-approach-to-ethical-ai-embraces-open-source',
+      },
+      {
+        quote:
+          'The demonstrator is a tangible example of how AI can address real-world challenges and elevate the way corporate governance is delivered.',
+        quoteZh: '这次演示是一个具体例子——AI 能解决真实世界的问题，并提升企业治理的交付方式。',
+        context: 'IMDA × SAL LawNet AI 搜索引擎发布',
+        contextEn: 'IMDA × SAL LawNet AI search engine launch',
+        date: '2025-09',
+        sourceUrl:
+          'https://www.imda.gov.sg/resources/press-releases-factsheets-and-speeches/factsheets/2025/imda-and-sal-launched-ai-powered-search-engine-in-lawnet',
+      },
+    ],
+    externalRoles: [
+      {
+        role: 'AI 专家社区成员',
+        roleEn: 'AI Expert Community member',
+        organization: 'OECD.AI',
+        organizationEn: 'OECD.AI',
+        sourceUrl: 'https://oecd.ai/en/community/ong-chen-hui',
       },
     ],
   },

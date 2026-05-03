@@ -4,6 +4,7 @@ import { Icon } from 'astro-icon/components';
 
 import JsonLd from '~/components/common/JsonLd.astro';
 import Layout from '~/layouts/PageLayout.astro';
+import PersonContributions from '~/components/widgets/PersonContributions.astro';
 import { allPeople, type Person } from '~/data/people';
 import { videos } from '~/data/videos';
 import { getRelated, getPersonCounts } from '~/utils/graph';
@@ -141,6 +142,8 @@ const personSchema = {
         </section>
       )
     }
+
+    <PersonContributions person={person} lang="en" />
 
     <section class="mb-10">
       <h2 class="t-h3 text-gray-800 dark:text-white mb-4">

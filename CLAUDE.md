@@ -239,6 +239,56 @@ def scan_ids(prefix, start, end):
 # 用法：scan_ids('oral-answer', 4088, 4120)
 ```
 
+## Voices 三无人物补全 Pipeline
+
+`src/data/people.ts` 里有大量"三无"人物（无国会发言、无政策、无视频）。靠继续加指标解决不了——根因是缺内容。我们对 `Person` 增加了 4 个可选字段：
+
+- `signatureWork` — 主导/owned 项目（3–5 条上限）
+- `notableQuotes` — 公开 pull-quote（带 sourceUrl + date）
+- `speakingRecord` — 近期演讲记录
+- `externalRoles` — 跨机构身份（board / WG chair / 国际理事会）
+
+字段任一非空时，voice profile 页（zh + EN）自动展示对应分区，靠 [`src/components/widgets/PersonContributions.astro`](src/components/widgets/PersonContributions.astro) 渲染。每条都要 `*En` 兄弟字段，否则 EN 页面回退到 zh 内容。
+
+### 工具：`scripts/voices/prospect-stubs.mjs`
+
+半自动 review-queue 工具（不直接爬，只做脚手架）。
+
+```bash
+# 1. 列出当前所有"三无但有真实角色"的人物
+npx tsx scripts/voices/prospect-stubs.mjs list [--limit 25]
+
+# 2. 为指定人物或 top N 生成 prospect JSON 文件
+npx tsx scripts/voices/prospect-stubs.mjs queue luke-ong leslie-teo
+npx tsx scripts/voices/prospect-stubs.mjs queue --top 10
+
+# 3. 查看 review queue 状态
+npx tsx scripts/voices/prospect-stubs.mjs status
+
+# 4. apply（把已 ready 的 prospect 转成 TS 片段，stdout 输出，手动粘贴到 people.ts）
+npx tsx scripts/voices/prospect-stubs.mjs apply luke-ong
+```
+
+文件生成在 `scripts/voices/data/prospects/<id>.json`，状态 `pending → ready → applied`。每个 prospect 文件包含：
+
+- 人物基础信息 + currentSummary
+- 预生成的 `searchQueries`（含 `site:` 限定的白名单源）
+- `whitelistedSources` 列表（aisingapore.org / imda.gov.sg / govinsider.asia / e27.co / channelnewsasia / scai.gov.sg / sicw.gov.sg / 各大学等）
+- 待填充的 `signatureWork[]` / `notableQuotes[]` / `speakingRecord[]` / `externalRoles[]`
+- `notes` 字段记录 reviewer 备注
+
+### 标准操作流程
+
+1. `prospect-stubs.mjs list` 看 backlog
+2. `prospect-stubs.mjs queue --top N` 批量生成 review 文件
+3. 把 prospect 文件交给 Claude（或自己），跑文件里的 `searchQueries`，把结果按 schema 填进去（每人 5–10 分钟）
+4. 设 `status: "ready"`
+5. `prospect-stubs.mjs apply <id>` 取 TS 片段 → 粘到 `src/data/people.ts` 对应 record
+6. 设 `status: "applied"`、记录 `appliedAt`
+7. 每季度跑一次，让活跃人物档案保持新鲜
+
+**入选门槛**：`signatureWork` 只收公开 attribution 明确的 owned 项目（AISG/IMDA 等官方把人列为 lead/co-lead）。学术 CV 大部分跟"新加坡 AI 战略/生态"无关，不要无脑搬。
+
 ### 部署
 
 独立部署在 Cloudflare Pages，绑定 `sgai.md`。push main 分支后 Cloudflare 自动构建（`npm run build` → `dist/`）。

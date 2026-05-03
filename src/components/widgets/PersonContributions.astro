@@ -1,0 +1,168 @@
+---
+import type { Person } from '~/data/people';
+import { type Lang, pickLocalized, t } from '~/i18n';
+
+interface Props {
+  person: Person;
+  lang: Lang;
+}
+
+const { person, lang } = Astro.props;
+
+const sigWork = person.signatureWork ?? [];
+const quotes = person.notableQuotes ?? [];
+const talks = (person.speakingRecord ?? []).slice().sort((a, b) => b.date.localeCompare(a.date));
+const ext = person.externalRoles ?? [];
+
+const hasAny = sigWork.length + quotes.length + talks.length + ext.length > 0;
+---
+
+{
+  hasAny && (
+    <>
+      {sigWork.length > 0 && (
+        <section class="mb-10">
+          <h2 class="t-h3 text-gray-800 dark:text-white mb-4">
+            {t(lang, 'voiceSignatureWork')} ({sigWork.length})
+          </h2>
+          <div class="grid gap-3">
+            {sigWork.map((w) => (
+              <div class="bg-surface rounded-lg p-4 border border-subtle">
+                <div class="flex items-baseline justify-between gap-3 flex-wrap">
+                  <h3 class="font-semibold text-gray-800 dark:text-white text-sm">{pickLocalized(w, 'title', lang)}</h3>
+                  {w.since && (
+                    <span class="text-xs text-gray-500">
+                      {t(lang, 'voiceSinceLabel')} {w.since}
+                    </span>
+                  )}
+                </div>
+                <p class="text-xs text-gray-600 dark:text-gray-400 mt-2 leading-relaxed">
+                  {pickLocalized(w, 'description', lang)}
+                </p>
+                {w.sourceUrl && (
+                  <a
+                    href={w.sourceUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="text-xs text-primary hover:underline mt-2 inline-block"
+                  >
+                    {t(lang, 'voiceSourceLabel')} →
+                  </a>
+                )}
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {quotes.length > 0 && (
+        <section class="mb-10">
+          <h2 class="t-h3 text-gray-800 dark:text-white mb-4">
+            {t(lang, 'voiceNotableQuotes')} ({quotes.length})
+          </h2>
+          <div class="space-y-3">
+            {quotes.map((q) => {
+              const display = lang === 'en' ? q.quote : q.quoteZh || q.quote;
+              return (
+                <figure class="bg-surface rounded-lg p-4 border border-subtle border-l-4 border-l-primary">
+                  <blockquote class="text-sm text-gray-800 dark:text-gray-200 italic leading-relaxed">
+                    “{display}”
+                  </blockquote>
+                  <figcaption class="text-xs text-gray-500 mt-2 flex flex-wrap gap-x-2">
+                    <span>{pickLocalized(q, 'context', lang)}</span>
+                    {q.date && <span>· {q.date}</span>}
+                    {q.sourceUrl && (
+                      <a
+                        href={q.sourceUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="text-primary hover:underline"
+                      >
+                        · {t(lang, 'voiceSourceLabel')} →
+                      </a>
+                    )}
+                  </figcaption>
+                </figure>
+              );
+            })}
+          </div>
+        </section>
+      )}
+
+      {talks.length > 0 && (
+        <section class="mb-10">
+          <h2 class="t-h3 text-gray-800 dark:text-white mb-4">
+            {t(lang, 'voiceSpeakingRecord')} ({talks.length})
+          </h2>
+          <ul class="space-y-2">
+            {talks.map((s) => (
+              <li class="bg-surface rounded-lg p-3 border border-subtle flex items-baseline justify-between gap-3 flex-wrap">
+                <div class="min-w-0 flex-1">
+                  <span class="text-sm text-gray-800 dark:text-white font-medium">
+                    {pickLocalized(s, 'event', lang)}
+                  </span>
+                  {pickLocalized(s, 'role', lang) && (
+                    <span class="text-xs text-gray-500 ml-2">· {pickLocalized(s, 'role', lang)}</span>
+                  )}
+                </div>
+                <div class="text-xs text-gray-500 shrink-0 flex items-center gap-2">
+                  <span>{s.date}</span>
+                  {s.sourceUrl && (
+                    <a
+                      href={s.sourceUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="text-primary hover:underline"
+                    >
+                      →
+                    </a>
+                  )}
+                </div>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
+      {ext.length > 0 && (
+        <section class="mb-10">
+          <h2 class="t-h3 text-gray-800 dark:text-white mb-4">
+            {t(lang, 'voiceExternalRoles')} ({ext.length})
+          </h2>
+          <ul class="space-y-2">
+            {ext.map((r) => (
+              <li class="bg-surface rounded-lg p-3 border border-subtle">
+                <div class="flex items-baseline justify-between gap-3 flex-wrap">
+                  <div>
+                    <span class="text-sm font-medium text-gray-800 dark:text-white">
+                      {pickLocalized(r, 'role', lang)}
+                    </span>
+                    <span class="text-sm text-gray-600 dark:text-gray-400">
+                      {' · '}
+                      {pickLocalized(r, 'organization', lang)}
+                    </span>
+                  </div>
+                  {r.since && (
+                    <span class="text-xs text-gray-500">
+                      {t(lang, 'voiceSinceLabel')} {r.since}
+                    </span>
+                  )}
+                </div>
+                {r.sourceUrl && (
+                  <a
+                    href={r.sourceUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="text-xs text-primary hover:underline mt-1 inline-block"
+                  >
+                    {t(lang, 'voiceSourceLabel')} →
+                  </a>
+                )}
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+    </>
+  )
+}
