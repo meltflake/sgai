@@ -101,8 +101,10 @@ SG_KEYWORDS = [
     r"\bmci\b.*singapore",
 ]
 
-# 本地频道（不需要 SG 关键词二次过滤）
-LOCAL_CHANNELS = {"CNA", "ST", "govsg", "SmartNation", "AISG"}
+# 纯 SG 政府/机构频道（豁免 SG 关键词二次过滤）。
+# 注意：CNA 和 ST 虽是 SG 媒体，但会发全球 AI 新闻（Iran 战争、香港机器人 Sophia 等），
+# 这些命中 AI 关键词但与新加坡 AI 战略无关。所以 CNA/ST 必须走 SG 二次过滤。
+LOCAL_CHANNELS = {"govsg", "SmartNation", "AISG"}
 
 # ── 配置 ──────────────────────────────────────────────────────────────────────
 RSS_URL = "https://www.youtube.com/feeds/videos.xml?channel_id={channel_id}"
