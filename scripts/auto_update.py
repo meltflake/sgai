@@ -50,7 +50,20 @@ sys.path.insert(0, str(SCRIPT_DIR))
 
 # ── Hansard 配置 ──────────────────────────────────────────────────────────────
 SPRS_API = "https://sprs.parl.gov.sg/search/getHansardTopic/"
-HANSARD_SCAN_RANGE = 50  # 从最高已知 ID 向上扫描的范围
+# Per-prefix scan ranges. Tuned to actual SPRS publishing cadence:
+#   oral-answer:    ~50/sitting; 80 covers ~1.5 sittings
+#   written-answer: ~200/sitting; 300 covers ~1.5 sittings (was 50, missed 4× sittings)
+#   budget:         only during Committee of Supply (Feb–Mar); 30 is generous
+HANSARD_ORAL_RANGE = 80
+HANSARD_WRITTEN_RANGE = 300
+HANSARD_BUDGET_RANGE = 30
+# Title-only keyword matching missed Q's whose title hides the AI angle
+# (e.g. "Safeguards to Ensure Citizen Data Is Not Disclosed..." → about
+# foreign-headquartered AI vendors). We now also scan the first
+# CONTENT_SCAN_CHARS chars of the body. Bigger == catches more, but more
+# false positives from substring "AI" inside other words (mitigated by
+# word-boundary regex).
+HANSARD_CONTENT_SCAN_CHARS = 3000
 
 AI_TITLE_KEYWORDS = [
     r"\bartificial intelligence\b",
@@ -68,6 +81,13 @@ AI_TITLE_KEYWORDS = [
     r"\bautonomous\b",
     r"\bcybersecurity\b",
     r"\bdata protect",
+    # Added: foreign-vendor / data-sovereignty signals — title may not
+    # contain "AI" but body cites AI platforms / extraterritorial reach.
+    r"\bcritical information infrastructure\b",
+    r"\bdata sovereignty\b",
+    r"\bdata residency\b",
+    r"\bCLOUD Act\b",
+    r"\bagentic\b",
 ]
 
 # ── 日志 ──────────────────────────────────────────────────────────────────────
@@ -95,7 +115,7 @@ def load_state() -> dict:
         "last_run": None,
         "videos": {"video_ids": []},
         "voices": {"urls": []},
-        "hansard": {"max_oral_id": 4087, "max_written_id": 21915},
+        "hansard": {"max_oral_id": 4117, "max_written_id": 22056, "max_budget_id": 2937},
     }
 
 
@@ -140,13 +160,22 @@ def run_voices(logger) -> dict:
 
 
 # ── 管线 3: 国会辩论 (轻量 API 扫描) ─────────────────────────────────────────
-def matches_ai_keywords(text: str) -> bool:
-    text_lower = text.lower()
-    return any(re.search(p, text_lower, re.IGNORECASE) for p in AI_TITLE_KEYWORDS)
+def matches_ai_keywords(title: str, content: str = "") -> bool:
+    """Match against title plus first HANSARD_CONTENT_SCAN_CHARS of content."""
+    blob = title + " " + (content[:HANSARD_CONTENT_SCAN_CHARS] if content else "")
+    return any(re.search(p, blob, re.IGNORECASE) for p in AI_TITLE_KEYWORDS)
+
+
+def _strip_html(html: str) -> str:
+    """Cheap HTML→text for keyword matching only (no parser dependency)."""
+    text = re.sub(r"<[^>]+>", " ", html)
+    text = text.replace("&nbsp;", " ")
+    text = re.sub(r"\s+", " ", text)
+    return text.strip()
 
 
 def scan_hansard_range(prefix: str, start: int, end: int, logger) -> list[dict]:
-    """扫描 SPRS API 指定 ID 范围，返回有效条目"""
+    """扫描 SPRS API 指定 ID 范围，返回有效条目（title + content 双扫）"""
     import requests
 
     results = []
@@ -166,9 +195,15 @@ def scan_hansard_range(prefix: str, start: int, end: int, logger) -> list[dict]:
             if not rh or not rh.get("title"):
                 continue
             title = rh["title"]
+            content_text = _strip_html(rh.get("content", ""))
             date_raw = rh.get("sittingDate", "")
             results.append(
-                {"id": rid, "title": title, "date": date_raw, "ai_related": matches_ai_keywords(title)}
+                {
+                    "id": rid,
+                    "title": title,
+                    "date": date_raw,
+                    "ai_related": matches_ai_keywords(title, content_text),
+                }
             )
             logger.debug(f"  {rid}: {title[:60]}")
             time.sleep(0.3)
@@ -180,38 +215,53 @@ def scan_hansard_range(prefix: str, start: int, end: int, logger) -> list[dict]:
 def run_hansard(state: dict, logger) -> dict:
     max_oral = state["hansard"]["max_oral_id"]
     max_written = state["hansard"]["max_written_id"]
+    max_budget = state["hansard"].get("max_budget_id", 2937)  # default seeded from prior emit
 
-    logger.info(f"Hansard 扫描: oral-answer-{max_oral + 1}..{max_oral + HANSARD_SCAN_RANGE}")
-    oral_results = scan_hansard_range("oral-answer", max_oral, max_oral + HANSARD_SCAN_RANGE, logger)
+    logger.info(f"Hansard 扫描: oral-answer-{max_oral + 1}..{max_oral + HANSARD_ORAL_RANGE}")
+    oral_results = scan_hansard_range("oral-answer", max_oral, max_oral + HANSARD_ORAL_RANGE, logger)
 
-    logger.info(f"Hansard 扫描: written-answer-{max_written + 1}..{max_written + HANSARD_SCAN_RANGE}")
-    written_results = scan_hansard_range("written-answer", max_written, max_written + HANSARD_SCAN_RANGE, logger)
+    logger.info(f"Hansard 扫描: written-answer-{max_written + 1}..{max_written + HANSARD_WRITTEN_RANGE}")
+    written_results = scan_hansard_range(
+        "written-answer", max_written, max_written + HANSARD_WRITTEN_RANGE, logger
+    )
 
-    all_results = oral_results + written_results
+    logger.info(f"Hansard 扫描: budget-{max_budget + 1}..{max_budget + HANSARD_BUDGET_RANGE}")
+    budget_results = scan_hansard_range("budget", max_budget, max_budget + HANSARD_BUDGET_RANGE, logger)
+
+    all_results = oral_results + written_results + budget_results
     ai_results = [r for r in all_results if r["ai_related"]]
 
     # 更新最高 ID
-    new_max_oral = max_oral
-    for r in oral_results:
-        num = int(r["id"].split("-")[-1])
-        new_max_oral = max(new_max_oral, num)
-    new_max_written = max_written
-    for r in written_results:
-        num = int(r["id"].split("-")[-1])
-        new_max_written = max(new_max_written, num)
+    def _update_max(results, current):
+        m = current
+        for r in results:
+            try:
+                m = max(m, int(r["id"].split("-")[-1]))
+            except ValueError:
+                pass  # cos-{ministry}-{year} ids — skip numeric bump
+        return m
+
+    new_max_oral = _update_max(oral_results, max_oral)
+    new_max_written = _update_max(written_results, max_written)
+    new_max_budget = _update_max(budget_results, max_budget)
 
     logger.info(f"Hansard 扫描完成: {len(all_results)} 条新记录, {len(ai_results)} 条 AI 相关")
 
     return {
         "count": len(ai_results),
         "total_scanned": len(all_results),
-        "scan_range": f"oral {max_oral + 1}..{max_oral + HANSARD_SCAN_RANGE}, written {max_written + 1}..{max_written + HANSARD_SCAN_RANGE}",
+        "scan_range": (
+            f"oral {max_oral + 1}..{max_oral + HANSARD_ORAL_RANGE}, "
+            f"written {max_written + 1}..{max_written + HANSARD_WRITTEN_RANGE}, "
+            f"budget {max_budget + 1}..{max_budget + HANSARD_BUDGET_RANGE}"
+        ),
         "items": [
             {"id": r["id"], "title": r["title"], "date": r["date"]}
             for r in ai_results[:10]
         ],
         "new_max_oral": new_max_oral,
         "new_max_written": new_max_written,
+        "new_max_budget": new_max_budget,
     }
 
 
@@ -492,6 +542,7 @@ def main():
                     results["hansard"] = hansard_result
                     state["hansard"]["max_oral_id"] = hansard_result["new_max_oral"]
                     state["hansard"]["max_written_id"] = hansard_result["new_max_written"]
+                    state["hansard"]["max_budget_id"] = hansard_result["new_max_budget"]
                 else:
                     raise RuntimeError(f"unknown python-builtin pipeline id: {pid}")
             elif ptype == "tsx":

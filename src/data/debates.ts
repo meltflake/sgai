@@ -1,5 +1,5 @@
 // Auto-generated: enriched debates with Chinese summaries and pattern analysis
-// Total: 150 debates | Updated: 2026-03-24
+// Total: 153 debates | Updated: 2026-05-03
 // Sources: https://sprs.parl.gov.sg | https://search.pair.gov.sg
 
 export interface Debate {
@@ -39,6 +39,141 @@ export interface Debate {
 }
 
 export const debates: Debate[] = [
+  {
+    id: 'oral-answer-4117',
+    title: `Mandatory Government Security Vetting for Personnel with Access to Singapore's Critical Information Infrastructure`,
+    zhTitle: `关键信息基础设施人员强制政府安全审查`,
+    date: '2026-04-08',
+    parliament: '15',
+    type: 'Oral Answers to Questions',
+    speakers: ['Gerald Giam Yean Song', 'Mrs Josephine Teo'],
+    personIds: ['gerald-giam-yean-song', 'josephine-teo'],
+    topicIds: [],
+    relatedPolicyIds: [],
+    relatedLeverNumbers: [],
+    relatedTimelineYears: [],
+    relatedPostSlugs: [],
+    topics: ['AI & National Security', 'AI Governance & Regulation'],
+    zhSummary: `工人党 Gerald Giam 询问数字发展与新闻部是否引入强制集中政府安全审查（针对接触关键信息基础设施 CII 的人员，含外籍技术专家），以应对内部威胁与国家级网络攻击。部长尤芳达以三点正面回应：(1) 不应基于个人画像（国籍/族群）预设谁更可信，否则反而漏掉风险；(2) 安全审查不是银弹，决心型 nefarious actor 会专门绕开已知审查流程；(3) 当前已实行"零信任"架构与"最小权限"原则——access control / 持续验证 / 异常监控的多层纵深防御才是核心。Giam 追问能否将公务员级别的安全审查（G50）扩展到 CII super user / admin，部长答覆：在某些场景已有相应安排，但出于安全考虑不公开披露具体要求，避免恶意行为者反向工程审查规则。`,
+    summaryShortEn: `Workers' Party MP Gerald Giam asked MDDI whether mandatory centralised government security vetting should be introduced for personnel with access to Singapore's critical information infrastructure (CII) — including foreign-national technical experts in telco and energy — to mitigate insider threats and state-sponsored APTs. Minister Josephine Teo replied with three positions: (1) profile-based assumptions about who is "safer" are themselves a vulnerability — defence has to assume any person with access could be an insider threat; (2) security vetting is not a silver bullet, since determined adversaries will specifically work around any known vetting regime; (3) the operative model is zero-trust architecture with least-privileged access, continuous verification and anomaly monitoring — defence-in-depth, not vetting alone. Giam pressed whether the public-servant standard (G50) should be extended to CII super-user / admin roles; the Minister noted that for certain access types arrangements already exist, but specific requirements are not publicly disclosed for security reasons.`,
+    keyPoints: [
+      '工人党要求扩大 CII 人员强制安全审查',
+      '部长强调"零信任"+"最小权限"才是核心',
+      '反对基于国籍/画像预设可信度',
+      '具体审查要求不公开，避免反向工程',
+    ],
+    keyPointsEn: [
+      'WP calls for mandatory CII personnel security vetting',
+      'Minister: zero-trust + least-privileged access is the model',
+      'Profile-based trust assumptions rejected as a vulnerability',
+      'Specific vetting requirements kept confidential by design',
+    ],
+    governmentStance: '坚持纵深防御与零信任架构，反对单一审查依赖',
+    governmentStanceEn: 'Stays with defence-in-depth and zero-trust; rejects single-point reliance on vetting.',
+    oppositionStance: '主张将 G50 公务员级审查推广到 CII super user / admin',
+    oppositionStanceEn: 'Pushes to extend G50-grade public-servant vetting to CII super-user and admin roles.',
+    controversyLevel: 2,
+    policySignal: 'CII 内部威胁应对：架构层多层防御优先于人员审查',
+    policySignalEn:
+      'CII insider-threat strategy prioritises architectural defence-in-depth over centralised personnel vetting.',
+    notableQuote:
+      'Security by design means that you have all these multiple layers of defences in order to be able to guard against the cyber risk.',
+    notableQuoteEn:
+      'Security by design means that you have all these multiple layers of defences in order to be able to guard against the cyber risk.',
+    summary: `Mr Gerald Giam Yean Song (Aljunied, Workers' Party) asked the Minister for Digital Development and Information whether the Ministry will introduce mandatory, centralised government security vetting for personnel with access to Singapore's critical information infrastructure (CII) to mitigate insider threats; and if not, how the Ministry ensures that current employer-led vetting of personnel — including foreign nationals in sensitive technical roles — is sufficiently robust against sophisticated state-sponsored cyber threats. Minister Mrs Josephine Teo replied that under the Cybersecurity Act, CII owners are required to put in place access management controls and processes to monitor for anomalies and suspicious activities; upon detection of unauthorised activity, owners must investigate. She set out the wider doctrine: profile-based assumptions ("this person is safer than that one") are themselves vulnerabilities; security vetting is not a silver bullet — determined adversaries will work around it; the operative model is zero-trust architecture with least-privileged access, continuous verification, anomaly monitoring and defence-in-depth. On extending public-servant G50 clearance to CII super-user / admin personnel, the Minister said arrangements already exist for certain access types but specific requirements are not publicly disclosed, for security reasons.`,
+    sourceUrl: 'https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=oral-answer-4117',
+  },
+  {
+    id: 'oral-answer-4115',
+    title: `Key Factors for Strong Labour Market Demand for Engineers and Technology Specialists, While PMETs Face Retrenchments`,
+    zhTitle: `工程师与技术专才需求强劲、PME 裁员上升的劳动力市场错配`,
+    date: '2026-04-08',
+    parliament: '15',
+    type: 'Oral Answers to Questions',
+    speakers: ['Melvin Yong Yik Chye', 'Shawn Huang Wei Zhong', 'Neo Kok Beng'],
+    personIds: ['melvin-yong-yik-chye', 'shawn-huang-wei-zhong', 'neo-kok-beng'],
+    topicIds: [],
+    relatedPolicyIds: [],
+    relatedLeverNumbers: [],
+    relatedTimelineYears: [],
+    relatedPostSlugs: [],
+    topics: ['AI & Employment', 'AI Economy & Industry'],
+    zhSummary: `Melvin Yong（拉丁马士）询问就业市场为何同时呈现工程师/技术专才需求强劲与 PME（专业人员、经理、执行人员、技师）裁员上升的"双重信号"。人力部高级政务次长 Shawn Huang 答覆：错配源自技能要求结构性变化——企业扩张技术职能（AI 工程师等岗位需求持续上升），同时重组易被自动化的传统 PME 角色；被裁的 PME 普遍缺少新岗位所需的技术资格。截至 2025 年 12 月，金融与资讯通讯两大行业 PME 空缺合计 9,400（4,100 + 5,300），而当季两业 PME 裁员仅 960。WSG 的 Career Conversion Programme 过去三年已转岗 7,300+ 人到科技/工程职。Neo Kok Beng（提名议员）追问是否能让 WSG 与专业学会合作设计直接对接行业的课程，部长答覆"是，已经在这么做"。`,
+    summaryShortEn: `Mr Melvin Yong (Radin Mas) asked MOM about the labour-market mismatch — strong hiring demand for engineers and technology specialists alongside rising PMET retrenchments — flagged in the annual job vacancies report. Senior Parliamentary Secretary Mr Shawn Huang replied that the mismatch is structural: firms are expanding technology functions, sustaining demand for jobs like AI engineers, while restructuring traditional PMET roles that are easier to automate; retrenched PMETs typically lack the specific technical skills these new roles require. As of December 2025, finance and infocomm sectors had combined PMET vacancies of 9,400 (4,100 + 5,300) against just 960 PMET retrenchments across both sectors that quarter. Workforce Singapore's Career Conversion Programme has placed 7,300+ workers into tech and engineering roles over the last three years. Dr Neo Kok Beng (NMP) asked whether WSG could partner directly with professional institutions to design industry-relevant curricula instead of relying solely on universities and polytechnics; the Senior Parliamentary Secretary confirmed this is already happening.`,
+    keyPoints: [
+      'AI 工程师需求结构性上升，传统 PME 被自动化',
+      '金融+资讯通讯 PME 空缺 9,400 vs 裁员 960',
+      'WSG CCP 三年转岗 7,300+ 人到科技/工程',
+      '议员推动 WSG 与专业学会共建产业课程',
+    ],
+    keyPointsEn: [
+      'Structural rise in AI-engineer demand; legacy PMET roles being automated',
+      'Finance + infocomm PMET vacancies: 9,400 vs 960 retrenchments',
+      'WSG Career Conversion Programme placed 7,300+ into tech/engineering in 3 years',
+      'MPs push WSG to co-design industry-led curricula with professional bodies',
+    ],
+    governmentStance: '承认结构性错配，靠 CCP 与产学合作做技能转换',
+    governmentStanceEn:
+      'Acknowledges structural mismatch; bets on CCP and industry-academia co-design for skills transition.',
+    oppositionStance: null,
+    oppositionStanceEn: null,
+    controversyLevel: 1,
+    policySignal: 'AI 时代 PME 转岗：政府主导薪资补贴 + 产业课程对接',
+    policySignalEn:
+      'PMET reskilling in the AI era: government-subsidised salary support plus industry-led curriculum design.',
+    notableQuote:
+      'Firms are expanding technology functions, driving sustained demand for jobs like AI engineers, while restructuring other PMET roles that have become easier to automate.',
+    notableQuoteEn:
+      'Firms are expanding technology functions, driving sustained demand for jobs like AI engineers, while restructuring other PMET roles that have become easier to automate.',
+    summary: `Mr Melvin Yong Yik Chye (Radin Mas) asked the Minister for Manpower, in view of strong hiring demand for engineers and technology specialists alongside rising retrenchments among Professionals, Managers, Executives and Technicians (PMETs) in the annual job vacancies report, what the key factors driving the mismatch are. Senior Parliamentary Secretary Mr Shawn Huang Wei Zhong replied that mismatches reflect shifts in skill requirements: firms expanding technology functions are driving sustained demand for AI engineers and engineering professionals, while restructuring other PMET roles that have become easier to automate; retrenched PMETs may lack the specific technical skills required by in-demand roles. As of December 2025, finance and infocomm sectors had PMET vacancies of 4,100 and 5,300 respectively, with only 960 PMET retrenchments across the two sectors that quarter. Through Workforce Singapore's Career Conversion Programmes, the government has placed over 7,300 workers into tech and engineering related jobs over the last three years, with salary support to employers. Dr Neo Kok Beng (NMP) asked whether WSG would design programmes with professional institutions directly relevant to industry, rather than only via universities and polytechnics; Mr Huang confirmed this is the existing practice.`,
+    sourceUrl: 'https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=oral-answer-4115',
+  },
+  {
+    id: 'oral-answer-4100',
+    title: `Safeguards to Ensure Citizen Data Is Not Disclosed to or Processed by Foreign-headquartered Vendors`,
+    zhTitle: `防范公民数据被外资 AI / 数据分析平台处理或披露的保障措施`,
+    date: '2026-04-07',
+    parliament: '15',
+    type: 'Oral Answers to Questions',
+    speakers: ['Low Wu Yang Andre', 'Ms Jasmin Lau'],
+    personIds: ['low-wu-yang-andre'],
+    topicIds: [],
+    relatedPolicyIds: [],
+    relatedLeverNumbers: [],
+    relatedTimelineYears: [],
+    relatedPostSlugs: [],
+    topics: ['AI Governance & Regulation', 'AI & National Security'],
+    zhSummary: `工人党非选区议员 Low Wu Yang Andre 提出关键质询：(a) 全政府数据架构是否允许外资总部的专有 AI / 数据分析平台处理公民数据；(b) 若允许，有何法律与技术保障防止外国政府依本国法（如美国 CLOUD Act）调取这些数据。MDDI 政务部长 Jasmin Lau 答覆：政府采用 risk-based approach，data access 严格按"最小权限/按需访问"原则，要求 vendor 实施非保留、加密、身份与访问管理；高敏感数据可要求 data residency；通过 governance framework 与合同条款限制使用、储存与披露。Low 的追问直指核心：他点名 Palantir Technologies——过去五年成为全球各国政府首选 AI/数据/安全方案供应商；并明确 CLOUD Act 强制美国公司在其法域内披露数据，**即使 data residency 在新加坡也可被强制**。Jasmin Lau 直接承认了这一点："legal and contractual agreements aside, the reality is that no matter what legal provisions the contracts may contain, some jurisdictions like the US may have legislation including with extraterritorial reach that empower government agencies to require companies within their jurisdictions to provide certain information... Such legislation can override contractual obligations." 这是政府首次在国会公开承认 contractual data residency 在外国域外管辖法律前可被覆盖。`,
+    summaryShortEn: `Workers' Party NCMP Mr Low Wu Yang Andre asked MDDI: (a) whether the whole-of-Government data architecture permits proprietary AI / data analytics platforms from foreign-headquartered vendors to process citizen data; and (b) what legal and technical safeguards prevent foreign governments from compelling disclosure under their domestic laws. Minister of State Ms Jasmin Lau replied that the Government uses a risk-based approach: access on a needs basis under the principle of least privilege; vendors must implement non-retention, encryption, and identity/access management; data residency may be required for sensitive data; governance frameworks and contracts constrain use, storage and retention. In the supplementary, Mr Low named Palantir Technologies — which has become the dominant AI/data/security supplier to governments globally — and pressed on the US CLOUD Act, which compels US-headquartered companies to disclose data even when stored offshore. The Minister acknowledged this directly: "Legal and contractual agreements aside, the reality is that no matter what legal provisions the contracts may contain, some jurisdictions like the US may have legislation, including with extraterritorial reach, that empower government agencies to require companies within their jurisdictions to provide certain information... Such legislation can override contractual obligations." This is the first time the Government has publicly acknowledged on the parliamentary floor that contractual data residency can be overridden by foreign extraterritorial law.`,
+    keyPoints: [
+      '外资 AI / 数据平台被允许处理政府数据（risk-based）',
+      '议员点名 Palantir + 美国 CLOUD Act 域外管辖',
+      '部长承认合同条款可被外国域外法律覆盖',
+      '保障转向技术控制 + governance + 用例分类',
+    ],
+    keyPointsEn: [
+      'Foreign-headquartered AI / data platforms may process government data (risk-based)',
+      'MP names Palantir + US CLOUD Act extraterritorial reach',
+      'Minister concedes contractual terms can be overridden by foreign law',
+      'Safeguards lean on technical controls + governance + use-case categorisation',
+    ],
+    governmentStance: '采用风险分级 + 技术控制 + 治理框架，承认合同条款不能完全防外国法',
+    governmentStanceEn:
+      'Risk-tiered approach plus technical controls and governance; concedes contracts alone cannot block foreign extraterritorial law.',
+    oppositionStance: '质疑 CLOUD Act 等域外管辖对 Singapore 数据主权的实际威胁',
+    oppositionStanceEn:
+      'Questions whether CLOUD-Act-style extraterritorial law leaves Singapore data sovereignty intact.',
+    controversyLevel: 3,
+    policySignal: '数据主权策略：从合同保障转向技术 + 治理 + 用例分类的多层防御',
+    policySignalEn:
+      'Data-sovereignty strategy shifts from contract-led to technical-controls + governance + use-case-tiered defence.',
+    notableQuote:
+      'Some jurisdictions like the US may have legislation including with extraterritorial reach that empower government agencies to require companies within their jurisdictions to provide certain information... Such legislation can override contractual obligations.',
+    notableQuoteEn:
+      'Some jurisdictions like the US may have legislation including with extraterritorial reach that empower government agencies to require companies within their jurisdictions to provide certain information... Such legislation can override contractual obligations.',
+    summary: `Mr Low Wu Yang Andre (NCMP) asked the Minister for Digital Development and Information (a) whether the whole-of-Government data architecture permits proprietary artificial intelligence (AI) or data analytics platforms from foreign-headquartered vendors to process citizen data; and (b) if so, what legal and technical safeguards ensure that such data cannot be compelled for disclosure by a foreign government under that government's domestic laws. The Minister of State for Digital Development and Information, Ms Jasmin Lau (for the Minister), replied that the Government uses best-in-class technology solutions, including those from international vendors, with comprehensive safeguards. The risk-based approach grants data access strictly on a needs basis under the principle of least privilege; vendors are expected to implement robust technical safeguards such as non-retention, encryption, and identity and access management; data residency may also be required, depending on sensitivity. Governance frameworks and contractual agreements constrain access, use, storage and retention. In a supplementary, Mr Low identified the underlying concern as Palantir Technologies and the US CLOUD Act — which compels US-based companies to disclose data even when stored offshore. The Minister of State acknowledged: legal and contractual agreements aside, some jurisdictions like the US have legislation including with extraterritorial reach that can override contractual obligations; this is precisely why the Government's approach is not to rely solely on contractual provisions but also on technical controls, governance frameworks, and limits on the use cases and categories of information that may be processed via non-government tools and platforms.`,
+    sourceUrl: 'https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=oral-answer-4100',
+  },
   {
     id: 'cos-moh-2026',
     title: `MOH Committee of Supply 2026 — Preventive Healthcare & AI`,
@@ -7922,7 +8057,7 @@ Madam, last year, I encouraged people to sign up as an SAF Volunteer in this Hou
 ];
 
 export const DEBATE_STATS = {
-  total: 150,
+  total: 153,
   yearRange: { from: 2015, to: 2026 },
   byYear: {
     '2015': 2,
@@ -7936,28 +8071,28 @@ export const DEBATE_STATS = {
     '2023': 21,
     '2024': 34,
     '2025': 28,
-    '2026': 28,
+    '2026': 31,
   },
-  byType: { Budget: 59, 'Oral Answers to Questions': 40, 'Written Answers to Questions': 48, Motions: 4 },
+  byType: { Budget: 59, 'Oral Answers to Questions': 43, 'Written Answers to Questions': 48, Motions: 4 },
   byTopic: {
-    'AI Economy & Industry': 85,
-    'AI & National Security': 75,
-    'AI Governance & Regulation': 63,
+    'AI Economy & Industry': 86,
+    'AI & National Security': 77,
+    'AI Governance & Regulation': 65,
     'AI in Public Sector': 69,
     'AI Infrastructure & Research': 50,
     'AI Safety & Ethics': 52,
-    'AI & Employment': 46,
+    'AI & Employment': 47,
     'AI in Education': 41,
     'AI in Healthcare': 21,
     'AI Strategy': 16,
     'Deepfakes & Disinformation': 5,
   },
   topSpeakers: {
-    'Gerald Giam Yean Song': 25,
+    'Gerald Giam Yean Song': 26,
     'Patrick Tay Teck Guan': 22,
     'Pritam Singh': 21,
     'Vikram Nair': 21,
-    'Josephine Teo': 20,
+    'Josephine Teo': 21,
     'Sylvia Lim': 19,
     'Desmond Choo': 16,
     'Tan Wu Meng': 15,
