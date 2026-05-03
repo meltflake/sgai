@@ -134,14 +134,58 @@ export const ecosystemCategories: EcosystemCategory[] = [
           'S$150 million seed funding over 5 years; 500+ AIAP apprentices to date; SEA-LION downloads in the millions',
         leaders: [
           {
+            name: 'Ho Teck Hua',
+            title: '创始执行主席',
+            titleEn: 'Founding Executive Chairman',
+            personId: 'ho-teck-hua',
+          },
+          {
+            name: 'Mohan Kankanhalli',
+            title: '副执行主席（人才）',
+            titleEn: 'Deputy Executive Chairman (Talent)',
+            personId: 'mohan-kankanhalli',
+          },
+          {
+            name: 'Luke Ong',
+            title: '副执行主席（应用与产业）兼首席科学家',
+            titleEn: 'Deputy Executive Chairman (Applied & Translational) and Chief Scientist',
+            personId: 'luke-ong',
+          },
+          {
+            name: 'Phoon Kok Kwang',
+            title: '副执行主席（研究）',
+            titleEn: 'Deputy Executive Chairman (Research)',
+            personId: 'phoon-kok-kwang',
+          },
+          {
+            name: 'Bryan Low',
+            title: 'AI 研究总监',
+            titleEn: 'Director, AI Research',
+            personId: 'bryan-low',
+          },
+          {
+            name: 'Ng See Kiong',
+            title: 'AI 技术总监',
+            titleEn: 'Director, AI Technology',
+            personId: 'ng-see-kiong',
+          },
+          {
             name: 'Laurence Liew',
-            title: 'AI Innovation 总监',
+            title: 'AI 创新总监',
             titleEn: 'Director, AI Innovation',
+            personId: 'laurence-liew',
           },
           {
             name: 'Leslie Teo',
             title: 'AI 产品高级总监（SEA-LION 牵头人）',
             titleEn: 'Senior Director, AI Products (SEA-LION lead)',
+            personId: 'leslie-teo',
+          },
+          {
+            name: 'Simon Chesterman',
+            title: 'AI 治理高级总监',
+            titleEn: 'Senior Director, AI Governance',
+            personId: 'simon-chesterman',
           },
         ],
         summary:
@@ -369,6 +413,38 @@ But AISG's bottlenecks are real: **talent retention is weak** (apprentices leave
         ministryEn: 'Ministry of Trade and Industry (MTI)',
         scale: '20+ 研究院所，员工 5000+，年研发支出 SGD 4.6 亿+',
         scaleEn: '20+ research institutes, 5,000+ staff, annual R&D budget over S$460M',
+        leaders: [
+          {
+            name: 'Beh Kian Teik',
+            title: '首席执行官',
+            titleEn: 'CEO',
+            personId: 'beh-kian-teik',
+          },
+          {
+            name: 'Andy Hor',
+            title: '副执行长（研究）',
+            titleEn: 'Deputy CEO (Research)',
+            personId: 'andy-hor',
+          },
+          {
+            name: 'Lim Keng Hui',
+            title: '助理执行长（科学与工程研究理事会）',
+            titleEn: 'Assistant CEO (SERC)',
+            personId: 'lim-keng-hui',
+          },
+          {
+            name: 'Ivor Tsang',
+            title: 'CFAR 主任',
+            titleEn: 'Director, CFAR',
+            personId: 'ivor-tsang',
+          },
+          {
+            name: 'Ong Yew Soon',
+            title: 'CFAR 首席 AI 科学家',
+            titleEn: 'Chief AI Scientist, CFAR',
+            personId: 'ong-yew-soon',
+          },
+        ],
         summary:
           'A*STAR（Agency for Science, Technology and Research）是新加坡的国家科研机构，1991 年成立，挂在贸工部（MTI）下面。它不像高校那样既要教学又要科研，而是**纯粹做应用导向的研究**，是新加坡 AI 基础研究和工业落地的"国家级 R&D 部门"。在 AI 领域，A*STAR 的 I2R（资讯通信研究院）和 CFAR（前沿 AI 研究中心）是两个核心节点。',
         summaryEn:
@@ -495,6 +571,44 @@ But A*STAR has obvious bottlenecks: **less attractive than universities or big t
         ministryEn: 'Ministry of Education (MOE)',
         scale: '在校生 4 万+；2024 QS 世界大学排名第 8；AI 论文产出亚洲前 3',
         scaleEn: '40,000+ students; ranked #8 worldwide in 2024 QS rankings; top 3 in Asia for AI publication output',
+        leaders: [
+          {
+            name: 'Tan Eng Chye',
+            title: '校长',
+            titleEn: 'President',
+            personId: 'tan-eng-chye',
+          },
+          {
+            name: 'Aaron Thean',
+            title: '副校长（学术）兼教务长',
+            titleEn: 'Deputy President (Academic Affairs) and Provost',
+            personId: 'aaron-thean',
+          },
+          {
+            name: 'Mohan Kankanhalli',
+            title: 'NUS AI 研究院院长',
+            titleEn: 'Director, NUS AI Institute',
+            personId: 'mohan-kankanhalli',
+          },
+          {
+            name: 'Bryan Low',
+            title: 'AI 副校长',
+            titleEn: 'Associate VP (AI)',
+            personId: 'bryan-low',
+          },
+          {
+            name: 'Simon Chesterman',
+            title: 'NUS AI 研究院 AI 治理与政策负责人',
+            titleEn: 'AI Governance and Policy Lead, NUS AI Institute',
+            personId: 'simon-chesterman',
+          },
+          {
+            name: 'Ng See Kiong',
+            title: 'NUS 数据科学研究院转化研究总监',
+            titleEn: 'Director of Translational Research, NUS Institute of Data Science',
+            personId: 'ng-see-kiong',
+          },
+        ],
         summary:
           'NUS（新加坡国立大学）是新加坡最顶尖的研究型大学，也是 AI Singapore 的"宿主"——AISG 总部就在 NUS 计算机学院（COM3）。在 AI 领域，NUS 是新加坡基础研究的主力军，并在 2024 年 3 月成立了 **NUS AI Institute**，把分散在各院系的 AI 研究整合到一个旗舰平台下。',
         summaryEn:
@@ -628,6 +742,26 @@ But NUS AI Institute (founded 2024) is still in its integration phase. **Whether
         scale: '在校生 3.3 万+；2024 QS 世界排名第 26；工科强项突出',
         scaleEn:
           '33,000+ students; ranked #26 worldwide in 2024 QS rankings; strong in engineering and applied sciences',
+        leaders: [
+          {
+            name: 'Ho Teck Hua',
+            title: '校长',
+            titleEn: 'President',
+            personId: 'ho-teck-hua',
+          },
+          {
+            name: 'Luke Ong',
+            title: '副校长（AI 与数字经济）兼计算与数据科学学院创院院长',
+            titleEn: 'VP (AI & Digital Economy), Founding Dean of CCDS',
+            personId: 'luke-ong',
+          },
+          {
+            name: 'Ong Yew Soon',
+            title: '校长讲席教授（CCDS）',
+            titleEn: "President's Chair Professor, CCDS",
+            personId: 'ong-yew-soon',
+          },
+        ],
         summary:
           'NTU（南洋理工大学）是新加坡的工科强校，与 NUS 并列为本地两大研究型大学。在 AI 领域，NTU 的特色是**强工程实战 + 强产业合作**——College of Computing and Data Science（CCDS）、S-Lab、Continual Learning Lab 等单位在 CV、机器人、连续学习方向有持续输出。',
         summaryEn:
@@ -756,6 +890,14 @@ Variables to watch: whether the post-integration CCDS produces flagship projects
         ministryEn: 'Ministry of Education (MOE)',
         scale: '在校生 1.1 万+；商科与社科为主，AI 偏应用方向',
         scaleEn: '11,000+ students; focused on business and social sciences with applied AI emphasis',
+        leaders: [
+          {
+            name: 'Lily Kong',
+            title: '校长',
+            titleEn: 'President',
+            personId: 'lily-kong',
+          },
+        ],
         summary:
           'SMU（Singapore Management University）是新加坡的"商科 + 社科"导向大学，2000 年成立。在 AI 领域，它的定位是**应用 AI + 政策 AI + 商业 AI**——School of Computing and Information Systems（SCIS）做应用研究，社会科学学院做 AI 政策分析。',
         summaryEn:
@@ -852,6 +994,14 @@ Take: SMU is not the source of AI innovation, but it is the key node that **"tra
         scale: '在校生 ~2000；与 MIT 合作建校；强项在 AI + 设计 + 工程交叉',
         scaleEn:
           '~2,000 students; founded in partnership with MIT; strengths in AI + design + engineering intersection',
+        leaders: [
+          {
+            name: 'Phoon Kok Kwang',
+            title: '校长',
+            titleEn: 'President',
+            personId: 'phoon-kok-kwang',
+          },
+        ],
         summary:
           'SUTD（Singapore University of Technology and Design）是新加坡 4 所国立大学中最年轻、最特殊的一所——2009 年与 MIT 合作创立，定位是"科技 + 设计 + 创业"的交叉型大学。在 AI 领域，它的特色是 **AI + 工程 + 设计** 的跨界路线。',
         summaryEn:
@@ -961,6 +1111,20 @@ Take: SUTD's existence saves the Singapore university system from **"the risk of
         ministryEn: 'Ministry of Communications and Information (MCI)',
         scale: '执法 PDPA（个人数据保护法），处理隐私违规投诉与处罚',
         scaleEn: 'Enforces the PDPA (Personal Data Protection Act); handles privacy complaints and sanctions',
+        leaders: [
+          {
+            name: 'Ng Cher Pong',
+            title: '数据保护委员',
+            titleEn: 'Commissioner',
+            personId: 'ng-cher-pong',
+          },
+          {
+            name: 'Denise Wong',
+            title: '副委员',
+            titleEn: 'Deputy Commissioner',
+            personId: 'denise-wong',
+          },
+        ],
         summary:
           'PDPC（Personal Data Protection Commission）是新加坡的个人数据保护监管机构，2013 年成立，挂靠 IMDA。它执行《个人数据保护法》（PDPA），是新加坡 AI 治理的"数据合规底座"——所有 AI 系统涉及个人数据的部分都要受 PDPA 约束。',
         summaryEn:
@@ -1102,6 +1266,38 @@ Tensions worth watching: **PDPC vs MAS coordination** (financial-sector AI sits 
         ministryEn: 'Ministry of Communications and Information (MCI)',
         scale: '员工 1500+；管辖电信、广播、媒体、AI 治理等领域',
         scaleEn: '1,500+ staff; oversees telecoms, broadcasting, media, and AI governance',
+        leaders: [
+          {
+            name: 'Ng Cher Pong',
+            title: '首席执行官',
+            titleEn: 'CEO',
+            personId: 'ng-cher-pong',
+          },
+          {
+            name: 'Aileen Chia',
+            title: '副执行长（连接发展与监管）',
+            titleEn: 'Deputy Chief Executive (Connectivity Development & Regulation)',
+            personId: 'aileen-chia',
+          },
+          {
+            name: 'Kiren Kumar',
+            title: '副执行长（发展）',
+            titleEn: 'Deputy Chief Executive (Development)',
+            personId: 'kiren-kumar',
+          },
+          {
+            name: 'Denise Wong',
+            title: '助理执行长（数据创新与保护）',
+            titleEn: 'Assistant Chief Executive (Data Innovation & Protection)',
+            personId: 'denise-wong',
+          },
+          {
+            name: 'Ong Chen Hui',
+            title: '助理执行长（企业科技）',
+            titleEn: 'Assistant Chief Executive (BizTech)',
+            personId: 'ong-chen-hui',
+          },
+        ],
         summary:
           'IMDA（Infocomm Media Development Authority）是新加坡的"信息通信 + 媒体 + AI 治理"综合监管机构，2016 年由 IDA 和 MDA 合并而成。在 AI 领域，它是**新加坡 AI 治理体系的"中央设计师"**——Model AI Governance Framework（MGF）、AI Verify、Generative AI 治理框架等几乎所有重要的治理文件，都出自 IMDA。',
         summaryEn:
@@ -1239,6 +1435,14 @@ But IMDA also has structural challenges: **with telecoms, media, and AI all unde
         scale: '全球 100+ 成员（含 IBM、Microsoft、Google、Meta、Salesforce 等）；50+ 企业实际部署使用',
         scaleEn:
           '100+ global members (including IBM, Microsoft, Google, Meta, Salesforce); 50+ enterprises in active deployment',
+        leaders: [
+          {
+            name: 'Shameek Kundu',
+            title: '执行总监',
+            titleEn: 'Executive Director',
+            personId: 'shameek-kundu',
+          },
+        ],
         summary:
           'AI Verify Foundation 是 2023 年 6 月由 IMDA 独立分拆出来的非营利基金会，运营开源的 AI 治理测试框架 **AI Verify**。它是新加坡 AI 治理战略的"国际化平台"——把 IMDA 制定的 Model AI Governance Framework 转化成可被全球企业实际使用的开源工具集。',
         summaryEn:
@@ -1370,6 +1574,20 @@ Bottlenecks to watch: **the Foundation's funding sustainability** (currently rel
         ministryEn: 'Reports directly to the Prime Minister’s Office',
         scale: '员工 2200+；管辖银行、保险、证券、支付，并兼任新加坡央行',
         scaleEn: '2,200+ staff; regulates banking, insurance, securities, payments and serves as central bank',
+        leaders: [
+          {
+            name: 'Chia Der Jiun',
+            title: '总裁（任期至 2026-05）',
+            titleEn: 'Managing Director (until 2026-05)',
+            personId: 'chia-der-jiun',
+          },
+          {
+            name: 'Leong Sing Chiong',
+            title: '副总裁',
+            titleEn: 'Deputy Managing Director',
+            personId: 'leong-sing-chiong',
+          },
+        ],
         summary:
           'MAS（Monetary Authority of Singapore）是新加坡的中央银行 + 金融监管机构。在 AI 领域，它的特殊地位在于：**它管的金融行业是新加坡 AI 落地最深、最早的行业**——所以它必须做行业级 AI 治理。FEAT 原则、Veritas 框架就是 MAS 给金融业 AI 的"行业宪法"。',
         summaryEn:
@@ -1527,6 +1745,7 @@ Worth watching going forward: **when MAS will allow GenAI in direct customer-fac
             name: 'Leslie Teo',
             title: 'AISG AI 产品高级总监 / SEA-LION 项目牵头人',
             titleEn: 'Senior Director of AI Products at AISG; SEA-LION programme lead',
+            personId: 'leslie-teo',
           },
         ],
         summary:
@@ -3348,6 +3567,14 @@ A take: **Singapore being able to sit at the AI Safety Summit table is a manifes
         ministryEn: 'Ministry of Health (MOH)',
         scale: '员工 2500+；服务全国 46 家公立医院与 1400+ 诊所',
         scaleEn: '2,500+ staff; serves all 46 public hospitals and 1,400+ clinics nationally',
+        leaders: [
+          {
+            name: 'Foo Hee Jug',
+            title: '首席执行官',
+            titleEn: 'CEO',
+            personId: 'foo-hee-jug',
+          },
+        ],
         summary:
           'Synapxe（前身 IHiS，2024 年更名）是新加坡的国家医疗科技局，负责所有公立医疗机构的 IT 基础设施与数字化转型。在 AI 领域，它是**新加坡医疗 AI 唯一的国家级落地主体**——所有公立医院的 AI 系统、数据治理、模型部署都由 Synapxe 统筹。',
         summaryEn:
