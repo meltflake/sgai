@@ -40,6 +40,7 @@
 //   console.log(pr.url);
 
 import { spawnSync } from 'node:child_process';
+import { relative, resolve as resolvePath } from 'node:path';
 
 export interface AutoCommitOptions {
   domain: string;
@@ -90,17 +91,24 @@ export function getCurrentBranch(): string {
  * Bypasses gitOk() because that helper trim()s the output, which would
  * eat the leading space on the first porcelain line and corrupt the
  * first path. Parses XY-prefix via regex for robustness.
+ *
+ * Both `allowDirtyPaths` and `targetFiles` may be absolute or relative
+ * paths; we normalise everything to repo-root-relative POSIX paths
+ * before comparing against `git status --porcelain` output (which is
+ * always repo-root-relative).
  */
 export function getUnexpectedDirty(allowDirtyPaths: string[] = [], targetFiles: string[] = []): string[] {
   const r = git(['status', '--porcelain']);
   if (r.code !== 0) {
     throw new Error(`git status --porcelain failed: ${r.stderr.trim()}`);
   }
+  const repoRoot = gitOk(['rev-parse', '--show-toplevel']);
+  const toRelative = (p: string): string => relative(repoRoot, resolvePath(p)).split('\\').join('/');
+  const allowed = new Set(targetFiles.map(toRelative));
+  const allowedPrefixes = allowDirtyPaths.map(toRelative);
   // Match: 2-char status (any chars incl. space), 1+ whitespace, then path to end of line.
-  // Handles `?? path`, ` M path`, `M  path`, `MM path`, etc.
   const lineRe = /^.{2}\s+(.+)$/;
   const lines = r.stdout.split('\n');
-  const allowed = new Set(targetFiles);
   const dirty: string[] = [];
   for (const line of lines) {
     if (!line) continue;
@@ -108,7 +116,7 @@ export function getUnexpectedDirty(allowDirtyPaths: string[] = [], targetFiles: 
     if (!m) continue;
     const path = m[1];
     if (allowed.has(path)) continue;
-    if (allowDirtyPaths.some((prefix) => path.startsWith(prefix))) continue;
+    if (allowedPrefixes.some((prefix) => path === prefix || path.startsWith(prefix.endsWith('/') ? prefix : `${prefix}/`))) continue;
     dirty.push(path);
   }
   return dirty;
