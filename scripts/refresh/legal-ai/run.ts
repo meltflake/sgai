@@ -137,15 +137,16 @@ function findAutoDiscoveredSection(lines: string[]): { sectionStart: number; ite
 }
 
 function appendAutoDiscoveredSection(lines: string[], formattedItems: string): string[] {
-  // Find `legalSections: [` array close.
+  // Find `sections: LegalSection[] = [` array close (data file uses
+  // `export const sections`, not `legalSections`).
   let arrayOpen = -1;
   for (let i = 0; i < lines.length; i += 1) {
-    if (/^export const legalSections:\s*LegalSection\[\]\s*=\s*\[/.test(lines[i])) {
+    if (/^export const sections:\s*LegalSection\[\]\s*=\s*\[/.test(lines[i])) {
       arrayOpen = i;
       break;
     }
   }
-  if (arrayOpen === -1) throw new Error('legalSections array not found in legal-ai.ts');
+  if (arrayOpen === -1) throw new Error('sections array not found in legal-ai.ts');
   let depth = 0;
   let arrayClose = -1;
   for (let i = arrayOpen; i < lines.length; i += 1) {
