@@ -2,7 +2,6 @@
 import Layout from '~/layouts/PageLayout.astro';
 import { people, institutions, mddiSpeeches } from '~/data/voices';
 import { speechId } from '~/data/speech-transcripts';
-import { videos, VIDEO_CATEGORIES } from '~/data/videos';
 
 const meta = {
   title: 'AI 影响力图谱 — 新加坡 AI 关键人物与机构',
@@ -39,10 +38,6 @@ const speechYears = [...new Set(mddiSpeeches.map((s) => s.date.slice(0, 4)))].so
 
 // Extract unique speakers from speeches
 const speechSpeakers = [...new Set(mddiSpeeches.map((s) => s.speaker).filter((s) => s !== ''))].sort();
-
-// Video data for YouTube section
-const videoYears = [...new Set(videos.map((v) => v.date.slice(0, 4)))].sort().reverse();
-const videosSorted = [...videos].sort((a, b) => b.date.localeCompare(a.date));
 ---
 
 <Layout metadata={meta} breadcrumbs={[{ label: 'AI 影响力图谱' }]}>
@@ -55,7 +50,7 @@ const videosSorted = [...videos].sort((a, b) => b.date.localeCompare(a.date));
     </div>
 
     <!-- Stats Row -->
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
+    <div class="grid grid-cols-3 gap-4 mb-10">
       <div class="bg-surface rounded-xl p-5 shadow-sm border border-subtle text-center">
         <div class="text-3xl font-bold text-blue-600">{people.length}</div>
         <div class="text-sm text-gray-500 mt-1">关键人物</div>
@@ -67,10 +62,6 @@ const videosSorted = [...videos].sort((a, b) => b.date.localeCompare(a.date));
       <div class="bg-surface rounded-xl p-5 shadow-sm border border-subtle text-center">
         <div class="text-3xl font-bold text-green-600">{mddiSpeeches.length}</div>
         <div class="text-sm text-gray-500 mt-1">MDDI 演讲稿</div>
-      </div>
-      <div class="bg-surface rounded-xl p-5 shadow-sm border border-subtle text-center">
-        <div class="text-3xl font-bold text-red-600">{videos.length}</div>
-        <div class="text-sm text-gray-500 mt-1">YouTube 视频</div>
       </div>
     </div>
 
@@ -296,141 +287,6 @@ const videosSorted = [...videos].sort((a, b) => b.date.localeCompare(a.date));
         </button>
       </div>
     </section>
-
-    <!-- YouTube Videos Section -->
-    <section class="mt-14">
-      <div class="flex items-center gap-3 mb-6">
-        <h2 class="text-2xl font-bold text-gray-800 dark:text-white">YouTube AI 视频</h2>
-        <span class="text-sm text-gray-400">({videos.length})</span>
-      </div>
-
-      <!-- Video Filters -->
-      <div class="bg-surface rounded-xl p-4 shadow-sm border border-subtle mb-6">
-        <div class="mb-3">
-          <div class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-2">主题</div>
-          <div class="flex flex-wrap gap-2">
-            <button
-              data-video-filter="topic"
-              data-value=""
-              class="video-filter-btn video-filter-active px-3 py-1.5 rounded-full text-sm border transition-all cursor-pointer"
-            >
-              全部
-            </button>
-            {
-              VIDEO_CATEGORIES.map((cat) => {
-                const count = videos.filter((v) => v.topic === cat.name).length;
-                return (
-                  <button
-                    data-video-filter="topic"
-                    data-value={cat.name}
-                    class="video-filter-btn px-3 py-1.5 rounded-full text-sm border transition-all cursor-pointer"
-                  >
-                    {cat.name}
-                    <span class="text-xs opacity-60 ml-1">({count})</span>
-                  </button>
-                );
-              })
-            }
-          </div>
-        </div>
-
-        <div class="mb-3">
-          <div class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-2">年份</div>
-          <div class="flex flex-wrap gap-2">
-            <button
-              data-video-filter="year"
-              data-value=""
-              class="video-filter-btn video-filter-active px-3 py-1.5 rounded-full text-sm border transition-all cursor-pointer"
-            >
-              全部
-            </button>
-            {
-              videoYears.map((year) => {
-                const count = videos.filter((v) => v.date.startsWith(year)).length;
-                return (
-                  <button
-                    data-video-filter="year"
-                    data-value={year}
-                    class="video-filter-btn px-3 py-1.5 rounded-full text-sm border transition-all cursor-pointer"
-                  >
-                    {year}
-                    <span class="text-xs opacity-60 ml-1">({count})</span>
-                  </button>
-                );
-              })
-            }
-          </div>
-        </div>
-
-        <div class="flex items-center justify-between mt-3 pt-3 border-t border-subtle">
-          <div id="video-result-count" class="text-sm text-gray-500"></div>
-          <button
-            id="video-clear-btn"
-            class="hidden text-sm text-red-500 hover:text-red-700 border border-red-200 hover:border-red-400 px-3 py-1.5 rounded-lg transition-all"
-          >
-            清除筛选
-          </button>
-        </div>
-      </div>
-
-      <!-- Video List -->
-      <div
-        id="video-list"
-        class="bg-surface rounded-xl shadow-sm border border-subtle divide-y divide-gray-100 dark:divide-slate-700"
-      >
-        {
-          videosSorted.map((video) => (
-            <div
-              class="video-row px-5 py-4 hover:bg-gray-50 dark:hover:bg-slate-700/50 transition-colors"
-              data-topic={video.topic}
-              data-year={video.date.slice(0, 4)}
-            >
-              <div class="flex items-start gap-4">
-                <div class="shrink-0 text-xs text-gray-400 dark:text-gray-500 font-mono mt-0.5 w-24">{video.date}</div>
-                <div class="flex-1 min-w-0">
-                  <a
-                    href={`/videos/${video.id}/`}
-                    class="text-sm font-medium text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors leading-snug block mb-1"
-                  >
-                    {video.title}
-                  </a>
-                  <div class="flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400">
-                    <span class="font-medium text-gray-700 dark:text-gray-300">{video.speaker}</span>
-                    <span>&middot;</span>
-                    <span>{video.speakerTitle}</span>
-                    <span>&middot;</span>
-                    <span>{video.duration}</span>
-                    <span>&middot;</span>
-                    <span>{video.channel}</span>
-                  </div>
-                </div>
-                <svg
-                  class="w-3.5 h-3.5 text-gray-300 dark:text-gray-600 shrink-0 mt-0.5"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                  />
-                </svg>
-              </div>
-            </div>
-          ))
-        }
-      </div>
-
-      <!-- Video empty state -->
-      <div id="video-empty" class="hidden text-center py-16">
-        <p class="text-gray-400 text-lg">没有符合筛选条件的视频</p>
-        <button id="video-clear-all-btn" class="mt-3 text-blue-600 hover:text-blue-800 text-sm underline">
-          清除所有筛选
-        </button>
-      </div>
-    </section>
   </div>
 </Layout>
 
@@ -455,30 +311,6 @@ const videosSorted = [...videos].sort((a, b) => b.date.localeCompare(a.date));
     font-weight: 600;
   }
   :global(.dark) .speech-filter-active {
-    background: rgba(59, 130, 246, 0.15);
-    border-color: #3b82f6;
-    color: #93c5fd;
-  }
-  .video-filter-btn {
-    background: transparent;
-    border-color: #e5e7eb;
-    color: #4b5563;
-  }
-  :global(.dark) .video-filter-btn {
-    border-color: #475569;
-    color: #9ca3af;
-  }
-  .video-filter-btn:hover {
-    border-color: #60a5fa;
-    color: #2563eb;
-  }
-  .video-filter-active {
-    background: #eff6ff;
-    border-color: #60a5fa;
-    color: #1d4ed8;
-    font-weight: 600;
-  }
-  :global(.dark) .video-filter-active {
     background: rgba(59, 130, 246, 0.15);
     border-color: #3b82f6;
     color: #93c5fd;
@@ -546,72 +378,6 @@ const videosSorted = [...videos].sort((a, b) => b.date.localeCompare(a.date));
     applySpeechFilters();
   }
 
-  // ── Video filters ──
-  const videoFilters: Record<string, string> = { topic: '', year: '' };
-
-  function initVideos() {
-    document.querySelectorAll('.video-filter-btn').forEach((btn) => {
-      btn.addEventListener('click', () => {
-        const dim = (btn as HTMLElement).dataset.videoFilter!;
-        const val = (btn as HTMLElement).dataset.value!;
-        videoFilters[dim] = val;
-        updateVideoFilterButtons();
-        applyVideoFilters();
-      });
-    });
-
-    const clearBtn = document.getElementById('video-clear-btn');
-    if (clearBtn) clearBtn.addEventListener('click', clearAllVideoFilters);
-
-    const clearAllBtn = document.getElementById('video-clear-all-btn');
-    if (clearAllBtn) clearAllBtn.addEventListener('click', clearAllVideoFilters);
-  }
-
-  function updateVideoFilterButtons() {
-    document.querySelectorAll('.video-filter-btn').forEach((btn) => {
-      const dim = (btn as HTMLElement).dataset.videoFilter!;
-      const val = (btn as HTMLElement).dataset.value!;
-      btn.classList.toggle('video-filter-active', videoFilters[dim] === val);
-    });
-  }
-
-  function applyVideoFilters() {
-    const hasFilter = Object.values(videoFilters).some((v) => v !== '');
-    let visibleCount = 0;
-
-    document.querySelectorAll('.video-row').forEach((row) => {
-      const el = row as HTMLElement;
-      const matchTopic = !videoFilters.topic || el.dataset.topic === videoFilters.topic;
-      const matchYear = !videoFilters.year || el.dataset.year === videoFilters.year;
-      const visible = matchTopic && matchYear;
-      el.style.display = visible ? '' : 'none';
-      if (visible) visibleCount++;
-    });
-
-    const countEl = document.getElementById('video-result-count');
-    const clearBtn = document.getElementById('video-clear-btn');
-    const emptyState = document.getElementById('video-empty');
-    const videoList = document.getElementById('video-list');
-
-    if (countEl) countEl.textContent = hasFilter ? `显示 ${visibleCount} 条结果` : '';
-    if (clearBtn) clearBtn.classList.toggle('hidden', !hasFilter);
-    if (emptyState && videoList) {
-      emptyState.classList.toggle('hidden', visibleCount > 0);
-      videoList.classList.toggle('hidden', visibleCount === 0);
-    }
-  }
-
-  function clearAllVideoFilters() {
-    Object.keys(videoFilters).forEach((k) => (videoFilters[k] = ''));
-    updateVideoFilterButtons();
-    applyVideoFilters();
-  }
-
-  function initAll() {
-    initSpeeches();
-    initVideos();
-  }
-
-  document.addEventListener('DOMContentLoaded', initAll);
-  document.addEventListener('astro:page-load', initAll);
+  document.addEventListener('DOMContentLoaded', initSpeeches);
+  document.addEventListener('astro:page-load', initSpeeches);
 </script>
