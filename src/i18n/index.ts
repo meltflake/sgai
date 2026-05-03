@@ -252,6 +252,9 @@ export const zh = {
   // Listings / categories
   policiesPageTitle: 'AI 政策库',
   policiesPageBlurb: '新加坡核心 AI 相关政策文档汇编，按分类整理，每类按时间倒序排列。',
+  policiesItemsSuffix: '份',
+  policyArchiveSuffix: '政策档案',
+  backToPolicies: '返回政策库',
   debatesPageTitle: '国会 AI 焦点',
   blogIndexTitle: '深度分析',
   aboutPageTitle: '关于本站',
@@ -397,6 +400,9 @@ export const en: Partial<Record<keyof typeof zh, string>> = {
 
   policiesPageTitle: 'AI Policy Library',
   policiesPageBlurb: 'Singapore’s core AI policy documents, grouped by category, newest first within each.',
+  policiesItemsSuffix: 'items',
+  policyArchiveSuffix: 'Policy Archive',
+  backToPolicies: 'Back to Policy Library',
   debatesPageTitle: 'Parliamentary AI Focus',
   blogIndexTitle: 'Analysis',
   aboutPageTitle: 'About',

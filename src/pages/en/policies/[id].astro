@@ -8,7 +8,7 @@ import RelatedRail from '~/components/data/RelatedRail.astro';
 import { Icon } from 'astro-icon/components';
 import { categories } from '~/data/policies';
 import { getPerson } from '~/utils/people';
-import { t, pickLocalized } from '~/i18n';
+import { t, pickLocalized, localizedHref } from '~/i18n';
 
 export const prerender = true;
 
@@ -24,13 +24,19 @@ export const getStaticPaths = (() => {
 const { policy } = Astro.props;
 const authors = (policy.authorPersonIds || []).map((id) => getPerson(id)).filter(Boolean);
 
-const summary = pickLocalized(policy, 'summary', 'summaryEn', lang) || '';
-const content = pickLocalized(policy, 'content', 'contentEn', lang) || '';
-const source = pickLocalized(policy, 'source', 'sourceEn', lang) || policy.source;
-const categoryName = policy._categoryNameEn || policy._categoryName;
+const title = pickLocalized<string>(policy, 'title', lang) || policy.title;
+const showEnSubtitle = policy.titleEn && policy.titleEn !== title;
+const summary = pickLocalized<string>(policy, 'summary', lang) || '';
+const content = pickLocalized<string>(policy, 'content', lang) || '';
+const source = pickLocalized<string>(policy, 'source', lang) || policy.source;
+const categoryName = pickLocalized<string>(
+  { name: policy._categoryName, nameEn: policy._categoryNameEn },
+  'name',
+  lang
+);
 
 const metadata = {
-  title: `${policy.titleEn || policy.title} · Policy Archive`,
+  title: `${title} · ${t(lang, 'policyArchiveSuffix')}`,
   description: summary,
 };
 
@@ -43,10 +49,7 @@ const articleSchema = {
   ...(policy.ministry ? { provider: { '@type': 'GovernmentOrganization', name: policy.ministry } } : {}),
 };
 
-const breadcrumbs = [
-  { label: t(lang, 'navPolicies'), href: '/en/policies/' },
-  { label: policy.titleEn || policy.title },
-];
+const breadcrumbs = [{ label: t(lang, 'navPolicies'), href: localizedHref('/policies/', lang) }, { label: title }];
 ---
 
 <Layout metadata={metadata} breadcrumbs={breadcrumbs} lang={lang}>
@@ -57,10 +60,14 @@ const breadcrumbs = [
       {policy._categoryIcon}
       {categoryName} · {policy.date}
     </p>
-    <h1 class="font-serif text-3xl md:text-4xl leading-tight font-semibold text-gray-900 dark:text-white mb-6">
-      {policy.titleEn || policy.title}
+    <h1 class="font-serif text-3xl md:text-4xl leading-tight font-semibold text-gray-900 dark:text-white mb-3">
+      {title}
     </h1>
-    {/* zh policy.title intentionally hidden on EN page */}
+    {
+      showEnSubtitle && (
+        <p class="text-base md:text-lg text-gray-500 dark:text-gray-400 italic mb-6">{policy.titleEn}</p>
+      )
+    }
 
     <div class="flex flex-wrap gap-2 mb-8">
       {
@@ -110,7 +117,10 @@ const breadcrumbs = [
           <ul class="flex flex-wrap gap-x-4 gap-y-2">
             {authors.map((p) => (
               <li>
-                <a href={`/en/voices/${p!.id}/`} class="text-primary hover:text-secondary text-sm font-medium">
+                <a
+                  href={localizedHref(`/voices/${p!.id}/`, lang)}
+                  class="text-primary hover:text-secondary text-sm font-medium"
+                >
                   {p!.name}
                 </a>
                 <span class="text-xs text-gray-500 dark:text-gray-400 ml-1">{p!.title}</span>
@@ -167,12 +177,11 @@ const breadcrumbs = [
 
     <nav class="mt-12 pt-6 border-t border-subtle">
       <a
-        href="/en/policies/"
+        href={localizedHref('/policies/', lang)}
         class="text-sm text-primary hover:text-secondary font-medium inline-flex items-center gap-1"
       >
         <Icon name="tabler:arrow-left" class="w-4 h-4" />
-        {t(lang, 'back')}
-        {t(lang, 'navPolicies')}
+        {t(lang, 'backToPolicies')}
       </a>
     </nav>
   </article>
