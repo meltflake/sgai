@@ -272,7 +272,22 @@ export async function pushAndOpenPR(options: PushAndPROptions): Promise<PushAndP
     ghArgs.push('--assignee', assignee);
   }
 
-  const ghR = spawnSync('gh', ghArgs, { encoding: 'utf8' });
+  let ghR = spawnSync('gh', ghArgs, { encoding: 'utf8' });
+
+  // Retry without labels if gh complains they don't exist on the repo
+  // (label create-on-demand is out of scope; user can `gh label create` once).
+  const labelMissing =
+    ghR.status !== 0 &&
+    /could not add label.+not found/i.test((ghR.stderr || '').toString() + (ghR.stdout || '').toString());
+  if (labelMissing && (options.labels || []).length > 0) {
+    process.stderr.write(
+      `  ⚠ some labels missing on repo; retrying PR without labels: ${(options.labels || []).join(', ')}\n` +
+        `    create them once with: gh label create ${(options.labels || []).join(' && gh label create ')}\n`
+    );
+    const argsNoLabels = ghArgs.filter((a, i, arr) => a !== '--label' && arr[i - 1] !== '--label');
+    ghR = spawnSync('gh', argsNoLabels, { encoding: 'utf8' });
+  }
+
   if (ghR.status !== 0) {
     return {
       branch,
