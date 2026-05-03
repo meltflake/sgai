@@ -43,7 +43,7 @@ export const ECOSYSTEM_SOURCES: EcosystemSourceEntry[] = [
     label: 'AI Singapore',
     feedUrl: 'https://aisingapore.org/feed/',
     feedType: 'rss',
-    defaultCategory: '核心枢纽',
+    defaultCategory: '基础研究',
     defaultEntityType: 'program',
     urlFilter: /.*/,
   },
@@ -52,7 +52,7 @@ export const ECOSYSTEM_SOURCES: EcosystemSourceEntry[] = [
     label: 'Business Times Tech',
     feedUrl: 'https://www.businesstimes.com.sg/rss/technology',
     feedType: 'rss',
-    defaultCategory: '本地创业生态',
+    defaultCategory: '创新孵化',
     defaultEntityType: 'product',
     urlFilter: SG_AI_KEYWORDS,
   },
@@ -61,7 +61,7 @@ export const ECOSYSTEM_SOURCES: EcosystemSourceEntry[] = [
     label: 'GovTech Singapore',
     feedUrl: 'https://www.tech.gov.sg/sitemap.xml',
     feedType: 'sitemap',
-    defaultCategory: '政府平台',
+    defaultCategory: '产业伙伴',
     defaultEntityType: 'platform',
     urlFilter: /(media|news|product|launch|smart-nation|ai)/i,
   },
@@ -69,19 +69,19 @@ export const ECOSYSTEM_SOURCES: EcosystemSourceEntry[] = [
 
 /**
  * Closed-set classification labels that the AI summarizer must pick from.
- * Keep aligned with category names in src/data/ecosystem.ts.
+ * MUST match exact `name:` values in src/data/ecosystem.ts (verified 2026-05-03).
  */
 export const ECOSYSTEM_CATEGORIES = [
   '核心枢纽',
-  '研究机构',
-  '政府平台',
-  '本地创业生态',
-  '本地企业',
-  '跨国科技公司',
-  '风险投资',
-  '智库与媒体',
-  '高校研究中心',
-  '行业联盟',
+  '基础研究',
+  '治理体系',
+  '核心技术',
+  '创新孵化',
+  'AI 产品',
+  '人才培养',
+  '国际合作',
+  '医疗科技',
+  '产业伙伴',
 ] as const;
 
 export type EcosystemCategoryName = (typeof ECOSYSTEM_CATEGORIES)[number];
