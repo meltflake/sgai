@@ -32,7 +32,7 @@
 //                                                  autoCommit + pushAndOpenPR
 
 import { createHash } from 'node:crypto';
-import { existsSync, mkdirSync, readFileSync, writeFileSync, statSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { spawnSync } from 'node:child_process';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -487,7 +487,6 @@ async function main() {
   }
 
   // Auto-commit.
-  const today = new Date().toISOString().slice(0, 10);
   const commitMsg = `data(videos): add ${approved.length} new SG AI video${approved.length > 1 ? 's' : ''}
 
 ${approved.map((e) => `- ${e.id} [${e.date}] ${e.fields.title}`).join('\n')}`;
