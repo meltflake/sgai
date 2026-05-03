@@ -53,7 +53,7 @@ export const universityProjects: OpenSourceProject[] = [
     orgType: 'university',
     description: '视频生成系统框架',
     descriptionEn: 'Video generation system framework',
-    stars: 2022,
+    stars: 2021,
     url: 'https://github.com/NUS-HPC-AI-Lab/VideoSys',
   },
   {
@@ -142,7 +142,7 @@ export const startupProjects: OpenSourceProject[] = [
     orgType: 'startup',
     description: '离线 ChatGPT 替代品，本地运行 AI 助手',
     descriptionEn: 'Offline ChatGPT alternative; AI assistant that runs locally',
-    stars: 42339,
+    stars: 42342,
     url: 'https://github.com/janhq/jan',
   },
 ];
