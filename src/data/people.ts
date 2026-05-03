@@ -566,14 +566,6 @@ export const people: Person[] = [
         date: '2025',
         sourceUrl: 'https://www.scai.gov.sg/2025/participants-of-scai-2025/mohan-kankanhalli/',
       },
-      {
-        event: 'Singapore FinTech Festival',
-        eventEn: 'Singapore FinTech Festival',
-        role: 'Speaker',
-        roleEn: 'Speaker',
-        date: '2025',
-        sourceUrl: 'https://www.fintechfestival.sg/speakers/spkr4563-prof-mohan-kankanhalli',
-      },
     ],
     externalRoles: [
       {
@@ -581,14 +573,12 @@ export const people: Person[] = [
         roleEn: 'Fellow',
         organization: '新加坡国家科学院（SNAS）',
         organizationEn: 'Singapore National Academy of Science (SNAS)',
-        sourceUrl: 'https://www.weforum.org/people/mohan-kankanhalli/',
       },
       {
         role: 'IEEE Fellow',
         roleEn: 'IEEE Fellow',
         organization: 'IEEE',
         organizationEn: 'IEEE',
-        sourceUrl: 'https://www.weforum.org/people/mohan-kankanhalli/',
       },
     ],
   },
@@ -1123,7 +1113,6 @@ export const people: Person[] = [
         descriptionEn:
           "Phase 2 joint labs with Singapore Airlines and SIAEC developing AI-driven solutions for airline value-chain operations; driven by Lim's SERC.",
         since: '2025',
-        sourceUrl: 'https://asianaviation.com/astar-sia-siaec-sign-deals-for-cabins-ai/',
       },
       {
         title: 'A*STAR IHPC（前任执行长）',
