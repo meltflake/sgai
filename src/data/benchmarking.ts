@@ -1357,3 +1357,68 @@ export const dataDisclaimer =
   '本页数据综合自各国政府官方文件、国际组织报告及公开报道，由 新加坡 AI 观察独立整理。数据截至 2026 年 2 月。';
 export const dataDisclaimerEn =
   'Data on this page is compiled from official government documents, international organisation reports and public sources, independently curated by Singapore AI Observatory. Data as of February 2026.';
+
+export interface AutoDiscoveredEntry {
+  title: string;
+  titleEn: string;
+  description: string;
+  descriptionEn: string;
+  category: string;
+  confidence: 'high' | 'medium' | 'low';
+  sourceUrl: string;
+  discoveredAt: string;
+  reasonForLowConfidence?: string;
+}
+
+export const autoDiscovered: AutoDiscoveredEntry[] = [
+  {
+    title: '2017年AI指数报告',
+    titleEn: 'The 2017 AI Index Report',
+    description: '斯坦福HAI发布的2017年AI指数报告，通过汇总多元数据集来衡量AI领域的进展。报告从活动量、技术性能、衍生指标等多个维度追踪AI发展趋势，并引入AI活力指数来量化学术界和产业界的活力。报告还汇集了AI专家的主观评论，帮助解读数据背后的故事。',
+    descriptionEn: 'Stanford HAI\'s 2017 AI Index Report aggregates diverse datasets to measure progress in the field of artificial intelligence. The report tracks trends through multiple dimensions including Volume of Activity, Technical Performance, and Derivative Measures, and introduces the AI Vibrancy Index to quantify the vitality of AI across academia and industry. Expert commentary is included to contextualize the quantitative data and provide interpretation of emerging trends.',
+    category: '国际排名',
+    confidence: 'medium',
+    sourceUrl: 'https://hai.stanford.edu/ai-index/2017-ai-index-report',
+    discoveredAt: '2026-05-03',
+  },
+  {
+    title: '2018年AI指数报告',
+    titleEn: 'The 2018 AI Index Report',
+    description: '斯坦福HAI发布的2018年AI指数报告通过汇总多项指标来量化人工智能领域的进展。报告分为四个主要部分：活动量度（如会议参与和风险投资），技术性能（图像识别和定理证明能力），衍生指标（包括AI活力指数），以及与人类表现的对比。该报告旨在为政策制定者、研究人员和公众提供基于数据的AI进展理解。',
+    descriptionEn: 'Stanford HAI\'s 2018 AI Index Report quantifies progress in artificial intelligence by aggregating diverse metrics across four major sections: Volume of Activity (conference attendance, VC investments), Technical Performance (image understanding, theorem proving), Derivative Measures (including the AI Vibrancy Index), and progress towards human performance. The report aims to ground conversations about AI in data and provide accessible insights for policymakers, researchers, and the general public.',
+    category: '国际排名',
+    confidence: 'high',
+    sourceUrl: 'https://hai.stanford.edu/ai-index/2018-ai-index-report',
+    discoveredAt: '2026-05-03',
+  },
+  {
+    title: '2019年AI指数报告',
+    titleEn: 'The 2019 AI Index Report',
+    description: '斯坦福HAI发布的2019年AI指数报告，跟踪和可视化人工智能相关的多维度数据。报告涵盖研发、会议、技术性能、经济、教育、自主系统、公众认知、社会考量和国家战略等九个章节，并引入全球AI活力工具对28个国家的34项指标进行对标分析。',
+    descriptionEn: 'Stanford HAI\'s 2019 AI Index Report tracks and visualizes multidimensional data related to artificial intelligence. The report covers nine chapters including research and development, conferences, technical performance, economy, education, autonomous systems, public perception, societal considerations, and national strategies, while introducing the Global AI Vibrancy Tool to benchmark 28 countries across 34 indicators.',
+    category: '国际排名',
+    confidence: 'high',
+    sourceUrl: 'https://hai.stanford.edu/ai-index/2019-ai-index-report',
+    discoveredAt: '2026-05-03',
+  },
+  {
+    title: '2024年人工智能指数报告',
+    titleEn: 'The 2024 AI Index Report',
+    description: '斯坦福大学HAI发布的第七版AI指数报告，追踪和分析人工智能的发展趋势。报告涵盖AI研发、技术性能、负责任AI、经济影响、科学医学应用、教育、政策治理、多样性和公众舆论等九个主要章节。核心发现包括：美国在AI模型开发中领先全球，生成式AI投资激增至252亿美元，大模型训练成本大幅上升，同时公众对AI的担忧程度显著提升。',
+    descriptionEn: 'The seventh edition of Stanford HAI\'s AI Index Report, a comprehensive annual tracking of artificial intelligence development trends. The report covers nine major chapters including R&D, technical performance, responsible AI, economic impact, science and medicine, education, policy and governance, diversity, and public opinion. Key findings reveal that the U.S. leads in AI model development, generative AI investment surged to $25.2 billion, frontier model training costs reached unprecedented levels (e.g., GPT-4: $78M, Gemini Ultra: $191M), and global public concern about AI\'s impact has increased significantly.',
+    category: '国际排名',
+    confidence: 'high',
+    sourceUrl: 'https://hai.stanford.edu/ai-index/2024-ai-index-report',
+    discoveredAt: '2026-05-03',
+  },
+  {
+    title: '研究与开发 | 2024年AI指数报告',
+    titleEn: 'Research and Development | The 2024 AI Index Report',
+    description: '本章节追踪2023年全球AI研发趋势，包括出版物、基础模型、专利和开源研究。工业界主导前沿AI研发，发布51个重要机器学习模型相比学术界的15个；2023年共发布149个基础模型，其中65.7%为开源。美国在顶级AI模型来源中领先（61个），而中国在AI专利中占全球61.1%，自2010年来AI专利数增长超31倍。',
+    descriptionEn: 'This chapter documents 2023 AI R&D trends including publications, foundation models, patents, and open-source research. Industry dominates frontier AI research, producing 51 notable ML models versus academia\'s 15; 149 foundation models were released in 2023, with 65.7% being open-source. The U.S. leads in top AI model sources (61 models), while China dominates AI patents with 61.1% of global share. AI patent grants have increased more than 31-fold since 2010. Open-source AI on GitHub grew 59.3% in 2023 alone, with AI publications reaching over 240,000 by 2022.',
+    category: '国际排名',
+    confidence: 'high',
+    sourceUrl: 'https://hai.stanford.edu/ai-index/2024-ai-index-report/research-and-development',
+    discoveredAt: '2026-05-03',
+  },
+];
