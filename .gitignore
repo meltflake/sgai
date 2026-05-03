@@ -43,3 +43,13 @@ scripts/voices/data/
 
 # Phase 1 codemod intermediate outputs (regenerated from sources)
 scripts/out/
+
+# refresh pipeline caches (auto-discovered URLs, summaries, raw HTML)
+scripts/refresh/policies/data/
+scripts/refresh/ecosystem/data/
+scripts/refresh/levers/data/
+scripts/refresh/legal-ai/data/
+scripts/refresh/talent/data/
+scripts/refresh/startups/data/
+scripts/refresh/tracker/data/
+scripts/refresh/benchmarking/data/
