@@ -135,7 +135,7 @@ src/
 publishDate: 2026-03-20
 title: '文章标题'
 excerpt: '摘要文字'
-category: '深度分析'
+category: '观点'
 tags:
   - 标签1
   - 标签2

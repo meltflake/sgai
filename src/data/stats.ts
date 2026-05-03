@@ -61,10 +61,10 @@ export const features = [
     callToAction: { text: '查看对标', href: getPermalink('/benchmarking') },
   },
   {
-    title: '📝 深度分析',
-    description: '不只是信息整理——我们提出自己的观点。从能源枢纽类比到制度护城河，探究新加坡 AI 战略的底层逻辑。',
+    title: '📝 观点',
+    description: '不只是信息整理——我们提出自己的看法。从能源枢纽类比到制度护城河，探究新加坡 AI 战略的底层逻辑。',
     icon: 'tabler:pencil',
-    callToAction: { text: '阅读分析', href: getPermalink('/blog') },
+    callToAction: { text: '阅读观点', href: getPermalink('/blog') },
   },
   {
     title: 'AI 视频观点',

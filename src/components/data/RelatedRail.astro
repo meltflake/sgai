@@ -63,7 +63,7 @@ const L = {
   hDebates: isEn ? 'Parliamentary debates' : '国会辩论',
   hLevers: isEn ? 'Levers' : '抓手',
   hTimeline: isEn ? 'Timeline' : '时间节点',
-  hAnalyses: isEn ? 'Analyses' : '深度分析',
+  hAnalyses: isEn ? 'Opinions' : '观点',
   moreDebates: (n: number) => (isEn ? `… and ${n} more` : `…另有 ${n} 条`),
   moreDebatesInline: (n: number) => (isEn ? `+${n} more debates` : `+${n} 条辩论`),
   ariaPerson: (name: string) => (isEn ? `Related person: ${name}` : `相关人物：${name}`),
@@ -72,7 +72,7 @@ const L = {
   ariaLever: (n: number, name: string) => (isEn ? `Related lever: ${n} ${name}` : `相关抓手：${name}`),
   ariaTimeline: (year: string | number, title: string) =>
     isEn ? `Related milestone: ${year} ${title}` : `相关时间节点：${year} ${title}`,
-  ariaAnalysis: (slug: string) => (isEn ? `Related analysis: ${slug}` : `相关分析：${slug}`),
+  ariaAnalysis: (slug: string) => (isEn ? `Related opinion: ${slug}` : `相关观点：${slug}`),
   leverTag: (n: number, name: string) => (isEn ? `Lever ${n} · ${name}` : `抓手 ${n}：${name}`),
 };
 

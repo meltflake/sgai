@@ -2,7 +2,7 @@
 publishDate: 2026-04-25
 title: '从 50 人到 5,700,000 人——同一种 AI-native 架构，两个尺度'
 excerpt: '2026 年同时在跑两类 AI-native 试验——50 人的公司和 5.7 million 人的城邦。把它们并排放，会看到一个被忽视的事实：AI-native 不是规模，是架构。新加坡 Budget 2026 的真正赌注，是把整个国家当成本土企业 AI-native 转型的"包装层"。'
-category: '深度分析'
+category: '观点'
 tags:
   - AI-native
   - 战略

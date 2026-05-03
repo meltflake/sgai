@@ -8,7 +8,7 @@ import { getLangFromPath, localizedHref } from '~/i18n';
 const { textDirection } = I18N;
 const lang = getLangFromPath(new URL(Astro.url).pathname);
 const href = localizedHref(getBlogPermalink(), lang);
-const label = lang === 'en' ? 'Back to Analysis' : '返回深度分析';
+const label = lang === 'en' ? 'Back to Opinion' : '返回观点';
 ---
 
 <div class="mx-auto px-6 sm:px-6 max-w-3xl pt-8 md:pt-4 pb-12 md:pb-20">

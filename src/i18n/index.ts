@@ -169,7 +169,7 @@ export const zh = {
   siteDescription: '深度观察新加坡 AI 生态与战略——独立视角的中文分析平台。追踪政策、辩论、抓手与生态。',
 
   // Navigation labels (top-level)
-  navAnalysis: '深度分析',
+  navAnalysis: '观点',
   navPolicy: '政策与战略',
   navDebates: '辩论与声音',
   navData: '数据追踪',
@@ -225,12 +225,12 @@ export const zh = {
   heroSubtitle: '把整个国家当作企业 AI-native 转型的"包装层"——国家自己不必成为 AI-native，只要把企业转型速度放大就够。',
   heroSubtitleNeutral: '一个城邦在 AI 时代的国家级转型——政策文件、国会辩论、抓手图谱、创业生态、法律框架的独立分析。',
   ctaReadCore: '阅读核心论证',
-  ctaBrowseAll: '浏览全部分析 →',
+  ctaBrowseAll: '浏览全部观点 →',
   freshnessPolicies: '核心政策',
   freshnessDebates: '国会辩论',
   freshnessLevers: '抓手项目',
   freshnessUpdated: '最近更新',
-  latestAnalyses: '最新分析',
+  latestAnalyses: '最新观点',
   viewAll: '查看全部 →',
   viewAllLeversCta: '完整图谱 →',
   viewAllDebatesCta: '全部 {count} 场 →',
@@ -256,7 +256,7 @@ export const zh = {
   policyArchiveSuffix: '政策档案',
   backToPolicies: '返回政策库',
   debatesPageTitle: '国会 AI 焦点',
-  blogIndexTitle: '深度分析',
+  blogIndexTitle: '观点',
   aboutPageTitle: '关于本站',
 
   // Banner: language switch suggestion
@@ -316,7 +316,7 @@ export const en: Partial<Record<keyof typeof zh, string>> = {
   siteDescription:
     'Independent analysis of Singapore’s AI strategy — tracking policies, parliamentary debates, levers, and the startup ecosystem.',
 
-  navAnalysis: 'Analysis',
+  navAnalysis: 'Opinion',
   navPolicy: 'Policy & Strategy',
   navDebates: 'Debates & Voices',
   navData: 'Data',
@@ -371,12 +371,12 @@ export const en: Partial<Record<keyof typeof zh, string>> = {
   heroSubtitleNeutral:
     'How one city-state is reorganising itself for the AI era — independent analysis of policy, parliament, levers, startups, and law.',
   ctaReadCore: 'Read the core argument',
-  ctaBrowseAll: 'Browse all analyses →',
+  ctaBrowseAll: 'Browse all opinions →',
   freshnessPolicies: 'Core policies',
   freshnessDebates: 'Parliamentary debates',
   freshnessLevers: 'Lever items',
   freshnessUpdated: 'Last updated',
-  latestAnalyses: 'Latest Analyses',
+  latestAnalyses: 'Latest Opinions',
   viewAll: 'View all →',
   viewAllLeversCta: 'Full lever map →',
   viewAllDebatesCta: 'All {count} debates →',
@@ -404,7 +404,7 @@ export const en: Partial<Record<keyof typeof zh, string>> = {
   policyArchiveSuffix: 'Policy Archive',
   backToPolicies: 'Back to Policy Library',
   debatesPageTitle: 'Parliamentary AI Focus',
-  blogIndexTitle: 'Analysis',
+  blogIndexTitle: 'Opinion',
   aboutPageTitle: 'About',
 
   langBannerEn: 'English version available',

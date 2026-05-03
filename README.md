@@ -17,7 +17,7 @@
 - **开源与研究** — 官方开源项目与产学研生态追踪
 - **创业生态** — 650+ AI 创业公司、9 家独角兽、五大垂直领域全景
 - **国际对标** — 10 个经济体 AI 政策横向对比
-- **深度分析** — 我们的核心观点与分析框架
+- **观点** — 站方的解读与分析框架
 
 ## 技术栈
 
@@ -79,7 +79,7 @@ Key sections:
 - **Open Source & Research** — Government open-source projects and industry-academia ecosystem
 - **Startup Ecosystem** — 650+ AI startups, 9 unicorns, five vertical sectors
 - **International Benchmarking** — Cross-comparison of AI policies across 10 economies
-- **Deep Analysis** — Our core perspectives and analytical framework
+- **Opinion** — Our perspectives and analytical framework
 
 ## Tech Stack
 
