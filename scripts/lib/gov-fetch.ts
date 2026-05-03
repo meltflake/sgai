@@ -33,7 +33,12 @@ export interface FetchOptions {
   sleepBetweenMs?: number;
 }
 
-const DEFAULT_UA = 'sgai-refresh/1.0 (+https://sgai.md)';
+// Identify as a real desktop browser. Some publisher sites (Business Times,
+// Stanford HAI) reject obvious bot UAs. Cloudflare-protected sites (e27,
+// govinsider) will still block the JS challenge regardless — those need
+// a headless browser (out of scope here).
+const DEFAULT_UA =
+  'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36 sgai-refresh/1.0';
 const DEFAULT_RETRIES = 3;
 const DEFAULT_TIMEOUT_MS = 15000;
 

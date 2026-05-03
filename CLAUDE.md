@@ -319,7 +319,11 @@ npx tsx scripts/voices/prospect-stubs.mjs sync-from-people [<id>...] [--dry-run]
 | **Policies**     | `npx tsx scripts/refresh/policies/run.ts --limit=5`                             | 月         | **auto-PR**                                                |
 | **Ecosystem**    | `npx tsx scripts/refresh/ecosystem/run.ts --limit=5`                            | 月         | **auto-PR**（条目带 `_pendingReview: true`，listing 隐藏） |
 | **Levers**       | `npx tsx scripts/refresh/levers/run.ts --limit=3`                               | 季         | **auto-PR**（入 lever 1 "Auto-discovered" 子组待移位）     |
+| **Startups**     | `npx tsx scripts/refresh/startups/run.ts --limit=3`                             | 季         | **auto-PR**（入 `autoDiscovered[]`）                       |
 | **Legal-AI**     | `npx tsx scripts/refresh/legal-ai/run.ts --limit=3`                             | 半年       | **auto-PR**（入 "Auto-discovered" section 待移位）         |
+| **Talent**       | `npx tsx scripts/refresh/talent/run.ts --limit=3`                               | 半年       | **auto-PR**（入 `autoDiscovered[]`）                       |
+| **Tracker**      | `npx tsx scripts/refresh/tracker/run.ts --limit=3`                              | 半年       | **auto-PR**（入 `autoDiscovered[]`）                       |
+| **Benchmarking** | `npx tsx scripts/refresh/benchmarking/run.ts --limit=3`                         | 半年       | **auto-PR**（仅追踪新报告，数字仍需手工提取）              |
 
 详见 [docs/refresh-playbook.md](docs/refresh-playbook.md) per-page 命令清单。
 
@@ -335,6 +339,8 @@ npx tsx scripts/voices/prospect-stubs.mjs sync-from-people [<id>...] [--dry-run]
 - `lib/sprs-api.ts` — Hansard SPRS connector
 - `lib/gov-fetch.ts` — 通用 .gov.sg HTML + sitemap 抓取
 - `lib/ai-summarize.ts` — 双语 AI 摘要 + 闭集分类 + confidence
+- `lib/auto-discovered-emit.ts` — 通用 `autoDiscovered[]` 数组追加器（schema 复杂的数据文件用，比如 talent / startups / benchmarking / tracker）
+- `_shared/run-template.ts` — scan + AI 摘要 + auto-discovered 追加 + auto-PR 的复用 orchestrator，新加同模式管线只需 ~30 行配置
 
 ### auto-PR 流程（Luca 视角）
 

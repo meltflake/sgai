@@ -41,13 +41,21 @@ interface RSSItem {
   pubDate?: string;
 }
 
+const REAL_UA =
+  'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36';
+
 async function parseRss(feedUrl: string): Promise<RSSItem[]> {
   try {
     const response = await fetch(feedUrl, {
-      headers: { 'User-Agent': 'sgai-refresh/1.0', Accept: 'application/rss+xml,*/*' },
+      headers: { 'User-Agent': REAL_UA, Accept: 'application/rss+xml, application/xml, text/xml, */*' },
+      redirect: 'follow',
     });
     if (!response.ok) return [];
     const xml = await response.text();
+    // Detect HTML returned in place of RSS (Cloudflare challenge etc.) and bail.
+    if (xml.trim().toLowerCase().startsWith('<!doctype html') || xml.includes('<title>Just a moment')) {
+      return [];
+    }
     const items: RSSItem[] = [];
     for (const m of xml.matchAll(/<item>([\s\S]*?)<\/item>/g)) {
       const block = m[1];

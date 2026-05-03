@@ -72,12 +72,52 @@
       "mode": "auto-pr"
     },
     {
+      "id": "startups",
+      "type": "tsx",
+      "schedule": "quarterly",
+      "label": "AI startups",
+      "description": "Business Times tech RSS + AISG + EDB; surface funding rounds, exits, new SG AI companies.",
+      "script": "scripts/refresh/startups/run.ts",
+      "args": ["--limit=3"],
+      "mode": "auto-pr"
+    },
+    {
       "id": "legal-ai",
       "type": "tsx",
       "schedule": "half-yearly",
       "label": "Legal framework",
       "description": "Monitor sso.agc.gov.sg / MAS / PDPC for new AI-related legislation & regulatory guidance.",
       "script": "scripts/refresh/legal-ai/run.ts",
+      "args": ["--limit=3"],
+      "mode": "auto-pr"
+    },
+    {
+      "id": "talent",
+      "type": "tsx",
+      "schedule": "half-yearly",
+      "label": "AI talent programmes",
+      "description": "AISG / IMDA / GovTech for new training, scholarship, apprentice, K-12 AI education programmes.",
+      "script": "scripts/refresh/talent/run.ts",
+      "args": ["--limit=3"],
+      "mode": "auto-pr"
+    },
+    {
+      "id": "tracker",
+      "type": "tsx",
+      "schedule": "half-yearly",
+      "label": "National AI tracker (6 dimensions)",
+      "description": "Surface new investment / talent / compute / adoption / research / governance data points.",
+      "script": "scripts/refresh/tracker/run.ts",
+      "args": ["--limit=3"],
+      "mode": "auto-pr"
+    },
+    {
+      "id": "benchmarking",
+      "type": "tsx",
+      "schedule": "half-yearly",
+      "label": "International benchmarking",
+      "description": "Stanford AI Index + IMD WCY for new annual reports; flag for manual data extraction.",
+      "script": "scripts/refresh/benchmarking/run.ts",
       "args": ["--limit=3"],
       "mode": "auto-pr"
     }

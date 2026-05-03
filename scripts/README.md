@@ -1,27 +1,29 @@
-# AISG 数据更新脚本
+# sgai 数据更新脚本
 
 ## 概览
 
-本目录包含 AISG 网站的数据更新脚本，分为三条管线和一个统一调度脚本。
-
 ```
 scripts/
-  auto_update.py                  # 统一调度脚本（crontab 调用此文件）
+  auto_update.py                  # 统一调度入口（registry-driven）
   auto_update_config.example.py   # 配置模板（复制为 auto_update_config.py）
-  auto_update_config.py           # 真实配置（不入 git）
-  videos/
-    01_scan_channels.py           # YouTube 频道 RSS 扫描
-    02_review_and_merge.py        # 人工审核候选视频（交互式）
-  voices/
-    01_scan_mddi.py               # MDDI 新闻室演讲稿扫描
-  hansard/
-    01_discover_debates.py        # PAIR Search 发现辩论 ID（需 Playwright）
-    02_fetch_debates.py           # SPRS API 获取辩论全文
-    03_enrich_debates.py          # AI 生成中文摘要（需 OpenAI API key）
-    04_analyze_patterns.py        # AI 分析政策模式（需 OpenAI API key）
-    05_generate_ts.py             # 生成 debates.ts
-  data/                           # 各管线的输出数据
-  logs/                           # 自动更新日志（不入 git）
+  auto_update_config.py           # 真实配置（不入 git）— SMTP + (可选) OPENAI_API_KEY
+  requirements.txt                # Python 依赖（用于 /tmp/sgai-venv）
+  refresh/                        # 新管线（全部 type=tsx，全部 auto-PR）
+    registry.json                 # 管线注册表（schedule / script / args / mode）
+    _shared/run-template.ts       # 复用 orchestrator
+    github-stars.ts               # 月：刷 GitHub stars + bump version
+    policies/                     # 月：smartnation/MDDI/IMDA/MAS/PDPC
+    ecosystem/                    # 月：AISG/BT/tech.gov.sg
+    levers/                       # 季：IMDA/tech.gov.sg/EDB
+    startups/                     # 季：BT/AISG/EDB
+    legal-ai/                     # 半年：sso.agc.gov.sg/MAS/PDPC
+    talent/                       # 半年：AISG/IMDA/tech.gov.sg
+    tracker/                      # 半年：IMDA/EDB/Stanford HAI
+    benchmarking/                 # 半年：Stanford HAI/IMD（仅追踪新报告）
+  lib/                            # 共享原语（test:lib 单元测试）
+  videos/, voices/, hansard/      # 旧三条 Python 管线（保留，scan-email 模式）
+  data/                           # 各管线状态文件 + 缓存
+  logs/                           # auto_update 日志（30 天滚动）
 ```
 
 ---
@@ -138,15 +140,24 @@ MDDI 演讲: 2 条新发现
 
 ## 新设备安装指南
 
-### 1. 安装 Python 依赖
+### 1. 安装 Python 依赖（venv 推荐）
 
 ```bash
-# 使用系统 Python（推荐 3.10+）
-pip3 install requests feedparser beautifulsoup4
+# 创建专用 venv（避免污染系统 Python；默认路径 /tmp/sgai-venv）
+python3 -m venv /tmp/sgai-venv
+/tmp/sgai-venv/bin/pip install -r scripts/requirements.txt
 
-# 如果需要运行 hansard/01_discover_debates.py（非必须）
-pip3 install playwright
-python3 -m playwright install chromium
+# 跑 Python 管线时用 venv 路径
+/tmp/sgai-venv/bin/python scripts/auto_update.py --schedule=weekly
+
+# crontab 也用 venv 完整路径（见下文 step 4）
+```
+
+如果需要运行 `hansard/01_discover_debates.py`（非必须；轻量 SPRS API 已替代）：
+
+```bash
+/tmp/sgai-venv/bin/pip install playwright
+/tmp/sgai-venv/bin/python -m playwright install chromium
 ```
 
 ### 2. 配置邮件
@@ -177,25 +188,32 @@ python3 auto_update.py --dry-run
 python3 auto_update.py --only videos
 ```
 
-### 4. 设置 crontab
+### 4. 设置 crontab（4 个 schedule）
+
+新管线（policies / ecosystem / github-stars / startups / talent / tracker / benchmarking / levers / legal-ai）会自动 push 分支 + open PR；本地 cron 跑完后 Luca 在 GitHub review/merge。crontab 推荐 4 行（替换路径）：
+
+```cron
+PROJECT=/Users/lucawu/Library/CloudStorage/Dropbox/Github/sgai
+PYTHON=/tmp/sgai-venv/bin/python
+
+# 周一 08:00 — 旧三条 Python 管线（hansard / videos / voices）
+0 8 * * 1         cd $PROJECT && $PYTHON scripts/auto_update.py --schedule=weekly      >> scripts/logs/cron.log 2>&1
+# 每月 1 号 08:00 — github-stars / policies / ecosystem
+0 8 1 * *         cd $PROJECT && $PYTHON scripts/auto_update.py --schedule=monthly     >> scripts/logs/cron.log 2>&1
+# Q1/Q2/Q3/Q4 第一天 08:00 — levers / startups
+0 8 1 1,4,7,10 *  cd $PROJECT && $PYTHON scripts/auto_update.py --schedule=quarterly   >> scripts/logs/cron.log 2>&1
+# 1 月 / 7 月 1 号 08:00 — legal-ai / talent / tracker / benchmarking
+0 8 1 1,7 *       cd $PROJECT && $PYTHON scripts/auto_update.py --schedule=half-yearly >> scripts/logs/cron.log 2>&1
+```
+
+cron 不读 `.zshrc`。`OPENAI_API_KEY` 等 env 必须在 crontab 顶部 export，或在 `auto_update_config.py` 末尾 `os.environ.setdefault('OPENAI_API_KEY', '...')`。
+
+### 4b. 准备 gh CLI
+
+新管线开 PR 需要 `gh auth login` 已认证（cron 沿用 keychain）。验证：
 
 ```bash
-# 查看当前 Python 路径
-which python3
-# 例如: /opt/homebrew/anaconda3/bin/python3 或 /usr/local/bin/python3
-
-# 编辑 crontab
-crontab -e
-
-# 添加以下内容（替换 Python 路径和项目路径）:
-# SGAI 数据更新 - 每周一 8:00
-0 8 * * 1 /path/to/python3 /path/to/sgai/scripts/auto_update.py >> /path/to/sgai/scripts/logs/cron.log 2>&1
-```
-
-**示例（macOS + Anaconda）:**
-
-```
-0 8 * * 1 /opt/homebrew/anaconda3/bin/python3 /Users/lucawu/Library/CloudStorage/Dropbox/Github/Luca/project/sgai/scripts/auto_update.py >> /Users/lucawu/Library/CloudStorage/Dropbox/Github/Luca/project/sgai/scripts/logs/cron.log 2>&1
+gh auth status
 ```
 
 ### 5. 验证 crontab

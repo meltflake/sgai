@@ -28,11 +28,29 @@ export interface EcosystemSourceEntry {
 
 const SG_AI_KEYWORDS = /(singapore|ai|artificial-intelligence|machine-learning|llm|generative|robotics|autonomous|smart-nation)/i;
 
+// Working sources (verified 2026-05-03):
+//   - aisingapore.org/feed/        ✅ WordPress RSS, AI Singapore official
+//   - businesstimes.com.sg/rss/technology  ✅ SG tech news incl. fundings
+//   - tech.gov.sg/sitemap.xml      ✅ GovTech products/launches
+//
+// Blocked sources (Cloudflare JS challenge or anti-bot — skip):
+//   - e27.co/feed/                 ❌ Cloudflare JS challenge
+//   - govinsider.asia/feed         ❌ JS-rendered (Next.js, no real RSS)
+//   - straitstimes.com/rss/*       ❌ JS-rendered
 export const ECOSYSTEM_SOURCES: EcosystemSourceEntry[] = [
   {
-    domain: 'e27.co',
-    label: 'e27 Singapore AI',
-    feedUrl: 'https://e27.co/feed/',
+    domain: 'aisingapore.org',
+    label: 'AI Singapore',
+    feedUrl: 'https://aisingapore.org/feed/',
+    feedType: 'rss',
+    defaultCategory: '核心枢纽',
+    defaultEntityType: 'program',
+    urlFilter: /.*/,
+  },
+  {
+    domain: 'businesstimes.com.sg',
+    label: 'Business Times Tech',
+    feedUrl: 'https://www.businesstimes.com.sg/rss/technology',
     feedType: 'rss',
     defaultCategory: '本地创业生态',
     defaultEntityType: 'product',
