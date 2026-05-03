@@ -289,6 +289,12 @@ npx tsx scripts/voices/prospect-stubs.mjs apply luke-ong
 
 **入选门槛**：`signatureWork` 只收公开 attribution 明确的 owned 项目（AISG/IMDA 等官方把人列为 lead/co-lead）。学术 CV 大部分跟"新加坡 AI 战略/生态"无关，不要无脑搬。
 
+### 已知 friction（待改进）
+
+- `apply` CLI 一次只处理一个人，5 人小批可以，19 人批量时 19 次 `apply` + 19 次粘贴会很乏味——下次可以加一个 `apply --all` 模式直接改 people.ts（找每个 person record 的 channels 数组结尾作为 anchor 插入）。
+- 每个 prospect JSON 都重复存 ~20 行 `whitelistedSources`，纯粹冗余。可以让脚本只在文件顶部留一个引用，或者干脆删掉这字段（白名单已经体现在 `searchQueries` 的 `site:` 限定里）。
+- 没有 `validate` 命令检查 `*En` 兄弟字段是否齐全——目前漏写英文版本会导致 EN 页面回退到中文。
+
 ### 部署
 
 独立部署在 Cloudflare Pages，绑定 `sgai.md`。push main 分支后 Cloudflare 自动构建（`npm run build` → `dist/`）。

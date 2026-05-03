@@ -537,6 +537,60 @@ export const people: Person[] = [
         labelEn: 'NUS faculty profile',
       },
     ],
+    signatureWork: [
+      {
+        title: 'NUS AI Institute (NAII) 创院院长',
+        titleEn: 'NUS AI Institute (NAII) — founding Director',
+        description: '2024-03 NAII 成立时任创院院长，定位为加速前沿 AI 研究并推动公共领域影响落地。',
+        descriptionEn:
+          'Founding Director of the NUS AI Institute (launched March 2024); chartered to accelerate frontier AI research and drive real-world public-good impact.',
+        since: '2024-03',
+        sourceUrl: 'https://news.nus.edu.sg/nus-sets-up-ai-institute/',
+      },
+      {
+        title: 'AISG Talent & Ecosystem 副执行主席',
+        titleEn: 'AISG Deputy Executive Chairman (Talent & Ecosystem)',
+        description:
+          '在 AISG 任副执行主席（人才与生态），与首席科学家 Luke Ong、研究主席 Phoon 共同构成 AISG 三驾马车。',
+        descriptionEn:
+          "AISG Deputy Executive Chairman for Talent & Ecosystem — completes AISG's leadership trio alongside Chief Scientist Luke Ong and Research Chair Phoon Kok Kwang.",
+        sourceUrl: 'https://aisingapore.org/home/the-team/',
+      },
+    ],
+    speakingRecord: [
+      {
+        event: 'Singapore Conference on AI (SCAI) 2025',
+        eventEn: 'Singapore Conference on AI (SCAI) 2025',
+        role: 'Participant',
+        roleEn: 'Participant',
+        date: '2025',
+        sourceUrl: 'https://www.scai.gov.sg/2025/participants-of-scai-2025/mohan-kankanhalli/',
+      },
+      {
+        event: 'Singapore FinTech Festival',
+        eventEn: 'Singapore FinTech Festival',
+        role: 'Speaker',
+        roleEn: 'Speaker',
+        date: '2025',
+        sourceUrl: 'https://www.fintechfestival.sg/speakers/spkr4563-prof-mohan-kankanhalli',
+      },
+    ],
+    externalRoles: [
+      {
+        role: 'Fellow',
+        roleEn: 'Fellow',
+        organization: '新加坡国家科学院（SNAS）',
+        organizationEn: 'Singapore National Academy of Science (SNAS)',
+        sourceUrl: 'https://www.weforum.org/people/mohan-kankanhalli/',
+      },
+      {
+        role: 'IEEE Fellow',
+        roleEn: 'IEEE Fellow',
+        organization: 'IEEE',
+        organizationEn: 'IEEE',
+        sourceUrl: 'https://www.weforum.org/people/mohan-kankanhalli/',
+      },
+    ],
   },
   {
     id: 'luke-ong',
@@ -747,6 +801,69 @@ export const people: Person[] = [
         labelEn: 'NUS Law faculty profile',
       },
     ],
+    signatureWork: [
+      {
+        title: 'AISG AI 治理方向',
+        titleEn: 'AISG AI Governance direction',
+        description:
+          '作为 AISG AI 治理高级总监，统领新加坡 AI 治理研究、AI Verify 学术对接，主持 AISG AI Research Symposium 治理 AI Agents 议题。',
+        descriptionEn:
+          "As Senior Director of AI Governance at AISG, leads Singapore's AI governance research and academic interface with AI Verify; moderated the AISG AI Research Symposium 2025 on Governing AI Agents.",
+        sourceUrl: 'https://aisingapore.org/ai-governance/aisg-ai-research-symposium-2025-governing-ai-agents/',
+      },
+      {
+        title: 'NUS College 创院院长 + Vice Provost',
+        titleEn: 'NUS College founding Dean + Vice Provost',
+        description: '同时担任 NUS College 创院院长与 NUS 副教务长（教育创新），把 AI 治理议题嵌入 NUS 全校教育。',
+        descriptionEn:
+          'Concurrently founding Dean of NUS College and Vice Provost (Educational Innovation) at NUS — embeds AI governance into university-wide education.',
+        sourceUrl: 'https://law.nus.edu.sg/people/simon-chesterman/',
+      },
+      {
+        title: '"Silicon Sovereigns" 国际法学论文（2026）',
+        titleEn: '"Silicon Sovereigns" international law paper (2026)',
+        description:
+          '"Silicon Sovereigns: AI, International Law, and the Tech-Industrial Complex" 发表于 American Journal of International Law 2026 第 120 卷。',
+        descriptionEn:
+          "'Silicon Sovereigns: Artificial Intelligence, International Law, and the Tech-Industrial Complex' in the American Journal of International Law 2026 (vol 120, issue 1, p44).",
+        since: '2026',
+        sourceUrl: 'https://simonchesterman.com/',
+      },
+    ],
+    speakingRecord: [
+      {
+        event: 'AISG AI Research Symposium 2025 — Governing AI Agents',
+        eventEn: 'AISG AI Research Symposium 2025 — Governing AI Agents',
+        role: 'Moderator',
+        roleEn: 'Moderator',
+        date: '2025',
+        sourceUrl: 'https://aisingapore.org/ai-governance/aisg-ai-research-symposium-2025-governing-ai-agents/',
+      },
+      {
+        event: 'ITU AI for Good',
+        eventEn: 'ITU AI for Good',
+        role: 'Speaker',
+        roleEn: 'Speaker',
+        date: '2024',
+        sourceUrl: 'https://aiforgood.itu.int/speaker/simon-chesterman/',
+      },
+    ],
+    externalRoles: [
+      {
+        role: 'Editor',
+        roleEn: 'Editor',
+        organization: 'Asian Journal of International Law',
+        organizationEn: 'Asian Journal of International Law',
+        sourceUrl: 'https://law.nus.edu.sg/people/simon-chesterman/',
+      },
+      {
+        role: 'Leadership Council',
+        roleEn: 'Leadership Council',
+        organization: 'World Justice Project',
+        organizationEn: 'World Justice Project',
+        sourceUrl: 'https://worldjusticeproject.org/about-us/who-we-are/leadership-council/simon_chesterman',
+      },
+    ],
   },
   {
     id: 'bryan-low',
@@ -776,6 +893,33 @@ export const people: Person[] = [
         labelEn: 'NUS faculty profile',
       },
     ],
+    signatureWork: [
+      {
+        title: 'AISG 基础研究方向',
+        titleEn: 'AISG Foundational Research direction',
+        description: '作为 AISG AI 研究总监，负责基础研究板块；同时是 NUS AI 副校长，统筹大学层面的 AI 研究战略。',
+        descriptionEn:
+          'As Director of AI Research at AISG, leads the foundational research pillar; concurrently NUS Associate Vice President (AI), steering university-level AI research strategy.',
+        sourceUrl: 'https://aisingapore.org/home/the-team/',
+      },
+      {
+        title: 'GLOW.AI 研究小组',
+        titleEn: 'GLOW.AI research group',
+        description:
+          'NUS 研究小组，方向为数据中心 AI、协作 AI、自动化 AI 与 AI for Science，应用于大语言模型与多模态模型。',
+        descriptionEn:
+          'NUS research group focused on data-centric AI, collaborative AI, automated AI, and AI for Science — applied to LLMs and multimodal models.',
+        sourceUrl: 'https://www.comp.nus.edu.sg/cs/people/lowkh/',
+      },
+      {
+        title: 'NUS AI 加速硕士项目',
+        titleEn: "NUS Accelerated Master's in AI",
+        description: '为新加坡本科生提供早期 AI 研究接触的加速硕士项目，由 Bryan 主导设计与运行。',
+        descriptionEn:
+          "Accelerated Master's programme in AI giving Singaporean undergraduates early research exposure; designed and run by Bryan.",
+        sourceUrl: 'https://www.comp.nus.edu.sg/cs/people/lowkh/',
+      },
+    ],
   },
   {
     id: 'ng-see-kiong',
@@ -803,6 +947,34 @@ export const people: Person[] = [
         url: 'https://www.comp.nus.edu.sg/cs/people/ngsk/',
         label: 'NUS 官方档案',
         labelEn: 'NUS faculty profile',
+      },
+    ],
+    signatureWork: [
+      {
+        title: 'AISG AI 技术方向',
+        titleEn: 'AISG AI Technology direction',
+        description:
+          '作为 AISG AI 技术总监，统筹应用 AI 与产业接口；前 A*STAR I2R 数据分析部创始负责人，前 A*STAR Urban Systems Initiative 项目总监。',
+        descriptionEn:
+          "As AISG's Director of AI Technology, oversees applied AI and industry interfaces; previously founding head of the Data Analytics Department at A*STAR I2R and Programme Director of A*STAR's Urban Systems Initiative.",
+        sourceUrl: 'https://aisingapore.org/home/the-team/',
+      },
+      {
+        title: 'NUS 数据科学研究院 转化研究',
+        titleEn: 'NUS Institute of Data Science — Translational Research',
+        description: '担任 NUS 数据科学研究院转化研究总监，把学术成果导向产业落地。',
+        descriptionEn:
+          'Director of Translational Research at the NUS Institute of Data Science — channels academic output into industry deployment.',
+        sourceUrl: 'https://www.comp.nus.edu.sg/cs/people/ngsk/',
+      },
+    ],
+    externalRoles: [
+      {
+        role: '联合导师',
+        roleEn: 'Co-Supervisor',
+        organization: 'AISG PhD Fellowship Programme',
+        organizationEn: 'AISG PhD Fellowship Programme',
+        sourceUrl: 'https://aisingapore.org/research/phd-fellowship-programme/',
       },
     ],
   },
@@ -835,6 +1007,37 @@ export const people: Person[] = [
         labelEn: 'A*STAR official profile',
       },
     ],
+    signatureWork: [
+      {
+        title: 'A*STAR 战略与 RIE2030',
+        titleEn: 'A*STAR strategy & RIE2030 alignment',
+        description: '统领 A*STAR 4,100+ 研究人员，把研究方向对齐 RIE2030 国家研究规划，强调"从发现到部署"的实战导向。',
+        descriptionEn:
+          "Leads 4,100+ A*STAR researchers; aligns the research portfolio with the RIE2030 national plan, with a 'discovery-to-deployment' applied bias.",
+        since: '2024-11',
+        sourceUrl: 'https://research.a-star.edu.sg/articles/features/a-culture-that-dares/',
+      },
+      {
+        title: 'NRF（国家研究基金会）2022–2024',
+        titleEn: 'National Research Foundation (NRF) 2022–2024',
+        description: '在出任 A*STAR CEO 前担任 NRF CEO，主导 RIE 2025 计划目标与优先级的成形。',
+        descriptionEn: 'Before A*STAR, served as NRF CEO and shaped the goals and priorities of the RIE 2025 plan.',
+        since: '2022-08',
+        sourceUrl:
+          'https://pharmaboardroom.com/interviews/beh-kian-teik-deputy-ceo-national-research-foundation-nrf-singapore/',
+      },
+    ],
+    notableQuotes: [
+      {
+        quote:
+          'A*STAR is shaping a culture that DARES — Defining bold ambitions; being Agile; Reaching outward to solve Real-world challenges; and Experimenting with curiosity.',
+        quoteZh: 'A*STAR 在培养 DARES 文化——大胆定义野心、保持敏捷、向外触及真实世界问题、用好奇心做实验。',
+        context: 'A*STAR @ SG60 专题',
+        contextEn: 'A*STAR @ SG60 feature',
+        date: '2025',
+        sourceUrl: 'https://research.a-star.edu.sg/articles/features/a-culture-that-dares/',
+      },
+    ],
   },
   {
     id: 'andy-hor',
@@ -864,6 +1067,17 @@ export const people: Person[] = [
         labelEn: 'A*STAR official profile',
       },
     ],
+    signatureWork: [
+      {
+        title: 'A*STAR 全院科研战略',
+        titleEn: 'A*STAR institution-wide research strategy',
+        description:
+          '作为 A*STAR 副执行长（研究），主管科研战略、investigator-led 研究支持、质量与影响评估框架及科研政策。',
+        descriptionEn:
+          'As Deputy CEO (Research), oversees research strategy, investigator-led research support, the quality/impact framework, and research policy across A*STAR.',
+        sourceUrl: 'https://www.a-star.edu.sg/about/corporate-profile/people/andy-hor',
+      },
+    ],
   },
   {
     id: 'lim-keng-hui',
@@ -889,6 +1103,37 @@ export const people: Person[] = [
         primary: true,
       },
     ],
+    signatureWork: [
+      {
+        title: '制造业 AI 卓越中心（AIMfg）',
+        titleEn: 'Sectoral AI Centre of Excellence for Manufacturing (AIMfg)',
+        description:
+          '2024 年新加坡启动的制造业 AI 卓越中心，由 Lim 主管的 SERC 推动，已扩展到精密工程、电子和生物医药制造的 SME 协同创新项目。',
+        descriptionEn:
+          "Sectoral AI Centre of Excellence for Manufacturing launched by Singapore in 2024 under Lim's SERC; has scaled co-innovation projects with SMEs in precision engineering, electronics and biomedical manufacturing.",
+        since: '2024',
+        sourceUrl:
+          'https://www.edb.gov.sg/en/about-edb/media-releases-publications/new-ai-centre-of-excellence-to-drive-innovation-in-manufacturing.html',
+      },
+      {
+        title: 'A*STAR × SIA / SIAEC 智能维护合作',
+        titleEn: 'A*STAR × SIA / SIAEC AI maintenance partnership',
+        description:
+          '与新加坡航空与 SIAEC 合作的第二阶段联合实验室，开发 AI 驱动的航司价值链运维方案；由 SERC 一线推动。',
+        descriptionEn:
+          "Phase 2 joint labs with Singapore Airlines and SIAEC developing AI-driven solutions for airline value-chain operations; driven by Lim's SERC.",
+        since: '2025',
+        sourceUrl: 'https://asianaviation.com/astar-sia-siaec-sign-deals-for-cabins-ai/',
+      },
+      {
+        title: 'A*STAR IHPC（前任执行长）',
+        titleEn: 'A*STAR IHPC (former Executive Director)',
+        description: '前 A*STAR 高性能计算研究院（IHPC）执行长，主导 AI、计算建模与仿真方向的研究院级落地。',
+        descriptionEn:
+          "Former Executive Director of A*STAR's Institute of High Performance Computing (IHPC) — drove the institute's AI, computational modelling and simulation impact.",
+        sourceUrl: 'https://www.a-star.edu.sg/about/corporate-profile/people/prof-lim-keng-hui',
+      },
+    ],
   },
   {
     id: 'ivor-tsang',
@@ -911,6 +1156,34 @@ export const people: Person[] = [
         label: 'Google Scholar',
         labelEn: 'Google Scholar',
         primary: true,
+      },
+    ],
+    signatureWork: [
+      {
+        title: 'A*STAR CFAR 前沿 AI 研究中心',
+        titleEn: 'A*STAR Centre for Frontier AI Research (CFAR)',
+        description:
+          '自 2022-01 起任 CFAR 主任，覆盖 Sustainable AI、Resilient & Safe AI、AGI 三个方向；2025 年 CFAR 论文连中 IJCAI、ICCV、AAMAS、AI 4 X、KDD。',
+        descriptionEn:
+          'Director of CFAR since January 2022, spanning Sustainable AI, Resilient & Safe AI, and AGI; CFAR papers in 2025 hit IJCAI, ICCV, AAMAS, AI 4 X, and KDD.',
+        since: '2022-01',
+        sourceUrl: 'https://www.a-star.edu.sg/cfar/about-cfar/management/prof-ivor-tsang',
+      },
+    ],
+    externalRoles: [
+      {
+        role: 'IEEE Fellow',
+        roleEn: 'IEEE Fellow',
+        organization: 'IEEE',
+        organizationEn: 'IEEE',
+        sourceUrl: 'https://www.a-star.edu.sg/cfar/news/news/features/ieee-fellow',
+      },
+      {
+        role: '首届 A*STAR AI Fellow',
+        roleEn: 'Inaugural A*STAR AI Fellow',
+        organization: 'A*STAR',
+        organizationEn: 'A*STAR',
+        sourceUrl: 'https://www.a-star.edu.sg/cfar/about-cfar/management/prof-ivor-tsang',
       },
     ],
   },
@@ -944,6 +1217,29 @@ export const people: Person[] = [
         labelEn: 'CFAR official profile',
       },
     ],
+    signatureWork: [
+      {
+        title: 'A*STAR 首席 AI 科学家',
+        titleEn: "A*STAR's Chief AI Scientist",
+        description:
+          '在 A*STAR 首席 AI 科学家职责上塑造国家 AI 研究方向，是 CFAR 创立的关键推手；2025 入选 Clarivate 高被引研究员（跨领域）。',
+        descriptionEn:
+          "As A*STAR's Chief AI Scientist, shapes national AI research direction; key force behind establishing CFAR. Named to Clarivate's 2025 Highly Cited Researchers (Cross-Field).",
+        sourceUrl:
+          'https://www.a-star.edu.sg/cfar/news/news/features/clarivate%27s-list-of-highly-cited-researchers-2025',
+      },
+    ],
+    externalRoles: [
+      {
+        role: 'Clarivate 高被引研究员（跨领域）',
+        roleEn: 'Clarivate Highly Cited Researcher (Cross-Field)',
+        organization: 'Clarivate',
+        organizationEn: 'Clarivate',
+        since: '2025',
+        sourceUrl:
+          'https://www.a-star.edu.sg/cfar/news/news/features/clarivate%27s-list-of-highly-cited-researchers-2025',
+      },
+    ],
   },
   // ── NUS leadership ────────────────────────────────────────────────
   {
@@ -974,6 +1270,37 @@ export const people: Person[] = [
         labelEn: 'NUS President biography',
       },
     ],
+    signatureWork: [
+      {
+        title: 'NUS × Microsoft Research Asia 合作',
+        titleEn: 'NUS × Microsoft Research Asia partnership',
+        description: '2025 与微软亚洲研究院签署的 AI 与计算深度合作，覆盖医疗 AI、社会 AI、空间智能与数据密集型计算。',
+        descriptionEn:
+          'Deep AI/computing partnership with Microsoft Research Asia signed in 2025, covering healthcare AI, societal AI, spatial intelligence, and data-intensive computing.',
+        since: '2025',
+        sourceUrl: 'https://www.miragenews.com/nus-microsoft-asia-unite-to-boost-ai-research-1437144/',
+      },
+      {
+        title: 'NUS × Google 联合研发中心',
+        titleEn: 'NUS × Google joint R&D centre',
+        description: '2025-08 在 NUS 计算学院 50 周年时签署的战略合作协议，建立联合研发与创新中心。',
+        descriptionEn:
+          "Strategic agreement signed in August 2025 at NUS School of Computing's 50th anniversary, establishing a joint R&D and innovation centre.",
+        since: '2025-08',
+        sourceUrl:
+          'https://www.biospectrumasia.com/news/54/26449/new-google-nus-partnership-to-advance-applied-ai-research-and-talent-development-in-singapore.html',
+      },
+      {
+        title: 'IBM-NUS 研究与创新中心 + 量子网络',
+        titleEn: 'IBM-NUS Research & Innovation Centre + Quantum Network',
+        description: '联合 IBM 与清迈大学等国际伙伴，推动 AI 与量子科学开放协作，覆盖气候、灾害管理等议题。',
+        descriptionEn:
+          'Open-collaboration AI and quantum science effort with IBM, Chiang Mai University and other international partners, spanning climate and disaster management.',
+        since: '2025',
+        sourceUrl:
+          'https://www.findworldedu.com/2025/chiang-mai-university-plans-to-join-ibm-nus-research-and-innovation-centre-and-ibm-quantum-network.html',
+      },
+    ],
   },
   {
     id: 'aaron-thean',
@@ -1001,6 +1328,27 @@ export const people: Person[] = [
         url: 'https://www.nus.edu.sg/about/management/aaron-thean',
         label: 'NUS 官方档案',
         labelEn: 'NUS official profile',
+      },
+    ],
+    signatureWork: [
+      {
+        title: 'NUS SHINE 微电子研究中心',
+        titleEn: 'NUS SHINE microelectronics centre',
+        description:
+          '同时担任国家研究基金会下一代微电子研究设施 SHINE 主任，以及 A*STAR SIMTech-NUS 大面积柔性混合电子联合实验室主任。',
+        descriptionEn:
+          'Concurrently Director of the NRF SHINE next-generation microelectronics facility and the A*STAR SIMTech-NUS Joint Lab for Large-Area Flexible Hybrid Electronics.',
+        sourceUrl: 'https://www.nus.edu.sg/about/management/aaron-thean',
+      },
+      {
+        title: '半导体 × Edge AI 研究方向',
+        titleEn: 'Semiconductor × Edge-AI research',
+        description:
+          '研究方向围绕材料创新（铁电氧化物、二维材料）与器件结构（新型存储布局、单片 3D IC）协同设计，加速 edge-AI 内存计算。',
+        descriptionEn:
+          'Research focus on co-design of materials innovations (ferroelectric oxides, 2D materials) and device-architecture innovations (new memory layouts, monolithic 3D IC) to accelerate in-memory computation for edge-AI.',
+        sourceUrl:
+          'https://ee.stanford.edu/event/06-10-2024/towards-chips-rewire-themselves-how-novel-material-system-co-design-can-enable',
       },
     ],
   },
@@ -1033,6 +1381,38 @@ export const people: Person[] = [
         labelEn: 'SMU President profile',
       },
     ],
+    signatureWork: [
+      {
+        title: 'SMU "Universities Reinvented" 转型',
+        titleEn: 'SMU "Universities Reinvented" transformation',
+        description: '2025-08 由 Lily Kong 启动的 SMU 全面再设计议程；同年 SMU 入选 QS 学科排名"全球进步最快大学"。',
+        descriptionEn:
+          "Launched by Lily Kong in August 2025; SMU was named the World's Most Improved University in QS World University Rankings by Subject 2026 in the same period.",
+        since: '2025-08',
+        sourceUrl:
+          'https://news.smu.edu.sg/news/2025/08/12/smu-president-prof-lily-kong-launches-universities-reinvented',
+      },
+      {
+        title: 'SMU 国际顾问理事会 AI 议题',
+        titleEn: 'SMU International Advisory Council AI agenda',
+        description: '主持 SMU 国际顾问理事会圆桌，讨论大学如何回应 AI 对工作与学习的颠覆。',
+        descriptionEn:
+          "Chairs the SMU International Advisory Council roundtable on how universities must respond to AI's disruption of work and learning.",
+        sourceUrl:
+          'https://www.nordangliaeducation.com/insights/2025/articles/in-conversation-with-professor-lily-kong-rethinking-learning-in-an-ai-driven-world',
+      },
+    ],
+    speakingRecord: [
+      {
+        event: '"Rethinking Learning in an AI-Driven World" 对话',
+        eventEn: 'In Conversation: Rethinking Learning in an AI-Driven World',
+        role: '受访人',
+        roleEn: 'Featured guest',
+        date: '2025-05',
+        sourceUrl:
+          'https://www.nordangliaeducation.com/insights/2025/articles/in-conversation-with-professor-lily-kong-rethinking-learning-in-an-ai-driven-world',
+      },
+    ],
   },
   // ── IMDA leadership ───────────────────────────────────────────────
   {
@@ -1055,6 +1435,39 @@ export const people: Person[] = [
         platform: 'linkedin',
         url: 'https://www.linkedin.com/in/cher-pong-ng-b945aba2/',
         primary: true,
+      },
+    ],
+    signatureWork: [
+      {
+        title: 'IMDA CEO（2025-11 起）',
+        titleEn: 'IMDA CEO (from November 2025)',
+        description: '2025-10 任 CEO（指定）、11 月正式接任，统领 IMDA 数字经济、AI 治理、5G/6G、信任技术战略。',
+        descriptionEn:
+          'CEO (Designate) from October 2025; took over fully in November, steering IMDA across digital economy, AI governance, 5G/6G and trust technologies.',
+        since: '2025-11',
+        sourceUrl:
+          'https://www.mddi.gov.sg/newsroom/new-chief-executive-appointments-in-the-infocomm-media-development--authority-and-the-national-library-and-archives-board/',
+      },
+      {
+        title: 'SkillsFuture Singapore 创始 CEO',
+        titleEn: 'SkillsFuture Singapore founding CEO',
+        description:
+          '2016–2019 担任 SSG 首任 CEO，推动 SkillsFuture Credit、MySkillsFuture、SkillsFuture Series 等核心终身学习项目落地。',
+        descriptionEn:
+          "Founding CEO of SkillsFuture Singapore (2016–2019); shipped SkillsFuture Credit, MySkillsFuture and the SkillsFuture Series — Singapore's core lifelong-learning programmes.",
+        since: '2016',
+        sourceUrl: 'https://govinsider.asia/intl-en/article/lifelong-learning-skillsfuture-singapore-ceo-ng-cher-pong',
+      },
+    ],
+    externalRoles: [
+      {
+        role: 'PDPC 数据保护委员',
+        roleEn: 'Commissioner, PDPC',
+        organization: 'Personal Data Protection Commission',
+        organizationEn: 'Personal Data Protection Commission',
+        since: '2025-11',
+        sourceUrl:
+          'https://www.mddi.gov.sg/newsroom/new-chief-executive-appointments-in-the-infocomm-media-development--authority-and-the-national-library-and-archives-board/',
       },
     ],
   },
@@ -1095,6 +1508,40 @@ export const people: Person[] = [
         primary: true,
       },
     ],
+    signatureWork: [
+      {
+        title: 'IMDA Digital Industry & Talent Group',
+        titleEn: 'IMDA Digital Industry & Talent Group',
+        description:
+          '主管 IMDA 数字经济与媒体产业发展，包括 AI、5G、数据中心方向的产业政策，以及与产业的合作伙伴关系。',
+        descriptionEn:
+          "Heads IMDA's Digital Industry & Talent group — industry policy and partnerships across AI, 5G, data centres, and digital economy growth.",
+        since: '2021-01',
+        sourceUrl:
+          'https://www.imda.gov.sg/about-imda/who-we-are/our-team/our-senior-management/digital-industry-and-talent',
+      },
+      {
+        title: 'TeSA AI 双语人才计划',
+        titleEn: 'TeSA AI-bilingual talent programme',
+        description:
+          '通过 TeSA（Tech Skills Accelerator）培养 AI 双语、未来就绪的工程师队伍，是 IMDA 主推的 AI 人才管线。',
+        descriptionEn:
+          "TeSA (Tech Skills Accelerator) builds an AI-bilingual, future-ready workforce — IMDA's headline AI talent pipeline.",
+        sourceUrl:
+          'https://www.imda.gov.sg/resources/blog/blog-articles/2026/01/how-upskilling-talent-powers-ai-transformation',
+      },
+    ],
+    notableQuotes: [
+      {
+        quote:
+          'These partnerships are critical in developing tech talent and accelerating the deployment of trusted AI solutions that businesses and consumers can use with confidence.',
+        quoteZh: '这些合作对培养技术人才、加速可信 AI 方案落地至关重要——让企业和消费者用得放心。',
+        context: 'Temus 战略合作公告，IMDA 一侧表态',
+        contextEn: "Temus strategic partnership announcement, IMDA's stated position",
+        date: '2024',
+        sourceUrl: 'https://temus.com/press-releases/strategic-partnerships-public-sector-day/',
+      },
+    ],
   },
   {
     id: 'denise-wong',
@@ -1115,6 +1562,67 @@ export const people: Person[] = [
         platform: 'linkedin',
         url: 'https://www.linkedin.com/in/denise-wong-659640228/',
         primary: true,
+      },
+    ],
+    signatureWork: [
+      {
+        title: '新加坡 Model AI Governance Framework',
+        titleEn: 'Singapore Model AI Governance Framework',
+        description:
+          '主管新加坡国家 AI 治理框架与 AI Verify 测试工具集；2025-06-02 起把 Global Cross-Border Privacy Rules（CBPR）认证正式落地。',
+        descriptionEn:
+          "Owns Singapore's Model AI Governance Framework and AI Verify testing toolkit; operationalised the Global Cross-Border Privacy Rules (CBPR) Certification from 2 June 2025.",
+        sourceUrl: 'https://oecd.ai/en/community/denise-wong',
+      },
+      {
+        title: 'PDPC（个人数据保护委员会）副委员',
+        titleEn: 'Deputy Commissioner, PDPC',
+        description: '兼任 PDPC 副委员，负责 PDPA（《个人数据保护法》）的执行与对外口径。',
+        descriptionEn:
+          'Concurrent Deputy Commissioner of the PDPC, overseeing enforcement of the Personal Data Protection Act (2012) and external positioning.',
+        sourceUrl:
+          'https://govinsider.asia/intl-en/article/denise-wong-assistant-chief-executive-and-deputy-commissioner-of-pdpc-strategic-policy-and-operations-imda',
+      },
+    ],
+    notableQuotes: [
+      {
+        quote:
+          'The future of AI is about ensuring that as we advance technologically, everyone benefits — Singapore wants to build a future where AI innovation and trust can flourish together.',
+        quoteZh: 'AI 的未来在于：技术向前的同时，所有人都能受益——新加坡要的是 AI 创新与信任并存。',
+        context: 'PECC 2025 会议开幕致辞',
+        contextEn: 'Opening Remarks, PECC 2025 Conference',
+        date: '2025-07-11',
+        sourceUrl:
+          'https://www.imda.gov.sg/resources/press-releases-factsheets-and-speeches/speeches/2025/denise-wong-opening-data-innovation-protection-group',
+      },
+    ],
+    speakingRecord: [
+      {
+        event: 'PECC 2025 — Asia-Pacific AI Governance Accelerator',
+        eventEn: 'PECC 2025 — Asia-Pacific AI Governance Accelerator',
+        role: 'Opening remarks',
+        roleEn: 'Opening remarks',
+        date: '2025-07-11',
+        sourceUrl:
+          'https://www.imda.gov.sg/resources/press-releases-factsheets-and-speeches/speeches/2025/denise-wong-opening-data-innovation-protection-group',
+      },
+      {
+        event: 'Stanford US-Asia Tech Management — Singapore AI Governance',
+        eventEn: 'Stanford US-Asia Tech Management — Singapore AI Governance',
+        role: 'Speaker',
+        roleEn: 'Speaker',
+        date: '2024',
+        sourceUrl:
+          'https://asia.stanford.edu/course/topics-in-international-technology-management/the-emerging-digital-economy-in-context-us-asia-cooperation-and-competition/denise-wong-assistant-chief-executive-data-innovation-protection-group-singapore-infocomm-media-development-authority/',
+      },
+    ],
+    externalRoles: [
+      {
+        role: 'AI 专家社区成员',
+        roleEn: 'AI Expert Community member',
+        organization: 'OECD.AI',
+        organizationEn: 'OECD.AI',
+        sourceUrl: 'https://oecd.ai/en/community/denise-wong',
       },
     ],
   },
@@ -1223,6 +1731,51 @@ export const people: Person[] = [
         primary: true,
       },
     ],
+    signatureWork: [
+      {
+        title: 'AI Verify 开源测试生态',
+        titleEn: 'AI Verify open-source testing ecosystem',
+        description:
+          '作为 AI Verify Foundation 执行总监，主导开源 AI 测试工具与 AI assurance provider 生态建设，把 IMDA 的治理框架推向产业落地。',
+        descriptionEn:
+          "As Executive Director of AI Verify Foundation, builds the open-source AI testing toolset and AI-assurance provider ecosystem — turning IMDA's governance framework into industry deployment.",
+        sourceUrl:
+          'https://www.tatlerasia.com/power-purpose/innovation/ai-verify-foundation-shameek-kundu-on-building-trust-in-ai-and-why-human-oversight-still-matters',
+      },
+      {
+        title: 'MAS FEAT 责任 AI 准则（联合作者）',
+        titleEn: 'MAS FEAT principles on Responsible AI (co-author)',
+        description: 'MAS FEAT（Fairness, Ethics, Accountability, Transparency）金融业责任 AI 准则的联合作者之一。',
+        descriptionEn:
+          "One of the authors of MAS's FEAT (Fairness, Ethics, Accountability, Transparency) principles on Responsible AI for the financial sector.",
+        sourceUrl: 'https://oecd.ai/en/community/shameek',
+      },
+    ],
+    externalRoles: [
+      {
+        role: '联席主席（数据治理工作组）',
+        roleEn: 'Co-chair, Data Governance Working Group',
+        organization: 'GPAI（全球 AI 伙伴关系）',
+        organizationEn: 'Global Partnership on AI (GPAI)',
+        sourceUrl: 'https://oecd.ai/en/community/shameek',
+      },
+      {
+        role: '咨询委员',
+        roleEn: 'Advisory Council Member',
+        organization: '新加坡政府 AI 与数据伦理咨询委员会',
+        organizationEn: "Singapore Government's AI and Data Ethics Advisory Council",
+        sourceUrl: 'https://oecd.ai/en/community/shameek',
+      },
+      {
+        role: '首席 AI 官（2025-10 起，新职务）',
+        roleEn: 'Chief AI Officer (from October 2025, new role)',
+        organization: 'Abu Dhabi Commercial Bank',
+        organizationEn: 'Abu Dhabi Commercial Bank',
+        since: '2025-10',
+        sourceUrl:
+          'https://www.cdomagazine.tech/leadership-moves/abu-dhabi-commercial-bank-appoints-shameek-kundu-as-chief-ai-officer',
+      },
+    ],
   },
   // ── MAS leadership ────────────────────────────────────────────────
   {
@@ -1247,6 +1800,79 @@ export const people: Person[] = [
         primary: true,
       },
     ],
+    signatureWork: [
+      {
+        title: 'Project MindForge / AI 风险管理工具包',
+        titleEn: 'Project MindForge / AI Risk Management Toolkit',
+        description:
+          'MAS 联合 24 家银行/险企/资本市场机构，2025-11 完成 MindForge 第二阶段，发布金融业 AI 风险管理工具包，覆盖传统 AI、生成式 AI、agentic AI。',
+        descriptionEn:
+          'MAS-led consortium of 24 banks/insurers/capital-markets firms; phase 2 of Project MindForge wrapped in November 2025 with the AI Risk Management Toolkit for finance — covering traditional AI, generative AI, and agentic AI.',
+        since: '2025-11',
+        sourceUrl:
+          'https://www.mas.gov.sg/news/media-releases/2026/mas-partners-industry-to-develop-ai-risk-management-toolkit-for-the-financial-sector',
+      },
+      {
+        title: 'BuildFin.ai 平台',
+        titleEn: 'BuildFin.ai platform',
+        description: 'SFF 2025 上由 Chia 宣布的新平台，撮合科技供应商、研究机构和金融机构联合攻关复杂金融问题。',
+        descriptionEn:
+          'Announced by Chia at SFF 2025: a new platform connecting tech providers, research institutes and financial institutions to tackle complex financial problems together.',
+        since: '2025-11',
+        sourceUrl:
+          'https://mondovisione.com/media-and-resources/news/creating-the-future-of-finance-a-journey-of-innovation-and-collaboration-re-20251113/',
+      },
+      {
+        title: '10 年 AI + 代币化金融路线图',
+        titleEn: '10-year AI + tokenised-finance roadmap',
+        description: 'SFF 2025 主旨发言中提出的两条 10 年路线：(1) 推动负责任 AI 采用、(2) 建设代币化金融未来。',
+        descriptionEn:
+          'Two 10-year themes laid out in his SFF 2025 keynote: (1) responsible AI adoption and (2) building a tokenised-finance future.',
+        since: '2025-11',
+        sourceUrl:
+          'https://www.asiabiztoday.com/2025/11/13/mas-outlines-10-year-roadmap-for-ai-and-tokenised-finance-at-sff-2025/',
+      },
+    ],
+    notableQuotes: [
+      {
+        quote: 'Agentic autonomy must come with sufficient guardrails.',
+        quoteZh: 'Agent 的自主性必须配套足够的护栏。',
+        context: 'SFF 2025 主旨发言',
+        contextEn: 'SFF 2025 keynote',
+        date: '2025-11-13',
+        sourceUrl:
+          'https://mondovisione.com/media-and-resources/news/creating-the-future-of-finance-a-journey-of-innovation-and-collaboration-re-20251113/',
+      },
+      {
+        quote:
+          'This tokenised future cannot be built by a single party. It will require collaboration between private and public sectors, within and across jurisdictions.',
+        quoteZh: '代币化的未来不可能靠一方建成——需要公私部门、跨辖区的协作。',
+        context: 'SFF 2025 主旨发言',
+        contextEn: 'SFF 2025 keynote',
+        date: '2025-11-13',
+        sourceUrl:
+          'https://mondovisione.com/media-and-resources/news/creating-the-future-of-finance-a-journey-of-innovation-and-collaboration-re-20251113/',
+      },
+    ],
+    speakingRecord: [
+      {
+        event: 'Singapore FinTech Festival 2025',
+        eventEn: 'Singapore FinTech Festival 2025',
+        role: '主旨发言',
+        roleEn: 'Keynote',
+        date: '2025-11-13',
+        sourceUrl:
+          'https://mondovisione.com/media-and-resources/news/creating-the-future-of-finance-a-journey-of-innovation-and-collaboration-re-20251113/',
+      },
+      {
+        event: '21st Singapore International Reinsurance Conference 2025',
+        eventEn: '21st Singapore International Reinsurance Conference 2025',
+        role: 'Official keynote',
+        roleEn: 'Official keynote',
+        date: '2025-11-03',
+        sourceUrl: 'https://www.mas.gov.sg/news/speeches/2025/unlocking-opportunities-in-a-changing-risk-landscape',
+      },
+    ],
   },
   {
     id: 'leong-sing-chiong',
@@ -1267,6 +1893,42 @@ export const people: Person[] = [
         platform: 'linkedin',
         url: 'https://sg.linkedin.com/in/sing-chiong-leong-69b62827b',
         primary: true,
+      },
+    ],
+    signatureWork: [
+      {
+        title: 'MAS Markets & Development Group',
+        titleEn: 'MAS Markets & Development Group',
+        description:
+          '统领 MAS Markets & Investment、Development & International、FinTech & Innovation 三个业务群——AI、tokenisation、跨境金融的核心推动方。',
+        descriptionEn:
+          "Heads MAS's Markets & Investment, Development & International, and FinTech & Innovation groups — central driver of AI, tokenisation and cross-border finance.",
+        since: '2021',
+        sourceUrl: 'https://www.mas.gov.sg/who-we-are/management-team',
+      },
+    ],
+    notableQuotes: [
+      {
+        quote:
+          'Through this open dialogue, MAS hopes to work with both central banks and regulatory counterparts, as well as global industry players to reap positive benefits from technology — while keeping financial services safe, trusted and inclusive.',
+        quoteZh:
+          '通过开放对话，MAS 希望与各国央行、监管同行和全球产业一起，把技术红利做大，同时让金融服务保持安全、可信、普惠。',
+        context: 'Layer One Summit 欢迎致辞，SFF 2025',
+        contextEn: 'Welcome remarks, Layer One Summit at SFF 2025',
+        date: '2025-11-12',
+        sourceUrl:
+          'https://www.mas.gov.sg/news/speeches/2025/towards-achieving-trusted-open-and-interoperable-networks',
+      },
+    ],
+    speakingRecord: [
+      {
+        event: 'Layer One Summit @ Singapore FinTech Festival 2025',
+        eventEn: 'Layer One Summit @ Singapore FinTech Festival 2025',
+        role: 'Welcome remarks',
+        roleEn: 'Welcome remarks',
+        date: '2025-11-12',
+        sourceUrl:
+          'https://www.mas.gov.sg/news/speeches/2025/towards-achieving-trusted-open-and-interoperable-networks',
       },
     ],
   },
@@ -1291,6 +1953,26 @@ export const people: Person[] = [
         platform: 'linkedin',
         url: 'https://www.linkedin.com/in/heejug/',
         primary: true,
+      },
+    ],
+    signatureWork: [
+      {
+        title: 'Synapxe AI Accelerate / 公共医疗 AI 工具集',
+        titleEn: 'Synapxe AI Accelerate / public healthcare AI toolkit',
+        description:
+          '主导 Synapxe AI Accelerate 计划：医学术语分解 chatbot、舌象健康评估 app、HealthHub AI 助手；2025 年起在公共医疗系统推开记录自动化与 GenAI 文档总结。',
+        descriptionEn:
+          "Drives Synapxe's AI Accelerate programme — a chatbot that breaks down medical jargon, a tongue-photo health assessment app, and an AI assistant on HealthHub; rolled out automated record-updating and GenAI documentation summarisation across public healthcare from 2025.",
+        sourceUrl: 'https://www.synapxe.sg/news/artificial-intelligence/synapxe-ai-tools',
+      },
+      {
+        title: 'HEALIX 全国健康数据平台',
+        titleEn: 'HEALIX national health data platform',
+        description:
+          '与 MOH 合作的云上数据基础设施，跨健康集群安全共享临床、社经、生活方式与基因数据，是新加坡医疗 AI 的"技术工厂"。',
+        descriptionEn:
+          "Cloud-based data infrastructure built with MOH that securely shares clinical, socio-economic, lifestyle and genomic data across healthcare clusters — the AI 'technology factory' for Singapore's health system.",
+        sourceUrl: 'https://www.synapxe.sg/about-synapxe/leadership',
       },
     ],
   },
