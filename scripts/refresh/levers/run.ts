@@ -248,15 +248,26 @@ async function main(): Promise<void> {
   }
 
   const original = readFileSync(TARGET_FILE, 'utf8');
+  // Capture baseline unpaired count BEFORE we write, so we only fail on
+  // newly-introduced issues (the file may have pre-existing baseline gaps
+  // that aren't this pipeline's responsibility).
+  const baselineCount = (() => {
+    // findUnpairedFields needs a file path; the file we'll edit is `TARGET_FILE`
+    // and its current contents == `original`, so we can just check it directly
+    // before writeFileSync changes anything.
+    return findUnpairedFields(TARGET_FILE, { fields: ['name', 'description', 'title'] }).length;
+  })();
   const formattedItems = enriched.map((e) => formatLeverItem(e.item)).join('\n');
   let lines = original.split('\n');
   lines = injectIntoAutoDiscoveredGroup(lines, formattedItems);
 
   writeFileSync(TARGET_FILE, lines.join('\n'));
-  const issues = findUnpairedFields(TARGET_FILE, { fields: ['name', 'description', 'title'] });
-  if (issues.length > 0) {
+  const issuesAfter = findUnpairedFields(TARGET_FILE, { fields: ['name', 'description', 'title'] });
+  if (issuesAfter.length > baselineCount) {
     writeFileSync(TARGET_FILE, original);
-    throw new Error(`i18n pairing failed: ${issues.length} unpaired. Rolled back.`);
+    throw new Error(
+      `i18n pairing regressed: ${baselineCount} → ${issuesAfter.length} unpaired (introduced ${issuesAfter.length - baselineCount}). Rolled back.`
+    );
   }
   process.stdout.write(`  added ${enriched.length} items to Auto-discovered group\n`);
 

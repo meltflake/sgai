@@ -179,17 +179,19 @@ export function emit(
   const updated = lines.join('\n');
 
   if (!options.dryRun) {
+    const baselineCount = findUnpairedFields(filePath, {
+      fields: ['title', 'description', 'name'],
+    }).length;
     writeFileSync(filePath, updated);
 
-    // Validate i18n pairing post-write.
-    const issues = findUnpairedFields(filePath, {
+    // Validate i18n pairing post-write — rollback only on REGRESSION.
+    const issuesAfter = findUnpairedFields(filePath, {
       fields: ['title', 'description', 'name'],
     });
-    if (issues.length > 0) {
-      // Roll back on i18n failure.
+    if (issuesAfter.length > baselineCount) {
       writeFileSync(filePath, original);
       throw new Error(
-        `i18n pairing check failed after emit: ${issues.length} unpaired fields. Rolled back.`
+        `i18n pairing regressed: ${baselineCount} → ${issuesAfter.length} unpaired. Rolled back.`
       );
     }
   }

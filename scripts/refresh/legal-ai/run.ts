@@ -268,11 +268,14 @@ async function main(): Promise<void> {
     lines = appendAutoDiscoveredSection(lines, formattedItems);
   }
 
+  const baselineCount = findUnpairedFields(TARGET_FILE, { fields: ['title', 'description', 'summary'] }).length;
   writeFileSync(TARGET_FILE, lines.join('\n'));
-  const issues = findUnpairedFields(TARGET_FILE, { fields: ['title', 'description', 'summary'] });
-  if (issues.length > 0) {
+  const issuesAfter = findUnpairedFields(TARGET_FILE, { fields: ['title', 'description', 'summary'] });
+  if (issuesAfter.length > baselineCount) {
     writeFileSync(TARGET_FILE, original);
-    throw new Error(`i18n pairing failed: ${issues.length} unpaired. Rolled back.`);
+    throw new Error(
+      `i18n pairing regressed: ${baselineCount} → ${issuesAfter.length} unpaired. Rolled back.`
+    );
   }
   process.stdout.write(`  added ${enriched.length} items to Auto-discovered section\n`);
 

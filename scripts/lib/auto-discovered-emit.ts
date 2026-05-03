@@ -113,13 +113,18 @@ export function appendAutoDiscovered(
     created = true;
   }
 
+  const baselineCount = findUnpairedFields(filePath, { fields: ['title', 'description'] }).length;
   writeFileSync(filePath, updated);
 
-  // Validate i18n pairing post-write; rollback on failure.
-  const issues = findUnpairedFields(filePath, { fields: ['title', 'description'] });
-  if (issues.length > 0) {
+  // Validate i18n pairing post-write; rollback only on REGRESSION (target
+  // files may already have baseline unpaired entries that aren't this
+  // pipeline's responsibility).
+  const issuesAfter = findUnpairedFields(filePath, { fields: ['title', 'description'] });
+  if (issuesAfter.length > baselineCount) {
     writeFileSync(filePath, original);
-    throw new Error(`i18n pairing failed after auto-discovered emit: ${issues.length} unpaired. Rolled back.`);
+    throw new Error(
+      `i18n pairing regressed in auto-discovered emit: ${baselineCount} → ${issuesAfter.length} unpaired. Rolled back.`
+    );
   }
 
   return { added: entries.length, created };
