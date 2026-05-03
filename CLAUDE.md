@@ -335,21 +335,21 @@ npx tsx scripts/voices/prospect-stubs.mjs sync-from-people [<id>...] [--dry-run]
 
 调度入口：`python3 scripts/auto_update.py --schedule=<weekly|monthly|quarterly|half-yearly>`，由 `scripts/refresh/registry.json` 决定每个 schedule 跑哪些管线。所有新管线（type=tsx）流程统一：scan → AI 摘要 → emit → auto-commit → push → `gh pr create` → 邮件附 PR 链接。
 
-| 域               | 命令入口                                                                        | 频率       | 模式                                                       |
-| ---------------- | ------------------------------------------------------------------------------- | ---------- | ---------------------------------------------------------- |
-| Hansard 国会辩论 | `python3 scripts/auto_update.py --only=hansard`                                 | 周         | scan-email                                                 |
+| 域               | 命令入口                                                                                                                 | 频率       | 模式                                                       |
+| ---------------- | ------------------------------------------------------------------------------------------------------------------------ | ---------- | ---------------------------------------------------------- |
+| Hansard 国会辩论 | `python3 scripts/auto_update.py --only=hansard`                                                                          | 周         | scan-email                                                 |
 | YouTube 视频     | scan: `python3 scripts/auto_update.py --only=videos`<br/>emit: `npx tsx scripts/refresh/videos/emit.ts --ids=<videoIds>` | 周         | scan-email + 手动 emit auto-PR                             |
-| MDDI 演讲        | `python3 scripts/auto_update.py --only=voices`                                  | 周         | scan-email                                                 |
-| Voices 三无人物  | `npx tsx scripts/voices/prospect-stubs.mjs {list,queue,apply,sync-from-people}` | 季（手动） | 半自动 review queue                                        |
-| **GitHub stars** | `npx tsx scripts/refresh/github-stars.ts [--bump-version]`                      | 月         | **auto-PR**                                                |
-| **Policies**     | `npx tsx scripts/refresh/policies/run.ts --limit=5`                             | 月         | **auto-PR**                                                |
-| **Ecosystem**    | `npx tsx scripts/refresh/ecosystem/run.ts --limit=5`                            | 月         | **auto-PR**（条目带 `_pendingReview: true`，listing 隐藏） |
-| **Levers**       | `npx tsx scripts/refresh/levers/run.ts --limit=3`                               | 季         | **auto-PR**（入 lever 1 "Auto-discovered" 子组待移位）     |
-| **Startups**     | `npx tsx scripts/refresh/startups/run.ts --limit=3`                             | 季         | **auto-PR**（入 `autoDiscovered[]`）                       |
-| **Legal-AI**     | `npx tsx scripts/refresh/legal-ai/run.ts --limit=3`                             | 半年       | **auto-PR**（入 "Auto-discovered" section 待移位）         |
-| **Talent**       | `npx tsx scripts/refresh/talent/run.ts --limit=3`                               | 半年       | **auto-PR**（入 `autoDiscovered[]`）                       |
-| **Tracker**      | `npx tsx scripts/refresh/tracker/run.ts --limit=3`                              | 半年       | **auto-PR**（入 `autoDiscovered[]`）                       |
-| **Benchmarking** | `npx tsx scripts/refresh/benchmarking/run.ts --limit=3`                         | 半年       | **auto-PR**（仅追踪新报告，数字仍需手工提取）              |
+| MDDI 演讲        | `python3 scripts/auto_update.py --only=voices`                                                                           | 周         | scan-email                                                 |
+| Voices 三无人物  | `npx tsx scripts/voices/prospect-stubs.mjs {list,queue,apply,sync-from-people}`                                          | 季（手动） | 半自动 review queue                                        |
+| **GitHub stars** | `npx tsx scripts/refresh/github-stars.ts [--bump-version]`                                                               | 月         | **auto-PR**                                                |
+| **Policies**     | `npx tsx scripts/refresh/policies/run.ts --limit=5`                                                                      | 月         | **auto-PR**                                                |
+| **Ecosystem**    | `npx tsx scripts/refresh/ecosystem/run.ts --limit=5`                                                                     | 月         | **auto-PR**（条目带 `_pendingReview: true`，listing 隐藏） |
+| **Levers**       | `npx tsx scripts/refresh/levers/run.ts --limit=3`                                                                        | 季         | **auto-PR**（入 lever 1 "Auto-discovered" 子组待移位）     |
+| **Startups**     | `npx tsx scripts/refresh/startups/run.ts --limit=3`                                                                      | 季         | **auto-PR**（入 `autoDiscovered[]`）                       |
+| **Legal-AI**     | `npx tsx scripts/refresh/legal-ai/run.ts --limit=3`                                                                      | 半年       | **auto-PR**（入 "Auto-discovered" section 待移位）         |
+| **Talent**       | `npx tsx scripts/refresh/talent/run.ts --limit=3`                                                                        | 半年       | **auto-PR**（入 `autoDiscovered[]`）                       |
+| **Tracker**      | `npx tsx scripts/refresh/tracker/run.ts --limit=3`                                                                       | 半年       | **auto-PR**（入 `autoDiscovered[]`）                       |
+| **Benchmarking** | `npx tsx scripts/refresh/benchmarking/run.ts --limit=3`                                                                  | 半年       | **auto-PR**（仅追踪新报告，数字仍需手工提取）              |
 
 详见 [docs/refresh-playbook.md](docs/refresh-playbook.md) per-page 命令清单。
 
