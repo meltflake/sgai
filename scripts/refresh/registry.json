@@ -1,0 +1,85 @@
+{
+  "comment": "Pipeline registry consumed by scripts/auto_update.py. Each entry describes one refresh pipeline: how to invoke it, on what schedule, and what to do with its output. Schedules are evaluated by the cron entry that runs auto_update.py with --schedule=<level>. type=python entries are imported in-process; type=tsx entries are subprocessed via npx tsx.",
+  "schedules": {
+    "weekly": "Every Monday 8:00 (cron: 0 8 * * 1)",
+    "monthly": "1st of every month 8:00 (cron: 0 8 1 * *)",
+    "quarterly": "1st of Jan/Apr/Jul/Oct 8:00 (cron: 0 8 1 1,4,7,10 *)",
+    "half-yearly": "1st of Jan/Jul 8:00 (cron: 0 8 1 1,7 *)"
+  },
+  "pipelines": [
+    {
+      "id": "hansard",
+      "type": "python-builtin",
+      "schedule": "weekly",
+      "label": "Singapore Parliament Hansard",
+      "description": "SPRS API scan for AI-related debates. Existing pipeline.",
+      "mode": "scan-only-email"
+    },
+    {
+      "id": "videos",
+      "type": "python-builtin",
+      "schedule": "weekly",
+      "label": "YouTube AI videos",
+      "description": "Channel RSS scan, manual review queue. Existing pipeline.",
+      "mode": "scan-only-email"
+    },
+    {
+      "id": "voices",
+      "type": "python-builtin",
+      "schedule": "weekly",
+      "label": "MDDI speeches",
+      "description": "MDDI sitemap scan. Existing pipeline.",
+      "mode": "scan-only-email"
+    },
+    {
+      "id": "github-stars",
+      "type": "tsx",
+      "schedule": "monthly",
+      "label": "GitHub stars refresh",
+      "description": "Pull live stargazer counts and bump dataDate.",
+      "script": "scripts/refresh/github-stars.ts",
+      "args": ["--bump-version"],
+      "mode": "auto-pr"
+    },
+    {
+      "id": "policies",
+      "type": "tsx",
+      "schedule": "monthly",
+      "label": "Government AI policies",
+      "description": "Scan smartnation/MAS/IMDA/PDPC/AIVerify for new AI advisories.",
+      "script": "scripts/refresh/policies/run.ts",
+      "args": ["--limit=5"],
+      "mode": "auto-pr"
+    },
+    {
+      "id": "ecosystem",
+      "type": "tsx",
+      "schedule": "monthly",
+      "label": "Ecosystem entities",
+      "description": "Scan e27/tech.gov.sg for new SG AI startups & government products. Auto-added entries marked _pendingReview.",
+      "script": "scripts/refresh/ecosystem/run.ts",
+      "args": ["--limit=5"],
+      "mode": "auto-pr"
+    },
+    {
+      "id": "levers",
+      "type": "tsx",
+      "schedule": "quarterly",
+      "label": "AI levers",
+      "description": "Scan IMDA/tech.gov.sg/EDB for new programmes / funds / data centre deals.",
+      "script": "scripts/refresh/levers/run.ts",
+      "args": ["--limit=3"],
+      "mode": "auto-pr"
+    },
+    {
+      "id": "legal-ai",
+      "type": "tsx",
+      "schedule": "half-yearly",
+      "label": "Legal framework",
+      "description": "Monitor sso.agc.gov.sg / MAS / PDPC for new AI-related legislation & regulatory guidance.",
+      "script": "scripts/refresh/legal-ai/run.ts",
+      "args": ["--limit=3"],
+      "mode": "auto-pr"
+    }
+  ]
+}

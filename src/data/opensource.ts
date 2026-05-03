@@ -5,7 +5,7 @@ export const seaLionStats = {
   topModel: 'Gemma-SEA-LION-v4-27B-IT',
   topModelDownloads: 5034,
   dataSource: 'HuggingFace API',
-  dataDate: '2026-02-17',
+  dataDate: '2026-05-03',
   huggingfaceUrl: 'https://huggingface.co/aisingapore',
 };
 
@@ -119,7 +119,7 @@ export const openSourceProjects: OfficialOpenSourceProject[] = [
     name: 'TagUI',
     description: '免费 RPA 网页/桌面自动化工具',
     descriptionEn: 'Free RPA tool for web and desktop automation',
-    stars: 6200,
+    stars: 6282,
     language: 'JavaScript',
     url: 'https://github.com/aisingapore/TagUI',
   },
@@ -127,7 +127,7 @@ export const openSourceProjects: OfficialOpenSourceProject[] = [
     name: 'SEA-LION',
     description: '东南亚多语言多模态大模型',
     descriptionEn: 'Southeast Asian multilingual multimodal large model',
-    stars: 387,
+    stars: 400,
     language: 'Python',
     url: 'https://github.com/aisingapore/sealion',
   },
@@ -135,7 +135,7 @@ export const openSourceProjects: OfficialOpenSourceProject[] = [
     name: 'PeekingDuck',
     description: '模块化计算机视觉推理框架',
     descriptionEn: 'Modular computer vision inference framework',
-    stars: 175,
+    stars: 177,
     language: 'Python',
     url: 'https://github.com/aisingapore/PeekingDuck',
   },
@@ -143,7 +143,7 @@ export const openSourceProjects: OfficialOpenSourceProject[] = [
     name: 'SGNLP',
     description: '新加坡 NLP 研究社区模型',
     descriptionEn: 'Models from the Singapore NLP research community',
-    stars: 36,
+    stars: 37,
     language: 'Python',
     url: 'https://github.com/aisingapore/sgnlp',
   },
@@ -210,7 +210,7 @@ export const papers: Paper[] = [
 ];
 
 export const dataDisclaimer =
-  '本页数据来源：HuggingFace API、GitHub API，由 新加坡 AI 观察独立采集，非官方数据。最后更新：2026-02-17。';
+  '本页数据来源：HuggingFace API、GitHub API，由 新加坡 AI 观察独立采集，非官方数据。最后更新：2026-05-03。';
 
 export const dataDisclaimerEn =
-  'Data on this page is sourced from the HuggingFace API and GitHub API, independently collected by Singapore AI Observatory and is not official. Last updated: 2026-02-17.';
+  'Data on this page is sourced from the HuggingFace API and GitHub API, independently collected by Singapore AI Observatory and is not official. Last updated: 2026-05-03.';

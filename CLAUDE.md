@@ -299,7 +299,74 @@ npx tsx scripts/voices/prospect-stubs.mjs sync-from-people [<id>...] [--dry-run]
 - 每个 prospect JSON 都重复存 ~20 行 `whitelistedSources`，纯粹冗余。可以让脚本只在文件顶部留一个引用，或者干脆删掉这字段（白名单已经体现在 `searchQueries` 的 `site:` 限定里）。
 - 没有 `validate` 命令检查 `*En` 兄弟字段是否齐全——目前漏写英文版本会导致 EN 页面回退到中文。
 
-### 部署
+## 数据刷新基建（Refresh Pipelines）
+
+**新加 / 更新某个页面数据前，先读 [`docs/refresh-playbook.md`](docs/refresh-playbook.md)**——里面是每个页面（25+）的数据来源、当前 pipeline 状态、更新命令的完整索引。
+
+设计原则统一：每条管线都是 **抓取 → 翻译 → 生成 TS** 三段式，state 持久化在 `scripts/data/last_scan_state.json`，由 `scripts/auto_update.py`（cron 入口）调度。i18n 双字段（`*En` 兄弟字段）强制，`npm run build && node scripts/i18n-check.mjs` 是 PR 准入门槛。
+
+### 已建管线（registry-driven）
+
+调度入口：`python3 scripts/auto_update.py --schedule=<weekly|monthly|quarterly|half-yearly>`，由 `scripts/refresh/registry.json` 决定每个 schedule 跑哪些管线。所有新管线（type=tsx）流程统一：scan → AI 摘要 → emit → auto-commit → push → `gh pr create` → 邮件附 PR 链接。
+
+| 域               | 命令入口                                                                        | 频率       | 模式                                                       |
+| ---------------- | ------------------------------------------------------------------------------- | ---------- | ---------------------------------------------------------- |
+| Hansard 国会辩论 | `python3 scripts/auto_update.py --only=hansard`                                 | 周         | scan-email                                                 |
+| YouTube 视频     | `python3 scripts/auto_update.py --only=videos`                                  | 周         | scan-email                                                 |
+| MDDI 演讲        | `python3 scripts/auto_update.py --only=voices`                                  | 周         | scan-email                                                 |
+| Voices 三无人物  | `npx tsx scripts/voices/prospect-stubs.mjs {list,queue,apply,sync-from-people}` | 季（手动） | 半自动 review queue                                        |
+| **GitHub stars** | `npx tsx scripts/refresh/github-stars.ts [--bump-version]`                      | 月         | **auto-PR**                                                |
+| **Policies**     | `npx tsx scripts/refresh/policies/run.ts --limit=5`                             | 月         | **auto-PR**                                                |
+| **Ecosystem**    | `npx tsx scripts/refresh/ecosystem/run.ts --limit=5`                            | 月         | **auto-PR**（条目带 `_pendingReview: true`，listing 隐藏） |
+| **Levers**       | `npx tsx scripts/refresh/levers/run.ts --limit=3`                               | 季         | **auto-PR**（入 lever 1 "Auto-discovered" 子组待移位）     |
+| **Legal-AI**     | `npx tsx scripts/refresh/legal-ai/run.ts --limit=3`                             | 半年       | **auto-PR**（入 "Auto-discovered" section 待移位）         |
+
+详见 [docs/refresh-playbook.md](docs/refresh-playbook.md) per-page 命令清单。
+
+### 共享原语 `scripts/lib/`（全部已建，57 单元测试覆盖）
+
+`npm run test:lib` 跑测试。新管线**强制**用这些原语，不要自己重新写 OpenAI/git/fetch 调用。
+
+- `lib/translate.ts` — OpenAI zh↔en 翻译，sha256 缓存
+- `lib/state.ts` — last_scan_state.json R/W（兼容 legacy schema）
+- `lib/i18n-pair.ts` — `*En` 配对校验，CLI: `npm run i18n-pair <files>`
+- `lib/auto-commit.ts` — `autoCommit() / pushAndOpenPR() / buildPRBody()`，安全 git + `gh pr create`
+- `lib/github-stars.ts` — GitHub repo 元数据
+- `lib/sprs-api.ts` — Hansard SPRS connector
+- `lib/gov-fetch.ts` — 通用 .gov.sg HTML + sitemap 抓取
+- `lib/ai-summarize.ts` — 双语 AI 摘要 + 闭集分类 + confidence
+
+### auto-PR 流程（Luca 视角）
+
+1. cron 跑到 → 管线 scan + AI 摘要 → emit 写 .ts → 自动 commit 到 `data-refresh/<domain>/<date>` 分支
+2. 自动 push + `gh pr create`，PR 描述含 diff stat / 新条目清单 / confidence 分布 / 失败源
+3. 收到邮件：`[sgai] data-refresh: <domain> +N entries — review PR #123`，正文带 PR 链接
+4. 在 GitHub UI 上 Approve & Merge → Cloudflare 自动重新构建上线
+5. \_pendingReview 条目：合并前在 PR 改 `_pendingReview: true → false`（或删字段），listing 立刻显示
+
+### gh CLI / API key 准备
+
+```bash
+# 一次性配置：
+gh auth login                                    # GitHub PR 创建权限
+echo 'export OPENAI_API_KEY=sk-xxx' >> ~/.zshrc # AI 摘要
+echo 'export GITHUB_TOKEN=ghp_xxx' >> ~/.zshrc  # GitHub stars 5000 req/h（可选）
+cp scripts/auto_update_config.example.py scripts/auto_update_config.py
+# 编辑 SMTP_USER / SMTP_PASSWORD / EMAIL_TO（Gmail App Password）
+```
+
+### 添加新管线的 6 步流程
+
+1. `mkdir -p scripts/refresh/<domain>/data/{raw,summaries}`
+2. 复制 `scripts/refresh/policies/` 全套（sources.ts + scan/enrich/emit/run.ts）改字段
+3. 在 `scripts/refresh/registry.json` 加一行（type/schedule/script/args/mode）
+4. dry-run：`npx tsx scripts/refresh/<domain>/run.ts --dry-run --limit=2`
+5. e2e：去掉 `--dry-run` 跑一次，验证 PR 自动开
+6. PR 前必跑：`npm run check && npm run build && node scripts/i18n-check.mjs`
+
+CLI 必须支持：`--dry-run / --limit=N / --no-commit / --no-push`
+
+## 部署
 
 独立部署在 Cloudflare Pages，绑定 `sgai.md`。push main 分支后 Cloudflare 自动构建（`npm run build` → `dist/`）。
 

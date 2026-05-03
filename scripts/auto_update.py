@@ -1,17 +1,21 @@
 #!/usr/bin/env python3
 """
-AISG 数据自动更新 — 统一包装脚本。
+sgai 数据自动更新 — 统一包装脚本（registry-driven）。
 
-定期运行 YouTube 视频、MDDI 演讲、国会辩论三个发现管线，
-汇总结果并发送 Gmail 邮件通知。
+读取 scripts/refresh/registry.json，按 --schedule 过滤要跑的管线。
+每条管线分两类：
+  - python-builtin: hansard / videos / voices（旧三条，保留原 in-process 调用）
+  - tsx: 新管线（policies / ecosystem / github-stars / levers / legal-ai），
+    通过 `npx tsx <script>` 子进程执行；脚本在末尾 print 一行 JSON 报告，
+    被本脚本捕获并汇入邮件。
 
 用法:
-  python auto_update.py                  # 运行所有管线并发邮件
-  python auto_update.py --dry-run        # 运行但不发邮件
-  python auto_update.py --only videos    # 只运行视频管线
-  python auto_update.py --only voices    # 只运行演讲管线
-  python auto_update.py --only hansard   # 只运行辩论管线
-  python auto_update.py --verbose        # 详细输出
+  python auto_update.py                              # 运行所有管线
+  python auto_update.py --schedule=weekly            # 仅 schedule=weekly 的
+  python auto_update.py --schedule=monthly
+  python auto_update.py --only videos,policies       # 多个管线（逗号分隔）
+  python auto_update.py --dry-run                    # 不发邮件、不写盘
+  python auto_update.py --verbose                    # 详细输出
 """
 
 import argparse
@@ -34,7 +38,15 @@ PROJECT_ROOT = SCRIPT_DIR.parent
 DATA_DIR = SCRIPT_DIR / "data"
 LOG_DIR = SCRIPT_DIR / "logs"
 STATE_FILE = DATA_DIR / "last_scan_state.json"
+REGISTRY_FILE = SCRIPT_DIR / "refresh" / "registry.json"
 LOG_RETENTION_DAYS = 30
+
+
+def load_registry() -> dict:
+    """读取 scripts/refresh/registry.json。"""
+    if not REGISTRY_FILE.exists():
+        return {"pipelines": []}
+    return json.loads(REGISTRY_FILE.read_text(encoding="utf-8"))
 
 # 确保 scripts/ 在 sys.path 中，以便 import 子目录模块
 sys.path.insert(0, str(SCRIPT_DIR))
@@ -210,66 +222,92 @@ def run_hansard(state: dict, logger) -> dict:
 def compose_email(results: dict, errors: list[str], elapsed: float) -> tuple[str, str]:
     """生成邮件标题和 HTML 正文"""
     date_str = datetime.now().strftime("%Y-%m-%d")
+
+    # Subject: include any opened PRs first (the actionable bit), then counts.
+    pr_results = [(pid, r) for pid, r in results.items() if r.get("pr_url")]
     counts = []
-    if "videos" in results:
-        counts.append(f"{results['videos']['count']} 新视频")
-    if "voices" in results:
-        counts.append(f"{results['voices']['count']} 新演讲")
-    if "hansard" in results:
-        counts.append(f"{results['hansard']['count']} 新辩论")
+    for pid, r in results.items():
+        c = r.get("count", 0) or 0
+        if c > 0:
+            counts.append(f"{pid} +{c}")
+    summary = ", ".join(counts) if counts else "no new data"
+    if pr_results:
+        subject = f"[sgai] data-refresh {date_str}: {summary} — review {len(pr_results)} PR(s)"
+    else:
+        subject = f"[sgai] data-refresh {date_str}: {summary}"
 
-    subject = f"[AISG 数据更新] {date_str}: {', '.join(counts)}"
+    lines = [f"<h2>sgai data-refresh — {date_str}</h2>"]
 
-    lines = [f"<h2>AISG 数据更新报告 — {date_str}</h2>"]
+    # PR-aware section first (actionable).
+    if pr_results:
+        lines.append("<h3>📬 PRs awaiting review</h3><ul>")
+        for pid, r in pr_results:
+            url = r.get("pr_url")
+            branch = r.get("branch", "?")
+            lines.append(
+                f"  <li><strong>{pid}</strong> +{r.get('count', 0)} · branch <code>{branch}</code> · "
+                f"<a href='{url}'>{url}</a></li>"
+            )
+        lines.append("</ul>")
 
-    # YouTube
+    # Per-pipeline blocks.
     if "videos" in results:
         r = results["videos"]
-        lines.append(f"<h3>YouTube 视频: {r['count']} 条新候选</h3>")
-        if r["items"]:
+        lines.append(f"<h3>YouTube 视频: {r.get('count', 0)} 条新候选</h3>")
+        if r.get("items"):
             lines.append("<ul>")
             for v in r["items"]:
-                lines.append(f"  <li>[{v['date']}] {v['channel']}: {v['title']}</li>")
+                lines.append(f"  <li>[{v.get('date','?')}] {v.get('channel','?')}: {v.get('title','?')}</li>")
             lines.append("</ul>")
             lines.append("<p>人工审核: <code>cd scripts && python videos/02_review_and_merge.py</code></p>")
-        else:
+        elif not r.get("error"):
             lines.append("<p>无新内容</p>")
 
-    # MDDI
     if "voices" in results:
         r = results["voices"]
-        lines.append(f"<h3>MDDI 演讲: {r['count']} 条新发现</h3>")
-        if r["items"]:
+        lines.append(f"<h3>MDDI 演讲: {r.get('count', 0)} 条新发现</h3>")
+        if r.get("items"):
             lines.append("<ul>")
             for s in r["items"]:
-                speaker = s["speaker"] or "?"
-                lines.append(f"  <li>[{s['date']}] {speaker}: {s['title']}</li>")
+                speaker = s.get("speaker") or "?"
+                lines.append(f"  <li>[{s.get('date','?')}] {speaker}: {s.get('title','?')}</li>")
             lines.append("</ul>")
-        else:
+        elif not r.get("error"):
             lines.append("<p>无新内容</p>")
 
-    # Hansard
     if "hansard" in results:
         r = results["hansard"]
-        lines.append(f"<h3>国会辩论: {r['count']} 条 AI 相关 (共扫描 {r['total_scanned']} 条)</h3>")
-        if r["items"]:
+        total = r.get("total_scanned", 0)
+        lines.append(f"<h3>国会辩论: {r.get('count', 0)} 条 AI 相关 (共扫描 {total} 条)</h3>")
+        if r.get("items"):
             lines.append("<ul>")
             for d in r["items"]:
-                lines.append(f"  <li>[{d['date']}] {d['id']}: {d['title']}</li>")
+                lines.append(f"  <li>[{d.get('date','?')}] {d.get('id','?')}: {d.get('title','?')}</li>")
             lines.append("</ul>")
-        else:
-            lines.append(f"<p>无新内容 (扫描范围: {r['scan_range']})</p>")
+        elif not r.get("error"):
+            lines.append(f"<p>无新内容 (扫描范围: {r.get('scan_range','N/A')})</p>")
 
-    # 错误
+    # New tsx pipelines block (no items detail; PR link is the action).
+    for pid, r in results.items():
+        if pid in ("videos", "voices", "hansard"):
+            continue
+        c = r.get("count", 0) or 0
+        f = r.get("failures", 0) or 0
+        err = r.get("error")
+        if err:
+            lines.append(f"<h3>[{pid}] ⚠ failed</h3><p style='color:red'>{err}</p>")
+        elif r.get("pr_url"):
+            lines.append(f"<h3>[{pid}] {c} new entries · PR opened · {f} failures</h3>")
+        else:
+            lines.append(f"<h3>[{pid}] {c} new entries · {f} failures</h3>")
+
     if errors:
         lines.append("<h3>错误</h3><ul>")
         for e in errors:
             lines.append(f"  <li style='color:red'>{e}</li>")
         lines.append("</ul>")
 
-    # 运行信息
     lines.append(f"<hr><p>运行耗时: {elapsed:.0f}s | 错误: {len(errors)} 个</p>")
-
     return subject, "\n".join(lines)
 
 
@@ -324,10 +362,76 @@ def cleanup_old_logs(logger):
 
 
 # ── 主流程 ────────────────────────────────────────────────────────────────────
+def run_tsx_pipeline(pipeline: dict, logger) -> dict:
+    """运行一条 type=tsx 管线（subprocess npx tsx <script>）。
+
+    新管线在 stdout 末尾 print 一行 JSON 报告（{domain, added/changed, pr_url, ...}）。
+    本函数捕获最后一个有效 JSON 行，转成 results 字典。其他 stdout 直接转发到日志。
+    """
+    import subprocess
+
+    script = pipeline.get("script")
+    extra_args = pipeline.get("args", []) or []
+    if not script:
+        return {"count": 0, "items": [], "error": "registry entry missing script"}
+
+    cmd = ["npx", "tsx", script, *extra_args]
+    logger.info(f"  [{pipeline['id']}] $ {' '.join(cmd)}")
+    proc = subprocess.run(
+        cmd,
+        cwd=PROJECT_ROOT,
+        capture_output=True,
+        text=True,
+        encoding="utf-8",
+    )
+    if proc.stdout:
+        for line in proc.stdout.splitlines():
+            logger.info(f"    | {line}")
+    if proc.stderr:
+        for line in proc.stderr.splitlines():
+            logger.debug(f"    | err: {line}")
+    if proc.returncode != 0:
+        return {"count": 0, "items": [], "error": f"exit {proc.returncode}: {proc.stderr[:300]}"}
+
+    # Find last JSON line in stdout
+    last_json = None
+    for line in proc.stdout.splitlines():
+        s = line.strip()
+        if s.startswith("{") and s.endswith("}"):
+            try:
+                last_json = json.loads(s)
+            except json.JSONDecodeError:
+                continue
+    if not last_json:
+        return {"count": 0, "items": [], "error": "no JSON report from pipeline"}
+
+    count = last_json.get("added", last_json.get("changed", 0)) or 0
+    items = []
+    if last_json.get("pr_url"):
+        items.append({
+            "title": f"PR opened",
+            "url": last_json.get("pr_url"),
+            "branch": last_json.get("branch"),
+        })
+    return {
+        "count": count,
+        "items": items,
+        "pr_url": last_json.get("pr_url"),
+        "branch": last_json.get("branch"),
+        "failures": last_json.get("failures", 0),
+    }
+
+
 def main():
-    parser = argparse.ArgumentParser(description="AISG 数据自动更新")
+    parser = argparse.ArgumentParser(description="sgai 数据自动更新 (registry-driven)")
     parser.add_argument("--dry-run", action="store_true", help="运行但不发邮件")
-    parser.add_argument("--only", choices=["videos", "voices", "hansard"], help="只运行指定管线")
+    parser.add_argument("--only", help="只运行指定管线（逗号分隔；如 videos,policies）")
+    parser.add_argument(
+        "--schedule",
+        choices=["weekly", "monthly", "quarterly", "half-yearly", "all"],
+        default="all",
+        help="仅运行匹配此 schedule 的管线",
+    )
     parser.add_argument("--verbose", action="store_true", help="详细输出")
     args = parser.parse_args()
 
@@ -343,39 +447,49 @@ def main():
     results = {}
     errors = []
     start_time = time.time()
-    pipelines = [args.only] if args.only else ["videos", "voices", "hansard"]
+
+    # ── 从 registry 决定要跑哪些管线 ──
+    registry = load_registry()
+    only_set = None
+    if args.only:
+        only_set = {s.strip() for s in args.only.split(",") if s.strip()}
+
+    selected = []
+    for entry in registry.get("pipelines", []):
+        if only_set is not None and entry["id"] not in only_set:
+            continue
+        if args.schedule != "all" and entry.get("schedule") != args.schedule:
+            continue
+        selected.append(entry)
+
+    logger.info(f"已选 {len(selected)} 条管线: {[e['id'] for e in selected]}")
 
     # ── 运行各管线 ──
-    if "videos" in pipelines:
+    for entry in selected:
+        pid = entry["id"]
+        ptype = entry.get("type")
         try:
-            results["videos"] = run_videos(logger)
+            if ptype == "python-builtin":
+                if pid == "videos":
+                    results["videos"] = run_videos(logger)
+                elif pid == "voices":
+                    results["voices"] = run_voices(logger)
+                elif pid == "hansard":
+                    hansard_result = run_hansard(state, logger)
+                    results["hansard"] = hansard_result
+                    state["hansard"]["max_oral_id"] = hansard_result["new_max_oral"]
+                    state["hansard"]["max_written_id"] = hansard_result["new_max_written"]
+                else:
+                    raise RuntimeError(f"unknown python-builtin pipeline id: {pid}")
+            elif ptype == "tsx":
+                results[pid] = run_tsx_pipeline(entry, logger)
+            else:
+                raise RuntimeError(f"unknown pipeline type: {ptype}")
         except Exception as e:
-            logger.error(f"YouTube 管线失败: {e}")
+            logger.error(f"管线 [{pid}] 失败: {e}")
             logger.debug(traceback.format_exc())
-            errors.append(f"YouTube: {e}")
-            results["videos"] = {"count": 0, "items": [], "error": str(e)}
-
-    if "voices" in pipelines:
-        try:
-            results["voices"] = run_voices(logger)
-        except Exception as e:
-            logger.error(f"MDDI 管线失败: {e}")
-            logger.debug(traceback.format_exc())
-            errors.append(f"MDDI: {e}")
-            results["voices"] = {"count": 0, "items": [], "error": str(e)}
-
-    if "hansard" in pipelines:
-        try:
-            hansard_result = run_hansard(state, logger)
-            results["hansard"] = hansard_result
-            # 更新状态中的最高 ID
-            state["hansard"]["max_oral_id"] = hansard_result["new_max_oral"]
-            state["hansard"]["max_written_id"] = hansard_result["new_max_written"]
-        except Exception as e:
-            logger.error(f"Hansard 管线失败: {e}")
-            logger.debug(traceback.format_exc())
-            errors.append(f"Hansard: {e}")
-            results["hansard"] = {"count": 0, "total_scanned": 0, "scan_range": "N/A", "items": []}
+            errors.append(f"{pid}: {e}")
+            results[pid] = {"count": 0, "items": [], "error": str(e)}
 
     elapsed = time.time() - start_time
 

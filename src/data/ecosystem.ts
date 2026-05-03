@@ -93,6 +93,14 @@ export interface EcosystemEntity {
   sources?: EcosystemSource[];
   furtherReading?: EcosystemFurtherReading[];
   updated?: string;
+
+  /** Auto-discovery: marks entries added by the refresh pipeline that need
+   * human review before going live. Listing pages should hide entries with
+   * `_pendingReview: true`; detail pages render with a "Pending review" badge. */
+  _pendingReview?: boolean;
+  /** Free-form note from the refresh pipeline about why this entry was added
+   * (e.g. confidence reason, source URL trail). Surfaced in the PR body. */
+  discoveryNote?: string;
 }
 
 export interface EcosystemCategory {
