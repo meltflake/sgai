@@ -1,9 +1,9 @@
 // scripts/lib/__tests__/translate.test.ts
 //
-// translate.ts hits OpenAI on cache miss, so unit tests focus on the
-// pure logic: empty input, cache hit short-circuit, and chunkParagraphs
-// boundary behaviour. The OpenAI call path is exercised by integration
-// tests on real pipelines.
+// translate.ts hits the claude CLI on cache miss, so unit tests focus on
+// the pure logic: empty input, cache hit short-circuit, and chunk
+// boundaries. The CLI call path is exercised by integration tests on
+// real pipelines.
 
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
@@ -51,14 +51,16 @@ test('translateBatch: full cache hit avoids network', async () => {
       );
     }
 
-    // No OPENAI_API_KEY needed because cache covers everything.
-    const prevKey = process.env.OPENAI_API_KEY;
-    delete process.env.OPENAI_API_KEY;
+    // Cache covers everything, so no claude CLI call should fire.
+    // Point claude binary at a non-existent path so any accidental call would fail loudly.
+    const prevBin = process.env.SGAI_CLAUDE_BIN;
+    process.env.SGAI_CLAUDE_BIN = '/nonexistent/claude-should-not-run';
     try {
       const out = await translateBatch(inputs, { direction, cacheDir: dir });
       assert.deepEqual(out, ['你好。', '再见。']);
     } finally {
-      if (prevKey) process.env.OPENAI_API_KEY = prevKey;
+      if (prevBin) process.env.SGAI_CLAUDE_BIN = prevBin;
+      else delete process.env.SGAI_CLAUDE_BIN;
     }
   });
 });

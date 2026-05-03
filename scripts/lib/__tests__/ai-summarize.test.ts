@@ -1,7 +1,7 @@
 // scripts/lib/__tests__/ai-summarize.test.ts
 //
-// summarizePage hits OpenAI. Tests cover input validation only; the
-// happy-path goes through cache (pre-seeded JSON) to avoid the network.
+// summarizePage hits the claude CLI. Tests cover input validation only;
+// the happy-path goes through cache (pre-seeded JSON) to avoid the CLI.
 
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
@@ -73,15 +73,16 @@ test('summarizePage: returns cached result without network when cache present', 
     };
     writeFileSync(join(dir, `${hash}.json`), JSON.stringify(cached));
 
-    const prevKey = process.env.OPENAI_API_KEY;
-    delete process.env.OPENAI_API_KEY;
+    const prevBin = process.env.SGAI_CLAUDE_BIN;
+    process.env.SGAI_CLAUDE_BIN = '/nonexistent/claude-should-not-run';
     try {
       const out = await summarizePage(input, { categories: ['治理框架'], cacheDir: dir });
       assert.equal(out.title, 'AI 顾问');
       assert.equal(out.category, '治理框架');
       assert.equal(out.confidence, 'high');
     } finally {
-      if (prevKey) process.env.OPENAI_API_KEY = prevKey;
+      if (prevBin) process.env.SGAI_CLAUDE_BIN = prevBin;
+      else delete process.env.SGAI_CLAUDE_BIN;
     }
   });
 });

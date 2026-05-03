@@ -55,7 +55,7 @@ cd scripts && python3 auto_update.py --only hansard
 # 抓单条 transcript（已知 debateId）
 npx tsx scripts/hansard/fetch-debate-transcripts.ts --ids=<id>
 
-# 翻译 transcript（需 OPENAI_API_KEY）
+# 翻译 transcript（注：旧 hansard 脚本仍调 OpenAI；新管线均改用本地 claude CLI）
 npx tsx scripts/hansard/translate-debate-transcripts.ts --ids=<id>
 
 # 摘要 / 政策模式分析（写到 debates.ts）
@@ -265,8 +265,7 @@ const filled = await translateRecords(records, ['title', 'description'], {
 });
 ```
 
-`OPENAI_API_KEY` 需在 cron 环境变量里（或在 auto_update_config.py 里 export）。
-缓存 sha256(direction + 原文)，重跑零成本。
+AI 摘要 + 翻译走本地 `claude` CLI（无需 API key）。可选环境变量：`SGAI_CLAUDE_MODEL=haiku|sonnet|opus`（默认 haiku，便宜）、`SGAI_TRANSLATION_CONCURRENCY=2`。缓存 sha256(direction + 原文)，重跑零成本。
 
 ---
 
@@ -292,4 +291,4 @@ const filled = await translateRecords(records, ['title', 'description'], {
 0 8 1 1,7 *       python3 scripts/auto_update.py --schedule=half-yearly
 ```
 
-`gh` CLI 必须 `gh auth status` 已认证（cron 沿用 macOS keychain）；`OPENAI_API_KEY` 需通过 `auto_update_config.py` 或 shell rc 暴露给 cron。
+`gh` CLI 必须 `gh auth status` 已认证；`claude` CLI 必须 `claude --version` 能跑且已登录（cron 沿用 macOS keychain）。SMTP 凭据在 `auto_update_config.py`。详见 [scripts/SETUP.md](../scripts/SETUP.md)。

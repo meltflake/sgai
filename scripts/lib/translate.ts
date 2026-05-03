@@ -2,11 +2,14 @@
 // ────────────────────────────────────────────────────────────────────────
 // Shared translation primitive for sgai data pipelines.
 //
-// Translates an array of paragraphs/strings between zh ↔ en using OpenAI,
-// with batching, concurrency, retries, and on-disk caching by content hash.
+// Translates an array of paragraphs/strings between zh ↔ en via the local
+// `claude` CLI (Claude Code), with batching, concurrency, retries, and
+// on-disk caching by content hash.
 //
-// Designed to be called from any refresh pipeline. Extracted and
-// generalised from scripts/hansard/translate-debate-transcripts.ts.
+// Designed to be called from any refresh pipeline. Originally extracted
+// from scripts/hansard/translate-debate-transcripts.ts, then refactored
+// from OpenAI HTTP API to Claude CLI so pipelines run with Luca's
+// existing Claude Code login (no API key needed).
 //
 // USAGE (programmatic):
 //
@@ -14,18 +17,9 @@
 //
 //   const zh = await translateBatch(['Paragraph one.', 'Paragraph two.'], {
 //     direction: 'en→zh',
-//     model: 'gpt-4.1-mini',
 //     concurrency: 3,
 //     cacheDir: 'scripts/policies/data/translations',
 //   });
-//
-// USAGE (cli, future):
-//
-//   npx tsx scripts/lib/translate.ts \
-//     --input <json-file-of-strings> \
-//     --output <out-file> \
-//     --direction en→zh \
-//     [--model gpt-4.1-mini] [--concurrency 3] [--batch-chars 18000]
 //
 // CACHE:
 //   Each translation is cached by sha256(direction + sourceText) so repeated
@@ -35,6 +29,8 @@
 import { createHash } from 'node:crypto';
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
+
+import { callLlmJson } from './llm.ts';
 
 export type TranslateDirection = 'en→zh' | 'zh→en';
 
@@ -59,9 +55,9 @@ interface CachedTranslation {
   translatedAt: string;
 }
 
-const DEFAULT_MODEL = process.env.OPENAI_TRANSLATION_MODEL || process.env.OPENAI_MODEL || 'gpt-4.1-mini';
+const DEFAULT_MODEL = process.env.SGAI_TRANSLATION_MODEL || 'haiku';
 const DEFAULT_BATCH_CHARS = Number(process.env.SGAI_TRANSLATION_BATCH_CHARS || 18000);
-const DEFAULT_CONCURRENCY = Number(process.env.SGAI_TRANSLATION_CONCURRENCY || 3);
+const DEFAULT_CONCURRENCY = Number(process.env.SGAI_TRANSLATION_CONCURRENCY || 2);
 
 const SYSTEM_PROMPTS: Record<TranslateDirection, string> = {
   'en→zh':
@@ -115,41 +111,20 @@ function sleep(ms: number): Promise<void> {
   });
 }
 
-async function callOpenAI(
+async function callClaudeTranslate(
   paragraphs: string[],
   options: { model: string; systemPrompt: string; signal?: AbortSignal }
 ): Promise<string[]> {
-  const apiKey = process.env.OPENAI_API_KEY;
-  if (!apiKey) throw new Error('OPENAI_API_KEY env var is required.');
-
-  const payload = {
-    model: options.model,
-    temperature: 0.1,
-    response_format: { type: 'json_object' },
-    messages: [
-      { role: 'system', content: options.systemPrompt },
-      { role: 'user', content: JSON.stringify({ paragraphs }) },
-    ],
-  };
-
   let lastError = '';
 
   for (let attempt = 1; attempt <= 4; attempt += 1) {
-    const response = await fetch('https://api.openai.com/v1/chat/completions', {
-      method: 'POST',
-      headers: {
-        Authorization: `Bearer ${apiKey}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(payload),
-      signal: options.signal,
-    });
-
-    if (response.ok) {
-      const data = (await response.json()) as { choices?: Array<{ message?: { content?: string } }> };
-      const content = data.choices?.[0]?.message?.content;
-      if (!content) throw new Error('OpenAI translation response was empty.');
-      const parsed = JSON.parse(content) as { paragraphs?: unknown };
+    try {
+      const userPrompt = JSON.stringify({ paragraphs });
+      const parsed = await callLlmJson<{ paragraphs?: unknown }>(userPrompt, {
+        systemPrompt: options.systemPrompt,
+        model: options.model,
+        signal: options.signal,
+      });
       if (!Array.isArray(parsed.paragraphs) || !parsed.paragraphs.every((item) => typeof item === 'string')) {
         throw new Error('Translation response paragraphs malformed.');
       }
@@ -158,18 +133,15 @@ async function callOpenAI(
         throw new Error(`Translation count mismatch: expected ${paragraphs.length}, got ${translated.length}.`);
       }
       return translated;
-    }
-
-    const text = await response.text();
-    lastError = `OpenAI translation failed: ${response.status} ${text}`;
-    if (response.status === 429 || response.status >= 500) {
+    } catch (error) {
+      lastError = error instanceof Error ? error.message : String(error);
+      // Retry on transient errors only (timeout / spawn). Hard parse errors fall through.
+      const transient = /timeout|spawn|aborted|exited|ECONNRESET/i.test(lastError);
+      if (!transient || attempt === 4) throw new Error(lastError);
       await sleep(attempt * attempt * 1500);
-      continue;
     }
-    throw new Error(lastError);
   }
-
-  throw new Error(lastError || 'OpenAI translation failed without response.');
+  throw new Error(lastError || 'Claude translation failed without response.');
 }
 
 async function callBatchWithFallback(
@@ -177,13 +149,13 @@ async function callBatchWithFallback(
   options: { model: string; systemPrompt: string; signal?: AbortSignal }
 ): Promise<string[]> {
   try {
-    return await callOpenAI(paragraphs, options);
+    return await callClaudeTranslate(paragraphs, options);
   } catch (error) {
     if (paragraphs.length === 1) throw error;
     process.stderr.write(`  batch fallback (${paragraphs.length} → 1×${paragraphs.length}): ${(error as Error).message}\n`);
     const out: string[] = [];
     for (const p of paragraphs) {
-      out.push(...(await callOpenAI([p], options)));
+      out.push(...(await callClaudeTranslate([p], options)));
     }
     return out;
   }

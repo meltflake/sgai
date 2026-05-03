@@ -4,8 +4,9 @@
 //
 // Takes a `GovPage`-like input (title + content text + sourceUrl) and
 // returns a structured bilingual summary suitable for inserting into
-// .ts data files. Enforces:
+// .ts data files. Calls the local `claude` CLI (no API key needed).
 //
+// Enforces:
 //   - sourceUrl is mandatory (anti-hallucination guard)
 //   - confidence is mandatory and self-reported by the model
 //   - both zh + en summaries always present
@@ -13,21 +14,12 @@
 //
 // Cache: keyed by sha256(sourceUrl + contentText.slice(0, 5000)) so
 // re-running the pipeline on the same content is free.
-//
-// USAGE:
-//   import { summarizePage } from './lib/ai-summarize';
-//   const out = await summarizePage(
-//     { sourceUrl, title, contentText },
-//     {
-//       categories: ['治理框架', '行业指引', '战略文件', '法规', '标准'],
-//       cacheDir: 'scripts/refresh/policies/data/summaries',
-//     }
-//   );
-//   if (out.confidence === 'low') out._pendingReview = true;
 
 import { createHash } from 'node:crypto';
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
+
+import { callLlmJson } from './llm.ts';
 
 export interface SummaryInput {
   sourceUrl: string;
@@ -62,7 +54,7 @@ export interface BilingualSummary {
   generatedAt: string;
 }
 
-const DEFAULT_MODEL = process.env.OPENAI_SUMMARIZE_MODEL || process.env.OPENAI_MODEL || 'gpt-4.1-mini';
+const DEFAULT_MODEL = process.env.SGAI_SUMMARIZE_MODEL || 'haiku';
 
 function hashOf(input: SummaryInput): string {
   return createHash('sha256').update(`${input.sourceUrl}::${input.contentText.slice(0, 5000)}`).digest('hex');
@@ -85,6 +77,17 @@ function writeCache(cacheDir: string, hash: string, summary: BilingualSummary): 
 
 function sleep(ms: number): Promise<void> {
   return new Promise((r) => setTimeout(r, ms));
+}
+
+interface ModelOutput {
+  title?: string;
+  titleZh?: string;
+  description?: string;
+  descriptionEn?: string;
+  category?: string;
+  publishedDate?: string | null;
+  confidence?: 'high' | 'medium' | 'low';
+  reasonForLowConfidence?: string;
 }
 
 function buildSystemPrompt(categories: string[], domainContext: string): string {
@@ -117,62 +120,49 @@ function buildSystemPrompt(categories: string[], domainContext: string): string 
   ].join('\n');
 }
 
-async function callOpenAI(
+async function callClaudeSummarize(
   input: SummaryInput,
   options: { model: string; systemPrompt: string }
-): Promise<{
-  title: string;
-  titleZh: string;
-  description: string;
-  descriptionEn: string;
-  category: string;
-  publishedDate: string | null;
-  confidence: 'high' | 'medium' | 'low';
-  reasonForLowConfidence?: string;
-}> {
-  const apiKey = process.env.OPENAI_API_KEY;
-  if (!apiKey) throw new Error('OPENAI_API_KEY env var is required.');
-
+): Promise<Required<Omit<ModelOutput, 'reasonForLowConfidence'>> & { reasonForLowConfidence?: string }> {
   const userPayload = {
     sourceUrl: input.sourceUrl,
     title: input.title,
     contentText: input.contentText.slice(0, 12000),
   };
 
-  const payload = {
-    model: options.model,
-    temperature: 0.1,
-    response_format: { type: 'json_object' },
-    messages: [
-      { role: 'system', content: options.systemPrompt },
-      { role: 'user', content: JSON.stringify(userPayload) },
-    ],
-  };
-
   let lastError = '';
   for (let attempt = 1; attempt <= 4; attempt += 1) {
-    const response = await fetch('https://api.openai.com/v1/chat/completions', {
-      method: 'POST',
-      headers: { Authorization: `Bearer ${apiKey}`, 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload),
-    });
-
-    if (response.ok) {
-      const data = (await response.json()) as { choices?: Array<{ message?: { content?: string } }> };
-      const content = data.choices?.[0]?.message?.content;
-      if (!content) throw new Error('OpenAI summary response was empty.');
-      return JSON.parse(content);
-    }
-
-    const text = await response.text();
-    lastError = `OpenAI summarize failed: ${response.status} ${text.slice(0, 200)}`;
-    if (response.status === 429 || response.status >= 500) {
+    try {
+      const out = await callLlmJson<ModelOutput>(JSON.stringify(userPayload), {
+        systemPrompt: options.systemPrompt,
+        model: options.model,
+      });
+      const required: Array<keyof ModelOutput> = [
+        'title', 'titleZh', 'description', 'descriptionEn', 'category', 'confidence',
+      ];
+      for (const k of required) {
+        if (typeof out[k] !== 'string' || (out[k] as string).length === 0) {
+          throw new Error(`Summary response missing required field "${k}"`);
+        }
+      }
+      return {
+        title: out.title!,
+        titleZh: out.titleZh!,
+        description: out.description!,
+        descriptionEn: out.descriptionEn!,
+        category: out.category!,
+        publishedDate: typeof out.publishedDate === 'string' ? out.publishedDate : null,
+        confidence: out.confidence!,
+        reasonForLowConfidence: out.reasonForLowConfidence,
+      };
+    } catch (error) {
+      lastError = error instanceof Error ? error.message : String(error);
+      const transient = /timeout|spawn|aborted|exited|ECONNRESET/i.test(lastError);
+      if (!transient || attempt === 4) throw new Error(lastError);
       await sleep(attempt * attempt * 1500);
-      continue;
     }
-    throw new Error(lastError);
   }
-  throw new Error(lastError || 'OpenAI summarize failed.');
+  throw new Error(lastError || 'Claude summarize failed.');
 }
 
 /**
@@ -198,7 +188,7 @@ export async function summarizePage(input: SummaryInput, options: SummarizeOptio
 
   const domainContext = options.domainContext || 'a Chinese-language Singapore AI observatory website (sgai.md)';
   const systemPrompt = buildSystemPrompt(options.categories, domainContext);
-  const raw = await callOpenAI(input, { model, systemPrompt });
+  const raw = await callClaudeSummarize(input, { model, systemPrompt });
 
   // Validate model output against schema.
   if (!options.categories.includes(raw.category)) {

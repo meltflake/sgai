@@ -350,13 +350,15 @@ npx tsx scripts/voices/prospect-stubs.mjs sync-from-people [<id>...] [--dry-run]
 4. 在 GitHub UI 上 Approve & Merge → Cloudflare 自动重新构建上线
 5. \_pendingReview 条目：合并前在 PR 改 `_pendingReview: true → false`（或删字段），listing 立刻显示
 
-### gh CLI / API key 准备
+### gh CLI / claude CLI / SMTP 准备
+
+详细一步步看 [scripts/SETUP.md](scripts/SETUP.md)，跑 `bash scripts/doctor.sh` 体检。**不需要 OpenAI API key**——AI 摘要 + 翻译都通过本地 `claude` CLI 调用：
 
 ```bash
-# 一次性配置：
 gh auth login                                    # GitHub PR 创建权限
-echo 'export OPENAI_API_KEY=sk-xxx' >> ~/.zshrc # AI 摘要
-echo 'export GITHUB_TOKEN=ghp_xxx' >> ~/.zshrc  # GitHub stars 5000 req/h（可选）
+which claude                                     # 应能找到（Claude Code）
+claude --version                                 # 应输出 "<版本> (Claude Code)"
+echo 'export GITHUB_TOKEN=ghp_xxx' >> ~/.zshrc   # 可选，github-stars 5000 req/h
 cp scripts/auto_update_config.example.py scripts/auto_update_config.py
 # 编辑 SMTP_USER / SMTP_PASSWORD / EMAIL_TO（Gmail App Password）
 ```

@@ -64,28 +64,26 @@ cron 沿用 keychain 凭据，一次配置长期有效。
 
 ---
 
-## 4. API keys（环境变量）
+## 4. Claude Code CLI（LLM 后端，无需 API key）
 
-新管线需要 `OPENAI_API_KEY` 出 AI 摘要；`GITHUB_TOKEN` 可选（GitHub stars 提速）。
-
-把这两行加进 `~/.zshrc` 或 `~/.zprofile`：
+新管线（policies / ecosystem / talent / startups / tracker / benchmarking / levers / legal-ai）的 AI 摘要 + 翻译都通过本地 `claude` CLI 调用，**完全不需要 OpenAI API key**——直接用你 Claude Code 已登录的账号。
 
 ```bash
-export OPENAI_API_KEY=sk-...
-export GITHUB_TOKEN=ghp_...   # 可选
+which claude       # 应输出 /usr/local/bin/claude 或 ~/.local/bin/claude
+claude --version   # 应输出 "<版本> (Claude Code)"
 ```
 
-然后 `source ~/.zshrc` 或新开一个终端。
+如果没装：[Claude Code 安装指南](https://docs.claude.com/en/docs/claude-code/quickstart)。装完后跑一次 `claude` 互动登录即可，cron 沿用 keychain 凭据。
 
-校验：
+可选环境变量：
 
 ```bash
-echo "OPENAI=${OPENAI_API_KEY:0:6}...  GITHUB=${GITHUB_TOKEN:0:6}..."
+export GITHUB_TOKEN=ghp_...                    # 可选，github-stars 5000 req/h
+export SGAI_CLAUDE_MODEL=haiku                 # 默认 haiku（便宜）。换 sonnet 提升质量
+export SGAI_TRANSLATION_CONCURRENCY=2          # 默认 2，避免 rate limit
 ```
 
-应看到两个非空前缀。
-
-> **cron 不读 `.zshrc`**。要让 cron 看到这两个环境变量，把 export 写进 [scripts/auto_update_config.py](auto_update_config.example.py) 末尾，或在 crontab 顶部用 `OPENAI_API_KEY=sk-...` 直接声明。
+> **cron 不读 `.zshrc`**。如果在 crontab 里要覆盖默认模型 / 并发，写在 crontab 顶部 export，或在 [scripts/auto_update_config.py](auto_update_config.example.py) 里 `os.environ.setdefault('SGAI_CLAUDE_MODEL', 'haiku')`。
 
 ---
 
@@ -132,7 +130,6 @@ crontab -e
 ```cron
 PROJECT=/Users/lucawu/Library/CloudStorage/Dropbox/Github/sgai
 PYTHON=/tmp/sgai-venv/bin/python
-OPENAI_API_KEY=sk-...
 PATH=/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin
 
 # 周一 08:00 — hansard / videos / voices（旧三条）
@@ -144,6 +141,8 @@ PATH=/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin
 # 1 月 / 7 月 1 号 08:00 — legal-ai / talent / tracker / benchmarking
 0 8 1 1,7 *       cd $PROJECT && $PYTHON scripts/auto_update.py --schedule=half-yearly >> scripts/logs/cron.log 2>&1
 ```
+
+`claude` CLI 沿用 macOS keychain 登录凭据，cron 自动继承，不需要在 crontab 里写 API key。
 
 > macOS Ventura+：System Settings → Privacy & Security → Full Disk Access 把 `/usr/sbin/cron` 加进去，否则 cron 读不到 Dropbox 路径。
 
@@ -184,7 +183,7 @@ npx tsx scripts/refresh/github-stars.ts --bump-version
 
 ## 8. 跑一条带 AI 摘要的（policies）
 
-需要 `OPENAI_API_KEY` 已配置。先 dry-run 看候选：
+需要 `claude` CLI 已登录（doctor 检查通过即可）。先 dry-run 看候选：
 
 ```bash
 npx tsx scripts/refresh/policies/run.ts --dry-run --limit=2
@@ -214,7 +213,9 @@ npx tsx scripts/refresh/policies/run.ts --limit=2
 | `ModuleNotFoundError: requests` | venv 没建或没装；回到 §1 |
 | `gh: command not found` | `brew install gh` |
 | `gh pr create failed: not authenticated` | `gh auth login` |
-| `OPENAI_API_KEY env var is required` | export 没生效；新开终端或 source rc |
+| `Claude CLI not available` | `which claude` 检查；缺则装 Claude Code 并 `claude` 登录一次 |
+| `callLlm: timeout after 120000ms` | 慢网络。设 `SGAI_LLM_TIMEOUT_MS=240000` 翻倍 |
+| `callLlm: claude exited 1` | `claude` 未登录或 token 失效。跑一次 `claude` 互动重新登录 |
 | `git push failed` | 不在 GitHub origin / 没 push 权限 / 分支冲突 |
 | 邮件没收到 | `auto_update_config.py` SMTP 配置错；先 `--dry-run` 看 subject 拼出来对不对 |
 | ecosystem dry-run 0 候选 | 那个 RSS 当前没新帖（正常）。换个 `--only-domain=...` 试 |

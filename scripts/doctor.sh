@@ -60,13 +60,14 @@ else
   print_fail "gh missing — run: brew install gh"
 fi
 
-# 4. API keys
+# 4. Claude Code CLI (LLM backend) + GITHUB_TOKEN
 echo
-echo "4. API keys (OPENAI_API_KEY / GITHUB_TOKEN)"
-if [ -n "${OPENAI_API_KEY:-}" ]; then
-  print_ok "OPENAI_API_KEY present (${OPENAI_API_KEY:0:6}...)"
+echo "4. Claude Code CLI (LLM backend) / GITHUB_TOKEN"
+if command -v claude >/dev/null 2>&1; then
+  cv=$(claude --version 2>/dev/null | head -1)
+  print_ok "claude CLI present: $cv"
 else
-  print_fail "OPENAI_API_KEY missing — export in ~/.zshrc"
+  print_fail "claude CLI missing — https://docs.claude.com/en/docs/claude-code/quickstart"
 fi
 if [ -n "${GITHUB_TOKEN:-}" ]; then
   print_ok "GITHUB_TOKEN present (${GITHUB_TOKEN:0:6}...) — github-stars 5000 req/h"

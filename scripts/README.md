@@ -6,7 +6,7 @@
 scripts/
   auto_update.py                  # 统一调度入口（registry-driven）
   auto_update_config.example.py   # 配置模板（复制为 auto_update_config.py）
-  auto_update_config.py           # 真实配置（不入 git）— SMTP + (可选) OPENAI_API_KEY
+  auto_update_config.py           # 真实配置（不入 git）— SMTP 凭据
   requirements.txt                # Python 依赖（用于 /tmp/sgai-venv）
   refresh/                        # 新管线（全部 type=tsx，全部 auto-PR）
     registry.json                 # 管线注册表（schedule / script / args / mode）
@@ -206,14 +206,16 @@ PYTHON=/tmp/sgai-venv/bin/python
 0 8 1 1,7 *       cd $PROJECT && $PYTHON scripts/auto_update.py --schedule=half-yearly >> scripts/logs/cron.log 2>&1
 ```
 
-cron 不读 `.zshrc`。`OPENAI_API_KEY` 等 env 必须在 crontab 顶部 export，或在 `auto_update_config.py` 末尾 `os.environ.setdefault('OPENAI_API_KEY', '...')`。
+cron 不读 `.zshrc`。AI 摘要走本地 `claude` CLI（macOS keychain 凭据 cron 自动继承），不需要任何 API key。如果想覆盖默认模型 / 并发，把 `SGAI_CLAUDE_MODEL=haiku` 等写在 crontab 顶部或 `auto_update_config.py` 末尾。
 
-### 4b. 准备 gh CLI
+### 4b. 准备 gh CLI + claude CLI
 
-新管线开 PR 需要 `gh auth login` 已认证（cron 沿用 keychain）。验证：
+新管线开 PR 需要 `gh auth login` 已认证（cron 沿用 keychain）。AI 摘要 / 翻译需要 `claude` CLI 已登录。验证：
 
 ```bash
 gh auth status
+claude --version
+bash scripts/doctor.sh   # 一次过所有检查
 ```
 
 ### 5. 验证 crontab
