@@ -74,7 +74,8 @@ export const debates: Debate[] = [
     oppositionStanceEn: 'Pushes to extend G50-grade public-servant vetting to CII super-user and admin roles.',
     controversyLevel: 2,
     policySignal: 'CII 内部威胁应对：架构层多层防御优先于人员审查',
-    policySignalEn: 'CII insider-threat strategy prioritises architectural defence-in-depth over centralised personnel vetting.',
+    policySignalEn:
+      'CII insider-threat strategy prioritises architectural defence-in-depth over centralised personnel vetting.',
     notableQuote:
       'Security by design means that you have all these multiple layers of defences in order to be able to guard against the cyber risk.',
     notableQuoteEn:
@@ -112,12 +113,14 @@ export const debates: Debate[] = [
       'MPs push WSG to co-design industry-led curricula with professional bodies',
     ],
     governmentStance: '承认结构性错配，靠 CCP 与产学合作做技能转换',
-    governmentStanceEn: 'Acknowledges structural mismatch; bets on CCP and industry-academia co-design for skills transition.',
+    governmentStanceEn:
+      'Acknowledges structural mismatch; bets on CCP and industry-academia co-design for skills transition.',
     oppositionStance: null,
     oppositionStanceEn: null,
     controversyLevel: 1,
     policySignal: 'AI 时代 PME 转岗：政府主导薪资补贴 + 产业课程对接',
-    policySignalEn: 'PMET reskilling in the AI era: government-subsidised salary support plus industry-led curriculum design.',
+    policySignalEn:
+      'PMET reskilling in the AI era: government-subsidised salary support plus industry-led curriculum design.',
     notableQuote:
       'Firms are expanding technology functions, driving sustained demand for jobs like AI engineers, while restructuring other PMET roles that have become easier to automate.',
     notableQuoteEn:
@@ -158,7 +161,8 @@ export const debates: Debate[] = [
     governmentStanceEn:
       'Risk-tiered approach plus technical controls and governance; concedes contracts alone cannot block foreign extraterritorial law.',
     oppositionStance: '质疑 CLOUD Act 等域外管辖对 Singapore 数据主权的实际威胁',
-    oppositionStanceEn: 'Questions whether CLOUD-Act-style extraterritorial law leaves Singapore data sovereignty intact.',
+    oppositionStanceEn:
+      'Questions whether CLOUD-Act-style extraterritorial law leaves Singapore data sovereignty intact.',
     controversyLevel: 3,
     policySignal: '数据主权策略：从合同保障转向技术 + 治理 + 用例分类的多层防御',
     policySignalEn:
