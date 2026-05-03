@@ -953,11 +953,11 @@ const searchBlob = (d: (typeof debates)[number]) =>
   }
 
   // ── Init ─────────────────────────────────────────────────────────────────
-  document.addEventListener('DOMContentLoaded', () => {
-    // Initial pass — count display only; cards already in HTML and visible.
+  // Re-run on every navigation: ClientRouter swaps body without firing
+  // DOMContentLoaded, so SPA-style entries to this page need astro:page-load.
+  function initDebates() {
     applyFilters();
 
-    // Wire "展开原文" buttons (SSG-rendered with data-toggle-fulltext attr).
     document.querySelectorAll('[data-toggle-fulltext]').forEach((btn) => {
       btn.addEventListener('click', () => window.toggleFullText(btn));
     });
@@ -979,5 +979,8 @@ const searchBlob = (d: (typeof debates)[number]) =>
       activeFilters.topicsOr = [];
       applyFilters();
     });
-  });
+  }
+
+  document.addEventListener('DOMContentLoaded', initDebates);
+  document.addEventListener('astro:page-load', initDebates);
 </script>

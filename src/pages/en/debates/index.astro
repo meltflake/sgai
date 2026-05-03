@@ -979,7 +979,9 @@ const searchBlob = (d: (typeof debates)[number]) => {
     updateActiveFilterBar(visible);
   }
 
-  document.addEventListener('DOMContentLoaded', () => {
+  // Re-run on every navigation: ClientRouter swaps body without firing
+  // DOMContentLoaded, so SPA-style entries to this page need astro:page-load.
+  function initDebates() {
     applyFilters();
 
     document.querySelectorAll('[data-toggle-fulltext]').forEach((btn) => {
@@ -1003,5 +1005,8 @@ const searchBlob = (d: (typeof debates)[number]) => {
       activeFilters.topicsOr = [];
       applyFilters();
     });
-  });
+  }
+
+  document.addEventListener('DOMContentLoaded', initDebates);
+  document.addEventListener('astro:page-load', initDebates);
 </script>
