@@ -4,6 +4,42 @@
 
 ---
 
+## 0.9.1 — 2026-05-03
+
+### 生态地图：关键人物全部接入人物图
+
+- 把 `ecosystem.ts` 里的 `leaders[]` 从死字符串变成可点击的图节点：11 个机构合计 36 条领导记录，全部通过 `personId` 链到 `/voices/{id}/`。
+- 新增 21 条 Person 记录，覆盖核心枢纽（AISG）、基础研究（A\*STAR / NUS / NTU / SMU / SUTD）、治理（IMDA / PDPC / AI Verify Foundation / MAS）、应用（Synapxe）。每条尽量补齐 LinkedIn 或机构官方档案链接。
+- 顺手修正两条过期信息：A\*STAR CEO 现任 **Beh Kian Teik**（2024-11 接替 Frederick Chew）、Synapxe CEO 现任 **Foo Hee Jug**（2025 替换 Ngiam Siew Ying）。两处都从机构官网二次核验。
+- 跨机构枢纽显形：Mohan Kankanhalli / Bryan Low / Simon Chesterman / Ng See Kiong 同时挂 NUS + AISG；Ho Teck Hua / Luke Ong 同时挂 NTU + AISG；Ong Yew Soon 同时挂 NTU + A\*STAR。这种"双肩挑"是新加坡 AI 治理结构的核心特征，现在能在数据层显式表达。
+
+## 0.9.0 — 2026-05-03
+
+### Tracker 仪表盘：从指标列表升级为六维仪表盘
+
+把 `/tracker/` 从早期的纯指标列表整体重写为六维仪表盘 + 动态详情页 + 方法论页的多页结构。
+
+- **六维框架**：投资 / 算力 / 人才 / 应用 / 研究 / 治理；每维度独立 `*.ts` 数据文件，量化维度配 metrics + ranking anchors，定性维度走 7 项观察清单。
+- **页面**：仪表盘首页（hero + 6 张维度卡 + Top Rankings）、维度详情页（动态路由 `/tracker/[dimension]/`）、方法论页（zh + en 完整双语）；同步落 `/en/tracker/` 全套页面与字典 keys。
+- **组件**：新增 `DimensionCard` 组件，量化与定性两种渲染变体；卡片尾部显式标 Headline / Benchmark / Badge / Trend 四个标签，支持本地化。
+- **数据**：投资（24 条）、算力（14 条，3 条与投资交叉）、人才（12 条）、应用（18 条，企业 / 政府分组）、研究（7 条）、治理（7 项定性）。
+- **首页联动**：在中英文首页加入 tracker 摘要区块；移除旧的 grading 系统、清理空 related 数组。
+
+### 2026-05-03 当日的其他变动
+
+- **政策**：新增 4 条 W&C-tracker AI 监管类条目（`feat(policies)`）；ISO/IEC 42119-8 全会议 + Changi 42001 事件入 timeline / levers / references（`feat(timeline+levers+refs)`）；中英 policies 页面重构为 N-locale 可扩展形态（`i18n(policies)`）。
+- **演讲**：归档并翻译 58 篇 MDDI AI 演讲（`feat(speeches)`）。
+- **首页**：编辑式版式收口 — 收尾论点段、传导杠杆线、tracker 区块（`feat(home): polish editorial layout`）。
+- **i18n**：tracker 卡片标签（Headline / Benchmark / Badge / Trend）全部本地化。
+
+## 0.7.0 — 2026-05-02
+
+### 生态地图：38 个实体维基风格详情页
+
+- `/ecosystem/[id]/` 新增 38 个实体的独立详情页（机构 / 平台 / 产品 / 项目 / 合作伙伴），覆盖 AISG、A\*STAR、四所大学、IMDA、PDPC、MAS、Synapxe、AI Verify、SEA-LION 系列、AIAP / 100E / TagUI / PeekingDuck 等开源工具，以及 6 家境外合作伙伴。
+- 数据 schema 新增 `EcosystemLeader.personId` 字段，预留与 `people.ts` 的图链接（v0.9.1 全部接入）。
+- 同步上线 `/ecosystem/` 列表索引页与英文站 `/en/ecosystem/`。
+
 ## 0.6.8 — 2026-05-02
 
 ### 国会辩论：完整原文与中文译文
