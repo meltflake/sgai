@@ -267,6 +267,10 @@ npx tsx scripts/voices/prospect-stubs.mjs status
 
 # 4. apply（把已 ready 的 prospect 转成 TS 片段，stdout 输出，手动粘贴到 people.ts）
 npx tsx scripts/voices/prospect-stubs.mjs apply luke-ong
+
+# 5. sync-from-people（反向同步：从 people.ts 把 live 字段倒灌回 prospect JSON，
+# 当你直接在 people.ts 编辑而绕过 JSON 时用）
+npx tsx scripts/voices/prospect-stubs.mjs sync-from-people [<id>...] [--dry-run]
 ```
 
 文件生成在 `scripts/voices/data/prospects/<id>.json`，状态 `pending → ready → applied`。每个 prospect 文件包含：
@@ -291,7 +295,7 @@ npx tsx scripts/voices/prospect-stubs.mjs apply luke-ong
 
 ### 已知 friction（待改进）
 
-- `apply` CLI 一次只处理一个人，5 人小批可以，19 人批量时 19 次 `apply` + 19 次粘贴会很乏味——下次可以加一个 `apply --all` 模式直接改 people.ts（找每个 person record 的 channels 数组结尾作为 anchor 插入）。
+- `apply` CLI 一次只处理一个人，5 人小批可以，19 人批量时 19 次 `apply` + 19 次粘贴会很乏味——下次可以加一个 `apply --all` 模式直接改 people.ts（找每个 person record 的 channels 数组结尾作为 anchor 插入）。**对策**：批量场景下可以反过来用 `sync-from-people` —— 先在 people.ts 直接写，再倒灌回 JSON，省掉 paste 环节。
 - 每个 prospect JSON 都重复存 ~20 行 `whitelistedSources`，纯粹冗余。可以让脚本只在文件顶部留一个引用，或者干脆删掉这字段（白名单已经体现在 `searchQueries` 的 `site:` 限定里）。
 - 没有 `validate` 命令检查 `*En` 兄弟字段是否齐全——目前漏写英文版本会导致 EN 页面回退到中文。
 

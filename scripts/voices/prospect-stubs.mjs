@@ -30,6 +30,14 @@
 //   node scripts/voices/prospect-stubs.mjs apply <id>
 //     Read a "ready" prospect file and print a TypeScript snippet to
 //     stdout. Paste into the matching person record in people.ts.
+//
+//   node scripts/voices/prospect-stubs.mjs sync-from-people [<id> ...] [--dry-run]
+//     Reverse-sync: copy live curated fields (signatureWork / notableQuotes
+//     / speakingRecord / externalRoles) from people.ts back into the matching
+//     prospect JSON files. Use when records were authored directly in
+//     people.ts and the prospect cache is stale. With no ids, syncs every
+//     person who has any curated field populated. Creates missing prospect
+//     files on the fly.
 
 import { mkdir, readdir, readFile, writeFile } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
@@ -226,6 +234,104 @@ async function cmdStatus() {
   }
 }
 
+// Reverse-sync: pull live curated fields from people.ts back into prospect
+// JSON files. Use when prospects were authored by hand directly in people.ts
+// and the JSON cache drifted out of sync.
+async function cmdSyncFromPeople(args) {
+  await mkdir(PROSPECTS_DIR, { recursive: true });
+  const dryRun = args.includes('--dry-run');
+  const ids = args.filter((a) => !a.startsWith('--'));
+
+  const { allPeople } = await import(join(ROOT, 'src/data/people.ts'));
+  const byId = new Map(allPeople.map((p) => [p.id, p]));
+
+  const targets = ids.length
+    ? ids.map((id) => byId.get(id)).filter(Boolean)
+    : allPeople.filter(
+        (p) =>
+          (p.signatureWork && p.signatureWork.length) ||
+          (p.notableQuotes && p.notableQuotes.length) ||
+          (p.speakingRecord && p.speakingRecord.length) ||
+          (p.externalRoles && p.externalRoles.length)
+      );
+
+  if (ids.length && targets.length !== ids.length) {
+    const missing = ids.filter((id) => !byId.has(id));
+    console.error(`Unknown person id(s): ${missing.join(', ')}`);
+    process.exit(1);
+  }
+
+  let synced = 0;
+  let unchanged = 0;
+  let created = 0;
+  for (const p of targets) {
+    const filePath = join(PROSPECTS_DIR, `${p.id}.json`);
+    let prospect;
+    if (existsSync(filePath)) {
+      prospect = JSON.parse(await readFile(filePath, 'utf8'));
+    } else {
+      prospect = {
+        personId: p.id,
+        name: p.name,
+        zhName: p.zhName,
+        title: p.title,
+        affiliations: p.affiliations,
+        category: p.category,
+        currentSummary: p.summary,
+        status: 'applied',
+        createdAt: new Date().toISOString().slice(0, 10),
+        reviewedAt: new Date().toISOString().slice(0, 10),
+        searchQueries: buildQueries(p),
+        whitelistedSources: WHITELIST,
+        signatureWork: [],
+        notableQuotes: [],
+        speakingRecord: [],
+        externalRoles: [],
+        notes: '',
+      };
+      created++;
+    }
+
+    const before = JSON.stringify({
+      signatureWork: prospect.signatureWork,
+      notableQuotes: prospect.notableQuotes,
+      speakingRecord: prospect.speakingRecord,
+      externalRoles: prospect.externalRoles,
+    });
+
+    prospect.signatureWork = p.signatureWork ?? [];
+    prospect.notableQuotes = p.notableQuotes ?? [];
+    prospect.speakingRecord = p.speakingRecord ?? [];
+    prospect.externalRoles = p.externalRoles ?? [];
+    prospect.status = 'applied';
+    prospect.appliedAt = prospect.appliedAt ?? new Date().toISOString().slice(0, 10);
+    prospect.syncedFromPeopleAt = new Date().toISOString().slice(0, 10);
+
+    const after = JSON.stringify({
+      signatureWork: prospect.signatureWork,
+      notableQuotes: prospect.notableQuotes,
+      speakingRecord: prospect.speakingRecord,
+      externalRoles: prospect.externalRoles,
+    });
+
+    if (before === after && !created) {
+      unchanged++;
+      continue;
+    }
+
+    if (dryRun) {
+      console.log(`  ~ ${p.id} (would update)`);
+    } else {
+      await writeFile(filePath, JSON.stringify(prospect, null, 2) + '\n', 'utf8');
+      console.log(`  ~ ${p.id}`);
+    }
+    synced++;
+  }
+
+  const verb = dryRun ? 'would sync' : 'synced';
+  console.log(`\n${verb} ${synced}, unchanged ${unchanged}${created ? `, created ${created} new` : ''}.`);
+}
+
 async function cmdApply(args) {
   const id = args[0];
   if (!id) {
@@ -275,9 +381,15 @@ function getFlag(args, flag) {
 
 // ── Dispatch ──────────────────────────────────────────────────────────
 const [cmd, ...rest] = process.argv.slice(2);
-const handlers = { list: cmdList, queue: cmdQueue, status: cmdStatus, apply: cmdApply };
+const handlers = {
+  list: cmdList,
+  queue: cmdQueue,
+  status: cmdStatus,
+  apply: cmdApply,
+  'sync-from-people': cmdSyncFromPeople,
+};
 if (!cmd || !handlers[cmd]) {
-  console.error('Usage: node scripts/voices/prospect-stubs.mjs <list|queue|status|apply> [args]');
+  console.error('Usage: node scripts/voices/prospect-stubs.mjs <list|queue|status|apply|sync-from-people> [args]');
   process.exit(1);
 }
 await handlers[cmd](rest);
