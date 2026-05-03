@@ -124,7 +124,7 @@ const breadcrumbs = [
       }
     </div>
 
-    <h1 class="font-serif text-3xl md:text-4xl leading-tight font-semibold text-gray-900 dark:text-white mb-2">
+    <h1 class="t-display text-gray-900 dark:text-white mb-2">
       {displayName}
     </h1>
     {
@@ -228,7 +228,7 @@ const breadcrumbs = [
     {
       whatItIs && (
         <section class="mb-10">
-          <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+          <h2 class="t-h3 text-gray-900 dark:text-white mb-4 flex items-center gap-2">
             <span>📖</span> What it is
           </h2>
           <EcosystemProse content={whatItIs} />
@@ -239,7 +239,7 @@ const breadcrumbs = [
     {
       aiRelevance && (
         <section class="mb-10">
-          <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+          <h2 class="t-h3 text-gray-900 dark:text-white mb-4 flex items-center gap-2">
             <span>🤖</span> Relation to AI
           </h2>
           <EcosystemProse content={aiRelevance} />
@@ -250,7 +250,7 @@ const breadcrumbs = [
     {
       sgRelevance && (
         <section class="mb-10">
-          <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+          <h2 class="t-h3 text-gray-900 dark:text-white mb-4 flex items-center gap-2">
             <span>🇸🇬</span> Relation to Singapore
           </h2>
           <EcosystemProse content={sgRelevance} />
@@ -261,7 +261,7 @@ const breadcrumbs = [
     {
       entity.milestones && entity.milestones.length > 0 && (
         <section class="mb-10">
-          <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+          <h2 class="t-h3 text-gray-900 dark:text-white mb-4 flex items-center gap-2">
             <span>🗓️</span> Key Milestones
           </h2>
           <ol class="relative border-l-2 border-blue-200 dark:border-blue-900 ml-2 pl-6 space-y-5">
@@ -295,7 +295,7 @@ const breadcrumbs = [
     {
       (entity.leaders || championPersons.length > 0) && (
         <section class="mb-10">
-          <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+          <h2 class="t-h3 text-gray-900 dark:text-white mb-4 flex items-center gap-2">
             <span>👥</span> Key People
           </h2>
           <ul class="space-y-2">
@@ -332,7 +332,7 @@ const breadcrumbs = [
     {
       entity.products && entity.products.length > 0 && (
         <section class="mb-10">
-          <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+          <h2 class="t-h3 text-gray-900 dark:text-white mb-4 flex items-center gap-2">
             <span>📦</span> Products & Sub-projects
           </h2>
           <div class="grid gap-3 sm:grid-cols-2">
@@ -371,7 +371,7 @@ const breadcrumbs = [
     {
       entity.partners && entity.partners.length > 0 && (
         <section class="mb-10">
-          <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+          <h2 class="t-h3 text-gray-900 dark:text-white mb-4 flex items-center gap-2">
             <span>🤝</span> Partners
           </h2>
           <div class="grid gap-3 sm:grid-cols-2">
@@ -394,7 +394,7 @@ const breadcrumbs = [
         relatedLevers.length > 0 ||
         relatedEntities.length > 0) && (
         <section class="mb-10">
-          <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+          <h2 class="t-h3 text-gray-900 dark:text-white mb-4 flex items-center gap-2">
             <span>🔗</span> Related
           </h2>
           <div class="space-y-4">
@@ -475,7 +475,7 @@ const breadcrumbs = [
     {
       entity.furtherReading && entity.furtherReading.length > 0 && (
         <section class="mb-10">
-          <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+          <h2 class="t-h3 text-gray-900 dark:text-white mb-4 flex items-center gap-2">
             <span>📚</span> Further Reading
           </h2>
           <ul class="space-y-2">

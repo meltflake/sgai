@@ -137,7 +137,7 @@ const searchBlob = (d: (typeof debates)[number]) =>
     <div class="mb-10">
       <div class="flex items-center gap-3 mb-3">
         <span class="text-4xl">🏛️</span>
-        <h1 class="text-3xl font-bold text-gray-900 dark:text-white">国会 AI 焦点</h1>
+        <h1 class="t-h1 text-gray-900 dark:text-white">国会 AI 焦点</h1>
       </div>
       <p class="text-gray-600 dark:text-gray-400 text-lg max-w-3xl">
         新加坡议会关于人工智能的第一手辩论记录，含 AI 提炼的中文摘要、议员立场分析与政策规律洞察。
@@ -150,7 +150,7 @@ const searchBlob = (d: (typeof debates)[number]) =>
     <!-- Stats Row — clickable by type -->
     <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
       <div class="bg-surface rounded-xl p-5 shadow-sm border border-subtle text-center">
-        <div class="text-3xl font-bold text-blue-600">{DEBATE_STATS.total}</div>
+        <div class="t-stat text-blue-600">{DEBATE_STATS.total}</div>
         <div class="text-sm text-gray-500 mt-1">辩论记录总数</div>
       </div>
       {
@@ -160,7 +160,7 @@ const searchBlob = (d: (typeof debates)[number]) =>
             class="bg-surface rounded-xl p-5 shadow-sm border border-subtle text-center hover:border-blue-400 hover:shadow-md transition-all cursor-pointer group"
             title={`点击查看所有${typeMap[type] || type}`}
           >
-            <div class="text-2xl font-bold text-purple-600 group-hover:text-blue-600 transition-colors">{count}</div>
+            <div class="t-stat text-purple-600 group-hover:text-blue-600 transition-colors">{count}</div>
             <div class="text-xs text-gray-500 mt-1">{typeMap[type] || type}</div>
             <div class="text-xs text-blue-400 opacity-0 group-hover:opacity-100 transition-opacity mt-0.5">
               点击筛选 →
@@ -172,7 +172,7 @@ const searchBlob = (d: (typeof debates)[number]) =>
 
     <!-- ===== YEAR TREND — clickable bars ===== -->
     <section class="mb-12">
-      <h2 class="text-xl font-bold text-gray-800 dark:text-white mb-2 flex items-center gap-2">
+      <h2 class="t-h3 text-gray-800 dark:text-white mb-2 flex items-center gap-2">
         <span>📅</span> 历年辩论趋势
       </h2>
       <p class="text-sm text-gray-400 mb-5">点击任意年份柱状图，查看该年所有辩论</p>
@@ -207,7 +207,7 @@ const searchBlob = (d: (typeof debates)[number]) =>
 
     <!-- ===== INSIGHTS SECTION ===== -->
     <section class="mb-12">
-      <h2 class="text-xl font-bold text-gray-800 dark:text-white mb-5 flex items-center gap-2">
+      <h2 class="t-h3 text-gray-800 dark:text-white mb-5 flex items-center gap-2">
         <span>💡</span> 核心洞察
         <span class="text-sm font-normal text-gray-400 ml-2">从 {DEBATE_STATS.total} 条辩论中提炼</span>
       </h2>
@@ -233,7 +233,7 @@ const searchBlob = (d: (typeof debates)[number]) =>
 
     <!-- ===== POLICY EVOLUTION — clickable periods ===== -->
     <section class="mb-12">
-      <h2 class="text-xl font-bold text-gray-800 dark:text-white mb-2 flex items-center gap-2">
+      <h2 class="t-h3 text-gray-800 dark:text-white mb-2 flex items-center gap-2">
         <span>📈</span> 政策演变脉络
       </h2>
       <p class="text-sm text-gray-400 mb-5">点击任意时期，查看该阶段的所有辩论记录</p>
@@ -281,7 +281,7 @@ const searchBlob = (d: (typeof debates)[number]) =>
 
     <!-- ===== RECURRING CONTROVERSIES — clickable ===== -->
     <section class="mb-12">
-      <h2 class="text-xl font-bold text-gray-800 dark:text-white mb-2 flex items-center gap-2">
+      <h2 class="t-h3 text-gray-800 dark:text-white mb-2 flex items-center gap-2">
         <span>⚡</span> 反复争议焦点
       </h2>
       <p class="text-sm text-gray-400 mb-5">这些问题在多届国会中持续被提出。点击任意焦点，查看相关辩论记录</p>
@@ -331,7 +331,7 @@ const searchBlob = (d: (typeof debates)[number]) =>
 
     <!-- ===== TENSION MAP ===== -->
     <section class="mb-12">
-      <h2 class="text-xl font-bold text-gray-800 dark:text-white mb-5 flex items-center gap-2">
+      <h2 class="t-h3 text-gray-800 dark:text-white mb-5 flex items-center gap-2">
         <span>⚖️</span> 核心政策张力
       </h2>
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -362,7 +362,7 @@ const searchBlob = (d: (typeof debates)[number]) =>
 
     <!-- ===== MP PROFILES — clickable ===== -->
     <section class="mb-12">
-      <h2 class="text-xl font-bold text-gray-800 dark:text-white mb-2 flex items-center gap-2">
+      <h2 class="t-h3 text-gray-800 dark:text-white mb-2 flex items-center gap-2">
         <span>🎙️</span> 关键议员档案
       </h2>
       <p class="text-sm text-gray-400 mb-5">点击任意议员卡片，查看该议员参与的所有辩论</p>
@@ -408,7 +408,7 @@ const searchBlob = (d: (typeof debates)[number]) =>
 
     <!-- ===== POLICY SIGNALS — clickable ===== -->
     <section class="mb-12">
-      <h2 class="text-xl font-bold text-gray-800 dark:text-white mb-2 flex items-center gap-2">
+      <h2 class="t-h3 text-gray-800 dark:text-white mb-2 flex items-center gap-2">
         <span>📡</span> 政策信号追踪
       </h2>
       <p class="text-sm text-gray-400 mb-5">点击任意信号，查看该政策信号首次出现的相关辩论</p>
@@ -449,7 +449,7 @@ const searchBlob = (d: (typeof debates)[number]) =>
 
     <!-- ===== TOPIC QUICK FILTER ===== -->
     <section class="mb-8">
-      <h2 class="text-xl font-bold text-gray-800 dark:text-white mb-2 flex items-center gap-2">
+      <h2 class="t-h3 text-gray-800 dark:text-white mb-2 flex items-center gap-2">
         <span>🏷️</span> 按议题快速筛选
       </h2>
       <p class="text-sm text-gray-400 mb-4">点击议题标签，直接查看相关辩论</p>
@@ -476,7 +476,7 @@ const searchBlob = (d: (typeof debates)[number]) =>
     <!-- ===== DEBATE LIST ===== -->
     <section id="debate-section">
       <div class="flex items-center justify-between mb-4">
-        <h2 class="text-xl font-bold text-gray-800 dark:text-white flex items-center gap-2">
+        <h2 class="t-h3 text-gray-800 dark:text-white flex items-center gap-2">
           <span>📜</span> 辩论记录全览
           <span class="text-sm font-normal text-gray-400 ml-2">含中文摘要与议员立场</span>
         </h2>

@@ -43,7 +43,7 @@ const {
           {(icon || defaultIcon) && (
             <Icon name={icon || defaultIcon} class={twMerge('mb-2 w-10 h-10', defaultIconClass, itemClasses?.icon)} />
           )}
-          <div class={twMerge('text-xl font-bold', titleClass, itemClasses?.title)}>{title}</div>
+          <div class={twMerge('t-h3', titleClass, itemClasses?.title)}>{title}</div>
           {description && (
             <p class={twMerge('text-muted mt-2', descriptionClass, itemClasses?.description)} set:html={description} />
           )}

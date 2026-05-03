@@ -92,11 +92,11 @@ const resolvedMetrics: ResolvedMetric[] = dim.metrics.map((row: MetricRow) => ({
         {t(lang, 'trackerEditorialAttribution')} · {t(lang, 'trackerLastUpdated')}
         {dataDate}
       </p>
-      <h1 class="font-serif text-3xl md:text-5xl leading-tight font-semibold text-gray-900 dark:text-white mb-3">
+      <h1 class="t-display text-gray-900 dark:text-white mb-3">
         {dim.icon}
         {title}
       </h1>
-      <p class="text-base md:text-lg text-gray-500 dark:text-gray-400">{oneLiner}</p>
+      <p class="t-lead text-gray-500 dark:text-gray-400">{oneLiner}</p>
     </header>
 
     <section class="grid md:grid-cols-3 gap-3 mb-8">
@@ -107,7 +107,7 @@ const resolvedMetrics: ResolvedMetric[] = dim.metrics.map((row: MetricRow) => ({
               <div class="text-xs uppercase tracking-wider text-gray-500 mb-1">
                 {t(lang, 'trackerDetailCardHeadline')}
               </div>
-              <div class="text-2xl font-bold text-primary">{headline}</div>
+              <div class="t-stat text-primary">{headline}</div>
             </div>
             <div class="bg-surface border border-subtle rounded-lg p-4">
               <div class="text-xs uppercase tracking-wider text-gray-500 mb-1">
@@ -135,9 +135,7 @@ const resolvedMetrics: ResolvedMetric[] = dim.metrics.map((row: MetricRow) => ({
     {
       (progressDesc || progressCurrent) && (
         <section class="callout-note rounded-lg p-5 mb-10">
-          <h2 class="font-serif text-xl font-semibold text-gray-900 dark:text-white mb-3">
-            {t(lang, 'trackerDetailProgress')}
-          </h2>
+          <h2 class="t-h3 text-gray-900 dark:text-white mb-3">{t(lang, 'trackerDetailProgress')}</h2>
           {progressCurrent && progressTarget && (
             <p class="text-base text-gray-800 dark:text-gray-200 mb-2">
               <span class="font-mono font-bold">{progressCurrent}</span>
@@ -157,7 +155,7 @@ const resolvedMetrics: ResolvedMetric[] = dim.metrics.map((row: MetricRow) => ({
     }
 
     <section class="mb-10">
-      <h2 class="font-serif text-xl font-semibold text-gray-900 dark:text-white mb-4">
+      <h2 class="t-h3 text-gray-900 dark:text-white mb-4">
         {t(lang, 'trackerDetailRankings')}
       </h2>
       <ul class="space-y-2">
@@ -176,7 +174,7 @@ const resolvedMetrics: ResolvedMetric[] = dim.metrics.map((row: MetricRow) => ({
     </section>
 
     <section class="mb-10">
-      <h2 class="font-serif text-xl font-semibold text-gray-900 dark:text-white mb-3">
+      <h2 class="t-h3 text-gray-900 dark:text-white mb-3">
         {t(lang, 'trackerDetailJudgment')}
       </h2>
       <p class="text-base text-gray-800 dark:text-gray-200 leading-[1.85] m-0">{judgment}</p>
@@ -190,7 +188,7 @@ const resolvedMetrics: ResolvedMetric[] = dim.metrics.map((row: MetricRow) => ({
     </section>
 
     <section class="mb-10">
-      <h2 class="font-serif text-xl font-semibold text-gray-900 dark:text-white mb-4">
+      <h2 class="t-h3 text-gray-900 dark:text-white mb-4">
         {t(lang, 'trackerDetailMetrics')}
       </h2>
       <div class="overflow-x-auto">

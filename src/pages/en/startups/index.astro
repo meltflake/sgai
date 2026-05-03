@@ -20,34 +20,34 @@ const lang = 'en' as const;
     {/* Overview Stats */}
     <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-12">
       <div class="bg-surface rounded-lg shadow border border-subtle p-4 text-center">
-        <div class="text-2xl font-bold text-blue-600 dark:text-blue-400">{ecosystemStats.totalStartups}</div>
+        <div class="t-stat text-blue-600 dark:text-blue-400">{ecosystemStats.totalStartups}</div>
         <div class="text-xs text-muted mt-1">AI startups</div>
       </div>
       <div class="bg-surface rounded-lg shadow border border-subtle p-4 text-center">
-        <div class="text-2xl font-bold text-blue-600 dark:text-blue-400">#{ecosystemStats.globalRank}</div>
+        <div class="t-stat text-blue-600 dark:text-blue-400">#{ecosystemStats.globalRank}</div>
         <div class="text-xs text-muted mt-1">Global AI hub rank</div>
       </div>
       <div class="bg-surface rounded-lg shadow border border-subtle p-4 text-center">
-        <div class="text-2xl font-bold text-blue-600 dark:text-blue-400">{ecosystemStats.seaFundingShare}</div>
+        <div class="t-stat text-blue-600 dark:text-blue-400">{ecosystemStats.seaFundingShare}</div>
         <div class="text-xs text-muted mt-1">SEA AI funding share</div>
       </div>
       <div class="bg-surface rounded-lg shadow border border-subtle p-4 text-center">
-        <div class="text-2xl font-bold text-blue-600 dark:text-blue-400">{ecosystemStats.totalVCRaised}</div>
+        <div class="t-stat text-blue-600 dark:text-blue-400">{ecosystemStats.totalVCRaised}</div>
         <div class="text-xs text-muted mt-1">Total VC raised</div>
       </div>
       <div class="bg-surface rounded-lg shadow border border-subtle p-4 text-center">
-        <div class="text-2xl font-bold text-blue-600 dark:text-blue-400">{ecosystemStats.unicorns}</div>
+        <div class="t-stat text-blue-600 dark:text-blue-400">{ecosystemStats.unicorns}</div>
         <div class="text-xs text-muted mt-1">Unicorns</div>
       </div>
       <div class="bg-surface rounded-lg shadow border border-subtle p-4 text-center">
-        <div class="text-2xl font-bold text-blue-600 dark:text-blue-400">{ecosystemStats.govCommitment}</div>
+        <div class="t-stat text-blue-600 dark:text-blue-400">{ecosystemStats.govCommitment}</div>
         <div class="text-xs text-muted mt-1">Government AI commitment</div>
       </div>
     </div>
 
     {/* Unicorns */}
     <div class="mb-12">
-      <h2 class="text-xl font-bold mb-4">🦄 Unicorns</h2>
+      <h2 class="t-h3 mb-4">🦄 Unicorns</h2>
       <div class="overflow-x-auto">
         <table class="w-full text-sm border-collapse">
           <thead>
@@ -99,7 +99,7 @@ const lang = 'en' as const;
 
     {/* By Vertical */}
     <div class="mb-12">
-      <h2 class="text-xl font-bold mb-6">📂 By Vertical</h2>
+      <h2 class="t-h3 mb-6">📂 By Vertical</h2>
       <div class="space-y-8">
         {
           verticals.map((v) => (
@@ -147,7 +147,7 @@ const lang = 'en' as const;
 
     {/* Exits */}
     <div class="mb-12">
-      <h2 class="text-xl font-bold mb-4">🏆 Notable Exits &amp; Acquisitions</h2>
+      <h2 class="t-h3 mb-4">🏆 Notable Exits &amp; Acquisitions</h2>
       <div class="overflow-x-auto">
         <table class="w-full text-sm border-collapse">
           <thead>
@@ -180,7 +180,7 @@ const lang = 'en' as const;
 
     {/* Investors */}
     <div class="mb-12">
-      <h2 class="text-xl font-bold mb-4">💰 Investor Ecosystem</h2>
+      <h2 class="t-h3 mb-4">💰 Investor Ecosystem</h2>
       <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         {
           investors.map((inv) => (

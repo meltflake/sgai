@@ -69,7 +69,7 @@ const personSchema = {
       <div class="flex items-start justify-between flex-wrap gap-3">
         <div>
           <p class="text-xs uppercase tracking-[0.18em] text-primary font-semibold mb-3">AI Influence Profile</p>
-          <h1 class="font-serif text-3xl md:text-5xl leading-tight font-semibold text-gray-900 dark:text-white">
+          <h1 class="t-display text-gray-900 dark:text-white">
             {person.name}
           </h1>
         </div>
@@ -82,15 +82,15 @@ const personSchema = {
 
     <section class="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-8">
       <div class="bg-surface rounded-xl p-4 shadow-sm border border-subtle">
-        <div class="text-2xl font-bold text-blue-600">{counts.debateCount}</div>
+        <div class="t-stat text-blue-600">{counts.debateCount}</div>
         <div class="text-xs text-gray-500 mt-0.5">Parliamentary speeches</div>
       </div>
       <div class="bg-surface rounded-xl p-4 shadow-sm border border-subtle">
-        <div class="text-2xl font-bold text-purple-600">{counts.policyAuthorCount}</div>
+        <div class="t-stat text-purple-600">{counts.policyAuthorCount}</div>
         <div class="text-xs text-gray-500 mt-0.5">Policies championed</div>
       </div>
       <div class="bg-surface rounded-xl p-4 shadow-sm border border-subtle">
-        <div class="text-2xl font-bold text-rose-600">{relatedVideos.length}</div>
+        <div class="t-stat text-rose-600">{relatedVideos.length}</div>
         <div class="text-xs text-gray-500 mt-0.5">AI videos</div>
       </div>
     </section>
@@ -143,7 +143,7 @@ const personSchema = {
     }
 
     <section class="mb-10">
-      <h2 class="text-xl font-bold text-gray-800 dark:text-white mb-4">
+      <h2 class="t-h3 text-gray-800 dark:text-white mb-4">
         Parliamentary speeches ({related.debates.length})
       </h2>
       {
@@ -175,9 +175,7 @@ const personSchema = {
     {
       related.policies.length > 0 && (
         <section class="mb-10">
-          <h2 class="text-xl font-bold text-gray-800 dark:text-white mb-4">
-            Policies championed ({related.policies.length})
-          </h2>
+          <h2 class="t-h3 text-gray-800 dark:text-white mb-4">Policies championed ({related.policies.length})</h2>
           <div class="grid gap-3">
             {related.policies.map((policy) => (
               <a
@@ -197,7 +195,7 @@ const personSchema = {
     {
       relatedVideos.length > 0 && (
         <section class="mb-10">
-          <h2 class="text-xl font-bold text-gray-800 dark:text-white mb-4">AI videos ({relatedVideos.length})</h2>
+          <h2 class="t-h3 text-gray-800 dark:text-white mb-4">AI videos ({relatedVideos.length})</h2>
           <div class="grid gap-3">
             {relatedVideos.map((video) => (
               <a

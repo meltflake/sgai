@@ -54,7 +54,7 @@ This is one of the structural reasons OpenAI, Anthropic, DeepMind, Mistral and o
     {
       sections.map((section, sectionIdx) => (
         <div class="mb-16">
-          <h2 class="text-2xl font-bold mb-3 border-b-2 border-blue-600 dark:border-blue-400 pb-2">
+          <h2 class="t-h2 mb-3 border-b-2 border-blue-600 dark:border-blue-400 pb-2">
             {sectionIdx + 1}. {section.titleEn || section.title}
           </h2>
           <p class="text-sm italic text-muted mb-6">{section.philosophyEn || section.philosophy}</p>
@@ -117,7 +117,7 @@ This is one of the structural reasons OpenAI, Anthropic, DeepMind, Mistral and o
     }
 
     <div class="mt-12 bg-surface rounded-xl p-8 border border-subtle">
-      <h2 class="text-xl font-bold mb-4">Why this combination is attractive to AI companies</h2>
+      <h2 class="t-h3 mb-4">Why this combination is attractive to AI companies</h2>
       <div class="text-sm leading-relaxed space-y-3" set:html={renderInlineMarkdown(conclusionEn)} />
     </div>
 

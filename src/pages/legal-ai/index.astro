@@ -35,7 +35,7 @@ const scopeLabel: Record<string, { label: string; color: string }> = {
     {
       sections.map((section, sectionIdx) => (
         <div class="mb-16">
-          <h2 class="text-2xl font-bold mb-3 border-b-2 border-blue-600 dark:border-blue-400 pb-2">
+          <h2 class="t-h2 mb-3 border-b-2 border-blue-600 dark:border-blue-400 pb-2">
             {sectionIdx + 1}. {section.title}
           </h2>
           <p class="text-sm italic text-muted mb-6">{section.philosophy}</p>
@@ -99,7 +99,7 @@ const scopeLabel: Record<string, { label: string; color: string }> = {
     }
 
     <div class="mt-12 bg-surface rounded-xl p-8 border border-subtle">
-      <h2 class="text-xl font-bold mb-4">为什么这套组合对 AI 公司有吸引力</h2>
+      <h2 class="t-h3 mb-4">为什么这套组合对 AI 公司有吸引力</h2>
       <div class="text-sm leading-relaxed space-y-3" set:html={renderInlineMarkdown(conclusion)} />
     </div>
 

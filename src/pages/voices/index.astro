@@ -44,7 +44,7 @@ const speechSpeakers = [...new Set(mddiSpeeches.map((s) => s.speaker).filter((s)
   <div class="max-w-7xl mx-auto px-4 py-10">
     <!-- Header -->
     <div class="mb-10">
-      <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-3">AI 影响力图谱</h1>
+      <h1 class="t-h1 text-gray-900 dark:text-white mb-3">AI 影响力图谱</h1>
       <p class="text-gray-600 dark:text-gray-400 text-lg">新加坡 AI 领域的关键人物与机构，及其官方信息传播渠道。</p>
       <p class="text-gray-400 dark:text-gray-500 text-sm mt-1">追踪他们的动态，获取第一手 AI 政策与战略信息</p>
     </div>
@@ -52,22 +52,22 @@ const speechSpeakers = [...new Set(mddiSpeeches.map((s) => s.speaker).filter((s)
     <!-- Stats Row -->
     <div class="grid grid-cols-3 gap-4 mb-10">
       <div class="bg-surface rounded-xl p-5 shadow-sm border border-subtle text-center">
-        <div class="text-3xl font-bold text-blue-600">{people.length}</div>
+        <div class="t-stat text-blue-600">{people.length}</div>
         <div class="text-sm text-gray-500 mt-1">关键人物</div>
       </div>
       <div class="bg-surface rounded-xl p-5 shadow-sm border border-subtle text-center">
-        <div class="text-3xl font-bold text-purple-600">{institutions.length}</div>
+        <div class="t-stat text-purple-600">{institutions.length}</div>
         <div class="text-sm text-gray-500 mt-1">核心机构</div>
       </div>
       <div class="bg-surface rounded-xl p-5 shadow-sm border border-subtle text-center">
-        <div class="text-3xl font-bold text-green-600">{mddiSpeeches.length}</div>
+        <div class="t-stat text-green-600">{mddiSpeeches.length}</div>
         <div class="text-sm text-gray-500 mt-1">MDDI 演讲稿</div>
       </div>
     </div>
 
     <!-- People Section -->
     <section class="mb-14">
-      <h2 class="text-2xl font-bold text-gray-800 dark:text-white mb-6">关键人物</h2>
+      <h2 class="t-h2 text-gray-800 dark:text-white mb-6">关键人物</h2>
       <div class="grid gap-5 md:grid-cols-2">
         {
           people.map((person) => (
@@ -114,7 +114,7 @@ const speechSpeakers = [...new Set(mddiSpeeches.map((s) => s.speaker).filter((s)
 
     <!-- Institutions Section -->
     <section class="mb-14">
-      <h2 class="text-2xl font-bold text-gray-800 dark:text-white mb-6">核心机构</h2>
+      <h2 class="t-h2 text-gray-800 dark:text-white mb-6">核心机构</h2>
       <div class="grid gap-5 md:grid-cols-3">
         {
           institutions.map((inst) => (
@@ -148,7 +148,7 @@ const speechSpeakers = [...new Set(mddiSpeeches.map((s) => s.speaker).filter((s)
     <!-- MDDI Speeches Section -->
     <section>
       <div class="flex items-center gap-3 mb-6">
-        <h2 class="text-2xl font-bold text-gray-800 dark:text-white">MDDI AI 相关演讲稿</h2>
+        <h2 class="t-h2 text-gray-800 dark:text-white">MDDI AI 相关演讲稿</h2>
         <span class="text-sm text-gray-400">({mddiSpeeches.length})</span>
       </div>
 

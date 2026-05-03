@@ -57,7 +57,7 @@ const videosSorted = [...videos].sort((a, b) => b.date.localeCompare(a.date));
   <div class="max-w-7xl mx-auto px-4 py-10">
     <!-- Header -->
     <div class="mb-10">
-      <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-3">AI Influence Map</h1>
+      <h1 class="t-h1 text-gray-900 dark:text-white mb-3">AI Influence Map</h1>
       <p class="text-gray-600 dark:text-gray-400 text-lg">
         Singapore's key AI people and institutions, and the official channels through which they communicate.
       </p>
@@ -69,26 +69,26 @@ const videosSorted = [...videos].sort((a, b) => b.date.localeCompare(a.date));
     <!-- Stats Row -->
     <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
       <div class="bg-surface rounded-xl p-5 shadow-sm border border-subtle text-center">
-        <div class="text-3xl font-bold text-blue-600">{people.length}</div>
+        <div class="t-stat text-blue-600">{people.length}</div>
         <div class="text-sm text-gray-500 mt-1">Key people</div>
       </div>
       <div class="bg-surface rounded-xl p-5 shadow-sm border border-subtle text-center">
-        <div class="text-3xl font-bold text-purple-600">{institutions.length}</div>
+        <div class="t-stat text-purple-600">{institutions.length}</div>
         <div class="text-sm text-gray-500 mt-1">Core institutions</div>
       </div>
       <div class="bg-surface rounded-xl p-5 shadow-sm border border-subtle text-center">
-        <div class="text-3xl font-bold text-green-600">{mddiSpeeches.length}</div>
+        <div class="t-stat text-green-600">{mddiSpeeches.length}</div>
         <div class="text-sm text-gray-500 mt-1">MDDI speeches</div>
       </div>
       <div class="bg-surface rounded-xl p-5 shadow-sm border border-subtle text-center">
-        <div class="text-3xl font-bold text-red-600">{videos.length}</div>
+        <div class="t-stat text-red-600">{videos.length}</div>
         <div class="text-sm text-gray-500 mt-1">YouTube videos</div>
       </div>
     </div>
 
     <!-- People Section -->
     <section class="mb-14">
-      <h2 class="text-2xl font-bold text-gray-800 dark:text-white mb-6">Key People</h2>
+      <h2 class="t-h2 text-gray-800 dark:text-white mb-6">Key People</h2>
       <div class="grid gap-5 md:grid-cols-2">
         {
           people.map((person) => (
@@ -137,7 +137,7 @@ const videosSorted = [...videos].sort((a, b) => b.date.localeCompare(a.date));
 
     <!-- Institutions Section -->
     <section class="mb-14">
-      <h2 class="text-2xl font-bold text-gray-800 dark:text-white mb-6">Core Institutions</h2>
+      <h2 class="t-h2 text-gray-800 dark:text-white mb-6">Core Institutions</h2>
       <div class="grid gap-5 md:grid-cols-3">
         {
           institutions.map((inst) => (
@@ -173,7 +173,7 @@ const videosSorted = [...videos].sort((a, b) => b.date.localeCompare(a.date));
     <!-- MDDI Speeches Section -->
     <section>
       <div class="flex items-center gap-3 mb-6">
-        <h2 class="text-2xl font-bold text-gray-800 dark:text-white">MDDI AI Speeches</h2>
+        <h2 class="t-h2 text-gray-800 dark:text-white">MDDI AI Speeches</h2>
         <span class="text-sm text-gray-400">({mddiSpeeches.length})</span>
       </div>
 
@@ -318,7 +318,7 @@ const videosSorted = [...videos].sort((a, b) => b.date.localeCompare(a.date));
     <!-- YouTube Videos Section -->
     <section class="mt-14">
       <div class="flex items-center gap-3 mb-6">
-        <h2 class="text-2xl font-bold text-gray-800 dark:text-white">YouTube AI Videos</h2>
+        <h2 class="t-h2 text-gray-800 dark:text-white">YouTube AI Videos</h2>
         <span class="text-sm text-gray-400">({videos.length})</span>
       </div>
 

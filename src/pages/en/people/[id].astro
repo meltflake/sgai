@@ -51,7 +51,7 @@ const categoryColors: Record<Person['category'], string> = {
     <div class="mb-6">
       <div class="flex items-start justify-between flex-wrap gap-3">
         <div>
-          <h1 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">{person.name}</h1>
+          <h1 class="t-display text-gray-900 dark:text-white">{person.name}</h1>
           {/* person.zhName intentionally hidden on EN page */}
         </div>
         <span class={`text-xs font-semibold px-2.5 py-1 rounded-full shrink-0 ${categoryColors[person.category]}`}>
@@ -64,15 +64,15 @@ const categoryColors: Record<Person['category'], string> = {
 
     <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-6">
       <div class="bg-surface rounded-xl p-4 shadow-sm border border-subtle">
-        <div class="text-2xl font-bold text-blue-600">{counts.debateCount}</div>
+        <div class="t-stat text-blue-600">{counts.debateCount}</div>
         <div class="text-xs text-gray-500 mt-0.5">Parliamentary speeches</div>
       </div>
       <div class="bg-surface rounded-xl p-4 shadow-sm border border-subtle">
-        <div class="text-2xl font-bold text-purple-600">{counts.policyAuthorCount}</div>
+        <div class="t-stat text-purple-600">{counts.policyAuthorCount}</div>
         <div class="text-xs text-gray-500 mt-0.5">Policies championed</div>
       </div>
       <div class="bg-surface rounded-xl p-4 shadow-sm border border-subtle">
-        <div class="text-2xl font-bold text-amber-600">
+        <div class="t-stat text-amber-600">
           {(person.affiliations || []).slice(0, 2).join(' / ') || '—'}
         </div>
         <div class="text-xs text-gray-500 mt-0.5">Affiliations</div>
@@ -123,7 +123,7 @@ const categoryColors: Record<Person['category'], string> = {
     }
 
     <section class="mb-10">
-      <h2 class="text-xl font-bold text-gray-800 dark:text-white mb-4 flex items-center gap-2">
+      <h2 class="t-h3 text-gray-800 dark:text-white mb-4 flex items-center gap-2">
         Parliamentary speeches ({related.debates.length})
       </h2>
       {
@@ -166,7 +166,7 @@ const categoryColors: Record<Person['category'], string> = {
     {
       related.policies.length > 0 && (
         <section class="mb-10">
-          <h2 class="text-xl font-bold text-gray-800 dark:text-white mb-4 flex items-center gap-2">
+          <h2 class="t-h3 text-gray-800 dark:text-white mb-4 flex items-center gap-2">
             Policies championed ({related.policies.length})
           </h2>
           <div class="grid gap-3">

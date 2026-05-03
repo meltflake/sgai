@@ -45,7 +45,7 @@ const {
             {index !== items.length - 1 && <div class="w-px h-full bg-black/10 dark:bg-slate-400/50" />}
           </div>
           <div class={`pt-1 ${index !== items.length - 1 ? 'pb-8' : ''}`}>
-            {title && <p class={twMerge('text-xl font-bold', titleClass, itemClasses?.title)} set:html={title} />}
+            {title && <p class={twMerge('t-h3', titleClass, itemClasses?.title)} set:html={title} />}
             {description && (
               <p
                 class={twMerge('text-muted mt-2', descriptionClass, itemClasses?.description)}

@@ -27,7 +27,7 @@ const allYears = [...new Set(videos.map((v) => v.date.slice(0, 4)))].sort().reve
   <div class="max-w-7xl mx-auto px-4 py-10">
     <!-- Header -->
     <div class="mb-10">
-      <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-3">AI 视频观点</h1>
+      <h1 class="t-h1 text-gray-900 dark:text-white mb-3">AI 视频观点</h1>
       <p class="text-gray-600 dark:text-gray-400 text-lg">
         新加坡政府官员、学者和行业领袖关于人工智能的 YouTube 演讲与访谈。
       </p>
@@ -37,15 +37,15 @@ const allYears = [...new Set(videos.map((v) => v.date.slice(0, 4)))].sort().reve
     <!-- Stats Row -->
     <div class="grid grid-cols-3 gap-4 mb-10">
       <div class="bg-surface rounded-xl p-5 shadow-sm border border-subtle text-center">
-        <div class="text-3xl font-bold text-blue-600">{totalVideos}</div>
+        <div class="t-stat text-blue-600">{totalVideos}</div>
         <div class="text-sm text-gray-500 mt-1">视频总数</div>
       </div>
       <div class="bg-surface rounded-xl p-5 shadow-sm border border-subtle text-center">
-        <div class="text-3xl font-bold text-purple-600">{speakerCount}</div>
+        <div class="t-stat text-purple-600">{speakerCount}</div>
         <div class="text-sm text-gray-500 mt-1">演讲者</div>
       </div>
       <div class="bg-surface rounded-xl p-5 shadow-sm border border-subtle text-center">
-        <div class="text-3xl font-bold text-green-600">{yearRange}</div>
+        <div class="t-stat text-green-600">{yearRange}</div>
         <div class="text-sm text-gray-500 mt-1">覆盖年份</div>
       </div>
     </div>
@@ -155,7 +155,7 @@ const allYears = [...new Set(videos.map((v) => v.date.slice(0, 4)))].sort().reve
         videosByTopic.map((group) => (
           <section class="mb-10" data-topic-section={group.name}>
             <div class="flex items-center gap-3 mb-4">
-              <h2 class="text-xl font-bold text-gray-800 dark:text-white">{group.name}</h2>
+              <h2 class="t-h3 text-gray-800 dark:text-white">{group.name}</h2>
               <span class="text-sm text-gray-400">({group.videos.length})</span>
             </div>
             <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">{group.description}</p>

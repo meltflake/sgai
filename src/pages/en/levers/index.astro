@@ -47,7 +47,7 @@ const lang = 'en' as const;
               <div class="text-5xl">{lever.icon}</div>
               <div class="flex-1 min-w-[280px]">
                 <div class="flex items-center gap-3 flex-wrap mb-1">
-                  <h2 class="text-2xl font-bold m-0">
+                  <h2 class="t-h2 m-0">
                     <a href={`/en/levers/${leverSlug(lever)}/`} class="hover:text-blue-600 dark:hover:text-blue-400">
                       Lever {lever.number} · {pickLocalized(lever, 'name', 'nameEn', lang)}
                     </a>
@@ -144,7 +144,7 @@ const lang = 'en' as const;
     </div>
 
     <div class="mt-16 bg-surface rounded-xl p-8 border border-subtle">
-      <h2 class="text-2xl font-bold mb-4">{pickLocalized(transmissionExplainer, 'title', 'titleEn', lang)}</h2>
+      <h2 class="t-h2 mb-4">{pickLocalized(transmissionExplainer, 'title', 'titleEn', lang)}</h2>
       <pre
         class="text-sm whitespace-pre-wrap leading-relaxed bg-transparent p-0 border-0 m-0">{pickLocalized(transmissionExplainer, 'body', 'bodyEn', lang)}</pre>
     </div>

@@ -64,10 +64,10 @@ const schema = {
       <p class="text-xs uppercase tracking-[0.18em] text-primary font-semibold mb-4">
         Lever {lever.number} · Updated {dataDate}
       </p>
-      <h1 class="font-serif text-3xl md:text-5xl leading-tight font-semibold text-gray-900 dark:text-white mb-3">
+      <h1 class="t-display text-gray-900 dark:text-white mb-3">
         {isLever ? `${lever.icon} Lever ${lever.number} · ${leverName}` : title}
       </h1>
-      <p class="text-base md:text-lg text-gray-500 dark:text-gray-400">
+      <p class="t-lead text-gray-500 dark:text-gray-400">
         {
           isLever
             ? pickLocalized(lever, 'subtitle', lang)
@@ -82,7 +82,7 @@ const schema = {
           <section class="grid md:grid-cols-3 gap-3 mb-8">
             <div class="bg-surface border border-subtle rounded-lg p-4">
               <div class="text-xs uppercase tracking-wider text-gray-500 mb-1">Projects</div>
-              <div class="text-2xl font-bold text-primary">{projectCount}</div>
+              <div class="t-stat text-primary">{projectCount}</div>
             </div>
             <div class="bg-surface border border-subtle rounded-lg p-4">
               <div class="text-xs uppercase tracking-wider text-gray-500 mb-1">Transmission mode</div>
@@ -97,7 +97,7 @@ const schema = {
           </section>
 
           <section class="callout-note rounded-lg p-5 mb-10">
-            <h2 class="font-serif text-xl font-semibold text-gray-900 dark:text-white mb-3">Lever Definition</h2>
+            <h2 class="t-h3 text-gray-900 dark:text-white mb-3">Lever Definition</h2>
             <p class="text-gray-800 dark:text-gray-200 leading-[1.85]">{pickLocalized(lever, 'whatStateDoes', lang)}</p>
             {lever.insight && (
               <p class="text-gray-800 dark:text-gray-200 leading-[1.85] mt-3">
@@ -107,7 +107,7 @@ const schema = {
           </section>
 
           <section class="mb-10">
-            <h2 class="font-serif text-xl font-semibold text-gray-900 dark:text-white mb-4">Projects</h2>
+            <h2 class="t-h3 text-gray-900 dark:text-white mb-4">Projects</h2>
             <div class="space-y-6">
               {lever.groups.map((group) => (
                 <div>
@@ -160,7 +160,7 @@ const schema = {
           </section>
 
           <section class="callout-note rounded-lg p-5 mb-10">
-            <h2 class="font-serif text-xl font-semibold text-gray-900 dark:text-white mb-3">Project Description</h2>
+            <h2 class="t-h3 text-gray-900 dark:text-white mb-3">Project Description</h2>
             <p class="text-gray-800 dark:text-gray-200 leading-[1.85]">
               {pickLocalized(page.item, 'description', lang)}
             </p>
@@ -168,13 +168,13 @@ const schema = {
 
           <section class="grid md:grid-cols-2 gap-5 mb-10">
             <div class="bg-surface border border-subtle rounded-lg p-5">
-              <h2 class="font-serif text-xl font-semibold text-gray-900 dark:text-white mb-3">What the State Does</h2>
+              <h2 class="t-h3 text-gray-900 dark:text-white mb-3">What the State Does</h2>
               <p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
                 {pickLocalized(lever, 'whatStateDoes', lang)}
               </p>
             </div>
             <div class="bg-surface border border-subtle rounded-lg p-5">
-              <h2 class="font-serif text-xl font-semibold text-gray-900 dark:text-white mb-3">Bottleneck Solved</h2>
+              <h2 class="t-h3 text-gray-900 dark:text-white mb-3">Bottleneck Solved</h2>
               <p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
                 {pickLocalized(lever, 'bottleneckSolved', lang)}
               </p>
@@ -182,7 +182,7 @@ const schema = {
           </section>
 
           <section class="mb-10">
-            <h2 class="font-serif text-xl font-semibold text-gray-900 dark:text-white mb-4">Related Reading</h2>
+            <h2 class="t-h3 text-gray-900 dark:text-white mb-4">Related Reading</h2>
             <div class="grid gap-3 md:grid-cols-2">
               {itemPolicies.map((policy) => (
                 <a
