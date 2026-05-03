@@ -6,7 +6,7 @@
 scripts/
   auto_update.py                  # 统一调度入口（registry-driven）
   auto_update_config.example.py   # 配置模板（复制为 auto_update_config.py）
-  auto_update_config.py           # 真实配置（不入 git）— SMTP 凭据
+  auto_update_config.py           # 可选（不入 git）— 仅环境变量覆盖
   requirements.txt                # Python 依赖（用于 /tmp/sgai-venv）
   refresh/                        # 新管线（全部 type=tsx，全部 auto-PR）
     registry.json                 # 管线注册表（schedule / script / args / mode）
@@ -93,10 +93,11 @@ python 05_generate_ts.py
 
 ### 功能
 
-- 依次运行三条管线的**发现/扫描**步骤
-- 汇总结果，有新内容时发送 Gmail 邮件通知
+- 依次运行注册表里的 9+ 条管线（registry-driven）
+- auto-PR 管线：自动 push + `gh pr create --assignee @me`
+- scan-only 管线：有新内容或出错时调 `gh issue create --assignee @me`
 - 错误隔离：一条管线失败不影响其他管线
-- 状态持久化：记录上次扫描的最高 Hansard ID，避免重复扫描
+- 状态持久化：`scripts/data/last_scan_state.json`
 - 日志管理：自动清理 30 天前的日志
 
 ### 用法
@@ -119,22 +120,19 @@ python auto_update.py --only hansard
 python auto_update.py --verbose --dry-run
 ```
 
-### 邮件内容示例
+### 通知示例
 
-```
-Subject: [AISG 数据更新] 2026-04-07: 3 新视频, 2 新演讲, 0 新辩论
+auto-PR 管线（policies / ecosystem / 等）：
 
-YouTube 视频: 3 条新候选
-  - [2026-04-05] CNA: Singapore's AI push...
-  人工审核: cd scripts && python videos/02_review_and_merge.py
+> GitHub PR `[data-refresh] policies: +3 entries` opened by you, assigned to @wulujia
+> （触发 GitHub 邮件 + web 通知）
 
-MDDI 演讲: 2 条新发现
-  - [2026-04-01] Josephine Teo: Speech at...
+scan-only 管线（hansard / videos / voices）有新内容时：
 
-国会辩论: 无新内容 (扫描范围: oral 4088..4137, written 21916..21965)
+> GitHub Issue `[sgai] data-refresh 2026-04-07: videos +3, voices +2`
+> assigned to @wulujia, labelled `data-refresh,scan-result`
 
-运行耗时: 45s | 错误: 0 个
-```
+无 SMTP / Gmail App Password 配置。`gh auth login` 一次即可。
 
 ---
 
@@ -160,20 +158,20 @@ python3 -m venv /tmp/sgai-venv
 /tmp/sgai-venv/bin/python -m playwright install chromium
 ```
 
-### 2. 配置邮件
+### 2. 配置通知（GitHub，无需 SMTP）
+
+通知走 GitHub PR `--assignee @me` 和 `gh issue create --assignee @me`。`gh auth login` 一次即可：
 
 ```bash
-cd /path/to/sgai/scripts
+gh auth login    # 选 GitHub.com → HTTPS → 浏览器登录
+gh auth status   # 应输出 "Logged in to github.com as <你的账号>"
+```
 
-# 复制配置模板
-cp auto_update_config.example.py auto_update_config.py
+`auto_update_config.py` 现在只用作可选环境变量覆盖（默认配置可直接跑）：
 
-# 编辑配置，填入 Gmail App Password
-# Gmail App Password 获取方式:
-#   1. 登录 Google 账号
-#   2. 安全 → 两步验证（需先开启）
-#   3. App passwords → 生成一个 16 位密码
-vim auto_update_config.py
+```bash
+cp scripts/auto_update_config.example.py scripts/auto_update_config.py
+# 仅在你想覆盖默认 LLM 模型 / 并发等时编辑
 ```
 
 ### 3. 测试
@@ -254,7 +252,7 @@ sudo systemctl enable cron
 |------|--------|------|
 | `auto_update.py` | 是 | 统一调度脚本 |
 | `auto_update_config.example.py` | 是 | 配置模板 |
-| `auto_update_config.py` | 否 | 真实配置（含 SMTP 密码） |
+| `auto_update_config.py` | 否 | 可选环境变量覆盖（无 SMTP，所有通知走 GitHub） |
 | `data/last_scan_state.json` | 否 | 扫描状态（自动生成） |
 | `data/candidates.json` | 否 | YouTube 候选视频 |
 | `data/mddi_speeches.json` | 否 | MDDI 演讲稿 |

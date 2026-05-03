@@ -75,17 +75,23 @@ else
   print_warn "GITHUB_TOKEN unset — github-stars limited to 60 req/h (still works)"
 fi
 
-# 5. SMTP
+# 5. GitHub notification scope (PR assignee / Issue create)
 echo
-echo "5. SMTP config (auto_update_config.py)"
-if [ -f scripts/auto_update_config.py ]; then
-  if grep -q "your-email@gmail.com" scripts/auto_update_config.py; then
-    print_fail "scripts/auto_update_config.py still has placeholder values — fill in SMTP_USER/PASSWORD/EMAIL_TO"
+echo "5. GitHub notification (PR @assignee + Issue fallback)"
+if command -v gh >/dev/null 2>&1 && gh auth status >/dev/null 2>&1; then
+  scopes=$(gh auth status 2>&1 | grep -i "Token scopes" | head -1)
+  if echo "$scopes" | grep -qE "repo|write"; then
+    print_ok "gh token scopes look sufficient: $(echo "$scopes" | sed 's/^[[:space:]]*//')"
   else
-    print_ok "scripts/auto_update_config.py exists and seems configured"
+    print_warn "gh token scopes unknown — gh issue create may fail. If so, run: gh auth refresh -s repo"
   fi
 else
-  print_fail "scripts/auto_update_config.py missing — copy from auto_update_config.example.py"
+  print_warn "gh not authenticated (already flagged in §3)"
+fi
+if [ -f scripts/auto_update_config.py ]; then
+  print_ok "scripts/auto_update_config.py exists (optional overrides)"
+else
+  print_warn "scripts/auto_update_config.py absent — defaults are fine; copy example only if you want to override"
 fi
 
 # 6. crontab

@@ -182,6 +182,11 @@ export interface PushAndPROptions {
   /** Optional reviewers / labels passed through to `gh pr create`. */
   reviewers?: string[];
   labels?: string[];
+  /**
+   * GitHub handles to assign to the PR. Defaults to ['@me'] so the cron-runner
+   * gets a native GitHub notification (replacing the old SMTP path). Pass [] to disable.
+   */
+  assignees?: string[];
   /** Skip the PR step entirely (push only). Returns null in `pr` field. */
   pushOnly?: boolean;
 }
@@ -237,6 +242,12 @@ export async function pushAndOpenPR(options: PushAndPROptions): Promise<PushAndP
   }
   for (const label of options.labels || []) {
     ghArgs.push('--label', label);
+  }
+  // Default to @me so the cron-runner gets a native GitHub notification.
+  // Empty array opts out explicitly.
+  const assignees = options.assignees ?? ['@me'];
+  for (const assignee of assignees) {
+    ghArgs.push('--assignee', assignee);
   }
 
   const ghR = spawnSync('gh', ghArgs, { encoding: 'utf8' });

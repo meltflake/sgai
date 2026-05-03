@@ -23,13 +23,10 @@ import json
 import logging
 import os
 import re
-import smtplib
 import sys
 import time
 import traceback
 from datetime import datetime, timedelta
-from email.mime.multipart import MIMEMultipart
-from email.mime.text import MIMEText
 from pathlib import Path
 
 # ── 路径设置 ──────────────────────────────────────────────────────────────────
@@ -311,37 +308,53 @@ def compose_email(results: dict, errors: list[str], elapsed: float) -> tuple[str
     return subject, "\n".join(lines)
 
 
-def send_email(subject: str, html_body: str, logger):
-    """通过 Gmail SMTP 发送邮件"""
+def notify_via_github_issue(title: str, body: str, logger, labels: list[str] | None = None) -> bool:
+    """通过 `gh issue create` 开 GitHub Issue 通知（assigned to @me）。
+
+    取代旧的 SMTP 邮件路径——cron-running user 的 GitHub 通知（邮件 / web）会自动收到。
+    `gh` CLI 必须 `gh auth login` 已认证。
+    """
+    import subprocess
+
+    args = ["gh", "issue", "create", "--title", title, "--body", body, "--assignee", "@me"]
+    for label in labels or []:
+        args.extend(["--label", label])
+
     try:
-        from auto_update_config import (
-            SMTP_HOST,
-            SMTP_PORT,
-            SMTP_USER,
-            SMTP_PASSWORD,
-            EMAIL_TO,
+        result = subprocess.run(
+            args, cwd=PROJECT_ROOT, capture_output=True, text=True, encoding="utf-8"
         )
-    except ImportError:
-        logger.error("未找到 auto_update_config.py，无法发送邮件")
-        logger.error("请复制 auto_update_config.example.py 为 auto_update_config.py 并填入凭据")
+    except FileNotFoundError:
+        logger.error("`gh` CLI 未安装；无法发通知。`brew install gh && gh auth login`")
         return False
 
-    msg = MIMEMultipart("alternative")
-    msg["Subject"] = subject
-    msg["From"] = SMTP_USER
-    msg["To"] = EMAIL_TO
-    msg.attach(MIMEText(html_body, "html", "utf-8"))
-
-    try:
-        with smtplib.SMTP(SMTP_HOST, SMTP_PORT) as server:
-            server.starttls()
-            server.login(SMTP_USER, SMTP_PASSWORD)
-            server.sendmail(SMTP_USER, EMAIL_TO, msg.as_string())
-        logger.info(f"邮件已发送至 {EMAIL_TO}")
-        return True
-    except Exception as e:
-        logger.error(f"邮件发送失败: {e}")
+    if result.returncode != 0:
+        logger.error(f"gh issue create 失败: {result.stderr.strip()[:300]}")
         return False
+    url = result.stdout.strip().splitlines()[-1] if result.stdout.strip() else ""
+    if url:
+        logger.info(f"已开 GitHub issue: {url}")
+    return True
+
+
+def html_to_markdown(html: str) -> str:
+    """非常 lightweight 的 HTML → Markdown 转换，仅覆盖 compose_email 用到的标签。"""
+    import re as _re
+
+    s = html
+    s = _re.sub(r"<h2>(.*?)</h2>", r"## \1\n", s)
+    s = _re.sub(r"<h3>(.*?)</h3>", r"### \1\n", s)
+    s = _re.sub(r"<p[^>]*>(.*?)</p>", r"\1\n", s)
+    s = _re.sub(r"<ul>", "", s)
+    s = _re.sub(r"</ul>", "\n", s)
+    s = _re.sub(r"<li>(.*?)</li>", r"- \1", s)
+    s = _re.sub(r"<a href=['\"]([^'\"]+)['\"]>([^<]+)</a>", r"[\2](\1)", s)
+    s = _re.sub(r"<strong>(.*?)</strong>", r"**\1**", s)
+    s = _re.sub(r"<code>(.*?)</code>", r"`\1`", s)
+    s = _re.sub(r"<hr>", "---", s)
+    s = _re.sub(r"<[^>]+>", "", s)
+    s = _re.sub(r"\n{3,}", "\n\n", s)
+    return s.strip()
 
 
 # ── 日志清理 ──────────────────────────────────────────────────────────────────
@@ -497,22 +510,29 @@ def main():
     total_new = sum(r.get("count", 0) for r in results.values())
     logger.info(f"扫描完成: 共 {total_new} 条新内容, 耗时 {elapsed:.0f}s")
 
-    # ── 发邮件 ──
+    # ── 通知（GitHub Issue 取代 SMTP）──
+    # 新管线（type=tsx, mode=auto-pr）已经各自开了 PR + assign @me，不需重复通知。
+    # 这里只为 scan-only 旧管线（hansard / videos / voices）和失败开 issue。
     try:
-        from auto_update_config import SEND_IF_NO_NEW
+        from auto_update_config import NOTIFY_IF_NO_NEW
     except ImportError:
-        SEND_IF_NO_NEW = False
+        NOTIFY_IF_NO_NEW = False
 
-    should_send = total_new > 0 or SEND_IF_NO_NEW or errors
+    scan_only_pids = {"hansard", "videos", "voices"}
+    scan_only_results = {pid: r for pid, r in results.items() if pid in scan_only_pids}
+    scan_only_total = sum(r.get("count", 0) or 0 for r in scan_only_results.values())
+    should_notify = scan_only_total > 0 or NOTIFY_IF_NO_NEW or errors
+
     if args.dry_run:
         subject, body = compose_email(results, errors, elapsed)
-        logger.info(f"[DRY RUN] 邮件标题: {subject}")
-        logger.info("[DRY RUN] 跳过发送")
-    elif should_send:
+        logger.info(f"[DRY RUN] Issue 标题: {subject}")
+        logger.info("[DRY RUN] 跳过开 Issue")
+    elif should_notify:
         subject, body = compose_email(results, errors, elapsed)
-        send_email(subject, body, logger)
+        labels = ["data-refresh", "scan-result"] if not errors else ["data-refresh", "failure"]
+        notify_via_github_issue(subject, html_to_markdown(body), logger, labels=labels)
     else:
-        logger.info("无新内容，跳过邮件")
+        logger.info("无新 scan-only 内容、无错误，跳过 GitHub Issue（auto-PR 管线已各自 assign @me）")
 
     # ── 保存状态 ──
     save_state(state)

@@ -87,35 +87,35 @@ export SGAI_TRANSLATION_CONCURRENCY=2          # 默认 2，避免 rate limit
 
 ---
 
-## 5. SMTP（邮件通知）
+## 5. 通知（GitHub PR + Issue，无需 SMTP）
+
+通知路径已经全部走 GitHub，不再需要 Gmail App Password / SMTP 配置：
+
+- **auto-PR 管线**（policies / ecosystem / github-stars / talent / startups / tracker / benchmarking / levers / legal-ai）：每条 PR 自动 `--assignee @me`，GitHub 原生通知（邮件 + web）会送到你账号。
+- **scan-only 旧管线**（hansard / videos / voices）：找到新内容或出错时，`auto_update.py` 调 `gh issue create --assignee @me` 开一条 Issue。
+
+只要 `gh auth login` 已登录（§3），通知就生效。`auto_update_config.py` 现在是**可选**的——不存在也能跑，只是为了方便覆盖默认模型 / 并发。
+
+如果想"无新内容也开一条空 Issue"作为心跳：
 
 ```bash
 cp scripts/auto_update_config.example.py scripts/auto_update_config.py
-vim scripts/auto_update_config.py
+# 把 NOTIFY_IF_NO_NEW = True 设上
 ```
 
-填进去：
-
-- `SMTP_USER` — 你的 Gmail
-- `SMTP_PASSWORD` — Gmail App Password（**不是登录密码**，从 Google Account → Security → 2-Step Verification → App passwords 生成 16 位）
-- `EMAIL_TO` — 收件人
-
-`auto_update_config.py` 已在 `.gitignore`，不会进 git。
-
-校验（发一封测试邮件）：
+校验（dry-run 不会真开 Issue / PR）：
 
 ```bash
 /tmp/sgai-venv/bin/python scripts/auto_update.py --schedule=weekly --dry-run
-# DRY RUN 不会真发，但会打印 subject 和 body。
 ```
 
-去掉 `--dry-run` 真发一封：
+真跑一次 scan-only 管线测通知：
 
 ```bash
-/tmp/sgai-venv/bin/python scripts/auto_update.py --only=github-stars --schedule=monthly
+/tmp/sgai-venv/bin/python scripts/auto_update.py --only=hansard
 ```
 
-收件箱应看到 `[sgai] data-refresh ...` 邮件。
+应在 GitHub 上看到 `[sgai] data-refresh ...` Issue（assigned 给你），同时收到 GitHub 通知邮件。
 
 ---
 
@@ -217,7 +217,8 @@ npx tsx scripts/refresh/policies/run.ts --limit=2
 | `callLlm: timeout after 120000ms` | 慢网络。设 `SGAI_LLM_TIMEOUT_MS=240000` 翻倍 |
 | `callLlm: claude exited 1` | `claude` 未登录或 token 失效。跑一次 `claude` 互动重新登录 |
 | `git push failed` | 不在 GitHub origin / 没 push 权限 / 分支冲突 |
-| 邮件没收到 | `auto_update_config.py` SMTP 配置错；先 `--dry-run` 看 subject 拼出来对不对 |
+| GitHub 通知没收到 | (1) 检查 GitHub Settings → Notifications → 邮件订阅打开；(2) `gh auth status` 必须含 repo scope；(3) 自己 watch sgai 仓库 |
+| `gh issue create failed: HTTP 403` | gh token 缺权限；运行 `gh auth refresh -s repo` |
 | ecosystem dry-run 0 候选 | 那个 RSS 当前没新帖（正常）。换个 `--only-domain=...` 试 |
 | Mac 睡眠时 cron 漏跑 | 接受现状；下次唤醒后下个周期会跑 |
 | AI 写错政策摘要 | 看 confidence 字段；`_pendingReview: true` 的不会渲染 |

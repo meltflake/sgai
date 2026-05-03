@@ -350,18 +350,17 @@ npx tsx scripts/voices/prospect-stubs.mjs sync-from-people [<id>...] [--dry-run]
 4. 在 GitHub UI 上 Approve & Merge → Cloudflare 自动重新构建上线
 5. \_pendingReview 条目：合并前在 PR 改 `_pendingReview: true → false`（或删字段），listing 立刻显示
 
-### gh CLI / claude CLI / SMTP 准备
+### gh CLI / claude CLI 准备（无需 OpenAI / SMTP）
 
-详细一步步看 [scripts/SETUP.md](scripts/SETUP.md)，跑 `bash scripts/doctor.sh` 体检。**不需要 OpenAI API key**——AI 摘要 + 翻译都通过本地 `claude` CLI 调用：
+详细一步步看 [scripts/SETUP.md](scripts/SETUP.md)，跑 `bash scripts/doctor.sh` 体检。
 
 ```bash
-gh auth login                                    # GitHub PR 创建权限
-which claude                                     # 应能找到（Claude Code）
-claude --version                                 # 应输出 "<版本> (Claude Code)"
+gh auth login                                    # PR 创建 + Issue 通知（@assignee）
+which claude && claude --version                 # AI 摘要 + 翻译走本地 claude CLI
 echo 'export GITHUB_TOKEN=ghp_xxx' >> ~/.zshrc   # 可选，github-stars 5000 req/h
-cp scripts/auto_update_config.example.py scripts/auto_update_config.py
-# 编辑 SMTP_USER / SMTP_PASSWORD / EMAIL_TO（Gmail App Password）
 ```
+
+**通知零配置**：所有 PR 自动 `--assignee @me`；scan-only 旧管线（hansard/videos/voices）有新内容时调 `gh issue create --assignee @me`。GitHub 原生送邮件 + web 通知。
 
 ### 添加新管线的 6 步流程
 
