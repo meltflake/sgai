@@ -27,9 +27,13 @@
 //   node scripts/voices/prospect-stubs.mjs status
 //     Print review queue status (pending / ready / applied counts).
 //
-//   node scripts/voices/prospect-stubs.mjs apply <id>
+//   node scripts/voices/prospect-stubs.mjs apply <id> [--skip-url-check]
 //     Read a "ready" prospect file and print a TypeScript snippet to
 //     stdout. Paste into the matching person record in people.ts.
+//     Before printing, every sourceUrl is HEAD-checked; any 4xx/5xx
+//     (other than 401/403/429 bot-walls) blocks the apply with exit 2.
+//     This is the front-line defense against LLM-fabricated URLs whose
+//     format looks right but the page never existed (e.g. spkr4563 IDs).
 //
 //   node scripts/voices/prospect-stubs.mjs sync-from-people [<id> ...] [--dry-run]
 //     Reverse-sync: copy live curated fields (signatureWork / notableQuotes
@@ -335,9 +339,10 @@ async function cmdSyncFromPeople(args) {
 async function cmdApply(args) {
   const id = args[0];
   if (!id) {
-    console.error('Usage: apply <person-id>');
+    console.error('Usage: apply <person-id> [--skip-url-check]');
     process.exit(1);
   }
+  const skipUrlCheck = args.includes('--skip-url-check');
   const filePath = join(PROSPECTS_DIR, `${id}.json`);
   if (!existsSync(filePath)) {
     console.error(`No prospect file at ${filePath}`);
@@ -356,11 +361,91 @@ async function cmdApply(args) {
     process.exit(1);
   }
 
+  if (!skipUrlCheck) {
+    const urls = collectSourceUrls(data, fields);
+    if (urls.length > 0) {
+      process.stderr.write(`Validating ${urls.length} sourceUrl(s) — pass --skip-url-check to bypass…\n`);
+      const broken = await validateUrls(urls);
+      if (broken.length > 0) {
+        console.error(
+          `\nBlocking apply: ${broken.length} sourceUrl(s) are unreachable (4xx/5xx/network error).\n` +
+            `LLM-fabricated URLs (correct format, fake ID) and dead links are the typical causes.\n` +
+            `Fix the prospect JSON or pass --skip-url-check if you've manually verified.\n`,
+        );
+        for (const b of broken) console.error(`  ${b.status}  ${b.url}`);
+        process.exit(2);
+      }
+      process.stderr.write('All sourceUrls reachable.\n');
+    }
+  }
+
   console.log(`// Patch for person id="${id}" — paste these fields into the matching record in src/data/people.ts:\n`);
   for (const k of fields) {
     console.log(`    ${k}: ${stringifyTs(data[k])},`);
   }
   console.log(`\n// After pasting, set this prospect's status to "applied" in ${filePath}.`);
+}
+
+// Walk the populated fields and pull every sourceUrl that's actually a string.
+function collectSourceUrls(data, fields) {
+  const urls = [];
+  for (const k of fields) {
+    for (const entry of data[k]) {
+      if (entry && typeof entry.sourceUrl === 'string' && /^https?:\/\//i.test(entry.sourceUrl)) {
+        urls.push({ field: k, url: entry.sourceUrl });
+      }
+    }
+  }
+  return urls;
+}
+
+// HEAD-then-GET fallback (some servers reject HEAD). Treat 2xx/3xx and 401/403/429
+// as "reachable enough" — bot-walls and auth gates don't mean 404. Anything else
+// (including network errors) flags as broken.
+async function validateUrls(urls, { concurrency = 6, timeoutMs = 10000 } = {}) {
+  const broken = [];
+  const queue = [...urls];
+  async function worker() {
+    while (queue.length) {
+      const item = queue.shift();
+      const status = await checkOne(item.url, timeoutMs);
+      if (!isReachable(status)) broken.push({ url: item.url, status });
+    }
+  }
+  await Promise.all(Array.from({ length: Math.min(concurrency, urls.length) }, worker));
+  return broken;
+}
+
+async function checkOne(url, timeoutMs) {
+  const controller = new AbortController();
+  const t = setTimeout(() => controller.abort(), timeoutMs);
+  try {
+    let resp = await fetch(url, {
+      method: 'HEAD',
+      redirect: 'follow',
+      signal: controller.signal,
+      headers: { 'User-Agent': 'Mozilla/5.0 (sgai prospect-stubs validator)' },
+    });
+    if (resp.status === 405 || resp.status === 501) {
+      resp = await fetch(url, {
+        method: 'GET',
+        redirect: 'follow',
+        signal: controller.signal,
+        headers: { 'User-Agent': 'Mozilla/5.0 (sgai prospect-stubs validator)' },
+      });
+    }
+    return resp.status;
+  } catch (err) {
+    return `ERR:${err.name || 'fetch'}`;
+  } finally {
+    clearTimeout(t);
+  }
+}
+
+function isReachable(status) {
+  if (typeof status !== 'number') return false;
+  if (status >= 200 && status < 400) return true;
+  return status === 401 || status === 403 || status === 429;
 }
 
 // Format a JSON value as TS-friendly source (single quotes, trailing commas).
