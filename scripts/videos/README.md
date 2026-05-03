@@ -31,28 +31,37 @@ python 01_scan_channels.py --days 30 --exclude-existing
 
 输出: `data/candidates.json`
 
-### 2. 审核并生成代码
+### 2. 审核并生成代码（双语 emit）
+
+> ⚠️ 旧的 `02_review_and_merge.py` **已退役**（2026-05-03）。它输出单语种 snippet，违反 sgai 的 i18n 双字段硬规则，必须人工补 `*En`、人工写 ID、人工跑 prettier、人工开 PR。新脚本一行命令搞定全套。
 
 ```bash
-# 交互式逐条审核
-python 02_review_and_merge.py
+# 入指定的若干条（按 candidates.json 里的 videoId）
+npx tsx scripts/refresh/videos/emit.ts --ids=cRSlrDbcygw,dn1syFajWw0
 
-# 全部保留（需后续手动补充信息）
-python 02_review_and_merge.py --auto
+# 入 candidates.json 里的全部
+npx tsx scripts/refresh/videos/emit.ts --all
+
+# Dry-run：生成预览但不写 videos.ts
+npx tsx scripts/refresh/videos/emit.ts --ids=... --dry-run
+
+# 写入但不 commit / 不 push
+npx tsx scripts/refresh/videos/emit.ts --ids=... --no-commit
+npx tsx scripts/refresh/videos/emit.ts --ids=... --no-push
 ```
 
-输出:
-- `data/approved.json` — 审核通过的视频
-- `data/new_entries.ts.txt` — TypeScript 代码片段，粘贴到 `src/data/videos.ts`
+新脚本会自动：
 
-### 3. 合并到项目
+1. 从 candidates.json 按 `--ids` 筛选
+2. 调用本地 `claude` CLI 生成 **中英双字段**（title/titleEn、summary/summaryEn、topic/topicEn、speakerTitle/speakerTitleEn），带 sha256 缓存
+3. 标准化已知 speaker（Lawrence Wong → 总理 / AI Singapore → academic / CNA → industry 等，见 `SPEAKER_REGISTRY`）
+4. 用 `yt-dlp` 抓 duration
+5. 从现有 `videos.ts` 读最大 `vNNN` ID 自动分配下一个
+6. splice 进 `videos.ts` 数组顶部
+7. 跑 `prettier --write` + `findUnpairedFields()` 源码级 i18n 校验
+8. 自动开新分支 commit + push + `gh pr create`
 
-将 `data/new_entries.ts.txt` 中的代码粘贴到 `src/data/videos.ts` 的 `videos` 数组中，然后:
-
-```bash
-npm run fix:prettier
-npm run check
-```
+要新增/修改 known speaker 标准化规则，编辑 `scripts/refresh/videos/emit.ts` 的 `SPEAKER_REGISTRY`。
 
 ### 4. 抓取字幕、翻译并生成 transcript 数据
 
@@ -118,9 +127,26 @@ npm run check:video-transcripts
 
 ## 定期更新建议
 
-每周运行一次:
+每周自动跑（cron）：
+
 ```bash
-python 01_scan_channels.py --days 7 --exclude-existing
+python3 scripts/auto_update.py --only=videos
 ```
 
+入口流程：扫描 → 写 `candidates.json` → 开 GitHub issue 通知 Luca。Luca review 后手动跑：
+
+```bash
+npx tsx scripts/refresh/videos/emit.ts --ids=<挑选的 videoIds>
+```
+
+emit 会自动开 PR，merge 即上线。
+
 RSS feed 每频道最多返回 15 条最新视频，适合周更频率。
+
+### 频道相关性策略
+
+- **纯 SG 政府/机构频道**（govsg / SmartNation / AISG）：豁免 SG 关键词二次过滤，所有 AI 关键词命中条目都进 candidates。
+- **本地媒体**（CNA / ST）：会发全球 AI 新闻（如 Iran 战争、香港机器人 Sophia），命中 AI 关键词但与新加坡 AI 战略无关。所以 CNA / ST **必须**走 SG 关键词二次过滤。
+- **国际频道**（WEF / Bloomberg）：同样必须走 SG 二次过滤。
+
+`LOCAL_CHANNELS` 在 `01_scan_channels.py` 控制谁豁免 SG 过滤。新加纯 SG 政府/研究机构频道时记得把 channel key 加进 `LOCAL_CHANNELS`。
