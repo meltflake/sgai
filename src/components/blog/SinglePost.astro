@@ -7,7 +7,7 @@ import SocialShare from '~/components/common/SocialShare.astro';
 
 import { getPermalink } from '~/utils/permalinks';
 import { getFormattedDate } from '~/utils/utils';
-import { getLangFromPath } from '~/i18n';
+import { getLangFromPath, t } from '~/i18n';
 
 import type { Post } from '~/types';
 
@@ -33,6 +33,18 @@ const lang = getLangFromPath(new URL(Astro.url).pathname);
           <time datetime={String(post.publishDate)} class="inline-block"
             >{getFormattedDate(post.publishDate, lang)}</time
           >
+          {
+            post.updateDate && (
+              <>
+                {' '}
+                ·{' '}
+                <span class="inline-block text-muted dark:text-slate-400">
+                  {t(lang, 'freshnessUpdated')}{' '}
+                  <time datetime={String(post.updateDate)}>{getFormattedDate(post.updateDate, lang)}</time>
+                </span>
+              </>
+            )
+          }
           {
             post.author && (
               <>

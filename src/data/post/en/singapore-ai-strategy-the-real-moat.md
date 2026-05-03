@@ -1,5 +1,6 @@
 ---
 publishDate: 2026-03-20
+updateDate: 2026-05-03
 title: "Where Is Singapore's AI Strait of Malacca?"
 excerpt: 'Singapore turned itself from an island with no oil into the world''s third-largest refining hub in 30 years. Can it pull off the same trick in the AI era? The early "AI refining hub" strategy is being eroded by the evolution of large models, and GitHub data confirms it. But Singapore''s real competitive edge lies precisely in its institutional capacity to identify the problem fast and pivot decisively.'
 category: 'Analysis'
