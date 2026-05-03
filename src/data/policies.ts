@@ -196,6 +196,28 @@ export const categories: PolicyCategory[] = [
         relatedTimelineYears: [],
         relatedPostSlugs: [],
       },
+      {
+        id: 'goals-of-smart-nation-20',
+        title: '智慧国家2.0的目标',
+        titleEn: 'Goals of Smart Nation 2.0',
+        date: '2025-07',
+        source: '智慧国家与数字政府办公室 (SNDGO)',
+        sourceOrgUrl: 'https://www.smartnation.gov.sg/',
+        sourceUrl:
+          'https://www.smartnation.gov.sg/about/our-goals/goals-of-smart-nation/',
+        summary: '新加坡智慧国家2.0战略旨在实现三个核心目标：信任、增长和社区。这些目标源于公民多年来通过调查、研究和反馈渠道提出的关键关切，反映了政府如何利用技术改善公民生活并为所有人创造繁荣数字未来的承诺。智慧国家2.0战略将随着数字发展的演进而不断迭代和调整。',
+        content: `新加坡智慧国家2.0战略旨在实现三个核心目标：信任、增长和社区。这些目标源于公民多年来通过调查、研究和反馈渠道提出的关键关切，反映了政府如何利用技术改善公民生活并为所有人创造繁荣数字未来的承诺。智慧国家2.0战略将随着数字发展的演进而不断迭代和调整。`,
+        summaryEn:
+          'Singapore\'s Smart Nation 2.0 strategy aims to achieve three core goals: Trust, Growth, and Community. These goals, derived from citizen feedback gathered through surveys, research, and other channels over the years, reflect how technology will be used to improve citizens\' lives and create a thriving digital future for all. The Smart Nation 2.0 strategies will be continually iterated and adjusted as digital developments evolve, with ongoing consultation with citizens and businesses.',
+        contentEn: `Singapore's Smart Nation 2.0 strategy aims to achieve three core goals: Trust, Growth, and Community. These goals, derived from citizen feedback gathered through surveys, research, and other channels over the years, reflect how technology will be used to improve citizens' lives and create a thriving digital future for all. The Smart Nation 2.0 strategies will be continually iterated and adjusted as digital developments evolve, with ongoing consultation with citizens and businesses.`,
+        sourceEn: 'Smart Nation and Digital Government Office (SNDGO)',
+        ministry: undefined,
+        authorPersonIds: [],
+        relatedDebateIds: [],
+        relatedLeverNumbers: [],
+        relatedTimelineYears: [],
+        relatedPostSlugs: [],
+      },
     ],
   },
   {
