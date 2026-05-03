@@ -108,6 +108,22 @@ npx prettier --write src/
 - 自动管线已强制：`scripts/lib/auto-discovered-emit.ts` 和各 `emit.ts` 在 emit 后跑 `findUnpairedFields` baseline-vs-after diff，新引入 unpaired 自动 rollback；不会"偷偷"放出单语种数据。
 - 未来扩展到 ja / ko 等语言时，本规则升级为"有几个语言就更新几个，所有目标语种同 commit 同步"。当前 (2026-05) 范围是 zh + en。
 
+### 6. sourceUrl 真实性约定（关键 — 最高优先级）
+
+> **🔴 顶层硬规则：任何写入 `src/data/*.ts` 的 `sourceUrl` / `url` 字段必须 HTTP 可达（2xx/3xx，或 401/403/429 这类反爬但页面真实存在）。404/410/5xx/DNS 失败一律禁止入库。**
+>
+> 触发场景：所有"靠 LLM 补脑"的内容流程——voices prospect、人工编辑、粘贴翻译、agent 批量回填等。和 hansard / videos 这类先有 API ground-truth 再 emit 的管线不同，这类流程对 URL 幻觉零防御。
+>
+> - ❌ 禁止凭训练记忆/格式推断构造 URL。LLM 会在 URL 模式正确（如 `fintechfestival.sg/speakers/spkr<NUMBER>-<slug>`）时填一个看似合理但**从未存在**的 ID。这种幻觉肉眼几乎无法识别，必须靠 HTTP 校验兜底。
+> - ✅ 加 / 改 sourceUrl：必须先 `curl -I` 或 fetch 验证 200/3xx，再写入。
+> - ✅ 不确定？用 [scripts/lib/gov-fetch.ts](scripts/lib/gov-fetch.ts) 的 fetch helper 真去抓一遍。
+> - ✅ schema 允许 sourceUrl 可选时（如 `SignatureWork` / `SpeakingEntry` / `ExternalRole`），找不到可信源就**留空**比写假的好；`NotableQuote.sourceUrl` 是 required，找不到就整条删。
+> - ✅ 真的"页面被反爬挡了但内容确实存在"：在 prospect JSON 的 `notes` 字段写明白验证依据（如"archive.org 快照确认"），并通过 `--skip-url-check` 显式豁免。
+>
+> 强制点：`scripts/voices/prospect-stubs.mjs apply` 在 print TS 片段前会 HEAD-check 所有 sourceUrl，4xx/5xx（除 401/403/429）blocks apply 退码 2。新加的"靠 LLM 补脑"型管线**必须**复用同样的 `validateUrls()` 检查。
+
+历史踩点：[c574e54](https://github.com/meltflake/sgai/commit/c574e54)（2026-05-03 voices backfill）写入 2 条编造 URL（`spkr4563-prof-mohan-kankanhalli`、`asianaviation.com/astar-sia-siaec-...`），加 2 条 weforum 反爬伪 404。当时无 URL 校验，靠用户事后报错才发现。本规则即此次事故的事后加固。
+
 ## 项目结构
 
 ```
@@ -319,21 +335,21 @@ npx tsx scripts/voices/prospect-stubs.mjs sync-from-people [<id>...] [--dry-run]
 
 调度入口：`python3 scripts/auto_update.py --schedule=<weekly|monthly|quarterly|half-yearly>`，由 `scripts/refresh/registry.json` 决定每个 schedule 跑哪些管线。所有新管线（type=tsx）流程统一：scan → AI 摘要 → emit → auto-commit → push → `gh pr create` → 邮件附 PR 链接。
 
-| 域               | 命令入口                                                                        | 频率       | 模式                                                       |
-| ---------------- | ------------------------------------------------------------------------------- | ---------- | ---------------------------------------------------------- |
-| Hansard 国会辩论 | `python3 scripts/auto_update.py --only=hansard`                                 | 周         | scan-email                                                 |
-| YouTube 视频     | `python3 scripts/auto_update.py --only=videos`                                  | 周         | scan-email                                                 |
-| MDDI 演讲        | `python3 scripts/auto_update.py --only=voices`                                  | 周         | scan-email                                                 |
-| Voices 三无人物  | `npx tsx scripts/voices/prospect-stubs.mjs {list,queue,apply,sync-from-people}` | 季（手动） | 半自动 review queue                                        |
-| **GitHub stars** | `npx tsx scripts/refresh/github-stars.ts [--bump-version]`                      | 月         | **auto-PR**                                                |
-| **Policies**     | `npx tsx scripts/refresh/policies/run.ts --limit=5`                             | 月         | **auto-PR**                                                |
-| **Ecosystem**    | `npx tsx scripts/refresh/ecosystem/run.ts --limit=5`                            | 月         | **auto-PR**（条目带 `_pendingReview: true`，listing 隐藏） |
-| **Levers**       | `npx tsx scripts/refresh/levers/run.ts --limit=3`                               | 季         | **auto-PR**（入 lever 1 "Auto-discovered" 子组待移位）     |
-| **Startups**     | `npx tsx scripts/refresh/startups/run.ts --limit=3`                             | 季         | **auto-PR**（入 `autoDiscovered[]`）                       |
-| **Legal-AI**     | `npx tsx scripts/refresh/legal-ai/run.ts --limit=3`                             | 半年       | **auto-PR**（入 "Auto-discovered" section 待移位）         |
-| **Talent**       | `npx tsx scripts/refresh/talent/run.ts --limit=3`                               | 半年       | **auto-PR**（入 `autoDiscovered[]`）                       |
-| **Tracker**      | `npx tsx scripts/refresh/tracker/run.ts --limit=3`                              | 半年       | **auto-PR**（入 `autoDiscovered[]`）                       |
-| **Benchmarking** | `npx tsx scripts/refresh/benchmarking/run.ts --limit=3`                         | 半年       | **auto-PR**（仅追踪新报告，数字仍需手工提取）              |
+| 域               | 命令入口                                                                                                                 | 频率       | 模式                                                       |
+| ---------------- | ------------------------------------------------------------------------------------------------------------------------ | ---------- | ---------------------------------------------------------- |
+| Hansard 国会辩论 | `python3 scripts/auto_update.py --only=hansard`                                                                          | 周         | scan-email                                                 |
+| YouTube 视频     | scan: `python3 scripts/auto_update.py --only=videos`<br/>emit: `npx tsx scripts/refresh/videos/emit.ts --ids=<videoIds>` | 周         | scan-email + 手动 emit auto-PR                             |
+| MDDI 演讲        | `python3 scripts/auto_update.py --only=voices`                                                                           | 周         | scan-email                                                 |
+| Voices 三无人物  | `npx tsx scripts/voices/prospect-stubs.mjs {list,queue,apply,sync-from-people}`                                          | 季（手动） | 半自动 review queue                                        |
+| **GitHub stars** | `npx tsx scripts/refresh/github-stars.ts [--bump-version]`                                                               | 月         | **auto-PR**                                                |
+| **Policies**     | `npx tsx scripts/refresh/policies/run.ts --limit=5`                                                                      | 月         | **auto-PR**                                                |
+| **Ecosystem**    | `npx tsx scripts/refresh/ecosystem/run.ts --limit=5`                                                                     | 月         | **auto-PR**（条目带 `_pendingReview: true`，listing 隐藏） |
+| **Levers**       | `npx tsx scripts/refresh/levers/run.ts --limit=3`                                                                        | 季         | **auto-PR**（入 lever 1 "Auto-discovered" 子组待移位）     |
+| **Startups**     | `npx tsx scripts/refresh/startups/run.ts --limit=3`                                                                      | 季         | **auto-PR**（入 `autoDiscovered[]`）                       |
+| **Legal-AI**     | `npx tsx scripts/refresh/legal-ai/run.ts --limit=3`                                                                      | 半年       | **auto-PR**（入 "Auto-discovered" section 待移位）         |
+| **Talent**       | `npx tsx scripts/refresh/talent/run.ts --limit=3`                                                                        | 半年       | **auto-PR**（入 `autoDiscovered[]`）                       |
+| **Tracker**      | `npx tsx scripts/refresh/tracker/run.ts --limit=3`                                                                       | 半年       | **auto-PR**（入 `autoDiscovered[]`）                       |
+| **Benchmarking** | `npx tsx scripts/refresh/benchmarking/run.ts --limit=3`                                                                  | 半年       | **auto-PR**（仅追踪新报告，数字仍需手工提取）              |
 
 详见 [docs/refresh-playbook.md](docs/refresh-playbook.md) per-page 命令清单。
 
