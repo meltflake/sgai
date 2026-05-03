@@ -501,3 +501,72 @@ export const investors: Investor[] = [
     focusEn: 'Southeast Asian tech',
   },
 ];
+
+export interface AutoDiscoveredEntry {
+  title: string;
+  titleEn: string;
+  description: string;
+  descriptionEn: string;
+  category: string;
+  confidence: 'high' | 'medium' | 'low';
+  sourceUrl: string;
+  discoveredAt: string;
+  reasonForLowConfidence?: string;
+}
+
+export const autoDiscovered: AutoDiscoveredEntry[] = [
+  {
+    title: '苹果因AI热潮导致供应枯竭，将Mac mini起价提高至799美元',
+    titleEn: 'Apple raises Mac mini\'s starting price to US$799 after AI frenzy drains supply',
+    description: '苹果停止销售原价599美元的Mac mini入门款，并将起价提升至799美元，该入门款配置包含M4芯片和256GB存储空间。供应短缺主要由两个因素驱动：先进制程芯片产能有限，以及消费者对用于运行AI和智能工具的Mac mini和Mac Studio的需求超过预期。苹果首席执行官蒂姆·库克表示，恢复供需平衡可能需要数个月。',
+    descriptionEn: 'Apple has discontinued its entry-level Mac mini model priced at US$599 and raised the starting price to US$799 with 512GB storage, up from the previous 256GB configuration. The supply shortages stem from two factors: constrained availability of advanced semiconductor nodes and higher-than-expected consumer demand for Mac mini and Mac Studio as platforms for running AI and agentic tools. CEO Tim Cook stated it may take several months to reach supply-demand balance.',
+    category: '新公司',
+    confidence: 'low',
+    sourceUrl: 'https://www.businesstimes.com.sg/companies-markets/apple-raises-mac-minis-starting-price-us799-after-ai-frenzy-drains-supply',
+    discoveredAt: '2026-05-03',
+    reasonForLowConfidence: 'This article is about Apple\'s pricing and supply chain adjustments, not about Singapore AI startup ecosystem events (company launches, funding rounds, exits, or investors). It does not fit any of the five required categories: 独角兽 (unicorn), 融资轮 (funding round), 退出 (exit), 投资机构 (investor/fund), or 新公司 (new company). Apple is a large multinational corporation, not a Singapore AI startup.',
+  },
+  {
+    title: '霍尔木兹海峡封闭暴露台湾和韩国的AI能源陷阱',
+    titleEn: 'Hormuz closure exposes Taiwan and Korea\'s AI energy trap',
+    description: '台湾和韩国作为全球AI芯片制造的核心力量，近年来加大了对进口天然气的依赖以满足电力需求。受中东霍尔木兹海峡危机影响，两国面临能源供应风险，特别是当地政府和企业反而计划进一步扩大液化天然气发电能力，而这与国际大客户对碳中立供应链的要求相悖。',
+    descriptionEn: 'Taiwan and South Korea, as critical manufacturers of advanced AI semiconductors, have deepened their dependence on imported natural gas for power generation in recent years. The ongoing Strait of Hormuz crisis has exposed this structural vulnerability, as both countries rely on Middle East energy imports for over 90% of their energy needs. Despite pressure from major customers like Apple, Google, and Microsoft demanding carbon-neutral supply chains, both governments are expanding LNG-based generation capacity, creating a conflict between growth ambitions and environmental commitments.',
+    category: '独角兽',
+    confidence: 'low',
+    sourceUrl: 'https://www.businesstimes.com.sg/international/hormuz-closure-exposes-taiwan-and-koreas-ai-energy-trap',
+    discoveredAt: '2026-05-03',
+    reasonForLowConfidence: 'This article is primarily a geopolitical and energy policy analysis of Taiwan and South Korea\'s semiconductor industries. It does not describe a specific company launch, funding round, exit, or investor activity. While it mentions major companies (TSMC, Samsung, SK Hynix, Ørsted), the content focuses on industry-wide energy vulnerabilities and policy risks rather than discrete investment or corporate events. The article does not match any of the required Singapore AI startup ecosystem categories.',
+  },
+  {
+    title: 'Meta-Manus交易反转重塑全球AI初创企业格局',
+    titleEn: 'Meta-Manus deal reversal redraws lines for global AI startups',
+    description: '中国下令Meta撤销对新加坡AI公司Manus的20亿美元收购，引发全球有中国背景的AI创业者恐慌。该决定源于中国对知识产权转移的安全审查。多位创业者现已开始采取保守策略，包括延迟融资公开、强调新加坡注册身份，以及建立分离的全球和中国业务实体，以规避类似Manus的国家安全审查风险。',
+    descriptionEn: 'China\'s order to unwind Meta\'s US$2 billion acquisition of Singapore-based AI startup Manus has triggered caution among AI founders with Chinese roots operating globally. The reversal stems from Beijing\'s concerns about Chinese AI intellectual property being transferred to a US company. Founders are now adopting defensive strategies, including postponing funding announcements, emphasizing Singapore incorporation, and establishing separate entities for global versus China-only operations to mitigate sovereign risk and regulatory scrutiny.',
+    category: '退出',
+    confidence: 'high',
+    sourceUrl: 'https://www.businesstimes.com.sg/international/meta-manus-deal-reversal-redraws-lines-global-ai-startups',
+    discoveredAt: '2026-05-03',
+  },
+  {
+    title: '马斯克诉OpenAI案首周出现多个困难',
+    titleEn: 'Musk\'s trial against OpenAI hits some rough spots in first week',
+    description: '埃隆·马斯克在加州联邦法院对OpenAI、Sam Altman和Greg Brockman提起诉讼，指控他们背离2015年共同创立的非营利AI组织的使命，通过接受微软数十亿美元投资并将其转变为估值接近1万亿美元的营利公司。在三天的证人席上，马斯克面临了严格的交叉审问，被迫承认没有关于向OpenAI捐款条款的文件，以及他未能兑现最高10亿美元的融资承诺（实际仅捐献3800万美元）。OpenAI、Altman、Brockman和微软否认马斯克的指控，声称他试图破坏其自有公司xAI的主要竞争对手。',
+    descriptionEn: 'Elon Musk has sued OpenAI, Sam Altman, and Greg Brockman in federal court in California, alleging they betrayed the mission of the nonprofit AI organization they co-founded in 2015 by accepting billions in Microsoft investments and transforming it into a for-profit company now valued near US$1 trillion. During three days of witness testimony, Musk faced tough cross-examination, forced to concede he had no written contract for his donations to OpenAI and failed to deliver on a pledge of up to US$1 billion in funding (contributing only US$38 million total). OpenAI, Altman, Brockman, and Microsoft deny his allegations, claiming he is attempting to undermine his own company xAI\'s top competitor.',
+    category: '独角兽',
+    confidence: 'low',
+    sourceUrl: 'https://www.businesstimes.com.sg/startups-tech/technology/musks-trial-against-openai-hits-some-rough-spots-first-week',
+    discoveredAt: '2026-05-03',
+    reasonForLowConfidence: 'Model returned unknown category; defaulted to "独角兽".',
+  },
+  {
+    title: '分析师：中国芯片企业难以追赶韩国、台湾在AI芯片领域的领先地位',
+    titleEn: 'Chinese firms struggle to catch up with South Korea, Taiwan leaders in AI chips, say analysts',
+    description: '文章分析了中国芯片企业在AI芯片领域与韩国、台湾的竞争差距。SK海力士和台积电在存储芯片生产领域处于领先地位，而中国企业如长鑫存储虽在扩产，但在功耗和形态因子上仍落后于三星和SK海力士。美国技术限制和内部供应链薄弱是制约中国芯片企业进展的主要因素。文章还讨论了中国AI芯片企业的机遇，包括某些中游工业领域如机器人和先进制造的发展前景。',
+    descriptionEn: 'The article analyzes competitive gaps between Chinese chip enterprises and South Korea, Taiwan leaders in the AI chip sector. SK Hynix and TSMC lead in memory chip production, while Chinese firms like ChangXin Memory Technologies, despite scaling production, still lag in power consumption and form factors compared to Samsung and SK Hynix. US technology restrictions and weaker internal supply chains hinder Chinese chipmakers\' progress. The article also discusses opportunities for Chinese AI chip companies in midstream industrial sectors such as robotics and advanced manufacturing.',
+    category: '投资机构',
+    confidence: 'low',
+    sourceUrl: 'https://www.businesstimes.com.sg/international/global/chinese-firms-struggle-catch-south-korea-taiwan-leaders-ai-chips-say-analysts',
+    discoveredAt: '2026-05-03',
+    reasonForLowConfidence: 'Although the article is on-topic for semiconductor/AI chip industry analysis, it does not fit the core categories being tracked (独角兽/融资轮/退出/投资机构/新公司). The content is primarily competitive analysis and market commentary rather than news about a specific company launch, funding event, acquisition, investment firm establishment, or unicorn status. It discusses industry trends, analyst opinions, and stock performance rather than a discrete event suitable for the structured data file.',
+  },
+];
