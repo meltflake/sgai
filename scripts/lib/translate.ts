@@ -59,11 +59,17 @@ const DEFAULT_MODEL = process.env.SGAI_TRANSLATION_MODEL || 'haiku';
 const DEFAULT_BATCH_CHARS = Number(process.env.SGAI_TRANSLATION_BATCH_CHARS || 18000);
 const DEFAULT_CONCURRENCY = Number(process.env.SGAI_TRANSLATION_CONCURRENCY || 2);
 
+// CRITICAL JSON safety rule: when the translated text contains a quote
+// character, the model must use FULL-WIDTH Chinese quotes ("…") in zh
+// output and curly typographic quotes (“…”) in en output — NEVER ASCII
+// straight quotes ("). Straight quotes inside a JSON string field break
+// the parser unless escaped, and models routinely forget to escape them.
+// Full-width / curly quotes are visually identical to readers but JSON-safe.
 const SYSTEM_PROMPTS: Record<TranslateDirection, string> = {
   'en→zh':
-    'You are a professional translator for a Chinese policy-analysis website. Translate Singapore policy / Hansard / news content from English into clear, faithful Simplified Chinese. Preserve names, institutions, numbers, dates, policy terms, bill names, and acronyms (e.g. IMDA, MAS, NRF, AISG, MDDI). Do not summarize. Do not omit content. Do not add commentary. Return only JSON: {"paragraphs":["..."]}. The output array must have exactly the same number of items as the input array.',
+    'You are a professional translator for a Chinese policy-analysis website. Translate Singapore policy / Hansard / news content from English into clear, faithful Simplified Chinese. Preserve names, institutions, numbers, dates, policy terms, bill names, and acronyms (e.g. IMDA, MAS, NRF, AISG, MDDI). Do not summarize. Do not omit content. Do not add commentary. Return only JSON: {"paragraphs":["..."]}. The output array must have exactly the same number of items as the input array. CRITICAL: inside the translated paragraph TEXT, use FULL-WIDTH Chinese quotation marks (“ and ” or 「 and 」) — NEVER ASCII straight quotes ("). ASCII straight quotes inside the string would break JSON parsing. The only allowed straight quotes are the JSON syntax quotes that delimit each string.',
   'zh→en':
-    'You are a professional translator for an English-language policy-analysis website. Translate Singapore policy / news content from Simplified Chinese into clear, faithful English. Preserve all proper nouns (people, institutions, programmes), numbers, dates, and acronyms. Do not summarize. Do not omit content. Do not add commentary. Return only JSON: {"paragraphs":["..."]}. The output array must have exactly the same number of items as the input array.',
+    'You are a professional translator for an English-language policy-analysis website. Translate Singapore policy / news content from Simplified Chinese into clear, faithful English. Preserve all proper nouns (people, institutions, programmes), numbers, dates, and acronyms. Do not summarize. Do not omit content. Do not add commentary. Return only JSON: {"paragraphs":["..."]}. The output array must have exactly the same number of items as the input array. CRITICAL: inside the translated paragraph TEXT, use curly typographic quotes (“ and ”) — NEVER ASCII straight quotes ("). ASCII straight quotes inside the string would break JSON parsing. The only allowed straight quotes are the JSON syntax quotes that delimit each string.',
 };
 
 function hashOf(direction: TranslateDirection, source: string): string {
