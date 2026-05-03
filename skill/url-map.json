@@ -1,0 +1,123 @@
+{
+  "$schema": "https://sgai.md/schemas/skill-url-map.v1.json",
+  "version": "0.1.0",
+  "site": "https://sgai.md",
+  "primaryIndex": {
+    "description": "Master LLM index; fetch first on any unknown query, cache for the conversation.",
+    "url": "https://sgai.md/llms-full.txt"
+  },
+  "shortIndex": {
+    "description": "Compact LLM index for narrow queries.",
+    "url": "https://sgai.md/llms.txt"
+  },
+  "domains": [
+    {
+      "id": "policies",
+      "intent": "Singapore AI policy documents — National AI Strategy, Model AI Governance Framework, sector-specific policy notes.",
+      "list": { "zh": "https://sgai.md/policies", "en": "https://sgai.md/en/policies" },
+      "detail": { "zh": "https://sgai.md/policies/{id}", "en": "https://sgai.md/en/policies/{id}" }
+    },
+    {
+      "id": "debates",
+      "intent": "Singapore Parliament Hansard debate records on AI topics, with speakers, government/opposition stance, and source link to sprs.parl.gov.sg.",
+      "list": { "zh": "https://sgai.md/debates", "en": "https://sgai.md/en/debates" },
+      "detail": { "zh": "https://sgai.md/debates/{id}", "en": "https://sgai.md/en/debates/{id}" }
+    },
+    {
+      "id": "voices",
+      "intent": "Profiles of individual people in Singapore AI — ministers, agency heads, academics, founders. /voices is the canonical entry for all people; individual pages are at /voices/{slug}.",
+      "list": { "zh": "https://sgai.md/voices", "en": "https://sgai.md/en/voices" },
+      "detail": { "zh": "https://sgai.md/voices/{slug}", "en": "https://sgai.md/en/voices/{slug}" }
+    },
+    {
+      "id": "levers",
+      "intent": "The 6 national AI strategy levers. Lever slugs: 1=infrastructure, 2=governance, 3=talent, 4=applications, 5=government-self-use, 6=diplomacy.",
+      "list": { "zh": "https://sgai.md/levers", "en": "https://sgai.md/en/levers" },
+      "detail": { "zh": "https://sgai.md/levers/{slug}", "en": "https://sgai.md/en/levers/{slug}" },
+      "detailNote": "Top-level lever slugs: lever-1-infrastructure, lever-2-governance, lever-3-talent, lever-4-applications, lever-5-government-self-use, lever-6-diplomacy. Lever-item pages use their own slugs (e.g., microsoft-data-center) — fetch the list page first to discover them."
+    },
+    {
+      "id": "talent",
+      "intent": "Singapore AI talent / training programs — AISG Apprenticeship, AI Singapore 100E, IMDA TechSkills Accelerator AI track, etc.",
+      "list": { "zh": "https://sgai.md/talent", "en": "https://sgai.md/en/talent" }
+    },
+    {
+      "id": "ecosystem",
+      "intent": "Singapore AI ecosystem entities — agencies, universities, research centres, funding bodies, key publications.",
+      "list": { "zh": "https://sgai.md/ecosystem", "en": "https://sgai.md/en/ecosystem" }
+    },
+    {
+      "id": "startups",
+      "intent": "Singapore AI startups and unicorns — sector, funding, valuation.",
+      "list": { "zh": "https://sgai.md/startups", "en": "https://sgai.md/en/startups" }
+    },
+    {
+      "id": "tracker",
+      "intent": "Quantitative observatory tracking Singapore's AI development across 6 dimensions (investment, talent, compute, adoption, research, governance) vs target.",
+      "list": { "zh": "https://sgai.md/tracker", "en": "https://sgai.md/en/tracker" }
+    },
+    {
+      "id": "benchmarking",
+      "intent": "Singapore AI strategy benchmarked against 10+ regions — US, China, UK, EU, Canada, Japan, South Korea, India, UAE, etc.",
+      "list": { "zh": "https://sgai.md/benchmarking", "en": "https://sgai.md/en/benchmarking" }
+    },
+    {
+      "id": "legal-ai",
+      "intent": "Singapore AI legal/regulatory framework cards — PDPA, Model AI Governance Framework, AI Verify, sector regulator guidance.",
+      "list": { "zh": "https://sgai.md/legal-ai", "en": "https://sgai.md/en/legal-ai" }
+    },
+    {
+      "id": "timeline",
+      "intent": "Chronology of Singapore AI strategy milestones, from early 2010s to present and announced 2027 targets.",
+      "list": { "zh": "https://sgai.md/timeline", "en": "https://sgai.md/en/timeline" }
+    },
+    {
+      "id": "evolution",
+      "intent": "Long-form narrative of Singapore AI strategy evolution. Use for 'how did we get here' questions.",
+      "list": { "zh": "https://sgai.md/evolution", "en": "https://sgai.md/en/evolution" }
+    },
+    {
+      "id": "videos",
+      "intent": "Curated official AI videos — minister speeches, agency announcements, research talks. Each entry has YouTube link and bilingual summary.",
+      "list": { "zh": "https://sgai.md/videos", "en": "https://sgai.md/en/videos" }
+    },
+    {
+      "id": "speeches",
+      "intent": "MDDI and other ministerial speeches on AI. No list page — individual speeches are at /speeches/{slug}, typically linked from /voices/{person} pages or referenced in /debates and /videos.",
+      "detail": { "zh": "https://sgai.md/speeches/{slug}", "en": "https://sgai.md/en/speeches/{slug}" },
+      "detailNote": "Discover speech slugs via /voices/{person}, /debates, or the master /llms-full.txt index."
+    },
+    {
+      "id": "fieldnotes",
+      "intent": "Case-study research notes on specific Singapore AI deployments — fintech, healthcare, public-sector pilots.",
+      "list": { "zh": "https://sgai.md/fieldnotes", "en": "https://sgai.md/en/fieldnotes" }
+    },
+    {
+      "id": "challenges",
+      "intent": "Open questions and structural challenges in Singapore AI strategy — talent supply, compute scarcity, governance gaps.",
+      "list": { "zh": "https://sgai.md/challenges", "en": "https://sgai.md/en/challenges" }
+    },
+    {
+      "id": "community-opensource",
+      "intent": "Singapore-origin open-source AI projects from universities and corporates.",
+      "list": { "zh": "https://sgai.md/community-opensource", "en": "https://sgai.md/en/community-opensource" }
+    },
+    {
+      "id": "references",
+      "intent": "Curated official-source link library — government documents, academic reports, frameworks, toolkits.",
+      "list": { "zh": "https://sgai.md/references", "en": "https://sgai.md/en/references" }
+    }
+  ],
+  "intentMatchHints": {
+    "policy_lookup": ["policies", "legal-ai"],
+    "specific_minister_speech": ["voices", "speeches", "videos", "debates"],
+    "investment_or_grant": ["levers", "policies", "tracker"],
+    "training_or_program": ["talent", "ecosystem"],
+    "compare_to_other_country": ["benchmarking"],
+    "ecosystem_who_is_who": ["ecosystem", "voices", "startups"],
+    "regulatory_compliance": ["legal-ai", "policies", "references"],
+    "history_or_chronology": ["timeline", "evolution"],
+    "broad_overview": ["levers", "tracker"],
+    "deep_research_with_sources": ["references", "fieldnotes", "debates"]
+  }
+}
