@@ -4,6 +4,15 @@
 
 ---
 
+## 0.9.5 — 2026-05-04
+
+### 人才培养：卡片入口升级为项目档案页
+
+- `/talent/` 与 `/en/talent/` 的每张人才卡片改为完整可点击入口，指向独立详情页。
+- 新增 `/talent/[id]/` 与 `/en/talent/[id]/`，8 个项目全部生成可索引档案页：AIAP、LADP、PhD Fellowship、AMP、LearnAI、NAISC、IOAI 2027、AI 进校园。
+- `src/data/talent.ts` 升级为可扩展项目档案 schema，补承办方、对象、状态、关键事实、展开说明、官方来源和校验日期。
+- 同步校正几处过期信息：AIAP 更新为 Batch 24/25 招募窗口；LADP 改为当前官方的 LLM Application Developer Programme；PhD Fellowship 与 AMP 使用新的 research 路径。
+
 ## 0.9.1 — 2026-05-03
 
 ### 生态地图：关键人物全部接入人物图

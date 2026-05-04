@@ -187,7 +187,7 @@ npx tsx scripts/refresh/levers/run.ts --limit=3
 
 #### `/talent`
 
-- **数据**: `src/data/talent.ts`（8.6 KB / 8 programmes + stats）
+- **数据**: `src/data/talent.ts`（41 KB / 8 programmes + expandable profiles）
 - **来源**: AISG / SkillsFuture / IMDA 公布数字
 - **现状**: ❌ 无 pipeline
 - **频率**: 半年

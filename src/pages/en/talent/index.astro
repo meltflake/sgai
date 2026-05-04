@@ -1,9 +1,18 @@
 ---
-import Layout from '~/layouts/PageLayout.astro';
+import { Icon } from 'astro-icon/components';
+
 import Headline from '~/components/ui/Headline.astro';
-import { programmes } from '~/data/talent';
+import Layout from '~/layouts/PageLayout.astro';
+import { programmes, talentDataDate, type TalentStatusTone } from '~/data/talent';
 
 const lang = 'en' as const;
+
+const statusClasses: Record<TalentStatusTone, string> = {
+  active: 'bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-200',
+  scheduled: 'bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-200',
+  closed: 'bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300',
+  evergreen: 'bg-teal-100 text-teal-800 dark:bg-teal-900/30 dark:text-teal-200',
+};
 ---
 
 <Layout
@@ -15,69 +24,77 @@ const lang = 'en' as const;
   breadcrumbs={[{ label: 'Talent Pipeline' }]}
   lang={lang}
 >
-  <section class="px-4 py-16 sm:px-6 mx-auto lg:px-8 max-w-6xl">
+  <section class="px-4 py-14 sm:px-6 mx-auto lg:px-8 max-w-6xl">
     <Headline
-      title="🎓 AI Talent Pipeline"
-      subtitle="Singapore's full-spectrum AI talent system — from students to PhDs, beginners to experts, covering every stage of the AI career path."
+      title="AI Talent Pipeline"
+      subtitle="Singapore's AI talent system is not a single path. It is a set of trackable project entry points: students, educators, career switchers, enterprise teams, and research talent from undergraduate to PhD."
     />
 
-    <div class="grid gap-8 md:grid-cols-2">
+    <div class="grid gap-5 md:grid-cols-2">
       {
         programmes.map((prog) => (
-          <div class="bg-surface rounded-lg shadow-md border border-subtle hover:shadow-lg transition-shadow overflow-hidden">
-            <div class="p-6">
-              <div class="flex items-start justify-between mb-3">
-                <div>
-                  <h3 class="t-h3">
-                    {prog.icon} {prog.nameEn}
-                  </h3>
+          <a
+            href={`/en/talent/${prog.id}/`}
+            class="group flex h-full flex-col bg-surface rounded-lg border border-subtle shadow-sm hover:shadow-md hover:border-primary/40 transition-all overflow-hidden focus-visible:outline-primary"
+          >
+            <div class="p-5 sm:p-6 flex-1 flex flex-col">
+              <div class="flex items-start justify-between gap-4 mb-4">
+                <div class="flex gap-3 min-w-0">
+                  <div class="w-11 h-11 rounded-lg bg-primary/10 text-primary flex items-center justify-center shrink-0">
+                    <Icon name={prog.icon} class="w-6 h-6" />
+                  </div>
+                  <div class="min-w-0">
+                    <p class="text-xs uppercase tracking-[0.14em] text-muted font-semibold mb-1">{prog.categoryEn}</p>
+                    <h3 class="font-serif text-xl font-semibold leading-snug text-gray-900 dark:text-white">
+                      {prog.nameEn}
+                    </h3>
+                    {prog.shortName && <p class="text-sm text-muted mt-1">{prog.shortName}</p>}
+                  </div>
                 </div>
-                {(prog.statusEn || prog.status) && (
-                  <span class="text-xs font-medium bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 px-2 py-1 rounded whitespace-nowrap">
-                    {prog.statusEn || prog.status}
-                  </span>
-                )}
+                <span
+                  class={`text-xs font-medium px-2.5 py-1 rounded whitespace-nowrap ${statusClasses[prog.statusTone]}`}
+                >
+                  {prog.statusEn}
+                </span>
               </div>
-              <p class="text-sm mb-4">{prog.descriptionEn || prog.description}</p>
 
-              {/* Key stats */}
-              <div class="grid grid-cols-2 gap-2 mb-4">
-                {prog.stats.map((stat) => (
-                  <div class="bg-slate-50 dark:bg-slate-800 rounded p-2 text-center">
-                    <div class="text-lg font-bold text-blue-600 dark:text-blue-400">{stat.valueEn || stat.value}</div>
-                    <div class="text-xs text-muted">{stat.labelEn || stat.label}</div>
+              <p class="text-sm leading-relaxed text-gray-700 dark:text-gray-300 mb-5">{prog.descriptionEn}</p>
+
+              <div class="grid grid-cols-2 gap-2 mb-5">
+                {prog.stats.slice(0, 4).map((stat) => (
+                  <div class="rounded-md bg-slate-50 dark:bg-slate-800/70 p-3">
+                    <div class="text-base font-semibold text-gray-900 dark:text-white">
+                      {stat.valueEn || stat.value}
+                    </div>
+                    <div class="text-xs text-muted mt-1">{stat.labelEn || stat.label}</div>
                   </div>
                 ))}
               </div>
 
-              {/* Highlights */}
-              <ul class="text-sm space-y-1">
-                {(prog.highlightsEn && prog.highlightsEn.length ? prog.highlightsEn : prog.highlights).map((h) => (
-                  <li class="flex items-start gap-2">
-                    <span class="text-blue-600 dark:text-blue-400 mt-0.5">•</span>
+              <ul class="text-sm space-y-2 mb-5">
+                {prog.highlightsEn.slice(0, 3).map((h) => (
+                  <li class="flex items-start gap-2 text-gray-700 dark:text-gray-300">
+                    <Icon name="tabler:check" class="w-4 h-4 mt-0.5 text-primary shrink-0" />
                     <span>{h}</span>
                   </li>
                 ))}
               </ul>
 
-              {prog.url && (
-                <a
-                  href={prog.url}
-                  target="_blank"
-                  rel="noopener"
-                  class="inline-block mt-4 text-sm text-blue-600 dark:text-blue-400 hover:underline"
-                >
-                  Learn more →
-                </a>
-              )}
+              <div class="mt-auto pt-4 border-t border-subtle flex items-center justify-between gap-3">
+                <span class="text-xs text-muted">{prog.ownerEn}</span>
+                <span class="inline-flex items-center gap-1 text-sm font-medium text-primary group-hover:text-secondary">
+                  Open profile
+                  <Icon name="tabler:arrow-right" class="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
+                </span>
+              </div>
             </div>
-          </div>
+          </a>
         ))
       }
     </div>
 
-    <p class="mt-12 text-sm text-muted text-center">
-      Source: AI Singapore. Programme details and intake status are best confirmed on the official website.
+    <p class="mt-10 text-sm text-muted text-center">
+      Sources: official AI Singapore, LearnAI, AIAP, NAISC and IOAI pages. Checked by this site on {talentDataDate}.
     </p>
   </section>
 </Layout>
