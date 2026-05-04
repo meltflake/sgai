@@ -166,7 +166,8 @@ export const zh = {
   siteName: '新加坡 AI 观察',
   siteShortName: '新加坡 AI',
   siteTagline: '深度观察新加坡 AI 生态与战略',
-  siteDescription: '深度观察新加坡 AI 生态与战略——独立视角的中文分析平台。追踪政策、辩论、抓手与生态。',
+  siteDescription:
+    '新加坡 AI 观察是一个独立、多语言的研究型观察站，基于公开资料和一手来源，持续追踪新加坡 AI 战略、政策执行、国会辩论、产业生态、人才培养、开源项目与国际对标。',
 
   // Navigation labels (top-level)
   navAnalysis: '观察',
@@ -325,7 +326,7 @@ export const en: Partial<Record<keyof typeof zh, string>> = {
   siteShortName: 'SG AI',
   siteTagline: 'In-depth coverage of Singapore’s AI strategy',
   siteDescription:
-    'Independent analysis of Singapore’s AI strategy — tracking policies, parliamentary debates, levers, and the startup ecosystem.',
+    'Singapore AI Observatory is an independent, multilingual research observatory tracking Singapore’s AI strategy, policy execution, parliamentary debates, industry ecosystem, talent pipeline, open-source projects, and international benchmarks from public and primary sources.',
 
   navAnalysis: 'Opinion',
   navPolicy: 'Policy & Strategy',

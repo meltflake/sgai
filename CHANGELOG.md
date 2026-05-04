@@ -16,6 +16,11 @@
 - `/policies/[id]/` 与 `/en/policies/[id]/` 从单段正文升级为档案页结构：事实卡、战略位置、展开信息、资源入口、关联抓手、同类档案和关联阅读。
 - `src/data/policies.ts` 预留 `keyFacts / sections / milestones / resources / lastVerified` 扩展字段，后续可以继续把每个政策、项目或机构页补成更完整的落地档案。
 
+### 站点定位：主描述改为多语言
+
+- 主站 `siteDescription` 不再写成“中文分析平台”，改为“独立、多语言的研究型观察站”，覆盖战略、执行、国会、产业、人才、开源和国际对标。
+- README 开头同步使用新的站点定位，避免对外说明和首页 metadata 不一致。
+
 ### 产学研开源生态：卡片升级为项目档案页
 
 - `/community-opensource/` 与 `/en/community-opensource/` 的每张卡片改为整卡点击入口，统一指向站内项目档案页。
