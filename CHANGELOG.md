@@ -13,6 +13,13 @@
 - `src/data/talent.ts` 升级为可扩展项目档案 schema，补承办方、对象、状态、关键事实、展开说明、官方来源和校验日期。
 - 同步校正几处过期信息：AIAP 更新为 Batch 24/25 招募窗口；LADP 改为当前官方的 LLM Application Developer Programme；PhD Fellowship 与 AMP 使用新的 research 路径。
 
+### 官方开源页：项目卡片升级为可扩展档案页
+
+- `/opensource/` 和 `/en/opensource/` 的官方项目卡片改为整卡点击，统一指向站内项目档案，不再只跳外部 GitHub / Hugging Face。
+- 新增 `/opensource/[id]/` 与 `/en/opensource/[id]/` 动态详情页，首批覆盖 AI Verify、SEA-LION、SEA-Guard、TagUI、PeekingDuck、SGNLP、Speech Lab、Synergos。
+- `src/data/opensource.ts` 扩展为可持续补充的数据模型：每个项目有稳定 `id`、归属方、类别、状态、指标、摘要、详细说明、AI 关系、新加坡关系、里程碑和资源入口。
+- 数据说明拆分为统计采集日与项目档案更新日，避免 GitHub / Hugging Face 数字和编辑内容混在同一个"最后更新"里。
+
 ## 0.9.1 — 2026-05-03
 
 ### 生态地图：关键人物全部接入人物图

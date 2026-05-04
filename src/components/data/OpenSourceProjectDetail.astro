@@ -1,0 +1,193 @@
+---
+import { Icon } from 'astro-icon/components';
+import { localizedHref, type Lang } from '~/i18n';
+import type { OfficialOpenSourceProject, OpenSourceResource } from '~/data/opensource';
+import EcosystemProse from '~/components/data/EcosystemProse.astro';
+
+interface Props {
+  project: OfficialOpenSourceProject;
+  lang: Lang;
+}
+
+const { project, lang } = Astro.props;
+const isEn = lang === 'en';
+
+const displayName = isEn ? project.nameEn || project.name : project.name;
+const owner = isEn ? project.ownerEn || project.owner : project.owner;
+const category = isEn ? project.categoryEn || project.category : project.category;
+const status = isEn ? project.statusEn || project.status : project.status;
+const summary = isEn ? project.summaryEn : project.summary;
+const whatItIs = isEn ? project.whatItIsEn : project.whatItIs;
+const aiRelevance = isEn ? project.aiRelevanceEn : project.aiRelevance;
+const singaporeRelevance = isEn ? project.singaporeRelevanceEn : project.singaporeRelevance;
+const license = isEn ? project.licenseEn || project.license : project.license;
+
+const labels = {
+  back: isEn ? 'Back to Official Open Source' : '返回官方开源与研究',
+  owner: isEn ? 'Owner' : '归属',
+  category: isEn ? 'Category' : '类别',
+  status: isEn ? 'Status' : '状态',
+  founded: isEn ? 'Started' : '启动',
+  language: isEn ? 'Language / Form' : '语言 / 形态',
+  license: isEn ? 'License' : '协议',
+  stars: isEn ? 'GitHub Stars' : 'GitHub Stars',
+  updated: isEn ? 'Updated' : '信息更新',
+  whatItIs: isEn ? 'What It Is' : '是什么',
+  aiRelevance: isEn ? 'AI Relevance' : '与 AI 的关系',
+  singaporeRelevance: isEn ? 'Singapore Relevance' : '与新加坡的关系',
+  milestones: isEn ? 'Milestones' : '关键里程碑',
+  resources: isEn ? 'Resources' : '资源入口',
+  profile: isEn ? 'Project Profile' : '项目档案',
+};
+
+function hrefFor(resource: OpenSourceResource): string {
+  return resource.url.startsWith('/') ? localizedHref(resource.url, lang) : resource.url;
+}
+
+function isExternal(url: string): boolean {
+  return /^https?:\/\//.test(url);
+}
+
+const facts = [
+  { label: labels.owner, value: owner },
+  { label: labels.category, value: category },
+  { label: labels.status, value: status },
+  { label: labels.founded, value: project.founded },
+  { label: labels.language, value: project.language },
+  { label: labels.license, value: license },
+  { label: labels.stars, value: project.stars !== null ? project.stars.toLocaleString() : undefined },
+  { label: labels.updated, value: project.updated },
+].filter((fact): fact is { label: string; value: string } => Boolean(fact.value));
+---
+
+<article class="max-w-4xl mx-auto px-4 sm:px-6 py-10 md:py-12">
+  <div class="mb-6 flex flex-wrap items-center gap-2 text-xs">
+    <a
+      href={localizedHref('/opensource/', lang)}
+      class="inline-flex items-center gap-1 bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 px-3 py-1.5 rounded-full font-semibold hover:bg-blue-100 dark:hover:bg-blue-900/50 transition-colors"
+    >
+      <Icon name="tabler:arrow-left" class="w-3.5 h-3.5" />
+      {labels.back}
+    </a>
+    <span class="bg-slate-100 dark:bg-slate-800 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-full">
+      {category}
+    </span>
+    <span
+      class="bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-300 px-3 py-1.5 rounded-full font-medium"
+    >
+      {status}
+    </span>
+  </div>
+
+  <p class="text-sm uppercase tracking-wider text-gray-500 dark:text-gray-400 font-semibold mb-2">{labels.profile}</p>
+  <h1 class="t-display text-gray-900 dark:text-white mb-3">{displayName}</h1>
+  <p class="text-lg text-gray-600 dark:text-gray-300 leading-relaxed mb-8">
+    {isEn ? project.descriptionEn : project.description}
+  </p>
+
+  {
+    project.metrics && project.metrics.length > 0 && (
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-8">
+        {project.metrics.map((metric) => (
+          <div class="bg-surface rounded-lg border border-subtle p-4">
+            <div class="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-1">
+              {isEn ? metric.labelEn || metric.label : metric.label}
+            </div>
+            <div class="text-2xl font-bold text-blue-600 dark:text-blue-400">
+              {isEn ? metric.valueEn || metric.value : metric.value}
+            </div>
+            {(isEn ? metric.noteEn || metric.note : metric.note) && (
+              <div class="text-xs text-muted mt-1">{isEn ? metric.noteEn || metric.note : metric.note}</div>
+            )}
+          </div>
+        ))}
+      </div>
+    )
+  }
+
+  <dl
+    class="bg-surface rounded-lg border border-subtle p-5 mb-8 grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3 text-sm"
+  >
+    {
+      facts.map((fact) => (
+        <div>
+          <dt class="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-1">{fact.label}</dt>
+          <dd class="text-gray-900 dark:text-white">{fact.value}</dd>
+        </div>
+      ))
+    }
+  </dl>
+
+  <p
+    class="font-serif text-lg leading-[1.85] text-gray-800 dark:text-gray-200 mb-8 border-l-4 border-primary pl-5 italic"
+  >
+    {summary}
+  </p>
+
+  <section class="mb-10">
+    <h2 class="t-h3 text-gray-900 dark:text-white mb-4">{labels.whatItIs}</h2>
+    <EcosystemProse content={whatItIs} />
+  </section>
+
+  <section class="mb-10">
+    <h2 class="t-h3 text-gray-900 dark:text-white mb-4">{labels.aiRelevance}</h2>
+    <EcosystemProse content={aiRelevance} />
+  </section>
+
+  <section class="mb-10">
+    <h2 class="t-h3 text-gray-900 dark:text-white mb-4">{labels.singaporeRelevance}</h2>
+    <EcosystemProse content={singaporeRelevance} />
+  </section>
+
+  {
+    project.milestones && project.milestones.length > 0 && (
+      <section class="mb-10">
+        <h2 class="t-h3 text-gray-900 dark:text-white mb-4">{labels.milestones}</h2>
+        <ol class="relative border-l-2 border-blue-200 dark:border-blue-900 ml-2 pl-6 space-y-5">
+          {project.milestones.map((m) => (
+            <li class="relative">
+              <span class="absolute -left-[33px] top-1 w-3 h-3 rounded-full bg-blue-500 dark:bg-blue-400 ring-4 ring-blue-50 dark:ring-blue-900/40" />
+              <div class="text-xs font-mono text-gray-500 dark:text-gray-400 mb-1">{m.date}</div>
+              <div class="font-semibold text-gray-900 dark:text-white">{isEn ? m.titleEn || m.title : m.title}</div>
+              {(isEn ? m.descriptionEn || m.description : m.description) && (
+                <p class="text-sm text-gray-600 dark:text-gray-400 mt-1 leading-relaxed">
+                  {isEn ? m.descriptionEn || m.description : m.description}
+                </p>
+              )}
+            </li>
+          ))}
+        </ol>
+      </section>
+    )
+  }
+
+  <section class="mb-10 pt-6 border-t border-subtle">
+    <h2 class="text-sm uppercase tracking-wider text-gray-500 dark:text-gray-400 font-semibold mb-3">
+      {labels.resources}
+    </h2>
+    <div class="grid gap-3 sm:grid-cols-2">
+      {
+        project.resources.map((resource) => {
+          const href = hrefFor(resource);
+          const external = isExternal(href);
+          return (
+            <a
+              href={href}
+              target={external ? '_blank' : undefined}
+              rel={external ? 'noopener' : undefined}
+              class="flex items-center justify-between gap-3 bg-surface rounded-lg border border-subtle p-4 hover:border-blue-300 hover:shadow-sm transition-all"
+            >
+              <span class="text-sm font-medium text-gray-900 dark:text-white">
+                {isEn ? resource.labelEn || resource.label : resource.label}
+              </span>
+              <Icon
+                name={external ? 'tabler:external-link' : 'tabler:arrow-right'}
+                class="w-4 h-4 text-blue-600 dark:text-blue-400"
+              />
+            </a>
+          );
+        })
+      }
+    </div>
+  </section>
+</article>
