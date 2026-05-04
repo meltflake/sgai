@@ -1,0 +1,1218 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import {
+  debates,
+  DEBATE_STATS,
+  POLICY_EVOLUTION,
+  RECURRING_CONTROVERSIES,
+  MP_PROFILES,
+  KEY_INSIGHTS,
+  POLICY_SIGNALS,
+  TENSION_MAP,
+} from '~/data/debates';
+import { pickLocalized, localizedHref, t, type Lang } from '~/i18n';
+import { findPersonId, getPerson } from '~/utils/people';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const isEn = lang === 'en';
+
+const DATA_UPDATED = '2026-05-03';
+
+const meta = {
+  title: isEn ? 'Parliamentary AI Focus — Singapore Hansard Debates' : '国会 AI 焦点 — 新加坡议会辩论记录',
+  description: isEn
+    ? 'First-hand records of Singapore parliamentary debates on AI, with English digests, MP position analysis, policy-evolution timelines, and analytical insights.'
+    : '新加坡议会关于 AI 的第一手辩论记录，含 AI 提炼的中文摘要、议员立场分析、政策演变脉络与深度洞察。',
+};
+
+const L = isEn
+  ? {
+      crumb: t(lang, 'debatesPageTitle'),
+      updated: 'Last updated',
+      recordCount: 'debate records',
+      source: 'Source',
+      digestNote: 'Digests assisted by AI',
+      title: 'Parliamentary AI Focus',
+      intro:
+        'First-hand records of Singapore parliamentary debates on AI, with AI-assisted English digests, MP positions, and policy-pattern insights.',
+      finderTitle: 'Find the debate you need',
+      finderHint: 'Search first, then narrow by type, topic, MP, year, or controversy level.',
+      searchPlaceholder: 'Search title, summary, MP, policy signal, date...',
+      allTypes: 'All types',
+      allTopics: 'All topics',
+      allMps: 'All MPs',
+      allYears: 'All years',
+      allControversy: 'All controversy levels',
+      highControversy: 'High (level 4-5)',
+      midControversy: 'Medium (level 3)',
+      lowControversy: 'Low (level 1-2)',
+      clear: 'Clear filters',
+      active: 'Active filters:',
+      topicTitle: 'Browse by Topic',
+      topicHint: 'High-signal entry points into the full archive.',
+      overviewTitle: 'Archive Overview',
+      total: 'Total records',
+      years: 'Years covered',
+      typeMix: 'Type mix',
+      updatedShort: 'Updated',
+      trendTitle: 'Yearly debate volume',
+      trendHint: 'Click a bar to filter that year.',
+      listTitle: 'Debate Records',
+      listHint: 'Compact archive cards; open a card or detail page for the full digest.',
+      noResults: 'No debates match the current filters.',
+      details: 'Open digest, stances, and transcript',
+      keyPoints: 'Key Points',
+      government: 'Government Position',
+      opposition: 'Questioning Position',
+      signal: 'Policy Signal',
+      quote: 'Notable Quote',
+      transcript: 'Original transcript excerpt',
+      detailPage: 'Detail page',
+      hansard: 'Hansard',
+      parliament: 'Parliament',
+      showing: 'Showing',
+      results: 'results',
+      quickTitle: 'Quick filters',
+      analysisTitle: 'Analytical Views',
+      analysisHint: 'Interpretive layers distilled from the archive.',
+      insights: 'Key Insights',
+      evolution: 'Policy Evolution',
+      controversies: 'Recurring Controversies',
+      tensions: 'Core Policy Tensions',
+      mps: 'Key MP Profiles',
+      signals: 'Policy Signal Tracker',
+      important: 'Important',
+      firstSeen: 'First seen',
+      related: 'related',
+      implemented: 'Implemented',
+      inProgress: 'In progress',
+      stillDiscussing: 'Still under discussion',
+      currentBalance: 'Current balance:',
+      clickPeriod: 'Click any period to filter the debate records from that phase.',
+      clickControversy: 'Click any recurring issue to filter related debates.',
+      clickMp: 'Click any MP card to filter their debates.',
+      clickSignal: 'Click any signal to filter the year it first surfaced.',
+    }
+  : {
+      crumb: '国会 AI 焦点',
+      updated: '数据更新',
+      recordCount: '条辩论记录',
+      source: '来源',
+      digestNote: '中文摘要由 AI 辅助生成',
+      title: '国会 AI 焦点',
+      intro: '新加坡议会关于人工智能的第一手辩论记录，含 AI 提炼的中文摘要、议员立场分析与政策规律洞察。',
+      finderTitle: '先找到你要的辩论',
+      finderHint: '先搜索，再按类型、议题、议员、年份或争议度收窄。',
+      searchPlaceholder: '搜索标题、摘要、议员、政策信号、日期...',
+      allTypes: '所有类型',
+      allTopics: '所有议题',
+      allMps: '所有议员',
+      allYears: '所有年份',
+      allControversy: '所有争议度',
+      highControversy: '高争议（4-5 级）',
+      midControversy: '中等（3 级）',
+      lowControversy: '低争议（1-2 级）',
+      clear: '清除筛选',
+      active: '当前筛选：',
+      topicTitle: '按议题浏览',
+      topicHint: '先从高价值入口进入完整档案。',
+      overviewTitle: '档案概览',
+      total: '记录总数',
+      years: '覆盖年份',
+      typeMix: '类型分布',
+      updatedShort: '更新日期',
+      trendTitle: '历年辩论趋势',
+      trendHint: '点击柱状图筛选该年。',
+      listTitle: '辩论记录',
+      listHint: '列表默认压缩；展开卡片或进入详情页看完整摘要。',
+      noResults: '没有找到匹配的辩论记录',
+      details: '展开摘要、立场与原文',
+      keyPoints: '要点',
+      government: '政府立场',
+      opposition: '质询立场',
+      signal: '政策信号',
+      quote: '关键引文',
+      transcript: '原文节选（英文）',
+      detailPage: '详情页',
+      hansard: 'Hansard',
+      parliament: '届国会',
+      showing: '显示',
+      results: '条',
+      quickTitle: '快捷筛选',
+      analysisTitle: '分析视角',
+      analysisHint: '从完整档案中提炼出的解释层。',
+      insights: '核心洞察',
+      evolution: '政策演变脉络',
+      controversies: '反复争议焦点',
+      tensions: '核心政策张力',
+      mps: '关键议员档案',
+      signals: '政策信号追踪',
+      important: '重要',
+      firstSeen: '首见',
+      related: '相关',
+      implemented: '已落实',
+      inProgress: '进行中',
+      stillDiscussing: '仍在讨论',
+      currentBalance: '当前平衡：',
+      clickPeriod: '点击任意时期，筛选该阶段的辩论记录。',
+      clickControversy: '点击任意争议焦点，筛选相关辩论。',
+      clickMp: '点击任意议员卡片，筛选该议员参与的辩论。',
+      clickSignal: '点击任意信号，筛选该政策信号首次出现的年份。',
+    };
+
+const typeMap: Record<string, string> = isEn
+  ? {
+      'Oral Answers to Questions': 'Oral Answers',
+      'Written Answers to Questions': 'Written Answers',
+      Budget: 'Budget Debate',
+      Motions: 'Motions',
+    }
+  : {
+      'Oral Answers to Questions': '口头答复',
+      'Written Answers to Questions': '书面答复',
+      Budget: '预算辩论',
+      Motions: '动议',
+    };
+
+const controversyLabels: Record<number, string> = isEn
+  ? {
+      1: 'Information',
+      2: 'Mild scrutiny',
+      3: 'Substantive debate',
+      4: 'Heated controversy',
+      5: 'Sharp opposition',
+    }
+  : {
+      1: '信息发布',
+      2: '温和质询',
+      3: '实质辩论',
+      4: '激烈争议',
+      5: '高度对立',
+    };
+
+const controversyColors: Record<number, string> = {
+  1: 'bg-surface text-muted border border-subtle',
+  2: 'bg-surface text-muted border border-subtle',
+  3: 'bg-surface text-default border border-subtle',
+  4: 'bg-primary/10 text-primary border border-primary/30',
+  5: 'bg-primary/15 text-primary border border-primary/40 font-semibold',
+};
+
+const statusColors: Record<string, string> = {
+  ongoing: 'bg-surface text-muted border border-subtle',
+  escalating: 'bg-primary/10 text-primary border border-primary/30',
+  resolved: 'bg-surface text-default border border-subtle',
+};
+
+const statusLabels: Record<string, string> = {
+  ongoing: isEn ? 'Ongoing' : '持续讨论中',
+  escalating: isEn ? 'Escalating' : '争议升级',
+  resolved: isEn ? 'Resolved' : '已有定论',
+};
+
+const significanceColors: Record<string, string> = {
+  high: 'border-l-primary',
+  medium: 'border-l-subtle',
+  low: 'border-l-subtle',
+};
+
+const topicLabels: Record<string, string> = isEn
+  ? {
+      'AI Economy & Industry': 'AI Economy & Industry',
+      'AI & Employment': 'AI & Employment',
+      'AI Governance & Regulation': 'AI Governance & Regulation',
+      'AI & National Security': 'AI & National Security',
+      'AI in Public Sector': 'AI in Public Sector',
+      'AI Infrastructure & Research': 'AI Infrastructure & Research',
+      'AI Safety & Ethics': 'AI Safety & Ethics',
+      'AI in Education': 'AI in Education',
+      'AI in Healthcare': 'AI in Healthcare',
+      'AI Strategy': 'AI Strategy',
+      'Deepfakes & Disinformation': 'Deepfakes & Disinformation',
+    }
+  : {
+      'AI Economy & Industry': 'AI 经济与产业',
+      'AI & Employment': 'AI 与就业',
+      'AI Governance & Regulation': 'AI 治理与监管',
+      'AI & National Security': 'AI 与国家安全',
+      'AI in Public Sector': 'AI 与公共部门',
+      'AI Infrastructure & Research': 'AI 基础设施与研究',
+      'AI Safety & Ethics': 'AI 安全与伦理',
+      'AI in Education': 'AI 与教育',
+      'AI in Healthcare': 'AI 与医疗',
+      'AI Strategy': 'AI 战略',
+      'Deepfakes & Disinformation': '深度伪造与虚假信息',
+    };
+
+const topicCounts = new Map<string, number>();
+for (const d of debates) {
+  for (const topic of new Set(d.topics || [])) {
+    topicCounts.set(topic, (topicCounts.get(topic) || 0) + 1);
+  }
+}
+
+const topicEntries = Object.entries(topicLabels)
+  .map(([topic, label]) => ({ topic, label, count: topicCounts.get(topic) || 0 }))
+  .filter((entry) => entry.count > 0)
+  .sort((a, b) => b.count - a.count);
+
+const maxCount = Math.max(...Object.values(DEBATE_STATS.byYear));
+const latestDate = debates[0]?.date || String(DEBATE_STATS.yearRange.to);
+const latestYear = latestDate.slice(0, 4);
+
+const controversyDebateCounts = RECURRING_CONTROVERSIES.map((c) => {
+  const relTopics = (c as { relatedTopics: string[] }).relatedTopics || [];
+  return debates.filter((d) => relTopics.some((topic) => d.topics.includes(topic))).length;
+});
+
+const speakerCounts = new Map<string, number>();
+for (const d of debates) {
+  for (const speaker of d.speakers) {
+    if (speaker && speaker.length > 1) {
+      speakerCounts.set(speaker, (speakerCounts.get(speaker) || 0) + 1);
+    }
+  }
+}
+
+const frequentSpeakers = [...speakerCounts.entries()]
+  .filter(([, count]) => count >= 3)
+  .sort((a, b) => b[1] - a[1])
+  .map(([name, count]) => ({ name, count }));
+
+const quickFilters = isEn
+  ? [
+      { label: 'Latest sitting', dimension: 'keyword', value: latestDate },
+      { label: latestYear, dimension: 'year', value: latestYear },
+      { label: 'Data sovereignty', dimension: 'keyword', value: 'data sovereignty' },
+      { label: 'Employment', dimension: 'topic', value: 'AI & Employment' },
+      { label: 'Governance', dimension: 'topic', value: 'AI Governance & Regulation' },
+      { label: 'National security', dimension: 'topic', value: 'AI & National Security' },
+      { label: 'Healthcare', dimension: 'topic', value: 'AI in Healthcare' },
+      { label: 'High controversy', dimension: 'controversy', value: '4' },
+    ]
+  : [
+      { label: '最新场次', dimension: 'keyword', value: latestDate },
+      { label: latestYear, dimension: 'year', value: latestYear },
+      { label: '数据主权', dimension: 'keyword', value: '数据主权' },
+      { label: '就业', dimension: 'topic', value: 'AI & Employment' },
+      { label: '治理', dimension: 'topic', value: 'AI Governance & Regulation' },
+      { label: '国家安全', dimension: 'topic', value: 'AI & National Security' },
+      { label: '医疗', dimension: 'topic', value: 'AI in Healthcare' },
+      { label: '高争议', dimension: 'controversy', value: '4' },
+    ];
+
+const jsAttr = (s: string) => String(s).replace(/\\/g, '\\\\').replace(/'/g, "\\'");
+
+const truncate = (text: string | null | undefined, max: number) => {
+  const s = String(text || '')
+    .replace(/\s+/g, ' ')
+    .trim();
+  return s.length > max ? `${s.slice(0, max).trim()}...` : s;
+};
+
+const debateTitle = (d: (typeof debates)[number]) => (isEn ? d.title : d.zhTitle);
+const debateSummary = (d: (typeof debates)[number]) =>
+  isEn ? d.summaryShortEn || d.zhSummary : d.zhSummary || d.summaryShortEn || '';
+const debateSignal = (d: (typeof debates)[number]) =>
+  isEn ? d.policySignalEn || d.policySignal : d.policySignal || d.policySignalEn;
+const debateQuote = (d: (typeof debates)[number]) =>
+  isEn ? d.notableQuoteEn || d.notableQuote : d.notableQuote || d.notableQuoteEn;
+const debateKeyPoints = (d: (typeof debates)[number]) =>
+  isEn && d.keyPointsEn && d.keyPointsEn.length > 0 ? d.keyPointsEn : d.keyPoints;
+const debateGovStance = (d: (typeof debates)[number]) =>
+  isEn ? d.governmentStanceEn || d.governmentStance : d.governmentStance || d.governmentStanceEn;
+const debateOppStance = (d: (typeof debates)[number]) =>
+  isEn ? d.oppositionStanceEn || d.oppositionStance : d.oppositionStance || d.oppositionStanceEn;
+
+const searchBlob = (d: (typeof debates)[number]) =>
+  [
+    d.date,
+    d.type,
+    d.title,
+    d.zhTitle,
+    debateSummary(d),
+    debateSignal(d),
+    ...(d.topics || []),
+    ...(d.speakers || []),
+    ...(debateKeyPoints(d) || []),
+  ]
+    .join(' ')
+    .toLowerCase();
+
+const speakerDisplay = (raw: string) => {
+  const pid = findPersonId(raw);
+  const person = pid ? getPerson(pid) : undefined;
+  const label = person ? (isEn ? person.name || raw : person.zhName || person.name || raw) : raw;
+  const href = pid ? localizedHref(`/voices/${pid}/`, lang) : null;
+  return { label, href, title: raw };
+};
+
+const debateHref = (id: string) => localizedHref(`/debates/${id}/`, lang);
+const yearRangeLabel = `${DEBATE_STATS.yearRange.from}-${DEBATE_STATS.yearRange.to}`;
+const typeMixLabel = Object.entries(DEBATE_STATS.byType)
+  .map(([type, count]) => `${typeMap[type] || type} ${count}`)
+  .join(' / ');
+---
+
+<Layout metadata={meta} breadcrumbs={[{ label: L.crumb }]} lang={lang}>
+  <div class="max-w-7xl mx-auto px-4 py-8 md:py-10 overflow-x-hidden">
+    <div
+      class="mb-6 flex flex-col gap-2 rounded-lg bg-blue-50 dark:bg-slate-800 border border-blue-200 dark:border-slate-600 px-4 py-3 md:flex-row md:items-center md:justify-between md:px-5"
+    >
+      <div class="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm">
+        <span class="font-semibold text-blue-800 dark:text-blue-300">{L.updated}: {DATA_UPDATED}</span>
+        <span class="text-gray-500 dark:text-gray-400">{DEBATE_STATS.total} {L.recordCount}</span>
+      </div>
+      <div class="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-gray-500 dark:text-gray-400">
+        <span>
+          {L.source}: <a href="https://sprs.parl.gov.sg/search/" target="_blank" class="text-blue-600 hover:underline"
+            >SPRS Hansard</a
+          > · <a href="https://search.pair.gov.sg/" target="_blank" class="text-blue-600 hover:underline">PAIR Search</a
+          >
+        </span>
+        <span class="hidden text-gray-300 dark:text-gray-600 sm:inline">|</span>
+        <span>{L.digestNote}</span>
+      </div>
+    </div>
+
+    <header class="mb-6 md:mb-8">
+      <div class="flex items-center gap-3 mb-3 min-w-0">
+        <span class="text-3xl md:text-4xl shrink-0">🏛️</span>
+        <h1 class="t-h1 text-gray-900 dark:text-white min-w-0">{L.title}</h1>
+      </div>
+      <p class="text-gray-600 dark:text-gray-400 text-base md:text-lg max-w-3xl leading-relaxed">{L.intro}</p>
+    </header>
+
+    <section
+      class="mb-7 rounded-xl border border-subtle bg-surface p-4 shadow-sm md:p-5"
+      aria-labelledby="debate-finder-title"
+    >
+      <div class="mb-4 flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
+        <div>
+          <h2 id="debate-finder-title" class="t-h3 text-gray-900 dark:text-white">{L.finderTitle}</h2>
+          <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">{L.finderHint}</p>
+        </div>
+        <button
+          id="clear-filters-btn"
+          onclick="clearFilters()"
+          class="hidden self-start rounded-lg border border-red-200 px-3 py-1.5 text-sm text-red-500 transition-all hover:border-red-400 hover:text-red-700 md:self-auto"
+        >
+          {L.clear}
+        </button>
+      </div>
+
+      <div class="grid grid-cols-1 gap-3 md:grid-cols-12">
+        <input
+          id="search-input"
+          type="text"
+          placeholder={L.searchPlaceholder}
+          class="min-w-0 rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm text-gray-800 dark:border-slate-600 dark:bg-slate-700 dark:text-gray-200 md:col-span-5"
+        />
+        <select
+          id="type-filter"
+          class="min-w-0 rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm text-gray-800 dark:border-slate-600 dark:bg-slate-700 dark:text-gray-200 md:col-span-2"
+        >
+          <option value="">{L.allTypes}</option>
+          {Object.entries(typeMap).map(([type, label]) => <option value={type}>{label}</option>)}
+        </select>
+        <select
+          id="topic-filter"
+          class="min-w-0 rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm text-gray-800 dark:border-slate-600 dark:bg-slate-700 dark:text-gray-200 md:col-span-3"
+        >
+          <option value="">{L.allTopics}</option>
+          {topicEntries.map((entry) => <option value={entry.topic}>{entry.label}</option>)}
+        </select>
+        <select
+          id="year-filter"
+          class="min-w-0 rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm text-gray-800 dark:border-slate-600 dark:bg-slate-700 dark:text-gray-200 md:col-span-2"
+        >
+          <option value="">{L.allYears}</option>
+          {
+            Object.keys(DEBATE_STATS.byYear)
+              .sort()
+              .reverse()
+              .map((year) => <option value={year}>{year}</option>)
+          }
+        </select>
+      </div>
+
+      <div class="mt-3 grid grid-cols-1 gap-3 md:grid-cols-12">
+        <select
+          id="speaker-filter"
+          class="min-w-0 rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm text-gray-800 dark:border-slate-600 dark:bg-slate-700 dark:text-gray-200 md:col-span-5"
+        >
+          <option value="">{L.allMps}</option>
+          {
+            frequentSpeakers.map((speaker) => (
+              <option value={speaker.name}>
+                {speaker.name} ({speaker.count})
+              </option>
+            ))
+          }
+        </select>
+        <select
+          id="controversy-filter"
+          class="min-w-0 rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm text-gray-800 dark:border-slate-600 dark:bg-slate-700 dark:text-gray-200 md:col-span-3"
+        >
+          <option value="">{L.allControversy}</option>
+          <option value="4">{L.highControversy}</option>
+          <option value="3">{L.midControversy}</option>
+          <option value="1">{L.lowControversy}</option>
+        </select>
+        <div id="result-count" class="text-sm text-gray-500 md:col-span-4 md:self-center md:text-right"></div>
+      </div>
+
+      <div class="mt-4">
+        <div class="mb-2 text-xs font-semibold uppercase tracking-wide text-gray-400">{L.quickTitle}</div>
+        <div class="flex flex-wrap gap-2">
+          {
+            quickFilters.map((filter) => (
+              <button
+                onclick={`filterBy('${filter.dimension}','${jsAttr(filter.value)}')`}
+                class="rounded-full border border-blue-100 bg-blue-50 px-3 py-1.5 text-sm text-blue-700 transition-colors hover:border-blue-300 hover:bg-blue-100 dark:border-blue-900 dark:bg-blue-900/30 dark:text-blue-300"
+              >
+                {filter.label}
+              </button>
+            ))
+          }
+        </div>
+      </div>
+
+      <div
+        id="active-filter-bar"
+        class="mt-4 hidden rounded-lg border border-blue-200 bg-blue-50 px-3 py-2 dark:border-blue-800 dark:bg-blue-900/20"
+      >
+        <span class="text-sm font-medium text-blue-700 dark:text-blue-300">{L.active}</span>
+        <span id="active-filter-label" class="text-sm text-blue-600 dark:text-blue-400"></span>
+      </div>
+    </section>
+
+    <section class="mb-7" aria-labelledby="topic-browser-title">
+      <div class="mb-3 flex flex-col gap-1 md:flex-row md:items-end md:justify-between">
+        <div>
+          <h2 id="topic-browser-title" class="t-h3 text-gray-800 dark:text-white">{L.topicTitle}</h2>
+          <p class="text-sm text-gray-500 dark:text-gray-400">{L.topicHint}</p>
+        </div>
+      </div>
+      <div class="flex flex-wrap gap-2">
+        {
+          topicEntries.map((entry) => (
+            <button
+              onclick={`filterBy('topic','${jsAttr(entry.topic)}')`}
+              class="inline-flex items-center gap-1.5 rounded-full border border-indigo-100 bg-indigo-50 px-3 py-1.5 text-sm text-indigo-700 transition-all hover:border-indigo-400 hover:bg-indigo-100 dark:border-indigo-800 dark:bg-indigo-900/30 dark:text-indigo-300 dark:hover:bg-indigo-900/60"
+            >
+              {entry.label}
+              <span class="rounded-full bg-indigo-200 px-1.5 py-0.5 text-xs text-indigo-700 dark:bg-indigo-800 dark:text-indigo-300">
+                {entry.count}
+              </span>
+            </button>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class="mb-8 rounded-xl border border-subtle bg-surface p-4 shadow-sm md:p-5">
+      <div class="mb-4 flex flex-col gap-1 md:flex-row md:items-end md:justify-between">
+        <div>
+          <h2 class="t-h3 text-gray-800 dark:text-white">{L.overviewTitle}</h2>
+          <p class="text-sm text-gray-500 dark:text-gray-400">{L.trendHint}</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-2 gap-3 md:grid-cols-4">
+        <div class="rounded-lg border border-subtle bg-gray-50 p-3 dark:bg-slate-800/60">
+          <div class="text-xs text-gray-500">{L.total}</div>
+          <div class="mt-1 text-2xl font-bold text-blue-600">{DEBATE_STATS.total}</div>
+        </div>
+        <div class="rounded-lg border border-subtle bg-gray-50 p-3 dark:bg-slate-800/60">
+          <div class="text-xs text-gray-500">{L.years}</div>
+          <div class="mt-1 text-lg font-semibold text-gray-900 dark:text-white">{yearRangeLabel}</div>
+        </div>
+        <div class="rounded-lg border border-subtle bg-gray-50 p-3 dark:bg-slate-800/60">
+          <div class="text-xs text-gray-500">{L.updatedShort}</div>
+          <div class="mt-1 text-lg font-semibold text-gray-900 dark:text-white">{DATA_UPDATED}</div>
+        </div>
+        <div class="rounded-lg border border-subtle bg-gray-50 p-3 dark:bg-slate-800/60">
+          <div class="text-xs text-gray-500">{L.typeMix}</div>
+          <div class="mt-1 text-xs leading-relaxed text-gray-700 dark:text-gray-300">{typeMixLabel}</div>
+        </div>
+      </div>
+
+      <div class="mt-5">
+        <div class="mb-2 text-sm font-semibold text-gray-700 dark:text-gray-200">{L.trendTitle}</div>
+        <div class="grid h-28 grid-cols-12 items-end gap-1 sm:gap-2">
+          {
+            Object.entries(DEBATE_STATS.byYear)
+              .sort()
+              .map(([year, count]) => (
+                <button
+                  onclick={`filterBy('year','${year}')`}
+                  class="group flex min-w-0 flex-col items-center gap-1"
+                  title={`${year}: ${count}`}
+                >
+                  <span class="text-[10px] font-medium text-gray-500 group-hover:text-blue-600">{count}</span>
+                  <div
+                    class="w-full rounded-t-sm bg-gradient-to-t from-blue-500 to-purple-400 transition-transform group-hover:scale-105"
+                    style={`height: ${Math.round((count / maxCount) * 76)}px; min-height: 4px;`}
+                  />
+                  <span class="text-[10px] text-gray-400 group-hover:text-blue-600">{year.slice(2)}</span>
+                </button>
+              ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section id="debate-section" class="mb-12" aria-labelledby="debate-list-title">
+      <div class="mb-4 flex flex-col gap-1 md:flex-row md:items-end md:justify-between">
+        <div>
+          <h2 id="debate-list-title" class="t-h3 text-gray-800 dark:text-white">{L.listTitle}</h2>
+          <p class="text-sm text-gray-500 dark:text-gray-400">{L.listHint}</p>
+        </div>
+      </div>
+
+      <div id="debate-list" class="space-y-3">
+        {
+          debates.map((d) => {
+            const cLevel = d.controversyLevel || 1;
+            const cLabel = controversyLabels[cLevel] || 'Unknown';
+            const cColor = controversyColors[cLevel] || 'bg-gray-100 text-gray-600';
+            const yearStr = d.date.slice(0, 4);
+            const title = debateTitle(d);
+            const summary = debateSummary(d);
+            const keyPoints = debateKeyPoints(d);
+            const govStance = debateGovStance(d);
+            const oppStance = debateOppStance(d);
+            const signal = debateSignal(d);
+            const quote = debateQuote(d);
+            return (
+              <article
+                data-debate-card
+                data-type={d.type}
+                data-year={yearStr}
+                data-controversy={cLevel}
+                data-topics={(d.topics || []).join('|')}
+                data-speakers={(d.speakers || []).join('|')}
+                data-search={searchBlob(d)}
+                class="overflow-hidden rounded-xl border border-subtle bg-surface shadow-sm"
+              >
+                <div class="p-4 md:p-5">
+                  <div class="mb-2 flex flex-wrap items-center gap-2">
+                    <button
+                      type="button"
+                      onclick={`filterBy('type','${jsAttr(d.type)}')`}
+                      class="rounded bg-slate-100 px-2 py-1 text-xs text-slate-600 transition-colors hover:bg-slate-200 dark:bg-slate-700 dark:text-slate-400"
+                    >
+                      {typeMap[d.type] || d.type}
+                    </button>
+                    <button
+                      type="button"
+                      onclick={`filterBy('year','${yearStr}')`}
+                      class="text-xs text-gray-500 transition-colors hover:text-blue-600 hover:underline"
+                    >
+                      {d.date}
+                    </button>
+                    <span class="text-xs text-gray-400">
+                      {isEn ? `${d.parliament} ${L.parliament}` : `第 ${d.parliament} ${L.parliament}`}
+                    </span>
+                    <span class={`rounded-full px-2 py-0.5 text-xs ${cColor}`}>{cLabel}</span>
+                  </div>
+
+                  <h3 class="mb-2 text-base font-bold leading-snug text-gray-900 dark:text-white md:text-lg">
+                    <a href={debateHref(d.id)} class="hover:text-primary">
+                      {title}
+                    </a>
+                  </h3>
+
+                  {isEn ? null : <p class="mb-2 text-xs italic text-gray-400">{truncate(d.title, 120)}</p>}
+
+                  <div class="mb-3 flex flex-wrap gap-1.5">
+                    {(d.topics || []).map((topic) => (
+                      <button
+                        type="button"
+                        onclick={`filterBy('topic','${jsAttr(topic)}')`}
+                        class="rounded-full bg-indigo-50 px-2 py-0.5 text-xs text-indigo-600 transition-colors hover:bg-indigo-100 dark:bg-indigo-900/30 dark:text-indigo-400"
+                      >
+                        {topicLabels[topic] || topic}
+                      </button>
+                    ))}
+                  </div>
+
+                  <p class="text-sm leading-relaxed text-gray-700 dark:text-gray-300">
+                    {truncate(summary, isEn ? 320 : 220)}
+                  </p>
+
+                  {signal && (
+                    <div class="mt-3 inline-flex max-w-full rounded bg-purple-50 px-2 py-1 text-xs text-purple-600 dark:bg-purple-900/20 dark:text-purple-400">
+                      <span class="min-w-0">
+                        {L.signal}: {signal}
+                      </span>
+                    </div>
+                  )}
+
+                  <div class="mt-4 flex flex-col gap-3 border-t border-subtle pt-3 text-xs sm:flex-row sm:items-center sm:justify-between">
+                    <div class="flex min-w-0 flex-wrap items-center gap-1">
+                      <span class="text-gray-400">🎙️</span>
+                      {(d.speakers || []).slice(0, 5).map((speaker, index) => {
+                        const display = speakerDisplay(speaker);
+                        return (
+                          <>
+                            {index > 0 && <span class="text-gray-300">·</span>}
+                            {display.href ? (
+                              <a
+                                href={display.href}
+                                class="text-gray-500 transition-colors hover:text-purple-600 hover:underline"
+                                title={display.title}
+                              >
+                                {display.label}
+                              </a>
+                            ) : (
+                              <span class="text-gray-500" title={display.title}>
+                                {display.label}
+                              </span>
+                            )}
+                          </>
+                        );
+                      })}
+                    </div>
+                    <div class="flex shrink-0 flex-wrap gap-3">
+                      <a href={debateHref(d.id)} class="text-blue-600 hover:underline">
+                        {L.detailPage} →
+                      </a>
+                      {d.sourceUrl && (
+                        <a href={d.sourceUrl} target="_blank" rel="noopener" class="text-blue-600 hover:underline">
+                          {L.hansard} ↗
+                        </a>
+                      )}
+                    </div>
+                  </div>
+
+                  <details class="mt-3 rounded-lg border border-subtle bg-gray-50 p-3 dark:bg-slate-700/40">
+                    <summary class="cursor-pointer text-sm font-semibold text-gray-700 dark:text-gray-200">
+                      {L.details}
+                    </summary>
+                    <div class="mt-3 space-y-3">
+                      <p class="text-sm leading-relaxed text-gray-700 dark:text-gray-300">{summary}</p>
+
+                      {keyPoints && keyPoints.length > 0 && (
+                        <div>
+                          <div class="mb-1 text-xs font-semibold text-gray-500">{L.keyPoints}</div>
+                          <ul class="space-y-1">
+                            {keyPoints.slice(0, 4).map((point) => (
+                              <li class="text-xs text-gray-600 dark:text-gray-400">• {point}</li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
+
+                      {(govStance || oppStance) && (
+                        <div class="grid grid-cols-1 gap-2 sm:grid-cols-2">
+                          {govStance && (
+                            <div class="rounded-lg bg-blue-50 p-2.5 dark:bg-blue-900/20">
+                              <div class="mb-1 text-xs font-semibold text-blue-600 dark:text-blue-400">
+                                {L.government}
+                              </div>
+                              <div class="text-xs text-gray-700 dark:text-gray-300">{govStance}</div>
+                            </div>
+                          )}
+                          {oppStance && (
+                            <div class="rounded-lg bg-orange-50 p-2.5 dark:bg-orange-900/20">
+                              <div class="mb-1 text-xs font-semibold text-orange-600 dark:text-orange-400">
+                                {L.opposition}
+                              </div>
+                              <div class="text-xs text-gray-700 dark:text-gray-300">{oppStance}</div>
+                            </div>
+                          )}
+                        </div>
+                      )}
+
+                      {quote && (
+                        <blockquote class="border-l-2 border-gray-300 pl-3 text-xs italic text-gray-500 dark:border-gray-600 dark:text-gray-400">
+                          "{quote}"
+                        </blockquote>
+                      )}
+
+                      {d.summary && (
+                        <details class="rounded-lg border border-subtle bg-white p-3 dark:bg-slate-800">
+                          <summary class="cursor-pointer text-xs font-semibold text-gray-500">{L.transcript}</summary>
+                          <div class="mt-2 max-h-64 overflow-y-auto whitespace-pre-wrap text-xs leading-relaxed text-gray-600 dark:text-gray-400">
+                            {d.summary}
+                          </div>
+                        </details>
+                      )}
+                    </div>
+                  </details>
+                </div>
+              </article>
+            );
+          })
+        }
+      </div>
+
+      <div id="debate-empty-state" class="hidden py-16 text-center text-gray-400">
+        <div class="mb-3 text-4xl">🔍</div>
+        <div class="mb-2 text-lg font-medium">{L.noResults}</div>
+        <button onclick="clearFilters()" class="mt-3 text-sm text-blue-600 hover:underline">{L.clear}</button>
+      </div>
+    </section>
+
+    <section class="space-y-12" aria-labelledby="analysis-title">
+      <div>
+        <h2 id="analysis-title" class="t-h2 text-gray-900 dark:text-white">{L.analysisTitle}</h2>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">{L.analysisHint}</p>
+      </div>
+
+      <section>
+        <h3 class="t-h3 mb-5 text-gray-800 dark:text-white">💡 {L.insights}</h3>
+        <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {
+            KEY_INSIGHTS.map((insight) => (
+              <div
+                class={`rounded-xl border border-subtle border-l-4 bg-surface p-5 shadow-sm ${significanceColors[insight.significance]}`}
+              >
+                <div class="mb-2 flex items-start justify-between gap-2">
+                  <h4 class="text-sm font-semibold text-gray-800 dark:text-white">
+                    {pickLocalized(insight, 'title', 'titleEn', lang)}
+                  </h4>
+                  {insight.significance === 'high' && (
+                    <span class="shrink-0 rounded-full bg-red-100 px-2 py-0.5 text-xs text-red-600">{L.important}</span>
+                  )}
+                </div>
+                <p class="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
+                  {pickLocalized(insight, 'description', 'descriptionEn', lang)}
+                </p>
+                <p class="mt-2 text-xs italic text-gray-400">
+                  {pickLocalized(insight, 'evidence', 'evidenceEn', lang)}
+                </p>
+              </div>
+            ))
+          }
+        </div>
+      </section>
+
+      <section>
+        <h3 class="t-h3 mb-2 text-gray-800 dark:text-white">📈 {L.evolution}</h3>
+        <p class="mb-5 text-sm text-gray-400">{L.clickPeriod}</p>
+        <div class="relative">
+          <div
+            class="absolute bottom-0 left-6 top-0 hidden w-0.5 bg-gradient-to-b from-blue-300 to-purple-300 md:block"
+          >
+          </div>
+          <div class="space-y-4">
+            {
+              POLICY_EVOLUTION.map((period, index) => {
+                const keyDebates = isEn && period.keyDebatesEn?.length ? period.keyDebatesEn : period.keyDebates;
+                return (
+                  <div class="relative md:pl-16">
+                    <div class="absolute left-0 top-3 hidden h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-blue-500 to-purple-600 text-sm font-bold text-white shadow-md md:flex">
+                      {index + 1}
+                    </div>
+                    <button
+                      onclick={`filterBy('yearRange','${period.years}')`}
+                      class="group w-full rounded-xl border border-subtle bg-surface p-5 text-left shadow-sm transition-all hover:border-blue-400 hover:shadow-md"
+                    >
+                      <div class="mb-2 flex flex-wrap items-center gap-3">
+                        <span class="rounded-full bg-blue-100 px-2 py-1 font-mono text-xs text-blue-700 dark:bg-blue-900 dark:text-blue-300">
+                          {period.years}
+                        </span>
+                        <h4 class="font-bold text-gray-800 dark:text-white">
+                          {pickLocalized(period, 'period', 'periodEn', lang)}
+                        </h4>
+                      </div>
+                      <p class="mb-2 text-sm font-medium text-blue-700 dark:text-blue-400">
+                        {pickLocalized(period, 'theme', 'themeEn', lang)}
+                      </p>
+                      <p class="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
+                        {pickLocalized(period, 'description', 'descriptionEn', lang)}
+                      </p>
+                      {keyDebates.length > 0 && (
+                        <div class="mt-3 flex flex-wrap gap-2">
+                          {keyDebates.map((debate) => (
+                            <span class="rounded bg-gray-100 px-2 py-1 text-xs text-gray-600 dark:bg-slate-700 dark:text-gray-400">
+                              📌 {debate}
+                            </span>
+                          ))}
+                        </div>
+                      )}
+                    </button>
+                  </div>
+                );
+              })
+            }
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h3 class="t-h3 mb-2 text-gray-800 dark:text-white">⚡ {L.controversies}</h3>
+        <p class="mb-5 text-sm text-gray-400">{L.clickControversy}</p>
+        <div class="grid gap-4 md:grid-cols-2">
+          {
+            RECURRING_CONTROVERSIES.map((controversy, index) => (
+              <button
+                onclick={`filterBy('topics','${(controversy as { relatedTopics: string[] }).relatedTopics.join(',')}')`}
+                class="group rounded-xl border border-subtle bg-surface p-5 text-left shadow-sm transition-all hover:border-orange-400 hover:shadow-md"
+              >
+                <div class="mb-3 flex items-start justify-between gap-3">
+                  <div class="min-w-0">
+                    <h4 class="font-bold text-gray-800 transition-colors group-hover:text-orange-600 dark:text-white">
+                      {pickLocalized(controversy, 'issue', 'issueEn', lang)}
+                    </h4>
+                    <p class="mt-1 text-sm text-gray-500">
+                      {pickLocalized(controversy, 'description', 'descriptionEn', lang)}
+                    </p>
+                  </div>
+                  <div class="flex shrink-0 flex-col items-end gap-1">
+                    <span class="rounded-full bg-gray-100 px-2 py-1 text-xs text-gray-600 dark:bg-slate-700 dark:text-gray-400">
+                      {controversyDebateCounts[index]} {L.related}
+                    </span>
+                    <span class={`rounded-full px-2 py-1 text-xs ${statusColors[controversy.resolutionStatus]}`}>
+                      {statusLabels[controversy.resolutionStatus]}
+                    </span>
+                  </div>
+                </div>
+                <div class="grid grid-cols-1 gap-3 sm:grid-cols-2">
+                  <div class="rounded-lg bg-blue-50 p-3 dark:bg-blue-900/20">
+                    <div class="mb-1 text-xs font-semibold text-blue-600 dark:text-blue-400">{L.government}</div>
+                    <div class="text-xs text-gray-700 dark:text-gray-300">
+                      {pickLocalized(controversy, 'governmentPosition', 'governmentPositionEn', lang)}
+                    </div>
+                  </div>
+                  <div class="rounded-lg bg-orange-50 p-3 dark:bg-orange-900/20">
+                    <div class="mb-1 text-xs font-semibold text-orange-600 dark:text-orange-400">{L.opposition}</div>
+                    <div class="text-xs text-gray-700 dark:text-gray-300">
+                      {pickLocalized(controversy, 'oppositionPosition', 'oppositionPositionEn', lang)}
+                    </div>
+                  </div>
+                </div>
+              </button>
+            ))
+          }
+        </div>
+      </section>
+
+      <section>
+        <h3 class="t-h3 mb-5 text-gray-800 dark:text-white">⚖️ {L.tensions}</h3>
+        <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {
+            TENSION_MAP.map((tension) => (
+              <div class="rounded-xl border border-subtle bg-surface p-5 shadow-sm">
+                <h4 class="mb-3 text-xs font-semibold uppercase tracking-wide text-gray-500 dark:text-gray-400">
+                  {pickLocalized(tension, 'dimension', 'dimensionEn', lang)}
+                </h4>
+                <div class="mb-3 flex items-center gap-2">
+                  <div class="flex-1 rounded-lg bg-blue-50 p-2 text-center text-xs text-blue-700 dark:bg-blue-900/20 dark:text-blue-300">
+                    {pickLocalized(tension, 'sideA', 'sideAEn', lang)}
+                  </div>
+                  <div class="text-sm font-bold text-gray-400">vs</div>
+                  <div class="flex-1 rounded-lg bg-orange-50 p-2 text-center text-xs text-orange-700 dark:bg-orange-900/20 dark:text-orange-300">
+                    {pickLocalized(tension, 'sideB', 'sideBEn', lang)}
+                  </div>
+                </div>
+                <div class="rounded bg-gray-50 p-2 text-xs text-gray-500 dark:bg-slate-700 dark:text-gray-400">
+                  <span class="font-medium">{L.currentBalance} </span>
+                  {pickLocalized(tension, 'currentBalance', 'currentBalanceEn', lang)}
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </section>
+
+      <section>
+        <h3 class="t-h3 mb-2 text-gray-800 dark:text-white">🎙️ {L.mps}</h3>
+        <p class="mb-5 text-sm text-gray-400">{L.clickMp}</p>
+        <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+          {
+            MP_PROFILES.map((mp) => {
+              const focusAreas = isEn && mp.focusAreasEn?.length ? mp.focusAreasEn : mp.focusAreas;
+              return (
+                <button
+                  onclick={`filterBy('speaker','${jsAttr(mp.name)}')`}
+                  class="group rounded-xl border border-subtle bg-surface p-4 text-left shadow-sm transition-all hover:border-purple-400 hover:shadow-md"
+                >
+                  <div class="mb-2 flex items-start justify-between gap-2">
+                    <div class="min-w-0">
+                      <div class="text-sm font-semibold text-gray-800 transition-colors group-hover:text-purple-600 dark:text-white">
+                        {mp.name}
+                      </div>
+                      {!isEn && mp.zhName && <div class="text-xs text-gray-500">{mp.zhName}</div>}
+                    </div>
+                    <span
+                      class={`shrink-0 rounded-full px-2 py-0.5 text-xs ${mp.role === '反对党' ? 'bg-orange-100 text-orange-700' : 'bg-blue-100 text-blue-700'}`}
+                    >
+                      {isEn ? mp.roleEn || (mp.role === '反对党' ? 'Opposition' : 'Ruling party') : mp.role}
+                    </span>
+                  </div>
+                  <div class="mb-2 text-xs text-gray-500">
+                    <span class="font-bold text-gray-700 dark:text-gray-300">{mp.debateCount}</span>{' '}
+                    {isEn ? 'debates' : '次发言'}
+                  </div>
+                  <div class="mb-2 flex flex-wrap gap-1">
+                    {focusAreas.slice(0, 3).map((area) => (
+                      <span class="rounded bg-gray-100 px-1.5 py-0.5 text-xs text-gray-600 dark:bg-slate-700 dark:text-gray-400">
+                        {area}
+                      </span>
+                    ))}
+                  </div>
+                  <p class="text-xs leading-relaxed text-gray-600 dark:text-gray-400">
+                    {pickLocalized(mp, 'notablePosition', 'notablePositionEn', lang)}
+                  </p>
+                </button>
+              );
+            })
+          }
+        </div>
+      </section>
+
+      <section>
+        <h3 class="t-h3 mb-2 text-gray-800 dark:text-white">📡 {L.signals}</h3>
+        <p class="mb-5 text-sm text-gray-400">{L.clickSignal}</p>
+        <div class="grid gap-3 md:grid-cols-2">
+          {
+            POLICY_SIGNALS.map((signal) => (
+              <button
+                onclick={`filterBy('year','${signal.year}')`}
+                class="group flex items-start gap-3 rounded-xl border border-subtle bg-surface p-4 text-left shadow-sm transition-all hover:border-green-400 hover:shadow-md"
+              >
+                <div class="mt-0.5 shrink-0">
+                  {signal.status === '已落实' && <span class="text-lg text-green-500">✅</span>}
+                  {signal.status === '进行中' && <span class="text-lg text-blue-500">🔄</span>}
+                  {signal.status === '仍在讨论' && <span class="text-lg text-amber-500">💬</span>}
+                </div>
+                <div class="min-w-0 flex-1">
+                  <div class="flex flex-wrap items-center gap-2">
+                    <span class="text-sm font-semibold text-gray-800 transition-colors group-hover:text-green-600 dark:text-white">
+                      {pickLocalized(signal, 'signal', 'signalEn', lang)}
+                    </span>
+                    <span class="text-xs text-gray-400">
+                      {L.firstSeen} {signal.year}
+                    </span>
+                    <span
+                      class={`rounded-full px-2 py-0.5 text-xs ${signal.status === '已落实' ? 'bg-green-100 text-green-700' : signal.status === '进行中' ? 'bg-blue-100 text-blue-700' : 'bg-amber-100 text-amber-700'}`}
+                    >
+                      {signal.status === '已落实'
+                        ? L.implemented
+                        : signal.status === '进行中'
+                          ? L.inProgress
+                          : L.stillDiscussing}
+                    </span>
+                  </div>
+                  <p class="mt-1 text-xs text-gray-500">{pickLocalized(signal, 'context', 'contextEn', lang)}</p>
+                </div>
+              </button>
+            ))
+          }
+        </div>
+      </section>
+    </section>
+  </div>
+</Layout>
+
+<script define:vars={{ typeMap, controversyLabels, topicLabels, L }}>
+  const cards = () => Array.from(document.querySelectorAll('[data-debate-card]'));
+
+  let activeFilters = {
+    search: '',
+    type: '',
+    topic: '',
+    topicsOr: [],
+    year: '',
+    controversy: '',
+    speaker: '',
+    _yearRange: null,
+  };
+
+  function setSelectValue(id, value) {
+    const el = document.getElementById(id);
+    if (el) el.value = value;
+  }
+
+  function setInputValue(id, value) {
+    const el = document.getElementById(id);
+    if (el) el.value = value;
+  }
+
+  function scrollToDebates() {
+    document.getElementById('debate-section')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  function resetActive() {
+    activeFilters = {
+      search: '',
+      type: '',
+      topic: '',
+      topicsOr: [],
+      year: '',
+      controversy: '',
+      speaker: '',
+      _yearRange: null,
+    };
+    setInputValue('search-input', '');
+    setSelectValue('type-filter', '');
+    setSelectValue('topic-filter', '');
+    setSelectValue('year-filter', '');
+    setSelectValue('controversy-filter', '');
+    setSelectValue('speaker-filter', '');
+  }
+
+  window.filterBy = function (dimension, value) {
+    resetActive();
+
+    if (dimension === 'type') {
+      activeFilters.type = value;
+      setSelectValue('type-filter', value);
+    } else if (dimension === 'topic') {
+      activeFilters.topic = value;
+      setSelectValue('topic-filter', value);
+    } else if (dimension === 'year') {
+      activeFilters.year = value;
+      setSelectValue('year-filter', value);
+    } else if (dimension === 'speaker') {
+      activeFilters.speaker = value;
+      setSelectValue('speaker-filter', value);
+    } else if (dimension === 'controversy') {
+      activeFilters.controversy = value;
+      setSelectValue('controversy-filter', value);
+    } else if (dimension === 'topics') {
+      activeFilters.topicsOr = value
+        .split(',')
+        .map((topic) => topic.trim())
+        .filter(Boolean);
+      if (activeFilters.topicsOr.length === 1) {
+        setSelectValue('topic-filter', activeFilters.topicsOr[0]);
+        activeFilters.topic = activeFilters.topicsOr[0];
+        activeFilters.topicsOr = [];
+      }
+    } else if (dimension === 'keyword') {
+      activeFilters.search = value.toLowerCase();
+      setInputValue('search-input', value);
+    } else if (dimension === 'yearRange') {
+      const parts = value.split('-');
+      activeFilters._yearRange = [parseInt(parts[0]), parseInt(parts[parts.length - 1])];
+    }
+
+    applyFilters();
+    scrollToDebates();
+  };
+
+  window.clearFilters = function () {
+    resetActive();
+    applyFilters();
+  };
+
+  function updateActiveFilterBar(visibleCount) {
+    const bar = document.getElementById('active-filter-bar');
+    const label = document.getElementById('active-filter-label');
+    const clearBtn = document.getElementById('clear-filters-btn');
+    const parts = [];
+
+    if (activeFilters.search) parts.push(`"${activeFilters.search}"`);
+    if (activeFilters.type) parts.push(`${typeMap[activeFilters.type] || activeFilters.type}`);
+    if (activeFilters.topic) parts.push(`${topicLabels[activeFilters.topic] || activeFilters.topic}`);
+    if (activeFilters.year) parts.push(`${activeFilters.year}`);
+    if (activeFilters.speaker) parts.push(`${activeFilters.speaker}`);
+    if (activeFilters.controversy) parts.push(`${controversyLabels[parseInt(activeFilters.controversy, 10)] || ''}`);
+    if (activeFilters._yearRange) parts.push(`${activeFilters._yearRange[0]}-${activeFilters._yearRange[1]}`);
+    if (activeFilters.topicsOr && activeFilters.topicsOr.length > 0)
+      parts.push(activeFilters.topicsOr.map((topic) => topicLabels[topic] || topic).join(' / '));
+
+    if (parts.length > 0) {
+      label.textContent = ` ${parts.join(' · ')} (${visibleCount} ${L.results})`;
+      bar.classList.remove('hidden');
+      clearBtn.classList.remove('hidden');
+    } else {
+      bar.classList.add('hidden');
+      clearBtn.classList.add('hidden');
+    }
+  }
+
+  function applyFilters() {
+    activeFilters.search = (document.getElementById('search-input')?.value || '').toLowerCase();
+    activeFilters.type = document.getElementById('type-filter')?.value || '';
+    activeFilters.year = document.getElementById('year-filter')?.value || '';
+    activeFilters.controversy = document.getElementById('controversy-filter')?.value || '';
+    activeFilters.speaker = document.getElementById('speaker-filter')?.value || '';
+    const topic = document.getElementById('topic-filter')?.value || '';
+    if (topic !== activeFilters.topic) {
+      activeFilters.topic = topic;
+      activeFilters.topicsOr = [];
+    }
+
+    const all = cards();
+    let visible = 0;
+
+    for (const card of all) {
+      const cType = card.dataset.type || '';
+      const cTopics = (card.dataset.topics || '').split('|').filter(Boolean);
+      const cYear = card.dataset.year || '';
+      const cSpeakers = (card.dataset.speakers || '').split('|').filter(Boolean);
+      const cControversy = parseInt(card.dataset.controversy || '1', 10);
+      const cSearch = card.dataset.search || '';
+
+      let match = true;
+      if (activeFilters.search && !cSearch.includes(activeFilters.search)) match = false;
+      if (match && activeFilters.type && cType !== activeFilters.type) match = false;
+      if (match && activeFilters.topic && !cTopics.includes(activeFilters.topic)) match = false;
+      if (
+        match &&
+        activeFilters.topicsOr.length > 0 &&
+        !activeFilters.topicsOr.some((topic) => cTopics.includes(topic))
+      )
+        match = false;
+      if (match && activeFilters.year && cYear !== activeFilters.year) match = false;
+      if (match && activeFilters.speaker && !cSpeakers.includes(activeFilters.speaker)) match = false;
+      if (match && activeFilters._yearRange) {
+        const y = parseInt(cYear, 10);
+        if (y < activeFilters._yearRange[0] || y > activeFilters._yearRange[1]) match = false;
+      }
+      if (match && activeFilters.controversy === '4' && cControversy < 4) match = false;
+      else if (match && activeFilters.controversy === '3' && cControversy !== 3) match = false;
+      else if (match && activeFilters.controversy === '1' && cControversy > 2) match = false;
+
+      if (match) {
+        card.removeAttribute('hidden');
+        visible++;
+      } else {
+        card.setAttribute('hidden', '');
+      }
+    }
+
+    const count = document.getElementById('result-count');
+    if (count) count.textContent = `${L.showing} ${visible} / ${all.length} ${L.results}`;
+
+    const empty = document.getElementById('debate-empty-state');
+    if (empty) empty.classList.toggle('hidden', visible !== 0);
+
+    updateActiveFilterBar(visible);
+  }
+
+  function initDebates() {
+    applyFilters();
+
+    document.getElementById('search-input')?.addEventListener('input', () => {
+      activeFilters._yearRange = null;
+      applyFilters();
+    });
+
+    ['type-filter', 'year-filter', 'controversy-filter', 'speaker-filter'].forEach((id) => {
+      document.getElementById(id)?.addEventListener('change', () => {
+        activeFilters._yearRange = null;
+        applyFilters();
+      });
+    });
+
+    document.getElementById('topic-filter')?.addEventListener('change', () => {
+      activeFilters._yearRange = null;
+      activeFilters.topicsOr = [];
+      applyFilters();
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', initDebates);
+  document.addEventListener('astro:page-load', initDebates);
+</script>
