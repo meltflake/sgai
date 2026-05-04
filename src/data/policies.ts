@@ -18,6 +18,14 @@ export interface Policy {
   summaryEn?: string;
   contentEn?: string;
   sourceEn?: string;
+  // Optional profile fields for richer landing pages. Existing records can
+  // render from summary/content alone; these fields let future passes add
+  // structured facts, sections, milestones, and curated links incrementally.
+  keyFacts?: PolicyFact[];
+  sections?: PolicySection[];
+  milestones?: PolicyMilestone[];
+  resources?: PolicyResource[];
+  lastVerified?: string;
   // Phase 1 knowledge-graph fields (all optional during migration; hand-
   // curated over time. Empty arrays mean "no known links yet").
   ministry?: string; // matches Affiliation values in src/data/people.ts
@@ -26,6 +34,35 @@ export interface Policy {
   relatedLeverNumbers?: number[]; // 1–6
   relatedTimelineYears?: number[];
   relatedPostSlugs?: string[];
+}
+
+export interface PolicyFact {
+  label: string;
+  labelEn?: string;
+  value: string;
+  valueEn?: string;
+}
+
+export interface PolicySection {
+  title: string;
+  titleEn?: string;
+  body: string;
+  bodyEn?: string;
+}
+
+export interface PolicyMilestone {
+  date: string;
+  title: string;
+  titleEn?: string;
+  description?: string;
+  descriptionEn?: string;
+}
+
+export interface PolicyResource {
+  label: string;
+  labelEn?: string;
+  url: string;
+  kind?: 'source' | 'pdf' | 'translation' | 'website' | 'dataset' | 'tool' | 'report';
 }
 
 export interface PolicyCategory {

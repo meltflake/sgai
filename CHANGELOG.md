@@ -10,6 +10,12 @@
 
 - `/blog/` 中文栏目名从“观点”改为“观察”，同步更新导航、首页入口、面包屑、返回按钮，以及现有中文文章的分类 / 标签。
 
+### 政策库：卡片升级为政策 / 项目档案入口
+
+- `/policies/` 与 `/en/policies/` 的每张政策卡片改为整卡点击，统一进入站内档案页，外部来源入口收敛到详情页。
+- `/policies/[id]/` 与 `/en/policies/[id]/` 从单段正文升级为档案页结构：事实卡、战略位置、展开信息、资源入口、关联抓手、同类档案和关联阅读。
+- `src/data/policies.ts` 预留 `keyFacts / sections / milestones / resources / lastVerified` 扩展字段，后续可以继续把每个政策、项目或机构页补成更完整的落地档案。
+
 ### 产学研开源生态：卡片升级为项目档案页
 
 - `/community-opensource/` 与 `/en/community-opensource/` 的每张卡片改为整卡点击入口，统一指向站内项目档案页。
