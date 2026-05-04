@@ -2,6 +2,8 @@
 
 ## 2026-05-04
 
+- Renamed the Chinese blog column label from `观点` to `观察` across `/blog/`, zh navigation/home labels, article return button, and existing zh post category/tag frontmatter.
+
 - Started improving `/benchmarking/` into a card-first benchmark case index.
 - Confirmed the repo already has country/region detail routes; current work will add concrete company/project/institution case routes without removing region pages.
 - Added `benchmarkCases` data records and `benchmarkCasePages` / `benchmarkPages` route helpers.

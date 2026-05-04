@@ -24,8 +24,8 @@ const currentPage = page.currentPage ?? 1;
 // const allTags = await findTags();
 
 const metadata = {
-  title: `观点${currentPage > 1 ? ` — 第 ${currentPage} 页` : ''}`,
-  description: '新加坡 AI 观察的观点文章——新加坡 AI 生态的研究与评论。',
+  title: `观察${currentPage > 1 ? ` — 第 ${currentPage} 页` : ''}`,
+  description: '新加坡 AI 观察的栏目文章——新加坡 AI 生态的研究、记录与评论。',
   robots: {
     index: blogListRobots?.index && currentPage === 1,
     follow: blogListRobots?.follow,
@@ -35,12 +35,12 @@ const metadata = {
   },
 };
 
-const breadcrumbs = [{ label: '观点' }];
+const breadcrumbs = [{ label: '观察' }];
 ---
 
 <Layout metadata={metadata} breadcrumbs={breadcrumbs} lang="zh">
   <section class="px-6 sm:px-6 py-12 sm:py-16 lg:py-20 mx-auto max-w-4xl">
-    <Headline subtitle="新加坡 AI 生态的研究文章与评论">观点</Headline>
+    <Headline subtitle="新加坡 AI 生态的研究、记录与评论">观察</Headline>
     <BlogList posts={page.data} />
     <Pagination prevUrl={page.url.prev} nextUrl={page.url.next} />
     <!--

@@ -3,11 +3,11 @@ publishDate: 2026-04-25
 updateDate: 2026-05-03
 title: 'AI-native 的公司与国家'
 excerpt: '2026 年同时在跑两类 AI-native 试验——50 人的公司和 570 万人的城邦。把它们并排放，会看到一个被忽视的事实：50 人的公司和 570 万人的国家，可以用同一种 AI-native 架构，规模只决定杠杆，不决定本质。新加坡 Budget 2026 的真正赌注，是把整个国家当成本土企业 AI-native 转型的包装层。'
-category: '观点'
+category: '观察'
 tags:
   - AI-native
   - 战略
-  - 观点
+  - 观察
   - 新加坡
   - Budget 2026
   - YC
