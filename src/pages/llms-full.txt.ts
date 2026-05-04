@@ -3,7 +3,7 @@ import { debates } from '~/data/debates';
 import { videos } from '~/data/videos';
 import { allPeople } from '~/data/people';
 import { categories } from '~/data/policies';
-import { legalItemPages, regionPages, leverPages } from '~/utils/entity-pages';
+import { legalItemPages, regionPages, leverPages, startupEntityPages } from '~/utils/entity-pages';
 
 export const prerender = true;
 
@@ -36,6 +36,7 @@ const lines = [
   `- ${base}/levers/ — 国家 AI 抓手图谱`,
   `- ${base}/legal-ai/ — AI 法律框架`,
   `- ${base}/benchmarking/ — 国际对标`,
+  `- ${base}/startups/ — AI 创业生态`,
   '',
   '## Policy Detail Pages',
   '',
@@ -100,6 +101,14 @@ const lines = [
   '## English Benchmark Detail Pages',
   '',
   ...regionPages.map((page) => `- ${base}/en/benchmarking/${page.slug}/ — ${page.summary.nameEn || page.summary.name}`),
+  '',
+  '## Startup Ecosystem Entity Pages',
+  '',
+  ...startupEntityPages.map((page) => `- ${base}/startups/${page.slug}/ — ${page.name}`),
+  '',
+  '## English Startup Ecosystem Entity Pages',
+  '',
+  ...startupEntityPages.map((page) => `- ${base}/en/startups/${page.slug}/ — ${page.name}`),
   '',
 ];
 

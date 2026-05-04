@@ -20,6 +20,18 @@
 - `src/data/opensource.ts` 扩展为可持续补充的数据模型：每个项目有稳定 `id`、归属方、类别、状态、指标、摘要、详细说明、AI 关系、新加坡关系、里程碑和资源入口。
 - 数据说明拆分为统计采集日与项目档案更新日，避免 GitHub / Hugging Face 数字和编辑内容混在同一个"最后更新"里。
 
+## 0.9.4 — 2026-05-04
+
+### 创业生态：公司 / 项目实体详情页
+
+- `/startups/` 从表格和外链列表升级为实体卡片索引；独角兽、垂直领域公司、退出样本、投资机构全部点击进入站内档案。
+- 新增 `/startups/[id]/` 与 `/en/startups/[id]/`，为 42 个创业生态实体生成可索引详情页，包含定位、资本与市场信号、生态意义、后续追踪问题、相关实体与 JSON-LD。
+- 收紧 AI 口径：新增 `核心 AI / AI-enabled / 生态相邻 / 弱关联待核` 四级标注；Carro、Grab 等改为 AI-enabled，Nium、Sygnum 等不再包装成“支付 AI / AI 银行”。
+- 数据说明拆分为“基础统计口径日期”和“实体档案整理日期”，避免把 650+ 聚合统计的旧口径误读成每个公司档案的更新日期。
+- 投资机构实体补齐官网字段，详情页现在会展示 SGInnovate、Temasek、GIC、Antler、Vertex Ventures、Monk's Hill Ventures 的官方链接。
+- `startups.ts` 增加稳定 `id` 与可扩展 profile 字段；`utils/entity-pages.ts` 新增 startup entity flatten/merge，支持同一家公司同时承载垂直领域、独角兽等多重信息。
+- `llms.txt` / `llms-full.txt` 纳入创业生态详情页，方便搜索引擎和 LLM crawler 引用具体公司、项目、退出与投资机构。
+
 ## 0.9.1 — 2026-05-03
 
 ### 生态地图：关键人物全部接入人物图

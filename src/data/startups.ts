@@ -1,5 +1,5 @@
 // AI 创业生态数据
-// 数据截至 2026-02-17
+// 基础统计口径截至 2026-02-17；实体档案整理于 2026-05-04
 
 export const ecosystemStats = {
   totalStartups: '650+',
@@ -9,9 +9,11 @@ export const ecosystemStats = {
   unicorns: 9,
   govCommitment: 'S$1.6B+',
   dataDate: '2026-02-17',
+  profileUpdated: '2026-05-04',
 };
 
 export interface Unicorn {
+  id?: string;
   name: string;
   sector: string;
   sectorEn?: string;
@@ -25,8 +27,8 @@ export interface Unicorn {
 export const unicorns: Unicorn[] = [
   {
     name: 'Grab',
-    sector: '超级应用 / 物流 AI',
-    sectorEn: 'Super App / Logistics AI',
+    sector: '超级应用 / 物流与平台算法',
+    sectorEn: 'Super app / Logistics and platform algorithms',
     raised: '$12B+',
     valuation: '$20.2B',
     status: '已上市 (NASDAQ)',
@@ -44,6 +46,7 @@ export const unicorns: Unicorn[] = [
     url: 'https://traxretail.com',
   },
   {
+    id: 'advance-ai',
     name: 'Advance Intelligence',
     sector: '金融科技 AI / BNPL',
     sectorEn: 'FinTech AI / BNPL',
@@ -65,8 +68,8 @@ export const unicorns: Unicorn[] = [
   },
   {
     name: 'Nium',
-    sector: '支付 AI',
-    sectorEn: 'Payments AI',
+    sector: '跨境支付基础设施',
+    sectorEn: 'Cross-border payments infrastructure',
     raised: '$312M',
     valuation: '$1.4B',
     status: '活跃',
@@ -85,8 +88,8 @@ export const unicorns: Unicorn[] = [
   },
   {
     name: 'Carro',
-    sector: '汽车 AI',
-    sectorEn: 'Automotive AI',
+    sector: '二手车交易与汽车金融平台（AI-enabled）',
+    sectorEn: 'Used-car marketplace and auto-finance platform (AI-enabled)',
     raised: '$1.01B',
     valuation: '$1B+',
     status: '活跃',
@@ -95,8 +98,8 @@ export const unicorns: Unicorn[] = [
   },
   {
     name: 'Sygnum',
-    sector: '数字资产/AI 银行',
-    sectorEn: 'Digital Assets / AI Banking',
+    sector: '数字资产银行',
+    sectorEn: 'Digital asset banking',
     raised: '$58M+',
     valuation: '$1B+',
     status: '活跃 (2025.1)',
@@ -116,6 +119,7 @@ export const unicorns: Unicorn[] = [
 ];
 
 export interface Startup {
+  id?: string;
   name: string;
   description: string;
   descriptionEn?: string;
@@ -125,6 +129,12 @@ export interface Startup {
   url?: string | null;
   highlight?: string;
   highlightEn?: string;
+  profile?: string;
+  profileEn?: string;
+  aiUseCase?: string;
+  aiUseCaseEn?: string;
+  singaporeContext?: string;
+  singaporeContextEn?: string;
 }
 
 export interface Vertical {
@@ -149,8 +159,8 @@ export const verticals: Vertical[] = [
       },
       {
         name: 'Aspire',
-        description: 'AI 驱动的中小企业金融平台',
-        descriptionEn: 'AI-driven financial platform for SMEs',
+        description: '中小企业金融平台（AI-enabled）',
+        descriptionEn: 'SME finance platform (AI-enabled)',
         raised: '$300M+',
         url: 'https://aspireapp.com',
       },
@@ -366,6 +376,7 @@ export const verticals: Vertical[] = [
 ];
 
 export interface Exit {
+  id?: string;
   name: string;
   description: string;
   descriptionEn?: string;
@@ -437,6 +448,7 @@ export const exits: Exit[] = [
 ];
 
 export interface Investor {
+  id?: string;
   name: string;
   type: string;
   typeEn?: string;
@@ -444,6 +456,7 @@ export interface Investor {
   statsEn?: string;
   focus: string;
   focusEn?: string;
+  url: string;
 }
 
 export const investors: Investor[] = [
@@ -455,6 +468,7 @@ export const investors: Investor[] = [
     statsEn: '167 investments, 25 exits',
     focus: 'AI、量子、区块链',
     focusEn: 'AI, quantum, blockchain',
+    url: 'https://www.sginnovate.com/',
   },
   {
     name: 'Temasek',
@@ -464,6 +478,7 @@ export const investors: Investor[] = [
     statsEn: '60 deals in 2025',
     focus: 'AI 基础设施、数据中心',
     focusEn: 'AI infrastructure, data centres',
+    url: 'https://www.temasek.com.sg/en/index',
   },
   {
     name: 'GIC',
@@ -473,6 +488,7 @@ export const investors: Investor[] = [
     statsEn: '42 deals in 2025',
     focus: 'AI 基础设施',
     focusEn: 'AI infrastructure',
+    url: 'https://www.gic.com.sg/',
   },
   {
     name: 'Antler',
@@ -482,6 +498,7 @@ export const investors: Investor[] = [
     statsEn: 'Most active early-stage investor; 14 AI deals in 2025',
     focus: 'AI 创业',
     focusEn: 'AI startups',
+    url: 'https://www.antler.co/',
   },
   {
     name: 'Vertex Ventures',
@@ -491,6 +508,7 @@ export const investors: Investor[] = [
     statsEn: '—',
     focus: '东南亚科技',
     focusEn: 'Southeast Asian tech',
+    url: 'https://www.vertexventures.sg/',
   },
   {
     name: "Monk's Hill Ventures",
@@ -500,5 +518,6 @@ export const investors: Investor[] = [
     statsEn: '—',
     focus: '东南亚科技',
     focusEn: 'Southeast Asian tech',
+    url: 'https://www.monkshill.com/',
   },
 ];
