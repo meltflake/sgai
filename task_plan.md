@@ -1,3 +1,57 @@
+# Benchmarking Case Page Improvement Plan
+
+## Goal
+
+Make `/benchmarking/` card-first and expandable: every visible card should be clickable, and the main card layer should lead to concrete company/project/institution landing pages with richer detail.
+
+## Phases
+
+- [complete] Inspect existing benchmarking data, region detail routes, and index layout.
+- [complete] Add reusable benchmark case data and route indexing.
+- [complete] Update Chinese and English benchmarking index/detail pages.
+- [complete] Update LLM indexes, changelog/version/log.
+- [complete] Run checks and local smoke tests.
+
+## Decisions
+
+- Preserve existing country/region pages; add project/company case pages under the same `/benchmarking/{slug}/` namespace.
+- Use data-driven case records so future enrichment only needs data additions.
+- Keep unrelated untracked `scripts/refresh/videos/data/` unchanged.
+
+## Errors Encountered
+
+| Error | Attempt | Resolution |
+| ----- | ------- | ---------- |
+
+---
+
+# Benchmarking Region Drilldown Plan
+
+## Goal
+
+Make region pages such as `/benchmarking/hong-kong/` continue to drill down: summary cards, strategy cards, investment items, initiatives, and key bodies should all link to generated detail pages.
+
+## Phases
+
+- [complete] Inspect current region page card/table structure.
+- [complete] Generate region drilldown pages from existing region data.
+- [complete] Link zh/en region-page cards and rows to generated drilldown pages.
+- [complete] Update LLM indexes, changelog/version/log.
+- [complete] Run checks, build, i18n, and local smoke tests.
+
+## Decisions
+
+- Generate drilldown pages from existing `RegionSummary` and `RegionDetail`; do not hand-code Hong Kong only.
+- Keep slugs prefixed by region to avoid collisions with existing case pages.
+- Leave unrelated `community-opensource` changes untouched.
+
+## Errors Encountered
+
+| Error | Attempt | Resolution |
+| ----- | ------- | ---------- |
+
+---
+
 # Open Source Page Improvement Plan
 
 ## Goal

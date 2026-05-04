@@ -1,6 +1,13 @@
 import slugify from 'limax';
 
-import { regions, regionDetails, type RegionDetail, type RegionSummary } from '~/data/benchmarking';
+import {
+  benchmarkCases,
+  regions,
+  regionDetails,
+  type BenchmarkCase,
+  type RegionDetail,
+  type RegionSummary,
+} from '~/data/benchmarking';
 import { sections as legalSections, type LegalItem, type LegalSection } from '~/data/legal-ai';
 import { levers, type Lever, type LeverGroup, type LeverItem } from '~/data/levers';
 import { ecosystemCategories, type EcosystemCategory, type EcosystemEntity } from '~/data/ecosystem';
@@ -40,6 +47,334 @@ export const regionPages: RegionPage[] = regions.map((summary) => ({
   summary,
   detail: regionDetails.find((detail) => sameRegion(summary, detail)),
 }));
+
+export function benchmarkCaseSlug(benchmarkCase: Pick<BenchmarkCase, 'id' | 'name' | 'nameEn'>): string {
+  return benchmarkCase.id || toSeoSlug(benchmarkCase.nameEn || benchmarkCase.name);
+}
+
+export interface BenchmarkCasePage {
+  kind: 'case';
+  slug: string;
+  caseItem: BenchmarkCase;
+}
+
+export const benchmarkCasePages: BenchmarkCasePage[] = benchmarkCases.map((caseItem) => ({
+  kind: 'case',
+  slug: benchmarkCaseSlug(caseItem),
+  caseItem,
+}));
+
+export type BenchmarkDrilldownKind = 'summary' | 'strategy' | 'investment' | 'initiative' | 'body';
+
+export interface BenchmarkDrilldownFact {
+  label: string;
+  labelEn?: string;
+  value: string;
+  valueEn?: string;
+}
+
+export interface BenchmarkDrilldownPage {
+  kind: 'drilldown';
+  slug: string;
+  localId: string;
+  drilldownKind: BenchmarkDrilldownKind;
+  region: RegionPage;
+  category: string;
+  categoryEn: string;
+  title: string;
+  titleEn: string;
+  description: string;
+  descriptionEn: string;
+  body: string;
+  bodyEn: string;
+  facts: BenchmarkDrilldownFact[];
+  sources: string[];
+  sourcesEn?: string[];
+}
+
+function benchmarkDrilldownSlug(regionPage: RegionPage, localId: string, title: string): string {
+  if (['core-strategy', 'investment-overview', 'governance-model', 'comparative-strength'].includes(localId)) {
+    return toSeoSlug(`${regionPage.slug} ${localId}`);
+  }
+
+  return toSeoSlug(`${regionPage.slug} ${localId} ${title}`);
+}
+
+function buildBenchmarkDrilldownPages(): BenchmarkDrilldownPage[] {
+  const pages: BenchmarkDrilldownPage[] = [];
+
+  function addPage(page: Omit<BenchmarkDrilldownPage, 'kind' | 'slug'>): void {
+    pages.push({
+      kind: 'drilldown',
+      slug: benchmarkDrilldownSlug(page.region, page.localId, page.titleEn || page.title),
+      ...page,
+    });
+  }
+
+  for (const region of regionPages) {
+    const { summary, detail } = region;
+    const regionNameEn = summary.nameEn || summary.name;
+    const sources = detail?.sources || [];
+    const sourcesEn = detail?.sourcesEn;
+
+    addPage({
+      localId: 'core-strategy',
+      drilldownKind: 'summary',
+      region,
+      category: '地区概览',
+      categoryEn: 'Region overview',
+      title: `${summary.name} 核心战略`,
+      titleEn: `${regionNameEn} Core Strategy`,
+      description: `${summary.name} 的核心 AI 战略是 ${summary.strategy}，当前公开年份为 ${summary.strategyYear}。`,
+      descriptionEn: `${regionNameEn}'s core AI strategy is ${summary.strategyEn || summary.strategy}, with the public year marked as ${summary.strategyYear}.`,
+      body: detail?.strategies.length
+        ? `${summary.name} 的战略栈由 ${detail.strategies.map((item) => item.name).join('、')} 等文件和政策组成。这个下钻页用于把地区页顶部的“核心战略”卡片从摘要入口变成可继续扩写的档案。`
+        : `${summary.name} 目前只有总览层面的战略摘要。后续可在数据文件中补充完整 RegionDetail，页面会自动展开到具体战略文件。`,
+      bodyEn: detail?.strategies.length
+        ? `${regionNameEn}'s strategy stack includes ${detail.strategies
+            .map((item) => item.nameEn || item.name)
+            .join(
+              ', '
+            )} and related policy documents. This drilldown page turns the region-level core-strategy card into an expandable profile.`
+        : `${regionNameEn} currently has only an overview-level strategy summary. Add a full RegionDetail record later and this page will automatically expand into concrete strategy documents.`,
+      facts: [
+        {
+          label: '战略',
+          labelEn: 'Strategy',
+          value: summary.strategy,
+          valueEn: summary.strategyEn || summary.strategy,
+        },
+        { label: '年份', labelEn: 'Year', value: summary.strategyYear, valueEn: summary.strategyYear },
+        { label: '地区', labelEn: 'Region', value: summary.name, valueEn: regionNameEn },
+      ],
+      sources,
+      sourcesEn,
+    });
+
+    addPage({
+      localId: 'investment-overview',
+      drilldownKind: 'summary',
+      region,
+      category: '地区概览',
+      categoryEn: 'Region overview',
+      title: `${summary.name} 投资规模`,
+      titleEn: `${regionNameEn} Investment Scale`,
+      description: `${summary.name} 的 AI 投资口径为：${summary.investment}。`,
+      descriptionEn: `${regionNameEn}'s AI investment signal is: ${summary.investmentEn || summary.investment}.`,
+      body: detail?.investment.length
+        ? `${summary.name} 的投资与资源项包括 ${detail.investment.map((item) => item.item).join('、')}。这页汇总地区层面的资金、算力和资源配置，后续可继续补官方预算、时间线和执行进度。`
+        : `${summary.name} 目前只有总览层面的投资摘要。后续可补充具体投资项目。`,
+      bodyEn: detail?.investment.length
+        ? `${regionNameEn}'s investment and resource items include ${detail.investment
+            .map((item) => item.itemEn || item.item)
+            .join(
+              ', '
+            )}. This page groups regional capital, compute, and resource allocation signals for future enrichment.`
+        : `${regionNameEn} currently has only an overview-level investment summary. Concrete investment items can be added later.`,
+      facts: [
+        {
+          label: '投资口径',
+          labelEn: 'Investment signal',
+          value: summary.investment,
+          valueEn: summary.investmentEn || summary.investment,
+        },
+        {
+          label: '项目数',
+          labelEn: 'Tracked items',
+          value: String(detail?.investment.length || 0),
+          valueEn: String(detail?.investment.length || 0),
+        },
+        { label: '地区', labelEn: 'Region', value: summary.name, valueEn: regionNameEn },
+      ],
+      sources,
+      sourcesEn,
+    });
+
+    addPage({
+      localId: 'governance-model',
+      drilldownKind: 'summary',
+      region,
+      category: '地区概览',
+      categoryEn: 'Region overview',
+      title: `${summary.name} 治理模式`,
+      titleEn: `${regionNameEn} Governance Model`,
+      description: `${summary.name} 的 AI 治理模式可概括为：${summary.governance}。`,
+      descriptionEn: `${regionNameEn}'s AI governance model can be summarised as: ${summary.governanceEn || summary.governance}.`,
+      body:
+        detail?.governance ||
+        `${summary.name} 的治理模式目前只保留摘要口径。后续可继续补充主管机关、法律状态、沙盒机制和行业指引。`,
+      bodyEn:
+        detail?.governanceEn ||
+        detail?.governance ||
+        `${regionNameEn}'s governance model currently has only the summary signal. Future updates can add agencies, legal status, sandbox mechanisms, and sectoral guidance.`,
+      facts: [
+        {
+          label: '治理模式',
+          labelEn: 'Governance model',
+          value: summary.governance,
+          valueEn: summary.governanceEn || summary.governance,
+        },
+        { label: '战略年份', labelEn: 'Strategy year', value: summary.strategyYear, valueEn: summary.strategyYear },
+        { label: '地区', labelEn: 'Region', value: summary.name, valueEn: regionNameEn },
+      ],
+      sources,
+      sourcesEn,
+    });
+
+    addPage({
+      localId: 'comparative-strength',
+      drilldownKind: 'summary',
+      region,
+      category: '地区概览',
+      categoryEn: 'Region overview',
+      title: `${summary.name} 核心优势`,
+      titleEn: `${regionNameEn} Core Strength`,
+      description: `${summary.name} 相对新加坡的核心优势是：${summary.strength}。`,
+      descriptionEn: `${regionNameEn}'s comparative strength versus Singapore is: ${summary.strengthEn || summary.strength}.`,
+      body: detail?.strengths.length
+        ? `${summary.name} 相对新加坡的优势包括 ${detail.strengths.join('；')}。这个页面用于沉淀优势判断，后续可补充指标和反例。`
+        : `${summary.name} 目前只有总览层面的优势摘要。后续可继续补充详细优势、短板和指标依据。`,
+      bodyEn: detail?.strengthsEn?.length
+        ? `${regionNameEn}'s strengths versus Singapore include ${detail.strengthsEn.join('; ')}. This page stores the comparative-strength judgment and can later gain metrics and counterexamples.`
+        : detail?.strengths.length
+          ? `${regionNameEn}'s strengths versus Singapore include ${detail.strengths.join('; ')}. This page stores the comparative-strength judgment and can later gain metrics and counterexamples.`
+          : `${regionNameEn} currently has only an overview-level strength summary. Future updates can add detailed strengths, weaknesses, and metric evidence.`,
+      facts: [
+        {
+          label: '核心优势',
+          labelEn: 'Core strength',
+          value: summary.strength,
+          valueEn: summary.strengthEn || summary.strength,
+        },
+        { label: 'AI 排名', labelEn: 'AI ranking', value: summary.aiRanking || '—', valueEn: summary.aiRanking || '—' },
+        { label: '地区', labelEn: 'Region', value: summary.name, valueEn: regionNameEn },
+      ],
+      sources,
+      sourcesEn,
+    });
+
+    if (!detail) continue;
+
+    detail.strategies.forEach((strategy, index) => {
+      addPage({
+        localId: `strategy-${index + 1}`,
+        drilldownKind: 'strategy',
+        region,
+        category: '核心战略',
+        categoryEn: 'Core strategy',
+        title: strategy.name,
+        titleEn: strategy.nameEn || strategy.name,
+        description: strategy.description,
+        descriptionEn: strategy.descriptionEn || strategy.description,
+        body: `${strategy.name} 是 ${detail.name} AI 政策栈中的一项战略 / 政策文件，公开年份为 ${strategy.year}。当前档案先保留公开描述，后续可补原文链接、政策目标、执行机构和最新进展。`,
+        bodyEn: `${strategy.nameEn || strategy.name} is a strategy or policy document in ${detail.nameEn || detail.name}'s AI policy stack, with public year ${strategy.year}. This profile currently preserves the public description and can later add source links, policy targets, executing bodies, and progress updates.`,
+        facts: [
+          { label: '年份', labelEn: 'Year', value: strategy.year, valueEn: strategy.year },
+          { label: '地区', labelEn: 'Region', value: detail.name, valueEn: detail.nameEn || detail.name },
+          { label: '类型', labelEn: 'Type', value: '战略 / 政策文件', valueEn: 'Strategy / policy document' },
+        ],
+        sources: detail.sources,
+        sourcesEn: detail.sourcesEn,
+      });
+    });
+
+    detail.investment.forEach((investment, index) => {
+      addPage({
+        localId: `investment-${index + 1}`,
+        drilldownKind: 'investment',
+        region,
+        category: '投资与资源',
+        categoryEn: 'Investment and resources',
+        title: investment.item,
+        titleEn: investment.itemEn || investment.item,
+        description: `${investment.amount} — ${investment.note}`,
+        descriptionEn: `${investment.amountEn || investment.amount} — ${investment.noteEn || investment.note}`,
+        body: `${investment.item} 是 ${detail.name} AI 投资与资源配置中的一项公开记录。当前口径为 ${investment.amount}，备注为“${investment.note}”。后续可继续补预算来源、执行机构、项目周期和实际支出。`,
+        bodyEn: `${investment.itemEn || investment.item} is a public investment or resource-allocation record in ${detail.nameEn || detail.name}'s AI strategy. The current amount signal is ${investment.amountEn || investment.amount}, with note: “${investment.noteEn || investment.note}”. Future updates can add budget source, executing agency, project period, and actual spending.`,
+        facts: [
+          {
+            label: '金额',
+            labelEn: 'Amount',
+            value: investment.amount,
+            valueEn: investment.amountEn || investment.amount,
+          },
+          { label: '备注', labelEn: 'Note', value: investment.note, valueEn: investment.noteEn || investment.note },
+          { label: '地区', labelEn: 'Region', value: detail.name, valueEn: detail.nameEn || detail.name },
+        ],
+        sources: detail.sources,
+        sourcesEn: detail.sourcesEn,
+      });
+    });
+
+    detail.keyInitiatives.forEach((initiative, index) => {
+      const initiativeEn = detail.keyInitiativesEn?.[index] || initiative;
+      addPage({
+        localId: `initiative-${index + 1}`,
+        drilldownKind: 'initiative',
+        region,
+        category: '关键举措',
+        categoryEn: 'Key initiative',
+        title: initiative,
+        titleEn: initiativeEn,
+        description: `${initiative} 是 ${detail.name} AI 战略中的关键举措之一。`,
+        descriptionEn: `${initiativeEn} is one of the key initiatives in ${detail.nameEn || detail.name}'s AI strategy.`,
+        body: `${initiative} 目前作为地区页关键举措收录。这个档案页用于后续补充项目背景、牵头机构、执行状态、指标和相关来源。`,
+        bodyEn: `${initiativeEn} is currently tracked as a key initiative on the region page. This profile is ready for project background, lead agency, execution status, metrics, and source links.`,
+        facts: [
+          { label: '类型', labelEn: 'Type', value: '关键举措', valueEn: 'Key initiative' },
+          { label: '地区', labelEn: 'Region', value: detail.name, valueEn: detail.nameEn || detail.name },
+          { label: '来源层级', labelEn: 'Source layer', value: '地区档案', valueEn: 'Region profile' },
+        ],
+        sources: detail.sources,
+        sourcesEn: detail.sourcesEn,
+      });
+    });
+
+    detail.keyBodies.forEach((body, index) => {
+      addPage({
+        localId: `body-${index + 1}`,
+        drilldownKind: 'body',
+        region,
+        category: '关键机构',
+        categoryEn: 'Key body',
+        title: body.name,
+        titleEn: body.nameEn || body.name,
+        description: body.role,
+        descriptionEn: body.roleEn || body.role,
+        body: `${body.name} 在 ${detail.name} AI 生态中的角色是：${body.role}。这个机构档案后续可继续补负责人、官网、政策权限和相关项目。`,
+        bodyEn: `${body.nameEn || body.name}'s role in ${detail.nameEn || detail.name}'s AI ecosystem is: ${body.roleEn || body.role}. This institutional profile can later add leadership, official website, policy authority, and related projects.`,
+        facts: [
+          { label: '角色', labelEn: 'Role', value: body.role, valueEn: body.roleEn || body.role },
+          { label: '地区', labelEn: 'Region', value: detail.name, valueEn: detail.nameEn || detail.name },
+          { label: '类型', labelEn: 'Type', value: '关键机构', valueEn: 'Key body' },
+        ],
+        sources: detail.sources,
+        sourcesEn: detail.sourcesEn,
+      });
+    });
+  }
+
+  return pages;
+}
+
+export const benchmarkDrilldownPages: BenchmarkDrilldownPage[] = buildBenchmarkDrilldownPages();
+
+export function getBenchmarkDrilldownsForRegion(regionSlugValue: string): BenchmarkDrilldownPage[] {
+  return benchmarkDrilldownPages.filter((page) => page.region.slug === regionSlugValue);
+}
+
+export type BenchmarkPage =
+  | ({
+      kind: 'region';
+    } & RegionPage)
+  | BenchmarkCasePage
+  | BenchmarkDrilldownPage;
+
+export const benchmarkPages: BenchmarkPage[] = [
+  ...regionPages.map((page) => ({ kind: 'region' as const, ...page })),
+  ...benchmarkCasePages,
+  ...benchmarkDrilldownPages,
+];
 
 export function leverSlug(lever: Pick<Lever, 'number' | 'name' | 'nameEn'>): string {
   return toSeoSlug(`lever ${lever.number} ${lever.nameEn || lever.name}`);

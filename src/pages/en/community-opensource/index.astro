@@ -1,6 +1,8 @@
 ---
-import Layout from '~/layouts/PageLayout.astro';
+import { Icon } from 'astro-icon/components';
+
 import Headline from '~/components/ui/Headline.astro';
+import Layout from '~/layouts/PageLayout.astro';
 import {
   universityProjects,
   corporateLabProjects,
@@ -26,129 +28,165 @@ const disclaimer = dataDisclaimerEn || dataDisclaimer;
 >
   <section class="px-4 py-16 sm:px-6 mx-auto lg:px-8 max-w-6xl">
     <Headline
-      title="🌐 Community Open Source"
+      title="Community Open Source"
       subtitle="AI open-source projects from Singapore's universities, international corporate labs, and startups."
     />
 
-    <!-- Summary -->
     <div
       class="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-4 mb-12 text-sm text-blue-800 dark:text-blue-200"
     >
-      💡 {note}
+      {note}
     </div>
 
-    <!-- Universities and research institutions -->
     <div class="mb-16">
-      <h2 class="t-h2 mb-6">🎓 Universities &amp; Research Institutions</h2>
+      <h2 class="t-h2 mb-2">Universities &amp; Research Institutions</h2>
+      <p class="text-sm text-muted mb-6">
+        Models, toolboxes, and training systems from university labs. Each card opens a project profile.
+      </p>
       <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         {
           universityProjects.map((proj) => (
-            <div class="bg-surface rounded-lg shadow-md border border-subtle p-5 hover:shadow-lg transition-shadow">
-              <div class="flex items-start justify-between mb-2">
-                <h3 class="font-bold">{proj.name}</h3>
+            <a
+              href={`/en/community-opensource/${proj.id}/`}
+              class="group flex h-full flex-col bg-surface rounded-lg shadow-md border border-subtle p-5 hover:border-primary/40 hover:shadow-lg transition-all focus-visible:outline-primary"
+            >
+              <div class="flex items-start justify-between gap-3 mb-3">
+                <div class="min-w-0">
+                  <p class="text-xs text-blue-600 dark:text-blue-400 mb-1">{proj.orgEn || proj.org}</p>
+                  <h3 class="font-bold text-gray-900 dark:text-white group-hover:text-primary transition-colors">
+                    {proj.nameEn || proj.name}
+                  </h3>
+                </div>
+                <span class="text-xs bg-slate-100 dark:bg-slate-800 px-2 py-0.5 rounded whitespace-nowrap">
+                  {proj.categoryEn || proj.category}
+                </span>
+              </div>
+              <p class="text-sm text-muted mb-4 leading-relaxed">{proj.descriptionEn || proj.description}</p>
+              <div class="flex flex-wrap items-center gap-2 text-xs text-muted mb-4">
+                <span class="bg-slate-50 dark:bg-slate-800 px-2 py-0.5 rounded">{proj.statusEn || proj.status}</span>
+                <span class="bg-slate-50 dark:bg-slate-800 px-2 py-0.5 rounded">{proj.language}</span>
                 {proj.stars && (
-                  <span class="text-xs text-muted whitespace-nowrap">⭐ {proj.stars.toLocaleString()}</span>
+                  <span class="bg-slate-50 dark:bg-slate-800 px-2 py-0.5 rounded">
+                    GitHub {proj.stars.toLocaleString()} Stars
+                  </span>
                 )}
+                {proj.papers?.slice(0, 2).map((paper) => (
+                  <span class="bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 px-2 py-0.5 rounded">
+                    {paper}
+                  </span>
+                ))}
               </div>
-              <p class="text-xs text-blue-600 dark:text-blue-400 mb-2">{proj.org}</p>
-              <p class="text-sm text-muted mb-3">{proj.descriptionEn || proj.description}</p>
-              <div class="flex items-center gap-2 flex-wrap">
-                {proj.papers &&
-                  proj.papers.map((p) => (
-                    <span class="text-xs bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 px-2 py-0.5 rounded">
-                      {p}
-                    </span>
-                  ))}
-                {proj.url ? (
-                  <a
-                    href={proj.url}
-                    target="_blank"
-                    rel="noopener"
-                    class="text-sm text-blue-600 dark:text-blue-400 hover:underline ml-auto"
-                  >
-                    GitHub →
-                  </a>
-                ) : (
-                  <span class="text-xs text-muted ml-auto">No public repository</span>
-                )}
+              <div class="mt-auto pt-4 border-t border-subtle flex items-center justify-between gap-3">
+                <span class="text-xs text-muted">{proj.updated}</span>
+                <span class="inline-flex items-center gap-1 text-sm font-medium text-primary group-hover:text-secondary">
+                  Open profile
+                  <Icon name="tabler:arrow-right" class="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
+                </span>
               </div>
-            </div>
+            </a>
           ))
         }
       </div>
     </div>
 
-    <!-- Corporate labs in Singapore -->
     <div class="mb-16">
-      <h2 class="t-h2 mb-6">🏢 International Corporate Labs in Singapore</h2>
+      <h2 class="t-h2 mb-2">International Corporate Labs in Singapore</h2>
+      <p class="text-sm text-muted mb-6">
+        Open models, training frameworks, and tools from multinational technology research networks connected to
+        Singapore.
+      </p>
       <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         {
           corporateLabProjects.map((proj) => (
-            <div class="bg-surface rounded-lg shadow-md border border-subtle p-5 hover:shadow-lg transition-shadow">
-              <div class="flex items-start justify-between mb-2">
-                <h3 class="font-bold">{proj.name}</h3>
+            <a
+              href={`/en/community-opensource/${proj.id}/`}
+              class="group flex h-full flex-col bg-surface rounded-lg shadow-md border border-subtle p-5 hover:border-primary/40 hover:shadow-lg transition-all focus-visible:outline-primary"
+            >
+              <div class="flex items-start justify-between gap-3 mb-3">
+                <div class="min-w-0">
+                  <p class="text-xs text-blue-600 dark:text-blue-400 mb-1">{proj.orgEn || proj.org}</p>
+                  <h3 class="font-bold text-gray-900 dark:text-white group-hover:text-primary transition-colors">
+                    {proj.nameEn || proj.name}
+                  </h3>
+                </div>
+                <span class="text-xs bg-slate-100 dark:bg-slate-800 px-2 py-0.5 rounded whitespace-nowrap">
+                  {proj.categoryEn || proj.category}
+                </span>
+              </div>
+              <p class="text-sm text-muted mb-4 leading-relaxed">{proj.descriptionEn || proj.description}</p>
+              <div class="flex flex-wrap items-center gap-2 text-xs text-muted mb-4">
+                <span class="bg-slate-50 dark:bg-slate-800 px-2 py-0.5 rounded">{proj.statusEn || proj.status}</span>
+                <span class="bg-slate-50 dark:bg-slate-800 px-2 py-0.5 rounded">{proj.language}</span>
                 {proj.stars && (
-                  <span class="text-xs text-muted whitespace-nowrap">⭐ {proj.stars.toLocaleString()}</span>
+                  <span class="bg-slate-50 dark:bg-slate-800 px-2 py-0.5 rounded">
+                    GitHub {proj.stars.toLocaleString()} Stars
+                  </span>
                 )}
+                {proj.papers?.slice(0, 2).map((paper) => (
+                  <span class="bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 px-2 py-0.5 rounded">
+                    {paper}
+                  </span>
+                ))}
               </div>
-              <p class="text-xs text-blue-600 dark:text-blue-400 mb-2">{proj.org}</p>
-              <p class="text-sm text-muted mb-3">{proj.descriptionEn || proj.description}</p>
-              <div class="flex items-center gap-2 flex-wrap">
-                {proj.papers &&
-                  proj.papers.map((p) => (
-                    <span class="text-xs bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 px-2 py-0.5 rounded">
-                      {p}
-                    </span>
-                  ))}
-                {proj.url && (
-                  <a
-                    href={proj.url}
-                    target="_blank"
-                    rel="noopener"
-                    class="text-sm text-blue-600 dark:text-blue-400 hover:underline ml-auto"
-                  >
-                    GitHub →
-                  </a>
-                )}
+              <div class="mt-auto pt-4 border-t border-subtle flex items-center justify-between gap-3">
+                <span class="text-xs text-muted">{proj.updated}</span>
+                <span class="inline-flex items-center gap-1 text-sm font-medium text-primary group-hover:text-secondary">
+                  Open profile
+                  <Icon name="tabler:arrow-right" class="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
+                </span>
               </div>
-            </div>
+            </a>
           ))
         }
       </div>
     </div>
 
-    <!-- Startups -->
     <div class="mb-16">
-      <h2 class="t-h2 mb-6">🚀 Startups</h2>
+      <h2 class="t-h2 mb-2">Startups</h2>
+      <p class="text-sm text-muted mb-6">
+        Singapore AI startup examples using open source as product distribution and developer-community entry.
+      </p>
       <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         {
           startupProjects.map((proj) => (
-            <div class="bg-surface rounded-lg shadow-md border border-subtle p-5 hover:shadow-lg transition-shadow">
-              <div class="flex items-start justify-between mb-2">
-                <h3 class="font-bold">{proj.name}</h3>
+            <a
+              href={`/en/community-opensource/${proj.id}/`}
+              class="group flex h-full flex-col bg-surface rounded-lg shadow-md border border-subtle p-5 hover:border-primary/40 hover:shadow-lg transition-all focus-visible:outline-primary"
+            >
+              <div class="flex items-start justify-between gap-3 mb-3">
+                <div class="min-w-0">
+                  <p class="text-xs text-blue-600 dark:text-blue-400 mb-1">{proj.orgEn || proj.org}</p>
+                  <h3 class="font-bold text-gray-900 dark:text-white group-hover:text-primary transition-colors">
+                    {proj.nameEn || proj.name}
+                  </h3>
+                </div>
+                <span class="text-xs bg-slate-100 dark:bg-slate-800 px-2 py-0.5 rounded whitespace-nowrap">
+                  {proj.categoryEn || proj.category}
+                </span>
+              </div>
+              <p class="text-sm text-muted mb-4 leading-relaxed">{proj.descriptionEn || proj.description}</p>
+              <div class="flex flex-wrap items-center gap-2 text-xs text-muted mb-4">
+                <span class="bg-slate-50 dark:bg-slate-800 px-2 py-0.5 rounded">{proj.statusEn || proj.status}</span>
+                <span class="bg-slate-50 dark:bg-slate-800 px-2 py-0.5 rounded">{proj.language}</span>
                 {proj.stars && (
-                  <span class="text-xs text-muted whitespace-nowrap">⭐ {proj.stars.toLocaleString()}</span>
+                  <span class="bg-slate-50 dark:bg-slate-800 px-2 py-0.5 rounded">
+                    GitHub {proj.stars.toLocaleString()} Stars
+                  </span>
                 )}
               </div>
-              <p class="text-xs text-blue-600 dark:text-blue-400 mb-2">{proj.org}</p>
-              <p class="text-sm text-muted mb-3">{proj.descriptionEn || proj.description}</p>
-              {proj.url && (
-                <a
-                  href={proj.url}
-                  target="_blank"
-                  rel="noopener"
-                  class="text-sm text-blue-600 dark:text-blue-400 hover:underline"
-                >
-                  GitHub →
-                </a>
-              )}
-            </div>
+              <div class="mt-auto pt-4 border-t border-subtle flex items-center justify-between gap-3">
+                <span class="text-xs text-muted">{proj.updated}</span>
+                <span class="inline-flex items-center gap-1 text-sm font-medium text-primary group-hover:text-secondary">
+                  Open profile
+                  <Icon name="tabler:arrow-right" class="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
+                </span>
+              </div>
+            </a>
           ))
         }
       </div>
     </div>
 
-    <!-- Data note -->
     <p class="mt-12 text-sm text-muted text-center">{disclaimer}</p>
   </section>
 </Layout>

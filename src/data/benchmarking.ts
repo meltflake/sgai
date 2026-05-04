@@ -1314,6 +1314,869 @@ export const regionDetails: RegionDetail[] = [
   },
 ];
 
+export interface BenchmarkCaseFact {
+  label: string;
+  labelEn?: string;
+  value: string;
+  valueEn?: string;
+  note?: string;
+  noteEn?: string;
+}
+
+export interface BenchmarkCaseSection {
+  title: string;
+  titleEn?: string;
+  body: string;
+  bodyEn?: string;
+  bullets?: string[];
+  bulletsEn?: string[];
+}
+
+export interface BenchmarkCaseSource {
+  label: string;
+  labelEn?: string;
+  url?: string;
+}
+
+export interface BenchmarkCase {
+  id: string;
+  flag: string;
+  name: string;
+  nameEn?: string;
+  type: string;
+  typeEn?: string;
+  region: string;
+  regionEn?: string;
+  owner: string;
+  ownerEn?: string;
+  status: string;
+  statusEn?: string;
+  headline: string;
+  headlineEn?: string;
+  summary: string;
+  summaryEn?: string;
+  whyItMatters: string;
+  whyItMattersEn?: string;
+  singaporeTakeaway: string;
+  singaporeTakeawayEn?: string;
+  facts: BenchmarkCaseFact[];
+  sections: BenchmarkCaseSection[];
+  sources: BenchmarkCaseSource[];
+}
+
+export const benchmarkCaseProfileUpdated = '2026-05-04';
+
+export const benchmarkCases: BenchmarkCase[] = [
+  {
+    id: 'ai-verify',
+    flag: '🇸🇬',
+    name: 'AI Verify',
+    nameEn: 'AI Verify',
+    type: '治理测试框架',
+    typeEn: 'Governance testing framework',
+    region: '新加坡',
+    regionEn: 'Singapore',
+    owner: 'AI Verify Foundation / IMDA',
+    ownerEn: 'AI Verify Foundation / IMDA',
+    status: '开源运营中',
+    statusEn: 'Active open-source programme',
+    headline: '把 AI 治理原则转成可运行、可复核的测试流程。',
+    headlineEn: 'Turns AI governance principles into runnable, reviewable testing workflows.',
+    summary:
+      'AI Verify 是新加坡最可对外输出的 AI 治理资产。它不是一部硬法，而是一套把模型性能、风险声明、流程检查和报告生成连起来的测试基础设施。',
+    summaryEn:
+      'AI Verify is Singapore’s most exportable AI governance asset. It is not hard law; it is testing infrastructure that connects model performance, risk claims, process checks, and report generation.',
+    whyItMatters:
+      '很多国家都在写 AI 原则，但企业真正需要的是可执行的验证工具。AI Verify 的价值在于把“可信 AI”从宣言变成流程，适合新加坡这种以信任、贸易和跨境合规为核心的小国。',
+    whyItMattersEn:
+      'Many countries write AI principles, but companies need executable verification. AI Verify matters because it turns “trusted AI” from a declaration into a process, fitting Singapore’s trust, trade, and cross-border compliance position.',
+    singaporeTakeaway:
+      '这是新加坡区别于资本型国家和大模型国家的关键路径：不一定拥有最大模型，但可以成为企业、政府和国际组织都愿意使用的 AI 信任层。',
+    singaporeTakeawayEn:
+      'This is Singapore’s distinct path versus capital-heavy or model-heavy nations: it may not own the largest models, but it can become the AI trust layer that companies, governments, and international bodies can use.',
+    facts: [
+      {
+        label: '对象',
+        labelEn: 'Object',
+        value: 'AI 系统测试与治理报告',
+        valueEn: 'AI system testing and governance reporting',
+      },
+      { label: '比较维度', labelEn: 'Benchmark axis', value: '治理可执行性', valueEn: 'Governance executability' },
+      { label: '新加坡优势', labelEn: 'Singapore advantage', value: '可信中立枢纽', valueEn: 'Trusted neutral hub' },
+    ],
+    sections: [
+      {
+        title: '可对标之处',
+        titleEn: 'What makes it benchmarkable',
+        body: 'AI Verify 不是把监管写得更重，而是把企业已经要做的模型测试、文档化、风险声明和治理流程产品化。对跨国企业而言，这比单纯的原则文本更容易纳入内部合规。',
+        bodyEn:
+          'AI Verify does not simply make regulation heavier. It productises model testing, documentation, risk claims, and governance workflows that companies already need. For multinationals, that is easier to absorb than principles alone.',
+        bullets: ['治理工具化，而非只停留在政策表述', '适合跨境企业自测和第三方验证', '可与欧盟、OECD、美国框架对齐'],
+        bulletsEn: [
+          'Turns governance into tools, not just policy language',
+          'Supports enterprise self-testing and third-party verification',
+          'Can align with EU, OECD, and US governance frameworks',
+        ],
+      },
+      {
+        title: '后续追踪',
+        titleEn: 'What to track next',
+        body: '关键不是工具是否存在，而是是否进入采购、审计、认证和行业标准。未来应追踪 AI Verify 报告是否被金融、航空、政府采购、跨境数据场景实际采用。',
+        bodyEn:
+          'The key question is not whether the tool exists, but whether it enters procurement, audit, certification, and industry standards. Track whether AI Verify reports get used in finance, aviation, public procurement, and cross-border data contexts.',
+      },
+    ],
+    sources: [
+      { label: 'AI Verify 官方资料', labelEn: 'AI Verify official materials' },
+      { label: 'AI Verify Foundation', labelEn: 'AI Verify Foundation' },
+      { label: '新加坡 NAIS 2.0', labelEn: 'Singapore NAIS 2.0' },
+    ],
+  },
+  {
+    id: 'cyberport-ai-supercomputing-centre',
+    flag: '🇭🇰',
+    name: '数码港 AI 超算中心',
+    nameEn: 'Cyberport AI Supercomputing Centre',
+    type: '算力基础设施',
+    typeEn: 'Compute infrastructure',
+    region: '香港',
+    regionEn: 'Hong Kong',
+    owner: 'Cyberport / 香港特区政府',
+    ownerEn: 'Cyberport / HKSAR Government',
+    status: '建设与资助推进中',
+    statusEn: 'Build-out and subsidy phase',
+    headline: '香港用 3000 PFLOPS 超算计划补齐 AI 基础设施短板。',
+    headlineEn: 'Hong Kong uses a 3000 PFLOPS supercomputing plan to close its AI infrastructure gap.',
+    summary:
+      '数码港超算中心是香港 AI 战略里最具体、最可量化的抓手。它把“创新科技蓝图”从政策口号拉到算力供给、企业补贴和科研算力使用。',
+    summaryEn:
+      'The Cyberport supercomputing centre is the most concrete and measurable lever in Hong Kong’s AI push. It turns the Innovation and Technology Blueprint into compute supply, enterprise subsidies, and research access.',
+    whyItMatters:
+      '香港的问题不是没有资本和高校，而是 AI 政策启动较晚、协调分散。超算中心提供了一个可见的公共基础设施锚点，让企业和研究机构有共同入口。',
+    whyItMattersEn:
+      'Hong Kong’s problem is not capital or universities; it is late AI policy mobilisation and fragmented coordination. The supercomputing centre creates a visible public-infrastructure anchor for companies and researchers.',
+    singaporeTakeaway:
+      '新加坡需要把 NSCC、商用 GPU、数据中心和企业算力补贴讲成一套更清晰的“国家 AI 算力入口”，否则香港这类后发地区会用单一大项目抢走叙事。',
+    singaporeTakeawayEn:
+      'Singapore needs to present NSCC, commercial GPUs, data centres, and enterprise compute support as one clearer national AI compute entry point, or later movers can win the narrative with one large project.',
+    facts: [
+      { label: '公开目标', labelEn: 'Published target', value: '3000 PFLOPS', valueEn: '3000 PFLOPS' },
+      {
+        label: '配套资金',
+        labelEn: 'Support funding',
+        value: 'AI 超算资助计划',
+        valueEn: 'AI supercomputing subsidy scheme',
+      },
+      { label: '比较维度', labelEn: 'Benchmark axis', value: '公共算力入口', valueEn: 'Public compute access' },
+    ],
+    sections: [
+      {
+        title: '可对标之处',
+        titleEn: 'What makes it benchmarkable',
+        body: '这个项目把算力、园区和企业补贴合在一起，适合观察香港能否从“金融与国际资本中心”转成“AI 研发和应用试验场”。',
+        bodyEn:
+          'The project combines compute, a tech park, and enterprise subsidies. It is a useful test of whether Hong Kong can move from a finance and capital hub into an AI R&D and application testbed.',
+        bullets: ['算力指标清晰', '可直接服务科研与企业', '与香港科技园、AIRDI 等机构形成组合'],
+        bulletsEn: [
+          'Clear compute metric',
+          'Directly serves research and enterprise users',
+          'Can combine with HKSTP, AIRDI, and other institutions',
+        ],
+      },
+      {
+        title: '风险点',
+        titleEn: 'Risk points',
+        body: '算力只是入口，真正的差距在人才、数据、模型和行业落地。如果超算中心不能变成项目流和客户流，它会停留在硬件投资。',
+        bodyEn:
+          'Compute is only the entry point. The deeper gap is talent, data, models, and deployment. If the centre does not create project flow and customer flow, it remains a hardware investment.',
+      },
+    ],
+    sources: [
+      {
+        label: '香港创新科技发展蓝图（2022）',
+        labelEn: 'Hong Kong Innovation and Technology Development Blueprint (2022)',
+      },
+      { label: '2024-25 年施政报告 AI 相关政策', labelEn: 'AI-related policies in the 2024-25 Policy Address' },
+    ],
+  },
+  {
+    id: 'tsmc-ai-chip-manufacturing',
+    flag: '🇹🇼',
+    name: 'TSMC AI 芯片制造',
+    nameEn: 'TSMC AI Chip Manufacturing',
+    type: '公司 / 供应链节点',
+    typeEn: 'Company / supply-chain node',
+    region: '台湾',
+    regionEn: 'Taiwan',
+    owner: 'TSMC',
+    ownerEn: 'TSMC',
+    status: '全球先进制程核心供应商',
+    statusEn: 'Core global advanced-node supplier',
+    headline: '台湾的 AI 护城河不是应用层，而是全球 AI 芯片供应链。',
+    headlineEn: 'Taiwan’s AI moat is not the application layer; it is the global AI chip supply chain.',
+    summary:
+      'TSMC 是台湾 AI 战略最强的现实资产。无论台湾本土大模型和软件生态如何发展，先进芯片制造都让它在全球 AI 基础设施里拥有不可替代的位置。',
+    summaryEn:
+      'TSMC is Taiwan’s strongest real AI asset. Regardless of Taiwan’s domestic model and software ecosystem, advanced chip manufacturing gives it an irreplaceable role in global AI infrastructure.',
+    whyItMatters:
+      'AI 竞争不只发生在模型和应用，也发生在芯片、封装、制造良率和供应链安全。TSMC 把台湾放在所有大模型公司和云厂商的上游。',
+    whyItMattersEn:
+      'AI competition is not only about models and applications; it also sits in chips, packaging, manufacturing yield, and supply-chain security. TSMC places Taiwan upstream of model labs and cloud providers.',
+    singaporeTakeaway:
+      '新加坡不可能复制 TSMC，但可以学习台湾把一个硬科技垂直优势放大成国家 AI 战略杠杆的方式：围绕强项建生态，而不是平均用力。',
+    singaporeTakeawayEn:
+      'Singapore cannot replicate TSMC, but it can learn from Taiwan’s way of turning one deep-tech vertical strength into a national AI lever: build around the real advantage instead of spreading effort evenly.',
+    facts: [
+      {
+        label: '战略位置',
+        labelEn: 'Strategic position',
+        value: 'AI 芯片先进制造',
+        valueEn: 'Advanced manufacturing for AI chips',
+      },
+      {
+        label: '配套政策',
+        labelEn: 'Policy context',
+        value: 'AI 岛计划 / 十大 AI 基础建设',
+        valueEn: 'AI Island Plan / Ten Major AI Infrastructure Projects',
+      },
+      {
+        label: '主要约束',
+        labelEn: 'Key constraint',
+        value: '能源与地缘政治风险',
+        valueEn: 'Energy and geopolitical risk',
+      },
+    ],
+    sections: [
+      {
+        title: '可对标之处',
+        titleEn: 'What makes it benchmarkable',
+        body: 'TSMC 说明，AI 战略不一定从模型开始。一个国家或地区只要控制 AI 价值链里的关键瓶颈，就能获得全球议价权。',
+        bodyEn:
+          'TSMC shows that an AI strategy does not have to start with models. A country or region can gain global leverage by controlling a critical bottleneck in the AI value chain.',
+        bullets: ['硬件供应链是 AI 主权的一部分', '先进制造比应用叙事更难复制', '产业生态和国家安全高度绑定'],
+        bulletsEn: [
+          'Hardware supply chains are part of AI sovereignty',
+          'Advanced manufacturing is harder to copy than application narratives',
+          'Industrial ecosystems and national security are tightly linked',
+        ],
+      },
+      {
+        title: '新加坡可学什么',
+        titleEn: 'What Singapore can learn',
+        body: '新加坡的强项不在芯片制造霸权，而在可信治理、区域总部、金融、物流、医疗和公共服务。关键是找到类似 TSMC 这种“不可替代节点”，而不是泛泛说做 AI hub。',
+        bodyEn:
+          'Singapore’s strength is not chip-manufacturing hegemony; it is trusted governance, regional headquarters, finance, logistics, healthcare, and public services. The question is which Singapore nodes can become similarly hard to replace.',
+      },
+    ],
+    sources: [
+      { label: 'AI 台湾行动计划 2.0（2023）', labelEn: 'AI Taiwan Action Plan 2.0 (2023)' },
+      {
+        label: '行政院十大 AI 基础建设计划（2025）',
+        labelEn: 'Executive Yuan Ten Major AI Infrastructure Plan (2025)',
+      },
+    ],
+  },
+  {
+    id: 'falcon-llm',
+    flag: '🇦🇪',
+    name: 'Falcon LLM',
+    nameEn: 'Falcon LLM',
+    type: '本土大模型',
+    typeEn: 'Sovereign large model',
+    region: 'UAE',
+    regionEn: 'UAE',
+    owner: 'TII / ATRC',
+    ownerEn: 'TII / ATRC',
+    status: '开源模型系列',
+    statusEn: 'Open model family',
+    headline: 'UAE 用 Falcon 证明资本型国家也要补模型主权。',
+    headlineEn: 'The UAE uses Falcon to show that capital-heavy states still need model sovereignty.',
+    summary:
+      'Falcon LLM 是 UAE AI 战略里最像“国家能力”的项目之一。它让 UAE 不只是购买云和芯片，也能展示本土模型研发和开源影响力。',
+    summaryEn:
+      'Falcon LLM is one of the UAE’s most “national capability” AI projects. It shows that the UAE is not only buying cloud and chips, but also building domestic model R&D and open-model influence.',
+    whyItMatters:
+      '对小国和中型国家来说，大模型既是技术能力，也是国际形象。Falcon 的意义不在于长期压过美国或中国头部模型，而在于让 UAE 拥有可展示、可合作、可吸引人才的模型旗帜。',
+    whyItMattersEn:
+      'For small and mid-sized states, large models are both technical capability and international signalling. Falcon’s value is not necessarily beating top US or Chinese models long term, but giving the UAE a visible model flag for partnership and talent attraction.',
+    singaporeTakeaway:
+      '新加坡的 SEA-LION 是区域语言和东南亚语境路线，Falcon 是主权大模型路线。两者都说明，小国做模型必须先定义差异化任务，而不是直接复刻通用模型军备竞赛。',
+    singaporeTakeawayEn:
+      'Singapore’s SEA-LION takes the regional-language and Southeast Asian context path; Falcon takes the sovereign-model path. Both show that smaller states must define differentiated model jobs instead of copying the general model arms race.',
+    facts: [
+      { label: '模型定位', labelEn: 'Model position', value: '本土开源大模型', valueEn: 'Domestic open large model' },
+      { label: '关联机构', labelEn: 'Related institution', value: 'ATRC / TII', valueEn: 'ATRC / TII' },
+      {
+        label: '比较维度',
+        labelEn: 'Benchmark axis',
+        value: '模型主权与国家品牌',
+        valueEn: 'Model sovereignty and national brand',
+      },
+    ],
+    sections: [
+      {
+        title: '可对标之处',
+        titleEn: 'What makes it benchmarkable',
+        body: 'Falcon 把 UAE 的资本、研究机构和国家品牌连到一个可见模型上。它不是单纯论文项目，而是国家 AI 叙事的一部分。',
+        bodyEn:
+          'Falcon connects the UAE’s capital, research institutions, and national brand to a visible model. It is not merely a research artifact; it is part of the country’s AI narrative.',
+        bullets: ['模型项目成为国家名片', '开源降低国际开发者试用门槛', '与 MBZUAI、MGX、算力投资形成组合'],
+        bulletsEn: [
+          'A model project becomes a national calling card',
+          'Open release lowers the barrier for international developers',
+          'Combines with MBZUAI, MGX, and compute investment',
+        ],
+      },
+      {
+        title: '后续追踪',
+        titleEn: 'What to track next',
+        body: '要看 Falcon 是否能从“被看见”走向“被使用”：开发者生态、企业部署、阿拉伯语和区域场景表现，比单次榜单排名更重要。',
+        bodyEn:
+          'The key is whether Falcon moves from visibility to usage. Developer ecosystem, enterprise deployment, and Arabic or regional performance matter more than one-off leaderboard ranks.',
+      },
+    ],
+    sources: [
+      { label: 'UAE AI Strategy 2031', labelEn: 'UAE AI Strategy 2031' },
+      { label: 'ATRC / TII Falcon 公开资料', labelEn: 'ATRC / TII Falcon public materials' },
+    ],
+  },
+  {
+    id: 'mgx-ai-fund',
+    flag: '🇦🇪',
+    name: 'MGX AI Fund',
+    nameEn: 'MGX AI Fund',
+    type: 'AI 投资平台',
+    typeEn: 'AI investment platform',
+    region: 'UAE',
+    regionEn: 'UAE',
+    owner: 'Mubadala / UAE AI capital stack',
+    ownerEn: 'Mubadala / UAE AI capital stack',
+    status: '千亿美元级资本平台',
+    statusEn: 'US$100 billion-scale capital platform',
+    headline: 'UAE 的最大变量不是政策文本，而是资本和能源。',
+    headlineEn: 'The UAE’s biggest variable is not policy text; it is capital and energy.',
+    summary:
+      'MGX 代表 UAE 用主权资本参与全球 AI 基础设施、模型和应用投资的方式。它把国家 AI 战略从政府部门扩展到资本配置。',
+    summaryEn:
+      'MGX represents the UAE’s way of using sovereign capital to participate in global AI infrastructure, models, and applications. It expands national AI strategy from ministries into capital allocation.',
+    whyItMatters:
+      'AI 基础设施越来越像能源和半导体，需要长期、重资产、跨国资本。MGX 让 UAE 在模型公司、云基础设施和芯片生态中拥有谈判席位。',
+    whyItMattersEn:
+      'AI infrastructure increasingly resembles energy and semiconductors: long-horizon, capital-intensive, and cross-border. MGX gives the UAE a negotiating seat across model companies, cloud infrastructure, and chip ecosystems.',
+    singaporeTakeaway:
+      '新加坡不具备同等主权资本打法，但可以用 Temasek、GIC、EDB、区域总部和监管信任形成“轻资本但高连接度”的替代路线。',
+    singaporeTakeawayEn:
+      'Singapore does not have the same capital-firepower posture, but it can combine Temasek, GIC, EDB, regional headquarters, and regulatory trust into a lighter-capital but highly connected alternative.',
+    facts: [
+      { label: '公开规模', labelEn: 'Published scale', value: 'US$100B 级别', valueEn: 'US$100B scale' },
+      { label: '核心资源', labelEn: 'Core resource', value: '主权资本 + 能源', valueEn: 'Sovereign capital + energy' },
+      {
+        label: '比较维度',
+        labelEn: 'Benchmark axis',
+        value: 'AI 资本配置能力',
+        valueEn: 'AI capital allocation capacity',
+      },
+    ],
+    sections: [
+      {
+        title: '可对标之处',
+        titleEn: 'What makes it benchmarkable',
+        body: 'MGX 不是单个创业基金，而是国家参与 AI 资本市场的工具。它对标的是“谁能长期买下算力、数据中心和模型公司的未来现金流”。',
+        bodyEn:
+          'MGX is not a normal venture fund; it is a state tool for participating in AI capital markets. It benchmarks who can buy the future cash flows of compute, data centres, and model companies.',
+        bullets: [
+          '主权资本直接进入 AI 基础设施',
+          '与微软合作和 Stargate UAE 等项目形成联动',
+          '把国家战略和全球资本市场接通',
+        ],
+        bulletsEn: [
+          'Sovereign capital enters AI infrastructure directly',
+          'Connects with Microsoft partnerships and projects such as Stargate UAE',
+          'Links national strategy to global capital markets',
+        ],
+      },
+      {
+        title: '风险点',
+        titleEn: 'Risk points',
+        body: '资本可以购买入口，但不能自动生成本土人才、研究文化和可信治理。UAE 后续要证明的是资本能否转化成可持续能力。',
+        bodyEn:
+          'Capital can buy entry points, but it cannot automatically create domestic talent, research culture, or trusted governance. The UAE still has to prove that capital converts into durable capability.',
+      },
+    ],
+    sources: [
+      { label: 'MGX 基金官方公告（2024）', labelEn: 'MGX Fund official announcements (2024)' },
+      { label: 'UAE AI Strategy 2031', labelEn: 'UAE AI Strategy 2031' },
+    ],
+  },
+  {
+    id: 'mbzuai',
+    flag: '🇦🇪',
+    name: 'MBZUAI',
+    nameEn: 'MBZUAI',
+    type: 'AI 研究型大学',
+    typeEn: 'AI research university',
+    region: 'UAE',
+    regionEn: 'UAE',
+    owner: 'Mohamed bin Zayed University of Artificial Intelligence',
+    ownerEn: 'Mohamed bin Zayed University of Artificial Intelligence',
+    status: '持续扩张中',
+    statusEn: 'Expanding',
+    headline: 'UAE 用专门 AI 大学补人才和研究短板。',
+    headlineEn: 'The UAE uses a dedicated AI university to fill talent and research gaps.',
+    summary:
+      'MBZUAI 是 UAE 把全球人才、研究品牌和国家战略绑在一起的核心机构。它的作用不只是办学，也是在为 Falcon、MGX 和算力项目提供人才叙事。',
+    summaryEn:
+      'MBZUAI is a core UAE institution tying global talent, research brand, and national strategy together. Its role is not just education; it supplies the talent narrative for Falcon, MGX, and compute projects.',
+    whyItMatters:
+      '资本可以短期买资源，但 AI 研究文化和人才网络需要长期机构。MBZUAI 是 UAE 试图把外部人才沉淀为本地能力的制度容器。',
+    whyItMattersEn:
+      'Capital can buy resources in the short term, but AI research culture and talent networks require institutions. MBZUAI is the UAE’s container for turning external talent into local capability.',
+    singaporeTakeaway:
+      '新加坡已有 NUS、NTU、A*STAR 和 AISG，不缺机构；更关键的是能否把这些机构对外包装成一个清晰的“Singapore AI research stack”。',
+    singaporeTakeawayEn:
+      'Singapore already has NUS, NTU, A*STAR, and AISG. The challenge is less institution creation and more presenting them externally as a clear Singapore AI research stack.',
+    facts: [
+      { label: '定位', labelEn: 'Position', value: '专门 AI 研究型大学', valueEn: 'Dedicated AI research university' },
+      { label: '战略作用', labelEn: 'Strategic role', value: '人才与研究品牌', valueEn: 'Talent and research brand' },
+      { label: '比较维度', labelEn: 'Benchmark axis', value: '长期人才沉淀', valueEn: 'Long-term talent anchoring' },
+    ],
+    sections: [
+      {
+        title: '可对标之处',
+        titleEn: 'What makes it benchmarkable',
+        body: 'MBZUAI 把“AI 人才短缺”这个抽象问题变成一所大学、一批教授、一批博士和一个全球招生品牌。它是非常直接的国家能力建设工具。',
+        bodyEn:
+          'MBZUAI turns the abstract problem of AI talent scarcity into a university, faculty, doctoral students, and a global admissions brand. It is a direct national-capability-building tool.',
+        bullets: ['以 AI 为唯一核心主题', '服务国家模型、算力和资本战略', '向全球人才市场发出明确定位'],
+        bulletsEn: [
+          'AI is the sole core theme',
+          'Serves national model, compute, and capital strategies',
+          'Sends a clear signal to the global talent market',
+        ],
+      },
+    ],
+    sources: [
+      { label: 'MBZUAI 官网与研究报告', labelEn: 'MBZUAI website and research reports' },
+      { label: 'UAE AI Strategy 2031', labelEn: 'UAE AI Strategy 2031' },
+    ],
+  },
+  {
+    id: 'unit-8200-ai-talent-pipeline',
+    flag: '🇮🇱',
+    name: 'Unit 8200 AI 人才管线',
+    nameEn: 'Unit 8200 AI Talent Pipeline',
+    type: '人才与创业管线',
+    typeEn: 'Talent and startup pipeline',
+    region: '以色列',
+    regionEn: 'Israel',
+    owner: '以色列军事情报体系',
+    ownerEn: 'Israeli military intelligence ecosystem',
+    status: '长期人才源头',
+    statusEn: 'Long-running talent source',
+    headline: '以色列把安全任务、工程训练和创业密度连成一条管线。',
+    headlineEn: 'Israel links security missions, engineering training, and startup density into one pipeline.',
+    summary:
+      'Unit 8200 不是普通教育项目，而是以色列 AI、网络安全和深科技创业生态背后的训练场。它解释了为什么小国也能产生高密度 AI 创业公司。',
+    summaryEn:
+      'Unit 8200 is not a normal education programme. It is the training ground behind Israel’s AI, cybersecurity, and deep-tech startup ecosystem, explaining how a small country generates such high startup density.',
+    whyItMatters:
+      'AI 人才不是只靠大学培养，也来自高压真实任务、跨学科团队和早期责任。以色列的特殊之处在于把国家安全任务转化为创业人才网络。',
+    whyItMattersEn:
+      'AI talent is not produced only by universities. It also comes from high-pressure real missions, cross-disciplinary teams, and early responsibility. Israel’s distinctive mechanism is turning national-security tasks into startup talent networks.',
+    singaporeTakeaway:
+      '新加坡不复制军事情报路径，但可以学习“任务型人才培养”：用公共服务、医疗、金融、物流等真实问题训练 AI 产品和工程人才。',
+    singaporeTakeawayEn:
+      'Singapore should not copy the military-intelligence path, but it can learn the mission-based talent model: train AI product and engineering talent through real public-service, healthcare, finance, and logistics problems.',
+    facts: [
+      { label: '生态位置', labelEn: 'Ecosystem position', value: '创业人才源头', valueEn: 'Startup talent source' },
+      {
+        label: '优势领域',
+        labelEn: 'Strength area',
+        value: '网络安全 AI / 深科技',
+        valueEn: 'Cybersecurity AI / deep tech',
+      },
+      {
+        label: '比较维度',
+        labelEn: 'Benchmark axis',
+        value: '任务型人才训练',
+        valueEn: 'Mission-based talent training',
+      },
+    ],
+    sections: [
+      {
+        title: '可对标之处',
+        titleEn: 'What makes it benchmarkable',
+        body: 'Unit 8200 的对标价值不在军事本身，而在人才机制：早期暴露真实问题、快速承担责任、跨专业协作、离开体系后带着网络进入创业生态。',
+        bodyEn:
+          'The benchmark is not the military itself, but the talent mechanism: early exposure to real problems, fast responsibility, cross-disciplinary collaboration, and alumni networks flowing into startups.',
+        bullets: ['真实任务比课堂更能训练判断力', '强校友网络降低创业早期摩擦', '安全场景天然需要 AI 和自动化'],
+        bulletsEn: [
+          'Real missions train judgment better than classrooms alone',
+          'Strong alumni networks reduce early startup friction',
+          'Security contexts naturally need AI and automation',
+        ],
+      },
+      {
+        title: '风险点',
+        titleEn: 'Risk points',
+        body: '这种模式高度依赖国家安全结构、服役制度和政治环境，不能机械复制。可复制的是任务密度和人才网络，而不是制度外壳。',
+        bodyEn:
+          'This model depends heavily on national-security structures, service systems, and political context. What can be copied is mission density and talent networks, not the institutional shell.',
+      },
+    ],
+    sources: [
+      { label: 'Israel National AI Program（2021）', labelEn: 'Israel National AI Program (2021)' },
+      { label: 'State Comptroller AI Report（2024）', labelEn: 'State Comptroller AI Report (2024)' },
+    ],
+  },
+  {
+    id: 'korea-chaebol-llm-stack',
+    flag: '🇰🇷',
+    name: '韩国财阀自研大模型栈',
+    nameEn: 'Korean Chaebol LLM Stack',
+    type: '公司群 / 产业部署',
+    typeEn: 'Company cluster / industrial deployment',
+    region: '韩国',
+    regionEn: 'South Korea',
+    owner: 'Samsung / Naver / Kakao 等',
+    ownerEn: 'Samsung / Naver / Kakao and peers',
+    status: '产业化推进中',
+    statusEn: 'Industrial deployment underway',
+    headline: '韩国的强项是把模型、硬件、云和消费场景压进同一个产业体系。',
+    headlineEn:
+      'Korea’s strength is pushing models, hardware, cloud, and consumer scenarios through one industrial system.',
+    summary:
+      '韩国不是只靠政府计划，而是由三星、Naver、Kakao 等大型企业把 AI 模型、半导体、云服务和应用场景接起来。财阀体系让大规模部署速度很快。',
+    summaryEn:
+      'South Korea does not rely only on government plans. Large firms such as Samsung, Naver, and Kakao connect AI models, semiconductors, cloud services, and application scenarios. The chaebol system enables fast large-scale deployment.',
+    whyItMatters:
+      'AI 落地需要客户、数据、设备、渠道和资本。韩国财阀把这些要素集中在少数集团里，牺牲了一部分创业生态开放性，但换来规模化执行能力。',
+    whyItMattersEn:
+      'AI deployment needs customers, data, devices, channels, and capital. Korean conglomerates concentrate these inputs in a few groups, trading some startup openness for scaled execution.',
+    singaporeTakeaway:
+      '新加坡没有三星式工业巨头，但有 DBS、Singtel、NCS、Grab、Sea、ST Engineering、Changi 等平台型企业。关键是把它们变成国家级 AI 应用牵引方。',
+    singaporeTakeawayEn:
+      'Singapore does not have a Samsung-like industrial giant, but it has DBS, Singtel, NCS, Grab, Sea, ST Engineering, Changi, and other platform firms. The key is making them national AI deployment anchors.',
+    facts: [
+      {
+        label: '政策背景',
+        labelEn: 'Policy context',
+        value: 'AI 基本法 / K-AI 战略',
+        valueEn: 'AI Basic Act / K-AI Strategy',
+      },
+      {
+        label: '资本背景',
+        labelEn: 'Capital context',
+        value: '₩100 万亿公私 AI 基金',
+        valueEn: '₩100 trillion public-private AI fund',
+      },
+      { label: '比较维度', labelEn: 'Benchmark axis', value: '产业规模化部署', valueEn: 'Industrial-scale deployment' },
+    ],
+    sections: [
+      {
+        title: '可对标之处',
+        titleEn: 'What makes it benchmarkable',
+        body: '韩国的案例说明，大企业集团可以成为 AI 采用的加速器。它们同时拥有算力采购能力、数据资产、工程团队、终端用户和国际销售网络。',
+        bodyEn:
+          'Korea shows how large enterprise groups can accelerate AI adoption. They hold compute-purchasing power, data assets, engineering teams, end users, and international sales networks at once.',
+        bullets: ['模型和硬件协同', 'AI 基本法提供更强法律框架', '大企业客户和部署场景集中'],
+        bulletsEn: [
+          'Coordination between models and hardware',
+          'AI Basic Act provides a stronger legal frame',
+          'Large enterprise customers and deployment contexts are concentrated',
+        ],
+      },
+      {
+        title: '风险点',
+        titleEn: 'Risk points',
+        body: '财阀主导也可能压缩创业空间，形成少数大集团内部创新。对新加坡而言，不能只看规模，也要看生态开放度。',
+        bodyEn:
+          'Chaebol dominance can also compress startup space and keep innovation inside a few groups. For Singapore, scale must be read together with ecosystem openness.',
+      },
+    ],
+    sources: [
+      { label: 'K-AI Strategy（2019）', labelEn: 'K-AI Strategy (2019)' },
+      { label: 'AI 基本法全文（2024）', labelEn: 'Full text of the AI Basic Act (2024)' },
+    ],
+  },
+  {
+    id: 'burokratt',
+    flag: '🇪🇪',
+    name: 'Bürokratt',
+    nameEn: 'Bürokratt',
+    type: '政府 AI 助手',
+    typeEn: 'Government AI assistant',
+    region: '爱沙尼亚',
+    regionEn: 'Estonia',
+    owner: '爱沙尼亚数字政府体系',
+    ownerEn: 'Estonian digital government ecosystem',
+    status: '政府服务用例推进中',
+    statusEn: 'Government-service deployment underway',
+    headline: '爱沙尼亚证明，小预算也能做出高密度政府 AI 用例。',
+    headlineEn: 'Estonia shows that a small budget can still produce dense government AI use cases.',
+    summary:
+      'Bürokratt 是爱沙尼亚 Kratt AI 战略的代表项目，用虚拟助手把多个政府服务入口连接起来。它最值得观察的不是模型规模，而是数字政府基础和执行效率。',
+    summaryEn:
+      'Bürokratt is the representative project of Estonia’s Kratt AI strategy, connecting multiple government-service entry points through a virtual assistant. The key is not model size, but digital-government foundations and execution efficiency.',
+    whyItMatters:
+      '爱沙尼亚用约 €1000 万 AI 预算实现 50+ 政府 AI 用例，说明 AI 政府服务的瓶颈常常不是钱，而是数据互通、身份系统、流程简化和快速试验。',
+    whyItMattersEn:
+      'Estonia’s roughly €10 million AI budget and 50+ government AI use cases show that the bottleneck in AI public services is often not money, but data interoperability, identity systems, process simplification, and fast experimentation.',
+    singaporeTakeaway:
+      '新加坡同样具备强数字政府基础。可学习的是把 AI 用例拆小、快速上线、持续整合，而不是只推出少数大型示范项目。',
+    singaporeTakeawayEn:
+      'Singapore also has strong digital-government foundations. The lesson is to break AI use cases into small deployable pieces, ship quickly, and keep integrating, rather than relying only on a few large flagship projects.',
+    facts: [
+      {
+        label: '公开用例',
+        labelEn: 'Published use cases',
+        value: '50+ 政府 AI 用例',
+        valueEn: '50+ government AI use cases',
+      },
+      { label: '预算口径', labelEn: 'Budget signal', value: '€1000 万级', valueEn: '€10 million scale' },
+      {
+        label: '比较维度',
+        labelEn: 'Benchmark axis',
+        value: '政府 AI 执行效率',
+        valueEn: 'Government AI execution efficiency',
+      },
+    ],
+    sections: [
+      {
+        title: '可对标之处',
+        titleEn: 'What makes it benchmarkable',
+        body: 'Bürokratt 建立在 e-Residency、X-Road 和高度在线化政府服务之上。它说明 AI 公共服务的前提是长期数字化基础设施，而不是突然买一个聊天机器人。',
+        bodyEn:
+          'Bürokratt builds on e-Residency, X-Road, and highly online public services. It shows that AI public service depends on long-term digital infrastructure, not suddenly buying a chatbot.',
+        bullets: ['数字身份和数据交换平台是前提', '政府服务流程已高度在线化', '小预算倒逼用例优先级清晰'],
+        bulletsEn: [
+          'Digital identity and data exchange are prerequisites',
+          'Public services are already highly online',
+          'Small budgets force clear prioritisation',
+        ],
+      },
+      {
+        title: '不可直接复制处',
+        titleEn: 'What cannot be copied directly',
+        body: '爱沙尼亚人口和行政复杂度远小于新加坡，经验不能等比例外推。它的价值在方法论，而不是规模。',
+        bodyEn:
+          'Estonia’s population and administrative complexity are far smaller than Singapore’s. The lesson does not scale linearly; its value is methodological, not scale-based.',
+      },
+    ],
+    sources: [
+      { label: 'Estonia Kratt AI Strategy（2019）', labelEn: 'Estonia Kratt AI Strategy (2019)' },
+      { label: 'e-Estonia 官方报告', labelEn: 'e-Estonia official reports' },
+    ],
+  },
+  {
+    id: 'elements-of-ai',
+    flag: '🇫🇮',
+    name: 'Elements of AI',
+    nameEn: 'Elements of AI',
+    type: '全民 AI 教育项目',
+    typeEn: 'Mass AI education programme',
+    region: '芬兰',
+    regionEn: 'Finland',
+    owner: 'University of Helsinki / Reaktor',
+    ownerEn: 'University of Helsinki / Reaktor',
+    status: '持续开放课程',
+    statusEn: 'Ongoing open course',
+    headline: '芬兰把 AI 战略从专家政策变成全民素养工程。',
+    headlineEn: 'Finland turns AI strategy from expert policy into mass literacy.',
+    summary:
+      'Elements of AI 是芬兰最有全球传播力的 AI 项目。它用开放课程把 AI 基础知识从专家圈层扩展到普通公民、教师、企业员工和公务员。',
+    summaryEn:
+      'Elements of AI is Finland’s most globally visible AI project. Through an open course, it moves AI literacy from expert circles to citizens, teachers, employees, and civil servants.',
+    whyItMatters:
+      'AI 采用不是只靠模型和预算。一个社会是否理解 AI、能否提出好问题、能否识别风险，决定了政策和产业落地速度。',
+    whyItMattersEn:
+      'AI adoption is not driven only by models and budgets. A society’s ability to understand AI, ask good questions, and recognise risks shapes policy and industry adoption speed.',
+    singaporeTakeaway:
+      '新加坡有 SkillsFuture 和各类 AI 训练计划，但可以更明确地打造一个全民可识别、可传播的 AI 素养品牌。',
+    singaporeTakeawayEn:
+      'Singapore has SkillsFuture and many AI training programmes, but it can build a more recognisable and shareable national AI literacy brand.',
+    facts: [
+      {
+        label: '覆盖信号',
+        labelEn: 'Reach signal',
+        value: '曾覆盖芬兰 1% 人口',
+        valueEn: 'Reached 1% of Finland’s population',
+      },
+      { label: '传播方式', labelEn: 'Distribution', value: '开放在线课程', valueEn: 'Open online course' },
+      { label: '比较维度', labelEn: 'Benchmark axis', value: 'AI 全民素养', valueEn: 'Mass AI literacy' },
+    ],
+    sections: [
+      {
+        title: '可对标之处',
+        titleEn: 'What makes it benchmarkable',
+        body: 'Elements of AI 的聪明之处在于降低心理门槛。它不把 AI 包装成少数工程师的黑箱，而是让普通人理解概念、限制和使用场景。',
+        bodyEn:
+          'The smart part of Elements of AI is lowering the psychological threshold. It does not frame AI as a black box for engineers only; it helps ordinary people understand concepts, limits, and use cases.',
+        bullets: ['低门槛、可规模化', '与人本 AI 伦理叙事一致', '可成为国家品牌资产'],
+        bulletsEn: [
+          'Low barrier and scalable',
+          'Aligned with a human-centric AI ethics narrative',
+          'Can become a national brand asset',
+        ],
+      },
+      {
+        title: '后续追踪',
+        titleEn: 'What to track next',
+        body: '课程影响力要看是否进入企业培训、公务员培训、教师培训和终身学习体系，而不是只看报名人数。',
+        bodyEn:
+          'The course’s impact should be measured by whether it enters corporate training, civil-service training, teacher training, and lifelong-learning systems, not just enrolment counts.',
+      },
+    ],
+    sources: [
+      { label: 'Finland AI Strategy（2017/2019 更新）', labelEn: 'Finland AI Strategy (2017, updated 2019)' },
+      { label: 'Elements of AI 官方统计', labelEn: 'Elements of AI official statistics' },
+    ],
+  },
+  {
+    id: 'eth-ai-center',
+    flag: '🇨🇭',
+    name: 'ETH AI Center',
+    nameEn: 'ETH AI Center',
+    type: '大学研究中心',
+    typeEn: 'University research centre',
+    region: '瑞士',
+    regionEn: 'Switzerland',
+    owner: 'ETH Zurich',
+    ownerEn: 'ETH Zurich',
+    status: '世界级研究节点',
+    statusEn: 'World-class research node',
+    headline: '瑞士的 AI 竞争力来自高密度基础研究和国际人才吸引力。',
+    headlineEn: 'Switzerland’s AI strength comes from dense fundamental research and global talent pull.',
+    summary:
+      'ETH AI Center 代表瑞士的研究型路径：不追求强监管或大规模产业补贴，而是依托 ETH/EPFL、企业实验室和国际组织网络建立研究质量优势。',
+    summaryEn:
+      'The ETH AI Center represents Switzerland’s research-led path: not heavy regulation or large industrial subsidies, but research quality built on ETH/EPFL, corporate labs, and international-organisation networks.',
+    whyItMatters:
+      'AI 长期竞争最终仍回到人才、论文、开源、实验室和产业合作。瑞士说明，高成本小国也可以靠顶级研究机构保持全球相关性。',
+    whyItMattersEn:
+      'Long-run AI competition still returns to talent, papers, open source, labs, and industry collaboration. Switzerland shows that a high-cost small state can remain globally relevant through top research institutions.',
+    singaporeTakeaway:
+      '新加坡的 NUS/NTU 已经有强排名，下一步要看是否能像 ETH 一样成为全球公司和顶级研究者自然聚集的 AI 研究地址。',
+    singaporeTakeawayEn:
+      'Singapore’s NUS and NTU already rank strongly. The next question is whether they can become, like ETH, a natural AI research address for global firms and top researchers.',
+    facts: [
+      {
+        label: '生态位置',
+        labelEn: 'Ecosystem position',
+        value: 'ETH/EPFL 研究体系',
+        valueEn: 'ETH/EPFL research system',
+      },
+      {
+        label: '外部连接',
+        labelEn: 'External connection',
+        value: 'Google Zurich / 国际组织网络',
+        valueEn: 'Google Zurich / international-organisation networks',
+      },
+      { label: '比较维度', labelEn: 'Benchmark axis', value: '基础研究质量', valueEn: 'Fundamental research quality' },
+    ],
+    sections: [
+      {
+        title: '可对标之处',
+        titleEn: 'What makes it benchmarkable',
+        body: 'ETH AI Center 的价值在于把跨学科研究、企业合作和全球人才品牌集中到一个高可信机构。它是“研究质量本身就是国家资产”的案例。',
+        bodyEn:
+          'The ETH AI Center concentrates interdisciplinary research, industry collaboration, and global talent brand inside one high-trust institution. It is a case where research quality itself becomes a national asset.',
+        bullets: ['基础研究强，产业连接强', '国际人才愿意长期停留', '与瑞士轻监管、创新优先路径一致'],
+        bulletsEn: [
+          'Strong fundamental research and industry links',
+          'International talent has reason to stay',
+          'Fits Switzerland’s light-touch, innovation-first path',
+        ],
+      },
+      {
+        title: '风险点',
+        titleEn: 'Risk points',
+        body: '研究中心不能自动变成产业规模。瑞士的短板是 AI 创业和应用腹地，新加坡在区域市场连接上反而更有机会。',
+        bodyEn:
+          'Research centres do not automatically create industrial scale. Switzerland’s weakness is AI startup and application hinterland; Singapore may have more opportunity through regional market access.',
+      },
+    ],
+    sources: [
+      { label: 'Swiss Federal AI Strategy（2020/2025）', labelEn: 'Swiss Federal AI Strategy (2020/2025)' },
+      { label: 'ETH Zurich AI Center 年报', labelEn: 'ETH Zurich AI Center Annual Report' },
+    ],
+  },
+  {
+    id: 'pan-canadian-ai-institute-network',
+    flag: '🇨🇦',
+    name: 'Mila / Vector / Amii 研究网络',
+    nameEn: 'Mila / Vector / Amii Institute Network',
+    type: 'AI 研究机构网络',
+    typeEn: 'AI institute network',
+    region: '加拿大',
+    regionEn: 'Canada',
+    owner: 'CIFAR / 加拿大 AI 生态',
+    ownerEn: 'CIFAR / Canadian AI ecosystem',
+    status: '国家 AI 战略核心资产',
+    statusEn: 'Core asset of the national AI strategy',
+    headline: '加拿大的先发优势来自三大研究所和深度学习学术传统。',
+    headlineEn:
+      'Canada’s first-mover advantage comes from three major institutes and the deep-learning academic tradition.',
+    summary:
+      'Mila、Vector Institute 和 Amii 是泛加拿大 AI 战略最重要的机构资产。它们把 Bengio、Hinton 等学术遗产转化为人才培养、研究合作和创业生态。',
+    summaryEn:
+      'Mila, Vector Institute, and Amii are the most important institutional assets of the Pan-Canadian AI Strategy. They turn the academic legacy of Bengio, Hinton, and others into talent development, research collaboration, and startup ecosystem activity.',
+    whyItMatters:
+      '加拿大证明，国家 AI 战略的先发优势可以来自大学和研究所，而不必先有本土科技巨头。问题在于如何把研究优势留在本地商业化。',
+    whyItMattersEn:
+      'Canada shows that a national AI first-mover advantage can come from universities and institutes, not necessarily homegrown tech giants. The challenge is keeping research advantage local through commercialisation.',
+    singaporeTakeaway: '新加坡也有强高校和公共研究体系。需要警惕加拿大式“研究强、商业化弱、人才流向美国”的风险。',
+    singaporeTakeawayEn:
+      'Singapore also has strong universities and public research. It should watch the Canadian risk pattern: strong research, weaker commercialisation, and talent flowing to larger markets.',
+    facts: [
+      {
+        label: '核心机构',
+        labelEn: 'Core institutions',
+        value: 'Mila / Vector / Amii',
+        valueEn: 'Mila / Vector / Amii',
+      },
+      {
+        label: '战略起点',
+        labelEn: 'Strategy origin',
+        value: '泛加拿大 AI 战略（2017）',
+        valueEn: 'Pan-Canadian AI Strategy (2017)',
+      },
+      {
+        label: '比较维度',
+        labelEn: 'Benchmark axis',
+        value: '研究到商业化转化',
+        valueEn: 'Research-to-commercialisation conversion',
+      },
+    ],
+    sections: [
+      {
+        title: '可对标之处',
+        titleEn: 'What makes it benchmarkable',
+        body: '三大研究所让加拿大在全球 AI 学术网络中占住关键节点。它们不是单点实验室，而是覆盖人才、企业合作、政府资金和国际声誉的机构网络。',
+        bodyEn:
+          'The three institutes give Canada key nodes in the global AI academic network. They are not isolated labs; they cover talent, industry collaboration, government funding, and international reputation.',
+        bullets: ['全球首个国家 AI 战略的机构载体', '深度学习学术传统强', 'AI 安全与伦理研究基础好'],
+        bulletsEn: [
+          'Institutional backbone of the world’s first national AI strategy',
+          'Strong deep-learning academic tradition',
+          'Good base in AI safety and ethics research',
+        ],
+      },
+      {
+        title: '风险点',
+        titleEn: 'Risk points',
+        body: '加拿大的难题是人才和公司容易被美国市场吸走。新加坡如果只做人才训练而缺乏本地高质量应用场景，也会遇到类似流失。',
+        bodyEn:
+          'Canada’s difficulty is that talent and companies can be pulled into the US market. If Singapore trains talent without strong local deployment opportunities, it can face a similar leakage pattern.',
+      },
+    ],
+    sources: [
+      { label: 'Pan-Canadian AI Strategy（2017/2024）', labelEn: 'Pan-Canadian AI Strategy (2017/2024)' },
+      { label: 'CIFAR AI Strategy Reports', labelEn: 'CIFAR AI Strategy Reports' },
+    ],
+  },
+];
+
 export interface InsightItem {
   title: string;
   titleEn?: string;

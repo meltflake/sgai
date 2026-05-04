@@ -4,243 +4,637 @@ import { Icon } from 'astro-icon/components';
 
 import JsonLd from '~/components/common/JsonLd.astro';
 import Layout from '~/layouts/PageLayout.astro';
-import { dataDate, dataDisclaimer } from '~/data/benchmarking';
-import { regionPages } from '~/utils/entity-pages';
+import { benchmarkCaseProfileUpdated, dataDate, dataDisclaimer } from '~/data/benchmarking';
+import {
+  benchmarkCasePages,
+  benchmarkPages,
+  getBenchmarkDrilldownsForRegion,
+  regionPages,
+  type BenchmarkPage,
+} from '~/utils/entity-pages';
 
 export const prerender = true;
 
 export const getStaticPaths = (() =>
-  regionPages.map((page) => ({ params: { region: page.slug }, props: { page } }))) satisfies GetStaticPaths;
+  benchmarkPages.map((page) => ({ params: { region: page.slug }, props: { page } }))) satisfies GetStaticPaths;
 
-const { page } = Astro.props;
-const { summary, detail } = page;
-const relatedRegions = regionPages.filter((candidate) => candidate.slug !== page.slug).slice(0, 6);
+const { page } = Astro.props as { page: BenchmarkPage };
+const casePage = page.kind === 'case' ? page : null;
+const regionPage = page.kind === 'region' ? page : null;
+const drilldownPage = page.kind === 'drilldown' ? page : null;
+const caseItem = casePage?.caseItem;
+const regionDrilldowns = regionPage ? getBenchmarkDrilldownsForRegion(regionPage.slug) : [];
+const regionDrilldownByLocalId = new Map(regionDrilldowns.map((item) => [item.localId, item]));
+const relatedDrilldowns = drilldownPage
+  ? getBenchmarkDrilldownsForRegion(drilldownPage.region.slug)
+      .filter((candidate) => candidate.slug !== drilldownPage.slug)
+      .slice(0, 6)
+  : [];
+const relatedCases = caseItem
+  ? benchmarkCasePages.filter((candidate) => candidate.slug !== casePage.slug).slice(0, 4)
+  : [];
+const caseRegionPage = caseItem
+  ? regionPages.find(
+      (candidate) =>
+        candidate.summary.name === caseItem.region ||
+        candidate.summary.nameEn === caseItem.regionEn ||
+        candidate.summary.nameEn === caseItem.region ||
+        candidate.summary.name === caseItem.regionEn
+    )
+  : null;
+const relatedRegions = regionPage
+  ? regionPages.filter((candidate) => candidate.slug !== regionPage.slug).slice(0, 6)
+  : [];
 
-const metadata = {
-  title: `${summary.name} AI 战略对标 · 国际对标`,
-  description: detail?.overview || `${summary.name} AI 战略、投资、治理模式与核心优势对标。`,
-};
+function drilldownHref(localId: string): string {
+  const target = regionDrilldownByLocalId.get(localId);
+  return target ? `/benchmarking/${target.slug}/` : '/benchmarking/';
+}
 
-const articleSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'Article',
-  headline: `${summary.name} AI 战略对标`,
-  description: metadata.description,
-  dateModified: dataDate,
-  inLanguage: 'zh-CN',
-  about: [
-    { '@type': 'Place', name: summary.nameEn || summary.name },
-    { '@type': 'Thing', name: 'AI strategy' },
-  ],
-};
+const metadata = drilldownPage
+  ? {
+      title: `${drilldownPage.title} · ${drilldownPage.region.summary.name}国际对标`,
+      description: drilldownPage.description,
+    }
+  : caseItem
+    ? {
+        title: `${caseItem.name} · 国际对标案例`,
+        description: caseItem.summary,
+      }
+    : {
+        title: `${regionPage?.summary.name} AI 战略对标 · 国际对标`,
+        description:
+          regionPage?.detail?.overview || `${regionPage?.summary.name} AI 战略、投资、治理模式与核心优势对标。`,
+      };
+
+const articleSchema = drilldownPage
+  ? {
+      '@context': 'https://schema.org',
+      '@type': 'Article',
+      headline: drilldownPage.title,
+      description: drilldownPage.description,
+      dateModified: benchmarkCaseProfileUpdated,
+      inLanguage: 'zh-CN',
+      mainEntityOfPage: new URL(Astro.url).href,
+      about: [
+        { '@type': 'Thing', name: drilldownPage.titleEn || drilldownPage.title },
+        { '@type': 'Place', name: drilldownPage.region.summary.nameEn || drilldownPage.region.summary.name },
+      ],
+      isPartOf: {
+        '@type': 'WebSite',
+        name: '新加坡 AI 观察',
+        url: 'https://sgai.md/',
+      },
+    }
+  : caseItem
+    ? {
+        '@context': 'https://schema.org',
+        '@type': 'Article',
+        headline: `${caseItem.name} · 国际对标案例`,
+        description: caseItem.summary,
+        dateModified: benchmarkCaseProfileUpdated,
+        inLanguage: 'zh-CN',
+        mainEntityOfPage: new URL(Astro.url).href,
+        about: [
+          { '@type': 'Thing', name: caseItem.nameEn || caseItem.name },
+          { '@type': 'Place', name: caseItem.regionEn || caseItem.region },
+        ],
+        isPartOf: {
+          '@type': 'WebSite',
+          name: '新加坡 AI 观察',
+          url: 'https://sgai.md/',
+        },
+      }
+    : {
+        '@context': 'https://schema.org',
+        '@type': 'Article',
+        headline: `${regionPage?.summary.name} AI 战略对标`,
+        description: metadata.description,
+        dateModified: dataDate,
+        inLanguage: 'zh-CN',
+        about: [
+          { '@type': 'Place', name: regionPage?.summary.nameEn || regionPage?.summary.name },
+          { '@type': 'Thing', name: 'AI strategy' },
+        ],
+      };
 ---
 
-<Layout metadata={metadata} breadcrumbs={[{ label: '国际对标', href: '/benchmarking/' }, { label: summary.name }]}>
-  <JsonLd schema={articleSchema} />
+{
+  drilldownPage ? (
+    <Layout
+      metadata={metadata}
+      breadcrumbs={[
+        { label: '国际对标', href: '/benchmarking/' },
+        { label: drilldownPage.region.summary.name, href: `/benchmarking/${drilldownPage.region.slug}/` },
+        { label: drilldownPage.title },
+      ]}
+    >
+      <JsonLd schema={articleSchema} />
 
-  <article class="max-w-4xl mx-auto px-4 sm:px-6 py-12 md:py-16">
-    <header class="mb-8">
-      <p class="text-xs uppercase tracking-[0.18em] text-primary font-semibold mb-4">
-        International Benchmark · Updated {dataDate}
-      </p>
-      <h1 class="t-display text-gray-900 dark:text-white mb-3">
-        {summary.flag}
-        {summary.name} AI 战略对标
-      </h1>
-      {detail?.fullName && <p class="text-base md:text-lg text-gray-500 dark:text-gray-400">{detail.fullName}</p>}
-    </header>
+      <article class="max-w-4xl mx-auto px-4 sm:px-6 py-12 md:py-16">
+        <header class="mb-8">
+          <div class="mb-5 flex flex-wrap items-center gap-2 text-xs">
+            <a
+              href={`/benchmarking/${drilldownPage.region.slug}/`}
+              class="inline-flex items-center gap-1 bg-primary/10 text-primary px-3 py-1.5 rounded font-semibold hover:bg-primary/15 transition-colors"
+            >
+              <Icon name="tabler:arrow-left" class="w-3.5 h-3.5" />
+              {drilldownPage.region.summary.name}
+            </a>
+            <span class="bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 px-3 py-1.5 rounded">
+              {drilldownPage.category}
+            </span>
+          </div>
 
-    <section class="grid md:grid-cols-2 gap-3 mb-8">
-      <div class="bg-surface border border-subtle rounded-lg p-4">
-        <div class="text-xs uppercase tracking-wider text-gray-500 mb-1">核心战略</div>
-        <div class="font-semibold">{summary.strategy}</div>
-        <div class="text-xs text-gray-500 mt-1">{summary.strategyYear}</div>
-      </div>
-      <div class="bg-surface border border-subtle rounded-lg p-4">
-        <div class="text-xs uppercase tracking-wider text-gray-500 mb-1">投资规模</div>
-        <div class="font-semibold">{summary.investment}</div>
-      </div>
-      <div class="bg-surface border border-subtle rounded-lg p-4">
-        <div class="text-xs uppercase tracking-wider text-gray-500 mb-1">治理模式</div>
-        <div class="font-semibold">{summary.governance}</div>
-      </div>
-      <div class="bg-surface border border-subtle rounded-lg p-4">
-        <div class="text-xs uppercase tracking-wider text-gray-500 mb-1">核心优势</div>
-        <div class="font-semibold">{summary.strength}</div>
-      </div>
-    </section>
+          <p class="text-xs uppercase tracking-[0.18em] text-primary font-semibold mb-4">
+            Benchmark Drilldown · Updated {benchmarkCaseProfileUpdated}
+          </p>
+          <h1 class="t-display text-gray-900 dark:text-white mb-3">{drilldownPage.title}</h1>
+          <p class="t-lead text-gray-700 dark:text-gray-300 mt-6">{drilldownPage.description}</p>
+        </header>
 
-    <section class="callout-note rounded-lg p-5 mb-10">
-      <h2 class="font-serif text-xl font-semibold text-gray-900 dark:text-white mb-3">一句话判断</h2>
-      <p class="text-gray-800 dark:text-gray-200 leading-[1.85]">
-        {
-          detail?.overview ||
-            `${summary.name} 的 AI 战略可概括为：${summary.strategy}；治理模式是 ${summary.governance}；相对优势是 ${summary.strength}。`
-        }
-      </p>
-    </section>
-
-    {
-      detail ? (
-        <>
-          <section class="mb-10">
-            <h2 class="font-serif text-xl font-semibold text-gray-900 dark:text-white mb-4">核心战略</h2>
-            <div class="space-y-3">
-              {detail.strategies.map((strategy) => (
-                <div class="bg-surface border border-subtle rounded-lg p-4">
-                  <div class="text-xs font-mono text-blue-600 dark:text-blue-400 mb-1">{strategy.year}</div>
-                  <h3 class="font-semibold text-gray-900 dark:text-white">{strategy.name}</h3>
-                  <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">{strategy.description}</p>
-                </div>
-              ))}
-            </div>
-          </section>
-
-          <section class="mb-10">
-            <h2 class="font-serif text-xl font-semibold text-gray-900 dark:text-white mb-4">投资与资源</h2>
-            <div class="overflow-x-auto">
-              <table class="w-full text-sm border-collapse">
-                <thead>
-                  <tr class="bg-slate-100 dark:bg-slate-800">
-                    <th class="text-left p-3 border border-subtle">项目</th>
-                    <th class="text-left p-3 border border-subtle">金额</th>
-                    <th class="text-left p-3 border border-subtle">备注</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {detail.investment.map((item) => (
-                    <tr>
-                      <td class="p-3 border border-subtle">{item.item}</td>
-                      <td class="p-3 border border-subtle font-semibold">{item.amount}</td>
-                      <td class="p-3 border border-subtle text-muted">{item.note}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </section>
-
-          <section class="mb-10">
-            <h2 class="font-serif text-xl font-semibold text-gray-900 dark:text-white mb-3">治理模式</h2>
-            <p class="text-gray-700 dark:text-gray-300 leading-[1.85]">{detail.governance}</p>
-          </section>
-
-          <section class="mb-10 grid md:grid-cols-2 gap-5">
+        <dl class="bg-surface rounded-lg border border-subtle p-5 mb-10 grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4 text-sm">
+          {drilldownPage.facts.map((fact) => (
             <div>
-              <h2 class="font-serif text-xl font-semibold text-green-700 dark:text-green-300 mb-3">相对新加坡的优势</h2>
-              <ul class="space-y-2 text-sm text-gray-700 dark:text-gray-300">
-                {detail.strengths.map((item) => (
-                  <li>• {item}</li>
-                ))}
-              </ul>
+              <dt class="text-xs uppercase tracking-wider text-muted mb-1">{fact.label}</dt>
+              <dd class="text-gray-900 dark:text-white">{fact.value}</dd>
             </div>
-            <div>
-              <h2 class="font-serif text-xl font-semibold text-red-700 dark:text-red-300 mb-3">相对新加坡的劣势</h2>
-              <ul class="space-y-2 text-sm text-gray-700 dark:text-gray-300">
-                {detail.weaknesses.map((item) => (
-                  <li>• {item}</li>
-                ))}
-              </ul>
-            </div>
-          </section>
+          ))}
+        </dl>
 
-          <section class="mb-10">
-            <h2 class="font-serif text-xl font-semibold text-gray-900 dark:text-white mb-4">关键举措与机构</h2>
-            <div class="grid md:grid-cols-2 gap-5">
-              <div class="bg-surface border border-subtle rounded-lg p-4">
-                <h3 class="font-semibold mb-3">关键举措</h3>
-                <ul class="space-y-2 text-sm text-gray-700 dark:text-gray-300">
-                  {detail.keyInitiatives.map((item) => (
-                    <li>• {item}</li>
-                  ))}
-                </ul>
-              </div>
-              <div class="bg-surface border border-subtle rounded-lg p-4">
-                <h3 class="font-semibold mb-3">关键机构</h3>
-                <ul class="space-y-2 text-sm text-gray-700 dark:text-gray-300">
-                  {detail.keyBodies.map((body) => (
-                    <li>
-                      <strong>{body.name}</strong> — {body.role}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          </section>
+        <section class="mb-10">
+          <h2 class="t-h3 text-gray-900 dark:text-white mb-4">展开说明</h2>
+          <p class="text-base leading-[1.85] text-gray-800 dark:text-gray-200">{drilldownPage.body}</p>
+        </section>
 
+        {drilldownPage.sources.length > 0 && (
           <section class="mb-10">
-            <h2 class="font-serif text-xl font-semibold text-gray-900 dark:text-white mb-3">参考来源</h2>
+            <h2 class="t-h3 text-gray-900 dark:text-white mb-4">参考来源</h2>
             <ul class="space-y-1 text-sm text-gray-500 dark:text-gray-400">
-              {detail.sources.map((source) => (
+              {drilldownPage.sources.map((source) => (
                 <li>• {source}</li>
               ))}
             </ul>
           </section>
-        </>
-      ) : (
-        <section class="callout-muted rounded-lg p-5 mb-10">
-          <h2 class="font-semibold mb-2">详情待扩展</h2>
-          <p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
-            本页目前使用总览表数据生成。后续可在 <code>src/data/benchmarking.ts</code> 补充完整
-            <code>RegionDetail</code>，页面会自动展开战略、投资、治理、优势/劣势与来源。
+        )}
+
+        {relatedDrilldowns.length > 0 && (
+          <section class="mb-10">
+            <h2 class="t-h3 text-gray-900 dark:text-white mb-4">同地区继续下钻</h2>
+            <div class="grid gap-3 md:grid-cols-2">
+              {relatedDrilldowns.map((related) => (
+                <a
+                  href={`/benchmarking/${related.slug}/`}
+                  class="group bg-surface rounded-lg p-4 border border-subtle hover:border-primary/50 hover:shadow-sm transition-all"
+                >
+                  <p class="text-xs text-muted">{related.category}</p>
+                  <h3 class="mt-1 font-semibold text-gray-900 dark:text-white group-hover:text-primary">
+                    {related.title}
+                  </h3>
+                  <p class="mt-2 text-xs text-gray-600 dark:text-gray-400 line-clamp-2">{related.description}</p>
+                </a>
+              ))}
+            </div>
+          </section>
+        )}
+
+        <section class="mb-10 pt-6 border-t border-subtle">
+          <h2 class="text-sm uppercase tracking-wider text-muted font-semibold mb-3">数据说明</h2>
+          <p class="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">
+            本页由地区对标数据自动生成，整理于 {benchmarkCaseProfileUpdated}
+            ；适合后续继续补充官方链接、指标、时间线和执行进度。
           </p>
         </section>
-      )
-    }
 
-    <section class="mb-10">
-      <h2 class="font-serif text-xl font-semibold text-gray-900 dark:text-white mb-4">关联阅读</h2>
-      <div class="flex flex-wrap gap-3">
-        <a
-          href="/benchmarking/"
-          class="text-sm text-primary hover:text-secondary border border-primary/30 px-4 py-2 rounded-md"
-        >
-          国际对标总览
-        </a>
-        <a
-          href="/levers/"
-          class="text-sm text-primary hover:text-secondary border border-primary/30 px-4 py-2 rounded-md"
-        >
-          新加坡国家 AI 抓手
-        </a>
-        <a
-          href="/legal-ai/"
-          class="text-sm text-primary hover:text-secondary border border-primary/30 px-4 py-2 rounded-md"
-        >
-          新加坡 AI 法律框架
-        </a>
-      </div>
-    </section>
+        <nav class="mt-12 pt-6 border-t border-subtle">
+          <a
+            href={`/benchmarking/${drilldownPage.region.slug}/`}
+            class="text-sm text-primary hover:text-secondary font-medium inline-flex items-center gap-1"
+          >
+            <Icon name="tabler:arrow-left" class="w-4 h-4" />
+            返回 {drilldownPage.region.summary.name}
+          </a>
+        </nav>
+      </article>
+    </Layout>
+  ) : caseItem ? (
+    <Layout metadata={metadata} breadcrumbs={[{ label: '国际对标', href: '/benchmarking/' }, { label: caseItem.name }]}>
+      <JsonLd schema={articleSchema} />
 
-    <section class="mb-10">
-      <h2 class="font-serif text-xl font-semibold text-gray-900 dark:text-white mb-4">继续比较</h2>
-      <div class="grid gap-3 md:grid-cols-2">
-        {
-          relatedRegions.map((item) => (
+      <article class="max-w-4xl mx-auto px-4 sm:px-6 py-12 md:py-16">
+        <header class="mb-8">
+          <div class="mb-5 flex flex-wrap items-center gap-2 text-xs">
             <a
-              href={`/benchmarking/${item.slug}/`}
-              class="block bg-surface rounded-lg p-4 border border-subtle hover:border-blue-300 hover:shadow-sm transition-all"
+              href="/benchmarking/"
+              class="inline-flex items-center gap-1 bg-primary/10 text-primary px-3 py-1.5 rounded font-semibold hover:bg-primary/15 transition-colors"
             >
-              <h3 class="font-semibold text-gray-800 dark:text-white text-sm">
-                {item.summary.flag} {item.summary.name}
-              </h3>
-              <p class="text-xs text-gray-600 dark:text-gray-400 mt-2">{item.summary.strength}</p>
+              <Icon name="tabler:arrow-left" class="w-3.5 h-3.5" />
+              国际对标
             </a>
-          ))
-        }
-      </div>
-    </section>
+            <span class="bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 px-3 py-1.5 rounded">
+              {caseItem.flag} {caseItem.region}
+            </span>
+            <span class="bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 px-3 py-1.5 rounded">
+              {caseItem.type}
+            </span>
+            <span class="bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 px-3 py-1.5 rounded">
+              {caseItem.status}
+            </span>
+          </div>
 
-    <p class="text-xs text-gray-500 dark:text-gray-400 border-t border-subtle pt-5">{dataDisclaimer}</p>
+          <p class="text-xs uppercase tracking-[0.18em] text-primary font-semibold mb-4">
+            Benchmark Case · Updated {benchmarkCaseProfileUpdated}
+          </p>
+          <h1 class="t-display text-gray-900 dark:text-white mb-3">{caseItem.name}</h1>
+          {caseItem.nameEn && (
+            <p class="text-base md:text-lg text-gray-500 dark:text-gray-400 italic">{caseItem.nameEn}</p>
+          )}
+          <p class="t-lead text-gray-700 dark:text-gray-300 mt-6">{caseItem.summary}</p>
+        </header>
 
-    <nav class="mt-8">
-      <a
-        href="/benchmarking/"
-        class="text-sm text-primary hover:text-secondary font-medium inline-flex items-center gap-1"
+        <section class="callout-note rounded-lg p-5 mb-8">
+          <p class="font-serif text-lg leading-[1.85] text-gray-900 dark:text-white m-0">{caseItem.headline}</p>
+        </section>
+
+        <dl class="bg-surface rounded-lg border border-subtle p-5 mb-10 grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4 text-sm">
+          <div>
+            <dt class="text-xs uppercase tracking-wider text-muted mb-1">归属方</dt>
+            <dd class="text-gray-900 dark:text-white">{caseItem.owner}</dd>
+          </div>
+          {caseItem.facts.map((fact) => (
+            <div>
+              <dt class="text-xs uppercase tracking-wider text-muted mb-1">{fact.label}</dt>
+              <dd class="text-gray-900 dark:text-white">{fact.value}</dd>
+              {fact.note && <dd class="mt-1 text-xs text-muted">{fact.note}</dd>}
+            </div>
+          ))}
+        </dl>
+
+        <section class="mb-10 grid md:grid-cols-2 gap-5">
+          <div>
+            <h2 class="t-h3 text-gray-900 dark:text-white mb-4">为什么值得观察</h2>
+            <p class="text-gray-800 dark:text-gray-200 leading-[1.85]">{caseItem.whyItMatters}</p>
+          </div>
+          <div>
+            <h2 class="t-h3 text-gray-900 dark:text-white mb-4">对新加坡的启发</h2>
+            <p class="text-gray-800 dark:text-gray-200 leading-[1.85]">{caseItem.singaporeTakeaway}</p>
+          </div>
+        </section>
+
+        {caseItem.sections.map((section) => (
+          <section class="mb-10">
+            <h2 class="t-h3 text-gray-900 dark:text-white mb-4">{section.title}</h2>
+            <p class="text-base leading-[1.85] text-gray-800 dark:text-gray-200">{section.body}</p>
+            {section.bullets && section.bullets.length > 0 && (
+              <ul class="mt-4 grid gap-2 text-sm">
+                {section.bullets.map((item) => (
+                  <li class="flex items-start gap-2 text-gray-700 dark:text-gray-300">
+                    <Icon name="tabler:check" class="w-4 h-4 mt-1 text-primary shrink-0" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </section>
+        ))}
+
+        <section class="mb-10">
+          <h2 class="t-h3 text-gray-900 dark:text-white mb-4">参考来源</h2>
+          <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+            {caseItem.sources.map((source) => (
+              <li>
+                {source.url ? (
+                  <a
+                    href={source.url}
+                    target="_blank"
+                    rel="noopener"
+                    class="inline-flex items-center gap-1 text-primary hover:text-secondary"
+                  >
+                    {source.label}
+                    <Icon name="tabler:external-link" class="w-3.5 h-3.5" />
+                  </a>
+                ) : (
+                  <span>• {source.label}</span>
+                )}
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <section class="mb-10 grid gap-4 md:grid-cols-2">
+          {caseRegionPage && (
+            <a
+              href={`/benchmarking/${caseRegionPage.slug}/`}
+              class="group rounded-lg border border-subtle bg-surface p-5 hover:border-primary/50 hover:shadow-sm transition-all"
+            >
+              <p class="text-xs text-muted">地区背景</p>
+              <h2 class="mt-2 font-bold text-gray-900 dark:text-white group-hover:text-primary">
+                {caseRegionPage.summary.flag} {caseRegionPage.summary.name}
+              </h2>
+              <p class="mt-2 text-sm text-gray-700 dark:text-gray-300">{caseRegionPage.summary.strength}</p>
+            </a>
+          )}
+          {relatedCases.slice(0, 1).map((related) => (
+            <a
+              href={`/benchmarking/${related.slug}/`}
+              class="group rounded-lg border border-subtle bg-surface p-5 hover:border-primary/50 hover:shadow-sm transition-all"
+            >
+              <p class="text-xs text-muted">另一个案例</p>
+              <h2 class="mt-2 font-bold text-gray-900 dark:text-white group-hover:text-primary">
+                {related.caseItem.flag} {related.caseItem.name}
+              </h2>
+              <p class="mt-2 text-sm text-gray-700 dark:text-gray-300">{related.caseItem.headline}</p>
+            </a>
+          ))}
+        </section>
+
+        {relatedCases.length > 1 && (
+          <section class="mb-10">
+            <h2 class="t-h3 text-gray-900 dark:text-white mb-4">继续看案例</h2>
+            <div class="grid gap-3 sm:grid-cols-2">
+              {relatedCases.slice(1).map((related) => (
+                <a
+                  href={`/benchmarking/${related.slug}/`}
+                  class="group bg-surface rounded-lg p-4 border border-subtle hover:border-primary transition-colors"
+                >
+                  <p class="text-xs text-muted">
+                    {related.caseItem.flag} {related.caseItem.region} · {related.caseItem.type}
+                  </p>
+                  <h3 class="mt-1 font-semibold text-gray-900 dark:text-white group-hover:text-primary">
+                    {related.caseItem.name}
+                  </h3>
+                </a>
+              ))}
+            </div>
+          </section>
+        )}
+
+        <section class="mb-10 pt-6 border-t border-subtle">
+          <h2 class="text-sm uppercase tracking-wider text-muted font-semibold mb-3">数据说明</h2>
+          <p class="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">
+            本页为国际对标案例档案，整理于 {benchmarkCaseProfileUpdated}；基础地区数据沿用 {dataDate}{' '}
+            的公开口径。后续可继续补充官方链接、时间线、指标、引用和跨页关系。
+          </p>
+        </section>
+
+        <nav class="mt-12 pt-6 border-t border-subtle">
+          <a
+            href="/benchmarking/"
+            class="text-sm text-primary hover:text-secondary font-medium inline-flex items-center gap-1"
+          >
+            <Icon name="tabler:arrow-left" class="w-4 h-4" />
+            返回国际对标
+          </a>
+        </nav>
+      </article>
+    </Layout>
+  ) : (
+    regionPage && (
+      <Layout
+        metadata={metadata}
+        breadcrumbs={[{ label: '国际对标', href: '/benchmarking/' }, { label: regionPage.summary.name }]}
       >
-        <Icon name="tabler:arrow-left" class="w-4 h-4" />
-        返回国际对标
-      </a>
-    </nav>
-  </article>
-</Layout>
+        <JsonLd schema={articleSchema} />
+
+        <article class="max-w-4xl mx-auto px-4 sm:px-6 py-12 md:py-16">
+          <header class="mb-8">
+            <p class="text-xs uppercase tracking-[0.18em] text-primary font-semibold mb-4">
+              International Benchmark · Updated {dataDate}
+            </p>
+            <h1 class="t-display text-gray-900 dark:text-white mb-3">
+              {regionPage.summary.flag}
+              {regionPage.summary.name} AI 战略对标
+            </h1>
+            {regionPage.detail?.fullName && (
+              <p class="text-base md:text-lg text-gray-500 dark:text-gray-400">{regionPage.detail.fullName}</p>
+            )}
+          </header>
+
+          <section class="grid md:grid-cols-2 gap-3 mb-8">
+            <a
+              href={drilldownHref('core-strategy')}
+              class="group bg-surface border border-subtle rounded-lg p-4 hover:border-primary/50 hover:shadow-sm transition-all"
+            >
+              <div class="text-xs uppercase tracking-wider text-gray-500 mb-1">核心战略</div>
+              <div class="font-semibold group-hover:text-primary">{regionPage.summary.strategy}</div>
+              <div class="text-xs text-gray-500 mt-1">{regionPage.summary.strategyYear}</div>
+            </a>
+            <a
+              href={drilldownHref('investment-overview')}
+              class="group bg-surface border border-subtle rounded-lg p-4 hover:border-primary/50 hover:shadow-sm transition-all"
+            >
+              <div class="text-xs uppercase tracking-wider text-gray-500 mb-1">投资规模</div>
+              <div class="font-semibold group-hover:text-primary">{regionPage.summary.investment}</div>
+            </a>
+            <a
+              href={drilldownHref('governance-model')}
+              class="group bg-surface border border-subtle rounded-lg p-4 hover:border-primary/50 hover:shadow-sm transition-all"
+            >
+              <div class="text-xs uppercase tracking-wider text-gray-500 mb-1">治理模式</div>
+              <div class="font-semibold group-hover:text-primary">{regionPage.summary.governance}</div>
+            </a>
+            <a
+              href={drilldownHref('comparative-strength')}
+              class="group bg-surface border border-subtle rounded-lg p-4 hover:border-primary/50 hover:shadow-sm transition-all"
+            >
+              <div class="text-xs uppercase tracking-wider text-gray-500 mb-1">核心优势</div>
+              <div class="font-semibold group-hover:text-primary">{regionPage.summary.strength}</div>
+            </a>
+          </section>
+
+          <section class="callout-note rounded-lg p-5 mb-10">
+            <h2 class="font-serif text-xl font-semibold text-gray-900 dark:text-white mb-3">一句话判断</h2>
+            <p class="text-gray-800 dark:text-gray-200 leading-[1.85]">
+              {regionPage.detail?.overview ||
+                `${regionPage.summary.name} 的 AI 战略可概括为：${regionPage.summary.strategy}；治理模式是 ${regionPage.summary.governance}；相对优势是 ${regionPage.summary.strength}。`}
+            </p>
+          </section>
+
+          {regionPage.detail ? (
+            <>
+              <section class="mb-10">
+                <h2 class="font-serif text-xl font-semibold text-gray-900 dark:text-white mb-4">核心战略</h2>
+                <div class="space-y-3">
+                  {regionPage.detail.strategies.map((strategy, index) => (
+                    <a
+                      href={drilldownHref(`strategy-${index + 1}`)}
+                      class="group block bg-surface border border-subtle rounded-lg p-4 hover:border-primary/50 hover:shadow-sm transition-all"
+                    >
+                      <div class="text-xs font-mono text-blue-600 dark:text-blue-400 mb-1">{strategy.year}</div>
+                      <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-primary">
+                        {strategy.name}
+                      </h3>
+                      <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">{strategy.description}</p>
+                    </a>
+                  ))}
+                </div>
+              </section>
+
+              <section class="mb-10">
+                <h2 class="font-serif text-xl font-semibold text-gray-900 dark:text-white mb-4">投资与资源</h2>
+                <div class="grid gap-3">
+                  {regionPage.detail.investment.map((item, index) => (
+                    <a
+                      href={drilldownHref(`investment-${index + 1}`)}
+                      class="group grid gap-3 rounded-lg border border-subtle bg-surface p-4 hover:border-primary/50 hover:shadow-sm transition-all sm:grid-cols-[1.2fr_0.8fr_1.2fr]"
+                    >
+                      <div>
+                        <div class="text-xs uppercase tracking-wider text-muted mb-1">项目</div>
+                        <div class="font-semibold text-gray-900 dark:text-white group-hover:text-primary">
+                          {item.item}
+                        </div>
+                      </div>
+                      <div>
+                        <div class="text-xs uppercase tracking-wider text-muted mb-1">金额</div>
+                        <div class="font-semibold text-gray-900 dark:text-white">{item.amount}</div>
+                      </div>
+                      <div>
+                        <div class="text-xs uppercase tracking-wider text-muted mb-1">备注</div>
+                        <div class="text-sm text-gray-600 dark:text-gray-400">{item.note}</div>
+                      </div>
+                    </a>
+                  ))}
+                </div>
+              </section>
+
+              <section class="mb-10">
+                <h2 class="font-serif text-xl font-semibold text-gray-900 dark:text-white mb-3">治理模式</h2>
+                <p class="text-gray-700 dark:text-gray-300 leading-[1.85]">{regionPage.detail.governance}</p>
+              </section>
+
+              <section class="mb-10 grid md:grid-cols-2 gap-5">
+                <div>
+                  <h2 class="font-serif text-xl font-semibold text-green-700 dark:text-green-300 mb-3">
+                    相对新加坡的优势
+                  </h2>
+                  <ul class="space-y-2 text-sm text-gray-700 dark:text-gray-300">
+                    {regionPage.detail.strengths.map((item) => (
+                      <li>• {item}</li>
+                    ))}
+                  </ul>
+                </div>
+                <div>
+                  <h2 class="font-serif text-xl font-semibold text-red-700 dark:text-red-300 mb-3">相对新加坡的劣势</h2>
+                  <ul class="space-y-2 text-sm text-gray-700 dark:text-gray-300">
+                    {regionPage.detail.weaknesses.map((item) => (
+                      <li>• {item}</li>
+                    ))}
+                  </ul>
+                </div>
+              </section>
+
+              <section class="mb-10">
+                <h2 class="font-serif text-xl font-semibold text-gray-900 dark:text-white mb-4">关键举措与机构</h2>
+                <div class="grid md:grid-cols-2 gap-5">
+                  <div class="bg-surface border border-subtle rounded-lg p-4">
+                    <h3 class="font-semibold mb-3">关键举措</h3>
+                    <div class="space-y-2 text-sm">
+                      {regionPage.detail.keyInitiatives.map((item, index) => (
+                        <a
+                          href={drilldownHref(`initiative-${index + 1}`)}
+                          class="group flex items-start justify-between gap-3 rounded-md border border-subtle p-3 hover:border-primary/50 hover:bg-slate-50 dark:hover:bg-slate-800/60 transition-colors"
+                        >
+                          <span class="text-gray-700 dark:text-gray-300 group-hover:text-primary">{item}</span>
+                          <Icon
+                            name="tabler:arrow-up-right"
+                            class="w-4 h-4 text-muted group-hover:text-primary shrink-0"
+                          />
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                  <div class="bg-surface border border-subtle rounded-lg p-4">
+                    <h3 class="font-semibold mb-3">关键机构</h3>
+                    <div class="space-y-2 text-sm">
+                      {regionPage.detail.keyBodies.map((body, index) => (
+                        <a
+                          href={drilldownHref(`body-${index + 1}`)}
+                          class="group block rounded-md border border-subtle p-3 hover:border-primary/50 hover:bg-slate-50 dark:hover:bg-slate-800/60 transition-colors"
+                        >
+                          <div class="font-semibold text-gray-900 dark:text-white group-hover:text-primary">
+                            {body.name}
+                          </div>
+                          <div class="mt-1 text-gray-700 dark:text-gray-300">{body.role}</div>
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <section class="mb-10">
+                <h2 class="font-serif text-xl font-semibold text-gray-900 dark:text-white mb-3">参考来源</h2>
+                <ul class="space-y-1 text-sm text-gray-500 dark:text-gray-400">
+                  {regionPage.detail.sources.map((source) => (
+                    <li>• {source}</li>
+                  ))}
+                </ul>
+              </section>
+            </>
+          ) : (
+            <section class="callout-muted rounded-lg p-5 mb-10">
+              <h2 class="font-semibold mb-2">详情待扩展</h2>
+              <p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+                本页目前使用总览表数据生成。后续可在 <code>src/data/benchmarking.ts</code> 补充完整
+                <code>RegionDetail</code>，页面会自动展开战略、投资、治理、优势/劣势与来源。
+              </p>
+            </section>
+          )}
+
+          <section class="mb-10">
+            <h2 class="font-serif text-xl font-semibold text-gray-900 dark:text-white mb-4">关联阅读</h2>
+            <div class="flex flex-wrap gap-3">
+              <a
+                href="/benchmarking/"
+                class="text-sm text-primary hover:text-secondary border border-primary/30 px-4 py-2 rounded-md"
+              >
+                国际对标总览
+              </a>
+              <a
+                href="/levers/"
+                class="text-sm text-primary hover:text-secondary border border-primary/30 px-4 py-2 rounded-md"
+              >
+                新加坡国家 AI 抓手
+              </a>
+              <a
+                href="/legal-ai/"
+                class="text-sm text-primary hover:text-secondary border border-primary/30 px-4 py-2 rounded-md"
+              >
+                新加坡 AI 法律框架
+              </a>
+            </div>
+          </section>
+
+          <section class="mb-10">
+            <h2 class="font-serif text-xl font-semibold text-gray-900 dark:text-white mb-4">继续比较</h2>
+            <div class="grid gap-3 md:grid-cols-2">
+              {relatedRegions.map((item) => (
+                <a
+                  href={`/benchmarking/${item.slug}/`}
+                  class="block bg-surface rounded-lg p-4 border border-subtle hover:border-blue-300 hover:shadow-sm transition-all"
+                >
+                  <h3 class="font-semibold text-gray-800 dark:text-white text-sm">
+                    {item.summary.flag} {item.summary.name}
+                  </h3>
+                  <p class="text-xs text-gray-600 dark:text-gray-400 mt-2">{item.summary.strength}</p>
+                </a>
+              ))}
+            </div>
+          </section>
+
+          <p class="text-xs text-gray-500 dark:text-gray-400 border-t border-subtle pt-5">{dataDisclaimer}</p>
+
+          <nav class="mt-8">
+            <a
+              href="/benchmarking/"
+              class="text-sm text-primary hover:text-secondary font-medium inline-flex items-center gap-1"
+            >
+              <Icon name="tabler:arrow-left" class="w-4 h-4" />
+              返回国际对标
+            </a>
+          </nav>
+        </article>
+      </Layout>
+    )
+  )
+}

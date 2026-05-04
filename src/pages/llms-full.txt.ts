@@ -3,7 +3,15 @@ import { debates } from '~/data/debates';
 import { videos } from '~/data/videos';
 import { allPeople } from '~/data/people';
 import { categories } from '~/data/policies';
-import { legalItemPages, regionPages, leverPages, startupEntityPages } from '~/utils/entity-pages';
+import { allCommunityOpenSourceProjects } from '~/data/community-opensource';
+import {
+  benchmarkCasePages,
+  benchmarkDrilldownPages,
+  legalItemPages,
+  regionPages,
+  leverPages,
+  startupEntityPages,
+} from '~/utils/entity-pages';
 
 export const prerender = true;
 
@@ -37,6 +45,7 @@ const lines = [
   `- ${base}/legal-ai/ — AI 法律框架`,
   `- ${base}/benchmarking/ — 国际对标`,
   `- ${base}/startups/ — AI 创业生态`,
+  `- ${base}/community-opensource/ — 产学研开源生态`,
   '',
   '## Policy Detail Pages',
   '',
@@ -102,6 +111,24 @@ const lines = [
   '',
   ...regionPages.map((page) => `- ${base}/en/benchmarking/${page.slug}/ — ${page.summary.nameEn || page.summary.name}`),
   '',
+  '## Benchmark Case Detail Pages',
+  '',
+  ...benchmarkCasePages.map((page) => `- ${base}/benchmarking/${page.slug}/ — ${page.caseItem.name}`),
+  '',
+  '## English Benchmark Case Detail Pages',
+  '',
+  ...benchmarkCasePages.map(
+    (page) => `- ${base}/en/benchmarking/${page.slug}/ — ${page.caseItem.nameEn || page.caseItem.name}`
+  ),
+  '',
+  '## Benchmark Region Drilldown Pages',
+  '',
+  ...benchmarkDrilldownPages.map((page) => `- ${base}/benchmarking/${page.slug}/ — ${page.title}`),
+  '',
+  '## English Benchmark Region Drilldown Pages',
+  '',
+  ...benchmarkDrilldownPages.map((page) => `- ${base}/en/benchmarking/${page.slug}/ — ${page.titleEn}`),
+  '',
   '## Startup Ecosystem Entity Pages',
   '',
   ...startupEntityPages.map((page) => `- ${base}/startups/${page.slug}/ — ${page.name}`),
@@ -109,6 +136,16 @@ const lines = [
   '## English Startup Ecosystem Entity Pages',
   '',
   ...startupEntityPages.map((page) => `- ${base}/en/startups/${page.slug}/ — ${page.name}`),
+  '',
+  '## Community Open Source Project Pages',
+  '',
+  ...allCommunityOpenSourceProjects.map((project) => `- ${base}/community-opensource/${project.id}/ — ${project.name}`),
+  '',
+  '## English Community Open Source Project Pages',
+  '',
+  ...allCommunityOpenSourceProjects.map(
+    (project) => `- ${base}/en/community-opensource/${project.id}/ — ${project.nameEn || project.name}`
+  ),
   '',
 ];
 

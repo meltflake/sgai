@@ -1,8 +1,29 @@
 ---
-import Layout from '~/layouts/PageLayout.astro';
+import { Icon } from 'astro-icon/components';
+
 import Headline from '~/components/ui/Headline.astro';
-import { regions, regionDetails, insights, dataDate, dataDisclaimer } from '~/data/benchmarking';
-import { regionSlug } from '~/utils/entity-pages';
+import Layout from '~/layouts/PageLayout.astro';
+import {
+  benchmarkCaseProfileUpdated,
+  benchmarkCases,
+  dataDate,
+  dataDisclaimer,
+  insights,
+  regions,
+} from '~/data/benchmarking';
+import { benchmarkCaseSlug, regionPages, regionSlug } from '~/utils/entity-pages';
+
+const insightCaseIds = ['ai-verify', 'mgx-ai-fund', 'unit-8200-ai-talent-pipeline', 'falcon-llm'];
+const caseById = new Map(benchmarkCases.map((caseItem) => [caseItem.id, caseItem]));
+
+function caseHref(caseItem: (typeof benchmarkCases)[number]): string {
+  return `/benchmarking/${benchmarkCaseSlug(caseItem)}/`;
+}
+
+function insightHref(index: number): string {
+  const caseItem = caseById.get(insightCaseIds[index]);
+  return caseItem ? caseHref(caseItem) : '/benchmarking/';
+}
 ---
 
 <Layout
@@ -13,11 +34,107 @@ import { regionSlug } from '~/utils/entity-pages';
   breadcrumbs={[{ label: '国际对标' }]}
 >
   <section class="px-4 py-16 sm:px-6 mx-auto lg:px-8 max-w-6xl">
-    <Headline title="🌏 国际对标" subtitle="新加坡与全球先进经济体的 AI 战略对比" />
+    <Headline
+      title="国际对标"
+      subtitle="从国家战略下钻到具体公司、项目、机构和基础设施。"
+      classes={{ title: 'text-3xl md:text-4xl', subtitle: 'text-lg md:text-xl' }}
+    />
 
-    <!-- 总览对比表 -->
+    <div class="mb-12 grid gap-4 md:grid-cols-[1.25fr_0.75fr]">
+      <div class="callout-note rounded-lg p-6">
+        <p class="font-serif text-lg leading-[1.85] text-gray-900 dark:text-white">
+          真正有用的对标，不是“某国 AI 很强”这种空话，而是看它把哪个具体对象做成了国家能力：
+          一只基金、一所大学、一个模型、一套测试框架、一个政府 AI 助手，或一个供应链节点。
+        </p>
+      </div>
+      <dl class="grid gap-3 sm:grid-cols-3 md:grid-cols-1">
+        <div class="rounded-lg border border-subtle bg-surface p-4">
+          <dt class="text-xs uppercase tracking-wider text-muted">案例档案</dt>
+          <dd class="mt-1 text-2xl font-bold text-gray-900 dark:text-white">{benchmarkCases.length}</dd>
+        </div>
+        <div class="rounded-lg border border-subtle bg-surface p-4">
+          <dt class="text-xs uppercase tracking-wider text-muted">地区背景</dt>
+          <dd class="mt-1 text-2xl font-bold text-gray-900 dark:text-white">{regionPages.length}</dd>
+        </div>
+        <div class="rounded-lg border border-subtle bg-surface p-4">
+          <dt class="text-xs uppercase tracking-wider text-muted">档案更新</dt>
+          <dd class="mt-1 text-sm font-semibold text-gray-900 dark:text-white">{benchmarkCaseProfileUpdated}</dd>
+        </div>
+      </dl>
+    </div>
+
     <div class="mb-12">
-      <h2 class="t-h3 mb-4">📊 总览对比表</h2>
+      <div class="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between mb-5">
+        <div>
+          <h2 class="t-h3">标杆案例库</h2>
+          <p class="text-sm text-muted mt-1">每张卡片对应一个可继续丰富的公司、项目或机构档案。</p>
+        </div>
+        <a href="#region-overview" class="text-sm text-primary hover:text-secondary inline-flex items-center gap-1">
+          看地区总览
+          <Icon name="tabler:arrow-down" class="w-4 h-4" />
+        </a>
+      </div>
+      <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        {
+          benchmarkCases.map((caseItem) => (
+            <a
+              href={caseHref(caseItem)}
+              class="group flex h-full flex-col rounded-lg border border-subtle bg-surface p-5 hover:border-primary/50 hover:shadow-sm transition-all"
+            >
+              <div class="flex items-start justify-between gap-3">
+                <div>
+                  <p class="text-xs text-muted">
+                    {caseItem.flag} {caseItem.region} · {caseItem.type}
+                  </p>
+                  <h3 class="mt-2 text-lg font-bold text-gray-900 dark:text-white group-hover:text-primary">
+                    {caseItem.name}
+                  </h3>
+                </div>
+                <Icon name="tabler:arrow-up-right" class="w-5 h-5 text-muted group-hover:text-primary shrink-0" />
+              </div>
+              <p class="mt-3 text-sm leading-relaxed text-gray-700 dark:text-gray-300">{caseItem.headline}</p>
+              <dl class="mt-4 grid gap-2 text-xs">
+                {caseItem.facts.slice(0, 2).map((fact) => (
+                  <div class="flex items-start justify-between gap-3 border-t border-subtle pt-2">
+                    <dt class="text-muted">{fact.label}</dt>
+                    <dd class="text-right font-medium text-gray-900 dark:text-white">{fact.value}</dd>
+                  </div>
+                ))}
+              </dl>
+              <span class="mt-auto pt-5 text-sm font-medium text-primary inline-flex items-center gap-1">
+                打开档案
+                <Icon name="tabler:arrow-right" class="w-4 h-4" />
+              </span>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+
+    <div class="mb-12">
+      <h2 class="t-h3 mb-4">关键洞察</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {
+          insights.map((insight, index) => (
+            <a
+              href={insightHref(index)}
+              class="group rounded-lg border border-subtle bg-surface p-5 hover:border-primary/50 hover:shadow-sm transition-all"
+            >
+              <div class="flex items-start justify-between gap-3">
+                <h3 class="font-bold text-lg text-gray-900 dark:text-white group-hover:text-primary">
+                  {insight.title}
+                </h3>
+                <Icon name="tabler:arrow-up-right" class="w-5 h-5 text-muted group-hover:text-primary shrink-0" />
+              </div>
+              <p class="text-muted text-sm leading-relaxed mt-2">{insight.text}</p>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+
+    <div id="region-overview" class="mb-12 scroll-mt-24">
+      <h2 class="t-h3 mb-4">总览对比表</h2>
       <div class="overflow-x-auto">
         <table class="w-full text-sm border-collapse min-w-[900px]">
           <thead>
@@ -42,8 +159,14 @@ import { regionSlug } from '~/utils/entity-pages';
                   }
                 >
                   <td class="p-3 border border-subtle whitespace-nowrap">
-                    <a href={`/benchmarking/${regionSlug(r)}/`} class="text-primary hover:text-secondary">
-                      {r.flag} {r.name}
+                    <a
+                      href={`/benchmarking/${regionSlug(r)}/`}
+                      class="text-primary hover:text-secondary inline-flex items-center gap-1"
+                    >
+                      <span>
+                        {r.flag} {r.name}
+                      </span>
+                      <Icon name="tabler:arrow-up-right" class="w-3.5 h-3.5" />
                     </a>
                   </td>
                   <td class="p-3 border border-subtle">{r.strategy}</td>
@@ -60,149 +183,35 @@ import { regionSlug } from '~/utils/entity-pages';
       </div>
     </div>
 
-    <!-- 关键洞察 -->
     <div class="mb-12">
-      <h2 class="t-h3 mb-4">💡 关键洞察</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <h2 class="t-h3 mb-5">地区背景页</h2>
+      <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         {
-          insights.map((insight) => (
-            <div class="p-5 rounded-lg border border-subtle bg-surface">
-              <h3 class="font-bold text-lg mb-2">{insight.title}</h3>
-              <p class="text-muted text-sm">{insight.text}</p>
-            </div>
+          regionPages.map((page) => (
+            <a
+              href={`/benchmarking/${page.slug}/`}
+              class="group rounded-lg border border-subtle bg-surface p-5 hover:border-primary/50 hover:shadow-sm transition-all"
+            >
+              <p class="text-xs text-muted">
+                {page.summary.strategyYear} · {page.summary.governance}
+              </p>
+              <h3 class="mt-2 text-lg font-bold text-gray-900 dark:text-white group-hover:text-primary">
+                {page.summary.flag} {page.summary.name}
+              </h3>
+              <p class="mt-2 text-sm text-gray-700 dark:text-gray-300 leading-relaxed">{page.summary.strength}</p>
+              <span class="mt-4 inline-flex items-center gap-1 text-sm font-medium text-primary">
+                查看国家 / 地区档案
+                <Icon name="tabler:arrow-right" class="w-4 h-4" />
+              </span>
+            </a>
           ))
         }
       </div>
     </div>
 
-    <!-- 各地区详情 -->
-    <div class="mb-12">
-      <h2 class="t-h3 mb-6">🔍 各地区详情</h2>
-      <div class="space-y-8">
-        {
-          regionDetails.map((region) => (
-            <details class="border border-subtle rounded-lg overflow-hidden">
-              <summary class="p-4 bg-slate-50 dark:bg-slate-800 cursor-pointer hover:bg-slate-100 dark:hover:bg-slate-700 font-bold text-lg">
-                {region.flag} {region.name} — {region.fullName}
-              </summary>
-              <div class="p-5 space-y-5">
-                <a
-                  href={`/benchmarking/${regionSlug(region)}/`}
-                  class="inline-flex text-sm text-blue-600 dark:text-blue-400 hover:underline"
-                >
-                  查看独立详情页 →
-                </a>
-                {/* 概述 */}
-                <p class="text-muted">{region.overview}</p>
-
-                {/* 核心战略 */}
-                <div>
-                  <h4 class="font-semibold mb-2">📋 核心战略</h4>
-                  <div class="space-y-1">
-                    {region.strategies.map((s) => (
-                      <div class="flex gap-2 text-sm">
-                        <span class="font-mono text-blue-600 dark:text-blue-400 whitespace-nowrap">{s.year}</span>
-                        <span>
-                          <strong>{s.name}</strong> — {s.description}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                {/* 投资 */}
-                <div>
-                  <h4 class="font-semibold mb-2">💰 投资规模</h4>
-                  <div class="overflow-x-auto">
-                    <table class="w-full text-sm border-collapse">
-                      <thead>
-                        <tr class="bg-slate-100 dark:bg-slate-800">
-                          <th class="text-left p-2 border border-subtle">项目</th>
-                          <th class="text-left p-2 border border-subtle">金额</th>
-                          <th class="text-left p-2 border border-subtle">备注</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {region.investment.map((inv) => (
-                          <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50">
-                            <td class="p-2 border border-subtle">{inv.item}</td>
-                            <td class="p-2 border border-subtle font-semibold">{inv.amount}</td>
-                            <td class="p-2 border border-subtle text-muted">{inv.note}</td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-
-                {/* 治理 */}
-                <div>
-                  <h4 class="font-semibold mb-2">⚖️ 治理模式</h4>
-                  <p class="text-sm text-muted">{region.governance}</p>
-                </div>
-
-                {/* 关键举措 */}
-                <div>
-                  <h4 class="font-semibold mb-2">🎯 关键举措</h4>
-                  <ul class="list-disc list-inside text-sm space-y-1">
-                    {region.keyInitiatives.map((item) => (
-                      <li>{item}</li>
-                    ))}
-                  </ul>
-                </div>
-
-                {/* 优势与劣势 */}
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div>
-                    <h4 class="font-semibold mb-2 text-green-600 dark:text-green-400">✅ 相对新加坡的优势</h4>
-                    <ul class="text-sm space-y-1">
-                      {region.strengths.map((s) => (
-                        <li class="text-green-700 dark:text-green-300">• {s}</li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div>
-                    <h4 class="font-semibold mb-2 text-red-600 dark:text-red-400">❌ 相对新加坡的劣势</h4>
-                    <ul class="text-sm space-y-1">
-                      {region.weaknesses.map((w) => (
-                        <li class="text-red-700 dark:text-red-300">• {w}</li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-
-                {/* 关键机构 */}
-                <div>
-                  <h4 class="font-semibold mb-2">🏛️ 关键机构</h4>
-                  <div class="space-y-1 text-sm">
-                    {region.keyBodies.map((body) => (
-                      <div>
-                        <strong>{body.name}</strong> — {body.role}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                {/* 来源 */}
-                <div>
-                  <h4 class="font-semibold mb-2 text-muted">📚 参考来源</h4>
-                  <ul class="text-xs text-muted space-y-0.5">
-                    {region.sources.map((src) => (
-                      <li>• {src}</li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            </details>
-          ))
-        }
-      </div>
-    </div>
-
-    <!-- 数据说明 -->
     <div class="p-4 rounded-lg bg-slate-50 dark:bg-slate-800 border border-subtle">
       <p class="text-sm text-muted">⚠️ {dataDisclaimer}</p>
-      <p class="text-xs text-muted mt-1">数据更新日期：{dataDate}</p>
+      <p class="text-xs text-muted mt-1">基础数据更新：{dataDate}；案例档案整理：{benchmarkCaseProfileUpdated}</p>
     </div>
   </section>
 </Layout>

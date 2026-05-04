@@ -4,6 +4,24 @@
 
 ---
 
+## 0.9.6 — 2026-05-04
+
+### 产学研开源生态：卡片升级为项目档案页
+
+- `/community-opensource/` 与 `/en/community-opensource/` 的每张卡片改为整卡点击入口，统一指向站内项目档案页。
+- 新增 `/community-opensource/[id]/` 与 `/en/community-opensource/[id]/`，首批生成 15 个可索引项目页，覆盖高校、国际企业实验室和创业公司三类开源贡献。
+- `src/data/community-opensource.ts` 扩展为可持续补充的项目档案 schema：每条记录有稳定 `id`、类别、状态、指标、摘要、展开说明、里程碑和资源入口。
+- 补充 Show-o / ShowUI 拆分、TSLANet 公开仓库、GitHub stars 与项目信息校验日期；`llms.txt` / `llms-full.txt` 纳入产学研开源项目详情页。
+
+### 国际对标：从国家页下钻到项目 / 公司案例页
+
+- `/benchmarking/` 和 `/en/benchmarking/` 改成卡片优先的对标案例索引；案例卡、洞察卡、地区背景卡全部可点击。
+- 新增 12 个具体公司 / 项目 / 机构档案页，复用 `/benchmarking/[slug]/` 与 `/en/benchmarking/[slug]/`：AI Verify、数码港 AI 超算中心、TSMC、Falcon LLM、MGX、MBZUAI、Unit 8200、韩国财阀自研大模型栈、Bürokratt、Elements of AI、ETH AI Center、Mila / Vector / Amii。
+- `src/data/benchmarking.ts` 新增可扩展 `BenchmarkCase` schema，支持事实卡、详细段落、来源、对新加坡启发和后续补充。
+- `/benchmarking/[region]/` 路由升级为国家 / 地区页 + 案例页共用入口，保留原有地区对标页。
+- `llms.txt` / `llms-full.txt` 纳入 benchmark case 页面，方便搜索引擎和 LLM crawler 抓取具体案例。
+- 地区详情页继续下钻：`/benchmarking/hong-kong/` 这类页面的顶部概览卡、战略卡、投资项、关键举措、关键机构全部变成可点击入口，自动生成中英文子档案页；新增页面同步进入 `llms-full.txt`。
+
 ## 0.9.5 — 2026-05-04
 
 ### 人才培养：卡片入口升级为项目档案页

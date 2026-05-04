@@ -1,12 +1,33 @@
 ---
-import Layout from '~/layouts/PageLayout.astro';
+import { Icon } from 'astro-icon/components';
+
 import Headline from '~/components/ui/Headline.astro';
-import { regions, regionDetails, insights, dataDate, dataDisclaimerEn, dataDisclaimer } from '~/data/benchmarking';
+import Layout from '~/layouts/PageLayout.astro';
+import {
+  benchmarkCaseProfileUpdated,
+  benchmarkCases,
+  dataDate,
+  dataDisclaimer,
+  dataDisclaimerEn,
+  insights,
+  regions,
+} from '~/data/benchmarking';
 import { pickLocalized } from '~/i18n';
-import { regionSlug } from '~/utils/entity-pages';
+import { benchmarkCaseSlug, regionPages, regionSlug } from '~/utils/entity-pages';
 
 const lang = 'en' as const;
 const disclaimer = dataDisclaimerEn || dataDisclaimer;
+const insightCaseIds = ['ai-verify', 'mgx-ai-fund', 'unit-8200-ai-talent-pipeline', 'falcon-llm'];
+const caseById = new Map(benchmarkCases.map((caseItem) => [caseItem.id, caseItem]));
+
+function caseHref(caseItem: (typeof benchmarkCases)[number]): string {
+  return `/en/benchmarking/${benchmarkCaseSlug(caseItem)}/`;
+}
+
+function insightHref(index: number): string {
+  const caseItem = caseById.get(insightCaseIds[index]);
+  return caseItem ? caseHref(caseItem) : '/en/benchmarking/';
+}
 ---
 
 <Layout
@@ -19,11 +40,110 @@ const disclaimer = dataDisclaimerEn || dataDisclaimer;
   lang={lang}
 >
   <section class="px-4 py-16 sm:px-6 mx-auto lg:px-8 max-w-6xl">
-    <Headline title="🌏 International Benchmarks" subtitle="Singapore's AI strategy compared to leading economies." />
+    <Headline
+      title="International Benchmarks"
+      subtitle="From national strategy down to concrete companies, projects, institutions, and infrastructure."
+      classes={{ title: 'text-3xl md:text-4xl', subtitle: 'text-lg md:text-xl' }}
+    />
 
-    <!-- Overview comparison table -->
+    <div class="mb-12 grid gap-4 md:grid-cols-[1.25fr_0.75fr]">
+      <div class="callout-note rounded-lg p-6">
+        <p class="font-serif text-lg leading-[1.85] text-gray-900 dark:text-white">
+          Useful benchmarking is not “Country X is strong at AI”. It asks which concrete object became a national
+          capability: a fund, a university, a model, a testing framework, a government assistant, or a supply-chain
+          node.
+        </p>
+      </div>
+      <dl class="grid gap-3 sm:grid-cols-3 md:grid-cols-1">
+        <div class="rounded-lg border border-subtle bg-surface p-4">
+          <dt class="text-xs uppercase tracking-wider text-muted">Case profiles</dt>
+          <dd class="mt-1 text-2xl font-bold text-gray-900 dark:text-white">{benchmarkCases.length}</dd>
+        </div>
+        <div class="rounded-lg border border-subtle bg-surface p-4">
+          <dt class="text-xs uppercase tracking-wider text-muted">Region profiles</dt>
+          <dd class="mt-1 text-2xl font-bold text-gray-900 dark:text-white">{regionPages.length}</dd>
+        </div>
+        <div class="rounded-lg border border-subtle bg-surface p-4">
+          <dt class="text-xs uppercase tracking-wider text-muted">Profiles updated</dt>
+          <dd class="mt-1 text-sm font-semibold text-gray-900 dark:text-white">{benchmarkCaseProfileUpdated}</dd>
+        </div>
+      </dl>
+    </div>
+
     <div class="mb-12">
-      <h2 class="t-h3 mb-4">📊 Overview Comparison</h2>
+      <div class="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between mb-5">
+        <div>
+          <h2 class="t-h3">Benchmark Case Library</h2>
+          <p class="text-sm text-muted mt-1">Each card maps to a profile that can grow over time.</p>
+        </div>
+        <a href="#region-overview" class="text-sm text-primary hover:text-secondary inline-flex items-center gap-1">
+          View region overview
+          <Icon name="tabler:arrow-down" class="w-4 h-4" />
+        </a>
+      </div>
+      <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        {
+          benchmarkCases.map((caseItem) => (
+            <a
+              href={caseHref(caseItem)}
+              class="group flex h-full flex-col rounded-lg border border-subtle bg-surface p-5 hover:border-primary/50 hover:shadow-sm transition-all"
+            >
+              <div class="flex items-start justify-between gap-3">
+                <div>
+                  <p class="text-xs text-muted">
+                    {caseItem.flag} {caseItem.regionEn || caseItem.region} · {caseItem.typeEn || caseItem.type}
+                  </p>
+                  <h3 class="mt-2 text-lg font-bold text-gray-900 dark:text-white group-hover:text-primary">
+                    {caseItem.nameEn || caseItem.name}
+                  </h3>
+                </div>
+                <Icon name="tabler:arrow-up-right" class="w-5 h-5 text-muted group-hover:text-primary shrink-0" />
+              </div>
+              <p class="mt-3 text-sm leading-relaxed text-gray-700 dark:text-gray-300">
+                {caseItem.headlineEn || caseItem.headline}
+              </p>
+              <dl class="mt-4 grid gap-2 text-xs">
+                {caseItem.facts.slice(0, 2).map((fact) => (
+                  <div class="flex items-start justify-between gap-3 border-t border-subtle pt-2">
+                    <dt class="text-muted">{fact.labelEn || fact.label}</dt>
+                    <dd class="text-right font-medium text-gray-900 dark:text-white">{fact.valueEn || fact.value}</dd>
+                  </div>
+                ))}
+              </dl>
+              <span class="mt-auto pt-5 text-sm font-medium text-primary inline-flex items-center gap-1">
+                Open profile
+                <Icon name="tabler:arrow-right" class="w-4 h-4" />
+              </span>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+
+    <div class="mb-12">
+      <h2 class="t-h3 mb-4">Key Insights</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {
+          insights.map((insight, index) => (
+            <a
+              href={insightHref(index)}
+              class="group rounded-lg border border-subtle bg-surface p-5 hover:border-primary/50 hover:shadow-sm transition-all"
+            >
+              <div class="flex items-start justify-between gap-3">
+                <h3 class="font-bold text-lg text-gray-900 dark:text-white group-hover:text-primary">
+                  {pickLocalized(insight, 'title', 'titleEn', lang)}
+                </h3>
+                <Icon name="tabler:arrow-up-right" class="w-5 h-5 text-muted group-hover:text-primary shrink-0" />
+              </div>
+              <p class="text-muted text-sm leading-relaxed mt-2">{pickLocalized(insight, 'text', 'textEn', lang)}</p>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+
+    <div id="region-overview" class="mb-12 scroll-mt-24">
+      <h2 class="t-h3 mb-4">Overview Comparison</h2>
       <div class="overflow-x-auto">
         <table class="w-full text-sm border-collapse min-w-[900px]">
           <thead>
@@ -48,8 +168,14 @@ const disclaimer = dataDisclaimerEn || dataDisclaimer;
                   }
                 >
                   <td class="p-3 border border-subtle whitespace-nowrap">
-                    <a href={`/en/benchmarking/${regionSlug(r)}/`} class="text-primary hover:text-secondary">
-                      {r.flag} {r.nameEn || r.name}
+                    <a
+                      href={`/en/benchmarking/${regionSlug(r)}/`}
+                      class="text-primary hover:text-secondary inline-flex items-center gap-1"
+                    >
+                      <span>
+                        {r.flag} {r.nameEn || r.name}
+                      </span>
+                      <Icon name="tabler:arrow-up-right" class="w-3.5 h-3.5" />
                     </a>
                   </td>
                   <td class="p-3 border border-subtle">{r.strategyEn || r.strategy}</td>
@@ -66,157 +192,39 @@ const disclaimer = dataDisclaimerEn || dataDisclaimer;
       </div>
     </div>
 
-    <!-- Key insights -->
     <div class="mb-12">
-      <h2 class="t-h3 mb-4">💡 Key Insights</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <h2 class="t-h3 mb-5">Region Background Pages</h2>
+      <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         {
-          insights.map((insight) => (
-            <div class="p-5 rounded-lg border border-subtle bg-surface">
-              <h3 class="font-bold text-lg mb-2">{pickLocalized(insight, 'title', 'titleEn', lang)}</h3>
-              <p class="text-muted text-sm">{pickLocalized(insight, 'text', 'textEn', lang)}</p>
-            </div>
+          regionPages.map((page) => (
+            <a
+              href={`/en/benchmarking/${page.slug}/`}
+              class="group rounded-lg border border-subtle bg-surface p-5 hover:border-primary/50 hover:shadow-sm transition-all"
+            >
+              <p class="text-xs text-muted">
+                {page.summary.strategyYear} · {page.summary.governanceEn || page.summary.governance}
+              </p>
+              <h3 class="mt-2 text-lg font-bold text-gray-900 dark:text-white group-hover:text-primary">
+                {page.summary.flag} {page.summary.nameEn || page.summary.name}
+              </h3>
+              <p class="mt-2 text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+                {page.summary.strengthEn || page.summary.strength}
+              </p>
+              <span class="mt-4 inline-flex items-center gap-1 text-sm font-medium text-primary">
+                View region profile
+                <Icon name="tabler:arrow-right" class="w-4 h-4" />
+              </span>
+            </a>
           ))
         }
       </div>
     </div>
 
-    <!-- Region details -->
-    <div class="mb-12">
-      <h2 class="t-h3 mb-6">🔍 Region Profiles</h2>
-      <div class="space-y-8">
-        {
-          regionDetails.map((region) => (
-            <details class="border border-subtle rounded-lg overflow-hidden">
-              <summary class="p-4 bg-slate-50 dark:bg-slate-800 cursor-pointer hover:bg-slate-100 dark:hover:bg-slate-700 font-bold text-lg">
-                {region.flag} {region.nameEn || region.name} — {region.fullNameEn || region.fullName}
-              </summary>
-              <div class="p-5 space-y-5">
-                <a
-                  href={`/en/benchmarking/${regionSlug(region)}/`}
-                  class="inline-flex text-sm text-blue-600 dark:text-blue-400 hover:underline"
-                >
-                  Open detail page →
-                </a>
-                {/* Overview */}
-                <p class="text-muted">{region.overviewEn || region.overview}</p>
-
-                {/* Core strategies */}
-                <div>
-                  <h4 class="font-semibold mb-2">📋 Core Strategies</h4>
-                  <div class="space-y-1">
-                    {region.strategies.map((s) => (
-                      <div class="flex gap-2 text-sm">
-                        <span class="font-mono text-blue-600 dark:text-blue-400 whitespace-nowrap">{s.year}</span>
-                        <span>
-                          <strong>{s.nameEn || s.name}</strong> — {s.descriptionEn || s.description}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Investment */}
-                <div>
-                  <h4 class="font-semibold mb-2">💰 Investment</h4>
-                  <div class="overflow-x-auto">
-                    <table class="w-full text-sm border-collapse">
-                      <thead>
-                        <tr class="bg-slate-100 dark:bg-slate-800">
-                          <th class="text-left p-2 border border-subtle">Item</th>
-                          <th class="text-left p-2 border border-subtle">Amount</th>
-                          <th class="text-left p-2 border border-subtle">Note</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {region.investment.map((inv) => (
-                          <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50">
-                            <td class="p-2 border border-subtle">{inv.itemEn || inv.item}</td>
-                            <td class="p-2 border border-subtle font-semibold">{inv.amountEn || inv.amount}</td>
-                            <td class="p-2 border border-subtle text-muted">{inv.noteEn || inv.note}</td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-
-                {/* Governance */}
-                <div>
-                  <h4 class="font-semibold mb-2">⚖️ Governance Model</h4>
-                  <p class="text-sm text-muted">{region.governanceEn || region.governance}</p>
-                </div>
-
-                {/* Key initiatives */}
-                <div>
-                  <h4 class="font-semibold mb-2">🎯 Key Initiatives</h4>
-                  <ul class="list-disc list-inside text-sm space-y-1">
-                    {(region.keyInitiativesEn && region.keyInitiativesEn.length
-                      ? region.keyInitiativesEn
-                      : region.keyInitiatives
-                    ).map((item) => (
-                      <li>{item}</li>
-                    ))}
-                  </ul>
-                </div>
-
-                {/* Strengths and weaknesses */}
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div>
-                    <h4 class="font-semibold mb-2 text-green-600 dark:text-green-400">✅ Strengths vs Singapore</h4>
-                    <ul class="text-sm space-y-1">
-                      {(region.strengthsEn && region.strengthsEn.length ? region.strengthsEn : region.strengths).map(
-                        (s) => (
-                          <li class="text-green-700 dark:text-green-300">• {s}</li>
-                        )
-                      )}
-                    </ul>
-                  </div>
-                  <div>
-                    <h4 class="font-semibold mb-2 text-red-600 dark:text-red-400">❌ Weaknesses vs Singapore</h4>
-                    <ul class="text-sm space-y-1">
-                      {(region.weaknessesEn && region.weaknessesEn.length
-                        ? region.weaknessesEn
-                        : region.weaknesses
-                      ).map((w) => (
-                        <li class="text-red-700 dark:text-red-300">• {w}</li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-
-                {/* Key bodies */}
-                <div>
-                  <h4 class="font-semibold mb-2">🏛️ Key Bodies</h4>
-                  <div class="space-y-1 text-sm">
-                    {region.keyBodies.map((body) => (
-                      <div>
-                        <strong>{body.nameEn || body.name}</strong> — {body.roleEn || body.role}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Sources */}
-                <div>
-                  <h4 class="font-semibold mb-2 text-muted">📚 Sources</h4>
-                  <ul class="text-xs text-muted space-y-0.5">
-                    {(region.sourcesEn && region.sourcesEn.length ? region.sourcesEn : region.sources).map((src) => (
-                      <li>• {src}</li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            </details>
-          ))
-        }
-      </div>
-    </div>
-
-    <!-- Data note -->
     <div class="p-4 rounded-lg bg-slate-50 dark:bg-slate-800 border border-subtle">
       <p class="text-sm text-muted">⚠️ {disclaimer}</p>
-      <p class="text-xs text-muted mt-1">Last updated: {dataDate}</p>
+      <p class="text-xs text-muted mt-1">
+        Base data updated: {dataDate}; case profiles curated: {benchmarkCaseProfileUpdated}
+      </p>
     </div>
   </section>
 </Layout>
