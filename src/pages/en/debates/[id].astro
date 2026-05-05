@@ -21,7 +21,7 @@ export const getStaticPaths = (() =>
 const { debate } = Astro.props;
 const transcript = getDebateTranscript(debate.id);
 const transcriptEn = getDebateTranscriptParagraphs(debate.id, 'en');
-const originalParagraphs = transcriptEn.length ? transcriptEn : debate.summary ? [debate.summary] : [];
+const originalParagraphs = transcriptEn.length ? transcriptEn : debate.transcriptEn ? [debate.transcriptEn] : [];
 
 const typeMap: Record<string, string> = {
   'Oral Answers to Questions': 'Oral Answer',
@@ -55,10 +55,11 @@ const controversyLabels: Record<number, string> = {
 
 const speakers = debate.speakers.map((raw) => {
   const pid = findPersonId(raw);
-  return { raw, pid, display: pid ? getPerson(pid)?.name || raw : raw };
+  const p = pid ? getPerson(pid) : undefined;
+  return { raw, pid, display: p ? p.nameEn || p.name || raw : raw };
 });
 
-const summaryShort = pickLocalized(debate, 'zhSummary', 'summaryShortEn', lang) || '';
+const summaryShort = pickLocalized<string>(debate, 'summary', lang) || '';
 const keyPoints = (lang === 'en' && debate.keyPointsEn?.length ? debate.keyPointsEn : debate.keyPoints) || [];
 const govStance = pickLocalized(debate, 'governmentStance', 'governmentStanceEn', lang);
 const oppStance = pickLocalized(debate, 'oppositionStance', 'oppositionStanceEn', lang);
@@ -66,21 +67,24 @@ const policySignal = pickLocalized(debate, 'policySignal', 'policySignalEn', lan
 const notableQuote = pickLocalized(debate, 'notableQuote', 'notableQuoteEn', lang);
 
 const metadata = {
-  title: `${debate.title} · Parliamentary Debate`,
+  title: `${debate.titleEn || debate.title} · Parliamentary Debate`,
   description: summaryShort,
 };
 
 const articleSchema = {
   '@context': 'https://schema.org',
   '@type': 'Article',
-  headline: debate.title,
+  headline: debate.titleEn || debate.title,
   description: summaryShort,
   datePublished: debate.date,
   inLanguage: 'en',
   isPartOf: { '@type': 'CreativeWork', name: 'Singapore Hansard', url: 'https://sprs.parl.gov.sg/' },
 };
 
-const breadcrumbs = [{ label: t(lang, 'navParliament'), href: '/en/debates/' }, { label: debate.title }];
+const breadcrumbs = [
+  { label: t(lang, 'navParliament'), href: '/en/debates/' },
+  { label: debate.titleEn || debate.title },
+];
 ---
 
 <Layout metadata={metadata} breadcrumbs={breadcrumbs} lang={lang}>
@@ -91,9 +95,9 @@ const breadcrumbs = [{ label: t(lang, 'navParliament'), href: '/en/debates/' }, 
       {typeMap[debate.type] || debate.type} · {debate.date} · Parliament {debate.parliament}
     </p>
     <h1 class="t-display text-gray-900 dark:text-white mb-3">
-      {debate.title}
+      {debate.titleEn || debate.title}
     </h1>
-    {/* debate.zhTitle intentionally hidden on EN page */}
+    {/* (debate.titleEn || debate.title) intentionally hidden on EN page */}
 
     {
       debate.topics && debate.topics.length > 0 && (

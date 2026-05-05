@@ -77,10 +77,11 @@ const L = {
 };
 
 // Localized field pickers.
-const personLabel = (p: { name: string; zhName?: string }) => (isEn ? p.name : p.zhName || p.name);
-const personSub = (p: { title?: string; zhTitle?: string }) => (isEn ? p.title : p.zhTitle);
+const personLabel = (p: { name?: string; nameEn?: string }) =>
+  isEn ? p.nameEn || p.name || '' : p.name || p.nameEn || '';
+const personSub = (p: { title?: string; titleEn?: string }) => (isEn ? p.titleEn || p.title : p.title || p.titleEn);
 const policyLabel = (p: { title: string; titleEn?: string }) => (isEn ? p.titleEn || p.title : p.title);
-const debateLabel = (d: { title: string; zhTitle?: string }) => (isEn ? d.title : d.zhTitle || d.title);
+const debateLabel = (d: { title: string; titleEn?: string }) => (isEn ? d.titleEn || d.title : d.title);
 const leverNameLabel = (lv: { name: string; nameEn?: string }) => (isEn ? lv.nameEn || lv.name : lv.name);
 const leverSub = (lv: { subtitle: string; subtitleEn?: string }) => (isEn ? lv.subtitleEn || lv.subtitle : lv.subtitle);
 const tlTitle = (e: { title: string; titleEn?: string }) => (isEn ? e.titleEn || e.title : e.title);

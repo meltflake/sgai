@@ -25,7 +25,7 @@ const { person } = Astro.props;
 const related = getRelated({ type: 'person', id: person.id });
 const counts = getPersonCounts(person.id);
 const relatedVideos = videos
-  .filter((video) => video.speaker === person.name || (person.aliases || []).includes(video.speaker))
+  .filter((video) => video.speaker === (person.nameEn || person.name) || (person.aliases || []).includes(video.speaker))
   .sort((a, b) => b.date.localeCompare(a.date));
 const summary = pickLocalized(person, 'summary', lang) || '';
 const isStub = !summary || summary === 'Profile pending.' || summary.startsWith('[需补充]');
@@ -43,15 +43,16 @@ const categoryColors: Record<Person['category'], string> = {
 };
 
 const metadata = {
-  title: `${person.name} · AI Influence Map`,
-  description: summary || `${person.name}'s speeches, policy links, and public AI video records in Singapore.`,
+  title: `${person.nameEn || person.name} · AI Influence Map`,
+  description:
+    summary || `${person.nameEn || person.name}'s speeches, policy links, and public AI video records in Singapore.`,
 };
 
 const personSchema = {
   '@context': 'https://schema.org',
   '@type': 'Person',
-  name: person.name,
-  jobTitle: person.title,
+  name: person.nameEn || person.name,
+  jobTitle: person.titleEn || person.title,
   description: summary,
   affiliation: person.affiliations.map((name) => ({ '@type': 'Organization', name })),
   sameAs: person.channels.map((ch) => ch.url),
@@ -60,7 +61,7 @@ const personSchema = {
 
 <Layout
   metadata={metadata}
-  breadcrumbs={[{ label: 'AI Influence Map', href: '/en/voices/' }, { label: person.name }]}
+  breadcrumbs={[{ label: 'AI Influence Map', href: '/en/voices/' }, { label: person.nameEn || person.name }]}
   lang={lang}
 >
   <JsonLd schema={personSchema} />
@@ -71,14 +72,14 @@ const personSchema = {
         <div>
           <p class="text-xs uppercase tracking-[0.18em] text-primary font-semibold mb-3">AI Influence Profile</p>
           <h1 class="t-display text-gray-900 dark:text-white">
-            {person.name}
+            {person.nameEn || person.name}
           </h1>
         </div>
         <span class={`text-xs font-semibold px-2.5 py-1 rounded-full shrink-0 ${categoryColors[person.category]}`}>
           {categoryLabels[person.category]}
         </span>
       </div>
-      <p class="text-gray-700 dark:text-gray-300 mt-4 font-medium">{person.title}</p>
+      <p class="text-gray-700 dark:text-gray-300 mt-4 font-medium">{person.titleEn || person.title}</p>
     </header>
 
     <section class="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-8">
@@ -159,13 +160,15 @@ const personSchema = {
                 href={`/en/debates/${debate.id}/`}
                 class="block bg-surface rounded-lg p-4 border border-subtle hover:border-blue-300 hover:shadow-sm transition-all"
               >
-                <h3 class="font-semibold text-gray-800 dark:text-white text-sm leading-snug">{debate.title}</h3>
+                <h3 class="font-semibold text-gray-800 dark:text-white text-sm leading-snug">
+                  {debate.titleEn || debate.title}
+                </h3>
                 <p class="text-xs text-gray-500 mt-1">
                   {debate.date} · Parliament {debate.parliament}
                 </p>
-                {debate.summaryShortEn && (
+                {debate.summaryEn && (
                   <p class="text-xs text-gray-600 dark:text-gray-400 mt-2 leading-relaxed line-clamp-3">
-                    {debate.summaryShortEn}
+                    {debate.summaryEn}
                   </p>
                 )}
               </a>

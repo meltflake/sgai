@@ -30,10 +30,7 @@ const totalPolicies = policyCategories.flatMap((c) => c.policies).length;
 const totalDebates = DEBATE_STATS.total;
 const totalLeverItems = levers.reduce((sum, lv) => sum + lv.groups.flatMap((g) => g.items).length, 0);
 
-// Debate titles store English as `title` and Chinese as `zhTitle` (reverse
-// of the usual *En sibling pattern). Pick per lang with fallback.
-const debateTitle = (d: (typeof debates)[number]) =>
-  lang === 'zh' ? (d.zhTitle ?? d.title) : (d.title ?? d.zhTitle ?? '');
+const debateTitle = (d: (typeof debates)[number]) => (lang === 'zh' ? d.title : d.titleEn || d.title || '');
 ---
 
 {

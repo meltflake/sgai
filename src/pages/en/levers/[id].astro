@@ -200,10 +200,10 @@ const schema = {
                   href={`/en/debates/${debate!.id}/`}
                   class="block bg-surface border border-subtle rounded-lg p-4 hover:border-amber-300 hover:shadow-sm transition-all"
                 >
-                  <h3 class="font-semibold text-gray-900 dark:text-white text-sm">{debate!.title}</h3>
-                  <p class="text-xs text-gray-600 dark:text-gray-400 mt-2">
-                    {debate!.summaryShortEn || debate!.summary}
-                  </p>
+                  <h3 class="font-semibold text-gray-900 dark:text-white text-sm">
+                    {debate!.titleEn || debate!.title}
+                  </h3>
+                  <p class="text-xs text-gray-600 dark:text-gray-400 mt-2">{debate!.summaryEn || debate!.summary}</p>
                 </a>
               ))}
               {itemPolicies.length === 0 && itemDebates.length === 0 && (

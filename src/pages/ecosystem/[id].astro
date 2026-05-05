@@ -309,9 +309,9 @@ const breadcrumbs = [
             {championPersons.map((p) => (
               <li class="text-sm">
                 <a href={`/voices/${p.id}/`} class="font-semibold text-blue-600 dark:text-blue-400 hover:underline">
-                  {p.zhName || p.name}
+                  {p.name || p.name}
                 </a>
-                {p.zhTitle && <span class="text-gray-600 dark:text-gray-400 ml-2">— {p.zhTitle}</span>}
+                {p.title && <span class="text-gray-600 dark:text-gray-400 ml-2">— {p.title}</span>}
               </li>
             ))}
           </ul>
@@ -446,7 +446,7 @@ const breadcrumbs = [
                   {relatedDebates.slice(0, 8).map((d) => (
                     <li>
                       <a href={`/debates/${d.id}/`} class="text-sm text-blue-600 dark:text-blue-400 hover:underline">
-                        {d.zhTitle} <span class="text-gray-500 dark:text-gray-500">· {d.date}</span>
+                        {d.title} <span class="text-gray-500 dark:text-gray-500">· {d.date}</span>
                       </a>
                     </li>
                   ))}

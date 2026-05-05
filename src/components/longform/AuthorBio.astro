@@ -34,8 +34,8 @@ if (author) {
 const hasContent = !!person || !!author;
 const isStub = person && (!person.summary || person.summary.startsWith('[需补充]'));
 
-const personName = person ? (lang === 'en' ? person.name : person.zhName || person.name) : '';
-const personTitle = person ? pickLocalized(person, 'zhTitle', 'title', lang) : '';
+const personName = person ? (lang === 'en' ? person.name : person.name || person.name) : '';
+const personTitle = person ? pickLocalized(person, 'title', 'title', lang) : '';
 const personSummary = person ? pickLocalized(person, 'summary', 'summaryEn', lang) : '';
 const initialsSeed = person ? personName : author || '';
 const authorLabel = lang === 'en' ? 'Author' : '作者';

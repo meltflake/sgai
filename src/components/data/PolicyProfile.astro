@@ -321,10 +321,10 @@ function policySource(candidate: Policy): string {
                 href={localizedHref(`/voices/${person!.id}/`, lang)}
                 class="text-primary hover:text-secondary text-sm font-medium"
               >
-                {isEn ? person!.name : personDisplayName(person!.id)}
+                {isEn ? person!.nameEn || person!.name : personDisplayName(person!.id)}
               </a>
               <span class="text-xs text-gray-500 dark:text-gray-400 ml-1">
-                {isEn ? person!.title : person!.zhTitle || person!.title}
+                {isEn ? person!.titleEn || person!.title : person!.title || person!.titleEn}
               </span>
             </li>
           ))}

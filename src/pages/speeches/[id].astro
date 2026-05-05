@@ -36,14 +36,14 @@ const tldrZh = getSpeechTranscriptTldr(id, 'zh');
 const speakerPid = findPersonId(speech.speaker);
 
 const metadata = {
-  title: `${speech.zhTitle} · MDDI 演讲稿`,
-  description: speech.zhTitle,
+  title: `${speech.title} · MDDI 演讲稿`,
+  description: speech.title,
 };
 
 const articleSchema = {
   '@context': 'https://schema.org',
   '@type': 'Article',
-  headline: speech.zhTitle,
+  headline: speech.title,
   alternativeHeadline: speech.title,
   datePublished: speech.date,
   inLanguage: 'zh-CN',
@@ -55,7 +55,7 @@ const articleSchema = {
   },
 };
 
-const breadcrumbs = [{ label: 'AI 影响力图谱', href: getPermalink('/voices') }, { label: speech.zhTitle }];
+const breadcrumbs = [{ label: 'AI 影响力图谱', href: getPermalink('/voices') }, { label: speech.title }];
 
 const hasLocalCopy = !!transcript && paragraphsEn.length > 0;
 ---
@@ -68,7 +68,7 @@ const hasLocalCopy = !!transcript && paragraphsEn.length > 0;
       MDDI 演讲稿 · {speech.date}
     </p>
     <h1 class="t-display text-gray-900 dark:text-white mb-3">
-      {speech.zhTitle}
+      {speech.title}
     </h1>
     <p class="text-sm md:text-base text-gray-500 dark:text-gray-400 italic mb-6 leading-relaxed">{speech.title}</p>
 
@@ -85,10 +85,10 @@ const hasLocalCopy = !!transcript && paragraphsEn.length > 0;
       <span class="text-gray-300 dark:text-gray-600">·</span>
       <span>{speech.speakerTitle}</span>
       {
-        speech.zhEvent && (
+        speech.event && (
           <>
             <span class="text-gray-300 dark:text-gray-600">·</span>
-            <span class="italic">{speech.zhEvent}</span>
+            <span class="italic">{speech.event}</span>
           </>
         )
       }

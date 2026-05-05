@@ -4,8 +4,8 @@
 
 export interface Debate {
   id: string;
+  titleEn: string;
   title: string;
-  zhTitle: string;
   date: string;
   parliament: string;
   type: string;
@@ -19,18 +19,18 @@ export interface Debate {
   relatedTimelineYears?: number[]; // → src/data/timeline.ts (events with matching year)
   relatedPostSlugs?: string[]; // → blog post slugs
   topics: string[];
-  zhSummary: string;
+  summary: string;
   keyPoints: string[];
   governmentStance: string | null;
   oppositionStance: string | null;
   controversyLevel: number;
   policySignal: string | null;
   notableQuote: string | null;
-  summary: string;
+  transcriptEn: string;
   sourceUrl: string;
   // i18n (v0.3.0). EN renderer reads these; falls back to zh equivalents
   // when missing. `title` and `summary` are already in English (raw Hansard).
-  summaryShortEn?: string; // English equivalent of zhSummary (a digest, not raw transcript)
+  summaryEn?: string; // English equivalent of zhSummary (a digest, not raw transcript)
   keyPointsEn?: string[];
   governmentStanceEn?: string | null;
   oppositionStanceEn?: string | null;
@@ -41,8 +41,8 @@ export interface Debate {
 export const debates: Debate[] = [
   {
     id: 'oral-answer-4117',
-    title: `Mandatory Government Security Vetting for Personnel with Access to Singapore's Critical Information Infrastructure`,
-    zhTitle: `关键信息基础设施人员强制政府安全审查`,
+    titleEn: `Mandatory Government Security Vetting for Personnel with Access to Singapore's Critical Information Infrastructure`,
+    title: `关键信息基础设施人员强制政府安全审查`,
     date: '2026-04-08',
     parliament: '15',
     type: 'Oral Answers to Questions',
@@ -54,8 +54,8 @@ export const debates: Debate[] = [
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI & National Security', 'AI Governance & Regulation'],
-    zhSummary: `工人党 Gerald Giam 询问数字发展与新闻部是否引入强制集中政府安全审查（针对接触关键信息基础设施 CII 的人员，含外籍技术专家），以应对内部威胁与国家级网络攻击。部长尤芳达以三点正面回应：(1) 不应基于个人画像（国籍/族群）预设谁更可信，否则反而漏掉风险；(2) 安全审查不是银弹，决心型 nefarious actor 会专门绕开已知审查流程；(3) 当前已实行"零信任"架构与"最小权限"原则——access control / 持续验证 / 异常监控的多层纵深防御才是核心。Giam 追问能否将公务员级别的安全审查（G50）扩展到 CII super user / admin，部长答覆：在某些场景已有相应安排，但出于安全考虑不公开披露具体要求，避免恶意行为者反向工程审查规则。`,
-    summaryShortEn: `Workers' Party MP Gerald Giam asked MDDI whether mandatory centralised government security vetting should be introduced for personnel with access to Singapore's critical information infrastructure (CII) — including foreign-national technical experts in telco and energy — to mitigate insider threats and state-sponsored APTs. Minister Josephine Teo replied with three positions: (1) profile-based assumptions about who is "safer" are themselves a vulnerability — defence has to assume any person with access could be an insider threat; (2) security vetting is not a silver bullet, since determined adversaries will specifically work around any known vetting regime; (3) the operative model is zero-trust architecture with least-privileged access, continuous verification and anomaly monitoring — defence-in-depth, not vetting alone. Giam pressed whether the public-servant standard (G50) should be extended to CII super-user / admin roles; the Minister noted that for certain access types arrangements already exist, but specific requirements are not publicly disclosed for security reasons.`,
+    summary: `工人党 Gerald Giam 询问数字发展与新闻部是否引入强制集中政府安全审查（针对接触关键信息基础设施 CII 的人员，含外籍技术专家），以应对内部威胁与国家级网络攻击。部长尤芳达以三点正面回应：(1) 不应基于个人画像（国籍/族群）预设谁更可信，否则反而漏掉风险；(2) 安全审查不是银弹，决心型 nefarious actor 会专门绕开已知审查流程；(3) 当前已实行"零信任"架构与"最小权限"原则——access control / 持续验证 / 异常监控的多层纵深防御才是核心。Giam 追问能否将公务员级别的安全审查（G50）扩展到 CII super user / admin，部长答覆：在某些场景已有相应安排，但出于安全考虑不公开披露具体要求，避免恶意行为者反向工程审查规则。`,
+    summaryEn: `Workers' Party MP Gerald Giam asked MDDI whether mandatory centralised government security vetting should be introduced for personnel with access to Singapore's critical information infrastructure (CII) — including foreign-national technical experts in telco and energy — to mitigate insider threats and state-sponsored APTs. Minister Josephine Teo replied with three positions: (1) profile-based assumptions about who is "safer" are themselves a vulnerability — defence has to assume any person with access could be an insider threat; (2) security vetting is not a silver bullet, since determined adversaries will specifically work around any known vetting regime; (3) the operative model is zero-trust architecture with least-privileged access, continuous verification and anomaly monitoring — defence-in-depth, not vetting alone. Giam pressed whether the public-servant standard (G50) should be extended to CII super-user / admin roles; the Minister noted that for certain access types arrangements already exist, but specific requirements are not publicly disclosed for security reasons.`,
     keyPoints: [
       '工人党要求扩大 CII 人员强制安全审查',
       '部长强调"零信任"+"最小权限"才是核心',
@@ -80,13 +80,13 @@ export const debates: Debate[] = [
       'Security by design means that you have all these multiple layers of defences in order to be able to guard against the cyber risk.',
     notableQuoteEn:
       'Security by design means that you have all these multiple layers of defences in order to be able to guard against the cyber risk.',
-    summary: `Mr Gerald Giam Yean Song (Aljunied, Workers' Party) asked the Minister for Digital Development and Information whether the Ministry will introduce mandatory, centralised government security vetting for personnel with access to Singapore's critical information infrastructure (CII) to mitigate insider threats; and if not, how the Ministry ensures that current employer-led vetting of personnel — including foreign nationals in sensitive technical roles — is sufficiently robust against sophisticated state-sponsored cyber threats. Minister Mrs Josephine Teo replied that under the Cybersecurity Act, CII owners are required to put in place access management controls and processes to monitor for anomalies and suspicious activities; upon detection of unauthorised activity, owners must investigate. She set out the wider doctrine: profile-based assumptions ("this person is safer than that one") are themselves vulnerabilities; security vetting is not a silver bullet — determined adversaries will work around it; the operative model is zero-trust architecture with least-privileged access, continuous verification, anomaly monitoring and defence-in-depth. On extending public-servant G50 clearance to CII super-user / admin personnel, the Minister said arrangements already exist for certain access types but specific requirements are not publicly disclosed, for security reasons.`,
+    transcriptEn: `Mr Gerald Giam Yean Song (Aljunied, Workers' Party) asked the Minister for Digital Development and Information whether the Ministry will introduce mandatory, centralised government security vetting for personnel with access to Singapore's critical information infrastructure (CII) to mitigate insider threats; and if not, how the Ministry ensures that current employer-led vetting of personnel — including foreign nationals in sensitive technical roles — is sufficiently robust against sophisticated state-sponsored cyber threats. Minister Mrs Josephine Teo replied that under the Cybersecurity Act, CII owners are required to put in place access management controls and processes to monitor for anomalies and suspicious activities; upon detection of unauthorised activity, owners must investigate. She set out the wider doctrine: profile-based assumptions ("this person is safer than that one") are themselves vulnerabilities; security vetting is not a silver bullet — determined adversaries will work around it; the operative model is zero-trust architecture with least-privileged access, continuous verification, anomaly monitoring and defence-in-depth. On extending public-servant G50 clearance to CII super-user / admin personnel, the Minister said arrangements already exist for certain access types but specific requirements are not publicly disclosed, for security reasons.`,
     sourceUrl: 'https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=oral-answer-4117',
   },
   {
     id: 'oral-answer-4115',
-    title: `Key Factors for Strong Labour Market Demand for Engineers and Technology Specialists, While PMETs Face Retrenchments`,
-    zhTitle: `工程师与技术专才需求强劲、PME 裁员上升的劳动力市场错配`,
+    titleEn: `Key Factors for Strong Labour Market Demand for Engineers and Technology Specialists, While PMETs Face Retrenchments`,
+    title: `工程师与技术专才需求强劲、PME 裁员上升的劳动力市场错配`,
     date: '2026-04-08',
     parliament: '15',
     type: 'Oral Answers to Questions',
@@ -98,8 +98,8 @@ export const debates: Debate[] = [
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI & Employment', 'AI Economy & Industry'],
-    zhSummary: `Melvin Yong（拉丁马士）询问就业市场为何同时呈现工程师/技术专才需求强劲与 PME（专业人员、经理、执行人员、技师）裁员上升的"双重信号"。人力部高级政务次长 Shawn Huang 答覆：错配源自技能要求结构性变化——企业扩张技术职能（AI 工程师等岗位需求持续上升），同时重组易被自动化的传统 PME 角色；被裁的 PME 普遍缺少新岗位所需的技术资格。截至 2025 年 12 月，金融与资讯通讯两大行业 PME 空缺合计 9,400（4,100 + 5,300），而当季两业 PME 裁员仅 960。WSG 的 Career Conversion Programme 过去三年已转岗 7,300+ 人到科技/工程职。Neo Kok Beng（提名议员）追问是否能让 WSG 与专业学会合作设计直接对接行业的课程，部长答覆"是，已经在这么做"。`,
-    summaryShortEn: `Mr Melvin Yong (Radin Mas) asked MOM about the labour-market mismatch — strong hiring demand for engineers and technology specialists alongside rising PMET retrenchments — flagged in the annual job vacancies report. Senior Parliamentary Secretary Mr Shawn Huang replied that the mismatch is structural: firms are expanding technology functions, sustaining demand for jobs like AI engineers, while restructuring traditional PMET roles that are easier to automate; retrenched PMETs typically lack the specific technical skills these new roles require. As of December 2025, finance and infocomm sectors had combined PMET vacancies of 9,400 (4,100 + 5,300) against just 960 PMET retrenchments across both sectors that quarter. Workforce Singapore's Career Conversion Programme has placed 7,300+ workers into tech and engineering roles over the last three years. Dr Neo Kok Beng (NMP) asked whether WSG could partner directly with professional institutions to design industry-relevant curricula instead of relying solely on universities and polytechnics; the Senior Parliamentary Secretary confirmed this is already happening.`,
+    summary: `Melvin Yong（拉丁马士）询问就业市场为何同时呈现工程师/技术专才需求强劲与 PME（专业人员、经理、执行人员、技师）裁员上升的"双重信号"。人力部高级政务次长 Shawn Huang 答覆：错配源自技能要求结构性变化——企业扩张技术职能（AI 工程师等岗位需求持续上升），同时重组易被自动化的传统 PME 角色；被裁的 PME 普遍缺少新岗位所需的技术资格。截至 2025 年 12 月，金融与资讯通讯两大行业 PME 空缺合计 9,400（4,100 + 5,300），而当季两业 PME 裁员仅 960。WSG 的 Career Conversion Programme 过去三年已转岗 7,300+ 人到科技/工程职。Neo Kok Beng（提名议员）追问是否能让 WSG 与专业学会合作设计直接对接行业的课程，部长答覆"是，已经在这么做"。`,
+    summaryEn: `Mr Melvin Yong (Radin Mas) asked MOM about the labour-market mismatch — strong hiring demand for engineers and technology specialists alongside rising PMET retrenchments — flagged in the annual job vacancies report. Senior Parliamentary Secretary Mr Shawn Huang replied that the mismatch is structural: firms are expanding technology functions, sustaining demand for jobs like AI engineers, while restructuring traditional PMET roles that are easier to automate; retrenched PMETs typically lack the specific technical skills these new roles require. As of December 2025, finance and infocomm sectors had combined PMET vacancies of 9,400 (4,100 + 5,300) against just 960 PMET retrenchments across both sectors that quarter. Workforce Singapore's Career Conversion Programme has placed 7,300+ workers into tech and engineering roles over the last three years. Dr Neo Kok Beng (NMP) asked whether WSG could partner directly with professional institutions to design industry-relevant curricula instead of relying solely on universities and polytechnics; the Senior Parliamentary Secretary confirmed this is already happening.`,
     keyPoints: [
       'AI 工程师需求结构性上升，传统 PME 被自动化',
       '金融+资讯通讯 PME 空缺 9,400 vs 裁员 960',
@@ -125,13 +125,13 @@ export const debates: Debate[] = [
       'Firms are expanding technology functions, driving sustained demand for jobs like AI engineers, while restructuring other PMET roles that have become easier to automate.',
     notableQuoteEn:
       'Firms are expanding technology functions, driving sustained demand for jobs like AI engineers, while restructuring other PMET roles that have become easier to automate.',
-    summary: `Mr Melvin Yong Yik Chye (Radin Mas) asked the Minister for Manpower, in view of strong hiring demand for engineers and technology specialists alongside rising retrenchments among Professionals, Managers, Executives and Technicians (PMETs) in the annual job vacancies report, what the key factors driving the mismatch are. Senior Parliamentary Secretary Mr Shawn Huang Wei Zhong replied that mismatches reflect shifts in skill requirements: firms expanding technology functions are driving sustained demand for AI engineers and engineering professionals, while restructuring other PMET roles that have become easier to automate; retrenched PMETs may lack the specific technical skills required by in-demand roles. As of December 2025, finance and infocomm sectors had PMET vacancies of 4,100 and 5,300 respectively, with only 960 PMET retrenchments across the two sectors that quarter. Through Workforce Singapore's Career Conversion Programmes, the government has placed over 7,300 workers into tech and engineering related jobs over the last three years, with salary support to employers. Dr Neo Kok Beng (NMP) asked whether WSG would design programmes with professional institutions directly relevant to industry, rather than only via universities and polytechnics; Mr Huang confirmed this is the existing practice.`,
+    transcriptEn: `Mr Melvin Yong Yik Chye (Radin Mas) asked the Minister for Manpower, in view of strong hiring demand for engineers and technology specialists alongside rising retrenchments among Professionals, Managers, Executives and Technicians (PMETs) in the annual job vacancies report, what the key factors driving the mismatch are. Senior Parliamentary Secretary Mr Shawn Huang Wei Zhong replied that mismatches reflect shifts in skill requirements: firms expanding technology functions are driving sustained demand for AI engineers and engineering professionals, while restructuring other PMET roles that have become easier to automate; retrenched PMETs may lack the specific technical skills required by in-demand roles. As of December 2025, finance and infocomm sectors had PMET vacancies of 4,100 and 5,300 respectively, with only 960 PMET retrenchments across the two sectors that quarter. Through Workforce Singapore's Career Conversion Programmes, the government has placed over 7,300 workers into tech and engineering related jobs over the last three years, with salary support to employers. Dr Neo Kok Beng (NMP) asked whether WSG would design programmes with professional institutions directly relevant to industry, rather than only via universities and polytechnics; Mr Huang confirmed this is the existing practice.`,
     sourceUrl: 'https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=oral-answer-4115',
   },
   {
     id: 'oral-answer-4100',
-    title: `Safeguards to Ensure Citizen Data Is Not Disclosed to or Processed by Foreign-headquartered Vendors`,
-    zhTitle: `防范公民数据被外资 AI / 数据分析平台处理或披露的保障措施`,
+    titleEn: `Safeguards to Ensure Citizen Data Is Not Disclosed to or Processed by Foreign-headquartered Vendors`,
+    title: `防范公民数据被外资 AI / 数据分析平台处理或披露的保障措施`,
     date: '2026-04-07',
     parliament: '15',
     type: 'Oral Answers to Questions',
@@ -143,8 +143,8 @@ export const debates: Debate[] = [
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI Governance & Regulation', 'AI & National Security'],
-    zhSummary: `工人党非选区议员 Low Wu Yang Andre 提出关键质询：(a) 全政府数据架构是否允许外资总部的专有 AI / 数据分析平台处理公民数据；(b) 若允许，有何法律与技术保障防止外国政府依本国法（如美国 CLOUD Act）调取这些数据。MDDI 政务部长 Jasmin Lau 答覆：政府采用 risk-based approach，data access 严格按"最小权限/按需访问"原则，要求 vendor 实施非保留、加密、身份与访问管理；高敏感数据可要求 data residency；通过 governance framework 与合同条款限制使用、储存与披露。Low 的追问直指核心：他点名 Palantir Technologies——过去五年成为全球各国政府首选 AI/数据/安全方案供应商；并明确 CLOUD Act 强制美国公司在其法域内披露数据，**即使 data residency 在新加坡也可被强制**。Jasmin Lau 直接承认了这一点："legal and contractual agreements aside, the reality is that no matter what legal provisions the contracts may contain, some jurisdictions like the US may have legislation including with extraterritorial reach that empower government agencies to require companies within their jurisdictions to provide certain information... Such legislation can override contractual obligations." 这是政府首次在国会公开承认 contractual data residency 在外国域外管辖法律前可被覆盖。`,
-    summaryShortEn: `Workers' Party NCMP Mr Low Wu Yang Andre asked MDDI: (a) whether the whole-of-Government data architecture permits proprietary AI / data analytics platforms from foreign-headquartered vendors to process citizen data; and (b) what legal and technical safeguards prevent foreign governments from compelling disclosure under their domestic laws. Minister of State Ms Jasmin Lau replied that the Government uses a risk-based approach: access on a needs basis under the principle of least privilege; vendors must implement non-retention, encryption, and identity/access management; data residency may be required for sensitive data; governance frameworks and contracts constrain use, storage and retention. In the supplementary, Mr Low named Palantir Technologies — which has become the dominant AI/data/security supplier to governments globally — and pressed on the US CLOUD Act, which compels US-headquartered companies to disclose data even when stored offshore. The Minister acknowledged this directly: "Legal and contractual agreements aside, the reality is that no matter what legal provisions the contracts may contain, some jurisdictions like the US may have legislation, including with extraterritorial reach, that empower government agencies to require companies within their jurisdictions to provide certain information... Such legislation can override contractual obligations." This is the first time the Government has publicly acknowledged on the parliamentary floor that contractual data residency can be overridden by foreign extraterritorial law.`,
+    summary: `工人党非选区议员 Low Wu Yang Andre 提出关键质询：(a) 全政府数据架构是否允许外资总部的专有 AI / 数据分析平台处理公民数据；(b) 若允许，有何法律与技术保障防止外国政府依本国法（如美国 CLOUD Act）调取这些数据。MDDI 政务部长 Jasmin Lau 答覆：政府采用 risk-based approach，data access 严格按"最小权限/按需访问"原则，要求 vendor 实施非保留、加密、身份与访问管理；高敏感数据可要求 data residency；通过 governance framework 与合同条款限制使用、储存与披露。Low 的追问直指核心：他点名 Palantir Technologies——过去五年成为全球各国政府首选 AI/数据/安全方案供应商；并明确 CLOUD Act 强制美国公司在其法域内披露数据，**即使 data residency 在新加坡也可被强制**。Jasmin Lau 直接承认了这一点："legal and contractual agreements aside, the reality is that no matter what legal provisions the contracts may contain, some jurisdictions like the US may have legislation including with extraterritorial reach that empower government agencies to require companies within their jurisdictions to provide certain information... Such legislation can override contractual obligations." 这是政府首次在国会公开承认 contractual data residency 在外国域外管辖法律前可被覆盖。`,
+    summaryEn: `Workers' Party NCMP Mr Low Wu Yang Andre asked MDDI: (a) whether the whole-of-Government data architecture permits proprietary AI / data analytics platforms from foreign-headquartered vendors to process citizen data; and (b) what legal and technical safeguards prevent foreign governments from compelling disclosure under their domestic laws. Minister of State Ms Jasmin Lau replied that the Government uses a risk-based approach: access on a needs basis under the principle of least privilege; vendors must implement non-retention, encryption, and identity/access management; data residency may be required for sensitive data; governance frameworks and contracts constrain use, storage and retention. In the supplementary, Mr Low named Palantir Technologies — which has become the dominant AI/data/security supplier to governments globally — and pressed on the US CLOUD Act, which compels US-headquartered companies to disclose data even when stored offshore. The Minister acknowledged this directly: "Legal and contractual agreements aside, the reality is that no matter what legal provisions the contracts may contain, some jurisdictions like the US may have legislation, including with extraterritorial reach, that empower government agencies to require companies within their jurisdictions to provide certain information... Such legislation can override contractual obligations." This is the first time the Government has publicly acknowledged on the parliamentary floor that contractual data residency can be overridden by foreign extraterritorial law.`,
     keyPoints: [
       '外资 AI / 数据平台被允许处理政府数据（risk-based）',
       '议员点名 Palantir + 美国 CLOUD Act 域外管辖',
@@ -171,13 +171,13 @@ export const debates: Debate[] = [
       'Some jurisdictions like the US may have legislation including with extraterritorial reach that empower government agencies to require companies within their jurisdictions to provide certain information... Such legislation can override contractual obligations.',
     notableQuoteEn:
       'Some jurisdictions like the US may have legislation including with extraterritorial reach that empower government agencies to require companies within their jurisdictions to provide certain information... Such legislation can override contractual obligations.',
-    summary: `Mr Low Wu Yang Andre (NCMP) asked the Minister for Digital Development and Information (a) whether the whole-of-Government data architecture permits proprietary artificial intelligence (AI) or data analytics platforms from foreign-headquartered vendors to process citizen data; and (b) if so, what legal and technical safeguards ensure that such data cannot be compelled for disclosure by a foreign government under that government's domestic laws. The Minister of State for Digital Development and Information, Ms Jasmin Lau (for the Minister), replied that the Government uses best-in-class technology solutions, including those from international vendors, with comprehensive safeguards. The risk-based approach grants data access strictly on a needs basis under the principle of least privilege; vendors are expected to implement robust technical safeguards such as non-retention, encryption, and identity and access management; data residency may also be required, depending on sensitivity. Governance frameworks and contractual agreements constrain access, use, storage and retention. In a supplementary, Mr Low identified the underlying concern as Palantir Technologies and the US CLOUD Act — which compels US-based companies to disclose data even when stored offshore. The Minister of State acknowledged: legal and contractual agreements aside, some jurisdictions like the US have legislation including with extraterritorial reach that can override contractual obligations; this is precisely why the Government's approach is not to rely solely on contractual provisions but also on technical controls, governance frameworks, and limits on the use cases and categories of information that may be processed via non-government tools and platforms.`,
+    transcriptEn: `Mr Low Wu Yang Andre (NCMP) asked the Minister for Digital Development and Information (a) whether the whole-of-Government data architecture permits proprietary artificial intelligence (AI) or data analytics platforms from foreign-headquartered vendors to process citizen data; and (b) if so, what legal and technical safeguards ensure that such data cannot be compelled for disclosure by a foreign government under that government's domestic laws. The Minister of State for Digital Development and Information, Ms Jasmin Lau (for the Minister), replied that the Government uses best-in-class technology solutions, including those from international vendors, with comprehensive safeguards. The risk-based approach grants data access strictly on a needs basis under the principle of least privilege; vendors are expected to implement robust technical safeguards such as non-retention, encryption, and identity and access management; data residency may also be required, depending on sensitivity. Governance frameworks and contractual agreements constrain access, use, storage and retention. In a supplementary, Mr Low identified the underlying concern as Palantir Technologies and the US CLOUD Act — which compels US-based companies to disclose data even when stored offshore. The Minister of State acknowledged: legal and contractual agreements aside, some jurisdictions like the US have legislation including with extraterritorial reach that can override contractual obligations; this is precisely why the Government's approach is not to rely solely on contractual provisions but also on technical controls, governance frameworks, and limits on the use cases and categories of information that may be processed via non-government tools and platforms.`,
     sourceUrl: 'https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=oral-answer-4100',
   },
   {
     id: 'cos-moh-2026',
-    title: `MOH Committee of Supply 2026 — Preventive Healthcare & AI`,
-    zhTitle: `2026卫生部供给委员会辩论：预防医疗与AI`,
+    titleEn: `MOH Committee of Supply 2026 — Preventive Healthcare & AI`,
+    title: `2026卫生部供给委员会辩论：预防医疗与AI`,
     date: '2026-03-05',
     parliament: '15',
     type: 'Budget',
@@ -189,8 +189,8 @@ export const debates: Debate[] = [
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI in Healthcare', 'AI in Public Sector', 'AI Governance & Regulation'],
-    zhSummary: `卫生部长王乙康在供给委员会辩论中宣布新加坡正式成为超老龄社会（65岁以上人口超21%），推出ACE-AI预测工具（由Synapxe开发）用于糖尿病及高脂血症风险筛查，强调"AI增强而非AI决定"原则，2027年初推广至所有Healthier SG诊所。同时宣布BRCA1/2基因检测补贴（2026年12月起，最高70%补贴），MediShield Life将覆盖预防性手术（乳房切除术Q3 2026、输卵管卵巢切除术Q4 2026），MediSave慢性病与预防护理限额提升（2027年1月起500/700提至700/1000），惠及91万+患者。`,
-    summaryShortEn: `Health Minister Ong Ye Kung used the MOH Committee of Supply debate to announce that Singapore has officially become a super-aged society (over 21% of the population aged 65+). MOH unveiled the ACE-AI predictive tool (developed by Synapxe) for diabetes and hyperlipidaemia risk screening, anchored on an "AI-enhanced, not AI-decided" principle, with rollout to all Healthier SG clinics from early 2027. Other measures: BRCA1/2 genetic testing subsidy from December 2026 (up to 70%); MediShield Life cover for preventive surgeries (mastectomy in Q3 2026, salpingo-oophorectomy in Q4 2026); and higher MediSave chronic and preventive care limits (raised from 500/700 to 700/1000 from January 2027), benefiting 910,000+ patients.`,
+    summary: `卫生部长王乙康在供给委员会辩论中宣布新加坡正式成为超老龄社会（65岁以上人口超21%），推出ACE-AI预测工具（由Synapxe开发）用于糖尿病及高脂血症风险筛查，强调"AI增强而非AI决定"原则，2027年初推广至所有Healthier SG诊所。同时宣布BRCA1/2基因检测补贴（2026年12月起，最高70%补贴），MediShield Life将覆盖预防性手术（乳房切除术Q3 2026、输卵管卵巢切除术Q4 2026），MediSave慢性病与预防护理限额提升（2027年1月起500/700提至700/1000），惠及91万+患者。`,
+    summaryEn: `Health Minister Ong Ye Kung used the MOH Committee of Supply debate to announce that Singapore has officially become a super-aged society (over 21% of the population aged 65+). MOH unveiled the ACE-AI predictive tool (developed by Synapxe) for diabetes and hyperlipidaemia risk screening, anchored on an "AI-enhanced, not AI-decided" principle, with rollout to all Healthier SG clinics from early 2027. Other measures: BRCA1/2 genetic testing subsidy from December 2026 (up to 70%); MediShield Life cover for preventive surgeries (mastectomy in Q3 2026, salpingo-oophorectomy in Q4 2026); and higher MediSave chronic and preventive care limits (raised from 500/700 to 700/1000 from January 2027), benefiting 910,000+ patients.`,
     keyPoints: [
       '新加坡正式成为超老龄社会',
       'ACE-AI预测糖尿病/高脂血症风险',
@@ -214,13 +214,13 @@ export const debates: Debate[] = [
     policySignalEn: 'Preventive AI in healthcare combined with healthcare-financing reform.',
     notableQuote: 'AI-enhanced, not AI-decided — clinicians remain in the loop.',
     notableQuoteEn: 'AI-enhanced, not AI-decided — clinicians remain in the loop.',
-    summary: `Health Minister Ong Ye Kung delivered the MOH Committee of Supply debate, announcing Singapore has officially become a super-aged society with over 21% of the population aged 65 and above. He outlined a preventive healthcare strategy leveraging AI and genetic screening. The ACE-AI tool, developed by national healthtech agency Synapxe, predicts diabetes and hyperlipidaemia risk within 3 years, flagging patients with >75% risk for annual screening instead of the standard 3-yearly cycle. Rolling out to all ~1,100 Healthier SG clinics from early 2027. Key principle: "AI-enhanced, not AI-decided." BRCA1/2 genetic testing will be subsidised up to 70% from December 2026, with 2,000+ eligible annually. MediShield Life will cover preventive mastectomy (Q3 2026) and risk-reducing salpingo-oophorectomy (Q4 2026). MediSave chronic and preventive care limits raised from 500/700 to 700/1000 from January 2027, benefiting 910,000+ patients.`,
+    transcriptEn: `Health Minister Ong Ye Kung delivered the MOH Committee of Supply debate, announcing Singapore has officially become a super-aged society with over 21% of the population aged 65 and above. He outlined a preventive healthcare strategy leveraging AI and genetic screening. The ACE-AI tool, developed by national healthtech agency Synapxe, predicts diabetes and hyperlipidaemia risk within 3 years, flagging patients with >75% risk for annual screening instead of the standard 3-yearly cycle. Rolling out to all ~1,100 Healthier SG clinics from early 2027. Key principle: "AI-enhanced, not AI-decided." BRCA1/2 genetic testing will be subsidised up to 70% from December 2026, with 2,000+ eligible annually. MediShield Life will cover preventive mastectomy (Q3 2026) and risk-reducing salpingo-oophorectomy (Q4 2026). MediSave chronic and preventive care limits raised from 500/700 to 700/1000 from January 2027, benefiting 910,000+ patients.`,
     sourceUrl: 'https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=budget-2928',
   },
   {
     id: 'cos-mddi-2026',
-    title: `MDDI Committee of Supply 2026 — AI as Strategic Advantage`,
-    zhTitle: `2026数字发展与信息部供给委员会辩论：AI作为战略优势`,
+    titleEn: `MDDI Committee of Supply 2026 — AI as Strategic Advantage`,
+    title: `2026数字发展与信息部供给委员会辩论：AI作为战略优势`,
     date: '2026-03-02',
     parliament: '15',
     type: 'Budget',
@@ -262,8 +262,8 @@ export const debates: Debate[] = [
       'AI & National Security',
       'AI Safety & Ethics',
     ],
-    zhSummary: `这是2026年预算案中AI议题最集中的辩论。MDDI GPC围绕六大主题进行协调审议：AI价值主张、数字能力建设、伦理治理、包容性增长、基础设施与网络安全、高信任数字社会。部长尤芳达(Mrs Josephine Teo)宣布：(1)支持10万名工人成为"AI双语人才"，从会计和法律行业开始，通过TeSA项目扩展；(2)发布全球首个《自主智能体AI治理框架》(Model Governance Framework for Agentic AI)；(3)新加坡将主办第二届国际AI安全科学交流大会，更新"新加坡共识"；(4)着力解决中小企业AI落差问题，避免大企业拉远距离。议员关注焦点包括：深伪技术监管(Christopher de Souza)、AI媒体素养(Fadli Fawzi)、数据中心投资竞争、AI对PME的冲击、网络安全应对AI威胁等。`,
-    summaryShortEn: `The most AI-intensive debate in Budget 2026. The MDDI GPC delivered coordinated scrutiny across six themes: AI value proposition, digital capabilities, ethical governance, inclusive growth, infrastructure and cybersecurity, and a high-trust digital society. Minister Josephine Teo announced: (1) support for 100,000 workers to become "AI bilingual", starting with accountancy and legal professions and scaled via TeSA; (2) the world's first Model Governance Framework for Agentic AI; (3) Singapore will host the second International Scientific Exchange on AI Safety to update the "Singapore Consensus"; (4) targeted action to close the SME AI gap so that frontier firms do not pull away. MP focus areas: deepfake regulation (Christopher de Souza), AI media literacy (Fadli Fawzi), data centre investment competition, AI impact on PMEs, and cybersecurity against AI-enabled threats.`,
+    summary: `这是2026年预算案中AI议题最集中的辩论。MDDI GPC围绕六大主题进行协调审议：AI价值主张、数字能力建设、伦理治理、包容性增长、基础设施与网络安全、高信任数字社会。部长尤芳达(Mrs Josephine Teo)宣布：(1)支持10万名工人成为"AI双语人才"，从会计和法律行业开始，通过TeSA项目扩展；(2)发布全球首个《自主智能体AI治理框架》(Model Governance Framework for Agentic AI)；(3)新加坡将主办第二届国际AI安全科学交流大会，更新"新加坡共识"；(4)着力解决中小企业AI落差问题，避免大企业拉远距离。议员关注焦点包括：深伪技术监管(Christopher de Souza)、AI媒体素养(Fadli Fawzi)、数据中心投资竞争、AI对PME的冲击、网络安全应对AI威胁等。`,
+    summaryEn: `The most AI-intensive debate in Budget 2026. The MDDI GPC delivered coordinated scrutiny across six themes: AI value proposition, digital capabilities, ethical governance, inclusive growth, infrastructure and cybersecurity, and a high-trust digital society. Minister Josephine Teo announced: (1) support for 100,000 workers to become "AI bilingual", starting with accountancy and legal professions and scaled via TeSA; (2) the world's first Model Governance Framework for Agentic AI; (3) Singapore will host the second International Scientific Exchange on AI Safety to update the "Singapore Consensus"; (4) targeted action to close the SME AI gap so that frontier firms do not pull away. MP focus areas: deepfake regulation (Christopher de Souza), AI media literacy (Fadli Fawzi), data centre investment competition, AI impact on PMEs, and cybersecurity against AI-enabled threats.`,
     keyPoints: [
       '10万工人"AI双语"计划',
       '全球首个自主智能体AI治理框架',
@@ -291,13 +291,13 @@ export const debates: Debate[] = [
       'AI governance moves from principles to concrete action; the agentic AI framework is a world first.',
     notableQuote: 'Not all of us can be AI engineers. But we can be "bilingual" in AI in our own areas of expertise.',
     notableQuoteEn: 'Not all of us can be AI engineers. But we can be "bilingual" in AI in our own areas of expertise.',
-    summary: `The most AI-intensive debate of Budget 2026. The MDDI GPC delivered coordinated scrutiny across six themes: AI value proposition, digital capabilities, ethical governance, inclusive growth, infrastructure/cybersecurity, and high-trust digital society. Minister Josephine Teo announced: (1) Government will support 100,000 workers to become "AI bilingual" starting with accountancy and legal professions via expanded TeSA programme; (2) World-first Model Governance Framework for Agentic AI to manage autonomous AI systems with human oversight; (3) Singapore will host second International Scientific Exchange on AI Safety to update the Singapore Consensus. Key concerns raised: deepfake regulation (Christopher de Souza), AI media literacy (Fadli Fawzi), data centre investment competition, impact on PMEs, and cybersecurity against AI-enabled threats. The minister emphasised closing the AI gap for SMEs, warning that if AI follows previous tech waves, only frontier companies benefit while the long tail falls behind.`,
+    transcriptEn: `The most AI-intensive debate of Budget 2026. The MDDI GPC delivered coordinated scrutiny across six themes: AI value proposition, digital capabilities, ethical governance, inclusive growth, infrastructure/cybersecurity, and high-trust digital society. Minister Josephine Teo announced: (1) Government will support 100,000 workers to become "AI bilingual" starting with accountancy and legal professions via expanded TeSA programme; (2) World-first Model Governance Framework for Agentic AI to manage autonomous AI systems with human oversight; (3) Singapore will host second International Scientific Exchange on AI Safety to update the Singapore Consensus. Key concerns raised: deepfake regulation (Christopher de Souza), AI media literacy (Fadli Fawzi), data centre investment competition, impact on PMEs, and cybersecurity against AI-enabled threats. The minister emphasised closing the AI gap for SMEs, warning that if AI follows previous tech waves, only frontier companies benefit while the long tail falls behind.`,
     sourceUrl: 'https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=budget-2895',
   },
   {
     id: 'cos-mti-2026',
-    title: `MTI Committee of Supply 2026 — AI Adoption & Economic Transformation`,
-    zhTitle: `2026贸工部供给委员会辩论：AI驱动经济转型`,
+    titleEn: `MTI Committee of Supply 2026 — AI Adoption & Economic Transformation`,
+    title: `2026贸工部供给委员会辩论：AI驱动经济转型`,
     date: '2026-03-02',
     parliament: '15',
     type: 'Budget',
@@ -309,8 +309,8 @@ export const debates: Debate[] = [
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI Economy & Industry', 'AI & Employment'],
-    zhSummary: `贸工部供给委员会辩论聚焦AI驱动的经济结构转型。议员质询产业转型地图(ITM)是否真正推动生产力提升而非仅助企业降本，追问如何衡量真正的生产力增益（管理升级、流程再造、商业模式变革）而非简单的数字工具采用率。关注焦点包括：中小企业AI实施困难、AI创业生态中大学/A*STAR研究成果商业化、投资退出缺口、AI暗模式（如虚假评论与订阅陷阱）对消费者的威胁。提出构建政府门户AI助手，基于企业画像自动推荐补贴和方案。`,
-    summaryShortEn: `The MTI Committee of Supply debate focused on AI-driven structural economic transformation. MPs asked whether Industry Transformation Maps (ITMs) genuinely drive productivity gains or merely help firms cut costs, pressing on how to measure real productivity uplift (management upgrades, process redesign, business model change) rather than simple adoption rates of digital tools. Focus areas: SMEs struggling with AI implementation, the gap between university/A*STAR research and commercial exit in the AI startup scene, AI-enabled dark patterns (fake reviews, subscription traps) threatening consumers. A proposal: an AI assistant on government portals that recommends grants and schemes based on each firm's profile.`,
+    summary: `贸工部供给委员会辩论聚焦AI驱动的经济结构转型。议员质询产业转型地图(ITM)是否真正推动生产力提升而非仅助企业降本，追问如何衡量真正的生产力增益（管理升级、流程再造、商业模式变革）而非简单的数字工具采用率。关注焦点包括：中小企业AI实施困难、AI创业生态中大学/A*STAR研究成果商业化、投资退出缺口、AI暗模式（如虚假评论与订阅陷阱）对消费者的威胁。提出构建政府门户AI助手，基于企业画像自动推荐补贴和方案。`,
+    summaryEn: `The MTI Committee of Supply debate focused on AI-driven structural economic transformation. MPs asked whether Industry Transformation Maps (ITMs) genuinely drive productivity gains or merely help firms cut costs, pressing on how to measure real productivity uplift (management upgrades, process redesign, business model change) rather than simple adoption rates of digital tools. Focus areas: SMEs struggling with AI implementation, the gap between university/A*STAR research and commercial exit in the AI startup scene, AI-enabled dark patterns (fake reviews, subscription traps) threatening consumers. A proposal: an AI assistant on government portals that recommends grants and schemes based on each firm's profile.`,
     keyPoints: [
       '产业转型地图需回应AI时代要求',
       '衡量真正生产力增益而非工具采用率',
@@ -337,13 +337,13 @@ export const debates: Debate[] = [
     policySignalEn: 'Industrial policy shifts from digitalisation to AI-native transformation.',
     notableQuote: null,
     notableQuoteEn: null,
-    summary: `The MTI Committee of Supply debate focused on AI-driven economic transformation. MPs asked whether Industry Transformation Maps are driving real productivity gains or merely helping firms manage costs. Key concerns: measuring real outcomes (management upgrades, process redesign, business model change) rather than just digital tool adoption; SMEs struggling with AI implementation; gaps between university/A*STAR research and commercial exit in the startup scene; rise of AI-enabled dark patterns (fake reviews, subscription traps). A proposal was floated for an AI assistant on government portals that recommends schemes based on each firm's profile.`,
+    transcriptEn: `The MTI Committee of Supply debate focused on AI-driven economic transformation. MPs asked whether Industry Transformation Maps are driving real productivity gains or merely helping firms manage costs. Key concerns: measuring real outcomes (management upgrades, process redesign, business model change) rather than just digital tool adoption; SMEs struggling with AI implementation; gaps between university/A*STAR research and commercial exit in the startup scene; rise of AI-enabled dark patterns (fake reviews, subscription traps). A proposal was floated for an AI assistant on government portals that recommends schemes based on each firm's profile.`,
     sourceUrl: 'https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=budget-2894',
   },
   {
     id: 'cos-moe-2026',
-    title: `MOE Committee of Supply 2026 — AI & Education Transformation`,
-    zhTitle: `2026教育部供给委员会辩论：AI与教育变革`,
+    titleEn: `MOE Committee of Supply 2026 — AI & Education Transformation`,
+    title: `2026教育部供给委员会辩论：AI与教育变革`,
     date: '2026-03-02',
     parliament: '15',
     type: 'Budget',
@@ -355,8 +355,8 @@ export const debates: Debate[] = [
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI in Education', 'AI & Employment', 'AI Safety & Ethics'],
-    zhSummary: `教育部供给委员会辩论深入探讨AI对教育体系的结构性冲击。议员Darryl David指出，AI不仅是又一个技术趋势，而是正在重塑行业、组织模式和价值创造所需技能。辩论聚焦：(1)教师分级专业发展——基础AI工具与数字教学法培训、高级课程设计与伦理模块、持续跟踪AI趋势；(2)包容性AI教育——确保不同能力学生都能受益；(3)批判性思维培养——当生成式AI可秒出论文和代码时，差异化竞争力在于独立判断和批判性运用AI的能力；(4)成人教育与专业技术学院(如PACE)扩展AI和数据分析课程。`,
-    summaryShortEn: `The MOE Committee of Supply debate examined AI's structural impact on the education system. MP Darryl David framed AI as more than another tech trend — it is reshaping industries, organisational models and the skills needed to create value. The debate focused on: (1) tiered professional development for teachers — foundational AI tool / digital pedagogy training, advanced curriculum design and ethics, continuous tracking of AI trends; (2) inclusive AI education ensuring students of all abilities benefit; (3) critical thinking — when generative AI can produce essays and code in seconds, the differentiator is independent judgement and critical use of AI; (4) expanding AI and data analytics courses through adult education (e.g. PACE).`,
+    summary: `教育部供给委员会辩论深入探讨AI对教育体系的结构性冲击。议员Darryl David指出，AI不仅是又一个技术趋势，而是正在重塑行业、组织模式和价值创造所需技能。辩论聚焦：(1)教师分级专业发展——基础AI工具与数字教学法培训、高级课程设计与伦理模块、持续跟踪AI趋势；(2)包容性AI教育——确保不同能力学生都能受益；(3)批判性思维培养——当生成式AI可秒出论文和代码时，差异化竞争力在于独立判断和批判性运用AI的能力；(4)成人教育与专业技术学院(如PACE)扩展AI和数据分析课程。`,
+    summaryEn: `The MOE Committee of Supply debate examined AI's structural impact on the education system. MP Darryl David framed AI as more than another tech trend — it is reshaping industries, organisational models and the skills needed to create value. The debate focused on: (1) tiered professional development for teachers — foundational AI tool / digital pedagogy training, advanced curriculum design and ethics, continuous tracking of AI trends; (2) inclusive AI education ensuring students of all abilities benefit; (3) critical thinking — when generative AI can produce essays and code in seconds, the differentiator is independent judgement and critical use of AI; (4) expanding AI and data analytics courses through adult education (e.g. PACE).`,
     keyPoints: [
       'AI重塑知识、技能与工作的交汇方式',
       '教师分级AI专业发展计划',
@@ -382,13 +382,13 @@ export const debates: Debate[] = [
       'The differentiator will not be access to technology. It will be the capacity to engage with these tools critically.',
     notableQuoteEn:
       'The differentiator will not be access to technology. It will be the capacity to engage with these tools critically.',
-    summary: `The MOE Committee of Supply debate examined AI's structural impact on education. MP Darryl David framed AI as reshaping industries, organisational models and the skills needed to create value. Key themes: (1) Tiered professional development for teachers — foundational AI tools and digital pedagogy, advanced curriculum design and ethics, continuous tracking of AI trends; (2) Inclusive AI education ensuring students of different abilities benefit; (3) Critical thinking as the differentiator — when generative AI can produce essays and code in seconds, competitive advantage lies in independent judgement and critical engagement with AI tools; (4) Expanding adult education through Professional and Adult Continuing Education academies for AI and data analytics courses.`,
+    transcriptEn: `The MOE Committee of Supply debate examined AI's structural impact on education. MP Darryl David framed AI as reshaping industries, organisational models and the skills needed to create value. Key themes: (1) Tiered professional development for teachers — foundational AI tools and digital pedagogy, advanced curriculum design and ethics, continuous tracking of AI trends; (2) Inclusive AI education ensuring students of different abilities benefit; (3) Critical thinking as the differentiator — when generative AI can produce essays and code in seconds, competitive advantage lies in independent judgement and critical engagement with AI tools; (4) Expanding adult education through Professional and Adult Continuing Education academies for AI and data analytics courses.`,
     sourceUrl: 'https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=budget-2896',
   },
   {
     id: 'cos-mom-2026',
-    title: `MOM Committee of Supply 2026 — AI, Workforce & Career Resilience`,
-    zhTitle: `2026人力部供给委员会辩论：AI时代的劳动力与职业韧性`,
+    titleEn: `MOM Committee of Supply 2026 — AI, Workforce & Career Resilience`,
+    title: `2026人力部供给委员会辩论：AI时代的劳动力与职业韧性`,
     date: '2026-03-03',
     parliament: '15',
     type: 'Budget',
@@ -400,8 +400,8 @@ export const debates: Debate[] = [
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI & Employment', 'AI in Public Sector'],
-    zhSummary: `人力部供给委员会辩论是预算案中AI与劳动力议题的核心战场。部长陈诗龙指出AI正在改变工作本质——不仅是做什么工作，还包括工作如何组织、技能如何构建、职业如何演进。核心关切：(1)AI是颠覆者(gamechanger)——可增强也可替代工人，取决于工作和岗位如何重新设计；(2)SkillsFuture参与已超60万人，458,000+新加坡人使用了SkillsFuture学分；(3)要求将"岗位重新设计"升级为"人+AI岗位重新设计"，运用设计思维整合AI与人类判断力、同理心和创造力；(4)中年PME面临更高风险，需要将职业健康(career health)主流化、预防化和个性化；(5)生成式AI对白领职业的风险高于手工技能型岗位。`,
-    summaryShortEn: `The MOM Committee of Supply debate was the centrepiece for AI and workforce issues in the Budget. Minister Tan See Leng framed AI as transforming the nature of work — not only what jobs people do, but how work is organised, skills are built, and careers evolve. Key threads: (1) AI as a gamechanger that can augment or displace workers depending on how jobs are redesigned; (2) SkillsFuture participation exceeding 600,000, with 458,000+ Singaporeans using SkillsFuture credits; (3) reframing "job redesign" as "human-with-AI job redesign", using design thinking to combine AI with human judgement, empathy and creativity; (4) mid-career PMEs face the highest risk and need career health to become mainstream, preventive and personalised; (5) generative AI poses higher risk to white-collar work than to manual / dexterity-based roles.`,
+    summary: `人力部供给委员会辩论是预算案中AI与劳动力议题的核心战场。部长陈诗龙指出AI正在改变工作本质——不仅是做什么工作，还包括工作如何组织、技能如何构建、职业如何演进。核心关切：(1)AI是颠覆者(gamechanger)——可增强也可替代工人，取决于工作和岗位如何重新设计；(2)SkillsFuture参与已超60万人，458,000+新加坡人使用了SkillsFuture学分；(3)要求将"岗位重新设计"升级为"人+AI岗位重新设计"，运用设计思维整合AI与人类判断力、同理心和创造力；(4)中年PME面临更高风险，需要将职业健康(career health)主流化、预防化和个性化；(5)生成式AI对白领职业的风险高于手工技能型岗位。`,
+    summaryEn: `The MOM Committee of Supply debate was the centrepiece for AI and workforce issues in the Budget. Minister Tan See Leng framed AI as transforming the nature of work — not only what jobs people do, but how work is organised, skills are built, and careers evolve. Key threads: (1) AI as a gamechanger that can augment or displace workers depending on how jobs are redesigned; (2) SkillsFuture participation exceeding 600,000, with 458,000+ Singaporeans using SkillsFuture credits; (3) reframing "job redesign" as "human-with-AI job redesign", using design thinking to combine AI with human judgement, empathy and creativity; (4) mid-career PMEs face the highest risk and need career health to become mainstream, preventive and personalised; (5) generative AI poses higher risk to white-collar work than to manual / dexterity-based roles.`,
     keyPoints: [
       'AI可增强也可替代工人，取决于岗位设计',
       'SkillsFuture参与超60万人',
@@ -430,13 +430,13 @@ export const debates: Debate[] = [
       'AI is a gamechanger. It can augment workers or displace them, depending on how work and jobs are redesigned.',
     notableQuoteEn:
       'AI is a gamechanger. It can augment workers or displace them, depending on how work and jobs are redesigned.',
-    summary: `The MOM Committee of Supply debate was the centrepiece for AI-workforce issues in Budget 2026. Minister Tan See Leng framed AI as transforming not just what jobs people do, but how work is organised, skills are built, and careers evolve. Key themes: (1) AI as "gamechanger" that can augment or displace workers depending on job redesign; (2) SkillsFuture participation exceeding 600,000 with 458,000+ using credits; (3) Reframing "job redesign" as "job redesign for human-with-AI" using design thinking; (4) Mid-career PMEs face highest risk from AI disruption — need to mainstream career health as preventive and personalised; (5) Generative AI poses higher risks to white-collar occupations while manual/dexterity roles remain comparatively resilient. MPs called for stronger support for SMEs in workforce transformation and questioned whether Industry Transformation Maps are evolving fast enough for the AI era.`,
+    transcriptEn: `The MOM Committee of Supply debate was the centrepiece for AI-workforce issues in Budget 2026. Minister Tan See Leng framed AI as transforming not just what jobs people do, but how work is organised, skills are built, and careers evolve. Key themes: (1) AI as "gamechanger" that can augment or displace workers depending on job redesign; (2) SkillsFuture participation exceeding 600,000 with 458,000+ using credits; (3) Reframing "job redesign" as "job redesign for human-with-AI" using design thinking; (4) Mid-career PMEs face highest risk from AI disruption — need to mainstream career health as preventive and personalised; (5) Generative AI poses higher risks to white-collar occupations while manual/dexterity roles remain comparatively resilient. MPs called for stronger support for SMEs in workforce transformation and questioned whether Industry Transformation Maps are evolving fast enough for the AI era.`,
     sourceUrl: 'https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=budget-2903',
   },
   {
     id: 'oral-answer-4051',
-    title: `Use of AI Chatbots for Counselling and Mental Health Support by Teenagers and Young Adults`,
-    zhTitle: `AI聊天机器人用于青少年心理咨询的风险与监管`,
+    titleEn: `Use of AI Chatbots for Counselling and Mental Health Support by Teenagers and Young Adults`,
+    title: `AI聊天机器人用于青少年心理咨询的风险与监管`,
     date: '2026-02-27',
     parliament: '15',
     type: 'Oral Answers to Questions',
@@ -448,8 +448,8 @@ export const debates: Debate[] = [
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI Safety & Ethics', 'AI Governance & Regulation', 'AI in Healthcare'],
-    zhSummary: `议员Dr Charlene Chen质询政府如何监测青少年使用AI聊天机器人进行心理咨询的趋势，以及保护弱势用户的措施。卫生部高级政务部长许宝琨回应：AI聊天机器人已无处不在，追踪其在心理健康方面的使用已不切实际。他明确指出，生成式AI聊天机器人不适合替代合格的心理健康服务提供者，因其存在误导信息和不当回应风险，可能造成伤害。但年轻人使用这些工具是因为匿名性和24/7可用性。政府的策略是推广合法替代资源（如mindline 1771、mindline.sg、CHAT），并通过《在线安全实践守则》要求应用商店实施年龄验证措施（2026年3月底前）。`,
-    summaryShortEn: `MP Dr Charlene Chen asked how the government is monitoring teen use of AI chatbots for mental health counselling and how it protects vulnerable users. Senior Minister of State for Health Dr Koh Poh Koon replied that AI chatbots are now ubiquitous, making tracking impractical. He stated clearly that generative AI chatbots are not suitable substitutes for qualified mental-health providers because of risks of misinformation and inappropriate responses that could cause harm. Young people turn to them for anonymity and 24/7 availability. The government's strategy: promote legitimate alternatives (mindline 1771, mindline.sg, CHAT), and require app stores under the Code of Practice for Online Safety to implement age assurance by end-March 2026.`,
+    summary: `议员Dr Charlene Chen质询政府如何监测青少年使用AI聊天机器人进行心理咨询的趋势，以及保护弱势用户的措施。卫生部高级政务部长许宝琨回应：AI聊天机器人已无处不在，追踪其在心理健康方面的使用已不切实际。他明确指出，生成式AI聊天机器人不适合替代合格的心理健康服务提供者，因其存在误导信息和不当回应风险，可能造成伤害。但年轻人使用这些工具是因为匿名性和24/7可用性。政府的策略是推广合法替代资源（如mindline 1771、mindline.sg、CHAT），并通过《在线安全实践守则》要求应用商店实施年龄验证措施（2026年3月底前）。`,
+    summaryEn: `MP Dr Charlene Chen asked how the government is monitoring teen use of AI chatbots for mental health counselling and how it protects vulnerable users. Senior Minister of State for Health Dr Koh Poh Koon replied that AI chatbots are now ubiquitous, making tracking impractical. He stated clearly that generative AI chatbots are not suitable substitutes for qualified mental-health providers because of risks of misinformation and inappropriate responses that could cause harm. Young people turn to them for anonymity and 24/7 availability. The government's strategy: promote legitimate alternatives (mindline 1771, mindline.sg, CHAT), and require app stores under the Code of Practice for Online Safety to implement age assurance by end-March 2026.`,
     keyPoints: [
       'AI聊天机器人已无处不在，追踪使用不切实际',
       '生成式AI不适合替代合格心理健康服务',
@@ -473,13 +473,13 @@ export const debates: Debate[] = [
     policySignalEn: 'AI mental-health apps to be guided rather than banned.',
     notableQuote: null,
     notableQuoteEn: null,
-    summary: `MP Dr Charlene Chen asked how MOH is monitoring teenagers' use of AI chatbots for mental health counselling and what safeguards protect vulnerable users. Senior Minister of State Dr Koh Poh Koon responded that AI chatbots are now so ubiquitous that tracking their use for counselling is no longer practical. He stated clearly that generative AI chatbots are not appropriate replacements for qualified mental health providers, citing risks of misinformation and inappropriate responses during serious crises. However, young people seek them out for anonymity and 24/7 accessibility. The government's approach: promote legitimate alternatives (mindline 1771, mindline.sg, CHAT) that offer the same advantages; require designated app stores to implement age assurance measures by March 2026 under the Code of Practice for Online Safety; expect developers to comply with the Model AI Governance Framework for Generative AI.`,
+    transcriptEn: `MP Dr Charlene Chen asked how MOH is monitoring teenagers' use of AI chatbots for mental health counselling and what safeguards protect vulnerable users. Senior Minister of State Dr Koh Poh Koon responded that AI chatbots are now so ubiquitous that tracking their use for counselling is no longer practical. He stated clearly that generative AI chatbots are not appropriate replacements for qualified mental health providers, citing risks of misinformation and inappropriate responses during serious crises. However, young people seek them out for anonymity and 24/7 accessibility. The government's approach: promote legitimate alternatives (mindline 1771, mindline.sg, CHAT) that offer the same advantages; require designated app stores to implement age assurance measures by March 2026 under the Code of Practice for Online Safety; expect developers to comply with the Model AI Governance Framework for Generative AI.`,
     sourceUrl: 'https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=oral-answer-4051',
   },
   {
     id: 'oral-answer-4087',
-    title: `Facilitating Adoption of AI in Energy Generation Sector`,
-    zhTitle: `推动AI在能源发电领域的应用`,
+    titleEn: `Facilitating Adoption of AI in Energy Generation Sector`,
+    title: `推动AI在能源发电领域的应用`,
     date: '2026-03-06',
     parliament: '15',
     type: 'Oral Answers to Questions',
@@ -491,8 +491,8 @@ export const debates: Debate[] = [
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI in Public Sector', 'AI Economy & Industry'],
-    zhSummary: `议员Valerie Lee质询政府采取什么措施推动AI在能源发电领域的应用，以及如何支持企业和家庭利用AI提高能源节约与效率。贸工部政务部长颜晓芳回应：(1)能源市场管理局(EMA)于2025年启动虚拟电厂(VPP)监管沙盒，利用AI预测可再生能源发电量并基于市场条件优化发电容量；(2)EMA内部已采用AI进行太阳能预测；(3)企业发展局支持新加坡商业联合会的"成本与碳减排计划"，利用AI工具帮助中小企业识别降本和脱碳机会。补充质询聚焦：能源领域AI专业人才培养计划，以及其他国家AI在电力调度和可再生能源领域的应用经验。`,
-    summaryShortEn: `MP Valerie Lee asked what government measures are pushing AI in the energy generation sector, and how households and businesses are supported to use AI for energy efficiency. MOS Gan Siow Huang responded: (1) the Energy Market Authority (EMA) launched a Virtual Power Plant (VPP) regulatory sandbox in 2025, using AI to forecast renewable output and optimise capacity against market conditions; (2) EMA already uses AI internally for solar forecasting; (3) Enterprise Singapore supports the SBF Cost and Carbon Reduction Programme, with AI tools helping SMEs identify cost-down and decarbonisation opportunities. Supplementaries focused on training AI talent for the energy sector and overseas experience with AI in dispatch and renewables.`,
+    summary: `议员Valerie Lee质询政府采取什么措施推动AI在能源发电领域的应用，以及如何支持企业和家庭利用AI提高能源节约与效率。贸工部政务部长颜晓芳回应：(1)能源市场管理局(EMA)于2025年启动虚拟电厂(VPP)监管沙盒，利用AI预测可再生能源发电量并基于市场条件优化发电容量；(2)EMA内部已采用AI进行太阳能预测；(3)企业发展局支持新加坡商业联合会的"成本与碳减排计划"，利用AI工具帮助中小企业识别降本和脱碳机会。补充质询聚焦：能源领域AI专业人才培养计划，以及其他国家AI在电力调度和可再生能源领域的应用经验。`,
+    summaryEn: `MP Valerie Lee asked what government measures are pushing AI in the energy generation sector, and how households and businesses are supported to use AI for energy efficiency. MOS Gan Siow Huang responded: (1) the Energy Market Authority (EMA) launched a Virtual Power Plant (VPP) regulatory sandbox in 2025, using AI to forecast renewable output and optimise capacity against market conditions; (2) EMA already uses AI internally for solar forecasting; (3) Enterprise Singapore supports the SBF Cost and Carbon Reduction Programme, with AI tools helping SMEs identify cost-down and decarbonisation opportunities. Supplementaries focused on training AI talent for the energy sector and overseas experience with AI in dispatch and renewables.`,
     keyPoints: [
       'EMA启动虚拟电厂AI监管沙盒',
       'AI用于太阳能发电预测',
@@ -514,13 +514,13 @@ export const debates: Debate[] = [
     policySignalEn: 'Energy AI moves from experimentation into a regulatory sandbox.',
     notableQuote: null,
     notableQuoteEn: null,
-    summary: `MP Valerie Lee asked about government measures to facilitate AI adoption in the energy sector and support for businesses/households leveraging AI for energy efficiency. Minister of State Gan Siow Huang responded: (1) EMA launched a regulatory sandbox for Virtual Power Plants (VPPs) in 2025, using AI to forecast renewable generation output and optimise capacity based on wholesale market conditions; (2) EMA has incorporated AI within internal energy management systems for solar forecasting; (3) Enterprise Singapore supports the Singapore Business Federation's Cost and Carbon Reduction Programme, which uses a proprietary AI tool to help SMEs identify cost reduction and decarbonisation opportunities. Supplementary questions focused on developing specialised AI talent for the energy workforce and studying international use cases of AI in power dispatch and renewables.`,
+    transcriptEn: `MP Valerie Lee asked about government measures to facilitate AI adoption in the energy sector and support for businesses/households leveraging AI for energy efficiency. Minister of State Gan Siow Huang responded: (1) EMA launched a regulatory sandbox for Virtual Power Plants (VPPs) in 2025, using AI to forecast renewable generation output and optimise capacity based on wholesale market conditions; (2) EMA has incorporated AI within internal energy management systems for solar forecasting; (3) Enterprise Singapore supports the Singapore Business Federation's Cost and Carbon Reduction Programme, which uses a proprietary AI tool to help SMEs identify cost reduction and decarbonisation opportunities. Supplementary questions focused on developing specialised AI talent for the energy workforce and studying international use cases of AI in power dispatch and renewables.`,
     sourceUrl: 'https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=oral-answer-4087',
   },
   {
     id: 'budget-2937',
-    title: `Budget 2026 Acknowledgement to the Chair — AI as Strategic Centrepiece`,
-    zhTitle: `2026预算案总结致辞：AI作为战略核心`,
+    titleEn: `Budget 2026 Acknowledgement to the Chair — AI as Strategic Centrepiece`,
+    title: `2026预算案总结致辞：AI作为战略核心`,
     date: '2026-03-06',
     parliament: '15',
     type: 'Budget',
@@ -532,8 +532,8 @@ export const debates: Debate[] = [
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI Strategy', 'AI Economy & Industry'],
-    zhSummary: `副总理兼财政部长黄循财在预算案闭幕致辞中明确指出AI是2026年预算案的核心特色。Budget 2026旨在将AI作为战略优势，推动全国范围的AI应用，使新加坡人能充分利用技术带来的机遇。致辞将AI定位为应对地缘政治碎片化、多边体系削弱背景下的国家行动计划的关键组成部分。`,
-    summaryShortEn: `In his closing speech to the Budget debate, Deputy Prime Minister and Finance Minister Lawrence Wong explicitly identified AI as the centrepiece of Budget 2026. Budget 2026 aims to make AI a strategic advantage, drive nationwide AI adoption, and allow Singaporeans to fully capture technology-driven opportunities. The speech positions AI as a key component of the national action plan against a backdrop of geopolitical fragmentation and a weakening multilateral order.`,
+    summary: `副总理兼财政部长黄循财在预算案闭幕致辞中明确指出AI是2026年预算案的核心特色。Budget 2026旨在将AI作为战略优势，推动全国范围的AI应用，使新加坡人能充分利用技术带来的机遇。致辞将AI定位为应对地缘政治碎片化、多边体系削弱背景下的国家行动计划的关键组成部分。`,
+    summaryEn: `In his closing speech to the Budget debate, Deputy Prime Minister and Finance Minister Lawrence Wong explicitly identified AI as the centrepiece of Budget 2026. Budget 2026 aims to make AI a strategic advantage, drive nationwide AI adoption, and allow Singaporeans to fully capture technology-driven opportunities. The speech positions AI as a key component of the national action plan against a backdrop of geopolitical fragmentation and a weakening multilateral order.`,
     keyPoints: ['AI是Budget 2026的核心特色', 'AI作为国家战略优势', '推动全国AI应用普及', '应对地缘政治新常态的工具'],
     keyPointsEn: [
       'AI is the centrepiece of Budget 2026',
@@ -550,13 +550,13 @@ export const debates: Debate[] = [
     policySignalEn: 'AI is elevated from a sectoral topic to the strategic spine of the entire Budget.',
     notableQuote: null,
     notableQuoteEn: null,
-    summary: `Deputy Prime Minister and Finance Minister Lawrence Wong's closing speech for the Budget debate explicitly positioned AI as the centrepiece of Budget 2026. He framed the Budget as Singapore's action plan to navigate a world that has become "more contested, more fragmented and ultimately, more dangerous." AI was identified as the key strategic advantage, with the Budget aiming to drive national AI adoption so Singaporeans can capture technology-driven opportunities. This marks the first time AI has been elevated from a sectoral topic to the defining strategic theme of an entire national budget.`,
+    transcriptEn: `Deputy Prime Minister and Finance Minister Lawrence Wong's closing speech for the Budget debate explicitly positioned AI as the centrepiece of Budget 2026. He framed the Budget as Singapore's action plan to navigate a world that has become "more contested, more fragmented and ultimately, more dangerous." AI was identified as the key strategic advantage, with the Budget aiming to drive national AI adoption so Singaporeans can capture technology-driven opportunities. This marks the first time AI has been elevated from a sectoral topic to the defining strategic theme of an entire national budget.`,
     sourceUrl: 'https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=budget-2937',
   },
   {
     id: 'budget-2934',
-    title: `MSF Committee of Supply 2026 — Children's Safe AI Use & Screen Time`,
-    zhTitle: `2026社会及家庭发展部供给委员会辩论：儿童AI安全与屏幕时间`,
+    titleEn: `MSF Committee of Supply 2026 — Children's Safe AI Use & Screen Time`,
+    title: `2026社会及家庭发展部供给委员会辩论：儿童AI安全与屏幕时间`,
     date: '2026-03-06',
     parliament: '15',
     type: 'Budget',
@@ -568,8 +568,8 @@ export const debates: Debate[] = [
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI Safety & Ethics', 'AI Governance & Regulation'],
-    zhSummary: `社会及家庭发展部政务部长Zhulkarnain在COS辩论中回应多名议员关于儿童屏幕时间和网络安全的关切。政府的策略包括帮助儿童安全上网、负责任地使用AI，以及通过减少屏幕时间让家长为孩子创造更多亲子互动机会。讨论聚焦于如何在AI时代保护未成年人，同时不阻碍他们学习和适应新技术。`,
-    summaryShortEn: `MOS Zhulkarnain responded to several MPs' concerns about children's screen time and online safety during the MSF Committee of Supply debate. The government's strategy includes helping children stay safe online, use AI responsibly, and — by reducing screen time — giving parents more space for family interaction. The discussion centred on protecting minors in the AI era without blocking their ability to learn and adapt to new technologies.`,
+    summary: `社会及家庭发展部政务部长Zhulkarnain在COS辩论中回应多名议员关于儿童屏幕时间和网络安全的关切。政府的策略包括帮助儿童安全上网、负责任地使用AI，以及通过减少屏幕时间让家长为孩子创造更多亲子互动机会。讨论聚焦于如何在AI时代保护未成年人，同时不阻碍他们学习和适应新技术。`,
+    summaryEn: `MOS Zhulkarnain responded to several MPs' concerns about children's screen time and online safety during the MSF Committee of Supply debate. The government's strategy includes helping children stay safe online, use AI responsibly, and — by reducing screen time — giving parents more space for family interaction. The discussion centred on protecting minors in the AI era without blocking their ability to learn and adapt to new technologies.`,
     keyPoints: ['帮助儿童安全使用AI', '减少屏幕时间创造亲子互动', '在保护与学习之间寻找平衡'],
     keyPointsEn: [
       'Help children use AI safely',
@@ -585,13 +585,13 @@ export const debates: Debate[] = [
     policySignalEn: "Children's AI safety becomes a family-policy issue.",
     notableQuote: null,
     notableQuoteEn: null,
-    summary: `Minister of State Zhulkarnain responded to multiple MPs' concerns about children's screen time and online safety during the MSF Committee of Supply debate. The government's approach focuses on helping children navigate the online world safely and use AI responsibly. By reducing screen time, the government hopes parents can create more opportunities for family interaction. The discussion centred on balancing child protection with the need for young people to learn and adapt to new technologies in the AI era.`,
+    transcriptEn: `Minister of State Zhulkarnain responded to multiple MPs' concerns about children's screen time and online safety during the MSF Committee of Supply debate. The government's approach focuses on helping children navigate the online world safely and use AI responsibly. By reducing screen time, the government hopes parents can create more opportunities for family interaction. The discussion centred on balancing child protection with the need for young people to learn and adapt to new technologies in the AI era.`,
     sourceUrl: 'https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=budget-2934',
   },
   {
     id: 'budget-2930',
-    title: `MSF Committee of Supply 2026 — AI Deepfake Protection & Disability Employment`,
-    zhTitle: `2026社会及家庭发展部供给委员会辩论：AI深伪保护与残障就业`,
+    titleEn: `MSF Committee of Supply 2026 — AI Deepfake Protection & Disability Employment`,
+    title: `2026社会及家庭发展部供给委员会辩论：AI深伪保护与残障就业`,
     date: '2026-03-05',
     parliament: '15',
     type: 'Budget',
@@ -603,8 +603,8 @@ export const debates: Debate[] = [
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI Safety & Ethics', 'AI Economy & Industry', 'AI Governance & Regulation'],
-    zhSummary: `MSF供给委员会辩论中两个AI议题引发关注。议员Rachel Ong提出AI深伪技术（特别是性剥削内容）对儿童和弱势群体的威胁，要求政府说明保护措施以及MSF如何与其他部门协调应对。同时，议员Neo Kok Beng指出AI自动化正在取代残障人士传统就业岗位（包装、分拣、基础行政、编程），呼吁从"保护性就业"转向建设残障人士在AI经济中的韧性。`,
-    summaryShortEn: `Two AI issues drew attention in the MSF Committee of Supply debate. MP Rachel Ong raised the threat of AI deepfakes — especially sexually exploitative content — to children and vulnerable groups, asking what safeguards exist and how MSF coordinates with other agencies. Separately, MP Neo Kok Beng warned that AI automation is displacing traditional jobs for persons with disabilities (packing, sorting, basic admin, coding), calling for a shift from "protective employment" to building disability employment resilience in the AI economy.`,
+    summary: `MSF供给委员会辩论中两个AI议题引发关注。议员Rachel Ong提出AI深伪技术（特别是性剥削内容）对儿童和弱势群体的威胁，要求政府说明保护措施以及MSF如何与其他部门协调应对。同时，议员Neo Kok Beng指出AI自动化正在取代残障人士传统就业岗位（包装、分拣、基础行政、编程），呼吁从"保护性就业"转向建设残障人士在AI经济中的韧性。`,
+    summaryEn: `Two AI issues drew attention in the MSF Committee of Supply debate. MP Rachel Ong raised the threat of AI deepfakes — especially sexually exploitative content — to children and vulnerable groups, asking what safeguards exist and how MSF coordinates with other agencies. Separately, MP Neo Kok Beng warned that AI automation is displacing traditional jobs for persons with disabilities (packing, sorting, basic admin, coding), calling for a shift from "protective employment" to building disability employment resilience in the AI economy.`,
     keyPoints: [
       'AI深伪性剥削内容威胁儿童和弱势群体',
       '要求跨部门协调应对AI滥用',
@@ -627,13 +627,13 @@ export const debates: Debate[] = [
       'AI deepfake legislation and disability employment transition emerge as new social-policy priorities.',
     notableQuote: null,
     notableQuoteEn: null,
-    summary: `Two significant AI issues emerged in the MSF Committee of Supply debate. MP Rachel Ong raised concerns about sexually exploitative deepfake content targeting children and vulnerable persons, asking what safeguards exist and how MSF coordinates with other government agencies. Separately, MP Neo Kok Beng highlighted that AI-driven automation is displacing traditional jobs for persons with disabilities — packing, sorting, basic admin, and even coding — warning that inclusive employment gains of the past decade could reverse without proactive intervention. He called for a shift from "protective employment" to building disability employment resilience in the AI economy.`,
+    transcriptEn: `Two significant AI issues emerged in the MSF Committee of Supply debate. MP Rachel Ong raised concerns about sexually exploitative deepfake content targeting children and vulnerable persons, asking what safeguards exist and how MSF coordinates with other government agencies. Separately, MP Neo Kok Beng highlighted that AI-driven automation is displacing traditional jobs for persons with disabilities — packing, sorting, basic admin, and even coding — warning that inclusive employment gains of the past decade could reverse without proactive intervention. He called for a shift from "protective employment" to building disability employment resilience in the AI economy.`,
     sourceUrl: 'https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=budget-2930',
   },
   {
     id: 'budget-2929',
-    title: `MCCY Committee of Supply 2026 — Preparing Malay/Muslim Community for AI Economy`,
-    zhTitle: `2026文化社区及青年部供给委员会辩论：马来穆斯林社群的AI经济准备`,
+    titleEn: `MCCY Committee of Supply 2026 — Preparing Malay/Muslim Community for AI Economy`,
+    title: `2026文化社区及青年部供给委员会辩论：马来穆斯林社群的AI经济准备`,
     date: '2026-03-05',
     parliament: '15',
     type: 'Budget',
@@ -645,8 +645,8 @@ export const debates: Debate[] = [
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI Economy & Industry', 'AI in Education'],
-    zhSummary: `MCCY供给委员会辩论中，多名马来族议员聚焦社群在AI经济中的准备度。议员Saktiandi Supaat提出AI转型战略必须确保儿童和青年不仅会使用技术，还能创造价值。他举例一名中四学生对AI感兴趣但缺乏深入理解。议员Wan Rizal关注青年从高等教育到AI驱动就业市场的过渡。讨论提到国家AI委员会、国家AI使命和AI Champions计划为马来穆斯林企业带来新机遇，但质问：社群是否准备好迈入这个新世界？`,
-    summaryShortEn: `In the MCCY Committee of Supply debate, several Malay/Muslim MPs focused on the community's readiness for the AI economy. MP Saktiandi Supaat argued that AI transformation strategy must ensure children and youth not only use technology but create value with it, citing a Sec 4 student who is curious about AI but lacks deeper understanding. MP Wan Rizal addressed youth transitions from higher education into the AI-driven labour market. The debate referenced the National AI Council, National AI Mission and AI Champions programme as creating new opportunities for Malay/Muslim businesses, while asking: is the community ready to step into this new world?`,
+    summary: `MCCY供给委员会辩论中，多名马来族议员聚焦社群在AI经济中的准备度。议员Saktiandi Supaat提出AI转型战略必须确保儿童和青年不仅会使用技术，还能创造价值。他举例一名中四学生对AI感兴趣但缺乏深入理解。议员Wan Rizal关注青年从高等教育到AI驱动就业市场的过渡。讨论提到国家AI委员会、国家AI使命和AI Champions计划为马来穆斯林企业带来新机遇，但质问：社群是否准备好迈入这个新世界？`,
+    summaryEn: `In the MCCY Committee of Supply debate, several Malay/Muslim MPs focused on the community's readiness for the AI economy. MP Saktiandi Supaat argued that AI transformation strategy must ensure children and youth not only use technology but create value with it, citing a Sec 4 student who is curious about AI but lacks deeper understanding. MP Wan Rizal addressed youth transitions from higher education into the AI-driven labour market. The debate referenced the National AI Council, National AI Mission and AI Champions programme as creating new opportunities for Malay/Muslim businesses, while asking: is the community ready to step into this new world?`,
     keyPoints: [
       'AI转型需确保青年能创造价值而非仅消费技术',
       '马来穆斯林企业需把握国家AI使命机遇',
@@ -668,13 +668,13 @@ export const debates: Debate[] = [
     policySignalEn: 'AI inclusion becomes a community-policy issue.',
     notableQuote: null,
     notableQuoteEn: null,
-    summary: `Multiple Malay/Muslim MPs focused on community readiness for the AI economy during the MCCY Committee of Supply debate. MP Saktiandi Supaat argued that AI transformation strategy must ensure children and youth can create value with technology, not just consume it. He cited a Secondary 4 student interested in AI but lacking deeper understanding. MP Wan Rizal addressed youth transitions from education to AI-driven job markets. The discussion referenced the National AI Council, National AI Mission and AI Champions programme as creating new opportunities for Malay/Muslim businesses, while questioning whether the community is ready to seize them.`,
+    transcriptEn: `Multiple Malay/Muslim MPs focused on community readiness for the AI economy during the MCCY Committee of Supply debate. MP Saktiandi Supaat argued that AI transformation strategy must ensure children and youth can create value with technology, not just consume it. He cited a Secondary 4 student interested in AI but lacking deeper understanding. MP Wan Rizal addressed youth transitions from education to AI-driven job markets. The discussion referenced the National AI Council, National AI Mission and AI Champions programme as creating new opportunities for Malay/Muslim businesses, while questioning whether the community is ready to seize them.`,
     sourceUrl: 'https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=budget-2929',
   },
   {
     id: 'budget-2918',
-    title: `MOH Committee of Supply 2026 — Generative AI for Clinical Documentation`,
-    zhTitle: `2026卫生部供给委员会辩论：生成式AI辅助临床文档`,
+    titleEn: `MOH Committee of Supply 2026 — Generative AI for Clinical Documentation`,
+    title: `2026卫生部供给委员会辩论：生成式AI辅助临床文档`,
     date: '2026-03-04',
     parliament: '15',
     type: 'Budget',
@@ -686,8 +686,8 @@ export const debates: Debate[] = [
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI in Healthcare', 'AI in Public Sector'],
-    zhSummary: `MOH供给委员会辩论中，议员Dr Choo Pei Ling专题发言"医疗技术与AI"。她指出临床医生面临临床复杂性、行政负担和协调需求三重压力，生成式AI可辅助医疗文档记录，临床决策支持系统可综合处理复杂信息。她呼吁推动AI在医疗中的实际应用，强调技术落地需要解决从实验到规模化的障碍。`,
-    summaryShortEn: `During the MOH Committee of Supply debate, MP Dr Choo Pei Ling delivered a focused speech on "healthcare technology and AI". She argued that clinicians face a triple burden of clinical complexity, administrative load, and coordination demands; generative AI can assist with clinical documentation, while clinical decision-support systems can synthesise complex information. She called for accelerating AI deployment in healthcare and stressed that scaling from pilots to routine clinical practice requires solving the rollout barriers.`,
+    summary: `MOH供给委员会辩论中，议员Dr Choo Pei Ling专题发言"医疗技术与AI"。她指出临床医生面临临床复杂性、行政负担和协调需求三重压力，生成式AI可辅助医疗文档记录，临床决策支持系统可综合处理复杂信息。她呼吁推动AI在医疗中的实际应用，强调技术落地需要解决从实验到规模化的障碍。`,
+    summaryEn: `During the MOH Committee of Supply debate, MP Dr Choo Pei Ling delivered a focused speech on "healthcare technology and AI". She argued that clinicians face a triple burden of clinical complexity, administrative load, and coordination demands; generative AI can assist with clinical documentation, while clinical decision-support systems can synthesise complex information. She called for accelerating AI deployment in healthcare and stressed that scaling from pilots to routine clinical practice requires solving the rollout barriers.`,
     keyPoints: [
       '生成式AI辅助临床文档记录',
       '临床决策支持系统综合复杂信息',
@@ -709,13 +709,13 @@ export const debates: Debate[] = [
     policySignalEn: 'Healthcare AI moves from pilots into routine clinical practice.',
     notableQuote: null,
     notableQuoteEn: null,
-    summary: `During the MOH Committee of Supply debate, MP Dr Choo Pei Ling delivered a focused speech on technology and AI in healthcare. She highlighted that clinicians face a triple burden of clinical complexity, administrative load, and coordination demands. She advocated for generative AI to assist with clinical documentation and clinical decision-support systems to synthesise complex information. The speech called for accelerating AI deployment in healthcare while addressing barriers to scaling from pilots to routine clinical practice.`,
+    transcriptEn: `During the MOH Committee of Supply debate, MP Dr Choo Pei Ling delivered a focused speech on technology and AI in healthcare. She highlighted that clinicians face a triple burden of clinical complexity, administrative load, and coordination demands. She advocated for generative AI to assist with clinical documentation and clinical decision-support systems to synthesise complex information. The speech called for accelerating AI deployment in healthcare while addressing barriers to scaling from pilots to routine clinical practice.`,
     sourceUrl: 'https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=budget-2918',
   },
   {
     id: 'budget-2916',
-    title: `MOH Committee of Supply 2026 — AI as National Healthcare Mission`,
-    zhTitle: `2026卫生部供给委员会辩论：AI作为国家医疗使命`,
+    titleEn: `MOH Committee of Supply 2026 — AI as National Healthcare Mission`,
+    title: `2026卫生部供给委员会辩论：AI作为国家医疗使命`,
     date: '2026-03-04',
     parliament: '15',
     type: 'Budget',
@@ -743,8 +743,8 @@ export const debates: Debate[] = [
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI in Healthcare', 'AI Strategy', 'AI in Public Sector'],
-    zhSummary: `MOH供给委员会辩论中，议员Mariam Jaafar发表重要AI医疗政策演说。她质问部长一个更大的问题：如果医疗真的是国家AI使命，目标就不能只是渐进式采用，必须建设一个完整的系统——基础设施、治理、人才、底层管道——让AI安全、有效、大规模地改善每一位患者的治疗效果。她指出新加坡需要培养同时精通临床实践和机器学习的"翻译型"人才。一旦证明AI能在大规模上安全可靠地改善患者结果，新加坡将获得全球竞争优势。`,
-    summaryShortEn: `During the MOH Committee of Supply debate, MP Mariam Jaafar delivered a landmark speech on AI in healthcare policy. She put a bigger question to the Minister: if healthcare is truly a national AI mission, the goal cannot just be incremental adoption — Singapore must build a complete system (infrastructure, governance, talent, and the underlying plumbing) so that AI safely, effectively and at scale improves outcomes for every patient. She identified the need to cultivate "translator" talent fluent in both clinical realities and machine learning. Once AI is shown to deliver real patient benefit safely and reliably at scale, Singapore will gain a decisive global competitive advantage.`,
+    summary: `MOH供给委员会辩论中，议员Mariam Jaafar发表重要AI医疗政策演说。她质问部长一个更大的问题：如果医疗真的是国家AI使命，目标就不能只是渐进式采用，必须建设一个完整的系统——基础设施、治理、人才、底层管道——让AI安全、有效、大规模地改善每一位患者的治疗效果。她指出新加坡需要培养同时精通临床实践和机器学习的"翻译型"人才。一旦证明AI能在大规模上安全可靠地改善患者结果，新加坡将获得全球竞争优势。`,
+    summaryEn: `During the MOH Committee of Supply debate, MP Mariam Jaafar delivered a landmark speech on AI in healthcare policy. She put a bigger question to the Minister: if healthcare is truly a national AI mission, the goal cannot just be incremental adoption — Singapore must build a complete system (infrastructure, governance, talent, and the underlying plumbing) so that AI safely, effectively and at scale improves outcomes for every patient. She identified the need to cultivate "translator" talent fluent in both clinical realities and machine learning. Once AI is shown to deliver real patient benefit safely and reliably at scale, Singapore will gain a decisive global competitive advantage.`,
     keyPoints: [
       '医疗AI目标不能只是渐进式采用',
       '需要建设完整的AI医疗生态系统',
@@ -766,13 +766,13 @@ export const debates: Debate[] = [
     policySignalEn: 'Healthcare AI shifts from incremental adoption to systemic transformation.',
     notableQuote: null,
     notableQuoteEn: null,
-    summary: `MP Mariam Jaafar delivered a landmark speech on AI in healthcare during the MOH Committee of Supply debate. She challenged the Minister with a bigger question: if healthcare is truly a national AI mission, the goal cannot be incremental adoption. Singapore must build a complete system — the infrastructure, governance, talent, and plumbing — that lets AI transform care safely, effectively, and at scale for every patient. She identified a critical "translation problem": the need for professionals fluent in both clinical realities and machine learning. She argued that once Singapore demonstrates AI delivers real patient benefit safely and reliably at scale, it will gain a decisive global competitive advantage.`,
+    transcriptEn: `MP Mariam Jaafar delivered a landmark speech on AI in healthcare during the MOH Committee of Supply debate. She challenged the Minister with a bigger question: if healthcare is truly a national AI mission, the goal cannot be incremental adoption. Singapore must build a complete system — the infrastructure, governance, talent, and plumbing — that lets AI transform care safely, effectively, and at scale for every patient. She identified a critical "translation problem": the need for professionals fluent in both clinical realities and machine learning. She argued that once Singapore demonstrates AI delivers real patient benefit safely and reliably at scale, it will gain a decisive global competitive advantage.`,
     sourceUrl: 'https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=budget-2916',
   },
   {
     id: 'budget-2915',
-    title: `MOT Committee of Supply 2026 — AI-Enabled Infrastructure & Cross-Border Smart Factories`,
-    zhTitle: `2026交通部供给委员会辩论：AI驱动基础设施与跨境智慧工厂`,
+    titleEn: `MOT Committee of Supply 2026 — AI-Enabled Infrastructure & Cross-Border Smart Factories`,
+    title: `2026交通部供给委员会辩论：AI驱动基础设施与跨境智慧工厂`,
     date: '2026-03-04',
     parliament: '15',
     type: 'Budget',
@@ -798,8 +798,8 @@ export const debates: Debate[] = [
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI in Public Sector', 'AI Economy & Industry', 'AI Infrastructure & Research'],
-    zhSummary: `交通部供给委员会辩论涉及两个重要AI议题。一是大士新一代港口利用自动化、先进传感器、预测分析和AI保持基础设施全球竞争力，但需负责任部署以管理劳动力转型。二是议员提出更宏大的愿景：在新柔廖(Sijori)框架下，国家AI使命可作为"力量倍增器"，实现跨境智慧工厂、多式联运优化、贸易金融嵌入和区域医药生物制造供应链强化，将基础设施扩张升级为协调的AI驱动经济引擎。`,
-    summaryShortEn: `The MOT Committee of Supply debate covered two significant AI threads. First, the Next-Generation Port at Tuas uses automation, advanced sensors, predictive analytics and AI to keep the infrastructure globally competitive — but requires responsible deployment to manage workforce transitions. Second, an MP proposed a bolder vision: under the Sijori framework, the National AI Mission can act as a "force multiplier", enabling cross-border smart factories, multimodal logistics optimisation, embedded trade finance, and stronger regional medical/bio-manufacturing supply chains — turning infrastructure expansion into a coordinated, AI-powered economic engine.`,
+    summary: `交通部供给委员会辩论涉及两个重要AI议题。一是大士新一代港口利用自动化、先进传感器、预测分析和AI保持基础设施全球竞争力，但需负责任部署以管理劳动力转型。二是议员提出更宏大的愿景：在新柔廖(Sijori)框架下，国家AI使命可作为"力量倍增器"，实现跨境智慧工厂、多式联运优化、贸易金融嵌入和区域医药生物制造供应链强化，将基础设施扩张升级为协调的AI驱动经济引擎。`,
+    summaryEn: `The MOT Committee of Supply debate covered two significant AI threads. First, the Next-Generation Port at Tuas uses automation, advanced sensors, predictive analytics and AI to keep the infrastructure globally competitive — but requires responsible deployment to manage workforce transitions. Second, an MP proposed a bolder vision: under the Sijori framework, the National AI Mission can act as a "force multiplier", enabling cross-border smart factories, multimodal logistics optimisation, embedded trade finance, and stronger regional medical/bio-manufacturing supply chains — turning infrastructure expansion into a coordinated, AI-powered economic engine.`,
     keyPoints: [
       '大士新一代港口部署AI和自动化',
       '国家AI使命作为区域经济"力量倍增器"',
@@ -821,13 +821,13 @@ export const debates: Debate[] = [
     policySignalEn: 'AI moves from point-use cases to being positioned as a regional economic engine.',
     notableQuote: null,
     notableQuoteEn: null,
-    summary: `The MOT Committee of Supply debate featured two significant AI dimensions. First, the Next-Generation Port at Tuas uses frontier technologies — automation, advanced sensors, predictive analytics and AI — to stay globally competitive, while stressing responsible deployment to manage workforce transitions. Second, an MP laid out a bolder vision: the national AI mission as a "force multiplier" under the Sijori framework, enabling cross-border smart factories, optimising multimodal logistics flows, embedding trade finance, and strengthening regional medical and bio-manufacturing supply chains. The strategic question: how to lift infrastructure expansion into a coordinated AI-enabled economic engine generating high-value jobs.`,
+    transcriptEn: `The MOT Committee of Supply debate featured two significant AI dimensions. First, the Next-Generation Port at Tuas uses frontier technologies — automation, advanced sensors, predictive analytics and AI — to stay globally competitive, while stressing responsible deployment to manage workforce transitions. Second, an MP laid out a bolder vision: the national AI mission as a "force multiplier" under the Sijori framework, enabling cross-border smart factories, optimising multimodal logistics flows, embedding trade finance, and strengthening regional medical and bio-manufacturing supply chains. The strategic question: how to lift infrastructure expansion into a coordinated AI-enabled economic engine generating high-value jobs.`,
     sourceUrl: 'https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=budget-2915',
   },
   {
     id: 'budget-2914',
-    title: `MND Committee of Supply 2026 — AI & Robotics in Construction`,
-    zhTitle: `2026国家发展部供给委员会辩论：AI与机器人改造建筑业`,
+    titleEn: `MND Committee of Supply 2026 — AI & Robotics in Construction`,
+    title: `2026国家发展部供给委员会辩论：AI与机器人改造建筑业`,
     date: '2026-03-04',
     parliament: '15',
     type: 'Budget',
@@ -839,8 +839,8 @@ export const debates: Debate[] = [
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI Economy & Industry', 'AI in Public Sector'],
-    zhSummary: `国家发展部供给委员会辩论中讨论了AI和机器人技术对建筑业的变革潜力。技术进步如何帮助建筑行业节省时间、降低成本、减少人力需求成为核心议题。AI和机器人有望将建筑业转变为快速、智能和高度自动化的行业。`,
-    summaryShortEn: `The MND Committee of Supply debate discussed how AI and robotics could remake construction. The core thread: how tech progress can save time, cut costs, and reduce manpower demand. AI and robotics promise to turn construction into a fast, smart, highly automated industry, addressing the sector's chronic labour shortages and productivity issues.`,
+    summary: `国家发展部供给委员会辩论中讨论了AI和机器人技术对建筑业的变革潜力。技术进步如何帮助建筑行业节省时间、降低成本、减少人力需求成为核心议题。AI和机器人有望将建筑业转变为快速、智能和高度自动化的行业。`,
+    summaryEn: `The MND Committee of Supply debate discussed how AI and robotics could remake construction. The core thread: how tech progress can save time, cut costs, and reduce manpower demand. AI and robotics promise to turn construction into a fast, smart, highly automated industry, addressing the sector's chronic labour shortages and productivity issues.`,
     keyPoints: ['AI和机器人改造建筑业', '节省时间、降低成本、减少人力', '推动建筑业智能化自动化'],
     keyPointsEn: [
       'AI and robotics reshape construction',
@@ -856,13 +856,13 @@ export const debates: Debate[] = [
     policySignalEn: 'AI automation accelerates in the construction industry.',
     notableQuote: null,
     notableQuoteEn: null,
-    summary: `The MND Committee of Supply debate looked at how AI and robotics could remake Singapore's construction industry. The key question was how tech advances can save time, cut costs and reduce manpower requirements. AI and robotics were identified as capable of turning construction into a fast, smart and highly automated industry, addressing chronic labour shortages and productivity challenges in the sector.`,
+    transcriptEn: `The MND Committee of Supply debate looked at how AI and robotics could remake Singapore's construction industry. The key question was how tech advances can save time, cut costs and reduce manpower requirements. AI and robotics were identified as capable of turning construction into a fast, smart and highly automated industry, addressing chronic labour shortages and productivity challenges in the sector.`,
     sourceUrl: 'https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=budget-2914',
   },
   {
     id: 'budget-2913',
-    title: `MSE Committee of Supply 2026 — AI for Recycling & Waste Management`,
-    zhTitle: `2026环境可持续部供给委员会辩论：AI提升回收效率`,
+    titleEn: `MSE Committee of Supply 2026 — AI for Recycling & Waste Management`,
+    title: `2026环境可持续部供给委员会辩论：AI提升回收效率`,
     date: '2026-03-04',
     parliament: '15',
     type: 'Budget',
@@ -874,8 +874,8 @@ export const debates: Debate[] = [
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI in Public Sector', 'AI Economy & Industry'],
-    zhSummary: `MSE供给委员会辩论（续）中，政务部长回应议员关于AI技术应用的提问。讨论集中在利用AI提高回收流的特异性和灵敏度，改善废物分类和资源回收效率。政府表示正在探索AI技术以增强新加坡食品故事2.0中的食品生产效率。`,
-    summaryShortEn: `In the continuation of the MSE Committee of Supply debate, the MOS responded to MPs' questions about AI applications. The discussion centred on using AI to improve the specificity and sensitivity of recycling streams and to lift waste-sorting and resource recovery efficiency. The government said it is exploring AI to boost food production efficiency under Singapore Food Story 2.0.`,
+    summary: `MSE供给委员会辩论（续）中，政务部长回应议员关于AI技术应用的提问。讨论集中在利用AI提高回收流的特异性和灵敏度，改善废物分类和资源回收效率。政府表示正在探索AI技术以增强新加坡食品故事2.0中的食品生产效率。`,
+    summaryEn: `In the continuation of the MSE Committee of Supply debate, the MOS responded to MPs' questions about AI applications. The discussion centred on using AI to improve the specificity and sensitivity of recycling streams and to lift waste-sorting and resource recovery efficiency. The government said it is exploring AI to boost food production efficiency under Singapore Food Story 2.0.`,
     keyPoints: ['AI提高回收分类的特异性和灵敏度', '改善废物管理效率'],
     keyPointsEn: ['AI improves specificity and sensitivity of recycling streams', 'Better waste management efficiency'],
     governmentStance: '支持AI在环保领域的应用',
@@ -887,13 +887,13 @@ export const debates: Debate[] = [
     policySignalEn: 'Practical AI applications in environmental protection and the circular economy.',
     notableQuote: null,
     notableQuoteEn: null,
-    summary: `In the continuation of the MSE Committee of Supply debate, the Minister of State responded to MPs' questions about AI technology applications. The discussion focused on using AI to improve the specificity and sensitivity of recycling streams, enhancing waste sorting and resource recovery efficiency. The government indicated it is exploring AI technology to boost food production efficiency under the Singapore Food Story 2.0 initiative.`,
+    transcriptEn: `In the continuation of the MSE Committee of Supply debate, the Minister of State responded to MPs' questions about AI technology applications. The discussion focused on using AI to improve the specificity and sensitivity of recycling streams, enhancing waste sorting and resource recovery efficiency. The government indicated it is exploring AI technology to boost food production efficiency under the Singapore Food Story 2.0 initiative.`,
     sourceUrl: 'https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=budget-2913',
   },
   {
     id: 'budget-2907',
-    title: `MSE Committee of Supply 2026 — AI for Climate & Weather Prediction`,
-    zhTitle: `2026环境可持续部供给委员会辩论：AI气候与天气预测`,
+    titleEn: `MSE Committee of Supply 2026 — AI for Climate & Weather Prediction`,
+    title: `2026环境可持续部供给委员会辩论：AI气候与天气预测`,
     date: '2026-03-03',
     parliament: '15',
     type: 'Budget',
@@ -905,8 +905,8 @@ export const debates: Debate[] = [
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI in Public Sector', 'AI Infrastructure & Research'],
-    zhSummary: `环境可持续部长傅海燕在供给委员会辩论中介绍AI在气候预测中的应用。MSE研究项目之一利用AI增强暴雨和强风的预测能力，提高预警准确性。这是政府在气候适应策略中系统性引入AI的具体案例。`,
-    summaryShortEn: `Sustainability and the Environment Minister Grace Fu spoke on AI's role in climate prediction during the MSE Committee of Supply debate. One MSE research project uses AI to improve forecasts of heavy rainfall and strong winds, sharpening early warnings. This is a concrete example of systematically embedding AI in the government's climate-adaptation strategy.`,
+    summary: `环境可持续部长傅海燕在供给委员会辩论中介绍AI在气候预测中的应用。MSE研究项目之一利用AI增强暴雨和强风的预测能力，提高预警准确性。这是政府在气候适应策略中系统性引入AI的具体案例。`,
+    summaryEn: `Sustainability and the Environment Minister Grace Fu spoke on AI's role in climate prediction during the MSE Committee of Supply debate. One MSE research project uses AI to improve forecasts of heavy rainfall and strong winds, sharpening early warnings. This is a concrete example of systematically embedding AI in the government's climate-adaptation strategy.`,
     keyPoints: ['AI增强暴雨和强风预测', '提高气候预警准确性', '气候适应策略中系统引入AI'],
     keyPointsEn: [
       'AI improves heavy rain and strong wind forecasts',
@@ -922,13 +922,13 @@ export const debates: Debate[] = [
     policySignalEn: 'AI lands concretely in public safety and climate adaptation.',
     notableQuote: null,
     notableQuoteEn: null,
-    summary: `Minister for Sustainability and the Environment Grace Fu addressed AI applications in climate prediction during the MSE Committee of Supply debate. Among the Ministry's research programmes, one project covers the use of AI to enhance predictions of heavy rainfall and strong winds, improving Singapore's ability to issue accurate weather warnings. This represents a concrete example of systematically integrating AI into the government's climate adaptation strategy.`,
+    transcriptEn: `Minister for Sustainability and the Environment Grace Fu addressed AI applications in climate prediction during the MSE Committee of Supply debate. Among the Ministry's research programmes, one project covers the use of AI to enhance predictions of heavy rainfall and strong winds, improving Singapore's ability to issue accurate weather warnings. This represents a concrete example of systematically integrating AI into the government's climate adaptation strategy.`,
     sourceUrl: 'https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=budget-2907',
   },
   {
     id: 'budget-2905',
-    title: `MSE Committee of Supply 2026 — AI for Climate Resilience`,
-    zhTitle: `2026环境可持续部供给委员会辩论：AI增强气候韧性`,
+    titleEn: `MSE Committee of Supply 2026 — AI for Climate Resilience`,
+    title: `2026环境可持续部供给委员会辩论：AI增强气候韧性`,
     date: '2026-03-03',
     parliament: '15',
     type: 'Budget',
@@ -954,8 +954,8 @@ export const debates: Debate[] = [
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI in Public Sector', 'AI Infrastructure & Research'],
-    zhSummary: `MSE供给委员会辩论中，议员质询MSE是否探索利用AI增强新加坡气候韧性举措。讨论聚焦于利用最新技术预测极端天气事件，以及AI在提升项目精准度方面的潜力。多名议员关注气候变化对新加坡的实际影响以及技术应对手段。`,
-    summaryShortEn: `During the MSE Committee of Supply debate, MPs asked whether the Ministry has explored using AI to strengthen Singapore's climate resilience initiatives. The discussion centred on using the latest technology to forecast extreme weather and the potential for AI to sharpen project accuracy. Multiple MPs raised concerns about the practical impacts of climate change on Singapore and the technological responses.`,
+    summary: `MSE供给委员会辩论中，议员质询MSE是否探索利用AI增强新加坡气候韧性举措。讨论聚焦于利用最新技术预测极端天气事件，以及AI在提升项目精准度方面的潜力。多名议员关注气候变化对新加坡的实际影响以及技术应对手段。`,
+    summaryEn: `During the MSE Committee of Supply debate, MPs asked whether the Ministry has explored using AI to strengthen Singapore's climate resilience initiatives. The discussion centred on using the latest technology to forecast extreme weather and the potential for AI to sharpen project accuracy. Multiple MPs raised concerns about the practical impacts of climate change on Singapore and the technological responses.`,
     keyPoints: ['探索AI增强气候韧性', '利用AI预测极端天气事件', '提升气候项目精准度'],
     keyPointsEn: [
       'Exploring AI to strengthen climate resilience',
@@ -971,13 +971,13 @@ export const debates: Debate[] = [
     policySignalEn: 'AI for climate enters the policy agenda.',
     notableQuote: null,
     notableQuoteEn: null,
-    summary: `During the MSE Committee of Supply debate, MPs asked whether the Ministry has looked at using AI to strengthen Singapore's climate resilience efforts. The discussion focused on using the latest technologies to spot extreme weather events ahead of time and improve project accuracy through AI. Multiple MPs raised concerns about the practical impacts of climate change on Singapore and the role of technology in building adaptive capacity.`,
+    transcriptEn: `During the MSE Committee of Supply debate, MPs asked whether the Ministry has looked at using AI to strengthen Singapore's climate resilience efforts. The discussion focused on using the latest technologies to spot extreme weather events ahead of time and improve project accuracy through AI. Multiple MPs raised concerns about the practical impacts of climate change on Singapore and the role of technology in building adaptive capacity.`,
     sourceUrl: 'https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=budget-2905',
   },
   {
     id: 'budget-2844',
-    title: `Annual Budget Statement`,
-    zhTitle: `2026财年预算与全球变局`,
+    titleEn: `Annual Budget Statement`,
+    title: `2026财年预算与全球变局`,
     date: '2026-02-12',
     parliament: '15',
     type: 'Budget',
@@ -989,8 +989,8 @@ export const debates: Debate[] = [
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI Governance & Regulation', 'AI & National Security', 'AI in Public Sector'],
-    zhSummary: `质询聚焦全球多边体系弱化及经济脆弱性，政府回应强调新全球秩序下经济韧性和AI投资的重要性，核心争议在于如何应对地缘政治紧张与经济不确定性。`,
-    summaryShortEn: `Questions focused on the weakening of the global multilateral order and economic vulnerability. The government emphasised economic resilience and AI investment under the new global order. The central debate is how to navigate geopolitical tension and economic uncertainty.`,
+    summary: `质询聚焦全球多边体系弱化及经济脆弱性，政府回应强调新全球秩序下经济韧性和AI投资的重要性，核心争议在于如何应对地缘政治紧张与经济不确定性。`,
+    summaryEn: `Questions focused on the weakening of the global multilateral order and economic vulnerability. The government emphasised economic resilience and AI investment under the new global order. The central debate is how to navigate geopolitical tension and economic uncertainty.`,
     keyPoints: ['全球多边体系弱化', '经济增长依赖AI投资', '地缘政治紧张加剧'],
     keyPointsEn: [
       'Weakening global multilateral order',
@@ -1008,7 +1008,7 @@ export const debates: Debate[] = [
       'Growth in the major economies held up, supported in part by strong investment in artificial intelligence (AI)-related activities.',
     notableQuoteEn:
       'Growth in the major economies held up, supported in part by strong investment in artificial intelligence (AI)-related activities.',
-    summary: `Mr Speaker
+    transcriptEn: `Mr Speaker
 : Order. The Clerk will now proceed to read the Notice of Motion.
 3.30 pm
 The Prime Minister and Minister for Finance (Mr Lawrence Wong)
@@ -1019,8 +1019,8 @@ We begin this next phase at a time of profound global change. For nearly eight d
   },
   {
     id: 'oral-answer-4023',
-    title: `Projected Expenditure on Government's Pursuit of Global Leadership in Growth Areas and AI-empowered Economy`,
-    zhTitle: `新加坡AI经济与数据主权`,
+    titleEn: `Projected Expenditure on Government's Pursuit of Global Leadership in Growth Areas and AI-empowered Economy`,
+    title: `新加坡AI经济与数据主权`,
     date: '2026-02-12',
     parliament: '15',
     type: 'Oral Answers to Questions',
@@ -1036,8 +1036,8 @@ We begin this next phase at a time of profound global change. For nearly eight d
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI Economy & Industry', 'AI & Employment', 'AI & National Security', 'AI Infrastructure & Research'],
-    zhSummary: `议员质询政府在推动AI经济及全球领导地位上的预算安排，探讨是否设立政府AI公司以保障数据主权及公共利益。政府回应强调国家AI战略2.0，注重数据安全、技术效能及国际合作。核心争议在于如何防止全球科技巨头主导本地AI市场，避免数据流失及技术依赖，及对外资使用公共数据的监管和收益分配问题。`,
-    summaryShortEn: `MPs questioned the government's budget plans to push AI economy and global leadership, and probed whether a state-owned AI corporation should be set up to protect data sovereignty and the public interest. The government responded with National AI Strategy 2.0, emphasising data security, technical performance, and international cooperation. The core debate: how to prevent global tech giants from dominating Singapore's AI market, avoid data leakage and tech dependency, and regulate foreign use of public data including how returns are shared.`,
+    summary: `议员质询政府在推动AI经济及全球领导地位上的预算安排，探讨是否设立政府AI公司以保障数据主权及公共利益。政府回应强调国家AI战略2.0，注重数据安全、技术效能及国际合作。核心争议在于如何防止全球科技巨头主导本地AI市场，避免数据流失及技术依赖，及对外资使用公共数据的监管和收益分配问题。`,
+    summaryEn: `MPs questioned the government's budget plans to push AI economy and global leadership, and probed whether a state-owned AI corporation should be set up to protect data sovereignty and the public interest. The government responded with National AI Strategy 2.0, emphasising data security, technical performance, and international cooperation. The core debate: how to prevent global tech giants from dominating Singapore's AI market, avoid data leakage and tech dependency, and regulate foreign use of public data including how returns are shared.`,
     keyPoints: ['政府AI战略投入', '数据主权与安全', '防止技术依赖'],
     keyPointsEn: [
       'Government investment in AI strategy',
@@ -1053,7 +1053,7 @@ We begin this next phase at a time of profound global change. For nearly eight d
     policySignalEn: 'Strengthen data sovereignty and IP protection.',
     notableQuote: 'We have robust data protection framework to facilitate the secure processing of data.',
     notableQuoteEn: 'We have robust data protection framework to facilitate the secure processing of data.',
-    summary: `11
+    transcriptEn: `11
 Mr Gerald Giam Yean Song
 asked the Minister for Digital Development and Information (a) what is the projected expenditure on the Government’s strategies for global leadership in growth areas and an AI-empowered economy; (b) whether the Government will fund ambitious exploratory projects with breakout growth potential through a Government-owned AI corporation; and (c) whether the Government considers such entities more effective than foreign entities at pursuing projects where data sovereignty and public interest are paramount.
 The Senior Minister of State for Digital Development and Informa`,
@@ -1061,8 +1061,8 @@ The Senior Minister of State for Digital Development and Informa`,
   },
   {
     id: 'oral-answer-4013',
-    title: `Headcount Retention and Technology Transfer for Citizen Workforce of Singapore-based AI Company Recently Acquired by Meta`,
-    zhTitle: `AI企业收购与本地人才保障`,
+    titleEn: `Headcount Retention and Technology Transfer for Citizen Workforce of Singapore-based AI Company Recently Acquired by Meta`,
+    title: `AI企业收购与本地人才保障`,
     date: '2026-02-04',
     parliament: '15',
     type: 'Oral Answers to Questions',
@@ -1074,8 +1074,8 @@ The Senior Minister of State for Digital Development and Informa`,
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI Governance & Regulation', 'AI Economy & Industry', 'AI & Employment', 'AI Infrastructure & Research'],
-    zhSummary: `议员质询新加坡AI初创企业Manus被Meta收购后，本地员工比例、保留及技术转移保障情况。政府回应收购为商业协议，不干预具体条款，强调遵守新加坡劳工法及公平聘用，经济发展局推动技能转移和人才培养。质询方关注企业借新加坡营商环境便利，收购后是否真正惠及本地劳动力，提出对红地公司设定本地雇佣目标及防止"空壳公司"利用的建议。`,
-    summaryShortEn: `MPs asked, after Meta's acquisition of Singapore-based AI startup Manus, about the share of local employees, retention guarantees, and technology transfer safeguards. The government replied that the acquisition is a commercial agreement and it does not intervene in specific terms; firms must comply with Singapore labour law and fair hiring rules, and EDB drives skills transfer and talent development. MPs focused on whether firms benefiting from Singapore's business environment genuinely deliver value to local workers post-acquisition, and suggested setting local hiring targets for "red-card" companies and preventing the abuse of shell-company structures.`,
+    summary: `议员质询新加坡AI初创企业Manus被Meta收购后，本地员工比例、保留及技术转移保障情况。政府回应收购为商业协议，不干预具体条款，强调遵守新加坡劳工法及公平聘用，经济发展局推动技能转移和人才培养。质询方关注企业借新加坡营商环境便利，收购后是否真正惠及本地劳动力，提出对红地公司设定本地雇佣目标及防止"空壳公司"利用的建议。`,
+    summaryEn: `MPs asked, after Meta's acquisition of Singapore-based AI startup Manus, about the share of local employees, retention guarantees, and technology transfer safeguards. The government replied that the acquisition is a commercial agreement and it does not intervene in specific terms; firms must comply with Singapore labour law and fair hiring rules, and EDB drives skills transfer and talent development. MPs focused on whether firms benefiting from Singapore's business environment genuinely deliver value to local workers post-acquisition, and suggested setting local hiring targets for "red-card" companies and preventing the abuse of shell-company structures.`,
     keyPoints: ['收购属商业协议', '政府不披露员工数据', '推动技能转移培训'],
     keyPointsEn: [
       'Acquisition is a commercial agreement',
@@ -1091,7 +1091,7 @@ The Senior Minister of State for Digital Development and Informa`,
     policySignalEn: 'Strengthen local talent development and skills transfer.',
     notableQuote: 'The Ministry of Manpower (MOM) does not intervene in such acquisition agreements.',
     notableQuoteEn: 'The Ministry of Manpower (MOM) does not intervene in such acquisition agreements.',
-    summary: `19
+    transcriptEn: `19
 Mr Low Wu Yang Andre
 asked the Minister for Manpower regarding the recent acquisition of Singapore-based AI start-up Manus (a) what percentage of the company's core workforce comprised Singapore citizens prior to the acquisition; (b) whether the acquisition terms include guarantees for local headcount retention or technology transfer; and (c) how the Ministry ensures that foreign-founded start-ups benefitting from Singapore's business environment facilitate skills transfer to local workers.
 The Senior Minister of State for Manpower (Dr Koh Poh Koon) (for the Minister for Manpower)
@@ -1100,8 +1100,8 @@ The Senior Minister of State for Manpower (Dr Koh Poh Koon) (for the Minister fo
   },
   {
     id: 'written-answer-21904',
-    title: `Assessment of AI Technology Uptake among Singaporean SMEs Versus MNCs, and Individuals`,
-    zhTitle: `新加坡AI采纳情况评估`,
+    titleEn: `Assessment of AI Technology Uptake among Singaporean SMEs Versus MNCs, and Individuals`,
+    title: `新加坡AI采纳情况评估`,
     date: '2026-02-04',
     parliament: '15',
     type: 'Written Answers to Questions',
@@ -1113,8 +1113,8 @@ The Senior Minister of State for Manpower (Dr Koh Poh Koon) (for the Minister fo
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI Economy & Industry', 'AI & Employment', 'AI & National Security', 'AI Infrastructure & Research'],
-    zhSummary: `议员质询政府是否有针对新加坡中小企业与跨国公司及个人的人工智能软件采纳情况进行研究。政府回应称，自2023年以来，信息通信媒体发展局通过年度数字经济报告跟踪不同规模企业及员工的AI采纳数据。核心争议点在于不同主体的AI使用差异及数据透明度。`,
-    summaryShortEn: `An MP asked whether the government has studied AI software adoption broken down between Singapore SMEs, MNCs and individuals. The government replied that since 2023, IMDA has been tracking adoption across firms of different sizes and their workers via the annual Singapore Digital Economy Report. The core debate is on adoption differences across actors and the transparency of the data.`,
+    summary: `议员质询政府是否有针对新加坡中小企业与跨国公司及个人的人工智能软件采纳情况进行研究。政府回应称，自2023年以来，信息通信媒体发展局通过年度数字经济报告跟踪不同规模企业及员工的AI采纳数据。核心争议点在于不同主体的AI使用差异及数据透明度。`,
+    summaryEn: `An MP asked whether the government has studied AI software adoption broken down between Singapore SMEs, MNCs and individuals. The government replied that since 2023, IMDA has been tracking adoption across firms of different sizes and their workers via the annual Singapore Digital Economy Report. The core debate is on adoption differences across actors and the transparency of the data.`,
     keyPoints: ['AI采纳有官方数据', '区分中小企与跨国公司', '关注个人AI使用情况'],
     keyPointsEn: ['Official data exists on AI adoption', 'Splits SMEs from MNCs', 'Tracks AI use by individuals'],
     governmentStance: '持续跟踪AI采纳数据',
@@ -1128,7 +1128,7 @@ The Senior Minister of State for Manpower (Dr Koh Poh Koon) (for the Minister fo
       'The Government tracks artificial intelligence (AI) adoption as part of broader efforts to develop the digital economy.',
     notableQuoteEn:
       'The Government tracks artificial intelligence (AI) adoption as part of broader efforts to develop the digital economy.',
-    summary: `29
+    transcriptEn: `29
 Mr Chua Kheng Wee Louis
 asked the Minister for Digital Development and Information whether the Government has conducted studies on the adoption and active usage of artificial intelligence software by (i) companies with a breakdown between small and medium enterprises versus multinational corporations and (ii) individuals in Singapore.
 Mrs Josephine Teo
@@ -1137,8 +1137,8 @@ Mrs Josephine Teo
   },
   {
     id: 'written-answer-21915',
-    title: `Study on Labour Impacted by AI in SMEs and Plans to Support Workers Substituted by AI`,
-    zhTitle: `AI对中小企业劳动力影响研究`,
+    titleEn: `Study on Labour Impacted by AI in SMEs and Plans to Support Workers Substituted by AI`,
+    title: `AI对中小企业劳动力影响研究`,
     date: '2026-02-04',
     parliament: '15',
     type: 'Written Answers to Questions',
@@ -1150,8 +1150,8 @@ Mrs Josephine Teo
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI Safety & Ethics', 'AI Economy & Industry', 'AI & Employment', 'AI & National Security'],
-    zhSummary: `议员质询政府是否开展研究，区分AI对劳动力的替代与互补效应，及中小企业与跨国公司差异。政府回应正研究AI对劳动力市场的影响，强调影响取决于业务性质和岗位类型，而非企业规模。政府支持所有企业进行岗位重塑和员工再培训，帮助被替代员工转岗，体现包容性劳动力转型策略。`,
-    summaryShortEn: `An MP asked whether the government is studying for whom AI is a substitute versus a complement, and whether there are differences between SMEs and MNCs. The government replied that it is studying AI's labour-market impact and that effects depend on the nature of business activities and job roles rather than firm size. The government supports all firms in job redesign and worker reskilling to help displaced workers transition — an inclusive workforce-transformation approach.`,
+    summary: `议员质询政府是否开展研究，区分AI对劳动力的替代与互补效应，及中小企业与跨国公司差异。政府回应正研究AI对劳动力市场的影响，强调影响取决于业务性质和岗位类型，而非企业规模。政府支持所有企业进行岗位重塑和员工再培训，帮助被替代员工转岗，体现包容性劳动力转型策略。`,
+    summaryEn: `An MP asked whether the government is studying for whom AI is a substitute versus a complement, and whether there are differences between SMEs and MNCs. The government replied that it is studying AI's labour-market impact and that effects depend on the nature of business activities and job roles rather than firm size. The government supports all firms in job redesign and worker reskilling to help displaced workers transition — an inclusive workforce-transformation approach.`,
     keyPoints: ['AI影响因岗位而异', '企业规模非主要因素', '支持岗位重塑与再培训'],
     keyPointsEn: [
       'AI impact varies by role',
@@ -1169,7 +1169,7 @@ Mrs Josephine Teo
       'The impact of AI on workers and firms depends more on the nature of business activities and job roles than on firm size.',
     notableQuoteEn:
       'The impact of AI on workers and firms depends more on the nature of business activities and job roles than on firm size.',
-    summary: `40
+    transcriptEn: `40
 Mr Shawn Loh
 asked the Minister for Manpower with SMEs employing 70% of the workforce (a) whether the Government can consider conducting a study to better estimate for whom artificial intelligence (AI) is complementary and for whom AI is a substitute for their labour; and (b) whether there are differences between SMEs and MNCs so that the Government can have more targeted plans for those substituted.
 Dr Tan See Leng
@@ -1178,8 +1178,8 @@ Dr Tan See Leng
   },
   {
     id: 'oral-answer-3992',
-    title: `Take-up Rate of SkillsFuture-supported AI-related Training Course`,
-    zhTitle: `SkillsFuture AI培训参与率及支持`,
+    titleEn: `Take-up Rate of SkillsFuture-supported AI-related Training Course`,
+    title: `SkillsFuture AI培训参与率及支持`,
     date: '2026-02-03',
     parliament: '15',
     type: 'Oral Answers to Questions',
@@ -1191,8 +1191,8 @@ Dr Tan See Leng
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI Governance & Regulation', 'AI & Employment', 'AI in Education', 'AI & National Security'],
-    zhSummary: `议员质询SkillsFuture支持的AI相关培训课程的参与率及是否设定PME群体的培训目标。政府回应去年有约10.5万人次参与，未设具体目标，但鼓励终身学习并提供补贴。质询方关注课程选择困难及高阶课程费用，建议优化课程推荐和增加针对PME的资金支持。政府表示将持续优化课程指引和与业界合作，推动个性化培训方案。`,
-    summaryShortEn: `MPs asked about take-up of SkillsFuture-supported AI training courses and whether targets exist for PMEs. The government replied that around 105,000 individuals participated last year, with no fixed targets but ongoing encouragement of lifelong learning backed by subsidies. MPs raised the difficulty of course selection and the cost of advanced courses, suggesting better course recommendations and more funding support for PMEs. The government said it will keep refining course guidance and industry collaboration to push more personalised training paths.`,
+    summary: `议员质询SkillsFuture支持的AI相关培训课程的参与率及是否设定PME群体的培训目标。政府回应去年有约10.5万人次参与，未设具体目标，但鼓励终身学习并提供补贴。质询方关注课程选择困难及高阶课程费用，建议优化课程推荐和增加针对PME的资金支持。政府表示将持续优化课程指引和与业界合作，推动个性化培训方案。`,
+    summaryEn: `MPs asked about take-up of SkillsFuture-supported AI training courses and whether targets exist for PMEs. The government replied that around 105,000 individuals participated last year, with no fixed targets but ongoing encouragement of lifelong learning backed by subsidies. MPs raised the difficulty of course selection and the cost of advanced courses, suggesting better course recommendations and more funding support for PMEs. The government said it will keep refining course guidance and industry collaboration to push more personalised training paths.`,
     keyPoints: ['AI课程参与人数多', '无具体PME培训目标', '将优化课程推荐'],
     keyPointsEn: [
       'High participation in AI courses',
@@ -1210,7 +1210,7 @@ Dr Tan See Leng
       'We are working with the industry to look to see how we develop the list of tasks and map them to the courses.',
     notableQuoteEn:
       'We are working with the industry to look to see how we develop the list of tasks and map them to the courses.',
-    summary: `9
+    transcriptEn: `9
 Mr Ng Chee Meng
 asked the Minister for Education (a) what is the take-up rate of AI-related skills training courses supported by SkillsFuture; and (b) whether the Ministry has targets on the number of workers, especially among professionals, managers and executives, who should go for such upskilling.
 The Senior Minister of State for Education (Dr Janil Puthucheary) (for the Minister for Education)
@@ -1219,8 +1219,8 @@ The Senior Minister of State for Education (Dr Janil Puthucheary) (for the Minis
   },
   {
     id: 'oral-answer-3994',
-    title: `Policy on Optimal Class Sizes Given Increasingly Complex Challenges Faced by Teachers`,
-    zhTitle: `教师复杂挑战下的班级规模政策`,
+    titleEn: `Policy on Optimal Class Sizes Given Increasingly Complex Challenges Faced by Teachers`,
+    title: `教师复杂挑战下的班级规模政策`,
     date: '2026-02-03',
     parliament: '15',
     type: 'Oral Answers to Questions',
@@ -1238,8 +1238,8 @@ The Senior Minister of State for Education (Dr Janil Puthucheary) (for the Minis
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI Governance & Regulation', 'AI in Education', 'AI in Healthcare', 'AI in Public Sector'],
-    zhSummary: `议员质询教育部关于教师面临多样化学生需求及心理健康挑战下的最优班级规模政策。教育部长回应，班级规模依据学生学习需求调整，特殊教育和早期干预班级规模更小，同时增加辅导员和特教人员支持。核心争议在于如何平衡资源分配与教学质量，确保多样化需求学生获得足够支持。`,
-    summaryShortEn: `MPs asked MOE about its policy on optimal class sizes given the increasingly complex challenges teachers face — diverse learning needs, mental-health challenges, and special educational needs. The Education Minister replied that class sizes are calibrated to students' learning needs, with smaller classes for special education and early intervention, alongside more counsellors and special-needs staff. The core debate is on balancing resource allocation and teaching quality so students with diverse needs get enough support.`,
+    summary: `议员质询教育部关于教师面临多样化学生需求及心理健康挑战下的最优班级规模政策。教育部长回应，班级规模依据学生学习需求调整，特殊教育和早期干预班级规模更小，同时增加辅导员和特教人员支持。核心争议在于如何平衡资源分配与教学质量，确保多样化需求学生获得足够支持。`,
+    summaryEn: `MPs asked MOE about its policy on optimal class sizes given the increasingly complex challenges teachers face — diverse learning needs, mental-health challenges, and special educational needs. The Education Minister replied that class sizes are calibrated to students' learning needs, with smaller classes for special education and early intervention, alongside more counsellors and special-needs staff. The core debate is on balancing resource allocation and teaching quality so students with diverse needs get enough support.`,
     keyPoints: ['班级规模因需而异', '特殊教育班规模更小', '辅导员数量持续增加'],
     keyPointsEn: [
       'Class size varies by need',
@@ -1257,7 +1257,7 @@ The Senior Minister of State for Education (Dr Janil Puthucheary) (for the Minis
       "The Ministry of Education's approach for class sizes is guided by the learning needs of our students.",
     notableQuoteEn:
       "The Ministry of Education's approach for class sizes is guided by the learning needs of our students.",
-    summary: `11
+    transcriptEn: `11
 Ms Elysa Chen
 asked the Minister for Education what is the Ministry's current position on optimal class sizes given recent findings that teachers face increasing complexity in their roles, including supporting students with diverse learning needs, mental health challenges and special educational needs.
 The Minister for Education (Mr Desmond Lee)
@@ -1266,8 +1266,8 @@ The Minister for Education (Mr Desmond Lee)
   },
   {
     id: 'written-answer-21666',
-    title: `Review on Local AI Start-up Manus's Acquisition by Meta and Implications on Singapore's AI Ecosystem`,
-    zhTitle: `Meta收购Manus的监管评估`,
+    titleEn: `Review on Local AI Start-up Manus's Acquisition by Meta and Implications on Singapore's AI Ecosystem`,
+    title: `Meta收购Manus的监管评估`,
     date: '2026-02-03',
     parliament: '15',
     type: 'Written Answers to Questions',
@@ -1284,8 +1284,8 @@ The Minister for Education (Mr Desmond Lee)
       'AI & National Security',
       'AI Infrastructure & Research',
     ],
-    zhSummary: `议员质询新加坡竞争监管机构是否审查Meta收购本地AI初创Manus，及此类收购对本地AI创新生态的影响。政府回应当前无审查行动，强调采用自愿合并申报制度，鼓励创新同时防范反竞争风险。核心争议在于监管框架是否足够应对快速发展的AI产业并购。`,
-    summaryShortEn: `An MP asked whether the Competition and Consumer Commission of Singapore is reviewing Meta's acquisition of local AI startup Manus and how such acquisitions affect the domestic AI startup scene. The government replied there is no current review and stressed Singapore's voluntary merger notification regime, which encourages innovation while guarding against anti-competitive risks. The core debate is whether the framework is sufficient for fast-moving AI-industry M&A.`,
+    summary: `议员质询新加坡竞争监管机构是否审查Meta收购本地AI初创Manus，及此类收购对本地AI创新生态的影响。政府回应当前无审查行动，强调采用自愿合并申报制度，鼓励创新同时防范反竞争风险。核心争议在于监管框架是否足够应对快速发展的AI产业并购。`,
+    summaryEn: `An MP asked whether the Competition and Consumer Commission of Singapore is reviewing Meta's acquisition of local AI startup Manus and how such acquisitions affect the domestic AI startup scene. The government replied there is no current review and stressed Singapore's voluntary merger notification regime, which encourages innovation while guarding against anti-competitive risks. The core debate is whether the framework is sufficient for fast-moving AI-industry M&A.`,
     keyPoints: ['采用自愿合并申报', '无当前审查行动', '关注AI市场竞争'],
     keyPointsEn: ['Voluntary merger notification regime', 'No current review action', 'Focus on AI market competition'],
     governmentStance: '支持自愿申报，保障创新与竞争',
@@ -1299,7 +1299,7 @@ The Minister for Education (Mr Desmond Lee)
       'Singapore adopts a voluntary merger notification regime to balance between effective regulatory oversight while keeping compliance costs low and not stifling innovation.',
     notableQuoteEn:
       'Singapore adopts a voluntary merger notification regime to balance between effective regulatory oversight while keeping compliance costs low and not stifling innovation.',
-    summary: `5
+    transcriptEn: `5
 Mr Low Wu Yang Andre
 asked the Deputy Prime Minister and Minister for Trade and Industry (a) whether the Competition and Consumer Commission of Singapore is reviewing Meta's acquisition of local AI start-up Manus; (b) how the Ministry assesses the impact of such acquisitions on the competitiveness of Singapore's domestic AI innovation ecosystem; and (c) whether the current merger notification framework remains adequate.
 Mr Gan Kim Yong
@@ -1308,8 +1308,8 @@ Mr Gan Kim Yong
   },
   {
     id: 'written-answer-21302',
-    title: `Publication of Quarterly Statistics on AI-related Retrenchment and Redeployment of Affected Workers`,
-    zhTitle: `AI裁员统计公开质询`,
+    titleEn: `Publication of Quarterly Statistics on AI-related Retrenchment and Redeployment of Affected Workers`,
+    title: `AI裁员统计公开质询`,
     date: '2026-01-12',
     parliament: '15',
     type: 'Written Answers to Questions',
@@ -1321,8 +1321,8 @@ Mr Gan Kim Yong
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI Economy & Industry', 'AI & Employment', 'AI & National Security', 'AI in Public Sector'],
-    zhSummary: `议员质询是否公布季度AI相关裁员及再就业数据，政府回应以业务重组为主因，包含AI技术影响，且将继续研究技术对就业的影响。核心争议在于AI裁员数据透明度及具体影响评估。`,
-    summaryShortEn: `An MP asked whether quarterly statistics on AI-related retrenchments and the redeployment of affected workers will be published. The government replied that retrenchments are mainly attributed to business restructuring (which includes AI-driven productivity gains) and that it will continue to study technology's impact on jobs. The central debate is the transparency of AI retrenchment data and how its specific impact is assessed.`,
+    summary: `议员质询是否公布季度AI相关裁员及再就业数据，政府回应以业务重组为主因，包含AI技术影响，且将继续研究技术对就业的影响。核心争议在于AI裁员数据透明度及具体影响评估。`,
+    summaryEn: `An MP asked whether quarterly statistics on AI-related retrenchments and the redeployment of affected workers will be published. The government replied that retrenchments are mainly attributed to business restructuring (which includes AI-driven productivity gains) and that it will continue to study technology's impact on jobs. The central debate is the transparency of AI retrenchment data and how its specific impact is assessed.`,
     keyPoints: ['质询AI裁员数据公开', '裁员多因业务重组', '政府持续研究技术影响'],
     keyPointsEn: [
       'Calls for publication of AI retrenchment data',
@@ -1340,7 +1340,7 @@ Mr Gan Kim Yong
       'Business restructuring may stem from productivity improvements or work efficiency gains arising from the adoption of artificial intelligence (AI) or other technological advances.',
     notableQuoteEn:
       'Business restructuring may stem from productivity improvements or work efficiency gains arising from the adoption of artificial intelligence (AI) or other technological advances.',
-    summary: `48
+    transcriptEn: `48
 Mr Patrick Tay Teck Guan
 asked the Minister for Manpower (a) whether the Ministry will publish quarterly statistics on (i) retrenchments citing AI being one of the reasons for redundancy (ii) the redeployment rates of such affected workers and (iii) the average time for these affected workers to re-enter employment; and (b) if not, why not.
 Dr Tan See Leng
@@ -1349,8 +1349,8 @@ Dr Tan See Leng
   },
   {
     id: 'written-answer-21309',
-    title: `Update Code of Ethics and Professional Client Care for Property Agents to Declare Use of AI-edited Images and Videos of Property Listings`,
-    zhTitle: `物业代理AI编辑图像声明`,
+    titleEn: `Update Code of Ethics and Professional Client Care for Property Agents to Declare Use of AI-edited Images and Videos of Property Listings`,
+    title: `物业代理AI编辑图像声明`,
     date: '2026-01-12',
     parliament: '15',
     type: 'Written Answers to Questions',
@@ -1362,8 +1362,8 @@ Dr Tan See Leng
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI Safety & Ethics', 'AI Economy & Industry', 'AI & National Security', 'AI Infrastructure & Research'],
-    zhSummary: `议员质询是否更新物业代理伦理守则，要求声明AI编辑的房源图像视频。政府回应现有守则要求广告材料准确描述物业，建议提供AI使用免责声明，避免误导消费者。CEA正审查相关指引，旨在平衡消费者保护与行业创新发展，核心争议在于如何规范AI技术应用与信息透明。`,
-    summaryShortEn: `An MP asked whether the property-agent code of ethics will be updated to require declaration of AI-edited listing images and videos. The government responded that existing rules require advertising materials to accurately describe the property, and recommended that agents provide disclaimers about AI use to avoid misleading consumers. The CEA is reviewing the guidance to balance consumer protection with industry innovation. The central debate is how to regulate AI use and information transparency.`,
+    summary: `议员质询是否更新物业代理伦理守则，要求声明AI编辑的房源图像视频。政府回应现有守则要求广告材料准确描述物业，建议提供AI使用免责声明，避免误导消费者。CEA正审查相关指引，旨在平衡消费者保护与行业创新发展，核心争议在于如何规范AI技术应用与信息透明。`,
+    summaryEn: `An MP asked whether the property-agent code of ethics will be updated to require declaration of AI-edited listing images and videos. The government responded that existing rules require advertising materials to accurately describe the property, and recommended that agents provide disclaimers about AI use to avoid misleading consumers. The CEA is reviewing the guidance to balance consumer protection with industry innovation. The central debate is how to regulate AI use and information transparency.`,
     keyPoints: ['要求声明AI编辑图像', '广告材料须准确描述', '审查指引平衡保护创新'],
     keyPointsEn: [
       'Calls for disclosure of AI-edited images',
@@ -1381,7 +1381,7 @@ Dr Tan See Leng
       'agents should provide sufficient disclaimers to inform consumers of the use of artificial intelligence (AI) to alter or enhance images or videos',
     notableQuoteEn:
       'agents should provide sufficient disclaimers to inform consumers of the use of artificial intelligence (AI) to alter or enhance images or videos',
-    summary: `55
+    transcriptEn: `55
 Mr Melvin Yong Yik Chye
 asked the Minister for National Development whether the Council for Estate Agencies has any plans to update the Code of Ethics and Professional Client Care to specifically require property agents to declare images and videos portrayed on property listings that have been edited by artificial intelligence.
 Mr Chee Hong Tat
@@ -1390,8 +1390,8 @@ Mr Chee Hong Tat
   },
   {
     id: 'written-answer-21161',
-    title: `Deployment of Agentic AI Systems in Civil Service and HR Policies to Support Officers Made Redundant`,
-    zhTitle: `公共服务智能化与人力政策`,
+    titleEn: `Deployment of Agentic AI Systems in Civil Service and HR Policies to Support Officers Made Redundant`,
+    title: `公共服务智能化与人力政策`,
     date: '2025-11-06',
     parliament: '15',
     type: 'Written Answers to Questions',
@@ -1403,8 +1403,8 @@ Mr Chee Hong Tat
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI Safety & Ethics', 'AI & Employment', 'AI & National Security', 'AI Infrastructure & Research'],
-    zhSummary: `议员质询政府关于在公共服务中部署具代理能力的人工智能系统以自动化工作职能的计划，以及针对因AI导致岗位冗余的公务员的人力资源政策。政府回应称将谨慎推进AI部署，强调提升公务员技能以配合AI，聚焦复杂问题分析和解决方案设计，体现对效率提升与风险控制的平衡。`,
-    summaryShortEn: `An MP asked about the government's plans to deploy agentic AI systems to automate civil service job functions, and about HR policies for officers made redundant by AI. The government replied that AI deployment will proceed cautiously, with a focus on upskilling officers to work alongside AI on complex problem analysis and solution design — reflecting a balance between efficiency gains and risk control.`,
+    summary: `议员质询政府关于在公共服务中部署具代理能力的人工智能系统以自动化工作职能的计划，以及针对因AI导致岗位冗余的公务员的人力资源政策。政府回应称将谨慎推进AI部署，强调提升公务员技能以配合AI，聚焦复杂问题分析和解决方案设计，体现对效率提升与风险控制的平衡。`,
+    summaryEn: `An MP asked about the government's plans to deploy agentic AI systems to automate civil service job functions, and about HR policies for officers made redundant by AI. The government replied that AI deployment will proceed cautiously, with a focus on upskilling officers to work alongside AI on complex problem analysis and solution design — reflecting a balance between efficiency gains and risk control.`,
     keyPoints: ['代理型AI定义与功能', '谨慎推进AI应用', '公务员技能提升'],
     keyPointsEn: ['Agentic AI: definition and capabilities', 'Cautious rollout of AI use', 'Upskilling civil servants'],
     governmentStance: '谨慎部署AI，注重技能培训',
@@ -1416,7 +1416,7 @@ Mr Chee Hong Tat
     policySignalEn: 'Push joint development of AI and the human workforce.',
     notableQuote: 'Agentic AI systems are AI tools capable of initiating and carrying out actions.',
     notableQuoteEn: 'Agentic AI systems are AI tools capable of initiating and carrying out actions.',
-    summary: `15
+    transcriptEn: `15
 Ms Poh Li San
 asked the Minister for Digital Development and Information (a) what are the Government's plans for deploying agentic artificial intelligence (AI) systems to automate relevant job functions in the public service; and (b) what human resource policies are in place to assist public servants whose job roles may be made redundant with the adoption of agentic AI systems.
 Mrs Josephine Teo
@@ -1426,8 +1426,8 @@ Agentic AI systems are AI tools capable of initiating and carrying out actions, 
   },
   {
     id: 'oral-answer-3923',
-    title: `Addressing Teachers' Stress Levels and Supporting Their Mental Well-being`,
-    zhTitle: `教师压力与心理支持措施`,
+    titleEn: `Addressing Teachers' Stress Levels and Supporting Their Mental Well-being`,
+    title: `教师压力与心理支持措施`,
     date: '2025-11-04',
     parliament: '15',
     type: 'Oral Answers to Questions',
@@ -1460,8 +1460,8 @@ Agentic AI systems are AI tools capable of initiating and carrying out actions, 
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI Governance & Regulation', 'AI in Education', 'AI in Healthcare', 'AI in Public Sector'],
-    zhSummary: `议员质询教师压力高企及心理健康支持，关注年轻教师比例偏低及非教学工作负担。教育部长回应强调教师职业的崇高与责任，承认教师工作量大，表示将审视并改进非教学任务分配，保障教师福祉。核心争议在于如何有效减轻教师负担及吸引年轻教师留任。`,
-    summaryShortEn: `MPs raised teachers' high stress levels and mental-health support, with concern over the low share of young teachers and their non-teaching workload. The Education Minister stressed the noble responsibility of the teaching profession, acknowledged heavy workload, and committed to reviewing and improving the allocation of non-teaching tasks to safeguard teacher well-being. The central debate is how to effectively reduce teacher load and retain young teachers.`,
+    summary: `议员质询教师压力高企及心理健康支持，关注年轻教师比例偏低及非教学工作负担。教育部长回应强调教师职业的崇高与责任，承认教师工作量大，表示将审视并改进非教学任务分配，保障教师福祉。核心争议在于如何有效减轻教师负担及吸引年轻教师留任。`,
+    summaryEn: `MPs raised teachers' high stress levels and mental-health support, with concern over the low share of young teachers and their non-teaching workload. The Education Minister stressed the noble responsibility of the teaching profession, acknowledged heavy workload, and committed to reviewing and improving the allocation of non-teaching tasks to safeguard teacher well-being. The central debate is how to effectively reduce teacher load and retain young teachers.`,
     keyPoints: ['教师压力高企', '年轻教师比例低', '减轻非教学负担'],
     keyPointsEn: ['High teacher stress levels', 'Low share of young teachers', 'Reduce the non-teaching workload'],
     governmentStance: '重视教师福祉，优化工作分配',
@@ -1473,7 +1473,7 @@ Agentic AI systems are AI tools capable of initiating and carrying out actions, 
     policySignalEn: 'Reduce burden, expand mental-health support for teachers.',
     notableQuote: 'Teaching is, at its heart, a profoundly human endeavour.',
     notableQuoteEn: 'Teaching is, at its heart, a profoundly human endeavour.',
-    summary: `2
+    transcriptEn: `2
 Dr Wan Rizal
 asked
 the Minister for Education what additional measures are being considered to address the high stress levels reported by teachers in the recent OECD TALIS 2024 study, particularly regarding support for their mental health and well-being.
@@ -1484,8 +1484,8 @@ asked the Minister for Education given the OECD Teaching and Learning Internatio
   },
   {
     id: 'oral-answer-3927',
-    title: `Balancing Academic Rigour Required to Excel at PSLE With Skills to Thrive in AI-driven Economy`,
-    zhTitle: `PSLE学术严谨与AI技能平衡`,
+    titleEn: `Balancing Academic Rigour Required to Excel at PSLE With Skills to Thrive in AI-driven Economy`,
+    title: `PSLE学术严谨与AI技能平衡`,
     date: '2025-11-04',
     parliament: '15',
     type: 'Oral Answers to Questions',
@@ -1497,8 +1497,8 @@ asked the Minister for Education given the OECD Teaching and Learning Internatio
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI Economy & Industry', 'AI in Education', 'AI in Public Sector'],
-    zhSummary: `议员质询PSLE是否侧重死记硬背，是否培养终身学习兴趣，以及与探究式、协作式学习的比较。教育部回应PSLE注重核心概念和批判思维，强调多元教学法和21世纪能力培养，且国际评比显示学生具备复杂问题解决能力。质询关注低收入及高需求学校的教学落实及国际经验借鉴，教育部强调教师培训中融入探究与协作技能。核心争议在于如何在学术严谨与创新能力培养间取得平衡。`,
-    summaryShortEn: `An MP asked whether the PSLE emphasises rote learning, whether it nurtures a love of lifelong learning, and how it compares with inquiry-based, collaborative approaches abroad. MOE replied that the PSLE focuses on core concepts and critical thinking, emphasising diverse pedagogies and 21st-century competencies, with international assessments showing students perform well in complex problem-solving. MPs raised concerns about teaching quality in lower-income, higher-needs schools and lessons from overseas. MOE highlighted that inquiry and collaboration are integrated in teacher training. The core debate: how to balance academic rigour with creative capacity.`,
+    summary: `议员质询PSLE是否侧重死记硬背，是否培养终身学习兴趣，以及与探究式、协作式学习的比较。教育部回应PSLE注重核心概念和批判思维，强调多元教学法和21世纪能力培养，且国际评比显示学生具备复杂问题解决能力。质询关注低收入及高需求学校的教学落实及国际经验借鉴，教育部强调教师培训中融入探究与协作技能。核心争议在于如何在学术严谨与创新能力培养间取得平衡。`,
+    summaryEn: `An MP asked whether the PSLE emphasises rote learning, whether it nurtures a love of lifelong learning, and how it compares with inquiry-based, collaborative approaches abroad. MOE replied that the PSLE focuses on core concepts and critical thinking, emphasising diverse pedagogies and 21st-century competencies, with international assessments showing students perform well in complex problem-solving. MPs raised concerns about teaching quality in lower-income, higher-needs schools and lessons from overseas. MOE highlighted that inquiry and collaboration are integrated in teacher training. The core debate: how to balance academic rigour with creative capacity.`,
     keyPoints: ['PSLE非死记硬背', '多元教学促进能力', '教师培训重探究协作'],
     keyPointsEn: [
       'PSLE is not about rote learning',
@@ -1514,7 +1514,7 @@ asked the Minister for Education given the OECD Teaching and Learning Internatio
     policySignalEn: 'Push integration of inquiry-based and collaborative teaching.',
     notableQuote: 'PSLE does not emphasise rote learning or test-taking skills.',
     notableQuoteEn: 'PSLE does not emphasise rote learning or test-taking skills.',
-    summary: `9
+    transcriptEn: `9
 Mr Dennis Tan Lip Fong
 asked the Minister for Education whether the Ministry considers that the academic rigour required to excel in the PSLE, such as rote memorisation and test-taking abilities (i) reflects the skills our youths need to thrive in the AI-driven economy, (ii) nurtures a lifelong love of learning and (iii) compares favourably with inquiry-based and collaborative learning approaches more common in other internationally recognised primary school curricula.
 The Senior Minister of State for Education (Dr Janil Puthucheary) (for the Minister for Education)
@@ -1523,8 +1523,8 @@ The Senior Minister of State for Education (Dr Janil Puthucheary) (for the Minis
   },
   {
     id: 'written-answer-20811',
-    title: `Developing Age-progressive Framework for Responsible Use of GenAI for Students and Parents across Educational Levels`,
-    zhTitle: `分龄生成式AI使用框架`,
+    titleEn: `Developing Age-progressive Framework for Responsible Use of GenAI for Students and Parents across Educational Levels`,
+    title: `分龄生成式AI使用框架`,
     date: '2025-11-04',
     parliament: '15',
     type: 'Written Answers to Questions',
@@ -1536,8 +1536,8 @@ The Senior Minister of State for Education (Dr Janil Puthucheary) (for the Minis
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI Governance & Regulation', 'AI Safety & Ethics', 'AI in Education', 'AI & National Security'],
-    zhSummary: `议员质询教育部是否制定分龄的生成式AI使用框架及家长指导方案。教育部回应已通过《数字素养与技术技能指南》向学校提供年龄适宜的AI使用指导，并为家长提供相关资源，支持学生在家合理使用AI。核心争议在于如何系统化分龄指导及家校协同支持。`,
-    summaryShortEn: `An MP asked whether MOE will develop an age-progressive framework for responsible use of generative AI, plus parent guidance. MOE replied that it has provided schools with age-appropriate AI guidance via the Digital Literacy and Technology Skills guide and has resources for parents to support reasonable AI use at home. The central debate: how to systematise age-progressive guidance and school-family coordination.`,
+    summary: `议员质询教育部是否制定分龄的生成式AI使用框架及家长指导方案。教育部回应已通过《数字素养与技术技能指南》向学校提供年龄适宜的AI使用指导，并为家长提供相关资源，支持学生在家合理使用AI。核心争议在于如何系统化分龄指导及家校协同支持。`,
+    summaryEn: `An MP asked whether MOE will develop an age-progressive framework for responsible use of generative AI, plus parent guidance. MOE replied that it has provided schools with age-appropriate AI guidance via the Digital Literacy and Technology Skills guide and has resources for parents to support reasonable AI use at home. The central debate: how to systematise age-progressive guidance and school-family coordination.`,
     keyPoints: ['分龄AI使用框架需求', '学校已有指导资源', '家长支持资源提供'],
     keyPointsEn: [
       'Need for an age-progressive AI framework',
@@ -1555,7 +1555,7 @@ The Senior Minister of State for Education (Dr Janil Puthucheary) (for the Minis
       'The Ministry of Education has provided schools with guidance on age-appropriate AI use in education.',
     notableQuoteEn:
       'The Ministry of Education has provided schools with guidance on age-appropriate AI use in education.',
-    summary: `49
+    transcriptEn: `49
 Mr David Hoe
 asked the Minister for Education (a) whether the Ministry will consider developing and publishing an age-progressive framework for the responsible use of generative AI across primary, secondary and post-secondary education levels; and (b) whether guidance could also be developed and published for parents to support younger students' learning and use of AI at home.
 Mr Desmond Lee
@@ -1564,8 +1564,8 @@ Mr Desmond Lee
   },
   {
     id: 'written-answer-20810',
-    title: `Expanding SkillsFuture Credit Eligibility for Subscription to AI Productivity Tools`,
-    zhTitle: `扩展SkillsFuture信用涵盖AI工具订阅`,
+    titleEn: `Expanding SkillsFuture Credit Eligibility for Subscription to AI Productivity Tools`,
+    title: `扩展SkillsFuture信用涵盖AI工具订阅`,
     date: '2025-11-04',
     parliament: '15',
     type: 'Written Answers to Questions',
@@ -1577,8 +1577,8 @@ Mr Desmond Lee
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI Economy & Industry', 'AI & Employment', 'AI in Education', 'AI & National Security'],
-    zhSummary: `议员质询是否将SkillsFuture信用扩展至订阅优质AI生产力工具以促进实践学习。政府回应目前支持AI相关课程及工具使用，强调课程内含实用工具，且AI领域快速发展，将持续关注并支持相关技能培养。核心争议在于是否直接将订阅工具纳入信用使用范围。`,
-    summaryShortEn: `An MP asked whether SkillsFuture Credit eligibility will be extended to cover subscriptions to high-quality AI productivity tools for hands-on learning. The government replied that AI-related courses and tools are already supported, courses already include practical tools, and given the fast pace of AI it will keep watching and supporting relevant skills development. The central debate: whether tool subscriptions themselves should be directly covered by SkillsFuture Credit.`,
+    summary: `议员质询是否将SkillsFuture信用扩展至订阅优质AI生产力工具以促进实践学习。政府回应目前支持AI相关课程及工具使用，强调课程内含实用工具，且AI领域快速发展，将持续关注并支持相关技能培养。核心争议在于是否直接将订阅工具纳入信用使用范围。`,
+    summaryEn: `An MP asked whether SkillsFuture Credit eligibility will be extended to cover subscriptions to high-quality AI productivity tools for hands-on learning. The government replied that AI-related courses and tools are already supported, courses already include practical tools, and given the fast pace of AI it will keep watching and supporting relevant skills development. The central debate: whether tool subscriptions themselves should be directly covered by SkillsFuture Credit.`,
     keyPoints: ['质询扩展信用范围', '课程含AI工具支持', '持续关注AI发展'],
     keyPointsEn: [
       'Calls to extend the credit scope',
@@ -1596,7 +1596,7 @@ Mr Desmond Lee
       'Today, individuals can use their SkillsFuture Credit to sign up for artificial intelligence (AI)-related courses.',
     notableQuoteEn:
       'Today, individuals can use their SkillsFuture Credit to sign up for artificial intelligence (AI)-related courses.',
-    summary: `48
+    transcriptEn: `48
 Mr Kenneth Tiong Boon Kiat
 asked the Minister for Education (a) whether the Ministry will expand SkillsFuture Credit eligibility to include subscriptions for curated, high-quality AI productivity tools to facilitate hands-on learning; and (b) if not, why not.
 Mr Desmond Lee
@@ -1605,8 +1605,8 @@ Mr Desmond Lee
   },
   {
     id: 'written-answer-20819',
-    title: `Strengthening Engineering Talent Pipelines through Aligning with Emerging Industries and Public Sector Hiring`,
-    zhTitle: `强化工程人才培养路径`,
+    titleEn: `Strengthening Engineering Talent Pipelines through Aligning with Emerging Industries and Public Sector Hiring`,
+    title: `强化工程人才培养路径`,
     date: '2025-11-04',
     parliament: '15',
     type: 'Written Answers to Questions',
@@ -1618,8 +1618,8 @@ Mr Desmond Lee
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI Economy & Industry', 'AI & Employment', 'AI in Education', 'AI & National Security'],
-    zhSummary: `议员质询为何学生对传统工程专业兴趣下降，如何调整课程与薪酬以匹配新兴产业，以及公共部门招聘和奖学金政策是否调整。政府回应称教育部与经济机构合作，调整课程内容，推动跨学科工程教育，同时通过行业任务组解决建筑环境行业人才短缺和薪酬竞争问题，并加强职业指导和公共部门招聘力度。核心争议在于行业薪酬与工作环境对人才吸引力的影响。`,
-    summaryShortEn: `An MP asked why students are turning away from traditional engineering disciplines, how curricula and pay can be aligned with emerging industries, and whether public-sector hiring and scholarship policies will be adjusted. MOE replied that it works with economic agencies to update curricula and promote interdisciplinary engineering education; industry taskforces address built-environment talent shortages and pay competition; and career guidance and public-sector recruitment are being strengthened. The core debate: how industry pay and working conditions affect talent attraction.`,
+    summary: `议员质询为何学生对传统工程专业兴趣下降，如何调整课程与薪酬以匹配新兴产业，以及公共部门招聘和奖学金政策是否调整。政府回应称教育部与经济机构合作，调整课程内容，推动跨学科工程教育，同时通过行业任务组解决建筑环境行业人才短缺和薪酬竞争问题，并加强职业指导和公共部门招聘力度。核心争议在于行业薪酬与工作环境对人才吸引力的影响。`,
+    summaryEn: `An MP asked why students are turning away from traditional engineering disciplines, how curricula and pay can be aligned with emerging industries, and whether public-sector hiring and scholarship policies will be adjusted. MOE replied that it works with economic agencies to update curricula and promote interdisciplinary engineering education; industry taskforces address built-environment talent shortages and pay competition; and career guidance and public-sector recruitment are being strengthened. The core debate: how industry pay and working conditions affect talent attraction.`,
     keyPoints: ['工程毕业生供需匹配', '课程更新与跨学科融合', '行业薪酬与人才流失'],
     keyPointsEn: [
       'Match supply and demand for engineering graduates',
@@ -1637,7 +1637,7 @@ Mr Desmond Lee
       'Students do not just choose a course of study. Their choices are also influenced by the future careers associated with the course of study.',
     notableQuoteEn:
       'Students do not just choose a course of study. Their choices are also influenced by the future careers associated with the course of study.',
-    summary: `56
+    transcriptEn: `56
 Mr Jackson Lam
 asked the Minister for Education (a) whether the Ministry has studied why students are turning away from traditional engineering disciplines despite national infrastructure needs; (b) how curricula and pay expectations can be better aligned with emerging industries; and (c) whether public sector hiring and scholarships will be recalibrated to strengthen local engineering talent pipelines.
 Mr Desmond Lee
@@ -1646,8 +1646,8 @@ Mr Desmond Lee
   },
   {
     id: 'written-answer-20821',
-    title: `Establishing Collaboration between NIE and ECDA for Brain-based Learning across Learning Profiles and Integrating Adaptive AI in Education System`,
-    zhTitle: `脑科学与自适应AI教育合作`,
+    titleEn: `Establishing Collaboration between NIE and ECDA for Brain-based Learning across Learning Profiles and Integrating Adaptive AI in Education System`,
+    title: `脑科学与自适应AI教育合作`,
     date: '2025-11-04',
     parliament: '15',
     type: 'Written Answers to Questions',
@@ -1659,8 +1659,8 @@ Mr Desmond Lee
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI in Education', 'AI Infrastructure & Research', 'AI in Public Sector', 'AI Strategy'],
-    zhSummary: `议员质询教育部是否推动国立教育学院与早期儿童发展局合作，研究不同学习类型的脑科学学习方法，并建议成立跨学科工作组推动脑科学与自适应AI融合教育。教育部回应已有多方合作，课程设计基于神经科学和教育心理学理论，体现专家意见，未明确承诺新工作组成立。核心争议在于是否需要新专门团队推动脑科学与AI深度融合。`,
-    summaryShortEn: `An MP asked whether MOE will get NIE and ECDA to collaborate on brain-based learning research across learning profiles, and proposed an interdisciplinary taskforce on brain-based learning combined with adaptive AI in education. MOE replied that multi-party education research is already in place, curriculum design draws on neuroscience and educational psychology, and expert input is reflected — without explicitly committing to a new taskforce. The central debate: whether a dedicated team is needed to drive deeper integration of brain science and AI.`,
+    summary: `议员质询教育部是否推动国立教育学院与早期儿童发展局合作，研究不同学习类型的脑科学学习方法，并建议成立跨学科工作组推动脑科学与自适应AI融合教育。教育部回应已有多方合作，课程设计基于神经科学和教育心理学理论，体现专家意见，未明确承诺新工作组成立。核心争议在于是否需要新专门团队推动脑科学与AI深度融合。`,
+    summaryEn: `An MP asked whether MOE will get NIE and ECDA to collaborate on brain-based learning research across learning profiles, and proposed an interdisciplinary taskforce on brain-based learning combined with adaptive AI in education. MOE replied that multi-party education research is already in place, curriculum design draws on neuroscience and educational psychology, and expert input is reflected — without explicitly committing to a new taskforce. The central debate: whether a dedicated team is needed to drive deeper integration of brain science and AI.`,
     keyPoints: ['推动脑科学学习研究', '建议成立跨学科工作组', '已有多方教育研究合作'],
     keyPointsEn: [
       'Push brain-based learning research',
@@ -1678,7 +1678,7 @@ Mr Desmond Lee
       'MOE grounds its curriculum design and pedagogies in educational theories which draws from various research fields, including neuroscience and educational psychology.',
     notableQuoteEn:
       'MOE grounds its curriculum design and pedagogies in educational theories which draws from various research fields, including neuroscience and educational psychology.',
-    summary: `57
+    transcriptEn: `57
 Mr Victor Lye
 asked the Minister for Education (a) whether the Ministry will advise the National Institute of Education to collaborate with the Early Childhood Development Agency to study how students learn best across diverse learning profiles; and (b) if not, whether the Ministry will consider establishing an interdisciplinary taskforce comprising educators, neuroscientists, psychologists, and technologists to chart a roadmap for integrating brain-based learning and adaptive AI across the education system.
 Mr Desmond Lee
@@ -1687,8 +1687,8 @@ Mr Desmond Lee
   },
   {
     id: 'written-answer-20835',
-    title: `Update on Jobs Transformation Maps and Support Available for Mid-Career Employees and Sectors Undergoing Restructuring`,
-    zhTitle: `就业转型图及中年员工支持`,
+    titleEn: `Update on Jobs Transformation Maps and Support Available for Mid-Career Employees and Sectors Undergoing Restructuring`,
+    title: `就业转型图及中年员工支持`,
     date: '2025-11-04',
     parliament: '15',
     type: 'Written Answers to Questions',
@@ -1700,8 +1700,8 @@ Mr Desmond Lee
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI Economy & Industry', 'AI & Employment', 'AI Infrastructure & Research', 'AI in Public Sector'],
-    zhSummary: `质询聚焦就业转型图的最新进展、中年员工适应行业转变的支持措施，以及重组行业受影响员工的援助。政府回应介绍了19个就业转型图覆盖170万员工，强调通过职业转换计划帮助中年员工再培训，并结合行业洞察推动重组行业的技能提升和岗位重塑。核心争议点在于如何有效落实转型图建议，确保中年员工和重组行业工人顺利转型。`,
-    summaryShortEn: `Questions focused on the latest progress of Jobs Transformation Maps, support for mid-career employees adapting to industry shifts, and assistance for workers in restructuring sectors. The government replied that 19 JTMs have been launched, covering about 1.7 million workers, and that career conversion programmes help mid-career workers reskill while industry insights drive upskilling and job redesign in restructuring sectors. The core debate: how to effectively implement JTM recommendations so mid-career and restructuring-sector workers transition smoothly.`,
+    summary: `质询聚焦就业转型图的最新进展、中年员工适应行业转变的支持措施，以及重组行业受影响员工的援助。政府回应介绍了19个就业转型图覆盖170万员工，强调通过职业转换计划帮助中年员工再培训，并结合行业洞察推动重组行业的技能提升和岗位重塑。核心争议点在于如何有效落实转型图建议，确保中年员工和重组行业工人顺利转型。`,
+    summaryEn: `Questions focused on the latest progress of Jobs Transformation Maps, support for mid-career employees adapting to industry shifts, and assistance for workers in restructuring sectors. The government replied that 19 JTMs have been launched, covering about 1.7 million workers, and that career conversion programmes help mid-career workers reskill while industry insights drive upskilling and job redesign in restructuring sectors. The core debate: how to effectively implement JTM recommendations so mid-career and restructuring-sector workers transition smoothly.`,
     keyPoints: ['19个就业转型图发布', '中年员工职业转换支持', '重组行业技能提升'],
     keyPointsEn: [
       '19 Jobs Transformation Maps launched',
@@ -1719,7 +1719,7 @@ Mr Desmond Lee
       'To date, 19 Jobs Transformation Maps (JTMs) have been launched, covering about 1.7 million employed residents.',
     notableQuoteEn:
       'To date, 19 Jobs Transformation Maps (JTMs) have been launched, covering about 1.7 million employed residents.',
-    summary: `70
+    transcriptEn: `70
 Dr Charlene Chen
 asked the Minister for Manpower (a) whether the Ministry can provide an update on the Jobs Transformation Maps; (b) how these initiatives support mid-career employees adapting to industry shifts; and (c) what assistance is provided to help sectors that are undergoing restructuring to equip affected workers for new or redesigned roles.
 Dr Tan See Leng
@@ -1729,8 +1729,8 @@ To support mid-career employees in adapting to industry shifts, Workforce Singap
   },
   {
     id: 'written-answer-20058',
-    title: `Use of Copyright Law to Strengthen Protection Against Deepfakes`,
-    zhTitle: `版权法防范深度伪造`,
+    titleEn: `Use of Copyright Law to Strengthen Protection Against Deepfakes`,
+    title: `版权法防范深度伪造`,
     date: '2025-09-24',
     parliament: '15',
     type: 'Written Answers to Questions',
@@ -1747,8 +1747,8 @@ To support mid-career employees in adapting to industry shifts, Workforce Singap
       'AI Economy & Industry',
       'AI Infrastructure & Research',
     ],
-    zhSummary: `议员质询新加坡是否借鉴丹麦利用版权法打击深度伪造。政府回应表示重视深度伪造带来的网络伤害，将通过新立法增强受害者救济权利。强调版权法主要支持创新创作，不适用于规制技术滥用，相关侵权行为可通过其他知识产权法律处理。核心争议在于版权法是否适合用于深度伪造治理。`,
-    summaryShortEn: `An MP asked whether Singapore is studying Denmark's use of copyright law to fight deepfakes. The government said it takes the online harms of deepfakes seriously and will introduce new legislation to strengthen victims' redress. It stressed that copyright law primarily supports innovation and creativity, is not the right tool to regulate technology abuse, and related infringements can be handled via other IP laws. The core debate: whether copyright law is appropriate for deepfake governance.`,
+    summary: `议员质询新加坡是否借鉴丹麦利用版权法打击深度伪造。政府回应表示重视深度伪造带来的网络伤害，将通过新立法增强受害者救济权利。强调版权法主要支持创新创作，不适用于规制技术滥用，相关侵权行为可通过其他知识产权法律处理。核心争议在于版权法是否适合用于深度伪造治理。`,
+    summaryEn: `An MP asked whether Singapore is studying Denmark's use of copyright law to fight deepfakes. The government said it takes the online harms of deepfakes seriously and will introduce new legislation to strengthen victims' redress. It stressed that copyright law primarily supports innovation and creativity, is not the right tool to regulate technology abuse, and related infringements can be handled via other IP laws. The core debate: whether copyright law is appropriate for deepfake governance.`,
     keyPoints: ['深度伪造引发网络伤害', '版权法支持创新非规制', '其他知识产权可补充治理'],
     keyPointsEn: [
       'Deepfakes cause online harm',
@@ -1764,7 +1764,7 @@ To support mid-career employees in adapting to industry shifts, Workforce Singap
     policySignalEn: 'Plans new legislation to strengthen online safety.',
     notableQuote: 'The primary purpose of our copyright law is to support innovation and incentivise creativity.',
     notableQuoteEn: 'The primary purpose of our copyright law is to support innovation and incentivise creativity.',
-    summary: `40
+    transcriptEn: `40
 Mr Patrick Tay Teck Guan
 asked the Minister for Law whether Singapore is studying Denmark’s decision to use copyright law to strengthen protection against deepfakes, by providing individuals with a legal basis to demand illegal digital imitations be removed from tech platforms.
 Mr Edwin Tong Chun Fai
@@ -1774,8 +1774,8 @@ The Government recognises that deepfake technology can be misused to harass or c
   },
   {
     id: 'oral-answer-3873',
-    title: `Reasons for Lower Proportion of Fresh Graduates in Full-time Employment and Extent of Help from GRaduate Industry Traineeship Programme`,
-    zhTitle: `毕业生就业与GRIT计划分析`,
+    titleEn: `Reasons for Lower Proportion of Fresh Graduates in Full-time Employment and Extent of Help from GRaduate Industry Traineeship Programme`,
+    title: `毕业生就业与GRIT计划分析`,
     date: '2025-09-23',
     parliament: '15',
     type: 'Oral Answers to Questions',
@@ -1810,8 +1810,8 @@ The Government recognises that deepfake technology can be misused to harass or c
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI Economy & Industry', 'AI & Employment', 'AI in Education', 'AI in Public Sector'],
-    zhSummary: `议员质询新加坡应届毕业生全职就业比例下降的周期性与结构性原因，探讨政府推行的GRaduate Industry Traineeships (GRIT) 计划如何缓解就业难题。辩论聚焦GRIT计划的实施细节、质量保障、长期收益及对战略行业的支持。政府强调通过结构化培训和企业参与提升毕业生就业竞争力，质询方关注计划成效及公平转换机制，核心争议在于计划能否真正提升毕业生长期就业质量。`,
-    summaryShortEn: `MPs asked about the cyclical and structural drivers behind the lower share of fresh graduates landing full-time employment, and how the Graduate Industry Traineeships (GRIT) programme can ease the difficulty. The debate focused on GRIT's implementation details, quality safeguards, long-term returns, and support for strategic industries. The government emphasised structured training and firm participation to lift graduate competitiveness; MPs focused on programme effectiveness and fair conversion mechanisms. The core debate: whether the programme genuinely improves long-term employment quality.`,
+    summary: `议员质询新加坡应届毕业生全职就业比例下降的周期性与结构性原因，探讨政府推行的GRaduate Industry Traineeships (GRIT) 计划如何缓解就业难题。辩论聚焦GRIT计划的实施细节、质量保障、长期收益及对战略行业的支持。政府强调通过结构化培训和企业参与提升毕业生就业竞争力，质询方关注计划成效及公平转换机制，核心争议在于计划能否真正提升毕业生长期就业质量。`,
+    summaryEn: `MPs asked about the cyclical and structural drivers behind the lower share of fresh graduates landing full-time employment, and how the Graduate Industry Traineeships (GRIT) programme can ease the difficulty. The debate focused on GRIT's implementation details, quality safeguards, long-term returns, and support for strategic industries. The government emphasised structured training and firm participation to lift graduate competitiveness; MPs focused on programme effectiveness and fair conversion mechanisms. The core debate: whether the programme genuinely improves long-term employment quality.`,
     keyPoints: ['就业比例下降原因', 'GRIT计划作用', '培训质量保障'],
     keyPointsEn: ['Reasons for lower employment rates', 'Role of the GRIT programme', 'Training quality safeguards'],
     governmentStance: '通过GRIT提升毕业生就业质量',
@@ -1823,7 +1823,7 @@ The Government recognises that deepfake technology can be misused to harass or c
     policySignalEn: 'Strengthen graduate traineeship mechanisms.',
     notableQuote: 'How does the GRaduate Industry Traineeships Programme address these factors?',
     notableQuoteEn: 'How does the GRaduate Industry Traineeships Programme address these factors?',
-    summary: `13
+    transcriptEn: `13
 Mr Xie Yao Quan
 asked the Minister for Manpower in respect of a lower proportion of fresh graduates from Institutes of Higher Learning landing full-time permanent employment after graduation (a) what are the cyclical and structural factors contributing to this trend; (b) how does the GRaduate Industry Traineeships Programme (GRIT) address these factors; and (c) what further measures is the Ministry considering to address these factors.
 14
@@ -1833,8 +1833,8 @@ asked the Minister for Manpower (a) whether the GRaduate Industry Traineeships (
   },
   {
     id: 'written-answer-19797',
-    title: `Development of Frameworks to Track Recent Graduates' Long-term Employability and Mitigate Risks of Skills Obsolescence`,
-    zhTitle: `毕业生就业与技能更新框架`,
+    titleEn: `Development of Frameworks to Track Recent Graduates' Long-term Employability and Mitigate Risks of Skills Obsolescence`,
+    title: `毕业生就业与技能更新框架`,
     date: '2025-09-23',
     parliament: '15',
     type: 'Written Answers to Questions',
@@ -1846,8 +1846,8 @@ asked the Minister for Manpower (a) whether the GRaduate Industry Traineeships (
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI Governance & Regulation', 'AI Safety & Ethics', 'AI Economy & Industry', 'AI & Employment'],
-    zhSummary: `议员质询政府如何与高等院校合作，制定框架以审视课程并追踪毕业生技能过时风险，以及如何衡量毕业生长期就业能力。政府回应通过就业调查监测毕业生就业状况，强调课程定期与产业需求对接，强化校企合作和实习安排，提升学生AI及跨领域能力。核心争议在于如何有效应对AI快速发展带来的技能更新挑战。`,
-    summaryShortEn: `An MP asked how the government works with IHLs to develop frameworks that review curricula and track skills-obsolescence risk for recent graduates, and how long-term employability is measured. The government replied that it monitors graduate outcomes via employment surveys, regularly aligns curricula with industry needs, and strengthens industry-school partnerships and internships to lift students' AI and interdisciplinary capabilities. The core debate: how to effectively respond to skills-update challenges from rapid AI advances.`,
+    summary: `议员质询政府如何与高等院校合作，制定框架以审视课程并追踪毕业生技能过时风险，以及如何衡量毕业生长期就业能力。政府回应通过就业调查监测毕业生就业状况，强调课程定期与产业需求对接，强化校企合作和实习安排，提升学生AI及跨领域能力。核心争议在于如何有效应对AI快速发展带来的技能更新挑战。`,
+    summaryEn: `An MP asked how the government works with IHLs to develop frameworks that review curricula and track skills-obsolescence risk for recent graduates, and how long-term employability is measured. The government replied that it monitors graduate outcomes via employment surveys, regularly aligns curricula with industry needs, and strengthens industry-school partnerships and internships to lift students' AI and interdisciplinary capabilities. The core debate: how to effectively respond to skills-update challenges from rapid AI advances.`,
     keyPoints: ['就业数据持续监测', '课程与产业紧密结合', '强化校企合作实习'],
     keyPointsEn: [
       'Continuous monitoring of employment data',
@@ -1863,7 +1863,7 @@ asked the Minister for Manpower (a) whether the GRaduate Industry Traineeships (
     policySignalEn: 'Strengthen AI skills development and employment tracking.',
     notableQuote: 'The Institutes of Higher Learning seek to align their curriculum with evolving industry needs.',
     notableQuoteEn: 'The Institutes of Higher Learning seek to align their curriculum with evolving industry needs.',
-    summary: `30
+    transcriptEn: `30
 Mr Low Wu Yang Andre
 asked the Minister for Education in view of the rapid advancements of AI (a) what frameworks are being developed with our Institutes of Higher Learning to (i) guide the review of curricula and (ii) track and mitigate the risk of skills obsolescence for recent graduates; and (b) what new metrics will be used to measure the long-term employability of recent graduates in an AI-driven economy.
 Mr Desmond Lee
@@ -1872,8 +1872,8 @@ Mr Desmond Lee
   },
   {
     id: 'written-answer-19800',
-    title: `Regular Curriculum Reviews and Industry Consultation to Align Students' Skills with Future Economy Needs`,
-    zhTitle: `课程定期更新与产业对接`,
+    titleEn: `Regular Curriculum Reviews and Industry Consultation to Align Students' Skills with Future Economy Needs`,
+    title: `课程定期更新与产业对接`,
     date: '2025-09-23',
     parliament: '15',
     type: 'Written Answers to Questions',
@@ -1885,8 +1885,8 @@ Mr Desmond Lee
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI Economy & Industry', 'AI in Education', 'AI in Healthcare', 'AI & National Security'],
-    zhSummary: `质询了教育部如何确保课程定期更新以匹配未来经济需求，特别是数字化、可持续发展及医疗领域。政府回应称通过定期审查、行业咨询及教师产业实践，确保课程内容紧跟行业发展，学校课程每6-8年审查一次，IHL课程更频繁，重点领域如AI更新更快。核心争议点在于课程更新频率与行业需求的匹配度。`,
-    summaryShortEn: `An MP asked how MOE ensures regular curriculum updates to match future economic needs, especially in digitalisation, sustainability, and healthcare. MOE replied that it uses regular reviews, industry consultations, and teacher industry stints to keep content tracking industry developments — school curricula are reviewed every 6–8 years, IHL curricula more frequently, and priority areas like AI update faster. The core debate: whether update frequency matches industry needs.`,
+    summary: `质询了教育部如何确保课程定期更新以匹配未来经济需求，特别是数字化、可持续发展及医疗领域。政府回应称通过定期审查、行业咨询及教师产业实践，确保课程内容紧跟行业发展，学校课程每6-8年审查一次，IHL课程更频繁，重点领域如AI更新更快。核心争议点在于课程更新频率与行业需求的匹配度。`,
+    summaryEn: `An MP asked how MOE ensures regular curriculum updates to match future economic needs, especially in digitalisation, sustainability, and healthcare. MOE replied that it uses regular reviews, industry consultations, and teacher industry stints to keep content tracking industry developments — school curricula are reviewed every 6–8 years, IHL curricula more frequently, and priority areas like AI update faster. The core debate: whether update frequency matches industry needs.`,
     keyPoints: ['课程定期审查', '行业深度参与', '重点领域快速更新'],
     keyPointsEn: ['Regular curriculum reviews', 'Deep industry engagement', 'Faster updates in priority areas'],
     governmentStance: '定期更新课程，强化行业合作',
@@ -1900,7 +1900,7 @@ Mr Desmond Lee
       'The Ministry of Education and our Institutes of Higher Learning regularly review the curriculum to ensure students develop competencies needed to thrive in the future economy.',
     notableQuoteEn:
       'The Ministry of Education and our Institutes of Higher Learning regularly review the curriculum to ensure students develop competencies needed to thrive in the future economy.',
-    summary: `33
+    transcriptEn: `33
 Dr Charlene Chen
 asked the Minister for Education (a) how does the Ministry ensure school curricula are regularly updated to equip students with skills relevant to the future economy, particularly in growth areas like digitalisation, sustainability, healthcare, and allied healthcare; (b) how frequently are such reviews conducted in consultation with industry; and (c) how is alignment ensured between education pathways and sectors with strong and emerging manpower demand.
 Mr Desmond Lee
@@ -1909,8 +1909,8 @@ Mr Desmond Lee
   },
   {
     id: 'written-answer-19554',
-    title: `Use of AI and Technology Tools to Reduce Errors and Increase Efficiency in Government Contract Evaluation, Award and Management`,
-    zhTitle: `政府合同评估中的AI应用`,
+    titleEn: `Use of AI and Technology Tools to Reduce Errors and Increase Efficiency in Government Contract Evaluation, Award and Management`,
+    title: `政府合同评估中的AI应用`,
     date: '2025-09-22',
     parliament: '15',
     type: 'Written Answers to Questions',
@@ -1922,8 +1922,8 @@ Mr Desmond Lee
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI Governance & Regulation', 'AI & National Security', 'AI in Public Sector', 'AI Strategy'],
-    zhSummary: `质询方关注审计署对合同管理和招标评估中存在的错误，询问公共服务部门是否采用AI及技术手段提升效率和减少错误。政府回应称已积极探索并在适当领域开始应用AI技术，以确保合同评审符合政府采购原则。核心争议点在于如何有效利用AI工具提升政府采购透明度和效率。`,
-    summaryShortEn: `In light of AGO findings on contract management and tender evaluation errors, an MP asked whether the Public Service Division uses AI and other technologies to lift efficiency and reduce errors. The government replied that it has been actively exploring such use and has begun applying AI in suitable areas to ensure contract evaluations align with procurement principles. The core debate: how to effectively use AI to increase transparency and efficiency in government procurement.`,
+    summary: `质询方关注审计署对合同管理和招标评估中存在的错误，询问公共服务部门是否采用AI及技术手段提升效率和减少错误。政府回应称已积极探索并在适当领域开始应用AI技术，以确保合同评审符合政府采购原则。核心争议点在于如何有效利用AI工具提升政府采购透明度和效率。`,
+    summaryEn: `In light of AGO findings on contract management and tender evaluation errors, an MP asked whether the Public Service Division uses AI and other technologies to lift efficiency and reduce errors. The government replied that it has been actively exploring such use and has begun applying AI in suitable areas to ensure contract evaluations align with procurement principles. The core debate: how to effectively use AI to increase transparency and efficiency in government procurement.`,
     keyPoints: ['审计署发现合同管理问题', '政府探索AI提升效率', '确保合同符合采购原则'],
     keyPointsEn: [
       'AGO finds contract management issues',
@@ -1941,7 +1941,7 @@ Mr Desmond Lee
       'the Government has been actively exploring the use of technology, including artificial intelligence, in procurement',
     notableQuoteEn:
       'the Government has been actively exploring the use of technology, including artificial intelligence, in procurement',
-    summary: `2
+    transcriptEn: `2
 Mr Zhulkarnain Abdul Rahim
 asked the Prime Minister and Minister for Finance in light of the findings by the Auditor-General's Office for FY24/25 on contract management and tender evaluation, whether the Public Service Division has employed artificial intelligence (AI) tools and other technological measures to reduce errors and increase efficiency in tender evaluation and to ensure contracts are awarded in line with the Government’s procurement principles.
 Mr Lawrence Wong
@@ -1951,8 +1951,8 @@ Yes, the Government has been actively exploring the use of technology, including
   },
   {
     id: 'oral-answer-3852',
-    title: `Protection for Consumers of Fintech Platforms and Non-bank Institutions, and Regulations on Liquidity Levels and Responsible Marketing`,
-    zhTitle: `金融科技平台消费者保护`,
+    titleEn: `Protection for Consumers of Fintech Platforms and Non-bank Institutions, and Regulations on Liquidity Levels and Responsible Marketing`,
+    title: `金融科技平台消费者保护`,
     date: '2025-04-08',
     parliament: '14',
     type: 'Oral Answers to Questions',
@@ -1964,8 +1964,8 @@ Yes, the Government has been actively exploring the use of technology, including
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI Governance & Regulation', 'AI Safety & Ethics', 'AI Economy & Industry'],
-    zhSummary: `议员质询金融管理局（MAS）如何确保金融科技平台及非银行机构维持流动性、管理资金提取风险，并加强零售投资者保护。政府回应指出相关投资平台受资本市场服务牌照监管，客户资产与平台资产隔离，提现按规定时间有序进行。政府强调近期提现激增事件中，平台的风险管理机制发挥了作用，但对部分即时提现及关联借记卡功能进行了限制，体现监管灵活性与风险防控的平衡。`,
-    summaryShortEn: `MPs asked how MAS ensures fintech platforms and non-bank institutions maintain liquidity and manage withdrawal risks, and strengthens retail-investor protection. The government replied that such investment platforms operate under Capital Markets Services licences, client assets are segregated from platform assets, and withdrawals follow set timeframes. In a recent withdrawal surge incident, the platforms' risk management worked as intended, though limits were placed on some instant withdrawals and linked debit-card features — reflecting a balance between regulatory flexibility and risk control.`,
+    summary: `议员质询金融管理局（MAS）如何确保金融科技平台及非银行机构维持流动性、管理资金提取风险，并加强零售投资者保护。政府回应指出相关投资平台受资本市场服务牌照监管，客户资产与平台资产隔离，提现按规定时间有序进行。政府强调近期提现激增事件中，平台的风险管理机制发挥了作用，但对部分即时提现及关联借记卡功能进行了限制，体现监管灵活性与风险防控的平衡。`,
+    summaryEn: `MPs asked how MAS ensures fintech platforms and non-bank institutions maintain liquidity and manage withdrawal risks, and strengthens retail-investor protection. The government replied that such investment platforms operate under Capital Markets Services licences, client assets are segregated from platform assets, and withdrawals follow set timeframes. In a recent withdrawal surge incident, the platforms' risk management worked as intended, though limits were placed on some instant withdrawals and linked debit-card features — reflecting a balance between regulatory flexibility and risk control.`,
     keyPoints: ['投资平台受资本市场服务牌照监管', '客户资产与平台资产严格隔离', '提现功能受限以防风险扩散'],
     keyPointsEn: [
       'Investment platforms regulated under CMS licences',
@@ -1983,15 +1983,15 @@ Yes, the Government has been actively exploring the use of technology, including
       'The recent incident involving a surge in withdrawals from an investment platform illustrate that the safeguards worked as intended.',
     notableQuoteEn:
       'The recent incident involving a surge in withdrawals from an investment platform illustrate that the safeguards worked as intended.',
-    summary: `7
+    transcriptEn: `7
 Mr Mark Lee
 asked the Prime Minister and Minister for Finance (a) how does MAS ensure that financial technology platforms and non-bank financial institutions offering high-yield investment products maintain sufficient liquidity and manage fund withdrawal risks; (b) whether MAS is considering additional safeguards to enhance consumer protection for retail investors engaging with such platforms, given recent liquidity challenges faced by fintech firms; and (c) what measures are in place to ensure that the public fully understands the risks of using financial services from non-bank entities, pa`,
     sourceUrl: 'https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=oral-answer-3852',
   },
   {
     id: 'budget-2620',
-    title: `Committee of Supply – Head Q (Ministry of Digital Development and Information)`,
-    zhTitle: `数字基础设施与安全发展`,
+    titleEn: `Committee of Supply – Head Q (Ministry of Digital Development and Information)`,
+    title: `数字基础设施与安全发展`,
     date: '2025-03-07',
     parliament: '14',
     type: 'Budget',
@@ -2040,8 +2040,8 @@ asked the Prime Minister and Minister for Finance (a) how does MAS ensure that f
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI Economy & Industry', 'AI Infrastructure & Research', 'AI in Public Sector'],
-    zhSummary: `议员质询数字基础设施的韧性与安全保障措施，关注云服务和数据中心的安全指南。政府强调新加坡数字经济增长显著，已发布指导提升基础设施安全，确保数字转型可持续且包容。核心争议在于如何进一步强化基础设施以应对全天候运营风险。`,
-    summaryShortEn: `MPs asked about digital infrastructure resilience and security safeguards, focusing on cloud and data centre security guidelines. The government emphasised the strong growth of Singapore's digital economy and the issuance of guidance to lift infrastructure security, ensuring digital transformation is sustainable and inclusive. The core debate: how to further strengthen infrastructure against round-the-clock operational risks.`,
+    summary: `议员质询数字基础设施的韧性与安全保障措施，关注云服务和数据中心的安全指南。政府强调新加坡数字经济增长显著，已发布指导提升基础设施安全，确保数字转型可持续且包容。核心争议在于如何进一步强化基础设施以应对全天候运营风险。`,
+    summaryEn: `MPs asked about digital infrastructure resilience and security safeguards, focusing on cloud and data centre security guidelines. The government emphasised the strong growth of Singapore's digital economy and the issuance of guidance to lift infrastructure security, ensuring digital transformation is sustainable and inclusive. The core debate: how to further strengthen infrastructure against round-the-clock operational risks.`,
     keyPoints: ['数字经济快速增长', '数字基础设施安全关键', '发布云服务安全指南'],
     keyPointsEn: [
       'Rapid growth of the digital economy',
@@ -2059,7 +2059,7 @@ asked the Prime Minister and Minister for Finance (a) how does MAS ensure that f
       'A small failure in our digital infrastructure can cause major disruptions to our economic activities and daily lives.',
     notableQuoteEn:
       'A small failure in our digital infrastructure can cause major disruptions to our economic activities and daily lives.',
-    summary: `The Chairman
+    transcriptEn: `The Chairman
 : Head Q, Ministry of Digital Development and Information. Ms Tin Pei Ling.
 12.26 pm
 Sustainable and Safe Digital Growth
@@ -2071,8 +2071,8 @@ Singapore has always been unafraid of tr`,
   },
   {
     id: 'budget-2612',
-    title: `Committee of Supply – Head S (Ministry of Manpower)`,
-    zhTitle: `新加坡劳动力老龄化应对策略`,
+    titleEn: `Committee of Supply – Head S (Ministry of Manpower)`,
+    title: `新加坡劳动力老龄化应对策略`,
     date: '2025-03-06',
     parliament: '14',
     type: 'Budget',
@@ -2120,8 +2120,8 @@ Singapore has always been unafraid of tr`,
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI Governance & Regulation', 'AI Safety & Ethics', 'AI Economy & Industry', 'AI & Employment'],
-    zhSummary: `议员质询人力部关于退休保障、劳动力素质提升及包容性职场建设成效，重点关注劳动力老龄化带来的挑战。质询方提出通过助力技术改造岗位、设立专门培训中心等措施提升老年人就业率。政府尚未明确回应，辩论聚焦如何应对老龄化劳动力短缺及经济影响。`,
-    summaryShortEn: `MPs questioned the effectiveness of MOM's retirement security, workforce-upgrading and inclusive workplace efforts, with a focus on the challenges of an ageing workforce. They proposed using assistive technologies to redesign jobs and setting up dedicated training centres to lift senior employment rates. The government has yet to respond fully; the debate centres on tackling ageing-workforce shortages and the economic impact.`,
+    summary: `议员质询人力部关于退休保障、劳动力素质提升及包容性职场建设成效，重点关注劳动力老龄化带来的挑战。质询方提出通过助力技术改造岗位、设立专门培训中心等措施提升老年人就业率。政府尚未明确回应，辩论聚焦如何应对老龄化劳动力短缺及经济影响。`,
+    summaryEn: `MPs questioned the effectiveness of MOM's retirement security, workforce-upgrading and inclusive workplace efforts, with a focus on the challenges of an ageing workforce. They proposed using assistive technologies to redesign jobs and setting up dedicated training centres to lift senior employment rates. The government has yet to respond fully; the debate centres on tackling ageing-workforce shortages and the economic impact.`,
     keyPoints: ['退休保障成效质询', '老龄劳动力岗位重塑', '专设培训支持老年工'],
     keyPointsEn: [
       'Questions on retirement security effectiveness',
@@ -2139,7 +2139,7 @@ Singapore has always been unafraid of tr`,
       'We must adopt such innovations widely. Singapore can, and should, become a hub for such innovations.',
     notableQuoteEn:
       'We must adopt such innovations widely. Singapore can, and should, become a hub for such innovations.',
-    summary: `The Chairman
+    transcriptEn: `The Chairman
 : Head S, the Ministry of Manpower. Mr Desmond Choo.
 5.23 pm
 Manpower Policies
@@ -2151,8 +2151,8 @@ We introduced the Complementarity Assessment (COMPASS) framework to ensure forei
   },
   {
     id: 'budget-2610',
-    title: `Committee of Supply – Head V (Ministry of Trade and Industry)`,
-    zhTitle: `贸易与工业预算辩论摘要`,
+    titleEn: `Committee of Supply – Head V (Ministry of Trade and Industry)`,
+    title: `贸易与工业预算辩论摘要`,
     date: '2025-03-06',
     parliament: '14',
     type: 'Budget',
@@ -2184,8 +2184,8 @@ We introduced the Complementarity Assessment (COMPASS) framework to ensure forei
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI Safety & Ethics', 'AI Economy & Industry', 'AI in Education', 'AI Infrastructure & Research'],
-    zhSummary: `议员质询了地缘政治紧张对新加坡经济的潜在影响，特别是贸易保护主义和关税战的风险。政府回应指出全球多边自由贸易体系受压，贸易战可能扰乱供应链，影响投资和经济增长。核心争议在于如何应对外部不确定性及国内资源限制，保障经济持续发展。`,
-    summaryShortEn: `MPs asked about the potential impact of geopolitical tensions on Singapore's economy, particularly the risks of protectionism and tariff wars. The government replied that the global multilateral free-trade system is under pressure and trade wars may disrupt supply chains, hurting investment and growth. The core debate: how to navigate external uncertainty and domestic resource constraints while sustaining growth.`,
+    summary: `议员质询了地缘政治紧张对新加坡经济的潜在影响，特别是贸易保护主义和关税战的风险。政府回应指出全球多边自由贸易体系受压，贸易战可能扰乱供应链，影响投资和经济增长。核心争议在于如何应对外部不确定性及国内资源限制，保障经济持续发展。`,
+    summaryEn: `MPs asked about the potential impact of geopolitical tensions on Singapore's economy, particularly the risks of protectionism and tariff wars. The government replied that the global multilateral free-trade system is under pressure and trade wars may disrupt supply chains, hurting investment and growth. The core debate: how to navigate external uncertainty and domestic resource constraints while sustaining growth.`,
     keyPoints: ['全球贸易体系受压', '贸易战扰乱供应链', '国内资源紧张挑战'],
     keyPointsEn: [
       'Global trade system under pressure',
@@ -2201,7 +2201,7 @@ We introduced the Complementarity Assessment (COMPASS) framework to ensure forei
     policySignalEn: 'Strengthen economic resilience and open cooperation.',
     notableQuote: 'Our economic success did not happen by chance. It was the result of a combination of factors.',
     notableQuoteEn: 'Our economic success did not happen by chance. It was the result of a combination of factors.',
-    summary: `[(proc text) Head V (cont) – (proc text)]
+    transcriptEn: `[(proc text) Head V (cont) – (proc text)]
 [(proc text) Resumption of Debate on Question [5 March 2025], (proc text)]
 [(proc text) "That the total sum to be allocated for Head V of the Estimates be reduced by $100." – [Mr Liang Eng Hwa]. (proc text)]
 [(proc text) Question again proposed. (proc text)]
@@ -2214,8 +2214,8 @@ The Minister for Trade and Industry (Mr Gan Kim Yong)
   },
   {
     id: 'budget-2614',
-    title: `Committee of Supply – Head S (Ministry of Manpower)`,
-    zhTitle: `劳动力市场复苏与保障措施`,
+    titleEn: `Committee of Supply – Head S (Ministry of Manpower)`,
+    title: `劳动力市场复苏与保障措施`,
     date: '2025-03-06',
     parliament: '14',
     type: 'Budget',
@@ -2227,8 +2227,8 @@ The Minister for Trade and Industry (Mr Gan Kim Yong)
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI Economy & Industry', 'AI & Employment', 'AI Infrastructure & Research', 'AI in Public Sector'],
-    zhSummary: `议员质询疫情后就业恢复、通胀压力及弱势群体保障。人力部部长回应新加坡失业率降至2.8%，通过技能培训、渐进式工资模式及退休保障等多项措施支持不同年龄和弱势群体就业，强调收入增长超过通胀，整体劳动力市场稳健。核心争议聚焦于如何持续提升低收入者福利及应对全球经济不确定性。`,
-    summaryShortEn: `MPs raised post-pandemic employment recovery, inflation pressure, and protection of vulnerable groups. The Manpower Minister replied that resident unemployment has dropped to 2.8%, with skills training, the Progressive Wage Model and retirement security supporting employment across different age and vulnerable groups; income growth has outpaced inflation and the labour market remains strong. The core debate: how to keep lifting low-income welfare and respond to global economic uncertainty.`,
+    summary: `议员质询疫情后就业恢复、通胀压力及弱势群体保障。人力部部长回应新加坡失业率降至2.8%，通过技能培训、渐进式工资模式及退休保障等多项措施支持不同年龄和弱势群体就业，强调收入增长超过通胀，整体劳动力市场稳健。核心争议聚焦于如何持续提升低收入者福利及应对全球经济不确定性。`,
+    summaryEn: `MPs raised post-pandemic employment recovery, inflation pressure, and protection of vulnerable groups. The Manpower Minister replied that resident unemployment has dropped to 2.8%, with skills training, the Progressive Wage Model and retirement security supporting employment across different age and vulnerable groups; income growth has outpaced inflation and the labour market remains strong. The core debate: how to keep lifting low-income welfare and respond to global economic uncertainty.`,
     keyPoints: ['疫情后就业恢复', '低收入者工资提升', '弱势群体保障加强'],
     keyPointsEn: [
       'Post-pandemic employment recovery',
@@ -2244,7 +2244,7 @@ The Minister for Trade and Industry (Mr Gan Kim Yong)
     policySignalEn: 'Strengthen employment support and retirement security.',
     notableQuote: 'We helped workers and businesses to emerge stronger.',
     notableQuoteEn: 'We helped workers and businesses to emerge stronger.',
-    summary: `[(proc text) Debate resumed. (proc text)]
+    transcriptEn: `[(proc text) Debate resumed. (proc text)]
 6.36 pm
 The Minister for Manpower (Dr Tan See Leng)
 : Mr Chairman, I thank the Government Parliamentary Committee (GPC) Members of Parliament and Members who have spoken for our workers as well as our employers. It has been five years since the COVID-19 pandemic. Fortunately, we managed to recover fairly quickly.
@@ -2253,8 +2253,8 @@ During COVID-19, resident unemployment peaked at 4.8%. MOM's priority then was t
   },
   {
     id: 'budget-2605',
-    title: `Committee of Supply – Head V (Ministry of Trade and Industry)`,
-    zhTitle: `推动经济持续增长的挑战与对策`,
+    titleEn: `Committee of Supply – Head V (Ministry of Trade and Industry)`,
+    title: `推动经济持续增长的挑战与对策`,
     date: '2025-03-05',
     parliament: '14',
     type: 'Budget',
@@ -2304,8 +2304,8 @@ During COVID-19, resident unemployment peaked at 4.8%. MOM's priority then was t
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI Economy & Industry', 'AI & Employment', 'AI Infrastructure & Research', 'AI in Public Sector'],
-    zhSummary: `议员质询新加坡经济能否超越2025年1%-3%的增长预期，强调经济增长对就业和国际竞争力的重要性。政府回应需克服土地、劳动力及碳排放限制，通过结构性生产力提升、企业转型和基础设施建设实现增长。核心争议在于如何在资源受限下实现更高增长。`,
-    summaryShortEn: `MPs asked whether Singapore's economy can outperform the 2025 1–3% growth forecast, emphasising the importance of growth for jobs and international competitiveness. The government replied that growth requires overcoming tight constraints on land, workforce and now carbon, through structural productivity gains, firm transformation, and infrastructure investment. The core debate: how to achieve higher growth under resource constraints.`,
+    summary: `议员质询新加坡经济能否超越2025年1%-3%的增长预期，强调经济增长对就业和国际竞争力的重要性。政府回应需克服土地、劳动力及碳排放限制，通过结构性生产力提升、企业转型和基础设施建设实现增长。核心争议在于如何在资源受限下实现更高增长。`,
+    summaryEn: `MPs asked whether Singapore's economy can outperform the 2025 1–3% growth forecast, emphasising the importance of growth for jobs and international competitiveness. The government replied that growth requires overcoming tight constraints on land, workforce and now carbon, through structural productivity gains, firm transformation, and infrastructure investment. The core debate: how to achieve higher growth under resource constraints.`,
     keyPoints: ['经济增长高于预期', '需突破土地与劳动力限制', '结构性生产力提升关键'],
     keyPointsEn: [
       'Economic growth outperforms expectations',
@@ -2323,7 +2323,7 @@ During COVID-19, resident unemployment peaked at 4.8%. MOM's priority then was t
       'To do that, it requires us to steadfastly work on overcoming our tight constraints on land and workforce and now also carbon.',
     notableQuoteEn:
       'To do that, it requires us to steadfastly work on overcoming our tight constraints on land and workforce and now also carbon.',
-    summary: `The Chairman
+    transcriptEn: `The Chairman
 : Head V, Ministry of Trade and Industry. Mr Liang Eng Hwa.
 5.37 pm
 Growing Our Economy and Trade
@@ -2334,8 +2334,8 @@ Sir, the Singapore economy surprised on the upsize with a higher-than-expected g
   },
   {
     id: 'budget-2593',
-    title: `Committee of Supply – Head R (Ministry of Law)`,
-    zhTitle: `新加坡国际争端解决竞争力`,
+    titleEn: `Committee of Supply – Head R (Ministry of Law)`,
+    title: `新加坡国际争端解决竞争力`,
     date: '2025-03-04',
     parliament: '14',
     type: 'Budget',
@@ -2380,8 +2380,8 @@ Sir, the Singapore economy surprised on the upsize with a higher-than-expected g
       'AI Economy & Industry',
       'AI Infrastructure & Research',
     ],
-    zhSummary: `议员质询新加坡如何保持作为国际争端解决中心的竞争优势，特别面对阿布扎比等新兴竞争对手。政府强调新加坡凭借法治、专业人才及创新优势，持续吸引跨境争端案件，并推动调解国际公约。核心争议在于如何应对全球竞争及吸引人才，确保新加坡领先地位不被削弱。`,
-    summaryShortEn: `MPs asked how Singapore can maintain its competitive edge as an international dispute resolution hub, especially against rising competitors like Abu Dhabi. The government stressed that Singapore's rule of law, professional talent and innovation continue to attract cross-border dispute cases, and pushes international mediation conventions. The core debate: how to handle global competition and attract talent so Singapore's lead is not eroded.`,
+    summary: `议员质询新加坡如何保持作为国际争端解决中心的竞争优势，特别面对阿布扎比等新兴竞争对手。政府强调新加坡凭借法治、专业人才及创新优势，持续吸引跨境争端案件，并推动调解国际公约。核心争议在于如何应对全球竞争及吸引人才，确保新加坡领先地位不被削弱。`,
+    summaryEn: `MPs asked how Singapore can maintain its competitive edge as an international dispute resolution hub, especially against rising competitors like Abu Dhabi. The government stressed that Singapore's rule of law, professional talent and innovation continue to attract cross-border dispute cases, and pushes international mediation conventions. The core debate: how to handle global competition and attract talent so Singapore's lead is not eroded.`,
     keyPoints: ['新加坡国际争端中心地位', '全球竞争加剧挑战', '需持续吸引人才投资'],
     keyPointsEn: [
       "Singapore's status as international disputes hub",
@@ -2398,7 +2398,7 @@ Sir, the Singapore economy surprised on the upsize with a higher-than-expected g
     notableQuote: 'Singapore has to: first, stay open... second, stay ahead of the competition and ahead of the curve.',
     notableQuoteEn:
       'Singapore has to: first, stay open... second, stay ahead of the competition and ahead of the curve.',
-    summary: `The Chairman
+    transcriptEn: `The Chairman
 : Head R, Ministry of Law. Mr Zhulkarnain Abdul Rahim.
 1.00 pm
 Singapore as an International Dispute Hub
@@ -2409,8 +2409,8 @@ Chairman, I am a disputes lawyer in an international arbitration practice. Singa
   },
   {
     id: 'budget-2592',
-    title: `Committee of Supply – Head P (Ministry of Home Affairs)`,
-    zhTitle: `内政部预算与AI安全议题`,
+    titleEn: `Committee of Supply – Head P (Ministry of Home Affairs)`,
+    title: `内政部预算与AI安全议题`,
     date: '2025-03-04',
     parliament: '14',
     type: 'Budget',
@@ -2429,8 +2429,8 @@ Chairman, I am a disputes lawyer in an international arbitration practice. Singa
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI Safety & Ethics', 'AI & Employment', 'AI & National Security', 'AI in Public Sector'],
-    zhSummary: `议员质询内政部预算及应对技术犯罪措施，政府回应通过新清关概念提升边境安全和效率，利用AI技术加强风险评估和自动化，减少人力需求。辩论聚焦AI带来的犯罪挑战与人力资源压力，政府强调转型与再培训，反映出对未来安全与技术融合的重视。`,
-    summaryShortEn: `MPs raised the MHA budget and measures against tech-enabled crime. The government replied that a new clearance concept lifts border security and efficiency, using AI to strengthen risk assessment and automation while cutting manpower needs. The debate focused on AI-enabled crime challenges and HR pressure; the government emphasised transformation and reskilling, reflecting growing focus on integrating security and technology.`,
+    summary: `议员质询内政部预算及应对技术犯罪措施，政府回应通过新清关概念提升边境安全和效率，利用AI技术加强风险评估和自动化，减少人力需求。辩论聚焦AI带来的犯罪挑战与人力资源压力，政府强调转型与再培训，反映出对未来安全与技术融合的重视。`,
+    summaryEn: `MPs raised the MHA budget and measures against tech-enabled crime. The government replied that a new clearance concept lifts border security and efficiency, using AI to strengthen risk assessment and automation while cutting manpower needs. The debate focused on AI-enabled crime challenges and HR pressure; the government emphasised transformation and reskilling, reflecting growing focus on integrating security and technology.`,
     keyPoints: ['新清关概念提升效率', 'AI助力风险评估', '人力资源转型升级'],
     keyPointsEn: [
       'New clearance concept lifts efficiency',
@@ -2448,7 +2448,7 @@ Chairman, I am a disputes lawyer in an international arbitration practice. Singa
       'Criminals are exploiting technology, in particular, artificial intelligence (AI), to carry out more sophisticated crimes and to hit more victims.',
     notableQuoteEn:
       'Criminals are exploiting technology, in particular, artificial intelligence (AI), to carry out more sophisticated crimes and to hit more victims.',
-    summary: `[(proc text) Head P (cont) – (proc text)]
+    transcriptEn: `[(proc text) Head P (cont) – (proc text)]
 [(proc text) Resumption of Debate on Question [3 March 2025], (proc text)]
 [(proc text) "That the total sum to be allocated for Head P of the Estimates be reduced by $100." – [Mr Zhulkarnain Abdul Rahim]. (proc text)]
 [(proc text) Question again proposed. (proc text)]
@@ -2461,8 +2461,8 @@ The Second Minister for Home Affairs (Mrs Josephine Teo)
   },
   {
     id: 'budget-2585',
-    title: `Committee of Supply – Head P (Ministry of Home Affairs)`,
-    zhTitle: `维护种族宗教和谐与信任`,
+    titleEn: `Committee of Supply – Head P (Ministry of Home Affairs)`,
+    title: `维护种族宗教和谐与信任`,
     date: '2025-03-03',
     parliament: '14',
     type: 'Budget',
@@ -2500,8 +2500,8 @@ The Second Minister for Home Affairs (Mrs Josephine Teo)
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI Governance & Regulation', 'AI Safety & Ethics', 'AI in Education', 'Deepfakes & Disinformation'],
-    zhSummary: `议员质询政府如何与社区组织及公众合作，维护新加坡的种族宗教和谐，并应对全球普遍存在的公共机构信任赤字。质询强调谣言和错误信息对社会和谐的威胁，呼吁多方共同努力。政府回应尚未包含在节选中，核心争议在于如何平衡政策执行与社区参与，增强公众对执法机构的信任。`,
-    summaryShortEn: `MPs asked how the government partners community groups and the public to safeguard Singapore's racial and religious harmony and respond to the global trust deficit in public institutions. They highlighted the threat of rumours and misinformation to social cohesion and called for collective effort. The government response is not included in the excerpt; the core debate is on balancing policy enforcement with community participation to strengthen public trust in law-enforcement institutions.`,
+    summary: `议员质询政府如何与社区组织及公众合作，维护新加坡的种族宗教和谐，并应对全球普遍存在的公共机构信任赤字。质询强调谣言和错误信息对社会和谐的威胁，呼吁多方共同努力。政府回应尚未包含在节选中，核心争议在于如何平衡政策执行与社区参与，增强公众对执法机构的信任。`,
+    summaryEn: `MPs asked how the government partners community groups and the public to safeguard Singapore's racial and religious harmony and respond to the global trust deficit in public institutions. They highlighted the threat of rumours and misinformation to social cohesion and called for collective effort. The government response is not included in the excerpt; the core debate is on balancing policy enforcement with community participation to strengthen public trust in law-enforcement institutions.`,
     keyPoints: ['维护种族宗教和谐', '打击错误信息传播', '提升公众对机构信任'],
     keyPointsEn: [
       'Safeguard racial and religious harmony',
@@ -2517,7 +2517,7 @@ The Second Minister for Home Affairs (Mrs Josephine Teo)
     policySignalEn: 'Strengthen community participation and trust-building.',
     notableQuote: 'Trust in public institutions, especially those responsible for law and order, is essential.',
     notableQuoteEn: 'Trust in public institutions, especially those responsible for law and order, is essential.',
-    summary: `The Chairman
+    transcriptEn: `The Chairman
 : Head P, Ministry of Home Affairs. Mr Zhulkarnain Abdul Rahim.
 6.54 pm
 Trust, Racial and Religious Harmony
@@ -2528,8 +2528,8 @@ In today’s world, where divisions and distrust are rising, preserving trust an
   },
   {
     id: 'budget-2583',
-    title: `Committee of Supply – Head J (Ministry of Defence)`,
-    zhTitle: `国防预算与国际安全形势`,
+    titleEn: `Committee of Supply – Head J (Ministry of Defence)`,
+    title: `国防预算与国际安全形势`,
     date: '2025-03-03',
     parliament: '14',
     type: 'Budget',
@@ -2593,8 +2593,8 @@ In today’s world, where divisions and distrust are rising, preserving trust an
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI Governance & Regulation', 'AI & National Security', 'AI in Public Sector'],
-    zhSummary: `议员质询当前国际安全环境变化及其对新加坡国防预算的影响，重点关注美中关系紧张、国际规则体系的动摇及区域安全风险。政府强调国防和武装力量对保障国家安全的重要性，呼吁维持强大防御能力以应对复杂多变的国际局势。核心争议在于国际联盟的稳定性及新加坡应如何调整国防策略。`,
-    summaryShortEn: `MPs asked about the changing international security environment and its impact on Singapore's defence budget, focusing on US-China tensions, the wavering rules-based order, and regional security risks. The government stressed the importance of defence and the SAF for national security and called for sustained, strong defensive capability to handle complex and shifting global conditions. The core debate: the stability of international alliances and how Singapore should adjust its defence strategy.`,
+    summary: `议员质询当前国际安全环境变化及其对新加坡国防预算的影响，重点关注美中关系紧张、国际规则体系的动摇及区域安全风险。政府强调国防和武装力量对保障国家安全的重要性，呼吁维持强大防御能力以应对复杂多变的国际局势。核心争议在于国际联盟的稳定性及新加坡应如何调整国防策略。`,
+    summaryEn: `MPs asked about the changing international security environment and its impact on Singapore's defence budget, focusing on US-China tensions, the wavering rules-based order, and regional security risks. The government stressed the importance of defence and the SAF for national security and called for sustained, strong defensive capability to handle complex and shifting global conditions. The core debate: the stability of international alliances and how Singapore should adjust its defence strategy.`,
     keyPoints: ['国际规则体系受挑战', '美中竞争加剧', '区域安全风险上升'],
     keyPointsEn: [
       'Rules-based order under challenge',
@@ -2611,7 +2611,7 @@ In today’s world, where divisions and distrust are rising, preserving trust an
     notableQuote: 'the rules based system and the alliances that formed post-World War II appears to be under threat.',
     notableQuoteEn:
       'the rules based system and the alliances that formed post-World War II appears to be under threat.',
-    summary: `The Chairman
+    transcriptEn: `The Chairman
 : Mr Vikram Nair.
 12.03 pm
 Security Situation
@@ -2622,8 +2622,8 @@ Sir, 10 years ago, at the Shangri-La Dialogue 2015, also the year Singapore cele
   },
   {
     id: 'oral-answer-3822',
-    title: `Restrictions for Use of DeepSeek by Public Officers`,
-    zhTitle: `公职人员使用DeepSeek限制`,
+    titleEn: `Restrictions for Use of DeepSeek by Public Officers`,
+    title: `公职人员使用DeepSeek限制`,
     date: '2025-03-03',
     parliament: '14',
     type: 'Oral Answers to Questions',
@@ -2644,8 +2644,8 @@ Sir, 10 years ago, at the Shangri-La Dialogue 2015, also the year Singapore cele
       'AI & National Security',
       'AI Infrastructure & Research',
     ],
-    zhSummary: `议员质询政府是否考虑限制公职人员使用DeepSeek，类似他国对政府设备的禁令。政府回应称有政策框架评估技术适用性，强调安全与创新并重，但未直接回应DeepSeek限制问题。质询方追问政府自研AI工具Pair是否依赖国外商业平台，政府未详细说明，表示可私下跟进。核心争议在于政府对具体商业AI产品的态度及数据安全透明度。`,
-    summaryShortEn: `An MP asked whether the government is considering restrictions on public officers using DeepSeek, similar to bans imposed on government devices in some other countries. The government replied that it has policy frameworks for assessing technology suitability and balances security with innovation, without directly addressing DeepSeek. Asked whether the government's in-house AI tool Pair relies on overseas commercial platforms, the government did not elaborate publicly and said it could follow up privately. The core debate: the government's attitude toward specific commercial AI products and the transparency of data security.`,
+    summary: `议员质询政府是否考虑限制公职人员使用DeepSeek，类似他国对政府设备的禁令。政府回应称有政策框架评估技术适用性，强调安全与创新并重，但未直接回应DeepSeek限制问题。质询方追问政府自研AI工具Pair是否依赖国外商业平台，政府未详细说明，表示可私下跟进。核心争议在于政府对具体商业AI产品的态度及数据安全透明度。`,
+    summaryEn: `An MP asked whether the government is considering restrictions on public officers using DeepSeek, similar to bans imposed on government devices in some other countries. The government replied that it has policy frameworks for assessing technology suitability and balances security with innovation, without directly addressing DeepSeek. Asked whether the government's in-house AI tool Pair relies on overseas commercial platforms, the government did not elaborate publicly and said it could follow up privately. The core debate: the government's attitude toward specific commercial AI products and the transparency of data security.`,
     keyPoints: ['政府有技术使用政策', '未明确限制DeepSeek', 'Pair AI工具细节未公开'],
     keyPointsEn: [
       'Government has technology-use policies',
@@ -2663,7 +2663,7 @@ Sir, 10 years ago, at the Shangri-La Dialogue 2015, also the year Singapore cele
       'The Government has policies, frameworks and processes to guide the use of technology in the public sector.',
     notableQuoteEn:
       'The Government has policies, frameworks and processes to guide the use of technology in the public sector.',
-    summary: `4
+    transcriptEn: `4
 Mr Gerald Giam Yean Song
 asked  the Minister for Digital Development and Information (a) whether the Government is considering restrictions on the use of DeepSeek by public officers, similar to bans imposed by some other countries on its use on Government devices; (b) if not, what factors justify a different approach in Singapore; and (c) how does the Government determine which AI models are deemed secure enough for public sector use.
 The Senior Minister of State for Digital Development and Information (Dr Janil Puthucheary) (for Minister for Digital Development and Information)
@@ -2672,8 +2672,8 @@ The Senior Minister of State for Digital Development and Information (Dr Janil P
   },
   {
     id: 'budget-2570',
-    title: `Debate on Annual Budget Statement`,
-    zhTitle: `2025年度预算中的AI发展策略`,
+    titleEn: `Debate on Annual Budget Statement`,
+    title: `2025年度预算中的AI发展策略`,
     date: '2025-02-27',
     parliament: '14',
     type: 'Budget',
@@ -2738,8 +2738,8 @@ The Senior Minister of State for Digital Development and Information (Dr Janil P
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI Governance & Regulation', 'AI Economy & Industry', 'AI & Employment', 'AI in Education'],
-    zhSummary: `议会辩论围绕2025年度预算展开，重点关注如何应对全球政治经济变局及科技变革，特别是人工智能等前沿技术对经济和社会的影响。政府强调在支持家庭和企业的同时，积极布局未来经济增长，推动科技创新和人才培养。核心争议点在于如何平衡短期支持与长期转型，以及AI技术带来的就业和治理挑战。`,
-    summaryShortEn: `The parliamentary debate centred on Budget 2025, focusing on how to navigate global political-economic shifts and technological change — especially the impact of frontier technologies such as AI on the economy and society. The government emphasised supporting families and firms while actively positioning for future growth via tech innovation and talent development. The core debate: how to balance short-term support with long-term transformation, and the employment and governance challenges raised by AI.`,
+    summary: `议会辩论围绕2025年度预算展开，重点关注如何应对全球政治经济变局及科技变革，特别是人工智能等前沿技术对经济和社会的影响。政府强调在支持家庭和企业的同时，积极布局未来经济增长，推动科技创新和人才培养。核心争议点在于如何平衡短期支持与长期转型，以及AI技术带来的就业和治理挑战。`,
+    summaryEn: `The parliamentary debate centred on Budget 2025, focusing on how to navigate global political-economic shifts and technological change — especially the impact of frontier technologies such as AI on the economy and society. The government emphasised supporting families and firms while actively positioning for future growth via tech innovation and talent development. The core debate: how to balance short-term support with long-term transformation, and the employment and governance challenges raised by AI.`,
     keyPoints: ['支持家庭和企业', '应对全球变局', '推动科技创新'],
     keyPointsEn: ['Support for families and firms', 'Navigate global shifts', 'Push tech innovation'],
     governmentStance: '积极应对变革，推动AI发展',
@@ -2753,7 +2753,7 @@ The Senior Minister of State for Digital Development and Information (Dr Janil P
       'Game-changing technologies like artificial intelligence (AI), quantum computing, 5G/6G... will change how we work and live.',
     notableQuoteEn:
       'Game-changing technologies like artificial intelligence (AI), quantum computing, 5G/6G... will change how we work and live.',
-    summary: `[(proc text) Order read for Resumption of Debate on Question [18 February 2025] [2nd Allotted Day] (proc text)]
+    transcriptEn: `[(proc text) Order read for Resumption of Debate on Question [18 February 2025] [2nd Allotted Day] (proc text)]
 [(proc text) "That Parliament approves the financial policy of the Government for the financial year 1 April 2025 to 31 March 2026." – [Prime Minister and Minister for Finance]. (proc text)]
 [(proc text) Question again proposed. (proc text)]
 Mr Speaker
@@ -2765,8 +2765,8 @@ The Deputy Prime Minister (Mr Heng Swee Keat)
   },
   {
     id: 'oral-answer-3785',
-    title: `Impact of US Export Controls on Singapore's Semi-conductor Industry and Ensuring Singapore-based Chip Companies Abide by New Rules to Safeguard Country's Business Reputation`,
-    zhTitle: `美出口管制对新加坡芯片业影响`,
+    titleEn: `Impact of US Export Controls on Singapore's Semi-conductor Industry and Ensuring Singapore-based Chip Companies Abide by New Rules to Safeguard Country's Business Reputation`,
+    title: `美出口管制对新加坡芯片业影响`,
     date: '2025-02-18',
     parliament: '14',
     type: 'Oral Answers to Questions',
@@ -2786,8 +2786,8 @@ The Deputy Prime Minister (Mr Heng Swee Keat)
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI Governance & Regulation', 'AI Economy & Industry', 'AI in Public Sector'],
-    zhSummary: `议员质询美出口管制对新加坡半导体产业及经济的影响，及政府如何防止企业利用新加坡规避美国限制。政府强调新加坡作为法治透明的国际商业枢纽，严厉打击违法行为，维护国家信誉。核心争议在于新加坡是否被列为美出口管制第二等级，及如何修复与美国的信任关系。`,
-    summaryShortEn: `MPs asked about the impact of US export controls on Singapore's semiconductor industry and economy, and how the government will prevent firms from using Singapore to bypass US restrictions. The government stressed that Singapore is a transparent, rule-of-law international business hub that cracks down on violations and protects national reputation. The core debate: whether Singapore is placed in the second tier of US export controls and how trust with the US can be rebuilt.`,
+    summary: `议员质询美出口管制对新加坡半导体产业及经济的影响，及政府如何防止企业利用新加坡规避美国限制。政府强调新加坡作为法治透明的国际商业枢纽，严厉打击违法行为，维护国家信誉。核心争议在于新加坡是否被列为美出口管制第二等级，及如何修复与美国的信任关系。`,
+    summaryEn: `MPs asked about the impact of US export controls on Singapore's semiconductor industry and economy, and how the government will prevent firms from using Singapore to bypass US restrictions. The government stressed that Singapore is a transparent, rule-of-law international business hub that cracks down on violations and protects national reputation. The core debate: whether Singapore is placed in the second tier of US export controls and how trust with the US can be rebuilt.`,
     keyPoints: ['防止规避美出口管制', '维护国际商业信誉', '争取提升出口管制等级'],
     keyPointsEn: [
       'Prevent circumvention of US export controls',
@@ -2803,7 +2803,7 @@ The Deputy Prime Minister (Mr Heng Swee Keat)
     policySignalEn: 'Strengthen export-control compliance oversight.',
     notableQuote: 'Singapore is a stable, trusted, reliable and well-connected international business hub.',
     notableQuoteEn: 'Singapore is a stable, trusted, reliable and well-connected international business hub.',
-    summary: `3
+    transcriptEn: `3
 Mr Yip Hon Weng
 asked the Deputy Prime Minister and Minister for Trade and Industry (a) how does the Ministry ensure that the ease of doing business in Singapore is not exploited by companies seeking to bypass US trade restrictions; and (b) whether the Ministry can provide an update on its assessment of the effects of the US chips export control rules on our semi-conductor industry and the broader economy.
 4
@@ -2813,8 +2813,8 @@ asked the Deputy Prime Minister and Minister for Trade and Industry whether ther
   },
   {
     id: 'written-answer-18677',
-    title: `Impact of US' AI Diffusion Policy and Export Controls on Singapore's Competitiveness and Tech Businesses`,
-    zhTitle: `美AI出口管制对新加坡影响`,
+    titleEn: `Impact of US' AI Diffusion Policy and Export Controls on Singapore's Competitiveness and Tech Businesses`,
+    title: `美AI出口管制对新加坡影响`,
     date: '2025-02-04',
     parliament: '14',
     type: 'Written Answers to Questions',
@@ -2826,8 +2826,8 @@ asked the Deputy Prime Minister and Minister for Trade and Industry whether ther
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI Governance & Regulation', 'AI Economy & Industry', 'AI & National Security', 'AI in Public Sector'],
-    zhSummary: `议员质询美国2025年新AI扩散政策及出口管制对新加坡进口高端芯片及AI竞争力的影响。政府回应政策尚未最终确定，正密切监测并与企业沟通，必要时将采取措施保障新加坡企业获取美国高端技术。核心争议点在于新加坡未获例外名单资格，可能影响技术进口和竞争力。`,
-    summaryShortEn: `An MP asked how the US 2025 AI diffusion rule and export controls affect Singapore's ability to import high-end chips and its AI competitiveness. The government replied that the rule is not yet final; it is closely monitoring and engaging firms, and will act when needed to protect Singapore-based firms' access to high-end US technology. The core debate: Singapore not being on the exception list may affect technology imports and competitiveness.`,
+    summary: `议员质询美国2025年新AI扩散政策及出口管制对新加坡进口高端芯片及AI竞争力的影响。政府回应政策尚未最终确定，正密切监测并与企业沟通，必要时将采取措施保障新加坡企业获取美国高端技术。核心争议点在于新加坡未获例外名单资格，可能影响技术进口和竞争力。`,
+    summaryEn: `An MP asked how the US 2025 AI diffusion rule and export controls affect Singapore's ability to import high-end chips and its AI competitiveness. The government replied that the rule is not yet final; it is closely monitoring and engaging firms, and will act when needed to protect Singapore-based firms' access to high-end US technology. The core debate: Singapore not being on the exception list may affect technology imports and competitiveness.`,
     keyPoints: ['美国AI政策未定', '新加坡未获例外', '政府密切监测'],
     keyPointsEn: ['US AI policy not yet final', 'Singapore not granted exception', 'Government closely monitoring'],
     governmentStance: '积极监测并考虑保障措施',
@@ -2839,7 +2839,7 @@ asked the Deputy Prime Minister and Minister for Trade and Industry whether ther
     policySignalEn: 'Possible measures to safeguard technology imports.',
     notableQuote: 'We are closely monitoring the situation and engaging companies on the potential impact.',
     notableQuoteEn: 'We are closely monitoring the situation and engaging companies on the potential impact.',
-    summary: `8
+    transcriptEn: `8
 Mr Chua Kheng Wee Louis
 asked the Deputy Prime Minister and Minister for Trade and Industry in view of the new artificial intelligence diffusion policy and export controls by the United States introduced in January 2025, where Singapore is not listed as among the 18 countries granted exceptions, what is the Government's assessment of (i) the ability of Singapore-based entities to import high-end chips and technologies from the United States and (ii) Singapore's artificial intelligence competitiveness.
 Mr Gan Kim Yong
@@ -2848,8 +2848,8 @@ Mr Gan Kim Yong
   },
   {
     id: 'written-answer-18417',
-    title: `Reasons behind Government's Decision to Stop Practice of Partially Masking NRIC Numbers`,
-    zhTitle: `停止部分遮蔽身份证号原因`,
+    titleEn: `Reasons behind Government's Decision to Stop Practice of Partially Masking NRIC Numbers`,
+    title: `停止部分遮蔽身份证号原因`,
     date: '2025-01-07',
     parliament: '14',
     type: 'Written Answers to Questions',
@@ -2861,8 +2861,8 @@ Mr Gan Kim Yong
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI Safety & Ethics', 'AI in Education', 'AI & National Security', 'AI Infrastructure & Research'],
-    zhSummary: `议员质询政府为何停止部分遮蔽身份证号码，及AI时代是否加剧个人数据被逆向工程风险。政府回应将于次日通过部长声明详细说明，核心争议在于数据隐私保护与技术发展带来的安全挑战之间的平衡。`,
-    summaryShortEn: `An MP asked why the government decided to stop the practice of partially masking NRIC numbers and whether the AI era has accelerated reverse-engineering risks for personal data. The government replied that this would be addressed in detail the next day via a Ministerial Statement. The core debate: balancing data privacy protection with the security challenges of advancing technology.`,
+    summary: `议员质询政府为何停止部分遮蔽身份证号码，及AI时代是否加剧个人数据被逆向工程风险。政府回应将于次日通过部长声明详细说明，核心争议在于数据隐私保护与技术发展带来的安全挑战之间的平衡。`,
+    summaryEn: `An MP asked why the government decided to stop the practice of partially masking NRIC numbers and whether the AI era has accelerated reverse-engineering risks for personal data. The government replied that this would be addressed in detail the next day via a Ministerial Statement. The core debate: balancing data privacy protection with the security challenges of advancing technology.`,
     keyPoints: ['停止部分遮蔽身份证号', 'AI加速数据逆向风险', '政府将发布部长声明'],
     keyPointsEn: [
       'Stop partial masking of NRIC',
@@ -2880,7 +2880,7 @@ Mr Gan Kim Yong
       'This Parliamentary Question will be addressed through a Ministerial Statement by the Minister for Digital Development and Information.',
     notableQuoteEn:
       'This Parliamentary Question will be addressed through a Ministerial Statement by the Minister for Digital Development and Information.',
-    summary: `39
+    transcriptEn: `39
 Dr Tan Wu Meng
 asked the Minister for Digital Development and Information (a) what is the rationale for the Government's intention to stop the practice of partially masking NRIC numbers and why at the present time; and (b) whether the era of artificial intelligence and machine learning has accelerated the likelihood of organisations reverse engineering significant portions of the NRIC database through scraping and collating existing personal data collections, including lucky draw registrants and customer lists from the pre-PDPA era.
 Mrs Josephine Teo
@@ -2889,8 +2889,8 @@ Mrs Josephine Teo
   },
   {
     id: 'oral-answer-3729',
-    title: `Guidelines for Employers' Use of Automated Decision-making Tools for Hiring or Promotions to Prevent Biases`,
-    zhTitle: `AI招聘晋升工具偏见防范`,
+    titleEn: `Guidelines for Employers' Use of Automated Decision-making Tools for Hiring or Promotions to Prevent Biases`,
+    title: `AI招聘晋升工具偏见防范`,
     date: '2024-11-13',
     parliament: '14',
     type: 'Oral Answers to Questions',
@@ -2902,8 +2902,8 @@ Mrs Josephine Teo
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI Governance & Regulation', 'AI Safety & Ethics', 'AI & Employment', 'AI & National Security'],
-    zhSummary: `议员质询政府是否考虑制定指导方针，规范雇主使用自动化决策工具以防止招聘和晋升中的偏见，并建议进行偏见审计及信息披露。人力部长回应现有《公平就业三方指引》已涵盖公平就业原则，且无相关投诉，强调AI技术快速发展，政府将持续监测并与相关机构合作评估现有规范的适用性。质询方补充关注数据隐私和员工同意问题，政府表示将考虑改进但不宜过度限制。`,
-    summaryShortEn: `An MP asked whether the government will introduce guidelines on employers' use of automated decision-making tools to prevent hiring and promotion bias, recommending bias audits and disclosure. The Manpower Minister replied that the existing Tripartite Guidelines on Fair Employment Practices already cover fair-employment principles, no related complaints have been received, AI is evolving fast, and the government will keep monitoring and work with relevant bodies to assess the applicability of current rules. MPs followed up on data privacy and employee consent; the government said it will consider improvements but cautioned against over-restriction.`,
+    summary: `议员质询政府是否考虑制定指导方针，规范雇主使用自动化决策工具以防止招聘和晋升中的偏见，并建议进行偏见审计及信息披露。人力部长回应现有《公平就业三方指引》已涵盖公平就业原则，且无相关投诉，强调AI技术快速发展，政府将持续监测并与相关机构合作评估现有规范的适用性。质询方补充关注数据隐私和员工同意问题，政府表示将考虑改进但不宜过度限制。`,
+    summaryEn: `An MP asked whether the government will introduce guidelines on employers' use of automated decision-making tools to prevent hiring and promotion bias, recommending bias audits and disclosure. The Manpower Minister replied that the existing Tripartite Guidelines on Fair Employment Practices already cover fair-employment principles, no related complaints have been received, AI is evolving fast, and the government will keep monitoring and work with relevant bodies to assess the applicability of current rules. MPs followed up on data privacy and employee consent; the government said it will consider improvements but cautioned against over-restriction.`,
     keyPoints: ['现有公平就业指引适用', '无AI歧视投诉记录', '关注数据隐私与同意'],
     keyPointsEn: [
       'Existing fair-employment guidelines apply',
@@ -2921,7 +2921,7 @@ Mrs Josephine Teo
       'AI technologies are evolving at a fast pace. In deploying AI-powered HR tools, organisations should refer to the guidelines introduced by the Government.',
     notableQuoteEn:
       'AI technologies are evolving at a fast pace. In deploying AI-powered HR tools, organisations should refer to the guidelines introduced by the Government.',
-    summary: `3
+    transcriptEn: `3
 Mr Patrick Tay Teck Guan
 asked the Minister for Manpower whether the Ministry will consider introducing guidelines or regulations on employer's use of Automated Employment Decision Tools (AEDT), which are artificial intelligence technologies that substantially assist or replace discretionary decision-making in hiring or promotions, in order to prevent biases and including measures such as requiring companies to conduct a bias audit or to make disclosure where such tools are used to rank candidates or assess employees for promotion.
 The Minister for Manpower (Dr Tan See Leng)
@@ -2930,8 +2930,8 @@ The Minister for Manpower (Dr Tan See Leng)
   },
   {
     id: 'oral-answer-3738',
-    title: `Progress of Developing IT and AI Professionals through Career Conversion Programmes`,
-    zhTitle: `IT与AI人才转型进展`,
+    titleEn: `Progress of Developing IT and AI Professionals through Career Conversion Programmes`,
+    title: `IT与AI人才转型进展`,
     date: '2024-11-13',
     parliament: '14',
     type: 'Oral Answers to Questions',
@@ -2943,8 +2943,8 @@ The Minister for Manpower (Dr Tan See Leng)
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI Economy & Industry', 'AI & Employment', 'AI in Education', 'AI & National Security'],
-    zhSummary: `议员质询过去三年通过职业转换计划培养IT及AI专业人才的进展及未来三至五年规划。政府回应介绍了技能未来及职业转换计划的培训成效，强调扩大中年职工培训及企业合作。质询方关注AI专业人才数量与目标差距，及私营部门参与情况，体现人才培养规模与目标之间的核心争议。`,
-    summaryShortEn: `An MP asked about progress over the past three years in developing IT and AI professionals through Career Conversion Programmes, plus plans for the next three to five years. The government cited training results from SkillsFuture and CCPs, emphasising expanded mid-career training and industry partnerships. MPs focused on the gap between current AI professional numbers and targets, and on private-sector participation — reflecting the core debate over training scale versus targets.`,
+    summary: `议员质询过去三年通过职业转换计划培养IT及AI专业人才的进展及未来三至五年规划。政府回应介绍了技能未来及职业转换计划的培训成效，强调扩大中年职工培训及企业合作。质询方关注AI专业人才数量与目标差距，及私营部门参与情况，体现人才培养规模与目标之间的核心争议。`,
+    summaryEn: `An MP asked about progress over the past three years in developing IT and AI professionals through Career Conversion Programmes, plus plans for the next three to five years. The government cited training results from SkillsFuture and CCPs, emphasising expanded mid-career training and industry partnerships. MPs focused on the gap between current AI professional numbers and targets, and on private-sector participation — reflecting the core debate over training scale versus targets.`,
     keyPoints: ['多路径技能培训', '中年职工转型支持', '私企参与培训'],
     keyPointsEn: [
       'Multi-pathway skills training',
@@ -2962,7 +2962,7 @@ The Minister for Manpower (Dr Tan See Leng)
       'The Ministry has stated that they want to convert 5,000 mid-career professionals to AI professionals over the next three to five years.',
     notableQuoteEn:
       'The Ministry has stated that they want to convert 5,000 mid-career professionals to AI professionals over the next three to five years.',
-    summary: `13
+    transcriptEn: `13
 Mr Ang Wei Neng
 asked the Minister for Digital Development and Information (a) in the past three years, what has been the progress of developing more Information and Technology (IT) and Artificial Intelligence (AI) professionals under the Career Conversion Programme; and (b) what is the Ministry’s plan in further developing this in the next three to five years.
 The Senior Minister of State for Digital Development and Information (Mr Tan Kiat How) (for the Minister for Digital Development and Information)
@@ -2971,8 +2971,8 @@ The Senior Minister of State for Digital Development and Information (Mr Tan Kia
   },
   {
     id: 'written-answer-18326',
-    title: `Current and Projected AI-specific Computing Power Available and Plans for National Cloud`,
-    zhTitle: `新加坡AI算力与国家云规划`,
+    titleEn: `Current and Projected AI-specific Computing Power Available and Plans for National Cloud`,
+    title: `新加坡AI算力与国家云规划`,
     date: '2024-11-13',
     parliament: '14',
     type: 'Written Answers to Questions',
@@ -2984,8 +2984,8 @@ The Senior Minister of State for Digital Development and Information (Mr Tan Kia
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI Governance & Regulation', 'AI Economy & Industry', 'AI in Education', 'AI Infrastructure & Research'],
-    zhSummary: `议员质询新加坡现有AI专用算力规模、国家云建设计划及相关法律框架。政府回应新加坡数据中心容量领先区域，AI算力动态调配，依托国家超级计算中心和商业云满足需求，暂不强制私营数据中心贡献算力。核心争议在于是否应立法强制私营部门参与国家云建设。`,
-    summaryShortEn: `An MP asked about the scale of Singapore's AI-specific compute, plans for a national cloud, and the related legal framework. The government replied that Singapore's data centre capacity leads the region, AI compute is dynamically allocated, demand is met via the National Supercomputing Centre and commercial cloud, and there is no current mandate for private data centres to contribute compute. The core debate: whether legislation should mandate private-sector participation in a national cloud.`,
+    summary: `议员质询新加坡现有AI专用算力规模、国家云建设计划及相关法律框架。政府回应新加坡数据中心容量领先区域，AI算力动态调配，依托国家超级计算中心和商业云满足需求，暂不强制私营数据中心贡献算力。核心争议在于是否应立法强制私营部门参与国家云建设。`,
+    summaryEn: `An MP asked about the scale of Singapore's AI-specific compute, plans for a national cloud, and the related legal framework. The government replied that Singapore's data centre capacity leads the region, AI compute is dynamically allocated, demand is met via the National Supercomputing Centre and commercial cloud, and there is no current mandate for private data centres to contribute compute. The core debate: whether legislation should mandate private-sector participation in a national cloud.`,
     keyPoints: ['数据中心容量领先', 'AI算力动态调配', '无强制私营贡献'],
     keyPointsEn: [
       'Leading data centre capacity',
@@ -3003,7 +3003,7 @@ The Senior Minister of State for Digital Development and Information (Mr Tan Kia
       'Our compute needs for AI research are being met through a combination of on-premise and commercial cloud capacities.',
     notableQuoteEn:
       'Our compute needs for AI research are being met through a combination of on-premise and commercial cloud capacities.',
-    summary: `22
+    transcriptEn: `22
 Ms He Ting Ru
 asked the Minister for Digital Development and Information (a) what is the estimated total of AI-specific computing power currently available in Singapore's data centres; (b) whether there are plans to establish a national cloud for AI research and education; (c) if so, what percentage of this computing power does it aim to secure; (d) what legal frameworks are being considered to mandate contributions from private AI data centres to such a national cloud; and (e) how do these potential frameworks compare to those in other leading AI nations.
 Mrs Josephine Teo
@@ -3012,8 +3012,8 @@ Mrs Josephine Teo
   },
   {
     id: 'written-answer-18175',
-    title: `Social Media and Artificial Intelligence's Role in Accelerating Radicalisation of Youths and Plans to Address Impact`,
-    zhTitle: `社交媒体与AI加速青年激进化`,
+    titleEn: `Social Media and Artificial Intelligence's Role in Accelerating Radicalisation of Youths and Plans to Address Impact`,
+    title: `社交媒体与AI加速青年激进化`,
     date: '2024-11-11',
     parliament: '14',
     type: 'Written Answers to Questions',
@@ -3025,8 +3025,8 @@ Mrs Josephine Teo
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI & National Security', 'AI Strategy'],
-    zhSummary: `质询聚焦社交媒体如何加速青年激进化、AI未来五年在激进化中的作用及应对计划。政府回应指出网络平台和算法助长极端内容传播，AI将加速激进化并助力恐怖宣传。政府通过立法和跨部门合作，采取阻断极端内容及社区外展等综合措施应对。核心争议在于技术带来的激进化速度提升及内容监管难度。`,
-    summaryShortEn: `Questions focused on how social media accelerates youth radicalisation, AI's role in radicalisation over the next five years, and the response plan. The government replied that online platforms and algorithms amplify extremist content, and AI will accelerate radicalisation and assist terrorist propaganda. It uses legislation and cross-agency coordination — blocking extremist content and community outreach — as a combined response. The core debate: the technology-driven acceleration of radicalisation and the difficulty of content regulation.`,
+    summary: `质询聚焦社交媒体如何加速青年激进化、AI未来五年在激进化中的作用及应对计划。政府回应指出网络平台和算法助长极端内容传播，AI将加速激进化并助力恐怖宣传。政府通过立法和跨部门合作，采取阻断极端内容及社区外展等综合措施应对。核心争议在于技术带来的激进化速度提升及内容监管难度。`,
+    summaryEn: `Questions focused on how social media accelerates youth radicalisation, AI's role in radicalisation over the next five years, and the response plan. The government replied that online platforms and algorithms amplify extremist content, and AI will accelerate radicalisation and assist terrorist propaganda. It uses legislation and cross-agency coordination — blocking extremist content and community outreach — as a combined response. The core debate: the technology-driven acceleration of radicalisation and the difficulty of content regulation.`,
     keyPoints: ['社交媒体助长极端内容传播', 'AI加速激进化与恐怖宣传', '政府多管齐下防范激进化'],
     keyPointsEn: [
       'Social media amplifies extremist content',
@@ -3044,7 +3044,7 @@ Mrs Josephine Teo
       'AI can quickly auto-translate existing propaganda into multiple languages and create personalised messages at scale.',
     notableQuoteEn:
       'AI can quickly auto-translate existing propaganda into multiple languages and create personalised messages at scale.',
-    summary: `8
+    transcriptEn: `8
 Mr Desmond Choo
 asked the Minister for Home Affairs (a) how has social media accelerated the radicalisation of youths; (b) how will artificial intelligence (AI) play a role in the radicalisation of youths in the next five years; and (c) what are the plans to address the adverse impact of social media and AI on youth radicalisation.
 Mr K Shanmugam
@@ -3053,8 +3053,8 @@ Mr K Shanmugam
   },
   {
     id: 'written-answer-18184',
-    title: `Enrolment and Graduation Rates of Female vis-a-vis Male Students in Artificial Intelligence and Machine Learning Courses`,
-    zhTitle: `AI课程男女生入学毕业率`,
+    titleEn: `Enrolment and Graduation Rates of Female vis-a-vis Male Students in Artificial Intelligence and Machine Learning Courses`,
+    title: `AI课程男女生入学毕业率`,
     date: '2024-11-11',
     parliament: '14',
     type: 'Written Answers to Questions',
@@ -3066,8 +3066,8 @@ Mr K Shanmugam
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI in Education', 'AI & National Security', 'AI Infrastructure & Research', 'AI Strategy'],
-    zhSummary: `质询了过去五年新加坡高校AI与机器学习课程中女性学生的入学及毕业率，并与男性学生进行比较，同时询问提升女性参与度的具体措施。政府回应女性占约四分之一入学比例，毕业率超过90%，并介绍了多项促进女性参与AI/STEM的项目和合作计划。核心争议点在于女性参与度偏低及如何有效提升。`,
-    summaryShortEn: `An MP asked about female enrolment and graduation rates in AI and machine learning programmes at Singapore's IHLs over the past five years, comparison with male students, and measures to lift female participation. The government replied that women make up about a quarter of enrolment, with graduation rates above 90%, and outlined multiple programmes and partnerships to push women's participation in AI/STEM. The core debate: low female participation and how to effectively raise it.`,
+    summary: `质询了过去五年新加坡高校AI与机器学习课程中女性学生的入学及毕业率，并与男性学生进行比较，同时询问提升女性参与度的具体措施。政府回应女性占约四分之一入学比例，毕业率超过90%，并介绍了多项促进女性参与AI/STEM的项目和合作计划。核心争议点在于女性参与度偏低及如何有效提升。`,
+    summaryEn: `An MP asked about female enrolment and graduation rates in AI and machine learning programmes at Singapore's IHLs over the past five years, comparison with male students, and measures to lift female participation. The government replied that women make up about a quarter of enrolment, with graduation rates above 90%, and outlined multiple programmes and partnerships to push women's participation in AI/STEM. The core debate: low female participation and how to effectively raise it.`,
     keyPoints: ['女性占AI课程四分之一', '女性毕业率超90%', '多项目促进女性参与'],
     keyPointsEn: [
       'Women make up a quarter of AI course enrolment',
@@ -3085,7 +3085,7 @@ Mr K Shanmugam
       'female students comprised about a quarter of enrolment in artificial intelligence (AI) and machine learning programmes',
     notableQuoteEn:
       'female students comprised about a quarter of enrolment in artificial intelligence (AI) and machine learning programmes',
-    summary: `19
+    transcriptEn: `19
 Ms He Ting Ru
 asked the Minister for Education over the past five years (a) what are the enrolment and graduation rates of female students in artificial intelligence (AI) and machine learning courses across Singapore's universities and polytechnics; (b) how do these figures compare to that of the male counterparts; and (c) what targeted measures are being implemented to increase female participation and retention in AI-related academic programmes.
 Mr Chan Chun Sing
@@ -3094,8 +3094,8 @@ Mr Chan Chun Sing
   },
   {
     id: 'oral-answer-3677',
-    title: `Gender Gaps in AI-adoption and Initiatives to Encourage Better AI Technologies Adoption in Educational and Workplace Settings`,
-    zhTitle: `新加坡AI性别差距与推广举措`,
+    titleEn: `Gender Gaps in AI-adoption and Initiatives to Encourage Better AI Technologies Adoption in Educational and Workplace Settings`,
+    title: `新加坡AI性别差距与推广举措`,
     date: '2024-10-16',
     parliament: '14',
     type: 'Oral Answers to Questions',
@@ -3107,8 +3107,8 @@ Mr Chan Chun Sing
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI Economy & Industry', 'AI & Employment', 'AI in Education', 'AI & National Security'],
-    zhSummary: `质询聚焦新加坡人工智能（尤其是生成式AI）采纳中的性别差距及相关群体的接受度。政府回应指出新加坡女性在科技领域比例优于全球平均，生成式AI用户中女性占比亦较高。政府介绍多项针对不同群体的AI教育和培训计划，强调包容性和广泛普及。核心争议在于如何进一步针对特定群体设计有效推广策略。`,
-    summaryShortEn: `Questions focused on the gender gap in Singapore's AI adoption (especially generative AI) and acceptance among different groups. The government replied that Singapore women's tech-sector share outperforms the global average and women make up a notable share of generative AI users. It outlined multiple AI education and training programmes for different groups, emphasising inclusion and broad reach. The core debate: how to design more effective targeted strategies for specific groups.`,
+    summary: `质询聚焦新加坡人工智能（尤其是生成式AI）采纳中的性别差距及相关群体的接受度。政府回应指出新加坡女性在科技领域比例优于全球平均，生成式AI用户中女性占比亦较高。政府介绍多项针对不同群体的AI教育和培训计划，强调包容性和广泛普及。核心争议在于如何进一步针对特定群体设计有效推广策略。`,
+    summaryEn: `Questions focused on the gender gap in Singapore's AI adoption (especially generative AI) and acceptance among different groups. The government replied that Singapore women's tech-sector share outperforms the global average and women make up a notable share of generative AI users. It outlined multiple AI education and training programmes for different groups, emphasising inclusion and broad reach. The core debate: how to design more effective targeted strategies for specific groups.`,
     keyPoints: ['女性科技从业比例较高', '生成式AI女性用户占优', '多样化AI教育培训举措'],
     keyPointsEn: [
       'Higher share of women in tech',
@@ -3124,7 +3124,7 @@ Mr Chan Chun Sing
     policySignalEn: 'Strengthen AI education and skills training.',
     notableQuote: 'Women in Singapore are doing well compared to the global average.',
     notableQuoteEn: 'Women in Singapore are doing well compared to the global average.',
-    summary: `13
+    transcriptEn: `13
 Ms He Ting Ru
 asked the Minister for Digital Development and Information (a) whether any research has been done on whether there is a gender gap in the adoption rates of artificial intelligence (AI) tools in Singapore, particularly in generative AI; (b) whether any groups have been identified as being more reluctant in adopting such AI technologies; and (c) whether there will be targeted initiatives to encourage these groups to better adopt AI technologies in educational and workplace settings.
 The Minister of State for Digital Development and Information (Ms Rahayu Mahzam) (for the Ministe`,
@@ -3132,8 +3132,8 @@ The Minister of State for Digital Development and Information (Ms Rahayu Mahzam)
   },
   {
     id: 'written-answer-17376',
-    title: `Accuracy of Deepfake Detection Technologies and Differentiating Between Harmful Deepfakes and Legitimate Political Satire or Memes`,
-    zhTitle: `深伪检测与政治讽刺界定`,
+    titleEn: `Accuracy of Deepfake Detection Technologies and Differentiating Between Harmful Deepfakes and Legitimate Political Satire or Memes`,
+    title: `深伪检测与政治讽刺界定`,
     date: '2024-08-07',
     parliament: '14',
     type: 'Written Answers to Questions',
@@ -3145,8 +3145,8 @@ The Minister of State for Digital Development and Information (Ms Rahayu Mahzam)
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI Safety & Ethics', 'AI Economy & Industry', 'AI & National Security', 'AI Infrastructure & Research'],
-    zhSummary: `议员质询政府当前深伪检测技术的准确率、如何区分有害深伪与合法政治讽刺及误判处理。政府回应技术不断更新且不公开准确率，强调依据《反网络虚假信息法》处理有害内容，讽刺不构成违法。政府关注国际经验，研究是否需进一步保障选举安全。核心争议在于技术透明度与言论自由的平衡。`,
-    summaryShortEn: `An MP asked about the accuracy of the government's deepfake detection tools, how to distinguish harmful deepfakes from legitimate political satire, and how false positives are handled. The government replied that tools are constantly updated and accuracy rates are not published, with harmful content addressed under POFMA; satire is not automatically unlawful. It is studying international experience on whether further election-safety safeguards are needed. The core debate: balance between technical transparency and free speech.`,
+    summary: `议员质询政府当前深伪检测技术的准确率、如何区分有害深伪与合法政治讽刺及误判处理。政府回应技术不断更新且不公开准确率，强调依据《反网络虚假信息法》处理有害内容，讽刺不构成违法。政府关注国际经验，研究是否需进一步保障选举安全。核心争议在于技术透明度与言论自由的平衡。`,
+    summaryEn: `An MP asked about the accuracy of the government's deepfake detection tools, how to distinguish harmful deepfakes from legitimate political satire, and how false positives are handled. The government replied that tools are constantly updated and accuracy rates are not published, with harmful content addressed under POFMA; satire is not automatically unlawful. It is studying international experience on whether further election-safety safeguards are needed. The core debate: balance between technical transparency and free speech.`,
     keyPoints: ['深伪检测技术持续更新', '讽刺不自动违法', '误判可司法申诉'],
     keyPointsEn: [
       'Deepfake detection tools constantly updated',
@@ -3164,7 +3164,7 @@ The Minister of State for Digital Development and Information (Ms Rahayu Mahzam)
       'We do not publish their accuracy levels as our tools are constantly being updated to keep up with technology.',
     notableQuoteEn:
       'We do not publish their accuracy levels as our tools are constantly being updated to keep up with technology.',
-    summary: `29
+    transcriptEn: `29
 Ms He Ting Ru
 asked the Minister for Digital Development and Information (a) what is the current accuracy rate of the Government’s deepfake detection technologies for AI-generated content; (b) how will the Government differentiate between harmful deepfakes and legitimate political satire or memes using similar technologies; and (c) what happens if videos are wrongly identified as deepfakes.
 Mrs Josephine Teo
@@ -3173,8 +3173,8 @@ Mrs Josephine Teo
   },
   {
     id: 'written-answer-17447',
-    title: `Updating Industry Transformation Maps to Consider AI Impact on Skilled Work Training`,
-    zhTitle: `产业转型图纳入AI培训影响`,
+    titleEn: `Updating Industry Transformation Maps to Consider AI Impact on Skilled Work Training`,
+    title: `产业转型图纳入AI培训影响`,
     date: '2024-08-07',
     parliament: '14',
     type: 'Written Answers to Questions',
@@ -3186,8 +3186,8 @@ Mrs Josephine Teo
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI Economy & Industry', 'AI & Employment', 'AI & National Security', 'AI Infrastructure & Research'],
-    zhSummary: `议员质询是否更新产业转型图以纳入AI对技能培训的影响，及是否设立培训连续图保障深度技能人才培养。政府回应已刷新23个产业转型图，推出岗位转型图支持岗位重塑和再培训，推动多项AI相关培训计划，强调通过政府与企业合作提升国人AI技能，促进就业转型。核心争议在于如何平衡AI替代与深度技能人才培养。`,
-    summaryShortEn: `An MP asked whether Industry Transformation Maps will be updated to factor in AI's impact on skills training, and whether Training Continuity Maps should be set up to safeguard deep-skill talent. The government replied that 23 ITMs have been refreshed, Jobs Transformation Maps have been launched to support job redesign and reskilling, and multiple AI-related training programmes are running. It emphasised using government-industry collaboration to lift Singaporeans' AI skills and drive employment transition. The core debate: how to balance AI substitution with cultivation of deep-skill talent.`,
+    summary: `议员质询是否更新产业转型图以纳入AI对技能培训的影响，及是否设立培训连续图保障深度技能人才培养。政府回应已刷新23个产业转型图，推出岗位转型图支持岗位重塑和再培训，推动多项AI相关培训计划，强调通过政府与企业合作提升国人AI技能，促进就业转型。核心争议在于如何平衡AI替代与深度技能人才培养。`,
+    summaryEn: `An MP asked whether Industry Transformation Maps will be updated to factor in AI's impact on skills training, and whether Training Continuity Maps should be set up to safeguard deep-skill talent. The government replied that 23 ITMs have been refreshed, Jobs Transformation Maps have been launched to support job redesign and reskilling, and multiple AI-related training programmes are running. It emphasised using government-industry collaboration to lift Singaporeans' AI skills and drive employment transition. The core debate: how to balance AI substitution with cultivation of deep-skill talent.`,
     keyPoints: ['产业转型图动态更新', '岗位转型图支持再培训', '多方合作推动AI培训'],
     keyPointsEn: ['ITMs dynamically updated', 'JTMs support reskilling', 'Multi-party push on AI training'],
     governmentStance: '积极推动AI技能培训与岗位转型',
@@ -3201,7 +3201,7 @@ Mrs Josephine Teo
       'ITMs are dynamic plans that respond to changes in the operating environment, such as the emergence of potentially disruptive technologies.',
     notableQuoteEn:
       'ITMs are dynamic plans that respond to changes in the operating environment, such as the emergence of potentially disruptive technologies.',
-    summary: `3
+    transcriptEn: `3
 Dr Tan Wu Meng
 asked the Deputy Prime Minister and Minister for Trade and Industry (a) whether the existing Industry Transformation Maps can be updated to consider the impact of artificial intelligence (AI) on the apprenticeship and on-the-job training aspects of skilled work; and (b) whether this update can include Industry Training Continuity Maps to maintain a training pipeline for deeply skilled human workers who cannot be replaced by AI, even when AI can undertake work previously done by less deeply skilled apprentices and trainees.
 Mr Gan Kim Yong
@@ -3210,8 +3210,8 @@ Mr Gan Kim Yong
   },
   {
     id: 'written-answer-17287',
-    title: `Tracking of Scams Perpetuated through Deepfake Video and Images`,
-    zhTitle: `深度伪造诈骗追踪情况`,
+    titleEn: `Tracking of Scams Perpetuated through Deepfake Video and Images`,
+    title: `深度伪造诈骗追踪情况`,
     date: '2024-08-06',
     parliament: '14',
     type: 'Written Answers to Questions',
@@ -3223,8 +3223,8 @@ Mr Gan Kim Yong
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['Deepfakes & Disinformation'],
-    zhSummary: `议员Christopher de Souza质询警方是否追踪通过深度伪造视频和图像实施的诈骗案件数量。内政部长K Shanmugam回应称警方未专门追踪此类案件，虽然收到一些举报，但数量不多。核心争议在于政府对深度伪造诈骗的重视程度及数据透明度。`,
-    summaryShortEn: `MP Christopher de Souza asked whether the police are tracking the number of scams perpetrated through deepfake video and images. Home Affairs Minister K Shanmugam replied that the police are not specifically tracking such cases — some reports have been received but the numbers are not high. The core debate: how seriously the government treats deepfake-enabled scams and the transparency of the data.`,
+    summary: `议员Christopher de Souza质询警方是否追踪通过深度伪造视频和图像实施的诈骗案件数量。内政部长K Shanmugam回应称警方未专门追踪此类案件，虽然收到一些举报，但数量不多。核心争议在于政府对深度伪造诈骗的重视程度及数据透明度。`,
+    summaryEn: `MP Christopher de Souza asked whether the police are tracking the number of scams perpetrated through deepfake video and images. Home Affairs Minister K Shanmugam replied that the police are not specifically tracking such cases — some reports have been received but the numbers are not high. The core debate: how seriously the government treats deepfake-enabled scams and the transparency of the data.`,
     keyPoints: ['未专门追踪深伪诈骗', '已有少量举报案件', '案件数量不高'],
     keyPointsEn: [
       'No dedicated tracking of deepfake scams',
@@ -3240,7 +3240,7 @@ Mr Gan Kim Yong
     policySignalEn: 'No dedicated tracking plan for now.',
     notableQuote: 'the Police have not been tracking the number of such cases.',
     notableQuoteEn: 'the Police have not been tracking the number of such cases.',
-    summary: `17
+    transcriptEn: `17
 Mr Christopher de Souza
 asked the Minister for Home Affairs whether the number of scams perpetuated through deepfake video and images is being tracked and, if so, what are the numbers of such reported scams to date.
 Mr K Shanmugam
@@ -3249,8 +3249,8 @@ Mr K Shanmugam
   },
   {
     id: 'written-answer-17278',
-    title: `Strategies and Mitigation Efforts to Counter Decline in Singapore's Appeal to MNCs`,
-    zhTitle: `新加坡吸引跨国企业策略`,
+    titleEn: `Strategies and Mitigation Efforts to Counter Decline in Singapore's Appeal to MNCs`,
+    title: `新加坡吸引跨国企业策略`,
     date: '2024-08-06',
     parliament: '14',
     type: 'Written Answers to Questions',
@@ -3262,8 +3262,8 @@ Mr K Shanmugam
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI Safety & Ethics', 'AI Economy & Industry', 'AI Infrastructure & Research', 'AI Strategy'],
-    zhSummary: `议员质询跨国公司是否因成本因素迁出樟宜商务园及新加坡商业吸引力下降的原因与对策。政府回应新加坡经济竞争力强，持续吸引大型投资，承认部分企业因市场及工作模式变化调整布局。政府将通过投资研发、人才培养及财政激励措施保持商业环境吸引力。核心争议在于如何平衡成本与创新，防止企业外迁。`,
-    summaryShortEn: `An MP asked whether MNCs are leaving Changi Business Park due to cost factors and what is causing perceived decline in Singapore's business appeal — and how the government plans to respond. The government replied that Singapore's economy remains highly competitive and continues to attract major investment, while acknowledging some firms are adjusting footprints due to market and working-model changes. It will keep the environment attractive through R&D investment, talent development, and fiscal incentives. The core debate: how to balance cost and innovation to prevent firm relocation.`,
+    summary: `议员质询跨国公司是否因成本因素迁出樟宜商务园及新加坡商业吸引力下降的原因与对策。政府回应新加坡经济竞争力强，持续吸引大型投资，承认部分企业因市场及工作模式变化调整布局。政府将通过投资研发、人才培养及财政激励措施保持商业环境吸引力。核心争议在于如何平衡成本与创新，防止企业外迁。`,
+    summaryEn: `An MP asked whether MNCs are leaving Changi Business Park due to cost factors and what is causing perceived decline in Singapore's business appeal — and how the government plans to respond. The government replied that Singapore's economy remains highly competitive and continues to attract major investment, while acknowledging some firms are adjusting footprints due to market and working-model changes. It will keep the environment attractive through R&D investment, talent development, and fiscal incentives. The core debate: how to balance cost and innovation to prevent firm relocation.`,
     keyPoints: ['新加坡经济竞争力强', '部分企业调整运营布局', '财政与非财政双重支持'],
     keyPointsEn: [
       'Singapore economy remains competitive',
@@ -3281,15 +3281,15 @@ Mr K Shanmugam
       'We will introduce a new Refundable Investment Credit for firms anchoring high-value and substantive economic activities in Singapore.',
     notableQuoteEn:
       'We will introduce a new Refundable Investment Credit for firms anchoring high-value and substantive economic activities in Singapore.',
-    summary: `8
+    transcriptEn: `8
 Mr Yip Hon Weng
 asked the Deputy Prime Minister and Minister for Trade and Industry given reports that foreign companies are leaving Changi Business Park (a) whether there is an observable trend of MNCs moving their back-end operations to more cost-effective countries; (b) what are the factors leading to a perceived decline in Singapore’s business appeal and what are the strategies being implemented to counteract this trend; and (c) beyond financial grants, what other proactive measures are being adopted to ensure that businesses continue to view Singapore as a conducive environment for grow`,
     sourceUrl: 'https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=written-answer-17278',
   },
   {
     id: 'oral-answer-3564',
-    title: `Trend in Number of Artificial Intelligence Voice-cloning Scams`,
-    zhTitle: `AI语音克隆诈骗趋势`,
+    titleEn: `Trend in Number of Artificial Intelligence Voice-cloning Scams`,
+    title: `AI语音克隆诈骗趋势`,
     date: '2024-04-03',
     parliament: '14',
     type: 'Oral Answers to Questions',
@@ -3301,8 +3301,8 @@ asked the Deputy Prime Minister and Minister for Trade and Industry given report
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI Economy & Industry', 'AI in Education', 'AI & National Security', 'AI Infrastructure & Research'],
-    zhSummary: `议员质询新加坡AI语音克隆诈骗案件数量及政府应对措施。政府回应称相关案件数量不高，警方未专门追踪此类诈骗，但已采取包括终止涉诈通讯线路、限制后付费SIM卡数量等措施。强调全社会共同防范诈骗的重要性，呼吁公众增强防范意识。核心争议在于诈骗案件具体数据缺乏透明及技术威胁的现实性。`,
-    summaryShortEn: `An MP asked about the number of AI voice-cloning scam cases in Singapore and the government's response. The government replied that case numbers are not high and the police are not specifically tracking such scams, but it has taken measures including terminating communication lines linked to scams and limiting the number of post-paid SIM cards. It stressed the importance of whole-of-society scam prevention and urged the public to strengthen awareness. The core debate: lack of transparency on specific case data and the reality of the technological threat.`,
+    summary: `议员质询新加坡AI语音克隆诈骗案件数量及政府应对措施。政府回应称相关案件数量不高，警方未专门追踪此类诈骗，但已采取包括终止涉诈通讯线路、限制后付费SIM卡数量等措施。强调全社会共同防范诈骗的重要性，呼吁公众增强防范意识。核心争议在于诈骗案件具体数据缺乏透明及技术威胁的现实性。`,
+    summaryEn: `An MP asked about the number of AI voice-cloning scam cases in Singapore and the government's response. The government replied that case numbers are not high and the police are not specifically tracking such scams, but it has taken measures including terminating communication lines linked to scams and limiting the number of post-paid SIM cards. It stressed the importance of whole-of-society scam prevention and urged the public to strengthen awareness. The core debate: lack of transparency on specific case data and the reality of the technological threat.`,
     keyPoints: ['诈骗案件数量不高', '加强通讯渠道监管', '公众需提高防范意识'],
     keyPointsEn: [
       'Case numbers are not high',
@@ -3320,7 +3320,7 @@ asked the Deputy Prime Minister and Minister for Trade and Industry given report
       'If each of us play our part, we can collectively have a better chance of reducing our losses to scammers.',
     notableQuoteEn:
       'If each of us play our part, we can collectively have a better chance of reducing our losses to scammers.',
-    summary: `13
+    transcriptEn: `13
 Mr Gerald Giam Yean Song
 asked the Minister for Home Affairs (a) whether there has been an increase in the number of artificial intelligence voice cloning scams in Singapore; (b) how many of such scams have occurred this year to date; and (c) how is the Government dealing with these types of scams, including in the areas of enforcement, public education and implementation of technological solutions to prevent their occurrence.
 The Minister of State for Home Affairs (Assoc Prof Dr Muhammad Faishal Ibrahim) (for the Minister for Home Affairs)
@@ -3329,8 +3329,8 @@ The Minister of State for Home Affairs (Assoc Prof Dr Muhammad Faishal Ibrahim) 
   },
   {
     id: 'written-answer-16262',
-    title: `Provision for Deletion of Personal Data Upon Request under Personal Data Protection Act 2012 and Recourse Available to Individuals`,
-    zhTitle: `个人数据删除权及救济机制`,
+    titleEn: `Provision for Deletion of Personal Data Upon Request under Personal Data Protection Act 2012 and Recourse Available to Individuals`,
+    title: `个人数据删除权及救济机制`,
     date: '2024-04-03',
     parliament: '14',
     type: 'Written Answers to Questions',
@@ -3342,8 +3342,8 @@ The Minister of State for Home Affairs (Assoc Prof Dr Muhammad Faishal Ibrahim) 
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI Economy & Industry', 'AI Strategy'],
-    zhSummary: `议员质询个人数据保护法中是否包含个人数据删除权及相关救济机制。政府回应指出，法律规定组织在数据不再需要时必须停止保留或妥善处理，无论是否有同意，且个人数据保护委员会有权指令组织销毁数据或停止使用。核心争议在于是否存在明确的"删除权"条款及其执行保障。`,
-    summaryShortEn: `An MP asked whether the PDPA includes a right to deletion of personal data and the available recourse. The government replied that the law requires organisations to stop retaining or properly dispose of personal data when no longer needed, with or without consent, and the Personal Data Protection Commission has the power to direct organisations to destroy or stop using such data. The core debate: whether there is an explicit "right to erasure" clause and how it is enforced.`,
+    summary: `议员质询个人数据保护法中是否包含个人数据删除权及相关救济机制。政府回应指出，法律规定组织在数据不再需要时必须停止保留或妥善处理，无论是否有同意，且个人数据保护委员会有权指令组织销毁数据或停止使用。核心争议在于是否存在明确的"删除权"条款及其执行保障。`,
+    summaryEn: `An MP asked whether the PDPA includes a right to deletion of personal data and the available recourse. The government replied that the law requires organisations to stop retaining or properly dispose of personal data when no longer needed, with or without consent, and the Personal Data Protection Commission has the power to direct organisations to destroy or stop using such data. The core debate: whether there is an explicit "right to erasure" clause and how it is enforced.`,
     keyPoints: ['无明确删除权条款', '数据保留有严格限制', '监管机构有执法权'],
     keyPointsEn: [
       'No explicit right to erasure clause',
@@ -3361,7 +3361,7 @@ The Minister of State for Home Affairs (Assoc Prof Dr Muhammad Faishal Ibrahim) 
       'The Personal Data Protection Commission (PDPC) has the power to direct the organisation to destroy, or stop collecting, using or disclosing, the personal data concerned.',
     notableQuoteEn:
       'The Personal Data Protection Commission (PDPC) has the power to direct the organisation to destroy, or stop collecting, using or disclosing, the personal data concerned.',
-    summary: `27
+    transcriptEn: `27
 Mr Chua Kheng Wee Louis
 asked the Minister for Communications and Information given the absence of a 'right to erasure' clause, whether the Personal Data Protection Act 2012 provides for (i) individuals who have not given consent for the collection, use, or disclosure of their personal data and requiring an organisation to delete their personal data upon request and (ii) the recourse for such individuals if the organisation does not do so.
 Mrs Josephine Teo
@@ -3370,8 +3370,8 @@ Mrs Josephine Teo
   },
   {
     id: 'oral-answer-3551',
-    title: `Unveiling of Shared Responsibility Framework for Phishing Scams`,
-    zhTitle: `反钓鱼诈骗共责框架发布`,
+    titleEn: `Unveiling of Shared Responsibility Framework for Phishing Scams`,
+    title: `反钓鱼诈骗共责框架发布`,
     date: '2024-04-02',
     parliament: '14',
     type: 'Oral Answers to Questions',
@@ -3389,8 +3389,8 @@ Mrs Josephine Teo
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI Governance & Regulation', 'AI Economy & Industry', 'AI in Public Sector', 'AI Strategy'],
-    zhSummary: `议员质询钓鱼诈骗共责框架发布时间、Money Lock功能使用率及是否强制银行参与。政府回应将于2024年内公布框架，Money Lock账户超7.8万个，主要用户为50岁以上，MAS暂不强制银行参与。质询关注国际经验及老年人数字素养，政府强调提升宣传力度。`,
-    summaryShortEn: `MPs asked about the release timeline of the Shared Responsibility Framework for phishing scams, take-up of Money Lock, and whether banks would be required to participate. The government replied that the framework will be released within 2024, more than 78,000 Money Lock accounts have been opened (mainly users aged 50+), and MAS will not mandate bank participation for now. MPs focused on overseas experience and elderly digital literacy; the government emphasised stronger publicity.`,
+    summary: `议员质询钓鱼诈骗共责框架发布时间、Money Lock功能使用率及是否强制银行参与。政府回应将于2024年内公布框架，Money Lock账户超7.8万个，主要用户为50岁以上，MAS暂不强制银行参与。质询关注国际经验及老年人数字素养，政府强调提升宣传力度。`,
+    summaryEn: `MPs asked about the release timeline of the Shared Responsibility Framework for phishing scams, take-up of Money Lock, and whether banks would be required to participate. The government replied that the framework will be released within 2024, more than 78,000 Money Lock accounts have been opened (mainly users aged 50+), and MAS will not mandate bank participation for now. MPs focused on overseas experience and elderly digital literacy; the government emphasised stronger publicity.`,
     keyPoints: ['共责框架年底发布', 'Money Lock用户分布', '暂不强制银行参与'],
     keyPointsEn: [
       'Shared Responsibility Framework released by year-end',
@@ -3408,7 +3408,7 @@ Mrs Josephine Teo
       'The Government will take into account suggestions and feedback received from the public consultation on the Shared Responsibility Framework.',
     notableQuoteEn:
       'The Government will take into account suggestions and feedback received from the public consultation on the Shared Responsibility Framework.',
-    summary: `16
+    transcriptEn: `16
 Mr Desmond Choo
 asked the Prime Minister (a) when will the Shared Responsibility Framework for phishing scams be released; (b) what is the take-up rate of the Money Lock feature offered by our local banks, broken down by ages of bank customers; and (c) whether the MAS will make it mandatory for all banking institutions to participate in this initiative in the near future.
 The Minister of State for Culture, Community and Youth and Trade and Industry (Mr Alvin Tan) (for the Prime Minister)
@@ -3417,8 +3417,8 @@ The Minister of State for Culture, Community and Youth and Trade and Industry (M
   },
   {
     id: 'budget-2378',
-    title: `Committee of Supply – Head O (Ministry of Health)`,
-    zhTitle: `医疗居家护理与补贴政策质询`,
+    titleEn: `Committee of Supply – Head O (Ministry of Health)`,
+    title: `医疗居家护理与补贴政策质询`,
     date: '2024-03-05',
     parliament: '14',
     type: 'Budget',
@@ -3468,8 +3468,8 @@ The Minister of State for Culture, Community and Youth and Trade and Industry (M
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI Governance & Regulation', 'AI in Healthcare', 'AI in Public Sector'],
-    zhSummary: `议员质询卫生部关于医院居家护理服务的进展及规模化情况，探讨MediShield Life和MediSave是否可支持居家医疗理赔。同时质疑现行活动能力评估（ADL）标准是否合理，呼吁更灵活考量患者实际需求。核心争议在于居家护理政策的覆盖范围及补贴机制是否足够支持患者及其家庭。`,
-    summaryShortEn: `MPs asked MOH about progress and scale-up of hospital-at-home services and whether MediShield Life and MediSave can support home-care claims. They also questioned whether current Activities of Daily Living (ADL) assessment criteria are reasonable, calling for more flexible consideration of patient need. The core debate: whether home-care coverage and subsidy mechanisms are sufficient to support patients and their families.`,
+    summary: `议员质询卫生部关于医院居家护理服务的进展及规模化情况，探讨MediShield Life和MediSave是否可支持居家医疗理赔。同时质疑现行活动能力评估（ADL）标准是否合理，呼吁更灵活考量患者实际需求。核心争议在于居家护理政策的覆盖范围及补贴机制是否足够支持患者及其家庭。`,
+    summaryEn: `MPs asked MOH about progress and scale-up of hospital-at-home services and whether MediShield Life and MediSave can support home-care claims. They also questioned whether current Activities of Daily Living (ADL) assessment criteria are reasonable, calling for more flexible consideration of patient need. The core debate: whether home-care coverage and subsidy mechanisms are sufficient to support patients and their families.`,
     keyPoints: ['推动居家医疗服务', '理赔政策需更灵活', 'ADL评估标准质疑'],
     keyPointsEn: [
       'Push hospital-at-home services',
@@ -3487,7 +3487,7 @@ The Minister of State for Culture, Community and Youth and Trade and Industry (M
       'Can the Ministry of Health (MOH) provide an update on the progress of these efforts? Are they being scaled up?',
     notableQuoteEn:
       'Can the Ministry of Health (MOH) provide an update on the progress of these efforts? Are they being scaled up?',
-    summary: `The Chairman
+    transcriptEn: `The Chairman
 : Head O, Ministry of Health. Dr Tan Wu Meng.
 6.16 pm
 Health and Care – Thinking Outside the Box
@@ -3499,8 +3499,8 @@ Today, we have already started thinking outside the box in healthcare policy. Su
   },
   {
     id: 'oral-answer-3518',
-    title: `School Educators' Awareness of Academic and Practice Pathways for Emerging Careers`,
-    zhTitle: `教师对新兴职业路径认知`,
+    titleEn: `School Educators' Awareness of Academic and Practice Pathways for Emerging Careers`,
+    title: `教师对新兴职业路径认知`,
     date: '2024-03-05',
     parliament: '14',
     type: 'Oral Answers to Questions',
@@ -3512,8 +3512,8 @@ Today, we have already started thinking outside the box in healthcare policy. Su
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI Economy & Industry', 'AI & Employment', 'AI in Education', 'AI Infrastructure & Research'],
-    zhSummary: `议员质询教育部是否要求中学教师熟悉未来经济集群下的新兴职业路径及技能需求。教育部回应教师可通过教育及职业指导顾问及行业交流活动了解相关信息，且总部定期发送季度通讯。学生被鼓励主动利用MySkillsFuture平台及相关组织资源。核心争议在于教师对新兴职业信息的更新频率及深度是否足够。`,
-    summaryShortEn: `An MP asked whether MOE requires secondary school teachers to be familiar with emerging career pathways and skills under future economic clusters. MOE replied that teachers can learn from in-school Education and Career Guidance (ECG) counsellors and industry exchange events, with HQ sending quarterly newsletters. Students are encouraged to actively use the MySkillsFuture platform and related organisation resources. The core debate: whether the frequency and depth of teachers' updates on emerging careers are sufficient.`,
+    summary: `议员质询教育部是否要求中学教师熟悉未来经济集群下的新兴职业路径及技能需求。教育部回应教师可通过教育及职业指导顾问及行业交流活动了解相关信息，且总部定期发送季度通讯。学生被鼓励主动利用MySkillsFuture平台及相关组织资源。核心争议在于教师对新兴职业信息的更新频率及深度是否足够。`,
+    summaryEn: `An MP asked whether MOE requires secondary school teachers to be familiar with emerging career pathways and skills under future economic clusters. MOE replied that teachers can learn from in-school Education and Career Guidance (ECG) counsellors and industry exchange events, with HQ sending quarterly newsletters. Students are encouraged to actively use the MySkillsFuture platform and related organisation resources. The core debate: whether the frequency and depth of teachers' updates on emerging careers are sufficient.`,
     keyPoints: ['教师通过ECG了解职业', '定期行业交流活动', '季度通讯更新信息'],
     keyPointsEn: [
       'Teachers learn careers via ECG',
@@ -3531,7 +3531,7 @@ Today, we have already started thinking outside the box in healthcare policy. Su
       'Our secondary school teachers can learn about trends in career pathways and skills in demand from Education and Career Guidance (ECG) counsellors in the school.',
     notableQuoteEn:
       'Our secondary school teachers can learn about trends in career pathways and skills in demand from Education and Career Guidance (ECG) counsellors in the school.',
-    summary: `8
+    transcriptEn: `8
 Ms See Jinli Jean
 asked the Minister for Education (a) whether the Ministry requires all secondary school educators to be familiarised with the academic and practice pathways to benchmark and emerging careers under the future economic clusters; and (b) if not, whether the Ministry will consider doing so.
 The Minister of State for Education (Ms Gan Siow Huang) (for the Minister for Education)
@@ -3540,8 +3540,8 @@ The Minister of State for Education (Ms Gan Siow Huang) (for the Minister for Ed
   },
   {
     id: 'written-answer-16024',
-    title: `Risks and Benefits from Widespread Adoption of Facial Recognition Technology and Oversight Mechanisms to Ensure Responsible and Ethical Use`,
-    zhTitle: `面部识别技术风险与监管`,
+    titleEn: `Risks and Benefits from Widespread Adoption of Facial Recognition Technology and Oversight Mechanisms to Ensure Responsible and Ethical Use`,
+    title: `面部识别技术风险与监管`,
     date: '2024-03-04',
     parliament: '14',
     type: 'Written Answers to Questions',
@@ -3558,8 +3558,8 @@ The Minister of State for Education (Ms Gan Siow Huang) (for the Minister for Ed
       'AI & National Security',
       'AI Infrastructure & Research',
     ],
-    zhSummary: `议员质询面部识别技术在新加坡的风险与收益、监管框架及公众参与情况。政府回应强调面部图像作为生物识别数据受个人数据保护法约束，指出安全用途为主，已有相关指南和治理框架确保技术负责任和伦理使用。核心争议在于如何平衡技术应用与隐私保护。`,
-    summaryShortEn: `An MP asked about the risks and benefits of widespread facial recognition technology (FRT) adoption in Singapore, the regulatory framework, and public engagement. The government replied that facial images, as biometric data, fall under the PDPA, security uses dominate, and existing guidance and governance frameworks ensure responsible, ethical use. The core debate: balancing technology adoption with privacy protection.`,
+    summary: `议员质询面部识别技术在新加坡的风险与收益、监管框架及公众参与情况。政府回应强调面部图像作为生物识别数据受个人数据保护法约束，指出安全用途为主，已有相关指南和治理框架确保技术负责任和伦理使用。核心争议在于如何平衡技术应用与隐私保护。`,
+    summaryEn: `An MP asked about the risks and benefits of widespread facial recognition technology (FRT) adoption in Singapore, the regulatory framework, and public engagement. The government replied that facial images, as biometric data, fall under the PDPA, security uses dominate, and existing guidance and governance frameworks ensure responsible, ethical use. The core debate: balancing technology adoption with privacy protection.`,
     keyPoints: ['面部图像属个人数据', '安全用途为主导', '已有监管与指导框架'],
     keyPointsEn: [
       'Facial images count as personal data',
@@ -3577,7 +3577,7 @@ The Minister of State for Education (Ms Gan Siow Huang) (for the Minister for Ed
       'Facial images as a form of biometric data, can be considered personal data when associated with other information about an individual.',
     notableQuoteEn:
       'Facial images as a form of biometric data, can be considered personal data when associated with other information about an individual.',
-    summary: `13
+    transcriptEn: `13
 Mr Yip Hon Weng
 asked the Minister for Communications and Information (a) what are the risks and benefits associated with widespread adoption of facial recognition technology (FRT) in Singapore; (b) what are the frameworks and oversight mechanisms currently in place to ensure the responsible and ethical use of FRT in Singapore; and (c) what steps are being taken to engage with the public and relevant stakeholders about the responsible development and application of AI technologies to FRT.
 Mrs Josephine Teo
@@ -3586,8 +3586,8 @@ Mrs Josephine Teo
   },
   {
     id: 'budget-2361',
-    title: `Committee of Supply – Head V (Ministry of Trade and Industry)`,
-    zhTitle: `新加坡经济增长与AI挑战`,
+    titleEn: `Committee of Supply – Head V (Ministry of Trade and Industry)`,
+    title: `新加坡经济增长与AI挑战`,
     date: '2024-03-01',
     parliament: '14',
     type: 'Budget',
@@ -3648,8 +3648,8 @@ Mrs Josephine Teo
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI Economy & Industry', 'AI & Employment', 'AI & National Security', 'AI Infrastructure & Research'],
-    zhSummary: `议员质询新加坡如何在土地、劳动力和碳排放限制下推动经济增长，特别关注生成式人工智能等新兴技术带来的机遇与挑战。政府回应强调保持投资吸引力，强化制造业和服务业，提升基础设施和人才培养，确保政策稳定以应对全球竞争和技术变革。核心争议点在于如何平衡创新发展与经济基础的稳固。`,
-    summaryShortEn: `MPs asked how Singapore will drive growth under land, manpower and carbon constraints, focusing on the opportunities and challenges from emerging technologies like generative AI. The government emphasised keeping the country attractive for investment, strengthening manufacturing and services, and lifting infrastructure and talent development, with policy stability to handle global competition and tech change. The core debate: balancing innovation with a solid economic base.`,
+    summary: `议员质询新加坡如何在土地、劳动力和碳排放限制下推动经济增长，特别关注生成式人工智能等新兴技术带来的机遇与挑战。政府回应强调保持投资吸引力，强化制造业和服务业，提升基础设施和人才培养，确保政策稳定以应对全球竞争和技术变革。核心争议点在于如何平衡创新发展与经济基础的稳固。`,
+    summaryEn: `MPs asked how Singapore will drive growth under land, manpower and carbon constraints, focusing on the opportunities and challenges from emerging technologies like generative AI. The government emphasised keeping the country attractive for investment, strengthening manufacturing and services, and lifting infrastructure and talent development, with policy stability to handle global competition and tech change. The core debate: balancing innovation with a solid economic base.`,
     keyPoints: ['经济增长面临多重限制', '新兴AI技术带来挑战机遇', '需持续吸引高价值投资'],
     keyPointsEn: [
       'Growth faces multiple constraints',
@@ -3667,7 +3667,7 @@ Mrs Josephine Teo
       'The rapid rise of new disruptive technologies such as generative artificial intelligence (GenAI) presents both challenges and opportunities to Singapore.',
     notableQuoteEn:
       'The rapid rise of new disruptive technologies such as generative artificial intelligence (GenAI) presents both challenges and opportunities to Singapore.',
-    summary: `The Chairman
+    transcriptEn: `The Chairman
 : Head V, Ministry of Trade and Industry. Mr Liang Eng Hwa.
 Growing Our Economy
 Mr Liang Eng Hwa (Bukit Panjang)
@@ -3677,8 +3677,8 @@ Sir, having a growing and vibrant economy is very much a part of our efforts to 
   },
   {
     id: 'budget-2362',
-    title: `Committee of Supply – Head Q (Ministry of Communications and Information)`,
-    zhTitle: `新加坡AI战略与数字基础设施投资`,
+    titleEn: `Committee of Supply – Head Q (Ministry of Communications and Information)`,
+    title: `新加坡AI战略与数字基础设施投资`,
     date: '2024-03-01',
     parliament: '14',
     type: 'Budget',
@@ -3713,8 +3713,8 @@ Sir, having a growing and vibrant economy is very much a part of our efforts to 
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI Safety & Ethics', 'AI Economy & Industry', 'AI & National Security', 'AI Infrastructure & Research'],
-    zhSummary: `议员质询新加坡在AI时代如何加强数字基础设施建设及人才培养，强调AI既带来机遇也有风险，需保持人类控制。政府回应将继续加大投资，推动国家AI战略2.0，提升网络速度和计算能力，保障数字信任。核心争议在于如何平衡技术发展与安全伦理，以及投资力度是否足够。`,
-    summaryShortEn: `MPs asked how Singapore will strengthen digital infrastructure and talent development in the AI era, stressing that AI brings both opportunity and risk and that humans must remain in control. The government replied that it will keep stepping up investment, drive National AI Strategy 2.0, lift network speeds and compute, and safeguard digital trust. The core debate: balance between tech progress and safety/ethics, and whether investment is sufficient.`,
+    summary: `议员质询新加坡在AI时代如何加强数字基础设施建设及人才培养，强调AI既带来机遇也有风险，需保持人类控制。政府回应将继续加大投资，推动国家AI战略2.0，提升网络速度和计算能力，保障数字信任。核心争议在于如何平衡技术发展与安全伦理，以及投资力度是否足够。`,
+    summaryEn: `MPs asked how Singapore will strengthen digital infrastructure and talent development in the AI era, stressing that AI brings both opportunity and risk and that humans must remain in control. The government replied that it will keep stepping up investment, drive National AI Strategy 2.0, lift network speeds and compute, and safeguard digital trust. The core debate: balance between tech progress and safety/ethics, and whether investment is sufficient.`,
     keyPoints: ['AI是未来关键技术', '需加强数字基础设施', '保持技术人类控制'],
     keyPointsEn: [
       'AI is a key future technology',
@@ -3732,7 +3732,7 @@ Sir, having a growing and vibrant economy is very much a part of our efforts to 
       'Singapore believes that AI can be a potent force for good – to uplift human potential and to unlock economic opportunities.',
     notableQuoteEn:
       'Singapore believes that AI can be a potent force for good – to uplift human potential and to unlock economic opportunities.',
-    summary: `4.15 pm
+    transcriptEn: `4.15 pm
 The Chairman
 : Head Q, Ministry of Communications and Information. Ms Tin Pei Ling.
 Investing in Smart Future
@@ -3743,8 +3743,8 @@ Throughout history, the mastery of technology has been essential for a nation's 
   },
   {
     id: 'budget-2363',
-    title: `Committee of Supply – Head K (Ministry of Education)`,
-    zhTitle: `教育多元发展与AI应对策略`,
+    titleEn: `Committee of Supply – Head K (Ministry of Education)`,
+    title: `教育多元发展与AI应对策略`,
     date: '2024-03-01',
     parliament: '14',
     type: 'Budget',
@@ -3781,8 +3781,8 @@ Throughout history, the mastery of technology has been essential for a nation's 
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI in Education', 'AI in Healthcare', 'AI & National Security', 'AI Infrastructure & Research'],
-    zhSummary: `议员强调教育需适应快速技术变革，特别是生成式人工智能带来的挑战，呼吁拓展技能提升课程，支持学生多元发展。政府认可教育系统的韧性与国际表现，致力推动学生具备应变能力和创新精神。核心争议在于如何平衡传统教学与新兴技能培养，以及资金使用范围的扩展。`,
-    summaryShortEn: `MPs stressed that education must adapt to rapid technological change, especially the challenges from generative AI, calling for expanded upskilling courses and support for students' diverse development. The government acknowledged the system's resilience and international performance and committed to building students' adaptability and creativity. The core debate: balancing traditional teaching with cultivation of emerging skills, and broadening the scope of funding use.`,
+    summary: `议员强调教育需适应快速技术变革，特别是生成式人工智能带来的挑战，呼吁拓展技能提升课程，支持学生多元发展。政府认可教育系统的韧性与国际表现，致力推动学生具备应变能力和创新精神。核心争议在于如何平衡传统教学与新兴技能培养，以及资金使用范围的扩展。`,
+    summaryEn: `MPs stressed that education must adapt to rapid technological change, especially the challenges from generative AI, calling for expanded upskilling courses and support for students' diverse development. The government acknowledged the system's resilience and international performance and committed to building students' adaptability and creativity. The core debate: balancing traditional teaching with cultivation of emerging skills, and broadening the scope of funding use.`,
     keyPoints: ['教育需适应技术变革', '推动多元课程发展', '提升学生综合能力'],
     keyPointsEn: [
       'Education must adapt to tech change',
@@ -3800,7 +3800,7 @@ Throughout history, the mastery of technology has been essential for a nation's 
       'We do not rely on a single vitamin for our health needs. Why then should we expect learners to follow a singular academic path?',
     notableQuoteEn:
       'We do not rely on a single vitamin for our health needs. Why then should we expect learners to follow a singular academic path?',
-    summary: `The Chairman
+    transcriptEn: `The Chairman
 : Head K, Ministry of Education. Mr Patrick Tay.
 Education for Life
 Mr Patrick Tay Teck Guan (Pioneer)
@@ -3810,8 +3810,8 @@ We are living in a disruptive world where the pace of change is rapid and relent
   },
   {
     id: 'oral-answer-3495',
-    title: `Potential Scale and Scope of Job Displacement Due To AI Adoption`,
-    zhTitle: `AI引发就业置换风险质询`,
+    titleEn: `Potential Scale and Scope of Job Displacement Due To AI Adoption`,
+    title: `AI引发就业置换风险质询`,
     date: '2024-02-29',
     parliament: '14',
     type: 'Oral Answers to Questions',
@@ -3823,8 +3823,8 @@ We are living in a disruptive world where the pace of change is rapid and relent
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI Economy & Industry', 'AI & Employment', 'AI & National Security', 'AI in Public Sector'],
-    zhSummary: `议员质询新加坡作为亚太区生成式AI最快采用国，是否低估了AI驱动的就业流失风险，是否会评估AI带来的就业置换规模，以及如何推动企业提前投资员工技能提升。政府回应该议题将在通讯及资讯部预算辩论中详细讨论，未直接回应具体问题，体现出议题尚处于政策研判阶段，存在信息透明度和应对策略的关注点。`,
-    summaryShortEn: `An MP asked whether Singapore — the fastest adopter of generative AI in Asia-Pacific — is underestimating the AI-driven job-loss risk, whether the government will assess the scale of AI-induced job displacement, and how to incentivise firms to invest early in upskilling. The government replied that this topic will be addressed in detail at the MCI Committee of Supply debate, without directly answering the specifics — indicating the issue is still at the policy-deliberation stage, with concerns over transparency and response strategy.`,
+    summary: `议员质询新加坡作为亚太区生成式AI最快采用国，是否低估了AI驱动的就业流失风险，是否会评估AI带来的就业置换规模，以及如何推动企业提前投资员工技能提升。政府回应该议题将在通讯及资讯部预算辩论中详细讨论，未直接回应具体问题，体现出议题尚处于政策研判阶段，存在信息透明度和应对策略的关注点。`,
+    summaryEn: `An MP asked whether Singapore — the fastest adopter of generative AI in Asia-Pacific — is underestimating the AI-driven job-loss risk, whether the government will assess the scale of AI-induced job displacement, and how to incentivise firms to invest early in upskilling. The government replied that this topic will be addressed in detail at the MCI Committee of Supply debate, without directly answering the specifics — indicating the issue is still at the policy-deliberation stage, with concerns over transparency and response strategy.`,
     keyPoints: ['担忧AI就业流失被低估', '计划评估就业置换规模', '推动企业投资员工再培训'],
     keyPointsEn: [
       'Concern that AI job losses are underestimated',
@@ -3842,15 +3842,15 @@ We are living in a disruptive world where the pace of change is rapid and relent
       'I seek his understanding that this topic will be addressed at the Committee of Supply debate for the Ministry of Communications and Information.',
     notableQuoteEn:
       'I seek his understanding that this topic will be addressed at the Committee of Supply debate for the Ministry of Communications and Information.',
-    summary: `3
+    transcriptEn: `3
 Mr Yip Hon Weng
 asked the Minister for Communications and Information (a) whether there are concerns that the extent of artificial intelligence (AI)-driven job losses in Singapore may be underestimated with Singapore being the fastest adopter of generative AI in the Asia Pacific; (b) whether the Ministry will be conducting assessments to evaluate the potential scale and scope of job displacement due to AI adoption; and (c) how is the Ministry engaging with stakeholders to encourage and incentivise proactive investment in upskilling programmes for their employees in anticipation of AI adoptio`,
     sourceUrl: 'https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=oral-answer-3495',
   },
   {
     id: 'budget-2346',
-    title: `Committee of Supply – Head J (Ministry of Defence)`,
-    zhTitle: `国防预算与安全趋势质询`,
+    titleEn: `Committee of Supply – Head J (Ministry of Defence)`,
+    title: `国防预算与安全趋势质询`,
     date: '2024-02-28',
     parliament: '14',
     type: 'Budget',
@@ -3887,8 +3887,8 @@ asked the Minister for Communications and Information (a) whether there are conc
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI Governance & Regulation', 'AI & National Security', 'AI in Public Sector'],
-    zhSummary: `议员质询国防部关于全球及区域安全趋势的监测情况，特别关注俄乌战争及中东冲突对新加坡安全的影响。政府回应强调国际秩序动荡、网络战与信息战的挑战，表明将持续关注并调整国防策略以应对复杂多变的安全环境。核心争议点在于如何平衡预算分配与应对新兴安全威胁。`,
-    summaryShortEn: `MPs asked MINDEF about its tracking of global and regional security trends, focusing on the impact of the Russia-Ukraine war and Middle East conflict on Singapore's security. The government emphasised the volatility of the international order and the challenges from cyber and information warfare, indicating it will keep watching and adjusting defence strategy to handle a complex, shifting security environment. The core debate: balancing budget allocation with response to emerging security threats.`,
+    summary: `议员质询国防部关于全球及区域安全趋势的监测情况，特别关注俄乌战争及中东冲突对新加坡安全的影响。政府回应强调国际秩序动荡、网络战与信息战的挑战，表明将持续关注并调整国防策略以应对复杂多变的安全环境。核心争议点在于如何平衡预算分配与应对新兴安全威胁。`,
+    summaryEn: `MPs asked MINDEF about its tracking of global and regional security trends, focusing on the impact of the Russia-Ukraine war and Middle East conflict on Singapore's security. The government emphasised the volatility of the international order and the challenges from cyber and information warfare, indicating it will keep watching and adjusting defence strategy to handle a complex, shifting security environment. The core debate: balancing budget allocation with response to emerging security threats.`,
     keyPoints: ['国际法与安全秩序', '非国家行为体威胁', '网络与信息战挑战'],
     keyPointsEn: [
       'International law and security order',
@@ -3904,7 +3904,7 @@ asked the Minister for Communications and Information (a) whether there are conc
     policySignalEn: 'Strengthen defence against cyber and information warfare.',
     notableQuote: 'The world is likely be more volatile and unpredictable in the coming year.',
     notableQuoteEn: 'The world is likely be more volatile and unpredictable in the coming year.',
-    summary: `The Chairman
+    transcriptEn: `The Chairman
 : Head J. Mr Vikram Nair.
 Security Trends
 Mr Vikram Nair (Sembawang)
@@ -3917,8 +3917,8 @@ The Charter of the United Nations enshrines the prohibition against the use of f
   },
   {
     id: 'budget-2336',
-    title: `Debate on Annual Budget Statement`,
-    zhTitle: `2024财年预算中的未来挑战`,
+    titleEn: `Debate on Annual Budget Statement`,
+    title: `2024财年预算中的未来挑战`,
     date: '2024-02-27',
     parliament: '14',
     type: 'Budget',
@@ -3944,8 +3944,8 @@ The Charter of the United Nations enshrines the prohibition against the use of f
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI Governance & Regulation', 'AI Safety & Ethics', 'AI Infrastructure & Research', 'AI in Public Sector'],
-    zhSummary: `议员Sharael Taha质询预算中对未来可持续发展的关注，指出居民对短期补贴的期待与对长期发展担忧的矛盾。政府副总理黄循财回应国际环境复杂多变，强调新冷战后世界更具冲突与不确定性。核心争议在于如何平衡当前民生需求与未来经济安全，及新形势下的政策应对。`,
-    summaryShortEn: `MP Sharael Taha questioned the Budget's focus on long-term sustainability, pointing to a tension between residents' expectations for short-term cash support and concerns about long-term development. DPM Lawrence Wong replied that the international environment is increasingly complex, with the post-Cold War world now more conflict-prone and uncertain. The core debate: how to balance immediate cost-of-living needs with future economic security, and the policy response under new conditions.`,
+    summary: `议员Sharael Taha质询预算中对未来可持续发展的关注，指出居民对短期补贴的期待与对长期发展担忧的矛盾。政府副总理黄循财回应国际环境复杂多变，强调新冷战后世界更具冲突与不确定性。核心争议在于如何平衡当前民生需求与未来经济安全，及新形势下的政策应对。`,
+    summaryEn: `MP Sharael Taha questioned the Budget's focus on long-term sustainability, pointing to a tension between residents' expectations for short-term cash support and concerns about long-term development. DPM Lawrence Wong replied that the international environment is increasingly complex, with the post-Cold War world now more conflict-prone and uncertain. The core debate: how to balance immediate cost-of-living needs with future economic security, and the policy response under new conditions.`,
     keyPoints: ['居民期待短期补贴', '国际环境更趋复杂', '新冷战时代挑战大'],
     keyPointsEn: [
       'Residents expect short-term cash support',
@@ -3961,7 +3961,7 @@ The Charter of the United Nations enshrines the prohibition against the use of f
     policySignalEn: 'Emphasises future economic sustainability and security.',
     notableQuote: 'The three decades of peace and stability in the post-Cold War era is now over.',
     notableQuoteEn: 'The three decades of peace and stability in the post-Cold War era is now over.',
-    summary: `[(proc text) Order read for Resumption of Debate on Question [16 February 2024] [2nd Allotted Day] (proc text)]
+    transcriptEn: `[(proc text) Order read for Resumption of Debate on Question [16 February 2024] [2nd Allotted Day] (proc text)]
 [(proc text) "That Parliament approves the financial policy of the Government for the financial year 1 April 2024 to 31 March 2025." – [Deputy Prime Minister and Minister for Finance]. (proc text)]
 [(proc text) Question again proposed. (proc text)]
 11.01 am
@@ -3971,8 +3971,8 @@ Mr Sharael Taha (Pasir Ris-Punggol)
   },
   {
     id: 'budget-2338',
-    title: `Debate on Annual Budget Statement`,
-    zhTitle: `2024年财政预算中的经济增长与AI挑战`,
+    titleEn: `Debate on Annual Budget Statement`,
+    title: `2024年财政预算中的经济增长与AI挑战`,
     date: '2024-02-27',
     parliament: '14',
     type: 'Budget',
@@ -4027,8 +4027,8 @@ Mr Sharael Taha (Pasir Ris-Punggol)
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI Governance & Regulation', 'AI Economy & Industry', 'AI & Employment'],
-    zhSummary: `本次辩论聚焦于新加坡2024年财政预算中经济增长的路径，特别是在全球经济放缓、高通胀及地缘政治不确定性加剧的背景下。政府强调通过结构性改革和支持企业与家庭应对挑战，推动长期可持续发展。辩论中提及技术创新、自动化和人工智能对就业及产业竞争力的影响，反映出对AI治理与产业发展的关注。核心争议点在于如何平衡经济增长与社会保障，以及应对全球保护主义带来的挑战。`,
-    summaryShortEn: `The debate focused on the path to economic growth in Singapore's Budget 2024, against a backdrop of global slowdown, high inflation and rising geopolitical uncertainty. The government emphasised structural reform and support for firms and households to navigate challenges, driving long-term sustainability. References to tech innovation, automation, and AI's impact on jobs and industry competitiveness reflected concern over AI governance and industrial development. The core debate: how to balance growth with social protection and respond to rising global protectionism.`,
+    summary: `本次辩论聚焦于新加坡2024年财政预算中经济增长的路径，特别是在全球经济放缓、高通胀及地缘政治不确定性加剧的背景下。政府强调通过结构性改革和支持企业与家庭应对挑战，推动长期可持续发展。辩论中提及技术创新、自动化和人工智能对就业及产业竞争力的影响，反映出对AI治理与产业发展的关注。核心争议点在于如何平衡经济增长与社会保障，以及应对全球保护主义带来的挑战。`,
+    summaryEn: `The debate focused on the path to economic growth in Singapore's Budget 2024, against a backdrop of global slowdown, high inflation and rising geopolitical uncertainty. The government emphasised structural reform and support for firms and households to navigate challenges, driving long-term sustainability. References to tech innovation, automation, and AI's impact on jobs and industry competitiveness reflected concern over AI governance and industrial development. The core debate: how to balance growth with social protection and respond to rising global protectionism.`,
     keyPoints: ['经济结构需结构性改革', 'AI与自动化重塑就业', '全球环境趋向保护主义'],
     keyPointsEn: [
       'Economy needs structural reform',
@@ -4046,7 +4046,7 @@ Mr Sharael Taha (Pasir Ris-Punggol)
       'Technological innovations, including automation and AI, are reshaping jobs and competitiveness across industries and countries.',
     notableQuoteEn:
       'Technological innovations, including automation and AI, are reshaping jobs and competitiveness across industries and countries.',
-    summary: `[(proc text) Debate resumed. (proc text)]
+    transcriptEn: `[(proc text) Debate resumed. (proc text)]
 Mr Speaker
 : Deputy Prime Minister Heng Swee Keat.
 12.22 pm
@@ -4057,8 +4057,8 @@ I rise in support of the Budget, which lays out a confident path forward for Sin
   },
   {
     id: 'budget-2328',
-    title: `Debate on Annual Budget Statement`,
-    zhTitle: `2024年预算案中的共享未来`,
+    titleEn: `Debate on Annual Budget Statement`,
+    title: `2024年预算案中的共享未来`,
     date: '2024-02-26',
     parliament: '14',
     type: 'Budget',
@@ -4130,8 +4130,8 @@ I rise in support of the Budget, which lays out a confident path forward for Sin
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI Governance & Regulation', 'AI Economy & Industry', 'AI & Employment', 'AI in Public Sector'],
-    zhSummary: `辩论围绕2024年预算案展开，质询方关注政府信息透明度、社会公平及退休保障等问题。政府回应部分采纳反对党建议，如临时失业援助计划。核心争议在于政府是否真正开放接受多元意见及如何缩小理想与现实差距。`,
-    summaryShortEn: `The debate centred on Budget 2024, with questions on government transparency, social fairness, and retirement security. The government adopted some opposition proposals, such as a temporary unemployment assistance scheme. The core debate: whether the government is genuinely open to diverse views, and how to narrow the gap between ideals and reality.`,
+    summary: `辩论围绕2024年预算案展开，质询方关注政府信息透明度、社会公平及退休保障等问题。政府回应部分采纳反对党建议，如临时失业援助计划。核心争议在于政府是否真正开放接受多元意见及如何缩小理想与现实差距。`,
+    summaryEn: `The debate centred on Budget 2024, with questions on government transparency, social fairness, and retirement security. The government adopted some opposition proposals, such as a temporary unemployment assistance scheme. The core debate: whether the government is genuinely open to diverse views, and how to narrow the gap between ideals and reality.`,
     keyPoints: ['信息透明度不足', '理想与现实脱节', '退休保障需加强'],
     keyPointsEn: [
       'Insufficient information transparency',
@@ -4149,7 +4149,7 @@ I rise in support of the Budget, which lays out a confident path forward for Sin
       "The real challenge to the People's Action Party (PAP), however, is for it to be open, and the extent to which it is prepared to accommodate the diverse views of Singaporeans.",
     notableQuoteEn:
       "The real challenge to the People's Action Party (PAP), however, is for it to be open, and the extent to which it is prepared to accommodate the diverse views of Singaporeans.",
-    summary: `[(proc text) Order read for Resumption of Debate on Question [16 February 2024] [1st Allotted Day], (proc text)]
+    transcriptEn: `[(proc text) Order read for Resumption of Debate on Question [16 February 2024] [1st Allotted Day], (proc text)]
 [(proc text) "That Parliament approves the financial policy of the Government for the financial year 1 April 2024 to 31 March 2025." – [Deputy Prime Minister and Minister for Finance]. (proc text)]
 [(proc text) Question again proposed. (proc text)]
 Mr Speaker
@@ -4161,8 +4161,8 @@ Mr Pritam Singh (Aljunied)
   },
   {
     id: 'oral-answer-3478',
-    title: `Specific Targets for Singapore's Global Share of Aggregate Computing Power`,
-    zhTitle: `新加坡计算能力全球份额目标`,
+    titleEn: `Specific Targets for Singapore's Global Share of Aggregate Computing Power`,
+    title: `新加坡计算能力全球份额目标`,
     date: '2024-02-26',
     parliament: '14',
     type: 'Oral Answers to Questions',
@@ -4179,8 +4179,8 @@ Mr Pritam Singh (Aljunied)
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI Safety & Ethics', 'AI Economy & Industry', 'AI in Education', 'AI Infrastructure & Research'],
-    zhSummary: `议员质询政府是否设定未来5至10年新加坡在全球计算能力的具体目标，政府回应未设具体目标，强调计算资源需求动态变化。议员进一步关切数据中心建设及其可持续性，政府表示支持建设符合环保标准的数据中心，并推动数字化带来就业和技能提升。核心争议点在于是否应设定明确目标及如何平衡发展与环保。`,
-    summaryShortEn: `An MP asked whether the government has set specific targets for Singapore's global share of compute over the next 5–10 years. The government replied that no such target has been set, emphasising that compute demand is dynamic. MPs followed up on data centre construction and sustainability; the government said it supports building data centres that meet environmental standards and pushes digitalisation to lift jobs and skills. The core debate: whether explicit targets should be set, and how to balance growth with environmental protection.`,
+    summary: `议员质询政府是否设定未来5至10年新加坡在全球计算能力的具体目标，政府回应未设具体目标，强调计算资源需求动态变化。议员进一步关切数据中心建设及其可持续性，政府表示支持建设符合环保标准的数据中心，并推动数字化带来就业和技能提升。核心争议点在于是否应设定明确目标及如何平衡发展与环保。`,
+    summaryEn: `An MP asked whether the government has set specific targets for Singapore's global share of compute over the next 5–10 years. The government replied that no such target has been set, emphasising that compute demand is dynamic. MPs followed up on data centre construction and sustainability; the government said it supports building data centres that meet environmental standards and pushes digitalisation to lift jobs and skills. The core debate: whether explicit targets should be set, and how to balance growth with environmental protection.`,
     keyPoints: ['未设具体计算能力目标', '支持建设环保数据中心', '推动数字化提升就业技能'],
     keyPointsEn: [
       'No specific compute target',
@@ -4198,7 +4198,7 @@ Mr Pritam Singh (Aljunied)
       'No such target has been set. The amount of computing resources needed in Singapore will depend on the workloads.',
     notableQuoteEn:
       'No such target has been set. The amount of computing resources needed in Singapore will depend on the workloads.',
-    summary: `4
+    transcriptEn: `4
 Mr Gerald Giam Yean Song
 asked the Minister for Communications and Information (a) whether the Government has set specific targets for Singapore's global share of aggregate computing power over the next five to 10 years; (b) if so, what is this target share and by when; (c) which agency is responsible for this initiative; and (d) what interim milestones will the Government use to track progress.
 The Senior Minister of State for Communications and Information (Dr Janil Puthucheary) (for the Minister for Communications)
@@ -4207,8 +4207,8 @@ The Senior Minister of State for Communications and Information (Dr Janil Puthuc
   },
   {
     id: 'budget-2325',
-    title: `Annual Budget Statement`,
-    zhTitle: `2024财年预算展望与挑战`,
+    titleEn: `Annual Budget Statement`,
+    title: `2024财年预算展望与挑战`,
     date: '2024-02-16',
     parliament: '14',
     type: 'Budget',
@@ -4220,8 +4220,8 @@ The Senior Minister of State for Communications and Information (Dr Janil Puthuc
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI Governance & Regulation', 'AI Safety & Ethics', 'AI Economy & Industry', 'AI in Public Sector'],
-    zhSummary: `议员质询全球经济不确定性及地缘政治风险对新加坡经济的影响。政府回应指出2023年经济增长虽缓但避免衰退，2024年展望谨慎乐观，强调全球冲突加剧带来的挑战。核心争议在于如何平衡经济增长与地缘政治风险，以及政府财政政策的应对策略。`,
-    summaryShortEn: `MPs asked about the impact of global economic uncertainty and geopolitical risk on Singapore's economy. The government replied that 2023 growth was modest but avoided recession; the 2024 outlook is cautiously optimistic, with rising global conflict bringing challenges. The core debate: balancing growth with geopolitical risk, and the government's fiscal-policy response.`,
+    summary: `议员质询全球经济不确定性及地缘政治风险对新加坡经济的影响。政府回应指出2023年经济增长虽缓但避免衰退，2024年展望谨慎乐观，强调全球冲突加剧带来的挑战。核心争议在于如何平衡经济增长与地缘政治风险，以及政府财政政策的应对策略。`,
+    summaryEn: `MPs asked about the impact of global economic uncertainty and geopolitical risk on Singapore's economy. The government replied that 2023 growth was modest but avoided recession; the 2024 outlook is cautiously optimistic, with rising global conflict bringing challenges. The core debate: balancing growth with geopolitical risk, and the government's fiscal-policy response.`,
     keyPoints: ['经济增长谨慎乐观', '地缘政治风险加剧', '全球通胀压力缓解'],
     keyPointsEn: ['Cautiously optimistic on growth', 'Rising geopolitical risk', 'Easing global inflation pressure'],
     governmentStance: '积极应对经济与地缘风险',
@@ -4235,7 +4235,7 @@ The Senior Minister of State for Communications and Information (Dr Janil Puthuc
       'The post-Cold War era that began in the early 1990s and fostered three decades of peace and stability is over.',
     notableQuoteEn:
       'The post-Cold War era that began in the early 1990s and fostered three decades of peace and stability is over.',
-    summary: `Mr Speaker
+    transcriptEn: `Mr Speaker
 : Order. The Clerk will now proceed to read the Notice of Motion.
 3.30 pm
 The Deputy Prime Minister and Minister for Finance (Mr Lawrence Wong)
@@ -4246,8 +4246,8 @@ The past year has not been easy. The international environment was troubled. The
   },
   {
     id: 'written-answer-15541',
-    title: `Regulations to Tackle Deepfake Software Being Used in Scam and Fraud Cases`,
-    zhTitle: `打击深度伪造诈骗监管措施`,
+    titleEn: `Regulations to Tackle Deepfake Software Being Used in Scam and Fraud Cases`,
+    title: `打击深度伪造诈骗监管措施`,
     date: '2024-02-05',
     parliament: '14',
     type: 'Written Answers to Questions',
@@ -4259,8 +4259,8 @@ The past year has not been easy. The international environment was troubled. The
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI Governance & Regulation', 'AI Safety & Ethics', 'AI Economy & Industry', 'AI & National Security'],
-    zhSummary: `议员质询政府针对深度伪造软件被用于诈骗的监管和防范措施。政府回应通过《网络刑事危害法》授权监管网络平台，推动技术研发和行业合作，强化公众教育，提升检测和应对能力。核心争议在于如何有效遏制深伪技术滥用，保障网络安全与公众利益。`,
-    summaryShortEn: `An MP asked about the government's regulation and prevention measures against deepfake software used in scams. The government replied that the Online Criminal Harms Act (OCHA) authorises action on online platforms, and it is pushing technology R&D and industry collaboration while strengthening public education to improve detection and response. The core debate: how to effectively curb deepfake abuse and protect online safety and public interest.`,
+    summary: `议员质询政府针对深度伪造软件被用于诈骗的监管和防范措施。政府回应通过《网络刑事危害法》授权监管网络平台，推动技术研发和行业合作，强化公众教育，提升检测和应对能力。核心争议在于如何有效遏制深伪技术滥用，保障网络安全与公众利益。`,
+    summaryEn: `An MP asked about the government's regulation and prevention measures against deepfake software used in scams. The government replied that the Online Criminal Harms Act (OCHA) authorises action on online platforms, and it is pushing technology R&D and industry collaboration while strengthening public education to improve detection and response. The core debate: how to effectively curb deepfake abuse and protect online safety and public interest.`,
     keyPoints: ['多部门协作防范深伪', '《网络刑事危害法》赋权', '公众教育与技术研发'],
     keyPointsEn: [
       'Cross-agency action against deepfakes',
@@ -4278,7 +4278,7 @@ The past year has not been easy. The international environment was troubled. The
       'The Online Criminal Harms Act (OCHA) allows the Government to issue directions to online platforms to prevent potential scam related accounts or content.',
     notableQuoteEn:
       'The Online Criminal Harms Act (OCHA) allows the Government to issue directions to online platforms to prevent potential scam related accounts or content.',
-    summary: `40
+    transcriptEn: `40
 Mr Christopher de Souza
 asked the Minister for Communications and Information what safeguards and regulations are being put in place to tackle the issue of deepfake software being used in scam and fraud cases.
 Mrs Josephine Teo
@@ -4287,8 +4287,8 @@ Mrs Josephine Teo
   },
   {
     id: 'written-answer-15542',
-    title: `Measures to Enhance Public Technological Understanding to Combat Cybercrime and Deepfake Content`,
-    zhTitle: `提升公众科技素养防范网络诈骗`,
+    titleEn: `Measures to Enhance Public Technological Understanding to Combat Cybercrime and Deepfake Content`,
+    title: `提升公众科技素养防范网络诈骗`,
     date: '2024-02-05',
     parliament: '14',
     type: 'Written Answers to Questions',
@@ -4300,8 +4300,8 @@ Mrs Josephine Teo
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI Safety & Ethics', 'AI Economy & Industry', 'AI & National Security', 'AI Infrastructure & Research'],
-    zhSummary: `议员质询政府如何帮助公众理解人工智能及其能力，以应对网络诈骗和深度伪造内容威胁。政府回应指出多部门协作保障网络安全，强调《线上刑事危害法》赋权监管平台，推动深度伪造检测技术研发，并开展多项公众教育活动。核心争议点在于如何有效结合技术与教育手段，提升公众防范意识和能力。`,
-    summaryShortEn: `An MP asked how the government helps the public understand AI and its capabilities to combat cybercrime and deepfake content. The government cited cross-agency cybersecurity work, the OCHA's powers over platforms, R&D on deepfake detection, and multiple public education campaigns. The core debate: how to effectively combine technology and education to lift public awareness and capability.`,
+    summary: `议员质询政府如何帮助公众理解人工智能及其能力，以应对网络诈骗和深度伪造内容威胁。政府回应指出多部门协作保障网络安全，强调《线上刑事危害法》赋权监管平台，推动深度伪造检测技术研发，并开展多项公众教育活动。核心争议点在于如何有效结合技术与教育手段，提升公众防范意识和能力。`,
+    summaryEn: `An MP asked how the government helps the public understand AI and its capabilities to combat cybercrime and deepfake content. The government cited cross-agency cybersecurity work, the OCHA's powers over platforms, R&D on deepfake detection, and multiple public education campaigns. The core debate: how to effectively combine technology and education to lift public awareness and capability.`,
     keyPoints: ['多部门协作保障安全', '《线上刑事危害法》监管', '公众教育与技术研发'],
     keyPointsEn: ['Cross-agency security collaboration', 'OCHA-based oversight', 'Public education and tech R&D'],
     governmentStance: '加强技术监管与公众教育',
@@ -4315,7 +4315,7 @@ Mrs Josephine Teo
       'The Online Criminal Harms Act (OCHA) allows the Government to issue directions to online platforms to prevent potential scam related accounts or content.',
     notableQuoteEn:
       'The Online Criminal Harms Act (OCHA) allows the Government to issue directions to online platforms to prevent potential scam related accounts or content.',
-    summary: `41
+    transcriptEn: `41
 Mr Christopher de Souza
 asked the Minister for Communications and Information how is the Government helping the public to better understand artificial intelligence and its capabilities to build a population grounded in technological understanding so as to combat the threat of cybercrime and deepfake content.
 Mrs Josephine Teo
@@ -4324,8 +4324,8 @@ Mrs Josephine Teo
   },
   {
     id: 'motion-2294',
-    title: `Building an Inclusive and Safe Digital Society`,
-    zhTitle: `构建包容安全数字社会`,
+    titleEn: `Building an Inclusive and Safe Digital Society`,
+    title: `构建包容安全数字社会`,
     date: '2024-01-10',
     parliament: '14',
     type: 'Motions',
@@ -4376,8 +4376,8 @@ Mrs Josephine Teo
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI Economy & Industry', 'AI in Healthcare', 'AI Infrastructure & Research', 'AI in Public Sector'],
-    zhSummary: `议员质询数字化进程中信任危机与网络安全挑战，强调诈骗等网络危害日益严重。政府回应强调新加坡数字经济发展成就及前瞻性基础设施建设，承诺采取全社会协作应对数字风险。核心争议在于如何平衡数字化发展与保障公众安全及信任。`,
-    summaryShortEn: `MPs raised a trust crisis and cybersecurity challenges in the digitalisation drive, stressing growing online harms like scams. The government cited Singapore's digital-economy progress and forward-looking infrastructure, committing to a whole-of-nation approach to digital risk. The core debate: balancing digitalisation with public safety and trust.`,
+    summary: `议员质询数字化进程中信任危机与网络安全挑战，强调诈骗等网络危害日益严重。政府回应强调新加坡数字经济发展成就及前瞻性基础设施建设，承诺采取全社会协作应对数字风险。核心争议在于如何平衡数字化发展与保障公众安全及信任。`,
+    summaryEn: `MPs raised a trust crisis and cybersecurity challenges in the digitalisation drive, stressing growing online harms like scams. The government cited Singapore's digital-economy progress and forward-looking infrastructure, committing to a whole-of-nation approach to digital risk. The core debate: balancing digitalisation with public safety and trust.`,
     keyPoints: ['数字经济快速增长', '网络诈骗威胁加剧', '需全社会协作应对'],
     keyPointsEn: ['Rapid digital-economy growth', 'Rising online scam threats', 'Whole-of-nation response needed'],
     governmentStance: '支持数字化并强化网络安全',
@@ -4391,7 +4391,7 @@ Mrs Josephine Teo
       'Scams often operate in the dark corners of the digital realm, exploiting vulnerabilities and thriving in unsuspecting spaces.',
     notableQuoteEn:
       'Scams often operate in the dark corners of the digital realm, exploiting vulnerabilities and thriving in unsuspecting spaces.',
-    summary: `1.31 pm
+    transcriptEn: `1.31 pm
 Ms Tin Pei Ling (MacPherson)
 : Sir, I beg to move*, "That this House reaffirms our commitment to adopt a whole-of-nation approach to sustain trust by building an inclusive and safe digital society."
 [(proc text) *The Motion also stood in the names of Mr Sharael Taha, Ms Hany Soh, Ms Jessica Tan and Mr Alex Yam. (proc text)]
@@ -4400,8 +4400,8 @@ Speaker, Sir, the Government Parliamentary Committee (GPC) for Communications an
   },
   {
     id: 'motion-2296',
-    title: `Building an Inclusive and Safe Digital Society`,
-    zhTitle: `构建包容安全的数字社会`,
+    titleEn: `Building an Inclusive and Safe Digital Society`,
+    title: `构建包容安全的数字社会`,
     date: '2024-01-10',
     parliament: '14',
     type: 'Motions',
@@ -4420,8 +4420,8 @@ Speaker, Sir, the Government Parliamentary Committee (GPC) for Communications an
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI Safety & Ethics', 'AI Economy & Industry', 'AI & Employment', 'AI in Healthcare'],
-    zhSummary: `议员质询数字化对劳动力、人工智能影响及心理健康问题，政府回应强调AI带来的机遇，推行技能提升计划支持转型，注重数字包容与心理健康，核心争议在于AI对就业和社会的影响及应对策略。`,
-    summaryShortEn: `MPs raised digitalisation's impact on the workforce, AI's effects, and mental-health issues. The government emphasised AI opportunities, ran upskilling programmes to support transition, and focused on digital inclusion and mental health. The core debate: AI's impact on employment and society and the response strategy.`,
+    summary: `议员质询数字化对劳动力、人工智能影响及心理健康问题，政府回应强调AI带来的机遇，推行技能提升计划支持转型，注重数字包容与心理健康，核心争议在于AI对就业和社会的影响及应对策略。`,
+    summaryEn: `MPs raised digitalisation's impact on the workforce, AI's effects, and mental-health issues. The government emphasised AI opportunities, ran upskilling programmes to support transition, and focused on digital inclusion and mental health. The core debate: AI's impact on employment and society and the response strategy.`,
     keyPoints: ['AI影响劳动力', '技能提升支持', '关注心理健康'],
     keyPointsEn: ['AI affects the workforce', 'Upskilling support', 'Focus on mental health'],
     governmentStance: '积极拥抱AI，支持劳工转型',
@@ -4435,7 +4435,7 @@ Speaker, Sir, the Government Parliamentary Committee (GPC) for Communications an
       'The competition is not between "man" and "machine" but which economy and society can better use technology to improve our competitiveness and our lives.',
     notableQuoteEn:
       'The competition is not between "man" and "machine" but which economy and society can better use technology to improve our competitiveness and our lives.',
-    summary: `[(proc text) Debate resumed. (proc text)]
+    transcriptEn: `[(proc text) Debate resumed. (proc text)]
 Mr Speaker
 : Senior Minister of State Tan Kiat How.
 6.24 pm
@@ -4447,8 +4447,8 @@ With your permission, Sir, may I ask the Clerk to distribute to Members suppleme
   },
   {
     id: 'oral-answer-3393',
-    title: `Measures to Develop Baseline Artificial Intelligence Literacy of Students`,
-    zhTitle: `学生AI素养发展措施`,
+    titleEn: `Measures to Develop Baseline Artificial Intelligence Literacy of Students`,
+    title: `学生AI素养发展措施`,
     date: '2024-01-09',
     parliament: '14',
     type: 'Oral Answers to Questions',
@@ -4475,8 +4475,8 @@ With your permission, Sir, may I ask the Clerk to distribute to Members suppleme
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI Safety & Ethics', 'AI & Employment', 'AI in Education', 'AI & National Security'],
-    zhSummary: `议员质询教育部关于除新加坡学生学习空间AI工具外，如何提升学生AI基础素养，包括AI编程课程的计划及实施主体。教育部长回应，教育部通过课程融合、师资培训及校外项目如AI学生推广计划，推动学生理解AI及其伦理，强调网络健康教育防范AI风险。核心争议在于如何有效提升学生AI技能及扩大项目参与度。`,
-    summaryShortEn: `MPs asked MOE how it will develop baseline AI literacy for students beyond the AI tools on Singapore Student Learning Space, including plans for AI coding programmes and who would deliver them. The Education Minister replied that MOE drives student understanding of AI and its ethics through curriculum integration, teacher training, and out-of-school programmes like the AI Student Outreach Programme, with cyber wellness education to guard against AI risks. The core debate: how to effectively lift student AI skills and expand programme participation.`,
+    summary: `议员质询教育部关于除新加坡学生学习空间AI工具外，如何提升学生AI基础素养，包括AI编程课程的计划及实施主体。教育部长回应，教育部通过课程融合、师资培训及校外项目如AI学生推广计划，推动学生理解AI及其伦理，强调网络健康教育防范AI风险。核心争议在于如何有效提升学生AI技能及扩大项目参与度。`,
+    summaryEn: `MPs asked MOE how it will develop baseline AI literacy for students beyond the AI tools on Singapore Student Learning Space, including plans for AI coding programmes and who would deliver them. The Education Minister replied that MOE drives student understanding of AI and its ethics through curriculum integration, teacher training, and out-of-school programmes like the AI Student Outreach Programme, with cyber wellness education to guard against AI risks. The core debate: how to effectively lift student AI skills and expand programme participation.`,
     keyPoints: ['推广AI基础知识', '师资培训与资源支持', 'AI学生推广计划'],
     keyPointsEn: [
       'Promote foundational AI knowledge',
@@ -4492,7 +4492,7 @@ With your permission, Sir, may I ask the Clerk to distribute to Members suppleme
     policySignalEn: 'Strengthen AI literacy and safety education.',
     notableQuote: 'MOE develops students’ foundational knowledge of AI and promotes its safe and responsible use.',
     notableQuoteEn: 'MOE develops students’ foundational knowledge of AI and promotes its safe and responsible use.',
-    summary: `3
+    transcriptEn: `3
 Mr Ong Hua Han
 asked the Minister for Education (a) what other programmes beyond the artificial intelligence (AI)-enabled tools on Singapore Student Learning Space will be put in place to develop baseline AI literacy of students; (b) whether there are plans to launch AI coding programmes in the curriculum; (c) if so, when will such programmes be targeted to be launched; and (d) whether such programmes will be run by teachers or third party service providers.
 4
@@ -4502,8 +4502,8 @@ asked the Minister for Education (a) how many students have applied to join the 
   },
   {
     id: 'written-answer-15270',
-    title: `Workers Facing Highest Risk of Displacement from Artificial Intelligence and Reskilling Programmes Available`,
-    zhTitle: `AI影响下高风险工种与再培训`,
+    titleEn: `Workers Facing Highest Risk of Displacement from Artificial Intelligence and Reskilling Programmes Available`,
+    title: `AI影响下高风险工种与再培训`,
     date: '2024-01-09',
     parliament: '14',
     type: 'Written Answers to Questions',
@@ -4515,8 +4515,8 @@ asked the Minister for Education (a) how many students have applied to join the 
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI Safety & Ethics', 'AI Economy & Industry', 'AI & Employment', 'AI & National Security'],
-    zhSummary: `议员质询政府关于哪些工种因AI面临最高失业风险及相关人数，并询问扩大再培训计划。政府回应强调AI影响难以完全预测，推行行业转型图谱及SkillsFuture等培训项目，支持工人技能提升和职业转换，鼓励向AI技术岗位转型，体现积极应对AI挑战的态度。核心争议在于AI对就业的具体影响及再培训成效。`,
-    summaryShortEn: `MPs asked which job categories face the highest displacement risk from AI, the projected numbers for each, and what expanded reskilling programmes are available. The government replied that AI's impact is not fully predictable; it runs Industry Transformation Maps, SkillsFuture and similar programmes to support upskilling and career conversion, and encourages transition into AI roles — reflecting an active stance on AI challenges. The core debate: AI's specific employment impact and the effectiveness of reskilling.`,
+    summary: `议员质询政府关于哪些工种因AI面临最高失业风险及相关人数，并询问扩大再培训计划。政府回应强调AI影响难以完全预测，推行行业转型图谱及SkillsFuture等培训项目，支持工人技能提升和职业转换，鼓励向AI技术岗位转型，体现积极应对AI挑战的态度。核心争议在于AI对就业的具体影响及再培训成效。`,
+    summaryEn: `MPs asked which job categories face the highest displacement risk from AI, the projected numbers for each, and what expanded reskilling programmes are available. The government replied that AI's impact is not fully predictable; it runs Industry Transformation Maps, SkillsFuture and similar programmes to support upskilling and career conversion, and encourages transition into AI roles — reflecting an active stance on AI challenges. The core debate: AI's specific employment impact and the effectiveness of reskilling.`,
     keyPoints: ['AI影响难以完全预测', '推行业转型图谱辅助准备', '扩大技能提升与转换计划'],
     keyPointsEn: [
       'AI impact is not fully predictable',
@@ -4534,7 +4534,7 @@ asked the Minister for Education (a) how many students have applied to join the 
       'Artificial intelligence (AI) development is changing every day and its impact on the workforce is not fully predictable.',
     notableQuoteEn:
       'Artificial intelligence (AI) development is changing every day and its impact on the workforce is not fully predictable.',
-    summary: `48
+    transcriptEn: `48
 Mr Gerald Giam Yean Song
 asked the Minister for Communications and Information (a) which categories of workers has the Ministry assessed to face the highest risk of displacement as a result of artificial intelligence (AI); (b) what are the projected numbers for each such category; and (c) what expanded programmes are being instituted to scale up reskilling and encourage workers to switch careers before they face job displacement due to AI.
 Mrs Josephine Teo
@@ -4543,8 +4543,8 @@ Mrs Josephine Teo
   },
   {
     id: 'written-answer-15269',
-    title: `National Artificial Intelligence Strategy 2.0 vs Energy and Environmental Sustainability`,
-    zhTitle: `AI算力与能源可持续平衡`,
+    titleEn: `National Artificial Intelligence Strategy 2.0 vs Energy and Environmental Sustainability`,
+    title: `AI算力与能源可持续平衡`,
     date: '2024-01-09',
     parliament: '14',
     type: 'Written Answers to Questions',
@@ -4556,8 +4556,8 @@ Mrs Josephine Teo
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI & National Security', 'AI Infrastructure & Research', 'AI in Public Sector', 'AI Strategy'],
-    zhSummary: `议员质询政府如何在推动国家AI战略2.0所需的算力增长与能源可持续目标之间取得平衡。政府回应强调通过提升数据中心能效、推广液冷技术、制定绿色标准及支持绿色计算方法，确保AI基础设施环保可持续。核心争议在于如何兼顾AI发展需求与气候承诺的矛盾。`,
-    summaryShortEn: `MPs asked how the government will balance the compute growth required by NAIS 2.0 with energy sustainability goals. The government replied that it lifts data centre efficiency, promotes liquid cooling, sets green standards, and supports green compute methods to keep AI infrastructure environmentally sustainable. The core debate: reconciling AI development needs with climate commitments.`,
+    summary: `议员质询政府如何在推动国家AI战略2.0所需的算力增长与能源可持续目标之间取得平衡。政府回应强调通过提升数据中心能效、推广液冷技术、制定绿色标准及支持绿色计算方法，确保AI基础设施环保可持续。核心争议在于如何兼顾AI发展需求与气候承诺的矛盾。`,
+    summaryEn: `MPs asked how the government will balance the compute growth required by NAIS 2.0 with energy sustainability goals. The government replied that it lifts data centre efficiency, promotes liquid cooling, sets green standards, and supports green compute methods to keep AI infrastructure environmentally sustainable. The core debate: reconciling AI development needs with climate commitments.`,
     keyPoints: ['提升数据中心能效', '推广液冷节能技术', '发展绿色计算方法'],
     keyPointsEn: ['Lift data centre efficiency', 'Promote liquid cooling technology', 'Develop green compute methods'],
     governmentStance: '推动绿色高效AI算力发展',
@@ -4571,7 +4571,7 @@ Mrs Josephine Teo
       'The Government is committed to anchoring the necessary compute power and growing the DC sector in a sustainable manner.',
     notableQuoteEn:
       'The Government is committed to anchoring the necessary compute power and growing the DC sector in a sustainable manner.',
-    summary: `47
+    transcriptEn: `47
 Dr Lim Wee Kiak
 asked the Minister for Communications and Information with regard to the National Artificial Intelligence (AI) Strategy 2.0 (a) how does the Government plan to balance the increased computing power necessary for AI developments with Singapore's energy sustainability goals; and (b) what initiatives or strategies are in place to ensure that the infrastructure and computing power needed for AI growth remain environmentally sustainable.
 Mrs Josephine Teo
@@ -4580,8 +4580,8 @@ Mrs Josephine Teo
   },
   {
     id: 'written-answer-15268',
-    title: `Proportion of Students Who Have Undergone Code for Fun Enrichment Programme`,
-    zhTitle: `学生编程普及及AI教育进展`,
+    titleEn: `Proportion of Students Who Have Undergone Code for Fun Enrichment Programme`,
+    title: `学生编程普及及AI教育进展`,
     date: '2024-01-09',
     parliament: '14',
     type: 'Written Answers to Questions',
@@ -4593,8 +4593,8 @@ Mrs Josephine Teo
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI Economy & Industry', 'AI & Employment', 'AI in Education', 'AI & National Security'],
-    zhSummary: `议员质询自2019年以来参与"Code for Fun"编程项目的学生比例，未参与学生如何获得数字素养，以及未来如何更新课程以培养AI人才。政府回应指出小学高年级自2020年起强制参与，近三分之二中学提供该项目，且每年覆盖逾5万学生。课程将于2025年引入AI与数据素养内容，配合正式课程和课外活动推动数字及AI素养培养。核心争议在于如何确保未参与学生的基础数字能力及课程的持续更新。`,
-    summaryShortEn: `An MP asked what proportion of students have gone through the Code for Fun (CFF) programme since 2019, how digital literacy is ensured for students who didn't take it, and how the curriculum will be updated to develop AI talent. The government replied that since 2020 CFF is mandatory at upper primary, around two-thirds of secondary schools offer it, and over 50,000 students are covered each year. From 2025, AI and data literacy will be added, supported by both formal curriculum and co-curricular activities. The core debate: how to ensure digital fundamentals for non-participants and keep the curriculum updated.`,
+    summary: `议员质询自2019年以来参与"Code for Fun"编程项目的学生比例，未参与学生如何获得数字素养，以及未来如何更新课程以培养AI人才。政府回应指出小学高年级自2020年起强制参与，近三分之二中学提供该项目，且每年覆盖逾5万学生。课程将于2025年引入AI与数据素养内容，配合正式课程和课外活动推动数字及AI素养培养。核心争议在于如何确保未参与学生的基础数字能力及课程的持续更新。`,
+    summaryEn: `An MP asked what proportion of students have gone through the Code for Fun (CFF) programme since 2019, how digital literacy is ensured for students who didn't take it, and how the curriculum will be updated to develop AI talent. The government replied that since 2020 CFF is mandatory at upper primary, around two-thirds of secondary schools offer it, and over 50,000 students are covered each year. From 2025, AI and data literacy will be added, supported by both formal curriculum and co-curricular activities. The core debate: how to ensure digital fundamentals for non-participants and keep the curriculum updated.`,
     keyPoints: ['小学高年级强制编程', '中学项目逐年普及', '2025年引入AI内容'],
     keyPointsEn: ['Mandatory coding in upper primary', 'Progressive secondary rollout', 'AI content added in 2025'],
     governmentStance: '推动编程普及与AI教育升级',
@@ -4608,7 +4608,7 @@ Mrs Josephine Teo
       'Since 2020, it has been mandatory for all upper primary school students to go through CFF or a comparable coding programme.',
     notableQuoteEn:
       'Since 2020, it has been mandatory for all upper primary school students to go through CFF or a comparable coding programme.',
-    summary: `46
+    transcriptEn: `46
 Ms See Jinli Jean
 asked the Minister for Communications and Information for each year since the Code for Fun enrichment programme was launched in 2019 (a) what proportion of each cohort of primary school and secondary school students respectively have undergone the programme; (b) for students who did not undergo the programme, how does the Ministry ensure that they can attain the foundational digital quotient; and (c) what are the Ministry's plans to update the programme and its delivery to contribute to developing an artificial intelligence-ready workforce.
 Mrs Josephine Teo
@@ -4617,8 +4617,8 @@ Mrs Josephine Teo
   },
   {
     id: 'oral-answer-3383',
-    title: `Data Security Incident Involving Personal Data of Members of Shopping Loyalty Programme`,
-    zhTitle: `购物会员数据泄露事件质询`,
+    titleEn: `Data Security Incident Involving Personal Data of Members of Shopping Loyalty Programme`,
+    title: `购物会员数据泄露事件质询`,
     date: '2023-11-22',
     parliament: '14',
     type: 'Oral Answers to Questions',
@@ -4630,8 +4630,8 @@ Mrs Josephine Teo
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI & National Security'],
-    zhSummary: `议员质询关于新加坡奢侈度假村运营商购物会员数据泄露事件的报告时间及延迟通知原因。通讯及资讯部长回应事件已按规定时间向监管机构报告，解释延迟通知因需优先控制泄露、评估影响及确认通知要求。监管机构正调查事件是否对个人造成重大伤害及通知是否及时。`,
-    summaryShortEn: `An MP asked, regarding a data breach at a Singapore luxury resort operator's loyalty programme, when the incident was reported and why notification was delayed. The Communications and Information Minister replied that the incident was reported to the regulator within the required timeframe, with delayed user notification due to prioritising containment, impact assessment and confirming notification requirements. The regulator is investigating whether the breach caused significant harm and whether notification was timely.`,
+    summary: `议员质询关于新加坡奢侈度假村运营商购物会员数据泄露事件的报告时间及延迟通知原因。通讯及资讯部长回应事件已按规定时间向监管机构报告，解释延迟通知因需优先控制泄露、评估影响及确认通知要求。监管机构正调查事件是否对个人造成重大伤害及通知是否及时。`,
+    summaryEn: `An MP asked, regarding a data breach at a Singapore luxury resort operator's loyalty programme, when the incident was reported and why notification was delayed. The Communications and Information Minister replied that the incident was reported to the regulator within the required timeframe, with delayed user notification due to prioritising containment, impact assessment and confirming notification requirements. The regulator is investigating whether the breach caused significant harm and whether notification was timely.`,
     keyPoints: ['事件按规定及时报告', '延迟通知因优先控制泄露', '监管机构正在调查'],
     keyPointsEn: [
       'Incident reported within required timeframe',
@@ -4647,7 +4647,7 @@ Mrs Josephine Teo
     policySignalEn: 'Strengthen data-breach management rules.',
     notableQuote: 'Singapore takes breaches of personal data seriously.',
     notableQuoteEn: 'Singapore takes breaches of personal data seriously.',
-    summary: `9
+    transcriptEn: `9
 Ms Hany Soh
 asked the Minister for Communications and Information with regard to the data security incident involving the personal data of about 655,000 members of a shopping loyalty programme operated by a luxury resort operator in Singapore (a) whether the incident was reported to the authorities and, if so, when was it reported; and (b) what was the reason provided to the authorities for the three-week delay in notifying affected members.
 The Minister for Communications and Information (Mrs Josephine Teo)
@@ -4656,8 +4656,8 @@ The Minister for Communications and Information (Mrs Josephine Teo)
   },
   {
     id: 'written-answer-15158',
-    title: `Government's Approach and Policy on Governing Safe and Responsible Artificial Intelligence Development`,
-    zhTitle: `新加坡AI安全治理政策`,
+    titleEn: `Government's Approach and Policy on Governing Safe and Responsible Artificial Intelligence Development`,
+    title: `新加坡AI安全治理政策`,
     date: '2023-11-22',
     parliament: '14',
     type: 'Written Answers to Questions',
@@ -4669,8 +4669,8 @@ The Minister for Communications and Information (Mrs Josephine Teo)
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI Governance & Regulation', 'AI Safety & Ethics', 'AI Economy & Industry', 'AI & National Security'],
-    zhSummary: `议员质询政府关于新加坡安全且负责任发展人工智能的政策及后续治理步骤。政府回应强调已有多次详细说明，支持国际合作与标准对齐，推动企业参与AI伦理认证，并通过双边及多边机制深化AI治理合作。核心争议点在于如何平衡技术发展与伦理安全，以及国际合作的具体落实。`,
-    summaryShortEn: `An MP asked about the government's policy on safe, responsible AI development in Singapore and the next steps in governance. The government replied that it has explained its approach multiple times, supports international cooperation and standards alignment, encourages firms to participate in AI ethics certification, and deepens AI governance collaboration through bilateral and multilateral mechanisms. The core debate: balancing tech progress with ethics/safety and the concrete implementation of international cooperation.`,
+    summary: `议员质询政府关于新加坡安全且负责任发展人工智能的政策及后续治理步骤。政府回应强调已有多次详细说明，支持国际合作与标准对齐，推动企业参与AI伦理认证，并通过双边及多边机制深化AI治理合作。核心争议点在于如何平衡技术发展与伦理安全，以及国际合作的具体落实。`,
+    summaryEn: `An MP asked about the government's policy on safe, responsible AI development in Singapore and the next steps in governance. The government replied that it has explained its approach multiple times, supports international cooperation and standards alignment, encourages firms to participate in AI ethics certification, and deepens AI governance collaboration through bilateral and multilateral mechanisms. The core debate: balancing tech progress with ethics/safety and the concrete implementation of international cooperation.`,
     keyPoints: ['持续推动AI伦理标准', '支持国际AI治理合作', '鼓励企业参与AI认证'],
     keyPointsEn: [
       'Continued push on AI ethics standards',
@@ -4688,7 +4688,7 @@ The Minister for Communications and Information (Mrs Josephine Teo)
       'Singapore has been consistent in our support for international efforts that enhance alignment on AI governance.',
     notableQuoteEn:
       'Singapore has been consistent in our support for international efforts that enhance alignment on AI governance.',
-    summary: `37
+    transcriptEn: `37
 Mr Chua Kheng Wee Louis
 asked the Minister for Communications and Information (a) what is the Government's approach and policy governing the safe and responsible development of artificial intelligence (AI) in Singapore; and (b) what are the subsequent steps that the Government is planning to take in AI governance following the signing of the Bletchley Declaration.
 Mrs Josephine Teo
@@ -4701,8 +4701,8 @@ Please refer to "Regulatory Framework for Artific`,
   },
   {
     id: 'oral-answer-3375',
-    title: `Developing Indigenous Capabilities for Artificial Intelligence Solutions`,
-    zhTitle: `发展本土AI基础模型能力`,
+    titleEn: `Developing Indigenous Capabilities for Artificial Intelligence Solutions`,
+    title: `发展本土AI基础模型能力`,
     date: '2023-11-07',
     parliament: '14',
     type: 'Oral Answers to Questions',
@@ -4718,8 +4718,8 @@ Please refer to "Regulatory Framework for Artific`,
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI Economy & Industry', 'AI & National Security', 'AI Infrastructure & Research', 'AI in Public Sector'],
-    zhSummary: `议员质询政府是否有整体计划发展本土AI基础模型能力，包括设立国家研究机构。政府回应新加坡AI研究实力强，但不强调完全依赖本土能力，倾向快速采用国际先进技术。核心争议在于是否应自主研发基础模型及相关长期风险。`,
-    summaryShortEn: `An MP asked whether the government has a whole-of-government plan to develop indigenous foundation-model capability, including a national research institute. The government replied that Singapore's AI research is strong, but full reliance on indigenous capability is not the priority — it leans toward rapidly adopting international frontier technology. The core debate: whether to build foundation models in-house and the related long-term risks.`,
+    summary: `议员质询政府是否有整体计划发展本土AI基础模型能力，包括设立国家研究机构。政府回应新加坡AI研究实力强，但不强调完全依赖本土能力，倾向快速采用国际先进技术。核心争议在于是否应自主研发基础模型及相关长期风险。`,
+    summaryEn: `An MP asked whether the government has a whole-of-government plan to develop indigenous foundation-model capability, including a national research institute. The government replied that Singapore's AI research is strong, but full reliance on indigenous capability is not the priority — it leans toward rapidly adopting international frontier technology. The core debate: whether to build foundation models in-house and the related long-term risks.`,
     keyPoints: ['新加坡AI研究实力强', '无整体本土基础模型计划', '倾向快速采用国际技术'],
     keyPointsEn: [
       'Strong AI research capability in Singapore',
@@ -4737,7 +4737,7 @@ Please refer to "Regulatory Framework for Artific`,
       'It is not usually necessary or beneficial to rely solely on indigenous capabilities to advance our economic interests.',
     notableQuoteEn:
       'It is not usually necessary or beneficial to rely solely on indigenous capabilities to advance our economic interests.',
-    summary: `14
+    transcriptEn: `14
 Mr Gerald Giam Yean Song
 asked the Prime Minister (a) whether there exists a whole-of-Government plan to develop indigenous capabilities in creating and deploying artificial intelligence (AI) foundation models, including establishing a National Foundation Model Research Institute, so as to help local researchers build core AI foundation model expertise; and (b) if such an AI foundation model plan already exists, what are its core and strategic aims.
 The Senior Minister of State for Communications and Information (Dr Janil Puthucheary) (for the Prime Minister)
@@ -4746,8 +4746,8 @@ The Senior Minister of State for Communications and Information (Dr Janil Puthuc
   },
   {
     id: 'written-answer-14629',
-    title: `Use of Artificial Intelligence in Singapore Police Force's Enforcement Work`,
-    zhTitle: `警务中的人工智能应用`,
+    titleEn: `Use of Artificial Intelligence in Singapore Police Force's Enforcement Work`,
+    title: `警务中的人工智能应用`,
     date: '2023-10-03',
     parliament: '14',
     type: 'Written Answers to Questions',
@@ -4759,8 +4759,8 @@ The Senior Minister of State for Communications and Information (Dr Janil Puthuc
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI & National Security', 'AI in Public Sector'],
-    zhSummary: `议员质询新加坡警察部队如何将人工智能应用于执法工作，是否带来成效，以及未来发展方向。政府回应指出，AI已用于打击儿童性虐待材料和诈骗信息识别，提升调查效率，并将继续与相关机构合作，推动AI技术在警务中的应用。辩论核心在于AI技术的实际效果及未来潜力。`,
-    summaryShortEn: `An MP asked how the Singapore Police Force is using AI in enforcement, whether outcomes have improved, and the future direction. The government replied that AI is already used to combat child sexual abuse material and identify scam content, lifting investigation efficiency, and it will continue partnering with relevant agencies to push AI use in policing. The core debate: the actual effectiveness and future potential of AI.`,
+    summary: `议员质询新加坡警察部队如何将人工智能应用于执法工作，是否带来成效，以及未来发展方向。政府回应指出，AI已用于打击儿童性虐待材料和诈骗信息识别，提升调查效率，并将继续与相关机构合作，推动AI技术在警务中的应用。辩论核心在于AI技术的实际效果及未来潜力。`,
+    summaryEn: `An MP asked how the Singapore Police Force is using AI in enforcement, whether outcomes have improved, and the future direction. The government replied that AI is already used to combat child sexual abuse material and identify scam content, lifting investigation efficiency, and it will continue partnering with relevant agencies to push AI use in policing. The core debate: the actual effectiveness and future potential of AI.`,
     keyPoints: ['AI提升执法效率', '打击儿童性虐待材料', '防范诈骗信息'],
     keyPointsEn: [
       'AI lifts enforcement efficiency',
@@ -4778,7 +4778,7 @@ The Senior Minister of State for Communications and Information (Dr Janil Puthuc
       'The Singapore Police Force (SPF) has been leveraging artificial intelligence (AI) to enhance its capabilities and operational effectiveness.',
     notableQuoteEn:
       'The Singapore Police Force (SPF) has been leveraging artificial intelligence (AI) to enhance its capabilities and operational effectiveness.',
-    summary: `11
+    transcriptEn: `11
 Mr Desmond Choo
 asked the Minister for Home Affairs (a) how has the Singapore Police Force incorporated artificial intelligence (AI) into its enforcement work; (b) whether this has led to improved outcomes; and (c) what is the future role of AI in policing.
 Mr K Shanmugam
@@ -4788,8 +4788,8 @@ For example, it has used AI in its efforts against child sexual abuse materials.
   },
   {
     id: 'written-answer-13935',
-    title: `Impact of Artificial Intelligence on Trading Platforms in Financial Markets`,
-    zhTitle: `人工智能对金融交易平台影响`,
+    titleEn: `Impact of Artificial Intelligence on Trading Platforms in Financial Markets`,
+    title: `人工智能对金融交易平台影响`,
     date: '2023-08-02',
     parliament: '14',
     type: 'Written Answers to Questions',
@@ -4801,8 +4801,8 @@ For example, it has used AI in its efforts against child sexual abuse materials.
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI Governance & Regulation', 'AI Safety & Ethics', 'AI Economy & Industry', 'AI & National Security'],
-    zhSummary: `质询关注AI在金融交易平台中可能导致的"羊群效应"风险及利益冲突问题。政府回应称，新加坡金融管理局（MAS）已实施技术中立的监管措施，推行FEAT原则保障公平与透明，认为当前AI模型应用尚处初期，风险较低，但将持续监控并与业界合作推动负责任使用AI。`,
-    summaryShortEn: `The question focused on AI in financial trading platforms — risks of "herding" effects and conflicts of interest. The government replied that MAS uses technology-neutral regulation, applies FEAT principles for fairness and transparency, and views current AI use as still early-stage with relatively low risk — but will continue monitoring and collaborate with industry on responsible AI use.`,
+    summary: `质询关注AI在金融交易平台中可能导致的"羊群效应"风险及利益冲突问题。政府回应称，新加坡金融管理局（MAS）已实施技术中立的监管措施，推行FEAT原则保障公平与透明，认为当前AI模型应用尚处初期，风险较低，但将持续监控并与业界合作推动负责任使用AI。`,
+    summaryEn: `The question focused on AI in financial trading platforms — risks of "herding" effects and conflicts of interest. The government replied that MAS uses technology-neutral regulation, applies FEAT principles for fairness and transparency, and views current AI use as still early-stage with relatively low risk — but will continue monitoring and collaborate with industry on responsible AI use.`,
     keyPoints: ['监管要求防范利益冲突', '推行FEAT原则保障公平', 'AI交易风险目前较低'],
     keyPointsEn: [
       'Regulation requires conflict-of-interest controls',
@@ -4820,7 +4820,7 @@ For example, it has used AI in its efforts against child sexual abuse materials.
       'MAS requires regulated financial institutions to have controls in place to avoid or mitigate conflicts between their interests and those of their customers.',
     notableQuoteEn:
       'MAS requires regulated financial institutions to have controls in place to avoid or mitigate conflicts between their interests and those of their customers.',
-    summary: `2
+    transcriptEn: `2
 Dr Tan Wu Meng
 asked the Prime Minister whether MAS has assessed the impact of artificial intelligence (AI) on trading platforms in financial markets for (i) the risk of "herding" where individual actors make similar decisions due to similar trained AI models or similar data aggregates and (ii) the potential for conflict of interest when a trading AI platform system is simultaneously considering both the platform's interest and the customers' interests, especially if without disclosure to customers.
 Mr Lawrence Wong (for the Prime Minister)
@@ -4829,8 +4829,8 @@ Mr Lawrence Wong (for the Prime Minister)
   },
   {
     id: 'oral-answer-3295',
-    title: `Feasibility of Establishing Body to Regulate Artificial Intelligence`,
-    zhTitle: `新加坡AI监管机构可行性`,
+    titleEn: `Feasibility of Establishing Body to Regulate Artificial Intelligence`,
+    title: `新加坡AI监管机构可行性`,
     date: '2023-07-06',
     parliament: '14',
     type: 'Oral Answers to Questions',
@@ -4842,8 +4842,8 @@ Mr Lawrence Wong (for the Prime Minister)
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI Governance & Regulation', 'AI Safety & Ethics', 'AI Economy & Industry', 'AI & National Security'],
-    zhSummary: `质询方询问政府是否研究设立AI监管机构及国际合作情况。政府回应强调采用实用且基于风险的治理方式，反对一刀切监管，介绍了现有IMDA和PDPC的多项AI治理举措，并强调国际合作重要性。核心争议在于是否设立专门监管机构及如何平衡创新与风险管理。`,
-    summaryShortEn: `MPs asked whether the government is studying the feasibility of an AI regulator and the state of international cooperation. The government emphasised a practical, risk-based governance approach, opposed one-size-fits-all regulation, cited existing IMDA and PDPC AI governance initiatives, and stressed the importance of international cooperation. The core debate: whether to establish a dedicated AI regulator and how to balance innovation with risk management.`,
+    summary: `质询方询问政府是否研究设立AI监管机构及国际合作情况。政府回应强调采用实用且基于风险的治理方式，反对一刀切监管，介绍了现有IMDA和PDPC的多项AI治理举措，并强调国际合作重要性。核心争议在于是否设立专门监管机构及如何平衡创新与风险管理。`,
+    summaryEn: `MPs asked whether the government is studying the feasibility of an AI regulator and the state of international cooperation. The government emphasised a practical, risk-based governance approach, opposed one-size-fits-all regulation, cited existing IMDA and PDPC AI governance initiatives, and stressed the importance of international cooperation. The core debate: whether to establish a dedicated AI regulator and how to balance innovation with risk management.`,
     keyPoints: ['反对一刀切监管', '推行风险为本治理', '加强国际合作'],
     keyPointsEn: [
       'Opposes one-size-fits-all regulation',
@@ -4859,7 +4859,7 @@ Mr Lawrence Wong (for the Prime Minister)
     policySignalEn: 'Strengthen multilateral cooperation and risk governance.',
     notableQuote: 'We cannot and should not adopt a one-size-fits-all approach to regulate it.',
     notableQuoteEn: 'We cannot and should not adopt a one-size-fits-all approach to regulate it.',
-    summary: `13
+    transcriptEn: `13
 Ms Tin Pei Ling
 asked the Minister for Communications and Information (a) whether the Government will be studying the feasibility of establishing a new body to regulate artificial intelligence (AI) in Singapore; and (b) what are the efforts made in working with other governments to coordinate responsible development and deployment of AI.
 The Minister for Communications and Information (Mrs Josephine Teo)
@@ -4868,8 +4868,8 @@ The Minister for Communications and Information (Mrs Josephine Teo)
   },
   {
     id: 'motion-2194',
-    title: `Supporting Healthcare`,
-    zhTitle: `支持医疗健康发展`,
+    titleEn: `Supporting Healthcare`,
+    title: `支持医疗健康发展`,
     date: '2023-05-10',
     parliament: '14',
     type: 'Motions',
@@ -4913,8 +4913,8 @@ The Minister for Communications and Information (Mrs Josephine Teo)
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI Economy & Industry', 'AI in Education', 'AI in Healthcare', 'AI Infrastructure & Research'],
-    zhSummary: `辩论聚焦疫情后持续支持医疗健康，特别强调学术界心理健康问题。议员指出学术压力导致研究人员和研究生焦虑抑郁比例高，呼吁关注精神健康。政府未直接回应，核心争议在于如何平衡学术绩效压力与心理健康保障。`,
-    summaryShortEn: `The debate focused on continuing support for healthcare beyond the pandemic, with particular emphasis on mental health in academia. MPs noted that academic pressure drives high rates of anxiety and depression among researchers and graduate students, calling for attention to mental health. The government did not respond directly. The core debate: balancing academic performance pressure with mental-health protection.`,
+    summary: `辩论聚焦疫情后持续支持医疗健康，特别强调学术界心理健康问题。议员指出学术压力导致研究人员和研究生焦虑抑郁比例高，呼吁关注精神健康。政府未直接回应，核心争议在于如何平衡学术绩效压力与心理健康保障。`,
+    summaryEn: `The debate focused on continuing support for healthcare beyond the pandemic, with particular emphasis on mental health in academia. MPs noted that academic pressure drives high rates of anxiety and depression among researchers and graduate students, calling for attention to mental health. The government did not respond directly. The core debate: balancing academic performance pressure with mental-health protection.`,
     keyPoints: ['学术界心理健康问题突出', '学术压力导致焦虑抑郁', '需持续支持医疗健康'],
     keyPointsEn: [
       'Prominent mental-health issues in academia',
@@ -4932,7 +4932,7 @@ The Minister for Communications and Information (Mrs Josephine Teo)
       'graduate students are more than six times as likely to experience anxiety and depression compared to the general population.',
     notableQuoteEn:
       'graduate students are more than six times as likely to experience anxiety and depression compared to the general population.',
-    summary: `[(proc text) Order read for the Resumption of Debate on Question [9 May 2023]. (proc text)]
+    transcriptEn: `[(proc text) Order read for the Resumption of Debate on Question [9 May 2023]. (proc text)]
 [(proc text) "That this House commits to supporting healthcare beyond the COVID-19 pandemic and the whole-of-Government efforts for consistent and sustainable support.” – [Dr Tan Yia Swam] (proc text)]
 [(proc text) Question again proposed. (proc text)]
 Mr Deputy Speaker
@@ -4945,8 +4945,8 @@ Our`,
   },
   {
     id: 'motion-2190',
-    title: `Supporting Healthcare`,
-    zhTitle: `支持后疫情时代医疗保障`,
+    titleEn: `Supporting Healthcare`,
+    title: `支持后疫情时代医疗保障`,
     date: '2023-05-09',
     parliament: '14',
     type: 'Motions',
@@ -4972,8 +4972,8 @@ Our`,
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI Governance & Regulation', 'AI in Healthcare', 'AI in Public Sector'],
-    zhSummary: `议员Tan Yia Swam质询医疗体系在后疫情时代的可持续支持，强调医生与患者关系的复杂性及医疗资源有限。她呼吁政府采取全方位措施，关注医疗支出、慢性病管理及医疗服务质量。辩论聚焦医疗费用、患者权益与医生责任的平衡，体现对医疗系统长期发展的关切。`,
-    summaryShortEn: `Dr Tan Yia Swam (NMP) called for sustainable post-pandemic support of the healthcare system, emphasising the complexity of doctor-patient relationships and limited healthcare resources. She urged a whole-of-government approach addressing healthcare expenditure, chronic-disease management, and care quality. The debate focused on the balance between healthcare costs, patient rights, and doctor responsibilities — reflecting concern over the system's long-term development.`,
+    summary: `议员Tan Yia Swam质询医疗体系在后疫情时代的可持续支持，强调医生与患者关系的复杂性及医疗资源有限。她呼吁政府采取全方位措施，关注医疗支出、慢性病管理及医疗服务质量。辩论聚焦医疗费用、患者权益与医生责任的平衡，体现对医疗系统长期发展的关切。`,
+    summaryEn: `Dr Tan Yia Swam (NMP) called for sustainable post-pandemic support of the healthcare system, emphasising the complexity of doctor-patient relationships and limited healthcare resources. She urged a whole-of-government approach addressing healthcare expenditure, chronic-disease management, and care quality. The debate focused on the balance between healthcare costs, patient rights, and doctor responsibilities — reflecting concern over the system's long-term development.`,
     keyPoints: ['医生应关爱患者', '患者更自主质疑医生', '医疗支出需持续支持'],
     keyPointsEn: [
       'Doctors should care for patients',
@@ -4991,7 +4991,7 @@ Our`,
       'Why does anyone stand up to advocate for certain causes? We want to leave behind a better world than what we were born in.',
     notableQuoteEn:
       'Why does anyone stand up to advocate for certain causes? We want to leave behind a better world than what we were born in.',
-    summary: `Mdm Deputy Speaker
+    transcriptEn: `Mdm Deputy Speaker
 : Dr Tan Yia Swam.
 4.01 pm
 Dr Tan Yia Swam (Nominated Member)
@@ -5004,8 +5004,8 @@ I declare my interest as a breast surgeon in private practice and my various med
   },
   {
     id: 'oral-answer-3240',
-    title: `Ensuring Development and Maintenance of Ethical Artificial Intelligence Standards`,
-    zhTitle: `确保伦理AI标准发展维护`,
+    titleEn: `Ensuring Development and Maintenance of Ethical Artificial Intelligence Standards`,
+    title: `确保伦理AI标准发展维护`,
     date: '2023-05-09',
     parliament: '14',
     type: 'Oral Answers to Questions',
@@ -5017,8 +5017,8 @@ I declare my interest as a breast surgeon in private practice and my various med
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI Governance & Regulation', 'AI Safety & Ethics', 'AI Economy & Industry', 'AI & National Security'],
-    zhSummary: `质询关注如何推动符合人类价值观的伦理AI发展及其标准维护。政府回应介绍了新加坡已有的AI治理框架、自测工具及个人数据使用指导，强调责任制和数据安全。质询方关注责任归属及AI身份标识，核心争议在于如何落实责任和透明度。`,
-    summaryShortEn: `The question focused on how to advance ethical AI consistent with human values and maintain standards. The government cited Singapore's existing AI governance framework, self-assessment tools, and personal-data use guidance, emphasising accountability and data security. MPs focused on responsibility allocation and AI labelling. The core debate: how to operationalise accountability and transparency.`,
+    summary: `质询关注如何推动符合人类价值观的伦理AI发展及其标准维护。政府回应介绍了新加坡已有的AI治理框架、自测工具及个人数据使用指导，强调责任制和数据安全。质询方关注责任归属及AI身份标识，核心争议在于如何落实责任和透明度。`,
+    summaryEn: `The question focused on how to advance ethical AI consistent with human values and maintain standards. The government cited Singapore's existing AI governance framework, self-assessment tools, and personal-data use guidance, emphasising accountability and data security. MPs focused on responsibility allocation and AI labelling. The core debate: how to operationalise accountability and transparency.`,
     keyPoints: ['推广负责任AI发展', '引入AI治理框架', '强调责任与透明'],
     keyPointsEn: [
       'Promote responsible AI development',
@@ -5036,7 +5036,7 @@ I declare my interest as a breast surgeon in private practice and my various med
       'Singapore supports the responsible development and deployment of artificial intelligence (AI), so that its benefits may be enjoyed in a trusted and safe manner.',
     notableQuoteEn:
       'Singapore supports the responsible development and deployment of artificial intelligence (AI), so that its benefits may be enjoyed in a trusted and safe manner.',
-    summary: `16
+    transcriptEn: `16
 Dr Tan Wu Meng
 asked the Minister for Communications and Information considering the advances in artificial intelligence (AI) with platforms such as ChatGPT and the GPT-4 architecture, what attention is being given to promoting and ensuring (i) the development of ethical AI which responds in a manner consistent with human values and (ii) maintenance of ethical standards in the development, dataset training and deployment of AI.
 The Senior Minister of State for Communications and Information (Dr Janil Puthucheary) (for the Minister for Communications and Information)
@@ -5045,8 +5045,8 @@ The Senior Minister of State for Communications and Information (Dr Janil Puthuc
   },
   {
     id: 'written-answer-13437',
-    title: `Leveraging New Artificial Intelligence Technologies in e-Government Services`,
-    zhTitle: `新加坡政府AI技术应用`,
+    titleEn: `Leveraging New Artificial Intelligence Technologies in e-Government Services`,
+    title: `新加坡政府AI技术应用`,
     date: '2023-05-09',
     parliament: '14',
     type: 'Written Answers to Questions',
@@ -5063,8 +5063,8 @@ The Senior Minister of State for Communications and Information (Dr Janil Puthuc
       'AI Infrastructure & Research',
       'AI in Public Sector',
     ],
-    zhSummary: `议员质询政府如何利用ChatGPT等新型人工智能技术提升电子政务服务，是否会替代现有聊天机器人以改善用户体验。政府回应已在多项数字服务中应用AI，强调新技术可提升服务质量和效率，但需确保准确性和可靠性，且将制定使用指南保障责任和数据安全。核心争议点在于技术应用的安全性与实用性平衡。`,
-    summaryShortEn: `An MP asked how the Public Service plans to use new AI technologies such as ChatGPT in e-government services and whether they will replace existing chatbots. The government replied that AI is already used in multiple digital services and that new technology can lift quality and efficiency, but accuracy and reliability must come first; usage guidance will be developed to safeguard accountability and data security. The core debate: balancing safety with usefulness in deployment.`,
+    summary: `议员质询政府如何利用ChatGPT等新型人工智能技术提升电子政务服务，是否会替代现有聊天机器人以改善用户体验。政府回应已在多项数字服务中应用AI，强调新技术可提升服务质量和效率，但需确保准确性和可靠性，且将制定使用指南保障责任和数据安全。核心争议点在于技术应用的安全性与实用性平衡。`,
+    summaryEn: `An MP asked how the Public Service plans to use new AI technologies such as ChatGPT in e-government services and whether they will replace existing chatbots. The government replied that AI is already used in multiple digital services and that new technology can lift quality and efficiency, but accuracy and reliability must come first; usage guidance will be developed to safeguard accountability and data security. The core debate: balancing safety with usefulness in deployment.`,
     keyPoints: ['政府已应用AI服务', '新技术提升服务质量', '强调准确性与安全'],
     keyPointsEn: [
       'AI already used across government services',
@@ -5082,7 +5082,7 @@ The Senior Minister of State for Communications and Information (Dr Janil Puthuc
       'We must, however, ensure the accuracy and reliability of responses before such service enhancements can be deployed for public use.',
     notableQuoteEn:
       'We must, however, ensure the accuracy and reliability of responses before such service enhancements can be deployed for public use.',
-    summary: `6
+    transcriptEn: `6
 Mr Melvin Yong Yik Chye
 asked the Prime Minister (a) how does the Public Service intend to leverage new artificial intelligence technologies, such as ChatGPT, in e-Government services; and (b) whether such tools will augment and replace existing chatbot services to provide a better user experience for citizens.
 Mrs Josephine Teo (for the Prime Minister)
@@ -5091,8 +5091,8 @@ Mrs Josephine Teo (for the Prime Minister)
   },
   {
     id: 'oral-answer-3212',
-    title: `Concept of "Indivisible Security” in Speech on Russia-Ukraine War and Impact on Southeast Asia`,
-    zhTitle: `不可分割安全概念解析`,
+    titleEn: `Concept of "Indivisible Security” in Speech on Russia-Ukraine War and Impact on Southeast Asia`,
+    title: `不可分割安全概念解析`,
     date: '2023-05-08',
     parliament: '14',
     type: 'Oral Answers to Questions',
@@ -5104,8 +5104,8 @@ Mrs Josephine Teo (for the Prime Minister)
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI Governance & Regulation', 'AI & National Security'],
-    zhSummary: `质询围绕"不可分割安全"概念及其在俄乌战争中的应用。政府回应强调主权、自决和领土完整为国际法基本原则，俄方以不可分割安全为由入侵乌克兰不被认可。核心争议在于不可分割安全是否为国际法原则，政府明确否认其法律地位，指出该概念被俄美双方引用但不具法律效力。`,
-    summaryShortEn: `The question centred on the concept of "indivisible security" and its invocation in the Russia-Ukraine war. The government emphasised that sovereignty, self-determination, and territorial integrity are foundational principles of international law, and that Russia's invocation of indivisible security to justify invading Ukraine is not recognised. The core debate: whether indivisible security is itself a principle of international law — the government clearly rejected its legal status, noting the concept has been cited by both Russia and the US but has no legal force.`,
+    summary: `质询围绕"不可分割安全"概念及其在俄乌战争中的应用。政府回应强调主权、自决和领土完整为国际法基本原则，俄方以不可分割安全为由入侵乌克兰不被认可。核心争议在于不可分割安全是否为国际法原则，政府明确否认其法律地位，指出该概念被俄美双方引用但不具法律效力。`,
+    summaryEn: `The question centred on the concept of "indivisible security" and its invocation in the Russia-Ukraine war. The government emphasised that sovereignty, self-determination, and territorial integrity are foundational principles of international law, and that Russia's invocation of indivisible security to justify invading Ukraine is not recognised. The core debate: whether indivisible security is itself a principle of international law — the government clearly rejected its legal status, noting the concept has been cited by both Russia and the US but has no legal force.`,
     keyPoints: ['主权与自决为国际法基石', '俄乌战争违反国际法', '不可分割安全非法律原则'],
     keyPointsEn: [
       'Sovereignty and self-determination as cornerstones of international law',
@@ -5123,7 +5123,7 @@ Mrs Josephine Teo (for the Prime Minister)
       'Indivisible Security is not of the same status as self-determination, sovereignty, or territorial integrity and the non-recourse to use of force.',
     notableQuoteEn:
       'Indivisible Security is not of the same status as self-determination, sovereignty, or territorial integrity and the non-recourse to use of force.',
-    summary: `The following question stood in the name of
+    transcriptEn: `The following question stood in the name of
 Mr Vikram Nair –
 8 To ask the Minister for Law whether he can elaborate on the concept of “indivisible security” as referenced in his speech entitled “The Russia-Ukraine War and Southeast Asia One Year On: Implications and Outlook” that was delivered on 8 March 2023 at the ISEAS-Yusof Ishak Institute workshop.
 Mr Murali Pillai (Bukit Batok)
@@ -5134,8 +5134,8 @@ The Minister for Law (Mr K Shanmugam)
   },
   {
     id: 'oral-answer-3225',
-    title: `Reports of Unauthorised Bank Transaction taking Place despite Absence of Alerts on Customer's Telephone Records`,
-    zhTitle: `未收到短信OTP的银行交易纠纷`,
+    titleEn: `Reports of Unauthorised Bank Transaction taking Place despite Absence of Alerts on Customer's Telephone Records`,
+    title: `未收到短信OTP的银行交易纠纷`,
     date: '2023-05-08',
     parliament: '14',
     type: 'Oral Answers to Questions',
@@ -5147,8 +5147,8 @@ The Minister for Law (Mr K Shanmugam)
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI Economy & Industry'],
-    zhSummary: `质询涉及客户未收到短信OTP却发生未授权银行交易的争议，政府回应此类情况极为罕见，警方无相关报告，金融纠纷调解中心仅接获少数争议案例。政府强调客户应及时联系银行及警方，银行需公平处理纠纷并可提供善意赔偿，客户可诉诸调解或法律途径。质询方关注银行与电信记录冲突时的复核机制及防范未来诈骗的准备。`,
-    summaryShortEn: `The question concerned disputes where unauthorised bank transactions occurred despite the customer not receiving SMS OTPs. The government replied that such cases are very rare, with no police reports and only a small number filed at the Financial Industry Disputes Resolution Centre. Customers should contact their bank and the police promptly; banks must handle disputes fairly and may offer goodwill compensation, while customers can pursue mediation or legal channels. MPs focused on the review mechanism when bank and telco records conflict, and preparation for future scams.`,
+    summary: `质询涉及客户未收到短信OTP却发生未授权银行交易的争议，政府回应此类情况极为罕见，警方无相关报告，金融纠纷调解中心仅接获少数争议案例。政府强调客户应及时联系银行及警方，银行需公平处理纠纷并可提供善意赔偿，客户可诉诸调解或法律途径。质询方关注银行与电信记录冲突时的复核机制及防范未来诈骗的准备。`,
+    summaryEn: `The question concerned disputes where unauthorised bank transactions occurred despite the customer not receiving SMS OTPs. The government replied that such cases are very rare, with no police reports and only a small number filed at the Financial Industry Disputes Resolution Centre. Customers should contact their bank and the police promptly; banks must handle disputes fairly and may offer goodwill compensation, while customers can pursue mediation or legal channels. MPs focused on the review mechanism when bank and telco records conflict, and preparation for future scams.`,
     keyPoints: ['未授权交易极罕见', '银行需公平处理纠纷', '客户可诉诸调解和法律'],
     keyPointsEn: [
       'Unauthorised transactions are very rare',
@@ -5166,7 +5166,7 @@ The Minister for Law (Mr K Shanmugam)
       'MAS expects banks to treat customers fairly in all cases of disputes over unauthorised transactions.',
     notableQuoteEn:
       'MAS expects banks to treat customers fairly in all cases of disputes over unauthorised transactions.',
-    summary: `24
+    transcriptEn: `24
 Dr Tan Wu Meng
 asked the Prime Minister (a) whether there are claims filed with the Financial Dispute Resolution Centre which involve an unauthorised bank transaction reportedly taking place and the bank has assessed that the One-Time Password (OTP) SMS messaging was used, but the customer's telephone operator records do not show transmission or receipt of such SMS OTP; and (b) whether there are other avenues available for these customers to seek redress.
 The Minister of State for Trade and Industry (Mr Alvin Tan) (for the Prime Minister)
@@ -5175,8 +5175,8 @@ The Minister of State for Trade and Industry (Mr Alvin Tan) (for the Prime Minis
   },
   {
     id: 'written-answer-13336',
-    title: `Credibility and Adoption of AI-based Diagnostic Solutions`,
-    zhTitle: `AI诊断方案的可信度与监管`,
+    titleEn: `Credibility and Adoption of AI-based Diagnostic Solutions`,
+    title: `AI诊断方案的可信度与监管`,
     date: '2023-05-08',
     parliament: '14',
     type: 'Written Answers to Questions',
@@ -5188,8 +5188,8 @@ The Minister of State for Trade and Industry (Mr Alvin Tan) (for the Prime Minis
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI Governance & Regulation', 'AI Safety & Ethics', 'AI in Healthcare', 'AI & National Security'],
-    zhSummary: `质询聚焦于AI诊断方案的可信度及其广泛应用的监管考量。政府回应指出新加坡已在医疗领域广泛应用AI，强调安全、临床有效性和成本效益为采用前提，介绍了现有的监管框架和未来发布的治理指南，同时关注伦理问题。核心争议在于如何平衡技术创新与安全监管。`,
-    summaryShortEn: `The question focused on the credibility of AI-based diagnostic solutions and the regulatory considerations for wider adoption. The government noted AI is already widely used in Singapore healthcare, with safety, clinical efficacy and cost-effectiveness as preconditions for adoption. It outlined the existing regulatory framework, upcoming governance guidance, and ethical considerations. The core debate: balancing tech innovation with safety oversight.`,
+    summary: `质询聚焦于AI诊断方案的可信度及其广泛应用的监管考量。政府回应指出新加坡已在医疗领域广泛应用AI，强调安全、临床有效性和成本效益为采用前提，介绍了现有的监管框架和未来发布的治理指南，同时关注伦理问题。核心争议在于如何平衡技术创新与安全监管。`,
+    summaryEn: `The question focused on the credibility of AI-based diagnostic solutions and the regulatory considerations for wider adoption. The government noted AI is already widely used in Singapore healthcare, with safety, clinical efficacy and cost-effectiveness as preconditions for adoption. It outlined the existing regulatory framework, upcoming governance guidance, and ethical considerations. The core debate: balancing tech innovation with safety oversight.`,
     keyPoints: ['AI广泛应用医疗', '安全有效为前提', '完善监管与伦理'],
     keyPointsEn: [
       'AI widely used in healthcare',
@@ -5207,7 +5207,7 @@ The Minister of State for Trade and Industry (Mr Alvin Tan) (for the Prime Minis
       'The Ministry of Health (MOH) is open to the use of AI technologies in healthcare where they are proven to be safe, clinically efficacious and cost-effective.',
     notableQuoteEn:
       'The Ministry of Health (MOH) is open to the use of AI technologies in healthcare where they are proven to be safe, clinically efficacious and cost-effective.',
-    summary: `39
+    transcriptEn: `39
 Assoc Prof Jamus Jerome Lim
 asked the Minister for Health (a) whether the Ministry has explored the credibility of AI-based diagnostic solutions; and (b) if so, what are the regulatory considerations that will be most important if there are more widespread adoption of such technologies.
 Mr Ong Ye Kung
@@ -5216,8 +5216,8 @@ Mr Ong Ye Kung
   },
   {
     id: 'oral-answer-3193',
-    title: `Regulatory Framework for Artificial Intelligence Governance in Singapore`,
-    zhTitle: `新加坡人工智能监管框架`,
+    titleEn: `Regulatory Framework for Artificial Intelligence Governance in Singapore`,
+    title: `新加坡人工智能监管框架`,
     date: '2023-04-21',
     parliament: '14',
     type: 'Oral Answers to Questions',
@@ -5229,8 +5229,8 @@ Mr Ong Ye Kung
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI Governance & Regulation', 'AI Safety & Ethics', 'AI Economy & Industry', 'AI & National Security'],
-    zhSummary: `质询方关注新加坡是否借鉴欧盟和中国的AI监管框架，重点领域及立法时间表。政府回应介绍现有的《AI治理模型框架》和AI Verify工具，强调持续审视监管策略，并计划发布个人数据保护指导。质询方进一步关注AI诈骗等具体风险，政府指出AI技术多样性，强调区别对待不同AI技术的必要性，体现审慎推进监管的态度。`,
-    summaryShortEn: `MPs focused on whether Singapore is studying EU and China AI regulatory frameworks, the priority areas, and the legislative timeline. The government cited the existing Model AI Governance Framework and the AI Verify tool, emphasised ongoing review of regulatory strategy, and planned guidance on personal data protection. MPs followed up on specific risks like AI-enabled scams; the government noted AI is a group of technologies and emphasised the need to differentiate among them, reflecting a cautious approach to regulation.`,
+    summary: `质询方关注新加坡是否借鉴欧盟和中国的AI监管框架，重点领域及立法时间表。政府回应介绍现有的《AI治理模型框架》和AI Verify工具，强调持续审视监管策略，并计划发布个人数据保护指导。质询方进一步关注AI诈骗等具体风险，政府指出AI技术多样性，强调区别对待不同AI技术的必要性，体现审慎推进监管的态度。`,
+    summaryEn: `MPs focused on whether Singapore is studying EU and China AI regulatory frameworks, the priority areas, and the legislative timeline. The government cited the existing Model AI Governance Framework and the AI Verify tool, emphasised ongoing review of regulatory strategy, and planned guidance on personal data protection. MPs followed up on specific risks like AI-enabled scams; the government noted AI is a group of technologies and emphasised the need to differentiate among them, reflecting a cautious approach to regulation.`,
     keyPoints: ['支持负责任AI发展', '已有AI治理框架', '关注AI诈骗风险'],
     keyPointsEn: [
       'Supports responsible AI development',
@@ -5246,7 +5246,7 @@ Mr Ong Ye Kung
     policySignalEn: 'Refine AI ethics and data protection.',
     notableQuote: 'AI is a group of technologies. Currently, there is a lot of excitement around ChatGPT.',
     notableQuoteEn: 'AI is a group of technologies. Currently, there is a lot of excitement around ChatGPT.',
-    summary: `19
+    transcriptEn: `19
 Ms He Ting Ru
 asked the Minister for Communications and Information in view of the proposed regulatory frameworks for artificial intelligence (AI) governance in the European Union and China (a) whether the current approach to AI regulation in Singapore is being reviewed; (b) whether there are any areas in the field that are currently being prioritised for regulation; and (c) what is the anticipated timeline for the introduction of any regulation.
 The Senior Minister of State for Communications and Information (Dr Janil Puthucheary) (for the Minister for Communications and Information)
@@ -5255,8 +5255,8 @@ The Senior Minister of State for Communications and Information (Dr Janil Puthuc
   },
   {
     id: 'budget-2078',
-    title: `Committee of Supply – Head S (Ministry of Manpower)`,
-    zhTitle: `新加坡劳动力老龄化挑战`,
+    titleEn: `Committee of Supply – Head S (Ministry of Manpower)`,
+    title: `新加坡劳动力老龄化挑战`,
     date: '2023-03-01',
     parliament: '14',
     type: 'Budget',
@@ -5323,8 +5323,8 @@ The Senior Minister of State for Communications and Information (Dr Janil Puthuc
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI Economy & Industry', 'AI & Employment', 'AI in Public Sector'],
-    zhSummary: `议员质询新加坡劳动力老龄化及人口结构变化对经济的影响，指出部分行业老年员工比例高，未来劳动力可能快速流失。强调技术变革与工作态度转变带来的挑战，呼吁政府关注灵活工作安排。政府回应未见，核心争议在于如何应对老龄化与技术变革带来的就业结构调整。`,
-    summaryShortEn: `MPs raised the impact of an ageing workforce and demographic shifts on Singapore's economy, noting that some sectors have a high share of older workers and may face rapid future labour outflow. They emphasised challenges from tech change and shifting work attitudes, urging attention to flexible work arrangements. The government did not respond directly. The core debate: how to manage employment-structure adjustment from ageing and technological change.`,
+    summary: `议员质询新加坡劳动力老龄化及人口结构变化对经济的影响，指出部分行业老年员工比例高，未来劳动力可能快速流失。强调技术变革与工作态度转变带来的挑战，呼吁政府关注灵活工作安排。政府回应未见，核心争议在于如何应对老龄化与技术变革带来的就业结构调整。`,
+    summaryEn: `MPs raised the impact of an ageing workforce and demographic shifts on Singapore's economy, noting that some sectors have a high share of older workers and may face rapid future labour outflow. They emphasised challenges from tech change and shifting work attitudes, urging attention to flexible work arrangements. The government did not respond directly. The core debate: how to manage employment-structure adjustment from ageing and technological change.`,
     keyPoints: ['人口老龄化加剧', '部分行业老年工人多', '技术与工作态度变化'],
     keyPointsEn: [
       'Population ageing intensifies',
@@ -5342,7 +5342,7 @@ The Senior Minister of State for Communications and Information (Dr Janil Puthuc
       'Technology, digitisation and artificial intelligence (AI) have already changed the nature of many jobs.',
     notableQuoteEn:
       'Technology, digitisation and artificial intelligence (AI) have already changed the nature of many jobs.',
-    summary: `The Chairman
+    transcriptEn: `The Chairman
 : Head S, Ministry of Manpower. Mr Desmond Choo.
 1.08 pm
 Workforce for New Era
@@ -5353,8 +5353,8 @@ When it was reported in January this year that China's population declined for t
   },
   {
     id: 'budget-2072',
-    title: `Committee of Supply – Head Q (Ministry of Communications and Information)`,
-    zhTitle: `数字经济与网络安全监管`,
+    titleEn: `Committee of Supply – Head Q (Ministry of Communications and Information)`,
+    title: `数字经济与网络安全监管`,
     date: '2023-02-28',
     parliament: '14',
     type: 'Budget',
@@ -5396,8 +5396,8 @@ When it was reported in January this year that China's population declined for t
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI Governance & Regulation', 'AI Safety & Ethics', 'AI Economy & Industry', 'AI & National Security'],
-    zhSummary: `议员质询了新加坡在数字经济发展中如何平衡数据利用与用户保护，关注在线安全法案实施进展及元宇宙等新兴领域的监管。强调法规需保护用户同时避免抑制创新，特别是中小企业的数字化发展。政府回应尚未详述，核心争议在于如何在促进数字经济与保障网络安全之间取得平衡。`,
-    summaryShortEn: `MPs asked how Singapore balances data use with user protection in the digital economy, focusing on online-safety legislation progress and regulation of emerging areas like the metaverse. They stressed that rules must protect users without stifling innovation, especially SME digitalisation. The government's response is not yet detailed in the excerpt. The core debate: balancing the digital economy with cybersecurity.`,
+    summary: `议员质询了新加坡在数字经济发展中如何平衡数据利用与用户保护，关注在线安全法案实施进展及元宇宙等新兴领域的监管。强调法规需保护用户同时避免抑制创新，特别是中小企业的数字化发展。政府回应尚未详述，核心争议在于如何在促进数字经济与保障网络安全之间取得平衡。`,
+    summaryEn: `MPs asked how Singapore balances data use with user protection in the digital economy, focusing on online-safety legislation progress and regulation of emerging areas like the metaverse. They stressed that rules must protect users without stifling innovation, especially SME digitalisation. The government's response is not yet detailed in the excerpt. The core debate: balancing the digital economy with cybersecurity.`,
     keyPoints: ['数据驱动创新与风险', '在线安全法案实施', '监管与创新平衡'],
     keyPointsEn: [
       'Data-driven innovation and risks',
@@ -5413,7 +5413,7 @@ When it was reported in January this year that China's population declined for t
     policySignalEn: 'Coordinated development of cybersecurity and the digital economy.',
     notableQuote: 'We must protect our people online just as we do in the real world.',
     notableQuoteEn: 'We must protect our people online just as we do in the real world.',
-    summary: `The Chairman
+    transcriptEn: `The Chairman
 : Head Q, Ministry of Communications and Information. Ms Tin Pei Ling.
 Building and Protecting Singapore
 Ms Tin Pei Ling (MacPherson)
@@ -5424,8 +5424,8 @@ But along with new capabilities com`,
   },
   {
     id: 'budget-2073',
-    title: `Committee of Supply – Head K (Ministry of Education)`,
-    zhTitle: `教育经费与职业发展支持`,
+    titleEn: `Committee of Supply – Head K (Ministry of Education)`,
+    title: `教育经费与职业发展支持`,
     date: '2023-02-28',
     parliament: '14',
     type: 'Budget',
@@ -5482,8 +5482,8 @@ But along with new capabilities com`,
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI Economy & Industry', 'AI & Employment', 'AI in Education', 'AI in Public Sector'],
-    zhSummary: `议员质询教育预算及职业指导支持，强调疫情期间教育工作者的贡献及未来技能培养的重要性。提出加强青年及在职人士的职业辅导，建议扩大SkillsFuture学分使用范围以促进终身学习。政府回应未见，核心争议在于如何更好支持青年职业发展及技能匹配。`,
-    summaryShortEn: `MPs raised the education budget and career-guidance support, emphasising educators' contributions during the pandemic and the importance of future skills development. They proposed stronger career counselling for youth and working adults and broader use of SkillsFuture Credit for lifelong learning. The government has not yet responded in this excerpt. The core debate: how to better support youth career development and skills matching.`,
+    summary: `议员质询教育预算及职业指导支持，强调疫情期间教育工作者的贡献及未来技能培养的重要性。提出加强青年及在职人士的职业辅导，建议扩大SkillsFuture学分使用范围以促进终身学习。政府回应未见，核心争议在于如何更好支持青年职业发展及技能匹配。`,
+    summaryEn: `MPs raised the education budget and career-guidance support, emphasising educators' contributions during the pandemic and the importance of future skills development. They proposed stronger career counselling for youth and working adults and broader use of SkillsFuture Credit for lifelong learning. The government has not yet responded in this excerpt. The core debate: how to better support youth career development and skills matching.`,
     keyPoints: ['加强青年职业指导', '提升继续教育培训', '扩大技能学分使用'],
     keyPointsEn: [
       'Strengthen youth career guidance',
@@ -5501,7 +5501,7 @@ But along with new capabilities com`,
       'We owe it to our youth, especially those who have given up much during the pandemic years, to help them get a strong footing on the career ladder.',
     notableQuoteEn:
       'We owe it to our youth, especially those who have given up much during the pandemic years, to help them get a strong footing on the career ladder.',
-    summary: `The Chairman
+    transcriptEn: `The Chairman
 : Head K, Ministry of Education. Mr Patrick Tay.
 5.30 pm
 Education and the Way Forward
@@ -5512,8 +5512,8 @@ The past few years have undoubtedly been a test of mettle. Especially so for our
   },
   {
     id: 'budget-2054',
-    title: `Committee of supply – Head J (Ministry of Defence)`,
-    zhTitle: `国防预算与安全趋势质询`,
+    titleEn: `Committee of supply – Head J (Ministry of Defence)`,
+    title: `国防预算与安全趋势质询`,
     date: '2023-02-24',
     parliament: '14',
     type: 'Budget',
@@ -5552,8 +5552,8 @@ The past few years have undoubtedly been a test of mettle. Especially so for our
       'AI & National Security',
       'AI Infrastructure & Research',
     ],
-    zhSummary: `议员质询国防部关于当前全球及区域安全形势的评估，特别关注美中战略竞争、俄乌战争及朝鲜导弹试验等风险。政府回应了对多边主义衰退和地区安全复杂化的关注，强调新加坡需加强防务准备以应对不确定性。核心争议在于如何平衡国防投入与区域外交策略，确保国家安全与稳定。`,
-    summaryShortEn: `MPs asked MINDEF for its assessment of the global and regional security situation, focusing on US-China strategic competition, the Russia-Ukraine war, and North Korean missile tests. The government acknowledged concerns over the erosion of multilateralism and increasingly complex regional security, stressing Singapore must strengthen defence readiness for uncertainty. The core debate: balancing defence investment with regional diplomatic strategy to safeguard national security and stability.`,
+    summary: `议员质询国防部关于当前全球及区域安全形势的评估，特别关注美中战略竞争、俄乌战争及朝鲜导弹试验等风险。政府回应了对多边主义衰退和地区安全复杂化的关注，强调新加坡需加强防务准备以应对不确定性。核心争议在于如何平衡国防投入与区域外交策略，确保国家安全与稳定。`,
+    summaryEn: `MPs asked MINDEF for its assessment of the global and regional security situation, focusing on US-China strategic competition, the Russia-Ukraine war, and North Korean missile tests. The government acknowledged concerns over the erosion of multilateralism and increasingly complex regional security, stressing Singapore must strengthen defence readiness for uncertainty. The core debate: balancing defence investment with regional diplomatic strategy to safeguard national security and stability.`,
     keyPoints: ['多边主义承诺减弱', '美中战略竞争加剧', '区域安全环境复杂'],
     keyPointsEn: [
       'Weakening commitment to multilateralism',
@@ -5571,7 +5571,7 @@ The past few years have undoubtedly been a test of mettle. Especially so for our
       'Every time an act of aggression takes place without consequences for the aggressor, the more each country has to fear for its own safety.',
     notableQuoteEn:
       'Every time an act of aggression takes place without consequences for the aggressor, the more each country has to fear for its own safety.',
-    summary: `The Chairman
+    transcriptEn: `The Chairman
 : Head J, Ministry of Defence. Mr Vikram Nair.
 Security Trends
 Mr Vikram Nair (Sembawang)
@@ -5581,8 +5581,8 @@ Singapore had a turbulent journey to Independence, with our pioneer generation o
   },
   {
     id: 'written-answer-12799',
-    title: `Manage Use of Artificial Intelligence Bots in Schools`,
-    zhTitle: `学校人工智能工具管理`,
+    titleEn: `Manage Use of Artificial Intelligence Bots in Schools`,
+    title: `学校人工智能工具管理`,
     date: '2023-02-07',
     parliament: '14',
     type: 'Written Answers to Questions',
@@ -5594,8 +5594,8 @@ Singapore had a turbulent journey to Independence, with our pioneer generation o
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI Safety & Ethics', 'AI in Education', 'AI & National Security', 'AI in Public Sector'],
-    zhSummary: `质询了教育部如何管理学校中ChatGPT等人工智能工具的使用。政府回应指出，AI工具既有机遇也有挑战，强调通过教师指导、数字素养教育和多元评估防范滥用，培养学生诚信和责任感。核心争议在于如何平衡AI辅助学习与防止学术不端。`,
-    summaryShortEn: `An MP asked how MOE will manage the use of AI tools like ChatGPT in schools. The government replied that AI tools bring both opportunities and challenges, and emphasised teacher guidance, digital literacy education, and diversified assessment to prevent misuse, while cultivating student integrity and responsibility. The core debate: balancing AI-assisted learning with preventing academic misconduct.`,
+    summary: `质询了教育部如何管理学校中ChatGPT等人工智能工具的使用。政府回应指出，AI工具既有机遇也有挑战，强调通过教师指导、数字素养教育和多元评估防范滥用，培养学生诚信和责任感。核心争议在于如何平衡AI辅助学习与防止学术不端。`,
+    summaryEn: `An MP asked how MOE will manage the use of AI tools like ChatGPT in schools. The government replied that AI tools bring both opportunities and challenges, and emphasised teacher guidance, digital literacy education, and diversified assessment to prevent misuse, while cultivating student integrity and responsibility. The core debate: balancing AI-assisted learning with preventing academic misconduct.`,
     keyPoints: ['AI具机遇与挑战', '加强数字素养教育', '多元评估防止滥用'],
     keyPointsEn: [
       'AI brings opportunities and challenges',
@@ -5613,7 +5613,7 @@ Singapore had a turbulent journey to Independence, with our pioneer generation o
       'When used appropriately, these tools can support students in their learning when students have mastered basic concepts and thinking skills.',
     notableQuoteEn:
       'When used appropriately, these tools can support students in their learning when students have mastered basic concepts and thinking skills.',
-    summary: `26
+    transcriptEn: `26
 Mr Shawn Huang Wei Zhong
 asked the Minister for Education how will the Ministry manage the use of artificial intelligence (AI) bots such as ChatGPT in schools given the proliferation of AI toolkits.
 Mr Chan Chun Sing
@@ -5623,8 +5623,8 @@ The Ministry of Education (MOE) provides teachers with guidance and resources to
   },
   {
     id: 'oral-answer-3032',
-    title: `Students Using Artificial Intelligence Technologies for Exams and Assignments`,
-    zhTitle: `学生使用AI技术考试作业`,
+    titleEn: `Students Using Artificial Intelligence Technologies for Exams and Assignments`,
+    title: `学生使用AI技术考试作业`,
     date: '2023-02-06',
     parliament: '14',
     type: 'Oral Answers to Questions',
@@ -5643,8 +5643,8 @@ The Ministry of Education (MOE) provides teachers with guidance and resources to
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI Safety & Ethics', 'AI Economy & Industry', 'AI & Employment', 'AI in Education'],
-    zhSummary: `议员质询AI技术如ChatGPT对学生作业和考试的影响、作弊问题及教育应对措施。教育部长回应，AI带来机遇与挑战，教育部提供指导资源，鼓励合理利用AI，同时强调基础知识掌握，防止过度依赖和作弊。核心争议在于如何平衡AI辅助学习与防范学术不端。`,
-    summaryShortEn: `MPs asked about ChatGPT and similar AI's impact on student coursework and exams, cheating concerns, and the educational response. The Education Minister replied that AI brings opportunities and challenges, MOE provides teacher guidance and resources, and supports reasonable AI use while emphasising mastery of fundamentals — preventing over-reliance and cheating. The core debate: balancing AI-assisted learning with prevention of academic misconduct.`,
+    summary: `议员质询AI技术如ChatGPT对学生作业和考试的影响、作弊问题及教育应对措施。教育部长回应，AI带来机遇与挑战，教育部提供指导资源，鼓励合理利用AI，同时强调基础知识掌握，防止过度依赖和作弊。核心争议在于如何平衡AI辅助学习与防范学术不端。`,
+    summaryEn: `MPs asked about ChatGPT and similar AI's impact on student coursework and exams, cheating concerns, and the educational response. The Education Minister replied that AI brings opportunities and challenges, MOE provides teacher guidance and resources, and supports reasonable AI use while emphasising mastery of fundamentals — preventing over-reliance and cheating. The core debate: balancing AI-assisted learning with prevention of academic misconduct.`,
     keyPoints: ['AI带来机遇与挑战', '提供教师指导资源', '防范学生作弊行为'],
     keyPointsEn: [
       'AI brings opportunities and challenges',
@@ -5662,7 +5662,7 @@ The Ministry of Education (MOE) provides teachers with guidance and resources to
       'ChatGPT can be a useful tool for learning only when students have mastered basic concepts and thinking skills.',
     notableQuoteEn:
       'ChatGPT can be a useful tool for learning only when students have mastered basic concepts and thinking skills.',
-    summary: `19
+    transcriptEn: `19
 Dr Tan Wu Meng
 asked the Minister for Education (a) whether artificial intelligence (AI) technologies such as ChatGPT are expected to affect student coursework and open-book assessments and, if so, how; (b) what challenges and opportunities exist in the educational and skills landscape due to the rise of such AI; and (c) what is being done to inculcate life skills, soft skills, and other competencies so that human workers can remain competitive and relevant amidst a landscape encompassing international competition and AI advancements.
 20
@@ -5672,8 +5672,8 @@ asked the Minister for Education (a) whe`,
   },
   {
     id: 'written-answer-12692',
-    title: `Ensuring Integrity of Online Examinations and Assignments Given Availability of Artificial Intelligence Technologies`,
-    zhTitle: `保障在线考试诚信`,
+    titleEn: `Ensuring Integrity of Online Examinations and Assignments Given Availability of Artificial Intelligence Technologies`,
+    title: `保障在线考试诚信`,
     date: '2023-02-06',
     parliament: '14',
     type: 'Written Answers to Questions',
@@ -5685,8 +5685,8 @@ asked the Minister for Education (a) whe`,
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI Governance & Regulation', 'AI Safety & Ethics', 'AI in Education', 'AI & National Security'],
-    zhSummary: `质询关注AI技术（如ChatGPT）对学生在线考试和作业诚信的影响，政府回应强调技术既带来机遇也有挑战，学校和高等院校通过明确规则、监考措施及多元评估防范学术不端，持续教育学生诚信重要性，并将随AI发展调整应对策略。核心争议在于如何平衡AI辅助学习与防止作弊。`,
-    summaryShortEn: `The question focused on AI's impact (e.g. ChatGPT) on the integrity of online exams and assignments. The government replied that the technology brings both opportunities and challenges; schools and IHLs use clear rules, invigilation measures, and diversified assessment to deter misconduct, alongside continuous student education on integrity, and will adjust strategy as AI evolves. The core debate: balancing AI-assisted learning with cheating prevention.`,
+    summary: `质询关注AI技术（如ChatGPT）对学生在线考试和作业诚信的影响，政府回应强调技术既带来机遇也有挑战，学校和高等院校通过明确规则、监考措施及多元评估防范学术不端，持续教育学生诚信重要性，并将随AI发展调整应对策略。核心争议在于如何平衡AI辅助学习与防止作弊。`,
+    summaryEn: `The question focused on AI's impact (e.g. ChatGPT) on the integrity of online exams and assignments. The government replied that the technology brings both opportunities and challenges; schools and IHLs use clear rules, invigilation measures, and diversified assessment to deter misconduct, alongside continuous student education on integrity, and will adjust strategy as AI evolves. The core debate: balancing AI-assisted learning with cheating prevention.`,
     keyPoints: ['AI既是机遇也是挑战', '严格监考防止作弊', '多元评估识别异常'],
     keyPointsEn: [
       'AI is both opportunity and challenge',
@@ -5704,7 +5704,7 @@ asked the Minister for Education (a) whe`,
       'ChatGPT and similar generative artificial intelligence (AI) tools present both opportunities and challenges for teaching and learning.',
     notableQuoteEn:
       'ChatGPT and similar generative artificial intelligence (AI) tools present both opportunities and challenges for teaching and learning.',
-    summary: `20
+    transcriptEn: `20
 Mr Melvin Yong Yik Chye
 asked the Minister for Education with the advent of ChatGPT and other artificial intelligence technologies readily available to students of all levels, what safeguards will schools and educators put in place to ensure the integrity of online examinations and assignments.
 Mr Chan Chun Sing
@@ -5713,8 +5713,8 @@ Mr Chan Chun Sing
   },
   {
     id: 'written-answer-12075',
-    title: `Impact of Malaysia's Intended Legal Action at ICJ on Singapore's Development Plans In and Around Pedra Branca`,
-    zhTitle: `马来西亚诉讼对新加坡珊瑚礁影响`,
+    titleEn: `Impact of Malaysia's Intended Legal Action at ICJ on Singapore's Development Plans In and Around Pedra Branca`,
+    title: `马来西亚诉讼对新加坡珊瑚礁影响`,
     date: '2022-11-09',
     parliament: '14',
     type: 'Written Answers to Questions',
@@ -5726,8 +5726,8 @@ Mr Chan Chun Sing
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI Governance & Regulation', 'AI Infrastructure & Research', 'AI Strategy'],
-    zhSummary: `质询马来西亚拟在国际法院继续诉讼是否影响新加坡珊瑚礁开发。外交部长回应称2008年判决终局且时效已过，未收到马方具体诉讼细节。新加坡准备应对任何法律行动，开发活动均符合法律，核心争议在于主权维护与法律程序时效。`,
-    summaryShortEn: `The question asked whether Malaysia's intended legal action at the ICJ would affect Singapore's reclamation works around Pedra Branca. The Foreign Minister replied that the 2008 ICJ judgment is final, the time limit has passed, and Singapore has not received specific case details from Malaysia. Singapore stands ready to handle any legal action; all development is law-compliant. The core debate: sovereignty and the time limits of legal procedure.`,
+    summary: `质询马来西亚拟在国际法院继续诉讼是否影响新加坡珊瑚礁开发。外交部长回应称2008年判决终局且时效已过，未收到马方具体诉讼细节。新加坡准备应对任何法律行动，开发活动均符合法律，核心争议在于主权维护与法律程序时效。`,
+    summaryEn: `The question asked whether Malaysia's intended legal action at the ICJ would affect Singapore's reclamation works around Pedra Branca. The Foreign Minister replied that the 2008 ICJ judgment is final, the time limit has passed, and Singapore has not received specific case details from Malaysia. Singapore stands ready to handle any legal action; all development is law-compliant. The core debate: sovereignty and the time limits of legal procedure.`,
     keyPoints: ['2008年判决终局', '诉讼时效已过', '开发符合法律'],
     keyPointsEn: ['2008 judgment is final', 'Time limit for action has passed', 'Development is law-compliant'],
     governmentStance: '坚定维护珊瑚礁主权',
@@ -5739,7 +5739,7 @@ Mr Chan Chun Sing
     policySignalEn: 'Uphold international law and sovereignty.',
     notableQuote: 'Singapore stands ready to deal with whatever legal action Malaysia may pursue.',
     notableQuoteEn: 'Singapore stands ready to deal with whatever legal action Malaysia may pursue.',
-    summary: `3
+    transcriptEn: `3
 Mr Gerald Giam Yean Song
 asked the Minister for Foreign Affairs (a) whether Malaysia's intention to continue legal action at the International Court of Justice in the case concerning Singapore's sovereignty over Pedra Branca, Middle Rocks and South Ledge impacts Singapore's existing and planned development and land reclamation works in and around Pedra Branca; and (b) if so, how.
 Dr Vivian Balakrishnan
@@ -5748,8 +5748,8 @@ Dr Vivian Balakrishnan
   },
   {
     id: 'oral-answer-2914',
-    title: `Successful Implementation of Age Verification for Joining Social Media Platforms`,
-    zhTitle: `社交媒体年龄验证实施情况`,
+    titleEn: `Successful Implementation of Age Verification for Joining Social Media Platforms`,
+    title: `社交媒体年龄验证实施情况`,
     date: '2022-10-05',
     parliament: '14',
     type: 'Oral Answers to Questions',
@@ -5765,8 +5765,8 @@ Dr Vivian Balakrishnan
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI Safety & Ethics', 'AI in Education', 'AI & National Security', 'AI Infrastructure & Research'],
-    zhSummary: `质询涉及是否设定社交媒体最低年龄限制及借鉴海外年龄验证经验。政府回应指出现行多数平台要求13岁以上注册，采用AI等技术检测未成年账户，但年龄验证技术难度大且涉及儿童数据保护问题。政府将推行线上安全行为守则，强化对年轻用户保护，同时鼓励家长积极引导。核心争议在于年龄验证技术的可行性与数据隐私保护的平衡。`,
-    summaryShortEn: `The question asked whether a minimum age for social media should be set and what overseas age-verification experience could inform Singapore. The government replied that most major platforms require users to be 13+, with AI used to detect minor accounts, but accurate age verification is technically difficult and raises child-data-protection issues. The government will roll out a Code of Practice on Online Safety to strengthen protection for young users while encouraging active parental guidance. The core debate: feasibility of age-verification technology and balance with data privacy.`,
+    summary: `质询涉及是否设定社交媒体最低年龄限制及借鉴海外年龄验证经验。政府回应指出现行多数平台要求13岁以上注册，采用AI等技术检测未成年账户，但年龄验证技术难度大且涉及儿童数据保护问题。政府将推行线上安全行为守则，强化对年轻用户保护，同时鼓励家长积极引导。核心争议在于年龄验证技术的可行性与数据隐私保护的平衡。`,
+    summaryEn: `The question asked whether a minimum age for social media should be set and what overseas age-verification experience could inform Singapore. The government replied that most major platforms require users to be 13+, with AI used to detect minor accounts, but accurate age verification is technically difficult and raises child-data-protection issues. The government will roll out a Code of Practice on Online Safety to strengthen protection for young users while encouraging active parental guidance. The core debate: feasibility of age-verification technology and balance with data privacy.`,
     keyPoints: ['多数平台要求13岁以上', 'AI技术辅助年龄检测', '数据保护与技术难题'],
     keyPointsEn: [
       'Most platforms require 13+',
@@ -5784,7 +5784,7 @@ Dr Vivian Balakrishnan
       'Age verification, to a high degree of certainty, is technically difficult and the technology continues to evolve.',
     notableQuoteEn:
       'Age verification, to a high degree of certainty, is technically difficult and the technology continues to evolve.',
-    summary: `7
+    transcriptEn: `7
 Mr Melvin Yong Yik Chye
 asked the Minister for Communications and Information (a) whether the Ministry is considering a minimum age limit for children to join social media platforms, to mitigate the potential harm that social media sites can cause on young children; and (b) whether the Ministry has studied any overseas jurisdictions that have successfully implemented age verification for the use of social media platforms.
 The Senior Minister of State for Communications and Information (Dr Janil Puthucheary) (for the Minister for Communications and Information)
@@ -5793,8 +5793,8 @@ The Senior Minister of State for Communications and Information (Dr Janil Puthuc
   },
   {
     id: 'budget-1862',
-    title: `Committee of Supply – Head Q (Ministry of Communications and Information)`,
-    zhTitle: `数字转型与包容性平衡`,
+    titleEn: `Committee of Supply – Head Q (Ministry of Communications and Information)`,
+    title: `数字转型与包容性平衡`,
     date: '2022-03-04',
     parliament: '14',
     type: 'Budget',
@@ -5852,8 +5852,8 @@ The Senior Minister of State for Communications and Information (Dr Janil Puthuc
       'AI & National Security',
       'AI Infrastructure & Research',
     ],
-    zhSummary: `议员质询政府如何在推动数字基础设施和技术创新（如6G、Web 4.0）的同时，保障弱势群体数字包容，防止数字鸿沟扩大。关注数字监管的及时性与适度性，尤其是加密货币和元宇宙等新兴领域的风险与机遇。政府需在经济活力与社会凝聚力之间寻求平衡，确保全民赋能与安全防护。`,
-    summaryShortEn: `MPs asked how the government balances investment in digital infrastructure and tech innovation (6G, Web 4.0) with digital inclusion of vulnerable groups to prevent a widening digital divide. They focused on the timeliness and proportionality of digital regulation, especially in emerging areas like crypto and the metaverse. The government must balance economic vitality with social cohesion, making sure the whole population stays included and safe.`,
+    summary: `议员质询政府如何在推动数字基础设施和技术创新（如6G、Web 4.0）的同时，保障弱势群体数字包容，防止数字鸿沟扩大。关注数字监管的及时性与适度性，尤其是加密货币和元宇宙等新兴领域的风险与机遇。政府需在经济活力与社会凝聚力之间寻求平衡，确保全民赋能与安全防护。`,
+    summaryEn: `MPs asked how the government balances investment in digital infrastructure and tech innovation (6G, Web 4.0) with digital inclusion of vulnerable groups to prevent a widening digital divide. They focused on the timeliness and proportionality of digital regulation, especially in emerging areas like crypto and the metaverse. The government must balance economic vitality with social cohesion, making sure the whole population stays included and safe.`,
     keyPoints: ['数字基础设施领先布局', '数字包容防止边缘化', '数字监管需及时适度'],
     keyPointsEn: [
       'Lead the way on digital infrastructure',
@@ -5869,7 +5869,7 @@ The Senior Minister of State for Communications and Information (Dr Janil Puthuc
     policySignalEn: 'Strengthen digital inclusion and regulatory innovation.',
     notableQuote: 'Singapore has to continually invest in next bound infrastructure and our people.',
     notableQuoteEn: 'Singapore has to continually invest in next bound infrastructure and our people.',
-    summary: `The Chairman
+    transcriptEn: `The Chairman
 : Head Q, Ministry of Communications and Information. Ms Tin Pei Ling.
 Balancing Competing Considerations
 Ms Tin Pei Ling (MacPherson)
@@ -5880,8 +5880,8 @@ On the one hand, for survival and to keep relevant, Singapore has to continually
   },
   {
     id: 'budget-1851',
-    title: `Committee of Supply – Head J (Ministry of Defence)`,
-    zhTitle: `国防部医疗分类系统优化`,
+    titleEn: `Committee of Supply – Head J (Ministry of Defence)`,
+    title: `国防部医疗分类系统优化`,
     date: '2022-03-03',
     parliament: '14',
     type: 'Budget',
@@ -5921,8 +5921,8 @@ On the one hand, for survival and to keep relevant, Singapore has to continually
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI & Employment', 'AI in Healthcare', 'AI & National Security', 'AI in Public Sector'],
-    zhSummary: `议员质询国防部关于更新医疗分类系统的进展，关注如何实现更全面的服役能力评估及岗位匹配。政府回应该系统旨在提升人力资源运用效率，结合服役者技能与职业背景。核心争议在于如何确保评估的全面性及实际部署中技能的合理匹配。`,
-    summaryShortEn: `MPs asked MINDEF about progress on updating the medical classification system, focusing on how to make operational-fitness assessment and job matching more thorough. The government replied that the system aims to lift HR efficiency by combining servicemen's skills with their professional background. The core debate: how to make assessment thorough and ensure skills are properly matched in deployment.`,
+    summary: `议员质询国防部关于更新医疗分类系统的进展，关注如何实现更全面的服役能力评估及岗位匹配。政府回应该系统旨在提升人力资源运用效率，结合服役者技能与职业背景。核心争议在于如何确保评估的全面性及实际部署中技能的合理匹配。`,
+    summaryEn: `MPs asked MINDEF about progress on updating the medical classification system, focusing on how to make operational-fitness assessment and job matching more thorough. The government replied that the system aims to lift HR efficiency by combining servicemen's skills with their professional background. The core debate: how to make assessment thorough and ensure skills are properly matched in deployment.`,
     keyPoints: ['医疗分类系统更新', '服役能力全面评估', '技能与岗位匹配'],
     keyPointsEn: [
       'Medical classification system update',
@@ -5940,7 +5940,7 @@ On the one hand, for survival and to keep relevant, Singapore has to continually
       'The review will focus on the operational effectiveness of each individual instead of a binary classification.',
     notableQuoteEn:
       'The review will focus on the operational effectiveness of each individual instead of a binary classification.',
-    summary: `[(proc text) Head J (cont) – (proc text)]
+    transcriptEn: `[(proc text) Head J (cont) – (proc text)]
 [(proc text) Resumption of Debate on Question [2 March 2022], (proc text)]
 [(proc text) "That the total sum to be allocated for Head J of the Estimates be reduced by $100." – [Mr Vikram Nair]. (proc text)]
 [(proc text) Question again proposed. (proc text)]
@@ -5953,8 +5953,8 @@ Mr Mohd Fahmi Bin Aliman (Marine Parade)
   },
   {
     id: 'budget-1846',
-    title: `Committee of Supply – Head J (Ministry of Defence)`,
-    zhTitle: `国防预算与安全挑战`,
+    titleEn: `Committee of Supply – Head J (Ministry of Defence)`,
+    title: `国防预算与安全挑战`,
     date: '2022-03-02',
     parliament: '14',
     type: 'Budget',
@@ -5994,8 +5994,8 @@ Mr Mohd Fahmi Bin Aliman (Marine Parade)
       'AI Infrastructure & Research',
       'Deepfakes & Disinformation',
     ],
-    zhSummary: `议员质询国防预算，强调俄乌战争暴露小国自卫重要性及信息战威胁。辩论聚焦地缘政治紧张、技术竞争及网络信息战的安全影响。政府回应强调加强自卫能力与技术防御，核心争议在于如何平衡预算与应对新兴安全威胁。`,
-    summaryShortEn: `MPs raised the defence budget, stressing that the Russia-Ukraine war underlines the importance of small-state self-defence and the threat of information warfare. The debate focused on geopolitical tension, tech competition, and the security impact of cyber and information warfare. The government emphasised strengthening self-defence and tech defence capabilities. The core debate: balancing the budget with response to emerging security threats.`,
+    summary: `议员质询国防预算，强调俄乌战争暴露小国自卫重要性及信息战威胁。辩论聚焦地缘政治紧张、技术竞争及网络信息战的安全影响。政府回应强调加强自卫能力与技术防御，核心争议在于如何平衡预算与应对新兴安全威胁。`,
+    summaryEn: `MPs raised the defence budget, stressing that the Russia-Ukraine war underlines the importance of small-state self-defence and the threat of information warfare. The debate focused on geopolitical tension, tech competition, and the security impact of cyber and information warfare. The government emphasised strengthening self-defence and tech defence capabilities. The core debate: balancing the budget with response to emerging security threats.`,
     keyPoints: ['小国自卫重要性', '信息战与假旗行动', '美中技术竞争加剧'],
     keyPointsEn: [
       'Importance of small-state self-defence',
@@ -6011,7 +6011,7 @@ Mr Mohd Fahmi Bin Aliman (Marine Parade)
     policySignalEn: 'Strengthen defence technology and information security.',
     notableQuote: 'We cannot assume other countries will come to our assistance when we are at war.',
     notableQuoteEn: 'We cannot assume other countries will come to our assistance when we are at war.',
-    summary: `The Chairman
+    transcriptEn: `The Chairman
 : Head J, Ministry of Defence. Mr Vikram Nair.
 Security Trends and SAF's Priorities
 Mr Vikram Nair (Sembawang)
@@ -6021,8 +6021,8 @@ We live in a dangerous world. In the past week, we have witnessed Russia's invas
   },
   {
     id: 'written-answer-9674',
-    title: `Ensuring Formidable and Mission-ready Singapore Armed Forces Using Technological Advancement`,
-    zhTitle: `科技助力国防应对少子化`,
+    titleEn: `Ensuring Formidable and Mission-ready Singapore Armed Forces Using Technological Advancement`,
+    title: `科技助力国防应对少子化`,
     date: '2022-01-11',
     parliament: '14',
     type: 'Written Answers to Questions',
@@ -6034,8 +6034,8 @@ We live in a dangerous world. In the past week, we have witnessed Russia's invas
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI & National Security', 'AI Strategy'],
-    zhSummary: `议员质询新加坡低生育率对武装部队兵力的影响，国防部长回应指出，国防部早已将人力需求纳入战略规划，通过技术提升兵力效能，如自动化雷达、无人舰艇及AI应用，持续优化人力资源，确保国防力量不因兵源减少而削弱。`,
-    summaryShortEn: `An MP asked how Singapore's low fertility rate affects SAF strength. The Defence Minister replied that MINDEF has long built manpower needs into strategic planning and uses technology to lift force effectiveness — automated radar, unmanned vessels, AI applications — continuously optimising HR so that defence capability is not weakened by smaller cohorts.`,
+    summary: `议员质询新加坡低生育率对武装部队兵力的影响，国防部长回应指出，国防部早已将人力需求纳入战略规划，通过技术提升兵力效能，如自动化雷达、无人舰艇及AI应用，持续优化人力资源，确保国防力量不因兵源减少而削弱。`,
+    summaryEn: `An MP asked how Singapore's low fertility rate affects SAF strength. The Defence Minister replied that MINDEF has long built manpower needs into strategic planning and uses technology to lift force effectiveness — automated radar, unmanned vessels, AI applications — continuously optimising HR so that defence capability is not weakened by smaller cohorts.`,
     keyPoints: ['低生育率影响兵力', '技术提升人力效率', '持续优化作业流程'],
     keyPointsEn: [
       'Low fertility affects troop strength',
@@ -6053,7 +6053,7 @@ We live in a dangerous world. In the past week, we have witnessed Russia's invas
       'The SAF will have to incorporate advancements in robotics, data analytics and artificial intelligence (AI) to further improve its work processes and raise productivity.',
     notableQuoteEn:
       'The SAF will have to incorporate advancements in robotics, data analytics and artificial intelligence (AI) to further improve its work processes and raise productivity.',
-    summary: `2
+    transcriptEn: `2
 Mr Christopher de Souza
 asked the Minister for Defence in light of the falling total fertility rate in Singapore to 1.1 in 2020, how will the Singapore Armed Forces use technological advancement to ensure its forces continue to be formidable and mission-ready.
 Dr Ng Eng Hen
@@ -6062,8 +6062,8 @@ Dr Ng Eng Hen
   },
   {
     id: 'written-answer-9318',
-    title: `Initiatives to Develop Artificial Intelligence Ecosystem and Its Deployment in Singapore`,
-    zhTitle: `新加坡人工智能生态建设举措`,
+    titleEn: `Initiatives to Develop Artificial Intelligence Ecosystem and Its Deployment in Singapore`,
+    title: `新加坡人工智能生态建设举措`,
     date: '2021-11-02',
     parliament: '14',
     type: 'Written Answers to Questions',
@@ -6075,8 +6075,8 @@ Dr Ng Eng Hen
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI Safety & Ethics', 'AI Economy & Industry', 'AI in Education', 'AI in Healthcare'],
-    zhSummary: `议员质询新加坡通讯与资讯部关于发展人工智能生态系统及其应用的举措。政府回应介绍了国家人工智能战略及五大国家AI项目，强调通过产学研合作、资金投入及人才培养推动AI创新与应用，同时注重AI治理与国际合作。核心争议点在于如何平衡技术发展与伦理监管，确保AI安全可信。`,
-    summaryShortEn: `An MP asked MCI about its initiatives to grow the AI scene and its deployment in Singapore. The government cited the National AI Strategy and the five National AI Projects, stressing industry-academia-research collaboration, funding, and talent development to drive AI innovation and adoption while prioritising governance and international cooperation. The core debate: balancing tech development with ethics oversight to keep AI safe and trustworthy.`,
+    summary: `议员质询新加坡通讯与资讯部关于发展人工智能生态系统及其应用的举措。政府回应介绍了国家人工智能战略及五大国家AI项目，强调通过产学研合作、资金投入及人才培养推动AI创新与应用，同时注重AI治理与国际合作。核心争议点在于如何平衡技术发展与伦理监管，确保AI安全可信。`,
+    summaryEn: `An MP asked MCI about its initiatives to grow the AI scene and its deployment in Singapore. The government cited the National AI Strategy and the five National AI Projects, stressing industry-academia-research collaboration, funding, and talent development to drive AI innovation and adoption while prioritising governance and international cooperation. The core debate: balancing tech development with ethics oversight to keep AI safe and trustworthy.`,
     keyPoints: ['国家人工智能战略', '五大国家AI项目', 'AI治理与国际合作'],
     keyPointsEn: ['National AI Strategy', 'Five National AI Projects', 'AI governance and international cooperation'],
     governmentStance: '推动AI创新应用与安全监管并重',
@@ -6090,7 +6090,7 @@ Dr Ng Eng Hen
       'The National Artificial Intelligence (AI) Strategy outlines our plans for Singapore to be a leader in developing and deploying scalable, impactful AI solutions.',
     notableQuoteEn:
       'The National Artificial Intelligence (AI) Strategy outlines our plans for Singapore to be a leader in developing and deploying scalable, impactful AI solutions.',
-    summary: `36
+    transcriptEn: `36
 Mr Shawn Huang Wei Zhong
 asked the Minister for Communications and Information what are the initiatives undertaken by the Ministry to develop the artificial intelligence ecosystem and its deployment in Singapore.
 Mrs Josephine Teo
@@ -6100,8 +6100,8 @@ Under the Strategy, five National AI Projects in logistics, smart estates, educa
   },
   {
     id: 'written-answer-8049',
-    title: `Update on Progress of Adaptive Learning Initiative in Schools`,
-    zhTitle: `学校自适应学习计划进展`,
+    titleEn: `Update on Progress of Adaptive Learning Initiative in Schools`,
+    title: `学校自适应学习计划进展`,
     date: '2021-07-05',
     parliament: '14',
     type: 'Written Answers to Questions',
@@ -6113,8 +6113,8 @@ Under the Strategy, five National AI Projects in logistics, smart estates, educa
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI in Education', 'AI Infrastructure & Research', 'AI Strategy'],
-    zhSummary: `质询聚焦于学校自适应学习计划的最新进展、试点安排及基础设施建设。教育部长回应称该计划是国家AI战略的一部分，强调教师核心作用，计划2022年先在部分学校试点数学科目，后续将推广至更多科目和年级。系统将整合入新加坡学生学习空间，确保便捷访问和资源融合。核心争议点在于如何平衡技术与教师角色，以及试点成效如何影响推广。`,
-    summaryShortEn: `Questions focused on progress of the adaptive learning initiative in schools, pilot arrangements, and infrastructure development. The Education Minister replied that the initiative is part of the National AI Strategy, emphasised teachers' central role, and said the 2022 pilot will start with mathematics in selected schools and later expand to more subjects and grades. The system will be integrated into Singapore Student Learning Space for easy access and resource integration. The core debate: balancing technology with teachers' role, and how pilot effectiveness shapes scale-up.`,
+    summary: `质询聚焦于学校自适应学习计划的最新进展、试点安排及基础设施建设。教育部长回应称该计划是国家AI战略的一部分，强调教师核心作用，计划2022年先在部分学校试点数学科目，后续将推广至更多科目和年级。系统将整合入新加坡学生学习空间，确保便捷访问和资源融合。核心争议点在于如何平衡技术与教师角色，以及试点成效如何影响推广。`,
+    summaryEn: `Questions focused on progress of the adaptive learning initiative in schools, pilot arrangements, and infrastructure development. The Education Minister replied that the initiative is part of the National AI Strategy, emphasised teachers' central role, and said the 2022 pilot will start with mathematics in selected schools and later expand to more subjects and grades. The system will be integrated into Singapore Student Learning Space for easy access and resource integration. The core debate: balancing technology with teachers' role, and how pilot effectiveness shapes scale-up.`,
     keyPoints: ['AI支持个性化学习', '2022年数学试点启动', '整合国家在线平台'],
     keyPointsEn: [
       'AI supports personalised learning',
@@ -6132,7 +6132,7 @@ Under the Strategy, five National AI Projects in logistics, smart estates, educa
       'The system will use machine learning to tell how each student responds to learning materials and activities, and customise learning for each student.',
     notableQuoteEn:
       'The system will use machine learning to tell how each student responds to learning materials and activities, and customise learning for each student.',
-    summary: `39
+    transcriptEn: `39
 Mr Shawn Huang Wei Zhong
 asked the Minister for Education (a) whether he will provide an update on the progress of the adaptive learning initiative in schools; (b) whether there are pilot programmes planned in schools which will facilitate the adaptive learning initiative; and (c) what infrastructure developments are necessary to be undertaken in schools that will facilitate adaptive learning.
 Mr Chan Chun Sing
@@ -6141,8 +6141,8 @@ Mr Chan Chun Sing
   },
   {
     id: 'budget-1605',
-    title: `Committee of Supply – Head Q (Ministry of Communications and Information)`,
-    zhTitle: `新加坡数字人才与性别多样性`,
+    titleEn: `Committee of Supply – Head Q (Ministry of Communications and Information)`,
+    title: `新加坡数字人才与性别多样性`,
     date: '2021-03-02',
     parliament: '14',
     type: 'Budget',
@@ -6204,8 +6204,8 @@ Mr Chan Chun Sing
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI Economy & Industry', 'AI & Employment', 'AI Infrastructure & Research', 'AI in Public Sector'],
-    zhSummary: `议员质询政府如何培养数字领导人才及推动女性进入科技领域，建议设立导师计划并关注性别比例失衡。政府已推出多项人才培养计划，但具体针对数字领导和女性参与的措施尚未明确。核心争议在于如何有效吸引和留住高端科技人才及缩小性别差距。`,
-    summaryShortEn: `MPs asked how the government will develop digital leadership talent and push women into tech, proposing a mentorship programme and raising concerns about gender imbalance. The government has launched multiple talent programmes but specific measures for digital leadership and female participation are not yet clear. The core debate: how to effectively attract and retain top tech talent and close the gender gap.`,
+    summary: `议员质询政府如何培养数字领导人才及推动女性进入科技领域，建议设立导师计划并关注性别比例失衡。政府已推出多项人才培养计划，但具体针对数字领导和女性参与的措施尚未明确。核心争议在于如何有效吸引和留住高端科技人才及缩小性别差距。`,
+    summaryEn: `MPs asked how the government will develop digital leadership talent and push women into tech, proposing a mentorship programme and raising concerns about gender imbalance. The government has launched multiple talent programmes but specific measures for digital leadership and female participation are not yet clear. The core debate: how to effectively attract and retain top tech talent and close the gender gap.`,
     keyPoints: ['数字人才培养', '导师计划建议', '女性科技参与'],
     keyPointsEn: ['Digital talent development', 'Mentorship programme proposed', 'Women in tech participation'],
     governmentStance: '已推多项人才计划，关注技能提升',
@@ -6217,7 +6217,7 @@ Mr Chan Chun Sing
     policySignalEn: 'Strengthen digital talent development and gender diversity.',
     notableQuote: 'We need data to innovate and we need people to get things done.',
     notableQuoteEn: 'We need data to innovate and we need people to get things done.',
-    summary: `The Chairman
+    transcriptEn: `The Chairman
 : Head Q, Ministry of Communications and Information. Ms Tin Pei Ling.
 Industry Capabilities and Leaders
 Ms Tin Pei Ling (MacPherson)
@@ -6228,8 +6228,8 @@ In my Budget debate speech in February 2020, I talked about the need for a high 
   },
   {
     id: 'oral-answer-2352',
-    title: `Legal Provisions and Safeguards in Using TraceTogether Data`,
-    zhTitle: `TraceTogether数据使用法律保障`,
+    titleEn: `Legal Provisions and Safeguards in Using TraceTogether Data`,
+    title: `TraceTogether数据使用法律保障`,
     date: '2021-01-04',
     parliament: '14',
     type: 'Oral Answers to Questions',
@@ -6241,8 +6241,8 @@ In my Budget debate speech in February 2020, I talked about the need for a high 
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI Governance & Regulation', 'AI & National Security', 'AI in Public Sector', 'AI Strategy'],
-    zhSummary: `议员质询TraceTogether数据是否会用于刑事调查及相关法律保障。政府回应称警方可依刑事程序法获取数据，且设有严格访问权限和处罚措施保护数据安全。争议焦点在于数据是否仅限于防疫用途，及使用于刑事调查是否影响公众信任和应用率。`,
-    summaryShortEn: `MPs asked whether TraceTogether data would be used in criminal investigations and what legal safeguards apply. The government replied that the police can obtain such data under the Criminal Procedure Code, with strict access controls and penalties to protect data security. The debate centred on whether the data should be restricted to pandemic use, and whether use in criminal investigations would erode public trust and uptake.`,
+    summary: `议员质询TraceTogether数据是否会用于刑事调查及相关法律保障。政府回应称警方可依刑事程序法获取数据，且设有严格访问权限和处罚措施保护数据安全。争议焦点在于数据是否仅限于防疫用途，及使用于刑事调查是否影响公众信任和应用率。`,
+    summaryEn: `MPs asked whether TraceTogether data would be used in criminal investigations and what legal safeguards apply. The government replied that the police can obtain such data under the Criminal Procedure Code, with strict access controls and penalties to protect data security. The debate centred on whether the data should be restricted to pandemic use, and whether use in criminal investigations would erode public trust and uptake.`,
     keyPoints: ['警方可依法获取数据', '数据访问权限严格', '担忧影响公众信任'],
     keyPointsEn: [
       'Police can lawfully obtain the data',
@@ -6260,7 +6260,7 @@ In my Budget debate speech in February 2020, I talked about the need for a high 
       'The Government is the custodian of the TT data submitted by individuals, and stringent measures are in place to safeguard this personal data.',
     notableQuoteEn:
       'The Government is the custodian of the TT data submitted by individuals, and stringent measures are in place to safeguard this personal data.',
-    summary: `15
+    transcriptEn: `15
 Mr Christopher de Souza
 asked the Minister for Home Affairs whether TraceTogether data will be used for criminal investigations and, if so, what are the legal provisions and safeguards in using such data.
 The Minister of State for Home Affairs (Mr Desmond Tan) (for the Minister for Home Affairs)
@@ -6270,8 +6270,8 @@ The Government is the custodian of the TT data submitted by individuals, and str
   },
   {
     id: 'written-answer-6772',
-    title: `Use of CPF Contribution History in 2020 as Alternative Criteria to Determine Eligibility for GST Vouchers`,
-    zhTitle: `以2020年CPF记录评估GST券资格`,
+    titleEn: `Use of CPF Contribution History in 2020 as Alternative Criteria to Determine Eligibility for GST Vouchers`,
+    title: `以2020年CPF记录评估GST券资格`,
     date: '2020-11-04',
     parliament: '14',
     type: 'Written Answers to Questions',
@@ -6283,8 +6283,8 @@ The Government is the custodian of the TT data submitted by individuals, and str
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI Economy & Industry', 'AI & Employment', 'AI in Public Sector'],
-    zhSummary: `议员质询是否可用2020年CPF缴纳记录替代2018年收入等标准，尤其关注自雇人士低收入情况。政府回应称，GST券资格以综合评估收入为准，CPF记录仅反映部分收入，且已有灵活申诉机制和疫情专项补助，确保援助精准。核心争议点在于是否应调整资格标准以反映疫情影响。`,
-    summaryShortEn: `An MP asked whether 2020 CPF contribution records could replace 2018 income and other criteria for GST Voucher eligibility, especially for low-income self-employed people. The government replied that GST Voucher eligibility uses a comprehensive Assessable Income (AI) measure; CPF records only reflect part of income. Flexible appeal mechanisms and pandemic-specific support are in place to keep assistance targeted. The core debate: whether eligibility criteria should be adjusted to reflect the pandemic's impact. (Note: "AI" here refers to Assessable Income, not artificial intelligence.)`,
+    summary: `议员质询是否可用2020年CPF缴纳记录替代2018年收入等标准，尤其关注自雇人士低收入情况。政府回应称，GST券资格以综合评估收入为准，CPF记录仅反映部分收入，且已有灵活申诉机制和疫情专项补助，确保援助精准。核心争议点在于是否应调整资格标准以反映疫情影响。`,
+    summaryEn: `An MP asked whether 2020 CPF contribution records could replace 2018 income and other criteria for GST Voucher eligibility, especially for low-income self-employed people. The government replied that GST Voucher eligibility uses a comprehensive Assessable Income (AI) measure; CPF records only reflect part of income. Flexible appeal mechanisms and pandemic-specific support are in place to keep assistance targeted. The core debate: whether eligibility criteria should be adjusted to reflect the pandemic's impact. (Note: "AI" here refers to Assessable Income, not artificial intelligence.)`,
     keyPoints: ['GST券支持中低收入户', '资格以综合收入评估', 'CPF记录覆盖有限收入'],
     keyPointsEn: [
       'GST Voucher supports lower- and middle-income households',
@@ -6302,15 +6302,15 @@ The Government is the custodian of the TT data submitted by individuals, and str
       "AI is more comprehensive, and is a better reflection of an individual's means and income, regardless of source.",
     notableQuoteEn:
       "AI is more comprehensive, and is a better reflection of an individual's means and income, regardless of source.",
-    summary: `1
+    transcriptEn: `1
 Mr Leon Perera
 asked the Deputy Prime Minister and Minister for Finance in light of the effect of the COVID-19 pandemic on incomes in 2020, whether the Government will consider (i) using Singaporean citizens' CPF contribution history in 2020 as an alternative criteria to the current criteria of income earned in 2018, annual value of home, and HDB flat type to determine their eligibility for GST Vouchers and (ii) allowing self-employed persons who are not mandatorily subject to the CPF contribution scheme and who are receiving no or low income in 2020 to receive GST vouchers through reporting`,
     sourceUrl: 'https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=written-answer-6772',
   },
   {
     id: 'oral-answer-2283',
-    title: `Training for Public Service Staff in Procurement and Measures to Tackle Recurrent IT Lapses Highlighted in Auditor-General's Reports`,
-    zhTitle: `公共采购培训与IT漏洞应对`,
+    titleEn: `Training for Public Service Staff in Procurement and Measures to Tackle Recurrent IT Lapses Highlighted in Auditor-General's Reports`,
+    title: `公共采购培训与IT漏洞应对`,
     date: '2020-10-05',
     parliament: '14',
     type: 'Oral Answers to Questions',
@@ -6322,8 +6322,8 @@ asked the Deputy Prime Minister and Minister for Finance in light of the effect 
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI Governance & Regulation', 'AI in Public Sector'],
-    zhSummary: `议员质询政府公务员在采购流程培训及IT控制漏洞问题，关注是否有定期培训及系统性问题。政府回应承认审计报告指出的IT控制薄弱环节，说明政府IT系统复杂且分散，依赖人工调整权限易出错，正由智慧国与数字政府组推动自动化改进，逐步部署新工具以减少错误。`,
-    summaryShortEn: `MPs asked about civil-service training in procurement processes and IT control gaps, focusing on whether refresher training and systemic issues exist. The government acknowledged the AGO's findings on IT control weaknesses, explaining that the government IT estate is complex and decentralised, manual privilege adjustments are error-prone, and the Smart Nation and Digital Government Group is driving automation, gradually deploying new tools to reduce errors.`,
+    summary: `议员质询政府公务员在采购流程培训及IT控制漏洞问题，关注是否有定期培训及系统性问题。政府回应承认审计报告指出的IT控制薄弱环节，说明政府IT系统复杂且分散，依赖人工调整权限易出错，正由智慧国与数字政府组推动自动化改进，逐步部署新工具以减少错误。`,
+    summaryEn: `MPs asked about civil-service training in procurement processes and IT control gaps, focusing on whether refresher training and systemic issues exist. The government acknowledged the AGO's findings on IT control weaknesses, explaining that the government IT estate is complex and decentralised, manual privilege adjustments are error-prone, and the Smart Nation and Digital Government Group is driving automation, gradually deploying new tools to reduce errors.`,
     keyPoints: ['公务员采购培训问题', 'IT权限管理漏洞', '推动自动化改进'],
     keyPointsEn: ['Procurement training for officers', 'IT privilege management gaps', 'Drive automation improvements'],
     governmentStance: '重视审计意见，推动系统自动化',
@@ -6335,7 +6335,7 @@ asked the Deputy Prime Minister and Minister for Finance in light of the effect 
     policySignalEn: 'Push automation of government IT systems.',
     notableQuote: 'Actions have been taken at the whole-of-Government level to address the gaps identified.',
     notableQuoteEn: 'Actions have been taken at the whole-of-Government level to address the gaps identified.',
-    summary: `25
+    transcriptEn: `25
 Mr Alex Yam
 asked the Deputy Prime Minister and Minister for Finance in view of the weak links highlighted annually in the Auditor-General's Reports (a) how does the Civil Service ensure that officers are adequately trained and supervised to meet the Government's procurement processes; and (b) whether officers handling tenders have to attend regular refresher courses to stay abreast with new regulations and processes.
 26
@@ -6345,8 +6345,8 @@ asked the Deputy Prime Minister and Minister for Finance in view of the recurrin
   },
   {
     id: 'written-answer-5800',
-    title: `Consideration to Formulate Regulations Binding on Artificial Intelligence Systems Deployed Locally`,
-    zhTitle: `本地AI系统监管考量`,
+    titleEn: `Consideration to Formulate Regulations Binding on Artificial Intelligence Systems Deployed Locally`,
+    title: `本地AI系统监管考量`,
     date: '2020-03-04',
     parliament: '13',
     type: 'Written Answers to Questions',
@@ -6358,8 +6358,8 @@ asked the Deputy Prime Minister and Minister for Finance in view of the recurrin
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI Governance & Regulation', 'AI Safety & Ethics', 'AI Economy & Industry', 'AI & National Security'],
-    zhSummary: `议员质询政府是否考虑制定对本地部署AI系统具有约束力的法规，以确保AI的伦理和安全使用。政府回应称AI技术尚处于初期阶段，暂无立即立法计划，但已推出多项举措促进安全和伦理使用，包括模型治理框架、伦理咨询委员会及相关研究项目，并强调将持续关注全球动态，平衡监管与创新。`,
-    summaryShortEn: `An MP asked whether the government is considering binding regulations on locally deployed AI systems to ensure ethical and safe use. The government replied that AI is still nascent and there are no immediate legislative plans, but multiple initiatives are in place to promote safe and ethical use — the Model AI Governance Framework, the ethics advisory council, and related research — and it will keep tracking global developments to balance regulation with innovation.`,
+    summary: `议员质询政府是否考虑制定对本地部署AI系统具有约束力的法规，以确保AI的伦理和安全使用。政府回应称AI技术尚处于初期阶段，暂无立即立法计划，但已推出多项举措促进安全和伦理使用，包括模型治理框架、伦理咨询委员会及相关研究项目，并强调将持续关注全球动态，平衡监管与创新。`,
+    summaryEn: `An MP asked whether the government is considering binding regulations on locally deployed AI systems to ensure ethical and safe use. The government replied that AI is still nascent and there are no immediate legislative plans, but multiple initiatives are in place to promote safe and ethical use — the Model AI Governance Framework, the ethics advisory council, and related research — and it will keep tracking global developments to balance regulation with innovation.`,
     keyPoints: ['暂无立即立法计划', '推行模型治理框架', '持续监测全球动态'],
     keyPointsEn: [
       'No immediate legislative plans',
@@ -6377,7 +6377,7 @@ asked the Deputy Prime Minister and Minister for Finance in view of the recurrin
       'As AI technology is still nascent, MCI does not have immediate plans to introduce new laws to regulate AI.',
     notableQuoteEn:
       'As AI technology is still nascent, MCI does not have immediate plans to introduce new laws to regulate AI.',
-    summary: `4
+    transcriptEn: `4
 Mr Leon Perera
 asked the Minister for Communications and Information whether the Government is considering formulating regulations binding on artificial intelligence (AI) systems deployed locally so as to ensure the ethical and safe use of AI.
 Mr S Iswaran
@@ -6388,8 +6388,8 @@ However, MCI has launched several initiatives to ensure the safe and ethical use
   },
   {
     id: 'budget-1313',
-    title: `Committee of Supply – Head Q (Ministry of Communications and Information)`,
-    zhTitle: `数字化与AI治理议题质询`,
+    titleEn: `Committee of Supply – Head Q (Ministry of Communications and Information)`,
+    title: `数字化与AI治理议题质询`,
     date: '2020-03-03',
     parliament: '13',
     type: 'Budget',
@@ -6445,8 +6445,8 @@ However, MCI has launched several initiatives to ensure the safe and ethical use
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI Governance & Regulation', 'AI Economy & Industry', 'AI & Employment', 'AI in Education'],
-    zhSummary: `议员质询数字化转型中的数据共享、隐私保护、设计思维创新及AI伦理框架等问题，关注新加坡在数据量不足和中小企业数字化能力上的挑战。政府回应涉及数字贸易协定、数据隐私原则及推动创新的措施，强调制定AI伦理框架。核心争议点在于如何平衡数据共享与隐私保护，以及提升本地企业数字化能力。`,
-    summaryShortEn: `MPs raised data-sharing, privacy protection, design-thinking innovation, and AI ethics frameworks in the digital transformation, focusing on Singapore's challenges with limited data scale and SME digitalisation capability. The government addressed digital trade agreements, data privacy principles, and innovation-driving measures, emphasising the development of an AI ethics framework. The core debate: balancing data sharing with privacy protection and lifting local-firm digital capability.`,
+    summary: `议员质询数字化转型中的数据共享、隐私保护、设计思维创新及AI伦理框架等问题，关注新加坡在数据量不足和中小企业数字化能力上的挑战。政府回应涉及数字贸易协定、数据隐私原则及推动创新的措施，强调制定AI伦理框架。核心争议点在于如何平衡数据共享与隐私保护，以及提升本地企业数字化能力。`,
+    summaryEn: `MPs raised data-sharing, privacy protection, design-thinking innovation, and AI ethics frameworks in the digital transformation, focusing on Singapore's challenges with limited data scale and SME digitalisation capability. The government addressed digital trade agreements, data privacy principles, and innovation-driving measures, emphasising the development of an AI ethics framework. The core debate: balancing data sharing with privacy protection and lifting local-firm digital capability.`,
     keyPoints: ['数字化推动经济转型', '数据共享与隐私权衡', 'AI伦理框架建设'],
     keyPointsEn: [
       'Digitalisation drives economic transformation',
@@ -6464,7 +6464,7 @@ However, MCI has launched several initiatives to ensure the safe and ethical use
       'Traditional factors like land, labour, capital, or ageing population are no longer hard constraints in the digital economy.',
     notableQuoteEn:
       'Traditional factors like land, labour, capital, or ageing population are no longer hard constraints in the digital economy.',
-    summary: `Partnering for Digitalisation
+    transcriptEn: `Partnering for Digitalisation
 Mr Cedric Foo Chee Keng (Pioneer)
 : Mr Chairman, I beg to move, "That the total sum to be allocated for Head Q of the Estimates be reduced by $100".
 Digitalisation is transforming how people live, work, play and interact. Business enterprises must embrace it to remain relevant. Our future is being shaped by digitalisation in ways unimaginable and at a pace unprecedented.
@@ -6473,8 +6473,8 @@ As a result of the digital economy, many of our top companies in the world are n
   },
   {
     id: 'budget-1306',
-    title: `Committee of Supply – Head J (Ministry of Defence)`,
-    zhTitle: `国防预算与未来威胁应对`,
+    titleEn: `Committee of Supply – Head J (Ministry of Defence)`,
+    title: `国防预算与未来威胁应对`,
     date: '2020-03-02',
     parliament: '13',
     type: 'Budget',
@@ -6520,8 +6520,8 @@ As a result of the digital economy, many of our top companies in the world are n
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI & National Security', 'Deepfakes & Disinformation', 'AI in Public Sector'],
-    zhSummary: `议员质询国防预算及新兴威胁应对，强调全球大国竞争及区域不稳定带来的安全挑战。政府回应指出新加坡需通过科技创新和装备升级（如F-35战机）应对人力减少和训练空间有限等问题。核心争议在于如何平衡有限资源与不断演变的安全威胁。`,
-    summaryShortEn: `MPs raised the defence budget and response to emerging threats, emphasising security challenges from great-power competition and regional instability. The government replied that Singapore must use tech innovation and equipment upgrades (e.g. the F-35 fighter) to address smaller manpower and limited training space. The core debate: balancing limited resources with evolving security threats.`,
+    summary: `议员质询国防预算及新兴威胁应对，强调全球大国竞争及区域不稳定带来的安全挑战。政府回应指出新加坡需通过科技创新和装备升级（如F-35战机）应对人力减少和训练空间有限等问题。核心争议在于如何平衡有限资源与不断演变的安全威胁。`,
+    summaryEn: `MPs raised the defence budget and response to emerging threats, emphasising security challenges from great-power competition and regional instability. The government replied that Singapore must use tech innovation and equipment upgrades (e.g. the F-35 fighter) to address smaller manpower and limited training space. The core debate: balancing limited resources with evolving security threats.`,
     keyPoints: ['全球大国竞争加剧', '区域政治不稳定', '科技创新应对挑战'],
     keyPointsEn: [
       'Intensifying great-power competition',
@@ -6539,7 +6539,7 @@ As a result of the digital economy, many of our top companies in the world are n
       'The only way forward for SAF is to evolve, to invest in technology so that we can do more with less resources.',
     notableQuoteEn:
       'The only way forward for SAF is to evolve, to invest in technology so that we can do more with less resources.',
-    summary: `The Chairman
+    transcriptEn: `The Chairman
 : Head J, Ministry of Defence, Mr Vikram Nair.
 Next Generation SAF
 Mr Vikram Nair (Sembawang)
@@ -6549,8 +6549,8 @@ The last year has seen global tensions rise on multiple fronts. The rivalry betw
   },
   {
     id: 'budget-1308',
-    title: `Committee of Supply – Head V (Ministry of Trade and Industry)`,
-    zhTitle: `新加坡经济国际化与连接力`,
+    titleEn: `Committee of Supply – Head V (Ministry of Trade and Industry)`,
+    title: `新加坡经济国际化与连接力`,
     date: '2020-03-02',
     parliament: '13',
     type: 'Budget',
@@ -6596,8 +6596,8 @@ The last year has seen global tensions rise on multiple fronts. The rivalry betw
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI Governance & Regulation', 'AI Economy & Industry', 'AI & Employment', 'AI Infrastructure & Research'],
-    zhSummary: `议员质询政府在支持企业国际化方面的措施是否充足，特别是在新兴和边缘市场的布局与能力建设。强调疫情凸显市场多元化的重要性，关注政府如何通过经济机构和商会帮助企业应对复杂的国际环境。核心争议点在于政府支持力度及市场多元化策略的有效性。`,
-    summaryShortEn: `MPs asked whether government support for firms going international is adequate, particularly in emerging and frontier markets. They stressed the pandemic underscores the importance of market diversification and focused on how government economic agencies and business chambers help firms navigate a complex international environment. The core debate: the strength of government support and the effectiveness of market-diversification strategy.`,
+    summary: `议员质询政府在支持企业国际化方面的措施是否充足，特别是在新兴和边缘市场的布局与能力建设。强调疫情凸显市场多元化的重要性，关注政府如何通过经济机构和商会帮助企业应对复杂的国际环境。核心争议点在于政府支持力度及市场多元化策略的有效性。`,
+    summaryEn: `MPs asked whether government support for firms going international is adequate, particularly in emerging and frontier markets. They stressed the pandemic underscores the importance of market diversification and focused on how government economic agencies and business chambers help firms navigate a complex international environment. The core debate: the strength of government support and the effectiveness of market-diversification strategy.`,
     keyPoints: ['提升市场连接力', '支持企业国际化', '拓展新兴市场'],
     keyPointsEn: ['Lift market connectivity', 'Support firms going international', 'Expand into emerging markets'],
     governmentStance: null,
@@ -6611,7 +6611,7 @@ The last year has seen global tensions rise on multiple fronts. The rivalry betw
       'We need to continually expand and upgrade our network of trade partnerships and investment agreements.',
     notableQuoteEn:
       'We need to continually expand and upgrade our network of trade partnerships and investment agreements.',
-    summary: `5.45 pm
+    transcriptEn: `5.45 pm
 Growing Our Economy
 Mr Liang Eng Hwa (Holland-Bukit Timah)
 : Mr Chairman, Sir, I beg to move, "That the total sum to be allocated for Head V of the Estimates be reduced by $100."
@@ -6620,8 +6620,8 @@ As a small and open economy, Singapore can only be a price-taker in the global m
   },
   {
     id: 'oral-answer-2113',
-    title: `Disclosure of Personal Data when Government Addresses Public Complaints`,
-    zhTitle: `政府公开投诉个人资料规范`,
+    titleEn: `Disclosure of Personal Data when Government Addresses Public Complaints`,
+    title: `政府公开投诉个人资料规范`,
     date: '2020-02-03',
     parliament: '13',
     type: 'Oral Answers to Questions',
@@ -6645,8 +6645,8 @@ As a small and open economy, Singapore can only be a price-taker in the global m
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI in Healthcare', 'AI in Public Sector'],
-    zhSummary: `质询政府在公众投诉中披露个人资料的考虑和保障措施，政府回应称为纠正错误信息维护公众信任，披露限于必要范围且保护隐私，同时强调多渠道服务保障公众诉求。核心争议在于如何平衡信息公开与个人隐私保护。`,
-    summaryShortEn: `MPs asked about the government's considerations and safeguards when disclosing personal data while addressing public complaints. The government replied that disclosure is to correct inaccuracies and protect public trust, is limited to what is necessary, and that privacy is preserved; multiple service channels protect grievances. The core debate: how to balance information disclosure with personal privacy.`,
+    summary: `质询政府在公众投诉中披露个人资料的考虑和保障措施，政府回应称为纠正错误信息维护公众信任，披露限于必要范围且保护隐私，同时强调多渠道服务保障公众诉求。核心争议在于如何平衡信息公开与个人隐私保护。`,
+    summaryEn: `MPs asked about the government's considerations and safeguards when disclosing personal data while addressing public complaints. The government replied that disclosure is to correct inaccuracies and protect public trust, is limited to what is necessary, and that privacy is preserved; multiple service channels protect grievances. The core debate: how to balance information disclosure with personal privacy.`,
     keyPoints: ['纠正错误信息', '披露限于必要', '保障公众诉求'],
     keyPointsEn: [
       'Correcting inaccurate information',
@@ -6664,7 +6664,7 @@ As a small and open economy, Singapore can only be a price-taker in the global m
       'Government agencies sometimes need to disclose personal data in the public interest, to counter inaccuracies about the Government’s processes or policies.',
     notableQuoteEn:
       'Government agencies sometimes need to disclose personal data in the public interest, to counter inaccuracies about the Government’s processes or policies.',
-    summary: `11
+    transcriptEn: `11
 Assoc Prof Walter Theseira
 asked the Prime Minister when individuals publicise complaints or petitions to Government agencies which may contain inaccuracies (a) what are the considerations behind whether Government agencies may publicly disclose identifying information and personal details of these individuals; (b) what safeguards exist to ensure that only the minimum personal information is disclosed to establish the facts of the case; and (c) what can be done to ensure that individuals with genuine grievances or unmet needs are not deterred from seeking help publicly
 The Senior Minister o`,
@@ -6672,8 +6672,8 @@ The Senior Minister o`,
   },
   {
     id: 'written-answer-5627',
-    title: `Update on Work of Advisory Council Set Up in 2019 to Promote Ethical Collection and Use of Data Obtained from Persons without Their Knowledge or Consent for Commercial Use`,
-    zhTitle: `伦理数据使用咨询会工作汇报`,
+    titleEn: `Update on Work of Advisory Council Set Up in 2019 to Promote Ethical Collection and Use of Data Obtained from Persons without Their Knowledge or Consent for Commercial Use`,
+    title: `伦理数据使用咨询会工作汇报`,
     date: '2020-02-03',
     parliament: '13',
     type: 'Written Answers to Questions',
@@ -6685,8 +6685,8 @@ The Senior Minister o`,
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI Governance & Regulation', 'AI Safety & Ethics', 'AI Economy & Industry', 'AI in Education'],
-    zhSummary: `质询关于2018年成立的伦理数据使用咨询会的工作进展。政府回应该咨询会推动了新加坡AI治理框架的制定和推广，促进组织负责任使用AI和数据，提升公众信任。核心争议点在于如何确保数据在未获知情同意情况下的商业使用符合伦理标准。`,
-    summaryShortEn: `An MP asked about the progress of the Advisory Council on the Ethical Use of AI and Data, formed in 2018. The government replied that the council has driven the development and rollout of Singapore's AI governance framework, encouraging responsible AI and data use by organisations and lifting public trust. The core debate: how to ensure that commercial use of data without informed consent meets ethical standards.`,
+    summary: `质询关于2018年成立的伦理数据使用咨询会的工作进展。政府回应该咨询会推动了新加坡AI治理框架的制定和推广，促进组织负责任使用AI和数据，提升公众信任。核心争议点在于如何确保数据在未获知情同意情况下的商业使用符合伦理标准。`,
+    summaryEn: `An MP asked about the progress of the Advisory Council on the Ethical Use of AI and Data, formed in 2018. The government replied that the council has driven the development and rollout of Singapore's AI governance framework, encouraging responsible AI and data use by organisations and lifting public trust. The core debate: how to ensure that commercial use of data without informed consent meets ethical standards.`,
     keyPoints: ['咨询会推动AI治理', '制定模型治理框架', '促进公众信任AI'],
     keyPointsEn: ['Council drives AI governance', 'Develops Model Governance Framework', 'Lifts public trust in AI'],
     governmentStance: '支持伦理AI治理，推广模型框架',
@@ -6700,7 +6700,7 @@ The Senior Minister o`,
       'The Advisory Council on the Ethical Use of AI and Data was formed in 2018 to provide guidance to the Government on the responsible development and deployment of AI.',
     notableQuoteEn:
       'The Advisory Council on the Ethical Use of AI and Data was formed in 2018 to provide guidance to the Government on the responsible development and deployment of AI.',
-    summary: `21
+    transcriptEn: `21
 Mr Murali Pillai
 asked the Minister for Communications and Information whether he can provide an update on the work of the advisory council set up in 2018 to promote the ethical collection and use of data obtained from persons without their specific knowledge or consent for commercial use.
 Mr S Iswaran
@@ -6710,8 +6710,8 @@ It has made a good start in helping organisations improve their AI governance pr
   },
   {
     id: 'oral-answer-2047',
-    title: `Hiring, Developing and Strengthening Singaporean Core`,
-    zhTitle: `强化新加坡科技人才核心`,
+    titleEn: `Hiring, Developing and Strengthening Singaporean Core`,
+    title: `强化新加坡科技人才核心`,
     date: '2019-09-02',
     parliament: '13',
     type: 'Oral Answers to Questions',
@@ -6735,8 +6735,8 @@ It has made a good start in helping organisations improve their AI governance pr
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI Economy & Industry', 'AI Infrastructure & Research', 'AI in Public Sector'],
-    zhSummary: `质询方关注在当前经济形势下，Tech@SG计划是否仍需继续以协助科技企业雇佣外籍人才。政府回应强调科技人才短缺的全球竞争，必须加快培养本地科技人才，同时通过培训和教育扩大人才池，确保新加坡在全球科技生态中保持竞争力。核心争议点在于如何平衡引进外籍人才与优先发展本地人才。`,
-    summaryShortEn: `MPs questioned whether the Tech@SG programme — which helps tech firms hire foreign talent — should continue under current economic conditions. The government stressed global competition for scarce tech talent and the need to accelerate local tech talent development while expanding the talent pool through training and education to keep Singapore competitive globally. The core debate: balancing the inflow of foreign talent with prioritising local talent development.`,
+    summary: `质询方关注在当前经济形势下，Tech@SG计划是否仍需继续以协助科技企业雇佣外籍人才。政府回应强调科技人才短缺的全球竞争，必须加快培养本地科技人才，同时通过培训和教育扩大人才池，确保新加坡在全球科技生态中保持竞争力。核心争议点在于如何平衡引进外籍人才与优先发展本地人才。`,
+    summaryEn: `MPs questioned whether the Tech@SG programme — which helps tech firms hire foreign talent — should continue under current economic conditions. The government stressed global competition for scarce tech talent and the need to accelerate local tech talent development while expanding the talent pool through training and education to keep Singapore competitive globally. The core debate: balancing the inflow of foreign talent with prioritising local talent development.`,
     keyPoints: ['科技人才全球短缺', '加速本地人才培养', '科技企业需专业人才'],
     keyPointsEn: [
       'Global tech talent shortage',
@@ -6752,7 +6752,7 @@ It has made a good start in helping organisations improve their AI governance pr
     policySignalEn: 'Prioritise local tech talent development.',
     notableQuote: 'If Singapore sits back and does nothing, we will almost certainly be left behind.',
     notableQuoteEn: 'If Singapore sits back and does nothing, we will almost certainly be left behind.',
-    summary: `13
+    transcriptEn: `13
 Mr Patrick Tay Teck Guan
 asked the Minister for Trade and Industry in light of the current economic conditions and our focus on hiring, developing and strengthening the Singaporean Core, whether there is a need for the Tech@SG programme which facilitates technology firms in the hiring of foreign talent.
 The Minister for Trade and Industry (Mr Chan Chun Sing)
@@ -6761,8 +6761,8 @@ The Minister for Trade and Industry (Mr Chan Chun Sing)
   },
   {
     id: 'written-answer-4736',
-    title: `Public Agencies’ Exemption from Personal Data Protection Act`,
-    zhTitle: `公共机构数据保护免责问题`,
+    titleEn: `Public Agencies’ Exemption from Personal Data Protection Act`,
+    title: `公共机构数据保护免责问题`,
     date: '2019-05-06',
     parliament: '13',
     type: 'Written Answers to Questions',
@@ -6774,8 +6774,8 @@ The Minister for Trade and Industry (Mr Chan Chun Sing)
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI Governance & Regulation', 'AI Safety & Ethics', 'AI & National Security', 'AI in Public Sector'],
-    zhSummary: `议员质询公共机构是否享有《个人数据保护法》豁免权及其数据泄露责任。政府回应指出公共机构受《公共部门治理法》和《指令手册8》等法规约束，设有刑事处罚和内部纪律处分，并通过技术和管理措施防范数据泄露。核心争议在于公共机构数据保护责任的法律基础及执行力度。`,
-    summaryShortEn: `An MP asked whether public agencies are exempt from the PDPA and what their accountability is for data breaches. The government replied that public agencies are bound by the Public Sector (Governance) Act and Instruction Manual 8, with criminal penalties and internal disciplinary action, and that breaches are prevented through technical and management measures. The core debate: the legal basis of public-agency data-protection responsibility and the strength of enforcement.`,
+    summary: `议员质询公共机构是否享有《个人数据保护法》豁免权及其数据泄露责任。政府回应指出公共机构受《公共部门治理法》和《指令手册8》等法规约束，设有刑事处罚和内部纪律处分，并通过技术和管理措施防范数据泄露。核心争议在于公共机构数据保护责任的法律基础及执行力度。`,
+    summaryEn: `An MP asked whether public agencies are exempt from the PDPA and what their accountability is for data breaches. The government replied that public agencies are bound by the Public Sector (Governance) Act and Instruction Manual 8, with criminal penalties and internal disciplinary action, and that breaches are prevented through technical and management measures. The core debate: the legal basis of public-agency data-protection responsibility and the strength of enforcement.`,
     keyPoints: ['公共机构受多法规约束', '刑事及纪律处分并行', '技术管理措施严格'],
     keyPointsEn: [
       'Public agencies bound by multiple regulations',
@@ -6793,7 +6793,7 @@ The Minister for Trade and Industry (Mr Chan Chun Sing)
       'The PSGA criminalises the acts of unauthorised disclosure of data, misuse of data and the re-identification of individuals from anonymised data.',
     notableQuoteEn:
       'The PSGA criminalises the acts of unauthorised disclosure of data, misuse of data and the re-identification of individuals from anonymised data.',
-    summary: `1
+    transcriptEn: `1
 Ms Irene Quay Siew Ching
 asked the Prime Minister with regard to public agencies' exemption from the Personal Data Protection Act (a) whether he can list out the specific clauses in the current laws and instruction manuals that provide for public agencies' accountability on data breaches (not misuse of data) in public IT systems; and (b) whether he can explain how these clauses in the laws collectively impose a high standard of responsibility on all public agencies.
 Mr Teo Chee Hean (for the Prime Minister):
@@ -6802,8 +6802,8 @@ Public agencies and their officers are subject to data protection provisions set
   },
   {
     id: 'oral-answer-1955',
-    title: `Role of Personal Data Protection Commission in Investigating Blood Donors' Data Leak`,
-    zhTitle: `个人数据保护调查职能`,
+    titleEn: `Role of Personal Data Protection Commission in Investigating Blood Donors' Data Leak`,
+    title: `个人数据保护调查职能`,
     date: '2019-04-01',
     parliament: '13',
     type: 'Oral Answers to Questions',
@@ -6831,8 +6831,8 @@ Public agencies and their officers are subject to data protection provisions set
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI Governance & Regulation', 'AI Economy & Industry', 'AI in Healthcare', 'AI & National Security'],
-    zhSummary: `议员质询个人数据保护委员会（PDPC）在血液捐赠者数据泄露事件中的调查职责及公共机构是否应受《个人数据保护法》（PDPA）约束。政府回应PDPC正调查涉事私营IT供应商，公共机构受其他法规监管，数据保护标准不低于PDPA。核心争议在于公共机构是否应免于PDPA监管及其问责机制。`,
-    summaryShortEn: `MPs asked about the PDPC's investigation role in the blood-donor data leak and whether public agencies should be subject to the PDPA. The government replied that PDPC is investigating the private IT vendor involved, and public agencies are governed by other regulations with data-protection standards no lower than the PDPA. The core debate: whether public agencies should be exempt from PDPA oversight and the accountability mechanisms.`,
+    summary: `议员质询个人数据保护委员会（PDPC）在血液捐赠者数据泄露事件中的调查职责及公共机构是否应受《个人数据保护法》（PDPA）约束。政府回应PDPC正调查涉事私营IT供应商，公共机构受其他法规监管，数据保护标准不低于PDPA。核心争议在于公共机构是否应免于PDPA监管及其问责机制。`,
+    summaryEn: `MPs asked about the PDPC's investigation role in the blood-donor data leak and whether public agencies should be subject to the PDPA. The government replied that PDPC is investigating the private IT vendor involved, and public agencies are governed by other regulations with data-protection standards no lower than the PDPA. The core debate: whether public agencies should be exempt from PDPA oversight and the accountability mechanisms.`,
     keyPoints: ['PDPC调查私营供应商', '公共机构受别法规监管', '公共机构数据保护标准高'],
     keyPointsEn: [
       'PDPC investigates private vendor',
@@ -6850,7 +6850,7 @@ Public agencies and their officers are subject to data protection provisions set
       'Public sector agencies have to comply with the Government Instruction Manuals and the Public Sector (Governance) Act.',
     notableQuoteEn:
       'Public sector agencies have to comply with the Government Instruction Manuals and the Public Sector (Governance) Act.',
-    summary: `13
+    transcriptEn: `13
 Ms Sylvia Lim
 asked the Minister for Communications and Information regarding the recent data leak of more than 800,000 blood donors' personal information from the database of HSA (a) what is the role of the Personal Data Protection Commission in investigating this incident; and (b) whether any review is being done to ascertain whether HSA has acted reasonably in protecting the personal data including whether the contractual obligations between HSA and its IT vendor reasonably safeguarded the personal information entrusted to these parties.
 14
@@ -6860,8 +6860,8 @@ asked the Minister for`,
   },
   {
     id: 'budget-1131',
-    title: `Committee of Supply - Head Q (Ministry of Communications and Information)`,
-    zhTitle: `推动企业数字化转型`,
+    titleEn: `Committee of Supply - Head Q (Ministry of Communications and Information)`,
+    title: `推动企业数字化转型`,
     date: '2019-03-04',
     parliament: '13',
     type: 'Budget',
@@ -6917,8 +6917,8 @@ asked the Minister for`,
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI Safety & Ethics', 'AI Economy & Industry', 'AI & Employment', 'AI Infrastructure & Research'],
-    zhSummary: `议员质询新加坡企业，尤其是中小企业在数字化转型中的挑战，关注如何帮助企业克服资金、技术和人才适应等问题。政府强调数字经济对提升生产力和应对人口老龄化的重要性，支持企业创新与能力建设。核心争议点在于中小企业数字化的实际困难及政府支持的有效性。`,
-    summaryShortEn: `MPs raised challenges for Singapore firms — especially SMEs — in digital transformation, focusing on helping them overcome funding, technology, and talent adaptation issues. The government emphasised the importance of the digital economy for lifting productivity and responding to population ageing, supporting firm innovation and capability-building. The core debate: practical SME digitalisation difficulties and the effectiveness of government support.`,
+    summary: `议员质询新加坡企业，尤其是中小企业在数字化转型中的挑战，关注如何帮助企业克服资金、技术和人才适应等问题。政府强调数字经济对提升生产力和应对人口老龄化的重要性，支持企业创新与能力建设。核心争议点在于中小企业数字化的实际困难及政府支持的有效性。`,
+    summaryEn: `MPs raised challenges for Singapore firms — especially SMEs — in digital transformation, focusing on helping them overcome funding, technology, and talent adaptation issues. The government emphasised the importance of the digital economy for lifting productivity and responding to population ageing, supporting firm innovation and capability-building. The core debate: practical SME digitalisation difficulties and the effectiveness of government support.`,
     keyPoints: ['数字经济促进生产力', '中小企业数字化难题', '人口老龄化带来压力'],
     keyPointsEn: [
       'Digital economy lifts productivity',
@@ -6934,7 +6934,7 @@ asked the Minister for`,
     policySignalEn: 'Push SME digital upgrading.',
     notableQuote: 'Digitalisation is transforming companies, economies and our very way of life.',
     notableQuoteEn: 'Digitalisation is transforming companies, economies and our very way of life.',
-    summary: `The Chairman
+    transcriptEn: `The Chairman
 : Head Q, Ministry of Communications and Information. Mr Cedric Foo.
 Digital Economy
 –
@@ -6946,8 +6946,8 @@ One of the basic building blocks of a strong nation is a vibrant economy. An eco
   },
   {
     id: 'budget-1120',
-    title: `Committee of Supply – Head J (Ministry of Defence)`,
-    zhTitle: `国防预算与区域安全合作`,
+    titleEn: `Committee of Supply – Head J (Ministry of Defence)`,
+    title: `国防预算与区域安全合作`,
     date: '2019-03-01',
     parliament: '13',
     type: 'Budget',
@@ -6975,8 +6975,8 @@ One of the basic building blocks of a strong nation is a vibrant economy. An eco
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI & National Security', 'AI in Public Sector'],
-    zhSummary: `议员质询国防预算及安全部署，政府回应强调新加坡在国际重大活动中加强安保，部署大量军力保障安全，并推动区域反恐合作。核心争议点在于国防开支的合理性及应对新兴安全威胁的能力。`,
-    summaryShortEn: `MPs raised the defence budget and security deployment. The government emphasised Singapore's stepped-up security at major international events, large troop deployments, and regional counter-terrorism cooperation. The core debate: the reasonableness of defence spending and capability to address emerging security threats.`,
+    summary: `议员质询国防预算及安全部署，政府回应强调新加坡在国际重大活动中加强安保，部署大量军力保障安全，并推动区域反恐合作。核心争议点在于国防开支的合理性及应对新兴安全威胁的能力。`,
+    summaryEn: `MPs raised the defence budget and security deployment. The government emphasised Singapore's stepped-up security at major international events, large troop deployments, and regional counter-terrorism cooperation. The core debate: the reasonableness of defence spending and capability to address emerging security threats.`,
     keyPoints: ['国防预算获跨党派支持', '重大国际活动强化安保', '推动区域反恐信息共享'],
     keyPointsEn: [
       'Defence budget has cross-party support',
@@ -6994,7 +6994,7 @@ One of the basic building blocks of a strong nation is a vibrant economy. An eco
       "It is particularly gratifying and reassuring for our future, for Singapore's future, that despite Defence, Security, Home Affairs and Foreign Affairs accounting for one-third of our expenditure, that we have got support across the aisle.",
     notableQuoteEn:
       "It is particularly gratifying and reassuring for our future, for Singapore's future, that despite Defence, Security, Home Affairs and Foreign Affairs accounting for one-third of our expenditure, that we have got support across the aisle.",
-    summary: `Head J (cont)
+    transcriptEn: `Head J (cont)
 –
 [(proc text) Resumption of Debate on Question [28 February 2019], (proc text)]
 [(proc text) "That the total sum to be allocated for Head J of the Estimates to be reduced by $100." − [Mr Vikram Nair]. (proc text)]
@@ -7008,8 +7008,8 @@ I note the speeches that many Members in this House have given during the Budget
   },
   {
     id: 'budget-1114',
-    title: `Committee of Supply - Head J (Ministry of Defence)`,
-    zhTitle: `国防预算与未来威胁应对`,
+    titleEn: `Committee of Supply - Head J (Ministry of Defence)`,
+    title: `国防预算与未来威胁应对`,
     date: '2019-02-28',
     parliament: '13',
     type: 'Budget',
@@ -7069,8 +7069,8 @@ I note the speeches that many Members in this House have given during the Budget
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI & National Security', 'AI in Public Sector'],
-    zhSummary: `议员质询新加坡武装部队面临的地缘政治和安全威胁，包括大国竞争、地区紧张局势及恐怖主义威胁。讨论了兵源减少和训练空间受限的挑战，强调需依赖自动化和先进装备提升防御能力。政府回应聚焦提升科技应用以应对新型威胁，核心争议在于如何平衡传统训练与未来科技投入。`,
-    summaryShortEn: `MPs raised the geopolitical and security threats facing the SAF, including great-power competition, regional tension, and terrorism. They discussed challenges from smaller cohorts and limited training space and stressed reliance on automation and advanced equipment to lift defence capability. The government focused on adopting technology to address new threats. The core debate: balancing traditional training with future tech investment.`,
+    summary: `议员质询新加坡武装部队面临的地缘政治和安全威胁，包括大国竞争、地区紧张局势及恐怖主义威胁。讨论了兵源减少和训练空间受限的挑战，强调需依赖自动化和先进装备提升防御能力。政府回应聚焦提升科技应用以应对新型威胁，核心争议在于如何平衡传统训练与未来科技投入。`,
+    summaryEn: `MPs raised the geopolitical and security threats facing the SAF, including great-power competition, regional tension, and terrorism. They discussed challenges from smaller cohorts and limited training space and stressed reliance on automation and advanced equipment to lift defence capability. The government focused on adopting technology to address new threats. The core debate: balancing traditional training with future tech investment.`,
     keyPoints: ['地缘政治威胁升级', '兵源减少挑战', '依赖自动化装备'],
     keyPointsEn: [
       'Escalating geopolitical threats',
@@ -7086,7 +7086,7 @@ I note the speeches that many Members in this House have given during the Budget
     policySignalEn: 'Push defence automation and smart-defence capability.',
     notableQuote: 'Our only hope appears to be that if we rely more on automation and sophisticated equipment',
     notableQuoteEn: 'Our only hope appears to be that if we rely more on automation and sophisticated equipment',
-    summary: `The Chairman
+    transcriptEn: `The Chairman
 : Head J, Ministry of Defence. Mr Vikram Nair.
 Future SAF
 Mr Vikram Nair (Sembawang)
@@ -7097,8 +7097,8 @@ Yet, the nature of`,
   },
   {
     id: 'budget-1112',
-    title: `Committee of Supply − Head U (Prime Minister's Office)`,
-    zhTitle: `公共服务数字化转型`,
+    titleEn: `Committee of Supply − Head U (Prime Minister's Office)`,
+    title: `公共服务数字化转型`,
     date: '2019-02-28',
     parliament: '13',
     type: 'Budget',
@@ -7179,8 +7179,8 @@ Yet, the nature of`,
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI Economy & Industry', 'AI & Employment', 'AI in Public Sector'],
-    zhSummary: `质询聚焦公共服务如何利用AI和数据分析提升效率，整合服务，满足市民需求。强调技术应以市民为中心，避免机械执法。政府需推动公共部门高科技、高触感和高适应性转型，提升生产力和服务质量。`,
-    summaryShortEn: `Questions focused on how the Public Service can use AI and data analytics to lift efficiency, integrate services, and meet citizen needs. MPs emphasised that technology should be citizen-centred and avoid mechanical enforcement, with the government pushing high-tech, high-touch, and high-adaptability transformation in the public sector to lift productivity and service quality.`,
+    summary: `质询聚焦公共服务如何利用AI和数据分析提升效率，整合服务，满足市民需求。强调技术应以市民为中心，避免机械执法。政府需推动公共部门高科技、高触感和高适应性转型，提升生产力和服务质量。`,
+    summaryEn: `Questions focused on how the Public Service can use AI and data analytics to lift efficiency, integrate services, and meet citizen needs. MPs emphasised that technology should be citizen-centred and avoid mechanical enforcement, with the government pushing high-tech, high-touch, and high-adaptability transformation in the public sector to lift productivity and service quality.`,
     keyPoints: ['公共服务需数字化转型', '技术应以市民需求为本', 'AI助力提升服务效率'],
     keyPointsEn: [
       'Public services need digital transformation',
@@ -7198,7 +7198,7 @@ Yet, the nature of`,
       'Technology is a potential game changer that can allow us to overcome our resource constraints and embark on a new S curve in our growth trajectory.',
     notableQuoteEn:
       'Technology is a potential game changer that can allow us to overcome our resource constraints and embark on a new S curve in our growth trajectory.',
-    summary: `Public Sector Transformation
+    transcriptEn: `Public Sector Transformation
 Mr Patrick Tay Teck Guan (West Coast)
 :
 Mr Chairman, I beg to move, "That the total sum to be allocated for Head U of the Estimates be reduced by $100."
@@ -7207,8 +7207,8 @@ The global operating environment is evolving rapidly. There are many growth oppo
   },
   {
     id: 'oral-answer-1935',
-    title: `Malaysian Government's Detention of Greek Vessel Piraes and Crew`,
-    zhTitle: `马来西亚扣押希腊船只事件`,
+    titleEn: `Malaysian Government's Detention of Greek Vessel Piraes and Crew`,
+    title: `马来西亚扣押希腊船只事件`,
     date: '2019-02-26',
     parliament: '13',
     type: 'Oral Answers to Questions',
@@ -7220,8 +7220,8 @@ The global operating environment is evolving rapidly. There are many growth oppo
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI & National Security', 'AI in Public Sector'],
-    zhSummary: `质询马来西亚政府是否在新加坡领海行使主权，以及如何保障新加坡船只不受外国管辖。外交部长回应事件发生在新加坡领海内，新加坡警方在场并记录，马来西亚未在新加坡水域扣押船只，强调不允许外国政府在新加坡水域行使权力。核心争议为外国政府是否有权在新加坡领海执法及新加坡的应对措施。`,
-    summaryShortEn: `MPs asked whether the Malaysian government had asserted sovereignty within Singapore territorial waters and how Singapore vessels are protected from foreign jurisdiction. The Foreign Minister replied that the incident took place inside Singapore waters with police present and records taken, Malaysia did not detain the vessel within Singapore waters, and that no foreign government will be permitted to assert authority in Singapore waters. The core debate: whether a foreign government has the right to enforce in Singapore waters and Singapore's response.`,
+    summary: `质询马来西亚政府是否在新加坡领海行使主权，以及如何保障新加坡船只不受外国管辖。外交部长回应事件发生在新加坡领海内，新加坡警方在场并记录，马来西亚未在新加坡水域扣押船只，强调不允许外国政府在新加坡水域行使权力。核心争议为外国政府是否有权在新加坡领海执法及新加坡的应对措施。`,
+    summaryEn: `MPs asked whether the Malaysian government had asserted sovereignty within Singapore territorial waters and how Singapore vessels are protected from foreign jurisdiction. The Foreign Minister replied that the incident took place inside Singapore waters with police present and records taken, Malaysia did not detain the vessel within Singapore waters, and that no foreign government will be permitted to assert authority in Singapore waters. The core debate: whether a foreign government has the right to enforce in Singapore waters and Singapore's response.`,
     keyPoints: ['马来西亚未在新加坡水域扣押', '新加坡不容外国行使主权', '船只应听从新加坡海事局'],
     keyPointsEn: [
       'Malaysia did not detain in Singapore waters',
@@ -7237,7 +7237,7 @@ The global operating environment is evolving rapidly. There are many growth oppo
     policySignalEn: 'Strengthen enforcement of territorial sovereignty.',
     notableQuote: 'We will not allow foreign government vessels to assert any authority in our waters.',
     notableQuoteEn: 'We will not allow foreign government vessels to assert any authority in our waters.',
-    summary: `4
+    transcriptEn: `4
 Assoc Prof Walter Theseira
 asked the Minister for Foreign Affairs (a) whether the Malaysian government's detention of Greek vessel Piraes and crew, which collided with the Malaysian vessel Polaris in Singapore territorial waters, represents an exercise of foreign sovereignty in Singapore territorial waters; and (b) what measures can be taken to ensure that vessels, crew and passengers, particularly Singapore-flagged, will not be subject to foreign authority whilst in Singapore territorial waters or for acts committed in Singapore territorial waters.
 The Minister for Foreign Affairs (Dr Vivia`,
@@ -7245,8 +7245,8 @@ The Minister for Foreign Affairs (Dr Vivia`,
   },
   {
     id: 'oral-answer-1900',
-    title: `Preventive Measures Implemented Following Data Leak Involving Persons with HIV`,
-    zhTitle: `HIV数据泄露防范措施`,
+    titleEn: `Preventive Measures Implemented Following Data Leak Involving Persons with HIV`,
+    title: `HIV数据泄露防范措施`,
     date: '2019-02-12',
     parliament: '13',
     type: 'Oral Answers to Questions',
@@ -7277,8 +7277,8 @@ The Minister for Foreign Affairs (Dr Vivia`,
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI Governance & Regulation', 'AI in Healthcare', 'AI in Public Sector'],
-    zhSummary: `议员质询涉及1.42万名HIV患者数据泄露后的具体防范措施，包括数据访问权限、数据泄露追踪、受害者心理保护及社会歧视应对。政府需回应如何防止数据扩散、保障患者权益及维护公众对HIV检测的信任。核心争议点在于数据安全管理漏洞、信息公开透明度及社会歧视问题。`,
-    summaryShortEn: `MPs asked about specific preventive measures following the HIV data leak affecting 14,200 patients — data access permissions, leak tracking, psychological protection of victims, and addressing social discrimination. The government must respond on how to prevent further spread, protect patient rights, and maintain public trust in HIV testing. The core debate: data-security gaps, transparency, and social discrimination.`,
+    summary: `议员质询涉及1.42万名HIV患者数据泄露后的具体防范措施，包括数据访问权限、数据泄露追踪、受害者心理保护及社会歧视应对。政府需回应如何防止数据扩散、保障患者权益及维护公众对HIV检测的信任。核心争议点在于数据安全管理漏洞、信息公开透明度及社会歧视问题。`,
+    summaryEn: `MPs asked about specific preventive measures following the HIV data leak affecting 14,200 patients — data access permissions, leak tracking, psychological protection of victims, and addressing social discrimination. The government must respond on how to prevent further spread, protect patient rights, and maintain public trust in HIV testing. The core debate: data-security gaps, transparency, and social discrimination.`,
     keyPoints: ['加强数据访问控制', '保护患者心理健康', '防止社会歧视扩散'],
     keyPointsEn: [
       'Strengthen data access control',
@@ -7296,7 +7296,7 @@ The Minister for Foreign Affairs (Dr Vivia`,
       'what specific measures will be taken to reduce the spread of, and access to, the personal data and HIV status of the affected persons',
     notableQuoteEn:
       'what specific measures will be taken to reduce the spread of, and access to, the personal data and HIV status of the affected persons',
-    summary: `1
+    transcriptEn: `1
 Ms Anthea Ong
 asked the Minister for Health with the data leak involving 14,200 people with HIV, what specific measures will be taken to (i) reduce the spread of, and access to, the personal data and HIV status of the affected persons (ii) ensure that the psychosocial welfare of these persons are protected in view of the stigmatisation and discrimination that exists at the workplace and in society and (iii) ensure that this incident does not negate years of painstaking efforts in providing a safe climate for people to come forward for HIV testing.
 2
@@ -7306,8 +7306,8 @@ asked the Minister for Heal`,
   },
   {
     id: 'oral-answer-1902',
-    title: `Review of Public Agencies Exemption Provisions in Personal Data Protection Act`,
-    zhTitle: `公共机构数据保护豁免审议`,
+    titleEn: `Review of Public Agencies Exemption Provisions in Personal Data Protection Act`,
+    title: `公共机构数据保护豁免审议`,
     date: '2019-02-12',
     parliament: '13',
     type: 'Oral Answers to Questions',
@@ -7319,8 +7319,8 @@ asked the Minister for Heal`,
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI Governance & Regulation', 'AI & National Security', 'AI in Public Sector', 'AI Strategy'],
-    zhSummary: `议员质询是否应修订个人数据保护法，取消公共机构豁免条款以应对数据泄露风险。政府回应公共部门已有多重法律和政策保障数据安全，强调公共部门数据管理与私营部门不同，采用不同法律体系，且将持续审视相关法规。核心争议在于公共机构数据保护是否应纳入个人数据保护法统一监管。`,
-    summaryShortEn: `MPs asked whether the PDPA should be amended to remove the exemption for public agencies in light of data-leak risks. The government replied that the public sector already has multiple legal and policy safeguards, stressing that public-sector data management differs from the private sector, adopts a different legal regime, and the rules will be kept under review. The core debate: whether public-agency data protection should be brought under unified PDPA oversight.`,
+    summary: `议员质询是否应修订个人数据保护法，取消公共机构豁免条款以应对数据泄露风险。政府回应公共部门已有多重法律和政策保障数据安全，强调公共部门数据管理与私营部门不同，采用不同法律体系，且将持续审视相关法规。核心争议在于公共机构数据保护是否应纳入个人数据保护法统一监管。`,
+    summaryEn: `MPs asked whether the PDPA should be amended to remove the exemption for public agencies in light of data-leak risks. The government replied that the public sector already has multiple legal and policy safeguards, stressing that public-sector data management differs from the private sector, adopts a different legal regime, and the rules will be kept under review. The core debate: whether public-agency data protection should be brought under unified PDPA oversight.`,
     keyPoints: ['公共部门数据有多重法律保护', '公共部门数据管理与私营部门不同', '将持续审视相关法律法规'],
     keyPointsEn: [
       'Public-sector data has multiple legal safeguards',
@@ -7338,7 +7338,7 @@ asked the Minister for Heal`,
       'Because of these important differences, we need and have adopted different approaches to the protection of personal data in the public and in the private sectors.',
     notableQuoteEn:
       'Because of these important differences, we need and have adopted different approaches to the protection of personal data in the public and in the private sectors.',
-    summary: `12
+    transcriptEn: `12
 Ms Sylvia Lim
 asked the Minister for Communications and Information given the gravity of data protection breaches in the public sector, whether the Personal Data Protection Act should be amended to remove the exemptions for public agencies.
 The Minister for Communications and Information (Mr S Iswaran)
@@ -7347,8 +7347,8 @@ The Minister for Communications and Information (Mr S Iswaran)
   },
   {
     id: 'budget-832',
-    title: `Committee of Supply – Head Q (Ministry of Communications and Information)`,
-    zhTitle: `新加坡数字经济与公共服务转型`,
+    titleEn: `Committee of Supply – Head Q (Ministry of Communications and Information)`,
+    title: `新加坡数字经济与公共服务转型`,
     date: '2018-03-06',
     parliament: '13',
     type: 'Budget',
@@ -7369,8 +7369,8 @@ The Minister for Communications and Information (Mr S Iswaran)
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI in Public Sector'],
-    zhSummary: `议员质询数字经济发展及公共部门数字化转型，政府回应介绍了数字化提升民众生活便利和企业运营效率的具体案例，强调数字经济和数字素养提升的重要性。辩论聚焦于如何通过技术创新促进经济发展和社会包容，争议较低，更多为政策宣示和成效展示。`,
-    summaryShortEn: `MPs asked about digital-economy development and public-sector digital transformation. The government cited concrete examples of digitalisation lifting daily convenience and firm efficiency, emphasising the importance of the digital economy and digital literacy. The debate focused on how tech innovation drives economic development and social inclusion — relatively low controversy, with more policy framing and outcome showcasing.`,
+    summary: `议员质询数字经济发展及公共部门数字化转型，政府回应介绍了数字化提升民众生活便利和企业运营效率的具体案例，强调数字经济和数字素养提升的重要性。辩论聚焦于如何通过技术创新促进经济发展和社会包容，争议较低，更多为政策宣示和成效展示。`,
+    summaryEn: `MPs asked about digital-economy development and public-sector digital transformation. The government cited concrete examples of digitalisation lifting daily convenience and firm efficiency, emphasising the importance of the digital economy and digital literacy. The debate focused on how tech innovation drives economic development and social inclusion — relatively low controversy, with more policy framing and outcome showcasing.`,
     keyPoints: ['数字化提升生活便利', '推动数字经济发展', '加强数字素养培训'],
     keyPointsEn: [
       'Digitalisation lifts daily convenience',
@@ -7386,7 +7386,7 @@ The Minister for Communications and Information (Mr S Iswaran)
     policySignalEn: 'Accelerate integration of the digital economy and public services.',
     notableQuote: 'Digitalisation has created many exciting opportunities and improved Singaporeans’ lives.',
     notableQuoteEn: 'Digitalisation has created many exciting opportunities and improved Singaporeans’ lives.',
-    summary: `Head Q (cont) –
+    transcriptEn: `Head Q (cont) –
 [(proc text) Resumption of Debate on Question [5 March 2018], (proc text)]
 [(proc text) "That the total sum to be allocated for Head Q of the Estimates to be reduced by $100." – [Mr Zaqy Mohamad.] (proc text)]
 [(proc text) Question again proposed. (proc text)]
@@ -7396,8 +7396,8 @@ The Chairman
   },
   {
     id: 'budget-842',
-    title: `Committee of Supply – Head Q (Ministry of Communications and Information)`,
-    zhTitle: `数字经济与信息产业发展`,
+    titleEn: `Committee of Supply – Head Q (Ministry of Communications and Information)`,
+    title: `数字经济与信息产业发展`,
     date: '2018-03-05',
     parliament: '13',
     type: 'Budget',
@@ -7439,8 +7439,8 @@ The Chairman
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI Economy & Industry', 'AI & Employment', 'AI in Public Sector', 'AI Strategy'],
-    zhSummary: `议员质询政府如何推动数字经济发展，特别关注信息通信媒体（ICM）行业的数字化转型、国际化及创新能力。政府介绍了物流、零售等行业的数字化计划及中小企业支持措施，并强调通过人工智能、金融科技等深科技领域推动ICM行业成长。核心争议在于如何更有效帮助本地企业国际化及提升竞争力。`,
-    summaryShortEn: `MPs asked how the government will drive the digital economy, focusing on the Infocomm Media (ICM) industry's digital transformation, internationalisation, and innovation. The government outlined digitalisation plans for logistics, retail and other sectors plus SME support measures, and emphasised using deep-tech areas like AI and fintech to grow the ICM industry. The core debate: how to more effectively help local firms internationalise and lift competitiveness.`,
+    summary: `议员质询政府如何推动数字经济发展，特别关注信息通信媒体（ICM）行业的数字化转型、国际化及创新能力。政府介绍了物流、零售等行业的数字化计划及中小企业支持措施，并强调通过人工智能、金融科技等深科技领域推动ICM行业成长。核心争议在于如何更有效帮助本地企业国际化及提升竞争力。`,
+    summaryEn: `MPs asked how the government will drive the digital economy, focusing on the Infocomm Media (ICM) industry's digital transformation, internationalisation, and innovation. The government outlined digitalisation plans for logistics, retail and other sectors plus SME support measures, and emphasised using deep-tech areas like AI and fintech to grow the ICM industry. The core debate: how to more effectively help local firms internationalise and lift competitiveness.`,
     keyPoints: ['数字经济带来机遇', '推动中小企业数字化', '支持ICM行业国际化'],
     keyPointsEn: [
       'Digital economy creates opportunities',
@@ -7458,7 +7458,7 @@ The Chairman
       'The Ministry has launched several initiatives to help the various industries transform and thrive in the digital era.',
     notableQuoteEn:
       'The Ministry has launched several initiatives to help the various industries transform and thrive in the digital era.',
-    summary: `Gearing the Economy for a Digital Future
+    transcriptEn: `Gearing the Economy for a Digital Future
 Mr Zaqy Mohamad (Chua Chu Kang)
 : Sir, I beg to move, "That the total sum to be allocated for Head Q of the Estimates be reduced by $100".
 Thank you, Sir, for allowing me to speak on the Digital Economy, which presents many opportunities for Singapore and Singaporeans.
@@ -7467,8 +7467,8 @@ We are living in a world where industries and businesses are swarmed by digital 
   },
   {
     id: 'budget-847',
-    title: `Committee of Supply – Head J (Ministry of Defence)`,
-    zhTitle: `国防预算与安全挑战`,
+    titleEn: `Committee of Supply – Head J (Ministry of Defence)`,
+    title: `国防预算与安全挑战`,
     date: '2018-03-02',
     parliament: '13',
     type: 'Budget',
@@ -7533,8 +7533,8 @@ We are living in a world where industries and businesses are swarmed by digital 
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI Safety & Ethics', 'AI & National Security', 'AI Infrastructure & Research', 'AI in Public Sector'],
-    zhSummary: `议员质询新加坡国防预算，强调国防自主的重要性及面临的多元安全威胁，包括恐怖主义、核武风险及网络安全。政府回应需持续投资国防力量和维护国际防务联盟，以应对复杂且不断演变的安全环境。核心争议在于如何平衡有限资源与不断增长的安全需求。`,
-    summaryShortEn: `MPs raised the defence budget, emphasising the importance of defence self-reliance and the diversified threats facing Singapore — terrorism, nuclear risk, and cybersecurity. The government replied that continuous investment in defence capability and international defence alliances is needed to address a complex and evolving security environment. The core debate: balancing limited resources with growing security needs.`,
+    summary: `议员质询新加坡国防预算，强调国防自主的重要性及面临的多元安全威胁，包括恐怖主义、核武风险及网络安全。政府回应需持续投资国防力量和维护国际防务联盟，以应对复杂且不断演变的安全环境。核心争议在于如何平衡有限资源与不断增长的安全需求。`,
+    summaryEn: `MPs raised the defence budget, emphasising the importance of defence self-reliance and the diversified threats facing Singapore — terrorism, nuclear risk, and cybersecurity. The government replied that continuous investment in defence capability and international defence alliances is needed to address a complex and evolving security environment. The core debate: balancing limited resources with growing security needs.`,
     keyPoints: ['国防自主迫切需求', '多元安全威胁增加', '维护国际防务联盟'],
     keyPointsEn: [
       'Urgent need for defence self-reliance',
@@ -7552,7 +7552,7 @@ We are living in a world where industries and businesses are swarmed by digital 
       'Singapore needs to be a strong and valued partner in order for other countries to want to form alliances with us.',
     notableQuoteEn:
       'Singapore needs to be a strong and valued partner in order for other countries to want to form alliances with us.',
-    summary: `Defence Spending and Rising Tensions
+    transcriptEn: `Defence Spending and Rising Tensions
 Mr Vikram Nair (Sembawang)
 : Chairman, I beg to move, "That the total sum to be allocated for Head J of the Estimates be reduced by $100".
 Singapore's need to develop its own defence capabilities came almost as suddenly as our Independence. Shortly after our Independence, the British forces who had been stationed here announced they would be pulling out ahead of schedule and Singapore would be responsible for its own defence thereafter.
@@ -7561,8 +7561,8 @@ This precipitated the start of National Service in 1967 and the focused developm
   },
   {
     id: 'written-answer-4214',
-    title: `Profile and Success Rate of Singapore Startups`,
-    zhTitle: `新加坡创业青年趋势与成效`,
+    titleEn: `Profile and Success Rate of Singapore Startups`,
+    title: `新加坡创业青年趋势与成效`,
     date: '2018-02-27',
     parliament: '13',
     type: 'Written Answers to Questions',
@@ -7574,8 +7574,8 @@ This precipitated the start of National Service in 1967 and the focused developm
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI Economy & Industry', 'AI in Education', 'AI in Public Sector'],
-    zhSummary: `质询新加坡年轻人创业趋势及创业公司成功率，政府回应指出本地年轻创业者比例上升，创业意愿增强，创业生态系统稳步发展，且国际排名优异。核心争议在于如何定义创业成功及与其他国家的比较。`,
-    summaryShortEn: `An MP asked about entrepreneurship trends among young Singaporeans and the success rate of startups. The government replied that the share of young local entrepreneurs is rising, entrepreneurial intent is stronger, the startup scene is steadily growing, and Singapore performs well in international rankings. The core debate: how to define startup success and how Singapore compares with other countries.`,
+    summary: `质询新加坡年轻人创业趋势及创业公司成功率，政府回应指出本地年轻创业者比例上升，创业意愿增强，创业生态系统稳步发展，且国际排名优异。核心争议在于如何定义创业成功及与其他国家的比较。`,
+    summaryEn: `An MP asked about entrepreneurship trends among young Singaporeans and the success rate of startups. The government replied that the share of young local entrepreneurs is rising, entrepreneurial intent is stronger, the startup scene is steadily growing, and Singapore performs well in international rankings. The core debate: how to define startup success and how Singapore compares with other countries.`,
     keyPoints: ['年轻创业者比例提升', '创业生态持续成长', '国际排名表现良好'],
     keyPointsEn: [
       'Rising share of young entrepreneurs',
@@ -7591,7 +7591,7 @@ This precipitated the start of National Service in 1967 and the focused developm
     policySignalEn: 'Push youth entrepreneurship and the innovation ecosystem.',
     notableQuote: "Singapore's startup ecosystem has seen significant progress over the past decade.",
     notableQuoteEn: "Singapore's startup ecosystem has seen significant progress over the past decade.",
-    summary: `4
+    transcriptEn: `4
 Ms Foo Mee Har
 asked the Minister for Trade and Industry (Industry) what is Singapore's trend of young people joining startups and the success rate of our startups as compared to that of other countries, including US and Israel.
 Mr S Iswaran
@@ -7601,8 +7601,8 @@ Young Singaporeans increasingly recognise entrepreneurship as a viable career pa
   },
   {
     id: 'oral-answer-1504',
-    title: `Introduction of Regulations with Advent of Artificial Intelligence and Autonomous Machines`,
-    zhTitle: `人工智能法规引入讨论`,
+    titleEn: `Introduction of Regulations with Advent of Artificial Intelligence and Autonomous Machines`,
+    title: `人工智能法规引入讨论`,
     date: '2018-02-06',
     parliament: '13',
     type: 'Oral Answers to Questions',
@@ -7619,8 +7619,8 @@ Young Singaporeans increasingly recognise entrepreneurship as a viable career pa
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI Governance & Regulation', 'AI Safety & Ethics', 'AI in Education', 'AI & National Security'],
-    zhSummary: `议员质询随着人工智能和自动机器的发展，是否会制定新法规或修订现有法律以涵盖伦理、道德、紧急停止装置及责任问题。政府回应强调将采取领域特定的监管策略，举例交通领域的自动驾驶车辆安全测试和保险要求，以及金融领域的算法监管。政府还提到将提升相关技术能力，推动智慧国建设。核心争议在于如何平衡技术发展与风险管理，确保公众利益和安全。`,
-    summaryShortEn: `MPs asked whether new legislation will be promulgated or existing laws reviewed to cover ethics, morality, kill switches, and liability with the rise of AI and autonomous machines. The government emphasised a domain-specific regulatory approach, citing safety testing and insurance requirements for autonomous vehicles in transport, and algorithmic oversight in finance. It also noted plans to lift relevant technical capability to drive Smart Nation. The core debate: how to balance tech development with risk management for public interest and safety.`,
+    summary: `议员质询随着人工智能和自动机器的发展，是否会制定新法规或修订现有法律以涵盖伦理、道德、紧急停止装置及责任问题。政府回应强调将采取领域特定的监管策略，举例交通领域的自动驾驶车辆安全测试和保险要求，以及金融领域的算法监管。政府还提到将提升相关技术能力，推动智慧国建设。核心争议在于如何平衡技术发展与风险管理，确保公众利益和安全。`,
+    summaryEn: `MPs asked whether new legislation will be promulgated or existing laws reviewed to cover ethics, morality, kill switches, and liability with the rise of AI and autonomous machines. The government emphasised a domain-specific regulatory approach, citing safety testing and insurance requirements for autonomous vehicles in transport, and algorithmic oversight in finance. It also noted plans to lift relevant technical capability to drive Smart Nation. The core debate: how to balance tech development with risk management for public interest and safety.`,
     keyPoints: ['领域特定监管策略', '自动驾驶严格安全测试', '持续提升技术能力'],
     keyPointsEn: [
       'Domain-specific regulatory approach',
@@ -7636,7 +7636,7 @@ Young Singaporeans increasingly recognise entrepreneurship as a viable career pa
     policySignalEn: 'Push differentiated AI regulation by domain.',
     notableQuote: 'The regulatory approach would thus also have to be domain-specific.',
     notableQuoteEn: 'The regulatory approach would thus also have to be domain-specific.',
-    summary: `7
+    transcriptEn: `7
 Mr Patrick Tay Teck Guan
 asked the Prime Minister with the advent and drive towards the use of artificial intelligence and autonomous machines, whether new laws and regulations will be promulgated or existing ones reviewed to ensure we address the issues of ethics, morality, provision of kill switches as well as liability.
 8
@@ -7647,8 +7647,8 @@ The Senior Minister of State for Communications and Inf`,
   },
   {
     id: 'written-answer-3762',
-    title: `Time Spent by Teachers on Marking Assignments and Administrative Work`,
-    zhTitle: `教师批改与行政工作时间`,
+    titleEn: `Time Spent by Teachers on Marking Assignments and Administrative Work`,
+    title: `教师批改与行政工作时间`,
     date: '2017-08-01',
     parliament: '13',
     type: 'Written Answers to Questions',
@@ -7660,8 +7660,8 @@ The Senior Minister of State for Communications and Inf`,
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI in Education', 'AI in Public Sector'],
-    zhSummary: `议员质询教师在批改作业及行政工作上所花时间及减负措施，政府回应强调教师批改作业的重要性，介绍了教学指导及团队合作分担批改工作，同时采用技术自动批改选择题和数字测验，未来将继续推动技术应用与简化流程。核心争议在于如何平衡教师专业职责与减轻工作负担。`,
-    summaryShortEn: `MPs asked about teachers' time on marking and administrative work and measures to reduce the load. The government emphasised the importance of marking, outlining teaching guidance and team-based marking, with technology used to auto-mark MCQ and digital quizzes; it will continue pushing tech use and process simplification. The core debate: balancing teachers' professional responsibilities with reducing workload.`,
+    summary: `议员质询教师在批改作业及行政工作上所花时间及减负措施，政府回应强调教师批改作业的重要性，介绍了教学指导及团队合作分担批改工作，同时采用技术自动批改选择题和数字测验，未来将继续推动技术应用与简化流程。核心争议在于如何平衡教师专业职责与减轻工作负担。`,
+    summaryEn: `MPs asked about teachers' time on marking and administrative work and measures to reduce the load. The government emphasised the importance of marking, outlining teaching guidance and team-based marking, with technology used to auto-mark MCQ and digital quizzes; it will continue pushing tech use and process simplification. The core debate: balancing teachers' professional responsibilities with reducing workload.`,
     keyPoints: ['教师批改作业重要', '团队合作分担批改', '技术辅助自动批改'],
     keyPointsEn: [
       'Teacher marking is important',
@@ -7679,7 +7679,7 @@ The Senior Minister of State for Communications and Inf`,
       'Teachers will deploy technology in assessment work when it is educationally purposeful to support teaching and learning.',
     notableQuoteEn:
       'Teachers will deploy technology in assessment work when it is educationally purposeful to support teaching and learning.',
-    summary: `28
+    transcriptEn: `28
 Mr Dennis Tan Lip Fong
 asked the Minister for Education (Schools) (a) what measures have been taken in the last three years to reduce the time spent by teachers on marking assignments and administrative work; and (b) whether the Ministry has considered measures, such as (i) consolidating and centralising tasks, such as marking and (ii) the use of more online tests.
 Mr Ng Chee Meng
@@ -7688,8 +7688,8 @@ Mr Ng Chee Meng
   },
   {
     id: 'budget-929',
-    title: `Committee of Supply − Head J (Ministry of Defence)`,
-    zhTitle: `国防预算与安全挑战质询`,
+    titleEn: `Committee of Supply − Head J (Ministry of Defence)`,
+    title: `国防预算与安全挑战质询`,
     date: '2017-03-03',
     parliament: '13',
     type: 'Budget',
@@ -7742,8 +7742,8 @@ Mr Ng Chee Meng
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI & National Security', 'AI Infrastructure & Research', 'AI in Public Sector'],
-    zhSummary: `议员质询国防部当前面临的主要安全威胁，包括地区大国冲突、朝鲜核试验、恐怖主义及网络攻击。政府强调多元威胁并重视网络安全，呼吁加强防御能力。核心争议在于如何平衡传统与非传统安全威胁的资源分配及应对策略。`,
-    summaryShortEn: `MPs asked MINDEF about the major current security threats — regional great-power conflict, North Korean nuclear tests, terrorism, and cyberattacks. The government emphasised the diversity of threats and prioritising cybersecurity, calling for stronger defensive capability. The core debate: balancing resource allocation and response strategy across traditional and non-traditional security threats.`,
+    summary: `议员质询国防部当前面临的主要安全威胁，包括地区大国冲突、朝鲜核试验、恐怖主义及网络攻击。政府强调多元威胁并重视网络安全，呼吁加强防御能力。核心争议在于如何平衡传统与非传统安全威胁的资源分配及应对策略。`,
+    summaryEn: `MPs asked MINDEF about the major current security threats — regional great-power conflict, North Korean nuclear tests, terrorism, and cyberattacks. The government emphasised the diversity of threats and prioritising cybersecurity, calling for stronger defensive capability. The core debate: balancing resource allocation and response strategy across traditional and non-traditional security threats.`,
     keyPoints: ['地区大国安全威胁', '恐怖主义持续存在', '网络攻击成新挑战'],
     keyPointsEn: ['Regional great-power security threats', 'Persistent terrorism', 'Cyberattacks as new challenge'],
     governmentStance: '重视多元安全威胁，强化网络防御',
@@ -7757,7 +7757,7 @@ Mr Ng Chee Meng
       'The security threats we face come from far, wide, in many forms, and MINDEF is very much in the frontline.',
     notableQuoteEn:
       'The security threats we face come from far, wide, in many forms, and MINDEF is very much in the frontline.',
-    summary: `The Chairman:
+    transcriptEn: `The Chairman:
 Head J, Ministry of Defence. Mr Vikram Nair.
 11.52 am
 Our Security Environment
@@ -7769,8 +7769,8 @@ Even after Independence, security became one of our concerns and National Servic
   },
   {
     id: 'budget-711',
-    title: `Committee of Supply – Head J (Ministry of Defence)`,
-    zhTitle: `国防预算与安全挑战`,
+    titleEn: `Committee of Supply – Head J (Ministry of Defence)`,
+    title: `国防预算与安全挑战`,
     date: '2016-04-07',
     parliament: '13',
     type: 'Budget',
@@ -7822,8 +7822,8 @@ Even after Independence, security became one of our concerns and National Servic
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI Safety & Ethics', 'AI & National Security', 'AI in Public Sector'],
-    zhSummary: `议员质询新加坡国防预算，强调国家安全环境复杂多变，包括恐怖主义威胁、南海争端、朝鲜核威胁及海盗问题。政府回应强调新加坡武装力量的建设成就及应对多元安全威胁的必要性。核心争议点在于如何平衡有限资源与多重安全挑战的防御需求。`,
-    summaryShortEn: `MPs raised the defence budget, emphasising a complex, evolving national security environment including terrorism, South China Sea disputes, North Korea's nuclear threat, and piracy. The government cited SAF's build-up achievements and the need to address diversified security threats. The core debate: balancing limited resources with multi-front defence demands.`,
+    summary: `议员质询新加坡国防预算，强调国家安全环境复杂多变，包括恐怖主义威胁、南海争端、朝鲜核威胁及海盗问题。政府回应强调新加坡武装力量的建设成就及应对多元安全威胁的必要性。核心争议点在于如何平衡有限资源与多重安全挑战的防御需求。`,
+    summaryEn: `MPs raised the defence budget, emphasising a complex, evolving national security environment including terrorism, South China Sea disputes, North Korea's nuclear threat, and piracy. The government cited SAF's build-up achievements and the need to address diversified security threats. The core debate: balancing limited resources with multi-front defence demands.`,
     keyPoints: ['恐怖主义持续威胁', '南海局势紧张', '朝鲜核威胁升级'],
     keyPointsEn: [
       'Persistent terrorist threat',
@@ -7839,7 +7839,7 @@ Even after Independence, security became one of our concerns and National Servic
     policySignalEn: 'Strengthen defence technology and talent development.',
     notableQuote: 'The Singapore Armed Forces (SAF) is now one of the most respected armed forces in the region.',
     notableQuoteEn: 'The Singapore Armed Forces (SAF) is now one of the most respected armed forces in the region.',
-    summary: `Security Environment
+    transcriptEn: `Security Environment
 Mr Vikram Nair (Sembawang)
 : Madam, I beg to move, "That the total sum to be allocated for Head J of the Estimates be reduced by $100."
 In 1971, when the British armed forces withdrew from Singapore, that marked the end of some 150 years during which the British oversaw Singapore's defence.
@@ -7848,8 +7848,8 @@ Quite suddenly, for the first time in history, Singapore was left to take care o
   },
   {
     id: 'oral-answer-1251',
-    title: `Quality of Upcoming New Jobs in Tech and IT Sector`,
-    zhTitle: `新加坡科技新岗位质量分析`,
+    titleEn: `Quality of Upcoming New Jobs in Tech and IT Sector`,
+    title: `新加坡科技新岗位质量分析`,
     date: '2016-03-24',
     parliament: '13',
     type: 'Oral Answers to Questions',
@@ -7861,8 +7861,8 @@ Quite suddenly, for the first time in history, Singapore was left to take care o
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI Economy & Industry', 'AI & Employment', 'AI in Education', 'AI & National Security'],
-    zhSummary: `议员质询新加坡科技与IT行业新增1.5万个岗位的类型、分布、层级及技能要求。政府回应称岗位涵盖多个行业，主要为专业及技术职位，技能需求多样，包括编程、网络安全和数据分析。政府强调技术岗位需求持续增长，配合智慧国战略。核心争议点在于岗位质量及技能匹配，政府承诺后续推出人力发展计划。`,
-    summaryShortEn: `An MP asked about the type, distribution, hierarchy levels, and skills requirements of the 15,000 new tech and IT jobs announced. The government replied that the roles span multiple industries — mainly professional and technical positions — with diverse skill needs including programming, cybersecurity, and data analytics. The government emphasised continued tech-job demand growth, aligned with the Smart Nation strategy. The core debate: job quality and skills matching; the government committed to follow-up manpower development plans.`,
+    summary: `议员质询新加坡科技与IT行业新增1.5万个岗位的类型、分布、层级及技能要求。政府回应称岗位涵盖多个行业，主要为专业及技术职位，技能需求多样，包括编程、网络安全和数据分析。政府强调技术岗位需求持续增长，配合智慧国战略。核心争议点在于岗位质量及技能匹配，政府承诺后续推出人力发展计划。`,
+    summaryEn: `An MP asked about the type, distribution, hierarchy levels, and skills requirements of the 15,000 new tech and IT jobs announced. The government replied that the roles span multiple industries — mainly professional and technical positions — with diverse skill needs including programming, cybersecurity, and data analytics. The government emphasised continued tech-job demand growth, aligned with the Smart Nation strategy. The core debate: job quality and skills matching; the government committed to follow-up manpower development plans.`,
     keyPoints: ['岗位涵盖多行业', '主要为技术与管理岗', '技能需求多样化'],
     keyPointsEn: [
       'Roles span multiple industries',
@@ -7878,7 +7878,7 @@ Quite suddenly, for the first time in history, Singapore was left to take care o
     policySignalEn: 'Strengthen infocomm talent development.',
     notableQuote: 'Demand for technical specialists has been growing by 6.3% annually from 2011 to 2014.',
     notableQuoteEn: 'Demand for technical specialists has been growing by 6.3% annually from 2011 to 2014.',
-    summary: `9
+    transcriptEn: `9
 Mr Patrick Tay Teck Guan
 asked
 the Minister for Communications and Information in view of IDA's announcement of 15,000 vacancies in the tech and IT sector (a) what kind of jobs are these; (b) which companies/industries will these jobs be found; (c) at what level of the organisation hierarchy are these jobs set; and (d) what are the skills required for these jobs.
@@ -7888,8 +7888,8 @@ The Minister for Communications and Information (Assoc Prof Dr Yaacob Ibrahim)
   },
   {
     id: 'budget-444',
-    title: `Committee of Supply – Head K (Ministry of Education)`,
-    zhTitle: `教育预算与就业匹配`,
+    titleEn: `Committee of Supply – Head K (Ministry of Education)`,
+    title: `教育预算与就业匹配`,
     date: '2015-03-06',
     parliament: '12',
     type: 'Budget',
@@ -7954,8 +7954,8 @@ The Minister for Communications and Information (Assoc Prof Dr Yaacob Ibrahim)
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI & Employment', 'AI in Education', 'AI in Public Sector'],
-    zhSummary: `质询方关注新加坡大学毕业生就业匹配问题，借鉴韩国、中国毕业生高失业率案例，担忧新加坡青年失业风险。强调教育应注重实用技能，呼吁政府通过SkillsFuture推动终身学习，提升就业竞争力。政府回应聚焦投资公民技能，支持未来就业准备。核心争议在于教育与就业市场需求的匹配及青年失业风险防范。`,
-    summaryShortEn: `MPs raised the question of graduate employment matching for Singapore universities, citing high graduate unemployment in South Korea and China and worrying about youth unemployment risk in Singapore. They emphasised education should focus on practical skills and called for SkillsFuture to drive lifelong learning and lift employability. The government's response focused on investing in citizen skills to prepare for future employment. The core debate: education-labour market match and prevention of youth unemployment.`,
+    summary: `质询方关注新加坡大学毕业生就业匹配问题，借鉴韩国、中国毕业生高失业率案例，担忧新加坡青年失业风险。强调教育应注重实用技能，呼吁政府通过SkillsFuture推动终身学习，提升就业竞争力。政府回应聚焦投资公民技能，支持未来就业准备。核心争议在于教育与就业市场需求的匹配及青年失业风险防范。`,
+    summaryEn: `MPs raised the question of graduate employment matching for Singapore universities, citing high graduate unemployment in South Korea and China and worrying about youth unemployment risk in Singapore. They emphasised education should focus on practical skills and called for SkillsFuture to drive lifelong learning and lift employability. The government's response focused on investing in citizen skills to prepare for future employment. The core debate: education-labour market match and prevention of youth unemployment.`,
     keyPoints: ['毕业生就业匹配问题', '教育应注重实用技能', '推动终身学习机制'],
     keyPointsEn: [
       'Graduate employment matching issue',
@@ -7971,7 +7971,7 @@ The Minister for Communications and Information (Assoc Prof Dr Yaacob Ibrahim)
     policySignalEn: 'Strengthen skills training and lifelong learning.',
     notableQuote: 'Singaporeans cannot take full employment for granted.',
     notableQuoteEn: 'Singaporeans cannot take full employment for granted.',
-    summary: `General Education Policies
+    transcriptEn: `General Education Policies
 Mr Lim Biow Chuan (Mountbatten)
 : Madam, I beg to move, "That the total sum to be allocated for Head K of the Estimates be reduced by $100".
 A recent article in The Straits Times caught my eye. In the article, it was reported that there were too many Koreans chasing after too few jobs. The report stated that the college entrance rate stands at 80%, up from 30% in the 1990s. South Korean parents were reported to spend up to 19 trillion won, or S$22.4 billion, on extra tuition. But many college graduates were unable to find jobs due to severe labour mismatch. The joble`,
@@ -7979,8 +7979,8 @@ A recent article in The Straits Times caught my eye. In the article, it was repo
   },
   {
     id: 'budget-437',
-    title: `Committee of Supply – Head J (Ministry of Defence)`,
-    zhTitle: `国防与国民服役回顾`,
+    titleEn: `Committee of Supply – Head J (Ministry of Defence)`,
+    title: `国防与国民服役回顾`,
     date: '2015-03-05',
     parliament: '12',
     type: 'Budget',
@@ -8029,8 +8029,8 @@ A recent article in The Straits Times caught my eye. In the article, it was repo
     relatedTimelineYears: [],
     relatedPostSlugs: [],
     topics: ['AI & National Security', 'AI in Public Sector'],
-    zhSummary: `议员质询国防部关于SAF50纪念活动及国民服役历史，强调国民服役需认同防卫对象。政府回应介绍SAF志愿者招募情况，强调国民服役的重要性及历史教训。核心争议在于国民服役的认同感及其演变过程。`,
-    summaryShortEn: `MPs asked MINDEF about the SAF50 commemorative events and the history of National Service, stressing that NS needs identification with what is being defended. The government described SAF volunteer recruitment, emphasised the importance of NS, and drew lessons from history. The core debate: identification with NS and its evolution.`,
+    summary: `议员质询国防部关于SAF50纪念活动及国民服役历史，强调国民服役需认同防卫对象。政府回应介绍SAF志愿者招募情况，强调国民服役的重要性及历史教训。核心争议在于国民服役的认同感及其演变过程。`,
+    summaryEn: `MPs asked MINDEF about the SAF50 commemorative events and the history of National Service, stressing that NS needs identification with what is being defended. The government described SAF volunteer recruitment, emphasised the importance of NS, and drew lessons from history. The core debate: identification with NS and its evolution.`,
     keyPoints: ['SAF50纪念意义', '国民服役历史回顾', '服役认同感重要'],
     keyPointsEn: [
       'Significance of the SAF50 commemoration',
@@ -8046,7 +8046,7 @@ A recent article in The Straits Times caught my eye. In the article, it was repo
     policySignalEn: 'Strengthen defence identification and volunteer service.',
     notableQuote: 'The most powerful weapon that Singapore and SAF ha',
     notableQuoteEn: 'The most powerful weapon that Singapore and SAF ha',
-    summary: `SAF50
+    transcriptEn: `SAF50
 Mr Sitoh Yih Pin (Potong Pasir)
 : Madam, I beg to move,
 "That the total sum to be allocated for Head J of the Estimates be reduced by $100".
@@ -8260,8 +8260,8 @@ export const RECURRING_CONTROVERSIES = [
 
 export const MP_PROFILES = [
   {
-    name: 'Gerald Giam Yean Song',
-    zhName: '江源松',
+    nameEn: 'Gerald Giam Yean Song',
+    name: '江源松',
     role: '反对党',
     roleEn: 'Opposition',
     focusAreas: ['AI经济', 'AI治理', '国家安全'],
@@ -8272,8 +8272,8 @@ export const MP_PROFILES = [
       'Emphasises preventing global tech giants from monopolising the local AI market and pushes for a state-owned AI company to safeguard data sovereignty.',
   },
   {
-    name: 'Patrick Tay Teck Guan',
-    zhName: '郑德源',
+    nameEn: 'Patrick Tay Teck Guan',
+    name: '郑德源',
     role: '执政党',
     roleEn: 'Ruling party',
     focusAreas: ['AI经济', 'AI就业', 'AI治理'],
@@ -8284,8 +8284,8 @@ export const MP_PROFILES = [
       'Continuously tracks AI retrenchment transparency, demanding public data on AI-driven job substitution and re-employment support.',
   },
   {
-    name: 'Pritam Singh',
-    zhName: '毕丹星',
+    nameEn: 'Pritam Singh',
+    name: '毕丹星',
     role: '反对党',
     roleEn: 'Opposition',
     focusAreas: ['国家安全', '公共部门', 'AI经济'],
@@ -8296,8 +8296,8 @@ export const MP_PROFILES = [
       "Workers' Party leader; focused on AI's impact on national security, public-sector efficiency, and democratic accountability.",
   },
   {
-    name: 'Vikram Nair',
-    zhName: '维克拉姆·奈尔',
+    nameEn: 'Vikram Nair',
+    name: '维克拉姆·奈尔',
     role: '执政党',
     roleEn: 'Ruling party',
     focusAreas: ['国家安全', '公共部门', 'AI治理'],
@@ -8308,8 +8308,8 @@ export const MP_PROFILES = [
       "Focuses on AI governance and national security, supporting the government's cautious posture on AI regulatory frameworks.",
   },
   {
-    name: 'Josephine Teo',
-    zhName: '杨莉明',
+    nameEn: 'Josephine Teo',
+    name: '杨莉明',
     role: '执政党',
     roleEn: 'Ruling party',
     focusAreas: ['国家安全', 'AI经济', 'AI基础设施'],
@@ -8320,8 +8320,8 @@ export const MP_PROFILES = [
       'Minister for Digital Development and Information; leads National AI Strategy 2.0, emphasising both data security and international cooperation.',
   },
   {
-    name: 'Sylvia Lim',
-    zhName: '林瑞莲',
+    nameEn: 'Sylvia Lim',
+    name: '林瑞莲',
     role: '反对党',
     roleEn: 'Opposition',
     focusAreas: ['AI经济', 'AI治理', '公共部门'],
@@ -8331,8 +8331,8 @@ export const MP_PROFILES = [
     notablePositionEn: "Workers' Party Vice-Chair; questions AI transparency and accountability in the public sector.",
   },
   {
-    name: 'Desmond Choo',
-    zhName: '朱德明',
+    nameEn: 'Desmond Choo',
+    name: '朱德明',
     role: '执政党',
     roleEn: 'Ruling party',
     focusAreas: ['公共部门', 'AI经济', 'AI就业'],
@@ -8343,8 +8343,8 @@ export const MP_PROFILES = [
       "Focuses on AI's impact on grassroots employment and public services; pushes inclusive digital transformation.",
   },
   {
-    name: 'Janil Puthucheary',
-    zhName: '贾尼尔·普图查里',
+    nameEn: 'Janil Puthucheary',
+    name: '贾尼尔·普图查里',
     role: '执政党',
     roleEn: 'Ruling party',
     focusAreas: ['AI经济', '国家安全', 'AI伦理'],

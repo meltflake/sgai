@@ -62,20 +62,20 @@ const controversyLabels: Record<number, string> = {
 
 const speakers = debate.speakers.map((raw) => {
   const pid = findPersonId(raw);
-  return { raw, pid, display: pid ? getPerson(pid)?.zhName || raw : raw };
+  return { raw, pid, display: pid ? getPerson(pid)?.name || raw : raw };
 });
 
 const metadata = {
-  title: `${debate.zhTitle} · 国会辩论`,
-  description: debate.zhSummary,
+  title: `${debate.title} · 国会辩论`,
+  description: debate.summary,
 };
 
 const articleSchema = {
   '@context': 'https://schema.org',
   '@type': 'Article',
-  headline: debate.zhTitle,
+  headline: debate.title,
   alternativeHeadline: debate.title,
-  description: debate.zhSummary,
+  description: debate.summary,
   datePublished: debate.date,
   inLanguage: 'zh-CN',
   isPartOf: {
@@ -85,7 +85,7 @@ const articleSchema = {
   },
 };
 
-const breadcrumbs = [{ label: '国会 AI 焦点', href: getPermalink('/debates') }, { label: debate.zhTitle }];
+const breadcrumbs = [{ label: '国会 AI 焦点', href: getPermalink('/debates') }, { label: debate.title }];
 ---
 
 <Layout metadata={metadata} breadcrumbs={breadcrumbs}>
@@ -96,7 +96,7 @@ const breadcrumbs = [{ label: '国会 AI 焦点', href: getPermalink('/debates')
       {typeMap[debate.type] || debate.type} · {debate.date} · 第 {debate.parliament} 届国会
     </p>
     <h1 class="t-display text-gray-900 dark:text-white mb-3">
-      {debate.zhTitle}
+      {debate.title}
     </h1>
     <p class="text-sm md:text-base text-gray-500 dark:text-gray-400 italic mb-6 leading-relaxed">{debate.title}</p>
 
@@ -116,7 +116,7 @@ const breadcrumbs = [{ label: '国会 AI 焦点', href: getPermalink('/debates')
     <p
       class="font-serif text-lg leading-[1.85] text-gray-800 dark:text-gray-200 mb-8 border-l-4 border-primary pl-5 italic"
     >
-      {debate.zhSummary}
+      {debate.summary}
     </p>
 
     {

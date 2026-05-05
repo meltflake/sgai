@@ -314,9 +314,9 @@ const truncate = (text: string | null | undefined, max: number) => {
   return s.length > max ? `${s.slice(0, max).trim()}...` : s;
 };
 
-const debateTitle = (d: (typeof debates)[number]) => (isEn ? d.title : d.zhTitle);
+const debateTitle = (d: (typeof debates)[number]) => (isEn ? d.titleEn || d.title : d.title);
 const debateSummary = (d: (typeof debates)[number]) =>
-  isEn ? d.summaryShortEn || d.zhSummary : d.zhSummary || d.summaryShortEn || '';
+  isEn ? d.summaryEn || d.summary : d.summary || d.summaryEn || '';
 const debateSignal = (d: (typeof debates)[number]) =>
   isEn ? d.policySignalEn || d.policySignal : d.policySignal || d.policySignalEn;
 const debateQuote = (d: (typeof debates)[number]) =>
@@ -333,7 +333,7 @@ const searchBlob = (d: (typeof debates)[number]) =>
     d.date,
     d.type,
     d.title,
-    d.zhTitle,
+    d.titleEn,
     debateSummary(d),
     debateSignal(d),
     ...(d.topics || []),
@@ -346,7 +346,7 @@ const searchBlob = (d: (typeof debates)[number]) =>
 const speakerDisplay = (raw: string) => {
   const pid = findPersonId(raw);
   const person = pid ? getPerson(pid) : undefined;
-  const label = person ? (isEn ? person.name || raw : person.zhName || person.name || raw) : raw;
+  const label = person ? (isEn ? person.nameEn || person.name || raw : person.name || person.nameEn || raw) : raw;
   const href = pid ? localizedHref(`/voices/${pid}/`, lang) : null;
   return { label, href, title: raw };
 };
@@ -628,7 +628,7 @@ const typeMixLabel = Object.entries(DEBATE_STATS.byType)
                     </a>
                   </h3>
 
-                  {isEn ? null : <p class="mb-2 text-xs italic text-gray-400">{truncate(d.title, 120)}</p>}
+                  {isEn ? null : <p class="mb-2 text-xs italic text-gray-400">{truncate(d.titleEn || '', 120)}</p>}
 
                   <div class="mb-3 flex flex-wrap gap-1.5">
                     {(d.topics || []).map((topic) => (
@@ -736,11 +736,11 @@ const typeMixLabel = Object.entries(DEBATE_STATS.byType)
                         </blockquote>
                       )}
 
-                      {d.summary && (
+                      {d.transcriptEn && (
                         <details class="rounded-lg border border-subtle bg-white p-3 dark:bg-slate-800">
                           <summary class="cursor-pointer text-xs font-semibold text-gray-500">{L.transcript}</summary>
                           <div class="mt-2 max-h-64 overflow-y-auto whitespace-pre-wrap text-xs leading-relaxed text-gray-600 dark:text-gray-400">
-                            {d.summary}
+                            {d.transcriptEn}
                           </div>
                         </details>
                       )}
@@ -932,15 +932,15 @@ const typeMixLabel = Object.entries(DEBATE_STATS.byType)
               const focusAreas = isEn && mp.focusAreasEn?.length ? mp.focusAreasEn : mp.focusAreas;
               return (
                 <button
-                  onclick={`filterBy('speaker','${jsAttr(mp.name)}')`}
+                  onclick={`filterBy('speaker','${jsAttr(mp.nameEn || mp.name)}')`}
                   class="group rounded-xl border border-subtle bg-surface p-4 text-left shadow-sm transition-all hover:border-purple-400 hover:shadow-md"
                 >
                   <div class="mb-2 flex items-start justify-between gap-2">
                     <div class="min-w-0">
                       <div class="text-sm font-semibold text-gray-800 transition-colors group-hover:text-purple-600 dark:text-white">
-                        {mp.name}
+                        {isEn ? mp.nameEn || mp.name : mp.name || mp.nameEn}
                       </div>
-                      {!isEn && mp.zhName && <div class="text-xs text-gray-500">{mp.zhName}</div>}
+                      {!isEn && mp.nameEn && <div class="text-xs text-gray-500">{mp.nameEn}</div>}
                     </div>
                     <span
                       class={`shrink-0 rounded-full px-2 py-0.5 text-xs ${mp.role === '反对党' ? 'bg-orange-100 text-orange-700' : 'bg-blue-100 text-blue-700'}`}

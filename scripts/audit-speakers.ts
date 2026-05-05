@@ -36,7 +36,7 @@ function audit(): AuditResult {
   // Two people with the same normalized name would collide; assert here.
   const seen = new Map<string, string>();
   for (const p of allPeople) {
-    const allKeys = new Set<string>([p.name, p.zhName, ...(p.aliases || [])].map(normalizeName));
+    const allKeys = new Set<string>([p.nameEn, p.name, ...(p.aliases || [])].map(normalizeName));
     for (const k of allKeys) {
       if (!k) continue;
       if (seen.has(k) && seen.get(k) !== p.id) {

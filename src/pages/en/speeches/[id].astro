@@ -38,14 +38,14 @@ const speakerPid = findPersonId(speech.speaker);
 const speakerTitle = pickLocalized(speech, 'speakerTitle', 'speakerTitleEn', lang);
 
 const metadata = {
-  title: `${speech.title} · MDDI Speech`,
-  description: speech.title,
+  title: `${speech.titleEn || speech.title} · MDDI Speech`,
+  description: speech.titleEn || speech.title,
 };
 
 const articleSchema = {
   '@context': 'https://schema.org',
   '@type': 'Article',
-  headline: speech.title,
+  headline: speech.titleEn || speech.title,
   datePublished: speech.date,
   inLanguage: 'en',
   author: { '@type': 'Person', name: speech.speaker },
@@ -56,7 +56,7 @@ const articleSchema = {
   },
 };
 
-const breadcrumbs = [{ label: 'AI Influence Map', href: '/en/voices/' }, { label: speech.title }];
+const breadcrumbs = [{ label: 'AI Influence Map', href: '/en/voices/' }, { label: speech.titleEn || speech.title }];
 ---
 
 <Layout metadata={metadata} breadcrumbs={breadcrumbs}>
@@ -67,7 +67,7 @@ const breadcrumbs = [{ label: 'AI Influence Map', href: '/en/voices/' }, { label
       MDDI Speech · {speech.date}
     </p>
     <h1 class="t-display text-gray-900 dark:text-white mb-6">
-      {speech.title}
+      {speech.titleEn || speech.title}
     </h1>
 
     <div class="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-gray-600 dark:text-gray-400 mb-8">
@@ -83,10 +83,10 @@ const breadcrumbs = [{ label: 'AI Influence Map', href: '/en/voices/' }, { label
       <span class="text-gray-300 dark:text-gray-600">·</span>
       <span>{speakerTitle}</span>
       {
-        speech.event && (
+        (speech.eventEn || speech.event) && (
           <>
             <span class="text-gray-300 dark:text-gray-600">·</span>
-            <span class="italic">{speech.event}</span>
+            <span class="italic">{speech.eventEn || speech.event}</span>
           </>
         )
       }

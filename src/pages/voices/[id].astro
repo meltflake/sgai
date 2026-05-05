@@ -50,7 +50,7 @@ const platformLabels: Record<string, string> = {
 };
 
 const metadata = {
-  title: `${person.zhName || person.name} · AI 影响力图谱`,
+  title: `${person.name || person.name} · AI 影响力图谱`,
   description: person.summary || `${person.name} 在新加坡 AI 政策中的发言、政策关联与公开视频记录。`,
 };
 
@@ -58,7 +58,7 @@ const personSchema = {
   '@context': 'https://schema.org',
   '@type': 'Person',
   name: person.name,
-  alternateName: person.zhName,
+  alternateName: person.name,
   jobTitle: person.title,
   description: person.summary,
   affiliation: person.affiliations.map((name) => ({ '@type': 'Organization', name })),
@@ -68,7 +68,7 @@ const personSchema = {
 
 <Layout
   metadata={metadata}
-  breadcrumbs={[{ label: 'AI 影响力图谱', href: '/voices/' }, { label: person.zhName || person.name }]}
+  breadcrumbs={[{ label: 'AI 影响力图谱', href: '/voices/' }, { label: person.name || person.name }]}
 >
   <JsonLd schema={personSchema} />
 
@@ -78,17 +78,17 @@ const personSchema = {
         <div>
           <p class="text-xs uppercase tracking-[0.18em] text-primary font-semibold mb-3">AI Influence Profile</p>
           <h1 class="t-display text-gray-900 dark:text-white">
-            {person.zhName || person.name}
+            {person.name || person.name}
           </h1>
-          {person.zhName && <p class="text-lg text-gray-500 dark:text-gray-400 mt-2">{person.name}</p>}
+          {person.name && <p class="text-lg text-gray-500 dark:text-gray-400 mt-2">{person.name}</p>}
         </div>
         <span class={`text-xs font-semibold px-2.5 py-1 rounded-full shrink-0 ${categoryColors[person.category]}`}>
           {categoryLabels[person.category]}
         </span>
       </div>
-      <p class="text-gray-700 dark:text-gray-300 mt-4 font-medium">{person.zhTitle || person.title}</p>
+      <p class="text-gray-700 dark:text-gray-300 mt-4 font-medium">{person.title || person.title}</p>
       {
-        person.title && person.title !== person.zhTitle && (
+        person.title && person.title !== person.title && (
           <p class="text-sm text-gray-500 dark:text-gray-400 italic">{person.title}</p>
         )
       }
@@ -167,13 +167,13 @@ const personSchema = {
                 href={`/debates/${debate.id}/`}
                 class="block bg-surface rounded-lg p-4 border border-subtle hover:border-blue-300 hover:shadow-sm transition-all"
               >
-                <h3 class="font-semibold text-gray-800 dark:text-white text-sm leading-snug">{debate.zhTitle}</h3>
+                <h3 class="font-semibold text-gray-800 dark:text-white text-sm leading-snug">{debate.title}</h3>
                 <p class="text-xs text-gray-500 mt-1">
                   {debate.date} · 第 {debate.parliament} 届国会
                 </p>
-                {debate.zhSummary && (
+                {debate.summary && (
                   <p class="text-xs text-gray-600 dark:text-gray-400 mt-2 leading-relaxed line-clamp-3">
-                    {debate.zhSummary}
+                    {debate.summary}
                   </p>
                 )}
               </a>

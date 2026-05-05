@@ -33,8 +33,8 @@ function getIndex(): Map<string, string> {
   const m = new Map<string, string>();
   for (const p of allPeople) {
     const variants = new Set<string>();
-    variants.add(p.name);
-    variants.add(p.zhName);
+    if (p.nameEn) variants.add(p.nameEn);
+    if (p.name) variants.add(p.name);
     if (p.aliases) for (const a of p.aliases) variants.add(a);
     for (const v of variants) {
       const key = normalizeName(v);
@@ -69,5 +69,5 @@ export function getPerson(id: string): Person | undefined {
 export function personDisplayName(id: string): string {
   const p = getPerson(id);
   if (!p) return id;
-  return p.zhName || p.name;
+  return p.name || p.nameEn;
 }
