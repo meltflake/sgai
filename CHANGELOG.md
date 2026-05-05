@@ -4,6 +4,99 @@
 
 ---
 
+## 0.11.0 — 2026-05-05
+
+### Phase 2：i18n root 翻转 — EN 进根，ZH 进 `/zh/`
+
+迁移规划见 [docs/20260505-global-i18n-routing-plan.md](./docs/20260505-global-i18n-routing-plan.md)。提交 [12d4618](https://github.com/meltflake/sgai/commit/12d4618)（114 files / +2975 / −2877）。
+
+#### 路由架构
+
+- [src/i18n/index.ts](./src/i18n/index.ts) 拆双常量：`ROUTE_DEFAULT_LOCALE = 'en'`（决定哪条 locale 不带前缀）+ `DEFAULT_LOCALE = 'zh'`（决定哪条 locale 在裸字段里）。前者驱动 `getLangFromPath` / `localizedHref` / `unprefixed` / `localePrefix`，后者驱动 `siblingSuffix` / `pickLocalized`。
+- 解耦后无需把所有中文裸字段改名为 `*Zh`——历史数据 convention 不动，只翻路由。
+
+#### 数据契约统一
+
+之前 debates / people / voices 的字段是反向 convention（裸字段=英文，`zh*`=中文）。Phase 2 全部改成跟 policies 一致（裸字段=中文，`*En`=英文）：
+
+- [src/data/debates.ts](./src/data/debates.ts) Debate + MP_PROFILES：`title`(en)→`titleEn`、`zhTitle`(zh)→`title`、`summary`(en raw Hansard)→`transcriptEn`（语义重命名）、`zhSummary`→`summary`、`summaryShortEn`→`summaryEn`。
+- [src/data/people.ts](./src/data/people.ts)：`name`/`zhName`/`title`/`zhTitle` → `nameEn`/`name`/`titleEn`/`title`。
+- [src/data/voices.ts](./src/data/voices.ts) Institution：`name`(MDDI 等缩写)→`abbreviation`、`zhName`→`name`；MddiSpeech：`title`/`zhTitle`/`event`/`zhEvent` → `titleEn`/`title`/`eventEn`/`event`。
+- [src/data/mp-stubs.json](./src/data/mp-stubs.json)：213 条同模式重命名。
+- 17 个 consumer 文件自动 + 手工修复（DebatesIndex、各 EN 页 person/debate 字段读取等）。
+
+Codemod 留仓 [scripts/i18n-migrate-data.mjs](./scripts/i18n-migrate-data.mjs) + [scripts/i18n-migrate-consumers.mjs](./scripts/i18n-migrate-consumers.mjs)，scope-aware（slice 到具体 export）+ value-guard（避开 backtick string 误匹配）。
+
+#### Pages 重排
+
+- `src/pages/en/**` → `src/pages/`（EN 占根）。
+- 21 个 entity 目录（about / benchmarking / debates / ecosystem / levers / policies / voices 等）→ `src/pages/zh/`。
+- 根 `[...blog]/index.astro` 保留（按 permalink 分发 EN 与 ZH）；ZH blog 列表 / category / tag → `src/pages/zh/blog/`。
+- Blog permalink 翻转（[utils/blog.ts](./src/utils/blog.ts)）：EN 裸 slug，ZH 加 `zh/` 前缀。
+- 404 拆双页：EN [src/pages/404.astro](./src/pages/404.astro)、ZH [src/pages/zh/404.astro](./src/pages/zh/404.astro)。
+
+#### 组件改写
+
+- [CommonMeta.astro](./src/components/common/CommonMeta.astro)：删 hardcoded `mirroredRoots` Set；always emit `en` + `zh-CN` + `x-default` 三个 hreflang（迁移后所有内容页均双语镜像）。
+- [LanguageToggle.astro](./src/components/common/LanguageToggle.astro)：路径切换逻辑反向，`/policies/` ↔ `/zh/policies/`。
+- [LangBanner.astro](./src/components/common/LangBanner.astro)：**取消首屏 auto-redirect**——浏览器语言只做轻提示，URL 是 source of truth，深链 / 搜索引擎拿到什么 URL 就停在什么 URL。
+- [Layout.astro](./src/layouts/Layout.astro)：默认 lang fallback 由 `'zh'` 改 `'en'`；inline rewrite script 只 honor stored `sgai_lang`，不再读 navigator.language。
+
+#### Hardcoded URL 清理
+
+- [scripts/i18n-cleanup-en-prefix.mjs](./scripts/i18n-cleanup-en-prefix.mjs)：50 个文件清理。内部 `/en/foo/` → `/foo/`、`https://sgai.md/en/` → `https://sgai.md/`；外部 host（edb.gov.sg/en/、oecd.ai/en/、EU `/en/`）通过 hostname-aware regex 守卫保留。
+
+#### 输出层
+
+- [astro.config.ts](./astro.config.ts) 给 `@astrojs/sitemap` 加 `i18n: { defaultLocale: 'en', locales: { en: 'en', zh: 'zh-CN' } }`，sitemap 生成 4084 条 `xhtml:link` alternates / 2063 URLs。
+- [llms.txt](./src/pages/llms.txt.ts) + [llms-full.txt](./src/pages/llms-full.txt.ts) 重写：每节 EN canonical 在前，ZH mirror 在后。
+- Updates RSS 双语：`/updates.rss.xml`（EN）+ `/zh/updates.rss.xml`（ZH），type chip 本地化（[Site] / [站点] 等）。
+- [_redirects](./public/_redirects) 链：`/en/people/:id → /voices/:id`（特例先行）→ `/en/* → /:splat`（catch-all）→ `/people/:id → /voices/:id`。
+- [scripts/i18n-check.mjs](./scripts/i18n-check.mjs) 适配新布局：EN 默认扫 `dist/`（排除 `/zh/` 子目录），ZH 扫 `dist/zh/`。
+
+#### 验证
+
+完整测试见 commit message。摘要：
+
+- `npm run check`：65 lib tests pass，0 lint / type / prettier errors。
+- `npm run build`：2065 pages，99s。
+- `node scripts/i18n-check.mjs`：1023 个 EN 页面 0 中文残留。
+- HTTP audit：26/26 dev routes 200。
+- 10 个双语 sample pages：html lang + h1 + status 全对。
+- 6 个 sample 页面 canonical + hreflang 全对。
+- LanguageToggle EN ↔ ZH 双向切换 + localStorage 持久化通过。
+- 4 个 RSS feed 双语本地化通过。
+
+---
+
+## 0.10.0 — 2026-05-05
+
+### Phase 1：Updates feed + 首页任务卡 + IA 减负
+
+提交 [557dd7c](https://github.com/meltflake/sgai/commit/557dd7c)（32 files / +1826 / −407）。
+
+#### Updates feed（解决"首页缺动态感"）
+
+- [src/data/updates.ts](./src/data/updates.ts) 12 类型双语 schema + 10 条种子 + `sortedUpdates` / `recentUpdates` / `updatesByMonth` helper。
+- [scripts/lib/append-update.ts](./scripts/lib/append-update.ts) pipeline emit 后调用一行追加更新；带 i18n-pair 回归保护和自动 rollback。
+- [RecentUpdates.astro](./src/components/home/RecentUpdates.astro) 首页模块（限 6 条，挪到"最近国会辩论"之后），只为出现的类型上色。
+- `/updates/` + `/zh/updates/` 完整列表（按月分组）+ `/updates.rss.xml` + `/zh/updates.rss.xml`。
+- 接入 9 个 refresh pipeline（startups / talent / tracker / benchmarking 走 run-template；policies / ecosystem / levers / legal-ai / videos 单独接入），每次 emit 自动追加一条更新，与数据同 PR。
+
+#### 首页任务卡 + IA 减负
+
+- [TaskEntries.astro](./src/components/home/TaskEntries.astro)：4 张任务卡（理解战略 / 找政策 / 看企业 / 跟踪变化），插入 Hero 之下。
+- 16 个新 i18n 字典 key。
+- Header Data 组从 9 项缩到 5（Updates / Tracker / Startups / Talent / Benchmarking）；Footer 保留全部 9 项作为档案入口。
+
+#### 清理
+
+- 删除 `src/pages/people/[id].astro`（zh + en）—— 31 条人物页都 canonical 到 `/voices/{id}/`，加 4 条 Cloudflare 301。
+- AuthorBio 链接从 `/people/` 改 `/voices/`。
+- 修订两份规划文档错误前提：244 → 31 真实人物、删除职位 stub 前提、量化 129 处 `/en/` 残留。
+
+---
+
 ## 0.9.7 — 2026-05-05
 
 ### Codex 改造 follow-up：路由解耦、SEO 收敛、drilldown 补深
