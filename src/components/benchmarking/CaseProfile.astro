@@ -1,0 +1,298 @@
+---
+import { Icon } from 'astro-icon/components';
+
+import JsonLd from '~/components/common/JsonLd.astro';
+import Layout from '~/layouts/PageLayout.astro';
+import { benchmarkCaseProfileUpdated, dataDate, dataDisclaimer, dataDisclaimerEn } from '~/data/benchmarking';
+import { benchmarkCasePages, regionPages, type BenchmarkCasePage } from '~/utils/entity-pages';
+import { localizedHref, type Lang } from '~/i18n';
+
+interface Props {
+  page: BenchmarkCasePage;
+  lang: Lang;
+}
+
+const { page, lang } = Astro.props;
+const isEn = lang === 'en';
+
+const benchmarkRoot = isEn ? '/en/benchmarking/' : '/benchmarking/';
+
+const caseItem = page.caseItem;
+const name = isEn ? caseItem.nameEn || caseItem.name : caseItem.name;
+const region = isEn ? caseItem.regionEn || caseItem.region : caseItem.region;
+const type = isEn ? caseItem.typeEn || caseItem.type : caseItem.type;
+const status = isEn ? caseItem.statusEn || caseItem.status : caseItem.status;
+const owner = isEn ? caseItem.ownerEn || caseItem.owner : caseItem.owner;
+const summary = isEn ? caseItem.summaryEn || caseItem.summary : caseItem.summary;
+const headline = isEn ? caseItem.headlineEn || caseItem.headline : caseItem.headline;
+const whyItMatters = isEn ? caseItem.whyItMattersEn || caseItem.whyItMatters : caseItem.whyItMatters;
+const singaporeTakeaway = isEn
+  ? caseItem.singaporeTakeawayEn || caseItem.singaporeTakeaway
+  : caseItem.singaporeTakeaway;
+
+const relatedCases = benchmarkCasePages.filter((candidate) => candidate.slug !== page.slug).slice(0, 4);
+
+const caseRegionPage = regionPages.find(
+  (candidate) =>
+    candidate.summary.name === caseItem.region ||
+    candidate.summary.nameEn === caseItem.regionEn ||
+    candidate.summary.nameEn === caseItem.region ||
+    candidate.summary.name === caseItem.regionEn
+);
+
+const labels = {
+  benchmarkCrumb: isEn ? 'International Benchmarks' : '国际对标',
+  caseEyebrow: 'Benchmark Case · Updated',
+  ownerLabel: isEn ? 'Owner' : '归属方',
+  whyItMatters: isEn ? 'Why It Matters' : '为什么值得观察',
+  singaporeTakeaway: isEn ? 'Singapore Takeaway' : '对新加坡的启发',
+  sourcesHeading: isEn ? 'Sources' : '参考来源',
+  regionBackground: isEn ? 'Region background' : '地区背景',
+  anotherCase: isEn ? 'Another case' : '另一个案例',
+  continueCases: isEn ? 'Continue With Cases' : '继续看案例',
+  dataNoteHeading: isEn ? 'Data Note' : '数据说明',
+  dataNote: isEn
+    ? `International benchmark case profile, curated on ${benchmarkCaseProfileUpdated}; underlying region data follows the public reading on ${dataDate}. Future updates can add official links, timelines, indicators, citations, and cross-page relations.`
+    : `本页为国际对标案例档案，整理于 ${benchmarkCaseProfileUpdated}；基础地区数据沿用 ${dataDate} 的公开口径。后续可继续补充官方链接、时间线、指标、引用和跨页关系。`,
+  backTo: isEn ? 'Back to International Benchmarks' : '返回国际对标',
+  disclaimer: (isEn ? dataDisclaimerEn : null) || dataDisclaimer,
+};
+
+const metadata = isEn
+  ? {
+      title: `${name} · International Benchmark Case`,
+      description: summary,
+    }
+  : {
+      title: `${name} · 国际对标案例`,
+      description: summary,
+    };
+
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: isEn ? metadata.title : `${name} · 国际对标案例`,
+  description: summary,
+  dateModified: benchmarkCaseProfileUpdated,
+  inLanguage: isEn ? 'en' : 'zh-CN',
+  mainEntityOfPage: new URL(Astro.url).href,
+  about: [
+    { '@type': 'Thing', name: caseItem.nameEn || caseItem.name },
+    { '@type': 'Place', name: caseItem.regionEn || caseItem.region },
+  ],
+  isPartOf: {
+    '@type': 'WebSite',
+    name: isEn ? 'Singapore AI Observatory' : '新加坡 AI 观察',
+    url: isEn ? 'https://sgai.md/en/' : 'https://sgai.md/',
+  },
+};
+
+const breadcrumbs = [{ label: labels.benchmarkCrumb, href: localizedHref('/benchmarking/', lang) }, { label: name }];
+---
+
+<Layout metadata={metadata} breadcrumbs={breadcrumbs} lang={lang}>
+  <JsonLd schema={articleSchema} />
+
+  <article class="max-w-4xl mx-auto px-4 sm:px-6 py-12 md:py-16">
+    <header class="mb-8">
+      <div class="mb-5 flex flex-wrap items-center gap-2 text-xs">
+        <a
+          href={benchmarkRoot}
+          class="inline-flex items-center gap-1 bg-primary/10 text-primary px-3 py-1.5 rounded font-semibold hover:bg-primary/15 transition-colors"
+        >
+          <Icon name="tabler:arrow-left" class="w-3.5 h-3.5" />
+          {labels.benchmarkCrumb}
+        </a>
+        <span class="bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 px-3 py-1.5 rounded">
+          {caseItem.flag}
+          {region}
+        </span>
+        <span class="bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 px-3 py-1.5 rounded">
+          {type}
+        </span>
+        <span class="bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 px-3 py-1.5 rounded">
+          {status}
+        </span>
+      </div>
+
+      <p class="text-xs uppercase tracking-[0.18em] text-primary font-semibold mb-4">
+        {labels.caseEyebrow}
+        {benchmarkCaseProfileUpdated}
+      </p>
+      <h1 class="t-display text-gray-900 dark:text-white mb-3">{name}</h1>
+      {
+        !isEn && caseItem.nameEn && caseItem.nameEn !== caseItem.name && (
+          <p class="text-base md:text-lg text-gray-500 dark:text-gray-400 italic">{caseItem.nameEn}</p>
+        )
+      }
+      <p class="t-lead text-gray-700 dark:text-gray-300 mt-6">{summary}</p>
+    </header>
+
+    <section class="callout-note rounded-lg p-5 mb-8">
+      <p class="font-serif text-lg leading-[1.85] text-gray-900 dark:text-white m-0">{headline}</p>
+    </section>
+
+    <dl
+      class="bg-surface rounded-lg border border-subtle p-5 mb-10 grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4 text-sm"
+    >
+      <div>
+        <dt class="text-xs uppercase tracking-wider text-muted mb-1">{labels.ownerLabel}</dt>
+        <dd class="text-gray-900 dark:text-white">{owner}</dd>
+      </div>
+      {
+        caseItem.facts.map((fact) => (
+          <div>
+            <dt class="text-xs uppercase tracking-wider text-muted mb-1">
+              {isEn ? fact.labelEn || fact.label : fact.label}
+            </dt>
+            <dd class="text-gray-900 dark:text-white">{isEn ? fact.valueEn || fact.value : fact.value}</dd>
+            {(isEn ? fact.noteEn : fact.note) && (
+              <dd class="mt-1 text-xs text-muted">{isEn ? fact.noteEn : fact.note}</dd>
+            )}
+          </div>
+        ))
+      }
+    </dl>
+
+    <section class="mb-10 grid md:grid-cols-2 gap-5">
+      <div>
+        <h2 class="t-h3 text-gray-900 dark:text-white mb-4">{labels.whyItMatters}</h2>
+        <p class="text-gray-800 dark:text-gray-200 leading-[1.85]">{whyItMatters}</p>
+      </div>
+      <div>
+        <h2 class="t-h3 text-gray-900 dark:text-white mb-4">{labels.singaporeTakeaway}</h2>
+        <p class="text-gray-800 dark:text-gray-200 leading-[1.85]">{singaporeTakeaway}</p>
+      </div>
+    </section>
+
+    {
+      caseItem.sections.map((section) => {
+        const sectionTitle = isEn ? section.titleEn || section.title : section.title;
+        const sectionBody = isEn ? section.bodyEn || section.body : section.body;
+        const bullets = isEn ? section.bulletsEn : section.bullets;
+        return (
+          <section class="mb-10">
+            <h2 class="t-h3 text-gray-900 dark:text-white mb-4">{sectionTitle}</h2>
+            <p class="text-base leading-[1.85] text-gray-800 dark:text-gray-200">{sectionBody}</p>
+            {bullets && bullets.length > 0 && (
+              <ul class="mt-4 grid gap-2 text-sm">
+                {bullets.map((item) => (
+                  <li class="flex items-start gap-2 text-gray-700 dark:text-gray-300">
+                    <Icon name="tabler:check" class="w-4 h-4 mt-1 text-primary shrink-0" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </section>
+        );
+      })
+    }
+
+    <section class="mb-10">
+      <h2 class="t-h3 text-gray-900 dark:text-white mb-4">{labels.sourcesHeading}</h2>
+      <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+        {
+          caseItem.sources.map((source) => {
+            const label = isEn ? source.labelEn || source.label : source.label;
+            return (
+              <li>
+                {source.url ? (
+                  <a
+                    href={source.url}
+                    target="_blank"
+                    rel="noopener"
+                    class="inline-flex items-center gap-1 text-primary hover:text-secondary"
+                  >
+                    {label}
+                    <Icon name="tabler:external-link" class="w-3.5 h-3.5" />
+                  </a>
+                ) : (
+                  <span>• {label}</span>
+                )}
+              </li>
+            );
+          })
+        }
+      </ul>
+    </section>
+
+    <section class="mb-10 grid gap-4 md:grid-cols-2">
+      {
+        caseRegionPage && (
+          <a
+            href={`${benchmarkRoot}${caseRegionPage.slug}/`}
+            class="group rounded-lg border border-subtle bg-surface p-5 hover:border-primary/50 hover:shadow-sm transition-all"
+          >
+            <p class="text-xs text-muted">{labels.regionBackground}</p>
+            <h2 class="mt-2 font-bold text-gray-900 dark:text-white group-hover:text-primary">
+              {caseRegionPage.summary.flag}{' '}
+              {isEn ? caseRegionPage.summary.nameEn || caseRegionPage.summary.name : caseRegionPage.summary.name}
+            </h2>
+            <p class="mt-2 text-sm text-gray-700 dark:text-gray-300">
+              {isEn
+                ? caseRegionPage.summary.strengthEn || caseRegionPage.summary.strength
+                : caseRegionPage.summary.strength}
+            </p>
+          </a>
+        )
+      }
+      {
+        relatedCases.slice(0, 1).map((related) => (
+          <a
+            href={`${benchmarkRoot}${related.slug}/`}
+            class="group rounded-lg border border-subtle bg-surface p-5 hover:border-primary/50 hover:shadow-sm transition-all"
+          >
+            <p class="text-xs text-muted">{labels.anotherCase}</p>
+            <h2 class="mt-2 font-bold text-gray-900 dark:text-white group-hover:text-primary">
+              {related.caseItem.flag} {isEn ? related.caseItem.nameEn || related.caseItem.name : related.caseItem.name}
+            </h2>
+            <p class="mt-2 text-sm text-gray-700 dark:text-gray-300">
+              {isEn ? related.caseItem.headlineEn || related.caseItem.headline : related.caseItem.headline}
+            </p>
+          </a>
+        ))
+      }
+    </section>
+
+    {
+      relatedCases.length > 1 && (
+        <section class="mb-10">
+          <h2 class="t-h3 text-gray-900 dark:text-white mb-4">{labels.continueCases}</h2>
+          <div class="grid gap-3 sm:grid-cols-2">
+            {relatedCases.slice(1).map((related) => (
+              <a
+                href={`${benchmarkRoot}${related.slug}/`}
+                class="group bg-surface rounded-lg p-4 border border-subtle hover:border-primary transition-colors"
+              >
+                <p class="text-xs text-muted">
+                  {related.caseItem.flag}{' '}
+                  {isEn ? related.caseItem.regionEn || related.caseItem.region : related.caseItem.region} ·{' '}
+                  {isEn ? related.caseItem.typeEn || related.caseItem.type : related.caseItem.type}
+                </p>
+                <h3 class="mt-1 font-semibold text-gray-900 dark:text-white group-hover:text-primary">
+                  {isEn ? related.caseItem.nameEn || related.caseItem.name : related.caseItem.name}
+                </h3>
+              </a>
+            ))}
+          </div>
+        </section>
+      )
+    }
+
+    <section class="mb-10 pt-6 border-t border-subtle">
+      <h2 class="text-sm uppercase tracking-wider text-muted font-semibold mb-3">{labels.dataNoteHeading}</h2>
+      <p class="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">{labels.dataNote}</p>
+    </section>
+
+    <nav class="mt-12 pt-6 border-t border-subtle">
+      <a
+        href={benchmarkRoot}
+        class="text-sm text-primary hover:text-secondary font-medium inline-flex items-center gap-1"
+      >
+        <Icon name="tabler:arrow-left" class="w-4 h-4" />
+        {labels.backTo}
+      </a>
+    </nav>
+  </article>
+</Layout>

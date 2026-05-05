@@ -19,7 +19,7 @@ const base = 'https://sgai.md';
 const policyCount = categories.reduce((sum, category) => sum + category.policies.length, 0);
 const projectCount = leverPages.filter((page) => page.kind === 'item').length;
 const startupEntityCount = startupEntityPages.length;
-const benchmarkProfileCount = regionPages.length + benchmarkCasePages.length + benchmarkDrilldownPages.length;
+const enrichedDrilldownCount = benchmarkDrilldownPages.filter((page) => !page.analysisPending).length;
 const communityOpenSourceCount = allCommunityOpenSourceProjects.length;
 
 const body = `# 新加坡 AI 观察
@@ -42,7 +42,7 @@ Full LLM index: ${base}/llms-full.txt
 - ${base}/videos/ — ${videos.length} curated AI videos with readable transcript support.
 - ${base}/levers/ — ${projectCount} national AI lever projects grouped by AI-injection path.
 - ${base}/legal-ai/ — ${legalItemPages.length} Singapore AI legal-framework cards.
-- ${base}/benchmarking/ — ${benchmarkProfileCount} international benchmark profiles across regions, concrete cases, and region drilldowns.
+- ${base}/benchmarking/ — ${regionPages.length} region profiles, ${benchmarkCasePages.length} concrete benchmark cases, and ${enrichedDrilldownCount} enriched region drilldowns. Stub drilldowns are excluded from indexing until deep analysis is added.
 - ${base}/startups/ — ${startupEntityCount} Singapore AI startup ecosystem entity profiles.
 - ${base}/community-opensource/ — ${communityOpenSourceCount} community open-source project profiles from universities, corporate labs, and startups.
 - ${base}/references/ — Official sources, reports, datasets, and research references.

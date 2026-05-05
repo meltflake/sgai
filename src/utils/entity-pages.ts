@@ -4,6 +4,7 @@ import {
   benchmarkCases,
   regions,
   regionDetails,
+  type BenchmarkAnalysisSource,
   type BenchmarkCase,
   type RegionDetail,
   type RegionSummary,
@@ -90,6 +91,13 @@ export interface BenchmarkDrilldownPage {
   facts: BenchmarkDrilldownFact[];
   sources: string[];
   sourcesEn?: string[];
+  /** True until a `drilldownEnrichments[localId]` entry exists. Drives
+   *  noindex on the rendered page so unfilled stubs don't get indexed. */
+  analysisPending: boolean;
+  /** Structured sources accompanying an enrichment. When present these
+   *  render alongside (or instead of) the inherited region-level
+   *  string-only sources list. */
+  analysisSources?: BenchmarkAnalysisSource[];
 }
 
 function benchmarkDrilldownSlug(regionPage: RegionPage, localId: string, title: string): string {
@@ -103,11 +111,18 @@ function benchmarkDrilldownSlug(regionPage: RegionPage, localId: string, title: 
 function buildBenchmarkDrilldownPages(): BenchmarkDrilldownPage[] {
   const pages: BenchmarkDrilldownPage[] = [];
 
-  function addPage(page: Omit<BenchmarkDrilldownPage, 'kind' | 'slug'>): void {
+  function addPage(page: Omit<BenchmarkDrilldownPage, 'kind' | 'slug' | 'analysisPending' | 'analysisSources'>): void {
+    const enrichment = page.region.detail?.drilldownEnrichments?.[page.localId];
+    const enrichedBody = enrichment?.analysis ?? page.body;
+    const enrichedBodyEn = enrichment?.analysisEn ?? enrichment?.analysis ?? page.bodyEn;
     pages.push({
       kind: 'drilldown',
       slug: benchmarkDrilldownSlug(page.region, page.localId, page.titleEn || page.title),
       ...page,
+      body: enrichedBody,
+      bodyEn: enrichedBodyEn,
+      analysisPending: !enrichment,
+      analysisSources: enrichment?.sources,
     });
   }
 

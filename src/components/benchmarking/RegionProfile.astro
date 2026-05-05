@@ -1,0 +1,369 @@
+---
+import { Icon } from 'astro-icon/components';
+
+import JsonLd from '~/components/common/JsonLd.astro';
+import Layout from '~/layouts/PageLayout.astro';
+import { dataDate, dataDisclaimer, dataDisclaimerEn } from '~/data/benchmarking';
+import { getBenchmarkDrilldownsForRegion, regionPages, type RegionPage } from '~/utils/entity-pages';
+import { localizedHref, type Lang } from '~/i18n';
+
+interface Props {
+  page: RegionPage & { kind: 'region' };
+  lang: Lang;
+}
+
+const { page, lang } = Astro.props;
+const isEn = lang === 'en';
+
+const benchmarkRoot = isEn ? '/en/benchmarking/' : '/benchmarking/';
+const leversHref = isEn ? '/en/levers/' : '/levers/';
+const legalAiHref = isEn ? '/en/legal-ai/' : '/legal-ai/';
+
+const summary = page.summary;
+const detail = page.detail;
+const regionName = isEn ? summary.nameEn || summary.name : summary.name;
+const fullName = isEn ? detail?.fullNameEn || detail?.fullName : detail?.fullName;
+const overview = isEn ? detail?.overviewEn || detail?.overview : detail?.overview;
+const strategy = isEn ? summary.strategyEn || summary.strategy : summary.strategy;
+const investment = isEn ? summary.investmentEn || summary.investment : summary.investment;
+const governance = isEn ? summary.governanceEn || summary.governance : summary.governance;
+const strength = isEn ? summary.strengthEn || summary.strength : summary.strength;
+
+const regionDrilldowns = getBenchmarkDrilldownsForRegion(page.slug);
+const regionDrilldownByLocalId = new Map(regionDrilldowns.map((item) => [item.localId, item]));
+
+function drilldownHref(localId: string): string {
+  const target = regionDrilldownByLocalId.get(localId);
+  return target ? `${benchmarkRoot}${target.slug}/` : benchmarkRoot;
+}
+
+const relatedRegions = regionPages.filter((candidate) => candidate.slug !== page.slug).slice(0, 6);
+
+const labels = {
+  benchmarkCrumb: isEn ? 'International Benchmarks' : '国际对标',
+  eyebrow: isEn ? 'International Benchmark · Updated' : 'International Benchmark · 数据更新',
+  pageHeading: isEn ? `${regionName} AI Strategy Benchmark` : `${regionName} AI 战略对标`,
+  coreStrategy: isEn ? 'Core strategy' : '核心战略',
+  investmentScale: isEn ? 'Investment' : '投资规模',
+  governanceModel: isEn ? 'Governance' : '治理模式',
+  comparativeStrength: isEn ? 'Core strength' : '核心优势',
+  oneLineRead: isEn ? 'One-line Read' : '一句话判断',
+  oneLineReadFallback: isEn
+    ? `${regionName}'s AI strategy centres on ${strategy}; its governance model is ${governance}; its comparative strength is ${strength}.`
+    : `${regionName} 的 AI 战略可概括为：${strategy}；治理模式是 ${governance}；相对优势是 ${strength}。`,
+  coreStrategiesHeading: isEn ? 'Core Strategies' : '核心战略',
+  investmentHeading: isEn ? 'Investment and Resources' : '投资与资源',
+  governanceHeading: isEn ? 'Governance Model' : '治理模式',
+  strengthsHeading: isEn ? 'Strengths vs Singapore' : '相对新加坡的优势',
+  weaknessesHeading: isEn ? 'Weaknesses vs Singapore' : '相对新加坡的劣势',
+  keyHeading: isEn ? 'Key Initiatives and Bodies' : '关键举措与机构',
+  keyInitiatives: isEn ? 'Key Initiatives' : '关键举措',
+  keyBodies: isEn ? 'Key Bodies' : '关键机构',
+  itemLabel: isEn ? 'Item' : '项目',
+  amountLabel: isEn ? 'Amount' : '金额',
+  noteLabel: isEn ? 'Note' : '备注',
+  sourcesHeading: isEn ? 'Sources' : '参考来源',
+  pendingHeading: isEn ? 'Detail profile pending' : '详情待扩展',
+  pendingNote: isEn
+    ? `This page is currently generated from the overview table. Add a full RegionDetail record in src/data/benchmarking.ts and this route will automatically expand with strategy, investment, governance, strengths/weaknesses, and sources.`
+    : `本页目前使用总览表数据生成。后续可在 src/data/benchmarking.ts 补充完整 RegionDetail，页面会自动展开战略、投资、治理、优势/劣势与来源。`,
+  relatedHeading: isEn ? 'Related Reading' : '关联阅读',
+  benchmarkOverview: isEn ? 'Benchmark Overview' : '国际对标总览',
+  leversCta: isEn ? 'Singapore National AI Levers' : '新加坡国家 AI 抓手',
+  legalCta: isEn ? 'Singapore AI Legal Framework' : '新加坡 AI 法律框架',
+  continueHeading: isEn ? 'Continue Comparing' : '继续比较',
+  backTo: isEn ? 'Back to International Benchmarks' : '返回国际对标',
+  disclaimer: (isEn ? dataDisclaimerEn : null) || dataDisclaimer,
+};
+
+const metadata = isEn
+  ? {
+      title: `${regionName} AI Strategy Benchmark · International Benchmarks`,
+      description: overview || `${regionName}'s AI strategy, investment, governance model, and comparative strengths.`,
+    }
+  : {
+      title: `${regionName} AI 战略对标 · 国际对标`,
+      description: overview || `${regionName} AI 战略、投资、治理模式与核心优势对标。`,
+    };
+
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: isEn ? `${regionName} AI Strategy Benchmark` : `${regionName} AI 战略对标`,
+  description: metadata.description,
+  dateModified: dataDate,
+  inLanguage: isEn ? 'en' : 'zh-CN',
+  about: [
+    { '@type': 'Place', name: summary.nameEn || summary.name },
+    { '@type': 'Thing', name: 'AI strategy' },
+  ],
+};
+
+const breadcrumbs = [
+  { label: labels.benchmarkCrumb, href: localizedHref('/benchmarking/', lang) },
+  { label: regionName },
+];
+
+const strengthsList = (isEn && detail?.strengthsEn?.length ? detail.strengthsEn : detail?.strengths) || [];
+const weaknessesList = (isEn && detail?.weaknessesEn?.length ? detail.weaknessesEn : detail?.weaknesses) || [];
+const keyInitiativesList =
+  (isEn && detail?.keyInitiativesEn?.length ? detail.keyInitiativesEn : detail?.keyInitiatives) || [];
+const sourcesList = (isEn && detail?.sourcesEn?.length ? detail.sourcesEn : detail?.sources) || [];
+---
+
+<Layout metadata={metadata} breadcrumbs={breadcrumbs} lang={lang}>
+  <JsonLd schema={articleSchema} />
+
+  <article class="max-w-4xl mx-auto px-4 sm:px-6 py-12 md:py-16">
+    <header class="mb-8">
+      <p class="text-xs uppercase tracking-[0.18em] text-primary font-semibold mb-4">
+        {labels.eyebrow}
+        {dataDate}
+      </p>
+      <h1 class="t-display text-gray-900 dark:text-white mb-3">
+        {summary.flag}
+        {labels.pageHeading}
+      </h1>
+      {fullName && <p class="text-base md:text-lg text-gray-500 dark:text-gray-400">{fullName}</p>}
+    </header>
+
+    <section class="grid md:grid-cols-2 gap-3 mb-8">
+      <a
+        href={drilldownHref('core-strategy')}
+        class="group bg-surface border border-subtle rounded-lg p-4 hover:border-primary/50 hover:shadow-sm transition-all"
+      >
+        <div class="text-xs uppercase tracking-wider text-gray-500 mb-1">{labels.coreStrategy}</div>
+        <div class="font-semibold group-hover:text-primary">{strategy}</div>
+        <div class="text-xs text-gray-500 mt-1">{summary.strategyYear}</div>
+      </a>
+      <a
+        href={drilldownHref('investment-overview')}
+        class="group bg-surface border border-subtle rounded-lg p-4 hover:border-primary/50 hover:shadow-sm transition-all"
+      >
+        <div class="text-xs uppercase tracking-wider text-gray-500 mb-1">{labels.investmentScale}</div>
+        <div class="font-semibold group-hover:text-primary">{investment}</div>
+      </a>
+      <a
+        href={drilldownHref('governance-model')}
+        class="group bg-surface border border-subtle rounded-lg p-4 hover:border-primary/50 hover:shadow-sm transition-all"
+      >
+        <div class="text-xs uppercase tracking-wider text-gray-500 mb-1">{labels.governanceModel}</div>
+        <div class="font-semibold group-hover:text-primary">{governance}</div>
+      </a>
+      <a
+        href={drilldownHref('comparative-strength')}
+        class="group bg-surface border border-subtle rounded-lg p-4 hover:border-primary/50 hover:shadow-sm transition-all"
+      >
+        <div class="text-xs uppercase tracking-wider text-gray-500 mb-1">{labels.comparativeStrength}</div>
+        <div class="font-semibold group-hover:text-primary">{strength}</div>
+      </a>
+    </section>
+
+    <section class="callout-note rounded-lg p-5 mb-10">
+      <h2 class="font-serif text-xl font-semibold text-gray-900 dark:text-white mb-3">{labels.oneLineRead}</h2>
+      <p class="text-gray-800 dark:text-gray-200 leading-[1.85]">{overview || labels.oneLineReadFallback}</p>
+    </section>
+
+    {
+      detail ? (
+        <>
+          <section class="mb-10">
+            <h2 class="font-serif text-xl font-semibold text-gray-900 dark:text-white mb-4">
+              {labels.coreStrategiesHeading}
+            </h2>
+            <div class="space-y-3">
+              {detail.strategies.map((strategyItem, index) => (
+                <a
+                  href={drilldownHref(`strategy-${index + 1}`)}
+                  class="group block bg-surface border border-subtle rounded-lg p-4 hover:border-primary/50 hover:shadow-sm transition-all"
+                >
+                  <div class="text-xs font-mono text-blue-600 dark:text-blue-400 mb-1">{strategyItem.year}</div>
+                  <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-primary">
+                    {isEn ? strategyItem.nameEn || strategyItem.name : strategyItem.name}
+                  </h3>
+                  <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
+                    {isEn ? strategyItem.descriptionEn || strategyItem.description : strategyItem.description}
+                  </p>
+                </a>
+              ))}
+            </div>
+          </section>
+
+          <section class="mb-10">
+            <h2 class="font-serif text-xl font-semibold text-gray-900 dark:text-white mb-4">
+              {labels.investmentHeading}
+            </h2>
+            <div class="grid gap-3">
+              {detail.investment.map((item, index) => (
+                <a
+                  href={drilldownHref(`investment-${index + 1}`)}
+                  class="group grid gap-3 rounded-lg border border-subtle bg-surface p-4 hover:border-primary/50 hover:shadow-sm transition-all sm:grid-cols-[1.2fr_0.8fr_1.2fr]"
+                >
+                  <div>
+                    <div class="text-xs uppercase tracking-wider text-muted mb-1">{labels.itemLabel}</div>
+                    <div class="font-semibold text-gray-900 dark:text-white group-hover:text-primary">
+                      {isEn ? item.itemEn || item.item : item.item}
+                    </div>
+                  </div>
+                  <div>
+                    <div class="text-xs uppercase tracking-wider text-muted mb-1">{labels.amountLabel}</div>
+                    <div class="font-semibold text-gray-900 dark:text-white">
+                      {isEn ? item.amountEn || item.amount : item.amount}
+                    </div>
+                  </div>
+                  <div>
+                    <div class="text-xs uppercase tracking-wider text-muted mb-1">{labels.noteLabel}</div>
+                    <div class="text-sm text-gray-600 dark:text-gray-400">
+                      {isEn ? item.noteEn || item.note : item.note}
+                    </div>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </section>
+
+          <section class="mb-10">
+            <h2 class="font-serif text-xl font-semibold text-gray-900 dark:text-white mb-3">
+              {labels.governanceHeading}
+            </h2>
+            <p class="text-gray-700 dark:text-gray-300 leading-[1.85]">
+              {isEn ? detail.governanceEn || detail.governance : detail.governance}
+            </p>
+          </section>
+
+          <section class="mb-10 grid md:grid-cols-2 gap-5">
+            <div>
+              <h2 class="font-serif text-xl font-semibold text-green-700 dark:text-green-300 mb-3">
+                {labels.strengthsHeading}
+              </h2>
+              <ul class="space-y-2 text-sm text-gray-700 dark:text-gray-300">
+                {strengthsList.map((item) => (
+                  <li>• {item}</li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h2 class="font-serif text-xl font-semibold text-red-700 dark:text-red-300 mb-3">
+                {labels.weaknessesHeading}
+              </h2>
+              <ul class="space-y-2 text-sm text-gray-700 dark:text-gray-300">
+                {weaknessesList.map((item) => (
+                  <li>• {item}</li>
+                ))}
+              </ul>
+            </div>
+          </section>
+
+          <section class="mb-10">
+            <h2 class="font-serif text-xl font-semibold text-gray-900 dark:text-white mb-4">{labels.keyHeading}</h2>
+            <div class="grid md:grid-cols-2 gap-5">
+              <div class="bg-surface border border-subtle rounded-lg p-4">
+                <h3 class="font-semibold mb-3">{labels.keyInitiatives}</h3>
+                <div class="space-y-2 text-sm">
+                  {keyInitiativesList.map((item, index) => (
+                    <a
+                      href={drilldownHref(`initiative-${index + 1}`)}
+                      class="group flex items-start justify-between gap-3 rounded-md border border-subtle p-3 hover:border-primary/50 hover:bg-slate-50 dark:hover:bg-slate-800/60 transition-colors"
+                    >
+                      <span class="text-gray-700 dark:text-gray-300 group-hover:text-primary">{item}</span>
+                      <Icon name="tabler:arrow-up-right" class="w-4 h-4 text-muted group-hover:text-primary shrink-0" />
+                    </a>
+                  ))}
+                </div>
+              </div>
+              <div class="bg-surface border border-subtle rounded-lg p-4">
+                <h3 class="font-semibold mb-3">{labels.keyBodies}</h3>
+                <div class="space-y-2 text-sm">
+                  {detail.keyBodies.map((body, index) => (
+                    <a
+                      href={drilldownHref(`body-${index + 1}`)}
+                      class="group block rounded-md border border-subtle p-3 hover:border-primary/50 hover:bg-slate-50 dark:hover:bg-slate-800/60 transition-colors"
+                    >
+                      <div class="font-semibold text-gray-900 dark:text-white group-hover:text-primary">
+                        {isEn ? body.nameEn || body.name : body.name}
+                      </div>
+                      <div class="mt-1 text-gray-700 dark:text-gray-300">
+                        {isEn ? body.roleEn || body.role : body.role}
+                      </div>
+                    </a>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="mb-10">
+            <h2 class="font-serif text-xl font-semibold text-gray-900 dark:text-white mb-3">{labels.sourcesHeading}</h2>
+            <ul class="space-y-1 text-sm text-gray-500 dark:text-gray-400">
+              {sourcesList.map((source) => (
+                <li>• {source}</li>
+              ))}
+            </ul>
+          </section>
+        </>
+      ) : (
+        <section class="callout-muted rounded-lg p-5 mb-10">
+          <h2 class="font-semibold mb-2">{labels.pendingHeading}</h2>
+          <p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">{labels.pendingNote}</p>
+        </section>
+      )
+    }
+
+    <section class="mb-10">
+      <h2 class="font-serif text-xl font-semibold text-gray-900 dark:text-white mb-4">{labels.relatedHeading}</h2>
+      <div class="flex flex-wrap gap-3">
+        <a
+          href={benchmarkRoot}
+          class="text-sm text-primary hover:text-secondary border border-primary/30 px-4 py-2 rounded-md"
+        >
+          {labels.benchmarkOverview}
+        </a>
+        <a
+          href={leversHref}
+          class="text-sm text-primary hover:text-secondary border border-primary/30 px-4 py-2 rounded-md"
+        >
+          {labels.leversCta}
+        </a>
+        <a
+          href={legalAiHref}
+          class="text-sm text-primary hover:text-secondary border border-primary/30 px-4 py-2 rounded-md"
+        >
+          {labels.legalCta}
+        </a>
+      </div>
+    </section>
+
+    <section class="mb-10">
+      <h2 class="font-serif text-xl font-semibold text-gray-900 dark:text-white mb-4">{labels.continueHeading}</h2>
+      <div class="grid gap-3 md:grid-cols-2">
+        {
+          relatedRegions.map((item) => (
+            <a
+              href={`${benchmarkRoot}${item.slug}/`}
+              class="block bg-surface rounded-lg p-4 border border-subtle hover:border-blue-300 hover:shadow-sm transition-all"
+            >
+              <h3 class="font-semibold text-gray-800 dark:text-white text-sm">
+                {item.summary.flag} {isEn ? item.summary.nameEn || item.summary.name : item.summary.name}
+              </h3>
+              <p class="text-xs text-gray-600 dark:text-gray-400 mt-2">
+                {isEn ? item.summary.strengthEn || item.summary.strength : item.summary.strength}
+              </p>
+            </a>
+          ))
+        }
+      </div>
+    </section>
+
+    <p class="text-xs text-gray-500 dark:text-gray-400 border-t border-subtle pt-5">{labels.disclaimer}</p>
+
+    <nav class="mt-8">
+      <a
+        href={benchmarkRoot}
+        class="text-sm text-primary hover:text-secondary font-medium inline-flex items-center gap-1"
+      >
+        <Icon name="tabler:arrow-left" class="w-4 h-4" />
+        {labels.backTo}
+      </a>
+    </nav>
+  </article>
+</Layout>

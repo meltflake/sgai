@@ -121,13 +121,17 @@ const lines = [
     (page) => `- ${base}/en/benchmarking/${page.slug}/ — ${page.caseItem.nameEn || page.caseItem.name}`
   ),
   '',
-  '## Benchmark Region Drilldown Pages',
+  '## Benchmark Region Drilldown Pages — Enriched',
   '',
-  ...benchmarkDrilldownPages.map((page) => `- ${base}/benchmarking/${page.slug}/ — ${page.title}`),
+  ...benchmarkDrilldownPages
+    .filter((page) => !page.analysisPending)
+    .map((page) => `- ${base}/benchmarking/${page.slug}/ — ${page.title}`),
   '',
-  '## English Benchmark Region Drilldown Pages',
+  '## English Benchmark Region Drilldown Pages — Enriched',
   '',
-  ...benchmarkDrilldownPages.map((page) => `- ${base}/en/benchmarking/${page.slug}/ — ${page.titleEn}`),
+  ...benchmarkDrilldownPages
+    .filter((page) => !page.analysisPending)
+    .map((page) => `- ${base}/en/benchmarking/${page.slug}/ — ${page.titleEn}`),
   '',
   '## Startup Ecosystem Entity Pages',
   '',

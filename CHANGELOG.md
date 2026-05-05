@@ -4,6 +4,40 @@
 
 ---
 
+## 0.9.7 — 2026-05-05
+
+### Codex 改造 follow-up：路由解耦、SEO 收敛、drilldown 补深
+
+事后审阅 + 改进规划见 [docs/20260505-codex-improvements-followup.md](./docs/20260505-codex-improvements-followup.md)，drilldown 内容补深 playbook 见 [docs/20260505-drilldown-enrichment-playbook.md](./docs/20260505-drilldown-enrichment-playbook.md)。
+
+#### 路由解耦（P1）
+
+- `src/pages/benchmarking/[region].astro` 从 640 行降到 19 行 dispatcher，按 `page.kind` 分发到三个新组件：[`RegionProfile.astro`](./src/components/benchmarking/RegionProfile.astro)、[`CaseProfile.astro`](./src/components/benchmarking/CaseProfile.astro)、[`DrilldownProfile.astro`](./src/components/benchmarking/DrilldownProfile.astro)。
+- 三个 profile 组件都接 `{page, lang}` props，内部按 `lang` 切换文案，zh + en 不再有重复模板。
+- URL 与改造前 100% 一致（`find dist/benchmarking -type d` diff 为空）。
+
+#### SEO 临时降级与索引收敛（P3a + P4）
+
+- `RegionDetail.drilldownEnrichments?: Record<localId, BenchmarkDrilldownAnalysis>` 字段新增；`BenchmarkDrilldownAnalysis = { analysis, analysisEn?, sources? }`；`BenchmarkAnalysisSource` 含 `label / labelEn? / url / date?`。
+- `BenchmarkDrilldownPage` 新增 `analysisPending`、`analysisSources?`；`entity-pages.ts addPage()` 命中 enrichment 时用 `analysis` 覆盖 `body`，否则保留模板。
+- `DrilldownProfile` 在 `analysisPending=true` 时输出 `<meta name="robots" content="noindex,follow">`，未补深的 stub 自动从搜索索引收敛。
+- `llms.txt` / `llms-full.txt` 只列 `analysisPending !== true` 的 drilldown，避免 LLM 把 sgai 误判为 doorway 站。
+- 新增 [`scripts/check-benchmarking-urls.ts`](./scripts/check-benchmarking-urls.ts)：复用 `scripts/lib/url-check.ts`，HEAD-check 所有 `analysisSources[].url`，沿用 CLAUDE.md sourceUrl 真实性约束。
+
+#### Drilldown 内容补深首批（P3b：10 个 region 全覆盖）
+
+- Singapore（新增 RegionDetail）、Hong Kong、Taiwan、UAE、Israel、South Korea、Estonia、Switzerland、Finland、Canada 共 10 个 region 的 drilldown 全部完成首批 enrichment。
+- 单条 enrichment 标准：200-400 字 zh + 同等深度 en + 1 个数字 + 1 个原文链接 + 1 个判断；全部 277 个 `analysisSources[].url` HTTP HEAD 可达。
+- 索引收敛：noindex 页 137 → 17（-87%），indexable 页 45 → 182（+304%），llms-full.txt benchmarking 链接 91 → 365（+301%）。
+
+#### Debates 文档重写（P5）
+
+- [docs/20260504-debates-ia-redesign.md](./docs/20260504-debates-ia-redesign.md) 改为"已完成 / 设计选择 / 后续演进 trigger"三段式，把 6 个 section 平铺、vanilla DOM 过滤、单组件内聚等设计选择 explicit 化，给未来贡献者清晰的取舍线。
+
+#### Codex worklog 归档（P6）
+
+- 仓库根的 `task_plan.md` / `progress.md` / `findings.md` 归档到 [`docs/codex-worklogs/`](./docs/codex-worklogs/)，每份头部加溯源注释指向本 followup 文档。
+
 ## 0.9.6 — 2026-05-04
 
 ### 内容栏目：观点改为观察
