@@ -1,18 +1,19 @@
 ---
-// Policy evolution page (zh) — thin wrapper.
+// Policy evolution page (en) — thin wrapper.
 
 import Layout from '~/layouts/PageLayout.astro';
 import EvolutionPage from '~/components/evolution/EvolutionPage.astro';
 
-const lang = 'zh' as const;
+const lang = 'en' as const;
 ---
 
 <Layout
   metadata={{
-    title: '政策演进分析',
-    description: '新加坡 AI 政策演进全景——从 2014 年智慧国家到 2024 年 NAIS 2.0 的战略转型历程。',
+    title: 'Singapore AI Policy Evolution',
+    description:
+      "Singapore's AI policy evolution — the strategic transformation arc from the 2014 Smart Nation Initiative to the 2024 generative AI governance framework.",
   }}
-  breadcrumbs={[{ label: '政策演进分析' }]}
+  breadcrumbs={[{ label: 'Policy Evolution' }]}
   lang={lang}
 >
   <EvolutionPage lang={lang} />

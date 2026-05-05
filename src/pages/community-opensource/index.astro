@@ -9,28 +9,40 @@ import {
   startupProjects,
   summary,
   dataDisclaimer,
+  dataDisclaimerEn,
 } from '~/data/community-opensource';
+
+const lang = 'en' as const;
+const note = summary.noteEn || summary.note;
+const disclaimer = dataDisclaimerEn || dataDisclaimer;
 ---
 
 <Layout
   metadata={{
-    title: '产学研开源生态',
-    description: '新加坡产学研 AI 开源生态——大学、企业实验室、创业公司的开源贡献全景。',
+    title: 'Community Open Source',
+    description:
+      "Singapore's community AI open-source ecosystem — universities, international corporate labs, and startups contributing to open source.",
   }}
-  breadcrumbs={[{ label: '产学研开源生态' }]}
+  breadcrumbs={[{ label: 'Community Open Source' }]}
+  lang={lang}
 >
   <section class="px-4 py-16 sm:px-6 mx-auto lg:px-8 max-w-6xl">
-    <Headline title="产学研开源生态" subtitle="新加坡大学、国际企业实验室与创业公司的 AI 开源项目" />
+    <Headline
+      title="Community Open Source"
+      subtitle="AI open-source projects from Singapore's universities, international corporate labs, and startups."
+    />
 
     <div
       class="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-4 mb-12 text-sm text-blue-800 dark:text-blue-200"
     >
-      {summary.note}
+      {note}
     </div>
 
     <div class="mb-16">
-      <h2 class="t-h2 mb-2">大学与研究机构</h2>
-      <p class="text-sm text-muted mb-6">高校实验室输出的模型、工具箱和训练系统；每张卡片进入独立项目档案。</p>
+      <h2 class="t-h2 mb-2">Universities &amp; Research Institutions</h2>
+      <p class="text-sm text-muted mb-6">
+        Models, toolboxes, and training systems from university labs. Each card opens a project profile.
+      </p>
       <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         {
           universityProjects.map((proj) => (
@@ -40,18 +52,18 @@ import {
             >
               <div class="flex items-start justify-between gap-3 mb-3">
                 <div class="min-w-0">
-                  <p class="text-xs text-blue-600 dark:text-blue-400 mb-1">{proj.org}</p>
+                  <p class="text-xs text-blue-600 dark:text-blue-400 mb-1">{proj.orgEn || proj.org}</p>
                   <h3 class="font-bold text-gray-900 dark:text-white group-hover:text-primary transition-colors">
-                    {proj.name}
+                    {proj.nameEn || proj.name}
                   </h3>
                 </div>
                 <span class="text-xs bg-slate-100 dark:bg-slate-800 px-2 py-0.5 rounded whitespace-nowrap">
-                  {proj.category}
+                  {proj.categoryEn || proj.category}
                 </span>
               </div>
-              <p class="text-sm text-muted mb-4 leading-relaxed">{proj.description}</p>
+              <p class="text-sm text-muted mb-4 leading-relaxed">{proj.descriptionEn || proj.description}</p>
               <div class="flex flex-wrap items-center gap-2 text-xs text-muted mb-4">
-                <span class="bg-slate-50 dark:bg-slate-800 px-2 py-0.5 rounded">{proj.status}</span>
+                <span class="bg-slate-50 dark:bg-slate-800 px-2 py-0.5 rounded">{proj.statusEn || proj.status}</span>
                 <span class="bg-slate-50 dark:bg-slate-800 px-2 py-0.5 rounded">{proj.language}</span>
                 {proj.stars && (
                   <span class="bg-slate-50 dark:bg-slate-800 px-2 py-0.5 rounded">
@@ -67,7 +79,7 @@ import {
               <div class="mt-auto pt-4 border-t border-subtle flex items-center justify-between gap-3">
                 <span class="text-xs text-muted">{proj.updated}</span>
                 <span class="inline-flex items-center gap-1 text-sm font-medium text-primary group-hover:text-secondary">
-                  查看档案
+                  Open profile
                   <Icon name="tabler:arrow-right" class="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
                 </span>
               </div>
@@ -78,8 +90,11 @@ import {
     </div>
 
     <div class="mb-16">
-      <h2 class="t-h2 mb-2">国际企业新加坡实验室</h2>
-      <p class="text-sm text-muted mb-6">跨国科技公司在新加坡及相关研究网络中的开源模型、训练框架和工具。</p>
+      <h2 class="t-h2 mb-2">International Corporate Labs in Singapore</h2>
+      <p class="text-sm text-muted mb-6">
+        Open models, training frameworks, and tools from multinational technology research networks connected to
+        Singapore.
+      </p>
       <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         {
           corporateLabProjects.map((proj) => (
@@ -89,18 +104,18 @@ import {
             >
               <div class="flex items-start justify-between gap-3 mb-3">
                 <div class="min-w-0">
-                  <p class="text-xs text-blue-600 dark:text-blue-400 mb-1">{proj.org}</p>
+                  <p class="text-xs text-blue-600 dark:text-blue-400 mb-1">{proj.orgEn || proj.org}</p>
                   <h3 class="font-bold text-gray-900 dark:text-white group-hover:text-primary transition-colors">
-                    {proj.name}
+                    {proj.nameEn || proj.name}
                   </h3>
                 </div>
                 <span class="text-xs bg-slate-100 dark:bg-slate-800 px-2 py-0.5 rounded whitespace-nowrap">
-                  {proj.category}
+                  {proj.categoryEn || proj.category}
                 </span>
               </div>
-              <p class="text-sm text-muted mb-4 leading-relaxed">{proj.description}</p>
+              <p class="text-sm text-muted mb-4 leading-relaxed">{proj.descriptionEn || proj.description}</p>
               <div class="flex flex-wrap items-center gap-2 text-xs text-muted mb-4">
-                <span class="bg-slate-50 dark:bg-slate-800 px-2 py-0.5 rounded">{proj.status}</span>
+                <span class="bg-slate-50 dark:bg-slate-800 px-2 py-0.5 rounded">{proj.statusEn || proj.status}</span>
                 <span class="bg-slate-50 dark:bg-slate-800 px-2 py-0.5 rounded">{proj.language}</span>
                 {proj.stars && (
                   <span class="bg-slate-50 dark:bg-slate-800 px-2 py-0.5 rounded">
@@ -116,7 +131,7 @@ import {
               <div class="mt-auto pt-4 border-t border-subtle flex items-center justify-between gap-3">
                 <span class="text-xs text-muted">{proj.updated}</span>
                 <span class="inline-flex items-center gap-1 text-sm font-medium text-primary group-hover:text-secondary">
-                  查看档案
+                  Open profile
                   <Icon name="tabler:arrow-right" class="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
                 </span>
               </div>
@@ -127,8 +142,10 @@ import {
     </div>
 
     <div class="mb-16">
-      <h2 class="t-h2 mb-2">创业公司</h2>
-      <p class="text-sm text-muted mb-6">以开源作为产品分发和开发者社区入口的新加坡 AI 创业样本。</p>
+      <h2 class="t-h2 mb-2">Startups</h2>
+      <p class="text-sm text-muted mb-6">
+        Singapore AI startup examples using open source as product distribution and developer-community entry.
+      </p>
       <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         {
           startupProjects.map((proj) => (
@@ -138,18 +155,18 @@ import {
             >
               <div class="flex items-start justify-between gap-3 mb-3">
                 <div class="min-w-0">
-                  <p class="text-xs text-blue-600 dark:text-blue-400 mb-1">{proj.org}</p>
+                  <p class="text-xs text-blue-600 dark:text-blue-400 mb-1">{proj.orgEn || proj.org}</p>
                   <h3 class="font-bold text-gray-900 dark:text-white group-hover:text-primary transition-colors">
-                    {proj.name}
+                    {proj.nameEn || proj.name}
                   </h3>
                 </div>
                 <span class="text-xs bg-slate-100 dark:bg-slate-800 px-2 py-0.5 rounded whitespace-nowrap">
-                  {proj.category}
+                  {proj.categoryEn || proj.category}
                 </span>
               </div>
-              <p class="text-sm text-muted mb-4 leading-relaxed">{proj.description}</p>
+              <p class="text-sm text-muted mb-4 leading-relaxed">{proj.descriptionEn || proj.description}</p>
               <div class="flex flex-wrap items-center gap-2 text-xs text-muted mb-4">
-                <span class="bg-slate-50 dark:bg-slate-800 px-2 py-0.5 rounded">{proj.status}</span>
+                <span class="bg-slate-50 dark:bg-slate-800 px-2 py-0.5 rounded">{proj.statusEn || proj.status}</span>
                 <span class="bg-slate-50 dark:bg-slate-800 px-2 py-0.5 rounded">{proj.language}</span>
                 {proj.stars && (
                   <span class="bg-slate-50 dark:bg-slate-800 px-2 py-0.5 rounded">
@@ -160,7 +177,7 @@ import {
               <div class="mt-auto pt-4 border-t border-subtle flex items-center justify-between gap-3">
                 <span class="text-xs text-muted">{proj.updated}</span>
                 <span class="inline-flex items-center gap-1 text-sm font-medium text-primary group-hover:text-secondary">
-                  查看档案
+                  Open profile
                   <Icon name="tabler:arrow-right" class="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
                 </span>
               </div>
@@ -170,6 +187,6 @@ import {
       </div>
     </div>
 
-    <p class="mt-12 text-sm text-muted text-center">{dataDisclaimer}</p>
+    <p class="mt-12 text-sm text-muted text-center">{disclaimer}</p>
   </section>
 </Layout>

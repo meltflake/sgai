@@ -3,33 +3,39 @@ import Layout from '~/layouts/PageLayout.astro';
 import Headline from '~/components/ui/Headline.astro';
 import RelatedRail from '~/components/data/RelatedRail.astro';
 import { levers, transmissionExplainer, dataDate } from '~/data/levers';
+import { t, pickLocalized } from '~/i18n';
 import { leverItemSlug, leverSlug } from '~/utils/entity-pages';
+
+const lang = 'en' as const;
 ---
 
 <Layout
   metadata={{
-    title: '国家 AI 抓手图谱',
+    title: 'National AI Levers',
     description:
-      '新加坡国家级 AI-native 转型不能按部门理解，要按"AI 引入路径"理解：基建、治理、人才、应用、政府自用、外交六个抓手，跨部委的完整执行管线。',
+      "Singapore's national-scale AI-native transformation cannot be read by ministry — read it by AI-injection path: infrastructure, governance, talent, applications, government self-use, and diplomacy. Six levers spanning multiple ministries form the full execution pipeline.",
   }}
-  breadcrumbs={[{ label: '国家 AI 抓手图谱' }]}
+  breadcrumbs={[{ label: 'National AI Levers' }]}
+  lang={lang}
 >
   <section class="px-4 py-16 sm:px-6 mx-auto lg:px-8 max-w-6xl">
     <Headline
-      title="🎯 国家 AI 抓手图谱"
-      subtitle={`数据更新：${dataDate}。把新加坡 Budget 2026 + 各部委的 AI 政策按"AI 引入路径"重新分类，6 个抓手跨多部委——这比按部门分类更能看出整体形状。`}
+      title="🎯 National AI Levers"
+      subtitle={`${t(lang, 'freshnessUpdated')}: ${dataDate}. Re-classifying Singapore's Budget 2026 plus all ministry-level AI policies along "AI-injection paths" yields six cross-ministry levers — a clearer view of the whole shape than reading them department by department.`}
     />
 
     <div class="callout-note rounded-lg mb-12 leading-relaxed">
-      <p class="font-bold text-base mb-2">为什么按抓手分类？</p>
+      <p class="font-bold text-base mb-2">Why classify by lever?</p>
       <p class="mb-2">
-        多数 AI 政策文章把"国家"和"企业"并列分析——错过了嵌套关系。新加坡战略的本质是<strong
-          >把整个国家当成企业 AI-native 转型的"包装层"</strong
-        >：国家自己不必成为 AI-native，只要把企业转型速度放大就够了。
+        Most analyses treat the state and the enterprise as parallel actors — and miss the nesting relationship. The
+        essence of Singapore's strategy is to <strong
+          >treat the entire state as the wrapper layer for enterprise AI-native transformation</strong
+        >: the state itself need not become AI-native; it is enough to amplify the speed at which enterprises do.
       </p>
       <p>
-        6 个抓手按"AI 引入路径"分类（基建 → 治理 → 人才 → 应用 → 政府自用 →
-        外交）。每个抓手都跨多个部委，串起来才是完整的执行管线。
+        The six levers map "AI-injection paths" (infrastructure → governance → talent → applications → government
+        self-use → diplomacy). Each lever crosses multiple ministries; chained together, they form the full execution
+        pipeline.
       </p>
     </div>
 
@@ -43,37 +49,41 @@ import { leverItemSlug, leverSlug } from '~/utils/entity-pages';
                 <div class="flex items-center gap-3 flex-wrap mb-1">
                   <h2 class="t-h2 m-0">
                     <a href={`/levers/${leverSlug(lever)}/`} class="hover:text-blue-600 dark:hover:text-blue-400">
-                      抓手 {lever.number} · {lever.name}
+                      Lever {lever.number} · {pickLocalized(lever, 'name', 'nameEn', lang)}
                     </a>
                   </h2>
                   {lever.transmissionMode === 'direct' ? (
                     <span class="text-xs font-bold bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200 px-2 py-1 rounded">
-                      国家直接做
+                      State-direct
                     </span>
                   ) : (
                     <span class="text-xs font-bold bg-amber-100 dark:bg-amber-900 text-amber-800 dark:text-amber-200 px-2 py-1 rounded">
-                      穿透到企业
+                      Transmitted to enterprise
                     </span>
                   )}
                 </div>
-                <p class="text-base text-muted m-0">{lever.subtitle}</p>
+                <p class="text-base text-muted m-0">{pickLocalized(lever, 'subtitle', 'subtitleEn', lang)}</p>
               </div>
             </div>
 
             <div class="grid md:grid-cols-2 gap-4 mb-6 text-sm">
               <div class="bg-slate-50 dark:bg-slate-800 p-4 rounded-lg">
-                <div class="text-xs font-bold uppercase tracking-wide text-slate-500 mb-1">国家直接做的事</div>
-                <div>{lever.whatStateDoes}</div>
+                <div class="text-xs font-bold uppercase tracking-wide text-slate-500 mb-1">What the state does</div>
+                <div>{pickLocalized(lever, 'whatStateDoes', 'whatStateDoesEn', lang)}</div>
               </div>
               <div class="bg-slate-50 dark:bg-slate-800 p-4 rounded-lg">
-                <div class="text-xs font-bold uppercase tracking-wide text-slate-500 mb-1">解决企业的什么瓶颈</div>
-                <div>{lever.bottleneckSolved}</div>
+                <div class="text-xs font-bold uppercase tracking-wide text-slate-500 mb-1">
+                  Enterprise bottleneck solved
+                </div>
+                <div>{pickLocalized(lever, 'bottleneckSolved', 'bottleneckSolvedEn', lang)}</div>
               </div>
             </div>
 
             {lever.groups.map((group) => (
               <div class="mb-6">
-                <h3 class="text-lg font-bold mb-3 border-b border-subtle pb-1">{group.title}</h3>
+                <h3 class="text-lg font-bold mb-3 border-b border-subtle pb-1">
+                  {pickLocalized(group, 'title', 'titleEn', lang)}
+                </h3>
                 <div class="grid gap-3 md:grid-cols-2">
                   {group.items.map((item) => (
                     <div class="border border-subtle rounded-lg p-4 hover:shadow-md transition-shadow">
@@ -83,26 +93,28 @@ import { leverItemSlug, leverSlug } from '~/utils/entity-pages';
                             href={`/levers/${leverItemSlug(item)}/`}
                             class="hover:text-blue-600 dark:hover:text-blue-400"
                           >
-                            {item.name}
+                            {pickLocalized(item, 'name', 'nameEn', lang)}
                           </a>
                         </h4>
                         <span class="text-xs bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 px-2 py-1 rounded shrink-0">
-                          {item.ministry}
+                          {item.ministryEn || item.ministry}
                         </span>
                       </div>
                       {item.scale && (
                         <div class="text-sm font-mono font-bold text-slate-700 dark:text-slate-300 mb-1">
-                          {item.scale}
+                          {pickLocalized(item, 'scale', 'scaleEn', lang)}
                         </div>
                       )}
-                      <p class="text-sm text-muted m-0 mb-2">{item.description}</p>
+                      <p class="text-sm text-muted m-0 mb-2">
+                        {pickLocalized(item, 'description', 'descriptionEn', lang)}
+                      </p>
                       {item.sourceUrl && (
                         <div class="flex flex-wrap gap-3">
                           <a
                             href={`/levers/${leverItemSlug(item)}/`}
                             class="text-xs text-blue-600 dark:text-blue-400 hover:underline"
                           >
-                            详情 →
+                            Detail →
                           </a>
                           <a
                             href={item.sourceUrl}
@@ -110,7 +122,7 @@ import { leverItemSlug, leverSlug } from '~/utils/entity-pages';
                             rel="noopener"
                             class="text-xs text-blue-600 dark:text-blue-400 hover:underline"
                           >
-                            🔗 来源
+                            🔗 {t(lang, 'source')}
                           </a>
                         </div>
                       )}
@@ -120,7 +132,11 @@ import { leverItemSlug, leverSlug } from '~/utils/entity-pages';
               </div>
             ))}
 
-            {lever.insight && <div class="callout-muted rounded mt-4 italic">💡 {lever.insight}</div>}
+            {lever.insight && (
+              <div class="callout-muted rounded mt-4 italic">
+                💡 {pickLocalized(lever, 'insight', 'insightEn', lang)}
+              </div>
+            )}
             <RelatedRail entity={{ type: 'lever', id: lever.number }} variant="compact" />
           </div>
         ))
@@ -128,15 +144,15 @@ import { leverItemSlug, leverSlug } from '~/utils/entity-pages';
     </div>
 
     <div class="mt-16 bg-surface rounded-xl p-8 border border-subtle">
-      <h2 class="t-h2 mb-4">{transmissionExplainer.title}</h2>
+      <h2 class="t-h2 mb-4">{pickLocalized(transmissionExplainer, 'title', 'titleEn', lang)}</h2>
       <pre
-        class="text-sm whitespace-pre-wrap leading-relaxed bg-transparent p-0 border-0 m-0">{transmissionExplainer.body}</pre>
+        class="text-sm whitespace-pre-wrap leading-relaxed bg-transparent p-0 border-0 m-0">{pickLocalized(transmissionExplainer, 'body', 'bodyEn', lang)}</pre>
     </div>
 
     <div class="mt-12 text-sm text-muted text-center">
-      延伸阅读：
+      Further reading:
       <a href="/singapore-ai-native-companies-vs-nations/" class="text-blue-600 dark:text-blue-400 hover:underline">
-        从 50 人到 5,700,000 人——同一种 AI-native 架构，两个尺度
+        From 50 to 5,700,000 — the same AI-native architecture, two scales
       </a>
     </div>
   </section>

@@ -3,10 +3,14 @@
 // of any other locale's script.
 //
 // Run after `npm run build`:
-//   node scripts/i18n-check.mjs                   # default: scan dist/en for CJK
+//   node scripts/i18n-check.mjs                   # scan EN at dist/ (excluding /zh/)
 //   node scripts/i18n-check.mjs --lang en         # same as above
-//   node scripts/i18n-check.mjs --lang ja         # scan dist/ja for non-Japanese leaks (CJK ok except CN-only)
+//   node scripts/i18n-check.mjs --lang zh         # scan ZH at dist/zh/
 //   node scripts/i18n-check.mjs --lang en --root dist
+//
+// Layout (post-Phase-2): EN is the route default and lives at the bare
+// dist/ root; non-default locales live under dist/<lang>/. The script
+// scopes the scan accordingly.
 //
 // Strategy:
 //   1. Walk dist/<lang>/**.html
@@ -33,7 +37,12 @@ function arg(name, fallback) {
 }
 const LANG = arg('--lang', 'en');
 const ROOT_BASE = arg('--root', 'dist');
-const ROOT = `${ROOT_BASE}/${LANG}`;
+// EN is the route-default locale and lives at the bare ROOT_BASE.
+// Other locales live under ROOT_BASE/<lang>/.
+const ROUTE_DEFAULT = 'en';
+const ROOT = LANG === ROUTE_DEFAULT ? ROOT_BASE : `${ROOT_BASE}/${LANG}`;
+// Subdirs to skip when scanning EN root (those belong to other locales).
+const SKIP_SUBDIRS = new Set(LANG === ROUTE_DEFAULT ? ['zh'] : []);
 
 // Per-target-lang config. Each entry says "what foreign script should
 // NOT appear on a page in this locale", plus intentional exceptions.
@@ -64,12 +73,13 @@ if (!conf) {
 
 const ALLOW_PATTERNS = conf.allowPatterns;
 
-function listHtml(dir) {
+function listHtml(dir, isRoot = true) {
   const out = [];
   for (const name of readdirSync(dir)) {
+    if (isRoot && SKIP_SUBDIRS.has(name)) continue;
     const p = join(dir, name);
     const st = statSync(p);
-    if (st.isDirectory()) out.push(...listHtml(p));
+    if (st.isDirectory()) out.push(...listHtml(p, false));
     else if (st.isFile() && p.endsWith('.html')) out.push(p);
   }
   return out;

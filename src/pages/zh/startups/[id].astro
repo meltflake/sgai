@@ -1,0 +1,268 @@
+---
+import type { GetStaticPaths } from 'astro';
+import { Icon } from 'astro-icon/components';
+
+import Layout from '~/layouts/PageLayout.astro';
+import JsonLd from '~/components/common/JsonLd.astro';
+import EcosystemProse from '~/components/data/EcosystemProse.astro';
+import { ecosystemStats } from '~/data/startups';
+import {
+  getStartupAiRelation,
+  getStartupEntitySiblings,
+  startupEntityPages,
+  type StartupEntityKind,
+  type StartupEntityPage,
+} from '~/utils/entity-pages';
+
+export const prerender = true;
+
+export const getStaticPaths = (() => {
+  return startupEntityPages.map((page) => ({
+    params: { id: page.slug },
+    props: { page },
+  }));
+}) satisfies GetStaticPaths;
+
+const { page } = Astro.props as { page: StartupEntityPage };
+const { startup, unicorn, exit, investor } = page;
+
+const kindLabels: Record<StartupEntityKind, string> = {
+  company: '公司 / 项目',
+  exit: '退出 / 收购样本',
+  investor: '投资机构',
+};
+
+const externalUrl = page.url || null;
+const externalLabel = externalUrl?.replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, '');
+const raised = unicorn?.raised || startup?.raised;
+const description = startup?.profile || page.description;
+const relatedPages = getStartupEntitySiblings(page);
+const aiRelation = getStartupAiRelation(page);
+
+function overviewText(entity: StartupEntityPage): string {
+  if (entity.startup?.profile) return entity.startup.profile;
+  if (entity.investor) {
+    return `${entity.name} 是新加坡 AI 创业生态中的${entity.investor.type}。这类机构决定了早期公司能否获得耐心资本、产业连接和跨境扩张资源。`;
+  }
+  if (entity.exit) {
+    return `${entity.name} 是新加坡 AI 创业生态中的退出与并购样本。它的价值不只在交易本身，也在于说明本地 AI 项目是否能被全球平台、产业买家或监管体系重新定价。`;
+  }
+  return `${entity.name} 是新加坡 AI 创业生态中偏「${entity.category}」的公司 / 项目。当前公开定位是：${entity.description}。`;
+}
+
+function relevanceText(entity: StartupEntityPage): string {
+  if (entity.investor) {
+    return `${entity.name} 所在的位置是资本供给层。观察它的投资节奏，可以看到新加坡 AI 生态是偏向基础设施、深科技，还是偏向应用层和东南亚市场落地。`;
+  }
+  if (entity.exit) {
+    return `${entity.name} 对新加坡的意义在于“退出路径”。一个生态能否持续吸引创业者，不只看公司数量，也看是否有上市、并购、跨境整合这些可兑现路径。`;
+  }
+  return `${entity.name} 所在的「${entity.category}」方向，是判断新加坡 AI 创业是否能从政策、人才和研究投入转化为真实商业公司的一个具体观察点。`;
+}
+
+const signalItems = [
+  unicorn && `独角兽 / 上市尺度：融资 ${unicorn.raised}，估值 ${unicorn.valuation}，状态为「${unicorn.status}」。`,
+  raised && `公开融资信号：${raised}。`,
+  startup?.investors && `公开关联投资者：${startup.investors}。`,
+  startup?.highlight && `当前标签：${startup.highlight}。`,
+  exit && `退出事件：收购方 / 交易方为 ${exit.acquirer}，金额 ${exit.amount}，年份 ${exit.year || '待补'}。`,
+  investor && `投资记录：${investor.stats}；重点领域：${investor.focus}。`,
+].filter((item): item is string => Boolean(item));
+
+const trackingItems =
+  page.kind === 'investor'
+    ? [
+        'AI 投资是否集中在基础设施、模型、垂直应用，还是偏东南亚平台型公司。',
+        '是否出现从早期投资到并购、IPO 的连续退出路径。',
+      ]
+    : page.kind === 'exit'
+      ? [
+          '交易是否真正完成，以及监管、数据、技术主权因素是否改变跨境并购路径。',
+          '收购方看中的到底是产品、团队、客户，还是新加坡作为区域总部的结构位置。',
+        ]
+      : [
+          '产品是否从单点 AI 功能走向可重复交付的平台或行业工作流。',
+          '客户主要在新加坡本地、东南亚区域，还是全球市场。',
+          '融资、收入、开源影响力、监管许可等信号是否继续增强。',
+        ];
+
+const facts = [
+  { label: '类型', value: kindLabels[page.kind] },
+  { label: '领域 / 分组', value: page.category },
+  { label: 'AI 关联度', value: aiRelation.label },
+  raised && { label: '公开融资', value: raised },
+  unicorn?.valuation && { label: '估值', value: unicorn.valuation },
+  unicorn?.status && { label: '状态', value: unicorn.status },
+  startup?.investors && { label: '投资者', value: startup.investors },
+  exit && { label: '收购方', value: exit.acquirer },
+  exit && { label: '金额 / 年份', value: `${exit.amount} · ${exit.year || '待补'}` },
+  investor && { label: '投资记录', value: investor.stats },
+  investor && { label: '重点领域', value: investor.focus },
+  externalUrl && { label: '官网', value: externalLabel || externalUrl, href: externalUrl },
+].filter((fact): fact is { label: string; value: string; href?: string } => Boolean(fact));
+
+const metadata = {
+  title: `${page.name} · AI 创业生态`,
+  description: `${page.name}：${page.description}`,
+};
+
+const canonicalUrl = `https://sgai.md/startups/${page.slug}/`;
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: page.name,
+  description: metadata.description,
+  url: externalUrl || canonicalUrl,
+  sameAs: externalUrl ? [externalUrl] : undefined,
+  mainEntityOfPage: canonicalUrl,
+  isPartOf: {
+    '@type': 'WebSite',
+    name: '新加坡 AI 观察',
+    url: 'https://sgai.md/',
+  },
+};
+---
+
+<Layout metadata={metadata} breadcrumbs={[{ label: 'AI 创业生态', href: '/startups/' }, { label: page.name }]}>
+  <JsonLd schema={schema} />
+  <article class="max-w-3xl mx-auto px-4 sm:px-6 py-10 md:py-12">
+    <div class="mb-6 flex flex-wrap items-center gap-2 text-xs">
+      <a
+        href="/startups/"
+        class="inline-flex items-center gap-1 bg-primary/10 text-primary px-3 py-1.5 rounded-full font-semibold hover:bg-primary/15 transition-colors"
+      >
+        <span>{page.icon}</span>
+        <span>{page.category}</span>
+      </a>
+      <span class="bg-gray-100 dark:bg-slate-800 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-full">
+        {kindLabels[page.kind]}
+      </span>
+      <span class="bg-gray-100 dark:bg-slate-800 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-full">
+        {aiRelation.label}
+      </span>
+      {
+        unicorn && (
+          <span class="bg-gray-100 dark:bg-slate-800 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-full">
+            独角兽
+          </span>
+        )
+      }
+    </div>
+
+    <h1 class="t-display text-gray-900 dark:text-white mb-3">{page.name}</h1>
+    <p class="font-serif text-lg leading-[1.85] text-gray-800 dark:text-gray-200 mb-8 border-l-4 border-primary pl-5">
+      {description}
+    </p>
+
+    <dl
+      class="bg-surface rounded-lg border border-subtle p-5 mb-10 grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4 text-sm"
+    >
+      {
+        facts.map((fact) => (
+          <div>
+            <dt class="text-xs uppercase tracking-wider text-muted mb-1">{fact.label}</dt>
+            <dd class="text-gray-900 dark:text-white">
+              {fact.href ? (
+                <a
+                  href={fact.href}
+                  target="_blank"
+                  rel="noopener"
+                  class="text-primary hover:underline inline-flex items-center gap-1"
+                >
+                  {fact.value}
+                  <Icon name="tabler:external-link" class="w-3.5 h-3.5" />
+                </a>
+              ) : (
+                fact.value
+              )}
+            </dd>
+          </div>
+        ))
+      }
+    </dl>
+
+    <section class="mb-10">
+      <h2 class="t-h3 text-gray-900 dark:text-white mb-4">定位</h2>
+      <EcosystemProse content={overviewText(page)} />
+    </section>
+
+    <section class="mb-10">
+      <h2 class="t-h3 text-gray-900 dark:text-white mb-4">资本与市场信号</h2>
+      {
+        signalItems.length > 0 ? (
+          <ul class="list-disc list-outside pl-6 space-y-2 text-gray-800 dark:text-gray-200 leading-relaxed">
+            {signalItems.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+        ) : (
+          <p class="text-gray-700 dark:text-gray-300 leading-relaxed">公开资本信号待补。</p>
+        )
+      }
+    </section>
+
+    <section class="mb-10">
+      <h2 class="t-h3 text-gray-900 dark:text-white mb-4">AI 关联判断</h2>
+      <EcosystemProse content={aiRelation.description} />
+    </section>
+
+    <section class="mb-10">
+      <h2 class="t-h3 text-gray-900 dark:text-white mb-4">为什么值得观察</h2>
+      <EcosystemProse content={relevanceText(page)} />
+    </section>
+
+    <section class="mb-10">
+      <h2 class="t-h3 text-gray-900 dark:text-white mb-4">后续追踪问题</h2>
+      <ul class="list-disc list-outside pl-6 space-y-2 text-gray-800 dark:text-gray-200 leading-relaxed">
+        {trackingItems.map((item) => <li>{item}</li>)}
+      </ul>
+    </section>
+
+    {
+      exit?.note && (
+        <section class="mb-10 callout-note">
+          <h2 class="font-semibold text-gray-900 dark:text-white mb-2">备注</h2>
+          <p class="leading-relaxed text-gray-800 dark:text-gray-200">{exit.note}</p>
+        </section>
+      )
+    }
+
+    {
+      relatedPages.length > 0 && (
+        <section class="mb-10 pt-6 border-t border-subtle">
+          <h2 class="text-sm uppercase tracking-wider text-muted font-semibold mb-3">相关实体</h2>
+          <div class="grid gap-3 sm:grid-cols-2">
+            {relatedPages.map((related) => (
+              <a
+                href={`/startups/${related.slug}/`}
+                class="group bg-surface rounded-lg p-4 border border-subtle hover:border-primary transition-colors"
+              >
+                <div class="text-xs text-muted mb-1">{related.category}</div>
+                <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-primary transition-colors">
+                  {related.name}
+                </h3>
+                <p class="text-xs text-gray-600 dark:text-gray-400 mt-1 line-clamp-2">{related.description}</p>
+              </a>
+            ))}
+          </div>
+        </section>
+      )
+    }
+
+    <section class="mb-10 pt-6 border-t border-subtle">
+      <h2 class="text-sm uppercase tracking-wider text-muted font-semibold mb-3">数据说明</h2>
+      <p class="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">
+        本页为创业生态实体档案，档案整理与 AI 关联口径校订于 {
+          ecosystemStats.profileUpdated
+        }；基础统计（650+、融资占比、总融资等）沿用 {ecosystemStats.dataDate} 的公开口径。融资、估值、退出金额等均以公开报道或公开资料为准；同一公司在不同数据库中的口径可能不同。
+      </p>
+    </section>
+
+    <nav class="mt-12 pt-6 border-t border-subtle">
+      <a href="/startups/" class="text-sm text-primary hover:text-secondary font-medium inline-flex items-center gap-1">
+        <Icon name="tabler:arrow-left" class="w-4 h-4" />
+        返回 AI 创业生态
+      </a>
+    </nav>
+  </article>
+</Layout>

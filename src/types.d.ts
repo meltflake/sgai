@@ -60,7 +60,7 @@ export interface Post {
   citations?: Array<{ id: string; text: string; url?: string }>;
   tocDepth?: number;
 
-  // i18n (v0.3.0). Posts default to 'zh'; '.en.md' siblings render at /en/<slug>/.
+  // i18n (v0.3.0). Posts default to 'zh'; '.en.md' siblings render at /<slug>/.
   lang?: 'zh' | 'en';
 }
 

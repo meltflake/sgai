@@ -16,7 +16,7 @@ const { items } = Astro.props;
 
 const lang = getLangFromPath(new URL(Astro.url).pathname);
 const homeLabel = lang === 'en' ? 'Home' : '首页';
-const homeHref = lang === 'en' ? '/en/' : getPermalink('/');
+const homeHref = lang === 'en' ? '/' : getPermalink('/');
 const homeItem = { label: homeLabel, href: homeHref };
 const allItems = [homeItem, ...items];
 

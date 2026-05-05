@@ -123,7 +123,7 @@ export function getFooterData(lang: Lang) {
     secondaryLinks: [],
     socialLinks: [
       { ariaLabel: 'Github', icon: 'tabler:brand-github', href: 'https://github.com/meltflake/sgai' },
-      { ariaLabel: 'RSS', icon: 'tabler:rss', href: getAsset(lang === 'en' ? '/en/rss.xml' : '/rss.xml') },
+      { ariaLabel: 'RSS', icon: 'tabler:rss', href: getAsset(lang === 'zh' ? '/zh/rss.xml' : '/rss.xml') },
     ],
     footNote: `${t(lang, 'siteName')} v${SITE_VERSION} · ${updatedLabel} ${SITE_UPDATED} · ${maintainedBy} ${handle}${closing ? ' ' + closing : ''}`,
   };

@@ -1,19 +1,17 @@
 ---
-// i18n (v0.3.1) — auto-redirect on first visit + non-blocking banner.
+// i18n (v0.4.0) — non-intrusive language hint banner.
 //
 // Behaviour:
-//  - On first visit (no `sgai_lang` localStorage), if the browser language
-//    preference DISAGREES with the current page lang, redirect to the
-//    sibling URL automatically. The first-paint zh page flashes briefly,
-//    but search-engine bots (no JS) keep seeing the canonical page.
-//  - On subsequent visits, the localStorage choice is honoured; no redirect.
-//  - The banner is rendered hidden as a fallback for users who arrived via
-//    a deep link AND don't match auto-redirect criteria; it remains
-//    available as a manual switch alongside the header LanguageToggle.
-// SAFE BY DEFAULT: emits SSR-rendered hidden DOM. Visibility / redirect
-// is decided client-side. The redirect runs synchronously in <head> via
-// the Layout-injected script for minimum flash; this banner here only
-// handles the manual case.
+//  - SSR-renders hidden. Client-side reveals it only when the visitor's
+//    browser language disagrees with the current page AND no `sgai_lang`
+//    localStorage choice is set.
+//  - NEVER auto-redirects. The Phase-2 routing migration (en root + /zh/)
+//    relies on URL paths as the source of truth — we don't override the
+//    user's chosen URL silently. The banner offers a manual switch and
+//    persists the dismissal.
+//
+// Sibling-URL math is centralised here so the routing convention
+// (/zh/<path> vs /<path>) lives in one place.
 
 import { type Lang, t } from '~/i18n';
 
@@ -67,23 +65,24 @@ const dismissLabel = currentLang === 'en' ? t(currentLang, 'langBannerDismiss') 
     const currentLang = banner.dataset.currentLang as 'zh' | 'en';
     const otherLang = banner.dataset.otherLang as 'zh' | 'en';
 
+    // Routing convention (post-Phase-2): EN is route default at '/<path>',
+    // ZH is at '/zh/<path>'. Compute the sibling URL accordingly.
     function siblingUrl(): string {
       const path = location.pathname;
-      if (otherLang === 'en') {
-        if (path === '/' || path === '') return '/en/';
-        return '/en' + path;
+      if (otherLang === 'zh') {
+        // Currently on EN — switch to ZH variant by prefixing /zh.
+        if (path === '/' || path === '') return '/zh/';
+        return '/zh' + path;
       }
-      if (path === '/en' || path === '/en/') return '/';
-      if (path.startsWith('/en/')) return path.slice(3);
+      // Currently on ZH — switch to EN by stripping /zh.
+      if (path === '/zh' || path === '/zh/') return '/';
+      if (path.startsWith('/zh/')) return path.slice(3);
       return path;
     }
 
-    // The Layout script already auto-redirected the user if they had a
-    // strong opposing language preference and no stored choice. If we got
-    // here, the user is fine with the current lang OR they came back from
-    // a manual switch. Show the banner only if the OTHER lang is available
-    // and the user has no stored preference (so a deep-link arrival
-    // without auto-redirect still surfaces the option).
+    // Show only when the visitor's browser language clearly prefers the
+    // other locale AND they haven't pinned a preference yet. No silent
+    // redirect — the user's URL choice always wins.
     const stored = localStorage.getItem('sgai_lang');
     const shouldSuggest = (() => {
       if (stored) return false;

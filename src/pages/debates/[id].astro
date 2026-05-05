@@ -1,10 +1,5 @@
 ---
-// Phase 4 — Debate detail page.
-//
-// One page per Debate.id (~150 pages). Shows full record, all speakers
-// resolved to people.ts where possible, full English transcript snippet,
-// and the cross-link rail. Pagefind picks up these pages so any token
-// from a debate's keypoints / summary / topics is searchable.
+// Debate detail (EN). Mirrors zh /debates/[id]/.
 
 import type { GetStaticPaths } from 'astro';
 import Layout from '~/layouts/PageLayout.astro';
@@ -13,118 +8,121 @@ import RelatedRail from '~/components/data/RelatedRail.astro';
 import { Icon } from 'astro-icon/components';
 import { debates } from '~/data/debates';
 import { getDebateTranscript, getDebateTranscriptParagraphs } from '~/data/debate-transcripts';
-import { findPersonId, getPerson, personDisplayName } from '~/utils/people';
-import { getPermalink } from '~/utils/permalinks';
+import { findPersonId, getPerson } from '~/utils/people';
+import { t, pickLocalized } from '~/i18n';
 
 export const prerender = true;
 
+const lang = 'en' as const;
+
 export const getStaticPaths = (() =>
-  debates.map((debate) => ({
-    params: { id: debate.id },
-    props: { debate },
-  }))) satisfies GetStaticPaths;
+  debates.map((debate) => ({ params: { id: debate.id }, props: { debate } }))) satisfies GetStaticPaths;
 
 const { debate } = Astro.props;
 const transcript = getDebateTranscript(debate.id);
-const transcriptZh = getDebateTranscriptParagraphs(debate.id, 'zh');
 const transcriptEn = getDebateTranscriptParagraphs(debate.id, 'en');
-const originalParagraphs = transcriptEn.length ? transcriptEn : debate.summary ? [debate.summary] : [];
+const originalParagraphs = transcriptEn.length ? transcriptEn : debate.transcriptEn ? [debate.transcriptEn] : [];
 
 const typeMap: Record<string, string> = {
-  'Oral Answers to Questions': '口头答复',
-  'Written Answers to Questions': '书面答复',
-  Budget: '预算辩论',
-  Motion: '动议',
+  'Oral Answers to Questions': 'Oral Answer',
+  'Written Answers to Questions': 'Written Answer',
+  Budget: 'Budget Debate',
+  Motion: 'Motion',
 };
 
-const topicZh: Record<string, string> = {
-  'AI Economy & Industry': 'AI 经济与产业',
-  'AI & Employment': 'AI 与就业',
-  'AI Governance & Regulation': 'AI 治理与监管',
-  'AI & National Security': 'AI 与国家安全',
-  'AI in Public Sector': 'AI 与公共部门',
-  'AI Infrastructure & Research': 'AI 基础设施与研究',
-  'AI Safety & Ethics': 'AI 安全与伦理',
-  'AI in Education': 'AI 与教育',
-  'AI in Healthcare': 'AI 与医疗',
-  'AI Strategy': 'AI 战略',
-  'Deepfakes & Disinformation': '深度伪造与虚假信息',
-  'Generative AI': '生成式 AI',
+const topicEn: Record<string, string> = {
+  'AI Economy & Industry': 'AI Economy & Industry',
+  'AI & Employment': 'AI & Employment',
+  'AI Governance & Regulation': 'AI Governance & Regulation',
+  'AI & National Security': 'AI & National Security',
+  'AI in Public Sector': 'AI in Public Sector',
+  'AI Infrastructure & Research': 'AI Infrastructure & Research',
+  'AI Safety & Ethics': 'AI Safety & Ethics',
+  'AI in Education': 'AI in Education',
+  'AI in Healthcare': 'AI in Healthcare',
+  'AI Strategy': 'AI Strategy',
+  'Deepfakes & Disinformation': 'Deepfakes & Disinformation',
+  'Generative AI': 'Generative AI',
 };
 
 const controversyLabels: Record<number, string> = {
-  1: '信息发布',
-  2: '温和质询',
-  3: '实质辩论',
-  4: '激烈争议',
-  5: '高度对立',
+  1: 'Information',
+  2: 'Mild query',
+  3: 'Substantive debate',
+  4: 'Heated dispute',
+  5: 'High polarisation',
 };
 
 const speakers = debate.speakers.map((raw) => {
   const pid = findPersonId(raw);
-  return { raw, pid, display: pid ? getPerson(pid)?.name || raw : raw };
+  const p = pid ? getPerson(pid) : undefined;
+  return { raw, pid, display: p ? p.nameEn || p.name || raw : raw };
 });
 
+const summaryShort = pickLocalized<string>(debate, 'summary', lang) || '';
+const keyPoints = (lang === 'en' && debate.keyPointsEn?.length ? debate.keyPointsEn : debate.keyPoints) || [];
+const govStance = pickLocalized(debate, 'governmentStance', 'governmentStanceEn', lang);
+const oppStance = pickLocalized(debate, 'oppositionStance', 'oppositionStanceEn', lang);
+const policySignal = pickLocalized(debate, 'policySignal', 'policySignalEn', lang);
+const notableQuote = pickLocalized(debate, 'notableQuote', 'notableQuoteEn', lang);
+
 const metadata = {
-  title: `${debate.title} · 国会辩论`,
-  description: debate.summary,
+  title: `${debate.titleEn || debate.title} · Parliamentary Debate`,
+  description: summaryShort,
 };
 
 const articleSchema = {
   '@context': 'https://schema.org',
   '@type': 'Article',
-  headline: debate.title,
-  alternativeHeadline: debate.title,
-  description: debate.summary,
+  headline: debate.titleEn || debate.title,
+  description: summaryShort,
   datePublished: debate.date,
-  inLanguage: 'zh-CN',
-  isPartOf: {
-    '@type': 'CreativeWork',
-    name: 'Singapore Hansard',
-    url: 'https://sprs.parl.gov.sg/',
-  },
+  inLanguage: 'en',
+  isPartOf: { '@type': 'CreativeWork', name: 'Singapore Hansard', url: 'https://sprs.parl.gov.sg/' },
 };
 
-const breadcrumbs = [{ label: '国会 AI 焦点', href: getPermalink('/debates') }, { label: debate.title }];
+const breadcrumbs = [{ label: t(lang, 'navParliament'), href: '/debates/' }, { label: debate.titleEn || debate.title }];
 ---
 
-<Layout metadata={metadata} breadcrumbs={breadcrumbs}>
+<Layout metadata={metadata} breadcrumbs={breadcrumbs} lang={lang}>
   <JsonLd schema={articleSchema} />
 
   <article class="max-w-3xl mx-auto px-4 sm:px-6 py-12 md:py-16">
     <p class="text-xs uppercase tracking-[0.18em] text-primary font-semibold mb-4">
-      {typeMap[debate.type] || debate.type} · {debate.date} · 第 {debate.parliament} 届国会
+      {typeMap[debate.type] || debate.type} · {debate.date} · Parliament {debate.parliament}
     </p>
     <h1 class="t-display text-gray-900 dark:text-white mb-3">
-      {debate.title}
+      {debate.titleEn || debate.title}
     </h1>
-    <p class="text-sm md:text-base text-gray-500 dark:text-gray-400 italic mb-6 leading-relaxed">{debate.title}</p>
+    {/* (debate.titleEn || debate.title) intentionally hidden on EN page */}
 
     {
       debate.topics && debate.topics.length > 0 && (
         <div class="flex flex-wrap gap-2 mb-8">
-          {debate.topics.map((t) => (
-            <span class="text-xs bg-primary/10 text-primary px-3 py-1.5 rounded-full">{topicZh[t] || t}</span>
+          {debate.topics.map((tp) => (
+            <span class="text-xs bg-primary/10 text-primary px-3 py-1.5 rounded-full">{topicEn[tp] || tp}</span>
           ))}
           <span class="text-xs bg-gray-100 dark:bg-slate-800 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-full ml-auto">
-            争议度 {debate.controversyLevel} · {controversyLabels[debate.controversyLevel] || '未知'}
+            {t(lang, 'controversyLevel')} {debate.controversyLevel} · {controversyLabels[debate.controversyLevel] || ''}
           </span>
         </div>
       )
     }
 
-    <p
-      class="font-serif text-lg leading-[1.85] text-gray-800 dark:text-gray-200 mb-8 border-l-4 border-primary pl-5 italic"
-    >
-      {debate.summary}
-    </p>
+    {
+      summaryShort && (
+        <p class="font-serif text-lg leading-[1.85] text-gray-800 dark:text-gray-200 mb-8 border-l-4 border-primary pl-5 italic">
+          {summaryShort}
+        </p>
+      )
+    }
 
     {
-      debate.keyPoints && debate.keyPoints.length > 0 && (
+      keyPoints.length > 0 && (
         <section class="mb-8">
-          <h2 class="t-h3 text-gray-900 dark:text-white mb-4">关键要点</h2>
+          <h2 class="t-h3 text-gray-900 dark:text-white mb-4">{t(lang, 'keyPoints')}</h2>
           <ul class="space-y-2 text-gray-700 dark:text-gray-300 leading-[1.85]">
-            {debate.keyPoints.map((kp) => (
+            {keyPoints.map((kp) => (
               <li class="flex gap-3">
                 <span class="text-primary shrink-0 mt-1">•</span>
                 <span>{kp}</span>
@@ -136,22 +134,22 @@ const breadcrumbs = [{ label: '国会 AI 焦点', href: getPermalink('/debates')
     }
 
     {
-      (debate.governmentStance || debate.oppositionStance) && (
+      (govStance || oppStance) && (
         <section class="mb-8 grid md:grid-cols-2 gap-4">
-          {debate.governmentStance && (
+          {govStance && (
             <div class="border border-subtle rounded-lg p-4">
               <div class="text-xs font-semibold uppercase tracking-wider text-blue-600 dark:text-blue-400 mb-2">
-                政府立场
+                {t(lang, 'governmentStance')}
               </div>
-              <p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">{debate.governmentStance}</p>
+              <p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">{govStance}</p>
             </div>
           )}
-          {debate.oppositionStance && (
+          {oppStance && (
             <div class="border border-subtle rounded-lg p-4">
               <div class="text-xs font-semibold uppercase tracking-wider text-orange-600 dark:text-orange-400 mb-2">
-                质询立场
+                {t(lang, 'oppositionStance')}
               </div>
-              <p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">{debate.oppositionStance}</p>
+              <p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">{oppStance}</p>
             </div>
           )}
         </section>
@@ -159,20 +157,20 @@ const breadcrumbs = [{ label: '国会 AI 焦点', href: getPermalink('/debates')
     }
 
     {
-      debate.policySignal && (
+      policySignal && (
         <section class="mb-8 bg-purple-50 dark:bg-purple-900/20 border border-purple-200 dark:border-purple-800 rounded-lg p-4">
           <div class="text-xs font-semibold uppercase tracking-wider text-purple-600 dark:text-purple-400 mb-1">
-            政策信号
+            {t(lang, 'policySignal')}
           </div>
-          <p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">{debate.policySignal}</p>
+          <p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">{policySignal}</p>
         </section>
       )
     }
 
     {
-      debate.notableQuote && (
+      notableQuote && (
         <blockquote class="border-l-4 border-gray-300 dark:border-gray-600 pl-5 my-8 text-lg font-serif italic text-gray-700 dark:text-gray-300 leading-[1.85]">
-          "{debate.notableQuote}"
+          "{notableQuote}"
         </blockquote>
       )
     }
@@ -181,7 +179,7 @@ const breadcrumbs = [{ label: '国会 AI 焦点', href: getPermalink('/debates')
       speakers.length > 0 && (
         <section class="mb-8 mt-10 pt-6 border-t border-subtle">
           <h2 class="text-sm uppercase tracking-wider text-gray-500 dark:text-gray-400 font-semibold mb-3">
-            参与人员（{speakers.length}）
+            {t(lang, 'participants')} ({speakers.length})
           </h2>
           <ul class="flex flex-wrap gap-x-4 gap-y-2">
             {speakers.map((s) => (
@@ -192,7 +190,7 @@ const breadcrumbs = [{ label: '国会 AI 焦点', href: getPermalink('/debates')
                     class="text-primary hover:text-secondary text-sm font-medium"
                     title={s.raw}
                   >
-                    {personDisplayName(s.pid)}
+                    {s.display}
                   </a>
                 ) : (
                   <span class="text-sm text-gray-700 dark:text-gray-300">{s.raw}</span>
@@ -205,32 +203,13 @@ const breadcrumbs = [{ label: '国会 AI 焦点', href: getPermalink('/debates')
     }
 
     {
-      transcriptZh.length > 0 && (
-        <section class="my-8 border border-primary/20 bg-primary/5 rounded-xl p-5">
-          <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-4">
-            <h2 class="t-h3 text-gray-900 dark:text-white">完整译文（中文）</h2>
-            <p class="text-xs text-gray-500 dark:text-gray-400">
-              Hansard 英文原文译文
-              {transcript?.translatedAt && ` · 翻译日期：${transcript.translatedAt}`}
-            </p>
-          </div>
-          <div class="space-y-4 text-base text-gray-700 dark:text-gray-300 leading-[1.9]">
-            {transcriptZh.map((paragraph) => (
-              <p>{paragraph}</p>
-            ))}
-          </div>
-        </section>
-      )
-    }
-
-    {
       originalParagraphs.length > 0 && (
-        <section class="my-8 border border-subtle rounded-xl p-5">
+        <section class="my-8 border border-subtle rounded-xl p-5" data-i18n-allow-cjk="hansard-original">
           <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-4">
-            <h2 class="t-h3 text-gray-900 dark:text-white">英文原文</h2>
+            <h2 class="t-h3 text-gray-900 dark:text-white">{t(lang, 'fullTextEn')}</h2>
             <p class="text-xs text-gray-500 dark:text-gray-400">
-              SPRS Hansard 原始记录
-              {transcript?.fetchedAt && ` · 抓取日期：${transcript.fetchedAt}`}
+              SPRS Hansard
+              {transcript?.fetchedAt && ` · Fetched: ${transcript.fetchedAt}`}
             </p>
           </div>
           <div class="space-y-4 text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
@@ -252,7 +231,7 @@ const breadcrumbs = [{ label: '国会 AI 焦点', href: getPermalink('/debates')
             class="inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-secondary border border-primary/30 hover:border-primary px-4 py-2 rounded-md transition-colors"
           >
             <Icon name="tabler:external-link" class="w-4 h-4" />
-            Hansard 原始记录
+            {t(lang, 'hansardSource')}
           </a>
         )
       }
@@ -263,7 +242,8 @@ const breadcrumbs = [{ label: '国会 AI 焦点', href: getPermalink('/debates')
     <nav class="mt-12 pt-6 border-t border-subtle">
       <a href="/debates/" class="text-sm text-primary hover:text-secondary font-medium inline-flex items-center gap-1">
         <Icon name="tabler:arrow-left" class="w-4 h-4" />
-        返回辩论库
+        {t(lang, 'back')}
+        {t(lang, 'navParliament')}
       </a>
     </nav>
   </article>

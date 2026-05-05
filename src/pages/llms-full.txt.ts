@@ -17,142 +17,147 @@ export const prerender = true;
 
 const base = 'https://sgai.md';
 
-const policies = categories.flatMap((category) =>
-  category.policies.filter((policy) => policy.id).map((policy) => `- ${base}/policies/${policy.id}/ — ${policy.title}`)
-);
+// Post-Phase-2 layout: EN at bare paths (`/policies/`), ZH under `/zh/`.
+// We list EN canonical first (route default), ZH mirror second.
 
 const enPolicies = categories.flatMap((category) =>
   category.policies
     .filter((policy) => policy.id)
-    .map((policy) => `- ${base}/en/policies/${policy.id}/ — ${policy.titleEn || policy.title}`)
+    .map((policy) => `- ${base}/policies/${policy.id}/ — ${policy.titleEn || policy.title}`)
+);
+
+const zhPolicies = categories.flatMap((category) =>
+  category.policies
+    .filter((policy) => policy.id)
+    .map((policy) => `- ${base}/zh/policies/${policy.id}/ — ${policy.title}`)
 );
 
 const lines = [
-  '# 新加坡 AI 观察 — Full LLM Index',
+  '# Singapore AI Observatory — Full LLM Index',
   '',
   `Last updated: ${SITE_UPDATED}`,
   `Canonical domain: ${base}`,
+  'Layout: EN at bare paths (route default), ZH mirrored under /zh/.',
   '',
   '## Core Sections',
   '',
-  `- ${base}/ — 新加坡 AI 观察首页`,
-  `- ${base}/en/ — Singapore AI Observatory home`,
-  `- ${base}/policies/ — 政策文件`,
-  `- ${base}/debates/ — 国会 AI 焦点`,
-  `- ${base}/voices/ — AI 影响力图谱`,
-  `- ${base}/videos/ — AI 视频观点`,
-  `- ${base}/levers/ — 国家 AI 抓手图谱`,
-  `- ${base}/legal-ai/ — AI 法律框架`,
-  `- ${base}/benchmarking/ — 国际对标`,
-  `- ${base}/startups/ — AI 创业生态`,
-  `- ${base}/community-opensource/ — 产学研开源生态`,
-  `- ${base}/updates/ — 最近更新流（中文）`,
-  `- ${base}/en/updates/ — Recent updates feed (English)`,
-  `- ${base}/updates.rss.xml — 中文更新 RSS`,
-  `- ${base}/en/updates.rss.xml — English updates RSS`,
+  `- ${base}/ — Singapore AI Observatory home (EN)`,
+  `- ${base}/zh/ — 新加坡 AI 观察首页 (ZH)`,
+  `- ${base}/policies/ — Policy library (EN)  ·  ${base}/zh/policies/ (ZH)`,
+  `- ${base}/debates/ — Parliamentary AI debates (EN)  ·  ${base}/zh/debates/ (ZH)`,
+  `- ${base}/voices/ — AI Influence Map (EN)  ·  ${base}/zh/voices/ (ZH)`,
+  `- ${base}/videos/ — AI video library (EN)  ·  ${base}/zh/videos/ (ZH)`,
+  `- ${base}/levers/ — National AI Levers (EN)  ·  ${base}/zh/levers/ (ZH)`,
+  `- ${base}/legal-ai/ — AI legal framework (EN)  ·  ${base}/zh/legal-ai/ (ZH)`,
+  `- ${base}/benchmarking/ — International benchmarks (EN)  ·  ${base}/zh/benchmarking/ (ZH)`,
+  `- ${base}/startups/ — AI startup ecosystem (EN)  ·  ${base}/zh/startups/ (ZH)`,
+  `- ${base}/community-opensource/ — Community open source (EN)  ·  ${base}/zh/community-opensource/ (ZH)`,
+  `- ${base}/updates/ — Recent updates feed (EN, RSS at ${base}/updates.rss.xml)  ·  ${base}/zh/updates/ (ZH, RSS at ${base}/zh/updates.rss.xml)`,
   '',
-  '## Policy Detail Pages',
-  '',
-  ...policies,
-  '',
-  '## English Policy Detail Pages',
+  '## Policy Detail Pages (EN canonical)',
   '',
   ...enPolicies,
   '',
-  '## Debate Detail Pages',
+  '## Policy Detail Pages (ZH mirror)',
   '',
-  ...debates.map((debate) => `- ${base}/debates/${debate.id}/ — ${debate.title}`),
+  ...zhPolicies,
   '',
-  '## English Debate Detail Pages',
+  '## Debate Detail Pages (EN canonical)',
   '',
-  ...debates.map((debate) => `- ${base}/en/debates/${debate.id}/ — ${debate.title}`),
+  ...debates.map((debate) => `- ${base}/debates/${debate.id}/ — ${debate.titleEn || debate.title}`),
   '',
-  '## Person Detail Pages',
+  '## Debate Detail Pages (ZH mirror)',
   '',
-  ...allPeople.map((person) => `- ${base}/voices/${person.id}/ — ${person.name || person.name}`),
+  ...debates.map((debate) => `- ${base}/zh/debates/${debate.id}/ — ${debate.title}`),
   '',
-  '## English Person Detail Pages',
+  '## Person Detail Pages (EN canonical)',
   '',
-  ...allPeople.map((person) => `- ${base}/en/voices/${person.id}/ — ${person.name}`),
+  ...allPeople.map((person) => `- ${base}/voices/${person.id}/ — ${person.nameEn || person.name}`),
   '',
-  '## Video Detail Pages',
+  '## Person Detail Pages (ZH mirror)',
   '',
-  ...videos.map((video) => `- ${base}/videos/${video.id}/ — ${video.title}`),
+  ...allPeople.map((person) => `- ${base}/zh/voices/${person.id}/ — ${person.name || person.nameEn}`),
   '',
-  '## English Video Detail Pages',
+  '## Video Detail Pages (EN canonical)',
   '',
-  ...videos.map((video) => `- ${base}/en/videos/${video.id}/ — ${video.titleEn || video.title}`),
+  ...videos.map((video) => `- ${base}/videos/${video.id}/ — ${video.titleEn || video.title}`),
   '',
-  '## Lever and Project Detail Pages',
+  '## Video Detail Pages (ZH mirror)',
   '',
-  ...leverPages.map((page) =>
-    page.kind === 'lever'
-      ? `- ${base}/levers/${page.slug}/ — 抓手 ${page.lever.number} · ${page.lever.name}`
-      : `- ${base}/levers/${page.slug}/ — ${page.item.name}`
-  ),
+  ...videos.map((video) => `- ${base}/zh/videos/${video.id}/ — ${video.title}`),
   '',
-  '## English Lever and Project Detail Pages',
+  '## Lever / Project Detail Pages (EN canonical)',
   '',
   ...leverPages.map((page) =>
     page.kind === 'lever'
-      ? `- ${base}/en/levers/${page.slug}/ — Lever ${page.lever.number} · ${page.lever.nameEn || page.lever.name}`
-      : `- ${base}/en/levers/${page.slug}/ — ${page.item.nameEn || page.item.name}`
+      ? `- ${base}/levers/${page.slug}/ — Lever ${page.lever.number} · ${page.lever.nameEn || page.lever.name}`
+      : `- ${base}/levers/${page.slug}/ — ${page.item.nameEn || page.item.name}`
   ),
   '',
-  '## Legal Detail Pages',
+  '## Lever / Project Detail Pages (ZH mirror)',
   '',
-  ...legalItemPages.map((page) => `- ${base}/legal-ai/${page.slug}/ — ${page.item.title}`),
+  ...leverPages.map((page) =>
+    page.kind === 'lever'
+      ? `- ${base}/zh/levers/${page.slug}/ — 抓手 ${page.lever.number} · ${page.lever.name}`
+      : `- ${base}/zh/levers/${page.slug}/ — ${page.item.name}`
+  ),
   '',
-  '## English Legal Detail Pages',
+  '## Legal Detail Pages (EN canonical)',
   '',
-  ...legalItemPages.map((page) => `- ${base}/en/legal-ai/${page.slug}/ — ${page.item.titleEn || page.item.title}`),
+  ...legalItemPages.map((page) => `- ${base}/legal-ai/${page.slug}/ — ${page.item.titleEn || page.item.title}`),
   '',
-  '## Benchmark Detail Pages',
+  '## Legal Detail Pages (ZH mirror)',
   '',
-  ...regionPages.map((page) => `- ${base}/benchmarking/${page.slug}/ — ${page.summary.name}`),
+  ...legalItemPages.map((page) => `- ${base}/zh/legal-ai/${page.slug}/ — ${page.item.title}`),
   '',
-  '## English Benchmark Detail Pages',
+  '## Benchmark Region Pages (EN canonical)',
   '',
-  ...regionPages.map((page) => `- ${base}/en/benchmarking/${page.slug}/ — ${page.summary.nameEn || page.summary.name}`),
+  ...regionPages.map((page) => `- ${base}/benchmarking/${page.slug}/ — ${page.summary.nameEn || page.summary.name}`),
   '',
-  '## Benchmark Case Detail Pages',
+  '## Benchmark Region Pages (ZH mirror)',
   '',
-  ...benchmarkCasePages.map((page) => `- ${base}/benchmarking/${page.slug}/ — ${page.caseItem.name}`),
+  ...regionPages.map((page) => `- ${base}/zh/benchmarking/${page.slug}/ — ${page.summary.name}`),
   '',
-  '## English Benchmark Case Detail Pages',
+  '## Benchmark Case Detail Pages (EN canonical)',
   '',
   ...benchmarkCasePages.map(
-    (page) => `- ${base}/en/benchmarking/${page.slug}/ — ${page.caseItem.nameEn || page.caseItem.name}`
+    (page) => `- ${base}/benchmarking/${page.slug}/ — ${page.caseItem.nameEn || page.caseItem.name}`
   ),
   '',
-  '## Benchmark Region Drilldown Pages — Enriched',
+  '## Benchmark Case Detail Pages (ZH mirror)',
+  '',
+  ...benchmarkCasePages.map((page) => `- ${base}/zh/benchmarking/${page.slug}/ — ${page.caseItem.name}`),
+  '',
+  '## Benchmark Region Drilldown Pages — Enriched (EN canonical)',
   '',
   ...benchmarkDrilldownPages
     .filter((page) => !page.analysisPending)
-    .map((page) => `- ${base}/benchmarking/${page.slug}/ — ${page.title}`),
+    .map((page) => `- ${base}/benchmarking/${page.slug}/ — ${page.titleEn}`),
   '',
-  '## English Benchmark Region Drilldown Pages — Enriched',
+  '## Benchmark Region Drilldown Pages — Enriched (ZH mirror)',
   '',
   ...benchmarkDrilldownPages
     .filter((page) => !page.analysisPending)
-    .map((page) => `- ${base}/en/benchmarking/${page.slug}/ — ${page.titleEn}`),
+    .map((page) => `- ${base}/zh/benchmarking/${page.slug}/ — ${page.title}`),
   '',
-  '## Startup Ecosystem Entity Pages',
+  '## Startup Ecosystem Entity Pages (EN canonical)',
   '',
   ...startupEntityPages.map((page) => `- ${base}/startups/${page.slug}/ — ${page.name}`),
   '',
-  '## English Startup Ecosystem Entity Pages',
+  '## Startup Ecosystem Entity Pages (ZH mirror)',
   '',
-  ...startupEntityPages.map((page) => `- ${base}/en/startups/${page.slug}/ — ${page.name}`),
+  ...startupEntityPages.map((page) => `- ${base}/zh/startups/${page.slug}/ — ${page.name}`),
   '',
-  '## Community Open Source Project Pages',
-  '',
-  ...allCommunityOpenSourceProjects.map((project) => `- ${base}/community-opensource/${project.id}/ — ${project.name}`),
-  '',
-  '## English Community Open Source Project Pages',
+  '## Community Open Source Project Pages (EN canonical)',
   '',
   ...allCommunityOpenSourceProjects.map(
-    (project) => `- ${base}/en/community-opensource/${project.id}/ — ${project.nameEn || project.name}`
+    (project) => `- ${base}/community-opensource/${project.id}/ — ${project.nameEn || project.name}`
+  ),
+  '',
+  '## Community Open Source Project Pages (ZH mirror)',
+  '',
+  ...allCommunityOpenSourceProjects.map(
+    (project) => `- ${base}/zh/community-opensource/${project.id}/ — ${project.name}`
   ),
   '',
 ];

@@ -35,9 +35,9 @@ Full LLM index: ${base}/llms-full.txt
 
 ## High-value Pages
 
-- ${base}/ — Chinese homepage and editorial thesis.
-- ${base}/en/ — English homepage.
-- ${base}/updates/ — ${UPDATES.length} recent updates across policies, debates, videos, startups, and longform (RSS at ${base}/updates.rss.xml).
+- ${base}/ — English homepage and editorial thesis.
+- ${base}/zh/ — Chinese homepage.
+- ${base}/updates/ — ${UPDATES.length} recent updates across policies, debates, videos, startups, and longform (RSS at ${base}/updates.rss.xml; ZH mirror at ${base}/zh/updates/).
 - ${base}/policies/ — ${policyCount} Singapore AI policy documents with source links and bilingual summaries.
 - ${base}/debates/ — ${debates.length} AI-related Singapore Parliament debate records.
 - ${base}/voices/ — ${allPeople.length} people profiles connected to debates, policies, and videos.
@@ -52,7 +52,7 @@ Full LLM index: ${base}/llms-full.txt
 ## Content Notes
 
 - Pages are statically rendered by Astro; core text, headings, metadata, and JSON-LD are present in raw HTML.
-- Chinese pages live at root paths. English mirrors live under /en/.
+- English pages live at root paths (route default). Chinese mirrors live under /zh/.
 - Detail pages are preferred over list pages when citing a specific debate, person, video, project, legal item, policy, company, investor, exit, benchmark case, or country profile.
 - Non-original facts link to official or public sources where available.
 `;

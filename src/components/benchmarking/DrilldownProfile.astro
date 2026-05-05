@@ -15,7 +15,7 @@ interface Props {
 const { page, lang } = Astro.props;
 const isEn = lang === 'en';
 
-const benchmarkRoot = isEn ? '/en/benchmarking/' : '/benchmarking/';
+const benchmarkRoot = isEn ? '/benchmarking/' : '/benchmarking/';
 
 const title = isEn ? page.titleEn || page.title : page.title;
 const description = isEn ? page.descriptionEn || page.description : page.description;
@@ -78,7 +78,7 @@ const articleSchema = {
   isPartOf: {
     '@type': 'WebSite',
     name: isEn ? 'Singapore AI Observatory' : '新加坡 AI 观察',
-    url: isEn ? 'https://sgai.md/en/' : 'https://sgai.md/',
+    url: isEn ? 'https://sgai.md/' : 'https://sgai.md/',
   },
 };
 

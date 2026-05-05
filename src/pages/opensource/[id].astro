@@ -14,14 +14,17 @@ export const getStaticPaths = (() => {
 }) satisfies GetStaticPaths;
 
 const { project } = Astro.props;
+const lang = 'en' as const;
+const name = project.nameEn || project.name;
 ---
 
 <Layout
   metadata={{
-    title: `${project.name} · 官方开源与研究`,
-    description: project.summary || project.description,
+    title: `${name} · Official Open Source & Research`,
+    description: project.summaryEn || project.descriptionEn || project.description,
   }}
-  breadcrumbs={[{ label: '官方开源与研究', href: '/opensource/' }, { label: project.name }]}
+  breadcrumbs={[{ label: 'Official Open Source', href: '/opensource/' }, { label: name }]}
+  lang={lang}
 >
-  <OpenSourceProjectDetail project={project} lang="zh" />
+  <OpenSourceProjectDetail project={project} lang={lang} />
 </Layout>

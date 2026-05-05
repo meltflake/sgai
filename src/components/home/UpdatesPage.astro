@@ -1,5 +1,5 @@
 ---
-// Full updates listing — used by /updates/ (zh) and /en/updates/ (en).
+// Full updates listing — used by /updates/ (zh) and /updates/ (en).
 // Groups entries by month, newest first. Each item mirrors the homepage
 // RecentUpdates row but without the slice limit.
 
@@ -66,7 +66,7 @@ function formatMonth(ym: string, lang: Lang): string {
 }
 
 const totalEntries = groups.reduce((sum, g) => sum + g.items.length, 0);
-const rssHref = lang === 'en' ? '/en/updates.rss.xml' : '/updates.rss.xml';
+const rssHref = lang === 'en' ? '/updates.rss.xml' : '/updates.rss.xml';
 ---
 
 <section class="px-4 py-16 sm:px-6 mx-auto lg:px-8 max-w-4xl">

@@ -1,0 +1,235 @@
+---
+import type { GetStaticPaths } from 'astro';
+import { Icon } from 'astro-icon/components';
+
+import JsonLd from '~/components/common/JsonLd.astro';
+import Layout from '~/layouts/PageLayout.astro';
+import PersonContributions from '~/components/widgets/PersonContributions.astro';
+import { allPeople, type Person } from '~/data/people';
+import { videos } from '~/data/videos';
+import { getRelated, getPersonCounts } from '~/utils/graph';
+
+export const prerender = true;
+
+export const getStaticPaths = (() =>
+  allPeople.map((person) => ({ params: { id: person.id }, props: { person } }))) satisfies GetStaticPaths;
+
+interface Props {
+  person: Person;
+}
+
+const { person } = Astro.props;
+const related = getRelated({ type: 'person', id: person.id });
+const counts = getPersonCounts(person.id);
+const relatedVideos = videos
+  .filter((video) => video.speaker === person.name || (person.aliases || []).includes(video.speaker))
+  .sort((a, b) => b.date.localeCompare(a.date));
+
+const isStub = !person.summary || person.summary.startsWith('[需补充]');
+
+const categoryLabels: Record<Person['category'], string> = {
+  government: '政府',
+  academic: '学术',
+  industry: '产业',
+};
+
+const categoryColors: Record<Person['category'], string> = {
+  government: 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300',
+  academic: 'bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-300',
+  industry: 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300',
+};
+
+const platformLabels: Record<string, string> = {
+  twitter: 'X (Twitter)',
+  linkedin: 'LinkedIn',
+  facebook: 'Facebook',
+  website: '官网',
+  newsletter: 'Newsletter',
+  github: 'GitHub',
+  youtube: 'YouTube',
+};
+
+const metadata = {
+  title: `${person.name || person.name} · AI 影响力图谱`,
+  description: person.summary || `${person.name} 在新加坡 AI 政策中的发言、政策关联与公开视频记录。`,
+};
+
+const personSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: person.name,
+  alternateName: person.name,
+  jobTitle: person.title,
+  description: person.summary,
+  affiliation: person.affiliations.map((name) => ({ '@type': 'Organization', name })),
+  sameAs: person.channels.map((channel) => channel.url),
+};
+---
+
+<Layout
+  metadata={metadata}
+  breadcrumbs={[{ label: 'AI 影响力图谱', href: '/voices/' }, { label: person.name || person.name }]}
+>
+  <JsonLd schema={personSchema} />
+
+  <article class="max-w-4xl mx-auto px-4 sm:px-6 py-10">
+    <header class="mb-8">
+      <div class="flex items-start justify-between flex-wrap gap-3">
+        <div>
+          <p class="text-xs uppercase tracking-[0.18em] text-primary font-semibold mb-3">AI Influence Profile</p>
+          <h1 class="t-display text-gray-900 dark:text-white">
+            {person.name || person.name}
+          </h1>
+          {person.name && <p class="text-lg text-gray-500 dark:text-gray-400 mt-2">{person.name}</p>}
+        </div>
+        <span class={`text-xs font-semibold px-2.5 py-1 rounded-full shrink-0 ${categoryColors[person.category]}`}>
+          {categoryLabels[person.category]}
+        </span>
+      </div>
+      <p class="text-gray-700 dark:text-gray-300 mt-4 font-medium">{person.title || person.title}</p>
+      {
+        person.title && person.title !== person.title && (
+          <p class="text-sm text-gray-500 dark:text-gray-400 italic">{person.title}</p>
+        )
+      }
+    </header>
+
+    <section class="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-8">
+      <div class="bg-surface rounded-xl p-4 shadow-sm border border-subtle">
+        <div class="t-stat text-blue-600">{counts.debateCount}</div>
+        <div class="text-xs text-gray-500 mt-0.5">国会发言</div>
+      </div>
+      <div class="bg-surface rounded-xl p-4 shadow-sm border border-subtle">
+        <div class="t-stat text-purple-600">{counts.policyAuthorCount}</div>
+        <div class="text-xs text-gray-500 mt-0.5">主导政策</div>
+      </div>
+      <div class="bg-surface rounded-xl p-4 shadow-sm border border-subtle">
+        <div class="t-stat text-rose-600">{relatedVideos.length}</div>
+        <div class="text-xs text-gray-500 mt-0.5">视频观点</div>
+      </div>
+    </section>
+
+    {
+      !isStub && person.summary && (
+        <section class="callout-note p-5 rounded-lg mb-8">
+          <h2 class="font-semibold mb-2">一句话定位</h2>
+          <p class="text-gray-800 dark:text-gray-200 leading-relaxed">{person.summary}</p>
+        </section>
+      )
+    }
+
+    {
+      isStub && (
+        <section class="callout-muted p-4 rounded-lg mb-8 text-sm">
+          <p class="text-amber-900 dark:text-amber-200">
+            此人物档案待补充。当前页面先根据已有数据自动汇总其国会发言与政策关联。
+          </p>
+        </section>
+      )
+    }
+
+    {
+      person.channels.length > 0 && (
+        <section class="mb-10">
+          <h2 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-3">官方渠道</h2>
+          <div class="flex flex-wrap gap-2">
+            {person.channels.map((channel) => (
+              <a
+                href={channel.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class={`inline-flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-full border transition-all hover:shadow-sm ${
+                  channel.primary
+                    ? 'bg-blue-50 border-blue-300 text-blue-700 font-semibold dark:bg-blue-900/30 dark:border-blue-600 dark:text-blue-300'
+                    : 'bg-gray-50 border-gray-200 text-gray-600 hover:border-gray-300 dark:bg-slate-700 dark:border-slate-600 dark:text-gray-300'
+                }`}
+              >
+                {channel.primary && <span class="inline-block w-1.5 h-1.5 rounded-full bg-blue-500 dark:bg-blue-400" />}
+                {channel.label || platformLabels[channel.platform] || channel.platform}
+              </a>
+            ))}
+          </div>
+        </section>
+      )
+    }
+
+    <PersonContributions person={person} lang="zh" />
+
+    <section class="mb-10">
+      <h2 class="t-h3 text-gray-800 dark:text-white mb-4">国会发言（{related.debates.length}）</h2>
+      {
+        related.debates.length === 0 ? (
+          <p class="text-sm text-gray-400 italic">暂无关联辩论记录。</p>
+        ) : (
+          <div class="space-y-3">
+            {related.debates.slice(0, 30).map((debate) => (
+              <a
+                href={`/debates/${debate.id}/`}
+                class="block bg-surface rounded-lg p-4 border border-subtle hover:border-blue-300 hover:shadow-sm transition-all"
+              >
+                <h3 class="font-semibold text-gray-800 dark:text-white text-sm leading-snug">{debate.title}</h3>
+                <p class="text-xs text-gray-500 mt-1">
+                  {debate.date} · 第 {debate.parliament} 届国会
+                </p>
+                {debate.summary && (
+                  <p class="text-xs text-gray-600 dark:text-gray-400 mt-2 leading-relaxed line-clamp-3">
+                    {debate.summary}
+                  </p>
+                )}
+              </a>
+            ))}
+          </div>
+        )
+      }
+    </section>
+
+    {
+      related.policies.length > 0 && (
+        <section class="mb-10">
+          <h2 class="t-h3 text-gray-800 dark:text-white mb-4">主导政策（{related.policies.length}）</h2>
+          <div class="grid gap-3">
+            {related.policies.map((policy) => (
+              <a
+                href={policy.id ? `/policies/${policy.id}/` : '/policies/'}
+                class="block bg-surface rounded-lg p-4 border border-subtle hover:border-purple-300 hover:shadow-sm transition-all"
+              >
+                <h3 class="font-semibold text-gray-800 dark:text-white text-sm">{policy.title}</h3>
+                <p class="text-xs text-gray-500 mt-0.5">{policy.date}</p>
+                <p class="text-xs text-gray-600 dark:text-gray-400 mt-2">{policy.summary}</p>
+              </a>
+            ))}
+          </div>
+        </section>
+      )
+    }
+
+    {
+      relatedVideos.length > 0 && (
+        <section class="mb-10">
+          <h2 class="t-h3 text-gray-800 dark:text-white mb-4">视频观点（{relatedVideos.length}）</h2>
+          <div class="grid gap-3">
+            {relatedVideos.map((video) => (
+              <a
+                href={`/videos/${video.id}/`}
+                class="block bg-surface rounded-lg p-4 border border-subtle hover:border-rose-300 hover:shadow-sm transition-all"
+              >
+                <h3 class="font-semibold text-gray-800 dark:text-white text-sm">{video.title}</h3>
+                <p class="text-xs text-gray-500 mt-0.5">
+                  {video.date} · {video.duration} · {video.channel}
+                </p>
+                <p class="text-xs text-gray-600 dark:text-gray-400 mt-2">{video.summary}</p>
+              </a>
+            ))}
+          </div>
+        </section>
+      )
+    }
+
+    <nav class="mt-12 pt-6 border-t border-subtle">
+      <a href="/voices/" class="text-sm text-primary hover:text-secondary font-medium inline-flex items-center gap-1">
+        <Icon name="tabler:arrow-left" class="w-4 h-4" />
+        返回 AI 影响力图谱
+      </a>
+    </nav>
+  </article>
+</Layout>

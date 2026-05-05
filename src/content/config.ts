@@ -62,7 +62,7 @@ const postCollection = defineCollection({
     author: z.string().optional(),
 
     // i18n (v0.3.0). Posts default to 'zh'; '.en.md' siblings carry lang: 'en'.
-    // EN posts render at /en/<slug>/ (permalink generation handles prefix).
+    // EN posts render at /<slug>/ (permalink generation handles prefix).
     lang: z.enum(['zh', 'en']).optional(),
 
     // Phase 1 cross-references — bi-directional knowledge graph between

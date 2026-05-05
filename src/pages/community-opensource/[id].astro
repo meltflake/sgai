@@ -18,20 +18,23 @@ interface Props {
   project: OpenSourceProject;
 }
 
+const lang = 'en' as const;
 const { project } = Astro.props as Props;
+const name = project.nameEn || project.name;
+const description = project.summaryEn || project.descriptionEn || project.description;
 
 const schema = {
   '@context': 'https://schema.org',
   '@type': 'Article',
-  headline: `${project.name} · ${project.org}`,
-  description: project.summary || project.description,
-  inLanguage: 'zh-CN',
+  headline: `${name} · ${project.orgEn || project.org}`,
+  description,
+  inLanguage: 'en',
   mainEntityOfPage: new URL(Astro.url).href,
-  about: project.nameEn || project.name,
+  about: name,
   isBasedOn: project.resources.map((resource) => resource.url),
   publisher: {
     '@type': 'Organization',
-    name: '新加坡 AI 观察',
+    name: 'Singapore AI Observatory',
     url: 'https://sgai.md/',
   },
 };
@@ -39,11 +42,12 @@ const schema = {
 
 <Layout
   metadata={{
-    title: `${project.name} · 产学研开源生态`,
-    description: project.summary || project.description,
+    title: `${name} · Community Open Source`,
+    description,
   }}
-  breadcrumbs={[{ label: '产学研开源生态', href: '/community-opensource/' }, { label: project.name }]}
+  breadcrumbs={[{ label: 'Community Open Source', href: '/community-opensource/' }, { label: name }]}
+  lang={lang}
 >
   <JsonLd schema={schema} />
-  <CommunityOpenSourceProjectDetail project={project} lang="zh" />
+  <CommunityOpenSourceProjectDetail project={project} lang={lang} />
 </Layout>

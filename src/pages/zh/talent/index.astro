@@ -1,0 +1,91 @@
+---
+import { Icon } from 'astro-icon/components';
+
+import Headline from '~/components/ui/Headline.astro';
+import Layout from '~/layouts/PageLayout.astro';
+import { programmes, talentDataDate, type TalentStatusTone } from '~/data/talent';
+
+const statusClasses: Record<TalentStatusTone, string> = {
+  active: 'bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-200',
+  scheduled: 'bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-200',
+  closed: 'bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300',
+  evergreen: 'bg-teal-100 text-teal-800 dark:bg-teal-900/30 dark:text-teal-200',
+};
+---
+
+<Layout
+  metadata={{ title: '人才培养', description: '新加坡 AI 人才培养体系——高校项目、政府培训计划、人才引进政策一览。' }}
+  breadcrumbs={[{ label: '人才培养' }]}
+>
+  <section class="px-4 py-14 sm:px-6 mx-auto lg:px-8 max-w-6xl">
+    <Headline
+      title="AI 人才培养"
+      subtitle="新加坡 AI 人才体系不是一条线，而是一组可追踪的项目入口：学生、教师、职业转型、企业内训、本硕博研究，各自有承办方、门槛和交付物。"
+    />
+
+    <div class="grid gap-5 md:grid-cols-2">
+      {
+        programmes.map((prog) => (
+          <a
+            href={`/talent/${prog.id}/`}
+            class="group flex h-full flex-col bg-surface rounded-lg border border-subtle shadow-sm hover:shadow-md hover:border-primary/40 transition-all overflow-hidden focus-visible:outline-primary"
+          >
+            <div class="p-5 sm:p-6 flex-1 flex flex-col">
+              <div class="flex items-start justify-between gap-4 mb-4">
+                <div class="flex gap-3 min-w-0">
+                  <div class="w-11 h-11 rounded-lg bg-primary/10 text-primary flex items-center justify-center shrink-0">
+                    <Icon name={prog.icon} class="w-6 h-6" />
+                  </div>
+                  <div class="min-w-0">
+                    <p class="text-xs uppercase tracking-[0.14em] text-muted font-semibold mb-1">{prog.category}</p>
+                    <h3 class="font-serif text-xl font-semibold leading-snug text-gray-900 dark:text-white">
+                      {prog.name}
+                    </h3>
+                    <p class="text-sm text-muted mt-1">{prog.nameEn}</p>
+                  </div>
+                </div>
+                <span
+                  class={`text-xs font-medium px-2.5 py-1 rounded whitespace-nowrap ${statusClasses[prog.statusTone]}`}
+                >
+                  {prog.status}
+                </span>
+              </div>
+
+              <p class="text-sm leading-relaxed text-gray-700 dark:text-gray-300 mb-5">{prog.description}</p>
+
+              <div class="grid grid-cols-2 gap-2 mb-5">
+                {prog.stats.slice(0, 4).map((stat) => (
+                  <div class="rounded-md bg-slate-50 dark:bg-slate-800/70 p-3">
+                    <div class="text-base font-semibold text-gray-900 dark:text-white">{stat.value}</div>
+                    <div class="text-xs text-muted mt-1">{stat.label}</div>
+                  </div>
+                ))}
+              </div>
+
+              <ul class="text-sm space-y-2 mb-5">
+                {prog.highlights.slice(0, 3).map((h) => (
+                  <li class="flex items-start gap-2 text-gray-700 dark:text-gray-300">
+                    <Icon name="tabler:check" class="w-4 h-4 mt-0.5 text-primary shrink-0" />
+                    <span>{h}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <div class="mt-auto pt-4 border-t border-subtle flex items-center justify-between gap-3">
+                <span class="text-xs text-muted">{prog.owner}</span>
+                <span class="inline-flex items-center gap-1 text-sm font-medium text-primary group-hover:text-secondary">
+                  查看档案
+                  <Icon name="tabler:arrow-right" class="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
+                </span>
+              </div>
+            </div>
+          </a>
+        ))
+      }
+    </div>
+
+    <p class="mt-10 text-sm text-muted text-center">
+      数据来源：AI Singapore、LearnAI、AIAP、NAISC 与 IOAI 官方页面。本站校验日期：{talentDataDate}。
+    </p>
+  </section>
+</Layout>

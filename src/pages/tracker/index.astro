@@ -20,7 +20,7 @@ const methodologyHref = localizedHref('/tracker/methodology/', lang);
   breadcrumbs={[{ label: t(lang, 'trackerPageTitle') }]}
 >
   <section class="px-4 py-16 sm:px-6 mx-auto lg:px-8 max-w-6xl">
-    <Headline title={`🇸🇬 ${t(lang, 'trackerPageTitle')}`} subtitle={`${t(lang, 'trackerLastUpdated')}：${dataDate}`} />
+    <Headline title={`🇸🇬 ${t(lang, 'trackerPageTitle')}`} subtitle={`${t(lang, 'trackerLastUpdated')}: ${dataDate}`} />
 
     <div class="callout-note rounded-lg mb-10 leading-relaxed">
       <p class="text-base m-0">{oneLiner}</p>
@@ -47,7 +47,8 @@ const methodologyHref = localizedHref('/tracker/methodology/', lang);
 
     <section class="text-sm text-muted">
       <p class="m-0">
-        <strong>{t(lang, 'trackerSectionMethodologyNote')}：</strong>{methodologyNote}{' '}
+        <strong>{t(lang, 'trackerSectionMethodologyNote')}:</strong>
+        {methodologyNote}{' '}
         <a href={methodologyHref} class="text-blue-600 dark:text-blue-400 hover:underline">
           {t(lang, 'trackerSectionMethodology')} →
         </a>

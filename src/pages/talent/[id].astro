@@ -18,6 +18,7 @@ interface Props {
   programme: TalentProgramme;
 }
 
+const lang = 'en' as const;
 const { programme } = Astro.props as Props;
 const relatedProgrammes = programmes.filter((candidate) => candidate.id !== programme.id).slice(0, 4);
 
@@ -29,28 +30,32 @@ const statusClasses: Record<TalentStatusTone, string> = {
 };
 
 const metadata = {
-  title: `${programme.name} · 人才培养`,
-  description: programme.description,
+  title: `${programme.nameEn} · Talent Pipeline`,
+  description: programme.descriptionEn,
 };
 
 const schema = {
   '@context': 'https://schema.org',
   '@type': 'Article',
-  headline: `${programme.name} - ${programme.nameEn}`,
-  description: programme.description,
-  inLanguage: 'zh-CN',
+  headline: programme.nameEn,
+  description: programme.descriptionEn,
+  inLanguage: 'en',
   mainEntityOfPage: new URL(Astro.url).href,
   about: programme.nameEn,
   isBasedOn: programme.profile.sourceUrl,
   publisher: {
     '@type': 'Organization',
-    name: '新加坡 AI 观察',
+    name: 'Singapore AI Observatory',
     url: 'https://sgai.md/',
   },
 };
 ---
 
-<Layout metadata={metadata} breadcrumbs={[{ label: '人才培养', href: '/talent/' }, { label: programme.name }]}>
+<Layout
+  metadata={metadata}
+  breadcrumbs={[{ label: 'Talent Pipeline', href: '/talent/' }, { label: programme.nameEn }]}
+  lang={lang}
+>
   <JsonLd schema={schema} />
 
   <article class="max-w-4xl mx-auto px-4 sm:px-6 py-12 md:py-16">
@@ -61,13 +66,13 @@ const schema = {
           class="inline-flex items-center gap-1 bg-primary/10 text-primary px-3 py-1.5 rounded font-semibold hover:bg-primary/15 transition-colors"
         >
           <Icon name="tabler:arrow-left" class="w-3.5 h-3.5" />
-          人才培养
+          Talent Pipeline
         </a>
         <span class="bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 px-3 py-1.5 rounded">
-          {programme.category}
+          {programme.categoryEn}
         </span>
         <span class={`px-3 py-1.5 rounded font-medium ${statusClasses[programme.statusTone]}`}>
-          {programme.status}
+          {programme.statusEn}
         </span>
       </div>
 
@@ -77,21 +82,25 @@ const schema = {
         </div>
         <div>
           <h1 class="t-display text-gray-900 dark:text-white mb-2">
-            {programme.name}
+            {programme.nameEn}
           </h1>
-          <p class="text-base md:text-lg text-gray-500 dark:text-gray-400 italic">{programme.nameEn}</p>
+          {
+            programme.shortName && (
+              <p class="text-base md:text-lg text-gray-500 dark:text-gray-400 italic">{programme.shortName}</p>
+            )
+          }
         </div>
       </div>
 
-      <p class="t-lead text-gray-700 dark:text-gray-300 mt-6">{programme.description}</p>
+      <p class="t-lead text-gray-700 dark:text-gray-300 mt-6">{programme.descriptionEn}</p>
     </header>
 
     <dl class="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 mb-8">
       {
         programme.stats.map((stat) => (
           <div class="bg-surface border border-subtle rounded-lg p-4">
-            <dt class="text-xs uppercase tracking-wider text-muted mb-1">{stat.label}</dt>
-            <dd class="font-semibold text-gray-900 dark:text-white">{stat.value}</dd>
+            <dt class="text-xs uppercase tracking-wider text-muted mb-1">{stat.labelEn || stat.label}</dt>
+            <dd class="font-semibold text-gray-900 dark:text-white">{stat.valueEn || stat.value}</dd>
           </div>
         ))
       }
@@ -99,18 +108,18 @@ const schema = {
 
     <section class="callout-note rounded-lg mb-10">
       <p class="font-serif text-lg leading-[1.8] text-gray-900 dark:text-white m-0">
-        {programme.profile.sections[0].body}
+        {programme.profile.sections[0].bodyEn}
       </p>
     </section>
 
     <section class="mb-10">
-      <h2 class="t-h3 text-gray-900 dark:text-white mb-4">项目档案</h2>
+      <h2 class="t-h3 text-gray-900 dark:text-white mb-4">Programme Profile</h2>
       <dl class="bg-surface border border-subtle rounded-lg p-5 grid sm:grid-cols-2 gap-x-6 gap-y-4 text-sm">
         {
           programme.profile.facts.map((fact) => (
             <div>
-              <dt class="text-xs uppercase tracking-wider text-muted mb-1">{fact.label}</dt>
-              <dd class="text-gray-800 dark:text-gray-200 leading-relaxed">{fact.value}</dd>
+              <dt class="text-xs uppercase tracking-wider text-muted mb-1">{fact.labelEn || fact.label}</dt>
+              <dd class="text-gray-800 dark:text-gray-200 leading-relaxed">{fact.valueEn || fact.value}</dd>
             </div>
           ))
         }
@@ -120,11 +129,11 @@ const schema = {
     {
       programme.profile.sections.slice(1).map((section) => (
         <section class="mb-10">
-          <h2 class="t-h3 text-gray-900 dark:text-white mb-4">{section.title}</h2>
-          <p class="text-base leading-[1.85] text-gray-800 dark:text-gray-200">{section.body}</p>
-          {section.bullets && section.bullets.length > 0 && (
+          <h2 class="t-h3 text-gray-900 dark:text-white mb-4">{section.titleEn}</h2>
+          <p class="text-base leading-[1.85] text-gray-800 dark:text-gray-200">{section.bodyEn}</p>
+          {section.bulletsEn && section.bulletsEn.length > 0 && (
             <ul class="mt-4 grid gap-2 text-sm">
-              {section.bullets.map((item) => (
+              {section.bulletsEn.map((item) => (
                 <li class="flex items-start gap-2 text-gray-700 dark:text-gray-300">
                   <Icon name="tabler:check" class="w-4 h-4 mt-1 text-primary shrink-0" />
                   <span>{item}</span>
@@ -137,22 +146,22 @@ const schema = {
     }
 
     <section class="callout-muted rounded-lg mb-10">
-      <h2 class="font-serif text-xl font-semibold text-gray-900 dark:text-white mb-3">官方来源</h2>
+      <h2 class="font-serif text-xl font-semibold text-gray-900 dark:text-white mb-3">Official Source</h2>
       <a
         href={programme.profile.sourceUrl}
         target="_blank"
         rel="noopener"
         class="inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-secondary"
       >
-        {programme.profile.sourceLabel}
+        {programme.profile.sourceLabelEn}
         <Icon name="tabler:external-link" class="w-4 h-4" />
       </a>
-      <p class="mt-3 text-sm text-gray-700 dark:text-gray-300 leading-relaxed">{programme.profile.sourceNote}</p>
-      <p class="mt-2 text-xs text-muted">本站校验：{programme.profile.lastChecked}</p>
+      <p class="mt-3 text-sm text-gray-700 dark:text-gray-300 leading-relaxed">{programme.profile.sourceNoteEn}</p>
+      <p class="mt-2 text-xs text-muted">Checked by this site: {programme.profile.lastChecked}</p>
     </section>
 
     <section class="mb-10">
-      <h2 class="t-h3 text-gray-900 dark:text-white mb-4">其他人才项目</h2>
+      <h2 class="t-h3 text-gray-900 dark:text-white mb-4">More Talent Programmes</h2>
       <div class="grid sm:grid-cols-2 gap-3">
         {
           relatedProgrammes.map((related) => (
@@ -163,8 +172,8 @@ const schema = {
               <div class="flex items-start gap-3">
                 <Icon name={related.icon} class="w-5 h-5 text-primary mt-1 shrink-0" />
                 <div>
-                  <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-primary">{related.name}</h3>
-                  <p class="text-xs text-muted mt-1">{related.category}</p>
+                  <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-primary">{related.nameEn}</h3>
+                  <p class="text-xs text-muted mt-1">{related.categoryEn}</p>
                 </div>
               </div>
             </a>

@@ -150,7 +150,7 @@ These questions don't have answers yet. But one thing is clear: **Singapore is r
 
 ## Further Reading
 
-- [Where Is Singapore's AI Strait of Malacca?](/en/singapore-ai-strategy-the-real-moat/) — The rise and erosion of the AI refining-hub strategy
+- [Where Is Singapore's AI Strait of Malacca?](/singapore-ai-strategy-the-real-moat/) — The rise and erosion of the AI refining-hub strategy
 - [Singapore AI Policy Evolution Map](/evolution/) — A five-stage timeline from Smart Nation 2014 to the all-in AI strategy of 2026
 - [Parliamentary AI Focus](/debates/) — Full Committee of Supply debate transcripts across ministries during Budget 2026
 - [Policy Documents](/policies/) — Official Budget 2026 documents and Chinese translations

@@ -23,48 +23,42 @@ export interface Props {
 }
 
 const { metadata = {}, lang } = Astro.props;
-const { language, textDirection } = I18N;
-const htmlLang = lang === 'en' ? 'en' : lang === 'zh' ? 'zh-CN' : language;
-const currentLang: 'zh' | 'en' = lang === 'en' ? 'en' : 'zh';
+const { textDirection } = I18N;
+// Default to EN (route-default locale) when no explicit lang prop is passed.
+const currentLang: 'zh' | 'en' = lang === 'zh' ? 'zh' : 'en';
+const htmlLang = currentLang === 'zh' ? 'zh-CN' : 'en';
 ---
 
 <!doctype html>
 <html lang={htmlLang} dir={textDirection} class="2xl:text-[20px]">
   <head>
     {
-      /* i18n auto-redirect — fires before paint when user has no stored
-        choice and browser language disagrees with current page. Search
-        engine bots (no JS) keep seeing the canonical page. */
+      /* Phase-2 routing: only the user's stored choice triggers a one-time
+        rewrite. Browser-language preference is treated as a hint surfaced
+        by LangBanner, not as a reason to silently change URLs. This keeps
+        deep-link / search-engine traffic on the URL the user / crawler
+        actually requested. */
     }
     <script is:inline define:vars={{ currentLang }}>
       (function () {
         try {
           const stored = localStorage.getItem('sgai_lang');
-          let target = null;
-          if (stored === 'zh' || stored === 'en') {
-            target = stored;
-          } else {
-            const prefs = (
-              navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || 'en']
-            ).map(function (l) {
-              return (l || '').toLowerCase();
-            });
-            const topPref = prefs[0] || '';
-            if (topPref.indexOf('zh') === 0) target = 'zh';
-            else if (topPref.indexOf('en') === 0) target = 'en';
-          }
-          if (!target || target === currentLang) return;
+          if (stored !== 'zh' && stored !== 'en') return;
+          if (stored === currentLang) return;
           const path = location.pathname;
           let dest;
-          if (target === 'en') {
-            dest = path === '/' || path === '' ? '/en/' : '/en' + path;
+          if (stored === 'zh') {
+            // Pin to ZH — prefix /zh.
+            if (path === '/' || path === '') dest = '/zh/';
+            else if (path === '/zh' || path.indexOf('/zh/') === 0) return;
+            else dest = '/zh' + path;
           } else {
-            if (path === '/en' || path === '/en/') dest = '/';
-            else if (path.indexOf('/en/') === 0) dest = path.slice(3);
-            else dest = path;
+            // Pin to EN — strip /zh.
+            if (path === '/zh' || path === '/zh/') dest = '/';
+            else if (path.indexOf('/zh/') === 0) dest = path.slice(3);
+            else return;
           }
           if (dest === path) return;
-          localStorage.setItem('sgai_lang', target);
           location.replace(dest + location.search + location.hash);
         } catch {
           /* localStorage / navigator unavailable — leave page as-is */

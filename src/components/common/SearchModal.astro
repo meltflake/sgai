@@ -84,7 +84,7 @@ const lang = getLangFromPath(new URL(Astro.url).pathname);
       // to resolve it during dev/build.
       await loadScript('/pagefind/pagefind-ui.js');
       // Detect current page lang from the URL so we can pre-filter results.
-      const isEn = location.pathname === '/en' || location.pathname.startsWith('/en/');
+      const isEn = location.pathname === '/en' || location.pathname.startsWith('/');
       const cfg = isEn
         ? {
             element: '#search',

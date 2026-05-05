@@ -68,7 +68,7 @@ const getNormalizedPost = async (post: CollectionEntry<'post'>): Promise<Post> =
 
   // i18n: detect lang from frontmatter or filename. Files like
   // `foo.en.md` (or astro-stripped `foo.en`) are EN posts; their canonical
-  // slug strips the `.en` infix so EN renders at /en/foo/ (mirrors zh /foo/).
+  // slug strips the `.en` infix so EN renders at /foo/ (mirrors zh /foo/).
   // Astro's content collection id may or may not retain the `.md` extension
   // depending on loader version — handle both shapes.
   // i18n: posts under `src/data/post/en/<slug>.md` are EN; everything else
@@ -97,11 +97,13 @@ const getNormalizedPost = async (post: CollectionEntry<'post'>): Promise<Post> =
   }));
 
   const basePermalink = await generatePermalink({ id, slug, publishDate, category: category?.slug });
-  // Note: no leading slash on the EN prefix. A leading "/" in the catch-all
-  // [...blog] params makes Astro emit duplicate routes (e.g. both /en/foo/
-  // and /en/en/foo/). All consumers run permalinks through getPermalink()
-  // which calls trimSlash, so leading-slashlessness is the canonical form.
-  const permalink = lang === 'en' ? `en/${basePermalink}` : basePermalink;
+  // After Phase 2 routing migration: EN is the route default and lives at
+  // bare permalinks (`/foo/`); ZH posts go under `/zh/<slug>/`. No leading
+  // slash on the prefix — a leading "/" in the catch-all [...blog] params
+  // makes Astro emit duplicate routes. All consumers run permalinks through
+  // getPermalink() which calls trimSlash, so leading-slashlessness is the
+  // canonical form.
+  const permalink = lang === 'zh' ? `zh/${basePermalink}` : basePermalink;
 
   return {
     id: id,

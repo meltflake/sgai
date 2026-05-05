@@ -1,5 +1,5 @@
 ---
-// Editorial homepage (zh) — thin wrapper. All structure and copy live in
+// Editorial homepage (en) — thin wrapper. All structure and copy live in
 // `src/components/home/HomePage.astro`; this file supplies metadata + JSON-LD.
 // To change the page layout, edit the shared component, not this file.
 
@@ -8,7 +8,7 @@ import JsonLd from '~/components/common/JsonLd.astro';
 import HomePage from '~/components/home/HomePage.astro';
 import { t } from '~/i18n';
 
-const lang = 'zh' as const;
+const lang = 'en' as const;
 
 const metadata = {
   title: t(lang, 'siteName'),
@@ -31,11 +31,11 @@ const websiteSchema = {
   '@type': 'WebSite',
   name: t(lang, 'siteName'),
   url: 'https://sgai.md/',
-  inLanguage: 'zh-CN',
+  inLanguage: 'en',
 };
 ---
 
-<Layout metadata={metadata}>
+<Layout metadata={metadata} lang={lang}>
   <JsonLd schema={organizationSchema} />
   <JsonLd schema={websiteSchema} />
   <HomePage lang={lang} />

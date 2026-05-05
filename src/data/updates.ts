@@ -2,8 +2,8 @@
 //
 // Surfaced on:
 //   - Homepage (RecentUpdates widget, latest 8)
-//   - /updates/ and /en/updates/ (full list, grouped by month)
-//   - /updates.rss.xml and /en/updates.rss.xml (RSS feeds)
+//   - /updates/ and /updates/ (full list, grouped by month)
+//   - /updates.rss.xml and /updates.rss.xml (RSS feeds)
 //   - llms.txt (high-value pages section)
 //
 // Each entry is bilingual. New entries are added by refresh pipelines via

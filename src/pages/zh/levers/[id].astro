@@ -1,0 +1,205 @@
+---
+import type { GetStaticPaths } from 'astro';
+import { Icon } from 'astro-icon/components';
+
+import JsonLd from '~/components/common/JsonLd.astro';
+import RelatedRail from '~/components/data/RelatedRail.astro';
+import Layout from '~/layouts/PageLayout.astro';
+import { dataDate } from '~/data/levers';
+import { getDebateById, getPolicyById } from '~/utils/graph';
+import { leverItemSlug, leverPages, leverSlug } from '~/utils/entity-pages';
+
+export const prerender = true;
+
+export const getStaticPaths = (() =>
+  leverPages.map((page) => ({ params: { id: page.slug }, props: { page } }))) satisfies GetStaticPaths;
+
+const { page } = Astro.props;
+const lever = page.lever;
+const isLever = page.kind === 'lever';
+const itemPolicies = page.kind === 'item' ? (page.item.relatedPolicyIds || []).map(getPolicyById).filter(Boolean) : [];
+const itemDebates = page.kind === 'item' ? (page.item.relatedDebateIds || []).map(getDebateById).filter(Boolean) : [];
+const projectCount = lever.groups.reduce((sum, group) => sum + group.items.length, 0);
+
+const title = isLever ? `抓手 ${lever.number} · ${lever.name}` : page.item.name;
+const description = isLever ? lever.subtitle : page.item.description;
+
+const metadata = {
+  title: `${title} · 国家 AI 抓手图谱`,
+  description,
+};
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': isLever ? 'DefinedTerm' : 'GovernmentService',
+  name: title,
+  description,
+  dateModified: dataDate,
+  inLanguage: 'zh-CN',
+  isPartOf: {
+    '@type': 'CreativeWork',
+    name: '新加坡国家 AI 抓手图谱',
+    url: 'https://sgai.md/levers/',
+  },
+};
+---
+
+<Layout metadata={metadata} breadcrumbs={[{ label: '国家 AI 抓手图谱', href: '/levers/' }, { label: title }]}>
+  <JsonLd schema={schema} />
+
+  <article class="max-w-4xl mx-auto px-4 sm:px-6 py-12 md:py-16">
+    <header class="mb-8">
+      <p class="text-xs uppercase tracking-[0.18em] text-primary font-semibold mb-4">
+        Lever {lever.number} · Updated {dataDate}
+      </p>
+      <h1 class="t-display text-gray-900 dark:text-white mb-3">
+        {isLever ? `${lever.icon} 抓手 ${lever.number} · ${lever.name}` : page.item.name}
+      </h1>
+      <p class="t-lead text-gray-500 dark:text-gray-400">
+        {isLever ? lever.subtitle : `隶属于抓手 ${lever.number} · ${lever.name} / ${page.group.title}`}
+      </p>
+    </header>
+
+    {
+      isLever ? (
+        <>
+          <section class="grid md:grid-cols-3 gap-3 mb-8">
+            <div class="bg-surface border border-subtle rounded-lg p-4">
+              <div class="text-xs uppercase tracking-wider text-gray-500 mb-1">项目数</div>
+              <div class="t-stat text-primary">{projectCount}</div>
+            </div>
+            <div class="bg-surface border border-subtle rounded-lg p-4">
+              <div class="text-xs uppercase tracking-wider text-gray-500 mb-1">传导模式</div>
+              <div class="font-semibold">{lever.transmissionMode === 'direct' ? '国家直接做' : '穿透到企业'}</div>
+            </div>
+            <div class="bg-surface border border-subtle rounded-lg p-4">
+              <div class="text-xs uppercase tracking-wider text-gray-500 mb-1">解决瓶颈</div>
+              <div class="font-semibold">{lever.bottleneckSolved}</div>
+            </div>
+          </section>
+
+          <section class="callout-note rounded-lg p-5 mb-10">
+            <h2 class="t-h3 text-gray-900 dark:text-white mb-3">抓手定义</h2>
+            <p class="text-gray-800 dark:text-gray-200 leading-[1.85]">{lever.whatStateDoes}</p>
+            {lever.insight && <p class="text-gray-800 dark:text-gray-200 leading-[1.85] mt-3">判断：{lever.insight}</p>}
+          </section>
+
+          <section class="mb-10">
+            <h2 class="t-h3 text-gray-900 dark:text-white mb-4">包含项目</h2>
+            <div class="space-y-6">
+              {lever.groups.map((group) => (
+                <div>
+                  <h3 class="font-semibold text-gray-900 dark:text-white mb-3">{group.title}</h3>
+                  <div class="grid md:grid-cols-2 gap-3">
+                    {group.items.map((item) => (
+                      <a
+                        href={`/levers/${leverItemSlug(item)}/`}
+                        class="block bg-surface border border-subtle rounded-lg p-4 hover:border-emerald-300 hover:shadow-sm transition-all"
+                      >
+                        <h4 class="font-semibold text-gray-900 dark:text-white text-sm">{item.name}</h4>
+                        <p class="text-xs text-gray-500 mt-1">
+                          {item.ministry}
+                          {item.scale ? ` · ${item.scale}` : ''}
+                        </p>
+                        <p class="text-xs text-gray-600 dark:text-gray-400 mt-2">{item.description}</p>
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          <RelatedRail entity={{ type: 'lever', id: lever.number }} variant="full" hideWhenEmpty={true} />
+        </>
+      ) : (
+        <>
+          <section class="grid md:grid-cols-3 gap-3 mb-8">
+            <div class="bg-surface border border-subtle rounded-lg p-4">
+              <div class="text-xs uppercase tracking-wider text-gray-500 mb-1">主管机构</div>
+              <div class="font-semibold">{page.item.ministry}</div>
+            </div>
+            <div class="bg-surface border border-subtle rounded-lg p-4">
+              <div class="text-xs uppercase tracking-wider text-gray-500 mb-1">规模 / KPI</div>
+              <div class="font-semibold">{page.item.scale || '—'}</div>
+            </div>
+            <div class="bg-surface border border-subtle rounded-lg p-4">
+              <div class="text-xs uppercase tracking-wider text-gray-500 mb-1">父抓手</div>
+              <a href={`/levers/${leverSlug(lever)}/`} class="text-primary hover:text-secondary font-semibold">
+                抓手 {lever.number} · {lever.name}
+              </a>
+            </div>
+          </section>
+
+          <section class="callout-note rounded-lg p-5 mb-10">
+            <h2 class="t-h3 text-gray-900 dark:text-white mb-3">项目描述</h2>
+            <p class="text-gray-800 dark:text-gray-200 leading-[1.85]">{page.item.description}</p>
+          </section>
+
+          <section class="grid md:grid-cols-2 gap-5 mb-10">
+            <div class="bg-surface border border-subtle rounded-lg p-5">
+              <h2 class="t-h3 text-gray-900 dark:text-white mb-3">国家直接做什么</h2>
+              <p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">{lever.whatStateDoes}</p>
+            </div>
+            <div class="bg-surface border border-subtle rounded-lg p-5">
+              <h2 class="t-h3 text-gray-900 dark:text-white mb-3">解决什么瓶颈</h2>
+              <p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">{lever.bottleneckSolved}</p>
+            </div>
+          </section>
+
+          <section class="mb-10">
+            <h2 class="t-h3 text-gray-900 dark:text-white mb-4">关联阅读</h2>
+            <div class="grid gap-3 md:grid-cols-2">
+              {itemPolicies.map((policy) => (
+                <a
+                  href={policy!.id ? `/policies/${policy!.id}/` : '/policies/'}
+                  class="block bg-surface border border-subtle rounded-lg p-4 hover:border-purple-300 hover:shadow-sm transition-all"
+                >
+                  <h3 class="font-semibold text-gray-900 dark:text-white text-sm">{policy!.title}</h3>
+                  <p class="text-xs text-gray-600 dark:text-gray-400 mt-2">{policy!.summary}</p>
+                </a>
+              ))}
+              {itemDebates.map((debate) => (
+                <a
+                  href={`/debates/${debate!.id}/`}
+                  class="block bg-surface border border-subtle rounded-lg p-4 hover:border-amber-300 hover:shadow-sm transition-all"
+                >
+                  <h3 class="font-semibold text-gray-900 dark:text-white text-sm">{debate!.title}</h3>
+                  <p class="text-xs text-gray-600 dark:text-gray-400 mt-2">{debate!.summary}</p>
+                </a>
+              ))}
+              {itemPolicies.length === 0 && itemDebates.length === 0 && (
+                <a
+                  href={`/levers/${leverSlug(lever)}/`}
+                  class="block bg-surface border border-subtle rounded-lg p-4 hover:border-emerald-300 hover:shadow-sm transition-all"
+                >
+                  <h3 class="font-semibold text-gray-900 dark:text-white text-sm">查看父抓手</h3>
+                  <p class="text-xs text-gray-600 dark:text-gray-400 mt-2">{lever.subtitle}</p>
+                </a>
+              )}
+            </div>
+          </section>
+
+          {page.item.sourceUrl && (
+            <a
+              href={page.item.sourceUrl}
+              target="_blank"
+              rel="noopener"
+              class="inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-secondary border border-primary/30 hover:border-primary px-4 py-2 rounded-md transition-colors"
+            >
+              <Icon name="tabler:external-link" class="w-4 h-4" />
+              来源
+            </a>
+          )}
+        </>
+      )
+    }
+
+    <nav class="mt-12 pt-6 border-t border-subtle">
+      <a href="/levers/" class="text-sm text-primary hover:text-secondary font-medium inline-flex items-center gap-1">
+        <Icon name="tabler:arrow-left" class="w-4 h-4" />
+        返回国家 AI 抓手图谱
+      </a>
+    </nav>
+  </article>
+</Layout>

@@ -52,11 +52,15 @@ const ariaLabel = currentLang === 'en' ? t(currentLang, 'langToggleLabel') : '�
       }
       const path = location.pathname;
       let dest;
-      if (otherLang === 'en') {
-        dest = path === '/' || path === '' ? '/en/' : '/en' + path;
+      if (otherLang === 'zh') {
+        // Switch to ZH — prefix /zh.
+        if (path === '/' || path === '') dest = '/zh/';
+        else if (path === '/zh' || path.indexOf('/zh/') === 0) dest = path;
+        else dest = '/zh' + path;
       } else {
-        if (path === '/en' || path === '/en/') dest = '/';
-        else if (path.indexOf('/en/') === 0) dest = path.slice(3);
+        // Switch to EN — strip /zh.
+        if (path === '/zh' || path === '/zh/') dest = '/';
+        else if (path.indexOf('/zh/') === 0) dest = path.slice(3);
         else dest = path;
       }
       location.assign(dest + location.search + location.hash);

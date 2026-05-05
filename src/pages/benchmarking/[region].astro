@@ -14,6 +14,6 @@ export const getStaticPaths = (() =>
 const { page } = Astro.props as { page: BenchmarkPage };
 ---
 
-{page.kind === 'drilldown' && <DrilldownProfile page={page} lang="zh" />}
-{page.kind === 'case' && <CaseProfile page={page} lang="zh" />}
-{page.kind === 'region' && <RegionProfile page={page} lang="zh" />}
+{page.kind === 'drilldown' && <DrilldownProfile page={page} lang="en" />}
+{page.kind === 'case' && <CaseProfile page={page} lang="en" />}
+{page.kind === 'region' && <RegionProfile page={page} lang="en" />}

@@ -1,23 +1,19 @@
 import { getRssString } from '@astrojs/rss';
 
-import { SITE, METADATA, APP_BLOG } from 'astrowind:config';
+import { SITE, APP_BLOG } from 'astrowind:config';
 import { fetchPosts } from '~/utils/blog';
 import { getPermalink } from '~/utils/permalinks';
 
 export const GET = async () => {
   if (!APP_BLOG.isEnabled) {
-    return new Response(null, {
-      status: 404,
-      statusText: 'Not found',
-    });
+    return new Response(null, { status: 404, statusText: 'Not found' });
   }
 
-  // zh-only feed at /rss.xml. EN feed lives at /en/rss.xml.
-  const posts = (await fetchPosts()).filter((p) => (p.lang ?? 'zh') === 'zh');
+  const posts = (await fetchPosts()).filter((p) => p.lang === 'en');
 
   const rss = await getRssString({
-    title: `${SITE.name}’s Blog`,
-    description: METADATA?.description || '',
+    title: `Singapore AI Observatory`,
+    description: 'Independent analysis of Singapore’s AI strategy.',
     site: import.meta.env.SITE,
 
     items: posts.map((post) => ({
@@ -31,8 +27,6 @@ export const GET = async () => {
   });
 
   return new Response(rss, {
-    headers: {
-      'Content-Type': 'application/xml',
-    },
+    headers: { 'Content-Type': 'application/xml' },
   });
 };

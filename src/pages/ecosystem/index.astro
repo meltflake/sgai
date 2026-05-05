@@ -3,16 +3,23 @@ import Layout from '~/layouts/PageLayout.astro';
 import Headline from '~/components/ui/Headline.astro';
 import { Icon } from 'astro-icon/components';
 import { ecosystemCategories } from '~/data/ecosystem';
+
+const lang = 'en' as const;
 ---
 
 <Layout
-  metadata={{ title: '生态地图', description: '新加坡 AI 生态地图——政府机构、研究院所、企业与初创公司的完整版图。' }}
-  breadcrumbs={[{ label: '生态地图' }]}
+  metadata={{
+    title: 'Ecosystem Map',
+    description:
+      "Singapore's AI ecosystem map — government agencies, research institutes, corporates, and startups in one view.",
+  }}
+  breadcrumbs={[{ label: 'Ecosystem Map' }]}
+  lang={lang}
 >
   <section class="px-4 py-16 sm:px-6 mx-auto lg:px-8 max-w-6xl">
     <Headline
-      title="🗺️ 新加坡 AI 生态地图"
-      subtitle="AI Singapore 七大支柱与关键参与者，呈现新加坡 AI 生态系统全貌。"
+      title="🗺️ Singapore AI Ecosystem Map"
+      subtitle="The seven pillars of AI Singapore and their key participants — a full-system view of Singapore's AI landscape."
     />
 
     <div class="space-y-12">
@@ -21,23 +28,25 @@ import { ecosystemCategories } from '~/data/ecosystem';
           <div>
             <div class="mb-4">
               <h2 class="t-h2 border-b-2 border-blue-600 dark:border-blue-400 pb-2">
-                {cat.icon} {cat.name}
+                {cat.icon} {cat.nameEn || cat.name}
               </h2>
-              <p class="text-sm text-muted mt-2">{cat.description}</p>
+              <p class="text-sm text-muted mt-2">{cat.descriptionEn || cat.description}</p>
             </div>
             <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
               {cat.entities.map((entity) => {
                 const hasDetail = Boolean(entity.id);
                 const detailHref = hasDetail ? `/ecosystem/${entity.id}/` : null;
+                const displayName = entity.nameEn || entity.name;
+                const displayDesc = entity.descriptionEn || entity.description;
                 return (
                   <div class="relative bg-surface rounded-lg shadow-md border border-subtle hover:shadow-lg transition-shadow">
                     {detailHref ? (
                       <a href={detailHref} class="block p-5 pr-10">
                         <h3 class="text-base font-bold mb-1 text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
-                          {entity.name}
+                          {displayName}
                         </h3>
-                        <p class="text-sm text-muted">{entity.description}</p>
-                        <p class="text-xs text-blue-600 dark:text-blue-400 mt-3 font-medium">了解详情 →</p>
+                        <p class="text-sm text-muted">{displayDesc}</p>
+                        <p class="text-xs text-blue-600 dark:text-blue-400 mt-3 font-medium">Read more →</p>
                       </a>
                     ) : (
                       <div class="block p-5 pr-10">
@@ -49,23 +58,22 @@ import { ecosystemCategories } from '~/data/ecosystem';
                               rel="noopener"
                               class="text-blue-600 dark:text-blue-400 hover:underline"
                             >
-                              {entity.name} ↗
+                              {displayName} ↗
                             </a>
                           ) : (
-                            entity.name
+                            displayName
                           )}
                         </h3>
-                        <p class="text-sm text-muted">{entity.description}</p>
+                        <p class="text-sm text-muted">{displayDesc}</p>
                       </div>
                     )}
-                    {/* External-link icon, absolute-positioned to escape the card-link's <a> tag — HTML can't nest <a>s. */}
                     {hasDetail && entity.url && (
                       <a
                         href={entity.url}
                         target="_blank"
                         rel="noopener"
-                        title={`访问 ${entity.name} 官网`}
-                        aria-label={`访问 ${entity.name} 官网`}
+                        title={`Visit ${displayName} website`}
+                        aria-label={`Visit ${displayName} website`}
                         class="absolute top-3 right-3 inline-flex items-center justify-center w-7 h-7 rounded-md text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/30 transition-colors"
                       >
                         <Icon name="tabler:external-link" class="w-4 h-4" />
@@ -80,6 +88,8 @@ import { ecosystemCategories } from '~/data/ecosystem';
       }
     </div>
 
-    <p class="mt-12 text-sm text-muted text-center">数据来源：AI Singapore 官网及公开信息。生态持续演进，欢迎补充。</p>
+    <p class="mt-12 text-sm text-muted text-center">
+      Sources: AI Singapore and other public information. The ecosystem evolves continuously — additions welcome.
+    </p>
   </section>
 </Layout>

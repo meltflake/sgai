@@ -1,18 +1,19 @@
 ---
-// Timeline page (zh) — thin wrapper.
+// Timeline page (en) — thin wrapper.
 
 import Layout from '~/layouts/PageLayout.astro';
 import TimelinePage from '~/components/timeline/TimelinePage.astro';
 
-const lang = 'zh' as const;
+const lang = 'en' as const;
 ---
 
 <Layout
   metadata={{
-    title: '发展时间线',
-    description: '新加坡 AI 发展时间线：从 2014 年智慧国家到 2027 年国际 AI 奥林匹克，关键里程碑按时间排列。',
+    title: 'Timeline',
+    description:
+      "Singapore's AI development timeline: from the 2014 Smart Nation Initiative through NAIS 2.0 to the 2027 International AI Olympiad — key milestones in chronological order.",
   }}
-  breadcrumbs={[{ label: '发展时间线' }]}
+  breadcrumbs={[{ label: 'Timeline' }]}
   lang={lang}
 >
   <TimelinePage lang={lang} />

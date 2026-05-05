@@ -1,0 +1,49 @@
+---
+import type { GetStaticPaths } from 'astro';
+
+import JsonLd from '~/components/common/JsonLd.astro';
+import CommunityOpenSourceProjectDetail from '~/components/data/CommunityOpenSourceProjectDetail.astro';
+import Layout from '~/layouts/PageLayout.astro';
+import { allCommunityOpenSourceProjects, type OpenSourceProject } from '~/data/community-opensource';
+
+export const prerender = true;
+
+export const getStaticPaths = (() =>
+  allCommunityOpenSourceProjects.map((project) => ({
+    params: { id: project.id },
+    props: { project },
+  }))) satisfies GetStaticPaths;
+
+interface Props {
+  project: OpenSourceProject;
+}
+
+const { project } = Astro.props as Props;
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: `${project.name} · ${project.org}`,
+  description: project.summary || project.description,
+  inLanguage: 'zh-CN',
+  mainEntityOfPage: new URL(Astro.url).href,
+  about: project.nameEn || project.name,
+  isBasedOn: project.resources.map((resource) => resource.url),
+  publisher: {
+    '@type': 'Organization',
+    name: '新加坡 AI 观察',
+    url: 'https://sgai.md/',
+  },
+};
+---
+
+<Layout
+  metadata={{
+    title: `${project.name} · 产学研开源生态`,
+    description: project.summary || project.description,
+  }}
+  breadcrumbs={[{ label: '产学研开源生态', href: '/community-opensource/' }, { label: project.name }]}
+>
+  <JsonLd schema={schema} />
+  <CommunityOpenSourceProjectDetail project={project} lang="zh" />
+</Layout>

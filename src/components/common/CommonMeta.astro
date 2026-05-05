@@ -1,37 +1,16 @@
 ---
 import { getAsset, getCanonical } from '~/utils/permalinks';
-import { localizedHref, unprefixed } from '~/i18n';
+import { localizedHref, unprefixed, ROUTE_DEFAULT_LOCALE } from '~/i18n';
 
+// After Phase 2 routing migration, every content page has both an EN
+// (route-default, unprefixed) and a /zh/<path>/ mirror. We always emit
+// both hreflang alternates plus x-default → EN. The few non-content
+// endpoints (sitemap.xml, llms.txt, RSS) are not HTML pages and don't
+// hit this component.
 const pathname = String(Astro.url.pathname);
-const defaultPath = unprefixed(pathname);
-const rootSegment = defaultPath.replace(/^\/+/, '').split('/')[0] || '';
-const mirroredRoots = new Set([
-  '',
-  'about',
-  'benchmarking',
-  'challenges',
-  'community-opensource',
-  'debates',
-  'ecosystem',
-  'evolution',
-  'fieldnotes',
-  'legal-ai',
-  'levers',
-  'opensource',
-  'people',
-  'policies',
-  'references',
-  'startups',
-  'talent',
-  'timeline',
-  'tracker',
-  'updates',
-  'videos',
-  'voices',
-]);
-const hasEnglishMirror = mirroredRoots.has(rootSegment);
-const zhCanonical = String(getCanonical(defaultPath));
-const enCanonical = String(getCanonical(localizedHref(defaultPath, 'en')));
+const enPath = unprefixed(pathname);
+const enCanonical = String(getCanonical(localizedHref(enPath, ROUTE_DEFAULT_LOCALE)));
+const zhCanonical = String(getCanonical(localizedHref(enPath, 'zh')));
 ---
 
 <meta charset="UTF-8" />
@@ -40,6 +19,6 @@ const enCanonical = String(getCanonical(localizedHref(defaultPath, 'en')));
 
 <link rel="sitemap" href={getAsset('/sitemap-index.xml')} />
 <link rel="manifest" href={getAsset('/manifest.json')} />
+<link rel="alternate" hreflang="en" href={enCanonical} />
 <link rel="alternate" hreflang="zh-CN" href={zhCanonical} />
-{hasEnglishMirror && <link rel="alternate" hreflang="en" href={enCanonical} />}
-<link rel="alternate" hreflang="x-default" href={zhCanonical} />
+<link rel="alternate" hreflang="x-default" href={enCanonical} />

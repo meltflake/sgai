@@ -1,44 +1,63 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
 import Headline from '~/components/ui/Headline.astro';
-import { sections, dataDate, introBody, conclusion } from '~/data/legal-ai';
+import { sections, dataDate } from '~/data/legal-ai';
 import { legalItemSlug } from '~/utils/entity-pages';
 import { renderInlineMarkdown } from '~/utils/inline-markdown';
 
+const lang = 'en' as const;
+
 const scopeLabel: Record<string, { label: string; color: string }> = {
-  training: { label: '训练侧', color: 'bg-emerald-100 dark:bg-emerald-900 text-emerald-800 dark:text-emerald-200' },
-  output: { label: '输出侧', color: 'bg-rose-100 dark:bg-rose-900 text-rose-800 dark:text-rose-200' },
-  liability: { label: '责任', color: 'bg-amber-100 dark:bg-amber-900 text-amber-800 dark:text-amber-200' },
-  governance: { label: '治理', color: 'bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200' },
+  training: { label: 'Training', color: 'bg-emerald-100 dark:bg-emerald-900 text-emerald-800 dark:text-emerald-200' },
+  output: { label: 'Output', color: 'bg-rose-100 dark:bg-rose-900 text-rose-800 dark:text-rose-200' },
+  liability: { label: 'Liability', color: 'bg-amber-100 dark:bg-amber-900 text-amber-800 dark:text-amber-200' },
+  governance: { label: 'Governance', color: 'bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200' },
 };
+
+const introBodyEn = `Singapore's AI legal framework reduces to a single line: **permissive on training + strict on outputs**.
+
+- **Training side**: Legally acquired content (with or without copyright) can be used to train AI — among the world's most permissive regimes, on par with Japan.
+- **Output side**: Deepfakes, AI-generated intimate images, AI-driven disinformation, and election manipulation — strictly governed by a four-piece legislative bundle.
+
+This combination makes Singapore one of the **most predictable legal jurisdictions for AI companies** today: the boundaries of what you can and cannot do are clear. It is one of the key reasons EDB has been able to attract OpenAI, Anthropic, DeepMind, Mistral and others to set up here.`;
+
+const conclusionEn = `**Why this legal package is attractive to AI companies**:
+
+1. **Permissive training, strict outputs** — clear boundaries; you know what is and isn't allowed.
+2. **One-stop governance** — IMDA + MAS + CSA + MINLAW form a unified framework, no policy fragmentation.
+3. **Soft law as the default** — voluntary frameworks first, hard law only when the soft law is exceeded; gives industry room to adjust.
+4. **English common-law system** — judicial reasoning is highly transparent and reusable for cross-border legal opinions.
+
+This is one of the structural reasons OpenAI, Anthropic, DeepMind, Mistral and others have set up regional headquarters in Singapore — beyond capital, talent, and infrastructure, the legal certainty is itself a moat.`;
 ---
 
 <Layout
   metadata={{
-    title: '新加坡 AI 法律框架',
+    title: 'AI Legal Framework',
     description:
-      '新加坡 AI 法律框架——"训练宽松 + 输出严管"双轨：Copyright §244 全球最宽松的 AI 训练例外，配合 OCHA + Elections Bill + Criminal Law Bill + Online Safety Bill 四件套输出严管。',
+      "Singapore's AI legal framework — 'permissive on training, strict on outputs' dual track: Copyright §244 (one of the world's most permissive AI training exceptions) paired with the OCHA + Elections Bill + Criminal Law Bill + Online Safety Bill quartet on outputs.",
   }}
-  breadcrumbs={[{ label: 'AI 法律框架' }]}
+  breadcrumbs={[{ label: 'AI Legal Framework' }]}
+  lang={lang}
 >
   <section class="px-4 py-16 sm:px-6 mx-auto lg:px-8 max-w-5xl">
     <Headline
-      title="⚖️ 新加坡 AI 法律框架"
-      subtitle={`数据更新：${dataDate}。"训练宽松 + 输出严管"双轨——这让新加坡成为目前世界上对 AI 公司最清晰可预测的法域之一。`}
+      title="⚖️ Singapore AI Legal Framework"
+      subtitle={`Last updated: ${dataDate}. "Permissive on training + strict on outputs" — a dual track that makes Singapore one of the world's most predictable jurisdictions for AI companies today.`}
     />
 
     <div class="callout-note rounded-lg mb-12 leading-relaxed">
-      <p class="font-bold text-base mb-3">核心立场</p>
-      <div class="text-sm leading-relaxed space-y-3" set:html={renderInlineMarkdown(introBody)} />
+      <p class="font-bold text-base mb-3">Core Position</p>
+      <div class="text-sm leading-relaxed space-y-3" set:html={renderInlineMarkdown(introBodyEn)} />
     </div>
 
     {
       sections.map((section, sectionIdx) => (
         <div class="mb-16">
           <h2 class="t-h2 mb-3 border-b-2 border-blue-600 dark:border-blue-400 pb-2">
-            {sectionIdx + 1}. {section.title}
+            {sectionIdx + 1}. {section.titleEn || section.title}
           </h2>
-          <p class="text-sm italic text-muted mb-6">{section.philosophy}</p>
+          <p class="text-sm italic text-muted mb-6">{section.philosophyEn || section.philosophy}</p>
 
           <div class="space-y-4">
             {section.items.map((item) => (
@@ -46,20 +65,19 @@ const scopeLabel: Record<string, { label: string; color: string }> = {
                 <a
                   href={`/legal-ai/${legalItemSlug(item)}/`}
                   class="absolute inset-0 z-0 rounded-lg"
-                  aria-label={`查看 ${item.title} 详情`}
+                  aria-label={`View details for ${item.titleEn}`}
                 />
                 <div class="flex items-start gap-2 flex-wrap mb-2">
                   <h3 class="text-lg font-bold m-0 flex-1 min-w-0 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-                    {item.title}
+                    {item.titleEn}
                   </h3>
                   <span class={`text-xs font-bold px-2 py-1 rounded shrink-0 ${scopeLabel[item.scope].color}`}>
                     {scopeLabel[item.scope].label}
                   </span>
                   <span class="text-xs bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 px-2 py-1 rounded shrink-0">
-                    {item.status}
+                    {item.statusEn || item.status}
                   </span>
                 </div>
-                <p class="text-sm text-muted mb-3">{item.titleEn}</p>
                 <div class="flex gap-2 mb-3 flex-wrap text-xs">
                   {item.authorityUrl ? (
                     <a
@@ -68,19 +86,19 @@ const scopeLabel: Record<string, { label: string; color: string }> = {
                       rel="noopener"
                       class="relative z-10 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 px-2 py-1 rounded hover:underline"
                     >
-                      {item.authority}
+                      {item.authorityEn || item.authority}
                     </a>
                   ) : (
                     <span class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 px-2 py-1 rounded">
-                      {item.authority}
+                      {item.authorityEn || item.authority}
                     </span>
                   )}
                   <span class="bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 px-2 py-1 rounded">
-                    {item.date}
+                    {item.dateEn || item.date}
                   </span>
                 </div>
-                <p class="text-sm font-medium mb-2">{item.summary}</p>
-                <p class="text-sm text-muted mb-3">{item.body}</p>
+                <p class="text-sm font-medium mb-2">{item.summaryEn || item.summary}</p>
+                <p class="text-sm text-muted mb-3">{item.bodyEn || item.body}</p>
                 {item.sourceUrl && (
                   <a
                     href={item.sourceUrl}
@@ -88,7 +106,7 @@ const scopeLabel: Record<string, { label: string; color: string }> = {
                     rel="noopener"
                     class="relative z-10 text-sm text-blue-600 dark:text-blue-400 hover:underline"
                   >
-                    🔗 法律原文
+                    🔗 Statute text
                   </a>
                 )}
               </div>
@@ -99,19 +117,19 @@ const scopeLabel: Record<string, { label: string; color: string }> = {
     }
 
     <div class="mt-12 bg-surface rounded-xl p-8 border border-subtle">
-      <h2 class="t-h3 mb-4">为什么这套组合对 AI 公司有吸引力</h2>
-      <div class="text-sm leading-relaxed space-y-3" set:html={renderInlineMarkdown(conclusion)} />
+      <h2 class="t-h3 mb-4">Why this combination is attractive to AI companies</h2>
+      <div class="text-sm leading-relaxed space-y-3" set:html={renderInlineMarkdown(conclusionEn)} />
     </div>
 
     <div class="mt-12 text-sm text-muted text-center">
-      延伸阅读：
+      Further reading:
       <a href="/singapore-ai-native-companies-vs-nations/" class="text-blue-600 dark:text-blue-400 hover:underline">
-        从 50 人到 5,700,000 人——同一种 AI-native 架构
+        From 50 to 5,700,000 — the same AI-native architecture
       </a>
       ·
-      <a href="/levers/" class="text-blue-600 dark:text-blue-400 hover:underline">国家 AI 抓手图谱</a>
+      <a href="/levers/" class="text-blue-600 dark:text-blue-400 hover:underline">National AI Levers</a>
       ·
-      <a href="/policies/" class="text-blue-600 dark:text-blue-400 hover:underline">完整政策库</a>
+      <a href="/policies/" class="text-blue-600 dark:text-blue-400 hover:underline">Full policy library</a>
     </div>
   </section>
 </Layout>

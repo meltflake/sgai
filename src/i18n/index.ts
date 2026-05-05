@@ -1,27 +1,43 @@
-// i18n core (v0.5.0).
+// i18n core (v0.6.0).
 //
-// Multi-locale site. zh = default (unprefixed at /). Every other locale
-// is prefixed (/en/, /ja/, /ko/, ...). All chrome strings live in
-// dictionaries below; data records carry zh as the default field plus
-// optional `*<Cap-Lang>` siblings (titleEn, titleJa, titleKo, ...).
+// Routing vs content locales (decoupled by design):
+//
+//   ROUTE_DEFAULT_LOCALE = 'en' — decides which locale's URLs are
+//     unprefixed (en lives at `/`, zh under `/zh/`). Used by
+//     getLangFromPath / localePrefix / localizedHref / unprefixed.
+//
+//   DEFAULT_LOCALE = 'zh' — decides which language sits in bare data
+//     fields (`title`, `description` etc.) without a `*Lang` suffix.
+//     The corresponding sibling for 'en' is `titleEn`. Used by
+//     siblingSuffix / pickLocalized.
+//
+// Why two constants: the project's data is curated in zh first; renaming
+// every bare field to a Chinese-suffix sibling (`titleZh`) just to flip
+// the routing is gratuitous churn. Decoupling lets us flip routing
+// independently from the historical data convention.
 //
 // To add a new locale L:
 //   1. Add 'L' to the Lang union and LOCALES array.
 //   2. Add an `<L>` dictionary export below (mirroring `zh`'s keys).
 //   3. Backfill `titleL` / `descriptionL` / etc. on user-visible data
 //      fields you want translated (otherwise pickLocalized falls back
-//      to zh — visible to the reader as "not yet translated").
-//   4. Add a fallback chain entry for L in `FALLBACK_CHAINS` if you
-//      want a different fallback than direct → zh.
-//   5. Run `npm run check:i18n` (set ROOT=dist/L) to verify.
+//      through FALLBACK_CHAINS).
+//   4. Add a fallback chain entry for L if you want a different chain
+//      than [L, DEFAULT_LOCALE].
+//   5. Run `npm run check:i18n -- --lang L --root dist/L` to verify.
 
 export type Lang = 'zh' | 'en';
 
 export const LOCALES: Lang[] = ['zh', 'en'];
+
+/** Routing default: this locale's URLs live at the bare root (no prefix). */
+export const ROUTE_DEFAULT_LOCALE: Lang = 'en';
+
+/** Content default: this locale's value is in bare data fields. */
 export const DEFAULT_LOCALE: Lang = 'zh';
 
 /** Per-locale fallback chain. Looked up in order; the first non-empty
- *  hit wins. Always ends with `DEFAULT_LOCALE`. */
+ *  hit wins. Always ends with `DEFAULT_LOCALE` (the bare-field locale). */
 const FALLBACK_CHAINS: Record<Lang, Lang[]> = {
   zh: ['zh'],
   en: ['en', 'zh'],
@@ -34,30 +50,32 @@ function siblingSuffix(lang: Lang): string {
   return lang.charAt(0).toUpperCase() + lang.slice(1);
 }
 
-/** Read locale from a URL pathname. /en/foo → 'en', /foo → 'zh'. */
+/** Read locale from a URL pathname. /zh/foo → 'zh', /foo → 'en'. */
 export function getLangFromPath(pathname: string): Lang {
   const seg = pathname.replace(/^\/+/, '').split('/')[0] as Lang;
-  return LOCALES.includes(seg) && seg !== DEFAULT_LOCALE ? seg : DEFAULT_LOCALE;
+  return LOCALES.includes(seg) && seg !== ROUTE_DEFAULT_LOCALE ? seg : ROUTE_DEFAULT_LOCALE;
 }
 
-/** Return URL prefix for a locale. zh → '', en → '/en'. */
+/** Return URL prefix for a locale. en → '', zh → '/zh'. */
 export function localePrefix(lang: Lang): string {
-  return lang === DEFAULT_LOCALE ? '' : `/${lang}`;
+  return lang === ROUTE_DEFAULT_LOCALE ? '' : `/${lang}`;
 }
 
-/** Build a localized href. localizedHref('/policies/', 'en') → '/en/policies/' */
+/** Build a localized href. localizedHref('/policies/', 'en') → '/policies/'.
+ *  localizedHref('/policies/', 'zh') → '/zh/policies/'. */
 export function localizedHref(path: string, lang: Lang): string {
   if (!path.startsWith('/')) path = '/' + path;
-  if (lang === DEFAULT_LOCALE) return path;
+  if (lang === ROUTE_DEFAULT_LOCALE) return path;
   const prefix = `/${lang}`;
   if (path === prefix || path.startsWith(prefix + '/')) return path;
   return prefix + path;
 }
 
-/** Strip locale prefix to recover the canonical default-locale path. */
+/** Strip route-locale prefix to recover the bare (route-default) path.
+ *  unprefixed('/zh/policies/') → '/policies/'. */
 export function unprefixed(path: string): string {
   for (const lang of LOCALES) {
-    if (lang === DEFAULT_LOCALE) continue;
+    if (lang === ROUTE_DEFAULT_LOCALE) continue;
     const prefix = `/${lang}`;
     if (path === prefix || path === prefix + '/') return '/';
     if (path.startsWith(prefix + '/')) return path.slice(prefix.length);

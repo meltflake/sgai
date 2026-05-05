@@ -2,20 +2,32 @@
 import Layout from '~/layouts/Layout.astro';
 import { getHomePermalink } from '~/utils/permalinks';
 
-const title = '页面未找到';
+// Catch-all 404 (EN). A separate Chinese 404 lives at /zh/404/ for the
+// localized homepage path. Most CDNs (Cloudflare Pages) serve this single
+// /404.html for both subtrees, so we keep the copy English-only — the
+// "Go to homepage" link defaults to /, which is the EN root.
+const title = 'Page not found';
 ---
 
-<Layout metadata={{ title, description: '您访问的页面不存在。', robots: { index: false, follow: false } }}>
+<Layout
+  metadata={{
+    title,
+    description: 'The page you requested does not exist.',
+    robots: { index: false, follow: false },
+  }}
+>
   <section class="flex items-center h-full p-16">
     <div class="container flex flex-col items-center justify-center px-5 mx-auto my-8">
       <div class="max-w-md text-center">
         <h2 class="mb-8 font-bold text-9xl">
-          <span class="sr-only">错误</span>
+          <span class="sr-only">Error</span>
           <span class="text-primary">404</span>
         </h2>
-        <p class="text-3xl font-semibold md:text-3xl">页面未找到</p>
-        <p class="mt-4 mb-8 text-lg text-muted dark:text-slate-400">您访问的页面不存在，但您可以回到首页继续浏览。</p>
-        <a rel="noopener noreferrer" href={getHomePermalink()} class="btn ml-4">返回首页</a>
+        <p class="text-3xl font-semibold md:text-3xl">Page not found</p>
+        <p class="mt-4 mb-8 text-lg text-muted dark:text-slate-400">
+          The page you requested does not exist, but you can head back to the homepage.
+        </p>
+        <a rel="noopener noreferrer" href={getHomePermalink()} class="btn ml-4">Back to homepage</a>
       </div>
     </div>
   </section>

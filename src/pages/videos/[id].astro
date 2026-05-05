@@ -10,20 +10,25 @@ import {
   getVideoTranscriptLanguage,
   getVideoTranscriptParagraphs,
 } from '~/data/video-transcripts';
-import { SPEAKER_TYPE_LABELS, videos } from '~/data/videos';
+import { SPEAKER_TYPE_LABELS_EN, videos } from '~/data/videos';
 import { findPersonId } from '~/utils/people';
+import { pickLocalized } from '~/i18n';
 
 export const prerender = true;
+
+const lang = 'en' as const;
 
 export const getStaticPaths = (() =>
   videos.map((video) => ({ params: { id: video.id }, props: { video } }))) satisfies GetStaticPaths;
 
 const { video } = Astro.props;
 const transcript = getVideoTranscript(video.id);
-const transcriptParagraphs = getVideoTranscriptParagraphs(video.id, 'zh');
-const transcriptLanguage = getVideoTranscriptLanguage(video.id, 'zh');
-const digest = getVideoDigest(video.id, 'zh');
+const transcriptParagraphs = getVideoTranscriptParagraphs(video.id, lang);
+const transcriptLanguage = getVideoTranscriptLanguage(video.id, lang);
+const digest = getVideoDigest(video.id, lang);
 const speakerPersonId = findPersonId(video.speaker);
+const title = pickLocalized(video, 'title', lang) || video.title;
+const summary = pickLocalized(video, 'summary', lang) || video.summary;
 const relatedVideos = videos
   .filter((candidate) => candidate.id !== video.id)
   .filter((candidate) => candidate.speaker === video.speaker || candidate.topic === video.topic)
@@ -43,8 +48,8 @@ function isoDuration(value: string): string {
 
 const yid = youtubeId(video.youtubeUrl);
 const metadata = {
-  title: `${video.title} · AI 视频观点`,
-  description: video.summary,
+  title: `${title} · AI Video Library`,
+  description: summary,
   openGraph: {
     type: 'video.other',
     images: [{ url: `https://i.ytimg.com/vi/${yid}/hqdefault.jpg`, width: 480, height: 360 }],
@@ -54,39 +59,39 @@ const metadata = {
 const videoSchema = {
   '@context': 'https://schema.org',
   '@type': 'VideoObject',
-  name: video.title,
-  description: video.summary,
+  name: title,
+  description: summary,
   uploadDate: video.date,
   duration: isoDuration(video.duration),
   thumbnailUrl: [`https://i.ytimg.com/vi/${yid}/hqdefault.jpg`],
   embedUrl: `https://www.youtube.com/embed/${yid}`,
   contentUrl: video.youtubeUrl,
-  inLanguage: transcriptLanguage || 'zh-CN',
-  publisher: {
-    '@type': 'Organization',
-    name: video.channel,
-  },
+  inLanguage: transcriptLanguage || 'en',
+  publisher: { '@type': 'Organization', name: video.channel },
 };
 ---
 
-<Layout metadata={metadata} breadcrumbs={[{ label: 'AI 视频观点', href: '/videos/' }, { label: video.title }]}>
+<Layout
+  metadata={metadata}
+  breadcrumbs={[{ label: 'AI Video Library', href: '/videos/' }, { label: title }]}
+  lang={lang}
+>
   <JsonLd schema={videoSchema} />
 
   <article class="max-w-4xl mx-auto px-4 sm:px-6 py-12 md:py-16">
     <header class="mb-8">
       <p class="text-xs uppercase tracking-[0.18em] text-primary font-semibold mb-4">
-        {video.topic} · {video.date} · {video.duration}
+        {pickLocalized(video, 'topic', lang)} · {video.date} · {video.duration}
       </p>
       <h1 class="t-display text-gray-900 dark:text-white mb-3">
-        {video.title}
+        {title}
       </h1>
-      {video.titleEn && <p class="text-base md:text-lg text-gray-500 dark:text-gray-400 italic">{video.titleEn}</p>}
     </header>
 
     <div class="aspect-video rounded-xl overflow-hidden border border-subtle bg-black mb-8">
       <iframe
         src={`https://www.youtube.com/embed/${yid}`}
-        title={video.title}
+        title={title}
         loading="lazy"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         allowfullscreen
@@ -95,7 +100,7 @@ const videoSchema = {
 
     <section class="grid md:grid-cols-3 gap-3 mb-8">
       <div class="bg-surface border border-subtle rounded-lg p-4">
-        <div class="text-xs uppercase tracking-wider text-gray-500 mb-1">演讲者</div>
+        <div class="text-xs uppercase tracking-wider text-gray-500 mb-1">Speaker</div>
         {
           speakerPersonId ? (
             <a href={`/voices/${speakerPersonId}/`} class="text-primary hover:text-secondary font-semibold">
@@ -105,14 +110,14 @@ const videoSchema = {
             <div class="font-semibold">{video.speaker}</div>
           )
         }
-        <div class="text-xs text-gray-500 mt-1">{video.speakerTitle}</div>
+        <div class="text-xs text-gray-500 mt-1">{pickLocalized(video, 'speakerTitle', lang)}</div>
       </div>
       <div class="bg-surface border border-subtle rounded-lg p-4">
-        <div class="text-xs uppercase tracking-wider text-gray-500 mb-1">类型</div>
-        <div class="font-semibold">{SPEAKER_TYPE_LABELS[video.speakerType]}</div>
+        <div class="text-xs uppercase tracking-wider text-gray-500 mb-1">Type</div>
+        <div class="font-semibold">{SPEAKER_TYPE_LABELS_EN[video.speakerType]}</div>
       </div>
       <div class="bg-surface border border-subtle rounded-lg p-4">
-        <div class="text-xs uppercase tracking-wider text-gray-500 mb-1">来源</div>
+        <div class="text-xs uppercase tracking-wider text-gray-500 mb-1">Source</div>
         <a
           href={video.youtubeUrl}
           target="_blank"
@@ -125,8 +130,8 @@ const videoSchema = {
     </section>
 
     <section class="callout-note rounded-lg p-5 mb-10">
-      <h2 class="t-h3 text-gray-900 dark:text-white mb-3">核心观点</h2>
-      <p class="text-gray-800 dark:text-gray-200 leading-[1.85]">{video.summary}</p>
+      <h2 class="t-h3 text-gray-900 dark:text-white mb-3">In Brief</h2>
+      <p class="text-gray-800 dark:text-gray-200 leading-[1.85]">{summary}</p>
     </section>
 
     {
@@ -134,7 +139,7 @@ const videoSchema = {
         <>
           {digest.keyPoints?.length > 0 && (
             <section class="mb-10">
-              <h2 class="t-h3 text-gray-900 dark:text-white mb-4">关键要点</h2>
+              <h2 class="t-h3 text-gray-900 dark:text-white mb-4">Key Takeaways</h2>
               <ul class="space-y-2.5 list-none pl-0">
                 {digest.keyPoints.map((point) => (
                   <li class="flex gap-3 text-gray-800 dark:text-gray-200 leading-[1.75]">
@@ -149,7 +154,7 @@ const videoSchema = {
           )}
           {digest.narrative?.length > 0 && (
             <section class="mb-10">
-              <h2 class="t-h3 text-gray-900 dark:text-white mb-4">内容摘要</h2>
+              <h2 class="t-h3 text-gray-900 dark:text-white mb-4">Summary</h2>
               <div class="prose prose-slate dark:prose-invert max-w-none">
                 {digest.narrative.map((paragraph) => (
                   <p class="leading-[1.95]">{paragraph}</p>
@@ -164,11 +169,10 @@ const videoSchema = {
     {
       transcriptParagraphs.length > 0 && (
         <section class="mb-10">
-          <h2 class="t-h3 text-gray-900 dark:text-white mb-4">{digest ? '完整字幕（原文整理）' : '可读字幕整理'}</h2>
+          <h2 class="t-h3 text-gray-900 dark:text-white mb-4">{digest ? 'Full transcript' : 'Readable transcript'}</h2>
           <div class="prose prose-slate dark:prose-invert max-w-none">
             <p class="text-xs text-gray-500">
-              字幕语言：{transcriptLanguage} · 抓取日期：{transcript?.fetchedAt}
-              {transcript?.translatedAt && ` · 翻译日期：${transcript.translatedAt}`}
+              Caption language: {transcriptLanguage} · Fetched: {transcript?.fetchedAt}
             </p>
             {transcriptParagraphs.map((paragraph) => (
               <p>{paragraph}</p>
@@ -181,7 +185,7 @@ const videoSchema = {
     {
       !digest && transcriptParagraphs.length === 0 && (
         <div class="callout-muted rounded-lg p-4 text-sm text-gray-600 dark:text-gray-300 mb-10">
-          这条视频还没有可读内容。可运行 <code>npm run fetch:video-transcripts</code> 重新抓取并生成。
+          No readable content for this video yet. Run <code>npm run fetch:video-transcripts</code> to refresh.
         </div>
       )
     }
@@ -189,18 +193,22 @@ const videoSchema = {
     {
       relatedVideos.length > 0 && (
         <section class="mb-10">
-          <h2 class="t-h3 text-gray-900 dark:text-white mb-4">关联视频</h2>
+          <h2 class="t-h3 text-gray-900 dark:text-white mb-4">Related Videos</h2>
           <div class="grid gap-3 md:grid-cols-2">
             {relatedVideos.map((item) => (
               <a
                 href={`/videos/${item.id}/`}
                 class="block bg-surface rounded-lg p-4 border border-subtle hover:border-rose-300 hover:shadow-sm transition-all"
               >
-                <h3 class="font-semibold text-gray-800 dark:text-white text-sm leading-snug">{item.title}</h3>
+                <h3 class="font-semibold text-gray-800 dark:text-white text-sm leading-snug">
+                  {pickLocalized(item, 'title', lang)}
+                </h3>
                 <p class="text-xs text-gray-500 mt-1">
                   {item.date} · {item.speaker} · {item.duration}
                 </p>
-                <p class="text-xs text-gray-600 dark:text-gray-400 mt-2 line-clamp-3">{item.summary}</p>
+                <p class="text-xs text-gray-600 dark:text-gray-400 mt-2 line-clamp-3">
+                  {pickLocalized(item, 'summary', lang)}
+                </p>
               </a>
             ))}
           </div>
@@ -211,7 +219,7 @@ const videoSchema = {
     <nav class="mt-12 pt-6 border-t border-subtle">
       <a href="/videos/" class="text-sm text-primary hover:text-secondary font-medium inline-flex items-center gap-1">
         <Icon name="tabler:arrow-left" class="w-4 h-4" />
-        返回 AI 视频观点
+        Back to AI Video Library
       </a>
     </nav>
   </article>

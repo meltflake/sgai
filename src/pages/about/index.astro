@@ -1,17 +1,18 @@
 ---
-// About page (zh) — thin wrapper. Body lives in `src/components/about/AboutPage.astro`.
+// About page (en) — thin wrapper. Body lives in `src/components/about/AboutPage.astro`.
 
 import Layout from '~/layouts/PageLayout.astro';
 import AboutPage from '~/components/about/AboutPage.astro';
 
-const lang = 'zh' as const;
+const lang = 'en' as const;
 
 const metadata = {
-  title: '关于本站',
-  description: '关于新加坡 AI 观察——独立维护的新加坡 AI 战略观察平台。研究方法、利益声明、反馈方式。',
+  title: 'About',
+  description:
+    "About Singapore AI Observatory — an independently-maintained research platform tracking Singapore's AI strategy. Methodology, conflict-of-interest disclosure, feedback channels.",
 };
 ---
 
-<Layout metadata={metadata} breadcrumbs={[{ label: '关于本站' }]} lang={lang}>
+<Layout metadata={metadata} breadcrumbs={[{ label: 'About' }]} lang={lang}>
   <AboutPage lang={lang} />
 </Layout>

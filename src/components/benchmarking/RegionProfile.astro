@@ -15,9 +15,9 @@ interface Props {
 const { page, lang } = Astro.props;
 const isEn = lang === 'en';
 
-const benchmarkRoot = isEn ? '/en/benchmarking/' : '/benchmarking/';
-const leversHref = isEn ? '/en/levers/' : '/levers/';
-const legalAiHref = isEn ? '/en/legal-ai/' : '/legal-ai/';
+const benchmarkRoot = isEn ? '/benchmarking/' : '/benchmarking/';
+const leversHref = isEn ? '/levers/' : '/levers/';
+const legalAiHref = isEn ? '/legal-ai/' : '/legal-ai/';
 
 const summary = page.summary;
 const detail = page.detail;

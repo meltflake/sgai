@@ -1,5 +1,5 @@
 ---
-// Policy detail page (zh). One page per Policy.id.
+// Policy detail page (EN). Mirrors zh /policies/[id]/.
 
 import type { GetStaticPaths } from 'astro';
 
@@ -11,7 +11,7 @@ import { localizedHref, pickLocalized, t } from '~/i18n';
 
 export const prerender = true;
 
-const lang = 'zh' as const;
+const lang = 'en' as const;
 
 export const getStaticPaths = (() => {
   const all = categories.flatMap((c) =>
@@ -39,7 +39,6 @@ const articleSchema = {
   '@context': 'https://schema.org',
   '@type': 'GovernmentService',
   name: policy.titleEn || policy.title,
-  alternateName: policy.title,
   description: summary,
   serviceType: 'Policy document',
   ...(policy.ministry ? { provider: { '@type': 'GovernmentOrganization', name: policy.ministry } } : {}),

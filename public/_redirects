@@ -1,7 +1,12 @@
 /sitemap.xml      /sitemap-index.xml  301
 
-# Legacy /people/<id> profiles consolidated into /voices/<id> (zh + en).
-/people/:id       /voices/:id         301
-/en/people/:id    /en/voices/:id      301
-/people           /voices             301
-/en/people        /en/voices          301
+# Legacy /people/<id> profiles consolidated into /voices/<id>.
+/people/:id       /voices/:id          301
+/people           /voices              301
+
+# Phase 2 routing migration (en root + /zh/): old /en/* paths are now at root.
+# Order matters — keep /en/people consolidation before the catch-all /en/* rule.
+/en/people/:id    /voices/:id          301
+/en/people        /voices              301
+/en/*             /:splat              301
+/en               /                    301
