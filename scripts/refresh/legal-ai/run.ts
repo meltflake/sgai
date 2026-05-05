@@ -16,6 +16,7 @@ import { resolve } from 'node:path';
 import { govFetch, listSitemap } from '../../lib/gov-fetch.ts';
 import { summarizePage } from '../../lib/ai-summarize.ts';
 import { autoCommit, pushAndOpenPR, buildPRBody } from '../../lib/auto-commit.ts';
+import { appendUpdate } from '../../lib/append-update.ts';
 import { findUnpairedFields } from '../../lib/i18n-pair.ts';
 import { loadState, saveState } from '../../lib/state.ts';
 
@@ -280,11 +281,29 @@ async function main(): Promise<void> {
   }
   process.stdout.write(`  added ${enriched.length} items to Auto-discovered section\n`);
 
+  if (enriched.length > 0) {
+    try {
+      appendUpdate({
+        date: new Date().toISOString().slice(0, 10),
+        type: 'policy',
+        title: `AI 法律框架新增 ${enriched.length} 条待审条目`,
+        titleEn: `${enriched.length} new AI legal-framework items (pending review)`,
+        summary: '从 PDPC / IMDA / MAS 抓到新的 AI 法规、咨询、规范，进入待审 section。',
+        summaryEn:
+          'New AI legal / regulatory advisories auto-discovered from PDPC / IMDA / MAS, queued in the pending-review section.',
+        links: [{ href: '/legal-ai/', label: 'AI 法律框架', labelEn: 'AI legal framework' }],
+      });
+      process.stdout.write('  appended updates feed entry (legal-ai → policy)\n');
+    } catch (err) {
+      process.stdout.write(`  ⚠ updates feed append failed: ${err instanceof Error ? err.message : err}\n`);
+    }
+  }
+
   if (flags.noCommit) return;
 
   const commit = autoCommit({
     domain: 'legal-ai',
-    files: [TARGET_FILE],
+    files: [TARGET_FILE, resolve('src/data/updates.ts')],
     message: `data(legal-ai): refresh +${enriched.length} items (auto-discovered)`,
     allowDirtyPaths: ['scripts/refresh/legal-ai/data/'],
   });

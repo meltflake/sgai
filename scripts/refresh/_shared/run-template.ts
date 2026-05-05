@@ -16,6 +16,7 @@ import { govFetch, listSitemap } from '../../lib/gov-fetch.ts';
 import { summarizePage } from '../../lib/ai-summarize.ts';
 import { autoCommit, pushAndOpenPR, buildPRBody } from '../../lib/auto-commit.ts';
 import { appendAutoDiscovered } from '../../lib/auto-discovered-emit.ts';
+import { appendUpdate, type UpdateType } from '../../lib/append-update.ts';
 import { loadState, saveState } from '../../lib/state.ts';
 
 export interface PipelineSource {
@@ -38,6 +39,21 @@ export interface PipelineConfig {
   defaultLimit?: number;
   /** Optional regex over already-stored sourceUrl literals; used for dedupe. */
   urlExtractRegex?: RegExp;
+  /** UpdateType emitted to src/data/updates.ts after a successful run.
+   *  Skipped if absent or if zero entries were appended. */
+  updateType?: UpdateType;
+  /** Customise the updates feed wording; falls back to a generic
+   *  "+N <domain> entries" line. */
+  updateLabels?: {
+    title: string; // 中文
+    titleEn: string;
+    summary: string;
+    summaryEn: string;
+    /** Listing page link, e.g. /startups/. Required for the link to render. */
+    listingHref?: string;
+    listingLabel?: string; // 中文
+    listingLabelEn?: string;
+  };
 }
 
 interface CliFlags {
@@ -184,11 +200,48 @@ export async function runPipeline(config: PipelineConfig): Promise<void> {
     `  appended ${result.added} entries to autoDiscovered ${result.created ? '(new export)' : '(existing)'}\n`
   );
 
+  // Surface a one-line update on src/data/updates.ts so the freshly
+  // ingested entries appear on the homepage feed and /updates/ listing.
+  // Best-effort: pipeline failures here must not block auto-PR.
+  if (config.updateType && result.added > 0) {
+    try {
+      const labels = config.updateLabels;
+      const fallbackTitle = `新增 ${result.added} 条 ${config.domain} 待审条目`;
+      const fallbackTitleEn = `${result.added} new ${config.domain} entries (pending review)`;
+      appendUpdate({
+        date: today,
+        type: config.updateType,
+        title: labels?.title ?? fallbackTitle,
+        titleEn: labels?.titleEn ?? fallbackTitleEn,
+        summary: labels?.summary ?? `${config.domain} 自动发现管线本轮新增 ${result.added} 条，进入待审队列。`,
+        summaryEn:
+          labels?.summaryEn ??
+          `${config.domain} auto-discovery added ${result.added} entries to the pending-review queue.`,
+        links: labels?.listingHref
+          ? [
+              {
+                href: labels.listingHref,
+                label: labels.listingLabel ?? labels.listingHref,
+                labelEn: labels.listingLabelEn ?? labels.listingLabel ?? labels.listingHref,
+              },
+            ]
+          : undefined,
+      });
+      process.stdout.write(`  appended updates feed entry (${config.updateType})\n`);
+    } catch (err) {
+      process.stdout.write(`  ⚠ updates feed append failed: ${err instanceof Error ? err.message : err}\n`);
+    }
+  }
+
   if (flags.noCommit) return;
 
+  const commitFiles = [targetAbs];
+  if (config.updateType && result.added > 0) {
+    commitFiles.push(resolve('src/data/updates.ts'));
+  }
   const commit = autoCommit({
     domain: config.domain,
-    files: [targetAbs],
+    files: commitFiles,
     message: `data(${config.domain}): refresh +${result.added} auto-discovered entries`,
     allowDirtyPaths: [`scripts/refresh/${config.domain}/data/`],
   });

@@ -1,0 +1,84 @@
+---
+// Task-based entry cards — "what can you do here?".
+// Sits under the hero so new readers don't need to decode the IA.
+// Four cards mapped to four user intents:
+//   1. Understand the strategy → core argument longform
+//   2. Find policies / debates → policy + debate listings
+//   3. See companies → startups + ecosystem
+//   4. Track changes → /updates/
+
+import { localizedHref, t, type Lang } from '~/i18n';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+
+const cards = [
+  {
+    titleKey: 'taskUnderstandTitle',
+    blurbKey: 'taskUnderstandBlurb',
+    ctaKey: 'taskUnderstandCta',
+    href: '/singapore-ai-strategy-the-real-moat/',
+    accent: 'border-l-primary',
+    icon: '🎯',
+  },
+  {
+    titleKey: 'taskPolicyTitle',
+    blurbKey: 'taskPolicyBlurb',
+    ctaKey: 'taskPolicyCta',
+    href: '/policies/',
+    accent: 'border-l-blue-500',
+    icon: '📋',
+  },
+  {
+    titleKey: 'taskBusinessTitle',
+    blurbKey: 'taskBusinessBlurb',
+    ctaKey: 'taskBusinessCta',
+    href: '/startups/',
+    accent: 'border-l-emerald-500',
+    icon: '🏢',
+  },
+  {
+    titleKey: 'taskTrackTitle',
+    blurbKey: 'taskTrackBlurb',
+    ctaKey: 'taskTrackCta',
+    href: '/updates/',
+    accent: 'border-l-amber-500',
+    icon: '📡',
+  },
+] as const;
+---
+
+<section class="py-12 md:py-16 border-t border-subtle">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6">
+    <div class="mb-8">
+      <h2 class="font-serif text-xl md:text-2xl font-semibold text-gray-900 dark:text-white mb-2">
+        {t(lang, 'tasksSection')}
+      </h2>
+      <p class="text-sm text-gray-600 dark:text-gray-400 max-w-prose leading-relaxed">
+        {t(lang, 'tasksBlurb')}
+      </p>
+    </div>
+    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      {
+        cards.map((card) => (
+          <a
+            href={localizedHref(card.href, lang)}
+            class={`group block bg-surface border border-subtle ${card.accent} border-l-4 rounded p-5 hover:shadow-md hover:border-gray-300 dark:hover:border-slate-600 transition-all`}
+          >
+            <div class="text-2xl mb-3">{card.icon}</div>
+            <h3 class="font-serif text-base md:text-lg font-semibold text-gray-900 dark:text-white leading-snug mb-2 group-hover:text-primary transition-colors">
+              {t(lang, card.titleKey)}
+            </h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-3">{t(lang, card.blurbKey)}</p>
+            <span class="text-xs font-medium text-primary group-hover:text-secondary transition-colors">
+              {t(lang, card.ctaKey)}
+            </span>
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</section>

@@ -12,6 +12,8 @@ import { categories as policyCategories } from '~/data/policies';
 import { SITE_UPDATED } from '~/version';
 import { dimensions, dataDate as trackerDataDate } from '~/data/tracker';
 import { t, pickLocalized, localizedHref, type Lang } from '~/i18n';
+import RecentUpdates from '~/components/home/RecentUpdates.astro';
+import TaskEntries from '~/components/home/TaskEntries.astro';
 
 interface Props {
   lang: Lang;
@@ -64,6 +66,12 @@ const debateTitle = (d: (typeof debates)[number]) =>
     </div>
   </div>
 </section>
+
+{
+  /* Task-based entry cards — give new readers a "what can you do here?"
+   handle right under the editorial hero, before the lever map's argument. */
+}
+<TaskEntries lang={lang} />
 
 {
   /* Lever map — visual evidence for the hero thesis. Two columns by
@@ -279,6 +287,13 @@ const debateTitle = (d: (typeof debates)[number]) =>
     </div>
   </div>
 </section>
+
+{
+  /* Recent updates — placed under the debates list so the editorial
+   argument lands first; updates then signal site activity to returning
+   readers without competing with the lever map / debates content. */
+}
+<RecentUpdates lang={lang} limit={6} />
 
 {
   /* Closing thesis tile — the solution. Hero opens with the problem

@@ -1,0 +1,119 @@
+---
+// Recent updates module for the homepage. Renders the latest N entries
+// from src/data/updates.ts, language-aware.
+//
+// Only types actually present in the rendered slice get a coloured chip —
+// we do not surface the full UpdateType taxonomy unless it appears.
+
+import { recentUpdates, type Update, type UpdateType } from '~/data/updates';
+import { localizedHref, pickLocalized, t, type Lang } from '~/i18n';
+
+interface Props {
+  lang: Lang;
+  limit?: number;
+}
+
+const { lang, limit = 8 } = Astro.props;
+const items: Update[] = recentUpdates(limit);
+
+// Tailwind chip classes by type. Greyed default for any type not in this
+// map (forward-compatible if we add new types without touching this file).
+const TYPE_CHIP: Record<UpdateType, string> = {
+  policy: 'bg-blue-50 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300',
+  debate: 'bg-amber-50 text-amber-700 dark:bg-amber-900/40 dark:text-amber-300',
+  video: 'bg-rose-50 text-rose-700 dark:bg-rose-900/40 dark:text-rose-300',
+  startup: 'bg-emerald-50 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300',
+  people: 'bg-violet-50 text-violet-700 dark:bg-violet-900/40 dark:text-violet-300',
+  tracker: 'bg-sky-50 text-sky-700 dark:bg-sky-900/40 dark:text-sky-300',
+  benchmark: 'bg-teal-50 text-teal-700 dark:bg-teal-900/40 dark:text-teal-300',
+  ecosystem: 'bg-lime-50 text-lime-700 dark:bg-lime-900/40 dark:text-lime-300',
+  lever: 'bg-orange-50 text-orange-700 dark:bg-orange-900/40 dark:text-orange-300',
+  longform: 'bg-indigo-50 text-indigo-700 dark:bg-indigo-900/40 dark:text-indigo-300',
+  site: 'bg-gray-100 text-gray-700 dark:bg-slate-800 dark:text-gray-300',
+  fix: 'bg-yellow-50 text-yellow-700 dark:bg-yellow-900/40 dark:text-yellow-300',
+};
+
+const TYPE_LABEL_KEY: Record<UpdateType, Parameters<typeof t>[1]> = {
+  policy: 'updateTypePolicy',
+  debate: 'updateTypeDebate',
+  video: 'updateTypeVideo',
+  startup: 'updateTypeStartup',
+  people: 'updateTypePeople',
+  tracker: 'updateTypeTracker',
+  benchmark: 'updateTypeBenchmark',
+  ecosystem: 'updateTypeEcosystem',
+  lever: 'updateTypeLever',
+  longform: 'updateTypeLongform',
+  site: 'updateTypeSite',
+  fix: 'updateTypeFix',
+};
+
+const totalUpdates = items.length;
+---
+
+<section class="py-12 md:py-16 border-t border-subtle">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6">
+    <div class="flex items-baseline justify-between mb-3 gap-4 flex-wrap">
+      <h2 class="font-serif text-xl md:text-2xl font-semibold text-gray-900 dark:text-white">
+        {t(lang, 'updatesHomeSection')}
+      </h2>
+      <a
+        href={localizedHref('/updates/', lang)}
+        class="text-sm text-gray-500 hover:text-primary dark:text-gray-400 transition-colors"
+      >
+        {t(lang, 'updatesHomeCta')}
+      </a>
+    </div>
+    <p class="text-sm text-gray-600 dark:text-gray-400 mb-8 max-w-prose leading-relaxed">
+      {t(lang, 'updatesHomeBlurb')}
+    </p>
+
+    {
+      totalUpdates === 0 ? (
+        <p class="text-sm text-gray-500 dark:text-gray-400">{t(lang, 'updatesEmpty')}</p>
+      ) : (
+        <ul class="divide-y divide-gray-200 dark:divide-slate-800">
+          {items.map((u) => {
+            const chip = TYPE_CHIP[u.type] ?? 'bg-gray-100 text-gray-700 dark:bg-slate-800 dark:text-gray-300';
+            const typeLabel = t(lang, TYPE_LABEL_KEY[u.type]);
+            const title = (pickLocalized(u, 'title', lang) as string | null | undefined) ?? u.title;
+            const summary = (pickLocalized(u, 'summary', lang) as string | null | undefined) ?? u.summary;
+            return (
+              <li class="py-4">
+                <div class="flex items-baseline gap-4 flex-wrap sm:flex-nowrap">
+                  <span class="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 tabular-nums w-24 shrink-0">
+                    {u.date}
+                  </span>
+                  <div class="flex-1 min-w-0">
+                    <div class="flex items-center gap-2 flex-wrap mb-1">
+                      <span class={`text-[11px] uppercase tracking-wider font-medium px-2 py-0.5 rounded ${chip}`}>
+                        {typeLabel}
+                      </span>
+                      <span class="font-medium text-gray-900 dark:text-white leading-snug">{title}</span>
+                    </div>
+                    <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">{summary}</p>
+                    {u.links && u.links.length > 0 && (
+                      <div class="mt-1.5 flex gap-x-4 gap-y-1 flex-wrap text-xs">
+                        {u.links.map((link) => {
+                          const label = lang === 'en' ? link.labelEn || link.label : link.label;
+                          return (
+                            <a
+                              href={localizedHref(link.href, lang)}
+                              class="text-primary hover:text-secondary underline-offset-4 hover:underline"
+                            >
+                              {label} →
+                            </a>
+                          );
+                        })}
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </li>
+            );
+          })}
+        </ul>
+      )
+    }
+  </div>
+</section>

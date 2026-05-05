@@ -15,6 +15,16 @@ await runPipeline({
     'Singapore AI startup ecosystem: company launches, funding rounds, exits, and investors. Classify each into one of the listed categories.',
   categories: ['独角兽', '融资轮', '退出', '投资机构', '新公司'],
   defaultLimit: 3,
+  updateType: 'startup',
+  updateLabels: {
+    title: '创业生态自动发现新增条目',
+    titleEn: 'Startup ecosystem auto-discovery batch',
+    summary: '从 Business Times / AISG / EDB 抓到的新一批创业生态信号，进入待审队列。',
+    summaryEn: 'A fresh batch of startup-ecosystem signals from Business Times / AISG / EDB, queued for review.',
+    listingHref: '/startups/',
+    listingLabel: 'AI 创业生态',
+    listingLabelEn: 'AI startup ecosystem',
+  },
   sources: [
     {
       domain: 'businesstimes.com.sg',

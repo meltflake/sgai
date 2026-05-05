@@ -23,6 +23,7 @@ import { resolve } from 'node:path';
 
 import { loadState, saveState } from '../../lib/state.ts';
 import { autoCommit, pushAndOpenPR, buildPRBody } from '../../lib/auto-commit.ts';
+import { appendUpdate } from '../../lib/append-update.ts';
 import { scan, readExistingPolicyUrls } from './scan.ts';
 import { enrich } from './enrich.ts';
 import { emit } from './emit.ts';
@@ -121,6 +122,25 @@ async function main(): Promise<void> {
     process.stdout.write(`    skipped ${s.id}: ${s.reason}\n`);
   }
 
+  // Surface to updates feed (homepage + /updates/) — best-effort.
+  if (emitResult.recordsAdded > 0) {
+    try {
+      appendUpdate({
+        date: new Date().toISOString().slice(0, 10),
+        type: 'policy',
+        title: `新增 ${emitResult.recordsAdded} 条政策档案`,
+        titleEn: `${emitResult.recordsAdded} new policy entries`,
+        summary: '从 SmartNation / MAS / IMDA / PDPC / AI Verify 抓到的最新 AI 政策已入库。',
+        summaryEn:
+          'Fresh AI advisories from SmartNation / MAS / IMDA / PDPC / AI Verify ingested into the policy library.',
+        links: [{ href: '/policies/', label: '政策库', labelEn: 'Policy library' }],
+      });
+      process.stdout.write('  appended updates feed entry (policy)\n');
+    } catch (err) {
+      process.stdout.write(`  ⚠ updates feed append failed: ${err instanceof Error ? err.message : err}\n`);
+    }
+  }
+
   // 6. Commit.
   if (flags.noCommit) {
     process.stdout.write('\n[policies-refresh] --no-commit: stopping after emit.\n');
@@ -129,7 +149,7 @@ async function main(): Promise<void> {
   process.stdout.write('\n  Committing...\n');
   const commit = autoCommit({
     domain: 'policies',
-    files: [resolve('src/data/policies.ts')],
+    files: [resolve('src/data/policies.ts'), resolve('src/data/updates.ts')],
     message: `data(policies): refresh +${emitResult.recordsAdded} entries`,
     allowDirtyPaths: ['scripts/refresh/policies/data/'],
   });

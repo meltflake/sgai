@@ -1,1 +1,7 @@
-/sitemap.xml  /sitemap-index.xml  301
+/sitemap.xml      /sitemap-index.xml  301
+
+# Legacy /people/<id> profiles consolidated into /voices/<id> (zh + en).
+/people/:id       /voices/:id         301
+/en/people/:id    /en/voices/:id      301
+/people           /voices             301
+/en/people        /en/voices          301

@@ -22,6 +22,16 @@ await runPipeline({
     '教师培训',
   ],
   defaultLimit: 3,
+  updateType: 'people',
+  updateLabels: {
+    title: '人才培养自动发现新增条目',
+    titleEn: 'Talent pipeline auto-discovery batch',
+    summary: '从 AISG / IMDA / tech.gov.sg 抓到的新一批人才培养计划，进入待审队列。',
+    summaryEn: 'New talent / education programmes auto-discovered from AISG / IMDA / tech.gov.sg, queued for review.',
+    listingHref: '/talent/',
+    listingLabel: '人才培养',
+    listingLabelEn: 'Talent pipeline',
+  },
   sources: [
     {
       domain: 'aisingapore.org',

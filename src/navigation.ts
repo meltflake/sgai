@@ -29,6 +29,7 @@ const labelKeys = {
   aboutSite: 'navAboutSite',
   fieldnotes: 'navFieldnotes',
   references: 'navReferences',
+  updates: 'updatesNav',
 } as const;
 
 function lh(path: string, lang: Lang): string {
@@ -60,18 +61,16 @@ export function getHeaderData(lang: Lang) {
       {
         text: t(lang, labelKeys.data),
         links: [
+          { text: t(lang, labelKeys.updates), href: lh('/updates', lang) },
           { text: t(lang, labelKeys.tracker), href: lh('/tracker', lang) },
           { text: t(lang, labelKeys.startups), href: lh('/startups', lang) },
           { text: t(lang, labelKeys.talent), href: lh('/talent', lang) },
-          { text: t(lang, labelKeys.opensource), href: lh('/opensource', lang) },
-          { text: t(lang, labelKeys.communityOpensource), href: lh('/community-opensource', lang) },
           { text: t(lang, labelKeys.benchmarking), href: lh('/benchmarking', lang) },
-          { text: t(lang, labelKeys.fieldnotes), href: lh('/fieldnotes', lang) },
-          { text: t(lang, labelKeys.references), href: lh('/references', lang) },
         ],
       },
-      // About moved to footer-only per request — keeps the header focused
-      // on content navigation rather than meta links.
+      // Footer-only secondary entries (opensource, community-opensource,
+      // fieldnotes, references, about) — keep the header dropdown short
+      // enough to scan; archives stay reachable via the footer.
     ],
     actions: [],
   };
@@ -109,12 +108,15 @@ export function getFooterData(lang: Lang) {
       {
         title: t(lang, labelKeys.data),
         links: [
+          { text: t(lang, labelKeys.updates), href: lh('/updates', lang) },
           { text: t(lang, labelKeys.tracker), href: lh('/tracker', lang) },
           { text: t(lang, labelKeys.startups), href: lh('/startups', lang) },
           { text: t(lang, labelKeys.talent), href: lh('/talent', lang) },
           { text: t(lang, labelKeys.opensource), href: lh('/opensource', lang) },
           { text: t(lang, labelKeys.communityOpensource), href: lh('/community-opensource', lang) },
           { text: t(lang, labelKeys.benchmarking), href: lh('/benchmarking', lang) },
+          { text: t(lang, labelKeys.fieldnotes), href: lh('/fieldnotes', lang) },
+          { text: t(lang, labelKeys.references), href: lh('/references', lang) },
         ],
       },
     ],

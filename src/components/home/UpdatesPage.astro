@@ -1,0 +1,153 @@
+---
+// Full updates listing — used by /updates/ (zh) and /en/updates/ (en).
+// Groups entries by month, newest first. Each item mirrors the homepage
+// RecentUpdates row but without the slice limit.
+
+import { updatesByMonth, type UpdateType } from '~/data/updates';
+import { localizedHref, pickLocalized, t, type Lang } from '~/i18n';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const groups = updatesByMonth();
+
+const TYPE_CHIP: Record<UpdateType, string> = {
+  policy: 'bg-blue-50 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300',
+  debate: 'bg-amber-50 text-amber-700 dark:bg-amber-900/40 dark:text-amber-300',
+  video: 'bg-rose-50 text-rose-700 dark:bg-rose-900/40 dark:text-rose-300',
+  startup: 'bg-emerald-50 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300',
+  people: 'bg-violet-50 text-violet-700 dark:bg-violet-900/40 dark:text-violet-300',
+  tracker: 'bg-sky-50 text-sky-700 dark:bg-sky-900/40 dark:text-sky-300',
+  benchmark: 'bg-teal-50 text-teal-700 dark:bg-teal-900/40 dark:text-teal-300',
+  ecosystem: 'bg-lime-50 text-lime-700 dark:bg-lime-900/40 dark:text-lime-300',
+  lever: 'bg-orange-50 text-orange-700 dark:bg-orange-900/40 dark:text-orange-300',
+  longform: 'bg-indigo-50 text-indigo-700 dark:bg-indigo-900/40 dark:text-indigo-300',
+  site: 'bg-gray-100 text-gray-700 dark:bg-slate-800 dark:text-gray-300',
+  fix: 'bg-yellow-50 text-yellow-700 dark:bg-yellow-900/40 dark:text-yellow-300',
+};
+
+const TYPE_LABEL_KEY: Record<UpdateType, Parameters<typeof t>[1]> = {
+  policy: 'updateTypePolicy',
+  debate: 'updateTypeDebate',
+  video: 'updateTypeVideo',
+  startup: 'updateTypeStartup',
+  people: 'updateTypePeople',
+  tracker: 'updateTypeTracker',
+  benchmark: 'updateTypeBenchmark',
+  ecosystem: 'updateTypeEcosystem',
+  lever: 'updateTypeLever',
+  longform: 'updateTypeLongform',
+  site: 'updateTypeSite',
+  fix: 'updateTypeFix',
+};
+
+function formatMonth(ym: string, lang: Lang): string {
+  const [y, m] = ym.split('-');
+  if (lang === 'en') {
+    const monthNames = [
+      'January',
+      'February',
+      'March',
+      'April',
+      'May',
+      'June',
+      'July',
+      'August',
+      'September',
+      'October',
+      'November',
+      'December',
+    ];
+    return `${monthNames[parseInt(m, 10) - 1]} ${y}`;
+  }
+  return `${y} 年 ${parseInt(m, 10)} 月`;
+}
+
+const totalEntries = groups.reduce((sum, g) => sum + g.items.length, 0);
+const rssHref = lang === 'en' ? '/en/updates.rss.xml' : '/updates.rss.xml';
+---
+
+<section class="px-4 py-16 sm:px-6 mx-auto lg:px-8 max-w-4xl">
+  <div class="mb-12">
+    <h1 class="t-display text-gray-900 dark:text-white mb-4">{t(lang, 'updatesPageTitle')}</h1>
+    <p class="t-lead text-gray-700 dark:text-gray-300 max-w-prose">
+      {t(lang, 'updatesPageBlurb')}
+    </p>
+    <div class="mt-4 flex items-center gap-4 text-sm text-gray-500 dark:text-gray-400">
+      <span class="tabular-nums">{totalEntries}</span>
+      <a href={rssHref} class="text-primary hover:text-secondary inline-flex items-center gap-1.5">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="14"
+          height="14"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          ><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"
+          ></circle></svg
+        >
+        RSS
+      </a>
+    </div>
+  </div>
+
+  {
+    totalEntries === 0 ? (
+      <p class="text-sm text-gray-500 dark:text-gray-400">{t(lang, 'updatesEmpty')}</p>
+    ) : (
+      groups.map((group) => (
+        <div class="mb-12">
+          <h2 class="font-serif text-lg font-semibold text-gray-700 dark:text-gray-300 mb-4 pb-2 border-b border-subtle">
+            {formatMonth(group.month, lang)}
+          </h2>
+          <ul class="divide-y divide-gray-200 dark:divide-slate-800">
+            {group.items.map((u) => {
+              const chip = TYPE_CHIP[u.type] ?? 'bg-gray-100 text-gray-700 dark:bg-slate-800 dark:text-gray-300';
+              const typeLabel = t(lang, TYPE_LABEL_KEY[u.type]);
+              const title = (pickLocalized(u, 'title', lang) as string | null | undefined) ?? u.title;
+              const summary = (pickLocalized(u, 'summary', lang) as string | null | undefined) ?? u.summary;
+              return (
+                <li class="py-5">
+                  <div class="flex items-baseline gap-4 flex-wrap sm:flex-nowrap">
+                    <span class="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 tabular-nums w-24 shrink-0">
+                      {u.date}
+                    </span>
+                    <div class="flex-1 min-w-0">
+                      <div class="flex items-center gap-2 flex-wrap mb-1.5">
+                        <span class={`text-[11px] uppercase tracking-wider font-medium px-2 py-0.5 rounded ${chip}`}>
+                          {typeLabel}
+                        </span>
+                        <span class="font-medium text-gray-900 dark:text-white leading-snug">{title}</span>
+                      </div>
+                      <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">{summary}</p>
+                      {u.links && u.links.length > 0 && (
+                        <div class="mt-2 flex gap-x-4 gap-y-1 flex-wrap text-xs">
+                          {u.links.map((link) => {
+                            const label = lang === 'en' ? link.labelEn || link.label : link.label;
+                            return (
+                              <a
+                                href={localizedHref(link.href, lang)}
+                                class="text-primary hover:text-secondary underline-offset-4 hover:underline"
+                              >
+                                {label} →
+                              </a>
+                            );
+                          })}
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      ))
+    )
+  }
+</section>
