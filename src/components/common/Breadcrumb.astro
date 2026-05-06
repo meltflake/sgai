@@ -20,18 +20,23 @@ const homeHref = lang === 'en' ? '/' : getPermalink('/');
 const homeItem = { label: homeLabel, href: homeHref };
 const allItems = [homeItem, ...items];
 
-const siteUrl = SITE?.site || 'https://meltflake.com';
+const siteUrl = SITE?.site || 'https://sgai.md';
 const currentUrl = `${siteUrl}${Astro.url.pathname}`;
+
+const jsonLdItems = allItems
+  .map((item) => ({ item, name: typeof item.label === 'string' ? item.label.trim() : '' }))
+  .filter(({ name }) => name.length > 0)
+  .map(({ item, name }, position) => ({
+    '@type': 'ListItem',
+    position: position + 1,
+    name,
+    item: item.href ? `${siteUrl}${item.href}` : currentUrl,
+  }));
 
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
-  itemListElement: allItems.map((item, index) => ({
-    '@type': 'ListItem',
-    position: index + 1,
-    name: item.label,
-    item: item.href ? `${siteUrl}${item.href}` : currentUrl,
-  })),
+  itemListElement: jsonLdItems,
 };
 ---
 

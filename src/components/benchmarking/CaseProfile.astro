@@ -73,6 +73,7 @@ const articleSchema = {
   '@type': 'Article',
   headline: isEn ? metadata.title : `${name} · 国际对标案例`,
   description: summary,
+  datePublished: benchmarkCaseProfileUpdated,
   dateModified: benchmarkCaseProfileUpdated,
   inLanguage: isEn ? 'en' : 'zh-CN',
   mainEntityOfPage: new URL(Astro.url).href,

@@ -21,6 +21,8 @@
     "check:video-transcripts": "tsx scripts/videos/check-transcript-i18n.ts",
     "check:debate-transcripts": "tsx scripts/hansard/check-debate-transcript-i18n.ts",
     "check:i18n": "node scripts/i18n-check.mjs",
+    "check:schema": "node scripts/check-schema.mjs",
+    "check:dist": "npm run check:i18n && npm run check:schema",
     "check:skill-urls": "tsx scripts/skill-url-check.ts",
     "test:lib": "tsx --test scripts/lib/__tests__/*.test.ts",
     "i18n-pair": "tsx scripts/lib/i18n-pair.ts",

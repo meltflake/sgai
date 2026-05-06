@@ -5,6 +5,7 @@ import { Icon } from 'astro-icon/components';
 import JsonLd from '~/components/common/JsonLd.astro';
 import Layout from '~/layouts/PageLayout.astro';
 import { programmes, type TalentProgramme, type TalentStatusTone } from '~/data/talent';
+import { SITE_UPDATED } from '~/version';
 
 export const prerender = true;
 
@@ -38,6 +39,8 @@ const schema = {
   '@type': 'Article',
   headline: `${programme.name} - ${programme.nameEn}`,
   description: programme.description,
+  datePublished: SITE_UPDATED,
+  dateModified: SITE_UPDATED,
   inLanguage: 'zh-CN',
   mainEntityOfPage: new URL(Astro.url).href,
   about: programme.nameEn,

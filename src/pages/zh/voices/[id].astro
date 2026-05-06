@@ -57,10 +57,10 @@ const metadata = {
 const personSchema = {
   '@context': 'https://schema.org',
   '@type': 'Person',
-  name: person.name,
-  alternateName: person.name,
-  jobTitle: person.title,
-  description: person.summary,
+  name: person.name || person.nameEn,
+  alternateName: person.nameEn || person.name,
+  jobTitle: person.title || person.titleEn,
+  description: person.summary || person.summaryEn,
   affiliation: person.affiliations.map((name) => ({ '@type': 'Organization', name })),
   sameAs: person.channels.map((channel) => channel.url),
 };

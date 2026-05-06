@@ -5,6 +5,7 @@ import JsonLd from '~/components/common/JsonLd.astro';
 import CommunityOpenSourceProjectDetail from '~/components/data/CommunityOpenSourceProjectDetail.astro';
 import Layout from '~/layouts/PageLayout.astro';
 import { allCommunityOpenSourceProjects, type OpenSourceProject } from '~/data/community-opensource';
+import { SITE_UPDATED } from '~/version';
 
 export const prerender = true;
 
@@ -28,6 +29,8 @@ const schema = {
   '@type': 'Article',
   headline: `${name} · ${project.orgEn || project.org}`,
   description,
+  datePublished: SITE_UPDATED,
+  dateModified: SITE_UPDATED,
   inLanguage: 'en',
   mainEntityOfPage: new URL(Astro.url).href,
   about: name,

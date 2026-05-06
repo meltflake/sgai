@@ -30,14 +30,30 @@ npm run fix:prettier  # 仅修复 prettier (prettier -w .)
 
 **提交前必须运行 `npm run check` 确认通过。**
 
-i18n 残留检查（构建产物层）：
+### 构建产物层检查（dist gate）
+
+`npm run check` 跑的是源码级静态检查，看不见 JSON-LD 字符串语义、meta tag 完整性、地区化字段是否漏翻。下面三个命令针对 `dist/` 跑，PR 前手动跑（CI 暂不跑，build 太慢）：
 
 ```bash
-npm run build && npm run check:i18n
-# = node scripts/i18n-check.mjs，扫 dist/en/*.html 中的中文残留
+npm run build && npm run check:dist
+# = check:i18n + check:schema
 ```
 
+| 命令           | 工具                       | 抓什么                                                                                                                                                                                                                                                                                                                                                                               | 必跑场景                              |
+| -------------- | -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------- |
+| `check:i18n`   | `scripts/i18n-check.mjs`   | `dist/**/*.html`（除 `/zh/`）里的中文残留                                                                                                                                                                                                                                                                                                                                            | 动了 EN 页面 / 共享组件 / 双字段数据  |
+| `check:schema` | `scripts/check-schema.mjs` | `dist/**/*.html` 里的 `<script type="application/ld+json">` 块。按 `@type` 校验关键字段：BreadcrumbList itemListElement 的 `name` 非空、VideoObject 的 `uploadDate` ISO 8601、Article/NewsArticle/BlogPosting 的 `headline` + `datePublished`、Organization/Person 的 `name`、WebSite 的 `name` + `url`。GSC 报错（"Either name or item.name should be specified" 之类）的本地兜底。 | 动了任何会 emit JSON-LD 的页面 / 组件 |
+| `check:dist`   | 上面两个串跑               | —                                                                                                                                                                                                                                                                                                                                                                                    | 推荐 PR 前默认跑这个                  |
+
 凡是动了 EN 页面、共享组件、数据双字段的 PR，必须本地跑通 `check:i18n`。
+凡是动了 schema-emitting 页面 / 组件（`<JsonLd schema={...} />` / `Breadcrumb.astro` / `*Profile.astro` / `[id].astro`）的 PR，必须本地跑通 `check:schema`。
+
+### 已知盲区与后续加固
+
+- **GSC monitor 自动化**：当前依赖 GSC 邮件人肉转译。可拉 GSC API 每日扫描，新 issue 自动开 GitHub issue。
+- **Rich Results Test 抽样**：`check:schema` 是字段级断言，不验完整 Google Rich Results 规则。可加 CI 抽样 5 个关键页面跑 [structured-data-testing-tool](https://github.com/maxprilutskiy/structured-data-testing-tool)。
+- **canonical / hreflang / og:image 完备性**：当前未自动扫，下个 PR 可在 `check:schema` 里平铺加。
+- **link 死链扫描**：`check:graph` 只查站内边图，不查 schema 字段里的外部 URL；`sourceUrl` HTTP 健康度只有 `voices/prospect-stubs.mjs apply` 时拦一次，存量数据未周期性巡检。
 
 ## 编码规范与常见陷阱
 
