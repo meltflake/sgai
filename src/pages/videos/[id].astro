@@ -12,6 +12,7 @@ import {
 } from '~/data/video-transcripts';
 import { SPEAKER_TYPE_LABELS_EN, videos } from '~/data/videos';
 import { findPersonId } from '~/utils/people';
+import { toSchemaOrgDateTime } from '~/utils/utils';
 import { pickLocalized } from '~/i18n';
 
 export const prerender = true;
@@ -61,7 +62,7 @@ const videoSchema = {
   '@type': 'VideoObject',
   name: title,
   description: summary,
-  uploadDate: video.date,
+  uploadDate: toSchemaOrgDateTime(video.date),
   duration: isoDuration(video.duration),
   thumbnailUrl: [`https://i.ytimg.com/vi/${yid}/hqdefault.jpg`],
   embedUrl: `https://www.youtube.com/embed/${yid}`,

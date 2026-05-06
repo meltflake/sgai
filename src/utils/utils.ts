@@ -60,3 +60,8 @@ export const toUiAmount = (amount: number) => {
 
   return value;
 };
+
+// Convert a YYYY-MM-DD string into an ISO 8601 datetime with timezone, as required by
+// schema.org/VideoObject.uploadDate. Google Search Console flags pure dates ("2026-05-02")
+// as "Invalid datetime value" + "missing a timezone".
+export const toSchemaOrgDateTime = (date: string): string => `${date}T00:00:00+08:00`;
