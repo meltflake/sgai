@@ -51,7 +51,7 @@ Codemod 留仓 [scripts/i18n-migrate-data.mjs](./scripts/i18n-migrate-data.mjs) 
 - [astro.config.ts](./astro.config.ts) 给 `@astrojs/sitemap` 加 `i18n: { defaultLocale: 'en', locales: { en: 'en', zh: 'zh-CN' } }`，sitemap 生成 4084 条 `xhtml:link` alternates / 2063 URLs。
 - [llms.txt](./src/pages/llms.txt.ts) + [llms-full.txt](./src/pages/llms-full.txt.ts) 重写：每节 EN canonical 在前，ZH mirror 在后。
 - Updates RSS 双语：`/updates.rss.xml`（EN）+ `/zh/updates.rss.xml`（ZH），type chip 本地化（[Site] / [站点] 等）。
-- [_redirects](./public/_redirects) 链：`/en/people/:id → /voices/:id`（特例先行）→ `/en/* → /:splat`（catch-all）→ `/people/:id → /voices/:id`。
+- [\_redirects](./public/_redirects) 链：`/en/people/:id → /voices/:id`（特例先行）→ `/en/* → /:splat`（catch-all）→ `/people/:id → /voices/:id`。
 - [scripts/i18n-check.mjs](./scripts/i18n-check.mjs) 适配新布局：EN 默认扫 `dist/`（排除 `/zh/` 子目录），ZH 扫 `dist/zh/`。
 
 #### 验证
