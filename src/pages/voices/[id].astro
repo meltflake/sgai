@@ -8,6 +8,7 @@ import PersonContributions from '~/components/widgets/PersonContributions.astro'
 import { allPeople, type Person } from '~/data/people';
 import { videos } from '~/data/videos';
 import { getRelated, getPersonCounts } from '~/utils/graph';
+import { isLowSignalPerson } from '~/utils/quality';
 import { channelLabel, pickLocalized } from '~/i18n';
 
 export const prerender = true;
@@ -42,10 +43,18 @@ const categoryColors: Record<Person['category'], string> = {
   industry: 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300',
 };
 
+// noindex profiles with no curated contributions AND zero parliamentary
+// debates / policies / videos. These pages exist primarily as graph
+// nodes (debate page → MP backlink); indexing them dilutes site-wide
+// crawl signal without bringing in search traffic. Auto-flips back to
+// indexable once the person accrues any signal.
+const isLowSignal = isLowSignalPerson(person);
+
 const metadata = {
   title: `${person.nameEn || person.name} · AI Influence Map`,
   description:
     summary || `${person.nameEn || person.name}'s speeches, policy links, and public AI video records in Singapore.`,
+  robots: { index: !isLowSignal, follow: true },
 };
 
 const personSchema = {

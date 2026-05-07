@@ -6,6 +6,7 @@ import { ecosystemEntityPages, type EcosystemEntityPage } from '~/utils/entity-p
 import { type EcosystemEntity } from '~/data/ecosystem';
 import { getPolicyById, getDebateById, getLeverByNumber } from '~/utils/graph';
 import { allPeople } from '~/data/people';
+import { isStubEcosystemEntity } from '~/utils/quality';
 import EcosystemProse from '~/components/data/EcosystemProse.astro';
 
 export const prerender = true;
@@ -65,14 +66,17 @@ const championPersons = (entity.championPersonIds || [])
 
 const isStub = !entity.summary && !entity.whatItIs;
 
-// noindex auto-discovered entities flagged `_pendingReview: true`. Mirrors
-// the EN page logic — same data, same robots policy across both langs.
+// noindex 策略，对称 EN 页面：
+//   1. _pendingReview: true 的 auto-discovered entry
+//   2. 中文端 stub —— whatItIs/aiRelevance/singaporeRelevance 缺失，
+//      就算 description 双语齐全，也只是 stub。
 const isPendingReview = entity._pendingReview === true;
+const isZhStub = isStubEcosystemEntity(entity, 'zh');
 
 const metadata = {
   title: `${entity.name} · ${category.name} · 生态地图`,
   description: entity.summary || entity.description,
-  robots: { index: !isPendingReview, follow: true },
+  robots: { index: !isPendingReview && !isZhStub, follow: true },
 };
 
 const breadcrumbs = [

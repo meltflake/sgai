@@ -8,6 +8,7 @@ import PersonContributions from '~/components/widgets/PersonContributions.astro'
 import { allPeople, type Person } from '~/data/people';
 import { videos } from '~/data/videos';
 import { getRelated, getPersonCounts } from '~/utils/graph';
+import { isLowSignalPerson } from '~/utils/quality';
 
 export const prerender = true;
 
@@ -49,9 +50,15 @@ const platformLabels: Record<string, string> = {
   youtube: 'YouTube',
 };
 
+// noindex 三无人物：无 curated contributions + 无国会发言 + 无政策 + 无视频。
+// 镜像 EN 页面的 robots 策略——同一人，同一索引决定，跨语言一致。
+// 一旦补上任何信号自动放开。
+const isLowSignal = isLowSignalPerson(person);
+
 const metadata = {
   title: `${person.name || person.name} · AI 影响力图谱`,
   description: person.summary || `${person.name} 在新加坡 AI 政策中的发言、政策关联与公开视频记录。`,
+  robots: { index: !isLowSignal, follow: true },
 };
 
 const personSchema = {
