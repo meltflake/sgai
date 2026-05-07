@@ -5,7 +5,8 @@ import { mkdtempSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 
-import { findUnpairedFields } from '../i18n-pair.ts';
+import { findUnpairedFields, findIncompleteRecords } from '../i18n-pair.ts';
+import type { FileSchema } from '../../i18n-config.ts';
 
 function withFile<T>(content: string, fn: (path: string) => T): T {
   const dir = mkdtempSync(join(tmpdir(), 'sgai-i18n-test-'));
@@ -164,5 +165,241 @@ export const x = [
     const issues = findUnpairedFields(p);
     assert.equal(issues.length, 1);
     assert.equal(issues[0].chineseValue, '二');
+  });
+});
+
+test('findUnpairedFields: AST handles single-line records (regression vs v1)', () => {
+  // v1 was line-based and silently missed inline records; v2 walks AST.
+  const src = `export const x = [{ title: '一', titleEn: 'One' }, { title: '二' }];\n`;
+  withFile(src, (p) => {
+    const issues = findUnpairedFields(p);
+    assert.equal(issues.length, 1);
+    assert.equal(issues[0].chineseValue, '二');
+  });
+});
+
+test('findUnpairedFields: AST handles template literals without substitutions', () => {
+  // Backtick strings are common in long descriptions; v1 regex missed them.
+  const src = `
+export const x = [
+  {
+    summary: \`这是一段长中文摘要\`,
+    summaryEn: \`English summary\`,
+  },
+  {
+    summary: \`未配对中文\`,
+  },
+];
+`;
+  withFile(src, (p) => {
+    const issues = findUnpairedFields(p);
+    assert.equal(issues.length, 1);
+    assert.equal(issues[0].chineseValue, '未配对中文');
+  });
+});
+
+// ── findIncompleteRecords ───────────────────────────────────────────────
+
+const ECOSYSTEM_TEST_SCHEMA: FileSchema = {
+  file: 'sample.ts',
+  schemas: [
+    {
+      name: 'category',
+      containingArray: 'cats',
+      fields: [
+        { field: 'name', locales: ['En'], required: true },
+        { field: 'description', locales: ['En'], required: true },
+      ],
+    },
+    {
+      name: 'entity',
+      containingArray: 'entities',
+      fields: [
+        { field: 'name', locales: ['En'], required: true },
+        { field: 'description', locales: ['En'], required: true },
+        { field: 'whatItIs', locales: ['En'], required: true },
+      ],
+    },
+  ],
+};
+
+test('findIncompleteRecords: flags entity missing required deep field', () => {
+  const src = `
+export const cats = [
+  {
+    id: 'cat1',
+    name: '类别一',
+    nameEn: 'Category 1',
+    description: '描述',
+    descriptionEn: 'Desc',
+    entities: [
+      {
+        id: 'ent1',
+        name: '实体名',
+        nameEn: 'Entity Name',
+        description: '简介',
+        descriptionEn: 'Brief',
+      },
+    ],
+  },
+];
+`;
+  withFile(src, (p) => {
+    const issues = findIncompleteRecords(p, { schema: ECOSYSTEM_TEST_SCHEMA });
+    assert.equal(issues.length, 1);
+    assert.equal(issues[0].schema, 'entity');
+    assert.equal(issues[0].recordIdentifier, 'ent1');
+    // Both source-side and EN sibling are missing → both reported
+    assert.deepEqual(issues[0].missingFields, ['whatItIs', 'whatItIsEn']);
+  });
+});
+
+test('findIncompleteRecords: passes when all required fields complete', () => {
+  const src = `
+export const cats = [
+  {
+    id: 'cat1',
+    name: '类别一',
+    nameEn: 'Category 1',
+    description: '描述',
+    descriptionEn: 'Description',
+    entities: [
+      {
+        id: 'ent1',
+        name: '实体',
+        nameEn: 'Entity',
+        description: '简介',
+        descriptionEn: 'Brief',
+        whatItIs: '中文说明',
+        whatItIsEn: 'English explanation',
+      },
+    ],
+  },
+];
+`;
+  withFile(src, (p) => {
+    assert.deepEqual(findIncompleteRecords(p, { schema: ECOSYSTEM_TEST_SCHEMA }), []);
+  });
+});
+
+test('findIncompleteRecords: discriminates by containingArray name', () => {
+  // Records inside `entities` get entity schema (3 required fields);
+  // records in `cats` get category schema (2 required fields).
+  const src = `
+export const cats = [
+  {
+    name: '类别',
+    nameEn: 'Cat',
+    description: '描述',
+    descriptionEn: 'Desc',
+    entities: [
+      {
+        name: '实体',
+        nameEn: 'Ent',
+      },
+    ],
+  },
+];
+`;
+  withFile(src, (p) => {
+    const issues = findIncompleteRecords(p, { schema: ECOSYSTEM_TEST_SCHEMA });
+    // category passes (name+description filled), entity fails (description, whatItIs missing)
+    assert.equal(issues.length, 1);
+    assert.equal(issues[0].schema, 'entity');
+    // Source AND every locale sibling are checked independently. zh side missing
+    // for description + whatItIs → 4 reports total (description, descriptionEn,
+    // whatItIs, whatItIsEn). Both halves listed lets the human know exactly
+    // what to fill in without re-scanning the record.
+    assert.deepEqual(issues[0].missingFields, ['description', 'descriptionEn', 'whatItIs', 'whatItIsEn']);
+  });
+});
+
+test('findIncompleteRecords: treats placeholder strings as empty', () => {
+  const src = `
+export const cats = [
+  {
+    name: '类别',
+    nameEn: 'Cat',
+    description: '描述',
+    descriptionEn: 'Desc',
+    entities: [
+      {
+        name: '实体',
+        nameEn: 'Ent',
+        description: '描述',
+        descriptionEn: 'Desc',
+        whatItIs: '[需补充] 待定',
+        whatItIsEn: 'TBD',
+      },
+    ],
+  },
+];
+`;
+  withFile(src, (p) => {
+    const issues = findIncompleteRecords(p, { schema: ECOSYSTEM_TEST_SCHEMA });
+    assert.equal(issues.length, 1);
+    // [需补充] is a placeholder → whatItIs flagged
+    // 'TBD' is a placeholder → whatItIsEn flagged
+    assert.deepEqual(issues[0].missingFields, ['whatItIs', 'whatItIsEn']);
+  });
+});
+
+test('findIncompleteRecords: respects i18n-allow-unpaired on record', () => {
+  const src = `
+export const cats = [
+  {
+    name: '类别',
+    nameEn: 'Cat',
+    description: '描述',
+    descriptionEn: 'Desc',
+    entities: [
+      // i18n-allow-unpaired
+      {
+        name: '实体',
+        nameEn: 'Ent',
+      },
+    ],
+  },
+];
+`;
+  withFile(src, (p) => {
+    assert.deepEqual(findIncompleteRecords(p, { schema: ECOSYSTEM_TEST_SCHEMA }), []);
+  });
+});
+
+test('findIncompleteRecords: returns empty when no schema configured', () => {
+  const src = `export const x = [{ name: 'foo' }];\n`;
+  withFile(src, (p) => {
+    // No options.schema, no I18N_CONFIG entry that endsWith path → empty
+    assert.deepEqual(findIncompleteRecords(p), []);
+  });
+});
+
+test('findIncompleteRecords: flags missing locale sibling when source is filled', () => {
+  // Whole point of the lock: zh side filled + En sibling missing = fail.
+  const src = `
+export const cats = [
+  {
+    name: '类别',
+    nameEn: 'Cat',
+    description: '描述',
+    descriptionEn: 'Desc',
+    entities: [
+      {
+        name: '实体',
+        nameEn: 'Ent',
+        description: '简介',
+        descriptionEn: 'Brief',
+        whatItIs: '中文说明已填',
+      },
+    ],
+  },
+];
+`;
+  withFile(src, (p) => {
+    const issues = findIncompleteRecords(p, { schema: ECOSYSTEM_TEST_SCHEMA });
+    assert.equal(issues.length, 1);
+    // zh side filled, En sibling missing → only whatItIsEn flagged
+    assert.deepEqual(issues[0].missingFields, ['whatItIsEn']);
   });
 });
