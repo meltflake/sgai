@@ -84,9 +84,33 @@ const lang = getLangFromPath(new URL(Astro.url).pathname);
       // to resolve it during dev/build.
       await loadScript('/pagefind/pagefind-ui.js');
       // Detect current page lang from the URL so we can pre-filter results.
-      const isEn = location.pathname === '/en' || location.pathname.startsWith('/');
-      const cfg = isEn
+      // en lives at `/`, zh under `/zh/`, ja under `/ja/` (Phase 1 rollout).
+      // ja currently falls back to English translations until a ja block is added.
+      const path = location.pathname;
+      let pageLang: 'en' | 'zh' | 'ja' = 'en';
+      if (path === '/zh' || path === '/zh/' || path.startsWith('/zh/')) pageLang = 'zh';
+      else if (path === '/ja' || path === '/ja/' || path.startsWith('/ja/')) pageLang = 'ja';
+      const isZh = pageLang === 'zh';
+      const cfg = isZh
         ? {
+            element: '#search',
+            showSubResults: true,
+            showImages: false,
+            translations: {
+              placeholder: '搜索政策、辩论、抓手、人物、博文……',
+              clear_search: '清空',
+              load_more: '加载更多',
+              search_label: '站内搜索',
+              filters_label: '过滤',
+              zero_results: '"[SEARCH_TERM]" 未找到结果',
+              many_results: '为 "[SEARCH_TERM]" 找到 [COUNT] 条结果',
+              one_result: '为 "[SEARCH_TERM]" 找到 [COUNT] 条结果',
+              alt_search: '"[SEARCH_TERM]" 未找到结果。改用 "[DIFFERENT_TERM]" 显示结果',
+              search_suggestion: '"[SEARCH_TERM]" 未找到结果。试试这些建议：',
+              searching: '正在搜索 "[SEARCH_TERM]"……',
+            },
+          }
+        : {
             element: '#search',
             showSubResults: true,
             showImages: false,
@@ -103,24 +127,6 @@ const lang = getLangFromPath(new URL(Astro.url).pathname);
               alt_search: 'No results for "[SEARCH_TERM]". Showing results for "[DIFFERENT_TERM]" instead',
               search_suggestion: 'No results for "[SEARCH_TERM]". Try one of the following:',
               searching: 'Searching for "[SEARCH_TERM]"…',
-            },
-          }
-        : {
-            element: '#search',
-            showSubResults: true,
-            showImages: false,
-            translations: {
-              placeholder: '搜索政策、辩论、抓手、人物、博文……',
-              clear_search: '清空',
-              load_more: '加载更多',
-              search_label: '站内搜索',
-              filters_label: '过滤',
-              zero_results: '"[SEARCH_TERM]" 未找到结果',
-              many_results: '为 "[SEARCH_TERM]" 找到 [COUNT] 条结果',
-              one_result: '为 "[SEARCH_TERM]" 找到 [COUNT] 条结果',
-              alt_search: '"[SEARCH_TERM]" 未找到结果。改用 "[DIFFERENT_TERM]" 显示结果',
-              search_suggestion: '"[SEARCH_TERM]" 未找到结果。试试这些建议：',
-              searching: '正在搜索 "[SEARCH_TERM]"……',
             },
           };
       // @ts-expect-error - PagefindUI is exposed as a global by the script above
