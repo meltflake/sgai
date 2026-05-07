@@ -1,0 +1,7 @@
+{
+  "direction": "zh→ja",
+  "source": "SUTD（Singapore University of Technology and Design）是新加坡 4 所国立大学中最年轻、最特殊的一所——2009 年与 MIT 合作创立，定位是\"科技 + 设计 + 创业\"的交叉型大学。在 AI 领域，它的特色是 **AI + 工程 + 设计** 的跨界路线。",
+  "target": "SUTD（Singapore University of Technology and Design）はシンガポールの4つの国立大学の中で最も若く、最も特殊な大学です。2009年に MIT との共同で設立され、「テクノロジー + デザイン + アントレプレナーシップ」の交差型大学として位置付けられています。AI 分野では、その特徴は**AI + エンジニアリング + デザイン**のクロスボーダー路線です。",
+  "model": "haiku",
+  "translatedAt": "2026-05-07"
+}

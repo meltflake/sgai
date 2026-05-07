@@ -1,0 +1,7 @@
+{
+  "direction": "zh→ja",
+  "source": "AI Verify Foundation 是 2023 年 6 月由 IMDA 独立分拆出来的非营利基金会，运营开源的 AI 治理测试框架 **AI Verify**。它是新加坡 AI 治理战略的\"国际化平台\"——把 IMDA 制定的 Model AI Governance Framework 转化成可被全球企业实际使用的开源工具集。",
+  "target": "AI Verify Foundation は2023年6月に IMDA から独立で分割された非営利基金会であり、オープンソースの AI ガバナンステストフレームワーク**AI Verify**を運営しています。それはシンガポール AI ガバナンス戦略の「国際化プラットフォーム」です。IMDA が制定した Model AI Governance Framework を、グローバル企業が実際に使用できるオープンソースツールセットに変換します。",
+  "model": "haiku",
+  "translatedAt": "2026-05-07"
+}

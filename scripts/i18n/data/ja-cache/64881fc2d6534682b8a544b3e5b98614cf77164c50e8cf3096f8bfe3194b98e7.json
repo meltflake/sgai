@@ -1,0 +1,7 @@
+{
+  "direction": "zh→ja",
+  "source": "GPAI（Global Partnership on AI）是 2020 年由七国集团（G7）发起的多边 AI 合作组织，新加坡是创始成员国之一。它是新加坡参与全球 AI 治理的重要平台，通过它把 AI Verify、Model AI Governance Framework 等本国实践推向国际。",
+  "target": "GPAI（Global Partnership on AI）は 2020 年に 7 か国グループ（G7）が発起した多国間 AI 協力組織で、シンガポールは創設メンバー国の 1 つです。これはシンガポールがグローバル AI ガバナンスに参加するための重要なプラットフォームで、AI Verify や Model AI Governance Framework などの自国の実践を国際的に推し進めています。",
+  "model": "haiku",
+  "translatedAt": "2026-05-07"
+}

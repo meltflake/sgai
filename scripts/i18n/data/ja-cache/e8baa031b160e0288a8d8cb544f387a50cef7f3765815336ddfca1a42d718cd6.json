@@ -1,0 +1,7 @@
+{
+  "direction": "zh→ja",
+  "source": "AISG 基础研究负责人，研究方向为数据中心 AI、贝叶斯优化、联邦学习与 LLM。CMU 电子与计算机工程博士。",
+  "target": "AISG 基礎研究責任者。研究分野はデータセンター AI、ベイズ最適化、フェデレーティッド学習、LLM です。CMU 電気・コンピュータ工学博士。",
+  "model": "haiku",
+  "translatedAt": "2026-05-07"
+}

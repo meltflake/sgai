@@ -1,0 +1,7 @@
+{
+  "direction": "zh→ja",
+  "source": "韩国 AI 半导体战略 2024 年由 MSIT + 产业通商资源部联合发布，含 ₩9 万亿（~US$65 亿）专项支持。重点方向：(1) 三星 + SK 海力士 HBM（高带宽存储）市场份额全球第一；(2) 自主 AI 推理 / 训练芯片研发（三星 Mach、Rebellions Atom、FuriosaAI RNGD）；(3) 与 NVIDIA / AMD 联合研发；(4) 2030 年目标 AI 芯片全球市场份额 20%。判断：HBM 是韩国 AI 战略中最稳的支柱——SK 海力士在 NVIDIA H100 / B200 中的份额近 70%，三星紧随其后。但自主推理芯片（Rebellions、FuriosaAI 等）规模仍远小于 NVIDIA，需要财阀订单才能规模化。这种\"HBM 卖给老美 + 自主芯片自己用\"的策略在 2026-2030 是关键观察。",
+  "target": "韓国 AI 半導体戦略は 2024 年に MSIT + 産業通商資源部が共同リリース、₩9 兆（~US$65 十億）の専項支援を含む。重点方向：(1) Samsung + SK Hynix HBM（高帯域幅メモリ）の全球市場シェア第一；(2) 自主 AI 推論・訓練チップ研究開発（Samsung Mach、Rebellions Atom、FuriosaAI RNGD）；(3) NVIDIA / AMD との共同研究；(4) 2030 年目標は AI チップ全球市場シェア 20%。評価：HBM は韓国 AI 戦略中で最も安定した柱——SK Hynix は NVIDIA H100 / B200 中のシェアが約 70%、Samsung がこれに続く。ただし自主推論チップ（Rebellions、FuriosaAI など）の規模はなお NVIDIA より遠く小さく、財閥の発注があってこそ規模化可能。この「HBM を米国に売却 + 自主チップは自社使用」の戦略は 2026～2030 の重要観察対象。",
+  "model": "haiku",
+  "translatedAt": "2026-05-07"
+}

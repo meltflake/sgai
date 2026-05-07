@@ -1,0 +1,7 @@
+{
+  "direction": "zh→ja",
+  "source": "PDPC（Personal Data Protection Commission）是新加坡的个人数据保护监管机构，2013 年成立，挂靠 IMDA。它执行《个人数据保护法》（PDPA），是新加坡 AI 治理的\"数据合规底座\"——所有 AI 系统涉及个人数据的部分都要受 PDPA 约束。",
+  "target": "PDPC（Personal Data Protection Commission）はシンガポールの個人データ保護規制機構であり、2013年に成立し、IMDA に附属しています。《個人データ保護法》（PDPA）を執行しており、シンガポール AI ガバナンスの「データコンプライアンスの基盤」です。すべての AI システムが個人データに関係する部分は PDPA の制約を受けます。",
+  "model": "haiku",
+  "translatedAt": "2026-05-07"
+}

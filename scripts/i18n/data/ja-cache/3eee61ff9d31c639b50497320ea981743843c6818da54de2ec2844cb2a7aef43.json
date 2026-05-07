@@ -1,0 +1,7 @@
+{
+  "direction": "zh→ja",
+  "source": "NTU（南洋理工大学）是新加坡的工科强校，与 NUS 并列为本地两大研究型大学。在 AI 领域，NTU 的特色是**强工程实战 + 强产业合作**——College of Computing and Data Science（CCDS）、S-Lab、Continual Learning Lab 等单位在 CV、机器人、连续学习方向有持续输出。",
+  "target": "NTU（南洋工科大学）はシンガポールの工学系強豪校であり、NUS と並んで国内の2大研究型大学です。AI 分野では、NTU の特徴は**強力なエンジニアリング実践 + 強力な産業連携**です。College of Computing and Data Science（CCDS）、S-Lab、Continual Learning Lab などの部門は、コンピュータビジョン、ロボティクス、継続学習分野で継続的な成果を出しています。",
+  "model": "haiku",
+  "translatedAt": "2026-05-07"
+}

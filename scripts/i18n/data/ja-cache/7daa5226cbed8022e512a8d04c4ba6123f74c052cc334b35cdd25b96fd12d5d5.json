@@ -1,0 +1,7 @@
+{
+  "direction": "zh→ja",
+  "source": "Google Zurich 是 Google 全欧最大 R&D 中心，2004 年成立。员工 ~5000 名工程师，含 1500-2000 AI / ML 团队。在苏黎世开发的代表产品：Google Maps 后台、Google Pay、Knowledge Graph、Bard / Gemini 多语言能力的部分模块。判断：Google Zurich 是瑞士最具象的\"私部门 AI 实力\"——不花瑞士纳税人钱的 AI 能力出口者。隐含风险：Google 战略重组可能把苏黎世资源转移别处，瑞士影响有限。新加坡有 Google APAC HQ 但偏销售 / 市场而非 R&D，瑞士是相反模式。",
+  "target": "Google Zurich は Google 全欧州最大の R&D センターであり、2004 年に設立されました。約 5000 名の工学者を雇用しており、そのうち 1500～2000 名が AI / ML チームに属しています。チューリッヒで開発された主要な製品は Google Maps バックエンド、Google Pay、Knowledge Graph、Bard / Gemini の多言語機能の一部モジュールです。評価として、Google Zurich はスイスの最も具体的な「民間部門の AI 実力」です——スイス納税者の資金を使わない AI 能力輸出企業です。隠れたリスクとして、Google の戦略的再編がチューリッヒのリソースを他の場所へ移転する可能性があり、スイスの影響力は限定的です。シンガポール には Google APAC HQ がありますが、販売・市場主導であり R&D ではなく、スイスはその逆のモデルです。",
+  "model": "haiku",
+  "translatedAt": "2026-05-07"
+}

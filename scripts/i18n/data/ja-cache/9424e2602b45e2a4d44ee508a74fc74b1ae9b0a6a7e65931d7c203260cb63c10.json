@@ -1,0 +1,7 @@
+{
+  "direction": "zh→ja",
+  "source": "SEA-LION 实际操盘人，把东南亚多语言大模型从 v1 迭代到 v3（70B），推动 SEA-LION 成为政府 AI 服务的底层模型。",
+  "target": "SEA-LION の実際のオペレータ。東南アジア多言語大規模言語モデルを v1 から v3（70B）へと反復進化させ、SEA-LION を政府 AI サービスの基盤モデルとして推進しています。",
+  "model": "haiku",
+  "translatedAt": "2026-05-07"
+}

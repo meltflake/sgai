@@ -1,0 +1,7 @@
+{
+  "direction": "zh→ja",
+  "source": "AISG 与 SGTech 合作的 LADP 计划帮助企业加速 LLM 应用落地,涵盖 prompt engineering 等核心技能。",
+  "target": "AISG と SGTech の協力の LADP 計画は企業が LLM アプリケーション配置を加速するのを支援し、プロンプトエンジニアリングなどの核心スキルを含む。",
+  "model": "haiku",
+  "translatedAt": "2026-05-07"
+}

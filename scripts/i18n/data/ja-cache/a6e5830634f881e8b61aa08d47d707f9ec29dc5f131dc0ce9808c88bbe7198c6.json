@@ -1,0 +1,7 @@
+{
+  "direction": "zh→ja",
+  "source": "IMDA（Infocomm Media Development Authority）是新加坡的\"信息通信 + 媒体 + AI 治理\"综合监管机构，2016 年由 IDA 和 MDA 合并而成。在 AI 领域，它是**新加坡 AI 治理体系的\"中央设计师\"**——Model AI Governance Framework（MGF）、AI Verify、Generative AI 治理框架等几乎所有重要的治理文件，都出自 IMDA。",
+  "target": "IMDA（Infocomm Media Development Authority）はシンガポールの「情報通信 + メディア + AI ガバナンス」総合規制機構であり、2016年に IDA と MDA の合併によって成立した。AI 分野では、それはシンガポール AI ガバナンスシステムの「中央デザイナー」です。Model AI Governance Framework（MGF）、AI Verify、Generative AI ガバナンスフレームワークなど、ほぼすべての重要なガバナンス文書は IMDA から出ています。",
+  "model": "haiku",
+  "translatedAt": "2026-05-07"
+}

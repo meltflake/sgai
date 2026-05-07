@@ -1,0 +1,7 @@
+{
+  "direction": "zh→ja",
+  "source": "NIPA（国家信息产业振兴院，National IT Industry Promotion Agency）是 MSIT 下属的 AI 产业推进执行机构。AI 相关职能：(1) AI 创业资助；(2) 中小企业 AI 应用辅导；(3) AI 开发者社群与人才培养；(4) AI 产业数据 / 标准制定。判断：NIPA 是韩国 AI 政策栈中\"中小企业入口\"——财阀有自己的研发资源，新创和 SMB 主要通过 NIPA 拿政府支持。但 NIPA 预算 / 影响力远小于 MSIT 主流通道，更接近\"补丁\"角色而非\"主路径\"。",
+  "target": "NIPA（国家情報産業振興院、National IT Industry Promotion Agency）は MSIT 配下の AI 産業推進実行機構です。AI 関連職能：(1) AI 起業資助；(2) 中小企業 AI 応用指導；(3) AI 開発者社群と人材育成；(4) AI 産業データ / 標準制定。判断：NIPA は韓国 AI 政策スタックの「中小企業エントランス」です——財閥は自社の研究開発資源を持っており、新創と SMB は主に NIPA を通じて政府支援を得ます。しかし NIPA の予算 / 影響力は MSIT 主流通路はるか以下であり、「パッチ」役に近く、「主路径」ではありません。",
+  "model": "haiku",
+  "translatedAt": "2026-05-07"
+}

@@ -1,0 +1,7 @@
+{
+  "direction": "zh→ja",
+  "source": "MEIT（经济事务与信息技术部，Ministry of Economic Affairs and Information Technology）是爱沙尼亚 AI 政策主管部门。AI 相关职能：(1) Kratt AI Strategy 起草与协调；(2) 与欧盟数字事务对接（EU AI Act 实施）；(3) 监督 RIA、e-Estonia 等执行机构。判断：MEIT 在爱沙尼亚政府结构中相当于\"经济部 + 数字部\"合体，比新加坡 MTI + SNDGO 更集中。这种集中度在小国规模下高效，但意味着没有制度化的政策制定 / 执行分离——这也是为什么爱沙尼亚能在 6 个月内从草案到生效。",
+  "target": "MEIT（経済事務・情報技術省、Ministry of Economic Affairs and Information Technology）はエストニア AI 政策主管部門です。AI 関連職能：(1) Kratt AI Strategy の起案と協調；(2) 欧州委員会デジタル事務部への対接（EU AI Act 実装）；(3) RIA、e-Estonia などの実行機関の監督。判断：MEIT はエストニア政府構造の「経済部 + デジタル部」統合相当であり、シンガポール MTI + SNDGO より集中度が高いです。この集中度は小国規模では効率的ですが、制度化された政策立案 / 実行の分離がないことを意味します——これがエストニアが草案から施行まで 6 ヶ月で実現できる理由です。",
+  "model": "haiku",
+  "translatedAt": "2026-05-07"
+}

@@ -1,0 +1,7 @@
+{
+  "direction": "zh→ja",
+  "source": "A*STAR（Agency for Science, Technology and Research）是新加坡的国家科研机构，1991 年成立，挂在贸工部（MTI）下面。它不像高校那样既要教学又要科研，而是**纯粹做应用导向的研究**，是新加坡 AI 基础研究和工业落地的\"国家级 R&D 部门\"。在 AI 领域，A*STAR 的 I2R（资讯通信研究院）和 CFAR（前沿 AI 研究中心）是两个核心节点。",
+  "target": "A*STAR（Agency for Science, Technology and Research）はシンガポール国家研究機関であり、1991年に設立され、貿易・工業省（MTI）の傘下にあります。大学のように教育と研究の両方を行うのではなく、**純粋にアプリケーション指向の研究**を行っており、シンガポール AI 基礎研究と産業応用の「国家レベルの R&D 部門」です。AI 領域では、A*STAR の I2R（情報通信研究院）と CFAR（最先端 AI 研究センター）が2つのコアノードです。",
+  "model": "haiku",
+  "translatedAt": "2026-05-07"
+}

@@ -1,0 +1,7 @@
+{
+  "direction": "zh→ja",
+  "source": "HSC Pipeline 通过 AISG LADP 计划开发本地部署的 RAG AI 知识库,打破工程知识孤岛,提升决策效率。",
+  "target": "HSC Pipeline は AISG LADP プログラムを通じてローカルデプロイ RAG AI ナレッジベースを開発し、エンジニアリングナレッジのサイロを破壊し、意思決定効率を向上させた。",
+  "model": "haiku",
+  "translatedAt": "2026-05-07"
+}

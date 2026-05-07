@@ -1,0 +1,7 @@
+{
+  "direction": "zh→ja",
+  "source": "TII Falcon LLM 公告",
+  "target": "TII Falcon LLM 発表",
+  "model": "haiku",
+  "translatedAt": "2026-05-07"
+}

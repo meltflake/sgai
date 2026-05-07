@@ -1,0 +1,7 @@
+{
+  "direction": "zh→ja",
+  "source": "SEA-HELM（Southeast Asian Holistic Evaluation of Language Models）是 AISG 在 2024 年发布的东南亚语言模型评估基准，是全球第一个**专门针对东南亚 11 种语言的标准化 LLM 评估套件**。它配合 SEA-LION 一起构成\"东南亚 LLM 训练 + 评估\"的完整工具链。",
+  "target": "SEA-HELM（Southeast Asian Holistic Evaluation of Language Models）は、AISG が2024年に発布した東南アジア言語モデル評価ベンチマークで、世界初の**東南アジア11言語に特化した標準化LLM評価スイート**です。SEA-LION と連携して「東南アジアLLM訓練+評価」の完全なツールチェーンを構成します。",
+  "model": "haiku",
+  "translatedAt": "2026-05-07"
+}

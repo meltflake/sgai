@@ -1,0 +1,7 @@
+{
+  "direction": "zh→ja",
+  "source": "Joint Initiative for Trustworthy AI（含 Google Zurich 上下文）",
+  "target": "Joint Initiative for Trustworthy AI（Google Zurich の文脈を含む）",
+  "model": "haiku",
+  "translatedAt": "2026-05-07"
+}

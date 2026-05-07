@@ -1,0 +1,7 @@
+{
+  "direction": "zh→ja",
+  "source": "NUS 研究小组，方向为数据中心 AI、协作 AI、自动化 AI 与 AI for Science，应用于大语言模型与多模态模型。",
+  "target": "NUS 研究グループ。データセンター AI、協調 AI、自動化 AI、Science for AI を研究対象とし、大規模言語モデルとマルチモーダルモデルに応用しています。",
+  "model": "haiku",
+  "translatedAt": "2026-05-07"
+}

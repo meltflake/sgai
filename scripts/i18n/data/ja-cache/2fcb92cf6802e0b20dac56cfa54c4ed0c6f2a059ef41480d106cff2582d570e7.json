@@ -1,0 +1,7 @@
+{
+  "direction": "zh→ja",
+  "source": "SMU（Singapore Management University）是新加坡的\"商科 + 社科\"导向大学，2000 年成立。在 AI 领域，它的定位是**应用 AI + 政策 AI + 商业 AI**——School of Computing and Information Systems（SCIS）做应用研究，社会科学学院做 AI 政策分析。",
+  "target": "SMU（Singapore Management University）はシンガポールの「商学 + 社会科学」志向の大学であり、2000年に成立した。AI 分野では、その位置付けは**応用 AI + 政策 AI + ビジネス AI**です。School of Computing and Information Systems（SCIS）は応用研究を行い、社会科学学院は AI 政策分析を行っています。",
+  "model": "haiku",
+  "translatedAt": "2026-05-07"
+}

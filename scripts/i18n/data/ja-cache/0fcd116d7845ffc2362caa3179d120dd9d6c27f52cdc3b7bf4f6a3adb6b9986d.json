@@ -1,0 +1,7 @@
+{
+  "direction": "zh→ja",
+  "source": "AIRDI 专项预算公告（news.gov.hk）",
+  "target": "AIRDI 特別予算公告(news.gov.hk)",
+  "model": "haiku",
+  "translatedAt": "2026-05-07"
+}

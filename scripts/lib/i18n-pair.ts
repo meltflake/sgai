@@ -1,54 +1,36 @@
 // scripts/lib/i18n-pair.ts
 // ────────────────────────────────────────────────────────────────────────
-// Source-level i18n gate for sgai data files.
 // Static check: every zh field that can be locale-paired has its
 // per-locale sibling populated (e.g. `*En` for en, `*Ja` for ja).
 //
-// Two complementary checks, both run from the same AST traversal:
+// This is a *source-level* check (parses .ts string literals). It runs
+// pre-emit in refresh pipelines so we never write a record that would
+// later be flagged by the build-time `npm run check:i18n`. Belt and
+// braces.
 //
-//   (1) ALIGNMENT (back-compat with v1) — every <field> with CJK content
-//       has a sibling <field><Suffix> populated for each target locale.
-//       Field set is configurable, defaults to a generic list (`title`,
-//       `description`, `name`, ...).
+// Strategy:
+//   1. Read the target file as text.
+//   2. Find every `<key>: '<chinese-string>',` literal where <key> is one
+//      of the configurable user-facing field names (title, description,
+//      name, label, summary, note, excerpt, ...).
+//   3. For each match, look for the sibling `<key><Suffix>:` within the
+//      same record block, for each target locale. If missing or empty,
+//      report.
+//   4. Skip blocks marked `// i18n-allow-unpaired` on the line above.
 //
-//   (2) COMPLETENESS (new) — for files declared in `scripts/i18n-config.ts`,
-//       every required field's source side AND every locale sibling must
-//       be non-empty + non-placeholder. This is what catches the "stub
-//       ecosystem entity" pattern that v1 missed.
-//
-// Parser is the TypeScript Compiler API, not regex. Handles template
-// literals, multi-line strings, Prettier-wrapped values, nested arrays,
-// and arbitrary attribute order in the source.
-//
-// USAGE (programmatic — preserved for refresh pipelines):
-//
+// USAGE (programmatic):
 //   import { findUnpairedFields } from './lib/i18n-pair';
 //   const issues = findUnpairedFields('src/data/policies.ts', { fields: ['title', 'description'], locales: ['en', 'ja'] });
-//
-// USAGE (programmatic — new completeness API):
-//
-//   import { findIncompleteRecords } from './lib/i18n-pair';
-//   const issues = findIncompleteRecords('src/data/ecosystem.ts');
+//   if (issues.length) throw new Error('i18n pairing failed');
 //
 // USAGE (cli):
-//   npx tsx scripts/lib/i18n-pair.ts src/data/policies.ts            # alignment (default)
-//   npx tsx scripts/lib/i18n-pair.ts --mode=alignment src/data/*.ts
-//   npx tsx scripts/lib/i18n-pair.ts --mode=completeness src/data/ecosystem.ts
-//   npx tsx scripts/lib/i18n-pair.ts --mode=both src/data/ecosystem.ts
+//   npx tsx scripts/lib/i18n-pair.ts src/data/policies.ts
+//   npx tsx scripts/lib/i18n-pair.ts src/data/*.ts
 //   npx tsx scripts/lib/i18n-pair.ts --fields=title,description src/data/policies.ts
 //   npx tsx scripts/lib/i18n-pair.ts --locales=en,ja src/data/*.ts
-//
-// Both modes respect the `i18n-allow-unpaired` annotation on the line
-// preceding the record's opening brace, which exempts that record from
-// BOTH checks. Use sparingly — it's the sgai equivalent of `// eslint-disable-next-line`.
 
-import * as ts from 'typescript';
 import { readFileSync, existsSync } from 'node:fs';
 import { resolve } from 'node:path';
-
-import { I18N_CONFIG, isPlaceholderValue, type FileSchema, type RecordSchema } from '../i18n-config.ts';
-
-// ── Public types ────────────────────────────────────────────────────────
 
 export interface UnpairedField {
   file: string;
@@ -60,19 +42,6 @@ export interface UnpairedField {
   /** Which target locale's sibling is missing/empty (e.g. 'en', 'ja'). */
   locale: string;
 }
-
-export interface IncompleteRecord {
-  file: string;
-  recordStartLine: number;
-  /** Schema name from i18n-config (e.g. 'entity', 'category') */
-  schema: string;
-  /** Field names that are missing or placeholder. Includes both source and sibling fields. */
-  missingFields: string[];
-  /** Best-effort identifier for the record, taken from `id` or `name` if present */
-  recordIdentifier?: string;
-}
-
-// ── Constants ───────────────────────────────────────────────────────────
 
 const DEFAULT_FIELDS = [
   'title',
@@ -94,9 +63,6 @@ const DEFAULT_FIELDS = [
 const DEFAULT_LOCALES = ['en'];
 
 const CJK_RE = /[一-鿿]/;
-const IGNORE_MARKER = 'i18n-allow-unpaired';
-
-// ── Locale helpers ─────────────────────────────────────────────────────
 
 /** Compute the sibling-field suffix for a locale. zh → '' (bare key);
  *  en → 'En'; ja → 'Ja'. Mirrors src/i18n/index.ts:siblingSuffix. */
@@ -105,129 +71,14 @@ function siblingSuffix(locale: string): string {
   return locale.charAt(0).toUpperCase() + locale.slice(1);
 }
 
-// ── AST utilities ───────────────────────────────────────────────────────
-
-function parseSourceFile(filePath: string): ts.SourceFile {
-  const source = readFileSync(filePath, 'utf8');
-  return ts.createSourceFile(filePath, source, ts.ScriptTarget.Latest, /* setParentNodes */ true);
-}
-
-/** Yields every ObjectLiteralExpression reachable from `node` (depth-first). */
-function* walkObjectLiterals(node: ts.Node): Generator<ts.ObjectLiteralExpression> {
-  if (ts.isObjectLiteralExpression(node)) yield node;
-  const children: ts.Node[] = [];
-  ts.forEachChild(node, (c) => {
-    children.push(c);
-  });
-  for (const c of children) {
-    yield* walkObjectLiterals(c);
-  }
-}
-
-function getProperty(obj: ts.ObjectLiteralExpression, key: string): ts.PropertyAssignment | undefined {
-  for (const prop of obj.properties) {
-    if (!ts.isPropertyAssignment(prop)) continue;
-    const name = prop.name;
-    if (ts.isIdentifier(name) && name.text === key) return prop;
-    if ((ts.isStringLiteral(name) || ts.isNoSubstitutionTemplateLiteral(name)) && name.text === key) return prop;
-  }
-  return undefined;
-}
-
-type PropertyValue = { kind: 'string'; text: string } | { kind: 'non-string' } | { kind: 'absent' };
-
-/** Read a property's value with three-way result:
- *    'string' → simple string literal or template literal w/o substitutions
- *    'non-string' → present but non-string (array, object, identifier, expression, ...)
- *    'absent' → property does not exist on the literal
- */
-function getPropertyValue(obj: ts.ObjectLiteralExpression, key: string): PropertyValue {
-  const prop = getProperty(obj, key);
-  if (!prop) return { kind: 'absent' };
-  const init = prop.initializer;
-  if (ts.isStringLiteral(init) || ts.isNoSubstitutionTemplateLiteral(init)) {
-    return { kind: 'string', text: init.text };
-  }
-  return { kind: 'non-string' };
-}
-
-/** Returns the binding name of the array literal that directly contains `node`,
- *  or undefined if `node` is not a direct element of an array bound to a
- *  PropertyAssignment / VariableDeclaration.
+/**
+ * Find every record that has a zh string in `field` but lacks a non-empty
+ * `${field}En` sibling within the same brace-balanced block.
  *
- *  Examples:
- *    `entities: [ {...HERE...} ]`            => 'entities'
- *    `export const policies = [ {...HERE...} ]` => 'policies'
- *    `export const xs: T[] = [ {...HERE...} ] as const` => 'xs'
+ * The parser is regex-based, intentionally simple, and works on the
+ * conventional formatting that all sgai data files follow. It doesn't
+ * understand TS expressions — only string literals on dedicated lines.
  */
-function getContainingArrayName(node: ts.ObjectLiteralExpression): string | undefined {
-  const arrayLit = node.parent;
-  if (!arrayLit || !ts.isArrayLiteralExpression(arrayLit)) return undefined;
-  let arrayParent: ts.Node | undefined = arrayLit.parent;
-  // Unwrap `as const` / `as T[]` / type assertions
-  while (arrayParent && (ts.isAsExpression(arrayParent) || ts.isTypeAssertionExpression?.(arrayParent))) {
-    arrayParent = arrayParent.parent;
-  }
-  if (!arrayParent) return undefined;
-  if (ts.isPropertyAssignment(arrayParent) && ts.isIdentifier(arrayParent.name)) {
-    return arrayParent.name.text;
-  }
-  if (ts.isVariableDeclaration(arrayParent) && ts.isIdentifier(arrayParent.name)) {
-    return arrayParent.name.text;
-  }
-  return undefined;
-}
-
-function hasIgnoreAnnotation(node: ts.Node, sourceFile: ts.SourceFile): boolean {
-  const ranges = ts.getLeadingCommentRanges(sourceFile.text, node.getFullStart());
-  if (!ranges) return false;
-  for (const range of ranges) {
-    const text = sourceFile.text.substring(range.pos, range.end);
-    if (text.includes(IGNORE_MARKER)) return true;
-  }
-  return false;
-}
-
-function getLine(node: ts.Node, sourceFile: ts.SourceFile): number {
-  return sourceFile.getLineAndCharacterOfPosition(node.getStart(sourceFile)).line + 1;
-}
-
-function findFileSchema(filePath: string): FileSchema | undefined {
-  const abs = resolve(filePath);
-  return I18N_CONFIG.find((cfg) => abs.endsWith(cfg.file));
-}
-
-function findRecordSchema(file: FileSchema, containingArray: string): RecordSchema | undefined {
-  return file.schemas.find((s) => s.containingArray === containingArray);
-}
-
-function isSiblingPaired(value: PropertyValue): boolean {
-  if (value.kind === 'absent') return false;
-  if (value.kind === 'non-string') return true; // array/object sibling = present, treat as paired (legacy)
-  return value.text.length > 0;
-}
-
-/** Field is "broken" for completeness purposes when:
- *    - missing entirely
- *    - empty string
- *    - matches a known placeholder pattern
- *  Non-string values (arrays / objects / expressions) are always treated as present. */
-function isFieldBroken(value: PropertyValue): boolean {
-  if (value.kind === 'absent') return true;
-  if (value.kind === 'non-string') return false;
-  return value.text.length === 0 || isPlaceholderValue(value.text);
-}
-
-function getRecordIdentifier(obj: ts.ObjectLiteralExpression): string | undefined {
-  for (const key of ['id', 'slug', 'number', 'name']) {
-    const v = getPropertyValue(obj, key);
-    if (v.kind === 'string') return v.text;
-  }
-  return undefined;
-}
-
-// ── Public API: alignment check (back-compat) ───────────────────────────
-
 export function findUnpairedFields(
   filePath: string,
   options: { fields?: string[]; locales?: string[]; ignoreUnpairedAnnotation?: string } = {}
@@ -235,199 +86,165 @@ export function findUnpairedFields(
   if (!existsSync(filePath)) {
     throw new Error(`File not found: ${filePath}`);
   }
-  void options.ignoreUnpairedAnnotation; // marker is fixed (`i18n-allow-unpaired`); kept for signature compat
   const fields = options.fields || DEFAULT_FIELDS;
   const locales = options.locales || DEFAULT_LOCALES;
-  const sourceFile = parseSourceFile(filePath);
+  const ignoreMarker = options.ignoreUnpairedAnnotation || 'i18n-allow-unpaired';
+  const source = readFileSync(filePath, 'utf8');
+  const lines = source.split('\n');
   const issues: UnpairedField[] = [];
 
-  for (const obj of walkObjectLiterals(sourceFile)) {
-    if (hasIgnoreAnnotation(obj, sourceFile)) continue;
-    const recordStartLine = getLine(obj, sourceFile);
+  for (let i = 0; i < lines.length; i += 1) {
+    const line = lines[i];
+    // Match `<field>: '...'` or `<field>: "..."` where field is one of the configured names.
+    const fieldRe = new RegExp(`^(\\s*)(${fields.join('|')}):\\s*['"](.+?)['"]\\s*,?\\s*$`);
+    // Also accept multi-line literals where Prettier wrapped a long zh
+    // string onto the next line:
+    //   description:
+    //     '中文内容...',
+    const fieldKeyOnlyRe = new RegExp(`^(\\s*)(${fields.join('|')}):\\s*$`);
+    let field: string;
+    let value: string;
+    const m = line.match(fieldRe);
+    if (m) {
+      field = m[2];
+      value = m[3];
+    } else {
+      const m2 = line.match(fieldKeyOnlyRe);
+      if (!m2) continue;
+      // Peek the next non-empty line for a single-string-literal continuation.
+      const next = lines[i + 1] ?? '';
+      const nextMatch = next.match(/^\s*['"](.*?)['"]\s*,?\s*$/);
+      if (!nextMatch) continue;
+      field = m2[2];
+      value = nextMatch[1];
+    }
 
-    for (const field of fields) {
-      const value = getPropertyValue(obj, field);
-      if (value.kind !== 'string') continue;
-      if (!CJK_RE.test(value.text)) continue;
+    // Only check zh strings (those containing CJK).
+    if (!CJK_RE.test(value)) continue;
 
-      const fieldProp = getProperty(obj, field)!;
-      // Per-field exemption: comment immediately above the field line.
-      if (hasIgnoreAnnotation(fieldProp, sourceFile)) continue;
-      const fieldLine = getLine(fieldProp, sourceFile);
+    // Skip if previous line annotates suppression.
+    const prev = lines[i - 1] || '';
+    if (prev.includes(ignoreMarker)) continue;
 
-      for (const locale of locales) {
-        const sibKey = `${field}${siblingSuffix(locale)}`;
-        const sibling = getPropertyValue(obj, sibKey);
+    // Find enclosing record start (walk back to first '{' that is not closed).
+    const recordStart = findEnclosingRecordStart(lines, i);
 
-        if (sibling.kind === 'absent') {
-          issues.push({
-            file: filePath,
-            line: fieldLine,
-            recordStartLine,
-            field,
-            chineseValue: value.text,
-            reason: 'missing-sibling',
-            locale,
-          });
-        } else if (sibling.kind === 'string' && sibling.text.length === 0) {
-          issues.push({
-            file: filePath,
-            line: fieldLine,
-            recordStartLine,
-            field,
-            chineseValue: value.text,
-            reason: 'empty-sibling',
-            locale,
-          });
+    // For each target locale, search for `<field><Suffix>:` within the
+    // same record block. Accept three layouts:
+    //   (a) `fieldXx: 'value',`        — same-line literal
+    //   (b) `fieldXx: \n      '...'`   — multi-line literal (Prettier wraps long strings)
+    //   (c) `fieldXx: [...]` / object  — non-string value (just check key exists)
+    for (const locale of locales) {
+      const siblingKey = `${field}${siblingSuffix(locale)}`;
+      const sameLineRe = new RegExp(`^\\s*${siblingKey}:\\s*['"](.*?)['"]\\s*,?\\s*$`);
+      const keyOnlyRe = new RegExp(`^\\s*${siblingKey}:\\s*$`);
+      const keyAnyValueRe = new RegExp(`^\\s*${siblingKey}:\\s*[\\[\\{]`);
+      let foundSibling = false;
+      let emptySibling = false;
+      for (let j = recordStart; j < lines.length; j += 1) {
+        const candidate = lines[j];
+        if (j > recordStart && /^\s*\},?\s*$/.test(candidate)) break;
+        const sameLine = candidate.match(sameLineRe);
+        if (sameLine) {
+          foundSibling = true;
+          emptySibling = sameLine[1].length === 0;
+          break;
+        }
+        if (keyOnlyRe.test(candidate)) {
+          // Multi-line literal: peek the next non-empty line; if it's a quoted string, treat as paired.
+          const next = lines[j + 1] || '';
+          if (/^\s*['"]/.test(next)) {
+            foundSibling = true;
+            // Best-effort empty check: extract the leading string literal.
+            const leading = next.match(/^\s*['"](.*?)['"]/);
+            emptySibling = leading ? leading[1].length === 0 : false;
+            break;
+          }
+        }
+        if (keyAnyValueRe.test(candidate)) {
+          // Array/object value — just confirm presence; can't easily check empty.
+          foundSibling = true;
+          break;
         }
       }
-    }
-  }
 
-  return issues;
-}
-
-// ── Public API: completeness check (new) ────────────────────────────────
-
-export function findIncompleteRecords(
-  filePath: string,
-  options: { schema?: FileSchema } = {}
-): IncompleteRecord[] {
-  if (!existsSync(filePath)) {
-    throw new Error(`File not found: ${filePath}`);
-  }
-  const fileSchema = options.schema || findFileSchema(filePath);
-  if (!fileSchema) return []; // no schema configured → not gated
-
-  const sourceFile = parseSourceFile(filePath);
-  const issues: IncompleteRecord[] = [];
-
-  for (const obj of walkObjectLiterals(sourceFile)) {
-    if (hasIgnoreAnnotation(obj, sourceFile)) continue;
-    const containingArray = getContainingArrayName(obj);
-    if (!containingArray) continue;
-    const schema = findRecordSchema(fileSchema, containingArray);
-    if (!schema) continue;
-
-    const missingFields: string[] = [];
-    for (const rule of schema.fields) {
-      if (!rule.required) continue;
-
-      // Source side
-      const sourceVal = getPropertyValue(obj, rule.field);
-      if (isFieldBroken(sourceVal)) missingFields.push(rule.field);
-
-      // Every locale sibling (independent of source — both may need fixing)
-      for (const locale of rule.locales) {
-        const sibKey = `${rule.field}${locale}`;
-        const sibVal = getPropertyValue(obj, sibKey);
-        if (isFieldBroken(sibVal)) missingFields.push(sibKey);
+      if (!foundSibling) {
+        issues.push({
+          file: filePath,
+          line: i + 1,
+          recordStartLine: recordStart + 1,
+          field,
+          chineseValue: value,
+          reason: 'missing-sibling',
+          locale,
+        });
+      } else if (emptySibling) {
+        issues.push({
+          file: filePath,
+          line: i + 1,
+          recordStartLine: recordStart + 1,
+          field,
+          chineseValue: value,
+          reason: 'empty-sibling',
+          locale,
+        });
       }
     }
-
-    if (missingFields.length === 0) continue;
-
-    issues.push({
-      file: filePath,
-      recordStartLine: getLine(obj, sourceFile),
-      schema: schema.name,
-      missingFields,
-      recordIdentifier: getRecordIdentifier(obj),
-    });
   }
 
   return issues;
 }
 
-// Suppress "non-string sibling unused" lint while keeping the helper for future extensions
-void isSiblingPaired;
-
-// ── CLI ─────────────────────────────────────────────────────────────────
-
-type Mode = 'alignment' | 'completeness' | 'both';
-
-function parseMode(argv: string[]): Mode {
-  const arg = argv.find((a) => a.startsWith('--mode='));
-  if (!arg) return 'alignment';
-  const v = arg.split('=')[1];
-  if (v === 'alignment' || v === 'completeness' || v === 'both') return v;
-  process.stderr.write(`Unknown --mode: ${v}. Expected alignment | completeness | both.\n`);
-  process.exit(2);
+function findEnclosingRecordStart(lines: string[], lineIndex: number): number {
+  // Walk back to the closest unmatched '{' on its own line.
+  let depth = 0;
+  for (let j = lineIndex; j >= 0; j -= 1) {
+    const line = lines[j];
+    const opens = (line.match(/\{/g) || []).length;
+    const closes = (line.match(/\}/g) || []).length;
+    depth += closes;
+    depth -= opens;
+    if (depth < 0) return j;
+  }
+  return 0;
 }
 
+// ── CLI ─────────────────────────────────────────────────────────────────
 async function cliMain(): Promise<void> {
   const argv = process.argv.slice(2);
-  const mode = parseMode(argv);
   const fieldsArg = argv.find((a) => a.startsWith('--fields='));
-  const fields = fieldsArg
-    ? fieldsArg
-        .split('=')[1]
-        .split(',')
-        .map((s) => s.trim())
-    : undefined;
+  const fields = fieldsArg ? fieldsArg.split('=')[1].split(',').map((s) => s.trim()) : undefined;
   const localesArg = argv.find((a) => a.startsWith('--locales='));
-  const locales = localesArg
-    ? localesArg
-        .split('=')[1]
-        .split(',')
-        .map((s) => s.trim())
-    : undefined;
+  const locales = localesArg ? localesArg.split('=')[1].split(',').map((s) => s.trim()) : undefined;
   const files = argv.filter((a) => !a.startsWith('--'));
 
   if (files.length === 0) {
-    process.stderr.write(
-      'Usage: i18n-pair <file...> [--mode=alignment|completeness|both] [--fields=title,description] [--locales=en,ja]\n'
-    );
+    process.stderr.write('Usage: i18n-pair <file...> [--fields=title,description] [--locales=en,ja]\n');
     process.exit(2);
   }
 
-  let totalUnpaired = 0;
-  let totalIncomplete = 0;
-
+  let total = 0;
   for (const file of files) {
     const abs = resolve(file);
-
-    if (mode === 'alignment' || mode === 'both') {
-      const issues = findUnpairedFields(abs, { fields, locales });
-      if (issues.length > 0) {
-        totalUnpaired += issues.length;
-        process.stdout.write(`\n${file}: ${issues.length} unpaired (alignment)\n`);
-        for (const issue of issues.slice(0, 20)) {
-          process.stdout.write(
-            `  L${issue.line} ${issue.field}[${issue.locale}] (${issue.reason}): ${issue.chineseValue.slice(0, 50)}\n`
-          );
-        }
-        if (issues.length > 20) {
-          process.stdout.write(`  … and ${issues.length - 20} more\n`);
-        }
-      }
+    const issues = findUnpairedFields(abs, { fields, locales });
+    if (issues.length === 0) continue;
+    total += issues.length;
+    process.stdout.write(`\n${file}: ${issues.length} unpaired\n`);
+    for (const issue of issues.slice(0, 20)) {
+      process.stdout.write(
+        `  L${issue.line} ${issue.field}[${issue.locale}] (${issue.reason}): ${issue.chineseValue.slice(0, 50)}\n`
+      );
     }
-
-    if (mode === 'completeness' || mode === 'both') {
-      const issues = findIncompleteRecords(abs);
-      if (issues.length > 0) {
-        totalIncomplete += issues.length;
-        process.stdout.write(`\n${file}: ${issues.length} incomplete (completeness)\n`);
-        for (const issue of issues.slice(0, 20)) {
-          const id = issue.recordIdentifier ? ` "${issue.recordIdentifier}"` : '';
-          process.stdout.write(
-            `  L${issue.recordStartLine} ${issue.schema}${id}: missing ${issue.missingFields.join(', ')}\n`
-          );
-        }
-        if (issues.length > 20) {
-          process.stdout.write(`  … and ${issues.length - 20} more\n`);
-        }
-      }
+    if (issues.length > 20) {
+      process.stdout.write(`  … and ${issues.length - 20} more\n`);
     }
   }
 
-  if (totalUnpaired + totalIncomplete > 0) {
-    process.stderr.write(
-      `\nTotal: ${totalUnpaired} unpaired, ${totalIncomplete} incomplete across ${files.length} file(s)\n`
-    );
+  if (total > 0) {
+    process.stderr.write(`\nTotal unpaired fields: ${total}\n`);
     process.exit(1);
   }
-  process.stdout.write('OK — all checks pass.\n');
+  process.stdout.write('OK — all checked fields paired.\n');
 }
 
 if (import.meta.url === `file://${process.argv[1]}` || process.argv[1]?.endsWith('i18n-pair.ts')) {

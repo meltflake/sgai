@@ -1,0 +1,7 @@
+{
+  "direction": "zh→ja",
+  "source": "SGNLP 是 AISG 维护的\"新加坡本地 NLP 工具包\"，包含针对新加坡英语（Singlish）、本地命名实体、多语言代码切换等场景的预训练模型和工具。它在 SEA-LION 出现前是 AISG 在 NLP 领域的旗舰产品。",
+  "target": "SGNLP は AISG が維持管理する「シンガポール現地 NLP ツールキット」で、シンガポール英語（Singlish）、現地命名実体、多言語コード切り替えなどのシナリオに対応した事前学習モデルとツールを含みます。SEA-LION が登場する前は、AISG の NLP 分野でのフラッグシップ製品でした。",
+  "model": "haiku",
+  "translatedAt": "2026-05-07"
+}

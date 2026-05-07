@@ -1,0 +1,7 @@
+{
+  "direction": "zh→ja",
+  "source": "AISG 的旗舰开源东南亚多语言大模型项目。Leslie 操盘从 v1 迭代到 v3（70B），并推动 SEA-LION 成为政府 AI 服务的底层模型。",
+  "target": "AISG のフラッグシップオープンソース東南アジア多言語大規模言語モデルプロジェクト。Leslie が v1 から v3（70B）への反復を指揮し、SEA-LION を政府 AI サービスの基盤モデルとして推進しています。",
+  "model": "haiku",
+  "translatedAt": "2026-05-07"
+}

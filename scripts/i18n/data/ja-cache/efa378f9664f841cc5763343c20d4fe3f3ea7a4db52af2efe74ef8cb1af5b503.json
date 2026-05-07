@@ -1,0 +1,7 @@
+{
+  "direction": "zh→ja",
+  "source": "OECD AI Policy Observatory 是 OECD 的 AI 政策研究和数据平台。新加坡虽然不是 OECD 成员国，但作为\"OECD 关键合作伙伴\"深度参与 AI 政策讨论，特别在 AI Principles 制定和 AI 系统分类标准上有贡献。",
+  "target": "OECD AI Policy Observatory は OECD の AI 政策研究とデータプラットフォームです。シンガポールは OECD 加盟国ではありませんが、「OECD 主要協力パートナー」として AI ポリシー議論に深く参加しており、特に AI Principles の策定と AI システム分類基準に貢献しています。",
+  "model": "haiku",
+  "translatedAt": "2026-05-07"
+}

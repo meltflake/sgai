@@ -1,0 +1,7 @@
+{
+  "direction": "zh→ja",
+  "source": "Mila（蒙特利尔学习算法研究所）1993 年由 Yoshua Bengio 在蒙特利尔大学创立，现为全球最大学术 AI 研究所之一——约 1200 名研究员，覆盖深度学习、强化学习、AI4Science、AI 安全。资金：CIFAR Pan-Canadian AI Strategy CAD $2000 万（第二阶段）、魁北克省 CAD $4000 万+、加上企业合作（Google、Meta、Samsung）。Bengio 任 Mila 科学总监，图灵奖得主。判断：Mila 按人员规模是全球最大深度学习研究所——但商业化记录明显弱于 Stanford / MIT。挑战是把 Mila 研究深度转化为加拿大经济价值，而非让毕业生迁往美国科技巨头。",
+  "target": "Mila（モントリオール学習アルゴリズム研究所）は1993年にYoshua Bengioがモントリオール大学で創立され、現在、世界最大級の学術AI研究所の一つです—約1200名の研究員が所属し、深層学習、強化学習、AI4Science、AI安全をカバーしています。資金：CIFAR Pan-Canadian AI Strategy CAD $2000万（第2段階）、ケベック州 CAD $4000万以上、およびGoogle、Meta、Samsungとの企業パートナーシップ。BengioはMilaの最高科学責任者（チューリング賞受賞者）を務めています。判断：人員規模からすると、Milaは世界最大の深層学習研究所ですが—商用化の実績はStanford / MITに比べて明らかに劣ります。課題は、Milaの研究の深さをカナダ経済の価値に転化することであり、卒業生が米国のテック大手に移住するのを避けることです。",
+  "model": "haiku",
+  "translatedAt": "2026-05-07"
+}

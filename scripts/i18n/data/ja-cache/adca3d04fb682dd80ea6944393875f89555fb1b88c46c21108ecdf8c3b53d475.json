@@ -1,0 +1,7 @@
+{
+  "direction": "zh→ja",
+  "source": "AIAP 校友故事",
+  "target": "AIAP 卒業生のストーリー",
+  "model": "haiku",
+  "translatedAt": "2026-05-07"
+}

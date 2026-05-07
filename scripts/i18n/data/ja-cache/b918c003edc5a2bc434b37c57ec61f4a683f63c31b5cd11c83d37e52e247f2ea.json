@@ -1,0 +1,7 @@
+{
+  "direction": "zh→ja",
+  "source": "基于 Llama 3 的 70B 与 8B 双版本，性能跻身东南亚语言 SOTA。",
+  "target": "Llama 3 ベースの 70B と 8B デュアルバージョン、性能は東南アジア言語 SOTA の上位に位置。",
+  "model": "haiku",
+  "translatedAt": "2026-05-07"
+}

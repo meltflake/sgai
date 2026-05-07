@@ -1,0 +1,7 @@
+{
+  "direction": "zh→ja",
+  "source": "UAE 是全球首个把\"国家 AI 战略\"上升到独立部级建制的国家：(1) 2017 年发布 UAE AI Strategy 2031，目标 AI 贡献 GDP 33.5%（约 US$910 亿）；同年任命全球首位 AI 部长 Omar Al Olama；(2) 2019 年成立全球首所专门 AI 大学 MBZUAI；(3) 2024 年成立 MGX 基金（目标 AUM US$1000 亿，由 G42 + Mubadala 联合控股，Sheikh Tahnoun bin Zayed 任主席）；(4) 同年与微软达成 US$152 亿 AI/云基础设施合作；(5) 与美国合作的 Stargate UAE 1GW 数据中心。判断：UAE 的 AI 战略不是\"政策驱动\"而是\"资本+王室决心驱动\"——单 MGX 一个基金就是新加坡所有公开 AI 政府承诺的 50 倍。这种规模优势让 UAE 可以买下 AI 时代的入场券，但买不到 Singapore 那种\"trusted hub\"的国际信任。",
+  "target": "UAE は世界初の「国家 AI 戦略」を独立した部級建制へ引き上げた国家です：(1) 2017年に UAE AI Strategy 2031 を発表し、AI が GDP に33.5%を寄与する目標（約 US$9.1億）を設定；同年、世界初の AI 大臣 Omar Al Olama を任命；(2) 2019年に世界初の専門 AI 大学 MBZUAI を設立；(3) 2024年に MGX ファンド（目標 AUM US$1000億、G42 + Mubadala 合同統括、Sheikh Tahnoun bin Zayed 主席）を設立；(4) 同年マイクロソフトと US$152億の AI/クラウドインフラ協力合意；(5) 米国と協力の Stargate UAE 1GW データセンター。判断：UAE の AI 戦略は「政策駆動」ではなく「資本+王室決心駆動」です——MGX 一つのファンドだけで、シンガポールのすべての公開 AI 政府約束の50倍です。この規模優位により UAE は AI 時代の入場券を買うことができますが、シンガポールのような「信頼できるハブ」の国際信頼は買えません。",
+  "model": "haiku",
+  "translatedAt": "2026-05-07"
+}

@@ -1,0 +1,7 @@
+{
+  "direction": "zh→ja",
+  "source": "4 月 20-24 日，第 17 届 ISO/IEC JTC 1/SC 42 全体会议在新加坡举行——这是 SC 42（全球 AI 标准制定核心机构）首次在东盟召开，由 IMDA 与 Enterprise Singapore 联合主办，汇集 35 个以上国家、250 多位 AI 专家（含美、英、中、日、德、法、韩）。开幕日新加坡正式提交 ISO/IEC 42119-8 标准草案，聚焦生成式 AI 测试方法标准化，两个核心方向：基准测试（benchmarking）统一\"考什么、怎么评分\"，红队测试（red teaming）标准化\"隐藏风险怎么找出来\"。如获通过将是全球首个针对生成式 AI 系统的国际测试标准。提案建立在 IMDA 已有的 AI Verify Toolkit、LLM 应用测试 Starter Kit 和 Global AI Assurance Sandbox 基础上。IMDA 现任 CEO Ng Cher Pong 在开幕致辞中表示：\"标准制定不能以龟速推进——否则将被 AI 高速变革所淘汰。\"会议同期，IMDA 与 EnterpriseSG 还为东盟成员国举办了能力建设培训。",
+  "target": "4 月 20 日～24 日、第 17 回 ISO/IEC JTC 1/SC 42 全体会議がシンガポールで開催されました——これは SC 42（世界 AI 標準設定のコアインスティテューション）が ASEAN で初めて開催された会議で、IMDA および Enterprise Singapore が共同主催し、35 カ国以上、250 名以上の AI 専門家（米国、英国、中国、日本、ドイツ、フランス、韓国を含む）を集めました。開幕日、シンガポールは正式に ISO/IEC 42119-8 標準草案を提出し、生成型 AI テスト方法の標準化に焦点を当て、2 つのコア方向：ベンチマーク（benchmarking）は「何をテストするか、どのようにスコアを付けるか」を統一し、レッドチーム テスト（red teaming）は「隠された危険をどのように見つけるか」を標準化します。承認されれば、生成型 AI システムを対象とした世界初の国際テスト標準になります。提案は、IMDA が既に持っている AI Verify Toolkit、LLM アプリケーション テスト Starter Kit、および Global AI Assurance Sandbox に基づいています。IMDA の現職 CEO である Ng Cher Pong は開幕式での挨拶で、「標準設定は亀速で進めることはできません——そうしないと AI の急速な変化によって廃止されます」と述べました。同期間、IMDA および EnterpriseSG は、ASEAN 加盟国向けにキャパシティ ビルディング トレーニングも開催しました。",
+  "model": "haiku",
+  "translatedAt": "2026-05-07"
+}

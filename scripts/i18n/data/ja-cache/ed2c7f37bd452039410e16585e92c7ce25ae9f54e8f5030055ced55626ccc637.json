@@ -1,0 +1,7 @@
+{
+  "direction": "zh→ja",
+  "source": "Swiss AI Initiative 2023 年 12 月启动——ETH Zurich + EPFL + 全瑞士 12 所大学 + 75+ 教授联合发起。使命：\"把瑞士定位为透明可靠 AI 发展的全球领先中心\"。运营：把算力 / 数据 / 人才资源集中起来，在 Alps 超算上训练瑞士主权大模型。判断：Initiative 是把 Alps 从\"ETH/EPFL 工具\"升级到\"国家资源\"的制度通道——没有这个组织，Alps 主要服务 ETH/EPFL。组织形式更接近 Canada CIFAR Pan-Canadian AI Strategy 而非新加坡集中型 AISG；它能跑因为瑞士各大学间信任度高，在大学互为竞争对手的国家很难复制。",
+  "target": "Swiss AI Initiative は 2023 年 12 月に始動――ETH Zurich + EPFL + スイス全体の 12 大学 + 75 人以上の教授が共同で立ち上げました。ミッション：「スイスを透明で信頼できる AI 開発の世界的リーディングセンターとして位置づけること」。運営：コンピューティングパワー / データ / 人材リソースを集約し、Alps スーパーコンピュータ上でスイス主権型大規模言語モデルを訓練しています。評価：Initiative は Alps を「ETH/EPFL ツール」から「国家資源」へアップグレードする制度的チャネル――この組織がなければ、Alps は主に ETH/EPFL にサービス提供しています。組織形態は Canada の CIFAR Pan-Canadian AI Strategy に近く、シンガポール集約型 AISG ではなく；スイス各大学間の信頼度が高いため運営可能であり、大学が互いに競争相手である国では再現が難しいです。",
+  "model": "haiku",
+  "translatedAt": "2026-05-07"
+}

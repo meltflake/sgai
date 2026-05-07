@@ -1,0 +1,7 @@
+{
+  "direction": "zh→ja",
+  "source": "Amii（阿尔伯塔机器智能研究所）是加拿大 AI 研究所网络第三支柱，锚定阿尔伯塔大学，Richard Sutton 领导。战略专长：强化学习、能源 / 资源 AI、AI4Science。员工约 250 名研究员——三所中最小但最专精。Sutton 2024 年图灵奖（与 Andrew Barto 因奠基性 RL 工作共同获奖）是 Amii 的标志性信用。判断：Amii 的 RL 专长在 DeepMind / OpenAI 之后的时代格外有价值，RLHF 和 AI Agent 是核心。Amii 较小规模让它专精更深——另一种解读是阿尔伯塔科技生态比魁北克 / 安大略小，限制 Amii 成长上限。",
+  "target": "Amii（アルバータ・マシン・インテリジェンス研究所）はカナダの AI 研究所ネットワークの第三の柱であり、アルバータ大学に拠点を置き、Richard Sutton が率いています。戦略的専門性：強化学習、エネルギー / リソース AI、AI4Science です。約 250 名の研究員——3 つの中で最も小さいながら、最も専門的です。Sutton の 2024 年チューリング賞（基礎的な RL 研究で Andrew Barto と共に受賞）は Amii の象徴的な信用です。判断：Amii の RL 専門性は DeepMind / OpenAI 以後の時代に特に価値があり、RLHF と AI Agent がコアです。Amii の小規模は、より深い専門化を可能にします——別の見方では、アルバータのテック・エコシステムがケベック / オンタリオより小さく、Amii の成長の上限を制限しています。",
+  "model": "haiku",
+  "translatedAt": "2026-05-07"
+}

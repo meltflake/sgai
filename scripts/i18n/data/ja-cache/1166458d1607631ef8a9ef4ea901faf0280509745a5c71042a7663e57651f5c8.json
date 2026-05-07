@@ -1,0 +1,7 @@
+{
+  "direction": "zh→ja",
+  "source": "数码港（Cyberport Management Company），1999 年由政府全资成立，运营数码港园区，定位\"数字科技枢纽\"。AI 相关业务：(1) 运营 AI Supercomputing Centre（AISC），2024 年部署，将达 3000 PFLOPS；(2) AICP 算力补贴的实际执行方；(3) AI 创业公司孵化（Cyberport 已孵化 2000+ 创业公司，其中 GenAI 创业公司 2024-25 年快速增长）；(4) HKMA GenAI Sandbox 的合作运营方。判断：Cyberport 是香港 AI 战略中最活跃的执行机构——2024-25 的几乎每个 AI 大动作（AISC、AICP、GenAI Sandbox）都有它。规模比 HKSTP 小但 AI 聚焦度高得多，是观察香港 AI 真实进展的关键节点。",
+  "target": "サイバーポート管理会社（Cyberport Management Company）は1999年に政府が100%出資で設立され、サイバーポート園区を運営し、「デジタル・テクノロジー・ハブ」と位置づけられています。AI関連業務：(1)AI Supercomputing Centre（AISC）の運営で、2024年配備開始、3000 PFLOPSに達する予定；(2)AICP計算力補助の実際の実行機関；(3)AI起業会社インキュベーション（Cybertownは2000社以上の起業会社をインキュベートしており、その中でGenAI起業会社は2024-25年に急速に増加）；(4)HKMAジェネレーティブAIサンドボックスの協力運営機関。判断：Cybertownは香港のAI戦略の中で最も積極的な実行機関です。2024-25年のほぼすべてのAI大型動作（AISC、AICP、GenAIサンドボックス）に関与しています。規模ではHKSTPより小さいですが、AIに対するフォーカス度ははるかに高く、香港のAI実際の進展を観察する際の重要な節点です。",
+  "model": "haiku",
+  "translatedAt": "2026-05-07"
+}

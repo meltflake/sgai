@@ -1,0 +1,7 @@
+{
+  "direction": "zh→ja",
+  "source": "AI 论文人均发表量",
+  "target": "AI 論文一人当たり発表量",
+  "model": "haiku",
+  "translatedAt": "2026-05-07"
+}

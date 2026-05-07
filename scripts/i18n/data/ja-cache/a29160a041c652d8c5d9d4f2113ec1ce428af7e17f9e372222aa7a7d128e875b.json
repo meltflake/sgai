@@ -1,0 +1,7 @@
+{
+  "direction": "zh→ja",
+  "source": "本土大模型",
+  "target": "国内大規模言語モデル",
+  "model": "haiku",
+  "translatedAt": "2026-05-07"
+}

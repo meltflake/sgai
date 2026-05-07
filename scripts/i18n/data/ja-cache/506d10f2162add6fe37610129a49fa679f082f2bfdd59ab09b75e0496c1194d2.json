@@ -1,0 +1,7 @@
+{
+  "direction": "zh→ja",
+  "source": "新加坡电力公司 YTL PowerSeraya 通过 LADP 构建电力市场规则专用 LLM,实现报告自动分析与规则查询。",
+  "target": "シンガポール電力会社 YTL PowerSeraya は LADP を通じて電力市場ルール専用 LLM を構築し、レポート自動分析とルール照会を実現した。",
+  "model": "haiku",
+  "translatedAt": "2026-05-07"
+}

@@ -1,0 +1,7 @@
+{
+  "direction": "zh→ja",
+  "source": "Note Buddy GenAI 临床记录助手",
+  "target": "Note Buddy GenAI 臨床記録アシスタント",
+  "model": "haiku",
+  "translatedAt": "2026-05-07"
+}

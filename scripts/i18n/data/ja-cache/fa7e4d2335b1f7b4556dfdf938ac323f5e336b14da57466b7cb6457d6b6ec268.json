@@ -1,0 +1,7 @@
+{
+  "direction": "zh→ja",
+  "source": "MAS（Monetary Authority of Singapore）是新加坡的中央银行 + 金融监管机构。在 AI 领域，它的特殊地位在于：**它管的金融行业是新加坡 AI 落地最深、最早的行业**——所以它必须做行业级 AI 治理。FEAT 原则、Veritas 框架就是 MAS 给金融业 AI 的\"行业宪法\"。",
+  "target": "MAS（Monetary Authority of Singapore）はシンガポールの中央銀行 + 金融規制機構です。AI 分野では、その特殊な位置付けは以下の通りです：それが管理する金融産業はシンガポール AI の最も深く、最も早期の導入産業です。だから、それは業界レベルの AI ガバナンスを実施しなければなりません。FEAT 原則と Veritas フレームワークは MAS が金融業 AI に与えた「業界憲法」です。",
+  "model": "haiku",
+  "translatedAt": "2026-05-07"
+}

@@ -1,0 +1,7 @@
+{
+  "direction": "zh→ja",
+  "source": "SMC 最高 2,048 张 H100/集群；Singtel GPU-as-a-Service",
+  "target": "SMC 最高 2,048 張 H100/クラスター；Singtel GPU-as-a-Service",
+  "model": "haiku",
+  "translatedAt": "2026-05-07"
+}

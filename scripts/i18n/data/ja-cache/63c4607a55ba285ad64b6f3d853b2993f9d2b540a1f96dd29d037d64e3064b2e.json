@@ -1,0 +1,7 @@
+{
+  "direction": "zh→ja",
+  "source": "ATRC（Advanced Technology Research Council）2020 年由阿布扎比政府成立，是阿联酋前沿技术研发的最高层级机构。下辖：(1) Technology Innovation Institute (TII) — Falcon LLM 的开发主体；(2) ASPIRE — 项目管理与商业化；(3) 多个垂直研究中心（量子、机器人、生物科技等）。判断：ATRC 角色相当于\"中央研究院 + 投资机构 + 政策转化\"三位一体——在 UAE 这种小政府结构下，ATRC 比 UAE AI Office 更有\"做事\"权力。Falcon LLM 能在 2023-25 年快速迭代，正是 ATRC 集中决策、绕过传统科研管理流程的结果。",
+  "target": "ATRC（Advanced Technology Research Council）は 2020 年にアブダビ政府により設立され、UAE の先端技術研究開発の最高レベルの機関です。傘下には：(1) Technology Innovation Institute（TII）— Falcon LLM の開発主体；(2) ASPIRE — プロジェクト管理と商業化；(3) 量子、ロボット、生物技術などの垂直研究センター。判断：ATRC の役割は「中央研究院 + 投資機関 + 政策転化」の三位一体に相当します。UAE のような小政府構造では、ATRC は UAE AI Office より「実行」の権力を有しています。Falcon LLM が 2023-25 年に迅速に反復できたのは、ATRC の集中的意思決定と従来の研究管理プロセスの回避によります。",
+  "model": "haiku",
+  "translatedAt": "2026-05-07"
+}

@@ -1,0 +1,7 @@
+{
+  "direction": "zh→ja",
+  "source": "SEA-LION（Southeast Asian Languages In One Network）是 AI Singapore 自 2023 年起开发的开源大语言模型家族，**专门为东南亚 11 种语言（含马来语、泰米尔语、缅甸语、高棉语等小语种）做语义保真**。它不和 GPT/Claude/Gemini 比通用能力，而是占住「西方大厂没动力做、东南亚本地又没算力做」的空白带。截至 2026，SEA-LION 已迭代到 v3，最大版本 70B 参数，是全球**第一个真正面向东南亚的开源大模型基座**。",
+  "target": "SEA-LION（Southeast Asian Languages In One Network）は、AI Singapore が2023年以降開発してきたオープンソース大言語モデル群です。**東南アジア11言語（マレー語、タミル語、ミャンマー語、クメール語などの少数言語を含む）に対して、セマンティック忠実性を専門とします**。GPT/Claude/Gemini と汎用能力を比較するのではなく、「西欧の大手企業が動く動機がなく、東南アジア本地もまた計算力がない」というニッチを埋めています。2026年現在、SEA-LION はv3に進化しており、最大版本は70Bパラメータで、世界初の**東南アジア向け真のオープンソース大言語モデルの基盤**です。",
+  "model": "haiku",
+  "translatedAt": "2026-05-07"
+}

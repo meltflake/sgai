@@ -1,0 +1,7 @@
+{
+  "direction": "zh→ja",
+  "source": "借势 ICLR 召开的全球 AI 安全科学交流",
+  "target": "ICLR 開催のグローバル AI セキュリティ科学交流を活用",
+  "model": "haiku",
+  "translatedAt": "2026-05-07"
+}

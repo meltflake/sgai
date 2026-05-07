@@ -1,0 +1,7 @@
+{
+  "direction": "zh→ja",
+  "source": "ETH AI Center 2020 年成立，是 ETH Zurich 的 AI 研究制度伞。覆盖 50+ 教授、500+ 研究员，跨机器学习、计算机视觉、NLP、机器人、AI4Science。代表性成就：AlphaFold 类蛋白结构建模、德国气象预测 transformer GraphCast、大语言模型微调框架。判断：ETH AI Center 在全球 AI 研究机构 Top 5 之内（与 Stanford / MIT / CMU / DeepMind 并列）。真正独特价值是\"人才留住\"——瑞士研究员不必迁美才能用上前沿算力（Alps）或拿到竞争性薪资。",
+  "target": "ETH AI Center は 2020 年設立で、ETH Zurich の AI 研究制度傘です。カバー：50+ 教授、500+ 研究員、機械学習、コンピュータビジョン、NLP、ロボティクス、AI4Science に跨る。代表的成果：AlphaFold クラスタンパク質構造モデリング、ドイツ気象予測 Transformer GraphCast、大規模言語モデル微調整フレームワーク。判断：ETH AI Center はグローバル AI 研究機関トップ 5 内（Stanford / MIT / CMU / DeepMind と並列）。真の独特価値は「人材保持」——スイス研究員は最先端算力（Alps）を利用するか競争的給与を獲得するために米国に移住する必要がありません。",
+  "model": "haiku",
+  "translatedAt": "2026-05-07"
+}

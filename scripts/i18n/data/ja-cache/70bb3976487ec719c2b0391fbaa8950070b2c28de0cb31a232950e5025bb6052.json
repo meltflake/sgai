@@ -1,0 +1,7 @@
+{
+  "direction": "zh→ja",
+  "source": "3B 与 7B 两个尺寸，基于自研架构，开源 MIT 协议。",
+  "target": "3B と7B の2つのサイズ、自社開発アーキテクチャに基づく、MIT協議の下でオープンソース化。",
+  "model": "haiku",
+  "translatedAt": "2026-05-07"
+}

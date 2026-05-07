@@ -1,0 +1,7 @@
+{
+  "direction": "zh→ja",
+  "source": "Vector Institute 2017 年在多伦多由 Geoffrey Hinton 创立，约 700 名研究员，锚定多伦多大学。Vector 的战略角色与 Mila 不同——Vector 强调企业合作（Google Brain Toronto 邻近）和产业面向项目（Industry Accelerator、Vector Health 等）。Hinton 2024 年因奠基性 AI 工作获诺贝尔物理学奖，给 Vector 全球关注。判断：Vector 是加拿大 AI 人才三角的\"商业化极\"——企业项目营收高于 Mila，暗示多伦多科技产业比蒙特利尔更接纳学术 AI。",
+  "target": "Vector Instituteは2017年にトロントでGeoffrey Hintonによって創立され、約700名の研究員を擁し、トロント大学に拠点を置いています。Vectorの戦略的役割はMilaとは異なります——Vectorは企業協力（Google Brain Torontoに隣接）と産業向けプロジェクト（Industry Accelerator、Vector Healthなど）を強調しています。Hintonは2024年に基礎的なAI業績でノーベル物理学賞を受賞し、Vectorに世界的な注目をもたらしました。判断：VectorはカナダのAI人材三角形の「商業化の極」です——企業プロジェクトの営収がMilaを上回り、トロントのテクノロジー産業がモントリオールより学術AIをより受け入れていることを示唆しています。",
+  "model": "haiku",
+  "translatedAt": "2026-05-07"
+}

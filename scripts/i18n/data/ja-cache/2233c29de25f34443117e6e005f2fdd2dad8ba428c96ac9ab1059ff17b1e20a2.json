@@ -1,0 +1,7 @@
+{
+  "direction": "zh→ja",
+  "source": "三星 / Naver / Kakao 自研大模型是韩国 AI 战略中最有\"产品力\"的部分：(1) 三星 Galaxy AI（基于 Samsung Gauss + Google Gemini Nano）2024-25 装机数亿台手机；(2) Naver HyperCLOVA X（韩语 frontier model）覆盖 Naver 搜索 + Clova X 助手；(3) Kakao KoGPT / Kakao i 服务于 Kakao Talk 4500 万用户；(4) LG EXAONE 用于 LG 集团内部 + 公开 API；(5) SK Telecom A.X 用于电信 / 客服。判断：韩国财阀的\"自研模型 + 自有渠道\"组合是少数能与 ChatGPT / Claude 在垂直应用上正面竞争的非美产品。但 frontier 性能（vs GPT-4o / Claude 3.5）仍落后约一代，主要靠\"本土化优势 + 渠道锁定\"取胜。",
+  "target": "Samsung / Naver / Kakao の自研大型モデルは韓国 AI 戦略中で最も「製品力」ある部分です：(1) Samsung Galaxy AI（Samsung Gauss + Google Gemini Nano に基づく）2024～25 年数億台のスマートフォンにプリインストール；(2) Naver HyperCLOVA X（韓語 frontier model）が Naver 検索 + Clova X アシスタントをカバー；(3) Kakao KoGPT / Kakao i は Kakao Talk 4,500 万ユーザーにサービス；(4) LG EXAONE は LG グループ内部 + 公開 API に使用；(5) SK Telecom A.X は通信 / カスタマーサービスに使用。評価：韓国財閥の「自研モデル + 自有チャネル」組み合わせは ChatGPT / Claude と垂直応用で正面競合できる少数の非米製品。ただし frontier 性能（GPT-4o / Claude 3.5 に対して）はなお約一世代遅れ、主に「本地化優位 + チャネルロック」で勝利。",
+  "model": "haiku",
+  "translatedAt": "2026-05-07"
+}

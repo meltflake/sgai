@@ -1,0 +1,7 @@
+{
+  "direction": "zh→ja",
+  "source": "Vector Institute 2017 年在多伦多由 Geoffrey Hinton 和合作者创立，初始资金 CAD $1.35 亿来自联邦 + 安大略政府 + 企业赞助。员工约 700 名研究员。研究重点：深度学习、NLP、计算机视觉、AI 安全。Hinton 因 AI 工作 2024 年获诺贝尔物理学奖、2018 年图灵奖，至 2023 年任首席科学顾问。判断：Vector 比 Mila 更受益于企业合作（Google Brain Toronto、OpenAI Toronto 存在）。Vector 也运行更激进的产业面向项目——其 Industry Accelerator 孵化了几家加拿大 AI 公司（如 CIFAR 相关分拆）。Vector / Mila 在加拿大 AI 人才管线上是互补而非竞争。",
+  "target": "Vector Institute は 2017 年にトロントで Geoffrey Hinton と協力者によって設立されました。初期資金 CAD $1.35 億は、カナダ連邦政府、オンタリオ州政府、および企業スポンサーから提供されています。研究スタッフは約 700 名です。研究の重点は、深層学習、NLP、コンピュータビジョン、AI 安全性です。Hinton は AI 関連の業績により 2024 年にノーベル物理学賞を、2018 年にチューリング賞を受賞し、2023 年まで首席科学顧問を務めました。評価：Vector は Mila よりも企業協力からより多くの恩恵を受けており（Google Brain Toronto および OpenAI Toronto が存在します）。Vector はまた、より激進的な業界指向型プロジェクトも運営しており――その Industry Accelerator はいくつかのカナダ AI 企業（例：CIFAR 関連スピンオフ）を育成しました。Vector / Mila は、カナダの AI 人材パイプラインにおいて補完的であり、競争的ではありません。",
+  "model": "haiku",
+  "translatedAt": "2026-05-07"
+}

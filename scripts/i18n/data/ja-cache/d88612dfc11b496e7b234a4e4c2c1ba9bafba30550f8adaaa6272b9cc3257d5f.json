@@ -1,0 +1,7 @@
+{
+  "direction": "zh→ja",
+  "source": "AWS（Amazon Web Services）在新加坡运营东南亚最大的云数据中心区域之一，并承诺 USD 90 亿基础设施投资。在 AI 领域，AWS 是新加坡最大的云算力供应方，同时通过 SageMaker、Bedrock 等服务为本地企业 AI 落地提供基础设施。",
+  "target": "AWS（Amazon Web Services）はシンガポールで東南アジア最大級のクラウドデータセンター地域の一つを運営し、USD 90 億のインフラストラクチャ投資を約束しています。AI 分野では、AWS はシンガポール最大のクラウドコンピューティング供給業者であり、同時に SageMaker、Bedrock などのサービスを通じてローカル企業の AI 実装を支援するインフラストラクチャを提供しています。",
+  "model": "haiku",
+  "translatedAt": "2026-05-07"
+}

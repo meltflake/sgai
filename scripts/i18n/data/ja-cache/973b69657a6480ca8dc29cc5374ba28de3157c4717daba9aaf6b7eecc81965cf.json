@@ -1,0 +1,7 @@
+{
+  "direction": "zh→ja",
+  "source": "UAE 的 AI 投资是全球 AI 资本竞赛中最激进的国家级承诺之一：(1) MGX US$1000 亿目标 AUM（2024 年从 G42 + Mubadala 出资发起，主权基金背书）；(2) 与微软 US$152 亿合作（含 G42 接受微软投资 + Microsoft 在 UAE 建设算力）；(3) BlackRock + GIP + Microsoft + MGX 的全球 AI 基础设施投资伙伴 (Global AI Infrastructure Investment Partnership)，初期承诺 US$300 亿股权，潜在扩至 US$1000 亿；(4) Stargate UAE 1GW 数据中心。判断：MGX 资本量级（目标 US$1000 亿）超过 Microsoft + Google + Meta 三家 2024 全年资本支出之和的 ~30%。但\"AUM 目标\"≠ 实际部署——目前 MGX 实际投资落地集中在 OpenAI、Anthropic 等单一标的，\"千亿规模\"叙事需要 3-5 年看实际配置才能验证。",
+  "target": "UAE の AI 投資は世界の AI 資本競争で最も急進的な国家級約束の一つです：(1) MGX US$1000億目標 AUM（2024年 G42 + Mubadala 出資発起、ソブリンファンド保証）；(2) マイクロソフトとの US$152億協力（G42 がマイクロソフト投資を受け入れる + Microsoft が UAE で算力構築を含む）；(3) BlackRock + GIP + Microsoft + MGX のグローバル AI インフラ投資パートナーシップ、初期約束 US$300億エクイティ、潜在的拡大 US$1000億；(4) Stargate UAE 1GW データセンター。判断：MGX 資本規模（目標 US$1000億）は Microsoft + Google + Meta の2024年全年資本支出合計の ~30%を超えます。しかし「AUM 目標」≠実際の配置——現在 MGX の実際投資配置は OpenAI、Anthropic など単一標的に集中し、「千億規模」ナラティブは3～5年で実際の配置を見て初めて検証できます。",
+  "model": "haiku",
+  "translatedAt": "2026-05-07"
+}

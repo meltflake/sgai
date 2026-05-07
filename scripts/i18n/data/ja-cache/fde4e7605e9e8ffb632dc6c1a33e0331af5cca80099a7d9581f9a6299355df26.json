@@ -1,0 +1,7 @@
+{
+  "direction": "zh→ja",
+  "source": "Alps 超算公告（ETH Zurich）",
+  "target": "Alps スーパーコンピュータ公告（ETH Zurich）",
+  "model": "haiku",
+  "translatedAt": "2026-05-07"
+}

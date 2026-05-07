@@ -1,0 +1,7 @@
+{
+  "direction": "zh→ja",
+  "source": "扩展到 LLM 风险测试（幻觉、越狱、版权）。",
+  "target": "LLM リスク評価（ハルシネーション、プロンプトインジェクション、著作権）に拡張されました。",
+  "model": "haiku",
+  "translatedAt": "2026-05-07"
+}

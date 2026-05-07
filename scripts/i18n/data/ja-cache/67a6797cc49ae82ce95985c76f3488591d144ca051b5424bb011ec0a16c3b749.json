@@ -1,0 +1,7 @@
+{
+  "direction": "zh→ja",
+  "source": "Hansard + 法院 + 立法",
+  "target": "Hansard + 裁判所 + 立法",
+  "model": "haiku",
+  "translatedAt": "2026-05-07"
+}

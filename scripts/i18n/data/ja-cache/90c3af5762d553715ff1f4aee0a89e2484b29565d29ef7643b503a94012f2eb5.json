@@ -1,0 +1,7 @@
+{
+  "direction": "zh→ja",
+  "source": "Sony Research 在新加坡设有研究存在，主要覆盖游戏 AI、内容生成、传感器 AI、机器人 AI 等 Sony 集团相关方向。规模小于 Google DeepMind / MSR Asia，但是日本 AI 在新加坡的代表存在。",
+  "target": "Sony Research はシンガポールに研究拠点を持ち、主にゲーム AI、コンテンツ生成、センサー AI、ロボット AI など Sony グループ関連の分野をカバーしています。Google DeepMind / MSR Asia より規模は小さいですが、シンガポール における日本 AI の代表的な存在です。",
+  "model": "haiku",
+  "translatedAt": "2026-05-07"
+}

@@ -1,0 +1,7 @@
+{
+  "direction": "zh→ja",
+  "source": "MSIT（科学技术信息通信部，Ministry of Science and ICT）是韩国 AI 政策最高主管部门。AI 相关职能：(1) AI Basic Act 起草与执行令制定；(2) ₩100 万亿公私 AI 基金的政府方协调；(3) AI Safety Institute 监督；(4) 与三星 / SK / Naver / Kakao 财阀的产业政策协调。MSIT 自 2017 年改组（前身科学技术部 + 信息通信部合并）以来一直是数字与 AI 政策的核心。判断：MSIT 是韩国 AI 政策的\"all-in-one\"主管部门——比新加坡 SNDGO 更强（SNDGO 不直接监管），比 SG IMDA 范围更广（IMDA 不立法）。这种集中度在韩国财阀经济结构下高效，但缺乏部门间制衡。",
+  "target": "MSIT（科学技術情報通信部、Ministry of Science and ICT）は韓国 AI 政策の最高主管部門です。AI 関連職能：(1) AI Basic Act の起草と執行令の制定；(2) ₩100 兆公私 AI 基金の政府方調整；(3) AI Safety Institute の監督；(4) サムスン / SK / Naver / Kakao 財閥との産業政策調整。MSIT は 2017 年の改組（前身は科学技術部 + 情報通信部の合併）以来、デジタルと AI 政策の中核です。判断：MSIT は韓国 AI 政策の「all-in-one」主管部門です——シンガポール SNDGO より強力（SNDGO は直接監管しない）、SG IMDA より広範（IMDA は立法しない）。この集中度は韓国財閥経済構造下で高効率ですが、部門間制衡に欠けています。",
+  "model": "haiku",
+  "translatedAt": "2026-05-07"
+}

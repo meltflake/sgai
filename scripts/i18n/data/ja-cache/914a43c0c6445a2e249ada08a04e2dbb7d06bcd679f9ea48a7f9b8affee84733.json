@@ -1,0 +1,7 @@
+{
+  "direction": "zh→ja",
+  "source": "加拿大 AI 治理处在\"过渡真空\"：(1) AIDA（人工智能与数据法案）2022 年作为 Bill C-27 一部分提出，2024 年国会解散时搁置；(2) Voluntary Code of Conduct on Generative AI（2023 年 9 月）由主要加拿大 AI 公司签署（Cohere、BlackBerry AI、Telus 等）；(3) CAISI（加拿大 AI 安全研究所）2024 年成立，CAD $5000 万用于 AI 安全研究，与美国 AISI 和英国 AISI 合作；(4) 行业监管者（OSFI 银行、Health Canada 医疗 AI）发布领域特定指引。判断：加拿大正在支付\"研究先发、立法后发\"的成本。AIDA 搁置后，加拿大在水平性 AI 立法上落后韩国 / 台湾 / EU，可能 2025-2026 需要新法案——但 2024 选举周期后政治意愿不确定。",
+  "target": "カナダの AI ガバナンスは「過渡期の空白」の中にあります：(1) AIDA（人工知能とデータ法案）は 2022 年に Bill C-27 の一部として提案され、2024 年に議会が解散した際に棚上げされました；(2) Voluntary Code of Conduct on Generative AI（2023 年 9 月）は主要なカナダ AI 企業（Cohere、BlackBerry AI、Telus など）によって署名されました；(3) CAISI（カナダ AI 安全研究所）は 2024 年に設立され、AI 安全研究のため CAD $5000 万が割り当てられ、米国の AISI および英国の AISI と協力しています；(4) 業界規制当局（銀行セクターの OSFI、医療 AI 関連の Health Canada）は分野別のガイドラインを発表しています。判断：カナダは「研究先行、立法後発」の代価を支払っています。AIDA の棚上げ後、カナダは水平的 AI 立法において韓国 / 台湾 / EU に遅れをとっており、おそらく 2025～2026 年に新法案が必要になるでしょう——しかし 2024 年選挙サイクル後の政治的意志は不確実です。",
+  "model": "haiku",
+  "translatedAt": "2026-05-07"
+}

@@ -1,0 +1,7 @@
+{
+  "direction": "zh→ja",
+  "source": "AI 财务欺诈检测",
+  "target": "AI 財務詐欺検出",
+  "model": "haiku",
+  "translatedAt": "2026-05-07"
+}

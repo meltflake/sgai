@@ -1,0 +1,7 @@
+{
+  "direction": "zh→ja",
+  "source": "ETH/EPFL AI 研究投入合计 CHF 10 亿+，通过联邦理工系统分配。具体：ETH AI Center（2020 成立）年度预算 ~CHF 5000 万、EPFL AI4Science / AI for Good ~CHF 4000 万、加上 PSI / Empa / WSL 等 AI 相关条线。联合启动的 Swiss AI Initiative 起动资金 CHF 1500 万。判断：这是最可靠的 AI 投入条线——联邦理工系统资金受宪法保护，很少受政治削减。即便瑞士永远不为 AI 立法，ETH 和 EPFL 仍会产出前沿研究。这是\"轻资本 + 重人才\"策略，新加坡这种小国无法完全复制（新加坡需要规模化引进研究人才）。",
+  "target": "ETH/EPFL AI 研究投資合計 CHF 10 億+ は連邦理工システム経由で配分されます。具体的には：ETH AI Center（2020 年設立）年間予算 ~CHF 5,000 万、EPFL AI4Science / AI for Good ~CHF 4,000 万、加えて PSI / Empa / WSL など AI 関連分野。共同始動の Swiss AI Initiative は始動資金 CHF 1,500 万。判断：これは最も信頼性の高い AI 投資ラインです——連邦理工システム資金は憲法保護を受け、政治的削減をほぼ受けません。スイスがが AI 立法を永遠に行わなかったとしても、ETH と EPFL は引き続き最先端研究を産出します。これは「軽資本 + 重人材」戦略で、シンガポールのような小国は完全に複製できません（シンガポールは研究人材の大規模導入が必要です）。",
+  "model": "haiku",
+  "translatedAt": "2026-05-07"
+}

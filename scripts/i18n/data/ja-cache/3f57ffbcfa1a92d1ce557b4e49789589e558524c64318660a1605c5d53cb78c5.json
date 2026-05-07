@@ -1,0 +1,7 @@
+{
+  "direction": "zh→ja",
+  "source": "东南亚语言模型评估基准",
+  "target": "東南アジア言語モデル評価ベンチマーク",
+  "model": "haiku",
+  "translatedAt": "2026-05-07"
+}

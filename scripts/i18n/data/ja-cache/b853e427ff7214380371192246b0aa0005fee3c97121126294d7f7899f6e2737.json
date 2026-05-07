@@ -1,0 +1,7 @@
+{
+  "direction": "zh→ja",
+  "source": "MBZUAI（Mohamed bin Zayed University of Artificial Intelligence）2019 年由阿布扎比政府成立，是全球首所专门以 AI 为单一学科的研究型大学。提供机器学习、自然语言处理、计算机视觉三个 PhD/Master 项目，学费全免、提供奖学金。教师团队从 CMU、MIT、UCL、清华等挖人。截至 2025 年，全球 AI/ML 学术排名进入 Top 20-30 区间。判断：MBZUAI 是 UAE \"AI 主权\"叙事最具象的资产——只用 4-5 年从零做到全球 Top 30 是大手笔砸钱 + 国际人才组合的结果。但学术影响力的\"硬度\"（顶会论文 / 引用 / 校友影响）远不及 Stanford / MIT 几十年积累，UAE 在学术深度上仍是\"用钱买进度\"。",
+  "target": "MBZUAI（Mohamed bin Zayed University of Artificial Intelligence）は 2019 年にアブダビ政府により設立され、世界初の AI を単一学科とする研究型大学です。機械学習、自然言語処理、コンピュータビジョンの 3 つの PhD/修士課程を提供し、学費は無料で奨学金を提供しています。教員団は CMU、MIT、UCL、清華などから採用されています。2025 年時点で、世界の AI/ML 学術ランキングは Top 20-30 のレンジに入っています。判断：MBZUAI は UAE の「AI 主権」叙述の最も具体的な資産です。ゼロから世界 Top 30 に 4-5 年で到達するのは、大金投入と国際人材の組み合わせの結果です。しかし学術影響力の「硬度」（トップティア会議論文/被引用数/卒業生の影響力）は Stanford/MIT の数十年の蓄積には遠く及びません。UAE は学術的深さの面ではまだ「金で進歩を買う」段階にあります。",
+  "model": "haiku",
+  "translatedAt": "2026-05-07"
+}

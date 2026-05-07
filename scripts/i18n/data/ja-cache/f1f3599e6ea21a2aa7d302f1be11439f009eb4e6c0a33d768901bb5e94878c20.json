@@ -1,0 +1,7 @@
+{
+  "direction": "zh→ja",
+  "source": "国家 AI 战略 2.0 发布，从\"重点应用\"升级为\"系统性赋能\"。AI Verify 测试框架开源并成立 AI Verify Foundation。生成式 AI 治理框架提案。参加 Bletchley Park 首届 AI 安全峰会。",
+  "target": "国家 AI 戦略 2.0 が発表され、「重点応用」から「システム的実装」にアップグレードされました。AI Verify テスト フレームワークはオープンソース化され、AI Verify Foundation が設立されました。生成型 AI ガバナンス フレームワーク提案。Bletchley Park 初の AI 安全サミットに参加しました。",
+  "model": "haiku",
+  "translatedAt": "2026-05-07"
+}

@@ -1,0 +1,7 @@
+{
+  "direction": "zh→ja",
+  "source": "AI Basic Act 全文（含 NVIDIA 合作背景）",
+  "target": "AI Basic Act 全文（NVIDIA 協力の背景を含む）",
+  "model": "haiku",
+  "translatedAt": "2026-05-07"
+}

@@ -1,0 +1,7 @@
+{
+  "direction": "zh→ja",
+  "source": "生成式 AI 帮医生写病历",
+  "target": "生成 AI が医師の医療記録作成を支援",
+  "model": "haiku",
+  "translatedAt": "2026-05-07"
+}

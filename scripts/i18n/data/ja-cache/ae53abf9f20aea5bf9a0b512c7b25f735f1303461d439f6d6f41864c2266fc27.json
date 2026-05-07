@@ -1,0 +1,7 @@
+{
+  "direction": "zh→ja",
+  "source": "AI 半导体自主化战略 2024 年发布，₩9 万亿（~US$65 亿）专项。重点：(1) HBM 全球第一（SK 海力士 + 三星合占 NVIDIA AI 加速器 HBM 供应近 90%）；(2) 自主推理芯片研发（三星 Mach、Rebellions Atom、FuriosaAI RNGD）；(3) 2030 年目标 AI 芯片全球市场份额 20%。判断：HBM 是韩国 AI 战略中最稳的杠杆——已经事实垄断，未来 3-5 年无人能撼动。但自主推理 / 训练芯片（vs NVIDIA）仍是补课赛——三星 Mach 1 在 2024 年发布但商用规模 < 1%，Rebellions / FuriosaAI 是 fabless 创业，需要财阀采购才能起量。",
+  "target": "AI 半導体自主化戦略は 2024 年に発表され、₩9 兆（〜US$65 億）の専項です。重点：(1) HBM はグローバル第一位（SK Hynix + Samsung が NVIDIA AI アクセラレータの HBM 供給の約 90% を占める）；(2) 自主推論チップの研究開発（Samsung Mach、Rebellions Atom、FuriosaAI RNGD）；(3) 2030 年のターゲット AI チップのグローバル市場シェア 20%。評価：HBM は韓国の AI 戦略における最も安定したレバー—既に事実上の独占状態で、今後 3～5 年間、誰も揺るがすことができません。しかし、自主推論/トレーニングチップ（vs NVIDIA）は依然としてキャッチアップレース—Samsung Mach 1 は 2024 年に発表されましたが、商用規模は 1% 未満で、Rebellions/FuriosaAI は Fabless スタートアップで、財閥の調達が必要にして初めて量産化できます。",
+  "model": "haiku",
+  "translatedAt": "2026-05-07"
+}

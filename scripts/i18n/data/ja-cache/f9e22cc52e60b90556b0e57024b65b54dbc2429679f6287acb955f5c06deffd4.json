@@ -1,0 +1,7 @@
+{
+  "direction": "zh→ja",
+  "source": "11 种东南亚语言；最大版本 70B 参数；HuggingFace 下载量百万级",
+  "target": "11の東南アジア言語、最大版本70Bパラメータ、HuggingFaceダウンロード数百万レベル",
+  "model": "haiku",
+  "translatedAt": "2026-05-07"
+}

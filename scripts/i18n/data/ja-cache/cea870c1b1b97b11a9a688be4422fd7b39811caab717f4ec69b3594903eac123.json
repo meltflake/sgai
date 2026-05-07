@@ -1,0 +1,7 @@
+{
+  "direction": "zh→ja",
+  "source": "OECD AI Policy Observatory（含瑞士节）",
+  "target": "OECD AI Policy Observatory（スイス部分を含む）",
+  "model": "haiku",
+  "translatedAt": "2026-05-07"
+}

@@ -1,0 +1,7 @@
+{
+  "direction": "zh→ja",
+  "source": "Microsoft Research Asia（MSR Asia）是微软在亚洲的旗舰研究院，以北京总部闻名。2025 年 7 月在新加坡设立**东南亚首个实验室**，与 NUS 合作 Industrial PhD Programme（IPP），是微软在新加坡的 AI 研究升级动作。",
+  "target": "Microsoft Research Asia（MSR Asia）はマイクロソフトのアジア地域の主力研究院で、北京本部で知られています。2025 年 7 月、シンガポールに**東南アジア初の実験室**を設立し、NUS と Industrial PhD Programme（IPP）で協力しています。これはシンガポールにおけるマイクロソフトの AI 研究強化を示しています。",
+  "model": "haiku",
+  "translatedAt": "2026-05-07"
+}

@@ -1,0 +1,7 @@
+{
+  "direction": "zh→ja",
+  "source": "EPFL AI 研究集群覆盖 AI4Science、大模型微调、AI for Climate、AI for Health、机器人。EPFL 内含 AI Center、AI4Science Center、Center for Intelligent Systems、Robotics Center。代表教授：Marcel Salathé（数字流行病学）、Aude Billard（机器人）、Caglar Gulcehre（LLM）。判断：EPFL 与 ETH Zurich 是\"互补研究强项\"——ETH 重理论机器学习，EPFL 重应用和具身 AI。两者形成瑞士 AI 研究双极结构，Alps 是共同算力底座，Swiss AI Initiative 是跨极协作组织。",
+  "target": "EPFL AI 研究クラスターは、AI4Science、大規模言語モデルのファインチューニング、AI for Climate、AI for Health、ロボティクスをカバーしています。EPFL には AI Center、AI4Science Center、Center for Intelligent Systems、Robotics Center が含まれています。主要な教授は Marcel Salathé（デジタル疫学）、Aude Billard（ロボティクス）、Caglar Gulcehre（LLM）です。評価として、EPFL と ETH Zurich は「相補的な研究上の強み」を持っています——ETH は理論的機械学習を重視し、EPFL は応用と具現化 AI を重視しています。両者はスイスの AI 研究の二極構造を形成し、Alps は共通の計算インフラの基盤であり、Swiss AI Initiative は極間協力の組織です。",
+  "model": "haiku",
+  "translatedAt": "2026-05-07"
+}

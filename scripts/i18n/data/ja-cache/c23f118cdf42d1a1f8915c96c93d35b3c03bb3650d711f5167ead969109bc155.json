@@ -1,0 +1,7 @@
+{
+  "direction": "zh→ja",
+  "source": "\"Computational Data Analysis\" 例外让 AI 训练数据使用免责。与日本《著作权法》第 30-4 条并列。美国仍在 fair use 案例法争议中、欧盟需依赖 TDM Exception 的 opt-out 机制——新加坡和日本是世界上目前唯二明确写入法律的国家。",
+  "target": "「Computational Data Analysis」例外により、AI訓練データの使用が免責となります。日本の《著作権法》第30-4条と並列します。米国はfair useの判例法紛争の中にあり、欧州はTDM Exceptionのopt-outメカニズムに依存する必要があります——シンガポールと日本は現在、世界で法律に明確に記載している唯二の国です。",
+  "model": "haiku",
+  "translatedAt": "2026-05-07"
+}

@@ -1,0 +1,7 @@
+{
+  "direction": "zh→ja",
+  "source": "Aquarium 是 AISG 内部使用的 AI 模型管理平台，覆盖数据集管理、训练实验追踪、模型版本控制、部署监控等 ML lifecycle 环节。它不是独立产品，更像 AISG 的\"内部 MLOps 系统\"。",
+  "target": "Aquarium は、AISG 内部で使用されるAIモデル管理プラットフォームで、データセット管理、訓練実験追跡、モデルバージョン管理、展開監視などのML ライフサイクルの段階をカバーしています。独立した製品ではなく、AISG の「内部MLOpsシステム」のようなものです。",
+  "model": "haiku",
+  "translatedAt": "2026-05-07"
+}

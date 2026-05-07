@@ -1,0 +1,7 @@
+{
+  "direction": "zh→ja",
+  "source": "NAISC（National AI Student Challenge）是 AISG 的全国学生 AI 竞赛，覆盖从中学到大学四个学段。它是新加坡 AI 早期人才发现的\"漏斗顶端\"——通过竞赛把对 AI 感兴趣的学生识别、培养、引导进 AI 路径。",
+  "target": "NAISC（National AI Student Challenge）は AISG の全国学生 AI 競技で、中学から大学の 4 つのレベルをカバーしています。これはシンガポール AI 初期段階の人材発見の「ファネルの上部」です――競技を通じて AI に関心のある学生を識別、育成、AI パスへと導きます。",
+  "model": "haiku",
+  "translatedAt": "2026-05-07"
+}

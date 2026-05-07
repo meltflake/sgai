@@ -1,0 +1,7 @@
+{
+  "direction": "zh→ja",
+  "source": "NSCC ASPIRE 2A+（H100, 20 PFLOPS）+ 商用集群（SMC 2,048 H100/集群）+ Singtel GPU-as-a-Service + 国家计算网格 + HTX NGINE B200 SuperPOD——分层覆盖完整，企业、科研、政府自用都够用。Tortoise 基建排 #2，仅次美国。趋势 → 而非 ↗ 是因为电力配额是天花板。",
+  "target": "NSCC ASPIRE 2A+（H100、20 PFLOPS）+ 商用クラスター（SMC 2,048 H100/クラスター）+ Singtel GPU-as-a-Service + 国家コンピュータネットワーク + HTX NGINE B200 SuperPOD——層別カバレッジが完全で、エンタープライズ、科学研究、政府の自用には十分。Tortoise インフラはランク #2 で、米国のみに次ぐ。トレンドが → ではなく ↗ でないのは電力割当がボトルネックだから。",
+  "model": "haiku",
+  "translatedAt": "2026-05-07"
+}

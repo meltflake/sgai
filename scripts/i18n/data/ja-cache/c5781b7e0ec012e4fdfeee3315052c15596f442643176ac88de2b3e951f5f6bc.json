@@ -1,0 +1,7 @@
+{
+  "direction": "zh→ja",
+  "source": "UAE 是全球首个设立 AI 部长的国家（2017），通过 $1000 亿 MGX 基金和与微软 $152 亿的合作展现了惊人的资本实力。Falcon LLM 和 MBZUAI 代表了其打造本土 AI 能力的雄心。",
+  "target": "UAE は世界初の AI 大臣を設置した国家（2017）であり、1000億ドルの MGX ファンドとマイクロソフトとの152億ドルの協力を通じて、驚異的な資本力を示しています。Falcon LLM と MBZUAI は、本土 AI 能力構築への野心を表しています。",
+  "model": "haiku",
+  "translatedAt": "2026-05-07"
+}

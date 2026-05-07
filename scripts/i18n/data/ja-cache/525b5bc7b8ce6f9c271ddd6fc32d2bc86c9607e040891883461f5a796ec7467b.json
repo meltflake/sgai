@@ -1,0 +1,7 @@
+{
+  "direction": "zh→ja",
+  "source": "NTU AI 研究排名",
+  "target": "NTU AI 研究ランキング",
+  "model": "haiku",
+  "translatedAt": "2026-05-07"
+}

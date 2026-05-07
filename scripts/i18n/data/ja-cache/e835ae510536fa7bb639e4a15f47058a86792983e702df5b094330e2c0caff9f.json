@@ -1,0 +1,7 @@
+{
+  "direction": "zh→ja",
+  "source": "Stanford AI Index 2025 + 人口数据估算",
+  "target": "Stanford AI Index 2025 + 人口統計データの推定",
+  "model": "haiku",
+  "translatedAt": "2026-05-07"
+}

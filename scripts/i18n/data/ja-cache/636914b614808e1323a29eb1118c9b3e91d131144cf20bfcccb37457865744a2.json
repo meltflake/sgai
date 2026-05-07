@@ -1,0 +1,7 @@
+{
+  "direction": "zh→ja",
+  "source": "Synergos 是 AISG 开源的联邦学习（Federated Learning）框架，让多个组织在不共享原始数据的前提下联合训练 ML 模型。它是 AISG\"隐私保护 AI\"工具链的关键组件，配合 PDPA 合规需求。",
+  "target": "Synergos は AISG がオープンソース化した連合学習（Federated Learning）フレームワークで、複数の組織が元データを共有しない前提で ML モデルを共同で学習できるようにしています。これは AISG の「プライバシー保護 AI」ツールチェーンの重要な構成要素で、PDPA コンプライアンス要件に対応しています。",
+  "model": "haiku",
+  "translatedAt": "2026-05-07"
+}

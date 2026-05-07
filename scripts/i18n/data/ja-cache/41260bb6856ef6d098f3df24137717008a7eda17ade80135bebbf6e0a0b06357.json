@@ -1,0 +1,7 @@
+{
+  "direction": "zh→ja",
+  "source": "前 NUS Computing 学院院长（2016–2022），现任 NUS AI 研究院院长，主管 AISG 人才管线。研究方向为多模态计算与可信 AI。",
+  "target": "前 NUS Computing 学院院長（2016–2022）。現在、NUS AI 研究院院長として AISG の人材パイプラインを主管しています。研究分野は多モード計算と信頼できる AI です。",
+  "model": "haiku",
+  "translatedAt": "2026-05-07"
+}

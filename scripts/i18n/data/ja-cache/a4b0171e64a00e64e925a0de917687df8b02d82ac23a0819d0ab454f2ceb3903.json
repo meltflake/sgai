@@ -1,0 +1,7 @@
+{
+  "direction": "zh→ja",
+  "source": "会计科技公司 Skybots 通过 LADP 将 RPA 升级为 LLM 驱动的智能客服,处理复杂会计工作流查询。",
+  "target": "会計科学技術企業 Skybots は LADP を通じて RPA を LLM 駆動のインテリジェントカスタマーサービスにアップグレードし、複雑な会計ワークフロー照会を処理した。",
+  "model": "haiku",
+  "translatedAt": "2026-05-07"
+}

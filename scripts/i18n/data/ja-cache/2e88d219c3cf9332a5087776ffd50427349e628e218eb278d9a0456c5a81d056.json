@@ -1,0 +1,7 @@
+{
+  "direction": "zh→ja",
+  "source": "新加坡治理是\"工具化框架 + 自愿守则 + 国际输出\"模式：AI Verify（2022）是全球首个开源可测试 AI 治理工具集；Model AI Governance Framework（2019/2020）是企业自愿性伦理框架，被 OECD AI Principles 工作组引用；MAS Veritas（2019 起）覆盖金融业 AI 风险评估。无水平性 AI 立法，靠 PDPA（数据隐私）+ 行业监管补位。",
+  "target": "シンガポールのガバナンスは「ツール化フレームワーク + 自発的ガイドライン + 国際的な展開」モデルです。AI Verify（2022）は世界初のオープンソース、テスト可能な AI ガバナンスツールセット。Model AI Governance Framework（2019/2020）は企業の自発的倫理フレームワークで、OECD AI Principles ワーキンググループにより引用されています。MAS Veritas（2019 年から）は金融業界の AI リスク評価をカバーしています。水平的 AI 立法はなく、PDPA（データプライバシー）+ 業界規制によって補完されています。",
+  "model": "haiku",
+  "translatedAt": "2026-05-07"
+}

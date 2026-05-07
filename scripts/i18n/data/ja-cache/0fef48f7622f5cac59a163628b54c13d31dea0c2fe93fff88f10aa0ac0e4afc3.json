@@ -1,0 +1,7 @@
+{
+  "direction": "zh→ja",
+  "source": "AISG 与 A*STAR、SGH、NCCS 合作开发 AI 算法,从放射与病理档案中自动检测、描述并诊断肝脏病变。",
+  "target": "AISG と A*STAR、SGH、NCCS の協力は AI アルゴリズムを開発し、放射線科および病理学ファイルから自動的に肝臓病変を検出、説明および診断した。",
+  "model": "haiku",
+  "translatedAt": "2026-05-07"
+}

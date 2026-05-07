@@ -1,0 +1,7 @@
+{
+  "direction": "zh→ja",
+  "source": "公众端 AI 健康助手",
+  "target": "患者向け AI 健康アシスタント",
+  "model": "haiku",
+  "translatedAt": "2026-05-07"
+}

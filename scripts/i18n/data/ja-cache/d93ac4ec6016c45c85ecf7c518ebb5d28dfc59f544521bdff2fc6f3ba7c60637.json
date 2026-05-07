@@ -1,0 +1,7 @@
+{
+  "direction": "zh→ja",
+  "source": "Falcon LLM 由阿布扎比 Technology Innovation Institute (TII) 在 2023 年 5 月发布。Falcon-40B 起步，2024-25 年扩展到 180B、Mamba-7B 等系列，全部 Apache 2.0 开源。在 Hugging Face Open LLM Leaderboard 上长期占据 Top 5 非美中模型位置。训练算力来自 AWS + 本地超算混合。判断：Falcon 是少数能与 Llama / Qwen 同台竞争的非美中开源大模型，对 UAE 的 AI 主权叙事至关重要。但 Falcon 落后于美中 frontier model（GPT-4o、Claude 3.5、Qwen 2.5）一代左右；在 GenAI 商业生态（API 调用 / 开发者社群）上覆盖远不如 Llama。UAE 的\"主权大模型\"价值在外交，不在商业。",
+  "target": "Falcon LLM はアブダビの Technology Innovation Institute（TII）により 2023 年 5 月に発布されました。Falcon-40B から始まり、2024-25 年に 180B、Mamba-7B などのシリーズに拡張、すべて Apache 2.0 オープンソースです。Hugging Face Open LLM Leaderboard では非米中モデルの中でも長期にわたって Top 5 を占めています。訓練算力は AWS + ローカルスーパーコンピューティングの混合から来ています。判断：Falcon は Llama/Qwen と同じステージで競争できる数少ない非米中のオープンソース大言語モデルで、UAE の AI 主権叙述にとって非常に重要です。しかし Falcon は米中の最前線モデル（GPT-4o、Claude 3.5、Qwen 2.5）から 1 世代遅れており、生成型 AI ビジネスエコシステム（API 呼び出し/開発者コミュニティ）での Llama の比較にはかなり遠く及びません。UAE の「主権大言語モデル」の価値は外交にあり、ビジネスではありません。",
+  "model": "haiku",
+  "translatedAt": "2026-05-07"
+}

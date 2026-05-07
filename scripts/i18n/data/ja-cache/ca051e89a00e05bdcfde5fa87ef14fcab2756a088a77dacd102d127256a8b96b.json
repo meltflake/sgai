@@ -1,0 +1,7 @@
+{
+  "direction": "zh→ja",
+  "source": "AI 部长（Minister of State for AI）2017 年由 UAE 设立，全球首例。首任及至今在任的是 Omar Sultan Al Olama（生于 1990 年，任命时 27 岁）。完整职务名为 Minister of State for Artificial Intelligence, Digital Economy and Remote Work Applications，2020 年职责扩大覆盖数字经济与远程办公。直接向总统办公室汇报。判断：AI 部长不是孤立职务——背后还有 ATRC（先进技术研究理事会）、UAE AI Office、G42 / Mubadala 等执行机构。AI 部长的角色更像\"国际门面 + 跨部委协调\"，而非政策制定。\",对比新加坡：UAE AI 部长 = SG SNDGO 部长 + IMDA CEO 角色合并，权力边界更模糊。",
+  "target": "AI 部長（Minister of State for AI）は 2017 年に UAE が設立した全世界初の職務です。首任および現在の在職者は Omar Sultan Al Olama（1990 年生、任命時 27 歳）です。完全な職務名は Minister of State for Artificial Intelligence, Digital Economy and Remote Work Applications で、2020 年に職務は拡大してデジタル経済とリモートワークをカバーするようになりました。大統領办公室に直接報告します。判断：AI 部長は孤立した職務ではありません。背後には ATRC（先端技術研究会議）、UAE AI Office、G42/Mubadala などの実行機関があります。AI 部長の役割は「国際的顔 + 部門間調整」に近く、政策立案ではありません。シンガポールとの比較：UAE AI 部長＝SG SNDGO 部長 + IMDA CEO の役割の統合で、権力の境界はより曖昧です。",
+  "model": "haiku",
+  "translatedAt": "2026-05-07"
+}

@@ -1,0 +1,7 @@
+{
+  "direction": "zh→ja",
+  "source": "企业不敢部署因为合规风险不可测",
+  "target": "企業がデプロイできない理由はコンプライアンスリスクが不透明だから",
+  "model": "haiku",
+  "translatedAt": "2026-05-07"
+}

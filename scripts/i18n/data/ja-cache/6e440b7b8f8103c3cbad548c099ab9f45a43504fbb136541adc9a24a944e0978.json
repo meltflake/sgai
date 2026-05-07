@@ -1,0 +1,7 @@
+{
+  "direction": "zh→ja",
+  "source": "虹膜 + 人脸",
+  "target": "虹彩 + 顔認証",
+  "model": "haiku",
+  "translatedAt": "2026-05-07"
+}

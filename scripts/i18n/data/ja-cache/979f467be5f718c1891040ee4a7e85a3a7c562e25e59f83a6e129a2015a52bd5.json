@@ -1,0 +1,7 @@
+{
+  "direction": "zh→ja",
+  "source": "ACE-AI 预测糖尿病/高脂血症风险（Synapxe 开发，2027 年初推广至 1,100+ Healthier SG 诊所）；RUSSELL-GPT 减少医生文档时间 50%；Ng Teng Fong 医院流感暴发床位预测算法",
+  "target": "ACE-AI は糖尿病/脂質異常症リスク予測（Synapxe 開発、2027 年初めに 1,100+ Healthier SG クリニックに展開）；RUSSELL-GPT は医師のドキュメント時間を 50% 削減；Ng Teng Fong 病院のインフルエンザ暴発ベッド予測アルゴリズム",
+  "model": "haiku",
+  "translatedAt": "2026-05-07"
+}

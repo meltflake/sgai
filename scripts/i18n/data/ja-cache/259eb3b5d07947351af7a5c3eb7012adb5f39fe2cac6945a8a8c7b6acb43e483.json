@@ -1,0 +1,7 @@
+{
+  "direction": "zh→ja",
+  "source": "ICLR 期间召开的全球 AI 安全科学交流会，已办两届，是 Singapore Consensus 的孵化平台。",
+  "target": "ICLR 期間中に開催されたグローバル AI 安全科学交流会。二度開催されており、Singapore Consensus の育成プラットフォームです。",
+  "model": "haiku",
+  "translatedAt": "2026-05-07"
+}

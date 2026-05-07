@@ -1,0 +1,7 @@
+{
+  "direction": "zh→ja",
+  "source": "Copyright Act 2021 第 244 条 \"Computational Data Analysis\" 给 AI 训练数据使用提供明确的免责条款。\"合法获取\" 意指通过订阅、购买、合法 API、公开网页等正常渠道获取的内容。这条规定使新加坡成为全球 AI 训练版权立场最清晰的法域之一，也是 EDB 引进 OpenAI / Anthropic / DeepMind 等机构的关键背景。",
+  "target": "Copyright Act 2021第244条の「Computational Data Analysis」は、AI訓練データの使用に対して明確な免責条項を提供します。「合法的な取得」とは、購読、購入、合法的なAPI、公開ウェブページなどの正規チャネルを通じて取得されたコンテンツを意味します。この規定により、シンガポールはグローバルなAI訓練著作権の立場が最も明確な法域の一つになり、EDBがOpenAI、Anthropic、DeepMindなどの機関を引き入れるための重要な背景となっています。",
+  "model": "haiku",
+  "translatedAt": "2026-05-07"
+}

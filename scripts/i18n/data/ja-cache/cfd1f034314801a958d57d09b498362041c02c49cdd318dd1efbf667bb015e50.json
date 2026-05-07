@@ -1,0 +1,7 @@
+{
+  "direction": "zh→ja",
+  "source": "DeepMind 在伦敦成立",
+  "target": "DeepMind はロンドンで設立",
+  "model": "haiku",
+  "translatedAt": "2026-05-07"
+}

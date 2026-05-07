@@ -1,0 +1,7 @@
+{
+  "direction": "zh→ja",
+  "source": "前 4 周是异步学习，建立 LLM、Prompt Engineering、ReAct、RAG、Agent 和负责任开发的基础；后 12 周是项目期，团队用自己的问题陈述做应用，并通过 AISG 导师咨询推进。",
+  "target": "最初の 4 週間は非同期学習で、LLM、プロンプト エンジニアリング、ReAct、RAG、Agent および責任ある開発の基礎を確立します。後半の 12 週間はプロジェクト期で、チームは自分たちの問題陳述を使用してアプリケーションを開発し、AISG メンターのコンサルティングを通じて進めます。",
+  "model": "haiku",
+  "translatedAt": "2026-05-07"
+}

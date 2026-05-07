@@ -1,0 +1,7 @@
+{
+  "direction": "zh→ja",
+  "source": "GenAI 在金融业的风险框架，24 家机构 + 四大云厂商（Microsoft / AWS / Google / NVIDIA）共建。",
+  "target": "GenAI の金融業界向けリスクフレームワーク。24 の機関とメジャー 4 クラウドプロバイダー（Microsoft / AWS / Google / NVIDIA）が共同構築。",
+  "model": "haiku",
+  "translatedAt": "2026-05-07"
+}

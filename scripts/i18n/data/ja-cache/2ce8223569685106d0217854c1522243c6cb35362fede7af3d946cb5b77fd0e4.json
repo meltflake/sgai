@@ -1,0 +1,7 @@
+{
+  "direction": "zh→ja",
+  "source": "瑞士 AI 投资规模 CHF 10 亿+ 主要通过联邦理工系统（ETH Zurich + EPFL + 4 所联邦研究机构）持续投入。具体：(1) ETH AI Center 年度预算 CHF 5000 万+；(2) EPFL AI 研究集群 CHF 4000 万+；(3) CSCS Alps 超算总投资 CHF 1 亿+（HPE Cray EX + 10752 GH200 超芯）；(4) Swiss AI Initiative 启动时投入 CHF 1500 万；(5) 私部门：Google Zurich、Disney Research、Microsoft Research Zurich 共同雇佣 5000+ AI 研究人员（薪资 + 设备 / 年人均 CHF 30 万 = ~CHF 15 亿/年规模）。判断：瑞士 AI 投资的\"政府份额\"约 CHF 20-30 亿（含 Alps + 大学）远小于韩国 / UAE / Canada，但私部门对齐 + 大学持续高质量产出让瑞士在 AI 论文、人才、基础研究三个维度全球前 5。这是\"研究投入杠杆比\"最高的国家。",
+  "target": "スイス AI 投資規模 CHF 10 億+ は主に連邦理工システム（ETH Zurich + EPFL + 4 つの連邦研究機関）を通じた継続的投資です。具体的には：(1) ETH AI Center 年間予算 CHF 5,000 万+；(2) EPFL AI4Science / AI for Good ~CHF 4,000 万；(3) CSCS Alps スーパーコンピュータ総投資 CHF 1 億+（HPE Cray EX + 10,752 GH200 スーパーチップ）；(4) Swiss AI Initiative 始動資金 CHF 1,500 万；(5) 民間部門：Google Zurich、Disney Research、Microsoft Research Zurich が共に 5,000+ AI 研究者を雇用（給与 + 設備/年間人当たり CHF 30 万 = ~CHF 15 億/年規模）。判断：スイス AI 投資の「政府シェア」約 CHF 20-30 億（Alps + 大学を含む）は韓国 / UAE / Canada より遥かに小さいですが、民間部門との連携 + 大学の継続的高質産出がスイスを AI 論文、人材、基礎研究の 3 領域で世界トップ 5 に位置付けています。これは「研究投資レバレッジ比」が最高の国です。",
+  "model": "haiku",
+  "translatedAt": "2026-05-07"
+}

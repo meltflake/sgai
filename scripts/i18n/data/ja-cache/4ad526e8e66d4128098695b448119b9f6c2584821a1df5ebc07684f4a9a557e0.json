@@ -1,0 +1,7 @@
+{
+  "direction": "zh→ja",
+  "source": "AIAP（AI Apprenticeship Programme）是 AISG 的旗舰人才项目，2018 年启动，**专门把\"会写代码但没做过 AI\"的工程师 9 个月内训练成\"AI 工程师\"**。它是新加坡本地 AI 工程师产出的主要管道，也是 AISG 自身 AI 产品（SEA-LION 等）的人才储备池。",
+  "target": "AIAP（AI Apprenticeship Programme）は、AISG の旗艦人材プロジェクトで、2018年に起動されました。**「コード作成はできるがAI経験がない」エンジニアを9ヶ月以内に「AIエンジニア」に訓練することに特化しています**。シンガポール国内のAIエンジニア養成の主要チャネルであり、AISG自体のAI製品（SEA-LION等）の人材プールでもあります。",
+  "model": "haiku",
+  "translatedAt": "2026-05-07"
+}

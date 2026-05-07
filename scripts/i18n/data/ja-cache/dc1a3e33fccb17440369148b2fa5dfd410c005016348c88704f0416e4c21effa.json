@@ -1,0 +1,7 @@
+{
+  "direction": "zh→ja",
+  "source": "NVIDIA B200 DGX SuperPOD（自有）",
+  "target": "NVIDIA B200 DGX SuperPOD（自有）",
+  "model": "haiku",
+  "translatedAt": "2026-05-07"
+}

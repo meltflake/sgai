@@ -1,0 +1,7 @@
+{
+  "direction": "zh→ja",
+  "source": "创新科技署（HKIC，Innovation and Technology Commission，简称 ITC），1992 年成立，前身工业署。是 ITIB 下属的执行机构，主管 ITF（创新及科技基金）资金分配、技术人才入境计划、I&T 政策落地。HKIC 不直接管 AI 战略，但 ITF 通过它流向各类项目（含 AI）。判断：HKIC 是中层执行机构，不是 AI 政策制定者；ITF 在 AI 上的分配数据没单独公开，导致追踪香港 AI 实际财政投入数字困难——这是治理透明度的弱点。新规划如 AIRDI 跳过 HKIC 由 ITIB 直接管，意味着新一轮 AI 投入 HKIC 的相对重要性在下降。",
+  "target": "イノベーション・テクノロジー庁（HKIC、Innovation and Technology Commission、略称ITC）は1992年に設立され、前身は産業庁です。ITIB傘下の執行機関であり、ITF（イノベーション・テクノロジー基金）資金配分、技術人才入国計画、I&Tポリシー実施の主務です。HKICはAI戦略を直接管理しませんが、ITFはそれを通じてさまざまなプロジェクト（AIを含む）に流向します。判断：HKICは中層実行機関であり、AI政策策定者ではありません。AIに対するITFの配分データは個別に公開されておらず、香港のAI実際の財政投資データの追跡が困難になります。これはガバナンス透明性の弱点です。AIRDI等の新しい計画はHKICをスキップしてITIBが直接管理するため、新一波のAI投資におけるHKICの相対的な重要性は低下しています。",
+  "model": "haiku",
+  "translatedAt": "2026-05-07"
+}

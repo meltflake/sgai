@@ -1,0 +1,7 @@
+{
+  "direction": "zh→ja",
+  "source": "加拿大是深度学习的发源地（Hinton、Bengio），拥有 Mila、Vector Institute、Amii 三大世界级 AI 研究所。2024 年联邦预算追加 CAD $24 亿 AI 投资，但 AIDA 立法法案未能通过，治理框架仍以自愿准则为主。",
+  "target": "カナダは深層学習の発祥地（Hinton、Bengio）であり、Mila、Vector Institute、Amii という 3 つの世界的な AI 研究所を擁しています。2024 年の連邦予算で CAD $24 億の AI 投資が追加されましたが、AIDA 立法法案は可決されず、ガバナンス枠組みは依然として自発的ガイドラインが主体です。",
+  "model": "haiku",
+  "translatedAt": "2026-05-07"
+}

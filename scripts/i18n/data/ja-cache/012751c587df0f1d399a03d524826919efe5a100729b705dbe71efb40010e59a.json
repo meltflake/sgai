@@ -1,0 +1,7 @@
+{
+  "direction": "zh→ja",
+  "source": "HSC Pipeline Engineering: 用 RAG AI 构建工程知识库",
+  "target": "HSC パイプラインエンジニアリング：RAG AI でエンジニアリングナレッジベースを構築",
+  "model": "haiku",
+  "translatedAt": "2026-05-07"
+}

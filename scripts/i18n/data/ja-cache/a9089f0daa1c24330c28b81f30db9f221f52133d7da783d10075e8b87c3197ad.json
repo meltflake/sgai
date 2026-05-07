@@ -1,0 +1,7 @@
+{
+  "direction": "zh→ja",
+  "source": "CFAR 主任，领导新加坡国家级前沿 AI 研究中心。研究方向覆盖大模型、可信 AI、迁移学习；IEEE Fellow。",
+  "target": "CFAR 主任。シンガポール国家レベルのフロンティア AI 研究センターを率いています。研究分野は大規模言語モデル、信頼できる AI、転移学習をカバーしており、IEEE Fellow です。",
+  "model": "haiku",
+  "translatedAt": "2026-05-07"
+}

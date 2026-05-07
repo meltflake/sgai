@@ -1,0 +1,7 @@
+{
+  "direction": "zh→ja",
+  "source": "DPO（数码政策办公室）",
+  "target": "DPO（デジタルポリシーオフィス）",
+  "model": "haiku",
+  "translatedAt": "2026-05-07"
+}

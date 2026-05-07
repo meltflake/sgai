@@ -1,0 +1,7 @@
+{
+  "direction": "zh→ja",
+  "source": "CFAR 首席 AI 科学家与顾问，同时是 NTU CCDS 校长讲席教授。前 NTU 数据科学与 AI 研究中心（DSAIR）主任，新加坡进化计算与元学习领域代表学者。",
+  "target": "CFAR チーフ AI サイエンティスト兼アドバイザー。同時に NTU CCDS プレジデンシャルチェアプロフェッサー。前 NTU データサイエンス・AI 研究センター（DSAIR）主任で、シンガポール進化計算およびメタラーニング分野の代表的研究者です。",
+  "model": "haiku",
+  "translatedAt": "2026-05-07"
+}

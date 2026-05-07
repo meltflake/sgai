@@ -1,0 +1,7 @@
+{
+  "direction": "zh→ja",
+  "source": "Pan-Canadian AI Strategy 2017 年 3 月由 ISED（创新科学与经济发展部）在 Trudeau 政府下启动，CIFAR 作为项目运营方。初始五年预算 CAD $1.25 亿。三大支柱：(1) 全球研究卓越——锚定世界级 AI 研究所；(2) 人才吸引与留住——Canada CIFAR AI Chairs 项目；(3) 商业化加速。判断：这是全球首份国家 AI 战略，至今仍是\"学术人才杠杆\"路径的全球基准。真正影响是把 Geoffrey Hinton、Yoshua Bengio、Richard Sutton 留在加拿大而非迁往美国科技巨头——三位图灵奖得主的间接溢出无法计量。",
+  "target": "Pan-Canadian AI Strategy は 2017 年 3 月に ISED（イノベーション・科学・経済発展部）により Trudeau 政権下で開始され、CIFAR がプロジェクト運営機関として機能しました。初期 5 年間の予算は CAD $1.25 億でした。三大柱：(1) グローバル研究卓越性——世界一流の AI 研究所に基盤を置く；(2) 人材吸引と人材確保——Canada CIFAR AI Chairs プログラム；(3) 商業化の加速。評価：これは世界初の国家 AI 戦略であり、現在でも「学術人材レバー」アプローチの世界的ベンチマークです。真の影響は Geoffrey Hinton、Yoshua Bengio、Richard Sutton をカナダに留めて米国のテクノロジー大手への流出を防ぐこと——三位のチューリング賞受賞者の間接的な波及効果は計測不可能です。",
+  "model": "haiku",
+  "translatedAt": "2026-05-07"
+}

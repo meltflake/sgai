@@ -1,0 +1,7 @@
+{
+  "direction": "zh→ja",
+  "source": "ETH Zurich 和 EPFL 是全球 AI 研究 Top 5 机构，Google Zurich 是其最大的欧洲研发中心。瑞士以\"创新优先、轻监管\"闻名，尚未制定独立的 AI 法律，但在基础研究质量上全球领先。",
+  "target": "ETH Zurich と EPFL は世界 AI 研究トップ 5 機関であり、Google Zurich はその最大のヨーロッパ R&D センターです。スイスは「イノベーション優先、軽規制」で知られており、独立した AI 法律をまだ制定していませんが、基礎研究の質では世界的にリーディングです。",
+  "model": "haiku",
+  "translatedAt": "2026-05-07"
+}

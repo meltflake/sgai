@@ -1,0 +1,7 @@
+{
+  "direction": "zh→ja",
+  "source": "阿里云（Alibaba Cloud）的东南亚总部在新加坡，提供云计算和 AI 服务。它是中国 AI 在新加坡的主要代表力量之一，与 AWS / Azure / Google Cloud 形成\"四大云\"竞争格局。",
+  "target": "Alibaba Cloud（アリババクラウド）の東南アジア本部はシンガポールに位置し、クラウドコンピューティングと AI サービスを提供しています。これは中国の AI がシンガポール で代表的な力を有する企業の一つであり、AWS / Azure / Google Cloud と 「四大クラウド」 の競争構図を形成しています。",
+  "model": "haiku",
+  "translatedAt": "2026-05-07"
+}

@@ -1,0 +1,7 @@
+{
+  "direction": "zh→ja",
+  "source": "ETH Board（ETH-Rat）是联邦理工系统的战略治理机构，覆盖 ETH Zurich、EPFL、PSI、Empa、Eawag、WSL。AI 相关角色：审议联邦理工系统的 AI 战略、分配系统层 CHF 10 亿+ AI 研究预算、监督 Alps 超算治理。ETH Board 成员含前联邦委员、大学领导、企业高管。判断：ETH Board 是瑞士联邦研究的\"中央委员会\"——在 AI 研究上比 SERI 在政策上更有制度权威。这是瑞士独有的结构特征；新加坡的大学在 MOE / NUS-NTU 各自下运营，没有同等系统层治理机构。",
+  "target": "ETH Board（ETH-Rat）は、連邦工科大学システムの戦略的ガバナンス機構で、ETH Zurich、EPFL、PSI、Empa、Eawag、WSLを対象としています。AI関連の役割としては、連邦工科大学システムのAI戦略の審議、システムレベルのCHF 10億以上のAI研究予算の配分、Alpsスーパーコンピューティング統治の監督が挙げられます。ETH Boardのメンバーには、前連邦委員会委員、大学の指導者、企業エグゼクティブが含まれています。評価として、ETH Boardはスイス連邦研究の「中央委員会」であり、AI研究においてはSERIが政策上持つ以上の制度的権威を有しています。これはスイス独有の構造的特性です。シンガポールの大学はMOE / NUS-NTUの下で各自運営されており、同等のシステムレベルのガバナンス機構が存在しません。",
+  "model": "haiku",
+  "translatedAt": "2026-05-07"
+}

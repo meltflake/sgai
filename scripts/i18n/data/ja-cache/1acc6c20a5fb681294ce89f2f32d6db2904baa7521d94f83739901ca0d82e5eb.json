@@ -1,0 +1,7 @@
+{
+  "direction": "zh→ja",
+  "source": "DeepMind 关于新加坡实验室的公告",
+  "target": "DeepMind シンガポール実験室に関する発表",
+  "model": "haiku",
+  "translatedAt": "2026-05-07"
+}

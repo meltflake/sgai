@@ -1,0 +1,7 @@
+{
+  "direction": "zh→ja",
+  "source": "Elements of AI 官网（含 AuroraAI 上下文）",
+  "target": "Elements of AI 公式サイト（AuroraAI コンテキストを含む）",
+  "model": "haiku",
+  "translatedAt": "2026-05-07"
+}

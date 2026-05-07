@@ -1,0 +1,7 @@
+{
+  "direction": "zh→ja",
+  "source": "MGX 千亿美元 AI 投资基金作为执行项目视角：2024 年 3 月成立，2024 年 9 月与 BlackRock + GIP + Microsoft 联合发起 Global AI Infrastructure Investment Partnership，初始承诺 US$300 亿股权 + 潜在扩至 US$1000 亿债务。已公开投资：OpenAI（参与 2024-25 多轮融资）、Anthropic（2025）、xAI、Crusoe Energy（数据中心）。判断：MGX 是 UAE 把\"国家资本\"转化为\"AI 时代股东身份\"的核心工具——通过 OpenAI / Anthropic / xAI 这种 frontier lab 的早期股权，UAE 锁定了下一代 AI 经济的部分股权回报。但持股 vs 控股是两件事：UAE 拿到的是少数股权 + 数据中心配套合作，不是技术控制权。",
+  "target": "MGX 1 兆米ドル AI 投資基金を実行プロジェクト視点として：2024 年 3 月に設立、2024 年 9 月に BlackRock + GIP + Microsoft と共同で Global AI Infrastructure Investment Partnership を発起し、初期コミットメントは US$300 億のエクイティ + 潜在的に US$1000 億の債務に拡大する可能性があります。公開投資：OpenAI（2024-25 年の複数ラウンド参加）、Anthropic（2025）、xAI、Crusoe Energy（データセンター）。判断：MGX は UAE が「国家資本」を「AI 時代の株主地位」に変換するための核心的ツールです。OpenAI/Anthropic/xAI などの最前線ラボの初期段階の株式を通じて、UAE は次世代 AI 経済の部分的な株主利益を確保しています。しかし株式保有と支配権は別の問題です。UAE が得たのは少数株主権 + データセンター協力であり、技術支配権ではありません。",
+  "model": "haiku",
+  "translatedAt": "2026-05-07"
+}

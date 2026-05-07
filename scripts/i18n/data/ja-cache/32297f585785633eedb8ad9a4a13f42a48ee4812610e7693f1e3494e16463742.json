@@ -1,0 +1,7 @@
+{
+  "direction": "zh→ja",
+  "source": "NAIS 2.0 全文 PDF（go.gov.sg）",
+  "target": "NAIS 2.0 完全版 PDF（go.gov.sg）",
+  "model": "haiku",
+  "translatedAt": "2026-05-07"
+}

@@ -1,0 +1,7 @@
+{
+  "direction": "zh→ja",
+  "source": "OpenAI APAC 区域总部",
+  "target": "OpenAI APAC 地域本部",
+  "model": "haiku",
+  "translatedAt": "2026-05-07"
+}

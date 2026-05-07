@@ -1,0 +1,7 @@
+{
+  "direction": "zh→ja",
+  "source": "NUS（新加坡国立大学）是新加坡最顶尖的研究型大学，也是 AI Singapore 的\"宿主\"——AISG 总部就在 NUS 计算机学院（COM3）。在 AI 领域，NUS 是新加坡基础研究的主力军，并在 2024 年 3 月成立了 **NUS AI Institute**，把分散在各院系的 AI 研究整合到一个旗舰平台下。",
+  "target": "NUS（シンガポール国立大学）はシンガポール最高水準の研究型大学であり、また AI Singapore の「本拠地」でもあります。——AISG 本部は NUS 計算機科学部（COM3）にあります。AI 領域では、NUS はシンガポール基礎研究の主力であり、2024年3月に **NUS AI Institute** を設立し、各学部に分散した AI 研究を1つの旗艦プラットフォームの下に統合しました。",
+  "model": "haiku",
+  "translatedAt": "2026-05-07"
+}
