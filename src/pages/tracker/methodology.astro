@@ -5,12 +5,14 @@ import { getLangFromPath, localizedHref, t, type Lang } from '~/i18n';
 const lang: Lang = getLangFromPath(new URL(Astro.url).pathname);
 const dashboardHref = localizedHref('/tracker/', lang);
 
+// ja currently falls back to en content for the methodology body until a
+// per-locale ja translation lands. zh stays on the zh copy.
+const isNonZh = lang !== 'zh';
 const metadata = {
   title: `${t(lang, 'trackerMethodologyTitle')} · ${t(lang, 'trackerPageTitle')}`,
-  description:
-    lang === 'en'
-      ? `How the dashboard is built — what we present, what we don't, and why we don't assign overall grades.`
-      : '我们怎么做仪表盘——呈现什么、不呈现什么、为什么不打总评分。',
+  description: isNonZh
+    ? `How the dashboard is built — what we present, what we don't, and why we don't assign overall grades.`
+    : '我们怎么做仪表盘——呈现什么、不呈现什么、为什么不打总评分。',
 };
 ---
 
@@ -25,7 +27,7 @@ const metadata = {
     <h1 class="not-prose t-display mb-6">{t(lang, 'trackerMethodologyTitle')}</h1>
 
     {
-      lang === 'en' ? (
+      isNonZh ? (
         <>
           <h2>What we do</h2>
           <p>

@@ -62,7 +62,12 @@ const hasAny = sigWork.length + quotes.length + talks.length + ext.length > 0;
           </h2>
           <div class="space-y-3">
             {quotes.map((q) => {
-              const display = lang === 'en' ? q.quote : q.quoteZh || q.quote;
+              // Quote schema is reversed vs. other fields: `q.quote` holds
+              // the English source, `q.quoteZh` holds the Chinese
+              // translation. ja currently falls back to the English quote;
+              // a `quoteJa` field can be added later without call-site changes.
+              const display =
+                lang === 'zh' ? q.quoteZh || q.quote : ((q as { quoteJa?: string }).quoteJa ?? '') || q.quote;
               return (
                 <figure class="bg-surface rounded-lg p-4 border border-subtle border-l-4 border-l-primary">
                   <blockquote class="text-sm text-gray-800 dark:text-gray-200 italic leading-relaxed">

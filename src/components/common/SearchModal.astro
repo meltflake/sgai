@@ -31,11 +31,11 @@ const lang = getLangFromPath(new URL(Astro.url).pathname);
 <dialog
   id="search-dialog"
   class="rounded-lg p-0 backdrop:bg-black/60 backdrop:backdrop-blur-sm w-full max-w-2xl bg-surface dark:text-gray-100 shadow-2xl"
-  aria-label={lang === 'en' ? 'Site search' : '站内搜索'}
+  aria-label={t(lang, 'searchSiteLabel')}
 >
   <div class="flex items-center justify-between px-4 py-3 border-b border-subtle">
     <span class="text-sm font-semibold text-gray-700 dark:text-gray-200">
-      {lang === 'en' ? 'Site search' : '站内搜索'}
+      {t(lang, 'searchSiteLabel')}
     </span>
     <button
       id="search-close"
@@ -48,11 +48,7 @@ const lang = getLangFromPath(new URL(Astro.url).pathname);
   </div>
   <div id="search" class="p-2 min-h-[60vh]">
     <p id="search-fallback" class="hidden p-6 text-sm text-gray-500 dark:text-gray-400 leading-relaxed">
-      {
-        lang === 'en'
-          ? 'Search index not yet built. Run npm run build first, or visit the deployed sgai.md.'
-          : '搜索索引尚未构建。请运行 npm run build 后再试，或访问已部署的 sgai.md 使用搜索。'
-      }
+      {t(lang, 'searchFallbackMessage')}
     </p>
   </div>
 </dialog>

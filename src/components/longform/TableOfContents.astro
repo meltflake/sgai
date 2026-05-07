@@ -27,10 +27,10 @@ interface Props {
 
 const { headings = [], minHeadings = 3, maxDepth = 3, id = 'toc', class: extraClass = '' } = Astro.props;
 
-import { getLangFromPath } from '~/i18n';
+import { getLangFromPath, t } from '~/i18n';
 const lang = getLangFromPath(new URL(Astro.url).pathname);
-const tocLabel = lang === 'en' ? 'Contents' : '目录';
-const tocSummary = (n: number) => (lang === 'en' ? `📑 Contents (${n} sections)` : `📑 目录（${n} 节）`);
+const tocLabel = t(lang, 'tocLabel');
+const tocSummary = (n: number) => t(lang, 'tocSummary').replace('{count}', String(n));
 
 const items = (headings || []).filter((h) => h.depth >= 2 && h.depth <= maxDepth && h.slug && h.text);
 

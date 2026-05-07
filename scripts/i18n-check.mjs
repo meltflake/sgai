@@ -42,10 +42,18 @@ const ROOT_BASE = arg('--root', 'dist');
 const ROUTE_DEFAULT = 'en';
 const ROOT = LANG === ROUTE_DEFAULT ? ROOT_BASE : `${ROOT_BASE}/${LANG}`;
 // Subdirs to skip when scanning EN root (those belong to other locales).
-const SKIP_SUBDIRS = new Set(LANG === ROUTE_DEFAULT ? ['zh'] : []);
+// Keep this in sync with LOCALES in src/i18n/index.ts (minus the route default).
+const SKIP_SUBDIRS = new Set(LANG === ROUTE_DEFAULT ? ['zh', 'ja'] : []);
 
 // Per-target-lang config. Each entry says "what foreign script should
 // NOT appear on a page in this locale", plus intentional exceptions.
+//
+//   foreignRegex   — capture candidate runs of suspect script.
+//   validate       — optional per-match filter (returns true if the
+//                    match really IS foreign residue). Defaults to
+//                    "always foreign" if absent.
+//   allowPatterns  — exact-substring exemptions for known-good copy
+//                    (lang banners, toggle labels, branded text).
 const LANG_CONFIG = {
   en: {
     // Match CJK Unified Ideographs runs.
@@ -59,10 +67,36 @@ const LANG_CONFIG = {
       '中',
     ],
   },
-  // Example future locale: ja. The foreignRegex would flag CJK Unified
-  // Ideographs that aren't valid Japanese kanji + kana — but in practice
-  // a coarse "any zh-only character" filter is hard. For now if/when JA
-  // ships, we can refine. Today the only active scan is EN.
+  ja: {
+    // Match CJK Unified Ideographs runs (same as en regex). The hard
+    // problem: Japanese uses kanji, so the regex captures both legitimate
+    // Japanese (e.g. 人工知能政策) and residual zh (e.g. 智能国家 2.0).
+    // We discriminate via the `validate` callback below.
+    foreignRegex: /[一-鿿]+(?:[一-鿿\s·。，、！？：；'-]*[一-鿿]+)*/g,
+    // For each candidate hanzi run, check ±15 chars of surrounding text
+    // for hiragana (U+3040–309F) or katakana (U+30A0–30FF or 'ー'). If
+    // ANY kana appears nearby, the run is part of a Japanese flow and
+    // allowed. If no kana is present in that window, the run is treated
+    // as Chinese residue and flagged. Heuristic — Japanese normally
+    // interleaves kana with kanji; isolated long hanzi runs are usually
+    // un-translated zh fragments.
+    validate: (match, text) => {
+      const idx = match.index;
+      const start = Math.max(0, idx - 15);
+      const end = Math.min(text.length, idx + match[0].length + 15);
+      const context = text.slice(start, end);
+      // Return true => foreign (flag). False => allow.
+      return !/[ぁ-んァ-ヶー]/.test(context);
+    },
+    allowPatterns: [
+      // LangBanner: invite user to switch to ja.
+      '日本語版あり',
+      '日本語で読む',
+      // LanguageToggle: target-language button labels.
+      '中文',
+      '日本語',
+    ],
+  },
 };
 
 const conf = LANG_CONFIG[LANG];
@@ -152,7 +186,11 @@ function metaText(htmlSrc) {
 function findForeign(text) {
   // Reset stateful regex's lastIndex so repeated calls on different texts work.
   conf.foreignRegex.lastIndex = 0;
-  return [...text.matchAll(conf.foreignRegex)].map((m) => m[0]);
+  const matches = [...text.matchAll(conf.foreignRegex)];
+  if (typeof conf.validate === 'function') {
+    return matches.filter((m) => conf.validate(m, text)).map((m) => m[0]);
+  }
+  return matches.map((m) => m[0]);
 }
 
 function isAllowed(s) {

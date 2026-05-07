@@ -60,8 +60,10 @@ export interface Post {
   citations?: Array<{ id: string; text: string; url?: string }>;
   tocDepth?: number;
 
-  // i18n (v0.3.0). Posts default to 'zh'; '.en.md' siblings render at /<slug>/.
-  lang?: 'zh' | 'en';
+  // i18n (v0.3.0+). Posts default to 'zh'. Locales mirror src/i18n/index.ts
+  // LOCALES: zh, en, ja. en (route-default) renders at /<slug>/; non-default
+  // locales render at /<lang>/<slug>/.
+  lang?: 'zh' | 'en' | 'ja';
 }
 
 export interface Taxonomy {

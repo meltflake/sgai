@@ -11,7 +11,9 @@ interface Props {
 }
 
 const { policy, lang, categoryIcon } = Astro.props;
-const isEn = lang === 'en';
+// `isEn` is true for any non-zh locale — local label dictionaries only
+// branch zh vs. non-zh; ja falls back to en until per-locale strings land.
+const isEn = lang !== 'zh';
 
 const title = pickLocalized<string>(policy, 'title', lang) || policy.title;
 const subtitle = policy.titleEn && policy.titleEn !== title ? policy.titleEn : undefined;

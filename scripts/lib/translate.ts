@@ -32,7 +32,7 @@ import { join } from 'node:path';
 
 import { callLlmJson } from './llm.ts';
 
-export type TranslateDirection = 'en→zh' | 'zh→en';
+export type TranslateDirection = 'en→zh' | 'zh→en' | 'zh→ja' | 'ja→zh' | 'en→ja' | 'ja→en';
 
 export interface TranslateOptions {
   direction: TranslateDirection;
@@ -45,6 +45,10 @@ export interface TranslateOptions {
   systemPrompt?: string;
   /** Optional per-call abort hook. */
   signal?: AbortSignal;
+  /** Sibling-field suffix to write target translations to in
+   *  translateRecords. Defaults to derived from `direction`'s target lang
+   *  (en→'En', ja→'Ja'). zh shouldn't be a target. */
+  targetSuffix?: string;
 }
 
 interface CachedTranslation {
@@ -61,16 +65,35 @@ const DEFAULT_CONCURRENCY = Number(process.env.SGAI_TRANSLATION_CONCURRENCY || 2
 
 // CRITICAL JSON safety rule: when the translated text contains a quote
 // character, the model must use FULL-WIDTH Chinese quotes ("…") in zh
-// output and curly typographic quotes (“…”) in en output — NEVER ASCII
-// straight quotes ("). Straight quotes inside a JSON string field break
-// the parser unless escaped, and models routinely forget to escape them.
-// Full-width / curly quotes are visually identical to readers but JSON-safe.
+// output, curly typographic quotes (“…”) in en output, and Japanese
+// 「…」 (or fullwidth 『…』) in ja output — NEVER ASCII straight quotes
+// ("). Straight quotes inside a JSON string field break the parser
+// unless escaped, and models routinely forget to escape them.
+// Full-width / curly / Japanese quotes are visually appropriate to
+// readers but JSON-safe.
 const SYSTEM_PROMPTS: Record<TranslateDirection, string> = {
   'en→zh':
     'You are a professional translator for a Chinese policy-analysis website. Translate Singapore policy / Hansard / news content from English into clear, faithful Simplified Chinese. Preserve names, institutions, numbers, dates, policy terms, bill names, and acronyms (e.g. IMDA, MAS, NRF, AISG, MDDI). Do not summarize. Do not omit content. Do not add commentary. Return only JSON: {"paragraphs":["..."]}. The output array must have exactly the same number of items as the input array. CRITICAL: inside the translated paragraph TEXT, use FULL-WIDTH Chinese quotation marks (“ and ” or 「 and 」) — NEVER ASCII straight quotes ("). ASCII straight quotes inside the string would break JSON parsing. The only allowed straight quotes are the JSON syntax quotes that delimit each string.',
   'zh→en':
     'You are a professional translator for an English-language policy-analysis website. Translate Singapore policy / news content from Simplified Chinese into clear, faithful English. Preserve all proper nouns (people, institutions, programmes), numbers, dates, and acronyms. Do not summarize. Do not omit content. Do not add commentary. Return only JSON: {"paragraphs":["..."]}. The output array must have exactly the same number of items as the input array. CRITICAL: inside the translated paragraph TEXT, use curly typographic quotes (“ and ”) — NEVER ASCII straight quotes ("). ASCII straight quotes inside the string would break JSON parsing. The only allowed straight quotes are the JSON syntax quotes that delimit each string.',
+  'zh→ja':
+    'You are a professional translator for a Japanese policy-analysis website. Translate Singapore AI policy / Hansard / news content from Simplified Chinese into clear, faithful Japanese using the です・ます polite-but-professional register. Preserve all proper nouns (people, institutions, programmes), numbers, dates, and acronyms (e.g. IMDA, MAS, NRF, AISG, MDDI) in their original form. Use established Japanese AI-policy terminology where it exists; otherwise transliterate (katakana) or keep the original term. Do not summarize. Do not omit content. Do not add commentary. Return only JSON: {"paragraphs":["..."]}. The output array must have exactly the same number of items as the input array. CRITICAL: inside the translated paragraph TEXT, use Japanese quotation marks 「 」 (or 『 』 for nested) — NEVER ASCII straight quotes ("). ASCII straight quotes inside the string would break JSON parsing. The only allowed straight quotes are the JSON syntax quotes that delimit each string.',
+  'ja→zh':
+    'You are a professional translator for a Chinese policy-analysis website. Translate Singapore-related Japanese content into clear, faithful Simplified Chinese. Preserve all proper nouns, numbers, dates, and acronyms in their original form. Do not summarize. Do not omit content. Do not add commentary. Return only JSON: {"paragraphs":["..."]}. The output array must have exactly the same number of items as the input array. CRITICAL: inside the translated paragraph TEXT, use FULL-WIDTH Chinese quotation marks (“ and ” or 「 and 」) — NEVER ASCII straight quotes ("). ASCII straight quotes inside the string would break JSON parsing. The only allowed straight quotes are the JSON syntax quotes that delimit each string.',
+  'en→ja':
+    'You are a professional translator for a Japanese policy-analysis website. Translate Singapore AI policy / Hansard / news content from English into clear, faithful Japanese using the です・ます polite-but-professional register. Preserve all proper nouns (people, institutions, programmes), numbers, dates, and acronyms (e.g. IMDA, MAS, NRF, AISG, MDDI) in their original Latin form. Use established Japanese AI-policy terminology where it exists; otherwise transliterate (katakana) or keep the original term. Do not summarize. Do not omit content. Do not add commentary. Return only JSON: {"paragraphs":["..."]}. The output array must have exactly the same number of items as the input array. CRITICAL: inside the translated paragraph TEXT, use Japanese quotation marks 「 」 (or 『 』 for nested) — NEVER ASCII straight quotes ("). ASCII straight quotes inside the string would break JSON parsing. The only allowed straight quotes are the JSON syntax quotes that delimit each string.',
+  'ja→en':
+    'You are a professional translator for an English-language policy-analysis website. Translate Singapore-related Japanese content into clear, faithful English. Preserve all proper nouns, numbers, dates, and acronyms in their original form. Do not summarize. Do not omit content. Do not add commentary. Return only JSON: {"paragraphs":["..."]}. The output array must have exactly the same number of items as the input array. CRITICAL: inside the translated paragraph TEXT, use curly typographic quotes (“ and ”) — NEVER ASCII straight quotes ("). ASCII straight quotes inside the string would break JSON parsing. The only allowed straight quotes are the JSON syntax quotes that delimit each string.',
 };
+
+/** Derive the sibling-field suffix to use when writing translation output
+ *  to a record. e.g. 'zh→en' → 'En', 'zh→ja' → 'Ja'. zh is the bare-key
+ *  default and shouldn't be a target (returns '' so caller can detect). */
+function defaultTargetSuffix(direction: TranslateDirection): string {
+  const target = direction.split('→')[1];
+  if (target === 'zh') return '';
+  return target.charAt(0).toUpperCase() + target.slice(1);
+}
 
 function hashOf(direction: TranslateDirection, source: string): string {
   return createHash('sha256').update(`${direction}::${source}`).digest('hex');
@@ -264,27 +287,39 @@ export async function translateOne(text: string, options: TranslateOptions): Pro
 
 /**
  * Translate a list of records by extracting given zh-only fields and
- * filling in their `*En` siblings. Skips records that already have
- * non-empty *En. Returns mutated copies (originals untouched).
+ * filling in their target-locale siblings. The sibling key is
+ * `${field}${targetSuffix}` (e.g. `titleEn`, `titleJa`); `targetSuffix`
+ * defaults to the capitalized target lang from `direction`. Skips
+ * records that already have a non-empty sibling. Returns mutated copies
+ * (originals untouched).
  *
  * Example:
  *   await translateRecords(policies, ['title', 'description'], { direction: 'zh→en', cacheDir: ... });
+ *   await translateRecords(policies, ['title', 'description'], { direction: 'zh→ja', cacheDir: ... });
  */
 export async function translateRecords<T extends Record<string, unknown>>(
   records: T[],
   fields: string[],
   options: TranslateOptions
 ): Promise<T[]> {
+  const targetSuffix = options.targetSuffix ?? defaultTargetSuffix(options.direction);
+  if (!targetSuffix) {
+    throw new Error(
+      `translateRecords: refusing to write to bare-key default locale ` +
+        `(direction=${options.direction}). Pass an explicit targetSuffix or ` +
+        `use a non-zh target.`
+    );
+  }
   const updates: { recordIndex: number; field: string; source: string }[] = [];
 
   for (let i = 0; i < records.length; i += 1) {
     const record = records[i];
     for (const field of fields) {
-      const enField = `${field}En`;
+      const targetField = `${field}${targetSuffix}`;
       const sourceVal = record[field];
-      const enVal = record[enField];
+      const targetVal = record[targetField];
       if (typeof sourceVal !== 'string' || !sourceVal) continue;
-      if (typeof enVal === 'string' && enVal) continue;
+      if (typeof targetVal === 'string' && targetVal) continue;
       updates.push({ recordIndex: i, field, source: sourceVal });
     }
   }
@@ -297,7 +332,7 @@ export async function translateRecords<T extends Record<string, unknown>>(
   const out = records.map((r) => ({ ...r }));
   for (let k = 0; k < updates.length; k += 1) {
     const { recordIndex, field } = updates[k];
-    (out[recordIndex] as Record<string, unknown>)[`${field}En`] = translated[k];
+    (out[recordIndex] as Record<string, unknown>)[`${field}${targetSuffix}`] = translated[k];
   }
   return out;
 }

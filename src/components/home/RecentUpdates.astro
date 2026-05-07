@@ -95,7 +95,7 @@ const totalUpdates = items.length;
                     {u.links && u.links.length > 0 && (
                       <div class="mt-1.5 flex gap-x-4 gap-y-1 flex-wrap text-xs">
                         {u.links.map((link) => {
-                          const label = lang === 'en' ? link.labelEn || link.label : link.label;
+                          const label = (pickLocalized(link, 'label', lang) as string | null | undefined) || link.label;
                           return (
                             <a
                               href={localizedHref(link.href, lang)}

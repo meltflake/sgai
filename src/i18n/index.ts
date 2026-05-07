@@ -26,9 +26,9 @@
 //      than [L, DEFAULT_LOCALE].
 //   5. Run `npm run check:i18n -- --lang L --root dist/L` to verify.
 
-export type Lang = 'zh' | 'en';
+export type Lang = 'zh' | 'en' | 'ja';
 
-export const LOCALES: Lang[] = ['zh', 'en'];
+export const LOCALES: Lang[] = ['zh', 'en', 'ja'];
 
 /** Routing default: this locale's URLs live at the bare root (no prefix). */
 export const ROUTE_DEFAULT_LOCALE: Lang = 'en';
@@ -37,10 +37,13 @@ export const ROUTE_DEFAULT_LOCALE: Lang = 'en';
 export const DEFAULT_LOCALE: Lang = 'zh';
 
 /** Per-locale fallback chain. Looked up in order; the first non-empty
- *  hit wins. Always ends with `DEFAULT_LOCALE` (the bare-field locale). */
+ *  hit wins. Always ends with `DEFAULT_LOCALE` (the bare-field locale).
+ *  ja falls back to en before zh: Japanese readers' English literacy is
+ *  generally higher than their Chinese literacy. */
 const FALLBACK_CHAINS: Record<Lang, Lang[]> = {
   zh: ['zh'],
   en: ['en', 'zh'],
+  ja: ['ja', 'en', 'zh'],
 };
 
 /** Capitalize first char for sibling-field naming.
@@ -116,13 +119,25 @@ export function pickLocalized(
   if (r == null) return undefined;
 
   // Shape B (legacy): (record, zhKey, enKey, lang)
+  // Caller passed explicit zh/en keys. For non-default locales we walk the
+  // FALLBACK_CHAIN — for ja that's [en, zh], which here maps to enKey then
+  // zhKey. Other (future) intermediate locales without an explicit key are
+  // skipped; new code should migrate to shape A.
   if (typeof maybeLang === 'string') {
     const lang = maybeLang as Lang;
     const zhKey = baseOrZhKey;
     const enKey = enKeyOrLang as string;
-    if (lang === 'en') {
-      const v = r[enKey];
-      if (v != null && v !== '') return v as string;
+    if (lang === DEFAULT_LOCALE) {
+      return r[zhKey] as string | null | undefined;
+    }
+    for (const candidate of FALLBACK_CHAINS[lang] || [lang, DEFAULT_LOCALE]) {
+      if (candidate === DEFAULT_LOCALE) {
+        const v = r[zhKey];
+        if (v != null && v !== '') return v as string;
+      } else if (candidate === 'en') {
+        const v = r[enKey];
+        if (v != null && v !== '') return v as string;
+      }
     }
     return r[zhKey] as string | null | undefined;
   }
@@ -152,29 +167,47 @@ const PLATFORM_LABELS_EN: Record<string, string> = {
 };
 
 /** Resolve a SocialChannel display label for the given lang.
- *  EN: prefer labelEn → platform map → label fallback only if Latin-only.
- *  zh: prefer label → platform map.
- *  Never emits CJK on EN pages as long as channels with zh `label` also
- *  set `labelEn`. */
+ *  zh (default): prefer label → platform map.
+ *  Other locales: prefer labelXx for the target locale (e.g. labelEn,
+ *  labelJa), then walk the FALLBACK_CHAIN. As a last resort, fall back
+ *  to platform map or to a Latin-only `label`. Never emits CJK on a
+ *  non-zh page as long as data sets the matching `labelXx`. */
 export function channelLabel(
-  ch: { platform: string; label?: string; labelEn?: string },
+  ch: { platform: string; label?: string; labelEn?: string; labelJa?: string },
   lang: Lang,
   platformLabelsOverride?: Record<string, string>
 ): string {
   const platformMap = platformLabelsOverride ?? PLATFORM_LABELS_EN;
-  if (lang === 'en') {
-    if (ch.labelEn) return ch.labelEn;
-    if (platformMap[ch.platform]) return platformMap[ch.platform];
-    if (ch.label && !/[一-鿿]/.test(ch.label)) return ch.label; // Latin label is safe
-    return ch.platform;
+  if (lang === DEFAULT_LOCALE) {
+    return ch.label || platformMap[ch.platform] || ch.platform;
   }
-  return ch.label || platformMap[ch.platform] || ch.platform;
+  // Index into ch via a string key derived from the FALLBACK_CHAIN. We
+  // cast to a generic record to allow the dynamic key lookup.
+  const chRec = ch as unknown as Record<string, unknown>;
+  for (const candidate of FALLBACK_CHAINS[lang] || [lang, DEFAULT_LOCALE]) {
+    if (candidate === DEFAULT_LOCALE) {
+      // The default-locale label is zh; only use it if it's Latin-only.
+      if (ch.label && !/[一-鿿]/.test(ch.label)) return ch.label;
+      continue;
+    }
+    const key = `label${siblingSuffix(candidate)}`;
+    const v = chRec[key];
+    if (typeof v === 'string' && v) return v;
+  }
+  if (platformMap[ch.platform]) return platformMap[ch.platform];
+  if (ch.label && !/[一-鿿]/.test(ch.label)) return ch.label;
+  return ch.platform;
 }
 
-/** Dictionary lookup. Returns a stable string. */
+/** Dictionary lookup. Returns a stable string. Walks the fallback chain
+ *  for the target lang, returning the first non-empty hit. */
 export function t(lang: Lang, key: keyof typeof zh): string {
-  const dict = lang === 'en' ? en : zh;
-  return (dict[key] as string) ?? (zh[key] as string) ?? key;
+  for (const candidate of FALLBACK_CHAINS[lang] || [lang, DEFAULT_LOCALE]) {
+    const dict = DICTIONARIES[candidate];
+    const value = dict?.[key];
+    if (typeof value === 'string' && value !== '') return value;
+  }
+  return (zh[key] as string) ?? (key as string);
 }
 
 // ---- Dictionaries ------------------------------------------------------
@@ -212,11 +245,19 @@ export const zh = {
   navAboutSite: '关于本站',
   navFieldnotes: '实战经验',
   navReferences: '参考资源',
+  navAllArticles: '全部文章',
+  navHome: '首页',
+  navBackToBlog: '返回观察',
+  postPrevOlder: '← 上一篇（更早）',
+  postNextNewer: '下一篇（更新） →',
+  footerMaintainedBy: '由 {handle} 维护',
 
   // Common UI
   search: '搜索',
   searchPlaceholder: '搜索政策、辩论、抓手、人物、博文……',
   closeSearch: '关闭搜索',
+  searchSiteLabel: '站内搜索',
+  searchFallbackMessage: '搜索索引尚未构建。请运行 npm run build 后再试，或访问已部署的 sgai.md 使用搜索。',
   loadMore: '加载更多',
   readMore: '阅读全文',
   backTo: '返回',
@@ -291,6 +332,8 @@ export const zh = {
 
   // Footnotes
   footnotes: '参考文献',
+  tocLabel: '目录',
+  tocSummary: '📑 目录（{count} 节）',
 
   // Tracker dashboard
   trackerPageTitle: '新加坡 AI 观察仪表盘',
@@ -332,6 +375,7 @@ export const zh = {
   voiceExternalRoles: '跨机构身份',
   voiceSinceLabel: '自',
   voiceSourceLabel: '来源',
+  voiceAuthorLabel: '作者',
 
   // Task-based homepage entries — "what can you do here?"
   tasksSection: '从这里开始',
@@ -408,10 +452,18 @@ export const en: Partial<Record<keyof typeof zh, string>> = {
   navAboutSite: 'About',
   navFieldnotes: 'Field Notes',
   navReferences: 'References',
+  navAllArticles: 'All articles',
+  navHome: 'Home',
+  navBackToBlog: 'Back to Opinion',
+  postPrevOlder: '← Previous (older)',
+  postNextNewer: 'Next (newer) →',
+  footerMaintainedBy: 'Maintained by {handle}',
 
   search: 'Search',
   searchPlaceholder: 'Search policies, debates, levers, people, articles…',
   closeSearch: 'Close search',
+  searchSiteLabel: 'Site search',
+  searchFallbackMessage: 'Search index not yet built. Run npm run build first, or visit the deployed sgai.md.',
   loadMore: 'Load more',
   readMore: 'Read more',
   backTo: 'Back to',
@@ -487,6 +539,8 @@ export const en: Partial<Record<keyof typeof zh, string>> = {
   langToggleLabel: 'Switch language',
 
   footnotes: 'References',
+  tocLabel: 'Contents',
+  tocSummary: '📑 Contents ({count} sections)',
 
   trackerPageTitle: 'Singapore AI Observatory Dashboard',
   trackerPageBlurb:
@@ -526,6 +580,7 @@ export const en: Partial<Record<keyof typeof zh, string>> = {
   voiceExternalRoles: 'External Roles',
   voiceSinceLabel: 'Since',
   voiceSourceLabel: 'Source',
+  voiceAuthorLabel: 'Author',
 
   tasksSection: 'Start Here',
   tasksBlurb: 'Different questions, different entry points. Tell us what you’re trying to do.',
@@ -569,4 +624,18 @@ export const en: Partial<Record<keyof typeof zh, string>> = {
   viewSource: 'View source',
   countSuffix: '',
   copyrightOpenSource: 'Source MIT-licensed; content CC BY 4.0',
+};
+
+/** Japanese dictionary. Phase 1 will populate; Phase 0 leaves it empty so
+ *  the fallback chain returns en (then zh) values. Empty entries are valid
+ *  and intentionally NOT typechecked as required. */
+export const ja: Partial<Record<keyof typeof zh, string>> = {};
+
+/** Lookup table from Lang code to its dictionary. Used by `t()` to walk
+ *  the fallback chain. Adding a new locale L means: append to LOCALES,
+ *  add a fallback chain entry, export an `<L>` dict, and register here. */
+const DICTIONARIES: Record<Lang, Partial<Record<keyof typeof zh, string>>> = {
+  zh,
+  en,
+  ja,
 };

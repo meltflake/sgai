@@ -10,7 +10,9 @@ interface Props {
 }
 
 const { project, lang } = Astro.props;
-const isEn = lang === 'en';
+// `isEn` is true for any non-zh locale — local label dictionaries only
+// branch zh vs. non-zh; ja falls back to en until per-locale strings land.
+const isEn = lang !== 'zh';
 
 const displayName = isEn ? project.nameEn || project.name : project.name;
 const owner = isEn ? project.ownerEn || project.owner : project.owner;

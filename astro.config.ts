@@ -16,6 +16,16 @@ import type { AstroIntegration } from 'astro';
 import astrowind from './vendor/integration';
 
 import { readingTimeRemarkPlugin, responsiveTablesRehypePlugin, lazyImagesRehypePlugin } from './src/utils/frontmatter';
+import { LOCALES, ROUTE_DEFAULT_LOCALE } from './src/i18n';
+
+// BCP 47 hreflang code per locale (used in sitemap alternates). Add new
+// locales here as they're added to LOCALES.
+const HREFLANG_MAP: Record<string, string> = {
+  en: 'en',
+  zh: 'zh-CN',
+  ja: 'ja',
+};
+const sitemapLocales = Object.fromEntries(LOCALES.map((l) => [l, HREFLANG_MAP[l] ?? l]));
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -49,12 +59,14 @@ export default defineConfig({
       applyBaseStyles: false,
     }),
     // Sitemap: serialize hreflang alternates so search engines can pair
-    // EN canonical with ZH mirror. The `i18n` block here is for sitemap
-    // serialization only — Astro's own i18n routing stays disabled.
+    // each locale's URLs with its siblings. The `i18n` block here is for
+    // sitemap serialization only — Astro's own i18n routing stays
+    // disabled. Locales come from src/i18n/index.ts so adding a new
+    // language to LOCALES picks it up here automatically.
     sitemap({
       i18n: {
-        defaultLocale: 'en',
-        locales: { en: 'en', zh: 'zh-CN' },
+        defaultLocale: ROUTE_DEFAULT_LOCALE,
+        locales: sitemapLocales,
       },
       // Strip noindex pages from sitemap. Two layers:
       //   (a) Query-string URLs (analysisPending drilldowns linked with ?region=...).

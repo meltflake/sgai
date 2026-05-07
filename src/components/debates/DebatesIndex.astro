@@ -18,7 +18,10 @@ interface Props {
 }
 
 const { lang } = Astro.props;
-const isEn = lang === 'en';
+// `isEn` is true for any non-zh locale — the page-local L dictionary only
+// distinguishes zh vs. non-zh, and non-default locales (en, ja, ...) all
+// fall back to the English copy until per-locale strings are added.
+const isEn = lang !== 'zh';
 
 const DATA_UPDATED = '2026-05-03';
 

@@ -12,7 +12,7 @@
 import type { Post } from '~/types';
 import { fetchPosts } from '~/utils/blog';
 import { getPermalink } from '~/utils/permalinks';
-import { getLangFromPath, localizedHref } from '~/i18n';
+import { getLangFromPath, localizedHref, t } from '~/i18n';
 
 interface Props {
   post: Post;
@@ -21,13 +21,12 @@ interface Props {
 
 const { post, class: extraClass = '' } = Astro.props;
 const lang = getLangFromPath(new URL(Astro.url).pathname);
-const isEn = lang === 'en';
-const olderLabel = isEn ? '← Previous (older)' : '← 上一篇（更早）';
-const newerLabel = isEn ? 'Next (newer) →' : '下一篇（更新） →';
+const olderLabel = t(lang, 'postPrevOlder');
+const newerLabel = t(lang, 'postNextNewer');
 
 // Filter siblings to the same lang as the host page so EN prev/next stays EN.
 const allPosts = (await fetchPosts()).filter((p) => {
-  const postLang = (p as Post & { lang?: 'zh' | 'en' }).lang ?? 'zh';
+  const postLang = (p as Post & { lang?: 'zh' | 'en' | 'ja' }).lang ?? 'zh';
   return postLang === lang;
 });
 // allPosts is already sorted desc by publishDate. Index 0 = newest.
@@ -39,7 +38,6 @@ const olderTitle = older?.title ?? '';
 const newerTitle = newer?.title ?? '';
 
 const localize = (href: string) => localizedHref(href, lang);
-void isEn;
 ---
 
 {

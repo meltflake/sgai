@@ -1,12 +1,15 @@
 // scripts/lib/i18n-pair.ts
 // ────────────────────────────────────────────────────────────────────────
 // Source-level i18n gate for sgai data files.
+// Static check: every zh field that can be locale-paired has its
+// per-locale sibling populated (e.g. `*En` for en, `*Ja` for ja).
 //
 // Two complementary checks, both run from the same AST traversal:
 //
 //   (1) ALIGNMENT (back-compat with v1) — every <field> with CJK content
-//       has a sibling <field>En populated. Field set is configurable,
-//       defaults to a generic list (`title`, `description`, `name`, ...).
+//       has a sibling <field><Suffix> populated for each target locale.
+//       Field set is configurable, defaults to a generic list (`title`,
+//       `description`, `name`, ...).
 //
 //   (2) COMPLETENESS (new) — for files declared in `scripts/i18n-config.ts`,
 //       every required field's source side AND every locale sibling must
@@ -20,7 +23,7 @@
 // USAGE (programmatic — preserved for refresh pipelines):
 //
 //   import { findUnpairedFields } from './lib/i18n-pair';
-//   const issues = findUnpairedFields('src/data/policies.ts', { fields: ['title', 'description'] });
+//   const issues = findUnpairedFields('src/data/policies.ts', { fields: ['title', 'description'], locales: ['en', 'ja'] });
 //
 // USAGE (programmatic — new completeness API):
 //
@@ -33,6 +36,7 @@
 //   npx tsx scripts/lib/i18n-pair.ts --mode=completeness src/data/ecosystem.ts
 //   npx tsx scripts/lib/i18n-pair.ts --mode=both src/data/ecosystem.ts
 //   npx tsx scripts/lib/i18n-pair.ts --fields=title,description src/data/policies.ts
+//   npx tsx scripts/lib/i18n-pair.ts --locales=en,ja src/data/*.ts
 //
 // Both modes respect the `i18n-allow-unpaired` annotation on the line
 // preceding the record's opening brace, which exempts that record from
@@ -53,6 +57,8 @@ export interface UnpairedField {
   field: string;
   chineseValue: string;
   reason: 'missing-sibling' | 'empty-sibling';
+  /** Which target locale's sibling is missing/empty (e.g. 'en', 'ja'). */
+  locale: string;
 }
 
 export interface IncompleteRecord {
@@ -85,8 +91,19 @@ const DEFAULT_FIELDS = [
   'subtitle',
 ];
 
+const DEFAULT_LOCALES = ['en'];
+
 const CJK_RE = /[一-鿿]/;
 const IGNORE_MARKER = 'i18n-allow-unpaired';
+
+// ── Locale helpers ─────────────────────────────────────────────────────
+
+/** Compute the sibling-field suffix for a locale. zh → '' (bare key);
+ *  en → 'En'; ja → 'Ja'. Mirrors src/i18n/index.ts:siblingSuffix. */
+function siblingSuffix(locale: string): string {
+  if (locale === 'zh') return '';
+  return locale.charAt(0).toUpperCase() + locale.slice(1);
+}
 
 // ── AST utilities ───────────────────────────────────────────────────────
 
@@ -213,13 +230,14 @@ function getRecordIdentifier(obj: ts.ObjectLiteralExpression): string | undefine
 
 export function findUnpairedFields(
   filePath: string,
-  options: { fields?: string[]; ignoreUnpairedAnnotation?: string } = {}
+  options: { fields?: string[]; locales?: string[]; ignoreUnpairedAnnotation?: string } = {}
 ): UnpairedField[] {
   if (!existsSync(filePath)) {
     throw new Error(`File not found: ${filePath}`);
   }
   void options.ignoreUnpairedAnnotation; // marker is fixed (`i18n-allow-unpaired`); kept for signature compat
   const fields = options.fields || DEFAULT_FIELDS;
+  const locales = options.locales || DEFAULT_LOCALES;
   const sourceFile = parseSourceFile(filePath);
   const issues: UnpairedField[] = [];
 
@@ -232,30 +250,36 @@ export function findUnpairedFields(
       if (value.kind !== 'string') continue;
       if (!CJK_RE.test(value.text)) continue;
 
-      const sibling = getPropertyValue(obj, `${field}En`);
       const fieldProp = getProperty(obj, field)!;
       // Per-field exemption: comment immediately above the field line.
       if (hasIgnoreAnnotation(fieldProp, sourceFile)) continue;
       const fieldLine = getLine(fieldProp, sourceFile);
 
-      if (sibling.kind === 'absent') {
-        issues.push({
-          file: filePath,
-          line: fieldLine,
-          recordStartLine,
-          field,
-          chineseValue: value.text,
-          reason: 'missing-sibling',
-        });
-      } else if (sibling.kind === 'string' && sibling.text.length === 0) {
-        issues.push({
-          file: filePath,
-          line: fieldLine,
-          recordStartLine,
-          field,
-          chineseValue: value.text,
-          reason: 'empty-sibling',
-        });
+      for (const locale of locales) {
+        const sibKey = `${field}${siblingSuffix(locale)}`;
+        const sibling = getPropertyValue(obj, sibKey);
+
+        if (sibling.kind === 'absent') {
+          issues.push({
+            file: filePath,
+            line: fieldLine,
+            recordStartLine,
+            field,
+            chineseValue: value.text,
+            reason: 'missing-sibling',
+            locale,
+          });
+        } else if (sibling.kind === 'string' && sibling.text.length === 0) {
+          issues.push({
+            file: filePath,
+            line: fieldLine,
+            recordStartLine,
+            field,
+            chineseValue: value.text,
+            reason: 'empty-sibling',
+            locale,
+          });
+        }
       }
     }
   }
@@ -341,10 +365,19 @@ async function cliMain(): Promise<void> {
         .split(',')
         .map((s) => s.trim())
     : undefined;
+  const localesArg = argv.find((a) => a.startsWith('--locales='));
+  const locales = localesArg
+    ? localesArg
+        .split('=')[1]
+        .split(',')
+        .map((s) => s.trim())
+    : undefined;
   const files = argv.filter((a) => !a.startsWith('--'));
 
   if (files.length === 0) {
-    process.stderr.write('Usage: i18n-pair <file...> [--mode=alignment|completeness|both] [--fields=title,description]\n');
+    process.stderr.write(
+      'Usage: i18n-pair <file...> [--mode=alignment|completeness|both] [--fields=title,description] [--locales=en,ja]\n'
+    );
     process.exit(2);
   }
 
@@ -355,13 +388,13 @@ async function cliMain(): Promise<void> {
     const abs = resolve(file);
 
     if (mode === 'alignment' || mode === 'both') {
-      const issues = findUnpairedFields(abs, { fields });
+      const issues = findUnpairedFields(abs, { fields, locales });
       if (issues.length > 0) {
         totalUnpaired += issues.length;
         process.stdout.write(`\n${file}: ${issues.length} unpaired (alignment)\n`);
         for (const issue of issues.slice(0, 20)) {
           process.stdout.write(
-            `  L${issue.line} ${issue.field} (${issue.reason}): ${issue.chineseValue.slice(0, 50)}\n`
+            `  L${issue.line} ${issue.field}[${issue.locale}] (${issue.reason}): ${issue.chineseValue.slice(0, 50)}\n`
           );
         }
         if (issues.length > 20) {

@@ -25,7 +25,10 @@ import { levers } from '~/data/levers';
 import { timelineEvents } from '~/data/timeline';
 import { allPeople } from '~/data/people';
 import type { RelatedBundle } from '~/utils/graph';
-import { t, type Lang } from '~/i18n';
+import { localizedHref, t, type Lang } from '~/i18n';
+
+// JSON-LD inLanguage uses BCP 47 (zh-CN, en, ja). Mirrored from Layout.astro.
+const HTML_LANG: Record<Lang, string> = { zh: 'zh-CN', en: 'en', ja: 'ja' };
 
 export const prerender = true;
 
@@ -59,7 +62,7 @@ const metadata = merge(
   { ...(post?.metadata ? { ...post.metadata, canonical: post.metadata?.canonical || url } : {}) }
 ) as MetaData;
 
-const orgName = lang === 'en' ? 'Singapore AI Observatory' : '新加坡 AI 观察';
+const orgName = t(lang, 'siteName');
 const articleSchema = {
   '@context': 'https://schema.org',
   '@type': 'Article',
@@ -74,10 +77,10 @@ const articleSchema = {
     logo: { '@type': 'ImageObject', url: 'https://sgai.md/favicon.svg' },
   },
   mainEntityOfPage: { '@type': 'WebPage', '@id': String(url) },
-  inLanguage: lang === 'en' ? 'en' : 'zh-CN',
+  inLanguage: HTML_LANG[lang],
 };
 
-const blogBase = lang === 'zh' ? '/zh/blog' : '/blog';
+const blogBase = localizedHref('/blog', lang);
 const breadcrumbs = [{ label: t(lang, 'navAnalysis'), href: getPermalink(blogBase) }, { label: post.title }];
 
 // Build a RelatedBundle from frontmatter cross-refs. Each list is filtered

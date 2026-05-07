@@ -26,9 +26,11 @@ const TAG_EN: Record<string, string> = {
   标准: 'Standards',
   数据主权: 'Data Sovereignty',
 };
-const tagText = (tag: string) => (lang === 'en' ? (TAG_EN[tag] ?? tag) : tag);
+// For non-zh locales (en, ja, ...) translate the zh tag via TAG_EN.
+// ja currently shares the en map until per-locale tag dictionaries land.
+const tagText = (tag: string) => (lang === 'zh' ? tag : (TAG_EN[tag] ?? tag));
 
-const COPY: Record<Lang, { title: string; subtitle: string; sources: string }> = {
+const COPY: Partial<Record<Lang, { title: string; subtitle: string; sources: string }>> = {
   zh: {
     title: '📅 新加坡 AI 发展时间线',
     subtitle: '从 2014 年智慧国家倡议到 2027 年国际 AI 奥林匹克，回顾新加坡 AI 战略的关键里程碑。',
@@ -42,7 +44,8 @@ const COPY: Record<Lang, { title: string; subtitle: string; sources: string }> =
   },
 };
 
-const c = COPY[lang];
+// Per-locale page copy with fallback chain ja → en → zh.
+const c = COPY[lang] ?? COPY.en ?? COPY.zh!;
 ---
 
 <section class="px-4 py-16 sm:px-6 mx-auto lg:px-8 max-w-4xl">

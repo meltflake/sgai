@@ -6128,14 +6128,16 @@ export function getSpeechTranscript(id: string): SpeechTranscript | undefined {
   return speechTranscripts[id];
 }
 
-export function getSpeechTranscriptParagraphs(id: string, lang: 'zh' | 'en'): string[] {
+export function getSpeechTranscriptParagraphs(id: string, lang: 'zh' | 'en' | 'ja'): string[] {
   const t = getSpeechTranscript(id);
   if (!t) return [];
-  return lang === 'en' ? t.paragraphsEn : t.paragraphs;
+  if (lang === 'zh') return t.paragraphs;
+  return t.paragraphsEn?.length ? t.paragraphsEn : t.paragraphs;
 }
 
-export function getSpeechTranscriptTldr(id: string, lang: 'zh' | 'en'): string[] | undefined {
+export function getSpeechTranscriptTldr(id: string, lang: 'zh' | 'en' | 'ja'): string[] | undefined {
   const t = getSpeechTranscript(id);
   if (!t) return undefined;
-  return lang === 'en' ? t.tldrEn : t.tldr;
+  if (lang === 'zh') return t.tldr;
+  return t.tldrEn ?? t.tldr;
 }

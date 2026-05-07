@@ -30,7 +30,7 @@ const totalPolicies = policyCategories.flatMap((c) => c.policies).length;
 const totalDebates = DEBATE_STATS.total;
 const totalLeverItems = levers.reduce((sum, lv) => sum + lv.groups.flatMap((g) => g.items).length, 0);
 
-const debateTitle = (d: (typeof debates)[number]) => (lang === 'zh' ? d.title : d.titleEn || d.title || '');
+const debateTitle = (d: (typeof debates)[number]) => pickLocalized<string>(d, 'title', lang) || d.title || '';
 ---
 
 {
@@ -41,7 +41,7 @@ const debateTitle = (d: (typeof debates)[number]) => (lang === 'zh' ? d.title : 
   <div class="max-w-5xl mx-auto px-4 sm:px-6">
     <p class="text-xs uppercase tracking-[0.18em] text-primary font-semibold mb-4">{t(lang, 'heroEyebrow')}</p>
     <h1 class="t-display text-gray-900 dark:text-white mb-6 max-w-3xl">
-      {t(lang, 'heroHeadline')}<br class="hidden md:inline" />{lang === 'zh' ? '' : ' '}{t(lang, 'heroHeadline2')}
+      {t(lang, 'heroHeadline')}<br class="hidden md:inline" />{lang === 'en' ? ' ' : ''}{t(lang, 'heroHeadline2')}
     </h1>
     <p class="t-lead text-gray-700 dark:text-gray-300 mb-8 max-w-prose">
       {t(lang, 'heroSubtitle')}

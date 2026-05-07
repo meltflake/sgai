@@ -7,7 +7,7 @@ import type { Props as AstroSeoProps } from '@astrolib/seo';
 import { METADATA, I18N } from 'astrowind:config';
 import type { MetaData } from '~/types';
 import { getCanonical } from '~/utils/permalinks';
-import { getLangFromPath, t, type Lang } from '~/i18n';
+import { DEFAULT_LOCALE, getLangFromPath, t, type Lang } from '~/i18n';
 
 import { adaptOpenGraphImages } from '~/utils/images';
 
@@ -31,13 +31,18 @@ const {
 
 const lang: Lang = langOverride ?? getLangFromPath(String(Astro.url.pathname));
 const siteName = t(lang, 'siteName');
-const ogLocale = lang === 'en' ? 'en_US' : 'zh_CN';
+// og:locale uses BCP 47 with underscore (Facebook spec). Map per Lang.
+const OG_LOCALES: Record<Lang, string> = { zh: 'zh_CN', en: 'en_US', ja: 'ja_JP' };
+const ogLocale = OG_LOCALES[lang] ?? OG_LOCALES.en;
 const hasDefaultOgImage = Boolean(METADATA?.openGraph?.images?.length);
 const hasPageOgImage = Boolean(openGraph?.images?.length);
-// Localized title template + default. Falls back to config when missing.
-const defaultTitle = lang === 'en' ? siteName : (METADATA?.title?.default ?? siteName);
-const titleTemplate = lang === 'en' ? `%s — ${siteName}` : (METADATA?.title?.template ?? `%s — ${siteName}`);
-const localizedDescription = lang === 'en' ? t('en', 'siteDescription') : (METADATA?.description ?? '');
+// Localized title template + default. The YAML METADATA config holds the
+// zh (DEFAULT_LOCALE) defaults; non-default locales source title /
+// description from the dictionary.
+const isDefaultLocale = lang === DEFAULT_LOCALE;
+const defaultTitle = isDefaultLocale ? (METADATA?.title?.default ?? siteName) : siteName;
+const titleTemplate = isDefaultLocale ? (METADATA?.title?.template ?? `%s — ${siteName}`) : `%s — ${siteName}`;
+const localizedDescription = isDefaultLocale ? (METADATA?.description ?? '') : t(lang, 'siteDescription');
 
 const seoProps: AstroSeoProps = merge(
   {

@@ -4,6 +4,7 @@ import type { CollectionEntry } from 'astro:content';
 import type { Post } from '~/types';
 import { APP_BLOG } from 'astrowind:config';
 import { cleanSlug, trimSlash, BLOG_BASE, POST_PERMALINK_PATTERN, CATEGORY_BASE, TAG_BASE } from './permalinks';
+import { ROUTE_DEFAULT_LOCALE } from '~/i18n';
 
 const generatePermalink = async ({
   id,
@@ -66,19 +67,24 @@ const getNormalizedPost = async (post: CollectionEntry<'post'>): Promise<Post> =
     lang: rawLang,
   } = data;
 
-  // i18n: detect lang from frontmatter or filename. Files like
-  // `foo.en.md` (or astro-stripped `foo.en`) are EN posts; their canonical
-  // slug strips the `.en` infix so EN renders at /foo/ (mirrors zh /foo/).
-  // Astro's content collection id may or may not retain the `.md` extension
-  // depending on loader version — handle both shapes.
-  // i18n: posts under `src/data/post/en/<slug>.md` are EN; everything else
-  // defaults to zh. Astro slugifies the `id` so the `en/` prefix becomes a
-  // simple `en/` path or `en-` prefix depending on loader version — handle
-  // both shapes. Frontmatter `lang: 'en'` is the authoritative override.
+  // i18n: detect lang from frontmatter or filename. Posts under
+  // `src/data/post/<lang>/<slug>.md` (e.g. `en/foo.md`, `ja/foo.md`) are
+  // routed to that locale; everything else defaults to zh. Astro slugifies
+  // the `id` so the `<lang>/` prefix becomes either `<lang>/` or
+  // `<lang>-` depending on loader version — handle both shapes. The
+  // `lang` frontmatter value (when present) is the authoritative override.
   const idNoMd = id.replace(/\.(md|mdx)$/i, '');
-  const isEnFromName = /^en[/\\-]/i.test(idNoMd);
-  const lang: 'zh' | 'en' = (rawLang as 'zh' | 'en' | undefined) ?? (isEnFromName ? 'en' : 'zh');
-  const canonicalBasename = idNoMd.replace(/^en[/\\-]/i, '');
+  type PostLang = 'zh' | 'en' | 'ja';
+  const KNOWN_POST_LANGS: PostLang[] = ['en', 'ja'];
+  let langFromName: PostLang | undefined;
+  for (const candidate of KNOWN_POST_LANGS) {
+    if (new RegExp(`^${candidate}[/\\\\-]`, 'i').test(idNoMd)) {
+      langFromName = candidate;
+      break;
+    }
+  }
+  const lang: PostLang = (rawLang as PostLang | undefined) ?? langFromName ?? 'zh';
+  const canonicalBasename = idNoMd.replace(new RegExp(`^(${KNOWN_POST_LANGS.join('|')})[/\\\\-]`, 'i'), '');
   const baseSlug = cleanSlug(canonicalBasename);
   const slug = baseSlug; // canonical slug (shared across langs)
   const publishDate = new Date(rawPublishDate);
@@ -98,12 +104,12 @@ const getNormalizedPost = async (post: CollectionEntry<'post'>): Promise<Post> =
 
   const basePermalink = await generatePermalink({ id, slug, publishDate, category: category?.slug });
   // After Phase 2 routing migration: EN is the route default and lives at
-  // bare permalinks (`/foo/`); ZH posts go under `/zh/<slug>/`. No leading
-  // slash on the prefix — a leading "/" in the catch-all [...blog] params
-  // makes Astro emit duplicate routes. All consumers run permalinks through
-  // getPermalink() which calls trimSlash, so leading-slashlessness is the
-  // canonical form.
-  const permalink = lang === 'zh' ? `zh/${basePermalink}` : basePermalink;
+  // bare permalinks (`/foo/`); non-default locales (zh, ja, ...) go under
+  // `/<lang>/<slug>/`. No leading slash on the prefix — a leading "/" in
+  // the catch-all [...blog] params makes Astro emit duplicate routes. All
+  // consumers run permalinks through getPermalink() which calls trimSlash,
+  // so leading-slashlessness is the canonical form.
+  const permalink = lang === ROUTE_DEFAULT_LOCALE ? basePermalink : `${lang}/${basePermalink}`;
 
   return {
     id: id,
@@ -221,7 +227,7 @@ export const getStaticPathsBlogList = async ({
   lang,
 }: {
   paginate: PaginateFunction;
-  lang?: 'zh' | 'en';
+  lang?: 'zh' | 'en' | 'ja';
 }) => {
   if (!isBlogEnabled || !isBlogListRouteEnabled) return [];
   const all = await fetchPosts();

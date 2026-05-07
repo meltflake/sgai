@@ -1,5 +1,7 @@
 import { I18N } from 'astrowind:config';
 
+import type { Lang } from '~/i18n';
+
 const dateOpts: Intl.DateTimeFormatOptions = {
   year: 'numeric',
   month: 'short',
@@ -7,16 +9,19 @@ const dateOpts: Intl.DateTimeFormatOptions = {
   timeZone: 'UTC',
 };
 
-const zhFormatter = new Intl.DateTimeFormat('zh-CN', dateOpts);
-const enFormatter = new Intl.DateTimeFormat('en-US', dateOpts);
+const FORMATTERS: Record<Lang, Intl.DateTimeFormat> = {
+  zh: new Intl.DateTimeFormat('zh-CN', dateOpts),
+  en: new Intl.DateTimeFormat('en-US', dateOpts),
+  ja: new Intl.DateTimeFormat('ja-JP', dateOpts),
+};
 
 // Default formatter mirrors site-wide locale (kept for backward-compat).
 export const formatter: Intl.DateTimeFormat = new Intl.DateTimeFormat(I18N?.language, dateOpts);
 
 /** Format a date using the locale matching the given lang. */
-export const getFormattedDate = (date: Date, lang: 'zh' | 'en' = 'zh'): string => {
+export const getFormattedDate = (date: Date, lang: Lang = 'zh'): string => {
   if (!date) return '';
-  return (lang === 'en' ? enFormatter : zhFormatter).format(date);
+  return (FORMATTERS[lang] ?? FORMATTERS.zh).format(date);
 };
 
 export const trim = (str = '', ch?: string) => {

@@ -3,7 +3,7 @@
 // timeline, narrative form. Shared body for `/evolution/` and `/evolution/`.
 
 import Headline from '~/components/ui/Headline.astro';
-import { localizedHref, type Lang } from '~/i18n';
+import { DEFAULT_LOCALE, localizedHref, pickLocalized, type Lang } from '~/i18n';
 
 interface Props {
   lang: Lang;
@@ -106,7 +106,7 @@ const phases: Phase[] = [
     ],
   },
   {
-    period: lang === 'en' ? '2024–present' : '2024–至今',
+    period: lang === DEFAULT_LOCALE ? '2024–至今' : '2024–present',
     title: '第五阶段：生态深化期',
     titleEn: 'Phase 5: Ecosystem Deepening',
     event: '多项执行计划落地',
@@ -134,7 +134,7 @@ interface PageCopy {
   furtherReadingCta: string;
 }
 
-const COPY: Record<Lang, PageCopy> = {
+const COPY: Partial<Record<Lang, PageCopy>> = {
   zh: {
     pageTitle: '📈 新加坡 AI 政策演进全景',
     pageSubtitle: '从 2014 年智慧国家倡议到 2024 年生成式 AI 治理框架，新加坡 AI 政策经历了五个关键阶段。',
@@ -158,9 +158,21 @@ const COPY: Record<Lang, PageCopy> = {
   },
 };
 
-const c = COPY[lang];
-const pick = (p: Phase, key: 'title' | 'event' | 'description'): string => (lang === 'en' ? p[`${key}En`] : p[key]);
-const pickItems = (p: Phase): string[] => (lang === 'en' ? p.itemsEn : p.items);
+// Per-locale page copy with fallback chain ja → en → zh.
+const c = COPY[lang] ?? COPY.en ?? COPY.zh!;
+const pick = (p: Phase, key: 'title' | 'event' | 'description'): string =>
+  pickLocalized<string>(p, key, lang) ?? (p[key] as string);
+const pickItems = (p: Phase): string[] => {
+  if (lang === DEFAULT_LOCALE) return p.items;
+  // For non-default locales, prefer the en list; ja falls back through
+  // the same chain. Future per-locale `itemsJa` etc. can be added with no
+  // call-site changes.
+  const suffix = lang.charAt(0).toUpperCase() + lang.slice(1);
+  const localeKey = `items${suffix}` as keyof Phase;
+  const localeItems = p[localeKey] as string[] | undefined;
+  if (Array.isArray(localeItems) && localeItems.length > 0) return localeItems;
+  return p.itemsEn ?? p.items;
+};
 ---
 
 <section class="px-4 py-16 sm:px-6 mx-auto lg:px-8 max-w-4xl">

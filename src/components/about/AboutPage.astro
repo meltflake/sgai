@@ -25,7 +25,7 @@ interface AboutCopy {
   ctaSource: string;
 }
 
-const COPY: Record<Lang, AboutCopy> = {
+const COPY: Partial<Record<Lang, AboutCopy>> = {
   zh: {
     eyebrow: '关于本站',
     headline: '为什么记录新加坡的 AI 战略',
@@ -169,7 +169,8 @@ const COPY: Record<Lang, AboutCopy> = {
   },
 };
 
-const c = COPY[lang];
+// Per-locale page copy with fallback chain ja → en → zh.
+const c = COPY[lang] ?? COPY.en ?? COPY.zh!;
 ---
 
 <article class="prose prose-lg dark:prose-invert max-w-3xl mx-auto px-4 sm:px-6 py-12 md:py-16 font-serif">

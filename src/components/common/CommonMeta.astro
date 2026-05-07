@@ -1,16 +1,23 @@
 ---
 import { getAsset, getCanonical } from '~/utils/permalinks';
-import { localizedHref, unprefixed, ROUTE_DEFAULT_LOCALE } from '~/i18n';
+import { LOCALES, ROUTE_DEFAULT_LOCALE, localizedHref, unprefixed, type Lang } from '~/i18n';
 
-// After Phase 2 routing migration, every content page has both an EN
-// (route-default, unprefixed) and a /zh/<path>/ mirror. We always emit
-// both hreflang alternates plus x-default → EN. The few non-content
-// endpoints (sitemap.xml, llms.txt, RSS) are not HTML pages and don't
-// hit this component.
+// After Phase 2 routing migration, every content page has a route-default
+// (en, unprefixed) version and one /<lang>/<path>/ mirror per non-default
+// locale. We emit one hreflang alternate per LOCALES entry plus x-default
+// → the route-default canonical. Non-content endpoints (sitemap.xml,
+// llms.txt, RSS) are not HTML pages and don't hit this component.
 const pathname = String(Astro.url.pathname);
-const enPath = unprefixed(pathname);
-const enCanonical = String(getCanonical(localizedHref(enPath, ROUTE_DEFAULT_LOCALE)));
-const zhCanonical = String(getCanonical(localizedHref(enPath, 'zh')));
+const basePath = unprefixed(pathname);
+
+// BCP 47 hreflang code per locale. Mirrors astro.config.ts HREFLANG_MAP.
+const HREFLANG: Record<Lang, string> = { en: 'en', zh: 'zh-CN', ja: 'ja' };
+
+const alternates = LOCALES.map((lang) => ({
+  hreflang: HREFLANG[lang] ?? lang,
+  href: String(getCanonical(localizedHref(basePath, lang))),
+}));
+const xDefault = String(getCanonical(localizedHref(basePath, ROUTE_DEFAULT_LOCALE)));
 ---
 
 <meta charset="UTF-8" />
@@ -19,6 +26,5 @@ const zhCanonical = String(getCanonical(localizedHref(enPath, 'zh')));
 
 <link rel="sitemap" href={getAsset('/sitemap-index.xml')} />
 <link rel="manifest" href={getAsset('/manifest.json')} />
-<link rel="alternate" hreflang="en" href={enCanonical} />
-<link rel="alternate" hreflang="zh-CN" href={zhCanonical} />
-<link rel="alternate" hreflang="x-default" href={enCanonical} />
+{alternates.map((a) => <link rel="alternate" hreflang={a.hreflang} href={a.href} />)}
+<link rel="alternate" hreflang="x-default" href={xDefault} />

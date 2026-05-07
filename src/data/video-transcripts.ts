@@ -3526,24 +3526,29 @@ export function getVideoTranscript(videoId: string): VideoTranscript | undefined
   return videoTranscripts[videoId];
 }
 
-export function getVideoTranscriptParagraphs(videoId: string, lang: 'zh' | 'en'): string[] {
+export function getVideoTranscriptParagraphs(videoId: string, lang: 'zh' | 'en' | 'ja'): string[] {
   const transcript = getVideoTranscript(videoId);
   if (!transcript) return [];
-  if (lang === 'en') return transcript.paragraphsEn || [];
-  return transcript.paragraphs;
+  if (lang === 'zh') return transcript.paragraphs;
+  // en, ja, ... — prefer the English paragraphs when present (per-locale
+  // transcript variants like paragraphsJa can be added later).
+  return transcript.paragraphsEn || transcript.paragraphs;
 }
 
-export function getVideoTranscriptLanguage(videoId: string, lang: 'zh' | 'en'): string | undefined {
+export function getVideoTranscriptLanguage(videoId: string, lang: 'zh' | 'en' | 'ja'): string | undefined {
   const transcript = getVideoTranscript(videoId);
   if (!transcript) return undefined;
-  if (lang === 'en') return transcript.paragraphsEn?.length ? transcript.captionLanguage || 'en' : undefined;
+  if (lang === 'zh') return transcript.paragraphs.length ? 'zh-CN' : undefined;
+  if (transcript.paragraphsEn?.length) return transcript.captionLanguage || (lang === 'en' ? 'en' : lang);
   return transcript.paragraphs.length ? 'zh-CN' : undefined;
 }
 
-/** Read the polished digest for a video in the requested language. Falls back to zh digest when EN is missing. */
-export function getVideoDigest(videoId: string, lang: 'zh' | 'en'): VideoDigest | undefined {
+/** Read the polished digest for a video in the requested language. Falls
+ *  back to zh digest when no localized variant exists. ja currently falls
+ *  back to the en digest, then zh. */
+export function getVideoDigest(videoId: string, lang: 'zh' | 'en' | 'ja'): VideoDigest | undefined {
   const transcript = getVideoTranscript(videoId);
   if (!transcript) return undefined;
-  if (lang === 'en') return transcript.digestEn || transcript.digest;
-  return transcript.digest;
+  if (lang === 'zh') return transcript.digest;
+  return transcript.digestEn || transcript.digest;
 }

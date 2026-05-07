@@ -13,7 +13,10 @@ interface Props {
 }
 
 const { page, lang } = Astro.props;
-const isEn = lang === 'en';
+// `isEn` is true for any non-zh locale — the page-local label dictionary
+// only branches zh vs. non-zh, so non-default locales (en, ja, ...) all
+// share the English copy until per-locale strings are added.
+const isEn = lang !== 'zh';
 
 const benchmarkRoot = isEn ? '/benchmarking/' : '/benchmarking/';
 

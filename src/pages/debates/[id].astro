@@ -60,7 +60,10 @@ const speakers = debate.speakers.map((raw) => {
 });
 
 const summaryShort = pickLocalized<string>(debate, 'summary', lang) || '';
-const keyPoints = (lang === 'en' && debate.keyPointsEn?.length ? debate.keyPointsEn : debate.keyPoints) || [];
+// keyPoints is an array — pickLocalized only walks string fields, so we
+// pick by hand. This page is en-only; ja blog mirrors will live under
+// /ja/debates/<id>/ and select keyPointsEn (or future keyPointsJa) directly.
+const keyPoints = (debate.keyPointsEn?.length ? debate.keyPointsEn : debate.keyPoints) || [];
 const govStance = pickLocalized(debate, 'governmentStance', 'governmentStanceEn', lang);
 const oppStance = pickLocalized(debate, 'oppositionStance', 'oppositionStanceEn', lang);
 const policySignal = pickLocalized(debate, 'policySignal', 'policySignalEn', lang);

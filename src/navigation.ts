@@ -77,15 +77,13 @@ export function getHeaderData(lang: Lang) {
 }
 
 export function getFooterData(lang: Lang) {
-  const updatedLabel = lang === 'en' ? 'Last updated' : '最近更新';
-  const maintainedBy = lang === 'en' ? 'Maintained by' : '由';
-  const closing = lang === 'en' ? '' : '维护';
   const handle = 'wulujia';
+  const maintainedLine = t(lang, 'footerMaintainedBy').replace('{handle}', handle);
   return {
     links: [
       {
         title: t(lang, labelKeys.analysis),
-        links: [{ text: lang === 'en' ? 'All articles' : '全部文章', href: lh('/blog', lang) }],
+        links: [{ text: t(lang, 'navAllArticles'), href: lh('/blog', lang) }],
       },
       {
         title: t(lang, labelKeys.policy),
@@ -123,9 +121,9 @@ export function getFooterData(lang: Lang) {
     secondaryLinks: [],
     socialLinks: [
       { ariaLabel: 'Github', icon: 'tabler:brand-github', href: 'https://github.com/meltflake/sgai' },
-      { ariaLabel: 'RSS', icon: 'tabler:rss', href: getAsset(lang === 'zh' ? '/zh/rss.xml' : '/rss.xml') },
+      { ariaLabel: 'RSS', icon: 'tabler:rss', href: getAsset(localizedHref('/rss.xml', lang)) },
     ],
-    footNote: `${t(lang, 'siteName')} v${SITE_VERSION} · ${updatedLabel} ${SITE_UPDATED} · ${maintainedBy} ${handle}${closing ? ' ' + closing : ''}`,
+    footNote: `${t(lang, 'siteName')} v${SITE_VERSION} · ${t(lang, 'freshnessUpdated')} ${SITE_UPDATED} · ${maintainedLine}`,
   };
 }
 
