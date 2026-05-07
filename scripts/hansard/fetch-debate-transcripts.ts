@@ -20,7 +20,10 @@ interface TranscriptTranslation {
   targetLanguage: 'zh';
   sourceLanguage: string;
   translatedAt: string;
-  source: 'openai' | 'manual' | 'source';
+  // 'claude' is the current default (lib/translate.ts → claude CLI).
+  // 'openai' is preserved for legacy translations from before the
+  // 2026-05 migration. 'manual' / 'source' unchanged.
+  source: 'claude' | 'openai' | 'manual' | 'source';
   model?: string;
   paragraphs: string[];
 }
@@ -198,7 +201,7 @@ function emitData(records: TranscriptRecord[]): void {
   /** Original Hansard transcript (English). */
   paragraphsEn: string[];
   translatedAt?: string;
-  translationSource?: 'openai' | 'manual' | 'source';
+  translationSource?: 'claude' | 'openai' | 'manual' | 'source';
   translationModel?: string;
   error?: string;
 }

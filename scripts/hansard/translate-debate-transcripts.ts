@@ -1,8 +1,35 @@
+// scripts/hansard/translate-debate-transcripts.ts
+// ────────────────────────────────────────────────────────────────────────
+// Translate Hansard transcripts (English → Simplified Chinese) using the
+// shared `lib/translate.ts` primitive (claude CLI under the hood).
+//
+// Why this exists:
+//   - SPRS Hansard publishes English transcripts only.
+//   - debate-transcripts.ts stores both `paragraphsEn` (raw) and
+//     `paragraphs` (zh translation) so detail pages render bilingually.
+//
+// Migration note (2026-05):
+//   This script previously called the OpenAI Chat Completions API directly
+//   and required OPENAI_API_KEY. It now delegates to `lib/translate.ts`,
+//   which uses the local `claude` CLI — same model used by every other
+//   sgai pipeline (policies / videos / voices), no API key required, with
+//   shared sha256 paragraph caching across all pipelines.
+//
+// CLI:
+//   npm run translate:debate-transcripts                       # all debates lacking zh
+//   npm run translate:debate-transcripts -- --ids=oral-answer-4017,budget-2902
+//   npm run translate:debate-transcripts -- --limit=5
+//   npm run translate:debate-transcripts -- --force            # bypass cache
+//
+// Output: scripts/hansard/data/translations/<id>.zh.json (per-debate package)
+// + final regeneration of src/data/debate-transcripts.ts via fetch script.
+
 import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join, resolve } from 'node:path';
 import { spawnSync } from 'node:child_process';
 
 import { debates } from '../../src/data/debates';
+import { translateBatch } from '../lib/translate.ts';
 
 interface TranscriptRecord {
   debateId: string;
@@ -17,15 +44,29 @@ interface TranscriptTranslation {
   targetLanguage: 'zh';
   sourceLanguage: string;
   translatedAt: string;
-  source: 'openai' | 'manual' | 'source';
+  /**
+   * Where the zh paragraphs came from:
+   *   - 'claude'  → translated via lib/translate.ts (current default)
+   *   - 'openai'  → legacy translations (older entries before 2026-05 migration)
+   *   - 'manual'  → hand-curated by reviewer
+   *   - 'source'  → source language was already zh, no translation needed
+   */
+  source: 'claude' | 'openai' | 'manual' | 'source';
   model?: string;
   paragraphs: string[];
 }
 
 const RAW_DIR = resolve('scripts/hansard/data/transcripts');
 const TRANSLATION_DIR = resolve('scripts/hansard/data/translations');
+// Cache shared with the rest of sgai pipelines so identical paragraphs
+// translated by other flows are free here too.
+const TRANSLATION_CACHE_DIR = resolve('scripts/hansard/data/translation-cache');
 const TARGET_LANGUAGE = 'zh' as const;
-const DEFAULT_MODEL = process.env.OPENAI_TRANSLATION_MODEL || process.env.OPENAI_MODEL || 'gpt-4.1-mini';
+
+// Defaults overridable via env. Model is documented in lib/translate.ts;
+// 'haiku' is the cheap default. Hansard transcripts are formal but not
+// terribly nuanced, so haiku quality is fine.
+const DEFAULT_MODEL = process.env.HANSARD_TRANSLATION_MODEL || process.env.SGAI_TRANSLATION_MODEL || 'haiku';
 const MAX_BATCH_CHARS = Number(process.env.HANSARD_TRANSLATION_BATCH_CHARS || 18000);
 const CONCURRENCY = Number(process.env.HANSARD_TRANSLATION_CONCURRENCY || 3);
 
@@ -35,12 +76,6 @@ const limitArg = process.argv.find((arg) => arg.startsWith('--limit='));
 const limit = limitArg ? Number(limitArg.split('=')[1]) : undefined;
 const idsArg = process.argv.find((arg) => arg.startsWith('--ids='));
 const requestedIds = idsArg ? new Set(idsArg.split('=')[1].split(',').map((id) => id.trim())) : undefined;
-
-function sleep(ms: number): Promise<void> {
-  return new Promise((resolvePromise) => {
-    setTimeout(resolvePromise, ms);
-  });
-}
 
 function readTranscript(debateId: string): TranscriptRecord | null {
   const path = join(RAW_DIR, `${debateId}.json`);
@@ -62,118 +97,8 @@ function isChineseLanguage(language: string): boolean {
   return language.toLowerCase().startsWith('zh');
 }
 
-function chunkParagraphs(paragraphs: string[]): string[][] {
-  const chunks: string[][] = [];
-  let current: string[] = [];
-  let currentLength = 0;
-
-  for (const paragraph of paragraphs) {
-    const length = paragraph.length;
-    if (current.length > 0 && currentLength + length > MAX_BATCH_CHARS) {
-      chunks.push(current);
-      current = [];
-      currentLength = 0;
-    }
-    current.push(paragraph);
-    currentLength += length;
-  }
-
-  if (current.length > 0) chunks.push(current);
-  return chunks;
-}
-
-function parseParagraphs(content: string): string[] {
-  const parsed = JSON.parse(content) as { paragraphs?: unknown };
-  if (!Array.isArray(parsed.paragraphs)) throw new Error('Translation response does not contain paragraphs array.');
-  if (!parsed.paragraphs.every((item) => typeof item === 'string')) {
-    throw new Error('Translation response paragraphs must be strings.');
-  }
-  return parsed.paragraphs as string[];
-}
-
-async function translateBatch(paragraphs: string[], model: string): Promise<string[]> {
-  const apiKey = process.env.OPENAI_API_KEY;
-  if (!apiKey) throw new Error('OPENAI_API_KEY is required to translate Hansard transcripts.');
-
-  const payload = {
-    model,
-    temperature: 0.1,
-    response_format: { type: 'json_object' },
-    messages: [
-      {
-        role: 'system',
-        content:
-          'You are a professional translator for a Chinese policy-analysis website. Translate Singapore Hansard transcript paragraphs from English into clear, faithful Simplified Chinese. Preserve names, institutions, numbers, dates, policy terms, bill names, and acronyms. Do not summarize. Do not omit content. Do not add commentary. Return only JSON: {"paragraphs":["..."]}. The output array must have exactly the same number of items as the input array.',
-      },
-      {
-        role: 'user',
-        content: JSON.stringify({ paragraphs }),
-      },
-    ],
-  };
-
-  let responseData:
-    | {
-        choices?: Array<{ message?: { content?: string } }>;
-      }
-    | undefined;
-  let lastError = '';
-
-  for (let attempt = 1; attempt <= 4; attempt += 1) {
-    const response = await fetch('https://api.openai.com/v1/chat/completions', {
-      method: 'POST',
-      headers: {
-        Authorization: `Bearer ${apiKey}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(payload),
-    });
-
-    if (response.ok) {
-      responseData = (await response.json()) as {
-        choices?: Array<{ message?: { content?: string } }>;
-      };
-      break;
-    }
-
-    const text = await response.text();
-    lastError = `OpenAI translation failed: ${response.status} ${text}`;
-    if (response.status === 429 || response.status >= 500) {
-      await sleep(attempt * attempt * 1500);
-      continue;
-    }
-
-    throw new Error(lastError);
-  }
-
-  if (!responseData) throw new Error(lastError || 'OpenAI translation failed with no response data.');
-
-  const content = responseData.choices?.[0]?.message?.content;
-  if (!content) throw new Error('OpenAI translation response was empty.');
-
-  const translated = parseParagraphs(content);
-  if (translated.length === 0) throw new Error('Translation response returned no paragraphs.');
-  return translated;
-}
-
-async function translateBatchWithFallback(paragraphs: string[], model: string): Promise<string[]> {
-  try {
-    return await translateBatch(paragraphs, model);
-  } catch (error) {
-    if (paragraphs.length === 1) throw error;
-
-    const message = error instanceof Error ? error.message : String(error);
-    process.stdout.write(`\n  batch fallback: ${message}\n`);
-    const translated: string[] = [];
-    for (let index = 0; index < paragraphs.length; index += 1) {
-      process.stdout.write(`  paragraph ${index + 1}/${paragraphs.length}\n`);
-      translated.push(...(await translateBatch([paragraphs[index]], model)));
-    }
-    return translated;
-  }
-}
-
-async function translateRecord(record: TranscriptRecord, model: string): Promise<TranscriptTranslation> {
+async function translateRecord(record: TranscriptRecord): Promise<TranscriptTranslation> {
+  // Already in zh — just copy paragraphs over.
   if (isChineseLanguage(record.sourceLanguage)) {
     return {
       debateId: record.debateId,
@@ -185,22 +110,26 @@ async function translateRecord(record: TranscriptRecord, model: string): Promise
     };
   }
 
-  const chunks = chunkParagraphs(record.paragraphs);
-  const translated: string[] = [];
-
-  for (let index = 0; index < chunks.length; index += 1) {
-    process.stdout.write(` ${record.debateId} batch ${index + 1}/${chunks.length}\n`);
-    translated.push(...(await translateBatchWithFallback(chunks[index], model)));
-  }
+  // Delegate paragraph-level translation to the shared primitive. It
+  // handles batching by char budget, concurrency, sha256 caching, and
+  // claude CLI retries.
+  const paragraphs = await translateBatch(record.paragraphs, {
+    direction: 'en→zh',
+    model: DEFAULT_MODEL,
+    concurrency: CONCURRENCY,
+    batchChars: MAX_BATCH_CHARS,
+    cacheDir: TRANSLATION_CACHE_DIR,
+    force,
+  });
 
   return {
     debateId: record.debateId,
     targetLanguage: TARGET_LANGUAGE,
     sourceLanguage: record.sourceLanguage,
     translatedAt: new Date().toISOString().slice(0, 10),
-    source: 'openai',
-    model,
-    paragraphs: translated,
+    source: 'claude',
+    model: DEFAULT_MODEL,
+    paragraphs,
   };
 }
 
@@ -214,6 +143,7 @@ function regenerateTranscriptData(): void {
 
 async function main(): Promise<void> {
   mkdirSync(TRANSLATION_DIR, { recursive: true });
+  mkdirSync(TRANSLATION_CACHE_DIR, { recursive: true });
 
   const selected = debates.filter((debate) => !requestedIds || requestedIds.has(debate.id)).slice(0, limit);
   const rawFiles = new Set(existsSync(RAW_DIR) ? readdirSync(RAW_DIR).filter((file) => file.endsWith('.json')) : []);
@@ -243,22 +173,18 @@ async function main(): Promise<void> {
     }
 
     process.stdout.write(`Translating ${debate.id} (${record.paragraphs.length} paragraphs) ...\n`);
-    const translation = await translateRecord(record, DEFAULT_MODEL);
+    const translation = await translateRecord(record);
     writeFileSync(translationPath(debate.id), `${JSON.stringify(translation, null, 2)}\n`);
     translatedCount += 1;
     process.stdout.write(`Translated ${debate.id}\n`);
   }
 
-  let nextIndex = 0;
-  async function worker(): Promise<void> {
-    while (nextIndex < selected.length) {
-      const debate = selected[nextIndex];
-      nextIndex += 1;
-      await processDebate(debate);
-    }
+  // Sequential processing — translateBatch already parallelises chunks
+  // internally via CONCURRENCY, so doing per-debate concurrency here
+  // would stack workers and hammer the claude CLI.
+  for (const debate of selected) {
+    await processDebate(debate);
   }
-
-  await Promise.all(Array.from({ length: Math.max(1, CONCURRENCY) }, () => worker()));
 
   regenerateTranscriptData();
   process.stdout.write(

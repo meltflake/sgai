@@ -32,6 +32,8 @@ export interface VoicesState {
 export interface HansardState {
   max_oral_id: number;
   max_written_id: number;
+  /** Budget COS report IDs (only published Feb–Mar during Committee of Supply). */
+  max_budget_id?: number;
 }
 export interface PoliciesState {
   /** ISO date keyed by source domain. Pipelines skip URLs whose published date <= this. */
@@ -79,7 +81,7 @@ export const DEFAULTS: ScanState = {
   domains: {
     videos: { video_ids: [] },
     voices: { urls: [] },
-    hansard: { max_oral_id: 4087, max_written_id: 21915 },
+    hansard: { max_oral_id: 4087, max_written_id: 21915, max_budget_id: 2937 },
     policies: { maxDates: {} },
     ecosystem: { scannedCompanies: [] },
     levers: { maxDates: {} },

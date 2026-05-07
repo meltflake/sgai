@@ -65,30 +65,12 @@ HANSARD_BUDGET_RANGE = 30
 # word-boundary regex).
 HANSARD_CONTENT_SCAN_CHARS = 3000
 
-AI_TITLE_KEYWORDS = [
-    r"\bartificial intelligence\b",
-    r"\bAI\b",
-    r"\bdeepfake",
-    r"\bdata centre",
-    r"\bmachine learning\b",
-    r"\bGPT\b",
-    r"\bgenerative\b",
-    r"\bLLM\b",
-    r"\bsmart nation\b",
-    r"\bdigital economy\b",
-    r"\bcompute\b",
-    r"\brobotic",
-    r"\bautonomous\b",
-    r"\bcybersecurity\b",
-    r"\bdata protect",
-    # Added: foreign-vendor / data-sovereignty signals — title may not
-    # contain "AI" but body cites AI platforms / extraterritorial reach.
-    r"\bcritical information infrastructure\b",
-    r"\bdata sovereignty\b",
-    r"\bdata residency\b",
-    r"\bCLOUD Act\b",
-    r"\bagentic\b",
-]
+# Keyword classification has moved to scripts/hansard/classify.py — a graded
+# 3-tier model (STRONG / INFRA / WEAK) that cuts false-positives from generic
+# trade / telecom / privacy debates and catches AI mentions hidden in the body
+# of debates whose title gives no hint. Imported lazily inside scan helpers
+# below; tests live alongside in scripts/hansard/test_classify.py.
+sys.path.insert(0, str(SCRIPT_DIR / "hansard"))
 
 # ── 日志 ──────────────────────────────────────────────────────────────────────
 def setup_logging(verbose: bool = False):
@@ -160,10 +142,15 @@ def run_voices(logger) -> dict:
 
 
 # ── 管线 3: 国会辩论 (轻量 API 扫描) ─────────────────────────────────────────
-def matches_ai_keywords(title: str, content: str = "") -> bool:
-    """Match against title plus first HANSARD_CONTENT_SCAN_CHARS of content."""
-    blob = title + " " + (content[:HANSARD_CONTENT_SCAN_CHARS] if content else "")
-    return any(re.search(p, blob, re.IGNORECASE) for p in AI_TITLE_KEYWORDS)
+def matches_ai_keywords(title: str, content: str = "") -> bool:  # noqa: ARG001
+    """Backwards-compat shim — superseded by classify().
+
+    Kept so any external caller importing this name keeps working. New
+    scan code should call classify() directly to get bucket + signal labels.
+    """
+    from classify import matches_ai_keywords as _impl
+
+    return _impl(title, content)
 
 
 def _strip_html(html: str) -> str:
@@ -175,8 +162,14 @@ def _strip_html(html: str) -> str:
 
 
 def scan_hansard_range(prefix: str, start: int, end: int, logger) -> list[dict]:
-    """扫描 SPRS API 指定 ID 范围，返回有效条目（title + content 双扫）"""
+    """扫描 SPRS API 指定 ID 范围，返回有效条目（title + content + bucket）。
+
+    Each result carries the graded `bucket` (STRONG / INFRA+ / INFRA / WEAK+ / NO)
+    plus the signal labels that fired, so downstream reporting can show
+    reviewers *why* an entry was promoted instead of a yes/no flag.
+    """
     import requests
+    from classify import classify, is_ai_related
 
     results = []
     for i in range(start + 1, end + 1):
@@ -197,15 +190,24 @@ def scan_hansard_range(prefix: str, start: int, end: int, logger) -> list[dict]:
             title = rh["title"]
             content_text = _strip_html(rh.get("content", ""))
             date_raw = rh.get("sittingDate", "")
+            bucket, strong, infra, weak = classify(
+                title, content_text[:HANSARD_CONTENT_SCAN_CHARS]
+            )
             results.append(
                 {
                     "id": rid,
                     "title": title,
                     "date": date_raw,
-                    "ai_related": matches_ai_keywords(title, content_text),
+                    "ai_related": is_ai_related(bucket),
+                    "bucket": bucket,
+                    "signals": {
+                        "strong": strong,
+                        "infra": infra,
+                        "weak": weak,
+                    },
                 }
             )
-            logger.debug(f"  {rid}: {title[:60]}")
+            logger.debug(f"  {rid}: [{bucket}] {title[:60]}")
             time.sleep(0.3)
         except Exception as e:
             logger.debug(f"  {rid}: error — {e}")
@@ -231,6 +233,12 @@ def run_hansard(state: dict, logger) -> dict:
     all_results = oral_results + written_results + budget_results
     ai_results = [r for r in all_results if r["ai_related"]]
 
+    # Per-bucket counts so the email separates "definite hits" (STRONG)
+    # from "needs reviewer eyes" (INFRA+ / WEAK+) from "noise" (INFRA / NO).
+    bucket_counts: dict[str, int] = {}
+    for r in all_results:
+        bucket_counts[r["bucket"]] = bucket_counts.get(r["bucket"], 0) + 1
+
     # 更新最高 ID
     def _update_max(results, current):
         m = current
@@ -245,7 +253,10 @@ def run_hansard(state: dict, logger) -> dict:
     new_max_written = _update_max(written_results, max_written)
     new_max_budget = _update_max(budget_results, max_budget)
 
-    logger.info(f"Hansard 扫描完成: {len(all_results)} 条新记录, {len(ai_results)} 条 AI 相关")
+    logger.info(
+        f"Hansard 扫描完成: {len(all_results)} 条新记录, "
+        f"{len(ai_results)} 条 AI 相关 (buckets: {bucket_counts})"
+    )
 
     return {
         "count": len(ai_results),
@@ -256,9 +267,16 @@ def run_hansard(state: dict, logger) -> dict:
             f"budget {max_budget + 1}..{max_budget + HANSARD_BUDGET_RANGE}"
         ),
         "items": [
-            {"id": r["id"], "title": r["title"], "date": r["date"]}
-            for r in ai_results[:10]
+            {
+                "id": r["id"],
+                "title": r["title"],
+                "date": r["date"],
+                "bucket": r["bucket"],
+                "signals": r["signals"],
+            }
+            for r in ai_results[:15]
         ],
+        "bucket_counts": bucket_counts,
         "new_max_oral": new_max_oral,
         "new_max_written": new_max_written,
         "new_max_budget": new_max_budget,
@@ -325,12 +343,42 @@ def compose_email(results: dict, errors: list[str], elapsed: float) -> tuple[str
     if "hansard" in results:
         r = results["hansard"]
         total = r.get("total_scanned", 0)
-        lines.append(f"<h3>国会辩论: {r.get('count', 0)} 条 AI 相关 (共扫描 {total} 条)</h3>")
+        bucket_counts = r.get("bucket_counts", {})
+        bucket_summary = ", ".join(
+            f"{b}: {c}"
+            for b, c in sorted(bucket_counts.items(), key=lambda x: x[0])
+            if c > 0
+        )
+        lines.append(
+            f"<h3>国会辩论: {r.get('count', 0)} 条 AI 相关 (共扫描 {total} 条)"
+            + (f" — buckets: {bucket_summary}" if bucket_summary else "")
+            + "</h3>"
+        )
         if r.get("items"):
-            lines.append("<ul>")
+            # Group by bucket so reviewers process STRONG first, INFRA+/WEAK+ next.
+            by_bucket: dict[str, list[dict]] = {}
             for d in r["items"]:
-                lines.append(f"  <li>[{d.get('date','?')}] {d.get('id','?')}: {d.get('title','?')}</li>")
-            lines.append("</ul>")
+                by_bucket.setdefault(d.get("bucket", "?"), []).append(d)
+            for bucket in ("STRONG", "INFRA+", "WEAK+", "INFRA", "NO"):
+                items = by_bucket.get(bucket, [])
+                if not items:
+                    continue
+                lines.append(f"<p><strong>[{bucket}] {len(items)} 条</strong></p><ul>")
+                for d in items:
+                    sig = d.get("signals", {})
+                    sig_parts = []
+                    if sig.get("strong"):
+                        sig_parts.append("S=" + ",".join(sig["strong"][:3]))
+                    if sig.get("infra"):
+                        sig_parts.append("I=" + ",".join(sig["infra"][:3]))
+                    if sig.get("weak"):
+                        sig_parts.append("W=" + ",".join(sig["weak"][:3]))
+                    sig_label = f" <small>({' | '.join(sig_parts)})</small>" if sig_parts else ""
+                    lines.append(
+                        f"  <li>[{d.get('date','?')}] {d.get('id','?')}: "
+                        f"{d.get('title','?')}{sig_label}</li>"
+                    )
+                lines.append("</ul>")
         elif not r.get("error"):
             lines.append(f"<p>无新内容 (扫描范围: {r.get('scan_range','N/A')})</p>")
 
@@ -569,7 +617,11 @@ def main():
     except ImportError:
         NOTIFY_IF_NO_NEW = False
 
-    scan_only_pids = {"hansard", "videos", "voices"}
+    # hansard moved to type=tsx + mode=auto-pr (scripts/refresh/hansard/run.ts).
+    # It now opens its own PRs via lib/auto-commit, so it does NOT need a
+    # scan-only Issue notification — the cron user gets a GitHub PR
+    # notification directly.
+    scan_only_pids = {"videos", "voices"}
     scan_only_results = {pid: r for pid, r in results.items() if pid in scan_only_pids}
     scan_only_total = sum(r.get("count", 0) or 0 for r in scan_only_results.values())
     should_notify = scan_only_total > 0 or NOTIFY_IF_NO_NEW or errors

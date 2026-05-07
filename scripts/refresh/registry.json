@@ -9,11 +9,13 @@
   "pipelines": [
     {
       "id": "hansard",
-      "type": "python-builtin",
+      "type": "tsx",
       "schedule": "weekly",
       "label": "Singapore Parliament Hansard",
-      "description": "SPRS API scan for AI-related debates. Existing pipeline.",
-      "mode": "scan-only-email"
+      "description": "SPRS API scan with graded keyword classifier (STRONG/INFRA+/WEAK+). STRONG candidates get a bilingual stub generated via claude CLI and appended to autoDiscoveredDebates[] in src/data/debates.ts. Reviewer promotes stubs into canonical debates[] in PR.",
+      "script": "scripts/refresh/hansard/run.ts",
+      "args": ["--limit=5"],
+      "mode": "auto-pr"
     },
     {
       "id": "videos",
