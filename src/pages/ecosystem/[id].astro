@@ -7,6 +7,7 @@ import { type EcosystemEntity } from '~/data/ecosystem';
 import { getPolicyById, getDebateById, getLeverByNumber } from '~/utils/graph';
 import { allPeople } from '~/data/people';
 import EcosystemProse from '~/components/data/EcosystemProse.astro';
+import { isStubEcosystemEntity } from '~/utils/quality';
 
 export const prerender = true;
 
@@ -80,15 +81,20 @@ const description = entity.descriptionEn || entity.description;
 // EN meta uses short EN-only fields (description) and never the long-form
 // summary, which may still be Chinese during the pre-translation window.
 //
-// noindex auto-discovered entities flagged `_pendingReview: true`. They
-// render with a "Pending review" badge but should not be advertised to
-// search engines until a human accepts them — same pattern as
-// benchmarking `analysisPending` drilldowns.
+// noindex policy:
+//   1. _pendingReview: true — auto-discovered entries awaiting human review
+//      (same pattern as benchmarking analysisPending drilldowns).
+//   2. EN-side stub — when whatItIsEn / aiRelevanceEn / singaporeRelevanceEn
+//      are missing, the page falls back to Chinese long-form content. That
+//      collapses into the same cluster as /zh/ecosystem/<id>/, which is
+//      what GSC bucketed under "Duplicate, Google chose different
+//      canonical." Auto-flips back to indexable once the EN fields land.
 const isPendingReview = entity._pendingReview === true;
+const isEnStub = isStubEcosystemEntity(entity, 'en');
 const metadata = {
   title: `${displayName} · ${categoryName} · Ecosystem Map`,
   description: description,
-  robots: { index: !isPendingReview, follow: true },
+  robots: { index: !isPendingReview && !isEnStub, follow: true },
 };
 
 const breadcrumbs = [
