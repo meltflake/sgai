@@ -1,3 +1,4 @@
+import fs from 'node:fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
@@ -55,9 +56,29 @@ export default defineConfig({
         defaultLocale: 'en',
         locales: { en: 'en', zh: 'zh-CN' },
       },
+      // Strip noindex pages from sitemap. Two layers:
+      //   (a) Query-string URLs (analysisPending drilldowns linked with ?region=...).
+      //   (b) Static pages whose emitted HTML contains <meta name="robots" content="...noindex...">.
+      //
+      // Layer (b) is a self-correcting check — if any page sets robots.index=false at
+      // build time, this filter picks it up automatically. Without this, GSC reports
+      // them as "Crawled - currently not indexed" because we keep advertising them in
+      // the sitemap and Google has to fetch them to discover the noindex.
       serialize(item) {
-        // Strip noindex pages from sitemap (e.g. analysisPending drilldowns).
         if (item.url.includes('?')) return undefined;
+        try {
+          const url = new URL(item.url);
+          let p = url.pathname;
+          if (p.endsWith('/')) p += 'index.html';
+          else if (!p.endsWith('.html')) p += '/index.html';
+          const htmlPath = path.join(__dirname, 'dist', p);
+          const html = fs.readFileSync(htmlPath, 'utf8');
+          if (/<meta\s+name=["']robots["']\s+content=["'][^"']*noindex/i.test(html)) {
+            return undefined;
+          }
+        } catch {
+          // File not found / unreadable: keep the URL (safer default than dropping).
+        }
         return item;
       },
     }),
