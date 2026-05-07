@@ -1,0 +1,7 @@
+{
+  "direction": "zh→ja",
+  "source": "由 {handle} 维护",
+  "target": "{handle} 個人による運営",
+  "model": "haiku",
+  "translatedAt": "2026-05-07"
+}

@@ -1,0 +1,7 @@
+{
+  "direction": "zh→ja",
+  "source": "Hansard 原始记录",
+  "target": "Hansard 原文",
+  "model": "haiku",
+  "translatedAt": "2026-05-07"
+}

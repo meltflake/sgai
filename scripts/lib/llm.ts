@@ -174,25 +174,38 @@ export async function callLlm(userPrompt: string, options: LlmCallOptions = {}):
         return;
       }
 
-      let events: unknown;
+      let parsed: unknown;
       try {
-        events = JSON.parse(stdout);
+        parsed = JSON.parse(stdout);
       } catch (parseErr) {
         reject(new Error(`callLlm: stdout not valid JSON: ${(parseErr as Error).message}\nstdout: ${stdout.slice(0, 300)}`));
         return;
       }
 
-      if (!Array.isArray(events)) {
-        reject(new Error(`callLlm: expected JSON array of events, got ${typeof events}`));
-        return;
+      // The Claude Code CLI's --output-format json shape changed across
+      // versions. Old: array of streamed events including {type:"result"}.
+      // New: single object {type:"result", ...}. Accept both.
+      let resultEvt: ResultEvent | undefined;
+      if (Array.isArray(parsed)) {
+        resultEvt = parsed.find(
+          (e): e is ResultEvent =>
+            typeof e === 'object' && e !== null && (e as { type?: string }).type === 'result'
+        );
+      } else if (
+        typeof parsed === 'object' &&
+        parsed !== null &&
+        (parsed as { type?: string }).type === 'result'
+      ) {
+        resultEvt = parsed as ResultEvent;
       }
-
-      const resultEvt = events.find(
-        (e): e is ResultEvent =>
-          typeof e === 'object' && e !== null && (e as { type?: string }).type === 'result'
-      );
       if (!resultEvt) {
-        reject(new Error('callLlm: no {type:"result"} event found in stream'));
+        reject(
+          new Error(
+            `callLlm: no {type:"result"} event found in stream (got ${
+              Array.isArray(parsed) ? `array len=${parsed.length}` : typeof parsed
+            })`
+          )
+        );
         return;
       }
       if (resultEvt.is_error) {

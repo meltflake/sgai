@@ -1,0 +1,7 @@
+{
+  "direction": "zh→ja",
+  "source": "搜索索引尚未构建。请运行 npm run build 后再试，或访问已部署的 sgai.md 使用搜索。",
+  "target": "検索インデックスはまだ構築されていません。npm run build を実行した後にお試しいただくか、デプロイされた sgai.md にアクセスして検索を使用してください。",
+  "model": "haiku",
+  "translatedAt": "2026-05-07"
+}

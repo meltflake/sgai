@@ -1,0 +1,7 @@
+{
+  "direction": "zh→ja",
+  "source": "最近更新、tracker 数据、最新国会辩论、新发布的政策。",
+  "target": "最近の更新、tracker データ、最新の議会討論、新しくリリースされた政策。",
+  "model": "haiku",
+  "translatedAt": "2026-05-07"
+}

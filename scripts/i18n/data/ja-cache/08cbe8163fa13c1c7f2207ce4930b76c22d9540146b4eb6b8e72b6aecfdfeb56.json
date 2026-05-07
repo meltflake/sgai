@@ -1,0 +1,7 @@
+{
+  "direction": "zh→ja",
+  "source": "国会辩论",
+  "target": "議会討論",
+  "model": "haiku",
+  "translatedAt": "2026-05-07"
+}

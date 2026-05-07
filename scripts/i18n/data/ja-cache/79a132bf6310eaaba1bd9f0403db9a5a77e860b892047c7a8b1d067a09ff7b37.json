@@ -1,0 +1,7 @@
+{
+  "direction": "zh→ja",
+  "source": "从 {from} 到 {to}，议会围绕 AI 的每一次质询、答复与辩论。",
+  "target": "{from} から {to} まで、議会が AI について行った毎回の質問、回答、および討論。",
+  "model": "haiku",
+  "translatedAt": "2026-05-07"
+}

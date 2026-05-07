@@ -1,0 +1,7 @@
+{
+  "direction": "zh→ja",
+  "source": "国会 AI 焦点",
+  "target": "議会 AI フォーカス",
+  "model": "haiku",
+  "translatedAt": "2026-05-07"
+}

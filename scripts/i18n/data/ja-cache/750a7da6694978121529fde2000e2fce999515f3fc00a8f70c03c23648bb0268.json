@@ -1,0 +1,7 @@
+{
+  "direction": "zh→ja",
+  "source": "📑 目录（{count} 节）",
+  "target": "📑 目次（{count} セクション）",
+  "model": "haiku",
+  "translatedAt": "2026-05-07"
+}
