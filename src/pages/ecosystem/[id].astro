@@ -79,9 +79,16 @@ const description = entity.descriptionEn || entity.description;
 
 // EN meta uses short EN-only fields (description) and never the long-form
 // summary, which may still be Chinese during the pre-translation window.
+//
+// noindex auto-discovered entities flagged `_pendingReview: true`. They
+// render with a "Pending review" badge but should not be advertised to
+// search engines until a human accepts them — same pattern as
+// benchmarking `analysisPending` drilldowns.
+const isPendingReview = entity._pendingReview === true;
 const metadata = {
   title: `${displayName} · ${categoryName} · Ecosystem Map`,
   description: description,
+  robots: { index: !isPendingReview, follow: true },
 };
 
 const breadcrumbs = [

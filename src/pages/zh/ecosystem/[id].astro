@@ -65,9 +65,14 @@ const championPersons = (entity.championPersonIds || [])
 
 const isStub = !entity.summary && !entity.whatItIs;
 
+// noindex auto-discovered entities flagged `_pendingReview: true`. Mirrors
+// the EN page logic — same data, same robots policy across both langs.
+const isPendingReview = entity._pendingReview === true;
+
 const metadata = {
   title: `${entity.name} · ${category.name} · 生态地图`,
   description: entity.summary || entity.description,
+  robots: { index: !isPendingReview, follow: true },
 };
 
 const breadcrumbs = [
