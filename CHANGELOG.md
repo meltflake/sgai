@@ -4,6 +4,85 @@
 
 ---
 
+## 0.12.0 — 2026-05-07
+
+### GSC 索引修复 + 双语锁升级 + duplicate-canonical 防御
+
+PR [#26](https://github.com/meltflake/sgai/pull/26) 合并到 main。触发问题：GSC 报告 sgai.md 索引率仅 33% (679/2063)，其中 1408 "Discovered – not indexed" + 192 "Crawled – not indexed" + 174 "Duplicate, Google chose different canonical"。
+
+#### 1. Sitemap 过滤 noindex 页面（修明确 bug）
+
+提交 [d1099d9](https://github.com/meltflake/sgai/commit/d1099d9)。[astro.config.ts](./astro.config.ts) 的 `serialize()` 之前只过滤 query-string，但**不过滤 noindex 页面**——已声明 `noindex` 的页（benchmarking analysisPending drilldown、blog tag/category page 2+）仍被告知 Google → 爬一次 → 计入"Crawled – not indexed"。
+
+新逻辑读 dist/ HTML 的 robots meta，命中 `noindex` 自动从 sitemap 排除。自校正——任何未来 build 时 `robots.index=false` 的页都会被自动过滤。
+
+同 commit 删 [public/\_redirects](./public/_redirects) 第一行的 `/sitemap.xml → /sitemap-index.xml 301`（robots.txt 已直指 sitemap-index.xml，redirect 反而被 GSC 计入"Page with redirect"）+ 接 ecosystem `_pendingReview` 字段到 robots metadata。
+
+#### 2. 双语锁升级：i18n-pair 改 TS Compiler API + 完整性检查（[b092d7a](https://github.com/meltflake/sgai/commit/b092d7a)）
+
+旧 [scripts/lib/i18n-pair.ts](./scripts/lib/i18n-pair.ts) 只检查"对齐性"——zh 字段填了 en 字段必须填——但**不检查"完整性"**：一个 record 只要 `name`+`description` 双语对齐了，深度字段（`whatItIs`/`aiRelevance`/`singaporeRelevance`）就算全空也能 pass。这是允许 stub 数据漏过 CI 的核心漏洞。三层升级：
+
+- **AST-based 解析**：用 `typescript` Compiler API 替换原 line-based 正则，正确处理模板字符串、多行字符串、Prettier 折行。
+- **Schema-aware completeness 检查**：新建 [scripts/i18n-config.ts](./scripts/i18n-config.ts) 声明 per-file schemas，每个 record 必填字段必须 zh 端 + 每个 locale sibling 都非空非占位。
+- **多语种就绪**：`locales: ['En']` 是数据，不是硬编码——未来加 ja/ko 改这一行即可。
+
+`findUnpairedFields()` 旧 API 保留 for back-compat（refresh pipelines 不变）。新 `findIncompleteRecords()` 是完整性检查入口。新增 `npm run check:i18n-completeness`（`--mode=both`）进入 `npm run check` 链。9 个新单元测试。
+
+实测 ecosystem.ts：38/38 entity 全完整通过，证明门控正常工作。
+
+#### 3. 内容质量门控：voices 三无 / ecosystem stub noindex（[cac372d](https://github.com/meltflake/sgai/commit/cac372d)）
+
+新建 [src/utils/quality.ts](./src/utils/quality.ts) 提供两个 build-time 谓词：
+
+- `isLowSignalPerson(p)`：无 curated contributions（signatureWork/notableQuotes/speakingRecord/externalRoles）+ 无 graph signal（debate/policy/video）→ noindex。
+- `isStubEcosystemEntity(e, lang)`：必填深度字段（whatItIs/aiRelevance/singaporeRelevance）任一为空 → noindex。
+
+接到 [voices/[id].astro](./src/pages/voices/[id].astro) + [zh 镜像](./src/pages/zh/voices/[id].astro) + [ecosystem/[id].astro](./src/pages/ecosystem/[id].astro) + [zh 镜像](./src/pages/zh/ecosystem/[id].astro)。谓词是数据状态的纯函数——record 补 substance 后下次 build 自动 indexable。
+
+#### 4. duplicate-canonical 防御：收紧 isLowSignalPerson 阈值（[486252d](https://github.com/meltflake/sgai/commit/486252d)）
+
+诊断 174 重复 canonical 的真凶：[scripts/dedup-diag.ts](./scripts/dedup-diag.ts) 扫 dist/ 内容指纹，发现 **66 个 stub MP profiles 共享指纹**——`mp-stubs.json` 里 `summary = "[需补充] <Name>"` + `summaryEn = "Profile pending."` 的 213 条 placeholder MP，body 主体是同一份模板 boilerplate，0-1 个 debate link 不足以差异化。
+
+`isLowSignalPerson` 改两层阈值：
+
+- 真 summary + ≥1 graph signal → indexable
+- stub summary + ≥2 graph signals → indexable（链接内容差异够）
+- stub summary + <2 signals → **noindex**
+
+数据驱动 + 自动 flip：MP 补真 summary 或加 2nd debate 后下次 build 自动 indexable。
+
+#### 实测数据（baseline → 0.12.0）
+
+| 指标                      | Baseline | Final  | Δ        |
+| ------------------------- | -------- | ------ | -------- |
+| Sitemap URLs              | 2,063    | 1,862  | **−201** |
+| Noindex pages (dist HTML) | ~3       | 156    | +153     |
+| /voices/ noindex          | 0        | 75     | +75      |
+| /zh/voices/ noindex       | 0        | 75     | +75      |
+| Duplicate fingerprints    | 36       | 8      | **−77%** |
+| Pages in dup clusters     | 102      | 18     | **−82%** |
+| 估算 GSC Duplicate bucket | ~66      | ~10    | **−85%** |
+| 双语锁状态                | 形同虚设 | 真生效 | —        |
+| Tests                     | 65       | 74     | +9       |
+
+#### 4-8 周后 GSC 预期目标
+
+| 指标                     | Baseline | 目标      |
+| ------------------------ | -------- | --------- |
+| Indexed                  | 679      | 900-1,100 |
+| Discovered – not indexed | 1,408    | 300-500   |
+| Crawled – not indexed    | 192      | 60-80     |
+| Duplicate canonical      | 174      | 10-30     |
+| **Index ratio**          | **33%**  | **>75%**  |
+
+#### Caveats / 已知 edge cases
+
+- 剩 8 个 dup cluster (18 pages) 是 stub summary + 恰好 2 graph signals 的边界 MP（关联了同一批 debate）。再放宽到 stub+<3 会 noindex 107 个 MP，会误伤有 5+ debate 的实质 profile。建议留作内容补全 backlog——补真 summary 后 predicate 自动放开。
+- 原方案估的 "57 个 ecosystem stub" 来自 explore agent 错误计数（把 leader/milestone/product 误算入 entity），实际 38/38 entity 全完整。`isStubEcosystemEntity` 当前 0 命中，作为未来 auto-discovered 数据的防御。
+- ja/ko 多语种扩展前置条件：本次双语锁升级是 prerequisite。后续需要给 [scripts/lib/translate.ts](./scripts/lib/translate.ts) 加 `from`/`to` locale 参数 + 配置 `i18n-config.ts` 的 `locales` 数组。
+
+---
+
 ## 0.11.0 — 2026-05-05
 
 ### Phase 2：i18n root 翻转 — EN 进根，ZH 进 `/zh/`
