@@ -32,9 +32,14 @@ function formatEntity(e: EnrichedEntity): string {
   lines.push(`        id: '${e.id}',`);
   lines.push(`        name: '${escapeQuote(s.title)}',`);
   lines.push(`        nameEn: '${escapeQuote(s.titleEn)}',`);
+  if (s.titleJa) lines.push(`        nameJa: '${escapeQuote(s.titleJa)}',`);
   lines.push(`        description: '${escapeQuote(s.description)}',`);
   lines.push(`        descriptionEn:`);
   lines.push(`          '${escapeQuote(s.descriptionEn)}',`);
+  if (s.descriptionJa) {
+    lines.push(`        descriptionJa:`);
+    lines.push(`          '${escapeQuote(s.descriptionJa)}',`);
+  }
   lines.push(`        url: '${e.candidate.sourceUrl}',`);
   lines.push(`        entityType: '${e.candidate.defaultEntityType}',`);
   lines.push(`        status: 'active',`);

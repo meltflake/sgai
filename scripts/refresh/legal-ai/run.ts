@@ -85,11 +85,14 @@ function escapeBacktick(s: string): string {
 function formatLegalItem(item: {
   title: string;
   titleEn: string;
+  titleJa?: string;
   description: string;
   descriptionEn: string;
+  descriptionJa?: string;
   sourceUrl: string;
   authority: string;
   authorityEn: string;
+  authorityJa?: string;
   scope: string;
   status: string;
   publishedDate: string | null;
@@ -100,15 +103,19 @@ function formatLegalItem(item: {
   lines.push('      {');
   lines.push(`        title: '${escapeQuote(item.title)}',`);
   lines.push(`        titleEn: '${escapeQuote(item.titleEn)}',`);
+  if (item.titleJa) lines.push(`        titleJa: '${escapeQuote(item.titleJa)}',`);
   lines.push(`        date: '${dateStr}',`);
   lines.push(`        authority: '${escapeQuote(item.authority)}',`);
   lines.push(`        authorityEn: '${escapeQuote(item.authorityEn)}',`);
+  if (item.authorityJa) lines.push(`        authorityJa: '${escapeQuote(item.authorityJa)}',`);
   lines.push(`        scope: '${item.scope}',`);
   lines.push(`        status: '${item.status}',`);
   lines.push(`        summary: '${escapeQuote(item.description)}',`);
   lines.push(`        summaryEn: '${escapeQuote(item.descriptionEn)}',`);
+  if (item.descriptionJa) lines.push(`        summaryJa: '${escapeQuote(item.descriptionJa)}',`);
   lines.push('        body: `' + escapeBacktick(item.description) + '`,');
   lines.push('        bodyEn: `' + escapeBacktick(item.descriptionEn) + '`,');
+  if (item.descriptionJa) lines.push('        bodyJa: `' + escapeBacktick(item.descriptionJa) + '`,');
   lines.push(`        sourceUrl: '${item.sourceUrl}',`);
   lines.push('      },');
   return lines.join('\n');
@@ -164,8 +171,10 @@ function appendAutoDiscoveredSection(lines: string[], formattedItems: string): s
     '  {',
     "    title: 'Auto-discovered (pending review)',",
     "    titleEn: 'Auto-discovered (pending review)',",
+    "    titleJa: 'Auto-discovered（レビュー待ち）',",
     "    philosophy: '由 refresh 管线自动发现的法律 / 监管条目，需 Luca 审核后移入正式分组。',",
     "    philosophyEn: 'Items auto-discovered by the refresh pipeline. Luca to review and move into the right section before merge.',",
+    "    philosophyJa: 'リフレッシュパイプラインが自動検出した法律・規制項目。Luca がレビュー後、正式なセクションに移動します。',",
     '    items: [',
     formattedItems,
     '    ],',
@@ -214,7 +223,16 @@ async function main(): Promise<void> {
     return;
   }
 
-  const enriched: Array<{ url: string; item: ReturnType<typeof formatLegalItem> extends string ? Parameters<typeof formatLegalItem>[0] : never; confidence: 'high' | 'medium' | 'low' }> = [];
+  const enriched: Array<{
+    url: string;
+    item: {
+      title: string; titleEn: string; titleJa?: string;
+      description: string; descriptionEn: string; descriptionJa?: string;
+      sourceUrl: string; authority: string; authorityEn: string; authorityJa?: string;
+      scope: string; status: string; publishedDate: string | null;
+    };
+    confidence: 'high' | 'medium' | 'low';
+  }> = [];
   const failures: Array<{ url: string; error: string }> = [];
 
   for (const url of candidates) {
@@ -256,6 +274,23 @@ async function main(): Promise<void> {
   if (enriched.length === 0) {
     process.stdout.write('\n[legal-ai-refresh] no enriched items.\n');
     return;
+  }
+
+  // Translate to ja.
+  try {
+    const { translateBatch } = await import('../../lib/translate.ts');
+    const jaValues = await translateBatch(
+      enriched.flatMap((e) => [e.item.title, e.item.description, e.item.authority]),
+      { direction: 'zh→ja', cacheDir: 'scripts/i18n/data/ja-cache' }
+    );
+    for (let i = 0; i < enriched.length; i++) {
+      enriched[i].item.titleJa = jaValues[i * 3] || undefined;
+      enriched[i].item.descriptionJa = jaValues[i * 3 + 1] || undefined;
+      enriched[i].item.authorityJa = jaValues[i * 3 + 2] || undefined;
+    }
+    process.stdout.write(`  translated ${enriched.length} entries to ja\n`);
+  } catch (e) {
+    process.stdout.write(`  [warn] ja translation failed: ${e instanceof Error ? e.message : e}\n`);
   }
 
   // Emit: insert into Auto-discovered section, creating it if absent.

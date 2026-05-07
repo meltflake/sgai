@@ -67,10 +67,13 @@ function formatLeverItem(item: {
   id: string;
   name: string;
   nameEn: string;
+  nameJa?: string;
   ministry: string;
   ministryEn: string;
+  ministryJa?: string;
   description: string;
   descriptionEn: string;
+  descriptionJa?: string;
   sourceUrl: string;
 }): string {
   const lines: string[] = [];
@@ -78,10 +81,13 @@ function formatLeverItem(item: {
   lines.push(`            id: '${item.id}',`);
   lines.push(`            name: '${escapeQuote(item.name)}',`);
   lines.push(`            nameEn: '${escapeQuote(item.nameEn)}',`);
+  if (item.nameJa) lines.push(`            nameJa: '${escapeQuote(item.nameJa)}',`);
   lines.push(`            ministry: '${escapeQuote(item.ministry)}',`);
   lines.push(`            ministryEn: '${escapeQuote(item.ministryEn)}',`);
+  if (item.ministryJa) lines.push(`            ministryJa: '${escapeQuote(item.ministryJa)}',`);
   lines.push(`            description: '${escapeQuote(item.description)}',`);
   lines.push(`            descriptionEn: '${escapeQuote(item.descriptionEn)}',`);
+  if (item.descriptionJa) lines.push(`            descriptionJa: '${escapeQuote(item.descriptionJa)}',`);
   lines.push(`            sourceUrl: '${item.sourceUrl}',`);
   lines.push('          },');
   return lines.join('\n');
@@ -157,6 +163,7 @@ function injectIntoAutoDiscoveredGroup(lines: string[], formattedItems: string):
     '      {',
     "        title: 'Auto-discovered (pending review)',",
     "        titleEn: 'Auto-discovered (pending review)',",
+    "        titleJa: 'Auto-discovered（レビュー待ち）',",
     '        items: [',
     formattedItems,
     '        ],',
@@ -206,7 +213,12 @@ async function main(): Promise<void> {
 
   const enriched: Array<{
     url: string;
-    item: Parameters<typeof formatLeverItem>[0];
+    item: {
+      id: string; name: string; nameEn: string; nameJa?: string;
+      ministry: string; ministryEn: string; ministryJa?: string;
+      description: string; descriptionEn: string; descriptionJa?: string;
+      sourceUrl: string;
+    };
     confidence: 'high' | 'medium' | 'low';
   }> = [];
   const failures: Array<{ url: string; error: string }> = [];
@@ -246,6 +258,23 @@ async function main(): Promise<void> {
   if (enriched.length === 0) {
     process.stdout.write('\n[levers-refresh] no enriched items.\n');
     return;
+  }
+
+  // Translate to ja.
+  try {
+    const { translateBatch } = await import('../../lib/translate.ts');
+    const jaValues = await translateBatch(
+      enriched.flatMap((e) => [e.item.name, e.item.description, e.item.ministry]),
+      { direction: 'zh→ja', cacheDir: 'scripts/i18n/data/ja-cache' }
+    );
+    for (let i = 0; i < enriched.length; i++) {
+      enriched[i].item.nameJa = jaValues[i * 3] || undefined;
+      enriched[i].item.descriptionJa = jaValues[i * 3 + 1] || undefined;
+      enriched[i].item.ministryJa = jaValues[i * 3 + 2] || undefined;
+    }
+    process.stdout.write(`  translated ${enriched.length} entries to ja\n`);
+  } catch (e) {
+    process.stdout.write(`  [warn] ja translation failed: ${e instanceof Error ? e.message : e}\n`);
   }
 
   const original = readFileSync(TARGET_FILE, 'utf8');

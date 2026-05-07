@@ -195,6 +195,22 @@ export async function runPipeline(config: PipelineConfig): Promise<void> {
     return;
   }
 
+  // Translate title + description to ja for trilingual support.
+  try {
+    const { translateBatch } = await import('../../lib/translate.ts');
+    const jaValues = await translateBatch(
+      enriched.flatMap((e) => [e.entry.title, e.entry.description]),
+      { direction: 'zh→ja', cacheDir: 'scripts/i18n/data/ja-cache' }
+    );
+    for (let i = 0; i < enriched.length; i++) {
+      enriched[i].entry.titleJa = jaValues[i * 2] || undefined;
+      enriched[i].entry.descriptionJa = jaValues[i * 2 + 1] || undefined;
+    }
+    process.stdout.write(`  translated ${enriched.length} entries to ja\n`);
+  } catch (e) {
+    process.stdout.write(`  [warn] ja translation failed: ${e instanceof Error ? e.message : e}\n`);
+  }
+
   const result = appendAutoDiscovered(targetAbs, enriched.map((e) => e.entry));
   process.stdout.write(
     `  appended ${result.added} entries to autoDiscovered ${result.created ? '(new export)' : '(existing)'}\n`

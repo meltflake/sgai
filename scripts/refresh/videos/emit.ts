@@ -133,13 +133,17 @@ interface Candidate {
 interface BilingualVideoFields {
   title: string;
   titleEn: string;
+  titleJa?: string;
   summary: string;
   summaryEn: string;
+  summaryJa?: string;
   topic: string;
   topicEn: string;
+  topicJa?: string;
   speaker: string;
   speakerTitle: string;
   speakerTitleEn: string;
+  speakerTitleJa?: string;
   speakerType: SpeakerType;
   model: string;
   generatedAt: string;
@@ -342,20 +346,32 @@ function buildEntrySnippet(e: ApprovedEntry): string {
     `    id: '${e.id}',`,
     `    title: '${escapeTsString(f.title)}',`,
     `    titleEn: '${escapeTsString(f.titleEn)}',`,
+  ];
+  if (f.titleJa) lines.push(`    titleJa: '${escapeTsString(f.titleJa)}',`);
+  lines.push(
     `    speaker: '${escapeTsString(f.speaker)}',`,
     `    speakerTitle: '${escapeTsString(f.speakerTitle)}',`,
     `    speakerTitleEn: '${escapeTsString(f.speakerTitleEn)}',`,
+  );
+  if (f.speakerTitleJa) lines.push(`    speakerTitleJa: '${escapeTsString(f.speakerTitleJa)}',`);
+  lines.push(
     `    speakerType: '${f.speakerType}',`,
     `    date: '${e.date}',`,
     `    duration: '${e.duration}',`,
     `    summary: '${escapeTsString(f.summary)}',`,
     `    summaryEn: '${escapeTsString(f.summaryEn)}',`,
+  );
+  if (f.summaryJa) lines.push(`    summaryJa: '${escapeTsString(f.summaryJa)}',`);
+  lines.push(
     `    topic: '${escapeTsString(f.topic)}',`,
     `    topicEn: '${escapeTsString(f.topicEn)}',`,
+  );
+  if (f.topicJa) lines.push(`    topicJa: '${escapeTsString(f.topicJa)}',`);
+  lines.push(
     `    youtubeUrl: '${e.youtubeUrl}',`,
     `    channel: '${escapeTsString(e.channel)}',`,
     '  },',
-  ];
+  );
   return lines.join('\n');
 }
 
@@ -455,6 +471,24 @@ async function main() {
     console.log(`         topic: ${e.fields.topic} / ${e.fields.topicEn}`);
     console.log(`         speaker: ${e.fields.speaker} (${e.fields.speakerType}) — ${e.fields.speakerTitle}`);
     console.log(`         duration: ${e.duration}\n`);
+  }
+
+  // Translate to ja.
+  try {
+    const { translateBatch } = await import('../../lib/translate.ts');
+    const jaValues = await translateBatch(
+      approved.flatMap((e) => [e.fields.title, e.fields.summary, e.fields.topic, e.fields.speakerTitle]),
+      { direction: 'zh→ja', cacheDir: 'scripts/i18n/data/ja-cache' }
+    );
+    for (let i = 0; i < approved.length; i++) {
+      approved[i].fields.titleJa = jaValues[i * 4] || undefined;
+      approved[i].fields.summaryJa = jaValues[i * 4 + 1] || undefined;
+      approved[i].fields.topicJa = jaValues[i * 4 + 2] || undefined;
+      approved[i].fields.speakerTitleJa = jaValues[i * 4 + 3] || undefined;
+    }
+    console.log(`  translated ${approved.length} entries to ja`);
+  } catch (e) {
+    console.warn(`  [warn] ja translation failed: ${e instanceof Error ? e.message : e}`);
   }
 
   if (dryRun) {

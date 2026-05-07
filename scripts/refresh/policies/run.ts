@@ -111,6 +111,22 @@ async function main(): Promise<void> {
     return;
   }
 
+  // 4b. Translate to ja.
+  try {
+    const { translateBatch } = await import('../../lib/translate.ts');
+    const jaValues = await translateBatch(
+      enrichResult.enriched.flatMap((e) => [e.summary.title, e.summary.description]),
+      { direction: 'zh→ja', cacheDir: 'scripts/i18n/data/ja-cache' }
+    );
+    for (let i = 0; i < enrichResult.enriched.length; i++) {
+      enrichResult.enriched[i].summary.titleJa = jaValues[i * 2] || undefined;
+      enrichResult.enriched[i].summary.descriptionJa = jaValues[i * 2 + 1] || undefined;
+    }
+    process.stdout.write(`  translated ${enrichResult.enriched.length} entries to ja\n`);
+  } catch (e) {
+    process.stdout.write(`  [warn] ja translation failed: ${e instanceof Error ? e.message : e}\n`);
+  }
+
   // 5. Emit.
   process.stdout.write('\n  Emitting...\n');
   const emitResult = emit(enrichResult.enriched);

@@ -35,8 +35,10 @@ import { findUnpairedFields } from './i18n-pair.ts';
 export interface AutoDiscoveredEntry {
   title: string;
   titleEn: string;
+  titleJa?: string;
   description: string;
   descriptionEn: string;
+  descriptionJa?: string;
   category: string;
   confidence: 'high' | 'medium' | 'low';
   sourceUrl: string;
@@ -47,8 +49,10 @@ export interface AutoDiscoveredEntry {
 const INTERFACE_BLOCK = `\nexport interface AutoDiscoveredEntry {
   title: string;
   titleEn: string;
+  titleJa?: string;
   description: string;
   descriptionEn: string;
+  descriptionJa?: string;
   category: string;
   confidence: 'high' | 'medium' | 'low';
   sourceUrl: string;
@@ -65,8 +69,10 @@ function formatEntry(e: AutoDiscoveredEntry): string {
   lines.push('  {');
   lines.push(`    title: '${escapeQuote(e.title)}',`);
   lines.push(`    titleEn: '${escapeQuote(e.titleEn)}',`);
+  if (e.titleJa) lines.push(`    titleJa: '${escapeQuote(e.titleJa)}',`);
   lines.push(`    description: '${escapeQuote(e.description)}',`);
   lines.push(`    descriptionEn: '${escapeQuote(e.descriptionEn)}',`);
+  if (e.descriptionJa) lines.push(`    descriptionJa: '${escapeQuote(e.descriptionJa)}',`);
   lines.push(`    category: '${escapeQuote(e.category)}',`);
   lines.push(`    confidence: '${e.confidence}',`);
   lines.push(`    sourceUrl: '${e.sourceUrl}',`);

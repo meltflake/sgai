@@ -41,8 +41,10 @@ export interface BilingualSummary {
   sourceUrl: string;
   title: string;
   titleEn: string;
+  titleJa?: string;
   description: string;
   descriptionEn: string;
+  descriptionJa?: string;
   category: string;
   /** ISO date if extractable from input, otherwise null. */
   publishedDate: string | null;
