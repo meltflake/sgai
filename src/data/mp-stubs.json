@@ -2999,5 +2999,47 @@
     "channels": [],
     "nameEn": "Ellen Lee",
     "titleEn": ""
+  },
+  {
+    "id": "david-neo",
+    "name": "",
+    "title": "",
+    "category": "government",
+    "roles": ["mp"],
+    "affiliations": ["Other"],
+    "party": null,
+    "summary": "[需补充] David Neo",
+    "summaryEn": "Profile pending.",
+    "channels": [],
+    "nameEn": "David Neo",
+    "titleEn": ""
+  },
+  {
+    "id": "jasmin-lau",
+    "name": "",
+    "title": "",
+    "category": "government",
+    "roles": ["mp"],
+    "affiliations": ["Other"],
+    "party": null,
+    "summary": "[需补充] Jasmin Lau",
+    "summaryEn": "Profile pending.",
+    "channels": [],
+    "nameEn": "Jasmin Lau",
+    "titleEn": ""
+  },
+  {
+    "id": "dinesh-vasu-dash",
+    "name": "",
+    "title": "",
+    "category": "government",
+    "roles": ["mp"],
+    "affiliations": ["Other"],
+    "party": null,
+    "summary": "[需补充] Dinesh Vasu Dash",
+    "summaryEn": "Profile pending.",
+    "channels": [],
+    "nameEn": "Dinesh Vasu Dash",
+    "titleEn": ""
   }
 ]

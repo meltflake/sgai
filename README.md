@@ -41,7 +41,7 @@ npm run fix       # 自动修复 eslint 和 prettier 问题
 src/
 ├── data/
 │   ├── post/           # Markdown 博客文章
-│   ├── debates.ts      # 139 条国会辩论数据
+│   ├── debates.ts      # 156 条国会辩论数据
 │   ├── policies.ts     # 政策文件数据
 │   ├── timeline.ts     # 时间线数据
 │   ├── startups.ts     # AI 创业公司数据
@@ -75,7 +75,7 @@ Key sections:
 - **AI Policy Library** — 20 core policy documents with bilingual titles, source agencies, summaries, and original links
 - **Development Timeline** — Full milestones from Smart Nation Initiative (2014) to NAIRD (2026)
 - **Execution Tracker** — 42 key metrics: investment, talent, research, adoption rates, infrastructure
-- **Parliamentary AI Focus** — Chinese summaries of 139 parliamentary debates with MP stance analysis and policy signal extraction
+- **Parliamentary AI Focus** — Chinese summaries of 156 parliamentary debates with MP stance analysis and policy signal extraction
 - **Open Source & Research** — Government open-source projects and industry-academia ecosystem
 - **Startup Ecosystem** — 650+ AI startups, 9 unicorns, five vertical sectors
 - **International Benchmarking** — Cross-comparison of AI policies across 10 economies
