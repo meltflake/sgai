@@ -1,0 +1,20 @@
+---
+// Timeline page (zh) — thin wrapper.
+
+import Layout from '~/layouts/PageLayout.astro';
+import TimelinePage from '~/components/timeline/TimelinePage.astro';
+
+const lang = 'ja' as const;
+---
+
+<Layout
+  metadata={{
+    title: '発展タイムライン',
+    description:
+      'シンガポール AI 発展タイムライン：2014年スマートネイションから2027年国際 AI オリンピックまで、主要マイルストーンを時系列で整理。',
+  }}
+  breadcrumbs={[{ label: '発展タイムライン' }]}
+  lang={lang}
+>
+  <TimelinePage lang={lang} />
+</Layout>

@@ -1,0 +1,27 @@
+---
+import type { GetStaticPaths } from 'astro';
+import Layout from '~/layouts/PageLayout.astro';
+import OpenSourceProjectDetail from '~/components/data/OpenSourceProjectDetail.astro';
+import { openSourceProjects } from '~/data/opensource';
+
+export const prerender = true;
+
+export const getStaticPaths = (() => {
+  return openSourceProjects.map((project) => ({
+    params: { id: project.id },
+    props: { project },
+  }));
+}) satisfies GetStaticPaths;
+
+const { project } = Astro.props;
+---
+
+<Layout
+  metadata={{
+    title: `${project.name} · 公式オープンソースと研究`,
+    description: project.summary || project.description,
+  }}
+  breadcrumbs={[{ label: '公式オープンソースと研究', href: '/opensource/' }, { label: project.name }]}
+>
+  <OpenSourceProjectDetail project={project} lang="ja" />
+</Layout>

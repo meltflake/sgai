@@ -1,0 +1,52 @@
+---
+import type { GetStaticPaths } from 'astro';
+
+import JsonLd from '~/components/common/JsonLd.astro';
+import CommunityOpenSourceProjectDetail from '~/components/data/CommunityOpenSourceProjectDetail.astro';
+import Layout from '~/layouts/PageLayout.astro';
+import { allCommunityOpenSourceProjects, type OpenSourceProject } from '~/data/community-opensource';
+import { SITE_UPDATED } from '~/version';
+
+export const prerender = true;
+
+export const getStaticPaths = (() =>
+  allCommunityOpenSourceProjects.map((project) => ({
+    params: { id: project.id },
+    props: { project },
+  }))) satisfies GetStaticPaths;
+
+interface Props {
+  project: OpenSourceProject;
+}
+
+const { project } = Astro.props as Props;
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: `${project.name} · ${project.org}`,
+  description: project.summary || project.description,
+  datePublished: SITE_UPDATED,
+  dateModified: SITE_UPDATED,
+  inLanguage: 'zh-CN',
+  mainEntityOfPage: new URL(Astro.url).href,
+  about: project.nameEn || project.name,
+  isBasedOn: project.resources.map((resource) => resource.url),
+  publisher: {
+    '@type': 'Organization',
+    name: 'シンガポール AI 観測',
+    url: 'https://sgai.md/',
+  },
+};
+---
+
+<Layout
+  metadata={{
+    title: `${project.name} · 産学研オープンソースエコシステム`,
+    description: project.summary || project.description,
+  }}
+  breadcrumbs={[{ label: '産学研オープンソースエコシステム', href: '/community-opensource/' }, { label: project.name }]}
+>
+  <JsonLd schema={schema} />
+  <CommunityOpenSourceProjectDetail project={project} lang="ja" />
+</Layout>

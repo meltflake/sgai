@@ -1,0 +1,18 @@
+---
+// About page (zh) — thin wrapper. Body lives in `src/components/about/AboutPage.astro`.
+
+import Layout from '~/layouts/PageLayout.astro';
+import AboutPage from '~/components/about/AboutPage.astro';
+
+const lang = 'ja' as const;
+
+const metadata = {
+  title: '当サイトについて',
+  description:
+    'シンガポール AI 観測について——独立運営のシンガポール AI 戦略観測プラットフォーム。研究方法、利益声明、フィードバック方法。',
+};
+---
+
+<Layout metadata={metadata} breadcrumbs={[{ label: '当サイトについて' }]} lang={lang}>
+  <AboutPage lang={lang} />
+</Layout>

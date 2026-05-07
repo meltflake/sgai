@@ -1,0 +1,303 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import { getLangFromPath, localizedHref, t, type Lang } from '~/i18n';
+
+const lang: Lang = getLangFromPath(new URL(Astro.url).pathname);
+const dashboardHref = localizedHref('/tracker/', lang);
+
+const metadata = {
+  title: `${t(lang, 'trackerMethodologyTitle')} · ${t(lang, 'trackerPageTitle')}`,
+  description:
+    lang === 'en'
+      ? `How the dashboard is built — what we present, what we don't, and why we don't assign overall grades.`
+      : 'ダッシュボードの作り方——何を示し、何を示さないか、なぜ総合評点をつけないか。',
+};
+---
+
+<Layout
+  metadata={metadata}
+  breadcrumbs={[
+    { label: t(lang, 'trackerPageTitle'), href: dashboardHref },
+    { label: t(lang, 'trackerMethodologyTitle') },
+  ]}
+>
+  <article class="max-w-3xl mx-auto px-4 sm:px-6 py-12 md:py-16 prose dark:prose-invert">
+    <h1 class="not-prose t-display mb-6">{t(lang, 'trackerMethodologyTitle')}</h1>
+
+    {
+      lang === 'en' ? (
+        <>
+          <h2>What we do</h2>
+          <p>
+            The Singapore AI Observatory Dashboard <strong>presents</strong> the actual state of Singapore's AI — using
+            headline numbers, third-party rankings, target progress, and trends, plus our editorial team's
+            interpretation of each dimension.
+          </p>
+          <p>
+            <strong>We do not assign grades.</strong>
+          </p>
+
+          <h2>Why no grades</h2>
+          <ul>
+            <li>
+              sgai is an observatory, not a rating agency. Compressing multi-dimensional reality into a single grade
+              discards the most valuable tensions (strong investment vs. weak frontier research; strong governance vs.
+              weak enforcement).
+            </li>
+            <li>
+              Grades make readers stop thinking — "oh, A-, fine" — instead of clicking through. The dashboard exists to
+              make people <strong>read the numbers and the analysis</strong> and reach their own conclusions.
+            </li>
+            <li>
+              The most respected international observatories (CSIS, Stanford AI Index, Tortoise) don't assign overall
+              grades either. They list sub-scores and qualitative analysis. There's a reason for that.
+            </li>
+          </ul>
+
+          <h2>What each dimension shows</h2>
+          <p>Each card has 5 data elements + 2 editorial paragraphs:</p>
+          <h3>Data</h3>
+          <ol>
+            <li>
+              <strong>Headline</strong> — the 1–2 numbers that should be seen first
+            </li>
+            <li>
+              <strong>Benchmark</strong> — what we're compared against
+            </li>
+            <li>
+              <strong>Target progress</strong> (if applicable) — vs. published government targets
+            </li>
+            <li>
+              <strong>Third-party ranking anchors</strong> — Tortoise / Oxford / WIPO / Stanford / Microsoft
+            </li>
+            <li>
+              <strong>Trend</strong> (↗ → ↘)
+            </li>
+          </ol>
+          <h3>Editorial</h3>
+          <ul>
+            <li>
+              <strong>Interpretation</strong> (50–80 words; longer for qualitative cards): what these numbers mean —{' '}
+              <em>not</em> "why grade A"
+            </li>
+            <li>
+              <strong>Key shortcoming</strong> (20–60 words): the blind spot, risk, or structural problem the public
+              data doesn't state
+            </li>
+          </ul>
+
+          <h2>Third-party rankings we cite</h2>
+          <ul>
+            <li>
+              <strong>Tortoise Global AI Index</strong> — overall (investment + implementation + innovation)
+            </li>
+            <li>
+              <strong>Oxford Government AI Readiness Index</strong> — government readiness
+            </li>
+            <li>
+              <strong>Microsoft AI Economy Institute</strong> — enterprise AI adoption
+            </li>
+            <li>
+              <strong>Stanford AI Index</strong> — investment + academic output
+            </li>
+            <li>
+              <strong>WIPO Global Innovation Index</strong> — innovation ecosystem
+            </li>
+            <li>
+              <strong>CSRankings / QS</strong> — academic research
+            </li>
+          </ul>
+
+          <h2>Government targets we cite</h2>
+          <ul>
+            <li>NAIS 2.0: 15,000 AI professionals by 2029</li>
+            <li>NAIIP: 10,000 firms + 100,000 workers (2026–2029)</li>
+            <li>GovTech Pair: 150,000 civil servants</li>
+            <li>Public AI R&amp;D 2026–2030: S$1B+</li>
+            <li>Smart Nation 2.0: S$270M next-gen supercomputer (online by end of 2025)</li>
+          </ul>
+
+          <h2>Update cadence</h2>
+          <ul>
+            <li>
+              <strong>Regular</strong>: quarterly review (every 3 months)
+            </li>
+            <li>
+              <strong>Triggered</strong>: Budget releases, major policy announcements, annual ranking updates
+            </li>
+            <li>Each review's number and interpretation changes are logged below</li>
+          </ul>
+
+          <h2>About sgai editorial</h2>
+          <p>
+            The dashboard is maintained by the sgai (Singapore AI Observatory) editorial team @meltflake. We are{' '}
+            <strong>not a neutral third party</strong> — we are an opinionated observatory:
+          </p>
+          <ul>
+            <li>
+              <strong>No government or corporate funding</strong> — choice of metrics and interpretations is independent
+              of money
+            </li>
+            <li>
+              <strong>Our position shows in what we choose to track and how we interpret it</strong>, not in any grade
+            </li>
+            <li>
+              <strong>Sources are public</strong> — every metric, ranking anchor, and government target links to its
+              origin
+            </li>
+            <li>
+              <strong>We acknowledge limits</strong> — public data may diverge from internal corporate or government
+              reality
+            </li>
+            <li>
+              <strong>Challenges welcome</strong> — outdated numbers, biased interpretations, better metrics: file an
+              issue or email us
+            </li>
+          </ul>
+
+          <h2>Changelog</h2>
+          <ul>
+            <li>2026-05-02 · v1.0 dashboard launch — 6 dimensions with initial data + interpretation</li>
+          </ul>
+        </>
+      ) : (
+        <>
+          <h2>私たちがすること</h2>
+          <p>
+            シンガポール AI 観測ダッシュボードは、シンガポール AI の実際のステータスを<strong>提示</strong>
+            します——数字、第三者ランキング、目標進捗、トレンド、そして sgai 編集チームによる各次元の解読を用います。
+          </p>
+          <p>
+            <strong>私たちはスコアをつけません。</strong>
+          </p>
+
+          <h2>なぜスコアをつけないか</h2>
+          <ul>
+            <li>
+              sgai
+              は観測所であり、格付け機関ではありません。スコアリングは多次元の事実を単一の尺度に圧縮することであり、最も価値ある緊張関係（強い投入
+              vs 弱いオリジナリティ、強いガバナンス vs 弱い法執行）を失わせます
+            </li>
+            <li>
+              格付けは訪問者の思考を停止させます——A-
+              を見て「まあまあだ」と思い、根拠を確認しなくなります。ダッシュボードの価値は、訪問者に
+              <strong>数字を見て、解読を読み、自分で結論を出してもらう</strong>ことにあります
+            </li>
+            <li>
+              国際的に最も真剣な観測機関（CSIS、Stanford AI
+              Index、Tortoise）も総合スコアをつけず、サブ項目＋テキスト分析を列挙しています
+            </li>
+          </ul>
+
+          <h2>各次元で何を提示するか</h2>
+          <p>各カードは5つのデータ要素＋2段の編集テキストで構成されます：</p>
+          <h3>データ要素</h3>
+          <ol>
+            <li>
+              <strong>コア数字</strong>——その次元で最も見るべき1〜2個の数字
+            </li>
+            <li>
+              <strong>参照系</strong>——何と比較し、どのくらい差があるか、どのくらいリードしているか
+            </li>
+            <li>
+              <strong>目標進捗</strong>（該当する場合）——政府が公表した明確な目標（15K AI 人材 by 2029、150K 公務員
+              Pair、10K 企業 NAIIP）との比較
+            </li>
+            <li>
+              <strong>第三者ランキングアンカー</strong>——Tortoise / Oxford / WIPO / Stanford / Microsoft
+              など既存の国際ランキング
+            </li>
+            <li>
+              <strong>トレンド矢印</strong>（↗ → ↘）
+            </li>
+          </ol>
+          <h3>編集テキスト</h3>
+          <ul>
+            <li>
+              <strong>解読</strong>
+              （50〜80字、ガバナンスカードは数字が少ないためより長め）：これらの数字が何を意味するか、何に注目すべきか。
+              <strong>「なぜ A なのか」ではなく</strong>、「これは何を意味するのか」
+            </li>
+            <li>
+              <strong>重要な弱点</strong>（20〜60字）：公開データが語らない盲点 / リスク / 構造的問題
+            </li>
+          </ul>
+
+          <h2>引用する第三者ランキング</h2>
+          <ul>
+            <li>
+              <strong>Tortoise Global AI Index</strong> — 総合力（投資＋実施＋イノベーション）
+            </li>
+            <li>
+              <strong>Oxford Government AI Readiness Index</strong> — 政府準備度
+            </li>
+            <li>
+              <strong>Microsoft AI Economy Institute</strong> — 企業 AI 採用率
+            </li>
+            <li>
+              <strong>Stanford AI Index</strong> — 投資＋学術産出
+            </li>
+            <li>
+              <strong>WIPO Global Innovation Index</strong> — イノベーションエコシステム
+            </li>
+            <li>
+              <strong>CSRankings / QS</strong> — 学術研究
+            </li>
+          </ul>
+
+          <h2>引用する政府目標</h2>
+          <ul>
+            <li>NAIS 2.0：15,000 AI 人材 by 2029</li>
+            <li>NAIIP：10,000 企業 + 100,000 労働者（2026–2029）</li>
+            <li>GovTech Pair：150,000 公務員</li>
+            <li>公共 AI 研究 2026–2030：S$1B+</li>
+            <li>Smart Nation 2.0：S$270M 次世代スーパーコンピュータ（2025年末稼働予定）</li>
+          </ul>
+
+          <h2>レビュー頻度</h2>
+          <ul>
+            <li>
+              <strong>定期</strong>：四半期レビュー（3か月ごと）
+            </li>
+            <li>
+              <strong>トリガー</strong>：Budget 発表、重大な政策公表、年次ランキング更新（Tortoise / Oxford 等）
+            </li>
+            <li>各レビューの数字と解読の変更は本ページ下部の changelog に記録します</li>
+          </ul>
+
+          <h2>sgai 編集チームについて</h2>
+          <p>
+            ダッシュボードは sgai（Singapore AI Observatory）編集チーム @meltflake が運営しています。私たちは
+            <strong>中立的な第三者ではなく</strong>、立場を持った観測所です：
+          </p>
+          <ul>
+            <li>
+              <strong>政府・企業からの資金援助は一切受けていません</strong>
+              ——指標の選定と解読の執筆は資金の影響から独立しています
+            </li>
+            <li>
+              <strong>立場はどの数字を選び、どう解読するかに表れます</strong>。スコアの高低には表れません
+            </li>
+            <li>
+              <strong>根拠を公開</strong>——各カードの数字の出典、第三者ランキング、政府目標にはすべて URL
+              が付いており、追跡可能です
+            </li>
+            <li>
+              <strong>限界を認識</strong>
+              ——私たちが読めるのは公開データであり、企業内部や政府内部の実際の進捗は公開値と乖離している可能性があります
+            </li>
+            <li>
+              <strong>異議歓迎</strong>——数字の陳腐化、解読の偏り、より良い指標を見つけた場合は、メールまたは issue
+              でお知らせください
+            </li>
+          </ul>
+
+          <h2>Changelog</h2>
+          <ul>
+            <li>2026-05-02 · v1.0 ダッシュボードリリース、6次元の初期データ＋解読</li>
+          </ul>
+        </>
+      )
+    }
+  </article>
+</Layout>

@@ -1,0 +1,117 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import Headline from '~/components/ui/Headline.astro';
+import { sections, dataDate, introBody, conclusion } from '~/data/legal-ai';
+import { legalItemSlug } from '~/utils/entity-pages';
+import { renderInlineMarkdown } from '~/utils/inline-markdown';
+
+const scopeLabel: Record<string, { label: string; color: string }> = {
+  training: { label: '训练侧', color: 'bg-emerald-100 dark:bg-emerald-900 text-emerald-800 dark:text-emerald-200' },
+  output: { label: '输出侧', color: 'bg-rose-100 dark:bg-rose-900 text-rose-800 dark:text-rose-200' },
+  liability: { label: '责任', color: 'bg-amber-100 dark:bg-amber-900 text-amber-800 dark:text-amber-200' },
+  governance: { label: '治理', color: 'bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200' },
+};
+---
+
+<Layout
+  metadata={{
+    title: 'シンガポール AI 法的フレームワーク',
+    description:
+      '新加坡 AI 法律框架——"训练宽松 + 输出严管"双轨：Copyright §244 全球最宽松的 AI 训练例外，配合 OCHA + Elections Bill + Criminal Law Bill + Online Safety Bill 四件套输出严管。',
+  }}
+  breadcrumbs={[{ label: 'AI 法的フレームワーク' }]}
+>
+  <section class="px-4 py-16 sm:px-6 mx-auto lg:px-8 max-w-5xl">
+    <Headline
+      title="⚖️ シンガポール AI 法的フレームワーク"
+      subtitle={`データ更新：${dataDate}。「訓練は緩やか＋出力は厳格」の二本立て——これがシンガポールを現在世界で AI 企業にとって最も明確で予測可能な法域の一つにしています。`}
+    />
+
+    <div class="callout-note rounded-lg mb-12 leading-relaxed">
+      <p class="font-bold text-base mb-3">基本的立場</p>
+      <div class="text-sm leading-relaxed space-y-3" set:html={renderInlineMarkdown(introBody)} />
+    </div>
+
+    {
+      sections.map((section, sectionIdx) => (
+        <div class="mb-16">
+          <h2 class="t-h2 mb-3 border-b-2 border-blue-600 dark:border-blue-400 pb-2">
+            {sectionIdx + 1}. {section.title}
+          </h2>
+          <p class="text-sm italic text-muted mb-6">{section.philosophy}</p>
+
+          <div class="space-y-4">
+            {section.items.map((item) => (
+              <div class="group relative border border-subtle rounded-lg p-6 bg-surface hover:shadow-md hover:border-blue-300 dark:hover:border-blue-700 transition-all">
+                <a
+                  href={`/legal-ai/${legalItemSlug(item)}/`}
+                  class="absolute inset-0 z-0 rounded-lg"
+                  aria-label={`${item.title} の詳細を見る`}
+                />
+                <div class="flex items-start gap-2 flex-wrap mb-2">
+                  <h3 class="text-lg font-bold m-0 flex-1 min-w-0 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                    {item.title}
+                  </h3>
+                  <span class={`text-xs font-bold px-2 py-1 rounded shrink-0 ${scopeLabel[item.scope].color}`}>
+                    {scopeLabel[item.scope].label}
+                  </span>
+                  <span class="text-xs bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 px-2 py-1 rounded shrink-0">
+                    {item.status}
+                  </span>
+                </div>
+                <p class="text-sm text-muted mb-3">{item.titleEn}</p>
+                <div class="flex gap-2 mb-3 flex-wrap text-xs">
+                  {item.authorityUrl ? (
+                    <a
+                      href={item.authorityUrl}
+                      target="_blank"
+                      rel="noopener"
+                      class="relative z-10 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 px-2 py-1 rounded hover:underline"
+                    >
+                      {item.authority}
+                    </a>
+                  ) : (
+                    <span class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 px-2 py-1 rounded">
+                      {item.authority}
+                    </span>
+                  )}
+                  <span class="bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 px-2 py-1 rounded">
+                    {item.date}
+                  </span>
+                </div>
+                <p class="text-sm font-medium mb-2">{item.summary}</p>
+                <p class="text-sm text-muted mb-3">{item.body}</p>
+                {item.sourceUrl && (
+                  <a
+                    href={item.sourceUrl}
+                    target="_blank"
+                    rel="noopener"
+                    class="relative z-10 text-sm text-blue-600 dark:text-blue-400 hover:underline"
+                  >
+                    🔗 法律原文
+                  </a>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      ))
+    }
+
+    <div class="mt-12 bg-surface rounded-xl p-8 border border-subtle">
+      <h2 class="t-h3 mb-4">この組み合わせが AI 企業にとって魅力的な理由</h2>
+      <div class="text-sm leading-relaxed space-y-3" set:html={renderInlineMarkdown(conclusion)} />
+    </div>
+
+    <div class="mt-12 text-sm text-muted text-center">
+      参考記事：
+      <a href="/singapore-ai-native-companies-vs-nations/" class="text-blue-600 dark:text-blue-400 hover:underline">
+        50人から5,700,000人へ——同じ AI ネイティブアーキテクチャ
+      </a>
+      ·
+      <a href="/levers/" class="text-blue-600 dark:text-blue-400 hover:underline">国家 AI レバーマップ</a>
+      ·
+      <a href="/policies/" class="text-blue-600 dark:text-blue-400 hover:underline">政策文書ライブラリ</a>
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,68 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import Headline from '~/components/ui/Headline.astro';
+
+const challenges = [
+  {
+    icon: '👥',
+    title: '1. 人材不足と競争',
+    content:
+      'シンガポールの AI 人材プールは限られており（人口約570万人）、シリコンバレー、中国、ロンドンとの激しい競争に直面しています。AI アプレンティスシッププログラムや Tech.Pass ビザを導入したものの、ハイエンド AI 研究人材の流出は依然として懸念事項です。国内の AI 人材育成スピードは需要の伸びに追いついていません。',
+  },
+  {
+    icon: '📦',
+    title: '2. データ取得と品質',
+    content:
+      '小国ゆえにデータセットの規模は自ずと制約されます。PDPA は保護とイノベーションのバランスを取っていますが、越境データ流通にはまだ摩擦があります。大規模な中英混合コーパスの不足も国内大規模モデル開発を制約しています。政府のデータ公開（data.gov.sg）は大きく進歩しましたが、省庁間のデータサイロは依然として存在します。',
+  },
+  {
+    icon: '⚖️',
+    title: '3. 倫理とガバナンスのバランス',
+    content:
+      '「ソフトロー」ガバナンスモデル（自主遵守が中心）は柔軟ですが、執行力が不足する可能性があります。AI が医療・金融などの重要分野に深く浸透する中、自主的な枠組みだけで十分なのでしょうか。AI Verify の採用率はまだ広がっておらず、企業の参加度は向上の余地があります。',
+  },
+  {
+    icon: '🔗',
+    title: '4. 技術依存リスク',
+    content:
+      'シンガポールの AI エコシステムは海外技術に高度に依存しています：GPU は NVIDIA、クラウドプラットフォームは AWS/Azure/GCP、基盤大規模モデルは OpenAI/Google/Meta から。この依存は地政学的緊張時に戦略的脆弱性となり得ます。SEA Lion など国内大規模モデルは重要な試みですが、フロンティアとの差はまだ大きいです。',
+  },
+  {
+    icon: '🏗️',
+    title: '5. 実装実行ギャップ',
+    content:
+      '政策文書の質は高いものの、「紙上」から「現場」への落差が存在します。大企業や政府部門の AI 採用率は比較的高いですが、経済の主体を占める中小企業（SME）の AI 浸透率は低水準です。100 Experiments プロジェクト後のスケールアップにも課題が残ります。',
+  },
+  {
+    icon: '🌏',
+    title: '6. 地域間競争の激化',
+    content:
+      'ASEAN 域内では、マレーシア（AI データセンター投資）、インドネシア（人口データの優位性）、ベトナム（AI 人材コスト）がいずれも加速的に追い上げています。グローバルレベルでは、米中 AI 競争がシンガポールの「仲介者」としての余地を狭める可能性があります。シンガポールは自らのポジショニングを持続的に差別化する必要があります。',
+  },
+];
+---
+
+<Layout
+  metadata={{
+    title: '課題と制約分析',
+    description: 'シンガポール AI 発展が直面する主要課題——人材競争、データ制約、計算資源の制約、倫理ガバナンス。',
+  }}
+  breadcrumbs={[{ label: '課題と制約分析' }]}
+>
+  <section class="px-4 py-16 sm:px-6 mx-auto lg:px-8 max-w-4xl">
+    <Headline title="⚠️ 課題と制約分析" subtitle="シンガポールが AI 戦略を推進する過程で直面する6つの主要課題。" />
+
+    <div class="space-y-6">
+      {
+        challenges.map((c) => (
+          <div class="bg-surface rounded-lg shadow-md p-6 border border-subtle">
+            <h2 class="text-lg font-bold mb-2">
+              {c.icon} {c.title}
+            </h2>
+            <p class="text-sm leading-relaxed">{c.content}</p>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+</Layout>

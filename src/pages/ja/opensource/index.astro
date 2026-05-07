@@ -1,0 +1,269 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import Headline from '~/components/ui/Headline.astro';
+import {
+  seaLionStats,
+  seaLionVersions,
+  modelComparison,
+  seaGuardStats,
+  seaGuardModels,
+  aiVerify,
+  openSourceProjects,
+  papers,
+  dataDisclaimer,
+} from '~/data/opensource';
+---
+
+<Layout
+  metadata={{
+    title: '公式オープンソースと研究',
+    description: 'シンガポール政府と公式機関の AI オープンソースプロジェクトおよび研究成果——SEA-LION、AI Verify 等。',
+  }}
+  breadcrumbs={[{ label: '公式オープンソースと研究' }]}
+>
+  <section class="px-4 py-16 sm:px-6 mx-auto lg:px-8 max-w-6xl">
+    <Headline
+      title="🔬 公式オープンソースと研究"
+      subtitle="AI Singapore およびシンガポール政府が支援するオープンソースプロジェクトと研究成果"
+    />
+
+    <div
+      class="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-4 mb-12 text-sm text-blue-800 dark:text-blue-200"
+    >
+      ℹ️ 本ページは AI Singapore
+      およびシンガポール政府支援のオープンソースプロジェクトと研究成果を収録しています。シンガポールの産学研コミュニティのその他のオープンソースプロジェクトは<a
+        href="/community-opensource/"
+        class="underline font-medium">産学研オープンソースエコシステム</a
+      >ページをご覧ください。
+    </div>
+
+    <!-- SEA-LION 模型生态 -->
+    <div class="mb-16">
+      <h2 class="t-h2 mb-6">🦁 SEA-LION 模型生态</h2>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+        <div class="bg-surface rounded-lg shadow-md border border-subtle p-4 text-center">
+          <div class="t-stat text-blue-600 dark:text-blue-400">{seaLionStats.totalModels}</div>
+          <div class="text-xs text-muted">モデル総数</div>
+        </div>
+        <div class="bg-surface rounded-lg shadow-md border border-subtle p-4 text-center">
+          <div class="t-stat text-blue-600 dark:text-blue-400">
+            {seaLionStats.totalDownloads.toLocaleString()}
+          </div>
+          <div class="text-xs text-muted">総ダウンロード数</div>
+        </div>
+        <div class="bg-surface rounded-lg shadow-md border border-subtle p-4 text-center">
+          <div class="t-stat text-blue-600 dark:text-blue-400">{seaLionStats.totalLikes}</div>
+          <div class="text-xs text-muted">総いいね数</div>
+        </div>
+        <div class="bg-surface rounded-lg shadow-md border border-subtle p-4 text-center">
+          <div class="t-stat text-blue-600 dark:text-blue-400">
+            {seaLionStats.topModelDownloads.toLocaleString()}
+          </div>
+          <div class="text-xs text-muted">最人気モデルダウンロード数</div>
+        </div>
+      </div>
+
+      <div class="overflow-x-auto mb-6">
+        <table class="w-full text-sm bg-surface rounded-lg shadow-md border border-subtle">
+          <thead>
+            <tr class="border-b border-subtle bg-slate-50 dark:bg-slate-800">
+              <th class="px-4 py-3 text-left font-semibold">バージョン</th>
+              <th class="px-4 py-3 text-right font-semibold">モデル数</th>
+              <th class="px-4 py-3 text-right font-semibold">ダウンロード数</th>
+              <th class="px-4 py-3 text-right font-semibold">いいね</th>
+              <th class="px-4 py-3 text-left font-semibold">期間</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              seaLionVersions.map((v) => (
+                <tr class="border-b border-slate-100 dark:border-slate-800">
+                  <td class="px-4 py-2 font-medium">{v.version}</td>
+                  <td class="px-4 py-2 text-right">{v.models}</td>
+                  <td class="px-4 py-2 text-right">{v.downloads.toLocaleString()}</td>
+                  <td class="px-4 py-2 text-right">{v.likes}</td>
+                  <td class="px-4 py-2 text-muted">{v.period}</td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+
+      <div
+        class="bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-lg p-4 mb-4 text-sm text-amber-800 dark:text-amber-200"
+      >
+        💡 {modelComparison}
+      </div>
+
+      <a
+        href={seaLionStats.huggingfaceUrl}
+        target="_blank"
+        rel="noopener"
+        class="text-sm text-blue-600 dark:text-blue-400 hover:underline"
+      >
+        🤗 HuggingFace で全モデルを見る →
+      </a>
+    </div>
+
+    <!-- SEA-Guard 安全模型 -->
+    <div class="mb-16">
+      <h2 class="t-h2 mb-6">🛡️ SEA-Guard 安全模型</h2>
+
+      <div class="bg-surface rounded-lg shadow-md border border-subtle p-6">
+        <div class="flex flex-wrap gap-6 mb-4">
+          <div>
+            <span class="t-stat text-blue-600 dark:text-blue-400">{seaGuardStats.totalModels}</span>
+            <span class="text-sm text-muted ml-1">モデル</span>
+          </div>
+          <div>
+            <span class="t-stat text-blue-600 dark:text-blue-400">{seaGuardStats.totalDownloads}</span>
+            <span class="text-sm text-muted ml-1">ダウンロード</span>
+          </div>
+        </div>
+        <p class="text-sm text-muted mb-4">{seaGuardStats.note}</p>
+        <div class="space-y-2">
+          {
+            seaGuardModels.map((m) => (
+              <div class="flex items-center justify-between text-sm bg-slate-50 dark:bg-slate-800 rounded px-3 py-2">
+                <span class="font-medium">{m.name}</span>
+                <span class="text-xs text-muted">{m.type}</span>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+
+    <!-- AI Verify 治理框架 -->
+    <div class="mb-16">
+      <h2 class="t-h2 mb-6">✅ AI Verify 治理框架</h2>
+
+      <div class="bg-surface rounded-lg shadow-md border border-subtle p-6">
+        <p class="text-lg font-semibold mb-1">{aiVerify.name}</p>
+        <p class="text-sm text-muted mb-4">{aiVerify.description} · オープンソース化 {aiVerify.openSourceDate}</p>
+
+        <ul class="text-sm space-y-2 mb-6">
+          {
+            aiVerify.features.map((f) => (
+              <li class="flex items-start gap-2">
+                <span class="text-green-600 dark:text-green-400 mt-0.5">✓</span>
+                <span>{f}</span>
+              </li>
+            ))
+          }
+        </ul>
+
+        <div class="mb-4">
+          <p class="text-xs font-semibold text-muted mb-2">パートナー</p>
+          <div class="flex flex-wrap gap-2">
+            {
+              aiVerify.partners.map((p) => (
+                <span class="text-xs bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded">{p}</span>
+              ))
+            }
+          </div>
+        </div>
+
+        <a
+          href={aiVerify.githubUrl}
+          target="_blank"
+          rel="noopener"
+          class="text-sm text-blue-600 dark:text-blue-400 hover:underline"
+        >
+          GitHub →
+        </a>
+      </div>
+    </div>
+
+    <!-- 公式プロジェクト索引 -->
+    <div class="mb-16">
+      <h2 class="t-h2 mb-2">📦 公式プロジェクト索引</h2>
+      <p class="text-sm text-muted mb-6">各カードは継続的に補充できるプロジェクトプロフィールです。</p>
+
+      <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        {
+          openSourceProjects.map((proj) => (
+            <a
+              href={`/opensource/${proj.id}/`}
+              class="group flex h-full flex-col bg-surface rounded-lg shadow-md border border-subtle p-5 hover:border-blue-300 hover:shadow-lg transition-all"
+            >
+              <div class="flex items-start justify-between gap-3 mb-3">
+                <div>
+                  <p class="text-xs text-blue-600 dark:text-blue-400 mb-1">{proj.owner}</p>
+                  <h3 class="font-bold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                    {proj.name}
+                  </h3>
+                </div>
+                <span class="text-xs bg-slate-100 dark:bg-slate-800 px-2 py-0.5 rounded whitespace-nowrap">
+                  {proj.category}
+                </span>
+              </div>
+              <p class="text-sm text-muted mb-4 leading-relaxed">{proj.description}</p>
+              <div class="flex flex-wrap items-center gap-2 text-xs text-muted">
+                <span class="bg-slate-50 dark:bg-slate-800 px-2 py-0.5 rounded">{proj.language}</span>
+                <span class="bg-slate-50 dark:bg-slate-800 px-2 py-0.5 rounded">{proj.status}</span>
+                {proj.stars !== null && (
+                  <span class="bg-slate-50 dark:bg-slate-800 px-2 py-0.5 rounded">
+                    GitHub {proj.stars.toLocaleString()} Stars
+                  </span>
+                )}
+              </div>
+              <div class="mt-auto pt-4 text-sm text-blue-600 dark:text-blue-400 font-medium">
+                プロフィールを見る{' '}
+                <span aria-hidden="true" class="inline-block group-hover:translate-x-0.5 transition-transform">
+                  →
+                </span>
+              </div>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+
+    <!-- 研究論文 -->
+    <div class="mb-16">
+      <h2 class="t-h2 mb-6">📄 研究論文</h2>
+
+      <div class="space-y-4">
+        {
+          papers.map((paper) => (
+            <div class="bg-surface rounded-lg shadow-md border border-subtle p-5">
+              <div class="flex items-start justify-between">
+                <div>
+                  <h3 class="font-bold text-sm mb-1">{paper.titleZh}</h3>
+                  <p class="text-xs text-muted italic mb-2">{paper.title}</p>
+                  <div class="flex items-center gap-3">
+                    <span class="text-xs bg-slate-100 dark:bg-slate-800 px-2 py-0.5 rounded">{paper.year}</span>
+                    <a
+                      href={paper.url}
+                      target="_blank"
+                      rel="noopener"
+                      class="text-xs text-blue-600 dark:text-blue-400 hover:underline"
+                    >
+                      arXiv: {paper.arxivId} →
+                    </a>
+                    {paper.translationUrl && (
+                      <a
+                        href={paper.translationUrl}
+                        target="_blank"
+                        rel="noopener"
+                        class="text-xs text-green-600 dark:text-green-400 hover:underline"
+                      >
+                        中国語翻訳 →
+                      </a>
+                    )}
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+
+    <!-- データ説明 -->
+    <p class="mt-12 text-sm text-muted text-center">{dataDisclaimer}</p>
+  </section>
+</Layout>

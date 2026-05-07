@@ -1,0 +1,146 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import Headline from '~/components/ui/Headline.astro';
+import RelatedRail from '~/components/data/RelatedRail.astro';
+import { levers, transmissionExplainer, dataDate } from '~/data/levers';
+import { leverItemSlug, leverSlug } from '~/utils/entity-pages';
+---
+
+<Layout
+  metadata={{
+    title: '国家 AI レバーマップ',
+    description:
+      'シンガポールの国家レベル AI ネイティブ転換は、省庁別ではなく「AI 導入経路」で理解すべきです：インフラ・ガバナンス・人材・応用・政府自身の活用・外交という6つのレバーが省庁横断で構成する実行パイプライン。',
+  }}
+  breadcrumbs={[{ label: '国家 AI レバーマップ' }]}
+>
+  <section class="px-4 py-16 sm:px-6 mx-auto lg:px-8 max-w-6xl">
+    <Headline
+      title="🎯 国家 AI レバーマップ"
+      subtitle={`データ更新：${dataDate}。シンガポール Budget 2026 と各省庁の AI 政策を「AI 導入経路」で再分類。6つのレバーは複数の省庁にまたがっており、省庁別分類よりも全体像が見えやすくなっています。`}
+    />
+
+    <div class="callout-note rounded-lg mb-12 leading-relaxed">
+      <p class="font-bold text-base mb-2">なぜレバー別に分類するのか？</p>
+      <p class="mb-2">
+        多くの AI
+        政策論考は「国家」と「企業」を並列に分析しますが、それでは入れ子構造を見落とします。シンガポール戦略の本質は<strong
+          >国家全体を企業の AI ネイティブ転換の「ラッピングレイヤー」にすること</strong
+        >です：国家自身が AI ネイティブになる必要はなく、企業の転換速度を増幅すれば十分です。
+      </p>
+      <p>
+        6つのレバーは「AI 導入経路」別に分類されています（インフラ → ガバナンス → 人材 → 応用 → 政府活用 →
+        外交）。各レバーは複数の省庁にまたがり、つなげて初めて完全な実行パイプラインになります。
+      </p>
+    </div>
+
+    <div class="space-y-16">
+      {
+        levers.map((lever) => (
+          <div class="border border-subtle rounded-xl p-8 bg-surface shadow-md">
+            <div class="flex items-start gap-4 mb-6 flex-wrap">
+              <div class="text-5xl">{lever.icon}</div>
+              <div class="flex-1 min-w-[280px]">
+                <div class="flex items-center gap-3 flex-wrap mb-1">
+                  <h2 class="t-h2 m-0">
+                    <a href={`/levers/${leverSlug(lever)}/`} class="hover:text-blue-600 dark:hover:text-blue-400">
+                      レバー {lever.number} · {lever.name}
+                    </a>
+                  </h2>
+                  {lever.transmissionMode === 'direct' ? (
+                    <span class="text-xs font-bold bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200 px-2 py-1 rounded">
+                      国が直接実行
+                    </span>
+                  ) : (
+                    <span class="text-xs font-bold bg-amber-100 dark:bg-amber-900 text-amber-800 dark:text-amber-200 px-2 py-1 rounded">
+                      企業への浸透
+                    </span>
+                  )}
+                </div>
+                <p class="text-base text-muted m-0">{lever.subtitle}</p>
+              </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-4 mb-6 text-sm">
+              <div class="bg-slate-50 dark:bg-slate-800 p-4 rounded-lg">
+                <div class="text-xs font-bold uppercase tracking-wide text-slate-500 mb-1">国が直接実行すること</div>
+                <div>{lever.whatStateDoes}</div>
+              </div>
+              <div class="bg-slate-50 dark:bg-slate-800 p-4 rounded-lg">
+                <div class="text-xs font-bold uppercase tracking-wide text-slate-500 mb-1">
+                  企業のどのボトルネックを解決するか
+                </div>
+                <div>{lever.bottleneckSolved}</div>
+              </div>
+            </div>
+
+            {lever.groups.map((group) => (
+              <div class="mb-6">
+                <h3 class="text-lg font-bold mb-3 border-b border-subtle pb-1">{group.title}</h3>
+                <div class="grid gap-3 md:grid-cols-2">
+                  {group.items.map((item) => (
+                    <div class="border border-subtle rounded-lg p-4 hover:shadow-md transition-shadow">
+                      <div class="flex items-start gap-2 flex-wrap mb-2">
+                        <h4 class="text-base font-bold m-0 flex-1 min-w-0">
+                          <a
+                            href={`/levers/${leverItemSlug(item)}/`}
+                            class="hover:text-blue-600 dark:hover:text-blue-400"
+                          >
+                            {item.name}
+                          </a>
+                        </h4>
+                        <span class="text-xs bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 px-2 py-1 rounded shrink-0">
+                          {item.ministry}
+                        </span>
+                      </div>
+                      {item.scale && (
+                        <div class="text-sm font-mono font-bold text-slate-700 dark:text-slate-300 mb-1">
+                          {item.scale}
+                        </div>
+                      )}
+                      <p class="text-sm text-muted m-0 mb-2">{item.description}</p>
+                      {item.sourceUrl && (
+                        <div class="flex flex-wrap gap-3">
+                          <a
+                            href={`/levers/${leverItemSlug(item)}/`}
+                            class="text-xs text-blue-600 dark:text-blue-400 hover:underline"
+                          >
+                            詳細 →
+                          </a>
+                          <a
+                            href={item.sourceUrl}
+                            target="_blank"
+                            rel="noopener"
+                            class="text-xs text-blue-600 dark:text-blue-400 hover:underline"
+                          >
+                            🔗 出典
+                          </a>
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+
+            {lever.insight && <div class="callout-muted rounded mt-4 italic">💡 {lever.insight}</div>}
+            <RelatedRail entity={{ type: 'lever', id: lever.number }} variant="compact" />
+          </div>
+        ))
+      }
+    </div>
+
+    <div class="mt-16 bg-surface rounded-xl p-8 border border-subtle">
+      <h2 class="t-h2 mb-4">{transmissionExplainer.title}</h2>
+      <pre
+        class="text-sm whitespace-pre-wrap leading-relaxed bg-transparent p-0 border-0 m-0">{transmissionExplainer.body}</pre>
+    </div>
+
+    <div class="mt-12 text-sm text-muted text-center">
+      参考記事：
+      <a href="/singapore-ai-native-companies-vs-nations/" class="text-blue-600 dark:text-blue-400 hover:underline">
+        50人から5,700,000人へ——同じ AI ネイティブアーキテクチャ、二つのスケール
+      </a>
+    </div>
+  </section>
+</Layout>
