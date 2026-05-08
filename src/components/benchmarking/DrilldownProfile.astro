@@ -16,8 +16,8 @@ const { page, lang } = Astro.props;
 // `isEn` is true for any non-zh locale — the page-local label dictionary
 // only branches zh vs. non-zh, so non-default locales (en, ja, ...) all
 // share the English copy until per-locale strings are added.
+const isJa = lang === 'ja';
 const isEn = lang !== 'zh';
-
 const benchmarkRoot = isEn ? '/benchmarking/' : '/benchmarking/';
 
 const title = isEn ? page.titleEn || page.title : page.title;
@@ -34,12 +34,12 @@ const relatedDrilldowns = getBenchmarkDrilldownsForRegion(page.region.slug)
   .slice(0, 6);
 
 const labels = {
-  benchmarkCrumb: isEn ? 'International Benchmarks' : '国际对标',
+  benchmarkCrumb: isJa ? '国際ベンチマーク' : isEn ? 'International Benchmarks' : '国际对标',
   drilldownEyebrow: 'Benchmark Drilldown · Updated',
-  expandHeading: isEn ? 'Detail' : '展开说明',
-  sourcesHeading: isEn ? 'References' : '参考来源',
-  relatedHeading: isEn ? 'Continue exploring this region' : '同地区继续下钻',
-  dataNoteHeading: isEn ? 'Data note' : '数据说明',
+  expandHeading: isJa ? '説明を展開' : isEn ? 'Detail' : '展开说明',
+  sourcesHeading: isJa ? '参考出典' : isEn ? 'References' : '参考来源',
+  relatedHeading: isJa ? '同じ地域で掘り下げる' : isEn ? 'Continue exploring this region' : '同地区继续下钻',
+  dataNoteHeading: isJa ? 'データの説明' : isEn ? 'Data note' : '数据说明',
   dataNote: page.analysisPending
     ? isEn
       ? `This page is auto-generated from regional benchmark data and is awaiting deep analysis (curated on ${benchmarkCaseProfileUpdated}). It is excluded from search indexing until enrichment lands.`
@@ -50,15 +50,20 @@ const labels = {
   backTo: isEn ? `Back to ${regionName}` : `返回 ${regionName}`,
 };
 
-const baseMetadata = isEn
+const baseMetadata = isJa
   ? {
-      title: `${title} · ${regionName} Benchmark`,
+      title: `${title} · ${regionName}国際ベンチマーク`,
       description,
     }
-  : {
-      title: `${title} · ${regionName}国际对标`,
-      description,
-    };
+  : isEn
+    ? {
+        title: `${title} · ${regionName} Benchmark`,
+        description,
+      }
+    : {
+        title: `${title} · ${regionName}国际对标`,
+        description,
+      };
 
 // Until per-drilldown enrichment lands, mark the page noindex,follow so
 // thin auto-generated stubs don't erode site-wide SEO quality. Once an
@@ -81,7 +86,7 @@ const articleSchema = {
   ],
   isPartOf: {
     '@type': 'WebSite',
-    name: isEn ? 'Singapore AI Observatory' : '新加坡 AI 观察',
+    name: isJa ? 'シンガポール AI 観測' : isEn ? 'Singapore AI Observatory' : '新加坡 AI 观察',
     url: isEn ? 'https://sgai.md/' : 'https://sgai.md/',
   },
 };

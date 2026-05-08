@@ -15,8 +15,8 @@ interface Props {
 const { page, lang } = Astro.props;
 // `isEn` is true for any non-zh locale — local label dictionaries only
 // branch zh vs. non-zh; ja falls back to en until per-locale strings land.
+const isJa = lang === 'ja';
 const isEn = lang !== 'zh';
-
 const benchmarkRoot = isEn ? '/benchmarking/' : '/benchmarking/';
 
 const caseItem = page.caseItem;
@@ -43,32 +43,37 @@ const caseRegionPage = regionPages.find(
 );
 
 const labels = {
-  benchmarkCrumb: isEn ? 'International Benchmarks' : '国际对标',
+  benchmarkCrumb: isJa ? '国際ベンチマーク' : isEn ? 'International Benchmarks' : '国际对标',
   caseEyebrow: 'Benchmark Case · Updated',
-  ownerLabel: isEn ? 'Owner' : '归属方',
-  whyItMatters: isEn ? 'Why It Matters' : '为什么值得观察',
-  singaporeTakeaway: isEn ? 'Singapore Takeaway' : '对新加坡的启发',
-  sourcesHeading: isEn ? 'Sources' : '参考来源',
-  regionBackground: isEn ? 'Region background' : '地区背景',
-  anotherCase: isEn ? 'Another case' : '另一个案例',
-  continueCases: isEn ? 'Continue With Cases' : '继续看案例',
-  dataNoteHeading: isEn ? 'Data Note' : '数据说明',
+  ownerLabel: isJa ? '所属機関' : isEn ? 'Owner' : '归属方',
+  whyItMatters: isJa ? '観察に値する理由' : isEn ? 'Why It Matters' : '为什么值得观察',
+  singaporeTakeaway: isJa ? 'シンガポール向けの示唆' : isEn ? 'Singapore Takeaway' : '对新加坡的启发',
+  sourcesHeading: isJa ? '参考出典' : isEn ? 'Sources' : '参考来源',
+  regionBackground: isJa ? '地域背景' : isEn ? 'Region background' : '地区背景',
+  anotherCase: isJa ? '別の事例' : isEn ? 'Another case' : '另一个案例',
+  continueCases: isJa ? '事例を見る' : isEn ? 'Continue With Cases' : '继续看案例',
+  dataNoteHeading: isJa ? 'データの説明' : isEn ? 'Data Note' : '数据说明',
   dataNote: isEn
     ? `International benchmark case profile, curated on ${benchmarkCaseProfileUpdated}; underlying region data follows the public reading on ${dataDate}. Future updates can add official links, timelines, indicators, citations, and cross-page relations.`
     : `本页为国际对标案例档案，整理于 ${benchmarkCaseProfileUpdated}；基础地区数据沿用 ${dataDate} 的公开口径。后续可继续补充官方链接、时间线、指标、引用和跨页关系。`,
-  backTo: isEn ? 'Back to International Benchmarks' : '返回国际对标',
+  backTo: isJa ? '国際ベンチマークに戻る' : isEn ? 'Back to International Benchmarks' : '返回国际对标',
   disclaimer: (isEn ? dataDisclaimerEn : null) || dataDisclaimer,
 };
 
-const metadata = isEn
+const metadata = isJa
   ? {
-      title: `${name} · International Benchmark Case`,
+      title: `${name} · 国際ベンチマーク事例`,
       description: summary,
     }
-  : {
-      title: `${name} · 国际对标案例`,
-      description: summary,
-    };
+  : isEn
+    ? {
+        title: `${name} · International Benchmark Case`,
+        description: summary,
+      }
+    : {
+        title: `${name} · 国际对标案例`,
+        description: summary,
+      };
 
 const articleSchema = {
   '@context': 'https://schema.org',
@@ -85,7 +90,7 @@ const articleSchema = {
   ],
   isPartOf: {
     '@type': 'WebSite',
-    name: isEn ? 'Singapore AI Observatory' : '新加坡 AI 观察',
+    name: isJa ? 'シンガポール AI 観測' : isEn ? 'Singapore AI Observatory' : '新加坡 AI 观察',
     url: isEn ? 'https://sgai.md/' : 'https://sgai.md/',
   },
 };

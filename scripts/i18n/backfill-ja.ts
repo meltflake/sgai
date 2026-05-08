@@ -161,6 +161,13 @@ const ALL_DATA_FILES = [
   'src/data/startups.ts',
   'src/data/legal-ai.ts',
   'src/data/timeline.ts',
+  'src/data/voices.ts',
+  'src/data/references.ts',
+  'src/data/fieldnotes.ts',
+  'src/data/community-opensource.ts',
+  'src/data/opensource.ts',
+  'src/data/updates.ts',
+  'src/data/stats.ts',
 ];
 
 const ZH_TO_JA_SYSTEM_PROMPT = [
@@ -300,7 +307,7 @@ async function backfillFile(filePath: string, opts: { dryRun: boolean; limit?: n
     direction: 'zh→ja',
     cacheDir: resolve('scripts/i18n/data/ja-cache'),
     systemPrompt: ZH_TO_JA_SYSTEM_PROMPT,
-    concurrency: 2,
+    concurrency: Number(process.env.SGAI_TRANSLATION_CONCURRENCY || 2),
     force: opts.force,
   });
   if (translated.length !== sources.length) {
@@ -317,17 +324,39 @@ async function backfillFile(filePath: string, opts: { dryRun: boolean; limit?: n
     return { file: filePath, found: issues.length, translated: translated.length, inserted: 0, skipped: 0 };
   }
 
-  // 2) Build insertion plan. Sort by line desc so inserts don't shift
-  //    earlier line numbers.
+  // 2) Build insertion plan. Two flavours:
+  //
+  //    NEW-LINE — the standard case: `field: 'value',` is on its own line
+  //      inside a multi-line object. Insert the new `fieldJa: '<ja>',`
+  //      sibling on the next line at the same indent.
+  //
+  //    INLINE — single-line object case: `{ field: 'value', ... },`. The
+  //      field's value is followed by other fields and the closing `}`
+  //      ON THE SAME LINE. Inserting on the next line places the new
+  //      sibling outside the object (or even inside the wrong object).
+  //      Detect via "line has `}` after field's value" and instead splice
+  //      the sibling directly into the same line, right after the
+  //      original field/value pair.
   const source = readFileSync(abs, 'utf8');
   const lines = source.split('\n');
 
-  interface Insertion {
+  interface NewLineInsertion {
+    kind: 'newLine';
     afterLineIndex: number; // 0-indexed
     indent: string;
     field: string;
     ja: string;
   }
+  interface InlineInsertion {
+    kind: 'inline';
+    lineIndex: number;
+    insertCol: number;
+    field: string;
+    ja: string;
+  }
+  type Insertion = NewLineInsertion | InlineInsertion;
+  const escapeRegex = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+
   const insertions: Insertion[] = [];
   let skipped = 0;
   for (let k = 0; k < limited.length; k += 1) {
@@ -341,13 +370,54 @@ async function backfillFile(filePath: string, opts: { dryRun: boolean; limit?: n
     }
     const indentMatch = origLine.match(/^(\s*)/);
     const indent = indentMatch ? indentMatch[1] : '  ';
-    const afterLineIndex = lineAfterFieldValue(lines, fieldLineIndex);
-    insertions.push({ afterLineIndex, indent, field: issue.field, ja: translated[k] });
+
+    // Detect single-line-object case. Match the field & value precisely
+    // (using the captured chineseValue) and check for `}` after.
+    const escapedVal = escapeRegex(issue.chineseValue);
+    let inlineCol = -1;
+    for (const q of ["'", '"', '`']) {
+      const re = new RegExp(`\\b${escapeRegex(issue.field)}\\s*:\\s*${q}${escapedVal}${q}\\s*,?`);
+      const m = re.exec(origLine);
+      if (!m) continue;
+      const after = origLine.slice(m.index + m[0].length);
+      // Single-line object: closing `}` appears after the field on the same line,
+      // before any other open `{` at the same depth.
+      if (/^[^{}]*\}/.test(after)) {
+        inlineCol = m.index + m[0].length;
+      }
+      break;
+    }
+
+    if (inlineCol >= 0) {
+      insertions.push({ kind: 'inline', lineIndex: fieldLineIndex, insertCol: inlineCol, field: issue.field, ja: translated[k] });
+    } else {
+      const afterLineIndex = lineAfterFieldValue(lines, fieldLineIndex);
+      insertions.push({ kind: 'newLine', afterLineIndex, indent, field: issue.field, ja: translated[k] });
+    }
   }
 
-  // Insert bottom-up to keep earlier indices stable.
-  insertions.sort((a, b) => b.afterLineIndex - a.afterLineIndex);
+  // Apply inline insertions first, grouped by line and sorted by col desc.
+  const byLine = new Map<number, InlineInsertion[]>();
   for (const ins of insertions) {
+    if (ins.kind !== 'inline') continue;
+    if (!byLine.has(ins.lineIndex)) byLine.set(ins.lineIndex, []);
+    byLine.get(ins.lineIndex)!.push(ins);
+  }
+  for (const [lineIdx, arr] of byLine.entries()) {
+    arr.sort((a, b) => b.insertCol - a.insertCol);
+    let line = lines[lineIdx];
+    for (const ins of arr) {
+      const escaped = escapeSingleQuoted(ins.ja);
+      const inject = ` ${ins.field}Ja: '${escaped}',`;
+      line = line.slice(0, ins.insertCol) + inject + line.slice(ins.insertCol);
+    }
+    lines[lineIdx] = line;
+  }
+
+  // Apply new-line insertions bottom-up.
+  const newLineIns = insertions.filter((x): x is NewLineInsertion => x.kind === 'newLine');
+  newLineIns.sort((a, b) => b.afterLineIndex - a.afterLineIndex);
+  for (const ins of newLineIns) {
     const escaped = escapeSingleQuoted(ins.ja);
     const newLine = `${ins.indent}${ins.field}Ja: '${escaped}',`;
     lines.splice(ins.afterLineIndex, 0, newLine);

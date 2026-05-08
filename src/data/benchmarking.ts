@@ -5253,8 +5253,22 @@ export const benchmarkCases: BenchmarkCase[] = [
         valueJa: 'AI システムテスト・ガバナンス報告書',
         valueEn: 'AI system testing and governance reporting',
       },
-      { label: '比较维度', labelEn: 'Benchmark axis', value: '治理可执行性', valueEn: 'Governance executability' },
-      { label: '新加坡优势', labelEn: 'Singapore advantage', value: '可信中立枢纽', valueEn: 'Trusted neutral hub' },
+      {
+        label: '比较维度',
+        labelJa: '比較次元',
+        labelEn: 'Benchmark axis',
+        value: '治理可执行性',
+        valueJa: 'ガバナンス実行可能性',
+        valueEn: 'Governance executability',
+      },
+      {
+        label: '新加坡优势',
+        labelJa: 'シンガポール優位',
+        labelEn: 'Singapore advantage',
+        value: '可信中立枢纽',
+        valueJa: '信頼できる中立ハブ',
+        valueEn: 'Trusted neutral hub',
+      },
     ],
     sections: [
       {
@@ -5285,9 +5299,9 @@ export const benchmarkCases: BenchmarkCase[] = [
       },
     ],
     sources: [
-      { label: 'AI Verify 官方资料', labelEn: 'AI Verify official materials' },
+      { label: 'AI Verify 官方资料', labelJa: 'AI Verify 公式資料', labelEn: 'AI Verify official materials' },
       { label: 'AI Verify Foundation', labelEn: 'AI Verify Foundation' },
-      { label: '新加坡 NAIS 2.0', labelEn: 'Singapore NAIS 2.0' },
+      { label: '新加坡 NAIS 2.0', labelJa: 'シンガポール NAIS 2.0', labelEn: 'Singapore NAIS 2.0' },
     ],
   },
   {
@@ -5330,7 +5344,13 @@ export const benchmarkCases: BenchmarkCase[] = [
     singaporeTakeawayEn:
       'Singapore needs to present NSCC, commercial GPUs, data centres, and enterprise compute support as one clearer national AI compute entry point, or later movers can win the narrative with one large project.',
     facts: [
-      { label: '公开目标', labelEn: 'Published target', value: '3000 PFLOPS', valueEn: '3000 PFLOPS' },
+      {
+        label: '公开目标',
+        labelJa: '公開目標',
+        labelEn: 'Published target',
+        value: '3000 PFLOPS',
+        valueEn: '3000 PFLOPS',
+      },
       {
         label: '配套资金',
         labelJa: 'マッチング資金',
@@ -5339,7 +5359,14 @@ export const benchmarkCases: BenchmarkCase[] = [
         valueJa: 'AIスーパーコンピューティング助成計画',
         valueEn: 'AI supercomputing subsidy scheme',
       },
-      { label: '比较维度', labelEn: 'Benchmark axis', value: '公共算力入口', valueEn: 'Public compute access' },
+      {
+        label: '比较维度',
+        labelJa: '比較次元',
+        labelEn: 'Benchmark axis',
+        value: '公共算力入口',
+        valueJa: '公共計算力ポータル',
+        valueEn: 'Public compute access',
+      },
     ],
     sections: [
       {
@@ -5375,7 +5402,11 @@ export const benchmarkCases: BenchmarkCase[] = [
         labelJa: '香港革新技術発展ブループリント(2022)',
         labelEn: 'Hong Kong Innovation and Technology Development Blueprint (2022)',
       },
-      { label: '2024-25 年施政报告 AI 相关政策', labelEn: 'AI-related policies in the 2024-25 Policy Address' },
+      {
+        label: '2024-25 年施政报告 AI 相关政策',
+        labelJa: '2024-25年度 施政方針演説 AI関連政策',
+        labelEn: 'AI-related policies in the 2024-25 Policy Address',
+      },
     ],
   },
   {
@@ -5471,7 +5502,11 @@ export const benchmarkCases: BenchmarkCase[] = [
       },
     ],
     sources: [
-      { label: 'AI 台湾行动计划 2.0（2023）', labelEn: 'AI Taiwan Action Plan 2.0 (2023)' },
+      {
+        label: 'AI 台湾行动计划 2.0（2023）',
+        labelJa: 'AI 台湾行動計画 2.0（2023）',
+        labelEn: 'AI Taiwan Action Plan 2.0 (2023)',
+      },
       {
         label: '行政院十大 AI 基础建设计划（2025）',
         labelJa: '行政院十大 AI 基盤整備計画（2025）',
@@ -5516,8 +5551,21 @@ export const benchmarkCases: BenchmarkCase[] = [
     singaporeTakeawayEn:
       'Singapore’s SEA-LION takes the regional-language and Southeast Asian context path; Falcon takes the sovereign-model path. Both show that smaller states must define differentiated model jobs instead of copying the general model arms race.',
     facts: [
-      { label: '模型定位', labelEn: 'Model position', value: '本土开源大模型', valueEn: 'Domestic open large model' },
-      { label: '关联机构', labelEn: 'Related institution', value: 'ATRC / TII', valueEn: 'ATRC / TII' },
+      {
+        label: '模型定位',
+        labelJa: 'モデルポジショニング',
+        labelEn: 'Model position',
+        value: '本土开源大模型',
+        valueJa: '国内オープンソース大規模モデル',
+        valueEn: 'Domestic open large model',
+      },
+      {
+        label: '关联机构',
+        labelJa: '関連機関',
+        labelEn: 'Related institution',
+        value: 'ATRC / TII',
+        valueEn: 'ATRC / TII',
+      },
       {
         label: '比较维度',
         labelJa: '比較次元',
@@ -5557,7 +5605,11 @@ export const benchmarkCases: BenchmarkCase[] = [
     ],
     sources: [
       { label: 'UAE AI Strategy 2031', labelEn: 'UAE AI Strategy 2031' },
-      { label: 'ATRC / TII Falcon 公开资料', labelEn: 'ATRC / TII Falcon public materials' },
+      {
+        label: 'ATRC / TII Falcon 公开资料',
+        labelJa: 'ATRC / TII Falcon 公開資料',
+        labelEn: 'ATRC / TII Falcon public materials',
+      },
     ],
   },
   {
@@ -5597,8 +5649,22 @@ export const benchmarkCases: BenchmarkCase[] = [
     singaporeTakeawayEn:
       'Singapore does not have the same capital-firepower posture, but it can combine Temasek, GIC, EDB, regional headquarters, and regulatory trust into a lighter-capital but highly connected alternative.',
     facts: [
-      { label: '公开规模', labelEn: 'Published scale', value: 'US$100B 级别', valueEn: 'US$100B scale' },
-      { label: '核心资源', labelEn: 'Core resource', value: '主权资本 + 能源', valueEn: 'Sovereign capital + energy' },
+      {
+        label: '公开规模',
+        labelJa: '公開規模',
+        labelEn: 'Published scale',
+        value: 'US$100B 级别',
+        valueJa: 'US$100B 規模',
+        valueEn: 'US$100B scale',
+      },
+      {
+        label: '核心资源',
+        labelJa: 'コア資源',
+        labelEn: 'Core resource',
+        value: '主权资本 + 能源',
+        valueJa: 'ソブリン資本 + エネルギー',
+        valueEn: 'Sovereign capital + energy',
+      },
       {
         label: '比较维度',
         labelJa: '比較次元',
@@ -5641,7 +5707,11 @@ export const benchmarkCases: BenchmarkCase[] = [
       },
     ],
     sources: [
-      { label: 'MGX 基金官方公告（2024）', labelEn: 'MGX Fund official announcements (2024)' },
+      {
+        label: 'MGX 基金官方公告（2024）',
+        labelJa: 'MGX基金 公式発表（2024）',
+        labelEn: 'MGX Fund official announcements (2024)',
+      },
       { label: 'UAE AI Strategy 2031', labelEn: 'UAE AI Strategy 2031' },
     ],
   },
@@ -5682,9 +5752,30 @@ export const benchmarkCases: BenchmarkCase[] = [
     singaporeTakeawayEn:
       'Singapore already has NUS, NTU, A*STAR, and AISG. The challenge is less institution creation and more presenting them externally as a clear Singapore AI research stack.',
     facts: [
-      { label: '定位', labelEn: 'Position', value: '专门 AI 研究型大学', valueEn: 'Dedicated AI research university' },
-      { label: '战略作用', labelEn: 'Strategic role', value: '人才与研究品牌', valueEn: 'Talent and research brand' },
-      { label: '比较维度', labelEn: 'Benchmark axis', value: '长期人才沉淀', valueEn: 'Long-term talent anchoring' },
+      {
+        label: '定位',
+        labelJa: '位置づけ',
+        labelEn: 'Position',
+        value: '专门 AI 研究型大学',
+        valueJa: '専門 AI 研究大学',
+        valueEn: 'Dedicated AI research university',
+      },
+      {
+        label: '战略作用',
+        labelJa: '戦略的役割',
+        labelEn: 'Strategic role',
+        value: '人才与研究品牌',
+        valueJa: '人材と研究ブランド',
+        valueEn: 'Talent and research brand',
+      },
+      {
+        label: '比较维度',
+        labelJa: '比較次元',
+        labelEn: 'Benchmark axis',
+        value: '长期人才沉淀',
+        valueJa: '長期人材の蓄積',
+        valueEn: 'Long-term talent anchoring',
+      },
     ],
     sections: [
       {
@@ -5705,7 +5796,11 @@ export const benchmarkCases: BenchmarkCase[] = [
       },
     ],
     sources: [
-      { label: 'MBZUAI 官网与研究报告', labelEn: 'MBZUAI website and research reports' },
+      {
+        label: 'MBZUAI 官网与研究报告',
+        labelJa: 'MBZUAI 公式ウェブサイトと研究報告書',
+        labelEn: 'MBZUAI website and research reports',
+      },
       { label: 'UAE AI Strategy 2031', labelEn: 'UAE AI Strategy 2031' },
     ],
   },
@@ -5750,7 +5845,14 @@ export const benchmarkCases: BenchmarkCase[] = [
     singaporeTakeawayEn:
       'Singapore should not copy the military-intelligence path, but it can learn the mission-based talent model: train AI product and engineering talent through real public-service, healthcare, finance, and logistics problems.',
     facts: [
-      { label: '生态位置', labelEn: 'Ecosystem position', value: '创业人才源头', valueEn: 'Startup talent source' },
+      {
+        label: '生态位置',
+        labelJa: 'エコシステムポジション',
+        labelEn: 'Ecosystem position',
+        value: '创业人才源头',
+        valueJa: 'スタートアップ人材の源泉',
+        valueEn: 'Startup talent source',
+      },
       {
         label: '优势领域',
         labelJa: '優勢領域',
@@ -5858,7 +5960,14 @@ export const benchmarkCases: BenchmarkCase[] = [
         valueJa: '₩100兆官民AIファンド',
         valueEn: '₩100 trillion public-private AI fund',
       },
-      { label: '比较维度', labelEn: 'Benchmark axis', value: '产业规模化部署', valueEn: 'Industrial-scale deployment' },
+      {
+        label: '比较维度',
+        labelJa: '比較次元',
+        labelEn: 'Benchmark axis',
+        value: '产业规模化部署',
+        valueJa: '産業規模での展開',
+        valueEn: 'Industrial-scale deployment',
+      },
     ],
     sections: [
       {
@@ -5890,7 +5999,11 @@ export const benchmarkCases: BenchmarkCase[] = [
     ],
     sources: [
       { label: 'K-AI Strategy（2019）', labelEn: 'K-AI Strategy (2019)' },
-      { label: 'AI 基本法全文（2024）', labelEn: 'Full text of the AI Basic Act (2024)' },
+      {
+        label: 'AI 基本法全文（2024）',
+        labelJa: 'AI 基本法 全文（2024）',
+        labelEn: 'Full text of the AI Basic Act (2024)',
+      },
     ],
   },
   {
@@ -5940,7 +6053,14 @@ export const benchmarkCases: BenchmarkCase[] = [
         valueJa: '50+ 政府 AI ユースケース',
         valueEn: '50+ government AI use cases',
       },
-      { label: '预算口径', labelEn: 'Budget signal', value: '€1000 万级', valueEn: '€10 million scale' },
+      {
+        label: '预算口径',
+        labelJa: '予算口径',
+        labelEn: 'Budget signal',
+        value: '€1000 万级',
+        valueJa: '€1000万 規模',
+        valueEn: '€10 million scale',
+      },
       {
         label: '比较维度',
         labelJa: '比較次元',
@@ -5980,7 +6100,7 @@ export const benchmarkCases: BenchmarkCase[] = [
     ],
     sources: [
       { label: 'Estonia Kratt AI Strategy（2019）', labelEn: 'Estonia Kratt AI Strategy (2019)' },
-      { label: 'e-Estonia 官方报告', labelEn: 'e-Estonia official reports' },
+      { label: 'e-Estonia 官方报告', labelJa: 'e-Estonia 公式レポート', labelEn: 'e-Estonia official reports' },
     ],
   },
   {
@@ -6029,8 +6149,22 @@ export const benchmarkCases: BenchmarkCase[] = [
         valueJa: 'かつてフィンランドの人口1%をカバーしていました。',
         valueEn: 'Reached 1% of Finland’s population',
       },
-      { label: '传播方式', labelEn: 'Distribution', value: '开放在线课程', valueEn: 'Open online course' },
-      { label: '比较维度', labelEn: 'Benchmark axis', value: 'AI 全民素养', valueEn: 'Mass AI literacy' },
+      {
+        label: '传播方式',
+        labelJa: '発信方法',
+        labelEn: 'Distribution',
+        value: '开放在线课程',
+        valueJa: 'オープンオンラインコース',
+        valueEn: 'Open online course',
+      },
+      {
+        label: '比较维度',
+        labelJa: '比較次元',
+        labelEn: 'Benchmark axis',
+        value: 'AI 全民素养',
+        valueJa: 'AI 国民全体のリテラシー',
+        valueEn: 'Mass AI literacy',
+      },
     ],
     sections: [
       {
@@ -6061,8 +6195,16 @@ export const benchmarkCases: BenchmarkCase[] = [
       },
     ],
     sources: [
-      { label: 'Finland AI Strategy（2017/2019 更新）', labelEn: 'Finland AI Strategy (2017, updated 2019)' },
-      { label: 'Elements of AI 官方统计', labelEn: 'Elements of AI official statistics' },
+      {
+        label: 'Finland AI Strategy（2017/2019 更新）',
+        labelJa: 'フィンランド AI 戦略（2017/2019 更新）',
+        labelEn: 'Finland AI Strategy (2017, updated 2019)',
+      },
+      {
+        label: 'Elements of AI 官方统计',
+        labelJa: 'Elements of AI 公式統計',
+        labelEn: 'Elements of AI official statistics',
+      },
     ],
   },
   {
@@ -6119,7 +6261,14 @@ export const benchmarkCases: BenchmarkCase[] = [
         valueJa: 'Google Zurich / 国際組織ネットワーク',
         valueEn: 'Google Zurich / international-organisation networks',
       },
-      { label: '比较维度', labelEn: 'Benchmark axis', value: '基础研究质量', valueEn: 'Fundamental research quality' },
+      {
+        label: '比较维度',
+        labelJa: '比較次元',
+        labelEn: 'Benchmark axis',
+        value: '基础研究质量',
+        valueJa: '基礎研究の質',
+        valueEn: 'Fundamental research quality',
+      },
     ],
     sections: [
       {
@@ -6151,7 +6300,11 @@ export const benchmarkCases: BenchmarkCase[] = [
     ],
     sources: [
       { label: 'Swiss Federal AI Strategy（2020/2025）', labelEn: 'Swiss Federal AI Strategy (2020/2025)' },
-      { label: 'ETH Zurich AI Center 年报', labelEn: 'ETH Zurich AI Center Annual Report' },
+      {
+        label: 'ETH Zurich AI Center 年报',
+        labelJa: 'ETH Zurich AI Center 年報',
+        labelEn: 'ETH Zurich AI Center Annual Report',
+      },
     ],
   },
   {

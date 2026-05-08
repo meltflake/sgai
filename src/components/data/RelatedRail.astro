@@ -53,19 +53,23 @@ const {
 const lang: Lang = langOverride ?? getLangFromPath(new URL(Astro.url).pathname);
 // `isEn` is true for any non-zh locale — local label dictionaries only
 // branch zh vs. non-zh; ja falls back to en until per-locale strings land.
+const isJa = lang === 'ja';
 const isEn = lang !== 'zh';
-
 // Localized labels.
 const L = {
-  rel: isEn ? 'Related: ' : '关联：',
-  relatedReading: isEn ? 'Related Reading' : '相关阅读',
-  noneYet: isEn ? 'No related references yet.' : '尚未关联其他资源。',
-  hPeople: isEn ? 'People' : '人物',
-  hPolicies: isEn ? 'Policies' : '政策',
-  hDebates: isEn ? 'Parliamentary debates' : '国会辩论',
-  hLevers: isEn ? 'Levers' : '抓手',
-  hTimeline: isEn ? 'Timeline' : '时间节点',
-  hAnalyses: isEn ? 'Opinions' : '观点',
+  rel: isJa ? '関連：' : isEn ? 'Related: ' : '关联：',
+  relatedReading: isJa ? '関連記事' : isEn ? 'Related Reading' : '相关阅读',
+  noneYet: isJa
+    ? '他のリソースはまだ関連付けられていません。'
+    : isEn
+      ? 'No related references yet.'
+      : '尚未关联其他资源。',
+  hPeople: isJa ? '人物' : isEn ? 'People' : '人物',
+  hPolicies: isJa ? '政策' : isEn ? 'Policies' : '政策',
+  hDebates: isJa ? '議会討論' : isEn ? 'Parliamentary debates' : '国会辩论',
+  hLevers: isJa ? 'レバー' : isEn ? 'Levers' : '抓手',
+  hTimeline: isJa ? '時点' : isEn ? 'Timeline' : '时间节点',
+  hAnalyses: isJa ? '観点' : isEn ? 'Opinions' : '观点',
   moreDebates: (n: number) => (isEn ? `… and ${n} more` : `…另有 ${n} 条`),
   moreDebatesInline: (n: number) => (isEn ? `+${n} more debates` : `+${n} 条辩论`),
   ariaPerson: (name: string) => (isEn ? `Related person: ${name}` : `相关人物：${name}`),

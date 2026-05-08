@@ -12,6 +12,7 @@ import { categories as policyCategories } from '~/data/policies';
 import { SITE_UPDATED } from '~/version';
 import { dimensions, dataDate as trackerDataDate } from '~/data/tracker';
 import { t, pickLocalized, localizedHref, type Lang } from '~/i18n';
+import { debateTypeLabel, debateTopicLabel } from '~/utils/debate-labels';
 import RecentUpdates from '~/components/home/RecentUpdates.astro';
 import TaskEntries from '~/components/home/TaskEntries.astro';
 
@@ -268,7 +269,11 @@ const debateTitle = (d: (typeof debates)[number]) => pickLocalized<string>(d, 't
                     {debateTitle(d)}
                   </div>
                   <div class="text-xs text-gray-500 dark:text-gray-400 mt-1 truncate">
-                    {d.type} · {d.topics.slice(0, 2).join(' · ')}
+                    {debateTypeLabel(d.type, lang)} ·{' '}
+                    {d.topics
+                      .slice(0, 2)
+                      .map((tp) => debateTopicLabel(tp, lang))
+                      .join(' · ')}
                   </div>
                 </div>
               </div>

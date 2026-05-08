@@ -11,8 +11,7 @@ interface Props {
 }
 
 const { policy, lang, categoryIcon } = Astro.props;
-// `isEn` is true for any non-zh locale — local label dictionaries only
-// branch zh vs. non-zh; ja falls back to en until per-locale strings land.
+const isJa = lang === 'ja';
 const isEn = lang !== 'zh';
 
 const title = pickLocalized<string>(policy, 'title', lang) || policy.title;
@@ -39,11 +38,23 @@ const relatedCount =
   (policy.authorPersonIds?.length || 0) +
   (policy.relatedPostSlugs?.length || 0);
 
-const labels = {
-  source: isEn ? 'Source' : '来源',
-  related: isEn ? 'related links' : '项关联',
-  profile: isEn ? 'View profile' : '查看档案',
-};
+const labels = isJa
+  ? {
+      source: '出典',
+      related: '件の関連リンク',
+      profile: 'プロフィールを見る',
+    }
+  : isEn
+    ? {
+        source: 'Source',
+        related: 'related links',
+        profile: 'View profile',
+      }
+    : {
+        source: '来源',
+        related: '项关联',
+        profile: '查看档案',
+      };
 ---
 
 <a

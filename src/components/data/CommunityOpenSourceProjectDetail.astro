@@ -17,8 +17,8 @@ interface Props {
 const { project, lang } = Astro.props;
 // `isEn` is true for any non-zh locale — local label dictionaries only
 // branch zh vs. non-zh; ja falls back to en until per-locale strings land.
+const isJa = lang === 'ja';
 const isEn = lang !== 'zh';
-
 const displayName = isEn ? project.nameEn || project.name : project.name;
 const org = isEn ? project.orgEn || project.org : project.org;
 const category = isEn ? project.categoryEn || project.category : project.category;
@@ -40,23 +40,23 @@ const orgTypeLabels: Record<OpenSourceProject['orgType'], { zh: string; en: stri
 };
 
 const labels = {
-  back: isEn ? 'Back to Community Open Source' : '返回产学研开源生态',
-  profile: isEn ? 'Community Project Profile' : '项目档案',
-  org: isEn ? 'Organisation' : '机构',
-  orgType: isEn ? 'Group' : '分组',
-  category: isEn ? 'Category' : '类别',
-  status: isEn ? 'Status' : '状态',
-  founded: isEn ? 'Started' : '启动',
-  language: isEn ? 'Language / Form' : '语言 / 形态',
-  license: isEn ? 'License' : '协议',
+  back: isJa ? '産学研オープンソースエコシステムに戻る' : isEn ? 'Back to Community Open Source' : '返回产学研开源生态',
+  profile: isJa ? 'プロジェクト情報' : isEn ? 'Community Project Profile' : '项目档案',
+  org: isJa ? '機関' : isEn ? 'Organisation' : '机构',
+  orgType: isJa ? 'グループ' : isEn ? 'Group' : '分组',
+  category: isJa ? 'カテゴリー' : isEn ? 'Category' : '类别',
+  status: isJa ? 'ステータス' : isEn ? 'Status' : '状态',
+  founded: isJa ? 'ローンチ' : isEn ? 'Started' : '启动',
+  language: isJa ? '言語 / 形態' : isEn ? 'Language / Form' : '语言 / 形态',
+  license: isJa ? 'ライセンス' : isEn ? 'License' : '协议',
   stars: isEn ? 'GitHub Stars' : 'GitHub Stars',
-  updated: isEn ? 'Updated' : '信息更新',
-  whatItIs: isEn ? 'What It Is' : '是什么',
-  aiRelevance: isEn ? 'AI Relevance' : '与 AI 的关系',
-  singaporeRelevance: isEn ? 'Singapore Relevance' : '与新加坡的关系',
-  milestones: isEn ? 'Milestones' : '关键里程碑',
-  resources: isEn ? 'Resources' : '资源入口',
-  related: isEn ? 'More Community Projects' : '更多产学研项目',
+  updated: isJa ? '情報更新' : isEn ? 'Updated' : '信息更新',
+  whatItIs: isJa ? '説明' : isEn ? 'What It Is' : '是什么',
+  aiRelevance: isJa ? 'AIとの関係' : isEn ? 'AI Relevance' : '与 AI 的关系',
+  singaporeRelevance: isJa ? 'シンガポールとの関係' : isEn ? 'Singapore Relevance' : '与新加坡的关系',
+  milestones: isJa ? '重要マイルストーン' : isEn ? 'Milestones' : '关键里程碑',
+  resources: isJa ? 'リソース入口' : isEn ? 'Resources' : '资源入口',
+  related: isJa ? 'その他の産学研プロジェクト' : isEn ? 'More Community Projects' : '更多产学研项目',
 };
 
 function hrefFor(resource: CommunityOpenSourceResource): string {

@@ -16,8 +16,8 @@ const { page, lang } = Astro.props;
 // `isEn` is true for any non-zh locale — the page-local label dictionary
 // only branches zh vs. non-zh, so non-default locales (en, ja, ...) all
 // share the English copy until per-locale strings are added.
+const isJa = lang === 'ja';
 const isEn = lang !== 'zh';
-
 const benchmarkRoot = isEn ? '/benchmarking/' : '/benchmarking/';
 const leversHref = isEn ? '/levers/' : '/levers/';
 const legalAiHref = isEn ? '/legal-ai/' : '/legal-ai/';
@@ -43,51 +43,61 @@ function drilldownHref(localId: string): string {
 const relatedRegions = regionPages.filter((candidate) => candidate.slug !== page.slug).slice(0, 6);
 
 const labels = {
-  benchmarkCrumb: isEn ? 'International Benchmarks' : '国际对标',
-  eyebrow: isEn ? 'International Benchmark · Updated' : 'International Benchmark · 数据更新',
+  benchmarkCrumb: isJa ? '国際ベンチマーク' : isEn ? 'International Benchmarks' : '国际对标',
+  eyebrow: isJa
+    ? 'International Benchmark · データ更新'
+    : isEn
+      ? 'International Benchmark · Updated'
+      : 'International Benchmark · 数据更新',
   pageHeading: isEn ? `${regionName} AI Strategy Benchmark` : `${regionName} AI 战略对标`,
-  coreStrategy: isEn ? 'Core strategy' : '核心战略',
-  investmentScale: isEn ? 'Investment' : '投资规模',
-  governanceModel: isEn ? 'Governance' : '治理模式',
-  comparativeStrength: isEn ? 'Core strength' : '核心优势',
-  oneLineRead: isEn ? 'One-line Read' : '一句话判断',
+  coreStrategy: isJa ? 'コア戦略' : isEn ? 'Core strategy' : '核心战略',
+  investmentScale: isJa ? '投資規模' : isEn ? 'Investment' : '投资规模',
+  governanceModel: isJa ? 'ガバナンスモデル' : isEn ? 'Governance' : '治理模式',
+  comparativeStrength: isJa ? 'コア優位' : isEn ? 'Core strength' : '核心优势',
+  oneLineRead: isJa ? '一文判定' : isEn ? 'One-line Read' : '一句话判断',
   oneLineReadFallback: isEn
     ? `${regionName}'s AI strategy centres on ${strategy}; its governance model is ${governance}; its comparative strength is ${strength}.`
     : `${regionName} 的 AI 战略可概括为：${strategy}；治理模式是 ${governance}；相对优势是 ${strength}。`,
-  coreStrategiesHeading: isEn ? 'Core Strategies' : '核心战略',
-  investmentHeading: isEn ? 'Investment and Resources' : '投资与资源',
-  governanceHeading: isEn ? 'Governance Model' : '治理模式',
-  strengthsHeading: isEn ? 'Strengths vs Singapore' : '相对新加坡的优势',
-  weaknessesHeading: isEn ? 'Weaknesses vs Singapore' : '相对新加坡的劣势',
-  keyHeading: isEn ? 'Key Initiatives and Bodies' : '关键举措与机构',
-  keyInitiatives: isEn ? 'Key Initiatives' : '关键举措',
-  keyBodies: isEn ? 'Key Bodies' : '关键机构',
-  itemLabel: isEn ? 'Item' : '项目',
-  amountLabel: isEn ? 'Amount' : '金额',
-  noteLabel: isEn ? 'Note' : '备注',
-  sourcesHeading: isEn ? 'Sources' : '参考来源',
-  pendingHeading: isEn ? 'Detail profile pending' : '详情待扩展',
+  coreStrategiesHeading: isJa ? 'コア戦略' : isEn ? 'Core Strategies' : '核心战略',
+  investmentHeading: isJa ? '投資とリソース' : isEn ? 'Investment and Resources' : '投资与资源',
+  governanceHeading: isJa ? 'ガバナンスモデル' : isEn ? 'Governance Model' : '治理模式',
+  strengthsHeading: isJa ? '対シンガポール優位' : isEn ? 'Strengths vs Singapore' : '相对新加坡的优势',
+  weaknessesHeading: isJa ? '対シンガポール劣位' : isEn ? 'Weaknesses vs Singapore' : '相对新加坡的劣势',
+  keyHeading: isJa ? '主要施策と機関' : isEn ? 'Key Initiatives and Bodies' : '关键举措与机构',
+  keyInitiatives: isJa ? '主要施策' : isEn ? 'Key Initiatives' : '关键举措',
+  keyBodies: isJa ? '主要機関' : isEn ? 'Key Bodies' : '关键机构',
+  itemLabel: isJa ? 'プロジェクト' : isEn ? 'Item' : '项目',
+  amountLabel: isJa ? '金額' : isEn ? 'Amount' : '金额',
+  noteLabel: isJa ? '備考' : isEn ? 'Note' : '备注',
+  sourcesHeading: isJa ? '参考出典' : isEn ? 'Sources' : '参考来源',
+  pendingHeading: isJa ? '詳細は今後追加予定' : isEn ? 'Detail profile pending' : '详情待扩展',
   pendingNote: isEn
     ? `This page is currently generated from the overview table. Add a full RegionDetail record in src/data/benchmarking.ts and this route will automatically expand with strategy, investment, governance, strengths/weaknesses, and sources.`
     : `本页目前使用总览表数据生成。后续可在 src/data/benchmarking.ts 补充完整 RegionDetail，页面会自动展开战略、投资、治理、优势/劣势与来源。`,
-  relatedHeading: isEn ? 'Related Reading' : '关联阅读',
-  benchmarkOverview: isEn ? 'Benchmark Overview' : '国际对标总览',
-  leversCta: isEn ? 'Singapore National AI Levers' : '新加坡国家 AI 抓手',
-  legalCta: isEn ? 'Singapore AI Legal Framework' : '新加坡 AI 法律框架',
-  continueHeading: isEn ? 'Continue Comparing' : '继续比较',
-  backTo: isEn ? 'Back to International Benchmarks' : '返回国际对标',
+  relatedHeading: isJa ? '関連記事' : isEn ? 'Related Reading' : '关联阅读',
+  benchmarkOverview: isJa ? '国際ベンチマーク概要' : isEn ? 'Benchmark Overview' : '国际对标总览',
+  leversCta: isJa ? 'シンガポール国家 AI レバー' : isEn ? 'Singapore National AI Levers' : '新加坡国家 AI 抓手',
+  legalCta: isJa ? 'シンガポール AI 法的枠組み' : isEn ? 'Singapore AI Legal Framework' : '新加坡 AI 法律框架',
+  continueHeading: isJa ? '比較を続ける' : isEn ? 'Continue Comparing' : '继续比较',
+  backTo: isJa ? '国際ベンチマークに戻る' : isEn ? 'Back to International Benchmarks' : '返回国际对标',
   disclaimer: (isEn ? dataDisclaimerEn : null) || dataDisclaimer,
 };
 
-const metadata = isEn
+const metadata = isJa
   ? {
-      title: `${regionName} AI Strategy Benchmark · International Benchmarks`,
-      description: overview || `${regionName}'s AI strategy, investment, governance model, and comparative strengths.`,
-    }
-  : {
-      title: `${regionName} AI 战略对标 · 国际对标`,
+      title: `${regionName} AI 戦略ベンチマーク · 国際ベンチマーク`,
       description: overview || `${regionName} AI 战略、投资、治理模式与核心优势对标。`,
-    };
+    }
+  : isEn
+    ? {
+        title: `${regionName} AI Strategy Benchmark · International Benchmarks`,
+        description:
+          overview || `${regionName}'s AI strategy, investment, governance model, and comparative strengths.`,
+      }
+    : {
+        title: `${regionName} AI 战略对标 · 国际对标`,
+        description: overview || `${regionName} AI 战略、投资、治理模式与核心优势对标。`,
+      };
 
 const articleSchema = {
   '@context': 'https://schema.org',

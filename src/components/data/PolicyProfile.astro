@@ -23,8 +23,8 @@ interface Props {
 const { policy, lang } = Astro.props;
 // `isEn` is true for any non-zh locale — local label dictionaries only
 // branch zh vs. non-zh; ja falls back to en until per-locale strings land.
+const isJa = lang === 'ja';
 const isEn = lang !== 'zh';
-
 const title = pickLocalized<string>(policy, 'title', lang) || policy.title;
 const subtitle = policy.titleEn && policy.titleEn !== title ? policy.titleEn : undefined;
 const summary = pickLocalized<string>(policy, 'summary', lang) || '';
@@ -40,22 +40,22 @@ const linkedLevers = (policy.relatedLeverNumbers || [])
   .filter(Boolean);
 
 const labels = {
-  back: isEn ? 'Back to Policy Library' : '返回政策库',
-  profile: isEn ? 'Policy / Project Profile' : '政策 / 项目档案',
-  category: isEn ? 'Category' : '分类',
-  date: isEn ? 'Published / Updated' : '发布 / 更新',
-  source: isEn ? 'Issuing body' : '发布机构',
-  ministry: isEn ? 'Lead ministry' : '主管部委',
-  levers: isEn ? 'Linked levers' : '关联抓手',
-  debates: isEn ? 'Parliament links' : '国会记录',
-  timeline: isEn ? 'Timeline years' : '时间线年份',
-  verified: isEn ? 'Last checked' : '信息校验',
-  details: isEn ? 'Detailed Notes' : '展开信息',
-  signals: isEn ? 'Strategic Context' : '战略位置',
-  milestones: isEn ? 'Milestones' : '关键里程碑',
-  resources: isEn ? 'Resources' : '资源入口',
-  sameCategory: isEn ? 'More in This Category' : '同类档案',
-  officialSite: isEn ? 'Issuing body site' : '发布机构官网',
+  back: isJa ? '政策ライブラリに戻る' : isEn ? 'Back to Policy Library' : '返回政策库',
+  profile: isJa ? '政策／プロジェクトファイル' : isEn ? 'Policy / Project Profile' : '政策 / 项目档案',
+  category: isJa ? '分類' : isEn ? 'Category' : '分类',
+  date: isJa ? '発表／更新' : isEn ? 'Published / Updated' : '发布 / 更新',
+  source: isJa ? '発表機関' : isEn ? 'Issuing body' : '发布机构',
+  ministry: isJa ? '主管省庁' : isEn ? 'Lead ministry' : '主管部委',
+  levers: isJa ? '関連レバー' : isEn ? 'Linked levers' : '关联抓手',
+  debates: isJa ? '議会記録' : isEn ? 'Parliament links' : '国会记录',
+  timeline: isJa ? 'タイムライン年' : isEn ? 'Timeline years' : '时间线年份',
+  verified: isJa ? '情報検証' : isEn ? 'Last checked' : '信息校验',
+  details: isJa ? '展開' : isEn ? 'Detailed Notes' : '展开信息',
+  signals: isJa ? '戦略的位置' : isEn ? 'Strategic Context' : '战略位置',
+  milestones: isJa ? '重要マイルストーン' : isEn ? 'Milestones' : '关键里程碑',
+  resources: isJa ? 'リソース入口' : isEn ? 'Resources' : '资源入口',
+  sameCategory: isJa ? '同類ファイル' : isEn ? 'More in This Category' : '同类档案',
+  officialSite: isJa ? '発表機関公式サイト' : isEn ? 'Issuing body site' : '发布机构官网',
 };
 
 function pickFactField(
@@ -92,7 +92,10 @@ const facts = [
     value:
       linkedLevers.length > 0
         ? linkedLevers
-            .map((lv) => `${isEn ? 'Lever' : '抓手'} ${lv!.number}: ${isEn ? lv!.nameEn || lv!.name : lv!.name}`)
+            .map(
+              (lv) =>
+                `${isJa ? 'レバー' : isEn ? 'Lever' : '抓手'} ${lv!.number}: ${isEn ? lv!.nameEn || lv!.name : lv!.name}`
+            )
             .join(' / ')
         : undefined,
   },
@@ -100,7 +103,7 @@ const facts = [
     label: labels.debates,
     value:
       policy.relatedDebateIds && policy.relatedDebateIds.length > 0
-        ? `${policy.relatedDebateIds.length} ${isEn ? 'records' : '条'}`
+        ? `${policy.relatedDebateIds.length} ${isJa ? '条' : isEn ? 'records' : '条'}`
         : undefined,
   },
   {
@@ -188,7 +191,7 @@ const signals = [
   policy.relatedPostSlugs && policy.relatedPostSlugs.length > 0
     ? {
         icon: 'tabler:article',
-        title: isEn ? 'Analysis links' : '观点链接',
+        title: isJa ? '観点リンク' : isEn ? 'Analysis links' : '观点链接',
         body: isEn
           ? `${policy.relatedPostSlugs.length} editorial analysis page${policy.relatedPostSlugs.length > 1 ? 's' : ''} linked.`
           : `已关联 ${policy.relatedPostSlugs.length} 篇观点文章，方便从档案跳到判断。`,

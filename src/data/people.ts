@@ -182,7 +182,13 @@ export const people: Person[] = [
         primary: true,
       },
       { platform: 'facebook', url: 'https://www.facebook.com/JosephineTeoYLM/' },
-      { platform: 'website', url: 'https://www.mddi.gov.sg/', label: 'MDDI 官网', labelEn: 'MDDI website' },
+      {
+        platform: 'website',
+        url: 'https://www.mddi.gov.sg/',
+        label: 'MDDI 官网',
+        labelJa: 'MDDI 公式サイト',
+        labelEn: 'MDDI website',
+      },
     ],
   },
   {
@@ -208,7 +214,13 @@ export const people: Person[] = [
         url: 'https://www.facebook.com/lawrencewongst/',
         primary: true,
       },
-      { platform: 'website', url: 'https://www.pmo.gov.sg/', label: 'PMO 官网', labelEn: 'PMO website' },
+      {
+        platform: 'website',
+        url: 'https://www.pmo.gov.sg/',
+        label: 'PMO 官网',
+        labelJa: 'PMO 公式サイト',
+        labelEn: 'PMO website',
+      },
     ],
   },
   {
@@ -235,7 +247,13 @@ export const people: Person[] = [
         url: 'https://www.facebook.com/VivianBalakrishnan/',
         primary: true,
       },
-      { platform: 'website', url: 'https://www.mfa.gov.sg/', label: 'MFA 官网', labelEn: 'MFA website' },
+      {
+        platform: 'website',
+        url: 'https://www.mfa.gov.sg/',
+        label: 'MFA 官网',
+        labelJa: 'MFA 公式サイト',
+        labelEn: 'MFA website',
+      },
     ],
   },
   {
