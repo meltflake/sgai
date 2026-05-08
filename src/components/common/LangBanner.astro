@@ -1,51 +1,52 @@
 ---
-// i18n (v0.4.0) — non-intrusive language hint banner.
+// i18n — non-intrusive language hint banner.
 //
 // Behaviour:
 //  - SSR-renders hidden. Client-side reveals it only when the visitor's
 //    browser language disagrees with the current page AND no `sgai_lang`
 //    localStorage choice is set.
-//  - NEVER auto-redirects. The Phase-2 routing migration (en root + /zh/)
-//    relies on URL paths as the source of truth — we don't override the
-//    user's chosen URL silently. The banner offers a manual switch and
-//    persists the dismissal.
-//
-// Sibling-URL math is centralised here so the routing convention
-// (/zh/<path> vs /<path>) lives in one place.
+//  - NEVER auto-redirects. URL paths are the source of truth.
+//  - Supports all 3 locales (en/zh/ja). Suggests the best matching locale
+//    from the browser's language preferences.
 
-import { type Lang, t } from '~/i18n';
+import { type Lang, LOCALES, t } from '~/i18n';
 
 interface Props {
   currentLang: Lang;
 }
 
 const { currentLang } = Astro.props;
-const otherLang: Lang = currentLang === 'en' ? 'zh' : 'en';
 
-const message = otherLang === 'en' ? t(otherLang, 'langBannerEn') : '中文版可用';
-const switchLabel = otherLang === 'en' ? t(otherLang, 'langBannerSwitch') : '阅读中文版 →';
-const dismissLabel = currentLang === 'en' ? t(currentLang, 'langBannerDismiss') : '关闭';
+const BANNER_MESSAGES: Record<Lang, string> = {
+  en: t('en', 'langBannerEn') || 'English version available',
+  zh: '中文版可用',
+  ja: '日本語版があります',
+};
+const SWITCH_LABELS: Record<Lang, string> = {
+  en: t('en', 'langBannerSwitch') || 'Read in English →',
+  zh: '阅读中文版 →',
+  ja: '日本語で読む →',
+};
+const dismissLabel = t(currentLang, 'langBannerDismiss') || '关闭';
+const localesJson = JSON.stringify(LOCALES.filter((l) => l !== currentLang));
 ---
 
 <div
   id="lang-banner"
   data-current-lang={currentLang}
-  data-other-lang={otherLang}
+  data-suggest-locales={localesJson}
   class="hidden bg-primary/5 dark:bg-primary/10 border-b border-primary/20"
   aria-live="polite"
 >
   <div class="max-w-7xl mx-auto px-4 sm:px-6 py-2 flex items-center justify-between gap-4 text-sm">
     <span class="text-gray-700 dark:text-gray-300">
-      <span class="font-medium">{message}</span>
+      <span class="font-medium" id="lang-banner-msg"></span>
     </span>
     <div class="flex items-center gap-3 shrink-0">
       <a
         id="lang-banner-switch"
         href="#"
-        class="text-primary hover:text-secondary font-semibold underline-offset-4 hover:underline"
-      >
-        {switchLabel}
-      </a>
+        class="text-primary hover:text-secondary font-semibold underline-offset-4 hover:underline"></a>
       <button
         type="button"
         id="lang-banner-dismiss"
@@ -58,47 +59,46 @@ const dismissLabel = currentLang === 'en' ? t(currentLang, 'langBannerDismiss') 
   </div>
 </div>
 
-<script>
+<script define:vars={{ BANNER_MESSAGES, SWITCH_LABELS }}>
   (() => {
-    const banner = document.getElementById('lang-banner') as HTMLElement | null;
+    const banner = document.getElementById('lang-banner');
     if (!banner) return;
-    const currentLang = banner.dataset.currentLang as 'zh' | 'en';
-    const otherLang = banner.dataset.otherLang as 'zh' | 'en';
+    const currentLang = banner.dataset.currentLang;
+    const candidates = JSON.parse(banner.dataset.suggestLocales || '[]');
 
-    // Routing convention (post-Phase-2): EN is route default at '/<path>',
-    // ZH is at '/zh/<path>'. Compute the sibling URL accordingly.
-    function siblingUrl(): string {
+    function localeUrl(targetLang) {
       const path = location.pathname;
-      if (otherLang === 'zh') {
-        // Currently on EN — switch to ZH variant by prefixing /zh.
-        if (path === '/' || path === '') return '/zh/';
-        return '/zh' + path;
-      }
-      // Currently on ZH — switch to EN by stripping /zh.
-      if (path === '/zh' || path === '/zh/') return '/';
-      if (path.startsWith('/zh/')) return path.slice(3);
-      return path;
+      let bare = path;
+      if (path === '/zh' || path === '/zh/') bare = '/';
+      else if (path.startsWith('/zh/')) bare = path.slice(3);
+      else if (path === '/ja' || path === '/ja/') bare = '/';
+      else if (path.startsWith('/ja/')) bare = path.slice(3);
+      if (targetLang === 'en') return bare;
+      if (bare === '/' || bare === '') return '/' + targetLang + '/';
+      return '/' + targetLang + bare;
     }
 
-    // Show only when the visitor's browser language clearly prefers the
-    // other locale AND they haven't pinned a preference yet. No silent
-    // redirect — the user's URL choice always wins.
     const stored = localStorage.getItem('sgai_lang');
-    const shouldSuggest = (() => {
-      if (stored) return false;
-      const prefs = (navigator.languages?.length ? navigator.languages : [navigator.language]).map((l) =>
-        l.toLowerCase()
-      );
-      const prefersOther = prefs.some((p) => p.startsWith(otherLang));
-      const prefersCurrent = prefs.some((p) => p.startsWith(currentLang));
-      return prefersOther && !prefersCurrent;
-    })();
-    if (shouldSuggest) banner.classList.remove('hidden');
+    if (stored) return;
 
-    document.getElementById('lang-banner-switch')?.addEventListener('click', (e) => {
+    const prefs = (navigator.languages?.length ? navigator.languages : [navigator.language]).map((l) =>
+      l.toLowerCase()
+    );
+    const prefersCurrent = prefs.some((p) => p.startsWith(currentLang));
+    if (prefersCurrent) return;
+
+    const suggestLang = candidates.find((lang) => prefs.some((p) => p.startsWith(lang)));
+    if (!suggestLang) return;
+
+    document.getElementById('lang-banner-msg').textContent = BANNER_MESSAGES[suggestLang] || '';
+    const switchEl = document.getElementById('lang-banner-switch');
+    switchEl.textContent = SWITCH_LABELS[suggestLang] || '';
+    banner.classList.remove('hidden');
+
+    switchEl?.addEventListener('click', (e) => {
       e.preventDefault();
-      localStorage.setItem('sgai_lang', otherLang);
-      location.assign(siblingUrl());
+      localStorage.setItem('sgai_lang', suggestLang);
+      location.assign(localeUrl(suggestLang));
     });
     document.getElementById('lang-banner-dismiss')?.addEventListener('click', () => {
       localStorage.setItem('sgai_lang', currentLang);

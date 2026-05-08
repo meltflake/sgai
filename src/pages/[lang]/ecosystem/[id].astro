@@ -1,0 +1,615 @@
+---
+// Ecosystem entity detail page ([lang]). One page per entity slug x non-default locale.
+
+import type { GetStaticPaths } from 'astro';
+import Layout from '~/layouts/PageLayout.astro';
+import { Icon } from 'astro-icon/components';
+import { ecosystemEntityPages, type EcosystemEntityPage } from '~/utils/entity-pages';
+import { type EcosystemEntity } from '~/data/ecosystem';
+import { getPolicyById, getDebateById, getLeverByNumber } from '~/utils/graph';
+import { allPeople } from '~/data/people';
+import { isStubEcosystemEntity } from '~/utils/quality';
+import EcosystemProse from '~/components/data/EcosystemProse.astro';
+import { NON_DEFAULT_ROUTE_LOCALES, localizedHref, type Lang } from '~/i18n';
+
+export const prerender = true;
+
+export const getStaticPaths = (() =>
+  NON_DEFAULT_ROUTE_LOCALES.flatMap((lang) =>
+    ecosystemEntityPages.map((p) => ({
+      params: { lang, id: p.slug },
+      props: { page: p },
+    }))
+  )) satisfies GetStaticPaths;
+
+const { page } = Astro.props;
+const { entity, category } = page;
+const lang = Astro.params.lang as Lang;
+const isZh = lang === 'zh';
+
+const entityTypeLabels: Record<NonNullable<EcosystemEntity['entityType']>, { zh: string; en: string }> = {
+  agency: { zh: '法定机构', en: 'Statutory Agency' },
+  institute: { zh: '研究机构', en: 'Research Institute' },
+  university: { zh: '高校', en: 'University' },
+  platform: { zh: '平台 / 框架', en: 'Platform / Framework' },
+  product: { zh: '产品 / 工具', en: 'Product / Tool' },
+  program: { zh: '项目 / 计划', en: 'Programme' },
+  partner: { zh: '产业伙伴', en: 'Industry Partner' },
+  initiative: { zh: '国际倡议', en: 'International Initiative' },
+};
+
+const statusLabels: Record<NonNullable<EcosystemEntity['status']>, { zh: string; en: string }> = {
+  active: { zh: '运营中', en: 'Active' },
+  archived: { zh: '已归档', en: 'Archived' },
+  planned: { zh: '筹备中', en: 'Planned' },
+};
+
+const statusColors: Record<NonNullable<EcosystemEntity['status']>, string> = {
+  active: 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-300',
+  archived: 'bg-gray-200 text-gray-700 dark:bg-gray-700 dark:text-gray-300',
+  planned: 'bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-300',
+};
+
+const peerEntities = category.entities.filter((e) => e.name !== entity.name);
+
+const relatedPolicies = (entity.relatedPolicyIds || [])
+  .map((pid) => getPolicyById(pid))
+  .filter((p): p is NonNullable<typeof p> => Boolean(p));
+const relatedDebates = (entity.relatedDebateIds || [])
+  .map((did) => getDebateById(did))
+  .filter((d): d is NonNullable<typeof d> => Boolean(d));
+const relatedLevers = (entity.relatedLeverNumbers || [])
+  .map((n) => getLeverByNumber(n))
+  .filter((l): l is NonNullable<typeof l> => Boolean(l));
+const relatedEntities = (entity.relatedEntityIds || [])
+  .map((id) => ecosystemEntityPages.find((p) => p.slug === id))
+  .filter((p): p is EcosystemEntityPage => Boolean(p));
+const championPersons = (entity.championPersonIds || [])
+  .map((pid) => allPeople.find((p) => p.id === pid))
+  .filter((p): p is NonNullable<typeof p> => Boolean(p));
+
+// Locale-aware field picking
+const pick = (base: string | undefined, en: string | undefined): string => (isZh ? base || en || '' : en || base || '');
+
+const isStub = isZh
+  ? !entity.summary && !entity.whatItIs
+  : !entity.summary && !entity.summaryEn && !entity.whatItIs && !entity.whatItIsEn;
+
+const displayName = isZh ? entity.name : entity.nameEn || entity.name;
+const categoryName = isZh ? category.name : category.nameEn || category.name;
+const summary = pick(entity.summary, entity.summaryEn);
+const whatItIs = pick(entity.whatItIs, entity.whatItIsEn);
+const aiRelevance = pick(entity.aiRelevance, entity.aiRelevanceEn);
+const sgRelevance = pick(entity.singaporeRelevance, entity.singaporeRelevanceEn);
+const description = isZh ? entity.description || entity.descriptionEn : entity.descriptionEn || entity.description;
+
+// noindex 策略，对称 EN 页面：
+//   1. _pendingReview: true 的 auto-discovered entry
+//   2. 中文端 stub —— whatItIs/aiRelevance/singaporeRelevance 缺失，
+//      就算 description 双语齐全，也只是 stub。
+const isPendingReview = entity._pendingReview === true;
+const isZhStub = isStubEcosystemEntity(entity, 'zh');
+
+const metadata = {
+  title: `${displayName} · ${categoryName} · ${isZh ? '生态地图' : 'Ecosystem Map'}`,
+  description: description,
+  robots: { index: !isPendingReview && !isZhStub, follow: true },
+};
+
+const breadcrumbs = [
+  { label: isZh ? '生态地图' : 'Ecosystem Map', href: localizedHref('/ecosystem/', lang) },
+  { label: `${category.icon} ${categoryName}`, href: localizedHref('/ecosystem/', lang) },
+  { label: displayName },
+];
+---
+
+<Layout metadata={metadata} breadcrumbs={breadcrumbs} lang={lang}>
+  <article class="max-w-3xl mx-auto px-4 sm:px-6 py-10 md:py-12">
+    <div class="mb-6 flex flex-wrap items-center gap-2 text-xs">
+      <a
+        href={localizedHref('/ecosystem/', lang)}
+        class="inline-flex items-center gap-1 bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 px-3 py-1.5 rounded-full font-semibold hover:bg-blue-100 dark:hover:bg-blue-900/50 transition-colors"
+      >
+        <span>{category.icon}</span>
+        <span>{categoryName}</span>
+      </a>
+      {
+        entity.entityType && (
+          <span class="bg-gray-100 dark:bg-slate-800 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-full">
+            {isZh ? entityTypeLabels[entity.entityType].zh : entityTypeLabels[entity.entityType].en}
+          </span>
+        )
+      }
+      {
+        entity.status && (
+          <span class={`px-3 py-1.5 rounded-full font-medium ${statusColors[entity.status]}`}>
+            {isZh ? statusLabels[entity.status].zh : statusLabels[entity.status].en}
+          </span>
+        )
+      }
+      {
+        entity.founded && (
+          <span class="bg-gray-100 dark:bg-slate-800 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-full">
+            {isZh ? `成立 ${entity.founded}` : `Founded ${entity.founded}`}
+          </span>
+        )
+      }
+    </div>
+
+    <h1 class="t-display text-gray-900 dark:text-white mb-2">
+      {displayName}
+    </h1>
+    {
+      isZh
+        ? entity.nameEn &&
+          entity.nameEn !== entity.name && (
+            <p class="text-base md:text-lg text-gray-500 dark:text-gray-400 italic mb-6">{entity.nameEn}</p>
+          )
+        : entity.name &&
+          entity.nameEn &&
+          entity.name !== entity.nameEn &&
+          !/[一-鿿]/.test(entity.name) && (
+            <p class="text-base md:text-lg text-gray-500 dark:text-gray-400 italic mb-6">{entity.name}</p>
+          )
+    }
+
+    {
+      isStub && (
+        <div class="mb-6 p-4 rounded-lg bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 text-sm">
+          <p class="text-amber-900 dark:text-amber-200">
+            {isZh
+              ? '📝 此实体档案待补充。下方仅展示卡片基本信息与外部链接。'
+              : '📝 This entity profile is a stub. Translation in progress — Chinese version may be more complete.'}
+          </p>
+        </div>
+      )
+    }
+
+    <div
+      class="bg-surface rounded-xl border border-subtle p-5 mb-8 grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3 text-sm"
+    >
+      {
+        entity.parentOrg && (
+          <div>
+            <dt class="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-1">
+              {isZh ? '隶属' : 'Parent'}
+            </dt>
+            <dd>
+              {entity.parentEntityId ? (
+                <a
+                  href={localizedHref(`/ecosystem/${entity.parentEntityId}/`, lang)}
+                  class="text-blue-600 dark:text-blue-400 hover:underline"
+                >
+                  {isZh ? entity.parentOrg : entity.parentOrgEn || entity.parentOrg}
+                </a>
+              ) : isZh ? (
+                entity.parentOrg
+              ) : (
+                entity.parentOrgEn || entity.parentOrg
+              )}
+            </dd>
+          </div>
+        )
+      }
+      {
+        entity.ministry && (
+          <div>
+            <dt class="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-1">
+              {isZh ? '主管部委' : 'Lead Ministry'}
+            </dt>
+            <dd>{isZh ? entity.ministry : entity.ministryEn || entity.ministry}</dd>
+          </div>
+        )
+      }
+      {
+        entity.headquarters && (
+          <div>
+            <dt class="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-1">
+              {isZh ? '所在地' : 'Location'}
+            </dt>
+            <dd>{isZh ? entity.headquarters : entity.headquartersEn || entity.headquarters}</dd>
+          </div>
+        )
+      }
+      {
+        entity.scale && (
+          <div class="sm:col-span-2">
+            <dt class="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-1">
+              {isZh ? '规模 / 指标' : 'Scale / KPIs'}
+            </dt>
+            <dd>{isZh ? entity.scale : entity.scaleEn || entity.scale}</dd>
+          </div>
+        )
+      }
+      {
+        entity.url && (
+          <div>
+            <dt class="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-1">
+              {isZh ? '官网' : 'Website'}
+            </dt>
+            <dd>
+              <a
+                href={entity.url}
+                target="_blank"
+                rel="noopener"
+                class="text-blue-600 dark:text-blue-400 hover:underline inline-flex items-center gap-1"
+              >
+                {entity.url.replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, '')}
+                <Icon name="tabler:external-link" class="w-3.5 h-3.5" />
+              </a>
+            </dd>
+          </div>
+        )
+      }
+      {
+        entity.updated && (
+          <div>
+            <dt class="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-1">
+              {isZh ? '信息更新' : 'Last Updated'}
+            </dt>
+            <dd>{entity.updated}</dd>
+          </div>
+        )
+      }
+    </div>
+
+    {
+      summary && (
+        <p class="font-serif text-lg leading-[1.85] text-gray-800 dark:text-gray-200 mb-8 border-l-4 border-primary pl-5 italic">
+          {summary}
+        </p>
+      )
+    }
+
+    {
+      whatItIs && (
+        <section class="mb-10">
+          <h2 class="t-h3 text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+            <span>📖</span> {isZh ? '是什么' : 'What it is'}
+          </h2>
+          <EcosystemProse content={whatItIs} />
+        </section>
+      )
+    }
+
+    {
+      aiRelevance && (
+        <section class="mb-10">
+          <h2 class="t-h3 text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+            <span>🤖</span> {isZh ? '与 AI 的关系' : 'Relation to AI'}
+          </h2>
+          <EcosystemProse content={aiRelevance} />
+        </section>
+      )
+    }
+
+    {
+      sgRelevance && (
+        <section class="mb-10">
+          <h2 class="t-h3 text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+            <span>🇸🇬</span> {isZh ? '与新加坡的关系' : 'Relation to Singapore'}
+          </h2>
+          <EcosystemProse content={sgRelevance} />
+        </section>
+      )
+    }
+
+    {
+      entity.milestones && entity.milestones.length > 0 && (
+        <section class="mb-10">
+          <h2 class="t-h3 text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+            <span>🗓️</span> {isZh ? '关键里程碑' : 'Key Milestones'}
+          </h2>
+          <ol class="relative border-l-2 border-blue-200 dark:border-blue-900 ml-2 pl-6 space-y-5">
+            {entity.milestones.map((m) => (
+              <li class="relative">
+                <span class="absolute -left-[33px] top-1 w-3 h-3 rounded-full bg-blue-500 dark:bg-blue-400 ring-4 ring-blue-50 dark:ring-blue-900/40" />
+                <div class="text-xs font-mono text-gray-500 dark:text-gray-400 mb-1">{m.date}</div>
+                <div class="font-semibold text-gray-900 dark:text-white">{isZh ? m.title : m.titleEn || m.title}</div>
+                {(isZh ? m.description : m.descriptionEn || m.description) && (
+                  <p class="text-sm text-gray-600 dark:text-gray-400 mt-1 leading-relaxed">
+                    {isZh ? m.description : m.descriptionEn || m.description}
+                  </p>
+                )}
+                {m.sourceUrl && (
+                  <a
+                    href={m.sourceUrl}
+                    target="_blank"
+                    rel="noopener"
+                    class="text-xs text-blue-600 dark:text-blue-400 hover:underline inline-flex items-center gap-1 mt-1"
+                  >
+                    {isZh ? '来源' : 'Source'} <Icon name="tabler:external-link" class="w-3 h-3" />
+                  </a>
+                )}
+              </li>
+            ))}
+          </ol>
+        </section>
+      )
+    }
+
+    {
+      (entity.leaders || championPersons.length > 0) && (
+        <section class="mb-10">
+          <h2 class="t-h3 text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+            <span>👥</span> {isZh ? '关键人物' : 'Key People'}
+          </h2>
+          <ul class="space-y-2">
+            {entity.leaders?.map((l) => (
+              <li class="text-sm">
+                {l.personId ? (
+                  <a
+                    href={localizedHref(`/voices/${l.personId}/`, lang)}
+                    class="font-semibold text-blue-600 dark:text-blue-400 hover:underline"
+                  >
+                    {l.name}
+                  </a>
+                ) : (
+                  <span class="font-semibold text-gray-900 dark:text-white">{l.name}</span>
+                )}
+                {(isZh ? l.title : l.titleEn || l.title) && (
+                  <span class="text-gray-600 dark:text-gray-400 ml-2">— {isZh ? l.title : l.titleEn || l.title}</span>
+                )}
+              </li>
+            ))}
+            {championPersons.map((p) => (
+              <li class="text-sm">
+                <a
+                  href={localizedHref(`/voices/${p.id}/`, lang)}
+                  class="font-semibold text-blue-600 dark:text-blue-400 hover:underline"
+                >
+                  {isZh ? p.name : p.nameEn || p.name}
+                </a>
+                {(isZh ? p.title : p.titleEn || p.title) && (
+                  <span class="text-gray-600 dark:text-gray-400 ml-2">— {isZh ? p.title : p.titleEn || p.title}</span>
+                )}
+              </li>
+            ))}
+          </ul>
+        </section>
+      )
+    }
+
+    {
+      entity.products && entity.products.length > 0 && (
+        <section class="mb-10">
+          <h2 class="t-h3 text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+            <span>📦</span> {isZh ? '产品 / 子项目' : 'Products & Sub-projects'}
+          </h2>
+          <div class="grid gap-3 sm:grid-cols-2">
+            {entity.products.map((p) => {
+              const href = p.entityId ? localizedHref(`/ecosystem/${p.entityId}/`, lang) : p.url || null;
+              const isInternal = Boolean(p.entityId);
+              const pName = isZh ? p.name : p.nameEn || p.name;
+              const pDesc = isZh ? p.description : p.descriptionEn || p.description;
+              const inner = (
+                <>
+                  <h3 class="font-semibold text-sm text-gray-900 dark:text-white mb-1">
+                    {pName}
+                    {isInternal && <span class="text-blue-500 ml-1">→</span>}
+                  </h3>
+                  {pDesc && <p class="text-xs text-gray-600 dark:text-gray-400">{pDesc}</p>}
+                </>
+              );
+              return href ? (
+                <a
+                  href={href}
+                  target={isInternal ? undefined : '_blank'}
+                  rel={isInternal ? undefined : 'noopener'}
+                  class="block bg-surface rounded-lg p-4 border border-subtle hover:border-blue-300 hover:shadow-sm transition-all"
+                >
+                  {inner}
+                </a>
+              ) : (
+                <div class="bg-surface rounded-lg p-4 border border-subtle">{inner}</div>
+              );
+            })}
+          </div>
+        </section>
+      )
+    }
+
+    {
+      entity.partners && entity.partners.length > 0 && (
+        <section class="mb-10">
+          <h2 class="t-h3 text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+            <span>🤝</span> {isZh ? '合作伙伴' : 'Partners'}
+          </h2>
+          <div class="grid gap-3 sm:grid-cols-2">
+            {entity.partners.map((p) => (
+              <div class="bg-surface rounded-lg p-4 border border-subtle">
+                <h3 class="font-semibold text-sm text-gray-900 dark:text-white mb-1">
+                  {isZh ? p.name : p.nameEn || p.name}
+                </h3>
+                {(isZh ? p.description : p.descriptionEn || p.description) && (
+                  <p class="text-xs text-gray-600 dark:text-gray-400">
+                    {isZh ? p.description : p.descriptionEn || p.description}
+                  </p>
+                )}
+              </div>
+            ))}
+          </div>
+        </section>
+      )
+    }
+
+    {
+      (relatedPolicies.length > 0 ||
+        relatedDebates.length > 0 ||
+        relatedLevers.length > 0 ||
+        relatedEntities.length > 0) && (
+        <section class="mb-10">
+          <h2 class="t-h3 text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+            <span>🔗</span> {isZh ? '关联资源' : 'Related'}
+          </h2>
+          <div class="space-y-4">
+            {relatedLevers.length > 0 && (
+              <div>
+                <h3 class="text-sm uppercase tracking-wider text-gray-500 dark:text-gray-400 font-semibold mb-2">
+                  {isZh ? '传导杠杆' : 'Levers'}
+                </h3>
+                <div class="flex flex-wrap gap-2">
+                  {relatedLevers.map((l) => (
+                    <a
+                      href={localizedHref(`/levers/${l.number}/`, lang)}
+                      class="text-sm bg-purple-50 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 px-3 py-1.5 rounded-full hover:bg-purple-100 dark:hover:bg-purple-900/50 transition-colors"
+                    >
+                      {l.icon} {isZh ? `抓手 ${l.number}：${l.name}` : `Lever ${l.number}: ${l.nameEn || l.name}`}
+                    </a>
+                  ))}
+                </div>
+              </div>
+            )}
+            {relatedEntities.length > 0 && (
+              <div>
+                <h3 class="text-sm uppercase tracking-wider text-gray-500 dark:text-gray-400 font-semibold mb-2">
+                  {isZh ? '关联生态实体' : 'Related Entities'}
+                </h3>
+                <div class="flex flex-wrap gap-2">
+                  {relatedEntities.map((re) => (
+                    <a
+                      href={localizedHref(`/ecosystem/${re.slug}/`, lang)}
+                      class="text-sm bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 px-3 py-1.5 rounded-full hover:bg-blue-100 dark:hover:bg-blue-900/50 transition-colors"
+                    >
+                      {isZh ? re.entity.name : re.entity.nameEn || re.entity.name}
+                    </a>
+                  ))}
+                </div>
+              </div>
+            )}
+            {relatedPolicies.length > 0 && (
+              <div>
+                <h3 class="text-sm uppercase tracking-wider text-gray-500 dark:text-gray-400 font-semibold mb-2">
+                  {isZh ? '相关政策' : 'Related Policies'}
+                </h3>
+                <ul class="space-y-2">
+                  {relatedPolicies.map((p) => (
+                    <li>
+                      <a
+                        href={localizedHref(`/policies/${p.id}/`, lang)}
+                        class="text-sm text-blue-600 dark:text-blue-400 hover:underline"
+                      >
+                        {isZh ? p.title : p.titleEn || p.title}{' '}
+                        <span class="text-gray-500 dark:text-gray-500">· {p.date}</span>
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+            {relatedDebates.length > 0 && (
+              <div>
+                <h3 class="text-sm uppercase tracking-wider text-gray-500 dark:text-gray-400 font-semibold mb-2">
+                  {isZh ? '相关国会辩论' : 'Related Debates'}
+                </h3>
+                <ul class="space-y-2">
+                  {relatedDebates.slice(0, 8).map((d) => (
+                    <li>
+                      <a
+                        href={localizedHref(`/debates/${d.id}/`, lang)}
+                        class="text-sm text-blue-600 dark:text-blue-400 hover:underline"
+                      >
+                        {isZh ? d.title : d.titleEn || d.title}{' '}
+                        <span class="text-gray-500 dark:text-gray-500">· {d.date}</span>
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </div>
+        </section>
+      )
+    }
+
+    {
+      entity.furtherReading && entity.furtherReading.length > 0 && (
+        <section class="mb-10">
+          <h2 class="t-h3 text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+            <span>📚</span> {isZh ? '延伸阅读' : 'Further Reading'}
+          </h2>
+          <ul class="space-y-2">
+            {entity.furtherReading.map((r) => (
+              <li>
+                <a
+                  href={r.url}
+                  target="_blank"
+                  rel="noopener"
+                  class="text-sm text-blue-600 dark:text-blue-400 hover:underline inline-flex items-center gap-1"
+                >
+                  {isZh ? r.label : r.labelEn || r.label}
+                  <Icon name="tabler:external-link" class="w-3.5 h-3.5" />
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )
+    }
+
+    {
+      entity.sources && entity.sources.length > 0 && (
+        <section class="mb-10 pt-6 border-t border-subtle">
+          <h2 class="text-sm uppercase tracking-wider text-gray-500 dark:text-gray-400 font-semibold mb-3">
+            {isZh ? '数据来源' : 'Sources'}
+          </h2>
+          <ul class="space-y-1.5 text-xs text-gray-600 dark:text-gray-400">
+            {entity.sources.map((s) => (
+              <li>
+                <a href={s.url} target="_blank" rel="noopener" class="hover:text-blue-600 dark:hover:text-blue-400">
+                  {isZh ? s.label : s.labelEn || s.label}
+                </a>
+                {s.date && (
+                  <span class="text-gray-400 dark:text-gray-500 ml-2">
+                    — {isZh ? `访问于 ${s.date}` : `accessed ${s.date}`}
+                  </span>
+                )}
+              </li>
+            ))}
+          </ul>
+        </section>
+      )
+    }
+
+    {
+      peerEntities.length > 0 && (
+        <section class="mb-10 pt-6 border-t border-subtle">
+          <h2 class="text-sm uppercase tracking-wider text-gray-500 dark:text-gray-400 font-semibold mb-3">
+            {isZh ? `同属「${category.icon} ${category.name}」` : `Within ${category.icon} ${categoryName}`}
+          </h2>
+          <div class="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+            {peerEntities.map((e) => {
+              const href = e.id ? localizedHref(`/ecosystem/${e.id}/`, lang) : null;
+              const peerName = isZh ? e.name : e.nameEn || e.name;
+              const peerDesc = isZh ? e.description : e.descriptionEn || e.description;
+              return href ? (
+                <a
+                  href={href}
+                  class="bg-surface rounded-lg p-3 border border-subtle hover:border-blue-300 transition-colors text-sm"
+                >
+                  <div class="font-semibold text-gray-900 dark:text-white">{peerName}</div>
+                  <div class="text-xs text-gray-500 dark:text-gray-400 mt-0.5 line-clamp-2">{peerDesc}</div>
+                </a>
+              ) : (
+                <div class="bg-surface rounded-lg p-3 border border-subtle text-sm opacity-70">
+                  <div class="font-semibold text-gray-700 dark:text-gray-300">{peerName}</div>
+                  <div class="text-xs text-gray-500 dark:text-gray-500 mt-0.5 line-clamp-2">{peerDesc}</div>
+                </div>
+              );
+            })}
+          </div>
+        </section>
+      )
+    }
+
+    <nav class="mt-12 pt-6 border-t border-subtle">
+      <a
+        href={localizedHref('/ecosystem/', lang)}
+        class="text-sm text-primary hover:text-secondary font-medium inline-flex items-center gap-1"
+      >
+        <Icon name="tabler:arrow-left" class="w-4 h-4" />
+        {isZh ? '返回生态地图' : 'Back to Ecosystem Map'}
+      </a>
+    </nav>
+  </article>
+</Layout>

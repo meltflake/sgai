@@ -1,0 +1,55 @@
+---
+// Policy detail page ([lang]). One page per Policy.id × non-default locale.
+
+import type { GetStaticPaths } from 'astro';
+
+import JsonLd from '~/components/common/JsonLd.astro';
+import PolicyProfile from '~/components/data/PolicyProfile.astro';
+import Layout from '~/layouts/PageLayout.astro';
+import { categories } from '~/data/policies';
+import { NON_DEFAULT_ROUTE_LOCALES, localizedHref, pickLocalized, t, type Lang } from '~/i18n';
+
+export const prerender = true;
+
+export const getStaticPaths = (() => {
+  const all = categories.flatMap((c) =>
+    c.policies.map((p) => ({ ...p, _categoryName: c.name, _categoryNameEn: c.nameEn, _categoryIcon: c.icon }))
+  );
+  return NON_DEFAULT_ROUTE_LOCALES.flatMap((lang) =>
+    all
+      .filter((p) => p.id)
+      .map((policy) => ({
+        params: { lang, id: policy.id! },
+        props: { policy },
+      }))
+  );
+}) satisfies GetStaticPaths;
+
+const { policy } = Astro.props;
+const lang = Astro.params.lang as Lang;
+
+const title = pickLocalized<string>(policy, 'title', lang) || policy.title;
+const summary = pickLocalized<string>(policy, 'summary', lang) || '';
+
+const metadata = {
+  title: `${title} · ${t(lang, 'policyArchiveSuffix')}`,
+  description: summary,
+};
+
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'GovernmentService',
+  name: policy.titleEn || policy.title,
+  alternateName: policy.title,
+  description: summary,
+  serviceType: 'Policy document',
+  ...(policy.ministry ? { provider: { '@type': 'GovernmentOrganization', name: policy.ministry } } : {}),
+};
+
+const breadcrumbs = [{ label: t(lang, 'navPolicies'), href: localizedHref('/policies/', lang) }, { label: title }];
+---
+
+<Layout metadata={metadata} breadcrumbs={breadcrumbs} lang={lang}>
+  <JsonLd schema={articleSchema} />
+  <PolicyProfile policy={policy} lang={lang} />
+</Layout>

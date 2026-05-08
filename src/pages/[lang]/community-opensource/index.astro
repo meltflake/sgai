@@ -1,0 +1,220 @@
+---
+import { Icon } from 'astro-icon/components';
+
+import Headline from '~/components/ui/Headline.astro';
+import Layout from '~/layouts/PageLayout.astro';
+import {
+  universityProjects,
+  corporateLabProjects,
+  startupProjects,
+  summary,
+  dataDisclaimer,
+  dataDisclaimerEn,
+} from '~/data/community-opensource';
+import { NON_DEFAULT_ROUTE_LOCALES, t, pickLocalized, localizedHref, type Lang } from '~/i18n';
+
+export function getStaticPaths() {
+  return NON_DEFAULT_ROUTE_LOCALES.map((lang) => ({ params: { lang } }));
+}
+
+const lang = Astro.params.lang as Lang;
+const isZh = lang === 'zh';
+const note = isZh ? summary.note : summary.noteEn || summary.note;
+const disclaimer = isZh ? dataDisclaimer : dataDisclaimerEn || dataDisclaimer;
+---
+
+<Layout
+  metadata={{
+    title: t(lang, 'communityOsPageTitle'),
+    description: t(lang, 'communityOsPageDesc'),
+  }}
+  breadcrumbs={[{ label: t(lang, 'navCommunityOpensource') }]}
+  lang={lang}
+>
+  <section class="px-4 py-16 sm:px-6 mx-auto lg:px-8 max-w-6xl">
+    <Headline
+      title={t(lang, 'communityOsPageTitle')}
+      subtitle={isZh
+        ? '新加坡大学、国际企业实验室与创业公司的 AI 开源项目'
+        : "AI open-source projects from Singapore's universities, international corporate labs, and startups."}
+    />
+
+    <div
+      class="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-4 mb-12 text-sm text-blue-800 dark:text-blue-200"
+    >
+      {note}
+    </div>
+
+    <div class="mb-16">
+      <h2 class="t-h2 mb-2">
+        {isZh ? '大学与研究机构' : 'Universities & Research Institutions'}
+      </h2>
+      <p class="text-sm text-muted mb-6">
+        {
+          isZh
+            ? '高校实验室输出的模型、工具箱和训练系统；每张卡片进入独立项目档案。'
+            : 'Models, toolboxes, and training systems from university labs. Each card opens a project profile.'
+        }
+      </p>
+      <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        {
+          universityProjects.map((proj) => (
+            <a
+              href={localizedHref(`/community-opensource/${proj.id}/`, lang)}
+              class="group flex h-full flex-col bg-surface rounded-lg shadow-md border border-subtle p-5 hover:border-primary/40 hover:shadow-lg transition-all focus-visible:outline-primary"
+            >
+              <div class="flex items-start justify-between gap-3 mb-3">
+                <div class="min-w-0">
+                  <p class="text-xs text-blue-600 dark:text-blue-400 mb-1">{pickLocalized(proj, 'org', lang)}</p>
+                  <h3 class="font-bold text-gray-900 dark:text-white group-hover:text-primary transition-colors">
+                    {pickLocalized(proj, 'name', lang)}
+                  </h3>
+                </div>
+                <span class="text-xs bg-slate-100 dark:bg-slate-800 px-2 py-0.5 rounded whitespace-nowrap">
+                  {pickLocalized(proj, 'category', lang)}
+                </span>
+              </div>
+              <p class="text-sm text-muted mb-4 leading-relaxed">{pickLocalized(proj, 'description', lang)}</p>
+              <div class="flex flex-wrap items-center gap-2 text-xs text-muted mb-4">
+                <span class="bg-slate-50 dark:bg-slate-800 px-2 py-0.5 rounded">
+                  {pickLocalized(proj, 'status', lang)}
+                </span>
+                <span class="bg-slate-50 dark:bg-slate-800 px-2 py-0.5 rounded">{proj.language}</span>
+                {proj.stars && (
+                  <span class="bg-slate-50 dark:bg-slate-800 px-2 py-0.5 rounded">
+                    GitHub {proj.stars.toLocaleString()} Stars
+                  </span>
+                )}
+                {proj.papers?.slice(0, 2).map((paper) => (
+                  <span class="bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 px-2 py-0.5 rounded">
+                    {paper}
+                  </span>
+                ))}
+              </div>
+              <div class="mt-auto pt-4 border-t border-subtle flex items-center justify-between gap-3">
+                <span class="text-xs text-muted">{proj.updated}</span>
+                <span class="inline-flex items-center gap-1 text-sm font-medium text-primary group-hover:text-secondary">
+                  {isZh ? '查看档案' : 'Open profile'}
+                  <Icon name="tabler:arrow-right" class="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
+                </span>
+              </div>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+
+    <div class="mb-16">
+      <h2 class="t-h2 mb-2">
+        {isZh ? '国际企业新加坡实验室' : 'International Corporate Labs in Singapore'}
+      </h2>
+      <p class="text-sm text-muted mb-6">
+        {
+          isZh
+            ? '跨国科技公司在新加坡及相关研究网络中的开源模型、训练框架和工具。'
+            : 'Open models, training frameworks, and tools from multinational technology research networks connected to Singapore.'
+        }
+      </p>
+      <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        {
+          corporateLabProjects.map((proj) => (
+            <a
+              href={localizedHref(`/community-opensource/${proj.id}/`, lang)}
+              class="group flex h-full flex-col bg-surface rounded-lg shadow-md border border-subtle p-5 hover:border-primary/40 hover:shadow-lg transition-all focus-visible:outline-primary"
+            >
+              <div class="flex items-start justify-between gap-3 mb-3">
+                <div class="min-w-0">
+                  <p class="text-xs text-blue-600 dark:text-blue-400 mb-1">{pickLocalized(proj, 'org', lang)}</p>
+                  <h3 class="font-bold text-gray-900 dark:text-white group-hover:text-primary transition-colors">
+                    {pickLocalized(proj, 'name', lang)}
+                  </h3>
+                </div>
+                <span class="text-xs bg-slate-100 dark:bg-slate-800 px-2 py-0.5 rounded whitespace-nowrap">
+                  {pickLocalized(proj, 'category', lang)}
+                </span>
+              </div>
+              <p class="text-sm text-muted mb-4 leading-relaxed">{pickLocalized(proj, 'description', lang)}</p>
+              <div class="flex flex-wrap items-center gap-2 text-xs text-muted mb-4">
+                <span class="bg-slate-50 dark:bg-slate-800 px-2 py-0.5 rounded">
+                  {pickLocalized(proj, 'status', lang)}
+                </span>
+                <span class="bg-slate-50 dark:bg-slate-800 px-2 py-0.5 rounded">{proj.language}</span>
+                {proj.stars && (
+                  <span class="bg-slate-50 dark:bg-slate-800 px-2 py-0.5 rounded">
+                    GitHub {proj.stars.toLocaleString()} Stars
+                  </span>
+                )}
+                {proj.papers?.slice(0, 2).map((paper) => (
+                  <span class="bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 px-2 py-0.5 rounded">
+                    {paper}
+                  </span>
+                ))}
+              </div>
+              <div class="mt-auto pt-4 border-t border-subtle flex items-center justify-between gap-3">
+                <span class="text-xs text-muted">{proj.updated}</span>
+                <span class="inline-flex items-center gap-1 text-sm font-medium text-primary group-hover:text-secondary">
+                  {isZh ? '查看档案' : 'Open profile'}
+                  <Icon name="tabler:arrow-right" class="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
+                </span>
+              </div>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+
+    <div class="mb-16">
+      <h2 class="t-h2 mb-2">{isZh ? '创业公司' : 'Startups'}</h2>
+      <p class="text-sm text-muted mb-6">
+        {
+          isZh
+            ? '以开源作为产品分发和开发者社区入口的新加坡 AI 创业样本。'
+            : 'Singapore AI startup examples using open source as product distribution and developer-community entry.'
+        }
+      </p>
+      <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        {
+          startupProjects.map((proj) => (
+            <a
+              href={localizedHref(`/community-opensource/${proj.id}/`, lang)}
+              class="group flex h-full flex-col bg-surface rounded-lg shadow-md border border-subtle p-5 hover:border-primary/40 hover:shadow-lg transition-all focus-visible:outline-primary"
+            >
+              <div class="flex items-start justify-between gap-3 mb-3">
+                <div class="min-w-0">
+                  <p class="text-xs text-blue-600 dark:text-blue-400 mb-1">{pickLocalized(proj, 'org', lang)}</p>
+                  <h3 class="font-bold text-gray-900 dark:text-white group-hover:text-primary transition-colors">
+                    {pickLocalized(proj, 'name', lang)}
+                  </h3>
+                </div>
+                <span class="text-xs bg-slate-100 dark:bg-slate-800 px-2 py-0.5 rounded whitespace-nowrap">
+                  {pickLocalized(proj, 'category', lang)}
+                </span>
+              </div>
+              <p class="text-sm text-muted mb-4 leading-relaxed">{pickLocalized(proj, 'description', lang)}</p>
+              <div class="flex flex-wrap items-center gap-2 text-xs text-muted mb-4">
+                <span class="bg-slate-50 dark:bg-slate-800 px-2 py-0.5 rounded">
+                  {pickLocalized(proj, 'status', lang)}
+                </span>
+                <span class="bg-slate-50 dark:bg-slate-800 px-2 py-0.5 rounded">{proj.language}</span>
+                {proj.stars && (
+                  <span class="bg-slate-50 dark:bg-slate-800 px-2 py-0.5 rounded">
+                    GitHub {proj.stars.toLocaleString()} Stars
+                  </span>
+                )}
+              </div>
+              <div class="mt-auto pt-4 border-t border-subtle flex items-center justify-between gap-3">
+                <span class="text-xs text-muted">{proj.updated}</span>
+                <span class="inline-flex items-center gap-1 text-sm font-medium text-primary group-hover:text-secondary">
+                  {isZh ? '查看档案' : 'Open profile'}
+                  <Icon name="tabler:arrow-right" class="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
+                </span>
+              </div>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+
+    <p class="mt-12 text-sm text-muted text-center">{disclaimer}</p>
+  </section>
+</Layout>

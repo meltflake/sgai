@@ -3,17 +3,17 @@
 
 import Layout from '~/layouts/PageLayout.astro';
 import EvolutionPage from '~/components/evolution/EvolutionPage.astro';
+import { t } from '~/i18n';
 
 const lang = 'en' as const;
 ---
 
 <Layout
   metadata={{
-    title: 'Singapore AI Policy Evolution',
-    description:
-      "Singapore's AI policy evolution — the strategic transformation arc from the 2014 Smart Nation Initiative to the 2024 generative AI governance framework.",
+    title: t(lang, 'evolutionPageTitle'),
+    description: t(lang, 'evolutionPageDesc'),
   }}
-  breadcrumbs={[{ label: 'Policy Evolution' }]}
+  breadcrumbs={[{ label: t(lang, 'evolutionPageTitle') }]}
   lang={lang}
 >
   <EvolutionPage lang={lang} />

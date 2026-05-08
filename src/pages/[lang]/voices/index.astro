@@ -1,0 +1,686 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import { people, institutions, mddiSpeeches } from '~/data/voices';
+import { speechId } from '~/data/speech-transcripts';
+import { videos, VIDEO_CATEGORIES } from '~/data/videos';
+import {
+  NON_DEFAULT_ROUTE_LOCALES,
+  localizedHref,
+  pickLocalized,
+  channelLabel as resolveChannelLabel,
+  t,
+  type Lang,
+} from '~/i18n';
+
+export function getStaticPaths() {
+  return NON_DEFAULT_ROUTE_LOCALES.map((lang) => ({ params: { lang } }));
+}
+
+const lang = Astro.params.lang as Lang;
+const isZh = lang === 'zh';
+
+const meta = {
+  title: t(lang, 'voicesPageTitle'),
+  description: t(lang, 'voicesPageDesc'),
+};
+
+// Category label mapping
+const categoryLabels: Record<string, string> = isZh
+  ? { government: '政府官员', academic: '学者', industry: '行业领袖' }
+  : { government: 'Government', academic: 'Academic', industry: 'Industry' };
+
+// Category badge color classes
+const categoryColors: Record<string, string> = {
+  government: 'bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300',
+  academic: 'bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-300',
+  industry: 'bg-amber-100 text-amber-700 dark:bg-amber-900/40 dark:text-amber-300',
+};
+
+// Platform display labels
+const platformLabels: Record<string, string> = isZh
+  ? {
+      twitter: 'X (Twitter)',
+      linkedin: 'LinkedIn',
+      facebook: 'Facebook',
+      website: '官网',
+      newsletter: 'Newsletter',
+      github: 'GitHub',
+      youtube: 'YouTube',
+    }
+  : {
+      twitter: 'X (Twitter)',
+      linkedin: 'LinkedIn',
+      facebook: 'Facebook',
+      website: 'Website',
+      newsletter: 'Newsletter',
+      github: 'GitHub',
+      youtube: 'YouTube',
+    };
+
+const channelLabel = (ch: { platform: string; label?: string; labelEn?: string }) =>
+  resolveChannelLabel(ch, lang, platformLabels);
+
+// Extract years from speeches for filter
+const speechYears = [...new Set(mddiSpeeches.map((s) => s.date.slice(0, 4)))].sort().reverse();
+
+// Extract unique speakers from speeches
+const speechSpeakers = [...new Set(mddiSpeeches.map((s) => s.speaker).filter((s) => s !== ''))].sort();
+
+// Video data for YouTube section
+const videoYears = [...new Set(videos.map((v) => v.date.slice(0, 4)))].sort().reverse();
+const videosSorted = [...videos].sort((a, b) => b.date.localeCompare(a.date));
+---
+
+<Layout metadata={meta} breadcrumbs={[{ label: t(lang, 'navVoices') }]} lang={lang}>
+  <div class="max-w-7xl mx-auto px-4 py-10">
+    <!-- Header -->
+    <div class="mb-10">
+      <h1 class="t-h1 text-gray-900 dark:text-white mb-3">{t(lang, 'voicesPageTitle')}</h1>
+      <p class="text-gray-600 dark:text-gray-400 text-lg">
+        {
+          isZh
+            ? '新加坡 AI 领域的关键人物与机构，及其官方信息传播渠道。'
+            : "Singapore's key AI people and institutions, and the official channels through which they communicate."
+        }
+      </p>
+      <p class="text-gray-400 dark:text-gray-500 text-sm mt-1">
+        {
+          isZh
+            ? '追踪他们的动态，获取第一手 AI 政策与战略信息'
+            : 'Track them to get first-hand AI policy and strategy intelligence.'
+        }
+      </p>
+    </div>
+
+    <!-- Stats Row -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
+      <div class="bg-surface rounded-xl p-5 shadow-sm border border-subtle text-center">
+        <div class="t-stat text-blue-600">{people.length}</div>
+        <div class="text-sm text-gray-500 mt-1">{isZh ? '关键人物' : 'Key people'}</div>
+      </div>
+      <div class="bg-surface rounded-xl p-5 shadow-sm border border-subtle text-center">
+        <div class="t-stat text-purple-600">{institutions.length}</div>
+        <div class="text-sm text-gray-500 mt-1">{isZh ? '核心机构' : 'Core institutions'}</div>
+      </div>
+      <div class="bg-surface rounded-xl p-5 shadow-sm border border-subtle text-center">
+        <div class="t-stat text-green-600">{mddiSpeeches.length}</div>
+        <div class="text-sm text-gray-500 mt-1">{isZh ? 'MDDI 演讲稿' : 'MDDI speeches'}</div>
+      </div>
+      <div class="bg-surface rounded-xl p-5 shadow-sm border border-subtle text-center">
+        <div class="t-stat text-red-600">{videos.length}</div>
+        <div class="text-sm text-gray-500 mt-1">{isZh ? 'YouTube 视频' : 'YouTube videos'}</div>
+      </div>
+    </div>
+
+    <!-- People Section -->
+    <section class="mb-14">
+      <h2 class="t-h2 text-gray-800 dark:text-white mb-6">{isZh ? '关键人物' : 'Key People'}</h2>
+      <div class="grid gap-5 md:grid-cols-2">
+        {
+          people.map((person) => (
+            <div class="bg-surface rounded-xl p-6 shadow-sm border border-subtle">
+              <div class="flex items-start justify-between mb-3">
+                <div>
+                  <h3 class="font-bold text-gray-900 dark:text-white text-lg leading-snug">
+                    <a
+                      href={localizedHref(`/voices/${person.id}/`, lang)}
+                      class="hover:text-blue-600 dark:hover:text-blue-400"
+                    >
+                      {isZh ? person.name || person.nameEn : person.nameEn || person.name}
+                    </a>
+                  </h3>
+                  {isZh && <p class="text-gray-500 dark:text-gray-400 text-sm">{person.nameEn}</p>}
+                </div>
+                <span
+                  class={`shrink-0 ml-3 text-xs font-semibold px-2.5 py-1 rounded-full ${categoryColors[person.category]}`}
+                >
+                  {categoryLabels[person.category]}
+                </span>
+              </div>
+              <p class="text-sm text-gray-600 dark:text-gray-300 font-medium mb-1">
+                {pickLocalized(person, 'title', lang)}
+              </p>
+              <p class="text-sm text-gray-500 dark:text-gray-400 mb-4 leading-relaxed">
+                {pickLocalized(person, 'summary', lang)}
+              </p>
+              <div class="flex flex-wrap gap-2">
+                {person.channels.map((ch) => (
+                  <a
+                    href={ch.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class={`inline-flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-full border transition-all hover:shadow-sm ${
+                      ch.primary
+                        ? 'bg-blue-50 border-blue-300 text-blue-700 font-semibold dark:bg-blue-900/30 dark:border-blue-600 dark:text-blue-300'
+                        : 'bg-gray-50 border-gray-200 text-gray-600 hover:border-gray-300 dark:bg-slate-700 dark:border-slate-600 dark:text-gray-300'
+                    }`}
+                  >
+                    {ch.primary && <span class="inline-block w-1.5 h-1.5 rounded-full bg-blue-500 dark:bg-blue-400" />}
+                    {channelLabel(ch)}
+                  </a>
+                ))}
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    <!-- Institutions Section -->
+    <section class="mb-14">
+      <h2 class="t-h2 text-gray-800 dark:text-white mb-6">{isZh ? '核心机构' : 'Core Institutions'}</h2>
+      <div class="grid gap-5 md:grid-cols-3">
+        {
+          institutions.map((inst) => (
+            <div class="bg-surface rounded-xl p-6 shadow-sm border border-subtle">
+              <h3 class="font-bold text-gray-900 dark:text-white text-lg mb-0.5">
+                {pickLocalized(inst, 'name', lang)}
+              </h3>
+              <p class="text-gray-500 dark:text-gray-400 text-sm mb-3">{inst.abbreviation}</p>
+              <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+                {pickLocalized(inst, 'role', lang)}
+              </p>
+              <div class="flex flex-wrap gap-2">
+                {inst.channels.map((ch) => (
+                  <a
+                    href={ch.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class={`inline-flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-full border transition-all hover:shadow-sm ${
+                      ch.primary
+                        ? 'bg-blue-50 border-blue-300 text-blue-700 font-semibold dark:bg-blue-900/30 dark:border-blue-600 dark:text-blue-300'
+                        : 'bg-gray-50 border-gray-200 text-gray-600 hover:border-gray-300 dark:bg-slate-700 dark:border-slate-600 dark:text-gray-300'
+                    }`}
+                  >
+                    {ch.primary && <span class="inline-block w-1.5 h-1.5 rounded-full bg-blue-500 dark:bg-blue-400" />}
+                    {channelLabel(ch)}
+                  </a>
+                ))}
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    <!-- MDDI Speeches Section -->
+    <section>
+      <div class="flex items-center gap-3 mb-6">
+        <h2 class="t-h2 text-gray-800 dark:text-white">
+          {isZh ? 'MDDI AI 相关演讲稿' : 'MDDI AI Speeches'}
+        </h2>
+        <span class="text-sm text-gray-400">({mddiSpeeches.length})</span>
+      </div>
+
+      <!-- Filters -->
+      <div class="bg-surface rounded-xl p-4 shadow-sm border border-subtle mb-6">
+        <div class="mb-3">
+          <div class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-2">
+            {isZh ? '年份' : 'Year'}
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <button
+              data-speech-filter="year"
+              data-value=""
+              class="speech-filter-btn speech-filter-active px-3 py-1.5 rounded-full text-sm border transition-all cursor-pointer"
+            >
+              {isZh ? '全部' : 'All'}
+            </button>
+            {
+              speechYears.map((year) => {
+                const count = mddiSpeeches.filter((s) => s.date.startsWith(year)).length;
+                return (
+                  <button
+                    data-speech-filter="year"
+                    data-value={year}
+                    class="speech-filter-btn px-3 py-1.5 rounded-full text-sm border transition-all cursor-pointer"
+                  >
+                    {year}
+                    <span class="text-xs opacity-60 ml-1">({count})</span>
+                  </button>
+                );
+              })
+            }
+          </div>
+        </div>
+
+        <div class="mb-2">
+          <div class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-2">
+            {isZh ? '演讲者' : 'Speaker'}
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <button
+              data-speech-filter="speaker"
+              data-value=""
+              class="speech-filter-btn speech-filter-active px-3 py-1.5 rounded-full text-sm border transition-all cursor-pointer"
+            >
+              {isZh ? '全部' : 'All'}
+            </button>
+            {
+              speechSpeakers.map((speaker) => {
+                const count = mddiSpeeches.filter((s) => s.speaker === speaker).length;
+                return (
+                  <button
+                    data-speech-filter="speaker"
+                    data-value={speaker}
+                    class="speech-filter-btn px-3 py-1.5 rounded-full text-sm border transition-all cursor-pointer"
+                  >
+                    {speaker}
+                    <span class="text-xs opacity-60 ml-1">({count})</span>
+                  </button>
+                );
+              })
+            }
+          </div>
+        </div>
+
+        <div class="flex items-center justify-between mt-3 pt-3 border-t border-subtle">
+          <div id="speech-result-count" class="text-sm text-gray-500"></div>
+          <button
+            id="speech-clear-btn"
+            class="hidden text-sm text-red-500 hover:text-red-700 border border-red-200 hover:border-red-400 px-3 py-1.5 rounded-lg transition-all"
+          >
+            {isZh ? '清除筛选' : 'Clear filters'}
+          </button>
+        </div>
+      </div>
+
+      <!-- Speech List -->
+      <div
+        id="speech-list"
+        class="bg-surface rounded-xl shadow-sm border border-subtle divide-y divide-gray-100 dark:divide-slate-700"
+      >
+        {
+          mddiSpeeches.map((speech) => (
+            <div
+              class="speech-row px-5 py-4 hover:bg-gray-50 dark:hover:bg-slate-700/50 transition-colors"
+              data-year={speech.date.slice(0, 4)}
+              data-speaker={speech.speaker}
+            >
+              <div class="flex items-start gap-4">
+                <div class="shrink-0 text-xs text-gray-400 dark:text-gray-500 font-mono mt-0.5 w-24">{speech.date}</div>
+                <div class="flex-1 min-w-0">
+                  <a
+                    href={localizedHref(`/speeches/${speechId(speech)}/`, lang)}
+                    class="text-sm font-medium text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors leading-snug block mb-1"
+                  >
+                    {pickLocalized(speech, 'title', lang)}
+                  </a>
+                  {isZh && (
+                    <div class="text-xs text-gray-400 dark:text-gray-500 mb-1.5 leading-snug">{speech.title}</div>
+                  )}
+                  <div class="flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400">
+                    {speech.speaker && (
+                      <span class="font-medium text-gray-700 dark:text-gray-300">{speech.speaker}</span>
+                    )}
+                    {speech.speaker && speech.speakerTitle && <span>&middot;</span>}
+                    {speech.speakerTitle && <span>{pickLocalized(speech, 'speakerTitle', lang)}</span>}
+                    {pickLocalized(speech, 'event', lang) && (
+                      <>
+                        <span>&middot;</span>
+                        <span class="italic truncate">{pickLocalized(speech, 'event', lang)}</span>
+                      </>
+                    )}
+                  </div>
+                </div>
+                <a
+                  href={speech.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title={isZh ? 'MDDI 官网原文' : 'Source on mddi.gov.sg'}
+                  class="shrink-0 text-gray-300 dark:text-gray-600 hover:text-blue-500 dark:hover:text-blue-400 transition-colors mt-0.5"
+                >
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                    />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+
+      <!-- Empty state -->
+      <div id="speech-empty" class="hidden text-center py-16">
+        <p class="text-gray-400 text-lg">
+          {isZh ? '没有符合筛选条件的演讲稿' : 'No speeches match the current filters.'}
+        </p>
+        <button id="speech-clear-all-btn" class="mt-3 text-blue-600 hover:text-blue-800 text-sm underline">
+          {isZh ? '清除所有筛选' : 'Clear all filters'}
+        </button>
+      </div>
+    </section>
+
+    <!-- YouTube Videos Section -->
+    <section class="mt-14">
+      <div class="flex items-center gap-3 mb-6">
+        <h2 class="t-h2 text-gray-800 dark:text-white">
+          {isZh ? 'YouTube AI 视频' : 'YouTube AI Videos'}
+        </h2>
+        <span class="text-sm text-gray-400">({videos.length})</span>
+      </div>
+
+      <!-- Video Filters -->
+      <div class="bg-surface rounded-xl p-4 shadow-sm border border-subtle mb-6">
+        <div class="mb-3">
+          <div class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-2">
+            {isZh ? '主题' : 'Topic'}
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <button
+              data-video-filter="topic"
+              data-value=""
+              class="video-filter-btn video-filter-active px-3 py-1.5 rounded-full text-sm border transition-all cursor-pointer"
+            >
+              {isZh ? '全部' : 'All'}
+            </button>
+            {
+              VIDEO_CATEGORIES.map((cat) => {
+                const count = videos.filter((v) => v.topic === cat.name).length;
+                return (
+                  <button
+                    data-video-filter="topic"
+                    data-value={cat.name}
+                    class="video-filter-btn px-3 py-1.5 rounded-full text-sm border transition-all cursor-pointer"
+                  >
+                    {isZh ? cat.name : cat.nameEn || cat.name}
+                    <span class="text-xs opacity-60 ml-1">({count})</span>
+                  </button>
+                );
+              })
+            }
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <div class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-2">
+            {isZh ? '年份' : 'Year'}
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <button
+              data-video-filter="year"
+              data-value=""
+              class="video-filter-btn video-filter-active px-3 py-1.5 rounded-full text-sm border transition-all cursor-pointer"
+            >
+              {isZh ? '全部' : 'All'}
+            </button>
+            {
+              videoYears.map((year) => {
+                const count = videos.filter((v) => v.date.startsWith(year)).length;
+                return (
+                  <button
+                    data-video-filter="year"
+                    data-value={year}
+                    class="video-filter-btn px-3 py-1.5 rounded-full text-sm border transition-all cursor-pointer"
+                  >
+                    {year}
+                    <span class="text-xs opacity-60 ml-1">({count})</span>
+                  </button>
+                );
+              })
+            }
+          </div>
+        </div>
+
+        <div class="flex items-center justify-between mt-3 pt-3 border-t border-subtle">
+          <div id="video-result-count" class="text-sm text-gray-500"></div>
+          <button
+            id="video-clear-btn"
+            class="hidden text-sm text-red-500 hover:text-red-700 border border-red-200 hover:border-red-400 px-3 py-1.5 rounded-lg transition-all"
+          >
+            {isZh ? '清除筛选' : 'Clear filters'}
+          </button>
+        </div>
+      </div>
+
+      <!-- Video List -->
+      <div
+        id="video-list"
+        class="bg-surface rounded-xl shadow-sm border border-subtle divide-y divide-gray-100 dark:divide-slate-700"
+      >
+        {
+          videosSorted.map((video) => (
+            <div
+              class="video-row px-5 py-4 hover:bg-gray-50 dark:hover:bg-slate-700/50 transition-colors"
+              data-topic={video.topic}
+              data-year={video.date.slice(0, 4)}
+            >
+              <div class="flex items-start gap-4">
+                <div class="shrink-0 text-xs text-gray-400 dark:text-gray-500 font-mono mt-0.5 w-24">{video.date}</div>
+                <div class="flex-1 min-w-0">
+                  <a
+                    href={localizedHref(`/videos/${video.id}/`, lang)}
+                    class="text-sm font-medium text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors leading-snug block mb-1"
+                  >
+                    {pickLocalized(video, 'title', lang)}
+                  </a>
+                  <div class="flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400">
+                    <span class="font-medium text-gray-700 dark:text-gray-300">{video.speaker}</span>
+                    <span>&middot;</span>
+                    <span>{pickLocalized(video, 'speakerTitle', lang)}</span>
+                    <span>&middot;</span>
+                    <span>{video.duration}</span>
+                    <span>&middot;</span>
+                    <span>{video.channel}</span>
+                  </div>
+                </div>
+                <svg
+                  class="w-3.5 h-3.5 text-gray-300 dark:text-gray-600 shrink-0 mt-0.5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                  />
+                </svg>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+
+      <!-- Video empty state -->
+      <div id="video-empty" class="hidden text-center py-16">
+        <p class="text-gray-400 text-lg">
+          {isZh ? '没有符合筛选条件的视频' : 'No videos match the current filters.'}
+        </p>
+        <button id="video-clear-all-btn" class="mt-3 text-blue-600 hover:text-blue-800 text-sm underline">
+          {isZh ? '清除所有筛选' : 'Clear all filters'}
+        </button>
+      </div>
+    </section>
+  </div>
+</Layout>
+
+<style>
+  .speech-filter-btn {
+    background: transparent;
+    border-color: #e5e7eb;
+    color: #4b5563;
+  }
+  :global(.dark) .speech-filter-btn {
+    border-color: #475569;
+    color: #9ca3af;
+  }
+  .speech-filter-btn:hover {
+    border-color: #60a5fa;
+    color: #2563eb;
+  }
+  .speech-filter-active {
+    background: #eff6ff;
+    border-color: #60a5fa;
+    color: #1d4ed8;
+    font-weight: 600;
+  }
+  :global(.dark) .speech-filter-active {
+    background: rgba(59, 130, 246, 0.15);
+    border-color: #3b82f6;
+    color: #93c5fd;
+  }
+  .video-filter-btn {
+    background: transparent;
+    border-color: #e5e7eb;
+    color: #4b5563;
+  }
+  :global(.dark) .video-filter-btn {
+    border-color: #475569;
+    color: #9ca3af;
+  }
+  .video-filter-btn:hover {
+    border-color: #60a5fa;
+    color: #2563eb;
+  }
+  .video-filter-active {
+    background: #eff6ff;
+    border-color: #60a5fa;
+    color: #1d4ed8;
+    font-weight: 600;
+  }
+  :global(.dark) .video-filter-active {
+    background: rgba(59, 130, 246, 0.15);
+    border-color: #3b82f6;
+    color: #93c5fd;
+  }
+</style>
+
+<script define:vars={{ isZh }}>
+  const speechFilters = { year: '', speaker: '' };
+  const showingLabel = isZh ? '显示' : 'Showing';
+  const resultsLabel = isZh ? '条结果' : 'results';
+
+  function initSpeeches() {
+    document.querySelectorAll('.speech-filter-btn').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const dim = btn.dataset.speechFilter;
+        const val = btn.dataset.value;
+        speechFilters[dim] = val;
+        updateSpeechFilterButtons();
+        applySpeechFilters();
+      });
+    });
+
+    const clearBtn = document.getElementById('speech-clear-btn');
+    if (clearBtn) clearBtn.addEventListener('click', clearAllSpeechFilters);
+
+    const clearAllBtn = document.getElementById('speech-clear-all-btn');
+    if (clearAllBtn) clearAllBtn.addEventListener('click', clearAllSpeechFilters);
+  }
+
+  function updateSpeechFilterButtons() {
+    document.querySelectorAll('.speech-filter-btn').forEach((btn) => {
+      const dim = btn.dataset.speechFilter;
+      const val = btn.dataset.value;
+      btn.classList.toggle('speech-filter-active', speechFilters[dim] === val);
+    });
+  }
+
+  function applySpeechFilters() {
+    const hasFilter = Object.values(speechFilters).some((v) => v !== '');
+    let visibleCount = 0;
+
+    document.querySelectorAll('.speech-row').forEach((row) => {
+      const el = row;
+      const matchYear = !speechFilters.year || el.dataset.year === speechFilters.year;
+      const matchSpeaker = !speechFilters.speaker || el.dataset.speaker === speechFilters.speaker;
+      const visible = matchYear && matchSpeaker;
+      el.style.display = visible ? '' : 'none';
+      if (visible) visibleCount++;
+    });
+
+    const countEl = document.getElementById('speech-result-count');
+    const clearBtn = document.getElementById('speech-clear-btn');
+    const emptyState = document.getElementById('speech-empty');
+    const speechList = document.getElementById('speech-list');
+
+    if (countEl) countEl.textContent = hasFilter ? `${showingLabel} ${visibleCount} ${resultsLabel}` : '';
+    if (clearBtn) clearBtn.classList.toggle('hidden', !hasFilter);
+    if (emptyState && speechList) {
+      emptyState.classList.toggle('hidden', visibleCount > 0);
+      speechList.classList.toggle('hidden', visibleCount === 0);
+    }
+  }
+
+  function clearAllSpeechFilters() {
+    Object.keys(speechFilters).forEach((k) => (speechFilters[k] = ''));
+    updateSpeechFilterButtons();
+    applySpeechFilters();
+  }
+
+  // Video filters
+  const videoFilters = { topic: '', year: '' };
+
+  function initVideos() {
+    document.querySelectorAll('.video-filter-btn').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const dim = btn.dataset.videoFilter;
+        const val = btn.dataset.value;
+        videoFilters[dim] = val;
+        updateVideoFilterButtons();
+        applyVideoFilters();
+      });
+    });
+
+    const clearBtn = document.getElementById('video-clear-btn');
+    if (clearBtn) clearBtn.addEventListener('click', clearAllVideoFilters);
+
+    const clearAllBtn = document.getElementById('video-clear-all-btn');
+    if (clearAllBtn) clearAllBtn.addEventListener('click', clearAllVideoFilters);
+  }
+
+  function updateVideoFilterButtons() {
+    document.querySelectorAll('.video-filter-btn').forEach((btn) => {
+      const dim = btn.dataset.videoFilter;
+      const val = btn.dataset.value;
+      btn.classList.toggle('video-filter-active', videoFilters[dim] === val);
+    });
+  }
+
+  function applyVideoFilters() {
+    const hasFilter = Object.values(videoFilters).some((v) => v !== '');
+    let visibleCount = 0;
+
+    document.querySelectorAll('.video-row').forEach((row) => {
+      const el = row;
+      const matchTopic = !videoFilters.topic || el.dataset.topic === videoFilters.topic;
+      const matchYear = !videoFilters.year || el.dataset.year === videoFilters.year;
+      const visible = matchTopic && matchYear;
+      el.style.display = visible ? '' : 'none';
+      if (visible) visibleCount++;
+    });
+
+    const countEl = document.getElementById('video-result-count');
+    const clearBtn = document.getElementById('video-clear-btn');
+    const emptyState = document.getElementById('video-empty');
+    const videoList = document.getElementById('video-list');
+
+    if (countEl) countEl.textContent = hasFilter ? `${showingLabel} ${visibleCount} ${resultsLabel}` : '';
+    if (clearBtn) clearBtn.classList.toggle('hidden', !hasFilter);
+    if (emptyState && videoList) {
+      emptyState.classList.toggle('hidden', visibleCount > 0);
+      videoList.classList.toggle('hidden', visibleCount === 0);
+    }
+  }
+
+  function clearAllVideoFilters() {
+    Object.keys(videoFilters).forEach((k) => (videoFilters[k] = ''));
+    updateVideoFilterButtons();
+    applyVideoFilters();
+  }
+
+  function initAll() {
+    initSpeeches();
+    initVideos();
+  }
+
+  document.addEventListener('DOMContentLoaded', initAll);
+  document.addEventListener('astro:page-load', initAll);
+</script>

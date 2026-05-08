@@ -22,16 +22,22 @@ const totalPolicies = categories.reduce((sum, cat) => sum + cat.policies.length,
 
     <div class="grid gap-3 sm:grid-cols-3 mb-12">
       <div class="bg-surface rounded-lg border border-subtle p-4">
-        <p class="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-1">Profiles</p>
+        <p class="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-1">
+          {t(lang, 'policiesStatProfiles')}
+        </p>
         <p class="text-2xl font-bold text-primary">{totalPolicies}</p>
       </div>
       <div class="bg-surface rounded-lg border border-subtle p-4">
-        <p class="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-1">Categories</p>
+        <p class="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-1">
+          {t(lang, 'policiesStatCategories')}
+        </p>
         <p class="text-2xl font-bold text-primary">{categories.length}</p>
       </div>
       <div class="bg-surface rounded-lg border border-subtle p-4">
-        <p class="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-1">Format</p>
-        <p class="text-2xl font-bold text-primary">Archive</p>
+        <p class="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-1">
+          {t(lang, 'policiesStatFormat')}
+        </p>
+        <p class="text-2xl font-bold text-primary">{t(lang, 'policiesStatFormatValue')}</p>
       </div>
     </div>
 

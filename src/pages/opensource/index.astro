@@ -14,6 +14,7 @@ import {
   dataDisclaimer,
   dataDisclaimerEn,
 } from '~/data/opensource';
+import { t } from '~/i18n';
 
 const lang = 'en' as const;
 const compare = modelComparisonEn || modelComparison;
@@ -25,11 +26,10 @@ const aiVerifyFeatures = aiVerify.featuresEn && aiVerify.featuresEn.length ? aiV
 
 <Layout
   metadata={{
-    title: 'Official Open Source & Research',
-    description:
-      'Open-source projects and research output from the Singapore government and official agencies — SEA-LION, AI Verify, and more.',
+    title: t(lang, 'opensourcePageTitle'),
+    description: t(lang, 'opensourcePageDesc'),
   }}
-  breadcrumbs={[{ label: 'Official Open Source' }]}
+  breadcrumbs={[{ label: t(lang, 'navOpensource') }]}
   lang={lang}
 >
   <section class="px-4 py-16 sm:px-6 mx-auto lg:px-8 max-w-6xl">

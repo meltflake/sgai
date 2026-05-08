@@ -3,17 +3,17 @@
 
 import Layout from '~/layouts/PageLayout.astro';
 import TimelinePage from '~/components/timeline/TimelinePage.astro';
+import { t } from '~/i18n';
 
 const lang = 'en' as const;
 ---
 
 <Layout
   metadata={{
-    title: 'Timeline',
-    description:
-      "Singapore's AI development timeline: from the 2014 Smart Nation Initiative through NAIS 2.0 to the 2027 International AI Olympiad — key milestones in chronological order.",
+    title: t(lang, 'timelinePageTitle'),
+    description: t(lang, 'timelinePageDesc'),
   }}
-  breadcrumbs={[{ label: 'Timeline' }]}
+  breadcrumbs={[{ label: t(lang, 'timelinePageTitle') }]}
   lang={lang}
 >
   <TimelinePage lang={lang} />

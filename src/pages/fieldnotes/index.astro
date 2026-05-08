@@ -2,17 +2,17 @@
 import Layout from '~/layouts/PageLayout.astro';
 import Headline from '~/components/ui/Headline.astro';
 import { fieldNotes } from '~/data/fieldnotes';
+import { t } from '~/i18n';
 
 const lang = 'en' as const;
 ---
 
 <Layout
   metadata={{
-    title: 'Field Notes',
-    description:
-      'Frontline observations and field experience from doing AI work in Singapore — clustered by topic to help you avoid common pitfalls.',
+    title: t(lang, 'fieldnotesPageTitle'),
+    description: t(lang, 'fieldnotesPageDesc'),
   }}
-  breadcrumbs={[{ label: 'Field Notes' }]}
+  breadcrumbs={[{ label: t(lang, 'navFieldnotes') }]}
   lang={lang}
 >
   <section class="px-4 py-16 sm:px-6 mx-auto lg:px-8 max-w-5xl">

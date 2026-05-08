@@ -3,14 +3,13 @@ import Layout from '~/layouts/PageLayout.astro';
 import { people, institutions, mddiSpeeches } from '~/data/voices';
 import { speechId } from '~/data/speech-transcripts';
 import { videos, VIDEO_CATEGORIES } from '~/data/videos';
-import { pickLocalized, channelLabel as resolveChannelLabel } from '~/i18n';
+import { pickLocalized, channelLabel as resolveChannelLabel, t } from '~/i18n';
 
 const lang = 'en' as const;
 
 const meta = {
-  title: 'AI Influence Map — Key People and Institutions in Singapore AI',
-  description:
-    "Singapore's key AI people and core institutions, their official communication channels, and the full archive of MDDI AI-related speeches.",
+  title: t(lang, 'voicesPageTitle'),
+  description: t(lang, 'voicesPageDesc'),
 };
 
 // Category label mapping
@@ -53,7 +52,7 @@ const videoYears = [...new Set(videos.map((v) => v.date.slice(0, 4)))].sort().re
 const videosSorted = [...videos].sort((a, b) => b.date.localeCompare(a.date));
 ---
 
-<Layout metadata={meta} breadcrumbs={[{ label: 'AI Influence Map' }]} lang={lang}>
+<Layout metadata={meta} breadcrumbs={[{ label: t(lang, 'navVoices') }]} lang={lang}>
   <div class="max-w-7xl mx-auto px-4 py-10">
     <!-- Header -->
     <div class="mb-10">

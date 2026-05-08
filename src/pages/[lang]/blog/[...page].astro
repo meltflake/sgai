@@ -1,0 +1,60 @@
+---
+import type { GetStaticPaths } from 'astro';
+import type { Page } from 'astro';
+import type { Post } from '~/types';
+
+import Layout from '~/layouts/PageLayout.astro';
+import BlogList from '~/components/blog/List.astro';
+import Headline from '~/components/blog/Headline.astro';
+import Pagination from '~/components/blog/Pagination.astro';
+
+import { blogListRobots, blogPostsPerPage, fetchPosts } from '~/utils/blog';
+import { BLOG_BASE } from '~/utils/permalinks';
+import { NON_DEFAULT_ROUTE_LOCALES, t, type Lang } from '~/i18n';
+
+export const prerender = true;
+
+export const getStaticPaths = (async ({ paginate }) => {
+  const all = await fetchPosts();
+  return NON_DEFAULT_ROUTE_LOCALES.flatMap((lang) => {
+    const filtered = all.filter((p) => (p.lang ?? 'zh') === lang);
+    return paginate(filtered, {
+      params: { lang, blog: BLOG_BASE || undefined },
+      pageSize: blogPostsPerPage,
+    });
+  });
+}) satisfies GetStaticPaths;
+
+const { page } = Astro.props as { page: Page<Post> };
+const lang = Astro.params.lang as Lang;
+const currentPage = page.currentPage ?? 1;
+const isZh = lang === 'zh';
+
+const metadata = {
+  title: `${t(lang, 'navAnalysis')}${currentPage > 1 ? ` — ${isZh ? '第' : 'Page'} ${currentPage} ${isZh ? '页' : ''}` : ''}`,
+  description: isZh
+    ? '新加坡 AI 观察的栏目文章——新加坡 AI 生态的研究、记录与评论。'
+    : "Singapore AI Observatory opinion — research and commentary on Singapore's AI ecosystem.",
+  robots: {
+    index: blogListRobots?.index && currentPage === 1,
+    follow: blogListRobots?.follow,
+  },
+  openGraph: {
+    type: 'blog',
+  },
+};
+
+const breadcrumbs = [{ label: t(lang, 'navAnalysis') }];
+---
+
+<Layout metadata={metadata} breadcrumbs={breadcrumbs} lang={lang}>
+  <section class="px-6 sm:px-6 py-12 sm:py-16 lg:py-20 mx-auto max-w-4xl">
+    <Headline
+      subtitle={isZh ? '新加坡 AI 生态的研究、记录与评论' : "Research and commentary on Singapore's AI ecosystem"}
+    >
+      {t(lang, 'navAnalysis')}
+    </Headline>
+    <BlogList posts={page.data} />
+    <Pagination prevUrl={page.url.prev} nextUrl={page.url.next} />
+  </section>
+</Layout>

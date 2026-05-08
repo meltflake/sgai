@@ -1,0 +1,79 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import Headline from '~/components/ui/Headline.astro';
+import { sections } from '~/data/references';
+import { NON_DEFAULT_ROUTE_LOCALES, t, type Lang } from '~/i18n';
+
+export function getStaticPaths() {
+  return NON_DEFAULT_ROUTE_LOCALES.map((lang) => ({ params: { lang } }));
+}
+
+const lang = Astro.params.lang as Lang;
+const isZh = lang === 'zh';
+---
+
+<Layout
+  metadata={{
+    title: t(lang, 'referencesPageTitle'),
+    description: t(lang, 'referencesPageDesc'),
+  }}
+  breadcrumbs={[{ label: t(lang, 'navReferences') }]}
+  lang={lang}
+>
+  <section class="px-4 py-16 sm:px-6 mx-auto lg:px-8 max-w-4xl">
+    <Headline
+      title={`📚 ${t(lang, 'referencesPageTitle')}`}
+      subtitle={isZh
+        ? '新加坡 AI 政策相关的官方文件、研究报告、新闻报道和分析文章。'
+        : "Official documents, research reports, news coverage, and analytical reading on Singapore's AI policy."}
+    />
+
+    <div class="space-y-8">
+      {
+        sections.map((section) => (
+          <div>
+            <h2 class="t-h3 mb-3">
+              {section.icon} {isZh ? section.title : section.titleEn || section.title}
+            </h2>
+            <ul class="space-y-2">
+              {section.links.map((link) => (
+                <li class="flex items-start gap-2">
+                  <span class="text-blue-500 mt-1">&bull;</span>
+                  <div>
+                    <a
+                      href={link.url}
+                      target="_blank"
+                      rel="noopener"
+                      class="text-blue-600 dark:text-blue-400 hover:underline"
+                    >
+                      {isZh ? link.text : link.textEn || link.text}
+                    </a>
+                    {link.translation && (
+                      <a
+                        href={link.translation}
+                        class="text-sm text-green-600 dark:text-green-400 hover:underline ml-2"
+                      >
+                        {isZh ? '[中文翻译]' : '[Chinese translation]'}
+                      </a>
+                    )}
+                    {(isZh ? link.note : link.noteEn || link.note) && (
+                      <span class="text-sm text-muted ml-2">— {isZh ? link.note : link.noteEn || link.note}</span>
+                    )}
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
+    </div>
+
+    <p class="mt-8 text-sm text-muted">
+      {
+        isZh
+          ? '共 30+ 条参考资料，持续更新中。欢迎提交新资源。'
+          : '30+ references; the list grows over time. Submit additions on GitHub.'
+      }
+    </p>
+  </section>
+</Layout>

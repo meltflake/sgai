@@ -1,0 +1,22 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import AboutPage from '~/components/about/AboutPage.astro';
+import { NON_DEFAULT_ROUTE_LOCALES, t, type Lang } from '~/i18n';
+
+export function getStaticPaths() {
+  return NON_DEFAULT_ROUTE_LOCALES.map((lang) => ({ params: { lang } }));
+}
+
+const lang = Astro.params.lang as Lang;
+---
+
+<Layout
+  metadata={{
+    title: t(lang, 'aboutPageTitle'),
+    description: t(lang, 'aboutPageDesc'),
+  }}
+  breadcrumbs={[{ label: t(lang, 'aboutPageTitle') }]}
+  lang={lang}
+>
+  <AboutPage lang={lang} />
+</Layout>

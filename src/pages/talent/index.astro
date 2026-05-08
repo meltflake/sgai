@@ -4,6 +4,7 @@ import { Icon } from 'astro-icon/components';
 import Headline from '~/components/ui/Headline.astro';
 import Layout from '~/layouts/PageLayout.astro';
 import { programmes, talentDataDate, type TalentStatusTone } from '~/data/talent';
+import { t } from '~/i18n';
 
 const lang = 'en' as const;
 
@@ -17,11 +18,10 @@ const statusClasses: Record<TalentStatusTone, string> = {
 
 <Layout
   metadata={{
-    title: 'Talent Pipeline',
-    description:
-      "Singapore's AI talent pipeline — university programmes, government-led training schemes, and talent attraction policies in one view.",
+    title: t(lang, 'talentPageTitle'),
+    description: t(lang, 'talentPageDesc'),
   }}
-  breadcrumbs={[{ label: 'Talent Pipeline' }]}
+  breadcrumbs={[{ label: t(lang, 'navTalent') }]}
   lang={lang}
 >
   <section class="px-4 py-14 sm:px-6 mx-auto lg:px-8 max-w-6xl">

@@ -1,0 +1,326 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import Headline from '~/components/ui/Headline.astro';
+import {
+  seaLionStats,
+  seaLionVersions,
+  modelComparison,
+  modelComparisonEn,
+  seaGuardStats,
+  seaGuardModels,
+  aiVerify,
+  openSourceProjects,
+  papers,
+  dataDisclaimer,
+  dataDisclaimerEn,
+} from '~/data/opensource';
+import { NON_DEFAULT_ROUTE_LOCALES, t, pickLocalized, localizedHref, type Lang } from '~/i18n';
+
+export function getStaticPaths() {
+  return NON_DEFAULT_ROUTE_LOCALES.map((lang) => ({ params: { lang } }));
+}
+
+const lang = Astro.params.lang as Lang;
+const isZh = lang === 'zh';
+const compare = isZh ? modelComparison : modelComparisonEn || modelComparison;
+const disclaimer = isZh ? dataDisclaimer : dataDisclaimerEn || dataDisclaimer;
+const guardNote = isZh ? seaGuardStats.note : seaGuardStats.noteEn || seaGuardStats.note;
+const aiVerifyDescription = isZh ? aiVerify.description : aiVerify.descriptionEn || aiVerify.description;
+const aiVerifyFeatures = isZh || !aiVerify.featuresEn?.length ? aiVerify.features : aiVerify.featuresEn;
+---
+
+<Layout
+  metadata={{
+    title: t(lang, 'opensourcePageTitle'),
+    description: t(lang, 'opensourcePageDesc'),
+  }}
+  breadcrumbs={[{ label: t(lang, 'navOpensource') }]}
+  lang={lang}
+>
+  <section class="px-4 py-16 sm:px-6 mx-auto lg:px-8 max-w-6xl">
+    <Headline
+      title={`🔬 ${t(lang, 'opensourcePageTitle')}`}
+      subtitle={isZh
+        ? 'AI Singapore 及新加坡政府资助的开源项目与研究成果'
+        : 'Open-source projects and research backed by AI Singapore and the Singapore government.'}
+    />
+
+    <div
+      class="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-4 mb-12 text-sm text-blue-800 dark:text-blue-200"
+    >
+      {
+        isZh ? (
+          <Fragment>
+            ℹ️ 本页收录 AI Singapore 及新加坡政府资助的开源项目与研究成果。新加坡产学研社区的更多开源项目请查看
+            <a href={localizedHref('/community-opensource/', lang)} class="underline font-medium">
+              产学研开源生态
+            </a>
+            页面。
+          </Fragment>
+        ) : (
+          <Fragment>
+            ℹ️ This page covers AI Singapore and government-backed open-source projects and research. For broader
+            academic and corporate contributions, see the{' '}
+            <a href={localizedHref('/community-opensource/', lang)} class="underline font-medium">
+              Community Open Source
+            </a>{' '}
+            page.
+          </Fragment>
+        )
+      }
+    </div>
+
+    <!-- SEA-LION model ecosystem -->
+    <div class="mb-16">
+      <h2 class="t-h2 mb-6">{isZh ? '🦁 SEA-LION 模型生态' : '🦁 SEA-LION Model Ecosystem'}</h2>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+        <div class="bg-surface rounded-lg shadow-md border border-subtle p-4 text-center">
+          <div class="t-stat text-blue-600 dark:text-blue-400">{seaLionStats.totalModels}</div>
+          <div class="text-xs text-muted">{isZh ? '模型总数' : 'Total models'}</div>
+        </div>
+        <div class="bg-surface rounded-lg shadow-md border border-subtle p-4 text-center">
+          <div class="t-stat text-blue-600 dark:text-blue-400">
+            {seaLionStats.totalDownloads.toLocaleString()}
+          </div>
+          <div class="text-xs text-muted">{isZh ? '总下载量' : 'Total downloads'}</div>
+        </div>
+        <div class="bg-surface rounded-lg shadow-md border border-subtle p-4 text-center">
+          <div class="t-stat text-blue-600 dark:text-blue-400">{seaLionStats.totalLikes}</div>
+          <div class="text-xs text-muted">{isZh ? '总点赞数' : 'Total likes'}</div>
+        </div>
+        <div class="bg-surface rounded-lg shadow-md border border-subtle p-4 text-center">
+          <div class="t-stat text-blue-600 dark:text-blue-400">
+            {seaLionStats.topModelDownloads.toLocaleString()}
+          </div>
+          <div class="text-xs text-muted">
+            {isZh ? '最热门模型下载' : 'Top model downloads'}
+          </div>
+        </div>
+      </div>
+
+      <div class="overflow-x-auto mb-6">
+        <table class="w-full text-sm bg-surface rounded-lg shadow-md border border-subtle">
+          <thead>
+            <tr class="border-b border-subtle bg-slate-50 dark:bg-slate-800">
+              <th class="px-4 py-3 text-left font-semibold">{isZh ? '版本' : 'Version'}</th>
+              <th class="px-4 py-3 text-right font-semibold">{isZh ? '模型数' : 'Models'}</th>
+              <th class="px-4 py-3 text-right font-semibold">{isZh ? '下载量' : 'Downloads'}</th>
+              <th class="px-4 py-3 text-right font-semibold">{isZh ? '点赞' : 'Likes'}</th>
+              <th class="px-4 py-3 text-left font-semibold">{isZh ? '时期' : 'Period'}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              seaLionVersions.map((v) => (
+                <tr class="border-b border-slate-100 dark:border-slate-800">
+                  <td class="px-4 py-2 font-medium">{v.version}</td>
+                  <td class="px-4 py-2 text-right">{v.models}</td>
+                  <td class="px-4 py-2 text-right">{v.downloads.toLocaleString()}</td>
+                  <td class="px-4 py-2 text-right">{v.likes}</td>
+                  <td class="px-4 py-2 text-muted">{v.period}</td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+
+      <div
+        class="bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-lg p-4 mb-4 text-sm text-amber-800 dark:text-amber-200"
+      >
+        💡 {compare}
+      </div>
+
+      <a
+        href={seaLionStats.huggingfaceUrl}
+        target="_blank"
+        rel="noopener"
+        class="text-sm text-blue-600 dark:text-blue-400 hover:underline"
+      >
+        {isZh ? '🤗 在 HuggingFace 上查看全部模型 →' : '🤗 View all models on HuggingFace →'}
+      </a>
+    </div>
+
+    <!-- SEA-Guard safety models -->
+    <div class="mb-16">
+      <h2 class="t-h2 mb-6">{isZh ? '🛡️ SEA-Guard 安全模型' : '🛡️ SEA-Guard Safety Models'}</h2>
+
+      <div class="bg-surface rounded-lg shadow-md border border-subtle p-6">
+        <div class="flex flex-wrap gap-6 mb-4">
+          <div>
+            <span class="t-stat text-blue-600 dark:text-blue-400">{seaGuardStats.totalModels}</span>
+            <span class="text-sm text-muted ml-1">{isZh ? '个模型' : 'models'}</span>
+          </div>
+          <div>
+            <span class="t-stat text-blue-600 dark:text-blue-400">{seaGuardStats.totalDownloads}</span>
+            <span class="text-sm text-muted ml-1">{isZh ? '次下载' : 'downloads'}</span>
+          </div>
+        </div>
+        <p class="text-sm text-muted mb-4">{guardNote}</p>
+        <div class="space-y-2">
+          {
+            seaGuardModels.map((m) => (
+              <div class="flex items-center justify-between text-sm bg-slate-50 dark:bg-slate-800 rounded px-3 py-2">
+                <span class="font-medium">{m.name}</span>
+                <span class="text-xs text-muted">{m.type}</span>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+
+    <!-- AI Verify governance framework -->
+    <div class="mb-16">
+      <h2 class="t-h2 mb-6">
+        {isZh ? '✅ AI Verify 治理框架' : '✅ AI Verify Governance Framework'}
+      </h2>
+
+      <div class="bg-surface rounded-lg shadow-md border border-subtle p-6">
+        <p class="text-lg font-semibold mb-1">{aiVerify.name}</p>
+        <p class="text-sm text-muted mb-4">
+          {aiVerifyDescription} · {
+            isZh ? `开源于 ${aiVerify.openSourceDate}` : `Open-sourced ${aiVerify.openSourceDate}`
+          }
+        </p>
+
+        <ul class="text-sm space-y-2 mb-6">
+          {
+            aiVerifyFeatures.map((f) => (
+              <li class="flex items-start gap-2">
+                <span class="text-green-600 dark:text-green-400 mt-0.5">✓</span>
+                <span>{f}</span>
+              </li>
+            ))
+          }
+        </ul>
+
+        <div class="mb-4">
+          <p class="text-xs font-semibold text-muted mb-2">
+            {isZh ? '合作伙伴' : 'Partners'}
+          </p>
+          <div class="flex flex-wrap gap-2">
+            {
+              aiVerify.partners.map((p) => (
+                <span class="text-xs bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded">{p}</span>
+              ))
+            }
+          </div>
+        </div>
+
+        <a
+          href={aiVerify.githubUrl}
+          target="_blank"
+          rel="noopener"
+          class="text-sm text-blue-600 dark:text-blue-400 hover:underline"
+        >
+          GitHub →
+        </a>
+      </div>
+    </div>
+
+    <!-- Official project index -->
+    <div class="mb-16">
+      <h2 class="t-h2 mb-2">{isZh ? '📦 官方项目索引' : '📦 Official Project Index'}</h2>
+      <p class="text-sm text-muted mb-6">
+        {
+          isZh
+            ? '每张卡片都是一个可持续补充的项目档案。'
+            : 'Each card opens a project profile that can keep growing over time.'
+        }
+      </p>
+
+      <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        {
+          openSourceProjects.map((proj) => (
+            <a
+              href={localizedHref(`/opensource/${proj.id}/`, lang)}
+              class="group flex h-full flex-col bg-surface rounded-lg shadow-md border border-subtle p-5 hover:border-blue-300 hover:shadow-lg transition-all"
+            >
+              <div class="flex items-start justify-between gap-3 mb-3">
+                <div>
+                  <p class="text-xs text-blue-600 dark:text-blue-400 mb-1">{pickLocalized(proj, 'owner', lang)}</p>
+                  <h3 class="font-bold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                    {pickLocalized(proj, 'name', lang)}
+                  </h3>
+                </div>
+                <span class="text-xs bg-slate-100 dark:bg-slate-800 px-2 py-0.5 rounded whitespace-nowrap">
+                  {pickLocalized(proj, 'category', lang)}
+                </span>
+              </div>
+              <p class="text-sm text-muted mb-4 leading-relaxed">{pickLocalized(proj, 'description', lang)}</p>
+              <div class="flex flex-wrap items-center gap-2 text-xs text-muted">
+                <span class="bg-slate-50 dark:bg-slate-800 px-2 py-0.5 rounded">{proj.language}</span>
+                <span class="bg-slate-50 dark:bg-slate-800 px-2 py-0.5 rounded">
+                  {pickLocalized(proj, 'status', lang)}
+                </span>
+                {proj.stars !== null && (
+                  <span class="bg-slate-50 dark:bg-slate-800 px-2 py-0.5 rounded">
+                    GitHub {proj.stars.toLocaleString()} Stars
+                  </span>
+                )}
+              </div>
+              <div class="mt-auto pt-4 text-sm text-blue-600 dark:text-blue-400 font-medium">
+                {isZh ? '查看档案' : 'View profile'}{' '}
+                <span aria-hidden="true" class="inline-block group-hover:translate-x-0.5 transition-transform">
+                  →
+                </span>
+              </div>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+
+    <!-- Research papers -->
+    <div class="mb-16">
+      <h2 class="t-h2 mb-6">{isZh ? '📄 研究论文' : '📄 Research Papers'}</h2>
+
+      <div class="space-y-4">
+        {
+          papers.map((paper) => (
+            <div class="bg-surface rounded-lg shadow-md border border-subtle p-5">
+              <div class="flex items-start justify-between">
+                <div>
+                  {isZh ? (
+                    <Fragment>
+                      <h3 class="font-bold text-sm mb-1">{paper.titleZh}</h3>
+                      <p class="text-xs text-muted italic mb-2">{paper.title}</p>
+                    </Fragment>
+                  ) : (
+                    <h3 class="font-bold text-sm mb-1">{paper.title}</h3>
+                  )}
+                  <div class="flex items-center gap-3">
+                    <span class="text-xs bg-slate-100 dark:bg-slate-800 px-2 py-0.5 rounded">{paper.year}</span>
+                    <a
+                      href={paper.url}
+                      target="_blank"
+                      rel="noopener"
+                      class="text-xs text-blue-600 dark:text-blue-400 hover:underline"
+                    >
+                      arXiv: {paper.arxivId} →
+                    </a>
+                    {paper.translationUrl && (
+                      <a
+                        href={paper.translationUrl}
+                        target="_blank"
+                        rel="noopener"
+                        class="text-xs text-green-600 dark:text-green-400 hover:underline"
+                      >
+                        {isZh ? '中文翻译 →' : 'Chinese translation →'}
+                      </a>
+                    )}
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+
+    <!-- Data note -->
+    <p class="mt-12 text-sm text-muted text-center">{disclaimer}</p>
+  </section>
+</Layout>

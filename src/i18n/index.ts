@@ -36,6 +36,12 @@ export const ROUTE_DEFAULT_LOCALE: Lang = 'en';
 /** Content default: this locale's value is in bare data fields. */
 export const DEFAULT_LOCALE: Lang = 'zh';
 
+/** Non-default routing locales — used by [lang] dynamic routes' getStaticPaths. */
+export const NON_DEFAULT_ROUTE_LOCALES = LOCALES.filter((l) => l !== ROUTE_DEFAULT_LOCALE);
+
+/** JSON-LD / schema.org inLanguage values per locale. */
+export const IN_LANGUAGES: Record<Lang, string> = { zh: 'zh-CN', en: 'en', ja: 'ja' };
+
 /** Per-locale fallback chain. Looked up in order; the first non-empty
  *  hit wins. Always ends with `DEFAULT_LOCALE` (the bare-field locale).
  *  ja falls back to en before zh: Japanese readers' English literacy is
@@ -321,6 +327,43 @@ export const zh = {
   debatesPageTitle: '国会 AI 焦点',
   blogIndexTitle: '观察',
   aboutPageTitle: '关于本站',
+  aboutPageDesc: '关于新加坡 AI 观察——独立维护的新加坡 AI 战略观察平台。研究方法、利益声明、反馈方式。',
+  evolutionPageTitle: '政策演进分析',
+  evolutionPageDesc: '新加坡 AI 政策演进全景——从 2014 年智慧国家到 2024 年 NAIS 2.0 的战略转型历程。',
+  timelinePageTitle: '发展时间线',
+  timelinePageDesc: '新加坡 AI 发展时间线：从 2014 年智慧国家到 2027 年国际 AI 奥林匹克，关键里程碑按时间排列。',
+  ecosystemPageTitle: '生态地图',
+  ecosystemPageDesc: '新加坡 AI 生态地图——政府机构、研究院所、企业与初创公司的完整版图。',
+  leversPageTitle: '国家 AI 抓手图谱',
+  leversPageDesc:
+    '新加坡国家级 AI-native 转型不能按部门理解，要按"AI 引入路径"理解：基建、治理、人才、应用、政府自用、外交六个抓手，跨部委的完整执行管线。',
+  startupsPageTitle: 'AI 创业生态',
+  startupsPageDesc: '新加坡 AI 创业与相邻生态——650+ 相关样本、融资数据、独角兽、垂直领域与投资人一览。',
+  talentPageTitle: '人才培养',
+  talentPageDesc: '新加坡 AI 人才培养体系——高校项目、政府培训计划、人才引进政策一览。',
+  videosPageTitle: 'AI 视频观点',
+  videosPageDesc: '新加坡政府官员、学者和行业领袖关于 AI 战略、治理、人才和产业的 YouTube 演讲与访谈合集。',
+  voicesPageTitle: 'AI 影响力图谱',
+  voicesPageDesc: '新加坡 AI 领域关键人物与核心机构的官方信息渠道，及 MDDI AI 相关演讲稿全文链接。',
+  opensourcePageTitle: '官方开源与研究',
+  opensourcePageDesc: '新加坡政府与官方机构的 AI 开源项目和研究成果汇总——SEA-LION、AI Verify 等。',
+  communityOsPageTitle: '产学研开源生态',
+  communityOsPageDesc: '新加坡产学研 AI 开源生态——大学、企业实验室、创业公司的开源贡献全景。',
+  benchmarkingPageTitle: '国际对标',
+  benchmarkingPageDesc: '新加坡 AI 战略国际对标——与美国、英国、中国、欧盟等主要经济体的对比分析。',
+  legalAiPageTitle: '新加坡 AI 法律框架',
+  legalAiPageDesc:
+    '新加坡 AI 法律框架——"训练宽松 + 输出严管"双轨：Copyright §244 全球最宽松的 AI 训练例外，配合 OCHA + Elections Bill + Criminal Law Bill + Online Safety Bill 四件套输出严管。',
+  challengesPageTitle: '挑战与约束分析',
+  challengesPageDesc: '新加坡 AI 发展面临的核心挑战——人才竞争、数据限制、算力约束与伦理治理。',
+  fieldnotesPageTitle: '实战经验',
+  fieldnotesPageDesc: '在新加坡从事 AI 工作的一线观察与实战经验分享，按主题聚合，帮你少走弯路。',
+  referencesPageTitle: '参考资料库',
+  referencesPageDesc: '新加坡 AI 参考资源——官方报告、研究论文、数据集、工具与推荐阅读。',
+  policiesStatProfiles: '档案总数',
+  policiesStatCategories: '分类',
+  policiesStatFormat: '形态',
+  policiesStatFormatValue: '档案页',
 
   // Banner: language switch suggestion
   langBannerEn: 'English version available',
@@ -415,6 +458,29 @@ export const zh = {
   updateTypeLongform: '长文',
   updateTypeSite: '站点',
   updateTypeFix: '修正',
+
+  // Detail page sections (shared across debate/speech/video/voice detail pages)
+  fullTextZh: '完整译文（中文）',
+  coreViewpoint: '核心观点',
+  relatedVideos: '关联视频',
+  speaker: '演讲者',
+  videoType: '类型',
+  videoSource: '来源',
+  parliamentSession: '届国会',
+  speechSummaryPoints: '要点',
+  mddiSpeechLabel: 'MDDI 演讲稿',
+  mddiSourceLabel: 'MDDI 官网原文',
+  categoryGovernment: '政府',
+  categoryAcademic: '学术',
+  categoryIndustry: '产业',
+  officialChannels: '官方渠道',
+  oneLinerTitle: '一句话定位',
+  profilePending: '此人物档案待补充。当前页面先根据已有数据自动汇总其国会发言与政策关联。',
+  debateCount: '国会发言',
+  policyCount: '主导政策',
+  videoCount: '视频观点',
+  noDebateRecords: '暂无关联辩论记录。',
+  officialWebsite: '官网',
 
   // Misc
   viewSource: '查看源码',
@@ -530,6 +596,57 @@ export const en: Partial<Record<keyof typeof zh, string>> = {
   debatesPageTitle: 'Parliamentary AI Focus',
   blogIndexTitle: 'Opinion',
   aboutPageTitle: 'About',
+  aboutPageDesc:
+    "About Singapore AI Observatory — an independently-maintained research platform tracking Singapore's AI strategy. Methodology, conflict-of-interest disclosure, feedback channels.",
+  evolutionPageTitle: 'Singapore AI Policy Evolution',
+  evolutionPageDesc:
+    "Singapore's AI policy evolution — the strategic transformation arc from the 2014 Smart Nation Initiative to the 2024 generative AI governance framework.",
+  timelinePageTitle: 'Timeline',
+  timelinePageDesc:
+    "Singapore's AI development timeline: from the 2014 Smart Nation Initiative through NAIS 2.0 to the 2027 International AI Olympiad — key milestones in chronological order.",
+  ecosystemPageTitle: 'Ecosystem Map',
+  ecosystemPageDesc:
+    "Singapore's AI ecosystem map — government agencies, research institutes, corporates, and startups in one view.",
+  leversPageTitle: 'National AI Levers',
+  leversPageDesc:
+    "Singapore's national-scale AI-native transformation cannot be read by ministry — read it by AI-injection path: infrastructure, governance, talent, applications, government self-use, and diplomacy. Six levers spanning multiple ministries form the full execution pipeline.",
+  startupsPageTitle: 'AI Startup Ecosystem',
+  startupsPageDesc:
+    "Singapore's AI startup and adjacent ecosystem — 650+ related samples, funding data, unicorns, verticals, and investors.",
+  talentPageTitle: 'Talent Pipeline',
+  talentPageDesc:
+    "Singapore's AI talent pipeline — university programmes, government-led training schemes, and talent attraction policies in one view.",
+  videosPageTitle: 'AI Video Library',
+  videosPageDesc:
+    'A curated collection of YouTube talks and interviews from Singapore government officials, academics, and industry leaders on AI strategy, governance, talent, and applications.',
+  voicesPageTitle: 'AI Influence Map',
+  voicesPageDesc:
+    "Singapore's key AI people and core institutions, their official communication channels, and the full archive of MDDI AI-related speeches.",
+  opensourcePageTitle: 'Official Open Source & Research',
+  opensourcePageDesc:
+    'Open-source projects and research output from the Singapore government and official agencies — SEA-LION, AI Verify, and more.',
+  communityOsPageTitle: 'Community Open Source',
+  communityOsPageDesc:
+    "Singapore's community AI open-source ecosystem — universities, international corporate labs, and startups contributing to open source.",
+  benchmarkingPageTitle: 'International Benchmarks',
+  benchmarkingPageDesc:
+    "International benchmarks for Singapore's AI strategy — comparison with the United States, the United Kingdom, China, the EU and other major economies.",
+  legalAiPageTitle: 'AI Legal Framework',
+  legalAiPageDesc:
+    "Singapore's AI legal framework — 'permissive on training, strict on outputs' dual track: Copyright §244 (one of the world's most permissive AI training exceptions) paired with the OCHA + Elections Bill + Criminal Law Bill + Online Safety Bill quartet on outputs.",
+  challengesPageTitle: 'Challenges',
+  challengesPageDesc:
+    "Core challenges in Singapore's AI development — talent competition, data limitations, compute constraints, and ethics-governance tradeoffs.",
+  fieldnotesPageTitle: 'Field Notes',
+  fieldnotesPageDesc:
+    'Frontline observations and field experience from doing AI work in Singapore — clustered by topic to help you avoid common pitfalls.',
+  referencesPageTitle: 'References',
+  referencesPageDesc:
+    "Singapore AI references — official documents, research reports, news coverage, and analytical reading on Singapore's AI policy.",
+  policiesStatProfiles: 'Profiles',
+  policiesStatCategories: 'Categories',
+  policiesStatFormat: 'Format',
+  policiesStatFormatValue: 'Archive',
 
   langBannerEn: 'English version available',
   langBannerSwitch: 'Read in English →',
@@ -620,6 +737,29 @@ export const en: Partial<Record<keyof typeof zh, string>> = {
   updateTypeLongform: 'Longform',
   updateTypeSite: 'Site',
   updateTypeFix: 'Fix',
+
+  fullTextZh: 'Chinese Translation',
+  coreViewpoint: 'Core Viewpoint',
+  relatedVideos: 'Related Videos',
+  speaker: 'Speaker',
+  videoType: 'Type',
+  videoSource: 'Source',
+  parliamentSession: 'Parliament',
+  speechSummaryPoints: 'Key Points',
+  mddiSpeechLabel: 'MDDI Speech',
+  mddiSourceLabel: 'MDDI Original',
+  categoryGovernment: 'Government',
+  categoryAcademic: 'Academic',
+  categoryIndustry: 'Industry',
+  officialChannels: 'Official Channels',
+  oneLinerTitle: 'One-liner',
+  profilePending:
+    'This profile is pending. The page currently aggregates parliamentary speeches and policy links from available data.',
+  debateCount: 'Parliament',
+  policyCount: 'Policies',
+  videoCount: 'Videos',
+  noDebateRecords: 'No related debate records.',
+  officialWebsite: 'Website',
 
   viewSource: 'View source',
   countSuffix: '',
@@ -738,6 +878,52 @@ export const ja: Partial<Record<keyof typeof zh, string>> = {
   debatesPageTitle: '議会 AI フォーカス',
   blogIndexTitle: 'コラム',
   aboutPageTitle: 'このサイトについて',
+  aboutPageDesc:
+    'シンガポール AI 観測について——独立運営のシンガポール AI 戦略観測プラットフォーム。研究方法、利益声明、フィードバック方法。',
+  evolutionPageTitle: '政策変遷分析',
+  evolutionPageDesc:
+    'シンガポール AI 政策変遷の全体像——2014年スマートネイションから2024年 NAIS 2.0 への戦略転換の軌跡。',
+  timelinePageTitle: '発展タイムライン',
+  timelinePageDesc:
+    'シンガポール AI 発展タイムライン：2014年スマートネイションから2027年国際 AI オリンピックまで、主要マイルストーンを時系列で整理。',
+  ecosystemPageTitle: 'エコシステムマップ',
+  ecosystemPageDesc: 'シンガポール AI エコシステムマップ——政府機関、研究機関、企業、スタートアップの全体像。',
+  leversPageTitle: '国家 AI レバーマップ',
+  leversPageDesc:
+    'シンガポールの国家レベル AI ネイティブ転換は、省庁別ではなく「AI 導入経路」で理解すべきです：インフラ・ガバナンス・人材・応用・政府自身の活用・外交という6つのレバーが省庁横断で構成する実行パイプライン。',
+  startupsPageTitle: 'AI スタートアップエコシステム',
+  startupsPageDesc:
+    'シンガポール AI スタートアップと隣接エコシステム——650+ 関連サンプル、資金調達データ、ユニコーン、バーティカル分野と投資家一覧。',
+  talentPageTitle: '人材育成',
+  talentPageDesc: 'シンガポール AI 人材育成体系——大学プログラム、政府研修計画、人材招致政策の一覧。',
+  videosPageTitle: 'AI ビデオ・オピニオン',
+  videosPageDesc:
+    'シンガポール政府高官、学者、業界リーダーによる AI 戦略・ガバナンス・人材・産業に関する YouTube スピーチとインタビュー集。',
+  voicesPageTitle: 'AI インフルエンスマップ',
+  voicesPageDesc:
+    'シンガポール AI 分野のキーパーソンと中核機関の公式情報チャネル、および MDDI AI 関連スピーチ全文リンク。',
+  opensourcePageTitle: '公式オープンソースと研究',
+  opensourcePageDesc:
+    'シンガポール政府と公式機関の AI オープンソースプロジェクトおよび研究成果——SEA-LION、AI Verify 等。',
+  communityOsPageTitle: '産学研オープンソースエコシステム',
+  communityOsPageDesc:
+    'シンガポール産学研 AI オープンソースエコシステム——大学、企業ラボ、スタートアップのオープンソース貢献の全体像。',
+  benchmarkingPageTitle: '国際ベンチマーク',
+  benchmarkingPageDesc: 'シンガポール AI 戦略の国際ベンチマーク——米国、英国、中国、EU 等の主要経済圏との比較分析。',
+  legalAiPageTitle: 'シンガポール AI 法的フレームワーク',
+  legalAiPageDesc:
+    'シンガポール AI 法的フレームワーク——「学習には寛容、出力には厳格」のデュアルトラック：著作権法§244（世界で最も寛容な AI 学習例外の一つ）と OCHA + 選挙法改正 + 刑法改正 + オンライン安全法の四法による出力規制。',
+  challengesPageTitle: '課題と制約分析',
+  challengesPageDesc: 'シンガポール AI 発展が直面する主要課題——人材競争、データ制約、計算資源の制約、倫理ガバナンス。',
+  fieldnotesPageTitle: '実践ノート',
+  fieldnotesPageDesc:
+    'シンガポールで AI 業務に従事する現場からの観察と実践経験の共有。テーマ別に整理し、遠回りを減らすお手伝いをします。',
+  referencesPageTitle: '参考資料ライブラリ',
+  referencesPageDesc: 'シンガポール AI 参考リソース——公式レポート、研究論文、データセット、ツール、推薦記事。',
+  policiesStatProfiles: 'アーカイブ総数',
+  policiesStatCategories: 'カテゴリ',
+  policiesStatFormat: '形式',
+  policiesStatFormatValue: 'アーカイブページ',
   langBannerEn: '英語版が利用可能です',
   langBannerSwitch: '英語で読む →',
   langBannerDismiss: '閉じる',
@@ -823,6 +1009,29 @@ export const ja: Partial<Record<keyof typeof zh, string>> = {
   updateTypeLongform: 'ロング記事',
   updateTypeSite: 'サイト',
   updateTypeFix: '修正',
+  fullTextZh: '完全翻訳（中国語）',
+  coreViewpoint: 'コア観点',
+  relatedVideos: '関連動画',
+  speaker: 'スピーカー',
+  videoType: 'タイプ',
+  videoSource: 'ソース',
+  parliamentSession: '議会',
+  speechSummaryPoints: '要点',
+  mddiSpeechLabel: 'MDDI スピーチ',
+  mddiSourceLabel: 'MDDI 公式サイト原文',
+  categoryGovernment: '政府',
+  categoryAcademic: '学術',
+  categoryIndustry: '産業',
+  officialChannels: '公式チャンネル',
+  oneLinerTitle: '一言で表すと',
+  profilePending:
+    'このプロフィールは補完中です。現在のページは利用可能なデータから議会発言と政策関連を自動集約しています。',
+  debateCount: '議会発言',
+  policyCount: '主導政策',
+  videoCount: '動画観点',
+  noDebateRecords: '関連する議会討論記録はありません。',
+  officialWebsite: '公式サイト',
+
   viewSource: 'ソースコードを表示',
   countSuffix: '件',
   copyrightOpenSource: 'ソースコード MIT ライセンス；コンテンツ CC BY 4.0',

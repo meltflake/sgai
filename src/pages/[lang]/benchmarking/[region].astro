@@ -1,0 +1,26 @@
+---
+import type { GetStaticPaths } from 'astro';
+
+import CaseProfile from '~/components/benchmarking/CaseProfile.astro';
+import DrilldownProfile from '~/components/benchmarking/DrilldownProfile.astro';
+import RegionProfile from '~/components/benchmarking/RegionProfile.astro';
+import { benchmarkPages, type BenchmarkPage } from '~/utils/entity-pages';
+import { NON_DEFAULT_ROUTE_LOCALES, type Lang } from '~/i18n';
+
+export const prerender = true;
+
+export const getStaticPaths = (() =>
+  NON_DEFAULT_ROUTE_LOCALES.flatMap((lang) =>
+    benchmarkPages.map((page) => ({
+      params: { lang, region: page.slug },
+      props: { page },
+    }))
+  )) satisfies GetStaticPaths;
+
+const { page } = Astro.props as { page: BenchmarkPage };
+const lang = Astro.params.lang as Lang;
+---
+
+{page.kind === 'drilldown' && <DrilldownProfile page={page} lang={lang} />}
+{page.kind === 'case' && <CaseProfile page={page} lang={lang} />}
+{page.kind === 'region' && <RegionProfile page={page} lang={lang} />}

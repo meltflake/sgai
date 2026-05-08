@@ -1,0 +1,273 @@
+---
+// Voice profile page ([lang]). One page per person.id x non-default locale.
+
+import type { GetStaticPaths } from 'astro';
+import { Icon } from 'astro-icon/components';
+
+import JsonLd from '~/components/common/JsonLd.astro';
+import Layout from '~/layouts/PageLayout.astro';
+import PersonContributions from '~/components/widgets/PersonContributions.astro';
+import { allPeople, type Person } from '~/data/people';
+import { videos } from '~/data/videos';
+import { getRelated, getPersonCounts } from '~/utils/graph';
+import { isLowSignalPerson } from '~/utils/quality';
+import { NON_DEFAULT_ROUTE_LOCALES, channelLabel, pickLocalized, localizedHref, t, type Lang } from '~/i18n';
+import { personDisplayName } from '~/utils/people';
+
+export const prerender = true;
+
+export const getStaticPaths = (() =>
+  NON_DEFAULT_ROUTE_LOCALES.flatMap((lang) =>
+    allPeople.map((person) => ({
+      params: { lang, id: person.id },
+      props: { person },
+    }))
+  )) satisfies GetStaticPaths;
+
+const { person } = Astro.props as { person: Person };
+const lang = Astro.params.lang as Lang;
+const isZh = lang === 'zh';
+
+const related = getRelated({ type: 'person', id: person.id });
+const counts = getPersonCounts(person.id);
+const relatedVideos = videos
+  .filter(
+    (video) =>
+      video.speaker === (isZh ? person.name : person.nameEn || person.name) ||
+      (person.aliases || []).includes(video.speaker)
+  )
+  .sort((a, b) => b.date.localeCompare(a.date));
+
+const summary = pickLocalized(person, 'summary', lang) || '';
+const isStub = !summary || summary === 'Profile pending.' || summary.startsWith('[需补充]');
+const displayName = isZh ? personDisplayName(person.id) : person.nameEn || person.name;
+const displayTitle = isZh ? person.title : person.titleEn || person.title;
+
+const categoryLabelsZh: Record<Person['category'], string> = {
+  government: '政府',
+  academic: '学术',
+  industry: '产业',
+};
+const categoryLabelsEn: Record<Person['category'], string> = {
+  government: 'Government',
+  academic: 'Academia',
+  industry: 'Industry',
+};
+const categoryLabels = isZh ? categoryLabelsZh : categoryLabelsEn;
+
+const categoryColors: Record<Person['category'], string> = {
+  government: 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300',
+  academic: 'bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-300',
+  industry: 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300',
+};
+
+// noindex 三无人物：无 curated contributions + 无国会发言 + 无政策 + 无视频。
+// 镜像 EN 页面的 robots 策略——同一人，同一索引决定，跨语言一致。
+// 一旦补上任何信号自动放开。
+const isLowSignal = isLowSignalPerson(person);
+
+const metadata = {
+  title: `${displayName} · ${t(lang, 'navVoices')}`,
+  description:
+    summary ||
+    (isZh
+      ? `${displayName} 在新加坡 AI 政策中的发言、政策关联与公开视频记录。`
+      : `${displayName}'s speeches, policy links, and public AI video records in Singapore.`),
+  robots: { index: !isLowSignal, follow: true },
+};
+
+const personSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: isZh ? person.name || person.nameEn : person.nameEn || person.name,
+  ...(isZh ? { alternateName: person.nameEn || person.name } : {}),
+  jobTitle: isZh ? person.title || person.titleEn : person.titleEn || person.title,
+  description: summary,
+  affiliation: person.affiliations.map((name) => ({ '@type': 'Organization', name })),
+  sameAs: person.channels.map((ch) => ch.url),
+};
+---
+
+<Layout
+  metadata={metadata}
+  breadcrumbs={[{ label: t(lang, 'navVoices'), href: localizedHref('/voices/', lang) }, { label: displayName }]}
+  lang={lang}
+>
+  <JsonLd schema={personSchema} />
+
+  <article class="max-w-4xl mx-auto px-4 sm:px-6 py-10">
+    <header class="mb-8">
+      <div class="flex items-start justify-between flex-wrap gap-3">
+        <div>
+          <p class="text-xs uppercase tracking-[0.18em] text-primary font-semibold mb-3">AI Influence Profile</p>
+          <h1 class="t-display text-gray-900 dark:text-white">
+            {displayName}
+          </h1>
+          {isZh && person.name && <p class="text-lg text-gray-500 dark:text-gray-400 mt-2">{person.name}</p>}
+        </div>
+        <span class={`text-xs font-semibold px-2.5 py-1 rounded-full shrink-0 ${categoryColors[person.category]}`}>
+          {categoryLabels[person.category]}
+        </span>
+      </div>
+      <p class="text-gray-700 dark:text-gray-300 mt-4 font-medium">{displayTitle}</p>
+    </header>
+
+    <section class="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-8">
+      <div class="bg-surface rounded-xl p-4 shadow-sm border border-subtle">
+        <div class="t-stat text-blue-600">{counts.debateCount}</div>
+        <div class="text-xs text-gray-500 mt-0.5">{isZh ? '国会发言' : 'Parliamentary speeches'}</div>
+      </div>
+      <div class="bg-surface rounded-xl p-4 shadow-sm border border-subtle">
+        <div class="t-stat text-purple-600">{counts.policyAuthorCount}</div>
+        <div class="text-xs text-gray-500 mt-0.5">{isZh ? '主导政策' : 'Policies championed'}</div>
+      </div>
+      <div class="bg-surface rounded-xl p-4 shadow-sm border border-subtle">
+        <div class="t-stat text-rose-600">{relatedVideos.length}</div>
+        <div class="text-xs text-gray-500 mt-0.5">{isZh ? '视频观点' : 'AI videos'}</div>
+      </div>
+    </section>
+
+    {
+      !isStub && summary && (
+        <section class="callout-note p-5 rounded-lg mb-8">
+          <h2 class="font-semibold mb-2">{isZh ? '一句话定位' : 'Positioning'}</h2>
+          <p class="text-gray-800 dark:text-gray-200 leading-relaxed">{summary}</p>
+        </section>
+      )
+    }
+
+    {
+      isStub && (
+        <section class="callout-muted p-4 rounded-lg mb-8 text-sm">
+          <p class="text-amber-900 dark:text-amber-200">
+            {isZh
+              ? '此人物档案待补充。当前页面先根据已有数据自动汇总其国会发言与政策关联。'
+              : 'Profile pending. This page currently summarises parliamentary appearances and policy links from existing records.'}
+          </p>
+        </section>
+      )
+    }
+
+    {
+      person.channels.length > 0 && (
+        <section class="mb-10">
+          <h2 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-3">
+            {isZh ? '官方渠道' : 'Official channels'}
+          </h2>
+          <div class="flex flex-wrap gap-2">
+            {person.channels.map((ch) => (
+              <a
+                href={ch.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class={`inline-flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-full border transition-all hover:shadow-sm ${
+                  ch.primary
+                    ? 'bg-blue-50 border-blue-300 text-blue-700 font-semibold dark:bg-blue-900/30 dark:border-blue-600 dark:text-blue-300'
+                    : 'bg-gray-50 border-gray-200 text-gray-600 hover:border-gray-300 dark:bg-slate-700 dark:border-slate-600 dark:text-gray-300'
+                }`}
+              >
+                {ch.primary && <span class="inline-block w-1.5 h-1.5 rounded-full bg-blue-500 dark:bg-blue-400" />}
+                {channelLabel(ch, lang)}
+              </a>
+            ))}
+          </div>
+        </section>
+      )
+    }
+
+    <PersonContributions person={person} lang={lang} />
+
+    <section class="mb-10">
+      <h2 class="t-h3 text-gray-800 dark:text-white mb-4">
+        {isZh ? `国会发言（${related.debates.length}）` : `Parliamentary speeches (${related.debates.length})`}
+      </h2>
+      {
+        related.debates.length === 0 ? (
+          <p class="text-sm text-gray-400 italic">{isZh ? '暂无关联辩论记录。' : 'No related debate records.'}</p>
+        ) : (
+          <div class="space-y-3">
+            {related.debates.slice(0, 30).map((debate) => (
+              <a
+                href={localizedHref(`/debates/${debate.id}/`, lang)}
+                class="block bg-surface rounded-lg p-4 border border-subtle hover:border-blue-300 hover:shadow-sm transition-all"
+              >
+                <h3 class="font-semibold text-gray-800 dark:text-white text-sm leading-snug">
+                  {pickLocalized(debate, 'title', lang)}
+                </h3>
+                <p class="text-xs text-gray-500 mt-1">
+                  {debate.date} · {isZh ? `第 ${debate.parliament} 届国会` : `Parliament ${debate.parliament}`}
+                </p>
+                {pickLocalized(debate, 'summary', lang) && (
+                  <p class="text-xs text-gray-600 dark:text-gray-400 mt-2 leading-relaxed line-clamp-3">
+                    {pickLocalized(debate, 'summary', lang)}
+                  </p>
+                )}
+              </a>
+            ))}
+          </div>
+        )
+      }
+    </section>
+
+    {
+      related.policies.length > 0 && (
+        <section class="mb-10">
+          <h2 class="t-h3 text-gray-800 dark:text-white mb-4">
+            {isZh ? `主导政策（${related.policies.length}）` : `Policies championed (${related.policies.length})`}
+          </h2>
+          <div class="grid gap-3">
+            {related.policies.map((policy) => (
+              <a
+                href={policy.id ? localizedHref(`/policies/${policy.id}/`, lang) : localizedHref('/policies/', lang)}
+                class="block bg-surface rounded-lg p-4 border border-subtle hover:border-purple-300 hover:shadow-sm transition-all"
+              >
+                <h3 class="font-semibold text-gray-800 dark:text-white text-sm">
+                  {pickLocalized(policy, 'title', lang)}
+                </h3>
+                <p class="text-xs text-gray-500 mt-0.5">{policy.date}</p>
+                <p class="text-xs text-gray-600 dark:text-gray-400 mt-2">{pickLocalized(policy, 'summary', lang)}</p>
+              </a>
+            ))}
+          </div>
+        </section>
+      )
+    }
+
+    {
+      relatedVideos.length > 0 && (
+        <section class="mb-10">
+          <h2 class="t-h3 text-gray-800 dark:text-white mb-4">
+            {isZh ? `视频观点（${relatedVideos.length}）` : `AI videos (${relatedVideos.length})`}
+          </h2>
+          <div class="grid gap-3">
+            {relatedVideos.map((video) => (
+              <a
+                href={localizedHref(`/videos/${video.id}/`, lang)}
+                class="block bg-surface rounded-lg p-4 border border-subtle hover:border-rose-300 hover:shadow-sm transition-all"
+              >
+                <h3 class="font-semibold text-gray-800 dark:text-white text-sm">
+                  {pickLocalized(video, 'title', lang)}
+                </h3>
+                <p class="text-xs text-gray-500 mt-0.5">
+                  {video.date} · {video.duration} · {video.channel}
+                </p>
+                <p class="text-xs text-gray-600 dark:text-gray-400 mt-2">{pickLocalized(video, 'summary', lang)}</p>
+              </a>
+            ))}
+          </div>
+        </section>
+      )
+    }
+
+    <nav class="mt-12 pt-6 border-t border-subtle">
+      <a
+        href={localizedHref('/voices/', lang)}
+        class="text-sm text-primary hover:text-secondary font-medium inline-flex items-center gap-1"
+      >
+        <Icon name="tabler:arrow-left" class="w-4 h-4" />
+        {t(lang, 'back')}
+        {t(lang, 'navVoices')}
+      </a>
+    </nav>
+  </article>
+</Layout>

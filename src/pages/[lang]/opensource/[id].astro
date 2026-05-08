@@ -1,0 +1,34 @@
+---
+import type { GetStaticPaths } from 'astro';
+import Layout from '~/layouts/PageLayout.astro';
+import OpenSourceProjectDetail from '~/components/data/OpenSourceProjectDetail.astro';
+import { openSourceProjects } from '~/data/opensource';
+import { NON_DEFAULT_ROUTE_LOCALES, localizedHref, pickLocalized, t, type Lang } from '~/i18n';
+
+export const prerender = true;
+
+export const getStaticPaths = (() =>
+  NON_DEFAULT_ROUTE_LOCALES.flatMap((lang) =>
+    openSourceProjects.map((project) => ({
+      params: { lang, id: project.id },
+      props: { project },
+    }))
+  )) satisfies GetStaticPaths;
+
+const { project } = Astro.props;
+const lang = Astro.params.lang as Lang;
+const isZh = lang === 'zh';
+const name = isZh ? project.name : project.nameEn || project.name;
+---
+
+<Layout
+  metadata={{
+    title: `${name} · ${isZh ? '官方开源与研究' : t(lang, 'opensourcePageTitle')}`,
+    description:
+      pickLocalized(project, 'summary', lang) || pickLocalized(project, 'description', lang) || project.description,
+  }}
+  breadcrumbs={[{ label: t(lang, 'navOpensource'), href: localizedHref('/opensource/', lang) }, { label: name }]}
+  lang={lang}
+>
+  <OpenSourceProjectDetail project={project} lang={lang} />
+</Layout>

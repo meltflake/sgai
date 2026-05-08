@@ -1,8 +1,10 @@
 ---
 // i18n — header language toggle.
 //
-// Renders a small ZH ↔ EN switch. Clicking it navigates to the equivalent
-// URL in the other locale and persists the choice in localStorage.
+// Renders a cycling EN → 中 → 日本語 switch. Clicking navigates to the
+// next locale and persists the choice in localStorage.
+//
+// Cycle order: en → zh → ja → en (always shows the NEXT language label).
 //
 // IMPORTANT: uses document-level event delegation because Astro's
 // <ClientRouter> swaps the DOM during view transitions; per-element
@@ -12,30 +14,30 @@ import { type Lang, t } from '~/i18n';
 
 interface Props {
   currentLang: Lang;
-  /** Optional class on the wrapper. */
   class?: string;
 }
 
 const { currentLang, class: extraClass = '' } = Astro.props;
-const otherLang: Lang = currentLang === 'en' ? 'zh' : 'en';
-const otherLabel = otherLang === 'en' ? 'EN' : '中';
-const ariaLabel = currentLang === 'en' ? t(currentLang, 'langToggleLabel') : '切换语言';
+const CYCLE: Record<Lang, Lang> = { en: 'zh', zh: 'ja', ja: 'en' };
+const LABELS: Record<Lang, string> = { en: 'EN', zh: '中', ja: '日' };
+const nextLang = CYCLE[currentLang];
+const nextLabel = LABELS[nextLang];
+const ariaLabel = t(currentLang, 'langToggleLabel') || '切換語言';
 ---
 
 <button
   type="button"
   data-lang-toggle
-  data-other-lang={otherLang}
+  data-next-lang={nextLang}
   aria-label={ariaLabel}
   title={ariaLabel}
   class={`inline-flex items-center text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400 hover:text-primary border border-subtle hover:border-primary rounded-md px-2 py-1.5 min-w-[2rem] justify-center transition-colors ${extraClass}`}
 >
-  <span aria-hidden="true">{otherLabel}</span>
+  <span aria-hidden="true">{nextLabel}</span>
   <span class="sr-only">{ariaLabel}</span>
 </button>
 
 <script is:inline>
-  // Document-level delegation: bound once, survives ClientRouter swaps.
   if (!window.__sgaiLangToggleBound) {
     window.__sgaiLangToggleBound = true;
     document.addEventListener('click', function (e) {
@@ -43,26 +45,25 @@ const ariaLabel = currentLang === 'en' ? t(currentLang, 'langToggleLabel') : '�
       if (!(target instanceof Element)) return;
       const btn = target.closest('[data-lang-toggle]');
       if (!btn) return;
-      const otherLang = btn.getAttribute('data-other-lang');
-      if (otherLang !== 'zh' && otherLang !== 'en') return;
+      const nextLang = btn.getAttribute('data-next-lang');
+      if (nextLang !== 'zh' && nextLang !== 'en' && nextLang !== 'ja') return;
       try {
-        localStorage.setItem('sgai_lang', otherLang);
+        localStorage.setItem('sgai_lang', nextLang);
       } catch {
         /* private mode */
       }
       const path = location.pathname;
+      // Strip any existing locale prefix.
+      let bare = path;
+      if (path === '/zh' || path === '/zh/') bare = '/';
+      else if (path.indexOf('/zh/') === 0) bare = path.slice(3);
+      else if (path === '/ja' || path === '/ja/') bare = '/';
+      else if (path.indexOf('/ja/') === 0) bare = path.slice(3);
+      // Add target prefix (en = root, zh = /zh, ja = /ja).
       let dest;
-      if (otherLang === 'zh') {
-        // Switch to ZH — prefix /zh.
-        if (path === '/' || path === '') dest = '/zh/';
-        else if (path === '/zh' || path.indexOf('/zh/') === 0) dest = path;
-        else dest = '/zh' + path;
-      } else {
-        // Switch to EN — strip /zh.
-        if (path === '/zh' || path === '/zh/') dest = '/';
-        else if (path.indexOf('/zh/') === 0) dest = path.slice(3);
-        else dest = path;
-      }
+      if (nextLang === 'en') dest = bare;
+      else if (bare === '/' || bare === '') dest = '/' + nextLang + '/';
+      else dest = '/' + nextLang + bare;
       location.assign(dest + location.search + location.hash);
     });
   }

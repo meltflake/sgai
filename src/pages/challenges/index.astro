@@ -1,6 +1,7 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
 import Headline from '~/components/ui/Headline.astro';
+import { t } from '~/i18n';
 
 const lang = 'en' as const;
 
@@ -46,11 +47,10 @@ const challenges = [
 
 <Layout
   metadata={{
-    title: 'Challenges',
-    description:
-      "Core challenges in Singapore's AI development — talent competition, data limitations, compute constraints, and ethics-governance tradeoffs.",
+    title: t(lang, 'challengesPageTitle'),
+    description: t(lang, 'challengesPageDesc'),
   }}
-  breadcrumbs={[{ label: 'Challenges' }]}
+  breadcrumbs={[{ label: t(lang, 'challengesPageTitle') }]}
   lang={lang}
 >
   <section class="px-4 py-16 sm:px-6 mx-auto lg:px-8 max-w-4xl">

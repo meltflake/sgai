@@ -1,0 +1,12 @@
+---
+import DebatesIndex from '~/components/debates/DebatesIndex.astro';
+import { NON_DEFAULT_ROUTE_LOCALES, type Lang } from '~/i18n';
+
+export function getStaticPaths() {
+  return NON_DEFAULT_ROUTE_LOCALES.map((lang) => ({ params: { lang } }));
+}
+
+const lang = Astro.params.lang as Lang;
+---
+
+<DebatesIndex lang={lang} />

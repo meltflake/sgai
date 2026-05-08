@@ -5,6 +5,7 @@ import Layout from '~/layouts/PageLayout.astro';
 import Headline from '~/components/ui/Headline.astro';
 import { ecosystemStats, exits, investors, unicorns, verticals } from '~/data/startups';
 import { getStartupAiRelation, startupEntitySlug } from '~/utils/entity-pages';
+import { t } from '~/i18n';
 
 const lang = 'en' as const;
 const hrefFor = (entity: { id?: string; name: string; nameEn?: string }) => `/startups/${startupEntitySlug(entity)}/`;
@@ -21,11 +22,10 @@ const stats = [
 
 <Layout
   metadata={{
-    title: 'AI Startup Ecosystem',
-    description:
-      "Singapore's AI startup and adjacent ecosystem — 650+ related samples, funding data, unicorns, verticals, and investors.",
+    title: t(lang, 'startupsPageTitle'),
+    description: t(lang, 'startupsPageDesc'),
   }}
-  breadcrumbs={[{ label: 'AI Startups' }]}
+  breadcrumbs={[{ label: t(lang, 'navStartups') }]}
   lang={lang}
 >
   <section class="px-4 py-16 sm:px-6 mx-auto lg:px-8 max-w-6xl">

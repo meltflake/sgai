@@ -1,0 +1,43 @@
+---
+import Layout from '~/layouts/Layout.astro';
+import { NON_DEFAULT_ROUTE_LOCALES, localizedHref, type Lang } from '~/i18n';
+
+export function getStaticPaths() {
+  return NON_DEFAULT_ROUTE_LOCALES.map((lang) => ({ params: { lang } }));
+}
+
+const lang = Astro.params.lang as Lang;
+const isZh = lang === 'zh';
+const title = isZh ? '页面未找到' : 'Page Not Found';
+---
+
+<Layout
+  metadata={{
+    title,
+    description: isZh ? '您访问的页面不存在。' : 'The page you requested does not exist.',
+    robots: { index: false, follow: false },
+  }}
+  lang={lang}
+>
+  <section class="flex items-center h-full p-16">
+    <div class="container flex flex-col items-center justify-center px-5 mx-auto my-8">
+      <div class="max-w-md text-center">
+        <h2 class="mb-8 font-bold text-9xl">
+          <span class="sr-only">{isZh ? '错误' : 'Error'}</span>
+          <span class="text-primary">404</span>
+        </h2>
+        <p class="text-3xl font-semibold md:text-3xl">{title}</p>
+        <p class="mt-4 mb-8 text-lg text-muted dark:text-slate-400">
+          {
+            isZh
+              ? '您访问的页面不存在，但您可以回到首页继续浏览。'
+              : 'The page you were looking for doesn’t exist, but you can head back to the home page.'
+          }
+        </p>
+        <a rel="noopener noreferrer" href={localizedHref('/', lang)} class="btn ml-4">
+          {isZh ? '返回首页' : 'Back to Home'}
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

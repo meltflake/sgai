@@ -1,7 +1,7 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
 import { videos, VIDEO_CATEGORIES, SPEAKER_TYPE_LABELS_EN } from '~/data/videos';
-import { pickLocalized } from '~/i18n';
+import { pickLocalized, t } from '~/i18n';
 
 const lang = 'en' as const;
 
@@ -10,9 +10,8 @@ const pickName = (cat: { name: string; nameEn?: string }) => cat.nameEn || cat.n
 const pickDesc = (cat: { description: string; descriptionEn?: string }) => cat.descriptionEn || cat.description;
 
 const meta = {
-  title: 'AI Video Library — Singapore Government, Academia and Industry',
-  description:
-    'A curated collection of YouTube talks and interviews from Singapore government officials, academics, and industry leaders on AI strategy, governance, talent, and applications.',
+  title: t(lang, 'videosPageTitle'),
+  description: t(lang, 'videosPageDesc'),
 };
 
 // Build stats
@@ -30,7 +29,7 @@ const videosByTopic = VIDEO_CATEGORIES.map((cat) => ({
 const allYears = [...new Set(videos.map((v) => v.date.slice(0, 4)))].sort().reverse();
 ---
 
-<Layout metadata={meta} breadcrumbs={[{ label: 'AI Video Library' }]} lang={lang}>
+<Layout metadata={meta} breadcrumbs={[{ label: t(lang, 'navVideos') }]} lang={lang}>
   <div class="max-w-7xl mx-auto px-4 py-10">
     <!-- Header -->
     <div class="mb-10">

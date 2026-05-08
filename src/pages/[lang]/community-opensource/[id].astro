@@ -1,0 +1,65 @@
+---
+import type { GetStaticPaths } from 'astro';
+
+import JsonLd from '~/components/common/JsonLd.astro';
+import CommunityOpenSourceProjectDetail from '~/components/data/CommunityOpenSourceProjectDetail.astro';
+import Layout from '~/layouts/PageLayout.astro';
+import { allCommunityOpenSourceProjects, type OpenSourceProject } from '~/data/community-opensource';
+import { SITE_UPDATED } from '~/version';
+import { NON_DEFAULT_ROUTE_LOCALES, IN_LANGUAGES, localizedHref, pickLocalized, t, type Lang } from '~/i18n';
+
+export const prerender = true;
+
+export const getStaticPaths = (() =>
+  NON_DEFAULT_ROUTE_LOCALES.flatMap((lang) =>
+    allCommunityOpenSourceProjects.map((project) => ({
+      params: { lang, id: project.id },
+      props: { project },
+    }))
+  )) satisfies GetStaticPaths;
+
+interface Props {
+  project: OpenSourceProject;
+}
+
+const lang = Astro.params.lang as Lang;
+const isZh = lang === 'zh';
+const { project } = Astro.props as Props;
+const name = isZh ? project.name : project.nameEn || project.name;
+const orgName = isZh ? project.org : project.orgEn || project.org;
+const description =
+  pickLocalized(project, 'summary', lang) || pickLocalized(project, 'description', lang) || project.description;
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: `${name} · ${orgName}`,
+  description,
+  datePublished: SITE_UPDATED,
+  dateModified: SITE_UPDATED,
+  inLanguage: IN_LANGUAGES[lang],
+  mainEntityOfPage: new URL(Astro.url).href,
+  about: project.nameEn || project.name,
+  isBasedOn: project.resources.map((resource) => resource.url),
+  publisher: {
+    '@type': 'Organization',
+    name: isZh ? '新加坡 AI 观察' : t(lang, 'siteName'),
+    url: 'https://sgai.md/',
+  },
+};
+---
+
+<Layout
+  metadata={{
+    title: `${name} · ${t(lang, 'communityOsPageTitle')}`,
+    description,
+  }}
+  breadcrumbs={[
+    { label: t(lang, 'navCommunityOpensource'), href: localizedHref('/community-opensource/', lang) },
+    { label: name },
+  ]}
+  lang={lang}
+>
+  <JsonLd schema={schema} />
+  <CommunityOpenSourceProjectDetail project={project} lang={lang} />
+</Layout>

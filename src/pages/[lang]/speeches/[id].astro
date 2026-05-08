@@ -1,0 +1,243 @@
+---
+import type { GetStaticPaths } from 'astro';
+import { Icon } from 'astro-icon/components';
+
+import Layout from '~/layouts/PageLayout.astro';
+import JsonLd from '~/components/common/JsonLd.astro';
+import { mddiSpeeches, type MddiSpeech } from '~/data/voices';
+import {
+  speechId,
+  getSpeechTranscript,
+  getSpeechTranscriptParagraphs,
+  getSpeechTranscriptTldr,
+} from '~/data/speech-transcripts';
+import { findPersonId } from '~/utils/people';
+import { NON_DEFAULT_ROUTE_LOCALES, IN_LANGUAGES, localizedHref, pickLocalized, t, type Lang } from '~/i18n';
+
+export const prerender = true;
+
+export const getStaticPaths = (() =>
+  NON_DEFAULT_ROUTE_LOCALES.flatMap((lang) =>
+    mddiSpeeches.map((speech) => ({
+      params: { lang, id: speechId(speech) },
+      props: { speech },
+    }))
+  )) satisfies GetStaticPaths;
+
+const lang = Astro.params.lang as Lang;
+const isZh = lang === 'zh';
+const { speech } = Astro.props as { speech: MddiSpeech };
+const id = speechId(speech);
+const transcript = getSpeechTranscript(id);
+const paragraphsZh = getSpeechTranscriptParagraphs(id, 'zh');
+const paragraphsEn = getSpeechTranscriptParagraphs(id, 'en');
+const tldrZh = getSpeechTranscriptTldr(id, 'zh');
+const tldrEn = getSpeechTranscriptTldr(id, 'en');
+
+const speakerPid = findPersonId(speech.speaker);
+const titleDisplay = isZh ? speech.title : speech.titleEn || speech.title;
+const speakerTitle = pickLocalized(speech, 'speakerTitle', 'speakerTitleEn', lang);
+const eventDisplay = isZh ? speech.event : speech.eventEn || speech.event;
+
+const metadata = {
+  title: `${titleDisplay} · ${isZh ? 'MDDI 演讲稿' : 'MDDI Speech'}`,
+  description: titleDisplay,
+};
+
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: titleDisplay,
+  ...(isZh ? { alternativeHeadline: speech.title } : {}),
+  datePublished: speech.date,
+  inLanguage: IN_LANGUAGES[lang],
+  author: { '@type': 'Person', name: speech.speaker },
+  publisher: {
+    '@type': 'GovernmentOrganization',
+    name: 'Ministry of Digital Development and Information',
+    url: 'https://www.mddi.gov.sg/',
+  },
+};
+
+const breadcrumbs = [
+  { label: isZh ? 'AI 影响力图谱' : t(lang, 'navVoices'), href: localizedHref('/voices/', lang) },
+  { label: titleDisplay },
+];
+
+const hasLocalCopy = !!transcript && paragraphsEn.length > 0;
+const tldr = isZh ? tldrZh : tldrEn;
+---
+
+<Layout metadata={metadata} breadcrumbs={breadcrumbs} lang={lang}>
+  <JsonLd schema={articleSchema} />
+
+  <article class="max-w-3xl mx-auto px-4 sm:px-6 py-12 md:py-16">
+    <p class="text-xs uppercase tracking-[0.18em] text-primary font-semibold mb-4">
+      {isZh ? 'MDDI 演讲稿' : 'MDDI Speech'} · {speech.date}
+    </p>
+    <h1 class="t-display text-gray-900 dark:text-white mb-3">
+      {titleDisplay}
+    </h1>
+    {
+      isZh && (
+        <p class="text-sm md:text-base text-gray-500 dark:text-gray-400 italic mb-6 leading-relaxed">{speech.title}</p>
+      )
+    }
+
+    <div class="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-gray-600 dark:text-gray-400 mb-8">
+      {
+        speakerPid ? (
+          <a href={localizedHref(`/voices/${speakerPid}/`, lang)} class="font-medium text-primary hover:text-secondary">
+            {speech.speaker}
+          </a>
+        ) : (
+          <span class="font-medium text-gray-700 dark:text-gray-300">{speech.speaker}</span>
+        )
+      }
+      <span class="text-gray-300 dark:text-gray-600">·</span>
+      <span>{speakerTitle}</span>
+      {
+        eventDisplay && (
+          <>
+            <span class="text-gray-300 dark:text-gray-600">·</span>
+            <span class="italic">{eventDisplay}</span>
+          </>
+        )
+      }
+    </div>
+
+    {
+      tldr && tldr.length > 0 && (
+        <section
+          class="mb-8 border-l-4 border-primary pl-5"
+          {...(!isZh ? { 'data-i18n-allow-cjk': 'speech-verbatim-source' } : {})}
+        >
+          <h2 class="text-xs uppercase tracking-wider text-primary font-semibold mb-2">
+            {isZh ? '要点' : 'Key takeaways'}
+          </h2>
+          <ul class="space-y-2 text-base text-gray-700 dark:text-gray-300 leading-[1.85]">
+            {tldr.map((point) => (
+              <li class="flex gap-3">
+                <span class="text-primary shrink-0 mt-1">•</span>
+                <span>{point}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )
+    }
+
+    {
+      isZh && paragraphsZh.length > 0 && (
+        <section class="my-8 border border-primary/20 bg-primary/5 rounded-xl p-5">
+          <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-4">
+            <h2 class="t-h3 text-gray-900 dark:text-white">完整译文（中文）</h2>
+            <p class="text-xs text-gray-500 dark:text-gray-400">
+              MDDI 英文原文译文
+              {transcript?.translatedAt && ` · 翻译日期：${transcript.translatedAt}`}
+            </p>
+          </div>
+          <div class="space-y-4 text-base text-gray-700 dark:text-gray-300 leading-[1.9]">
+            {paragraphsZh.map((paragraph) => (
+              <p>{paragraph}</p>
+            ))}
+          </div>
+        </section>
+      )
+    }
+
+    {
+      isZh && paragraphsEn.length > 0 && paragraphsZh.length === 0 && (
+        <section class="my-8 callout-muted rounded-xl p-5 text-sm text-amber-900 dark:text-amber-200">
+          中文译文待补充。可暂时查看下方英文原文，或点击底部"原文"链接到 MDDI 官网阅读。
+        </section>
+      )
+    }
+
+    {
+      isZh && paragraphsEn.length > 0 && (
+        <section class="my-8 border border-subtle rounded-xl p-5">
+          <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-4">
+            <h2 class="t-h3 text-gray-900 dark:text-white">英文原文</h2>
+            <p class="text-xs text-gray-500 dark:text-gray-400">
+              MDDI 官网原始记录
+              {transcript?.fetchedAt && ` · 抓取日期：${transcript.fetchedAt}`}
+            </p>
+          </div>
+          <div class="space-y-4 text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+            {paragraphsEn.map((paragraph) => (
+              <p>{paragraph}</p>
+            ))}
+          </div>
+        </section>
+      )
+    }
+
+    {
+      !isZh &&
+        (paragraphsEn.length > 0 ? (
+          <section
+            class="my-8 border border-primary/20 bg-primary/5 rounded-xl p-5"
+            data-i18n-allow-cjk="speech-verbatim-source"
+          >
+            <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-4">
+              <h2 class="t-h3 text-gray-900 dark:text-white">Full speech</h2>
+              <p class="text-xs text-gray-500 dark:text-gray-400">
+                Archived from mddi.gov.sg
+                {transcript?.fetchedAt && ` · Fetched ${transcript.fetchedAt}`}
+              </p>
+            </div>
+            <div class="space-y-4 text-base text-gray-700 dark:text-gray-300 leading-[1.9]">
+              {paragraphsEn.map((paragraph) => (
+                <p>{paragraph}</p>
+              ))}
+            </div>
+          </section>
+        ) : (
+          <section class="my-8 callout-muted rounded-xl p-5 text-sm text-amber-900 dark:text-amber-200">
+            Local archive not yet available. Please read the original on the
+            <a href={speech.url} target="_blank" rel="noopener" class="underline mx-1">
+              MDDI website
+            </a>
+            . We are progressively archiving full text and translations for all AI-related MDDI speeches.
+          </section>
+        ))
+    }
+
+    {
+      isZh && !hasLocalCopy && (
+        <section class="my-8 callout-muted rounded-xl p-5 text-sm">
+          <p class="text-amber-900 dark:text-amber-200">
+            此演讲尚未本地存档。暂时请到{' '}
+            <a href={speech.url} target="_blank" rel="noopener" class="underline">
+              MDDI 官网
+            </a>{' '}
+            阅读原文。我们正在分批补全所有 AI 相关演讲稿的本地存档与中文译文。
+          </p>
+        </section>
+      )
+    }
+
+    <div class="mt-10 flex flex-wrap gap-3">
+      <a
+        href={speech.url}
+        target="_blank"
+        rel="noopener"
+        class="inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-secondary border border-primary/30 hover:border-primary px-4 py-2 rounded-md transition-colors"
+      >
+        <Icon name="tabler:external-link" class="w-4 h-4" />
+        {isZh ? 'MDDI 官网原文' : 'Source on mddi.gov.sg'}
+      </a>
+    </div>
+
+    <nav class="mt-12 pt-6 border-t border-subtle">
+      <a
+        href={localizedHref('/voices/', lang)}
+        class="text-sm text-primary hover:text-secondary font-medium inline-flex items-center gap-1"
+      >
+        <Icon name="tabler:arrow-left" class="w-4 h-4" />
+        {isZh ? '返回 AI 影响力图谱' : `Back to ${t(lang, 'navVoices')}`}
+      </a>
+    </nav>
+  </article>
+</Layout>

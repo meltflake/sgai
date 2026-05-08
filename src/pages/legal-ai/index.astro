@@ -4,6 +4,7 @@ import Headline from '~/components/ui/Headline.astro';
 import { sections, dataDate } from '~/data/legal-ai';
 import { legalItemSlug } from '~/utils/entity-pages';
 import { renderInlineMarkdown } from '~/utils/inline-markdown';
+import { t } from '~/i18n';
 
 const lang = 'en' as const;
 
@@ -33,11 +34,10 @@ This is one of the structural reasons OpenAI, Anthropic, DeepMind, Mistral and o
 
 <Layout
   metadata={{
-    title: 'AI Legal Framework',
-    description:
-      "Singapore's AI legal framework — 'permissive on training, strict on outputs' dual track: Copyright §244 (one of the world's most permissive AI training exceptions) paired with the OCHA + Elections Bill + Criminal Law Bill + Online Safety Bill quartet on outputs.",
+    title: t(lang, 'legalAiPageTitle'),
+    description: t(lang, 'legalAiPageDesc'),
   }}
-  breadcrumbs={[{ label: 'AI Legal Framework' }]}
+  breadcrumbs={[{ label: t(lang, 'navLegalAi') }]}
   lang={lang}
 >
   <section class="px-4 py-16 sm:px-6 mx-auto lg:px-8 max-w-5xl">

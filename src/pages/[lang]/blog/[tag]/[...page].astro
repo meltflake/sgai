@@ -1,0 +1,60 @@
+---
+import type { GetStaticPaths } from 'astro';
+import type { Page } from 'astro';
+import type { Post } from '~/types';
+import { blogTagRobots, blogPostsPerPage, fetchPosts } from '~/utils/blog';
+import { TAG_BASE } from '~/utils/permalinks';
+
+import Layout from '~/layouts/PageLayout.astro';
+import BlogList from '~/components/blog/List.astro';
+import Headline from '~/components/blog/Headline.astro';
+import Pagination from '~/components/blog/Pagination.astro';
+import { NON_DEFAULT_ROUTE_LOCALES, type Lang } from '~/i18n';
+
+export const prerender = true;
+
+export const getStaticPaths = (async ({ paginate }) => {
+  const posts = await fetchPosts();
+  const tags: Record<string, { slug: string; title: string }> = {};
+  posts.map((post) => {
+    if (Array.isArray(post.tags)) {
+      post.tags.map((tag) => {
+        tags[tag.slug] = tag;
+      });
+    }
+  });
+
+  return NON_DEFAULT_ROUTE_LOCALES.flatMap((lang) =>
+    Object.keys(tags).flatMap((tagSlug) =>
+      paginate(
+        posts.filter((post) => Array.isArray(post.tags) && post.tags.find((elem) => elem.slug === tagSlug)),
+        {
+          params: { lang, tag: tagSlug, blog: TAG_BASE || undefined },
+          pageSize: blogPostsPerPage,
+          props: { tag: tags[tagSlug] },
+        }
+      )
+    )
+  );
+}) satisfies GetStaticPaths;
+
+const { page, tag } = Astro.props as { page: Page<Post>; tag: { slug: string; title: string } };
+const lang = Astro.params.lang as Lang;
+const currentPage = page.currentPage ?? 1;
+
+const metadata = {
+  title: `Posts by tag '${tag.title}'${currentPage > 1 ? ` — Page ${currentPage} ` : ''}`,
+  robots: {
+    index: blogTagRobots?.index,
+    follow: blogTagRobots?.follow,
+  },
+};
+---
+
+<Layout metadata={metadata} lang={lang}>
+  <section class="px-4 md:px-6 py-12 sm:py-16 lg:py-20 mx-auto max-w-4xl">
+    <Headline>Tag: {tag.title}</Headline>
+    <BlogList posts={page.data} />
+    <Pagination prevUrl={page.url.prev} nextUrl={page.url.next} />
+  </section>
+</Layout>

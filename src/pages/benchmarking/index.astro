@@ -12,7 +12,7 @@ import {
   insights,
   regions,
 } from '~/data/benchmarking';
-import { pickLocalized } from '~/i18n';
+import { pickLocalized, t } from '~/i18n';
 import { benchmarkCaseSlug, regionPages, regionSlug } from '~/utils/entity-pages';
 
 const lang = 'en' as const;
@@ -32,11 +32,10 @@ function insightHref(index: number): string {
 
 <Layout
   metadata={{
-    title: 'International Benchmarks',
-    description:
-      "International benchmarks for Singapore's AI strategy — comparison with the United States, the United Kingdom, China, the EU and other major economies.",
+    title: t(lang, 'benchmarkingPageTitle'),
+    description: t(lang, 'benchmarkingPageDesc'),
   }}
-  breadcrumbs={[{ label: 'International Benchmarks' }]}
+  breadcrumbs={[{ label: t(lang, 'navBenchmarking') }]}
   lang={lang}
 >
   <section class="px-4 py-16 sm:px-6 mx-auto lg:px-8 max-w-6xl">

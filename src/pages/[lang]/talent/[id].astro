@@ -1,0 +1,236 @@
+---
+// Talent programme detail page ([lang]). One page per programme.id x non-default locale.
+
+import type { GetStaticPaths } from 'astro';
+import { Icon } from 'astro-icon/components';
+
+import JsonLd from '~/components/common/JsonLd.astro';
+import Layout from '~/layouts/PageLayout.astro';
+import { programmes, type TalentProgramme, type TalentStatusTone } from '~/data/talent';
+import { SITE_UPDATED } from '~/version';
+import { NON_DEFAULT_ROUTE_LOCALES, localizedHref, pickLocalized, IN_LANGUAGES, type Lang } from '~/i18n';
+
+export const prerender = true;
+
+export const getStaticPaths = (() =>
+  NON_DEFAULT_ROUTE_LOCALES.flatMap((lang) =>
+    programmes.map((programme) => ({
+      params: { lang, id: programme.id },
+      props: { programme },
+    }))
+  )) satisfies GetStaticPaths;
+
+interface Props {
+  programme: TalentProgramme;
+}
+
+const lang = Astro.params.lang as Lang;
+const isZh = lang === 'zh';
+const { programme } = Astro.props as Props;
+const relatedProgrammes = programmes.filter((candidate) => candidate.id !== programme.id).slice(0, 4);
+
+const statusClasses: Record<TalentStatusTone, string> = {
+  active: 'bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-200',
+  scheduled: 'bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-200',
+  closed: 'bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300',
+  evergreen: 'bg-teal-100 text-teal-800 dark:bg-teal-900/30 dark:text-teal-200',
+};
+
+const progName = pickLocalized<string>(programme, 'name', lang) ?? programme.name;
+const progNameEn = programme.nameEn;
+const progDescription = pickLocalized<string>(programme, 'description', lang) ?? programme.description;
+const progCategory = pickLocalized<string>(programme, 'category', lang) ?? programme.category;
+const progStatus = pickLocalized<string>(programme, 'status', lang) ?? programme.status;
+
+const metadata = {
+  title: `${progName} · ${isZh ? '人才培养' : 'Talent Pipeline'}`,
+  description: progDescription,
+};
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: isZh ? `${programme.name} - ${progNameEn}` : progNameEn,
+  description: progDescription,
+  datePublished: SITE_UPDATED,
+  dateModified: SITE_UPDATED,
+  inLanguage: IN_LANGUAGES[lang],
+  mainEntityOfPage: new URL(Astro.url).href,
+  about: progNameEn,
+  isBasedOn: programme.profile.sourceUrl,
+  publisher: {
+    '@type': 'Organization',
+    name: isZh ? '新加坡 AI 观察' : 'Singapore AI Observatory',
+    url: 'https://sgai.md/',
+  },
+};
+
+const breadcrumbLabel = isZh ? '人才培养' : 'Talent Pipeline';
+
+// Pre-resolve related programme fields to avoid pickLocalized<string> generic in JSX
+const resolvedRelated = relatedProgrammes.map((r) => ({
+  id: r.id,
+  icon: r.icon,
+  name: pickLocalized<string>(r, 'name', lang) ?? r.name,
+  category: pickLocalized<string>(r, 'category', lang) ?? r.category,
+}));
+---
+
+<Layout
+  metadata={metadata}
+  breadcrumbs={[{ label: breadcrumbLabel, href: localizedHref('/talent/', lang) }, { label: progName }]}
+  lang={lang}
+>
+  <JsonLd schema={schema} />
+
+  <article class="max-w-4xl mx-auto px-4 sm:px-6 py-12 md:py-16">
+    <header class="mb-8">
+      <div class="mb-5 flex flex-wrap items-center gap-2 text-xs">
+        <a
+          href={localizedHref('/talent/', lang)}
+          class="inline-flex items-center gap-1 bg-primary/10 text-primary px-3 py-1.5 rounded font-semibold hover:bg-primary/15 transition-colors"
+        >
+          <Icon name="tabler:arrow-left" class="w-3.5 h-3.5" />
+          {breadcrumbLabel}
+        </a>
+        <span class="bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 px-3 py-1.5 rounded">
+          {progCategory}
+        </span>
+        <span class={`px-3 py-1.5 rounded font-medium ${statusClasses[programme.statusTone]}`}>
+          {progStatus}
+        </span>
+      </div>
+
+      <div class="flex items-start gap-4">
+        <div class="w-14 h-14 rounded-lg bg-primary/10 text-primary flex items-center justify-center shrink-0">
+          <Icon name={programme.icon} class="w-8 h-8" />
+        </div>
+        <div>
+          <h1 class="t-display text-gray-900 dark:text-white mb-2">
+            {progName}
+          </h1>
+          {
+            isZh ? (
+              <p class="text-base md:text-lg text-gray-500 dark:text-gray-400 italic">{progNameEn}</p>
+            ) : (
+              programme.shortName && (
+                <p class="text-base md:text-lg text-gray-500 dark:text-gray-400 italic">{programme.shortName}</p>
+              )
+            )
+          }
+        </div>
+      </div>
+
+      <p class="t-lead text-gray-700 dark:text-gray-300 mt-6">{progDescription}</p>
+    </header>
+
+    <dl class="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 mb-8">
+      {
+        programme.stats.map((stat) => (
+          <div class="bg-surface border border-subtle rounded-lg p-4">
+            <dt class="text-xs uppercase tracking-wider text-muted mb-1">
+              {isZh ? stat.label : stat.labelEn || stat.label}
+            </dt>
+            <dd class="font-semibold text-gray-900 dark:text-white">
+              {isZh ? stat.value : stat.valueEn || stat.value}
+            </dd>
+          </div>
+        ))
+      }
+    </dl>
+
+    <section class="callout-note rounded-lg mb-10">
+      <p class="font-serif text-lg leading-[1.8] text-gray-900 dark:text-white m-0">
+        {isZh ? programme.profile.sections[0].body : programme.profile.sections[0].bodyEn}
+      </p>
+    </section>
+
+    <section class="mb-10">
+      <h2 class="t-h3 text-gray-900 dark:text-white mb-4">
+        {isZh ? '项目档案' : 'Programme Profile'}
+      </h2>
+      <dl class="bg-surface border border-subtle rounded-lg p-5 grid sm:grid-cols-2 gap-x-6 gap-y-4 text-sm">
+        {
+          programme.profile.facts.map((fact) => (
+            <div>
+              <dt class="text-xs uppercase tracking-wider text-muted mb-1">
+                {isZh ? fact.label : fact.labelEn || fact.label}
+              </dt>
+              <dd class="text-gray-800 dark:text-gray-200 leading-relaxed">
+                {isZh ? fact.value : fact.valueEn || fact.value}
+              </dd>
+            </div>
+          ))
+        }
+      </dl>
+    </section>
+
+    {
+      programme.profile.sections.slice(1).map((section) => (
+        <section class="mb-10">
+          <h2 class="t-h3 text-gray-900 dark:text-white mb-4">{isZh ? section.title : section.titleEn}</h2>
+          <p class="text-base leading-[1.85] text-gray-800 dark:text-gray-200">
+            {isZh ? section.body : section.bodyEn}
+          </p>
+          {(isZh
+            ? section.bullets && section.bullets.length > 0
+            : section.bulletsEn && section.bulletsEn.length > 0) && (
+            <ul class="mt-4 grid gap-2 text-sm">
+              {(isZh ? section.bullets! : section.bulletsEn!).map((item) => (
+                <li class="flex items-start gap-2 text-gray-700 dark:text-gray-300">
+                  <Icon name="tabler:check" class="w-4 h-4 mt-1 text-primary shrink-0" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          )}
+        </section>
+      ))
+    }
+
+    <section class="callout-muted rounded-lg mb-10">
+      <h2 class="font-serif text-xl font-semibold text-gray-900 dark:text-white mb-3">
+        {isZh ? '官方来源' : 'Official Source'}
+      </h2>
+      <a
+        href={programme.profile.sourceUrl}
+        target="_blank"
+        rel="noopener"
+        class="inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-secondary"
+      >
+        {isZh ? programme.profile.sourceLabel : programme.profile.sourceLabelEn}
+        <Icon name="tabler:external-link" class="w-4 h-4" />
+      </a>
+      <p class="mt-3 text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+        {isZh ? programme.profile.sourceNote : programme.profile.sourceNoteEn}
+      </p>
+      <p class="mt-2 text-xs text-muted">
+        {isZh ? `本站校验：${programme.profile.lastChecked}` : `Checked by this site: ${programme.profile.lastChecked}`}
+      </p>
+    </section>
+
+    <section class="mb-10">
+      <h2 class="t-h3 text-gray-900 dark:text-white mb-4">
+        {isZh ? '其他人才项目' : 'More Talent Programmes'}
+      </h2>
+      <div class="grid sm:grid-cols-2 gap-3">
+        {
+          resolvedRelated.map((related) => (
+            <a
+              href={localizedHref(`/talent/${related.id}/`, lang)}
+              class="group bg-surface rounded-lg border border-subtle p-4 hover:border-primary/40 hover:shadow-sm transition-all"
+            >
+              <div class="flex items-start gap-3">
+                <Icon name={related.icon} class="w-5 h-5 text-primary mt-1 shrink-0" />
+                <div>
+                  <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-primary">{related.name}</h3>
+                  <p class="text-xs text-muted mt-1">{related.category}</p>
+                </div>
+              </div>
+            </a>
+          ))
+        }
+      </div>
+    </section>
+  </article>
+</Layout>

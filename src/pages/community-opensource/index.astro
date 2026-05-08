@@ -11,6 +11,7 @@ import {
   dataDisclaimer,
   dataDisclaimerEn,
 } from '~/data/community-opensource';
+import { t } from '~/i18n';
 
 const lang = 'en' as const;
 const note = summary.noteEn || summary.note;
@@ -19,11 +20,10 @@ const disclaimer = dataDisclaimerEn || dataDisclaimer;
 
 <Layout
   metadata={{
-    title: 'Community Open Source',
-    description:
-      "Singapore's community AI open-source ecosystem — universities, international corporate labs, and startups contributing to open source.",
+    title: t(lang, 'communityOsPageTitle'),
+    description: t(lang, 'communityOsPageDesc'),
   }}
-  breadcrumbs={[{ label: 'Community Open Source' }]}
+  breadcrumbs={[{ label: t(lang, 'navCommunityOpensource') }]}
   lang={lang}
 >
   <section class="px-4 py-16 sm:px-6 mx-auto lg:px-8 max-w-6xl">

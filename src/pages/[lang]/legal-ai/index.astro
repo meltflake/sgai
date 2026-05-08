@@ -1,0 +1,170 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import Headline from '~/components/ui/Headline.astro';
+import { sections, dataDate, introBody, conclusion } from '~/data/legal-ai';
+import { legalItemSlug } from '~/utils/entity-pages';
+import { renderInlineMarkdown } from '~/utils/inline-markdown';
+import { NON_DEFAULT_ROUTE_LOCALES, t, localizedHref, type Lang } from '~/i18n';
+
+export function getStaticPaths() {
+  return NON_DEFAULT_ROUTE_LOCALES.map((lang) => ({ params: { lang } }));
+}
+
+const lang = Astro.params.lang as Lang;
+const isZh = lang === 'zh';
+
+const scopeLabelZh: Record<string, { label: string; color: string }> = {
+  training: { label: '训练侧', color: 'bg-emerald-100 dark:bg-emerald-900 text-emerald-800 dark:text-emerald-200' },
+  output: { label: '输出侧', color: 'bg-rose-100 dark:bg-rose-900 text-rose-800 dark:text-rose-200' },
+  liability: { label: '责任', color: 'bg-amber-100 dark:bg-amber-900 text-amber-800 dark:text-amber-200' },
+  governance: { label: '治理', color: 'bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200' },
+};
+
+const scopeLabelEn: Record<string, { label: string; color: string }> = {
+  training: { label: 'Training', color: 'bg-emerald-100 dark:bg-emerald-900 text-emerald-800 dark:text-emerald-200' },
+  output: { label: 'Output', color: 'bg-rose-100 dark:bg-rose-900 text-rose-800 dark:text-rose-200' },
+  liability: { label: 'Liability', color: 'bg-amber-100 dark:bg-amber-900 text-amber-800 dark:text-amber-200' },
+  governance: { label: 'Governance', color: 'bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200' },
+};
+
+const scopeLabel = isZh ? scopeLabelZh : scopeLabelEn;
+
+const introBodyEn = `Singapore's AI legal framework reduces to a single line: **permissive on training + strict on outputs**.
+
+- **Training side**: Legally acquired content (with or without copyright) can be used to train AI — among the world's most permissive regimes, on par with Japan.
+- **Output side**: Deepfakes, AI-generated intimate images, AI-driven disinformation, and election manipulation — strictly governed by a four-piece legislative bundle.
+
+This combination makes Singapore one of the **most predictable legal jurisdictions for AI companies** today: the boundaries of what you can and cannot do are clear. It is one of the key reasons EDB has been able to attract OpenAI, Anthropic, DeepMind, Mistral and others to set up here.`;
+
+const conclusionEn = `**Why this legal package is attractive to AI companies**:
+
+1. **Permissive training, strict outputs** — clear boundaries; you know what is and isn't allowed.
+2. **One-stop governance** — IMDA + MAS + CSA + MINLAW form a unified framework, no policy fragmentation.
+3. **Soft law as the default** — voluntary frameworks first, hard law only when the soft law is exceeded; gives industry room to adjust.
+4. **English common-law system** — judicial reasoning is highly transparent and reusable for cross-border legal opinions.
+
+This is one of the structural reasons OpenAI, Anthropic, DeepMind, Mistral and others have set up regional headquarters in Singapore — beyond capital, talent, and infrastructure, the legal certainty is itself a moat.`;
+
+const introContent = isZh ? introBody : introBodyEn;
+const conclusionContent = isZh ? conclusion : conclusionEn;
+---
+
+<Layout
+  metadata={{
+    title: t(lang, 'legalAiPageTitle'),
+    description: t(lang, 'legalAiPageDesc'),
+  }}
+  breadcrumbs={[{ label: t(lang, 'navLegalAi') }]}
+  lang={lang}
+>
+  <section class="px-4 py-16 sm:px-6 mx-auto lg:px-8 max-w-5xl">
+    <Headline
+      title={`⚖️ ${t(lang, 'legalAiPageTitle')}`}
+      subtitle={isZh
+        ? `数据更新：${dataDate}。"训练宽松 + 输出严管"双轨——这让新加坡成为目前世界上对 AI 公司最清晰可预测的法域之一。`
+        : `Last updated: ${dataDate}. "Permissive on training + strict on outputs" — a dual track that makes Singapore one of the world's most predictable jurisdictions for AI companies today.`}
+    />
+
+    <div class="callout-note rounded-lg mb-12 leading-relaxed">
+      <p class="font-bold text-base mb-3">{isZh ? '核心立场' : 'Core Position'}</p>
+      <div class="text-sm leading-relaxed space-y-3" set:html={renderInlineMarkdown(introContent)} />
+    </div>
+
+    {
+      sections.map((section, sectionIdx) => (
+        <div class="mb-16">
+          <h2 class="t-h2 mb-3 border-b-2 border-blue-600 dark:border-blue-400 pb-2">
+            {sectionIdx + 1}. {isZh ? section.title : section.titleEn || section.title}
+          </h2>
+          <p class="text-sm italic text-muted mb-6">
+            {isZh ? section.philosophy : section.philosophyEn || section.philosophy}
+          </p>
+
+          <div class="space-y-4">
+            {section.items.map((item) => (
+              <div class="group relative border border-subtle rounded-lg p-6 bg-surface hover:shadow-md hover:border-blue-300 dark:hover:border-blue-700 transition-all">
+                <a
+                  href={localizedHref(`/legal-ai/${legalItemSlug(item)}/`, lang)}
+                  class="absolute inset-0 z-0 rounded-lg"
+                  aria-label={isZh ? `查看 ${item.title} 详情` : `View details for ${item.titleEn}`}
+                />
+                <div class="flex items-start gap-2 flex-wrap mb-2">
+                  <h3 class="text-lg font-bold m-0 flex-1 min-w-0 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                    {isZh ? item.title : item.titleEn}
+                  </h3>
+                  <span class={`text-xs font-bold px-2 py-1 rounded shrink-0 ${scopeLabel[item.scope].color}`}>
+                    {scopeLabel[item.scope].label}
+                  </span>
+                  <span class="text-xs bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 px-2 py-1 rounded shrink-0">
+                    {isZh ? item.status : item.statusEn || item.status}
+                  </span>
+                </div>
+                {isZh && <p class="text-sm text-muted mb-3">{item.titleEn}</p>}
+                <div class="flex gap-2 mb-3 flex-wrap text-xs">
+                  {item.authorityUrl ? (
+                    <a
+                      href={item.authorityUrl}
+                      target="_blank"
+                      rel="noopener"
+                      class="relative z-10 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 px-2 py-1 rounded hover:underline"
+                    >
+                      {isZh ? item.authority : item.authorityEn || item.authority}
+                    </a>
+                  ) : (
+                    <span class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 px-2 py-1 rounded">
+                      {isZh ? item.authority : item.authorityEn || item.authority}
+                    </span>
+                  )}
+                  <span class="bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 px-2 py-1 rounded">
+                    {isZh ? item.date : item.dateEn || item.date}
+                  </span>
+                </div>
+                <p class="text-sm font-medium mb-2">{isZh ? item.summary : item.summaryEn || item.summary}</p>
+                <p class="text-sm text-muted mb-3">{isZh ? item.body : item.bodyEn || item.body}</p>
+                {item.sourceUrl && (
+                  <a
+                    href={item.sourceUrl}
+                    target="_blank"
+                    rel="noopener"
+                    class="relative z-10 text-sm text-blue-600 dark:text-blue-400 hover:underline"
+                  >
+                    {isZh ? '🔗 法律原文' : '🔗 Statute text'}
+                  </a>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      ))
+    }
+
+    <div class="mt-12 bg-surface rounded-xl p-8 border border-subtle">
+      <h2 class="t-h3 mb-4">
+        {isZh ? '为什么这套组合对 AI 公司有吸引力' : 'Why this combination is attractive to AI companies'}
+      </h2>
+      <div class="text-sm leading-relaxed space-y-3" set:html={renderInlineMarkdown(conclusionContent)} />
+    </div>
+
+    <div class="mt-12 text-sm text-muted text-center">
+      {isZh ? '延伸阅读：' : 'Further reading: '}
+      <a
+        href={localizedHref('/singapore-ai-native-companies-vs-nations/', lang)}
+        class="text-blue-600 dark:text-blue-400 hover:underline"
+      >
+        {
+          isZh
+            ? '从 50 人到 5,700,000 人——同一种 AI-native 架构'
+            : 'From 50 to 5,700,000 — the same AI-native architecture'
+        }
+      </a>
+      ·
+      <a href={localizedHref('/levers/', lang)} class="text-blue-600 dark:text-blue-400 hover:underline">
+        {isZh ? '国家 AI 抓手图谱' : 'National AI Levers'}
+      </a>
+      ·
+      <a href={localizedHref('/policies/', lang)} class="text-blue-600 dark:text-blue-400 hover:underline">
+        {isZh ? '完整政策库' : 'Full policy library'}
+      </a>
+    </div>
+  </section>
+</Layout>

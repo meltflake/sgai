@@ -3,9 +3,9 @@ import Layout from '~/layouts/PageLayout.astro';
 import Headline from '~/components/ui/Headline.astro';
 import DimensionCard from '~/components/data/DimensionCard.astro';
 import { dimensions, overallSummary, dataDate } from '~/data/tracker';
-import { getLangFromPath, localizedHref, pickLocalized, t, type Lang } from '~/i18n';
+import { localizedHref, pickLocalized, t } from '~/i18n';
 
-const lang: Lang = getLangFromPath(new URL(Astro.url).pathname);
+const lang = 'en' as const;
 const oneLiner = pickLocalized<string>(overallSummary, 'oneLiner', lang) ?? overallSummary.oneLiner;
 const methodologyNote =
   pickLocalized<string>(overallSummary, 'methodologyNote', lang) ?? overallSummary.methodologyNote;

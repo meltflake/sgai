@@ -1,0 +1,42 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import JsonLd from '~/components/common/JsonLd.astro';
+import HomePage from '~/components/home/HomePage.astro';
+import { NON_DEFAULT_ROUTE_LOCALES, IN_LANGUAGES, t, type Lang } from '~/i18n';
+
+export function getStaticPaths() {
+  return NON_DEFAULT_ROUTE_LOCALES.map((lang) => ({ params: { lang } }));
+}
+
+const lang = Astro.params.lang as Lang;
+
+const metadata = {
+  title: t(lang, 'siteName'),
+  ignoreTitleTemplate: true,
+  description: t(lang, 'siteDescription'),
+};
+
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: t(lang, 'siteName'),
+  url: 'https://sgai.md/',
+  logo: 'https://sgai.md/favicon.svg',
+  description: t(lang, 'siteDescription'),
+  sameAs: ['https://github.com/meltflake/sgai'],
+};
+
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: t(lang, 'siteName'),
+  url: 'https://sgai.md/',
+  inLanguage: IN_LANGUAGES[lang],
+};
+---
+
+<Layout metadata={metadata} lang={lang}>
+  <JsonLd schema={organizationSchema} />
+  <JsonLd schema={websiteSchema} />
+  <HomePage lang={lang} />
+</Layout>

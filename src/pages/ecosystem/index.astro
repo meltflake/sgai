@@ -3,17 +3,17 @@ import Layout from '~/layouts/PageLayout.astro';
 import Headline from '~/components/ui/Headline.astro';
 import { Icon } from 'astro-icon/components';
 import { ecosystemCategories } from '~/data/ecosystem';
+import { t } from '~/i18n';
 
 const lang = 'en' as const;
 ---
 
 <Layout
   metadata={{
-    title: 'Ecosystem Map',
-    description:
-      "Singapore's AI ecosystem map — government agencies, research institutes, corporates, and startups in one view.",
+    title: t(lang, 'ecosystemPageTitle'),
+    description: t(lang, 'ecosystemPageDesc'),
   }}
-  breadcrumbs={[{ label: 'Ecosystem Map' }]}
+  breadcrumbs={[{ label: t(lang, 'navEcosystem') }]}
   lang={lang}
 >
   <section class="px-4 py-16 sm:px-6 mx-auto lg:px-8 max-w-6xl">
