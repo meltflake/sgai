@@ -1,16 +1,17 @@
 ---
-// i18n — header language toggle.
+// i18n — header language switcher (globe icon + dropdown).
 //
-// Renders a cycling EN → 中 → 日本語 switch. Clicking navigates to the
-// next locale and persists the choice in localStorage.
+// Renders a globe icon button that opens a dropdown listing ALL available
+// locales. Current language is visually marked. One click to any language.
 //
-// Cycle order: en → zh → ja → en (always shows the NEXT language label).
+// Scales from 2 to N locales with zero code changes — just update LOCALES
+// in src/i18n/index.ts.
 //
 // IMPORTANT: uses document-level event delegation because Astro's
 // <ClientRouter> swaps the DOM during view transitions; per-element
 // listeners would be lost after the first navigation.
 
-import { type Lang, t } from '~/i18n';
+import { LOCALES, type Lang, t } from '~/i18n';
 
 interface Props {
   currentLang: Lang;
@@ -18,53 +19,185 @@ interface Props {
 }
 
 const { currentLang, class: extraClass = '' } = Astro.props;
-const CYCLE: Record<Lang, Lang> = { en: 'zh', zh: 'ja', ja: 'en' };
-const LABELS: Record<Lang, string> = { en: 'EN', zh: '中', ja: '日' };
-const nextLang = CYCLE[currentLang];
-const nextLabel = LABELS[nextLang];
-const ariaLabel = t(currentLang, 'langToggleLabel') || '切換語言';
+const ariaLabel = t(currentLang, 'langToggleLabel') || 'Switch language';
+
+// Native-script labels for each locale (always displayed in their own language)
+const LANG_LABELS: Record<Lang, string> = {
+  en: 'English',
+  zh: '中文',
+  ja: '日本語',
+};
+
+const locales = LOCALES.map((lang) => ({
+  code: lang,
+  label: LANG_LABELS[lang] || lang,
+  active: lang === currentLang,
+}));
 ---
 
-<button
-  type="button"
-  data-lang-toggle
-  data-next-lang={nextLang}
-  aria-label={ariaLabel}
-  title={ariaLabel}
-  class={`inline-flex items-center text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400 hover:text-primary border border-subtle hover:border-primary rounded-md px-2 py-1.5 min-w-[2rem] justify-center transition-colors ${extraClass}`}
->
-  <span aria-hidden="true">{nextLabel}</span>
-  <span class="sr-only">{ariaLabel}</span>
-</button>
+<div class={`relative ${extraClass}`} data-lang-switcher>
+  <button
+    type="button"
+    data-lang-trigger
+    aria-label={ariaLabel}
+    aria-expanded="false"
+    aria-haspopup="listbox"
+    class="inline-flex items-center gap-1.5 text-xs font-semibold text-gray-500 dark:text-gray-400 hover:text-primary border border-subtle hover:border-primary rounded-md px-2 py-1.5 transition-colors"
+  >
+    {/* Globe icon (Heroicons outline) */}
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke-width="1.5"
+      stroke="currentColor"
+      class="w-4 h-4"
+      aria-hidden="true"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5a17.92 17.92 0 0 1-8.716-2.247m0 0A8.966 8.966 0 0 1 3 12c0-1.97.633-3.793 1.708-5.272"
+      ></path>
+    </svg>
+    <span class="hidden sm:inline">{LANG_LABELS[currentLang]}</span>
+    {/* Chevron */}
+    <svg class="w-3 h-3 opacity-50" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+      <path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path>
+    </svg>
+  </button>
+
+  {/* Dropdown */}
+  <div
+    data-lang-dropdown
+    role="listbox"
+    aria-label={ariaLabel}
+    class="hidden absolute right-0 top-full mt-1 z-50 min-w-[140px] bg-white dark:bg-slate-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg py-1 animate-fade-in"
+  >
+    {
+      locales.map(({ code, label, active }) => (
+        <button
+          type="button"
+          role="option"
+          aria-selected={active ? 'true' : 'false'}
+          data-lang-option={code}
+          class={`w-full text-left px-3 py-2 text-sm flex items-center justify-between gap-3 transition-colors
+            ${active ? 'text-primary font-semibold bg-primary/5' : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'}`}
+        >
+          <span>{label}</span>
+          {active && (
+            <svg class="w-4 h-4 text-primary" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path
+                fill-rule="evenodd"
+                d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                clip-rule="evenodd"
+              />
+            </svg>
+          )}
+        </button>
+      ))
+    }
+  </div>
+</div>
 
 <script is:inline>
-  if (!window.__sgaiLangToggleBound) {
-    window.__sgaiLangToggleBound = true;
-    document.addEventListener('click', function (e) {
-      const target = e.target;
-      if (!(target instanceof Element)) return;
-      const btn = target.closest('[data-lang-toggle]');
-      if (!btn) return;
-      const nextLang = btn.getAttribute('data-next-lang');
-      if (nextLang !== 'zh' && nextLang !== 'en' && nextLang !== 'ja') return;
-      try {
-        localStorage.setItem('sgai_lang', nextLang);
-      } catch {
-        /* private mode */
-      }
+  if (!window.__sgaiLangSwitcherBound) {
+    window.__sgaiLangSwitcherBound = true;
+
+    function localeUrl(targetLang) {
       const path = location.pathname;
-      // Strip any existing locale prefix.
       let bare = path;
       if (path === '/zh' || path === '/zh/') bare = '/';
       else if (path.indexOf('/zh/') === 0) bare = path.slice(3);
       else if (path === '/ja' || path === '/ja/') bare = '/';
       else if (path.indexOf('/ja/') === 0) bare = path.slice(3);
-      // Add target prefix (en = root, zh = /zh, ja = /ja).
-      let dest;
-      if (nextLang === 'en') dest = bare;
-      else if (bare === '/' || bare === '') dest = '/' + nextLang + '/';
-      else dest = '/' + nextLang + bare;
-      location.assign(dest + location.search + location.hash);
+      if (targetLang === 'en') return bare || '/';
+      if (bare === '/' || bare === '') return '/' + targetLang + '/';
+      return '/' + targetLang + bare;
+    }
+
+    // Toggle dropdown
+    document.addEventListener('click', function (e) {
+      const target = e.target;
+      if (!(target instanceof Element)) return;
+
+      // Click on trigger button
+      const trigger = target.closest('[data-lang-trigger]');
+      if (trigger) {
+        const switcher = trigger.closest('[data-lang-switcher]');
+        const dropdown = switcher && switcher.querySelector('[data-lang-dropdown]');
+        if (!dropdown) return;
+        const isOpen = !dropdown.classList.contains('hidden');
+        // Close all dropdowns first
+        document.querySelectorAll('[data-lang-dropdown]').forEach(function (d) {
+          d.classList.add('hidden');
+        });
+        document.querySelectorAll('[data-lang-trigger]').forEach(function (t) {
+          t.setAttribute('aria-expanded', 'false');
+        });
+        if (!isOpen) {
+          dropdown.classList.remove('hidden');
+          trigger.setAttribute('aria-expanded', 'true');
+        }
+        return;
+      }
+
+      // Click on language option
+      const option = target.closest('[data-lang-option]');
+      if (option) {
+        const lang = option.getAttribute('data-lang-option');
+        if (!lang) return;
+        try {
+          localStorage.setItem('sgai_lang', lang);
+        } catch {
+          /* private mode */
+        }
+        // Don't navigate if already on this language
+        if (option.getAttribute('aria-selected') === 'true') {
+          document.querySelectorAll('[data-lang-dropdown]').forEach(function (d) {
+            d.classList.add('hidden');
+          });
+          return;
+        }
+        location.assign(localeUrl(lang) + location.search + location.hash);
+        return;
+      }
+
+      // Click outside — close all dropdowns
+      document.querySelectorAll('[data-lang-dropdown]').forEach(function (d) {
+        d.classList.add('hidden');
+      });
+      document.querySelectorAll('[data-lang-trigger]').forEach(function (t) {
+        t.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    // Escape key closes dropdown
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') {
+        document.querySelectorAll('[data-lang-dropdown]').forEach(function (d) {
+          d.classList.add('hidden');
+        });
+        document.querySelectorAll('[data-lang-trigger]').forEach(function (t) {
+          t.setAttribute('aria-expanded', 'false');
+        });
+      }
     });
   }
 </script>
+
+<style>
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-4px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  .animate-fade-in {
+    animation: fadeIn 0.15s ease-out;
+  }
+</style>

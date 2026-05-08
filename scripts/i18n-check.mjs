@@ -63,8 +63,9 @@ const LANG_CONFIG = {
       // LangBanner: invite user to switch to zh.
       '中文版可用',
       '阅读中文版',
-      // LanguageToggle: target-language button label.
-      '中',
+      // LanguageToggle: dropdown language labels.
+      '中文',
+      '日本語',
     ],
   },
   ja: {
