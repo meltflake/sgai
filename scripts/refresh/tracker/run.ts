@@ -18,11 +18,15 @@ await runPipeline({
   updateType: 'tracker',
   updateLabels: {
     title: '仪表盘新增数据信号',
+    titleJa: 'ダッシュボードに新規データ信号を追加',
     titleEn: 'Tracker dashboard new data signals',
     summary: '从 IMDA / EDB / Stanford HAI 抓到的新一批 6 维度信号，进入待审队列。',
+    summaryJa:
+      'IMDA / EDB / Stanford HAI から取得した6次元の新しい信号群を、審査待ちキューに登録しました。',
     summaryEn: 'New tracker signals across the 6 dimensions auto-discovered from IMDA / EDB / Stanford HAI, queued for review.',
     listingHref: '/tracker/',
     listingLabel: 'AI 仪表盘',
+    listingLabelJa: 'AI ダッシュボード',
     listingLabelEn: 'AI dashboard',
   },
   sources: [

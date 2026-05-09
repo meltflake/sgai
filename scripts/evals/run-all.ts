@@ -40,6 +40,11 @@ const STAGES: Stage[] = [
     needsDist: false,
   },
   {
+    name: 'updates-ledger',
+    cmd: ['npx', 'tsx', 'scripts/evals/updates-ledger/check.ts'],
+    needsDist: false,
+  },
+  {
     name: 'i18n-coverage:layer-bcd',
     cmd: ['npx', 'tsx', 'scripts/evals/i18n-coverage/check.ts', '--layer=b,c,d'],
     needsDist: true,

@@ -119,11 +119,16 @@ async function main(): Promise<void> {
         date: new Date().toISOString().slice(0, 10),
         type: 'ecosystem',
         title: `生态地图新增 ${emitResult.recordsAdded} 条待审条目`,
+        titleJa: `エコシステムマップに${emitResult.recordsAdded}件の審査待ち項目を追加`,
         titleEn: `${emitResult.recordsAdded} new ecosystem entries (pending review)`,
         summary: '从 e27 / tech.gov.sg 抓到的新生态信号已入库，待审核后展示。',
+        summaryJa:
+          'e27 / tech.gov.sg から取得した新しいエコシステム信号を `_pendingReview: true` で登録しました。審査後に表示されます。',
         summaryEn:
           'New ecosystem signals from e27 / tech.gov.sg ingested with `_pendingReview: true`, hidden from listing until reviewed.',
-        links: [{ href: '/ecosystem/', label: '生态地图', labelEn: 'Ecosystem map' }],
+        links: [
+          { href: '/ecosystem/', label: '生态地图', labelJa: 'エコシステムマップ', labelEn: 'Ecosystem map' },
+        ],
       });
       process.stdout.write('  appended updates feed entry (ecosystem)\n');
     } catch (err) {

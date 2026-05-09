@@ -145,11 +145,16 @@ async function main(): Promise<void> {
         date: new Date().toISOString().slice(0, 10),
         type: 'policy',
         title: `新增 ${emitResult.recordsAdded} 条政策档案`,
+        titleJa: `${emitResult.recordsAdded}件のポリシーアーカイブを追加`,
         titleEn: `${emitResult.recordsAdded} new policy entries`,
         summary: '从 SmartNation / MAS / IMDA / PDPC / AI Verify 抓到的最新 AI 政策已入库。',
+        summaryJa:
+          'SmartNation / MAS / IMDA / PDPC / AI Verify から取得した最新の AI ポリシーをライブラリーに登録しました。',
         summaryEn:
           'Fresh AI advisories from SmartNation / MAS / IMDA / PDPC / AI Verify ingested into the policy library.',
-        links: [{ href: '/policies/', label: '政策库', labelEn: 'Policy library' }],
+        links: [
+          { href: '/policies/', label: '政策库', labelJa: 'ポリシーライブラリー', labelEn: 'Policy library' },
+        ],
       });
       process.stdout.write('  appended updates feed entry (policy)\n');
     } catch (err) {

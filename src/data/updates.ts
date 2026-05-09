@@ -49,6 +49,19 @@ export interface Update {
 // Newest first. Pipelines append at the top via scripts/lib/append-update.ts.
 export const UPDATES: Update[] = [
   {
+    date: '2026-05-09',
+    type: 'video',
+    title: 'AI 视频新增 2 条（教育部长 + 社会及家庭发展部长）',
+    titleJa: 'AI ビデオを2件追加（教育大臣 + 社会・家族発展大臣）',
+    titleEn: '2 new AI videos (Education Minister + Minister for Social and Family Development)',
+    summary: '李智陞谈在教育中谨慎、有目的地引入 AI；马斯戈在圣加仑论坛上强调 AI 推进不应遗漏弱势群体。',
+    summaryJa:
+      'デズモンド・リーは教育におけるAIの慎重で目的を持った導入を語り、マサゴスはサンガレン・シンポジウムでAI推進が脆弱層を取り残してはならないと強調しました。',
+    summaryEn:
+      'Desmond Lee on a calibrated, purposeful approach to AI in classrooms; Masagos at the St Gallen Symposium on inclusion as a non-negotiable in AI rollout.',
+    links: [{ href: '/videos/', label: 'AI 视频观点', labelJa: 'AI ビデオ観点', labelEn: 'Video library' }],
+  },
+  {
     date: '2026-05-05',
     type: 'site',
     title: '首页加上「最近更新」模块',

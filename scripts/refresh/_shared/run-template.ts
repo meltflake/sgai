@@ -43,15 +43,19 @@ export interface PipelineConfig {
    *  Skipped if absent or if zero entries were appended. */
   updateType?: UpdateType;
   /** Customise the updates feed wording; falls back to a generic
-   *  "+N <domain> entries" line. */
+   *  "+N <domain> entries" line. JA fields are required so the JA
+   *  homepage feed does not fall back to Chinese. */
   updateLabels?: {
     title: string; // 中文
+    titleJa: string;
     titleEn: string;
     summary: string;
+    summaryJa: string;
     summaryEn: string;
     /** Listing page link, e.g. /startups/. Required for the link to render. */
     listingHref?: string;
     listingLabel?: string; // 中文
+    listingLabelJa?: string;
     listingLabelEn?: string;
   };
 }
@@ -223,13 +227,18 @@ export async function runPipeline(config: PipelineConfig): Promise<void> {
     try {
       const labels = config.updateLabels;
       const fallbackTitle = `新增 ${result.added} 条 ${config.domain} 待审条目`;
+      const fallbackTitleJa = `${config.domain}に${result.added}件の審査待ち項目を追加`;
       const fallbackTitleEn = `${result.added} new ${config.domain} entries (pending review)`;
       appendUpdate({
         date: today,
         type: config.updateType,
         title: labels?.title ?? fallbackTitle,
+        titleJa: labels?.titleJa ?? fallbackTitleJa,
         titleEn: labels?.titleEn ?? fallbackTitleEn,
         summary: labels?.summary ?? `${config.domain} 自动发现管线本轮新增 ${result.added} 条，进入待审队列。`,
+        summaryJa:
+          labels?.summaryJa ??
+          `${config.domain} 自動発見パイプラインで${result.added}件を追加し、審査待ちキューに登録しました。`,
         summaryEn:
           labels?.summaryEn ??
           `${config.domain} auto-discovery added ${result.added} entries to the pending-review queue.`,
@@ -238,6 +247,7 @@ export async function runPipeline(config: PipelineConfig): Promise<void> {
               {
                 href: labels.listingHref,
                 label: labels.listingLabel ?? labels.listingHref,
+                labelJa: labels.listingLabelJa ?? labels.listingLabelEn ?? labels.listingLabel ?? labels.listingHref,
                 labelEn: labels.listingLabelEn ?? labels.listingLabel ?? labels.listingHref,
               },
             ]

@@ -10,15 +10,22 @@
 //     date: '2026-05-05',
 //     type: 'policy',
 //     title: '新增 3 条政策档案',
+//     titleJa: '3件のポリシーアーカイブを追加',
 //     titleEn: '3 new policy entries',
 //     summary: '本周新增 3 条政策，涉及 MDDI / IMDA。',
+//     summaryJa: '今週、MDDI / IMDA からの3件のポリシーを追加しました。',
 //     summaryEn: 'Three new policy entries from MDDI / IMDA.',
-//     links: [{ href: '/policies/foo/', label: 'Foo', labelEn: 'Foo' }],
+//     links: [{ href: '/policies/foo/', label: 'Foo', labelJa: 'Foo', labelEn: 'Foo' }],
 //   });
 //
 // Inserts the entry at the TOP of the UPDATES array so the freshest item
 // is first. Validates i18n pairing post-write (regression delta only) and
 // rolls back on regression — same contract as auto-discovered-emit.
+//
+// JA fields (titleJa / summaryJa / labelJa) are REQUIRED so the JA homepage
+// does not fall back to Chinese on auto-PR'd entries. If you can't write
+// JA by hand, run the source strings through `scripts/lib/translate.ts`
+// with direction='zh→ja' before calling appendUpdate.
 
 import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
@@ -42,6 +49,7 @@ export type UpdateType =
 export interface UpdateLinkInput {
   href: string;
   label: string;
+  labelJa: string;
   labelEn: string;
 }
 
@@ -49,8 +57,10 @@ export interface UpdateInput {
   date: string;
   type: UpdateType;
   title: string;
+  titleJa: string;
   titleEn: string;
   summary: string;
+  summaryJa: string;
   summaryEn: string;
   links?: UpdateLinkInput[];
 }
@@ -67,6 +77,7 @@ function formatLink(link: UpdateLinkInput): string {
     '      {',
     `        href: '${escapeQuote(link.href)}',`,
     `        label: '${escapeQuote(link.label)}',`,
+    `        labelJa: '${escapeQuote(link.labelJa)}',`,
     `        labelEn: '${escapeQuote(link.labelEn)}',`,
     '      },',
   ].join('\n');
@@ -78,8 +89,10 @@ function formatEntry(e: UpdateInput): string {
   lines.push(`    date: '${escapeQuote(e.date)}',`);
   lines.push(`    type: '${e.type}',`);
   lines.push(`    title: '${escapeQuote(e.title)}',`);
+  lines.push(`    titleJa: '${escapeQuote(e.titleJa)}',`);
   lines.push(`    titleEn: '${escapeQuote(e.titleEn)}',`);
   lines.push(`    summary: '${escapeQuote(e.summary)}',`);
+  lines.push(`    summaryJa: '${escapeQuote(e.summaryJa)}',`);
   lines.push(`    summaryEn: '${escapeQuote(e.summaryEn)}',`);
   if (e.links && e.links.length > 0) {
     lines.push('    links: [');
@@ -115,11 +128,13 @@ export function appendUpdate(
 
   const baselineCount = findUnpairedFields(file, {
     fields: ['title', 'summary', 'label'],
+    locales: ['en', 'ja'],
   }).length;
   writeFileSync(file, updated);
 
   const issuesAfter = findUnpairedFields(file, {
     fields: ['title', 'summary', 'label'],
+    locales: ['en', 'ja'],
   });
   if (issuesAfter.length > baselineCount) {
     writeFileSync(file, original);

@@ -307,11 +307,16 @@ async function main(): Promise<void> {
         date: new Date().toISOString().slice(0, 10),
         type: 'lever',
         title: `抓手图谱新增 ${enriched.length} 条待审条目`,
+        titleJa: `レバーマップに${enriched.length}件の審査待ち項目を追加`,
         titleEn: `${enriched.length} new lever items (pending review)`,
         summary: '从 IMDA / tech.gov.sg / EDB 抓到新的资金 / 项目 / 数据中心等抓手信号。',
+        summaryJa:
+          'IMDA / tech.gov.sg / EDB から、新しい資金・プロジェクト・データセンターなどのレバー信号を取得しました。',
         summaryEn:
           'New lever signals (programmes, funds, data-centre deals) auto-discovered from IMDA / tech.gov.sg / EDB.',
-        links: [{ href: '/levers/', label: '国家 AI 抓手图谱', labelEn: 'National AI levers' }],
+        links: [
+          { href: '/levers/', label: '国家 AI 抓手图谱', labelJa: '国家 AI レバーマップ', labelEn: 'National AI levers' },
+        ],
       });
       process.stdout.write('  appended updates feed entry (lever)\n');
     } catch (err) {

@@ -25,11 +25,15 @@ await runPipeline({
   updateType: 'people',
   updateLabels: {
     title: '人才培养自动发现新增条目',
+    titleJa: '人材育成の自動発見項目を追加',
     titleEn: 'Talent pipeline auto-discovery batch',
     summary: '从 AISG / IMDA / tech.gov.sg 抓到的新一批人才培养计划，进入待审队列。',
+    summaryJa:
+      'AISG / IMDA / tech.gov.sg から取得した新しい人材育成・教育プログラム群を、審査待ちキューに登録しました。',
     summaryEn: 'New talent / education programmes auto-discovered from AISG / IMDA / tech.gov.sg, queued for review.',
     listingHref: '/talent/',
     listingLabel: '人才培养',
+    listingLabelJa: '人材育成',
     listingLabelEn: 'Talent pipeline',
   },
   sources: [

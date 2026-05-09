@@ -30,6 +30,7 @@
     "eval": "tsx scripts/evals/run-all.ts",
     "eval:url": "tsx scripts/evals/url-health/check.ts",
     "eval:i18n": "tsx scripts/evals/i18n-coverage/check.ts",
+    "eval:updates-ledger": "tsx scripts/evals/updates-ledger/check.ts",
     "refresh:github-stars": "tsx scripts/refresh/github-stars.ts",
     "generate:og-image": "node scripts/generate-og-image.mjs",
     "fetch:video-transcripts": "tsx scripts/videos/fetch-transcripts.ts",

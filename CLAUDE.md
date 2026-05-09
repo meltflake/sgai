@@ -53,11 +53,12 @@ npm run build && npm run check:dist
 不同于 `check`（每 PR 跑、源码层、零成本）和 `check:dist`（PR 前手动、构建产物层），**evals 跑模型/数据层回归**——周一 cron 扫一次，发现新增 broken URL / 漏翻字段 / 三语缺漏自动开 issue。计划见 [`docs/20260509-evals-plan.md`](docs/20260509-evals-plan.md)，使用见 [`scripts/evals/README.md`](scripts/evals/README.md)。
 
 ```bash
-npm run eval                       # 全部（URL 健康 + i18n Layer A）
+npm run eval                       # 全部（URL 健康 + i18n Layer A + updates ledger）
 npm run eval:url                   # 全量扫 sourceUrl 可达性（CLAUDE.md rule #6 的存量巡检兜底）
 npm run eval:url -- --changed-only # 只扫 PR 改过的 src/data/*.ts
 npm run eval:i18n -- --layer=a     # 数据层：每条 record 的 CJK 字段 *En + *Ja 配对（zero-cost）
 npm run eval:i18n -- --layer=all   # +B sitemap parity / +C hreflang parity / +D 语言纯度（需 build）
+npm run eval:updates-ledger        # 数据文件改了但 src/data/updates.ts 没追加 → fail（防 2026-05-09 那次"最近更新"漏记）
 ```
 
 cron 入口：`scripts/refresh/registry.json` → `id=evals`，weekly schedule。
@@ -151,6 +152,22 @@ npx prettier --write src/
 > 强制点：`scripts/voices/prospect-stubs.mjs apply` 在 print TS 片段前会 HEAD-check 所有 sourceUrl，4xx/5xx（除 401/403/429）blocks apply 退码 2。新加的"靠 LLM 补脑"型管线**必须**复用同样的 `validateUrls()` 检查。
 
 历史踩点：[c574e54](https://github.com/meltflake/sgai/commit/c574e54)（2026-05-03 voices backfill）写入 2 条编造 URL（`spkr4563-prof-mohan-kankanhalli`、`asianaviation.com/astar-sia-siaec-...`），加 2 条 weforum 反爬伪 404。当时无 URL 校验，靠用户事后报错才发现。本规则即此次事故的事后加固。
+
+### 7. updates.ts 双源约定（关键 — 最高优先级）
+
+> **🔴 顶层硬规则：任何对 `src/data/{videos,policies,debates,people,tracker,benchmarking,ecosystem,levers,startups,legal-ai,talent}.ts` 的"加新条目"操作必须同 commit 追加 `src/data/updates.ts` 一条 type 匹配的条目，三语齐全（`title` + `titleJa` + `titleEn` 等）。**
+>
+> sgai 首页"最近更新"模块（[`src/components/home/RecentUpdates.astro`](src/components/home/RecentUpdates.astro)）的数据源是 `src/data/updates.ts`——一个**手动维护的 ledger**，不是从数据文件派生的。绕过 ledger 的更新会让首页 / RSS / llms.txt 集体看不到新增内容。
+>
+> - ✅ 走标准 emit 管线（`scripts/refresh/<domain>/run.ts` 或 `scripts/refresh/videos/emit.ts`）：管线已经自动调 `appendUpdate()`，commit 内自带 updates.ts 改动。
+> - ✅ 手动直接编辑数据文件（包括 fix PR、补漏、回填）：必须**同 commit** 手写 `src/data/updates.ts` 顶部一条新 entry。
+> - ❌ 禁止"先合数据 PR，下一个 PR 补 ledger"。`scripts/evals/updates-ledger/check.ts` 会 fail。
+> - ✅ JA 字段必须填，**不要**只写 zh + en 让前端 fallback 到中文 ——`appendUpdate(UpdateInput)` 的 `titleJa` / `summaryJa` / `labelJa` 是**必填**字段。
+> - ✅ 仅修 typo / 重构 / 翻译回填（净增 < 5 行）的 commit 不需要 ledger 条目，eval 默认按 `--min-added=5` 跳过。
+>
+> 强制点：`npm run eval:updates-ledger` 扫最近 14 天 git log，对每个数据文件 commit 检查 ledger 在同 commit 或 ±3 天窗口内有 type 匹配的 entry。无则 FAIL，cron 周一开 GitHub issue。
+
+历史踩点：[a608bc0](https://github.com/meltflake/sgai/commit/a608bc0)（2026-05-09 videos 手动 fix）补 v059/v060 但漏掉 updates.ts，首页"最近更新"看不到当天新增视频。当时 evals 里没有 ledger 覆盖检查。本规则即此次事故的事后加固。
 
 ## 项目结构
 

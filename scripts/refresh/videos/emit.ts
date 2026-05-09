@@ -658,16 +658,19 @@ async function main() {
         date: new Date().toISOString().slice(0, 10),
         type: 'video',
         title: `AI 视频新增 ${approved.length} 条`,
+        titleJa: `AI ビデオを${approved.length}件追加`,
         titleEn: `${approved.length} new AI video${approved.length > 1 ? 's' : ''}`,
         summary: '本批新增视频带中英双语转录，可全文搜索 + LLM 引用。',
+        summaryJa: '今回追加されたビデオには中英二言語のトランスクリプションが付属し、全文検索とLLM参照が可能です。',
         summaryEn: 'New videos ship with bilingual transcripts — full-text searchable and LLM-citable.',
         links: [
           ...approved.slice(0, 3).map((e) => ({
             href: `/videos/${e.id}/`,
             label: e.fields.title,
+            labelJa: e.fields.titleJa ?? e.fields.titleEn,
             labelEn: e.fields.titleEn,
           })),
-          { href: '/videos/', label: 'AI 视频观点', labelEn: 'Video library' },
+          { href: '/videos/', label: 'AI 视频观点', labelJa: 'AI ビデオ観点', labelEn: 'Video library' },
         ],
       });
       console.log('  ✓ appended updates feed entry (video)');

@@ -322,11 +322,16 @@ async function main(): Promise<void> {
         date: new Date().toISOString().slice(0, 10),
         type: 'policy',
         title: `AI 法律框架新增 ${enriched.length} 条待审条目`,
+        titleJa: `AI 法的フレームワークに${enriched.length}件の審査待ち項目を追加`,
         titleEn: `${enriched.length} new AI legal-framework items (pending review)`,
         summary: '从 PDPC / IMDA / MAS 抓到新的 AI 法规、咨询、规范，进入待审 section。',
+        summaryJa:
+          'PDPC / IMDA / MAS から新しい AI 規制・諮問・規範を取得し、審査待ちセクションに登録しました。',
         summaryEn:
           'New AI legal / regulatory advisories auto-discovered from PDPC / IMDA / MAS, queued in the pending-review section.',
-        links: [{ href: '/legal-ai/', label: 'AI 法律框架', labelEn: 'AI legal framework' }],
+        links: [
+          { href: '/legal-ai/', label: 'AI 法律框架', labelJa: 'AI 法的フレームワーク', labelEn: 'AI legal framework' },
+        ],
       });
       process.stdout.write('  appended updates feed entry (legal-ai → policy)\n');
     } catch (err) {
