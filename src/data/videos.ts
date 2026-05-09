@@ -94,6 +94,52 @@ export const SPEAKER_TYPE_LABELS_EN: Record<string, string> = {
 
 export const videos: VideoItem[] = [
   {
+    id: 'v059',
+    title: '李智陞：在教育中谨慎、有目的地引入 AI',
+    titleEn: 'Education Minister Desmond Lee: A Calibrated, Purposeful Approach to AI in Education',
+    titleJa: 'デズモンド・リー教育大臣：教育におけるAI導入は慎重かつ目的を持って',
+    speaker: 'Desmond Lee',
+    speakerTitle: '新加坡教育部长',
+    speakerTitleEn: 'Minister for Education, Singapore',
+    speakerTitleJa: 'シンガポール教育大臣',
+    speakerType: 'government',
+    date: '2026-05-06',
+    duration: '34:25',
+    summary: '新加坡教育部以学习科学研究为依据，采取「校准式」推进——AI 仅在服务于教学目标和学生发展时才被引入课堂。',
+    summaryEn:
+      "Singapore's Ministry of Education takes a calibrated, evidence-led approach to AI in schools: tools are introduced only when they serve clear educational objectives and student development.",
+    summaryJa:
+      'シンガポール教育省は、学習科学の研究を踏まえた「校正型」のアプローチを採用しており、教育目標と生徒の発達に資する場合にのみAIを教室に導入します。',
+    topic: 'AI 人才与教育',
+    topicEn: 'AI Talent & Education',
+    topicJa: 'AI 人材と教育',
+    youtubeUrl: 'https://www.youtube.com/watch?v=ERhfED1fIfY',
+    channel: 'CNA',
+  },
+  {
+    id: 'v060',
+    title: '马斯戈：AI 推进不应遗漏弱势群体',
+    titleEn: 'Masagos: No Vulnerable Group Should Be Left Behind in AI Push',
+    titleJa: 'マサゴス：AI推進で脆弱な層を取り残してはならない（サンガレン・シンポジウム）',
+    speaker: 'Masagos Zulkifli',
+    speakerTitle: '社会及家庭发展部长',
+    speakerTitleEn: 'Minister for Social and Family Development, Singapore',
+    speakerTitleJa: 'シンガポール社会・家族発展大臣',
+    speakerType: 'government',
+    date: '2026-05-08',
+    duration: '02:33',
+    summary: '社会及家庭发展部长马斯戈在圣加仑论坛上强调，AI 推进必须兼顾弱势群体，避免技术红利只惠及少数人。',
+    summaryEn:
+      'Minister for Social and Family Development Masagos Zulkifli, speaking at the St Gallen Symposium, stressed that AI rollouts must include vulnerable groups so that the technology gains do not bypass them.',
+    summaryJa:
+      '社会・家族発展大臣マサゴス・ズルキフリは、サンガレン・シンポジウムで、AI推進は脆弱な層を含めるべきで、技術の恩恵が一部だけに偏ってはならないと強調しました。',
+    topic: 'AI 治理与监管',
+    topicEn: 'AI Governance & Regulation',
+    topicJa: 'AI ガバナンスと規制',
+    youtubeUrl: 'https://www.youtube.com/watch?v=D8yhiLHzaTA',
+    channel: 'CNA',
+  },
+  {
     id: 'v055',
     title: 'AI培训课程招生翻倍增长',
     titleJa: 'AI 研修コース募集が倍増',

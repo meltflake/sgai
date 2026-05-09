@@ -88,17 +88,67 @@ AI_KEYWORDS = [
     r"compute infrastructure",
 ]
 
-# 新加坡相关关键词（用于 WEF/Bloomberg 等国际频道的二次过滤）
+# 新加坡相关关键词（用于 CNA/ST/WEF/Bloomberg 等非纯本地频道的二次过滤）
+# 维护规则：现任内阁部长 + 国务部长（含 AI 相关 portfolio）+ 主要部委缩写 +
+# 政府/法定机构 + 通用兜底。新内阁名单变动后必须同步更新。
 SG_KEYWORDS = [
     r"singapore",
-    r"josephine teo",
-    r"tharman",
+    # 现任内阁（PM / DPM / 总统）
     r"lawrence wong",
-    r"balakrishnan",
+    r"gan kim yong",
+    r"heng swee keat",
+    r"tharman",
+    # 现任部长（AI 相关 portfolio 优先）
+    r"josephine teo",       # MDDI 通讯及新闻部长
+    r"vivian balakrishnan", # 外交
+    r"\bbalakrishnan\b",
+    r"desmond lee",         # 教育 + 国发
+    r"chan chun sing",      # 公共服务 / 前教育
+    r"ong ye kung",         # 卫生
+    r"edwin tong",          # 律政 + 文化社区青年
+    r"k shanmugam",         # 内政 + 国安统筹
+    r"\bshanmugam\b",
+    r"tan see leng",        # 人力 + 第二贸工
+    r"masagos zulkifli",    # 社会及家庭
+    r"\bmasagos\b",         # 媒体经常单用 firstname
+    r"indranee rajah",      # 总理公署 / 第二财政 / 第二国发
+    # 国务部长 / 高级政务部长（数字相关）
+    r"janil puthucheary",   # 数字发展高级政务部长
+    r"tan kiat how",        # MDDI SMS
+    r"rahayu mahzam",       # 数字发展 SMS
+    r"alvin tan",           # MTI / MCCY SMS
+    # 部委缩写
     r"smart nation",
-    r"imda",
-    r"\bmddi\b",
-    r"\bmci\b.*singapore",
+    r"\bimda\b",            # Infocomm Media Development Authority
+    r"\bmddi\b",            # Ministry of Digital Development and Information
+    r"\bmoe\b",             # Education
+    r"\bmoh\b",             # Health
+    r"\bmom\b",             # Manpower
+    r"\bmti\b",             # Trade and Industry
+    r"\bmha\b",             # Home Affairs
+    r"\bmsf\b",             # Social and Family Development
+    r"\bmnd\b",             # National Development
+    r"\bmccy\b",            # Culture, Community and Youth
+    r"\bmlaw\b",            # Law
+    r"\bminlaw\b",
+    r"\bmci\b.*singapore",  # 旧 MCI
+    # 政府 / 法定机构
+    r"government technology agency",
+    r"\bgovtech\b",
+    r"\bnrf\b.*singapore",
+    r"national research foundation",
+    r"\bedb\b.*singapore",
+    r"economic development board",
+    r"\bmas\b.*singapore",
+    r"monetary authority of singapore",
+    r"\biras\b",
+    r"infocomm media development authority",
+    r"ai singapore|\baisg\b",
+    # 通用兜底（媒体经常用 "Singapore minister"/"S'pore" 行文）
+    r"singapore.*minist",
+    r"minist.*singapore",
+    r"s'pore",
+    r"\bsg\b.*\b(ai|govern|polic|digital|minist)",
 ]
 
 # 纯 SG 政府/机构频道（豁免 SG 关键词二次过滤）。
@@ -166,15 +216,25 @@ def _parse_relative_time(text: str, now: datetime) -> str:
 
 
 def _walk_video_renderers(obj, depth: int = 0):
-    """递归遍历 ytInitialData，yield 所有 videoRenderer。"""
+    """递归遍历 ytInitialData，yield 所有视频条目。
+
+    YouTube 频道 /videos 页面的 ytInitialData 形状随时间演进过几次：
+    - 老版：videoRenderer / gridVideoRenderer
+    - 中间版：richItemRenderer.content.videoRenderer
+    - 2025+ 新版：lockupViewModel (contentType=LOCKUP_CONTENT_TYPE_VIDEO)
+
+    我们把三种都归一化成一个 dict，让 fetch_channel_via_html 可以统一处理。
+    """
     if depth > 25:
         return
     if isinstance(obj, dict):
         if "videoRenderer" in obj:
-            yield obj["videoRenderer"]
+            yield ("legacy", obj["videoRenderer"])
         rich = obj.get("richItemRenderer", {}).get("content", {}).get("videoRenderer")
         if rich:
-            yield rich
+            yield ("legacy", rich)
+        if obj.get("contentType") == "LOCKUP_CONTENT_TYPE_VIDEO" and "contentId" in obj:
+            yield ("lockup", obj)
         for v in obj.values():
             yield from _walk_video_renderers(v, depth + 1)
     elif isinstance(obj, list):
@@ -214,38 +274,68 @@ def fetch_channel_via_html(channel_key: str, channel_info: dict) -> list[dict]:
     entries: list[dict] = []
     seen: set[str] = set()
 
-    for vr in _walk_video_renderers(data):
-        vid = vr.get("videoId")
-        if not vid or vid in seen:
+    for shape, vr in _walk_video_renderers(data):
+        if shape == "legacy":
+            vid = vr.get("videoId")
+            if not vid or vid in seen:
+                continue
+            seen.add(vid)
+
+            title_runs = vr.get("title", {}).get("runs", [])
+            title = title_runs[0].get("text", "") if title_runs else vr.get("title", {}).get("simpleText", "")
+
+            published_rel = vr.get("publishedTimeText", {}).get("simpleText", "")
+            date_str = _parse_relative_time(published_rel, now) if published_rel else ""
+
+            desc_parts = []
+            for snip in vr.get("detailedMetadataSnippets", []) or []:
+                for run in snip.get("snippetText", {}).get("runs", []) or []:
+                    desc_parts.append(run.get("text", ""))
+            summary = "".join(desc_parts) or vr.get("descriptionSnippet", {}).get("simpleText", "")
+        else:  # lockup (2025+ schema)
+            vid = vr.get("contentId")
+            if not vid or vid in seen:
+                continue
+            seen.add(vid)
+
+            mdv = vr.get("metadata", {}).get("lockupMetadataViewModel", {})
+            title = mdv.get("title", {}).get("content", "")
+
+            # metadataParts: [views, relative-time]; relative-time 一般在第二格
+            published_rel = ""
+            for row in mdv.get("metadata", {}).get("contentMetadataViewModel", {}).get("metadataRows", []) or []:
+                for part in row.get("metadataParts", []) or []:
+                    text = part.get("text", {}).get("content", "")
+                    if "ago" in text.lower():
+                        published_rel = text
+                        break
+                if published_rel:
+                    break
+            date_str = _parse_relative_time(published_rel, now) if published_rel else ""
+
+            # lockup 上没有描述片段；后续 AI 关键词只能靠标题命中
+            summary = ""
+
+        if not vid or not title:
             continue
-        seen.add(vid)
 
-        title_runs = vr.get("title", {}).get("runs", [])
-        title = title_runs[0].get("text", "") if title_runs else vr.get("title", {}).get("simpleText", "")
-
-        published_rel = vr.get("publishedTimeText", {}).get("simpleText", "")
-        date_str = _parse_relative_time(published_rel, now) if published_rel else ""
         # parse_entry 期望 ISO 格式的 published；这里合成当天 00:00Z
         published_iso = f"{date_str}T00:00:00+00:00" if date_str else ""
-
-        # 描述片段用于后续 AI 关键词匹配
-        desc_parts = []
-        for snip in vr.get("detailedMetadataSnippets", []) or []:
-            for run in snip.get("snippetText", {}).get("runs", []) or []:
-                desc_parts.append(run.get("text", ""))
-        summary = "".join(desc_parts) or vr.get("descriptionSnippet", {}).get("simpleText", "")
-
         entries.append({"yt_videoid": vid, "title": title, "summary": summary, "published": published_iso})
 
     return entries
 
 
 def fetch_channel_feed(channel_key: str, channel_info: dict) -> list[dict]:
-    """获取频道最新视频，RSS 优先，失败回落到频道页 HTML 抓取。
+    """获取频道最新视频，RSS + HTML 合并去重。
 
-    YouTube 对部分 channel（如 CNA、ST、govsg 等）的 RSS 端点稳定返回 404/500，
-    但公开频道页 /channel/{id}/videos 仍可访问。因此先试 RSS 一次，不成功就切换。
+    YouTube RSS 只返最近 15 条，对 CNA/ST 这种每天发 30+ 条的频道半天就过窗口；
+    HTML /channel/{id}/videos 能拿 ~30 条更深。两路都跑、按 videoId 去重，
+    保证高产频道也能覆盖到 5–7 天历史。任一路失败不致命。
     """
+    by_id: dict[str, dict] = {}
+
+    # RSS 路径（带 published 精确时间 + 描述片段，AI 关键词命中率更高）
     url = RSS_URL.format(channel_id=channel_info["channel_id"])
     try:
         resp = requests.get(
@@ -255,15 +345,30 @@ def fetch_channel_feed(channel_key: str, channel_info: dict) -> list[dict]:
         )
         if resp.status_code == 200:
             feed = feedparser.parse(resp.content)
-            if feed.entries:
-                return feed.entries
-            logger.debug(f"RSS 200 但无条目: {channel_key}，回落 HTML")
+            for e in feed.entries:
+                vid = e.get("yt_videoid")
+                if vid:
+                    by_id[vid] = {
+                        "yt_videoid": vid,
+                        "title": e.get("title", ""),
+                        "summary": e.get("summary", ""),
+                        "published": e.get("published", ""),
+                    }
         else:
-            logger.debug(f"RSS {resp.status_code}: {channel_key}，回落 HTML")
+            logger.debug(f"RSS {resp.status_code}: {channel_key}")
     except requests.RequestException as e:
-        logger.debug(f"RSS 异常: {channel_key} — {e}，回落 HTML")
+        logger.debug(f"RSS 异常: {channel_key} — {e}")
 
-    return fetch_channel_via_html(channel_key, channel_info)
+    # HTML 路径（覆盖更深的历史，但相对时间分辨率到天）
+    for entry in fetch_channel_via_html(channel_key, channel_info):
+        vid = entry.get("yt_videoid")
+        if not vid:
+            continue
+        # RSS 已有则保留 RSS 版（描述更全），缺则补 HTML 版
+        if vid not in by_id:
+            by_id[vid] = entry
+
+    return list(by_id.values())
 
 
 def get_video_metadata(video_id: str) -> dict | None:

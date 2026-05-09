@@ -1,6 +1,7 @@
 {
   "comment": "Pipeline registry consumed by scripts/auto_update.py. Each entry describes one refresh pipeline: how to invoke it, on what schedule, and what to do with its output. Schedules are evaluated by the cron entry that runs auto_update.py with --schedule=<level>. type=python entries are imported in-process; type=tsx entries are subprocessed via npx tsx.",
   "schedules": {
+    "daily": "Every day 8:00 (cron: 0 8 * * *)",
     "weekly": "Every Monday 8:00 (cron: 0 8 * * 1)",
     "monthly": "1st of every month 8:00 (cron: 0 8 1 * *)",
     "quarterly": "1st of Jan/Apr/Jul/Oct 8:00 (cron: 0 8 1 1,4,7,10 *)",
@@ -18,9 +19,9 @@
     {
       "id": "videos",
       "type": "python-builtin",
-      "schedule": "weekly",
+      "schedule": "daily",
       "label": "YouTube AI videos",
-      "description": "Channel RSS scan, manual review queue. Existing pipeline.",
+      "description": "Channel RSS+HTML scan, manual review queue. Daily because CNA/ST publish 30+ vids/day and our scrape window covers <24h.",
       "mode": "scan-only-email"
     },
     {

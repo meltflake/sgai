@@ -184,7 +184,24 @@ function downloadTranscript(video: (typeof videos)[number]): TranscriptRecord {
   return record;
 }
 
-function emitData(records: TranscriptRecord[]): void {
+async function loadExistingTranscripts(): Promise<Record<string, unknown>> {
+  // 关键不变量：emit 必须 MERGE 而不是覆盖。
+  // scripts/videos/data/{transcripts,translations}/ 是 gitignored，
+  // 新 worktree / 新机器只有最终产物 video-transcripts.ts，没 raw cache。
+  // 如果只 emit 当前 raw cache 里的几条，会把过去所有视频的 transcripts 全擦掉。
+  // 历史事故：2026-05-09 一个 emit run 把 v001-v058 全干掉了。
+  if (!existsSync(OUT_FILE)) return {};
+  try {
+    const mod = await import(OUT_FILE);
+    return (mod.videoTranscripts ?? {}) as Record<string, unknown>;
+  } catch (e) {
+    console.warn(`  ⚠ Could not load existing video-transcripts.ts: ${e instanceof Error ? e.message : e}`);
+    return {};
+  }
+}
+
+async function emitData(records: TranscriptRecord[]): Promise<void> {
+  const existing = await loadExistingTranscripts();
   const available = records
     .filter((record) => record.paragraphs.length > 0)
     .map((record) => {
@@ -213,8 +230,23 @@ function emitData(records: TranscriptRecord[]): void {
         },
       ] as const;
     });
-  const data = JSON.stringify(Object.fromEntries(available), null, 2);
-  const body = `export interface VideoTranscript {
+  // existing 在前、available 在后：本次 emit 的条目覆盖旧版（fetchedAt / 翻译可能更新），
+  // 但 existing 里没被本次 emit 覆盖的所有 v* 条目都原样保留。
+  const merged = { ...existing, ...Object.fromEntries(available) };
+  // videos.ts 里已经移除的视频也跟着从 transcripts 清掉，避免悬空条目。
+  const validIds = new Set(videos.map((v) => v.id));
+  for (const id of Object.keys(merged)) {
+    if (!validIds.has(id)) delete merged[id];
+  }
+  const data = JSON.stringify(merged, null, 2);
+  const body = `export interface VideoDigest {
+  /** 2-4 short scannable takeaways. */
+  keyPoints: string[];
+  /** 2-3 paragraphs of clean, readable narrative — the substance of the video. */
+  narrative: string[];
+}
+
+export interface VideoTranscript {
   videoId: string;
   youtubeId: string;
   captionLanguage: string;
@@ -224,8 +256,14 @@ function emitData(records: TranscriptRecord[]): void {
   paragraphs: string[];
   /** English readable transcript. Usually the original YouTube caption track. */
   paragraphsEn?: string[];
+  /** Polished readable digest (zh). When present, this is the primary on-page content; raw paragraphs become a collapsible fallback. */
+  digest?: VideoDigest;
+  /** Polished readable digest (en). */
+  digestEn?: VideoDigest;
   translatedAt?: string;
-  translationSource?: 'openai' | 'manual' | 'source';
+  // 'claude' = local Claude CLI (default since 2026-05). 'openai' kept for
+  // backward compatibility with translations cached before the switch.
+  translationSource?: 'claude' | 'openai' | 'manual' | 'source';
   translationModel?: string;
   error?: string;
 }
@@ -236,18 +274,31 @@ export function getVideoTranscript(videoId: string): VideoTranscript | undefined
   return videoTranscripts[videoId];
 }
 
-export function getVideoTranscriptParagraphs(videoId: string, lang: 'zh' | 'en'): string[] {
+export function getVideoTranscriptParagraphs(videoId: string, lang: 'zh' | 'en' | 'ja'): string[] {
   const transcript = getVideoTranscript(videoId);
   if (!transcript) return [];
-  if (lang === 'en') return transcript.paragraphsEn || [];
-  return transcript.paragraphs;
+  if (lang === 'zh') return transcript.paragraphs;
+  // en, ja, ... — prefer the English paragraphs when present (per-locale
+  // transcript variants like paragraphsJa can be added later).
+  return transcript.paragraphsEn || transcript.paragraphs;
 }
 
-export function getVideoTranscriptLanguage(videoId: string, lang: 'zh' | 'en'): string | undefined {
+export function getVideoTranscriptLanguage(videoId: string, lang: 'zh' | 'en' | 'ja'): string | undefined {
   const transcript = getVideoTranscript(videoId);
   if (!transcript) return undefined;
-  if (lang === 'en') return transcript.paragraphsEn?.length ? transcript.captionLanguage || 'en' : undefined;
+  if (lang === 'zh') return transcript.paragraphs.length ? 'zh-CN' : undefined;
+  if (transcript.paragraphsEn?.length) return transcript.captionLanguage || (lang === 'en' ? 'en' : lang);
   return transcript.paragraphs.length ? 'zh-CN' : undefined;
+}
+
+/** Read the polished digest for a video in the requested language. Falls
+ *  back to zh digest when no localized variant exists. ja currently falls
+ *  back to the en digest, then zh. */
+export function getVideoDigest(videoId: string, lang: 'zh' | 'en' | 'ja'): VideoDigest | undefined {
+  const transcript = getVideoTranscript(videoId);
+  if (!transcript) return undefined;
+  if (lang === 'zh') return transcript.digest;
+  return transcript.digestEn || transcript.digest;
 }
 `;
 
@@ -290,4 +341,4 @@ if (!emitOnly) {
   }
 }
 
-emitData(loadCachedRecords());
+await emitData(loadCachedRecords());
