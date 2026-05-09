@@ -1944,6 +1944,19 @@ export const transmissionExplainer: {
 7 条里只有第 6（政府自用）和第 7（外交）是国家直接做的——其他 5 条都是国家穿透到企业的杠杆。
 
 这就是"国家不可能自己 AI-native，必须穿透到企业"论点的结构性证据。`,
+  bodyJa: `6つのレバーを「それらが企業のどのようなボトルネックを解決するか」によって再分類すると、7つの伝導レバーが得られます：
+
+1. Pull（資本リターン）→ レバー 1（ECI、PSG）+ レバー 2（Sandbox がリスク測定を可能にする）
+2. Push（前進圧力）→ レバー 4（NAIIP 10K + Champions of AI）
+3. Talent（人材プール）→ レバー 3（AI Bilingual 100K + AIAP + 大学カリキュラム改革）
+4. Infra（コンピューティング基盤）→ レバー 1（EDB 大企業誘致 + ECI + one-north）
+5. Trust（デプロイメント境界）→ レバー 2（IMDA + MAS + CSA + MINLAW）
+6. Procurement（自ら率先）→ レバー 5（GovTech + DIS + HTX）
+7. International（外資 + ガバナンス本部）→ レバー 6（AISI + Singapore Consensus + ASEAN）
+
+7つの中で、第6（政府による自用）と第7（外交）だけが国家が直接行うものであり、その他の5つはすべて国家が企業に浸透するレバーです。
+
+これは「国家自体がAI-nativeになることはできず、必ず企業に浸透しなければならない」という論点の構造的証拠です。`,
   bodyEn: `Re-slicing the 6 levers by "which enterprise bottleneck they solve" yields 7 transmission channels:
 
 1. Pull (capital returns) → Lever 1 (ECI, PSG) + Lever 2 (sandboxes that make risk measurable)

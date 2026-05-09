@@ -252,26 +252,58 @@ function parseArgs(argv: string[]): Args {
 }
 
 /** Find the line index (0-indexed) AFTER the field's value (single-line
- *  or multi-line literal). Used to anchor the insert position. */
-function lineAfterFieldValue(lines: string[], fieldLineIndex: number): number {
-  const startLine = lines[fieldLineIndex];
-  // Single-line literal: ends with `'` or `"` followed by optional comma.
-  if (/['"]\s*,?\s*$/.test(startLine)) {
-    return fieldLineIndex + 1;
+ *  or multi-line literal). Used to anchor the insert position.
+ *
+ *  Uses the chinese source value's own newline count to compute the
+ *  closing line — robust to backtick template literals (which the old
+ *  regex-based scan missed) and to multi-line strings whose interior
+ *  contains stray quote characters.
+ *
+ *  Also handles the Prettier-wrap case where a long value declaration
+ *  spans two source lines:
+ *    summary:
+ *      'Long value goes on its own line',
+ *  Here the declaration line ends with `:` and the actual value starts
+ *  on the next line. */
+function lineAfterFieldValue(lines: string[], fieldLineIndex: number, chineseValue: string): number {
+  const newlines = (chineseValue.match(/\n/g) || []).length;
+  const declLine = lines[fieldLineIndex];
+  const valueStartsOnNextLine = /:\s*$/.test(declLine);
+  const valueStartLine = valueStartsOnNextLine ? fieldLineIndex + 1 : fieldLineIndex;
+  const closingLine = valueStartLine + newlines;
+
+  // Sanity: the computed closing line should actually end with a closing
+  // quote (single, double, or backtick) optionally followed by a comma
+  // and/or a closing brace/bracket. If not, the source field uses a
+  // formatting we don't recognize — skip rather than risk mis-anchored
+  // inserts. (Any skipped translation is still in the cache, so a
+  // future run with smarter logic picks it up.)
+  if (closingLine >= lines.length) return -1;
+  const closingText = lines[closingLine];
+  if (!/[`'"][\s,}\]]*$/.test(closingText)) {
+    process.stderr.write(
+      `  WARN: line ${fieldLineIndex + 1} multi-line value does not close as expected ` +
+        `(expected close on line ${closingLine + 1}: ${JSON.stringify(closingText.slice(0, 60))}). ` +
+        `Skipping multi-line insert.\n`
+    );
+    return -1;
   }
-  // Multi-line literal: scan forward for the closing quote line.
-  for (let j = fieldLineIndex + 1; j < lines.length; j += 1) {
-    if (/['"]\s*,?\s*$/.test(lines[j])) {
-      return j + 1;
-    }
-    if (/^\s*\},?\s*$/.test(lines[j])) break; // safety: hit record end
-  }
-  return fieldLineIndex + 1; // fallback
+  return closingLine + 1;
 }
 
 /** Escape a string for embedding inside a single-quoted TS string literal. */
 function escapeSingleQuoted(s: string): string {
   return s.replace(/\\/g, '\\\\').replace(/'/g, "\\'");
+}
+
+/** Escape a string for embedding inside a backtick-quoted TS template
+ *  literal. Backticks themselves are escaped, and `${` interpolation is
+ *  defanged by escaping the leading `$`. (Translated UI strings should
+ *  never contain `${...}` in practice — the system prompt explicitly
+ *  preserves placeholders verbatim — but we defang anyway as belt and
+ *  braces.) */
+function escapeBacktickQuoted(s: string): string {
+  return s.replace(/\\/g, '\\\\').replace(/`/g, '\\`').replace(/\$\{/g, '\\${');
 }
 
 async function backfillFile(filePath: string, opts: { dryRun: boolean; limit?: number; force?: boolean }): Promise<{
@@ -346,6 +378,11 @@ async function backfillFile(filePath: string, opts: { dryRun: boolean; limit?: n
     indent: string;
     field: string;
     ja: string;
+    /** Quote character to use when emitting the new line. Mirrors the
+     *  source field's quote style so multi-line backtick template
+     *  literals get backtick siblings (single-quoted strings can't
+     *  contain real newlines without explicit `\n`). */
+    quote: "'" | '`';
   }
   interface InlineInsertion {
     kind: 'inline';
@@ -379,10 +416,19 @@ async function backfillFile(filePath: string, opts: { dryRun: boolean; limit?: n
       const re = new RegExp(`\\b${escapeRegex(issue.field)}\\s*:\\s*${q}${escapedVal}${q}\\s*,?`);
       const m = re.exec(origLine);
       if (!m) continue;
+      const before = origLine.slice(0, m.index);
       const after = origLine.slice(m.index + m[0].length);
-      // Single-line object: closing `}` appears after the field on the same line,
-      // before any other open `{` at the same depth.
-      if (/^[^{}]*\}/.test(after)) {
+      // Single-line object: the field sits inside a `{ ... }` that opens
+      // and closes on the same line. Detect via "the line has `{` before
+      // the field and `}` after the field's value." This is intentionally
+      // structural, not regex-balanced: a single-line object's outer
+      // braces are always present on the line, and any nested `${}`
+      // template interpolation in sibling fields contributes its own
+      // `}` after our field — both legitimately confirm "this line
+      // closes an object." The risk of confusing a nested inline {} for
+      // the outer is low because data files use one record-per-line for
+      // truly nested objects (resources/milestones/etc).
+      if (before.includes('{') && after.includes('}')) {
         inlineCol = m.index + m[0].length;
       }
       break;
@@ -391,8 +437,30 @@ async function backfillFile(filePath: string, opts: { dryRun: boolean; limit?: n
     if (inlineCol >= 0) {
       insertions.push({ kind: 'inline', lineIndex: fieldLineIndex, insertCol: inlineCol, field: issue.field, ja: translated[k] });
     } else {
-      const afterLineIndex = lineAfterFieldValue(lines, fieldLineIndex);
-      insertions.push({ kind: 'newLine', afterLineIndex, indent, field: issue.field, ja: translated[k] });
+      const afterLineIndex = lineAfterFieldValue(lines, fieldLineIndex, issue.chineseValue);
+      if (afterLineIndex < 0) {
+        // lineAfterFieldValue couldn't reliably find the closing line —
+        // skip this issue rather than risk inserting into the wrong
+        // object. The cache still has the translation, so a future run
+        // with smarter logic can pick it up.
+        skipped += 1;
+        continue;
+      }
+      // Detect source quote style on the field-declaration line so we
+      // mirror it. Backtick literals are required when the value spans
+      // multiple lines.
+      const quoteMatch = origLine.match(/:\s*([`'])/);
+      const sourceQuote = quoteMatch ? quoteMatch[1] : "'";
+      const valueHasNewline = translated[k].includes('\n');
+      const quote: "'" | '`' = sourceQuote === '`' || valueHasNewline ? '`' : "'";
+      insertions.push({
+        kind: 'newLine',
+        afterLineIndex,
+        indent,
+        field: issue.field,
+        ja: translated[k],
+        quote,
+      });
     }
   }
 
@@ -418,8 +486,9 @@ async function backfillFile(filePath: string, opts: { dryRun: boolean; limit?: n
   const newLineIns = insertions.filter((x): x is NewLineInsertion => x.kind === 'newLine');
   newLineIns.sort((a, b) => b.afterLineIndex - a.afterLineIndex);
   for (const ins of newLineIns) {
-    const escaped = escapeSingleQuoted(ins.ja);
-    const newLine = `${ins.indent}${ins.field}Ja: '${escaped}',`;
+    const escaped =
+      ins.quote === '`' ? escapeBacktickQuoted(ins.ja) : escapeSingleQuoted(ins.ja);
+    const newLine = `${ins.indent}${ins.field}Ja: ${ins.quote}${escaped}${ins.quote},`;
     lines.splice(ins.afterLineIndex, 0, newLine);
   }
 

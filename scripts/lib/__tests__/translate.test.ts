@@ -89,3 +89,41 @@ test('translateRecords: skips records where source field is empty', async () => 
   // No translation attempted; titleEn stays empty.
   assert.equal(out[0].titleEn, '');
 });
+
+test('translateBatch: cache hits for many short strings (regression: batchItems must not deadlock)', async () => {
+  // Pre-populate cache for 80 short strings. Even though they would fit
+  // in a single 18000-char batch by char budget, the new batchItems cap
+  // (default 30) splits them. Full cache hit means no chunking is
+  // attempted at all — verifying that the cache path short-circuits
+  // before chunkParagraphs runs.
+  await withCache(async (dir) => {
+    const direction = 'zh→en' as const;
+    const inputs: string[] = [];
+    for (let i = 0; i < 80; i += 1) inputs.push(`第${i}号`);
+    for (const text of inputs) {
+      const hash = hashOf(direction, text);
+      writeFileSync(
+        join(dir, `${hash}.json`),
+        JSON.stringify({
+          direction,
+          source: text,
+          target: `Item ${text}`,
+          model: 'gpt-test',
+          translatedAt: '2026-05-09',
+        })
+      );
+    }
+
+    const prevBin = process.env.SGAI_CLAUDE_BIN;
+    process.env.SGAI_CLAUDE_BIN = '/nonexistent/claude-should-not-run';
+    try {
+      const out = await translateBatch(inputs, { direction, cacheDir: dir, batchItems: 5 });
+      assert.equal(out.length, 80);
+      assert.equal(out[0], 'Item 第0号');
+      assert.equal(out[79], 'Item 第79号');
+    } finally {
+      if (prevBin) process.env.SGAI_CLAUDE_BIN = prevBin;
+      else delete process.env.SGAI_CLAUDE_BIN;
+    }
+  });
+});

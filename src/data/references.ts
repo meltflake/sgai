@@ -1,9 +1,11 @@
 export interface ReferenceLink {
   text: string;
   textEn?: string;
+  textJa?: string;
   url: string;
   note?: string;
   noteEn?: string;
+  noteJa?: string;
   translation?: string;
 }
 
@@ -11,6 +13,7 @@ export interface ReferenceSection {
   icon: string;
   title: string;
   titleEn?: string;
+  titleJa?: string;
   links: ReferenceLink[];
 }
 
@@ -18,6 +21,7 @@ export const sections: ReferenceSection[] = [
   {
     icon: '🏛️',
     title: '官方文件与战略',
+    titleJa: '公式文書と戦略',
     titleEn: 'Official Documents and Strategy',
     links: [
       {
@@ -57,6 +61,7 @@ export const sections: ReferenceSection[] = [
       },
       {
         text: 'ISO/IEC 42119-8 国际标准提案（IMDA 新闻稿）',
+        textJa: 'ISO/IEC 42119-8 国際標準提案（IMDA プレスリリース）',
         textEn: 'ISO/IEC 42119-8 International Standard Proposal (IMDA press release)',
         url: 'https://www.imda.gov.sg/resources/press-releases-factsheets-and-speeches/press-releases/2026/singapore-champions-new-global-ai-testing-standardisation-efforts',
         note: 'IMDA, 2026-04',
@@ -64,9 +69,11 @@ export const sections: ReferenceSection[] = [
       },
       {
         text: '樟宜机场 ISO/IEC 42001 AI 管理体系认证（SGS 新闻稿）',
+        textJa: 'チャンギ空港 ISO/IEC 42001 AI マネジメントシステム認証（SGS プレスリリース）',
         textEn: 'Changi Airport ISO/IEC 42001 AI Management System Certification (SGS press release)',
         url: 'https://www.sgs.com/en-sg/news/2025/02/sgs-confirms-changi-airports-dedication-to-safe-and-secure-ai-with-first-ever-accredited-iso-iec-42001-certification',
         note: 'SGS, 2025-02 — 全球首张机场 AI 管理体系认证',
+        noteJa: 'SGS, 2025-02 — 世界初の空港 AI マネジメントシステム認証',
         noteEn: "SGS, February 2025 — world's first airport AI management system certification",
       },
       {
@@ -86,6 +93,7 @@ export const sections: ReferenceSection[] = [
   {
     icon: '🔬',
     title: '研究机构与项目',
+    titleJa: '研究機関とプロジェクト',
     titleEn: 'Research Institutions and Programmes',
     links: [
       {
@@ -93,6 +101,7 @@ export const sections: ReferenceSection[] = [
         textEn: 'AI Singapore (AISG)',
         url: 'https://aisingapore.org/',
         note: '国家 AI 项目',
+        noteJa: '国家 AI プロジェクト',
         noteEn: 'National AI programme',
       },
       {
@@ -105,6 +114,7 @@ export const sections: ReferenceSection[] = [
         textEn: 'SEA Lion',
         url: 'https://sea-lion.ai/',
         note: '东南亚多语言大模型',
+        noteJa: '東南アジア多言語大規模言語モデル',
         noteEn: 'Southeast Asia multilingual large language model',
       },
       {
@@ -112,6 +122,7 @@ export const sections: ReferenceSection[] = [
         textEn: 'A*STAR',
         url: 'https://www.a-star.edu.sg/',
         note: '科技研究局',
+        noteJa: '科学技術研究局',
         noteEn: 'Agency for Science, Technology and Research',
       },
       {
@@ -124,6 +135,7 @@ export const sections: ReferenceSection[] = [
   {
     icon: '📊',
     title: '指标与报告',
+    titleJa: '指標と報告',
     titleEn: 'Indicators and Reports',
     links: [
       {
@@ -131,6 +143,7 @@ export const sections: ReferenceSection[] = [
         textEn: 'Stanford AI Index Report',
         url: 'https://aiindex.stanford.edu/',
         note: '年度全球 AI 发展报告',
+        noteJa: '年度グローバル AI 発展レポート',
         noteEn: 'Annual global AI development report',
       },
       {
@@ -138,6 +151,7 @@ export const sections: ReferenceSection[] = [
         textEn: 'Tortoise Global AI Index',
         url: 'https://www.tortoisemedia.com/intelligence/global-ai/',
         note: '全球 AI 就绪度排名',
+        noteJa: 'グローバル AI レディネスランキング',
         noteEn: 'Global AI readiness ranking',
       },
       {
@@ -150,14 +164,17 @@ export const sections: ReferenceSection[] = [
         textEn: 'Microsoft AI Economy Institute — Global AI Adoption 2025',
         url: 'https://www.microsoft.com/en-us/corporate-responsibility/topics/ai-economy-institute/reports/global-ai-adoption-2025/',
         note: '新加坡 AI 采用率全球第 2（60.9%），2026.1 发布',
+        noteJa: 'シンガポール AI 採用率グローバル第2位（60.9%）、2026.1発表',
         noteEn: 'Singapore ranked 2nd globally on AI adoption (60.9%); released January 2026',
         translation: '/microsoft-global-ai-adoption-2025/',
       },
       {
         text: 'AI Diffusion 技术论文',
+        textJa: 'AI Diffusion 技術論文',
         textEn: 'AI Diffusion technical paper',
         url: 'https://arxiv.org/abs/2511.02781',
         note: '报告方法论详解，arXiv 2025.11',
+        noteJa: 'レポート方法論詳解、arXiv 2025.11',
         noteEn: 'Detailed methodology for the report; arXiv, November 2025',
       },
       {
@@ -165,6 +182,7 @@ export const sections: ReferenceSection[] = [
         textEn: 'data.gov.sg',
         url: 'https://data.gov.sg/',
         note: '新加坡政府开放数据',
+        noteJa: 'シンガポール政府オープンデータ',
         noteEn: 'Singapore government open data portal',
       },
     ],
@@ -172,6 +190,7 @@ export const sections: ReferenceSection[] = [
   {
     icon: '📰',
     title: '分析与报道',
+    titleJa: '分析と報道',
     titleEn: 'Analysis and Reporting',
     links: [
       {
@@ -199,6 +218,7 @@ export const sections: ReferenceSection[] = [
         textEn: 'Computer Weekly — Singapore pushes for global standard to test generative AI',
         url: 'https://www.computerweekly.com/news/366641943/Singapore-pushes-for-global-standard-to-test-generative-AI',
         note: '2026-04 ISO/IEC 42119-8 报道',
+        noteJa: '2026-04 ISO/IEC 42119-8 報道',
         noteEn: 'Coverage of the ISO/IEC 42119-8 proposal, April 2026',
       },
       {
@@ -206,6 +226,7 @@ export const sections: ReferenceSection[] = [
         textEn: 'TNGlobal — Singapore pushes first international benchmark for generative AI testing',
         url: 'https://technode.global/2026/04/21/singapore-pushes-first-international-benchmark-for-generative-ai-testing/',
         note: '2026-04 SC 42 第 17 届全会现场报道',
+        noteJa: '2026-04 SC 42 第17回全体会議現場報道',
         noteEn: 'On-the-ground report from the 17th SC 42 plenary, April 2026',
       },
     ],
@@ -213,6 +234,7 @@ export const sections: ReferenceSection[] = [
   {
     icon: '🌏',
     title: '国际对标',
+    titleJa: '国際ベンチマーク',
     titleEn: 'International Benchmarks',
     links: [
       { text: 'OECD AI Policy Observatory', textEn: 'OECD AI Policy Observatory', url: 'https://oecd.ai/' },
@@ -236,6 +258,7 @@ export const sections: ReferenceSection[] = [
   {
     icon: '🎓',
     title: '学术与深度',
+    titleJa: '学術と深度',
     titleEn: 'Academic and Long-Form',
     links: [
       {

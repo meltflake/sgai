@@ -84,10 +84,31 @@ export const programmes: TalentProgramme[] = [
     descriptionEn:
       'Singapore flagship AI engineering apprenticeship: 6 or 9 months of full-time training, with apprentices building engineering, MLOps and deployment capability on real industry projects.',
     stats: [
-      { label: '时长', labelEn: 'Duration', value: '6 / 9 个月', valueEn: '6 / 9 months' },
-      { label: '津贴', labelEn: 'Stipend', value: 'SGD 4,000/月', valueEn: 'SGD 4,000/month' },
-      { label: '就业率', labelEn: 'Placement rate', value: '90%+', valueEn: '90%+' },
-      { label: '地点', labelEn: 'Venue', value: 'NTU 校园', valueEn: 'NTU campus' },
+      {
+        label: '时长',
+        labelJa: '期間',
+        labelEn: 'Duration',
+        value: '6 / 9 个月',
+        valueJa: '6～9 ヶ月',
+        valueEn: '6 / 9 months',
+      },
+      {
+        label: '津贴',
+        labelJa: '手当',
+        labelEn: 'Stipend',
+        value: 'SGD 4,000/月',
+        valueJa: 'SGD 4,000/月',
+        valueEn: 'SGD 4,000/month',
+      },
+      { label: '就业率', labelJa: '就職率', labelEn: 'Placement rate', value: '90%+', valueEn: '90%+' },
+      {
+        label: '地点',
+        labelJa: '所在地',
+        labelEn: 'Venue',
+        value: 'NTU 校园',
+        valueJa: 'NTU キャンパス',
+        valueEn: 'NTU campus',
+      },
     ],
     highlights: ['3 个月深度训练', '3 或 6 个月真实项目', '两阶段技术选拔', 'Batch 24/25 申请期开放'],
     highlightsEn: [
@@ -103,7 +124,7 @@ export const programmes: TalentProgramme[] = [
     url: 'https://aiap.sg/apprenticeship/',
     profile: {
       facts: [
-        { label: '承办方', labelEn: 'Owner', value: 'AI Singapore', valueEn: 'AI Singapore' },
+        { label: '承办方', labelJa: '実施機関', labelEn: 'Owner', value: 'AI Singapore', valueEn: 'AI Singapore' },
         {
           label: '对象',
           labelJa: '対象',
@@ -199,10 +220,24 @@ export const programmes: TalentProgramme[] = [
     descriptionEn:
       'A 16-week project-based GenAI programme for company teams, designed to turn workplace problem statements into deployable LLM applications.',
     stats: [
-      { label: '时长', labelEn: 'Duration', value: '16 周', valueEn: '16 weeks' },
-      { label: '团队规模', labelEn: 'Team size', value: '2-4 人', valueEn: '2-4 people' },
-      { label: '导师咨询', labelEn: 'Mentor consults', value: '最多 24 小时/队', valueEn: 'Up to 24 hours/team' },
-      { label: '公民费用', labelEn: 'Citizen fee', value: 'SGD 3,600', valueEn: 'SGD 3,600' },
+      { label: '时长', labelJa: '期間', labelEn: 'Duration', value: '16 周', valueJa: '16 週', valueEn: '16 weeks' },
+      {
+        label: '团队规模',
+        labelJa: 'チーム規模',
+        labelEn: 'Team size',
+        value: '2-4 人',
+        valueJa: '2～4 人',
+        valueEn: '2-4 people',
+      },
+      {
+        label: '导师咨询',
+        labelJa: 'メンター相談',
+        labelEn: 'Mentor consults',
+        value: '最多 24 小时/队',
+        valueJa: '最大 24 時間/チーム',
+        valueEn: 'Up to 24 hours/team',
+      },
+      { label: '公民费用', labelJa: '公民費用', labelEn: 'Citizen fee', value: 'SGD 3,600', valueEn: 'SGD 3,600' },
     ],
     highlights: [
       '4 周自学 + 12 周项目',
@@ -325,10 +360,38 @@ export const programmes: TalentProgramme[] = [
     descriptionEn:
       'Funding for PhD candidates pursuing fundamental AI research at Singapore autonomous universities, with focus areas including trustworthy, privacy-aware, resource-efficient, collaborative and continuous-learning AI.',
     stats: [
-      { label: '最长资助', labelEn: 'Maximum support', value: '4 年', valueEn: '4 years' },
-      { label: '月度津贴', labelEn: 'Monthly stipend', value: '最高 SGD 6,700', valueEn: 'Up to SGD 6,700' },
-      { label: '会议津贴', labelEn: 'Conference allowance', value: '最高 SGD 8,000', valueEn: 'Up to SGD 8,000' },
-      { label: '国籍限制', labelEn: 'Nationality restriction', value: '无', valueEn: 'None' },
+      {
+        label: '最长资助',
+        labelJa: '最大資助',
+        labelEn: 'Maximum support',
+        value: '4 年',
+        valueJa: '4 年間',
+        valueEn: '4 years',
+      },
+      {
+        label: '月度津贴',
+        labelJa: '月額給付',
+        labelEn: 'Monthly stipend',
+        value: '最高 SGD 6,700',
+        valueJa: '最高 SGD 6,700',
+        valueEn: 'Up to SGD 6,700',
+      },
+      {
+        label: '会议津贴',
+        labelJa: '会議手当',
+        labelEn: 'Conference allowance',
+        value: '最高 SGD 8,000',
+        valueJa: '最高 SGD 8,000',
+        valueEn: 'Up to SGD 8,000',
+      },
+      {
+        label: '国籍限制',
+        labelJa: '国籍制限',
+        labelEn: 'Nationality restriction',
+        value: '无',
+        valueJa: 'なし',
+        valueEn: 'None',
+      },
     ],
     highlights: ['NUS / NTU / SMU / SUTD', '大学提名制', '全额学费支持', '要求顶会/顶刊级研究产出'],
     highlightsEn: [
@@ -441,10 +504,38 @@ export const programmes: TalentProgramme[] = [
     descriptionEn:
       'A fast-track AI research route for Singapore citizens, supporting students near the end of undergraduate study and through a one-year Masters by Research.',
     stats: [
-      { label: '支持期', labelEn: 'Support period', value: '最长 2 年', valueEn: 'Up to 2 years' },
-      { label: '本科津贴', labelEn: 'Undergrad allowance', value: 'SGD 2,000/月', valueEn: 'SGD 2,000/month' },
-      { label: '硕士津贴', labelEn: 'Masters stipend', value: '最高 SGD 3,500/月', valueEn: 'Up to SGD 3,500/month' },
-      { label: '对象', labelEn: 'Audience', value: '新加坡公民', valueEn: 'Singapore citizens' },
+      {
+        label: '支持期',
+        labelJa: '支援期間',
+        labelEn: 'Support period',
+        value: '最长 2 年',
+        valueJa: '最長 2 年',
+        valueEn: 'Up to 2 years',
+      },
+      {
+        label: '本科津贴',
+        labelJa: '学部給付金',
+        labelEn: 'Undergrad allowance',
+        value: 'SGD 2,000/月',
+        valueJa: 'SGD 2,000/月',
+        valueEn: 'SGD 2,000/month',
+      },
+      {
+        label: '硕士津贴',
+        labelJa: '修士給付金',
+        labelEn: 'Masters stipend',
+        value: '最高 SGD 3,500/月',
+        valueJa: '最高 SGD 3,500/月',
+        valueEn: 'Up to SGD 3,500/month',
+      },
+      {
+        label: '对象',
+        labelJa: '対象',
+        labelEn: 'Audience',
+        value: '新加坡公民',
+        valueJa: 'シンガポール市民',
+        valueEn: 'Singapore citizens',
+      },
     ],
     highlights: ['本科倒数第二年申请', '研究型硕士', '大学提名制', '全额硕士学费支持'],
     highlightsEn: [
@@ -556,9 +647,30 @@ export const programmes: TalentProgramme[] = [
     descriptionEn:
       'AI Singapore online learning gateway, covering AI literacy, AI4I, AI4K, educator courses, industry projects and partner learning resources.',
     stats: [
-      { label: '形式', labelEn: 'Format', value: '在线自学', valueEn: 'Self-paced online' },
-      { label: '层级', labelEn: 'Levels', value: 'Exposure 至 Advanced', valueEn: 'Exposure to Advanced' },
-      { label: '课程数', labelEn: 'Course count', value: '90+ 资源', valueEn: '90+ resources' },
+      {
+        label: '形式',
+        labelJa: '形式',
+        labelEn: 'Format',
+        value: '在线自学',
+        valueJa: 'オンライン自習',
+        valueEn: 'Self-paced online',
+      },
+      {
+        label: '层级',
+        labelJa: 'レベル',
+        labelEn: 'Levels',
+        value: 'Exposure 至 Advanced',
+        valueJa: 'Exposure から Advanced',
+        valueEn: 'Exposure to Advanced',
+      },
+      {
+        label: '课程数',
+        labelJa: 'コース数',
+        labelEn: 'Course count',
+        value: '90+ 资源',
+        valueJa: '90+ リソース',
+        valueEn: '90+ resources',
+      },
       {
         label: '对象',
         labelJa: '対象',
@@ -680,10 +792,38 @@ export const programmes: TalentProgramme[] = [
     descriptionEn:
       'A national applied AI challenge for students. The 2026 edition has 8 tracks where students build AI prototypes around real enterprise and societal problem statements.',
     stats: [
-      { label: '2026 赛道', labelEn: '2026 tracks', value: '8 个', valueEn: '8' },
-      { label: '报名期', labelEn: 'Registration', value: '1 月 5 日-2 月 16 日', valueEn: '5 Jan-16 Feb' },
-      { label: '总决赛', labelEn: 'Grand Final', value: '5 月 22-23 日', valueEn: '22-23 May' },
-      { label: '团队', labelEn: 'Team size', value: '按赛道不同', valueEn: 'Varies by track' },
+      {
+        label: '2026 赛道',
+        labelJa: '2026 トラック',
+        labelEn: '2026 tracks',
+        value: '8 个',
+        valueJa: '8 個',
+        valueEn: '8',
+      },
+      {
+        label: '报名期',
+        labelJa: '登録期間',
+        labelEn: 'Registration',
+        value: '1 月 5 日-2 月 16 日',
+        valueJa: '1 月 5 日～2 月 16 日',
+        valueEn: '5 Jan-16 Feb',
+      },
+      {
+        label: '总决赛',
+        labelJa: 'ファイナル',
+        labelEn: 'Grand Final',
+        value: '5 月 22-23 日',
+        valueJa: '5 月 22～23 日',
+        valueEn: '22-23 May',
+      },
+      {
+        label: '团队',
+        labelJa: 'チーム',
+        labelEn: 'Team size',
+        value: '按赛道不同',
+        valueJa: 'トラック別に異なります',
+        valueEn: 'Varies by track',
+      },
     ],
     highlights: ['真实问题陈述', '企业与机构赛道主', '导师和工作坊', '优胜队伍可获奖项或实习机会'],
     highlightsEn: [
@@ -699,7 +839,7 @@ export const programmes: TalentProgramme[] = [
     url: 'https://naisc.aisingapore.org/',
     profile: {
       facts: [
-        { label: '承办方', labelEn: 'Owner', value: 'AI Singapore', valueEn: 'AI Singapore' },
+        { label: '承办方', labelJa: '実施機関', labelEn: 'Owner', value: 'AI Singapore', valueEn: 'AI Singapore' },
         {
           label: '赛道类型',
           labelJa: 'トラック類型',
@@ -791,10 +931,24 @@ export const programmes: TalentProgramme[] = [
     descriptionEn:
       'The 4th International Olympiad in AI will be held in Singapore in 2027, co-hosted by AI Singapore and Nanyang Technological University.',
     stats: [
-      { label: '届数', labelEn: 'Edition', value: '第 4 届', valueEn: '4th edition' },
-      { label: '年份', labelEn: 'Year', value: '2027', valueEn: '2027' },
-      { label: '主办地', labelEn: 'Host city', value: '新加坡', valueEn: 'Singapore' },
-      { label: '共同主办', labelEn: 'Co-hosts', value: 'AISG + NTU', valueEn: 'AISG + NTU' },
+      {
+        label: '届数',
+        labelJa: '回数',
+        labelEn: 'Edition',
+        value: '第 4 届',
+        valueJa: '第 4 回',
+        valueEn: '4th edition',
+      },
+      { label: '年份', labelJa: '年', labelEn: 'Year', value: '2027', valueEn: '2027' },
+      {
+        label: '主办地',
+        labelJa: '開催地',
+        labelEn: 'Host city',
+        value: '新加坡',
+        valueJa: 'シンガポール',
+        valueEn: 'Singapore',
+      },
+      { label: '共同主办', labelJa: '共同主催', labelEn: 'Co-hosts', value: 'AISG + NTU', valueEn: 'AISG + NTU' },
     ],
     highlights: ['全球高中生 AI 竞赛', '新加坡首次主办', 'NOAI 作为本地选拔通道', '展示新加坡 AI 教育品牌'],
     highlightsEn: [
@@ -914,10 +1068,24 @@ export const programmes: TalentProgramme[] = [
     descriptionEn:
       'A school and educator enablement bundle, including a 2-hour student introduction, AI4K, AI for Students and the TWA+ teacher work-attachment programme.',
     stats: [
-      { label: '学生入门', labelEn: 'Student intro', value: '2 小时', valueEn: '2 hours' },
-      { label: '儿童 AI', labelEn: 'AI for kids', value: 'P3-P6', valueEn: 'P3-P6' },
-      { label: '教师培训', labelEn: 'Teacher training', value: 'TWA+', valueEn: 'TWA+' },
-      { label: '渠道', labelEn: 'Channel', value: '学校 / 教师', valueEn: 'Schools / educators' },
+      {
+        label: '学生入门',
+        labelJa: '学生入門',
+        labelEn: 'Student intro',
+        value: '2 小时',
+        valueJa: '2 時間',
+        valueEn: '2 hours',
+      },
+      { label: '儿童 AI', labelJa: '児童 AI', labelEn: 'AI for kids', value: 'P3-P6', valueEn: 'P3-P6' },
+      { label: '教师培训', labelJa: '教師研修', labelEn: 'Teacher training', value: 'TWA+', valueEn: 'TWA+' },
+      {
+        label: '渠道',
+        labelJa: 'チャネル',
+        labelEn: 'Channel',
+        value: '学校 / 教师',
+        valueJa: '学校 / 教師',
+        valueEn: 'Schools / educators',
+      },
     ],
     highlights: ['AI Singapore Goes To School', 'AI4K 儿童课程', '教师 AI 素养提升', '公校 AI 教学资源'],
     highlightsEn: [

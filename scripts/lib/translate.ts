@@ -39,6 +39,11 @@ export interface TranslateOptions {
   model?: string;
   concurrency?: number;
   batchChars?: number;
+  /** Hard upper bound on items per batch. Even when batchChars allows
+   *  more, the batch is closed after this many paragraphs. Prevents the
+   *  pathological "200 short strings in one batch" case where claude
+   *  haiku reliably times out generating the JSON array output. */
+  batchItems?: number;
   cacheDir?: string;
   force?: boolean;
   /** Override the system prompt for domain-specific translations (e.g. policy bills, hansard transcripts). */
@@ -61,6 +66,7 @@ interface CachedTranslation {
 
 const DEFAULT_MODEL = process.env.SGAI_TRANSLATION_MODEL || 'haiku';
 const DEFAULT_BATCH_CHARS = Number(process.env.SGAI_TRANSLATION_BATCH_CHARS || 18000);
+const DEFAULT_BATCH_ITEMS = Number(process.env.SGAI_TRANSLATION_BATCH_ITEMS || 30);
 const DEFAULT_CONCURRENCY = Number(process.env.SGAI_TRANSLATION_CONCURRENCY || 2);
 
 // CRITICAL JSON safety rule: when the translated text contains a quote
@@ -114,14 +120,17 @@ function writeCache(cacheDir: string, hash: string, payload: CachedTranslation):
   writeFileSync(join(cacheDir, `${hash}.json`), `${JSON.stringify(payload, null, 2)}\n`);
 }
 
-function chunkParagraphs(paragraphs: string[], maxChars: number): string[][] {
+function chunkParagraphs(paragraphs: string[], maxChars: number, maxItems: number): string[][] {
   const chunks: string[][] = [];
   let current: string[] = [];
   let currentLength = 0;
+  const itemCap = Math.max(1, maxItems);
 
   for (const paragraph of paragraphs) {
     const length = paragraph.length;
-    if (current.length > 0 && currentLength + length > maxChars) {
+    const wouldExceedChars = currentLength + length > maxChars;
+    const wouldExceedItems = current.length >= itemCap;
+    if (current.length > 0 && (wouldExceedChars || wouldExceedItems)) {
       chunks.push(current);
       current = [];
       currentLength = 0;
@@ -186,12 +195,23 @@ async function callBatchWithFallback(
     return await callClaudeTranslate(paragraphs, options);
   } catch (error) {
     if (paragraphs.length === 1) throw error;
-    process.stderr.write(`  batch fallback (${paragraphs.length} → 1×${paragraphs.length}): ${(error as Error).message}\n`);
-    const out: string[] = [];
-    for (const p of paragraphs) {
-      out.push(...(await callClaudeTranslate([p], options)));
-    }
-    return out;
+    // Halve the batch and recurse on each half in parallel. Halving (not
+    // 1-by-1) means a flaky 200-item batch first becomes 2×100, then
+    // 4×50, etc. — recovering quickly when only a small subset is the
+    // troublemaker. Going straight to 1-by-1 wastes time re-translating
+    // strings that would have succeeded in larger groups, and serially
+    // hits the model timeout for every retry.
+    const half = Math.ceil(paragraphs.length / 2);
+    process.stderr.write(
+      `  batch fallback (${paragraphs.length} → 2×~${half}): ${(error as Error).message}\n`
+    );
+    const left = paragraphs.slice(0, half);
+    const right = paragraphs.slice(half);
+    const [l, r] = await Promise.all([
+      callBatchWithFallback(left, options),
+      callBatchWithFallback(right, options),
+    ]);
+    return [...l, ...r];
   }
 }
 
@@ -205,6 +225,7 @@ export async function translateBatch(paragraphs: string[], options: TranslateOpt
 
   const model = options.model || DEFAULT_MODEL;
   const batchChars = options.batchChars || DEFAULT_BATCH_CHARS;
+  const batchItems = options.batchItems || DEFAULT_BATCH_ITEMS;
   const concurrency = Math.max(1, options.concurrency || DEFAULT_CONCURRENCY);
   const systemPrompt = options.systemPrompt || SYSTEM_PROMPTS[options.direction];
   const cacheDir = options.cacheDir;
@@ -229,9 +250,9 @@ export async function translateBatch(paragraphs: string[], options: TranslateOpt
 
   if (pendingIndices.length === 0) return result as string[];
 
-  // 2) Chunk pending into batches by char budget.
+  // 2) Chunk pending into batches by char + item budget.
   const pendingTexts = pendingIndices.map((i) => paragraphs[i]);
-  const chunks = chunkParagraphs(pendingTexts, batchChars);
+  const chunks = chunkParagraphs(pendingTexts, batchChars, batchItems);
 
   // 3) Concurrent worker pool.
   let nextChunk = 0;
@@ -243,6 +264,8 @@ export async function translateBatch(paragraphs: string[], options: TranslateOpt
     writeOffset += chunk.length;
   }
 
+  const today = new Date().toISOString().slice(0, 10);
+
   async function worker(): Promise<void> {
     while (nextChunk < chunks.length) {
       const idx = nextChunk;
@@ -253,25 +276,31 @@ export async function translateBatch(paragraphs: string[], options: TranslateOpt
       for (let i = 0; i < translated.length; i += 1) {
         flatResults[offset + i] = translated[i];
       }
+      // Persist this chunk's translations to cache immediately so a
+      // killed/crashed run preserves partial progress. Without this, all
+      // completed chunks are lost if any later chunk throws.
+      if (cacheDir) {
+        for (let i = 0; i < translated.length; i += 1) {
+          const hash = hashOf(options.direction, chunk[i]);
+          writeCache(cacheDir, hash, {
+            direction: options.direction,
+            source: chunk[i],
+            target: translated[i],
+            model,
+            translatedAt: today,
+          });
+        }
+      }
     }
   }
 
   await Promise.all(Array.from({ length: concurrency }, () => worker()));
 
-  // 4) Map back to original positions, write cache.
+  // 4) Map back to original positions. Cache writes already happened
+  //    chunk-by-chunk inside the worker.
   for (let k = 0; k < pendingIndices.length; k += 1) {
     const origIndex = pendingIndices[k];
     result[origIndex] = flatResults[k];
-    if (cacheDir) {
-      const hash = hashOf(options.direction, paragraphs[origIndex]);
-      writeCache(cacheDir, hash, {
-        direction: options.direction,
-        source: paragraphs[origIndex],
-        target: flatResults[k],
-        model,
-        translatedAt: new Date().toISOString().slice(0, 10),
-      });
-    }
   }
 
   return result as string[];

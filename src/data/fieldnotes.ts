@@ -2,41 +2,54 @@ export interface FieldNote {
   id: string;
   title: string;
   titleEn?: string;
+  titleJa?: string;
   date: string;
   source: string;
   sourceEn?: string;
+  sourceJa?: string;
   tags: string[];
   tagsEn?: string[];
+  tagsJa?: string[];
   companyProfile: string;
   companyProfileEn?: string;
+  companyProfileJa?: string;
   sections: {
     heading: string;
     headingEn?: string;
+    headingJa?: string;
     points: string[];
     pointsEn?: string[];
+    pointsJa?: string[];
     highlight?: string;
     highlightEn?: string;
+    highlightJa?: string;
   }[];
   takeaway: string;
   takeawayEn?: string;
+  takeawayJa?: string;
 }
 
 export const fieldNotes: FieldNote[] = [
   {
     id: 'edb-meeting-ai-infra-2026-02',
     title: 'AI 创业公司与 EDB 会议纪要',
+    titleJa: 'AI スタートアップ企業と EDB の会議紀要',
     titleEn: 'Meeting Notes: AI Startup Meets EDB',
     date: '2026-02',
     source: '社区分享',
+    sourceJa: 'コミュニティシェア',
     sourceEn: 'Community contribution',
     tags: ['EDB', 'EP 申请', '税务合规', '补贴政策', '公司注册'],
     tagsEn: ['EDB', 'EP application', 'Tax compliance', 'Grant programmes', 'Company incorporation'],
     companyProfile: 'AI 平台公司，ARR 接近 $100M，注册在新加坡，团队主要 remote，约 10 人',
+    companyProfileJa:
+      'AI プラットフォーム企業、ARR が $100M に接近、シンガポールに登録、チームは主にリモート、約 10 人',
     companyProfileEn:
       'AI platform company, ARR approaching $100M, incorporated in Singapore, team mostly remote, around 10 people.',
     sections: [
       {
         heading: '公司属性判定：看股权结构，不看创始人国籍',
+        headingJa: '企業属性の判定：株式構造を確認し、創業者の国籍は確認しない',
         headingEn: 'Company classification: shareholding structure, not founder nationality',
         points: [
           'EDB 判断"新加坡公司"还是"中资企业"，标准清楚：公司主体注册在哪、股权结构有没有中国公司、客户和营收是否全球化',
@@ -49,10 +62,12 @@ export const fieldNotes: FieldNote[] = [
           'This classification determines whether you go down the headquarters-track route or require a special-handling pathway.',
         ],
         highlight: '看结构，不看护照',
+        highlightJa: '構造を見て、パスポートを見ない',
         highlightEn: 'Structure, not passport',
       },
       {
         heading: 'EP 申请：正常走比找关系更顺',
+        headingJa: 'EP 申請：通常のプロセスで申請する方が、人脈を頼るより円滑です',
         headingEn: 'EP applications: going through the front door beats relying on connections',
         points: [
           'CEO/CTO 等核心高管的 EP 门槛不高，不要求先雇本地员工',
@@ -71,6 +86,7 @@ export const fieldNotes: FieldNote[] = [
       },
       {
         heading: '真正的红线：团队单一性',
+        headingJa: '真の赤線：チームの単一性',
         headingEn: 'The actual red line: monocultural teams',
         points: [
           '新加坡不强求本地员工比例，但很在意团队多元化',
@@ -85,10 +101,12 @@ export const fieldNotes: FieldNote[] = [
           'Monocultural companies rarely become truly international — this is a long-running observation from experience, not political correctness.',
         ],
         highlight: '多元化不是门面，是实质要求',
+        highlightJa: '多元化は見せかけではなく、実質的な要件です',
         highlightEn: 'Diversity is not window-dressing; it is a substantive requirement',
       },
       {
         heading: '对照案例：Manus 是特例',
+        headingJa: '対照事例：Manus は特例です',
         headingEn: 'Counterexample: Manus is a special case',
         points: [
           'EDB 方面主动提到 Manus，但明确表示那是特殊情况',
@@ -109,6 +127,7 @@ export const fieldNotes: FieldNote[] = [
       },
       {
         heading: '实际操作顺序：合规先于税收优惠',
+        headingJa: '実際の操作順序：コンプライアンスは税制優遇より先です',
         headingEn: 'Real-world sequencing: compliance before tax incentives',
         points: [
           '当公司接近 $100M ARR，EDB 给的建议顺序：',
@@ -127,10 +146,12 @@ export const fieldNotes: FieldNote[] = [
           'Incentive policy rewards structures that already work; it is not designed to rescue broken structures.',
         ],
         highlight: '先合规，再拿优惠',
+        highlightJa: '先にコンプライアンスを、その後優遇措置を受ける',
         highlightEn: 'Compliance first, incentives second',
       },
       {
         heading: '性价比高的两个政策',
+        headingJa: 'コストパフォーマンスが高い 2 つの政策',
         headingEn: 'Two high-leverage programmes',
         points: [
           'R&D 补贴：适合 10 人以内技术团队，只要是真实研发、和核心技术相关就可以申请',
@@ -145,6 +166,7 @@ export const fieldNotes: FieldNote[] = [
       },
       {
         heading: '公司注册与董事',
+        headingJa: '企業登録と取締役',
         headingEn: 'Company incorporation and directors',
         points: [
           '公司注册在新加坡但董事是 agency 找的、自己没有 EP 的情况很常见',
@@ -162,6 +184,8 @@ export const fieldNotes: FieldNote[] = [
     ],
     takeaway:
       '新加坡的政策，是为"已经跑起来、但不想在结构上翻车"的公司准备的。如果还在验证 PMF，政府不重要。但当风险从"能不能做成"变成"结构、合规、长期可持续性"时，这种对话就有价值了。',
+    takeawayJa:
+      'シンガポールの政策は、「既に動き始めているが、構造的な失敗を避けたい」という企業のために用意されています。まだ PMF を検証している段階なら、政府は重要ではありません。しかし、リスクが「実現可能性」から「構造、コンプライアンス、長期的な持続可能性」へと変わるとき、このような対話には価値があります。',
     takeawayEn:
       'Singapore\'s policy stack is built for companies that already work — and don\'t want to crash on structural issues. If you\'re still validating PMF, the government doesn\'t matter much. But once your risk shifts from "can we make this work" to "structure, compliance, long-term sustainability", this kind of conversation starts to pay off.',
   },
