@@ -78,14 +78,16 @@ const SPEAKER_REGISTRY: Record<
   string,
   { speakerTitle: string; speakerTitleEn: string; speakerType: SpeakerType }
 > = {
+  // 现任内阁（按 portfolio 与 AI 战略相关度优先），单姓 / 全名两种 key 都登记，
+  // 因为媒体经常只用 firstname 或 lastname 出标题。新内阁名单变动后必须同步更新。
   'lawrence wong': {
     speakerTitle: '新加坡总理',
     speakerTitleEn: 'Prime Minister of Singapore',
     speakerType: 'government',
   },
-  'josephine teo': {
-    speakerTitle: '通讯及新闻部长',
-    speakerTitleEn: 'Minister for Digital Development and Information',
+  'gan kim yong': {
+    speakerTitle: '新加坡副总理兼贸工部长',
+    speakerTitleEn: 'Deputy Prime Minister and Minister for Trade and Industry, Singapore',
     speakerType: 'government',
   },
   'tharman shanmugaratnam': {
@@ -93,14 +95,95 @@ const SPEAKER_REGISTRY: Record<
     speakerTitleEn: 'President of Singapore',
     speakerType: 'government',
   },
-  'ong ye kung': {
-    speakerTitle: '新加坡卫生部长',
-    speakerTitleEn: 'Minister for Health, Singapore',
+  tharman: {
+    speakerTitle: '新加坡总统',
+    speakerTitleEn: 'President of Singapore',
+    speakerType: 'government',
+  },
+  'josephine teo': {
+    speakerTitle: '通讯及新闻部长',
+    speakerTitleEn: 'Minister for Digital Development and Information, Singapore',
     speakerType: 'government',
   },
   'vivian balakrishnan': {
     speakerTitle: '新加坡外交部长',
     speakerTitleEn: 'Minister for Foreign Affairs, Singapore',
+    speakerType: 'government',
+  },
+  balakrishnan: {
+    speakerTitle: '新加坡外交部长',
+    speakerTitleEn: 'Minister for Foreign Affairs, Singapore',
+    speakerType: 'government',
+  },
+  'desmond lee': {
+    speakerTitle: '新加坡教育部长',
+    speakerTitleEn: 'Minister for Education, Singapore',
+    speakerType: 'government',
+  },
+  'chan chun sing': {
+    speakerTitle: '公共服务部长',
+    speakerTitleEn: 'Minister-in-charge of Public Service, Singapore',
+    speakerType: 'government',
+  },
+  'ong ye kung': {
+    speakerTitle: '新加坡卫生部长',
+    speakerTitleEn: 'Minister for Health, Singapore',
+    speakerType: 'government',
+  },
+  'edwin tong': {
+    speakerTitle: '新加坡律政部长兼文化、社区及青年部长',
+    speakerTitleEn: 'Minister for Law and Minister for Culture, Community and Youth, Singapore',
+    speakerType: 'government',
+  },
+  'k shanmugam': {
+    speakerTitle: '新加坡内政部长兼国家安全统筹部长',
+    speakerTitleEn: 'Coordinating Minister for National Security and Minister for Home Affairs, Singapore',
+    speakerType: 'government',
+  },
+  shanmugam: {
+    speakerTitle: '新加坡内政部长兼国家安全统筹部长',
+    speakerTitleEn: 'Coordinating Minister for National Security and Minister for Home Affairs, Singapore',
+    speakerType: 'government',
+  },
+  'tan see leng': {
+    speakerTitle: '新加坡人力部长兼第二贸工部长',
+    speakerTitleEn: 'Minister for Manpower and Second Minister for Trade and Industry, Singapore',
+    speakerType: 'government',
+  },
+  'masagos zulkifli': {
+    speakerTitle: '社会及家庭发展部长',
+    speakerTitleEn: 'Minister for Social and Family Development, Singapore',
+    speakerType: 'government',
+  },
+  masagos: {
+    speakerTitle: '社会及家庭发展部长',
+    speakerTitleEn: 'Minister for Social and Family Development, Singapore',
+    speakerType: 'government',
+  },
+  'indranee rajah': {
+    speakerTitle: '新加坡总理公署部长兼第二财政部长、第二国家发展部长',
+    speakerTitleEn: 'Minister in the Prime Minister\'s Office and Second Minister for Finance and National Development, Singapore',
+    speakerType: 'government',
+  },
+  // 国务部长 / 高级政务部长
+  'janil puthucheary': {
+    speakerTitle: '通讯及新闻部高级政务部长',
+    speakerTitleEn: 'Senior Minister of State for Digital Development and Information, Singapore',
+    speakerType: 'government',
+  },
+  'tan kiat how': {
+    speakerTitle: '通讯及新闻部高级政务部长',
+    speakerTitleEn: 'Senior Minister of State for Digital Development and Information, Singapore',
+    speakerType: 'government',
+  },
+  'rahayu mahzam': {
+    speakerTitle: '数字发展及信息部国务部长',
+    speakerTitleEn: 'Minister of State for Digital Development and Information, Singapore',
+    speakerType: 'government',
+  },
+  'jasmin lau': {
+    speakerTitle: '数字发展及信息部、教育部国务部长',
+    speakerTitleEn: 'Minister of State for Digital Development and Information & Education, Singapore',
     speakerType: 'government',
   },
   'ai singapore': {
