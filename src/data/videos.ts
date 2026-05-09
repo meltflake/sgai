@@ -94,6 +94,53 @@ export const SPEAKER_TYPE_LABELS_EN: Record<string, string> = {
 
 export const videos: VideoItem[] = [
   {
+    id: 'v059',
+    title: '新加坡教育部长论教育中的AI应用',
+    titleEn: 'Education Minister Desmond Lee on AI in Education',
+    titleJa: '教育におけるAI応用に関するシンガポール教育大臣',
+    speaker: 'Desmond Lee',
+    speakerTitle: '新加坡教育部长',
+    speakerTitleEn: "Singapore's Education Minister",
+    speakerTitleJa: 'シンガポール教育大臣',
+    speakerType: 'government',
+    date: '2026-05-06',
+    duration: '34:25',
+    summary:
+      '新加坡教育部在学习科学研究指导下，采取谨慎有目的的方式推进教育中的AI应用。AI应用须服于教学目标和学生发展。',
+    summaryEn:
+      "Singapore's Ministry of Education takes a calibrated approach to AI in schools, informed by learning science and international research. AI is used only when it supports educational objectives and student development.",
+    summaryJa:
+      'シンガポール教育省は、学習科学研究の指導の下、教育におけるAI応用を推進する際に慎重かつ目的志向的なアプローチを採用しています。AI応用は教学目標および学生の発展に役立つ必要があります。',
+    topic: 'AI 人才与教育',
+    topicEn: 'AI Talent & Education',
+    topicJa: 'AI 人材と教育',
+    youtubeUrl: 'https://www.youtube.com/watch?v=ERhfED1fIfY',
+    channel: 'CNA',
+  },
+  {
+    id: 'v060',
+    title: '推进AI时不遗漏弱势群体',
+    titleEn: 'No Vulnerable Group Left Behind in AI Advancement',
+    titleJa: 'AI推進時に弱い立場にある人々を見落とさない',
+    speaker: 'Masagos',
+    speakerTitle: '新加坡部长',
+    speakerTitleEn: 'Singapore Minister',
+    speakerTitleJa: 'シンガポール大臣',
+    speakerType: 'government',
+    date: '2026-05-08',
+    duration: '02:33',
+    summary: 'Masagos在圣加伦研讨会上强调，推进AI时应确保弱势群体不被遗漏。',
+    summaryEn:
+      'Masagos emphasizes at the St Gallen Symposium that vulnerable groups must not be left behind in AI advancement.',
+    summaryJa:
+      'Masagosは聖ガレン研討会で、AI推進時に弱い立場にある人々が見落とされないことを確保する必要があることを強調しました。',
+    topic: 'AI 治理与监管',
+    topicEn: 'AI Governance & Regulation',
+    topicJa: 'AI ガバナンスと規制',
+    youtubeUrl: 'https://www.youtube.com/watch?v=D8yhiLHzaTA',
+    channel: 'CNA',
+  },
+  {
     id: 'v055',
     title: 'AI培训课程招生翻倍增长',
     titleJa: 'AI 研修コース募集が倍増',
