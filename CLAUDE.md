@@ -48,12 +48,25 @@ npm run build && npm run check:dist
 凡是动了 EN 页面、共享组件、数据双字段的 PR，必须本地跑通 `check:i18n`。
 凡是动了 schema-emitting 页面 / 组件（`<JsonLd schema={...} />` / `Breadcrumb.astro` / `*Profile.astro` / `[id].astro`）的 PR，必须本地跑通 `check:schema`。
 
+### Evals（周巡检）
+
+不同于 `check`（每 PR 跑、源码层、零成本）和 `check:dist`（PR 前手动、构建产物层），**evals 跑模型/数据层回归**——周一 cron 扫一次，发现新增 broken URL / 漏翻字段 / 三语缺漏自动开 issue。计划见 [`docs/20260509-evals-plan.md`](docs/20260509-evals-plan.md)，使用见 [`scripts/evals/README.md`](scripts/evals/README.md)。
+
+```bash
+npm run eval                       # 全部（URL 健康 + i18n Layer A）
+npm run eval:url                   # 全量扫 sourceUrl 可达性（CLAUDE.md rule #6 的存量巡检兜底）
+npm run eval:url -- --changed-only # 只扫 PR 改过的 src/data/*.ts
+npm run eval:i18n -- --layer=a     # 数据层：每条 record 的 CJK 字段 *En + *Ja 配对（zero-cost）
+npm run eval:i18n -- --layer=all   # +B sitemap parity / +C hreflang parity / +D 语言纯度（需 build）
+```
+
+cron 入口：`scripts/refresh/registry.json` → `id=evals`，weekly schedule。
+
 ### 已知盲区与后续加固
 
 - **GSC monitor 自动化**：当前依赖 GSC 邮件人肉转译。可拉 GSC API 每日扫描，新 issue 自动开 GitHub issue。
-- **Rich Results Test 抽样**：`check:schema` 是字段级断言，不验完整 Google Rich Results 规则。可加 CI 抽样 5 个关键页面跑 [structured-data-testing-tool](https://github.com/maxprilutskiy/structured-data-testing-tool)。
-- **canonical / hreflang / og:image 完备性**：当前未自动扫，下个 PR 可在 `check:schema` 里平铺加。
-- **link 死链扫描**：`check:graph` 只查站内边图，不查 schema 字段里的外部 URL；`sourceUrl` HTTP 健康度只有 `voices/prospect-stubs.mjs apply` 时拦一次，存量数据未周期性巡检。
+- **Rich Results Test 抽样**：`check:schema` 是字段级断言，不验完整 Google Rich Results 规则。计划在 evals Eval 5 加 [structured-data-testing-tool](https://github.com/maxprilutskiy/structured-data-testing-tool) 抽样跑。
+- **AI Summary / Translation 金标回归**：`ai-summarize.ts` / `translate.ts` 没有金标对比，模型升级 / prompt 改动后无法证明输出没退化。计划在 evals Eval 3/4 补。
 
 ## 编码规范与常见陷阱
 

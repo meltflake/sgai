@@ -36,13 +36,16 @@ export type ValidateOptions = {
  * - 2xx, 3xx — page exists.
  * - 401 / 403 / 429 — bot wall, paywall, or rate limit. Page likely real;
  *   we can't disprove existence. Caller should still hand-verify.
+ * - 999 — LinkedIn's anti-bot signal (and a few similar JS-required sites).
+ *   Treated as a soft-warn rather than a hard fail; the page exists, the
+ *   server just doesn't want a non-browser User-Agent.
  *
  * Anything else (404, 410, 5xx, network/DNS error, timeout) → broken.
  */
 export function isReachable(status: number | string): boolean {
   if (typeof status !== 'number') return false;
   if (status >= 200 && status < 400) return true;
-  return status === 401 || status === 403 || status === 429;
+  return status === 401 || status === 403 || status === 429 || status === 999;
 }
 
 /**

@@ -120,6 +120,16 @@
       "script": "scripts/refresh/benchmarking/run.ts",
       "args": ["--limit=3"],
       "mode": "auto-pr"
+    },
+    {
+      "id": "evals",
+      "type": "tsx",
+      "schedule": "weekly",
+      "label": "Evals: URL health + i18n coverage (Layer A)",
+      "description": "Sweep every sourceUrl/url in src/data/*.ts and assert reachability; assert all CJK string fields have *En + *Ja siblings. Layers B/C/D need a build and run via `npm run build && npm run eval` separately.",
+      "script": "scripts/evals/run-all.ts",
+      "args": [],
+      "mode": "issue-on-fail"
     }
   ]
 }
