@@ -491,7 +491,7 @@ def main():
     parser.add_argument("--only", help="只运行指定管线（逗号分隔；如 videos,policies）")
     parser.add_argument(
         "--schedule",
-        choices=["weekly", "monthly", "quarterly", "half-yearly", "all"],
+        choices=["daily", "weekly", "monthly", "quarterly", "half-yearly", "all"],
         default="all",
         help="仅运行匹配此 schedule 的管线",
     )
