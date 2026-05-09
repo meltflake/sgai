@@ -28,11 +28,37 @@
 //   - sha256 cache means re-runs after editing zh values translate only
 //     the diff.
 
-import { readFileSync, writeFileSync } from 'node:fs';
+import { readFileSync, writeFileSync, realpathSync } from 'node:fs';
 import { resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+import * as ts from 'typescript';
 
 import { findUnpairedFields, type UnpairedField } from '../lib/i18n-pair.ts';
 import { translateBatch } from '../lib/translate.ts';
+
+/** Run the TypeScript parser over `content` and return any syntax-level
+ *  diagnostics with line numbers. Used as a post-write sanity check —
+ *  if the regex-based insertion produced an unparseable file, abort the
+ *  write and keep the original. Cheap (~tens of ms per file) and catches
+ *  exactly the kind of bug that previously surfaced 5 minutes later in
+ *  astro check, far from the root cause. */
+export function tsParseDiagnostics(filePath: string, content: string): string[] {
+  const sf = ts.createSourceFile(filePath, content, ts.ScriptTarget.Latest, /* setParentNodes */ false);
+  // ts.SourceFile carries `parseDiagnostics` as a non-public field that
+  // ts.createSourceFile populates synchronously. The TS lib types don't
+  // expose it, so cast to access. parseDiagnostics surfaces ONLY the
+  // grammar-level errors (unterminated strings, mismatched braces,
+  // unexpected tokens) — which is exactly what we want here. Type errors
+  // require a full Program and would be massively too expensive.
+  const diags = (sf as unknown as { parseDiagnostics?: ts.DiagnosticWithLocation[] }).parseDiagnostics;
+  if (!diags || diags.length === 0) return [];
+  return diags.map((d) => {
+    const pos = d.start !== undefined ? sf.getLineAndCharacterOfPosition(d.start) : { line: 0, character: 0 };
+    const msg = ts.flattenDiagnosticMessageText(d.messageText, '\n');
+    return `L${pos.line + 1}:${pos.character + 1}: ${msg}`;
+  });
+}
 
 // All field names that have a `*En` sibling somewhere in src/data/*.ts.
 // Discovered via:
@@ -492,8 +518,33 @@ async function backfillFile(filePath: string, opts: { dryRun: boolean; limit?: n
     lines.splice(ins.afterLineIndex, 0, newLine);
   }
 
-  // 3) Write back.
-  writeFileSync(abs, lines.join('\n'));
+  // 3) Sanity-check the proposed file before writing. Catches regex
+  //    miscalculations (multi-line backticks misplaced into the wrong
+  //    object, single-line objects with stale `}` after the inserted
+  //    sibling, etc.) right here, with the offending line, instead of
+  //    surfacing 5 minutes later as cryptic ts(2304)/ts(1005) cascades
+  //    in `astro check`.
+  const proposed = lines.join('\n');
+  const syntaxErrors = tsParseDiagnostics(abs, proposed);
+  if (syntaxErrors.length > 0) {
+    process.stderr.write(
+      `  ❌ ABORT — post-edit TS parse failed (${syntaxErrors.length} error(s)). Original file preserved.\n`
+    );
+    for (const e of syntaxErrors.slice(0, 5)) process.stderr.write(`     ${e}\n`);
+    if (syntaxErrors.length > 5) {
+      process.stderr.write(`     … and ${syntaxErrors.length - 5} more\n`);
+    }
+    return {
+      file: filePath,
+      found: issues.length,
+      translated: translated.length,
+      inserted: 0,
+      skipped: limited.length,
+    };
+  }
+
+  // 4) Write back.
+  writeFileSync(abs, proposed);
   process.stderr.write(`  wrote ${insertions.length} new *Ja line(s)\n`);
 
   return { file: filePath, found: issues.length, translated: translated.length, inserted: insertions.length, skipped };
@@ -523,7 +574,20 @@ async function main() {
 // in JSDoc-equivalent annotations.
 void (undefined as unknown as UnpairedField);
 
-main().catch((err) => {
-  process.stderr.write(`[backfill-ja] ERROR: ${err instanceof Error ? err.stack || err.message : String(err)}\n`);
-  process.exit(1);
-});
+/** Only auto-run main() when invoked as the process entry point —
+ *  importing this module from a test must NOT kick off the CLI. */
+function isEntryPoint(): boolean {
+  if (!process.argv[1]) return false;
+  try {
+    return realpathSync(process.argv[1]) === fileURLToPath(import.meta.url);
+  } catch {
+    return false;
+  }
+}
+
+if (isEntryPoint()) {
+  main().catch((err) => {
+    process.stderr.write(`[backfill-ja] ERROR: ${err instanceof Error ? err.stack || err.message : String(err)}\n`);
+    process.exit(1);
+  });
+}

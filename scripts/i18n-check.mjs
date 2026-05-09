@@ -107,7 +107,7 @@ const LANG_CONFIG = {
       // 那 in 旦那, 点 in 観点, 双 in 双子, 区 in 区別, 条 in 条件)
       // are excluded — they would cause false positives on JA labels.
       const SIMPLIFIED_ONLY =
-        /[们这个让给还经历战业长进应时现过对边远难听说话网决织续选责险验总较单风转务习头质闻关开师龙标异该后处见级观产场际线门约电汉东种钟严员问纸读买卖钱实]/;
+        /[们这个让给还经历战业长进应时现过对边远难听说话网决织续选责险验总较单风转务习头质闻关开师龙标异该后处见级观产场际线门约电汉东种钟严员问纸读买卖钱实询试讲请运银项报]/;
       if (SIMPLIFIED_ONLY.test(run)) return true;
       // Tier 2: no simplified tell — treat as Japanese.
       return false;
