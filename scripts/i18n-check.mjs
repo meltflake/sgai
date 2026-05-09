@@ -74,20 +74,43 @@ const LANG_CONFIG = {
     // Japanese (e.g. 人工知能政策) and residual zh (e.g. 智能国家 2.0).
     // We discriminate via the `validate` callback below.
     foreignRegex: /[一-鿿]+(?:[一-鿿\s·。，、！？：；'-]*[一-鿿]+)*/g,
-    // For each candidate hanzi run, check ±15 chars of surrounding text
-    // for hiragana (U+3040–309F) or katakana (U+30A0–30FF or 'ー'). If
-    // ANY kana appears nearby, the run is part of a Japanese flow and
-    // allowed. If no kana is present in that window, the run is treated
-    // as Chinese residue and flagged. Heuristic — Japanese normally
-    // interleaves kana with kanji; isolated long hanzi runs are usually
-    // un-translated zh fragments.
-    validate: (match, text) => {
-      const idx = match.index;
-      const start = Math.max(0, idx - 15);
-      const end = Math.min(text.length, idx + match[0].length + 15);
-      const context = text.slice(start, end);
-      // Return true => foreign (flag). False => allow.
-      return !/[ぁ-んァ-ヶー]/.test(context);
+    // Two-tier discrimination:
+    //
+    // Tier 1 — simplified-Chinese-only characters. These are codepoints
+    //   used in Simplified Chinese but not in Japanese JIS kanji, where
+    //   Japanese has a different codepoint for the equivalent meaning
+    //   (e.g. 战 zh / 戦 ja, 经 zh / 経 ja, 转 zh / 転 ja, 这 zh / no
+    //   ja kanji, 们 zh / 達 ja). If the run contains ANY of these,
+    //   it's almost certainly Chinese residue regardless of context.
+    //
+    // Tier 2 — kana proximity. For runs without simplified-only tells
+    //   (i.e., runs composed entirely of kanji that exist in BOTH
+    //   languages), allow on the assumption that they're Japanese
+    //   labels (出典, 投入強度, 第二期, 試験環境, 計算能力基盤, etc).
+    //   The previous "no kana adjacent ⇒ Chinese" rule produced a flood
+    //   of false positives on data-driven JA pages where labels appear
+    //   in cards/breadcrumbs without surrounding kana flow.
+    //
+    // Trade-off: this misses Chinese sentences whose every character
+    // happens to overlap with Japanese kanji (rare in policy/AI domain
+    // content; common only in proper nouns like 新加坡 ⇒ シンガポール).
+    // Net effect on real residue: most Chinese sentences contain at
+    // least one simplified-only character (战 / 经 / 这 / 现 / 转 / 国家级
+    // → 级, etc.), so coverage stays high while noise collapses.
+    validate: (match) => {
+      const run = match[0];
+      // Tier 1: simplified-Chinese-exclusive codepoints. Curated for
+      // policy/AI corpus — high-frequency simplified chars whose JA
+      // kanji equivalent uses a different codepoint.
+      // Set was hand-curated by checking each char's codepoint against
+      // the Japanese JIS X 0208 set. Chars used in BOTH languages (e.g.
+      // 那 in 旦那, 点 in 観点, 双 in 双子, 区 in 区別, 条 in 条件)
+      // are excluded — they would cause false positives on JA labels.
+      const SIMPLIFIED_ONLY =
+        /[们这个让给还经历战业长进应时现过对边远难听说话网决织续选责险验总较单风转务习头质闻关开师龙标异该后处见级观产场际线门约电汉东种钟严员问纸读买卖钱实]/;
+      if (SIMPLIFIED_ONLY.test(run)) return true;
+      // Tier 2: no simplified tell — treat as Japanese.
+      return false;
     },
     allowPatterns: [
       // LangBanner: invite user to switch to ja.

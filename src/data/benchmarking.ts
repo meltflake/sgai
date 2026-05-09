@@ -2023,7 +2023,7 @@ export const regionDetails: RegionDetail[] = [
         nameEn: 'AI Strategy 2031',
         year: '2017',
         description: '全球首批国家 AI 战略之一，目标让 AI 贡献 GDP 的 33.5%',
-        descriptionJa: '全球首批国家 AI 战略之一，目标让 AI 贡献 GDP 的 33.5%',
+        descriptionJa: '世界初の国家 AI 戦略の一つ、AI が GDP の 33.5% に貢献することを目標とする',
         descriptionEn: "Among the world's earliest national AI strategies; targets AI contributing 33.5% of GDP",
       },
       {
