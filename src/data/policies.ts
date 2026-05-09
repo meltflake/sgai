@@ -567,8 +567,7 @@ ISO standards typically take years from proposal to publication. But once a prop
         source: '卫生部 (MOH) / 卫生科学局 (HSA) / 国家医疗科技局 (Synapxe)',
         sourceJa: '保健省 (MOH) / 衛生科学庁 (HSA) / 国家医療技術局 (Synapxe)',
         sourceOrgUrl: 'https://www.moh.gov.sg/',
-        sourceUrl:
-          'https://www.moh.gov.sg/news-highlights/details/release-of-the-artificial-intelligence-in-healthcare-guidelines-(aihgle)',
+        sourceUrl: 'https://www.moh.gov.sg/licensing-and-regulation/artificial-intelligence-in-healthcare',
         summary: '面向医院、医生与 AI 开发者的医疗 AI 安全使用与良好实践指南。',
         summaryJa: '病院、医師、AI 開発者向けの医療 AI の安全な使用とベストプラクティスガイドライン。',
         content: `Artificial Intelligence in Healthcare Guidelines (AIHGle) 于 2021 年 10 月由卫生部 (MOH)、卫生科学局 (HSA) 与当时的 Integrated Health Information Systems (IHiS，2023 年改组为 Synapxe) 联合发布，是新加坡医疗 AI 的核心非约束性指南。两个目标：一是支持安全有效的医疗 AI 部署，二是补充 HSA 对 AI-Medical Devices (AI-MD) 的硬性监管要求。覆盖 AI 开发者与医疗机构两侧的全生命周期：开发阶段的临床有效性证据要求、部署阶段的临床工作流融入与人在回路、上线后的持续监控与不良事件报告、患者沟通与知情同意。AIHGle 与 HSA 基于 Health Products Act 的医疗器械注册要求形成"软指南 + 硬法"双层结构，是 ACE-AI、Synapxe AI 平台等国家级医疗 AI 项目的合规底座。`,
@@ -996,7 +995,7 @@ ISO standards typically take years from proposal to publication. But once a prop
         date: '2024-04',
         source: 'IMDA / Singapore AI Safety Institute',
         sourceOrgUrl: 'https://aiverifyfoundation.sg/',
-        sourceUrl: 'https://aiverifyfoundation.sg/news/singapore-consensus/',
+        sourceUrl: 'https://aisafetypriorities.org/',
         summary: '新加坡发起、11 国签署（含中美）的全球 AI 安全研究优先级共识。',
         summaryJa: 'シンガポール発起、11 カ国署名（米中を含む）の AI 安全研究優先度に関するグローバル・コンセンサス。',
         content: `Singapore Consensus 是新加坡 2024 年 4 月在 ICLR 期间召开的国际科学交流会议（ISESEA I）成果，最终由 11 个国家或地区共同签署，**罕见地把中美都纳入同一份 AI 安全文件**。共识围绕三大研究优先级：(1) 风险评估方法论标准化；(2) 跨国前沿模型红队协作；(3) 关键基础设施 AI 部署的安全门槛。这是新加坡国家 AI-native 战略最具杠杆的产出之一——用 0.07% 的全球人口建立起 AI 治理领域的"中立坐标"。配套机制包括 ISESEA II（2026）持续更新共识、AISI 作为协调中心、Bletchley/Seoul/Paris AI Summits 持续输出。`,
@@ -1046,7 +1045,7 @@ ISO standards typically take years from proposal to publication. But once a prop
         source: '外交部 (MFA) / 国防部 (MINDEF)',
         sourceJa: '外交・通商省 (MFA) / 国防部 (MINDEF)',
         sourceOrgUrl: 'https://www.mfa.gov.sg/',
-        sourceUrl: 'https://www.mfa.gov.sg/Newsroom/Press-Statements-Transcripts-and-Photos/2024/09/20240910-REAIM',
+        sourceUrl: 'https://www.mindef.gov.sg/news-and-events/latest-releases/10sep24_nr/',
         summary: 'REAIM Seoul Summit 五个联合主办国之一，把"军事 AI 责任使用"推向国际议程。',
         summaryJa:
           'REAIM Seoul Summit の五つの共同主催国の一つ。「軍事 AI の責任ある使用」を国際議題に押し上げています。',

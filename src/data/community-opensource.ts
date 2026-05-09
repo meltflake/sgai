@@ -865,7 +865,7 @@ This is an important but often underestimated layer of Singapore’s AI ecosyste
       {
         label: 'Salesforce AI Research',
         labelEn: 'Salesforce AI Research',
-        url: 'https://www.salesforceairesearch.com',
+        url: 'https://www.salesforce.com/research/',
         kind: 'organization',
       },
     ],
@@ -962,7 +962,7 @@ On this site, it is a reminder that Singapore’s AI influence does not only com
       {
         label: 'Salesforce AI Research',
         labelEn: 'Salesforce AI Research',
-        url: 'https://www.salesforceairesearch.com',
+        url: 'https://www.salesforce.com/research/',
         kind: 'organization',
       },
     ],

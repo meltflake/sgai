@@ -14,28 +14,28 @@ import { NON_DEFAULT_ROUTE_LOCALES, type Lang } from '~/i18n';
 export const prerender = true;
 
 export const getStaticPaths = (async ({ paginate }) => {
-  const posts = await fetchPosts();
-  const tags: Record<string, { slug: string; title: string }> = {};
-  posts.map((post) => {
-    if (Array.isArray(post.tags)) {
-      post.tags.map((tag) => {
-        tags[tag.slug] = tag;
-      });
+  const allPosts = await fetchPosts();
+  // Per-lang tag set: only emit /[lang]/blog/[tag]/ pages for tags that
+  // have posts in that lang. Without the lang filter, /ja/blog/<zh-pinyin-slug>/
+  // pages get generated showing zh post excerpts, which fails Layer D
+  // language-purity. Fix mirrors the lang-filter in [...page].astro.
+  return NON_DEFAULT_ROUTE_LOCALES.flatMap((lang) => {
+    const langPosts = allPosts.filter((p) => (p.lang ?? 'zh') === lang);
+    const tags: Record<string, { slug: string; title: string }> = {};
+    for (const post of langPosts) {
+      if (Array.isArray(post.tags)) for (const tag of post.tags) tags[tag.slug] = tag;
     }
-  });
-
-  return NON_DEFAULT_ROUTE_LOCALES.flatMap((lang) =>
-    Object.keys(tags).flatMap((tagSlug) =>
+    return Object.keys(tags).flatMap((tagSlug) =>
       paginate(
-        posts.filter((post) => Array.isArray(post.tags) && post.tags.find((elem) => elem.slug === tagSlug)),
+        langPosts.filter((post) => Array.isArray(post.tags) && post.tags.find((elem) => elem.slug === tagSlug)),
         {
           params: { lang, tag: tagSlug, blog: TAG_BASE || undefined },
           pageSize: blogPostsPerPage,
           props: { tag: tags[tagSlug] },
         }
       )
-    )
-  );
+    );
+  });
 }) satisfies GetStaticPaths;
 
 const { page, tag } = Astro.props as { page: Page<Post>; tag: { slug: string; title: string } };

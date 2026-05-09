@@ -14,26 +14,26 @@ import { NON_DEFAULT_ROUTE_LOCALES, type Lang } from '~/i18n';
 export const prerender = true;
 
 export const getStaticPaths = (async ({ paginate }) => {
-  const posts = await fetchPosts();
-  const categories: Record<string, { slug: string; title: string }> = {};
-  posts.map((post) => {
-    if (post.category?.slug) {
-      categories[post.category.slug] = post.category;
+  const allPosts = await fetchPosts();
+  // Same per-lang split as the [tag] route — without it, /ja/blog/<zh-slug>/
+  // listing pages render zh post excerpts under JA chrome and fail Layer D.
+  return NON_DEFAULT_ROUTE_LOCALES.flatMap((lang) => {
+    const langPosts = allPosts.filter((p) => (p.lang ?? 'zh') === lang);
+    const categories: Record<string, { slug: string; title: string }> = {};
+    for (const post of langPosts) {
+      if (post.category?.slug) categories[post.category.slug] = post.category;
     }
-  });
-
-  return NON_DEFAULT_ROUTE_LOCALES.flatMap((lang) =>
-    Object.keys(categories).flatMap((categorySlug) =>
+    return Object.keys(categories).flatMap((categorySlug) =>
       paginate(
-        posts.filter((post) => post.category?.slug && categorySlug === post.category.slug),
+        langPosts.filter((post) => post.category?.slug && categorySlug === post.category.slug),
         {
           params: { lang, category: categorySlug, blog: CATEGORY_BASE || undefined },
           pageSize: blogPostsPerPage,
           props: { category: categories[categorySlug] },
         }
       )
-    )
-  );
+    );
+  });
 }) satisfies GetStaticPaths;
 
 const { page, category } = Astro.props as { page: Page<Post>; category: { slug: string; title: string } };

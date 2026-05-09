@@ -344,7 +344,7 @@ export const dimensions: Dimension[] = [
         source: 'EDB / Microsoft, 2024',
         sourceEn: 'EDB / Microsoft, 2024',
         sourceUrl:
-          'https://news.microsoft.com/source/asia/2024/05/07/microsoft-announces-singapore-investment-and-skilling-initiatives/',
+          'https://news.microsoft.com/source/asia/2026/04/01/microsoft-announces-5-5-billion-spend-and-new-microsoft-elevate-programs-to-support-every-tertiary-student-educator-and-nonprofit-to-power-singapores-ai-future/',
       },
       {
         name: 'AWS 数据中心投资',
@@ -354,7 +354,8 @@ export const dimensions: Dimension[] = [
         valueEn: 'S$12B (2024-2028)',
         source: 'EDB / AWS, 2024',
         sourceEn: 'EDB / AWS, 2024',
-        sourceUrl: 'https://www.aboutamazon.com/news/aws/aws-singapore-12-billion-investment',
+        sourceUrl:
+          'https://press.aboutamazon.com/sg/aws/2024/5/aws-to-invest-an-additional-sg-12-billion-in-singapore-by-2028-and-announces-flagship-ai-programme',
       },
       {
         name: 'Google 数据中心 + AI 投资',
@@ -851,7 +852,7 @@ export const dimensions: Dimension[] = [
         source: 'EDB / Microsoft, 2024',
         sourceEn: 'EDB / Microsoft, 2024',
         sourceUrl:
-          'https://news.microsoft.com/source/asia/2024/05/07/microsoft-announces-singapore-investment-and-skilling-initiatives/',
+          'https://news.microsoft.com/source/asia/2026/04/01/microsoft-announces-5-5-billion-spend-and-new-microsoft-elevate-programs-to-support-every-tertiary-student-educator-and-nonprofit-to-power-singapores-ai-future/',
       },
       {
         name: 'AWS 数据中心投资',
@@ -861,7 +862,8 @@ export const dimensions: Dimension[] = [
         valueEn: 'S$12B (2024-2028)',
         source: 'EDB / AWS, 2024',
         sourceEn: 'EDB / AWS, 2024',
-        sourceUrl: 'https://www.aboutamazon.com/news/aws/aws-singapore-12-billion-investment',
+        sourceUrl:
+          'https://press.aboutamazon.com/sg/aws/2024/5/aws-to-invest-an-additional-sg-12-billion-in-singapore-by-2028-and-announces-flagship-ai-programme',
       },
       {
         name: 'Google 数据中心 + AI 投资',
@@ -1090,7 +1092,8 @@ export const dimensions: Dimension[] = [
         valueEn: '150K civil servants target',
         source: 'GovTech',
         sourceEn: 'GovTech',
-        sourceUrl: 'https://www.tech.gov.sg/products-and-services/pair/',
+        sourceUrl:
+          'https://www.tech.gov.sg/products-and-services/for-government-agencies/productivity-and-marketing/pair/',
         category: '政府自用',
         categoryJa: '政府自用',
         categoryEn: 'Government Adoption',
@@ -1117,7 +1120,8 @@ export const dimensions: Dimension[] = [
         valueEn: "World's largest fully automated port by the 2040s",
         source: 'PSA Singapore',
         sourceEn: 'PSA Singapore',
-        sourceUrl: 'https://www.singaporepsa.com/our-commitment/innovation/tuas-port',
+        sourceUrl:
+          'https://www.singaporepsa.com/2022/09/01/psa-singapore-opens-tuas-port-a-focal-point-of-the-wider-tuas-ecosystem/',
         category: '政府自用',
         categoryJa: '政府自用',
         categoryEn: 'Government Adoption',
@@ -1145,7 +1149,7 @@ export const dimensions: Dimension[] = [
         valueEn: 'First smart-energy town, 42,000 households',
         source: 'HDB',
         sourceEn: 'HDB',
-        sourceUrl: 'https://www.hdb.gov.sg/about-us/news-and-publications/news/details/tengah',
+        sourceUrl: 'https://www.hdb.gov.sg/about-us/our-towns-and-estates/tengah',
         category: '政府自用',
         categoryJa: '政府自用',
         categoryEn: 'Government Adoption',
@@ -1158,7 +1162,7 @@ export const dimensions: Dimension[] = [
         valueEn: 'First district-wide smart precinct, projected 30% energy reduction',
         source: 'JTC',
         sourceEn: 'JTC',
-        sourceUrl: 'https://www.jtc.gov.sg/our-work/spaces/punggol-digital-district',
+        sourceUrl: 'https://www.jtc.gov.sg/find-space/punggol-digital-district',
         category: '政府自用',
         categoryJa: '政府自用',
         categoryEn: 'Government Adoption',

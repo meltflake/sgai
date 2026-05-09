@@ -193,7 +193,6 @@ const ALL_DATA_FILES = [
   'src/data/community-opensource.ts',
   'src/data/opensource.ts',
   'src/data/updates.ts',
-  'src/data/stats.ts',
 ];
 
 const ZH_TO_JA_SYSTEM_PROMPT = [

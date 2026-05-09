@@ -76,21 +76,58 @@ export async function validateUrls(
 }
 
 async function checkOne(url: string, timeoutMs: number): Promise<number | string> {
-  const controller = new AbortController();
-  const t = setTimeout(() => controller.abort(), timeoutMs);
-  const headers = { 'User-Agent': 'Mozilla/5.0 (sgai url-check)' };
+  // Browser-shaped User-Agent. A bare "sgai url-check" UA gets bot-walled
+  // (LinkedIn 404, several .gov.sg pages 403). Sites that block bots on
+  // a real browser UA via JS challenge already return 999 / 403, which
+  // isReachable treats as soft-warn anyway.
+  const headers = {
+    'User-Agent':
+      'Mozilla/5.0 (Macintosh; Intel Mac OS X 13_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+    Accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+    'Accept-Language': 'en-US,en;q=0.9',
+  };
+
+  async function fetchOnce(method: 'HEAD' | 'GET'): Promise<Response> {
+    const controller = new AbortController();
+    const t = setTimeout(() => controller.abort(), timeoutMs);
+    try {
+      return await fetch(url, { method, redirect: 'follow', signal: controller.signal, headers });
+    } finally {
+      clearTimeout(t);
+    }
+  }
+
   try {
-    let resp = await fetch(url, { method: 'HEAD', redirect: 'follow', signal: controller.signal, headers });
-    // Some servers reject HEAD; retry as GET.
-    if (resp.status === 405 || resp.status === 501) {
-      resp = await fetch(url, { method: 'GET', redirect: 'follow', signal: controller.signal, headers });
+    let resp = await fetchOnce('HEAD');
+    // Some servers reject HEAD or return wrong status for HEAD.
+    if (resp.status === 405 || resp.status === 501 || resp.status === 404) {
+      try {
+        const getResp = await fetchOnce('GET');
+        // Only override if GET reveals the page is actually live.
+        if (getResp.status < 400 || getResp.status === 401 || getResp.status === 403 || getResp.status === 429) {
+          resp = getResp;
+        } else if (resp.status === 405 || resp.status === 501) {
+          resp = getResp;
+        }
+      } catch {
+        /* keep HEAD result */
+      }
     }
     return resp.status;
   } catch (err) {
     const e = err as { name?: string };
+    // Slow / flaky server → AbortError. Retry once with GET; servers
+    // sometimes stall on HEAD but stream a quick GET.
+    if (e.name === 'AbortError') {
+      try {
+        const resp = await fetchOnce('GET');
+        return resp.status;
+      } catch (err2) {
+        const e2 = err2 as { name?: string };
+        return `ERR:${e2.name ?? 'fetch'}`;
+      }
+    }
     return `ERR:${e.name ?? 'fetch'}`;
-  } finally {
-    clearTimeout(t);
   }
 }
 

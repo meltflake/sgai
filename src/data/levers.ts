@@ -96,7 +96,7 @@ export const levers: Lever[] = [
             descriptionJa: '2024–2028 投資協議、AI スキルと地元インフラを含む',
             descriptionEn: '2024–2028 investment agreement, covering AI skilling and local infrastructure',
             sourceUrl:
-              'https://news.microsoft.com/source/asia/2024/05/07/microsoft-announces-singapore-investment-and-skilling-initiatives/',
+              'https://news.microsoft.com/source/asia/2026/04/01/microsoft-announces-5-5-billion-spend-and-new-microsoft-elevate-programs-to-support-every-tertiary-student-educator-and-nonprofit-to-power-singapores-ai-future/',
           },
           {
             id: 'aws-数据中心',
@@ -109,7 +109,8 @@ export const levers: Lever[] = [
             description: '2024–2028 投资，新加坡云基础设施扩容',
             descriptionJa: '2024–2028 投資、シンガポール クラウドインフラの拡張',
             descriptionEn: '2024–2028 investment, expanding Singapore cloud infrastructure capacity',
-            sourceUrl: 'https://www.aboutamazon.com/news/aws/aws-singapore-12-billion-investment',
+            sourceUrl:
+              'https://press.aboutamazon.com/sg/aws/2024/5/aws-to-invest-an-additional-sg-12-billion-in-singapore-by-2028-and-announces-flagship-ai-programme',
           },
           {
             id: 'google-数据中心-ai',
@@ -273,7 +274,7 @@ export const levers: Lever[] = [
             description: '能耗预计降 30%，国家级 smart district 样板',
             descriptionJa: 'エネルギー消費を 30% 削減予定、国家級スマートディストリクト モデル',
             descriptionEn: 'Expected 30% energy reduction; a national-level smart district template',
-            sourceUrl: 'https://www.jtc.gov.sg/our-work/spaces/punggol-digital-district',
+            sourceUrl: 'https://www.jtc.gov.sg/find-space/punggol-digital-district',
           },
         ],
       },
@@ -1220,7 +1221,8 @@ export const levers: Lever[] = [
             description: 'AI + 自动化 + 预测分析的港口',
             descriptionJa: 'AI + オートメーション + 予測分析の港湾',
             descriptionEn: 'A port built on AI + automation + predictive analytics',
-            sourceUrl: 'https://www.singaporepsa.com/our-commitment/innovation/tuas-port',
+            sourceUrl:
+              'https://www.singaporepsa.com/2022/09/01/psa-singapore-opens-tuas-port-a-focal-point-of-the-wider-tuas-ecosystem/',
           },
           {
             id: 'changi-全球首张-isoiec-42001-ai-治理认证',
@@ -1280,7 +1282,7 @@ export const levers: Lever[] = [
             description: '首座智能能源镇',
             descriptionJa: '最初のスマートエネルギー町',
             descriptionEn: 'First smart energy town',
-            sourceUrl: 'https://www.hdb.gov.sg/about-us/news-and-publications/news/details/tengah',
+            sourceUrl: 'https://www.hdb.gov.sg/about-us/our-towns-and-estates/tengah',
           },
           {
             id: 'hdb-askjudy-mso-oneservice',
@@ -1397,7 +1399,8 @@ export const levers: Lever[] = [
             description: '面向全公务员的 AI 工作助手',
             descriptionJa: '全公務員向け AI 仕事アシスタント',
             descriptionEn: 'AI work assistant for the entire civil service',
-            sourceUrl: 'https://www.tech.gov.sg/products-and-services/pair/',
+            sourceUrl:
+              'https://www.tech.gov.sg/products-and-services/for-government-agencies/productivity-and-marketing/pair/',
           },
           {
             id: 'pair-search',
@@ -1861,7 +1864,7 @@ export const levers: Lever[] = [
             descriptionJa: '「Blueprint for Action」――初の軍事 AI ガバナンス実行可能多国間文書',
             descriptionEn:
               '"Blueprint for Action" — the first operational multilateral document on military AI governance',
-            sourceUrl: 'https://www.mfa.gov.sg/Newsroom/Press-Statements-Transcripts-and-Photos/2024/09/20240910-REAIM',
+            sourceUrl: 'https://www.mindef.gov.sg/news-and-events/latest-releases/10sep24_nr/',
           },
           {
             id: 'bletchley-seoul-paris-ai-safety-summits',

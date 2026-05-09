@@ -857,9 +857,9 @@ It should be read together with SGNLP and SEA-LION: together they form Singapore
         kind: 'website',
       },
       {
-        label: 'Speech Lab Demo',
-        labelEn: 'Speech Lab demo',
-        url: 'https://speechlab-demo.aisingapore.net/',
+        label: 'Speech Lab',
+        labelEn: 'Speech Lab',
+        url: 'https://aisingapore.org/aiproducts/speech-lab/',
         kind: 'demo',
       },
       {

@@ -241,7 +241,13 @@ function findSitemapFiles(): string[] {
 function extractSitemapUrls(xmlPath: string): string[] {
   const xml = readFileSync(xmlPath, 'utf8');
   const out: string[] = [];
-  for (const m of xml.matchAll(/<loc>([^<]+)<\/loc>/g)) out.push(m[1]);
+  for (const m of xml.matchAll(/<loc>([^<]+)<\/loc>/g)) {
+    // Skip nested sitemap references (sitemap-index.xml lists shard files
+    // as <loc>…/sitemap-0.xml</loc>). Those aren't content URLs and don't
+    // need locale siblings.
+    if (m[1].endsWith('.xml')) continue;
+    out.push(m[1]);
+  }
   return out;
 }
 
@@ -319,6 +325,27 @@ function extractHreflangs(html: string): Set<string> {
   return out;
 }
 
+/** True if the page declares `<meta name="robots" content="noindex…">`.
+ *  Hreflang exists for search-engine routing; noindex pages don't get
+ *  indexed and so don't need it. The Decap CMS admin shell at
+ *  /decapcms/ is the canonical example.
+ *
+ *  Astro's HTML compressor freely reorders attributes, so the meta tag
+ *  may appear as `name="robots" content="noindex"` OR
+ *  `content="noindex" name="robots"`. Match either order by extracting
+ *  the meta tag block first, then checking both attrs are present. */
+function isNoindex(html: string): boolean {
+  for (const m of html.matchAll(/<meta\b([^>]+)>/gi)) {
+    const attrs = m[1];
+    const nameMatch = attrs.match(/\sname=["']([^"']+)["']/i);
+    if (!nameMatch || nameMatch[1].toLowerCase() !== 'robots') continue;
+    const contentMatch = attrs.match(/\scontent=["']([^"']+)["']/i);
+    if (!contentMatch) continue;
+    if (/\bnoindex\b/i.test(contentMatch[1])) return true;
+  }
+  return false;
+}
+
 function runLayerC(): { issues: HreflangIssue[]; totalPages: number; passed: boolean; skipped: boolean } {
   if (!existsSync(DIST_DIR)) return { issues: [], totalPages: 0, passed: false, skipped: true };
   const required = ['zh-CN', 'en', 'ja', 'x-default'];
@@ -327,6 +354,7 @@ function runLayerC(): { issues: HreflangIssue[]; totalPages: number; passed: boo
   for (const file of walkHtml(DIST_DIR)) {
     total++;
     const html = readFileSync(file, 'utf8');
+    if (isNoindex(html)) continue;
     const tags = extractHreflangs(html);
     const missing = required.filter((r) => !tags.has(r));
     if (missing.length > 0) {

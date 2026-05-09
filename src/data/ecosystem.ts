@@ -1152,7 +1152,7 @@ Variables to watch: whether the post-integration CCDS produces flagship projects
             url: 'https://www.ntu.edu.sg/',
             date: '2026-05-02',
           },
-          { label: 'NTU CCDS', labelEn: 'NTU CCDS', url: 'https://www.ntu.edu.sg/ccds' },
+          { label: 'NTU CCDS', labelEn: 'NTU CCDS', url: 'https://www.ntu.edu.sg/computing' },
         ],
         updated: '2026-05-02',
       },

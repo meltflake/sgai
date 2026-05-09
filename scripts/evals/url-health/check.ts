@@ -172,12 +172,38 @@ function todayStamp(): string {
   return `${d.getFullYear()}${String(d.getMonth() + 1).padStart(2, '0')}${String(d.getDate()).padStart(2, '0')}`;
 }
 
-function classify(status: number | string): 'fail' | 'warn' | 'ok' {
+/** Domains that aggressively bot-block. Public profile / company pages
+ *  on these hosts are always real but routinely return 400 / 404 / 999
+ *  to non-JS, non-cookied requests. Treat their 4xx as soft-warn — the
+ *  human reviewer can spot-check, but a cron run shouldn't fail the
+ *  build over LinkedIn returning 404 to a HEAD request. */
+const BOT_WALLED_HOSTS = [
+  'linkedin.com',
+  'facebook.com',
+  'instagram.com',
+  'x.com',
+  'twitter.com',
+];
+
+function isBotWalledHost(url: string): boolean {
+  try {
+    const host = new URL(url).hostname.toLowerCase();
+    return BOT_WALLED_HOSTS.some((d) => host === d || host.endsWith('.' + d));
+  } catch {
+    return false;
+  }
+}
+
+function classify(status: number | string, url: string): 'fail' | 'warn' | 'ok' {
   if (isReachable(status)) {
     if (typeof status === 'number' && (status === 401 || status === 403 || status === 429 || status === 999)) {
       return 'warn';
     }
     return 'ok';
+  }
+  // Bot-wall hosts: 4xx is almost always anti-scraping, not a missing page.
+  if (typeof status === 'number' && status >= 400 && status < 500 && isBotWalledHost(url)) {
+    return 'warn';
   }
   return 'fail';
 }
@@ -268,7 +294,7 @@ async function main() {
       file: meta?.file ?? '?',
       line: meta?.line ?? 0,
       recordId: meta?.recordId,
-      severity: classify(b.status),
+      severity: classify(b.status, b.url),
     };
   });
 

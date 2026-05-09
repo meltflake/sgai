@@ -775,7 +775,7 @@ export const people: Person[] = [
         role: 'Speaker',
         roleEn: 'Speaker',
         date: '2025',
-        sourceUrl: 'https://hun-ren.hu/ai-symposium-2025/luke-ong.html',
+        sourceUrl: 'https://hun-ren.hu/ai-symposium-2025/',
       },
       {
         event: 'Singapore International Cyber Week (SICW)',
