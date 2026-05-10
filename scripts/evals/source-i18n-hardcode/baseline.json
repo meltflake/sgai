@@ -1,0 +1,2532 @@
+[
+  {
+    "file": "src/components/benchmarking/CaseProfile.astro",
+    "line": 20,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/benchmarking/CaseProfile.astro",
+    "line": 23,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/benchmarking/CaseProfile.astro",
+    "line": 24,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/benchmarking/CaseProfile.astro",
+    "line": 25,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/benchmarking/CaseProfile.astro",
+    "line": 26,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/benchmarking/CaseProfile.astro",
+    "line": 27,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/benchmarking/CaseProfile.astro",
+    "line": 28,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/benchmarking/CaseProfile.astro",
+    "line": 29,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/benchmarking/CaseProfile.astro",
+    "line": 30,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/benchmarking/CaseProfile.astro",
+    "line": 60,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/benchmarking/CaseProfile.astro",
+    "line": 81,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/benchmarking/CaseProfile.astro",
+    "line": 85,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/benchmarking/CaseProfile.astro",
+    "line": 94,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/benchmarking/CaseProfile.astro",
+    "line": 154,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/benchmarking/CaseProfile.astro",
+    "line": 156,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/benchmarking/CaseProfile.astro",
+    "line": 157,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/benchmarking/CaseProfile.astro",
+    "line": 158,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/benchmarking/CaseProfile.astro",
+    "line": 178,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/benchmarking/CaseProfile.astro",
+    "line": 179,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/benchmarking/CaseProfile.astro",
+    "line": 180,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/benchmarking/CaseProfile.astro",
+    "line": 205,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/benchmarking/CaseProfile.astro",
+    "line": 238,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/benchmarking/CaseProfile.astro",
+    "line": 256,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/benchmarking/CaseProfile.astro",
+    "line": 259,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/benchmarking/CaseProfile.astro",
+    "line": 278,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/benchmarking/CaseProfile.astro",
+    "line": 279,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/benchmarking/CaseProfile.astro",
+    "line": 282,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/benchmarking/DrilldownProfile.astro",
+    "line": 21,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/benchmarking/DrilldownProfile.astro",
+    "line": 23,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/benchmarking/DrilldownProfile.astro",
+    "line": 24,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/benchmarking/DrilldownProfile.astro",
+    "line": 25,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/benchmarking/DrilldownProfile.astro",
+    "line": 26,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/benchmarking/DrilldownProfile.astro",
+    "line": 27,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/benchmarking/DrilldownProfile.astro",
+    "line": 50,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/benchmarking/DrilldownProfile.astro",
+    "line": 81,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/benchmarking/DrilldownProfile.astro",
+    "line": 90,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/benchmarking/DrilldownProfile.astro",
+    "line": 134,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/benchmarking/DrilldownProfile.astro",
+    "line": 136,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/benchmarking/DrilldownProfile.astro",
+    "line": 160,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/benchmarking/DrilldownProfile.astro",
+    "line": 194,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/benchmarking/DrilldownProfile.astro",
+    "line": 196,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/benchmarking/DrilldownProfile.astro",
+    "line": 199,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/benchmarking/RegionProfile.astro",
+    "line": 21,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/benchmarking/RegionProfile.astro",
+    "line": 22,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/benchmarking/RegionProfile.astro",
+    "line": 23,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/benchmarking/RegionProfile.astro",
+    "line": 27,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/benchmarking/RegionProfile.astro",
+    "line": 28,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/benchmarking/RegionProfile.astro",
+    "line": 29,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/benchmarking/RegionProfile.astro",
+    "line": 30,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/benchmarking/RegionProfile.astro",
+    "line": 31,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/benchmarking/RegionProfile.astro",
+    "line": 32,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/benchmarking/RegionProfile.astro",
+    "line": 33,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/benchmarking/RegionProfile.astro",
+    "line": 52,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/benchmarking/RegionProfile.astro",
+    "line": 83,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/benchmarking/RegionProfile.astro",
+    "line": 105,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/benchmarking/RegionProfile.astro",
+    "line": 109,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/benchmarking/RegionProfile.astro",
+    "line": 196,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/benchmarking/RegionProfile.astro",
+    "line": 199,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/benchmarking/RegionProfile.astro",
+    "line": 219,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/benchmarking/RegionProfile.astro",
+    "line": 225,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/benchmarking/RegionProfile.astro",
+    "line": 231,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/benchmarking/RegionProfile.astro",
+    "line": 244,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/benchmarking/RegionProfile.astro",
+    "line": 297,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/benchmarking/RegionProfile.astro",
+    "line": 300,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/benchmarking/RegionProfile.astro",
+    "line": 360,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/benchmarking/RegionProfile.astro",
+    "line": 363,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/data/CommunityOpenSourceProjectDetail.astro",
+    "line": 22,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/data/CommunityOpenSourceProjectDetail.astro",
+    "line": 23,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/data/CommunityOpenSourceProjectDetail.astro",
+    "line": 24,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/data/CommunityOpenSourceProjectDetail.astro",
+    "line": 25,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/data/CommunityOpenSourceProjectDetail.astro",
+    "line": 26,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/data/CommunityOpenSourceProjectDetail.astro",
+    "line": 27,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/data/CommunityOpenSourceProjectDetail.astro",
+    "line": 28,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/data/CommunityOpenSourceProjectDetail.astro",
+    "line": 29,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/data/CommunityOpenSourceProjectDetail.astro",
+    "line": 30,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/data/CommunityOpenSourceProjectDetail.astro",
+    "line": 31,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/data/CommunityOpenSourceProjectDetail.astro",
+    "line": 52,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/data/CommunityOpenSourceProjectDetail.astro",
+    "line": 72,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/data/CommunityOpenSourceProjectDetail.astro",
+    "line": 112,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/data/CommunityOpenSourceProjectDetail.astro",
+    "line": 114,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/data/CommunityOpenSourceProjectDetail.astro",
+    "line": 115,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/data/CommunityOpenSourceProjectDetail.astro",
+    "line": 116,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/data/CommunityOpenSourceProjectDetail.astro",
+    "line": 167,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/data/CommunityOpenSourceProjectDetail.astro",
+    "line": 168,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/data/CommunityOpenSourceProjectDetail.astro",
+    "line": 170,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/data/CommunityOpenSourceProjectDetail.astro",
+    "line": 197,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/data/CommunityOpenSourceProjectDetail.astro",
+    "line": 217,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/data/CommunityOpenSourceProjectDetail.astro",
+    "line": 219,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/data/CommunityOpenSourceProjectDetail.astro",
+    "line": 221,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/data/OpenSourceProjectDetail.astro",
+    "line": 17,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/data/OpenSourceProjectDetail.astro",
+    "line": 18,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/data/OpenSourceProjectDetail.astro",
+    "line": 19,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/data/OpenSourceProjectDetail.astro",
+    "line": 20,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/data/OpenSourceProjectDetail.astro",
+    "line": 21,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/data/OpenSourceProjectDetail.astro",
+    "line": 22,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/data/OpenSourceProjectDetail.astro",
+    "line": 23,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/data/OpenSourceProjectDetail.astro",
+    "line": 24,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/data/OpenSourceProjectDetail.astro",
+    "line": 25,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/data/OpenSourceProjectDetail.astro",
+    "line": 35,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/data/OpenSourceProjectDetail.astro",
+    "line": 87,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/data/OpenSourceProjectDetail.astro",
+    "line": 96,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/data/OpenSourceProjectDetail.astro",
+    "line": 99,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/data/OpenSourceProjectDetail.astro",
+    "line": 101,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/data/OpenSourceProjectDetail.astro",
+    "line": 102,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/data/OpenSourceProjectDetail.astro",
+    "line": 153,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/data/OpenSourceProjectDetail.astro",
+    "line": 154,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/data/OpenSourceProjectDetail.astro",
+    "line": 156,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/data/OpenSourceProjectDetail.astro",
+    "line": 183,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/data/PolicyProfile.astro",
+    "line": 65,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/data/PolicyProfile.astro",
+    "line": 66,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/data/PolicyProfile.astro",
+    "line": 70,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/data/PolicyProfile.astro",
+    "line": 127,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/data/PolicyProfile.astro",
+    "line": 128,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/data/PolicyProfile.astro",
+    "line": 302,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/data/PolicyProfile.astro",
+    "line": 304,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/data/PolicyProfile.astro",
+    "line": 306,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/data/PolicyProfile.astro",
+    "line": 329,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/data/PolicyProfile.astro",
+    "line": 332,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/data/PolicyProfile.astro",
+    "line": 374,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/data/PolicyProfile.astro",
+    "line": 376,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/data/PolicyProfile.astro",
+    "line": 378,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/data/RelatedRail.astro",
+    "line": 73,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/data/RelatedRail.astro",
+    "line": 74,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/data/RelatedRail.astro",
+    "line": 75,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/data/RelatedRail.astro",
+    "line": 76,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/data/RelatedRail.astro",
+    "line": 77,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/data/RelatedRail.astro",
+    "line": 78,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/data/RelatedRail.astro",
+    "line": 80,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/data/RelatedRail.astro",
+    "line": 81,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/data/RelatedRail.astro",
+    "line": 82,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/data/RelatedRail.astro",
+    "line": 87,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/data/RelatedRail.astro",
+    "line": 88,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/data/RelatedRail.astro",
+    "line": 89,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/data/RelatedRail.astro",
+    "line": 90,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/data/RelatedRail.astro",
+    "line": 91,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/data/RelatedRail.astro",
+    "line": 92,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/data/RelatedRail.astro",
+    "line": 93,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/debates/DebatesIndex.astro",
+    "line": 421,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/debates/DebatesIndex.astro",
+    "line": 759,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/debates/DebatesIndex.astro",
+    "line": 770,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/debates/DebatesIndex.astro",
+    "line": 785,
+    "rule": "isEn-ternary"
+  },
+  {
+    "file": "src/components/home/HomePage.astro",
+    "line": 45,
+    "rule": "lang-eq-en-ternary"
+  },
+  {
+    "file": "src/components/widgets/PersonContributions.astro",
+    "line": 70,
+    "rule": "lang-eq-zh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/404.astro",
+    "line": 11,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/404.astro",
+    "line": 17,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/404.astro",
+    "line": 26,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/404.astro",
+    "line": 38,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/benchmarking/index.astro",
+    "line": 24,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/benchmarking/index.astro",
+    "line": 67,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/benchmarking/index.astro",
+    "line": 71,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/benchmarking/index.astro",
+    "line": 75,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/benchmarking/index.astro",
+    "line": 84,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/benchmarking/index.astro",
+    "line": 94,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/benchmarking/index.astro",
+    "line": 130,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/benchmarking/index.astro",
+    "line": 140,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/benchmarking/index.astro",
+    "line": 162,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/benchmarking/index.astro",
+    "line": 167,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/benchmarking/index.astro",
+    "line": 168,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/benchmarking/index.astro",
+    "line": 169,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/benchmarking/index.astro",
+    "line": 170,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/benchmarking/index.astro",
+    "line": 171,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/benchmarking/index.astro",
+    "line": 172,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/benchmarking/index.astro",
+    "line": 173,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/benchmarking/index.astro",
+    "line": 212,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/benchmarking/index.astro",
+    "line": 230,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/benchmarking/index.astro",
+    "line": 242,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/benchmarking/index.astro",
+    "line": 243,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/blog/[...page].astro",
+    "line": 34,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/blog/[...page].astro",
+    "line": 53,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/challenges/index.astro",
+    "line": 91,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/community-opensource/[id].astro",
+    "line": 28,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/community-opensource/[id].astro",
+    "line": 29,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/community-opensource/[id].astro",
+    "line": 46,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/community-opensource/index.astro",
+    "line": 22,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/community-opensource/index.astro",
+    "line": 23,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/community-opensource/index.astro",
+    "line": 50,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/community-opensource/index.astro",
+    "line": 97,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/community-opensource/index.astro",
+    "line": 109,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/community-opensource/index.astro",
+    "line": 156,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/community-opensource/index.astro",
+    "line": 167,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/community-opensource/index.astro",
+    "line": 208,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/debates/[id].astro",
+    "line": 53,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/debates/[id].astro",
+    "line": 83,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/debates/[id].astro",
+    "line": 99,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/debates/[id].astro",
+    "line": 104,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/debates/[id].astro",
+    "line": 107,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/debates/[id].astro",
+    "line": 117,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/debates/[id].astro",
+    "line": 118,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/debates/[id].astro",
+    "line": 120,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/debates/[id].astro",
+    "line": 123,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/debates/[id].astro",
+    "line": 131,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/debates/[id].astro",
+    "line": 150,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/debates/[id].astro",
+    "line": 293,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/debates/[id].astro",
+    "line": 294,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/ecosystem/[id].astro",
+    "line": 72,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/ecosystem/[id].astro",
+    "line": 78,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/ecosystem/[id].astro",
+    "line": 79,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/ecosystem/[id].astro",
+    "line": 84,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/ecosystem/[id].astro",
+    "line": 94,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/ecosystem/[id].astro",
+    "line": 100,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/ecosystem/[id].astro",
+    "line": 119,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/ecosystem/[id].astro",
+    "line": 126,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/ecosystem/[id].astro",
+    "line": 133,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/ecosystem/[id].astro",
+    "line": 175,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/ecosystem/[id].astro",
+    "line": 183,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/ecosystem/[id].astro",
+    "line": 185,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/ecosystem/[id].astro",
+    "line": 198,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/ecosystem/[id].astro",
+    "line": 200,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/ecosystem/[id].astro",
+    "line": 208,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/ecosystem/[id].astro",
+    "line": 210,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/ecosystem/[id].astro",
+    "line": 218,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/ecosystem/[id].astro",
+    "line": 220,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/ecosystem/[id].astro",
+    "line": 228,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/ecosystem/[id].astro",
+    "line": 248,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/ecosystem/[id].astro",
+    "line": 268,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/ecosystem/[id].astro",
+    "line": 279,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/ecosystem/[id].astro",
+    "line": 290,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/ecosystem/[id].astro",
+    "line": 301,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/ecosystem/[id].astro",
+    "line": 308,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/ecosystem/[id].astro",
+    "line": 309,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/ecosystem/[id].astro",
+    "line": 311,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/ecosystem/[id].astro",
+    "line": 321,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/ecosystem/[id].astro",
+    "line": 335,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/ecosystem/[id].astro",
+    "line": 350,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/ecosystem/[id].astro",
+    "line": 351,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/ecosystem/[id].astro",
+    "line": 361,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/ecosystem/[id].astro",
+    "line": 363,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/ecosystem/[id].astro",
+    "line": 364,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/ecosystem/[id].astro",
+    "line": 377,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/ecosystem/[id].astro",
+    "line": 383,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/ecosystem/[id].astro",
+    "line": 384,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/ecosystem/[id].astro",
+    "line": 416,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/ecosystem/[id].astro",
+    "line": 422,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/ecosystem/[id].astro",
+    "line": 424,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/ecosystem/[id].astro",
+    "line": 426,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/ecosystem/[id].astro",
+    "line": 443,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/ecosystem/[id].astro",
+    "line": 449,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/ecosystem/[id].astro",
+    "line": 457,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/ecosystem/[id].astro",
+    "line": 466,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/ecosystem/[id].astro",
+    "line": 474,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/ecosystem/[id].astro",
+    "line": 483,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/ecosystem/[id].astro",
+    "line": 492,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/ecosystem/[id].astro",
+    "line": 503,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/ecosystem/[id].astro",
+    "line": 512,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/ecosystem/[id].astro",
+    "line": 529,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/ecosystem/[id].astro",
+    "line": 540,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/ecosystem/[id].astro",
+    "line": 554,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/ecosystem/[id].astro",
+    "line": 560,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/ecosystem/[id].astro",
+    "line": 564,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/ecosystem/[id].astro",
+    "line": 578,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/ecosystem/[id].astro",
+    "line": 583,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/ecosystem/[id].astro",
+    "line": 584,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/ecosystem/[id].astro",
+    "line": 611,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/fieldnotes/index.astro",
+    "line": 47,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/fieldnotes/index.astro",
+    "line": 71,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/fieldnotes/index.astro",
+    "line": 75,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/fieldnotes/index.astro",
+    "line": 80,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/fieldnotes/index.astro",
+    "line": 91,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/fieldnotes/index.astro",
+    "line": 92,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/fieldnotes/index.astro",
+    "line": 101,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/fieldnotes/index.astro",
+    "line": 102,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/fieldnotes/index.astro",
+    "line": 104,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/fieldnotes/index.astro",
+    "line": 129,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/fieldnotes/index.astro",
+    "line": 132,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/fieldnotes/index.astro",
+    "line": 144,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/legal-ai/[id].astro",
+    "line": 42,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/legal-ai/[id].astro",
+    "line": 44,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/legal-ai/[id].astro",
+    "line": 45,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/legal-ai/[id].astro",
+    "line": 46,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/legal-ai/[id].astro",
+    "line": 57,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/legal-ai/[id].astro",
+    "line": 59,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/legal-ai/[id].astro",
+    "line": 93,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/legal-ai/[id].astro",
+    "line": 96,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/legal-ai/[id].astro",
+    "line": 106,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/legal-ai/[id].astro",
+    "line": 110,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/legal-ai/[id].astro",
+    "line": 117,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/legal-ai/[id].astro",
+    "line": 122,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/legal-ai/[id].astro",
+    "line": 128,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/legal-ai/[id].astro",
+    "line": 145,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/legal-ai/[id].astro",
+    "line": 154,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/legal-ai/[id].astro",
+    "line": 161,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/legal-ai/index.astro",
+    "line": 30,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/legal-ai/index.astro",
+    "line": 48,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/legal-ai/index.astro",
+    "line": 49,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/legal-ai/index.astro",
+    "line": 69,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/legal-ai/index.astro",
+    "line": 77,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/legal-ai/index.astro",
+    "line": 80,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/legal-ai/index.astro",
+    "line": 89,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/legal-ai/index.astro",
+    "line": 93,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/legal-ai/index.astro",
+    "line": 99,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/legal-ai/index.astro",
+    "line": 111,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/legal-ai/index.astro",
+    "line": 115,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/legal-ai/index.astro",
+    "line": 119,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/legal-ai/index.astro",
+    "line": 122,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/legal-ai/index.astro",
+    "line": 123,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/legal-ai/index.astro",
+    "line": 131,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/legal-ai/index.astro",
+    "line": 143,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/legal-ai/index.astro",
+    "line": 149,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/legal-ai/index.astro",
+    "line": 162,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/legal-ai/index.astro",
+    "line": 166,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/levers/[id].astro",
+    "line": 59,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/levers/[id].astro",
+    "line": 78,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/levers/[id].astro",
+    "line": 96,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/levers/[id].astro",
+    "line": 101,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/levers/[id].astro",
+    "line": 115,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/levers/[id].astro",
+    "line": 122,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/levers/[id].astro",
+    "line": 126,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/levers/[id].astro",
+    "line": 133,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/levers/[id].astro",
+    "line": 150,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/levers/[id].astro",
+    "line": 170,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/levers/[id].astro",
+    "line": 171,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/levers/[id].astro",
+    "line": 175,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/levers/[id].astro",
+    "line": 180,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/levers/[id].astro",
+    "line": 185,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/levers/[id].astro",
+    "line": 191,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/levers/[id].astro",
+    "line": 199,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/levers/[id].astro",
+    "line": 205,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/levers/[id].astro",
+    "line": 213,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/levers/[id].astro",
+    "line": 245,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/levers/[id].astro",
+    "line": 261,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/levers/index.astro",
+    "line": 34,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/levers/index.astro",
+    "line": 37,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/levers/index.astro",
+    "line": 75,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/levers/index.astro",
+    "line": 80,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/levers/index.astro",
+    "line": 84,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/levers/index.astro",
+    "line": 95,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/levers/index.astro",
+    "line": 101,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/levers/index.astro",
+    "line": 140,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/levers/index.astro",
+    "line": 174,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/opensource/[id].astro",
+    "line": 21,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/opensource/[id].astro",
+    "line": 26,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/opensource/index.astro",
+    "line": 25,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/opensource/index.astro",
+    "line": 26,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/opensource/index.astro",
+    "line": 27,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/opensource/index.astro",
+    "line": 28,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/opensource/index.astro",
+    "line": 52,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/opensource/index.astro",
+    "line": 75,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/opensource/index.astro",
+    "line": 80,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/opensource/index.astro",
+    "line": 86,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/opensource/index.astro",
+    "line": 90,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/opensource/index.astro",
+    "line": 97,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/opensource/index.astro",
+    "line": 106,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/opensource/index.astro",
+    "line": 107,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/opensource/index.astro",
+    "line": 108,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/opensource/index.astro",
+    "line": 109,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/opensource/index.astro",
+    "line": 110,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/opensource/index.astro",
+    "line": 141,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/opensource/index.astro",
+    "line": 147,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/opensource/index.astro",
+    "line": 153,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/opensource/index.astro",
+    "line": 157,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/opensource/index.astro",
+    "line": 177,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/opensource/index.astro",
+    "line": 184,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/opensource/index.astro",
+    "line": 201,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/opensource/index.astro",
+    "line": 225,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/opensource/index.astro",
+    "line": 265,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/opensource/index.astro",
+    "line": 278,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/opensource/index.astro",
+    "line": 286,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/opensource/index.astro",
+    "line": 311,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/references/index.astro",
+    "line": 36,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/references/index.astro",
+    "line": 49,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/references/index.astro",
+    "line": 56,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/references/index.astro",
+    "line": 59,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/references/index.astro",
+    "line": 60,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/speeches/[id].astro",
+    "line": 38,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/speeches/[id].astro",
+    "line": 40,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/speeches/[id].astro",
+    "line": 43,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/speeches/[id].astro",
+    "line": 51,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/speeches/[id].astro",
+    "line": 63,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/speeches/[id].astro",
+    "line": 68,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/speeches/[id].astro",
+    "line": 76,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/speeches/[id].astro",
+    "line": 113,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/speeches/[id].astro",
+    "line": 116,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/speeches/[id].astro",
+    "line": 229,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/speeches/[id].astro",
+    "line": 239,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/startups/[id].astro",
+    "line": 45,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/startups/[id].astro",
+    "line": 50,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/startups/[id].astro",
+    "line": 51,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/startups/[id].astro",
+    "line": 183,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/startups/[id].astro",
+    "line": 184,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/startups/[id].astro",
+    "line": 198,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/startups/[id].astro",
+    "line": 207,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/startups/[id].astro",
+    "line": 226,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/startups/[id].astro",
+    "line": 231,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/startups/[id].astro",
+    "line": 270,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/startups/[id].astro",
+    "line": 276,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/startups/[id].astro",
+    "line": 287,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/startups/[id].astro",
+    "line": 295,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/startups/[id].astro",
+    "line": 297,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/startups/[id].astro",
+    "line": 302,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/startups/[id].astro",
+    "line": 309,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/startups/[id].astro",
+    "line": 317,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/startups/[id].astro",
+    "line": 319,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/startups/[id].astro",
+    "line": 320,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/startups/[id].astro",
+    "line": 329,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/startups/[id].astro",
+    "line": 338,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/startups/[id].astro",
+    "line": 344,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/startups/[id].astro",
+    "line": 355,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/startups/[id].astro",
+    "line": 372,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/startups/index.astro",
+    "line": 21,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/startups/index.astro",
+    "line": 23,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/startups/index.astro",
+    "line": 24,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/startups/index.astro",
+    "line": 26,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/startups/index.astro",
+    "line": 27,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/startups/index.astro",
+    "line": 28,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/startups/index.astro",
+    "line": 29,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/startups/index.astro",
+    "line": 64,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/startups/index.astro",
+    "line": 66,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/startups/index.astro",
+    "line": 77,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/startups/index.astro",
+    "line": 92,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/startups/index.astro",
+    "line": 96,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/startups/index.astro",
+    "line": 100,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/startups/index.astro",
+    "line": 113,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/startups/index.astro",
+    "line": 124,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/startups/index.astro",
+    "line": 152,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/startups/index.astro",
+    "line": 157,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/startups/index.astro",
+    "line": 162,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/startups/index.astro",
+    "line": 178,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/startups/index.astro",
+    "line": 182,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/startups/index.astro",
+    "line": 194,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/startups/index.astro",
+    "line": 209,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/startups/index.astro",
+    "line": 213,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/startups/index.astro",
+    "line": 230,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/startups/index.astro",
+    "line": 234,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/startups/index.astro",
+    "line": 259,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/startups/index.astro",
+    "line": 263,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/talent/[id].astro",
+    "line": 46,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/talent/[id].astro",
+    "line": 53,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/talent/[id].astro",
+    "line": 63,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/talent/[id].astro",
+    "line": 68,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/talent/[id].astro",
+    "line": 113,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/talent/[id].astro",
+    "line": 132,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/talent/[id].astro",
+    "line": 135,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/talent/[id].astro",
+    "line": 144,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/talent/[id].astro",
+    "line": 150,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/talent/[id].astro",
+    "line": 157,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/talent/[id].astro",
+    "line": 160,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/talent/[id].astro",
+    "line": 171,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/talent/[id].astro",
+    "line": 173,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/talent/[id].astro",
+    "line": 179,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/talent/[id].astro",
+    "line": 193,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/talent/[id].astro",
+    "line": 201,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/talent/[id].astro",
+    "line": 205,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/talent/[id].astro",
+    "line": 208,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/talent/[id].astro",
+    "line": 214,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/talent/index.astro",
+    "line": 34,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/talent/index.astro",
+    "line": 87,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/talent/index.astro",
+    "line": 98,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/videos/[id].astro",
+    "line": 41,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/videos/[id].astro",
+    "line": 217,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/videos/index.astro",
+    "line": 13,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/videos/index.astro",
+    "line": 15,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/videos/index.astro",
+    "line": 17,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/videos/index.astro",
+    "line": 64,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/videos/index.astro",
+    "line": 68,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/videos/index.astro",
+    "line": 72,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/videos/index.astro",
+    "line": 80,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/videos/index.astro",
+    "line": 88,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/videos/index.astro",
+    "line": 110,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/videos/index.astro",
+    "line": 118,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/videos/index.astro",
+    "line": 140,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/videos/index.astro",
+    "line": 148,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/videos/index.astro",
+    "line": 174,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/videos/index.astro",
+    "line": 244,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/videos/index.astro",
+    "line": 247,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/videos/index.astro",
+    "line": 282,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/videos/index.astro",
+    "line": 283,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/voices/[id].astro",
+    "line": 36,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/voices/[id].astro",
+    "line": 45,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/voices/[id].astro",
+    "line": 46,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/voices/[id].astro",
+    "line": 78,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/voices/[id].astro",
+    "line": 79,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/voices/[id].astro",
+    "line": 80,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/voices/[id].astro",
+    "line": 129,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/voices/[id].astro",
+    "line": 151,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/voices/[id].astro",
+    "line": 178,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/voices/[id].astro",
+    "line": 182,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/voices/[id].astro",
+    "line": 194,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/voices/[id].astro",
+    "line": 212,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/voices/[id].astro",
+    "line": 236,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/voices/index.astro",
+    "line": 99,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/voices/index.astro",
+    "line": 103,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/voices/index.astro",
+    "line": 107,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/voices/index.astro",
+    "line": 111,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/voices/index.astro",
+    "line": 117,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/voices/index.astro",
+    "line": 129,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/voices/index.astro",
+    "line": 171,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/voices/index.astro",
+    "line": 210,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/voices/index.astro",
+    "line": 219,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/voices/index.astro",
+    "line": 227,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/voices/index.astro",
+    "line": 249,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/voices/index.astro",
+    "line": 257,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/voices/index.astro",
+    "line": 283,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/voices/index.astro",
+    "line": 330,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/voices/index.astro",
+    "line": 351,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/voices/index.astro",
+    "line": 354,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/voices/index.astro",
+    "line": 363,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/voices/index.astro",
+    "line": 372,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/voices/index.astro",
+    "line": 380,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/voices/index.astro",
+    "line": 391,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/voices/index.astro",
+    "line": 402,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/voices/index.astro",
+    "line": 410,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/voices/index.astro",
+    "line": 436,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/voices/index.astro",
+    "line": 494,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/voices/index.astro",
+    "line": 497,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/voices/index.astro",
+    "line": 557,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/pages/[lang]/voices/index.astro",
+    "line": 558,
+    "rule": "isZh-ternary"
+  }
+]

@@ -40,20 +40,16 @@ const relatedVideos = videos
 
 const summary = pickLocalized(person, 'summary', lang) || '';
 const isStub = !summary || summary === 'Profile pending.' || summary.startsWith('[需补充]');
-const displayName = isZh ? personDisplayName(person.id) : person.nameEn || person.name;
-const displayTitle = isZh ? person.title : person.titleEn || person.title;
+// zh uses personDisplayName(id) for the curated bilingual name + honorific.
+// Other locales prefer pickLocalized (which walks ja → en → zh chain via shape A).
+const displayName = isZh ? personDisplayName(person.id) : pickLocalized(person, 'name', lang) || person.name;
+const displayTitle = isZh ? person.title : pickLocalized(person, 'title', lang) || person.title;
 
-const categoryLabelsZh: Record<Person['category'], string> = {
-  government: '政府',
-  academic: '学术',
-  industry: '产业',
+const categoryLabels: Record<Person['category'], string> = {
+  government: t(lang, 'categoryGovernment'),
+  academic: t(lang, 'categoryAcademic'),
+  industry: t(lang, 'categoryIndustry'),
 };
-const categoryLabelsEn: Record<Person['category'], string> = {
-  government: 'Government',
-  academic: 'Academia',
-  industry: 'Industry',
-};
-const categoryLabels = isZh ? categoryLabelsZh : categoryLabelsEn;
 
 const categoryColors: Record<Person['category'], string> = {
   government: 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300',
@@ -115,15 +111,15 @@ const personSchema = {
     <section class="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-8">
       <div class="bg-surface rounded-xl p-4 shadow-sm border border-subtle">
         <div class="t-stat text-blue-600">{counts.debateCount}</div>
-        <div class="text-xs text-gray-500 mt-0.5">{isZh ? '国会发言' : 'Parliamentary speeches'}</div>
+        <div class="text-xs text-gray-500 mt-0.5">{t(lang, 'debateCount')}</div>
       </div>
       <div class="bg-surface rounded-xl p-4 shadow-sm border border-subtle">
         <div class="t-stat text-purple-600">{counts.policyAuthorCount}</div>
-        <div class="text-xs text-gray-500 mt-0.5">{isZh ? '主导政策' : 'Policies championed'}</div>
+        <div class="text-xs text-gray-500 mt-0.5">{t(lang, 'policyCount')}</div>
       </div>
       <div class="bg-surface rounded-xl p-4 shadow-sm border border-subtle">
         <div class="t-stat text-rose-600">{relatedVideos.length}</div>
-        <div class="text-xs text-gray-500 mt-0.5">{isZh ? '视频观点' : 'AI videos'}</div>
+        <div class="text-xs text-gray-500 mt-0.5">{t(lang, 'videoCount')}</div>
       </div>
     </section>
 

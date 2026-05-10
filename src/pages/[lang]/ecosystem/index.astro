@@ -21,12 +21,7 @@ const lang = Astro.params.lang as Lang;
   lang={lang}
 >
   <section class="px-4 py-16 sm:px-6 mx-auto lg:px-8 max-w-6xl">
-    <Headline
-      title={`🗺️ ${t(lang, 'ecosystemPageTitle')}`}
-      subtitle={lang === 'zh'
-        ? 'AI Singapore 七大支柱与关键参与者，呈现新加坡 AI 生态系统全貌。'
-        : "The seven pillars of AI Singapore and their key participants — a full-system view of Singapore's AI landscape."}
-    />
+    <Headline title={`🗺️ ${t(lang, 'ecosystemPageTitle')}`} subtitle={t(lang, 'ecosystemSubtitle')} />
 
     <div class="space-y-12">
       {
@@ -44,8 +39,8 @@ const lang = Astro.params.lang as Lang;
                 const detailHref = hasDetail ? localizedHref(`/ecosystem/${entity.id}/`, lang) : null;
                 const displayName = pickLocalized(entity, 'name', lang) ?? entity.name;
                 const displayDesc = pickLocalized(entity, 'description', lang) ?? entity.description;
-                const readMoreLabel = lang === 'zh' ? '了解详情 →' : 'Read more →';
-                const visitLabel = lang === 'zh' ? `访问 ${displayName} 官网` : `Visit ${displayName} website`;
+                const readMoreLabel = t(lang, 'ecosystemReadMore');
+                const visitLabel = t(lang, 'ecosystemVisitWebsite').replace('{name}', displayName ?? '');
                 return (
                   <div class="relative bg-surface rounded-lg shadow-md border border-subtle hover:shadow-lg transition-shadow">
                     {detailHref ? (
@@ -96,12 +91,6 @@ const lang = Astro.params.lang as Lang;
       }
     </div>
 
-    <p class="mt-12 text-sm text-muted text-center">
-      {
-        lang === 'zh'
-          ? '数据来源：AI Singapore 官网及公开信息。生态持续演进，欢迎补充。'
-          : 'Sources: AI Singapore and other public information. The ecosystem evolves continuously — additions welcome.'
-      }
-    </p>
+    <p class="mt-12 text-sm text-muted text-center">{t(lang, 'ecosystemSourceFootnote')}</p>
   </section>
 </Layout>

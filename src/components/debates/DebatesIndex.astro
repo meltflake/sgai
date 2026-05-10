@@ -418,19 +418,48 @@ const truncate = (text: string | null | undefined, max: number) => {
   return s.length > max ? `${s.slice(0, max).trim()}...` : s;
 };
 
-const debateTitle = (d: (typeof debates)[number]) => (isEn ? d.titleEn || d.title : d.title);
+// Three-locale field pickers. The previous `isEn ? *En : *zh` shape
+// silently routed JA pages to the EN sibling because `isEn = lang !== 'zh'`
+// — never consulting `*Ja`. The 2026-05-10 audit traced 845 EN-residue hits
+// on /ja/debates/index.html to this single helper block. Now: ja → *Ja
+// (with chain fallback to *En → bare zh), en → *En (with fallback), zh → bare.
+const debateTitle = (d: (typeof debates)[number]) =>
+  isJa ? d.titleJa || d.titleEn || d.title : isEn ? d.titleEn || d.title : d.title;
 const debateSummary = (d: (typeof debates)[number]) =>
-  isEn ? d.summaryEn || d.summary : d.summary || d.summaryEn || '';
+  isJa
+    ? d.summaryJa || d.summaryEn || d.summary || ''
+    : isEn
+      ? d.summaryEn || d.summary || ''
+      : d.summary || d.summaryEn || '';
 const debateSignal = (d: (typeof debates)[number]) =>
-  isEn ? d.policySignalEn || d.policySignal : d.policySignal || d.policySignalEn;
+  isJa
+    ? d.policySignalJa || d.policySignalEn || d.policySignal
+    : isEn
+      ? d.policySignalEn || d.policySignal
+      : d.policySignal || d.policySignalEn;
 const debateQuote = (d: (typeof debates)[number]) =>
-  isEn ? d.notableQuoteEn || d.notableQuote : d.notableQuote || d.notableQuoteEn;
-const debateKeyPoints = (d: (typeof debates)[number]) =>
-  isEn && d.keyPointsEn && d.keyPointsEn.length > 0 ? d.keyPointsEn : d.keyPoints;
+  isJa
+    ? d.notableQuoteJa || d.notableQuoteEn || d.notableQuote
+    : isEn
+      ? d.notableQuoteEn || d.notableQuote
+      : d.notableQuote || d.notableQuoteEn;
+const debateKeyPoints = (d: (typeof debates)[number]) => {
+  if (isJa && d.keyPointsJa && d.keyPointsJa.length > 0) return d.keyPointsJa;
+  if (isEn && d.keyPointsEn && d.keyPointsEn.length > 0) return d.keyPointsEn;
+  return d.keyPoints;
+};
 const debateGovStance = (d: (typeof debates)[number]) =>
-  isEn ? d.governmentStanceEn || d.governmentStance : d.governmentStance || d.governmentStanceEn;
+  isJa
+    ? d.governmentStanceJa || d.governmentStanceEn || d.governmentStance
+    : isEn
+      ? d.governmentStanceEn || d.governmentStance
+      : d.governmentStance || d.governmentStanceEn;
 const debateOppStance = (d: (typeof debates)[number]) =>
-  isEn ? d.oppositionStanceEn || d.oppositionStance : d.oppositionStance || d.oppositionStanceEn;
+  isJa
+    ? d.oppositionStanceJa || d.oppositionStanceEn || d.oppositionStance
+    : isEn
+      ? d.oppositionStanceEn || d.oppositionStance
+      : d.oppositionStance || d.oppositionStanceEn;
 
 const searchBlob = (d: (typeof debates)[number]) =>
   [
@@ -450,7 +479,13 @@ const searchBlob = (d: (typeof debates)[number]) =>
 const speakerDisplay = (raw: string) => {
   const pid = findPersonId(raw);
   const person = pid ? getPerson(pid) : undefined;
-  const label = person ? (isEn ? person.nameEn || person.name || raw : person.name || person.nameEn || raw) : raw;
+  const label = person
+    ? isJa
+      ? (person as { nameJa?: string }).nameJa || person.nameEn || person.name || raw
+      : isEn
+        ? person.nameEn || person.name || raw
+        : person.name || person.nameEn || raw
+    : raw;
   const href = pid ? localizedHref(`/voices/${pid}/`, lang) : null;
   return { label, href, title: raw };
 };
@@ -841,7 +876,10 @@ const typeMixLabel = Object.entries(DEBATE_STATS.byType)
                       )}
 
                       {d.transcriptEn && (
-                        <details class="rounded-lg border border-subtle bg-white p-3 dark:bg-slate-800">
+                        <details
+                          class="rounded-lg border border-subtle bg-white p-3 dark:bg-slate-800"
+                          {...(lang !== 'en' ? { 'data-i18n-allow-en': 'hansard-transcript-verbatim' } : {})}
+                        >
                           <summary class="cursor-pointer text-xs font-semibold text-gray-500">{L.transcript}</summary>
                           <div class="mt-2 max-h-64 overflow-y-auto whitespace-pre-wrap text-xs leading-relaxed text-gray-600 dark:text-gray-400">
                             {d.transcriptEn}
@@ -1033,7 +1071,12 @@ const typeMixLabel = Object.entries(DEBATE_STATS.byType)
         <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
           {
             MP_PROFILES.map((mp) => {
-              const focusAreas = isEn && mp.focusAreasEn?.length ? mp.focusAreasEn : mp.focusAreas;
+              const focusAreas =
+                isJa && (mp as { focusAreasJa?: string[] }).focusAreasJa?.length
+                  ? (mp as { focusAreasJa?: string[] }).focusAreasJa!
+                  : isEn && mp.focusAreasEn?.length
+                    ? mp.focusAreasEn
+                    : mp.focusAreas;
               return (
                 <button
                   onclick={`filterBy('speaker','${jsAttr(mp.nameEn || mp.name)}')`}
@@ -1042,14 +1085,24 @@ const typeMixLabel = Object.entries(DEBATE_STATS.byType)
                   <div class="mb-2 flex items-start justify-between gap-2">
                     <div class="min-w-0">
                       <div class="text-sm font-semibold text-gray-800 transition-colors group-hover:text-purple-600 dark:text-white">
-                        {isEn ? mp.nameEn || mp.name : mp.name || mp.nameEn}
+                        {isJa
+                          ? (mp as { nameJa?: string }).nameJa || mp.nameEn || mp.name
+                          : isEn
+                            ? mp.nameEn || mp.name
+                            : mp.name || mp.nameEn}
                       </div>
                       {!isEn && mp.nameEn && <div class="text-xs text-gray-500">{mp.nameEn}</div>}
                     </div>
                     <span
                       class={`shrink-0 rounded-full px-2 py-0.5 text-xs ${mp.role === '反对党' ? 'bg-orange-100 text-orange-700' : 'bg-blue-100 text-blue-700'}`}
                     >
-                      {isEn ? mp.roleEn || (mp.role === '反对党' ? 'Opposition' : 'Ruling party') : mp.role}
+                      {isJa
+                        ? (mp as { roleJa?: string }).roleJa ||
+                          mp.roleEn ||
+                          (mp.role === '反对党' ? 'Opposition' : 'Ruling party')
+                        : isEn
+                          ? mp.roleEn || (mp.role === '反对党' ? 'Opposition' : 'Ruling party')
+                          : mp.role}
                     </span>
                   </div>
                   <div class="mb-2 text-xs text-gray-500">

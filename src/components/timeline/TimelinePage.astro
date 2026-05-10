@@ -12,7 +12,7 @@ interface Props {
 }
 const { lang } = Astro.props;
 
-// Tag set is small and stable — translate inline rather than threading per-tag EN siblings.
+// Tag set is small and stable — translate inline rather than threading per-tag EN/JA siblings.
 const TAG_EN: Record<string, string> = {
   人才: 'Talent',
   国际: 'International',
@@ -26,9 +26,24 @@ const TAG_EN: Record<string, string> = {
   标准: 'Standards',
   数据主权: 'Data Sovereignty',
 };
-// For non-zh locales (en, ja, ...) translate the zh tag via TAG_EN.
-// ja currently shares the en map until per-locale tag dictionaries land.
-const tagText = (tag: string) => (lang === 'zh' ? tag : (TAG_EN[tag] ?? tag));
+const TAG_JA: Record<string, string> = {
+  人才: '人材',
+  国际: '国際',
+  预算: '予算',
+  战略: '戦略',
+  医疗: '医療',
+  治理: 'ガバナンス',
+  技术: '技術',
+  产业: '産業',
+  创新: 'イノベーション',
+  标准: '標準',
+  数据主权: 'データ主権',
+};
+const tagText = (tag: string) => {
+  if (lang === 'zh') return tag;
+  if (lang === 'ja') return TAG_JA[tag] ?? TAG_EN[tag] ?? tag;
+  return TAG_EN[tag] ?? tag;
+};
 
 const COPY: Partial<Record<Lang, { title: string; subtitle: string; sources: string }>> = {
   zh: {
@@ -41,6 +56,12 @@ const COPY: Partial<Record<Lang, { title: string; subtitle: string; sources: str
     subtitle:
       "From the 2014 Smart Nation Initiative to the 2027 International AI Olympiad — key milestones in Singapore's AI strategy.",
     sources: 'Sources: AI Singapore, SNDGO, MOF, IMDA and other public official channels.',
+  },
+  ja: {
+    title: '📅 シンガポール AI 発展タイムライン',
+    subtitle:
+      '2014 年の Smart Nation 構想から 2027 年の国際 AI オリンピックまで、シンガポール AI 戦略の主要マイルストーンを振り返ります。',
+    sources: 'データ出典：AI Singapore、SNDGO、MOF、IMDA など公式公開情報。',
   },
 };
 

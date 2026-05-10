@@ -19,6 +19,9 @@ export interface VideoTranscript {
   digest?: VideoDigest;
   /** Polished readable digest (en). */
   digestEn?: VideoDigest;
+  /** Polished readable digest (ja). Optional today; populated by a future
+   *  refresh pipeline that translates digestEn → digestJa via translateBatch. */
+  digestJa?: VideoDigest;
   translatedAt?: string;
   // 'claude' = local Claude CLI (default since 2026-05). 'openai' kept for
   // backward compatibility with translations cached before the switch.
@@ -3661,12 +3664,26 @@ export function getVideoTranscriptLanguage(videoId: string, lang: 'zh' | 'en' | 
   return transcript.paragraphs.length ? 'zh-CN' : undefined;
 }
 
-/** Read the polished digest for a video in the requested language. Falls
- *  back to zh digest when no localized variant exists. ja currently falls
- *  back to the en digest, then zh. */
+/** Read the polished digest for a video in the requested language.
+ *
+ *  Lookup chain:
+ *    zh → digest
+ *    en → digestEn → digest
+ *    ja → digestJa → digestEn → digest
+ *
+ *  digestJa is added by a future translation pipeline (see
+ *  scripts/refresh/video-digests/translate-ja.ts, planned). Until then,
+ *  ja readers see the en digest, and the wrapping section in
+ *  src/pages/[lang]/videos/[id].astro is marked
+ *  `data-i18n-allow-en="video-digest-pending-ja"` so the i18n purity
+ *  scan tolerates the EN content rather than treating it as a residue
+ *  bug. Once digestJa lands, drop the marker. */
 export function getVideoDigest(videoId: string, lang: 'zh' | 'en' | 'ja'): VideoDigest | undefined {
   const transcript = getVideoTranscript(videoId);
   if (!transcript) return undefined;
   if (lang === 'zh') return transcript.digest;
+  if (lang === 'ja') {
+    return transcript.digestJa || transcript.digestEn || transcript.digest;
+  }
   return transcript.digestEn || transcript.digest;
 }

@@ -4,15 +4,40 @@
 
 ## 当前已建
 
-| Eval                   | 命令                                              | 频率       | 需要 dist? |
-| ---------------------- | ------------------------------------------------- | ---------- | ---------- |
-| URL Health             | `npm run eval:url`                                | 周         | 否         |
-| i18n Coverage Layer A  | `npm run eval:i18n -- --layer=a`                  | 周         | 否         |
-| **addedAt Coverage**   | `npm run eval:addedAt`                            | PR + 周    | 否         |
-| i18n Coverage Layer B  | `npm run eval:i18n -- --layer=b`                  | 周         | 是         |
-| i18n Coverage Layer C  | `npm run eval:i18n -- --layer=c`                  | 周         | 是         |
-| i18n Coverage Layer D  | `npm run eval:i18n -- --layer=d`                  | 周         | 是         |
-| 全部                   | `npm run eval` 或 `npm run build && npm run eval` | 周（cron） | 视层而定   |
+| Eval                          | 命令                                              | 频率       | 需要 dist? |
+| ----------------------------- | ------------------------------------------------- | ---------- | ---------- |
+| URL Health                    | `npm run eval:url`                                | 周         | 否         |
+| i18n Coverage Layer A         | `npm run eval:i18n -- --layer=a`                  | 周         | 否         |
+| **addedAt Coverage**          | `npm run eval:addedAt`                            | PR + 周    | 否         |
+| **Layer E source-i18n**       | `npm run eval:source-i18n`                        | PR + 周    | 否         |
+| i18n Coverage Layer B         | `npm run eval:i18n -- --layer=b`                  | 周         | 是         |
+| i18n Coverage Layer C         | `npm run eval:i18n -- --layer=c`                  | 周         | 是         |
+| i18n Coverage Layer D         | `npm run eval:i18n -- --layer=d`                  | 周         | 是         |
+| 全部                          | `npm run eval` 或 `npm run build && npm run eval` | 周（cron） | 视层而定   |
+
+### Layer E — 源码层 i18n 硬编码扫描（2026-05-10 加，根因修复）
+
+**为什么有这一层**：Layer A–D 看的是数据 + 构建产物，看不见源代码模板里的 `lang === 'zh' ? '中文' : 'English'` 反模式。这种二元三元会让 ja 静默落到 en 分支，但 Layer D 的 CJK 残留扫描天然看不见 EN-on-JA 渲染。2026-05-10 用户审计发现：35 个 .astro 文件、518 处此类硬编码（且 `pickLocalized` 的 4 参数 shape B 实现里 ja 永远拿 enKey，不查 *Ja —— 50 处调用全部受影响，单点 root cause）。Layer E 在源码层把这类反模式 baseline 化，CI hard-fail 任何"新增"。
+
+逻辑：
+
+- 扫 `src/{components,pages,layouts}/**/*.{astro,ts,tsx}`
+- 抓四种反模式：`lang === 'zh' ?` 三元、`lang === 'en' ?` 三元、`isZh ?` 三元、`isEn ?` 三元
+- 同行已有 ja 分支（`isJa ?` / `lang === 'ja' ?`）的不算（三语链合法）
+- 同文件 `COPY[lang] ?? COPY.en` 但 `COPY` 字典缺 `ja:` key → 单独一类 `copy-no-ja`
+- baseline.json 存当前 518 条 grandfather backlog；PR 引入新增即 fail
+- backlog 消化后用 `--baseline` 重新 snapshot
+
+CLI：
+
+```bash
+npm run eval:source-i18n                                              # CI 用，新增即 fail
+npx tsx scripts/evals/source-i18n-hardcode/check.ts --baseline        # 重新 snapshot baseline
+npx tsx scripts/evals/source-i18n-hardcode/check.ts --report-only     # 输出但不 fail
+# 局部豁免：在被 flag 的行紧上方写 `// i18n-allow-hardcode <理由>`
+```
+
+逐步消化原则：未来 PR 修了任何 backlog 行后，跑一次 `--baseline` 把 baseline 缩小，commit 进 PR。baseline 只许变小、不许变大。
 
 ### addedAt Coverage（2026-05-10 加，根因修复）
 

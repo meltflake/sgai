@@ -44,6 +44,13 @@ const STAGES: Stage[] = [
     cmd: ['npx', 'tsx', 'scripts/evals/addedAt-coverage/check.ts'],
     needsDist: false,
   },
+  // Layer E — source-level i18n hardcode scan, no build required.
+  // Tracks 2-locale ternaries in templates that silently strand JA on EN.
+  {
+    name: 'source-i18n-hardcode (Layer E)',
+    cmd: ['npx', 'tsx', 'scripts/evals/source-i18n-hardcode/check.ts'],
+    needsDist: false,
+  },
   {
     name: 'i18n-coverage:layer-bcd',
     cmd: ['npx', 'tsx', 'scripts/evals/i18n-coverage/check.ts', '--layer=b,c,d'],

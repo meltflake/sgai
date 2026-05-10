@@ -14,12 +14,16 @@ interface Phase {
   period: string;
   title: string;
   titleEn: string;
+  titleJa: string;
   event: string;
   eventEn: string;
+  eventJa: string;
   description: string;
   descriptionEn: string;
+  descriptionJa: string;
   items: string[];
   itemsEn: string[];
+  itemsJa: string[];
 }
 
 const phases: Phase[] = [
@@ -27,29 +31,42 @@ const phases: Phase[] = [
     period: '2014–2017',
     title: '第一阶段：数字基础建设期',
     titleEn: 'Phase 1: Digital Foundation',
+    titleJa: '第一段階：デジタル基盤構築期',
     event: 'Smart Nation Initiative（2014）',
     eventEn: 'Smart Nation Initiative (2014)',
+    eventJa: 'Smart Nation Initiative（2014 年）',
     description:
       '核心是奠定数字化基础设施。新加坡推出智慧国家倡议，启动 GovTech 改革，建设全国传感器网络和数据共享平台。AI 尚未被单独列为战略重点，但数据基础设施的投资为后续 AI 发展铺平了道路。',
     descriptionEn:
       'The focus was laying the digital infrastructure foundation. Singapore launched the Smart Nation Initiative, kicked off GovTech reforms, and built nationwide sensor networks and data-sharing platforms. AI was not yet a standalone strategic priority, but the data infrastructure investments paved the way for everything that followed.',
+    descriptionJa:
+      '中心はデジタル基盤の整備でした。シンガポールは Smart Nation 構想を発表し、GovTech 改革に着手、全国センサーネットワークとデータ共有基盤を構築しました。AI はまだ単独の戦略優先項目ではありませんでしたが、データ基盤への投資が後の AI 発展への道を開きました。',
     items: ['GovTech 成立（2016）', '国家数字身份系统 SingPass 升级', 'Smart Nation Sensor Platform 启动'],
     itemsEn: [
       'GovTech founded (2016)',
       'National digital identity SingPass upgraded',
       'Smart Nation Sensor Platform launched',
     ],
+    itemsJa: [
+      'GovTech 設立（2016 年）',
+      '国家デジタル ID システム SingPass のアップグレード',
+      'Smart Nation Sensor Platform の稼働開始',
+    ],
   },
   {
     period: '2017–2019',
     title: '第二阶段：AI 战略启动期',
     titleEn: 'Phase 2: AI Strategy Launch',
+    titleJa: '第二段階：AI 戦略始動期',
     event: 'AI Singapore 成立（2017）、NAIS 1.0（2019）',
     eventEn: 'AI Singapore founded (2017), NAIS 1.0 (2019)',
+    eventJa: 'AI Singapore 設立（2017 年）、NAIS 1.0（2019 年）',
     description:
       '新加坡开始将 AI 视为独立的战略优先级。2017 年启动 AI Singapore 项目，投入 1.5 亿新元。2019 年发布首份国家 AI 战略，确定五大重点应用领域。同年推出 Model AI Governance Framework。',
     descriptionEn:
       'Singapore began treating AI as an independent strategic priority. AI Singapore launched in 2017 with S$150 million in funding. The first National AI Strategy was published in 2019, defining five priority domains. The Model AI Governance Framework was released the same year.',
+    descriptionJa:
+      'シンガポールは AI を独立した戦略優先項目として扱い始めました。2017 年に AI Singapore プロジェクトを 1.5 億シンガポールドルで立ち上げ、2019 年に最初の国家 AI 戦略を公表し、5 つの重点応用領域を定めました。同年、Model AI Governance Framework もリリースされました。',
     items: [
       'AI Singapore 100 Experiments 计划',
       'AI 学徒计划（AI Apprenticeship Programme）',
@@ -60,17 +77,26 @@ const phases: Phase[] = [
       'AI Apprenticeship Programme (AIAP)',
       "Asia's first AI governance framework released",
     ],
+    itemsJa: [
+      'AI Singapore 100 Experiments プログラム',
+      'AI Apprenticeship Programme（AIAP）',
+      'アジア初の AI ガバナンスフレームワーク公表',
+    ],
   },
   {
     period: '2019–2022',
     title: '第三阶段：治理框架成熟期',
     titleEn: 'Phase 3: Governance Maturation',
+    titleJa: '第三段階：ガバナンス枠組みの成熟期',
     event: 'AI Verify（2022）、Model AI Governance Framework 第二版',
     eventEn: 'AI Verify (2022), Model AI Governance Framework v2',
+    eventJa: 'AI Verify（2022 年）、Model AI Governance Framework 第 2 版',
     description:
       '集中精力完善 AI 治理生态。从原则性框架发展到可测试工具（AI Verify），建立了"软法"治理特色。同时，PDPA 2020 年修订版为 AI 数据使用划定法律边界。',
     descriptionEn:
       'Concentrated effort on perfecting the AI governance ecosystem. Singapore moved from principle-level frameworks to testable tools (AI Verify), establishing its signature "soft law" approach. PDPA 2020 amendments drew the legal boundaries for AI data use.',
+    descriptionJa:
+      'AI ガバナンス・エコシステムの整備に注力した時期です。原則レベルの枠組みから、検証可能なツール（AI Verify）へと進化し、「ソフトロー」型ガバナンスの特色を確立しました。同時に、PDPA 2020 年改正は AI のデータ利用に法的境界を引きました。',
     items: [
       'AI Verify — 全球首个 AI 治理测试框架',
       'PDPA 修订，引入商业改进例外',
@@ -81,17 +107,26 @@ const phases: Phase[] = [
       'PDPA amended, introducing the business improvement exception',
       'Advisory Council on Ethical Use of AI and Data',
     ],
+    itemsJa: [
+      'AI Verify — 世界初の AI ガバナンステスト枠組み',
+      'PDPA 改正、ビジネス改善例外を導入',
+      'Advisory Council on Ethical Use of AI and Data',
+    ],
   },
   {
     period: '2023–2024',
     title: '第四阶段：全面加速期',
     titleEn: 'Phase 4: Full Acceleration',
+    titleJa: '第四段階：全面加速期',
     event: 'NAIS 2.0（2023）、生成式 AI 治理框架（2024）',
     eventEn: 'NAIS 2.0 (2023), Generative AI Governance Framework (2024)',
+    eventJa: 'NAIS 2.0（2023 年）、生成 AI ガバナンス枠組み（2024 年）',
     description:
       '生成式 AI 浪潮推动新加坡全面升级战略。NAIS 2.0 提出双轨目标，大幅增加投资。专门发布生成式 AI 治理框架，应对大模型带来的新挑战。',
     descriptionEn:
       'The generative AI wave triggered a comprehensive strategy upgrade. NAIS 2.0 set twin objectives and significantly increased funding. A dedicated generative AI governance framework was published to address the new challenges from large models.',
+    descriptionJa:
+      '生成 AI の波がシンガポールの戦略を全面的にアップグレードさせました。NAIS 2.0 は双線目標を提示し、投資を大幅に増額しました。生成 AI ガバナンス枠組みも別途公表され、大規模モデルがもたらす新たな課題に対応しています。',
     items: [
       'AI 投资追加至 10 亿新元以上',
       '国家 AI 计算基础设施规划',
@@ -104,22 +139,37 @@ const phases: Phase[] = [
       'AI Verify Foundation established',
       'Generative AI sandbox testing',
     ],
+    itemsJa: [
+      'AI 投資が 10 億シンガポールドル超に拡大',
+      '国家 AI 計算基盤の整備計画',
+      'AI Verify Foundation 設立',
+      '生成 AI サンドボックステスト',
+    ],
   },
   {
-    period: lang === DEFAULT_LOCALE ? '2024–至今' : '2024–present',
+    period: lang === DEFAULT_LOCALE ? '2024–至今' : lang === 'ja' ? '2024 年–現在' : '2024–present',
     title: '第五阶段：生态深化期',
     titleEn: 'Phase 5: Ecosystem Deepening',
+    titleJa: '第五段階：エコシステム深化期',
     event: '多项执行计划落地',
     eventEn: 'Multiple execution programmes land',
+    eventJa: '複数の実行計画が始動',
     description:
       '聚焦于战略落地执行。重点包括：扩大 AI 人才管道、建设 GPU 集群等计算基础设施、推动行业特定 AI 应用、加强国际合作。',
     descriptionEn:
       'Focus shifts to strategy execution. Priorities include: scaling the AI talent pipeline, building GPU clusters and other compute infrastructure, driving sector-specific AI applications, and deepening international cooperation.',
+    descriptionJa:
+      '戦略の実装フェーズへ。重点は AI 人材パイプラインの拡大、GPU クラスタなど計算基盤の整備、業種別 AI 応用の推進、国際協力の深化など。',
     items: ['NVIDIA、Google Cloud 等在新加坡建设 AI 基础设施', 'AI 技能框架更新', '东盟 AI 治理指南'],
     itemsEn: [
       'NVIDIA, Google Cloud and others build AI infrastructure in Singapore',
       'AI skills framework refreshed',
       'ASEAN AI governance guidelines',
+    ],
+    itemsJa: [
+      'NVIDIA、Google Cloud などがシンガポールで AI インフラを整備',
+      'AI スキル枠組みの更新',
+      'ASEAN AI ガバナンスガイドライン',
     ],
   },
 ];
@@ -155,6 +205,17 @@ const COPY: Partial<Record<Lang, PageCopy>> = {
     furtherReadingBlurb:
       'In 2014, Smart Nation moved processes from paper to screen. In 2026, the AI strategy is moving judgement from human cognition into models. The same script for two national mobilisations — but a different stress profile. Why the white-collar middle class is in the firing line this time, and why the narrative is framed as crisis rather than progress.',
     furtherReadingCta: 'Read the full piece',
+  },
+  ja: {
+    pageTitle: '📈 シンガポール AI 政策の変遷',
+    pageSubtitle:
+      '2014 年の Smart Nation 構想から 2024 年の生成 AI ガバナンス枠組みまで、シンガポールの AI 政策は五つの明確な段階を経てきました。',
+    definingEventLabel: '節目となった出来事：',
+    furtherReadingEyebrow: '関連長文 · コラム',
+    furtherReadingTitle: 'デジタル化から AI へ：シンガポールの二度目の国家変革',
+    furtherReadingBlurb:
+      '2014 年の Smart Nation は業務プロセスを紙からスクリーンへと移しました。2026 年の AI 戦略は判断を人間の認知からモデルへと移しています。同じ国家動員の脚本ですが、ストレスのかかり方は異なります——なぜ今回はホワイトカラーの中間層が矢面に立つのか、なぜ物語が発展ではなく危機として語られるのか。',
+    furtherReadingCta: '本編を読む',
   },
 };
 

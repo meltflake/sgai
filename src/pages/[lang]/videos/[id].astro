@@ -115,7 +115,7 @@ const videoSchema = {
 
     <section class="grid md:grid-cols-3 gap-3 mb-8">
       <div class="bg-surface border border-subtle rounded-lg p-4">
-        <div class="text-xs uppercase tracking-wider text-gray-500 mb-1">{isZh ? '演讲者' : 'Speaker'}</div>
+        <div class="text-xs uppercase tracking-wider text-gray-500 mb-1">{t(lang, 'speaker')}</div>
         {
           speakerPersonId ? (
             <a
@@ -131,11 +131,11 @@ const videoSchema = {
         <div class="text-xs text-gray-500 mt-1">{pickLocalized(video, 'speakerTitle', lang)}</div>
       </div>
       <div class="bg-surface border border-subtle rounded-lg p-4">
-        <div class="text-xs uppercase tracking-wider text-gray-500 mb-1">{isZh ? '类型' : 'Type'}</div>
+        <div class="text-xs uppercase tracking-wider text-gray-500 mb-1">{t(lang, 'videoType')}</div>
         <div class="font-semibold">{speakerTypeLabels[video.speakerType]}</div>
       </div>
       <div class="bg-surface border border-subtle rounded-lg p-4">
-        <div class="text-xs uppercase tracking-wider text-gray-500 mb-1">{isZh ? '来源' : 'Source'}</div>
+        <div class="text-xs uppercase tracking-wider text-gray-500 mb-1">{t(lang, 'videoSource')}</div>
         <a
           href={video.youtubeUrl}
           target="_blank"
@@ -148,7 +148,7 @@ const videoSchema = {
     </section>
 
     <section class="callout-note rounded-lg p-5 mb-10">
-      <h2 class="t-h3 text-gray-900 dark:text-white mb-3">{isZh ? '核心观点' : 'In Brief'}</h2>
+      <h2 class="t-h3 text-gray-900 dark:text-white mb-3">{t(lang, 'coreViewpoint')}</h2>
       <p class="text-gray-800 dark:text-gray-200 leading-[1.85]">{summary}</p>
     </section>
 
@@ -156,8 +156,11 @@ const videoSchema = {
       digest && (
         <>
           {digest.keyPoints?.length > 0 && (
-            <section class="mb-10">
-              <h2 class="t-h3 text-gray-900 dark:text-white mb-4">{isZh ? '关键要点' : 'Key Takeaways'}</h2>
+            <section
+              class="mb-10"
+              {...(lang === 'ja' && !transcript?.digestJa ? { 'data-i18n-allow-en': 'video-digest-pending-ja' } : {})}
+            >
+              <h2 class="t-h3 text-gray-900 dark:text-white mb-4">{t(lang, 'keyPoints')}</h2>
               <ul class="space-y-2.5 list-none pl-0">
                 {digest.keyPoints.map((point) => (
                   <li class="flex gap-3 text-gray-800 dark:text-gray-200 leading-[1.75]">
@@ -171,8 +174,11 @@ const videoSchema = {
             </section>
           )}
           {digest.narrative?.length > 0 && (
-            <section class="mb-10">
-              <h2 class="t-h3 text-gray-900 dark:text-white mb-4">{isZh ? '内容摘要' : 'Summary'}</h2>
+            <section
+              class="mb-10"
+              {...(lang === 'ja' && !transcript?.digestJa ? { 'data-i18n-allow-en': 'video-digest-pending-ja' } : {})}
+            >
+              <h2 class="t-h3 text-gray-900 dark:text-white mb-4">{t(lang, 'videoSummary')}</h2>
               <div class="prose prose-slate dark:prose-invert max-w-none">
                 {digest.narrative.map((paragraph) => (
                   <p class="leading-[1.95]">{paragraph}</p>
@@ -186,20 +192,14 @@ const videoSchema = {
 
     {
       transcriptParagraphs.length > 0 && (
-        <section class="mb-10">
+        <section class="mb-10" {...(lang !== 'zh' ? { 'data-i18n-allow-en': 'video-transcript-verbatim' } : {})}>
           <h2 class="t-h3 text-gray-900 dark:text-white mb-4">
-            {isZh
-              ? digest
-                ? '完整字幕（原文整理）'
-                : '可读字幕整理'
-              : digest
-                ? 'Full transcript'
-                : 'Readable transcript'}
+            {t(lang, digest ? 'videoFullTranscript' : 'videoReadableTranscript')}
           </h2>
           <div class="prose prose-slate dark:prose-invert max-w-none">
             <p class="text-xs text-gray-500">
-              {isZh ? '字幕语言：' : 'Caption language: '}
-              {transcriptLanguage} · {isZh ? '抓取日期：' : 'Fetched: '}
+              {t(lang, 'videoCaptionLanguage')}
+              {transcriptLanguage} · {t(lang, 'videoFetched')}
               {transcript?.fetchedAt}
               {isZh && transcript?.translatedAt && ` · 翻译日期：${transcript.translatedAt}`}
             </p>
@@ -230,7 +230,7 @@ const videoSchema = {
     {
       relatedVideos.length > 0 && (
         <section class="mb-10">
-          <h2 class="t-h3 text-gray-900 dark:text-white mb-4">{isZh ? '关联视频' : 'Related Videos'}</h2>
+          <h2 class="t-h3 text-gray-900 dark:text-white mb-4">{t(lang, 'relatedVideos')}</h2>
           <div class="grid gap-3 md:grid-cols-2">
             {relatedVideos.map((item) => (
               <a

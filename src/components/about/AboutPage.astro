@@ -167,6 +167,78 @@ const COPY: Partial<Record<Lang, AboutCopy>> = {
     ctaRead: 'Read the opinions',
     ctaSource: 'GitHub source',
   },
+  ja: {
+    eyebrow: 'このサイトについて',
+    headline: 'なぜシンガポールの AI 戦略を記録するのか',
+    lead: '私は wulujia、シンガポール在住です。シンガポール AI 観測は私個人が独立して運営しており、特定の機関や政府の後ろ盾はありません。',
+    body: [
+      { kind: 'h2', text: 'このサイトの目的' },
+      {
+        kind: 'p',
+        html: 'シンガポールは都市国家です——人口 590 万人、GDP 約 3,900 億米ドル——しかし AI 時代における国家規模の動きは規模を遥かに超えています。Smart Nation、National AI Strategy 1.0/2.0、Budget 2026 における AI 大胆投資、SEA-LION 大規模モデル、AI Verify ガバナンス枠組みなど、海外で過小評価されているものもあれば、国内で過大評価されているものもあります。',
+      },
+      { kind: 'p', html: 'このサイトは次のものを体系的に追跡します：' },
+      {
+        kind: 'ul',
+        items: [
+          '<strong>政策原文</strong>——Smart Nation 2014 から NAIRD 2026 まで、所管機関別に整理し、原本 PDF まで遡れます。',
+          '<strong>議会討論</strong>——150 件の Hansard 記録を議題・議員・年別にインデックス化し、それぞれにサマリーと政策シグナル分析を付しています。',
+          '<strong>レバーマップ</strong>——省庁横断の 110 以上の実行プロジェクトを、6 つの国家規模「AI 導入経路」に整理し、全体像を可視化します。',
+          '<strong>法的枠組み</strong>——Copyright §244（学習に寛容）と Online Safety Bill（出力に厳格）のデュアルトラック構造。',
+          '<strong>スタートアップ・エコシステム</strong>——650 社以上の AI 企業、9 社のユニコーンを業種・資金調達ラウンド別に整理。',
+        ],
+      },
+      { kind: 'h2', text: '方法論' },
+      {
+        kind: 'p',
+        html: 'すべてのデータは公開情報からのものです：parliament.gov.sg / sprs.parl.gov.sg の議会記録、各省庁の政策原文、公式統計、上場企業の財務報告、メディア報道など。各レコードには sourceUrl が付されており追跡可能です。',
+      },
+      {
+        kind: 'p',
+        html: `<a href="${localizedHref('/blog/', lang)}" class="text-primary hover:text-secondary">コラム</a> 欄は私の個人的な見解で、公式の言説から意図的に乖離しています——そうでなければ、このサイトを運営する意味はありません。`,
+      },
+      {
+        kind: 'p',
+        html: '更新頻度：議会開催後 1〜2 週間で新たな討論を追加。政策文書は月次で見直し。指標は四半期ごとに再点検します。各更新ではページ上部の「データ更新」日付が刷新されます。',
+      },
+      { kind: 'h2', text: '利益相反' },
+      {
+        kind: 'p',
+        html: '本サイトは独立して運営されています。シンガポール政府および本サイトで取り上げる組織からの資金提供は受けていません。',
+      },
+      {
+        kind: 'p',
+        html: '本サイトは <strong>スポンサー、広告、有料購読を受け付けていません</strong>。すべてのコンテンツは無料で公開され、ソースコードは <a href="https://github.com/meltflake/sgai" target="_blank" rel="noopener" class="text-primary hover:text-secondary">GitHub で公開</a> されています。維持コスト（ドメイン + Cloudflare）は私個人が負担しています。',
+      },
+      {
+        kind: 'p',
+        html: '将来利益相反が生じた場合——例えば、追跡対象の組織と私が商業的関係を持つようになった場合——関連ページの先頭で明確に開示します。',
+      },
+      { kind: 'h2', text: '主な読者' },
+      { kind: 'p', html: '主に三つの読者層を想定しています：' },
+      {
+        kind: 'ul',
+        items: [
+          '<strong>起業家 / 技術意思決定者</strong>——シンガポールに AI 事業拠点を置く際の政策環境、人材プール、コンプライアンス要件を評価する方。',
+          '<strong>政策研究者</strong>——経済圏横断比較を行う際にシンガポールの一次データを必要とする方。',
+          '<strong>メディア / アナリスト</strong>——シンガポール AI 関連報道を執筆する際に信頼できるファクトベースを必要とする方。',
+        ],
+      },
+      { kind: 'h2', text: 'フィードバックと訂正' },
+      { kind: 'p', html: 'データに誤りや偏りを発見した場合、GitHub からお知らせください：' },
+      {
+        kind: 'ul',
+        items: [
+          '<a href="https://github.com/meltflake/sgai/issues" target="_blank" rel="noopener" class="text-primary hover:text-secondary">GitHub Issues</a>——推奨チャンネル、追跡可能',
+        ],
+      },
+      { kind: 'h2', text: 'バージョンとアーカイブ' },
+    ],
+    versionLine: (v, d) =>
+      `現在のバージョン <span class="font-semibold text-gray-700 dark:text-gray-300">v${v}</span>、最終更新 <span class="font-semibold text-gray-700 dark:text-gray-300">${d}</span>。<br />ソースコードは MIT ライセンス、コンテンツは CC BY 4.0 — 出典の明記をお願いします。`,
+    ctaRead: 'コラムを読む',
+    ctaSource: 'GitHub ソース',
+  },
 };
 
 // Per-locale page copy with fallback chain ja → en → zh.

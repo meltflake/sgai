@@ -49,3 +49,15 @@ jobs:
       # for the failure mode this catches.
       - name: addedAt coverage (PR diff vs main)
         run: npm run eval:addedAt -- --base=origin/main
+
+      # Layer E — source-level i18n hardcode scan.
+      # Hard-fails when a PR introduces NEW `lang === 'zh' ?` / `isZh ?` /
+      # `COPY[lang] ?? COPY.en` (without ja branch) anti-patterns above
+      # the snapshotted baseline. The baseline tracks 518 grandfathered
+      # 2-locale ternaries from before 2026-05-10 — a known backlog being
+      # burned down PR by PR. Re-snapshot via
+      # `npm run eval:source-i18n -- --baseline` after planned removals.
+      # See scripts/evals/source-i18n-hardcode/check.ts for the failure mode
+      # and docs/CHANGELOG.md (2026-05-10) for the regression context.
+      - name: Source i18n hardcode scan (no new findings beyond baseline)
+        run: npm run eval:source-i18n

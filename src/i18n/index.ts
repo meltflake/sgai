@@ -126,9 +126,17 @@ export function pickLocalized(
 
   // Shape B (legacy): (record, zhKey, enKey, lang)
   // Caller passed explicit zh/en keys. For non-default locales we walk the
-  // FALLBACK_CHAIN — for ja that's [en, zh], which here maps to enKey then
-  // zhKey. Other (future) intermediate locales without an explicit key are
-  // skipped; new code should migrate to shape A.
+  // FALLBACK_CHAIN — for ja that's [ja, en, zh]. The ja step is computed
+  // from `zhKey + siblingSuffix('ja')` (= `${zhKey}Ja`), which is the
+  // project-wide convention for sibling field naming. This means a call
+  // like `pickLocalized(insight, 'title', 'titleEn', lang)` on a JA page
+  // first tries `insight.titleJa`, then `insight.titleEn`, then
+  // `insight.title` — matching the canonical fallback chain. (Without
+  // this derivation, the 'ja' step had no key to look up and was silently
+  // skipped, so JA pages always dropped to enKey — a stealth bug that
+  // negated every titleJa / descriptionJa added by the data pipelines.)
+  // New code should still prefer shape A; shape B is kept for the ~50
+  // existing call sites that pass explicit zh/en keys.
   if (typeof maybeLang === 'string') {
     const lang = maybeLang as Lang;
     const zhKey = baseOrZhKey;
@@ -137,13 +145,12 @@ export function pickLocalized(
       return r[zhKey] as string | null | undefined;
     }
     for (const candidate of FALLBACK_CHAINS[lang] || [lang, DEFAULT_LOCALE]) {
-      if (candidate === DEFAULT_LOCALE) {
-        const v = r[zhKey];
-        if (v != null && v !== '') return v as string;
-      } else if (candidate === 'en') {
-        const v = r[enKey];
-        if (v != null && v !== '') return v as string;
-      }
+      let key: string;
+      if (candidate === DEFAULT_LOCALE) key = zhKey;
+      else if (candidate === 'en') key = enKey;
+      else key = `${zhKey}${siblingSuffix(candidate)}`; // e.g. ja → `${zhKey}Ja`
+      const v = r[key];
+      if (v != null && v !== '') return v as string;
     }
     return r[zhKey] as string | null | undefined;
   }
@@ -466,6 +473,11 @@ export const zh = {
   speaker: '演讲者',
   videoType: '类型',
   videoSource: '来源',
+  videoSummary: '内容摘要',
+  videoFullTranscript: '完整字幕（原文整理）',
+  videoReadableTranscript: '可读字幕整理',
+  videoCaptionLanguage: '字幕语言：',
+  videoFetched: '抓取日期：',
   parliamentSession: '届国会',
   speechSummaryPoints: '要点',
   mddiSpeechLabel: 'MDDI 演讲稿',
@@ -481,6 +493,10 @@ export const zh = {
   videoCount: '视频观点',
   noDebateRecords: '暂无关联辩论记录。',
   officialWebsite: '官网',
+  ecosystemReadMore: '了解详情 →',
+  ecosystemVisitWebsite: '访问 {name} 官网',
+  ecosystemSubtitle: 'AI Singapore 七大支柱与关键参与者，呈现新加坡 AI 生态系统全貌。',
+  ecosystemSourceFootnote: '数据来源：AI Singapore 官网及公开信息。生态持续演进，欢迎补充。',
 
   // Misc
   viewSource: '查看源码',
@@ -739,11 +755,16 @@ export const en: Partial<Record<keyof typeof zh, string>> = {
   updateTypeFix: 'Fix',
 
   fullTextZh: 'Chinese Translation',
-  coreViewpoint: 'Core Viewpoint',
+  coreViewpoint: 'In Brief',
   relatedVideos: 'Related Videos',
   speaker: 'Speaker',
   videoType: 'Type',
   videoSource: 'Source',
+  videoSummary: 'Summary',
+  videoFullTranscript: 'Full transcript',
+  videoReadableTranscript: 'Readable transcript',
+  videoCaptionLanguage: 'Caption language: ',
+  videoFetched: 'Fetched: ',
   parliamentSession: 'Parliament',
   speechSummaryPoints: 'Key Points',
   mddiSpeechLabel: 'MDDI Speech',
@@ -760,6 +781,12 @@ export const en: Partial<Record<keyof typeof zh, string>> = {
   videoCount: 'Videos',
   noDebateRecords: 'No related debate records.',
   officialWebsite: 'Website',
+  ecosystemReadMore: 'Read more →',
+  ecosystemVisitWebsite: 'Visit {name} website',
+  ecosystemSubtitle:
+    "The seven pillars of AI Singapore and their key participants — a full-system view of Singapore's AI landscape.",
+  ecosystemSourceFootnote:
+    'Sources: AI Singapore and other public information. The ecosystem evolves continuously — additions welcome.',
 
   viewSource: 'View source',
   countSuffix: '',
@@ -1012,9 +1039,14 @@ export const ja: Partial<Record<keyof typeof zh, string>> = {
   fullTextZh: '完全翻訳（中国語）',
   coreViewpoint: 'コア観点',
   relatedVideos: '関連動画',
-  speaker: 'スピーカー',
-  videoType: 'タイプ',
-  videoSource: 'ソース',
+  speaker: '講演者',
+  videoType: '種類',
+  videoSource: '出典',
+  videoSummary: '内容サマリー',
+  videoFullTranscript: '完全字幕（原文整形）',
+  videoReadableTranscript: '読みやすい字幕整形',
+  videoCaptionLanguage: '字幕言語：',
+  videoFetched: '取得日：',
   parliamentSession: '議会',
   speechSummaryPoints: '要点',
   mddiSpeechLabel: 'MDDI スピーチ',
@@ -1031,6 +1063,11 @@ export const ja: Partial<Record<keyof typeof zh, string>> = {
   videoCount: '動画観点',
   noDebateRecords: '関連する議会討論記録はありません。',
   officialWebsite: '公式サイト',
+  ecosystemReadMore: '詳細を見る →',
+  ecosystemVisitWebsite: '{name} 公式サイトを訪問',
+  ecosystemSubtitle: 'AI Singapore の七つの柱と主要プレイヤー、シンガポール AI エコシステムの全体像を提示します。',
+  ecosystemSourceFootnote:
+    'データ出典：AI Singapore 公式サイトおよび公開情報。エコシステムは進化し続けています。情報追加歓迎。',
 
   viewSource: 'ソースコードを表示',
   countSuffix: '件',
