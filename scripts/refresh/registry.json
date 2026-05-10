@@ -131,6 +131,16 @@
       "script": "scripts/evals/run-all.ts",
       "args": [],
       "mode": "issue-on-fail"
+    },
+    {
+      "id": "evals-monthly",
+      "type": "tsx",
+      "schedule": "monthly",
+      "label": "Evals (monthly): AI summary + Translation golden regressions",
+      "description": "LLM-backed quality regressions. Runs scripts/lib/ai-summarize.ts and scripts/lib/translate.ts against golden corpus; asserts schema validity, classification closed-set, length bands, term hits, glossary fidelity, language purity. Cost: ~30 Claude haiku calls (~few cents). Issue opens if any case fails an assertion.",
+      "script": "scripts/evals/run-all.ts",
+      "args": ["--frequency=monthly"],
+      "mode": "issue-on-fail"
     }
   ]
 }

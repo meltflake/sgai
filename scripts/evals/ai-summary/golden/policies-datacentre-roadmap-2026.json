@@ -1,0 +1,31 @@
+{
+  "id": "policies-datacentre-roadmap-2026",
+  "description": "Green Data Centre Roadmap — compute & infrastructure classification with quantified figures.",
+  "input": {
+    "sourceUrl": "https://www.imda.gov.sg/news-and-events/press-room/2026/05/green-data-centre-roadmap",
+    "title": "Singapore Releases Green Data Centre Roadmap, Unlocking 300MW for AI Workloads by 2027",
+    "contentText": "On 7 May 2026, the Infocomm Media Development Authority (IMDA) released the Green Data Centre Roadmap, charting how Singapore will add at least 300 megawatts (MW) of new data centre capacity by 2027 to support AI workloads, while keeping carbon emissions on track for net-zero by 2050. The roadmap follows a three-year moratorium on new data centre approvals that was lifted in 2022. Key elements include: (1) a Green Mark for Data Centres certification with three tiers (Platinum, Gold, Silver) tied to Power Usage Effectiveness (PUE) targets of 1.3 or better; (2) a Tropical Data Centre standard developed jointly with Equinix and Digital Realty that operates at 26°C ambient, reducing cooling load by 22%; (3) priority allocation for sovereign AI compute, reserving 50MW for a national AI compute facility operated by the National Supercomputing Centre. Minister Mrs Josephine Teo emphasised that the roadmap balances Singapore's AI ambitions with its climate commitments. Industry response from Microsoft, AWS, and Google has been positive."
+  },
+  "expected": {
+    "categories": [
+      "National Strategy",
+      "Trust & Safety",
+      "Industry Adoption",
+      "Talent & Education",
+      "Compute & Infrastructure",
+      "Other"
+    ],
+    "domainContext": "Singapore AI policy observatory (sgai.md)",
+    "category": "Compute & Infrastructure",
+    "publishedDate": "2026-05-07",
+    "minTitleZhLen": 8,
+    "maxTitleZhLen": 60,
+    "minDescZhLen": 30,
+    "maxDescZhLen": 250,
+    "minDescEnLen": 50,
+    "maxDescEnLen": 500,
+    "minConfidence": "medium",
+    "requiredTermsZh": ["IMDA", "300", "数据中心"],
+    "requiredTermsEn": ["IMDA", "300", "MW", "data centre"]
+  }
+}

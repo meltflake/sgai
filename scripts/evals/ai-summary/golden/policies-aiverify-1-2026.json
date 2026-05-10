@@ -1,0 +1,31 @@
+{
+  "id": "policies-aiverify-1-2026",
+  "description": "AI Verify Foundation update — trust & safety category test.",
+  "input": {
+    "sourceUrl": "https://aiverifyfoundation.sg/news/ai-verify-1-0-release-2026",
+    "title": "AI Verify 1.0 Released: World's First AI Governance Testing Framework Goes General Availability",
+    "contentText": "Singapore's Infocomm Media Development Authority (IMDA) and the AI Verify Foundation today announced the general availability of AI Verify 1.0, the world's first AI governance testing framework and toolkit. AI Verify 1.0 helps companies validate the performance of their AI systems against 11 internationally accepted AI ethics principles, including transparency, fairness, accountability, robustness, and safety. The release follows two years of pilot testing with over 80 multinational companies including Google, Microsoft, IBM, and DBS Bank. Key new features include automated bias detection across protected attributes, model card generation, and integration with major MLOps platforms. AI Verify 1.0 is open source under Apache 2.0 license. The Foundation, launched in June 2023, now counts over 100 corporate members. IMDA Chief Executive Lew Chuen Hong stated that AI Verify positions Singapore as the de facto neutral testing ground for trustworthy AI globally. Date of announcement: 11 March 2026."
+  },
+  "expected": {
+    "categories": [
+      "National Strategy",
+      "Trust & Safety",
+      "Industry Adoption",
+      "Talent & Education",
+      "Compute & Infrastructure",
+      "Other"
+    ],
+    "domainContext": "Singapore AI policy observatory (sgai.md)",
+    "category": "Trust & Safety",
+    "publishedDate": "2026-03-11",
+    "minTitleZhLen": 8,
+    "maxTitleZhLen": 60,
+    "minDescZhLen": 30,
+    "maxDescZhLen": 250,
+    "minDescEnLen": 50,
+    "maxDescEnLen": 500,
+    "minConfidence": "medium",
+    "requiredTermsZh": ["AI Verify", "IMDA"],
+    "requiredTermsEn": ["AI Verify", "IMDA", "open source"]
+  }
+}

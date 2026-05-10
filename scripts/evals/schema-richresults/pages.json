@@ -1,0 +1,47 @@
+{
+  "_comment": "Sample of representative pages to assert Google Rich Results expectations on. Each entry pins which schema @types MUST be present and validated to the stricter Rich-Results level. Path is matched against dist/. Use {first} for 'pick the first matching subdir' — useful when ids change.",
+  "pages": [
+    {
+      "label": "homepage",
+      "path": "index.html",
+      "expectedTypes": ["Organization", "WebSite"],
+      "warningOk": true
+    },
+    {
+      "label": "homepage-zh",
+      "path": "zh/index.html",
+      "expectedTypes": ["Organization", "WebSite"],
+      "warningOk": true
+    },
+    {
+      "label": "policies-listing",
+      "path": "policies/index.html",
+      "expectedTypes": ["BreadcrumbList"],
+      "warningOk": true
+    },
+    {
+      "label": "policy-first",
+      "pathGlob": "policies/{first}/index.html",
+      "expectedTypes": ["Article", "BreadcrumbList"],
+      "warningOk": true
+    },
+    {
+      "label": "voices-first",
+      "pathGlob": "voices/{first}/index.html",
+      "expectedTypes": ["Person", "BreadcrumbList"],
+      "warningOk": true
+    },
+    {
+      "label": "videos-first",
+      "pathGlob": "videos/{first}/index.html",
+      "expectedTypes": ["VideoObject", "BreadcrumbList"],
+      "warningOk": true
+    },
+    {
+      "label": "debate-first",
+      "pathGlob": "debates/{first}/index.html",
+      "expectedTypes": ["Article", "BreadcrumbList"],
+      "warningOk": true
+    }
+  ]
+}

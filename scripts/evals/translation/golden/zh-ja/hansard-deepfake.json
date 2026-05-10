@@ -1,0 +1,9 @@
+{
+  "id": "hansard-deepfake",
+  "description": "Hansard deepfake snippet — Japanese, must contain hiragana/katakana, preserve POFMA / MAS.",
+  "source": "黄循财总理在国会回答议员关于深度伪造监管的提问时表示，新加坡正与新加坡金融管理局 (MAS) 合作，研究将选举期间深度伪造内容的传播纳入《虚假信息管理法》(POFMA) 的修订范围。",
+  "expectedTermsJa": ["MAS", "POFMA"],
+  "minLengthRatio": 0.6,
+  "maxLengthRatio": 2.5,
+  "preserveTokens": ["MAS", "POFMA"]
+}

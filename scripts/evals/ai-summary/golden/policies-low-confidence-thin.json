@@ -1,0 +1,26 @@
+{
+  "id": "policies-low-confidence-thin",
+  "description": "Adversarial — too thin to summarise responsibly. Model must self-report low confidence.",
+  "input": {
+    "sourceUrl": "https://example.gov.sg/news/page-not-fully-loaded",
+    "title": "Page Loading…",
+    "contentText": "Cookie consent. Accept all cookies. This site uses cookies."
+  },
+  "expected": {
+    "categories": [
+      "National Strategy",
+      "Trust & Safety",
+      "Industry Adoption",
+      "Talent & Education",
+      "Compute & Infrastructure",
+      "Other"
+    ],
+    "domainContext": "Singapore AI policy observatory (sgai.md)",
+    "category": "Other",
+    "publishedDate": null,
+    "minConfidence": "low",
+    "expectLowConfidence": true,
+    "requiredTermsZh": [],
+    "requiredTermsEn": []
+  }
+}

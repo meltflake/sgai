@@ -1,0 +1,9 @@
+{
+  "id": "datacentre-roadmap",
+  "description": "Green Data Centre Roadmap — 数据中心 / MW / PUE 等术语保留.",
+  "source": "2026 年 5 月 7 日，资讯通信媒体发展局发布《绿色数据中心路线图》，承诺到 2027 年新增至少 300 兆瓦数据中心容量以支持 AI 工作负载，同时确保碳排放符合 2050 年净零目标。路线图设三档绿色标章 (Platinum / Gold / Silver)，对应 PUE 1.3 或更优。",
+  "expectedTermsEn": ["IMDA", "Infocomm Media Development Authority", "Green Data Centre Roadmap", "300 MW", "data centre"],
+  "minLengthRatio": 0.6,
+  "maxLengthRatio": 2.5,
+  "preserveTokens": ["2027", "300", "PUE", "1.3", "2050", "Platinum", "Gold", "Silver"]
+}

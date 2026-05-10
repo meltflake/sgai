@@ -1,0 +1,31 @@
+{
+  "id": "policies-public-ai-research-2026",
+  "description": "MDDI's S$1B AI research investment announcement — flagship policy doc, structured content, clear date/title.",
+  "input": {
+    "sourceUrl": "https://www.mddi.gov.sg/newsroom/singapore-invests-over-s-1-billion-in-national-ai-research-and-development-plan-to-strengthen-ai-research-capabilities-and-our-position-as-global-ai-hub/",
+    "title": "Singapore Invests Over S$1 Billion in National AI Research and Development Plan to Strengthen AI Research Capabilities and Our Position as Global AI Hub",
+    "contentText": "24 January 2026. The Ministry of Digital Development and Information (MDDI) today announced that the Government will invest over S$1 billion in public artificial intelligence (AI) research and development from 2026 to 2030. This investment will strengthen Singapore's position as a global AI hub by deepening research capabilities in three priority areas. First, the Government will fund research on responsible and resource-efficient AI, building on initiatives such as AI Verify. Second, the investment supports a full-pipeline AI talent development effort, from junior college pre-tertiary programmes through to university faculty training. Third, funds will support industry applications to shorten the path from research to commercialisation. This S$1 billion commitment follows the S$500 million invested in 2024 in high-performance computing infrastructure, and signals Singapore's transition from pilot exploration to scaled build-out. On a per-capita basis, Singapore's AI investment will reach US$139, far above the US (US$33) and China (US$7). Minister for Digital Development and Information Mrs Josephine Teo said the funding represents a generational opportunity for Singapore to lead in trustworthy and inclusive AI."
+  },
+  "expected": {
+    "categories": [
+      "National Strategy",
+      "Trust & Safety",
+      "Industry Adoption",
+      "Talent & Education",
+      "Compute & Infrastructure",
+      "Other"
+    ],
+    "domainContext": "Singapore AI policy observatory (sgai.md)",
+    "category": "National Strategy",
+    "publishedDate": "2026-01-24",
+    "minTitleZhLen": 8,
+    "maxTitleZhLen": 60,
+    "minDescZhLen": 30,
+    "maxDescZhLen": 250,
+    "minDescEnLen": 50,
+    "maxDescEnLen": 500,
+    "minConfidence": "medium",
+    "requiredTermsZh": ["MDDI", "10 亿", "2030"],
+    "requiredTermsEn": ["MDDI", "1 billion", "2030", "AI"]
+  }
+}

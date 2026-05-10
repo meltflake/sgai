@@ -1,0 +1,9 @@
+{
+  "id": "aiap-cohort",
+  "description": "AI Apprenticeship Programme expansion — AISG / AIAP / programme metrics fidelity.",
+  "source": "新加坡人工智能 (AISG) 宣布，从 2026 年 10 月的第 15 期开始，AI 学徒计划 (AIAP) 将从每期 100 人扩大到 200 人。该计划是 9 个月全职项目，迄今已培养 800 名学徒，其中 92% 留在 AI 岗位。学徒毕业后平均月薪达 8500 新元。",
+  "expectedTermsEn": ["AI Singapore", "AISG", "AIAP", "AI Apprenticeship", "S$8,500"],
+  "minLengthRatio": 0.6,
+  "maxLengthRatio": 2.5,
+  "preserveTokens": ["AISG", "AIAP", "100", "200", "800", "92", "8500"]
+}

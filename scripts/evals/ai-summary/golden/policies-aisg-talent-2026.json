@@ -1,0 +1,31 @@
+{
+  "id": "policies-aisg-talent-2026",
+  "description": "AI Apprenticeship Programme expansion — talent & education classification.",
+  "input": {
+    "sourceUrl": "https://aisingapore.org/news/aiap-cohort-15-2026",
+    "title": "AI Singapore Doubles AI Apprenticeship Programme to 200 Apprentices Per Cohort",
+    "contentText": "AI Singapore (AISG) today announced that the AI Apprenticeship Programme (AIAP) will scale from 100 to 200 apprentices per cohort starting Cohort 15 in October 2026. The expansion is funded under the Government's S$1 billion AI R&D plan. AIAP is a 9-month full-time programme that places mid-career professionals into apprenticeships on real-world AI projects with industry sponsors. Since launch in 2018, AIAP has graduated 800 apprentices, of whom 92% remain in AI roles. Industry partners for Cohort 15 include DBS, Singtel, NCS, Government Technology Agency, and ST Engineering. AIAP graduates earn an average of S$8,500/month upon completion, a 38% increase from their pre-programme salary. The programme is open to Singaporeans and Permanent Residents with strong technical fundamentals. Applications for Cohort 15 close 30 June 2026. Date: 15 April 2026."
+  },
+  "expected": {
+    "categories": [
+      "National Strategy",
+      "Trust & Safety",
+      "Industry Adoption",
+      "Talent & Education",
+      "Compute & Infrastructure",
+      "Other"
+    ],
+    "domainContext": "Singapore AI policy observatory (sgai.md)",
+    "category": "Talent & Education",
+    "publishedDate": "2026-04-15",
+    "minTitleZhLen": 8,
+    "maxTitleZhLen": 60,
+    "minDescZhLen": 30,
+    "maxDescZhLen": 250,
+    "minDescEnLen": 50,
+    "maxDescEnLen": 500,
+    "minConfidence": "medium",
+    "requiredTermsZh": ["AISG", "AIAP"],
+    "requiredTermsEn": ["AI Singapore", "AIAP", "apprentic"]
+  }
+}

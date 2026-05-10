@@ -1,0 +1,9 @@
+{
+  "id": "aiverify-release",
+  "description": "AI Verify release — programme name + IMDA fidelity.",
+  "source": "新加坡资讯通信媒体发展局 (IMDA) 与 AI Verify 基金会今日宣布 AI Verify 1.0 正式发布，这是全球首个 AI 治理测试框架与工具集，可帮助企业基于 11 项国际公认的 AI 伦理原则验证 AI 系统的表现。",
+  "expectedTermsEn": ["IMDA", "Infocomm Media Development Authority", "AI Verify", "AI governance"],
+  "minLengthRatio": 0.6,
+  "maxLengthRatio": 2.5,
+  "preserveTokens": ["IMDA", "AI Verify", "1.0", "11"]
+}

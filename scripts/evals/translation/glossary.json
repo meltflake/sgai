@@ -1,0 +1,34 @@
+{
+  "_comment": "Term-level expectations for Singapore AI translation. zh source → expected en + ja translations. Used by translation eval to assert proper-noun fidelity. Add new terms when you spot them mistranslated in PR review.",
+  "people": {
+    "黄循财": { "en": ["Lawrence Wong"], "ja": ["ローレンス・ウォン"] },
+    "李显龙": { "en": ["Lee Hsien Loong"], "ja": ["リー・シェンロン"] },
+    "陈振声": { "en": ["Chan Chun Sing"], "ja": ["チャン・チュンシン"] },
+    "蔡其生": { "en": ["Josephine Teo", "Mrs Teo"], "ja": ["ジョセフィン・テオ"] },
+    "王瑞杰": { "en": ["Heng Swee Keat"], "ja": ["ヘン・スイキャット"] },
+    "陈杰豪": { "en": ["Tan Kiat How"], "ja": ["タン・キアットハウ"] }
+  },
+  "institutions": {
+    "数字发展与信息部": { "en": ["Ministry of Digital Development and Information", "MDDI"], "ja": ["デジタル発展・情報省", "MDDI"] },
+    "通讯及新闻部": { "en": ["Ministry of Communications and Information", "MCI"], "ja": ["通信情報省", "MCI"] },
+    "新加坡金融管理局": { "en": ["Monetary Authority of Singapore", "MAS"], "ja": ["シンガポール金融管理局", "MAS"] },
+    "资讯通信媒体发展局": { "en": ["Infocomm Media Development Authority", "IMDA"], "ja": ["情報通信メディア開発庁", "IMDA"] },
+    "新加坡人工智能": { "en": ["AI Singapore", "AISG"], "ja": ["AIシンガポール", "AISG"] },
+    "国会": { "en": ["Parliament"], "ja": ["国会"] },
+    "国家研究基金会": { "en": ["National Research Foundation", "NRF"], "ja": ["国家研究基金会", "NRF"] }
+  },
+  "programmes": {
+    "国家人工智能战略": { "en": ["National AI Strategy"], "ja": ["国家AI戦略"] },
+    "AI Verify": { "en": ["AI Verify"], "ja": ["AI Verify"] },
+    "AI 学徒计划": { "en": ["AI Apprenticeship Programme", "AIAP"], "ja": ["AIアプレンティスシップ・プログラム", "AIAP"] },
+    "可信赖人工智能": { "en": ["Trustworthy AI", "trusted AI"], "ja": ["信頼できるAI"] },
+    "智慧国": { "en": ["Smart Nation"], "ja": ["スマートネーション"] }
+  },
+  "concepts": {
+    "人工智能": { "en": ["AI", "artificial intelligence"], "ja": ["AI", "人工知能"] },
+    "深度伪造": { "en": ["deepfake"], "ja": ["ディープフェイク"] },
+    "数据中心": { "en": ["data centre", "data center"], "ja": ["データセンター"] },
+    "大语言模型": { "en": ["large language model", "LLM"], "ja": ["大規模言語モデル", "LLM"] },
+    "通用人工智能": { "en": ["AGI", "artificial general intelligence"], "ja": ["AGI", "汎用人工知能"] }
+  }
+}

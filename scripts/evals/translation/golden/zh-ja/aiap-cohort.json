@@ -1,0 +1,9 @@
+{
+  "id": "aiap-cohort",
+  "description": "AIAP expansion — Japanese.",
+  "source": "新加坡人工智能 (AISG) 宣布，AI 学徒计划 (AIAP) 将从每期 100 人扩大到 200 人。该计划是 9 个月全职项目，迄今已培养 800 名学徒，其中 92% 留在 AI 岗位。",
+  "expectedTermsJa": ["AISG", "AIAP"],
+  "minLengthRatio": 0.6,
+  "maxLengthRatio": 2.5,
+  "preserveTokens": ["AISG", "AIAP", "100", "200", "800", "92"]
+}

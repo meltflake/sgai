@@ -1,0 +1,9 @@
+{
+  "id": "policy-mddi-1b",
+  "description": "MDDI S$1B announcement — Japanese version. Tests purity (must contain hiragana/katakana).",
+  "source": "2026 年 1 月 24 日，数字发展与信息部宣布 2026-2030 年间投资超 10 亿新元用于公共 AI 研究。三大方向：负责任和资源高效的 AI 研究、AI 人才培养、产业应用。蔡其生部长表示，这是新加坡引领可信赖人工智能的世代机会。",
+  "expectedTermsJa": ["MDDI", "AI"],
+  "minLengthRatio": 0.6,
+  "maxLengthRatio": 2.5,
+  "preserveTokens": ["2026", "2030", "MDDI"]
+}

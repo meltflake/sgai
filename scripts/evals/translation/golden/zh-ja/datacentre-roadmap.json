@@ -1,0 +1,9 @@
+{
+  "id": "datacentre-roadmap",
+  "description": "Green Data Centre Roadmap — Japanese.",
+  "source": "2026 年 5 月 7 日，资讯通信媒体发展局发布《绿色数据中心路线图》，承诺到 2027 年新增至少 300 兆瓦数据中心容量以支持 AI 工作负载。",
+  "expectedTermsJa": ["IMDA", "300", "AI"],
+  "minLengthRatio": 0.6,
+  "maxLengthRatio": 2.5,
+  "preserveTokens": ["2027", "300"]
+}
