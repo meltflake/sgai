@@ -12,7 +12,7 @@ import {
   getVideoTranscriptLanguage,
   getVideoTranscriptParagraphs,
 } from '~/data/video-transcripts';
-import { SPEAKER_TYPE_LABELS, SPEAKER_TYPE_LABELS_EN, videos } from '~/data/videos';
+import { pickSpeakerTypeLabels, videos } from '~/data/videos';
 import { findPersonId } from '~/utils/people';
 import { toSchemaOrgDateTime } from '~/utils/utils';
 import { NON_DEFAULT_ROUTE_LOCALES, IN_LANGUAGES, pickLocalized, localizedHref, t, type Lang } from '~/i18n';
@@ -38,7 +38,7 @@ const digest = getVideoDigest(video.id, lang);
 const speakerPersonId = findPersonId(video.speaker);
 const title = pickLocalized(video, 'title', lang) || video.title;
 const summary = pickLocalized(video, 'summary', lang) || video.summary;
-const speakerTypeLabels = isZh ? SPEAKER_TYPE_LABELS : SPEAKER_TYPE_LABELS_EN;
+const speakerTypeLabels = pickSpeakerTypeLabels(lang);
 const relatedVideos = videos
   .filter((candidate) => candidate.id !== video.id)
   .filter((candidate) => candidate.speaker === video.speaker || candidate.topic === video.topic)
@@ -156,10 +156,7 @@ const videoSchema = {
       digest && (
         <>
           {digest.keyPoints?.length > 0 && (
-            <section
-              class="mb-10"
-              {...(lang === 'ja' && !transcript?.digestJa ? { 'data-i18n-allow-en': 'video-digest-pending-ja' } : {})}
-            >
+            <section class="mb-10">
               <h2 class="t-h3 text-gray-900 dark:text-white mb-4">{t(lang, 'keyPoints')}</h2>
               <ul class="space-y-2.5 list-none pl-0">
                 {digest.keyPoints.map((point) => (
@@ -174,10 +171,7 @@ const videoSchema = {
             </section>
           )}
           {digest.narrative?.length > 0 && (
-            <section
-              class="mb-10"
-              {...(lang === 'ja' && !transcript?.digestJa ? { 'data-i18n-allow-en': 'video-digest-pending-ja' } : {})}
-            >
+            <section class="mb-10">
               <h2 class="t-h3 text-gray-900 dark:text-white mb-4">{t(lang, 'videoSummary')}</h2>
               <div class="prose prose-slate dark:prose-invert max-w-none">
                 {digest.narrative.map((paragraph) => (
@@ -192,7 +186,7 @@ const videoSchema = {
 
     {
       transcriptParagraphs.length > 0 && (
-        <section class="mb-10" {...(lang !== 'zh' ? { 'data-i18n-allow-en': 'video-transcript-verbatim' } : {})}>
+        <section class="mb-10">
           <h2 class="t-h3 text-gray-900 dark:text-white mb-4">
             {t(lang, digest ? 'videoFullTranscript' : 'videoReadableTranscript')}
           </h2>

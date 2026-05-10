@@ -97,6 +97,18 @@ export const SPEAKER_TYPE_LABELS_EN: Record<string, string> = {
   industry: 'Industry Leader',
 };
 
+export const SPEAKER_TYPE_LABELS_JA: Record<string, string> = {
+  government: '政府関係者',
+  academic: '研究者',
+  industry: '産業界リーダー',
+};
+
+export function pickSpeakerTypeLabels(lang: 'zh' | 'en' | 'ja'): Record<string, string> {
+  if (lang === 'ja') return SPEAKER_TYPE_LABELS_JA;
+  if (lang === 'en') return SPEAKER_TYPE_LABELS_EN;
+  return SPEAKER_TYPE_LABELS;
+}
+
 export const videos: VideoItem[] = [
   {
     id: 'v059',

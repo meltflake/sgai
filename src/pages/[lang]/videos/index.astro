@@ -1,6 +1,6 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
-import { videos, VIDEO_CATEGORIES, SPEAKER_TYPE_LABELS, SPEAKER_TYPE_LABELS_EN } from '~/data/videos';
+import { videos, VIDEO_CATEGORIES, pickSpeakerTypeLabels } from '~/data/videos';
 import { NON_DEFAULT_ROUTE_LOCALES, localizedHref, pickLocalized, t, type Lang } from '~/i18n';
 
 export function getStaticPaths() {
@@ -10,7 +10,7 @@ export function getStaticPaths() {
 const lang = Astro.params.lang as Lang;
 const isZh = lang === 'zh';
 
-const speakerTypeLabels = isZh ? SPEAKER_TYPE_LABELS : SPEAKER_TYPE_LABELS_EN;
+const speakerTypeLabels = pickSpeakerTypeLabels(lang);
 
 const pickName = (cat: { name: string; nameEn?: string }) => (isZh ? cat.name : cat.nameEn || cat.name);
 const pickDesc = (cat: { description: string; descriptionEn?: string }) =>

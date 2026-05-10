@@ -256,10 +256,15 @@ export interface VideoTranscript {
   paragraphs: string[];
   /** English readable transcript. Usually the original YouTube caption track. */
   paragraphsEn?: string[];
+  /** Japanese readable transcript. Translated from \`paragraphs\` (zh) by
+   *  scripts/videos/translate-transcripts-ja.ts. */
+  paragraphsJa?: string[];
   /** Polished readable digest (zh). When present, this is the primary on-page content; raw paragraphs become a collapsible fallback. */
   digest?: VideoDigest;
   /** Polished readable digest (en). */
   digestEn?: VideoDigest;
+  /** Polished readable digest (ja). */
+  digestJa?: VideoDigest;
   translatedAt?: string;
   // 'claude' = local Claude CLI (default since 2026-05). 'openai' kept for
   // backward compatibility with translations cached before the switch.
@@ -278,8 +283,7 @@ export function getVideoTranscriptParagraphs(videoId: string, lang: 'zh' | 'en' 
   const transcript = getVideoTranscript(videoId);
   if (!transcript) return [];
   if (lang === 'zh') return transcript.paragraphs;
-  // en, ja, ... — prefer the English paragraphs when present (per-locale
-  // transcript variants like paragraphsJa can be added later).
+  if (lang === 'ja') return transcript.paragraphsJa || transcript.paragraphs;
   return transcript.paragraphsEn || transcript.paragraphs;
 }
 
@@ -287,17 +291,17 @@ export function getVideoTranscriptLanguage(videoId: string, lang: 'zh' | 'en' | 
   const transcript = getVideoTranscript(videoId);
   if (!transcript) return undefined;
   if (lang === 'zh') return transcript.paragraphs.length ? 'zh-CN' : undefined;
+  if (lang === 'ja' && transcript.paragraphsJa?.length) return 'ja';
   if (transcript.paragraphsEn?.length) return transcript.captionLanguage || (lang === 'en' ? 'en' : lang);
   return transcript.paragraphs.length ? 'zh-CN' : undefined;
 }
 
-/** Read the polished digest for a video in the requested language. Falls
- *  back to zh digest when no localized variant exists. ja currently falls
- *  back to the en digest, then zh. */
+/** Read the polished digest for a video in the requested language. */
 export function getVideoDigest(videoId: string, lang: 'zh' | 'en' | 'ja'): VideoDigest | undefined {
   const transcript = getVideoTranscript(videoId);
   if (!transcript) return undefined;
   if (lang === 'zh') return transcript.digest;
+  if (lang === 'ja') return transcript.digestJa || transcript.digestEn || transcript.digest;
   return transcript.digestEn || transcript.digest;
 }
 `;
