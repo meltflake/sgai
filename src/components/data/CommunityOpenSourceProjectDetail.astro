@@ -111,7 +111,7 @@ const facts = [
             <div class="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-1">
               {isEn ? metric.labelEn || metric.label : metric.label}
             </div>
-            <div class="text-2xl font-bold text-primary">{isEn ? metric.valueEn || metric.value : metric.value}</div>
+            <div class="t-stat text-primary">{isEn ? metric.valueEn || metric.value : metric.value}</div>
             {(isEn ? metric.noteEn || metric.note : metric.note) && (
               <div class="text-xs text-muted mt-1">{isEn ? metric.noteEn || metric.note : metric.note}</div>
             )}

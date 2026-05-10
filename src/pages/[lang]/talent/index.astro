@@ -54,9 +54,7 @@ const statusClasses: Record<TalentStatusTone, string> = {
                     <p class="text-xs uppercase tracking-[0.14em] text-muted font-semibold mb-1">
                       {pickLocalized(prog, 'category', lang)}
                     </p>
-                    <h3 class="font-serif text-xl font-semibold leading-snug text-gray-900 dark:text-white">
-                      {pickLocalized(prog, 'name', lang)}
-                    </h3>
+                    <h3 class="t-h3 text-gray-900 dark:text-white">{pickLocalized(prog, 'name', lang)}</h3>
                     {isZh && <p class="text-sm text-muted mt-1">{prog.nameEn}</p>}
                     {!isZh && prog.shortName && <p class="text-sm text-muted mt-1">{prog.shortName}</p>}
                   </div>

@@ -174,7 +174,7 @@ const sourcesList = (isEn && detail?.sourcesEn?.length ? detail.sourcesEn : deta
     </section>
 
     <section class="callout-note rounded-lg p-5 mb-10">
-      <h2 class="font-serif text-xl font-semibold text-gray-900 dark:text-white mb-3">{labels.oneLineRead}</h2>
+      <h2 class="t-h3 text-gray-900 dark:text-white mb-3">{labels.oneLineRead}</h2>
       <p class="text-gray-800 dark:text-gray-200 leading-[1.85]">{overview || labels.oneLineReadFallback}</p>
     </section>
 
@@ -182,9 +182,7 @@ const sourcesList = (isEn && detail?.sourcesEn?.length ? detail.sourcesEn : deta
       detail ? (
         <>
           <section class="mb-10">
-            <h2 class="font-serif text-xl font-semibold text-gray-900 dark:text-white mb-4">
-              {labels.coreStrategiesHeading}
-            </h2>
+            <h2 class="t-h3 text-gray-900 dark:text-white mb-4">{labels.coreStrategiesHeading}</h2>
             <div class="space-y-3">
               {detail.strategies.map((strategyItem, index) => (
                 <a
@@ -204,9 +202,7 @@ const sourcesList = (isEn && detail?.sourcesEn?.length ? detail.sourcesEn : deta
           </section>
 
           <section class="mb-10">
-            <h2 class="font-serif text-xl font-semibold text-gray-900 dark:text-white mb-4">
-              {labels.investmentHeading}
-            </h2>
+            <h2 class="t-h3 text-gray-900 dark:text-white mb-4">{labels.investmentHeading}</h2>
             <div class="grid gap-3">
               {detail.investment.map((item, index) => (
                 <a
@@ -237,9 +233,7 @@ const sourcesList = (isEn && detail?.sourcesEn?.length ? detail.sourcesEn : deta
           </section>
 
           <section class="mb-10">
-            <h2 class="font-serif text-xl font-semibold text-gray-900 dark:text-white mb-3">
-              {labels.governanceHeading}
-            </h2>
+            <h2 class="t-h3 text-gray-900 dark:text-white mb-3">{labels.governanceHeading}</h2>
             <p class="text-gray-700 dark:text-gray-300 leading-[1.85]">
               {isEn ? detail.governanceEn || detail.governance : detail.governance}
             </p>
@@ -247,9 +241,7 @@ const sourcesList = (isEn && detail?.sourcesEn?.length ? detail.sourcesEn : deta
 
           <section class="mb-10 grid md:grid-cols-2 gap-5">
             <div>
-              <h2 class="font-serif text-xl font-semibold text-green-700 dark:text-green-300 mb-3">
-                {labels.strengthsHeading}
-              </h2>
+              <h2 class="t-h3 text-green-700 dark:text-green-300 mb-3">{labels.strengthsHeading}</h2>
               <ul class="space-y-2 text-sm text-gray-700 dark:text-gray-300">
                 {strengthsList.map((item) => (
                   <li>• {item}</li>
@@ -257,9 +249,7 @@ const sourcesList = (isEn && detail?.sourcesEn?.length ? detail.sourcesEn : deta
               </ul>
             </div>
             <div>
-              <h2 class="font-serif text-xl font-semibold text-red-700 dark:text-red-300 mb-3">
-                {labels.weaknessesHeading}
-              </h2>
+              <h2 class="t-h3 text-red-700 dark:text-red-300 mb-3">{labels.weaknessesHeading}</h2>
               <ul class="space-y-2 text-sm text-gray-700 dark:text-gray-300">
                 {weaknessesList.map((item) => (
                   <li>• {item}</li>
@@ -269,7 +259,7 @@ const sourcesList = (isEn && detail?.sourcesEn?.length ? detail.sourcesEn : deta
           </section>
 
           <section class="mb-10">
-            <h2 class="font-serif text-xl font-semibold text-gray-900 dark:text-white mb-4">{labels.keyHeading}</h2>
+            <h2 class="t-h3 text-gray-900 dark:text-white mb-4">{labels.keyHeading}</h2>
             <div class="grid md:grid-cols-2 gap-5">
               <div class="bg-surface border border-subtle rounded-lg p-4">
                 <h3 class="font-semibold mb-3">{labels.keyInitiatives}</h3>
@@ -307,7 +297,7 @@ const sourcesList = (isEn && detail?.sourcesEn?.length ? detail.sourcesEn : deta
           </section>
 
           <section class="mb-10">
-            <h2 class="font-serif text-xl font-semibold text-gray-900 dark:text-white mb-3">{labels.sourcesHeading}</h2>
+            <h2 class="t-h3 text-gray-900 dark:text-white mb-3">{labels.sourcesHeading}</h2>
             <ul class="space-y-1 text-sm text-gray-500 dark:text-gray-400">
               {sourcesList.map((source) => (
                 <li>• {source}</li>
@@ -324,7 +314,7 @@ const sourcesList = (isEn && detail?.sourcesEn?.length ? detail.sourcesEn : deta
     }
 
     <section class="mb-10">
-      <h2 class="font-serif text-xl font-semibold text-gray-900 dark:text-white mb-4">{labels.relatedHeading}</h2>
+      <h2 class="t-h3 text-gray-900 dark:text-white mb-4">{labels.relatedHeading}</h2>
       <div class="flex flex-wrap gap-3">
         <a
           href={benchmarkRoot}
@@ -348,7 +338,7 @@ const sourcesList = (isEn && detail?.sourcesEn?.length ? detail.sourcesEn : deta
     </section>
 
     <section class="mb-10">
-      <h2 class="font-serif text-xl font-semibold text-gray-900 dark:text-white mb-4">{labels.continueHeading}</h2>
+      <h2 class="t-h3 text-gray-900 dark:text-white mb-4">{labels.continueHeading}</h2>
       <div class="grid gap-3 md:grid-cols-2">
         {
           relatedRegions.map((item) => (
