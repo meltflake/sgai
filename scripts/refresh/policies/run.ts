@@ -23,7 +23,6 @@ import { resolve } from 'node:path';
 
 import { loadState, saveState } from '../../lib/state.ts';
 import { autoCommit, pushAndOpenPR, buildPRBody } from '../../lib/auto-commit.ts';
-import { appendUpdate } from '../../lib/append-update.ts';
 import { scan, readExistingPolicyUrls } from './scan.ts';
 import { enrich } from './enrich.ts';
 import { emit } from './emit.ts';
@@ -138,29 +137,10 @@ async function main(): Promise<void> {
     process.stdout.write(`    skipped ${s.id}: ${s.reason}\n`);
   }
 
-  // Surface to updates feed (homepage + /updates/) — best-effort.
-  if (emitResult.recordsAdded > 0) {
-    try {
-      appendUpdate({
-        date: new Date().toISOString().slice(0, 10),
-        type: 'policy',
-        title: `新增 ${emitResult.recordsAdded} 条政策档案`,
-        titleJa: `${emitResult.recordsAdded}件のポリシーアーカイブを追加`,
-        titleEn: `${emitResult.recordsAdded} new policy entries`,
-        summary: '从 SmartNation / MAS / IMDA / PDPC / AI Verify 抓到的最新 AI 政策已入库。',
-        summaryJa:
-          'SmartNation / MAS / IMDA / PDPC / AI Verify から取得した最新の AI ポリシーをライブラリーに登録しました。',
-        summaryEn:
-          'Fresh AI advisories from SmartNation / MAS / IMDA / PDPC / AI Verify ingested into the policy library.',
-        links: [
-          { href: '/policies/', label: '政策库', labelJa: 'ポリシーライブラリー', labelEn: 'Policy library' },
-        ],
-      });
-      process.stdout.write('  appended updates feed entry (policy)\n');
-    } catch (err) {
-      process.stdout.write(`  ⚠ updates feed append failed: ${err instanceof Error ? err.message : err}\n`);
-    }
-  }
+  // The "最近更新" homepage feed now derives from each record's addedAt
+  // field (set in formatPolicyRecord above) via src/utils/derived-updates.ts.
+  // No manual appendUpdate call needed — was the source of the 2026-05-09
+  // drift bug (commit a608bc0).
 
   // 6. Commit.
   if (flags.noCommit) {
@@ -170,7 +150,7 @@ async function main(): Promise<void> {
   process.stdout.write('\n  Committing...\n');
   const commit = autoCommit({
     domain: 'policies',
-    files: [resolve('src/data/policies.ts'), resolve('src/data/updates.ts')],
+    files: [resolve('src/data/policies.ts')],
     message: `data(policies): refresh +${emitResult.recordsAdded} entries`,
     allowDirtyPaths: ['scripts/refresh/policies/data/'],
   });

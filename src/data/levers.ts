@@ -57,6 +57,10 @@ export interface Lever {
   championPersonIds?: string[];
   relatedPolicyIds?: string[];
   relatedPostSlugs?: string[];
+  /** YYYY-MM-DD; the date this lever was first added to the repo. Used by
+   *  src/utils/derived-updates.ts to surface a homepage "Recent updates" entry.
+   *  Old records may be undefined → not surfaced. */
+  addedAt?: string;
 }
 
 export const dataDate = '2026-05-03';

@@ -78,6 +78,10 @@ export interface DimensionBase {
   relatedPolicyIds?: string[];
   relatedDebateIds?: string[];
   relatedPostSlugs?: string[];
+  /** YYYY-MM-DD; the date this dimension was first added to the repo. Used by
+   *  src/utils/derived-updates.ts to surface a homepage "Recent updates" entry.
+   *  Old records may be undefined → not surfaced. */
+  addedAt?: string;
 }
 
 export interface QuantifiedDimension extends DimensionBase {

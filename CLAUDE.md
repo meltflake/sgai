@@ -153,21 +153,28 @@ npx prettier --write src/
 
 历史踩点：[c574e54](https://github.com/meltflake/sgai/commit/c574e54)（2026-05-03 voices backfill）写入 2 条编造 URL（`spkr4563-prof-mohan-kankanhalli`、`asianaviation.com/astar-sia-siaec-...`），加 2 条 weforum 反爬伪 404。当时无 URL 校验，靠用户事后报错才发现。本规则即此次事故的事后加固。
 
-### 7. updates.ts 双源约定（关键 — 最高优先级）
+### 7. addedAt 约定（关键 — 最高优先级）
 
-> **🔴 顶层硬规则：任何对 `src/data/{videos,policies,debates,people,tracker,benchmarking,ecosystem,levers,startups,legal-ai,talent}.ts` 的"加新条目"操作必须同 commit 追加 `src/data/updates.ts` 一条 type 匹配的条目，三语齐全（`title` + `titleJa` + `titleEn` 等）。**
+> **🔴 顶层硬规则：任何加到 `src/data/{videos,policies,debates,people,tracker,benchmarking,ecosystem,levers,startups,legal-ai,talent}.ts` 的新 record 必须设 `addedAt: 'YYYY-MM-DD'`（写入当天的日期，永不修改）。**
 >
-> sgai 首页"最近更新"模块（[`src/components/home/RecentUpdates.astro`](src/components/home/RecentUpdates.astro)）的数据源是 `src/data/updates.ts`——一个**手动维护的 ledger**，不是从数据文件派生的。绕过 ledger 的更新会让首页 / RSS / llms.txt 集体看不到新增内容。
+> sgai 首页"最近更新"模块（[`src/components/home/RecentUpdates.astro`](src/components/home/RecentUpdates.astro)）的内容**从数据文件派生**——`src/utils/derived-updates.ts` 扫每条 record 的 `addedAt`，按 (date, type) group 后自动产出 update entry，三语齐全。`src/data/updates.ts` 只剩 `site` / `fix` / `longform` 三种**编辑性事件**的 manual override（`MANUAL_TYPES` 在 import 时强制校验，加错 type 会 build error）。
 >
-> - ✅ 走标准 emit 管线（`scripts/refresh/<domain>/run.ts` 或 `scripts/refresh/videos/emit.ts`）：管线已经自动调 `appendUpdate()`，commit 内自带 updates.ts 改动。
-> - ✅ 手动直接编辑数据文件（包括 fix PR、补漏、回填）：必须**同 commit** 手写 `src/data/updates.ts` 顶部一条新 entry。
-> - ❌ 禁止"先合数据 PR，下一个 PR 补 ledger"。`scripts/evals/updates-ledger/check.ts` 会 fail。
-> - ✅ JA 字段必须填，**不要**只写 zh + en 让前端 fallback 到中文 ——`appendUpdate(UpdateInput)` 的 `titleJa` / `summaryJa` / `labelJa` 是**必填**字段。
-> - ✅ 仅修 typo / 重构 / 翻译回填（净增 < 5 行）的 commit 不需要 ledger 条目，eval 默认按 `--min-added=5` 跳过。
+> 这意味着：**忘了给新 record 加 `addedAt`，首页就看不到它。** 不需要再去碰 `updates.ts`，也不允许往 `updates.ts` 加 video/policy/debate 这类 type 的 entry。
 >
-> 强制点：`npm run eval:updates-ledger` 扫最近 14 天 git log，对每个数据文件 commit 检查 ledger 在同 commit 或 ±3 天窗口内有 type 匹配的 entry。无则 FAIL，cron 周一开 GitHub issue。
+> - ✅ 走标准 emit 管线：`scripts/refresh/<domain>/emit.ts` 已经自动写 `addedAt: today`。
+> - ✅ 手动加 record（fix PR / 补漏 / 回填 / agent 直接编辑）：record 字面量里写 `addedAt: '今天的日期',`。
+> - ❌ 禁止"先合数据 PR，下一个 PR 补 addedAt"——eval 在 PR 时 fail，CI 会 block merge。
+> - ✅ Pending review 条目（如 ecosystem `_pendingReview: true`、levers/legal-ai 的 auto-discovered section、startups/tracker/benchmarking/talent 的 `autoDiscovered[]` 数组）**不**设 addedAt。当人工把它们 promote 到正式数据时再加 addedAt。
+> - ✅ 老 record 不强制回填 addedAt——派生函数对 undefined 直接跳过。回填工作可由 `scripts/backfill-addedAt.ts`（用 git log 推断首次出现日期）单独 PR 完成。
+>
+> 强制点：
+>
+> 1. `src/data/updates.ts` 在 import 时校验 `MANUAL_UPDATES` 数组只能是 `site/fix/longform` 类型——加错 type 直接 build error。
+> 2. `npm run eval:addedAt` 扫 `git diff main -- src/data/*.ts` 的 added 行：count `+ id: 'xxx'` vs count `+ addedAt: 'xxx'`，缺则 fail。
+> 3. `.github/workflows/actions.yaml` 的 `check` job 跑 `npm run eval:addedAt -- --base=origin/main`——CI 强制门，PR 不能 merge。
+> 4. weekly cron 也跑（`scripts/refresh/registry.json` 的 evals entry），失败自动开 issue。
 
-历史踩点：[a608bc0](https://github.com/meltflake/sgai/commit/a608bc0)（2026-05-09 videos 手动 fix）补 v059/v060 但漏掉 updates.ts，首页"最近更新"看不到当天新增视频。当时 evals 里没有 ledger 覆盖检查。本规则即此次事故的事后加固。
+历史踩点：[a608bc0](https://github.com/meltflake/sgai/commit/a608bc0)（2026-05-09 videos 手动 fix）补 v059/v060 但漏掉 `updates.ts`，首页"最近更新"看不到当天新增视频。当时 ledger 是手工双源真相，靠纪律维护——失败一次就漏了。本规则把"最近更新"改成**派生模式**，从根上消除 drift bug 类。手动 ledger 那条规则（CLAUDE.md 之前的版本写的）已废弃。
 
 ## 项目结构
 

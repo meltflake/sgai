@@ -44,6 +44,11 @@ export interface Debate {
   policySignalJa?: string | null;
   notableQuoteEn?: string | null;
   notableQuoteJa?: string | null;
+  /** YYYY-MM-DD; the date this record was first added to the repo. Used by
+   *  src/utils/derived-updates.ts to surface a homepage "Recent updates"
+   *  entry. Set automatically by emit pipelines; manual additions must set
+   *  it too. Old records may be undefined → not surfaced. */
+  addedAt?: string;
 }
 
 export const debates: Debate[] = [

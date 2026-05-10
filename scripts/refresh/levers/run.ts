@@ -14,7 +14,6 @@ import { resolve } from 'node:path';
 import { govFetch, listSitemap } from '../../lib/gov-fetch.ts';
 import { summarizePage } from '../../lib/ai-summarize.ts';
 import { autoCommit, pushAndOpenPR, buildPRBody } from '../../lib/auto-commit.ts';
-import { appendUpdate } from '../../lib/append-update.ts';
 import { findUnpairedFields } from '../../lib/i18n-pair.ts';
 import { loadState, saveState } from '../../lib/state.ts';
 
@@ -301,34 +300,15 @@ async function main(): Promise<void> {
   }
   process.stdout.write(`  added ${enriched.length} items to Auto-discovered group\n`);
 
-  if (enriched.length > 0) {
-    try {
-      appendUpdate({
-        date: new Date().toISOString().slice(0, 10),
-        type: 'lever',
-        title: `抓手图谱新增 ${enriched.length} 条待审条目`,
-        titleJa: `レバーマップに${enriched.length}件の審査待ち項目を追加`,
-        titleEn: `${enriched.length} new lever items (pending review)`,
-        summary: '从 IMDA / tech.gov.sg / EDB 抓到新的资金 / 项目 / 数据中心等抓手信号。',
-        summaryJa:
-          'IMDA / tech.gov.sg / EDB から、新しい資金・プロジェクト・データセンターなどのレバー信号を取得しました。',
-        summaryEn:
-          'New lever signals (programmes, funds, data-centre deals) auto-discovered from IMDA / tech.gov.sg / EDB.',
-        links: [
-          { href: '/levers/', label: '国家 AI 抓手图谱', labelJa: '国家 AI レバーマップ', labelEn: 'National AI levers' },
-        ],
-      });
-      process.stdout.write('  appended updates feed entry (lever)\n');
-    } catch (err) {
-      process.stdout.write(`  ⚠ updates feed append failed: ${err instanceof Error ? err.message : err}\n`);
-    }
-  }
+  // Auto-discovered lever items go into a sub-group under Lever 1 (not
+  // top-level Lever records) and don't get addedAt — they stay invisible
+  // to the homepage feed until promoted to a real lever in PR review.
 
   if (flags.noCommit) return;
 
   const commit = autoCommit({
     domain: 'levers',
-    files: [TARGET_FILE, resolve('src/data/updates.ts')],
+    files: [TARGET_FILE],
     message: `data(levers): refresh +${enriched.length} items (auto-discovered)`,
     allowDirtyPaths: ['scripts/refresh/levers/data/'],
   });

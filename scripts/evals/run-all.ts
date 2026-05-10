@@ -40,8 +40,8 @@ const STAGES: Stage[] = [
     needsDist: false,
   },
   {
-    name: 'updates-ledger',
-    cmd: ['npx', 'tsx', 'scripts/evals/updates-ledger/check.ts'],
+    name: 'addedAt-coverage',
+    cmd: ['npx', 'tsx', 'scripts/evals/addedAt-coverage/check.ts'],
     needsDist: false,
   },
   {

@@ -25,6 +25,11 @@ export interface LegalItem {
   bodyEn?: string; // English sibling of body
   bodyJa?: string; // English sibling of body
   sourceUrl?: string;
+  /** YYYY-MM-DD; the date this item was first added to the repo. Used by
+   *  src/utils/derived-updates.ts to surface a homepage "Recent updates" entry.
+   *  Set automatically by emit pipelines; manual additions must set it too.
+   *  Old records may be undefined → not surfaced. */
+  addedAt?: string;
 }
 
 export interface LegalSection {

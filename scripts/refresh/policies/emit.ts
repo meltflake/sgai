@@ -78,6 +78,11 @@ function formatPolicyRecord(p: EnrichedPolicy, defaultMinistry?: string): string
   lines.push('        relatedPostSlugs: [],');
   if (s._pendingReview) {
     lines.push(`        // _pendingReview: low confidence — ${s.reasonForLowConfidence || ''}`);
+  } else {
+    // Only auto-surface high-confidence emits on the homepage feed via
+    // src/utils/derived-updates.ts. Pending-review records get addedAt
+    // when a human promotes them in PR review.
+    lines.push(`        addedAt: '${new Date().toISOString().slice(0, 10)}',`);
   }
   lines.push('      },');
   return lines.join('\n');
