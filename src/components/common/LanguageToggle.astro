@@ -67,12 +67,15 @@ const locales = LOCALES.map((lang) => ({
     </svg>
   </button>
 
-  {/* Dropdown */}
+  {
+    /* Dropdown — opens upward on mobile (trigger sits at fixed bottom of mobile menu),
+      downward on md+ where the trigger lives in the top-right header. */
+  }
   <div
     data-lang-dropdown
     role="listbox"
     aria-label={ariaLabel}
-    class="hidden absolute right-0 top-full mt-1 z-50 min-w-[140px] bg-white dark:bg-slate-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg py-1 animate-fade-in"
+    class="hidden absolute right-0 bottom-full mb-1 md:bottom-auto md:top-full md:mb-0 md:mt-1 z-50 min-w-[140px] bg-white dark:bg-slate-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg py-1 animate-fade-in"
   >
     {
       locales.map(({ code, label, active }) => (
