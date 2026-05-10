@@ -1,17 +1,37 @@
-// Updates feed — single source of truth for "what changed" on the site.
-//
-// Surfaced on:
+// Updates feed — surfaced on:
 //   - Homepage (RecentUpdates widget, latest 8)
 //   - /updates/ and /updates/ (full list, grouped by month)
 //   - /updates.rss.xml and /updates.rss.xml (RSS feeds)
 //   - llms.txt (high-value pages section)
 //
-// Each entry is bilingual. New entries are added by refresh pipelines via
-// scripts/lib/append-update.ts (auto-PR'd alongside data changes), or by
-// hand for editorial events (longform, fixes, structural changes).
+// ┌──────────────────────────────────────────────────────────────────┐
+// │ Two sources merge into the public feed:                          │
+// │                                                                  │
+// │  1. DERIVED  — synthesised from each data record's `addedAt`     │
+// │                timestamp by src/utils/derived-updates.ts. Covers │
+// │                video / policy / debate / people / tracker /      │
+// │                benchmark / ecosystem / lever / startup types.    │
+// │                Always fresh, always 3-lang, never drifts. Adding │
+// │                a record with an `addedAt` is the ONLY thing      │
+// │                needed to surface it on the homepage.             │
+// │                                                                  │
+// │  2. MANUAL   — site refactors, fix announcements, longform       │
+// │                publications. These are editorial events that do  │
+// │                not correspond to a data record, so they live in  │
+// │                the MANUAL_UPDATES array below. Allowed types:    │
+// │                'site' / 'fix' / 'longform'.                      │
+// │                                                                  │
+// │ Both sources merge in recentUpdates() / sortedUpdates() — date    │
+// │ desc, ties broken by source order (manual before derived).       │
+// └──────────────────────────────────────────────────────────────────┘
 //
-// Keep summaries one short sentence — the editorial judgment, not the
-// changelog blurb. The links carry the user to the actual entity page.
+// History: this file used to be a hand-maintained ledger of EVERY update
+// (including data refreshes). That was a double-source-of-truth design —
+// any commit that edited a data file by hand had to remember to also write
+// here, and frequently didn't (incident: 2026-05-09 / commit a608bc0).
+// The derive layer eliminated that class of drift.
+
+import { deriveUpdates } from '~/utils/derived-updates';
 
 export type UpdateType =
   | 'policy'
@@ -46,8 +66,31 @@ export interface Update {
   links?: UpdateLink[];
 }
 
-// Newest first. Pipelines append at the top via scripts/lib/append-update.ts.
-export const UPDATES: Update[] = [
+// Editorial-only types. Data-record types (video / policy / debate / etc.)
+// MUST come from the derive layer — adding them here would re-introduce
+// the drift bug. The set is enforced by appendManualUpdate() below.
+const MANUAL_TYPES = new Set<UpdateType>(['site', 'fix', 'longform']);
+
+// Manual editorial events. Newest first by convention; sortedUpdates() will
+// sort regardless. Add new entries at the top.
+export const MANUAL_UPDATES: Update[] = [
+  {
+    date: '2026-05-10',
+    type: 'site',
+    title: '「最近更新」改为从数据文件派生',
+    titleJa: '「最近の更新」をデータファイル派生に変更',
+    titleEn: 'Recent updates feed now derived from data files',
+    summary:
+      '每条数据 record 加 addedAt 字段；派生函数自动产出"最近更新"条目，删除手动 ledger 双源真相，根除 2026-05-09 那次漏更新的 bug 类。',
+    summaryJa:
+      '各データレコードに addedAt を付与し、派生関数で「最近の更新」を自動生成。手動レジャーの二重ソースを排除し、2026-05-09 に発生した漏れを構造的に修正しました。',
+    summaryEn:
+      'Every data record now carries addedAt; a derive function auto-produces the recent-updates feed. The double-source-of-truth manual ledger is gone, killing the bug class that caused the 2026-05-09 miss.',
+    links: [
+      { href: '/updates/', label: '完整更新流', labelJa: '完全な更新フィード', labelEn: 'Full updates feed' },
+      { href: '/updates.rss.xml', label: 'RSS 订阅', labelJa: 'RSS サブスクリプション', labelEn: 'RSS feed' },
+    ],
+  },
   {
     date: '2026-05-05',
     type: 'site',
@@ -77,7 +120,7 @@ export const UPDATES: Update[] = [
   },
   {
     date: '2026-05-04',
-    type: 'policy',
+    type: 'site',
     title: '政策卡片升级为档案页',
     titleJa: 'ポリシーカードのアーカイブページ化',
     titleEn: 'Policy cards upgraded to profile pages',
@@ -89,48 +132,7 @@ export const UPDATES: Update[] = [
   },
   {
     date: '2026-05-04',
-    type: 'benchmark',
-    title: '新增对标案例和社区开源档案',
-    titleJa: '新規ベンチマークケースおよびコミュニティオープンソースアーカイブ',
-    titleEn: 'New benchmark cases and community open-source profiles',
-    summary: '国际对标和产学研开源各加一批详情页，方便横向比较新加坡和其他生态。',
-    summaryJa:
-      '国際ベンチマークと産学研オープンソースに複数の詳細ページを追加し、シンガポールと他のエコシステム間の横向き比較を容易にします。',
-    summaryEn:
-      'Fresh benchmark cases and community open-source project profiles, making it easier to compare Singapore against peer ecosystems.',
-    links: [
-      { href: '/benchmarking/', label: '国际对标', labelJa: '国際ベンチマーク', labelEn: 'International benchmarks' },
-      {
-        href: '/community-opensource/',
-        label: '产学研开源',
-        labelJa: '産学研オープンソース',
-        labelEn: 'Community open source',
-      },
-    ],
-  },
-  {
-    date: '2026-05-04',
-    type: 'startup',
-    title: '创业生态新增实体详情页',
-    titleJa: 'スタートアップエコシステムの新規エンティティ詳細ページ',
-    titleEn: 'Startup ecosystem entity profile pages',
-    summary: '每家新加坡 AI 创业公司有了独立档案，拉通融资、产品、人才和外部背书。',
-    summaryJa:
-      'シンガポールの各AIスタートアップが独立アーカイブを備え、資金調達、製品、人材および外部推薦が連携されます。',
-    summaryEn:
-      'Each Singapore AI startup now has a dedicated profile pulling together funding, product, talent, and external endorsements.',
-    links: [
-      {
-        href: '/startups/',
-        label: 'AI 创业生态',
-        labelJa: 'AI スタートアップエコシステム',
-        labelEn: 'AI startup ecosystem',
-      },
-    ],
-  },
-  {
-    date: '2026-05-04',
-    type: 'ecosystem',
+    type: 'site',
     title: '官方开源、人才计划详情页上线',
     titleJa: '公式オープンソース、人材計画詳細ページがオンライン化',
     titleEn: 'Official open-source and talent programme profile pages',
@@ -151,41 +153,6 @@ export const UPDATES: Update[] = [
   },
   {
     date: '2026-05-03',
-    type: 'debate',
-    title: '国会辩论新增 3 场（4-7 / 8 月会期）',
-    titleJa: '議会討論が新たに3件追加されました（4～7月/8月会期）',
-    titleEn: '3 new parliamentary debates (Apr-Jul / Aug sittings)',
-    summary: '继续把 Hansard AI 相关辩论增量同步到站内，自动管线一周一跑。',
-    summaryJa: '引き続き Hansard AI 関連議論の増分をサイト内に同期し、自動パイプラインを週一回実行します。',
-    summaryEn: 'AI-related Hansard debates continue to flow in via the weekly auto-update pipeline.',
-    links: [{ href: '/debates/', label: '国会辩论', labelJa: '議会討論', labelEn: 'Parliamentary debates' }],
-  },
-  {
-    date: '2026-05-03',
-    type: 'video',
-    title: 'AI 视频新增 4 条 + 全部转录双语化',
-    titleJa: 'AI ビデオ4件新規追加＋全トランスクリプション二言語化',
-    titleEn: '4 new AI videos + bilingual transcripts for v055-v058',
-    summary: '视频区从单语字幕扩展为中英双语转录，便于 LLM 引用和搜索召回。',
-    summaryJa:
-      'ビデオセクションは単言語字幕から中英二言語トランスクリプションに拡張され、LLM参照と検索リコールを容易にしました。',
-    summaryEn: 'Video transcripts go bilingual, improving LLM citation and on-site search recall.',
-    links: [{ href: '/videos/', label: 'AI 视频观点', labelJa: 'AI ビデオ観点', labelEn: 'Video library' }],
-  },
-  {
-    date: '2026-05-03',
-    type: 'tracker',
-    title: 'Tracker 数据再刷新一轮',
-    titleJa: 'Tracker データの再リフレッシュ',
-    titleEn: 'Tracker dashboard refreshed',
-    summary: '6 维度读数按月更新，含投资、人才、算力、政府采用、模型能力、安全治理。',
-    summaryJa: '6次元メトリクスは月次で更新され、投資、人材、算力、政府導入、モデル能力、安全ガバナンスを含みます。',
-    summaryEn:
-      'Six-dimension monthly readings refreshed — investment, talent, compute, government adoption, model capability, and AI safety.',
-    links: [{ href: '/tracker/', label: 'AI 仪表盘', labelJa: 'AI ダッシュボード', labelEn: 'AI dashboard' }],
-  },
-  {
-    date: '2026-05-03',
     type: 'fix',
     title: 'Voices 数据反幻觉 URL 校验',
     titleJa: 'Voices データの反幻覚 URL 検証',
@@ -198,8 +165,33 @@ export const UPDATES: Update[] = [
   },
 ];
 
+// Validate at import time: any non-MANUAL type slipping in would silently
+// re-create the drift bug. Throwing here turns it into a build error.
+for (const u of MANUAL_UPDATES) {
+  if (!MANUAL_TYPES.has(u.type)) {
+    throw new Error(
+      `[updates.ts] MANUAL_UPDATES entry with type='${u.type}' (date=${u.date}, title="${u.title}") is not allowed. ` +
+        `Manual entries must be 'site' / 'fix' / 'longform' only. Data-driven types (video / policy / debate / ...) ` +
+        `come from the derive layer (src/utils/derived-updates.ts) — set addedAt on the data record instead.`
+    );
+  }
+}
+
+// ── Public API (unchanged contract — callers don't need to know about
+//   the derive split) ──────────────────────────────────────────────────
+
 export function sortedUpdates(): Update[] {
-  return [...UPDATES].sort((a, b) => (a.date < b.date ? 1 : -1));
+  // Sort newest first. When dates tie, manual entries come first (lower
+  // index) — keeps editorial announcements above mechanical batch entries.
+  const derived = deriveUpdates();
+  const all = [...MANUAL_UPDATES, ...derived];
+  return all
+    .map((u, i) => ({ u, i }))
+    .sort((a, b) => {
+      if (a.u.date !== b.u.date) return a.u.date < b.u.date ? 1 : -1;
+      return a.i - b.i;
+    })
+    .map((x) => x.u);
 }
 
 export function recentUpdates(limit = 8): Update[] {
@@ -220,3 +212,8 @@ export function updatesByMonth(): UpdatesByMonth[] {
   }
   return [...groups.entries()].map(([month, items]) => ({ month, items }));
 }
+
+// Backward-compat re-export. The old callsites imported `UPDATES`; keep
+// the symbol so any consumer that was reaching into the array directly
+// (e.g. older eval scripts) still works.
+export const UPDATES: Update[] = MANUAL_UPDATES;

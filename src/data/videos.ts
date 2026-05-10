@@ -20,6 +20,11 @@ export interface VideoItem {
   topicJa?: string;
   youtubeUrl: string;
   channel: string;
+  /** YYYY-MM-DD; the date this record was first added to the repo. Used by
+   *  src/utils/derived-updates.ts to surface a homepage "Recent updates"
+   *  entry. Set automatically by emit pipelines; manual additions must set
+   *  it too. Old records may be undefined → not surfaced. */
+  addedAt?: string;
 }
 
 export interface VideoCategory {
@@ -115,6 +120,7 @@ export const videos: VideoItem[] = [
     topicJa: 'AI 人材と教育',
     youtubeUrl: 'https://www.youtube.com/watch?v=ERhfED1fIfY',
     channel: 'CNA',
+    addedAt: '2026-05-09',
   },
   {
     id: 'v060',
@@ -138,6 +144,7 @@ export const videos: VideoItem[] = [
     topicJa: 'AI ガバナンスと規制',
     youtubeUrl: 'https://www.youtube.com/watch?v=D8yhiLHzaTA',
     channel: 'CNA',
+    addedAt: '2026-05-09',
   },
   {
     id: 'v055',

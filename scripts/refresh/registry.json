@@ -126,8 +126,8 @@
       "id": "evals",
       "type": "tsx",
       "schedule": "weekly",
-      "label": "Evals: URL health + i18n coverage (Layer A)",
-      "description": "Sweep every sourceUrl/url in src/data/*.ts and assert reachability; assert all CJK string fields have *En + *Ja siblings. Layers B/C/D need a build and run via `npm run build && npm run eval` separately.",
+      "label": "Evals: URL health + i18n coverage (Layer A) + updates ledger",
+      "description": "Sweep every sourceUrl/url in src/data/*.ts and assert reachability; assert all CJK string fields have *En + *Ja siblings; assert every commit that net-added records to a tracked data file also surfaced an entry on src/data/updates.ts. Layers B/C/D need a build and run via `npm run build && npm run eval` separately.",
       "script": "scripts/evals/run-all.ts",
       "args": [],
       "mode": "issue-on-fail"

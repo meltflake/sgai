@@ -6,7 +6,6 @@ import { resolve } from 'node:path';
 
 import { loadState, saveState } from '../../lib/state.ts';
 import { autoCommit, pushAndOpenPR, buildPRBody } from '../../lib/auto-commit.ts';
-import { appendUpdate } from '../../lib/append-update.ts';
 import { scan, readExistingEcosystemUrls } from './scan.ts';
 import { enrich } from './enrich.ts';
 import { emit } from './emit.ts';
@@ -113,28 +112,14 @@ async function main(): Promise<void> {
     return;
   }
 
-  if (emitResult.recordsAdded > 0) {
-    try {
-      appendUpdate({
-        date: new Date().toISOString().slice(0, 10),
-        type: 'ecosystem',
-        title: `生态地图新增 ${emitResult.recordsAdded} 条待审条目`,
-        titleEn: `${emitResult.recordsAdded} new ecosystem entries (pending review)`,
-        summary: '从 e27 / tech.gov.sg 抓到的新生态信号已入库，待审核后展示。',
-        summaryEn:
-          'New ecosystem signals from e27 / tech.gov.sg ingested with `_pendingReview: true`, hidden from listing until reviewed.',
-        links: [{ href: '/ecosystem/', label: '生态地图', labelEn: 'Ecosystem map' }],
-      });
-      process.stdout.write('  appended updates feed entry (ecosystem)\n');
-    } catch (err) {
-      process.stdout.write(`  ⚠ updates feed append failed: ${err instanceof Error ? err.message : err}\n`);
-    }
-  }
+  // Pending-review entries don't get addedAt (set when promoted), so they
+  // do not surface on the homepage feed via src/utils/derived-updates.ts.
+  // This is intentional — humans review before public exposure.
 
   process.stdout.write('\n  Committing...\n');
   const commit = autoCommit({
     domain: 'ecosystem',
-    files: [resolve('src/data/ecosystem.ts'), resolve('src/data/updates.ts')],
+    files: [resolve('src/data/ecosystem.ts')],
     message: `data(ecosystem): refresh +${emitResult.recordsAdded} entries (pending review)`,
     allowDirtyPaths: ['scripts/refresh/ecosystem/data/'],
   });

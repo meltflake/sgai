@@ -53,11 +53,12 @@ npm run build && npm run check:dist
 不同于 `check`（每 PR 跑、源码层、零成本）和 `check:dist`（PR 前手动、构建产物层），**evals 跑模型/数据层回归**——周一 cron 扫一次，发现新增 broken URL / 漏翻字段 / 三语缺漏自动开 issue。计划见 [`docs/20260509-evals-plan.md`](docs/20260509-evals-plan.md)，使用见 [`scripts/evals/README.md`](scripts/evals/README.md)。
 
 ```bash
-npm run eval                       # 全部（URL 健康 + i18n Layer A）
+npm run eval                       # 全部（URL 健康 + i18n Layer A + updates ledger）
 npm run eval:url                   # 全量扫 sourceUrl 可达性（CLAUDE.md rule #6 的存量巡检兜底）
 npm run eval:url -- --changed-only # 只扫 PR 改过的 src/data/*.ts
 npm run eval:i18n -- --layer=a     # 数据层：每条 record 的 CJK 字段 *En + *Ja 配对（zero-cost）
 npm run eval:i18n -- --layer=all   # +B sitemap parity / +C hreflang parity / +D 语言纯度（需 build）
+npm run eval:updates-ledger        # 数据文件改了但 src/data/updates.ts 没追加 → fail（防 2026-05-09 那次"最近更新"漏记）
 ```
 
 cron 入口：`scripts/refresh/registry.json` → `id=evals`，weekly schedule。
@@ -151,6 +152,29 @@ npx prettier --write src/
 > 强制点：`scripts/voices/prospect-stubs.mjs apply` 在 print TS 片段前会 HEAD-check 所有 sourceUrl，4xx/5xx（除 401/403/429）blocks apply 退码 2。新加的"靠 LLM 补脑"型管线**必须**复用同样的 `validateUrls()` 检查。
 
 历史踩点：[c574e54](https://github.com/meltflake/sgai/commit/c574e54)（2026-05-03 voices backfill）写入 2 条编造 URL（`spkr4563-prof-mohan-kankanhalli`、`asianaviation.com/astar-sia-siaec-...`），加 2 条 weforum 反爬伪 404。当时无 URL 校验，靠用户事后报错才发现。本规则即此次事故的事后加固。
+
+### 7. addedAt 约定（关键 — 最高优先级）
+
+> **🔴 顶层硬规则：任何加到 `src/data/{videos,policies,debates,people,tracker,benchmarking,ecosystem,levers,startups,legal-ai,talent}.ts` 的新 record 必须设 `addedAt: 'YYYY-MM-DD'`（写入当天的日期，永不修改）。**
+>
+> sgai 首页"最近更新"模块（[`src/components/home/RecentUpdates.astro`](src/components/home/RecentUpdates.astro)）的内容**从数据文件派生**——`src/utils/derived-updates.ts` 扫每条 record 的 `addedAt`，按 (date, type) group 后自动产出 update entry，三语齐全。`src/data/updates.ts` 只剩 `site` / `fix` / `longform` 三种**编辑性事件**的 manual override（`MANUAL_TYPES` 在 import 时强制校验，加错 type 会 build error）。
+>
+> 这意味着：**忘了给新 record 加 `addedAt`，首页就看不到它。** 不需要再去碰 `updates.ts`，也不允许往 `updates.ts` 加 video/policy/debate 这类 type 的 entry。
+>
+> - ✅ 走标准 emit 管线：`scripts/refresh/<domain>/emit.ts` 已经自动写 `addedAt: today`。
+> - ✅ 手动加 record（fix PR / 补漏 / 回填 / agent 直接编辑）：record 字面量里写 `addedAt: '今天的日期',`。
+> - ❌ 禁止"先合数据 PR，下一个 PR 补 addedAt"——eval 在 PR 时 fail，CI 会 block merge。
+> - ✅ Pending review 条目（如 ecosystem `_pendingReview: true`、levers/legal-ai 的 auto-discovered section、startups/tracker/benchmarking/talent 的 `autoDiscovered[]` 数组）**不**设 addedAt。当人工把它们 promote 到正式数据时再加 addedAt。
+> - ✅ 老 record 不强制回填 addedAt——派生函数对 undefined 直接跳过。回填工作可由 `scripts/backfill-addedAt.ts`（用 git log 推断首次出现日期）单独 PR 完成。
+>
+> 强制点：
+>
+> 1. `src/data/updates.ts` 在 import 时校验 `MANUAL_UPDATES` 数组只能是 `site/fix/longform` 类型——加错 type 直接 build error。
+> 2. `npm run eval:addedAt` 扫 `git diff main -- src/data/*.ts` 的 added 行：count `+ id: 'xxx'` vs count `+ addedAt: 'xxx'`，缺则 fail。
+> 3. `.github/workflows/actions.yaml` 的 `check` job 跑 `npm run eval:addedAt -- --base=origin/main`——CI 强制门，PR 不能 merge。
+> 4. weekly cron 也跑（`scripts/refresh/registry.json` 的 evals entry），失败自动开 issue。
+
+历史踩点：[a608bc0](https://github.com/meltflake/sgai/commit/a608bc0)（2026-05-09 videos 手动 fix）补 v059/v060 但漏掉 `updates.ts`，首页"最近更新"看不到当天新增视频。当时 ledger 是手工双源真相，靠纪律维护——失败一次就漏了。本规则把"最近更新"改成**派生模式**，从根上消除 drift bug 类。手动 ledger 那条规则（CLAUDE.md 之前的版本写的）已废弃。
 
 ## 项目结构
 

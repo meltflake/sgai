@@ -16,17 +16,6 @@ await runPipeline({
     'International AI benchmarking: rankings, country comparisons, indices. Classify each new report into one of the listed categories.',
   categories: ['国际排名', '区域对标', '投资规模', '人才评估', '治理成熟度', '基础设施'],
   defaultLimit: 3,
-  updateType: 'benchmark',
-  updateLabels: {
-    title: '国际对标新增报告',
-    titleEn: 'International benchmarks: new reports',
-    summary: '从 Stanford HAI / IMD 抓到的新报告进入待审队列，具体数字仍需手工提取。',
-    summaryEn:
-      'New benchmark reports auto-discovered from Stanford HAI / IMD; rankings still need manual extraction.',
-    listingHref: '/benchmarking/',
-    listingLabel: '国际对标',
-    listingLabelEn: 'International benchmarks',
-  },
   sources: [
     {
       domain: 'hai.stanford.edu',

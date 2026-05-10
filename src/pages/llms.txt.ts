@@ -4,7 +4,7 @@ import { videos } from '~/data/videos';
 import { allPeople } from '~/data/people';
 import { categories } from '~/data/policies';
 import { allCommunityOpenSourceProjects } from '~/data/community-opensource';
-import { UPDATES } from '~/data/updates';
+import { sortedUpdates } from '~/data/updates';
 import {
   benchmarkCasePages,
   benchmarkDrilldownPages,
@@ -37,7 +37,7 @@ Full LLM index: ${base}/llms-full.txt
 
 - ${base}/ — English homepage and editorial thesis.
 - ${base}/zh/ — Chinese homepage.
-- ${base}/updates/ — ${UPDATES.length} recent updates across policies, debates, videos, startups, and longform (RSS at ${base}/updates.rss.xml; ZH mirror at ${base}/zh/updates/).
+- ${base}/updates/ — ${sortedUpdates().length} recent updates across policies, debates, videos, startups, and longform (RSS at ${base}/updates.rss.xml; ZH mirror at ${base}/zh/updates/).
 - ${base}/policies/ — ${policyCount} Singapore AI policy documents with source links and bilingual summaries.
 - ${base}/debates/ — ${debates.length} AI-related Singapore Parliament debate records.
 - ${base}/voices/ — ${allPeople.length} people profiles connected to debates, policies, and videos.

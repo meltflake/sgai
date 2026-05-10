@@ -15,16 +15,6 @@ await runPipeline({
     'Singapore AI tracker: investment, talent, compute, adoption, research, governance. Classify each new data point into one of the 6 dimensions.',
   categories: ['投资', '人才', '算力', '采纳', '研究', '治理'],
   defaultLimit: 3,
-  updateType: 'tracker',
-  updateLabels: {
-    title: '仪表盘新增数据信号',
-    titleEn: 'Tracker dashboard new data signals',
-    summary: '从 IMDA / EDB / Stanford HAI 抓到的新一批 6 维度信号，进入待审队列。',
-    summaryEn: 'New tracker signals across the 6 dimensions auto-discovered from IMDA / EDB / Stanford HAI, queued for review.',
-    listingHref: '/tracker/',
-    listingLabel: 'AI 仪表盘',
-    listingLabelEn: 'AI dashboard',
-  },
   sources: [
     {
       domain: 'imda.gov.sg',

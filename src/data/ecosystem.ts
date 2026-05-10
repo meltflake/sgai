@@ -118,6 +118,11 @@ export interface EcosystemEntity {
   /** Free-form note from the refresh pipeline about why this entry was added
    * (e.g. confidence reason, source URL trail). Surfaced in the PR body. */
   discoveryNote?: string;
+  /** YYYY-MM-DD; the date this entity was first added to the repo. Used by
+   *  src/utils/derived-updates.ts to surface a homepage "Recent updates" entry.
+   *  Set automatically by emit pipelines; manual additions must set it too.
+   *  Old records may be undefined → not surfaced. */
+  addedAt?: string;
 }
 
 export interface EcosystemCategory {

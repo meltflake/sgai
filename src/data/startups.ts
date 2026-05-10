@@ -160,6 +160,11 @@ export interface Startup {
   singaporeContext?: string;
   singaporeContextEn?: string;
   singaporeContextJa?: string;
+  /** YYYY-MM-DD; the date this startup was first added to the repo. Used by
+   *  src/utils/derived-updates.ts to surface a homepage "Recent updates" entry.
+   *  Set automatically by emit pipelines; manual additions must set it too.
+   *  Old records may be undefined → not surfaced. */
+  addedAt?: string;
 }
 
 export interface Vertical {

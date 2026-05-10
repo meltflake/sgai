@@ -32,6 +32,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          # addedAt-coverage eval needs the merge-base with main to diff
+          # records added in the PR. fetch-depth: 0 = full history.
+          fetch-depth: 0
       - name: Use Node.js 22
         uses: actions/setup-node@v4
         with:
@@ -39,3 +43,9 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run check
+      # Enforce that every new data record carries `addedAt`. Without it the
+      # homepage "最近更新" derive layer (src/utils/derived-updates.ts) would
+      # silently miss the change. See scripts/evals/addedAt-coverage/check.ts
+      # for the failure mode this catches.
+      - name: addedAt coverage (PR diff vs main)
+        run: npm run eval:addedAt -- --base=origin/main
