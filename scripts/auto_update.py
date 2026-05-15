@@ -4,10 +4,11 @@ sgai 数据自动更新 — 统一包装脚本（registry-driven）。
 
 读取 scripts/refresh/registry.json，按 --schedule 过滤要跑的管线。
 每条管线分两类：
-  - python-builtin: hansard / videos / voices（旧三条，保留原 in-process 调用）
-  - tsx: 新管线（policies / ecosystem / github-stars / levers / legal-ai），
-    通过 `npx tsx <script>` 子进程执行；脚本在末尾 print 一行 JSON 报告，
-    被本脚本捕获并汇入邮件。
+  - python-builtin: hansard / videos（保留原 in-process scan-only 调用）
+  - tsx: 新管线（voices / policies / ecosystem / github-stars / levers /
+    legal-ai / talent / startups / tracker / benchmarking），通过
+    `npx tsx <script>` 子进程执行；脚本在末尾 print 一行 JSON 报告，
+    被本脚本捕获并汇入通知。
 
 用法:
   python auto_update.py                              # 运行所有管线
@@ -144,24 +145,9 @@ def run_videos(logger) -> dict:
 
 
 # ── 管线 2: MDDI 演讲 ────────────────────────────────────────────────────────
-def run_voices(logger) -> dict:
-    import importlib
-
-    mod = importlib.import_module("voices.01_scan_mddi")
-    speeches = mod.scan_mddi(exclude_existing=True)
-    logger.info(f"MDDI 扫描完成: {len(speeches)} 条演讲")
-    return {
-        "count": len(speeches),
-        "items": [
-            {
-                "date": s["date"],
-                "title": s["title"],
-                "speaker": s["speaker"],
-                "url": s["url"],
-            }
-            for s in speeches[:10]
-        ],
-    }
+# Removed: voices is now type=tsx + mode=auto-pr (scripts/refresh/voices/run.ts).
+# The tsx pipeline handles scan + fetch + translate + emit + commit + PR end-to-end
+# and is dispatched by run_tsx_pipeline() below.
 
 
 # ── 管线 3: 国会辩论 (轻量 API 扫描) ─────────────────────────────────────────
@@ -315,20 +301,8 @@ def compose_email(results: dict, errors: list[str], elapsed: float) -> tuple[str
         elif not r.get("error"):
             lines.append("<p>无新内容</p>")
 
-    if "voices" in results:
-        r = results["voices"]
-        lines.append(f"<h3>MDDI 演讲: {r.get('count', 0)} 条新发现</h3>")
-        if r.get("items"):
-            lines.append("<ul>")
-            for s in r["items"]:
-                speaker = s.get("speaker") or "?"
-                title = s.get("title", "?")
-                url = s.get("url")
-                title_html = f"<a href='{url}'>{title}</a>" if url else title
-                lines.append(f"  <li>[{s.get('date','?')}] {speaker}: {title_html}</li>")
-            lines.append("</ul>")
-        elif not r.get("error"):
-            lines.append("<p>无新内容</p>")
+    # voices is now a tsx auto-pr pipeline (scripts/refresh/voices/run.ts) —
+    # its result is rendered by the generic tsx block at the bottom, not here.
 
     if "hansard" in results:
         r = results["hansard"]
@@ -344,7 +318,7 @@ def compose_email(results: dict, errors: list[str], elapsed: float) -> tuple[str
 
     # New tsx pipelines block (no items detail; PR link is the action).
     for pid, r in results.items():
-        if pid in ("videos", "voices", "hansard"):
+        if pid in ("videos", "hansard"):
             continue
         c = r.get("count", 0) or 0
         f = r.get("failures", 0) or 0
@@ -543,8 +517,6 @@ def main():
             if ptype == "python-builtin":
                 if pid == "videos":
                     results["videos"] = run_videos(logger)
-                elif pid == "voices":
-                    results["voices"] = run_voices(logger)
                 elif pid == "hansard":
                     hansard_result = run_hansard(state, logger)
                     results["hansard"] = hansard_result
@@ -571,13 +543,13 @@ def main():
 
     # ── 通知（GitHub Issue 取代 SMTP）──
     # 新管线（type=tsx, mode=auto-pr）已经各自开了 PR + assign @me，不需重复通知。
-    # 这里只为 scan-only 旧管线（hansard / videos / voices）和失败开 issue。
+    # 这里只为 scan-only 旧管线（hansard / videos）和失败开 issue。
     try:
         from auto_update_config import NOTIFY_IF_NO_NEW
     except ImportError:
         NOTIFY_IF_NO_NEW = False
 
-    scan_only_pids = {"hansard", "videos", "voices"}
+    scan_only_pids = {"hansard", "videos"}
     scan_only_results = {pid: r for pid, r in results.items() if pid in scan_only_pids}
     scan_only_total = sum(r.get("count", 0) or 0 for r in scan_only_results.values())
     should_notify = scan_only_total > 0 or NOTIFY_IF_NO_NEW or errors
