@@ -153,7 +153,12 @@ def run_voices(logger) -> dict:
     return {
         "count": len(speeches),
         "items": [
-            {"date": s["date"], "title": s["title"], "speaker": s["speaker"]}
+            {
+                "date": s["date"],
+                "title": s["title"],
+                "speaker": s["speaker"],
+                "url": s["url"],
+            }
             for s in speeches[:10]
         ],
     }
@@ -317,7 +322,10 @@ def compose_email(results: dict, errors: list[str], elapsed: float) -> tuple[str
             lines.append("<ul>")
             for s in r["items"]:
                 speaker = s.get("speaker") or "?"
-                lines.append(f"  <li>[{s.get('date','?')}] {speaker}: {s.get('title','?')}</li>")
+                title = s.get("title", "?")
+                url = s.get("url")
+                title_html = f"<a href='{url}'>{title}</a>" if url else title
+                lines.append(f"  <li>[{s.get('date','?')}] {speaker}: {title_html}</li>")
             lines.append("</ul>")
         elif not r.get("error"):
             lines.append("<p>无新内容</p>")

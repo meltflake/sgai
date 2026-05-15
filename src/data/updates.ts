@@ -39,6 +39,7 @@ export type UpdateType =
   | 'video'
   | 'startup'
   | 'people'
+  | 'speech'
   | 'tracker'
   | 'benchmark'
   | 'ecosystem'

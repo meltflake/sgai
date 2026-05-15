@@ -27,6 +27,8 @@ import { videos, type VideoItem } from '~/data/videos';
 import { categories as policyCategories, type Policy } from '~/data/policies';
 import { debates, type Debate } from '~/data/debates';
 import { people, type Person } from '~/data/people';
+import { mddiSpeeches, type MddiSpeech } from '~/data/voices';
+import { speechId } from '~/data/speech-transcripts';
 import { dimensions, type Dimension } from '~/data/tracker';
 import { benchmarkCases, type BenchmarkCase } from '~/data/benchmarking';
 import { ecosystemCategories, type EcosystemEntity } from '~/data/ecosystem';
@@ -116,6 +118,18 @@ const TYPE_TEMPLATES: Record<UpdateType, TypeTemplate | undefined> = {
     listingLabelEn: 'Influence map',
     zhMore: (n) => `（共 ${n} 位）`,
     jaMore: (n) => `（合計${n}名）`,
+    enMore: (n) => ` (${n} total)`,
+  },
+  speech: {
+    zhTitle: (n) => `MDDI 演讲新增 ${n} 篇`,
+    jaTitle: (n) => `MDDI スピーチを${n}件追加`,
+    enTitle: (n) => `${n} new MDDI speech${n > 1 ? 'es' : ''}`,
+    listingHref: '/voices/',
+    listingLabel: 'MDDI AI 相关演讲稿',
+    listingLabelJa: 'MDDI AI 関連スピーチ',
+    listingLabelEn: 'MDDI AI speeches',
+    zhMore: (n) => `（共 ${n} 篇）`,
+    jaMore: (n) => `（合計${n}件）`,
     enMore: (n) => ` (${n} total)`,
   },
   tracker: {
@@ -261,6 +275,22 @@ function harvestPeople(rs: Person[]): Harvested[] {
       enTitle: pickEn(r.name, r.nameEn),
       jaTitle: pickJa(r.name, r.nameJa, r.nameEn),
       href: `/voices/${r.id}/`,
+    });
+  }
+  return out;
+}
+
+function harvestSpeeches(rs: MddiSpeech[]): Harvested[] {
+  const out: Harvested[] = [];
+  for (const r of rs) {
+    if (!r.addedAt) continue;
+    out.push({
+      type: 'speech',
+      addedAt: r.addedAt,
+      zhTitle: r.title,
+      enTitle: pickEn(r.title, r.titleEn),
+      jaTitle: pickJa(r.title, r.titleJa, r.titleEn),
+      href: `/speeches/${speechId(r)}/`,
     });
   }
   return out;
@@ -455,6 +485,7 @@ export function deriveUpdates(): Update[] {
     ...harvestPolicies(policyCategories),
     ...harvestDebates(debates),
     ...harvestPeople(people),
+    ...harvestSpeeches(mddiSpeeches),
     ...harvestTracker(dimensions),
     ...harvestBenchmarking(benchmarkCases),
     ...harvestEcosystem(ecosystemCategories),

@@ -34,6 +34,11 @@ export interface MddiSpeech {
   eventEn: string;
   event: string;
   eventJa?: string;
+  /** YYYY-MM-DD this record was first added to the repo. Drives homepage
+   *  "Recent updates" via src/utils/derived-updates.ts. New records MUST
+   *  set this (enforced by scripts/evals/addedAt-coverage). Pre-rule
+   *  records may stay undefined. */
+  addedAt?: string;
 }
 
 // ── 关键人物 ─────────────────────────────────────────────────────────────────
@@ -194,6 +199,23 @@ export const institutions: Institution[] = [
 // ── MDDI 演讲稿（AI 相关）────────────────────────────────────────────────────
 
 export const mddiSpeeches: MddiSpeech[] = [
+  {
+    titleEn:
+      "Remarks by MOS Rahayu Mahzam at the Launch of Lions Befrienders' New Neighbourhood Assistant for Nurturing Ageing (NANA) AI Initiative",
+    title: 'Rahayu Mahzam 政务次长在 Lions Befrienders「邻里安老智能助理 (NANA)」AI 项目启动会上的致辞',
+    titleJa:
+      'Rahayu Mahzam 政務次官の Lions Befrienders「近隣高齢者ケア・アシスタント (NANA)」AI イニシアチブ立ち上げ式での挨拶',
+    speaker: 'Rahayu Mahzam',
+    speakerTitle: 'MDDI 政务次长',
+    speakerTitleJa: 'MDDI 政務次官',
+    speakerTitleEn: 'Minister of State, MDDI',
+    date: '2026-04-30',
+    url: 'https://www.mddi.gov.sg/newsroom/remarks-by-mos-rahayu-mahzam-at-the-launch-of-lions-befrienders--new-neighbourhood-assistant-for-nurturing-ageing--nana--ai-initiative/',
+    eventEn: "Launch of Lions Befrienders' New Neighbourhood Assistant for Nurturing Ageing (NANA) AI Initiative",
+    event: 'Lions Befrienders「邻里安老智能助理 (NANA)」AI 项目启动会',
+    eventJa: 'Lions Befrienders「近隣高齢者ケア・アシスタント (NANA)」AI イニシアチブ立ち上げ式',
+    addedAt: '2026-05-15',
+  },
   {
     titleEn: 'Speech by MOS Rahayu Mahzam at the Design AI and Tech Awards 2026',
     title: 'Rahayu Mahzam 政务次长在 2026 Design AI and Tech Awards 上的演讲',

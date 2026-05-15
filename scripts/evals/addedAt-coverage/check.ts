@@ -39,6 +39,7 @@ const DATA_FILES = [
   'src/data/policies.ts',
   'src/data/debates.ts',
   'src/data/people.ts',
+  'src/data/voices.ts', // mddiSpeeches[] addedAt drives 'speech' derived updates
   'src/data/tracker.ts',
   'src/data/benchmarking.ts',
   'src/data/ecosystem.ts',
