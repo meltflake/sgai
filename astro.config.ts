@@ -139,7 +139,7 @@ export default defineConfig({
   ],
 
   image: {
-    domains: ['cdn.pixabay.com'],
+    domains: ['cdn.pixabay.com', 'i.ytimg.com'],
   },
 
   markdown: {
