@@ -53,6 +53,7 @@ scripts/refresh/talent/data/
 scripts/refresh/startups/data/
 scripts/refresh/tracker/data/
 scripts/refresh/benchmarking/data/
+scripts/refresh/voices/data/
 
 # i18n translation cache (sha256-keyed claude haiku output)
 scripts/i18n/data/

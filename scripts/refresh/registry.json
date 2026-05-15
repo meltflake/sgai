@@ -26,11 +26,13 @@
     },
     {
       "id": "voices",
-      "type": "python-builtin",
+      "type": "tsx",
       "schedule": "weekly",
       "label": "MDDI speeches",
-      "description": "MDDI sitemap scan. Existing pipeline.",
-      "mode": "scan-only-email"
+      "description": "MDDI sitemap scan + page fetch + Claude haiku translation (zh paragraphs, zh+en tldr) + trilingual title/event/speakerTitle. Emits to voices.ts mddiSpeeches[] + speech-transcripts.ts speechTranscripts map.",
+      "script": "scripts/refresh/voices/run.ts",
+      "args": ["--limit=3"],
+      "mode": "auto-pr"
     },
     {
       "id": "github-stars",
