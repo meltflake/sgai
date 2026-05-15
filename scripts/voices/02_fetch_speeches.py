@@ -69,24 +69,32 @@ def speech_id_from_url(url: str) -> str:
 
 
 def parse_speech_urls() -> list[tuple[str, str, str]]:
-    """从 voices.ts 中解析 mddiSpeeches 块，返回 (id, url, title) 列表。"""
+    """从 voices.ts 中解析 mddiSpeeches 块，返回 (id, url, title) 列表。
+
+    字段顺序在 entry 内不固定（i18n 重构后 titleEn 常在 title 之前），所以先按
+    `{...}` 抓 entry block（不含嵌套），再独立抽 `title:` / `url:`。title 取
+    bare 中文字段（不是 titleEn / titleJa）。
+    """
     text = VOICES_TS.read_text()
-    # mddiSpeeches 是文件中唯一一个有 'event' + 'url' 的数组；用条目级匹配
     block_match = re.search(r"export const mddiSpeeches[^\[]*\[(.+?)^\];", text, re.DOTALL | re.MULTILINE)
     if not block_match:
         sys.exit("无法定位 mddiSpeeches 数组")
     block = block_match.group(1)
+
     entries = []
-    for m in re.finditer(
-        r"\{\s*title:\s*(?P<tq>['\"])(?P<title>.*?)(?P=tq).*?url:\s*(?P<uq>['\"])(?P<url>https?://[^'\"]+)(?P=uq).*?\}",
-        block,
-        re.DOTALL,
-    ):
-        url = m.group("url")
+    # entry 不含嵌套 `{}`，可以用 \{[^{}]+?\} 抓取
+    for m_entry in re.finditer(r"\{[^{}]+?\}", block, re.DOTALL):
+        body = m_entry.group(0)
+        # bare title (not titleEn / titleJa) — negative lookbehind 防止匹配 titleEn:
+        m_title = re.search(r"(?<![A-Za-z])title:\s*(?P<tq>['\"])(?P<title>.*?)(?P=tq)", body, re.DOTALL)
+        m_url = re.search(r"\burl:\s*(?P<uq>['\"])(?P<url>https?://[^'\"]+)(?P=uq)", body)
+        if not (m_title and m_url):
+            continue
+        url = m_url.group("url")
         if "mddi.gov.sg" not in url:
             continue
         sid = speech_id_from_url(url)
-        title = m.group("title").replace("\\'", "'").replace('\\"', '"')
+        title = m_title.group("title").replace("\\'", "'").replace('\\"', '"')
         entries.append((sid, url, title))
     return entries
 

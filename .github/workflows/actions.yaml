@@ -50,6 +50,13 @@ jobs:
       - name: addedAt coverage (PR diff vs main)
         run: npm run eval:addedAt -- --base=origin/main
 
+      # Enforce that every mddiSpeeches entry in voices.ts has a matching
+      # speechTranscripts entry with non-empty paragraphs + paragraphsEn.
+      # Without it, /speeches/<id>/ silently renders the "尚未本地存档"
+      # fallback. See scripts/evals/transcript-coverage/check.ts.
+      - name: transcript coverage (PR diff vs main)
+        run: npm run eval:transcript -- --base=origin/main
+
       # Layer E — source-level i18n hardcode scan.
       # Hard-fails when a PR introduces NEW `lang === 'zh' ?` / `isZh ?` /
       # `COPY[lang] ?? COPY.en` (without ja branch) anti-patterns above
