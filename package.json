@@ -31,6 +31,7 @@
     "eval:url": "tsx scripts/evals/url-health/check.ts",
     "eval:i18n": "tsx scripts/evals/i18n-coverage/check.ts",
     "eval:addedAt": "tsx scripts/evals/addedAt-coverage/check.ts",
+    "eval:transcript": "tsx scripts/evals/transcript-coverage/check.ts",
     "eval:source-i18n": "tsx scripts/evals/source-i18n-hardcode/check.ts",
     "eval:ai-summary": "tsx scripts/evals/ai-summary/check.ts",
     "eval:translation": "tsx scripts/evals/translation/check.ts",

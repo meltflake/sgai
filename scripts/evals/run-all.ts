@@ -55,6 +55,12 @@ const STAGES: Stage[] = [
     needsDist: false,
     frequency: 'weekly',
   },
+  {
+    name: 'transcript-coverage',
+    cmd: ['npx', 'tsx', 'scripts/evals/transcript-coverage/check.ts', '--include-historical'],
+    needsDist: false,
+    frequency: 'weekly',
+  },
   // Layer E — source-level i18n hardcode scan, no build required.
   // Tracks 2-locale ternaries in templates that silently strand JA on EN.
   {
