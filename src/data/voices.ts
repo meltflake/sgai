@@ -200,6 +200,21 @@ export const institutions: Institution[] = [
 
 export const mddiSpeeches: MddiSpeech[] = [
   {
+    titleEn: 'Opening Address by Minister Josephine Teo at ATxSummit 2026',
+    title: '杨莉明部长在 ATxSummit 2026 上的开幕主题演讲',
+    titleJa: '楊莉明部長による ATxSummit 2026 開幕基調講演',
+    speaker: 'Josephine Teo',
+    speakerTitle: '数码发展及新闻部长',
+    speakerTitleJa: 'デジタル開発・ニュース相',
+    speakerTitleEn: 'Minister for Digital Development and Information',
+    date: '2026-05-20',
+    url: 'https://www.mddi.gov.sg/newsroom/opening-address-by-minister-josephine-teo-at-atxsummit-2026/',
+    eventEn: 'ATxSummit 2026',
+    event: 'ATxSummit 2026',
+    eventJa: 'ATxSummit 2026',
+    addedAt: '2026-05-20',
+  },
+  {
     titleEn:
       "Remarks by MOS Rahayu Mahzam at the Launch of Lions Befrienders' New Neighbourhood Assistant for Nurturing Ageing (NANA) AI Initiative",
     title: 'Rahayu Mahzam 政务次长在 Lions Befrienders「邻里安老智能助理 (NANA)」AI 项目启动会上的致辞',

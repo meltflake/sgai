@@ -195,6 +195,50 @@ export const people: Person[] = [
         labelEn: 'MDDI website',
       },
     ],
+    notableQuotes: [
+      {
+        quote:
+          "This refresh builds on our experiences and insights implementing NAIS 2.0. It is a 'double-click' rather than a system reboot.",
+        quoteZh: '这次更新是建立在 NAIS 2.0 实施经验之上——是「双击」而非系统重启。',
+        context: 'ATxSummit 2026 开幕主题演讲，公布 NAIS 更新',
+        contextJa: 'ATxSummit 2026 開幕基調講演で NAIS アップデートを発表',
+        contextEn: 'ATxSummit 2026 opening keynote, unveiling the NAIS update',
+        date: '2026-05-20',
+        sourceUrl: 'https://www.mddi.gov.sg/newsroom/opening-address-by-minister-josephine-teo-at-atxsummit-2026/',
+      },
+      {
+        quote:
+          'The National AI Impact Programme aims to broaden the base of enterprise users. Specifically, we will help 10,000 SMEs use AI meaningfully.',
+        quoteZh: 'National AI Impact Programme 旨在扩大企业用户基数——具体目标是帮助 1 万家中小企业有意义地使用 AI。',
+        context: 'ATxSummit 2026 开幕主题演讲',
+        contextJa: 'ATxSummit 2026 開幕基調講演',
+        contextEn: 'ATxSummit 2026 opening keynote',
+        date: '2026-05-20',
+        sourceUrl: 'https://www.mddi.gov.sg/newsroom/opening-address-by-minister-josephine-teo-at-atxsummit-2026/',
+      },
+    ],
+    speakingRecord: [
+      {
+        event: 'ATxSummit 2026 开幕主题演讲',
+        eventEn: 'ATxSummit 2026 opening keynote',
+        eventJa: 'ATxSummit 2026 開幕基調講演',
+        role: '主题演讲',
+        roleEn: 'Opening keynote',
+        roleJa: '基調講演',
+        date: '2026-05-20',
+        sourceUrl: 'https://www.mddi.gov.sg/newsroom/opening-address-by-minister-josephine-teo-at-atxsummit-2026/',
+      },
+      {
+        event: 'ATxSummit 2025 开幕致辞',
+        eventEn: 'ATxSummit 2025 opening address',
+        eventJa: 'ATxSummit 2025 開幕挨拶',
+        role: '开幕致辞',
+        roleEn: 'Opening address',
+        roleJa: '開幕挨拶',
+        date: '2025-05-28',
+        sourceUrl: 'https://www.mddi.gov.sg/newsroom/opening-address-by-minister-josephine-teo-at-atxsummit-2025/',
+      },
+    ],
   },
   {
     id: 'lawrence-wong',
@@ -1446,6 +1490,80 @@ export const people: Person[] = [
           'https://www.a-star.edu.sg/cfar/news/news/features/clarivate%27s-list-of-highly-cited-researchers-2025',
       },
     ],
+  },
+  // ── EDB leadership ────────────────────────────────────────────────
+  {
+    id: 'jermaine-loy',
+    nameEn: 'Jermaine Loy',
+    name: 'Jermaine Loy',
+    nameJa: 'Jermaine Loy',
+    aliases: ['Mr Jermaine Loy'],
+    titleEn: 'Managing Director, Singapore Economic Development Board (EDB)',
+    title: '新加坡经济发展局 (EDB) 总裁',
+    titleJa: 'シンガポール経済発展局 (EDB) 長官',
+    category: 'government',
+    roles: ['civil-servant', 'executive'],
+    affiliations: ['EDB', 'PMO'],
+    party: null,
+    summary:
+      '2025 年 3 月接任 EDB 总裁。前总理李显龙首席私人秘书（2021-04 至 2024-12）。EDB 引进 NVIDIA Singapore AI Research Lab、推动先进制造 AI 落地的核心 owner。',
+    summaryJa:
+      '2025 年 3 月に EDB 長官に就任。元李顯龍首相主席秘書（2021 年 4 月～2024 年 12 月）。EDB が NVIDIA Singapore AI Research Lab を誘致し、先端製造 AI を実装する中核の責任者。',
+    summaryEn:
+      'Took over as EDB Managing Director on 1 March 2025. Previously Principal Private Secretary to then-PM Lee Hsien Loong (Apr 2021 – Dec 2024). Core owner of EDB-led inbound investment into AI — including the NVIDIA Singapore AI Research Lab and the advanced-manufacturing AI agenda.',
+    channels: [
+      {
+        platform: 'website',
+        url: 'https://www.a-star.edu.sg/about/corporate-profile/people/mr-jermaine-loy',
+        label: 'A*STAR 董事会档案',
+        labelJa: 'A*STAR 取締役会アーカイブ',
+        labelEn: 'A*STAR Board profile',
+        primary: true,
+      },
+      {
+        platform: 'website',
+        url: 'https://www.mti.gov.sg/newsroom/new-managing-director-at-the-singapore-economic-development-board/',
+        label: 'MTI 任命公告',
+        labelJa: 'MTI 任命公式発表',
+        labelEn: 'MTI appointment release',
+      },
+    ],
+    signatureWork: [
+      {
+        title: 'NVIDIA Singapore AI Research Lab 引进',
+        titleJa: 'NVIDIA Singapore AI Research Lab の誘致',
+        titleEn: 'NVIDIA Singapore AI Research Lab attraction',
+        description:
+          '2026-05-20 ATxSummit 2026 公布的 NVIDIA 首个新加坡研究存在，EDB 是地方对接 owner。聚焦 embodied AI + efficient AI computing，对接新加坡先进制造业基础。',
+        descriptionJa:
+          '2026 年 5 月 20 日の ATxSummit 2026 で発表された NVIDIA 初のシンガポール研究拠点で、EDB が現地カウンターパートのオーナー。embodied AI と efficient AI computing に焦点を当て、シンガポールの先端製造業基盤と接続。',
+        descriptionEn:
+          "NVIDIA's first research presence in Singapore, unveiled at ATxSummit 2026 on 20 May 2026 — EDB is the local counterpart owner. Focused on embodied AI and efficient AI computing, connected to Singapore's advanced-manufacturing base.",
+        since: '2026-05',
+        sourceUrl: 'https://letsdatascience.com/news/nvidia-opens-singapore-research-hub-for-embodied-ai-50fa102f',
+      },
+    ],
+    externalRoles: [
+      {
+        role: '主席（DesignSingapore 顾问委员会）',
+        roleJa: '議長（DesignSingapore 諮問委員会）',
+        roleEn: 'Chair, DesignSingapore Advisory Board',
+        organization: 'DesignSingapore Council',
+        organizationJa: 'DesignSingapore Council',
+        organizationEn: 'DesignSingapore Council',
+        sourceUrl: 'https://www.mti.gov.sg/newsroom/new-managing-director-at-the-singapore-economic-development-board/',
+      },
+      {
+        role: '董事',
+        roleJa: '取締役',
+        roleEn: 'Board Member',
+        organization: 'A*STAR、SG Growth Capital、新加坡海事及港务管理局 (MPA)',
+        organizationJa: 'A*STAR、SG Growth Capital、シンガポール海事港湾管理局 (MPA)',
+        organizationEn: 'A*STAR, SG Growth Capital, and the Maritime and Port Authority of Singapore (MPA)',
+        sourceUrl: 'https://www.a-star.edu.sg/about/corporate-profile/people/mr-jermaine-loy',
+      },
+    ],
+    addedAt: '2026-05-20',
   },
   // ── NUS leadership ────────────────────────────────────────────────
   {

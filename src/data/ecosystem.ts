@@ -5630,6 +5630,7 @@ A take: **the scale of the AWS investment is a double-edged sword for Singapore*
 - **NSCC 合作**：新加坡国家超算中心部分 GPU 集群是 NVIDIA 硬件
 - **企业市场**：金融、电信、政府的 AI 部署大量使用 NVIDIA GPU
 - **DGX SuperPOD**：本地多个企业部署了 DGX 集群
+- **Singapore AI Research Lab（2026-05 开张）**：NVIDIA 在新加坡的第一个**研究存在**（亚太第二个），聚焦 embodied AI 与 efficient AI computing；与本地大学、产业、政府机构联合开展研究
 
 为什么新加坡占 NVIDIA 营收 15%：部分是真实新加坡需求，部分是新加坡作为东南亚转运/计费中心，名义上买单但 GPU 实际去向其他东南亚国家。NVIDIA 财报口径让新加坡数字看起来巨大。`,
         whatItIsJa: `シンガポール における NVIDIA：
@@ -5638,6 +5639,7 @@ A take: **the scale of the AWS investment is a double-edged sword for Singapore*
 - **NSCC 協力**：シンガポール 国家スーパーコンピュータセンターの一部 GPU クラスターは NVIDIA ハードウェア
 - **企業市場**：金融、通信、政府の AI デプロイは大量に NVIDIA GPU を使用
 - **DGX SuperPOD**：現地複数の企業が DGX クラスターをデプロイ
+- **Singapore AI Research Lab（2026-05 開設）**：NVIDIA のシンガポール初の**研究拠点**（アジア太平洋では 2 番目）。embodied AI と efficient AI computing に焦点を当て、現地の大学・産業・政府機関と共同で研究を行います
 
 なぜシンガポール が NVIDIA 営収の 15% を占めるのか：部分的にはシンガポール の真の需要ですが、部分的にはシンガポール が東南アジアの転送・決済センターであり、名目上はシンガポール が購入していても GPU の実際の行き先は他の東南アジア国です。NVIDIA の財報では、この記録方式によってシンガポール の数字が非常に大きく見えます。`,
         whatItIsEn: `NVIDIA in Singapore:
@@ -5646,6 +5648,7 @@ A take: **the scale of the AWS investment is a double-edged sword for Singapore*
 - **NSCC collaboration**: parts of Singapore's National Supercomputing Centre's GPU clusters are NVIDIA hardware
 - **Enterprise market**: AI deployments in finance, telecoms, and government rely heavily on NVIDIA GPUs
 - **DGX SuperPOD**: several local enterprises have deployed DGX clusters
+- **Singapore AI Research Lab (opened May 2026)**: NVIDIA's first **research** presence in Singapore — second in Asia Pacific. Focused on embodied AI and efficient AI computing, working with local universities, industry partners, and government agencies
 
 Why Singapore accounts for 15% of NVIDIA revenue: partly real Singaporean demand, and partly Singapore's role as a Southeast Asian routing / billing centre — invoiced here on paper, but the GPUs end up in other Southeast Asian countries. NVIDIA's reporting convention makes the Singapore figure look enormous.`,
         aiRelevance: `NVIDIA 不直接做 AI 模型研究，但它是 AI 时代的**绝对算力垄断者**——任何严肃的 AI 训练和推理都离不开 NVIDIA GPU。
@@ -5718,11 +5721,28 @@ Worth watching: whether US GPU export controls on Singapore will tighten, whethe
             titleJa: 'アメリカはシンガポールの GPU 積替輸送に関する疑いを調査',
             titleEn: 'US investigates suspected GPU rerouting via Singapore',
           },
+          {
+            date: '2026-05-20',
+            title:
+              'NVIDIA 在 ATxSummit 2026 公布 Singapore AI Research Lab（聚焦 embodied AI + efficient AI computing）',
+            titleJa:
+              'NVIDIA が ATxSummit 2026 で Singapore AI Research Lab を発表（embodied AI と efficient AI computing に焦点）',
+            titleEn:
+              'NVIDIA announces Singapore AI Research Lab at ATxSummit 2026 — focused on embodied AI and efficient AI computing',
+          },
         ],
         relatedLeverNumbers: [1, 6],
         relatedEntityIds: ['ai-singapore', 'sea-lion', 'aws', 'a-star'],
-        sources: [{ label: 'NVIDIA', labelEn: 'NVIDIA', url: 'https://www.nvidia.com/' }],
-        updated: '2026-05-02',
+        sources: [
+          { label: 'NVIDIA', labelEn: 'NVIDIA', url: 'https://www.nvidia.com/' },
+          {
+            label: 'NVIDIA Singapore AI Research Lab 公告（ATxSummit 2026）',
+            labelJa: 'NVIDIA Singapore AI Research Lab 発表（ATxSummit 2026）',
+            labelEn: 'NVIDIA Singapore AI Research Lab announcement (ATxSummit 2026)',
+            url: 'https://letsdatascience.com/news/nvidia-opens-singapore-research-hub-for-embodied-ai-50fa102f',
+          },
+        ],
+        updated: '2026-05-20',
       },
       {
         id: 'sony-research',

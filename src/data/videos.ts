@@ -111,6 +111,56 @@ export function pickSpeakerTypeLabels(lang: 'zh' | 'en' | 'ja'): Record<string, 
 
 export const videos: VideoItem[] = [
   {
+    id: 'v061',
+    title: 'AI Engineer Singapore Day 1：部长开幕 + OpenAI / Google / Vercel / Cursor 主题',
+    titleEn: 'AIE Singapore Day 1 ft. Minister, NanoClaw, OpenAI, Google, Vercel, Cursor & more',
+    titleJa: 'AIE シンガポール Day 1：閣僚基調講演 + OpenAI / Google / Vercel / Cursor 主要セッション',
+    speaker: 'AI Engineer Singapore',
+    speakerTitle: 'AI Engineer 首届亚洲峰会（65Labs 主办）',
+    speakerTitleEn: 'AI Engineer first Asia edition (organised by 65Labs)',
+    speakerTitleJa: 'AI Engineer 初のアジア版（主催：65Labs）',
+    speakerType: 'industry',
+    date: '2026-05-16',
+    duration: '08:00:00',
+    summary:
+      'AI Engineer Singapore Day 1 全程：部长开幕、NanoClaw 演示，以及 OpenAI、Google、Vercel、Cursor 等头部团队的工程实战分享。新加坡首届 AI Engineer 峰会，定位「工程师 × AI」实操层。',
+    summaryEn:
+      "Day 1 of AI Engineer Singapore — the Minister's opening keynote, NanoClaw demos, and engineering-focused sessions from OpenAI, Google, Vercel, Cursor and other leading teams. Singapore's first AI Engineer summit, positioned at the engineer × AI practitioner layer.",
+    summaryJa:
+      'AI Engineer シンガポール Day 1 全編。閣僚の開幕基調、NanoClaw のデモ、そして OpenAI、Google、Vercel、Cursor などトップチームによるエンジニアリング実戦セッション。シンガポール初の AI Engineer サミット、「エンジニア × AI」実装層に焦点を当てています。',
+    topic: 'AI 产业与应用',
+    topicEn: 'AI Industry & Applications',
+    topicJa: 'AI 産業と応用',
+    youtubeUrl: 'https://www.youtube.com/watch?v=_xQnSNlBP_w',
+    channel: 'AI Engineer',
+    addedAt: '2026-05-20',
+  },
+  {
+    id: 'v062',
+    title: 'AI Engineer Singapore Day 2：Google DeepMind / Cloudflare / Arize 机器人与运行时主题',
+    titleEn: 'AIE Singapore Day 2 ft. Google DeepMind, OpenClaw, Adaption, Arize, Cloudflare, Robot Company & more',
+    titleJa: 'AIE シンガポール Day 2：Google DeepMind / Cloudflare / Arize 等ロボット・ランタイム主題',
+    speaker: 'AI Engineer Singapore',
+    speakerTitle: 'AI Engineer 首届亚洲峰会（65Labs 主办）',
+    speakerTitleEn: 'AI Engineer first Asia edition (organised by 65Labs)',
+    speakerTitleJa: 'AI Engineer 初のアジア版（主催：65Labs）',
+    speakerType: 'industry',
+    date: '2026-05-17',
+    duration: '08:00:00',
+    summary:
+      'AI Engineer Singapore Day 2 全程：Google DeepMind、OpenClaw、Adaption、Arize、Cloudflare、Robot Company 等团队主题分享。Day 2 偏机器人、模型可观测性与运行时栈。',
+    summaryEn:
+      'Day 2 of AI Engineer Singapore — sessions from Google DeepMind, OpenClaw, Adaption, Arize, Cloudflare, Robot Company and others. Day 2 leans toward robotics, model observability, and the runtime stack.',
+    summaryJa:
+      'AI Engineer シンガポール Day 2 全編。Google DeepMind、OpenClaw、Adaption、Arize、Cloudflare、Robot Company などのセッション。Day 2 はロボティクス、モデル可観測性、ランタイムスタックに重点。',
+    topic: 'AI 产业与应用',
+    topicEn: 'AI Industry & Applications',
+    topicJa: 'AI 産業と応用',
+    youtubeUrl: 'https://www.youtube.com/watch?v=m12vGjfbNlo',
+    channel: 'AI Engineer',
+    addedAt: '2026-05-20',
+  },
+  {
     id: 'v059',
     title: '李智陞：在教育中谨慎、有目的地引入 AI',
     titleEn: 'Education Minister Desmond Lee: A Calibrated, Purposeful Approach to AI in Education',

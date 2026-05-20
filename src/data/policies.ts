@@ -97,6 +97,214 @@ export const categories: PolicyCategory[] = [
     icon: '🏛️',
     policies: [
       {
+        id: 'nais-update-2026',
+        title: '国家 AI 战略更新 (NAIS Update 2026)',
+        titleJa: '国家 AI 戦略アップデート (NAIS Update 2026)',
+        titleEn: 'National AI Strategy Update 2026',
+        date: '2026-05',
+        source: '数字发展与信息部 (MDDI) / 国家 AI 理事会 (NAIC)',
+        sourceJa: 'デジタル発展・情報部 (MDDI) / 国家 AI 評議会 (NAIC)',
+        sourceEn: 'Ministry of Digital Development and Information (MDDI) / National AI Council (NAIC)',
+        sourceOrgUrl: 'https://www.mddi.gov.sg/',
+        sourceUrl: 'https://www.mddi.gov.sg/newsroom/opening-address-by-minister-josephine-teo-at-atxsummit-2026/',
+        summary:
+          'Josephine Teo 在 ATxSummit 2026 公布 NAIS 更新——「双击」而非「重启」。3 个方向、10 项优先方向、4 个国家 AI 任务（先进制造、金融、互联互通、医疗），加 National AI Impact Programme（10000 家 SME 目标）与 Champions of AI 计划。',
+        summaryJa:
+          'Josephine Teo は ATxSummit 2026 で NAIS アップデートを発表――「ダブルクリック」であって「リセット」ではない。3 つの方向、10 の優先方向、4 つの国家 AI ミッション（先端製造、金融、コネクティビティ、医療）、加えて National AI Impact Programme（中小企業 10000 社の目標）と Champions of AI プログラム。',
+        summaryEn:
+          'At ATxSummit 2026, Josephine Teo unveiled an update to NAIS — a "double-click" rather than a "system reboot". Three directions, ten refreshed priorities, four National AI Missions (Advanced Manufacturing, Financial Services, Connectivity, Healthcare), plus the National AI Impact Programme (10,000-SME target) and the Champions of AI programme.',
+        content: `2026 年 5 月 20 日，数字发展与信息部长 Josephine Teo 在 ATxSummit 2026 开幕主题演讲上公布 NAIS 更新。她把更新形容为「双击」而非「系统重启」——延续 NAIS 2.0 的框架，叠加 2026 年 2 月成立、Lawrence Wong 总理亲任主席的**国家 AI 理事会（NAIC）**的更高目标。
+
+**3 个方向 + 10 项优先方向**：覆盖部门与公共部门转型、人才与基础设施、治理与国际合作。
+
+**4 个国家 AI 任务**（部门转型重点）：
+- **先进制造**——巩固制造业 AI 优势，对接同日公布的 NVIDIA Singapore AI Research Lab 的 embodied AI 落地
+- **金融服务**——延续 FEAT / Veritas / MindForge / BuildFin.ai 五层堆栈
+- **互联互通（Connectivity）**——5G + 数据基础设施
+- **医疗**——AI 辅助诊断 / 慢性病预测 / 个性化医疗
+
+**两个企业采纳计划**：
+- **National AI Impact Programme**——目标 10000 家 SME「有意义采纳 AI」
+- **Champions of AI**——为头部企业提供更深度、定制化的对接支持
+
+Teo 以樟宜机场 T5 扩建为例说明「新航站楼只装硬件不够」——AI 不是炫技，而是要解决具体运营挑战，硬件 + 软件协同创新才能起效。
+
+NAIS 更新与同日公布的 NVIDIA Singapore AI Research Lab、Punggol Digital District 多运营商机器人 testbed 三件事联动，标志着新加坡 AI 战略从「规划期」进入「成果交付期」。`,
+        contentJa: `2026 年 5 月 20 日、デジタル発展・情報相 Josephine Teo は ATxSummit 2026 の開幕基調講演で NAIS アップデートを発表しました。彼女はこのアップデートを「システム再起動」ではなく「ダブルクリック」と形容しました――NAIS 2.0 のフレームワークを継続しつつ、2026 年 2 月設立で Lawrence Wong 首相が議長を務める**国家 AI 評議会（NAIC）**の高い目標を重ね合わせています。
+
+**3 つの方向 + 10 の優先方向**：部門・公共部門の変革、人材・基盤、ガバナンス・国際協力をカバーします。
+
+**4 つの国家 AI ミッション**（部門変革の重点）：
+- **先端製造**――製造業の AI 優位性を強化し、同日発表された NVIDIA Singapore AI Research Lab の embodied AI 実装と接続
+- **金融サービス**――FEAT / Veritas / MindForge / BuildFin.ai 5 層スタックを継続
+- **コネクティビティ**――5G + データ基盤
+- **医療**――AI 補助診断 / 慢性疾患予測 / 個別化医療
+
+**2 つの企業採用計画**：
+- **National AI Impact Programme**――中小企業 10000 社の「意味ある AI 採用」を目標
+- **Champions of AI**――トップ企業へより深く、ターゲットを絞ったサポート
+
+Teo は Changi 空港 T5 拡張を例に「新ターミナルにハードウェアだけでは不足」と説明――AI は派手な技術ではなく、具体的な業務課題を解決するためのもの、ハードウェアとソフトウェアの協調イノベーションが必要だと示しました。
+
+NAIS アップデートは同日発表の NVIDIA Singapore AI Research Lab、Punggol Digital District 多事業者ロボット testbed と連動し、シンガポール AI 戦略が「計画期」から「成果引渡し期」へ移行したことを示しています。`,
+        contentEn: `On 20 May 2026, Minister for Digital Development and Information Josephine Teo unveiled an update to the National AI Strategy in her opening keynote at ATxSummit 2026. She framed the update as a "double-click rather than a system reboot" — building on the NAIS 2.0 framework while layering in the elevated ambitions of the National AI Council (NAIC), established in February 2026 and chaired by Prime Minister Lawrence Wong.
+
+**Three directions, ten refreshed priorities**: covering sectoral and public-sector transformation, talent and infrastructure, governance and international cooperation.
+
+**Four National AI Missions** (sectoral transformation focus):
+- **Advanced Manufacturing** — consolidating Singapore's manufacturing-AI edge, connecting with embodied AI from the same-day NVIDIA Singapore AI Research Lab
+- **Financial Services** — extending the FEAT / Veritas / MindForge / BuildFin.ai five-layer stack
+- **Connectivity** — 5G and data infrastructure
+- **Healthcare** — AI-assisted diagnosis, chronic disease prediction, personalised medicine
+
+**Two enterprise-adoption programmes**:
+- **National AI Impact Programme** — targets meaningful AI adoption by 10,000 SMEs
+- **Champions of AI** — provides deeper, more targeted support for leading enterprises
+
+Teo used the Changi Airport T5 expansion to illustrate the point that "a new terminal alone won't do the job" — hardware and software innovation must move together. AI isn't about showy capabilities, it's about solving concrete operational problems.
+
+Together with same-day announcements of the NVIDIA Singapore AI Research Lab and the Punggol Digital District multi-operator robot testbed, the update marks Singapore's AI strategy shifting from a planning phase to a delivery phase.`,
+        ministry: 'MDDI',
+        authorPersonIds: ['josephine-teo', 'lawrence-wong'],
+        relatedDebateIds: [],
+        relatedLeverNumbers: [1, 2, 3, 4, 5, 6],
+        relatedTimelineYears: [2026],
+        relatedPostSlugs: [],
+        addedAt: '2026-05-20',
+      },
+      {
+        id: 'nvidia-singapore-ai-research-lab-2026',
+        title: 'NVIDIA 新加坡 AI 研究实验室',
+        titleJa: 'NVIDIA シンガポール AI 研究ラボ',
+        titleEn: 'NVIDIA Singapore AI Research Lab',
+        date: '2026-05',
+        source: 'NVIDIA / 经济发展局 (EDB)',
+        sourceJa: 'NVIDIA / 経済発展局 (EDB)',
+        sourceEn: 'NVIDIA / Economic Development Board (EDB)',
+        sourceOrgUrl: 'https://www.edb.gov.sg/',
+        sourceUrl: 'https://letsdatascience.com/news/nvidia-opens-singapore-research-hub-for-embodied-ai-50fa102f',
+        summary:
+          'NVIDIA 在 ATxSummit 2026 公布在新加坡设立第一个研究实验室（亚太第二个），聚焦 embodied AI 与 efficient AI computing。',
+        summaryJa:
+          'NVIDIA は ATxSummit 2026 で、シンガポールに最初の研究ラボを設立すると発表しました（アジア太平洋では 2 番目）。embodied AI と efficient AI computing に焦点を当てます。',
+        summaryEn:
+          'At ATxSummit 2026, NVIDIA announced its first Singapore research lab — its second in Asia Pacific — focused on embodied AI and efficient AI computing.',
+        content: `2026 年 5 月 20 日，NVIDIA 在 ATxSummit 2026 公布在新加坡设立**第一个新加坡研究实验室**（也是 NVIDIA 在亚太地区的第二个研究存在）。NVIDIA 首席科学家、研究高级副总裁 Dr. William Dally 出席公告。
+
+**两条研究主线**：
+
+1. **Embodied AI（具身智能）**——机器人与自主系统在物理世界中感知、推理、执行。重点应用包括智能检测、自主装配、预测性维护，对接新加坡先进制造业基础与同日公布的 Punggol Digital District 多运营商机器人 testbed。
+2. **Efficient AI computing**——降低算力成本、提升能效，支撑更广泛的 AI 部署。这是 NVIDIA 自身硬件路线（H100→B200→Rubin）之外的算法层、系统层效率研究。
+
+**合作模式**：与本地大学、产业伙伴、政府机构联合开展研究——具体合作机构未公布。Dr. Dally 同日在新加坡理工学院与 300+ 理工学院 / 大学学生分享 IC 设计经验。
+
+**战略意义**：与新加坡贡献 NVIDIA 约 15% 全球营收的现状相比，这是 NVIDIA 首次在新加坡建立**研究存在**而非纯商业存在——把新加坡从「GPU 转运中心」叙事推向「原创 AI 研究节点」。同日公布的 NAIS 更新「先进制造」国家 AI 任务与此 Lab 强烈呼应。Josephine Teo 在演讲中说：「This is why we welcome NVIDIA's new Research Lab in Singapore, focussing on embodied AI and efficient AI.」`,
+        contentJa: `2026 年 5 月 20 日、NVIDIA は ATxSummit 2026 でシンガポールに**最初のシンガポール研究ラボ**（NVIDIA のアジア太平洋における 2 番目の研究拠点）を設立すると発表しました。NVIDIA チーフサイエンティスト・研究上級副社長の Dr. William Dally がこの発表に出席しました。
+
+**2 つの研究の主軸**：
+
+1. **Embodied AI（身体的 AI）**――ロボットや自律システムが物理世界で感知、推論、実行します。重点的な応用にはインテリジェント検査、自律的組立、予知保全が含まれ、シンガポールの先端製造業基盤および同日発表の Punggol Digital District 多事業者ロボット testbed と接続します。
+2. **Efficient AI computing**――算力コストの低減、エネルギー効率の向上、より広範な AI デプロイのサポート。これは NVIDIA 自身のハードウェアロードマップ（H100→B200→Rubin）以外のアルゴリズム層・システム層の効率研究です。
+
+**協力モデル**：現地の大学、産業パートナー、政府機関と共同で研究を行います――具体的な協力機関は未公表。Dr. Dally は同日、シンガポール工科専門学校で 300 人以上の理工学院・大学の学生に IC 設計の経験を共有しました。
+
+**戦略的意義**：シンガポールが NVIDIA グローバル営収の約 15% に貢献している現状と比較して、NVIDIA が初めてシンガポールに**研究の存在**を確立した（純粋に商業的な存在ではなく）――シンガポールを「GPU 中継センター」の物語から「オリジナル AI 研究拠点」へと推し進めるものです。同日発表された NAIS アップデートの「先端製造」国家 AI ミッションはこの Lab と強く共鳴しています。Josephine Teo は講演で「This is why we welcome NVIDIA's new Research Lab in Singapore, focussing on embodied AI and efficient AI.」と述べました。`,
+        contentEn: `On 20 May 2026, at ATxSummit 2026, NVIDIA announced its **first Singapore research lab** — also NVIDIA's second research presence in Asia Pacific. NVIDIA Chief Scientist and Senior Vice President of Research Dr. William Dally was present for the announcement.
+
+**Two research tracks**:
+
+1. **Embodied AI** — robots and autonomous systems that perceive, reason and act in the physical world. Application focus includes intelligent inspection, autonomous assembly, and predictive maintenance — aligning with Singapore's advanced-manufacturing base and the same-day Punggol Digital District multi-operator robot testbed.
+2. **Efficient AI computing** — lowering compute costs, improving energy efficiency, and enabling broader AI deployment. This is algorithmic and systems-level efficiency research beyond NVIDIA's own hardware roadmap (H100 → B200 → Rubin).
+
+**Collaboration model**: the lab will work with local universities, industry partners, and government agencies — specific partner institutions not disclosed at announcement. Dr. Dally also addressed 300+ polytechnic and university students at Singapore Polytechnic the same day on IC design.
+
+**Strategic significance**: against the backdrop of Singapore contributing roughly 15% of NVIDIA's global revenue, this is NVIDIA's first **research** presence in Singapore — not just a commercial one. It moves Singapore from the "GPU rerouting hub" narrative toward "original AI research node." The "Advanced Manufacturing" mission under the same-day NAIS update strongly resonates with this lab. Josephine Teo's speech: "This is why we welcome NVIDIA's new Research Lab in Singapore, focussing on embodied AI and efficient AI."`,
+        ministry: 'EDB',
+        authorPersonIds: ['josephine-teo', 'jermaine-loy'],
+        relatedDebateIds: [],
+        relatedLeverNumbers: [1, 3, 6],
+        relatedTimelineYears: [2026],
+        relatedPostSlugs: [],
+        addedAt: '2026-05-20',
+      },
+      {
+        id: 'pdd-multi-operator-robot-testbed-2026',
+        title: 'Punggol Digital District 多运营商机器人 testbed',
+        titleJa: 'Punggol Digital District 多事業者ロボット testbed',
+        titleEn: 'Punggol Digital District Multi-Operator Robot Testbed',
+        date: '2026-05',
+        source: '资讯通信媒体发展局 (IMDA) / 裕廊集团 (JTC) / 新加坡理工大学 (SIT) / 陆路交通管理局 (LTA)',
+        sourceJa: '情報通信メディア発展局 (IMDA) / 裕廊集団 (JTC) / シンガポール工科大学 (SIT) / 陸路交通管理局 (LTA)',
+        sourceEn:
+          'Infocomm Media Development Authority (IMDA) / JTC / Singapore Institute of Technology (SIT) / Land Transport Authority (LTA)',
+        sourceOrgUrl: 'https://www.imda.gov.sg/',
+        sourceUrl: 'https://letsdatascience.com/news/nvidia-opens-singapore-research-hub-for-embodied-ai-50fa102f',
+        summary:
+          'IMDA 在 ATxSummit 2026 公布在 Punggol Digital District 建立片区级、多运营商、混合公共环境的 embodied AI testbed，2026 年下半年 launch。首批：Certis、DHL、Grab、QuikBot；配套 Centre for Intelligent Robotics（IMDA + NRP）。',
+        summaryJa:
+          'IMDA は ATxSummit 2026 で、Punggol Digital District に区域レベル・多事業者・混合公共環境型の embodied AI testbed を 2026 年後半に立ち上げると発表。最初の参加企業：Certis、DHL、Grab、QuikBot；併設の Centre for Intelligent Robotics（IMDA + NRP）。',
+        summaryEn:
+          'At ATxSummit 2026, IMDA announced a precinct-scale, multi-operator, mixed-use public-environment embodied-AI testbed at Punggol Digital District — launching later in 2026. First participants: Certis, DHL, Grab, QuikBot; paired with the Centre for Intelligent Robotics (IMDA + NRP).',
+        content: `2026 年 5 月 20 日，IMDA 在 ATxSummit 2026 公布在 **Punggol Digital District（PDD）** 建立**多运营商机器人 testbed**——2026 年下半年正式 launch。这是从 2025 年规划期「片区级机器人 testbed」（IMDA-SIT-JTC 合作）走到正式商业 launch 的关键节点。
+
+**首批运营方**（5/20 公布）：
+- **Certis**——安全巡逻机器人
+- **DHL**——物流 / 包裹配送
+- **Grab**——食品配送
+- **QuikBot**——参与配送 + 巡检
+
+**testbed 核心创新**：「多运营商共址」——区别于此前单 operator trial。多家机器人公司可以在同一 PDD 物理空间同时部署、测试服务，按 *Active Mobility Act* 片区级豁免运营。
+
+**配套**：
+- **Centre for Intelligent Robotics（CIR）**——IMDA + 国家机器人计划（NRP）共建，知识伙伴 FieldAI、Thoughtworks，技术伙伴 Slamtec、Unitree、QuikBot
+- **SIT 联合实验室**——与 Unitree、Slamtec、QuikBot 合作，覆盖机器人认知能力、空间感知、仿人机器人包裹分拣
+
+**测试场景**：食品 + 包裹配送、清洁、安全巡逻——覆盖 PDD 真实公共环境。
+
+**战略联动**：与同日公布的 NVIDIA Singapore AI Research Lab（embodied AI 主线）、NAIS 更新「先进制造」国家 AI 任务联动，三件事构成新加坡 embodied AI 战略 5/20 完整公告包。Josephine Teo 在演讲中说：「We are also developing Punggol Digital District as a frontier testbed... provide special testing permits for robot deployment.」`,
+        contentJa: `2026 年 5 月 20 日、IMDA は ATxSummit 2026 で **Punggol Digital District（PDD）** に**多事業者ロボット testbed** を構築すると発表しました――2026 年下半期に正式 launch。これは 2025 年計画段階の「区域レベルロボット testbed」（IMDA-SIT-JTC 協力）から正式な商業 launch への重要な節目です。
+
+**最初の参加事業者**（5/20 発表）：
+- **Certis**――セキュリティ巡回ロボット
+- **DHL**――物流・荷物配送
+- **Grab**――食品配送
+- **QuikBot**――配送 + 巡視に参加
+
+**testbed のコアイノベーション**：「多事業者共存」――これまでの単一 operator 試験とは異なり、複数のロボット企業が同じ PDD 物理空間で同時にデプロイ、サービステストが可能。*Active Mobility Act* の区域レベル豁免の下で運営。
+
+**併設**：
+- **Centre for Intelligent Robotics（CIR）**――IMDA + 国家ロボット計画（NRP）が共同構築、知識パートナーは FieldAI、Thoughtworks、技術パートナーは Slamtec、Unitree、QuikBot
+- **SIT 共同研究所**――Unitree、Slamtec、QuikBot と協力し、ロボットの認知能力、空間感知、ヒューマノイドロボットの荷物仕分けをカバー
+
+**テスト場面**：食品・荷物配送、清掃、セキュリティ巡回――PDD のリアルな公共環境をカバー。
+
+**戦略的連動**：同日発表の NVIDIA Singapore AI Research Lab（embodied AI 主軸）、NAIS アップデート「先端製造」国家 AI ミッションと連動し、3 件でシンガポール embodied AI 戦略の 5/20 完全公告パッケージを構成します。Josephine Teo は講演で「We are also developing Punggol Digital District as a frontier testbed... provide special testing permits for robot deployment.」と述べました。`,
+        contentEn: `On 20 May 2026, at ATxSummit 2026, IMDA announced a **multi-operator robot testbed** at **Punggol Digital District (PDD)** — launching later in 2026. This is the moment the precinct-scale robotics testbed (IMDA-SIT-JTC collaboration, in planning since 2025) moves from concept to commercial launch.
+
+**First-batch operators** (announced 5/20):
+- **Certis** — security patrol robots
+- **DHL** — logistics and parcel delivery
+- **Grab** — food delivery
+- **QuikBot** — delivery + inspection
+
+**Core innovation**: "multi-operator co-located" — unlike prior single-operator trials, multiple robot companies will deploy and test services in the same physical PDD space simultaneously, under a precinct-level exemption granted by the *Active Mobility Act*.
+
+**Companion infrastructure**:
+- **Centre for Intelligent Robotics (CIR)** — co-built by IMDA + the National Robotics Programme (NRP), with knowledge partners FieldAI and Thoughtworks, and technology partners Slamtec, Unitree and QuikBot
+- **SIT joint labs** — with Unitree, Slamtec and QuikBot, covering robot cognitive capabilities, spatial perception, and humanoid-robot parcel sorting
+
+**Test scenarios**: food and parcel delivery, cleaning, and security patrol — across PDD's real public environment.
+
+**Strategic linkage**: together with the same-day NVIDIA Singapore AI Research Lab (embodied-AI axis) and the "Advanced Manufacturing" mission under the NAIS update, the three announcements form Singapore's complete 5/20 embodied-AI strategy package. Teo's speech: "We are also developing Punggol Digital District as a frontier testbed... provide special testing permits for robot deployment."`,
+        ministry: 'IMDA',
+        authorPersonIds: ['josephine-teo'],
+        relatedDebateIds: [],
+        relatedLeverNumbers: [1, 3, 5],
+        relatedTimelineYears: [2026],
+        relatedPostSlugs: [],
+        addedAt: '2026-05-20',
+      },
+      {
         id: 'public-ai-research-investment-2026-2030',
         title: '公共 AI 研究投资计划 (2026-2030)',
         titleJa: '公開 AI 研究投資計画 (2026-2030)',

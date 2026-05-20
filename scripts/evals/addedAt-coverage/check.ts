@@ -113,11 +113,15 @@ function diffFile(file: string, base: string): DiffStats {
 
   const newIdRe = /^\+\s*id:\s*['"]([^'"]+)['"]/;
   const newAddedAtRe = /^\+\s*addedAt:\s*['"][^'"]+['"]/;
-  // Object literal opener at typical record indentation. Conservative:
-  // only count `{` lines that look like the start of a new object inside
-  // an array (4 or 6 leading spaces — the common record-block indent in
-  // sgai data files).
-  const newRecordOpenRe = /^\+\s{2,8}\{\s*$/;
+  // Object literal opener at the **outer** record indentation only (2–4
+  // spaces). We deliberately exclude deeper-indented `{` openers — those
+  // are sub-objects within an existing record (channels[], speakingRecord[],
+  // notableQuotes[], etc. on Person; nested PolicySection on Policy) and
+  // must not be counted as "new records needing addedAt." Nested records
+  // that DO need addedAt (e.g. a new Policy inside an existing group) all
+  // carry an `id:` field and are caught by newIdRe directly, regardless of
+  // indent.
+  const newRecordOpenRe = /^\+\s{2,4}\{\s*$/;
 
   let inAddBlock = false;
   let blockHasId = false;
