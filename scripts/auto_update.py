@@ -114,9 +114,11 @@ def load_state() -> dict:
     # 默认初始状态（基于 debates.ts 中的最高 ID）
     return {
         "last_run": None,
-        "videos": {"video_ids": []},
-        "voices": {"urls": []},
-        "hansard": {"max_oral_id": 4117, "max_written_id": 22056, "max_budget_id": 2937},
+        "domains": {
+            "videos": {"video_ids": []},
+            "voices": {"urls": []},
+            "hansard": {"max_oral_id": 4117, "max_written_id": 22056, "max_budget_id": 2937},
+        },
     }
 
 
@@ -204,9 +206,13 @@ def scan_hansard_range(prefix: str, start: int, end: int, logger) -> list[dict]:
 
 
 def run_hansard(state: dict, logger) -> dict:
-    max_oral = state["hansard"]["max_oral_id"]
-    max_written = state["hansard"]["max_written_id"]
-    max_budget = state["hansard"].get("max_budget_id", 2937)  # default seeded from prior emit
+    hansard_state = state.setdefault("domains", {}).setdefault(
+        "hansard",
+        {"max_oral_id": 4117, "max_written_id": 22056, "max_budget_id": 2937},
+    )
+    max_oral = hansard_state["max_oral_id"]
+    max_written = hansard_state["max_written_id"]
+    max_budget = hansard_state.get("max_budget_id", 2937)  # default seeded from prior emit
 
     logger.info(f"Hansard 扫描: oral-answer-{max_oral + 1}..{max_oral + HANSARD_ORAL_RANGE}")
     oral_results = scan_hansard_range("oral-answer", max_oral, max_oral + HANSARD_ORAL_RANGE, logger)
@@ -520,9 +526,9 @@ def main():
                 elif pid == "hansard":
                     hansard_result = run_hansard(state, logger)
                     results["hansard"] = hansard_result
-                    state["hansard"]["max_oral_id"] = hansard_result["new_max_oral"]
-                    state["hansard"]["max_written_id"] = hansard_result["new_max_written"]
-                    state["hansard"]["max_budget_id"] = hansard_result["new_max_budget"]
+                    state["domains"]["hansard"]["max_oral_id"] = hansard_result["new_max_oral"]
+                    state["domains"]["hansard"]["max_written_id"] = hansard_result["new_max_written"]
+                    state["domains"]["hansard"]["max_budget_id"] = hansard_result["new_max_budget"]
                 else:
                     raise RuntimeError(f"unknown python-builtin pipeline id: {pid}")
             elif ptype == "tsx":
