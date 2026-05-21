@@ -246,7 +246,7 @@ export const sections: ReferenceSection[] = [
       {
         text: 'EU AI Act',
         textEn: 'EU AI Act',
-        url: 'https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai',
+        url: 'https://eur-lex.europa.eu/eli/reg/2024/1689/oj',
       },
       {
         text: 'ASEAN Guide on AI Governance and Ethics',
