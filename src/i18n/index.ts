@@ -479,6 +479,8 @@ export const zh = {
   videoReadableTranscript: '可读字幕整理',
   videoCaptionLanguage: '字幕语言：',
   videoFetched: '抓取日期：',
+  videoCaptionsUnavailable: '此视频在 YouTube 上没有可用的字幕轨。如能在原视频找到中英文字幕或公开演讲稿，欢迎提交。',
+  videoTranscriptPending: '此视频的可读字幕尚未生成。可运行 npm run fetch:video-transcripts 抓取。',
   parliamentSession: '届国会',
   speechSummaryPoints: '要点',
   mddiSpeechLabel: 'MDDI 演讲稿',
@@ -767,6 +769,9 @@ export const en: Partial<Record<keyof typeof zh, string>> = {
   videoReadableTranscript: 'Readable transcript',
   videoCaptionLanguage: 'Caption language: ',
   videoFetched: 'Fetched: ',
+  videoCaptionsUnavailable:
+    'No subtitle track is available for this video on YouTube. If you can locate captions or a public transcript, contributions are welcome.',
+  videoTranscriptPending: 'No readable transcript yet. Run npm run fetch:video-transcripts to refresh.',
   parliamentSession: 'Parliament',
   speechSummaryPoints: 'Key Points',
   mddiSpeechLabel: 'MDDI Speech',
@@ -1050,6 +1055,10 @@ export const ja: Partial<Record<keyof typeof zh, string>> = {
   videoReadableTranscript: '読みやすい字幕整形',
   videoCaptionLanguage: '字幕言語：',
   videoFetched: '取得日：',
+  videoCaptionsUnavailable:
+    'この動画には YouTube 上で利用可能な字幕トラックがありません。元動画に字幕や公開原稿が見つかった場合は、貢献をお待ちしています。',
+  videoTranscriptPending:
+    'この動画の読みやすい字幕はまだ生成されていません。npm run fetch:video-transcripts を実行してください。',
   parliamentSession: '議会',
   speechSummaryPoints: '要点',
   mddiSpeechLabel: 'MDDI スピーチ',

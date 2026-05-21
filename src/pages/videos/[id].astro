@@ -13,7 +13,7 @@ import {
 import { SPEAKER_TYPE_LABELS_EN, videos } from '~/data/videos';
 import { findPersonId } from '~/utils/people';
 import { toSchemaOrgDateTime } from '~/utils/utils';
-import { pickLocalized } from '~/i18n';
+import { pickLocalized, t } from '~/i18n';
 
 export const prerender = true;
 
@@ -186,7 +186,9 @@ const videoSchema = {
     {
       !digest && transcriptParagraphs.length === 0 && (
         <div class="callout-muted rounded-lg p-4 text-sm text-gray-600 dark:text-gray-300 mb-10">
-          No readable content for this video yet. Run <code>npm run fetch:video-transcripts</code> to refresh.
+          {transcript?.source === 'unavailable'
+            ? t(lang, 'videoCaptionsUnavailable')
+            : t(lang, 'videoTranscriptPending')}
         </div>
       )
     }

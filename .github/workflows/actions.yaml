@@ -57,6 +57,16 @@ jobs:
       - name: transcript coverage (PR diff vs main)
         run: npm run eval:transcript -- --base=origin/main
 
+      # Enforce that every videos.ts entry has a matching videoTranscripts
+      # record with triple-aligned paragraphs (zh + en + ja) — or an
+      # explicit `source: 'unavailable'` placeholder for videos with no
+      # captions. Without it, /ja/videos/<id>/ (and zh/en) falls back to
+      # the dev-targeted "No readable content for this video yet. Run npm
+      # run fetch:video-transcripts" message. See
+      # scripts/evals/video-transcript-coverage/check.ts.
+      - name: video transcript coverage (PR diff vs main)
+        run: npm run eval:video-transcript -- --base=origin/main
+
       # Layer E — source-level i18n hardcode scan.
       # Hard-fails when a PR introduces NEW `lang === 'zh' ?` / `isZh ?` /
       # `COPY[lang] ?? COPY.en` (without ja branch) anti-patterns above

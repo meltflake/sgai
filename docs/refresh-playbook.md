@@ -67,7 +67,7 @@ npx tsx scripts/hansard/translate-debate-transcripts.ts --ids=<id>
 
 #### `/videos` + `/videos/[id]` + transcript
 
-- **数据**: `src/data/videos.ts`（54 条），`src/data/video-transcripts.ts`（1.4 MB）
+- **数据**: `src/data/videos.ts`（62 条），`src/data/video-transcripts.ts`（2.6 MB）
 - **来源**: 7 个 YouTube 频道 RSS（CNA / ST / govsg / Smart Nation / AISG / WEF / Bloomberg）
 - **现状**: ✅ 完整 pipeline，但 step 2 是人工 review
 - **更新命令**:
@@ -79,11 +79,16 @@ cd scripts && python3 videos/01_scan_channels.py --exclude-existing --days 14
 # 人工审核（交互）
 python3 videos/02_review_and_merge.py
 
-# 抓字幕（需 yt-dlp）
+# 抓字幕（需 yt-dlp）—— 自动 chain en→zh→ja 翻译，单条命令到三语对齐
 npx tsx scripts/videos/fetch-transcripts.ts --ids=<id>
 
-# 翻译字幕
-npx tsx scripts/videos/translate-transcripts.ts --ids=<id>
+# 高级用法：
+#   --no-translate  只抓 + emit，不自动 chain 翻译（schema 改造时用）
+#   --emit-only     跳过 yt-dlp，只重 emit 已有 raw cache（zh translation 出现后用）
+
+# 校验三语对齐（CI 强制门）
+npm run eval:video-transcript -- --base=origin/main          # PR diff 模式
+npm run eval:video-transcript -- --include-historical        # 全量审计
 ```
 
 - **频率**: 周级
