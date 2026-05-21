@@ -208,9 +208,7 @@ const videoSchema = {
     {
       !digest && transcriptParagraphs.length === 0 && (
         <div class="callout-muted rounded-lg p-4 text-sm text-gray-600 dark:text-gray-300 mb-10">
-          {transcript?.source === 'unavailable'
-            ? t(lang, 'videoCaptionsUnavailable')
-            : t(lang, 'videoTranscriptPending')}
+          {t(lang, 'videoCaptionsUnavailable')}
         </div>
       )
     }
