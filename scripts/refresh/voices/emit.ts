@@ -286,7 +286,7 @@ function appendToTranscripts(
 
 export function emit(
   speeches: EmittableSpeech[],
-  options: { dryRun?: boolean } = {}
+  options: { dryRun?: boolean; transcriptsOnly?: boolean } = {}
 ): EmitResult {
   const accepted: EmittableSpeech[] = [];
   const skipped: EmitResult['skipped'] = [];
@@ -299,13 +299,15 @@ export function emit(
       skipped.push({ speechId: s.speechId, reason: 'sourceUrl not under mddi.gov.sg' });
       continue;
     }
-    if (!s.titleEn || !s.titleZh || !s.titleJa) {
-      skipped.push({ speechId: s.speechId, reason: 'missing trilingual title' });
-      continue;
-    }
-    if (!s.eventEn || !s.eventZh || !s.eventJa) {
-      skipped.push({ speechId: s.speechId, reason: 'missing trilingual event' });
-      continue;
+    if (!options.transcriptsOnly) {
+      if (!s.titleEn || !s.titleZh || !s.titleJa) {
+        skipped.push({ speechId: s.speechId, reason: 'missing trilingual title' });
+        continue;
+      }
+      if (!s.eventEn || !s.eventZh || !s.eventJa) {
+        skipped.push({ speechId: s.speechId, reason: 'missing trilingual event' });
+        continue;
+      }
     }
     if (s.paragraphsEn.length === 0 || s.paragraphsZh.length === 0) {
       skipped.push({ speechId: s.speechId, reason: 'empty paragraphs' });
@@ -329,7 +331,9 @@ export function emit(
   try {
     priorTranscripts = readFileSync(TRANSCRIPTS_FILE, 'utf8');
     appendToTranscripts(accepted, options);
-    appendToVoices(accepted, options);
+    if (!options.transcriptsOnly) {
+      appendToVoices(accepted, options);
+    }
   } catch (error) {
     if (priorTranscripts && !options.dryRun) {
       writeFileSync(TRANSCRIPTS_FILE, priorTranscripts);
