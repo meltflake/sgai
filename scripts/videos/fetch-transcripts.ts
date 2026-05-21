@@ -375,6 +375,17 @@ export function getVideoDigest(videoId: string, lang: 'zh' | 'en' | 'ja'): Video
 `;
 
   writeFileSync(OUT_FILE, body);
+
+  // Normalize formatting: JSON.stringify above emits double-quoted keys
+  // and string values, but the rest of the codebase + translate-transcripts-ja.ts's
+  // regex-based inplace edit expects single-quoted strings with unquoted
+  // identifier keys (`v062: { videoId: 'v062', … }`). Running prettier here
+  // keeps OUT_FILE canonical and prevents the next translate-ja run from
+  // failing with "Could not locate record header" on a JSON-formatted record.
+  const fmt = spawnSync('npx', ['prettier', '--write', OUT_FILE], { encoding: 'utf8' });
+  if (fmt.status !== 0) {
+    process.stdout.write(`  ⚠ prettier --write on ${OUT_FILE} exited ${fmt.status}: ${fmt.stderr ?? ''}\n`);
+  }
 }
 
 function loadCachedRecords(): TranscriptRecord[] {
