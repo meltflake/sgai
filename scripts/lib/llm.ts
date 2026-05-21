@@ -228,12 +228,30 @@ export async function callLlm(userPrompt: string, options: LlmCallOptions = {}):
 /**
  * Convenience: call the LLM and JSON.parse the result. Throws if the
  * output isn't valid JSON.
+ *
+ * Retry-once: haiku occasionally emits invalid JSON (unescaped quotes
+ * inside a string, missing comma between array items, …). One retry
+ * with the same prompt rescues most of those single-call flakes because
+ * the model is non-deterministic. If the second call still fails we
+ * surface both raw payloads in the error so the caller can diagnose.
  */
 export async function callLlmJson<T = unknown>(userPrompt: string, options: LlmCallOptions = {}): Promise<T> {
-  const raw = await callLlm(userPrompt, options);
-  try {
-    return JSON.parse(raw) as T;
-  } catch (error) {
-    throw new Error(`callLlmJson: model output is not valid JSON: ${(error as Error).message}\nraw: ${raw.slice(0, 400)}`);
+  const attempts: { error: Error; raw: string }[] = [];
+  for (let attempt = 1; attempt <= 2; attempt += 1) {
+    const raw = await callLlm(userPrompt, options);
+    try {
+      return JSON.parse(raw) as T;
+    } catch (error) {
+      attempts.push({ error: error as Error, raw });
+      if (attempt === 1) {
+        process.stderr.write(
+          `[callLlmJson] attempt 1 JSON parse failed (${(error as Error).message}); retrying once.\n`
+        );
+      }
+    }
   }
+  const last = attempts[attempts.length - 1];
+  throw new Error(
+    `callLlmJson: model output is not valid JSON after 2 attempts: ${last.error.message}\nraw: ${last.raw.slice(0, 400)}`
+  );
 }
