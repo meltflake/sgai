@@ -35,7 +35,20 @@ const metadata = {
   description: summary,
 };
 
+const datePadded =
+  policy.date.length === 4 ? `${policy.date}-01-01` : policy.date.length === 7 ? `${policy.date}-01` : policy.date;
+const datePublished = `${datePadded}T00:00:00+08:00`;
+
 const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: policy.titleEn || policy.title,
+  datePublished,
+  description: summary,
+  ...(policy.ministry ? { author: { '@type': 'Organization', name: policy.ministry } } : {}),
+};
+
+const govServiceSchema = {
   '@context': 'https://schema.org',
   '@type': 'GovernmentService',
   name: policy.titleEn || policy.title,
@@ -49,5 +62,6 @@ const breadcrumbs = [{ label: t(lang, 'navPolicies'), href: localizedHref('/poli
 
 <Layout metadata={metadata} breadcrumbs={breadcrumbs} lang={lang}>
   <JsonLd schema={articleSchema} />
+  <JsonLd schema={govServiceSchema} />
   <PolicyProfile policy={policy} lang={lang} />
 </Layout>
