@@ -171,14 +171,12 @@ async function refreshFile(filePath: string): Promise<{ file: string; results: U
 }
 
 function bumpVersionFile(): boolean {
+  // Only patch-bumps SITE_VERSION (e.g. 0.17.1 → 0.17.2). SITE_UPDATED is
+  // derived from data files (see src/version.ts) and no longer touched here.
   const versionPath = resolve('src/version.ts');
   if (!existsSync(versionPath)) return false;
-  const today = new Date().toISOString().slice(0, 10);
   const original = readFileSync(versionPath, 'utf8');
-  let updated = original.replace(/SITE_UPDATED\s*=\s*'\d{4}-\d{2}-\d{2}'/, `SITE_UPDATED = '${today}'`);
-
-  // Patch-bump the version: 0.9.1 → 0.9.2
-  updated = updated.replace(/SITE_VERSION\s*=\s*'(\d+)\.(\d+)\.(\d+)'/, (_, maj, min, pat) => {
+  const updated = original.replace(/SITE_VERSION\s*=\s*'(\d+)\.(\d+)\.(\d+)'/, (_, maj, min, pat) => {
     return `SITE_VERSION = '${maj}.${min}.${Number(pat) + 1}'`;
   });
 
