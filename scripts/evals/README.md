@@ -9,6 +9,8 @@
 | URL Health                    | `npm run eval:url`                                | 周         | 否         | 否        |
 | i18n Coverage Layer A         | `npm run eval:i18n -- --layer=a`                  | 周         | 否         | 否        |
 | addedAt Coverage              | `npm run eval:addedAt`                            | PR + 周    | 否         | 否        |
+| Transcript Coverage (speeches)| `npm run eval:transcript`                         | PR + 周    | 否         | 否        |
+| Transcript Coverage (videos)  | `npm run eval:video-transcript`                   | PR + 周    | 否         | 否        |
 | Layer E source-i18n           | `npm run eval:source-i18n`                        | PR + 周    | 否         | 否        |
 | i18n Coverage Layer B         | `npm run eval:i18n -- --layer=b`                  | 周         | 是         | 否        |
 | i18n Coverage Layer C         | `npm run eval:i18n -- --layer=c`                  | 周         | 是         | 否        |
@@ -69,6 +71,31 @@ npx tsx scripts/evals/addedAt-coverage/check.ts --dry-run     # 跑但不写报�
 ```
 
 文件清单在 [`scripts/evals/addedAt-coverage/check.ts`](addedAt-coverage/check.ts) 顶部的 `DATA_FILES`，与 [`src/utils/derived-updates.ts`](../../src/utils/derived-updates.ts) 一一对应——加新数据文件时同步改两处。
+
+### Video Transcript Coverage（2026-05-21 加，根因修复）
+
+防御 2026-05-21 那次 bug 的**根本修复**：5 条视频（v022/v040/v044/v061/v062）在 `src/data/videos.ts` 有元数据，却在 `src/data/video-transcripts.ts` 完全缺失或缺少 paragraphsJa，导致 `/ja/videos/<id>/` 渲染开发者文案 "Run npm run fetch:video-transcripts to refresh"。
+
+逻辑：
+
+- 对 `src/data/videos.ts` 中每条 video，确认 `videoTranscripts[<id>]` 存在
+- 若 record 任一 `paragraphs / paragraphsEn / paragraphsJa` 非空，**三个都必须非空**（不允许 EN 有 ZH 缺）
+- 若 `digest / digestEn / digestJa` 任一非空，三个都必须非空
+- `source: 'unavailable'` + 三个 paragraphs 都空 = 合法占位（YouTube 没字幕轨的视频，前端走"字幕不可用"友好文案而非开发者 fallback）
+
+CLI：
+
+```bash
+npm run eval:video-transcript                                      # PR diff vs origin/main
+npm run eval:video-transcript -- --include-historical              # 全量审计（cron 默认）
+npm run eval:video-transcript -- --base=HEAD~5 --dry-run            # 自定义 base，不写报告
+```
+
+修复路径：
+
+1. 一键 chain：`npm run fetch:video-transcripts -- --ids=<ids>` 已自动 chain en→zh→ja translate
+2. 没字幕轨：fetch 自动写 `source: 'unavailable'` 占位
+3. 历史回填：批量跑 `npx tsx scripts/videos/translate-transcripts-ja.ts` 补 paragraphsJa
 
 ## 退出码
 

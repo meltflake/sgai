@@ -208,15 +208,7 @@ const videoSchema = {
     {
       !digest && transcriptParagraphs.length === 0 && (
         <div class="callout-muted rounded-lg p-4 text-sm text-gray-600 dark:text-gray-300 mb-10">
-          {isZh ? (
-            <>
-              这条视频还没有可读内容。可运行 <code>npm run fetch:video-transcripts</code> 重新抓取并生成。
-            </>
-          ) : (
-            <>
-              No readable content for this video yet. Run <code>npm run fetch:video-transcripts</code> to refresh.
-            </>
-          )}
+          {t(lang, 'videoCaptionsUnavailable')}
         </div>
       )
     }

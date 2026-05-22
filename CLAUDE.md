@@ -176,6 +176,23 @@ npx prettier --write src/
 
 历史踩点：[a608bc0](https://github.com/meltflake/sgai/commit/a608bc0)（2026-05-09 videos 手动 fix）补 v059/v060 但漏掉 `updates.ts`，首页"最近更新"看不到当天新增视频。当时 ledger 是手工双源真相，靠纪律维护——失败一次就漏了。本规则把"最近更新"改成**派生模式**，从根上消除 drift bug 类。手动 ledger 那条规则（CLAUDE.md 之前的版本写的）已废弃。
 
+### 8. video-transcripts 三语对齐（关键 — 最高优先级）
+
+> **🔴 顶层硬规则：`src/data/video-transcripts.ts` 里任何一条 record 只要有 `paragraphsEn`，就必须同时有 `paragraphs`（zh）和 `paragraphsJa`。`digest` / `digestEn` / `digestJa` 同样三语共存共缺。同时 `src/data/videos.ts` 里的每个 video 必须在 `videoTranscripts` 里有 record（带内容，或显式 `source: 'unavailable'` 占位），否则 `/ja/videos/<id>/` 会渲染开发者文案 "Run npm run fetch:video-transcripts to refresh"。**
+>
+> - ✅ 标准链：`npm run fetch:video-transcripts -- --ids=vNNN` 已经自动 chain en→zh→ja translate，单条命令到三语对齐
+> - ✅ YouTube 视频根本没字幕轨：fetch 会自动写 `source: 'unavailable'` 占位，前端渲染"字幕不可用"友好文案（不是开发者 fallback）
+> - ✅ 手动改 `video-transcripts.ts`：要么三语都填，要么删除整个 record（让 fetch 重跑）
+> - ❌ 禁止 emit-only 路径绕过自动 chain；用 `--no-translate` flag 只在 schema 改造、translation 还未移植的临时场景才允许
+>
+> 强制点：
+>
+> 1. `scripts/evals/video-transcript-coverage/check.ts` 在 PR diff 模式扫所有新增 `id: 'vNNN'`，缺 record / 不三语对齐 → exit 1
+> 2. `.github/workflows/actions.yaml` 的 check job 跑 `npm run eval:video-transcript -- --base=origin/main`，CI 硬门
+> 3. `scripts/refresh/registry.json` 的 weekly evals 也跑 `--include-historical` 全量扫，自动开 issue
+
+历史踩点：2026-05-21 用户发现 `/ja/videos/v062/` 显示 "No readable content for this video yet. Run npm run fetch:video-transcripts to refresh."。根因调查发现 5 条视频（v022/v040/v044/v061/v062）在 `video-transcripts.ts` 完全缺失：v022/v040/v044 是 YouTube 没字幕轨但 fetch emit 过滤了 unavailable 记录（[fetch-transcripts.ts:206](scripts/videos/fetch-transcripts.ts) 之前 `.filter((r) => r.paragraphs.length > 0)`），v061/v062 是新加的视频还没轮到 cron。本规则修复方式：(1) emit 改为 always 写 unavailable 占位 + 防 downgrade；(2) fetch 自动 chain translate；(3) 加 eval + CI 硬门 + weekly cron 防御。
+
 ## 项目结构
 
 ```

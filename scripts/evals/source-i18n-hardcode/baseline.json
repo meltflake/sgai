@@ -281,52 +281,52 @@
   },
   {
     "file": "src/components/benchmarking/RegionProfile.astro",
-    "line": 196,
+    "line": 194,
     "rule": "isEn-ternary"
   },
   {
     "file": "src/components/benchmarking/RegionProfile.astro",
-    "line": 199,
+    "line": 197,
     "rule": "isEn-ternary"
   },
   {
     "file": "src/components/benchmarking/RegionProfile.astro",
-    "line": 219,
+    "line": 215,
     "rule": "isEn-ternary"
   },
   {
     "file": "src/components/benchmarking/RegionProfile.astro",
-    "line": 225,
+    "line": 221,
     "rule": "isEn-ternary"
   },
   {
     "file": "src/components/benchmarking/RegionProfile.astro",
-    "line": 231,
+    "line": 227,
     "rule": "isEn-ternary"
   },
   {
     "file": "src/components/benchmarking/RegionProfile.astro",
-    "line": 244,
+    "line": 238,
     "rule": "isEn-ternary"
   },
   {
     "file": "src/components/benchmarking/RegionProfile.astro",
-    "line": 297,
+    "line": 287,
     "rule": "isEn-ternary"
   },
   {
     "file": "src/components/benchmarking/RegionProfile.astro",
-    "line": 300,
+    "line": 290,
     "rule": "isEn-ternary"
   },
   {
     "file": "src/components/benchmarking/RegionProfile.astro",
-    "line": 360,
+    "line": 350,
     "rule": "isEn-ternary"
   },
   {
     "file": "src/components/benchmarking/RegionProfile.astro",
-    "line": 363,
+    "line": 353,
     "rule": "isEn-ternary"
   },
   {
@@ -2226,27 +2226,12 @@
   },
   {
     "file": "src/pages/[lang]/talent/index.astro",
-    "line": 87,
+    "line": 85,
     "rule": "isZh-ternary"
   },
   {
     "file": "src/pages/[lang]/talent/index.astro",
-    "line": 98,
-    "rule": "isZh-ternary"
-  },
-  {
-    "file": "src/pages/[lang]/videos/[id].astro",
-    "line": 41,
-    "rule": "isZh-ternary"
-  },
-  {
-    "file": "src/pages/[lang]/videos/[id].astro",
-    "line": 217,
-    "rule": "isZh-ternary"
-  },
-  {
-    "file": "src/pages/[lang]/videos/index.astro",
-    "line": 13,
+    "line": 96,
     "rule": "isZh-ternary"
   },
   {

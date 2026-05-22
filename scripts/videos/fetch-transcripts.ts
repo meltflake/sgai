@@ -202,9 +202,39 @@ async function loadExistingTranscripts(): Promise<Record<string, unknown>> {
 
 async function emitData(records: TranscriptRecord[]): Promise<void> {
   const existing = await loadExistingTranscripts();
-  const available = records
-    .filter((record) => record.paragraphs.length > 0)
+  // Two record classes emit:
+  //   1. paragraphs.length > 0 → full record with whichever locales we have
+  //      (paragraphs/paragraphsEn populated according to caption language +
+  //      cached zh translation).
+  //   2. paragraphs.length === 0 AND source === 'unavailable' → an explicit
+  //      "this video has no captions on YouTube" placeholder. The page
+  //      renders a "captions unavailable" UX for these instead of the
+  //      dev-targeted "Run npm run …" fallback.
+  // The previous version filtered class (2) out entirely, leaving the
+  // videos.ts ↔ video-transcripts.ts pairing broken (caught by
+  // scripts/evals/video-transcript-coverage/).
+  const emitted = records
     .map((record) => {
+      const isUnavailable = record.source === 'unavailable' && record.paragraphs.length === 0;
+      if (isUnavailable) {
+        return [
+          record.videoId,
+          {
+            videoId: record.videoId,
+            youtubeId: record.youtubeId,
+            captionLanguage: '',
+            fetchedAt: record.fetchedAt,
+            source: 'unavailable' as const,
+            paragraphs: [] as string[],
+            ...(record.error ? { error: record.error } : {}),
+          },
+        ] as const;
+      }
+      if (record.paragraphs.length === 0) {
+        // Shouldn't happen — non-unavailable record with empty paragraphs
+        // is a bug. Skip so we don't poison existing data.
+        return null;
+      }
       const zhTranslation = readTranslation(record.videoId, 'zh');
       const paragraphs = isChineseLanguage(record.language) ? record.paragraphs : zhTranslation?.paragraphs || [];
       const paragraphsEn = isEnglishLanguage(record.language) ? record.paragraphs : undefined;
@@ -229,10 +259,48 @@ async function emitData(records: TranscriptRecord[]): Promise<void> {
           ...(record.error ? { error: record.error } : {}),
         },
       ] as const;
-    });
+    })
+    .filter((entry): entry is NonNullable<typeof entry> => entry !== null);
+
+  // Safety net: never overwrite a richer existing record with a thinner
+  // unavailable placeholder. If yt-dlp transiently fails for a previously
+  // successful video, we keep the good record instead of degrading it.
+  const filtered = emitted.filter(([id, next]) => {
+    const prev = existing[id] as { paragraphs?: unknown[]; paragraphsEn?: unknown[]; paragraphsJa?: unknown[] } | undefined;
+    const nextIsUnavailable = next.source === 'unavailable';
+    const prevHasContent =
+      prev &&
+      ((Array.isArray(prev.paragraphs) && prev.paragraphs.length > 0) ||
+        (Array.isArray(prev.paragraphsEn) && prev.paragraphsEn.length > 0) ||
+        (Array.isArray(prev.paragraphsJa) && prev.paragraphsJa.length > 0));
+    if (nextIsUnavailable && prevHasContent) {
+      process.stdout.write(`  ⚠ refusing to downgrade ${id} to unavailable (existing record has content)\n`);
+      return false;
+    }
+    return true;
+  });
+
   // existing 在前、available 在后：本次 emit 的条目覆盖旧版（fetchedAt / 翻译可能更新），
   // 但 existing 里没被本次 emit 覆盖的所有 v* 条目都原样保留。
-  const merged = { ...existing, ...Object.fromEntries(available) };
+  //
+  // Per-record merge preserves fields owned by other scripts:
+  //   - paragraphsJa / digestJa: written by translate-transcripts-ja.ts
+  //   - digest / digestEn / digestJa: written by future digest pipeline
+  // fetch-transcripts.ts must NOT clobber those on refetch. We spread the
+  // existing record first so its keys persist; then the new fields from
+  // this emit overwrite the locales fetch-transcripts.ts owns.
+  const merged: Record<string, unknown> = { ...existing };
+  for (const [id, next] of filtered) {
+    const prev = (existing[id] ?? {}) as Record<string, unknown>;
+    // If switching to 'unavailable', wipe stale content/translation fields so
+    // the record matches the new state. Otherwise preserve other-script
+    // fields (paragraphsJa, digest*) by spreading prev first.
+    if (next.source === 'unavailable') {
+      merged[id] = next;
+    } else {
+      merged[id] = { ...prev, ...next };
+    }
+  }
   // videos.ts 里已经移除的视频也跟着从 transcripts 清掉，避免悬空条目。
   const validIds = new Set(videos.map((v) => v.id));
   for (const id of Object.keys(merged)) {
@@ -307,6 +375,17 @@ export function getVideoDigest(videoId: string, lang: 'zh' | 'en' | 'ja'): Video
 `;
 
   writeFileSync(OUT_FILE, body);
+
+  // Normalize formatting: JSON.stringify above emits double-quoted keys
+  // and string values, but the rest of the codebase + translate-transcripts-ja.ts's
+  // regex-based inplace edit expects single-quoted strings with unquoted
+  // identifier keys (`v062: { videoId: 'v062', … }`). Running prettier here
+  // keeps OUT_FILE canonical and prevents the next translate-ja run from
+  // failing with "Could not locate record header" on a JSON-formatted record.
+  const fmt = spawnSync('npx', ['prettier', '--write', OUT_FILE], { encoding: 'utf8' });
+  if (fmt.status !== 0) {
+    process.stdout.write(`  ⚠ prettier --write on ${OUT_FILE} exited ${fmt.status}: ${fmt.stderr ?? ''}\n`);
+  }
 }
 
 function loadCachedRecords(): TranscriptRecord[] {
@@ -320,6 +399,7 @@ function loadCachedRecords(): TranscriptRecord[] {
 }
 
 const selected = videos.filter((video) => !requestedIds || requestedIds.has(video.id)).slice(0, limit);
+const skipTranslate = args.has('--no-translate');
 
 if (!emitOnly) {
   for (const video of selected) {
@@ -346,3 +426,45 @@ if (!emitOnly) {
 }
 
 await emitData(loadCachedRecords());
+
+// Auto-chain en→zh and zh→ja translations so the emit never lands
+// triple-misaligned (paragraphsEn without paragraphs/paragraphsJa). The
+// scripts/evals/video-transcript-coverage eval enforces this at PR time;
+// chaining here means a single `npm run fetch:video-transcripts -- --ids=…`
+// reaches a triple-aligned state without manual follow-ups. Pass
+// `--no-translate` to suppress (useful when running emit-only against a
+// new schema and translations haven't been ported yet).
+//
+// Skipped when:
+//   - `--no-translate` flag is set
+//   - `--emit-only` (nothing fetched; also prevents recursion since
+//     translate-transcripts.ts calls fetch-transcripts.ts --emit-only)
+//   - selected.length === 0
+if (!skipTranslate && !emitOnly && selected.length > 0) {
+  const ids = selected.map((v) => v.id);
+  const idsArgVal = `--ids=${ids.join(',')}`;
+
+  // en → zh: writes scripts/videos/data/translations/<id>.zh.json. The
+  // subsequent --emit-only pass picks those up into `paragraphs`.
+  process.stdout.write(`\nTranslating en → zh for ${ids.length} ids…\n`);
+  const zhRes = spawnSync('npx', ['tsx', 'scripts/videos/translate-transcripts.ts', idsArgVal], {
+    stdio: 'inherit',
+  });
+  if (zhRes.status === 0) {
+    // Re-emit so the freshly-cached zh translations land in OUT_FILE.
+    await emitData(loadCachedRecords());
+  } else {
+    process.stdout.write(`  ⚠ en→zh translate exited with ${zhRes.status}; skipping ja chain\n`);
+  }
+
+  // zh → ja: writes paragraphsJa inplace into OUT_FILE.
+  if (zhRes.status === 0) {
+    process.stdout.write(`\nTranslating zh → ja for ${ids.length} ids…\n`);
+    const jaRes = spawnSync('npx', ['tsx', 'scripts/videos/translate-transcripts-ja.ts', idsArgVal], {
+      stdio: 'inherit',
+    });
+    if (jaRes.status !== 0) {
+      process.stdout.write(`  ⚠ zh→ja translate exited with ${jaRes.status}\n`);
+    }
+  }
+}
