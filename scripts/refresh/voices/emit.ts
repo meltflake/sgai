@@ -247,6 +247,20 @@ function appendToVoices(
   writeFileSync(VOICES_FILE, updated);
   const v = validatePair(baseline, VOICES_FILE, ['title', 'event', 'speakerTitle']);
   if (!v.ok) {
+    const issues = findUnpairedFields(VOICES_FILE, {
+      fields: ['title', 'event', 'speakerTitle'],
+    });
+    process.stderr.write(
+      `[voices-emit] new unpaired issues (${issues.length} total):\n` +
+        issues
+          .slice(0, 10)
+          .map(
+            (it) =>
+              `  ${it.field} @ line ${it.line} (record @ ${it.recordStartLine}, missing ${it.locale} sibling, value: ${JSON.stringify(it.chineseValue).slice(0, 80)})`
+          )
+          .join('\n') +
+        '\n'
+    );
     writeFileSync(VOICES_FILE, original);
     throw new Error(
       `voices.ts i18n pairing regressed: ${baseline} -> ${v.afterCount} unpaired. Rolled back.`

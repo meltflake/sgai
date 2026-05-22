@@ -121,37 +121,31 @@ async function enrichTrilingual(
   });
 
   // Step 2: batch-translate titleEn/eventEn into zh + ja so we minimise
-  // the number of LLM round-trips.
+  // the number of LLM round-trips. SpeakerTitle is intentionally NOT
+  // batch-translated: on a SPEAKER_MAP miss we fall back to a fixed
+  // trilingual placeholder so emit's i18n-pair guard never sees an
+  // empty *En sibling on a CJK-containing speakerTitle. Translating
+  // the literal "Speaker" via haiku surfaced parliament-speaker
+  // context ("议长") which was both wrong and tripped the pairing
+  // check whenever the *En fallback collapsed to '' upstream.
   const titles = partials.map((p) => p.titleEn);
   const events = partials.map((p) => p.eventEn);
-  const speakerTitlesEn = partials.map((p) => p.speakerTitleEn);
 
-  const [titlesZh, titlesJa, eventsZh, eventsJa, speakerTitlesZh, speakerTitlesJa] =
-    await Promise.all([
-      translateBatch(titles, { direction: 'en→zh', cacheDir: ZH_CACHE }),
-      translateBatch(titles, { direction: 'en→ja', cacheDir: JA_CACHE }),
-      translateBatch(events, { direction: 'en→zh', cacheDir: ZH_CACHE }),
-      translateBatch(events, { direction: 'en→ja', cacheDir: JA_CACHE }),
-      // Speaker title: only translate empty (SPEAKER_MAP miss) values to
-      // avoid clobbering the canonical map. Empty strings still get
-      // translated by callers downstream — we'll skip empty entries.
-      translateBatch(
-        speakerTitlesEn.map((s) => s || 'Speaker'),
-        { direction: 'en→zh', cacheDir: ZH_CACHE }
-      ),
-      translateBatch(
-        speakerTitlesEn.map((s) => s || 'Speaker'),
-        { direction: 'en→ja', cacheDir: JA_CACHE }
-      ),
-    ]);
+  const [titlesZh, titlesJa, eventsZh, eventsJa] = await Promise.all([
+    translateBatch(titles, { direction: 'en→zh', cacheDir: ZH_CACHE }),
+    translateBatch(titles, { direction: 'en→ja', cacheDir: JA_CACHE }),
+    translateBatch(events, { direction: 'en→zh', cacheDir: ZH_CACHE }),
+    translateBatch(events, { direction: 'en→ja', cacheDir: JA_CACHE }),
+  ]);
 
   const out: EmittableSpeech[] = [];
   for (let i = 0; i < partials.length; i += 1) {
     const p = partials[i];
     const t = p.translatedSpeech;
     if (!t) continue;
-    const speakerTitleZh = p.speakerTitleZh || speakerTitlesZh[i];
-    const speakerTitleJa = p.speakerTitleJa || speakerTitlesJa[i];
+    const speakerTitleEn = p.speakerTitleEn || 'Speaker';
+    const speakerTitleZh = p.speakerTitleZh || '演讲者';
+    const speakerTitleJa = p.speakerTitleJa || '講演者';
     out.push(
       combineForEmit(p.fetched, t, {
         titleZh: titlesZh[i],
@@ -162,7 +156,7 @@ async function enrichTrilingual(
         eventJa: eventsJa[i],
         speaker: p.speakerName,
         speakerTitleZh,
-        speakerTitleEn: p.speakerTitleEn || speakerTitlesEn[i],
+        speakerTitleEn,
         speakerTitleJa,
       })
     );
