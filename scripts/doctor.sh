@@ -104,9 +104,31 @@ else
   print_warn "no sgai cron entry yet — see scripts/SETUP.md §6"
 fi
 
-# 7. Pipeline reachability (cheap dry-runs)
+# 7. Dropbox sandbox sanity (sgai lives under Dropbox; build artefacts
+#    must be marked dropbox-ignored or Dropbox will sync conflicted
+#    copies of dist/ and silently corrupt evals that read it back).
 echo
-echo "7. Pipeline reachability (quick dry-runs)"
+echo "7. Dropbox-ignored build artefacts"
+if [ -d "$HOME/Dropbox" ] && [[ "$PROJECT" == "$HOME/Dropbox"* ]]; then
+  needs_ignore=()
+  for dir in dist node_modules .astro; do
+    [ ! -d "$dir" ] && continue
+    if [ "$(xattr -p com.dropbox.ignored "$dir" 2>/dev/null)" = "1" ]; then
+      print_ok "$dir/ marked dropbox-ignored"
+    else
+      needs_ignore+=("$dir")
+    fi
+  done
+  if [ ${#needs_ignore[@]} -gt 0 ]; then
+    print_fail "dropbox-syncing build dir(s): ${needs_ignore[*]} — run: $(printf 'xattr -w com.dropbox.ignored 1 %s; ' "${needs_ignore[@]}")"
+  fi
+else
+  print_warn "not under ~/Dropbox — skipping dropbox-ignored check"
+fi
+
+# 8. Pipeline reachability (cheap dry-runs)
+echo
+echo "8. Pipeline reachability (quick dry-runs)"
 if npx tsx scripts/refresh/github-stars.ts --dry-run --no-commit 2>&1 | grep -q "scanned [0-9]\+ repos"; then
   print_ok "github-stars dry-run reaches GitHub API"
 else
