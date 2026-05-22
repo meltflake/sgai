@@ -3,6 +3,7 @@ import { existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync
 import { join, resolve } from 'node:path';
 
 import { videos } from '../../src/data/videos';
+import { vttToParagraphsWithReport } from './vtt-parse.ts';
 
 interface TranscriptRecord {
   videoId: string;
@@ -44,58 +45,6 @@ function youtubeId(url: string): string {
   return parsed.searchParams.get('v') || parsed.pathname.split('/').filter(Boolean).at(-1) || url;
 }
 
-function decodeEntities(value: string): string {
-  return value
-    .replace(/&amp;/g, '&')
-    .replace(/&lt;/g, '<')
-    .replace(/&gt;/g, '>')
-    .replace(/&quot;/g, '"')
-    .replace(/&#39;/g, "'");
-}
-
-function vttToParagraphs(vtt: string): string[] {
-  const lines = vtt
-    .split(/\r?\n/)
-    .map((line) =>
-      decodeEntities(
-        line
-          .replace(/<[^>]+>/g, '')
-          .replace(/\s+/g, ' ')
-          .trim()
-      )
-    )
-    .filter((line) => line)
-    .filter((line) => !line.startsWith('WEBVTT'))
-    .filter((line) => !line.startsWith('Kind:'))
-    .filter((line) => !line.startsWith('Language:'))
-    .filter((line) => !line.startsWith('NOTE'))
-    .filter((line) => !/^\d+$/.test(line))
-    .filter((line) => !line.includes('-->'));
-
-  const deduped: string[] = [];
-  for (const line of lines) {
-    if (line !== deduped.at(-1)) deduped.push(line);
-  }
-
-  const text = deduped.join(' ').replace(/\s+/g, ' ').trim();
-  if (!text) return [];
-
-  const sentences = text.match(/[^.!?。！？]+[.!?。！？]?/g) || [text];
-  const paragraphs: string[] = [];
-  let current = '';
-
-  for (const sentence of sentences.map((s) => s.trim()).filter(Boolean)) {
-    const next = current ? `${current} ${sentence}` : sentence;
-    if (next.length > 850 && current) {
-      paragraphs.push(current);
-      current = sentence;
-    } else {
-      current = next;
-    }
-  }
-  if (current) paragraphs.push(current);
-  return paragraphs;
-}
 
 function cachedRecord(videoId: string): TranscriptRecord | null {
   const path = join(RAW_DIR, `${videoId}.json`);
@@ -155,8 +104,13 @@ function downloadTranscript(video: (typeof videos)[number]): TranscriptRecord {
     if (!vttFile) continue;
 
     const vtt = readFileSync(join(TMP_DIR, vttFile), 'utf8');
-    const paragraphs = vttToParagraphs(vtt);
+    const { paragraphs, cleanup } = vttToParagraphsWithReport(vtt);
     if (paragraphs.length === 0) continue;
+    if (cleanup.stripped) {
+      process.stdout.write(
+        `\n  ↪ ASR cleanup: dropped start=${cleanup.removedFromStart}, mid=${cleanup.removedFromMiddle}, end=${cleanup.removedFromEnd} (${cleanup.totalSentencesIn} → ${cleanup.totalSentencesOut})\n  `
+      );
+    }
 
     const record: TranscriptRecord = {
       videoId: video.id,
