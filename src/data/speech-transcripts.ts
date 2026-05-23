@@ -18,9 +18,15 @@ export interface SpeechTranscript {
   paragraphs: string[];
   /** Original speech paragraphs (English). */
   paragraphsEn: string[];
+  /** Japanese translation of paragraphs. */
+  paragraphsJa?: string[];
+  /** Korean translation of paragraphs. */
+  paragraphsKo?: string[];
   /** Optional 3-5 sentence pull-quote / takeaway, surfaced above the fold. */
   tldr?: string[];
   tldrEn?: string[];
+  tldrJa?: string[];
+  tldrKo?: string[];
   translatedAt?: string;
   translationSource?: 'claude' | 'manual' | 'source';
   translationModel?: string;

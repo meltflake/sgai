@@ -9,6 +9,10 @@ export interface DebateTranscript {
   paragraphs: string[];
   /** Original Hansard transcript (English). */
   paragraphsEn: string[];
+  /** Japanese translation of paragraphs. */
+  paragraphsJa?: string[];
+  /** Korean translation of paragraphs. */
+  paragraphsKo?: string[];
   translatedAt?: string;
   translationSource?: 'openai' | 'manual' | 'source';
   translationModel?: string;

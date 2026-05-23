@@ -31,18 +31,23 @@ const ARRAY_FIELDS = [
   'keyDebates',
   'keyInitiatives',
   'keyPoints',
+  'paragraphs',
   'sources',
   'strengths',
+  'tldr',
   'weaknesses',
 ];
 
 const ALL_DATA_FILES = [
   'src/data/benchmarking.ts',
+  'src/data/debate-transcripts.ts',
   'src/data/debates.ts',
   'src/data/ecosystem.ts',
   'src/data/levers.ts',
   'src/data/tracker.ts',
   'src/data/people.ts',
+  'src/data/speech-transcripts.ts',
+  'src/data/video-transcripts.ts',
   'src/data/videos.ts',
   'src/data/talent.ts',
   'src/data/policies.ts',
@@ -127,20 +132,50 @@ function extractArrayItems(lines: string[], startLine: number): { items: string[
   }
 
   i += 1;
+  let multiLineBuffer = '';
+  let inMultiLine = false;
+
   while (i < lines.length) {
     const line = lines[i].trim();
     if (line === '],' || line === ']') {
       return { items, endLine: i };
     }
-    const m = line.match(/^'(.*)',?$/);
-    if (m) {
-      items.push(m[1]);
-    } else {
-      const bt = line.match(/^`(.*)`[,]?$/);
-      if (bt) {
-        items.push(bt[1]);
+
+    if (inMultiLine) {
+      if (line.endsWith('`,') || line.endsWith('`')) {
+        const closing = line.replace(/`[,]?$/, '');
+        multiLineBuffer += '\n' + closing;
+        items.push(multiLineBuffer);
+        multiLineBuffer = '';
+        inMultiLine = false;
+      } else {
+        multiLineBuffer += '\n' + line;
       }
+      i += 1;
+      continue;
     }
+
+    const singleQuote = line.match(/^'(.*)',?$/);
+    if (singleQuote) {
+      items.push(singleQuote[1]);
+      i += 1;
+      continue;
+    }
+
+    const singleBacktick = line.match(/^`(.*)`[,]?$/);
+    if (singleBacktick) {
+      items.push(singleBacktick[1]);
+      i += 1;
+      continue;
+    }
+
+    if (line.startsWith('`')) {
+      multiLineBuffer = line.slice(1);
+      inMultiLine = true;
+      i += 1;
+      continue;
+    }
+
     i += 1;
   }
   return { items, endLine: i };
@@ -157,11 +192,11 @@ function findLineOfField(lines: string[], fieldName: string, recordStart: number
 function findRecordBoundaries(lines: string[]): { start: number; end: number }[] {
   const records: { start: number; end: number }[] = [];
 
-  let dataArrayStart = -1;
+  let dataStart = -1;
   for (let i = 0; i < lines.length; i++) {
-    if (/^\s*export\s+(const|let)\s+\w+.*=\s*\[/.test(lines[i]) || /^]\s*;?\s*$/.test(lines[i])) {
-      if (dataArrayStart < 0 && lines[i].includes('= [')) {
-        dataArrayStart = i;
+    if (/^\s*export\s+(const|let)\s+\w+.*=\s*[\[{]/.test(lines[i])) {
+      if (dataStart < 0) {
+        dataStart = i;
       }
     }
   }
@@ -169,11 +204,18 @@ function findRecordBoundaries(lines: string[]): { start: number; end: number }[]
   let recordStart = -1;
   let depth = 0;
 
-  const startScan = dataArrayStart >= 0 ? dataArrayStart : 0;
+  const startScan = dataStart >= 0 ? dataStart : 0;
   for (let i = startScan; i < lines.length; i++) {
     const trimmed = lines[i].trimEnd();
 
-    if (depth === 0 && /^\s{1,4}\{/.test(lines[i]) && !trimmed.includes('}')) {
+    if (depth === 0 && /^\s{1,6}\{/.test(lines[i]) && !trimmed.includes('}')) {
+      recordStart = i;
+      depth = 1;
+      continue;
+    }
+
+    // Handle Record<string, T> keyed entries like: 'key-name': { or key: {
+    if (depth === 0 && /^\s{1,6}(?:'[^']+'|\w+)\s*:\s*\{/.test(lines[i]) && !trimmed.endsWith('},')) {
       recordStart = i;
       depth = 1;
       continue;
@@ -345,12 +387,20 @@ async function backfillFile(
   return { file: filePath, found: totalFound, translated: koTranslated.length + jaTranslated.length, inserted: totalInserted };
 }
 
+function escapeBacktick(s: string): string {
+  return s.replace(/\\/g, '\\\\').replace(/`/g, '\\`').replace(/\$\{/g, '\\${');
+}
+
 function formatArrayField(fieldName: string, items: string[], indent: string): string[] {
   if (items.length === 0) return [];
   const lines: string[] = [];
   lines.push(`${indent}${fieldName}: [`);
   for (const item of items) {
-    lines.push(`${indent}  '${escapeSingleQuoted(item)}',`);
+    if (item.includes("'") || item.includes('\n') || item.length > 120) {
+      lines.push(`${indent}  \`${escapeBacktick(item)}\`,`);
+    } else {
+      lines.push(`${indent}  '${escapeSingleQuoted(item)}',`);
+    }
   }
   lines.push(`${indent}],`);
   return lines;
