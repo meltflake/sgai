@@ -1,13 +1,14 @@
 // scripts/evals/i18n-coverage/check.ts
 // ────────────────────────────────────────────────────────────────────────
 // i18n Coverage eval — four-layer check that every page + record is
-// truly trilingual (zh / en / ja) end-to-end.
+// fully localized (zh / en / ja / ko) end-to-end.
 //
 // Layer A — DATA (this file's primary scope, --layer=a):
 //   For every src/data/*.ts, walk the AST and assert every record's
-//   user-visible CJK string field has both `*En` and `*Ja` siblings.
-//   Wraps lib/i18n-pair.ts:findUnpairedFields with locales=['en','ja']
-//   over the full data dir, and produces a coverage % per file.
+//   user-visible CJK string AND array field has `*En`, `*Ja`, and `*Ko`
+//   siblings. Wraps lib/i18n-pair.ts:findUnpairedFields with
+//   locales=['en','ja','ko'] over the full data dir, and produces a
+//   coverage % per file.
 //
 // Layer B — SITEMAP parity (--layer=b):
 //   After build, parse dist/sitemap-*.xml and assert every URL has
@@ -50,7 +51,7 @@ const DATA_DIR = join(REPO_ROOT, 'src', 'data');
 const DIST_DIR = join(REPO_ROOT, 'dist');
 const REPORT_DIR = join(import.meta.dirname, 'reports');
 
-const LOCALES = ['en', 'ja'] as const;
+const LOCALES = ['en', 'ja', 'ko'] as const;
 
 type Layer = 'a' | 'b' | 'c' | 'd';
 

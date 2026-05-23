@@ -97,7 +97,7 @@ const DEFAULT_FIELDS = [
   'subtitle',
 ];
 
-const DEFAULT_LOCALES = ['en'];
+const DEFAULT_LOCALES = ['en', 'ja', 'ko'];
 
 const CJK_RE = /[一-鿿]/;
 const IGNORE_MARKER = 'i18n-allow-unpaired';
@@ -143,7 +143,11 @@ function getProperty(obj: ts.ObjectLiteralExpression, key: string): ts.PropertyA
   return undefined;
 }
 
-type PropertyValue = { kind: 'string'; text: string } | { kind: 'non-string' } | { kind: 'absent' };
+type PropertyValue =
+  | { kind: 'string'; text: string }
+  | { kind: 'array'; elements: string[] }
+  | { kind: 'non-string' }
+  | { kind: 'absent' };
 
 /** Read a property's value with three-way result:
  *    'string' → simple string literal or template literal w/o substitutions
@@ -156,6 +160,15 @@ function getPropertyValue(obj: ts.ObjectLiteralExpression, key: string): Propert
   const init = prop.initializer;
   if (ts.isStringLiteral(init) || ts.isNoSubstitutionTemplateLiteral(init)) {
     return { kind: 'string', text: init.text };
+  }
+  if (ts.isArrayLiteralExpression(init)) {
+    const elements: string[] = [];
+    for (const el of init.elements) {
+      if (ts.isStringLiteral(el) || ts.isNoSubstitutionTemplateLiteral(el)) {
+        elements.push(el.text);
+      }
+    }
+    return { kind: 'array', elements };
   }
   return { kind: 'non-string' };
 }
@@ -212,7 +225,8 @@ function findRecordSchema(file: FileSchema, containingArray: string): RecordSche
 
 function isSiblingPaired(value: PropertyValue): boolean {
   if (value.kind === 'absent') return false;
-  if (value.kind === 'non-string') return true; // array/object sibling = present, treat as paired (legacy)
+  if (value.kind === 'array') return value.elements.length > 0;
+  if (value.kind === 'non-string') return true;
   return value.text.length > 0;
 }
 
@@ -223,6 +237,7 @@ function isSiblingPaired(value: PropertyValue): boolean {
  *  Non-string values (arrays / objects / expressions) are always treated as present. */
 function isFieldBroken(value: PropertyValue): boolean {
   if (value.kind === 'absent') return true;
+  if (value.kind === 'array') return value.elements.length === 0;
   if (value.kind === 'non-string') return false;
   return value.text.length === 0 || isPlaceholderValue(value.text);
 }
@@ -256,8 +271,19 @@ export function findUnpairedFields(
 
     for (const field of fields) {
       const value = getPropertyValue(obj, field);
-      if (value.kind !== 'string') continue;
-      if (!CJK_RE.test(value.text)) continue;
+
+      let hasCjk = false;
+      let representativeValue = '';
+      if (value.kind === 'string') {
+        hasCjk = CJK_RE.test(value.text);
+        representativeValue = value.text;
+      } else if (value.kind === 'array') {
+        hasCjk = value.elements.some((el) => CJK_RE.test(el));
+        representativeValue = value.elements.join(' | ');
+      } else {
+        continue;
+      }
+      if (!hasCjk) continue;
 
       const fieldProp = getProperty(obj, field)!;
       // Per-field exemption: comment immediately above the field line.
@@ -274,7 +300,7 @@ export function findUnpairedFields(
             line: fieldLine,
             recordStartLine,
             field,
-            chineseValue: value.text,
+            chineseValue: representativeValue,
             reason: 'missing-sibling',
             locale,
           });
@@ -284,7 +310,17 @@ export function findUnpairedFields(
             line: fieldLine,
             recordStartLine,
             field,
-            chineseValue: value.text,
+            chineseValue: representativeValue,
+            reason: 'empty-sibling',
+            locale,
+          });
+        } else if (sibling.kind === 'array' && sibling.elements.length === 0) {
+          issues.push({
+            file: filePath,
+            line: fieldLine,
+            recordStartLine,
+            field,
+            chineseValue: representativeValue,
             reason: 'empty-sibling',
             locale,
           });

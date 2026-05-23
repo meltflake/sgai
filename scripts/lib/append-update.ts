@@ -128,13 +128,13 @@ export function appendUpdate(
 
   const baselineCount = findUnpairedFields(file, {
     fields: ['title', 'summary', 'label'],
-    locales: ['en', 'ja'],
+    locales: ['en', 'ja', 'ko'],
   }).length;
   writeFileSync(file, updated);
 
   const issuesAfter = findUnpairedFields(file, {
     fields: ['title', 'summary', 'label'],
-    locales: ['en', 'ja'],
+    locales: ['en', 'ja', 'ko'],
   });
   if (issuesAfter.length > baselineCount) {
     writeFileSync(file, original);

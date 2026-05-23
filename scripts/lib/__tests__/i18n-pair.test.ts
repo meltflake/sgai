@@ -30,7 +30,7 @@ export const policies = [
 ];
 `;
   withFile(src, (p) => {
-    const issues = findUnpairedFields(p);
+    const issues = findUnpairedFields(p, { locales: ['en'] });
     assert.equal(issues.length, 1);
     assert.equal(issues[0].field, 'title');
     assert.equal(issues[0].reason, 'missing-sibling');
@@ -48,7 +48,7 @@ export const x = [
 ];
 `;
   withFile(src, (p) => {
-    const issues = findUnpairedFields(p);
+    const issues = findUnpairedFields(p, { locales: ['en'] });
     assert.equal(issues.length, 1);
     assert.equal(issues[0].reason, 'empty-sibling');
   });
@@ -66,7 +66,7 @@ export const x = [
 ];
 `;
   withFile(src, (p) => {
-    assert.deepEqual(findUnpairedFields(p), []);
+    assert.deepEqual(findUnpairedFields(p, { locales: ['en'] }), []);
   });
 });
 
@@ -125,7 +125,7 @@ export const x = [
 ];
 `;
   withFile(src, (p) => {
-    assert.deepEqual(findUnpairedFields(p), []);
+    assert.deepEqual(findUnpairedFields(p, { locales: ['en'] }), []);
   });
 });
 
@@ -139,7 +139,7 @@ export const x = [
 ];
 `;
   withFile(src, (p) => {
-    assert.deepEqual(findUnpairedFields(p), []);
+    assert.deepEqual(findUnpairedFields(p, { locales: ['en'] }), []);
   });
 });
 
@@ -162,7 +162,7 @@ export const x = [
 ];
 `;
   withFile(src, (p) => {
-    const issues = findUnpairedFields(p);
+    const issues = findUnpairedFields(p, { locales: ['en'] });
     assert.equal(issues.length, 1);
     assert.equal(issues[0].chineseValue, '二');
   });
@@ -172,7 +172,7 @@ test('findUnpairedFields: AST handles single-line records (regression vs v1)', (
   // v1 was line-based and silently missed inline records; v2 walks AST.
   const src = `export const x = [{ title: '一', titleEn: 'One' }, { title: '二' }];\n`;
   withFile(src, (p) => {
-    const issues = findUnpairedFields(p);
+    const issues = findUnpairedFields(p, { locales: ['en'] });
     assert.equal(issues.length, 1);
     assert.equal(issues[0].chineseValue, '二');
   });
@@ -192,9 +192,61 @@ export const x = [
 ];
 `;
   withFile(src, (p) => {
-    const issues = findUnpairedFields(p);
+    const issues = findUnpairedFields(p, { locales: ['en'] });
     assert.equal(issues.length, 1);
     assert.equal(issues[0].chineseValue, '未配对中文');
+  });
+});
+
+test('findUnpairedFields: detects missing array sibling for Ko/Ja', () => {
+  const src = `
+export const x = [
+  {
+    keyPoints: ['AI 工程师需求结构性上升', '金融资讯通讯 PME 空缺'],
+    keyPointsEn: ['AI engineer demand rising', 'Finance PME vacancies'],
+  },
+];
+`;
+  withFile(src, (p) => {
+    const issues = findUnpairedFields(p, { fields: ['keyPoints'], locales: ['en', 'ja', 'ko'] });
+    assert.equal(issues.length, 2);
+    assert.equal(issues[0].locale, 'ja');
+    assert.equal(issues[0].reason, 'missing-sibling');
+    assert.equal(issues[1].locale, 'ko');
+  });
+});
+
+test('findUnpairedFields: passes when array has all locale siblings', () => {
+  const src = `
+export const x = [
+  {
+    keyPoints: ['AI 需求上升'],
+    keyPointsEn: ['AI demand rising'],
+    keyPointsJa: ['AI需要上昇'],
+    keyPointsKo: ['AI 수요 상승'],
+  },
+];
+`;
+  withFile(src, (p) => {
+    const issues = findUnpairedFields(p, { fields: ['keyPoints'], locales: ['en', 'ja', 'ko'] });
+    assert.equal(issues.length, 0);
+  });
+});
+
+test('findUnpairedFields: default locales check en + ja + ko', () => {
+  const src = `
+export const x = [
+  {
+    title: '中文标题',
+    titleEn: 'English',
+  },
+];
+`;
+  withFile(src, (p) => {
+    const issues = findUnpairedFields(p);
+    assert.equal(issues.length, 2);
+    const locales = issues.map((i) => i.locale).sort();
+    assert.deepEqual(locales, ['ja', 'ko']);
   });
 });
 
