@@ -85,13 +85,16 @@ function formatLegalItem(item: {
   title: string;
   titleEn: string;
   titleJa?: string;
+  titleKo?: string;
   description: string;
   descriptionEn: string;
   descriptionJa?: string;
+  descriptionKo?: string;
   sourceUrl: string;
   authority: string;
   authorityEn: string;
   authorityJa?: string;
+  authorityKo?: string;
   scope: string;
   status: string;
   publishedDate: string | null;
@@ -103,18 +106,22 @@ function formatLegalItem(item: {
   lines.push(`        title: '${escapeQuote(item.title)}',`);
   lines.push(`        titleEn: '${escapeQuote(item.titleEn)}',`);
   if (item.titleJa) lines.push(`        titleJa: '${escapeQuote(item.titleJa)}',`);
+  if (item.titleKo) lines.push(`        titleKo: '${escapeQuote(item.titleKo)}',`);
   lines.push(`        date: '${dateStr}',`);
   lines.push(`        authority: '${escapeQuote(item.authority)}',`);
   lines.push(`        authorityEn: '${escapeQuote(item.authorityEn)}',`);
   if (item.authorityJa) lines.push(`        authorityJa: '${escapeQuote(item.authorityJa)}',`);
+  if (item.authorityKo) lines.push(`        authorityKo: '${escapeQuote(item.authorityKo)}',`);
   lines.push(`        scope: '${item.scope}',`);
   lines.push(`        status: '${item.status}',`);
   lines.push(`        summary: '${escapeQuote(item.description)}',`);
   lines.push(`        summaryEn: '${escapeQuote(item.descriptionEn)}',`);
   if (item.descriptionJa) lines.push(`        summaryJa: '${escapeQuote(item.descriptionJa)}',`);
+  if (item.descriptionKo) lines.push(`        summaryKo: '${escapeQuote(item.descriptionKo)}',`);
   lines.push('        body: `' + escapeBacktick(item.description) + '`,');
   lines.push('        bodyEn: `' + escapeBacktick(item.descriptionEn) + '`,');
   if (item.descriptionJa) lines.push('        bodyJa: `' + escapeBacktick(item.descriptionJa) + '`,');
+  if (item.descriptionKo) lines.push('        bodyKo: `' + escapeBacktick(item.descriptionKo) + '`,');
   lines.push(`        sourceUrl: '${item.sourceUrl}',`);
   lines.push('      },');
   return lines.join('\n');
@@ -225,9 +232,9 @@ async function main(): Promise<void> {
   const enriched: Array<{
     url: string;
     item: {
-      title: string; titleEn: string; titleJa?: string;
-      description: string; descriptionEn: string; descriptionJa?: string;
-      sourceUrl: string; authority: string; authorityEn: string; authorityJa?: string;
+      title: string; titleEn: string; titleJa?: string; titleKo?: string;
+      description: string; descriptionEn: string; descriptionJa?: string; descriptionKo?: string;
+      sourceUrl: string; authority: string; authorityEn: string; authorityJa?: string; authorityKo?: string;
       scope: string; status: string; publishedDate: string | null;
     };
     confidence: 'high' | 'medium' | 'low';
@@ -275,21 +282,25 @@ async function main(): Promise<void> {
     return;
   }
 
-  // Translate to ja.
+  // Translate to ja + ko.
   try {
     const { translateBatch } = await import('../../lib/translate.ts');
-    const jaValues = await translateBatch(
-      enriched.flatMap((e) => [e.item.title, e.item.description, e.item.authority]),
-      { direction: 'zh→ja', cacheDir: 'scripts/i18n/data/ja-cache' }
-    );
+    const flat = enriched.flatMap((e) => [e.item.title, e.item.description, e.item.authority]);
+    const [jaValues, koValues] = await Promise.all([
+      translateBatch(flat, { direction: 'zh→ja', cacheDir: 'scripts/i18n/data/ja-cache' }),
+      translateBatch(flat, { direction: 'zh→ko', cacheDir: 'scripts/i18n/data/ko-cache' }),
+    ]);
     for (let i = 0; i < enriched.length; i++) {
       enriched[i].item.titleJa = jaValues[i * 3] || undefined;
       enriched[i].item.descriptionJa = jaValues[i * 3 + 1] || undefined;
       enriched[i].item.authorityJa = jaValues[i * 3 + 2] || undefined;
+      enriched[i].item.titleKo = koValues[i * 3] || undefined;
+      enriched[i].item.descriptionKo = koValues[i * 3 + 1] || undefined;
+      enriched[i].item.authorityKo = koValues[i * 3 + 2] || undefined;
     }
-    process.stdout.write(`  translated ${enriched.length} entries to ja\n`);
+    process.stdout.write(`  translated ${enriched.length} entries to ja + ko\n`);
   } catch (e) {
-    process.stdout.write(`  [warn] ja translation failed: ${e instanceof Error ? e.message : e}\n`);
+    process.stdout.write(`  [warn] ja/ko translation failed: ${e instanceof Error ? e.message : e}\n`);
   }
 
   // Emit: insert into Auto-discovered section, creating it if absent.

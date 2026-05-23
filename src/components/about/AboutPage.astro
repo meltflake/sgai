@@ -242,10 +242,18 @@ const COPY: Partial<Record<Lang, AboutCopy>> = {
 };
 
 // Per-locale page copy with fallback chain ja → en → zh.
+// zh-tw and ko don't have hand-translated COPY entries — they fall back
+// to en. The prose block is marked `data-i18n-allow-en` so the i18n-check
+// EN-sentence scanner accepts the legitimate fallback (and so a future
+// PR adding a Korean COPY entry will silently turn off the marker).
 const c = COPY[lang] ?? COPY.en ?? COPY.zh!;
+const usingEnFallback = !COPY[lang] && (lang === 'zh-tw' || lang === 'ko');
 ---
 
-<article class="prose prose-lg dark:prose-invert max-w-3xl mx-auto px-4 sm:px-6 py-12 md:py-16 font-serif">
+<article
+  class="prose prose-lg dark:prose-invert max-w-3xl mx-auto px-4 sm:px-6 py-12 md:py-16 font-serif"
+  {...usingEnFallback ? { 'data-i18n-allow-en': 'about-prose-en-fallback' } : {}}
+>
   <p class="not-prose text-xs uppercase tracking-[0.18em] text-primary font-semibold mb-4">{c.eyebrow}</p>
   <h1 class="t-display !mb-6 not-prose">{c.headline}</h1>
 

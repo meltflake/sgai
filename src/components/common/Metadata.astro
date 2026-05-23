@@ -32,7 +32,13 @@ const {
 const lang: Lang = langOverride ?? getLangFromPath(String(Astro.url.pathname));
 const siteName = t(lang, 'siteName');
 // og:locale uses BCP 47 with underscore (Facebook spec). Map per Lang.
-const OG_LOCALES: Record<Lang, string> = { zh: 'zh_CN', en: 'en_US', ja: 'ja_JP' };
+const OG_LOCALES: Record<Lang, string> = {
+  zh: 'zh_CN',
+  en: 'en_US',
+  ja: 'ja_JP',
+  'zh-tw': 'zh_TW',
+  ko: 'ko_KR',
+};
 const ogLocale = OG_LOCALES[lang] ?? OG_LOCALES.en;
 const hasDefaultOgImage = Boolean(METADATA?.openGraph?.images?.length);
 const hasPageOgImage = Boolean(openGraph?.images?.length);

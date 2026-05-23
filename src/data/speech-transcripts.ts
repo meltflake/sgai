@@ -6644,20 +6644,27 @@ export const speechTranscripts: Record<string, SpeechTranscript> = {
   },
 };
 
+import { toTraditional } from '~/i18n/opencc';
+
 export function getSpeechTranscript(id: string): SpeechTranscript | undefined {
   return speechTranscripts[id];
 }
 
-export function getSpeechTranscriptParagraphs(id: string, lang: 'zh' | 'en' | 'ja'): string[] {
+// Locale handling: zh-tw runs zh paragraphs through OpenCC s2twp; other
+// non-zh locales (en/ja/ko) fall through to the English transcript when
+// available (Singapore MDDI speeches are English originals).
+export function getSpeechTranscriptParagraphs(id: string, lang: string): string[] {
   const t = getSpeechTranscript(id);
   if (!t) return [];
   if (lang === 'zh') return t.paragraphs;
+  if (lang === 'zh-tw') return t.paragraphs.map((p) => toTraditional(p));
   return t.paragraphsEn?.length ? t.paragraphsEn : t.paragraphs;
 }
 
-export function getSpeechTranscriptTldr(id: string, lang: 'zh' | 'en' | 'ja'): string[] | undefined {
+export function getSpeechTranscriptTldr(id: string, lang: string): string[] | undefined {
   const t = getSpeechTranscript(id);
   if (!t) return undefined;
   if (lang === 'zh') return t.tldr;
+  if (lang === 'zh-tw') return t.tldr?.map((p) => toTraditional(p));
   return t.tldrEn ?? t.tldr;
 }

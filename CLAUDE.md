@@ -119,23 +119,31 @@ npx prettier --write src/
 
 ### 5. i18n 双字段约定（关键 — 最高优先级）
 
-> **🔴 顶层硬规则：sgai 是 zh + en + ja 三语站点。任何 `src/data/*.ts` 的数据更新——无论是 agent 自动 PR、手动编辑、批量 codemod、回填，还是粘贴翻译——必须三语同步写入。不允许只更新单语种。**
+> **🔴 顶层硬规则：sgai 是 zh + en + ja + zh-tw + ko 五语站点。**
 >
-> - ✅ 加新条目：`title` 和 `titleEn` 和 `titleJa`、`description` 和 `descriptionEn` 和 `descriptionJa` 必须同时给值，同一次 commit。
+> 但**只有 `*En` 和 `*Ja` 数据字段是强制的**，其余两个语言走不同路径：
+>
+> - `zh-tw`（繁體中文，`/zh-tw/...`）：**不写数据字段**。运行时跑 OpenCC s2twp 从 zh 自动转换（[src/i18n/opencc.ts](src/i18n/opencc.ts)）。手动 override 用 `zhTwDict` 字典或可选 `*ZhTw` 字段。
+> - `ko`（한국어，`/ko/...`）：**`*Ko` 字段可选但鼓励**。当前 UI 字典完整、数据字段陆续回填中。缺失时按 `ko → en → zh` fallback 链回落（可读但非母语）。
+>
+> 任何 `src/data/*.ts` 的数据更新——无论是 agent 自动 PR、手动编辑、批量 codemod、回填，还是粘贴翻译——必须 zh / en / ja 三语同步写入。zh-tw 自动派生不用管。ko 鼓励同步（可后批量补）。
+>
+> - ✅ 加新条目：`title` 和 `titleEn` 和 `titleJa` 必须同时给值，同一次 commit。`titleKo` 加是 bonus，不加靠 fallback。
 > - ✅ 改老条目：改了 `title` 必须连带改 `titleEn` 和 `titleJa`，反之亦然。同一次 commit。
 > - ❌ 禁止「先 commit 中文版，下一个 PR 补英文和日文」这种分步操作。EN/JA 页面会立刻渲染断裂。
-> - 不会写英文/日文？用 [scripts/lib/translate.ts](scripts/lib/translate.ts) 的 `translateRecords(records, ['title','description'], { direction: 'zh→en' })` 和 `translateRecords(records, ['title','description'], { direction: 'zh→ja', targetSuffix: 'Ja' })` 一行调出来。Claude haiku，零 API key，已带 sha256 缓存。
+> - 不会写英文/日文/韩文？用 [scripts/lib/translate.ts](scripts/lib/translate.ts) 的 `translateRecords(records, ['title','description'], { direction: 'zh→en' })` / `'zh→ja'` / `'zh→ko'` 一行调出来。Claude haiku，零 API key，已带 sha256 缓存。
 > - 真要「这个字段我现在没法翻译」时，**必须**在该字段所在行上面注释 `// i18n-allow-unpaired` 显式豁免，否则 [scripts/lib/i18n-pair.ts](scripts/lib/i18n-pair.ts) 会 fail。
 
 完整规范见 [`docs/i18n.md`](docs/i18n.md)。其他常踩点：
 
-- 数据接口：用户可见的中文字段都要加 `*En` 和 `*Ja` 兄弟字段（`title` / `titleEn` / `titleJa`、`description` / `descriptionEn` / `descriptionJa` ...）。含 CJK 的 `label` / `ministry` / `scale` 等也要 `*En` 和 `*Ja`。
-- EN/JA 页面渲染：**永远不要**直接 `{record.title}`。用 `pickLocalized(record, 'title', lang)` 自动按 lang 选 `title` / `titleEn` / `titleJa`。
-- 内部链接：用 `localizedHref(path, lang)`，不要硬编码 `/en/` 或 `/ja/` 前缀也不要直接给裸路径。
+- 数据接口：用户可见的中文字段都要加 `*En` 和 `*Ja` 兄弟字段（`title` / `titleEn` / `titleJa`、`description` / `descriptionEn` / `descriptionJa` ...）。`*Ko` 可选但鼓励。`*ZhTw` 一般不写（OpenCC 自动）。含 CJK 的 `label` / `ministry` / `scale` 等同样规则。
+- 渲染：**永远不要**直接 `{record.title}`。用 `pickLocalized(record, 'title', lang)` 自动按 lang 选 sibling（含 zh-tw 的 OpenCC 转换）。
+- 内部链接：用 `localizedHref(path, lang)`，不要硬编码 `/en/` 或 `/ja/` 前缀也不要直接给裸路径。Lang code 本身就是 URL 段（`zh-tw` → `/zh-tw/`）。
 - 共享组件（所有 lang 都用的）：组件顶部 `getLangFromPath(new URL(Astro.url).pathname)` 推断 lang，所有展示文案、链接、字段都按 lang 走。
 - SocialChannel：含 CJK 的 `label` 必须配对 `labelEn`。
 - 提交前必跑：`npx tsx scripts/lib/i18n-pair.ts --locales=en,ja <动过的文件>`（emit 时已自动跑，但手工编辑也要跑）+ `npm run build && npm run check:dist`。前者扫源码，后者扫 `dist/` 中文残留 + JSON-LD 合规。
-- 自动管线已强制：`scripts/lib/auto-discovered-emit.ts` 和各 `emit.ts` 在 emit 后跑 `findUnpairedFields` baseline-vs-after diff，新引入 unpaired 自动 rollback；不会"偷偷"放出单语种数据。所有 11 条 refresh 管线已自动产出 `*Ja` 翻译。
+- 单独验证某 locale 渲染：`node scripts/i18n-check.mjs --lang zh-tw` 或 `--lang ko` 扫 `dist/<lang>/**.html` 的残留。
+- 自动管线已强制：`scripts/lib/auto-discovered-emit.ts` 和各 `emit.ts` 在 emit 后跑 `findUnpairedFields` baseline-vs-after diff，新引入 unpaired 自动 rollback；不会"偷偷"放出单语种数据。11 条 refresh 管线当前自动产出 `*En` + `*Ja`；让它们也产出 `*Ko`，每个 `emit.ts` 找到 `zh→ja` 那行旁边加一行 `zh→ko, targetSuffix: 'Ko'` 即可。
 
 ### 6. sourceUrl 真实性约定（关键 — 最高优先级）
 

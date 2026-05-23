@@ -104,7 +104,10 @@ const breadcrumbs = [
 ---
 
 <Layout metadata={metadata} breadcrumbs={breadcrumbs} lang={lang}>
-  <article class="max-w-3xl mx-auto px-4 sm:px-6 py-10 md:py-12">
+  <article
+    class="max-w-3xl mx-auto px-4 sm:px-6 py-10 md:py-12"
+    {...lang === 'ko' || lang === 'zh-tw' ? { 'data-i18n-allow-en': 'ecosystem-entity-en-fallback' } : {}}
+  >
     <div class="mb-6 flex flex-wrap items-center gap-2 text-xs">
       <a
         href={localizedHref('/ecosystem/', lang)}

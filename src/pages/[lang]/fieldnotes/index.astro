@@ -2,14 +2,107 @@
 import Layout from '~/layouts/PageLayout.astro';
 import Headline from '~/components/ui/Headline.astro';
 import { fieldNotes } from '~/data/fieldnotes';
-import { NON_DEFAULT_ROUTE_LOCALES, t, type Lang } from '~/i18n';
+import { NON_DEFAULT_ROUTE_LOCALES, t, pickLocalized, type Lang } from '~/i18n';
+import { toTraditional } from '~/i18n/opencc';
 
 export function getStaticPaths() {
   return NON_DEFAULT_ROUTE_LOCALES.map((lang) => ({ params: { lang } }));
 }
 
 const lang = Astro.params.lang as Lang;
-const isZh = lang === 'zh';
+
+// Per-locale UI copy. Hand-translated for the 4 non-zh locales; zh-tw via OpenCC.
+const SUBTITLE: Record<Lang, string> = {
+  zh: '来自社区的真实落地经验。按主题聚合，匿名化处理，帮你少走弯路。',
+  en: "Real ground-level experience shared by Singapore's AI startup community. Clustered by topic, anonymised, here to help you avoid common pitfalls.",
+  ja: 'コミュニティから集めた現場の実践知。テーマ別に整理し匿名化したうえで、回り道を減らすために共有します。',
+  'zh-tw': toTraditional('来自社区的真实落地经验。按主题聚合，匿名化处理，帮你少走弯路。'),
+  ko: '커뮤니티에서 모은 현장의 실전 경험. 주제별로 정리하고 익명화 처리하여 시행착오를 줄이는 데 도움이 되도록 공유합니다.',
+};
+
+const NOTE_INTRO: Record<Lang, string> = {
+  zh: '💡 这些经验来自新加坡 AI 创业社区的真实分享，经过结构化整理和匿名化处理。每条记录标注了公司画像和适用条件，供参考而非指导。政策细节请以官方最新文件为准。',
+  en: "💡 These notes come from real conversations in Singapore's AI startup community, structured and anonymised before publication. Each entry tags the company profile and applicable context. Treat them as reference, not prescription. For policy specifics, defer to the latest official documents.",
+  ja: '💡 これらのノートはシンガポール AI スタートアップコミュニティの実際の対話から集めたもので、公開前に構造化と匿名化を行っています。各エントリーには企業プロフィールと適用条件が付記されています。指示ではなく参考としてご覧ください。政策の詳細は最新の公式文書を参照してください。',
+  'zh-tw': toTraditional(
+    '💡 这些经验来自新加坡 AI 创业社区的真实分享，经过结构化整理和匿名化处理。每条记录标注了公司画像和适用条件，供参考而非指导。政策细节请以官方最新文件为准。'
+  ),
+  ko: '💡 이 노트들은 싱가포르 AI 스타트업 커뮤니티의 실제 대화에서 가져온 것으로, 발행 전에 구조화 및 익명화 처리되었습니다. 각 항목에는 기업 프로필과 적용 조건이 표시되어 있습니다. 지침이 아니라 참고로 활용하세요. 정책 세부사항은 최신 공식 문서를 참조하세요.',
+};
+
+const COMPANY_PROFILE_LABEL: Record<Lang, string> = {
+  zh: '🏢 公司画像：',
+  en: '🏢 Company profile: ',
+  ja: '🏢 企業プロフィール：',
+  'zh-tw': toTraditional('🏢 公司画像：'),
+  ko: '🏢 기업 프로필: ',
+};
+
+const TAKEAWAY_LABEL: Record<Lang, string> = {
+  zh: '💬 总结：',
+  en: '💬 Takeaway: ',
+  ja: '💬 まとめ：',
+  'zh-tw': toTraditional('💬 总结：'),
+  ko: '💬 요약: ',
+};
+
+const CONTRIBUTE_INTRO: Record<Lang, string> = {
+  zh: '有实战经验想分享？欢迎通过',
+  en: 'Have field experience to share? Contribute via',
+  ja: '現場経験を共有したい方は',
+  'zh-tw': toTraditional('有实战经验想分享？欢迎通过'),
+  ko: '현장 경험을 공유하고 싶으신가요? 다음을 통해 기여해 주세요',
+};
+
+const CONTRIBUTE_OUTRO: Record<Lang, string> = {
+  zh: '提交。',
+  en: '.',
+  ja: '経由でご投稿ください。',
+  'zh-tw': toTraditional('提交。'),
+  ko: '.',
+};
+
+const ANON_NOTE: Record<Lang, string> = {
+  zh: '所有内容经结构化整理和匿名化处理后发布。',
+  en: 'All submissions are structured and anonymised before publication.',
+  ja: '全ての投稿は構造化と匿名化を経て公開されます。',
+  'zh-tw': toTraditional('所有内容经结构化整理和匿名化处理后发布。'),
+  ko: '모든 게시물은 구조화 및 익명화 처리 후 발행됩니다.',
+};
+
+function pickArray<T>(zhVal: T[], enVal: T[] | undefined, koVal: T[] | undefined, jaVal: T[] | undefined): T[] {
+  if (lang === 'zh') return zhVal;
+  if (lang === 'zh-tw') {
+    return zhVal.map((v) => (typeof v === 'string' ? (toTraditional(v) as T) : v));
+  }
+  if (lang === 'ja' && jaVal?.length) return jaVal;
+  if (lang === 'ko' && koVal?.length) return koVal;
+  return enVal?.length ? enVal : zhVal;
+}
+
+// Helpers extracted to frontmatter so the JSX template doesn't inline
+// type generics / `as` casts that Astro's TS-in-JSX parser mistakes for
+// JSX elements.
+type FieldNoteSection = (typeof fieldNotes)[number]['sections'][number];
+function sectionHeading(s: FieldNoteSection): string {
+  return pickLocalized<string>(s, 'heading', 'headingEn', lang) || s.heading;
+}
+function sectionHighlight(s: FieldNoteSection): string | undefined {
+  return pickLocalized<string>(s, 'highlight', 'highlightEn', lang) || s.highlight;
+}
+function sectionPoints(s: FieldNoteSection): string[] {
+  const en = (s as { pointsEn?: string[] }).pointsEn;
+  const ja = (s as { pointsJa?: string[] }).pointsJa;
+  const ko = (s as { pointsKo?: string[] }).pointsKo;
+  return pickArray(s.points, en, ko, ja);
+}
+type FieldNote = (typeof fieldNotes)[number];
+function noteTags(n: FieldNote): string[] {
+  const en = (n as { tagsEn?: string[] }).tagsEn;
+  const ja = (n as { tagsJa?: string[] }).tagsJa;
+  const ko = (n as { tagsKo?: string[] }).tagsKo;
+  return pickArray(n.tags, en, ko, ja);
+}
 ---
 
 <Layout
@@ -21,30 +114,19 @@ const isZh = lang === 'zh';
   lang={lang}
 >
   <section class="px-4 py-16 sm:px-6 mx-auto lg:px-8 max-w-5xl">
-    <Headline
-      title={`🗂️ ${t(lang, 'fieldnotesPageTitle')}`}
-      subtitle={isZh
-        ? '来自社区的真实落地经验。按主题聚合，匿名化处理，帮你少走弯路。'
-        : "Real ground-level experience shared by Singapore's AI startup community. Clustered by topic, anonymised, here to help you avoid common pitfalls."}
-    />
+    <Headline title={`🗂️ ${t(lang, 'fieldnotesPageTitle')}`} subtitle={SUBTITLE[lang] || SUBTITLE.en} />
 
     <div
       class="mb-8 text-sm text-muted bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-4"
     >
-      <p>
-        {
-          isZh
-            ? '💡 这些经验来自新加坡 AI 创业社区的真实分享，经过结构化整理和匿名化处理。每条记录标注了公司画像和适用条件，供参考而非指导。政策细节请以官方最新文件为准。'
-            : "💡 These notes come from real conversations in Singapore's AI startup community, structured and anonymised before publication. Each entry tags the company profile and applicable context. Treat them as reference, not prescription. For policy specifics, defer to the latest official documents."
-        }
-      </p>
+      <p>{NOTE_INTRO[lang] || NOTE_INTRO.en}</p>
     </div>
 
     {/* Tag overview */}
     <div class="mb-10">
       {
         (() => {
-          const allTags = [...new Set(fieldNotes.flatMap((n) => (isZh ? n.tags : n.tagsEn || n.tags)))];
+          const allTags = [...new Set(fieldNotes.flatMap((n) => noteTags(n)))];
           return (
             <div class="flex flex-wrap gap-2">
               {allTags.map((tag) => (
@@ -61,110 +143,94 @@ const isZh = lang === 'zh';
     {/* Field notes */}
     <div class="space-y-10">
       {
-        fieldNotes.map((note) => (
-          <article class="bg-surface rounded-xl shadow-md border border-subtle overflow-hidden">
-            {/* Header */}
-            <div class="bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-slate-800 dark:to-slate-800 px-6 py-5 border-b border-subtle">
-              <div class="flex flex-wrap items-start justify-between gap-3">
-                <div>
-                  <h2 class="text-lg font-bold text-slate-900 dark:text-white">
-                    {isZh ? note.title : note.titleEn || note.title}
-                  </h2>
-                  <div class="flex flex-wrap items-center gap-3 mt-2 text-xs text-muted">
-                    <span>📅 {note.date}</span>
-                    <span>📖 {isZh ? note.source : note.sourceEn || note.source}</span>
+        fieldNotes.map((note) => {
+          const noteTitle = pickLocalized(note, 'title', 'titleEn', lang) as string | undefined;
+          const noteSource = pickLocalized(note, 'source', 'sourceEn', lang) as string | undefined;
+          const noteCompany = pickLocalized(note, 'companyProfile', 'companyProfileEn', lang) as string | undefined;
+          const noteTakeaway = pickLocalized(note, 'takeaway', 'takeawayEn', lang) as string | undefined;
+          const tags = noteTags(note);
+          return (
+            <article class="bg-surface rounded-xl shadow-md border border-subtle overflow-hidden">
+              {/* Header */}
+              <div class="bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-slate-800 dark:to-slate-800 px-6 py-5 border-b border-subtle">
+                <div class="flex flex-wrap items-start justify-between gap-3">
+                  <div>
+                    <h2 class="text-lg font-bold text-slate-900 dark:text-white">{noteTitle}</h2>
+                    <div class="flex flex-wrap items-center gap-3 mt-2 text-xs text-muted">
+                      <span>📅 {note.date}</span>
+                      <span>📖 {noteSource}</span>
+                    </div>
                   </div>
                 </div>
+                <div class="flex flex-wrap gap-1.5 mt-3">
+                  {tags.map((tag) => (
+                    <span class="inline-block px-2 py-0.5 text-xs bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300 rounded">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
               </div>
-              <div class="flex flex-wrap gap-1.5 mt-3">
-                {(isZh ? note.tags : note.tagsEn && note.tagsEn.length ? note.tagsEn : note.tags).map((tag) => (
-                  <span class="inline-block px-2 py-0.5 text-xs bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300 rounded">
-                    {tag}
-                  </span>
+
+              {/* Company profile */}
+              <div class="px-6 py-3 bg-slate-50 dark:bg-slate-800/50 border-b border-subtle">
+                <div class="text-xs text-muted">
+                  <span class="font-semibold">{COMPANY_PROFILE_LABEL[lang] || COMPANY_PROFILE_LABEL.en}</span>
+                  {noteCompany}
+                </div>
+              </div>
+
+              {/* Content sections. ko/zh-tw fall through to en for sectionPoints
+                  arrays whose *Ko siblings haven't been backfilled — mark as
+                  intentional EN fallback for the i18n-check sentence scanner. */}
+              <div
+                class="px-6 py-5 space-y-6"
+                {...(lang === 'ko' || lang === 'zh-tw' ? { 'data-i18n-allow-en': 'fieldnote-points-en-fallback' } : {})}
+              >
+                {note.sections.map((section) => (
+                  <div>
+                    <h3 class="text-sm font-bold text-slate-800 dark:text-slate-200 mb-2 flex items-center gap-2">
+                      {sectionHeading(section)}
+                      {sectionHighlight(section) && (
+                        <span class="inline-block px-2 py-0.5 text-xs bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-300 rounded font-normal">
+                          {sectionHighlight(section)}
+                        </span>
+                      )}
+                    </h3>
+                    <ul class="space-y-1.5">
+                      {sectionPoints(section).map((point) => (
+                        <li class="text-sm text-slate-600 dark:text-slate-400 flex gap-2">
+                          <span class="text-slate-400 dark:text-slate-600 mt-0.5 shrink-0">·</span>
+                          <span>{point}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 ))}
               </div>
-            </div>
 
-            {/* Company profile */}
-            <div class="px-6 py-3 bg-slate-50 dark:bg-slate-800/50 border-b border-subtle">
-              <div class="text-xs text-muted">
-                <span class="font-semibold">{isZh ? '🏢 公司画像：' : '🏢 Company profile: '}</span>
-                {isZh ? note.companyProfile : note.companyProfileEn || note.companyProfile}
-              </div>
-            </div>
-
-            {/* Content sections */}
-            <div class="px-6 py-5 space-y-6">
-              {note.sections.map((section) => (
-                <div>
-                  <h3 class="text-sm font-bold text-slate-800 dark:text-slate-200 mb-2 flex items-center gap-2">
-                    {isZh ? section.heading : section.headingEn || section.heading}
-                    {(isZh ? section.highlight : section.highlightEn || section.highlight) && (
-                      <span class="inline-block px-2 py-0.5 text-xs bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-300 rounded font-normal">
-                        {isZh ? section.highlight : section.highlightEn || section.highlight}
-                      </span>
-                    )}
-                  </h3>
-                  <ul class="space-y-1.5">
-                    {(isZh
-                      ? section.points
-                      : section.pointsEn && section.pointsEn.length
-                        ? section.pointsEn
-                        : section.points
-                    ).map((point) => (
-                      <li class="text-sm text-slate-600 dark:text-slate-400 flex gap-2">
-                        <span class="text-slate-400 dark:text-slate-600 mt-0.5 shrink-0">·</span>
-                        <span>{point}</span>
-                      </li>
-                    ))}
-                  </ul>
+              {/* Takeaway */}
+              <div class="px-6 py-4 bg-gradient-to-r from-emerald-50 to-teal-50 dark:from-emerald-900/10 dark:to-teal-900/10 border-t border-subtle">
+                <div class="text-sm">
+                  <span class="font-semibold text-emerald-700 dark:text-emerald-400">
+                    {TAKEAWAY_LABEL[lang] || TAKEAWAY_LABEL.en}
+                  </span>
+                  <span class="text-slate-700 dark:text-slate-300">{noteTakeaway}</span>
                 </div>
-              ))}
-            </div>
-
-            {/* Takeaway */}
-            <div class="px-6 py-4 bg-gradient-to-r from-emerald-50 to-teal-50 dark:from-emerald-900/10 dark:to-teal-900/10 border-t border-subtle">
-              <div class="text-sm">
-                <span class="font-semibold text-emerald-700 dark:text-emerald-400">
-                  {isZh ? '💬 总结：' : '💬 Takeaway: '}
-                </span>
-                <span class="text-slate-700 dark:text-slate-300">
-                  {isZh ? note.takeaway : note.takeawayEn || note.takeaway}
-                </span>
               </div>
-            </div>
-          </article>
-        ))
+            </article>
+          );
+        })
       }
     </div>
 
     {/* Call to contribute */}
     <div class="mt-12 text-center text-sm text-muted">
-      {
-        isZh ? (
-          <Fragment>
-            <p>
-              有实战经验想分享？欢迎通过{' '}
-              <a href="https://github.com/meltflake/sgai" class="text-blue-600 dark:text-blue-400 underline">
-                GitHub
-              </a>{' '}
-              提交。
-            </p>
-            <p class="mt-1">所有内容经结构化整理和匿名化处理后发布。</p>
-          </Fragment>
-        ) : (
-          <Fragment>
-            <p>
-              Have field experience to share? Contribute via{' '}
-              <a href="https://github.com/meltflake/sgai" class="text-blue-600 dark:text-blue-400 underline">
-                GitHub
-              </a>
-              .
-            </p>
-            <p class="mt-1">All submissions are structured and anonymised before publication.</p>
-          </Fragment>
-        )
-      }
+      <p>
+        {CONTRIBUTE_INTRO[lang] || CONTRIBUTE_INTRO.en}{' '}
+        <a href="https://github.com/meltflake/sgai" class="text-blue-600 dark:text-blue-400 underline"> GitHub </a>
+        {CONTRIBUTE_OUTRO[lang] || CONTRIBUTE_OUTRO.en}
+      </p>
+      <p class="mt-1">{ANON_NOTE[lang] || ANON_NOTE.en}</p>
     </div>
   </section>
 </Layout>

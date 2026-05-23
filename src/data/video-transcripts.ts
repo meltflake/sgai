@@ -18,12 +18,14 @@ export interface VideoTranscript {
   /** Japanese readable transcript. Translated from `paragraphs` (zh) by
    *  scripts/videos/translate-transcripts-ja.ts. */
   paragraphsJa?: string[];
+  paragraphsKo?: string[];
   /** Polished readable digest (zh). When present, this is the primary on-page content; raw paragraphs become a collapsible fallback. */
   digest?: VideoDigest;
   /** Polished readable digest (en). */
   digestEn?: VideoDigest;
   /** Polished readable digest (ja). */
   digestJa?: VideoDigest;
+  digestKo?: VideoDigest;
   translatedAt?: string;
   // 'claude' = local Claude CLI (default since 2026-05). 'openai' kept for
   // backward compatibility with translations cached before the switch.
@@ -8318,28 +8320,50 @@ export function getVideoTranscript(videoId: string): VideoTranscript | undefined
   return videoTranscripts[videoId];
 }
 
-export function getVideoTranscriptParagraphs(videoId: string, lang: 'zh' | 'en' | 'ja'): string[] {
+// Locale support note: zh-tw runs zh paragraphs through OpenCC s2twp at
+// SSG build time (singleton converter in src/i18n/opencc.ts, so the cold
+// cost is paid once per build). ko has dedicated paragraphsKo/digestKo
+// (translate-transcripts-ko.ts), falls through to en when missing.
+import { toTraditional } from '~/i18n/opencc';
+
+function convertDigestToTraditional(digest: VideoDigest | undefined): VideoDigest | undefined {
+  if (!digest) return undefined;
+  return {
+    keyPoints: digest.keyPoints?.map((p) => toTraditional(p)) ?? [],
+    narrative: digest.narrative?.map((p) => toTraditional(p)) ?? [],
+  };
+}
+
+export function getVideoTranscriptParagraphs(videoId: string, lang: string): string[] {
   const transcript = getVideoTranscript(videoId);
   if (!transcript) return [];
   if (lang === 'zh') return transcript.paragraphs;
+  if (lang === 'zh-tw') return transcript.paragraphs.map((p) => toTraditional(p));
   if (lang === 'ja') return transcript.paragraphsJa || transcript.paragraphs;
+  if (lang === 'ko') return transcript.paragraphsKo || transcript.paragraphsEn || transcript.paragraphs;
+  // en falls through to English transcript.
   return transcript.paragraphsEn || transcript.paragraphs;
 }
 
-export function getVideoTranscriptLanguage(videoId: string, lang: 'zh' | 'en' | 'ja'): string | undefined {
+export function getVideoTranscriptLanguage(videoId: string, lang: string): string | undefined {
   const transcript = getVideoTranscript(videoId);
   if (!transcript) return undefined;
-  if (lang === 'zh') return transcript.paragraphs.length ? 'zh-CN' : undefined;
+  if (lang === 'zh' || lang === 'zh-tw')
+    return transcript.paragraphs.length ? (lang === 'zh-tw' ? 'zh-TW' : 'zh-CN') : undefined;
   if (lang === 'ja' && transcript.paragraphsJa?.length) return 'ja';
+  if (lang === 'ko' && transcript.paragraphsKo?.length) return 'ko';
   if (transcript.paragraphsEn?.length) return transcript.captionLanguage || (lang === 'en' ? 'en' : lang);
   return transcript.paragraphs.length ? 'zh-CN' : undefined;
 }
 
 /** Read the polished digest for a video in the requested language. */
-export function getVideoDigest(videoId: string, lang: 'zh' | 'en' | 'ja'): VideoDigest | undefined {
+export function getVideoDigest(videoId: string, lang: string): VideoDigest | undefined {
   const transcript = getVideoTranscript(videoId);
   if (!transcript) return undefined;
   if (lang === 'zh') return transcript.digest;
+  if (lang === 'zh-tw') return convertDigestToTraditional(transcript.digest);
   if (lang === 'ja') return transcript.digestJa || transcript.digestEn || transcript.digest;
+  if (lang === 'ko') return transcript.digestKo || transcript.digestEn || transcript.digest;
+  // en falls through to English digest.
   return transcript.digestEn || transcript.digest;
 }

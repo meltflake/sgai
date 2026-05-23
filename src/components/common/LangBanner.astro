@@ -6,10 +6,10 @@
 //    browser language disagrees with the current page AND no `sgai_lang`
 //    localStorage choice is set.
 //  - NEVER auto-redirects. URL paths are the source of truth.
-//  - Supports all 3 locales (en/zh/ja). Suggests the best matching locale
-//    from the browser's language preferences.
+//  - Supports all configured locales (en/zh/ja/zh-tw/ko). Suggests the
+//    best matching locale from the browser's language preferences.
 
-import { type Lang, LOCALES, t } from '~/i18n';
+import { type Lang, LOCALES, ROUTE_DEFAULT_LOCALE, t } from '~/i18n';
 
 interface Props {
   currentLang: Lang;
@@ -17,18 +17,28 @@ interface Props {
 
 const { currentLang } = Astro.props;
 
+// Native-script banner copy per locale. Keys map by Lang code (which
+// doubles as the URL segment for non-default locales).
 const BANNER_MESSAGES: Record<Lang, string> = {
   en: t('en', 'langBannerEn') || 'English version available',
   zh: '中文版可用',
   ja: '日本語版があります',
+  'zh-tw': '繁體中文版可用',
+  ko: '한국어 버전 이용 가능',
 };
 const SWITCH_LABELS: Record<Lang, string> = {
   en: t('en', 'langBannerSwitch') || 'Read in English →',
   zh: '阅读中文版 →',
   ja: '日本語で読む →',
+  'zh-tw': '閱讀繁體中文版 →',
+  ko: '한국어로 읽기 →',
 };
 const dismissLabel = t(currentLang, 'langBannerDismiss') || '关闭';
 const localesJson = JSON.stringify(LOCALES.filter((l) => l !== currentLang));
+const routeData = {
+  routeDefault: ROUTE_DEFAULT_LOCALE,
+  nonDefaultLangs: LOCALES.filter((l) => l !== ROUTE_DEFAULT_LOCALE),
+};
 ---
 
 <div
@@ -59,23 +69,50 @@ const localesJson = JSON.stringify(LOCALES.filter((l) => l !== currentLang));
   </div>
 </div>
 
-<script define:vars={{ BANNER_MESSAGES, SWITCH_LABELS }}>
+<script define:vars={{ BANNER_MESSAGES, SWITCH_LABELS, routeData }}>
   (() => {
     const banner = document.getElementById('lang-banner');
     if (!banner) return;
     const currentLang = banner.dataset.currentLang;
     const candidates = JSON.parse(banner.dataset.suggestLocales || '[]');
+    const { routeDefault, nonDefaultLangs } = routeData;
 
     function localeUrl(targetLang) {
       const path = location.pathname;
       let bare = path;
-      if (path === '/zh' || path === '/zh/') bare = '/';
-      else if (path.startsWith('/zh/')) bare = path.slice(3);
-      else if (path === '/ja' || path === '/ja/') bare = '/';
-      else if (path.startsWith('/ja/')) bare = path.slice(3);
-      if (targetLang === 'en') return bare;
+      for (const lang of nonDefaultLangs) {
+        const p = '/' + lang;
+        if (path === p || path === p + '/') {
+          bare = '/';
+          break;
+        }
+        if (path.startsWith(p + '/')) {
+          bare = path.slice(p.length);
+          break;
+        }
+      }
+      if (targetLang === routeDefault) return bare;
       if (bare === '/' || bare === '') return '/' + targetLang + '/';
       return '/' + targetLang + bare;
+    }
+
+    // Browser-preference matcher. Maps BCP-47 prefs to Lang codes.
+    // zh-TW / zh-Hant / zh-HK → zh-tw; zh / zh-CN / zh-Hans → zh.
+    function prefersLang(prefs, lang) {
+      for (const p of prefs) {
+        if (lang === 'zh-tw' && (p.startsWith('zh-tw') || p.startsWith('zh-hk') || p.startsWith('zh-hant')))
+          return true;
+        if (
+          lang === 'zh' &&
+          p.startsWith('zh') &&
+          !p.startsWith('zh-tw') &&
+          !p.startsWith('zh-hk') &&
+          !p.startsWith('zh-hant')
+        )
+          return true;
+        if (lang !== 'zh' && lang !== 'zh-tw' && p.startsWith(lang)) return true;
+      }
+      return false;
     }
 
     const stored = localStorage.getItem('sgai_lang');
@@ -84,10 +121,9 @@ const localesJson = JSON.stringify(LOCALES.filter((l) => l !== currentLang));
     const prefs = (navigator.languages?.length ? navigator.languages : [navigator.language]).map((l) =>
       l.toLowerCase()
     );
-    const prefersCurrent = prefs.some((p) => p.startsWith(currentLang));
-    if (prefersCurrent) return;
+    if (prefersLang(prefs, currentLang)) return;
 
-    const suggestLang = candidates.find((lang) => prefs.some((p) => p.startsWith(lang)));
+    const suggestLang = candidates.find((lang) => prefersLang(prefs, lang));
     if (!suggestLang) return;
 
     document.getElementById('lang-banner-msg').textContent = BANNER_MESSAGES[suggestLang] || '';

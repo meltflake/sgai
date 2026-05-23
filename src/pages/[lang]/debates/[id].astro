@@ -8,8 +8,10 @@ import RelatedRail from '~/components/data/RelatedRail.astro';
 import { Icon } from 'astro-icon/components';
 import { debates } from '~/data/debates';
 import { getDebateTranscript, getDebateTranscriptParagraphs } from '~/data/debate-transcripts';
+import { debateTypeLabel, debateTopicLabel } from '~/utils/debate-labels';
 import { findPersonId, getPerson, personDisplayName } from '~/utils/people';
 import { NON_DEFAULT_ROUTE_LOCALES, IN_LANGUAGES, t, pickLocalized, localizedHref, type Lang } from '~/i18n';
+import { toTraditional } from '~/i18n/opencc';
 
 export const prerender = true;
 
@@ -23,14 +25,17 @@ export const getStaticPaths = (() =>
 
 const { debate } = Astro.props;
 const lang = Astro.params.lang as Lang;
+// isCjk groups zh + zh-tw — both prefer the zh content track. zh-tw runs
+// returned strings through OpenCC at the field level via pickLocalized.
 const isZh = lang === 'zh';
+const isCjk = lang === 'zh' || lang === 'zh-tw';
 
 const transcript = getDebateTranscript(debate.id);
 const transcriptZh = getDebateTranscriptParagraphs(debate.id, 'zh');
 const transcriptEn = getDebateTranscriptParagraphs(debate.id, 'en');
 const originalParagraphs = transcriptEn.length
   ? transcriptEn
-  : isZh
+  : isCjk
     ? debate.summary
       ? [debate.summary]
       : []
@@ -38,89 +43,44 @@ const originalParagraphs = transcriptEn.length
       ? [debate.transcriptEn]
       : [];
 
-const typeMapZh: Record<string, string> = {
-  'Oral Answers to Questions': '口头答复',
-  'Written Answers to Questions': '书面答复',
-  Budget: '预算辩论',
-  Motion: '动议',
+// Controversy labels per locale. Use the shared `t` dictionary entries
+// (added below) so adding a sixth locale only needs a dict update.
+const CONTROVERSY_LABELS: Record<Lang, Record<number, string>> = {
+  zh: { 1: '信息发布', 2: '温和质询', 3: '实质辩论', 4: '激烈争议', 5: '高度对立' },
+  en: { 1: 'Information', 2: 'Mild query', 3: 'Substantive debate', 4: 'Heated dispute', 5: 'High polarisation' },
+  ja: { 1: '情報発信', 2: '軽度質問', 3: '実質的議論', 4: '激しい論争', 5: '高度な対立' },
+  'zh-tw': {
+    1: toTraditional('信息发布'),
+    2: toTraditional('温和质询'),
+    3: toTraditional('实质辩论'),
+    4: toTraditional('激烈争议'),
+    5: toTraditional('高度对立'),
+  },
+  ko: { 1: '정보 공개', 2: '온건한 질의', 3: '실질적 토론', 4: '치열한 논쟁', 5: '높은 대립' },
 };
-const typeMapEn: Record<string, string> = {
-  'Oral Answers to Questions': 'Oral Answer',
-  'Written Answers to Questions': 'Written Answer',
-  Budget: 'Budget Debate',
-  Motion: 'Motion',
-};
-const typeMap = isZh ? typeMapZh : typeMapEn;
-
-const topicZh: Record<string, string> = {
-  'AI Economy & Industry': 'AI 经济与产业',
-  'AI & Employment': 'AI 与就业',
-  'AI Governance & Regulation': 'AI 治理与监管',
-  'AI & National Security': 'AI 与国家安全',
-  'AI in Public Sector': 'AI 与公共部门',
-  'AI Infrastructure & Research': 'AI 基础设施与研究',
-  'AI Safety & Ethics': 'AI 安全与伦理',
-  'AI in Education': 'AI 与教育',
-  'AI in Healthcare': 'AI 与医疗',
-  'AI Strategy': 'AI 战略',
-  'Deepfakes & Disinformation': '深度伪造与虚假信息',
-  'Generative AI': '生成式 AI',
-};
-const topicEn: Record<string, string> = {
-  'AI Economy & Industry': 'AI Economy & Industry',
-  'AI & Employment': 'AI & Employment',
-  'AI Governance & Regulation': 'AI Governance & Regulation',
-  'AI & National Security': 'AI & National Security',
-  'AI in Public Sector': 'AI in Public Sector',
-  'AI Infrastructure & Research': 'AI Infrastructure & Research',
-  'AI Safety & Ethics': 'AI Safety & Ethics',
-  'AI in Education': 'AI in Education',
-  'AI in Healthcare': 'AI in Healthcare',
-  'AI Strategy': 'AI Strategy',
-  'Deepfakes & Disinformation': 'Deepfakes & Disinformation',
-  'Generative AI': 'Generative AI',
-};
-const topicMap = isZh ? topicZh : topicEn;
-
-const controversyLabelsZh: Record<number, string> = {
-  1: '信息发布',
-  2: '温和质询',
-  3: '实质辩论',
-  4: '激烈争议',
-  5: '高度对立',
-};
-const controversyLabelsEn: Record<number, string> = {
-  1: 'Information',
-  2: 'Mild query',
-  3: 'Substantive debate',
-  4: 'Heated dispute',
-  5: 'High polarisation',
-};
-const controversyLabels = isZh ? controversyLabelsZh : controversyLabelsEn;
+const controversyLabels = CONTROVERSY_LABELS[lang] || CONTROVERSY_LABELS.en;
 
 const speakers = debate.speakers.map((raw) => {
   const pid = findPersonId(raw);
   const p = pid ? getPerson(pid) : undefined;
+  // Speaker display: on zh use the curated zh name; on every other
+  // locale fall through to nameEn (Latin Roman name — universally
+  // recognisable to ja/ko/zh-Hant readers via Singapore press).
   return { raw, pid, display: p ? (isZh ? personDisplayName(pid!) : p.nameEn || p.name || raw) : raw };
 });
 
-const summaryShort = isZh ? debate.summary || '' : pickLocalized<string>(debate, 'summary', lang) || '';
-const keyPoints = isZh
-  ? debate.keyPoints || []
-  : (debate.keyPointsEn?.length ? debate.keyPointsEn : debate.keyPoints) || [];
-const govStance = isZh
-  ? debate.governmentStance
-  : pickLocalized(debate, 'governmentStance', 'governmentStanceEn', lang);
-const oppStance = isZh
-  ? debate.oppositionStance
-  : pickLocalized(debate, 'oppositionStance', 'oppositionStanceEn', lang);
-const policySignal = isZh ? debate.policySignal : pickLocalized(debate, 'policySignal', 'policySignalEn', lang);
-const notableQuote = isZh ? debate.notableQuote : pickLocalized(debate, 'notableQuote', 'notableQuoteEn', lang);
+const summaryShort = pickLocalized<string>(debate, 'summary', lang) || debate.summary || '';
+const keyPointsRaw = pickLocalized<string[]>(debate, 'keyPoints', 'keyPointsEn', lang);
+const keyPoints = (Array.isArray(keyPointsRaw) ? keyPointsRaw : debate.keyPoints) || [];
+const govStance = pickLocalized<string>(debate, 'governmentStance', 'governmentStanceEn', lang);
+const oppStance = pickLocalized<string>(debate, 'oppositionStance', 'oppositionStanceEn', lang);
+const policySignal = pickLocalized<string>(debate, 'policySignal', 'policySignalEn', lang);
+const notableQuote = pickLocalized<string>(debate, 'notableQuote', 'notableQuoteEn', lang);
 
-const debateTitle = isZh ? debate.title : debate.titleEn || debate.title;
+const debateTitle = pickLocalized<string>(debate, 'title', 'titleEn', lang) || debate.title;
 
 const metadata = {
-  title: `${debateTitle} · ${isZh ? '国会辩论' : 'Parliamentary Debate'}`,
+  title: `${debateTitle} · ${t(lang, 'navDebates')}`,
   description: summaryShort,
 };
 
@@ -146,9 +106,8 @@ const breadcrumbs = [
 
   <article class="max-w-3xl mx-auto px-4 sm:px-6 py-12 md:py-16">
     <p class="text-xs uppercase tracking-[0.18em] text-primary font-semibold mb-4">
-      {typeMap[debate.type] || debate.type} · {debate.date} · {
-        isZh ? `第 ${debate.parliament} 届国会` : `Parliament ${debate.parliament}`
-      }
+      {debateTypeLabel(debate.type, lang)} · {debate.date} · {t(lang, 'parliamentSession')}
+      {debate.parliament}
     </p>
     <h1 class="t-display text-gray-900 dark:text-white mb-3">
       {debateTitle}
@@ -163,7 +122,9 @@ const breadcrumbs = [
       debate.topics && debate.topics.length > 0 && (
         <div class="flex flex-wrap gap-2 mb-8">
           {debate.topics.map((tp) => (
-            <span class="text-xs bg-primary/10 text-primary px-3 py-1.5 rounded-full">{topicMap[tp] || tp}</span>
+            <span class="text-xs bg-primary/10 text-primary px-3 py-1.5 rounded-full">
+              {debateTopicLabel(tp, lang)}
+            </span>
           ))}
           <span class="text-xs bg-gray-100 dark:bg-slate-800 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-full ml-auto">
             {t(lang, 'controversyLevel')} {debate.controversyLevel} · {controversyLabels[debate.controversyLevel] || ''}
@@ -266,18 +227,18 @@ const breadcrumbs = [
     }
 
     {
-      isZh && transcriptZh.length > 0 && (
+      isCjk && transcriptZh.length > 0 && (
         <section class="my-8 border border-primary/20 bg-primary/5 rounded-xl p-5">
           <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-4">
-            <h2 class="t-h3 text-gray-900 dark:text-white">{'完整译文（中文）'}</h2>
+            <h2 class="t-h3 text-gray-900 dark:text-white">{t(lang, 'fullTextZh')}</h2>
             <p class="text-xs text-gray-500 dark:text-gray-400">
-              {'Hansard 英文原文译文'}
-              {transcript?.translatedAt && ` · 翻译日期：${transcript.translatedAt}`}
+              {t(lang, 'hansardSource')}
+              {transcript?.translatedAt && ` · ${transcript.translatedAt}`}
             </p>
           </div>
           <div class="space-y-4 text-base text-gray-700 dark:text-gray-300 leading-[1.9]">
             {transcriptZh.map((paragraph) => (
-              <p>{paragraph}</p>
+              <p>{lang === 'zh-tw' ? toTraditional(paragraph) : paragraph}</p>
             ))}
           </div>
         </section>
@@ -286,7 +247,11 @@ const breadcrumbs = [
 
     {
       originalParagraphs.length > 0 && (
-        <section class="my-8 border border-subtle rounded-xl p-5" data-i18n-allow-cjk="hansard-original">
+        <section
+          class="my-8 border border-subtle rounded-xl p-5"
+          data-i18n-allow-cjk="hansard-original"
+          data-i18n-allow-en="hansard-original"
+        >
           <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-4">
             <h2 class="t-h3 text-gray-900 dark:text-white">{t(lang, 'fullTextEn')}</h2>
             <p class="text-xs text-gray-500 dark:text-gray-400">

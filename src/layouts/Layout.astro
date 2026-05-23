@@ -16,7 +16,7 @@ import BasicScripts from '~/components/common/BasicScripts.astro';
 import { ClientRouter } from 'astro:transitions';
 
 import type { MetaData as MetaDataType } from '~/types';
-import { LOCALES, ROUTE_DEFAULT_LOCALE, type Lang } from '~/i18n';
+import { IN_LANGUAGES, LOCALES, ROUTE_DEFAULT_LOCALE, type Lang } from '~/i18n';
 
 export interface Props {
   metadata?: MetaDataType;
@@ -27,12 +27,16 @@ const { metadata = {}, lang } = Astro.props;
 const { textDirection } = I18N;
 // Default to ROUTE_DEFAULT_LOCALE when no explicit lang prop is passed.
 const currentLang: Lang = (lang && (LOCALES as string[]).includes(lang) ? lang : ROUTE_DEFAULT_LOCALE) as Lang;
-// HTML lang attribute uses BCP 47 codes (zh-CN, en, ja).
-const HTML_LANG: Record<Lang, string> = { zh: 'zh-CN', en: 'en', ja: 'ja' };
-const htmlLang = HTML_LANG[currentLang];
+// HTML lang attribute uses BCP 47 codes from IN_LANGUAGES (zh-CN, en, ja, zh-Hant, ko).
+const htmlLang = IN_LANGUAGES[currentLang];
 // Pass locale list + route default into the inline localStorage rewrite
-// script so it generalizes across all configured languages.
-const localeRewrite = { locales: LOCALES, routeDefault: ROUTE_DEFAULT_LOCALE, currentLang };
+// script. Lang codes double as URL segments (kebab-cased where needed,
+// e.g. 'zh-tw' → /zh-tw/), so no separate segment map is required.
+const localeRewrite = {
+  locales: LOCALES,
+  routeDefault: ROUTE_DEFAULT_LOCALE,
+  currentLang,
+};
 ---
 
 <!doctype html>
@@ -53,6 +57,7 @@ const localeRewrite = { locales: LOCALES, routeDefault: ROUTE_DEFAULT_LOCALE, cu
           if (!locales.includes(stored)) return;
           if (stored === currentLang) return;
           // Strip the current locale prefix (if any) to recover a base path.
+          // Lang codes double as URL segments (e.g. 'zh-tw' → /zh-tw/...).
           const path = location.pathname;
           let basePath = path;
           for (const l of locales) {

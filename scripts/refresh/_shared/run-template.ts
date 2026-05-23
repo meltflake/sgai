@@ -179,20 +179,23 @@ export async function runPipeline(config: PipelineConfig): Promise<void> {
     return;
   }
 
-  // Translate title + description to ja for trilingual support.
+  // Translate title + description to ja + ko for multi-lingual support.
   try {
     const { translateBatch } = await import('../../lib/translate.ts');
-    const jaValues = await translateBatch(
-      enriched.flatMap((e) => [e.entry.title, e.entry.description]),
-      { direction: 'zh→ja', cacheDir: 'scripts/i18n/data/ja-cache' }
-    );
+    const flat = enriched.flatMap((e) => [e.entry.title, e.entry.description]);
+    const [jaValues, koValues] = await Promise.all([
+      translateBatch(flat, { direction: 'zh→ja', cacheDir: 'scripts/i18n/data/ja-cache' }),
+      translateBatch(flat, { direction: 'zh→ko', cacheDir: 'scripts/i18n/data/ko-cache' }),
+    ]);
     for (let i = 0; i < enriched.length; i++) {
       enriched[i].entry.titleJa = jaValues[i * 2] || undefined;
       enriched[i].entry.descriptionJa = jaValues[i * 2 + 1] || undefined;
+      enriched[i].entry.titleKo = koValues[i * 2] || undefined;
+      enriched[i].entry.descriptionKo = koValues[i * 2 + 1] || undefined;
     }
-    process.stdout.write(`  translated ${enriched.length} entries to ja\n`);
+    process.stdout.write(`  translated ${enriched.length} entries to ja + ko\n`);
   } catch (e) {
-    process.stdout.write(`  [warn] ja translation failed: ${e instanceof Error ? e.message : e}\n`);
+    process.stdout.write(`  [warn] ja/ko translation failed: ${e instanceof Error ? e.message : e}\n`);
   }
 
   const result = appendAutoDiscovered(targetAbs, enriched.map((e) => e.entry));

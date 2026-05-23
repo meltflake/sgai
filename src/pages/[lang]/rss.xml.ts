@@ -1,10 +1,10 @@
 import type { APIRoute } from 'astro';
 import { getRssString } from '@astrojs/rss';
 
-import { SITE, METADATA, APP_BLOG } from 'astrowind:config';
+import { SITE, APP_BLOG } from 'astrowind:config';
 import { fetchPosts } from '~/utils/blog';
 import { getPermalink } from '~/utils/permalinks';
-import { NON_DEFAULT_ROUTE_LOCALES, type Lang } from '~/i18n';
+import { NON_DEFAULT_ROUTE_LOCALES, t, type Lang } from '~/i18n';
 
 export const prerender = true;
 
@@ -22,8 +22,8 @@ export const GET: APIRoute = async ({ params }) => {
   const posts = (await fetchPosts()).filter((p) => (p.lang ?? 'zh') === lang);
 
   const rss = await getRssString({
-    title: `${SITE.name}'s Blog`,
-    description: METADATA?.description || '',
+    title: `${t(lang, 'siteName')} — ${t(lang, 'blogIndexTitle')}`,
+    description: t(lang, 'siteDescription'),
     site: import.meta.env.SITE,
 
     items: posts.map((post) => ({

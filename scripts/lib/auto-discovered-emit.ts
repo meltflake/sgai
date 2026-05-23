@@ -36,9 +36,11 @@ export interface AutoDiscoveredEntry {
   title: string;
   titleEn: string;
   titleJa?: string;
+  titleKo?: string;
   description: string;
   descriptionEn: string;
   descriptionJa?: string;
+  descriptionKo?: string;
   category: string;
   confidence: 'high' | 'medium' | 'low';
   sourceUrl: string;
@@ -50,9 +52,11 @@ const INTERFACE_BLOCK = `\nexport interface AutoDiscoveredEntry {
   title: string;
   titleEn: string;
   titleJa?: string;
+  titleKo?: string;
   description: string;
   descriptionEn: string;
   descriptionJa?: string;
+  descriptionKo?: string;
   category: string;
   confidence: 'high' | 'medium' | 'low';
   sourceUrl: string;
@@ -70,9 +74,11 @@ function formatEntry(e: AutoDiscoveredEntry): string {
   lines.push(`    title: '${escapeQuote(e.title)}',`);
   lines.push(`    titleEn: '${escapeQuote(e.titleEn)}',`);
   if (e.titleJa) lines.push(`    titleJa: '${escapeQuote(e.titleJa)}',`);
+  if (e.titleKo) lines.push(`    titleKo: '${escapeQuote(e.titleKo)}',`);
   lines.push(`    description: '${escapeQuote(e.description)}',`);
   lines.push(`    descriptionEn: '${escapeQuote(e.descriptionEn)}',`);
   if (e.descriptionJa) lines.push(`    descriptionJa: '${escapeQuote(e.descriptionJa)}',`);
+  if (e.descriptionKo) lines.push(`    descriptionKo: '${escapeQuote(e.descriptionKo)}',`);
   lines.push(`    category: '${escapeQuote(e.category)}',`);
   lines.push(`    confidence: '${e.confidence}',`);
   lines.push(`    sourceUrl: '${e.sourceUrl}',`);

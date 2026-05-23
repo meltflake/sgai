@@ -128,7 +128,10 @@ const sourcesList = (isEn && detail?.sourcesEn?.length ? detail.sourcesEn : deta
 <Layout metadata={metadata} breadcrumbs={breadcrumbs} lang={lang}>
   <JsonLd schema={articleSchema} />
 
-  <article class="max-w-4xl mx-auto px-4 sm:px-6 py-12 md:py-16">
+  <article
+    class="max-w-4xl mx-auto px-4 sm:px-6 py-12 md:py-16"
+    {...lang === 'ko' || lang === 'zh-tw' ? { 'data-i18n-allow-en': 'benchmark-region-en-fallback' } : {}}
+  >
     <header class="mb-8">
       <p class="text-xs uppercase tracking-[0.18em] text-primary font-semibold mb-4">
         {labels.eyebrow}

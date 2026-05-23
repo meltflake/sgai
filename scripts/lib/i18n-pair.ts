@@ -20,7 +20,7 @@
 // USAGE (programmatic — preserved for refresh pipelines):
 //
 //   import { findUnpairedFields } from './lib/i18n-pair';
-//   const issues = findUnpairedFields('src/data/policies.ts', { fields: ['title', 'description'], locales: ['en', 'ja'] });
+//   const issues = findUnpairedFields('src/data/policies.ts', { fields: ['title', 'description'], locales: ['en', 'ja', 'ko'] });
 //
 // USAGE (programmatic — new completeness API):
 //
@@ -33,7 +33,16 @@
 //   npx tsx scripts/lib/i18n-pair.ts --mode=completeness src/data/ecosystem.ts
 //   npx tsx scripts/lib/i18n-pair.ts --mode=both src/data/ecosystem.ts
 //   npx tsx scripts/lib/i18n-pair.ts --fields=title,description src/data/policies.ts
-//   npx tsx scripts/lib/i18n-pair.ts --locales=en,ja src/data/*.ts
+//   npx tsx scripts/lib/i18n-pair.ts --locales=en,ja,ko src/data/*.ts
+//   npx tsx scripts/lib/i18n-pair.ts --locales=en,ja,zh-tw,ko src/data/*.ts  # all five
+//
+// LOCALE CODES: pass Lang codes that mirror src/i18n/index.ts
+// (en, ja, zh-tw, ko). The CLI converts them to sibling suffixes via the
+// same `siblingSuffix` rule used by pickLocalized: 'zh-tw' → 'ZhTw'
+// (kebab-cased langs are split on '-' then each part capitalized),
+// 'ko' → 'Ko'. zh-tw is intentionally not enforced by the default gate
+// because zh-Hant renders via OpenCC runtime conversion (see
+// src/i18n/opencc.ts) — there's no `*ZhTw` data field requirement.
 //
 // Both modes respect the `i18n-allow-unpaired` annotation on the line
 // preceding the record's opening brace, which exempts that record from
@@ -94,10 +103,15 @@ const CJK_RE = /[一-鿿]/;
 const IGNORE_MARKER = 'i18n-allow-unpaired';
 
 /** Compute the sibling-field suffix for a locale. zh → '' (bare key);
- *  en → 'En'; ja → 'Ja'. Mirrors src/i18n/index.ts:siblingSuffix. */
+ *  en → 'En'; ja → 'Ja'; zh-tw → 'ZhTw'; ko → 'Ko'. Mirrors
+ *  src/i18n/index.ts:siblingSuffix — kebab-cased lang codes are split
+ *  on '-' and each segment capitalized. */
 function siblingSuffix(locale: string): string {
   if (locale === 'zh') return '';
-  return locale.charAt(0).toUpperCase() + locale.slice(1);
+  return locale
+    .split('-')
+    .map((p) => p.charAt(0).toUpperCase() + p.slice(1))
+    .join('');
 }
 
 // ── AST utilities ───────────────────────────────────────────────────────

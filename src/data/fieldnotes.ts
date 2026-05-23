@@ -3,45 +3,56 @@ export interface FieldNote {
   title: string;
   titleEn?: string;
   titleJa?: string;
+  titleKo?: string;
   date: string;
   source: string;
   sourceEn?: string;
   sourceJa?: string;
+  sourceKo?: string;
   tags: string[];
   tagsEn?: string[];
   tagsJa?: string[];
+  tagsKo?: string[];
   companyProfile: string;
   companyProfileEn?: string;
   companyProfileJa?: string;
+  companyProfileKo?: string;
   sections: {
     heading: string;
     headingEn?: string;
     headingJa?: string;
+    headingKo?: string;
     points: string[];
     pointsEn?: string[];
     pointsJa?: string[];
+    pointsKo?: string[];
     highlight?: string;
     highlightEn?: string;
     highlightJa?: string;
+    highlightKo?: string;
   }[];
   takeaway: string;
   takeawayEn?: string;
   takeawayJa?: string;
+  takeawayKo?: string;
 }
 
 export const fieldNotes: FieldNote[] = [
   {
     id: 'edb-meeting-ai-infra-2026-02',
     title: 'AI 创业公司与 EDB 会议纪要',
+    titleKo: 'AI 스타트업과 EDB 회의 기록',
     titleJa: 'AI スタートアップ企業と EDB の会議紀要',
     titleEn: 'Meeting Notes: AI Startup Meets EDB',
     date: '2026-02',
     source: '社区分享',
+    sourceKo: '커뮤니티 공유',
     sourceJa: 'コミュニティシェア',
     sourceEn: 'Community contribution',
     tags: ['EDB', 'EP 申请', '税务合规', '补贴政策', '公司注册'],
     tagsEn: ['EDB', 'EP application', 'Tax compliance', 'Grant programmes', 'Company incorporation'],
     companyProfile: 'AI 平台公司，ARR 接近 $100M，注册在新加坡，团队主要 remote，约 10 人',
+    companyProfileKo: 'AI 플랫폼 기업, ARR이 $100M에 근접, 싱가포르 등록, 팀은 주로 원격, 약 10명',
     companyProfileJa:
       'AI プラットフォーム企業、ARR が $100M に接近、シンガポールに登録、チームは主にリモート、約 10 人',
     companyProfileEn:
@@ -49,6 +60,7 @@ export const fieldNotes: FieldNote[] = [
     sections: [
       {
         heading: '公司属性判定：看股权结构，不看创始人国籍',
+        headingKo: '기업 속성 판정: 지분 구조를 보되, 창업자 국적은 보지 않음',
         headingJa: '企業属性の判定：株式構造を確認し、創業者の国籍は確認しない',
         headingEn: 'Company classification: shareholding structure, not founder nationality',
         points: [
@@ -62,11 +74,13 @@ export const fieldNotes: FieldNote[] = [
           'This classification determines whether you go down the headquarters-track route or require a special-handling pathway.',
         ],
         highlight: '看结构，不看护照',
+        highlightKo: '구조를 보되, 여권은 보지 않음',
         highlightJa: '構造を見て、パスポートを見ない',
         highlightEn: 'Structure, not passport',
       },
       {
         heading: 'EP 申请：正常走比找关系更顺',
+        headingKo: 'EP 신청: 정상 경로가 인맥 활용보다 더 순조로움',
         headingJa: 'EP 申請：通常のプロセスで申請する方が、人脈を頼るより円滑です',
         headingEn: 'EP applications: going through the front door beats relying on connections',
         points: [
@@ -86,6 +100,7 @@ export const fieldNotes: FieldNote[] = [
       },
       {
         heading: '真正的红线：团队单一性',
+        headingKo: '진정한 레드라인: 팀의 동질성',
         headingJa: '真の赤線：チームの単一性',
         headingEn: 'The actual red line: monocultural teams',
         points: [
@@ -101,11 +116,13 @@ export const fieldNotes: FieldNote[] = [
           'Monocultural companies rarely become truly international — this is a long-running observation from experience, not political correctness.',
         ],
         highlight: '多元化不是门面，是实质要求',
+        highlightKo: '다양성은 겉치레가 아니라 실질적 요구사항입니다',
         highlightJa: '多元化は見せかけではなく、実質的な要件です',
         highlightEn: 'Diversity is not window-dressing; it is a substantive requirement',
       },
       {
         heading: '对照案例：Manus 是特例',
+        headingKo: '참고 사례: Manus는 특례입니다',
         headingJa: '対照事例：Manus は特例です',
         headingEn: 'Counterexample: Manus is a special case',
         points: [
@@ -127,6 +144,7 @@ export const fieldNotes: FieldNote[] = [
       },
       {
         heading: '实际操作顺序：合规先于税收优惠',
+        headingKo: '실제 운영 순서: 합규가 세금 우대조치보다 먼저',
         headingJa: '実際の操作順序：コンプライアンスは税制優遇より先です',
         headingEn: 'Real-world sequencing: compliance before tax incentives',
         points: [
@@ -146,11 +164,13 @@ export const fieldNotes: FieldNote[] = [
           'Incentive policy rewards structures that already work; it is not designed to rescue broken structures.',
         ],
         highlight: '先合规，再拿优惠',
+        highlightKo: '먼저 합규, 그 다음 우대조치',
         highlightJa: '先にコンプライアンスを、その後優遇措置を受ける',
         highlightEn: 'Compliance first, incentives second',
       },
       {
         heading: '性价比高的两个政策',
+        headingKo: '가성비 높은 두 가지 정책',
         headingJa: 'コストパフォーマンスが高い 2 つの政策',
         headingEn: 'Two high-leverage programmes',
         points: [
@@ -166,6 +186,7 @@ export const fieldNotes: FieldNote[] = [
       },
       {
         heading: '公司注册与董事',
+        headingKo: '기업 등록 및 이사',
         headingJa: '企業登録と取締役',
         headingEn: 'Company incorporation and directors',
         points: [
@@ -184,6 +205,8 @@ export const fieldNotes: FieldNote[] = [
     ],
     takeaway:
       '新加坡的政策，是为"已经跑起来、但不想在结构上翻车"的公司准备的。如果还在验证 PMF，政府不重要。但当风险从"能不能做成"变成"结构、合规、长期可持续性"时，这种对话就有价值了。',
+    takeawayKo:
+      '싱가포르의 정책은 이미 시작했지만 구조적 리스크를 피하고 싶은 기업을 위해 준비된 것입니다. 아직 PMF를 검증 중이라면 정부는 중요하지 않습니다. 하지만 위험이 「할 수 있을까」에서 「구조, 합규, 장기 지속 가능성」으로 변할 때, 이러한 대화는 가치가 있습니다.',
     takeawayJa:
       'シンガポールの政策は、「既に動き始めているが、構造的な失敗を避けたい」という企業のために用意されています。まだ PMF を検証している段階なら、政府は重要ではありません。しかし、リスクが「実現可能性」から「構造、コンプライアンス、長期的な持続可能性」へと変わるとき、このような対話には価値があります。',
     takeawayEn:

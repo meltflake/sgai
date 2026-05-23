@@ -12,8 +12,9 @@
 // the JA homepage shipped — see CLAUDE.md.
 
 import type { Lang } from '~/i18n';
+import { toTraditional } from '~/i18n/opencc';
 
-const TYPE_MAP: Record<Lang, Record<string, string>> = {
+const TYPE_MAP: Partial<Record<Lang, Record<string, string>>> = {
   en: {
     'Oral Answers to Questions': 'Oral Answers',
     'Written Answers to Questions': 'Written Answers',
@@ -32,9 +33,15 @@ const TYPE_MAP: Record<Lang, Record<string, string>> = {
     Budget: '予算討論',
     Motions: '動議',
   },
+  ko: {
+    'Oral Answers to Questions': '구두 답변',
+    'Written Answers to Questions': '서면 답변',
+    Budget: '예산 토론',
+    Motions: '동의안',
+  },
 };
 
-const TOPIC_LABELS: Record<Lang, Record<string, string>> = {
+const TOPIC_LABELS: Partial<Record<Lang, Record<string, string>>> = {
   en: {
     'AI Economy & Industry': 'AI Economy & Industry',
     'AI & Employment': 'AI & Employment',
@@ -74,18 +81,44 @@ const TOPIC_LABELS: Record<Lang, Record<string, string>> = {
     'AI Strategy': 'AI 戦略',
     'Deepfakes & Disinformation': 'ディープフェイクと偽情報',
   },
+  ko: {
+    'AI Economy & Industry': 'AI 경제 및 산업',
+    'AI & Employment': 'AI 및 고용',
+    'AI Governance & Regulation': 'AI 거버넌스 및 규제',
+    'AI & National Security': 'AI 및 국가 안보',
+    'AI in Public Sector': '공공 부문 AI',
+    'AI Infrastructure & Research': 'AI 인프라 및 연구',
+    'AI Safety & Ethics': 'AI 안전 및 윤리',
+    'AI in Education': '교육 분야 AI',
+    'AI in Healthcare': '의료 분야 AI',
+    'AI Strategy': 'AI 전략',
+    'Deepfakes & Disinformation': '딥페이크 및 허위정보',
+  },
 };
+
+/** Resolve a label from a Partial<Record<Lang, ...>> table.
+ *  Falls back zh→en→raw key; for zh-tw, derives from zh via OpenCC if no
+ *  hand entry exists (consistent with pickLocalized's behaviour). */
+function resolveLabel(table: Partial<Record<Lang, Record<string, string>>>, key: string, lang: Lang): string {
+  const direct = table[lang]?.[key];
+  if (direct) return direct;
+  if (lang === 'zh-tw') {
+    const zhVal = table.zh?.[key];
+    if (zhVal) return toTraditional(zhVal);
+  }
+  return table.en?.[key] || key;
+}
 
 /** Look up the localized debate type label, falling back to the raw
  *  English source string when the key isn't in the table. */
 export function debateTypeLabel(type: string, lang: Lang): string {
-  return TYPE_MAP[lang]?.[type] || TYPE_MAP.en[type] || type;
+  return resolveLabel(TYPE_MAP, type, lang);
 }
 
 /** Look up the localized debate topic label, falling back to the raw
  *  English source string when the key isn't in the table. */
 export function debateTopicLabel(topic: string, lang: Lang): string {
-  return TOPIC_LABELS[lang]?.[topic] || TOPIC_LABELS.en[topic] || topic;
+  return resolveLabel(TOPIC_LABELS, topic, lang);
 }
 
 /** Type / topic maps as records keyed by lang. Surface for callers that

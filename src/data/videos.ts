@@ -1,23 +1,29 @@
 // 新加坡 AI 视频观点数据
 
+import { toTraditional } from '~/i18n/opencc';
+
 export interface VideoItem {
   id: string;
   title: string;
   titleEn?: string;
   titleJa?: string;
+  titleKo?: string;
   speaker: string;
   speakerTitle: string;
   speakerTitleEn?: string;
   speakerTitleJa?: string;
+  speakerTitleKo?: string;
   speakerType: 'government' | 'academic' | 'industry';
   date: string;
   duration: string;
   summary: string;
   summaryEn?: string;
   summaryJa?: string;
+  summaryKo?: string;
   topic: string;
   topicEn?: string;
   topicJa?: string;
+  topicKo?: string;
   youtubeUrl: string;
   channel: string;
   /** YYYY-MM-DD; the date this record was first added to the repo. Used by
@@ -31,55 +37,67 @@ export interface VideoCategory {
   name: string;
   nameEn?: string;
   nameJa?: string;
+  nameKo?: string;
   icon: string;
   description: string;
   descriptionEn?: string;
   descriptionJa?: string;
+  descriptionKo?: string;
 }
 
 export const VIDEO_CATEGORIES: VideoCategory[] = [
   {
     name: 'AI 战略与愿景',
+    nameKo: 'AI 전략과 비전',
     nameJa: 'AI 戦略とビジョン',
     nameEn: 'AI Strategy & Vision',
     icon: 'tabler:target',
     description: '国家 AI 战略规划、Smart Nation 愿景',
+    descriptionKo: '국가 AI 전략 수립, Smart Nation 비전',
     descriptionJa: '国家 AI 戦略計画、Smart Nation ビジョン',
     descriptionEn: 'National AI strategy, Smart Nation vision',
   },
   {
     name: 'AI 治理与监管',
+    nameKo: 'AI 거버넌스와 규제',
     nameJa: 'AI ガバナンスと規制',
     nameEn: 'AI Governance & Regulation',
     icon: 'tabler:scale',
     description: 'AI 伦理、法规、安全框架',
+    descriptionKo: 'AI 윤리, 법규, 안전 프레임워크',
     descriptionJa: 'AI 倫理、法規、セーフティフレームワーク',
     descriptionEn: 'AI ethics, regulation, safety frameworks',
   },
   {
     name: 'AI 人才与教育',
+    nameKo: 'AI 인재와 교육',
     nameJa: 'AI 人材と教育',
     nameEn: 'AI Talent & Education',
     icon: 'tabler:school',
     description: 'AI 人才培养、教育计划',
+    descriptionKo: 'AI 인재 양성, 교육 계획',
     descriptionJa: 'AI 人材育成、教育計画',
     descriptionEn: 'AI talent development, education programmes',
   },
   {
     name: 'AI 产业与应用',
+    nameKo: 'AI 산업과 응용',
     nameJa: 'AI 産業と応用',
     nameEn: 'AI Industry & Applications',
     icon: 'tabler:building',
     description: '行业应用、企业实践、创业',
+    descriptionKo: '산업 응용, 기업 실무, 스타트업',
     descriptionJa: '業界応用、企業実践、起業',
     descriptionEn: 'Industry applications, enterprise practice, entrepreneurship',
   },
   {
     name: '国际合作与对标',
+    nameKo: '국제 협력과 벤치마크',
     nameJa: '国際協力とベンチマーク',
     nameEn: 'International Cooperation & Benchmarking',
     icon: 'tabler:world',
     description: '跨国合作、国际会议、区域比较',
+    descriptionKo: '국제 협력, 국제 회의, 지역 비교',
     descriptionJa: 'クロスボーダー協力、国際会議、地域比較',
     descriptionEn: 'Cross-border cooperation, international forums, regional comparison',
   },
@@ -103,9 +121,17 @@ export const SPEAKER_TYPE_LABELS_JA: Record<string, string> = {
   industry: '産業界リーダー',
 };
 
-export function pickSpeakerTypeLabels(lang: 'zh' | 'en' | 'ja'): Record<string, string> {
+/** Accept any Lang code from src/i18n. zh-tw runs the zh labels through
+ *  OpenCC for Traditional Chinese rendering; ko reuses the en labels
+ *  (Korean readers' English literacy is generally higher than their
+ *  Chinese). When you author a dedicated `SPEAKER_TYPE_LABELS_KO`
+ *  hand-translation, swap the en branch out. */
+export function pickSpeakerTypeLabels(lang: string): Record<string, string> {
   if (lang === 'ja') return SPEAKER_TYPE_LABELS_JA;
-  if (lang === 'en') return SPEAKER_TYPE_LABELS_EN;
+  if (lang === 'en' || lang === 'ko') return SPEAKER_TYPE_LABELS_EN;
+  if (lang === 'zh-tw') {
+    return Object.fromEntries(Object.entries(SPEAKER_TYPE_LABELS).map(([k, v]) => [k, toTraditional(v)]));
+  }
   return SPEAKER_TYPE_LABELS;
 }
 
@@ -113,10 +139,12 @@ export const videos: VideoItem[] = [
   {
     id: 'v061',
     title: 'AI Engineer Singapore Day 1：部长开幕 + OpenAI / Google / Vercel / Cursor 主题',
+    titleKo: 'AI Engineer Singapore Day 1: 장관 개막 + OpenAI / Google / Vercel / Cursor 주제',
     titleEn: 'AIE Singapore Day 1 ft. Minister, NanoClaw, OpenAI, Google, Vercel, Cursor & more',
     titleJa: 'AIE シンガポール Day 1：閣僚基調講演 + OpenAI / Google / Vercel / Cursor 主要セッション',
     speaker: 'AI Engineer Singapore',
     speakerTitle: 'AI Engineer 首届亚洲峰会（65Labs 主办）',
+    speakerTitleKo: 'AI Engineer 첫 아시아 정상회의(65Labs 주최)',
     speakerTitleEn: 'AI Engineer first Asia edition (organised by 65Labs)',
     speakerTitleJa: 'AI Engineer 初のアジア版（主催：65Labs）',
     speakerType: 'industry',
@@ -124,11 +152,14 @@ export const videos: VideoItem[] = [
     duration: '08:00:00',
     summary:
       'AI Engineer Singapore Day 1 全程：部长开幕、NanoClaw 演示，以及 OpenAI、Google、Vercel、Cursor 等头部团队的工程实战分享。新加坡首届 AI Engineer 峰会，定位「工程师 × AI」实操层。',
+    summaryKo:
+      'AI Engineer Singapore Day 1 전체 진행: 장관 개막, NanoClaw 데모, 그리고 OpenAI, Google, Vercel, Cursor 등 선도 팀의 엔지니어링 실전 경험 공유. 싱가포르 첫 AI Engineer 정상회의, 「엔지니어 × AI」실무 레벨로 정위.',
     summaryEn:
       "Day 1 of AI Engineer Singapore — the Minister's opening keynote, NanoClaw demos, and engineering-focused sessions from OpenAI, Google, Vercel, Cursor and other leading teams. Singapore's first AI Engineer summit, positioned at the engineer × AI practitioner layer.",
     summaryJa:
       'AI Engineer シンガポール Day 1 全編。閣僚の開幕基調、NanoClaw のデモ、そして OpenAI、Google、Vercel、Cursor などトップチームによるエンジニアリング実戦セッション。シンガポール初の AI Engineer サミット、「エンジニア × AI」実装層に焦点を当てています。',
     topic: 'AI 产业与应用',
+    topicKo: 'AI 산업과 응용',
     topicEn: 'AI Industry & Applications',
     topicJa: 'AI 産業と応用',
     youtubeUrl: 'https://www.youtube.com/watch?v=_xQnSNlBP_w',
@@ -138,10 +169,12 @@ export const videos: VideoItem[] = [
   {
     id: 'v062',
     title: 'AI Engineer Singapore Day 2：Google DeepMind / Cloudflare / Arize 机器人与运行时主题',
+    titleKo: 'AI Engineer Singapore Day 2: Google DeepMind / Cloudflare / Arize 로봇 및 런타임 주제',
     titleEn: 'AIE Singapore Day 2 ft. Google DeepMind, OpenClaw, Adaption, Arize, Cloudflare, Robot Company & more',
     titleJa: 'AIE シンガポール Day 2：Google DeepMind / Cloudflare / Arize 等ロボット・ランタイム主題',
     speaker: 'AI Engineer Singapore',
     speakerTitle: 'AI Engineer 首届亚洲峰会（65Labs 主办）',
+    speakerTitleKo: 'AI Engineer 첫 아시아 정상회의(65Labs 주최)',
     speakerTitleEn: 'AI Engineer first Asia edition (organised by 65Labs)',
     speakerTitleJa: 'AI Engineer 初のアジア版（主催：65Labs）',
     speakerType: 'industry',
@@ -149,11 +182,14 @@ export const videos: VideoItem[] = [
     duration: '08:00:00',
     summary:
       'AI Engineer Singapore Day 2 全程：Google DeepMind、OpenClaw、Adaption、Arize、Cloudflare、Robot Company 等团队主题分享。Day 2 偏机器人、模型可观测性与运行时栈。',
+    summaryKo:
+      'AI Engineer Singapore Day 2 전체 진행: Google DeepMind, OpenClaw, Adaption, Arize, Cloudflare, Robot Company 등 팀의 주제 발표. Day 2는 로봇, 모델 관측성, 런타임 스택에 치중.',
     summaryEn:
       'Day 2 of AI Engineer Singapore — sessions from Google DeepMind, OpenClaw, Adaption, Arize, Cloudflare, Robot Company and others. Day 2 leans toward robotics, model observability, and the runtime stack.',
     summaryJa:
       'AI Engineer シンガポール Day 2 全編。Google DeepMind、OpenClaw、Adaption、Arize、Cloudflare、Robot Company などのセッション。Day 2 はロボティクス、モデル可観測性、ランタイムスタックに重点。',
     topic: 'AI 产业与应用',
+    topicKo: 'AI 산업과 응용',
     topicEn: 'AI Industry & Applications',
     topicJa: 'AI 産業と応用',
     youtubeUrl: 'https://www.youtube.com/watch?v=m12vGjfbNlo',
@@ -163,21 +199,26 @@ export const videos: VideoItem[] = [
   {
     id: 'v059',
     title: '李智陞：在教育中谨慎、有目的地引入 AI',
+    titleKo: 'Lee Chee Seng: 교육에서 신중하고 목적 있게 AI를 도입',
     titleEn: 'Education Minister Desmond Lee: A Calibrated, Purposeful Approach to AI in Education',
     titleJa: 'デズモンド・リー教育大臣：教育におけるAI導入は慎重かつ目的を持って',
     speaker: 'Desmond Lee',
     speakerTitle: '新加坡教育部长',
+    speakerTitleKo: '싱가포르 교육부장관',
     speakerTitleEn: 'Minister for Education, Singapore',
     speakerTitleJa: 'シンガポール教育大臣',
     speakerType: 'government',
     date: '2026-05-06',
     duration: '34:25',
     summary: '新加坡教育部以学习科学研究为依据，采取「校准式」推进——AI 仅在服务于教学目标和学生发展时才被引入课堂。',
+    summaryKo:
+      '싱가포르 교육부는 학습 과학 연구에 기초해 「조정식」으로 추진—AI는 교수 목표와 학생 발전에 봉사할 때만 교실에 도입됨.',
     summaryEn:
       "Singapore's Ministry of Education takes a calibrated, evidence-led approach to AI in schools: tools are introduced only when they serve clear educational objectives and student development.",
     summaryJa:
       'シンガポール教育省は、学習科学の研究を踏まえた「校正型」のアプローチを採用しており、教育目標と生徒の発達に資する場合にのみAIを教室に導入します。',
     topic: 'AI 人才与教育',
+    topicKo: 'AI 인재와 교육',
     topicEn: 'AI Talent & Education',
     topicJa: 'AI 人材と教育',
     youtubeUrl: 'https://www.youtube.com/watch?v=ERhfED1fIfY',
@@ -187,21 +228,26 @@ export const videos: VideoItem[] = [
   {
     id: 'v060',
     title: '马斯戈：AI 推进不应遗漏弱势群体',
+    titleKo: 'Masagos Zulkifli: AI 추진이 취약계층을 빠뜨려서는 안 됨',
     titleEn: 'Masagos: No Vulnerable Group Should Be Left Behind in AI Push',
     titleJa: 'マサゴス：AI推進で脆弱な層を取り残してはならない（サンガレン・シンポジウム）',
     speaker: 'Masagos Zulkifli',
     speakerTitle: '社会及家庭发展部长',
+    speakerTitleKo: '사회 및 가족 발전부 장관',
     speakerTitleEn: 'Minister for Social and Family Development, Singapore',
     speakerTitleJa: 'シンガポール社会・家族発展大臣',
     speakerType: 'government',
     date: '2026-05-08',
     duration: '02:33',
     summary: '社会及家庭发展部长马斯戈在圣加仑论坛上强调，AI 推进必须兼顾弱势群体，避免技术红利只惠及少数人。',
+    summaryKo:
+      '사회 및 가족 발전부 장관 Masagos Zulkifli는 St. Gallen Forum에서 AI 추진이 취약계층을 고려해야 하며, 기술 혜택이 소수에게만 가지 않아야 한다고 강조했다.',
     summaryEn:
       'Minister for Social and Family Development Masagos Zulkifli, speaking at the St Gallen Symposium, stressed that AI rollouts must include vulnerable groups so that the technology gains do not bypass them.',
     summaryJa:
       '社会・家族発展大臣マサゴス・ズルキフリは、サンガレン・シンポジウムで、AI推進は脆弱な層を含めるべきで、技術の恩恵が一部だけに偏ってはならないと強調しました。',
     topic: 'AI 治理与监管',
+    topicKo: 'AI 거버넌스와 규제',
     topicEn: 'AI Governance & Regulation',
     topicJa: 'AI ガバナンスと規制',
     youtubeUrl: 'https://www.youtube.com/watch?v=D8yhiLHzaTA',
@@ -211,21 +257,26 @@ export const videos: VideoItem[] = [
   {
     id: 'v055',
     title: 'AI培训课程招生翻倍增长',
+    titleKo: 'AI 교육 과정 모집 두 배 증가',
     titleJa: 'AI 研修コース募集が倍増',
     titleEn: 'Some training providers see enrolments in AI courses double',
     speaker: 'CNA',
     speakerTitle: '亚洲新闻台报道',
+    speakerTitleKo: '아시아 뉴스 방송 보도',
     speakerTitleJa: 'アジアニュース放送による報道',
     speakerTitleEn: 'CNA report',
     speakerType: 'industry',
     date: '2026-05-02',
     duration: '02:55',
     summary: '培训机构报告AI课程招生大幅增长，部分机构招生翻倍。需要加强雇主支持以将这些技能转化为工作能力。',
+    summaryKo:
+      '교육 기관들이 AI 과정 모집이 크게 증가했다고 보도하고 있으며, 일부 기관의 모집은 두 배 증가함. 이러한 기술을 직무 능력으로 전환하기 위해서는 고용주 지원을 강화할 필요가 있음.',
     summaryJa:
       '研修機関が AI コース募集の大幅な増加を報告し、一部の機関では募集が倍増している。これらのスキルを実務能力に転換するために、雇用者による支援の強化が必要である。',
     summaryEn:
       'Training providers report sharp rises in AI course enrolments, with some seeing numbers double. Stronger employer support is needed to translate AI skills into workplace capabilities.',
     topic: 'AI 人才与教育',
+    topicKo: 'AI 인재와 교육',
     topicJa: 'AI 人材と教育',
     topicEn: 'AI Talent & Education',
     youtubeUrl: 'https://www.youtube.com/watch?v=Th-YdvkvvpI',
@@ -234,10 +285,12 @@ export const videos: VideoItem[] = [
   {
     id: 'v056',
     title: '劳动节集会：黄循财总理承诺 AI 时代的「新更好」工作',
+    titleKo: '노동절 집회: 황순재 총리가 약속한 AI 시대의 「새롭고 더 나은」일자리',
     titleJa: '労働節集会：黄循財首相が AI 時代の「新たにして一層良い」仕事を約束',
     titleEn: "May Day Rally: PM Wong pledges 'new and better' jobs as AI transforms Singapore's economy",
     speaker: 'Lawrence Wong',
     speakerTitle: '新加坡总理',
+    speakerTitleKo: '싱가포르 총리',
     speakerTitleJa: 'シンガポール総理',
     speakerTitleEn: 'Prime Minister of Singapore',
     speakerType: 'government',
@@ -245,11 +298,14 @@ export const videos: VideoItem[] = [
     duration: '04:15',
     summary:
       '新加坡总理黄循财在劳动节集会上承诺在 AI 驱动的经济转型中创造更好的就业机会，同时呼吁国民学习和应用这项技术。',
+    summaryKo:
+      '싱가포르 총리 황순재는 노동절 집회에서 AI 주도 경제 변환 속에서 더 나은 고용 기회를 창출할 것을 약속했으며, 국민들이 이 기술을 학습하고 활용할 것을 촉구했습니다.',
     summaryJa:
       'シンガポール総理黄循財は労働節集会で、AI 駆動経済への転型の中で、より良い雇用機会を創出することを約束し、国民に対してこの技術の学習と応用を呼びかけた。',
     summaryEn:
       'Prime Minister Lawrence Wong pledges better job opportunities amid AI-driven economic transformation, while calling on Singaporeans to learn and adopt the technology.',
     topic: 'AI 战略与愿景',
+    topicKo: 'AI 전략과 비전',
     topicJa: 'AI 戦略とビジョン',
     topicEn: 'AI Strategy & Vision',
     youtubeUrl: 'https://www.youtube.com/watch?v=cRSlrDbcygw',
@@ -258,10 +314,12 @@ export const videos: VideoItem[] = [
   {
     id: 'v057',
     title: '黄循财总理五一演讲：没有新加坡人会被落下',
+    titleKo: '황순재 총리 5월 1일 연설: 싱가포르인 누구도 뒤처지지 않을 것',
     titleJa: '黄循財首相五一演説：シンガポール人が取り残されることはない',
     titleEn: "PM Wong's May Day Rally speech: 'No Singaporean will be left behind'",
     speaker: 'Lawrence Wong',
     speakerTitle: '新加坡总理',
+    speakerTitleKo: '싱가포르 총리',
     speakerTitleJa: 'シンガポール総理',
     speakerTitleEn: 'Prime Minister of Singapore',
     speakerType: 'government',
@@ -269,11 +327,14 @@ export const videos: VideoItem[] = [
     duration: '48:14',
     summary:
       '新加坡总理黄循财在五一劳动节大会上表示，政府虽然无法保护每个工作岗位，但会保护每个工人；计划扩大公司培训委员会应对AI转型。',
+    summaryKo:
+      '싱가포르 총리 황순재는 5월 1일 노동절 대회에서 정부가 모든 일자리를 보호할 수는 없지만 모든 노동자를 보호할 것이라고 밝혔으며, 회사 훈련 위원회를 확대하여 AI 변환에 대응할 계획이라고 했습니다.',
     summaryJa:
       'シンガポール総理黄循財は五一労働節大会で、政府はすべての仕事を保護することはできないが、すべての労働者を保護することを表明した。また、AI 転型に対応するために公式訓練評議会の拡大を計画している。',
     summaryEn:
       'PM Lawrence Wong stated at the May Day Rally that while the Government cannot protect every job amid AI disruption, it will protect every worker by scaling up company training committees across sectors.',
     topic: 'AI 战略与愿景',
+    topicKo: 'AI 전략과 비전',
     topicJa: 'AI 戦略とビジョン',
     topicEn: 'AI Strategy & Vision',
     youtubeUrl: 'https://www.youtube.com/watch?v=dn1syFajWw0',
@@ -282,10 +343,12 @@ export const videos: VideoItem[] = [
   {
     id: 'v058',
     title: '跟随 AI 学徒 Jianzuo 深度技能阶段的一天',
+    titleKo: 'AI 견습생 Jianzuo의 심화 기술 단계 하루를 따라가다',
     titleJa: 'AI 学徒 Jianzuo と共に深度スキル段階の一日を体験',
     titleEn: 'Follow AI Apprentice Jianzuo Through a Day in the Deep-Skilling Phase of AIAP',
     speaker: 'AI Singapore',
     speakerTitle: 'AI 研究与人才培养机构',
+    speakerTitleKo: 'AI 연구 및 인재 양성 기관',
     speakerTitleJa: 'AI 研究と人材育成機関',
     speakerTitleEn: 'AI research and talent-development organisation',
     speakerType: 'academic',
@@ -293,11 +356,14 @@ export const videos: VideoItem[] = [
     duration: '01:16',
     summary:
       '展示 AI Singapore 的 AI 学徒计划（AIAP）深度技能阶段，通过结构化培训和指导导师制，让学员掌握应用 AI 知识和 AI 工程能力。',
+    summaryKo:
+      'AI Singapore의 AI 견습 프로그램(AIAP) 심화 기술 단계를 선보이며, 구조화된 훈련과 지도 멘토링을 통해 학생들이 AI 지식 응용 및 AI 엔지니어링 능력을 습득할 수 있도록 합니다.',
     summaryJa:
       'AI Singapore の AI 学徒計画（AIAP）の深度スキル段階を展示し、体系的な研修と指導メンターシップを通じて、学習者が AI 知識の応用と AI エンジニアリング能力を習得する方法を示す。',
     summaryEn:
       "Showcases AI Singapore's AI Apprenticeship Programme (AIAP) Deep-Skilling Phase, where apprentices gain applied AI knowledge and core AI Engineering capabilities through structured training and guided mentorship.",
     topic: 'AI 人才与教育',
+    topicKo: 'AI 인재와 교육',
     topicJa: 'AI 人材と教育',
     topicEn: 'AI Talent & Education',
     youtubeUrl: 'https://www.youtube.com/watch?v=JKsot8dxSeo',
@@ -306,10 +372,12 @@ export const videos: VideoItem[] = [
   {
     id: 'v053',
     title: '逾 250 名 AI 专家齐聚新加坡 共商全球测试标准',
+    titleKo: '250명 이상의 AI 전문가가 싱가포르에 모여 전 세계 테스트 표준을 협의합니다.',
     titleJa: '250 名を超える AI 専門家がシンガポールに集まり、グローバルテスト標準について協議',
     titleEn: 'Over 250 AI experts gather in Singapore to set global testing standards',
     speaker: 'CNA',
     speakerTitle: '亚洲新闻台报道',
+    speakerTitleKo: '아시아 뉴스 채널 보도',
     speakerTitleJa: 'アジアニュース放送による報道',
     speakerTitleEn: 'CNA report',
     speakerType: 'industry',
@@ -317,11 +385,14 @@ export const videos: VideoItem[] = [
     duration: '03:46',
     summary:
       '新加坡提出的 AI 安全测试标准成为 ISO 国际会议焦点，逾 250 名来自美、中、日、韩等国的专家与会，这是该标准工作组首次在东盟举行。目前已发布或在研的 AI 标准近百项，是一年前的三倍。',
+    summaryKo:
+      '싱가포르가 제안한 AI 안전 테스트 표준이 ISO 국제 회의의 초점이 되었으며, 미국, 중국, 일본, 한국 등 250명 이상의 전문가가 참석했습니다. 이는 해당 표준 워킹 그룹이 ASEAN에서 처음 개최한 것입니다. 현재 발행되었거나 연구 중인 AI 표준은 거의 100개로, 1년 전의 3배입니다.',
     summaryJa:
       'シンガポールが提唱した AI セーフティテスト標準は ISO 国際会議の焦点となり、米国、中国、日本、韓国など各国から 250 名を超える専門家が参加した。これは同標準ワーキンググループが東南アジアで初めて開催された。現在発表されているか開発中の AI 標準はほぼ 100 項目であり、1 年前の 3 倍である。',
     summaryEn:
       "Singapore-proposed AI safety testing standards take centre stage at an ISO international meeting, drawing over 250 experts from the US, China, Japan, South Korea and beyond — the working group's first session in ASEAN. Nearly 100 AI standards are now published or in development, triple the count of a year ago.",
     topic: 'AI 治理与监管',
+    topicKo: 'AI 거버넌스 및 규제',
     topicJa: 'AI ガバナンスと規制',
     topicEn: 'AI Governance & Regulation',
     youtubeUrl: 'https://www.youtube.com/watch?v=4u0eyvFHSuI',
@@ -330,10 +401,12 @@ export const videos: VideoItem[] = [
   {
     id: 'v054',
     title: '新加坡 ONE Pass 新增 AI 与科技赛道 吸引全球顶尖人才',
+    titleKo: '싱가포르 ONE Pass가 AI 및 기술 트랙을 신규 추가하여 전 세계 최고 수준의 인재를 유치합니다',
     titleJa: 'シンガポール ONE Pass に AI とテクノロジートラックを新設、グローバルトップ人材を吸引',
     titleEn: "Singapore's ONE Pass adds AI and tech tracks to attract top global talent",
     speaker: 'CNA',
     speakerTitle: '亚洲新闻台报道',
+    speakerTitleKo: '아시아 뉴스 채널 보도',
     speakerTitleJa: 'アジアニュース放送による報道',
     speakerTitleEn: 'CNA report',
     speakerType: 'industry',
@@ -341,11 +414,14 @@ export const videos: VideoItem[] = [
     duration: '02:54',
     summary:
       'ONE Pass 新增 AI 与科技赛道，自 2023 年推出以来已吸引 8,000 余名专业人才。新版放宽条件、认可股权激励，初创与高成长公司更易引才。',
+    summaryKo:
+      'ONE Pass에 AI와 기술 트랙이 추가되었습니다. 2023년 출시 이후 8,000명 이상의 전문가 인재를 유치했습니다. 새 버전은 조건을 완화하고 주식 인센티브를 인정하여 초기 기업과 고성장 기업이 더 쉽게 인재를 영입할 수 있습니다.',
     summaryJa:
       'ONE Pass は AI とテクノロジートラックを新設し、2023 年の立ち上げ以来 8,000 名を超える専門人材を吸引している。新版は条件を緩和し、株式インセンティブを認知し、スタートアップと高成長企業がより容易に人材を引き付けることができるようにした。',
     summaryEn:
       'ONE Pass adds AI and tech tracks; since launching in 2023 it has drawn over 8,000 professionals. The new version relaxes criteria and recognises equity compensation, making it easier for startups and high-growth firms to attract talent.',
     topic: 'AI 人才与教育',
+    topicKo: 'AI 인재 및 교육',
     topicJa: 'AI 人材と教育',
     topicEn: 'AI Talent & Education',
     youtubeUrl: 'https://www.youtube.com/watch?v=PmA-WbsHVnE',
@@ -354,21 +430,26 @@ export const videos: VideoItem[] = [
   {
     id: 'v001',
     title: '王乙康谈 AI、基因筛查与超老龄化新加坡的准备',
+    titleKo: 'Ong Ye Kung이 AI, 유전자 검사, 초고령화 싱가포르의 준비에 대해 논의합니다',
     titleJa: '王乙康氏が AI、遺伝子スクリーニング、超高齢化シンガポールの準備について語る',
     titleEn: 'Ong Ye Kung on AI, genetic screening and preparing for a super-aged Singapore',
     speaker: 'Ong Ye Kung',
     speakerTitle: '新加坡卫生部长',
+    speakerTitleKo: '싱가포르 보건부 장관',
     speakerTitleJa: 'シンガポール衛生大臣',
     speakerTitleEn: 'Minister for Health, Singapore',
     speakerType: 'government',
     date: '2026-03-04',
     duration: '30:36',
     summary: '卫生部长王乙康深入探讨 AI 在医疗保健中的应用以及新加坡应对超老龄社会的策略。',
+    summaryKo:
+      '보건부 장관 Ong Ye Kung이 의료 보건 분야의 AI 응용 및 초고령 사회에 대한 싱가포르의 대응 전략을 심층적으로 논의합니다.',
     summaryJa:
       '衛生大臣王乙康は、医療におけるAIの応用および超高齢社会に対応するためのシンガポールの戦略について深く掘り下げて論じた。',
     summaryEn:
       "Health Minister Ong Ye Kung talks through AI applications in healthcare and Singapore's strategy for a super-aged society.",
     topic: 'AI 产业与应用',
+    topicKo: 'AI 산업 및 응용',
     topicJa: 'AI 産業と応用',
     topicEn: 'AI Industry & Applications',
     youtubeUrl: 'https://www.youtube.com/watch?v=ExrOgIkoE_A',
@@ -377,21 +458,26 @@ export const videos: VideoItem[] = [
   {
     id: 'v002',
     title: '新加坡国家 AI 影响计划: 支持万家企业、十万劳动者',
+    titleKo: '싱가포르 국가 AI 임팩트 계획: 만 개 기업과 십만 명 근로자 지원',
     titleJa: 'シンガポール国家 AI インパクト計画：1 万社、10 万労働者を支援',
     titleEn: "Singapore's National AI Impact Plan: supporting 10,000 firms and 100,000 workers",
     speaker: 'Josephine Teo',
     speakerTitle: '新加坡数码发展及新闻部长',
+    speakerTitleKo: '싱가포르 디지털 발전 및 뉴스 장관',
     speakerTitleJa: 'シンガポール デジタル開発及びニュース大臣',
     speakerTitleEn: 'Minister for Digital Development and Information, Singapore',
     speakerType: 'government',
     date: '2026-03-02',
     duration: '02:45',
     summary: '杨莉明部长宣布国家 AI 影响计划,目标在 2029 年前培训 10 万名 AI 人才并支持 1 万家企业。',
+    summaryKo:
+      'Josephine Teo 장관이 국가 AI 임팩트 계획을 발표했습니다. 목표는 2029년 전까지 100,000명의 AI 인재를 교육하고 10,000개 기업을 지원하는 것입니다.',
     summaryJa:
       '楊莉明大臣は国家 AI インパクト計画を発表し、2029 年までに 10 万名の AI 人材を育成し、1 万社の企業を支援することを目標とした。',
     summaryEn:
       'Minister Josephine Teo announces the National AI Impact Plan, targeting training of 100,000 AI professionals and support for 10,000 firms by 2029.',
     topic: 'AI 人才与教育',
+    topicKo: 'AI 인재 및 교육',
     topicJa: 'AI 人材と教育',
     topicEn: 'AI Talent & Education',
     youtubeUrl: 'https://www.youtube.com/watch?v=HcA5d8MaCHI',
@@ -400,21 +486,26 @@ export const videos: VideoItem[] = [
   {
     id: 'v003',
     title: '人工智能成为新韩合作共同增长引擎',
+    titleKo: '인공지능이 싱가포르-한국 협력의 공동 성장 엔진이 되다',
     titleJa: '人工知能がシンガポール・韓国協力の共同成長エンジンに',
     titleEn: 'AI becomes a shared growth engine for Singapore-South Korea cooperation',
     speaker: 'Vivian Balakrishnan',
     speakerTitle: '新加坡外交部长',
+    speakerTitleKo: '싱가포르 외교 장관',
     speakerTitleJa: 'シンガポール外交部長',
     speakerTitleEn: 'Minister for Foreign Affairs, Singapore',
     speakerType: 'government',
     date: '2026-03-02',
     duration: '15:35',
     summary: '新韩 AI 连接峰会上,两国宣布 3 亿美元 AI 合作伙伴关系,共同推进 AI 研发与产业落地。',
+    summaryKo:
+      '싱가포르-한국 AI 연결 정상회담에서 양국은 3억 달러 규모의 AI 파트너십을 발표했으며, AI 연구 개발과 산업 상용화를 공동 추진하기로 합니다.',
     summaryJa:
       'シンガポール・韓国 AI コネクションサミットで、両国は 3 億ドルの AI パートナーシップを発表し、AI 研究開発と産業応用を共同推進する。',
     summaryEn:
       'At the Singapore-South Korea AI Connectivity Summit, the two countries announce a US$300 million AI partnership to jointly advance AI R&D and industrial deployment.',
     topic: '国际合作与对标',
+    topicKo: '국제 협력과 벤치마크',
     topicJa: '国際協力とベンチマーク',
     topicEn: 'International Cooperation & Benchmarking',
     youtubeUrl: 'https://www.youtube.com/watch?v=5ls9OtznVBc',
@@ -423,21 +514,26 @@ export const videos: VideoItem[] = [
   {
     id: 'v004',
     title: '杨莉明呼吁各国主动应对代理型 AI 治理风险',
+    titleKo: '양리밍이 각국에 에이전트형 AI 거버넌스 위험에 적극 대응할 것을 호소하다',
     titleJa: '楊莉明大臣、各国に対して代理型 AI ガバナンスリスクへの主動的な対応を呼びかけ',
     titleEn: 'Josephine Teo urges nations to proactively address agentic AI governance risks',
     speaker: 'Josephine Teo',
     speakerTitle: '新加坡数码发展及新闻部长',
+    speakerTitleKo: '싱가포르 디지털 발전 및 언론 장관',
     speakerTitleJa: 'シンガポール デジタル開発及びニュース大臣',
     speakerTitleEn: 'Minister for Digital Development and Information, Singapore',
     speakerType: 'government',
     date: '2026-02-20',
     duration: '05:12',
     summary: '杨莉明在世界经济论坛发布全球首个代理型 AI 治理框架,呼吁各国积极制定 AI 治理规则。',
+    summaryKo:
+      '양리밍이 세계경제포럼에서 글로벌 최초 에이전트형 AI 거버넌스 프레임워크를 발표하며 각국이 적극적으로 AI 거버넌스 규칙을 제정할 것을 호소했습니다.',
     summaryJa:
       '楊莉明は世界経済フォーラムで世界初の代理型 AI ガバナンスフレームワークを発表し、各国に対して積極的に AI ガバナンス規則を制定するよう呼びかけた。',
     summaryEn:
       "At the World Economic Forum, Josephine Teo unveils the world's first agentic AI governance framework and calls on nations to proactively shape AI governance rules.",
     topic: 'AI 治理与监管',
+    topicKo: 'AI 거버넌스와 규제',
     topicJa: 'AI ガバナンスと規制',
     topicEn: 'AI Governance & Regulation',
     youtubeUrl: 'https://www.youtube.com/watch?v=iblHEQPjFB0',
@@ -446,20 +542,25 @@ export const videos: VideoItem[] = [
   {
     id: 'v005',
     title: '2026 财政预算案: AI 与就业的大力推进',
+    titleKo: '2026 재정 예산안: AI와 고용의 강력한 추진',
     titleJa: '2026 年財政予算案：AI と雇用の大きな推進',
     titleEn: 'Budget 2026: a strong push on AI and jobs',
     speaker: 'Lawrence Wong',
     speakerTitle: '新加坡总理',
+    speakerTitleKo: '싱가포르 총리',
     speakerTitleJa: 'シンガポール総理',
     speakerTitleEn: 'Prime Minister of Singapore',
     speakerType: 'government',
     date: '2026-02-12',
     duration: '27:01',
     summary: 'CNA 深度解读预算案中 AI 相关举措,包括国家 AI 委员会、AI 税收优惠和劳动力转型。',
+    summaryKo:
+      'CNA가 예산안 중 AI 관련 조치를 심층 분석하며, 국가 AI 위원회, AI 세금 인센티브 및 노동력 전환을 다룹니다.',
     summaryJa: 'CNA は予算案における AI 関連措置を詳細に解説し、国家 AI 委員会、AI 税額控除、労働力転型などを含む。',
     summaryEn:
       "CNA's in-depth read of AI-related Budget measures, including the National AI Council, AI tax incentives and workforce transformation.",
     topic: 'AI 战略与愿景',
+    topicKo: 'AI 전략과 비전',
     topicJa: 'AI 戦略とビジョン',
     topicEn: 'AI Strategy & Vision',
     youtubeUrl: 'https://www.youtube.com/watch?v=7y6F40CQ5UY',
@@ -468,21 +569,26 @@ export const videos: VideoItem[] = [
   {
     id: 'v006',
     title: '黄循财总理 2026 财政预算案全文演讲',
+    titleKo: '황순재 총리 2026 재정 예산안 전문 연설',
     titleJa: '黄循財首相 2026 年財政予算案全文演説',
     titleEn: "PM Lawrence Wong's full Budget 2026 speech",
     speaker: 'Lawrence Wong',
     speakerTitle: '新加坡总理',
+    speakerTitleKo: '싱가포르 총리',
     speakerTitleJa: 'シンガポール総理',
     speakerTitleEn: 'Prime Minister of Singapore',
     speakerType: 'government',
     date: '2026-02-12',
     duration: '90:19',
     summary: '黄循财总理发表预算案演讲,AI 成为核心主题,宣布设立国家 AI 委员会并亲自担任主席。',
+    summaryKo:
+      '황순재 총리가 예산안 연설에서 AI가 핵심 주제가 되었으며, 국가 AI 위원회 설립을 선언하고 직접 의장을 맡기로 했습니다.',
     summaryJa:
       '黄循財首相が予算案演説を発表し、AI が核心テーマとなり、国家 AI 委員会の設立と自らが委員長を務めることを宣言した。',
     summaryEn:
       'PM Lawrence Wong delivers the Budget speech with AI as a core theme, announcing the establishment of the National AI Council, which he will personally chair.',
     topic: 'AI 战略与愿景',
+    topicKo: 'AI 전략과 비전',
     topicJa: 'AI 戦略とビジョン',
     topicEn: 'AI Strategy & Vision',
     youtubeUrl: 'https://www.youtube.com/watch?v=0tJKxkh9iFU',
@@ -491,21 +597,26 @@ export const videos: VideoItem[] = [
   {
     id: 'v007',
     title: '新加坡对 AI 的看法已经转变: 杨莉明专访',
+    titleKo: '싱가포르의 AI에 대한 입장이 변했습니다: 양리밍 전문 인터뷰',
     titleJa: 'シンガポールの AI に対する見方は変わった：楊莉明大臣インタビュー',
     titleEn: "Singapore's view of AI has shifted: Josephine Teo interview",
     speaker: 'Josephine Teo',
     speakerTitle: '新加坡数码发展及新闻部长',
+    speakerTitleKo: '싱가포르 디지털 발전 및 언론 장관',
     speakerTitleJa: 'シンガポール デジタル開発及びニュース大臣',
     speakerTitleEn: 'Minister for Digital Development and Information, Singapore',
     speakerType: 'government',
     date: '2026-02-11',
     duration: '22:15',
     summary: '杨莉明详述新加坡 AI 战略转型,从谨慎观望到全力拥抱,阐述政府如何系统性推动 AI 应用。',
+    summaryKo:
+      '양리밍이 싱가포르 AI 전략 전환을 상세히 설명하며, 신중한 관망에서 전폭적 수용으로의 변화, 그리고 정부가 어떻게 체계적으로 AI 응용을 추진하는지를 해설합니다.',
     summaryJa:
       '楊莉明は、シンガポール AI 戦略の転型を詳述し、慎重な観察から全力の拥抱へと移行し、政府がいかに体系的に AI 応用を推し進めるかを阐述した。',
     summaryEn:
       "Josephine Teo details Singapore's AI strategic shift — from cautious observation to full embrace — and how the government systematically drives AI adoption.",
     topic: 'AI 战略与愿景',
+    topicKo: 'AI 전략과 비전',
     topicJa: 'AI 戦略とビジョン',
     topicEn: 'AI Strategy & Vision',
     youtubeUrl: 'https://www.youtube.com/watch?v=2q3XOqL_miU',
@@ -514,20 +625,25 @@ export const videos: VideoItem[] = [
   {
     id: 'v008',
     title: '杨莉明谈新加坡国家 AI 战略',
+    titleKo: '양리밍이 말하는 싱가포르 국가 AI 전략',
     titleJa: '楊莉明、シンガポール国家 AI 戦略について語る',
     titleEn: "Josephine Teo on Singapore's national AI strategy",
     speaker: 'Josephine Teo',
     speakerTitle: '新加坡数码发展及新闻部长',
+    speakerTitleKo: '싱가포르 디지털 발전 및 언론 장관',
     speakerTitleJa: 'シンガポール デジタル開発及びニュース大臣',
     speakerTitleEn: 'Minister for Digital Development and Information, Singapore',
     speakerType: 'government',
     date: '2026-02-10',
     duration: '14:52',
     summary: '杨莉明全面介绍新加坡国家 AI 战略,涵盖人才培养、产业应用和国际合作三大支柱。',
+    summaryKo:
+      '양리밍이 싱가포르 국가 AI 전략을 종합적으로 소개하며, 인재 양성, 산업 응용 및 국제 협력의 세 가지 주요 기둥을 다룹니다.',
     summaryJa: '楊莉明はシンガポール国家 AI 戦略を包括的に紹介し、人材育成、産業応用、国際協力の 3 つの柱を網羅した。',
     summaryEn:
       "Josephine Teo walks through Singapore's national AI strategy across three pillars: talent, industry, and international cooperation.",
     topic: 'AI 战略与愿景',
+    topicKo: 'AI 전략과 비전',
     topicJa: 'AI 戦略とビジョン',
     topicEn: 'AI Strategy & Vision',
     youtubeUrl: 'https://www.youtube.com/watch?v=v69BoHQ0LOE',
@@ -536,21 +652,26 @@ export const videos: VideoItem[] = [
   {
     id: 'v009',
     title: '为何新加坡视 AI 为机遇而非威胁',
+    titleKo: '싱가포르가 AI를 위협이 아닌 기회로 보는 이유',
     titleJa: 'なぜシンガポールは AI を脅威ではなく機会と見なすのか',
     titleEn: 'Why Singapore sees AI as opportunity rather than threat',
     speaker: 'Tharman Shanmugaratnam',
     speakerTitle: '新加坡总统',
+    speakerTitleKo: '싱가포르 대통령',
     speakerTitleJa: 'シンガポール大統領',
     speakerTitleEn: 'President of Singapore',
     speakerType: 'government',
     date: '2026-02-03',
     duration: '03:49',
     summary: '尚达曼总统在达沃斯接受 Ian Bremmer 专访,阐述新加坡为何将 AI 视为劳动者的助力而非威胁。',
+    summaryKo:
+      '상달만 대통령이 다보스에서 Ian Bremmer의 전문 인터뷰에 응하며, 싱가포르가 AI를 노동자를 위한 도움으로 여기고 위협으로 여기지 않는 이유를 설명합니다.',
     summaryJa:
       '尚達曼大統領はダボスで Ian Bremmer のインタビューを受け、シンガポールがなぜ AI を労働者の支援ツールではなく脅威と見なさないのかを説明した。',
     summaryEn:
       'President Tharman Shanmugaratnam, in a Davos interview with Ian Bremmer, explains why Singapore views AI as an aid to workers rather than a threat.',
     topic: 'AI 战略与愿景',
+    topicKo: 'AI 전략과 비전',
     topicJa: 'AI 戦略とビジョン',
     topicEn: 'AI Strategy & Vision',
     youtubeUrl: 'https://www.youtube.com/watch?v=z3zMYQasDCc',
@@ -559,21 +680,26 @@ export const videos: VideoItem[] = [
   {
     id: 'v010',
     title: '新加坡如何在碎片化世界中航行',
+    titleKo: '싱가포르가 파편화된 세계에서 어떻게 항해하는가',
     titleJa: 'シンガポールは分断化された世界をいかに航行するのか',
     titleEn: 'How Singapore navigates a fragmented world',
     speaker: 'Tharman Shanmugaratnam',
     speakerTitle: '新加坡总统',
+    speakerTitleKo: '싱가포르 대통령',
     speakerTitleJa: 'シンガポール大統領',
     speakerTitleEn: 'President of Singapore',
     speakerType: 'government',
     date: '2026-02-02',
     duration: '23:25',
     summary: '尚达曼总统与 Ian Bremmer 深入对谈 AI、全球秩序重塑及新加坡的应对战略。',
+    summaryKo:
+      '상달만 대통령과 Ian Bremmer가 AI, 글로벌 질서 재편 및 싱가포르의 대응 전략에 대해 심도 있게 대담합니다.',
     summaryJa:
       '尚達曼大統領は Ian Bremmer と深く対談し、AI、世界秩序の再構築およびシンガポールの対応戦略について議論した。',
     summaryEn:
       "President Tharman Shanmugaratnam in an in-depth conversation with Ian Bremmer on AI, the reshaping of global order, and Singapore's response strategy.",
     topic: '国际合作与对标',
+    topicKo: '국제 협력과 벤치마크',
     topicJa: '国際協力とベンチマーク',
     topicEn: 'International Cooperation & Benchmarking',
     youtubeUrl: 'https://www.youtube.com/watch?v=04lklCautxI',
@@ -582,21 +708,26 @@ export const videos: VideoItem[] = [
   {
     id: 'v011',
     title: '新加坡将比多数国家更快面对 AI 挑战',
+    titleKo: '싱가포르는 대다수 국가보다 더 빨리 AI 도전에 직면할 것입니다',
     titleJa: 'シンガポールはほとんどの国よりも早く AI チャレンジに直面するであろう',
     titleEn: 'Singapore will face the AI challenge sooner than most countries',
     speaker: 'Tharman Shanmugaratnam',
     speakerTitle: '新加坡总统',
+    speakerTitleKo: '싱가포르 대통령',
     speakerTitleJa: 'シンガポール大統領',
     speakerTitleEn: 'President of Singapore',
     speakerType: 'government',
     date: '2026-02-01',
     duration: '01:29',
     summary: '尚达曼总统指出新加坡因开放程度和经济结构,将比其他国家更快感受到 AI 的全面冲击。',
+    summaryKo:
+      '상달만 대통령은 싱가포르가 개방 정도와 경제 구조로 인해 다른 국가들보다 AI의 전면적 영향을 더 빨리 체감할 것이라고 지적합니다.',
     summaryJa:
       '尚達曼大統領は、シンガポールは開放度と経済構造のため、他国より早く AI の包括的な影響を感じるであろうと指摘した。',
     summaryEn:
       "President Tharman Shanmugaratnam argues that, given its openness and economic structure, Singapore will feel AI's full impact sooner than other countries.",
     topic: 'AI 战略与愿景',
+    topicKo: 'AI 전략과 비전',
     topicJa: 'AI 戦略とビジョン',
     topicEn: 'AI Strategy & Vision',
     youtubeUrl: 'https://www.youtube.com/watch?v=hKcA49D2HGA',
@@ -605,21 +736,26 @@ export const videos: VideoItem[] = [
   {
     id: 'v012',
     title: '尚达曼总统 GZERO World 完整专访',
+    titleKo: '상달만 대통령 GZERO World 완전 인터뷰',
     titleJa: '尚達曼大統領 GZERO World 完全インタビュー',
     titleEn: 'President Tharman: full GZERO World interview',
     speaker: 'Tharman Shanmugaratnam',
     speakerTitle: '新加坡总统',
+    speakerTitleKo: '싱가포르 대통령',
     speakerTitleJa: 'シンガポール大統領',
     speakerTitleEn: 'President of Singapore',
     speakerType: 'government',
     date: '2026-01-31',
     duration: '21:28',
     summary: '尚达曼总统全面阐述新加坡在 AI 时代的全球定位、劳动力转型策略和大国博弈中的角色。',
+    summaryKo:
+      '상달만 대통령이 AI 시대 싱가포르의 글로벌 위상, 노동력 전환 전략, 강대국 경쟁에서의 역할을 전면적으로 설명합니다.',
     summaryJa:
       '尚達曼大統領は、AI 時代のシンガポールのグローバルな位置付け、労働力転型戦略、大国競争における役割を包括的に説明した。',
     summaryEn:
       "President Tharman Shanmugaratnam lays out Singapore's global positioning in the AI era, its workforce transformation strategy and its role amid great-power rivalry.",
     topic: '国际合作与对标',
+    topicKo: '국제 협력과 벤치마크',
     topicJa: '国際協力とベンチマーク',
     topicEn: 'International Cooperation & Benchmarking',
     youtubeUrl: 'https://www.youtube.com/watch?v=wibU2_v9Wro',
@@ -628,21 +764,26 @@ export const videos: VideoItem[] = [
   {
     id: 'v013',
     title: '新加坡发布全球首个代理型 AI 治理框架',
+    titleKo: '싱가포르, 전 세계 최초의 에이전트 AI 거버넌스 프레임워크 공개',
     titleJa: 'シンガポール、グローバル初の代理型 AI ガバナンスフレームワークを発表',
     titleEn: "Singapore releases the world's first agentic AI governance framework",
     speaker: 'Josephine Teo',
     speakerTitle: '新加坡数码发展及新闻部长',
+    speakerTitleKo: '싱가포르 디지털 개발 및 뉴스 장관',
     speakerTitleJa: 'シンガポール デジタル開発及びニュース大臣',
     speakerTitleEn: 'Minister for Digital Development and Information, Singapore',
     speakerType: 'government',
     date: '2026-01-22',
     duration: '08:19',
     summary: 'IMDA 在世界经济论坛上推出全球首个代理型 AI 治理框架,为自主 AI 系统建立部署规范。',
+    summaryKo:
+      'IMDA가 세계경제포럼에서 전 세계 최초의 에이전트 AI 거버넌스 프레임워크를 공개하고 자율 AI 시스템을 위한 배포 규범을 수립합니다.',
     summaryJa:
       'IMDA は世界経済フォーラムでグローバル初の代理型 AI ガバナンスフレームワークを発表し、自主 AI システムの展開規範を確立した。',
     summaryEn:
       "IMDA launches the world's first agentic AI governance framework at the World Economic Forum, establishing deployment norms for autonomous AI systems.",
     topic: 'AI 治理与监管',
+    topicKo: 'AI 거버넌스 및 규제',
     topicJa: 'AI ガバナンスと規制',
     topicEn: 'AI Governance & Regulation',
     youtubeUrl: 'https://www.youtube.com/watch?v=V_OEfgtzJFg',
@@ -651,21 +792,26 @@ export const videos: VideoItem[] = [
   {
     id: 'v014',
     title: '杨莉明在彭博新经济论坛谈 AI',
+    titleKo: '양리밍, 블룸버그 신경제포럼에서 AI 논의',
     titleJa: '楊莉明、ブルームバーグ新経済フォーラムで AI について語る',
     titleEn: 'Josephine Teo on AI at the Bloomberg New Economy Forum',
     speaker: 'Josephine Teo',
     speakerTitle: '新加坡数码发展及新闻部长',
+    speakerTitleKo: '싱가포르 디지털 개발 및 뉴스 장관',
     speakerTitleJa: 'シンガポール デジタル開発及びニュース大臣',
     speakerTitleEn: 'Minister for Digital Development and Information, Singapore',
     speakerType: 'government',
     date: '2025-11-19',
     duration: '27:26',
     summary: '杨莉明在彭博新经济论坛全面讨论新加坡 AI 战略、人才培养和全球治理合作。',
+    summaryKo:
+      '양리밍이 블룸버그 신경제포럼에서 싱가포르 AI 전략, 인재 양성 및 글로벌 거버넌스 협력을 전면적으로 논의합니다.',
     summaryJa:
       '楊莉明はブルームバーグ新経済フォーラムでシンガポール AI 戦略、人材育成およびグローバルガバナンス協力について包括的に論じた。',
     summaryEn:
       "At the Bloomberg New Economy Forum, Josephine Teo discusses Singapore's AI strategy, talent development and global governance cooperation.",
     topic: 'AI 战略与愿景',
+    topicKo: 'AI 전략과 비전',
     topicJa: 'AI 戦略とビジョン',
     topicEn: 'AI Strategy & Vision',
     youtubeUrl: 'https://www.youtube.com/watch?v=S5NeniPvDjU',
@@ -674,20 +820,25 @@ export const videos: VideoItem[] = [
   {
     id: 'v015',
     title: '杨莉明谈 AI 在中小企业、教育和社会中的角色',
+    titleKo: '양리밍, 중소기업・교육・사회에서 AI의 역할 논의',
     titleJa: '楊莉明、AI の中小企業、教育および社会における役割について語る',
     titleEn: "Josephine Teo on AI's role in SMEs, education and society",
     speaker: 'Josephine Teo',
     speakerTitle: '新加坡数码发展及新闻部长',
+    speakerTitleKo: '싱가포르 디지털 개발 및 뉴스 장관',
     speakerTitleJa: 'シンガポール デジタル開発及びニュース大臣',
     speakerTitleEn: 'Minister for Digital Development and Information, Singapore',
     speakerType: 'government',
     date: '2025-11-19',
     duration: '06:17',
     summary: '杨莉明探讨 AI 如何赋能中小企业转型、重塑教育体系并惠及社会各阶层。',
+    summaryKo:
+      '양리밍이 AI가 어떻게 중소기업 전환을 촉진하고 교육 체계를 재구성하며 사회 전 계층에 이익을 제공하는지 탐색합니다.',
     summaryJa:
       '楊莉明は、AI がいかに中小企業の転型を支援し、教育体系を再構築し、社会のあらゆる層に利益をもたらすかについて探究する。',
     summaryEn: 'Josephine Teo on how AI can help SMEs transform, reshape education, and reach every part of society.',
     topic: 'AI 产业与应用',
+    topicKo: 'AI 산업과 응용',
     topicJa: 'AI 産業と応用',
     topicEn: 'AI Industry & Applications',
     youtubeUrl: 'https://www.youtube.com/watch?v=W2lLMv3CfaA',
@@ -696,21 +847,26 @@ export const videos: VideoItem[] = [
   {
     id: 'v016',
     title: '尚达曼总统 ICCS 2025 演讲',
+    titleKo: '상달만 대통령 ICCS 2025 연설',
     titleJa: '尚達曼大統領 ICCS 2025 演説',
     titleEn: "President Tharman's ICCS 2025 keynote",
     speaker: 'Tharman Shanmugaratnam',
     speakerTitle: '新加坡总统',
+    speakerTitleKo: '싱가포르 대통령',
     speakerTitleJa: 'シンガポール大統領',
     speakerTitleEn: 'President of Singapore',
     speakerType: 'government',
     date: '2025-11-17',
     duration: '29:51',
     summary: '尚达曼在国际网络安全周发表主旨演讲,讨论代理型 AI 和量子计算带来的安全挑战。',
+    summaryKo:
+      '상달만이 국제 사이버보안 주간에서 기조 연설을 발표하고 에이전트 AI와 양자 컴퓨팅이 초래하는 보안 과제를 논의합니다.',
     summaryJa:
       '尚達曼は国際サイバーセキュリティウィークで基調演説を行い、代理型 AI と量子コンピューティングがもたらすセキュリティチャレンジについて論じた。',
     summaryEn:
       'President Tharman Shanmugaratnam delivers a keynote at the International Cyber Conference Singapore (ICCS), addressing security challenges posed by agentic AI and quantum computing.',
     topic: 'AI 治理与监管',
+    topicKo: 'AI 거버넌스 및 규제',
     topicJa: 'AI ガバナンスと規制',
     topicEn: 'AI Governance & Regulation',
     youtubeUrl: 'https://www.youtube.com/watch?v=-8QS4cdRTus',
@@ -719,20 +875,24 @@ export const videos: VideoItem[] = [
   {
     id: 'v017',
     title: 'LKY 公共政策学院: 工作、AI 与公共政策的角色',
+    titleKo: 'LKY 공공정책대학원: 일자리, AI 및 공공정책의 역할',
     titleJa: '李光耀公共政策学院：仕事、AI および公共政策の役割',
     titleEn: 'LKY School of Public Policy: work, AI and the role of public policy',
     speaker: 'Josephine Teo',
     speakerTitle: '新加坡数码发展及新闻部长',
+    speakerTitleKo: '싱가포르 디지털 개발 및 뉴스 장관',
     speakerTitleJa: 'シンガポール デジタル開発及びニュース大臣',
     speakerTitleEn: 'Minister for Digital Development and Information, Singapore',
     speakerType: 'government',
     date: '2025-10-30',
     duration: '29:38',
     summary: '杨莉明在李光耀公共政策学院深度探讨 AI 时代的就业变革与公共政策应对。',
+    summaryKo: '양리밍이 이광요우 공공정책대학원에서 AI 시대의 고용 변화와 공공정책 대응을 깊이 있게 탐색합니다.',
     summaryJa: '楊莉明は李光耀公共政策学院で、AI 時代の雇用変革と公共政策対応について深く探究した。',
     summaryEn:
       'At the Lee Kuan Yew School of Public Policy, Josephine Teo digs into how AI is shifting employment and what public policy should do about it.',
     topic: 'AI 人才与教育',
+    topicKo: 'AI 인재와 교육',
     topicJa: 'AI 人材と教育',
     topicEn: 'AI Talent & Education',
     youtubeUrl: 'https://www.youtube.com/watch?v=OEaCDyKvGRw',
@@ -741,21 +901,26 @@ export const videos: VideoItem[] = [
   {
     id: 'v018',
     title: '黄循财总理接受英国金融时报专访',
+    titleKo: '황순재 총리, 영국 파이낸셜 타임스 전담 인터뷰',
     titleJa: '黄循財首相、英国フィナンシャル・タイムズ紙のインタビューを受ける',
     titleEn: 'PM Lawrence Wong interviewed by the Financial Times',
     speaker: 'Lawrence Wong',
     speakerTitle: '新加坡总理',
+    speakerTitleKo: '싱가포르 총리',
     speakerTitleJa: 'シンガポール総理',
     speakerTitleEn: 'Prime Minister of Singapore',
     speakerType: 'government',
     date: '2025-10-22',
     duration: '27:44',
     summary: '黄循财在金融时报专访中讨论后美国秩序下的全球格局,包括 AI 对新加坡经济的战略意义。',
+    summaryKo:
+      '황순재가 파이낸셜타임스 인터뷰에서 미국 이후 질서 속 글로벌 환경과 AI가 싱가포르 경제에 가진 전략적 의의를 논의합니다.',
     summaryJa:
       '黄循財はフィナンシャル・タイムズ紙のインタビューで、米国後の世界秩序およびシンガポール経済に対する AI の戦略的意義を含む、グローバル状況について論じた。',
     summaryEn:
       "In an FT interview, Lawrence Wong discusses the global order in a post-American era, including AI's strategic significance for Singapore's economy.",
     topic: '国际合作与对标',
+    topicKo: '국제 협력과 벤치마크',
     topicJa: '国際協力とベンチマーク',
     topicEn: 'International Cooperation & Benchmarking',
     youtubeUrl: 'https://www.youtube.com/watch?v=NXSI4cCm3BM',
@@ -764,20 +929,24 @@ export const videos: VideoItem[] = [
   {
     id: 'v019',
     title: '杨莉明在 CNBC 谈新加坡大胆的 AI 推进',
+    titleKo: '양리밍, CNBC에서 싱가포르의 대담한 AI 추진에 대해 언급',
     titleJa: '楊莉明、CNBC でシンガポールの大胆な AI 推進について語る',
     titleEn: "Josephine Teo on CNBC: Singapore's bold AI push",
     speaker: 'Josephine Teo',
     speakerTitle: '新加坡数码发展及新闻部长',
+    speakerTitleKo: '싱가포르 디지털개발·정보부 장관',
     speakerTitleJa: 'シンガポール デジタル開発及びニュース大臣',
     speakerTitleEn: 'Minister for Digital Development and Information, Singapore',
     speakerType: 'government',
     date: '2025-04-01',
     duration: '30:00',
     summary: '杨莉明在 CNBC Converge Live 活动上讨论新加坡 AI 战略、风险管控和人才培养。',
+    summaryKo: '양리밍이 CNBC Converge Live 행사에서 싱가포르 AI 전략, 위험 관리 및 인재 양성에 대해 논의했습니다.',
     summaryJa: '楊莉明は CNBC Converge Live イベントでシンガポール AI 戦略、リスク管理および人材育成について論じた。',
     summaryEn:
       "At CNBC Converge Live, Josephine Teo discusses Singapore's AI strategy, risk management and talent development.",
     topic: 'AI 战略与愿景',
+    topicKo: 'AI 전략과 비전',
     topicJa: 'AI 戦略とビジョン',
     topicEn: 'AI Strategy & Vision',
     youtubeUrl: 'https://www.youtube.com/watch?v=nd9WEwc0hXA',
@@ -786,21 +955,26 @@ export const videos: VideoItem[] = [
   {
     id: 'v020',
     title: '杨莉明鼓励劳动者提升基本 AI 技能',
+    titleKo: '양리밍, 근로자의 기본 AI 기술 향상 권장',
     titleJa: '楊莉明、労働者に基本 AI スキルの向上を奨励',
     titleEn: 'Josephine Teo urges workers to build basic AI skills',
     speaker: 'Josephine Teo',
     speakerTitle: '新加坡数码发展及新闻部长',
+    speakerTitleKo: '싱가포르 디지털개발·정보부 장관',
     speakerTitleJa: 'シンガポール デジタル開発及びニュース大臣',
     speakerTitleEn: 'Minister for Digital Development and Information, Singapore',
     speakerType: 'government',
     date: '2025-05-27',
     duration: '09:01',
     summary: '杨莉明在亚洲科技大会上鼓励各行各业劳动者积极学习 AI 基础技能以保持竞争力。',
+    summaryKo:
+      '양리밍이 아시아 과학기술 대회에서 각 산업의 근로자들이 경쟁력을 유지하기 위해 AI 기초 기술을 적극적으로 학습할 것을 권장했습니다.',
     summaryJa:
       '楊莉明はアジア科学技術会議で、各業種の労働者に対して、競争力を維持するために AI 基礎スキルを積極的に学習するよう奨励した。',
     summaryEn:
       'At Asia Tech x Singapore, Josephine Teo urges workers across industries to actively learn foundational AI skills to remain competitive.',
     topic: 'AI 人才与教育',
+    topicKo: 'AI 인재 및 교육',
     topicJa: 'AI 人材と教育',
     topicEn: 'AI Talent & Education',
     youtubeUrl: 'https://www.youtube.com/watch?v=B8ROGZkRpmE',
@@ -809,21 +983,26 @@ export const videos: VideoItem[] = [
   {
     id: 'v021',
     title: '尚达曼与比尔盖茨对话: 慈善亚洲峰会 2025',
+    titleKo: '상달만과 빌 게이츠의 대화: 자선 아시아 정상회담 2025',
     titleJa: '尚達曼とビル・ゲイツの対談：慈善アジア・サミット 2025',
     titleEn: 'Tharman in conversation with Bill Gates: Philanthropy Asia Summit 2025',
     speaker: 'Tharman Shanmugaratnam',
     speakerTitle: '新加坡总统',
+    speakerTitleKo: '싱가포르 대통령',
     speakerTitleJa: 'シンガポール大統領',
     speakerTitleEn: 'President of Singapore',
     speakerType: 'government',
     date: '2025-05-05',
     duration: '34:36',
     summary: '尚达曼总统与比尔盖茨深入对话,探讨 AI 在公共卫生、教育和发展中的变革潜力。',
+    summaryKo:
+      '상달만 대통령과 빌 게이츠가 공중 보건, 교육 및 발전 분야에서 AI의 변혁적 잠재력을 탐색하며 깊이 있는 대화를 나누었습니다.',
     summaryJa:
       '尚達曼大統領はビル・ゲイツと深く対談し、公衆衛生、教育および発展における AI の革新的可能性について探究した。',
     summaryEn:
       'President Tharman Shanmugaratnam and Bill Gates dig into what AI could change in public health, education and development.',
     topic: 'AI 产业与应用',
+    topicKo: 'AI 산업 및 응용',
     topicJa: 'AI 産業と応用',
     topicEn: 'AI Industry & Applications',
     youtubeUrl: 'https://www.youtube.com/watch?v=TchCCgLS7wk',
@@ -832,21 +1011,26 @@ export const videos: VideoItem[] = [
   {
     id: 'v022',
     title: '何德华教授: AI 助力 600 万人变 6000 万',
+    titleKo: '허덕화 교수: AI 도움으로 600만 인구가 6000만 규모 실현',
     titleJa: '何德華教授：AI が 600 万人を 6,000 万人に支援',
     titleEn: 'Prof Ho Teck Hua: AI helps 6 million people perform like 60 million',
     speaker: 'Ho Teck Hua',
     speakerTitle: 'AI Singapore 创始执行主席 / 南洋理工大学校长',
+    speakerTitleKo: 'AI Singapore 창립 회장 / 난양공과대학교 총장',
     speakerTitleJa: 'AI Singapore 創始執行主席／南洋理工大学学長',
     speakerTitleEn: 'Founding Executive Chairman, AI Singapore / President, Nanyang Technological University',
     speakerType: 'academic',
     date: '2025-02-03',
     duration: '17:44',
     summary: '何德华教授阐述 AI 如何帮助新加坡以 600 万人口实现 6000 万人口的经济产出。',
+    summaryKo:
+      '허덕화 교수가 AI가 600만 인구의 싱가포르가 6000만 인구의 경제 산출을 달성하도록 어떻게 지원하는지 설명했습니다.',
     summaryJa:
       '何德華教授は、AI がいかにシンガポール 600 万人口で 6,000 万人口相当の経済産出を実現するのを支援するかについて説明した。',
     summaryEn:
       'Prof Ho Teck Hua explains how AI can help Singapore deliver the economic output of 60 million people with a population of 6 million.',
     topic: 'AI 战略与愿景',
+    topicKo: 'AI 전략과 비전',
     topicJa: 'AI 戦略とビジョン',
     topicEn: 'AI Strategy & Vision',
     youtubeUrl: 'https://www.youtube.com/watch?v=LcsCf7QtAy8',
@@ -855,20 +1039,25 @@ export const videos: VideoItem[] = [
   {
     id: 'v023',
     title: 'NAIS 2.0: 新加坡国家 AI 战略官方介绍',
+    titleKo: 'NAIS 2.0: 싱가포르 국가 AI 전략 공식 소개',
     titleJa: 'NAIS 2.0：シンガポール国家 AI 戦略公式紹介',
     titleEn: "NAIS 2.0: official introduction to Singapore's National AI Strategy",
     speaker: 'Smart Nation Singapore',
     speakerTitle: '新加坡智慧国办公室',
+    speakerTitleKo: '싱가포르 스마트 국가 사무소',
     speakerTitleJa: 'シンガポール スマートネーション・デジタル政府オフィス',
     speakerTitleEn: 'Smart Nation Office, Singapore',
     speakerType: 'government',
     date: '2024-11-17',
     duration: '03:56',
     summary: '官方视频全面介绍新加坡国家 AI 战略 2.0 的核心内容、15 项行动计划和实施路径。',
+    summaryKo:
+      '공식 비디오는 싱가포르 국가 AI 전략 2.0의 핵심 내용, 15개 행동 계획 및 실행 경로를 종합적으로 소개합니다.',
     summaryJa: '公式動画はシンガポール国家 AI 戦略 2.0 の核心内容、15 の行動計画および実施経路を包括的に紹介した。',
     summaryEn:
       "Official video walking through Singapore's National AI Strategy 2.0 — core content, 15 action plans, and implementation roadmap.",
     topic: 'AI 战略与愿景',
+    topicKo: 'AI 전략과 비전',
     topicJa: 'AI 戦略とビジョン',
     topicEn: 'AI Strategy & Vision',
     youtubeUrl: 'https://www.youtube.com/watch?v=6qHBTi3YQIQ',
@@ -877,21 +1066,26 @@ export const videos: VideoItem[] = [
   {
     id: 'v024',
     title: '新加坡: AI 工程师之国 - 杨莉明部长访谈',
+    titleKo: '싱가포르: AI 엔지니어의 나라 - 양리밍 장관 인터뷰',
     titleJa: 'シンガポール：AI エンジニアの国 - 楊莉明大臣インタビュー',
     titleEn: 'Singapore: a nation of AI engineers — interview with Minister Josephine Teo',
     speaker: 'Josephine Teo',
     speakerTitle: '新加坡数码发展及新闻部长',
+    speakerTitleKo: '싱가포르 디지털개발·정보부 장관',
     speakerTitleJa: 'シンガポール デジタル開発及びニュース大臣',
     speakerTitleEn: 'Minister for Digital Development and Information, Singapore',
     speakerType: 'government',
     date: '2024-10-19',
     duration: '56:40',
     summary: '杨莉明做客 Latent Space 播客,深度讨论新加坡 AI 工业政策、人才战略和治理经验。',
+    summaryKo:
+      '양리밍이 Latent Space 팟캐스트에 출연하여 싱가포르 AI 산업 정책, 인재 전략 및 거버넌스 경험에 대해 깊이 있게 논의했습니다.',
     summaryJa:
       '楊莉明は Latent Space ポッドキャストに出演し、シンガポール AI 産業政策、人材戦略およびガバナンス経験について深く論じた。',
     summaryEn:
       "On the Latent Space podcast, Josephine Teo discusses Singapore's AI industrial policy, talent strategy and governance experience in depth.",
     topic: 'AI 战略与愿景',
+    topicKo: 'AI 전략과 비전',
     topicJa: 'AI 戦略とビジョン',
     topicEn: 'AI Strategy & Vision',
     youtubeUrl: 'https://www.youtube.com/watch?v=diXpLlFd0Gg',
@@ -900,20 +1094,24 @@ export const videos: VideoItem[] = [
   {
     id: 'v025',
     title: '杨莉明谈 AI 如何提升新加坡金融服务业',
+    titleKo: '양리밍, AI가 싱가포르 금융 서비스업 향상에 미치는 영향 논의',
     titleJa: '楊莉明、AI がシンガポール金融サービス業をいかに向上させるかについて語る',
     titleEn: "Josephine Teo on how AI uplifts Singapore's financial services industry",
     speaker: 'Josephine Teo',
     speakerTitle: '新加坡数码发展及新闻部长',
+    speakerTitleKo: '싱가포르 디지털개발·정보부 장관',
     speakerTitleJa: 'シンガポール デジタル開発及びニュース大臣',
     speakerTitleEn: 'Minister for Digital Development and Information, Singapore',
     speakerType: 'government',
     date: '2025-10-06',
     duration: '09:49',
     summary: '杨莉明讨论 AI 在新加坡金融服务行业中的应用前景与监管平衡。',
+    summaryKo: '양리밍이 싱가포르 금융 서비스 산업에서 AI의 응용 전망 및 규제 균형에 대해 논의했습니다.',
     summaryJa: '楊莉明はシンガポール金融サービス産業における AI 応用の展望と規制均衡について論じた。',
     summaryEn:
       "Josephine Teo discusses prospects for AI applications in Singapore's financial services and the regulatory balance required.",
     topic: 'AI 产业与应用',
+    topicKo: 'AI 산업 및 응용',
     topicJa: 'AI 産業と応用',
     topicEn: 'AI Industry & Applications',
     youtubeUrl: 'https://www.youtube.com/watch?v=uMmtX9Jx_Ds',
@@ -922,20 +1120,24 @@ export const videos: VideoItem[] = [
   {
     id: 'v026',
     title: '新加坡 AI 战略如何成为他国路线图',
+    titleKo: '싱가포르 AI 전략이 어떻게 타국의 로드맵이 되었는가',
     titleJa: 'シンガポール AI 戦略がいかに他国の路線図となるか',
     titleEn: "How Singapore's AI strategy became a roadmap for other nations",
     speaker: 'Josephine Teo',
     speakerTitle: '新加坡数码发展及新闻部长',
+    speakerTitleKo: '싱가포르 디지털 발전 및 뉴스부 장관',
     speakerTitleJa: 'シンガポール デジタル開発及びニュース大臣',
     speakerTitleEn: 'Minister for Digital Development and Information, Singapore',
     speakerType: 'government',
     date: '2024-09-04',
     duration: '24:46',
     summary: '《财富》杂志分析新加坡 AI 战略为何成为全球小型经济体的参考范本。',
+    summaryKo: '포춘지가 분석한 싱가포르 AI 전략이 전 세계 소규모 경제의 참고 사례가 되는 이유',
     summaryJa: '『フォーチュン』誌はシンガポール AI 戦略がなぜグローバルな小型経済の参考例となるのかを分析した。',
     summaryEn:
       "Fortune analyses why Singapore's AI strategy has become a reference model for small economies worldwide.",
     topic: 'AI 战略与愿景',
+    topicKo: 'AI 전략과 비전',
     topicJa: 'AI 戦略とビジョン',
     topicEn: 'AI Strategy & Vision',
     youtubeUrl: 'https://www.youtube.com/watch?v=cg3tg-BfLIs',
@@ -944,20 +1146,24 @@ export const videos: VideoItem[] = [
   {
     id: 'v027',
     title: 'AI 治理需平衡雄心与谦逊: 尚达曼总统',
+    titleKo: 'AI 거버넌스는 야심과 겸손의 균형이 필요: 샹다만 대통령',
     titleJa: 'AI ガバナンスは野心と謙虚さのバランスが必要：尚達曼大統領',
     titleEn: 'AI governance must balance ambition and humility: President Tharman',
     speaker: 'Tharman Shanmugaratnam',
     speakerTitle: '新加坡总统',
+    speakerTitleKo: '싱가포르 대통령',
     speakerTitleJa: 'シンガポール大統領',
     speakerTitleEn: 'President of Singapore',
     speakerType: 'government',
     date: '2024-05-29',
     duration: '01:42',
     summary: '尚达曼在亚洲科技大会上强调 AI 治理需要在雄心和谦逊之间取得平衡。',
+    summaryKo: '샹다만이 아시아 기술 회의에서 AI 거버넌스가 야심과 겸손 사이에서 균형을 이루어야 한다고 강조했습니다.',
     summaryJa: '尚達曼はアジア科学技術会議で、AI ガバナンスは野心と謙虚さの間で均衡を取ることが必要であると強調した。',
     summaryEn:
       'At Asia Tech x Singapore, President Tharman Shanmugaratnam stresses that AI governance must strike a balance between ambition and humility.',
     topic: 'AI 治理与监管',
+    topicKo: 'AI 거버넌스와 규제',
     topicJa: 'AI ガバナンスと規制',
     topicEn: 'AI Governance & Regulation',
     youtubeUrl: 'https://www.youtube.com/watch?v=8pcRC9cXeo0',
@@ -966,21 +1172,25 @@ export const videos: VideoItem[] = [
   {
     id: 'v028',
     title: '杨莉明在新加坡 AI 大会上的演讲',
+    titleKo: '양리명이 싱가포르 AI 대회에서 한 연설',
     titleJa: '楊莉明、シンガポール AI 大会での演説',
     titleEn: "Josephine Teo's address at the Singapore Conference on AI",
     speaker: 'Josephine Teo',
     speakerTitle: '新加坡通讯及新闻部长',
+    speakerTitleKo: '싱가포르 통신 및 뉴스부 장관',
     speakerTitleJa: 'シンガポール 通信及びニュース大臣',
     speakerTitleEn: 'Minister for Communications and Information, Singapore',
     speakerType: 'government',
     date: '2023-12-11',
     duration: '20:24',
     summary: '杨莉明在首届新加坡 AI 大会上发表演讲,配合 NAIS 2.0 发布阐述 AI 治理愿景。',
+    summaryKo: '양리명이 제1회 싱가포르 AI 대회에서 발표를 통해 NAIS 2.0 출시와 함께 AI 거버넌스 비전을 제시했습니다.',
     summaryJa:
       '楊莉明は首届シンガポール AI 大会で演説を行い、NAIS 2.0 の発表に合わせて AI ガバナンスのビジョンを説明した。',
     summaryEn:
       'At the inaugural Singapore Conference on AI, Josephine Teo delivers an address articulating the AI governance vision alongside the launch of NAIS 2.0.',
     topic: 'AI 治理与监管',
+    topicKo: 'AI 거버넌스와 규제',
     topicJa: 'AI ガバナンスと規制',
     topicEn: 'AI Governance & Regulation',
     youtubeUrl: 'https://www.youtube.com/watch?v=am869LAYsuo',
@@ -989,21 +1199,26 @@ export const videos: VideoItem[] = [
   {
     id: 'v029',
     title: '尚达曼总统在哥伦比亚大学谈 AI 对新加坡的益处',
+    titleKo: '샹다만 대통령이 컬럼비아 대학교에서 싱가포르에 대한 AI의 이점에 대해 논했습니다.',
     titleJa: '尚達曼大統領、コロンビア大学でシンガポール向け AI の利益について語る',
     titleEn: "President Tharman at Columbia University on AI's benefits for Singapore",
     speaker: 'Tharman Shanmugaratnam',
     speakerTitle: '新加坡总统',
+    speakerTitleKo: '싱가포르 대통령',
     speakerTitleJa: 'シンガポール大統領',
     speakerTitleEn: 'President of Singapore',
     speakerType: 'government',
     date: '2023-12-06',
     duration: '01:27',
     summary: '尚达曼在哥伦比亚大学世界领袖论坛上谈论 AI 对新加坡劳动力和经济的积极作用。',
+    summaryKo:
+      '샹다만이 컬럼비아 대학교 세계 리더십 포럼에서 AI가 싱가포르의 노동력과 경제에 미치는 긍정적 영향에 대해 논했습니다.',
     summaryJa:
       '尚達曼はコロンビア大学世界リーダーフォーラムでシンガポール労働力および経済に対する AI の積極的作用について論じた。',
     summaryEn:
       "At Columbia University's World Leaders Forum, President Tharman Shanmugaratnam speaks on AI's positive impact on Singapore's workforce and economy.",
     topic: 'AI 战略与愿景',
+    topicKo: 'AI 전략과 비전',
     topicJa: 'AI 戦略とビジョン',
     topicEn: 'AI Strategy & Vision',
     youtubeUrl: 'https://www.youtube.com/watch?v=SsCVAN4QG3w',
@@ -1012,21 +1227,26 @@ export const videos: VideoItem[] = [
   {
     id: 'v030',
     title: '尚达曼总统谈 AI 与就业: 新加坡金融科技节 2023',
+    titleKo: '샹다만 대통령의 AI와 고용 논의: 싱가포르 핀테크 페스티벌 2023',
     titleJa: '尚達曼大統領、AI と雇用について語る：シンガポール フィンテック・フェスティバル 2023',
     titleEn: 'President Tharman on AI and jobs: Singapore FinTech Festival 2023',
     speaker: 'Tharman Shanmugaratnam',
     speakerTitle: '新加坡总统',
+    speakerTitleKo: '싱가포르 대통령',
     speakerTitleJa: 'シンガポール大統領',
     speakerTitleEn: 'President of Singapore',
     speakerType: 'government',
     date: '2023-11-15',
     duration: '05:44',
     summary: '尚达曼在金融科技节上警告 AI 将比以往技术更快取代人类任务,呼吁加快劳动力转型。',
+    summaryKo:
+      '샹다만이 핀테크 페스티벌에서 AI가 이전 기술보다 더 빠르게 인간의 업무를 대체할 것이라고 경고하고, 노동력 전환을 가속화할 것을 촉구했습니다.',
     summaryJa:
       '尚達曼はフィンテック・フェスティバルで、AI がこれまでの技術よりもより速く人間のタスクを置き換えるであろうことに警告し、労働力転型を加速するよう呼びかけた。',
     summaryEn:
       'At the FinTech Festival, President Tharman Shanmugaratnam warns that AI will displace human tasks faster than previous technologies and calls for accelerated workforce transformation.',
     topic: 'AI 人才与教育',
+    topicKo: 'AI 인재 양성과 교육',
     topicJa: 'AI 人材と教育',
     topicEn: 'AI Talent & Education',
     youtubeUrl: 'https://www.youtube.com/watch?v=pN5_HwLNHsY',
@@ -1035,21 +1255,26 @@ export const videos: VideoItem[] = [
   {
     id: 'v031',
     title: '维文谈 AI 新监管范式的必要性',
+    titleKo: '비완이 AI 신규제 패러다임의 필요성을 논하다',
     titleJa: '維文大臣、新たな AI 規制パラダイムの必要性について語る',
     titleEn: 'Vivian Balakrishnan on the need for a new regulatory paradigm for AI',
     speaker: 'Vivian Balakrishnan',
     speakerTitle: '新加坡外交部长',
+    speakerTitleKo: '싱가포르 외교부 장관',
     speakerTitleJa: 'シンガポール外交部長',
     speakerTitleEn: 'Minister for Foreign Affairs, Singapore',
     speakerType: 'government',
     date: '2023-09-19',
     duration: '01:23',
     summary: '维文部长指出传统监管方式不足以应对 AI,需要开辟新路径制定 AI 治理规则。',
+    summaryKo:
+      '비완 장관이 전통적 규제 방식이 AI에 대응하기에 부족하며, AI 거버넌스 규칙을 수립하기 위한 새로운 경로를 개척해야 한다고 지적했습니다.',
     summaryJa:
       '維文大臣は従来の規制方式は AI に対応するには不十分であり、AI ガバナンス規則の策定にために新しい道を切り開く必要があると指摘した。',
     summaryEn:
       'Minister Vivian Balakrishnan argues that traditional regulatory approaches are inadequate for AI and that new paths must be opened to develop AI governance rules.',
     topic: 'AI 治理与监管',
+    topicKo: 'AI 거버넌스와 규제',
     topicJa: 'AI ガバナンスと規制',
     topicEn: 'AI Governance & Regulation',
     youtubeUrl: 'https://www.youtube.com/watch?v=SJEgYYYWeDA',
@@ -1058,21 +1283,26 @@ export const videos: VideoItem[] = [
   {
     id: 'v032',
     title: '新加坡发布 AI Verify 开源测试框架',
+    titleKo: '싱가포르가 AI Verify 오픈소스 테스트 프레임워크를 출시했습니다.',
     titleJa: 'シンガポール、AI Verify オープンソーステストフレームワークを発表',
     titleEn: 'Singapore launches AI Verify open-source testing framework',
     speaker: 'Josephine Teo',
     speakerTitle: '新加坡通讯及新闻部长',
+    speakerTitleKo: '싱가포르 통신 및 뉴스부 장관',
     speakerTitleJa: 'シンガポール 通信及びニュース大臣',
     speakerTitleEn: 'Minister for Communications and Information, Singapore',
     speakerType: 'government',
     date: '2023-06-07',
     duration: '06:54',
     summary: '新加坡在亚洲科技大会上发布 AI Verify Foundation,建立全球首个 AI 治理测试开源社区。',
+    summaryKo:
+      '싱가포르가 아시아 기술 회의에서 AI Verify Foundation을 출시하여 전 세계 최초의 AI 거버넌스 테스트 오픈소스 커뮤니티를 구축했습니다.',
     summaryJa:
       'シンガポールはアジア科学技術会議で AI Verify Foundation を発表し、グローバル初の AI ガバナンステストオープンソースコミュニティを確立した。',
     summaryEn:
       "At Asia Tech x Singapore, Singapore launches the AI Verify Foundation, establishing the world's first open-source community for AI governance testing.",
     topic: 'AI 治理与监管',
+    topicKo: 'AI 거버넌스와 규제',
     topicJa: 'AI ガバナンスと規制',
     topicEn: 'AI Governance & Regulation',
     youtubeUrl: 'https://www.youtube.com/watch?v=Cxm9i1Sswes',
@@ -1081,21 +1311,26 @@ export const videos: VideoItem[] = [
   {
     id: 'v033',
     title: '维文在 NSCAI 全球新兴技术峰会上的演讲',
+    titleKo: '웨이원의 NSCAI 글로벌 신흥기술 정상회담 연설',
     titleJa: '維文、NSCAI グローバル新興技術サミットでの演説',
     titleEn: "Vivian Balakrishnan's address at the NSCAI Global Emerging Technology Summit",
     speaker: 'Vivian Balakrishnan',
     speakerTitle: '新加坡外交部长 / 智慧国负责人',
+    speakerTitleKo: '싱가포르 외교부 장관 / 스마트 싱가포르 담당자',
     speakerTitleJa: 'シンガポール外交部長／スマートネーション責任者',
     speakerTitleEn: 'Minister for Foreign Affairs / Minister-in-charge of Smart Nation, Singapore',
     speakerType: 'government',
     date: '2021-07-14',
     duration: '20:53',
     summary: '维文在美国国家安全委员会 AI 峰会上阐述新加坡智慧国愿景和 AI 治理的国际合作。',
+    summaryKo:
+      '비완이 미국 국가안전보장회의의 AI 정상회의에서 싱가포르 스마트 싱가포르 비전 및 AI 거버넌스의 국제 협력을 설명했습니다.',
     summaryJa:
       '維文は米国国家安全保障委員会 AI サミットでシンガポールスマートネーション・ビジョンおよび AI ガバナンスの国際協力について説明した。',
     summaryEn:
       "At the US National Security Commission on AI summit, Vivian Balakrishnan articulates Singapore's Smart Nation vision and international cooperation on AI governance.",
     topic: '国际合作与对标',
+    topicKo: '국제 협력과 벤치마크',
     topicJa: '国際協力とベンチマーク',
     topicEn: 'International Cooperation & Benchmarking',
     youtubeUrl: 'https://www.youtube.com/watch?v=UmXtuIzIjjQ',
@@ -1104,21 +1339,26 @@ export const videos: VideoItem[] = [
   {
     id: 'v034',
     title: '新加坡科技论坛 2019: AI 在新加坡的深度探讨',
+    titleKo: '싱가포르 기술 포럼 2019: 싱가포르 AI에 대한 심층 토론',
     titleJa: 'シンガポール科学技術フォーラム 2019：シンガポール における AI の深度探究',
     titleEn: 'Singapore Tech Forum 2019: an in-depth look at AI in Singapore',
     speaker: 'Ho Teck Hua',
     speakerTitle: 'AI Singapore 创始执行主席',
+    speakerTitleKo: 'AI Singapore 창립 집행 의장',
     speakerTitleJa: 'AI Singapore 創始執行主席',
     speakerTitleEn: 'Founding Executive Chairman, AI Singapore',
     speakerType: 'academic',
     date: '2019-06-07',
     duration: '46:02',
     summary: 'AI Singapore 创始主席何德华等专家深入讨论新加坡 AI 生态建设和产业应用前景。',
+    summaryKo:
+      'AI Singapore 창립 의장 호덕화 등 전문가가 싱가포르 AI 생태계 건설과 산업 응용 전망을 심도 있게 논의합니다.',
     summaryJa:
       'AI Singapore 創始主席何德華ら専門家はシンガポール AI エコシステム構築および産業応用展望について深く論じた。',
     summaryEn:
       "AI Singapore founding chairman Ho Teck Hua and other experts talk through how Singapore's AI scene is being built out and where industrial applications are heading.",
     topic: 'AI 产业与应用',
+    topicKo: 'AI 산업과 응용',
     topicJa: 'AI 産業と応用',
     topicEn: 'AI Industry & Applications',
     youtubeUrl: 'https://www.youtube.com/watch?v=uSmV2rg0Z3s',
@@ -1127,21 +1367,26 @@ export const videos: VideoItem[] = [
   {
     id: 'v035',
     title: 'IMDA 官方介绍: AI Verify 治理测试框架',
+    titleKo: 'IMDA 공식 소개: AI Verify 거버넌스 테스트 프레임워크',
     titleJa: 'IMDA 公式紹介：AI Verify ガバナンステストフレームワーク',
     titleEn: 'IMDA official introduction: the AI Verify governance testing framework',
     speaker: 'IMDA Singapore',
     speakerTitle: '新加坡资讯通信媒体发展局',
+    speakerTitleKo: '싱가포르 정보통신미디어발전청',
     speakerTitleJa: 'シンガポール 資訊通信メディア発展局',
     speakerTitleEn: 'Infocomm Media Development Authority (IMDA), Singapore',
     speakerType: 'government',
     date: '2023-01-15',
     duration: '04:45',
     summary: 'IMDA 官方视频介绍全球首个 AI 治理测试框架和工具包 AI Verify 的功能与应用。',
+    summaryKo:
+      'IMDA 공식 영상은 글로벌 최초의 AI 거버넌스 테스트 프레임워크 및 도구 AI Verify의 기능과 응용을 소개합니다.',
     summaryJa:
       'IMDA 公式動画はグローバル初の AI ガバナンステストフレームワークおよびツールキット AI Verify の機能と応用を紹介した。',
     summaryEn:
       "Official IMDA video introducing the features and applications of AI Verify — the world's first AI governance testing framework and toolkit.",
     topic: 'AI 治理与监管',
+    topicKo: 'AI 거버넌스와 규제',
     topicJa: 'AI ガバナンスと規制',
     topicEn: 'AI Governance & Regulation',
     youtubeUrl: 'https://www.youtube.com/watch?v=8NfNN1heFQY',
@@ -1150,21 +1395,26 @@ export const videos: VideoItem[] = [
   {
     id: 'v036',
     title: '杨莉明谈新加坡 AI 优先事项与在线安全保护措施',
+    titleKo: '양리밍이 싱가포르 AI 우선순위 및 온라인 안전 보호 조치를 논의합니다.',
     titleJa: '楊莉明、シンガポール AI 優先事項およびオンラインセーフティ保護措置について語る',
     titleEn: "Josephine Teo on Singapore's AI priorities and online safety safeguards",
     speaker: 'Josephine Teo',
     speakerTitle: '新加坡数码发展及新闻部长',
+    speakerTitleKo: '싱가포르 디지털 발전 및 뉴스 부장관',
     speakerTitleJa: 'シンガポール デジタル開発及びニュース大臣',
     speakerTitleEn: 'Minister for Digital Development and Information, Singapore',
     speakerType: 'government',
     date: '2026-03-31',
     duration: '45:00',
     summary: '杨莉明在 Lorong AI 媒体问答会上详述 AI 双语人才、AI 代理治理、国家 AI 影响计划及 AI 对职场的影响。',
+    summaryKo:
+      '양리밍이 Lorong AI 미디어 질의응답 회의에서 AI 이중언어 인재, AI 에이전트 거버넌스, 국가 AI 영향 계획 및 AI가 직장에 미치는 영향을 상세히 설명합니다.',
     summaryJa:
       '楊莉明は Lorong AI メディアQ&A セッションで、AI バイリンガル人材、AI エージェント・ガバナンス、国家 AI インパクト計画および AI の職場への影響について詳述した。',
     summaryEn:
       "At a Lorong AI media Q&A, Josephine Teo details bilingual AI talent, agentic AI governance, the National AI Impact Plan, and AI's impact on the workplace.",
     topic: 'AI 战略与愿景',
+    topicKo: 'AI 전략 및 비전',
     topicJa: 'AI 戦略とビジョン',
     topicEn: 'AI Strategy & Vision',
     youtubeUrl: 'https://www.youtube.com/watch?v=MDNcHufhR74',
@@ -1173,21 +1423,26 @@ export const videos: VideoItem[] = [
   {
     id: 'v037',
     title: '杨莉明谈 AI 企业采用与在线安全监管',
+    titleKo: '양리밍이 AI 기업 도입과 온라인 안전 규제를 논의합니다.',
     titleJa: '楊莉明、AI 企業採用およびオンラインセーフティ規制について語る',
     titleEn: 'Josephine Teo on enterprise AI adoption and online safety regulation',
     speaker: 'Josephine Teo',
     speakerTitle: '新加坡数码发展及新闻部长',
+    speakerTitleKo: '싱가포르 디지털 발전 및 뉴스 부장관',
     speakerTitleJa: 'シンガポール デジタル開発及びニュース大臣',
     speakerTitleEn: 'Minister for Digital Development and Information, Singapore',
     speakerType: 'government',
     date: '2026-03-31',
     duration: '02:30',
     summary: '杨莉明表示政府准备在 AI 企业采用未达预期效果时进行干预,同时发布 IMDA 第二份在线安全评估报告。',
+    summaryKo:
+      '양리밍이 정부가 AI 기업 도입이 예상 효과에 못 미칠 때 개입할 준비가 되어 있다고 표현하며, 동시에 IMDA 제2차 온라인 안전 평가 보고서를 발표합니다.',
     summaryJa:
       '楊莉明は政府が AI 企業採用が期待効果を達成しない場合に干渉する準備ができていると表明し、同時に IMDA 第 2 回オンラインセーフティ評価報告書を発表した。',
     summaryEn:
       "Josephine Teo says the government is prepared to intervene if enterprise AI adoption falls short of expected outcomes, while releasing IMDA's second Online Safety Assessment Report.",
     topic: 'AI 治理与监管',
+    topicKo: 'AI 거버넌스와 규제',
     topicJa: 'AI ガバナンスと規制',
     topicEn: 'AI Governance & Regulation',
     youtubeUrl: 'https://www.youtube.com/watch?v=QhoxB9y113M',
@@ -1196,21 +1451,26 @@ export const videos: VideoItem[] = [
   {
     id: 'v038',
     title: '经济策略评审: 全球竞争力委员会——AI 重塑经济格局',
+    titleKo: '경제 전략 평가: 글로벌 경쟁력 위원회——AI가 경제 형태를 재형성하다',
     titleJa: '経済戦略評価：グローバル競争力委員会——AI が経済格局を再構築',
     titleEn: 'Economic Strategy Review: Global Competitiveness Committee — AI reshapes the economy',
     speaker: 'Lawrence Wong',
     speakerTitle: '新加坡总理',
+    speakerTitleKo: '싱가포르 총리',
     speakerTitleJa: 'シンガポール総理',
     speakerTitleEn: 'Prime Minister of Singapore',
     speakerType: 'government',
     date: '2026-03-12',
     duration: '03:30',
     summary: '经济策略评审揭示新加坡如何在 AI 重塑全球格局的背景下保持竞争力,从科技枢纽到本土企业国际化。',
+    summaryKo:
+      '경제 전략 평가는 AI가 글로벌 형태를 재형성하는 배경 속에서 싱가포르가 경쟁력을 유지하는 방법을 드러냅니다. 기술 허브에서 현지 기업의 국제화까지.',
     summaryJa:
       '経済戦略評価は、AI がグローバル格局を再構築する背景の下で、シンガポールがいかに競争力を維持するかを明らかにし、科学技術ハブから地元企業の国際化へ。',
     summaryEn:
       'The Economic Strategy Review lays out how Singapore stays competitive as AI reshapes the global economy — from tech hub status to taking homegrown firms global.',
     topic: 'AI 战略与愿景',
+    topicKo: 'AI 전략 및 비전',
     topicJa: 'AI 戦略とビジョン',
     topicEn: 'AI Strategy & Vision',
     youtubeUrl: 'https://www.youtube.com/watch?v=a86yBs7k3hs',
@@ -1219,21 +1479,26 @@ export const videos: VideoItem[] = [
   {
     id: 'v039',
     title: 'HSC Pipeline Engineering: 用 RAG AI 构建工程知识库',
+    titleKo: 'HSC Pipeline Engineering: RAG AI를 통한 공학 지식 기지 구축',
     titleJa: 'HSC パイプラインエンジニアリング：RAG AI でエンジニアリングナレッジベースを構築',
     titleEn: 'HSC Pipeline Engineering: building an engineering knowledge base with RAG AI',
     speaker: 'HSC Pipeline Engineering',
     speakerTitle: 'AISG LADP 参与企业',
+    speakerTitleKo: 'AISG LADP 참여 기업',
     speakerTitleJa: 'AISG LADP 参加企業',
     speakerTitleEn: 'AISG LADP participating company',
     speakerType: 'industry',
     date: '2026-03-20',
     duration: '05:00',
     summary: 'HSC Pipeline 通过 AISG LADP 计划开发本地部署的 RAG AI 知识库,打破工程知识孤岛,提升决策效率。',
+    summaryKo:
+      'HSC Pipeline은 AISG LADP 계획을 통해 로컬 배포 RAG AI 지식 기지를 개발하여 엔지니어링 지식 고립을 깨뜨리고 의사결정 효율성을 높입니다.',
     summaryJa:
       'HSC Pipeline は AISG LADP プログラムを通じてローカルデプロイ RAG AI ナレッジベースを開発し、エンジニアリングナレッジのサイロを破壊し、意思決定効率を向上させた。',
     summaryEn:
       'Through the AISG LADP programme, HSC Pipeline built a locally deployed RAG AI knowledge base, breaking down engineering-knowledge silos and improving decision-making efficiency.',
     topic: 'AI 产业与应用',
+    topicKo: 'AI 산업과 응용',
     topicJa: 'AI 産業と応用',
     topicEn: 'AI Industry & Applications',
     youtubeUrl: 'https://www.youtube.com/watch?v=tmPl5_pW5Lg',
@@ -1242,21 +1507,26 @@ export const videos: VideoItem[] = [
   {
     id: 'v040',
     title: 'YTL PowerSeraya: LLM 赋能电力市场规则分析',
+    titleKo: 'YTL PowerSeraya: LLM을 통한 전력 시장 규칙 분석',
     titleJa: 'YTL PowerSeraya：LLM が電力市場ルール分析を赋能',
     titleEn: 'YTL PowerSeraya: LLMs power electricity market rule analysis',
     speaker: 'YTL PowerSeraya',
     speakerTitle: 'AISG LADP 参与企业',
+    speakerTitleKo: 'AISG LADP 참여 기업',
     speakerTitleJa: 'AISG LADP 参加企業',
     speakerTitleEn: 'AISG LADP participating company',
     speakerType: 'industry',
     date: '2026-02-20',
     duration: '05:00',
     summary: '新加坡电力公司 YTL PowerSeraya 通过 LADP 构建电力市场规则专用 LLM,实现报告自动分析与规则查询。',
+    summaryKo:
+      '싱가포르 전력 회사 YTL PowerSeraya는 LADP를 통해 전력 시장 규칙 전용 LLM을 구축하여 보고서 자동 분석 및 규칙 조회를 실현합니다.',
     summaryJa:
       'シンガポール電力会社 YTL PowerSeraya は LADP を通じて電力市場ルール専用 LLM を構築し、レポート自動分析とルール照会を実現した。',
     summaryEn:
       'Singapore power company YTL PowerSeraya used LADP to build an LLM specialised in electricity market rules, enabling automated report analysis and rule queries.',
     topic: 'AI 产业与应用',
+    topicKo: 'AI 산업과 응용',
     topicJa: 'AI 産業と応用',
     topicEn: 'AI Industry & Applications',
     youtubeUrl: 'https://www.youtube.com/watch?v=j-8H26FUOz4',
@@ -1265,21 +1535,26 @@ export const videos: VideoItem[] = [
   {
     id: 'v041',
     title: 'Skybots: 从 RPA 到 LLM 驱动的智能客服',
+    titleKo: 'Skybots: RPA에서 LLM 기반 지능형 고객 서비스로',
     titleJa: 'Skybots：RPA から LLM 駆動のインテリジェントカスタマーサービスへ',
     titleEn: 'Skybots: from RPA to LLM-powered customer service',
     speaker: 'Skybots',
     speakerTitle: 'AISG LADP 参与企业',
+    speakerTitleKo: 'AISG LADP 참여 기업',
     speakerTitleJa: 'AISG LADP 参加企業',
     speakerTitleEn: 'AISG LADP participating company',
     speakerType: 'industry',
     date: '2026-01-15',
     duration: '05:00',
     summary: '会计科技公司 Skybots 通过 LADP 将 RPA 升级为 LLM 驱动的智能客服,处理复杂会计工作流查询。',
+    summaryKo:
+      '회계 기술 회사 Skybots는 LADP를 통해 RPA를 LLM 기반 지능형 고객 서비스로 업그레이드하여 복잡한 회계 워크플로우 쿼리를 처리합니다.',
     summaryJa:
       '会計科学技術企業 Skybots は LADP を通じて RPA を LLM 駆動のインテリジェントカスタマーサービスにアップグレードし、複雑な会計ワークフロー照会を処理した。',
     summaryEn:
       'Accounting-tech firm Skybots used LADP to upgrade RPA into LLM-powered customer service, handling complex accounting workflow queries.',
     topic: 'AI 产业与应用',
+    topicKo: 'AI 산업과 응용',
     topicJa: 'AI 産業と応用',
     topicEn: 'AI Industry & Applications',
     youtubeUrl: 'https://www.youtube.com/watch?v=AdLReCusi4c',
@@ -1288,21 +1563,26 @@ export const videos: VideoItem[] = [
   {
     id: 'v042',
     title: '首届新加坡国家 AI 奥林匹克竞赛',
+    titleKo: '첫 번째 싱가포르 국가 AI 올림픽 경기',
     titleJa: '最初のシンガポール国家 AI オリンピック競技大会',
     titleEn: 'Inaugural Singapore National AI Olympiad',
     speaker: 'AI Singapore',
     speakerTitle: 'AI 研究与人才培养机构',
+    speakerTitleKo: 'AI 연구 및 인재 양성 기관',
     speakerTitleJa: 'AI 研究と人材育成機関',
     speakerTitleEn: 'AI research and talent-development organisation',
     speakerType: 'academic',
     date: '2025-08-05',
     duration: '03:00',
     summary: '由 AI Singapore 与 NTU 联合举办、MOE 和 MDDI 支持的首届国家 AI 奥赛,120 多名学生参与 AI 技能挑战。',
+    summaryKo:
+      'AI Singapore와 NTU가 공동 개최하고 MOE 및 MDDI가 지원한 첫 번째 국가 AI 올림피아드에 120명 이상의 학생이 AI 기술 챌린지에 참여했습니다.',
     summaryJa:
       'AI Singapore と NTU が共同で開催し、MOE と MDDI がサポートした最初の国家 AI オリンピック、120 名を超える学生が AI スキルチャレンジに参加した。',
     summaryEn:
       'Co-organised by AI Singapore and NTU and supported by MOE and MDDI, the inaugural National AI Olympiad drew over 120 students to compete in AI skills challenges.',
     topic: 'AI 人才与教育',
+    topicKo: 'AI 인재와 교육',
     topicJa: 'AI 人材と教育',
     topicEn: 'AI Talent & Education',
     youtubeUrl: 'https://www.youtube.com/watch?v=BHGbHhcnDrs',
@@ -1311,21 +1591,26 @@ export const videos: VideoItem[] = [
   {
     id: 'v043',
     title: '从国家赛到国际赛: 新加坡 AI 奥赛之路',
+    titleKo: '국가 경기에서 국제 경기까지: 싱가포르 AI 올림피아드의 여정',
     titleJa: '国内大会から国際大会へ：シンガポール AI オリンピックの道',
     titleEn: "From national to international: Singapore's path through the AI Olympiad",
     speaker: 'AI Singapore',
     speakerTitle: 'AI 研究与人才培养机构',
+    speakerTitleKo: 'AI 연구 및 인재 양성 기관',
     speakerTitleJa: 'AI 研究と人材育成機関',
     speakerTitleEn: 'AI research and talent-development organisation',
     speakerType: 'academic',
     date: '2025-07-03',
     duration: '03:00',
     summary: '记录新加坡从建立国家 AI 奥赛到在国际 AI 奥赛取得历史性成绩的历程,展示 AI 人才培养成果。',
+    summaryKo:
+      '싱가포르가 국가 AI 올림피아드 설립부터 국제 AI 올림피아드에서 역사적 성과를 달성하는 여정을 기록하며 AI 인재 양성 성과를 보여줍니다.',
     summaryJa:
       'シンガポールが国家 AI オリンピックの確立から国際 AI オリンピックでの歴史的成果達成への道を記録し、AI 人材育成の成果を展示した。',
     summaryEn:
       'Tracks Singapore from setting up the National AI Olympiad to landing historic results at the International AI Olympiad — and what it shows about AI talent development.',
     topic: 'AI 人才与教育',
+    topicKo: 'AI 인재와 교육',
     topicJa: 'AI 人材と教育',
     topicEn: 'AI Talent & Education',
     youtubeUrl: 'https://www.youtube.com/watch?v=apkbbEdI4Co',
@@ -1334,21 +1619,26 @@ export const videos: VideoItem[] = [
   {
     id: 'v044',
     title: 'AIAP 人工智能学徒计划: 传承与未来',
+    titleKo: 'AIAP 인공지능 도제 계획: 계승과 미래',
     titleJa: 'AIAP 人工知能学徒計画：継承と将来',
     titleEn: 'AIAP AI Apprenticeship Programme: legacy and future',
     speaker: 'AI Singapore',
     speakerTitle: 'AI 研究与人才培养机构',
+    speakerTitleKo: 'AI 연구 및 인재 양성 기관',
     speakerTitleJa: 'AI 研究と人材育成機関',
     speakerTitleEn: 'AI research and talent-development organisation',
     speakerType: 'academic',
     date: '2025-06-17',
     duration: '05:00',
     summary: 'AI Singapore 的 AIAP 自 2018 年以来已培养超过 400 名 AI 工程师,面向各背景开放,推动新加坡 AI 人才发展。',
+    summaryKo:
+      'AI Singapore의 AIAP은 2018년 이래로 400명 이상의 AI 엔지니어를 양성했으며, 다양한 배경의 사람들을 대상으로 개방되어 싱가포르 AI 인재 발전을 추진하고 있습니다.',
     summaryJa:
       'AI Singapore の AIAP は 2018 年以来 400 名を超える AI エンジニアを育成し、様々な背景に対して開放し、シンガポール AI 人材発展を推進している。',
     summaryEn:
       "Since 2018, AI Singapore's AIAP has trained more than 400 AI engineers; open to applicants of all backgrounds and a major channel for Singapore's AI talent pipeline.",
     topic: 'AI 人才与教育',
+    topicKo: 'AI 인재와 교육',
     topicJa: 'AI 人材と教育',
     topicEn: 'AI Talent & Education',
     youtubeUrl: 'https://www.youtube.com/watch?v=wuNXn3aF5Js',
@@ -1357,21 +1647,26 @@ export const videos: VideoItem[] = [
   {
     id: 'v045',
     title: '2025 全国 AI 学生挑战赛精彩回顾',
+    titleKo: '2025 전국 AI 학생 챌린지 대회 하이라이트 회고',
     titleJa: '2025 全国 AI 学生チャレンジ大会の素晴らしい振り返り',
     titleEn: '2025 National AI Student Challenge highlights',
     speaker: 'AI Singapore',
     speakerTitle: 'AI 研究与人才培养机构',
+    speakerTitleKo: 'AI 연구 및 인재 양성 기관',
     speakerTitleJa: 'AI 研究と人材育成機関',
     speakerTitleEn: 'AI research and talent-development organisation',
     speakerType: 'academic',
     date: '2025-06-12',
     duration: '04:00',
     summary: '由 AISG 主办、IMDA 支持的全国 AI 学生挑战赛已吸引超 2000 名参与者,培养下一代 AI 人才。',
+    summaryKo:
+      'AISG가 주최하고 IMDA가 지원하는 전국 AI 학생 챌린지 대회는 이미 2000명 이상의 참여자를 끌어들였으며 차세대 AI 인재를 양성하고 있습니다.',
     summaryJa:
       'AISG が主催し、IMDA がサポートした全国 AI 学生チャレンジ大会は既に 2,000 名を超える参加者を吸引し、次世代 AI 人材を育成している。',
     summaryEn:
       'Hosted by AISG and supported by IMDA, the National AI Student Challenge has drawn over 2,000 participants — building the next generation of AI talent.',
     topic: 'AI 人才与教育',
+    topicKo: 'AI 인재와 교육',
     topicJa: 'AI 人材と教育',
     topicEn: 'AI Talent & Education',
     youtubeUrl: 'https://www.youtube.com/watch?v=ObJJZqr-Py0',
@@ -1380,21 +1675,26 @@ export const videos: VideoItem[] = [
   {
     id: 'v046',
     title: 'LLM 应用开发者计划 (LADP) 介绍',
+    titleKo: 'LLM 응용 개발자 계획 (LADP) 소개',
     titleJa: 'LLM アプリケーション開発者計画（LADP）紹介',
     titleEn: 'Introducing the LLM Application Developer Programme (LADP)',
     speaker: 'AI Singapore',
     speakerTitle: 'AI 研究与人才培养机构',
+    speakerTitleKo: 'AI 연구 및 인재 양성 기관',
     speakerTitleJa: 'AI 研究と人材育成機関',
     speakerTitleEn: 'AI research and talent-development organisation',
     speakerType: 'academic',
     date: '2025-06-04',
     duration: '12:00',
     summary: 'AISG 与 SGTech 合作的 LADP 计划帮助企业加速 LLM 应用落地,涵盖 prompt engineering 等核心技能。',
+    summaryKo:
+      'AISG와 SGTech의 협력 LADP 계획은 기업이 LLM 응용 구현을 가속화하도록 돕으며 prompt engineering 등 핵심 기술을 포함합니다.',
     summaryJa:
       'AISG と SGTech の協力の LADP 計画は企業が LLM アプリケーション配置を加速するのを支援し、プロンプトエンジニアリングなどの核心スキルを含む。',
     summaryEn:
       'The AISG-SGTech LADP programme helps enterprises accelerate LLM application deployment, covering core skills including prompt engineering.',
     topic: 'AI 产业与应用',
+    topicKo: 'AI 산업과 응용',
     topicJa: 'AI 産業と応用',
     topicEn: 'AI Industry & Applications',
     youtubeUrl: 'https://www.youtube.com/watch?v=04MaF_DEqPg',
@@ -1403,10 +1703,12 @@ export const videos: VideoItem[] = [
   {
     id: 'v047',
     title: '#SGBudget2026: 扶持本地企业',
+    titleKo: '#SGBudget2026: 현지 기업 지원',
     titleJa: '#SGBudget2026：地元企業をサポート',
     titleEn: '#SGBudget2026: supporting local enterprises',
     speaker: 'govsg',
     speakerTitle: '新加坡政府',
+    speakerTitleKo: '싱가포르 정부',
     speakerTitleJa: 'シンガポール政府',
     speakerTitleEn: 'Government of Singapore',
     speakerType: 'government',
@@ -1414,11 +1716,14 @@ export const videos: VideoItem[] = [
     duration: '01:00',
     summary:
       '2026 财政预算案三大企业扶持举措: 40% 公司税回扣、增强 MRA 国际化补助、通过 Champions of AI 计划与 EIS、PSG 支持企业采用 AI。',
+    summaryKo:
+      '2026 재정 예산안 3대 기업 지원 조치: 40% 기업세 환급, MRA 국제화 보조금 강화, Champions of AI 계획 및 EIS, PSG를 통한 기업 AI 채택 지원.',
     summaryJa:
       '2026 年財政予算案の 3 つの大きな企業サポート措置：40% 法人税リベート、MRA 国際化補助の強化、Champions of AI 計画、EIS、PSG を通じた企業 AI 採用サポート。',
     summaryEn:
       'Three enterprise support measures in Budget 2026: a 40% corporate tax rebate, an enhanced MRA internationalisation grant, and support for enterprise AI adoption via the Champions of AI programme together with EIS and PSG.',
     topic: 'AI 战略与愿景',
+    topicKo: 'AI 전략과 비전',
     topicJa: 'AI 戦略とビジョン',
     topicEn: 'AI Strategy & Vision',
     youtubeUrl: 'https://www.youtube.com/watch?v=5jqp4Cw6sqM',
@@ -1427,21 +1732,26 @@ export const videos: VideoItem[] = [
   {
     id: 'v048',
     title: '多光谱 AI 技术革新塑料垃圾回收分拣',
+    titleKo: '플라스틱 폐기물 회수 분류의 다중분광 AI 기술 혁신',
     titleJa: 'マルチスペクトラム AI 技術が塑料廃棄物の分別回収を革新',
     titleEn: 'Multispectral AI transforms plastic waste recycling and sorting',
     speaker: 'AI Singapore',
     speakerTitle: 'AI 研究与人才培养机构',
+    speakerTitleKo: 'AI 연구 및 인재 양성 기관',
     speakerTitleJa: 'AI 研究と人材育成機関',
     speakerTitleEn: 'AI research and talent-development organisation',
     speakerType: 'academic',
     date: '2025-07-01',
     duration: '03:00',
     summary: 'AISG 100E 项目应用多光谱 AI 技术,把塑料垃圾分拣从人工流程转为自动化,解决回收行业长期痛点。',
+    summaryKo:
+      'AISG 100E 프로젝트는 다중 스펙트럼 AI 기술을 적용하여 플라스틱 쓰레기 분류를 수작업 프로세스에서 자동화로 전환하고 재활용 산업의 장기 문제를 해결합니다.',
     summaryJa:
       'AISG 100E プロジェクトはマルチスペクトラム AI 技術を応用し、塑料廃棄物分別をマニュアルプロセスから自動化へと転換し、回収産業の長年の痛点を解決した。',
     summaryEn:
       'An AISG 100E project applies multispectral AI to convert plastic-waste sorting from a manual process to an automated one, addressing a long-standing pain point in the recycling industry.',
     topic: 'AI 产业与应用',
+    topicKo: 'AI 산업 및 응용',
     topicJa: 'AI 産業と応用',
     topicEn: 'AI Industry & Applications',
     youtubeUrl: 'https://www.youtube.com/watch?v=CCRKmYRFCKg',
@@ -1450,21 +1760,26 @@ export const videos: VideoItem[] = [
   {
     id: 'v049',
     title: 'RAPIER: 放射—病理影像信息交换资源',
+    titleKo: 'RAPIER: 방사선-병리학 영상 정보 교환 자원',
     titleJa: 'RAPIER：放射線科・病理学画像情報交換リソース',
     titleEn: 'RAPIER: Radiology-Pathology Imaging Exchange Resource',
     speaker: 'AI Singapore',
     speakerTitle: 'AI 研究与人才培养机构',
+    speakerTitleKo: 'AI 연구 및 인재 양성 기관',
     speakerTitleJa: 'AI 研究と人材育成機関',
     speakerTitleEn: 'AI research and talent-development organisation',
     speakerType: 'academic',
     date: '2025-07-01',
     duration: '03:00',
     summary: 'AISG 与 A*STAR、SGH、NCCS 合作开发 AI 算法,从放射与病理档案中自动检测、描述并诊断肝脏病变。',
+    summaryKo:
+      'AISG, A*STAR, SGH, NCCS가 협력하여 방사선 및 병리 기록에서 간 병변을 자동 탐지, 설명 및 진단하는 AI 알고리즘을 개발합니다.',
     summaryJa:
       'AISG と A*STAR、SGH、NCCS の協力は AI アルゴリズムを開発し、放射線科および病理学ファイルから自動的に肝臓病変を検出、説明および診断した。',
     summaryEn:
       'AISG partners with A*STAR, SGH and NCCS to develop AI algorithms that automatically detect, describe and diagnose liver lesions from radiology and pathology archives.',
     topic: 'AI 产业与应用',
+    topicKo: 'AI 산업 및 응용',
     topicJa: 'AI 産業と応用',
     topicEn: 'AI Industry & Applications',
     youtubeUrl: 'https://www.youtube.com/watch?v=3gSNJhrRQt0',
@@ -1473,21 +1788,26 @@ export const videos: VideoItem[] = [
   {
     id: 'v050',
     title: '面向电商应用的语义感知多模态多语言深度学习系统',
+    titleKo: '전자상거래 응용을 위한 의미 인식 다모달 다언어 딥러닝 시스템',
     titleJa: '電子商取引応用向けセマンティック対応マルチモーダルマルチ言語深層学習システム',
     titleEn: 'Semantic-aware multimodal multilingual deep learning systems for e-commerce',
     speaker: 'AI Singapore',
     speakerTitle: 'AI 研究与人才培养机构',
+    speakerTitleKo: 'AI 연구 및 인재 양성 기관',
     speakerTitleJa: 'AI 研究と人材育成機関',
     speakerTitleEn: 'AI research and talent-development organisation',
     speakerType: 'academic',
     date: '2025-07-01',
     duration: '03:00',
     summary: 'AISG 100E 项目针对电商场景的多语言、多模态环境,解决低资源语言标注数据稀缺与复杂语义学习两大挑战。',
+    summaryKo:
+      'AISG 100E 프로젝트는 전자상거래 시나리오의 다언어, 다모달 환경을 대상으로 저자원 언어 주석 데이터 부족과 복잡한 의미 학습이라는 두 가지 과제를 해결합니다.',
     summaryJa:
       'AISG 100E プロジェクトは電子商取引シーン向けマルチ言語、マルチモーダル環境を対象とし、低資源言語アノテーションデータの稀少性と複雑なセマンティック学習の 2 つの大きなチャレンジを解決している。',
     summaryEn:
       'An AISG 100E project tackles multilingual, multimodal e-commerce settings, addressing two key challenges: scarcity of labelled data for low-resource languages and complex semantic learning.',
     topic: 'AI 产业与应用',
+    topicKo: 'AI 산업 및 응용',
     topicJa: 'AI 産業と応用',
     topicEn: 'AI Industry & Applications',
     youtubeUrl: 'https://www.youtube.com/watch?v=9ONmek-BRWE',
@@ -1496,21 +1816,26 @@ export const videos: VideoItem[] = [
   {
     id: 'v051',
     title: '面向电商平台的实时深度学习欺诈检测网络',
+    titleKo: '전자상거래 플랫폼을 위한 실시간 딥러닝 사기 탐지 네트워크',
     titleJa: '電子商取引プラットフォーム向けリアルタイム深層学習詐欺検出ネットワーク',
     titleEn: 'Real-time deep learning fraud detection networks for e-commerce platforms',
     speaker: 'AI Singapore',
     speakerTitle: 'AI 研究与人才培养机构',
+    speakerTitleKo: 'AI 연구 및 인재 양성 기관',
     speakerTitleJa: 'AI 研究と人材育成機関',
     speakerTitleEn: 'AI research and talent-development organisation',
     speakerType: 'academic',
     date: '2025-07-01',
     duration: '03:00',
     summary: 'AISG 100E 项目研发新型机器学习技术与网络架构,应对企业数字化过程中日益加剧的数字欺诈风险。',
+    summaryKo:
+      'AISG 100E 프로젝트는 기업 디지털화 과정에서 점점 증가하는 디지털 사기 위험에 대응하기 위해 새로운 기계 학습 기술과 네트워크 아키텍처를 개발합니다.',
     summaryJa:
       'AISG 100E プロジェクトは新型機械学習技術とネットワークアーキテクチャを研究開発し、企業デジタル化プロセスにおいて加速する数字詐欺リスクに対応した。',
     summaryEn:
       'An AISG 100E project develops new machine-learning techniques and network architectures to address the growing risk of digital fraud as enterprises digitalise.',
     topic: 'AI 产业与应用',
+    topicKo: 'AI 산업 및 응용',
     topicJa: 'AI 産業と応用',
     topicEn: 'AI Industry & Applications',
     youtubeUrl: 'https://www.youtube.com/watch?v=vI8xWuxI974',
@@ -1519,10 +1844,12 @@ export const videos: VideoItem[] = [
   {
     id: 'v052',
     title: '地下交通基础设施监测的多变量时间序列建模',
+    titleKo: '지하 교통 기반시설 모니터링의 다변량 시계열 모델링',
     titleJa: '地下交通基盤施設監視用多変量時間シリーズモデリング',
     titleEn: 'Multivariate time-series modelling for monitoring underground transport infrastructure',
     speaker: 'AI Singapore',
     speakerTitle: 'AI 研究与人才培养机构',
+    speakerTitleKo: 'AI 연구 및 인재 양성 기관',
     speakerTitleJa: 'AI 研究と人材育成機関',
     speakerTitleEn: 'AI research and talent-development organisation',
     speakerType: 'academic',
@@ -1530,11 +1857,14 @@ export const videos: VideoItem[] = [
     duration: '03:00',
     summary:
       'AISG 100E 项目把 AI 技术应用于智能传感系统,实现对高风险地下交通基础设施潜在故障的可扩展检测、诊断与预测。',
+    summaryKo:
+      'AISG 100E 프로젝트는 AI 기술을 지능형 센싱 시스템에 적용하여 고위험 지하 교통 기반시설의 잠재적 결함에 대한 확장 가능한 탐지, 진단 및 예측을 실현합니다.',
     summaryJa:
       'AISG 100E プロジェクトは AI 技術をインテリジェントセンシングシステムに応用し、高リスク地下交通基盤施設の潜在的故障のスケーラブルな検出、診断および予測を実現した。',
     summaryEn:
       'An AISG 100E project applies AI to smart sensing systems, enabling scalable detection, diagnosis and prediction of potential failures in high-risk underground transport infrastructure.',
     topic: 'AI 产业与应用',
+    topicKo: 'AI 산업 및 응용',
     topicJa: 'AI 産業と応用',
     topicEn: 'AI Industry & Applications',
     youtubeUrl: 'https://www.youtube.com/watch?v=JCeHoMJLZMs',

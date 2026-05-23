@@ -25,10 +25,11 @@ import { levers } from '~/data/levers';
 import { timelineEvents } from '~/data/timeline';
 import { allPeople } from '~/data/people';
 import type { RelatedBundle } from '~/utils/graph';
-import { localizedHref, t, type Lang } from '~/i18n';
+import { IN_LANGUAGES, localizedHref, t, type Lang } from '~/i18n';
 
-// JSON-LD inLanguage uses BCP 47 (zh-CN, en, ja). Mirrored from Layout.astro.
-const HTML_LANG: Record<Lang, string> = { zh: 'zh-CN', en: 'en', ja: 'ja' };
+// JSON-LD inLanguage reuses IN_LANGUAGES (single source of truth shared
+// with Layout.astro and CommonMeta.astro).
+const HTML_LANG = IN_LANGUAGES;
 
 export const prerender = true;
 

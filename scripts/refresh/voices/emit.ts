@@ -47,13 +47,16 @@ export interface EmittableSpeech {
   titleZh: string;
   titleEn: string;
   titleJa: string;
+  titleKo?: string;
   eventEn: string;
   eventZh: string;
   eventJa: string;
+  eventKo?: string;
   speaker: string;
   speakerTitleEn: string;
   speakerTitleZh: string;
   speakerTitleJa: string;
+  speakerTitleKo?: string;
   translatedAt: string;
   translationSource: 'claude' | 'manual';
   translationModel?: string;
@@ -73,13 +76,16 @@ export function combineForEmit(
     titleZh: string;
     titleEn: string;
     titleJa: string;
+    titleKo?: string;
     eventEn: string;
     eventZh: string;
     eventJa: string;
+    eventKo?: string;
     speaker: string;
     speakerTitleZh: string;
     speakerTitleEn: string;
     speakerTitleJa: string;
+    speakerTitleKo?: string;
   }
 ): EmittableSpeech {
   return {
@@ -94,13 +100,16 @@ export function combineForEmit(
     titleZh: enriched.titleZh,
     titleEn: enriched.titleEn,
     titleJa: enriched.titleJa,
+    titleKo: enriched.titleKo,
     eventEn: enriched.eventEn,
     eventZh: enriched.eventZh,
     eventJa: enriched.eventJa,
+    eventKo: enriched.eventKo,
     speaker: enriched.speaker,
     speakerTitleEn: enriched.speakerTitleEn,
     speakerTitleZh: enriched.speakerTitleZh,
     speakerTitleJa: enriched.speakerTitleJa,
+    speakerTitleKo: enriched.speakerTitleKo,
     translatedAt: translated.translatedAt,
     translationSource: translated.translationSource,
     translationModel: translated.translationModel,
@@ -178,10 +187,12 @@ function formatVoicesEntry(s: EmittableSpeech, today: string): string {
   lines.push(`    titleEn: '${escapeQuote(s.titleEn)}',`);
   lines.push(`    title: '${escapeQuote(s.titleZh)}',`);
   lines.push(`    titleJa: '${escapeQuote(s.titleJa)}',`);
+  if (s.titleKo) lines.push(`    titleKo: '${escapeQuote(s.titleKo)}',`);
   lines.push(`    speaker: '${escapeQuote(s.speaker)}',`);
   lines.push(`    speakerTitle: '${escapeQuote(s.speakerTitleZh)}',`);
   lines.push(`    speakerTitleJa: '${escapeQuote(s.speakerTitleJa)}',`);
   lines.push(`    speakerTitleEn: '${escapeQuote(s.speakerTitleEn)}',`);
+  if (s.speakerTitleKo) lines.push(`    speakerTitleKo: '${escapeQuote(s.speakerTitleKo)}',`);
   const date =
     s.publishedDate && /^\d{4}-\d{2}-\d{2}$/.test(s.publishedDate)
       ? s.publishedDate
@@ -191,6 +202,7 @@ function formatVoicesEntry(s: EmittableSpeech, today: string): string {
   lines.push(`    eventEn: '${escapeQuote(s.eventEn)}',`);
   lines.push(`    event: '${escapeQuote(s.eventZh)}',`);
   lines.push(`    eventJa: '${escapeQuote(s.eventJa)}',`);
+  if (s.eventKo) lines.push(`    eventKo: '${escapeQuote(s.eventKo)}',`);
   lines.push(`    addedAt: '${today}',`);
   lines.push('  },');
   return lines.join('\n');

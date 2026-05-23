@@ -38,12 +38,13 @@ function arg(name, fallback) {
 const LANG = arg('--lang', 'en');
 const ROOT_BASE = arg('--root', 'dist');
 // EN is the route-default locale and lives at the bare ROOT_BASE.
-// Other locales live under ROOT_BASE/<lang>/.
+// Other locales live under ROOT_BASE/<lang>/. Lang codes double as URL
+// segments (kebab-cased where needed, e.g. 'zh-tw' → /zh-tw/).
 const ROUTE_DEFAULT = 'en';
 const ROOT = LANG === ROUTE_DEFAULT ? ROOT_BASE : `${ROOT_BASE}/${LANG}`;
 // Subdirs to skip when scanning EN root (those belong to other locales).
 // Keep this in sync with LOCALES in src/i18n/index.ts (minus the route default).
-const SKIP_SUBDIRS = new Set(LANG === ROUTE_DEFAULT ? ['zh', 'ja'] : []);
+const SKIP_SUBDIRS = new Set(LANG === ROUTE_DEFAULT ? ['zh', 'ja', 'zh-tw', 'ko'] : []);
 
 // Per-target-lang config. Each entry says "what foreign script should
 // NOT appear on a page in this locale", plus intentional exceptions.
@@ -167,6 +168,64 @@ const LANG_CONFIG = {
         // Common policy / programme proper nouns that legitimately
         // appear inside JA sentences. These would otherwise need to be
         // re-cased per locale, and they're just wrong to translate.
+        'Smart Nation',
+        'AI Singapore',
+        'AI Verify',
+        'SEA-LION',
+        'NAIS 2.0',
+        'NAIS2.0',
+        'Model AI Governance Framework',
+        'National AI Strategy',
+        'AI Centre of Excellence',
+        'AI Trailblazers',
+        'SkillsFuture',
+        'GenAI Sandbox',
+        'TechSkills Accelerator',
+        'OpenAI',
+        'Anthropic',
+        'GovTech',
+        'GovAI',
+      ],
+    },
+  },
+  'zh-tw': {
+    // Traditional Chinese (Taiwan idiom) pages are produced by passing the
+    // zh dict through OpenCC s2twp at render time. If OpenCC fired
+    // correctly, NO Simplified-only characters should appear on a /zh-tw/
+    // page. Flag any Simplified character that has a distinct Traditional
+    // glyph as residue (the converter missed it, or a hand-typed string
+    // bypassed pickLocalized).
+    //
+    // 后 is intentionally NOT in this list — it's a valid Traditional
+    // character meaning "queen" (皇后/太后), distinct from 後 ("after").
+    // OpenCC keeps 后 when context implies "queen"; we can't disambiguate
+    // at the regex level. Common compound mis-conversions (后续/后期/etc.)
+    // are caught by the POST_DICT in src/i18n/opencc.ts.
+    foreignRegex:
+      /[们这个让给还经历战业长进应时现过对边远难听说话网决织续选责险验总较单风转务习头质闻关开师龙标异该处见级观产场际线门约电汉东种钟严员问纸读买卖钱实询试讲请运银项报书图来语转动会国华军车节义难艺济点优]+/g,
+    // No special exceptions — the only "allow CJK" cases on a zhTw page
+    // would be brand/legal text we want preserved verbatim, which OpenCC
+    // already leaves alone since they aren't Simplified codepoints.
+    allowPatterns: [],
+  },
+  ko: {
+    // Korean pages should contain hangul, not Han characters. Flag CJK
+    // Unified runs as residue — these are either un-translated zh
+    // fallbacks or template strings that should have been localized.
+    foreignRegex: /[一-鿿]+(?:[一-鿿\s·。，、！？：；'-]*[一-鿿]+)*/g,
+    // Allow-list intentional CJK references on KO pages:
+    //  - Other-language toggle labels (中文 / 日本語 / 繁體中文) in the switcher
+    //  - Branded proper nouns kept in original script
+    allowPatterns: ['中文', '日本語', '繁體中文'],
+    // Sentence-level EN-residue scan: catches "Read more →"-style English
+    // sentences that leaked into KO pages because a template fell
+    // through pickLocalized's fallback chain to en.
+    enSentence: {
+      minTokens: 4,
+      allowPatterns: [
+        'Singapore AI Observatory',
+        'sgai',
+        'English',
         'Smart Nation',
         'AI Singapore',
         'AI Verify',
@@ -313,19 +372,30 @@ function isAllowed(s) {
 // "wrong-language sentence" failure mode this is designed to catch. We
 // truncate flagged sentences to 150 chars in reports to keep output usable.
 const KANA_RE = /[぀-ゟ゠-ヿ]/;
+const HANGUL_RE = /[가-힣]/;
 const EN_TOKEN_RE = /[A-Za-z][A-Za-z0-9'’-]*/g;
 const SENTENCE_SPLIT_RE = /[.。！!？?]+/;
+
+// Per-locale "target script" regex used to skip sentences that already
+// contain the target language's native script (those aren't EN residue).
+// Mirrors KANA_RE for ja — the original implementation only handled ja.
+const TARGET_SCRIPT_RE = {
+  ja: KANA_RE,
+  ko: HANGUL_RE,
+};
 
 function findEnSentences(text) {
   const cfg = conf.enSentence;
   if (!cfg) return [];
   const minTokens = cfg.minTokens || 4;
   const allow = cfg.allowPatterns || [];
+  const targetScript = TARGET_SCRIPT_RE[LANG] || null;
   const out = [];
   for (const raw of text.split(SENTENCE_SPLIT_RE)) {
     const sent = raw.replace(/\s+/g, ' ').trim();
     if (sent.length < 10) continue;
-    if (KANA_RE.test(sent)) continue;
+    // Sentence contains target locale's native script — not EN residue.
+    if (targetScript && targetScript.test(sent)) continue;
     const tokens = sent.match(EN_TOKEN_RE) || [];
     if (tokens.length < minTokens) continue;
     if (allow.some((p) => sent.includes(p))) continue;

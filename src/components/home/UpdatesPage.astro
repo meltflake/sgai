@@ -68,6 +68,12 @@ function formatMonth(ym: string, lang: Lang): string {
   if (lang === 'ja') {
     return `${y}年${mn}月`;
   }
+  if (lang === 'ko') {
+    return `${y}년 ${mn}월`;
+  }
+  if (lang === 'zh-tw') {
+    return `${y} 年 ${mn} 月`;
+  }
   return `${y} 年 ${mn} 月`;
 }
 

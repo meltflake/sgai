@@ -11,7 +11,7 @@
 // <ClientRouter> swaps the DOM during view transitions; per-element
 // listeners would be lost after the first navigation.
 
-import { LOCALES, type Lang, t } from '~/i18n';
+import { LOCALES, ROUTE_DEFAULT_LOCALE, type Lang, t } from '~/i18n';
 
 interface Props {
   currentLang: Lang;
@@ -26,6 +26,8 @@ const LANG_LABELS: Record<Lang, string> = {
   en: 'English',
   zh: '中文',
   ja: '日本語',
+  'zh-tw': '繁體中文',
+  ko: '한국어',
 };
 
 const locales = LOCALES.map((lang) => ({
@@ -33,6 +35,13 @@ const locales = LOCALES.map((lang) => ({
   label: LANG_LABELS[lang] || lang,
   active: lang === currentLang,
 }));
+
+// Inline-script data: route default + the list of non-default lang
+// codes (which double as URL segments since Lang == segment).
+const routeData = {
+  routeDefault: ROUTE_DEFAULT_LOCALE,
+  nonDefaultLangs: LOCALES.filter((l) => l !== ROUTE_DEFAULT_LOCALE),
+};
 ---
 
 <div class={`relative ${extraClass}`} data-lang-switcher>
@@ -103,18 +112,30 @@ const locales = LOCALES.map((lang) => ({
   </div>
 </div>
 
-<script is:inline>
+<script is:inline define:vars={{ routeData }}>
   if (!window.__sgaiLangSwitcherBound) {
     window.__sgaiLangSwitcherBound = true;
 
+    // Locale URL routing — generic over all configured non-default langs.
+    // Lang codes are kebab-case (e.g. 'zh-tw') and double as URL segments.
+    const { routeDefault, nonDefaultLangs } = routeData;
+
     function localeUrl(targetLang) {
       const path = location.pathname;
+      // Strip any known non-default segment to recover the bare base path.
       let bare = path;
-      if (path === '/zh' || path === '/zh/') bare = '/';
-      else if (path.indexOf('/zh/') === 0) bare = path.slice(3);
-      else if (path === '/ja' || path === '/ja/') bare = '/';
-      else if (path.indexOf('/ja/') === 0) bare = path.slice(3);
-      if (targetLang === 'en') return bare || '/';
+      for (const lang of nonDefaultLangs) {
+        const p = '/' + lang;
+        if (path === p || path === p + '/') {
+          bare = '/';
+          break;
+        }
+        if (path.indexOf(p + '/') === 0) {
+          bare = path.slice(p.length);
+          break;
+        }
+      }
+      if (targetLang === routeDefault) return bare || '/';
       if (bare === '/' || bare === '') return '/' + targetLang + '/';
       return '/' + targetLang + bare;
     }

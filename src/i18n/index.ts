@@ -1,4 +1,4 @@
-// i18n core (v0.6.0).
+// i18n core (v0.8.0).
 //
 // Routing vs content locales (decoupled by design):
 //
@@ -16,19 +16,30 @@
 // the routing is gratuitous churn. Decoupling lets us flip routing
 // independently from the historical data convention.
 //
+// Lang code == URL segment:
+//
+//   The Lang code (e.g. 'zh-tw') is *also* the URL segment — pages live
+//   at `/zh-tw/...` and `Astro.params.lang === 'zh-tw'` matches the
+//   Lang union directly. siblingSuffix handles the kebab-cased lang
+//   code by splitting on '-' and capitalizing each part, so 'zh-tw'
+//   derives the `titleZhTw` sibling-field name.
+//
+//   HTML lang / hreflang use BCP-47 via IN_LANGUAGES (`zh-Hant`).
+//
 // To add a new locale L:
-//   1. Add 'L' to the Lang union and LOCALES array.
+//   1. Add 'L' to the Lang union and LOCALES array (use kebab-case if
+//      the locale needs a region tag, e.g. 'zh-tw', 'pt-br').
 //   2. Add an `<L>` dictionary export below (mirroring `zh`'s keys).
 //   3. Backfill `titleL` / `descriptionL` / etc. on user-visible data
 //      fields you want translated (otherwise pickLocalized falls back
 //      through FALLBACK_CHAINS).
 //   4. Add a fallback chain entry for L if you want a different chain
 //      than [L, DEFAULT_LOCALE].
-//   5. Run `npm run check:i18n -- --lang L --root dist/L` to verify.
+//   5. Run `npm run check:i18n -- --lang L --root dist/<L>` to verify.
 
-export type Lang = 'zh' | 'en' | 'ja';
+export type Lang = 'zh' | 'en' | 'ja' | 'zh-tw' | 'ko';
 
-export const LOCALES: Lang[] = ['zh', 'en', 'ja'];
+export const LOCALES: Lang[] = ['zh', 'en', 'ja', 'zh-tw', 'ko'];
 
 /** Routing default: this locale's URLs live at the bare root (no prefix). */
 export const ROUTE_DEFAULT_LOCALE: Lang = 'en';
@@ -39,39 +50,62 @@ export const DEFAULT_LOCALE: Lang = 'zh';
 /** Non-default routing locales — used by [lang] dynamic routes' getStaticPaths. */
 export const NON_DEFAULT_ROUTE_LOCALES = LOCALES.filter((l) => l !== ROUTE_DEFAULT_LOCALE);
 
-/** JSON-LD / schema.org inLanguage values per locale. */
-export const IN_LANGUAGES: Record<Lang, string> = { zh: 'zh-CN', en: 'en', ja: 'ja' };
+/** JSON-LD / schema.org inLanguage values per locale (BCP 47). */
+export const IN_LANGUAGES: Record<Lang, string> = {
+  zh: 'zh-CN',
+  en: 'en',
+  ja: 'ja',
+  'zh-tw': 'zh-Hant',
+  ko: 'ko',
+};
 
 /** Per-locale fallback chain. Looked up in order; the first non-empty
  *  hit wins. Always ends with `DEFAULT_LOCALE` (the bare-field locale).
+ *
  *  ja falls back to en before zh: Japanese readers' English literacy is
- *  generally higher than their Chinese literacy. */
+ *  generally higher than their Chinese literacy.
+ *
+ *  zh-tw falls back directly to zh (Simplified). pickLocalized / t will
+ *  pass the zh hit through OpenCC s2twp at render time, so missing
+ *  `*ZhTw` siblings degrade to OpenCC-converted Traditional rather than
+ *  raw Simplified.
+ *
+ *  ko falls back to en, then zh (same reasoning as ja). */
 const FALLBACK_CHAINS: Record<Lang, Lang[]> = {
   zh: ['zh'],
   en: ['en', 'zh'],
   ja: ['ja', 'en', 'zh'],
+  'zh-tw': ['zh-tw', 'zh'],
+  ko: ['ko', 'en', 'zh'],
 };
 
-/** Capitalize first char for sibling-field naming.
- *  zh → '' (uses bare `key`), en → 'En', ja → 'Ja', ... */
+/** Derive sibling-field suffix from a lang code.
+ *  zh → '' (uses bare `key`), en → 'En', ja → 'Ja', zh-tw → 'ZhTw',
+ *  ko → 'Ko'. Splits on '-' and capitalizes each segment so kebab-cased
+ *  region tags ('zh-tw', 'pt-br') produce valid JS identifier suffixes. */
 function siblingSuffix(lang: Lang): string {
   if (lang === DEFAULT_LOCALE) return '';
-  return lang.charAt(0).toUpperCase() + lang.slice(1);
+  return lang
+    .split('-')
+    .map((p) => p.charAt(0).toUpperCase() + p.slice(1))
+    .join('');
 }
 
-/** Read locale from a URL pathname. /zh/foo → 'zh', /foo → 'en'. */
+/** Read locale from a URL pathname. /zh/foo → 'zh', /zh-tw/foo → 'zh-tw',
+ *  /foo → 'en'. */
 export function getLangFromPath(pathname: string): Lang {
   const seg = pathname.replace(/^\/+/, '').split('/')[0] as Lang;
-  return LOCALES.includes(seg) && seg !== ROUTE_DEFAULT_LOCALE ? seg : ROUTE_DEFAULT_LOCALE;
+  return (LOCALES as string[]).includes(seg) && seg !== ROUTE_DEFAULT_LOCALE ? seg : ROUTE_DEFAULT_LOCALE;
 }
 
-/** Return URL prefix for a locale. en → '', zh → '/zh'. */
+/** Return URL prefix for a locale. en → '', zh → '/zh', zh-tw → '/zh-tw'. */
 export function localePrefix(lang: Lang): string {
   return lang === ROUTE_DEFAULT_LOCALE ? '' : `/${lang}`;
 }
 
 /** Build a localized href. localizedHref('/policies/', 'en') → '/policies/'.
- *  localizedHref('/policies/', 'zh') → '/zh/policies/'. */
+ *  localizedHref('/policies/', 'zh') → '/zh/policies/'.
+ *  localizedHref('/policies/', 'zh-tw') → '/zh-tw/policies/'. */
 export function localizedHref(path: string, lang: Lang): string {
   if (!path.startsWith('/')) path = '/' + path;
   if (lang === ROUTE_DEFAULT_LOCALE) return path;
@@ -81,7 +115,8 @@ export function localizedHref(path: string, lang: Lang): string {
 }
 
 /** Strip route-locale prefix to recover the bare (route-default) path.
- *  unprefixed('/zh/policies/') → '/policies/'. */
+ *  unprefixed('/zh/policies/') → '/policies/'.
+ *  unprefixed('/zh-tw/policies/') → '/policies/'. */
 export function unprefixed(path: string): string {
   for (const lang of LOCALES) {
     if (lang === ROUTE_DEFAULT_LOCALE) continue;
@@ -90,6 +125,27 @@ export function unprefixed(path: string): string {
     if (path.startsWith(prefix + '/')) return path.slice(prefix.length);
   }
   return path;
+}
+
+import { toTraditional as openccConvert } from './opencc';
+
+/** Apply OpenCC s2twp to a string when the target lang is zh-tw and the
+ *  matched value came from the zh fallback. No-op for other langs. The
+ *  OpenCC converter is a singleton inside ./opencc.ts so first-call cold
+ *  is paid once per build, not per record.
+ *
+ *  Array values (e.g. keyPoints: string[]) are converted element-wise.
+ *  Non-string scalars pass through untouched — pickLocalized may carry
+ *  numbers / booleans / nested objects, and the OpenCC underlying
+ *  matchPrefix crashes on non-string input. */
+function maybeConvertToTraditional<T>(value: T, targetLang: Lang, matchedLang: Lang): T {
+  if (targetLang !== 'zh-tw') return value;
+  if (matchedLang !== 'zh') return value;
+  if (typeof value === 'string') return openccConvert(value) as T;
+  if (Array.isArray(value)) {
+    return value.map((v) => (typeof v === 'string' ? openccConvert(v) : v)) as T;
+  }
+  return value;
 }
 
 /** Pick a localized field from an object using the lang's fallback chain.
@@ -150,7 +206,7 @@ export function pickLocalized(
       else if (candidate === 'en') key = enKey;
       else key = `${zhKey}${siblingSuffix(candidate)}`; // e.g. ja → `${zhKey}Ja`
       const v = r[key];
-      if (v != null && v !== '') return v as string;
+      if (v != null && v !== '') return maybeConvertToTraditional(v, lang, candidate);
     }
     return r[zhKey] as string | null | undefined;
   }
@@ -161,7 +217,7 @@ export function pickLocalized(
   for (const candidate of FALLBACK_CHAINS[lang] || [lang, DEFAULT_LOCALE]) {
     const key = candidate === DEFAULT_LOCALE ? baseKey : `${baseKey}${siblingSuffix(candidate)}`;
     const v = r[key];
-    if (v != null && v !== '') return v as string;
+    if (v != null && v !== '') return maybeConvertToTraditional(v as string, lang, candidate);
   }
   return r[baseKey] as string | null | undefined;
 }
@@ -199,8 +255,10 @@ export function channelLabel(
   const chRec = ch as unknown as Record<string, unknown>;
   for (const candidate of FALLBACK_CHAINS[lang] || [lang, DEFAULT_LOCALE]) {
     if (candidate === DEFAULT_LOCALE) {
-      // The default-locale label is zh; only use it if it's Latin-only.
+      // The default-locale label is zh; only use it if it's Latin-only,
+      // unless we're rendering zh-tw — then run it through OpenCC.
       if (ch.label && !/[一-鿿]/.test(ch.label)) return ch.label;
+      if (ch.label && lang === 'zh-tw') return openccConvert(ch.label);
       continue;
     }
     const key = `label${siblingSuffix(candidate)}`;
@@ -213,12 +271,15 @@ export function channelLabel(
 }
 
 /** Dictionary lookup. Returns a stable string. Walks the fallback chain
- *  for the target lang, returning the first non-empty hit. */
+ *  for the target lang, returning the first non-empty hit. zhTw entries
+ *  that miss the chain and fall to zh get auto-converted via OpenCC. */
 export function t(lang: Lang, key: keyof typeof zh): string {
   for (const candidate of FALLBACK_CHAINS[lang] || [lang, DEFAULT_LOCALE]) {
     const dict = DICTIONARIES[candidate];
     const value = dict?.[key];
-    if (typeof value === 'string' && value !== '') return value;
+    if (typeof value === 'string' && value !== '') {
+      return maybeConvertToTraditional(value, lang, candidate);
+    }
   }
   return (zh[key] as string) ?? (key as string);
 }
@@ -1080,6 +1141,291 @@ export const ja: Partial<Record<keyof typeof zh, string>> = {
   copyrightOpenSource: 'ソースコード MIT ライセンス；コンテンツ CC BY 4.0',
 };
 
+/** Traditional Chinese (zh-Hant) dictionary.
+ *
+ *  Intentionally empty: zh-tw renders by passing the zh dict through
+ *  OpenCC s2twp at runtime (see maybeConvertToTraditional + t()). Hand
+ *  override only the entries where 简→繁 conversion produces awkward TW
+ *  copy (e.g. proper-noun branding, Singapore-specific terms) — for
+ *  everything else the converter handles it correctly.
+ *
+ *  Add an entry here whenever you spot OpenCC misfires in QA. */
+export const zhTwDict: Partial<Record<keyof typeof zh, string>> = {};
+
+/** Korean dictionary. Seeded by `npx tsx scripts/i18n/build-ko-dict.ts`,
+ *  which mirrors the ja seed (translateBatch + glossary + sha256 cache).
+ *  Hand edits take precedence over re-runs because the script emits a
+ *  fresh literal block but does NOT auto-merge. */
+export const ko: Partial<Record<keyof typeof zh, string>> = {
+  siteName: '싱가포르 AI 옵저버토리',
+  siteShortName: 'SG AI',
+  siteTagline: '싱가포르 AI 생태계 및 전략의 심층 관찰',
+  siteDescription:
+    '싱가포르 AI 옵저버토리는 독립적인 다국어 연구 관찰소로, 공개 자료와 1차 출처를 기반하여 싱가포르 AI 전략, 정책 이행, 국회 토론, 산업 생태계, 인재 양성, 오픈소스 프로젝트 및 국제 벤치마크를 지속적으로 추적합니다.',
+  navAnalysis: '컬럼',
+  navPolicy: '정책 및 전략',
+  navDebates: '토론 및 의견',
+  navData: '데이터 추적',
+  navAbout: '소개',
+  navPolicies: '정책 문서',
+  navLevers: '국가 AI 레버 지도',
+  navLegalAi: 'AI 법적 프레임워크',
+  navTimeline: '발전 타임라인',
+  navEcosystem: '생태계 지도',
+  navParliament: '국회 AI 포커스',
+  navVoices: 'AI 영향력 지도',
+  navVideos: 'AI 비디오 컬럼',
+  navTracker: 'AI 대시보드',
+  navStartups: 'AI 스타트업 생태계',
+  navTalent: '인재 양성',
+  navOpensource: '공식 오픈소스 및 연구',
+  navCommunityOpensource: '산학 협력 오픈소스 생태계',
+  navBenchmarking: '국제 벤치마크',
+  navAboutSite: '사이트 소개',
+  navFieldnotes: '실전 노트',
+  navReferences: '참고 자료',
+  navAllArticles: '전체 글',
+  navHome: '홈',
+  navBackToBlog: '컬럼 목록으로',
+  postPrevOlder: '← 이전 글(더 오래된)',
+  postNextNewer: '다음 글(업데이트) →',
+  footerMaintainedBy: '{handle}이(가) 관리합니다',
+  search: '검색',
+  searchPlaceholder: '정책, 토론, 레버, 인물, 블로그 글을 검색하세요……',
+  closeSearch: '검색 닫기',
+  searchSiteLabel: '사이트 내 검색',
+  searchFallbackMessage:
+    '검색 인덱스가 아직 구축되지 않았습니다. npm run build를 실행한 후 다시 시도하거나, 배포된 sgai.md를 방문하여 검색을 사용하세요.',
+  loadMore: '더 보기',
+  readMore: '전체 읽기',
+  backTo: '뒤로',
+  back: '뒤로',
+  related: '관련',
+  relatedReading: '관련 글',
+  source: '출처',
+  sourcePdf: '원문 PDF',
+  translation: '중국어 번역',
+  englishTranslation: 'English translation',
+  participants: '참여자',
+  authors: '주요 저자/추진자',
+  policySignal: '정책 신호',
+  governmentStance: '정부 입장',
+  oppositionStance: '질의 입장',
+  keyPoints: '핵심 요점',
+  fullTextEn: '영어 원문',
+  hansardSource: 'Hansard 원문',
+  controversyLevel: '논쟁도',
+  heroEyebrow: '싱가포르 AI 옵저버토리',
+  heroHeadline: '싱가포르의 AI 전략은 알고리즘에 있지 않습니다.',
+  heroHeadline2: '6개의 레버에 있습니다.',
+  heroSubtitle:
+    '전체 국가를 기업 AI-native 전환의 「포장 계층」으로 취급합니다——국가 자체가 AI-native가 될 필요는 없으며, 기업 전환 속도를 확대하기만 하면 충분합니다.',
+  heroSubtitleNeutral:
+    '한 도시 국가의 AI 시대 국가 차원 전환 — 정책 문서, 국회 토론, 레버 지도, 스타트업 생태계, 법적 프레임워크의 독립적 분석.',
+  ctaReadCore: '핵심 논증 읽기',
+  ctaBrowseAll: '모든 컬럼 둘러보기 →',
+  freshnessPolicies: '핵심 정책',
+  freshnessDebates: '국회 토론',
+  freshnessLevers: '레버 프로젝트',
+  freshnessUpdated: '최근 업데이트',
+  latestAnalyses: '최신 컬럼',
+  viewAll: '전체 보기 →',
+  viewAllLeversCta: '전체 지도 →',
+  viewAllDebatesCta: '전체 {count}개 →',
+  leversSection: '국가 차원 AI-native 레버 지도',
+  leversBlurb:
+    '6개 레버가 {count}개의 구체적인 착지 프로젝트를 포함합니다. 「AI 도입 경로」에 따라 다시 분할하여 여러 부처에 걸쳐 완전한 실행 파이프라인으로 이어집니다.',
+  leverMapColPassThrough: '기업으로 관통',
+  leverMapColDirect: '국가가 직접 함',
+  leverMapColPassThroughHint: '국가가 이러한 레버를 통해 기업의 AI 전환을 확대',
+  leverMapColDirectHint: '국가가 스스로 직접 하고, 기업에 의존하지 않음',
+  leverProjectsSuffix: '프로젝트',
+  transmissionFootnote:
+    '7개 전달 레버 중에서, 오직 2개만 국가가 직접 하는 것입니다. 다른 5개는 모두 국가가 기업으로 관통하는 레버입니다.',
+  transmissionFootnoteCta: '7개 전달 레버 알아보기 →',
+  recentDebatesSection: '최근 국회 토론',
+  recentDebatesBlurb: '{from}부터 {to}까지, 의회의 AI 관련 모든 질문, 답변, 토론.',
+  closingThesis:
+    'AI-native는 규모가 아니라 아키텍처입니다. 국가는 「스스로」AI-native일 수 없습니다 — 반드시 기업으로 관통해야 합니다.',
+  closingCta: '「AI-native 국가」 전문 읽기',
+  leverWord: '레버',
+  homeTrackerSection: '싱가포르 AI 대시보드',
+  homeTrackerBlurb: '6개 차원의 현재 수치, 월별 업데이트.',
+  homeTrackerCta: '전체 대시보드 →',
+  policiesPageTitle: 'AI 정책 라이브러리',
+  policiesPageBlurb: '싱가포르 핵심 AI 관련 정책 문서 모음, 분류에 따라 정리하고, 각 분류는 시간 역순으로 정렬.',
+  policiesItemsSuffix: '부',
+  policyArchiveSuffix: '정책 아카이브',
+  backToPolicies: '정책 라이브러리로 돌아가기',
+  debatesPageTitle: '국회 AI 초점',
+  blogIndexTitle: '컬럼',
+  aboutPageTitle: '사이트 소개',
+  aboutPageDesc:
+    '싱가포르 AI 옵저버토리 소개 — 독립적으로 유지 관리되는 싱가포르 AI 전략 관찰 플랫폼. 연구 방법론, 이해관계 선언, 피드백 방식.',
+  evolutionPageTitle: '정책 진화 분석',
+  evolutionPageDesc: '싱가포르 AI 정책 진화 종합 전망 — 2014년 스마트 네이션에서 2024년 NAIS 2.0으로의 전략 전환 여정.',
+  timelinePageTitle: '발전 타임라인',
+  timelinePageDesc:
+    '싱가포르 AI 발전 타임라인: 2014년 스마트 네이션에서 2027년 국제 AI 올림픽으로, 핵심 이정표를 시간 순서로 정렬.',
+  ecosystemPageTitle: '생태계 지도',
+  ecosystemPageDesc: '싱가포르 AI 생태계 지도 — 정부 기관, 연구 기관, 기업 및 스타트업의 완전한 지형도.',
+  leversPageTitle: '국가 AI 레버 지도',
+  leversPageDesc:
+    '싱가포르 국가급 AI-native 전환은 부서별로 이해할 수 없으며, 「AI 도입 경로」로 이해해야 합니다: 기반시설, 거버넌스, 인재, 애플리케이션, 정부 자체 사용, 외교의 여섯 개 레버로 구성된 부처 횡단적 완전한 실행 파이프라인.',
+  startupsPageTitle: 'AI 스타트업 생태계',
+  startupsPageDesc:
+    '싱가포르 AI 스타트업 생태계 및 인접 생태계 — 650+ 관련 샘플, 자금 조달 데이터, 유니콘, 수직 분야 및 투자자 개요입니다.',
+  talentPageTitle: '인재 양성',
+  talentPageDesc: '싱가포르 AI 인재 양성 체계 — 대학 프로그램, 정부 교육 계획, 인재 유입 정책 개요입니다.',
+  videosPageTitle: 'AI 영상 인사이트',
+  videosPageDesc:
+    '싱가포르 정부 관계자, 학자, 업계 지도자의 AI 전략, 거버넌스, 인재 및 산업에 관한 YouTube 강연 및 인터뷰 모음입니다.',
+  voicesPageTitle: 'AI 영향력 지도',
+  voicesPageDesc: '싱가포르 AI 분야 핵심 인물 및 주요 기관의 공식 정보 채널, 및 MDDI AI 관련 연설문 전문 링크입니다.',
+  opensourcePageTitle: '공식 오픈소스 및 연구',
+  opensourcePageDesc:
+    '싱가포르 정부 및 공식 기관의 AI 오픈소스 프로젝트 및 연구 성과 요약 — SEA-LION, AI Verify 등입니다.',
+  communityOsPageTitle: '산학 협력 오픈소스 생태계',
+  communityOsPageDesc:
+    '싱가포르 산학 협력 AI 오픈소스 생태계 — 대학, 기업 실험실, 스타트업의 오픈소스 기여 전망입니다.',
+  benchmarkingPageTitle: '국제 벤치마크',
+  benchmarkingPageDesc: '싱가포르 AI 전략 국제 벤치마크 — 미국, 영국, 중국, EU 등 주요 경제체와의 비교 분석입니다.',
+  legalAiPageTitle: '싱가포르 AI 법적 프레임워크',
+  legalAiPageDesc:
+    '싱가포르 AI 법적 프레임워크——「훈련 관대 + 출력 엄격 관리」이중 트랙: Copyright §244는 전 세계 최관대 AI 훈련 예외이며, OCHA + Elections Bill + Criminal Law Bill + Online Safety Bill 4개 항목의 출력 엄격 관리를 함께 시행합니다.',
+  challengesPageTitle: '도전 과제 및 제약 분석',
+  challengesPageDesc: '싱가포르 AI 발전이 직면한 핵심 도전——인재 경쟁, 데이터 제한, 컴퓨팅 파워 제약 및 윤리 거버넌스.',
+  fieldnotesPageTitle: '실전 노트',
+  fieldnotesPageDesc:
+    '싱가포르에서 AI 업무에 종사하는 현장 관찰 및 실전 경험 공유, 주제별 집계로 당신이 불필요한 우회를 피하도록 도와줍니다.',
+  referencesPageTitle: '참고 자료',
+  referencesPageDesc: '싱가포르 AI 참고 자료——공식 보고서, 연구 논문, 데이터셋, 도구 및 추천 읽기.',
+  policiesStatProfiles: '기록 총수',
+  policiesStatCategories: '분류',
+  policiesStatFormat: '형태',
+  policiesStatFormatValue: '기록 페이지',
+  langBannerEn: 'English version available',
+  langBannerSwitch: 'Read in English →',
+  langBannerDismiss: '닫기',
+  langZh: '중국어',
+  langEn: 'English',
+  langToggleLabel: '언어 전환',
+  footnotes: '참고 문헌',
+  tocLabel: '목차',
+  tocSummary: '📑 목차({count} 항목)',
+  trackerPageTitle: '싱가포르 AI 옵저버토리 대시보드',
+  trackerPageBlurb:
+    '6개 차원으로 싱가포르 AI의 실제 상태를 제시합니다——핵심 수치, 제3자 순위, 목표 진행도, 추세, 편집 해석, 핵심 약점. 우리는 점수를 매기지 않습니다.',
+  trackerSectionTopRankings: '국제 참조',
+  trackerSectionMethodologyNote: '방법 설명',
+  trackerSectionMethodology: '상세 방법론',
+  trackerCardTrendUp: '↗ 상향',
+  trackerCardTrendFlat: '→ 유지',
+  trackerCardTrendDown: '↘ 하향',
+  trackerDetailJudgment: '편집 해석',
+  trackerDetailShortcoming: '핵심 약점',
+  trackerDetailRankings: '제3자 순위 앵커',
+  trackerDetailProgress: '목표 진행 상황',
+  trackerDetailMetrics: '전체 데이터',
+  trackerDetailRelated: '관련 글',
+  trackerDetailMetricsHeaderName: '지표',
+  trackerDetailMetricsHeaderValue: '데이터',
+  trackerDetailMetricsHeaderSource: '출처 / 시간',
+  trackerDetailMetricsHeaderCategory: '분류',
+  trackerDetailCardHeadline: '주요 수치',
+  trackerDetailCardBenchmark: '기준 체계',
+  trackerDetailCardBadge: '정의',
+  trackerDetailCardTrend: '추세',
+  trackerCategoryEnterprise: '기업 채택',
+  trackerCategoryGovernment: '정부 자체 사용',
+  trackerMethodologyTitle: '대시보드 방법론',
+  trackerHomeSummaryTitle: '🇸🇬 싱가포르 AI 대시보드',
+  trackerHomeSummaryCta: '6개 차원으로 현황 보기 → 전체 대시보드',
+  trackerEditorialAttribution: 'sgai 편집 해석',
+  trackerBackToDashboard: '대시보드로 돌아가기',
+  trackerLastUpdated: '데이터 업데이트',
+  voiceSignatureWork: '주도 업무',
+  voiceNotableQuotes: '공개 성명',
+  voiceSpeakingRecord: '최근 발표',
+  voiceExternalRoles: '기관 간 신원',
+  voiceSinceLabel: '자신',
+  voiceSourceLabel: '출처',
+  voiceAuthorLabel: '저자',
+  tasksSection: '여기서 시작',
+  tasksBlurb: '질문이 다르면 입구도 다릅니다. 먼저 무엇을 하고 싶은지 말씀해 주세요.',
+  taskUnderstandTitle: '싱가포르 AI 전략을 이해하고 싶습니다.',
+  taskUnderstandBlurb: '6 레버 지도, 정책 진화, 국제 벤치마크——전체 이야기를 연결합니다.',
+  taskUnderstandCta: '핵심 논의부터 읽기 →',
+  taskPolicyTitle: '정책, 법규, 공식 출처를 찾고 싶어요',
+  taskPolicyBlurb: '정책 라이브러리, AI 법적 프레임워크, 국회 토론, 참고 자료——인용 가능한 1차 출처입니다.',
+  taskPolicyCta: '정책과 토론 조회 →',
+  taskBusinessTitle: '기업과 창업 기회를 보고 싶어요',
+  taskBusinessBlurb: '스타트업 생태계, 생태계 지도, 인재 양성, 오픈소스 프로젝트, 국제 벤치마크.',
+  taskBusinessCta: '생태계와 기업 보기 →',
+  taskTrackTitle: '최신 변화를 추적하고 싶어요',
+  taskTrackBlurb: '최근 업데이트, 트래커 데이터, 최신 국회 토론, 새로 발표된 정책.',
+  taskTrackCta: '업데이트 흐름 보기 →',
+  updatesNav: '최근 업데이트',
+  updatesPageTitle: '최근 업데이트',
+  updatesPageBlurb:
+    '본 사이트의 매주 새로운 정책, 토론, 비디오, 창업, 긴 글 및 데이터 수정——하나의 흐름, 모두 여기에 있습니다.',
+  updatesHomeSection: '최근 업데이트',
+  updatesHomeBlurb: '이번 주와 지난주 추가된 정책, 토론, 비디오, 긴 글. 각 항목이 원본 페이지로 직접 연결됩니다.',
+  updatesHomeCta: '전체 업데이트 흐름 →',
+  updatesEmpty: '최근 업데이트가 없습니다.',
+  updatesRssTitle: '싱가포르 AI 옵저버토리 — 최근 업데이트',
+  updatesRssDescription: '새 정책, 토론, 비디오, 창업 프로필, 긴 글 및 데이터 수정.',
+  updateTypePolicy: '정책',
+  updateTypeDebate: '토론',
+  updateTypeVideo: '비디오',
+  updateTypeStartup: '창업',
+  updateTypePeople: '인물',
+  updateTypeSpeech: '강연',
+  updateTypeTracker: '대시보드',
+  updateTypeBenchmark: '벤치마크',
+  updateTypeEcosystem: '생태계',
+  updateTypeLever: '레버',
+  updateTypeLongform: '장문',
+  updateTypeSite: '사이트',
+  updateTypeFix: '정정',
+  fullTextZh: '완전 번역본(중문)',
+  coreViewpoint: '핵심 관점',
+  relatedVideos: '관련 영상',
+  speaker: '연사',
+  videoType: '유형',
+  videoSource: '출처',
+  videoSummary: '내용 요약',
+  videoFullTranscript: '완전 자막(원문 정렬)',
+  videoReadableTranscript: '가독성 있는 자막 정렬',
+  videoCaptionLanguage: '자막 언어:',
+  videoFetched: '수집 날짜:',
+  videoCaptionsUnavailable: '가독성 있는 자막이 없습니다. 위의 원본 영상을 클릭하여 재생할 수 있습니다.',
+  parliamentSession: '국회',
+  speechSummaryPoints: '요점',
+  mddiSpeechLabel: 'MDDI 연설문',
+  mddiSourceLabel: 'MDDI 공식 웹사이트 원문',
+  categoryGovernment: '정부',
+  categoryAcademic: '학술',
+  categoryIndustry: '산업',
+  officialChannels: '공식 채널',
+  oneLinerTitle: '한 문장 포지셔닝',
+  profilePending:
+    '이 인물의 정보는 보완 대기 중입니다. 현재 페이지는 먼저 기존 데이터를 바탕으로 이 인물의 국회 발언 및 정책 연관성을 자동으로 집계합니다.',
+  debateCount: '국회 발언',
+  policyCount: '주도 정책',
+  videoCount: '영상 관점',
+  noDebateRecords: '관련 토론 기록이 없습니다.',
+  officialWebsite: '공식 웹사이트',
+  ecosystemReadMore: '자세히 알아보기 →',
+  ecosystemVisitWebsite: '{name} 공식 웹사이트 방문',
+  ecosystemSubtitle: 'AI Singapore의 일곱 가지 핵심 기둥과 주요 참여자들이 싱가포르 AI 생태계 전체상을 보여줍니다.',
+  ecosystemSourceFootnote:
+    '데이터 출처: AI Singapore 공식 웹사이트 및 공개 정보. 생태계는 지속적으로 진화하고 있으며, 보완을 환영합니다.',
+  viewSource: '소스 코드 보기',
+  countSuffix: '장',
+  copyrightOpenSource: '소스 코드 MIT 라이선스; 콘텐츠 CC BY 4.0',
+};
+
 /** Lookup table from Lang code to its dictionary. Used by `t()` to walk
  *  the fallback chain. Adding a new locale L means: append to LOCALES,
  *  add a fallback chain entry, export an `<L>` dict, and register here. */
@@ -1087,4 +1433,6 @@ const DICTIONARIES: Record<Lang, Partial<Record<keyof typeof zh, string>>> = {
   zh,
   en,
   ja,
+  'zh-tw': zhTwDict,
+  ko,
 };

@@ -67,12 +67,15 @@ function formatLeverItem(item: {
   name: string;
   nameEn: string;
   nameJa?: string;
+  nameKo?: string;
   ministry: string;
   ministryEn: string;
   ministryJa?: string;
+  ministryKo?: string;
   description: string;
   descriptionEn: string;
   descriptionJa?: string;
+  descriptionKo?: string;
   sourceUrl: string;
 }): string {
   const lines: string[] = [];
@@ -81,12 +84,15 @@ function formatLeverItem(item: {
   lines.push(`            name: '${escapeQuote(item.name)}',`);
   lines.push(`            nameEn: '${escapeQuote(item.nameEn)}',`);
   if (item.nameJa) lines.push(`            nameJa: '${escapeQuote(item.nameJa)}',`);
+  if (item.nameKo) lines.push(`            nameKo: '${escapeQuote(item.nameKo)}',`);
   lines.push(`            ministry: '${escapeQuote(item.ministry)}',`);
   lines.push(`            ministryEn: '${escapeQuote(item.ministryEn)}',`);
   if (item.ministryJa) lines.push(`            ministryJa: '${escapeQuote(item.ministryJa)}',`);
+  if (item.ministryKo) lines.push(`            ministryKo: '${escapeQuote(item.ministryKo)}',`);
   lines.push(`            description: '${escapeQuote(item.description)}',`);
   lines.push(`            descriptionEn: '${escapeQuote(item.descriptionEn)}',`);
   if (item.descriptionJa) lines.push(`            descriptionJa: '${escapeQuote(item.descriptionJa)}',`);
+  if (item.descriptionKo) lines.push(`            descriptionKo: '${escapeQuote(item.descriptionKo)}',`);
   lines.push(`            sourceUrl: '${item.sourceUrl}',`);
   lines.push('          },');
   return lines.join('\n');
@@ -213,9 +219,9 @@ async function main(): Promise<void> {
   const enriched: Array<{
     url: string;
     item: {
-      id: string; name: string; nameEn: string; nameJa?: string;
-      ministry: string; ministryEn: string; ministryJa?: string;
-      description: string; descriptionEn: string; descriptionJa?: string;
+      id: string; name: string; nameEn: string; nameJa?: string; nameKo?: string;
+      ministry: string; ministryEn: string; ministryJa?: string; ministryKo?: string;
+      description: string; descriptionEn: string; descriptionJa?: string; descriptionKo?: string;
       sourceUrl: string;
     };
     confidence: 'high' | 'medium' | 'low';
@@ -259,21 +265,25 @@ async function main(): Promise<void> {
     return;
   }
 
-  // Translate to ja.
+  // Translate to ja + ko.
   try {
     const { translateBatch } = await import('../../lib/translate.ts');
-    const jaValues = await translateBatch(
-      enriched.flatMap((e) => [e.item.name, e.item.description, e.item.ministry]),
-      { direction: 'zh→ja', cacheDir: 'scripts/i18n/data/ja-cache' }
-    );
+    const flat = enriched.flatMap((e) => [e.item.name, e.item.description, e.item.ministry]);
+    const [jaValues, koValues] = await Promise.all([
+      translateBatch(flat, { direction: 'zh→ja', cacheDir: 'scripts/i18n/data/ja-cache' }),
+      translateBatch(flat, { direction: 'zh→ko', cacheDir: 'scripts/i18n/data/ko-cache' }),
+    ]);
     for (let i = 0; i < enriched.length; i++) {
       enriched[i].item.nameJa = jaValues[i * 3] || undefined;
       enriched[i].item.descriptionJa = jaValues[i * 3 + 1] || undefined;
       enriched[i].item.ministryJa = jaValues[i * 3 + 2] || undefined;
+      enriched[i].item.nameKo = koValues[i * 3] || undefined;
+      enriched[i].item.descriptionKo = koValues[i * 3 + 1] || undefined;
+      enriched[i].item.ministryKo = koValues[i * 3 + 2] || undefined;
     }
-    process.stdout.write(`  translated ${enriched.length} entries to ja\n`);
+    process.stdout.write(`  translated ${enriched.length} entries to ja + ko\n`);
   } catch (e) {
-    process.stdout.write(`  [warn] ja translation failed: ${e instanceof Error ? e.message : e}\n`);
+    process.stdout.write(`  [warn] ja/ko translation failed: ${e instanceof Error ? e.message : e}\n`);
   }
 
   const original = readFileSync(TARGET_FILE, 'utf8');

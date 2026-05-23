@@ -48,6 +48,7 @@ interface CliFlags {
 
 const ZH_CACHE = resolve('scripts/i18n/data/zh-cache');
 const JA_CACHE = resolve('scripts/i18n/data/ja-cache');
+const KO_CACHE = resolve('scripts/i18n/data/ko-cache');
 
 function parseFlags(): CliFlags {
   const argv = process.argv.slice(2);
@@ -131,11 +132,13 @@ async function enrichTrilingual(
   const titles = partials.map((p) => p.titleEn);
   const events = partials.map((p) => p.eventEn);
 
-  const [titlesZh, titlesJa, eventsZh, eventsJa] = await Promise.all([
+  const [titlesZh, titlesJa, titlesKo, eventsZh, eventsJa, eventsKo] = await Promise.all([
     translateBatch(titles, { direction: 'en→zh', cacheDir: ZH_CACHE }),
     translateBatch(titles, { direction: 'en→ja', cacheDir: JA_CACHE }),
+    translateBatch(titles, { direction: 'en→ko', cacheDir: KO_CACHE }),
     translateBatch(events, { direction: 'en→zh', cacheDir: ZH_CACHE }),
     translateBatch(events, { direction: 'en→ja', cacheDir: JA_CACHE }),
+    translateBatch(events, { direction: 'en→ko', cacheDir: KO_CACHE }),
   ]);
 
   const out: EmittableSpeech[] = [];
@@ -151,9 +154,11 @@ async function enrichTrilingual(
         titleZh: titlesZh[i],
         titleEn: p.titleEn,
         titleJa: titlesJa[i],
+        titleKo: titlesKo[i],
         eventEn: p.eventEn,
         eventZh: eventsZh[i],
         eventJa: eventsJa[i],
+        eventKo: eventsKo[i],
         speaker: p.speakerName,
         speakerTitleZh,
         speakerTitleEn,

@@ -84,20 +84,23 @@ async function main(): Promise<void> {
     return;
   }
 
-  // Translate to ja.
+  // Translate to ja + ko.
   try {
     const { translateBatch } = await import('../../lib/translate.ts');
-    const jaValues = await translateBatch(
-      enrichResult.enriched.flatMap((e) => [e.summary.title, e.summary.description]),
-      { direction: 'zh→ja', cacheDir: 'scripts/i18n/data/ja-cache' }
-    );
+    const flat = enrichResult.enriched.flatMap((e) => [e.summary.title, e.summary.description]);
+    const [jaValues, koValues] = await Promise.all([
+      translateBatch(flat, { direction: 'zh→ja', cacheDir: 'scripts/i18n/data/ja-cache' }),
+      translateBatch(flat, { direction: 'zh→ko', cacheDir: 'scripts/i18n/data/ko-cache' }),
+    ]);
     for (let i = 0; i < enrichResult.enriched.length; i++) {
       enrichResult.enriched[i].summary.titleJa = jaValues[i * 2] || undefined;
       enrichResult.enriched[i].summary.descriptionJa = jaValues[i * 2 + 1] || undefined;
+      enrichResult.enriched[i].summary.titleKo = koValues[i * 2] || undefined;
+      enrichResult.enriched[i].summary.descriptionKo = koValues[i * 2 + 1] || undefined;
     }
-    process.stdout.write(`  translated ${enrichResult.enriched.length} entries to ja\n`);
+    process.stdout.write(`  translated ${enrichResult.enriched.length} entries to ja + ko\n`);
   } catch (e) {
-    process.stdout.write(`  [warn] ja translation failed: ${e instanceof Error ? e.message : e}\n`);
+    process.stdout.write(`  [warn] ja/ko translation failed: ${e instanceof Error ? e.message : e}\n`);
   }
 
   process.stdout.write('\n  Emitting...\n');

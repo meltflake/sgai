@@ -50949,23 +50949,25 @@ export const debateTranscripts: Record<string, DebateTranscript> = {
   },
 };
 
+import { toTraditional } from '~/i18n/opencc';
+
 export function getDebateTranscript(debateId: string): DebateTranscript | undefined {
   return debateTranscripts[debateId];
 }
 
-export function getDebateTranscriptParagraphs(debateId: string, lang: 'zh' | 'en' | 'ja'): string[] {
+// Locale handling: zh-tw runs zh paragraphs through OpenCC s2twp; en/ja/ko
+// prefer the English transcript (Hansard publishes English).
+export function getDebateTranscriptParagraphs(debateId: string, lang: string): string[] {
   const transcript = getDebateTranscript(debateId);
   if (!transcript) return [];
-  // zh returns the original Chinese summary; en/ja both prefer the
-  // English transcript (Hansard is published in English, so en is the
-  // closest source for ja readers until a per-locale ja transcript ships).
   if (lang === 'zh') return transcript.paragraphs;
+  if (lang === 'zh-tw') return transcript.paragraphs.map((p) => toTraditional(p));
   return transcript.paragraphsEn?.length ? transcript.paragraphsEn : transcript.paragraphs;
 }
 
-export function getDebateTranscriptLanguage(debateId: string, lang: 'zh' | 'en' | 'ja'): string | undefined {
+export function getDebateTranscriptLanguage(debateId: string, lang: string): string | undefined {
   const transcript = getDebateTranscript(debateId);
   if (!transcript) return undefined;
-  if (lang === 'zh') return transcript.paragraphs.length ? 'zh-CN' : undefined;
+  if (lang === 'zh' || lang === 'zh-tw') return transcript.paragraphs.length ? 'zh-CN' : undefined;
   return transcript.paragraphsEn?.length ? 'en' : transcript.paragraphs.length ? 'zh-CN' : undefined;
 }

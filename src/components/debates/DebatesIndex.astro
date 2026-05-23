@@ -11,6 +11,7 @@ import {
   TENSION_MAP,
 } from '~/data/debates';
 import { pickLocalized, localizedHref, t, type Lang } from '~/i18n';
+import { toTraditional } from '~/i18n/opencc';
 import { findPersonId, getPerson } from '~/utils/people';
 
 interface Props {
@@ -18,25 +19,38 @@ interface Props {
 }
 
 const { lang } = Astro.props;
-// `isEn` is true for any non-zh locale — the page-local L dictionary only
-// distinguishes zh vs. non-zh, and non-default locales (en, ja, ...) all
-// fall back to the English copy until per-locale strings are added.
+// Per-locale L dict. ja/zh/ko have full dictionaries; zh-tw runs zh through
+// OpenCC s2twp at the field-getter level. en is the default branch when no
+// dedicated dict matches.
 const isJa = lang === 'ja';
-const isEn = lang !== 'zh';
+const isZh = lang === 'zh';
+const isZhTw = lang === 'zh-tw';
+const isKo = lang === 'ko';
+const isEn = !isJa && !isZh && !isZhTw && !isKo;
 const DATA_UPDATED = '2026-05-03';
 
+const META_TITLES: Record<Lang, string> = {
+  zh: '国会 AI 焦点 — 新加坡议会辩论记录',
+  en: 'Parliamentary AI Focus — Singapore Hansard Debates',
+  ja: '議会 AI フォーカス — シンガポール議会討論記録',
+  'zh-tw': toTraditional('国会 AI 焦点 — 新加坡议会辩论记录'),
+  ko: '국회 AI 초점 — 싱가포르 의회 토론 기록',
+};
+const META_DESC: Record<Lang, string> = {
+  zh: '新加坡议会关于 AI 的第一手辩论记录，含 AI 提炼的中文摘要、议员立场分析、政策演变脉络与深度洞察。',
+  en: 'First-hand records of Singapore parliamentary debates on AI, with English digests, MP position analysis, policy-evolution timelines, and analytical insights.',
+  ja: 'シンガポール議会の AI に関する初の討論記録。AI が抽出した中文概要、議員の立場分析、政策パターンの洞察を含みます。',
+  'zh-tw': toTraditional(
+    '新加坡议会关于 AI 的第一手辩论记录，含 AI 提炼的中文摘要、议员立场分析、政策演变脉络与深度洞察。'
+  ),
+  ko: '싱가포르 국회의 AI 정책 토론 원본 기록과 AI 보조 영문 요약, MP 입장, 정책 패턴 분석입니다.',
+};
 const meta = {
-  title: isJa
-    ? '議会 AI フォーカス — シンガポール議会討論記録'
-    : isEn
-      ? 'Parliamentary AI Focus — Singapore Hansard Debates'
-      : '国会 AI 焦点 — 新加坡议会辩论记录',
-  description: isEn
-    ? 'First-hand records of Singapore parliamentary debates on AI, with English digests, MP position analysis, policy-evolution timelines, and analytical insights.'
-    : '新加坡议会关于 AI 的第一手辩论记录，含 AI 提炼的中文摘要、议员立场分析、政策演变脉络与深度洞察。',
+  title: META_TITLES[lang] || META_TITLES.en,
+  description: META_DESC[lang] || META_DESC.en,
 };
 
-const L = isJa
+const L_RAW = isJa
   ? {
       crumb: '議会 AI フォーカス',
       updated: 'データ更新',
@@ -104,185 +118,239 @@ const L = isJa
       clickMp: '任意の議員カードをクリックしてその議員の討論をフィルターしてください。',
       clickSignal: '任意のシグナルをクリックしてその政策シグナルが初めて現れた年でフィルターしてください。',
     }
-  : isEn
+  : isKo
     ? {
         crumb: t(lang, 'debatesPageTitle'),
-        updated: 'Last updated',
-        recordCount: 'debate records',
-        source: 'Source',
-        digestNote: 'Digests assisted by AI',
-        title: 'Parliamentary AI Focus',
-        intro:
-          'First-hand records of Singapore parliamentary debates on AI, with AI-assisted English digests, MP positions, and policy-pattern insights.',
-        finderTitle: 'Find the debate you need',
-        finderHint: 'Search first, then narrow by type, topic, MP, year, or controversy level.',
-        searchPlaceholder: 'Search title, summary, MP, policy signal, date...',
-        allTypes: 'All types',
-        allTopics: 'All topics',
-        allMps: 'All MPs',
-        allYears: 'All years',
-        allControversy: 'All controversy levels',
-        highControversy: 'High (level 4-5)',
-        midControversy: 'Medium (level 3)',
-        lowControversy: 'Low (level 1-2)',
-        clear: 'Clear filters',
-        active: 'Active filters:',
-        topicTitle: 'Browse by Topic',
-        topicHint: 'High-signal entry points into the full archive.',
-        overviewTitle: 'Archive Overview',
-        total: 'Total records',
-        years: 'Years covered',
-        typeMix: 'Type mix',
-        updatedShort: 'Updated',
-        trendTitle: 'Yearly debate volume',
-        trendHint: 'Click a bar to filter that year.',
-        listTitle: 'Debate Records',
-        listHint: 'Compact archive cards; open a card or detail page for the full digest.',
-        noResults: 'No debates match the current filters.',
-        details: 'Open digest, stances, and transcript',
-        keyPoints: 'Key Points',
-        government: 'Government Position',
-        opposition: 'Questioning Position',
-        signal: 'Policy Signal',
-        quote: 'Notable Quote',
-        transcript: 'Original transcript excerpt',
-        detailPage: 'Detail page',
+        updated: '최종 업데이트',
+        recordCount: '토론 기록',
+        source: '출처',
+        digestNote: 'AI 보조 요약',
+        title: '의회 AI 정책 초점',
+        intro: '싱가포르 국회의 AI 정책 토론 원본 기록과 AI 보조 영문 요약, MP 입장, 정책 패턴 분석입니다.',
+        finderTitle: '필요한 토론 찾기',
+        finderHint: '먼저 검색한 후 유형, 주제, MP, 연도 또는 논쟁 수준으로 범위를 좁혀보세요.',
+        searchPlaceholder: '제목, 요약, MP, 정책 신호, 날짜 검색...',
+        allTypes: '모든 유형',
+        allTopics: '모든 주제',
+        allMps: '모든 MP',
+        allYears: '모든 연도',
+        allControversy: '모든 논쟁 수준',
+        highControversy: '높음 (수준 4-5)',
+        midControversy: '중간 (수준 3)',
+        lowControversy: '낮음 (수준 1-2)',
+        clear: '필터 삭제',
+        active: '활성 필터:',
+        topicTitle: '주제별 탐색',
+        topicHint: '전체 아카이브로의 고신호 진입점입니다.',
+        overviewTitle: '아카이브 개요',
+        total: '전체 기록',
+        years: '포함된 연도',
+        typeMix: '유형 구성',
+        updatedShort: '업데이트됨',
+        trendTitle: '연도별 토론 수',
+        trendHint: '막대를 클릭하여 해당 연도로 필터링하세요.',
+        listTitle: '토론 기록',
+        listHint: '간편한 아카이브 카드로, 카드를 열거나 상세 페이지를 열어 전체 요약을 확인할 수 있습니다.',
+        noResults: '현재 필터와 일치하는 토론이 없습니다.',
+        details: '다이제스트, 입장, 전사본 열기',
+        keyPoints: '주요 포인트',
+        government: '정부 입장',
+        opposition: '질의 입장',
+        signal: '정책 신호',
+        quote: '주목할 만한 인용문',
+        transcript: '원본 전사본 발췌',
+        detailPage: '상세 페이지',
         hansard: 'Hansard',
-        parliament: 'Parliament',
-        showing: 'Showing',
-        results: 'results',
-        quickTitle: 'Quick filters',
-        analysisTitle: 'Analytical Views',
-        analysisHint: 'Interpretive layers distilled from the archive.',
-        insights: 'Key Insights',
-        evolution: 'Policy Evolution',
-        controversies: 'Recurring Controversies',
-        tensions: 'Core Policy Tensions',
-        mps: 'Key MP Profiles',
-        signals: 'Policy Signal Tracker',
-        important: 'Important',
-        firstSeen: 'First seen',
-        related: 'related',
-        implemented: 'Implemented',
-        inProgress: 'In progress',
-        stillDiscussing: 'Still under discussion',
-        currentBalance: 'Current balance:',
-        clickPeriod: 'Click any period to filter the debate records from that phase.',
-        clickControversy: 'Click any recurring issue to filter related debates.',
-        clickMp: 'Click any MP card to filter their debates.',
-        clickSignal: 'Click any signal to filter the year it first surfaced.',
+        parliament: '의회',
+        showing: '표시',
+        results: '결과',
+        quickTitle: '빠른 필터',
+        analysisTitle: '분석 보기',
+        analysisHint: '기록 자료에서 추출된 해석적 계층.',
+        insights: '주요 통찰',
+        evolution: '정책 진화',
+        controversies: '반복되는 논쟁',
+        tensions: '핵심 정책 갈등',
+        mps: '주요 MP 프로필',
+        signals: '정책 신호 추적기',
+        important: '중요',
+        firstSeen: '처음 확인',
+        related: '관련',
+        implemented: '시행됨',
+        inProgress: '진행 중',
+        stillDiscussing: '여전히 논의 중',
+        currentBalance: '현재 균형:',
+        clickPeriod: '특정 시기를 클릭하여 해당 단계의 토론 기록을 필터링하세요.',
+        clickControversy: '반복 이슈를 클릭하면 관련 논의를 필터링할 수 있습니다.',
+        clickMp: 'MP 카드를 클릭하면 해당 의원의 논의를 필터링할 수 있습니다.',
+        clickSignal: '신호를 클릭하면 처음 등장한 연도를 필터링할 수 있습니다.',
       }
-    : {
-        crumb: '国会 AI 焦点',
-        updated: '数据更新',
-        recordCount: '条辩论记录',
-        source: '来源',
-        digestNote: '中文摘要由 AI 辅助生成',
-        title: '国会 AI 焦点',
-        intro: '新加坡议会关于人工智能的第一手辩论记录，含 AI 提炼的中文摘要、议员立场分析与政策规律洞察。',
-        finderTitle: '先找到你要的辩论',
-        finderHint: '先搜索，再按类型、议题、议员、年份或争议度收窄。',
-        searchPlaceholder: '搜索标题、摘要、议员、政策信号、日期...',
-        allTypes: '所有类型',
-        allTopics: '所有议题',
-        allMps: '所有议员',
-        allYears: '所有年份',
-        allControversy: '所有争议度',
-        highControversy: '高争议（4-5 级）',
-        midControversy: '中等（3 级）',
-        lowControversy: '低争议（1-2 级）',
-        clear: '清除筛选',
-        active: '当前筛选：',
-        topicTitle: '按议题浏览',
-        topicHint: '先从高价值入口进入完整档案。',
-        overviewTitle: '档案概览',
-        total: '记录总数',
-        years: '覆盖年份',
-        typeMix: '类型分布',
-        updatedShort: '更新日期',
-        trendTitle: '历年辩论趋势',
-        trendHint: '点击柱状图筛选该年。',
-        listTitle: '辩论记录',
-        listHint: '列表默认压缩；展开卡片或进入详情页看完整摘要。',
-        noResults: '没有找到匹配的辩论记录',
-        details: '展开摘要、立场与原文',
-        keyPoints: '要点',
-        government: '政府立场',
-        opposition: '质询立场',
-        signal: '政策信号',
-        quote: '关键引文',
-        transcript: '原文节选（英文）',
-        detailPage: '详情页',
-        hansard: 'Hansard',
-        parliament: '届国会',
-        showing: '显示',
-        results: '条',
-        quickTitle: '快捷筛选',
-        analysisTitle: '分析视角',
-        analysisHint: '从完整档案中提炼出的解释层。',
-        insights: '核心洞察',
-        evolution: '政策演变脉络',
-        controversies: '反复争议焦点',
-        tensions: '核心政策张力',
-        mps: '关键议员档案',
-        signals: '政策信号追踪',
-        important: '重要',
-        firstSeen: '首见',
-        related: '相关',
-        implemented: '已落实',
-        inProgress: '进行中',
-        stillDiscussing: '仍在讨论',
-        currentBalance: '当前平衡：',
-        clickPeriod: '点击任意时期，筛选该阶段的辩论记录。',
-        clickControversy: '点击任意争议焦点，筛选相关辩论。',
-        clickMp: '点击任意议员卡片，筛选该议员参与的辩论。',
-        clickSignal: '点击任意信号，筛选该政策信号首次出现的年份。',
-      };
+    : isEn
+      ? {
+          crumb: t(lang, 'debatesPageTitle'),
+          updated: 'Last updated',
+          recordCount: 'debate records',
+          source: 'Source',
+          digestNote: 'Digests assisted by AI',
+          title: 'Parliamentary AI Focus',
+          intro:
+            'First-hand records of Singapore parliamentary debates on AI, with AI-assisted English digests, MP positions, and policy-pattern insights.',
+          finderTitle: 'Find the debate you need',
+          finderHint: 'Search first, then narrow by type, topic, MP, year, or controversy level.',
+          searchPlaceholder: 'Search title, summary, MP, policy signal, date...',
+          allTypes: 'All types',
+          allTopics: 'All topics',
+          allMps: 'All MPs',
+          allYears: 'All years',
+          allControversy: 'All controversy levels',
+          highControversy: 'High (level 4-5)',
+          midControversy: 'Medium (level 3)',
+          lowControversy: 'Low (level 1-2)',
+          clear: 'Clear filters',
+          active: 'Active filters:',
+          topicTitle: 'Browse by Topic',
+          topicHint: 'High-signal entry points into the full archive.',
+          overviewTitle: 'Archive Overview',
+          total: 'Total records',
+          years: 'Years covered',
+          typeMix: 'Type mix',
+          updatedShort: 'Updated',
+          trendTitle: 'Yearly debate volume',
+          trendHint: 'Click a bar to filter that year.',
+          listTitle: 'Debate Records',
+          listHint: 'Compact archive cards; open a card or detail page for the full digest.',
+          noResults: 'No debates match the current filters.',
+          details: 'Open digest, stances, and transcript',
+          keyPoints: 'Key Points',
+          government: 'Government Position',
+          opposition: 'Questioning Position',
+          signal: 'Policy Signal',
+          quote: 'Notable Quote',
+          transcript: 'Original transcript excerpt',
+          detailPage: 'Detail page',
+          hansard: 'Hansard',
+          parliament: 'Parliament',
+          showing: 'Showing',
+          results: 'results',
+          quickTitle: 'Quick filters',
+          analysisTitle: 'Analytical Views',
+          analysisHint: 'Interpretive layers distilled from the archive.',
+          insights: 'Key Insights',
+          evolution: 'Policy Evolution',
+          controversies: 'Recurring Controversies',
+          tensions: 'Core Policy Tensions',
+          mps: 'Key MP Profiles',
+          signals: 'Policy Signal Tracker',
+          important: 'Important',
+          firstSeen: 'First seen',
+          related: 'related',
+          implemented: 'Implemented',
+          inProgress: 'In progress',
+          stillDiscussing: 'Still under discussion',
+          currentBalance: 'Current balance:',
+          clickPeriod: 'Click any period to filter the debate records from that phase.',
+          clickControversy: 'Click any recurring issue to filter related debates.',
+          clickMp: 'Click any MP card to filter their debates.',
+          clickSignal: 'Click any signal to filter the year it first surfaced.',
+        }
+      : {
+          crumb: '国会 AI 焦点',
+          updated: '数据更新',
+          recordCount: '条辩论记录',
+          source: '来源',
+          digestNote: '中文摘要由 AI 辅助生成',
+          title: '国会 AI 焦点',
+          intro: '新加坡议会关于人工智能的第一手辩论记录，含 AI 提炼的中文摘要、议员立场分析与政策规律洞察。',
+          finderTitle: '先找到你要的辩论',
+          finderHint: '先搜索，再按类型、议题、议员、年份或争议度收窄。',
+          searchPlaceholder: '搜索标题、摘要、议员、政策信号、日期...',
+          allTypes: '所有类型',
+          allTopics: '所有议题',
+          allMps: '所有议员',
+          allYears: '所有年份',
+          allControversy: '所有争议度',
+          highControversy: '高争议（4-5 级）',
+          midControversy: '中等（3 级）',
+          lowControversy: '低争议（1-2 级）',
+          clear: '清除筛选',
+          active: '当前筛选：',
+          topicTitle: '按议题浏览',
+          topicHint: '先从高价值入口进入完整档案。',
+          overviewTitle: '档案概览',
+          total: '记录总数',
+          years: '覆盖年份',
+          typeMix: '类型分布',
+          updatedShort: '更新日期',
+          trendTitle: '历年辩论趋势',
+          trendHint: '点击柱状图筛选该年。',
+          listTitle: '辩论记录',
+          listHint: '列表默认压缩；展开卡片或进入详情页看完整摘要。',
+          noResults: '没有找到匹配的辩论记录',
+          details: '展开摘要、立场与原文',
+          keyPoints: '要点',
+          government: '政府立场',
+          opposition: '质询立场',
+          signal: '政策信号',
+          quote: '关键引文',
+          transcript: '原文节选（英文）',
+          detailPage: '详情页',
+          hansard: 'Hansard',
+          parliament: '届国会',
+          showing: '显示',
+          results: '条',
+          quickTitle: '快捷筛选',
+          analysisTitle: '分析视角',
+          analysisHint: '从完整档案中提炼出的解释层。',
+          insights: '核心洞察',
+          evolution: '政策演变脉络',
+          controversies: '反复争议焦点',
+          tensions: '核心政策张力',
+          mps: '关键议员档案',
+          signals: '政策信号追踪',
+          important: '重要',
+          firstSeen: '首见',
+          related: '相关',
+          implemented: '已落实',
+          inProgress: '进行中',
+          stillDiscussing: '仍在讨论',
+          currentBalance: '当前平衡：',
+          clickPeriod: '点击任意时期，筛选该阶段的辩论记录。',
+          clickControversy: '点击任意争议焦点，筛选相关辩论。',
+          clickMp: '点击任意议员卡片，筛选该议员参与的辩论。',
+          clickSignal: '点击任意信号，筛选该政策信号首次出现的年份。',
+        };
 
-const typeMap: Record<string, string> = isJa
-  ? {
-      'Oral Answers to Questions': '口頭答弁',
-      'Written Answers to Questions': '書面答弁',
-      Budget: '予算討論',
-      Motions: '動議',
-    }
-  : isEn
-    ? {
-        'Oral Answers to Questions': 'Oral Answers',
-        'Written Answers to Questions': 'Written Answers',
-        Budget: 'Budget Debate',
-        Motions: 'Motions',
-      }
-    : {
-        'Oral Answers to Questions': '口头答复',
-        'Written Answers to Questions': '书面答复',
-        Budget: '预算辩论',
-        Motions: '动议',
-      };
+// For zh-tw render: run every string value of L_RAW through OpenCC. This
+// avoids duplicating the entire 60-key dict for a locale that's a
+// deterministic char-conversion of zh.
+if (isZhTw) {
+  for (const k of Object.keys(L_RAW)) {
+    const v = (L_RAW as Record<string, string>)[k];
+    if (typeof v === 'string') (L_RAW as Record<string, string>)[k] = toTraditional(v);
+  }
+}
+const L = L_RAW;
 
-const controversyLabels: Record<number, string> = isJa
-  ? {
-      1: '情報発信',
-      2: '穏やかな質問',
-      3: '実質的な討論',
-      4: '激しい論争',
-      5: '対立',
-    }
-  : isEn
-    ? {
-        1: 'Information',
-        2: 'Mild scrutiny',
-        3: 'Substantive debate',
-        4: 'Heated controversy',
-        5: 'Sharp opposition',
-      }
-    : {
-        1: '信息发布',
-        2: '温和质询',
-        3: '实质辩论',
-        4: '激烈争议',
-        5: '高度对立',
-      };
+// Shared utility module for type/topic labels handles 5 locales (zh-tw via
+// OpenCC, ko via hand translation, others as-is). Reuse from there.
+import { debateTypeLabel as _typeFn } from '~/utils/debate-labels';
+const TYPE_KEYS = ['Oral Answers to Questions', 'Written Answers to Questions', 'Budget', 'Motions'];
+const typeMap: Record<string, string> = Object.fromEntries(TYPE_KEYS.map((k) => [k, _typeFn(k, lang)]));
+
+const CONTROVERSY_LABELS: Record<Lang, Record<number, string>> = {
+  zh: { 1: '信息发布', 2: '温和质询', 3: '实质辩论', 4: '激烈争议', 5: '高度对立' },
+  en: { 1: 'Information', 2: 'Mild scrutiny', 3: 'Substantive debate', 4: 'Heated controversy', 5: 'Sharp opposition' },
+  ja: { 1: '情報発信', 2: '穏やかな質問', 3: '実質的な討論', 4: '激しい論争', 5: '対立' },
+  'zh-tw': {
+    1: toTraditional('信息发布'),
+    2: toTraditional('温和质询'),
+    3: toTraditional('实质辩论'),
+    4: toTraditional('激烈争议'),
+    5: toTraditional('高度对立'),
+  },
+  ko: { 1: '정보 공개', 2: '온건한 질의', 3: '실질적 토론', 4: '치열한 논쟁', 5: '강한 대립' },
+};
+const controversyLabels: Record<number, string> = CONTROVERSY_LABELS[lang] || CONTROVERSY_LABELS.en;
 
 const controversyColors: Record<number, string> = {
   1: 'bg-surface text-muted border border-subtle',
@@ -298,11 +366,18 @@ const statusColors: Record<string, string> = {
   resolved: 'bg-surface text-default border border-subtle',
 };
 
-const statusLabels: Record<string, string> = {
-  ongoing: isJa ? '討論継続中' : isEn ? 'Ongoing' : '持续讨论中',
-  escalating: isJa ? '争点エスカレーション' : isEn ? 'Escalating' : '争议升级',
-  resolved: isJa ? '定論済み' : isEn ? 'Resolved' : '已有定论',
+const STATUS_LABELS: Record<Lang, Record<string, string>> = {
+  zh: { ongoing: '持续讨论中', escalating: '争议升级', resolved: '已有定论' },
+  en: { ongoing: 'Ongoing', escalating: 'Escalating', resolved: 'Resolved' },
+  ja: { ongoing: '討論継続中', escalating: '争点エスカレーション', resolved: '定論済み' },
+  'zh-tw': {
+    ongoing: toTraditional('持续讨论中'),
+    escalating: toTraditional('争议升级'),
+    resolved: toTraditional('已有定论'),
+  },
+  ko: { ongoing: '논의 중', escalating: '쟁점 격화', resolved: '결론 도출' },
 };
+const statusLabels: Record<string, string> = STATUS_LABELS[lang] || STATUS_LABELS.en;
 
 const significanceColors: Record<string, string> = {
   high: 'border-l-primary',
@@ -310,47 +385,22 @@ const significanceColors: Record<string, string> = {
   low: 'border-l-subtle',
 };
 
-const topicLabels: Record<string, string> = isJa
-  ? {
-      'AI Economy & Industry': 'AI 経済と産業',
-      'AI & Employment': 'AI と雇用',
-      'AI Governance & Regulation': 'AI ガバナンスと規制',
-      'AI & National Security': 'AI と国家安全保障',
-      'AI in Public Sector': 'AI と公共部門',
-      'AI Infrastructure & Research': 'AI インフラと研究',
-      'AI Safety & Ethics': 'AI 安全と倫理',
-      'AI in Education': 'AI と教育',
-      'AI in Healthcare': 'AI と医療',
-      'AI Strategy': 'AI 戦略',
-      'Deepfakes & Disinformation': 'ディープフェイクと偽情報',
-    }
-  : isEn
-    ? {
-        'AI Economy & Industry': 'AI Economy & Industry',
-        'AI & Employment': 'AI & Employment',
-        'AI Governance & Regulation': 'AI Governance & Regulation',
-        'AI & National Security': 'AI & National Security',
-        'AI in Public Sector': 'AI in Public Sector',
-        'AI Infrastructure & Research': 'AI Infrastructure & Research',
-        'AI Safety & Ethics': 'AI Safety & Ethics',
-        'AI in Education': 'AI in Education',
-        'AI in Healthcare': 'AI in Healthcare',
-        'AI Strategy': 'AI Strategy',
-        'Deepfakes & Disinformation': 'Deepfakes & Disinformation',
-      }
-    : {
-        'AI Economy & Industry': 'AI 经济与产业',
-        'AI & Employment': 'AI 与就业',
-        'AI Governance & Regulation': 'AI 治理与监管',
-        'AI & National Security': 'AI 与国家安全',
-        'AI in Public Sector': 'AI 与公共部门',
-        'AI Infrastructure & Research': 'AI 基础设施与研究',
-        'AI Safety & Ethics': 'AI 安全与伦理',
-        'AI in Education': 'AI 与教育',
-        'AI in Healthcare': 'AI 与医疗',
-        'AI Strategy': 'AI 战略',
-        'Deepfakes & Disinformation': '深度伪造与虚假信息',
-      };
+// Topic labels reuse the shared debate-labels helper (supports all 5 locales).
+import { debateTopicLabel as _topicFn } from '~/utils/debate-labels';
+const TOPIC_KEYS = [
+  'AI Economy & Industry',
+  'AI & Employment',
+  'AI Governance & Regulation',
+  'AI & National Security',
+  'AI in Public Sector',
+  'AI Infrastructure & Research',
+  'AI Safety & Ethics',
+  'AI in Education',
+  'AI in Healthcare',
+  'AI Strategy',
+  'Deepfakes & Disinformation',
+];
+const topicLabels: Record<string, string> = Object.fromEntries(TOPIC_KEYS.map((k) => [k, _topicFn(k, lang)]));
 
 const topicCounts = new Map<string, number>();
 for (const d of debates) {
@@ -387,27 +437,41 @@ const frequentSpeakers = [...speakerCounts.entries()]
   .sort((a, b) => b[1] - a[1])
   .map(([name, count]) => ({ name, count }));
 
-const quickFilters = isEn
-  ? [
-      { label: 'Latest sitting', dimension: 'keyword', value: latestDate },
-      { label: latestYear, dimension: 'year', value: latestYear },
-      { label: 'Data sovereignty', dimension: 'keyword', value: 'data sovereignty' },
-      { label: 'Employment', dimension: 'topic', value: 'AI & Employment' },
-      { label: 'Governance', dimension: 'topic', value: 'AI Governance & Regulation' },
-      { label: 'National security', dimension: 'topic', value: 'AI & National Security' },
-      { label: 'Healthcare', dimension: 'topic', value: 'AI in Healthcare' },
-      { label: 'High controversy', dimension: 'controversy', value: '4' },
-    ]
-  : [
-      { label: '最新场次', dimension: 'keyword', value: latestDate },
-      { label: latestYear, dimension: 'year', value: latestYear },
-      { label: '数据主权', dimension: 'keyword', value: '数据主权' },
-      { label: '就业', dimension: 'topic', value: 'AI & Employment' },
-      { label: '治理', dimension: 'topic', value: 'AI Governance & Regulation' },
-      { label: '国家安全', dimension: 'topic', value: 'AI & National Security' },
-      { label: '医疗', dimension: 'topic', value: 'AI in Healthcare' },
-      { label: '高争议', dimension: 'controversy', value: '4' },
-    ];
+const QUICK_FILTER_LABELS: Record<Lang, string[]> = {
+  en: [
+    'Latest sitting',
+    'Data sovereignty',
+    'Employment',
+    'Governance',
+    'National security',
+    'Healthcare',
+    'High controversy',
+  ],
+  zh: ['最新场次', '数据主权', '就业', '治理', '国家安全', '医疗', '高争议'],
+  ja: ['最新の議会', 'データ主権', '雇用', 'ガバナンス', '国家安全保障', '医療', '高争点'],
+  'zh-tw': [
+    toTraditional('最新场次'),
+    toTraditional('数据主权'),
+    toTraditional('就业'),
+    toTraditional('治理'),
+    toTraditional('国家安全'),
+    toTraditional('医疗'),
+    toTraditional('高争议'),
+  ],
+  ko: ['최신 회기', '데이터 주권', '고용', '거버넌스', '국가 안보', '의료', '높은 논쟁'],
+};
+const _qfl = QUICK_FILTER_LABELS[lang] || QUICK_FILTER_LABELS.en;
+const QUICK_DATA_SOV = lang === 'zh' ? '数据主权' : lang === 'zh-tw' ? toTraditional('数据主权') : 'data sovereignty';
+const quickFilters = [
+  { label: _qfl[0], dimension: 'keyword', value: latestDate },
+  { label: latestYear, dimension: 'year', value: latestYear },
+  { label: _qfl[1], dimension: 'keyword', value: QUICK_DATA_SOV },
+  { label: _qfl[2], dimension: 'topic', value: 'AI & Employment' },
+  { label: _qfl[3], dimension: 'topic', value: 'AI Governance & Regulation' },
+  { label: _qfl[4], dimension: 'topic', value: 'AI & National Security' },
+  { label: _qfl[5], dimension: 'topic', value: 'AI in Healthcare' },
+  { label: _qfl[6], dimension: 'controversy', value: '4' },
+];
 
 const jsAttr = (s: string) => String(s).replace(/\\/g, '\\\\').replace(/'/g, "\\'");
 
@@ -418,54 +482,55 @@ const truncate = (text: string | null | undefined, max: number) => {
   return s.length > max ? `${s.slice(0, max).trim()}...` : s;
 };
 
-// Three-locale field pickers. The previous `isEn ? *En : *zh` shape
-// silently routed JA pages to the EN sibling because `isEn = lang !== 'zh'`
-// — never consulting `*Ja`. The 2026-05-10 audit traced 845 EN-residue hits
-// on /ja/debates/index.html to this single helper block. Now: ja → *Ja
-// (with chain fallback to *En → bare zh), en → *En (with fallback), zh → bare.
-const debateTitle = (d: (typeof debates)[number]) =>
-  isJa ? d.titleJa || d.titleEn || d.title : isEn ? d.titleEn || d.title : d.title;
+// Field pickers go through pickLocalized to support all 5 locales. The
+// pickLocalized shape-B form (4-arg) walks FALLBACK_CHAINS automatically
+// so each call covers ja/ko/zh-tw/en/zh.
+const debateTitle = (d: (typeof debates)[number]) => pickLocalized<string>(d, 'title', 'titleEn', lang) || d.title;
 const debateSummary = (d: (typeof debates)[number]) =>
-  isJa
-    ? d.summaryJa || d.summaryEn || d.summary || ''
-    : isEn
-      ? d.summaryEn || d.summary || ''
-      : d.summary || d.summaryEn || '';
+  pickLocalized<string>(d, 'summary', 'summaryEn', lang) || d.summary || '';
 const debateSignal = (d: (typeof debates)[number]) =>
-  isJa
-    ? d.policySignalJa || d.policySignalEn || d.policySignal
-    : isEn
-      ? d.policySignalEn || d.policySignal
-      : d.policySignal || d.policySignalEn;
+  pickLocalized<string>(d, 'policySignal', 'policySignalEn', lang) || d.policySignal;
 const debateQuote = (d: (typeof debates)[number]) =>
-  isJa
-    ? d.notableQuoteJa || d.notableQuoteEn || d.notableQuote
-    : isEn
-      ? d.notableQuoteEn || d.notableQuote
-      : d.notableQuote || d.notableQuoteEn;
-const debateKeyPoints = (d: (typeof debates)[number]) => {
-  if (isJa && d.keyPointsJa && d.keyPointsJa.length > 0) return d.keyPointsJa;
-  if (isEn && d.keyPointsEn && d.keyPointsEn.length > 0) return d.keyPointsEn;
-  return d.keyPoints;
-};
+  pickLocalized<string>(d, 'notableQuote', 'notableQuoteEn', lang) || d.notableQuote;
+const debateKeyPoints = (d: (typeof debates)[number]) =>
+  pickLocalized<string[]>(d, 'keyPoints', 'keyPointsEn', lang) || d.keyPoints;
 const debateGovStance = (d: (typeof debates)[number]) =>
-  isJa
-    ? d.governmentStanceJa || d.governmentStanceEn || d.governmentStance
-    : isEn
-      ? d.governmentStanceEn || d.governmentStance
-      : d.governmentStance || d.governmentStanceEn;
+  pickLocalized<string>(d, 'governmentStance', 'governmentStanceEn', lang) || d.governmentStance;
 const debateOppStance = (d: (typeof debates)[number]) =>
-  isJa
-    ? d.oppositionStanceJa || d.oppositionStanceEn || d.oppositionStance
-    : isEn
-      ? d.oppositionStanceEn || d.oppositionStance
-      : d.oppositionStance || d.oppositionStanceEn;
+  pickLocalized<string>(d, 'oppositionStance', 'oppositionStanceEn', lang) || d.oppositionStance;
 
-const searchBlob = (d: (typeof debates)[number]) =>
-  [
+// MP card helpers — defined at top-level so the JSX template doesn't
+// inline-declare them and trip Astro's TS-in-JSX parser.
+const DEBATES_COUNT_LABEL: Record<Lang, string> = {
+  zh: '次发言',
+  en: 'debates',
+  ja: '次発言',
+  'zh-tw': toTraditional('次发言'),
+  ko: '회 발언',
+};
+function mpFocusAreas(mp: (typeof MP_PROFILES)[number]): string[] {
+  return pickLocalized<string[]>(mp, 'focusAreas', 'focusAreasEn', lang) || mp.focusAreas;
+}
+function mpDisplayName(mp: (typeof MP_PROFILES)[number]): string {
+  if (isZh) return mp.name || mp.nameEn;
+  return pickLocalized<string>(mp, 'name', 'nameEn', lang) || mp.nameEn || mp.name;
+}
+function mpRoleLabel(mp: (typeof MP_PROFILES)[number]): string {
+  const localized = pickLocalized<string>(mp, 'role', 'roleEn', lang);
+  if (localized) return localized;
+  return mp.roleEn || (mp.role === '反对党' ? 'Opposition' : 'Ruling party');
+}
+
+const searchBlob = (d: (typeof debates)[number]) => {
+  // Build search blob from locale-appropriate text so the data-search
+  // attribute matches what the user sees. On zh-tw, run the bare zh
+  // title through OpenCC so the blob matches the displayed Traditional
+  // form; on other locales the locale-picker yields the right text.
+  const titleField = lang === 'zh-tw' && d.title ? toTraditional(d.title) : debateTitle(d);
+  return [
     d.date,
     d.type,
-    d.title,
+    titleField,
     d.titleEn,
     debateSummary(d),
     debateSignal(d),
@@ -475,16 +540,19 @@ const searchBlob = (d: (typeof debates)[number]) =>
   ]
     .join(' ')
     .toLowerCase();
+};
 
 const speakerDisplay = (raw: string) => {
   const pid = findPersonId(raw);
   const person = pid ? getPerson(pid) : undefined;
+  // Speaker display: prefer the locale's curated `name*` field, falling
+  // back to nameEn (Latin form — universally readable). zh keeps the
+  // bare zh name; non-zh locales prefer the Latin form for Singapore
+  // press standard recognisability.
   const label = person
-    ? isJa
-      ? (person as { nameJa?: string }).nameJa || person.nameEn || person.name || raw
-      : isEn
-        ? person.nameEn || person.name || raw
-        : person.name || person.nameEn || raw
+    ? isZh
+      ? person.name || person.nameEn || raw
+      : pickLocalized<string>(person, 'name', 'nameEn', lang) || person.nameEn || raw
     : raw;
   const href = pid ? localizedHref(`/voices/${pid}/`, lang) : null;
   return { label, href, title: raw };
@@ -756,7 +824,7 @@ const typeMixLabel = Object.entries(DEBATE_STATS.byType)
                       {d.date}
                     </button>
                     <span class="text-xs text-gray-400">
-                      {isEn ? `${d.parliament} ${L.parliament}` : `第 ${d.parliament} ${L.parliament}`}
+                      {isZh || isZhTw ? `第 ${d.parliament} ${L.parliament}` : `${d.parliament} ${L.parliament}`}
                     </span>
                     <span class={`rounded-full px-2 py-0.5 text-xs ${cColor}`}>{cLabel}</span>
                   </div>
@@ -767,7 +835,8 @@ const typeMixLabel = Object.entries(DEBATE_STATS.byType)
                     </a>
                   </h3>
 
-                  {isEn ? null : <p class="mb-2 text-xs italic text-gray-400">{truncate(d.titleEn || '', 120)}</p>}
+                  {/* Show original English title as secondary for non-en locales. */}
+                  {!isEn && <p class="mb-2 text-xs italic text-gray-400">{truncate(d.titleEn || '', 120)}</p>}
 
                   <div class="mb-3 flex flex-wrap gap-1.5">
                     {(d.topics || []).map((topic) => (
@@ -947,7 +1016,15 @@ const typeMixLabel = Object.entries(DEBATE_STATS.byType)
           <div class="space-y-4">
             {
               POLICY_EVOLUTION.map((period, index) => {
-                const keyDebates = isEn && period.keyDebatesEn?.length ? period.keyDebatesEn : period.keyDebates;
+                // keyDebates: zh uses bare; zh-tw runs each through OpenCC;
+                // others fall through to en variant.
+                const keyDebates = isZh
+                  ? period.keyDebates
+                  : isZhTw
+                    ? period.keyDebates.map((s) => toTraditional(s))
+                    : period.keyDebatesEn?.length
+                      ? period.keyDebatesEn
+                      : period.keyDebates;
                 return (
                   <div class="relative md:pl-16">
                     <div class="absolute left-0 top-3 hidden h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-blue-500 to-purple-600 text-sm font-bold text-white shadow-md md:flex">
@@ -1070,58 +1147,44 @@ const typeMixLabel = Object.entries(DEBATE_STATS.byType)
         <p class="mb-5 text-sm text-gray-400">{L.clickMp}</p>
         <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
           {
-            MP_PROFILES.map((mp) => {
-              const focusAreas =
-                isJa && (mp as { focusAreasJa?: string[] }).focusAreasJa?.length
-                  ? (mp as { focusAreasJa?: string[] }).focusAreasJa!
-                  : isEn && mp.focusAreasEn?.length
-                    ? mp.focusAreasEn
-                    : mp.focusAreas;
-              return (
-                <button
-                  onclick={`filterBy('speaker','${jsAttr(mp.nameEn || mp.name)}')`}
-                  class="group rounded-xl border border-subtle bg-surface p-4 text-left shadow-sm transition-all hover:border-purple-400 hover:shadow-md"
-                >
-                  <div class="mb-2 flex items-start justify-between gap-2">
-                    <div class="min-w-0">
-                      <div class="text-sm font-semibold text-gray-800 transition-colors group-hover:text-purple-600 dark:text-white">
-                        {isJa
-                          ? (mp as { nameJa?: string }).nameJa || mp.nameEn || mp.name
-                          : isEn
-                            ? mp.nameEn || mp.name
-                            : mp.name || mp.nameEn}
-                      </div>
-                      {!isEn && mp.nameEn && <div class="text-xs text-gray-500">{mp.nameEn}</div>}
+            MP_PROFILES.map((mp) => (
+              <button
+                onclick={`filterBy('speaker','${jsAttr(mp.nameEn || mp.name)}')`}
+                class="group rounded-xl border border-subtle bg-surface p-4 text-left shadow-sm transition-all hover:border-purple-400 hover:shadow-md"
+              >
+                <div class="mb-2 flex items-start justify-between gap-2">
+                  <div class="min-w-0">
+                    <div class="text-sm font-semibold text-gray-800 transition-colors group-hover:text-purple-600 dark:text-white">
+                      {mpDisplayName(mp)}
                     </div>
-                    <span
-                      class={`shrink-0 rounded-full px-2 py-0.5 text-xs ${mp.role === '反对党' ? 'bg-orange-100 text-orange-700' : 'bg-blue-100 text-blue-700'}`}
-                    >
-                      {isJa
-                        ? (mp as { roleJa?: string }).roleJa ||
-                          mp.roleEn ||
-                          (mp.role === '反对党' ? 'Opposition' : 'Ruling party')
-                        : isEn
-                          ? mp.roleEn || (mp.role === '反对党' ? 'Opposition' : 'Ruling party')
-                          : mp.role}
-                    </span>
+                    {!isEn && mp.nameEn && mp.nameEn !== mpDisplayName(mp) && (
+                      <div class="text-xs text-gray-500">{mp.nameEn}</div>
+                    )}
                   </div>
-                  <div class="mb-2 text-xs text-gray-500">
-                    <span class="font-bold text-gray-700 dark:text-gray-300">{mp.debateCount}</span>{' '}
-                    {isJa ? '次発言' : isEn ? 'debates' : '次发言'}
-                  </div>
-                  <div class="mb-2 flex flex-wrap gap-1">
-                    {focusAreas.slice(0, 3).map((area) => (
+                  <span
+                    class={`shrink-0 rounded-full px-2 py-0.5 text-xs ${mp.role === '反对党' ? 'bg-orange-100 text-orange-700' : 'bg-blue-100 text-blue-700'}`}
+                  >
+                    {mpRoleLabel(mp)}
+                  </span>
+                </div>
+                <div class="mb-2 text-xs text-gray-500">
+                  <span class="font-bold text-gray-700 dark:text-gray-300">{mp.debateCount}</span>{' '}
+                  {DEBATES_COUNT_LABEL[lang] || DEBATES_COUNT_LABEL.en}
+                </div>
+                <div class="mb-2 flex flex-wrap gap-1">
+                  {mpFocusAreas(mp)
+                    .slice(0, 3)
+                    .map((area) => (
                       <span class="rounded bg-gray-100 px-1.5 py-0.5 text-xs text-gray-600 dark:bg-slate-700 dark:text-gray-400">
                         {area}
                       </span>
                     ))}
-                  </div>
-                  <p class="text-xs leading-relaxed text-gray-600 dark:text-gray-400">
-                    {pickLocalized(mp, 'notablePosition', 'notablePositionEn', lang)}
-                  </p>
-                </button>
-              );
-            })
+                </div>
+                <p class="text-xs leading-relaxed text-gray-600 dark:text-gray-400">
+                  {pickLocalized(mp, 'notablePosition', 'notablePositionEn', lang)}
+                </p>
+              </button>
+            ))
           }
         </div>
       </section>

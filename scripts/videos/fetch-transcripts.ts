@@ -220,13 +220,16 @@ async function emitData(records: TranscriptRecord[]): Promise<void> {
   // unavailable placeholder. If yt-dlp transiently fails for a previously
   // successful video, we keep the good record instead of degrading it.
   const filtered = emitted.filter(([id, next]) => {
-    const prev = existing[id] as { paragraphs?: unknown[]; paragraphsEn?: unknown[]; paragraphsJa?: unknown[] } | undefined;
+    const prev = existing[id] as
+      | { paragraphs?: unknown[]; paragraphsEn?: unknown[]; paragraphsJa?: unknown[]; paragraphsKo?: unknown[] }
+      | undefined;
     const nextIsUnavailable = next.source === 'unavailable';
     const prevHasContent =
       prev &&
       ((Array.isArray(prev.paragraphs) && prev.paragraphs.length > 0) ||
         (Array.isArray(prev.paragraphsEn) && prev.paragraphsEn.length > 0) ||
-        (Array.isArray(prev.paragraphsJa) && prev.paragraphsJa.length > 0));
+        (Array.isArray(prev.paragraphsJa) && prev.paragraphsJa.length > 0) ||
+        (Array.isArray(prev.paragraphsKo) && prev.paragraphsKo.length > 0));
     if (nextIsUnavailable && prevHasContent) {
       process.stdout.write(`  ⚠ refusing to downgrade ${id} to unavailable (existing record has content)\n`);
       return false;
@@ -281,12 +284,17 @@ export interface VideoTranscript {
   /** Japanese readable transcript. Translated from \`paragraphs\` (zh) by
    *  scripts/videos/translate-transcripts-ja.ts. */
   paragraphsJa?: string[];
+  /** Korean readable transcript. Translated from \`paragraphs\` (zh) by
+   *  scripts/videos/translate-transcripts-ko.ts. */
+  paragraphsKo?: string[];
   /** Polished readable digest (zh). When present, this is the primary on-page content; raw paragraphs become a collapsible fallback. */
   digest?: VideoDigest;
   /** Polished readable digest (en). */
   digestEn?: VideoDigest;
   /** Polished readable digest (ja). */
   digestJa?: VideoDigest;
+  /** Polished readable digest (ko). */
+  digestKo?: VideoDigest;
   translatedAt?: string;
   // 'claude' = local Claude CLI (default since 2026-05). 'openai' kept for
   // backward compatibility with translations cached before the switch.
@@ -408,7 +416,7 @@ if (!skipTranslate && !emitOnly && selected.length > 0) {
     // Re-emit so the freshly-cached zh translations land in OUT_FILE.
     await emitData(loadCachedRecords());
   } else {
-    process.stdout.write(`  ⚠ en→zh translate exited with ${zhRes.status}; skipping ja chain\n`);
+    process.stdout.write(`  ⚠ en→zh translate exited with ${zhRes.status}; skipping ja/ko chain\n`);
   }
 
   // zh → ja: writes paragraphsJa inplace into OUT_FILE.
@@ -419,6 +427,17 @@ if (!skipTranslate && !emitOnly && selected.length > 0) {
     });
     if (jaRes.status !== 0) {
       process.stdout.write(`  ⚠ zh→ja translate exited with ${jaRes.status}\n`);
+    }
+  }
+
+  // zh → ko: writes paragraphsKo inplace into OUT_FILE.
+  if (zhRes.status === 0) {
+    process.stdout.write(`\nTranslating zh → ko for ${ids.length} ids…\n`);
+    const koRes = spawnSync('npx', ['tsx', 'scripts/videos/translate-transcripts-ko.ts', idsArgVal], {
+      stdio: 'inherit',
+    });
+    if (koRes.status !== 0) {
+      process.stdout.write(`  ⚠ zh→ko translate exited with ${koRes.status}\n`);
     }
   }
 }

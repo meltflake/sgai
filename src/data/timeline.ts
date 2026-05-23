@@ -7,9 +7,11 @@ export interface TimelineEvent {
   title: string;
   titleEn?: string;
   titleJa?: string;
+  titleKo?: string;
   description: string;
   descriptionEn?: string;
   descriptionJa?: string;
+  descriptionKo?: string;
   tags?: string[];
   // Phase 1 cross-refs (hand-curated over time).
   personIds?: string[];
@@ -23,10 +25,13 @@ export const timelineEvents: TimelineEvent[] = [
     id: 'evt-2027',
     year: 2027,
     title: '新加坡主办国际 AI 奥林匹克竞赛',
+    titleKo: '싱가포르가 국제 AI 올림피아드를 주최합니다.',
     titleJa: 'シンガポールが国際 AI オリンピック競技大会を主催',
     titleEn: 'Singapore Hosts International AI Olympiad',
     description:
       '新加坡将首次举办 International Olympiad in AI (IOAI)，将全球 AI 青年人才汇聚狮城，展现新加坡在 AI 教育和人才培养领域的国际领导力。',
+    descriptionKo:
+      '싱가포르가 처음으로 International Olympiad in AI (IOAI)를 개최하여 전 세계 AI 청년 인재를 싱가포르에 모으고, AI 교육 및 인재 양성 분야에서 싱가포르의 국제적 리더십을 보여줄 것입니다.',
     descriptionJa:
       'シンガポールは初めて International Olympiad in AI (IOAI) を開催し、世界中の AI 若年人材をライオンシティに集め、AI 教育および人材育成分野におけるシンガポールの国際指導力を示します。',
     descriptionEn:
@@ -38,10 +43,13 @@ export const timelineEvents: TimelineEvent[] = [
     year: 2026,
     date: '2026-04-27',
     title: 'Meta–Manus 收购被中国 NDRC 否决：「Singapore washing」红线划定',
+    titleKo: '메타–매누스 인수, 중국 NDRC가 부결: 「Singapore washing」적색선 획정',
     titleJa: 'Meta–Manus 買収が中国 NDRC に否決：「Singapore washing」レッドラインが設定',
     titleEn: 'China Blocks Meta–Manus Acquisition: A Red Line Against "Singapore Washing"',
     description:
       '4 月 27 日，中国国家发展和改革委员会（NDRC）正式叫停 Meta 对 Manus 的 20 亿美元收购，援引"国家安全"理由——这是中国首例以国安为由否决 AI 领域外资并购。NDRC 划定三条红线：技术主权、数据主权、国家安全。Manus 母公司 Butterfly Effect 由肖弘、季逸超 2022 年在中国创立，2025 年中将总部迁至新加坡（约 40 名核心技术员从北京搬迁，120 人团队多数被裁），由新加坡 Butterfly Effect 实体接管海外业务。Meta 于 2025 年 12 月宣布收购。2026 年 1 月中国监管启动审查，3 月末肖弘与季逸超被约谈并限制出境。事件直接挑战新加坡作为「AI 离岸中转枢纽」的战略叙事——多家国际媒体（Asia Times、Foreign Policy）将此案定义为「Singapore washing 的极限」，意指仅靠迁注册地无法绕开来源国监管。',
+    descriptionKo:
+      '4월 27일 중국 국가발전개혁위원회(NDRC)가 메타의 매누스 인수 건 20억 달러를 공식 중단했으며, 「국가 안보」를 이유로 들었습니다. 이는 중국이 AI 분야 외국인 투자 인수합병을 국가 안보를 이유로 부결한 첫 번째 사례입니다. NDRC는 세 가지 적색선을 그었습니다: 기술 주권, 데이터 주권, 국가 안보입니다. 매누스의 모회사 Butterfly Effect는 샤오 홍, 지 이초가 2022년에 중국에서 설립했으며, 2025년 중반에 본부를 싱가포르로 이전했습니다(약 40명의 핵심 기술 직원이 베이징에서 이전했고, 120명 규모 팀의 대부분이 정리해고됨). 싱가포르 Butterfly Effect 법인이 해외 사업 운영을 인수했습니다. 메타는 2025년 12월 인수를 공표했습니다. 2026년 1월 중국 규제 당국이 심사를 개시했고, 3월 말 샤오 홍과 지 이초는 소환되어 면담을 받았으며 출국이 제한되었습니다. 이 사건은 싱가포르가 「AI 역외 중전 허브」로서의 전략적 내러티브에 직접 도전했습니다. 다수의 국제 매체(Asia Times, Foreign Policy)는 이 사건을 「Singapore washing의 극한」으로 정의했으며, 이는 등록지 이전만으로는 원산지 국가의 규제를 우회할 수 없다는 의미입니다.',
     descriptionJa:
       '4 月 27 日、中国の国家発展改革委員会（NDRC）は、Meta による Manus の 20 億ドル買収を正式に停止し、「国家安全保障」を理由に挙げました——これは中国が初めて国家安全保障を理由に AI 分野での外国資本による買収を否決したケースです。NDRC は 3 つのレッドラインを設定しました：技術主権、データ主権、国家安全保障。Manus の親会社である Butterfly Effect は、肖弘と季逸超が 2022 年に中国で設立し、2025 年中盤に本部をシンガポールに移しました（約 40 名のコア技術スタッフが北京から移動、120 人のチームの大部分がレイオフされた）。シンガポールの Butterfly Effect エンティティが海外業務を引き継ぎました。Meta は 2025 年 12 月に買収を発表しました。2026 年 1 月、中国の監視機関は審査を開始し、3 月末に肖弘と季逸超は尋問されて出国が制限されました。このイベントはシンガポールが「AI オフショア中継ハブ」として機能するという戦略的叙述に直接異議を唱えています——複数の国際メディア（Asia Times、Foreign Policy）はこのケースを「Singapore washing の極限」と定義し、登記地の移転だけではソース国の規制を回避できないことを意味しています。',
     descriptionEn:
@@ -54,10 +62,13 @@ export const timelineEvents: TimelineEvent[] = [
     year: 2026,
     date: '2026-04-20',
     title: 'ISO/IEC 42119-8 提案：全球首个生成式 AI 测试国际标准',
+    titleKo: 'ISO/IEC 42119-8 제안: 생성형 AI 테스트 국제 표준 세계 최초',
     titleJa: 'ISO/IEC 42119-8 提案：生成型 AI テストの世界初の国際標準',
     titleEn: 'ISO/IEC 42119-8: First International Standard for Testing Generative AI',
     description:
       '4 月 20-24 日，第 17 届 ISO/IEC JTC 1/SC 42 全体会议在新加坡举行——这是 SC 42（全球 AI 标准制定核心机构）首次在东盟召开，由 IMDA 与 Enterprise Singapore 联合主办，汇集 35 个以上国家、250 多位 AI 专家（含美、英、中、日、德、法、韩）。开幕日新加坡正式提交 ISO/IEC 42119-8 标准草案，聚焦生成式 AI 测试方法标准化，两个核心方向：基准测试（benchmarking）统一"考什么、怎么评分"，红队测试（red teaming）标准化"隐藏风险怎么找出来"。如获通过将是全球首个针对生成式 AI 系统的国际测试标准。提案建立在 IMDA 已有的 AI Verify Toolkit、LLM 应用测试 Starter Kit 和 Global AI Assurance Sandbox 基础上。IMDA 现任 CEO Ng Cher Pong 在开幕致辞中表示："标准制定不能以龟速推进——否则将被 AI 高速变革所淘汰。"会议同期，IMDA 与 EnterpriseSG 还为东盟成员国举办了能力建设培训。',
+    descriptionKo:
+      '4월 20~24일 제17차 ISO/IEC JTC 1/SC 42 전체 회의가 싱가포르에서 개최되었습니다. 이는 SC 42(전 지구적 AI 표준 제정의 핵심 기구)가 동남아시아에서 처음으로 개최한 회의이며, IMDA와 Enterprise Singapore가 공동으로 주최했으며, 35개 이상 국가와 250명 이상의 AI 전문가(미국, 영국, 중국, 일본, 독일, 프랑스, 한국 포함)가 모였습니다. 개막일 싱가포르가 공식적으로 ISO/IEC 42119-8 표준 초안을 제출했으며, 생성형 AI 테스트 방법 표준화에 초점을 맞추었습니다. 두 가지 핵심 방향은 다음과 같습니다: 벤치마크 테스트(benchmarking)는 「무엇을 평가할 것인가, 어떻게 채점할 것인가」를 통일하고, 적팀 테스트(red teaming)는 「숨겨진 위험을 어떻게 찾아낼 것인가」를 표준화합니다. 승인될 경우 생성형 AI 시스템을 대상으로 한 세계 최초의 국제 테스트 표준이 될 것입니다. 제안은 IMDA가 이미 보유한 AI Verify Toolkit, LLM 응용 테스트 Starter Kit 및 Global AI Assurance Sandbox를 기반으로 합니다. IMDA 현 CEO Ng Cher Pong은 개막식 기조 연설에서 「표준 제정은 느린 속도로 진행될 수 없습니다. 그렇지 않으면 AI의 고속 변혁으로 인해 도태될 것입니다」라고 말했습니다. 회의 기간 동안 IMDA와 EnterpriseSG는 동남아시아 회원국을 위한 역량 강화 교육도 개최했습니다.',
     descriptionJa:
       '4 月 20 日～24 日、第 17 回 ISO/IEC JTC 1/SC 42 全体会議がシンガポールで開催されました——これは SC 42（世界 AI 標準設定のコアインスティテューション）が ASEAN で初めて開催された会議で、IMDA および Enterprise Singapore が共同主催し、35 カ国以上、250 名以上の AI 専門家（米国、英国、中国、日本、ドイツ、フランス、韓国を含む）を集めました。開幕日、シンガポールは正式に ISO/IEC 42119-8 標準草案を提出し、生成型 AI テスト方法の標準化に焦点を当て、2 つのコア方向：ベンチマーク（benchmarking）は「何をテストするか、どのようにスコアを付けるか」を統一し、レッドチーム テスト（red teaming）は「隠された危険をどのように見つけるか」を標準化します。承認されれば、生成型 AI システムを対象とした世界初の国際テスト標準になります。提案は、IMDA が既に持っている AI Verify Toolkit、LLM アプリケーション テスト Starter Kit、および Global AI Assurance Sandbox に基づいています。IMDA の現職 CEO である Ng Cher Pong は開幕式での挨拶で、「標準設定は亀速で進めることはできません——そうしないと AI の急速な変化によって廃止されます」と述べました。同期間、IMDA および EnterpriseSG は、ASEAN 加盟国向けにキャパシティ ビルディング トレーニングも開催しました。',
     descriptionEn:
@@ -69,10 +80,13 @@ export const timelineEvents: TimelineEvent[] = [
     id: 'evt-2026-naird-budget',
     year: 2026,
     title: 'NAIRD 发布 + 财政预算：AI 全面加速',
+    titleKo: 'NAIRD 발표 + 재정 예산: AI 전면 가속화',
     titleJa: 'NAIRD 発布 + 財政予算：AI 全面加速',
     titleEn: 'NAIRD Launch + Budget 2026: Full-Spectrum AI Acceleration',
     description:
       '1 月：MDDI 宣布 2026-2030 公共 AI 研究投资计划，投资超 10 亿新元（7.79 亿美元）用于公共 AI 研究，聚焦负责任和资源高效的 AI、全链条人才培养、产业应用。同月举办 AI Research Week 2026，与 AAAI 第 40 届会议同期。Microsoft AI Economy Institute 报告显示新加坡 AI 采用率 60.9%，全球第二（仅次于 UAE 64.0%），美国仅 28.3%。2 月：预算案将 AI 提升至空前高度，成立由总理亲自主持的 National AI Council；推出 4 项 AI Mission；Enterprise Innovation Scheme 400% AI 税务扣除；启动 one-north AI 园区建设；National AI Literacy Programme。3 月：新加坡正式成为超老龄社会（65 岁以上 > 21%）；卫生部长宣布 ACE-AI 预测工具（Synapxe 开发），2027 年初推广至 1,100+ Healthier SG 诊所；BRCA1/2 基因检测最高 70% 补贴（2026.12 起）；MediShield Life 覆盖预防性乳房切除术（Q3）及输卵管卵巢切除术（Q4）；MediSave 限额提升惠及 91 万+ 患者。',
+    descriptionKo:
+      '1월: MDDI가 2026-2030 공공 AI 연구 투자 계획을 발표하며, 공공 AI 연구에 10억 싱가포르 달러(7.79억 미국 달러) 이상을 투자합니다. 책임 있고 자원 효율적인 AI, 전 체인 인재 양성, 산업 응용에 초점을 맞춥니다. 같은 달 AAAI 40회 회의와 동시에 AI Research Week 2026을 개최합니다. Microsoft AI Economy Institute 보고서는 싱가포르 AI 채택률이 60.9%로 전 세계 2위(UAE 64.0%에만 뒤짐)이며 미국은 28.3%에 불과함을 보여줍니다. 2월: 예산안이 AI를 전례 없는 높이로 끌어올립니다. 총리가 직접 주재하는 National AI Council을 설립하고, 4개의 AI Mission을 추진하며, Enterprise Innovation Scheme에 400% AI 세금 공제를 도입하고, one-north AI 단지 건설을 착수하며, National AI Literacy Programme을 개시합니다. 3월: 싱가포르가 공식적으로 초고령 사회(65세 이상 > 21%)가 됩니다. 보건부 장관이 Synapxe가 개발한 ACE-AI 예측 도구를 발표했으며, 2027년 초 1,100+ Healthier SG 클리닉으로 확대될 예정입니다. BRCA1/2 유전자 검사 최대 70% 보조금(2026년 12월부터), MediShield Life는 예방적 유방 절제술(Q3) 및 나팔관 난소 절제술(Q4)을 보장하며, MediSave 한도 인상으로 91만+ 환자가 혜택을 봅니다.',
     descriptionJa:
       '1 月：MDDI は 2026 年から 2030 年の公共 AI 研究投資計画を発表し、責任ある資源効率的な AI、全チェーンの人材育成、産業応用に焦点を当てた公共 AI 研究に 10 億新シンガポールドル以上（7 億 7,900 万米ドル）を投資しました。同月、AI Research Week 2026 が開催され、AAAI 第 40 回会議と同期間に開催されました。Microsoft AI Economy Institute のレポートによると、シンガポールの AI 採用率は 60.9% で、世界第 2 位（UAE の 64.0% に次ぐ）、米国はわずか 28.3% です。2 月：予算案は AI を前例のない高さに引き上げ、首相自らが主催する National AI Council を設立し、4 つの AI Mission を導入し、Enterprise Innovation Scheme の 400% AI 税控除を提供し、one-north AI パークの建設を開始し、National AI Literacy Programme を開始しました。3 月：シンガポールは正式に超高齢社会になりました（65 歳以上 > 21%）。保健大臣は ACE-AI 予測ツール（Synapxe 開発）を発表し、2027 年初頭に 1,100 以上の Healthier SG クリニックに展開する予定です。BRCA1/2 遺伝子検査は最大 70% の補助金（2026.12 より）が受けられます。MediShield Life は予防的乳房切除術（Q3）および卵管卵巣摘出術（Q4）をカバーします。MediSave の限度額引き上げにより、91 万人以上の患者が恩恵を受けます。',
     descriptionEn:
@@ -91,10 +105,13 @@ export const timelineEvents: TimelineEvent[] = [
     year: 2025,
     date: '2025-02',
     title: '樟宜机场获全球首张 ISO/IEC 42001 AI 管理体系认证',
+    titleKo: 'Changi Airport 세계 최초 ISO/IEC 42001 AI 경영체계 인증 획득',
     titleJa: 'チャンギ空港が世界初の ISO/IEC 42001 AI マネジメントシステム認証を取得',
     titleEn: "Changi Airport Earns World's First ISO/IEC 42001 AI Management System Certification",
     description:
       '2 月，樟宜机场集团（CAG）由 SGS 颁发 ISO/IEC 42001:2023 AI 管理体系（AIMS）认证，经新加坡认证理事会（SAC）认可——这是全球首张针对机场客户服务的 ISO/IEC 42001 证书，覆盖 5 套面向旅客和商业的 AI 应用（含客户终身价值 CLV、产品推荐、倾向预测等）。该认证为新加坡此后在 SC 42 国际舞台主张 AI 测试与治理标准积累了实证案例。',
+    descriptionKo:
+      '2월: Changi Airport Group(CAG)이 SGS로부터 ISO/IEC 42001:2023 AI 관리 체계(AIMS) 인증을 획득했으며, 싱가포르 인증 위원회(SAC)의 인정을 받았습니다. 이는 공항 고객 서비스를 위한 세계 최초의 ISO/IEC 42001 인증서이며, 고객 평생 가치(CLV), 상품 추천, 성향 예측 등을 포함한 여행객 및 비즈니스를 위한 5개의 AI 응용을 포괄합니다. 이 인증은 싱가포르가 향후 SC 42 국제 무대에서 AI 테스트 및 거버넌스 표준을 주장하기 위해 구체적인 사례를 축적했습니다.',
     descriptionJa:
       '2 月、チャンギ空港グループ（CAG）は SGS から ISO/IEC 42001:2023 AI マネジメントシステム（AIMS）認証を取得し、シンガポール認証評議会（SAC）によって認可されました——これは空港の顧客サービスを対象とした世界初の ISO/IEC 42001 証明書で、顧客生涯価値（CLV）、製品推奨、傾向予測など、乗客と商業向けの 5 つの AI アプリケーション セットをカバーしています。この認証は、シンガポールが今後 SC 42 の国際舞台で AI テストとガバナンス標準を主張するための実証ケーススタディを蓄積しました。',
     descriptionEn:
@@ -105,10 +122,13 @@ export const timelineEvents: TimelineEvent[] = [
     id: 'evt-2025-agentic-bigtech',
     year: 2025,
     title: 'Agentic AI 治理与科技巨头落地',
+    titleKo: 'Agentic AI 거버넌스와 테크 거대기업의 진출',
     titleJa: 'エージェンティック AI ガバナンスと大型テック企業の拠点確保',
     titleEn: 'Agentic AI Governance and Big Tech Land in Singapore',
     description:
       '发布 Agentic AI 治理框架；推出 SEA-Guard 安全评估工具；Enterprise Compute 拨款 1.5 亿新元；AIAP for Industry 扩展至产业界。7 月 Microsoft Research Asia 在新加坡设立首个东南亚实验室，与 NUS 合作产业博士项目（IPP）。11 月 Google DeepMind 在新加坡建立东南亚首个 AI 研究实验室。',
+    descriptionKo:
+      'Agentic AI 거버넌스 프레임워크 발표; SEA-Guard 보안 평가 도구 출시; Enterprise Compute에 1억 5천만 신원 할당; AIAP for Industry 산업 부문으로 확대합니다. 7월 Microsoft Research Asia가 싱가포르에 동남아 최초 실험실을 설립하고 NUS와의 산업 박사 프로그램(IPP) 협력을 시작합니다. 11월 Google DeepMind가 싱가포르에 동남아 최초 AI 연구 실험실을 설립합니다.',
     descriptionJa:
       'エージェンティック AI ガバナンス フレームワークを発表し、SEA-Guard セキュリティ評価ツールを立ち上げ、Enterprise Compute に 1 億 5,000 万新シンガポールドルを配分し、AIAP for Industry を産業界に拡張しました。7 月、Microsoft Research Asia がシンガポールに初の東南アジア研究室を開設し、NUS と業界博士プログラム（IPP）で協力しました。11 月、Google DeepMind はシンガポールに東南アジア初の AI 研究実験室を確立しました。',
     descriptionEn:
@@ -119,10 +139,13 @@ export const timelineEvents: TimelineEvent[] = [
     id: 'evt-2024',
     year: 2024,
     title: '智慧国家 2.0 落地与 AI 预算井喷',
+    titleKo: '스마트 국가 2.0 시행과 AI 예산 급증',
     titleJa: 'スマート国家 2.0 の実装と AI 予算の爆発的成長',
     titleEn: 'Smart Nation 2.0 Rolls Out; AI Budget Surges',
     description:
       'Smart Nation 2.0 落地，发布 1.2 亿新元 AI 应用基金和五大国家 AI 项目（智能货运、市政服务、慢性病管理、个性化教育、边境清关）。AI 预算突破 10 亿新元。3 月 NUS AI Institute 成立，整合校内 AI 研究资源。SEA-LION 大语言模型正式发布；AMP 启动；参加首尔 AI 安全峰会；CSA 发布 AI 安全指南。',
+    descriptionKo:
+      'Smart Nation 2.0이 시행되어 1.2억 싱가포르 달러 규모의 AI 애플리케이션 펀드와 5대 국가 AI 프로젝트(스마트 물류, 도시 서비스, 만성질환 관리, 개인화 교육, 국경 통관)가 공개되었습니다. AI 예산이 10억 싱가포르 달러를 돌파했습니다. 3월 NUS AI Institute가 설립되어 캠퍼스 내 AI 연구 자원을 통합했습니다. SEA-LION 대규모 언어 모델이 공식 출시되었고, AMP가 출범했고, 서울 AI 안전 정상회담에 참여했고, CSA가 AI 안전 가이드라인을 공개했습니다.',
     descriptionJa:
       'Smart Nation 2.0 を実装し、1 億 2,000 万新シンガポールドルの AI アプリケーション ファンドと 5 つの主要国家 AI プロジェクト（インテリジェント カーゴ、市民サービス、慢性疾患管理、個人教育、国境通関）を発表しました。AI 予算は 10 億新シンガポールドルを超えました。3 月、NUS AI Institute が設立され、キャンパス内の AI 研究リソースを統合しました。SEA-LION 大規模言語モデルが正式にリリースされました。AMP が開始され、ソウル AI 安全サミットに参加し、CSA が AI 安全ガイドラインを発表しました。',
     descriptionEn:
@@ -133,10 +156,13 @@ export const timelineEvents: TimelineEvent[] = [
     id: 'evt-2023',
     year: 2023,
     title: 'NAIS 2.0 发布与 AI Verify 开源',
+    titleKo: 'NAIS 2.0 발표 및 AI Verify 오픈소스',
     titleJa: 'NAIS 2.0 の発表と AI Verify のオープンソース化',
     titleEn: 'NAIS 2.0 Released; AI Verify Open-Sourced',
     description:
       '国家 AI 战略 2.0 发布，从"重点应用"升级为"系统性赋能"。AI Verify 测试框架开源并成立 AI Verify Foundation。生成式 AI 治理框架提案。参加 Bletchley Park 首届 AI 安全峰会。',
+    descriptionKo:
+      '국가 AI 전략 2.0이 공개되어 「핵심 응용」에서 「체계적 역량 강화」로 업그레이드되었습니다. AI Verify 테스트 프레임워크가 오픈소스화되었고 AI Verify Foundation이 설립되었습니다. 생성형 AI 거버넌스 프레임워크가 제안되었습니다. Bletchley Park 첫 번째 AI 안전 정상회담에 참여했습니다.',
     descriptionJa:
       '国家 AI 戦略 2.0 が発表され、「重点応用」から「システム的実装」にアップグレードされました。AI Verify テスト フレームワークはオープンソース化され、AI Verify Foundation が設立されました。生成型 AI ガバナンス フレームワーク提案。Bletchley Park 初の AI 安全サミットに参加しました。',
     descriptionEn:
@@ -147,10 +173,13 @@ export const timelineEvents: TimelineEvent[] = [
     id: 'evt-2022',
     year: 2022,
     title: 'AI Verify 发布与 NAISC 启动',
+    titleKo: 'AI Verify 발표 및 NAISC 출범',
     titleJa: 'AI Verify の発表と NAISC の開始',
     titleEn: 'AI Verify Released; NAISC Launched',
     description:
       'AI Verify MVP 发布，全球首个 AI 治理测试框架与工具包。National AI Student Challenge (NAISC) 启动，面向学生的全国性 AI 挑战赛。',
+    descriptionKo:
+      'AI Verify MVP 발표, 세계 최초의 AI 거버넌스 테스트 프레임워크 및 도구 모음. National AI Student Challenge (NAISC) 출범, 학생을 위한 국가급 AI 챌린지.',
     descriptionJa:
       'AI Verify MVP がリリースされ、世界初の AI ガバナンス テスト フレームワークとツールキットが提供されました。National AI Student Challenge (NAISC) が開始され、学生向けの全国的な AI チャレンジです。',
     descriptionEn:
@@ -161,10 +190,13 @@ export const timelineEvents: TimelineEvent[] = [
     id: 'evt-2020',
     year: 2020,
     title: 'PDPA 修订与 GPAI 创始',
+    titleKo: 'PDPA 개정 및 GPAI 설립',
     titleJa: 'PDPA の改正と GPAI の設立',
     titleEn: 'PDPA Amendment and GPAI Founding',
     description:
       '个人数据保护法 (PDPA) 重大修订，引入合法利益例外和数据可携带权。AI 治理模型框架更新至 v2。新加坡成为 GPAI 创始成员国，RIE2025 计划启动（250 亿新元）。',
+    descriptionKo:
+      '개인정보보호법(PDPA) 주요 개정으로 정당한 이익 예외와 데이터 이동권 도입. AI 거버넌스 모델 프레임워크를 v2로 업데이트. 싱가포르가 GPAI 설립 회원국이 되고 RIE2025 계획 출범(250억 싱가포르달러).',
     descriptionJa:
       '個人データ保護法（PDPA）が大幅に改正され、正当な利益例外とデータポータビリティ権が導入されました。AI ガバナンス モデル フレームワークが v2 に更新されました。シンガポールは GPAI の創設加盟国となり、RIE2025 計画が開始されました（250 億新シンガポールドル）。',
     descriptionEn:
@@ -175,10 +207,13 @@ export const timelineEvents: TimelineEvent[] = [
     id: 'evt-2019',
     year: 2019,
     title: 'NAIS 1.0 发布',
+    titleKo: 'NAIS 1.0 발표',
     titleJa: 'NAIS 1.0 の発表',
     titleEn: 'NAIS 1.0 Released',
     description:
       '新加坡首份国家级 AI 战略发布，确立五大重点领域（交通物流、智慧城市、医疗、教育、安全）和三大推动力。同年发布亚洲首个 AI 治理模型框架，MAS 推出 FEAT 原则。',
+    descriptionKo:
+      '싱가포르 최초의 국가급 AI 전략 발표로 5대 중점 영역(교통 물류, 스마트 도시, 의료, 교육, 안보)과 3대 추진력을 확립. 같은 해 아시아 최초의 AI 거버넌스 모델 프레임워크 발표, MAS가 FEAT 원칙을 발표.',
     descriptionJa:
       'シンガポールの最初の国家レベルの AI 戦略が発表され、5 つの主要分野（交通物流、スマートシティ、医療、教育、セキュリティ）と 3 つの駆動力を確立しました。同年、アジア初の AI ガバナンス モデル フレームワークが発表され、MAS は FEAT 原則を導入しました。',
     descriptionEn:
@@ -189,10 +224,13 @@ export const timelineEvents: TimelineEvent[] = [
     id: 'evt-2018',
     year: 2018,
     title: 'AIAP 与 100E 计划启动',
+    titleKo: 'AIAP 및 100E 프로그램이 시작되었습니다.',
     titleJa: 'AIAP と 100E 計画の開始',
     titleEn: 'AIAP and 100E Programmes Launched',
     description:
       'AI Apprenticeship Programme (AIAP) 首批启动，提供 9 个月沉浸式 AI 工程训练。100 Experiments (100E) 计划启动，资助企业进行 AI 概念验证。MAS 发布金融业 FEAT 原则。',
+    descriptionKo:
+      'AI Apprenticeship Programme (AIAP)이 처음 시작되어 9개월 몰입형 AI 엔지니어링 교육을 제공했습니다. 100 Experiments (100E) 프로그램이 시작되어 기업의 AI 개념 검증을 지원했습니다. MAS가 금융업 FEAT 원칙을 발표했습니다.',
     descriptionJa:
       'AI Apprenticeship Programme (AIAP) が最初のバッチで開始され、9 ヶ月間の没入型 AI エンジニアリング トレーニングを提供しました。100 Experiments (100E) 計画が開始され、企業が AI の概念実証を行うための資金を提供しました。MAS は金融業向けの FEAT 原則を発表しました。',
     descriptionEn:
@@ -203,10 +241,13 @@ export const timelineEvents: TimelineEvent[] = [
     id: 'evt-2017',
     year: 2017,
     title: 'AI Singapore 成立',
+    titleKo: 'AI Singapore가 설립되었습니다.',
     titleJa: 'AI Singapore の設立',
     titleEn: 'AI Singapore Established',
     description:
       '国家研究基金会 (NRF) 拨款 1.5 亿新元成立 AI Singapore，整合学术界、产业界和政府资源，统筹推进国家级 AI 研究、创新和人才培养。',
+    descriptionKo:
+      '국가연구기금(NRF)이 1.5억 싱가포르 달러를 배정하여 AI Singapore를 설립했습니다. 학계, 산업계, 정부 자원을 통합하여 국가급 AI 연구, 혁신 및 인재 양성을 체계적으로 추진했습니다.',
     descriptionJa:
       'National Research Foundation (NRF) が 1 億 5,000 万新シンガポールドルを配分して AI Singapore を設立し、学界、産業界、政府リソースを統合し、国家レベルの AI 研究、イノベーション、人材育成を包括的に推進しました。',
     descriptionEn:
@@ -217,10 +258,13 @@ export const timelineEvents: TimelineEvent[] = [
     id: 'evt-2014',
     year: 2014,
     title: '智慧国家倡议启动',
+    titleKo: 'Smart Nation Initiative가 시작되었습니다.',
     titleJa: 'スマート国家イニシアティブの開始',
     titleEn: 'Smart Nation Initiative Launched',
     description:
       '李显龙总理宣布 Smart Nation Initiative，新加坡成为全球首个以"智慧国家"为目标的国家级数字化转型战略。该倡议为后续所有 AI 政策奠定了制度基础。',
+    descriptionKo:
+      'Lee Hsien Loong 총리가 Smart Nation Initiative를 발표했습니다. 싱가포르가 「스마트 국가」를 목표로 하는 국가급 디지털 전환 전략을 추진한 전 세계 최초의 국가가 되었습니다. 이 이니셔티브는 이후 모든 AI 정책의 제도적 기초를 마련했습니다.',
     descriptionJa:
       '李顕龍首相が Smart Nation Initiative を発表し、シンガポールは「スマート国家」を目標とする世界初の国家レベルのデジタル変革戦略になりました。このイニシアティブは、その後のすべての AI ポリシーの制度基盤を確立しました。',
     descriptionEn:

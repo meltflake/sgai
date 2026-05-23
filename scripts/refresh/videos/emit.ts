@@ -216,16 +216,20 @@ interface BilingualVideoFields {
   title: string;
   titleEn: string;
   titleJa?: string;
+  titleKo?: string;
   summary: string;
   summaryEn: string;
   summaryJa?: string;
+  summaryKo?: string;
   topic: string;
   topicEn: string;
   topicJa?: string;
+  topicKo?: string;
   speaker: string;
   speakerTitle: string;
   speakerTitleEn: string;
   speakerTitleJa?: string;
+  speakerTitleKo?: string;
   speakerType: SpeakerType;
   model: string;
   generatedAt: string;
@@ -556,22 +560,27 @@ async function main() {
     console.log(`         duration: ${e.duration}\n`);
   }
 
-  // Translate to ja.
+  // Translate to ja + ko.
   try {
     const { translateBatch } = await import('../../lib/translate.ts');
-    const jaValues = await translateBatch(
-      approved.flatMap((e) => [e.fields.title, e.fields.summary, e.fields.topic, e.fields.speakerTitle]),
-      { direction: 'zh→ja', cacheDir: 'scripts/i18n/data/ja-cache' }
-    );
+    const flat = approved.flatMap((e) => [e.fields.title, e.fields.summary, e.fields.topic, e.fields.speakerTitle]);
+    const [jaValues, koValues] = await Promise.all([
+      translateBatch(flat, { direction: 'zh→ja', cacheDir: 'scripts/i18n/data/ja-cache' }),
+      translateBatch(flat, { direction: 'zh→ko', cacheDir: 'scripts/i18n/data/ko-cache' }),
+    ]);
     for (let i = 0; i < approved.length; i++) {
       approved[i].fields.titleJa = jaValues[i * 4] || undefined;
       approved[i].fields.summaryJa = jaValues[i * 4 + 1] || undefined;
       approved[i].fields.topicJa = jaValues[i * 4 + 2] || undefined;
       approved[i].fields.speakerTitleJa = jaValues[i * 4 + 3] || undefined;
+      approved[i].fields.titleKo = koValues[i * 4] || undefined;
+      approved[i].fields.summaryKo = koValues[i * 4 + 1] || undefined;
+      approved[i].fields.topicKo = koValues[i * 4 + 2] || undefined;
+      approved[i].fields.speakerTitleKo = koValues[i * 4 + 3] || undefined;
     }
-    console.log(`  translated ${approved.length} entries to ja`);
+    console.log(`  translated ${approved.length} entries to ja + ko`);
   } catch (e) {
-    console.warn(`  [warn] ja translation failed: ${e instanceof Error ? e.message : e}`);
+    console.warn(`  [warn] ja/ko translation failed: ${e instanceof Error ? e.message : e}`);
   }
 
   if (dryRun) {

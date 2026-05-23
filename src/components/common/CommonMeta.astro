@@ -1,20 +1,19 @@
 ---
 import { getAsset, getCanonical } from '~/utils/permalinks';
-import { LOCALES, ROUTE_DEFAULT_LOCALE, localizedHref, unprefixed, type Lang } from '~/i18n';
+import { IN_LANGUAGES, LOCALES, ROUTE_DEFAULT_LOCALE, localizedHref, unprefixed } from '~/i18n';
 
 // After Phase 2 routing migration, every content page has a route-default
-// (en, unprefixed) version and one /<lang>/<path>/ mirror per non-default
+// (en, unprefixed) version and one /<segment>/<path>/ mirror per non-default
 // locale. We emit one hreflang alternate per LOCALES entry plus x-default
 // → the route-default canonical. Non-content endpoints (sitemap.xml,
 // llms.txt, RSS) are not HTML pages and don't hit this component.
 const pathname = String(Astro.url.pathname);
 const basePath = unprefixed(pathname);
 
-// BCP 47 hreflang code per locale. Mirrors astro.config.ts HREFLANG_MAP.
-const HREFLANG: Record<Lang, string> = { en: 'en', zh: 'zh-CN', ja: 'ja' };
-
+// BCP 47 hreflang codes come from IN_LANGUAGES (single source of truth,
+// shared with JSON-LD inLanguage and Layout's <html lang>).
 const alternates = LOCALES.map((lang) => ({
-  hreflang: HREFLANG[lang] ?? lang,
+  hreflang: IN_LANGUAGES[lang] ?? lang,
   href: String(getCanonical(localizedHref(basePath, lang))),
 }));
 const xDefault = String(getCanonical(localizedHref(basePath, ROUTE_DEFAULT_LOCALE)));

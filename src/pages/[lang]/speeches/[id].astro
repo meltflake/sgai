@@ -11,7 +11,7 @@ import {
   getSpeechTranscriptParagraphs,
   getSpeechTranscriptTldr,
 } from '~/data/speech-transcripts';
-import { findPersonId } from '~/utils/people';
+import { findPersonId, getPerson } from '~/utils/people';
 import { NON_DEFAULT_ROUTE_LOCALES, IN_LANGUAGES, localizedHref, pickLocalized, t, type Lang } from '~/i18n';
 
 export const prerender = true;
@@ -25,7 +25,13 @@ export const getStaticPaths = (() =>
   )) satisfies GetStaticPaths;
 
 const lang = Astro.params.lang as Lang;
+// `isZh` is the binary flag the original template used to switch between
+// zh and the English fallback. We keep it for the few spots that show the
+// raw zh transcript when on a /zh/ page (zh-tw uses OpenCC, ko uses the
+// translated transcript). `isCjk` covers all locales that want the zh
+// transcript via OpenCC: zh + zh-tw.
 const isZh = lang === 'zh';
+const isCjk = lang === 'zh' || lang === 'zh-tw';
 const { speech } = Astro.props as { speech: MddiSpeech };
 const id = speechId(speech);
 const transcript = getSpeechTranscript(id);
@@ -35,12 +41,22 @@ const tldrZh = getSpeechTranscriptTldr(id, 'zh');
 const tldrEn = getSpeechTranscriptTldr(id, 'en');
 
 const speakerPid = findPersonId(speech.speaker);
-const titleDisplay = isZh ? speech.title : speech.titleEn || speech.title;
+// Resolve speaker display name via Person record so non-zh locales get
+// the Latin Roman form (Singapore press standard) instead of the raw
+// Chinese name stored in speech.speaker.
+const speakerPerson = speakerPid ? getPerson(speakerPid) : undefined;
+const speakerDisplay = isZh
+  ? speech.speaker
+  : (speakerPerson && (pickLocalized<string>(speakerPerson, 'name', 'nameEn', lang) || speakerPerson.nameEn)) ||
+    speech.speaker;
+const titleDisplay = pickLocalized<string>(speech, 'title', 'titleEn', lang) || speech.title;
 const speakerTitle = pickLocalized(speech, 'speakerTitle', 'speakerTitleEn', lang);
-const eventDisplay = isZh ? speech.event : speech.eventEn || speech.event;
+const eventDisplay = pickLocalized<string>(speech, 'event', 'eventEn', lang) || speech.event;
+
+const mddiSpeechLabel = t(lang, 'mddiSpeechLabel') || 'MDDI Speech';
 
 const metadata = {
-  title: `${titleDisplay} · ${isZh ? 'MDDI 演讲稿' : 'MDDI Speech'}`,
+  title: `${titleDisplay} · ${mddiSpeechLabel}`,
   description: titleDisplay,
 };
 
@@ -51,7 +67,7 @@ const articleSchema = {
   ...(isZh ? { alternativeHeadline: speech.title } : {}),
   datePublished: speech.date,
   inLanguage: IN_LANGUAGES[lang],
-  author: { '@type': 'Person', name: speech.speaker },
+  author: { '@type': 'Person', name: speakerDisplay },
   publisher: {
     '@type': 'GovernmentOrganization',
     name: 'Ministry of Digital Development and Information',
@@ -59,13 +75,10 @@ const articleSchema = {
   },
 };
 
-const breadcrumbs = [
-  { label: isZh ? 'AI 影响力图谱' : t(lang, 'navVoices'), href: localizedHref('/voices/', lang) },
-  { label: titleDisplay },
-];
+const breadcrumbs = [{ label: t(lang, 'navVoices'), href: localizedHref('/voices/', lang) }, { label: titleDisplay }];
 
 const hasLocalCopy = !!transcript && paragraphsEn.length > 0;
-const tldr = isZh ? tldrZh : tldrEn;
+const tldr = isCjk ? tldrZh : tldrEn;
 ---
 
 <Layout metadata={metadata} breadcrumbs={breadcrumbs} lang={lang}>
@@ -73,7 +86,7 @@ const tldr = isZh ? tldrZh : tldrEn;
 
   <article class="max-w-3xl mx-auto px-4 sm:px-6 py-12 md:py-16">
     <p class="text-xs uppercase tracking-[0.18em] text-primary font-semibold mb-4">
-      {isZh ? 'MDDI 演讲稿' : 'MDDI Speech'} · {speech.date}
+      {mddiSpeechLabel} · {speech.date}
     </p>
     <h1 class="t-display text-gray-900 dark:text-white mb-3">
       {titleDisplay}
@@ -88,10 +101,10 @@ const tldr = isZh ? tldrZh : tldrEn;
       {
         speakerPid ? (
           <a href={localizedHref(`/voices/${speakerPid}/`, lang)} class="font-medium text-primary hover:text-secondary">
-            {speech.speaker}
+            {speakerDisplay}
           </a>
         ) : (
-          <span class="font-medium text-gray-700 dark:text-gray-300">{speech.speaker}</span>
+          <span class="font-medium text-gray-700 dark:text-gray-300">{speakerDisplay}</span>
         )
       }
       <span class="text-gray-300 dark:text-gray-600">·</span>
@@ -113,7 +126,7 @@ const tldr = isZh ? tldrZh : tldrEn;
           {...(!isZh ? { 'data-i18n-allow-cjk': 'speech-verbatim-source' } : {})}
         >
           <h2 class="text-xs uppercase tracking-wider text-primary font-semibold mb-2">
-            {isZh ? '要点' : 'Key takeaways'}
+            {t(lang, 'speechSummaryPoints')}
           </h2>
           <ul class="space-y-2 text-base text-gray-700 dark:text-gray-300 leading-[1.85]">
             {tldr.map((point) => (
@@ -179,6 +192,7 @@ const tldr = isZh ? tldrZh : tldrEn;
           <section
             class="my-8 border border-primary/20 bg-primary/5 rounded-xl p-5"
             data-i18n-allow-cjk="speech-verbatim-source"
+            data-i18n-allow-en="speech-verbatim-source"
           >
             <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-4">
               <h2 class="t-h3 text-gray-900 dark:text-white">Full speech</h2>
@@ -226,7 +240,7 @@ const tldr = isZh ? tldrZh : tldrEn;
         class="inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-secondary border border-primary/30 hover:border-primary px-4 py-2 rounded-md transition-colors"
       >
         <Icon name="tabler:external-link" class="w-4 h-4" />
-        {isZh ? 'MDDI 官网原文' : 'Source on mddi.gov.sg'}
+        {t(lang, 'mddiSourceLabel') || 'Source on mddi.gov.sg'}
       </a>
     </div>
 
@@ -236,7 +250,7 @@ const tldr = isZh ? tldrZh : tldrEn;
         class="text-sm text-primary hover:text-secondary font-medium inline-flex items-center gap-1"
       >
         <Icon name="tabler:arrow-left" class="w-4 h-4" />
-        {isZh ? '返回 AI 影响力图谱' : `Back to ${t(lang, 'navVoices')}`}
+        {t(lang, 'back') || 'Back'} · {t(lang, 'navVoices')}
       </a>
     </nav>
   </article>

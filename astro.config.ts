@@ -16,16 +16,13 @@ import type { AstroIntegration } from 'astro';
 import astrowind from './vendor/integration';
 
 import { readingTimeRemarkPlugin, responsiveTablesRehypePlugin, lazyImagesRehypePlugin } from './src/utils/frontmatter';
-import { LOCALES, ROUTE_DEFAULT_LOCALE } from './src/i18n';
+import { IN_LANGUAGES, LOCALES, ROUTE_DEFAULT_LOCALE } from './src/i18n';
 
-// BCP 47 hreflang code per locale (used in sitemap alternates). Add new
-// locales here as they're added to LOCALES.
-const HREFLANG_MAP: Record<string, string> = {
-  en: 'en',
-  zh: 'zh-CN',
-  ja: 'ja',
-};
-const sitemapLocales = Object.fromEntries(LOCALES.map((l) => [l, HREFLANG_MAP[l] ?? l]));
+// Sitemap locale config. Keys are URL segments (== Lang codes,
+// kebab-cased where needed — e.g. 'zh-tw'). Values are BCP 47 hreflang
+// codes from IN_LANGUAGES, the single source of truth shared with
+// CommonMeta and Layout's <html lang> attribute.
+const sitemapLocales = Object.fromEntries(LOCALES.map((l) => [l, IN_LANGUAGES[l] ?? l]));
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 

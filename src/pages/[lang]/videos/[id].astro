@@ -156,7 +156,10 @@ const videoSchema = {
       digest && (
         <>
           {digest.keyPoints?.length > 0 && (
-            <section class="mb-10">
+            <section
+              class="mb-10"
+              {...(lang === 'ko' && !transcript?.digestKo ? { 'data-i18n-allow-en': 'video-digest-en-fallback' } : {})}
+            >
               <h2 class="t-h3 text-gray-900 dark:text-white mb-4">{t(lang, 'keyPoints')}</h2>
               <ul class="space-y-2.5 list-none pl-0">
                 {digest.keyPoints.map((point) => (
@@ -171,7 +174,10 @@ const videoSchema = {
             </section>
           )}
           {digest.narrative?.length > 0 && (
-            <section class="mb-10">
+            <section
+              class="mb-10"
+              {...(lang === 'ko' && !transcript?.digestKo ? { 'data-i18n-allow-en': 'video-digest-en-fallback' } : {})}
+            >
               <h2 class="t-h3 text-gray-900 dark:text-white mb-4">{t(lang, 'videoSummary')}</h2>
               <div class="prose prose-slate dark:prose-invert max-w-none">
                 {digest.narrative.map((paragraph) => (
@@ -186,7 +192,10 @@ const videoSchema = {
 
     {
       transcriptParagraphs.length > 0 && (
-        <section class="mb-10">
+        <section
+          class="mb-10"
+          {...(lang !== 'zh' && lang !== 'zh-tw' ? { 'data-i18n-allow-en': 'video-transcript-verbatim' } : {})}
+        >
           <h2 class="t-h3 text-gray-900 dark:text-white mb-4">
             {t(lang, digest ? 'videoFullTranscript' : 'videoReadableTranscript')}
           </h2>

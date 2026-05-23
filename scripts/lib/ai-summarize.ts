@@ -42,9 +42,11 @@ export interface BilingualSummary {
   title: string;
   titleEn: string;
   titleJa?: string;
+  titleKo?: string;
   description: string;
   descriptionEn: string;
   descriptionJa?: string;
+  descriptionKo?: string;
   category: string;
   /** ISO date if extractable from input, otherwise null. */
   publishedDate: string | null;

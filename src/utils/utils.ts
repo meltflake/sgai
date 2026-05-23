@@ -13,6 +13,8 @@ const FORMATTERS: Record<Lang, Intl.DateTimeFormat> = {
   zh: new Intl.DateTimeFormat('zh-CN', dateOpts),
   en: new Intl.DateTimeFormat('en-US', dateOpts),
   ja: new Intl.DateTimeFormat('ja-JP', dateOpts),
+  'zh-tw': new Intl.DateTimeFormat('zh-Hant-TW', dateOpts),
+  ko: new Intl.DateTimeFormat('ko-KR', dateOpts),
 };
 
 // Default formatter mirrors site-wide locale (kept for backward-compat).
