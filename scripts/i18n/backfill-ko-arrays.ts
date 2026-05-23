@@ -194,7 +194,7 @@ function findRecordBoundaries(lines: string[]): { start: number; end: number }[]
 
   let dataStart = -1;
   for (let i = 0; i < lines.length; i++) {
-    if (/^\s*export\s+(const|let)\s+\w+.*=\s*[\[{]/.test(lines[i])) {
+    if (/^\s*export\s+(const|let)\s+\w+.*=\s*[{[]/u.test(lines[i])) {
       if (dataStart < 0) {
         dataStart = i;
       }
