@@ -497,6 +497,20 @@ export const regionDetails: RegionDetail[] = [
       'NSCC (National Supercomputing Centre) AI compute',
       'GovTech AI government use cases (LifeSG / Pair / government AI tools)',
     ],
+    keyInitiativesJa: [
+      'AI Verify Foundation（オープンソースガバナンスツールキット）',
+      'AI Singapore（AISG）研究開発 + AIAP 学徒プログラム',
+      'SEA-LION 東南アジア多言語大規模言語モデル',
+      'NSCC（国立スーパーコンピューティングセンター）AI 計算能力',
+      'GovTech AI 政府ユースケース（LifeSG / Pair / 政府 AI ツール を含む）',
+    ],
+    keyInitiativesKo: [
+      'AI Verify Foundation(오픈소스 거버넌스 도구 모음)',
+      'AI Singapore(AISG) 연구개발 + AIAP 도제 프로그램',
+      'SEA-LION 동남아 다언어 대규모 모델',
+      'NSCC(국가 슈퍼컴퓨팅 센터) AI 컴퓨팅 파워',
+      'GovTech AI 정부 활용 사례(LifeSG / Pair / 정부 AI 도구 포함)',
+    ],
     strengths: [
       '全球首个开源 AI 治理工具集（AI Verify）出口；新加坡是国际 AI 治理对话核心节点',
       '英语 + 双语 + 中立外交立场让新加坡成为美中 AI 之间的"trusted neutral"',
@@ -509,6 +523,18 @@ export const regionDetails: RegionDetail[] = [
       'Tech-giant US$26bn+ commitments for regional HQs + data centres dwarf direct government AI spend',
       'GovTech is mature in government AI deployment; LifeSG / Pair-style products have export potential',
     ],
+    strengthsJa: [
+      '世界初のオープンソース AI ガバナンスツールキット（AI Verify）輸出；シンガポールは国際 AI ガバナンス対話のコアノードです',
+      '英語 + バイリンガル + 中立な外交的立場がシンガポールを米中 AI の間の「trusted neutral」にしています',
+      'テック大手の US$260 億以上の地域 HQ + データセンター コミットメント、規模的にシンガポール政府直接投資をはるかに超えています',
+      'GovTech 政府 AI デプロイメント成熟度が高く、LifeSG / Pair など製品は輸出ポテンシャルを持っています',
+    ],
+    strengthsKo: [
+      '전 세계 최초 오픈소스 AI 거버넌스 도구 모음(AI Verify) 수출; 싱가포르는 국제 AI 거버넌스 대화의 핵심 노드입니다.',
+      '영어 + 이중언어 + 중립적 외교 입장이 싱가포르를 미중 AI 사이의 「신뢰할 수 있는 중립자」로 만듭니다.',
+      '기술 대기업들의 US$260억+ 지역 본부 및 데이터 센터 약속 규모가 싱가포르 정부 직접 투자를 훨씬 초과합니다.',
+      'GovTech 정부 AI 배포 성숙도가 높고, LifeSG / Pair 등의 제품이 수출 잠재력을 보유하고 있습니다.',
+    ],
     weaknesses: [
       '本土 AI frontier model 能力远落后美中（vs 韩国 HyperCLOVA、UAE Falcon、加拿大 Cohere）',
       '本土 AI 创业生态规模小（vs 以色列、加拿大），主要依赖区域型公司（Sea Group、Grab）',
@@ -520,6 +546,18 @@ export const regionDetails: RegionDetail[] = [
       'Local AI startup ecosystem is small relative to Israel or Canada; relies on regional players (Sea Group, Grab)',
       'Land and power constraints limit large-scale compute expansion (vs UAE 1 GW Stargate, HK 3 000 PFLOPS AISC)',
       'Lower linguistic / cultural diversity than larger Asian states limits the addressable market for local large-model training',
+    ],
+    weaknessesJa: [
+      '国内 AI frontier model 能力は米中に比べてはるかに遅れています（vs 韓国 HyperCLOVA、UAE Falcon、カナダ Cohere）',
+      '国内 AI スタートアップエコシステムはスケールが小さい（イスラエル、カナダと比べて）、主に地域型企業（Sea Group、Grab）に依存しています',
+      '土地 + 電力の制約が大規模コンピューティング能力拡張を制限しています（vs UAE 1GW Stargate、香港 3000 PFLOPS AISC）',
+      '言語 / 文化多様性がアジア主要国より低く、国内大規模モデル訓練市場を制限しています',
+    ],
+    weaknessesKo: [
+      '국내 AI frontier model 능력이 미중(vs 한국 HyperCLOVA, UAE Falcon, 캐나다 Cohere)에 훨씬 뒤처져 있습니다.',
+      '국내 AI 스타트업 생태계 규모가 작으며(vs 이스라엘, 캐나다), 주로 Sea Group, Grab 등의 지역 회사에 의존하고 있습니다.',
+      '토지 + 전력 제약이 대규모 컴퓨팅 파워 확장을 제한하고 있습니다(vs UAE 1GW Stargate, 홍콩 3000 PFLOPS AISC).',
+      '언어 / 문화 다양성이 아시아 주요 국가보다 낮으며, 국내 대규모 모델 훈련 시장을 제한하고 있습니다.',
     ],
     keyBodies: [
       {
@@ -578,6 +616,16 @@ export const regionDetails: RegionDetail[] = [
       'NAIS 2.0 full text (go.gov.sg/sgnationalaistrategy)',
       'AI Verify Foundation official site',
       'AI Singapore official site and annual reports',
+    ],
+    sourcesJa: [
+      'NAIS 2.0 全文（go.gov.sg/sgnationalaistrategy）',
+      'AI Verify Foundation 公式ウェブサイト',
+      'AI Singapore 公式ウェブサイトと年次報告書',
+    ],
+    sourcesKo: [
+      'NAIS 2.0 전문(go.gov.sg/sgnationalaistrategy)',
+      'AI Verify Foundation 공식 웹사이트',
+      'AI Singapore 공식 웹사이트 및 연간 보고서',
     ],
     drilldownEnrichments: {
       'core-strategy': {
@@ -875,6 +923,20 @@ export const regionDetails: RegionDetail[] = [
       'Smart Government Innovation Lab',
       'Fintech AI Sandbox (HKMA)',
     ],
+    keyInitiativesJa: [
+      'サイバーポート 3000 PFLOPS スーパーコンピューティングセンター',
+      'AI スーパーコンピューティング資金提供プログラム（AICP）',
+      '香港人工知能研究開発院（AIRDI）',
+      'スマート政府イノベーションラボ',
+      '金融テクノロジー AI サンドボックス（HKMA）',
+    ],
+    keyInitiativesKo: [
+      '사이버포트 3000 PFLOPS 슈퍼컴퓨팅 센터',
+      'AI 슈퍼컴퓨팅 자금 지원 프로그램(AICP)',
+      '홍콩 인공지능 연구개발 연구원(AIRDI)',
+      '지능형 정부 혁신 실험실',
+      '핀테크 AI 샌드박스(HKMA)',
+    ],
     strengths: [
       '大湾区桥梁——连接内地庞大市场与国际资本',
       '商汤科技等本土 AI 企业总部所在地',
@@ -887,6 +949,18 @@ export const regionDetails: RegionDetail[] = [
       'Common-law system; legal environment familiar to international firms',
       "3000 PFLOPS supercomputing plan exceeds Singapore's current compute",
     ],
+    strengthsJa: [
+      '大湾区橋梁——本土の広大な市場と国際資本を連結',
+      '商汤科技など国内 AI 企業本社所在地',
+      'コモンロー体系、国際企業が精通する法律環境',
+      '3000 PFLOPS スーパーコンピューティング計画はシンガポール既存コンピューティング能力を超えています',
+    ],
+    strengthsKo: [
+      '광역만 교량 — 중국 내륙의 거대한 시장과 국제 자본을 연결',
+      '상탕 과학기술 등 국내 AI 기업 본사의 소재지',
+      '보통법 체계, 국제 기업이 익숙한 법률 환경',
+      '3000 PFLOPS 슈퍼컴퓨팅 계획이 싱가포르의 현존하는 컴퓨팅 파워를 초과합니다.',
+    ],
     weaknesses: [
       '缺乏统一的国家级 AI 战略',
       '监管碎片化，多部门各自为政',
@@ -898,6 +972,18 @@ export const regionDetails: RegionDetail[] = [
       'Fragmented regulation; agencies operate in silos',
       'Late start; most key initiatives only launched in 2024-25',
       'Geopolitical factors may affect international cooperation and talent flow',
+    ],
+    weaknessesJa: [
+      '統一された国家レベル AI 戦略の欠如',
+      '規制が断片化し、複数部門がそれぞれ独自の判断で行動しています',
+      'スタートが比較的遅く、ほとんどの重要施策は 2024-25 年になって初めて展開されました',
+      '地政学的要因が国際協力と人材フローに影響を及ぼす可能性があります',
+    ],
+    weaknessesKo: [
+      '통일된 국가급 AI 전략이 부족합니다.',
+      '규제 단편화, 다부처가 각자 정책을 추진하고 있습니다.',
+      '늦은 시작, 대부분의 핵심 조치는 2024-25년에만 출범',
+      '지정학적 요인이 국제 협력 및 인재 유동에 영향을 미칠 수 있음',
     ],
     keyBodies: [
       {
@@ -956,6 +1042,16 @@ export const regionDetails: RegionDetail[] = [
       'Hong Kong Innovation and Technology Development Blueprint (2022)',
       'AI-related policies in the 2024-25 Policy Address',
       'PCPD Artificial Intelligence Ethical Framework (2024)',
+    ],
+    sourcesJa: [
+      '香港革新技術発展ブループリント(2022)',
+      '2024-25 年施政報告 AI 関連ポリシー',
+      'PCPD 人工知能倫理フレームワーク（2024）',
+    ],
+    sourcesKo: [
+      '홍콩 혁신 기술 발전 청사진(2022)',
+      '2024-25년 정책 보고서 AI 관련 정책',
+      'PCPD 인공지능 윤리 프레임워크(2024)',
     ],
     drilldownEnrichments: {
       'core-strategy': {
@@ -1773,6 +1869,20 @@ export const regionDetails: RegionDetail[] = [
       'Ten Major AI Infrastructure Plan',
       'AI startup ecosystem cultivation',
     ],
+    keyInitiativesJa: [
+      'TSMC 先進プロセス継続生産拡張',
+      '国家高速ネットワーク・計算センター AI 計算能力の強化',
+      'AI 基本法の立法（2025.12）',
+      '十大 AI インフラ建設計画',
+      'AI スタートアップ・エコシステムの育成',
+    ],
+    keyInitiativesKo: [
+      'TSMC 선진 공정 지속 확대',
+      '국가 고속 네트워크 및 컴퓨팅 센터의 AI 컴퓨팅 성능 업그레이드',
+      'AI 기본법 입법 (2025.12)',
+      '10대 AI 기초 인프라 계획',
+      'AI 스타트업 생태계 육성',
+    ],
     strengths: [
       'TSMC 在先进 AI 芯片制造上不可替代',
       '完整的半导体与硬件生态系统',
@@ -1785,6 +1895,18 @@ export const regionDetails: RegionDetail[] = [
       'Strong engineering talent pipeline',
       "AI Basic Act provides a more explicit legal framework than Singapore's",
     ],
+    strengthsJa: [
+      'TSMC は先進 AI チップ製造において不可欠です',
+      '完全な半導体およびハードウェア・エコシステム',
+      '強力なエンジニアリング人材育成体系',
+      'AI 基本法はシンガポールよりも明確な法律フレームワークを提供しています',
+    ],
+    strengthsKo: [
+      'TSMC는 선진 AI 칩 제조에서 대체 불가능',
+      '완전한 반도체 및 하드웨어 생태계',
+      '강력한 엔지니어 인재 양성 체계',
+      'AI 기본법은 싱가포르보다 더 명확한 법률 프레임워크를 제공',
+    ],
     weaknesses: [
       '缺乏全球性 AI 软件企业',
       '能源供应制约算力扩张',
@@ -1796,6 +1918,18 @@ export const regionDetails: RegionDetail[] = [
       'Energy supply constrains compute expansion',
       'Cross-strait geopolitical risk weighs on international confidence',
       'Software and application layers are relatively weak',
+    ],
+    weaknessesJa: [
+      'グローバルな AI ソフトウェア企業の不足',
+      'エネルギー供給が演算能力の拡大を制限しています',
+      '台湾海峡の地政学的リスクが国際的信頼に影響を与えています',
+      'ソフトウェアおよびアプリケーション層が比較的弱い',
+    ],
+    weaknessesKo: [
+      '글로벌 AI 소프트웨어 기업 부족',
+      '에너지 공급이 컴퓨팅 성능 확장을 제약',
+      '대만 해협 지정학적 위험이 국제 신뢰에 영향',
+      '소프트웨어 및 애플리케이션 계층이 상대적으로 약함',
     ],
     keyBodies: [
       {
@@ -1844,6 +1978,16 @@ export const regionDetails: RegionDetail[] = [
       'AI Taiwan Action Plan 2.0 (2023)',
       'AI Basic Act draft and Legislative Yuan records (2025)',
       'Executive Yuan Ten Major AI Infrastructure Plan (2025)',
+    ],
+    sourcesJa: [
+      'AI Taiwan アクション・プラン 2.0（2023）',
+      'AI 基本法草案および立法院記録（2025）',
+      '行政院十大 AI 基盤整備計画（2025）',
+    ],
+    sourcesKo: [
+      'AI 대만 행동 계획 2.0 (2023)',
+      'AI 기본법 초안 및 입법원 기록 (2025)',
+      '행정원 10대 AI 기초 인프라 계획 (2025)',
     ],
     drilldownEnrichments: {
       'core-strategy': {
@@ -2476,6 +2620,20 @@ export const regionDetails: RegionDetail[] = [
       'Stargate UAE hyperscale data centre',
       'AI Minister role and the AI Office',
     ],
+    keyInitiativesJa: [
+      'Falcon LLM オープンソース大規模言語モデル',
+      'MBZUAI（ムハンマド・ビン・ザーイド人工知能大学）',
+      'MGX $1000 億 AI 投資ファンド',
+      'Stargate UAE 超大規模データセンター',
+      'AI 大臣制度および AI Office',
+    ],
+    keyInitiativesKo: [
+      'Falcon LLM 오픈소스 대규모 모델',
+      'MBZUAI (Muhammad bin Zayed University of Artificial Intelligence)',
+      'MGX 1000억 달러 AI 투자 펀드',
+      'Stargate UAE 초대규모 데이터센터',
+      'AI 장관 제도 및 AI Office',
+    ],
     strengths: [
       '资本规模远超新加坡——MGX $1000 亿 vs 新加坡政府 S$20 亿+',
       '廉价能源支撑大规模算力',
@@ -2488,6 +2646,18 @@ export const regionDetails: RegionDetail[] = [
       'Falcon LLM demonstrates sovereign large-model development capability',
       'MBZUAI builds a world-class AI research university',
     ],
+    strengthsJa: [
+      '資本規模がシンガポールを大きく上回っています——MGX $1000 億 vs シンガポール政府 S$20 億+',
+      '廉価なエネルギーが大規模な演算能力を支えています',
+      'Falcon LLM は国内大規模言語モデル開発能力を示しています',
+      'MBZUAI は世界一流の AI 研究型大学を構築しています',
+    ],
+    strengthsKo: [
+      '자본 규모가 싱가포르를 훨씬 초과—MGX $1000억 vs 싱가포르 정부 S$20억+',
+      '저렴한 에너지가 대규모 컴퓨팅 성능 지원',
+      'Falcon LLM은 국내 대규모 모델 개발 능력을 보여줌',
+      'MBZUAI는 세계 수준의 AI 연구형 대학을 구축',
+    ],
     weaknesses: [
       '严重依赖外籍人才，本土 AI 人才储备不足',
       '地缘政治敏感性（芯片出口管制风险）',
@@ -2499,6 +2669,18 @@ export const regionDetails: RegionDetail[] = [
       'Geopolitical sensitivity (chip export-control risk)',
       'Regulatory framework still immature; lower international trust than Singapore',
       "Academic research depth still trails Singapore's NUS/NTU",
+    ],
+    weaknessesJa: [
+      '外国人材への深刻な依存、国内 AI 人材の備蓄不足',
+      '地政学的敏感性（チップ輸出管制リスク）',
+      '規制フレームワークはまだ成熟していなく、国際的信頼はシンガポールに及びません',
+      '学術研究の実績はシンガポール NUS/NTU と比較してまだ格差があります',
+    ],
+    weaknessesKo: [
+      '외국 인재에 심각히 의존하고 국내 AI 인재 저장량 부족',
+      '지정학적 민감성 (칩 수출 규제 위험)',
+      '규제 체계가 아직 성숙하지 않으며, 국제적 신뢰도가 싱가포르에 미치지 못함',
+      '학술 연구 기반이 싱가포르의 NUS/NTU와 비교했을 때 여전히 격차가 있음',
     ],
     keyBodies: [
       {
@@ -2543,6 +2725,16 @@ export const regionDetails: RegionDetail[] = [
       'UAE AI Strategy 2031 (2017, updated 2021)',
       'MGX Fund official announcements (2024)',
       'MBZUAI website and research reports',
+    ],
+    sourcesJa: [
+      'UAE AI Strategy 2031（2017/2021年更新）',
+      'MGX ファンド公式発表（2024）',
+      'MBZUAI 公式ウェブサイトおよび研究報告',
+    ],
+    sourcesKo: [
+      'UAE AI Strategy 2031 (2017/2021 업데이트)',
+      'MGX 펀드 공식 공지 (2024)',
+      'MBZUAI 공식 웹사이트 및 연구 보고서',
     ],
     drilldownEnrichments: {
       'core-strategy': {
@@ -3040,6 +3232,18 @@ export const regionDetails: RegionDetail[] = [
       'Nebius supercomputing centre construction',
       'Israel Innovation Authority (IIA) AI startup support',
     ],
+    keyInitiativesJa: [
+      '8200部隊 AI人材育成パイプライン',
+      '国家AI計画の5つの柱',
+      'Nebiusスーパーコンピュータセンター建設',
+      'イノベーション局（IIA）のAI起業支援',
+    ],
+    keyInitiativesKo: [
+      '8200 부대 AI 인재 양성 파이프라인',
+      '국가 AI 계획의 다섯 가지 기둥',
+      'Nebius 슈퍼컴퓨팅 센터 건설',
+      '창신국 (IIA) AI 스타트업 지원',
+    ],
     strengths: [
       '创业密度全球最高，AI 创业生态极其活跃',
       '8200 部队等军事情报单位提供顶尖 AI 人才',
@@ -3052,6 +3256,18 @@ export const regionDetails: RegionDetail[] = [
       'Unicorns like Wiz (acquired by Google for US$32 billion) showcase entrepreneurial strength',
       'Global leader in cybersecurity AI',
     ],
+    strengthsJa: [
+      '起業密度が世界最高で、AI起業エコシステムが極めて活発です',
+      '8200部隊などの軍事情報機関が最高水準のAI人材を提供しています',
+      'Wiz（$320億でGoogle買収）などのユニコーン企業が起業力を示しています',
+      'サイバーセキュリティAI領域で世界をリードしています',
+    ],
+    strengthsKo: [
+      '스타트업 밀도가 전 세계적으로 가장 높으며, AI 스타트업 생태계가 극히 활발함',
+      '8200 부대 등 군사 정보 기관이 최고의 AI 인재를 제공함',
+      'Wiz ($320억 Google 인수) 등 유니콘 기업이 스타트업의 실력을 보여줌',
+      '사이버보안 AI 분야에서 전 세계 선도',
+    ],
     weaknesses: [
       '国家计划执行严重滞后，预算执行率仅 20%',
       '无可用的国家级超算（新加坡已有 NSCC）',
@@ -3063,6 +3279,18 @@ export const regionDetails: RegionDetail[] = [
       'No operational national supercomputer (Singapore has NSCC)',
       'Political turmoil disrupts policy continuity',
       'Small home market; firms typically list and scale overseas (especially in the US)',
+    ],
+    weaknessesJa: [
+      '国家計画の実行が深刻に遅れており、予算執行率はわずか20%です',
+      '利用可能な国家級スーパーコンピュータがない（シンガポールはすでにNSCCを有しています）',
+      '政治的混乱が政策の継続性に影響を及ぼしています',
+      '小国市場のため、企業の多くは海外（特にアメリカ）での上場と発展を選択しています',
+    ],
+    weaknessesKo: [
+      '국가 계획 실행이 심각하게 지연되어 있으며, 예산 집행률은 단 20%',
+      '이용 가능한 국가 수준의 슈퍼컴퓨팅이 없음 (싱가포르는 이미 NSCC를 보유)',
+      '정치 불안정이 정책 연속성에 영향을 미침',
+      '소국 시장으로 기업들이 해외 (특히 미국) 상장을 선택하여 발전함',
     ],
     keyBodies: [
       {
@@ -3557,6 +3785,20 @@ export const regionDetails: RegionDetail[] = [
       'US$3 billion AI partnership with NVIDIA',
       'AI semiconductor sovereignty strategy',
     ],
+    keyInitiativesJa: [
+      '₩100兆官民AIファンド',
+      'AI基本法の実施（2025）',
+      'Samsung/Naver/Kakao 自社開発大規模モデル',
+      'NVIDIAとの$30億AI協力',
+      'AI半導体自主化戦略',
+    ],
+    keyInitiativesKo: [
+      '₩100조 공공-민간 AI 기금',
+      'AI 기본법 시행 (2025)',
+      'Samsung/Naver/Kakao 자체 개발 대형 모델',
+      'NVIDIA와의 $30억 AI 협력',
+      'AI 반도체 자립화 전략',
+    ],
     strengths: [
       '投资规模碾压——₩100 万亿约为新加坡政府 AI 投入的 25 倍',
       '财阀体系可快速大规模部署 AI（三星、LG、现代等）',
@@ -3569,6 +3811,18 @@ export const regionDetails: RegionDetail[] = [
       'Semiconductor manufacturing capability (Samsung, SK hynix)',
       "AI Basic Act provides a stronger legal framework than Singapore's",
     ],
+    strengthsJa: [
+      '投資規模が圧倒的——₩100兆はシンガポール政府のAI投資の約25倍です',
+      '財閥体系により、AIの迅速な大規模展開が可能です（Samsung、LG、Hyundai など）',
+      '半導体製造能力（Samsung、SK Hynix）',
+      'AI基本法がシンガポールより強力な法的枠組みを提供しています',
+    ],
+    strengthsKo: [
+      '투자 규모가 압도적임 — ₩100조는 싱가포르 정부의 AI 투자의 약 25배',
+      '재벌 체계가 AI를 빠르고 대규모로 배포할 수 있음 (Samsung, LG, Hyundai 등)',
+      '반도체 제조 능력 (Samsung, SK Hynix)',
+      'AI 기본법은 싱가포르보다 더 강력한 법적 체계를 제공함',
+    ],
     weaknesses: [
       '财阀主导可能挤压创业生态空间',
       '国际化程度不及新加坡，英语环境较弱',
@@ -3580,6 +3834,18 @@ export const regionDetails: RegionDetail[] = [
       'Less internationalised than Singapore; weaker English-language environment',
       'Less effective at attracting international talent and firms than Singapore',
       'Population ageing poses long-term talent challenges',
+    ],
+    weaknessesJa: [
+      '財閥主導により、スタートアップエコシステムの空間が圧迫される可能性があります',
+      '国際化の程度はシンガポールに劣り、英語環境が比較的弱いです',
+      '国際的人材と企業を惹きつける能力がシンガポールに劣っています',
+      '高齢化社会が長期的な人材課題をもたらしています',
+    ],
+    weaknessesKo: [
+      '재벌 주도는 스타트업 생태계 공간을 압축할 수 있음',
+      '국제화 수준이 싱가포르에 미치지 못하며, 영어 환경이 약함',
+      '국제 인재와 기업을 유치하는 능력이 싱가포르에 미치지 못합니다.',
+      '인구 고령화가 장기적 인재 도전을 초래합니다.',
     ],
     keyBodies: [
       {
@@ -3619,6 +3885,8 @@ export const regionDetails: RegionDetail[] = [
       'Full text of the AI Basic Act (2024)',
       'Korea AI Semiconductor Strategy (2024)',
     ],
+    sourcesJa: ['K-AI Strategy（2019）', 'AI基本法全文（2024）', '韓国AI半導体戦略（2024）'],
+    sourcesKo: ['K-AI Strategy (2019)', 'AI 기본법 전문 (2024)', '한국 AI 반도체 전략 (2024)'],
     drilldownEnrichments: {
       'core-strategy': {
         analysis:
@@ -4112,6 +4380,20 @@ export const regionDetails: RegionDetail[] = [
       'e-Residency digital identity system',
       'X-Road government data exchange platform',
     ],
+    keyInitiativesJa: [
+      'Bürokratt 政府仮想アシスタント',
+      '50以上の政府AI用例の展開',
+      'AI Agent 法的枠組みのパイオニア',
+      'e-Residency デジタルアイデンティティシステム',
+      'X-Road 政府データ交換プラットフォーム',
+    ],
+    keyInitiativesKo: [
+      'Bürokratt 정부 가상 어시스턴트',
+      '50+ 정부 AI 사용 사례 배포',
+      'AI Agent 법적 프레임워크 선구자',
+      'e-Residency 디지털 신원 체계',
+      'X-Road 정부 데이터 교환 플랫폼',
+    ],
     strengths: [
       '数字政府全球第一——99% 政府服务在线',
       '极致效率：€1000 万实现 50+ AI 用例，新加坡可借鉴的效率标杆',
@@ -4124,6 +4406,18 @@ export const regionDetails: RegionDetail[] = [
       'Global leader in legal definition of AI Agents',
       'Small-state agility — extremely short policy experimentation cycles',
     ],
+    strengthsJa: [
+      'デジタル政府が世界第一――99% の政府サービスがオンライン',
+      '極致効率：€1000万で50以上のAI用例を実現、シンガポールが参考にできる効率ベンチマーク',
+      'AI Agent の法律定義が世界をリード',
+      '小国の敏捷性――政策実験サイクルが極めて短い',
+    ],
+    strengthsKo: [
+      '디지털 정부 글로벌 1위—99% 정부 서비스 온라인',
+      '극한 효율: €1,000만으로 50+ AI 사용 사례 구현, 싱가포르가 참고할 수 있는 효율성 벤치마크',
+      'AI Agent 법적 정의 글로벌 선도',
+      '소국의 민첩성—정책 실험 주기 극히 단축',
+    ],
     weaknesses: [
       '规模极小（人口 130 万），经验不一定可直接复制',
       '缺乏本土科技巨头和 AI 企业',
@@ -4135,6 +4429,18 @@ export const regionDetails: RegionDetail[] = [
       'No homegrown tech giants or major AI firms',
       "R&D investment cannot match Singapore's A*STAR or AISG",
       'Limited talent pool; reliant on EU talent mobility',
+    ],
+    weaknessesJa: [
+      '規模が極めて小さい（人口130万）、経験は必ずしも直接複製できない',
+      '本土のテック巨大企業とAI企業が不足している',
+      '研究開発投入がシンガポールのA*STAR、AISGと比較できない',
+      'タレントプールが限定的で、EUのタレント流動に依存している',
+    ],
+    weaknessesKo: [
+      '규모 극소(인구 130만), 경험이 반드시 직접 복제 가능한 것은 아닙니다.',
+      '국내 기술 대기업과 AI 기업 부재',
+      '연구개발 투자가 싱가포르의 A*STAR, AISG와 비교할 수 없습니다.',
+      '인재 풀이 제한적이며 EU 인재 유동에 의존합니다.',
     ],
     keyBodies: [
       {
@@ -4168,6 +4474,8 @@ export const regionDetails: RegionDetail[] = [
     ],
     sources: ['Estonia Kratt AI Strategy（2019）', 'e-Estonia 官方报告', 'Government AI Readiness Index'],
     sourcesEn: ['Estonia Kratt AI Strategy (2019)', 'e-Estonia official reports', 'Government AI Readiness Index'],
+    sourcesJa: ['Estonia Kratt AI Strategy（2019）', 'e-Estonia 公式報告', 'Government AI Readiness Index'],
+    sourcesKo: ['Estonia Kratt AI Strategy(2019)', 'e-Estonia 공식 보고서', 'Government AI Readiness Index'],
     drilldownEnrichments: {
       'core-strategy': {
         analysis:
@@ -4592,6 +4900,20 @@ export const regionDetails: RegionDetail[] = [
       'Swiss AI Initiative',
       'WEF AI Governance Alliance (headquartered in Geneva)',
     ],
+    keyInitiativesJa: [
+      'ETH AI Center',
+      'EPFL AI研究クラスター',
+      'Google Zurich（ヨーロッパ最大の研究開発センター）',
+      'Swiss AI Initiative',
+      'WEF AI Governance Alliance（本部はジュネーブ）',
+    ],
+    keyInitiativesKo: [
+      'ETH AI Center',
+      'EPFL AI 연구 클러스터',
+      'Google Zurich(유럽 최대 연구개발 센터)',
+      'Swiss AI Initiative',
+      'WEF AI Governance Alliance(제네바 본부)',
+    ],
     strengths: [
       'ETH/EPFL 全球 Top 5 AI 研究机构',
       'Google Zurich、Disney Research 等顶级企业实验室',
@@ -4604,6 +4926,18 @@ export const regionDetails: RegionDetail[] = [
       'International talent magnet — high salaries and quality of life',
       'Influence over global governance through hosting of international bodies',
     ],
+    strengthsJa: [
+      'ETH/EPFL グローバルTop 5のAI研究機関',
+      'Google Zurich、Disney Research等のトップレベルの企業ラボ',
+      '国際的タレント磁石――高い給与、高い生活水準',
+      '国際組織の本部がもたらすグローバルガバナンスの発言権',
+    ],
+    strengthsKo: [
+      'ETH/EPFL 글로벌 Top 5 AI 연구 기관',
+      'Google Zurich, Disney Research 등 최상급 기업 연구소',
+      '국제 인재 자석—높은 임금, 높은 생활 질',
+      '국제 조직 본부가 가져오는 글로벌 거버넌스 발언권',
+    ],
     weaknesses: [
       'AI 创业生态不如新加坡活跃（缺少东南亚市场腹地）',
       '政府直接投入 AI 产业化不如新加坡（AISG 等）积极',
@@ -4615,6 +4949,18 @@ export const regionDetails: RegionDetail[] = [
       'Government less proactive in AI industrialisation than Singapore (e.g. AISG)',
       'Federalism slows policy coordination',
       'High costs may constrain large-scale AI infrastructure build-out',
+    ],
+    weaknessesJa: [
+      'AIスタートアップエコシステムはシンガポールほど活発ではない（東南アジア市場のバックランドが不足している）',
+      '政府のAI産業化への直接投入はシンガポール（AISG等）ほど積極的ではない',
+      '連邦制が政策調整を遅くする',
+      '高いコストは大規模なAI基盤施設の建設を制限する可能性がある',
+    ],
+    weaknessesKo: [
+      'AI 스타트업 생태계가 싱가포르보다 활발하지 못합니다(동남아시아 시장의 깊이 부족).',
+      '정부의 AI 산업화 직접 투자가 싱가포르(AISG 등)에 비해 적극적이지 않습니다.',
+      '연방제도가 정책 조율을 느리게 합니다.',
+      '높은 비용이 대규모 AI 기초 인프라 구축을 제한할 수 있습니다.',
     ],
     keyBodies: [
       {
@@ -4654,6 +5000,16 @@ export const regionDetails: RegionDetail[] = [
     sourcesEn: [
       'Swiss Federal AI Strategy (2020/2025)',
       'ETH Zurich AI Center Annual Report',
+      'OECD AI Policy Observatory — Switzerland',
+    ],
+    sourcesJa: [
+      'Swiss Federal AI Strategy（2020/2025）',
+      'ETH Zurich AI Center 年報',
+      'OECD AI Policy Observatory — Switzerland',
+    ],
+    sourcesKo: [
+      'Swiss Federal AI Strategy(2020/2025)',
+      'ETH Zurich AI Center 연차 보고서',
       'OECD AI Policy Observatory — Switzerland',
     ],
     drilldownEnrichments: {
@@ -5055,6 +5411,18 @@ export const regionDetails: RegionDetail[] = [
       'AI Business Finland enterprise transformation programme',
       'FCAI (Finnish Center for Artificial Intelligence)',
     ],
+    keyInitiativesJa: [
+      'Elements of AI 全国民向けコース（人口の1%をカバー）',
+      'AuroraAI 市民ライフサイクルサービス',
+      'AI Business Finland 企業変革計画',
+      'FCAI（フィンランド人工知能センター）',
+    ],
+    keyInitiativesKo: [
+      'Elements of AI 전국민 프로그램(인구의 1% 포함).',
+      'AuroraAI 시민 생명 주기 서비스.',
+      'AI Business Finland 기업 전환 계획.',
+      'FCAI(핀란드 인공지능 센터).',
+    ],
     strengths: [
       'AI 全民素养教育全球先驱——Elements of AI 已被翻译为 25+ 种语言',
       'AuroraAI 展示了 AI 公共服务的创新模式',
@@ -5067,6 +5435,18 @@ export const regionDetails: RegionDetail[] = [
       'Highly digitalised social foundation (similar to Singapore)',
       'Human-centric ethics orientation has built an international reputation for "responsible AI"',
     ],
+    strengthsJa: [
+      'AI国民素養教育のグローバルパイオニア——Elements of AIは25+言語に翻訳されています',
+      'AuroraAIはAI公共サービスの革新的モデルを示しています',
+      '高度にデジタル化された社会基盤（シンガポールと同様）',
+      '人本倫理指向で、国際的に「責任あるAI」の評判を確立しました',
+    ],
+    strengthsKo: [
+      'AI 전국민 소양 교육의 글로벌 선도자——Elements of AI는 25개 이상의 언어로 번역되었습니다.',
+      'AuroraAI는 AI 공공 서비스의 혁신 모델을 시연했습니다.',
+      '고도로 디지털화된 사회 기반(싱가포르와 유사).',
+      '인간 중심의 윤리 지향, 국제적으로 「책임 있는 AI」의 평판을 확립했습니다.',
+    ],
     weaknesses: [
       '市场规模小（550 万人口），AI 产业化规模有限',
       '缺乏本土 AI 龙头企业（Nokia 转型后实力下降）',
@@ -5078,6 +5458,18 @@ export const regionDetails: RegionDetail[] = [
       'No homegrown AI champion (Nokia diminished after pivoting)',
       'EU AI Act compliance burden may constrain innovation flexibility',
       'Winter climate and geography make it harder to attract Asian AI talent',
+    ],
+    weaknessesJa: [
+      '市場規模が小さい（550万人口）、AI産業化規模は限定的です',
+      '本土AI大企業の欠如（Nokia転換後、影響力が低下）',
+      'EU AI Actへのコンプライアンス負担がイノベーションの柔軟性を制限する可能性があります',
+      '冬季気候と地理的位置がアジアのAI人材獲得に不利です',
+    ],
+    weaknessesKo: [
+      '소규모 시장(인구 550만 명), AI 산업화 규모 제한.',
+      '국내 AI 선도 기업 부족(Nokia 전환 후 역량 약화).',
+      'EU AI Act 준수 부담이 혁신 유연성을 제한할 수 있습니다.',
+      '겨울 기후와 지리적 위치가 아시아 AI 인재 유치에 불리합니다.',
     ],
     keyBodies: [
       {
@@ -5117,6 +5509,8 @@ export const regionDetails: RegionDetail[] = [
       'AuroraAI Programme Report',
       'Elements of AI official statistics',
     ],
+    sourcesJa: ['Finland AI Strategy（2017/2019 更新）', 'AuroraAI プログラム報告書', 'Elements of AI 公式統計'],
+    sourcesKo: ['Finland AI Strategy(2017/2019 업데이트).', 'AuroraAI Programme Report.', 'Elements of AI 공식 통계.'],
     drilldownEnrichments: {
       'core-strategy': {
         analysisEn:
@@ -5533,6 +5927,20 @@ export const regionDetails: RegionDetail[] = [
       'CAISI (Canadian AI Safety Institute)',
       'CAD $1 billion sovereign compute programme',
     ],
+    keyInitiativesJa: [
+      'Mila（モントリオール学習アルゴリズム研究所、Bengio主導）',
+      'Vector Institute（トロント、Hinton創立）',
+      'Amii（アルバータ機械知能研究所）',
+      'CAISI（カナダAI安全研究所）',
+      'CAD $10億ソブリン計算力計画',
+    ],
+    keyInitiativesKo: [
+      'Mila(몬트리올 학습 알고리즘 연구소, Bengio 주도).',
+      'Vector Institute(토론토, Hinton 설립).',
+      'Amii(알버타 기계 지능 연구소).',
+      'CAISI(캐나다 AI 안전 연구소).',
+      'CAD 10억 주권 컴퓨팅 파워 계획.',
+    ],
     strengths: [
       '深度学习发源地——Bengio、Hinton 的学术遗产',
       '三大世界级 AI 研究所形成人才培养网络',
@@ -5545,6 +5953,18 @@ export const regionDetails: RegionDetail[] = [
       'Global leader in AI safety and ethics research (CAISI)',
       "World's first national AI strategy (2017); a clear first-mover advantage",
     ],
+    strengthsJa: [
+      '深度学習発祥地——Bengio、Hintonの学術遺産',
+      '3つの世界的AI研究所が人材育成ネットワークを形成しています',
+      'AI安全と倫理研究においてグローバル先導的（CAISI）',
+      'グローバル初の国家AI戦略（2017）、先発優位が顕著です',
+    ],
+    strengthsKo: [
+      '딥러닝 발원지——Bengio, Hinton의 학술 유산.',
+      '3대 세계적 AI 연구소가 인재 양성 네트워크를 형성합니다.',
+      'AI 안전 및 윤리 연구에서 글로벌 선도(CAISI).',
+      '세계 최초의 국가 AI 전략(2017), 선발 우위가 분명합니다.',
+    ],
     weaknesses: [
       'AI 人才大量流向美国（"北向脑流失"倒过来了）',
       'AIDA 法案搁置，治理框架缺乏法律约束力',
@@ -5556,6 +5976,18 @@ export const regionDetails: RegionDetail[] = [
       'AIDA shelved; governance framework lacks legal force',
       'Weak commercialisation — strong research, weak deployment',
       "No homegrown AI giant (compare to Singapore's Grab or Sea)",
+    ],
+    weaknessesJa: [
+      'AI人材が大量にアメリカに流出（「北向き脳流出」が反転しました）',
+      'AIDA法案は棚上げとなり、ガバナンスフレームワークは法的拘束力を欠きます',
+      '商用化能力の不足——研究は強いが実装は弱い',
+      '本土AI大企業の欠如（シンガポールのGrab、Seaなどをベンチマークとして）',
+    ],
+    weaknessesKo: [
+      'AI 인재가 대량으로 미국으로 유출됩니다(「북향 뇌 유출」이 역전되었습니다).',
+      'AIDA 법안 보류, 거버넌스 프레임워크의 법적 구속력 부족.',
+      '상업화 역량 부족——연구는 강하나 실행은 약함',
+      '국내 AI 거인 부족 (싱가포르의 Grab, Sea 등을 벤치마크)',
     ],
     keyBodies: [
       {
@@ -6187,6 +6619,16 @@ export const benchmarkCases: BenchmarkCase[] = [
           'Supports enterprise self-testing and third-party verification',
           'Can align with EU, OECD, and US governance frameworks',
         ],
+        bulletsJa: [
+          'ガバナンスのツール化であり、単なるポリシー表述に留まるものではない',
+          'クロスボーダー企業のセルフテストとサードパーティー検証に適している',
+          'EU、OECD、アメリカのフレームワークと一致させることができる',
+        ],
+        bulletsKo: [
+          '거버넌스 도구화, 정책 표현에만 머물지 않음',
+          '국경 간 기업의 자체 검사 및 제3자 검증에 적합',
+          'EU, OECD, 미국 프레임워크와 정렬 가능',
+        ],
       },
       {
         title: '后续追踪',
@@ -6318,6 +6760,16 @@ export const benchmarkCases: BenchmarkCase[] = [
           'Directly serves research and enterprise users',
           'Can combine with HKSTP, AIRDI, and other institutions',
         ],
+        bulletsJa: [
+          '算力指標が明確である',
+          '科学研究と企業に直接サービス提供できる',
+          '香港科学技術パーク、AIRDI などの機関と組み合わせを形成する',
+        ],
+        bulletsKo: [
+          '컴퓨팅 파워 지표가 명확함',
+          '연구 및 기업에 직접 서비스 가능',
+          '홍콩 과학 공원, AIRDI 등 기관과 조합 형성',
+        ],
       },
       {
         title: '风险点',
@@ -6448,6 +6900,16 @@ export const benchmarkCases: BenchmarkCase[] = [
           'Advanced manufacturing is harder to copy than application narratives',
           'Industrial ecosystems and national security are tightly linked',
         ],
+        bulletsJa: [
+          'ハードウェア供給チェーンは AI 主権の一部である',
+          '先進製造はアプリケーション叙述よりも複製がより難しい',
+          '産業エコシステムと国家安全保障は深く結合している',
+        ],
+        bulletsKo: [
+          '하드웨어 공급망은 AI 주권의 일부',
+          '선진 제조는 애플리케이션 서사보다 복제하기 더 어려움',
+          '산업 생태계와 국가 안보가 높은 수준으로 연계됨',
+        ],
       },
       {
         title: '新加坡可学什么',
@@ -6571,6 +7033,16 @@ export const benchmarkCases: BenchmarkCase[] = [
           'A model project becomes a national calling card',
           'Open release lowers the barrier for international developers',
           'Combines with MBZUAI, MGX, and compute investment',
+        ],
+        bulletsJa: [
+          'モデルプロジェクトは国家のシンボルになる',
+          'オープンソースが国際開発者の試用敷居を低くする',
+          'MBZUAI、MGX、算力投資と組み合わせを形成する',
+        ],
+        bulletsKo: [
+          '모델 프로젝트가 국가 명함이 됨',
+          '오픈소스가 국제 개발자의 시도 진입 장벽을 낮춤',
+          'MBZUAI, MGX, 컴퓨팅 파워 투자와 조합 형성',
         ],
       },
       {
@@ -6697,6 +7169,16 @@ export const benchmarkCases: BenchmarkCase[] = [
           'Connects with Microsoft partnerships and projects such as Stargate UAE',
           'Links national strategy to global capital markets',
         ],
+        bulletsJa: [
+          'ソブリンキャピタルが AI インフラストラクチャーに直接参入する',
+          'マイクロソフトの協力と Stargate UAE などのプロジェクトと連携を形成する',
+          '国家戦略とグローバル資本市場をつなぐ',
+        ],
+        bulletsKo: [
+          '주권 자본이 AI 기초 인프라에 직접 진입',
+          '마이크로소프트 협력 및 Stargate UAE 등 프로젝트와 연동 형성',
+          '국가 전략과 글로벌 자본시장을 연결',
+        ],
       },
       {
         title: '风险点',
@@ -6818,6 +7300,16 @@ export const benchmarkCases: BenchmarkCase[] = [
           'Serves national model, compute, and capital strategies',
           'Sends a clear signal to the global talent market',
         ],
+        bulletsJa: [
+          'AI を唯一のコアテーマとしている',
+          '国家モデル、算力、資本戦略を支援する',
+          'グローバル人材市場に向けて明確なポジショニングを発信する',
+        ],
+        bulletsKo: [
+          'AI를 유일한 핵심 주제로 함',
+          '국가 모델, 컴퓨팅 파워, 자본 전략에 서비스 제공',
+          '글로벌 인재시장에 명확한 포지셔닝 신호 발송',
+        ],
       },
     ],
     sources: [
@@ -6932,6 +7424,16 @@ export const benchmarkCases: BenchmarkCase[] = [
           'Real missions train judgment better than classrooms alone',
           'Strong alumni networks reduce early startup friction',
           'Security contexts naturally need AI and automation',
+        ],
+        bulletsJa: [
+          '実際のタスクは教室よりも判断力をより効果的に訓練する',
+          '強いアルムナイネットワークが創業初期の摩擦を低くする',
+          'セキュリティシナリオは自然と AI とオートメーションを必要とする',
+        ],
+        bulletsKo: [
+          '실제 작업이 교실보다 판단력을 더 잘 훈련함',
+          '강력한 동문 네트워크가 초기 창업 마찰을 낮춤',
+          '보안 시나리오는 자연스럽게 AI와 자동화를 필요로 함',
         ],
       },
       {
@@ -7055,6 +7557,16 @@ export const benchmarkCases: BenchmarkCase[] = [
           'Coordination between models and hardware',
           'AI Basic Act provides a stronger legal frame',
           'Large enterprise customers and deployment contexts are concentrated',
+        ],
+        bulletsJa: [
+          'モデルとハードウェアの協働',
+          'AI 基本法がより強い法律フレームワークを提供する',
+          '大企業顧客とデプロイメントシナリオが集中している',
+        ],
+        bulletsKo: [
+          '모델과 하드웨어 협력',
+          'AI 기본법이 더 강력한 법적 프레임워크 제공',
+          '대기업 고객 및 배포 시나리오가 집중',
         ],
       },
       {
@@ -7181,6 +7693,16 @@ export const benchmarkCases: BenchmarkCase[] = [
           'Public services are already highly online',
           'Small budgets force clear prioritisation',
         ],
+        bulletsJa: [
+          'デジタルアイデンティティとデータ交換プラットフォームが前提条件である',
+          '政府サービスプロセスはすでに高度にオンライン化している',
+          '小さな予算がユースケースの優先度を明確にすることを余儀なくさせる',
+        ],
+        bulletsKo: [
+          '디지털 신원 및 데이터 교환 플랫폼이 전제 조건',
+          '정부 서비스 프로세스가 높은 수준으로 온라인화됨',
+          '소규모 예산이 사용 사례 우선순위를 명확히 강제함',
+        ],
       },
       {
         title: '不可直接复制处',
@@ -7304,6 +7826,12 @@ export const benchmarkCases: BenchmarkCase[] = [
           'Aligned with a human-centric AI ethics narrative',
           'Can become a national brand asset',
         ],
+        bulletsJa: [
+          '低い敷居でスケーラブルである',
+          '人間中心の AI 倫理的叙述と一致している',
+          '国家ブランド資産になることができる',
+        ],
+        bulletsKo: ['낮은 진입 장벽, 확장 가능', '인간 중심 AI 윤리 서사와 일치', '국가 브랜드 자산이 될 수 있음'],
       },
       {
         title: '后续追踪',
@@ -7432,6 +7960,16 @@ export const benchmarkCases: BenchmarkCase[] = [
           'International talent has reason to stay',
           'Fits Switzerland’s light-touch, innovation-first path',
         ],
+        bulletsJa: [
+          '基礎研究が強く、産業連携が強い',
+          '国際的人材が長期滞在を望んでいる',
+          'スイスの軽規制・イノベーション優先パスと一致している',
+        ],
+        bulletsKo: [
+          '기초 연구가 강하고, 산업 연결이 강합니다',
+          '국제 인재가 장기 체류하기를 원합니다',
+          '스위스의 경량 규제, 혁신 우선 경로와 일치합니다',
+        ],
       },
       {
         title: '风险点',
@@ -7556,6 +8094,16 @@ export const benchmarkCases: BenchmarkCase[] = [
           'Institutional backbone of the world’s first national AI strategy',
           'Strong deep-learning academic tradition',
           'Good base in AI safety and ethics research',
+        ],
+        bulletsJa: [
+          '世界初の国家 AI 戦略を担う機関',
+          '深層学習の学術伝統が強い',
+          'AI 安全と倫理研究の基礎が優れている',
+        ],
+        bulletsKo: [
+          '글로벌 최초 국가 AI 전략의 기관 담당체입니다',
+          '심층 학습 학술 전통이 강합니다',
+          'AI 안전과 윤리 연구 기초가 좋습니다',
         ],
       },
       {
