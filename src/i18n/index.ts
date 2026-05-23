@@ -39,7 +39,12 @@
 
 export type Lang = 'zh' | 'en' | 'ja' | 'zh-tw' | 'ko';
 
-export const LOCALES: Lang[] = ['zh', 'en', 'ja', 'zh-tw', 'ko'];
+// Display order for the language switcher dropdown and sitemap alternates.
+// en first (route default, biggest reader base), then zh (data-default + 2nd
+// largest audience), then 繁中 next to 简中, then ja, then ko. Reordering is
+// safe: NON_DEFAULT_ROUTE_LOCALES / FALLBACK_CHAINS / DICTIONARIES key by
+// Lang code, not array position.
+export const LOCALES: Lang[] = ['en', 'zh', 'zh-tw', 'ja', 'ko'];
 
 /** Routing default: this locale's URLs live at the bare root (no prefix). */
 export const ROUTE_DEFAULT_LOCALE: Lang = 'en';
