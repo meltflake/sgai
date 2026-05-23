@@ -461,7 +461,17 @@ const QUICK_FILTER_LABELS: Record<Lang, string[]> = {
   ko: ['최신 회기', '데이터 주권', '고용', '거버넌스', '국가 안보', '의료', '높은 논쟁'],
 };
 const _qfl = QUICK_FILTER_LABELS[lang] || QUICK_FILTER_LABELS.en;
-const QUICK_DATA_SOV = lang === 'zh' ? '数据主权' : lang === 'zh-tw' ? toTraditional('数据主权') : 'data sovereignty';
+// Search keyword for the "data sovereignty" quick-filter. Kept English on
+// non-Chinese locales because the searchBlob is lowercased and the source
+// data uses the English term — ja/ko/en pages match against that.
+const QUICK_DATA_SOV_KW: Record<Lang, string> = {
+  zh: '数据主权',
+  en: 'data sovereignty',
+  ja: 'data sovereignty',
+  'zh-tw': toTraditional('数据主权'),
+  ko: 'data sovereignty',
+};
+const QUICK_DATA_SOV = QUICK_DATA_SOV_KW[lang] || QUICK_DATA_SOV_KW.en;
 const quickFilters = [
   { label: _qfl[0], dimension: 'keyword', value: latestDate },
   { label: latestYear, dimension: 'year', value: latestYear },
