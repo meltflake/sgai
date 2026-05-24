@@ -184,6 +184,16 @@ export const I18N_CONFIG: FileSchema[] = [
     ],
   },
   {
+    file: 'src/data/policy-source-texts.ts',
+    schemas: [
+      {
+        name: 'policy-source-text',
+        containingArray: 'policySourceTexts',
+        fields: [{ field: 'body', locales: FULL_LOCALES, required: true }],
+      },
+    ],
+  },
+  {
     file: 'src/data/levers.ts',
     schemas: [
       {

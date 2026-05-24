@@ -4,6 +4,7 @@ import { Icon } from 'astro-icon/components';
 import EcosystemProse from '~/components/data/EcosystemProse.astro';
 import RelatedRail from '~/components/data/RelatedRail.astro';
 import { categories, type Policy, type PolicyResource } from '~/data/policies';
+import { getPolicySourceText } from '~/data/policy-source-texts';
 import { levers } from '~/data/levers';
 import { localizedHref, pickLocalized, t, type Lang } from '~/i18n';
 import { toTraditional } from '~/i18n/opencc';
@@ -28,6 +29,10 @@ const subtitle = isZh && policy.titleEn && policy.titleEn !== title ? policy.tit
 const summary = pickLocalized<string>(policy, 'summary', lang) || '';
 const content = pickLocalized<string>(policy, 'content', lang) || '';
 const source = pickLocalized<string>(policy, 'source', lang) || policy.source;
+const sourceTextRecord = getPolicySourceText(policy.id);
+const sourceText = sourceTextRecord
+  ? pickLocalized<string>(sourceTextRecord, 'body', lang) || sourceTextRecord.bodyEn
+  : '';
 const categoryName =
   pickLocalized<string>({ name: policy._categoryName, nameEn: policy._categoryNameEn }, 'name', lang) ||
   policy._categoryName ||
@@ -70,6 +75,12 @@ const labels = {
   signals: label({ zh: '战略位置', en: 'Strategic Context', ja: '戦略的位置', ko: '전략적 맥락' }),
   milestones: label({ zh: '关键里程碑', en: 'Milestones', ja: '重要マイルストーン', ko: '주요 마일스톤' }),
   resources: label({ zh: '资源入口', en: 'Resources', ja: 'リソース入口', ko: '리소스' }),
+  sourceText: label({
+    zh: '官方原文 / 译文',
+    en: 'Official Source Text',
+    ja: '公式原文 / 翻訳',
+    ko: '공식 원문 / 번역',
+  }),
   sameCategory: label({ zh: '同类档案', en: 'More in This Category', ja: '同類ファイル', ko: '같은 분류의 파일' }),
   officialSite: label({
     zh: '发布机构官网',
@@ -153,7 +164,14 @@ const baseResources: PolicyResource[] = [
     ? [{ label: labels.officialSite, labelEn: labels.officialSite, url: policy.sourceOrgUrl, kind: 'website' as const }]
     : []),
   ...(policy.sourceUrl
-    ? [{ label: t(lang, 'source'), labelEn: t(lang, 'source'), url: policy.sourceUrl, kind: 'source' as const }]
+    ? [
+        {
+          label: t(lang, 'officialSourceText'),
+          labelEn: t(lang, 'officialSourceText'),
+          url: policy.sourceUrl,
+          kind: 'source' as const,
+        },
+      ]
     : []),
   ...(policy.pdfUrl
     ? [{ label: t(lang, 'sourcePdf'), labelEn: t(lang, 'sourcePdf'), url: policy.pdfUrl, kind: 'pdf' as const }]
@@ -388,6 +406,28 @@ function policySource(candidate: Policy): string {
               <Icon name={resourceIcon(resource.kind)} class="w-4 h-4 text-primary" />
             </a>
           ))}
+        </div>
+      </section>
+    )
+  }
+
+  {
+    sourceText && (
+      <section class="mb-10 pt-6 border-t border-subtle">
+        <h2 class="t-h3 text-gray-900 dark:text-white mb-3">{labels.sourceText}</h2>
+        {policy.sourceUrl && (
+          <a
+            href={policy.sourceUrl}
+            target="_blank"
+            rel="noopener"
+            class="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:text-secondary mb-5"
+          >
+            {t(lang, 'officialSourceText')}
+            <Icon name="tabler:external-link" class="w-4 h-4" />
+          </a>
+        )}
+        <div class="bg-surface rounded-lg border border-subtle p-5 md:p-6 font-serif text-base md:text-[17px] leading-[1.85] text-gray-800 dark:text-gray-200 whitespace-pre-line">
+          {sourceText}
         </div>
       </section>
     )
