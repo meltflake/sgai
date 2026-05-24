@@ -33,6 +33,15 @@ const sourceTextRecord = getPolicySourceText(policy.id);
 const sourceText = sourceTextRecord
   ? pickLocalized<string>(sourceTextRecord, 'body', lang) || sourceTextRecord.bodyEn
   : '';
+const sourceTextParagraphs = sourceText
+  .split(/\n{2,}/)
+  .map((paragraph) =>
+    paragraph
+      .split('\n')
+      .map((line) => line.trim())
+      .filter(Boolean)
+  )
+  .filter((paragraph) => paragraph.length > 0);
 const categoryName =
   pickLocalized<string>({ name: policy._categoryName, nameEn: policy._categoryNameEn }, 'name', lang) ||
   policy._categoryName ||
@@ -426,8 +435,17 @@ function policySource(candidate: Policy): string {
             <Icon name="tabler:external-link" class="w-4 h-4" />
           </a>
         )}
-        <div class="bg-surface rounded-lg border border-subtle p-5 md:p-6 font-serif text-base md:text-[17px] leading-[1.85] text-gray-800 dark:text-gray-200 whitespace-pre-line">
-          {sourceText}
+        <div class="bg-surface rounded-lg border border-subtle p-5 md:p-6 font-serif text-base md:text-[17px] leading-[1.85] text-gray-800 dark:text-gray-200 space-y-5">
+          {sourceTextParagraphs.map((paragraph) => (
+            <p class="m-0">
+              {paragraph.map((line, index) => (
+                <>
+                  {index > 0 && <br />}
+                  {line}
+                </>
+              ))}
+            </p>
+          ))}
         </div>
       </section>
     )
