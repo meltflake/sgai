@@ -5607,6 +5607,13 @@ export const videoTranscripts: Record<string, VideoTranscript> = {
       'Our development cycle is much faster, so our delivery is much faster, too. Beyond development speed, [music] AI has also revolutionized our RPA training materials. We now integrate AI directly into our RPA courses, showing participants how to combine both technologies for maximum [music] impact. This has elevated our skybox training to the global stage where we have conducted classes in multiple countries. So from Hong Kong to Africa to all the way to Bhutan, users are tapping into our chat bots. The best part is that participants can immediately apply what they learned to solve their real world workflow challenges using both RPA and AI. This project has [music] shifted the DNA of Skyots. Every day we now ask, can AI or automation solve this? After LAP, [music] we can now build AI solutions to eliminate tedious and manual tasks.',
       "We conduct training now to teach non-programmers how to use AI in a practical way to solve many business challenges and many of them are building their own automations using our methodologies learned from LAP. Our experience with the AISG [music] team was positive and supportive. As a non-programmer, I occasionally needed things explained in more detail. But the AISG team was patient [music] and respectful, never dismissive of any question. Thanks to that, I was able to truly grasp the concepts and execute with confidence. My advice to other companies is simple. You have to get involved with AI. You can't [music] keep running a business the same way you did 5 or 10 years ago. AI has totally changed the game. The earlier you start, the faster you will adapt and the more competitive you will be.",
     ],
+    paragraphsKo: [
+      "Skybots는 회계 기술 회사로, 심층적인 도메인 전문 지식과 자동화 기술을 결합했습니다. 저희는 회계사들이며, 로봇 프로세스 자동화 해결책을 구축하여 번거로운 수작업을 없애기 위해 노력합니다. LAP에 참여하기 전에, 저희는 로봇 프로세스 자동화(RPA) 분야에서 병목 현상을 겪었습니다. RPA는 순수 규칙 기반 작업은 잘 처리할 수 있지만, 판단이나 변형이 포함될 때는 역부족입니다. 예를 들어, 공급자의 PDF 형식 인보이스는 종종 형식이 다양하며, 단순한 템플릿 규칙은 적용할 수 없습니다. 판단이나 해석이 필요하면 로봇은 대응할 수 없습니다. 따라서 많은 워크플로우가 반자동화되면서 효율이 저하되고 진행이 느려졌습니다. [음악] LAP은 저희에게 프롬프트 엔지니어링을 가르쳤습니다. 예를 들어 프롬프트를 설계하여 표준 챗봇을 [음악] 강력하게 만드는 방법 같은 것입니다. 이러한 챗봇들은 저희 팀의 지능형 어시스턴트가 되었습니다.",
+      "이들은 [음악] 복잡한 쿼리를 이해하고 회계 기준, 세법, 감사 규칙 및 ESG 프레임워크를 기반으로 정확한 답변을 반환할 수 있습니다. 저희는 로봇을 훈련하고, 형성하고, 지시하는 방법을 안내하는 상세한 4페이지 운영 매뉴얼을 작성했습니다. 저희는 이러한 도구들을 회계 커뮤니티에 무료로 제공하며, 저희의 전문 교육 덕분에 특정 도메인 문제에 대해 얻은 답변은 일반적인 ChatGPT보다 더 정확합니다. 여러 공급자와 형식의 PDF를 구조화된 Excel 테이블로 안정적으로 변환할 수 있게 되면, 수작업을 크게 줄일 수 있습니다. 과거에 필요했던 몇 시간의 복사 붙여넣기 및 형식 조정이 이제 기본적으로 자동화되었습니다. [음악] 저희의 역할도 실행자에서 검토자로 변화했습니다. 저희는 AI의 추상화가 올바른지 검증하고, 이상을 찾으며, 논리를 미세 조정합니다.",
+      "이러한 변화만으로도 많은 업무 여유가 생겼습니다. 회계, 세무, 감사 및 규정 준수 분야에서는 정확성과 근거가 매우 중요합니다. [음악] 저희의 챗봇은 합리적인 답변을 생성할 뿐만 아니라 권위 있는 출처, 법규, 표준 및 규정에 답변을 고정시킵니다. 저희는 올바른 문서를 계획하고 업로드하는 데 많은 노력을 투자했습니다. 이렇게 하면, 챗봇이 질문에 답할 때 관련 법규 또는 표준의 특정 섹션을 가리킬 수 있으므로, 사용자의 출력 결과에 대한 신뢰를 증진시킵니다. AI는 저희의 자동화 구축 방식을 완전히 변화시켰습니다. 과거 2개월이 걸렸던 제로부터의 코딩 작업을 [음악] 현재는 ChatGPT 보조 방법으로 2일 내에 재구축할 수 있습니다. 매우 흥미로운 점은 과거 저에게 2일이 걸렸던 비즈니스 시스템을 현재는 단 5분에 구축할 수 있다는 것입니다.",
+      "저희의 개발 주기가 크게 단축되었고 전달 속도도 더 빨라졌습니다. [음악] 개발 속도 외에도, AI는 저희의 RPA 교육 자료를 혁신했습니다. 저희는 이제 AI를 RPA 과정에 직접 통합하여 학생들에게 두 기술을 결합하여 최대 [음악] 효과를 실현하는 방법을 보여줍니다. 이는 Skybots의 교육 수준을 높였고, 글로벌 무대로 나아가도록 했으며, 저희는 여러 국가에서 과정을 진행했습니다. 홍콩부터 아프리카, 그리고 부탄까지, 사용자들이 저희의 챗봇을 사용하고 있습니다. 가장 좋은 점은, 학생들이 배운 지식을 즉시 적용하여 실제 업무 흐름의 도전 과제를 RPA와 AI로 해결할 수 있다는 것입니다. 이 프로젝트는 [음악] Skybots의 DNA를 변화시켰습니다. 현재 저희는 매일 이렇게 묻습니다: AI 또는 자동화로 이 문제를 해결할 수 있을까요? LAP에 참여한 후, [음악] 저희는 AI 해결책을 구축하여 번거로운 수작업을 없앨 수 있게 되었습니다.",
+      "저희는 이제 비프로그래머들에게 AI를 실질적인 방식으로 사용하여 많은 비즈니스 과제를 해결하는 방법을 가르치는 교육을 진행하고 있습니다. 많은 사람들이 저희가 LAP에서 배운 방법을 이용하여 자신의 자동화 시스템을 구축하고 있습니다. 저희와 AISG 팀과의 협력은 [음악] 매우 적극적이고 지원적입니다. 비프로그래머로서 저는 때때로 더 자세한 설명이 필요하지만, AISG 팀은 인내심 있고 존중하며 어떤 질문도 경시하지 않습니다. 이 때문에 저는 진정으로 개념을 파악하고 자신감 있게 실행할 수 있었습니다. 다른 회사들에게 드리는 조언은 간단합니다: 반드시 AI에 참여해야 합니다. 더 이상 [음악] 5년 전이나 10년 전의 방식으로 사업을 운영할 수 없습니다. AI는 게임의 규칙을 완전히 바꿨습니다. 일찍 시작할수록 빠르게 적응할 수 있고, 경쟁력도 더 강해집니다.",
+    ],
     paragraphsJa: [
       'Skybotsはアカウンティング・テクノロジー企業であり、深い領域専門知識と自動化技術を組み合わせています。私たちは会計士であり、繁雑な手作業を排除するロボティック・プロセス・オートメーション（RPA）ソリューション構築に取り組んでいます。LAP参加前には、ロボティック・プロセス・オートメーション（RPA）の領域で瓶頸に直面していました。RPAは純粋にルールベースのタスク処理に優れていますが、判断や変異を伴う場合には力不足でした。例えば、サプライヤーのPDF形式の請求書はしばしば形式が異なり、単純なテンプレートルールを適用することができません。判断や解釈が必要な場合には、ロボットは対応できません。その結果、多くのワークフローが半自動化となり、効率低下と進捗遅延をもたらしていました。LAPは私たちにプロンプトエンジニアリングを教えてくれました。例えば、標準チャットボットを機能強化するようなプロンプト設計方法です。これらのチャットボットが私たちのチームの知的アシスタントになりました。',
       'これらは複雑なクエリを理解し、会計基準、税法規制、監査規則、ESGフレームワークに基づいて正確な回答を返すことができます。私たちは、ロボットの訓練、調整、指示方法を指導する詳細な4ページの操作マニュアルを作成しました。これらのツールを会計コミュニティに無償提供しており、専門的な訓練のおかげで、特定領域の問題に対して、汎用的なChatGPTよりも正確な回答が得られます。異なるサプライヤーと形式のPDFを確実に構造化されたExcelテーブルに変換できるようになれば、人工作業量を大幅に削減できます。過去には数時間かかったコピー・ペーストと形式調整が、現在はほぼ自動化されています。私たちの役割も実行者から審査者へ変わりました。AIの抽象化が正しいかどうかを検証し、異常を発見し、ロジックを微調整します。',
@@ -5634,6 +5641,17 @@ export const videoTranscripts: Record<string, VideoTranscript> = {
       narrative: [
         'Skybots is an accounting-technology firm founded by accountants who built RPA to remove manual work. Pure rule-based tasks ran well, but supplier invoices in varied PDF formats broke template logic. Once judgement was required, the bots stalled, and many workflows became semi-manual.',
         "Through AISG's LADP, the team learned prompt engineering and turned generic chatbots into domain assistants grounded in accounting standards, tax regulations, audit rules and ESG frameworks. They published a four-page playbook free for the accounting community, with answers cited back to specific statutes. Code that used to take two months now rebuilds in two days. Workflows that took two days now run in five minutes. Skybots integrated AI directly into its RPA training and now teaches in Hong Kong, Africa and Bhutan. The founder's advice to other firms is blunt: you have to get involved with AI, and the earlier you start the more competitive you become.",
+      ],
+    },
+    digestKo: {
+      keyPoints: [
+        "Skybots는 회계사들이 설립한 회계 기술 회사로, 기존 RPA는 판단 또는 형식 변화가 필요한 작업에서 한계를 맞닥뜨렸습니다.",
+        "LADP를 통해 프롬프트 엔지니어링을 학습한 후, Skybots는 표준 챗봇을 회계, 세무, 감사, ESG 분야를 위한 전문 보조자로 전환했습니다.",
+        "원래 두 달에 걸쳐 수동으로 작성하던 자동화 작업을 ChatGPT의 도움으로 이틀 만에 재구성할 수 있었으며, 과거 이틀이 걸리던 작업을 5분으로 압축할 수 있습니다.",
+      ],
+      narrative: [
+        "Skybots는 회계사가 설립한 회계 기술 회사로, 주로 RPA 솔루션을 사업으로 하고 있습니다. RPA는 순수 규칙 기반 작업에는 효과적이지만, 공급업체 청구서 형식이 다양하고 판단이나 해석이 필요한 경우 로봇이 제대로 작동하지 않으며, 많은 프로세스가 반자동 상태가 되어 효율성이 낮습니다.",
+        "AISG LADP를 통해 팀은 프롬프트 엔지니어링을 배웠으며, 범용 챗봇을 회계, 세무, 감사 및 ESG에 특화된 어시스턴트로 훈련했고, 4페이지 운영 가이드를 출판하여 회계 산업에 무료로 배포했습니다. 로봇의 답변은 권위 있는 규정을 근거로 하며, 구체적인 규정 조항을 제시할 수 있습니다. LADP 이후, 원래 2개월이 걸리던 코드가 2일 만에 완성되었고, 원래 2일이 걸리던 작업이 5분 만에 해결되었습니다. Skybots는 AI를 RPA 교육 과정에 통합했으며, 홍콩, 아프리카에서 부탄까지 이미 강의가 개설되었습니다. 창립자의 다른 회사들에 대한 조언은 매우 직접적입니다: 「당신은 반드시 AI에 참여해야 하며, 일찍 시작할수록 경쟁력이 높습니다.」",
       ],
     },
     digestJa: {
@@ -5667,6 +5685,11 @@ export const videoTranscripts: Record<string, VideoTranscript> = {
       "So, I spent a lot more time understanding these concepts. >> I definitely don't expect the competition to be easy, but thanks to my diploma in applied AI and analytics, I do feel fairly confident that I can do well in the competition. >> I think uh hands-on technology exposure outside of the classroom has been invaluable. And for me personally, this is what I study, right? And it's really my passion and something I really love. And I believe that when you love what you do, I think the best work follows. After going through the competition, I realized it wasn't as scary as I thought it was going to be. Although I lacked some technical knowledge on the specific libraries and how I could actually go about doing this, I still wanted to challenge myself and take on this competition.",
       'And through the preparation, I actually learned a lot about myself as well as about AI, which makes me think this was a very meaningful experience. Such competitions should encourage Singaporeans to broaden their knowledge in AI and also hopefully nurture the next growing passionate students in this AI landscape. >> After NOAI, selected participants will undergo a rigorous selection process and intensive training. The top talents will represent Singapore at the International Olympia in AI which is held in Beijing this year, competing on the global stage and putting Singapore on the world map. [Music]',
     ],
+    paragraphsKo: [
+      "[음악] OAI는 싱가포르 학생들을 위한 최고 수준의 인공지능 경쟁입니다. 싱가포르 인공지능 협회와 MTU의 협력으로 개최되며 교육부(MOE)와 미디어 개발청(MDI)의 지원을 받습니다. 이는 우리 학생들이 최첨단 인공지능 기술을 습득하고 인공지능 중심 세계에서 비판적 사고력과 리더십을 배양하도록 지원합니다. 우리는 서로 다른 20개 학교에서 120명 이상의 참가자들이 참여하게 되어 기쁩니다. 이는 제한된 시간 내에 참가자들의 인공지능 지식과 문제 해결 능력을 시험하는 탁월한 플랫폼입니다. >> 실제로 저를 동기 부여한 것, 또는 말하자면 발판이 된 것은 지난해 인공지능 컨퍼런스에 참석했을 때 많은 학생들이 완성한 프로젝트들입니다. >> 경쟁을 준비하기 위해 저는 시험될 수 있는 다양한 주제들을 읽었습니다. 여기에는 트랜스포머 아키텍처와 어텐션 메커니즘이 포함됩니다.",
+      "따라서 저는 이러한 개념들을 이해하는 데 더 많은 시간을 보냈습니다. >> 물론 저는 대회가 쉬울 것이라고 기대하지 않았지만, Applied AI와 Analytics 디플로마 과정 덕분에 저는 대회에서 우수한 성과를 낼 수 있다는 상당한 확신을 느꼈습니다. >> 저는 교실 밖의 실습 기술 경험이 매우 귀중하다고 생각합니다. 개인적으로 이것은 제가 공부한 분야이며 저에게는 진정한 열정과 애정입니다. 저는 여러분이 하는 일을 사랑할 때 최고의 작품이 자연스럽게 탄생한다고 믿습니다. 대회를 경험한 후, 저는 그것이 제가 상상했던 것만큼 두렵지 않다는 것을 깨달았습니다. 특정 라이브러리에 대한 기술적 지식과 실제로 이를 어떻게 작동시키는지에 대한 지식이 부족했지만, 저는 여전히 자신에게 도전하고 이 대회에 참여하고 싶었습니다.",
+      "준비 과정을 통해 저는 실제로 자신과 인공지능에 대해 많은 것을 배웠으며, 이것이 매우 의미 있는 경험이라고 느꼈습니다. 이러한 대회는 싱가포르인들이 인공지능 분야의 지식을 넓히도록 장려해야 하며, 인공지능 분야에 열정이 있는 차세대 학생들을 양성할 수 있기를 희망합니다. >> NOAI 이후, 선발된 참가자들은 엄격한 선별 과정과 집중 훈련을 거치게 됩니다. 최고 인재들은 싱가포르를 대표하여 올해 베이징에서 개최되는 국제 인공지능 올림피아드에 참가하여 글로벌 무대에서 경쟁하고 싱가포르를 세계 무대에 올릴 것입니다. [음악]",
+    ],
     paragraphsJa: [
       '[音楽] OAIはシンガポール向けの最高級の人工知能コンペティションです。シンガポール人工知能協会とMTUの協力によって開催され、教育省（MOE）およびマルチメディア開発局（MDI）の支援を受けています。これは学生が最先端の人工知能スキルを習得できるようにし、人工知能駆動型の世界における批判的思考とリーダーシップを育成しています。20の異なる学校からの120人以上の参加者が参加していることを嬉しく思っています。これは限定された時間内で彼らの人工知能知識と問題解決能力をテストするための優れたプラットフォームです。 >> 実は、私を励ましたり、踏み台になったりしたのは、去年の人工知能会議に参加した際に見た、多くの学生が完成させたプロジェクトです。 >> コンペティションに向けて準備するために、試験される可能性のある様々なトピックを読みました。これらにはトランスフォーマーアーキテクチャと注意メカニズムが含まれています。',
       'そこで、私はこれらの概念をより理解するために、より多くの時間を費やしました。 >> もちろん、コンペティションが簡単だとは期待していませんでしたが、応用人工知能と分析のディプロマコースのおかげで、コンペティションで優れたパフォーマンスを発揮する相当な自信を感じています。 >> 私は、教室外の実践的な技術実習は非常に価値があると考えています。個人的には、これは私が学んだ専門分野であり、私にとってはこれが真の情熱と愛です。自分がしていることを愛しているとき、最高の作品は自然に生まれると信じています。コンペティションを経験した後、それが想像していたほど怖くないことに気づきました。特定のライブラリに関する技術知識と実際の操作方法に関する知識が足りないにもかかわらず、私はそれでも自分自身に挑戦し、このコンペティションに参加したいと考えています。',
@@ -5692,6 +5715,17 @@ export const videoTranscripts: Record<string, VideoTranscript> = {
       narrative: [
         'The inaugural National AI Olympiad (NOAI), co-organised by AI Singapore and NTU with support from MOE and MDDI, drew over 120 students from 20 schools. The competition tested AI knowledge and problem-solving under time pressure, covering topics like transformer architectures and attention mechanisms.',
         "Students described their preparation: drawing inspiration from last year's AI conference, working through their applied AI and analytics diplomas, and drilling on core concepts. Several said hands-on technology exposure outside the classroom mattered most. After NOAI, selected participants enter rigorous selection and intensive training to represent Singapore at the International AI Olympiad in Beijing.",
+      ],
+    },
+    digestKo: {
+      keyPoints: [
+        "제1회 싱가포르 국가 AI 올림피아드(NOAI)는 AI Singapore와 NTU가 공동으로 개최했으며, MOE와 MDDI의 지원을 받습니다.",
+        "20개 학교에서 온 120명 이상의 학생들이 정해진 시간 내에 AI 지식과 문제 해결 능력을 겨루었습니다.",
+        "입선자들은 엄격한 선발과 집중 훈련을 거쳐 싱가포르를 대표하여 올해 베이징에서 개최되는 국제 AI 올림피아드에 참가하게 됩니다.",
+      ],
+      narrative: [
+        "첫 번째 국가 AI 올림피아드(NOAI)는 AI Singapore와 NTU가 공동으로 개최했으며, MOE과 MDDI가 지원했습니다. 20개 학교에서 온 120명 이상의 학생들이 참가했으며, 주제는 Transformer 아키텍처, 어텐션 메커니즘 등 핵심 지식을 포함했습니다.",
+        "참가 학생들은 대비 경험을 공유했습니다: 작년 AI 컨퍼런스에서 영감을 받았으며, 응용 AI 및 분석 디플로마를 수강했고, 핵심 개념을 반복 학습했습니다. 많은 사람들이 교실 밖에서의 실습 기회가 매우 중요하다고 언급했습니다. 경쟁이 끝난 후, 선발된 참가자들은 더 엄격한 집중 훈련에 들어가게 되며, 베이징에서 개최되는 국제 AI 올림피아드에 싱가포르를 대표하여 출전하게 됩니다.",
       ],
     },
     digestJa: {
@@ -5725,6 +5759,11 @@ export const videoTranscripts: Record<string, VideoTranscript> = {
       "I wanted to challenge myself to think deeper about these technologies and learn new things and see how AI is applied in practice beyond the theory that we do. It's more than just a buzz word in tech. It's a field that's transforming how we solve real world problems. AI is still an ongoing growing landscape. There's still more to grow on. So I definitely don't expect the competition to be easy. The competition opens door to further competitions, to undergraduate programs, to research, and to many opportunities in Singapore's AI ecosystem. Don't do AI just for the competition. Explore it because you genuinely enjoy it and let your curiosity guide you. I came to this competition for the fun of it. It's really my passion and something I really love. Get your classmates, get your friends to be interested in AI. Teach them tools.",
       "Unravel what's behind the black box. See yourself as the tip of the spear leading this particular frontier. You are charged with a particular responsibility and this is your challenge going ahead. The road to international Olympia in AI begins here.",
     ],
+    paragraphsKo: [
+      "기억하세요. 싱가포르를 대표하여 무대에 설 때, 당신은 그 깃발을 들고 싱가포르를 위해 최선을 다하십시오. 지난해 우리는 두 개의 국가 팀을 선발하여 첫 번째 국제 올림피아드 EI 대회에 참가하도록 훈련했습니다. 그들은 우리를 위해 두 개의 금메달을 획득했으며, 이는 우리를 자랑스럽게 만들었습니다. 올해 나는 다시 돌아와 NAI 도전에 맞이합니다. NAI는 인재와 기회가 모이는 장소입니다. 우리는 새로운 세대의 인공지능 능력 발전 프로그램에 새로운 장을 추가했으며, AI싱가포르는 젊은이부터 나이 든 사람까지, 기초부터 최전선까지 현지 인재를 육성합니다. 나는 NOAI에 가입했습니다. 내 CK가 정보통신이기 때문이며, 이것이 나의 프로그래밍과 인공지능에 대한 열정을 불태웠습니다. 그것은 나의 인공지능에 대한 시각을 넓히는 데 도움이 되었고, 직접 인공지능 개념들을 실습했으며, 이를 통해 나는 정말로 나 자신의 한계에 도전할 수 있었고 모든 기술을 검증할 수 있었습니다.",
+      "나는 나 자신에게 도전하고, 이 기술들에 대해 더 깊이 있게 사고하고, 새로운 지식을 배우고, 인공지능이 실전에서 어떻게 적용되는지 알아보고, 우리가 다룬 이론을 넘어서고 싶습니다. 그것은 단순한 기술 분야의 유행어가 아닙니다. 그것은 우리가 현실 세계의 문제를 해결하는 방식을 변화시키고 있는 영역입니다. 인공지능은 여전히 계속 발전하는 영역이며, 더 많은 성장의 여지가 있습니다. 따라서 나는 대회가 쉬울 것이라고 기대하지 않습니다. 대회는 추가 경쟁, 학부 프로젝트, 연구 및 싱가포르 인공지능 생태계에서의 많은 기회로의 문을 열어줍니다. 인공지능을 단순히 대회를 위해서만 하지 마십시오. 그것을 탐구하세요. 당신이 진정으로 좋아하기 때문에, 당신의 호기심이 당신을 이끌도록 하세요. 나는 이 대회에 즐거움을 위해 참가했습니다. 이것은 정말로 내 열정의 대상이고, 또한 내가 매우 좋아하는 것입니다. 당신의 친구들과 동료들이 인공지능에 관심을 갖도록 하세요. 그들에게 도구 사용법을 가르치세요.",
+      "블랙박스 뒤의 비밀을 밝히세요. 자신을 이 특정 최전선을 주도하는 선봉으로 보세요. 당신은 특별한 책임을 지고 있으며, 이것이 당신의 미래 도전입니다. 국제 인공지능 올림피아드로의 길은 여기서 시작됩니다.",
+    ],
     paragraphsJa: [
       '覚えておいてください。シンガポールを代表して出場するときは、その旗を掲げ、シンガポールのために全力を尽くして栄光をもたらします。昨年、私たちは初回の国際オリンピアドEI大会に参加する2つの国家チームを選抜し、訓練しました。彼らは私たちに2つの金メダルをもたらし、私たちは誇りに思っています。今年、私は再びNAIチャレンジに立ち向かうために戻ります。NAIは才能と機会が集まる場所です。新世代の人工知能能力発展プログラムに新たな章を加えました。AIシンガポールは若い世代から年長者まで、基礎から最先端まで、地元の人材を育成しています。私はNOAIに参加しました。なぜなら、私のCKは情報通信だからです。これが、プログラミングと人工知能への私の情熱を刺激しました。それは人工知能に対する私の視点を広げるのに役立ちました。人工知能の概念をいくつか実践し、本当に自分の限界に挑戦し、すべてのスキルをテストすることができました。',
       '自分自身に挑戦し、これらの技術についてより深く考え、新しい知識を学び、人工知能が実践でどのように応用されているかを見ることで、私たちが行った理論を超えたいと思っています。それは単なる技術分野の流行語ではありません。それは、私たちが現実の世界の問題を解決する方法を変えている分野です。人工知能は依然として進化し続けている分野であり、成長の余地があります。したがって、競争が簡単だと期待することはできません。この大会は、さらなる競争、学部プロジェクト、研究、およびシンガポール人工知能エコシステム内の多くの機会への扉を開きます。単に競争のためだけに人工知能を行わないでください。本当に好きだから、それを探索してください。あなたの好奇心があなたを導くようにしてください。私は楽しみのためにこの大会に参加しています。これは本当に私の情熱が向かう場所であり、私が本当に楽しんでいることです。同級生や友人に人工知能への興味を持たせてください。彼らにツールの使い方を教えてください。',
@@ -5750,6 +5789,17 @@ export const videoTranscripts: Record<string, VideoTranscript> = {
       narrative: [
         "Singapore brought home two gold medals from the inaugural International AI Olympiad. This year's National AI Olympiad continues that pipeline, extending AI Singapore's generational capability programme from foundation to frontier and from young to old.",
         'Students said they joined because they genuinely enjoy programming and AI and wanted to push beyond textbook theory into how AI solves real problems. Organisers urged participants not to chase competitions but to follow curiosity, teach friends the tools, and open up the black box. After NOAI, top performers go on to the International AI Olympiad.',
+      ],
+    },
+    digestKo: {
+      keyPoints: [
+        "작년 첫 국제 AI 올림피아드에서 싱가포르 두 국가대표팀이 각각 금메달을 획득했습니다.",
+        "올해 NAI 선발을 다시 시작했으며, 이는 세대 간 AI 능력 양성 프로젝트의 일환입니다.",
+        "AI Singapore는 학생들을 AI 최전선의 「선봉」으로 자리매김하며, 경쟁만을 위해서가 아니라 동료들을 이끌도록 권장합니다.",
+      ],
+      narrative: [
+        "싱가포르가 첫 번째 국제 AI 올림피아드에서 금메달 두 개를 획득했습니다. 올해도 국가대표팀을 계속 선발하며, NAI를 AI Singapore의 세대 간 AI 능력 양성 사업의 확장으로 추진합니다. 기초부터 최첨단까지, 젊은 세대부터 나이 많은 세대까지 지역 인재를 양성합니다.",
+        "학생들은 대회 참가의 동력이 프로그래밍과 AI에 대한 진정한 흥미에서 비롯된다고 말합니다. 교과서의 범위를 돌파하여 AI가 실제 문제를 어떻게 해결하는지 보고 싶다고 합니다. 주최 측은 다음과 같이 상기합니다. 「AI를 대회를 위해서만 하지 마십시오. 호기심이 길을 이끌게 하십시오. 동료와 친구들을 함께 이끌고, 블랙박스를 열어보십시오.」 NOAI 이후, 최고의 선수들은 국제 AI 올림피아드에 참가할 것입니다.",
       ],
     },
     digestJa: {
@@ -5787,6 +5837,13 @@ export const videoTranscripts: Record<string, VideoTranscript> = {
       "We don't need the high tech skills but we need to uh brainstorm how we create the data sets to adopt the domain of the challenge. I found out that domain specific lms especially generative AI is so useful for so many industry and domains. Definitely I would like to hands on more in this field. It really widened our perspective as we didn't know how much effort it took into creating AI images prompt. It could turn our ideas into visually compelling images with efficiency and acquisition. [Music] The National AI student challenge brings together seven industry leaders and tasks students to apply their AI knowledge to solve real world problems. These challenges foster creativity, innovation and problem solving skills. To all the students, you are at the heart of this journey.",
       'We will continue to provide you with the resources, platforms, and mentorship needed to realize your potential and make a meaningful impact.',
     ],
+    paragraphsKo: [
+      "빠르게 발전하는 인공지능 분야에서 우리의 목표는 미래의 인공지능 학생 실천자와 창조자들을 교육하고, 고무하며, 권능을 부여하는 것으로, 여러분이 미래 지향적인 인공지능 애플리케이션을 구축할 수 있는 기술과 자신감을 갖추도록 하는 것입니다. 저는 여러분에게 경계를 뛰어넘고, 대담하고 올바른 질문을 제시하도록 격려합니다. 가장 중요한 것은, 여러분이 우승자가 되든 아니든 이 과정을 즐기라는 것입니다. 다른 인공지능 애호가들과 상호작용할 기회를 즐기시기 바랍니다. 모든 일이 잘되기를 바랍니다. [박수][음악] 우리는 항상 학생들과 협력하기를 원해 왔습니다. 우리는 인공지능 분야에서 보여준 학생들의 열정과 창의성을 칭찬합니다. 그들은 데이터를 보는 방법에 대한 많은 새로운 아이디어를 가지고 있으며, 생성형 인공지능을 활용하여 데이터를 분석하고 이를 다양한 사용자에게 확장하는 방법의 창의성을 보여주었습니다.",
+      "오늘의 도전에 참가하는 것은 여러분을 내일의 인공지능 선구자로 만들 것입니다. 나는 팀의 활력과 창의성에 깊은 인상을 받았습니다. 네. Teams에서 우리는 지속적인 학습에 매우 헌신하고 있으며, 이는 우리 자신의 엔지니어들만을 위한 것이 아니라 스마트 국가를 건설하고, 새로운 인재를 육성하고, 창의성을 자극하기 위한 것입니다. 우리의 엔지니어들이 국가 인공지능 학생 도전 대회에 대해 들었을 때, 그들은 매우 참여하고 싶어 했으며, 우리도 그 도전의 스폰서이자 참여자가 되기를 매우 기뻐했습니다. 우리는 학생들에게 우리가 건설 중인 새로운 과학 센터의 일부를 상상하도록 했습니다. 인공지능을 통해, 그들은 매우 강력한 이미지를 생성할 수 있었습니다.",
+      "이들 이미지는 과학 센터가 채택할 수 있는 것으로, 학생들이 생성형 인공지능을 통해 상상한 경험과 환경을 만드는 데 사용될 수 있습니다. 나는 학생 팀이 극대의 창의성과 강력한 기술 능력을 보여주었으며, 매우 유연했다고 생각합니다. 나는 팀의 창의성에 깊은 인상을 받았습니다. 그들은 실제 인공지능 시스템을 구축하고 맞춤화했습니다. 나는 이것이 바로 현실의 인공지능 업무에 필요한 것이라고 생각합니다. 지역 대규모 언어 모델은 가장 도움이 필요한 사람들을 권능화함으로써 ASEAN에서 인공지능 교육을 확산하려는 우리 AWS의 헌신을 나타냅니다. 이것은 단순한 학습이 아니라 새로운 세대의 인공지능 혁신자를 만드는 것으로, 그들은 커뮤니티를 변화시키고 동남아시아 기술의 미래를 추진할 것입니다. 이 도전을 통해, 우리는 경계를 뛰어넘어야 합니다.",
+      "우리는 고급 기술 능력이 필요하지 않지만, 도전 영역에 적합한 데이터 세트를 만드는 방법에 대해 브레인스토밍할 필요가 있습니다. 나는 도메인 특화 대규모 언어 모델, 특히 생성형 인공지능이 많은 산업 및 분야에 매우 유용하다는 것을 발견했습니다. 나는 이 분야에서 더 많은 실습을 하고 싶습니다. 이것은 정말로 우리의 시야를 넓혔습니다. 우리는 인공지능 이미지 프롬프트를 만드는 데 얼마나 많은 노력이 필요한지 이전에 알지 못했기 때문입니다. 그것은 효율적이고 정확하게 우리의 생각을 시각적으로 매력적인 이미지로 변환할 수 있습니다. [음악] 국가 인공지능 학생 도전 대회는 일곱 개의 산업 리더를 모았으며, 학생들에게 인공지능 지식을 사용하여 현실 세계 문제를 해결할 것을 요구합니다. 이들 도전은 창의성, 혁신 능력 및 문제 해결 기술을 배양했습니다. 모든 학생에게, 여러분은 이 여정의 중심입니다.",
+      "우리는 여러분이 잠재력을 실현하고 의미 있는 영향을 창출하는 데 필요한 자원, 플랫폼 및 지도를 계속 제공할 것입니다.",
+    ],
     paragraphsJa: [
       '急速に発展している人工知能の分野において、私たちの目標は、未来の人工知能学生実践者および創造者を教育し、激励し、権限付与することであり、皆さんに将来志向の人工知能アプリケーションを構築するためのスキルと自信を備えさせることです。境界を突き破り、大胆で的確な質問を提起することをお勧めします。最も重要なことは、皆さんが勝者になるかどうかに関わらず、このプロセスを楽しむことです。他のAI愛好家との相互作用の機会を楽しんでください。すべてがうまくいくことを祈ります。[拍手][音楽]私たちはいつも学生と協力したいと考えてきました。私たちは学生たちが人工知能の分野で示した熱情と創造性を高く評価しています。彼らはデータをどのように見るかについて多くの新しい考えを持っており、生成型人工知能を使用してデータを分析し、さまざまなユーザーへデータを拡張する方法の創造性も示しています。',
       '本日のチャレンジに参加することで、皆さんは明日の人工知能パイオニアになります。私はチームの活力と創造性に深く感銘を受けています。そうですね。Teamsでは、私たちは継続的な学習に非常に力を入れており、それは私たち自身のエンジニアのためだけでなく、スマートネーションの構築、新しい才能の育成、創造性の刺激のためです。私たちのエンジニアが国家人工知能学生チャレンジについて聞いたとき、彼らは非常に参加したいと思い、私たちもこのチャレンジのスポンサーおよび参加者になれて非常に嬉しいです。私たちは学生たちに、私たちが構築している新しい科学センターのコンテンツのいくつかを想像するよう促しました。人工知能を通じて、彼らは非常に強力な画像を生成することができます。',
@@ -5814,6 +5871,17 @@ export const videoTranscripts: Record<string, VideoTranscript> = {
       narrative: [
         'The National AI Student Challenge gathers seven industry partners and hands students real business problems to solve with AI. Organisers cast the event as a training ground for the next generation of AI practitioners and creators, urging students to push boundaries and ask bold questions.',
         'One brief asked teams to imagine content for the new science centre under construction, with AI-generated visuals that the centre may adopt for actual exhibits. AWS uses the Regional LLM track to widen AI education across ASEAN, focused on communities that need it most. Students said the challenge broadened their perspective on how much craft goes into writing AI image prompts and made the value of domain-specific LLMs concrete. AISG committed to continuing the resources, platforms and mentorship behind the programme.',
+      ],
+    },
+    digestKo: {
+      keyPoints: [
+        "전국 AI 학생 도전 대회는 AISG가 주최하고 IMDA가 지원하며, 7개의 업계 선도 기업이 실제 업무 과제를 제시합니다.",
+        "AWS는 Regional LLM 프로젝트를 통해 AI 교육을 ASEAN으로 추진하며, 가장 필요한 사람들을 중점적으로 지원합니다.",
+        "팀의 과제는 건설 중인 새로운 과학 센터를 위해 AI 이미지를 생성하고, 데이터 세트 구축 및 생성형 AI 애플리케이션을 실습하는 것을 포함합니다.",
+      ],
+      narrative: [
+        "전국 AI 학생 도전대회는 7개 산업 파트너를 모아 실제 비즈니스 문제를 학생들에게 제시하며 AI로 해결하도록 합니다. 조직위는 이 대회를 차세대 AI 실천가이자 창조자들의 훈련장으로 자리매김하며, 학생들이 과감히 질문하고 경계를 넘어설 것을 요구합니다.",
+        "그중 한 과제는 학생들이 건설 중인 새로운 과학센터를 위해 AI 이미지를 생성하도록 하는 것으로, 과학센터가 실제 전시에 채택할 가능성이 있습니다. AWS는 이를 통해 Regional LLM 프로젝트를 추진하고, AI 교육을 ASEAN까지 확대하며, 자원이 가장 필요한 집단에 주목하고 있습니다. 학생들의 피드백에 따르면 이 도전은 그들의 시야를 넓혔고, 효과적인 이미지 프롬프트 작성이 예상보다 훨씬 더 복잡하다는 것을 인식하게 했으며, 도메인 특정 LLM의 가치를 구체적으로 만들었습니다. AISG는 자원, 플랫폼, 멘토를 계속 제공하겠다고 약속합니다.",
       ],
     },
     digestJa: {
