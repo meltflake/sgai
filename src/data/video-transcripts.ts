@@ -6035,6 +6035,10 @@ export const videoTranscripts: Record<string, VideoTranscript> = {
       'Budget 2026 will help firms manage costs [music] and stay competitive. Active companies will receive a 40% corporate income tax rebate for the [music] year of assessment 2026 to help with cost pressures and operating challenges. Local companies will receive more support to internationalize. [music] We will increase grant support for companies of all sizes to [music] expand overseas to new markets. We will also enhance the market readiness assistance grant to support companies to deepen their presence [music] in their existing markets. An additional $1. 5 billion will be injected [music] into the Anker fund to support the public listings of high growth companies in Singapore. The financial sector development fund will also receive a $ 1.',
       '5 billion topup to expand the equity market development [music] program and strengthen our equities market. To accelerate AI [music] adoption, a new champions of AI program will be launched to help businesses leverage AI for enterprise transformation and workforce [music] training. Companies can tap on the enhanced enterprise innovation scheme which will include AI expenditures as a qualifying [music] activity. Existing support schemes like the productivity solutions grant will also be strengthened to help companies adopt AI enabled solutions.',
     ],
+    paragraphsKo: [
+      "2026년 예산은 기업이 비용을 관리하고 경쟁력을 유지하도록 지원할 것입니다[음악]. 활발한 기업은 2026 과세 연도에 40%의 법인소득세 감면을 받을 것이며, 이는 비용 압력과 운영상 과제에 대응하기 위한 것입니다. 현지 기업은 국제화를 달성하기 위한 더 많은 지원을 받을 것입니다[음악]. 우리는 다양한 유형의 기업에 대한 지원금을 증가시켜 해외 신시장 진출을 돕겠습니다[음악]. 우리는 또한 기업이 현존하는 시장에서의 입지를 강화하도록 지원하기 위해 시장 준비 지원금을 강화할 것입니다[음악]. 싱가포르의 고성장 기업의 공개 상장을 지원하기 위해 Ascend 기금에 추가로 15억 신달러를 투입할 것입니다[음악]. 금융 산업 발전 기금도 10억 신달러를 받을 것입니다.",
+      "50억의 추가 자금이 주식시장 개발 계획의 확대에 사용될 것이며, 우리의 주식시장을 강화할 것입니다[음악]. 인공지능의 응용 가속화를 위해 새로운 인공지능 챔피언 계획을 시작할 것이며, 기업들이 인공지능을 활용하여 기업 혁신과 직원 교육을 수행하도록 지원할 것입니다[음악]. 기업은 강화된 기업 혁신 계획을 활용할 수 있으며, 이 계획은 인공지능 지출을 적격 활동으로 포함할 것입니다[음악]. 생산성 솔루션 보조금과 같은 기존의 지원 계획도 강화될 것이며, 기업이 인공지능 기반 솔루션을 채택하도록 지원할 것입니다.",
+    ],
     paragraphsJa: [
       '2026年予算は、企業がコストを管理し、競争力を保つのを支援します。[音楽]アクティブな企業は、2026年課税年度にコスト圧力と運営上の課題に対処するため、40%の法人所得税減税を受けます。地元企業はより多くの支援を受け、国際化を実現します。[音楽]私たちはあらゆる種類の企業への資金援助を増やし、海外市場を開拓するのを支援します。[音楽]また、市場準備援助補助金を強化し、企業が既存市場でのポジション展開を、[音楽]深めるのを支援します。追加で15億シンガポール・ドルを、[音楽]アンク基金に注入し、シンガポールの高成長企業の公開上場を支援します。金融産業開発基金も10億シンガポール・ドルを受け取ります。',
       '50億の追加資金は、株式市場開発計画を拡大し、株式市場を強化するために使用されます。[音楽]人工知能の応用を加速するために、新しいAIチャンピオン・プログラムを開始し、企業が人工知能を利用して企業変革と従業員トレーニングを行うのを支援します。[音楽]企業は強化版企業イノベーション計画を利用することができ、この計画は人工知能支出を適格活動として含みます。[音楽]生産性ソリューション補助金などの既存の支援計画も強化され、企業がAI駆動ソリューションを採用するのを支援します。',
@@ -6061,6 +6065,18 @@ export const videoTranscripts: Record<string, VideoTranscript> = {
       narrative: [
         'Budget 2026 outlines three lines of support for local enterprises. On costs, all active companies receive a 40% corporate income tax rebate for Year of Assessment 2026. On internationalisation, the Market Readiness Assistance grant is enhanced to help firms both expand into new markets and deepen their presence in existing ones. The Anchor Fund receives a S$1.5 billion top-up to back public listings of high-growth Singapore companies, and the Financial Sector Development Fund adds S$5 billion to expand the equity market development programme.',
         'On AI, a new Champions of AI programme will help businesses apply AI to transformation and workforce training. The enhanced Enterprise Innovation Scheme will recognise AI expenditure as a qualifying activity, and the Productivity Solutions Grant will be strengthened to support AI-enabled solutions.',
+      ],
+    },
+    digestKo: {
+      keyPoints: [
+        "2026년 활발한 기업들이 해당 과세 연도에 적용되는 법인소득세 40% 환급을 획득합니다.",
+        "MRA 국제화 보조금이 강화되며, 더 광범위한 해외 진출 지원 계획과 함께 추진됩니다.",
+        "Anchor Fund의 자금이 15억 SGD 증액되며, FSDF의 자금이 50억 SGD 증액되어 주식 시장을 강화합니다.",
+        "새로운 Champions of AI 계획을 신설하고, 업그레이드된 EIS 및 PSG와 함께 기업 AI 도입을 추진합니다.",
+      ],
+      narrative: [
+        "2026년 재정예산안은 현지 기업에 세 가지 지원을 제공합니다. 첫째는 비용 절감입니다: 모든 활동 기업이 2026 평가 연도에 40% 법인세 환급을 받습니다. 둘째는 국제화입니다: MRA 국제화 보조금이 강화되어 기업의 기존 시장 심화 및 신규 시장 개척을 지원합니다; Anchor Fund는 15억 싱가포르 달러 증자로 현지 고성장 기업의 상장을 지원합니다; 금융산업발전기금(FSDF)에 50억 싱가포르 달러를 추가 배정하여 주식시장을 강화합니다.",
+        "셋째는 AI 도입입니다: 신설 Champions of AI 계획은 AI를 활용한 기업의 디지털 전환 및 직원 교육을 지원합니다; 업그레이드된 기업혁신계획(EIS)은 AI 지출을 적격 활동에 포함시킵니다; 생산성 솔루션 보조금(PSG)도 지원을 강화하여 AI 기반 솔루션을 포함합니다.",
       ],
     },
     digestJa: {
@@ -6095,6 +6111,11 @@ export const videoTranscripts: Record<string, VideoTranscript> = {
       'Our self-supervised learning technology achieves high classification performance as compared to existing state-of-the-art while reducing the need for labeled data by 90%. To further improve sorting quality, the AI system is also capable of distinguishing between clean and contaminated bottles, ensuring that only recyclable materials continue down the processing line. These capabilities are integrated into a robotic platform designed for seamless operation in real world environments. In practice, the system automatically identifies and sorts plastic waste in real time, minimizing the need for human intervention while maintaining high precision. Our proposed multisspectral AI technologies can automate passive weight sorting, reducing reliance on manual sorting.',
       "This technologies decreases manpower cost and enables large scale plastic recycling. We'll continue to scale up the system and cooperate with industrial partners and government agencies to transform plastic recycling.",
     ],
+    paragraphsKo: [
+      "플라스틱 폐기물은 싱가포르에서 발생하는 네 가지 주요 폐기물 흐름 중 하나입니다. 그러나 2023년의 회수율은 가장 낮아서 단 5%에 불과했습니다. 회수 체인의 핵심 단계는 플라스틱의 분류입니다. 현존 시스템에서 재활용 가능 물질은 먼저 파란색 쓰레기통에 투입되고, 그 다음 물질 회수 시설로 운송됩니다. 그곳에서 재료는 인공 분류를 거쳐 해외로 운송되기 위해 포장됩니다. 그러나 인공 플라스틱 분류는 효율성이 낮고, 속도가 느리며, 노동 강도가 크고, 오류가 발생하기 쉬우며, 근로자의 건강에 위험을 초래합니다. 저희는 다중 스펙트럼 인공지능 기술을 활용하여 플라스틱 분류 과정을 혁신하는 새로운 방법을 도입했습니다. 서로 다른 파장에서의 반사 패턴을 포착함으로써, 이 시스템은 재료가 컨베이어 벨트 위에서 이동 중일 때에도 플라스틱 종류를 정확하게 식별할 수 있습니다.",
+      "저희의 자가감독 학습 기술은 분류 성능에서 현존 최첨단 기술을 능가하면서 동시에 주석 데이터 필요량을 90% 감소시켰습니다. 분류 품질을 더욱 향상시키기 위해 인공지능 시스템은 깨끗한 병과 오염된 병을 구분할 수 있으며, 재활용 가능 물질만이 처리 흐름으로 계속 진행되도록 보장합니다. 이러한 기능들은 현실 환경에서 원활한 운영을 위해 설계된 로봇 플랫폼에 통합되어 있습니다. 실제로 이 시스템은 플라스틱 폐기물을 실시간으로 자동 식별하고 분류할 수 있으며, 인공 개입을 최대한 최소화하면서도 높은 정확도를 유지합니다. 저희가 제안한 다중 스펙트럼 인공지능 기술은 수동 중량 분류의 자동화를 실현할 수 있으며, 인공 분류에 대한 의존성을 감소시킵니다.",
+      "이 기술은 인력 비용을 낮추고 대규모 플라스틱 회수를 실현합니다. 저희는 시스템 규모를 계속 확대하고 산업 파트너 및 정부 기관과 협력하여 플라스틱 회수의 전환을 추진할 것입니다.",
+    ],
     paragraphsJa: [
       'プラスチック廃棄物はシンガポールで発生する4大廃棄物流の1つです。しかし、2023年にはその回収率が最も低く、わずか5%でした。回収チェーンにおける重要なステップはプラスチックの分類です。既存のシステムでは、リサイクル可能な物質は最初にブルーゴミ箱に投入され、その後、マテリアルリサイクル施設に運送されます。そこで、材料は人工分類され、梱包されて海外に送られます。しかし、人工プラスチック分類は効率が低く、速度が遅く、労働強度が高く、エラーが起きやすく、作業者の健康に対してリスクを生じさせます。私たちは、マルチスペクトラルAI技術を活用してプラスチック分類プロセスを革新する新しい手法を導入しました。異なる波長での反射パターンをキャプチャすることによって、このシステムは材料がコンベアベルト上を移動している場合でも、プラスチックの種類を正確に識別することができます。',
       '私たちの自己監督学習技術は、分類性能において既存の最先端技術を上回っており、同時にアノテーションデータの必要性を90%削減しています。分類品質をさらに向上させるために、AIシステムはクリーンな瓶と汚染された瓶を区別することもでき、リサイクル可能な材料のみが処理フローに進み続けることを保証します。これらの機能は、ロボットプラットフォームに統合され、実際の環境でシームレスに動作するように設計されています。実際には、このシステムはプラスチック廃棄物をリアルタイムで自動的に識別および分類でき、人的介入を最小限に抑えながら高い精度を維持しています。私たちが提案するマルチスペクトラルAI技術は、受動的な重量分類の自動化を実現でき、人工分類への依存を削減します。',
@@ -6120,6 +6141,17 @@ export const videoTranscripts: Record<string, VideoTranscript> = {
       narrative: [
         "Plastic is one of Singapore's top four waste streams, yet only 5% was recycled in 2023 — the lowest rate of any category. The bottleneck is sorting: recyclables go into blue bins, are trucked to materials recovery facilities, then manually sorted and baled for export. Manual sorting is slow, error-prone and a health risk for workers.",
         'The team replaces that step with multispectral AI. By reading reflectance patterns across wavelengths, the system identifies plastic types in real time as items move on the conveyor. Self-supervised learning cuts labelled-data requirements by 90% while outperforming existing state-of-the-art classifiers. The model also separates clean bottles from contaminated ones, so only recyclable material continues down the line. The full stack runs inside a robotic platform built for real environments, reducing manpower cost and making large-scale plastic recycling viable. The team is now working with industry partners and government agencies to expand deployment.',
+      ],
+    },
+    digestKo: {
+      keyPoints: [
+        "플라스틱은 싱가포르의 4대 폐기물 흐름 중 하나이며, 2023년 재활용률은 단 5%로 각종 폐기물 중 가장 낮습니다.",
+        "AISG 100E 프로젝트는 다중분광 AI를 사용하여 컨베이어 벨트 위에서 서로 다른 플라스틱 유형을 식별하고, 깨끗한 병과 오염된 병을 구분합니다.",
+        "자기지도학습이 필요한 레이블 데이터를 90% 감소시키며, 이 방안은 실제 분류 환경에서 사용되는 로봇 플랫폼에 통합됩니다.",
+      ],
+      narrative: [
+        "플라스틱은 싱가포르의 4대 폐기물 흐름 중 하나이지만, 2023년 재활용률은 5%에 불과합니다. 재활용 체인에서 가장 중요한 단계는 선별입니다. 재활용 가능한 물품을 먼저 파란색 통에 넣고, MRF로 운반한 후 인력으로 분류·포장하여 수출합니다. 인력 선별은 느리고 오류가 발생하기 쉬우며 작업자의 건강에 해롭습니다.",
+        "팀은 다중분광 AI를 사용하여 인력 작업을 대체합니다. 이 시스템은 서로 다른 파장에서의 반사 패턴을 포착하여 컨베이어 벨트 위에서 플라스틱 종류를 실시간으로 식별합니다. 자기지도학습은 필요한 주석 데이터를 90% 줄이면서도 분류 성능을 기존 최고 방안보다 우수하게 유지합니다. AI는 또한 깨끗한 병과 오염된 병을 구분할 수 있어 재활용 가능한 재료만 하류 공정으로 진입하도록 보장합니다. 전체 솔루션은 로봇 플랫폼에 통합되어 실제 환경에서 운영될 수 있으며, 인력 비용을 절감하고 플라스틱 재활용을 규모화할 수 있습니다. 팀은 산업 파트너 및 정부 기관과 협력하여 배포를 확대하고 있습니다.",
       ],
     },
     digestJa: {
