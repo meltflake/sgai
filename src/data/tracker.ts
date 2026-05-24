@@ -13,9 +13,9 @@ export type DimensionId = 'investment' | 'talent' | 'compute' | 'adoption' | 're
  * External evidence anchor for a dimension.
  * Despite the name, not strictly a "ranking" — it covers any authoritative
  * external signal: third-party rankings (Tortoise / Oxford / WIPO / Stanford),
- * policy facts (Budget 2026 line items), signed international agreements
+ * policy facts (Budget 2026 line items), international governance artefacts
  * (Singapore Consensus / ASEAN Guide), etc. The `rank` field carries the
- * concrete claim (e.g. "#3", "11 countries signed", "400% tax deduction").
+ * concrete claim (e.g. "#3", "100+ participants", "400% tax deduction").
  */
 export interface RankingAnchor {
   source: string;
@@ -140,7 +140,7 @@ export interface OverallSummary {
   methodologyNoteKo?: string;
 }
 
-export const dataDate = '2026-05-02';
+export const dataDate = '2026-05-20';
 
 export const overallSummary: OverallSummary = {
   oneLiner:
@@ -368,6 +368,21 @@ export const dimensions: Dimension[] = [
         sourceJa: 'Introl 統合、2025.8',
         sourceEn: 'Introl compilation, 2025-08',
         sourceUrl: 'https://www.edb.gov.sg/en/our-industries/artificial-intelligence-in-singapore.html',
+      },
+      {
+        name: 'OpenAI for Singapore',
+        nameKo: 'OpenAI for Singapore',
+        nameJa: 'OpenAI for Singapore',
+        nameEn: 'OpenAI for Singapore',
+        value: 'S$300M+ 承诺；200+ 本地技术岗位',
+        valueKo: 'S$300M+ 약속; 200개 이상 현지 기술 직무',
+        valueJa: 'S$300M+ コミットメント；200 以上の現地技術職',
+        valueEn: 'S$300M+ commitment; 200+ Singapore-based technical roles',
+        source: 'OpenAI / MDDI, 2026.5',
+        sourceKo: 'OpenAI / MDDI, 2026.5',
+        sourceJa: 'OpenAI / MDDI, 2026.5',
+        sourceEn: 'OpenAI / MDDI, 2026-05',
+        sourceUrl: 'https://openai.com/index/introducing-openai-for-singapore/',
       },
       {
         name: 'AI 创业融资总额',
@@ -1572,13 +1587,13 @@ export const dimensions: Dimension[] = [
     badgeJa: 'ルール制定者',
     badgeEn: 'Rule-maker',
     judgment:
-      'Singapore Consensus on AI Safety 11 国签署（含中美）、ASEAN Guide on AI Governance 10 国采纳（新加坡主导起草）、AI Verify Foundation 在全球被引、REAIM 联合主办、ISESEA 已办两届——新加坡是规则制定者而不是接受者，话语权显著超出体量。Bletchley、Seoul、Paris 三届 AI Safety Summit 全程参与；MAS Project MindForge 拉到 24 家机构 + 四大云厂；UN Independent International Scientific Panel 有席位。',
+      'Singapore Consensus on AI Safety 由 2025 SCAI: ISE 产出，100+ 参与者来自 11 个国家，并在 2026 ISE 持续更新；ASEAN Guide on AI Governance 10 国采纳（新加坡主导起草）；AI Verify Foundation 推出 AI TAP；Agentic AI Governance Framework 已加入 60+ 机构反馈和 10+ 真实案例——新加坡是规则制定者而不是接受者，话语权显著超出体量。Bletchley、Seoul、Paris 三届 AI Safety Summit 全程参与；MAS Project MindForge 拉到 24 家机构 + 四大云厂；UN Independent International Scientific Panel 有席位。',
     judgmentKo:
-      'Singapore Consensus on AI Safety 11개 국가 서명(중미 포함), ASEAN Guide on AI Governance 10개 국가 채택(싱가포르 주도 기초 작성), AI Verify Foundation은 전 세계적으로 인용, REAIM은 공동 주최, ISESEA는 이미 두 차례 개최됨—싱가포르는 규칙 제정자이지 수용자가 아니며, 그 영향력은 국가 규모를 현저히 초과합니다. Bletchley, Seoul, Paris 세 차례 AI Safety Summit에 전면 참여; MAS Project MindForge는 24개 기관 + 4대 클라우드 제공업체 확보; UN Independent International Scientific Panel 내 의석 보유.',
+      'Singapore Consensus on AI Safety는 2025 SCAI: ISE에서 나왔고, 11개국의 100명 이상 참여자가 기여했으며 2026 ISE에서 계속 업데이트됩니다. ASEAN Guide on AI Governance는 10개국이 채택했고(싱가포르 주도 기초 작성), AI Verify Foundation은 AI TAP를 추진하며, Agentic AI Governance Framework는 60개 이상 기관 피드백과 10개 이상 실제 사례를 반영했습니다. 싱가포르는 규칙 제정자이지 수용자가 아니며, 영향력은 국가 규모를 현저히 초과합니다. Bletchley, Seoul, Paris 세 차례 AI Safety Summit에 전면 참여; MAS Project MindForge는 24개 기관 + 4대 클라우드 제공업체 확보; UN Independent International Scientific Panel 내 의석 보유.',
     judgmentJa:
-      'Singapore Consensus on AI Safety 11 国署名（中米を含む）、ASEAN Guide on AI Governance 10 国採用（シンガポール主導起草）、AI Verify Foundation が世界的に引用、REAIM 共同主催、ISESEA 既に 2 回開催——シンガポールはルール制定者であり受け手ではなく、話語権は体量を大きく超えている。Bletchley、Seoul、Paris 3 回 AI Safety Summit に全程参加；MAS Project MindForge 24 機構 + 四大クラウド厂を引き寄せ；UN Independent International Scientific Panel に議席がある。',
+      'Singapore Consensus on AI Safety は 2025 SCAI: ISE から生まれ、11 カ国の 100 名超が参加し、2026 ISE で継続更新されます。ASEAN Guide on AI Governance は 10 カ国が採用（シンガポール主導起草）、AI Verify Foundation は AI TAP を進め、Agentic AI Governance Framework は 60 以上の組織フィードバックと 10 以上の実例を反映しました。シンガポールはルール制定者であり受け手ではなく、話語権は体量を大きく超えています。Bletchley、Seoul、Paris 3 回 AI Safety Summit に全程参加；MAS Project MindForge 24 機構 + 四大クラウド厂を引き寄せ；UN Independent International Scientific Panel に議席があります。',
     judgmentEn:
-      "Singapore Consensus on AI Safety signed by 11 countries (incl. US and China); ASEAN Guide on AI Governance adopted by all 10 ASEAN states (drafted under Singapore's lead); AI Verify Foundation cited globally; REAIM co-hosted; ISESEA held twice — Singapore is a rule-maker, not a rule-taker, with influence well above its size. Full participation in Bletchley, Seoul, and Paris AI Safety Summits; MAS Project MindForge has 24 institutions + the four major cloud vendors; UN Independent International Scientific Panel includes Singapore.",
+      'The Singapore Consensus on AI Safety came out of SCAI: ISE 2025, with 100+ participants from 11 countries and continued updates through ISE 2026; the ASEAN Guide on AI Governance was adopted by all 10 ASEAN states under Singapore’s lead; AI Verify Foundation is launching AI TAP; the Agentic AI Governance Framework now includes feedback from 60+ organisations and 10+ real cases. Singapore is a rule-maker, not a rule-taker, with influence well above its size. Full participation in Bletchley, Seoul, and Paris AI Safety Summits; MAS Project MindForge has 24 institutions + the four major cloud vendors; UN Independent International Scientific Panel includes Singapore.',
     rankingAnchors: [
       {
         source: 'Oxford Government AI Readiness 2024',
@@ -1590,11 +1605,11 @@ export const dimensions: Dimension[] = [
       },
       {
         source: 'Singapore Consensus',
-        rank: '11 国签署',
-        rankKo: '11개 국가 서명',
-        rankJa: '11 国署名',
-        rankEn: 'Signed by 11 countries',
-        url: 'https://aiverifyfoundation.sg/',
+        rank: '100+ 参与者 / 11 国',
+        rankKo: '100명 이상 참여자 / 11개국',
+        rankJa: '100 名超の参加者 / 11 カ国',
+        rankEn: '100+ participants / 11 countries',
+        url: 'https://www.scai.gov.sg/2025/scai2025-report',
       },
       {
         source: 'ASEAN Guide on AI Governance',
@@ -1617,13 +1632,13 @@ export const dimensions: Dimension[] = [
       {
         name: 'Singapore Consensus on AI Safety',
         nameEn: 'Singapore Consensus on AI Safety',
-        value: '11 国签署（含中美）',
-        valueKo: '11개 국가 서명(중미 포함)',
-        valueJa: '11 国署名（中米を含む）',
-        valueEn: 'Signed by 11 countries (incl. US and China)',
-        source: 'IMDA / AISI, 2024',
-        sourceEn: 'IMDA / AISI, 2024',
-        sourceUrl: 'https://aiverifyfoundation.sg/',
+        value: '100+ 参与者 / 11 国；2026 ISE 更新',
+        valueKo: '100명 이상 참여자 / 11개국; 2026 ISE 업데이트',
+        valueJa: '100 名超の参加者 / 11 カ国；2026 ISE 更新',
+        valueEn: '100+ participants / 11 countries; updated through ISE 2026',
+        source: 'SCAI / AISI, 2025–2026',
+        sourceEn: 'SCAI / AISI, 2025–2026',
+        sourceUrl: 'https://www.scai.gov.sg/2025/scai2025-report',
       },
       {
         name: 'ASEAN Guide on AI Governance',

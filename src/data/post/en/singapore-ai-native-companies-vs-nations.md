@@ -387,7 +387,7 @@ Singapore-led global frameworks:
 
 - **Singapore AI Safety Institute (AISI)** — **S$10M/yr**
 - **Singapore Conference on AI / International Scientific Exchange on AI Safety I + II**
-- **Singapore Consensus on Global AI Safety Research Priorities** (**signed by 11 countries, including the US and China**)
+- **Singapore Consensus on Global AI Safety Research Priorities** (**a living document from 100+ participants across 11 countries**)
 - IMDA × Humane Intelligence multilingual red-team challenge
 
 ASEAN regional:
@@ -525,7 +525,7 @@ The company-version line and the country-version line are **saying the same thin
 
 - **NAIIP delivery rate**: by 2029, completion against the 10K firms + 100K workers target
 - **Diffusion speed of Note Buddy-class projects**: how long to scale from 5,000 clinicians to every doctor in the country — the best measurement point for "AI-native penetrating to the front line" at the national scale
-- **Influence expansion of the Singapore Consensus**: can it grow from 11 countries to G20? Can AISI become AI's IAEA?
+- **Influence expansion of the Singapore Consensus**: after the 2026 update, can it grow beyond 100+ participants from 11 countries into broader research and policy networks? Can it reach the G20 agenda?
 
 ### One-line ending
 

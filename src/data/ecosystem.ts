@@ -7178,10 +7178,147 @@ Worth watching: whether US GPU export controls on Singapore will tighten, whethe
             labelKo: 'NVIDIA Singapore AI Research Lab 공지사항(ATxSummit 2026)',
             labelJa: 'NVIDIA Singapore AI Research Lab 発表（ATxSummit 2026）',
             labelEn: 'NVIDIA Singapore AI Research Lab announcement (ATxSummit 2026)',
-            url: 'https://letsdatascience.com/news/nvidia-opens-singapore-research-hub-for-embodied-ai-50fa102f',
+            url: 'https://www.imda.gov.sg/resources/press-releases-factsheets-and-speeches/press-releases/2026/accelerate-real-world-deployment',
           },
         ],
         updated: '2026-05-20',
+      },
+      {
+        id: 'openai',
+        name: 'OpenAI',
+        nameEn: 'OpenAI',
+        description: 'OpenAI for Singapore：S$300M+ 承诺、美国以外首个 Applied AI Lab、200+ 本地技术岗',
+        descriptionKo: 'OpenAI for Singapore: S$300M+ 약속, 미국 밖 첫 Applied AI Lab, 200개 이상 현지 기술 직무',
+        descriptionJa: 'OpenAI for Singapore：S$300M+ コミットメント、米国外初の Applied AI Lab、200 以上の現地技術職',
+        descriptionEn:
+          'OpenAI for Singapore: S$300M+ commitment, first Applied AI Lab outside the US, 200+ local technical roles',
+        entityType: 'partner',
+        status: 'active',
+        scale: 'S$300M+；200+ 新加坡技术岗位；美国以外首个 Applied AI Lab',
+        scaleKo: 'S$300M+; 200개 이상 싱가포르 기술 직무; 미국 밖 첫 Applied AI Lab',
+        scaleJa: 'S$300M+；200 以上のシンガポール技術職；米国外初の Applied AI Lab',
+        scaleEn: 'S$300M+; 200+ Singapore-based technical roles; first Applied AI Lab outside the US',
+        summary:
+          'OpenAI 于 2026 年 5 月宣布与 MDDI 推出 OpenAI for Singapore。它不只是 APAC 总部存在，而是把 OpenAI 的 applied AI 工程部署能力接入新加坡国家 AI 任务、公共服务、金融、医疗、教育与 SME 采用计划。',
+        summaryKo:
+          'OpenAI는 2026년 5월 MDDI와 OpenAI for Singapore를 발표했습니다. 이는 단순한 APAC 본부 존재가 아니라 OpenAI의 applied AI 엔지니어링 배포 역량을 싱가포르 국가 AI 과제, 공공 서비스, 금융, 의료, 교육, SME 도입 계획에 연결합니다.',
+        summaryJa:
+          'OpenAI は 2026 年 5 月、MDDI と OpenAI for Singapore を発表しました。これは単なる APAC 本部ではなく、OpenAI の applied AI エンジニアリング実装能力をシンガポールの国家 AI ミッション、公共サービス、金融、医療、教育、SME 採用計画に接続するものです。',
+        summaryEn:
+          'OpenAI announced OpenAI for Singapore with MDDI in May 2026. This is not merely an APAC-HQ presence: it plugs OpenAI’s applied AI engineering capacity into Singapore’s National AI Missions, public service, finance, healthcare, education, and SME adoption programmes.',
+        whatItIs: `OpenAI 在新加坡的 2026 新承诺：
+
+- **OpenAI for Singapore**：与 MDDI 的国家级合作计划
+- **Applied AI Lab**：OpenAI 美国以外首个 Applied AI Lab
+- **Forward-Deployed Engineers**：未来几年在新加坡创造 200+ 技术岗位
+- **人才计划**：OpenAI Academy 新加坡章节、Codex for Teachers hackathon、Forward-Deployed Engineer training programme
+- **采用计划**：参与 National AI Impact Programme，支持 SME、创始人和公共部门采用 AI
+
+这个节点把“模型公司”变成“国家执行伙伴”：OpenAI 不只是提供 ChatGPT / API，而是把工程团队放到新加坡具体行业问题旁边。`,
+        whatItIsKo: `OpenAI의 2026년 싱가포르 신규 약속:
+
+- **OpenAI for Singapore**: MDDI와의 국가급 협력 계획
+- **Applied AI Lab**: OpenAI가 미국 밖에 세우는 첫 Applied AI Lab
+- **Forward-Deployed Engineers**: 향후 몇 년간 싱가포르에 200개 이상 기술 직무 창출
+- **인재 계획**: OpenAI Academy 싱가포르 챕터, Codex for Teachers hackathon, Forward-Deployed Engineer training programme
+- **도입 계획**: National AI Impact Programme에 참여해 SME, 창업자, 공공 부문 AI 도입 지원
+
+이 노드는 “모델 회사”를 “국가 실행 파트너”로 바꿉니다. OpenAI는 ChatGPT / API만 제공하는 것이 아니라, 엔지니어링 팀을 싱가포르의 구체적 산업 문제 옆에 배치합니다.`,
+        whatItIsJa: `OpenAI の 2026 年シンガポール新コミットメント：
+
+- **OpenAI for Singapore**：MDDI との国家レベル協力計画
+- **Applied AI Lab**：OpenAI にとって米国外初の Applied AI Lab
+- **Forward-Deployed Engineers**：今後数年でシンガポールに 200 以上の技術職を創出
+- **人材計画**：OpenAI Academy シンガポール章、Codex for Teachers hackathon、Forward-Deployed Engineer training programme
+- **採用計画**：National AI Impact Programme に参加し、SME、創業者、公共部門の AI 採用を支援
+
+このノードは「モデル企業」を「国家実行パートナー」に変えます。OpenAI は ChatGPT / API を提供するだけでなく、エンジニアリングチームをシンガポールの具体的な産業課題の横に置きます。`,
+        whatItIsEn: `OpenAI’s 2026 Singapore commitments:
+
+- **OpenAI for Singapore**: national-level partnership with MDDI
+- **Applied AI Lab**: OpenAI’s first Applied AI Lab outside the United States
+- **Forward-Deployed Engineers**: 200+ Singapore-based technical roles over the next few years
+- **Talent programmes**: OpenAI Academy Singapore chapter, Codex for Teachers hackathons, Forward-Deployed Engineer training programme
+- **Adoption programmes**: participation in the National AI Impact Programme, supporting SMEs, founders, and public-sector adoption
+
+This turns a model company into a national execution partner. OpenAI is not only providing ChatGPT / API access; it is putting engineering teams next to Singapore’s concrete sector problems.`,
+        aiRelevance: `OpenAI 的重要性在于“前沿模型能力 + 部署工程”同时到场。
+
+对新加坡来说，真正稀缺的不是能访问 GPT，而是把前沿模型稳定、合规、可审计地嵌入公共服务、金融、医疗和教育流程的人。OpenAI for Singapore 的 200+ technical roles 和 Applied AI Lab 正好补这个缺口。`,
+        aiRelevanceKo: `OpenAI의 중요성은 “프런티어 모델 능력 + 배포 엔지니어링”이 동시에 들어온다는 데 있습니다.
+
+싱가포르에 정말 부족한 것은 GPT 접근권이 아니라, 프런티어 모델을 안정적이고, 규정에 맞고, 감사 가능하게 공공 서비스, 금융, 의료, 교육 프로세스에 넣을 사람입니다. OpenAI for Singapore의 200개 이상 technical roles와 Applied AI Lab이 바로 이 빈틈을 보완합니다.`,
+        aiRelevanceJa: `OpenAI の重要性は、「フロンティアモデル能力 + 実装エンジニアリング」が同時に入る点にあります。
+
+シンガポールに本当に不足しているのは GPT へのアクセスではなく、フロンティアモデルを安定的、コンプライアンス適合、監査可能な形で公共サービス、金融、医療、教育プロセスに組み込む人材です。OpenAI for Singapore の 200 以上の technical roles と Applied AI Lab は、この不足を補います。`,
+        aiRelevanceEn: `OpenAI matters because it brings frontier model capability and deployment engineering at the same time.
+
+For Singapore, the scarce part is not access to GPT. It is people who can embed frontier models into public service, finance, healthcare, and education workflows in a stable, compliant, auditable way. OpenAI for Singapore’s 200+ technical roles and Applied AI Lab fill that gap.`,
+        singaporeRelevance: `OpenAI for Singapore 是“新加坡作为可信 AI 落地实验室”的强信号。
+
+在「七条传导杠杆」里：
+
+- **杠杆 1（基建）**：前沿模型和部署工程能力
+- **杠杆 3（产业应用）**：金融、医疗、公共服务、SME 采用
+- **杠杆 6（外交 / 外资）**：让美国前沿 AI 公司把非美国首个 Applied AI Lab 放在新加坡
+
+观点：这条新闻比“区域总部”更重。区域总部是商业存在；Applied AI Lab + FDE 是把生产能力放在新加坡。`,
+        singaporeRelevanceKo: `OpenAI for Singapore는 “신뢰할 수 있는 AI 배포 실험실로서의 싱가포르”에 대한 강한 신호입니다.
+
+「7가지 전달 레버」에서:
+
+- **레버 1(인프라)**: 프런티어 모델과 배포 엔지니어링 역량
+- **레버 3(산업 응용)**: 금융, 의료, 공공 서비스, SME 도입
+- **레버 6(외교 / 외자)**: 미국 프런티어 AI 회사가 미국 밖 첫 Applied AI Lab을 싱가포르에 두게 함
+
+관점: 이 뉴스는 “지역 본부”보다 중요합니다. 지역 본부는 상업적 존재이고, Applied AI Lab + FDE는 생산 역량을 싱가포르에 두는 것입니다.`,
+        singaporeRelevanceJa: `OpenAI for Singapore は「信頼される AI 実装実験室としてのシンガポール」を示す強いシグナルです。
+
+「7つの伝導レバー」では：
+
+- **レバー1（インフラ）**：フロンティアモデルと実装エンジニアリング能力
+- **レバー3（産業応用）**：金融、医療、公共サービス、SME 採用
+- **レバー6（外交 / 外資）**：米国のフロンティア AI 企業が米国外初の Applied AI Lab をシンガポールに置く
+
+見方：このニュースは「地域本部」より重いです。地域本部は商業的存在ですが、Applied AI Lab + FDE は生産能力をシンガポールに置くことです。`,
+        singaporeRelevanceEn: `OpenAI for Singapore is a strong signal for Singapore as a trusted AI deployment lab.
+
+In the "seven transmission levers" framework:
+
+- **Lever 1 (infrastructure)**: frontier models and deployment engineering capacity
+- **Lever 3 (industry adoption)**: finance, healthcare, public service, and SME adoption
+- **Lever 6 (international / foreign capital)**: getting a US frontier AI company to place its first non-US Applied AI Lab in Singapore
+
+A take: this is heavier than a “regional HQ” announcement. A regional HQ is commercial presence; an Applied AI Lab plus FDE teams are production capacity on the ground.`,
+        milestones: [
+          {
+            date: '2026-05-19',
+            title: 'OpenAI 宣布 OpenAI for Singapore',
+            titleKo: 'OpenAI, OpenAI for Singapore 발표',
+            titleJa: 'OpenAI が OpenAI for Singapore を発表',
+            titleEn: 'OpenAI announces OpenAI for Singapore',
+          },
+          {
+            date: '2026-05-20',
+            title: 'MDDI / IMDA 将合作纳入 ATxSummit 2026 AI 落地包',
+            titleKo: 'MDDI / IMDA가 협력을 ATxSummit 2026 AI 배포 패키지에 포함',
+            titleJa: 'MDDI / IMDA が協力を ATxSummit 2026 AI 実装パッケージに組み込み',
+            titleEn: 'MDDI / IMDA include the partnership in the ATxSummit 2026 AI deployment package',
+          },
+        ],
+        relatedLeverNumbers: [1, 3, 6],
+        relatedEntityIds: ['ai-singapore'],
+        sources: [
+          { label: 'OpenAI', labelEn: 'OpenAI', url: 'https://openai.com/index/introducing-openai-for-singapore/' },
+          {
+            label: 'IMDA ATxSummit 2026 公告',
+            labelKo: 'IMDA ATxSummit 2026 발표',
+            labelJa: 'IMDA ATxSummit 2026 発表',
+            labelEn: 'IMDA ATxSummit 2026 announcement',
+            url: 'https://www.imda.gov.sg/resources/press-releases-factsheets-and-speeches/press-releases/2026/accelerate-real-world-deployment',
+          },
+        ],
+        updated: '2026-05-24',
       },
       {
         id: 'sony-research',

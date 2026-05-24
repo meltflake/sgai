@@ -394,7 +394,7 @@ Budget 2026＋各省庁＋各法定機関のすべてのAI関連政策と実装�
 
 - **Singapore AI Safety Institute (AISI)** — **年間S$10M**
 - **Singapore Conference on AI / International Scientific Exchange on AI Safety I + II**
-- **Singapore Consensus on Global AI Safety Research Priorities**（**11カ国署名、米中含む**）
+- **Singapore Consensus on Global AI Safety Research Priorities**（**11 カ国から 100 名超が参加した living document**）
 - IMDA × Humane Intelligence 多様性レッドチームチャレンジ
 
 ASEAN地域：
@@ -533,7 +533,7 @@ Diana HuとMariam Jaafar（MOH COS）の発言を並べると、意外な同型�
 
 ### 国際：レバー6は持ちこたえるか
 
-- **Singapore Consensus署名国**：11カ国（米中含む）から何カ国に拡大するか？G20入りできるか？
+- **Singapore Consensus の影響力**：2026 年更新後、11 カ国からの 100 名超参加者を超えて、より広い研究機関・政策ネットワークへ拡大できるか？G20 議題に入れるか？
 - **Agentic AI Governance Framework**：2026年1月の世界初発表後、何カ国/何社の多国籍企業が引用しているか？
 - **AI企業APAC本部の動向**：OpenAI、Anthropic、その他大手はシンガポールのポジションを拡大しているか、撤退しているか。これはシンガポールのAIガバナンスの信頼性に対する市場からの最も直接的な投票
 

@@ -213,12 +213,13 @@ Together with same-day announcements of the NVIDIA Singapore AI Research Lab and
         titleJa: 'NVIDIA シンガポール AI 研究ラボ',
         titleEn: 'NVIDIA Singapore AI Research Lab',
         date: '2026-05',
-        source: 'NVIDIA / 经济发展局 (EDB)',
-        sourceKo: 'NVIDIA / 경제 개발 위원회 (EDB)',
-        sourceJa: 'NVIDIA / 経済発展局 (EDB)',
-        sourceEn: 'NVIDIA / Economic Development Board (EDB)',
-        sourceOrgUrl: 'https://www.edb.gov.sg/',
-        sourceUrl: 'https://letsdatascience.com/news/nvidia-opens-singapore-research-hub-for-embodied-ai-50fa102f',
+        source: 'NVIDIA / 资讯通信媒体发展局 (IMDA)',
+        sourceKo: 'NVIDIA / 정보통신미디어발전청 (IMDA)',
+        sourceJa: 'NVIDIA / 情報通信メディア発展庁 (IMDA)',
+        sourceEn: 'NVIDIA / Infocomm Media Development Authority (IMDA)',
+        sourceOrgUrl: 'https://www.imda.gov.sg/',
+        sourceUrl:
+          'https://www.imda.gov.sg/resources/press-releases-factsheets-and-speeches/press-releases/2026/accelerate-real-world-deployment',
         summary:
           'NVIDIA 在 ATxSummit 2026 公布在新加坡设立第一个研究实验室（亚太第二个），聚焦 embodied AI 与 efficient AI computing。',
         summaryKo:
@@ -288,7 +289,8 @@ Together with same-day announcements of the NVIDIA Singapore AI Research Lab and
         sourceEn:
           'Infocomm Media Development Authority (IMDA) / JTC / Singapore Institute of Technology (SIT) / Land Transport Authority (LTA)',
         sourceOrgUrl: 'https://www.imda.gov.sg/',
-        sourceUrl: 'https://letsdatascience.com/news/nvidia-opens-singapore-research-hub-for-embodied-ai-50fa102f',
+        sourceUrl:
+          'https://www.imda.gov.sg/resources/press-releases-factsheets-and-speeches/factsheets/2026/research-test-and-deploy-physical-ai-in-punggol-digital-district',
         summary:
           'IMDA 在 ATxSummit 2026 公布在 Punggol Digital District 建立片区级、多运营商、混合公共环境的 embodied AI testbed，2026 年下半年 launch。首批：Certis、DHL、Grab、QuikBot；配套 Centre for Intelligent Robotics（IMDA + NRP）。',
         summaryKo:
@@ -372,6 +374,75 @@ Together with same-day announcements of the NVIDIA Singapore AI Research Lab and
         relatedTimelineYears: [2026],
         relatedPostSlugs: [],
         addedAt: '2026-05-20',
+      },
+      {
+        id: 'openai-for-singapore-2026',
+        title: 'OpenAI for Singapore 合作计划',
+        titleKo: 'OpenAI for Singapore 협력 계획',
+        titleJa: 'OpenAI for Singapore 協力計画',
+        titleEn: 'OpenAI for Singapore',
+        date: '2026-05',
+        source: 'OpenAI / 数字发展与信息部 (MDDI)',
+        sourceKo: 'OpenAI / 디지털 개발 및 정보부 (MDDI)',
+        sourceJa: 'OpenAI / デジタル発展・情報部 (MDDI)',
+        sourceEn: 'OpenAI / Ministry of Digital Development and Information (MDDI)',
+        sourceOrgUrl: 'https://openai.com/',
+        sourceUrl: 'https://openai.com/index/introducing-openai-for-singapore/',
+        summary:
+          'OpenAI 与 MDDI 在 ATxSummit 2026 公布 OpenAI for Singapore：承诺超过 S$300M，在新加坡建立美国以外首个 Applied AI Lab，并在未来几年创造 200+ 本地技术岗位。',
+        summaryKo:
+          'OpenAI와 MDDI는 ATxSummit 2026에서 OpenAI for Singapore를 발표했습니다. S$300M 이상을 약속하고, 미국 밖 첫 Applied AI Lab을 싱가포르에 설립하며, 향후 몇 년간 200개 이상의 현지 기술 직무를 창출합니다.',
+        summaryJa:
+          'OpenAI と MDDI は ATxSummit 2026 で OpenAI for Singapore を発表。S$300M 超をコミットし、米国外初の Applied AI Lab をシンガポールに設立、今後数年で 200 以上の現地技術職を創出します。',
+        summaryEn:
+          'OpenAI and MDDI announced OpenAI for Singapore at ATxSummit 2026: a commitment of more than S$300M, OpenAI’s first Applied AI Lab outside the United States, and 200+ Singapore-based technical roles over the next few years.',
+        content: `2026 年 5 月 19 日，OpenAI 宣布与新加坡数字发展与信息部 (MDDI) 推出 **OpenAI for Singapore**，并在 5 月 20 日 ATxSummit 2026 由 IMDA / MDDI 对外纳入同日 AI 落地包。官方口径包括三条主线：前沿 AI 落地、下一代本地 AI 人才、让公民和企业更广泛受益。
+
+核心事实：
+- **超过 S$300M 承诺**：投入新加坡 AI 生态。
+- **Applied AI Lab**：设在新加坡，是 OpenAI 美国以外第一个 Applied AI Lab。
+- **200+ 本地技术岗位**：未来几年在新加坡建立技术团队，新加坡也会成为 Forward-Deployed Engineers 的全球枢纽之一。
+- **对齐国家 AI 任务**：重点支持公共服务、金融、医疗、数字基础设施等场景。
+- **人才与采用**：与教育部、GovTech、本地生态伙伴合作，包括 OpenAI Academy 新加坡章节、Codex for Teachers hackathon、Forward-Deployed Engineer training programme，并参与 National AI Impact Programme。
+
+这不是简单的区域总部新闻，而是把 OpenAI 的工程部署能力接到新加坡 NAIS / NAIC 执行管线里。对 sgai.md 来说，它应被记录为 2026-05 战略更新中的“外资前沿能力 + 本地人才 + 产业采用”节点。`,
+        contentKo: `2026년 5월 19일, OpenAI는 싱가포르 디지털 개발 및 정보부(MDDI)와 **OpenAI for Singapore**를 추진한다고 발표했고, 5월 20일 ATxSummit 2026에서 IMDA / MDDI의 같은 날 AI 실전 배포 패키지에 포함되었습니다. 공식 구도는 세 가지입니다: 프런티어 AI 배포, 차세대 현지 AI 인재, 시민과 기업의 더 넓은 수혜입니다.
+
+핵심 사실:
+- **S$300M 이상 약속**: 싱가포르 AI 생태계에 투자.
+- **Applied AI Lab**: 싱가포르에 설립되며, OpenAI가 미국 밖에 세우는 첫 Applied AI Lab입니다.
+- **200개 이상의 현지 기술 직무**: 향후 몇 년간 싱가포르 기반 기술팀을 만들고, 싱가포르를 Forward-Deployed Engineers의 글로벌 거점 중 하나로 만듭니다.
+- **국가 AI 과제와 정렬**: 공공 서비스, 금융, 의료, 디지털 인프라를 중점 지원합니다.
+- **인재와 도입**: 교육부, GovTech, 현지 생태계 파트너와 협력하며 OpenAI Academy 싱가포르 챕터, Codex for Teachers hackathon, Forward-Deployed Engineer training programme, National AI Impact Programme 참여를 포함합니다.
+
+이는 단순한 지역 본부 뉴스가 아니라 OpenAI의 엔지니어링 배포 역량을 싱가포르 NAIS / NAIC 실행 파이프라인에 연결하는 사건입니다. sgai.md에서는 2026-05 전략 업데이트의 “외국 프런티어 역량 + 현지 인재 + 산업 도입” 노드로 기록해야 합니다.`,
+        contentJa: `2026 年 5 月 19 日、OpenAI はシンガポールのデジタル発展・情報部 (MDDI) と **OpenAI for Singapore** を発表し、5 月 20 日の ATxSummit 2026 で IMDA / MDDI の同日 AI 実装パッケージに組み込まれました。公式の柱は、フロンティア AI の実装、次世代の現地 AI 人材、国民と企業への広いアクセスです。
+
+主な事実：
+- **S$300M 超のコミットメント**：シンガポール AI エコシステムへの投資。
+- **Applied AI Lab**：シンガポールに設置。OpenAI にとって米国外初の Applied AI Lab です。
+- **200 以上の現地技術職**：今後数年でシンガポールベースの技術チームを作り、Forward-Deployed Engineers のグローバル拠点の一つにします。
+- **国家 AI ミッションとの整合**：公共サービス、金融、医療、デジタルインフラを重点支援。
+- **人材と採用**：教育省、GovTech、現地エコシステムパートナーと協力し、OpenAI Academy シンガポール章、Codex for Teachers hackathon、Forward-Deployed Engineer training programme、National AI Impact Programme への参加を含みます。
+
+これは単なる地域本部ニュースではなく、OpenAI のエンジニアリング実装能力をシンガポールの NAIS / NAIC 実行パイプラインに接続する動きです。sgai.md では、2026-05 戦略更新の「外資フロンティア能力 + 現地人材 + 産業採用」ノードとして扱うべきです。`,
+        contentEn: `On 19 May 2026, OpenAI announced **OpenAI for Singapore** with the Ministry of Digital Development and Information (MDDI). On 20 May, IMDA / MDDI positioned it as part of the same ATxSummit 2026 real-world AI deployment package. The official frame has three pillars: frontier AI deployment, next-generation local AI talent, and broader access for citizens and enterprises.
+
+Key facts:
+- **More than S$300M committed** to Singapore’s AI ecosystem.
+- **Applied AI Lab** in Singapore, OpenAI’s first outside the United States.
+- **200+ Singapore-based technical roles** over the next few years, with Singapore becoming one of OpenAI’s global hubs for Forward-Deployed Engineers.
+- **Alignment with National AI Missions**, especially public service, finance, healthcare, and digital infrastructure.
+- **Talent and adoption** through work with MOE, GovTech and local ecosystem partners, including an OpenAI Academy Singapore chapter, Codex for Teachers hackathons, a Forward-Deployed Engineer training programme, and participation in the National AI Impact Programme.
+
+This is not just a regional-HQ story. It connects OpenAI’s deployment engineering capacity into Singapore’s NAIS / NAIC execution pipeline. For sgai.md, it belongs in the May 2026 strategy refresh as a node combining foreign frontier capability, local talent, and enterprise adoption.`,
+        ministry: 'MDDI',
+        authorPersonIds: ['josephine-teo'],
+        relatedDebateIds: [],
+        relatedLeverNumbers: [1, 3, 6],
+        relatedTimelineYears: [2026],
+        relatedPostSlugs: [],
+        addedAt: '2026-05-24',
       },
       {
         id: 'public-ai-research-investment-2026-2030',
@@ -563,17 +634,17 @@ Together with same-day announcements of the NVIDIA Singapore AI Research Lab and
         titleEn: 'Singapore AI Safety Institute',
         date: '2024-05',
         source: 'IMDA / Digital Trust Centre',
-        sourceOrgUrl: 'https://aiverifyfoundation.sg/',
-        sourceUrl: 'https://aiverifyfoundation.sg/',
+        sourceOrgUrl: 'https://sgaisi.sg/',
+        sourceUrl: 'https://sgaisi.sg/',
         summary: '前沿 AI 安全研究的国家级研究所，承担 Singapore Consensus 协调职能。',
         summaryKo: '선도적 AI 안전 연구의 국가급 연구소로 Singapore Consensus 협력 기능을 담당합니다.',
         summaryJa: '最先端の AI 安全研究に関する国家レベルの研究所。Singapore Consensus の調整機能を担当しています。',
-        content: `Singapore AI Safety Institute (AISI) 于 2024 年成立，年度预算 S$10M，由 IMDA 与 Digital Trust Centre 联合运营，挂靠 NTU。承担前沿 AI 模型的红队评估、对齐研究、可追溯性测试三类核心研究。AISI 还作为 Singapore Consensus on Global AI Safety Research Priorities（11 国签署，含中美）的协调中心，并主办 International Scientific Exchange on AI Safety（ISESEA）I + II。AISI 是新加坡"用 0.07% 全球人口撬动 G7 级 AI 治理话语权"战略最关键的机构。`,
-        contentKo: `Singapore AI Safety Institute(AISI)는 2024년 설립되었으며, 연간 예산은 S$10M이고, IMDA와 Digital Trust Centre가 공동으로 운영하며 NTU에 속합니다. 선도적 AI 모델의 레드팀 평가, 정렬 연구, 추적 가능성 테스트의 세 가지 핵심 연구를 수행합니다. AISI는 또한 Singapore Consensus on Global AI Safety Research Priorities(11개 국가 서명, 미국과 중국 포함)의 협력 중심이며, International Scientific Exchange on AI Safety(ISESEA) I + II를 주최합니다. AISI는 싱가포르의 「0.07% 글로벌 인구로 G7급 AI 거버넌스 발언권을 활용하는」 전략의 가장 중요한 기관입니다.`,
-        contentJa: `Singapore AI Safety Institute (AISI)は2024年に設立され、年間予算はS$10Mで、IMDAとDigital Trust Centreが共同で運営し、NTUに属しています。最先端のAIモデルの赤チーム評価、アライメント研究、トレーサビリティテストの3つの主要研究を担当しています。ASIはまた、Singapore Consensus on Global AI Safety Research Priorities（11カ国が署名、米国と中国を含む）の調整中心として機能し、International Scientific Exchange on AI Safety（ISESEA）IおよびIIを開催しています。ASIは、シンガポールが「世界人口の0.07%を用いてG7級のAI治理における発言権を活用する」戦略において、最も重要な機関です。`,
+        content: `Singapore AI Safety Institute (AISI) 于 2024 年成立，年度预算 S$10M，由 IMDA 与 Digital Trust Centre 联合运营，挂靠 NTU。承担前沿 AI 模型的红队评估、对齐研究、可追溯性测试三类核心研究。AISI 还作为 Singapore Consensus on Global AI Safety Research Priorities 的协调中心，并主办 International Scientific Exchange on AI Safety。官方口径中，Singapore Consensus 来自 2025 年 SCAI: ISE，汇集 11 个国家的 100+ 参与者形成“活文件”，2026 年 ISE 继续更新研究优先级；它不是“11 国签署”的政府间协议。AISI 是新加坡"用 0.07% 全球人口撬动 G7 级 AI 治理话语权"战略最关键的机构。`,
+        contentKo: `Singapore AI Safety Institute(AISI)는 2024년 설립되었으며, 연간 예산은 S$10M이고, IMDA와 Digital Trust Centre가 공동으로 운영하며 NTU에 속합니다. 선도적 AI 모델의 레드팀 평가, 정렬 연구, 추적 가능성 테스트의 세 가지 핵심 연구를 수행합니다. AISI는 Singapore Consensus on Global AI Safety Research Priorities의 조율 중심이며 International Scientific Exchange on AI Safety를 주최합니다. 공식 구도에서 Singapore Consensus는 2025년 SCAI: ISE에서 나왔고, 11개국의 100명 이상 참여자가 만든 “살아 있는 문서”이며, 2026년 ISE가 연구 우선순위를 계속 업데이트합니다. 이는 “11개국이 서명한” 정부 간 협정이 아닙니다. AISI는 싱가포르의 「0.07% 글로벌 인구로 G7급 AI 거버넌스 발언권을 활용하는」 전략의 가장 중요한 기관입니다.`,
+        contentJa: `Singapore AI Safety Institute (AISI) は 2024 年に設立され、年間予算は S$10M、IMDA と Digital Trust Centre が共同運営し、NTU に置かれています。最先端 AI モデルのレッドチーム評価、アライメント研究、トレーサビリティテストを担います。AISI は Singapore Consensus on Global AI Safety Research Priorities の調整中心でもあり、International Scientific Exchange on AI Safety を主催します。公式口径では、Singapore Consensus は 2025 年 SCAI: ISE から生まれ、11 カ国の 100 名超の参加者による「living document」で、2026 年 ISE が研究優先事項を更新します。これは「11 カ国が署名した」政府間協定ではありません。AISI は、シンガポールが「世界人口の 0.07% を用いて G7 級の AI 治理発言権を得る」戦略において、最も重要な機関です。`,
         summaryEn:
           'National research institute for frontier AI safety, hosting the Singapore Consensus coordination function.',
-        contentEn: `The Singapore AI Safety Institute (AISI) was established in 2024 with an annual budget of S$10M, jointly operated by IMDA and the Digital Trust Centre and hosted at NTU. It covers three core research areas on frontier AI models: red-team evaluation, alignment research, and traceability testing. AISI also serves as the coordination centre for the Singapore Consensus on Global AI Safety Research Priorities (signed by 11 countries, including the US and China) and hosts the International Scientific Exchange on AI Safety (ISESEA) I + II. AISI is the most critical institution in Singapore's strategy of "leveraging 0.07% of the world's population into G7-level AI governance influence."`,
+        contentEn: `The Singapore AI Safety Institute (AISI) was established in 2024 with an annual budget of S$10M, jointly operated by IMDA and the Digital Trust Centre and hosted at NTU. It covers three core research areas on frontier AI models: red-team evaluation, alignment research, and traceability testing. AISI also serves as the coordination centre for the Singapore Consensus on Global AI Safety Research Priorities and hosts the International Scientific Exchange on AI Safety. In the official account, the Singapore Consensus came out of SCAI: ISE 2025, gathering 100+ participants from 11 countries into a living document; ISE 2026 continues to update the research priorities. It is not an intergovernmental agreement "signed by 11 countries." AISI is the most critical institution in Singapore's strategy of "leveraging 0.07% of the world's population into G7-level AI governance influence."`,
         sourceEn: 'IMDA / Digital Trust Centre',
         ministry: undefined,
         authorPersonIds: [],
@@ -706,17 +777,36 @@ ISO standards typically take years from proposal to publication. But once a prop
         sourceJa: '情報通信メディア発展庁 (IMDA)',
         sourceOrgUrl: 'https://www.imda.gov.sg/',
         sourceUrl:
-          'https://www.imda.gov.sg/resources/press-releases-factsheets-and-speeches/press-releases/2026/new-model-ai-governance-framework-for-agentic-ai',
+          'https://www.imda.gov.sg/resources/press-releases-factsheets-and-speeches/factsheets/2026/updated-model-ai-governance-framework-for-agentic-ai',
         translatedPdfUrl: '/pdfs/agentic-ai-governance-zh.pdf',
-        summary: '针对自主 AI Agent 的治理框架，应对 AI 自主决策带来的新挑战。',
-        summaryKo: '자율 AI Agent에 대한 거버넌스 프레임워크로 AI 자율 의사결정이 가져오는 새로운 과제에 대응합니다.',
-        summaryJa: '自律的 AI Agent に対するガバナンスフレームワーク。AI 自律決定による新たな課題に対応します。',
-        content: `随着 Agentic AI（自主 AI 代理）快速发展，IMDA 于 2026 年 1 月发布专门的治理框架。聚焦 AI Agent 的自主决策边界、人类监督机制、责任归属、安全防护等核心议题。`,
-        contentKo: `Agentic AI(자율 AI 에이전트)의 빠른 발전에 따라, IMDA는 2026년 1월 전문 거버넌스 프레임워크를 발표했습니다. AI Agent의 자율 의사결정 경계, 인간 감시 메커니즘, 책임 귀속, 안전 보호 등 핵심 의제에 초점을 맞춥니다.`,
-        contentJa: `Agentic AI（自主型 AI エージェント）の急速な発展に伴い、IMDA は 2026 年 1 月に専門的なガバナンスフレームワークを発表しました。AI Agent の自律的な意思決定の境界、人的監督メカニズム、責任帰属、セキュリティ対策などの核心的な課題に焦点を当てています。`,
+        summary:
+          'IMDA 于 2026 年 1 月在达沃斯发布全球首个 Agentic AI 治理框架，并在 2026 年 5 月加入 60+ 机构反馈与 10+ 真实部署案例。',
+        summaryKo:
+          'IMDA는 2026년 1월 다보스에서 세계 최초의 Agentic AI 거버넌스 프레임워크를 발표했고, 2026년 5월 60개 이상의 기관 피드백과 10개 이상의 실제 배포 사례를 추가했습니다.',
+        summaryJa:
+          'IMDA は 2026 年 1 月にダボスで世界初の Agentic AI ガバナンスフレームワークを発表し、2026 年 5 月に 60 以上の組織からのフィードバックと 10 以上の実導入事例を追加しました。',
+        content: `IMDA 于 2026 年 1 月在世界经济论坛发布 Model AI Governance Framework for Agentic AI，2026 年 5 月 20 日在 ATxSummit 更新版本。
+
+更新重点不是另起炉灶，而是把几个月内收集到的产业反馈和真实部署案例放回框架中。官方披露：更新版吸收了 **60+ 机构**反馈（包括 AWS、DBS、Google、Salesforce），并加入 **10+ 真实 agentic AI 部署案例**（包括 Ant International、CDL、Cyber Sierra、Dayos、GovTech、Google、OCBC、PwC、Tencent、Workday 等）。
+
+框架继续强调：AI Agent 可以提高生产力，但人类仍对系统结果承担最终责任。新增案例让企业能看到如何处理多 agent 系统、第三方 agent、自动化偏差、风险分级、人类审批和审计等实际问题。`,
+        contentKo: `IMDA는 2026년 1월 세계경제포럼에서 Model AI Governance Framework for Agentic AI를 발표했고, 2026년 5월 20일 ATxSummit에서 업데이트판을 공개했습니다.
+
+업데이트의 핵심은 새 틀을 만드는 것이 아니라, 몇 달 동안 받은 산업 피드백과 실제 배포 사례를 프레임워크에 다시 반영하는 것입니다. 공식 자료에 따르면 업데이트판은 **60개 이상의 기관** 피드백(AWS, DBS, Google, Salesforce 등)을 반영했고, **10개 이상의 실제 agentic AI 배포 사례**(Ant International, CDL, Cyber Sierra, Dayos, GovTech, Google, OCBC, PwC, Tencent, Workday 등)를 포함합니다.
+
+프레임워크는 AI Agent가 생산성을 높일 수 있지만, 시스템 결과에 대한 최종 책임은 여전히 인간에게 있다는 점을 강조합니다. 새 사례들은 기업이 다중 agent 시스템, 제3자 agent, 자동화 편향, 위험 등급, 인간 승인, 감사 같은 실제 문제를 어떻게 처리할지 보여줍니다.`,
+        contentJa: `IMDA は 2026 年 1 月に世界経済フォーラムで Model AI Governance Framework for Agentic AI を発表し、2026 年 5 月 20 日に ATxSummit で更新版を公開しました。
+
+更新の焦点は新しい枠組みを作ることではなく、数カ月間に集めた産業界のフィードバックと実導入事例をフレームワークへ戻すことです。公式発表によれば、更新版は **60 以上の組織**からのフィードバック（AWS、DBS、Google、Salesforce など）を取り入れ、**10 以上の実際の agentic AI 導入事例**（Ant International、CDL、Cyber Sierra、Dayos、GovTech、Google、OCBC、PwC、Tencent、Workday など）を追加しました。
+
+フレームワークは、AI Agent が生産性を高め得る一方で、システム結果への最終責任は人間が負うという点を引き続き強調します。新しい事例により、企業はマルチ agent システム、第三者 agent、自動化バイアス、リスク階層、人間の承認、監査などの実務課題への対応を確認できます。`,
         summaryEn:
-          'Dedicated governance framework for autonomous AI agents, addressing the new challenges posed by AI making independent decisions.',
-        contentEn: `As Agentic AI (autonomous AI agents) takes off, IMDA released a dedicated governance framework in January 2026. It focuses on the core issues for AI agents: how far they can decide on their own, human oversight, accountability, and safety safeguards.`,
+          'IMDA launched the world’s first Agentic AI governance framework at Davos in January 2026 and updated it in May 2026 with feedback from 60+ organisations and 10+ real-world deployment case studies.',
+        contentEn: `IMDA launched the Model AI Governance Framework for Agentic AI at the World Economic Forum in January 2026, then updated it at ATxSummit on 20 May 2026.
+
+The update is not a new framework from scratch. It folds industry feedback and live deployment experience back into the original framework. Officially, the update incorporates feedback from **60+ organisations** including AWS, DBS, Google, and Salesforce, and adds **10+ real-world agentic AI deployment case studies** from contributors such as Ant International, CDL, Cyber Sierra, Dayos, GovTech, Google, OCBC, PwC, Tencent, and Workday.
+
+The framework continues to stress that AI agents can raise productivity, but humans remain ultimately accountable for system outcomes. The added cases show how organisations handle practical issues such as multi-agent systems, third-party agents, automation bias, risk tiering, human approvals, and auditability.`,
         sourceEn: 'Infocomm Media Development Authority (IMDA)',
         ministry: undefined,
         authorPersonIds: [],
@@ -724,6 +814,117 @@ ISO standards typically take years from proposal to publication. But once a prop
         relatedLeverNumbers: [],
         relatedTimelineYears: [],
         relatedPostSlugs: [],
+      },
+      {
+        id: 'google-singapore-ai-agents-sandbox-2026',
+        title: '新加坡政府 × Google AI Agents Sandbox',
+        titleKo: '싱가포르 정부 × Google AI Agents Sandbox',
+        titleJa: 'シンガポール政府 × Google AI Agents Sandbox',
+        titleEn: 'Singapore Government × Google AI Agents Sandbox',
+        date: '2026-05',
+        source: 'Google / CSA / GovTech / IMDA',
+        sourceKo: 'Google / CSA / GovTech / IMDA',
+        sourceJa: 'Google / CSA / GovTech / IMDA',
+        sourceEn: 'Google / CSA / GovTech / IMDA',
+        sourceOrgUrl: 'https://www.imda.gov.sg/',
+        sourceUrl:
+          'https://www.imda.gov.sg/resources/press-releases-factsheets-and-speeches/factsheets/2026/ai-agents-insights-from-the-singapore-government-and-google-sandbox',
+        summary:
+          'Google 与新加坡政府在 2025 年 8 月启动全球首个 AI Agents Sandbox，2026 年 5 月发布白皮书，验证 computer-use agents 在公共服务场景中的机会和风险。',
+        summaryKo:
+          'Google과 싱가포르 정부는 2025년 8월 세계 최초의 AI Agents Sandbox를 시작했고, 2026년 5월 백서를 발표해 공공 서비스 현장에서 computer-use agents의 기회와 위험을 검증했습니다.',
+        summaryJa:
+          'Google とシンガポール政府は 2025 年 8 月に世界初の AI Agents Sandbox を開始し、2026 年 5 月にホワイトペーパーを発表。公共サービスにおける computer-use agents の機会とリスクを検証しました。',
+        summaryEn:
+          'Google and the Singapore Government launched a global-first AI Agents Sandbox in August 2025 and published a May 2026 whitepaper on opportunities and risks of computer-use agents in public-service settings.',
+        content: `Google 与新加坡政府（CSA、GovTech、IMDA）在 2025 年 8 月启动 AI Agents Sandbox，约四个月内测试 computer-use agents 在真实公共服务环境中的表现，并于 2026 年 5 月发布白皮书。
+
+三个测试场景：
+- 自动化政府数字服务 QA 测试。
+- 自动化 AI 安全测试，降低 chatbot 上线前评估的人力成本。
+- 协助公民 / 社工处理社会援助申请流程。
+
+官方总结的风险主题包括：人类监督、定制化与控制、网络安全（尤其是间接提示注入）、数据保护与隐私。这个 sandbox 与同日更新的 Agentic AI Governance Framework 形成配套：一个是治理框架，一个是政府场景中的实测反馈。`,
+        contentKo: `Google과 싱가포르 정부(CSA, GovTech, IMDA)는 2025년 8월 AI Agents Sandbox를 시작해 약 4개월 동안 실제 공공 서비스 환경에서 computer-use agents의 행동을 테스트했고, 2026년 5월 백서를 발표했습니다.
+
+세 가지 테스트 사례:
+- 정부 디지털 서비스의 자동 QA 테스트.
+- chatbot 배포 전 평가 비용을 줄이는 자동 AI 안전 테스트.
+- 시민 / 사회복지사가 사회 지원 신청 절차를 처리하도록 돕는 agent.
+
+공식적으로 정리된 위험 주제는 인간 감독, 맞춤화와 통제, 사이버보안(특히 간접 prompt injection), 데이터 보호와 프라이버시입니다. 이 sandbox는 같은 날 업데이트된 Agentic AI Governance Framework와 짝을 이룹니다. 하나는 거버넌스 프레임워크이고, 하나는 정부 현장의 실제 테스트 피드백입니다.`,
+        contentJa: `Google とシンガポール政府（CSA、GovTech、IMDA）は 2025 年 8 月に AI Agents Sandbox を開始し、約 4 カ月にわたり実際の公共サービス環境で computer-use agents の挙動をテストし、2026 年 5 月にホワイトペーパーを発表しました。
+
+3 つのテスト場面：
+- 政府デジタルサービスの自動 QA テスト。
+- chatbot 導入前評価の負荷を下げる自動 AI 安全性テスト。
+- 国民 / ソーシャルワーカーの社会支援申請プロセス支援。
+
+公式に整理されたリスクテーマは、人間による監督、カスタマイズと制御、サイバーセキュリティ（特に間接 prompt injection）、データ保護とプライバシーです。この sandbox は同日更新された Agentic AI Governance Framework と対になります。一方が治理フレームワーク、もう一方が政府現場での実測フィードバックです。`,
+        contentEn: `Google and the Singapore Government (CSA, GovTech, and IMDA) launched an AI Agents Sandbox in August 2025, testing computer-use agents in real public-service settings for about four months before publishing a whitepaper in May 2026.
+
+Three use cases were tested:
+- Automated QA testing for government digital services.
+- Automated AI safety testing to reduce the manual effort needed before chatbot deployment.
+- Assistance for citizens and social workers navigating social-assistance applications.
+
+The official risk themes include human oversight, customisation and control, cybersecurity (especially indirect prompt injection), data protection, and privacy. The sandbox pairs with the updated Agentic AI Governance Framework announced the same day: one is the governance frame; the other is field feedback from government use cases.`,
+        ministry: 'IMDA',
+        authorPersonIds: ['josephine-teo'],
+        relatedDebateIds: [],
+        relatedLeverNumbers: [2, 5],
+        relatedTimelineYears: [2026],
+        relatedPostSlugs: [],
+        addedAt: '2026-05-24',
+      },
+      {
+        id: 'ai-tester-accreditation-programme-2026',
+        title: 'AI Tester Accreditation Programme (AI TAP)',
+        titleKo: 'AI Tester Accreditation Programme (AI TAP)',
+        titleJa: 'AI Tester Accreditation Programme (AI TAP)',
+        titleEn: 'AI Tester Accreditation Programme (AI TAP)',
+        date: '2026-05',
+        source: 'AI Verify Foundation / IMDA',
+        sourceKo: 'AI Verify Foundation / IMDA',
+        sourceJa: 'AI Verify Foundation / IMDA',
+        sourceEn: 'AI Verify Foundation / IMDA',
+        sourceOrgUrl: 'https://aiverifyfoundation.sg/',
+        sourceUrl: 'https://aiverifyfoundation.sg/tester-accreditation/',
+        summary:
+          'AI Verify Foundation 推出亚洲首个 AI 测试服务商认可计划，预计 2026 年第三季度开放申请，目标是建立可信 AI assurance 市场。',
+        summaryKo:
+          'AI Verify Foundation은 아시아 최초의 AI 테스트 서비스 업체 인정 프로그램을 추진하며, 2026년 3분기 신청을 열 예정입니다. 목표는 신뢰 가능한 AI assurance 시장을 구축하는 것입니다.',
+        summaryJa:
+          'AI Verify Foundation はアジア初の AI テストサービス事業者認定プログラムを開始予定。申請開始は 2026 年第 3 四半期見込みで、信頼できる AI assurance 市場の形成を狙います。',
+        summaryEn:
+          'AI Verify Foundation is launching Asia’s first accreditation programme for AI testing service firms, expected to open in Q3 2026, to build a trusted AI assurance market.',
+        content: `AI Tester Accreditation Programme (AI TAP) 由 AI Verify Foundation 推出，面向提供生成式 AI 技术测试服务的公司。官方称这是亚洲首个同类计划，预计 2026 年第三季度开放申请。
+
+AI TAP 认可的是“测试服务商”的能力，而不是给某个 AI 系统盖章。评估范围包括：具体测试服务的技术能力、公司资质与业务记录、财务可持续性、运营准备度、业务范围与实际能力一致性。
+
+这个计划的战略意义在于把 AI Verify 从工具和框架推进到“市场基础设施”：企业不必只相信供应商自测，也可以采购被认可的第三方 AI assurance 服务。它直接补上新加坡治理路线中“原则 / 工具 / 沙盒”之后的认证与服务市场一环。`,
+        contentKo: `AI Tester Accreditation Programme (AI TAP)은 AI Verify Foundation이 추진하며, 생성형 AI 기술 테스트 서비스를 제공하는 회사를 대상으로 합니다. 공식적으로 아시아 최초의 유사 프로그램이며, 2026년 3분기 신청을 열 예정입니다.
+
+AI TAP은 특정 AI 시스템에 인증 마크를 주는 것이 아니라 “테스트 서비스 업체”의 역량을 인정합니다. 평가 범위에는 특정 테스트 서비스의 기술 능력, 회사의 적격성과 업무 이력, 재무 지속 가능성, 운영 준비도, 신고한 사업 범위와 실제 역량의 일치성이 포함됩니다.
+
+전략적 의미는 AI Verify를 도구와 프레임워크에서 “시장 인프라”로 확장하는 데 있습니다. 기업은 공급사의 자체 테스트만 믿지 않고, 인정받은 제3자 AI assurance 서비스를 구매할 수 있습니다. 이는 싱가포르 거버넌스 경로에서 “원칙 / 도구 / sandbox” 이후의 인증과 서비스 시장 단계를 채웁니다.`,
+        contentJa: `AI Tester Accreditation Programme (AI TAP) は AI Verify Foundation によるもので、生成 AI の技術テストサービスを提供する企業を対象にします。公式にはアジア初の同種プログラムで、2026 年第 3 四半期に申請開始予定です。
+
+AI TAP が認定するのは特定の AI システムではなく、「テストサービス事業者」の能力です。評価範囲は、具体的なテストサービスの技術能力、会社としての適格性と実績、財務の持続可能性、運営準備度、申告した業務範囲と実能力の一致です。
+
+戦略的意味は、AI Verify をツールとフレームワークから「市場インフラ」へ進めることにあります。企業はベンダーの自己テストだけに頼らず、認定された第三者 AI assurance サービスを調達できます。これはシンガポールの治理路線における「原則 / ツール / sandbox」の次に来る認定・サービス市場の一環です。`,
+        contentEn: `The AI Tester Accreditation Programme (AI TAP) is run by AI Verify Foundation for companies offering technical testing services for generative-AI applications. The Foundation describes it as the first programme of its kind in Asia, with applications expected to open in Q3 2026.
+
+AI TAP accredits the capability of testing service firms; it does not certify that a specific AI system is risk-free. Assessment covers technical competence in declared testing services, company standing and track record, financial sustainability, operational readiness, and whether declared business scope matches actual capability.
+
+Strategically, this moves AI Verify from tools and frameworks into market infrastructure. Enterprises will not have to rely only on vendor self-testing; they can procure recognised third-party AI assurance services. It fills the accreditation and service-market layer after Singapore’s principles, tools, and sandboxes.`,
+        ministry: 'IMDA',
+        authorPersonIds: [],
+        relatedDebateIds: [],
+        relatedLeverNumbers: [2, 6],
+        relatedTimelineYears: [2026],
+        relatedPostSlugs: [],
+        addedAt: '2026-05-24',
       },
       {
         id: 'proposed-model-ai-governance-framework-for-generative-ai',
@@ -1418,26 +1619,57 @@ ISO standards typically take years from proposal to publication. But once a prop
       {
         id: 'singapore-consensus-on-global-ai-safety-research-priorities',
         title: 'Singapore Consensus on Global AI Safety Research Priorities',
+        titleKo: 'Singapore Consensus on Global AI Safety Research Priorities',
+        titleJa: 'Singapore Consensus on Global AI Safety Research Priorities',
         titleEn: 'Singapore Consensus on Global AI Safety Research Priorities',
-        date: '2024-04',
-        source: 'IMDA / Singapore AI Safety Institute',
-        sourceOrgUrl: 'https://aiverifyfoundation.sg/',
-        sourceUrl: 'https://aisafetypriorities.org/',
-        summary: '新加坡发起、11 国签署（含中美）的全球 AI 安全研究优先级共识。',
-        summaryKo: '싱가포르가 발의하고 11개국이 서명한(중국·미국 포함) 글로벌 AI 안전 연구 우선순위 공감대.',
-        summaryJa: 'シンガポール発起、11 カ国署名（米中を含む）の AI 安全研究優先度に関するグローバル・コンセンサス。',
-        content: `Singapore Consensus 是新加坡 2024 年 4 月在 ICLR 期间召开的国际科学交流会议（ISESEA I）成果，最终由 11 个国家或地区共同签署，**罕见地把中美都纳入同一份 AI 安全文件**。共识围绕三大研究优先级：(1) 风险评估方法论标准化；(2) 跨国前沿模型红队协作；(3) 关键基础设施 AI 部署的安全门槛。这是新加坡国家 AI-native 战略最具杠杆的产出之一——用 0.07% 的全球人口建立起 AI 治理领域的"中立坐标"。配套机制包括 ISESEA II（2026）持续更新共识、AISI 作为协调中心、Bletchley/Seoul/Paris AI Summits 持续输出。`,
-        contentKo: `Singapore Consensus는 싱가포르의 2024년 4월 ICLR 기간에 개최된 국제 과학 교류 회의(ISESEA I)의 성과로, 최종적으로 11개 국가 또는 지역이 공동으로 서명했으며, **중국과 미국을 동일한 AI 안전 문서에 포함시키는 것은 드문 일입니다**. 공감대는 세 가지 주요 연구 우선순위를 중심으로 합니다: (1) 위험 평가 방법론의 표준화; (2) 국제적 선도 모델 레드팀 협력; (3) 주요 기반시설 AI 배포의 안전 임계값. 이는 싱가포르 국가 AI-native 전략의 가장 영향력 있는 산출물 중 하나입니다——전 지구 인구의 0.07%를 활용하여 AI 거버넌스 분야에서 「중립적 좌표」를 수립했습니다. 보완 메커니즘에는 ISESEA II(2026)의 지속적 공감대 업데이트, 조정 센터로서의 AISI, Bletchley/Seoul/Paris AI Summits의 지속적 산출물이 포함됩니다.`,
-        contentJa: `Singapore Consensusはシンガポールが2024年4月ICLR期間中に開催した国際科学交流会議（ISESEA I）の成果であり、最終的に11の国・地域により共同署名されました。**稀有なことに、米国と中国の両方を同じAI安全文書に盛り込みました**。共識は3つの研究優先事項を軸としています。(1)リスク評価方法論の標準化、(2)国境を越えた最先端モデルのレッドチーム協力、(3)重要インフラAI展開の安全性閾値です。これはシンガポール国家AI-native戦略における最大のレバーの産出の1つです。世界人口の0.07%という規模で、AI治理領域における「中立座標」を確立しました。補完的な仕組みとしては、ISESEA II（2026）による共識の継続的更新、AISIの調整センターとしての機能、Bletchley/Seoul/Paris AI Summitsからの継続的な産出が含まれます。`,
+        date: '2025-05',
+        source: 'Singapore Conference on AI (SCAI) / Singapore AI Safety Institute',
+        sourceKo: 'Singapore Conference on AI (SCAI) / Singapore AI Safety Institute',
+        sourceJa: 'Singapore Conference on AI (SCAI) / Singapore AI Safety Institute',
+        sourceEn: 'Singapore Conference on AI (SCAI) / Singapore AI Safety Institute',
+        sourceOrgUrl: 'https://sgaisi.sg/',
+        sourceUrl: 'https://www.scai.gov.sg/2025/scai2025-report',
+        summary:
+          '2025 年 SCAI: ISE 产出的全球 AI 安全研究优先级“活文件”：100+ 参与者、11 个国家，并在 2026 年 ISE 继续更新。',
+        summaryKo:
+          '2025년 SCAI: ISE에서 나온 글로벌 AI 안전 연구 우선순위 “살아 있는 문서”: 100명 이상 참여자, 11개국, 2026년 ISE에서 계속 업데이트.',
+        summaryJa:
+          '2025 年 SCAI: ISE から生まれた AI 安全研究優先事項の「living document」。100 名超の参加者、11 カ国、2026 年 ISE で継続更新。',
+        content: `Singapore Consensus 是 2025 年 Singapore Conference on AI (SCAI): International Scientific Exchange on AI Safety 的成果文件。官方口径是：2025 年 4 月 26 日，100+ 来自学界、产业和政府的参与者，覆盖 11 个国家，共同识别并形成对高优先级技术 AI 安全研究方向的共识。
+
+它不是“11 国签署”的政府间协议。更准确的说法是：来自 11 个国家的 100+ 参与者共同贡献的、持续欢迎全球研究社区反馈的 **living document**。
+
+文件建立在 Yoshua Bengio 主持、33 个政府支持的 International AI Safety Report 基础上，目标是为全球 AI 安全研究提供可协作的技术优先级。2026 年 5 月 17-19 日的 ISE 2026 继续召集全球专家，更新 Singapore Consensus，以反映 agentic deployments、AI misuse、能力提升和安全研究的新发展。
+
+这仍然是新加坡最重要的国际治理杠杆之一：不是靠“签约数量”取胜，而是靠把学界、产业和政府放在同一个技术问题清单上。`,
+        contentKo: `Singapore Consensus는 2025년 Singapore Conference on AI (SCAI): International Scientific Exchange on AI Safety의 결과 문서입니다. 공식 구도는 다음과 같습니다. 2025년 4월 26일, 학계·산업계·정부의 100명 이상 참여자, 11개국을 포괄하는 사람들이 고우선순위 기술 AI 안전 연구 방향을 함께 식별하고 공감대를 형성했습니다.
+
+이는 “11개국이 서명한” 정부 간 협정이 아닙니다. 더 정확한 표현은 11개국에서 온 100명 이상 참여자가 함께 기여하고, 글로벌 연구 커뮤니티의 피드백을 계속 받는 **living document**입니다.
+
+문서는 Yoshua Bengio가 주재하고 33개 정부가 지원한 International AI Safety Report를 기반으로 하며, 글로벌 AI 안전 연구에 협력 가능한 기술 우선순위를 제공하는 것을 목표로 합니다. 2026년 5월 17-19일 ISE 2026은 글로벌 전문가를 다시 모아 agentic deployments, AI misuse, 능력 향상, 안전 연구의 새 발전을 반영해 Singapore Consensus를 업데이트했습니다.
+
+이는 여전히 싱가포르의 가장 중요한 국제 거버넌스 레버 중 하나입니다. “서명 수”가 아니라 학계, 산업계, 정부를 같은 기술 문제 목록 위에 올려놓는 능력에서 힘이 나옵니다.`,
+        contentJa: `Singapore Consensus は、2025 年 Singapore Conference on AI (SCAI): International Scientific Exchange on AI Safety の成果文書です。公式口径では、2025 年 4 月 26 日に学界・産業界・政府から 100 名超、11 カ国にまたがる参加者が集まり、優先度の高い技術的 AI 安全研究方向を共同で特定し、合意を形成しました。
+
+これは「11 カ国が署名した」政府間協定ではありません。より正確には、11 カ国からの 100 名超の参加者が共同で貢献し、グローバル研究コミュニティからの意見を継続的に受け付ける **living document** です。
+
+文書は Yoshua Bengio が議長を務め、33 の政府が支持した International AI Safety Report を基礎に、グローバルな AI 安全研究のための協力可能な技術優先事項を示すことを目指します。2026 年 5 月 17-19 日の ISE 2026 は再び世界の専門家を集め、agentic deployments、AI misuse、能力向上、安全研究の新展開を反映して Singapore Consensus を更新しました。
+
+これは今でもシンガポールにとって最重要の国際治理レバーの一つです。強みは「署名数」ではなく、学界、産業界、政府を同じ技術課題リストに乗せる力にあります。`,
         summaryEn:
-          'Singapore-initiated consensus on global AI safety research priorities, signed by 11 countries — including the US and China.',
-        contentEn: `The Singapore Consensus emerged from the International Scientific Exchange on AI Safety (ISESEA I), convened by Singapore alongside ICLR in April 2024, and was ultimately signed by 11 countries or jurisdictions — **rare in bringing both the US and China into the same AI safety document**. The consensus is organised around three research priorities: (1) standardisation of risk assessment methodologies; (2) cross-border red-teaming collaboration on frontier models; (3) safety thresholds for AI deployment in critical infrastructure. This is one of the highest-leverage outputs of Singapore's national AI-native strategy — using 0.07% of the world's population to establish a "neutral coordinate" in AI governance. Supporting mechanisms include ISESEA II (2026) for ongoing consensus updates, AISI as the coordination centre, and continuing output through the Bletchley / Seoul / Paris AI Summits.`,
-        sourceEn: 'IMDA / Singapore AI Safety Institute',
+          'A living document on global AI safety research priorities produced by SCAI: ISE 2025: 100+ participants from 11 countries, with continued updates through ISE 2026.',
+        contentEn: `The Singapore Consensus is the outcome document of the 2025 Singapore Conference on AI (SCAI): International Scientific Exchange on AI Safety. The official account: on 26 April 2025, 100+ participants from academia, industry, and government, spanning 11 countries, collectively identified and demonstrated consensus around high-priority technical AI safety research areas.
+
+It is not an intergovernmental agreement "signed by 11 countries." The more accurate description is: a **living document** contributed to by 100+ participants from 11 countries, continuing to welcome feedback from the global research community.
+
+The document builds on the International AI Safety Report chaired by Yoshua Bengio and backed by 33 governments. Its goal is to provide collaborative technical priorities for global AI safety research. ISE 2026, held from 17 to 19 May 2026, reconvened global experts to update the Singapore Consensus in light of agentic deployments, AI misuse, capability advances, and new safety research.
+
+This remains one of Singapore’s most important international governance levers. Its leverage is not the number of signatures; it is the ability to put academia, industry, and government onto the same technical problem list.`,
         ministry: undefined,
         authorPersonIds: [],
         relatedDebateIds: [],
-        relatedLeverNumbers: [],
-        relatedTimelineYears: [],
+        relatedLeverNumbers: [6],
+        relatedTimelineYears: [2025, 2026],
         relatedPostSlugs: [],
       },
       {
@@ -1499,24 +1731,44 @@ ISO standards typically take years from proposal to publication. But once a prop
       },
       {
         id: 'international-scientific-exchange-on-ai-safety',
-        title: 'International Scientific Exchange on AI Safety (ISESEA)',
+        title: 'International Scientific Exchange on AI Safety (ISE)',
+        titleKo: 'International Scientific Exchange on AI Safety (ISE)',
+        titleJa: 'International Scientific Exchange on AI Safety (ISE)',
         titleEn: 'International Scientific Exchange on AI Safety',
-        date: '2024-04',
-        source: 'IMDA / AISI',
-        sourceOrgUrl: 'https://aiverifyfoundation.sg/',
-        sourceUrl: 'https://aiverifyfoundation.sg/',
-        summary: 'ICLR 期间召开的全球 AI 安全科学交流会，已办两届，是 Singapore Consensus 的孵化平台。',
+        date: '2025-04',
+        source: 'IMDA / Singapore AI Safety Institute',
+        sourceKo: 'IMDA / Singapore AI Safety Institute',
+        sourceJa: 'IMDA / Singapore AI Safety Institute',
+        sourceOrgUrl: 'https://www.imda.gov.sg/',
+        sourceUrl: 'https://www.imda.gov.sg/activities/activities-catalogue/international-scientific-exchange',
+        summary: '新加坡主办的 AI 安全科学交流机制：2025 年产出 Singapore Consensus，2026 年 5 月继续更新研究优先级。',
         summaryKo:
-          'ICLR 기간에 개최된 글로벌 AI 안전 과학 교류 회의, 2회 개최되었으며, Singapore Consensus의 배양 플랫폼입니다.',
+          '싱가포르가 주최하는 AI 안전 과학 교류 메커니즘: 2025년에 Singapore Consensus를 만들었고, 2026년 5월 연구 우선순위를 계속 업데이트했습니다.',
         summaryJa:
-          'ICLR 期間中に開催されたグローバル AI 安全科学交流会。二度開催されており、Singapore Consensus の育成プラットフォームです。',
-        content: `International Scientific Exchange on AI Safety（ISESEA）由 IMDA 和 Singapore AI Safety Institute 联合主办，借势 ICLR（国际学习表征会议）每年在新加坡或合作地举办。2024 年 ISESEA I 孵化出 Singapore Consensus；2026 年 ISESEA II 继续更新共识、扩展研究优先级。会议定位刻意"科学家+政府+产业"三层混合，避免单纯外交场合的政治化。这是新加坡 AI 国际治理战略的"温和入口"——用学术活动建立非政治化共识，再让政府层面采纳。`,
-        contentKo: `International Scientific Exchange on AI Safety(ISESEA)는 IMDA와 Singapore AI Safety Institute에 의해 공동 주최되며, ICLR(International Conference on Learning Representations)의 이점을 활용하여 매년 싱가포르 또는 협력 지역에서 개최됩니다. 2024년 ISESEA I은 Singapore Consensus를 배출했으며; 2026년 ISESEA II는 공감대를 지속적으로 업데이트하고 연구 우선순위를 확대합니다. 회의 위치 설정은 의도적으로 「과학자+정부+산업」 3층 혼합이며, 순수 외교 자리의 정치화를 피합니다. 이는 싱가포르 AI 국제 거버넌스 전략의 「온화한 입구」입니다——학문 활동을 통해 비정치화 공감대를 구축한 후 정부 차원에서 채택하도록 합니다.`,
-        contentJa: `International Scientific Exchange on AI Safety（ISESEA）はIMDAとSingapore AI Safety Instituteが共同で主催し、ICLR（国際学習表現会議）を活かして、毎年シンガポールまたはパートナー地で開催されています。2024年のISESEA Iはシンガポール・コンセンサスを生み出しました。2026年のISESEA IIは引き続き共識を更新し、研究優先事項を拡張します。会議の位置付けは意図的に「科学者+政府+産業」の3層ハイブリッドであり、純粋な外交的場での政治化を回避しています。これはシンガポールのAI国際治理戦略における「穏健な入り口」です。学術活動を通じて非政治化した共識を構築し、その後に政府レベルでの採用につなげるものです。`,
+          'シンガポール主催の AI 安全科学交流メカニズム。2025 年に Singapore Consensus を生み、2026 年 5 月に研究優先事項を継続更新。',
+        content: `International Scientific Exchange on AI Safety (ISE) 是新加坡用科学会议方式推动 AI 安全国际合作的机制，由 IMDA / Singapore AI Safety Institute 牵头。
+
+2025 年 ISE 在 Singapore Conference on AI (SCAI) 期间召开，关键成果是 **Singapore Consensus on Global AI Safety Research Priorities**。2026 年 5 月 17-19 日，ISE 2026 在新加坡再次召开，目标是根据 2026 International AI Safety Report、agent deployments、AI misuse 与能力提升的新情况，更新 Singapore Consensus、识别新研究优先级、推进全球协作。
+
+ISE 的关键设计是“科学家 + 政府 + 产业”混合，而不是纯外交峰会。新加坡借此把高度政治化的 AI 安全议题转成技术研究议程：先形成可验证、可协作的研究问题，再让治理框架和国际机制接住。`,
+        contentKo: `International Scientific Exchange on AI Safety (ISE)는 싱가포르가 과학 회의 형식으로 AI 안전 국제 협력을 추진하는 메커니즘이며, IMDA / Singapore AI Safety Institute가 주도합니다.
+
+2025년 ISE는 Singapore Conference on AI (SCAI) 기간에 열렸고, 핵심 성과는 **Singapore Consensus on Global AI Safety Research Priorities**였습니다. 2026년 5월 17-19일 ISE 2026이 싱가포르에서 다시 열렸으며, 2026 International AI Safety Report, agent deployments, AI misuse, 능력 향상 등 새 상황을 반영해 Singapore Consensus를 업데이트하고 새 연구 우선순위를 식별하며 글로벌 협력을 진전시키는 것을 목표로 했습니다.
+
+ISE의 핵심 설계는 “과학자 + 정부 + 산업”의 혼합이며, 순수 외교 정상회의가 아닙니다. 싱가포르는 이를 통해 고도로 정치화된 AI 안전 의제를 기술 연구 의제로 전환합니다. 먼저 검증 가능하고 협력 가능한 연구 문제를 만든 뒤, 거버넌스 프레임워크와 국제 메커니즘이 이를 이어받게 합니다.`,
+        contentJa: `International Scientific Exchange on AI Safety (ISE) は、シンガポールが科学会議の形で AI 安全の国際協力を進める仕組みで、IMDA / Singapore AI Safety Institute が主導します。
+
+2025 年 ISE は Singapore Conference on AI (SCAI) の期間中に開催され、主要成果は **Singapore Consensus on Global AI Safety Research Priorities** でした。2026 年 5 月 17-19 日、ISE 2026 がシンガポールで再び開催され、2026 International AI Safety Report、agent deployments、AI misuse、能力向上などの新状況を踏まえ、Singapore Consensus を更新し、新しい研究優先事項を特定し、グローバル協力を進めることを目的としました。
+
+ISE の設計の要点は「科学者 + 政府 + 産業」の混合であり、純粋な外交サミットではありません。シンガポールはこれにより、政治性の高い AI 安全議題を技術研究アジェンダへ変換します。まず検証可能で協力可能な研究問題を作り、その後に治理フレームワークと国際メカニズムが受け止める形です。`,
         summaryEn:
-          'Global AI safety scientific exchange convened alongside ICLR — now in its second edition — and the incubation platform for the Singapore Consensus.',
-        contentEn: `The International Scientific Exchange on AI Safety (ISESEA) is co-hosted by IMDA and the Singapore AI Safety Institute, leveraging ICLR (the International Conference on Learning Representations) and convened annually in Singapore or in partner venues. ISESEA I in 2024 incubated the Singapore Consensus; ISESEA II in 2026 continues to refresh the consensus and extend research priorities. The conference is deliberately positioned as a three-way mix of "scientists + government + industry," avoiding the politicisation of purely diplomatic settings. This is the "soft entry point" of Singapore's international AI governance strategy — building depoliticised consensus through academic activity, then letting governments adopt it.`,
-        sourceEn: 'IMDA / AISI',
+          'Singapore-hosted scientific exchange mechanism for AI safety: it produced the Singapore Consensus in 2025 and reconvened in May 2026 to update research priorities.',
+        contentEn: `The International Scientific Exchange on AI Safety (ISE) is Singapore’s mechanism for advancing international AI safety cooperation through a scientific-convening format, led by IMDA / the Singapore AI Safety Institute.
+
+ISE 2025 was held as part of the Singapore Conference on AI (SCAI), with the **Singapore Consensus on Global AI Safety Research Priorities** as its key outcome. ISE 2026, held in Singapore from 17 to 19 May 2026, reconvened experts to update the Singapore Consensus, identify new research priorities, and advance global collaboration in light of the 2026 International AI Safety Report, agent deployments, AI misuse, and capability advances.
+
+The design is deliberately a mix of scientists, government, and industry rather than a purely diplomatic summit. Singapore uses ISE to turn a highly political AI safety topic into a technical research agenda: first define verifiable, collaborative research problems, then let governance frameworks and international mechanisms carry them forward.`,
+        sourceEn: 'IMDA / Singapore AI Safety Institute',
         ministry: undefined,
         authorPersonIds: [],
         relatedDebateIds: [],

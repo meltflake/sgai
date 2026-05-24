@@ -393,7 +393,7 @@ Jack Dorsey 在 Block 的话：
 
 - **Singapore AI Safety Institute (AISI)** — **S$10M/yr**
 - **Singapore Conference on AI / International Scientific Exchange on AI Safety I + II**
-- **Singapore Consensus on Global AI Safety Research Priorities**（**11 国签署，含中美**）
+- **Singapore Consensus on Global AI Safety Research Priorities**（**100+ 参与者 / 11 个国家的 living document**）
 - IMDA × Humane Intelligence 多元红队挑战
 
 ASEAN 区域：
@@ -532,7 +532,7 @@ ASEAN 区域：
 
 ### 国际：抓手 6 撑不撑得住
 
-- **Singapore Consensus 签署国**：从 11 国（含中美）扩到几国？能否进 G20？
+- **Singapore Consensus 影响力**：2026 更新后能否从 100+ 参与者 / 11 个国家扩到更多研究机构与政策网络？能否进入 G20 议程？
 - **Agentic AI Governance Framework**：2026-01 全球首发后被多少国家 / 跨国企业引用？
 - **AI 公司 APAC 总部动向**：OpenAI、Anthropic、其他大厂是否扩编新加坡职位 vs 撤回。这是市场对新加坡 AI 治理信誉最直接的投票
 

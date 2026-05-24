@@ -4,6 +4,17 @@
 
 ---
 
+## 0.17.3 — 2026-05-24
+
+### ATxSummit 2026 新加坡 AI 政策更新
+
+- 更新 2026-05-20 ATxSummit 官方口径：NAIS 是“double-click”更新，不是新“国家 AI 任务 2030”；4 个国家 AI 任务为 Connectivity、Advanced Manufacturing、Healthcare、Finance。
+- 新增 / 更新中英日韩数据：OpenAI for Singapore、Google AI Agents Sandbox、AI TAP、Agentic AI Governance Framework 2026-05 更新、PDD 多运营商机器人 testbed、NVIDIA Singapore AI Research Lab。
+- 修正 Singapore Consensus：从“11 国签署”改为 2025 SCAI: ISE 产出的 living document，100+ 参与者来自 11 个国家，并在 ISE 2026 继续更新。
+- 同步 policies、levers、tracker、timeline、ecosystem 与三语文章中的相关表述，并将非官方来源替换为 MDDI / IMDA / OpenAI / AI Verify / SCAI 官方链接。
+
+---
+
 ## 0.13.0 — 2026-05-08
 
 ### Phase 3: trilingual — Singapore AI Observatory now in 日本語

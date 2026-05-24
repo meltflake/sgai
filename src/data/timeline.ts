@@ -39,6 +39,34 @@ export const timelineEvents: TimelineEvent[] = [
     tags: ['人才', '国际'],
   },
   {
+    id: 'evt-2026-atxsummit-real-world-ai-deployment',
+    year: 2026,
+    date: '2026-05-20',
+    title: 'ATxSummit 2026：NAIS 更新与真实场景 AI 部署包',
+    titleKo: 'ATxSummit 2026: NAIS 업데이트와 실제 현장 AI 배포 패키지',
+    titleJa: 'ATxSummit 2026：NAIS 更新と実世界 AI 導入パッケージ',
+    titleEn: 'ATxSummit 2026: NAIS Refresh and Real-World AI Deployment Package',
+    description:
+      'Josephine Teo 在 ATxSummit 2026 将 NAIS 更新定义为“double-click rather than a system reboot”。官方重点不是“国家 AI 任务 2030”这样的新战略，而是把 NAIS 2.0 落到 4 个国家 AI 任务（Connectivity、Advanced Manufacturing、Healthcare、Finance）和一组真实部署项目：National AI Impact Programme 目标 10,000 家 SME、Champions of AI、NVIDIA Singapore AI Research Lab、Punggol Digital District 多运营商机器人 testbed、OpenAI for Singapore（S$300M+、美国以外首个 Applied AI Lab、200+ 技术岗）、Google AI Agents Sandbox、更新版 Agentic AI Governance Framework 与 AI TAP。',
+    descriptionKo:
+      'Josephine Teo는 ATxSummit 2026에서 NAIS 업데이트를 “system reboot”가 아니라 “double-click”이라고 정의했습니다. 공식 초점은 “National AI Mission 2030” 같은 새 전략이 아니라 NAIS 2.0을 4개 국가 AI 과제(Connectivity, Advanced Manufacturing, Healthcare, Finance)와 실제 배포 프로젝트로 옮기는 것입니다. 주요 내용은 National AI Impact Programme의 10,000개 SME 목표, Champions of AI, NVIDIA Singapore AI Research Lab, Punggol Digital District 다중 운영자 로봇 테스트베드, OpenAI for Singapore(S$300M+, 미국 밖 첫 Applied AI Lab, 200개 이상 기술 직무), Google AI Agents Sandbox, 업데이트된 Agentic AI Governance Framework, AI TAP입니다.',
+    descriptionJa:
+      'Josephine Teo は ATxSummit 2026 で NAIS 更新を「system reboot」ではなく「double-click」と位置づけました。公式の焦点は「National AI Mission 2030」のような新戦略ではなく、NAIS 2.0 を 4 つの国家 AI ミッション（Connectivity、Advanced Manufacturing、Healthcare、Finance）と実導入プロジェクトに落とすことです。National AI Impact Programme の 10,000 社 SME 目標、Champions of AI、NVIDIA Singapore AI Research Lab、Punggol Digital District 多事業者ロボット testbed、OpenAI for Singapore（S$300M+、米国外初の Applied AI Lab、200 以上の技術職）、Google AI Agents Sandbox、更新版 Agentic AI Governance Framework、AI TAP が含まれます。',
+    descriptionEn:
+      'At ATxSummit 2026, Josephine Teo framed the NAIS update as a “double-click rather than a system reboot.” The official focus is not a new “National AI Mission 2030” strategy, but translating NAIS 2.0 into four National AI Missions (Connectivity, Advanced Manufacturing, Healthcare, Finance) and a real-world deployment package: the National AI Impact Programme target of 10,000 SMEs, Champions of AI, the NVIDIA Singapore AI Research Lab, the Punggol Digital District multi-operator robotics testbed, OpenAI for Singapore (S$300M+, first Applied AI Lab outside the US, 200+ technical roles), the Google AI Agents Sandbox, the updated Agentic AI Governance Framework, and AI TAP.',
+    tags: ['战略', '产业', '治理', '国际'],
+    personIds: ['josephine-teo'],
+    relatedPolicyIds: [
+      'nais-update-2026',
+      'nvidia-singapore-ai-research-lab-2026',
+      'pdd-multi-operator-robot-testbed-2026',
+      'openai-for-singapore-2026',
+      'model-ai-governance-framework-for-agentic-ai',
+      'google-singapore-ai-agents-sandbox-2026',
+      'ai-tester-accreditation-programme-2026',
+    ],
+  },
+  {
     id: 'evt-2026-manus-blocked',
     year: 2026,
     date: '2026-04-27',
