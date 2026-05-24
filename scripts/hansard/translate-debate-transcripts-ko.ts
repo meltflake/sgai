@@ -107,10 +107,10 @@ async function main() {
       continue;
     }
 
+    const recordRe = new RegExp(`'${escapeRegex(id)}':\\s*\\{[^]*?\\n  \\}`);
+    const recordMatch = recordRe.exec(source);
     const alreadyDone =
-      !force &&
-      source.includes(`paragraphsKo:`) &&
-      new RegExp(`'${escapeRegex(id)}'[\\s\\S]*?paragraphsKo:\\s*\\[`).test(source);
+      !force && recordMatch != null && /paragraphsKo:\s*\[/.test(recordMatch[0]);
     if (alreadyDone) {
       process.stdout.write(`  ✓ ${id}: paragraphsKo already present\n`);
       skippedCount += 1;
