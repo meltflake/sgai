@@ -179,13 +179,7 @@ function noteTags(n: FieldNote): string[] {
                 </div>
               </div>
 
-              {/* Content sections. ko/zh-tw fall through to en for sectionPoints
-                  arrays whose *Ko siblings haven't been backfilled — mark as
-                  intentional EN fallback for the i18n-check sentence scanner. */}
-              <div
-                class="px-6 py-5 space-y-6"
-                {...(lang === 'ko' || lang === 'zh-tw' ? { 'data-i18n-allow-en': 'fieldnote-points-en-fallback' } : {})}
-              >
+              <div class="px-6 py-5 space-y-6">
                 {note.sections.map((section) => (
                   <div>
                     <h3 class="text-sm font-bold text-slate-800 dark:text-slate-200 mb-2 flex items-center gap-2">

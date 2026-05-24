@@ -170,6 +170,8 @@ export const ecosystemCategories: EcosystemCategory[] = [
       {
         id: 'ai-singapore',
         name: 'AI Singapore (AISG)',
+        nameJa: 'AI Singapore (AISG)',
+        nameKo: 'AI Singapore (AISG)',
         nameEn: 'AI Singapore (AISG)',
         description: '新加坡国家级 AI 计划，统筹 SEA-LION、AIAP、TagUI、AI Verify 等关键产物',
         descriptionKo: '싱가포르 국가급 AI 계획, SEA-LION, AIAP, TagUI, AI Verify 등 주요 산출물 통합',
@@ -504,6 +506,8 @@ But AISG's bottlenecks are real: **talent retention is weak** (apprentices leave
         products: [
           {
             name: 'SEA-LION',
+            nameJa: 'SEA-LION',
+            nameKo: 'SEA-LION',
             nameEn: 'SEA-LION',
             description: '东南亚多语言大模型',
             descriptionKo: '동남아 다언어 대형 모델',
@@ -513,6 +517,8 @@ But AISG's bottlenecks are real: **talent retention is weak** (apprentices leave
           },
           {
             name: 'TagUI',
+            nameJa: 'TagUI',
+            nameKo: 'TagUI',
             nameEn: 'TagUI',
             description: '开源 RPA 工具',
             descriptionKo: '오픈소스 RPA 도구',
@@ -522,6 +528,8 @@ But AISG's bottlenecks are real: **talent retention is weak** (apprentices leave
           },
           {
             name: 'PeekingDuck',
+            nameJa: 'PeekingDuck',
+            nameKo: 'PeekingDuck',
             nameEn: 'PeekingDuck',
             description: '计算机视觉推理框架',
             descriptionKo: '컴퓨터 비전 추론 프레임워크',
@@ -531,6 +539,8 @@ But AISG's bottlenecks are real: **talent retention is weak** (apprentices leave
           },
           {
             name: 'SGNLP',
+            nameJa: 'SGNLP',
+            nameKo: 'SGNLP',
             nameEn: 'SGNLP',
             description: '新加坡 NLP 模型与工具包',
             descriptionKo: '싱가포르 NLP 모델 및 도구 모음',
@@ -540,6 +550,8 @@ But AISG's bottlenecks are real: **talent retention is weak** (apprentices leave
           },
           {
             name: 'Synergos',
+            nameJa: 'Synergos',
+            nameKo: 'Synergos',
             nameEn: 'Synergos',
             description: '联邦学习框架',
             descriptionKo: '연방 학습 프레임워크',
@@ -549,6 +561,8 @@ But AISG's bottlenecks are real: **talent retention is weak** (apprentices leave
           },
           {
             name: 'AIAP',
+            nameJa: 'AIAP',
+            nameKo: 'AIAP',
             nameEn: 'AIAP',
             description: 'AI 学徒计划',
             descriptionKo: 'AI 견습 프로그램',
@@ -610,6 +624,8 @@ But AISG's bottlenecks are real: **talent retention is weak** (apprentices leave
       {
         id: 'a-star',
         name: 'A*STAR',
+        nameJa: 'A*STAR',
+        nameKo: 'A*STAR',
         nameEn: 'A*STAR',
         description: '新加坡科技研究局，AI 基础研究与应用研究主力',
         descriptionKo: '싱가포르 과학기술청, AI 기초 연구 및 응용 연구의 주력',
@@ -869,6 +885,8 @@ But A*STAR has obvious bottlenecks: **less attractive than universities or big t
       {
         id: 'nus',
         name: 'NUS',
+        nameJa: 'NUS',
+        nameKo: 'NUS',
         nameEn: 'NUS',
         description:
           '新加坡国立大学，AI 研究排名亚洲前列。2024.3 成立 NUS AI Institute，整合基础 AI、应用 AI 及社会影响研究',
@@ -1151,13 +1169,21 @@ But NUS AI Institute (founded 2024) is still in its integration phase. **Whether
             url: 'https://www.nus.edu.sg/',
             date: '2026-05-02',
           },
-          { label: 'NUS AI Institute', labelEn: 'NUS AI Institute', url: 'https://ai.nus.edu.sg/' },
+          {
+            label: 'NUS AI Institute',
+            labelJa: 'NUS AI Institute',
+            labelKo: 'NUS AI Institute',
+            labelEn: 'NUS AI Institute',
+            url: 'https://ai.nus.edu.sg/',
+          },
         ],
         updated: '2026-05-02',
       },
       {
         id: 'ntu',
         name: 'NTU',
+        nameJa: 'NTU',
+        nameKo: 'NTU',
         nameEn: 'NTU',
         description: '南洋理工大学，AI 与数据科学研究重镇',
         descriptionKo: '난양이공대학교, AI 및 데이터과학 연구의 중심지',
@@ -1411,13 +1437,21 @@ Variables to watch: whether the post-integration CCDS produces flagship projects
             url: 'https://www.ntu.edu.sg/',
             date: '2026-05-02',
           },
-          { label: 'NTU CCDS', labelEn: 'NTU CCDS', url: 'https://www.ntu.edu.sg/computing' },
+          {
+            label: 'NTU CCDS',
+            labelJa: 'NTU CCDS',
+            labelKo: 'NTU CCDS',
+            labelEn: 'NTU CCDS',
+            url: 'https://www.ntu.edu.sg/computing',
+          },
         ],
         updated: '2026-05-02',
       },
       {
         id: 'smu',
         name: 'SMU',
+        nameJa: 'SMU',
+        nameKo: 'SMU',
         nameEn: 'SMU',
         description: '新加坡管理大学，AI 在商业与社会应用',
         descriptionKo: '싱가포르관리대학, 비즈니스와 사회응용 AI',
@@ -1602,6 +1636,8 @@ Take: SMU is not the source of AI innovation, but it is the key node that **"tra
       {
         id: 'sutd',
         name: 'SUTD',
+        nameJa: 'SUTD',
+        nameKo: 'SUTD',
         nameEn: 'SUTD',
         description: '新加坡科技设计大学，AI 与设计交叉创新',
         descriptionKo: '싱가포르과기설계대학, AI와 디자인 교차혁신',
@@ -1804,6 +1840,8 @@ Take: SUTD's existence saves the Singapore university system from **"the risk of
       {
         id: 'pdpc',
         name: 'PDPC',
+        nameJa: 'PDPC',
+        nameKo: 'PDPC',
         nameEn: 'PDPC',
         description: '个人数据保护委员会，数据治理与隐私保护',
         descriptionKo: '개인데이터 보호 위원회, 데이터 거버넌스 및 개인정보 보호',
@@ -2087,6 +2125,8 @@ Tensions worth watching: **PDPC vs MAS coordination** (financial-sector AI sits 
       {
         id: 'imda',
         name: 'IMDA',
+        nameJa: 'IMDA',
+        nameKo: 'IMDA',
         nameEn: 'IMDA',
         description: '资讯通信媒体发展局，AI 治理框架制定主体',
         descriptionKo: '정보통신미디어발전청, AI 거버넌스 프레임워크 제정의 주체',
@@ -2359,6 +2399,8 @@ But IMDA also has structural challenges: **with telecoms, media, and AI all unde
           },
           {
             label: 'Model AI Governance Framework',
+            labelJa: 'Model AI Governance Framework',
+            labelKo: 'Model AI Governance Framework',
             labelEn: 'Model AI Governance Framework',
             url: 'https://www.imda.gov.sg/-/media/imda/files/sgdigital/sgdgo/ai-governance-framework.pdf',
           },
@@ -2368,6 +2410,8 @@ But IMDA also has structural challenges: **with telecoms, media, and AI all unde
       {
         id: 'ai-verify-foundation',
         name: 'AI Verify Foundation',
+        nameJa: 'AI Verify Foundation',
+        nameKo: 'AI Verify Foundation',
         nameEn: 'AI Verify Foundation',
         description: '全球首个 AI 治理测试框架，已开源',
         descriptionKo: '전 세계 최초의 AI 거버넌스 테스트 프레임워크, 이미 오픈소스화됨',
@@ -2596,6 +2640,8 @@ Bottlenecks to watch: **the Foundation's funding sustainability** (currently rel
           },
           {
             label: 'AI Verify GitHub',
+            labelJa: 'AI Verify GitHub',
+            labelKo: 'AI Verify GitHub',
             labelEn: 'AI Verify on GitHub',
             url: 'https://github.com/aiverify-foundation',
           },
@@ -2605,6 +2651,8 @@ Bottlenecks to watch: **the Foundation's funding sustainability** (currently rel
       {
         id: 'mas',
         name: 'MAS',
+        nameJa: 'MAS',
+        nameKo: 'MAS',
         nameEn: 'MAS',
         description: '金融管理局，金融 AI 治理（FEAT 原则、Veritas）',
         descriptionKo: '금융관리청, 금융 AI 거버넌스(FEAT 원칙, Veritas)',
@@ -2862,6 +2910,8 @@ Worth watching going forward: **when MAS will allow GenAI in direct customer-fac
           },
           {
             label: 'Veritas Toolkit',
+            labelJa: 'Veritas Toolkit',
+            labelKo: 'Veritas Toolkit',
             labelEn: 'Veritas Toolkit',
             url: 'https://www.mas.gov.sg/schemes-and-initiatives/veritas',
           },
@@ -2884,6 +2934,8 @@ Worth watching going forward: **when MAS will allow GenAI in direct customer-fac
       {
         id: 'sea-lion',
         name: 'SEA-LION',
+        nameJa: 'SEA-LION',
+        nameKo: 'SEA-LION',
         nameEn: 'SEA-LION',
         description: '东南亚多语言大语言模型，支持 11 种语言',
         descriptionKo: '동남아 다국어 대규모 언어모델, 11가지 언어 지원',
@@ -2894,6 +2946,8 @@ Worth watching going forward: **when MAS will allow GenAI in direct customer-fac
         status: 'active',
         founded: '2023-12',
         parentOrg: 'AI Singapore',
+        parentOrgJa: 'AI Singapore',
+        parentOrgKo: 'AI Singapore',
         parentOrgEn: 'AI Singapore',
         parentEntityId: 'ai-singapore',
         ministry: '总理公署 / SNDGO（通过 AISG）',
@@ -3209,6 +3263,8 @@ These bottlenecks are exactly the questions to be answered in the NAIS 2.0 era �
       {
         id: 'sea-helm',
         name: 'SEA-HELM',
+        nameJa: 'SEA-HELM',
+        nameKo: 'SEA-HELM',
         nameEn: 'SEA-HELM',
         description: '东南亚语言模型评估基准',
         descriptionKo: '동남아시아 언어 모델 평가 벤치마크',
@@ -3219,6 +3275,8 @@ These bottlenecks are exactly the questions to be answered in the NAIS 2.0 era �
         status: 'active',
         founded: '2024-04',
         parentOrg: 'AI Singapore',
+        parentOrgJa: 'AI Singapore',
+        parentOrgKo: 'AI Singapore',
         parentOrgEn: 'AI Singapore',
         parentEntityId: 'ai-singapore',
         scale: '覆盖 11 种东南亚语言；评估指标 50+；持续更新排行榜',
@@ -3426,6 +3484,8 @@ Worth watching: **how quickly SEA-HELM updates** (GenAI moves fast and benchmark
       {
         id: 'sea-guard',
         name: 'SEA-Guard',
+        nameJa: 'SEA-Guard',
+        nameKo: 'SEA-Guard',
         nameEn: 'SEA-Guard',
         description: 'AI 安全评估与防护工具',
         descriptionKo: 'AI 안전 평가 및 보호 도구',
@@ -3436,6 +3496,8 @@ Worth watching: **how quickly SEA-HELM updates** (GenAI moves fast and benchmark
         status: 'active',
         founded: '2025',
         parentOrg: 'AI Singapore',
+        parentOrgJa: 'AI Singapore',
+        parentOrgKo: 'AI Singapore',
         parentOrgEn: 'AI Singapore',
         parentEntityId: 'ai-singapore',
         summary:
@@ -3608,6 +3670,8 @@ But SEA-Guard's maturity is still not enough: **today it is more demo than produ
       {
         id: 'aquarium',
         name: 'Aquarium',
+        nameJa: 'Aquarium',
+        nameKo: 'Aquarium',
         nameEn: 'Aquarium',
         description: '数据驱动的 AI 模型管理平台',
         descriptionKo: '데이터 기반 AI 모델 관리 플랫폼',
@@ -3616,6 +3680,8 @@ But SEA-Guard's maturity is still not enough: **today it is more demo than produ
         entityType: 'platform',
         status: 'active',
         parentOrg: 'AI Singapore',
+        parentOrgJa: 'AI Singapore',
+        parentOrgKo: 'AI Singapore',
         parentOrgEn: 'AI Singapore',
         parentEntityId: 'ai-singapore',
         summary:
@@ -3755,6 +3821,8 @@ A take: Aquarium is not AISG's flagship external product, but it is the engineer
         status: 'archived',
         founded: '2017',
         parentOrg: 'AI Singapore',
+        parentOrgJa: 'AI Singapore',
+        parentOrgKo: 'AI Singapore',
         parentOrgEn: 'AI Singapore',
         parentEntityId: 'ai-singapore',
         scale: '7 年累计完成 100+ 企业 AI 项目；累计补贴超过 SGD 2000 万',
@@ -3913,6 +3981,8 @@ A take: **100E being archived is not failure, but a sign that the model has matu
       {
         id: 'aiap',
         name: 'AIAP',
+        nameJa: 'AIAP',
+        nameKo: 'AIAP',
         nameEn: 'AIAP',
         description: 'AI 学徒计划，沉浸式 AI 工程人才培养',
         descriptionKo: 'AI 도제 계획, 몰입형 AI 엔지니어링 인재 양성',
@@ -3923,10 +3993,12 @@ A take: **100E being archived is not failure, but a sign that the model has matu
         status: 'active',
         founded: '2018',
         parentOrg: 'AI Singapore',
+        parentOrgJa: 'AI Singapore',
+        parentOrgKo: 'AI Singapore',
         parentOrgEn: 'AI Singapore',
         parentEntityId: 'ai-singapore',
         scale: '22 批次 500+ 校友；每批约 30 人；月津贴 SGD 3500；9 个月学制',
-        scaleKo: '22배치 500+ 졸업생; 각 배치 약 30명; 월 津贴 SGD 3500; 9개월 학제',
+        scaleKo: '22배치 500+ 졸업생; 각 배치 약 30명; 월 보조금 SGD 3500; 9개월 학제',
         scaleJa: '22回のコース、500以上の卒業生、1回あたり約30人、月額手当SGD 3500、9ヶ月コース',
         scaleEn: '22 cohorts and 500+ alumni; ~30 apprentices per cohort; SGD 3,500/month stipend; 9-month programme',
         summary:
@@ -4105,6 +4177,8 @@ The key questions for AIAP in the NAIS 2.0 era: **Can it scale to 200+ per year?
       {
         id: 'ladp',
         name: 'LADP',
+        nameJa: 'LADP',
+        nameKo: 'LADP',
         nameEn: 'LADP',
         description: '学习者 AI 开发计划，16 周实战项目',
         descriptionKo: '학습자 AI 개발 계획, 16주 실전 프로젝트',
@@ -4115,6 +4189,8 @@ The key questions for AIAP in the NAIS 2.0 era: **Can it scale to 200+ per year?
         status: 'active',
         founded: '2022',
         parentOrg: 'AI Singapore',
+        parentOrgJa: 'AI Singapore',
+        parentOrgKo: 'AI Singapore',
         parentOrgEn: 'AI Singapore',
         parentEntityId: 'ai-singapore',
         scale: '16 周；每年 2-3 批；每批 30-50 人',
@@ -4240,6 +4316,8 @@ A take: LADP solves AIAP's long-standing "applicant pool too small" problem — 
       {
         id: 'tagui',
         name: 'TagUI',
+        nameJa: 'TagUI',
+        nameKo: 'TagUI',
         nameEn: 'TagUI',
         description: 'RPA 自动化工具，全球 5000+ Stars',
         descriptionKo: 'RPA 자동화 도구, 전 세계 5000+ Stars',
@@ -4250,6 +4328,8 @@ A take: LADP solves AIAP's long-standing "applicant pool too small" problem — 
         status: 'active',
         founded: '2017',
         parentOrg: 'AI Singapore',
+        parentOrgJa: 'AI Singapore',
+        parentOrgKo: 'AI Singapore',
         parentOrgEn: 'AI Singapore',
         parentEntityId: 'ai-singapore',
         scale: 'GitHub 5000+ Stars；全球用户数十万；20+ 语言流程脚本支持',
@@ -4453,6 +4533,8 @@ Worth watching: how TagUI competes and coexists with the next generation of RPA 
         sources: [
           {
             label: 'TagUI GitHub',
+            labelJa: 'TagUI GitHub',
+            labelKo: 'TagUI GitHub',
             labelEn: 'TagUI on GitHub',
             url: 'https://github.com/aisingapore/TagUI',
             date: '2026-05-02',
@@ -4463,6 +4545,8 @@ Worth watching: how TagUI competes and coexists with the next generation of RPA 
       {
         id: 'peekingduck',
         name: 'PeekingDuck',
+        nameJa: 'PeekingDuck',
+        nameKo: 'PeekingDuck',
         nameEn: 'PeekingDuck',
         description: '计算机视觉推理框架',
         descriptionKo: '컴퓨터 비전 추론 프레임워크',
@@ -4473,6 +4557,8 @@ Worth watching: how TagUI competes and coexists with the next generation of RPA 
         status: 'active',
         founded: '2021',
         parentOrg: 'AI Singapore',
+        parentOrgJa: 'AI Singapore',
+        parentOrgKo: 'AI Singapore',
         parentOrgEn: 'AI Singapore',
         parentEntityId: 'ai-singapore',
         summary:
@@ -4605,6 +4691,8 @@ Take: PeekingDuck isn't AISG's most famous project, but it embodies AISG's engin
         sources: [
           {
             label: 'PeekingDuck GitHub',
+            labelJa: 'PeekingDuck GitHub',
+            labelKo: 'PeekingDuck GitHub',
             labelEn: 'PeekingDuck on GitHub',
             url: 'https://github.com/aisingapore/PeekingDuck',
             date: '2026-05-02',
@@ -4615,6 +4703,8 @@ Take: PeekingDuck isn't AISG's most famous project, but it embodies AISG's engin
       {
         id: 'sgnlp',
         name: 'SGNLP',
+        nameJa: 'SGNLP',
+        nameKo: 'SGNLP',
         nameEn: 'SGNLP',
         description: '新加坡 NLP 模型与工具包',
         descriptionKo: '싱가포르 NLP 모델 및 도구 모음',
@@ -4625,6 +4715,8 @@ Take: PeekingDuck isn't AISG's most famous project, but it embodies AISG's engin
         status: 'active',
         founded: '2021',
         parentOrg: 'AI Singapore',
+        parentOrgJa: 'AI Singapore',
+        parentOrgKo: 'AI Singapore',
         parentOrgEn: 'AI Singapore',
         parentEntityId: 'ai-singapore',
         summary:
@@ -4733,6 +4825,8 @@ Take: SGNLP gave SEA-LION a "philosophical predecessor" — the same "build spec
         sources: [
           {
             label: 'SGNLP GitHub',
+            labelJa: 'SGNLP GitHub',
+            labelKo: 'SGNLP GitHub',
             labelEn: 'SGNLP on GitHub',
             url: 'https://github.com/aisingapore/sgnlp',
             date: '2026-05-02',
@@ -4743,6 +4837,8 @@ Take: SGNLP gave SEA-LION a "philosophical predecessor" — the same "build spec
       {
         id: 'speech-lab',
         name: 'Speech Lab',
+        nameJa: 'Speech Lab',
+        nameKo: 'Speech Lab',
         nameEn: 'Speech Lab',
         description: '语音识别与合成技术',
         descriptionKo: '음성 인식 및 합성 기술',
@@ -4751,6 +4847,8 @@ Take: SGNLP gave SEA-LION a "philosophical predecessor" — the same "build spec
         entityType: 'platform',
         status: 'active',
         parentOrg: 'AI Singapore',
+        parentOrgJa: 'AI Singapore',
+        parentOrgKo: 'AI Singapore',
         parentOrgEn: 'AI Singapore',
         parentEntityId: 'ai-singapore',
         summary:
@@ -4841,13 +4939,21 @@ Take: speech AI is one of the most direct landing points for Singapore AI — cu
         relatedLeverNumbers: [3, 5],
         relatedEntityIds: ['ai-singapore', 'sgnlp', 'sea-lion'],
         sources: [
-          { label: 'AISG Speech', labelEn: 'AISG Speech', url: 'https://aisingapore.org/aiproducts/speech-lab/' },
+          {
+            label: 'AISG Speech',
+            labelJa: 'AISG Speech',
+            labelKo: 'AISG Speech',
+            labelEn: 'AISG Speech',
+            url: 'https://aisingapore.org/aiproducts/speech-lab/',
+          },
         ],
         updated: '2026-05-02',
       },
       {
         id: 'synergos',
         name: 'Synergos',
+        nameJa: 'Synergos',
+        nameKo: 'Synergos',
         nameEn: 'Synergos',
         description: '联邦学习框架',
         descriptionKo: '연방 학습 프레임워크',
@@ -4857,6 +4963,8 @@ Take: speech AI is one of the most direct landing points for Singapore AI — cu
         entityType: 'product',
         status: 'active',
         parentOrg: 'AI Singapore',
+        parentOrgJa: 'AI Singapore',
+        parentOrgKo: 'AI Singapore',
         parentOrgEn: 'AI Singapore',
         parentEntityId: 'ai-singapore',
         summary:
@@ -4947,7 +5055,13 @@ Take: Synergos is one of AISG's "frontier bets" — solid technically, slow to l
         relatedLeverNumbers: [3, 4],
         relatedEntityIds: ['ai-singapore', 'pdpc'],
         sources: [
-          { label: 'Synergos GitHub', labelEn: 'Synergos on GitHub', url: 'https://github.com/aisingapore/synergos' },
+          {
+            label: 'Synergos GitHub',
+            labelJa: 'Synergos GitHub',
+            labelKo: 'Synergos GitHub',
+            labelEn: 'Synergos on GitHub',
+            url: 'https://github.com/aisingapore/synergos',
+          },
         ],
         updated: '2026-05-02',
       },
@@ -4967,6 +5081,8 @@ Take: Synergos is one of AISG's "frontier bets" — solid technically, slow to l
       {
         id: 'learnai',
         name: 'LearnAI',
+        nameJa: 'LearnAI',
+        nameKo: 'LearnAI',
         nameEn: 'LearnAI',
         description: '在线 AI 学习平台，SkillsFuture 可报销',
         descriptionKo: '온라인 AI 학습 플랫폼, SkillsFuture 환급 가능',
@@ -4977,6 +5093,8 @@ Take: Synergos is one of AISG's "frontier bets" — solid technically, slow to l
         status: 'active',
         founded: '2018',
         parentOrg: 'AI Singapore',
+        parentOrgJa: 'AI Singapore',
+        parentOrgKo: 'AI Singapore',
         parentOrgEn: 'AI Singapore',
         parentEntityId: 'ai-singapore',
         scale: '注册学员 5 万+；30+ 课程；SkillsFuture Credit 可全额抵扣',
@@ -5143,6 +5261,8 @@ This kind of "talent strategy in popularized form" is typically underrated, but 
       {
         id: 'ai4i',
         name: 'AI4I',
+        nameJa: 'AI4I',
+        nameKo: 'AI4I',
         nameEn: 'AI4I',
         description: 'AI for Industry 课程系列',
         descriptionKo: 'AI for Industry 과정 시리즈',
@@ -5151,6 +5271,8 @@ This kind of "talent strategy in popularized form" is typically underrated, but 
         entityType: 'program',
         status: 'active',
         parentOrg: 'AI Singapore',
+        parentOrgJa: 'AI Singapore',
+        parentOrgKo: 'AI Singapore',
         parentOrgEn: 'AI Singapore',
         parentEntityId: 'ai-singapore',
         summary:
@@ -5258,6 +5380,8 @@ Take: AI4I doesn't produce AI engineers (that's AIAP's job) — it lets "non-AI 
       {
         id: 'naisc',
         name: 'NAISC',
+        nameJa: 'NAISC',
+        nameKo: 'NAISC',
         nameEn: 'NAISC',
         description: '全国 AI 学生挑战赛，2000+ 参与者',
         descriptionKo: '전국 AI 학생 챌린지, 2,000명 이상 참여자',
@@ -5267,6 +5391,8 @@ Take: AI4I doesn't produce AI engineers (that's AIAP's job) — it lets "non-AI 
         entityType: 'program',
         status: 'active',
         parentOrg: 'AI Singapore',
+        parentOrgJa: 'AI Singapore',
+        parentOrgKo: 'AI Singapore',
         parentOrgEn: 'AI Singapore',
         parentEntityId: 'ai-singapore',
         scale: '每年 2000+ 学生参与；覆盖中学、初院、理工学院、大学四个学段',
@@ -5370,6 +5496,8 @@ Take: NAISC's payback cycle stretches 5-10 years, but it is the key variable for
       {
         id: 'phd-fellowship',
         name: 'PhD Fellowship',
+        nameJa: 'PhD Fellowship',
+        nameKo: 'PhD Fellowship',
         nameEn: 'PhD Fellowship',
         description: '最长 4 年博士奖学金，SGD 6,700/月',
         descriptionKo: '최장 4년 박사 장학금, SGD 6,700/월',
@@ -5379,6 +5507,8 @@ Take: NAISC's payback cycle stretches 5-10 years, but it is the key variable for
         status: 'active',
         founded: '2018',
         parentOrg: 'AI Singapore',
+        parentOrgJa: 'AI Singapore',
+        parentOrgKo: 'AI Singapore',
         parentOrgEn: 'AI Singapore',
         parentEntityId: 'ai-singapore',
         scale: '4 年最长资助；月津贴 SGD 6,700；累计资助 100+ 博士生',
@@ -5530,6 +5660,8 @@ Worth watching: retention rates of recipients (staying in Singapore vs. leaving 
         sources: [
           {
             label: 'AISG PhD Fellowship',
+            labelJa: 'AISG PhD Fellowship',
+            labelKo: 'AISG PhD Fellowship',
             labelEn: 'AISG PhD Fellowship',
             url: 'https://aisingapore.org/research/phd-fellowship/',
           },
@@ -5539,6 +5671,8 @@ Worth watching: retention rates of recipients (staying in Singapore vs. leaving 
       {
         id: 'amp',
         name: 'AMP',
+        nameJa: 'AMP',
+        nameKo: 'AMP',
         nameEn: 'AMP',
         description: 'Accelerated Masters Programme，本硕连读快车道',
         descriptionKo: 'Accelerated Masters Programme, 학부-석사 연계 고속 트랙',
@@ -5547,6 +5681,8 @@ Worth watching: retention rates of recipients (staying in Singapore vs. leaving 
         entityType: 'program',
         status: 'active',
         parentOrg: 'AI Singapore',
+        parentOrgJa: 'AI Singapore',
+        parentOrgKo: 'AI Singapore',
         parentOrgEn: 'AI Singapore',
         parentEntityId: 'ai-singapore',
         summary:
@@ -5624,7 +5760,15 @@ Take: AMP isn't large in scale, but it complements the PhD Fellowship — the Ph
         milestones: [],
         relatedLeverNumbers: [2],
         relatedEntityIds: ['ai-singapore', 'phd-fellowship', 'aiap'],
-        sources: [{ label: 'AISG Talent', labelEn: 'AISG Talent', url: 'https://aisingapore.org/talent/' }],
+        sources: [
+          {
+            label: 'AISG Talent',
+            labelJa: 'AISG Talent',
+            labelKo: 'AISG Talent',
+            labelEn: 'AISG Talent',
+            url: 'https://aisingapore.org/talent/',
+          },
+        ],
         updated: '2026-05-02',
       },
     ],
@@ -5643,6 +5787,8 @@ Take: AMP isn't large in scale, but it complements the PhD Fellowship — the Ph
       {
         id: 'gpai',
         name: 'GPAI',
+        nameJa: 'GPAI',
+        nameKo: 'GPAI',
         nameEn: 'GPAI',
         description: '全球 AI 合作伙伴关系创始成员',
         descriptionKo: '글로벌 AI 파트너십 창립 멤버',
@@ -5777,6 +5923,8 @@ A take: GPAI gives a small country like Singapore "founding member" status at th
       {
         id: 'oecd-ai-observatory',
         name: 'OECD AI Policy Observatory',
+        nameJa: 'OECD AI Policy Observatory',
+        nameKo: 'OECD AI Policy Observatory',
         nameEn: 'OECD AI Policy Observatory',
         description: '参与 OECD AI 政策制定',
         descriptionKo: 'OECD AI 정책 입안에 참여',
@@ -5888,7 +6036,16 @@ A take: Singapore is not an OECD member yet still participates deeply in OECD AI
         ],
         relatedLeverNumbers: [6],
         relatedEntityIds: ['imda', 'gpai', 'ai-verify-foundation'],
-        sources: [{ label: 'OECD.AI', labelEn: 'OECD.AI', url: 'https://oecd.ai/', date: '2026-05-02' }],
+        sources: [
+          {
+            label: 'OECD.AI',
+            labelJa: 'OECD.AI',
+            labelKo: 'OECD.AI',
+            labelEn: 'OECD.AI',
+            url: 'https://oecd.ai/',
+            date: '2026-05-02',
+          },
+        ],
         updated: '2026-05-02',
       },
       {
@@ -5996,11 +6153,15 @@ A take: **Singapore being able to sit at the AI Safety Summit table is a manifes
           {
             date: '2023-11',
             title: 'Bletchley AI Safety Summit',
+            titleJa: 'Bletchley AI Safety Summit',
+            titleKo: 'Bletchley AI Safety Summit',
             titleEn: 'Bletchley AI Safety Summit',
           },
           {
             date: '2024-05',
             title: 'Seoul AI Safety Summit',
+            titleJa: 'Seoul AI Safety Summit',
+            titleKo: 'Seoul AI Safety Summit',
             titleEn: 'Seoul AI Safety Summit',
           },
         ],
@@ -6009,6 +6170,8 @@ A take: **Singapore being able to sit at the AI Safety Summit table is a manifes
         sources: [
           {
             label: 'AI Safety Institute UK',
+            labelJa: 'AI Safety Institute UK',
+            labelKo: 'AI Safety Institute UK',
             labelEn: 'UK AI Safety Institute',
             url: 'https://www.aisi.gov.uk/',
             date: '2026-05-02',
@@ -6032,6 +6195,8 @@ A take: **Singapore being able to sit at the AI Safety Summit table is a manifes
       {
         id: 'synapxe',
         name: 'Synapxe',
+        nameJa: 'Synapxe',
+        nameKo: 'Synapxe',
         nameEn: 'Synapxe',
         description: '新加坡国家医疗科技局，负责公共医疗IT基础设施与AI产品开发',
         descriptionKo: '싱가포르 국가의료과학 기술국, 공공의료 IT 기반 시설 및 AI 제품 개발 담당',
@@ -6290,6 +6455,8 @@ But Synapxe also faces challenges: **medical AI's safety-cautious requirements m
       {
         id: 'ace-ai',
         name: 'ACE-AI',
+        nameJa: 'ACE-AI',
+        nameKo: 'ACE-AI',
         nameEn: 'ACE-AI',
         description:
           '由 Synapxe 开发的 AI 健康筛查工具，预测糖尿病及高脂血症风险，2027 年起推广至所有 Healthier SG 诊所',
@@ -6303,6 +6470,8 @@ But Synapxe also faces challenges: **medical AI's safety-cautious requirements m
         status: 'active',
         founded: '2024',
         parentOrg: 'Synapxe',
+        parentOrgJa: 'Synapxe',
+        parentOrgKo: 'Synapxe',
         parentOrgEn: 'Synapxe',
         parentEntityId: 'synapxe',
         ministry: '卫生部（MOH）',
@@ -6447,7 +6616,16 @@ Worth watching: **actual prediction accuracy**, **clinician adoption** (do docto
         ],
         relatedLeverNumbers: [3, 5],
         relatedEntityIds: ['synapxe', 'ai-singapore'],
-        sources: [{ label: 'Synapxe', labelEn: 'Synapxe', url: 'https://www.synapxe.sg/', date: '2026-05-02' }],
+        sources: [
+          {
+            label: 'Synapxe',
+            labelJa: 'Synapxe',
+            labelKo: 'Synapxe',
+            labelEn: 'Synapxe',
+            url: 'https://www.synapxe.sg/',
+            date: '2026-05-02',
+          },
+        ],
         updated: '2026-05-02',
       },
     ],
@@ -6466,6 +6644,8 @@ Worth watching: **actual prediction accuracy**, **clinician adoption** (do docto
       {
         id: 'google-deepmind',
         name: 'Google DeepMind',
+        nameJa: 'Google DeepMind',
+        nameKo: 'Google DeepMind',
         nameEn: 'Google DeepMind',
         description: '2025.11 设立东南亚首个 AI 研究实验室，团队含顶尖研究科学家和 AI 影响专家',
         descriptionKo: '2025.11 동남아 최초 AI 연구 실험실 설립, 팀에 정상급 연구 과학자와 AI 영향력 전문가 포함',
@@ -6696,6 +6876,8 @@ Key variables to watch: **how big the lab can grow** (100 people? 500?), **wheth
       {
         id: 'microsoft-research-asia',
         name: 'Microsoft Research Asia',
+        nameJa: 'Microsoft Research Asia',
+        nameKo: 'Microsoft Research Asia',
         nameEn: 'Microsoft Research Asia',
         description: '2025.7 设立首个东南亚实验室，与 NUS 合作产业博士项目（IPP）',
         descriptionKo: '2025.7 최초 동남아 실험실 설립, NUS와 협력한 산업 박사 프로그램(IPP)',
@@ -6846,6 +7028,8 @@ A take: **MSR Asia's presence in Singapore means Google DeepMind no longer "stan
         sources: [
           {
             label: 'MSR Asia',
+            labelJa: 'MSR Asia',
+            labelKo: 'MSR Asia',
             labelEn: 'MSR Asia',
             url: 'https://www.microsoft.com/en-us/research/lab/microsoft-research-asia/',
           },
@@ -6855,6 +7039,8 @@ A take: **MSR Asia's presence in Singapore means Google DeepMind no longer "stan
       {
         id: 'aws',
         name: 'AWS',
+        nameJa: 'AWS',
+        nameKo: 'AWS',
         nameEn: 'AWS',
         description: '云计算基础设施与 AI 服务合作，承诺 $9B 基础设施投资',
         descriptionKo: '클라우드 컴퓨팅 기초 인프라와 AI 서비스 협력, USD 90억 기초 인프라 투자 약속',
@@ -7003,12 +7189,22 @@ A take: **the scale of the AWS investment is a double-edged sword for Singapore*
         ],
         relatedLeverNumbers: [1, 3],
         relatedEntityIds: ['ai-singapore', 'sea-lion', 'nvidia'],
-        sources: [{ label: 'AWS Singapore', labelEn: 'AWS Singapore', url: 'https://aws.amazon.com/local/singapore/' }],
+        sources: [
+          {
+            label: 'AWS Singapore',
+            labelJa: 'AWS Singapore',
+            labelKo: 'AWS Singapore',
+            labelEn: 'AWS Singapore',
+            url: 'https://aws.amazon.com/local/singapore/',
+          },
+        ],
         updated: '2026-05-02',
       },
       {
         id: 'nvidia',
         name: 'NVIDIA',
+        nameJa: 'NVIDIA',
+        nameKo: 'NVIDIA',
         nameEn: 'NVIDIA',
         description: '深度合作提供算力支持，新加坡贡献 NVIDIA 约 15% 全球营收（~$2.7B/季度）',
         descriptionKo: '심화된 협력을 통한 컴퓨팅 지원 제공, 싱가포르는 NVIDIA 전 세계 매출의 약 15% 기여(~$2.7B/분기)',
@@ -7172,7 +7368,7 @@ Worth watching: whether US GPU export controls on Singapore will tighten, whethe
         relatedLeverNumbers: [1, 6],
         relatedEntityIds: ['ai-singapore', 'sea-lion', 'aws', 'a-star'],
         sources: [
-          { label: 'NVIDIA', labelEn: 'NVIDIA', url: 'https://www.nvidia.com/' },
+          { label: 'NVIDIA', labelJa: 'NVIDIA', labelKo: 'NVIDIA', labelEn: 'NVIDIA', url: 'https://www.nvidia.com/' },
           {
             label: 'NVIDIA Singapore AI Research Lab 公告（ATxSummit 2026）',
             labelKo: 'NVIDIA Singapore AI Research Lab 공지사항(ATxSummit 2026)',
@@ -7186,6 +7382,8 @@ Worth watching: whether US GPU export controls on Singapore will tighten, whethe
       {
         id: 'openai',
         name: 'OpenAI',
+        nameJa: 'OpenAI',
+        nameKo: 'OpenAI',
         nameEn: 'OpenAI',
         description: 'OpenAI for Singapore：S$300M+ 承诺、美国以外首个 Applied AI Lab、200+ 本地技术岗',
         descriptionKo: 'OpenAI for Singapore: S$300M+ 약속, 미국 밖 첫 Applied AI Lab, 200개 이상 현지 기술 직무',
@@ -7309,7 +7507,13 @@ A take: this is heavier than a “regional HQ” announcement. A regional HQ is 
         relatedLeverNumbers: [1, 3, 6],
         relatedEntityIds: ['ai-singapore'],
         sources: [
-          { label: 'OpenAI', labelEn: 'OpenAI', url: 'https://openai.com/index/introducing-openai-for-singapore/' },
+          {
+            label: 'OpenAI',
+            labelJa: 'OpenAI',
+            labelKo: 'OpenAI',
+            labelEn: 'OpenAI',
+            url: 'https://openai.com/index/introducing-openai-for-singapore/',
+          },
           {
             label: 'IMDA ATxSummit 2026 公告',
             labelKo: 'IMDA ATxSummit 2026 발표',
@@ -7323,6 +7527,8 @@ A take: this is heavier than a “regional HQ” announcement. A regional HQ is 
       {
         id: 'sony-research',
         name: 'Sony Research',
+        nameJa: 'Sony Research',
+        nameKo: 'Sony Research',
         nameEn: 'Sony Research',
         description: 'AI 技术联合研发',
         descriptionKo: 'AI 기술 공동 연구개발',
@@ -7401,12 +7607,16 @@ A take: Sony is small in scale, but it is a necessary piece of the puzzle for Si
         milestones: [],
         relatedLeverNumbers: [6],
         relatedEntityIds: ['google-deepmind', 'microsoft-research-asia'],
-        sources: [{ label: 'Sony AI', labelEn: 'Sony AI', url: 'https://ai.sony/' }],
+        sources: [
+          { label: 'Sony AI', labelJa: 'Sony AI', labelKo: 'Sony AI', labelEn: 'Sony AI', url: 'https://ai.sony/' },
+        ],
         updated: '2026-05-02',
       },
       {
         id: 'alibaba-cloud',
         name: 'Alibaba Cloud',
+        nameJa: 'Alibaba Cloud',
+        nameKo: 'Alibaba Cloud',
         nameEn: 'Alibaba Cloud',
         description: '云计算与 AI 平台合作',
         descriptionKo: '클라우드 컴퓨팅 및 AI 플랫폼 협력',
@@ -7513,7 +7723,15 @@ Worth watching: Alibaba Cloud's actual market share in Singapore, shifts in the 
         milestones: [],
         relatedLeverNumbers: [1, 6],
         relatedEntityIds: ['aws', 'sea-lion'],
-        sources: [{ label: 'Alibaba Cloud', labelEn: 'Alibaba Cloud', url: 'https://www.alibabacloud.com/' }],
+        sources: [
+          {
+            label: 'Alibaba Cloud',
+            labelJa: 'Alibaba Cloud',
+            labelKo: 'Alibaba Cloud',
+            labelEn: 'Alibaba Cloud',
+            url: 'https://www.alibabacloud.com/',
+          },
+        ],
         updated: '2026-05-02',
       },
     ],

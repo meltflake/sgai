@@ -4,6 +4,32 @@
 
 ---
 
+## 0.17.5 — 2026-05-24
+
+### 翻译缺口强否决
+
+- `check:i18n-completeness` 从单独检查 `ecosystem.ts` 扩展为扫描 `src/data/*.ts`，并对 `scripts/i18n-config.ts` 中配置的 policies / ecosystem / levers / voices 用户可见字段强制要求所有 authored locale sibling；locale 列表从 `src/i18n/index.ts` 自动读取，未来新增语言会默认进入强否决。
+- `zh` 作为源语言纳入完整性语义，`zh-tw` 作为 OpenCC 派生语言纳入 `check:i18n:all` 的构建产物检查；`check:i18n:all` 不再手写语言列表，会扫描 `LOCALES` 中每个语言。
+- `i18n-pair` alignment 检查扩展到更多实际渲染字段，并支持 `string[]`；`highlights`、`bullets`、`tags`、`points` 等数组文案缺任一语言 sibling 也会 hard-fail。
+- `i18n-pair` 新增 English purity gate：`*En` 加工字段不得含中文汉字、日文假名或韩文 Hangul；EN 构建产物检查也同步从"查中文"扩展为"查任何非英文脚本"。
+- `npm run check` 现在同步执行 `eval:source-i18n`，新增 `isZh ? ... : ...`、`lang === 'zh' ? ... : ...` 这类二元模板分支会在本地 check 阶段失败。
+- 补齐当前严格 schema 下的缺口：语言中立的专名、缩写、金额显式写入对应 sibling；少量政策标题、来源、演讲事件补上日 / 韩字段。
+- 补齐数组字段的历史缺口，并让 talent、benchmarking、fieldnotes、timeline、opensource 等页面按 `pickLocalized` 渲染数组字段，避免日 / 韩页继续回退英文。
+- 新增版本化 git hooks：`scripts/git-hooks/pre-commit` 与 `scripts/git-hooks/pre-push` 都执行 `npm run check:i18n-completeness`；缺翻译时本地 commit / push 会直接失败。
+
+---
+
+## 0.17.4 — 2026-05-24
+
+### 多语言渲染回归防线
+
+- 修复 speeches 详情页在 `/ja/`、`/ko/` 下把英文 transcript 当作本地化正文渲染的问题；日 / 韩暂无译文时显示明确的待翻译状态，只保留官方来源链接。
+- 修复 policies、ecosystem、levers、timeline 等高曝光页面的二元 `zh/en` 渲染分支，改为 `pickLocalized(record, field, lang)` 与五语 label 字典。
+- 新增 `scripts/evals/localized-rendering/check.ts`，从构建产物层检查 ja / ko 关键页面是否实际渲染了已有的 `*Ja` / `*Ko` 字段，并 hard-fail speech 页面英文正文泄漏。
+- 升级 `check:dist`：现在会扫描 en / zh-tw / ja / ko 的构建产物，并执行 JSON-LD schema 与 localized-rendering gate；GitHub Actions build matrix 在 `npm run build` 后同步运行 `npm run check:dist`。
+
+---
+
 ## 0.17.3 — 2026-05-24
 
 ### ATxSummit 2026 新加坡 AI 政策更新

@@ -13,6 +13,7 @@ import {
 } from '~/data/speech-transcripts';
 import { findPersonId, getPerson } from '~/utils/people';
 import { NON_DEFAULT_ROUTE_LOCALES, IN_LANGUAGES, localizedHref, pickLocalized, t, type Lang } from '~/i18n';
+import { toTraditional } from '~/i18n/opencc';
 
 export const prerender = true;
 
@@ -25,13 +26,8 @@ export const getStaticPaths = (() =>
   )) satisfies GetStaticPaths;
 
 const lang = Astro.params.lang as Lang;
-// `isZh` is the binary flag the original template used to switch between
-// zh and the English fallback. We keep it for the few spots that show the
-// raw zh transcript when on a /zh/ page (zh-tw uses OpenCC, ko uses the
-// translated transcript). `isCjk` covers all locales that want the zh
-// transcript via OpenCC: zh + zh-tw.
 const isZh = lang === 'zh';
-const isCjk = lang === 'zh' || lang === 'zh-tw';
+const isZhLike = lang === 'zh' || lang === 'zh-tw';
 const { speech } = Astro.props as { speech: MddiSpeech };
 const id = speechId(speech);
 const transcript = getSpeechTranscript(id);
@@ -39,14 +35,19 @@ const paragraphsZh = getSpeechTranscriptParagraphs(id, 'zh');
 const paragraphsEn = getSpeechTranscriptParagraphs(id, 'en');
 const tldrZh = getSpeechTranscriptTldr(id, 'zh');
 const tldrEn = getSpeechTranscriptTldr(id, 'en');
+const localizeZhTrack = (items: string[]) => (lang === 'zh-tw' ? items.map((item) => toTraditional(item)) : items);
+const paragraphsLocal = isZhLike ? localizeZhTrack(paragraphsZh) : [];
+const tldrLocal = isZhLike && tldrZh ? localizeZhTrack(tldrZh) : undefined;
 
 const speakerPid = findPersonId(speech.speaker);
 // Resolve speaker display name via Person record so non-zh locales get
 // the Latin Roman form (Singapore press standard) instead of the raw
 // Chinese name stored in speech.speaker.
 const speakerPerson = speakerPid ? getPerson(speakerPid) : undefined;
-const speakerDisplay = isZh
-  ? speech.speaker
+const speakerDisplay = isZhLike
+  ? lang === 'zh-tw'
+    ? toTraditional(speech.speaker)
+    : speech.speaker
   : (speakerPerson && (pickLocalized<string>(speakerPerson, 'name', 'nameEn', lang) || speakerPerson.nameEn)) ||
     speech.speaker;
 const titleDisplay = pickLocalized<string>(speech, 'title', 'titleEn', lang) || speech.title;
@@ -78,7 +79,76 @@ const articleSchema = {
 const breadcrumbs = [{ label: t(lang, 'navVoices'), href: localizedHref('/voices/', lang) }, { label: titleDisplay }];
 
 const hasLocalCopy = !!transcript && paragraphsEn.length > 0;
-const tldr = isCjk ? tldrZh : tldrEn;
+const tldrByLang: Partial<Record<Lang, string[] | undefined>> = {
+  zh: tldrLocal,
+  'zh-tw': tldrLocal,
+  en: tldrEn,
+};
+const tldr = tldrByLang[lang];
+
+const speechCopy: Record<
+  Lang,
+  {
+    translatedHeading: string;
+    translatedNote: string;
+    translatedAtLabel: string;
+    originalHeading: string;
+    originalNote: string;
+    fetchedAtLabel: string;
+    pending: string;
+  }
+> = {
+  zh: {
+    translatedHeading: '完整译文（中文）',
+    translatedNote: 'MDDI 英文原文译文',
+    translatedAtLabel: '翻译日期',
+    originalHeading: '英文原文',
+    originalNote: 'MDDI 官网原始记录',
+    fetchedAtLabel: '抓取日期',
+    pending: '此演讲尚未本地存档。暂时请到 MDDI 官网阅读原文。我们正在分批补全所有 AI 相关演讲稿的本地存档与中文译文。',
+  },
+  'zh-tw': {
+    translatedHeading: '完整譯文（繁體中文）',
+    translatedNote: 'MDDI 英文原文譯文',
+    translatedAtLabel: '翻譯日期',
+    originalHeading: '英文原文',
+    originalNote: 'MDDI 官網原始記錄',
+    fetchedAtLabel: '抓取日期',
+    pending: '此演講尚未本地存檔。暫時請到 MDDI 官網閱讀原文。我們正在分批補全所有 AI 相關演講稿的本地存檔與中文譯文。',
+  },
+  ja: {
+    translatedHeading: '全文翻訳',
+    translatedNote: 'MDDI 英語原文の翻訳',
+    translatedAtLabel: '翻訳日',
+    originalHeading: '英語原文',
+    originalNote: 'MDDI 公式サイト原文',
+    fetchedAtLabel: '取得日',
+    pending:
+      'このスピーチの日本語全文はまだ準備中です。現時点では MDDI 公式サイトの原文をご確認ください。全文翻訳は順次追加します。',
+  },
+  ko: {
+    translatedHeading: '전체 번역',
+    translatedNote: 'MDDI 영어 원문의 번역',
+    translatedAtLabel: '번역일',
+    originalHeading: '영어 원문',
+    originalNote: 'MDDI 공식 웹사이트 원문',
+    fetchedAtLabel: '수집일',
+    pending:
+      '이 연설의 한국어 전문 번역은 아직 준비 중입니다. 현재는 MDDI 공식 웹사이트의 원문을 확인해 주세요. 전문 번역은 순차적으로 추가합니다.',
+  },
+  en: {
+    translatedHeading: 'Full translation',
+    translatedNote: 'Translation of the MDDI English original',
+    translatedAtLabel: 'translated',
+    originalHeading: 'Full speech',
+    originalNote: 'Archived from mddi.gov.sg',
+    fetchedAtLabel: 'fetched',
+    pending:
+      'Local archive is not yet available. Please read the original on the MDDI website. We are progressively archiving full text and translations for all AI-related MDDI speeches.',
+  },
+};
+
+const copy = speechCopy[lang];
 ---
 
 <Layout metadata={metadata} breadcrumbs={breadcrumbs} lang={lang}>
@@ -121,10 +191,7 @@ const tldr = isCjk ? tldrZh : tldrEn;
 
     {
       tldr && tldr.length > 0 && (
-        <section
-          class="mb-8 border-l-4 border-primary pl-5"
-          {...(!isZh ? { 'data-i18n-allow-cjk': 'speech-verbatim-source' } : {})}
-        >
+        <section class="mb-8 border-l-4 border-primary pl-5">
           <h2 class="text-xs uppercase tracking-wider text-primary font-semibold mb-2">
             {t(lang, 'speechSummaryPoints')}
           </h2>
@@ -141,17 +208,17 @@ const tldr = isCjk ? tldrZh : tldrEn;
     }
 
     {
-      isZh && paragraphsZh.length > 0 && (
+      isZhLike && paragraphsLocal.length > 0 && (
         <section class="my-8 border border-primary/20 bg-primary/5 rounded-xl p-5">
           <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-4">
-            <h2 class="t-h3 text-gray-900 dark:text-white">完整译文（中文）</h2>
+            <h2 class="t-h3 text-gray-900 dark:text-white">{copy.translatedHeading}</h2>
             <p class="text-xs text-gray-500 dark:text-gray-400">
-              MDDI 英文原文译文
-              {transcript?.translatedAt && ` · 翻译日期：${transcript.translatedAt}`}
+              {copy.translatedNote}
+              {transcript?.translatedAt && ` · ${copy.translatedAtLabel}: ${transcript.translatedAt}`}
             </p>
           </div>
           <div class="space-y-4 text-base text-gray-700 dark:text-gray-300 leading-[1.9]">
-            {paragraphsZh.map((paragraph) => (
+            {paragraphsLocal.map((paragraph) => (
               <p>{paragraph}</p>
             ))}
           </div>
@@ -160,21 +227,21 @@ const tldr = isCjk ? tldrZh : tldrEn;
     }
 
     {
-      isZh && paragraphsEn.length > 0 && paragraphsZh.length === 0 && (
+      isZhLike && paragraphsEn.length > 0 && paragraphsLocal.length === 0 && (
         <section class="my-8 callout-muted rounded-xl p-5 text-sm text-amber-900 dark:text-amber-200">
-          中文译文待补充。可暂时查看下方英文原文，或点击底部"原文"链接到 MDDI 官网阅读。
+          {copy.pending}
         </section>
       )
     }
 
     {
-      isZh && paragraphsEn.length > 0 && (
-        <section class="my-8 border border-subtle rounded-xl p-5">
+      isZhLike && paragraphsEn.length > 0 && (
+        <section class="my-8 border border-subtle rounded-xl p-5" data-i18n-allow-en="speech-verbatim-source">
           <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-4">
-            <h2 class="t-h3 text-gray-900 dark:text-white">英文原文</h2>
+            <h2 class="t-h3 text-gray-900 dark:text-white">{copy.originalHeading}</h2>
             <p class="text-xs text-gray-500 dark:text-gray-400">
-              MDDI 官网原始记录
-              {transcript?.fetchedAt && ` · 抓取日期：${transcript.fetchedAt}`}
+              {copy.originalNote}
+              {transcript?.fetchedAt && ` · ${copy.fetchedAtLabel}: ${transcript.fetchedAt}`}
             </p>
           </div>
           <div class="space-y-4 text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
@@ -187,46 +254,24 @@ const tldr = isCjk ? tldrZh : tldrEn;
     }
 
     {
-      !isZh &&
-        (paragraphsEn.length > 0 ? (
-          <section
-            class="my-8 border border-primary/20 bg-primary/5 rounded-xl p-5"
-            data-i18n-allow-cjk="speech-verbatim-source"
-            data-i18n-allow-en="speech-verbatim-source"
-          >
-            <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-4">
-              <h2 class="t-h3 text-gray-900 dark:text-white">Full speech</h2>
-              <p class="text-xs text-gray-500 dark:text-gray-400">
-                Archived from mddi.gov.sg
-                {transcript?.fetchedAt && ` · Fetched ${transcript.fetchedAt}`}
-              </p>
-            </div>
-            <div class="space-y-4 text-base text-gray-700 dark:text-gray-300 leading-[1.9]">
-              {paragraphsEn.map((paragraph) => (
-                <p>{paragraph}</p>
-              ))}
-            </div>
-          </section>
-        ) : (
-          <section class="my-8 callout-muted rounded-xl p-5 text-sm text-amber-900 dark:text-amber-200">
-            Local archive not yet available. Please read the original on the
-            <a href={speech.url} target="_blank" rel="noopener" class="underline mx-1">
-              MDDI website
-            </a>
-            . We are progressively archiving full text and translations for all AI-related MDDI speeches.
-          </section>
-        ))
+      !isZhLike && (
+        <section class="my-8 callout-muted rounded-xl p-5 text-sm text-amber-900 dark:text-amber-200">
+          {copy.pending}{' '}
+          <a href={speech.url} target="_blank" rel="noopener" class="underline">
+            {t(lang, 'mddiSourceLabel') || 'MDDI website'}
+          </a>
+        </section>
+      )
     }
 
     {
-      isZh && !hasLocalCopy && (
+      isZhLike && !hasLocalCopy && (
         <section class="my-8 callout-muted rounded-xl p-5 text-sm">
           <p class="text-amber-900 dark:text-amber-200">
-            此演讲尚未本地存档。暂时请到{' '}
+            {copy.pending}{' '}
             <a href={speech.url} target="_blank" rel="noopener" class="underline">
-              MDDI 官网
-            </a>{' '}
-            阅读原文。我们正在分批补全所有 AI 相关演讲稿的本地存档与中文译文。
+              {t(lang, 'mddiSourceLabel') || 'MDDI website'}
+            </a>
           </p>
         </section>
       )

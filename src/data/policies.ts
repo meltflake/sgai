@@ -604,6 +604,8 @@ This is not just a regional-HQ story. It connects OpenAI’s deployment engineer
       {
         id: 'saf-digital-and-intelligence-service-fourth-service',
         title: 'SAF Digital and Intelligence Service (DIS)',
+        titleKo: 'SAF 디지털 및 정보 서비스 (DIS)',
+        titleJa: 'SAF デジタル・インテリジェンスサービス (DIS)',
         titleEn: 'SAF Digital and Intelligence Service — Fourth Service',
         date: '2022-10',
         source: '国防部 (MINDEF)',
@@ -631,9 +633,13 @@ This is not just a regional-HQ story. It connects OpenAI’s deployment engineer
       {
         id: 'singapore-ai-safety-institute',
         title: 'Singapore AI Safety Institute (AISI)',
+        titleKo: '싱가포르 AI 안전 연구소 (AISI)',
+        titleJa: 'シンガポール AI 安全研究所 (AISI)',
         titleEn: 'Singapore AI Safety Institute',
         date: '2024-05',
         source: 'IMDA / Digital Trust Centre',
+        sourceKo: 'IMDA / 디지털 신뢰 센터',
+        sourceJa: 'IMDA / デジタルトラストセンター',
         sourceOrgUrl: 'https://sgaisi.sg/',
         sourceUrl: 'https://sgaisi.sg/',
         summary: '前沿 AI 安全研究的国家级研究所，承担 Singapore Consensus 协调职能。',
@@ -1056,6 +1062,8 @@ Strategically, this moves AI Verify from tools and frameworks into market infras
       {
         id: 'project-mindforge-genai-risk-framework-for-financial-sector',
         title: 'MAS Project MindForge',
+        titleKo: 'Project MindForge — 금융권 GenAI 위험 프레임워크',
+        titleJa: 'Project MindForge — 金融セクター向け GenAI リスクフレームワーク',
         titleEn: 'Project MindForge — GenAI Risk Framework for Financial Sector',
         date: '2024-06',
         source: '新加坡金融管理局 (MAS)',
@@ -1085,6 +1093,8 @@ Strategically, this moves AI Verify from tools and frameworks into market infras
       {
         id: 'ai-risk-management-guidelines-for-banks',
         title: 'MAS AI Risk Management Guidelines',
+        titleKo: 'MAS AI 위험 관리 지침',
+        titleJa: 'MAS AI リスク管理ガイドライン',
         titleEn: 'AI Risk Management Guidelines for Banks',
         date: '2024-12',
         source: '新加坡金融管理局 (MAS)',
@@ -1675,9 +1685,13 @@ This remains one of Singapore’s most important international governance levers
       {
         id: 'asean-guide-on-ai-governance-and-ethics',
         title: 'ASEAN Guide on AI Governance and Ethics',
+        titleKo: 'ASEAN AI 거버넌스 및 윤리 가이드',
+        titleJa: 'ASEAN AI ガバナンス・倫理ガイド',
         titleEn: 'ASEAN Guide on AI Governance and Ethics',
         date: '2024-02',
         source: 'ASEAN Digital Ministers / IMDA',
+        sourceKo: 'ASEAN 디지털 장관 회의 / IMDA',
+        sourceJa: 'ASEAN デジタル大臣会議 / IMDA',
         sourceOrgUrl: 'https://asean.org/',
         sourceUrl:
           'https://asean.org/wp-content/uploads/2024/02/ASEAN-Guide-on-AI-Governance-and-Ethics_beautified_201223_v2.pdf',

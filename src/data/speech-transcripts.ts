@@ -2650,7 +2650,7 @@ export const speechTranscripts: Record<string, SpeechTranscript> = {
       `Two crowdsourced Singapore security platforms: AI CTF + GBBP (Government Bug Bounty Programme). This year's AI CTF: 1,000+ participants from 462 teams, more than 1 in 5 from overseas. GBBP since 2018: 64 agencies, 115 systems tested, 586 vulnerabilities (including 11 critical), nearly S$800k in rewards.`,
       `AI CTF probes AI-specific vulnerabilities — prompt injection, data poisoning, adversarial ML — building both offensive and defensive capability.`,
       `GBBP lets global ethical hackers test actual government digital services — few governments do this, fewer continuously.`,
-      `Tan also celebrates diversity and youth — last year's all-girls team "What's AI, 可以吃的吗?" took 2nd in the Pre-U category; today's winner Kevin Pook started bug-bounty hunting in university and is now a cybersecurity consultant.`,
+      `Tan also celebrates diversity and youth — last year's all-girls team "What's AI, Can Eat or Not?" took 2nd in the Pre-U category; today's winner Kevin Pook started bug-bounty hunting in university and is now a cybersecurity consultant.`,
     ],
     translatedAt: `2026-05-02`,
     translationSource: 'claude',
@@ -6650,15 +6650,17 @@ export function getSpeechTranscript(id: string): SpeechTranscript | undefined {
   return speechTranscripts[id];
 }
 
-// Locale handling: zh-tw runs zh paragraphs through OpenCC s2twp; other
-// non-zh locales (en/ja/ko) fall through to the English transcript when
-// available (Singapore MDDI speeches are English originals).
+// Locale handling: zh-tw runs zh paragraphs through OpenCC s2twp.
+// ja/ko intentionally return no body until dedicated transcript fields
+// exist. Rendering English originals as localized body text caused silent
+// wrong-language pages under /ja/ and /ko/.
 export function getSpeechTranscriptParagraphs(id: string, lang: string): string[] {
   const t = getSpeechTranscript(id);
   if (!t) return [];
   if (lang === 'zh') return t.paragraphs;
   if (lang === 'zh-tw') return t.paragraphs.map((p) => toTraditional(p));
-  return t.paragraphsEn?.length ? t.paragraphsEn : t.paragraphs;
+  if (lang === 'en') return t.paragraphsEn?.length ? t.paragraphsEn : t.paragraphs;
+  return [];
 }
 
 export function getSpeechTranscriptTldr(id: string, lang: string): string[] | undefined {
@@ -6666,5 +6668,6 @@ export function getSpeechTranscriptTldr(id: string, lang: string): string[] | un
   if (!t) return undefined;
   if (lang === 'zh') return t.tldr;
   if (lang === 'zh-tw') return t.tldr?.map((p) => toTraditional(p));
-  return t.tldrEn ?? t.tldr;
+  if (lang === 'en') return t.tldrEn ?? t.tldr;
+  return undefined;
 }

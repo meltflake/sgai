@@ -11,39 +11,8 @@ interface Props {
   lang: Lang;
 }
 const { lang } = Astro.props;
-
-// Tag set is small and stable — translate inline rather than threading per-tag EN/JA siblings.
-const TAG_EN: Record<string, string> = {
-  人才: 'Talent',
-  国际: 'International',
-  预算: 'Budget',
-  战略: 'Strategy',
-  医疗: 'Healthcare',
-  治理: 'Governance',
-  技术: 'Tech',
-  产业: 'Industry',
-  创新: 'Innovation',
-  标准: 'Standards',
-  数据主权: 'Data Sovereignty',
-};
-const TAG_JA: Record<string, string> = {
-  人才: '人材',
-  国际: '国際',
-  预算: '予算',
-  战略: '戦略',
-  医疗: '医療',
-  治理: 'ガバナンス',
-  技术: '技術',
-  产业: '産業',
-  创新: 'イノベーション',
-  标准: '標準',
-  数据主权: 'データ主権',
-};
-const tagText = (tag: string) => {
-  if (lang === 'zh') return tag;
-  if (lang === 'ja') return TAG_JA[tag] ?? TAG_EN[tag] ?? tag;
-  return TAG_EN[tag] ?? tag;
-};
+const eventTags = (event: (typeof timelineEvents)[number]) =>
+  (pickLocalized(event, 'tags', lang) as string[] | null | undefined) || event.tags || [];
 
 const COPY: Partial<Record<Lang, { title: string; subtitle: string; sources: string }>> = {
   zh: {
@@ -62,6 +31,12 @@ const COPY: Partial<Record<Lang, { title: string; subtitle: string; sources: str
     subtitle:
       '2014 年の Smart Nation 構想から 2027 年の国際 AI オリンピックまで、シンガポール AI 戦略の主要マイルストーンを振り返ります。',
     sources: 'データ出典：AI Singapore、SNDGO、MOF、IMDA など公式公開情報。',
+  },
+  ko: {
+    title: '📅 싱가포르 AI 발전 타임라인',
+    subtitle:
+      '2014년 Smart Nation 구상부터 2027년 국제 AI 올림피아드까지, 싱가포르 AI 전략의 주요 마일스톤을 돌아봅니다.',
+    sources: '데이터 출처: AI Singapore, SNDGO, MOF, IMDA 등 공식 공개 정보.',
   },
 };
 
@@ -92,9 +67,9 @@ const c = COPY[lang] ?? COPY.en ?? COPY.zh!;
                   <span class="t-stat text-blue-600 dark:text-blue-400">{event.year}</span>
                   {event.tags && (
                     <div class="flex gap-1 flex-wrap">
-                      {event.tags.map((tag) => (
+                      {eventTags(event).map((tag) => (
                         <span class="text-xs bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 px-2 py-0.5 rounded">
-                          {tagText(tag)}
+                          {tag}
                         </span>
                       ))}
                     </div>

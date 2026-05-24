@@ -11,11 +11,9 @@ interface Props {
 }
 
 const { policy, lang, categoryIcon } = Astro.props;
-const isJa = lang === 'ja';
-const isEn = lang !== 'zh';
 
 const title = pickLocalized<string>(policy, 'title', lang) || policy.title;
-const subtitle = policy.titleEn && policy.titleEn !== title ? policy.titleEn : undefined;
+const subtitle = lang === 'zh' && policy.titleEn && policy.titleEn !== title ? policy.titleEn : undefined;
 const source = pickLocalized<string>(policy, 'source', lang) || policy.source;
 const summary = pickLocalized<string>(policy, 'summary', lang) || policy.summary;
 const content = pickLocalized<string>(policy, 'content', lang) || policy.content;
@@ -38,23 +36,14 @@ const relatedCount =
   (policy.authorPersonIds?.length || 0) +
   (policy.relatedPostSlugs?.length || 0);
 
-const labels = isJa
-  ? {
-      source: '出典',
-      related: '件の関連リンク',
-      profile: 'プロフィールを見る',
-    }
-  : isEn
-    ? {
-        source: 'Source',
-        related: 'related links',
-        profile: 'View profile',
-      }
-    : {
-        source: '来源',
-        related: '项关联',
-        profile: '查看档案',
-      };
+const LABELS: Record<Lang, { source: string; related: string; profile: string }> = {
+  zh: { source: '来源', related: '项关联', profile: '查看档案' },
+  'zh-tw': { source: '來源', related: '項關聯', profile: '查看檔案' },
+  en: { source: 'Source', related: 'related links', profile: 'View profile' },
+  ja: { source: '出典', related: '件の関連リンク', profile: 'プロフィールを見る' },
+  ko: { source: '출처', related: '개 관련 링크', profile: '프로필 보기' },
+};
+const labels = LABELS[lang];
 ---
 
 <a

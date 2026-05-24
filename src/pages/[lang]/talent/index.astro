@@ -12,6 +12,8 @@ export function getStaticPaths() {
 
 const lang = Astro.params.lang as Lang;
 const isZh = lang === 'zh';
+const pickStringArray = (record: unknown, field: string, fallback: string[]): string[] =>
+  (pickLocalized(record, field, lang) as string[] | null | undefined) || fallback;
 
 const statusClasses: Record<TalentStatusTone, string> = {
   active: 'bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-200',
@@ -82,12 +84,14 @@ const statusClasses: Record<TalentStatusTone, string> = {
               </div>
 
               <ul class="text-sm space-y-2 mb-5">
-                {(isZh ? prog.highlights : prog.highlightsEn).slice(0, 3).map((h) => (
-                  <li class="flex items-start gap-2 text-gray-700 dark:text-gray-300">
-                    <Icon name="tabler:check" class="w-4 h-4 mt-0.5 text-primary shrink-0" />
-                    <span>{h}</span>
-                  </li>
-                ))}
+                {pickStringArray(prog, 'highlights', prog.highlights)
+                  .slice(0, 3)
+                  .map((h) => (
+                    <li class="flex items-start gap-2 text-gray-700 dark:text-gray-300">
+                      <Icon name="tabler:check" class="w-4 h-4 mt-0.5 text-primary shrink-0" />
+                      <span>{h}</span>
+                    </li>
+                  ))}
               </ul>
 
               <div class="mt-auto pt-4 border-t border-subtle flex items-center justify-between gap-3">

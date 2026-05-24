@@ -1,0 +1,5 @@
+#!/bin/sh
+set -eu
+
+echo "[sgai] Checking required translations before commit..."
+npm run check:i18n-completeness

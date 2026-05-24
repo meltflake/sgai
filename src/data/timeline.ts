@@ -13,6 +13,9 @@ export interface TimelineEvent {
   descriptionJa?: string;
   descriptionKo?: string;
   tags?: string[];
+  tagsEn?: string[];
+  tagsJa?: string[];
+  tagsKo?: string[];
   // Phase 1 cross-refs (hand-curated over time).
   personIds?: string[];
   relatedPolicyIds?: string[];
@@ -37,6 +40,9 @@ export const timelineEvents: TimelineEvent[] = [
     descriptionEn:
       "Singapore will host the International Olympiad in AI (IOAI) for the first time, drawing the world's top young AI talent to the Lion City and underlining Singapore's lead in AI education and talent development.",
     tags: ['人才', '国际'],
+    tagsEn: ['Talent', 'International'],
+    tagsJa: ['人材', '国際'],
+    tagsKo: ['인재', '국제'],
   },
   {
     id: 'evt-2026-atxsummit-real-world-ai-deployment',
@@ -55,6 +61,9 @@ export const timelineEvents: TimelineEvent[] = [
     descriptionEn:
       'At ATxSummit 2026, Josephine Teo framed the NAIS update as a “double-click rather than a system reboot.” The official focus is not a new “National AI Mission 2030” strategy, but translating NAIS 2.0 into four National AI Missions (Connectivity, Advanced Manufacturing, Healthcare, Finance) and a real-world deployment package: the National AI Impact Programme target of 10,000 SMEs, Champions of AI, the NVIDIA Singapore AI Research Lab, the Punggol Digital District multi-operator robotics testbed, OpenAI for Singapore (S$300M+, first Applied AI Lab outside the US, 200+ technical roles), the Google AI Agents Sandbox, the updated Agentic AI Governance Framework, and AI TAP.',
     tags: ['战略', '产业', '治理', '国际'],
+    tagsEn: ['Strategy', 'Industry', 'Governance', 'International'],
+    tagsJa: ['戦略', '産業', 'ガバナンス', '国際'],
+    tagsKo: ['전략', '산업', '거버넌스', '국제'],
     personIds: ['josephine-teo'],
     relatedPolicyIds: [
       'nais-update-2026',
@@ -83,6 +92,9 @@ export const timelineEvents: TimelineEvent[] = [
     descriptionEn:
       'On 27 April, China\'s National Development and Reform Commission (NDRC) formally blocked Meta\'s US$2B acquisition of Manus on national-security grounds — the first time China has vetoed a foreign AI acquisition under that rationale. NDRC drew three red lines: technology sovereignty, data sovereignty, and national security. Manus\'s parent Butterfly Effect was founded in China in 2022 by Xiao Hong and Ji Yichao, then relocated its HQ to Singapore in mid-2025 (~40 core technical staff moved from Beijing while most of the 120-person team was laid off), with the Singapore Butterfly Effect entity taking over operations outside China. Meta announced the acquisition in December 2025. Chinese regulators opened a review in January 2026; by late March, Xiao and Ji had been summoned to NDRC and barred from leaving China. The case directly challenges Singapore\'s strategic narrative as an "AI offshore transit hub" — international press (Asia Times, Foreign Policy) framed it as "the limits of Singapore washing," meaning that re-domiciling alone cannot escape source-country oversight.',
     tags: ['治理', '产业', '国际', '数据主权'],
+    tagsEn: ['Governance', 'Industry', 'International', 'Data sovereignty'],
+    tagsJa: ['ガバナンス', '産業', '国際', 'データ主権'],
+    tagsKo: ['거버넌스', '산업', '국제', '데이터 주권'],
     relatedPostSlugs: [],
   },
   {
@@ -102,6 +114,9 @@ export const timelineEvents: TimelineEvent[] = [
     descriptionEn:
       "From 20–24 April, the 17th ISO/IEC JTC 1/SC 42 plenary convened in Singapore — the first time SC 42 (the core international body for AI standards) has met in ASEAN, co-organised by IMDA and Enterprise Singapore. Over 35 national bodies and 250+ AI experts attended, including delegates from the US, UK, China, Japan, Germany, France and South Korea. On the opening day Singapore formally tabled the ISO/IEC 42119-8 draft, the first international standard targeting testing methodology for generative AI systems, with two pillars: benchmarking (standardising 'what to test and how to score') and red teaming (standardising 'how to surface hidden risks'). The proposal builds on IMDA's prior work — the AI Verify Toolkit, the Starter Kit for Testing of LLM-Based Applications, and the Global AI Assurance Sandbox. IMDA CEO Ng Cher Pong, in his opening address, said: \"Standards setting cannot move at a glacial pace\" — or it risks being outpaced by AI itself. Capacity-building workshops for ASEAN member states ran on the sidelines.",
     tags: ['治理', '国际', '标准'],
+    tagsEn: ['Governance', 'International', 'Standards'],
+    tagsJa: ['ガバナンス', '国際', '標準'],
+    tagsKo: ['거버넌스', '국제', '표준'],
     relatedPolicyIds: ['iso-iec-42119-8-generative-ai-testing-standard'],
   },
   {
@@ -120,6 +135,9 @@ export const timelineEvents: TimelineEvent[] = [
     descriptionEn:
       "January: MDDI announced the 2026–2030 public AI research plan, committing over S$1B (US$779M), focused on responsible and resource-efficient AI, full-pipeline talent development, and industry applications. AI Research Week 2026 was held the same month, co-located with the 40th AAAI conference. The Microsoft AI Economy Institute report ranked Singapore's AI adoption rate at 60.9%, second globally (behind UAE at 64.0%; US at 28.3%). February: Budget 2026 elevated AI to an unprecedented priority — establishing a National AI Council chaired by the Prime Minister himself; launching 4 AI Missions; introducing a 400% AI tax deduction under the Enterprise Innovation Scheme; breaking ground on the one-north AI district; rolling out the National AI Literacy Programme. March: Singapore officially became a super-aged society (>21% aged 65+); the Health Minister announced the ACE-AI predictive tool (developed by Synapxe), to be deployed across 1,100+ Healthier SG clinics from early 2027; BRCA1/2 genetic testing subsidies of up to 70% (from Dec 2026); MediShield Life coverage extended to prophylactic mastectomy (Q3) and salpingo-oophorectomy (Q4); MediSave limits raised, benefiting 910,000+ patients.",
     tags: ['预算', '战略', '国际', '医疗'],
+    tagsEn: ['Budget', 'Strategy', 'International', 'Healthcare'],
+    tagsJa: ['予算', '戦略', '国際', '医療'],
+    tagsKo: ['예산', '전략', '국제', '의료'],
     personIds: ['lawrence-wong', 'josephine-teo'],
     relatedPolicyIds: [
       'public-ai-research-investment-2026-2030',
@@ -145,6 +163,9 @@ export const timelineEvents: TimelineEvent[] = [
     descriptionEn:
       'In February, Changi Airport Group (CAG) became the first airport globally to be certified to ISO/IEC 42001:2023 (AI Management System), audited by SGS and accredited by the Singapore Accreditation Council (SAC). The scope covered five passenger- and commercial-facing AI applications, including Customer Lifetime Value (CLV), product recommender and propensity prediction. The certification became a working proof point that Singapore would later draw on at SC 42 when arguing for international AI testing and governance standards.',
     tags: ['治理', '产业', '标准'],
+    tagsEn: ['Governance', 'Industry', 'Standards'],
+    tagsJa: ['ガバナンス', '産業', '標準'],
+    tagsKo: ['거버넌스', '산업', '표준'],
   },
   {
     id: 'evt-2025-agentic-bigtech',
@@ -162,6 +183,9 @@ export const timelineEvents: TimelineEvent[] = [
     descriptionEn:
       'Released the Agentic AI governance framework; launched the SEA-Guard safety evaluation toolkit; allocated S$150M for Enterprise Compute; extended AIAP for Industry into the private sector. In July, Microsoft Research Asia opened its first Southeast Asia lab in Singapore, partnering with NUS on the Industrial PhD Programme (IPP). In November, Google DeepMind established its first Southeast Asia AI research lab in Singapore.',
     tags: ['治理', '技术', '预算', '产业'],
+    tagsEn: ['Governance', 'Tech', 'Budget', 'Industry'],
+    tagsJa: ['ガバナンス', '技術', '予算', '産業'],
+    tagsKo: ['거버넌스', '기술', '예산', '산업'],
   },
   {
     id: 'evt-2024',
@@ -179,6 +203,9 @@ export const timelineEvents: TimelineEvent[] = [
     descriptionEn:
       'Smart Nation 2.0 launched, with a S$120M AI application fund and five National AI Projects (intelligent freight, municipal services, chronic disease management, personalised education, border clearance). The AI budget passed S$1B. The NUS AI Institute was established in March, consolidating university-wide AI research. The SEA-LION large language model was officially released; the AI Trailblazers Maturity Programme (AMP) launched; Singapore attended the Seoul AI Safety Summit; CSA released AI security guidelines.',
     tags: ['战略', '技术', '国际'],
+    tagsEn: ['Strategy', 'Tech', 'International'],
+    tagsJa: ['戦略', '技術', '国際'],
+    tagsKo: ['전략', '기술', '국제'],
   },
   {
     id: 'evt-2023',
@@ -196,6 +223,9 @@ export const timelineEvents: TimelineEvent[] = [
     descriptionEn:
       'National AI Strategy 2.0 was released, shifting the framework from "focused applications" to "system-wide enablement". The AI Verify testing framework was open-sourced and the AI Verify Foundation was established. A proposed governance framework for generative AI was published. Singapore attended the inaugural Bletchley Park AI Safety Summit.',
     tags: ['战略', '治理', '国际'],
+    tagsEn: ['Strategy', 'Governance', 'International'],
+    tagsJa: ['戦略', 'ガバナンス', '国際'],
+    tagsKo: ['전략', '거버넌스', '국제'],
   },
   {
     id: 'evt-2022',
@@ -213,6 +243,9 @@ export const timelineEvents: TimelineEvent[] = [
     descriptionEn:
       "The AI Verify MVP was released — the world's first AI governance testing framework and toolkit. The National AI Student Challenge (NAISC) was launched as a nationwide AI competition for students.",
     tags: ['治理', '人才'],
+    tagsEn: ['Governance', 'Talent'],
+    tagsJa: ['ガバナンス', '人材'],
+    tagsKo: ['거버넌스', '인재'],
   },
   {
     id: 'evt-2020',
@@ -230,6 +263,9 @@ export const timelineEvents: TimelineEvent[] = [
     descriptionEn:
       'Major amendments to the Personal Data Protection Act (PDPA) introduced the legitimate interests exception and data portability rights. The Model AI Governance Framework was updated to v2. Singapore became a founding member of the Global Partnership on AI (GPAI), and the RIE2025 plan was launched (S$25B).',
     tags: ['治理', '国际', '预算'],
+    tagsEn: ['Governance', 'International', 'Budget'],
+    tagsJa: ['ガバナンス', '国際', '予算'],
+    tagsKo: ['거버넌스', '국제', '예산'],
   },
   {
     id: 'evt-2019',
@@ -247,6 +283,9 @@ export const timelineEvents: TimelineEvent[] = [
     descriptionEn:
       "Singapore released its first national AI strategy, identifying five priority sectors (transport and logistics, smart cities, healthcare, education, security) and three enablers. The same year, Asia's first Model AI Governance Framework was published, and MAS introduced the FEAT principles for the financial sector.",
     tags: ['战略', '治理'],
+    tagsEn: ['Strategy', 'Governance'],
+    tagsJa: ['戦略', 'ガバナンス'],
+    tagsKo: ['전략', '거버넌스'],
   },
   {
     id: 'evt-2018',
@@ -264,6 +303,9 @@ export const timelineEvents: TimelineEvent[] = [
     descriptionEn:
       'The first cohort of the AI Apprenticeship Programme (AIAP) launched, offering 9 months of immersive AI engineering training. The 100 Experiments (100E) programme launched to fund AI proof-of-concept projects with companies. MAS released the FEAT principles for the financial sector.',
     tags: ['人才', '创新'],
+    tagsEn: ['Talent', 'Innovation'],
+    tagsJa: ['人材', 'イノベーション'],
+    tagsKo: ['인재', '혁신'],
   },
   {
     id: 'evt-2017',
@@ -281,6 +323,9 @@ export const timelineEvents: TimelineEvent[] = [
     descriptionEn:
       'The National Research Foundation (NRF) committed S$150M to establish AI Singapore, bringing together academia, industry and government to coordinate national AI research, innovation and talent development.',
     tags: ['战略', '预算'],
+    tagsEn: ['Strategy', 'Budget'],
+    tagsJa: ['戦略', '予算'],
+    tagsKo: ['전략', '예산'],
   },
   {
     id: 'evt-2014',
@@ -298,6 +343,9 @@ export const timelineEvents: TimelineEvent[] = [
     descriptionEn:
       'Prime Minister Lee Hsien Loong announced the Smart Nation Initiative, making Singapore the first country in the world to declare a national digital transformation strategy under the "Smart Nation" banner. The initiative laid the institutional foundation for all subsequent AI policies.',
     tags: ['战略'],
+    tagsEn: ['Strategy'],
+    tagsJa: ['戦略'],
+    tagsKo: ['전략'],
     relatedPolicyIds: ['smart-nation-initiative'],
     relatedPostSlugs: ['singapore-ai-vs-smart-nation-two-transformations'],
   },

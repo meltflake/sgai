@@ -6,6 +6,8 @@ import {
   seaLionVersions,
   modelComparison,
   modelComparisonEn,
+  modelComparisonJa,
+  modelComparisonKo,
   seaGuardStats,
   seaGuardModels,
   aiVerify,
@@ -13,8 +15,11 @@ import {
   papers,
   dataDisclaimer,
   dataDisclaimerEn,
+  dataDisclaimerJa,
+  dataDisclaimerKo,
 } from '~/data/opensource';
 import { NON_DEFAULT_ROUTE_LOCALES, t, pickLocalized, localizedHref, type Lang } from '~/i18n';
+import { toTraditional } from '~/i18n/opencc';
 
 export function getStaticPaths() {
   return NON_DEFAULT_ROUTE_LOCALES.map((lang) => ({ params: { lang } }));
@@ -22,11 +27,25 @@ export function getStaticPaths() {
 
 const lang = Astro.params.lang as Lang;
 const isZh = lang === 'zh';
-const compare = isZh ? modelComparison : modelComparisonEn || modelComparison;
-const disclaimer = isZh ? dataDisclaimer : dataDisclaimerEn || dataDisclaimer;
-const guardNote = isZh ? seaGuardStats.note : seaGuardStats.noteEn || seaGuardStats.note;
-const aiVerifyDescription = isZh ? aiVerify.description : aiVerify.descriptionEn || aiVerify.description;
-const aiVerifyFeatures = isZh || !aiVerify.featuresEn?.length ? aiVerify.features : aiVerify.featuresEn;
+const compareByLang: Record<Lang, string> = {
+  zh: modelComparison,
+  en: modelComparisonEn,
+  ja: modelComparisonJa,
+  'zh-tw': toTraditional(modelComparison),
+  ko: modelComparisonKo,
+};
+const disclaimerByLang: Record<Lang, string> = {
+  zh: dataDisclaimer,
+  en: dataDisclaimerEn,
+  ja: dataDisclaimerJa,
+  'zh-tw': toTraditional(dataDisclaimer),
+  ko: dataDisclaimerKo,
+};
+const compare = compareByLang[lang] || modelComparisonEn || modelComparison;
+const disclaimer = disclaimerByLang[lang] || dataDisclaimerEn || dataDisclaimer;
+const guardNote = pickLocalized(seaGuardStats, 'note', lang) || seaGuardStats.note;
+const aiVerifyDescription = pickLocalized(aiVerify, 'description', lang) || aiVerify.description;
+const aiVerifyFeatures = pickLocalized<string[]>(aiVerify, 'features', lang) || aiVerify.features;
 ---
 
 <Layout

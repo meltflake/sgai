@@ -31,6 +31,12 @@ export const modelComparison =
 export const modelComparisonEn =
   "For context: Meta's Llama 3 sees tens of millions of downloads per model, while Mistral and Qwen sit in the millions. SEA-LION targets the Southeast Asian multilingual market, with a smaller user base but clear growth (v4 already accounts for 55% of total downloads).";
 
+export const modelComparisonJa =
+  '比較すると、Meta Llama 3 は単一モデルで数千万級のダウンロードがあり、Mistral と Qwen 系列は百万級です。SEA-LION は東南アジアの多言語市場に焦点を置いており、ユーザー規模は小さいものの成長は明確です（v4 が総ダウンロードの 55% を占めています）。';
+
+export const modelComparisonKo =
+  '비교하자면 Meta Llama 3는 단일 모델 다운로드가 수천만 회 수준이고, Mistral과 Qwen 계열은 백만 회 수준입니다. SEA-LION은 동남아 다국어 시장을 겨냥하므로 사용자 규모는 작지만 성장세는 분명합니다(v4가 전체 다운로드의 55%를 차지).';
+
 export interface SeaGuardModel {
   name: string;
   downloads: number;
@@ -96,6 +102,16 @@ export const aiVerify = {
     'Tests AI systems against 11 internationally recognised governance principles',
     'Covers both classical AI and generative AI (added May 2025)',
     'Aligned with EU, OECD and US governance frameworks',
+  ],
+  featuresJa: [
+    'AI システムが国際的に認められた 11 のガバナンス原則に沿っているかをテスト',
+    '従来型 AI と生成 AI の両方をカバー（2025 年 5 月追加）',
+    'EU、OECD、米国のガバナンス枠組みに整合',
+  ],
+  featuresKo: [
+    'AI 시스템이 국제적으로 인정된 11개 거버넌스 원칙에 부합하는지 테스트',
+    '전통적 AI와 생성형 AI를 모두 포함(2025년 5월 추가)',
+    'EU, OECD, 미국 거버넌스 프레임워크와 정렬',
   ],
   partners: [
     'AWS',
@@ -1257,3 +1273,9 @@ export const dataDisclaimer =
 
 export const dataDisclaimerEn =
   'Statistics on this page are sourced from the HuggingFace API and GitHub API, independently collected by Singapore AI Observatory and not official. Stats collected: 2026-05-03; project profiles updated: 2026-05-04.';
+
+export const dataDisclaimerJa =
+  '本ページの統計は HuggingFace API と GitHub API に基づき、シンガポール AI 観測が独自に収集したもので、公式データではありません。統計取得日：2026-05-03；プロジェクト档案更新：2026-05-04。';
+
+export const dataDisclaimerKo =
+  '이 페이지의 통계는 HuggingFace API와 GitHub API에서 가져왔으며, Singapore AI Observatory가 독립적으로 수집한 비공식 데이터입니다. 통계 수집일: 2026-05-03; 프로젝트 프로필 업데이트: 2026-05-04.';

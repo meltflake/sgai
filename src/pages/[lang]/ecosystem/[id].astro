@@ -10,7 +10,8 @@ import { getPolicyById, getDebateById, getLeverByNumber } from '~/utils/graph';
 import { allPeople } from '~/data/people';
 import { isStubEcosystemEntity } from '~/utils/quality';
 import EcosystemProse from '~/components/data/EcosystemProse.astro';
-import { NON_DEFAULT_ROUTE_LOCALES, localizedHref, type Lang } from '~/i18n';
+import { NON_DEFAULT_ROUTE_LOCALES, localizedHref, pickLocalized, type Lang } from '~/i18n';
+import { toTraditional } from '~/i18n/opencc';
 
 export const prerender = true;
 
@@ -26,22 +27,34 @@ const { page } = Astro.props;
 const { entity, category } = page;
 const lang = Astro.params.lang as Lang;
 const isZh = lang === 'zh';
+const isZhLike = lang === 'zh' || lang === 'zh-tw';
 
-const entityTypeLabels: Record<NonNullable<EcosystemEntity['entityType']>, { zh: string; en: string }> = {
-  agency: { zh: '法定机构', en: 'Statutory Agency' },
-  institute: { zh: '研究机构', en: 'Research Institute' },
-  university: { zh: '高校', en: 'University' },
-  platform: { zh: '平台 / 框架', en: 'Platform / Framework' },
-  product: { zh: '产品 / 工具', en: 'Product / Tool' },
-  program: { zh: '项目 / 计划', en: 'Programme' },
-  partner: { zh: '产业伙伴', en: 'Industry Partner' },
-  initiative: { zh: '国际倡议', en: 'International Initiative' },
+const entityTypeLabels: Record<
+  NonNullable<EcosystemEntity['entityType']>,
+  { zh: string; en: string; ja: string; ko: string }
+> = {
+  agency: { zh: '法定机构', en: 'Statutory Agency', ja: '法定機関', ko: '법정 기관' },
+  institute: { zh: '研究机构', en: 'Research Institute', ja: '研究機関', ko: '연구 기관' },
+  university: { zh: '高校', en: 'University', ja: '大学', ko: '대학' },
+  platform: {
+    zh: '平台 / 框架',
+    en: 'Platform / Framework',
+    ja: 'プラットフォーム / 枠組み',
+    ko: '플랫폼 / 프레임워크',
+  },
+  product: { zh: '产品 / 工具', en: 'Product / Tool', ja: '製品 / ツール', ko: '제품 / 도구' },
+  program: { zh: '项目 / 计划', en: 'Programme', ja: 'プログラム', ko: '프로그램' },
+  partner: { zh: '产业伙伴', en: 'Industry Partner', ja: '産業パートナー', ko: '산업 파트너' },
+  initiative: { zh: '国际倡议', en: 'International Initiative', ja: '国際イニシアチブ', ko: '국제 이니셔티브' },
 };
 
-const statusLabels: Record<NonNullable<EcosystemEntity['status']>, { zh: string; en: string }> = {
-  active: { zh: '运营中', en: 'Active' },
-  archived: { zh: '已归档', en: 'Archived' },
-  planned: { zh: '筹备中', en: 'Planned' },
+const statusLabels: Record<
+  NonNullable<EcosystemEntity['status']>,
+  { zh: string; en: string; ja: string; ko: string }
+> = {
+  active: { zh: '运营中', en: 'Active', ja: '運営中', ko: '운영 중' },
+  archived: { zh: '已归档', en: 'Archived', ja: 'アーカイブ済み', ko: '아카이브됨' },
+  planned: { zh: '筹备中', en: 'Planned', ja: '準備中', ko: '준비 중' },
 };
 
 const statusColors: Record<NonNullable<EcosystemEntity['status']>, string> = {
@@ -68,20 +81,77 @@ const championPersons = (entity.championPersonIds || [])
   .map((pid) => allPeople.find((p) => p.id === pid))
   .filter((p): p is NonNullable<typeof p> => Boolean(p));
 
-// Locale-aware field picking
-const pick = (base: string | undefined, en: string | undefined): string => (isZh ? base || en || '' : en || base || '');
+const label = (copy: { zh: string; en: string; ja?: string; ko?: string }): string => {
+  if (lang === 'ja') return copy.ja || copy.en;
+  if (lang === 'ko') return copy.ko || copy.en;
+  if (lang === 'zh-tw') return toTraditional(copy.zh);
+  if (lang === 'zh') return copy.zh;
+  return copy.en;
+};
 
-const isStub = isZh
-  ? !entity.summary && !entity.whatItIs
-  : !entity.summary && !entity.summaryEn && !entity.whatItIs && !entity.whatItIsEn;
+const copy = {
+  ecosystemMap: label({ zh: '生态地图', en: 'Ecosystem Map', ja: 'エコシステムマップ', ko: '생태계 지도' }),
+  stub: label({
+    zh: '📝 此实体档案待补充。下方仅展示卡片基本信息与外部链接。',
+    en: '📝 This entity profile is a stub. Translation in progress — the Chinese version may be more complete.',
+    ja: '📝 このエンティティの詳細は準備中です。下には基本情報と外部リンクのみを表示しています。',
+    ko: '📝 이 엔티티 프로필은 보강 중입니다. 아래에는 기본 정보와 외부 링크만 표시합니다.',
+  }),
+  founded: label({ zh: '成立', en: 'Founded', ja: '設立', ko: '설립' }),
+  parent: label({ zh: '隶属', en: 'Parent', ja: '所属', ko: '소속' }),
+  ministry: label({ zh: '主管部委', en: 'Lead Ministry', ja: '主管省庁', ko: '주관 부처' }),
+  location: label({ zh: '所在地', en: 'Location', ja: '所在地', ko: '소재지' }),
+  scale: label({ zh: '规模 / 指标', en: 'Scale / KPIs', ja: '規模 / KPI', ko: '규모 / KPI' }),
+  website: label({ zh: '官网', en: 'Website', ja: '公式サイト', ko: '공식 웹사이트' }),
+  updated: label({ zh: '信息更新', en: 'Last Updated', ja: '情報更新', ko: '정보 업데이트' }),
+  whatItIs: label({ zh: '是什么', en: 'What it is', ja: '概要', ko: '개요' }),
+  aiRelation: label({ zh: '与 AI 的关系', en: 'Relation to AI', ja: 'AI との関係', ko: 'AI와의 관계' }),
+  sgRelation: label({
+    zh: '与新加坡的关系',
+    en: 'Relation to Singapore',
+    ja: 'シンガポールとの関係',
+    ko: '싱가포르와의 관계',
+  }),
+  milestones: label({ zh: '关键里程碑', en: 'Key Milestones', ja: '主要マイルストーン', ko: '주요 마일스톤' }),
+  keyPeople: label({ zh: '关键人物', en: 'Key People', ja: '主要人物', ko: '주요 인물' }),
+  products: label({
+    zh: '产品 / 子项目',
+    en: 'Products & Sub-projects',
+    ja: '製品 / サブプロジェクト',
+    ko: '제품 / 하위 프로젝트',
+  }),
+  partners: label({ zh: '合作伙伴', en: 'Partners', ja: 'パートナー', ko: '파트너' }),
+  related: label({ zh: '关联资源', en: 'Related', ja: '関連リソース', ko: '관련 리소스' }),
+  levers: label({ zh: '传导杠杆', en: 'Levers', ja: 'レバー', ko: '레버' }),
+  relatedEntities: label({
+    zh: '关联生态实体',
+    en: 'Related Entities',
+    ja: '関連エンティティ',
+    ko: '관련 생태계 엔티티',
+  }),
+  policies: label({ zh: '相关政策', en: 'Related Policies', ja: '関連政策', ko: '관련 정책' }),
+  debates: label({ zh: '相关国会辩论', en: 'Related Debates', ja: '関連議会記録', ko: '관련 의회 기록' }),
+  furtherReading: label({ zh: '延伸阅读', en: 'Further Reading', ja: '参考資料', ko: '추가 읽기' }),
+  sources: label({ zh: '数据来源', en: 'Sources', ja: '出典', ko: '출처' }),
+  source: label({ zh: '来源', en: 'Source', ja: '出典', ko: '출처' }),
+  accessed: label({ zh: '访问于', en: 'accessed', ja: '確認日', ko: '확인일' }),
+  within: label({ zh: '同属', en: 'Within', ja: '同じカテゴリ', ko: '같은 범주' }),
+  back: label({
+    zh: '返回生态地图',
+    en: 'Back to Ecosystem Map',
+    ja: 'エコシステムマップへ戻る',
+    ko: '생태계 지도로 돌아가기',
+  }),
+};
 
-const displayName = isZh ? entity.name : entity.nameEn || entity.name;
-const categoryName = isZh ? category.name : category.nameEn || category.name;
-const summary = pick(entity.summary, entity.summaryEn);
-const whatItIs = pick(entity.whatItIs, entity.whatItIsEn);
-const aiRelevance = pick(entity.aiRelevance, entity.aiRelevanceEn);
-const sgRelevance = pick(entity.singaporeRelevance, entity.singaporeRelevanceEn);
-const description = isZh ? entity.description || entity.descriptionEn : entity.descriptionEn || entity.description;
+const displayName = pickLocalized<string>(entity, 'name', lang) || entity.name;
+const categoryName = pickLocalized<string>(category, 'name', lang) || category.name;
+const summary = pickLocalized<string>(entity, 'summary', lang) || '';
+const whatItIs = pickLocalized<string>(entity, 'whatItIs', lang) || '';
+const aiRelevance = pickLocalized<string>(entity, 'aiRelevance', lang) || '';
+const sgRelevance = pickLocalized<string>(entity, 'singaporeRelevance', lang) || '';
+const description = pickLocalized<string>(entity, 'description', lang) || '';
+const isStub = !summary && !whatItIs;
 
 // noindex 策略，对称 EN 页面：
 //   1. _pendingReview: true 的 auto-discovered entry
@@ -91,23 +161,20 @@ const isPendingReview = entity._pendingReview === true;
 const isZhStub = isStubEcosystemEntity(entity, 'zh');
 
 const metadata = {
-  title: `${displayName} · ${categoryName} · ${isZh ? '生态地图' : 'Ecosystem Map'}`,
+  title: `${displayName} · ${categoryName} · ${copy.ecosystemMap}`,
   description: description,
   robots: { index: !isPendingReview && !isZhStub, follow: true },
 };
 
 const breadcrumbs = [
-  { label: isZh ? '生态地图' : 'Ecosystem Map', href: localizedHref('/ecosystem/', lang) },
+  { label: copy.ecosystemMap, href: localizedHref('/ecosystem/', lang) },
   { label: `${category.icon} ${categoryName}`, href: localizedHref('/ecosystem/', lang) },
   { label: displayName },
 ];
 ---
 
 <Layout metadata={metadata} breadcrumbs={breadcrumbs} lang={lang}>
-  <article
-    class="max-w-3xl mx-auto px-4 sm:px-6 py-10 md:py-12"
-    {...lang === 'ko' || lang === 'zh-tw' ? { 'data-i18n-allow-en': 'ecosystem-entity-en-fallback' } : {}}
-  >
+  <article class="max-w-3xl mx-auto px-4 sm:px-6 py-10 md:py-12">
     <div class="mb-6 flex flex-wrap items-center gap-2 text-xs">
       <a
         href={localizedHref('/ecosystem/', lang)}
@@ -119,21 +186,21 @@ const breadcrumbs = [
       {
         entity.entityType && (
           <span class="bg-gray-100 dark:bg-slate-800 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-full">
-            {isZh ? entityTypeLabels[entity.entityType].zh : entityTypeLabels[entity.entityType].en}
+            {label(entityTypeLabels[entity.entityType])}
           </span>
         )
       }
       {
         entity.status && (
           <span class={`px-3 py-1.5 rounded-full font-medium ${statusColors[entity.status]}`}>
-            {isZh ? statusLabels[entity.status].zh : statusLabels[entity.status].en}
+            {label(statusLabels[entity.status])}
           </span>
         )
       }
       {
         entity.founded && (
           <span class="bg-gray-100 dark:bg-slate-800 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-full">
-            {isZh ? `成立 ${entity.founded}` : `Founded ${entity.founded}`}
+            {copy.founded} {entity.founded}
           </span>
         )
       }
@@ -159,11 +226,7 @@ const breadcrumbs = [
     {
       isStub && (
         <div class="mb-6 p-4 rounded-lg bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 text-sm">
-          <p class="text-amber-900 dark:text-amber-200">
-            {isZh
-              ? '📝 此实体档案待补充。下方仅展示卡片基本信息与外部链接。'
-              : '📝 This entity profile is a stub. Translation in progress — Chinese version may be more complete.'}
-          </p>
+          <p class="text-amber-900 dark:text-amber-200">{copy.stub}</p>
         </div>
       )
     }
@@ -174,21 +237,17 @@ const breadcrumbs = [
       {
         entity.parentOrg && (
           <div>
-            <dt class="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-1">
-              {isZh ? '隶属' : 'Parent'}
-            </dt>
+            <dt class="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-1">{copy.parent}</dt>
             <dd>
               {entity.parentEntityId ? (
                 <a
                   href={localizedHref(`/ecosystem/${entity.parentEntityId}/`, lang)}
                   class="text-blue-600 dark:text-blue-400 hover:underline"
                 >
-                  {isZh ? entity.parentOrg : entity.parentOrgEn || entity.parentOrg}
+                  {pickLocalized(entity, 'parentOrg', lang) || entity.parentOrg}
                 </a>
-              ) : isZh ? (
-                entity.parentOrg
               ) : (
-                entity.parentOrgEn || entity.parentOrg
+                pickLocalized(entity, 'parentOrg', lang) || entity.parentOrg
               )}
             </dd>
           </div>
@@ -197,39 +256,31 @@ const breadcrumbs = [
       {
         entity.ministry && (
           <div>
-            <dt class="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-1">
-              {isZh ? '主管部委' : 'Lead Ministry'}
-            </dt>
-            <dd>{isZh ? entity.ministry : entity.ministryEn || entity.ministry}</dd>
+            <dt class="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-1">{copy.ministry}</dt>
+            <dd>{pickLocalized(entity, 'ministry', lang) || entity.ministry}</dd>
           </div>
         )
       }
       {
         entity.headquarters && (
           <div>
-            <dt class="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-1">
-              {isZh ? '所在地' : 'Location'}
-            </dt>
-            <dd>{isZh ? entity.headquarters : entity.headquartersEn || entity.headquarters}</dd>
+            <dt class="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-1">{copy.location}</dt>
+            <dd>{pickLocalized(entity, 'headquarters', lang) || entity.headquarters}</dd>
           </div>
         )
       }
       {
         entity.scale && (
           <div class="sm:col-span-2">
-            <dt class="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-1">
-              {isZh ? '规模 / 指标' : 'Scale / KPIs'}
-            </dt>
-            <dd>{isZh ? entity.scale : entity.scaleEn || entity.scale}</dd>
+            <dt class="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-1">{copy.scale}</dt>
+            <dd>{pickLocalized(entity, 'scale', lang) || entity.scale}</dd>
           </div>
         )
       }
       {
         entity.url && (
           <div>
-            <dt class="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-1">
-              {isZh ? '官网' : 'Website'}
-            </dt>
+            <dt class="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-1">{copy.website}</dt>
             <dd>
               <a
                 href={entity.url}
@@ -247,9 +298,7 @@ const breadcrumbs = [
       {
         entity.updated && (
           <div>
-            <dt class="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-1">
-              {isZh ? '信息更新' : 'Last Updated'}
-            </dt>
+            <dt class="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-1">{copy.updated}</dt>
             <dd>{entity.updated}</dd>
           </div>
         )
@@ -268,7 +317,7 @@ const breadcrumbs = [
       whatItIs && (
         <section class="mb-10">
           <h2 class="t-h3 text-gray-900 dark:text-white mb-4 flex items-center gap-2">
-            <span>📖</span> {isZh ? '是什么' : 'What it is'}
+            <span>📖</span> {copy.whatItIs}
           </h2>
           <EcosystemProse content={whatItIs} />
         </section>
@@ -279,7 +328,7 @@ const breadcrumbs = [
       aiRelevance && (
         <section class="mb-10">
           <h2 class="t-h3 text-gray-900 dark:text-white mb-4 flex items-center gap-2">
-            <span>🤖</span> {isZh ? '与 AI 的关系' : 'Relation to AI'}
+            <span>🤖</span> {copy.aiRelation}
           </h2>
           <EcosystemProse content={aiRelevance} />
         </section>
@@ -290,7 +339,7 @@ const breadcrumbs = [
       sgRelevance && (
         <section class="mb-10">
           <h2 class="t-h3 text-gray-900 dark:text-white mb-4 flex items-center gap-2">
-            <span>🇸🇬</span> {isZh ? '与新加坡的关系' : 'Relation to Singapore'}
+            <span>🇸🇬</span> {copy.sgRelation}
           </h2>
           <EcosystemProse content={sgRelevance} />
         </section>
@@ -301,17 +350,17 @@ const breadcrumbs = [
       entity.milestones && entity.milestones.length > 0 && (
         <section class="mb-10">
           <h2 class="t-h3 text-gray-900 dark:text-white mb-4 flex items-center gap-2">
-            <span>🗓️</span> {isZh ? '关键里程碑' : 'Key Milestones'}
+            <span>🗓️</span> {copy.milestones}
           </h2>
           <ol class="relative border-l-2 border-blue-200 dark:border-blue-900 ml-2 pl-6 space-y-5">
             {entity.milestones.map((m) => (
               <li class="relative">
                 <span class="absolute -left-[33px] top-1 w-3 h-3 rounded-full bg-blue-500 dark:bg-blue-400 ring-4 ring-blue-50 dark:ring-blue-900/40" />
                 <div class="text-xs font-mono text-gray-500 dark:text-gray-400 mb-1">{m.date}</div>
-                <div class="font-semibold text-gray-900 dark:text-white">{isZh ? m.title : m.titleEn || m.title}</div>
-                {(isZh ? m.description : m.descriptionEn || m.description) && (
+                <div class="font-semibold text-gray-900 dark:text-white">{pickLocalized(m, 'title', lang)}</div>
+                {pickLocalized(m, 'description', lang) && (
                   <p class="text-sm text-gray-600 dark:text-gray-400 mt-1 leading-relaxed">
-                    {isZh ? m.description : m.descriptionEn || m.description}
+                    {pickLocalized(m, 'description', lang)}
                   </p>
                 )}
                 {m.sourceUrl && (
@@ -321,7 +370,7 @@ const breadcrumbs = [
                     rel="noopener"
                     class="text-xs text-blue-600 dark:text-blue-400 hover:underline inline-flex items-center gap-1 mt-1"
                   >
-                    {isZh ? '来源' : 'Source'} <Icon name="tabler:external-link" class="w-3 h-3" />
+                    {copy.source} <Icon name="tabler:external-link" class="w-3 h-3" />
                   </a>
                 )}
               </li>
@@ -335,7 +384,7 @@ const breadcrumbs = [
       (entity.leaders || championPersons.length > 0) && (
         <section class="mb-10">
           <h2 class="t-h3 text-gray-900 dark:text-white mb-4 flex items-center gap-2">
-            <span>👥</span> {isZh ? '关键人物' : 'Key People'}
+            <span>👥</span> {copy.keyPeople}
           </h2>
           <ul class="space-y-2">
             {entity.leaders?.map((l) => (
@@ -350,8 +399,8 @@ const breadcrumbs = [
                 ) : (
                   <span class="font-semibold text-gray-900 dark:text-white">{l.name}</span>
                 )}
-                {(isZh ? l.title : l.titleEn || l.title) && (
-                  <span class="text-gray-600 dark:text-gray-400 ml-2">— {isZh ? l.title : l.titleEn || l.title}</span>
+                {pickLocalized(l, 'title', lang) && (
+                  <span class="text-gray-600 dark:text-gray-400 ml-2">— {pickLocalized(l, 'title', lang)}</span>
                 )}
               </li>
             ))}
@@ -361,10 +410,10 @@ const breadcrumbs = [
                   href={localizedHref(`/voices/${p.id}/`, lang)}
                   class="font-semibold text-blue-600 dark:text-blue-400 hover:underline"
                 >
-                  {isZh ? p.name : p.nameEn || p.name}
+                  {pickLocalized(p, 'name', lang) || p.nameEn || p.name}
                 </a>
-                {(isZh ? p.title : p.titleEn || p.title) && (
-                  <span class="text-gray-600 dark:text-gray-400 ml-2">— {isZh ? p.title : p.titleEn || p.title}</span>
+                {pickLocalized(p, 'title', lang) && (
+                  <span class="text-gray-600 dark:text-gray-400 ml-2">— {pickLocalized(p, 'title', lang)}</span>
                 )}
               </li>
             ))}
@@ -377,14 +426,14 @@ const breadcrumbs = [
       entity.products && entity.products.length > 0 && (
         <section class="mb-10">
           <h2 class="t-h3 text-gray-900 dark:text-white mb-4 flex items-center gap-2">
-            <span>📦</span> {isZh ? '产品 / 子项目' : 'Products & Sub-projects'}
+            <span>📦</span> {copy.products}
           </h2>
           <div class="grid gap-3 sm:grid-cols-2">
             {entity.products.map((p) => {
               const href = p.entityId ? localizedHref(`/ecosystem/${p.entityId}/`, lang) : p.url || null;
               const isInternal = Boolean(p.entityId);
-              const pName = isZh ? p.name : p.nameEn || p.name;
-              const pDesc = isZh ? p.description : p.descriptionEn || p.description;
+              const pName = pickLocalized(p, 'name', lang) || p.name;
+              const pDesc = pickLocalized(p, 'description', lang) || '';
               const inner = (
                 <>
                   <h3 class="font-semibold text-sm text-gray-900 dark:text-white mb-1">
@@ -416,18 +465,16 @@ const breadcrumbs = [
       entity.partners && entity.partners.length > 0 && (
         <section class="mb-10">
           <h2 class="t-h3 text-gray-900 dark:text-white mb-4 flex items-center gap-2">
-            <span>🤝</span> {isZh ? '合作伙伴' : 'Partners'}
+            <span>🤝</span> {copy.partners}
           </h2>
           <div class="grid gap-3 sm:grid-cols-2">
             {entity.partners.map((p) => (
               <div class="bg-surface rounded-lg p-4 border border-subtle">
                 <h3 class="font-semibold text-sm text-gray-900 dark:text-white mb-1">
-                  {isZh ? p.name : p.nameEn || p.name}
+                  {pickLocalized(p, 'name', lang) || p.name}
                 </h3>
-                {(isZh ? p.description : p.descriptionEn || p.description) && (
-                  <p class="text-xs text-gray-600 dark:text-gray-400">
-                    {isZh ? p.description : p.descriptionEn || p.description}
-                  </p>
+                {pickLocalized(p, 'description', lang) && (
+                  <p class="text-xs text-gray-600 dark:text-gray-400">{pickLocalized(p, 'description', lang)}</p>
                 )}
               </div>
             ))}
@@ -443,13 +490,13 @@ const breadcrumbs = [
         relatedEntities.length > 0) && (
         <section class="mb-10">
           <h2 class="t-h3 text-gray-900 dark:text-white mb-4 flex items-center gap-2">
-            <span>🔗</span> {isZh ? '关联资源' : 'Related'}
+            <span>🔗</span> {copy.related}
           </h2>
           <div class="space-y-4">
             {relatedLevers.length > 0 && (
               <div>
                 <h3 class="text-sm uppercase tracking-wider text-gray-500 dark:text-gray-400 font-semibold mb-2">
-                  {isZh ? '传导杠杆' : 'Levers'}
+                  {copy.levers}
                 </h3>
                 <div class="flex flex-wrap gap-2">
                   {relatedLevers.map((l) => (
@@ -457,7 +504,7 @@ const breadcrumbs = [
                       href={localizedHref(`/levers/${l.number}/`, lang)}
                       class="text-sm bg-purple-50 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 px-3 py-1.5 rounded-full hover:bg-purple-100 dark:hover:bg-purple-900/50 transition-colors"
                     >
-                      {l.icon} {isZh ? `抓手 ${l.number}：${l.name}` : `Lever ${l.number}: ${l.nameEn || l.name}`}
+                      {l.icon} {copy.levers} {l.number}: {pickLocalized(l, 'name', lang) || l.name}
                     </a>
                   ))}
                 </div>
@@ -466,7 +513,7 @@ const breadcrumbs = [
             {relatedEntities.length > 0 && (
               <div>
                 <h3 class="text-sm uppercase tracking-wider text-gray-500 dark:text-gray-400 font-semibold mb-2">
-                  {isZh ? '关联生态实体' : 'Related Entities'}
+                  {copy.relatedEntities}
                 </h3>
                 <div class="flex flex-wrap gap-2">
                   {relatedEntities.map((re) => (
@@ -474,7 +521,7 @@ const breadcrumbs = [
                       href={localizedHref(`/ecosystem/${re.slug}/`, lang)}
                       class="text-sm bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 px-3 py-1.5 rounded-full hover:bg-blue-100 dark:hover:bg-blue-900/50 transition-colors"
                     >
-                      {isZh ? re.entity.name : re.entity.nameEn || re.entity.name}
+                      {pickLocalized(re.entity, 'name', lang) || re.entity.name}
                     </a>
                   ))}
                 </div>
@@ -483,7 +530,7 @@ const breadcrumbs = [
             {relatedPolicies.length > 0 && (
               <div>
                 <h3 class="text-sm uppercase tracking-wider text-gray-500 dark:text-gray-400 font-semibold mb-2">
-                  {isZh ? '相关政策' : 'Related Policies'}
+                  {copy.policies}
                 </h3>
                 <ul class="space-y-2">
                   {relatedPolicies.map((p) => (
@@ -492,7 +539,7 @@ const breadcrumbs = [
                         href={localizedHref(`/policies/${p.id}/`, lang)}
                         class="text-sm text-blue-600 dark:text-blue-400 hover:underline"
                       >
-                        {isZh ? p.title : p.titleEn || p.title}{' '}
+                        {pickLocalized(p, 'title', lang) || p.title}{' '}
                         <span class="text-gray-500 dark:text-gray-500">· {p.date}</span>
                       </a>
                     </li>
@@ -503,7 +550,7 @@ const breadcrumbs = [
             {relatedDebates.length > 0 && (
               <div>
                 <h3 class="text-sm uppercase tracking-wider text-gray-500 dark:text-gray-400 font-semibold mb-2">
-                  {isZh ? '相关国会辩论' : 'Related Debates'}
+                  {copy.debates}
                 </h3>
                 <ul class="space-y-2">
                   {relatedDebates.slice(0, 8).map((d) => (
@@ -512,7 +559,7 @@ const breadcrumbs = [
                         href={localizedHref(`/debates/${d.id}/`, lang)}
                         class="text-sm text-blue-600 dark:text-blue-400 hover:underline"
                       >
-                        {isZh ? d.title : d.titleEn || d.title}{' '}
+                        {pickLocalized(d, 'title', lang) || d.title}{' '}
                         <span class="text-gray-500 dark:text-gray-500">· {d.date}</span>
                       </a>
                     </li>
@@ -529,7 +576,7 @@ const breadcrumbs = [
       entity.furtherReading && entity.furtherReading.length > 0 && (
         <section class="mb-10">
           <h2 class="t-h3 text-gray-900 dark:text-white mb-4 flex items-center gap-2">
-            <span>📚</span> {isZh ? '延伸阅读' : 'Further Reading'}
+            <span>📚</span> {copy.furtherReading}
           </h2>
           <ul class="space-y-2">
             {entity.furtherReading.map((r) => (
@@ -540,7 +587,7 @@ const breadcrumbs = [
                   rel="noopener"
                   class="text-sm text-blue-600 dark:text-blue-400 hover:underline inline-flex items-center gap-1"
                 >
-                  {isZh ? r.label : r.labelEn || r.label}
+                  {pickLocalized(r, 'label', lang) || r.label}
                   <Icon name="tabler:external-link" class="w-3.5 h-3.5" />
                 </a>
               </li>
@@ -554,17 +601,17 @@ const breadcrumbs = [
       entity.sources && entity.sources.length > 0 && (
         <section class="mb-10 pt-6 border-t border-subtle">
           <h2 class="text-sm uppercase tracking-wider text-gray-500 dark:text-gray-400 font-semibold mb-3">
-            {isZh ? '数据来源' : 'Sources'}
+            {copy.sources}
           </h2>
           <ul class="space-y-1.5 text-xs text-gray-600 dark:text-gray-400">
             {entity.sources.map((s) => (
               <li>
                 <a href={s.url} target="_blank" rel="noopener" class="hover:text-blue-600 dark:hover:text-blue-400">
-                  {isZh ? s.label : s.labelEn || s.label}
+                  {pickLocalized(s, 'label', lang) || s.label}
                 </a>
                 {s.date && (
                   <span class="text-gray-400 dark:text-gray-500 ml-2">
-                    — {isZh ? `访问于 ${s.date}` : `accessed ${s.date}`}
+                    — {copy.accessed} {s.date}
                   </span>
                 )}
               </li>
@@ -578,13 +625,15 @@ const breadcrumbs = [
       peerEntities.length > 0 && (
         <section class="mb-10 pt-6 border-t border-subtle">
           <h2 class="text-sm uppercase tracking-wider text-gray-500 dark:text-gray-400 font-semibold mb-3">
-            {isZh ? `同属「${category.icon} ${category.name}」` : `Within ${category.icon} ${categoryName}`}
+            {isZhLike
+              ? `${copy.within}「${category.icon} ${categoryName}」`
+              : `${copy.within} ${category.icon} ${categoryName}`}
           </h2>
           <div class="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
             {peerEntities.map((e) => {
               const href = e.id ? localizedHref(`/ecosystem/${e.id}/`, lang) : null;
-              const peerName = isZh ? e.name : e.nameEn || e.name;
-              const peerDesc = isZh ? e.description : e.descriptionEn || e.description;
+              const peerName = pickLocalized(e, 'name', lang) || e.name;
+              const peerDesc = pickLocalized(e, 'description', lang) || e.description;
               return href ? (
                 <a
                   href={href}
@@ -611,7 +660,7 @@ const breadcrumbs = [
         class="text-sm text-primary hover:text-secondary font-medium inline-flex items-center gap-1"
       >
         <Icon name="tabler:arrow-left" class="w-4 h-4" />
-        {isZh ? '返回生态地图' : 'Back to Ecosystem Map'}
+        {copy.back}
       </a>
     </nav>
   </article>

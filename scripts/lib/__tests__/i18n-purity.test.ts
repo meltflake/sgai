@@ -28,11 +28,16 @@ import { tsParseDiagnostics } from '../../i18n/backfill-ja.ts';
 test('checkLocaleValuePurity: en value with kanji is rejected', () => {
   const r = checkLocaleValuePurity('AI 战略', 'en');
   assert.equal(r.ok, false);
-  if (!r.ok) assert.match(r.reason, /CJK/);
+  if (!r.ok) assert.match(r.reason, /non-English script/);
 });
 
 test('checkLocaleValuePurity: en value with hiragana is rejected', () => {
   const r = checkLocaleValuePurity('シンガポール AI', 'en');
+  assert.equal(r.ok, false);
+});
+
+test('checkLocaleValuePurity: en value with hangul is rejected', () => {
+  const r = checkLocaleValuePurity('Singapore AI 관측', 'en');
   assert.equal(r.ok, false);
 });
 

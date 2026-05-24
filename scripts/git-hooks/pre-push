@@ -1,0 +1,5 @@
+#!/bin/sh
+set -eu
+
+echo "[sgai] Checking required translations before push..."
+npm run check:i18n-completeness

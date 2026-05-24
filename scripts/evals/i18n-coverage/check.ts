@@ -18,7 +18,7 @@
 //   zh-CN / en / ja / x-default.
 //
 // Layer D — PURITY (--layer=d):
-//   en pages: no CJK.
+//   en pages: no Chinese/Japanese/Korean script.
 //   ja pages: must contain hiragana/katakana (catches "shipped en text
 //   under /ja/ slug" mistakes).
 //
@@ -122,9 +122,10 @@ function countCjkFields(filePath: string): number {
 
 /** Verify a string value's actual language matches its declared locale.
  *
- *  EN fields must contain no CJK whatsoever — names that need transliteration
- *  should already have been romanised. The previous backfill regression where
- *  En siblings ended up holding raw zh values would have been flagged here.
+ *  EN fields must contain no Chinese/Japanese/Korean script whatsoever — names
+ *  that need transliteration should already have been romanised. The previous
+ *  backfill regression where En siblings ended up holding raw zh values would
+ *  have been flagged here.
  *
  *  JA fields are checked against a curated set of simplified-Chinese-exclusive
  *  characters whose JIS Japanese kanji equivalent uses a different codepoint
@@ -137,15 +138,15 @@ function countCjkFields(filePath: string): number {
  *  legitimate JA labels are kanji-only (出典, 投入強度, 第二期, 議会討論). */
 const SIMPLIFIED_ONLY_RE =
   /[们这个让给还经历战业长进应时现过对边远难听说话网决织续选责险验总较单风转务习头质闻关开师龙标异该后处见级观产场际线门约电汉东种钟严员问纸读买卖钱实询试讲请运银项报]/;
-const ANY_CJK_RE = /[一-鿿぀-ゟ゠-ヿ]/;
+const ANY_NON_ENGLISH_SCRIPT_RE = /[一-鿿぀-ゟ゠-ヿ가-힣]/;
 
 export function checkLocaleValuePurity(
   value: string,
   locale: 'en' | 'ja'
 ): { ok: true } | { ok: false; reason: string } {
   if (locale === 'en') {
-    const m = value.match(ANY_CJK_RE);
-    if (m) return { ok: false, reason: `EN value contains CJK char "${m[0]}"` };
+    const m = value.match(ANY_NON_ENGLISH_SCRIPT_RE);
+    if (m) return { ok: false, reason: `EN value contains non-English script "${m[0]}"` };
     return { ok: true };
   }
   // locale === 'ja'

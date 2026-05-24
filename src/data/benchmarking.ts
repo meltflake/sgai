@@ -6187,6 +6187,16 @@ export const benchmarkCases: BenchmarkCase[] = [
           'Supports enterprise self-testing and third-party verification',
           'Can align with EU, OECD, and US governance frameworks',
         ],
+        bulletsJa: [
+          'ガバナンスを政策表現にとどめず、ツール化する',
+          '越境企業の自己検証と第三者検証に向く',
+          'EU、OECD、米国の枠組みと整合可能',
+        ],
+        bulletsKo: [
+          '거버넌스를 정책 문구에만 두지 않고 도구화',
+          '국경 간 기업의 자체 테스트와 제3자 검증에 적합',
+          'EU, OECD, 미국 프레임워크와 정렬 가능',
+        ],
       },
       {
         title: '后续追踪',
@@ -6318,6 +6328,16 @@ export const benchmarkCases: BenchmarkCase[] = [
           'Directly serves research and enterprise users',
           'Can combine with HKSTP, AIRDI, and other institutions',
         ],
+        bulletsJa: [
+          '計算力指標が明確',
+          '研究機関と企業に直接サービスできる',
+          '香港科技園、AIRDI などの機関と組み合わせを形成',
+        ],
+        bulletsKo: [
+          '컴퓨팅 지표가 명확',
+          '연구와 기업에 직접 서비스 가능',
+          '홍콩과학기술단지, AIRDI 등 기관과 조합 형성',
+        ],
       },
       {
         title: '风险点',
@@ -6448,6 +6468,16 @@ export const benchmarkCases: BenchmarkCase[] = [
           'Advanced manufacturing is harder to copy than application narratives',
           'Industrial ecosystems and national security are tightly linked',
         ],
+        bulletsJa: [
+          'ハードウェア供給網は AI 主権の一部',
+          '先端製造はアプリケーション叙事より模倣しにくい',
+          '産業エコシステムと国家安全保障が強く結びつく',
+        ],
+        bulletsKo: [
+          '하드웨어 공급망은 AI 주권의 일부',
+          '첨단 제조는 애플리케이션 서사보다 복제하기 어려움',
+          '산업 생태계와 국가안보가 강하게 결합',
+        ],
       },
       {
         title: '新加坡可学什么',
@@ -6571,6 +6601,16 @@ export const benchmarkCases: BenchmarkCase[] = [
           'A model project becomes a national calling card',
           'Open release lowers the barrier for international developers',
           'Combines with MBZUAI, MGX, and compute investment',
+        ],
+        bulletsJa: [
+          'モデルプロジェクトが国家ブランドになる',
+          'オープンソースが国際開発者の試用ハードルを下げる',
+          'MBZUAI、MGX、計算力投資と組み合わせを形成',
+        ],
+        bulletsKo: [
+          '모델 프로젝트가 국가 명함이 됨',
+          '오픈소스가 국제 개발자의 시험 사용 장벽을 낮춤',
+          'MBZUAI, MGX, 컴퓨팅 투자와 조합 형성',
         ],
       },
       {
@@ -6697,6 +6737,16 @@ export const benchmarkCases: BenchmarkCase[] = [
           'Connects with Microsoft partnerships and projects such as Stargate UAE',
           'Links national strategy to global capital markets',
         ],
+        bulletsJa: [
+          'ソブリン資本が AI インフラに直接入る',
+          'Microsoft との協業や Stargate UAE などと連動',
+          '国家戦略とグローバル資本市場を接続',
+        ],
+        bulletsKo: [
+          '국부 자본이 AI 인프라에 직접 진입',
+          'Microsoft 협력 및 Stargate UAE 등 프로젝트와 연동',
+          '국가 전략과 글로벌 자본시장을 연결',
+        ],
       },
       {
         title: '风险点',
@@ -6818,6 +6868,16 @@ export const benchmarkCases: BenchmarkCase[] = [
           'Serves national model, compute, and capital strategies',
           'Sends a clear signal to the global talent market',
         ],
+        bulletsJa: [
+          'AI を唯一の中核テーマにする',
+          '国家モデル、計算力、資本戦略にサービスする',
+          'グローバル人材市場に明確なポジションを示す',
+        ],
+        bulletsKo: [
+          'AI를 유일한 핵심 주제로 삼음',
+          '국가 모델, 컴퓨팅, 자본 전략을 지원',
+          '글로벌 인재 시장에 명확한 포지션 제시',
+        ],
       },
     ],
     sources: [
@@ -6932,6 +6992,16 @@ export const benchmarkCases: BenchmarkCase[] = [
           'Real missions train judgment better than classrooms alone',
           'Strong alumni networks reduce early startup friction',
           'Security contexts naturally need AI and automation',
+        ],
+        bulletsJa: [
+          '実任務は教室より判断力を鍛える',
+          '強い卒業生ネットワークが起業初期の摩擦を下げる',
+          '安全保障領域は AI と自動化を自然に必要とする',
+        ],
+        bulletsKo: [
+          '실제 임무가 교실보다 판단력을 더 잘 훈련',
+          '강한 동문 네트워크가 초기 창업 마찰을 낮춤',
+          '안보 현장은 AI와 자동화를 자연스럽게 필요로 함',
         ],
       },
       {
@@ -7055,6 +7125,16 @@ export const benchmarkCases: BenchmarkCase[] = [
           'Coordination between models and hardware',
           'AI Basic Act provides a stronger legal frame',
           'Large enterprise customers and deployment contexts are concentrated',
+        ],
+        bulletsJa: [
+          'モデルとハードウェアが連携',
+          'AI 基本法がより強い法的枠組みを提供',
+          '大企業顧客と導入シーンが集中',
+        ],
+        bulletsKo: [
+          '모델과 하드웨어의 협력',
+          'AI 기본법이 더 강한 법적 프레임 제공',
+          '대기업 고객과 배포 시나리오가 집중',
         ],
       },
       {
@@ -7181,6 +7261,16 @@ export const benchmarkCases: BenchmarkCase[] = [
           'Public services are already highly online',
           'Small budgets force clear prioritisation',
         ],
+        bulletsJa: [
+          'デジタル ID とデータ交換基盤が前提',
+          '行政サービスプロセスが高度にオンライン化済み',
+          '小さな予算がユースケース優先度の明確化を迫る',
+        ],
+        bulletsKo: [
+          '디지털 신원과 데이터 교환 플랫폼이 전제',
+          '정부 서비스 절차가 고도로 온라인화됨',
+          '작은 예산이 사용 사례 우선순위를 명확히 하도록 압박',
+        ],
       },
       {
         title: '不可直接复制处',
@@ -7304,6 +7394,8 @@ export const benchmarkCases: BenchmarkCase[] = [
           'Aligned with a human-centric AI ethics narrative',
           'Can become a national brand asset',
         ],
+        bulletsJa: ['低い参加ハードルとスケール可能性', '人間中心 AI 倫理の叙事と整合', '国家ブランド資産になり得る'],
+        bulletsKo: ['낮은 진입장벽과 확장성', '인간 중심 AI 윤리 서사와 일치', '국가 브랜드 자산이 될 수 있음'],
       },
       {
         title: '后续追踪',
@@ -7432,6 +7524,16 @@ export const benchmarkCases: BenchmarkCase[] = [
           'International talent has reason to stay',
           'Fits Switzerland’s light-touch, innovation-first path',
         ],
+        bulletsJa: [
+          '基礎研究が強く、産業接続も強い',
+          '国際人材が長期滞在する理由がある',
+          'スイスの軽規制・イノベーション優先路線と整合',
+        ],
+        bulletsKo: [
+          '기초 연구가 강하고 산업 연결도 강함',
+          '국제 인재가 장기 체류할 이유가 있음',
+          '스위스의 가벼운 규제와 혁신 우선 경로에 부합',
+        ],
       },
       {
         title: '风险点',
@@ -7556,6 +7658,16 @@ export const benchmarkCases: BenchmarkCase[] = [
           'Institutional backbone of the world’s first national AI strategy',
           'Strong deep-learning academic tradition',
           'Good base in AI safety and ethics research',
+        ],
+        bulletsJa: [
+          '世界初の国家 AI 戦略の機関的担い手',
+          'ディープラーニングの学術的伝統が強い',
+          'AI 安全と倫理研究の基盤が良い',
+        ],
+        bulletsKo: [
+          '세계 최초 국가 AI 전략의 기관적 기반',
+          '딥러닝 학술 전통이 강함',
+          'AI 안전과 윤리 연구 기반이 좋음',
         ],
       },
       {

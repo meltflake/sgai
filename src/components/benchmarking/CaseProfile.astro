@@ -5,7 +5,7 @@ import JsonLd from '~/components/common/JsonLd.astro';
 import Layout from '~/layouts/PageLayout.astro';
 import { benchmarkCaseProfileUpdated, dataDate, dataDisclaimer, dataDisclaimerEn } from '~/data/benchmarking';
 import { benchmarkCasePages, regionPages, type BenchmarkCasePage } from '~/utils/entity-pages';
-import { localizedHref, type Lang } from '~/i18n';
+import { localizedHref, pickLocalized, type Lang } from '~/i18n';
 
 interface Props {
   page: BenchmarkCasePage;
@@ -13,24 +13,20 @@ interface Props {
 }
 
 const { page, lang } = Astro.props;
-// `isEn` is true for any non-zh locale — local label dictionaries only
-// branch zh vs. non-zh; ja falls back to en until per-locale strings land.
 const isJa = lang === 'ja';
 const isEn = lang !== 'zh';
 const benchmarkRoot = isEn ? '/benchmarking/' : '/benchmarking/';
 
 const caseItem = page.caseItem;
-const name = isEn ? caseItem.nameEn || caseItem.name : caseItem.name;
-const region = isEn ? caseItem.regionEn || caseItem.region : caseItem.region;
-const type = isEn ? caseItem.typeEn || caseItem.type : caseItem.type;
-const status = isEn ? caseItem.statusEn || caseItem.status : caseItem.status;
-const owner = isEn ? caseItem.ownerEn || caseItem.owner : caseItem.owner;
-const summary = isEn ? caseItem.summaryEn || caseItem.summary : caseItem.summary;
-const headline = isEn ? caseItem.headlineEn || caseItem.headline : caseItem.headline;
-const whyItMatters = isEn ? caseItem.whyItMattersEn || caseItem.whyItMatters : caseItem.whyItMatters;
-const singaporeTakeaway = isEn
-  ? caseItem.singaporeTakeawayEn || caseItem.singaporeTakeaway
-  : caseItem.singaporeTakeaway;
+const name = pickLocalized(caseItem, 'name', lang) || caseItem.name;
+const region = pickLocalized(caseItem, 'region', lang) || caseItem.region;
+const type = pickLocalized(caseItem, 'type', lang) || caseItem.type;
+const status = pickLocalized(caseItem, 'status', lang) || caseItem.status;
+const owner = pickLocalized(caseItem, 'owner', lang) || caseItem.owner;
+const summary = pickLocalized(caseItem, 'summary', lang) || caseItem.summary;
+const headline = pickLocalized(caseItem, 'headline', lang) || caseItem.headline;
+const whyItMatters = pickLocalized(caseItem, 'whyItMatters', lang) || caseItem.whyItMatters;
+const singaporeTakeaway = pickLocalized(caseItem, 'singaporeTakeaway', lang) || caseItem.singaporeTakeaway;
 
 const relatedCases = benchmarkCasePages.filter((candidate) => candidate.slug !== page.slug).slice(0, 4);
 
@@ -154,11 +150,11 @@ const breadcrumbs = [{ label: labels.benchmarkCrumb, href: localizedHref('/bench
         caseItem.facts.map((fact) => (
           <div>
             <dt class="text-xs uppercase tracking-wider text-muted mb-1">
-              {isEn ? fact.labelEn || fact.label : fact.label}
+              {pickLocalized(fact, 'label', lang) || fact.label}
             </dt>
-            <dd class="text-gray-900 dark:text-white">{isEn ? fact.valueEn || fact.value : fact.value}</dd>
-            {(isEn ? fact.noteEn : fact.note) && (
-              <dd class="mt-1 text-xs text-muted">{isEn ? fact.noteEn : fact.note}</dd>
+            <dd class="text-gray-900 dark:text-white">{pickLocalized(fact, 'value', lang) || fact.value}</dd>
+            {pickLocalized(fact, 'note', lang) && (
+              <dd class="mt-1 text-xs text-muted">{pickLocalized(fact, 'note', lang)}</dd>
             )}
           </div>
         ))
@@ -178,9 +174,9 @@ const breadcrumbs = [{ label: labels.benchmarkCrumb, href: localizedHref('/bench
 
     {
       caseItem.sections.map((section) => {
-        const sectionTitle = isEn ? section.titleEn || section.title : section.title;
-        const sectionBody = isEn ? section.bodyEn || section.body : section.body;
-        const bullets = isEn ? section.bulletsEn : section.bullets;
+        const sectionTitle = pickLocalized(section, 'title', lang) || section.title;
+        const sectionBody = pickLocalized(section, 'body', lang) || section.body;
+        const bullets = (pickLocalized(section, 'bullets', lang) as string[] | null | undefined) || section.bullets;
         return (
           <section class="mb-10">
             <h2 class="t-h3 text-gray-900 dark:text-white mb-4">{sectionTitle}</h2>
@@ -205,7 +201,7 @@ const breadcrumbs = [{ label: labels.benchmarkCrumb, href: localizedHref('/bench
       <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
         {
           caseItem.sources.map((source) => {
-            const label = isEn ? source.labelEn || source.label : source.label;
+            const label = pickLocalized(source, 'label', lang) || source.label;
             return (
               <li>
                 {source.url ? (
@@ -238,12 +234,10 @@ const breadcrumbs = [{ label: labels.benchmarkCrumb, href: localizedHref('/bench
             <p class="text-xs text-muted">{labels.regionBackground}</p>
             <h2 class="mt-2 font-bold text-gray-900 dark:text-white group-hover:text-primary">
               {caseRegionPage.summary.flag}{' '}
-              {isEn ? caseRegionPage.summary.nameEn || caseRegionPage.summary.name : caseRegionPage.summary.name}
+              {pickLocalized(caseRegionPage.summary, 'name', lang) || caseRegionPage.summary.name}
             </h2>
             <p class="mt-2 text-sm text-gray-700 dark:text-gray-300">
-              {isEn
-                ? caseRegionPage.summary.strengthEn || caseRegionPage.summary.strength
-                : caseRegionPage.summary.strength}
+              {pickLocalized(caseRegionPage.summary, 'strength', lang) || caseRegionPage.summary.strength}
             </p>
           </a>
         )
@@ -256,7 +250,7 @@ const breadcrumbs = [{ label: labels.benchmarkCrumb, href: localizedHref('/bench
           >
             <p class="text-xs text-muted">{labels.anotherCase}</p>
             <h2 class="mt-2 font-bold text-gray-900 dark:text-white group-hover:text-primary">
-              {related.caseItem.flag} {isEn ? related.caseItem.nameEn || related.caseItem.name : related.caseItem.name}
+              {related.caseItem.flag} {pickLocalized(related.caseItem, 'name', lang) || related.caseItem.name}
             </h2>
             <p class="mt-2 text-sm text-gray-700 dark:text-gray-300">
               {isEn ? related.caseItem.headlineEn || related.caseItem.headline : related.caseItem.headline}

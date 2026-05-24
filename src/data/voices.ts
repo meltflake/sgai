@@ -143,7 +143,14 @@ export const institutions: Institution[] = [
       { platform: 'facebook', url: 'https://www.facebook.com/aisingaporepage/' },
       { platform: 'youtube', url: 'https://www.youtube.com/@AISingapore' },
       { platform: 'github', url: 'https://github.com/aisingapore' },
-      { platform: 'newsletter', url: 'https://aisingapore.org/', label: 'Newsletter' },
+      {
+        platform: 'newsletter',
+        url: 'https://aisingapore.org/',
+        label: 'Newsletter',
+        labelKo: 'Newsletter',
+        labelJa: 'Newsletter',
+        labelEn: 'Newsletter',
+      },
     ],
   },
   {
@@ -240,6 +247,7 @@ export const mddiSpeeches: MddiSpeech[] = [
     eventEn: 'ATxSummit 2026',
     event: 'ATxSummit 2026',
     eventJa: 'ATxSummit 2026',
+    eventKo: 'ATxSummit 2026',
     addedAt: '2026-05-20',
   },
   {
@@ -276,6 +284,8 @@ export const mddiSpeeches: MddiSpeech[] = [
     url: 'https://www.mddi.gov.sg/newsroom/speech-by-mos-rahayu-mahzam-at-the-design-ai-and-tech-awards-2026/',
     eventEn: 'Design AI and Tech Awards 2026',
     event: '2026 Design AI and Tech Awards',
+    eventKo: 'Design AI and Tech Awards 2026',
+    eventJa: 'Design AI and Tech Awards 2026',
   },
   {
     titleEn: "Transcript of SMS Tan Kiat How's Keynote Speech at Singapore Computer Society (SCS) AI Conference",
@@ -801,6 +811,8 @@ export const mddiSpeeches: MddiSpeech[] = [
     url: 'https://www.mddi.gov.sg/newsroom/speech-by-minister-josephine-teo-at-htx-ai-techxplore/',
     eventEn: "HTX's AI TechXplore",
     event: 'HTX AI TechXplore',
+    eventKo: 'HTX AI TechXplore',
+    eventJa: 'HTX AI TechXplore',
   },
   {
     titleEn: 'Speech by SMS Tan Kiat How at Design AI and Tech Awards 2025',

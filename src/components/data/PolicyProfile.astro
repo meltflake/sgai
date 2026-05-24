@@ -6,6 +6,7 @@ import RelatedRail from '~/components/data/RelatedRail.astro';
 import { categories, type Policy, type PolicyResource } from '~/data/policies';
 import { levers } from '~/data/levers';
 import { localizedHref, pickLocalized, t, type Lang } from '~/i18n';
+import { toTraditional } from '~/i18n/opencc';
 import { leverSlug } from '~/utils/entity-pages';
 import { getPerson, personDisplayName } from '~/utils/people';
 
@@ -21,12 +22,9 @@ interface Props {
 }
 
 const { policy, lang } = Astro.props;
-// `isEn` is true for any non-zh locale — local label dictionaries only
-// branch zh vs. non-zh; ja falls back to en until per-locale strings land.
-const isJa = lang === 'ja';
-const isEn = lang !== 'zh';
+const isZh = lang === 'zh';
 const title = pickLocalized<string>(policy, 'title', lang) || policy.title;
-const subtitle = policy.titleEn && policy.titleEn !== title ? policy.titleEn : undefined;
+const subtitle = isZh && policy.titleEn && policy.titleEn !== title ? policy.titleEn : undefined;
 const summary = pickLocalized<string>(policy, 'summary', lang) || '';
 const content = pickLocalized<string>(policy, 'content', lang) || '';
 const source = pickLocalized<string>(policy, 'source', lang) || policy.source;
@@ -39,35 +37,58 @@ const linkedLevers = (policy.relatedLeverNumbers || [])
   .map((n) => levers.find((lv) => lv.number === n))
   .filter(Boolean);
 
+const label = (copy: { zh: string; en: string; ja?: string; ko?: string }): string => {
+  if (lang === 'ja') return copy.ja || copy.en;
+  if (lang === 'ko') return copy.ko || copy.en;
+  if (lang === 'zh-tw') return toTraditional(copy.zh);
+  if (lang === 'zh') return copy.zh;
+  return copy.en;
+};
+
 const labels = {
-  back: isJa ? '政策ライブラリに戻る' : isEn ? 'Back to Policy Library' : '返回政策库',
-  profile: isJa ? '政策／プロジェクトファイル' : isEn ? 'Policy / Project Profile' : '政策 / 项目档案',
-  category: isJa ? '分類' : isEn ? 'Category' : '分类',
-  date: isJa ? '発表／更新' : isEn ? 'Published / Updated' : '发布 / 更新',
-  source: isJa ? '発表機関' : isEn ? 'Issuing body' : '发布机构',
-  ministry: isJa ? '主管省庁' : isEn ? 'Lead ministry' : '主管部委',
-  levers: isJa ? '関連レバー' : isEn ? 'Linked levers' : '关联抓手',
-  debates: isJa ? '議会記録' : isEn ? 'Parliament links' : '国会记录',
-  timeline: isJa ? 'タイムライン年' : isEn ? 'Timeline years' : '时间线年份',
-  verified: isJa ? '情報検証' : isEn ? 'Last checked' : '信息校验',
-  details: isJa ? '展開' : isEn ? 'Detailed Notes' : '展开信息',
-  signals: isJa ? '戦略的位置' : isEn ? 'Strategic Context' : '战略位置',
-  milestones: isJa ? '重要マイルストーン' : isEn ? 'Milestones' : '关键里程碑',
-  resources: isJa ? 'リソース入口' : isEn ? 'Resources' : '资源入口',
-  sameCategory: isJa ? '同類ファイル' : isEn ? 'More in This Category' : '同类档案',
-  officialSite: isJa ? '発表機関公式サイト' : isEn ? 'Issuing body site' : '发布机构官网',
+  back: label({
+    zh: '返回政策库',
+    en: 'Back to Policy Library',
+    ja: '政策ライブラリに戻る',
+    ko: '정책 라이브러리로 돌아가기',
+  }),
+  profile: label({
+    zh: '政策 / 项目档案',
+    en: 'Policy / Project Profile',
+    ja: '政策／プロジェクトファイル',
+    ko: '정책 / 프로젝트 파일',
+  }),
+  category: label({ zh: '分类', en: 'Category', ja: '分類', ko: '분류' }),
+  date: label({ zh: '发布 / 更新', en: 'Published / Updated', ja: '発表／更新', ko: '발표 / 업데이트' }),
+  source: label({ zh: '发布机构', en: 'Issuing body', ja: '発表機関', ko: '발표 기관' }),
+  ministry: label({ zh: '主管部委', en: 'Lead ministry', ja: '主管省庁', ko: '주관 부처' }),
+  levers: label({ zh: '关联抓手', en: 'Linked levers', ja: '関連レバー', ko: '관련 레버' }),
+  debates: label({ zh: '国会记录', en: 'Parliament links', ja: '議会記録', ko: '의회 기록' }),
+  timeline: label({ zh: '时间线年份', en: 'Timeline years', ja: 'タイムライン年', ko: '타임라인 연도' }),
+  verified: label({ zh: '信息校验', en: 'Last checked', ja: '情報検証', ko: '정보 확인' }),
+  details: label({ zh: '展开信息', en: 'Detailed Notes', ja: '詳細ノート', ko: '상세 노트' }),
+  signals: label({ zh: '战略位置', en: 'Strategic Context', ja: '戦略的位置', ko: '전략적 맥락' }),
+  milestones: label({ zh: '关键里程碑', en: 'Milestones', ja: '重要マイルストーン', ko: '주요 마일스톤' }),
+  resources: label({ zh: '资源入口', en: 'Resources', ja: 'リソース入口', ko: '리소스' }),
+  sameCategory: label({ zh: '同类档案', en: 'More in This Category', ja: '同類ファイル', ko: '같은 분류의 파일' }),
+  officialSite: label({
+    zh: '发布机构官网',
+    en: 'Issuing body site',
+    ja: '発表機関公式サイト',
+    ko: '발표 기관 공식 사이트',
+  }),
+  leverWord: label({ zh: '抓手', en: 'Lever', ja: 'レバー', ko: '레버' }),
 };
 
 function pickFactField(
   item: { label: string; labelEn?: string; value: string; valueEn?: string },
   field: 'label' | 'value'
 ): string {
-  if (field === 'label') return isEn ? item.labelEn || item.label : item.label;
-  return isEn ? item.valueEn || item.value : item.value;
+  return pickLocalized<string>(item, field, lang) || item[field];
 }
 
 function resourceLabel(resource: PolicyResource): string {
-  return isEn ? resource.labelEn || resource.label : resource.label;
+  return pickLocalized<string>(resource, 'label', lang) || resource.label;
 }
 
 function resourceIcon(kind: PolicyResource['kind']): string {
@@ -92,10 +113,7 @@ const facts = [
     value:
       linkedLevers.length > 0
         ? linkedLevers
-            .map(
-              (lv) =>
-                `${isJa ? 'レバー' : isEn ? 'Lever' : '抓手'} ${lv!.number}: ${isEn ? lv!.nameEn || lv!.name : lv!.name}`
-            )
+            .map((lv) => `${labels.leverWord} ${lv!.number}: ${pickLocalized(lv!, 'name', lang) || lv!.name}`)
             .join(' / ')
         : undefined,
   },
@@ -103,7 +121,7 @@ const facts = [
     label: labels.debates,
     value:
       policy.relatedDebateIds && policy.relatedDebateIds.length > 0
-        ? `${policy.relatedDebateIds.length} ${isJa ? '条' : isEn ? 'records' : '条'}`
+        ? `${policy.relatedDebateIds.length} ${label({ zh: '条', en: 'records', ja: '件', ko: '건' })}`
         : undefined,
   },
   {
@@ -124,8 +142,8 @@ const sections =
   policy.sections && policy.sections.length > 0
     ? policy.sections
         .map((section) => ({
-          title: isEn ? section.titleEn || section.title : section.title,
-          body: isEn ? section.bodyEn || section.body : section.body,
+          title: pickLocalized<string>(section, 'title', lang) || section.title,
+          body: pickLocalized<string>(section, 'body', lang) || section.body,
         }))
         .filter((section) => section.body)
     : [{ title: labels.details, body: content }];
@@ -165,36 +183,48 @@ const signals = [
     ? {
         icon: 'tabler:target-arrow',
         title: labels.levers,
-        body: isEn
-          ? `Connected to ${linkedLevers.length} national AI lever${linkedLevers.length > 1 ? 's' : ''}.`
-          : `已连接到 ${linkedLevers.length} 个国家 AI 抓手，说明它不是孤立文件，而是执行体系里的节点。`,
+        body: label({
+          zh: `已连接到 ${linkedLevers.length} 个国家 AI 抓手，说明它不是孤立文件，而是执行体系里的节点。`,
+          en: `Connected to ${linkedLevers.length} national AI lever${linkedLevers.length > 1 ? 's' : ''}.`,
+          ja: `${linkedLevers.length} 件の国家 AI レバーに接続されています。単独の文書ではなく、実行体系の中のノードです。`,
+          ko: `${linkedLevers.length}개의 국가 AI 레버와 연결되어 있습니다. 고립된 문서가 아니라 실행 체계의 노드입니다.`,
+        }),
       }
     : null,
   policy.relatedDebateIds && policy.relatedDebateIds.length > 0
     ? {
         icon: 'tabler:building-bank',
         title: labels.debates,
-        body: isEn
-          ? `${policy.relatedDebateIds.length} parliamentary record${policy.relatedDebateIds.length > 1 ? 's' : ''} linked.`
-          : `已关联 ${policy.relatedDebateIds.length} 条国会记录，方便追踪政策在议会里的问答和解释。`,
+        body: label({
+          zh: `已关联 ${policy.relatedDebateIds.length} 条国会记录，方便追踪政策在议会里的问答和解释。`,
+          en: `${policy.relatedDebateIds.length} parliamentary record${policy.relatedDebateIds.length > 1 ? 's' : ''} linked.`,
+          ja: `${policy.relatedDebateIds.length} 件の議会記録に接続されています。議会での質疑や説明を追跡できます。`,
+          ko: `${policy.relatedDebateIds.length}개의 의회 기록과 연결되어 있습니다. 의회 질의응답과 설명을 추적할 수 있습니다.`,
+        }),
       }
     : null,
   policy.relatedTimelineYears && policy.relatedTimelineYears.length > 0
     ? {
         icon: 'tabler:timeline',
         title: labels.timeline,
-        body: isEn
-          ? `Appears in the timeline around ${policy.relatedTimelineYears.join(', ')}.`
-          : `已进入 ${policy.relatedTimelineYears.join('、')} 年时间线，可放回新加坡 AI 战略演进里看。`,
+        body: label({
+          zh: `已进入 ${policy.relatedTimelineYears.join('、')} 年时间线，可放回新加坡 AI 战略演进里看。`,
+          en: `Appears in the timeline around ${policy.relatedTimelineYears.join(', ')}.`,
+          ja: `${policy.relatedTimelineYears.join('、')} 年のタイムラインに入り、シンガポール AI 戦略の流れの中で読めます。`,
+          ko: `${policy.relatedTimelineYears.join(', ')}년 타임라인에 포함되어 싱가포르 AI 전략의 흐름 안에서 볼 수 있습니다.`,
+        }),
       }
     : null,
   policy.relatedPostSlugs && policy.relatedPostSlugs.length > 0
     ? {
         icon: 'tabler:article',
-        title: isJa ? '観点リンク' : isEn ? 'Analysis links' : '观点链接',
-        body: isEn
-          ? `${policy.relatedPostSlugs.length} editorial analysis page${policy.relatedPostSlugs.length > 1 ? 's' : ''} linked.`
-          : `已关联 ${policy.relatedPostSlugs.length} 篇观点文章，方便从档案跳到判断。`,
+        title: label({ zh: '观点链接', en: 'Analysis links', ja: '観点リンク', ko: '분석 링크' }),
+        body: label({
+          zh: `已关联 ${policy.relatedPostSlugs.length} 篇观点文章，方便从档案跳到判断。`,
+          en: `${policy.relatedPostSlugs.length} editorial analysis page${policy.relatedPostSlugs.length > 1 ? 's' : ''} linked.`,
+          ja: `${policy.relatedPostSlugs.length} 件の分析記事に接続されています。ファイルから判断へ移動できます。`,
+          ko: `${policy.relatedPostSlugs.length}개의 분석 글과 연결되어 있습니다. 파일에서 판단으로 이동할 수 있습니다.`,
+        }),
       }
     : null,
 ].filter((signal): signal is { icon: string; title: string; body: string } => Boolean(signal));
@@ -299,11 +329,11 @@ function policySource(candidate: Policy): string {
               <span class="absolute -left-[33px] top-1 w-3 h-3 rounded-full bg-primary ring-4 ring-primary/10" />
               <div class="text-xs font-mono text-gray-500 dark:text-gray-400 mb-1">{milestone.date}</div>
               <div class="font-semibold text-gray-900 dark:text-white">
-                {isEn ? milestone.titleEn || milestone.title : milestone.title}
+                {pickLocalized(milestone, 'title', lang) || milestone.title}
               </div>
-              {(isEn ? milestone.descriptionEn || milestone.description : milestone.description) && (
+              {pickLocalized(milestone, 'description', lang) && (
                 <p class="text-sm text-gray-600 dark:text-gray-400 mt-1 leading-relaxed">
-                  {isEn ? milestone.descriptionEn || milestone.description : milestone.description}
+                  {pickLocalized(milestone, 'description', lang)}
                 </p>
               )}
             </li>
@@ -326,10 +356,12 @@ function policySource(candidate: Policy): string {
                 href={localizedHref(`/voices/${person!.id}/`, lang)}
                 class="text-primary hover:text-secondary text-sm font-medium"
               >
-                {isEn ? person!.nameEn || person!.name : personDisplayName(person!.id)}
+                {isZh
+                  ? personDisplayName(person!.id)
+                  : pickLocalized(person!, 'name', lang) || person!.nameEn || person!.name}
               </a>
               <span class="text-xs text-gray-500 dark:text-gray-400 ml-1">
-                {isEn ? person!.titleEn || person!.title : person!.title || person!.titleEn}
+                {pickLocalized(person!, 'title', lang) || person!.titleEn || person!.title}
               </span>
             </li>
           ))}
@@ -371,11 +403,13 @@ function policySource(candidate: Policy): string {
               href={localizedHref(`/levers/${leverSlug(lever!)}/`, lang)}
               class="group bg-surface rounded-lg border border-subtle p-4 hover:border-primary/40 hover:shadow-sm transition-all"
             >
-              <p class="text-xs text-muted mb-1">{isEn ? `Lever ${lever!.number}` : `抓手 ${lever!.number}`}</p>
+              <p class="text-xs text-muted mb-1">
+                {labels.leverWord} {lever!.number}
+              </p>
               <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-primary">
-                {isEn ? lever!.nameEn || lever!.name : lever!.name}
+                {pickLocalized(lever!, 'name', lang) || lever!.name}
               </h3>
-              <p class="text-xs text-muted mt-1">{isEn ? lever!.subtitleEn || lever!.subtitle : lever!.subtitle}</p>
+              <p class="text-xs text-muted mt-1">{pickLocalized(lever!, 'subtitle', lang) || lever!.subtitle}</p>
             </a>
           ))}
         </div>

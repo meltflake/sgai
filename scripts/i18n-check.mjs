@@ -7,6 +7,7 @@
 //   node scripts/i18n-check.mjs --lang en         # same as above
 //   node scripts/i18n-check.mjs --lang zh         # scan ZH at dist/zh/
 //   node scripts/i18n-check.mjs --lang en --root dist
+//   node scripts/i18n-check.mjs --all             # scan every locale from src/i18n/index.ts
 //
 // Layout (post-Phase-2): EN is the route default and lives at the bare
 // dist/ root; non-default locales live under dist/<lang>/. The script
@@ -29,22 +30,27 @@ import { readFileSync, readdirSync, statSync } from 'node:fs';
 import { join, relative } from 'node:path';
 import process from 'node:process';
 
+import { getProjectLocaleConfig } from './lib/i18n-locales.mjs';
+
 // Parse --lang and --root flags.
 const argv = process.argv.slice(2);
 function arg(name, fallback) {
   const i = argv.indexOf(name);
   return i >= 0 && argv[i + 1] ? argv[i + 1] : fallback;
 }
-const LANG = arg('--lang', 'en');
+const CHECK_ALL = argv.includes('--all');
 const ROOT_BASE = arg('--root', 'dist');
+const PROJECT_I18N = getProjectLocaleConfig();
 // EN is the route-default locale and lives at the bare ROOT_BASE.
 // Other locales live under ROOT_BASE/<lang>/. Lang codes double as URL
 // segments (kebab-cased where needed, e.g. 'zh-tw' → /zh-tw/).
-const ROUTE_DEFAULT = 'en';
-const ROOT = LANG === ROUTE_DEFAULT ? ROOT_BASE : `${ROOT_BASE}/${LANG}`;
-// Subdirs to skip when scanning EN root (those belong to other locales).
-// Keep this in sync with LOCALES in src/i18n/index.ts (minus the route default).
-const SKIP_SUBDIRS = new Set(LANG === ROUTE_DEFAULT ? ['zh', 'ja', 'zh-tw', 'ko'] : []);
+const ROUTE_DEFAULT = PROJECT_I18N.routeDefaultLocale;
+const LOCALES = PROJECT_I18N.locales;
+let LANG = arg('--lang', ROUTE_DEFAULT);
+let ROOT = LANG === ROUTE_DEFAULT ? ROOT_BASE : `${ROOT_BASE}/${LANG}`;
+// Subdirs to skip when scanning the route-default root (those belong to
+// other locales). Derived from LOCALES so a new locale cannot bypass the scan.
+let SKIP_SUBDIRS = new Set(LANG === ROUTE_DEFAULT ? LOCALES.filter((locale) => locale !== ROUTE_DEFAULT) : []);
 
 // Per-target-lang config. Each entry says "what foreign script should
 // NOT appear on a page in this locale", plus intentional exceptions.
@@ -68,10 +74,25 @@ const SKIP_SUBDIRS = new Set(LANG === ROUTE_DEFAULT ? ['zh', 'ja', 'zh-tw', 'ko'
 //                    but inline EN UI text leaks through invisibly.
 //                    See Layer D in scripts/evals/i18n-coverage/check.ts.
 const LANG_CONFIG = {
+  zh: {
+    // Simplified Chinese is the source locale. Source-level completeness
+    // ensures required bare fields exist; this dist check catches accidental
+    // Japanese/Korean script leakage in rendered zh pages.
+    foreignRegex: /[\u3040-\u30ff\uac00-\ud7af]+/g,
+    allowPatterns: [
+      // LanguageToggle: dropdown language labels.
+      '한국어',
+      // Legit foreign-language terms quoted inside zh source content.
+      'おもてなし',
+      'こもり',
+    ],
+  },
   en: {
-    // Match CJK Unified Ideographs runs.
-    foreignRegex: /[一-鿿]+(?:[一-鿿\s·。，、！？：；'-]*[一-鿿]+)*/g,
-    // Strings that ARE allowed despite containing CJK.
+    // English pages must not contain CJK, Japanese kana, or Korean
+    // hangul. This is stricter than "no Chinese": English output often
+    // starts from zh drafts, so source-language fragments must hard-fail.
+    foreignRegex: /[一-鿿぀-ゟ゠-ヿ가-힣]+(?:[一-鿿぀-ゟ゠-ヿ가-힣\s·。，、！？：；'-]*[一-鿿぀-ゟ゠-ヿ가-힣]+)*/g,
+    // Strings that ARE allowed despite containing non-Latin script.
     allowPatterns: [
       // LangBanner: invite user to switch to zh.
       '中文版可用',
@@ -79,6 +100,7 @@ const LANG_CONFIG = {
       // LanguageToggle: dropdown language labels.
       '中文',
       '日本語',
+      '한국어',
     ],
     // EN is the route default; we don't sentence-scan it for residue of
     // any other language. (CJK residue is already caught by foreignRegex
@@ -248,13 +270,19 @@ const LANG_CONFIG = {
   },
 };
 
-const conf = LANG_CONFIG[LANG];
-if (!conf) {
-  console.error(`[i18n-check] No config for lang "${LANG}". Add an entry to LANG_CONFIG.`);
-  process.exit(2);
-}
+let conf;
+let ALLOW_PATTERNS = [];
 
-const ALLOW_PATTERNS = conf.allowPatterns;
+function configureLang(lang) {
+  LANG = lang;
+  ROOT = LANG === ROUTE_DEFAULT ? ROOT_BASE : `${ROOT_BASE}/${LANG}`;
+  SKIP_SUBDIRS = new Set(LANG === ROUTE_DEFAULT ? LOCALES.filter((locale) => locale !== ROUTE_DEFAULT) : []);
+  conf = LANG_CONFIG[LANG];
+  if (!conf) {
+    throw new Error(`[i18n-check] No config for lang "${LANG}". Add an entry to LANG_CONFIG.`);
+  }
+  ALLOW_PATTERNS = conf.allowPatterns;
+}
 
 function listHtml(dir, isRoot = true) {
   const out = [];
@@ -470,13 +498,20 @@ function scanFile(file) {
   return { findings: dedup(findings), enWarnings: dedup(enWarnings) };
 }
 
-function main() {
+function mainForLang(lang) {
+  try {
+    configureLang(lang);
+  } catch (error) {
+    console.error(error instanceof Error ? error.message : String(error));
+    return 2;
+  }
+
   let files;
   try {
     files = listHtml(ROOT);
   } catch {
     console.error(`[i18n-check] Cannot read ${ROOT}. Run \`npm run build\` first.`);
-    process.exit(2);
+    return 2;
   }
 
   let totalPages = 0;
@@ -540,16 +575,27 @@ function main() {
 
   if (dirtyPages > 0) {
     console.log(`\n[i18n-check] FAIL — fix the foreign-script residue above.`);
-    process.exit(1);
+    return 1;
   } else {
-    const what = LANG === 'en' ? 'Chinese residue on EN' : `foreign-script residue on ${LANG.toUpperCase()}`;
+    const what = LANG === 'en' ? 'non-English script residue on EN' : `foreign-script residue on ${LANG.toUpperCase()}`;
     console.log(`\n[i18n-check] OK — no ${what} pages.`);
     if (warnPages > 0) {
       console.log(
         `[i18n-check] (${totalWarnings} EN-sentence warnings still present — informational only; track via Layer E.)`
       );
     }
+    return 0;
   }
+}
+
+function main() {
+  const langs = CHECK_ALL ? LOCALES : [LANG];
+  let exitCode = 0;
+  for (const lang of langs) {
+    const code = mainForLang(lang);
+    if (code > exitCode) exitCode = code;
+  }
+  if (exitCode > 0) process.exit(exitCode);
 }
 
 main();
