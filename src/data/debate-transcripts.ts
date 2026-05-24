@@ -17554,6 +17554,10 @@ export const debateTranscripts: Record<string, DebateTranscript> = {
       '29 Mr Chua Kheng Wee Louis asked the Minister for Digital Development and Information whether the Government has conducted studies on the adoption and active usage of artificial intelligence software by (i) companies with a breakdown between small and medium enterprises versus multinational corporations and (ii) individuals in Singapore.',
       'Mrs Josephine Teo : The Government tracks artificial intelligence (AI) adoption as part of broader efforts to develop the digital economy. Since 2023, the Infocomm Media Development Authority has been publishing the annual Singapore Digital Economy Report, which contains data on AI adoption by companies of different sizes and workers in Singapore. The Member may wish to refer to it.',
     ],
+    paragraphsKo: [
+      "29 차이칭웨이 의원이 디지털발전정보부 장관에게 질문합니다: 정부가 싱가포르의 (i) 기업들의 인공지능 소프트웨어 채택 및 적극적 사용 현황에 관해, 중소기업과 다국적기업을 구분하여 연구를 실시했는지 여부, 그리고 (ii) 개인의 사용 현황에 관해 연구를 실시했는지 여부.",
+      "장옥연 여사: 정부는 인공지능(AI)의 채택 현황을 디지털경제 발전의 전반적인 업무에 포함하여 추적하고 있습니다. 2023년 이후로 정보통신미디어발전국(IMDA)은 매년 『싱가포르 디지털경제 보고서』를 발표하고 있으며, 이는 다양한 규모의 기업과 싱가포르 근로자의 인공지능 채택 데이터를 포함합니다. 의원 여러분께서는 이 보고서를 참고하실 수 있습니다.",
+    ],
     translatedAt: '2026-05-02',
     translationSource: 'openai',
     translationModel: 'gpt-4.1-mini',
