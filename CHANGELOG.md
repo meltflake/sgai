@@ -11,6 +11,7 @@
 - `check:i18n-completeness` 从单独检查 `ecosystem.ts` 扩展为扫描 `src/data/*.ts`，并对 `scripts/i18n-config.ts` 中配置的 policies / ecosystem / levers / voices 用户可见字段强制要求所有 authored locale sibling；locale 列表从 `src/i18n/index.ts` 自动读取，未来新增语言会默认进入强否决。
 - 政策档案页的 `sourceUrl` 资源标签从泛泛的“来源 / Source”改为“官方原文 / Official source text”，避免读者误以为没有原文入口。
 - NAIS Update 2026 档案新增官方演讲原文与中 / 日 / 韩译文区块，并把 `policy-source-texts.ts` 纳入 i18n 完整性检查。
+- `entity-pages.ts` 与 `speech-transcripts.ts` 改用相对路径导入被 dist 检查直接执行的数据依赖，修复 GitHub Actions Node 18 下 `check:localized-rendering` 无法解析 `~` 别名导致部署阻断的问题。
 - `zh` 作为源语言纳入完整性语义，`zh-tw` 作为 OpenCC 派生语言纳入 `check:i18n:all` 的构建产物检查；`check:i18n:all` 不再手写语言列表，会扫描 `LOCALES` 中每个语言。
 - `i18n-pair` alignment 检查扩展到更多实际渲染字段，并支持 `string[]`；`highlights`、`bullets`、`tags`、`points` 等数组文案缺任一语言 sibling 也会 hard-fail。
 - `i18n-pair` 新增 English purity gate：`*En` 加工字段不得含中文汉字、日文假名或韩文 Hangul；EN 构建产物检查也同步从"查中文"扩展为"查任何非英文脚本"。

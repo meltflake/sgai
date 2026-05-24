@@ -8,10 +8,10 @@ import {
   type BenchmarkCase,
   type RegionDetail,
   type RegionSummary,
-} from '~/data/benchmarking';
-import { sections as legalSections, type LegalItem, type LegalSection } from '~/data/legal-ai';
-import { levers, type Lever, type LeverGroup, type LeverItem } from '~/data/levers';
-import { ecosystemCategories, type EcosystemCategory, type EcosystemEntity } from '~/data/ecosystem';
+} from '../data/benchmarking';
+import { sections as legalSections, type LegalItem, type LegalSection } from '../data/legal-ai';
+import { levers, type Lever, type LeverGroup, type LeverItem } from '../data/levers';
+import { ecosystemCategories, type EcosystemCategory, type EcosystemEntity } from '../data/ecosystem';
 import {
   exits,
   investors,
@@ -22,7 +22,7 @@ import {
   type Startup,
   type Unicorn,
   type Vertical,
-} from '~/data/startups';
+} from '../data/startups';
 
 export function toSeoSlug(value: string): string {
   const slug = slugify(value).replace(/^\/+|\/+$/g, '');

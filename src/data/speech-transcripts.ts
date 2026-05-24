@@ -6644,7 +6644,7 @@ export const speechTranscripts: Record<string, SpeechTranscript> = {
   },
 };
 
-import { toTraditional } from '~/i18n/opencc';
+import { toTraditional } from '../i18n/opencc';
 
 export function getSpeechTranscript(id: string): SpeechTranscript | undefined {
   return speechTranscripts[id];
