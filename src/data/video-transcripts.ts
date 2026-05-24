@@ -53,6 +53,12 @@ export const videoTranscripts: Record<string, VideoTranscript> = {
       "This new AI breed can complete tasks on its own or with little human supervision. If you think about it, that's you're learning how to run before you learn how to walk. So, if you before you move into the agentic hype, you must first know the basics of gen AI, you must know the basics of an LLM, right? Because you rely on the LLM to enable the agentic tasks that we are now seeing. Still, one analyst says while opportunities are plenty for people to pick up AI skills, there are gaps to be plugged. The gap actually is really after the course. Um, people may learn AI tools, but they are not always sure how to apply them in their own job. So, what would help more actually stronger employer involvement, for example, like uh, companies creating opportunities for staff to use AI in real workflows or uh, supporting small pilot projects.",
       'She says that this is where such useful skills will turn into real capabilities in an AI-driven world we are learning to embrace and thrive in.',
     ],
+    paragraphsKo: [
+      "훈련 기관들이 인공지능 과정에 대한 수요가 급격하게 증가했다고 보고했으며, 일부 기관의 경우 최근 몇 개월 동안 모집 인원이 두 배로 늘었습니다. 이러한 급증은 생성형 AI 및 신흥 에이전트 AI에 대한 각 산업과 개인 학습자들의 관심 증가로 인한 것입니다. 훈련 기관들은 급속한 발전 속도를 따라가기 위해 새로운 모듈을 출시하고 있지만, 전문가들은 이러한 기술이 직장에서의 실질적인 능력으로 전환되려면 더 강력한 고용주의 지원이 필요하다고 지적했습니다. Olive Sham이 보도했습니다. 데이터 분석부터 디지털 마케팅까지, 이 학원은 사람들이 일상 업무에서 인공지능을 적용하는 데 필요한 실용적인 기술을 가르칩니다. 지난 6개월 동안, 그 과정 포트폴리오의 수요는 작년 대비 두 배 증가했습니다. 사람들은 이를 수많은 산업과 분야에 적용할 수 있는 일반적인 기술로 보기 시작했습니다.",
+      "인공지능 과정이 많은 주류 관심을 받은 이유는 사람들이 단지 더 구조화된 방식으로 이를 이해하고 싶어 하기 때문입니다, 맞죠? 생성형 AI의 발전 과정을 더 체계적인 방식으로 소개하려는 것인가요? 생성형 AI의 진화는 무엇인가요? 우리는 지금 어느 단계에 있나요? 그러나 끊임없이 변화하는 AI 구동형 세계 속에서, 그녀는 과정을 새로 고침하는 것의 필요성이 더욱 중요하다고 표시했습니다. 해당 기관은 또한 향후 몇 개월 동안 다양한 수요를 충족하기 위해 새로운 모듈을 출시할 계획입니다. 예를 들어, 창의적 근로자 및 디자이너를 위한 과정, 그리고 최신 생성형 AI 변형 기술을 활용하는 과정들, 그리고 저는 이를 산업 중심의 과정이라고 말씀드리고 싶은 더 많은 과정들을 출시합니다. 이는 이들이 기술을 향상시키고 그들이 하는 일을 더 잘 수행하도록 돕기 위함입니다. 다른 훈련 기관은 생성형 AI의 다음 발전 단계(에이전트 AI라고 불리는)로의 전환이 수요 증가를 주도하는 한 가지 요인일 수 있다고 표시했습니다.",
+      "이 새로운 유형의 AI는 최소한의 인간 감독 하에서 작업을 자율적으로 완료하거나 완료할 수 있는 능력을 가지고 있습니다. 생각해 보면, 그것은 걸음걸이를 배우기 전에 뛰는 방법을 배우는 것과 같습니다. 따라서 에이전트 AI의 과대광고에 빠지기 전에, 먼저 생성형 AI의 기초를 이해해야 하고, 대규모 언어 모델의 기초를 이해해야 합니다, 맞죠? 왜냐하면 대규모 언어 모델을 활용하여 현재 우리가 보고 있는 에이전트 AI 작업을 수행해야 하기 때문입니다. 그럼에도 불구하고, 한 분석가는 AI 기술을 배울 수 있는 많은 기회가 있지만, 메워야 할 격차가 여전히 존재한다고 표시했습니다. 실제 격차는 실제로 과정 이후에 나타납니다. 음, 사람들이 AI 도구를 배웠을 수도 있지만, 그들이 자신의 업무에서 이러한 도구를 어떻게 적용해야 할지는 종종 확실하지 않습니다. 따라서 더 유용한 접근 방식은 실제로 더 강력한 고용주 참여입니다. 예를 들어, 회사가 직원에게 실제 업무 흐름에서 AI를 사용할 수 있는 기회를 제공하거나 소규모 시범 프로젝트를 지원하는 것입니다.",
+      "그녀는 이러한 측면들에서 이 유용한 기술들이 우리가 포용하고 적응하는 법을 배우고 있는 AI 구동형 세계에서 실질적인 능력으로 전환될 수 있다고 표시했습니다.",
+    ],
     paragraphsJa: [
       '訓練機関は、人工知能コースに対する需要が急速に増加しており、一部の機関はここ数ヶ月で入学者数が倍増したと報告しています。この急増は、様々な業界と個人学習者による生成AI及び新興エージェントAIに対する関心の増加によって推進されています。訓練機関は急速な発展に追いつくために新しいモジュールを導入していますが、専門家は、これらのスキルを職場の実際の能力に変換するために、より強力な雇用主支援が必要であると述べています。Olive Shamが報道しています。データ分析からデジタルマーケティングまで、このアカデミーは、人々が日常業務で人工知能を適用するために必要な実践的なスキルを教えています。過去6ヶ月間で、そのコースポートフォリオに対する需要は昨年と比べて倍増しています。人々はそれを様々な業界と分野に適用可能なユニバーサルスキルと見なし始めています。',
       '人工知能コースが多くの主流の注目を集める理由は、人々が単にそれをより構造化された方法で理解したいからです。そうですね？生成AIのこの発展過程をより体系的な方法で紹介すること？生成AIの進化とは何か？私たちは現在どの段階にあるのか？しかし、絶えず変化するAI駆動の世界では、彼女はカリキュラムをリフレッシュする必要性がさらに重要であると述べています。その機関は、今後数ヶ月間に異なるニーズに対応するための新しいモジュールの導入も計画しています。例えば、クリエイティブワーカーやデザイナー向けのコース、最新の生成AI変種技術を活用したコース、そして、業界に焦点を当てたコースをさらに多く推し出し、こうした人々がスキルアップして、自分たちがしていることでより良い成果を上げられるようにする予定です。別の訓練機関は、生成AIの次の発展段階（エージェントAIと呼ばれる）への転換が、需要増加を推進する一つの要因である可能性があると述べています。',
@@ -80,6 +86,12 @@ export const videoTranscripts: Record<string, VideoTranscript> = {
       "But ultimately, our key objective is to ensure that AI benefits every worker with better jobs and better opportunities. Singapore's AI strategy is already bearing fruit. Global firms have chosen the country to lay roots, like Google basing their first Southeast Asia research lab here. They are joined by an increasing number of fast-growing startups in the sector. Besides supporting firms in using the tech, much focus has also been in preparing workers for the transition. AI is far more powerful than spreadsheets. So, the impact on our workplaces will be much greater. And that's why I cannot promise that there will be no disruption. Jobs will change. Some will disappear. And the pace of change will be faster than anything we have seen before. But this I can promise you, as our economy transforms, we will create new and better jobs.",
       'We may not be able to protect every job, but we will protect every worker. Because in Singapore, every worker matters. Bringing about such inclusive growth, that does not happen by itself. And we will not leave it to chance or to the market entirely. Instead, we will take deliberate steps to ensure that the benefits of AI are shared by all. Among the steps to do that is a new agency, the Skills and Workforce Development Agency or SWDA, which will bring skills training and job matching closer together. The government will provide the tools, the pathways, and the support. But we also need Singaporeans to step forward. Do not let anxiety or uncertainty hold you back from learning and using AI. AI is here to stay. So, embrace it, learn it, use it, and master it. Companies that do so will stay competitive.',
       'Workers who build AI skills will have better opportunities and prospects. To help Singaporeans pick up these skills, those signing up for some SkillsFuture courses can get premium AI tools for free for 6 months.',
+    ],
+    paragraphsKo: [
+      "새로운, 더 나은 일자리——이는 인공지능이 경제를 개혁할 때 총리가 제시한 약속입니다. 황순푸 총리는 동시에 모든 직원을 보호하겠다고 약속하였으며, 싱가포르인들이 이 기술을 배우고 사용하기 위해 자신의 역할을 다하도록 촉구했습니다. 이하는 Nicholas Ong의 상세한 보도입니다. 이메일 초안 작성, 보고서 요약, 심지어 코드 작성과 같은 작업들은 ChatGPT와 같은 인공지능 도구가 수행할 수 있습니다. 그러나 이 기술의 다음 단계는 인간의 개입이 필요하지 않은 인공지능 에이전트를 만드는 것입니다. 그 영향은 매우 클 것입니다. 인공지능은 생산성을 높일 뿐만 아니라 전체 산업을 교란하고 재편성할 것입니다. 싱가포르는 이 새로운 환경에서 성공하기 위해 준비해야 합니다. 이러한 이유로 우리는 우리의 국가 활동을 조정하기 위해 국가 인공지능 위원회를 설립했습니다. 우리의 목표는 명확합니다. 즉, 심층 인공지능 역량을 구축하고, 전 경제에서의 기술 도입을 추진하며, 싱가포르를 인공지능 혁신의 중심지로 만드는 것입니다.",
+      "그러나 무엇보다도 우리의 주요 목표는 인공지능이 모든 직원에게 더 나은 일자리와 더 많은 기회를 제공하도록 보장하는 것입니다. 싱가포르의 인공지능 전략은 이미 성과를 거두고 있습니다. Google과 같은 글로벌 기업들이 싱가포르에 자리 잡기로 선택했으며, Google은 동남아시아 최초의 연구 실험실을 여기에 설립했습니다. 그 후 빠르게 성장하는 수많은 스타트업들이 대열에 합류했습니다. 기업들이 이 기술을 사용하도록 지원하는 것 외에도 직원들이 전환에 대비하도록 준비하는 데 상당한 노력이 투입되었습니다. 인공지능의 기능은 스프레드시트보다 훨씬 강력합니다. 따라서 우리 직장에 미치는 영향도 훨씬 클 것입니다. 이러한 이유로 저는 어떤 혼란도 없을 것이라고 약속할 수 없습니다. 일자리가 바뀔 것입니다. 일부는 사라질 것입니다. 변화의 속도는 우리가 이전에 본 어떤 것보다도 빠를 것입니다. 그러나 저는 이것을 보증합니다. 우리의 경제가 전환될 때 우리는 새로운, 더 나은 일자리 기회를 창출할 것입니다.",
+      "우리는 모든 일자리를 보호하지 못할 수도 있지만 모든 직원을 보호할 것입니다. 싱가포르에서는 모든 직원이 중요하기 때문입니다. 포용적 성장의 실현은 자동으로 일어나지 않을 것입니다. 우리는 또한 그것을 완전히 시장에 맡기지도 않을 것입니다. 대신 우리는 인공지능의 이점이 모든 사람과 공유되도록 보장하기 위해 의도적인 조치를 취할 것입니다. 그 중 한 가지 조치는 새로운 기관인 기술 및 인력 발전청(SWDA)을 설립하는 것입니다. 이것은 기술 훈련과 일자리 매칭을 더욱 긴밀하게 만들 것입니다. 정부는 도구, 경로 및 지원을 제공할 것입니다. 그러나 우리는 또한 싱가포르인들이 앞장서기를 필요로 합니다. 불안이나 불확실성이 당신이 인공지능을 배우고 사용하려는 노력을 막지 않도록 하십시오. 인공지능은 여기 있습니다. 따라서 그것을 포용하고, 배우고, 사용하며, 습득하십시오. 이렇게 하는 회사들은 경쟁력을 유지할 것입니다.",
+      "인공지능 기술을 갖춘 직원들은 더 나은 기회와 전망을 얻을 것입니다. 싱가포르인들이 이러한 기술을 습득하도록 돕기 위해 특정 SkillsFuture 과정에 등록하는 사람들은 고급 인공지능 도구를 6개월 동안 무료로 이용할 수 있습니다.",
     ],
     paragraphsJa: [
       '新たで、より良い雇用機会――これは総理大臣が人工知能で経済を変革する際に行った約束です。黄循財総理大臣は同時に、すべての従業員を保護することを約束し、シンガポール人にこの技術を学習し、使用するために自分たちの役割を果たすよう促しました。以下はNicholas Ongによる詳細レポートです。メール作成、レポート要約、コード作成といったタスクは、ChatGPTなどの人工知能ツールで完成することができます。しかし、この技術の次の段階は、人間の介入を必要としない人工知能エージェントを作成することです。その影響は極めて大きいものになるでしょう。人工知能は生産性の向上をもたらすだけではありません。業界全体を混乱させ、再形成することになります。シンガポールはこの新しい環境で成功するための準備を整える必要があります。このため、国の行動を調整するために国家人工知能委員会を設立しました。私たちの目標は明確です。すなわち、深い人工知能能力を構築し、経済全体での技術採用を推進し、シンガポールを人工知能イノベーションのハブにすることです。',
@@ -8334,24 +8346,19 @@ function convertDigestToTraditional(digest: VideoDigest | undefined): VideoDiges
   };
 }
 
-export function getVideoTranscriptParagraphs(videoId: string, lang: string): string[] {
+export function getVideoTranscriptParagraphs(videoId: string, lang: 'zh' | 'en' | 'ja'): string[] {
   const transcript = getVideoTranscript(videoId);
   if (!transcript) return [];
   if (lang === 'zh') return transcript.paragraphs;
-  if (lang === 'zh-tw') return transcript.paragraphs.map((p) => toTraditional(p));
-  if (lang === 'ja') return transcript.paragraphsJa || transcript.paragraphs;
-  if (lang === 'ko') return transcript.paragraphsKo || transcript.paragraphsEn || transcript.paragraphs;
-  // en falls through to English transcript.
+  if (lang === 'ja') return transcript.paragraphsKo || transcript.paragraphs;
   return transcript.paragraphsEn || transcript.paragraphs;
 }
 
-export function getVideoTranscriptLanguage(videoId: string, lang: string): string | undefined {
+export function getVideoTranscriptLanguage(videoId: string, lang: 'zh' | 'en' | 'ja'): string | undefined {
   const transcript = getVideoTranscript(videoId);
   if (!transcript) return undefined;
-  if (lang === 'zh' || lang === 'zh-tw')
-    return transcript.paragraphs.length ? (lang === 'zh-tw' ? 'zh-TW' : 'zh-CN') : undefined;
-  if (lang === 'ja' && transcript.paragraphsJa?.length) return 'ja';
-  if (lang === 'ko' && transcript.paragraphsKo?.length) return 'ko';
+  if (lang === 'zh') return transcript.paragraphs.length ? 'zh-CN' : undefined;
+  if (lang === 'ja' && transcript.paragraphsKo?.length) return 'ja';
   if (transcript.paragraphsEn?.length) return transcript.captionLanguage || (lang === 'en' ? 'en' : lang);
   return transcript.paragraphs.length ? 'zh-CN' : undefined;
 }
