@@ -665,6 +665,11 @@ export const videoTranscripts: Record<string, VideoTranscript> = {
       'It analyzes each frame, spots every object that needs a sound, and then generates and syncs the effect automatically. >> We have the ability to tweak and modify that prompt if we think that, oh, it does not describe it well. And on top of that, we can ask it to, hey, I like this, but can you give me a different version? And you have all those advanced uh levers and and and parameters that you can tweak to get to where you want. The AI handles roughly 70% of the job, but Mr. Chai stresses that sound engineers still play a crucial role to refine timing and ambience, ensuring every squeak and shuffle rings true. This solution also creates a potential new income stream as the studio plans to offer it to other firms. Backing projects like this is exactly what the digital development and information ministry wants to accelerate.',
       "We want to encourage those who haven't started to take the first step and help those already using AI move beyond basic applications. Over the next 3 years, the National AI impact program aims to support 10,000 local enterprises to integrate AI into their business processes. This will create a sizable pool of early adopters. Workers will also get help to combine their domain expertise with AI proficiency. Not all of us can be AI engineers, but we can be bilingual in AI in our own areas of expertise and to solve problems in our domains. For a start, the government will support 100,000 workers to become AI bilingual. She adds the ministry will start with accountancy and legal professions before extending to other fields like human resource.",
     ],
+    paragraphsKo: [
+      '다시 돌아오신 것을 환영합니다. 인공지능을 업무에 도입하고자 하는 기업과 인공지능 기술을 향상하고자 하는 직원들이 곧 새로운 계획에서 지원을 받을 수 있을 것입니다. 국가 인공지능 영향력 계획은 1만 개의 기업이 이 기술을 채택하도록 지원하고 10만 명의 직원이 인공지능 이중언어자가 되도록 돕는 것을 목표로 합니다. 비어트리스의 보도입니다. >> 당신이 들은 발자국 소리는 실제 사람이 걷는 소리가 아니라 인공지능이 생성한 발자국 소리입니다. 영화 제작에서 이 공예는 Foley라고 불리는데, 이는 문을 닫는 소리나 옷이 마찰하는 소리 같은 일상적인 음향 효과를 추가하는 기술입니다. 이 제작 스튜디오에서 이러한 복잡한 수작업은 일반적으로 최소한 한 달 이상의 시간이 필요하지만, 내부에서 개발한 생성형 인공지능 도구—전 세계 최초—는 작업 시간을 단 하루로 단축했습니다.',
+      '그것은 각 프레임을 분석하고 음향 효과가 필요한 모든 물체를 식별한 후 자동으로 음향 효과를 생성하고 동기화합니다. >> 만약 우리가 설명이 충분히 정확하지 않다고 생각한다면 우리는 프롬프트를 조정하고 수정할 수 있습니다. 이 외에도 우리는 그것에 다른 버전을 제공하도록 할 수 있습니다. 예를 들어 「내가 이것을 좋아하지만 다른 버전을 줄 수 있나요?」라고 말할 수 있습니다. 당신은 원하는 효과에 도달할 때까지 이 모든 고급 레버와 파라미터를 조정할 수 있습니다. 인공지능은 약 70%의 작업을 완료하지만 Chai 씨는 음향 효과 엔지니어가 여전히 핵심적인 역할을 하며, 시간과 환경음을 미세 조정하고 모든 삐걱거리는 소리와 발자국 소리가 현실적이고 신뢰할 수 있도록 보장한다고 강조합니다. 이 솔루션은 또한 스튜디오가 이를 다른 회사에 제공할 계획이기 때문에 잠재적인 새로운 수익 원천을 창출합니다. 이러한 프로젝트를 지원하는 것은 정확히 디지털 발전 및 정보부가 가속화하고자 하는 방향입니다.',
+      '우리는 아직 시작하지 않은 사람들이 첫 번째 단계를 내딛도록 장려하고 이미 인공지능을 사용하는 사람들이 기본 응용 프로그램을 초월하도록 돕고자 합니다. 향후 3년 내에 국가 인공지능 영향력 계획은 1만 개의 지역 기업이 인공지능을 그들의 업무 프로세스에 통합하도록 지원하는 것을 목표로 합니다. 이는 대규모의 조기 채택자 커뮤니티를 창출할 것입니다. 직원들도 자신의 분야 전문 지식을 인공지능 능력과 결합하기 위한 지원을 받을 것입니다. 우리 모두가 인공지능 엔지니어가 될 수는 없지만 자신의 전문 분야에서 인공지능 이중언어자가 되어 분야 내의 문제를 해결할 수 있습니다. 시작점으로, 정부는 10만 명의 직원이 인공지능 이중언어자가 되도록 지원할 것입니다. 그녀는 부처가 회계 및 법률 직업부터 시작해 인력 자원 등 다른 분야로 확대할 것이라고 언급했습니다.',
+    ],
     paragraphsJa: [
       'おかえりなさいませ。人工知能をビジネスに組み込みたい企業と、人工知能スキルを向上させたい従業員は、間もなく新しい計画からサポートを受けることができます。国家人工知能インパクト計画は、1万社が同技術を採用することをサポートし、10万人の従業員が人工知能バイリンガルになるのを支援することを目指しています。ビアトリスが報告します。>>聞こえた足音は、実在する人が歩く音ではなく、人工知能によって生成された足音です。映画製作では、この工芸はフォーレイ（Foley）と呼ばれており、つまりドアを閉める音や衣服の摩擦音などの日常的な音を追加する芸術です。この製作スタジオでは、この複雑な手作業は通常、少なくとも1ヶ月かかっていましたが、社内で開発された生成型人工知能ツール——世界初のもの——が作業時間をわずか1日に短縮しました。',
       'それは毎フレームを分析し、音を必要とするすべてのオブジェクトを識別し、その後自動的にオーディオを生成して同期します。>>説明が十分に正確ではないと感じたら、プロンプトを調整・修正することができます。それ以外に、「これが好きですが、別のバージョンをくれませんか？」というように、異なるバージョンを提供させることもできます。これらすべての高度なレバーとパラメータを調整して、望みの効果に達するまで調整できます。人工知能は約70%の作業を完成させていますが、チャイ氏は、音響エンジニアは依然として重要な役割を担っていることを強調しており、彼らはタイミングと環境音の微調整を担当し、すべてのきしむ音と足音が真実味あるものであることを確保しています。このソリューションは、スタジオがそれを他の企業に提供する計画があるため、潜在的な新しい収入源を生み出しています。このようなプロジェクトのサポートは、デジタル開発・情報省が加速させたい方向です。',
@@ -694,6 +699,19 @@ export const videoTranscripts: Record<string, VideoTranscript> = {
         'Minister Josephine Teo announced the National AI Impact Programme, targeting 10,000 local firms integrating AI and 100,000 AI-bilingual workers over three years. "Not all of us can be AI engineers, but we can be bilingual in AI in our own areas of expertise," she said. The training rollout starts with accountancy and legal professions before expanding to fields like human resources.',
         "The featured case is a local production studio's in-house generative-AI Foley tool — billed as the first of its kind worldwide. It analyses each frame, identifies every object that needs a sound, and generates and syncs effects automatically, cutting work that traditionally took at least a month down to a single day.",
         'Founder Mr Chai stresses the AI handles roughly 70% of the job. Sound engineers still refine timing and ambience so every footstep rings true. The studio plans to license the tool to other firms, creating a new revenue stream — exactly the kind of project MDDI wants to back: productivity gains that spill over into the broader economy.',
+      ],
+    },
+    digestKo: {
+      keyPoints: [
+        '국가 AI 영향 계획은 2029년 이전에 10,000개의 현지 기업의 AI 통합을 지원하고, 100,000명의 AI 이중언어 인력을 양성하는 것을 목표로 합니다.',
+        '초기 훈련 산업은 회계 및 법률에서 시작하여 인적 자원 등의 분야로 점진적으로 확대됩니다.',
+        '사례: 현지 제작 스튜디오가 자체 개발한 생성형 AI 음향 도구로 전통적으로 최소 한 달이 소요되던 작업을 하루로 단축했습니다.',
+        'AI가 약 70%의 작업량을 완료하고, 음향 엔지니어는 여전히 타이밍과 환경음의 미세조정을 담당합니다.',
+      ],
+      narrative: [
+        '양리명이 국가 AI 영향 계획을 발표했습니다. 목표는 3년 내에 1만 개 현지 기업의 AI 도입을 지원하고 10만 명의 AI 이중언어 인력을 양성하는 것입니다. 그녀는 다음과 같이 말했습니다: 「모두가 AI 공학자가 될 수는 없지만, 누구나 자신의 전문 분야에서 AI 이중언어자가 될 수 있습니다.」 첫 번째로 회계 및 법률 업종에서 시작하여 인적자원 등으로 확대할 예정입니다.',
+        '현장에서 시연된 사례는 현지 영상 제작 스튜디오가 자체 개발한 생성형 AI 음향 효과 도구입니다. 이 도구는 전 세계 최초라고 주장합니다. 이는 프레임별로 화면을 분석하고, 문을 닫는 소리, 옷감이 스치는 소리 등 일상적인 음향 효과를 자동으로 생성하며 화면과 동기화합니다. 이를 통해 전통적으로 최소 한 달 이상 걸리는 수동 음향 효과 작업을 하루로 단축합니다.',
+        '스튜디오 창립자 Chai는 AI가 약 70%의 작업량을 처리하는 반면, 음향 엔지니어는 여전히 타이밍과 환경음을 미세 조정하고, 모든 발걸음 소리가 진정성 있고 신뢰할 수 있도록 보장하는 책임이 있다고 강조했습니다. 이 도구는 또한 새로운 수익원이 되었으며, 스튜디오는 외부에 라이선스를 제공할 계획입니다. MDDI가 지원하기를 희망하는 것은 정확히 생산성을 향상시키면서 동시에 경제적 가치의 파급 효과를 낼 수 있는 이러한 유형의 프로젝트입니다.',
       ],
     },
     digestJa: {
