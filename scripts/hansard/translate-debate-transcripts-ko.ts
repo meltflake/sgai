@@ -69,7 +69,7 @@ function injectParagraphsKo(source: string, debateId: string, paragraphsKo: stri
 
   const existingKoRe = /(\n\s{4}paragraphsKo:\s*\[[\s\S]*?\n\s{4}\],)/;
   if (existingKoRe.test(recordBody)) {
-    const replacedBody = recordBody.replace(existingKoRe, `\n${formatted}`);
+    const replacedBody = recordBody.replace(existingKoRe, () => `\n${formatted}`);
     return source.slice(0, openIdx) + replacedBody + source.slice(closeIdx + 1);
   }
 
@@ -77,9 +77,9 @@ function injectParagraphsKo(source: string, debateId: string, paragraphsKo: stri
   const zhRe = /(\n\s{4}paragraphs:\s*\[[\s\S]*?\n\s{4}\],)/;
   let injected: string;
   if (enRe.test(recordBody)) {
-    injected = recordBody.replace(enRe, `$1\n${formatted}`);
+    injected = recordBody.replace(enRe, (m) => `${m}\n${formatted}`);
   } else if (zhRe.test(recordBody)) {
-    injected = recordBody.replace(zhRe, `$1\n${formatted}`);
+    injected = recordBody.replace(zhRe, (m) => `${m}\n${formatted}`);
   } else {
     throw new Error(`No paragraphs block found in record ${debateId}`);
   }
