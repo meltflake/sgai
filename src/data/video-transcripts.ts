@@ -4655,6 +4655,10 @@ export const videoTranscripts: Record<string, VideoTranscript> = {
       "a call to break new ground in artificial intelligence as the world tries to strike a balance between embracing and regulating AI Singapore's foreign affairs minister says the benefits of AI can be transformative for sectors like Health Food security and climate change but the old ways of Regulation cooperation and legislation won't suffice as the technology also comes with great risks that impact both in terms of opportunities and risk actually have asymmetrical effects on different countries and different societies and the question is how ready are we when we face this tsunami of impacts both positive and negative and we believe that we need Regional and we need multilateral Global approaches and speaking at an aside event of the U.",
       'N general assembly in New York Dr balakrishnan also says there is a need to put in the right safeguards to ensure transparency and privacy it points to the model AI governance framework which Singapore introduced in 2019 as part of this approach he notes that fostering trust and confidence will mean taking into account diverse viewpoints which will require engagements involving governments industry and Civil Society',
     ],
+    paragraphsKo: [
+      "전 세계가 인공지능을 수용하고 규제하는 것 사이의 균형을 모색하기 위해 노력하는 가운데, 인공지능 분야에서 새로운 지평을 개척해야 한다는 호소가 있습니다. 싱가포르 외교부 장관은 인공지능의 이점이 의료, 식량 안보, 기후 변화 등의 분야에서 변혁을 가져올 수 있다고 표현했습니다. 그러나 전통적인 규제, 협력, 입법 방식은 이 기술이 동반하는 중대한 위험과 광범위한 영향에 대응하기에는 불충분합니다. 실제로 기회와 위험이 서로 다른 국가와 사회에 미치는 영향은 비대칭적입니다. 문제는 긍정적 및 부정적 영향을 모두 갖춘 이 「해일」에 직면했을 때 우리가 준비되어 있는가 하는 점입니다. 우리는 지역적 접근 방식과 다자간 글로벌 방식이 필요하다고 생각합니다. 아시아개발은행 행사에서 연설할 때, ...",
+      "뉴욕에서 개최된 유엔 총회에서 바라크리시난 박사는 투명성과 프라이버시를 보장하기 위한 적절한 보호조치를 수립할 필요가 있다고 또한 표현했습니다. 그는 싱가포르가 2019년에 출범한 인공지능 거버넌스 모델 프레임워크가 이러한 접근 방식의 일부라고 지적했습니다. 그는 신뢰와 신심을 양성하는 것이 다양한 관점을 고려해야 함을 의미하며, 이는 정부, 산업 그리고 시민사회의 참여와 상호 작용을 요구할 것이라고 지적했습니다.",
+    ],
     paragraphsJa: [
       '世界が人工知能の採用と規制のバランスを求める中で、人工知能分野において新たな地平を開くよう求める声があります。シンガポール外交部長は、人工知能のメリットは医療、食糧安全保障、気候変動などの分野で変革をもたらすことができると述べていますが、従来の規制、協力、および立法手法では、この技術に伴う重大なリスクと深刻な影響に対応するのに不十分です。実際のところ、機会とリスクの影響は異なる国や社会に対して非対称的であり、問題は、正と負の双方の影響をもたらす『津波』に直面したとき、われわれが準備ができているかということです。われわれは、地域的かつ多国間のグローバルなアプローチが必要であると考えています。アジア開発銀行のイベントでのスピーチにおいて、...',
       'ニューヨークで開催された国連総会において、バラクリシュナン博士は更に、透明性とプライバシーを確保するための適切な保護措置を確立する必要があると述べました。同氏は、シンガポールが2019年に発表した人工知能ガバナンスモデルフレームワークがこのアプローチの一部であると指摘しました。同氏は、信頼と信心を培うことは多様な観点を考慮することを意味していると指摘しました。これは政府、産業、および市民社会の参加と相互交流を必要とします。',
@@ -4679,6 +4683,17 @@ export const videoTranscripts: Record<string, VideoTranscript> = {
       narrative: [
         "Speaking at a UN General Assembly side event in New York, Foreign Minister Vivian Balakrishnan calls AI's potential gains in health, food security and climate transformative — but says the old playbook of regulation, cooperation and legislation is not enough given the matching risks.",
         "He argues impact lands unevenly across countries and societies, and the response needs to be both regional and multilateral. He cites Singapore's 2019 Model AI Governance Framework as part of that work and stresses that trust, transparency and privacy need joint engagement from governments, industry and civil society.",
+      ],
+    },
+    digestKo: {
+      keyPoints: [
+        "비문 부장관은 전통적인 규제 및 입법 방식이 AI에 대응하기에 불충분하다고 지적했습니다.",
+        "AI가 서로 다른 국가와 사회에 미치는 기회와 위험은 비대칭적인 분포를 보입니다.",
+        "싱가포르의 2019년 모델 AI 거버넌스 프레임워크는 그 방법의 일부입니다.",
+      ],
+      narrative: [
+        "유엔 총회 부대행사에서 싱가포르 외무장관 비비안은 의료, 식량 안보, 기후변화 등 분야에서 AI의 잠재적 이득은 변혁적이지만, 전통적인 규제, 협력, 입법 방식은 더 이상 충분하지 않으며, 이는 위험도 마찬가지로 심대하기 때문이라고 밝혔습니다.",
+        "그는 기회와 위험이 각국에 미치는 영향이 불균형하며, 이 「해일」에 대응하려면 지역 및 다자적 수준의 협력이 필요하다고 지적했습니다. 비비안은 싱가포르가 2019년 발표한 모델 AI 거버넌스 프레임워크를 언급했으며, 투명성과 개인정보 보호는 정부, 산업, 시민사회의 공동 참여에 달려 있다고 강조했습니다.",
       ],
     },
     digestJa: {
