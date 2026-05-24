@@ -5447,6 +5447,13 @@ export const videoTranscripts: Record<string, VideoTranscript> = {
       "We're able to bring global talents [music] into Singapore to share what they see elsewhere and learn from that. The ESR committee 1 has spent a lot of time thinking about how we can [music] refine current programs and initiative so that we can better support our Singapore companies to expand into regional and global markets and help them to compete [music] better on the global stage. Companies that are at the leading edge [music] of new industries, companies that are fast growing, companies that are driven by [music] people with talent, people who are going to create new things and become the future big companies. >> We need to have the [music] ambition and the risk-taking ability to start pointing towards our play field, which is the rest of the world.",
       ">> As a people, we've [music] always been able to adapt to change and adapt faster than anybody else. And the only way we can future proof ourself is really to [music] understand our interests, our passion, our innate talent. [music] >> I think we're going to get a country where our citizens are confident, our citizens know what they want. >> Singaporeans [music] today, we have a lot more in terms of what we can do and we have a lot more in terms of who we are. This [music] is a blessing for us. We are in a good position to be able to succeed in a very different [music] world.",
     ],
+    paragraphsKo: [
+      "ESR은 본질상 우리 경제의 하나의 계획입니다. 이는 모든 사람의 생활에 영향을 미칩니다. 싱가포르가 다년간 성공을 거두게 한 환경과 조건들은 근본적인 변화를 겪었습니다. 자유무역의 세계는 사라졌습니다. >> 우리는 어떻게 자신을 다시 위치시킬 것이며, 정말로 싱가포르, 싱가포르 경제, 그리고 싱가포르인들을 위해 차별화된 가치제안을 만들 것입니까? 저는 인공지능이 근본적으로 경제와 사회를 변화시키는 힘이 될 것임을 알 수 있다고 생각합니다. >> 이는 싱가포르에 도전을 가져올 수 있어 보입니다. 하지만 작은 국가로서 우리가 새로운 것을 시도할 수 있다는 장점이 있습니다. 우리는 빠르게 행동할 수 있습니다. >> 다년간 우리는 계속 이를 수행해왔습니다. 싱가포르인들을 위해 완전히 다른 미래를 준비하고 있습니다.",
+      "우리는 어떻게 실제로 제안을 수립할 것인지에 대해 연구하고 있으며, 우리가 글로벌 선도 기업이라고 부르는 새로운 세대의 싱가포르 기업들을 정착시키고 육성하기 위한 방안을 모색하고 있습니다. >> 우리의 핵심 강점은 무엇입니까? >> 대형 다국적 기업은 무엇을 필요로 합니까? 그들은 법치주의가 있는 신뢰할 수 있는 기관과 실행 능력이 필요합니다. >> 싱가포르는 우리가 신뢰할 수 있는 허브이기 때문에 이 모든 조건을 제공합니다. 사람들은 이곳에서 생활하고 일하기를 좋아하고, 우리는 지속가능하게 운영되는 곳이 될 수 있습니다. 신뢰는 누가 당신의 데이터를 관리하는지, 누가 당신의 기술 아키텍처를 관리하는지, 우리가 이 국가를 신뢰하여 우리의 지적 재산을 보호할 수 있는지에 나타납니다. 이러한 면에서 누구도 싱가포르를 의문하지 않습니다.",
+      "ESR 위원회는 우리가 신흥 챔피언이라고 부르는 기업들을 어떻게 더 잘 지원하고 유치할 것인지를 연구해왔습니다. >> 다음 단계의 성장은 지역 기업들에 의해 주도될 것이며, 이들 기업은 미래의 다국적 기업이 될 잠재력을 가지고 있습니다. >> 우리는 우리의 기업들이 해외로 지혜를 확대하도록 권장해야 합니다. >> 우리는 문화적 지식을 보유하고 있으며, 동남아시아의 성장 기회를 활용하고 싱가포르에 본부를 설립할 수 있습니다. 저는 다행히도 SATs를 이끌어왔습니다. 여기의 직원들을 포함하여 모든 사람이 광범위하고 글로벌하게 생각할 수 있도록 합니다. 이는 비상한 여정입니다. 우리는 이제 싱가포르인들을 해외로 파견하여 다른 환경에서 운영하는 방법을 배우도록 할 수 있습니다.",
+      "우리는 전 세계 인재를 싱가포르로 유치할 수 있으며, 그들이 다른 곳에서 본 것을 공유하고 배울 수 있습니다. ESR 위원회는 현존 프로그램과 계획을 개선하는 방법을 생각하느라 상당한 시간을 보내왔습니다. 이는 우리의 싱가포르 기업들이 지역 및 글로벌 시장을 확대하고, 글로벌 무대에서 더 잘 경쟁할 수 있도록 지원하기 위함입니다. 신흥 산업의 최전선에 있는 기업, 빠르게 성장하는 기업, 재능있는 인재에 의해 주도되는 기업들, 이들은 새로운 것을 만들 것이고 미래의 큰 회사가 될 것입니다. >> 우리는 야망과 모험정신을 가져야 하며, 우리의 경기장인 세계의 다른 지역을 바라보기 시작해야 합니다.",
+      ">> 한 민족으로서 우리는 항상 변화에 적응할 수 있었으며, 적응 속도는 다른 누구보다 빠릅니다. 미래를 위해 우리가 준비할 수 있는 유일한 방법은 우리의 이익, 열정, 재능을 진정으로 이해하는 것입니다. >> 저는 우리가 시민들이 자신감 있고 자신이 원하는 것을 아는 국가를 갖게 될 것이라고 생각합니다. >> 오늘날의 싱가포르인들, 우리는 더 많은 능력을 가지고 있으며, 또한 우리가 누구인지를 더 잘 이해하고 있습니다. 이는 우리의 행운입니다. 우리는 완전히 다른 세계에서 성공할 수 있는 좋은 위치에 있습니다.",
+    ],
     paragraphsJa: [
       'ESRは本質的に、私たちの経済計画です。それはすべての人の生活に影響を与えています。シンガポールの多年にわたる成功をもたらした環境と条件は、根本的に変わりました。自由貿易の世界は消え去りました。>> 私たちはどのようにして自分たちを再構想し、シンガポール、シンガポール経済、そしてシンガポール人のために、真に差別化された価値提案を作り出すのでしょうか。人工知能が経済と社会を変える根本的な力となることを見ていると思います。>> これはシンガポールに課題をもたらす可能性があります。しかし、小国として利点があります。新しいことを試すことができるからです。私たちは迅速に行動できます。>> 多年にわたり、私たちはこれを行ってきました。シンガポール人のための全く異なる未来を準備しています。',
       '私たちは、グローバルリーダーとなるシンガポール企業の新世代を定着させ、育成するために、いかに真に提言を策定するかを研究しています。>> 私たちのコア競争力は何でしょうか。>> 大規模な多国籍企業は何を必要としているのでしょうか。彼らは法の支配のある信頼できる機関を必要とし、実行能力を備える必要があります。>> シンガポールはこれらすべての条件を提供しています。なぜなら、私たちは信頼できるハブだからです。人々はここに来て生活し、働くことを好みます。私たちは持続可能に運営できる場所になることができます。信頼は、誰があなたのデータを管理し、誰があなたの技術アーキテクチャを管理し、この国を信頼して知識財産を保護できるかどうかに体現されています。これらの側面では、誰もシンガポールに疑問を抱きません。',
@@ -5474,6 +5481,17 @@ export const videoTranscripts: Record<string, VideoTranscript> = {
       narrative: [
         "The Economic Strategy Review is Singapore's plan for the next phase of its economy. Committee members say the conditions that powered decades of success have fundamentally shifted: the free trade order has disappeared and AI is rewriting both the economy and society. Singapore's small size becomes an advantage — it can try new things and move quickly.",
         "ESR Committee 1 is sharpening tools to anchor and grow what it calls emerging champions: locally based companies with potential to become the MNCs of the future. The SATs leadership shared how it sends Singaporeans abroad and brings global talent in. The country's pitch to multinationals rests on rule of law, execution capability, and the trust that data, tech stacks and IP held in Singapore stay protected.",
+      ],
+    },
+    digestKo: {
+      keyPoints: [
+        "경제 전략 평가(ESR)는 싱가포르를 새롭게 위치시키며, 자유무역 질서의 붕괴와 AI에 의한 경제 재편이라는 이중의 충격에 대응합니다.",
+        "ESR 위원회 1은 국내 신흥 챔피언 기업 육성에 초점을 맞추며, 이들이 차세대 다국적 기업이 되도록 합니다.",
+        "싱가포르의 핵심 우위는 법치, 집행 가능성, 데이터 및 IP 신뢰로, 이는 싱가포르를 다국적 기업들이 신뢰할 수 있는 운영 중추로 만듭니다.",
+      ],
+      narrative: [
+        "경제전략평가(ESR)는 싱가포르의 새로운 경제 계획입니다. 담당자는 과거 싱가포르의 성공을 지탱했던 환경이 근본적으로 변했다고 지적합니다. 자유 무역 질서가 소멸했으며, AI는 동시에 경제와 사회 형태를 재편하고 있습니다. 소국의 강점은 과감하게 시도하고 신속하게 조정할 수 있다는 점입니다.",
+        "ESR 위원회 1의 업무 중점은 차세대 「글로벌 선도 싱가포르 기업」을 육성하고, 지역 신흥 챔피언을 지역 및 글로벌 시장으로 진출시키는 것입니다. SATs의 대표는 직원을 해외로 파견하고 글로벌 인재를 유치하는 실천 경험을 공유했습니다. 신뢰할 수 있는 허브——법치, 실행력, 데이터 및 IP 보호——인 싱가포르는 다국적 기업이 진출을 선택하는 핵심 이유입니다.",
       ],
     },
     digestJa: {
@@ -5509,6 +5527,12 @@ export const videoTranscripts: Record<string, VideoTranscript> = {
       "This has translated to significant time and cost savings for our timelines. We've tested the AI playbook with our project teams and the response has been largely positive. We used the AI playbook as a talking point in our company's internal AI literacy campaign. We used it to emphasize the importance of business confidentiality and the steps to take to protect our trade secrets, sensitive information and business critical documents. HC is a construction company. We lack expertise on how to design, build and manage AI tools. AISG's LAP provided training and consultation to overcome this shortfalls. Furthermore, AISG's LAP gave us access to professional Gen AI models and case studies. This enabled us to quickly build and test prototypes that eventually led to the AI playbook.",
       "When the playbook was able to consistently and accurately answer our questions on any projects, that was the moment AI changed from a lofty aspiration for us to something more concrete and attainable. Our experience working with the AISG team has been very good. They are well versed in applying AI to use cases and extracting business value from it. Whenever we had questions or stumbled in our app development, they have been supportive and provided much needed knowledge on how to address our various challenges. ESG's LAP is a cost-effective program to quickly pick up the basics of AI app development and drive business value from lowhanging fruits in any company on the front of digital automation. HSC highly recommends other companies to register for the program to jumpstart their AI journeys.",
     ],
+    paragraphsKo: [
+      "HSC는 국가 기반 시설 건설을 담당하는 토목 공학 회사입니다. 우리는 가스, 물, 지역 냉각, 전력 케이블 및 통신을 포함한 다양한 공용 설비를 설치하는 서비스를 제공합니다. 우리의 직원들은 실제로 매일 다양한 문제를 겪습니다. 물론 우리는 더 선임 프로젝트 관리자나 프로젝트 관리자에게 이러한 문제의 해결 방안에 대해 문의할 수 있습니다. 하지만 일정 충돌로 인해, 작은 문제라도 해결 시간이 보통 3일까지 걸릴 수 있습니다. 따라서 문제가 축적되기 시작하면, 프로젝트에 더 큰 영향을 미칩니다. 대중의 불만은 신뢰할 수 있는 토목 공학 회사로서 HSC의 평판을 손상시킵니다. 현장 작업이 완료되지 못하면, 문제는 지연으로 축적되어 프로젝트 일정이 연장됩니다.",
+      "고객은 이후 감점 또는 벌금을 부과하고, 이는 현재 프로젝트 완료 능력에 영향을 미칠 뿐만 아니라 향후 입찰에도 영향을 미칩니다. LAP 프로젝트를 통해 우리는 안전한 로컬 배포, 빨강-노랑-초록(RAG) 상태 표시기를 갖춘 인공 지능 보조자를 구축했으며, 이 보조자는 회사의 내부 네트워크를 통해서만 접근 가능합니다. 이는 우리의 문서를 읽고, 이러한 맥락을 활용하여 직원 질문에 실시간 지원을 제공합니다. 제공하는 답변은 충분히 정확하며, 출처를 표시하여 이 답변들을 도출하는 데 사용된 근거를 추적하기 쉽습니다. AI 매뉴얼은 모든 시나리오에서 가장 관련 있는 문서 페이지를 불러옵니다. 어떤 조치가 적용 가능한지에 대한 모호성이 크게 감소합니다. 프로젝트 팀은 답변을 찾는 데 더 적은 시간을 소비하고, 대신 다시 집중하여 빠르고 정확하게 문제를 해결할 수 있습니다.",
+      "이는 우리의 일정에 상당한 시간 및 비용 절감을 가져왔습니다. 우리는 이미 프로젝트 팀에서 AI 매뉴얼을 테스트했으며, 피드백은 전반적으로 긍정적입니다. 우리는 AI 매뉴얼을 회사 내부 AI 문해력 증진 활동의 논의 주제로 삼았으며, 상업 기밀의 중요성과 우리의 비즈니스 비밀, 민감한 정보 및 중요 업무 파일을 보호하는 데 필요한 조치를 강조했습니다. HSC는 건축 회사이며, 우리는 AI 도구를 설계, 구축 및 관리하는 전문 지식이 부족합니다. AISG의 LAP 프로젝트는 우리에게 훈련 및 자문을 제공했으며, 이러한 부족함을 극복하는 데 도움이 되었습니다. 또한 AISG의 LAP은 우리를 전문 생성형 AI 모델 및 사례 연구에 노출시켰으며, 우리가 신속하게 프로토타입을 구축 및 테스트할 수 있게 하여, 궁극적으로 AI 매뉴얼을 형성했습니다.",
+      "AI 매뉴얼이 우리의 어떤 프로젝트에 대한 질문이라도 지속적이고 정확하게 답변할 수 있을 때, 그 순간 AI는 우리에게 도달할 수 없는 이상에서 더 구체적이고 달성 가능한 목표로 변했습니다. 우리는 AISG 팀과의 협력 경험이 매우 긍정적입니다. 그들은 AI를 실제 사용 사례에 적용하고 이로부터 비즈니스 가치를 추출하는 데 정통합니다. 우리가 애플리케이션 개발에서 문제나 혼란을 마주칠 때마다, 그들은 지원을 제공했으며, 다양한 도전 과제에 대처하는 데 필요한 귀중한 지식을 제공했습니다. ESG의 LAP은 비용 효율적인 프로젝트이며, AI 애플리케이션 개발의 기본 지식을 신속하게 습득할 수 있고, 모든 회사의 디지털 자동화에서 쉽게 얻을 수 있는 이익으로부터 비즈니스 가치를 창출할 수 있습니다. HSC는 다른 회사들이 자신들의 AI 여정을 시작하기 위해 이 프로젝트에 등록 및 참가할 것을 강력히 권장합니다.",
+    ],
     paragraphsJa: [
       'HSCは国家基礎インフラ建設に従事する土木工学企業です。私たちはガス、水、地域冷却システム、電力ケーブル、通信を含む様々な公共施設の敷設サービスを提供しています。実際のところ、私たちの従業員は毎日様々な問題に直面しています。もちろん、これらの問題の解決策についてより経験豊富なプロジェクトマネージャーに相談することは可能です。しかし、スケジュール上の競合のため、小さな問題であっても解決に最大3日を要することが多いです。したがって、問題が蓄積し始めると、プロジェクトに大きな影響を及ぼします。実際のところ、公衆からの苦情はHSCが信頼できる土木工学企業としての評判を損なわせます。現場のタスクが完了しない場合、問題は遅延に蓄積し、プロジェクトのスケジュール延長につながります。',
       'その後、顧客は減点または罰金を課す可能性があり、これが現在のプロジェクトを完了する能力に影響を与え、また将来の入札にも影響を与えます。LAPプロジェクトを通じて、私たちは安全なオンプレミス展開と赤・黄・緑（RAG）のステータス指示器を備えた人工知能アシスタントを構築しました。このアシスタントは企業の内部ネットワークを通じてのみアクセス可能です。これは私たちのドキュメントを読み取り、このコンテキストを利用して従業員のクエリにリアルタイムサポートを提供します。提供される回答は十分に正確であり、回答の根拠となったドキュメントを追跡するために便利なようにソースを示しています。AIハンドブックはあらゆるシナリオに対して最も関連のあるドキュメントページを呼び出します。特定のアクションが適用可能かどうかについての曖昧性は大幅に減少します。プロジェクトチームは答えを見つけるのに費やす時間が少なくなり、代わりに努力を再集中させることで、迅速かつ正確に問題を解決できるようになります。',
@@ -5535,6 +5559,17 @@ export const videoTranscripts: Record<string, VideoTranscript> = {
       narrative: [
         "HSC Pipeline is a civil engineering firm laying utilities for the nation. Field staff face a steady stream of questions every day, but clashing schedules meant even minor issues could wait three days for a project manager's response. Backlogs snowballed into delays, which drew public complaints, demerit points from clients, and threats to future tenders.",
         "Through AI Singapore's LADP, HSC built an on-premise RAG-enabled AI assistant called the AI Playbook, accessible only over the company intranet. It reads internal documents and answers staff queries with cited sources, so teams can verify the basis of every recommendation. Project teams stopped hunting for answers and started resolving issues directly. HSC also uses the tool as a talking point in its internal AI literacy campaign — a way to teach staff about confidentiality and protection of sensitive documents. The company recommends other construction firms join LADP to start their own AI work.",
+      ],
+    },
+    digestKo: {
+      keyPoints: [
+        "HSC Pipeline은 공공시설 파이프라인 시공을 담당하는 토목공학 회사이며, 현장 문제는 원래 프로젝트 매니저로부터 답변을 받기까지 3일을 기다려야 했습니다.",
+        "AISG LADP를 통해 HSC는 로컬 배포되고 RAG가 포함된 AI 어시스턴트 「AI Playbook」을 구축했으며, 회사 내부 네트워크를 통해서만 접근할 수 있습니다.",
+        "AI Playbook은 출처 추적이 가능한 정확한 답변을 제공하여 현장 의사결정 시간을 단축하고 민원과 계약 위반 감점을 방지합니다.",
+      ],
+      narrative: [
+        "HSC Pipeline은 가스, 수도, 지역 냉각, 케이블 및 통신 배관 공사를 담당하고 있습니다. 현장 직원들은 매일 많은 문제를 마주치고 있으나, 프로젝트 매니저의 일정 충돌로 인해 경미한 문제도 응답을 받기까지 3일이 소요되는 경우가 많습니다. 문제 적체는 공사 지연으로 이어지며, 이는 공중의 불평, 고객 감점, 그리고 향후 입찰 참여 저해를 초래합니다.",
+        "AI Singapore의 LADP를 통해 HSC는 회사 내부망에 검색 증강 생성(RAG) 기능을 갖춘 AI Playbook이라는 AI 어시스턴트를 배포했습니다. 이는 회사 내부 문서를 읽고 직원 질의에 응답하며 검증을 위해 출처를 표시합니다. 프로젝트 팀은 더 이상 답변을 찾는 데 시간을 소비하지 않고 현장 문제를 직접 처리하게 되었습니다. 이 도구 모음은 또한 회사의 AI 소양 교육의 사례가 되어, 사업 기밀과 민감 데이터 보호를 강조하는 데 활용되었습니다. HSC는 다른 건설 동료들에게 LADP를 통해 시작할 것을 권장합니다.",
       ],
     },
     digestJa: {
