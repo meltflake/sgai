@@ -110,7 +110,7 @@ function injectParagraphsJa(source: string, videoId: string, paragraphsKo: strin
 
   const existingJaRe = /(\n\s{4}paragraphsKo:\s*\[[\s\S]*?\n\s{4}\],)/;
   if (existingJaRe.test(recordBody)) {
-    const replacedBody = recordBody.replace(existingJaRe, `\n${formatted}`);
+    const replacedBody = recordBody.replace(existingJaRe, () => `\n${formatted}`);
     return source.slice(0, openIdx) + replacedBody + source.slice(closeIdx + 1);
   }
 
@@ -118,9 +118,9 @@ function injectParagraphsJa(source: string, videoId: string, paragraphsKo: strin
   const zhRe = /(\n\s{4}paragraphs:\s*\[[\s\S]*?\n\s{4}\],)/;
   let injected: string;
   if (enRe.test(recordBody)) {
-    injected = recordBody.replace(enRe, `$1\n${formatted}`);
+    injected = recordBody.replace(enRe, (m) => `${m}\n${formatted}`);
   } else if (zhRe.test(recordBody)) {
-    injected = recordBody.replace(zhRe, `$1\n${formatted}`);
+    injected = recordBody.replace(zhRe, (m) => `${m}\n${formatted}`);
   } else {
     throw new Error(`No paragraphs block found in record ${videoId}`);
   }
@@ -168,7 +168,7 @@ function injectDigestKo(source: string, videoId: string, digestKo: DigestKo): st
 
   const existingJaRe = /(\n\s{4}digestKo:\s*\{[\s\S]*?\n\s{4}\},)/;
   if (existingJaRe.test(recordBody)) {
-    const replacedBody = recordBody.replace(existingJaRe, `\n${formatted}`);
+    const replacedBody = recordBody.replace(existingJaRe, () => `\n${formatted}`);
     return source.slice(0, openIdx) + replacedBody + source.slice(closeIdx + 1);
   }
 
@@ -179,11 +179,11 @@ function injectDigestKo(source: string, videoId: string, digestKo: DigestKo): st
   const paraJaRe = /(\n\s{4}paragraphsKo:\s*\[[\s\S]*?\n\s{4}\],)/;
   let injected: string;
   if (enRe.test(recordBody)) {
-    injected = recordBody.replace(enRe, `$1\n${formatted}`);
+    injected = recordBody.replace(enRe, (m) => `${m}\n${formatted}`);
   } else if (zhRe.test(recordBody)) {
-    injected = recordBody.replace(zhRe, `$1\n${formatted}`);
+    injected = recordBody.replace(zhRe, (m) => `${m}\n${formatted}`);
   } else if (paraJaRe.test(recordBody)) {
-    injected = recordBody.replace(paraJaRe, `$1\n${formatted}`);
+    injected = recordBody.replace(paraJaRe, (m) => `${m}\n${formatted}`);
   } else {
     throw new Error(`No anchor block found in record ${videoId} for digestKo`);
   }
