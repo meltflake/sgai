@@ -6185,6 +6185,11 @@ export const videoTranscripts: Record<string, VideoTranscript> = {
       'The liver tissue is evaluated for the presence of fat or hippatic sttosis among other features such as fibrosis, inflammation and liver cell damage. Special hisystochemical stains may be utilized to highlight such features. Aside from identifying these features, the hystopathologist will quantify and grade the liver fat into categories of severity. Our assistive AI fat estimation tool atly named STO stat will allow for precise quantification of liver fat and reduces interobserver favorability. This increases the objectivity of hystopathologists allowing for accurate grading of disease which predicts if the patient will be at risk of progressive liver disease such as cerosis or liver cancer ultimately resulting in better patient care.',
       'STEAT is now deployed at the Singapore General Hospital anatomical pathology laboratory assisting pathologist to make faster and more precise assessments of fatty liver disease. [Music]',
     ],
+    paragraphsKo: [
+      "대사기능장애와 관련된 지방간(MAFLD)은 현재 전 세계에서 가장 흔한 만성 간질환이 되었으며, 전 세계 성인 인구의 약 30%가 영향을 받는 것으로 추정됩니다. 이는 싱가포르에서도 흔하며, 향후 몇 년간 사례가 크게 증가할 것으로 예측됩니다. 더욱 우려스러운 것은 대상부전 간경변증, 간암, 그리고 간부전 사례를 포함한 잠재적 임상 부담입니다. 영상의학 및 조직병리학 도구는 환자 진단 및 위험 계층화에 핵심적인 역할을 하며, 임상의들이 환자를 더욱 잘 관리하고 간질환 치료 결과를 개선하도록 지도합니다. 대사기능장애와 관련된 지방간(MAFLD)의 중증도 평가는 조직병리학자에 의해 수행되며, 그들은 현미경 고배율 하에서 간생검 조직을 관찰합니다.",
+      "간 조직은 지방 또는 간 지방변성의 존재 여부, 그리고 섬유화, 염증 및 간세포 손상과 같은 기타 특징에 대해 평가됩니다. 이러한 특징을 강조하기 위해 특수 조직화학 염색이 사용될 수 있습니다. 이러한 특징을 식별하는 것 외에도, 조직병리학자는 간 지방을 정량화 및 분급하며 다양한 중증도 범주로 분류합니다. 우리의 보조 인공지능 지방 추정 도구인 STOstat은 간 지방의 정확한 정량화를 실현하며, 관찰자 간의 차이를 감소시킵니다. 이는 조직병리학자의 객관성을 높이고, 질병 분급을 더욱 정확하게 하며, 따라서 환자가 간경변증 또는 간암으로 진행할 위험을 예측하고, 궁극적으로 더욱 나은 환자 관리를 제공합니다.",
+      "STOstat은 현재 싱가포르 중앙 병원의 해부병리 실험실에 배포되었으며, 병리학자들이 지방간질환을 더욱 빠르고 정확하게 평가할 수 있도록 지원합니다. [음악]",
+    ],
     paragraphsJa: [
       '代謝機能障害関連脂肪肝疾患（MAFLD）は、現在では全世界で最も一般的な慢性肝疾患となっており、推定で全世界の成人人口の30%がその影響を受けています。シンガポールでも一般的であり、今後数年間で症例が著しく増加すると予測されています。より懸念されるのは、その潜在的な臨床負担であり、代償不全肝硬変、肝がん、および肝臓関連死亡が含まれます。画像診断と組織病理学的ツールは、患者の診断とリスク層別化において重要な役割を果たし、臨床医がより良い患者管理を行い、肝疾患の治療成績を改善するよう指導します。代謝機能障害関連脂肪肝疾患（MAFLD）の重症度評価は病理医により実施され、彼らは顕微鏡下で高倍率で肝生検組織を観察します。',
       '肝組織は、脂肪または肝脂肪変性の有無、および線維化、炎症、肝細胞障害などの他の特徴について評価されます。これらの特徴を強調表示するために、特殊な組織化学的染色が使用される可能性があります。これらの特徴を識別することに加えて、病理医は肝脂肪についても定量化および分級を行い、異なる重症度カテゴリーに分類します。私たちの補助的AI脂肪推定ツール（STOstat）は、肝脂肪の正確な定量化を可能にし、観察者間のばらつきを減少させます。これにより、病理医の客観性が向上し、疾患分級がより正確になり、患者が肝硬変または肝がんに進行するリスクがあるかどうかを予測でき、最終的にはより良い患者ケアをもたらします。',
@@ -6210,6 +6215,17 @@ export const videoTranscripts: Record<string, VideoTranscript> = {
       narrative: [
         'Metabolic dysfunction-associated steatotic liver disease (MASLD) is now the most common chronic liver disease worldwide, affecting an estimated 30% of adults. Singapore expects significant case growth in the years ahead, raising the risk burden of decompensated cirrhosis, liver cancer and liver-related death. Severity grading currently depends on histopathologists examining liver biopsies under high magnification to assess steatosis, fibrosis, inflammation and hepatocyte damage — a process with notable inter-observer variability.',
         "AISG, A*STAR, Singapore General Hospital and the National Cancer Centre Singapore built STEATstat, an AI tool that quantifies liver fat precisely and reduces inter-observer variability. The result is more objective, accurate disease grading, which sharpens predictions of which patients will progress toward cirrhosis or liver cancer. STEATstat is now in production at SGH's anatomical pathology lab.",
+      ],
+    },
+    digestKo: {
+      keyPoints: [
+        "대사 기능 장애 관련 지방간 질환(MAFLD)은 전 세계 약 30%의 성인에게 영향을 미치며, 가장 흔한 만성 간질환입니다.",
+        "AISG는 A*STAR, SGH, NCCS와 공동으로 STEATstat을 개발하였으며, AI를 활용하여 간 생검 내 지방을 정량화하고 자동으로 등급을 분류합니다.",
+        "STEATstat은 싱가포르 중앙병원의 해부병리 실험실에 배포되었으며, 병리의사들이 지방간을 더 빠르고 정확하게 평가할 수 있도록 지원합니다.",
+      ],
+      narrative: [
+        "대사기능장애 관련 지방간질환(MAFLD)은 전 세계에서 가장 흔한 만성 간질환으로, 약 30%의 성인이 영향을 받으며, 싱가포르에서는 향후 몇 년간 사례가 증가할 것으로 예상됩니다. MAFLD의 중증도 평가는 병리의사가 현미경 하에서 간 생검 조직을 관찰하여 지방 축적, 섬유화, 염증 및 간세포 손상을 판단하고 지방을 정량적으로 분급하는 데 의존하지만, 의사 간에 주관적 차이가 존재합니다.",
+        "AISG가 A*STAR, SGH, NCCS와 협력하여 STEATstat을 개발했습니다—병리의사가 간 지방을 정량화하도록 지원하는 AI 도구입니다. 이는 관찰자 간 차이를 줄이고 객관성을 향상시키며 분급을 더욱 정확하게 하고 환자가 간경변증 또는 간세포암으로 발전할 위험을 예측합니다. 이 도구는 현재 싱가포르 중앙병원 해부병리 실험실에 배치되어 있습니다.",
       ],
     },
     digestJa: {
@@ -6243,6 +6259,11 @@ export const videoTranscripts: Record<string, VideoTranscript> = {
       "Today, Taskbot surpasses every expectation, achieving an impressive completion rate and correction rate. The result, customer interactions are now smarter, faster, and more reliable than ever before. In another application, the shoppy chatbot originally used traditional machine learning, fine-tuning only on good cases while ignoring the failures. Our solution changes that incorporating both positive and negative feedback into LLM fine-tuning. This enhanced approach has driven a significant boost in customer satisfaction and a notable drop in failed interactions. We also trained our own large language model from scratch. Multilingual LLMs for Southeast Asia face unique challenges especially due to limited data for low resource languages. At NTUNC, we're building a model specifically tailored to this region.",
       'Our key innovation, a birectional negative feedback loss enables stable preference alignment even with scarce supervision. This led to a significant improvement. Win rates jumped from 18% to 50% against the GPT baseline. With on policy sampling, we pushed that further to 56%. For shopppee users, this translates directly to a much smarter LLM that truly understands their needs, leading to more helpful and accurate interactions every single time they use the app.',
     ],
+    paragraphsKo: [
+      "전자상거래가 지수적 성장을 경험하고 있으며, 글로벌 경제에서 점점 더 중요한 역할을 수행하고 있습니다. 최근 몇 년간 딥러닝이 다양한 전자상거래 애플리케이션에서 점점 더 광범위하게 채택되고 있습니다. 그러나 현존하는 딥러닝 모델은 다국어 및 다중양식 정보를 마주할 때 이를 효과적으로 이해하고 처리하기 어렵습니다. 우리는 C사와 협력하여 고급 다국어 다중양식 모델을 개발했으며, 정상급 학술대회에서 연구 성과를 발표했고, C사의 플랫폼에서 우리의 모델을 성공적으로 검증했습니다. 이전에 shopp는 수작업으로 구축된 작업 흐름에 심각하게 의존했으며, 이는 높은 비용과 제한된 범위로 이어졌습니다. 하지만 이제 우리는 파인튜닝된 대규모 언어 모델의 힘을 활용함으로써 고객 상호작용 방식을 근본적으로 변경했습니다.",
+      "오늘날, Taskbot는 모든 예상을 뛰어넘었으며, 인상적인 완료율과 수정율을 달성했습니다. 결과적으로 고객 상호작용이 그 어느 때보다 더 지능형이고, 더 빠르고, 더 신뢰할 수 있게 되었습니다. 다른 애플리케이션에서, shoppy 챗봇은 초기에 전통적 기계학습을 채택했으며, 성공 사례에서만 파인튜닝을 수행했고 실패 사례는 무시했습니다. 우리의 솔루션은 이를 개선했으며, 긍정적 및 부정적 피드백을 모두 대규모 언어 모델의 파인튜닝에 포함시켰습니다. 이러한 개선된 접근 방식은 고객 만족도를 현저히 향상시켰으며, 실패 상호작용의 발생률을 현저히 감소시켰습니다. 우리는 또한 처음부터 자체 대규모 언어 모델을 훈련했습니다. 동남아시아를 위한 다국어 대규모 언어 모델은 고유한 과제에 직면하고 있으며, 특히 저자원 언어의 데이터 부족이 있습니다. 국립대만사범대학교 컴퓨터과학과(NTUNC)에서 우리는 해당 지역을 위해 특화된 모델을 구축하고 있습니다.",
+      "우리의 핵심 혁신은 양방향 부정 피드백 손실 함수로, 감독이 부족한 상황에서도 안정적인 선호도 정렬을 달성할 수 있습니다. 이는 현저한 향상을 가져왔습니다. GPT 기준선 대비, 승률이 18%에서 50%로 급상승했습니다. 정책 샘플링을 통해 우리는 이를 추가로 56%로 향상시켰습니다. shopppee 사용자들에게는, 이것이 그들의 필요를 진정으로 이해하는 더욱 지능형인 대규모 언어 모델로 직접 전환되어, 애플리케이션을 매번 사용할 때의 상호작용이 더욱 도움이 되고 정확하게 됩니다.",
+    ],
     paragraphsJa: [
       '電子商取引は指数関数的な増加を経験しており、世界経済においてますます重要な役割を担っています。近年、深層学習がさまざまな電子商取引アプリケーションにおいてますます広く採用されています。しかし、既存の深層学習モデルは多言語およびマルチモーダル情報に直面する際に、効果的に理解および処理することが困難です。私たちはC社と協力して、高度な多言語マルチモーダルモデルを開発し、一流のカンファレンスで研究成果を発表し、C社のプラットフォーム上でモデルの検証に成功しました。以前は、shoppは手動で構築されたタスクフローに大きく依存していたため、コストが高く、カバレッジが限定的でした。しかし現在、ファインチューニングされた大規模言語モデルの力を利用することで、カスタマーインタラクションのやり方を根本的に変えました。',
       '現在、Taskbotはすべての期待を超え、印象的な完了率と修正率を達成しています。その結果、カスタマーインタラクションはこれまで以上にインテリジェント、高速、かつ信頼性が高くなりました。別のアプリケーションでは、shoppyチャットボットは当初、従来の機械学習を採用し、成功事例のみでファインチューニングを行い、失敗事例を無視していました。私たちのソリューションはこれを変え、ポジティブおよびネガティブなフィードバックの両方を大規模言語モデルのファインチューニングに組み込みました。このアプローチの改善により、カスタマー満足度が大幅に向上し、失敗したインタラクションの発生率が大幅に削減されました。また、ゼロから独自の大規模言語モデルを訓練しました。東南アジア向けの多言語大規模言語モデルは独特な課題に直面しており、特に低リソース言語のデータが限定的です。国立台湾師範大学計算機科学科（NTUNC）では、この地域専用のモデルを構築しています。',
@@ -6268,6 +6289,17 @@ export const videoTranscripts: Record<string, VideoTranscript> = {
       narrative: [
         'AISG and Shopee built advanced multilingual, multimodal deep learning models to handle the semantic complexity of regional e-commerce. Previously Shopee leaned on manually constructed task flows that were expensive and narrow in coverage. The team rebuilt Taskbot with fine-tuned large language models, lifting completion and correction rates well past prior benchmarks.',
         'A second application reworked the Shopee chatbot. The earlier system used traditional machine learning fine-tuned only on successful cases. The new pipeline trains on both positive and negative feedback, raising customer satisfaction and dropping the failure rate. NUS also trained its own Southeast Asia LLM from scratch. Its core innovation, a bidirectional negative-feedback loss, enables stable preference alignment under sparse supervision. Win rate against the GPT baseline jumped from 18% to 50%, and on-policy sampling pushed it to 56%. Findings have been published at leading conferences, with selected models slated for Shopee production once mature.',
+      ],
+    },
+    digestKo: {
+      keyPoints: [
+        "AISG 100E 프로젝트는 Shopee와 협력하여 미세조정된 LLM을 사용하여 기존의 수동 작업 흐름을 대체하고 Taskbot의 완료율과 오류 정정율을 개선했습니다.",
+        "개선된 Shopee 챗봇은 부정적 피드백도 미세조정에 포함시켜 고객 만족도를 향상시키고 실패한 상호작용을 감소시켰습니다.",
+        "NUS는 동남아시아 다언어 LLM을 자체 훈련했으며, 양방향 부정적 피드백 손실을 사용하여 성공률을 18%에서 56%로 비약적으로 향상시켰습니다(GPT 기준선 대비).",
+      ],
+      narrative: [
+        "AISG와 Shopee는 협력하여 고도화된 다중언어·다중모달 심층학습 모델로 전자상거래 시나리오의 의미 이해 문제를 해결합니다. 기존에 Shopee는 수동으로 구축한 작업 흐름에 심각하게 의존했으며, 비용이 높고 적용 범위가 좁았습니다. 팀은 미세조정된 대규모 언어 모델을 사용하여 Taskbot을 재구축했으며, 완료율과 오류 정정율이 모두 현저하게 향상되었습니다.",
+        "또 다른 응용은 전통적인 기계학습 기반 Shopee 채팅봇을 업그레이드했습니다. 기존 버전은 「성공 사례」만으로 미세조정했으나, 새로운 방안은 실패 사례의 부정적 피드백도 훈련에 포함시켰으며, 고객 만족도가 향상되고 실패한 상호작용이 감소했습니다. NUS는 또한 동남아시아를 대상으로 한 다중언어 LLM을 처음부터 훈련했습니다. 핵심 혁신은 양방향 부정적 피드백 손실 함수이며, 감독 데이터가 부족하더라도 선호도 정렬을 안정적으로 달성할 수 있습니다. GPT 기준선 대비 승률이 18%에서 50%로 향상되었으며, 정책 샘플링을 추가하면 56%까지 향상됩니다. 연구 성과는 이미 여러 최상위급 학술대회에 발표되었으며, 모델이 성숙하면 Shopee 프로덕션 환경으로 진입할 것입니다.",
       ],
     },
     digestJa: {
@@ -6303,6 +6335,12 @@ export const videoTranscripts: Record<string, VideoTranscript> = {
       "Graph-based fraud detections face challenge like label imbalance, changing network and increasing powerful fraud sticks. To solve this, we propose PMP to handling diverse connection spade for realtime updates and also powerful G techniques to detect hidden frauds in the data. Like a student practicing varied problems, AI learns better with diverse data, helping it catch evolving fraud even as behaviors change. We've developed techniques to better handle evolving graphs and adapt to real-time data changes. We've also explored anomaly detection strategies that help enhance performance in identifying unusual patterns across various graphs. Amidst the large pool of data, we have found a way to understand big networks using special hardware, FPGA.",
       "Dynamic random walk on FPGA is a super fast detective that scans social networks to catch and remove fake users in real time. Since 2022, we've co-authored multiple academic papers and pre presented at prestigious conferences. We intend to incorporate some of the models for use in GRAP once the research mergers. In the future, AI will not only react but also predict and prevent fraud before it happens. Fraud is constantly evolving, but so are we. With AIdriven fraud detection, we're securing the future of earketplaces, one transaction at a time. [Music]",
     ],
+    paragraphsKo: [
+      "오늘날 빠르게 변하는 디지털 세계에서 전자상거래 시장은 전례 없는 속도로 성장하고 있습니다. 매초 수백만 건의 거래가 발생하고 있습니다. 하지만 이러한 거래들 속에는 사기를 시사하는 패턴들이 숨어 있습니다. 디지털 플랫폼에서의 사기는 재정적 손실과 평판 손상을 초래하며, 동시에 업계 및 모든 사람의 보안 비용을 증가시킵니다. Grab 생태계 내에서 수백만 건의 거래가 우리의 상인, 운전자, 배송 파트너 및 소비자들 사이에서 발생하며, 우리는 불법 행위자들의 주요 대상이 되었습니다. 일반적인 사기 수법으로는 피싱이나 사회공학을 통한 계정 탈취 및 신용카드 사기가 있습니다. N US에서 우리는 동적이고 대규모이며 빠르게 변화하는 환경에서의 사기 문제에 대응하기 위해 인공지능 기반 솔루션을 개발했습니다. Grab은 그래프 모델을 활용하여 사기를 탐지해왔습니다.",
+      "그래프 모델은 의심스러운 연결 간의 관계를 활용함으로써 우리가 사기를 더욱 효과적으로 발견할 수 있게 해줍니다. N US와 AI Singapore를 통해 협력하면서 그래프 모델과 딥러닝에 집중하여 사기 탐지 기술을 심화시키고 있습니다. 그래프는 매우 강력한 데이터 구조로, 실체를 노드로 표현하고 그들 간의 연결을 간선으로 나타내며, 데이터 내의 숨겨진 패턴을 드러내는 데 도움이 됩니다. 따라서 그래프 신경망은 각 실체의 속성과 그들 간의 연결 방식을 학습함으로써 탐지 능력을 향상시킵니다. Spay는 지속적으로 진화하는 그래프에서 사기 행위를 탐지할 수 있으며, Space Plus는 사용자 정의 함수와 더욱 효율적인 스트림 처리를 통해 이러한 능력을 한층 더 강화합니다. Rush는 갑작스러운 사기 급증을 신속하게 포착할 수 있으며, Spade Plus는 계속 변화하는 패턴을 추적하며, 이들은 함께 강력하고 민첩한 방어 시스템을 구성합니다.",
+      "그래프 기반 사기 탐지는 레이블 불균형, 네트워크 변화, 그리고 점점 더 정교해지는 사기 수법 등의 도전 과제에 직면해 있습니다. 이러한 문제들을 해결하기 위해 우리는 다양한 연결을 처리하기 위한 PMP, 실시간 업데이트를 위한 Spade, 그리고 데이터에서 숨겨진 사기를 탐지하기 위한 강력한 그래프 기술을 제시했습니다. 학생들이 다양한 문제를 연습하여 더 잘 배우는 것처럼, 인공지능도 다양한 데이터를 통해 더 잘 배우며, 이는 행동이 변하더라도 지속적으로 진화하는 사기 행위를 포착하는 데 도움이 됩니다. 우리는 진화하는 그래프를 더 잘 처리하고 실시간 데이터 변화에 적응하는 기술을 개발했습니다. 우리는 또한 다양한 그래프에서 비정상 패턴을 식별하는 성능을 높이는 데 도움이 되는 이상 탐지 전략을 탐색했습니다. 막대한 데이터 풀에서 우리는 특수 하드웨어 FPGA를 활용하여 대규모 네트워크를 이해하는 방법을 찾아냈습니다.",
+      "FPGA 기반 동적 무작위 보행은 초고속 탐지 도구로서 소셜 네트워크를 실시간으로 스캔하고 가짜 사용자를 포착하여 제거할 수 있습니다. 2022년 이후로 우리는 여러 학술 논문을 공동 저술했으며, 여러 저명한 학술대회에서 이를 발표했습니다. 우리는 연구 성과가 성숙한 후 일부 모델을 GRAP에 통합하여 사용할 계획입니다. 앞으로 인공지능은 단순히 반응하는 것뿐만 아니라 사기 발생을 예측하고 방지할 수 있게 될 것입니다. 사기 행위는 계속 진화하고 있으며, 우리도 계속 발전하고 있습니다. 인공지능이 주도하는 사기 탐지를 통해 우리는 거래 하나하나씩 전자상거래 시장의 미래를 보호하고 있습니다. [음악]",
+    ],
     paragraphsJa: [
       '今日の急速なデジタル世界では、電子商取引市場が前例のない速度で成長しています。毎秒数百万件の取引が発生しています。しかし、これらの取引の中には詐欺を示唆するパターンが隠れています。デジタルプラットフォーム上での詐欺は、財務損失、評判への被害をもたらし、同時に業界全体と全員のセキュリティコストを増加させます。Grab生態系内では、数百万件の取引が私たちの商人、運転手、配送パートナー、消費者の間で発生し、私たちは犯罪者の主要な標的となっています。一般的な詐欺手段には、フィッシングまたはソーシャルエンジニアリングを通じたアカウント乗っ取りおよびクレジットカード詐欺が含まれます。NUSにおいて、私たちはダイナミック、大規模で急速に変化する環境における詐欺問題に対処するための人工知能ベースのソリューションを開発しました。Grabは詐欺検出にグラフモデルを活用し続けています。',
       'グラフモデルは疑わしい接続間の関連性を活用することで、私たちはより効果的に詐欺を検出することができます。AI Singaporeを通じてNUSと協力して、グラフモデルとディープラーニングに焦点を当て、詐欺検出技術を深化させるのに役立っています。グラフは非常に強力なデータ構造であり、実体をノードとして表現し、それら間の接続をエッジとして表現し、データ内の隠されたパターンを明らかにするのに役立ちます。したがって、グラフニューラルネットワークは各実体の属性とそれら間の接続方法を学習することで、検出能力を向上させます。Spayは変化し続けるグラフ内の詐欺行為を検出でき、一方Space Plusはユーザー定義関数とより効率的なストリーム処理を通じてこの能力をさらに強化します。Rushは急激な詐欺ピークを迅速に捕捉することができ、一方Spade Plusは変化し続けるパターンを追跡し、強力で応答性の高い防御システムを構成しています。',
@@ -6329,6 +6367,17 @@ export const videoTranscripts: Record<string, VideoTranscript> = {
       narrative: [
         "Grab's ecosystem processes millions of daily transactions among merchants, drivers, delivery partners and consumers, drawing constant fraud pressure. Common attacks include account takeovers via phishing or social engineering and credit card fraud. Grab already used graph models to surface suspicious linkages, then deepened the work through AISG and NUS, focusing on graph models and deep learning.",
         'Graphs represent entities as nodes and connections as edges to expose hidden patterns. Graph neural networks improve detection by learning from both node properties and connection structure. Spade detects fraud in evolving graphs; Spade Plus adds user-defined functions and stronger streaming throughput. Rush catches sudden fraud spikes and PMP handles diverse connection types. To process the largest networks, the team built dynamic random walk on FPGA hardware — a high-speed scanner that catches and removes fake users in real time. Since 2022 the collaboration has produced multiple academic papers; mature models will be incorporated into Grab production.',
+      ],
+    },
+    digestKo: {
+      keyPoints: [
+        "Grab 에코시스템 내에서 매일 수백만 건의 거래가 일어나고 있으며, 계정 탈취, 소셜 엔지니어링 피싱, 신용카드 사기가 주요 위협입니다.",
+        "NUS는 AISG를 통해 Grab과 협력하여 그래프 신경망으로 사기 연결을 포착합니다: Spade는 진화 그래프를 처리하고, Spade Plus는 사용자 정의 함수와 스트림 처리를 추가합니다.",
+        "FPGA 상의 동적 무작위 보행은 소셜 네트워크를 실시간으로 스캔하여 가짜 계정을 빠르게 식별하고 제거합니다.",
+      ],
+      narrative: [
+        "Grab 생태계는 매일 수백만 건의 상인, 운전자, 배달 및 소비자 거래를 처리하며, 사기꾼들의 주요 표적입니다. 일반적인 수법은 피싱 또는 사회공학을 통한 계정 탈취 및 신용카드 사기를 포함합니다. Grab은 이미 그래프 모델을 사용하여 의심스러운 계정 간의 연결을 추적했으며, AISG 및 NUS와의 협력을 통해 그래프 모델과 깊은 학습 능력을 더욱 심화시켰습니다.",
+        "그래프는 실체를 노드로, 연결을 간선으로 표현하여 데이터의 숨겨진 패턴을 드러냅니다; 그래프 신경망은 동시에 노드 속성과 연결 구조를 학습하여 사기를 식별합니다. Spade는 지속적으로 진화하는 그래프를 처리하고, Spade Plus는 사용자 정의 함수와 더욱 효율적인 스트림 처리를 추가합니다. Rush는 갑작스러운 사기 급증을 포착하고, PMP는 다양한 연결을 처리합니다. FPGA 상의 동적 무작위 보행은 소셜 네트워크에서 실시간으로 스캔하고 허위 계정을 빠르게 식별합니다. 2022년 이후 팀은 여러 학회 논문을 발표했으며, 연구가 성숙한 후 일부 모델은 Grab의 운영 환경에 통합될 것입니다.",
       ],
     },
     digestJa: {
@@ -6362,6 +6411,11 @@ export const videoTranscripts: Record<string, VideoTranscript> = {
       "AI provides insight into track conditioning on a daily basis, allowing for early detection of anomalies such as fastener loosening, wheel flash, and track defects. The AI model works by continuously analyzing data from the customized smart sensing system installed around the real infrastructure. It processes real-time inputs such as vibration patterns and acoustic signals to detect early signs of wheel or track defects. Using machine learning algorithm, the model identifies patterns and predicts potential failures, facilitating proactive maintenance. With the potential to be deployed across Singapore's MRT system, this AI powered solution detects rail defects in real time. With 4G and 5G connectivity, data is transmitted instantly for analysis, allowing timely intervention.",
       "This technology enhances computer experience in Singapore by improving operational efficiencies and safety. Early anomaly detection helps identify potential risks and issues before they cause service disruptions, ensuring smoother, more reliable journeys for commuters. We look forward to scanning the system and expanding its deployment to cover more areas of the Singapore MRT network, further enhancing the efficiency and the safety of the entire transit system. With AIdriven rail monitoring, we are shaping the future of transportation smarter, safer, and more efficient. NTEU's innovation ensures a seamless journey for millions every day.",
     ],
+    paragraphsKo: [
+      "[음악] 싱가포르 지하철 시스템은 매일 수백만 승객에게 서비스를 제공하며, 운송을 순조롭고 안전하게 보장합니다. 그러나 배후의 유지보수 작업이 어떻게 신뢰성을 보장하는가라는 의문이 있습니다. 선로 상태는 시간이 지남에 따라 악화되어 안전성과 효율성의 위험을 초래합니다. 전통적인 점검 방법은 노동 강도가 높으며 수동적 성격을 가집니다. 주요 과제에는 광대한 네트워크 관리, 매일 밤 제한된 유지보수 시간대, 그리고 현장 점검 프로토콜에 대한 높은 의존도가 포함됩니다. 난양기술대학교는 육로교통관리청 및 SPS Transit과 협력하여 인공지능 기술을 활용한 선로 모니터링을 혁신하고 있습니다. 인공지능은 유지보수를 정기적 계획에서 예측적 방법으로 전환함으로써 실제 기반시설의 모니터링 능력을 향상시킵니다.",
+      "인공지능은 매일 선로 상태에 대한 통찰력을 제공하며, 조임쇠 이완, 차륜 연부 마모, 선로 결함과 같은 이상을 조기에 발견할 수 있습니다. 해당 인공지능 모델은 선로 기반시설 주변에 설치된 맞춤형 스마트 센서 시스템에서 수집한 데이터를 지속적으로 분석함으로써 작동합니다. 이는 진동 패턴 및 음향 신호와 같은 실시간 입력을 처리하여 차륜-선로 결함의 조기 징후를 감지합니다. 기계학습 알고리즘을 활용하여 모델은 패턴을 식별하고 잠재적 고장을 예측하여 주동적 유지보수를 촉진합니다. 해당 인공지능 솔루션은 싱가포르 지하철 시스템에 광범위하게 배포되어 선로 결함의 실시간 감지를 실현할 것으로 예상됩니다. 4G 및 5G 연결을 활용하여 데이터는 분석을 위해 즉시 전송되며, 적시 개입을 가능하게 합니다.",
+      "이 기술은 운영 효율성과 안전성을 향상시킴으로써 싱가포르의 컴퓨팅 체험을 강화했습니다. 조기 이상 감지는 문제가 서비스 중단을 초래하기 전에 잠재적 위험과 문제를 식별하는 데 도움이 되며, 승객 여정이 더욱 순조롭고 신뢰할 수 있음을 보장합니다. 우리는 시스템을 스캔하고 배포 범위를 확대하여 싱가포르 지하철 네트워크의 더 많은 지역을 포함하며, 전체 교통 시스템의 효율성과 안전성을 더욱 향상시킬 것으로 기대합니다. 인공지능 기반 선로 모니터링을 활용하여 우리는 더욱 지능형이고 더욱 안전하며 더욱 효율적인 교통 미래를 형성하고 있습니다. 난양기술대학교의 혁신은 매일 수백만 명의 무중단 이동을 보장합니다.",
+    ],
     paragraphsJa: [
       '[音楽] シンガポール地下鉄システムは毎日数百万人の乗客にサービスを提供し、輸送の円滑性と安全性を確保しています。しかし、その信頼性を保証する舞台裏の保守作業はどのように行われているのでしょうか。レールの状態は時間とともに悪化し、安全性と効率性のリスクをもたらします。従来の検査方法は労働集約的で受動的な性質を持っています。主な課題には、広大なネットワークの管理、毎晩の限定的なメンテナンスタイムウィンドウ、および現地検査プロトコルへの高い依存性が含まれます。南洋理工大学は陸路交通局およびSPS Transitと協力して、人工知能技術を活用したレール監視の革新に取り組んでいます。人工知能は保守を定期的な計画から予測的アプローチへ転換することにより、実際のインフラストラクチャ監視能力を強化しました。',
       '人工知能は毎日、レール状態に関する洞察を提供し、緩んだファスナー、フランジ磨耗、レール欠陥などの異常を早期に検出することができます。この人工知能モデルは、レールインフラストラクチャの周囲に設置されたカスタム知能センサーシステムによって収集されたデータの継続的な分析を通じて機能します。振動パターンおよび音響信号などのリアルタイム入力を処理して、輪軌欠陥の初期兆候を検出します。機械学習アルゴリズムを活用して、モデルはパターンを識別し、潜在的な障害を予測し、能動的保守を促進します。この人工知能ソリューションは、シンガポール地下鉄システムに広く展開され、レール欠陥のリアルタイム検出を実現することが期待されています。4Gおよび5G接続を活用して、データはリアルタイムで転送され、分析のために処理されます。これにより、タイムリーな介入が可能になります。',
@@ -6387,6 +6441,17 @@ export const videoTranscripts: Record<string, VideoTranscript> = {
       narrative: [
         "Singapore's MRT carries millions of passengers a day, and reliability depends on the maintenance work behind the scenes. Track condition degrades over time, but conventional inspection is labour-intensive and reactive. The challenges compound: a large network, a short maintenance window each night, and heavy reliance on manual on-site protocols.",
         'NTU, working with LTA and SBS Transit, replaces that pattern with AI-driven predictive maintenance. Custom smart sensors mounted around track infrastructure stream vibration patterns and acoustic signals. The AI model spots early signs of fastener loosening, wheel flange wear and track defects, then predicts potential failures so maintenance can be scheduled before service is hit. Data moves over 4G and 5G for real-time analysis. The team plans to expand deployment across more sections of the Singapore MRT network.',
+      ],
+    },
+    digestKo: {
+      keyPoints: [
+        "NTU는 LTA, SBS Transit과 협력하여 AI를 이용해 싱가포르 지하철 선로 유지보수를 정기 점검에서 예측적 유지보수로 전환합니다.",
+        "지능형 센서 시스템이 진동과 음향 신호를 수집하고, AI가 실시간으로 체결부품 느슨해짐, 윤연 마모, 선로 결함을 감지합니다.",
+        "데이터가 4G/5G를 통해 실시간으로 전송되며, 싱가포르 MRT 네트워크에 배포를 확대하여 위험을 사전에 발견하고 서비스 중단을 방지하는 것을 목표로 합니다.",
+      ],
+      narrative: [
+        "싱가포르 지하철은 매일 수백만 명의 승객을 수송하며, 무대 뒤의 유지보수가 신뢰성을 결정합니다. 궤도 상태는 시간이 지남에 따라 악화되지만, 전통적인 점검은 인력 현장 순찰에 의존하므로 노동집약적이고 수동적이며, 네트워크 규모가 크고 매일 밤 유지보수 창이 제한적입니다.",
+        "NTU는 LTA, SBS Transit과 협력하여 AI를 활용해 유지보수를 예측형으로 변경하고 있습니다. 이 시스템은 궤도 주변에 맞춤형 지능형 센서를 설치하고 지속적으로 진동 패턴과 음향 신호를 수집하며, AI는 패스너 느슨함, 차륜 플랜지 마모 및 궤도 결함의 조기 신호를 식별하고 잠재적 결함을 예측합니다. 데이터는 4G/5G를 통해 실시간으로 전송되어 분석되며, 유지보수 팀이 결함이 서비스 중단을 초래하기 전에 개입할 수 있습니다. 팀은 이 시스템을 더 많은 MRT 구간에 적용할 계획입니다.",
       ],
     },
     digestJa: {
