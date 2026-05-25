@@ -61,7 +61,7 @@ const postCollection = defineCollection({
     tags: z.array(z.string()).optional(),
     author: z.string().optional(),
 
-    lang: z.enum(['zh', 'en', 'ja', 'ko']).optional(),
+    lang: z.enum(['zh', 'en', 'ja', 'zh-tw', 'ko']).optional(),
 
     // Phase 1 cross-references — bi-directional knowledge graph between
     // blog posts and data pages. Hand-curated in frontmatter; consumed

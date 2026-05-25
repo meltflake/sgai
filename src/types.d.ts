@@ -61,9 +61,9 @@ export interface Post {
   tocDepth?: number;
 
   // i18n (v0.3.0+). Posts default to 'zh'. Locales mirror src/i18n/index.ts
-  // LOCALES: zh, en, ja, ko. en (route-default) renders at /<slug>/; non-default
+  // LOCALES: zh, en, ja, zh-tw, ko. en (route-default) renders at /<slug>/; non-default
   // locales render at /<lang>/<slug>/.
-  lang?: 'zh' | 'en' | 'ja' | 'ko';
+  lang?: 'zh' | 'en' | 'ja' | 'zh-tw' | 'ko';
 }
 
 export interface Taxonomy {
