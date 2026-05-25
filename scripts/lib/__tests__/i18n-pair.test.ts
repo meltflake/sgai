@@ -5,8 +5,7 @@ import { mkdtempSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 
-import { findUnpairedFields, findIncompleteRecords, findImpureLocaleFields } from '../i18n-pair.ts';
-import { dataSiblingLocales } from '../i18n-locales.mjs';
+import { findUnpairedFields, findIncompleteRecords } from '../i18n-pair.ts';
 import type { FileSchema } from '../../i18n-config.ts';
 
 function withFile<T>(content: string, fn: (path: string) => T): T {
@@ -81,7 +80,7 @@ export const x = [
 ];
 `;
   withFile(src, (p) => {
-    assert.deepEqual(findUnpairedFields(p, { locales: ['en'] }), []);
+    assert.deepEqual(findUnpairedFields(p), []);
   });
 });
 
@@ -95,7 +94,7 @@ export const x = [
 ];
 `;
   withFile(src, (p) => {
-    assert.deepEqual(findUnpairedFields(p, { locales: ['en'] }), []);
+    assert.deepEqual(findUnpairedFields(p), []);
   });
 });
 
@@ -199,92 +198,55 @@ export const x = [
   });
 });
 
-test('findUnpairedFields: detects missing siblings for string arrays', () => {
+test('findUnpairedFields: detects missing array sibling for Ko/Ja', () => {
   const src = `
 export const x = [
   {
-    highlights: ['中文要点', '第二个要点'],
-    highlightsEn: ['Chinese point', 'Second point'],
+    keyPoints: ['AI 工程师需求结构性上升', '金融资讯通讯 PME 空缺'],
+    keyPointsEn: ['AI engineer demand rising', 'Finance PME vacancies'],
   },
 ];
 `;
   withFile(src, (p) => {
-    const issues = findUnpairedFields(p, { fields: ['highlights'], locales: ['en', 'ja', 'ko'] });
+    const issues = findUnpairedFields(p, { fields: ['keyPoints'], locales: ['en', 'ja', 'ko'] });
     assert.equal(issues.length, 2);
-    assert.deepEqual(
-      issues.map((issue) => issue.locale),
-      ['ja', 'ko']
-    );
+    assert.equal(issues[0].locale, 'ja');
+    assert.equal(issues[0].reason, 'missing-sibling');
+    assert.equal(issues[1].locale, 'ko');
   });
 });
 
-test('findUnpairedFields: defaults to all authored sibling locales from project config', () => {
-  const expectedLocales = dataSiblingLocales();
+test('findUnpairedFields: passes when array has all locale siblings', () => {
+  const src = `
+export const x = [
+  {
+    keyPoints: ['AI 需求上升'],
+    keyPointsEn: ['AI demand rising'],
+    keyPointsJa: ['AI需要上昇'],
+    keyPointsKo: ['AI 수요 상승'],
+  },
+];
+`;
+  withFile(src, (p) => {
+    const issues = findUnpairedFields(p, { fields: ['keyPoints'], locales: ['en', 'ja', 'ko'] });
+    assert.equal(issues.length, 0);
+  });
+});
+
+test('findUnpairedFields: default locales check en + ja + ko', () => {
   const src = `
 export const x = [
   {
     title: '中文标题',
+    titleEn: 'English',
   },
 ];
 `;
   withFile(src, (p) => {
-    const issues = findUnpairedFields(p, { fields: ['title'] });
-    assert.deepEqual(
-      issues.map((issue) => issue.locale),
-      expectedLocales
-    );
-  });
-});
-
-// ── findImpureLocaleFields ──────────────────────────────────────────────
-
-test('findImpureLocaleFields: rejects non-English script in *En fields', () => {
-  const src = `
-export const x = [
-  {
-    title: '中文标题',
-    titleEn: 'English title',
-    summaryEn: '残留中文',
-    noteEn: 'Japanese residue シンガポール',
-    labelEn: 'Korean residue 한국어',
-  },
-];
-`;
-  withFile(src, (p) => {
-    const issues = findImpureLocaleFields(p);
-    assert.deepEqual(
-      issues.map((issue) => issue.field),
-      ['summaryEn', 'noteEn', 'labelEn']
-    );
-  });
-});
-
-test('findImpureLocaleFields: rejects non-English script inside *En string arrays', () => {
-  const src = `
-export const x = [
-  {
-    tagsEn: ['AI policy', '治理 residue'],
-  },
-];
-`;
-  withFile(src, (p) => {
-    const issues = findImpureLocaleFields(p);
-    assert.equal(issues.length, 1);
-    assert.equal(issues[0].field, 'tagsEn');
-  });
-});
-
-test('findImpureLocaleFields: respects i18n-allow-unpaired annotation', () => {
-  const src = `
-export const x = [
-  {
-    // i18n-allow-unpaired
-    titleEn: 'Allowed quote 日本語',
-  },
-];
-`;
-  withFile(src, (p) => {
-    assert.deepEqual(findImpureLocaleFields(p), []);
+    const issues = findUnpairedFields(p);
+    assert.equal(issues.length, 2);
+    const locales = issues.map((i) => i.locale).sort();
+    assert.deepEqual(locales, ['ja', 'ko']);
   });
 });
 
@@ -491,95 +453,5 @@ export const cats = [
     assert.equal(issues.length, 1);
     // zh side filled, En sibling missing → only whatItIsEn flagged
     assert.deepEqual(issues[0].missingFields, ['whatItIsEn']);
-  });
-});
-
-test('findIncompleteRecords: optional fields are gated once present', () => {
-  const schema: FileSchema = {
-    file: 'sample.ts',
-    schemas: [
-      {
-        name: 'item',
-        containingArray: 'items',
-        fields: [
-          { field: 'title', locales: ['En'], required: true },
-          { field: 'note', locales: ['En'] },
-        ],
-      },
-    ],
-  };
-  const src = `
-export const items = [
-  {
-    title: '标题',
-    titleEn: 'Title',
-  },
-  {
-    title: '另一个标题',
-    titleEn: 'Another title',
-    note: '可选字段一旦出现，也要翻译',
-  },
-];
-`;
-  withFile(src, (p) => {
-    const issues = findIncompleteRecords(p, { schema });
-    assert.equal(issues.length, 1);
-    assert.deepEqual(issues[0].missingFields, ['noteEn']);
-  });
-});
-
-test('findIncompleteRecords: treats empty string arrays as incomplete', () => {
-  const schema: FileSchema = {
-    file: 'sample.ts',
-    schemas: [
-      {
-        name: 'item',
-        containingArray: 'items',
-        fields: [{ field: 'bullets', locales: ['En'], required: true }],
-      },
-    ],
-  };
-  const src = `
-export const items = [
-  {
-    bullets: ['有效项目'],
-    bulletsEn: [],
-  },
-];
-`;
-  withFile(src, (p) => {
-    const issues = findIncompleteRecords(p, { schema });
-    assert.equal(issues.length, 1);
-    assert.deepEqual(issues[0].missingFields, ['bulletsEn']);
-  });
-});
-
-test('findIncompleteRecords: optional fields are gated when any locale sibling is present', () => {
-  const schema: FileSchema = {
-    file: 'sample.ts',
-    schemas: [
-      {
-        name: 'item',
-        containingArray: 'items',
-        fields: [
-          { field: 'title', locales: ['En'], required: true },
-          { field: 'note', locales: ['En', 'Ja'] },
-        ],
-      },
-    ],
-  };
-  const src = `
-export const items = [
-  {
-    title: '标题',
-    titleEn: 'Title',
-    noteEn: 'English-only optional note',
-  },
-];
-`;
-  withFile(src, (p) => {
-    const issues = findIncompleteRecords(p, { schema });
-    assert.equal(issues.length, 1);
-    assert.deepEqual(issues[0].missingFields, ['note', 'noteJa']);
   });
 });

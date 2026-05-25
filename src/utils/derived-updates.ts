@@ -47,6 +47,7 @@ interface Harvested {
   zhTitle: string;
   enTitle: string;
   jaTitle: string;
+  koTitle: string;
   href: string;
 }
 
@@ -58,15 +59,18 @@ interface TypeTemplate {
   zhTitle: (n: number) => string;
   jaTitle: (n: number) => string;
   enTitle: (n: number) => string;
+  koTitle: (n: number) => string;
   /** Listing-page link rendered as the last item under `links`. */
   listingHref: string;
   listingLabel: string;
   listingLabelJa: string;
   listingLabelEn: string;
+  listingLabelKo: string;
   /** Pluralised summary trailer when there are more than 3 items shown. */
   zhMore: (n: number) => string;
   jaMore: (n: number) => string;
   enMore: (n: number) => string;
+  koMore: (n: number) => string;
 }
 
 // Per-type wording. Keep zh/ja/en parallel; if the wording changes here,
@@ -76,121 +80,151 @@ const TYPE_TEMPLATES: Record<UpdateType, TypeTemplate | undefined> = {
     zhTitle: (n) => `AI 视频新增 ${n} 条`,
     jaTitle: (n) => `AI ビデオを${n}件追加`,
     enTitle: (n) => `${n} new AI video${n > 1 ? 's' : ''}`,
+    koTitle: (n) => `AI 비디오 ${n}개 추가`,
     listingHref: '/videos/',
     listingLabel: 'AI 视频观点',
     listingLabelJa: 'AI ビデオ観点',
     listingLabelEn: 'Video library',
+    listingLabelKo: 'AI 비디오 라이브러리',
     zhMore: (n) => `（共 ${n} 条）`,
     jaMore: (n) => `（合計${n}件）`,
     enMore: (n) => ` (${n} total)`,
+    koMore: (n) => ` (총 ${n}개)`,
   },
   policy: {
     zhTitle: (n) => `新增 ${n} 条政策档案`,
     jaTitle: (n) => `${n}件のポリシーアーカイブを追加`,
     enTitle: (n) => `${n} new policy entries`,
+    koTitle: (n) => `정책 문서 ${n}건 추가`,
     listingHref: '/policies/',
     listingLabel: '政策库',
     listingLabelJa: 'ポリシーライブラリー',
     listingLabelEn: 'Policy library',
+    listingLabelKo: '정책 라이브러리',
     zhMore: (n) => `（共 ${n} 条）`,
     jaMore: (n) => `（合計${n}件）`,
     enMore: (n) => ` (${n} total)`,
+    koMore: (n) => ` (총 ${n}건)`,
   },
   debate: {
     zhTitle: (n) => `国会辩论新增 ${n} 场`,
     jaTitle: (n) => `議会討論を${n}件追加`,
     enTitle: (n) => `${n} new parliamentary debate${n > 1 ? 's' : ''}`,
+    koTitle: (n) => `국회 토론 ${n}건 추가`,
     listingHref: '/debates/',
     listingLabel: '国会辩论',
     listingLabelJa: '議会討論',
     listingLabelEn: 'Parliamentary debates',
+    listingLabelKo: '국회 토론',
     zhMore: (n) => `（共 ${n} 场）`,
     jaMore: (n) => `（合計${n}件）`,
     enMore: (n) => ` (${n} total)`,
+    koMore: (n) => ` (총 ${n}건)`,
   },
   people: {
     zhTitle: (n) => `Voices 图谱新增 ${n} 位`,
     jaTitle: (n) => `Voices マップに${n}名を追加`,
     enTitle: (n) => `${n} new voice${n > 1 ? 's' : ''} in the influence map`,
+    koTitle: (n) => `영향력 지도에 ${n}명 추가`,
     listingHref: '/voices/',
     listingLabel: 'AI 影响力图谱',
     listingLabelJa: 'AI インフルエンスマップ',
     listingLabelEn: 'Influence map',
+    listingLabelKo: 'AI 영향력 지도',
     zhMore: (n) => `（共 ${n} 位）`,
     jaMore: (n) => `（合計${n}名）`,
     enMore: (n) => ` (${n} total)`,
+    koMore: (n) => ` (총 ${n}명)`,
   },
   speech: {
     zhTitle: (n) => `MDDI 演讲新增 ${n} 篇`,
     jaTitle: (n) => `MDDI スピーチを${n}件追加`,
     enTitle: (n) => `${n} new MDDI speech${n > 1 ? 'es' : ''}`,
+    koTitle: (n) => `MDDI 연설 ${n}건 추가`,
     listingHref: '/voices/',
     listingLabel: 'MDDI AI 相关演讲稿',
     listingLabelJa: 'MDDI AI 関連スピーチ',
     listingLabelEn: 'MDDI AI speeches',
+    listingLabelKo: 'MDDI AI 관련 연설',
     zhMore: (n) => `（共 ${n} 篇）`,
     jaMore: (n) => `（合計${n}件）`,
     enMore: (n) => ` (${n} total)`,
+    koMore: (n) => ` (총 ${n}건)`,
   },
   tracker: {
     zhTitle: (n) => `Tracker 维度新增 ${n} 项`,
     jaTitle: (n) => `Tracker 次元を${n}件追加`,
     enTitle: (n) => `${n} new tracker dimension${n > 1 ? 's' : ''}`,
+    koTitle: (n) => `트래커 차원 ${n}개 추가`,
     listingHref: '/tracker/',
     listingLabel: 'AI 仪表盘',
     listingLabelJa: 'AI ダッシュボード',
     listingLabelEn: 'AI dashboard',
+    listingLabelKo: 'AI 대시보드',
     zhMore: (n) => `（共 ${n} 项）`,
     jaMore: (n) => `（合計${n}件）`,
     enMore: (n) => ` (${n} total)`,
+    koMore: (n) => ` (총 ${n}개)`,
   },
   benchmark: {
     zhTitle: (n) => `国际对标新增 ${n} 例`,
     jaTitle: (n) => `国際ベンチマークを${n}件追加`,
     enTitle: (n) => `${n} new benchmark case${n > 1 ? 's' : ''}`,
+    koTitle: (n) => `국제 벤치마크 ${n}건 추가`,
     listingHref: '/benchmarking/',
     listingLabel: '国际对标',
     listingLabelJa: '国際ベンチマーク',
     listingLabelEn: 'International benchmarks',
+    listingLabelKo: '국제 벤치마크',
     zhMore: (n) => `（共 ${n} 例）`,
     jaMore: (n) => `（合計${n}件）`,
     enMore: (n) => ` (${n} total)`,
+    koMore: (n) => ` (총 ${n}건)`,
   },
   ecosystem: {
     zhTitle: (n) => `生态地图新增 ${n} 个实体`,
     jaTitle: (n) => `エコシステムマップに${n}件のエンティティを追加`,
     enTitle: (n) => `${n} new ecosystem entit${n > 1 ? 'ies' : 'y'}`,
+    koTitle: (n) => `생태계 지도에 ${n}개 엔티티 추가`,
     listingHref: '/ecosystem/',
     listingLabel: '生态地图',
     listingLabelJa: 'エコシステムマップ',
     listingLabelEn: 'Ecosystem map',
+    listingLabelKo: '생태계 지도',
     zhMore: (n) => `（共 ${n} 个）`,
     jaMore: (n) => `（合計${n}件）`,
     enMore: (n) => ` (${n} total)`,
+    koMore: (n) => ` (총 ${n}개)`,
   },
   lever: {
     zhTitle: (n) => `抓手图谱新增 ${n} 项`,
     jaTitle: (n) => `レバーマップに${n}件を追加`,
     enTitle: (n) => `${n} new lever${n > 1 ? 's' : ''}`,
+    koTitle: (n) => `레버 지도에 ${n}개 추가`,
     listingHref: '/levers/',
     listingLabel: '国家 AI 抓手图谱',
     listingLabelJa: '国家 AI レバーマップ',
     listingLabelEn: 'National AI levers',
+    listingLabelKo: '국가 AI 레버 지도',
     zhMore: (n) => `（共 ${n} 项）`,
     jaMore: (n) => `（合計${n}件）`,
     enMore: (n) => ` (${n} total)`,
+    koMore: (n) => ` (총 ${n}개)`,
   },
   startup: {
     zhTitle: (n) => `创业生态新增 ${n} 家公司`,
     jaTitle: (n) => `スタートアップエコシステムに${n}社を追加`,
     enTitle: (n) => `${n} new AI startup${n > 1 ? 's' : ''}`,
+    koTitle: (n) => `AI 스타트업 ${n}개 추가`,
     listingHref: '/startups/',
     listingLabel: 'AI 创业生态',
     listingLabelJa: 'AI スタートアップエコシステム',
     listingLabelEn: 'AI startup ecosystem',
+    listingLabelKo: 'AI 스타트업 생태계',
     zhMore: (n) => `（共 ${n} 家）`,
     jaMore: (n) => `（合計${n}社）`,
     enMore: (n) => ` (${n} total)`,
+    koMore: (n) => ` (총 ${n}개)`,
   },
   // longform / site / fix are editorial-only — never derived from data files.
   // They live in the manual UPDATES array in src/data/updates.ts.
@@ -214,6 +248,10 @@ function pickEn(zh: string, en: string | undefined): string {
   return en ?? zh;
 }
 
+function pickKo(zh: string, ko: string | undefined, en: string | undefined): string {
+  return ko ?? en ?? zh;
+}
+
 function harvestVideos(rs: VideoItem[]): Harvested[] {
   const out: Harvested[] = [];
   for (const r of rs) {
@@ -224,6 +262,7 @@ function harvestVideos(rs: VideoItem[]): Harvested[] {
       zhTitle: r.title,
       enTitle: pickEn(r.title, r.titleEn),
       jaTitle: pickJa(r.title, r.titleJa, r.titleEn),
+      koTitle: pickKo(r.title, r.titleKo, r.titleEn),
       href: `/videos/${r.id}/`,
     });
   }
@@ -241,6 +280,7 @@ function harvestPolicies(cats: Array<{ policies: Policy[] }>): Harvested[] {
         zhTitle: r.title,
         enTitle: pickEn(r.title, r.titleEn),
         jaTitle: pickJa(r.title, r.titleJa, r.titleEn),
+        koTitle: pickKo(r.title, r.titleKo, r.titleEn),
         href: r.id ? `/policies/${r.id}/` : '/policies/',
       });
     }
@@ -258,6 +298,7 @@ function harvestDebates(rs: Debate[]): Harvested[] {
       zhTitle: r.title,
       enTitle: pickEn(r.title, r.titleEn),
       jaTitle: pickJa(r.title, r.titleJa, r.titleEn),
+      koTitle: pickKo(r.title, r.titleKo, r.titleEn),
       href: `/debates/${r.id}/`,
     });
   }
@@ -274,6 +315,7 @@ function harvestPeople(rs: Person[]): Harvested[] {
       zhTitle: r.name,
       enTitle: pickEn(r.name, r.nameEn),
       jaTitle: pickJa(r.name, r.nameJa, r.nameEn),
+      koTitle: pickKo(r.name, r.nameKo, r.nameEn),
       href: `/voices/${r.id}/`,
     });
   }
@@ -290,6 +332,7 @@ function harvestSpeeches(rs: MddiSpeech[]): Harvested[] {
       zhTitle: r.title,
       enTitle: pickEn(r.title, r.titleEn),
       jaTitle: pickJa(r.title, r.titleJa, r.titleEn),
+      koTitle: pickKo(r.title, r.titleKo, r.titleEn),
       href: `/speeches/${speechId(r)}/`,
     });
   }
@@ -306,6 +349,7 @@ function harvestTracker(rs: Dimension[]): Harvested[] {
       zhTitle: r.title,
       enTitle: pickEn(r.title, r.titleEn),
       jaTitle: pickJa(r.title, r.titleJa, r.titleEn),
+      koTitle: pickKo(r.title, r.titleKo, r.titleEn),
       href: `/tracker/${r.id}/`,
     });
   }
@@ -322,6 +366,7 @@ function harvestBenchmarking(rs: BenchmarkCase[]): Harvested[] {
       zhTitle: r.name,
       enTitle: pickEn(r.name, r.nameEn),
       jaTitle: pickJa(r.name, r.nameJa, r.nameEn),
+      koTitle: pickKo(r.name, r.nameKo, r.nameEn),
       href: `/benchmarking/${r.id}/`,
     });
   }
@@ -342,6 +387,7 @@ function harvestEcosystem(cats: Array<{ entities: EcosystemEntity[] }>): Harvest
         zhTitle: r.name,
         enTitle: pickEn(r.name, r.nameEn),
         jaTitle: pickJa(r.name, r.nameJa, r.nameEn),
+        koTitle: pickKo(r.name, r.nameKo, r.nameEn),
         href: r.id ? `/ecosystem/${r.id}/` : '/ecosystem/',
       });
     }
@@ -359,6 +405,7 @@ function harvestLevers(rs: Lever[]): Harvested[] {
       zhTitle: r.name,
       enTitle: pickEn(r.name, r.nameEn),
       jaTitle: pickJa(r.name, r.nameJa, r.nameEn),
+      koTitle: pickKo(r.name, r.nameKo, r.nameEn),
       href: `/levers/${r.number}/`,
     });
   }
@@ -376,6 +423,7 @@ function harvestStartups(verts: Array<{ startups: Startup[] }>): Harvested[] {
         zhTitle: r.name,
         enTitle: r.name, // Startup names are usually brand strings — same in en
         jaTitle: r.name,
+        koTitle: r.name,
         href: r.id ? `/startups/${r.id}/` : '/startups/',
       });
     }
@@ -394,6 +442,7 @@ function harvestLegalAi(secs: Array<{ items: LegalItem[] }>): Harvested[] {
         zhTitle: r.title,
         enTitle: pickEn(r.title, r.titleEn),
         jaTitle: pickJa(r.title, r.titleJa, r.titleEn),
+        koTitle: pickKo(r.title, r.titleKo, r.titleEn),
         href: '/legal-ai/',
       });
     }
@@ -411,6 +460,7 @@ function harvestTalent(rs: TalentProgramme[]): Harvested[] {
       zhTitle: r.name,
       enTitle: pickEn(r.name, r.nameEn),
       jaTitle: pickJa(r.name, r.nameJa, r.nameEn),
+      koTitle: pickKo(r.name, r.nameKo, r.nameEn),
       href: `/talent/${r.id}/`,
     });
   }
@@ -435,6 +485,10 @@ function joinEn(items: string[]): string {
   return items.join('; ');
 }
 
+function joinKo(items: string[]): string {
+  return items.join('; ');
+}
+
 function buildUpdate(date: string, type: UpdateType, items: Harvested[]): Update | null {
   const tmpl = TYPE_TEMPLATES[type];
   if (!tmpl) return null;
@@ -446,12 +500,14 @@ function buildUpdate(date: string, type: UpdateType, items: Harvested[]): Update
       label: s.zhTitle,
       labelJa: s.jaTitle,
       labelEn: s.enTitle,
+      labelKo: s.koTitle,
     })),
     {
       href: tmpl.listingHref,
       label: tmpl.listingLabel,
       labelJa: tmpl.listingLabelJa,
       labelEn: tmpl.listingLabelEn,
+      labelKo: tmpl.listingLabelKo,
     },
   ];
   return {
@@ -460,9 +516,11 @@ function buildUpdate(date: string, type: UpdateType, items: Harvested[]): Update
     title: tmpl.zhTitle(items.length),
     titleJa: tmpl.jaTitle(items.length),
     titleEn: tmpl.enTitle(items.length),
+    titleKo: tmpl.koTitle(items.length),
     summary: joinZh(sample.map((s) => s.zhTitle)) + (more ? tmpl.zhMore(items.length) : '。'),
     summaryJa: joinJa(sample.map((s) => s.jaTitle)) + (more ? tmpl.jaMore(items.length) : '。'),
     summaryEn: joinEn(sample.map((s) => s.enTitle)) + (more ? tmpl.enMore(items.length) : '.'),
+    summaryKo: joinKo(sample.map((s) => s.koTitle)) + (more ? tmpl.koMore(items.length) : '.'),
     links,
   };
 }

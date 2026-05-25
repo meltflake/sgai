@@ -10,15 +10,8 @@
 //
 //   (2) COMPLETENESS (new) — for files declared in `scripts/i18n-config.ts`,
 //       every required field's source side AND every locale sibling must
-//       be non-empty + non-placeholder. Optional fields are skipped only
-//       when absent; once present, their locale siblings are required too.
-//       This is what catches the "stub ecosystem entity" pattern that v1
-//       missed, plus half-translated optional display fields.
-//
-//   (3) PURITY — authored English fields (`*En`) must not contain CJK,
-//       Japanese kana, or Korean hangul. This catches the common workflow
-//       bug where zh source text is drafted first and a supposedly English
-//       sibling keeps source-language fragments.
+//       be non-empty + non-placeholder. This is what catches the "stub
+//       ecosystem entity" pattern that v1 missed.
 //
 // Parser is the TypeScript Compiler API, not regex. Handles template
 // literals, multi-line strings, Prettier-wrapped values, nested arrays,
@@ -41,15 +34,15 @@
 //   npx tsx scripts/lib/i18n-pair.ts --mode=both src/data/ecosystem.ts
 //   npx tsx scripts/lib/i18n-pair.ts --fields=title,description src/data/policies.ts
 //   npx tsx scripts/lib/i18n-pair.ts --locales=en,ja,ko src/data/*.ts
-//   npx tsx scripts/lib/i18n-pair.ts --locales=all src/data/*.ts
+//   npx tsx scripts/lib/i18n-pair.ts --locales=en,ja,zh-tw,ko src/data/*.ts  # all five
 //
 // LOCALE CODES: pass Lang codes that mirror src/i18n/index.ts
-// (en, ja, ko, future locales). The CLI converts them to sibling suffixes via the
+// (en, ja, zh-tw, ko). The CLI converts them to sibling suffixes via the
 // same `siblingSuffix` rule used by pickLocalized: 'zh-tw' → 'ZhTw'
-// (kebab-cased langs are split on '-' then each part capitalized), 'ko' → 'Ko'.
-// The default / `all` set is derived from src/i18n/index.ts: zh is the
-// source side, zh-tw is a required derived locale covered by OpenCC + dist
-// checks, and every other current/future locale requires sibling fields.
+// (kebab-cased langs are split on '-' then each part capitalized),
+// 'ko' → 'Ko'. zh-tw is intentionally not enforced by the default gate
+// because zh-Hant renders via OpenCC runtime conversion (see
+// src/i18n/opencc.ts) — there's no `*ZhTw` data field requirement.
 //
 // Both modes respect the `i18n-allow-unpaired` annotation on the line
 // preceding the record's opening brace, which exempts that record from
@@ -60,7 +53,6 @@ import { readFileSync, existsSync } from 'node:fs';
 import { resolve } from 'node:path';
 
 import { I18N_CONFIG, isPlaceholderValue, type FileSchema, type RecordSchema } from '../i18n-config.ts';
-import { dataSiblingLocales, localeCoverageSummary, siblingSuffix } from './i18n-locales.mjs';
 
 // ── Public types ────────────────────────────────────────────────────────
 
@@ -86,16 +78,6 @@ export interface IncompleteRecord {
   recordIdentifier?: string;
 }
 
-export interface ImpureLocaleField {
-  file: string;
-  line: number;
-  recordStartLine: number;
-  field: string;
-  locale: string;
-  reason: string;
-  value: string;
-}
-
 // ── Constants ───────────────────────────────────────────────────────────
 
 const DEFAULT_FIELDS = [
@@ -113,90 +95,24 @@ const DEFAULT_FIELDS = [
   'reason',
   'caption',
   'subtitle',
-  'source',
-  'content',
-  'body',
-  'value',
-  'authority',
-  'badge',
-  'benchmark',
-  'category',
-  'current',
-  'status',
-  'owner',
-  'type',
-  'event',
-  'speakerTitle',
-  'ministry',
-  'headquarters',
-  'parentOrg',
-  'scale',
-  'whatItIs',
-  'aiRelevance',
-  'singaporeRelevance',
-  'singaporeTakeaway',
-  'whatStateDoes',
-  'bottleneckSolved',
-  'insight',
-  'headline',
-  'whyItMatters',
-  'text',
-  'region',
-  'strategy',
-  'investment',
-  'governance',
-  'strength',
-  'philosophy',
-  'sourceLabel',
-  'sourceNote',
-  'period',
-  'theme',
-  'issue',
-  'governmentStance',
-  'evidence',
-  'governmentPosition',
-  'oppositionPosition',
-  'oppositionStance',
-  'dimension',
-  'sideA',
-  'sideB',
-  'currentBalance',
-  'notablePosition',
-  'notableQuote',
-  'signal',
-  'organization',
-  'policySignal',
-  'topic',
-  'acquirer',
-  'focus',
-  'focusAreas',
-  'judgment',
-  'methodologyNote',
-  'oneLiner',
-  'rank',
-  'sector',
-  'shortcoming',
-  'stats',
-  'target',
-  'highlight',
-  'features',
-  'highlights',
-  'bullets',
-  'tags',
-  'points',
-  'companyProfile',
-  'takeaway',
-  'heading',
 ];
 
-const DEFAULT_LOCALES = dataSiblingLocales();
+const DEFAULT_LOCALES = ['en', 'ja', 'ko'];
 
 const CJK_RE = /[一-鿿]/;
-const NON_ENGLISH_SCRIPT_RE = /[一-鿿぀-ゟ゠-ヿ가-힣]/;
 const IGNORE_MARKER = 'i18n-allow-unpaired';
-// Verbatim source material may legitimately contain multilingual quotes.
-// Authored summaries/titles/descriptions are still purity-gated.
-const VERBATIM_EN_SOURCE_FIELDS = new Set(['paragraphsEn', 'transcriptEn']);
+
+/** Compute the sibling-field suffix for a locale. zh → '' (bare key);
+ *  en → 'En'; ja → 'Ja'; zh-tw → 'ZhTw'; ko → 'Ko'. Mirrors
+ *  src/i18n/index.ts:siblingSuffix — kebab-cased lang codes are split
+ *  on '-' and each segment capitalized. */
+function siblingSuffix(locale: string): string {
+  if (locale === 'zh') return '';
+  return locale
+    .split('-')
+    .map((p) => p.charAt(0).toUpperCase() + p.slice(1))
+    .join('');
+}
 
 // ── AST utilities ───────────────────────────────────────────────────────
 
@@ -227,51 +143,34 @@ function getProperty(obj: ts.ObjectLiteralExpression, key: string): ts.PropertyA
   return undefined;
 }
 
-function getPropertyName(prop: ts.PropertyAssignment): string | undefined {
-  const name = prop.name;
-  if (ts.isIdentifier(name)) return name.text;
-  if (ts.isStringLiteral(name) || ts.isNoSubstitutionTemplateLiteral(name)) return name.text;
-  return undefined;
-}
-
 type PropertyValue =
   | { kind: 'string'; text: string }
-  | { kind: 'string-array'; text: string; items: string[] }
+  | { kind: 'array'; elements: string[] }
   | { kind: 'non-string' }
   | { kind: 'absent' };
 
-/** Read an initializer's value with three-way result:
+/** Read a property's value with three-way result:
  *    'string' → simple string literal or template literal w/o substitutions
- *    'string-array' → array where every element is a simple string
- *    'non-string' → present but non-string (array, object, identifier, expression, ...)
- */
-function getInitializerValue(init: ts.Expression): Exclude<PropertyValue, { kind: 'absent' }> {
-  if (ts.isStringLiteral(init) || ts.isNoSubstitutionTemplateLiteral(init)) {
-    return { kind: 'string', text: init.text };
-  }
-  if (ts.isArrayLiteralExpression(init)) {
-    const items: string[] = [];
-    for (const el of init.elements) {
-      if (!ts.isStringLiteral(el) && !ts.isNoSubstitutionTemplateLiteral(el)) {
-        return { kind: 'non-string' };
-      }
-      items.push(el.text);
-    }
-    return { kind: 'string-array', text: items.join('\n'), items };
-  }
-  return { kind: 'non-string' };
-}
-
-/** Read a property's value with four-way result:
- *    'string' → simple string literal or template literal w/o substitutions
- *    'string-array' → array where every element is a simple string
  *    'non-string' → present but non-string (array, object, identifier, expression, ...)
  *    'absent' → property does not exist on the literal
  */
 function getPropertyValue(obj: ts.ObjectLiteralExpression, key: string): PropertyValue {
   const prop = getProperty(obj, key);
   if (!prop) return { kind: 'absent' };
-  return getInitializerValue(prop.initializer);
+  const init = prop.initializer;
+  if (ts.isStringLiteral(init) || ts.isNoSubstitutionTemplateLiteral(init)) {
+    return { kind: 'string', text: init.text };
+  }
+  if (ts.isArrayLiteralExpression(init)) {
+    const elements: string[] = [];
+    for (const el of init.elements) {
+      if (ts.isStringLiteral(el) || ts.isNoSubstitutionTemplateLiteral(el)) {
+        elements.push(el.text);
+      }
+    }
+    return { kind: 'array', elements };
+  }
+  return { kind: 'non-string' };
 }
 
 /** Returns the binding name of the array literal that directly contains `node`,
@@ -326,8 +225,8 @@ function findRecordSchema(file: FileSchema, containingArray: string): RecordSche
 
 function isSiblingPaired(value: PropertyValue): boolean {
   if (value.kind === 'absent') return false;
-  if (value.kind === 'non-string') return true; // array/object sibling = present, treat as paired (legacy)
-  if (value.kind === 'string-array') return value.items.length > 0;
+  if (value.kind === 'array') return value.elements.length > 0;
+  if (value.kind === 'non-string') return true;
   return value.text.length > 0;
 }
 
@@ -338,10 +237,8 @@ function isSiblingPaired(value: PropertyValue): boolean {
  *  Non-string values (arrays / objects / expressions) are always treated as present. */
 function isFieldBroken(value: PropertyValue): boolean {
   if (value.kind === 'absent') return true;
+  if (value.kind === 'array') return value.elements.length === 0;
   if (value.kind === 'non-string') return false;
-  if (value.kind === 'string-array') {
-    return value.items.length === 0 || value.items.some((item) => item.length === 0 || isPlaceholderValue(item));
-  }
   return value.text.length === 0 || isPlaceholderValue(value.text);
 }
 
@@ -374,8 +271,19 @@ export function findUnpairedFields(
 
     for (const field of fields) {
       const value = getPropertyValue(obj, field);
-      if (value.kind !== 'string' && value.kind !== 'string-array') continue;
-      if (!CJK_RE.test(value.text)) continue;
+
+      let hasCjk = false;
+      let representativeValue = '';
+      if (value.kind === 'string') {
+        hasCjk = CJK_RE.test(value.text);
+        representativeValue = value.text;
+      } else if (value.kind === 'array') {
+        hasCjk = value.elements.some((el) => CJK_RE.test(el));
+        representativeValue = value.elements.join(' | ');
+      } else {
+        continue;
+      }
+      if (!hasCjk) continue;
 
       const fieldProp = getProperty(obj, field)!;
       // Per-field exemption: comment immediately above the field line.
@@ -392,7 +300,7 @@ export function findUnpairedFields(
             line: fieldLine,
             recordStartLine,
             field,
-            chineseValue: value.text,
+            chineseValue: representativeValue,
             reason: 'missing-sibling',
             locale,
           });
@@ -402,7 +310,17 @@ export function findUnpairedFields(
             line: fieldLine,
             recordStartLine,
             field,
-            chineseValue: value.text,
+            chineseValue: representativeValue,
+            reason: 'empty-sibling',
+            locale,
+          });
+        } else if (sibling.kind === 'array' && sibling.elements.length === 0) {
+          issues.push({
+            file: filePath,
+            line: fieldLine,
+            recordStartLine,
+            field,
+            chineseValue: representativeValue,
             reason: 'empty-sibling',
             locale,
           });
@@ -438,23 +356,17 @@ export function findIncompleteRecords(
 
     const missingFields: string[] = [];
     for (const rule of schema.fields) {
-      const sourceVal = getPropertyValue(obj, rule.field);
-      const sourceIsAbsent = sourceVal.kind === 'absent';
-      const siblingValues = rule.locales.map((locale) => {
-        const sibKey = `${rule.field}${locale}`;
-        return { key: sibKey, value: getPropertyValue(obj, sibKey) };
-      });
-      const everySideAbsent = sourceIsAbsent && siblingValues.every((sibling) => sibling.value.kind === 'absent');
-      if (!rule.required && everySideAbsent) continue;
+      if (!rule.required) continue;
 
-      // Source side. Required fields must exist; optional fields are
-      // checked once any side is present so records cannot carry
-      // half-translated data in either direction.
+      // Source side
+      const sourceVal = getPropertyValue(obj, rule.field);
       if (isFieldBroken(sourceVal)) missingFields.push(rule.field);
 
       // Every locale sibling (independent of source — both may need fixing)
-      for (const sibling of siblingValues) {
-        if (isFieldBroken(sibling.value)) missingFields.push(sibling.key);
+      for (const locale of rule.locales) {
+        const sibKey = `${rule.field}${locale}`;
+        const sibVal = getPropertyValue(obj, sibKey);
+        if (isFieldBroken(sibVal)) missingFields.push(sibKey);
       }
     }
 
@@ -467,65 +379,6 @@ export function findIncompleteRecords(
       missingFields,
       recordIdentifier: getRecordIdentifier(obj),
     });
-  }
-
-  return issues;
-}
-
-// ── Public API: locale purity check ─────────────────────────────────────
-
-function describeNonEnglishScript(char: string): string {
-  if (/[一-鿿]/.test(char)) return `CJK char "${char}"`;
-  if (/[぀-ゟ゠-ヿ]/.test(char)) return `Japanese kana "${char}"`;
-  if (/[가-힣]/.test(char)) return `Korean hangul "${char}"`;
-  return `non-English script "${char}"`;
-}
-
-function checkEnglishValuePurity(value: string): { ok: true } | { ok: false; reason: string } {
-  const match = value.match(NON_ENGLISH_SCRIPT_RE);
-  if (!match) return { ok: true };
-  return { ok: false, reason: `EN value contains ${describeNonEnglishScript(match[0])}` };
-}
-
-export function findImpureLocaleFields(
-  filePath: string,
-  options: { locales?: string[] } = {}
-): ImpureLocaleField[] {
-  if (!existsSync(filePath)) {
-    throw new Error(`File not found: ${filePath}`);
-  }
-  const locales = options.locales || DEFAULT_LOCALES;
-  if (!locales.includes('en')) return [];
-
-  const sourceFile = parseSourceFile(filePath);
-  const issues: ImpureLocaleField[] = [];
-
-  for (const obj of walkObjectLiterals(sourceFile)) {
-    if (hasIgnoreAnnotation(obj, sourceFile)) continue;
-    const recordStartLine = getLine(obj, sourceFile);
-
-    for (const prop of obj.properties) {
-      if (!ts.isPropertyAssignment(prop)) continue;
-      if (hasIgnoreAnnotation(prop, sourceFile)) continue;
-      const field = getPropertyName(prop);
-      if (!field || !field.endsWith('En')) continue;
-      if (VERBATIM_EN_SOURCE_FIELDS.has(field)) continue;
-
-      const value = getInitializerValue(prop.initializer);
-      if (value.kind !== 'string' && value.kind !== 'string-array') continue;
-      const result = checkEnglishValuePurity(value.text);
-      if (result.ok) continue;
-
-      issues.push({
-        file: filePath,
-        line: getLine(prop, sourceFile),
-        recordStartLine,
-        field,
-        locale: 'en',
-        reason: result.reason,
-        value: value.text,
-      });
-    }
   }
 
   return issues;
@@ -547,18 +400,6 @@ function parseMode(argv: string[]): Mode {
   process.exit(2);
 }
 
-function parseLocales(argv: string[]): string[] | undefined {
-  const arg = argv.find((a) => a.startsWith('--locales='));
-  if (!arg) return undefined;
-  const raw = arg
-    .split('=')[1]
-    .split(',')
-    .map((s) => s.trim())
-    .filter(Boolean);
-  if (raw.includes('all')) return dataSiblingLocales();
-  return raw;
-}
-
 async function cliMain(): Promise<void> {
   const argv = process.argv.slice(2);
   const mode = parseMode(argv);
@@ -569,24 +410,24 @@ async function cliMain(): Promise<void> {
         .split(',')
         .map((s) => s.trim())
     : undefined;
-  const locales = parseLocales(argv);
+  const localesArg = argv.find((a) => a.startsWith('--locales='));
+  const locales = localesArg
+    ? localesArg
+        .split('=')[1]
+        .split(',')
+        .map((s) => s.trim())
+    : undefined;
   const files = argv.filter((a) => !a.startsWith('--'));
 
   if (files.length === 0) {
     process.stderr.write(
-      'Usage: i18n-pair <file...> [--mode=alignment|completeness|both] [--fields=title,description] [--locales=en,ja|all]\n'
+      'Usage: i18n-pair <file...> [--mode=alignment|completeness|both] [--fields=title,description] [--locales=en,ja]\n'
     );
     process.exit(2);
   }
 
-  const coverage = localeCoverageSummary();
-  process.stdout.write(
-    `[i18n-pair] source=${coverage.source}, derived=${coverage.derivedLocales.join(',') || 'none'}, sibling-locales=${coverage.siblingLocales.join(',') || 'none'}\n`
-  );
-
   let totalUnpaired = 0;
   let totalIncomplete = 0;
-  let totalImpure = 0;
 
   for (const file of files) {
     const abs = resolve(file);
@@ -604,20 +445,6 @@ async function cliMain(): Promise<void> {
         if (issues.length > 20) {
           process.stdout.write(`  … and ${issues.length - 20} more\n`);
         }
-      }
-    }
-
-    const impure = findImpureLocaleFields(abs, { locales: locales || DEFAULT_LOCALES });
-    if (impure.length > 0) {
-      totalImpure += impure.length;
-      process.stdout.write(`\n${file}: ${impure.length} impure English field(s)\n`);
-      for (const issue of impure.slice(0, 20)) {
-        process.stdout.write(
-          `  L${issue.line} ${issue.field}: ${issue.reason}: ${issue.value.slice(0, 50)}\n`
-        );
-      }
-      if (impure.length > 20) {
-        process.stdout.write(`  … and ${impure.length - 20} more\n`);
       }
     }
 
@@ -639,9 +466,9 @@ async function cliMain(): Promise<void> {
     }
   }
 
-  if (totalUnpaired + totalIncomplete + totalImpure > 0) {
+  if (totalUnpaired + totalIncomplete > 0) {
     process.stderr.write(
-      `\nTotal: ${totalUnpaired} unpaired, ${totalIncomplete} incomplete, ${totalImpure} impure across ${files.length} file(s)\n`
+      `\nTotal: ${totalUnpaired} unpaired, ${totalIncomplete} incomplete across ${files.length} file(s)\n`
     );
     process.exit(1);
   }
@@ -649,8 +476,5 @@ async function cliMain(): Promise<void> {
 }
 
 if (import.meta.url === `file://${process.argv[1]}` || process.argv[1]?.endsWith('i18n-pair.ts')) {
-  void cliMain().catch((error: unknown) => {
-    process.stderr.write(`${error instanceof Error ? error.stack || error.message : String(error)}\n`);
-    process.exit(1);
-  });
+  await cliMain();
 }

@@ -110,7 +110,7 @@ function injectParagraphsJa(source: string, videoId: string, paragraphsKo: strin
 
   const existingJaRe = /(\n\s{4}paragraphsKo:\s*\[[\s\S]*?\n\s{4}\],)/;
   if (existingJaRe.test(recordBody)) {
-    const replacedBody = recordBody.replace(existingJaRe, `\n${formatted}`);
+    const replacedBody = recordBody.replace(existingJaRe, () => `\n${formatted}`);
     return source.slice(0, openIdx) + replacedBody + source.slice(closeIdx + 1);
   }
 
@@ -118,9 +118,9 @@ function injectParagraphsJa(source: string, videoId: string, paragraphsKo: strin
   const zhRe = /(\n\s{4}paragraphs:\s*\[[\s\S]*?\n\s{4}\],)/;
   let injected: string;
   if (enRe.test(recordBody)) {
-    injected = recordBody.replace(enRe, `$1\n${formatted}`);
+    injected = recordBody.replace(enRe, (m) => `${m}\n${formatted}`);
   } else if (zhRe.test(recordBody)) {
-    injected = recordBody.replace(zhRe, `$1\n${formatted}`);
+    injected = recordBody.replace(zhRe, (m) => `${m}\n${formatted}`);
   } else {
     throw new Error(`No paragraphs block found in record ${videoId}`);
   }
@@ -168,7 +168,7 @@ function injectDigestKo(source: string, videoId: string, digestKo: DigestKo): st
 
   const existingJaRe = /(\n\s{4}digestKo:\s*\{[\s\S]*?\n\s{4}\},)/;
   if (existingJaRe.test(recordBody)) {
-    const replacedBody = recordBody.replace(existingJaRe, `\n${formatted}`);
+    const replacedBody = recordBody.replace(existingJaRe, () => `\n${formatted}`);
     return source.slice(0, openIdx) + replacedBody + source.slice(closeIdx + 1);
   }
 
@@ -179,11 +179,11 @@ function injectDigestKo(source: string, videoId: string, digestKo: DigestKo): st
   const paraJaRe = /(\n\s{4}paragraphsKo:\s*\[[\s\S]*?\n\s{4}\],)/;
   let injected: string;
   if (enRe.test(recordBody)) {
-    injected = recordBody.replace(enRe, `$1\n${formatted}`);
+    injected = recordBody.replace(enRe, (m) => `${m}\n${formatted}`);
   } else if (zhRe.test(recordBody)) {
-    injected = recordBody.replace(zhRe, `$1\n${formatted}`);
+    injected = recordBody.replace(zhRe, (m) => `${m}\n${formatted}`);
   } else if (paraJaRe.test(recordBody)) {
-    injected = recordBody.replace(paraJaRe, `$1\n${formatted}`);
+    injected = recordBody.replace(paraJaRe, (m) => `${m}\n${formatted}`);
   } else {
     throw new Error(`No anchor block found in record ${videoId} for digestKo`);
   }
@@ -204,11 +204,13 @@ function ensureInterfaceHasParagraphsJa(source: string): string {
 
 function ensureGetterHandlesJa(source: string): string {
   const newGetter =
-    `export function getVideoTranscriptParagraphs(videoId: string, lang: 'zh' | 'en' | 'ja'): string[] {\n` +
+    `export function getVideoTranscriptParagraphs(videoId: string, lang: string): string[] {\n` +
     `  const transcript = getVideoTranscript(videoId);\n` +
     `  if (!transcript) return [];\n` +
     `  if (lang === 'zh') return transcript.paragraphs;\n` +
-    `  if (lang === 'ja') return transcript.paragraphsKo || transcript.paragraphs;\n` +
+    `  if (lang === 'zh-tw') return transcript.paragraphs;\n` +
+    `  if (lang === 'ja') return transcript.paragraphsJa || transcript.paragraphsEn || transcript.paragraphs;\n` +
+    `  if (lang === 'ko') return transcript.paragraphsKo || transcript.paragraphsEn || transcript.paragraphs;\n` +
     `  return transcript.paragraphsEn || transcript.paragraphs;\n` +
     `}`;
   return source.replace(/export function getVideoTranscriptParagraphs[\s\S]*?^}/m, newGetter);
@@ -216,11 +218,12 @@ function ensureGetterHandlesJa(source: string): string {
 
 function ensureLanguageGetterHandlesJa(source: string): string {
   const newGetter =
-    `export function getVideoTranscriptLanguage(videoId: string, lang: 'zh' | 'en' | 'ja'): string | undefined {\n` +
+    `export function getVideoTranscriptLanguage(videoId: string, lang: string): string | undefined {\n` +
     `  const transcript = getVideoTranscript(videoId);\n` +
     `  if (!transcript) return undefined;\n` +
-    `  if (lang === 'zh') return transcript.paragraphs.length ? 'zh-CN' : undefined;\n` +
-    `  if (lang === 'ja' && transcript.paragraphsKo?.length) return 'ja';\n` +
+    `  if (lang === 'zh' || lang === 'zh-tw') return transcript.paragraphs.length ? 'zh-CN' : undefined;\n` +
+    `  if (lang === 'ja' && transcript.paragraphsJa?.length) return 'ja';\n` +
+    `  if (lang === 'ko' && transcript.paragraphsKo?.length) return 'ko';\n` +
     `  if (transcript.paragraphsEn?.length) return transcript.captionLanguage || (lang === 'en' ? 'en' : lang);\n` +
     `  return transcript.paragraphs.length ? 'zh-CN' : undefined;\n` +
     `}`;
