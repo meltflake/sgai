@@ -206,6 +206,7 @@ npx prettier --write src/
 > **🔴 翻译 transcript 文件（debate-transcripts / video-transcripts / speech-transcripts）时，必须用专用的逐 record 翻译脚本，禁止用 `backfill-ko-arrays.ts`。**
 >
 > 专用脚本：
+>
 > - `scripts/videos/translate-transcripts-ko.ts` — 视频字幕 Ko
 > - `scripts/hansard/translate-debate-transcripts-ko.ts` — 辩论全文 Ko
 >
