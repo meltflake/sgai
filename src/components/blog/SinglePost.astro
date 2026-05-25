@@ -58,11 +58,14 @@ const lang = getLangFromPath(new URL(Astro.url).pathname);
             post.category && (
               <>
                 {' '}
-                · post.category.slug ? (
-                <a class="hover:underline inline-block" href={getPermalink(post.category.slug, 'category')}>
-                  {post.category.title}
-                </a>
-                ) : (<span class="inline-block">{post.category.title}</span>)
+                ·{' '}
+                {post.category.slug ? (
+                  <a class="hover:underline inline-block" href={getPermalink(post.category.slug, 'category')}>
+                    {post.category.title}
+                  </a>
+                ) : (
+                  <span class="inline-block">{post.category.title}</span>
+                )}
               </>
             )
           }
