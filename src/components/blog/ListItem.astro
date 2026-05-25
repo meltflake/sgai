@@ -21,6 +21,7 @@ const image = (await findImage(post.image)) as ImageMetadata | undefined;
 const lang = getLangFromPath(new URL(Astro.url).pathname);
 
 const link = APP_BLOG?.post?.isEnabled ? localizedHref(getPermalink(post.permalink, 'post'), lang) : '';
+const categoryHref = post.category?.slug ? getPermalink(post.category.slug, 'category') : '';
 ---
 
 <article
@@ -86,8 +87,8 @@ const link = APP_BLOG?.post?.isEnabled ? localizedHref(getPermalink(post.permali
               <>
                 {' '}
                 ·{' '}
-                {post.category.slug ? (
-                  <a class="hover:underline" href={getPermalink(post.category.slug, 'category')}>
+                {categoryHref ? (
+                  <a class="hover:underline" href={categoryHref}>
                     {post.category.title}
                   </a>
                 ) : (
