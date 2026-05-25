@@ -4,9 +4,14 @@
 // bullets, highlights, strengths, weaknesses, etc.) that the string-only
 // backfill skips.
 //
-// The string backfill relies on findUnpairedFields which only flags
-// single-line string mismatches. Array fields span multiple lines and
-// need different detection + insertion logic.
+// ⚠️  NOT SUITABLE for transcript files (debate-transcripts, video-transcripts,
+// speech-transcripts). Those have hundreds of paragraphs per record and need
+// the dedicated per-record translate scripts instead:
+//   - scripts/videos/translate-transcripts-ko.ts
+//   - scripts/hansard/translate-debate-transcripts-ko.ts
+// This script translates ALL records' items in one batch and writes only at
+// the end — any process crash loses all work. The per-record scripts write
+// after each record and use sha256 caching.
 //
 // USAGE
 //   npx tsx scripts/i18n/backfill-ko-arrays.ts --all

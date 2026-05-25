@@ -201,6 +201,24 @@ npx prettier --write src/
 
 历史踩点：2026-05-21 用户发现 `/ja/videos/v062/` 显示 "No readable content for this video yet. Run npm run fetch:video-transcripts to refresh."。根因调查发现 5 条视频（v022/v040/v044/v061/v062）在 `video-transcripts.ts` 完全缺失：v022/v040/v044 是 YouTube 没字幕轨但 fetch emit 过滤了 unavailable 记录（[fetch-transcripts.ts:206](scripts/videos/fetch-transcripts.ts) 之前 `.filter((r) => r.paragraphs.length > 0)`），v061/v062 是新加的视频还没轮到 cron。本规则修复方式：(1) emit 改为 always 写 unavailable 占位 + 防 downgrade；(2) fetch 自动 chain translate；(3) 加 eval + CI 硬门 + weekly cron 防御。
 
+### 9. Transcript 翻译工具选择（关键）
+
+> **🔴 翻译 transcript 文件（debate-transcripts / video-transcripts / speech-transcripts）时，必须用专用的逐 record 翻译脚本，禁止用 `backfill-ko-arrays.ts`。**
+>
+> 专用脚本：
+> - `scripts/videos/translate-transcripts-ko.ts` — 视频字幕 Ko
+> - `scripts/hansard/translate-debate-transcripts-ko.ts` — 辩论全文 Ko
+>
+> 这些脚本的设计：每翻完一条 record 立即 `writeFileSync` 写入磁盘 + sha256 缓存。进程挂了不丢工作，重启自动跳过已完成 record。
+>
+> `backfill-ko-arrays.ts` **不能用于 transcript**——它把所有 record 的段落堆成一个 batch，120 秒超时反复 fallback，没有中间写入，进程一死全部白费。
+>
+> 运行时必须加超时：`SGAI_LLM_TIMEOUT_MS=300000`（300 秒），默认 120 秒对长段落不够。
+>
+> **⚠️ String.replace() 陷阱**：注入韩文翻译到 TS 源码时，`recordBody.replace(regex, '$1\n...')` 会把韩文里的 `$1,500` 当成 regex backreference。必须用 arrow function：`replace(regex, (m) => ...)`。
+
+历史踩点：2026-05-23~25 Ko 翻译 session。用错工具（backfill-ko-arrays.ts）导致 5 小时浪费，`$1` backreference bug 导致文件反复损坏，`alreadyDone` regex 跨 record 匹配导致 22 条辩论被静默跳过。详见 [`docs/20260525-ko-translation-postmortem.md`](docs/20260525-ko-translation-postmortem.md)。
+
 ## 项目结构
 
 ```
