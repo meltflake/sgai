@@ -85,10 +85,11 @@ const link = APP_BLOG?.post?.isEnabled ? localizedHref(getPermalink(post.permali
             post.category && (
               <>
                 {' '}
-                ·{' '}
+                · post.category.slug ? (
                 <a class="hover:underline" href={getPermalink(post.category.slug, 'category')}>
                   {post.category.title}
                 </a>
+                ) : (<span>{post.category.title}</span>)
               </>
             )
           }

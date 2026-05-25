@@ -23,7 +23,11 @@ export const getStaticPaths = (async ({ paginate }) => {
     const langPosts = allPosts.filter((p) => (p.lang ?? 'zh') === lang);
     const tags: Record<string, { slug: string; title: string }> = {};
     for (const post of langPosts) {
-      if (Array.isArray(post.tags)) for (const tag of post.tags) tags[tag.slug] = tag;
+      if (Array.isArray(post.tags)) {
+        for (const tag of post.tags) {
+          if (tag.slug) tags[tag.slug] = tag;
+        }
+      }
     }
     return Object.keys(tags).flatMap((tagSlug) =>
       paginate(

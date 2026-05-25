@@ -79,6 +79,31 @@ const MANUAL_TYPES = new Set<UpdateType>(['site', 'fix', 'longform']);
 // sort regardless. Add new entries at the top.
 export const MANUAL_UPDATES: Update[] = [
   {
+    date: '2026-05-25',
+    type: 'longform',
+    title: '《从 AI 看新加坡的转向能力》整篇更新',
+    titleEn: "Full rewrite: Singapore's capacity to pivot, seen through AI",
+    titleJa: '「AIから見るシンガポールの転換力」を全面更新',
+    titleKo: '「AI로 본 싱가포르의 전환 능력」 전체 업데이트',
+    summary:
+      '用 2026-05-25 最新稿替换旧版 AI 马六甲海峡文章，补入研究方法、五次转型、NAIS Update、Manus 风险与结论，并同步中英日韩版本。',
+    summaryEn:
+      'The old AI Strait of Malacca essay is replaced with the 2026-05-25 revision, adding method notes, the five transformations, NAIS Update, the Manus risk discussion, and zh/en/ja/ko versions.',
+    summaryJa:
+      '旧版のAIマラッカ海峡記事を2026-05-25版に差し替え、研究方法、5回の転換、NAIS Update、Manusリスク、結論を追加し、中英日韓で同期しました。',
+    summaryKo:
+      '기존 AI 말라카 해협 글을 2026-05-25 최신본으로 교체하고 연구 방법, 다섯 차례 전환, NAIS Update, Manus 리스크, 결론을 보강해 중영일한 버전을 동기화했습니다.',
+    links: [
+      {
+        href: '/singapore-ai-strategy-the-real-moat/',
+        label: '阅读全文',
+        labelEn: 'Read the essay',
+        labelJa: '記事を読む',
+        labelKo: '글 읽기',
+      },
+    ],
+  },
+  {
     date: '2026-05-10',
     type: 'site',
     title: '「最近更新」改为从数据文件派生',

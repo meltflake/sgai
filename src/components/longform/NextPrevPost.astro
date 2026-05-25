@@ -26,7 +26,7 @@ const newerLabel = t(lang, 'postNextNewer');
 
 // Filter siblings to the same lang as the host page so EN prev/next stays EN.
 const allPosts = (await fetchPosts()).filter((p) => {
-  const postLang = (p as Post & { lang?: 'zh' | 'en' | 'ja' }).lang ?? 'zh';
+  const postLang = (p as Post & { lang?: 'zh' | 'en' | 'ja' | 'ko' }).lang ?? 'zh';
   return postLang === lang;
 });
 // allPosts is already sorted desc by publishDate. Index 0 = newest.

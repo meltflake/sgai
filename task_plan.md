@@ -1,25 +1,28 @@
-# Task Plan: i18n Regression Guard
+# Task Plan: Singapore AI Moat Article Update
 
-Date: 2026-05-24
+Date: 2026-05-25
 
 ## Goal
 
-Find the root cause of non-English localized pages rendering English content, then add development and programmatic safeguards so this class of regression is caught before deployment.
+Replace the existing `singapore-ai-strategy-the-real-moat` article with Luca's latest revised Chinese draft, remove author/NUS EMBA front matter from the article body, and provide localized versions for every authored locale supported by the site.
 
 ## Phases
 
-- [complete] Inspect latest commit and i18n architecture.
-- [complete] Identify affected content/data paths and current checks that missed them.
-- [complete] Implement code or CI-level guardrails with project documentation.
-- [complete] Run verification and record results.
-- [complete] Upgrade i18n completeness to a hard commit/push veto for configured user-visible fields.
-- [complete] Remove hard-coded locale lists so zh, zh-tw, and future languages are covered automatically.
-- [complete] Add English purity gate for Chinese/Japanese/Korean residue in authored `*En` fields.
-- [complete] Add source-template hardcode scan to local `npm run check`.
+- [complete] Inspect current article files, locale structure, and latest draft.
+- [complete] Convert the revised Chinese draft into site-ready markdown.
+- [complete] Translate and update authored locale copies.
+- [complete] Update changelog/version metadata as required by the project.
+- [complete] Run formatting, i18n, and build checks.
+
+## Decisions
+
+- Preserve the existing URL slug unless repository routing shows otherwise.
+- Use existing project locale directories as the source of truth for "multi-language".
+- Do not publish NUS EMBA / assignment / author metadata inside the public article body.
 
 ## Errors Encountered
 
-| Error                                                                                             | Attempt                                                    | Resolution                                                                                   |
-| ------------------------------------------------------------------------------------------------- | ---------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
-| `tsx -e` import of `i18n-pair.ts` failed because the module has top-level await in its CLI guard. | Tried to simulate a stricter schema inline before editing. | Use the CLI and patch the module directly; avoid relying on `tsx -e` imports for this probe. |
-| Astro parsed `pickLocalized<string[]>` inside JSX as a tag.                                       | Added typed array lookup directly in templates.            | Move typed lookups to frontmatter helpers or cast results before JSX rendering.              |
+| Error                                                                    | Attempt                                                                    | Resolution                                                                                            |
+| ------------------------------------------------------------------------ | -------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| zsh treated Astro route filenames with square brackets as glob patterns. | Read `[lang]` and `[...blog]` files without quoting.                       | Re-ran the reads with quoted paths.                                                                   |
+| `npm run build` failed with `Missing parameter: tag`.                    | Added Korean blog tags; Hangul-only tag titles slugified to empty strings. | Filter empty tag slugs in localized tag routes and render empty-slug tags/categories as plain labels. |

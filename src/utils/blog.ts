@@ -74,8 +74,8 @@ const getNormalizedPost = async (post: CollectionEntry<'post'>): Promise<Post> =
   // `<lang>-` depending on loader version — handle both shapes. The
   // `lang` frontmatter value (when present) is the authoritative override.
   const idNoMd = id.replace(/\.(md|mdx)$/i, '');
-  type PostLang = 'zh' | 'en' | 'ja';
-  const KNOWN_POST_LANGS: PostLang[] = ['en', 'ja'];
+  type PostLang = 'zh' | 'en' | 'ja' | 'ko';
+  const KNOWN_POST_LANGS: PostLang[] = ['en', 'ja', 'ko'];
   let langFromName: PostLang | undefined;
   for (const candidate of KNOWN_POST_LANGS) {
     if (new RegExp(`^${candidate}[/\\\\-]`, 'i').test(idNoMd)) {
@@ -227,7 +227,7 @@ export const getStaticPathsBlogList = async ({
   lang,
 }: {
   paginate: PaginateFunction;
-  lang?: 'zh' | 'en' | 'ja';
+  lang?: 'zh' | 'en' | 'ja' | 'ko';
 }) => {
   if (!isBlogEnabled || !isBlogListRouteEnabled) return [];
   const all = await fetchPosts();
