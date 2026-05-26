@@ -220,6 +220,32 @@ npx prettier --write src/
 
 历史踩点：2026-05-23~25 Ko 翻译 session。用错工具（backfill-ko-arrays.ts）导致 5 小时浪费，`$1` backreference bug 导致文件反复损坏，`alreadyDone` regex 跨 record 匹配导致 22 条辩论被静默跳过。详见 [`docs/20260525-ko-translation-postmortem.md`](docs/20260525-ko-translation-postmortem.md)。
 
+### 10. 繁体中文渲染纪律（关键 — 最高优先级）
+
+> **🔴 在 `src/data/` 或 `src/utils/` 写任何 `if (lang === 'zh-tw')` 分支返回 zh 内容时，**必须**经过 [`toTraditional()`](src/i18n/opencc.ts) 或 [`pickLocalized()`](src/i18n/index.ts)。直接 `return rawZhData` 会让 zh-tw 页面渲染简体中文。**
+>
+> **🔴 新加坡部委 / 机构的官方中文名（MDDI、IMDA、MCCY、MICA、IDA 等）受 [`src/i18n/protected-terms.ts`](src/i18n/protected-terms.ts) `PROTECTED_TERMS` 列表保护。**OpenCC s2twp 默认会把 "信息" → "資訊"、"社区" → "社群"，破坏官方机构名。`PROTECTED_TERMS` 在 OpenCC 转换前后做占位符拦截，保留正确形式。**新增的官方机构名必须加进 `PROTECTED_TERMS`。**
+>
+> 双层防御：
+>
+> 1. **源码层**（即时反馈）：`npm run check:zh-tw-renderers` 静态扫 `src/data/` 和 `src/utils/`，找出有 `lang === 'zh-tw'` 但没 `toTraditional` / `pickLocalized` 的文件。挂在 `npm run check` 里，PR 时跑。
+> 2. **构建层**（构建后真值校验）：`npm run check:i18n`（带 `--all` 跑所有 5 个 locale）扫 `dist/<lang>/**/*.html` 找异种文字残留。挂在 `npm run check:dist` 里，CI 跑。
+> 3. **架构层**（部委名保护）：`npm run check:zh-tw-misconversion` 扫 `dist/zh-tw/**/*.html` 找已知部委名误转 pattern（如 `數字發展與資訊部` → 应为 `數字發展與信息部`）。挂在 `check:dist` 和 weekly evals。
+> 4. **单元测试**：[`scripts/lib/__tests__/opencc-protected-terms.test.ts`](scripts/lib/__tests__/opencc-protected-terms.test.ts) 13 测试覆盖 PROTECTED_TERMS pipeline，确保未来重构不破坏保护。
+>
+> **加新部委名 / sg-specific 词的流程**：
+>
+> 1. 跑实测验证 OpenCC 默认行为：
+>    ```
+>    npx tsx -e "import { toTraditional } from './src/i18n/opencc'; console.log(toTraditional('xxx'))"
+>    ```
+> 2. 如果默认转换破坏了官方名，加进 [`src/i18n/protected-terms.ts`](src/i18n/protected-terms.ts) 的 `PROTECTED_TERMS` 数组，写明 `zh` 简体源 + `zhTw` 保护后的繁体形式。
+> 3. 单元测试的 round-trip 测试会自动覆盖新条目。
+>
+> **加新 zh-tw misconversion eval pattern 的原则**：必须 unambiguous——如果某个错误形式（如 "資訊部"）也可能来自合法的 zh 源（如某些 sg 文档历史上用 "资讯部"），就不要加进 eval `MISCONVERSIONS` 数组。详见 [`scripts/evals/zh-tw-misconversion/check.ts`](scripts/evals/zh-tw-misconversion/check.ts) 顶部 CRITICAL 注释。
+
+历史踩点：2026-05-26 一次性踩到 5 类相关 bug。(1) `getVideoTranscriptParagraphs` 在 zh-tw 分支直接 `return transcript.paragraphs` 漏掉 `toTraditional()`，59 个 `/zh-tw/videos/` 页面 5766 处简体残留。(2) OpenCC s2twp 把 MDDI/IMDA/MCCY 等部委名词组转换破坏（2000+ 处）。(3) mmseg 分词把 "家制造" 分错段，制 不转换。(4) eval 初版用 "資訊部" 当 pattern 引起 false positive（合法 zh 源 "资讯部" 也产生这个输出）。(5) 自己 commit message 的 `summaryEn` 嵌中文，触发 EN 页面 CJK 残留。本规则即此次事故事后加固。
+
 ## 项目结构
 
 ```

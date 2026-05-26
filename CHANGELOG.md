@@ -4,6 +4,18 @@
 
 ---
 
+## 0.18.1 — 2026-05-26
+
+### 加固：繁体中文渲染的系统性防御
+
+事后梳理：0.18.0 一次性踩到 5 类相关 bug。原因是没有自动机制阻止"zh-tw 渲染绕过 `toTraditional()`"和"OpenCC 误转部委名"。补三层防御：
+
+- **源码层（即时）**：新增 [`scripts/check-zh-tw-renderers.mjs`](scripts/check-zh-tw-renderers.mjs)，静态扫 `src/data/` 和 `src/utils/` 找出有 `if (lang === 'zh-tw')` 分支但没 `toTraditional` / `pickLocalized` 的文件。挂进 `npm run check`，PR 时 0.5 秒返回。直接命中 0.18.0 修复的 video-transcripts bug 类。
+- **构建层（覆盖所有 locale）**：`check:i18n` 改为带 `--all` flag，从只扫 EN 改为扫所有 5 个 locale（en/zh/zh-tw/ja/ko），任何 locale 出现异种文字残留就 FAIL。CI 的 `npm run check:dist` 自动跑。0.18.0 之前 zh-tw / ja / ko 残留只有手动 `--lang zh-tw` 才能 catch，video-transcripts bug 因此潜伏。
+- **文档层（认知）**：CLAUDE.md 新增规则 #10「繁体中文渲染纪律」，标记最高优先级。详细说明：(a) zh-tw 渲染分支强制走 `toTraditional` / `pickLocalized`；(b) sg 部委 / 机构名走 [`src/i18n/protected-terms.ts`](src/i18n/protected-terms.ts) PROTECTED_TERMS；(c) 加新部委名的流程；(d) eval pattern 必须 unambiguous 的原则；(e) 历史事故回顾。
+
+---
+
 ## 0.18.0 — 2026-05-26
 
 ### 新发布：National AI Missions 长文（五语同步）
