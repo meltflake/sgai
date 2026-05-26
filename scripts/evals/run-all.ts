@@ -87,6 +87,15 @@ const STAGES: Stage[] = [
     needsDist: true,
     frequency: 'weekly',
   },
+  // zh-tw misconversion — scan dist/zh-tw/**/*.html for OpenCC phrase
+  // substitution mistakes the PROTECTED_TERMS pipeline should prevent
+  // (resp. 信息部→資訊部, IMDA, MCCY, etc.). Needs a build.
+  {
+    name: 'zh-tw-misconversion',
+    cmd: ['npx', 'tsx', 'scripts/evals/zh-tw-misconversion/check.ts'],
+    needsDist: true,
+    frequency: 'weekly',
+  },
   {
     name: 'ai-summary',
     cmd: ['npx', 'tsx', 'scripts/evals/ai-summary/check.ts'],

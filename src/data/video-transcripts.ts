@@ -10892,7 +10892,7 @@ export function getVideoTranscriptParagraphs(videoId: string, lang: string): str
   const transcript = getVideoTranscript(videoId);
   if (!transcript) return [];
   if (lang === 'zh') return transcript.paragraphs;
-  if (lang === 'zh-tw') return transcript.paragraphs;
+  if (lang === 'zh-tw') return transcript.paragraphs.map((p) => toTraditional(p));
   if (lang === 'ja') return transcript.paragraphsJa || transcript.paragraphsEn || transcript.paragraphs;
   if (lang === 'ko') return transcript.paragraphsKo || transcript.paragraphsEn || transcript.paragraphs;
   return transcript.paragraphsEn || transcript.paragraphs;
@@ -10901,7 +10901,8 @@ export function getVideoTranscriptParagraphs(videoId: string, lang: string): str
 export function getVideoTranscriptLanguage(videoId: string, lang: string): string | undefined {
   const transcript = getVideoTranscript(videoId);
   if (!transcript) return undefined;
-  if (lang === 'zh' || lang === 'zh-tw') return transcript.paragraphs.length ? 'zh-CN' : undefined;
+  if (lang === 'zh') return transcript.paragraphs.length ? 'zh-CN' : undefined;
+  if (lang === 'zh-tw') return transcript.paragraphs.length ? 'zh-Hant' : undefined;
   if (lang === 'ja' && transcript.paragraphsJa?.length) return 'ja';
   if (lang === 'ko' && transcript.paragraphsKo?.length) return 'ko';
   if (transcript.paragraphsEn?.length) return transcript.captionLanguage || (lang === 'en' ? 'en' : lang);

@@ -4,6 +4,36 @@
 
 ---
 
+## 0.18.0 — 2026-05-26
+
+### 新发布：National AI Missions 长文（五语同步）
+
+- 新增 [`/national-ai-missions-2026/`](src/data/post/national-ai-missions-2026.md) 长文（新闻报道体），覆盖 5/20 ATxSummit 公布的 NAIS Update 与四项 Missions（先进制造、互联互通、金融、医疗），加上同日 NVIDIA Singapore AI Research Lab 和 PDD 多运营商机器人 testbed 联动事项。
+- 中、英、日、韩、繁体中文五语同时发布。
+- 在 [`src/data/updates.ts`](src/data/updates.ts) `MANUAL_UPDATES` 添加 longform entry，首页 RecentUpdates 自动露出。
+
+### 修复：繁体中文视频转录页面简体残留
+
+- `getVideoTranscriptParagraphs` 对 `zh-tw` locale 直接返回 zh `paragraphs` 数组，跳过了 `toTraditional()` 转换——59 个 `/zh-tw/videos/<id>/` 页面渲染出 5766 处简体字残留（v005/v006/v036/v061/v062 等）。
+- 修 [src/data/video-transcripts.ts:10895](src/data/video-transcripts.ts:10895)：`zh-tw` 分支改为 `paragraphs.map((p) => toTraditional(p))`，与同文件 `convertDigestToTraditional` 一致。
+- 顺手修 `getVideoTranscriptLanguage`：`zh-tw` 应该返回 `zh-Hant`（之前和 zh 共享 `zh-CN`）。
+- 修复后 `node scripts/i18n-check.mjs --lang zh-tw` 从 5766 hits 降到 0。
+
+### 修复：繁体中文部委名 OpenCC 误转
+
+- OpenCC s2twp 把新加坡部委的官方中文名（MDDI、IMDA、MCCY 等）的关键词组误转为 Taiwan 惯用词组，破坏机构名，全站 2000+ 处呈现错误。
+- 新建 [`src/i18n/protected-terms.ts`](src/i18n/protected-terms.ts)，列出 ~10 个需要保护的官方机构名。
+- 修改 [`src/i18n/opencc.ts`](src/i18n/opencc.ts) 加入 pre/post placeholder 流程：转换前把保护词替换为 `\x00PROT<i>\x00` 占位符 → 跑 OpenCC s2twp + POST_DICT → 把占位符替换回正确的繁体形式。
+- POST_DICT 新增 `家制造` → `家製造` 修补 mmseg 分词漏洞（"30 家制造企业" 中 "制" 不转换）。
+- 单元测试：[`scripts/lib/__tests__/opencc-protected-terms.test.ts`](scripts/lib/__tests__/opencc-protected-terms.test.ts) 13 个测试覆盖整个流程。
+- Eval 防御：[`scripts/evals/zh-tw-misconversion/check.ts`](scripts/evals/zh-tw-misconversion/check.ts) 扫 `dist/zh-tw/**/*.html` 找已知误转词，挂到 `npm run check:dist` + `npm run eval` weekly cron。
+
+### 新增工具
+
+- [`scripts/refresh/post-translations/translate-post.ts`](scripts/refresh/post-translations/translate-post.ts)：博客 markdown 一键翻译到 en/ja/ko，复用 `scripts/lib/translate.ts` 的 batch + cache，加强了 markdown 保留 prompt。
+
+---
+
 ## 0.17.10 — 2026-05-25
 
 ### 博客分类显示修复

@@ -23,11 +23,22 @@
 //   3. SSG runs once per build, so the runtime cost is amortized across
 //      all visitors.
 //
-// Hand-override channel: src/i18n/index.ts:`zhTw` dict accepts entries
-// where the converter misfires (proper-noun branding, Singapore-specific
-// terms). pickLocalized / t() check the dict first, fall back to OpenCC.
+// Hand-override channels (two layers):
+//   1. src/i18n/index.ts:`zhTw` dict — entry-level overrides for the
+//      static UI copy keyed by zh-dict key. pickLocalized / t() check
+//      this first, before reaching the OpenCC path.
+//   2. src/i18n/protected-terms.ts:`PROTECTED_TERMS` — substring-level
+//      overrides applied *inside* the OpenCC pipeline. Wraps the
+//      converter so any text containing a protected term (e.g.
+//      "数字发展与信息部") gets the term placeholder-swapped before
+//      OpenCC runs, then swapped back to the correct Traditional form
+//      after. This is what stops OpenCC from mangling Singapore
+//      institutional names regardless of whether the call site went
+//      through pickLocalized or hit toTraditional() directly.
 
 import * as OpenCC from 'opencc-js';
+
+import { PROTECTED_TERMS, type ProtectedTerm } from './protected-terms';
 
 // Post-OpenCC dictionary that fixes the handful of mmseg-segmentation
 // edge cases where the main converter incorrectly leaves 后 (Simplified
@@ -59,7 +70,56 @@ const POST_DICT: ReadonlyArray<readonly [string, string]> = [
   ['以后', '以後'],
   ['最后', '最後'],
   ['前后', '前後'],
+  // mmseg groups "<量词>家制造" wrongly so 制 escapes the 制→製 lookup.
+  // Confirmed cases: "30家制造", "一家制造", "百家制造". The post-pass
+  // is the simplest fix without re-segmenting.
+  ['家制造', '家製造'],
 ];
+
+// Sentinel placeholder format: NUL + base32-ish ID + NUL. Picked because:
+//   - \x00 (NUL) never appears in real source content
+//   - OpenCC trie segmentation treats NUL as a hard break, so the
+//     placeholder body is guaranteed to survive char-by-char unchanged
+//   - distinct from any plausible CJK input
+const PLACEHOLDER_PREFIX = '\x00PROT';
+const PLACEHOLDER_SUFFIX = '\x00';
+
+// Apply protected-term substitution in two passes:
+//   pre:  scan input longest-zh-first, replace each occurrence with a
+//         sentinel placeholder so OpenCC doesn't touch the term
+//   post: scan output, replace each placeholder with the term's zhTw value
+//
+// We sort by zh length DESC so compound names ("数字发展与信息部") match
+// before their sub-fragments ("信息部"). Without this, the shorter
+// fragment would consume the substring first and the compound wouldn't
+// fire — leading to e.g. "数字发展与<placeholder for 信息部>" which
+// after OpenCC would land "數字發展與信息部" with no harm (placeholder
+// still works), but the longest-first order keeps semantics clean and
+// avoids edge cases when terms partially overlap.
+const SORTED_TERMS: ReadonlyArray<ProtectedTerm> = [...PROTECTED_TERMS].sort((a, b) => b.zh.length - a.zh.length);
+
+function preProtect(input: string): { masked: string; hits: Map<string, string> } {
+  // hits maps placeholder → zhTw replacement for this call
+  const hits = new Map<string, string>();
+  let masked = input;
+  for (let i = 0; i < SORTED_TERMS.length; i++) {
+    const term = SORTED_TERMS[i];
+    if (!masked.includes(term.zh)) continue;
+    const placeholder = `${PLACEHOLDER_PREFIX}${i}${PLACEHOLDER_SUFFIX}`;
+    masked = masked.split(term.zh).join(placeholder);
+    hits.set(placeholder, term.zhTw);
+  }
+  return { masked, hits };
+}
+
+function postRestore(input: string, hits: Map<string, string>): string {
+  if (hits.size === 0) return input;
+  let restored = input;
+  for (const [placeholder, replacement] of hits) {
+    restored = restored.split(placeholder).join(replacement);
+  }
+  return restored;
+}
 
 let _convert: ((s: string) => string) | null = null;
 
@@ -68,12 +128,22 @@ function getConverter(): (s: string) => string {
   // `cn` → `twp`: Simplified (Mainland) to Traditional (Taiwan, with phrase substitution).
   const main = OpenCC.Converter({ from: 'cn', to: 'twp' });
   const post = OpenCC.CustomConverter(POST_DICT.map(([a, b]) => [a, b]));
-  _convert = (s: string) => post(main(s));
+  _convert = (s: string) => {
+    const { masked, hits } = preProtect(s);
+    const converted = post(main(masked));
+    return postRestore(converted, hits);
+  };
   return _convert;
 }
 
-/** Convert a Simplified Chinese string to Traditional (Taiwan idiom). */
+/** Convert a Simplified Chinese string to Traditional (Taiwan idiom),
+ *  with substring-level protection for Singapore institutional names
+ *  via PROTECTED_TERMS (see protected-terms.ts). */
 export function toTraditional(input: string): string {
   if (!input) return input;
   return getConverter()(input);
 }
+
+// Exported for unit tests so they can assert the two-pass pipeline in
+// isolation without the OpenCC singleton bootstrap.
+export const _internals = { preProtect, postRestore, SORTED_TERMS };

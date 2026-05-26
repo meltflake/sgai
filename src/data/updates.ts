@@ -79,6 +79,47 @@ const MANUAL_TYPES = new Set<UpdateType>(['site', 'fix', 'longform']);
 // sort regardless. Add new entries at the top.
 export const MANUAL_UPDATES: Update[] = [
   {
+    date: '2026-05-26',
+    type: 'longform',
+    title: '新发布：新加坡公布四项 National AI Missions',
+    titleEn: 'New: Singapore unveils four National AI Missions',
+    titleJa: '新規公開：シンガポール、4 つの National AI Missions を発表',
+    titleKo: '신규 공개: 싱가포르, 4개 National AI Missions 발표',
+    summary:
+      '5/20 ATxSummit 上 Josephine Teo 公布 NAIS Update 与四项 Missions（先进制造、互联互通、金融、医疗），同日还公布 NVIDIA Singapore AI Research Lab 和 Punggol Digital District 多运营商机器人 testbed。新闻体长文，中英日韩繁体中文五语同步。',
+    summaryEn:
+      'At ATxSummit on 20 May, Josephine Teo unveiled the NAIS Update and four National AI Missions (Advanced Manufacturing, Connectivity, Finance, Healthcare); the same day brought announcements of the NVIDIA Singapore AI Research Lab and the Punggol Digital District multi-operator robot testbed. News-style long-form, published in all five languages.',
+    summaryJa:
+      '5/20 の ATxSummit で Josephine Teo が NAIS アップデートと 4 つの National AI Missions（先端製造、コネクティビティ、金融、医療）を発表。同日 NVIDIA Singapore AI Research Lab と Punggol Digital District 多事業者ロボット testbed も公表されました。報道体の長文記事を 5 言語で同時公開。',
+    summaryKo:
+      '5/20 ATxSummit에서 Josephine Teo가 NAIS 업데이트와 4개 National AI Missions(첨단 제조, 연결성, 금융, 의료)를 발표했습니다. 같은 날 NVIDIA Singapore AI Research Lab과 Punggol Digital District 다중 운영자 로봇 테스트베드도 공개되었습니다. 보도체 장문 기사를 5개 언어로 동시 공개합니다.',
+    links: [
+      {
+        href: '/national-ai-missions-2026/',
+        label: '阅读全文',
+        labelEn: 'Read the article',
+        labelJa: '記事を読む',
+        labelKo: '글 읽기',
+      },
+    ],
+  },
+  {
+    date: '2026-05-26',
+    type: 'fix',
+    title: '繁体中文：部委官方名 OpenCC 误转修复',
+    titleEn: 'zh-tw: protected-terms pipeline for Singapore ministry names',
+    titleJa: 'zh-tw：シンガポール省庁名の OpenCC 誤変換修正',
+    titleKo: 'zh-tw: 싱가포르 부처명 OpenCC 오변환 수정',
+    summary:
+      'OpenCC s2twp 把新加坡部委的官方中文名（MDDI、IMDA、MCCY 等）的关键词组误转为 Taiwan 惯用词组，在繁体中文渲染下破坏机构名。新建 src/i18n/protected-terms.ts 在转换前后做占位符拦截，保护约 10 个官方机构名，修复 2000+ 处误转。配套 npm run check:zh-tw-misconversion eval 防退化。',
+    summaryEn:
+      'OpenCC s2twp was wrongly converting Singapore ministry names (MDDI, IMDA, MCCY) into Taiwan-style variants in zh-tw rendering. The new src/i18n/protected-terms.ts adds a pre/post placeholder pass that protects ~10 official institutional names, fixing 2000+ occurrences across the site. A new npm run check:zh-tw-misconversion eval prevents regressions.',
+    summaryJa:
+      'OpenCC s2twp がシンガポール省庁の公式中国語名（MDDI、IMDA、MCCY など）の語をタイワン慣用語に誤変換し、繁体中国語レンダリング下で機関名を破壊していました。新規追加した src/i18n/protected-terms.ts が変換前後のプレースホルダ置換で約 10 件の機関名を保護し、サイト全体で 2000 件超の誤変換を修正。新規 eval npm run check:zh-tw-misconversion で後退を防ぎます。',
+    summaryKo:
+      'OpenCC s2twp가 싱가포르 부처의 공식 중국어명(MDDI, IMDA, MCCY 등) 단어를 Taiwan 관용 용어로 잘못 변환하여 번체 중국어 렌더링에서 기관명을 손상시켰습니다. 새로 추가된 src/i18n/protected-terms.ts가 변환 전후 플레이스홀더 치환으로 약 10개의 기관명을 보호하여 사이트 전체에서 2,000건 이상의 오변환을 수정합니다. 새 eval npm run check:zh-tw-misconversion이 회귀를 방지합니다.',
+  },
+  {
     date: '2026-05-25',
     type: 'longform',
     title: '《从 AI 看新加坡的转向能力》整篇更新',
