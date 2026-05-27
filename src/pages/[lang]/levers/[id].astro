@@ -9,6 +9,7 @@ import RelatedRail from '~/components/data/RelatedRail.astro';
 import Layout from '~/layouts/PageLayout.astro';
 import { dataDate } from '~/data/levers';
 import { NON_DEFAULT_ROUTE_LOCALES, IN_LANGUAGES, pickLocalized, localizedHref, t, type Lang } from '~/i18n';
+import { toTraditional } from '~/i18n/opencc';
 import { getDebateById, getPolicyById } from '~/utils/graph';
 import { leverItemSlug, leverPages, leverSlug } from '~/utils/entity-pages';
 
@@ -165,9 +166,28 @@ const description = isLever
   ? pickLocalized(lever, 'subtitle', lang) || lever.subtitle
   : pickLocalized(page.item, 'description', lang) || page.item.description;
 
+const itemMinistry = !isLever ? pickLocalized(page.item, 'ministry', lang) || page.item.ministry || '' : '';
+const itemScale = !isLever ? pickLocalized(page.item, 'scale', lang) || page.item.scale || '' : '';
+const descPrefix = !isLever ? [itemMinistry, itemScale].filter(Boolean).join(' · ') : '';
+const isCjk = lang === 'zh' || lang === 'zh-tw';
+const metaJoiner = isCjk ? '。' : '. ';
+const metaDescription = (
+  descPrefix && description ? `${descPrefix}${metaJoiner}${description}` : description || descPrefix
+).slice(0, 200);
+const brandSuffix =
+  lang === 'zh'
+    ? `新加坡国家 AI 抓手 ${lever.number} · sgai`
+    : lang === 'zh-tw'
+      ? toTraditional(`新加坡国家 AI 抓手 ${lever.number} · sgai`)
+      : lang === 'ja'
+        ? `シンガポール国家 AI レバー ${lever.number} · sgai`
+        : lang === 'ko'
+          ? `싱가포르 국가 AI 레버 ${lever.number} · sgai`
+          : `Singapore National AI Lever ${lever.number} · sgai`;
+
 const metadata = {
-  title: `${title} · ${t(lang, 'navLevers')}`,
-  description,
+  title: `${title} · ${brandSuffix}`,
+  description: metaDescription,
 };
 
 const schema = {

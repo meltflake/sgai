@@ -393,8 +393,9 @@ export const zh = {
   homeTrackerCta: '完整仪表盘 →',
 
   // Listings / categories
-  policiesPageTitle: 'AI 政策库',
-  policiesPageBlurb: '新加坡核心 AI 相关政策文档汇编，按分类整理，每类按时间倒序排列。',
+  policiesPageTitle: '新加坡 AI 政策库 — 全文档案与时间线 · sgai',
+  policiesPageBlurb:
+    '新加坡 AI 政策档案库：NAIS 2.0、Model AI Governance Framework、Copyright §244、AI Verify、ASEAN Guide 等核心政策全文与摘要，按战略/治理/法律/部门分类，时间倒序。',
   policiesItemsSuffix: '份',
   policyArchiveSuffix: '政策档案',
   backToPolicies: '返回政策库',
@@ -408,17 +409,19 @@ export const zh = {
   timelinePageDesc: '新加坡 AI 发展时间线：从 2014 年智慧国家到 2027 年国际 AI 奥林匹克，关键里程碑按时间排列。',
   ecosystemPageTitle: '生态地图',
   ecosystemPageDesc: '新加坡 AI 生态地图——政府机构、研究院所、企业与初创公司的完整版图。',
-  leversPageTitle: '国家 AI 抓手图谱',
+  leversPageTitle: '新加坡国家 AI 抓手图谱 — 6 大跨部委执行管线 · sgai',
   leversPageDesc:
-    '新加坡国家级 AI-native 转型不能按部门理解，要按"AI 引入路径"理解：基建、治理、人才、应用、政府自用、外交六个抓手，跨部委的完整执行管线。',
-  startupsPageTitle: 'AI 创业生态',
-  startupsPageDesc: '新加坡 AI 创业与相邻生态——650+ 相关样本、融资数据、独角兽、垂直领域与投资人一览。',
+    '新加坡国家级 AI-native 转型，按"AI 引入路径"重新归类 Budget 2026 + 各部委 AI 政策——基建、治理、人才、应用、政府自用、外交六个抓手，每条抓手都跨部委，链接政策原文。',
+  startupsPageTitle: '新加坡 AI 创业生态 — 650+ 公司、独角兽、融资、投资人 · sgai',
+  startupsPageDesc:
+    '新加坡 AI 创业生态完整地图：650+ AI-native / AI-enabled 公司样本、独角兽与上市级公司、按垂直领域分类、退出与并购案例、投资人网络与融资数据。',
   talentPageTitle: '人才培养',
   talentPageDesc: '新加坡 AI 人才培养体系——高校项目、政府培训计划、人才引进政策一览。',
   videosPageTitle: 'AI 视频观点',
   videosPageDesc: '新加坡政府官员、学者和行业领袖关于 AI 战略、治理、人才和产业的 YouTube 演讲与访谈合集。',
-  voicesPageTitle: 'AI 影响力图谱',
-  voicesPageDesc: '新加坡 AI 领域关键人物与核心机构的官方信息渠道，及 MDDI AI 相关演讲稿全文链接。',
+  voicesPageTitle: '新加坡 AI 影响力图谱 — 关键人物、机构、MDDI 演讲库 · sgai',
+  voicesPageDesc:
+    '新加坡 AI 政策关键决策者完整档案：部长、议员、学者、企业家——其国会发言、主导政策、视频观点与官方信息渠道；含 MDDI AI 相关演讲全文检索。',
   opensourcePageTitle: '官方开源与研究',
   opensourcePageDesc: '新加坡政府与官方机构的 AI 开源项目和研究成果汇总——SEA-LION、AI Verify 等。',
   communityOsPageTitle: '产学研开源生态',
@@ -674,8 +677,9 @@ export const en: Partial<Record<keyof typeof zh, string>> = {
   homeTrackerBlurb: 'Six dimensions, current reading, refreshed monthly.',
   homeTrackerCta: 'Full dashboard →',
 
-  policiesPageTitle: 'AI Policy Library',
-  policiesPageBlurb: 'Singapore’s core AI policy documents, grouped by category, newest first within each.',
+  policiesPageTitle: 'Singapore AI Policy Library — full archive & timeline · sgai',
+  policiesPageBlurb:
+    'Singapore AI policy archive: NAIS 2.0, Model AI Governance Framework, Copyright §244, AI Verify, ASEAN Guide and other core documents — full text and digests, grouped by strategy / governance / law / sector, newest first.',
   policiesItemsSuffix: 'items',
   policyArchiveSuffix: 'Policy Archive',
   backToPolicies: 'Back to Policy Library',
@@ -693,21 +697,21 @@ export const en: Partial<Record<keyof typeof zh, string>> = {
   ecosystemPageTitle: 'Ecosystem Map',
   ecosystemPageDesc:
     "Singapore's AI ecosystem map — government agencies, research institutes, corporates, and startups in one view.",
-  leversPageTitle: 'National AI Levers',
+  leversPageTitle: 'Singapore National AI Levers — 6 cross-ministry pipelines · sgai',
   leversPageDesc:
-    "Singapore's national-scale AI-native transformation cannot be read by ministry — read it by AI-injection path: infrastructure, governance, talent, applications, government self-use, and diplomacy. Six levers spanning multiple ministries form the full execution pipeline.",
-  startupsPageTitle: 'AI Startup Ecosystem',
+    "Singapore's national AI-native transformation re-classified by AI-injection path — infrastructure, governance, talent, applications, government self-use, and diplomacy. Six cross-ministry levers, with policy-source links from Budget 2026 and every ministry.",
+  startupsPageTitle: 'Singapore AI Startup Ecosystem — 650+ companies, unicorns, funding, VCs · sgai',
   startupsPageDesc:
-    "Singapore's AI startup and adjacent ecosystem — 650+ related samples, funding data, unicorns, verticals, and investors.",
+    "Singapore's AI startup ecosystem map: 650+ AI-native / AI-enabled company samples, unicorns and listed-scale companies, vertical breakdowns, exits and acquisitions, investor network, and funding data.",
   talentPageTitle: 'Talent Pipeline',
   talentPageDesc:
     "Singapore's AI talent pipeline — university programmes, government-led training schemes, and talent attraction policies in one view.",
   videosPageTitle: 'AI Video Library',
   videosPageDesc:
     'A curated collection of YouTube talks and interviews from Singapore government officials, academics, and industry leaders on AI strategy, governance, talent, and applications.',
-  voicesPageTitle: 'AI Influence Map',
+  voicesPageTitle: 'Singapore AI Influence Map — Ministers, MPs, Academics, MDDI speeches · sgai',
   voicesPageDesc:
-    "Singapore's key AI people and core institutions, their official communication channels, and the full archive of MDDI AI-related speeches.",
+    "Singapore's AI policy decision-makers in one map: ministers, MPs, academics, and industry leaders — their parliamentary speeches, policies championed, video positions, and official channels; full MDDI AI speech archive.",
   opensourcePageTitle: 'Official Open Source & Research',
   opensourcePageDesc:
     'Open-source projects and research output from the Singapore government and official agencies — SEA-LION, AI Verify, and more.',
@@ -969,9 +973,9 @@ export const ja: Partial<Record<keyof typeof zh, string>> = {
   homeTrackerSection: 'シンガポール AI ダッシュボード',
   homeTrackerBlurb: '6 つの観点の現在の数値、月ごとに更新されます。',
   homeTrackerCta: '完全なダッシュボード →',
-  policiesPageTitle: 'AI 政策ライブラリ',
+  policiesPageTitle: 'シンガポール AI 政策ライブラリ — 全文アーカイブとタイムライン · sgai',
   policiesPageBlurb:
-    'シンガポール AI コア関連政策ドキュメントの集約、カテゴリ別に整理され、各カテゴリは時系列の逆順で並んでいます。',
+    'シンガポール AI 政策アーカイブ：NAIS 2.0、Model AI Governance Framework、Copyright §244、AI Verify、ASEAN Guide 等の中核文書の全文と要約。戦略・ガバナンス・法律・省庁別に分類、時系列逆順。',
   policiesItemsSuffix: '件',
   policyArchiveSuffix: '政策アーカイブ',
   backToPolicies: '政策ライブラリに戻る',
@@ -988,20 +992,20 @@ export const ja: Partial<Record<keyof typeof zh, string>> = {
     'シンガポール AI 発展タイムライン：2014年スマートネイションから2027年国際 AI オリンピックまで、主要マイルストーンを時系列で整理。',
   ecosystemPageTitle: 'エコシステムマップ',
   ecosystemPageDesc: 'シンガポール AI エコシステムマップ——政府機関、研究機関、企業、スタートアップの全体像。',
-  leversPageTitle: '国家 AI レバーマップ',
+  leversPageTitle: 'シンガポール国家 AI レバー — 6 つの省庁横断パイプライン · sgai',
   leversPageDesc:
-    'シンガポールの国家レベル AI ネイティブ転換は、省庁別ではなく「AI 導入経路」で理解すべきです：インフラ・ガバナンス・人材・応用・政府自身の活用・外交という6つのレバーが省庁横断で構成する実行パイプライン。',
-  startupsPageTitle: 'AI スタートアップエコシステム',
+    'シンガポールの国家レベル AI ネイティブ転換を「AI 導入経路」で再分類——インフラ・ガバナンス・人材・応用・政府自身の活用・外交の6つのレバー。Budget 2026 と各省庁政策の原典リンク付き。',
+  startupsPageTitle: 'シンガポール AI スタートアップエコシステム — 650+ 社、ユニコーン、資金、投資家 · sgai',
   startupsPageDesc:
-    'シンガポール AI スタートアップと隣接エコシステム——650+ 関連サンプル、資金調達データ、ユニコーン、バーティカル分野と投資家一覧。',
+    'シンガポール AI スタートアップ生態地図：650+ の AI ネイティブ / AI 活用企業サンプル、ユニコーンと上場規模企業、バーティカル分類、エグジットと M&A 事例、投資家ネットワークと資金調達データ。',
   talentPageTitle: '人材育成',
   talentPageDesc: 'シンガポール AI 人材育成体系——大学プログラム、政府研修計画、人材招致政策の一覧。',
   videosPageTitle: 'AI ビデオ・オピニオン',
   videosPageDesc:
     'シンガポール政府高官、学者、業界リーダーによる AI 戦略・ガバナンス・人材・産業に関する YouTube スピーチとインタビュー集。',
-  voicesPageTitle: 'AI インフルエンスマップ',
+  voicesPageTitle: 'シンガポール AI インフルエンスマップ — 大臣・議員・学者・MDDI スピーチ · sgai',
   voicesPageDesc:
-    'シンガポール AI 分野のキーパーソンと中核機関の公式情報チャネル、および MDDI AI 関連スピーチ全文リンク。',
+    'シンガポール AI 政策の意思決定者を一望：大臣、議員、学者、産業リーダー——議会発言、主導政策、動画ポジション、公式チャネル。MDDI AI 関連スピーチ全文検索付き。',
   opensourcePageTitle: '公式オープンソースと研究',
   opensourcePageDesc:
     'シンガポール政府と公式機関の AI オープンソースプロジェクトおよび研究成果——SEA-LION、AI Verify 等。',
@@ -1261,8 +1265,9 @@ export const ko: Partial<Record<keyof typeof zh, string>> = {
   homeTrackerSection: '싱가포르 AI 대시보드',
   homeTrackerBlurb: '6개 차원의 현재 수치, 월별 업데이트.',
   homeTrackerCta: '전체 대시보드 →',
-  policiesPageTitle: 'AI 정책 라이브러리',
-  policiesPageBlurb: '싱가포르 핵심 AI 관련 정책 문서 모음, 분류에 따라 정리하고, 각 분류는 시간 역순으로 정렬.',
+  policiesPageTitle: '싱가포르 AI 정책 라이브러리 — 전체 아카이브와 타임라인 · sgai',
+  policiesPageBlurb:
+    '싱가포르 AI 정책 아카이브: NAIS 2.0, Model AI Governance Framework, Copyright §244, AI Verify, ASEAN Guide 등 핵심 문서의 전문과 요약. 전략·거버넌스·법률·부처별 분류, 시간 역순.',
   policiesItemsSuffix: '부',
   policyArchiveSuffix: '정책 아카이브',
   backToPolicies: '정책 라이브러리로 돌아가기',
@@ -1278,19 +1283,20 @@ export const ko: Partial<Record<keyof typeof zh, string>> = {
     '싱가포르 AI 발전 타임라인: 2014년 스마트 네이션에서 2027년 국제 AI 올림픽으로, 핵심 이정표를 시간 순서로 정렬.',
   ecosystemPageTitle: '생태계 지도',
   ecosystemPageDesc: '싱가포르 AI 생태계 지도 — 정부 기관, 연구 기관, 기업 및 스타트업의 완전한 지형도.',
-  leversPageTitle: '국가 AI 레버 지도',
+  leversPageTitle: '싱가포르 국가 AI 레버 — 6개 부처 횡단 실행 파이프라인 · sgai',
   leversPageDesc:
-    '싱가포르 국가급 AI-native 전환은 부서별로 이해할 수 없으며, 「AI 도입 경로」로 이해해야 합니다: 기반시설, 거버넌스, 인재, 애플리케이션, 정부 자체 사용, 외교의 여섯 개 레버로 구성된 부처 횡단적 완전한 실행 파이프라인.',
-  startupsPageTitle: 'AI 스타트업 생태계',
+    '싱가포르의 국가급 AI-native 전환을 「AI 도입 경로」로 재분류 — 기반시설, 거버넌스, 인재, 애플리케이션, 정부 자체 사용, 외교의 6개 레버. Budget 2026 및 각 부처 정책 원문 링크 포함.',
+  startupsPageTitle: '싱가포르 AI 스타트업 생태계 — 650+ 기업·유니콘·자금·투자자 · sgai',
   startupsPageDesc:
-    '싱가포르 AI 스타트업 생태계 및 인접 생태계 — 650+ 관련 샘플, 자금 조달 데이터, 유니콘, 수직 분야 및 투자자 개요입니다.',
+    '싱가포르 AI 스타트업 생태계 지도: 650+ AI-native / AI-enabled 기업 샘플, 유니콘과 상장 규모 기업, 수직 분야 분류, 엑싯과 인수 사례, 투자자 네트워크와 자금 조달 데이터.',
   talentPageTitle: '인재 양성',
   talentPageDesc: '싱가포르 AI 인재 양성 체계 — 대학 프로그램, 정부 교육 계획, 인재 유입 정책 개요입니다.',
   videosPageTitle: 'AI 영상 인사이트',
   videosPageDesc:
     '싱가포르 정부 관계자, 학자, 업계 지도자의 AI 전략, 거버넌스, 인재 및 산업에 관한 YouTube 강연 및 인터뷰 모음입니다.',
-  voicesPageTitle: 'AI 영향력 지도',
-  voicesPageDesc: '싱가포르 AI 분야 핵심 인물 및 주요 기관의 공식 정보 채널, 및 MDDI AI 관련 연설문 전문 링크입니다.',
+  voicesPageTitle: '싱가포르 AI 영향력 지도 — 장관·국회의원·학자·MDDI 연설 · sgai',
+  voicesPageDesc:
+    '싱가포르 AI 정책 의사결정자를 한 눈에: 장관, 국회의원, 학자, 산업 리더 — 국회 발언, 주도 정책, 영상 입장, 공식 채널. MDDI AI 관련 연설 전문 검색 포함.',
   opensourcePageTitle: '공식 오픈소스 및 연구',
   opensourcePageDesc:
     '싱가포르 정부 및 공식 기관의 AI 오픈소스 프로젝트 및 연구 성과 요약 — SEA-LION, AI Verify 등입니다.',

@@ -79,9 +79,23 @@ const notableQuote = pickLocalized<string>(debate, 'notableQuote', 'notableQuote
 
 const debateTitle = pickLocalized<string>(debate, 'title', 'titleEn', lang) || debate.title;
 
+// SERP-optimised title: include date + brand suffix. The data title already
+// carries year/ministry/topic where applicable (e.g. "2026 MOH COS — Gen AI
+// for Clinical Documentation"), so we just anchor it with date + site.
+const yearMatch = (debate.date || '').slice(0, 4);
+const typeLabelForMeta = debateTypeLabel(debate.type, lang);
+const topicListForMeta = (debate.topics || [])
+  .map((tt) => debateTopicLabel(tt, lang))
+  .slice(0, 2)
+  .join(' · ');
+const metaDescPrefix = [debate.date, typeLabelForMeta, topicListForMeta].filter(Boolean).join(' · ');
+const metaDescription = (
+  metaDescPrefix && summaryShort ? `${metaDescPrefix}。${summaryShort}` : summaryShort || metaDescPrefix
+).slice(0, 200);
+
 const metadata = {
-  title: `${debateTitle} · ${t(lang, 'navDebates')}`,
-  description: summaryShort,
+  title: `${debateTitle}（${yearMatch}）· ${t(lang, 'navDebates')} · sgai`,
+  description: metaDescription,
 };
 
 const articleSchema = {

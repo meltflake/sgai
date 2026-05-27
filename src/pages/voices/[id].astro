@@ -50,10 +50,21 @@ const categoryColors: Record<Person['category'], string> = {
 // indexable once the person accrues any signal.
 const isLowSignal = isLowSignalPerson(person);
 
+const displayName = person.nameEn || person.name;
+const displayTitle = person.titleEn || person.title;
+const signalParts: string[] = [];
+if (counts.debateCount > 0)
+  signalParts.push(`${counts.debateCount} parliamentary speech${counts.debateCount === 1 ? '' : 'es'}`);
+if (counts.policyAuthorCount > 0)
+  signalParts.push(`${counts.policyAuthorCount} polic${counts.policyAuthorCount === 1 ? 'y' : 'ies'}`);
+if (relatedVideos.length > 0) signalParts.push(`${relatedVideos.length} video${relatedVideos.length === 1 ? '' : 's'}`);
+const signalLine = signalParts.length > 0 ? signalParts.join(' · ') + '.' : '';
+const descParts = [`${displayTitle}.`, summary || '', signalLine].filter(Boolean);
+const builtDescription = descParts.join(' ').slice(0, 200);
+
 const metadata = {
-  title: `${person.nameEn || person.name} · AI Influence Map`,
-  description:
-    summary || `${person.nameEn || person.name}'s speeches, policy links, and public AI video records in Singapore.`,
+  title: `${displayName} on AI — Singapore policy, speeches, videos · sgai`,
+  description: builtDescription || `${displayName}'s speeches, policy links, and public AI video records in Singapore.`,
   robots: { index: !isLowSignal, follow: true },
 };
 

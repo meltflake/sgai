@@ -32,9 +32,18 @@ const description = isLever
   ? pickLocalized(lever, 'subtitle', lang) || lever.subtitle
   : pickLocalized(page.item, 'description', lang) || page.item.description;
 
+// Bake ministry / scale into description for richer keyword coverage.
+const itemMinistry = !isLever && page.item.ministryEn ? page.item.ministryEn : !isLever ? page.item.ministry : '';
+const itemScale = !isLever ? pickLocalized(page.item, 'scale', lang) || page.item.scale || '' : '';
+const descPrefix = !isLever ? [itemMinistry, itemScale].filter(Boolean).join(' · ') : '';
+const metaDescription = (descPrefix && description ? `${descPrefix}. ${description}` : description || descPrefix).slice(
+  0,
+  200
+);
+
 const metadata = {
-  title: `${title} · National AI Levers`,
-  description,
+  title: `${title} · Singapore National AI Lever ${lever.number} · sgai`,
+  description: metaDescription,
 };
 
 const schema = {

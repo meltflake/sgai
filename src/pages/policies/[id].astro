@@ -30,9 +30,15 @@ const { policy } = Astro.props;
 const title = pickLocalized<string>(policy, 'title', lang) || policy.title;
 const summary = pickLocalized<string>(policy, 'summary', lang) || '';
 
+// SERP-optimised: ministry + date prefix in description boosts long-tail
+// keyword density; brand suffix in title.
+const yearMatch = (policy.date || '').slice(0, 4);
+const metaPrefix = [yearMatch, policy.ministry].filter(Boolean).join(' · ');
+const metaDescription = (metaPrefix && summary ? `${metaPrefix}. ${summary}` : summary || metaPrefix).slice(0, 200);
+
 const metadata = {
-  title: `${title} · ${t(lang, 'policyArchiveSuffix')}`,
-  description: summary,
+  title: `${title}${yearMatch ? ` (${yearMatch})` : ''} · Singapore AI Policy · sgai`,
+  description: metaDescription,
 };
 
 const datePadded =

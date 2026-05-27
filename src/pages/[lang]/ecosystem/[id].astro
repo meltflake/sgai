@@ -160,8 +160,18 @@ const isStub = !summary && !whatItIs;
 const isPendingReview = entity._pendingReview === true;
 const isZhStub = isStubEcosystemEntity(entity, 'zh');
 
+const ecosystemBrandSuffix =
+  lang === 'zh'
+    ? `新加坡 AI 生态 — ${categoryName} · sgai`
+    : lang === 'zh-tw'
+      ? toTraditional(`新加坡 AI 生态 — ${categoryName} · sgai`)
+      : lang === 'ja'
+        ? `シンガポール AI エコシステム — ${categoryName} · sgai`
+        : lang === 'ko'
+          ? `싱가포르 AI 생태계 — ${categoryName} · sgai`
+          : `Singapore AI ecosystem — ${categoryName} · sgai`;
 const metadata = {
-  title: `${displayName} · ${categoryName} · ${copy.ecosystemMap}`,
+  title: `${displayName} · ${ecosystemBrandSuffix}`,
   description: description,
   robots: { index: !isPendingReview && !isZhStub, follow: true },
 };

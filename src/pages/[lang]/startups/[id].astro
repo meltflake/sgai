@@ -16,6 +16,7 @@ import {
   type StartupEntityPage,
 } from '~/utils/entity-pages';
 import { NON_DEFAULT_ROUTE_LOCALES, localizedHref, type Lang } from '~/i18n';
+import { toTraditional } from '~/i18n/opencc';
 
 export const prerender = true;
 
@@ -179,8 +180,18 @@ const facts = isZh
       externalUrl && { label: 'Website', value: externalLabel || externalUrl, href: externalUrl },
     ].filter((fact): fact is { label: string; value: string; href?: string } => Boolean(fact));
 
+const startupBrandSuffix =
+  lang === 'zh'
+    ? '新加坡 AI 创业生态档案 · sgai'
+    : lang === 'zh-tw'
+      ? toTraditional('新加坡 AI 创业生态档案 · sgai')
+      : lang === 'ja'
+        ? 'シンガポール AI スタートアップ ・プロファイル · sgai'
+        : lang === 'ko'
+          ? '싱가포르 AI 스타트업 프로파일 · sgai'
+          : 'Singapore AI startup profile · sgai';
 const metadata = {
-  title: `${page.name} · ${isZh ? 'AI 创业生态' : 'AI Startup Ecosystem'}`,
+  title: `${page.name} · ${startupBrandSuffix}`,
   description: `${page.name}${isZh ? '：' : ': '}${isZh ? page.description : page.descriptionEn || page.description}`,
 };
 

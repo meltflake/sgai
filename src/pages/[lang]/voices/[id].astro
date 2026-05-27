@@ -12,6 +12,7 @@ import { videos } from '~/data/videos';
 import { getRelated, getPersonCounts } from '~/utils/graph';
 import { isLowSignalPerson } from '~/utils/quality';
 import { NON_DEFAULT_ROUTE_LOCALES, channelLabel, pickLocalized, localizedHref, t, type Lang } from '~/i18n';
+import { toTraditional } from '~/i18n/opencc';
 import { personDisplayName } from '~/utils/people';
 
 export const prerender = true;
@@ -62,13 +63,79 @@ const categoryColors: Record<Person['category'], string> = {
 // 一旦补上任何信号自动放开。
 const isLowSignal = isLowSignalPerson(person);
 
+// Title suffix per locale — keeps brand keyword + AI topic in first 60 chars.
+const titleSuffix =
+  lang === 'zh'
+    ? '的 AI 政策影响力 · sgai'
+    : lang === 'ja'
+      ? 'の AI 政策影響力 · sgai'
+      : lang === 'ko'
+        ? '의 AI 정책 영향력 · sgai'
+        : lang === 'zh-tw'
+          ? '的 AI 政策影響力 · sgai'
+          : ' on AI — Singapore policy, speeches, videos · sgai';
+
+// Build signal line from counts. Empty if all-zero (low-signal profile).
+// zh-tw uses zh source strings routed through toTraditional() per CLAUDE.md
+// rule #10 (no raw simplified-CJK in zh-tw branches).
+const zhTw = (s: string) => toTraditional(s);
+const signalParts: string[] = [];
+if (counts.debateCount > 0) {
+  signalParts.push(
+    lang === 'zh'
+      ? `国会发言 ${counts.debateCount} 次`
+      : lang === 'zh-tw'
+        ? zhTw(`国会发言 ${counts.debateCount} 次`)
+        : lang === 'ja'
+          ? `議会発言 ${counts.debateCount} 回`
+          : lang === 'ko'
+            ? `국회 발언 ${counts.debateCount} 회`
+            : `${counts.debateCount} parliamentary speech${counts.debateCount === 1 ? '' : 'es'}`
+  );
+}
+if (counts.policyAuthorCount > 0) {
+  signalParts.push(
+    lang === 'zh'
+      ? `主导政策 ${counts.policyAuthorCount} 项`
+      : lang === 'zh-tw'
+        ? zhTw(`主导政策 ${counts.policyAuthorCount} 项`)
+        : lang === 'ja'
+          ? `主導政策 ${counts.policyAuthorCount} 件`
+          : lang === 'ko'
+            ? `주도 정책 ${counts.policyAuthorCount} 건`
+            : `${counts.policyAuthorCount} polic${counts.policyAuthorCount === 1 ? 'y' : 'ies'}`
+  );
+}
+if (relatedVideos.length > 0) {
+  signalParts.push(
+    lang === 'zh'
+      ? `视频观点 ${relatedVideos.length} 段`
+      : lang === 'zh-tw'
+        ? zhTw(`视频观点 ${relatedVideos.length} 段`)
+        : lang === 'ja'
+          ? `動画 ${relatedVideos.length} 本`
+          : lang === 'ko'
+            ? `영상 ${relatedVideos.length} 편`
+            : `${relatedVideos.length} video${relatedVideos.length === 1 ? '' : 's'}`
+  );
+}
+const isCjkPeriod = isZh || lang === 'zh-tw';
+const signalLine = signalParts.length > 0 ? signalParts.join(' · ') + (isCjkPeriod ? '。' : '.') : '';
+const descParts = [`${displayTitle}${isCjkPeriod ? '。' : '.'}`, summary || '', signalLine].filter(Boolean);
+const fallbackDesc =
+  lang === 'zh'
+    ? `${displayName} 在新加坡 AI 政策中的发言、政策关联与公开视频记录。`
+    : lang === 'zh-tw'
+      ? `${displayName} 在新加坡 AI 政策中的發言、政策關聯與公開視頻記錄。`
+      : lang === 'ja'
+        ? `${displayName} のシンガポール AI 政策における発言・政策関連・公開動画記録。`
+        : lang === 'ko'
+          ? `${displayName}의 싱가포르 AI 정책 관련 발언, 정책 연계, 공개 영상 기록.`
+          : `${displayName}'s speeches, policy links, and public AI video records in Singapore.`;
+
 const metadata = {
-  title: `${displayName} · ${t(lang, 'navVoices')}`,
-  description:
-    summary ||
-    (isZh
-      ? `${displayName} 在新加坡 AI 政策中的发言、政策关联与公开视频记录。`
-      : `${displayName}'s speeches, policy links, and public AI video records in Singapore.`),
+  title: `${displayName}${titleSuffix}`,
+  description: (descParts.join(' ').slice(0, 200) || fallbackDesc).trim(),
   robots: { index: !isLowSignal, follow: true },
 };
 

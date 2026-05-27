@@ -29,21 +29,26 @@ const isKo = lang === 'ko';
 const isEn = !isJa && !isZh && !isZhTw && !isKo;
 const DATA_UPDATED = '2026-05-03';
 
+// Bake actual record count + year range into meta — drives CTR on SERP.
+const N = DEBATE_STATS.total;
+const Y_FROM = DEBATE_STATS.yearRange.from;
+const Y_TO = DEBATE_STATS.yearRange.to;
+
 const META_TITLES: Record<Lang, string> = {
-  zh: '国会 AI 焦点 — 新加坡议会辩论记录',
-  en: 'Parliamentary AI Focus — Singapore Hansard Debates',
-  ja: '議会 AI フォーカス — シンガポール議会討論記録',
-  'zh-tw': toTraditional('国会 AI 焦点 — 新加坡议会辩论记录'),
-  ko: '국회 AI 초점 — 싱가포르 의회 토론 기록',
+  zh: `国会 AI 辩论库 — ${N} 条新加坡议会 AI 记录（${Y_FROM}–${Y_TO}）· sgai`,
+  en: `Singapore Parliament AI Debates — ${N} Hansard records (${Y_FROM}–${Y_TO}) · sgai`,
+  ja: `シンガポール議会 AI 討論 — ${N} 件の Hansard 記録（${Y_FROM}–${Y_TO}）· sgai`,
+  'zh-tw': toTraditional(`国会 AI 辩论库 — ${N} 条新加坡议会 AI 记录（${Y_FROM}–${Y_TO}）· sgai`),
+  ko: `싱가포르 국회 AI 토론 — ${N}건 의회 기록(${Y_FROM}–${Y_TO}) · sgai`,
 };
 const META_DESC: Record<Lang, string> = {
-  zh: '新加坡议会关于 AI 的第一手辩论记录，含 AI 提炼的中文摘要、议员立场分析、政策演变脉络与深度洞察。',
-  en: 'First-hand records of Singapore parliamentary debates on AI, with English digests, MP position analysis, policy-evolution timelines, and analytical insights.',
-  ja: 'シンガポール議会の AI に関する初の討論記録。AI が抽出した中文概要、議員の立場分析、政策パターンの洞察を含みます。',
+  zh: `新加坡议会 ${N} 条 AI 主题辩论（${Y_FROM}–${Y_TO}）：第一手 Hansard 记录、议员立场分析、政策演变脉络、按主题/类型/MP 检索。AI 辅助中文摘要。`,
+  en: `${N} Singapore parliamentary debates on AI (${Y_FROM}–${Y_TO}): first-hand Hansard records, MP position analysis, policy-evolution timelines, searchable by topic, type, and MP. AI-assisted digests.`,
+  ja: `シンガポール議会の AI 関連討論 ${N} 件（${Y_FROM}–${Y_TO}）。Hansard 原文、議員の立場分析、政策パターン、トピック/タイプ/議員別検索。AI 補助の概要付き。`,
   'zh-tw': toTraditional(
-    '新加坡议会关于 AI 的第一手辩论记录，含 AI 提炼的中文摘要、议员立场分析、政策演变脉络与深度洞察。'
+    `新加坡议会 ${N} 条 AI 主题辩论（${Y_FROM}–${Y_TO}）：第一手 Hansard 记录、议员立场分析、政策演变脉络、按主题/类型/MP 检索。AI 辅助中文摘要。`
   ),
-  ko: '싱가포르 국회의 AI 정책 토론 원본 기록과 AI 보조 영문 요약, MP 입장, 정책 패턴 분석입니다.',
+  ko: `싱가포르 국회 AI 토론 ${N}건(${Y_FROM}–${Y_TO}): Hansard 원본 기록, MP 입장 분석, 정책 변화 흐름, 주제·유형·MP별 검색. AI 보조 요약 제공.`,
 };
 const meta = {
   title: META_TITLES[lang] || META_TITLES.en,

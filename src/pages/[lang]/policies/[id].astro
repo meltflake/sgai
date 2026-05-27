@@ -31,9 +31,29 @@ const lang = Astro.params.lang as Lang;
 const title = pickLocalized<string>(policy, 'title', lang) || policy.title;
 const summary = pickLocalized<string>(policy, 'summary', lang) || '';
 
+// Per-locale brand suffix; year + ministry baked into description.
+const isCjk = lang === 'zh' || lang === 'zh-tw';
+const brandSuffix =
+  lang === 'zh'
+    ? ' · 新加坡 AI 政策 · sgai'
+    : lang === 'zh-tw'
+      ? ' · 新加坡 AI 政策 · sgai'
+      : lang === 'ja'
+        ? ' · シンガポール AI 政策 · sgai'
+        : lang === 'ko'
+          ? ' · 싱가포르 AI 정책 · sgai'
+          : ' · Singapore AI Policy · sgai';
+const yearMatch = (policy.date || '').slice(0, 4);
+const metaPrefix = [yearMatch, policy.ministry].filter(Boolean).join(' · ');
+const metaJoiner = isCjk ? '。' : '. ';
+const metaDescription = (metaPrefix && summary ? `${metaPrefix}${metaJoiner}${summary}` : summary || metaPrefix).slice(
+  0,
+  200
+);
+
 const metadata = {
-  title: `${title} · ${t(lang, 'policyArchiveSuffix')}`,
-  description: summary,
+  title: `${title}${yearMatch ? `（${yearMatch}）` : ''}${brandSuffix}`,
+  description: metaDescription,
 };
 
 const datePadded =

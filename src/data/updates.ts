@@ -79,6 +79,22 @@ const MANUAL_TYPES = new Set<UpdateType>(['site', 'fix', 'longform']);
 // sort regardless. Add new entries at the top.
 export const MANUAL_UPDATES: Update[] = [
   {
+    date: '2026-05-27',
+    type: 'fix',
+    title: 'SEO：批量重写页面 title / description 提高 CTR',
+    titleEn: 'SEO: bulk-rewrite page titles & descriptions to lift CTR',
+    titleJa: 'SEO：タイトル・description の一括書き換えで CTR を改善',
+    titleKo: 'SEO: 페이지 제목·설명 일괄 재작성으로 CTR 개선',
+    summary:
+      '基于 5/2–5/24 的 Google Search Console 数据（95k 曝光 / 0.27% CTR），重写 voices / policies / debates / levers / startups / talent / ecosystem 详情页与列表页的 metadata，加入数字证据（如 153 条辩论 · 2015–2026）、关键词前置、品牌后缀，覆盖全部 5 语种。debates 列表页 153 条 + 年份区间动态注入；voice 页 description 嵌入国会发言/政策/视频计数。zh-tw 分支统一走 toTraditional() 保证繁体纯净。',
+    summaryEn:
+      'Based on 5/2–5/24 Google Search Console data (95k impressions / 0.27% CTR), bulk-rewrote metadata across voices / policies / debates / levers / startups / talent / ecosystem detail and listing pages — adding number signals (e.g. "153 debates · 2015–2026"), keyword front-loading, and a brand suffix in all 5 locales. The debates listing now bakes its actual record count + year range into title/desc; voice pages inject debate/policy/video counts into the description. zh-tw branches all route through toTraditional() to keep traditional output clean.',
+    summaryJa:
+      '5/2–5/24 の Google Search Console データ（95k インプレッション / 0.27% CTR）を踏まえ、voices / policies / debates / levers / startups / talent / ecosystem の詳細・一覧ページ metadata を一括書き換え。数字シグナル（「153 件の議会討論 · 2015–2026」など）、キーワード前置、ブランド接尾辞を 5 言語すべてに追加。debates 一覧は実レコード数と年範囲を動的に注入、voice ページは議会発言・政策・動画件数を description に組み込み。zh-tw 分岐はすべて toTraditional() を経由し繁体出力を清浄に保ちます。',
+    summaryKo:
+      '5/2–5/24 Google Search Console 데이터(노출 95k / CTR 0.27%)를 바탕으로 voices / policies / debates / levers / startups / talent / ecosystem 상세·목록 페이지 메타데이터를 일괄 재작성. 숫자 시그널(예: "153건 토론 · 2015–2026"), 키워드 전치, 브랜드 접미사를 5개 언어 모두에 추가. debates 목록은 실제 레코드 수·연도 범위를 동적 주입, voice 페이지는 국회 발언·정책·영상 수를 설명에 삽입. zh-tw 분기는 모두 toTraditional()을 거쳐 번체 출력을 깨끗하게 유지.',
+  },
+  {
     date: '2026-05-26',
     type: 'longform',
     title: '新发布：新加坡公布四项 National AI Missions',

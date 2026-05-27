@@ -9,6 +9,7 @@ import Layout from '~/layouts/PageLayout.astro';
 import { programmes, type TalentProgramme, type TalentStatusTone } from '~/data/talent';
 import { SITE_UPDATED } from '~/version';
 import { NON_DEFAULT_ROUTE_LOCALES, localizedHref, pickLocalized, IN_LANGUAGES, type Lang } from '~/i18n';
+import { toTraditional } from '~/i18n/opencc';
 
 export const prerender = true;
 
@@ -44,8 +45,18 @@ const progStatus = pickLocalized<string>(programme, 'status', lang) ?? programme
 const pickStringArray = (record: unknown, field: string, fallback: string[]): string[] =>
   (pickLocalized(record, field, lang) as string[] | null | undefined) || fallback;
 
+const brandSuffix =
+  lang === 'zh'
+    ? '新加坡 AI 人才培养项目 · sgai'
+    : lang === 'zh-tw'
+      ? toTraditional('新加坡 AI 人才培养项目 · sgai')
+      : lang === 'ja'
+        ? 'シンガポール AI 人材育成プログラム · sgai'
+        : lang === 'ko'
+          ? '싱가포르 AI 인재 양성 프로그램 · sgai'
+          : 'Singapore AI talent programme · sgai';
 const metadata = {
-  title: `${progName} · ${isZh ? '人才培养' : 'Talent Pipeline'}`,
+  title: `${progName} · ${brandSuffix}`,
   description: progDescription,
 };
 

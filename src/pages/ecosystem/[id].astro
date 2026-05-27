@@ -92,7 +92,7 @@ const description = entity.descriptionEn || entity.description;
 const isPendingReview = entity._pendingReview === true;
 const isEnStub = isStubEcosystemEntity(entity, 'en');
 const metadata = {
-  title: `${displayName} · ${categoryName} · Ecosystem Map`,
+  title: `${displayName} · Singapore AI ecosystem — ${categoryName} · sgai`,
   description: description,
   robots: { index: !isPendingReview && !isEnStub, follow: true },
 };

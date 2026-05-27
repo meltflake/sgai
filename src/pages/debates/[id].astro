@@ -69,9 +69,20 @@ const oppStance = pickLocalized(debate, 'oppositionStance', 'oppositionStanceEn'
 const policySignal = pickLocalized(debate, 'policySignal', 'policySignalEn', lang);
 const notableQuote = pickLocalized(debate, 'notableQuote', 'notableQuoteEn', lang);
 
+// SERP-optimised title + desc: bake date + type + topics into description so
+// long-tail queries match (e.g. "MDDI 2026 AI budget"). Keeps the brand
+// suffix for AI Overview attribution.
+const yearMatch = (debate.date || '').slice(0, 4);
+const typeLabelForMeta = typeMap[debate.type] || debate.type;
+const topicListForMeta = (debate.topics || []).slice(0, 2).join(' · ');
+const metaDescPrefix = [debate.date, typeLabelForMeta, topicListForMeta].filter(Boolean).join(' · ');
+const metaDescription = (
+  metaDescPrefix && summaryShort ? `${metaDescPrefix}. ${summaryShort}` : summaryShort || metaDescPrefix
+).slice(0, 200);
+
 const metadata = {
-  title: `${debate.titleEn || debate.title} · Parliamentary Debate`,
-  description: summaryShort,
+  title: `${debate.titleEn || debate.title} (${yearMatch}) · Singapore Parliament AI Debate · sgai`,
+  description: metaDescription,
 };
 
 const articleSchema = {

@@ -3,6 +3,7 @@ import Layout from '~/layouts/PageLayout.astro';
 import JsonLd from '~/components/common/JsonLd.astro';
 import HomePage from '~/components/home/HomePage.astro';
 import { NON_DEFAULT_ROUTE_LOCALES, IN_LANGUAGES, t, type Lang } from '~/i18n';
+import { toTraditional } from '~/i18n/opencc';
 
 export function getStaticPaths() {
   return NON_DEFAULT_ROUTE_LOCALES.map((lang) => ({ params: { lang } }));
@@ -10,8 +11,18 @@ export function getStaticPaths() {
 
 const lang = Astro.params.lang as Lang;
 
+const homeTitleSuffix =
+  lang === 'zh'
+    ? ' — 新加坡 AI 战略、政策与生态 · sgai'
+    : lang === 'zh-tw'
+      ? toTraditional(' — 新加坡 AI 战略、政策与生态 · sgai')
+      : lang === 'ja'
+        ? ' — シンガポール AI 戦略・政策・エコシステム · sgai'
+        : lang === 'ko'
+          ? ' — 싱가포르 AI 전략·정책·생태계 · sgai'
+          : ' — Singapore AI strategy, policy & ecosystem · sgai';
 const metadata = {
-  title: t(lang, 'siteName'),
+  title: `${t(lang, 'siteName')}${homeTitleSuffix}`,
   ignoreTitleTemplate: true,
   description: t(lang, 'siteDescription'),
 };
