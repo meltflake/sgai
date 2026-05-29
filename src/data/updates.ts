@@ -79,6 +79,31 @@ const MANUAL_TYPES = new Set<UpdateType>(['site', 'fix', 'longform']);
 // sort regardless. Add new entries at the top.
 export const MANUAL_UPDATES: Update[] = [
   {
+    date: '2026-05-29',
+    type: 'longform',
+    title: '新发布：新加坡的 Claude 使用强度全球第一',
+    titleEn: 'New: Singapore tops the world in Claude usage intensity',
+    titleJa: '新規公開：シンガポール、Claude 利用強度で世界一',
+    titleKo: '신규 공개: 싱가포르, Claude 사용 강도 세계 1위',
+    summary:
+      'Anthropic 2026 年 3 月 Economic Index 报告的 country usage 排名里，新加坡以 AI Usage Index 5.53 居首。文章拆解这个指标量的是人均普及强度——不是绝对用量，也不是使用复杂度——并说明算法为何偏向小而富、说英语、知识工作者密集的城市国家，以及新加坡政策如何持续把它推高。中英日韩繁体五语同步。',
+    summaryEn:
+      "In the country-usage ranking of Anthropic's March 2026 Economic Index, Singapore leads with an AI Usage Index of 5.53. The piece unpacks what the index measures — per-capita adoption intensity, not absolute volume or sophistication — why the formula favors small, rich, English-speaking, knowledge-worker-dense city-states, and how Singapore's policies keep pushing it up. Published in all five languages.",
+    summaryJa:
+      'Anthropic の 2026 年 3 月 Economic Index の country usage ランキングで、シンガポールが AI Usage Index 5.53 で首位に立ちました。本記事はこの指標が測るのは一人当たりの普及強度であって絶対量でも使用の高度さでもないことを解きほぐし、アルゴリズムが小規模で豊か・英語圏・知識労働者が密集する都市国家を有利にする理由、そしてシンガポールの政策がそれを押し上げ続ける仕組みを説明します。5 言語で同時公開。',
+    summaryKo:
+      'Anthropic의 2026년 3월 Economic Index country usage 순위에서 싱가포르가 AI Usage Index 5.53으로 1위를 차지했습니다. 이 글은 이 지표가 측정하는 것이 절대 사용량이나 사용 복잡도가 아니라 1인당 보급 강도임을 풀어내고, 알고리즘이 작고 부유하며 영어를 쓰고 지식 노동자가 밀집한 도시국가에 유리한 이유, 그리고 싱가포르의 정책이 이를 계속 끌어올리는 방식을 설명합니다. 5개 언어로 동시 공개.',
+    links: [
+      {
+        href: '/anthropic-economic-index-singapore/',
+        label: '阅读全文',
+        labelEn: 'Read the article',
+        labelJa: '記事を読む',
+        labelKo: '글 읽기',
+      },
+    ],
+  },
+  {
     date: '2026-05-27',
     type: 'fix',
     title: 'SEO：批量重写页面 title / description 提高 CTR',
