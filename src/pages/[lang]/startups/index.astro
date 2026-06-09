@@ -265,7 +265,7 @@ const stats = [
               </p>
               {pickLocalized(inv, 'notableDeals', lang) && (
                 <p class="text-sm">
-                  <span class="text-muted">{isZh ? '代表交易：' : 'Notable AI deals: '}</span>
+                  <span class="text-muted">{t(lang, 'investorNotableDeals')}</span>
                   {pickLocalized(inv, 'notableDeals', lang)}
                 </p>
               )}
