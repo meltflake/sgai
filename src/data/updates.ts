@@ -79,6 +79,31 @@ const MANUAL_TYPES = new Set<UpdateType>(['site', 'fix', 'longform']);
 // sort regardless. Add new entries at the top.
 export const MANUAL_UPDATES: Update[] = [
   {
+    date: '2026-06-09',
+    type: 'longform',
+    title: '新发布：GIC 与淡马锡在 AI 上投了什么',
+    titleEn: 'New: What GIC and Temasek have invested in AI',
+    titleJa: '新規公開：GIC とテマセクは AI に何を投資したか',
+    titleKo: '신규 공개: GIC와 테마섹은 AI에 무엇을 투자했나',
+    summary:
+      '系统梳理新加坡两家主权基金在 AI 上的已公开投资：GIC 连续三轮加注 Anthropic（两轮领投级），淡马锡同时入股 OpenAI 和 Anthropic，外加数据中心与 Databricks 仓位。每笔注明时间、规模和信源等级，全部链接经可达性验证。中英日韩繁体五语同步。',
+    summaryEn:
+      "A systematic survey of the public record of Singapore's two sovereign funds in AI: GIC backing Anthropic across three consecutive rounds (two at lead level), Temasek holding both OpenAI and Anthropic, plus data centre and Databricks positions. Every deal carries its date, scale, and source tier, with all links verified. Published in all five languages.",
+    summaryJa:
+      'シンガポールの 2 つのソブリンファンドの AI 投資の公開記録を体系的に整理：GIC は Anthropic に 3 ラウンド連続で投資（うち 2 回はリード級）、テマセクは OpenAI と Anthropic の両方を保有し、データセンターと Databricks のポジションも持つ。各件に時期・規模・情報源の等級を付記し、全リンクの到達性を検証済み。5 言語で同時公開。',
+    summaryKo:
+      '싱가포르 두 국부펀드의 AI 투자 공개 기록을 체계적으로 정리: GIC는 Anthropic에 3개 라운드 연속 투자(그중 2회는 리드급), 테마섹은 OpenAI와 Anthropic을 동시 보유하며 데이터센터와 Databricks 포지션도 보유. 각 건에 시기·규모·정보원 등급을 표기했고 모든 링크의 도달성을 검증했습니다. 5개 언어 동시 공개.',
+    links: [
+      {
+        href: '/sovereign-capital-frontier-ai/',
+        label: '阅读全文',
+        labelEn: 'Read the article',
+        labelJa: '記事を読む',
+        labelKo: '글 읽기',
+      },
+    ],
+  },
+  {
     date: '2026-05-29',
     type: 'longform',
     title: '新发布：新加坡的 Claude 使用强度全球第一',
