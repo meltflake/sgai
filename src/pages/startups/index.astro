@@ -235,6 +235,12 @@ const stats = [
                 <span class="text-muted">Focus: </span>
                 {inv.focusEn || inv.focus}
               </p>
+              {(inv.notableDealsEn || inv.notableDeals) && (
+                <p class="text-sm">
+                  <span class="text-muted">Notable AI deals: </span>
+                  {inv.notableDealsEn || inv.notableDeals}
+                </p>
+              )}
             </a>
           ))
         }

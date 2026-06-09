@@ -263,6 +263,12 @@ const stats = [
                 <span class="text-muted">{isZh ? '重点领域：' : 'Focus: '}</span>
                 {pickLocalized(inv, 'focus', lang)}
               </p>
+              {pickLocalized(inv, 'notableDeals', lang) && (
+                <p class="text-sm">
+                  <span class="text-muted">{isZh ? '代表交易：' : 'Notable AI deals: '}</span>
+                  {pickLocalized(inv, 'notableDeals', lang)}
+                </p>
+              )}
             </a>
           ))
         }

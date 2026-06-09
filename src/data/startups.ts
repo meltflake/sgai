@@ -615,6 +615,10 @@ export interface Investor {
   focusEn?: string;
   focusJa?: string;
   focusKo?: string;
+  notableDeals?: string;
+  notableDealsEn?: string;
+  notableDealsJa?: string;
+  notableDealsKo?: string;
   url: string;
 }
 
@@ -649,6 +653,14 @@ export const investors: Investor[] = [
     focusKo: 'AI 인프라, 데이터센터',
     focusJa: 'AI インフラストラクチャ、データセンター',
     focusEn: 'AI infrastructure, data centres',
+    notableDeals:
+      '2026 年入股 OpenAI（1220 亿美元轮）与 Anthropic（Series H）；2025 年加入 BlackRock/MGX/微软/Nvidia 发起的 AI Infrastructure Partnership',
+    notableDealsEn:
+      'Took stakes in OpenAI ($122B round) and Anthropic (Series H) in 2026; joined the BlackRock/MGX/Microsoft/Nvidia-launched AI Infrastructure Partnership in 2025',
+    notableDealsJa:
+      '2026 年に OpenAI（1220 億ドルラウンド）と Anthropic（Series H）に出資；2025 年に BlackRock/MGX/マイクロソフト/Nvidia が立ち上げた AI Infrastructure Partnership に参加',
+    notableDealsKo:
+      '2026년 OpenAI(1220억 달러 라운드)와 Anthropic(Series H)에 투자; 2025년 BlackRock/MGX/마이크로소프트/Nvidia가 출범시킨 AI Infrastructure Partnership에 합류',
     url: 'https://www.temasek.com.sg/en/index',
   },
   {
@@ -665,6 +677,14 @@ export const investors: Investor[] = [
     focusKo: 'AI 인프라',
     focusJa: 'AI インフラストラクチャ',
     focusEn: 'AI infrastructure',
+    notableDeals:
+      '连续三轮投资 Anthropic（Series F/G/H，其中 Series G 与 Coatue 共同领投）；与 Equinix、CPP 设超 150 亿美元数据中心合资',
+    notableDealsEn:
+      'Invested in Anthropic across three consecutive rounds (Series F/G/H, co-leading Series G with Coatue); formed a >$15B data centre JV with Equinix and CPP',
+    notableDealsJa:
+      'Anthropic に 3 ラウンド連続で投資（Series F/G/H、Series G は Coatue と共同リード）；Equinix、CPP と 150 億ドル超のデータセンター合弁を設立',
+    notableDealsKo:
+      'Anthropic에 3개 라운드 연속 투자(Series F/G/H, Series G는 Coatue와 공동 리드); Equinix, CPP와 150억 달러 초과 데이터센터 합작 설립',
     url: 'https://www.gic.com.sg/',
   },
   {
