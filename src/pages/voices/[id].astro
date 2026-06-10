@@ -4,10 +4,12 @@ import { Icon } from 'astro-icon/components';
 
 import JsonLd from '~/components/common/JsonLd.astro';
 import Layout from '~/layouts/PageLayout.astro';
+import ParliamentaryRecord from '~/components/widgets/ParliamentaryRecord.astro';
 import PersonContributions from '~/components/widgets/PersonContributions.astro';
 import { allPeople, type Person } from '~/data/people';
 import { videos } from '~/data/videos';
 import { getRelated, getPersonCounts } from '~/utils/graph';
+import { buildParliamentarySummary } from '~/utils/parliamentary-record';
 import { isLowSignalPerson } from '~/utils/quality';
 import { channelLabel, pickLocalized } from '~/i18n';
 
@@ -30,6 +32,14 @@ const relatedVideos = videos
   .sort((a, b) => b.date.localeCompare(a.date));
 const summary = pickLocalized(person, 'summary', lang) || '';
 const isStub = !summary || summary === 'Profile pending.' || summary.startsWith('[需补充]');
+
+// Auto-generated factual line from the person's parliamentary record
+// (≥ 3 debates, see utils/parliamentary-record.ts). For stubs it replaces
+// the "Profile pending." boilerplate in the visible positioning block, the
+// meta description, and the JSON-LD description — giving each stub page a
+// unique, query-matching summary instead of a shared content fingerprint.
+const parlSummary = isStub ? buildParliamentarySummary(person, lang) : null;
+const bioLine = (isStub && parlSummary ? parlSummary : summary) || '';
 
 const categoryLabels: Record<Person['category'], string> = {
   government: 'Government',
@@ -59,7 +69,7 @@ if (counts.policyAuthorCount > 0)
   signalParts.push(`${counts.policyAuthorCount} polic${counts.policyAuthorCount === 1 ? 'y' : 'ies'}`);
 if (relatedVideos.length > 0) signalParts.push(`${relatedVideos.length} video${relatedVideos.length === 1 ? '' : 's'}`);
 const signalLine = signalParts.length > 0 ? signalParts.join(' · ') + '.' : '';
-const descParts = [`${displayTitle}.`, summary || '', signalLine].filter(Boolean);
+const descParts = [displayTitle ? `${displayTitle}.` : '', bioLine, signalLine].filter(Boolean);
 const builtDescription = descParts.join(' ').slice(0, 200);
 
 const metadata = {
@@ -73,7 +83,7 @@ const personSchema = {
   '@type': 'Person',
   name: person.nameEn || person.name,
   jobTitle: person.titleEn || person.title,
-  description: summary,
+  description: bioLine,
   affiliation: person.affiliations.map((name) => ({ '@type': 'Organization', name })),
   sameAs: person.channels.map((ch) => ch.url),
 };
@@ -118,16 +128,16 @@ const personSchema = {
     </section>
 
     {
-      !isStub && summary && (
+      ((!isStub && summary) || (isStub && parlSummary)) && (
         <section class="callout-note p-5 rounded-lg mb-8">
           <h2 class="font-semibold mb-2">Positioning</h2>
-          <p class="text-gray-800 dark:text-gray-200 leading-relaxed">{summary}</p>
+          <p class="text-gray-800 dark:text-gray-200 leading-relaxed">{isStub ? parlSummary : summary}</p>
         </section>
       )
     }
 
     {
-      isStub && (
+      isStub && !parlSummary && (
         <section class="callout-muted p-4 rounded-lg mb-8 text-sm">
           <p class="text-amber-900 dark:text-amber-200">
             Profile pending. This page currently summarises parliamentary appearances and policy links from existing
@@ -166,37 +176,7 @@ const personSchema = {
 
     <PersonContributions person={person} lang="en" />
 
-    <section class="mb-10">
-      <h2 class="t-h3 text-gray-800 dark:text-white mb-4">
-        Parliamentary speeches ({related.debates.length})
-      </h2>
-      {
-        related.debates.length === 0 ? (
-          <p class="text-sm text-gray-400 italic">No related debate records.</p>
-        ) : (
-          <div class="space-y-3">
-            {related.debates.slice(0, 30).map((debate) => (
-              <a
-                href={`/debates/${debate.id}/`}
-                class="block bg-surface rounded-lg p-4 border border-subtle hover:border-blue-300 hover:shadow-sm transition-all"
-              >
-                <h3 class="font-semibold text-gray-800 dark:text-white text-sm leading-snug">
-                  {debate.titleEn || debate.title}
-                </h3>
-                <p class="text-xs text-gray-500 mt-1">
-                  {debate.date} · Parliament {debate.parliament}
-                </p>
-                {debate.summaryEn && (
-                  <p class="text-xs text-gray-600 dark:text-gray-400 mt-2 leading-relaxed line-clamp-3">
-                    {debate.summaryEn}
-                  </p>
-                )}
-              </a>
-            ))}
-          </div>
-        )
-      }
-    </section>
+    <ParliamentaryRecord person={person} lang={lang} />
 
     {
       related.policies.length > 0 && (
