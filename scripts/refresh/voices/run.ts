@@ -118,6 +118,7 @@ async function enrichTrilingual(
       speakerTitleEn: speakerInfo.titleEn,
       speakerTitleZh: speakerInfo.titleZh,
       speakerTitleJa: speakerInfo.titleJa,
+      speakerTitleKo: speakerInfo.titleKo,
     };
   });
 
@@ -149,6 +150,7 @@ async function enrichTrilingual(
     const speakerTitleEn = p.speakerTitleEn || 'Speaker';
     const speakerTitleZh = p.speakerTitleZh || '演讲者';
     const speakerTitleJa = p.speakerTitleJa || '講演者';
+    const speakerTitleKo = p.speakerTitleKo || '연사';
     out.push(
       combineForEmit(p.fetched, t, {
         titleZh: titlesZh[i],
@@ -163,6 +165,7 @@ async function enrichTrilingual(
         speakerTitleZh,
         speakerTitleEn,
         speakerTitleJa,
+        speakerTitleKo,
       })
     );
   }

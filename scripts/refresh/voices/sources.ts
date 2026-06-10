@@ -67,37 +67,42 @@ export const AI_SLUG_PATTERNS: RegExp[] = [
  *  step can populate sibling fields. Keep additions sorted by name. */
 export const SPEAKER_MAP: Record<
   string,
-  { name: string; titleZh: string; titleEn: string; titleJa: string }
+  { name: string; titleZh: string; titleEn: string; titleJa: string; titleKo: string }
 > = {
   'janil-puthucheary': {
     name: 'Janil Puthucheary',
     titleZh: 'MDDI 前高级政务部长',
     titleEn: 'Former Senior Minister of State, MDDI',
     titleJa: 'MDDI 元上級政務部長',
+    titleKo: 'MDDI 전 선임정무장관',
   },
   'jasmin-lau': {
     name: 'Jasmin Lau',
     titleZh: 'MDDI 政务次长',
     titleEn: 'Minister of State, MDDI',
     titleJa: 'MDDI 政務次官',
+    titleKo: 'MDDI 정무차관',
   },
   'josephine-teo': {
     name: 'Josephine Teo',
     titleZh: '数码发展及新闻部长',
     titleEn: 'Minister for Digital Development and Information',
     titleJa: 'デジタル開発・ニュース相',
+    titleKo: '디지털개발정보부 장관',
   },
   'rahayu-mahzam': {
     name: 'Rahayu Mahzam',
     titleZh: 'MDDI 政务次长',
     titleEn: 'Minister of State, MDDI',
     titleJa: 'MDDI 政務次官',
+    titleKo: 'MDDI 정무차관',
   },
   'tan-kiat-how': {
     name: 'Tan Kiat How',
     titleZh: 'MDDI 高级政务部长',
     titleEn: 'Senior Minister of State, MDDI',
     titleJa: 'MDDI 上級政務部長',
+    titleKo: 'MDDI 선임정무장관',
   },
 };
 
@@ -135,10 +140,11 @@ export function speakerFromSlug(slug: string): {
   titleZh: string;
   titleEn: string;
   titleJa: string;
+  titleKo: string;
 } {
   const lower = slug.toLowerCase();
   for (const [key, value] of Object.entries(SPEAKER_MAP)) {
     if (lower.includes(key)) return value;
   }
-  return { name: '', titleZh: '', titleEn: '', titleJa: '' };
+  return { name: '', titleZh: '', titleEn: '', titleJa: '', titleKo: '' };
 }
