@@ -843,17 +843,21 @@
   },
   {
     "id": "ong-teng-koon",
-    "name": "",
-    "title": "",
+    "name": "Ong Teng Koon",
+    "title": "前国会议员",
     "category": "government",
     "roles": ["mp"],
     "affiliations": ["Other"],
-    "party": null,
-    "summary": "[需补充] Ong Teng Koon",
-    "summaryEn": "Profile pending.",
+    "party": "PAP",
+    "summary": "新加坡前国会议员（人民行动党，2015–2020 年代表马西岭-油池集选区）。曾任国防与外交、通讯及新闻政府国会委员会（GPC）委员，在国会多次就数字经济转型、数据共享与隐私、AI 伦理框架等议题发言。",
+    "summaryEn": "Former Member of Parliament (PAP, Marsiling–Yew Tee GRC, 2015–2020). Served on the Government Parliamentary Committees for Defence & Foreign Affairs and for Communications & Information; spoke repeatedly in Parliament on digital-economy transformation, data sharing and privacy, and AI ethics frameworks.",
     "channels": [],
     "nameEn": "Ong Teng Koon",
-    "titleEn": ""
+    "titleEn": "Former Member of Parliament",
+    "titleJa": "元国会議員",
+    "titleKo": "전 국회의원",
+    "summaryJa": "元シンガポール国会議員（人民行動党、2015–2020 年マーシリン・ユーティー GRC 選出）。国防・外交および通信・情報の政府議会委員会（GPC）委員を務め、デジタル経済転換、データ共有とプライバシー、AI 倫理フレームワークについて国会でたびたび発言。",
+    "summaryKo": "전 싱가포르 국회의원(인민행동당, 2015–2020년 마실링-유티 GRC). 국방·외교 및 통신·정보 정부 의회 위원회(GPC) 위원을 지냈으며, 디지털 경제 전환, 데이터 공유와 프라이버시, AI 윤리 프레임워크에 대해 국회에서 여러 차례 발언했습니다."
   },
   {
     "id": "teo-ser-luck",
@@ -1451,20 +1455,6 @@
     "titleEn": ""
   },
   {
-    "id": "fatimah-lateef-2",
-    "name": "",
-    "title": "",
-    "category": "government",
-    "roles": ["mp"],
-    "affiliations": ["Other"],
-    "party": null,
-    "summary": "[需补充] Fatimah Lateef",
-    "summaryEn": "Profile pending.",
-    "channels": [],
-    "nameEn": "Fatimah Lateef",
-    "titleEn": ""
-  },
-  {
     "id": "png-eng-huat",
     "name": "",
     "title": "",
@@ -1759,20 +1749,6 @@
     "titleEn": ""
   },
   {
-    "id": "s-iswaran-2",
-    "name": "",
-    "title": "",
-    "category": "government",
-    "roles": ["mp"],
-    "affiliations": ["Other"],
-    "party": null,
-    "summary": "[需补充] S Iswaran]",
-    "summaryEn": "Profile pending.",
-    "channels": [],
-    "nameEn": "S Iswaran]",
-    "titleEn": ""
-  },
-  {
     "id": "mohamed-irshad",
     "name": "",
     "title": "",
@@ -1970,21 +1946,6 @@
     "titleEn": ""
   },
   {
-    "id": "choo-pei-ling-2",
-    "name": "",
-    "aliases": ["Dr Choo Pei Ling"],
-    "title": "",
-    "category": "government",
-    "roles": ["mp"],
-    "affiliations": ["Other"],
-    "party": null,
-    "summary": "[需补充] Choo Pei Ling",
-    "summaryEn": "Profile pending.",
-    "channels": [],
-    "nameEn": "Choo Pei Ling",
-    "titleEn": ""
-  },
-  {
     "id": "cassandra-lee",
     "name": "",
     "title": "",
@@ -1996,21 +1957,6 @@
     "summaryEn": "Profile pending.",
     "channels": [],
     "nameEn": "Cassandra Lee",
-    "titleEn": ""
-  },
-  {
-    "id": "charlene-chen-2",
-    "name": "",
-    "aliases": ["Dr Charlene Chen"],
-    "title": "",
-    "category": "government",
-    "roles": ["mp"],
-    "affiliations": ["Other"],
-    "party": null,
-    "summary": "[需补充] Charlene Chen",
-    "summaryEn": "Profile pending.",
-    "channels": [],
-    "nameEn": "Charlene Chen",
     "titleEn": ""
   },
   {
@@ -2029,21 +1975,6 @@
     "titleEn": ""
   },
   {
-    "id": "valerie-lee-2",
-    "name": "",
-    "aliases": ["Ms Valerie Lee"],
-    "title": "",
-    "category": "government",
-    "roles": ["mp"],
-    "affiliations": ["Other"],
-    "party": null,
-    "summary": "[需补充] Valerie Lee",
-    "summaryEn": "Profile pending.",
-    "channels": [],
-    "nameEn": "Valerie Lee",
-    "titleEn": ""
-  },
-  {
     "id": "gan-siow-huang",
     "name": "",
     "aliases": ["Ms Gan Siow Huang"],
@@ -2056,20 +1987,6 @@
     "summaryEn": "Profile pending.",
     "channels": [],
     "nameEn": "Gan Siow Huang",
-    "titleEn": ""
-  },
-  {
-    "id": "rachel-ong-2",
-    "name": "",
-    "title": "",
-    "category": "government",
-    "roles": ["mp"],
-    "affiliations": ["Other"],
-    "party": null,
-    "summary": "[需补充] Rachel Ong",
-    "summaryEn": "Profile pending.",
-    "channels": [],
-    "nameEn": "Rachel Ong",
     "titleEn": ""
   },
   {
@@ -2129,20 +2046,6 @@
     "titleEn": ""
   },
   {
-    "id": "jamus-jerome-lim-2",
-    "name": "",
-    "title": "",
-    "category": "government",
-    "roles": ["mp"],
-    "affiliations": ["Other"],
-    "party": null,
-    "summary": "[需补充] Jamus Jerome Lim",
-    "summaryEn": "Profile pending.",
-    "channels": [],
-    "nameEn": "Jamus Jerome Lim",
-    "titleEn": ""
-  },
-  {
     "id": "grace-fu-hai-yien",
     "name": "",
     "title": "",
@@ -2168,20 +2071,6 @@
     "summaryEn": "Profile pending.",
     "channels": [],
     "nameEn": "Prime Minister and Minister for Finance",
-    "titleEn": ""
-  },
-  {
-    "id": "koh-poh-koon-2",
-    "name": "",
-    "title": "",
-    "category": "government",
-    "roles": ["mp"],
-    "affiliations": ["Other"],
-    "party": null,
-    "summary": "[需补充] Koh Poh Koon",
-    "summaryEn": "Profile pending.",
-    "channels": [],
-    "nameEn": "Koh Poh Koon",
     "titleEn": ""
   },
   {
@@ -2281,20 +2170,6 @@
     "summaryEn": "Profile pending.",
     "channels": [],
     "nameEn": "Community and Youth and Trade and Industry",
-    "titleEn": ""
-  },
-  {
-    "id": "gan-siow-huang-2",
-    "name": "",
-    "title": "",
-    "category": "government",
-    "roles": ["mp"],
-    "affiliations": ["Other"],
-    "party": null,
-    "summary": "[需补充] Gan Siow Huang",
-    "summaryEn": "Profile pending.",
-    "channels": [],
-    "nameEn": "Gan Siow Huang",
     "titleEn": ""
   },
   {
@@ -2424,62 +2299,6 @@
     "titleEn": ""
   },
   {
-    "id": "mr-leon-perera",
-    "name": "",
-    "title": "",
-    "category": "government",
-    "roles": ["mp"],
-    "affiliations": ["Other"],
-    "party": null,
-    "summary": "[需补充] [Mr Leon Perera",
-    "summaryEn": "Profile pending.",
-    "channels": [],
-    "nameEn": "[Mr Leon Perera",
-    "titleEn": ""
-  },
-  {
-    "id": "cedric-foo-chee-keng-pioneer",
-    "name": "",
-    "title": "",
-    "category": "government",
-    "roles": ["mp"],
-    "affiliations": ["Other"],
-    "party": null,
-    "summary": "[需补充] Cedric Foo Chee Keng (Pioneer)]",
-    "summaryEn": "Profile pending.",
-    "channels": [],
-    "nameEn": "Cedric Foo Chee Keng (Pioneer)]",
-    "titleEn": ""
-  },
-  {
-    "id": "mr-ong-teng-koon",
-    "name": "",
-    "title": "",
-    "category": "government",
-    "roles": ["mp"],
-    "affiliations": ["Other"],
-    "party": null,
-    "summary": "[需补充] [Mr Ong Teng Koon",
-    "summaryEn": "Profile pending.",
-    "channels": [],
-    "nameEn": "[Mr Ong Teng Koon",
-    "titleEn": ""
-  },
-  {
-    "id": "janil-puthucheary-2",
-    "name": "",
-    "title": "",
-    "category": "government",
-    "roles": ["mp"],
-    "affiliations": ["Other"],
-    "party": null,
-    "summary": "[需补充] Janil Puthucheary]",
-    "summaryEn": "Profile pending.",
-    "channels": [],
-    "nameEn": "Janil Puthucheary]",
-    "titleEn": ""
-  },
-  {
     "id": "the-senior-minister-of-state-for-communications-and-information",
     "name": "",
     "title": "",
@@ -2487,38 +2306,10 @@
     "roles": ["mp"],
     "affiliations": ["Other"],
     "party": null,
-    "summary": "[需补充] [The Senior Minister of State for Communications and Information",
+    "summary": "[需补充] The Senior Minister of State for Communications and Information",
     "summaryEn": "Profile pending.",
     "channels": [],
-    "nameEn": "[The Senior Minister of State for Communications and Information",
-    "titleEn": ""
-  },
-  {
-    "id": "mr-murali-pillai",
-    "name": "",
-    "title": "",
-    "category": "government",
-    "roles": ["mp"],
-    "affiliations": ["Other"],
-    "party": null,
-    "summary": "[需补充] [Mr Murali Pillai",
-    "summaryEn": "Profile pending.",
-    "channels": [],
-    "nameEn": "[Mr Murali Pillai",
-    "titleEn": ""
-  },
-  {
-    "id": "chan-chun-sing-2",
-    "name": "",
-    "title": "",
-    "category": "government",
-    "roles": ["mp"],
-    "affiliations": ["Other"],
-    "party": null,
-    "summary": "[需补充] Chan Chun Sing]",
-    "summaryEn": "Profile pending.",
-    "channels": [],
-    "nameEn": "Chan Chun Sing]",
+    "nameEn": "The Senior Minister of State for Communications and Information",
     "titleEn": ""
   },
   {
@@ -2529,10 +2320,10 @@
     "roles": ["mp"],
     "affiliations": ["Other"],
     "party": null,
-    "summary": "[需补充] [The Minister for Trade and Industry",
+    "summary": "[需补充] The Minister for Trade and Industry",
     "summaryEn": "Profile pending.",
     "channels": [],
-    "nameEn": "[The Minister for Trade and Industry",
+    "nameEn": "The Minister for Trade and Industry",
     "titleEn": ""
   },
   {
@@ -2557,24 +2348,10 @@
     "roles": ["mp"],
     "affiliations": ["Other"],
     "party": null,
-    "summary": "[需补充] Chairman]",
+    "summary": "[需补充] Chairman",
     "summaryEn": "Profile pending.",
     "channels": [],
-    "nameEn": "Chairman]",
-    "titleEn": ""
-  },
-  {
-    "id": "ms-sim-ann",
-    "name": "",
-    "title": "",
-    "category": "government",
-    "roles": ["mp"],
-    "affiliations": ["Other"],
-    "party": null,
-    "summary": "[需补充] [Ms Sim Ann",
-    "summaryEn": "Profile pending.",
-    "channels": [],
-    "nameEn": "[Ms Sim Ann",
+    "nameEn": "Chairman",
     "titleEn": ""
   },
   {
@@ -2600,10 +2377,10 @@
     "roles": ["mp"],
     "affiliations": ["Other"],
     "party": null,
-    "summary": "[需补充] Cheng Li Hui (Tampines)]",
+    "summary": "[需补充] Cheng Li Hui (Tampines)",
     "summaryEn": "Profile pending.",
     "channels": [],
-    "nameEn": "Cheng Li Hui (Tampines)]",
+    "nameEn": "Cheng Li Hui (Tampines)",
     "titleEn": ""
   },
   {
@@ -2621,34 +2398,6 @@
     "titleEn": ""
   },
   {
-    "id": "mr-kwek-hian-chuan-henry",
-    "name": "",
-    "title": "",
-    "category": "government",
-    "roles": ["mp"],
-    "affiliations": ["Other"],
-    "party": null,
-    "summary": "[需补充] [Mr Kwek Hian Chuan Henry",
-    "summaryEn": "Profile pending.",
-    "channels": [],
-    "nameEn": "[Mr Kwek Hian Chuan Henry",
-    "titleEn": ""
-  },
-  {
-    "id": "anthea-ong-2",
-    "name": "",
-    "title": "",
-    "category": "government",
-    "roles": ["mp"],
-    "affiliations": ["Other"],
-    "party": null,
-    "summary": "[需补充] Anthea Ong]",
-    "summaryEn": "Profile pending.",
-    "channels": [],
-    "nameEn": "Anthea Ong]",
-    "titleEn": ""
-  },
-  {
     "id": "government-whip",
     "name": "",
     "title": "",
@@ -2663,35 +2412,6 @@
     "titleEn": ""
   },
   {
-    "id": "mr-louis-ng-kok-kwang",
-    "name": "",
-    "title": "",
-    "category": "government",
-    "roles": ["mp"],
-    "affiliations": ["Other"],
-    "party": null,
-    "summary": "[需补充] [Mr Louis Ng Kok Kwang",
-    "summaryEn": "Profile pending.",
-    "channels": [],
-    "nameEn": "[Mr Louis Ng Kok Kwang",
-    "titleEn": ""
-  },
-  {
-    "id": "walter-theseira-2",
-    "name": "",
-    "aliases": ["Assoc Prof Walter Theseira]"],
-    "title": "",
-    "category": "government",
-    "roles": ["mp"],
-    "affiliations": ["Other"],
-    "party": null,
-    "summary": "[需补充] Walter Theseira]",
-    "summaryEn": "Profile pending.",
-    "channels": [],
-    "nameEn": "Walter Theseira]",
-    "titleEn": ""
-  },
-  {
     "id": "the-minister-for-foreign-affairs",
     "name": "",
     "title": "",
@@ -2699,10 +2419,10 @@
     "roles": ["mp"],
     "affiliations": ["Other"],
     "party": null,
-    "summary": "[需补充] [The Minister for Foreign Affairs",
+    "summary": "[需补充] The Minister for Foreign Affairs",
     "summaryEn": "Profile pending.",
     "channels": [],
-    "nameEn": "[The Minister for Foreign Affairs",
+    "nameEn": "The Minister for Foreign Affairs",
     "titleEn": ""
   },
   {

@@ -5,7 +5,10 @@ import { Icon } from 'astro-icon/components';
 import JsonLd from '~/components/common/JsonLd.astro';
 import Layout from '~/layouts/PageLayout.astro';
 import { dataDate } from '~/data/legal-ai';
+import { categories as policyCategories } from '~/data/policies';
 import { legalItemPages, legalItemSlug } from '~/utils/entity-pages';
+import { localizedHref } from '~/i18n';
+import { getCanonical } from '~/utils/permalinks';
 
 export const prerender = true;
 
@@ -29,9 +32,17 @@ const title = item.titleEn || item.title;
 const summary = item.summaryEn || item.summary;
 const body = item.bodyEn || item.body;
 
+// Three legal items also exist as full policy-archive pages under the same
+// slug (e.g. /policies/guide-on-use-of-generative-ai-tools-by-court-users/).
+// Google was ranking both and splitting clicks (GSC 2026-06: pos 5.6 vs 6.0
+// for the courts guide) — canonicalise the legal-ai copy to the richer
+// policy page.
+const policyTwin = policyCategories.some((c) => c.policies.some((p) => p.id === page.slug));
+
 const metadata = {
   title: `${title} · AI Legal Framework`,
   description: summary,
+  ...(policyTwin ? { canonical: String(getCanonical(localizedHref(`/policies/${page.slug}/`, lang))) } : {}),
 };
 
 const schema = {

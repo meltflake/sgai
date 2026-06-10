@@ -79,6 +79,31 @@ const MANUAL_TYPES = new Set<UpdateType>(['site', 'fix', 'longform']);
 // sort regardless. Add new entries at the top.
 export const MANUAL_UPDATES: Update[] = [
   {
+    date: '2026-06-10',
+    type: 'fix',
+    title: '搜索体验修复：议员档案去重 + 重复页面合并',
+    titleEn: 'Search fixes: MP profile dedupe + duplicate-page consolidation',
+    titleJa: '検索体験の修正：議員プロフィールの重複排除 + 重複ページ統合',
+    titleKo: '검색 경험 수정: 의원 프로필 중복 제거 + 중복 페이지 통합',
+    summary:
+      '基于 Google Search Console 数据的一轮 SEO 加固：清理 Hansard 抓取产生的 20 个议员重名档案（括号残留、敬称前缀、-2 后缀），辩论页发言人引用全部归并到正主；Cyberport 超算中心、法律框架与政策库的三对重复页面用 canonical 合并排名信号；补全 Ong Teng Koon 议员档案；AI 产业渗透页标题对齐搜索词。',
+    summaryEn:
+      'An SEO hardening pass driven by Google Search Console data: removed 20 duplicate MP profile stubs created by Hansard extraction artifacts (stray brackets, honorific prefixes, -2 suffixes) and remapped all debate speaker references to canonical ids; consolidated split ranking signals with rel=canonical across the Cyberport supercomputing pages and three legal-framework/policy-archive twins; enriched the Ong Teng Koon MP profile; aligned the AI-adoption tracker title with what people actually search.',
+    summaryJa:
+      'Google Search Console データに基づく SEO 強化：Hansard 抽出時の残留物（括弧、敬称接頭辞、-2 接尾辞)による議員プロフィールの重複 20 件を整理し、討論ページの発言者参照を正規 ID に統合。Cyberport スーパーコンピューティングセンターと法的枠組み/政策ライブラリの重複ページを canonical で統合。Ong Teng Koon 議員のプロフィールを補完し、AI 導入トラッカーのタイトルを検索語に合わせました。',
+    summaryKo:
+      'Google Search Console 데이터 기반 SEO 강화: Hansard 추출 잔재(괄호, 경칭 접두사, -2 접미사)로 생긴 의원 프로필 중복 20건을 정리하고 토론 페이지 발언자 참조를 정규 ID로 통합. Cyberport 슈퍼컴퓨팅 센터와 법률 프레임워크/정책 라이브러리의 중복 페이지를 canonical로 통합. Ong Teng Koon 의원 프로필을 보완하고 AI 도입 트래커 제목을 실제 검색어에 맞췄습니다.',
+    links: [
+      {
+        href: '/voices/ong-teng-koon/',
+        label: '查看议员档案',
+        labelEn: 'View the MP profile',
+        labelJa: '議員プロフィールを見る',
+        labelKo: '의원 프로필 보기',
+      },
+    ],
+  },
+  {
     date: '2026-06-09',
     type: 'longform',
     title: '新发布：GIC 与淡马锡在 AI 上投了什么',
