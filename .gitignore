@@ -61,3 +61,7 @@ scripts/i18n/data/
 # eval reports — historical artefacts, regenerated each run
 scripts/evals/*/reports/
 scripts/hansard/data/translate-cache-ko/
+
+# data-relations review queues are review-in-progress working files;
+# .gitkeep keeps the directory, individual queues stay local
+scripts/data-relations/queue/*.json

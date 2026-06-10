@@ -74,36 +74,39 @@ export function getTimelineEventById(id: string): TimelineEvent | undefined {
 
 // ── Reverse-index helpers (built on first access) ───────────────────────
 
-let _debatesByPersonId: Map<string, Debate[]> | null = null;
-
-function debatesByPersonId(): Map<string, Debate[]> {
-  if (_debatesByPersonId) return _debatesByPersonId;
-  const m = new Map<string, Debate[]>();
-  for (const d of debates) {
-    for (const pid of d.personIds || []) {
-      const arr = m.get(pid) || [];
-      arr.push(d);
-      m.set(pid, arr);
+function buildPersonReverseIndex<T>(
+  items: Iterable<T>,
+  getIds: (item: T) => readonly string[] | undefined
+): Map<string, T[]> {
+  const m = new Map<string, T[]>();
+  for (const item of items) {
+    for (const pid of getIds(item) || []) {
+      const arr = m.get(pid);
+      if (arr) arr.push(item);
+      else m.set(pid, [item]);
     }
   }
-  _debatesByPersonId = m;
   return m;
 }
 
-let _policiesByPersonId: Map<string, Policy[]> | null = null;
+let _debatesByPersonId: Map<string, Debate[]> | null = null;
+function debatesByPersonId(): Map<string, Debate[]> {
+  return (_debatesByPersonId ??= buildPersonReverseIndex(debates, (d) => d.personIds));
+}
 
+let _policiesByPersonId: Map<string, Policy[]> | null = null;
 function policiesByPersonId(): Map<string, Policy[]> {
-  if (_policiesByPersonId) return _policiesByPersonId;
-  const m = new Map<string, Policy[]>();
-  for (const p of getAllPolicies()) {
-    for (const pid of p.authorPersonIds || []) {
-      const arr = m.get(pid) || [];
-      arr.push(p);
-      m.set(pid, arr);
-    }
-  }
-  _policiesByPersonId = m;
-  return m;
+  return (_policiesByPersonId ??= buildPersonReverseIndex(getAllPolicies(), (p) => p.authorPersonIds));
+}
+
+let _leversByPersonId: Map<string, Lever[]> | null = null;
+function leversByPersonId(): Map<string, Lever[]> {
+  return (_leversByPersonId ??= buildPersonReverseIndex(levers, (lv) => lv.championPersonIds));
+}
+
+let _timelineByPersonId: Map<string, TimelineEvent[]> | null = null;
+function timelineByPersonId(): Map<string, TimelineEvent[]> {
+  return (_timelineByPersonId ??= buildPersonReverseIndex(timelineEvents, (e) => e.personIds));
 }
 
 // ── The big one ─────────────────────────────────────────────────────────
@@ -207,6 +210,8 @@ export function getRelated(ref: EntityRef): RelatedBundle {
     const id = String(ref.id);
     out.debates = debatesByPersonId().get(id) || [];
     out.policies = policiesByPersonId().get(id) || [];
+    out.levers = leversByPersonId().get(id) || [];
+    out.timeline = timelineByPersonId().get(id) || [];
     return out;
   }
 
