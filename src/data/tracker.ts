@@ -234,13 +234,13 @@ export const dimensions: Dimension[] = [
       },
     ],
     judgment:
-      '人均 S$139 是美国 4.2 倍、中国 19 倍。Budget 2026 在已有 S$2B 基础上加 S$70M Multimodal LLM、S$1.5B FSDF、400% 税收激励——节奏不放缓。RIE2030 总盘 S$37B 兜底未来 5 年。资金强度处于全球第一梯队。',
+      '人均 S$139 是美国 4.2 倍、中国 19 倍。Budget 2026 在已有 S$2B 基础上加 S$70M Multimodal LLM、S$1.5B FSDF、400% 税收激励——节奏不放缓。RIE2030 总盘 S$37B 兜底未来 5 年。资金强度处于全球第一梯队。财政投入之外还有另一条线：GIC 与淡马锡 2025–2026 年先后入股 Anthropic 与 OpenAI，主权资本直接持有前沿模型公司股权。',
     judgmentKo:
-      '1인당 S$139는 미국의 4.2배, 중국의 19배입니다. 2026년 예산은 기존 S$2B에 S$70M 다중모드 LLM, S$1.5B FSDF, 400% 세제 인센티브를 추가했습니다—투자 속도가 둔화되지 않았습니다. RIE2030 총 규모 S$37B는 향후 5년을 담보합니다. 자금 강도는 글로벌 최상위 수준입니다.',
+      '1인당 S$139는 미국의 4.2배, 중국의 19배입니다. 2026년 예산은 기존 S$2B에 S$70M 다중모드 LLM, S$1.5B FSDF, 400% 세제 인센티브를 추가했습니다—투자 속도가 둔화되지 않았습니다. RIE2030 총 규모 S$37B는 향후 5년을 담보합니다. 자금 강도는 글로벌 최상위 수준입니다. 재정 투입 외에 또 하나의 축이 있습니다: GIC와 테마섹은 2025–2026년에 걸쳐 Anthropic과 OpenAI에 잇따라 투자해, 주권 자본이 프런티어 모델 기업 지분을 직접 보유하게 되었습니다.',
     judgmentJa:
-      '一人当たり S$139 は米国の 4.2 倍、中国の 19 倍。Budget 2026 は既存の S$2B を基礎に、S$70M Multimodal LLM、S$1.5B FSDF、400% 税控除を追加し、ペースは緩みません。RIE2030 総額 S$37B が今後 5 年の基礎となります。資金の強度は世界の第一梯隊にあります。',
+      '一人当たり S$139 は米国の 4.2 倍、中国の 19 倍。Budget 2026 は既存の S$2B を基礎に、S$70M Multimodal LLM、S$1.5B FSDF、400% 税控除を追加し、ペースは緩みません。RIE2030 総額 S$37B が今後 5 年の基礎となります。資金の強度は世界の第一梯隊にあります。財政投入のほかにもう一つの線があります：GIC とテマセクは 2025–2026 年に Anthropic と OpenAI に相次いで出資し、ソブリン資本がフロンティアモデル企業の株式を直接保有しています。',
     judgmentEn:
-      "S$139 per capita is 4.2× the US and 19× China. Budget 2026 adds S$70M Multimodal LLM, S$1.5B FSDF, and a 400% tax incentive on top of an existing S$2B base — pace is not slowing. RIE2030's S$37B total backstops the next 5 years. Investment intensity sits in the global top tier.",
+      "S$139 per capita is 4.2× the US and 19× China. Budget 2026 adds S$70M Multimodal LLM, S$1.5B FSDF, and a 400% tax incentive on top of an existing S$2B base — pace is not slowing. RIE2030's S$37B total backstops the next 5 years. Investment intensity sits in the global top tier. Beyond fiscal spending there is a second track: GIC and Temasek took stakes in Anthropic and OpenAI across 2025–2026, putting sovereign capital directly on frontier-model cap tables.",
     shortcoming:
       '私有部门跟投比例偏低，仍是政府推为主；钱花在算力和大企业上较多，SME 端补贴渗透不够；估算和披露口径偶尔不一致，跨年比较要小心。',
     shortcomingKo:
@@ -249,6 +249,7 @@ export const dimensions: Dimension[] = [
       '民間部門の追加投資比率が低く、依然として政府主導；資金は計算能力と大企業に多く向けられ、SME 向けの補助の浸透度は不十分；推定と開示の口径がたまに不一致で、年間比較では注意が必要。',
     shortcomingEn:
       'Private sector co-investment ratio is low — government still drives most of the spend. Capital flows mostly to compute and large enterprises; SME-side subsidies underpenetrate. Disclosure conventions occasionally diverge year-over-year, so cross-year comparisons need care.',
+    relatedPostSlugs: ['sovereign-capital-frontier-ai'],
     metrics: [
       {
         name: '政府 AI 专项投入',

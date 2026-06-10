@@ -45,6 +45,28 @@ export const timelineEvents: TimelineEvent[] = [
     tagsKo: ['인재', '국제'],
   },
   {
+    id: 'evt-2026-anthropic-series-h-gic-temasek',
+    year: 2026,
+    date: '2026-05-28',
+    title: 'Anthropic 650 亿美元 Series H：GIC 共同领投、淡马锡首次入股',
+    titleKo: 'Anthropic 650억 달러 Series H: GIC 공동 리드, 테마섹 첫 투자',
+    titleJa: 'Anthropic 650 億ドル Series H：GIC 共同リード、テマセク初出資',
+    titleEn: "Anthropic's $65B Series H: GIC co-leads, Temasek takes first stake",
+    description:
+      'Anthropic 完成 650 亿美元 Series H 融资，投后估值 9650 亿美元。GIC 以共同领投身份连续第三轮加注（此前为 2025-09 Series F 参与、2026-02 Series G 共同领投），淡马锡以 significant investor 身份首次入股——新加坡两家主权基金同时出现在同一家前沿 AI 公司的股东名单上。',
+    descriptionKo:
+      'Anthropic이 650억 달러 Series H 펀딩을 완료했고 포스트머니 밸류에이션은 9650억 달러입니다. GIC는 공동 리드로 3개 라운드 연속 투자했으며(2025-09 Series F 참여, 2026-02 Series G 공동 리드에 이어), 테마섹은 significant investor로 처음 투자했습니다—싱가포르 두 국부펀드가 같은 프런티어 AI 기업의 주주 명단에 동시에 등장했습니다.',
+    descriptionJa:
+      'Anthropic は 650 億ドルの Series H 資金調達を完了し、ポストマネー評価額は 9650 億ドル。GIC は共同リードとして 3 ラウンド連続で投資（2025-09 Series F 参加、2026-02 Series G 共同リードに続く）、テマセクは significant investor として初出資——シンガポールの 2 つのソブリンファンドが同じフロンティア AI 企業の株主名簿に同時に登場しました。',
+    descriptionEn:
+      "Anthropic closed a $65 billion Series H at a $965 billion post-money valuation. GIC co-led — its third consecutive round after participating in the September 2025 Series F and co-leading the February 2026 Series G — and Temasek took its first stake as a significant investor, putting Singapore's two sovereign funds on the same frontier AI company's cap table.",
+    tags: ['资本', '国际'],
+    tagsEn: ['Capital', 'International'],
+    tagsJa: ['資本', '国際'],
+    tagsKo: ['자본', '국제'],
+    relatedPostSlugs: ['sovereign-capital-frontier-ai'],
+  },
+  {
     id: 'evt-2026-atxsummit-real-world-ai-deployment',
     year: 2026,
     date: '2026-05-20',
@@ -118,6 +140,50 @@ export const timelineEvents: TimelineEvent[] = [
     tagsJa: ['ガバナンス', '国際', '標準'],
     tagsKo: ['거버넌스', '국제', '표준'],
     relatedPolicyIds: ['iso-iec-42119-8-generative-ai-testing-standard'],
+  },
+  {
+    id: 'evt-2026-temasek-openai',
+    year: 2026,
+    date: '2026-03-31',
+    title: '淡马锡参与 OpenAI 1220 亿美元融资',
+    titleKo: '테마섹, OpenAI 1220억 달러 펀딩에 참여',
+    titleJa: 'テマセクが OpenAI の 1220 億ドル資金調達に参加',
+    titleEn: "Temasek joins OpenAI's $122B raise",
+    description:
+      'OpenAI 完成 1220 亿美元融资，投后估值 8520 亿美元，Amazon、Nvidia、SoftBank 与 a16z 等共同领投。淡马锡出现在 OpenAI 官方公告的参与机构名单中——距 2024 年 3 月 FT 报道双方洽谈两年后，新加坡主权资本首次直接持有 OpenAI 股权。',
+    descriptionKo:
+      'OpenAI가 1220억 달러 펀딩을 완료했고 포스트머니 밸류에이션은 8520억 달러이며, Amazon, Nvidia, SoftBank, a16z 등이 공동 리드했습니다. 테마섹은 OpenAI 공식 발표의 참여 기관 명단에 등장했습니다—2024년 3월 FT가 양측의 협의를 보도한 지 2년 만에, 싱가포르 주권 자본이 처음으로 OpenAI 지분을 직접 보유하게 되었습니다.',
+    descriptionJa:
+      'OpenAI は 1220 億ドルの資金調達を完了し、ポストマネー評価額は 8520 億ドル。Amazon、Nvidia、SoftBank、a16z などが共同リードしました。テマセクは OpenAI 公式発表の参加機関リストに登場——2024 年 3 月に FT が両者の交渉を報じてから 2 年後、シンガポールのソブリン資本が初めて OpenAI の株式を直接保有しました。',
+    descriptionEn:
+      "OpenAI closed a $122 billion raise at an $852 billion post-money valuation, co-led by Amazon, Nvidia, SoftBank, and a16z among others. Temasek appears on OpenAI's official participant list — two years after the FT first reported talks in March 2024, Singapore sovereign capital directly holds OpenAI equity for the first time.",
+    tags: ['资本', '国际'],
+    tagsEn: ['Capital', 'International'],
+    tagsJa: ['資本', '国際'],
+    tagsKo: ['자본', '국제'],
+    relatedPostSlugs: ['sovereign-capital-frontier-ai'],
+  },
+  {
+    id: 'evt-2026-gic-anthropic-series-g',
+    year: 2026,
+    date: '2026-02-12',
+    title: 'GIC 与 Coatue 共同领投 Anthropic 300 亿美元 Series G',
+    titleKo: 'GIC, Coatue와 함께 Anthropic 300억 달러 Series G 공동 리드',
+    titleJa: 'GIC が Coatue と Anthropic の 300 億ドル Series G を共同リード',
+    titleEn: "GIC co-leads Anthropic's $30B Series G with Coatue",
+    description:
+      'GIC 在自己的新闻稿中宣布与 Coatue 共同领投 Anthropic 300 亿美元 Series G，投后估值 3800 亿美元。GIC 此前已参与 2025 年 9 月的 130 亿美元 Series F，官方称这一连续加注为「lifecycle investment」。',
+    descriptionKo:
+      'GIC는 자체 보도자료에서 Coatue와 함께 Anthropic의 300억 달러 Series G를 공동 리드한다고 발표했으며, 포스트머니 밸류에이션은 3800억 달러입니다. GIC는 앞서 2025년 9월 130억 달러 Series F에 참여했으며, 공식적으로 이 연속 투자를 「lifecycle investment」라고 부릅니다.',
+    descriptionJa:
+      'GIC は自社のプレスリリースで、Coatue とともに Anthropic の 300 億ドル Series G を共同リードすると発表しました。ポストマネー評価額は 3800 億ドル。GIC は 2025 年 9 月の 130 億ドル Series F にすでに参加しており、この連続投資を公式に「lifecycle investment」と呼んでいます。',
+    descriptionEn:
+      'GIC announced in its own press release that it was co-leading Anthropic\'s $30 billion Series G with Coatue, at a $380 billion post-money valuation. GIC had already participated in the September 2025 $13 billion Series F, and officially calls this consecutive backing a "lifecycle investment".',
+    tags: ['资本', '国际'],
+    tagsEn: ['Capital', 'International'],
+    tagsJa: ['資本', '国際'],
+    tagsKo: ['자본', '국제'],
+    relatedPostSlugs: ['sovereign-capital-frontier-ai'],
   },
   {
     id: 'evt-2026-naird-budget',

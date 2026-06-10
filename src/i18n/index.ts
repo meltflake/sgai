@@ -412,6 +412,7 @@ export const zh = {
   leversPageTitle: '新加坡国家 AI 抓手图谱 — 6 大跨部委执行管线 · sgai',
   leversPageDesc:
     '新加坡国家级 AI-native 转型，按"AI 引入路径"重新归类 Budget 2026 + 各部委 AI 政策——基建、治理、人才、应用、政府自用、外交六个抓手，每条抓手都跨部委，链接政策原文。',
+  investorNotableDeals: '代表交易：',
   startupsPageTitle: '新加坡 AI 创业生态 — 650+ 公司、独角兽、融资、投资人 · sgai',
   startupsPageDesc:
     '新加坡 AI 创业生态完整地图：650+ AI-native / AI-enabled 公司样本、独角兽与上市级公司、按垂直领域分类、退出与并购案例、投资人网络与融资数据。',
@@ -700,6 +701,7 @@ export const en: Partial<Record<keyof typeof zh, string>> = {
   leversPageTitle: 'Singapore National AI Levers — 6 cross-ministry pipelines · sgai',
   leversPageDesc:
     "Singapore's national AI-native transformation re-classified by AI-injection path — infrastructure, governance, talent, applications, government self-use, and diplomacy. Six cross-ministry levers, with policy-source links from Budget 2026 and every ministry.",
+  investorNotableDeals: 'Notable AI deals: ',
   startupsPageTitle: 'Singapore AI Startup Ecosystem — 650+ companies, unicorns, funding, VCs · sgai',
   startupsPageDesc:
     "Singapore's AI startup ecosystem map: 650+ AI-native / AI-enabled company samples, unicorns and listed-scale companies, vertical breakdowns, exits and acquisitions, investor network, and funding data.",
@@ -995,6 +997,7 @@ export const ja: Partial<Record<keyof typeof zh, string>> = {
   leversPageTitle: 'シンガポール国家 AI レバー — 6 つの省庁横断パイプライン · sgai',
   leversPageDesc:
     'シンガポールの国家レベル AI ネイティブ転換を「AI 導入経路」で再分類——インフラ・ガバナンス・人材・応用・政府自身の活用・外交の6つのレバー。Budget 2026 と各省庁政策の原典リンク付き。',
+  investorNotableDeals: '主な AI 取引：',
   startupsPageTitle: 'シンガポール AI スタートアップエコシステム — 650+ 社、ユニコーン、資金、投資家 · sgai',
   startupsPageDesc:
     'シンガポール AI スタートアップ生態地図：650+ の AI ネイティブ / AI 活用企業サンプル、ユニコーンと上場規模企業、バーティカル分類、エグジットと M&A 事例、投資家ネットワークと資金調達データ。',
@@ -1286,6 +1289,7 @@ export const ko: Partial<Record<keyof typeof zh, string>> = {
   leversPageTitle: '싱가포르 국가 AI 레버 — 6개 부처 횡단 실행 파이프라인 · sgai',
   leversPageDesc:
     '싱가포르의 국가급 AI-native 전환을 「AI 도입 경로」로 재분류 — 기반시설, 거버넌스, 인재, 애플리케이션, 정부 자체 사용, 외교의 6개 레버. Budget 2026 및 각 부처 정책 원문 링크 포함.',
+  investorNotableDeals: '주요 AI 거래: ',
   startupsPageTitle: '싱가포르 AI 스타트업 생태계 — 650+ 기업·유니콘·자금·투자자 · sgai',
   startupsPageDesc:
     '싱가포르 AI 스타트업 생태계 지도: 650+ AI-native / AI-enabled 기업 샘플, 유니콘과 상장 규모 기업, 수직 분야 분류, 엑싯과 인수 사례, 투자자 네트워크와 자금 조달 데이터.',
