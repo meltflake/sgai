@@ -79,6 +79,31 @@ const MANUAL_TYPES = new Set<UpdateType>(['site', 'fix', 'longform']);
 // sort regardless. Add new entries at the top.
 export const MANUAL_UPDATES: Update[] = [
   {
+    date: '2026-06-10',
+    type: 'fix',
+    title: 'AISG 档案补硬数据：拨款脉络、IOAI 2027、Kampong AI 归属澄清',
+    titleEn: 'AISG profile hardened: funding history, IOAI 2027, Kampong AI ownership clarified',
+    titleJa: 'AISG プロフィールを増強：資金の経緯、IOAI 2027、Kampong AI の帰属を明確化',
+    titleKo: 'AISG 프로필 보강: 자금 내역, IOAI 2027, Kampong AI 소속 명확화',
+    summary:
+      '生态页 AI Singapore 档案补入经官方信源核验的硬事实：2017 年 NRF 六方共建与 1.5 亿新元启动拨款、2025–2030 年 10 亿新元国家 AI 研发投入、AISG × NTU 联合主办 IOAI 2027、NOAI 选拔通道；并澄清 AI Trailblazers（MCI × Google Cloud）与 Kampong AI（JTC 园区）均非 AISG 项目。同时修复一条失效的 NRF 来源链接。',
+    summaryEn:
+      'The AI Singapore ecosystem profile now carries officially sourced hard facts: the 2017 six-agency launch with up to S$150M from NRF, the S$1B national AI R&D pool for 2025–2030, AISG and NTU co-hosting IOAI 2027, and the NOAI selection pathway. It also clarifies that AI Trailblazers (MCI × Google Cloud) and Kampong AI (a JTC campus) are not AISG programmes. A dead NRF source link was fixed along the way.',
+    summaryJa:
+      'エコシステムの AI Singapore プロフィールに公式情報源で検証済みのハードファクトを追加：2017 年の 6 機関共同発足と NRF の最大 1.5 億シンガポールドル、2025–2030 年の 10 億シンガポールドル国家 AI 研究開発投資、AISG × NTU による IOAI 2027 共同開催、NOAI 選抜ルート。また AI Trailblazers（MCI × Google Cloud）と Kampong AI（JTC のキャンパス）が AISG のプロジェクトではないことを明確化し、リンク切れの NRF 出典も修復。',
+    summaryKo:
+      '생태계 AI Singapore 프로필에 공식 출처로 검증된 하드 팩트를 추가: 2017년 6개 기관 공동 출범과 NRF의 최대 1억 5천만 싱가포르 달러, 2025–2030년 10억 싱가포르 달러 국가 AI R&D 투자, AISG × NTU의 IOAI 2027 공동 개최, NOAI 선발 통로. 아울러 AI Trailblazers(MCI × Google Cloud)와 Kampong AI(JTC 캠퍼스)가 AISG 프로젝트가 아님을 명확히 했고, 깨진 NRF 출처 링크도 수정.',
+    links: [
+      {
+        href: '/ecosystem/ai-singapore/',
+        label: '查看 AISG 档案',
+        labelEn: 'View the AISG profile',
+        labelJa: 'AISG プロフィールを見る',
+        labelKo: 'AISG 프로필 보기',
+      },
+    ],
+  },
+  {
     date: '2026-06-09',
     type: 'longform',
     title: '新发布：GIC 与淡马锡在 AI 上投了什么',
@@ -100,6 +125,31 @@ export const MANUAL_UPDATES: Update[] = [
         labelEn: 'Read the article',
         labelJa: '記事を読む',
         labelKo: '글 읽기',
+      },
+    ],
+  },
+  {
+    date: '2026-06-10',
+    type: 'site',
+    title: '议员档案页新增「国会 AI 发言记录」派生区块',
+    titleEn: 'MP profiles gain a derived "Parliamentary AI record" section',
+    titleJa: '議員プロフィールに「議会 AI 発言記録」派生セクションを追加',
+    titleKo: '의원 프로필에 "국회 AI 발언 기록" 파생 섹션 추가',
+    summary:
+      '人物档案页的国会发言区块升级为派生式「国会 AI 发言记录」：按年份、按议题的统计与每场辩论的议题标签全部从库内 Hansard 记录自动派生。有 3 场以上辩论记录的待补充议员档案，自动生成一句事实摘要（如「国会议员。2021–2026 年间在 31 场 AI 相关国会辩论中发言」），顶替原来的占位文案出现在页面与搜索摘要中。',
+    summaryEn:
+      'The parliamentary section on voice profiles is now a derived "Parliamentary AI record": per-year and per-topic counts plus topic tags per debate, all generated from in-repo Hansard records. Stub MP profiles with 3+ debates get an auto-generated factual summary line (e.g. "Member of Parliament. Spoke in 31 AI-related parliamentary debates (2021–2026)"), replacing the placeholder text on the page and in search snippets.',
+    summaryJa:
+      '人物プロフィールの議会セクションを派生型「議会 AI 発言記録」に刷新：年別・テーマ別の集計と各討論のテーマタグをリポジトリ内の Hansard 記録から自動生成。3 件以上の討論記録を持つ未補完の議員プロフィールには事実ベースの一行サマリー（例「国会議員。2021–2026年に 31 件の AI 関連議会討論で発言」）を自動生成し、プレースホルダー文言を置き換えます。',
+    summaryKo:
+      '인물 프로필의 국회 섹션을 파생형 "국회 AI 발언 기록"으로 개편: 연도별·주제별 집계와 각 토론의 주제 태그를 저장소 내 Hansard 기록에서 자동 생성합니다. 3건 이상의 토론 기록이 있는 미완성 의원 프로필에는 사실 기반 한 줄 요약(예: "국회의원. 2021–2026년 31건의 AI 관련 국회 토론에서 발언")을 자동 생성해 자리표시 문구를 대체합니다.',
+    links: [
+      {
+        href: '/voices/gerald-giam-yean-song/',
+        label: '查看示例档案',
+        labelEn: 'See an example profile',
+        labelJa: 'プロフィール例を見る',
+        labelKo: '예시 프로필 보기',
       },
     ],
   },
