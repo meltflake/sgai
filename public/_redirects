@@ -2,6 +2,50 @@
 /people/:id       /voices/:id          301
 /people           /voices              301
 
+# Hansard speaker-extraction artifacts deduped 2026-06-10: voices stub pages
+# for bracket/honorific/-2 variants now 301 to the canonical person id.
+# Two rules per id: en root form + single-segment locale prefix form.
+/voices/mr-ong-teng-koon                  /voices/ong-teng-koon                  301
+/:lang/voices/mr-ong-teng-koon            /:lang/voices/ong-teng-koon            301
+/voices/mr-leon-perera                    /voices/leon-perera                    301
+/:lang/voices/mr-leon-perera              /:lang/voices/leon-perera              301
+/voices/mr-murali-pillai                  /voices/murali-pillai                  301
+/:lang/voices/mr-murali-pillai            /:lang/voices/murali-pillai            301
+/voices/ms-sim-ann                        /voices/sim-ann                        301
+/:lang/voices/ms-sim-ann                  /:lang/voices/sim-ann                  301
+/voices/mr-kwek-hian-chuan-henry          /voices/kwek-hian-chuan-henry          301
+/:lang/voices/mr-kwek-hian-chuan-henry    /:lang/voices/kwek-hian-chuan-henry    301
+/voices/mr-louis-ng-kok-kwang             /voices/louis-ng-kok-kwang             301
+/:lang/voices/mr-louis-ng-kok-kwang       /:lang/voices/louis-ng-kok-kwang       301
+/voices/cedric-foo-chee-keng-pioneer      /voices/cedric-foo-chee-keng           301
+/:lang/voices/cedric-foo-chee-keng-pioneer /:lang/voices/cedric-foo-chee-keng    301
+/voices/fatimah-lateef-2                  /voices/fatimah-lateef                 301
+/:lang/voices/fatimah-lateef-2            /:lang/voices/fatimah-lateef           301
+/voices/s-iswaran-2                       /voices/s-iswaran                      301
+/:lang/voices/s-iswaran-2                 /:lang/voices/s-iswaran                301
+/voices/choo-pei-ling-2                   /voices/choo-pei-ling                  301
+/:lang/voices/choo-pei-ling-2             /:lang/voices/choo-pei-ling            301
+/voices/charlene-chen-2                   /voices/charlene-chen                  301
+/:lang/voices/charlene-chen-2             /:lang/voices/charlene-chen            301
+/voices/valerie-lee-2                     /voices/valerie-lee                    301
+/:lang/voices/valerie-lee-2               /:lang/voices/valerie-lee              301
+/voices/rachel-ong-2                      /voices/rachel-ong                     301
+/:lang/voices/rachel-ong-2                /:lang/voices/rachel-ong               301
+/voices/jamus-jerome-lim-2                /voices/jamus-jerome-lim               301
+/:lang/voices/jamus-jerome-lim-2          /:lang/voices/jamus-jerome-lim         301
+/voices/koh-poh-koon-2                    /voices/koh-poh-koon                   301
+/:lang/voices/koh-poh-koon-2              /:lang/voices/koh-poh-koon             301
+/voices/gan-siow-huang-2                  /voices/gan-siow-huang                 301
+/:lang/voices/gan-siow-huang-2            /:lang/voices/gan-siow-huang           301
+/voices/janil-puthucheary-2               /voices/janil-puthucheary              301
+/:lang/voices/janil-puthucheary-2         /:lang/voices/janil-puthucheary        301
+/voices/chan-chun-sing-2                  /voices/chan-chun-sing                 301
+/:lang/voices/chan-chun-sing-2            /:lang/voices/chan-chun-sing           301
+/voices/anthea-ong-2                      /voices/anthea-ong                     301
+/:lang/voices/anthea-ong-2                /:lang/voices/anthea-ong               301
+/voices/walter-theseira-2                 /voices/walter-theseira                301
+/:lang/voices/walter-theseira-2           /:lang/voices/walter-theseira          301
+
 # Phase 2 routing migration (en root + /zh/): old /en/* paths are now at root.
 # Order matters — keep /en/people consolidation before the catch-all /en/* rule.
 /en/people/:id    /voices/:id          301

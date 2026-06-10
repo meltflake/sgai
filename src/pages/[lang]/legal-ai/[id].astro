@@ -7,8 +7,10 @@ import { Icon } from 'astro-icon/components';
 import JsonLd from '~/components/common/JsonLd.astro';
 import Layout from '~/layouts/PageLayout.astro';
 import { dataDate } from '~/data/legal-ai';
+import { categories as policyCategories } from '~/data/policies';
 import { legalItemPages, legalItemSlug } from '~/utils/entity-pages';
 import { NON_DEFAULT_ROUTE_LOCALES, IN_LANGUAGES, pickLocalized, localizedHref, t, type Lang } from '~/i18n';
+import { getCanonical } from '~/utils/permalinks';
 
 export const prerender = true;
 
@@ -45,9 +47,14 @@ const title = isZh ? item.title : item.titleEn || item.title;
 const summary = isZh ? item.summary : item.summaryEn || item.summary;
 const body = isZh ? item.body : item.bodyEn || item.body;
 
+// Mirrors the root legal-ai page: items that also exist as policy-archive
+// pages under the same slug canonicalise to the richer policy page.
+const policyTwin = policyCategories.some((c) => c.policies.some((p) => p.id === page.slug));
+
 const metadata = {
   title: `${title} · ${t(lang, 'navLegalAi')}`,
   description: summary,
+  ...(policyTwin ? { canonical: String(getCanonical(localizedHref(`/policies/${page.slug}/`, lang))) } : {}),
 };
 
 const schema = {
