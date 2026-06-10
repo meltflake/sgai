@@ -194,12 +194,14 @@ export const ecosystemCategories: EcosystemCategory[] = [
         ministryKo: '총리 공실 / SNDGO',
         ministryJa: '首相官房 / SNDGO',
         ministryEn: 'Prime Minister’s Office / SNDGO',
-        scale: '5 年 1.5 亿新元启动资金；累计培养 AIAP 学徒 500+；SEA-LION 下载量百万级',
-        scaleKo: '5년 1억 5천만 싱가포르 달러 시작 자금; AIAP 수습생 누적 500명 이상 양성; SEA-LION 다운로드 수백만 건',
+        scale:
+          '启动资金 NRF 5 年最高 1.5 亿新元（2017–2022，后续期至 2027）；累计培养 AIAP 学徒 500+；SEA-LION 下载量百万级',
+        scaleKo:
+          '시작 자금: NRF가 5년간 최대 1억 5천만 싱가포르 달러(2017–2022, 이후 2027년까지 연장); AIAP 수습생 누적 500명 이상 양성; SEA-LION 다운로드 수백만 건',
         scaleJa:
-          '5年間で1.5億シンガポール・ドルの始動資金、累計AIAP見習い500人以上を育成、SEA-LIONダウンロード数は百万レベル',
+          '始動資金は NRF から 5 年間で最大 1.5 億シンガポールドル（2017–2022、その後 2027 年まで延長）、累計 AIAP 見習い 500 人以上を育成、SEA-LION ダウンロード数は百万レベル',
         scaleEn:
-          'S$150 million seed funding over 5 years; 500+ AIAP apprentices to date; SEA-LION downloads in the millions',
+          'Initial funding of up to S$150M over 5 years from NRF (2017–2022, since extended to 2027); 500+ AIAP apprentices to date; SEA-LION downloads in the millions',
         leaders: [
           {
             name: 'Ho Teck Hua',
@@ -282,48 +284,58 @@ export const ecosystemCategories: EcosystemCategory[] = [
           'AI Singapore（AISG）は、2017年にシンガポール政府によって設立された国家AI計画で、「シンガポールをAI国家に変える」という実行ミッションを担っています。従来の研究機関ではなく、研究、人材、製品、ガバナンスを統合したハイブリッド体です。SEA-LION（東南アジア多言語大規模言語モデル）、AIAP（AI見習い制度）、TagUI（オープンソースRPA）、AI Verify（ガバナンスフレームワーク）といった、繰り返し引用される「シンガポール AI の名刺」はほぼすべてAISGから生み出されています。',
         summaryEn:
           'AI Singapore (AISG) is a national AI programme set up by the Singapore government in 2017 with a single mandate: turn Singapore into an AI nation. It is not a traditional research institute but a **hybrid of research, talent, products, and governance** — SEA-LION (the Southeast Asian multilingual LLM), AIAP (AI Apprenticeship Programme), TagUI (open-source RPA), and AI Verify (governance framework), the most-cited Singapore AI calling cards, almost all originated from AISG.',
-        whatItIs: `AI Singapore 由新加坡国立研究基金会（NRF）拨款 1.5 亿新元启动，初始期限 5 年，2022 年续期至 2027 年（NAIS 2.0 时期再次扩容）。它**寄生于 NUS 校园**（COM3 大楼），管理上独立，但能直接调用 NUS、NTU、SMU、SUTD、A*STAR 的研究力量。
+        whatItIs: `AI Singapore 于 2017 年 5 月 3 日启动，由 NRF 牵头，联合 SNDGO、EDB、IMDA、SGInnovate、IHiS 六方共建，NRF 承诺 5 年投入最高 1.5 亿新元；初始 5 年期满后续期至 2027 年。它所处的国家 AI 公共研发投入还在加码：2019–2023 年累计超 5 亿新元（RIE2020/RIE2025），2026 年 1 月再宣布 2025–2030 年投入 10 亿新元，聚焦基础 AI、应用 AI 与人才三个方向（均由 NRF 管理）。AISG 本身**寄生于 NUS 校园**（COM3 大楼），管理上独立，但能直接调用 NUS、NTU、SMU、SUTD、A*STAR 的研究力量。
 
 组织上，AISG 由几个并列的支柱组成：
 
 - **基础研究**：联合本地高校做 AI 算法/系统研究
 - **AI 创新**（100 Experiments、LearnAI）：把研究转成企业应用
-- **AI 人才**（AIAP、AMP、PhD Fellowship）：本地 AI 工程师培养主渠道
+- **AI 人才**（AIAP、AMP、PhD Fellowship、NOAI 全国 AI 奥赛）：本地 AI 工程师与青少年梯队的培养主渠道
 - **AI 产品**（SEA-LION、TagUI、PeekingDuck、SGNLP、Synergos）：自研开源工具
 - **AI 治理**（AI Verify Foundation 的孵化器）：把治理工具变成全球可用的开源基础设施
 
-AISG 的模式被海外多次研究和模仿——它是少数几个由政府直接资助、又能产出全球开源项目的国家级 AI 机构。`,
-        whatItIsKo: `AI Singapore는 싱가포르 국립 연구 기금 위원회(NRF)로부터 1억 5천만 싱가포르 달러를 지원받아 설립되었으며, 초기 기한은 5년이고, 2022년에 2027년까지 연장되었습니다(NAIS 2.0 시기에 다시 확대됨). 그것은 **NUS 캠퍼스에 자리잡혀 있으며**(COM3 건물), 관리상 독립적이지만 NUS, NTU, SMU, SUTD, A*STAR의 연구 역량을 직접 활용할 수 있습니다.
+AISG 的模式被海外多次研究和模仿——它是少数几个由政府直接资助、又能产出全球开源项目的国家级 AI 机构。
+
+**两个常被误挂到 AISG 名下的名字**：AI Trailblazers 是 MCI、DISG、SNDGO 与 Google Cloud 的生成式 AI 共建计划（2023 年 7 月启动，2024 年 1 月扩展为 2.0）；Kampong AI 是 JTC 在 one-north LaunchPad 规划的 AI 创业园区（2026 年 3 月起试点，2028 年建成，14,500 平方米可容纳约 70 家公司，邻栋配 200 余套住宅）。两者都不是 AISG 旗下项目。AISG 自己的青少年赛事入口是 NOAI（全国 AI 奥林匹克）——新加坡队在 IOAI 2024 保加利亚站拿下 2 金、2025 北京站 2 金 5 银——并将与 NTU 联合主办 IOAI 2027，这是该赛事首次落地新加坡。`,
+        whatItIsKo: `AI Singapore는 2017년 5월 3일 출범했으며, NRF가 주도하고 SNDGO, EDB, IMDA, SGInnovate, IHiS 6개 기관이 공동 설립했습니다. NRF는 5년간 최대 1억 5천만 싱가포르 달러 투입을 약속했고, 초기 5년 기한 만료 후 2027년까지 연장되었습니다. 주변의 국가 AI 공공 R&D 투자도 계속 확대되고 있습니다: 2019–2023년 누적 5억 싱가포르 달러 초과(RIE2020/RIE2025), 2026년 1월에는 2025–2030년에 10억 싱가포르 달러를 투입해 기초 AI·응용 AI·인재 세 방향에 집중한다고 발표했습니다(모두 NRF가 관리). AISG 자체는 **NUS 캠퍼스에 자리잡혀 있으며**(COM3 건물), 관리상 독립적이지만 NUS, NTU, SMU, SUTD, A*STAR의 연구 역량을 직접 활용할 수 있습니다.
 
 조직상 AISG는 여러 개의 병렬 기둥으로 구성됩니다:
 
 - **기초 연구**: 현지 대학과 함께 AI 알고리즘/시스템 연구 수행
 - **AI 혁신**(100 Experiments, LearnAI): 연구를 기업 응용으로 전환
-- **AI 인재**(AIAP, AMP, PhD Fellowship): 현지 AI 엔지니어 양성의 주요 통로
+- **AI 인재**(AIAP, AMP, PhD Fellowship, 전국 AI 올림피아드 NOAI): 현지 AI 엔지니어와 청소년 인재 양성의 주요 통로
 - **AI 제품**(SEA-LION, TagUI, PeekingDuck, SGNLP, Synergos): 자체 개발 오픈 소스 도구
-- **AI 거버넌스**(AI Verify Foundation의 인큐베이터): 거버넌스 도구를 전 지구적으로 사용 가능한 오픈 소스 기반 시설로 변환`,
-        whatItIsJa: `AI Singapore はシンガポール国立研究基金会（NRF）から 1.5 億シンガポールドルの予算配分で立ち上げられ、初期期間は 5 年で、2022 年に 2027 年まで延長されました（NAIS 2.0 時期に再度拡大）。それは**NUS キャンパスに所在し**（COM3 ビルディング）、管理上は独立していますが、NUS、NTU、SMU、SUTD、A*STAR の研究力を直接活用できます。
+- **AI 거버넌스**(AI Verify Foundation의 인큐베이터): 거버넌스 도구를 전 지구적으로 사용 가능한 오픈 소스 기반 시설로 변환
+
+AISG 모델은 해외에서 여러 차례 연구되고 모방되어 왔습니다——정부가 직접 자금을 지원하면서도 글로벌 오픈 소스 프로젝트를 산출할 수 있는 몇 안 되는 국가급 AI 기관입니다.
+
+**AISG 프로젝트로 오해받기 쉬운 두 이름**: AI Trailblazers는 MCI, DISG, SNDGO와 Google Cloud의 생성형 AI 공동 프로그램(2023년 7월 시작, 2024년 1월 2.0으로 확대)이고, Kampong AI는 JTC가 one-north LaunchPad에 조성하는 AI 스타트업 캠퍼스(2026년 3월부터 파일럿, 2028년 완공, 14,500제곱미터에 최대 약 70개 기업, 인접 동에 200세대 이상의 주거 공간)입니다. 둘 다 AISG 소속이 아닙니다. AISG 자체의 청소년 대회 입구는 NOAI(전국 AI 올림피아드)이며——싱가포르 대표팀은 IOAI 2024 불가리아 대회에서 금 2개, IOAI 2025 베이징 대회에서 금 2개·은 5개를 획득——NTU와 공동으로 IOAI 2027을 주최합니다. 이 대회의 싱가포르 개최는 처음입니다.`,
+        whatItIsJa: `AI Singapore は 2017 年 5 月 3 日に発足しました。NRF が主導し、SNDGO、EDB、IMDA、SGInnovate、IHiS の 6 機関で共同設立され、NRF は 5 年間で最大 1.5 億シンガポールドルの投入を確約。当初の 5 年期間の満了後、2027 年まで延長されています。周辺の国家 AI 公共研究開発投資も拡大を続けています：2019–2023 年に累計 5 億シンガポールドル超（RIE2020/RIE2025）、さらに 2026 年 1 月には 2025–2030 年に 10 億シンガポールドルを投入し、基礎 AI・応用 AI・人材の 3 領域に注力すると発表されました（いずれも NRF が管理）。AISG 自体は**NUS キャンパスに所在し**（COM3 ビルディング）、管理上は独立していますが、NUS、NTU、SMU、SUTD、A*STAR の研究力を直接活用できます。
 
 組織的には、AISG は複数の並列の柱で構成されています：
 
 - **基礎研究**：現地高等教育機関と連携して AI アルゴリズム/システム研究を実施
 - **AI イノベーション**（100 Experiments、LearnAI）：研究を企業応用に変換
-- **AI 人材**（AIAP、AMP、PhD Fellowship）：現地 AI エンジニア育成の主要経路
+- **AI 人材**（AIAP、AMP、PhD Fellowship、全国 AI オリンピック NOAI）：現地 AI エンジニアと青少年人材の育成の主要経路
 - **AI 製品**（SEA-LION、TagUI、PeekingDuck、SGNLP、Synergos）：社内開発オープンソース・ツール
 - **AI ガバナンス**（AI Verify Foundation インキュベーター）：ガバナンス・ツールをグローバルに利用可能なオープンソース・インフラストラクチャに変換
 
-AISG のモデルは海外で何度も研究・模倣されています——それは政府から直接資金提供を受け、かつグローバルなオープンソース・プロジェクトを産出できる数少ない国家級 AI 機構です。`,
-        whatItIsEn: `AISG was launched with S$150 million in seed funding from the National Research Foundation (NRF), originally for five years, then extended through 2027 (with further expansion under NAIS 2.0). It is **embedded inside the NUS campus** (COM3 building), operationally independent but with direct access to research talent at NUS, NTU, SMU, SUTD, and A*STAR.
+AISG のモデルは海外で何度も研究・模倣されています——それは政府から直接資金提供を受け、かつグローバルなオープンソース・プロジェクトを産出できる数少ない国家級 AI 機構です。
+
+**AISG のプロジェクトと誤解されやすい 2 つの名前**：AI Trailblazers は MCI、DISG、SNDGO と Google Cloud による生成 AI 共創プログラム（2023 年 7 月開始、2024 年 1 月に 2.0 へ拡大）です。Kampong AI は JTC が one-north の LaunchPad に計画する AI スタートアップ・キャンパス（2026 年 3 月からパイロット、2028 年完成、14,500 平方メートルに最大約 70 社、隣接ブロックに 200 戸超の住宅）です。いずれも AISG の傘下ではありません。AISG 自身の青少年向け競技の入口は NOAI（全国 AI オリンピック）で——シンガポール代表は IOAI 2024 ブルガリア大会で金 2、IOAI 2025 北京大会で金 2・銀 5 を獲得——、さらに NTU と共同で IOAI 2027 を主催します。同大会のシンガポール開催は初めてです。`,
+        whatItIsEn: `AISG launched on 3 May 2017, led by NRF together with SNDGO, EDB, IMDA, SGInnovate and IHiS, with NRF committing up to S$150 million over five years; after the initial five-year term it was extended through 2027. The national pool of public AI R&D money around it keeps growing: over S$500 million invested in 2019–2023 (under RIE2020/RIE2025), and another S$1 billion announced in January 2026 for 2025–2030, focused on fundamental AI, applied AI and talent (all administered by NRF). AISG itself is **embedded inside the NUS campus** (COM3 building), operationally independent but with direct access to research talent at NUS, NTU, SMU, SUTD, and A*STAR.
 
 Structurally, AISG is built on several parallel pillars:
 
 - **Foundational research**: joint AI algorithm and systems research with local universities
 - **AI innovation** (100 Experiments, LearnAI): turning research into enterprise applications
-- **AI talent** (AIAP, AMP, PhD Fellowship): the main pipeline for local AI engineering talent
+- **AI talent** (AIAP, AMP, PhD Fellowship, and the NOAI national olympiad): the main pipeline for local AI engineers and the youth talent ladder
 - **AI products** (SEA-LION, TagUI, PeekingDuck, SGNLP, Synergos): in-house open-source tools
 - **AI governance** (incubator for AI Verify Foundation): turning governance tooling into globally usable open-source infrastructure
 
-The AISG model has been studied and imitated abroad — one of the few national AI institutions that combines direct government funding with global open-source project output.`,
+The AISG model has been studied and imitated abroad — one of the few national AI institutions that combines direct government funding with global open-source project output.
+
+**Two names often mistaken for AISG programmes**: AI Trailblazers is a generative-AI initiative by MCI, DISG, SNDGO and Google Cloud (launched July 2023, expanded into 2.0 in January 2024); Kampong AI is an AI startup campus planned by JTC at LaunchPad @ one-north (pilot from March 2026, completion in 2028, 14,500 m² for up to 70 companies plus 200+ dwelling units next door). Neither is run by AISG. AISG's own youth competition entry point is NOAI (National Olympiad in AI) — the Singapore team took 2 golds at IOAI 2024 in Bulgaria and 2 golds plus 5 silvers at IOAI 2025 in Beijing — and AISG will co-host IOAI 2027 with NTU, the first time the olympiad comes to Singapore.`,
         aiRelevance: `AISG 的 AI 定位非常具体：**不做前沿基础研究的"全球第一"，但要把「东南亚的 AI 主权」做成现实**。
 
 技术路线上，它的代表作 SEA-LION 不和 GPT/Claude 比通用能力，而是专攻「东南亚 11 种语言（含马来语、泰米尔语、缅甸语等小语种）」的语义保真度——这是西方大厂没有动力做、东南亚本地又没有算力做的空白。
@@ -415,10 +427,16 @@ But AISG's bottlenecks are real: **talent retention is weak** (apprentices leave
             titleKo: 'AISG 설립',
             titleJa: 'AISG設立',
             titleEn: 'AISG founded',
-            description: '由 NRF 拨款 1.5 亿新元启动，初始 5 年期，挂靠 NUS。',
-            descriptionKo: 'NRF의 1억 5,000만 싱가포르 달러 자금으로 시작, 초기 5년간 NUS에 소속',
-            descriptionJa: 'NRFから1.5億シンガポール・ドルの資金を得て始動、初期5年間、NUSに帰属。',
-            descriptionEn: 'Launched with S$150M from NRF; initial 5-year term; hosted at NUS.',
+            description:
+              '2017-05-03 官宣：NRF 拨款最高 1.5 亿新元（5 年期），NRF、SNDGO、EDB、IMDA、SGInnovate、IHiS 六方共建，挂靠 NUS。',
+            descriptionKo:
+              '2017-05-03 공식 발표: NRF가 최대 1억 5,000만 싱가포르 달러(5년 기한) 지원, NRF·SNDGO·EDB·IMDA·SGInnovate·IHiS 6개 기관 공동 설립, NUS에 소속.',
+            descriptionJa:
+              '2017-05-03 公式発表：NRF が最大 1.5 億シンガポールドル（5 年間）を拠出し、NRF・SNDGO・EDB・IMDA・SGInnovate・IHiS の 6 機関で共同設立、NUS に帰属。',
+            descriptionEn:
+              'Announced 3 May 2017: up to S$150M from NRF over five years; co-founded by NRF, SNDGO, EDB, IMDA, SGInnovate and IHiS; hosted at NUS.',
+            sourceUrl:
+              'https://www.mddi.gov.sg/newsroom/aisg-new-national-programme-to-catalyse-synergise-and-boost-singapore-s-artificial-intelligence-capabilities',
           },
           {
             date: '2018',
@@ -462,10 +480,11 @@ But AISG's bottlenecks are real: **talent retention is weak** (apprentices leave
             titleKo: 'AISG 2027년까지 계약 연장',
             titleJa: 'AISG を2027年まで延長',
             titleEn: 'AISG extended to 2027',
-            description: 'NAIS 2.0 战略下获追加预算与扩展授权。',
-            descriptionKo: 'NAIS 2.0 전략에 따라 추가 예산과 권한 확대 획득',
-            descriptionJa: 'NAIS 2.0 戦略の下で追加予算と拡張授権を獲得。',
-            descriptionEn: 'Additional budget and expanded mandate under NAIS 2.0.',
+            description: '初始 5 年期满后续期；2023 年 12 月发布的 NAIS 2.0 进一步扩展其角色。',
+            descriptionKo: '초기 5년 기한 만료 후 연장; 2023년 12월 발표된 NAIS 2.0이 그 역할을 한층 확대.',
+            descriptionJa: '当初の 5 年期間満了後に延長。2023 年 12 月発表の NAIS 2.0 がその役割をさらに拡大。',
+            descriptionEn:
+              'Renewed after the initial five-year term; NAIS 2.0 (December 2023) further expanded its role.',
           },
           {
             date: '2023-12',
@@ -501,6 +520,22 @@ But AISG's bottlenecks are real: **talent retention is weak** (apprentices leave
             descriptionJa: '複数の部門が SEA-LION に基づいて内部 AI アシスタントと公共サービスプロトタイプを展開。',
             descriptionEn:
               'Multiple agencies deploy SEA-LION-based internal AI assistants and public service prototypes.',
+          },
+          {
+            date: '2027',
+            title: '将主办 IOAI 2027',
+            titleKo: 'IOAI 2027 개최 예정',
+            titleJa: 'IOAI 2027 を開催予定',
+            titleEn: 'To host IOAI 2027',
+            description:
+              '第四届国际 AI 奥林匹克（IOAI）由 AISG 与 NTU 联合主办，首次落地新加坡；国家队经 NOAI（全国 AI 奥赛）选拔。',
+            descriptionKo:
+              '제4회 국제 AI 올림피아드(IOAI)를 AISG와 NTU가 공동 주최하며 싱가포르에서 처음 개최; 국가대표는 NOAI(전국 AI 올림피아드)로 선발.',
+            descriptionJa:
+              '第 4 回国際 AI オリンピック（IOAI）を AISG と NTU が共同主催し、シンガポールで初開催。代表チームは NOAI（全国 AI オリンピック）で選抜。',
+            descriptionEn:
+              'The 4th International Olympiad in AI (IOAI), co-hosted by AISG and NTU — the first edition held in Singapore; the national team is selected through NOAI.',
+            sourceUrl: 'https://ioai-official.org/singapore-2027/',
           },
         ],
         products: [
@@ -568,11 +603,23 @@ But AISG's bottlenecks are real: **talent retention is weak** (apprentices leave
             descriptionKo: 'AI 견습 프로그램',
             descriptionJa: 'AI 学徒計画',
             descriptionEn: 'AI Apprenticeship Programme',
-            url: 'https://aisingapore.org/innovation/aiap/',
+            url: 'https://aiap.sg/apprenticeship/',
+          },
+          {
+            name: 'NOAI',
+            nameJa: 'NOAI',
+            nameKo: 'NOAI',
+            nameEn: 'NOAI',
+            description: '全国 AI 奥林匹克，面向中学生，也是 IOAI 国家队选拔通道',
+            descriptionKo: '전국 AI 올림피아드, 중·고등학생 대상이며 IOAI 국가대표 선발 통로',
+            descriptionJa: '全国 AI オリンピック。中高生向けで、IOAI 代表チームの選抜ルートでもある',
+            descriptionEn:
+              'National Olympiad in AI for school students; the selection pathway for the IOAI national team',
+            url: 'https://aisingapore.org/talent/national-olympiad-in-artificial-intelligence/',
           },
         ],
         relatedLeverNumbers: [2, 3, 5, 6],
-        relatedEntityIds: ['sea-lion', 'ai-verify-foundation', 'imda', 'a-star', 'nus'],
+        relatedEntityIds: ['sea-lion', 'ai-verify-foundation', 'imda', 'a-star', 'nus', 'ntu'],
         sources: [
           {
             label: 'AI Singapore 官网',
@@ -580,14 +627,55 @@ But AISG's bottlenecks are real: **talent retention is weak** (apprentices leave
             labelJa: 'AI Singapore 公式ウェブサイト',
             labelEn: 'AI Singapore official site',
             url: 'https://aisingapore.org/',
-            date: '2026-05-02',
+            date: '2026-06-10',
           },
           {
-            label: 'NRF 关于 AISG 的资助公告',
-            labelKo: 'AISG에 관한 NRF 자금 지원 공고',
-            labelJa: 'AISG に関する NRF 資金提供公告',
-            labelEn: 'NRF announcement on AISG funding',
-            url: 'https://www.nrf.gov.sg/programmes/artificial-intelligence-r-d-programme',
+            label: 'NRF：AI Singapore 计划页',
+            labelKo: 'NRF: AI Singapore 프로그램 페이지',
+            labelJa: 'NRF：AI Singapore プログラムページ',
+            labelEn: 'NRF: AI Singapore programme page',
+            url: 'https://www.nrf.gov.sg/programmes/ai-sg',
+            date: '2026-06-10',
+          },
+          {
+            label: 'MDDI 新闻稿：AI.SG 国家计划启动（2017-05-03）',
+            labelKo: 'MDDI 보도자료: AI.SG 국가 프로그램 출범(2017-05-03)',
+            labelJa: 'MDDI プレスリリース：AI.SG 国家プログラム発足（2017-05-03）',
+            labelEn: 'MDDI press release: AI.SG national programme launch (3 May 2017)',
+            url: 'https://www.mddi.gov.sg/newsroom/aisg-new-national-programme-to-catalyse-synergise-and-boost-singapore-s-artificial-intelligence-capabilities',
+            date: '2026-06-10',
+          },
+          {
+            label: 'EDB：2025–2030 年 10 亿新元 AI 公共研发投入（2026-01 宣布）',
+            labelKo: 'EDB: 2025–2030년 10억 싱가포르 달러 AI 공공 R&D 투자(2026-01 발표)',
+            labelJa: 'EDB：2025–2030 年に 10 億シンガポールドルの AI 公共研究開発投資（2026 年 1 月発表）',
+            labelEn: 'EDB: S$1B for AI public research, 2025–2030 (announced Jan 2026)',
+            url: 'https://www.edb.gov.sg/en/business-insights/insights/singapore-to-invest-s1-billion-over-five-years-to-boost-ai-public-research.html',
+            date: '2026-06-10',
+          },
+          {
+            label: 'IOAI 官方：2027 年新加坡站（AISG × NTU 联合主办）',
+            labelKo: 'IOAI 공식: 2027년 싱가포르 대회(AISG × NTU 공동 주최)',
+            labelJa: 'IOAI 公式：2027 年シンガポール大会（AISG × NTU 共同主催）',
+            labelEn: 'IOAI official: Singapore 2027 (co-hosted by AISG × NTU)',
+            url: 'https://ioai-official.org/singapore-2027/',
+            date: '2026-06-10',
+          },
+          {
+            label: 'JTC 新闻稿：LaunchPad 总体规划与 Kampong AI（2026-03-02）',
+            labelKo: 'JTC 보도자료: LaunchPad 마스터플랜과 Kampong AI(2026-03-02)',
+            labelJa: 'JTC プレスリリース：LaunchPad マスタープランと Kampong AI（2026-03-02）',
+            labelEn: 'JTC press release: LaunchPad masterplan and Kampong AI (2 Mar 2026)',
+            url: 'https://www.jtc.gov.sg/about-jtc/news-and-stories/press-releases/jtc-unveils-refreshed-masterplan-for-launchpad',
+            date: '2026-06-10',
+          },
+          {
+            label: 'EDB：AI Trailblazers 计划发布（MCI/DISG/SNDGO × Google Cloud）',
+            labelKo: 'EDB: AI Trailblazers 이니셔티브 발표(MCI/DISG/SNDGO × Google Cloud)',
+            labelJa: 'EDB：AI Trailblazers イニシアチブ発表（MCI/DISG/SNDGO × Google Cloud）',
+            labelEn: 'EDB: AI Trailblazers initiative launch (MCI/DISG/SNDGO × Google Cloud)',
+            url: 'https://www.edb.gov.sg/en/about-edb/media-releases-publications/mci-disg-sndgo-and-google-cloud-launch-ai-trailblazers-initiative-to-accelerate-the-development-of-impactful-generative-ai-solution-singapore.html',
+            date: '2026-06-10',
           },
         ],
         furtherReading: [
@@ -599,14 +687,28 @@ But AISG's bottlenecks are real: **talent retention is weak** (apprentices leave
             url: 'https://sea-lion.ai/blog/',
           },
           {
-            label: 'AIAP 校友故事',
-            labelKo: 'AIAP 동문 이야기',
-            labelJa: 'AIAP 卒業生のストーリー',
-            labelEn: 'AIAP alumni stories',
-            url: 'https://aisingapore.org/innovation/aiap/',
+            label: 'AIAP 官方站（学徒计划详情）',
+            labelKo: 'AIAP 공식 사이트(수습 프로그램 상세)',
+            labelJa: 'AIAP 公式サイト（見習いプログラム詳細）',
+            labelEn: 'AIAP official site (apprenticeship details)',
+            url: 'https://aiap.sg/apprenticeship/',
+          },
+          {
+            label: 'AIAP 项目长文：从本地创新到全球输出',
+            labelKo: 'AIAP 장문 기사: 현지 혁신에서 글로벌 확산까지',
+            labelJa: 'AIAP 長編記事：ローカルイノベーションからグローバル展開へ',
+            labelEn: "Long read: AIAP's journey from local innovation to global impact",
+            url: 'https://aifirstnation.org/singapores-journey-from-local-innovation-to-global-impact-with-the-ai-apprenticeship-programme-aiap/',
+          },
+          {
+            label: 'IOAI Singapore 官方站',
+            labelKo: 'IOAI Singapore 공식 사이트',
+            labelJa: 'IOAI Singapore 公式サイト',
+            labelEn: 'IOAI Singapore official site',
+            url: 'https://www.ioai-singapore.org/',
           },
         ],
-        updated: '2026-05-02',
+        updated: '2026-06-10',
       },
     ],
   },
