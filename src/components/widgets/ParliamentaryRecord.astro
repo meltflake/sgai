@@ -37,6 +37,7 @@ const parliamentLabel = (n: string): string => {
 // zh) — mirror the explicit summaryEn guard the root page used before this
 // component existed.
 const debateSummary = (debate: (typeof record.debates)[number]): string | null | undefined =>
+  // i18n-allow-hardcode — EN-fallback guard (see comment above), not chrome text
   lang === 'en' ? debate.summaryEn : pickLocalized(debate, 'summary', lang);
 ---
 
