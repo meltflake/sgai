@@ -18,6 +18,7 @@ export interface Props {
 
 const { post, url } = Astro.props;
 const lang = getLangFromPath(new URL(Astro.url).pathname);
+const categoryHref = post.category?.slug ? getPermalink(post.category.slug, 'category') : '';
 ---
 
 <section class="py-8 sm:py-16 lg:py-20 mx-auto">
@@ -59,8 +60,8 @@ const lang = getLangFromPath(new URL(Astro.url).pathname);
               <>
                 {' '}
                 ·{' '}
-                {post.category.slug ? (
-                  <a class="hover:underline inline-block" href={getPermalink(post.category.slug, 'category')}>
+                {categoryHref ? (
+                  <a class="hover:underline inline-block" href={categoryHref}>
                     {post.category.title}
                   </a>
                 ) : (
