@@ -18,6 +18,8 @@ export interface VideoTranscript {
   /** Japanese readable transcript. Translated from `paragraphs` (zh) by
    *  scripts/videos/translate-transcripts-ja.ts. */
   paragraphsJa?: string[];
+  /** Korean readable transcript. Translated from `paragraphs` (zh) by
+   *  scripts/videos/translate-transcripts-ko.ts. */
   paragraphsKo?: string[];
   /** Polished readable digest (zh). When present, this is the primary on-page content; raw paragraphs become a collapsible fallback. */
   digest?: VideoDigest;
@@ -25,6 +27,7 @@ export interface VideoTranscript {
   digestEn?: VideoDigest;
   /** Polished readable digest (ja). */
   digestJa?: VideoDigest;
+  /** Polished readable digest (ko). */
   digestKo?: VideoDigest;
   translatedAt?: string;
   // 'claude' = local Claude CLI (default since 2026-05). 'openai' kept for
@@ -10865,6 +10868,84 @@ export const videoTranscripts: Record<string, VideoTranscript> = {
       '>> Swix は世界中の AI エンジニアの背後にいる人物です。昨日彼の話を聞いたなら、彼もシンガポール人で、彼が私たちにこうさせたことが、これが起こっている理由です。ですから Swix に感謝します。Swix、おやすみなさい。あなたと私だけになります。>> あなたと私だけになります。>> わかりました。3 2 1 私たちは踊ることができますか？私たちはどのように写真を撮りますか？ハイ、ハイ、ハイ。ハイ、感じてください。ハイ、ハイ、ハイ。ハイ、ハイ、ハイ。ハイ、ハイ、ハイ。ハイ、ハイ、ハイ。ハイ、ハイ、ハイ。',
     ],
     translatedAt: '2026-05-21',
+    translationSource: 'claude',
+    translationModel: 'haiku',
+  },
+  v063: {
+    videoId: 'v063',
+    youtubeId: 'w1WShHjfN7M',
+    captionLanguage: 'en',
+    fetchedAt: '2026-06-09',
+    source: 'youtube-subtitles',
+    paragraphs: [
+      '在像新加坡这样一个劳动力总是短缺的城市，你和公司、雇主交谈，他们总是在找人。我们无法承受继续进口劳动力。我们需要提高生产率。我认为人工智能可以改变游戏规则。但关键不是仅仅运行AI聊天机器人和对AI进行非常表面的使用。关键是真正将AI融入其中，开始思考它如何改变所有组织的流程。这需要时间。我认为我们仍处于这个非常早期的阶段。这对所有技术革命都是成立的，无论是电力还是互联网。一开始，每个人都很兴奋，热情高涨。',
+      '这完全就是熟悉这项技术，但公司和组织的实际转变、新商业模式的发展需要时间。需要若干年。我们在AI领域要想成功和做得好，不是那么多地在于我们能够开发最大最好的前沿模型。这不是我们的竞争优势，而是作为一个小城市，成为AI应用中心，在这里AI模型、AI应用可以被测试，可以应用于真实的使用场景，然后可以进一步扩展。',
+    ],
+    paragraphsEn: [
+      "In a city like Singapore where we are always labor short, you talk to companies and employers, they're always looking for people. And we cannot afford to, you know, just keep importing labor. We need to be more productive. I think AI can be a game-changer. The key though is not just to, you know, run AI chatbots and have a very superficial use of AI. The key is really to embed AI and start thinking about how it transforms processes across all organizations. And that will take time. I think we're still in a very early stage of this. And this has true across all, um, technology revolutions, whether it was electricity or the internet. At the start, everyone gets excited, very hyped up.",
+      "It's all about just getting acquainted with the technology, but the actual transformation of companies and organizations, the development of new business models will take time. Will take some years. The way for us to succeed and do well in AI is not so much for us to be a to be able to develop the biggest and best frontier models. That's not our competitive advantage, but as a small city to be uh AI application hub, where AI models, AI AI applications can be tested, can be applied in real-life use cases, and then can be scaled up further.",
+    ],
+    paragraphsKo: [
+      '싱가포르 같은 노동력이 항상 부족한 도시에서 회사나 고용주들과 대화해보면 그들은 항상 인력을 찾고 있습니다. 우리는 계속 노동력을 수입하는 것을 감당할 수 없습니다. 우리는 생산성을 높여야 합니다. 저는 인공지능이 게임의 규칙을 바꿀 수 있다고 생각합니다. 하지만 중요한 것은 단순히 AI 챗봇을 실행하고 AI를 표면적으로 사용하는 것이 아닙니다. 중요한 것은 AI를 진정으로 통합하고 이것이 모든 조직의 프로세스를 어떻게 변경할 수 있는지 생각하기 시작하는 것입니다. 이것은 시간이 필요합니다. 저는 우리가 여전히 이 매우 초기 단계에 있다고 생각합니다. 이것은 모든 기술 혁명에 적용되는데, 전기든 인터넷이든 그렇습니다. 처음에는 모두가 흥분하고 열정에 가득 찼습니다.',
+      '이것은 완전히 이 기술에 익숙해지는 것입니다. 하지만 회사와 조직의 실제 변화, 새로운 비즈니스 모델의 발전에는 시간이 필요합니다. 수년이 필요합니다. AI 분야에서 성공하고 잘 하려면, 우리가 가장 크고 가장 좋은 최첨단 모델을 개발할 수 있다는 것에 그렇게 많이 의존하지는 않습니다. 이것이 우리의 경쟁 우위가 아니라, 작은 도시로서 AI 애플리케이션 중심지가 되는 것입니다. 여기서 AI 모델과 AI 애플리케이션을 테스트할 수 있고, 실제 사용 시나리오에 적용할 수 있으며, 그 후 더 확장할 수 있습니다.',
+    ],
+    paragraphsJa: [
+      'シンガポールのような労働力が常に不足している都市では、企業や雇用主と話すと、彼らはいつも人材を探しています。私たちは労働力の継続的な輸入を負担できません。生産性を向上させる必要があります。人工知能はゲームチェンジャーとなる可能性があると考えます。しかし、重要な点はAIチャットボットを単に実行し、AIを表面的に使用することではありません。重要な点は、AIを本当に統合し、それがいかにしてすべての組織のプロセスを変えるかについて考え始めることです。これには時間が必要です。私たちはまだこの非常に初期の段階にあると考えます。これはすべての技術革命に当てはまります。電力であれインターネットであれ。最初は、誰もが興奮し、熱意に満ちていました。',
+      'これはまったくこの技術に精通するということです。しかし、企業や組織の実際の変化と新しいビジネスモデルの発展には時間が必要です。数年が必要なのです。AI分野で成功し、うまくやるために重要な点は、最大かつ最高の最先端モデルを開発できることではありません。これは私たちの競争上の優位性ではなく、小さな都市として、AI応用のハブとなること、つまり、AIモデルとAIアプリケーションをテストでき、実際の使用ケースに適用でき、その後さらに拡張できる場となることです。',
+    ],
+    translatedAt: '2026-06-09',
+    translationSource: 'claude',
+    translationModel: 'haiku',
+  },
+  v064: {
+    videoId: 'v064',
+    youtubeId: 'YZcP8YdkUdk',
+    captionLanguage: 'en',
+    fetchedAt: '2026-06-09',
+    source: 'youtube-subtitles',
+    paragraphs: [
+      '[音乐] >> 你们正在步入的世界是一个AI在日常生活中扮演重要角色的世界，无论是在你们的学习还是未来的工作中。[音乐] 理解AI正迅速成为当今不可或缺的技能。>> 当你拥有好的AI工具时，你可能会发现自己更有创意和创新精神。它们帮助你创建想法，帮助你综合想法，帮助你掌握需要掌握的知识。>> 始终准备好放弃原有知识，学习新事物。你看到的技术变化如此之快。你总是要不断学习，改变自己以适应新技术。>> 让我们确保AI保持为公众利益而存在，并为我们所有人、新加坡、ASEAN[音乐]及其他地区带来有意义的影响。',
+    ],
+    paragraphsEn: [
+      "[music] >> The world that you as like yourselves are stepping [music] into is one where AI plays a big role in everyday life, whether it is in your studies or your future job. Understanding [music] AI is quickly turning into an indispensable skill today. >> You may find that you are more creative and innovative when you have a good AI tools with you. They help to create idea, they help to synthesize ideas, they help to master the knowledge that you need to master. >> Always be ready to unlearn and learn new things. The technology that you're seeing is changing so fast. You always want to be learning and changing yourself to adapt to the new technologies. >> Let us ensure that AI remains for the public good and to deliver meaningful impact to all of us, to Singapore, ASEAN [music] and beyond.",
+    ],
+    paragraphsKo: [
+      '[음악] >> 여러분이 들어가고 있는 세계는 일상생활에서 AI가 중요한 역할을 하는 세계입니다. 여러분의 학습이든 미래의 업무이든 상관없습니다. [음악] AI를 이해하는 것이 현재 없어서는 안 될 기술이 되고 있습니다. >> 좋은 AI 도구를 갖추게 될 때, 여러분은 자신이 더욱 창의적이고 혁신적일 수 있다는 것을 발견하게 될 것입니다. 이 도구들은 여러분이 아이디어를 창출하도록 도와주고, 아이디어를 종합하도록 도와주고, 알아야 할 지식을 습득하도록 도와줍니다. >> 항상 기존의 지식을 포기할 준비가 되어 있어야 하고, 새로운 것을 배워야 합니다. 여러분이 보는 기술의 변화는 매우 빠릅니다. 여러분은 항상 계속 배워야 하고, 새로운 기술에 적응하기 위해 자신을 변경해야 합니다. >> AI가 공공의 이익을 위해 존재하도록 보장하고, 우리 모두, 싱가포르, ASEAN[음악], 그리고 다른 지역들에 의미 있는 영향을 미치도록 합시다.',
+    ],
+    paragraphsJa: [
+      '[音楽] >> あなたたちが歩み入ろうとしている世界は、あなたたちの学習においても、また将来の仕事においても、日常生活においてAIが重要な役割を果たす世界です。[音楽] AIを理解することは、今日において急速に必要不可欠なスキルになっています。>> 優れたAIツールを持つとき、あなた自身がより創造的で革新的になることに気づくかもしれません。それらはあなたが考えを生み出すのを助け、考えを統合するのを助け、必要とされる知識を習得するのを助けます。>> 常に既存の知識を放棄し、新しいことを学ぶ準備ができていてください。あなたが目にする技術の変化はとても速いです。あなたは常に継続的に学習し、新しい技術に適応するために自分自身を変える必要があります。>> AIが公共の利益のために存在し続けること、そして私たち全員、シンガポール、ASEAN[音楽]およびその他の地域に意味のある影響をもたらすことを確保しましょう。',
+    ],
+    translatedAt: '2026-06-09',
+    translationSource: 'claude',
+    translationModel: 'haiku',
+  },
+  v065: {
+    videoId: 'v065',
+    youtubeId: '5V-l6Av07cc',
+    captionLanguage: 'en',
+    fetchedAt: '2026-06-09',
+    source: 'youtube-subtitles',
+    paragraphs: [
+      'AI ready ASEAN 是一项地区倡议，汇聚了东南亚各地的青年、教育工作者、家长和社区，共同建立对人工智能的理解。这不仅仅是关于学习技术，而是[music]关于创新、负责任和有意义地使用人工智能。青年挑战赛是这些努力的关键部分，年轻人在其中应用所学知识解决他们社区中的现实问题。在 AI Singapore，我们认为人工智能素养[music]只是一个起点。重要的是我们如何使每个人能够从理解人工智能转变为以创造真实价值的方式应用它。通过这项挑战，[music]我们看到东盟青年站出来提出解决其所在国家和社区教育、可持续性[music]及社区发展方面真实需求的想法。',
+      '这是我们如何培养一支既精通人工智能又有使命意识的人才队伍的方式。这项倡议之所以如此鼓舞人心，是因为它采取了真正的以人为中心的方法。[music]这些年轻人开发的技术解决方案使个人能够解决日常挑战、提高生产力并促进更强大的社区。在 google.org，我们为能够支持 AI ready ASEAN 这样的努力感到自豪，在这里技术不仅仅是创新的强大工具，更是释放潜力并改善地区每个人生活[music]的手段。最重要的是，这一愿景由明天的青年驱动，他们将确保人工智能的未来[music]始终专注于帮助人们。第三名获胜者是来自缅甸的 Future Flux。第二名获奖者是来自柬埔寨的 Vopa.ai。',
+      '现在是今晚的最高荣誉，我们的一等奖[music]获胜者，来自文莱达鲁萨兰国的 Sigma High。我们准备好了。',
+    ],
+    paragraphsEn: [
+      'AI ready ASEAN is a regional initiative that brings together youth, educators, parents, and communities across Southeast Asia to build a shared understanding of AI. It is not just about learning technologies, but [music] about using AI innovatively, responsibly, and meaningfully. The Youth Challenge is a key part of these efforts, where young people apply what they have learned to solve real-world challenges in their communities. At AI Singapore, we see AI literacy [music] as just a starting point. What matters is how we enable every individual to move from understanding AI to applying it in ways that create real value. Through this challenge, [music] we are seeing ASEAN youth step forward with ideas that address real needs in their countries and communities across education, sustainability, [music] and community development.',
+      'This is how we can grow a pipeline of talent that is not only AI savvy and proficient, but also grounded in purpose. What makes this initiative so inspiring is it has this truly people-first approach. [music] The tech solutions these young people are building empower individuals to solve everyday challenges, boost their productivity, and foster stronger communities. At google. org, we are so proud to support efforts like AI ready ASEAN, where technology acts as a powerful tool not just to innovate, but to unlock potential and improve lives for everyone [music] in the region. Most importantly, this vision is driven by the youth of tomorrow, who will ensure the future of [music] AI always focuses on helping people. The third prize winner, Future Flux from Myanmar. The winner for our second prize goes to Vopa. ai from Cambodia.',
+      'And now for our top honor this evening, our first prize [music] winner, Sigma High from Brunei Darussalam. We are ready.',
+    ],
+    paragraphsKo: [
+      'AI ready ASEAN은 동남아 각지의 청소년, 교육자, 부모 및 지역사회가 모여 인공지능에 대한 이해를 함께 구축하는 지역 이니셔티브입니다. 이는 단순히 기술 학습에 관한 것이 아니라 [music] 혁신, 책임감 있고 의미 있는 인공지능 활용에 관한 것입니다. 청소년 챌린지는 이러한 노력의 핵심 부분으로, 젊은이들이 배운 지식을 적용하여 자신의 지역사회의 실질적인 문제를 해결합니다. AI Singapore에서 우리는 인공지능 리터러시 [music]가 단지 시작점일 뿐이라고 생각합니다. 중요한 것은 우리가 모든 사람을 인공지능을 이해하는 것에서 진정한 가치를 창출하는 방식으로 그것을 적용하도록 할 수 있는가 하는 것입니다. 이 도전을 통해 [music] 우리는 아세안 청소년들이 자신의 국가와 지역사회의 교육, 지속가능성 [music] 및 커뮤니티 발전 측면의 실질적 필요를 해결하는 아이디어를 제시하며 나서는 것을 봅니다.',
+      '이것이 인공지능에 정통하면서도 사명감을 갖춘 인재 팀을 육성하는 방식입니다. 이 이니셔티브가 매우 고무적인 이유는 진정한 인간 중심의 접근 방식을 취했기 때문입니다. [music] 이 젊은이들이 개발한 기술 솔루션은 개인들이 일상적인 과제를 해결하고, 생산성을 높이며, 더 강한 지역사회를 촉진할 수 있도록 합니다. google.org에서 우리는 AI ready ASEAN과 같은 노력을 지원할 수 있게 되어 자랑스럽습니다. 여기서 기술은 단지 혁신의 강력한 도구일 뿐만 아니라 잠재력을 해제하고 지역의 모든 사람의 삶을 개선하는 [music] 수단입니다. 가장 중요한 것은 이 비전이 내일의 청소년에 의해 주도되며, 그들이 인공지능의 미래 [music]가 항상 사람들을 돕는 데 초점을 맞추도록 할 것이라는 것입니다. 3위 우승자는 미얀마의 Future Flux입니다. 2위 수상자는 캄보디아의 Vopa.ai입니다.',
+      '지금은 오늘 밤의 최고의 영예이며, 우리의 1등상 [music] 우승자는 브루나이 다루살람의 Sigma High입니다. 우리는 준비되었습니다.',
+    ],
+    paragraphsJa: [
+      'AI ready ASEAN は、東南アジア全域の青年、教育者、親、そしてコミュニティが集まり、人工知能に対する理解を共同で構築する地域的イニシアティブです。これは単に技術を学ぶことではなく、[music]イノベーション、責任ある、そして意味のある人工知能の使用についてです。ユース・チャレンジはこれらの取り組みの重要な部分であり、若者がここで学んだ知識を適用して、自分たちのコミュニティ内の現実の問題を解決しています。AI Singapore では、人工知能リテラシーが[music]単なる出発点であると考えています。重要なのは、人工知能の理解から、実際の価値を創造する方法での適用へ、全員をいかに転換させるかです。このチャレンジを通じて、[music]ASEAN の青年が立ち上がり、自分たちが属する国およびコミュニティの教育、持続可能性[music]およびコミュニティ開発の実際のニーズに対処するアイデアを提案しているのを見ています。',
+      'これは、人工知能に精通し、ミッション意識を持つ才能ある人材のチームを育成する方法です。このイニシアティブが非常に励みになる理由は、真正なヒューマンセンター的なアプローチを採用しているからです。[music]これらの若者によって開発された技術ソリューションにより、個人は日々の課題を解決し、生産性を向上させ、より強いコミュニティを促進できます。google.org では、AI ready ASEAN のような取り組みをサポートできることに誇りを感じています。ここで技術は単にイノベーションのための強力なツールではなく、可能性を解放し、地域内のすべての人の生活を改善するための手段です[music]。最も重要なことに、このビジョンは明日の青年によって駆動されており、彼らは人工知能の未来が[music]常に人々を支援することに焦点を当てることを確保するでしょう。第三位の受賞者はミャンマー出身の Future Flux です。第二位の受賞者はカンボジア出身の Vopa.ai です。',
+      'では、今晩の最高の栄誉です。一等賞の[music]受賞者は、ブルネイ・ダルサラム国出身の Sigma High です。準備ができています。',
+    ],
+    translatedAt: '2026-06-09',
     translationSource: 'claude',
     translationModel: 'haiku',
   },

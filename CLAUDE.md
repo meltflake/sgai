@@ -201,6 +201,8 @@ npx prettier --write src/
 
 历史踩点：2026-05-21 用户发现 `/ja/videos/v062/` 显示 "No readable content for this video yet. Run npm run fetch:video-transcripts to refresh."。根因调查发现 5 条视频（v022/v040/v044/v061/v062）在 `video-transcripts.ts` 完全缺失：v022/v040/v044 是 YouTube 没字幕轨但 fetch emit 过滤了 unavailable 记录（[fetch-transcripts.ts:206](scripts/videos/fetch-transcripts.ts) 之前 `.filter((r) => r.paragraphs.length > 0)`），v061/v062 是新加的视频还没轮到 cron。本规则修复方式：(1) emit 改为 always 写 unavailable 占位 + 防 downgrade；(2) fetch 自动 chain translate；(3) 加 eval + CI 硬门 + weekly cron 防御。
 
+二次踩点：2026-06-10 跑 `fetch:video-transcripts --ids=v063,v064,v065` 时，emit 模板把 `video-transcripts.ts` 尾部的 helper 函数整体重写为**旧版**——抹掉了 rule #10 的 zh-tw `toTraditional()` 加固、`convertDigestToTraditional` 和 ko fallback 分支；`check:zh-tw-renderers` 因文件别处仍有 `toTraditional` 字样而漏报（file 级检查盲区），靠 astro check 的类型错误才暴露。已修复：emit 模板 helper 块与 data 文件加固版同步。**教训：emit 模板里嵌的 helper 代码是第二份真相源，改 `src/data/video-transcripts.ts` 尾部 helper 时必须同步改 [fetch-transcripts.ts](scripts/videos/fetch-transcripts.ts) 模板。**
+
 ### 9. Transcript 翻译工具选择（关键）
 
 > **🔴 翻译 transcript 文件（debate-transcripts / video-transcripts / speech-transcripts）时，必须用专用的逐 record 翻译脚本，禁止用 `backfill-ko-arrays.ts`。**
@@ -245,6 +247,34 @@ npx prettier --write src/
 > **加新 zh-tw misconversion eval pattern 的原则**：必须 unambiguous——如果某个错误形式（如 "資訊部"）也可能来自合法的 zh 源（如某些 sg 文档历史上用 "资讯部"），就不要加进 eval `MISCONVERSIONS` 数组。详见 [`scripts/evals/zh-tw-misconversion/check.ts`](scripts/evals/zh-tw-misconversion/check.ts) 顶部 CRITICAL 注释。
 
 历史踩点：2026-05-26 一次性踩到 5 类相关 bug。(1) `getVideoTranscriptParagraphs` 在 zh-tw 分支直接 `return transcript.paragraphs` 漏掉 `toTraditional()`，59 个 `/zh-tw/videos/` 页面 5766 处简体残留。(2) OpenCC s2twp 把 MDDI/IMDA/MCCY 等部委名词组转换破坏（2000+ 处）。(3) mmseg 分词把 "家制造" 分错段，制 不转换。(4) eval 初版用 "資訊部" 当 pattern 引起 false positive（合法 zh 源 "资讯部" 也产生这个输出）。(5) 自己 commit message 的 `summaryEn` 嵌中文，触发 EN 页面 CJK 残留。本规则即此次事故事后加固。
+
+### 11. debate-transcripts 同步（关键 — 最高优先级）
+
+> **🔴 顶层硬规则：`src/data/debates.ts` 里每一条 debate 必须在 `src/data/debate-transcripts.ts` 的 `debateTranscripts` map 里有对应 record，且该 record 的 `paragraphs`（zh）与 `paragraphsEn`（原始 Hansard）都非空、`paragraphs` 含 CJK。缺 record 或任一为空，`npm run check` 里的 `check:debate-transcripts`（CI 硬门）当场 exit 1；同时详情页 `/<lang>/debates/<id>/` 会丢掉 Hansard 全文区。**
+>
+> 和 rule #8（video-transcripts 三语对齐）不同：debate transcript body 是**双语**——`paragraphs`（zh 摘要式分段）+ `paragraphsEn`（原始 Hansard 英文分段）。CI 硬门只校验这两条，**不**要求 `paragraphsJa` / `paragraphsKo`（二者可选：Ja 暂未回填；Ko 已大量逐 record 回填，见 rule #9）。
+>
+> - `paragraphsEn` 放原始 Hansard 英文分段。详情页（`src/pages/[lang]/debates/[id].astro`）的 "Hansard 原文" 区带 `data-i18n-allow-cjk="hansard-original"` + `data-i18n-allow-en` 豁免，所以英文原文里夹中文引文不会触发 i18n 残留检查。
+> - `paragraphs`（zh）是摘要式分段，必须含中文（check 校验 CJK，否则报 "does not appear to contain Chinese"）。zh-tw 页面**不写**数据字段，靠 `[id].astro` 的 `toTraditional(paragraph)` 运行时转换（见 rule #10）。
+>
+> **🔴 不要用 `npm run fetch:debate-transcripts` 补单条。** 它的 emit（[fetch-debate-transcripts.ts:226](scripts/hansard/fetch-debate-transcripts.ts)）是**全量重写**，会静默毁掉现有回填：
+>
+> - emit 在 line 249 无条件跑 `emitData(loadCachedRecords())`，扫**所有** debate 的 raw cache —— `--ids=X` 只限制 fetch 那一步，emit 永远整文件 `writeFileSync`。
+> - emit 模板（约 line 189-206）的 `DebateTranscript` interface **只声明 `paragraphs` + `paragraphsEn`**，没有 `paragraphsJa?` / `paragraphsKo?`。跑一次就把文件里现有全部 `paragraphsKo`（写本条时 161 条，逐 record 翻译、成本见 rule #9）连同字段声明一起抹掉。
+> - emit 还 `.filter((r) => r.paragraphs.length > 0)`（line 162）—— 本地缺 zh translation cache 时该 record 直接消失 → check 报 "missing transcript record"。
+>
+> 正确补法：
+>
+> - ✅ 手工 / 一次性脚本把新 record **插入 map 开头**（紧跟 `export const debateTranscripts ... = {` 那行），`paragraphs` + `paragraphsEn` 都填齐、`paragraphs` 含中文，**绝不动现有条目**。zh 摘要分段自己写或用 [scripts/lib/translate.ts](scripts/lib/translate.ts)。
+> - ✅ 补 Ko：用 rule #9 的 [translate-debate-transcripts-ko.ts](scripts/hansard/translate-debate-transcripts-ko.ts)（逐 record 写盘），禁用 `backfill-ko-arrays.ts`。
+> - ❌ 禁止「先合 `debates.ts`，下一个 PR 补 transcript」—— `npm run check` 当场 fail，CI block merge。
+>
+> 强制点：
+>
+> 1. `npm run check:debate-transcripts`（[check-debate-transcript-i18n.ts](scripts/hansard/check-debate-transcript-i18n.ts)）挂在 `npm run check` 链里（package.json `check` script）。它**全量扫**每条 debate（非 diff 模式，新老一起查）：缺 record / `paragraphs` 空 / `paragraphsEn` 空 / `paragraphs` 不含 CJK → exit 1。
+> 2. `.github/workflows/actions.yaml` 的 check job 跑 `npm run check`，CI 硬门，PR 不能 merge。
+
+历史踩点：2026-06-02 给 `debates.ts` 新增 8 条辩论时撞到——CLAUDE.md 有 rule #8 写了 video-transcripts 的等价硬门，却漏写 debate-transcripts 的同款门，差点直接跑 `fetch:debate-transcripts` 全量重写、连带抹掉已回填的 `paragraphsKo`。本条即补这个文档盲区。
 
 ## 项目结构
 
