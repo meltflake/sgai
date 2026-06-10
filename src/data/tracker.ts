@@ -79,6 +79,13 @@ export interface DimensionBase {
   oneLinerEn?: string;
   oneLinerJa?: string;
   oneLinerKo?: string;
+  /** Optional SERP-facing <title> override for the dim detail page. Falls
+   *  back to `${title} · trackerPageTitle` when absent. Keep query-aligned
+   *  (e.g. "AI adoption in Singapore"), ≤60 chars before the brand suffix. */
+  seoTitle?: string;
+  seoTitleEn?: string;
+  seoTitleJa?: string;
+  seoTitleKo?: string;
   trend: Trend;
   rankingAnchors: RankingAnchor[];
   shortcoming: string;
@@ -1045,6 +1052,10 @@ export const dimensions: Dimension[] = [
     titleKo: '산업 침투',
     titleJa: '産業浸透',
     titleEn: 'Industry Adoption',
+    seoTitle: '新加坡 AI 产业渗透率 — 企业采用数据追踪',
+    seoTitleEn: 'AI Adoption in Singapore — enterprise uptake data tracker',
+    seoTitleJa: 'シンガポールの AI 導入率 — 企業採用データトラッカー',
+    seoTitleKo: '싱가포르 AI 도입률 — 기업 채택 데이터 트래커',
     oneLiner: '企业真在用吗？',
     oneLinerKo: '기업이 실제로 사용 중인가?',
     oneLinerJa: '企業は本当に使用しているか？',

@@ -48,8 +48,9 @@ const progressPct = dim.kind === 'quantified' ? (dim.progress?.pct ?? null) : nu
 
 const dashboardHref = localizedHref('/tracker/', lang);
 
+const seoTitle = pickLocalized<string>(dim, 'seoTitle', lang) ?? null;
 const metadata = {
-  title: `${title} · ${t(lang, 'trackerPageTitle')}`,
+  title: seoTitle ? `${seoTitle} · sgai` : `${title} · ${t(lang, 'trackerPageTitle')}`,
   description: judgment,
 };
 

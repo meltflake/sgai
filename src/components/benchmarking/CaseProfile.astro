@@ -6,6 +6,7 @@ import Layout from '~/layouts/PageLayout.astro';
 import { benchmarkCaseProfileUpdated, dataDate, dataDisclaimer, dataDisclaimerEn } from '~/data/benchmarking';
 import { benchmarkCasePages, regionPages, type BenchmarkCasePage } from '~/utils/entity-pages';
 import { localizedHref, pickLocalized, type Lang } from '~/i18n';
+import { getCanonical } from '~/utils/permalinks';
 
 interface Props {
   page: BenchmarkCasePage;
@@ -56,19 +57,28 @@ const labels = {
   disclaimer: (isEn ? dataDisclaimerEn : null) || dataDisclaimer,
 };
 
+// When the case duplicates another page (e.g. a region drilldown on the same
+// entity), point rel=canonical there — per locale — instead of self.
+const canonicalOverride = caseItem.canonicalPath
+  ? { canonical: String(getCanonical(localizedHref(caseItem.canonicalPath, lang))) }
+  : {};
+
 const metadata = isJa
   ? {
       title: `${name} · 国際ベンチマーク事例`,
       description: summary,
+      ...canonicalOverride,
     }
   : isEn
     ? {
         title: `${name} · International Benchmark Case`,
         description: summary,
+        ...canonicalOverride,
       }
     : {
         title: `${name} · 国际对标案例`,
         description: summary,
+        ...canonicalOverride,
       };
 
 const articleSchema = {

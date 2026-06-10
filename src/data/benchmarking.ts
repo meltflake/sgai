@@ -6039,6 +6039,12 @@ export interface BenchmarkCaseSource {
 
 export interface BenchmarkCase {
   id: string;
+  /** Optional rel=canonical target path (locale-unprefixed) when this case
+   *  substantially duplicates another page — e.g. a region drilldown about
+   *  the same entity. Consolidates split ranking signals (GSC 2026-06:
+   *  cyberport case pos 17.2 vs hong-kong drilldown pos 8.2 for the same
+   *  supercomputing-centre queries). */
+  canonicalPath?: string;
   flag: string;
   name: string;
   nameEn?: string;
@@ -6230,6 +6236,7 @@ export const benchmarkCases: BenchmarkCase[] = [
   },
   {
     id: 'cyberport-ai-supercomputing-centre',
+    canonicalPath: '/benchmarking/hong-kong-initiative-1-cyberport-3000-pflops-supercomputing-centre/',
     flag: '🇭🇰',
     name: '数码港 AI 超算中心',
     nameKo: '사이버포트 AI 슈퍼컴퓨팅 센터',
