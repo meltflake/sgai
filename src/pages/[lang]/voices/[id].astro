@@ -6,10 +6,12 @@ import { Icon } from 'astro-icon/components';
 
 import JsonLd from '~/components/common/JsonLd.astro';
 import Layout from '~/layouts/PageLayout.astro';
+import ParliamentaryRecord from '~/components/widgets/ParliamentaryRecord.astro';
 import PersonContributions from '~/components/widgets/PersonContributions.astro';
 import { allPeople, type Person } from '~/data/people';
 import { videos } from '~/data/videos';
 import { getRelated, getPersonCounts } from '~/utils/graph';
+import { buildParliamentarySummary } from '~/utils/parliamentary-record';
 import { isLowSignalPerson } from '~/utils/quality';
 import { NON_DEFAULT_ROUTE_LOCALES, channelLabel, pickLocalized, localizedHref, t, type Lang } from '~/i18n';
 import { toTraditional } from '~/i18n/opencc';
@@ -40,7 +42,18 @@ const relatedVideos = videos
   .sort((a, b) => b.date.localeCompare(a.date));
 
 const summary = pickLocalized(person, 'summary', lang) || '';
-const isStub = !summary || summary === 'Profile pending.' || summary.startsWith('[需补充]');
+// On zh-tw, pickLocalized returns the zh stub marker OpenCC-converted to
+// '[需補充]' — match both forms or zh-tw stubs masquerade as real bios.
+const isStub =
+  !summary || summary === 'Profile pending.' || summary.startsWith('[需补充]') || summary.startsWith('[需補充]');
+
+// Auto-generated factual line from the person's parliamentary record
+// (≥ 3 debates, see utils/parliamentary-record.ts). For stubs it replaces
+// the "Profile pending" boilerplate in the positioning block, the meta
+// description, and the JSON-LD description. Localized per lang; zh-tw is
+// derived inside the builder via OpenCC (rule #10).
+const parlSummary = isStub ? buildParliamentarySummary(person, lang) : null;
+const bioLine = (isStub && parlSummary ? parlSummary : summary) || '';
 // zh uses personDisplayName(id) for the curated bilingual name + honorific.
 // Other locales prefer pickLocalized (which walks ja → en → zh chain via shape A).
 const displayName = isZh ? personDisplayName(person.id) : pickLocalized(person, 'name', lang) || person.name;
@@ -121,7 +134,9 @@ if (relatedVideos.length > 0) {
 }
 const isCjkPeriod = isZh || lang === 'zh-tw';
 const signalLine = signalParts.length > 0 ? signalParts.join(' · ') + (isCjkPeriod ? '。' : '.') : '';
-const descParts = [`${displayTitle}${isCjkPeriod ? '。' : '.'}`, summary || '', signalLine].filter(Boolean);
+const descParts = [displayTitle ? `${displayTitle}${isCjkPeriod ? '。' : '.'}` : '', bioLine, signalLine].filter(
+  Boolean
+);
 const fallbackDesc =
   lang === 'zh'
     ? `${displayName} 在新加坡 AI 政策中的发言、政策关联与公开视频记录。`
@@ -145,7 +160,7 @@ const personSchema = {
   name: isZh ? person.name || person.nameEn : person.nameEn || person.name,
   ...(isZh ? { alternateName: person.nameEn || person.name } : {}),
   jobTitle: isZh ? person.title || person.titleEn : person.titleEn || person.title,
-  description: summary,
+  description: bioLine,
   affiliation: person.affiliations.map((name) => ({ '@type': 'Organization', name })),
   sameAs: person.channels.map((ch) => ch.url),
 };
@@ -191,22 +206,18 @@ const personSchema = {
     </section>
 
     {
-      !isStub && summary && (
+      ((!isStub && summary) || (isStub && parlSummary)) && (
         <section class="callout-note p-5 rounded-lg mb-8">
           <h2 class="font-semibold mb-2">{isZh ? '一句话定位' : 'Positioning'}</h2>
-          <p class="text-gray-800 dark:text-gray-200 leading-relaxed">{summary}</p>
+          <p class="text-gray-800 dark:text-gray-200 leading-relaxed">{isStub ? parlSummary : summary}</p>
         </section>
       )
     }
 
     {
-      isStub && (
+      isStub && !parlSummary && (
         <section class="callout-muted p-4 rounded-lg mb-8 text-sm">
-          <p class="text-amber-900 dark:text-amber-200">
-            {isZh
-              ? '此人物档案待补充。当前页面先根据已有数据自动汇总其国会发言与政策关联。'
-              : 'Profile pending. This page currently summarises parliamentary appearances and policy links from existing records.'}
-          </p>
+          <p class="text-amber-900 dark:text-amber-200">{t(lang, 'profilePending')}</p>
         </section>
       )
     }
@@ -240,37 +251,7 @@ const personSchema = {
 
     <PersonContributions person={person} lang={lang} />
 
-    <section class="mb-10">
-      <h2 class="t-h3 text-gray-800 dark:text-white mb-4">
-        {isZh ? `国会发言（${related.debates.length}）` : `Parliamentary speeches (${related.debates.length})`}
-      </h2>
-      {
-        related.debates.length === 0 ? (
-          <p class="text-sm text-gray-400 italic">{isZh ? '暂无关联辩论记录。' : 'No related debate records.'}</p>
-        ) : (
-          <div class="space-y-3">
-            {related.debates.slice(0, 30).map((debate) => (
-              <a
-                href={localizedHref(`/debates/${debate.id}/`, lang)}
-                class="block bg-surface rounded-lg p-4 border border-subtle hover:border-blue-300 hover:shadow-sm transition-all"
-              >
-                <h3 class="font-semibold text-gray-800 dark:text-white text-sm leading-snug">
-                  {pickLocalized(debate, 'title', lang)}
-                </h3>
-                <p class="text-xs text-gray-500 mt-1">
-                  {debate.date} · {isZh ? `第 ${debate.parliament} 届国会` : `Parliament ${debate.parliament}`}
-                </p>
-                {pickLocalized(debate, 'summary', lang) && (
-                  <p class="text-xs text-gray-600 dark:text-gray-400 mt-2 leading-relaxed line-clamp-3">
-                    {pickLocalized(debate, 'summary', lang)}
-                  </p>
-                )}
-              </a>
-            ))}
-          </div>
-        )
-      }
-    </section>
+    <ParliamentaryRecord person={person} lang={lang} />
 
     {
       related.policies.length > 0 && (

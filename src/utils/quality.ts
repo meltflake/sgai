@@ -27,6 +27,7 @@ import type { Person } from '~/data/people';
 import type { EcosystemEntity } from '~/data/ecosystem';
 import { videos } from '~/data/videos';
 import { getPersonCounts } from '~/utils/graph';
+import { PARLIAMENTARY_SUMMARY_MIN_DEBATES } from '~/utils/parliamentary-record';
 
 // ── Voices (people) ─────────────────────────────────────────────────────
 
@@ -36,6 +37,14 @@ import { getPersonCounts } from '~/utils/graph';
  *
  *   - Curated contributions present (signatureWork / notableQuotes /
  *     speakingRecord / externalRoles) → always indexable.
+ *
+ *   - Substantial parliamentary record (≥ PARLIAMENTARY_SUMMARY_MIN_DEBATES
+ *     debates) → always indexable, even with a stub bio. The voices page
+ *     derives a "Parliamentary AI record" section plus an auto-generated
+ *     factual summary line from debates.ts (utils/parliamentary-record.ts),
+ *     which replaces the "Profile pending" boilerplate in the positioning
+ *     block and the meta description — unique per-person content (years,
+ *     topics, debate titles) instead of a shared template fingerprint.
  *
  *   - Real bio summary + ANY graph signal (debate / policy / video) →
  *     indexable. The bio differentiates the page even with one signal.
@@ -62,6 +71,13 @@ export function isLowSignalPerson(p: Person): boolean {
   if (hasContributions) return false;
 
   const counts = getPersonCounts(p.id);
+
+  // Debate-rich stubs index unconditionally — the derived parliamentary
+  // record gives them real content (see docblock). Currently subsumed by
+  // the 2-signal threshold below; kept explicit so the guarantee survives
+  // any future threshold tightening.
+  if (counts.debateCount >= PARLIAMENTARY_SUMMARY_MIN_DEBATES) return false;
+
   const totalGraphSignals = counts.debateCount + counts.policyAuthorCount + countVideosForPerson(p);
 
   // Threshold depends on whether the bio is real or a placeholder.

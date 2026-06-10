@@ -1,0 +1,104 @@
+---
+// Derived "Parliamentary AI record" section for voice profiles. Replaces
+// the older inline "Parliamentary speeches" list on both the root (en) and
+// [lang] voice pages — same debate list, plus per-year / per-topic
+// aggregates and per-debate topic chips, all derived from debates.ts at
+// build time via utils/parliamentary-record.ts.
+import type { Person } from '~/data/people';
+import { type Lang, localizedHref, pickLocalized, t } from '~/i18n';
+import { debateTopicLabel } from '~/utils/debate-labels';
+import { getParliamentaryRecord } from '~/utils/parliamentary-record';
+
+interface Props {
+  person: Person;
+  lang: Lang;
+}
+
+const { person, lang } = Astro.props;
+const record = getParliamentaryRecord(person.id);
+
+const useFullwidthParens = lang === 'zh' || lang === 'zh-tw' || lang === 'ja';
+const heading = useFullwidthParens
+  ? `${t(lang, 'voiceParlRecord')}（${record.total}）`
+  : `${t(lang, 'voiceParlRecord')} (${record.total})`;
+
+// "第 15 届国会" / "Parliament 15" metadata chip. Built from the existing
+// parliamentSession dict entry, so zh-tw conversion comes from t()'s
+// OpenCC fallback — no raw simplified literal in this component.
+const parliamentLabel = (n: string): string => {
+  const word = t(lang, 'parliamentSession');
+  if (lang === 'zh' || lang === 'zh-tw') return `第 ${n} ${word}`;
+  if (lang === 'ja') return `第${n}${word}`;
+  if (lang === 'ko') return `제${n}대 ${word}`;
+  return `${word} ${n}`;
+};
+
+// EN must not fall back to the zh digest (pickLocalized's en chain ends at
+// zh) — mirror the explicit summaryEn guard the root page used before this
+// component existed.
+const debateSummary = (debate: (typeof record.debates)[number]): string | null | undefined =>
+  lang === 'en' ? debate.summaryEn : pickLocalized(debate, 'summary', lang);
+---
+
+<section class="mb-10">
+  <h2 class="t-h3 text-gray-800 dark:text-white mb-4">{heading}</h2>
+  {
+    record.total === 0 ? (
+      <p class="text-sm text-gray-400 italic">{t(lang, 'noDebateRecords')}</p>
+    ) : (
+      <>
+        <div class="flex flex-col gap-2 mb-5">
+          <div class="flex flex-wrap items-center gap-1.5">
+            <span class="text-[11px] uppercase tracking-wide text-gray-400 dark:text-gray-500 mr-1">
+              {t(lang, 'voiceParlByYear')}
+            </span>
+            {record.byYear.map((y) => (
+              <span class="text-xs px-2 py-0.5 rounded-full bg-blue-50 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300">
+                {y.year} · {y.count}
+              </span>
+            ))}
+          </div>
+          <div class="flex flex-wrap items-center gap-1.5">
+            <span class="text-[11px] uppercase tracking-wide text-gray-400 dark:text-gray-500 mr-1">
+              {t(lang, 'voiceParlByTopic')}
+            </span>
+            {record.byTopic.map((tc) => (
+              <span class="text-xs px-2 py-0.5 rounded-full bg-gray-100 text-gray-600 dark:bg-slate-700 dark:text-gray-300">
+                {debateTopicLabel(tc.topic, lang)} · {tc.count}
+              </span>
+            ))}
+          </div>
+        </div>
+        <div class="space-y-3">
+          {record.debates.map((debate) => (
+            <a
+              href={localizedHref(`/debates/${debate.id}/`, lang)}
+              class="block bg-surface rounded-lg p-4 border border-subtle hover:border-blue-300 hover:shadow-sm transition-all"
+            >
+              <h3 class="font-semibold text-gray-800 dark:text-white text-sm leading-snug">
+                {pickLocalized(debate, 'title', lang)}
+              </h3>
+              <p class="text-xs text-gray-500 mt-1">
+                {debate.date} · {parliamentLabel(debate.parliament)}
+              </p>
+              {(debate.topics || []).length > 0 && (
+                <div class="flex flex-wrap gap-1.5 mt-2">
+                  {(debate.topics || []).map((topic) => (
+                    <span class="text-[11px] px-1.5 py-0.5 rounded bg-gray-100 text-gray-500 dark:bg-slate-700 dark:text-gray-400">
+                      {debateTopicLabel(topic, lang)}
+                    </span>
+                  ))}
+                </div>
+              )}
+              {debateSummary(debate) && (
+                <p class="text-xs text-gray-600 dark:text-gray-400 mt-2 leading-relaxed line-clamp-3">
+                  {debateSummary(debate)}
+                </p>
+              )}
+            </a>
+          ))}
+        </div>
+      </>
+    )
+  }
+</section>

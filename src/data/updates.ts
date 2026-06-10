@@ -104,6 +104,31 @@ export const MANUAL_UPDATES: Update[] = [
     ],
   },
   {
+    date: '2026-06-10',
+    type: 'site',
+    title: '议员档案页新增「国会 AI 发言记录」派生区块',
+    titleEn: 'MP profiles gain a derived "Parliamentary AI record" section',
+    titleJa: '議員プロフィールに「議会 AI 発言記録」派生セクションを追加',
+    titleKo: '의원 프로필에 "국회 AI 발언 기록" 파생 섹션 추가',
+    summary:
+      '人物档案页的国会发言区块升级为派生式「国会 AI 发言记录」：按年份、按议题的统计与每场辩论的议题标签全部从库内 Hansard 记录自动派生。有 3 场以上辩论记录的待补充议员档案，自动生成一句事实摘要（如「国会议员。2021–2026 年间在 31 场 AI 相关国会辩论中发言」），顶替原来的占位文案出现在页面与搜索摘要中。',
+    summaryEn:
+      'The parliamentary section on voice profiles is now a derived "Parliamentary AI record": per-year and per-topic counts plus topic tags per debate, all generated from in-repo Hansard records. Stub MP profiles with 3+ debates get an auto-generated factual summary line (e.g. "Member of Parliament. Spoke in 31 AI-related parliamentary debates (2021–2026)"), replacing the placeholder text on the page and in search snippets.',
+    summaryJa:
+      '人物プロフィールの議会セクションを派生型「議会 AI 発言記録」に刷新：年別・テーマ別の集計と各討論のテーマタグをリポジトリ内の Hansard 記録から自動生成。3 件以上の討論記録を持つ未補完の議員プロフィールには事実ベースの一行サマリー（例「国会議員。2021–2026年に 31 件の AI 関連議会討論で発言」）を自動生成し、プレースホルダー文言を置き換えます。',
+    summaryKo:
+      '인물 프로필의 국회 섹션을 파생형 "국회 AI 발언 기록"으로 개편: 연도별·주제별 집계와 각 토론의 주제 태그를 저장소 내 Hansard 기록에서 자동 생성합니다. 3건 이상의 토론 기록이 있는 미완성 의원 프로필에는 사실 기반 한 줄 요약(예: "국회의원. 2021–2026년 31건의 AI 관련 국회 토론에서 발언")을 자동 생성해 자리표시 문구를 대체합니다.',
+    links: [
+      {
+        href: '/voices/gerald-giam-yean-song/',
+        label: '查看示例档案',
+        labelEn: 'See an example profile',
+        labelJa: 'プロフィール例を見る',
+        labelKo: '예시 프로필 보기',
+      },
+    ],
+  },
+  {
     date: '2026-05-29',
     type: 'longform',
     title: '新发布：新加坡的 Claude 使用强度全球第一',
