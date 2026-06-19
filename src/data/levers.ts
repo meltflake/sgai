@@ -439,10 +439,14 @@ export const levers: Lever[] = [
             ministryJa: 'Auto: 審査待機中',
             ministryKo: 'Auto: 검토 대기 중',
             description: '新加坡IMDA的数字领袖计划相关页面。页面结构未能完全加载，具体计划内容、目标和详细信息缺失。',
-            descriptionEn: 'IMDA Singapore\'s Digital Leaders Programme page. The page content appears to be in a loading state with navigation elements only, lacking substantive information about the programme\'s objectives and details.',
-            descriptionJa: 'シンガポールIMDAのデジタルリーダー計画関連ページです。ページ構造が完全に読み込まれず、具体的な計画内容、目標、詳細情報が不足しています。',
-            descriptionKo: '싱가포르 IMDA의 디지털 리더십 프로그램 관련 페이지입니다. 페이지 구조가 완전히 로드되지 않았으며, 구체적인 프로그램 내용, 목표 및 상세 정보가 누락되었습니다.',
-            sourceUrl: 'https://www.imda.gov.sg/about-imda/research-and-statistics/support-for-industry-sectors/enterprise-digital-transformation/digital-leaders-programme',
+            descriptionEn:
+              "IMDA Singapore's Digital Leaders Programme page. The page content appears to be in a loading state with navigation elements only, lacking substantive information about the programme's objectives and details.",
+            descriptionJa:
+              'シンガポールIMDAのデジタルリーダー計画関連ページです。ページ構造が完全に読み込まれず、具体的な計画内容、目標、詳細情報が不足しています。',
+            descriptionKo:
+              '싱가포르 IMDA의 디지털 리더십 프로그램 관련 페이지입니다. 페이지 구조가 완전히 로드되지 않았으며, 구체적인 프로그램 내용, 목표 및 상세 정보가 누락되었습니다.',
+            sourceUrl:
+              'https://www.imda.gov.sg/about-imda/research-and-statistics/support-for-industry-sectors/enterprise-digital-transformation/digital-leaders-programme',
           },
           {
             id: 'china-singapore-chongqing-demonstration-initiative-on-strategic-connectivity-cci',
@@ -455,10 +459,14 @@ export const levers: Lever[] = [
             ministryJa: 'Auto: 審査待機中',
             ministryKo: 'Auto: 검토 대기 중',
             description: '页面内容不完整，主要显示导航元素，无实质性内容。无法提供有意义的摘要。',
-            descriptionEn: 'Page content is incomplete, showing mainly navigation elements with no substantive content. Unable to provide a meaningful summary.',
-            descriptionJa: 'ページ内容が不完全であり、主にナビゲーション要素を表示しており、実質的な内容がありません。意味のある要約を提供することができません。',
-            descriptionKo: '페이지 콘텐츠가 불완전하며, 주로 네비게이션 요소만 표시되고 실질적인 내용이 없습니다. 의미 있는 요약을 제공할 수 없습니다.',
-            sourceUrl: 'https://www.imda.gov.sg/about-imda/international-relations/international-partnerships/china-singapore-demonstration-initiative-on-strategic-connectivity',
+            descriptionEn:
+              'Page content is incomplete, showing mainly navigation elements with no substantive content. Unable to provide a meaningful summary.',
+            descriptionJa:
+              'ページ内容が不完全であり、主にナビゲーション要素を表示しており、実質的な内容がありません。意味のある要約を提供することができません。',
+            descriptionKo:
+              '페이지 콘텐츠가 불완전하며, 주로 네비게이션 요소만 표시되고 실질적인 내용이 없습니다. 의미 있는 요약을 제공할 수 없습니다.',
+            sourceUrl:
+              'https://www.imda.gov.sg/about-imda/international-relations/international-partnerships/china-singapore-demonstration-initiative-on-strategic-connectivity',
           },
         ],
       },
