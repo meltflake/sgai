@@ -751,44 +751,61 @@ export const autoDiscovered: AutoDiscoveredEntry[] = [
     titleEn: 'Singtel, KKR-owned STT GDC opens its first South Korean data centre to tap AI boom',
     titleJa: 'SingtelとKKR傘下のSTT GDCが韓国で初のデータセンターを開設、AI波をキャッチ',
     titleKo: 'Singtel과 KKR 산하 STT GDC가 한국에서 첫 데이터 센터 개설, AI 열풍 포착',
-    description: '新电信和KKR支持的ST Telemedia Global Data Centres (STT GDC)在2026年6月16日在首尔开设首个数据中心设施STT Seoul 1，30MW容量，位于首尔鹿川区，与韩国现代重工业合作（60/40股权分配）。该设施覆盖约4万平方米，专为超大规模和企业客户的高密度AI工作负载而设计，功率使用效率低于1.3，备配电源和24小时备用发电机。',
-    descriptionEn: 'Singtel and KKR-backed ST Telemedia Global Data Centres (STT GDC) opened its first South Korean data centre facility, STT Seoul 1, on June 16, 2026, featuring a 30-megawatt capacity in Seoul\'s Geumcheon district in joint venture with Hyosung Heavy Industries (60/40 ownership split). The facility spans approximately 40,000 square metres and targets hyperscale and enterprise clients running high-density AI workloads, with power usage effectiveness below 1.3 and backup generators capable of 24-hour autonomous operation.',
-    descriptionJa: 'SingtelとKKR傘下のST Telemedia Global Data Centres（STT GDC）は2026年6月16日にソウルで初のデータセンター施設STT Seoul 1を開設しました。容量は30MWで、ソウル鹿川区に位置し、韓国現代重工業とのパートナーシップで運営されています（株式配分60/40）。施設は約4万平方メートルをカバーし、超大規模企業顧客向けの高密度AIワークロード用に設計されています。電力使用効率は1.3未満で、バックアップ電源と24時間バックアップ発電機を備えています。',
-    descriptionKo: 'Singtel과 KKR이 지원하는 ST Telemedia Global Data Centres (STT GDC)는 2026년 6월 16일 서울 록천구에 첫 데이터 센터 시설 STT Seoul 1을 개설했습니다. 30MW 용량을 갖춘 본 시설은 Hyundai Heavy Industries와의 협력으로 개발되었으며 60/40의 지분 배분으로 운영됩니다. 약 4만 제곱미터의 규모를 자랑하는 본 시설은 하이퍼스케일 및 엔터프라이즈 고객의 고밀도 AI 워크로드 처리를 위해 설계되었으며, 전력 사용 효율(PUE)이 1.3 미만이고, 백업 전원 및 24시간 백업 발전기가 구비되어 있습니다.',
+    description:
+      '新电信和KKR支持的ST Telemedia Global Data Centres (STT GDC)在2026年6月16日在首尔开设首个数据中心设施STT Seoul 1，30MW容量，位于首尔鹿川区，与韩国现代重工业合作（60/40股权分配）。该设施覆盖约4万平方米，专为超大规模和企业客户的高密度AI工作负载而设计，功率使用效率低于1.3，备配电源和24小时备用发电机。',
+    descriptionEn:
+      "Singtel and KKR-backed ST Telemedia Global Data Centres (STT GDC) opened its first South Korean data centre facility, STT Seoul 1, on June 16, 2026, featuring a 30-megawatt capacity in Seoul's Geumcheon district in joint venture with Hyosung Heavy Industries (60/40 ownership split). The facility spans approximately 40,000 square metres and targets hyperscale and enterprise clients running high-density AI workloads, with power usage effectiveness below 1.3 and backup generators capable of 24-hour autonomous operation.",
+    descriptionJa:
+      'SingtelとKKR傘下のST Telemedia Global Data Centres（STT GDC）は2026年6月16日にソウルで初のデータセンター施設STT Seoul 1を開設しました。容量は30MWで、ソウル鹿川区に位置し、韓国現代重工業とのパートナーシップで運営されています（株式配分60/40）。施設は約4万平方メートルをカバーし、超大規模企業顧客向けの高密度AIワークロード用に設計されています。電力使用効率は1.3未満で、バックアップ電源と24時間バックアップ発電機を備えています。',
+    descriptionKo:
+      'Singtel과 KKR이 지원하는 ST Telemedia Global Data Centres (STT GDC)는 2026년 6월 16일 서울 록천구에 첫 데이터 센터 시설 STT Seoul 1을 개설했습니다. 30MW 용량을 갖춘 본 시설은 Hyundai Heavy Industries와의 협력으로 개발되었으며 60/40의 지분 배분으로 운영됩니다. 약 4만 제곱미터의 규모를 자랑하는 본 시설은 하이퍼스케일 및 엔터프라이즈 고객의 고밀도 AI 워크로드 처리를 위해 설계되었으며, 전력 사용 효율(PUE)이 1.3 미만이고, 백업 전원 및 24시간 백업 발전기가 구비되어 있습니다.',
     category: '新公司',
     confidence: 'low',
-    sourceUrl: 'https://www.businesstimes.com.sg/startups-tech/technology/singtel-kkr-owned-stt-gdc-opens-its-first-south-korean-data-centre-tap-ai-boom',
+    sourceUrl:
+      'https://www.businesstimes.com.sg/startups-tech/technology/singtel-kkr-owned-stt-gdc-opens-its-first-south-korean-data-centre-tap-ai-boom',
     discoveredAt: '2026-06-19',
-    reasonForLowConfidence: 'While the source is credible and content is well-structured, the article describes a facility/infrastructure expansion by an existing established company (STT GDC), not a startup launch, funding round, exit, investment institution, or unicorn achievement. The news type (operational expansion announcement) does not align with the five specified categories for this Singapore AI startup ecosystem dataset.',
+    reasonForLowConfidence:
+      'While the source is credible and content is well-structured, the article describes a facility/infrastructure expansion by an existing established company (STT GDC), not a startup launch, funding round, exit, investment institution, or unicorn achievement. The news type (operational expansion announcement) does not align with the five specified categories for this Singapore AI startup ecosystem dataset.',
   },
   {
     title: '新加坡初创公司加倍使用AI，同时运行多个平台：Aspire报告',
     titleEn: 'Singapore startups double down on AI usage, running multiple platforms: Aspire report',
     titleJa: 'シンガポール・スタートアップのAI利用が倍増、複数プラットフォームを同時運用：Aspireレポート',
     titleKo: '싱가포르 스타트업들이 AI 사용을 2배로 확대하면서 동시에 여러 플랫폼을 운영하고 있습니다: Aspire 보고서',
-    description: '根据金融科技公司Aspire的报告，新加坡初创公司在2026年的AI平台订阅量同比增长42%。同时运行三个或以上AI平台的初创公司数量从339家翻倍增至704家，平均每家初创公司使用1.87个AI平台。ChatGPT仍是最受欢迎的平台（2,377名付费客户），而Claude增速更快（258%增长），并在AI支出中占比37%。报告还显示初创公司正在构建分布式团队，优先从东南亚地区招聘。',
-    descriptionEn: 'According to a report by fintech firm Aspire, Singapore startups increased their AI platform subscriptions by 42% year-over-year in 2026. The number of startups running three or more AI platforms simultaneously more than doubled to 704, with each startup using an average of 1.87 AI platforms. ChatGPT remains the most popular platform with 2,377 paying clients, while Claude is growing faster (258% increase) and now accounts for 37% of startup AI spending. The report also highlights that startups are building distributed workforces with increased hiring from Southeast Asia.',
-    descriptionJa: '金融テック企業Aspireのレポートによると、シンガポール・スタートアップの2026年のAIプラットフォーム購読数は前年比42%増加しています。同時に3つ以上のAIプラットフォームを運用するスタートアップの数は339社から704社へと倍増し、1社あたり平均1.87個のAIプラットフォームを利用しています。ChatGPTは依然として最も人気のあるプラットフォーム（2,377名の有料顧客）ですが、Claudeはより高速に成長し（258%増加）、AI支出の37%を占めています。レポートはまた、スタートアップが分散型チームを構築しており、東南アジア地域からの採用を優先していることを示しています。',
-    descriptionKo: '핀테크 회사 Aspire의 보고서에 따르면, 싱가포르 스타트업의 2026년 AI 플랫폼 구독량은 전년 대비 42% 증가했습니다. 동시에 3개 이상의 AI 플랫폼을 운영하는 스타트업 수는 339개에서 704개로 두 배 증가했으며, 평균 각 스타트업은 1.87개의 AI 플랫폼을 사용하고 있습니다. ChatGPT는 여전히 가장 인기 있는 플랫폼(유료 고객 2,377명)이며, Claude는 더 빠른 성장률을 보이고 있고(258% 증가) AI 지출의 37%를 차지하고 있습니다. 보고서는 또한 스타트업이 분산 팀을 구축하고 있으며, 동남아시아 지역에서 채용을 우선하고 있음을 보여줍니다.',
+    description:
+      '根据金融科技公司Aspire的报告，新加坡初创公司在2026年的AI平台订阅量同比增长42%。同时运行三个或以上AI平台的初创公司数量从339家翻倍增至704家，平均每家初创公司使用1.87个AI平台。ChatGPT仍是最受欢迎的平台（2,377名付费客户），而Claude增速更快（258%增长），并在AI支出中占比37%。报告还显示初创公司正在构建分布式团队，优先从东南亚地区招聘。',
+    descriptionEn:
+      'According to a report by fintech firm Aspire, Singapore startups increased their AI platform subscriptions by 42% year-over-year in 2026. The number of startups running three or more AI platforms simultaneously more than doubled to 704, with each startup using an average of 1.87 AI platforms. ChatGPT remains the most popular platform with 2,377 paying clients, while Claude is growing faster (258% increase) and now accounts for 37% of startup AI spending. The report also highlights that startups are building distributed workforces with increased hiring from Southeast Asia.',
+    descriptionJa:
+      '金融テック企業Aspireのレポートによると、シンガポール・スタートアップの2026年のAIプラットフォーム購読数は前年比42%増加しています。同時に3つ以上のAIプラットフォームを運用するスタートアップの数は339社から704社へと倍増し、1社あたり平均1.87個のAIプラットフォームを利用しています。ChatGPTは依然として最も人気のあるプラットフォーム（2,377名の有料顧客）ですが、Claudeはより高速に成長し（258%増加）、AI支出の37%を占めています。レポートはまた、スタートアップが分散型チームを構築しており、東南アジア地域からの採用を優先していることを示しています。',
+    descriptionKo:
+      '핀테크 회사 Aspire의 보고서에 따르면, 싱가포르 스타트업의 2026년 AI 플랫폼 구독량은 전년 대비 42% 증가했습니다. 동시에 3개 이상의 AI 플랫폼을 운영하는 스타트업 수는 339개에서 704개로 두 배 증가했으며, 평균 각 스타트업은 1.87개의 AI 플랫폼을 사용하고 있습니다. ChatGPT는 여전히 가장 인기 있는 플랫폼(유료 고객 2,377명)이며, Claude는 더 빠른 성장률을 보이고 있고(258% 증가) AI 지출의 37%를 차지하고 있습니다. 보고서는 또한 스타트업이 분산 팀을 구축하고 있으며, 동남아시아 지역에서 채용을 우선하고 있음을 보여줍니다.',
     category: '新公司',
     confidence: 'low',
-    sourceUrl: 'https://www.businesstimes.com.sg/startups-tech/technology/singapore-startups-double-down-ai-usage-running-multiple-platforms-aspire-report',
+    sourceUrl:
+      'https://www.businesstimes.com.sg/startups-tech/technology/singapore-startups-double-down-ai-usage-running-multiple-platforms-aspire-report',
     discoveredAt: '2026-06-19',
-    reasonForLowConfidence: 'Article is a market trend report analyzing AI platform adoption patterns and spending across multiple Singapore startups, not a discrete event (specific company launch, funding round announcement, exit, or investor institution profile) that fits the required categories.',
+    reasonForLowConfidence:
+      'Article is a market trend report analyzing AI platform adoption patterns and spending across multiple Singapore startups, not a discrete event (specific company launch, funding round announcement, exit, or investor institution profile) that fits the required categories.',
   },
   {
     title: '最大的AI技能可能不是技术性的',
     titleEn: 'The biggest AI skill may not be technical',
     titleJa: '最も重要なAIスキルは技術的ではないかもしれません',
     titleKo: '가장 큰 AI 역량은 기술적이지 않을 수 있습니다',
-    description: '文章讨论AI对就业的影响，重点强调转型而非替代。通过对UOB人力资源部门主管和NUS-ISS副首席执行官的采访，探讨"AI双语者"（既具备领域专业知识又能应用AI的通才）的概念。文章指出雇主在招聘时优先考虑问题解决能力、好奇心、适应性和人文素质，而非纯技术技能。',
-    descriptionEn: 'The article examines AI\'s impact on employment, emphasizing transition over replacement. Through interviews with UOB\'s head of group human resources and NUS-ISS\'s deputy CEO, it explores the concept of \'AI bilinguals\'—generalists with domain expertise who can apply AI. The piece highlights that employers prioritize problem-solving skills, curiosity, adaptability, and humanistic abilities over purely technical skills in hiring.',
-    descriptionJa: 'この記事はAIが雇用に与える影響について論じ、置き換えではなく変革を強調しています。UOBの人事部門長とNUS-ISS副最高経営責任者へのインタビューを通じて、「AIバイリンガル」（領域の専門知識を持ちながらAIを応用できる汎用人材）という概念を探討しています。記事では、採用時に雇用主が問題解決能力、好奇心、適応力、人文的資質を優先し、純粋な技術スキルではないことを指摘しています。',
-    descriptionKo: '본 기사는 AI가 고용에 미치는 영향을 논의하며, 대체가 아닌 변환을 강조합니다. UOB 인사자원 부서 책임자 및 NUS-ISS 부최고경영자와의 인터뷰를 통해 「AI 이중언어자」(도메인 전문 지식을 갖추고 동시에 AI를 적용할 수 있는 다재다능한 인재)라는 개념을 탐구합니다. 기사는 고용주가 채용 시 순수 기술적 능력이 아닌 문제 해결 능력, 호기심, 적응성, 인문학적 자질을 우선시한다고 지적합니다.',
+    description:
+      '文章讨论AI对就业的影响，重点强调转型而非替代。通过对UOB人力资源部门主管和NUS-ISS副首席执行官的采访，探讨"AI双语者"（既具备领域专业知识又能应用AI的通才）的概念。文章指出雇主在招聘时优先考虑问题解决能力、好奇心、适应性和人文素质，而非纯技术技能。',
+    descriptionEn:
+      "The article examines AI's impact on employment, emphasizing transition over replacement. Through interviews with UOB's head of group human resources and NUS-ISS's deputy CEO, it explores the concept of 'AI bilinguals'—generalists with domain expertise who can apply AI. The piece highlights that employers prioritize problem-solving skills, curiosity, adaptability, and humanistic abilities over purely technical skills in hiring.",
+    descriptionJa:
+      'この記事はAIが雇用に与える影響について論じ、置き換えではなく変革を強調しています。UOBの人事部門長とNUS-ISS副最高経営責任者へのインタビューを通じて、「AIバイリンガル」（領域の専門知識を持ちながらAIを応用できる汎用人材）という概念を探討しています。記事では、採用時に雇用主が問題解決能力、好奇心、適応力、人文的資質を優先し、純粋な技術スキルではないことを指摘しています。',
+    descriptionKo:
+      '본 기사는 AI가 고용에 미치는 영향을 논의하며, 대체가 아닌 변환을 강조합니다. UOB 인사자원 부서 책임자 및 NUS-ISS 부최고경영자와의 인터뷰를 통해 「AI 이중언어자」(도메인 전문 지식을 갖추고 동시에 AI를 적용할 수 있는 다재다능한 인재)라는 개념을 탐구합니다. 기사는 고용주가 채용 시 순수 기술적 능력이 아닌 문제 해결 능력, 호기심, 적응성, 인문학적 자질을 우선시한다고 지적합니다.',
     category: '新公司',
     confidence: 'low',
     sourceUrl: 'https://www.businesstimes.com.sg/startups-tech/technology/biggest-ai-skill-may-not-be-technical',
     discoveredAt: '2026-06-19',
-    reasonForLowConfidence: 'Article is an opinion/analysis piece about AI\'s impact on employment and skills development. It contains no information about Singapore AI startup ecosystem activities (company launches, funding rounds, exits, or investors). Does not match any required classification category.',
+    reasonForLowConfidence:
+      "Article is an opinion/analysis piece about AI's impact on employment and skills development. It contains no information about Singapore AI startup ecosystem activities (company launches, funding rounds, exits, or investors). Does not match any required classification category.",
   },
 ];
