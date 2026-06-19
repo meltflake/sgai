@@ -28,6 +28,8 @@ export interface PolicyCandidate {
   defaultCategory: string;
   defaultSource: string;
   defaultSourceEn: string;
+  defaultSourceJa: string;
+  defaultSourceKo: string;
   defaultSourceOrgUrl: string;
   defaultMinistry?: string;
 }
@@ -48,9 +50,65 @@ export interface ScanOptions {
   onlyDomain?: string;
 }
 
-function applyFilters(urls: string[], source: PolicySource): string[] {
+// Sections that never hold a substantive AI policy / news document. Applied
+// to ALL sources — the 2026-06-19 sweep surfaced only generic smartnation
+// engagement / about / event / showcase pages (matched via the `smart-nation`
+// token in AI_SLUG_KEYWORDS and the broad `/initiatives/` pattern). Keeping
+// this here (not per-source) means every source is protected and the
+// AI-keyword signal stays intact for real article pages.
+const GENERIC_SECTION_EXCLUDES: RegExp[] = [
+  /\/about(?:-us)?\//,
+  /\/citizen-engagement\//,
+  /\/engagement-programmes?\//,
+  /\/events?\//,
+  /\/showcases?\//,
+  /\/careers?\//,
+  /\/contact(?:-us)?\b/,
+  /\/faqs?\b/,
+  /\/feedback\//,
+  /\/newsletter\b/,
+  /\/subscribe\b/,
+  /\/our-people\//,
+  /\/leadership\//,
+  /\/tenders?\//,
+  /\/sitemap/,
+  /\/search\b/,
+];
+
+// Listing / section-index roots: the URL terminates at the section itself
+// with no article slug after it (e.g. `/initiatives/`,
+// `/initiatives/programmes-and-initiatives/`, `/news/`). Substantive
+// documents always carry a further slug.
+const LISTING_ROOTS = new Set([
+  'initiatives',
+  'programmes-and-initiatives',
+  'news',
+  'newsroom',
+  'media-room',
+  'press-releases',
+  'resources',
+  'publications',
+  'announcements',
+]);
+
+/** True when a URL is a generic section, an engagement/about page, or a bare
+ *  listing index rather than a specific policy / news document. */
+export function isGenericOrLanding(url: string): boolean {
+  let path: string;
+  try {
+    path = new URL(url).pathname;
+  } catch {
+    return true; // unparseable → drop
+  }
+  if (GENERIC_SECTION_EXCLUDES.some((re) => re.test(path))) return true;
+  const lastSeg = path.replace(/\/+$/, '').split('/').pop() || '';
+  return LISTING_ROOTS.has(lastSeg);
+}
+
+export function applyFilters(urls: string[], source: PolicySource): string[] {
   const out = new Set<string>();
   for (const url of urls) {
+    if (isGenericOrLanding(url)) continue;
     if (source.urlExcludes?.some((re) => re.test(url))) continue;
     if (!source.urlPatterns.some((re) => re.test(url))) continue;
     out.add(url);
@@ -159,6 +217,8 @@ export async function scan(options: ScanOptions): Promise<ScanResult> {
         defaultCategory: source.defaultCategory,
         defaultSource: source.defaultSource,
         defaultSourceEn: source.defaultSourceEn,
+        defaultSourceJa: source.defaultSourceJa,
+        defaultSourceKo: source.defaultSourceKo,
         defaultSourceOrgUrl: source.defaultSourceOrgUrl,
         defaultMinistry: source.defaultMinistry,
       });

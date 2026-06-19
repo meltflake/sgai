@@ -15,6 +15,7 @@ import { govFetch, listSitemap } from '../../lib/gov-fetch.ts';
 import { summarizePage } from '../../lib/ai-summarize.ts';
 import { autoCommit, pushAndOpenPR, buildPRBody } from '../../lib/auto-commit.ts';
 import { findUnpairedFields } from '../../lib/i18n-pair.ts';
+import { formatWithPrettier } from '../../lib/prettier-format.ts';
 import { loadState, saveState } from '../../lib/state.ts';
 
 const TARGET_FILE = resolve('src/data/levers.ts');
@@ -308,6 +309,7 @@ async function main(): Promise<void> {
       `i18n pairing regressed: ${baselineCount} → ${issuesAfter.length} unpaired (introduced ${issuesAfter.length - baselineCount}). Rolled back.`
     );
   }
+  formatWithPrettier(TARGET_FILE);
   process.stdout.write(`  added ${enriched.length} items to Auto-discovered group\n`);
 
   // Auto-discovered lever items go into a sub-group under Lever 1 (not
