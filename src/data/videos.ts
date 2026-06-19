@@ -137,6 +137,35 @@ export function pickSpeakerTypeLabels(lang: string): Record<string, string> {
 
 export const videos: VideoItem[] = [
   {
+    id: 'v066',
+    title: 'NAISC 2026 圆满落幕',
+    titleEn: 'NAISC 2026 Highlights',
+    titleJa: 'NAISC 2026 は円満に落幕しました。',
+    titleKo: 'NAISC 2026이 성공적으로 마무리되었습니다',
+    speaker: 'AI Singapore',
+    speakerTitle: 'AI 研究与人才培养机构',
+    speakerTitleEn: 'AI research and talent-development organisation',
+    speakerTitleJa: 'AI 研究と人材育成機関',
+    speakerTitleKo: 'AI 연구 및 인재 양성 기관',
+    speakerType: 'academic',
+    date: '2026-06-12',
+    duration: '02:50',
+    summary: '全国 AI 学生挑战赛 2026 圆满结束，来自新加坡及地区的学生在八个赛道上开发创新 AI 解决方案。',
+    summaryEn:
+      'The National AI Student Challenge (NAISC) 2026 has concluded with students from Singapore and the region developing innovative AI solutions across eight industry-partnered tracks.',
+    summaryJa:
+      '全国 AI 学生チャレンジ 2026 は円満に終了し、シンガポール及びその地域の学生が 8 つのトラックで革新的な AI ソリューションを開発しました。',
+    summaryKo:
+      '전국 AI 학생 챌린지 대회 2026이 성공적으로 종료되었으며, 싱가포르 및 지역의 학생들이 8개 트랙에서 혁신적인 AI 솔루션을 개발했습니다.',
+    topic: 'AI 人才与教育',
+    topicEn: 'AI Talent & Education',
+    topicJa: 'AI 人材と教育',
+    topicKo: 'AI 인재와 교육',
+    youtubeUrl: 'https://www.youtube.com/watch?v=Vj1mI6PXihU',
+    channel: 'AI Singapore',
+    addedAt: '2026-06-19',
+  },
+  {
     id: 'v063',
     title: '黄循财论新加坡AI应用枢纽',
     titleEn: 'PM Wong: Singapore can be an AI application hub',
