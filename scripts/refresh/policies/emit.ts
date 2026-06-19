@@ -50,6 +50,7 @@ function formatPolicyRecord(p: EnrichedPolicy, defaultMinistry?: string): string
   lines.push(`        title: '${escapeQuote(s.title)}',`);
   lines.push(`        titleEn: '${escapeQuote(s.titleEn)}',`);
   if (s.titleJa) lines.push(`        titleJa: '${escapeQuote(s.titleJa)}',`);
+  if (s.titleKo) lines.push(`        titleKo: '${escapeQuote(s.titleKo)}',`);
   lines.push(`        date: '${date}',`);
   lines.push(`        source: '${escapeQuote(p.candidate.defaultSource)}',`);
   lines.push(`        sourceOrgUrl: '${p.candidate.defaultSourceOrgUrl}',`);
@@ -64,6 +65,10 @@ function formatPolicyRecord(p: EnrichedPolicy, defaultMinistry?: string): string
   if (s.descriptionJa) {
     lines.push(`        summaryJa: '${escapeQuote(s.descriptionJa)}',`);
     lines.push('        contentJa: `' + escapeBacktick(s.descriptionJa) + '`,');
+  }
+  if (s.descriptionKo) {
+    lines.push(`        summaryKo: '${escapeQuote(s.descriptionKo)}',`);
+    lines.push('        contentKo: `' + escapeBacktick(s.descriptionKo) + '`,');
   }
   lines.push(`        sourceEn: '${escapeQuote(p.candidate.defaultSourceEn)}',`);
   if (defaultMinistry) {

@@ -434,12 +434,14 @@ function buildEntrySnippet(e: ApprovedEntry): string {
     `    titleEn: '${escapeTsString(f.titleEn)}',`,
   ];
   if (f.titleJa) lines.push(`    titleJa: '${escapeTsString(f.titleJa)}',`);
+  if (f.titleKo) lines.push(`    titleKo: '${escapeTsString(f.titleKo)}',`);
   lines.push(
     `    speaker: '${escapeTsString(f.speaker)}',`,
     `    speakerTitle: '${escapeTsString(f.speakerTitle)}',`,
     `    speakerTitleEn: '${escapeTsString(f.speakerTitleEn)}',`,
   );
   if (f.speakerTitleJa) lines.push(`    speakerTitleJa: '${escapeTsString(f.speakerTitleJa)}',`);
+  if (f.speakerTitleKo) lines.push(`    speakerTitleKo: '${escapeTsString(f.speakerTitleKo)}',`);
   lines.push(
     `    speakerType: '${f.speakerType}',`,
     `    date: '${e.date}',`,
@@ -448,11 +450,13 @@ function buildEntrySnippet(e: ApprovedEntry): string {
     `    summaryEn: '${escapeTsString(f.summaryEn)}',`,
   );
   if (f.summaryJa) lines.push(`    summaryJa: '${escapeTsString(f.summaryJa)}',`);
+  if (f.summaryKo) lines.push(`    summaryKo: '${escapeTsString(f.summaryKo)}',`);
   lines.push(
     `    topic: '${escapeTsString(f.topic)}',`,
     `    topicEn: '${escapeTsString(f.topicEn)}',`,
   );
   if (f.topicJa) lines.push(`    topicJa: '${escapeTsString(f.topicJa)}',`);
+  if (f.topicKo) lines.push(`    topicKo: '${escapeTsString(f.topicKo)}',`);
   lines.push(
     `    youtubeUrl: '${e.youtubeUrl}',`,
     `    channel: '${escapeTsString(e.channel)}',`,
