@@ -20,6 +20,10 @@ export interface PolicySource {
   defaultCategory: '国家战略' | '治理框架' | '行业监管' | '预算与资金' | '国际合作';
   defaultSource: string;
   defaultSourceEn: string;
+  /** ja / ko renderings of the org name (fixed per source; `source` is a
+   *  required CJK field, so it needs all locale siblings — see i18n rule #5). */
+  defaultSourceJa: string;
+  defaultSourceKo: string;
   defaultSourceOrgUrl: string;
   defaultMinistry?: string;
   /** Sitemap URL(s) to consult. */
@@ -41,6 +45,8 @@ export const POLICY_SOURCES: PolicySource[] = [
     defaultCategory: '国家战略',
     defaultSource: '智慧国家与数字政府办公室 (SNDGO)',
     defaultSourceEn: 'Smart Nation and Digital Government Office (SNDGO)',
+    defaultSourceJa: 'スマート国家・デジタル政府オフィス (SNDGO)',
+    defaultSourceKo: '스마트네이션·디지털정부청 (SNDGO)',
     defaultSourceOrgUrl: 'https://www.smartnation.gov.sg/',
     sitemapUrls: ['https://www.smartnation.gov.sg/sitemap.xml'],
     urlPatterns: [/\/initiatives\//, /\/news\//, /\/media-room\//, AI_SLUG_KEYWORDS],
@@ -52,6 +58,8 @@ export const POLICY_SOURCES: PolicySource[] = [
     defaultCategory: '国家战略',
     defaultSource: '数字发展与信息部 (MDDI)',
     defaultSourceEn: 'Ministry of Digital Development and Information (MDDI)',
+    defaultSourceJa: 'デジタル開発情報省 (MDDI)',
+    defaultSourceKo: '디지털개발정보부 (MDDI)',
     defaultSourceOrgUrl: 'https://www.mddi.gov.sg/',
     defaultMinistry: 'MDDI',
     sitemapUrls: ['https://www.mddi.gov.sg/sitemap.xml'],
@@ -64,6 +72,8 @@ export const POLICY_SOURCES: PolicySource[] = [
     defaultCategory: '治理框架',
     defaultSource: '资讯通信媒体发展局 (IMDA)',
     defaultSourceEn: 'Infocomm Media Development Authority (IMDA)',
+    defaultSourceJa: '情報通信メディア開発庁 (IMDA)',
+    defaultSourceKo: '정보통신미디어개발청 (IMDA)',
     defaultSourceOrgUrl: 'https://www.imda.gov.sg/',
     sitemapUrls: ['https://www.imda.gov.sg/sitemap.xml'],
     listingUrls: ['https://www.imda.gov.sg/resources/press-releases-factsheets-and-speeches'],
@@ -75,6 +85,8 @@ export const POLICY_SOURCES: PolicySource[] = [
     defaultCategory: '治理框架',
     defaultSource: 'AI Verify 基金会',
     defaultSourceEn: 'AI Verify Foundation',
+    defaultSourceJa: 'AI Verify 財団',
+    defaultSourceKo: 'AI Verify 재단',
     defaultSourceOrgUrl: 'https://aiverifyfoundation.sg/',
     sitemapUrls: ['https://aiverifyfoundation.sg/sitemap.xml'],
     urlPatterns: [/.*/],
@@ -85,6 +97,8 @@ export const POLICY_SOURCES: PolicySource[] = [
     defaultCategory: '行业监管',
     defaultSource: '金融管理局 (MAS)',
     defaultSourceEn: 'Monetary Authority of Singapore (MAS)',
+    defaultSourceJa: 'シンガポール金融管理局 (MAS)',
+    defaultSourceKo: '싱가포르 통화청 (MAS)',
     defaultSourceOrgUrl: 'https://www.mas.gov.sg/',
     defaultMinistry: 'MOF',
     sitemapUrls: ['https://www.mas.gov.sg/sitemap.xml'],
@@ -97,6 +111,8 @@ export const POLICY_SOURCES: PolicySource[] = [
     defaultCategory: '治理框架',
     defaultSource: '个人数据保护委员会 (PDPC)',
     defaultSourceEn: 'Personal Data Protection Commission (PDPC)',
+    defaultSourceJa: '個人データ保護委員会 (PDPC)',
+    defaultSourceKo: '개인정보보호위원회 (PDPC)',
     defaultSourceOrgUrl: 'https://www.pdpc.gov.sg/',
     sitemapUrls: ['https://www.pdpc.gov.sg/sitemap.xml'],
     urlPatterns: [/\/news/, /\/guidelines/, AI_SLUG_KEYWORDS],
@@ -107,6 +123,8 @@ export const POLICY_SOURCES: PolicySource[] = [
     defaultCategory: '行业监管',
     defaultSource: '卫生部 (MOH)',
     defaultSourceEn: 'Ministry of Health (MOH)',
+    defaultSourceJa: '保健省 (MOH)',
+    defaultSourceKo: '보건부 (MOH)',
     defaultSourceOrgUrl: 'https://www.moh.gov.sg/',
     defaultMinistry: 'MOH',
     sitemapUrls: ['https://www.moh.gov.sg/sitemap.xml'],
@@ -118,6 +136,8 @@ export const POLICY_SOURCES: PolicySource[] = [
     defaultCategory: '预算与资金',
     defaultSource: '国家研究基金会 (NRF)',
     defaultSourceEn: 'National Research Foundation (NRF)',
+    defaultSourceJa: '国立研究財団 (NRF)',
+    defaultSourceKo: '국가연구재단 (NRF)',
     defaultSourceOrgUrl: 'https://www.nrf.gov.sg/',
     sitemapUrls: ['https://www.nrf.gov.sg/sitemap.xml'],
     urlPatterns: [/\/news/, /\/funding/, AI_SLUG_KEYWORDS],
@@ -128,6 +148,8 @@ export const POLICY_SOURCES: PolicySource[] = [
     defaultCategory: '预算与资金',
     defaultSource: '财政部 (MOF)',
     defaultSourceEn: 'Ministry of Finance (MOF)',
+    defaultSourceJa: '財務省 (MOF)',
+    defaultSourceKo: '재정부 (MOF)',
     defaultSourceOrgUrl: 'https://www.mof.gov.sg/',
     defaultMinistry: 'MOF',
     sitemapUrls: ['https://www.mof.gov.sg/sitemap.xml'],

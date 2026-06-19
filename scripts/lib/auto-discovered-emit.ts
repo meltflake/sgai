@@ -31,6 +31,7 @@
 import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 
 import { findUnpairedFields } from './i18n-pair.ts';
+import { formatWithPrettier } from './prettier-format.ts';
 
 export interface AutoDiscoveredEntry {
   title: string;
@@ -138,6 +139,9 @@ export function appendAutoDiscovered(
       `i18n pairing regressed in auto-discovered emit: ${baselineCount} → ${issuesAfter.length} unpaired. Rolled back.`
     );
   }
+
+  // Prettier-format the spliced-in literals so the PR passes check:prettier.
+  formatWithPrettier(filePath);
 
   return { added: entries.length, created };
 }

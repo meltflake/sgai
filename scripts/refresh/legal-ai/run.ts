@@ -17,6 +17,7 @@ import { govFetch, listSitemap } from '../../lib/gov-fetch.ts';
 import { summarizePage } from '../../lib/ai-summarize.ts';
 import { autoCommit, pushAndOpenPR, buildPRBody } from '../../lib/auto-commit.ts';
 import { findUnpairedFields } from '../../lib/i18n-pair.ts';
+import { formatWithPrettier } from '../../lib/prettier-format.ts';
 import { loadState, saveState } from '../../lib/state.ts';
 
 const TARGET_FILE = resolve('src/data/legal-ai.ts');
@@ -324,6 +325,7 @@ async function main(): Promise<void> {
       `i18n pairing regressed: ${baselineCount} → ${issuesAfter.length} unpaired. Rolled back.`
     );
   }
+  formatWithPrettier(TARGET_FILE);
   process.stdout.write(`  added ${enriched.length} items to Auto-discovered section\n`);
 
   // Auto-discovered legal items go into a "pending review" section and

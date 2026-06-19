@@ -22,6 +22,7 @@ import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { resolve } from 'node:path';
 
 import { findUnpairedFields } from '../../lib/i18n-pair.ts';
+import { formatWithPrettier } from '../../lib/prettier-format.ts';
 import type { EnrichedPolicy } from './enrich.ts';
 import type { PolicyCategoryName } from './sources.ts';
 
@@ -41,7 +42,7 @@ function escapeQuote(s: string): string {
   return s.replace(/'/g, "\\'");
 }
 
-function formatPolicyRecord(p: EnrichedPolicy, defaultMinistry?: string): string {
+export function formatPolicyRecord(p: EnrichedPolicy, defaultMinistry?: string): string {
   const s = p.summary;
   const date = (s.publishedDate || p.pageDate || new Date().toISOString().slice(0, 10)).slice(0, 7);
   const lines: string[] = [];
@@ -66,6 +67,8 @@ function formatPolicyRecord(p: EnrichedPolicy, defaultMinistry?: string): string
     lines.push('        contentJa: `' + escapeBacktick(s.descriptionJa) + '`,');
   }
   lines.push(`        sourceEn: '${escapeQuote(p.candidate.defaultSourceEn)}',`);
+  lines.push(`        sourceJa: '${escapeQuote(p.candidate.defaultSourceJa)}',`);
+  lines.push(`        sourceKo: '${escapeQuote(p.candidate.defaultSourceKo)}',`);
   if (defaultMinistry) {
     lines.push(`        ministry: '${defaultMinistry}',`);
   } else {
@@ -204,6 +207,9 @@ export function emit(
         `i18n pairing regressed: ${baselineCount} → ${issuesAfter.length} unpaired. Rolled back.`
       );
     }
+
+    // Prettier-format the spliced-in records so the PR passes check:prettier.
+    formatWithPrettier(filePath);
   }
 
   return {

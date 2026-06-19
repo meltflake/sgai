@@ -88,7 +88,7 @@ function git(args: string[]): string {
   }
 }
 
-interface DiffStats {
+export interface DiffStats {
   newRecordIds: string[]; // ids extracted from `+ id: 'xxx'` lines
   newAddedAtCount: number;
   // Heuristic: records added without an `id:` line (e.g. LegalItem,
@@ -97,19 +97,97 @@ interface DiffStats {
   anonymousRecordOpens: number;
 }
 
-function diffFile(file: string, base: string): DiffStats {
-  let raw: string;
-  try {
-    // Compare base → working tree (NOT base...HEAD). This catches both
-    // committed-since-base changes AND uncommitted edits in the worktree,
-    // which matters for local pre-commit runs and for catching the case
-    // where someone forgot to stage `addedAt` after staging the record.
-    raw = git(['diff', base, '--unified=0', '--', file]);
-  } catch {
-    // base ref may not exist locally (shallow clone) — bail out empty
-    raw = '';
+// ── Pending-review exemption (CLAUDE.md rule #7) ─────────────────────────
+// Pending-review records do NOT carry `addedAt` until a human promotes them,
+// so the eval must not demand it. They appear in three shapes:
+//   1. inside an `autoDiscovered` const array (startups / tracker / talent / benchmarking)
+//   2. inside an object with a `_pendingReview` field/comment
+//      (ecosystem `_pendingReview: true`; policies `// _pendingReview ...`)
+//   3. inside an "Auto-discovered (pending review)" group / section (levers / legal-ai)
+// exemptLineRanges scans the working-tree source and returns the 1-based line
+// ranges occupied by such records; analyzeDiff maps each diff `+` line to a
+// source line and drops records whose line falls inside a range.
+
+/** Blank out string literals and `//` comments so brace/bracket counting
+ *  isn't fooled by punctuation inside values. Strings are stripped first so a
+ *  `//` inside a URL literal isn't mistaken for the start of a comment. */
+function stripLiterals(line: string): string {
+  let s = line
+    .replace(/'(?:\\.|[^'\\])*'/g, "''")
+    .replace(/"(?:\\.|[^"\\])*"/g, '""')
+    .replace(/`(?:\\.|[^`\\])*`/g, '``');
+  const c = s.indexOf('//');
+  if (c >= 0) s = s.slice(0, c);
+  return s;
+}
+
+/** Match every balanced open/close pair across the file, returning
+ *  [openLineIdx, closeLineIdx] (0-based) for each matched pair. */
+function matchPairs(lines: string[], open: string, close: string): Array<[number, number]> {
+  const stack: number[] = [];
+  const pairs: Array<[number, number]> = [];
+  for (let i = 0; i < lines.length; i += 1) {
+    for (const ch of stripLiterals(lines[i])) {
+      if (ch === open) stack.push(i);
+      else if (ch === close) {
+        const o = stack.pop();
+        if (o !== undefined) pairs.push([o, i]);
+      }
+    }
   }
-  if (!raw.trim()) return { newRecordIds: [], newAddedAtCount: 0, anonymousRecordOpens: 0 };
+  return pairs;
+}
+
+/** Smallest pair (fewest lines) that contains `idx`, or null. */
+function innermostContaining(pairs: Array<[number, number]>, idx: number): [number, number] | null {
+  let best: [number, number] | null = null;
+  for (const [o, c] of pairs) {
+    if (o <= idx && idx <= c && (!best || c - o < best[1] - best[0])) best = [o, c];
+  }
+  return best;
+}
+
+export function exemptLineRanges(source: string): Array<[number, number]> {
+  const lines = source.split('\n');
+  const ranges: Array<[number, number]> = [];
+  const bracketPairs = matchPairs(lines, '[', ']');
+  const bracePairs = matchPairs(lines, '{', '}');
+
+  for (let i = 0; i < lines.length; i += 1) {
+    // (1) `export const autoDiscovered ... = [ ... ]` — the widest `[...]`
+    // opening on the declaration line (skips the `AutoDiscoveredEntry[]` type).
+    if (/export const autoDiscovered\b/.test(lines[i])) {
+      let widest: [number, number] | null = null;
+      for (const [o, c] of bracketPairs) {
+        if (o === i && (!widest || c - o > widest[1] - widest[0])) widest = [o, c];
+      }
+      if (widest) ranges.push([widest[0] + 1, widest[1] + 1]);
+    }
+    // (2)/(3) `_pendingReview` field or comment, or an "Auto-discovered
+    // (pending review)" marker → exempt the whole enclosing object.
+    if (/_pendingReview/.test(lines[i]) || /Auto-discovered \(pending review\)/.test(lines[i])) {
+      const r = innermostContaining(bracePairs, i);
+      if (r) ranges.push([r[0] + 1, r[1] + 1]);
+    }
+  }
+  return ranges;
+}
+
+/**
+ * Parse a `git diff <base> --unified=0` patch for one data file and count
+ * new records vs new `addedAt` fields.
+ *
+ * `currentSource` is the working-tree contents of the same file. Because the
+ * diff is base → working tree, every `+` line maps to a line number in
+ * `currentSource`; we use that mapping (via the `@@` hunk headers) to drop
+ * records that live inside a pending-review region — see exemptLineRanges.
+ * Pure (no git / fs) so it is unit-testable.
+ */
+export function analyzeDiff(diffText: string, currentSource: string): DiffStats {
+  if (!diffText.trim()) return { newRecordIds: [], newAddedAtCount: 0, anonymousRecordOpens: 0 };
+
+  const exempt = exemptLineRanges(currentSource);
+  const isExempt = (n: number) => exempt.some(([a, b]) => n >= a && n <= b);
 
   const newIdRe = /^\+\s*id:\s*['"]([^'"]+)['"]/;
   const newAddedAtRe = /^\+\s*addedAt:\s*['"][^'"]+['"]/;
@@ -122,42 +200,97 @@ function diffFile(file: string, base: string): DiffStats {
   // carry an `id:` field and are caught by newIdRe directly, regardless of
   // indent.
   const newRecordOpenRe = /^\+\s{2,4}\{\s*$/;
+  // Hunk header carries the new-file start line — `@@ -a,b +c,d @@`. With
+  // --unified=0 there are no context lines, so each subsequent `+` line is a
+  // consecutive new-file line starting at c.
+  const hunkRe = /^@@ -\d+(?:,\d+)? \+(\d+)(?:,\d+)? @@/;
 
+  let newLineNo = 0; // working-tree line number of the current `+` line
   let inAddBlock = false;
   let blockHasId = false;
+  let blockOpenLineNo = 0;
   let anonymousOpens = 0;
   const newRecordIds: string[] = [];
   let newAddedAtCount = 0;
 
-  for (const line of raw.split('\n')) {
+  for (const line of diffText.split('\n')) {
+    const hunk = line.match(hunkRe);
+    if (hunk) {
+      newLineNo = Number(hunk[1]);
+      continue;
+    }
+    // Diff/file headers carry no record content; deletions ('-') don't
+    // advance the new-file line counter.
+    if (
+      line.startsWith('+++') ||
+      line.startsWith('---') ||
+      line.startsWith('diff ') ||
+      line.startsWith('index ') ||
+      line.startsWith('@@')
+    ) {
+      continue;
+    }
+    if (!line.startsWith('+')) continue;
+
+    const lineNo = newLineNo;
+    newLineNo += 1;
+
     const idMatch = line.match(newIdRe);
     if (idMatch) {
-      newRecordIds.push(idMatch[1]);
       blockHasId = true;
+      if (!isExempt(lineNo)) newRecordIds.push(idMatch[1]);
       continue;
     }
     if (newAddedAtRe.test(line)) {
-      newAddedAtCount += 1;
+      // Symmetry with the record side: an exempt (pending-review) region
+      // contributes neither records nor addedAts, so it can never mask a
+      // real missing addedAt elsewhere in the file.
+      if (!isExempt(lineNo)) newAddedAtCount += 1;
       continue;
     }
     if (newRecordOpenRe.test(line)) {
-      if (inAddBlock && !blockHasId) anonymousOpens += 1;
+      if (inAddBlock && !blockHasId && !isExempt(blockOpenLineNo)) anonymousOpens += 1;
       inAddBlock = true;
       blockHasId = false;
+      blockOpenLineNo = lineNo;
       continue;
     }
-    if (line.startsWith('+') && line.includes('},')) {
-      if (inAddBlock && !blockHasId) anonymousOpens += 1;
+    if (line.includes('},')) {
+      if (inAddBlock && !blockHasId && !isExempt(blockOpenLineNo)) anonymousOpens += 1;
       inAddBlock = false;
       blockHasId = false;
     }
   }
-  if (inAddBlock && !blockHasId) anonymousOpens += 1;
+  if (inAddBlock && !blockHasId && !isExempt(blockOpenLineNo)) anonymousOpens += 1;
 
   return { newRecordIds, newAddedAtCount, anonymousRecordOpens: anonymousOpens };
 }
 
-interface FileFinding {
+function readDiffAndSource(file: string, base: string): { diffText: string; currentSource: string } {
+  let diffText = '';
+  try {
+    // Compare base → working tree (NOT base...HEAD). This catches both
+    // committed-since-base changes AND uncommitted edits in the worktree,
+    // which matters for local pre-commit runs and for catching the case
+    // where someone forgot to stage `addedAt` after staging the record.
+    diffText = git(['diff', base, '--unified=0', '--', file]);
+  } catch {
+    // base ref may not exist locally (shallow clone) — bail out empty
+    diffText = '';
+  }
+  let currentSource = '';
+  const abs = join(REPO_ROOT, file);
+  if (existsSync(abs)) {
+    try {
+      currentSource = readFileSync(abs, 'utf8');
+    } catch {
+      currentSource = '';
+    }
+  }
+  return { diffText, currentSource };
+}
+
+export interface FileFinding {
   file: string;
   newRecords: number; // ids + anonymous record opens
   newAddedAt: number;
@@ -166,21 +299,28 @@ interface FileFinding {
   status: 'PASS' | 'FAIL';
 }
 
+/** Build a per-file finding from a diff + working-tree source. Pure. */
+export function evaluateFileDiff(file: string, diffText: string, currentSource: string): FileFinding {
+  const d = analyzeDiff(diffText, currentSource);
+  const newRecords = d.newRecordIds.length + d.anonymousRecordOpens;
+  const missing = Math.max(0, newRecords - d.newAddedAtCount);
+  return {
+    file,
+    newRecords,
+    newAddedAt: d.newAddedAtCount,
+    missing,
+    newRecordIds: d.newRecordIds,
+    status: missing > 0 ? 'FAIL' : 'PASS',
+  };
+}
+
 function scanDiffMode(opts: CliOptions): FileFinding[] {
   const out: FileFinding[] = [];
   for (const file of DATA_FILES) {
-    const d = diffFile(file, opts.base);
-    const newRecords = d.newRecordIds.length + d.anonymousRecordOpens;
-    if (newRecords === 0) continue;
-    const missing = Math.max(0, newRecords - d.newAddedAtCount);
-    out.push({
-      file,
-      newRecords,
-      newAddedAt: d.newAddedAtCount,
-      missing,
-      newRecordIds: d.newRecordIds,
-      status: missing > 0 ? 'FAIL' : 'PASS',
-    });
+    const { diffText, currentSource } = readDiffAndSource(file, opts.base);
+    const finding = evaluateFileDiff(file, diffText, currentSource);
+    if (finding.newRecords === 0) continue;
+    out.push(finding);
   }
   return out;
 }
@@ -311,4 +451,8 @@ function main() {
   process.exit(fail > 0 ? 1 : 0);
 }
 
-main();
+// Run as CLI only — importing this module (e.g. from a unit test) must not
+// fire git / writeReport / process.exit.
+if (import.meta.url === `file://${process.argv[1]}` || process.argv[1]?.endsWith('addedAt-coverage/check.ts')) {
+  main();
+}

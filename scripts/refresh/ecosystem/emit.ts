@@ -9,6 +9,7 @@ import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 
 import { findUnpairedFields } from '../../lib/i18n-pair.ts';
+import { formatWithPrettier } from '../../lib/prettier-format.ts';
 import type { EnrichedEntity } from './enrich.ts';
 
 export interface EcosystemEmitResult {
@@ -24,10 +25,15 @@ function escapeQuote(s: string): string {
   return s.replace(/'/g, "\\'");
 }
 
-function formatEntity(e: EnrichedEntity): string {
+export function formatEntity(e: EnrichedEntity): string {
   const s = e.summary;
   const today = new Date().toISOString().slice(0, 10);
   const lines: string[] = [];
+  // Auto-discovered entities are _pendingReview stubs. Their required
+  // analytical fields (whatItIs / aiRelevance / singaporeRelevance) and
+  // sources[].label siblings are filled by a human on promotion, so exempt
+  // the entity (and its nested source below) from the i18n gate (rule #5).
+  lines.push('      // i18n-allow-unpaired — auto-discovered stub; complete required fields on promotion');
   lines.push('      {');
   lines.push(`        id: '${e.id}',`);
   lines.push(`        name: '${escapeQuote(s.title)}',`);
@@ -45,6 +51,7 @@ function formatEntity(e: EnrichedEntity): string {
   lines.push(`        status: 'active',`);
   if (s.publishedDate) lines.push(`        founded: '${s.publishedDate.slice(0, 7)}',`);
   lines.push('        sources: [');
+  lines.push('          // i18n-allow-unpaired — provenance for the pending-review stub above');
   lines.push('          {');
   lines.push(`            label: '${escapeQuote(e.candidate.label)}',`);
   lines.push(`            url: '${e.candidate.sourceUrl}',`);
@@ -152,6 +159,9 @@ export function emit(
         `i18n pairing regressed: ${baselineCount} → ${issuesAfter.length} unpaired. Rolled back.`
       );
     }
+
+    // Prettier-format the spliced-in entities so the PR passes check:prettier.
+    formatWithPrettier(filePath);
   }
 
   return { filePath, recordsAdded: accepted.length, perCategory, skipped };
