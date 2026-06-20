@@ -43,6 +43,8 @@ const SKIP_SUBSTRINGS = [
   'Call the 24/7 ScamShield',
   'ScamShield Helpline',
   'Subscribe to our newsletter',
+  // MDDI CMS migration notice injected into older articles' body.
+  'This article has been migrated from an earlier version of the site',
 ];
 
 const NOISE_LINES = new Set(['***', '.  .  .  .  .', '. . . . .']);
