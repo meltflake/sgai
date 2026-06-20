@@ -10,7 +10,7 @@ import {
   type RegionSummary,
 } from '../data/benchmarking';
 import { sections as legalSections, type LegalItem, type LegalSection } from '../data/legal-ai';
-import { levers, type Lever, type LeverGroup, type LeverItem } from '../data/levers';
+import { levers, publicLeverGroups, type Lever, type LeverGroup, type LeverItem } from '../data/levers';
 import { ecosystemCategories, type EcosystemCategory, type EcosystemEntity } from '../data/ecosystem';
 import {
   exits,
@@ -415,7 +415,7 @@ export type LeverPage =
 
 export const leverPages: LeverPage[] = levers.flatMap((lever) => [
   { kind: 'lever' as const, slug: leverSlug(lever), lever },
-  ...lever.groups.flatMap((group) =>
+  ...publicLeverGroups(lever).flatMap((group) =>
     group.items.map((item) => ({
       kind: 'item' as const,
       slug: leverItemSlug(item),

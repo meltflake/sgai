@@ -73,6 +73,22 @@ export interface Lever {
   addedAt?: string;
 }
 
+/**
+ * Auto-discovered groups hold pipeline-proposed items awaiting human
+ * promotion to a real lever (see scripts/refresh/levers/run.ts). They must
+ * stay out of public lever pages, project counts, and the sitemap until a
+ * reviewer moves them — detail-page generation and rendering both filter on
+ * this predicate.
+ */
+export function isAutoDiscoveredGroup(group: LeverGroup): boolean {
+  return /auto-discovered/i.test(group.title) || /auto-discovered/i.test(group.titleEn ?? '');
+}
+
+/** A lever's groups minus any auto-discovered (pending-review) group. */
+export function publicLeverGroups(lever: Lever): LeverGroup[] {
+  return lever.groups.filter((group) => !isAutoDiscoveredGroup(group));
+}
+
 export const dataDate = '2026-05-20';
 
 export const levers: Lever[] = [

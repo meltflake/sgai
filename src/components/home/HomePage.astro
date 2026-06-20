@@ -6,7 +6,7 @@
 
 import { Icon } from 'astro-icon/components';
 import { debates, DEBATE_STATS } from '~/data/debates';
-import { levers } from '~/data/levers';
+import { levers, publicLeverGroups } from '~/data/levers';
 import { leverSlug } from '~/utils/entity-pages';
 import { categories as policyCategories } from '~/data/policies';
 import { SITE_UPDATED } from '~/version';
@@ -21,7 +21,7 @@ interface Props {
 }
 const { lang } = Astro.props;
 
-const leverProjectCount = (lv: (typeof levers)[number]) => lv.groups.flatMap((g) => g.items).length;
+const leverProjectCount = (lv: (typeof levers)[number]) => publicLeverGroups(lv).flatMap((g) => g.items).length;
 const passThroughLevers = levers.filter((lv) => lv.transmissionMode === 'transmitted');
 const directLevers = levers.filter((lv) => lv.transmissionMode === 'direct');
 
@@ -29,7 +29,7 @@ const latestDebates = [...debates].sort((a, b) => (a.date < b.date ? 1 : -1)).sl
 
 const totalPolicies = policyCategories.flatMap((c) => c.policies).length;
 const totalDebates = DEBATE_STATS.total;
-const totalLeverItems = levers.reduce((sum, lv) => sum + lv.groups.flatMap((g) => g.items).length, 0);
+const totalLeverItems = levers.reduce((sum, lv) => sum + publicLeverGroups(lv).flatMap((g) => g.items).length, 0);
 
 const debateTitle = (d: (typeof debates)[number]) => pickLocalized<string>(d, 'title', lang) || d.title || '';
 ---
