@@ -26,8 +26,6 @@ export interface EcosystemSourceEntry {
   urlExcludes?: RegExp[];
 }
 
-const SG_AI_KEYWORDS = /(singapore|ai|artificial-intelligence|machine-learning|llm|generative|robotics|autonomous|smart-nation)/i;
-
 // Working sources (verified 2026-05-03):
 //   - aisingapore.org/feed/        ✅ WordPress RSS, AI Singapore official
 //   - businesstimes.com.sg/rss/technology  ✅ SG tech news incl. fundings
@@ -54,7 +52,10 @@ export const ECOSYSTEM_SOURCES: EcosystemSourceEntry[] = [
     feedType: 'rss',
     defaultCategory: '创新孵化',
     defaultEntityType: 'product',
-    urlFilter: SG_AI_KEYWORDS,
+    // Whole BT tech section admitted by document type; the run.ts
+    // AI-relevance judge decides AI on the body. A funding story whose URL is
+    // /companies/x-raises-50m has no "ai" keyword but can be on-topic.
+    urlFilter: /businesstimes\.com\.sg\//i,
   },
   {
     domain: 'tech.gov.sg',

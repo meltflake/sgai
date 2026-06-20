@@ -13,6 +13,7 @@ import { resolve } from 'node:path';
 
 import { govFetch, listSitemap } from '../../lib/gov-fetch.ts';
 import { summarizePage } from '../../lib/ai-summarize.ts';
+import { isEmptyShellSummary } from '../../lib/empty-shell.ts';
 import { autoCommit, pushAndOpenPR, buildPRBody } from '../../lib/auto-commit.ts';
 import { findUnpairedFields } from '../../lib/i18n-pair.ts';
 import { formatWithPrettier } from '../../lib/prettier-format.ts';
@@ -228,6 +229,11 @@ async function main(): Promise<void> {
     confidence: 'high' | 'medium' | 'low';
   }> = [];
   const failures: Array<{ url: string; error: string }> = [];
+  // govFetch is a plain HTTP fetch; client-rendered pages (several IMDA
+  // programme pages) yield only a nav shell, and the summariser then
+  // describes the emptiness. Drop those instead of committing garbage —
+  // see lib/empty-shell.ts and the closed PR #64 (2026-06-19).
+  const skipped: string[] = [];
 
   for (const url of candidates) {
     try {
@@ -241,6 +247,11 @@ async function main(): Promise<void> {
           domainContext: 'Singapore national AI levers. Classify into one of 6 levers: 基建 (infrastructure), 资金 (funding), 人才 (talent), 标准 (standards), 政府自用 (government adoption), 外交 (diplomacy).',
         }
       );
+
+      if (isEmptyShellSummary(summary)) {
+        skipped.push(url);
+        continue;
+      }
 
       enriched.push({
         url,
@@ -259,6 +270,11 @@ async function main(): Promise<void> {
     } catch (error) {
       failures.push({ url, error: error instanceof Error ? error.message : String(error) });
     }
+  }
+
+  if (skipped.length > 0) {
+    process.stdout.write(`  skipped ${skipped.length} empty-shell candidate(s) (govFetch got only a JS/nav shell):\n`);
+    for (const u of skipped) process.stdout.write(`    ${u}\n`);
   }
 
   if (enriched.length === 0) {

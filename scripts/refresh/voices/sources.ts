@@ -122,8 +122,23 @@ export function newsroomSlug(url: string): string | null {
   return m ? m[1] : null;
 }
 
+/** A URL counts as a speech page if its slug matches at least one
+ *  SPEECH_SLUG_PATTERNS entry — regardless of AI relevance. This is the
+ *  coarse first-pass filter: it admits ALL ministerial speeches, then a
+ *  downstream content-level AI judgement (run.ts) decides relevance.
+ *  Splitting speech-detection from AI-detection is the fix for the
+ *  2026-06 miss: speeches whose event name has no AI keyword in the slug
+ *  (e.g. "asia-economic-summit") were wrongly dropped here. */
+export function isSpeechUrl(url: string): boolean {
+  const slug = newsroomSlug(url);
+  if (!slug) return false;
+  return SPEECH_SLUG_PATTERNS.some((re) => re.test(slug));
+}
+
 /** A URL counts as an AI-related speech if its slug matches at least
- *  one SPEECH_SLUG_PATTERNS and one AI_SLUG_PATTERNS entry. */
+ *  one SPEECH_SLUG_PATTERNS and one AI_SLUG_PATTERNS entry. Used now as
+ *  the high-confidence FAST-PASS signal (slug already names AI), not as
+ *  a hard gate — see isSpeechUrl + the content judgement in run.ts. */
 export function isAiSpeechUrl(url: string): boolean {
   const slug = newsroomSlug(url);
   if (!slug) return false;

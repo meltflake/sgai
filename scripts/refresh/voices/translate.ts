@@ -32,8 +32,13 @@ export interface TranslatedSpeech {
   speechId: string;
   paragraphs: string[];
   paragraphsEn: string[];
+  /** ja/ko full-text paragraphs (five-language transcript parity). */
+  paragraphsJa: string[];
+  paragraphsKo: string[];
   tldr: string[];
   tldrEn: string[];
+  tldrJa: string[];
+  tldrKo: string[];
   translatedAt: string;
   translationSource: 'claude' | 'manual';
   translationModel?: string;
@@ -52,6 +57,8 @@ export const TRANSLATIONS_DIR_LEGACY = resolve('scripts/voices/data/translations
 export const TRANSLATIONS_DIR_NEW = resolve('scripts/refresh/voices/data/translations');
 
 const ZH_PARAGRAPH_CACHE = resolve('scripts/i18n/data/zh-cache');
+const JA_PARAGRAPH_CACHE = resolve('scripts/i18n/data/ja-cache');
+const KO_PARAGRAPH_CACHE = resolve('scripts/i18n/data/ko-cache');
 
 interface TldrModelOutput {
   tldr?: unknown;
@@ -116,18 +123,17 @@ function readExistingTranslation(speechId: string): TranslatedSpeech | null {
     try {
       const raw = JSON.parse(readFileSync(path, 'utf8')) as Partial<TranslatedSpeech>;
       if (!raw || typeof raw !== 'object') continue;
-      const paragraphs = Array.isArray(raw.paragraphs) ? (raw.paragraphs as string[]) : [];
-      const paragraphsEn = Array.isArray(raw.paragraphsEn)
-        ? (raw.paragraphsEn as string[])
-        : [];
-      const tldr = Array.isArray(raw.tldr) ? (raw.tldr as string[]) : [];
-      const tldrEn = Array.isArray(raw.tldrEn) ? (raw.tldrEn as string[]) : [];
+      const arr = (v: unknown): string[] => (Array.isArray(v) ? (v as string[]) : []);
       return {
         speechId,
-        paragraphs,
-        paragraphsEn,
-        tldr,
-        tldrEn,
+        paragraphs: arr(raw.paragraphs),
+        paragraphsEn: arr(raw.paragraphsEn),
+        paragraphsJa: arr(raw.paragraphsJa),
+        paragraphsKo: arr(raw.paragraphsKo),
+        tldr: arr(raw.tldr),
+        tldrEn: arr(raw.tldrEn),
+        tldrJa: arr(raw.tldrJa),
+        tldrKo: arr(raw.tldrKo),
         translatedAt: raw.translatedAt || new Date().toISOString().slice(0, 10),
         translationSource:
           raw.translationSource === 'manual' ? 'manual' : (raw.translationSource ?? 'claude'),
@@ -181,12 +187,18 @@ export async function translateSpeeches(
         });
         continue;
       }
-      // If we have full coverage from a prior auto-run, skip — unless forced.
+      // If we have full FIVE-LANGUAGE coverage from a prior auto-run, skip
+      // — unless forced. zh-only legacy caches (no ja/ko) fall through so
+      // the ja/ko paragraphs get backfilled.
       if (
         !options.force &&
         existing &&
         existing.paragraphs.length === f.paragraphs.length &&
-        existing.tldr.length > 0
+        existing.paragraphsJa.length === f.paragraphs.length &&
+        existing.paragraphsKo.length === f.paragraphs.length &&
+        existing.tldr.length > 0 &&
+        existing.tldrJa.length > 0 &&
+        existing.tldrKo.length > 0
       ) {
         translated.push({
           ...existing,
@@ -195,12 +207,26 @@ export async function translateSpeeches(
         continue;
       }
 
-      const zhParagraphs = await translateBatch(f.paragraphs, {
-        direction: 'en→zh',
-        model,
-        cacheDir: ZH_PARAGRAPH_CACHE,
-        force: options.force,
-      });
+      const [zhParagraphs, jaParagraphs, koParagraphs] = await Promise.all([
+        translateBatch(f.paragraphs, {
+          direction: 'en→zh',
+          model,
+          cacheDir: ZH_PARAGRAPH_CACHE,
+          force: options.force,
+        }),
+        translateBatch(f.paragraphs, {
+          direction: 'en→ja',
+          model,
+          cacheDir: JA_PARAGRAPH_CACHE,
+          force: options.force,
+        }),
+        translateBatch(f.paragraphs, {
+          direction: 'en→ko',
+          model,
+          cacheDir: KO_PARAGRAPH_CACHE,
+          force: options.force,
+        }),
+      ]);
 
       let tldr: string[] = existing?.tldr ?? [];
       let tldrEn: string[] = existing?.tldrEn ?? [];
@@ -209,13 +235,26 @@ export async function translateSpeeches(
         tldr = out.tldr;
         tldrEn = out.tldrEn;
       }
+      // ja/ko tldr derived from the canonical en tldr to keep bullet parity.
+      const [tldrJa, tldrKo] = await Promise.all([
+        tldrEn.length
+          ? translateBatch(tldrEn, { direction: 'en→ja', model, cacheDir: JA_PARAGRAPH_CACHE, force: options.force })
+          : Promise.resolve<string[]>([]),
+        tldrEn.length
+          ? translateBatch(tldrEn, { direction: 'en→ko', model, cacheDir: KO_PARAGRAPH_CACHE, force: options.force })
+          : Promise.resolve<string[]>([]),
+      ]);
 
       const payload: TranslatedSpeech = {
         speechId: f.speechId,
         paragraphs: zhParagraphs,
         paragraphsEn: f.paragraphs,
+        paragraphsJa: jaParagraphs,
+        paragraphsKo: koParagraphs,
         tldr,
         tldrEn,
+        tldrJa,
+        tldrKo,
         translatedAt: new Date().toISOString().slice(0, 10),
         translationSource: 'claude',
         translationModel: model,

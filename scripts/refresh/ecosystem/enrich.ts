@@ -7,6 +7,7 @@ import { resolve } from 'node:path';
 
 import { govFetch } from '../../lib/gov-fetch.ts';
 import { summarizePage, type BilingualSummary } from '../../lib/ai-summarize.ts';
+import { isEmptyShellSummary } from '../../lib/empty-shell.ts';
 import { ECOSYSTEM_CATEGORIES } from './sources.ts';
 import type { EcosystemCandidate } from './scan.ts';
 
@@ -60,6 +61,14 @@ export async function enrich(
             'a Chinese-language Singapore AI ecosystem observatory. The user-facing schema is one entry per company / research lab / institute / programme.',
         }
       );
+
+      // govFetch is a plain HTTP fetch; client-rendered pages yield only a
+      // nav shell and the summariser then describes the emptiness. Drop
+      // those instead of committing garbage — see lib/empty-shell.ts.
+      if (isEmptyShellSummary(summary)) {
+        process.stdout.write(`  skipped empty-shell candidate: ${candidate.sourceUrl}\n`);
+        continue;
+      }
 
       enriched.push({
         candidate,

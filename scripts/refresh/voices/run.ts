@@ -34,6 +34,7 @@ import {
   type VoicesCandidate,
 } from './scan.ts';
 import { fetchSpeeches, type FetchedSpeech } from './fetch.ts';
+import { judgeAiRelevance } from './judge.ts';
 import { translateSpeeches, type TranslatedSpeech } from './translate.ts';
 import { combineForEmit, emit, type EmittableSpeech } from './emit.ts';
 import { speakerFromSlug } from './sources.ts';
@@ -44,6 +45,9 @@ interface CliFlags {
   noCommit: boolean;
   noPush: boolean;
   force: boolean;
+  /** Explicit speechId slugs to process (backfill / retry / smoke). When
+   *  set, the scan-stage limit is bypassed and only these are processed. */
+  ids: string[];
 }
 
 const ZH_CACHE = resolve('scripts/i18n/data/zh-cache');
@@ -54,12 +58,20 @@ function parseFlags(): CliFlags {
   const argv = process.argv.slice(2);
   const flagSet = new Set(argv.filter((a) => !a.includes('=')));
   const limitArg = argv.find((a) => a.startsWith('--limit='));
+  const idsArg = argv.find((a) => a.startsWith('--ids='));
   return {
     dryRun: flagSet.has('--dry-run'),
     limit: limitArg ? Number(limitArg.split('=')[1]) : 3,
     noCommit: flagSet.has('--no-commit'),
     noPush: flagSet.has('--no-push'),
     force: flagSet.has('--force'),
+    ids: idsArg
+      ? idsArg
+          .split('=')[1]
+          .split(',')
+          .map((s) => s.trim())
+          .filter(Boolean)
+      : [],
   };
 }
 
@@ -200,7 +212,7 @@ async function main(): Promise<void> {
     existingUrls,
     existingSpeechIds,
     dryRun: flags.dryRun,
-    limit: flags.limit,
+    limit: flags.ids.length ? undefined : flags.limit,
   });
 
   process.stdout.write(
@@ -211,14 +223,32 @@ async function main(): Promise<void> {
     process.stdout.write(`    ${s.domain}: ${s.matched}/${s.checked}${errMark}\n`);
   }
 
-  if (scanResult.candidates.length === 0) {
-    process.stdout.write('\n[voices-refresh] no new candidates. exiting.\n');
+  // Optional explicit batch selection (backfill / retry / smoke). Without
+  // --ids, scan already applied --limit internally.
+  let candidates = scanResult.candidates;
+  if (flags.ids.length) {
+    const want = new Set(flags.ids);
+    candidates = scanResult.candidates.filter((c) => want.has(c.speechId));
+    process.stdout.write(
+      `  --ids filter: ${candidates.length}/${scanResult.candidates.length} matched (${flags.ids.length} requested)\n`
+    );
+    for (const id of flags.ids) {
+      if (!candidates.some((c) => c.speechId === id)) {
+        process.stdout.write(
+          `    ! requested id not in scan (already archived or not a speech): ${id}\n`
+        );
+      }
+    }
+  }
+
+  if (candidates.length === 0) {
+    process.stdout.write('\n[voices-refresh] no candidates to process. exiting.\n');
     saveState(state);
     return;
   }
 
   process.stdout.write('\n  Candidates:\n');
-  for (const c of scanResult.candidates.slice(0, 10)) {
+  for (const c of candidates.slice(0, 10)) {
     process.stdout.write(`    [${c.domain}] ${c.sourceUrl}\n`);
   }
 
@@ -230,7 +260,7 @@ async function main(): Promise<void> {
   // 2. Fetch each candidate's page (paragraphs + <h1>).
   process.stdout.write('\n  Fetching...\n');
   const fetchResult = await fetchSpeeches(
-    scanResult.candidates.map((c: VoicesCandidate) => ({
+    candidates.map((c: VoicesCandidate) => ({
       speechId: c.speechId,
       sourceUrl: c.sourceUrl,
     }))
@@ -247,9 +277,38 @@ async function main(): Promise<void> {
     return;
   }
 
+  // 2b. AI-relevance gate. Fast-pass candidates (slug already names AI) are
+  // trusted; the rest are judged on their fetched body. This is the fix for
+  // slug-only dropping — e.g. "asia-economic-summit" is about AI sovereignty
+  // but its slug has no AI keyword.
+  process.stdout.write('\n  Judging AI relevance (non-fast-pass only)...\n');
+  const aiSlugMap = new Map(candidates.map((c) => [c.speechId, c.aiSlugMatch]));
+  const aiRelevant: FetchedSpeech[] = [];
+  let droppedNonAi = 0;
+  for (const f of fetchResult.successes) {
+    if (aiSlugMap.get(f.speechId)) {
+      aiRelevant.push(f);
+      continue;
+    }
+    const verdict = await judgeAiRelevance(f);
+    if (verdict.relevant) {
+      aiRelevant.push(f);
+      process.stdout.write(`    ✓ AI: ${f.speechId} (${verdict.confidence})\n`);
+    } else {
+      droppedNonAi += 1;
+      process.stdout.write(`    ⊘ non-AI: ${f.speechId} — ${verdict.reason.slice(0, 70)}\n`);
+    }
+  }
+  process.stdout.write(`  AI gate: kept ${aiRelevant.length}, dropped ${droppedNonAi} non-AI\n`);
+
+  if (aiRelevant.length === 0) {
+    process.stdout.write('\n[voices-refresh] no AI-relevant speeches. exiting.\n');
+    return;
+  }
+
   // 3. Translate paragraphs + tldr.
   process.stdout.write('\n  Translating...\n');
-  const translateResult = await translateSpeeches(fetchResult.successes, {
+  const translateResult = await translateSpeeches(aiRelevant, {
     force: flags.force,
   });
   process.stdout.write(
@@ -262,9 +321,7 @@ async function main(): Promise<void> {
   // 4. Enrich → trilingual title + event + speaker title.
   process.stdout.write('\n  Enriching trilingual fields...\n');
   const enriched = await enrichTrilingual(
-    fetchResult.successes.filter((f) =>
-      translateResult.translated.some((t) => t.speechId === f.speechId)
-    ),
+    aiRelevant.filter((f) => translateResult.translated.some((t) => t.speechId === f.speechId)),
     translateResult.translated
   );
   process.stdout.write(`  enriched: ${enriched.length}\n`);

@@ -15,6 +15,7 @@ import { resolve } from 'node:path';
 
 import { govFetch, listSitemap } from '../../lib/gov-fetch.ts';
 import { summarizePage } from '../../lib/ai-summarize.ts';
+import { isEmptyShellSummary } from '../../lib/empty-shell.ts';
 import { autoCommit, pushAndOpenPR, buildPRBody } from '../../lib/auto-commit.ts';
 import { findUnpairedFields } from '../../lib/i18n-pair.ts';
 import { formatWithPrettier } from '../../lib/prettier-format.ts';
@@ -241,6 +242,10 @@ async function main(): Promise<void> {
     confidence: 'high' | 'medium' | 'low';
   }> = [];
   const failures: Array<{ url: string; error: string }> = [];
+  // govFetch is a plain HTTP fetch; client-rendered pages yield only a nav
+  // shell, and the summariser then describes the emptiness. Drop those
+  // instead of committing garbage — see lib/empty-shell.ts.
+  const skipped: string[] = [];
 
   for (const url of candidates) {
     try {
@@ -255,6 +260,11 @@ async function main(): Promise<void> {
             'Singapore AI legal framework. Classify each piece of legislation/guidance into one of: training (training-side IP/copyright), output (output-side regulation), liability, governance. Pick "training" for IP/copyright/data-use; "output" for safety/harms/election integrity; "liability" for civil/criminal liability; "governance" for general AI governance frameworks.',
         }
       );
+
+      if (isEmptyShellSummary(summary)) {
+        skipped.push(url);
+        continue;
+      }
 
       const status = STATUS_LABELS[summary.confidence === 'high' ? 0 : 3]; // simplistic mapping
       enriched.push({
@@ -276,6 +286,11 @@ async function main(): Promise<void> {
     } catch (error) {
       failures.push({ url, error: error instanceof Error ? error.message : String(error) });
     }
+  }
+
+  if (skipped.length > 0) {
+    process.stdout.write(`  skipped ${skipped.length} empty-shell candidate(s) (govFetch got only a JS/nav shell):\n`);
+    for (const u of skipped) process.stdout.write(`    ${u}\n`);
   }
 
   if (enriched.length === 0) {
