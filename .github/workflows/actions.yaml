@@ -58,6 +58,14 @@ jobs:
       - name: transcript coverage (PR diff vs main)
         run: npm run eval:transcript -- --base=origin/main
 
+      # Enforce that no new transcript leaks page chrome (breadcrumb, CMS
+      # migration notice, footer/legal) into its body. Content-quality gate
+      # complementing the coverage gate above — coverage checks the transcript
+      # EXISTS and is non-empty, quality checks the content isn't noise. See
+      # scripts/evals/transcript-quality/check.ts + scripts/lib/transcript-noise.ts.
+      - name: transcript quality (PR diff vs main)
+        run: npm run eval:transcript-quality -- --base=origin/main
+
       # Enforce that every videos.ts entry has a matching videoTranscripts
       # record with triple-aligned paragraphs (zh + en + ja) — or an
       # explicit `source: 'unavailable'` placeholder for videos with no

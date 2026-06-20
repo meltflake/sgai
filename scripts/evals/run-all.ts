@@ -62,6 +62,12 @@ const STAGES: Stage[] = [
     frequency: 'weekly',
   },
   {
+    name: 'transcript-quality',
+    cmd: ['npx', 'tsx', 'scripts/evals/transcript-quality/check.ts', '--include-historical'],
+    needsDist: false,
+    frequency: 'weekly',
+  },
+  {
     name: 'video-transcript-coverage',
     cmd: ['npx', 'tsx', 'scripts/evals/video-transcript-coverage/check.ts', '--include-historical'],
     needsDist: false,
