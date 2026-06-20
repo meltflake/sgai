@@ -86,6 +86,18 @@ AI_KEYWORDS = [
     r"ai regulat",
     r"data centre",
     r"compute infrastructure",
+    # Modern AI vocabulary — lockup videos are title-only, so widen the net.
+    r"agentic",
+    r"\bcopilot\b",
+    r"co-?pilot",
+    r"foundation model",
+    r"\bgenai\b",
+    r"sea-?lion",
+    r"multimodal",
+    r"neural network",
+    r"computer vision",
+    r"\brobot",
+    r"humanoid",
 ]
 
 # 新加坡相关关键词（用于 CNA/ST/WEF/Bloomberg 等非纯本地频道的二次过滤）
@@ -455,9 +467,13 @@ def scan_channels(
             if parsed["videoId"] in existing_ids:
                 continue
 
-            # AI 关键词过滤
+            # AI 关键词过滤。AISG（AI Singapore 官方频道）整频道都是 AI，
+            # 跳过关键词门——lockup 视频只有标题（见 line ~316 summary=''），
+            # 关键词门会漏掉标题不含 AI 字样的真 AI 内容（2026-06 voices
+            # slug-only 同类盲区）。CNA/ST/WEF/Bloomberg 仍走关键词门，否则
+            # 新闻频道每天 30+ 非 AI 视频会塞爆人工 review 队列。
             text = f"{parsed['title']} {parsed['description']}"
-            if not matches_keywords(text, AI_KEYWORDS):
+            if ch_key != "AISG" and not matches_keywords(text, AI_KEYWORDS):
                 continue
 
             # 国际频道需要二次过滤新加坡相关性

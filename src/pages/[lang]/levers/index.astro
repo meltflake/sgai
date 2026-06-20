@@ -2,7 +2,7 @@
 import Layout from '~/layouts/PageLayout.astro';
 import Headline from '~/components/ui/Headline.astro';
 import RelatedRail from '~/components/data/RelatedRail.astro';
-import { levers, transmissionExplainer, dataDate } from '~/data/levers';
+import { levers, publicLeverGroups, transmissionExplainer, dataDate } from '~/data/levers';
 import { NON_DEFAULT_ROUTE_LOCALES, localizedHref, pickLocalized, t, type Lang } from '~/i18n';
 import { leverItemSlug, leverSlug } from '~/utils/entity-pages';
 
@@ -104,7 +104,7 @@ const isZh = lang === 'zh';
               </div>
             </div>
 
-            {lever.groups.map((group) => (
+            {publicLeverGroups(lever).map((group) => (
               <div class="mb-6">
                 <h3 class="text-lg font-bold mb-3 border-b border-subtle pb-1">
                   {pickLocalized(group, 'title', lang)}

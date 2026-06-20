@@ -5,7 +5,7 @@ import { Icon } from 'astro-icon/components';
 import JsonLd from '~/components/common/JsonLd.astro';
 import RelatedRail from '~/components/data/RelatedRail.astro';
 import Layout from '~/layouts/PageLayout.astro';
-import { dataDate } from '~/data/levers';
+import { dataDate, publicLeverGroups } from '~/data/levers';
 import { pickLocalized } from '~/i18n';
 import { getDebateById, getPolicyById } from '~/utils/graph';
 import { leverItemSlug, leverPages, leverSlug } from '~/utils/entity-pages';
@@ -22,7 +22,8 @@ const lever = page.lever;
 const isLever = page.kind === 'lever';
 const itemPolicies = page.kind === 'item' ? (page.item.relatedPolicyIds || []).map(getPolicyById).filter(Boolean) : [];
 const itemDebates = page.kind === 'item' ? (page.item.relatedDebateIds || []).map(getDebateById).filter(Boolean) : [];
-const projectCount = lever.groups.reduce((sum, group) => sum + group.items.length, 0);
+const visibleGroups = publicLeverGroups(lever);
+const projectCount = visibleGroups.reduce((sum, group) => sum + group.items.length, 0);
 
 const leverName = pickLocalized(lever, 'name', lang) || lever.name;
 const title = isLever
@@ -118,7 +119,7 @@ const schema = {
           <section class="mb-10">
             <h2 class="t-h3 text-gray-900 dark:text-white mb-4">Projects</h2>
             <div class="space-y-6">
-              {lever.groups.map((group) => (
+              {visibleGroups.map((group) => (
                 <div>
                   <h3 class="font-semibold text-gray-900 dark:text-white mb-3">
                     {pickLocalized(group, 'title', lang)}

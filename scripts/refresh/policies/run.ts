@@ -105,6 +105,39 @@ async function main(): Promise<void> {
     process.stdout.write(`    ⚠ ${f.sourceUrl}: ${f.error.slice(0, 80)}\n`);
   }
 
+  // Content-layer AI-relevance gate (shared). policies urlPatterns admit by
+  // section (AI keyword is OR'd, not required), and summarizePage only
+  // classifies + scores — neither asks "is this AI?". Confirm on the body so
+  // off-topic /news/ pages aren't mis-collected. Conservative: drop only a
+  // high-confidence "no".
+  {
+    const { judgeAiRelevance } = await import('../../lib/judge-ai-relevance.ts');
+    const kept: typeof enrichResult.enriched = [];
+    let dropped = 0;
+    for (const e of enrichResult.enriched) {
+      const verdict = await judgeAiRelevance(
+        {
+          title: e.summary.titleEn || e.pageTitle,
+          contentText: e.contentText,
+          sourceUrl: e.candidate.sourceUrl,
+        },
+        {
+          kind: 'a Singapore government policy / announcement page',
+          scope:
+            'AI / artificial-intelligence policy, governance, strategy, regulation, or compute infrastructure — especially in Singapore',
+        }
+      );
+      if (!verdict.relevant && verdict.confidence === 'high') {
+        dropped += 1;
+        process.stdout.write(`    ⊘ off-topic: ${e.candidate.sourceUrl} — ${verdict.reason.slice(0, 60)}\n`);
+        continue;
+      }
+      kept.push(e);
+    }
+    enrichResult.enriched = kept;
+    if (dropped > 0) process.stdout.write(`  AI gate: kept ${kept.length}, dropped ${dropped} off-topic\n`);
+  }
+
   if (enrichResult.enriched.length === 0) {
     process.stdout.write('\n[policies-refresh] no items enriched. exiting.\n');
     return;

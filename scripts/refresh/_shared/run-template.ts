@@ -14,8 +14,10 @@ import { resolve } from 'node:path';
 
 import { govFetch, listSitemap } from '../../lib/gov-fetch.ts';
 import { summarizePage } from '../../lib/ai-summarize.ts';
+import { isEmptyShellSummary } from '../../lib/empty-shell.ts';
 import { autoCommit, pushAndOpenPR, buildPRBody } from '../../lib/auto-commit.ts';
 import { appendAutoDiscovered } from '../../lib/auto-discovered-emit.ts';
+import { judgeAiRelevance } from '../../lib/judge-ai-relevance.ts';
 import { loadState, saveState } from '../../lib/state.ts';
 
 export interface PipelineSource {
@@ -38,6 +40,15 @@ export interface PipelineConfig {
   defaultLimit?: number;
   /** Optional regex over already-stored sourceUrl literals; used for dedupe. */
   urlExtractRegex?: RegExp;
+  /** Content-layer AI-relevance gate. Default ON. The urlFilter only admits
+   *  by document type and summarizePage only classifies + scores — neither
+   *  asks "is this actually about AI?". This confirms it on the body. Set
+   *  false for a source that is already 100% AI. */
+  judgeAiRelevance?: boolean;
+  /** Framing for the judge, e.g. "a news article", "a company / product page". */
+  judgeKind?: string;
+  /** Override what counts as on-topic for the judge. */
+  judgeScope?: string;
 }
 
 interface CliFlags {
@@ -141,6 +152,11 @@ export async function runPipeline(config: PipelineConfig): Promise<void> {
 
   const enriched: Array<{ url: string; entry: import('../../lib/auto-discovered-emit.ts').AutoDiscoveredEntry }> = [];
   const failures: Array<{ url: string; error: string }> = [];
+  // govFetch is a plain HTTP fetch; client-rendered pages yield only a nav
+  // shell, and the summariser then describes the emptiness. Drop those
+  // instead of committing garbage — see lib/empty-shell.ts.
+  const skipped: string[] = [];
+  const offTopic: Array<{ url: string; reason: string }> = [];
   const today = new Date().toISOString().slice(0, 10);
 
   for (const url of candidates) {
@@ -155,6 +171,26 @@ export async function runPipeline(config: PipelineConfig): Promise<void> {
           domainContext: config.domainContext,
         }
       );
+      if (isEmptyShellSummary(summary)) {
+        skipped.push(url);
+        continue;
+      }
+      // Content-layer AI-relevance gate (shared). urlFilter admits by
+      // document type only, and summarizePage classifies + scores but never
+      // asks "is this actually AI?". Confirm the BODY concerns AI so we
+      // don't collect off-topic pages. Conservative: drop only a
+      // high-confidence "no"; low/medium stays and lands in _pendingReview
+      // for the human backstop.
+      if (config.judgeAiRelevance !== false) {
+        const verdict = await judgeAiRelevance(
+          { title: page.title, contentText: page.contentText, sourceUrl: url },
+          { kind: config.judgeKind, scope: config.judgeScope }
+        );
+        if (!verdict.relevant && verdict.confidence === 'high') {
+          offTopic.push({ url, reason: verdict.reason });
+          continue;
+        }
+      }
       enriched.push({
         url,
         entry: {
@@ -172,6 +208,15 @@ export async function runPipeline(config: PipelineConfig): Promise<void> {
     } catch (error) {
       failures.push({ url, error: error instanceof Error ? error.message : String(error) });
     }
+  }
+
+  if (skipped.length > 0) {
+    process.stdout.write(`  skipped ${skipped.length} empty-shell candidate(s) (govFetch got only a JS/nav shell):\n`);
+    for (const u of skipped) process.stdout.write(`    ${u}\n`);
+  }
+  if (offTopic.length > 0) {
+    process.stdout.write(`  dropped ${offTopic.length} off-topic candidate(s) (AI-relevance judge, high-confidence no):\n`);
+    for (const o of offTopic) process.stdout.write(`    ${o.url} — ${o.reason.slice(0, 70)}\n`);
   }
 
   if (enriched.length === 0) {

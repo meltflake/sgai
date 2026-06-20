@@ -14,7 +14,7 @@ import { resolve } from 'node:path';
 
 import { listSitemap } from '../../lib/gov-fetch.ts';
 import { type ScanState, getDomainState, setDomainState } from '../../lib/state.ts';
-import { VOICES_SOURCES, isAiSpeechUrl, newsroomSlug, type VoicesSource } from './sources.ts';
+import { VOICES_SOURCES, isAiSpeechUrl, isSpeechUrl, newsroomSlug, type VoicesSource } from './sources.ts';
 
 export interface VoicesCandidate {
   sourceUrl: string;
@@ -22,6 +22,10 @@ export interface VoicesCandidate {
   speechId: string;
   domain: string;
   label: string;
+  /** true when the slug itself names AI (fast-pass, high confidence).
+   *  false → admitted as a speech but AI relevance must be confirmed by
+   *  a content-level judgement downstream (run.ts judgeAiRelevance). */
+  aiSlugMatch: boolean;
 }
 
 export interface ScanResult {
@@ -53,7 +57,11 @@ async function scanSource(
       for (const raw of urls) {
         if (source.urlExcludes?.some((re) => re.test(raw))) continue;
         if (!source.urlPatterns.some((re) => re.test(raw))) continue;
-        if (!isAiSpeechUrl(raw)) continue;
+        // Admit ALL speeches (coarse slug filter), not just slugs that
+        // name AI. Relevance is judged on content downstream. aiSlugMatch
+        // records whether the slug already names AI (fast-pass).
+        if (!isSpeechUrl(raw)) continue;
+        const aiSlugMatch = isAiSpeechUrl(raw);
         const slug = newsroomSlug(raw);
         if (!slug) continue;
         // Normalize trailing slash for dedupe parity with voices.ts entries.
@@ -66,6 +74,7 @@ async function scanSource(
           speechId: slug,
           domain: source.domain,
           label: source.label,
+          aiSlugMatch,
         });
       }
     }

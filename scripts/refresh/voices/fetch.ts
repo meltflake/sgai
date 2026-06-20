@@ -43,6 +43,8 @@ const SKIP_SUBSTRINGS = [
   'Call the 24/7 ScamShield',
   'ScamShield Helpline',
   'Subscribe to our newsletter',
+  // MDDI CMS migration notice injected into older articles' body.
+  'This article has been migrated from an earlier version of the site',
 ];
 
 const NOISE_LINES = new Set(['***', '.  .  .  .  .', '. . . . .']);
@@ -126,9 +128,17 @@ function normalizeDate(input: string): string | null {
   return null;
 }
 
+// MDDI's body container sometimes swallows the page's breadcrumb + title
+// block, which renders as one <p> starting with the "Newsroom" breadcrumb
+// ("Newsroom <Title> Speeches"). Speech bodies never start with "Newsroom",
+// so dropping that leading block is safe. (2026-06-20: this leaked into
+// every backfilled transcript's first paragraph — header text + a mangled
+// machine translation of the title.)
+const MDDI_HEADER_RE = /^\s*Newsroom\b/i;
+
 /** Walk <p>...</p> blocks inside a given HTML chunk, returning their
  *  stripped text. Drops empty paragraphs and lines hit by SKIP_SUBSTRINGS
- *  / NOISE_LINES. */
+ *  / NOISE_LINES / the MDDI breadcrumb header. */
 function extractPs(chunk: string): string[] {
   const out: string[] = [];
   for (const m of chunk.matchAll(/<p[^>]*>([\s\S]*?)<\/p>/gi)) {
@@ -136,6 +146,7 @@ function extractPs(chunk: string): string[] {
     if (!text) continue;
     if (NOISE_LINES.has(text)) continue;
     if (SKIP_SUBSTRINGS.some((s) => text.includes(s))) continue;
+    if (MDDI_HEADER_RE.test(text)) continue;
     if (/^\d{1,2}\s+\w+\s+\d{4}$/.test(text)) continue;
     out.push(text);
   }

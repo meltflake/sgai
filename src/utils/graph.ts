@@ -14,7 +14,7 @@
 
 import { debates, type Debate } from '~/data/debates';
 import { categories, type Policy } from '~/data/policies';
-import { levers, type Lever, type LeverItem } from '~/data/levers';
+import { levers, publicLeverGroups, type Lever, type LeverItem } from '~/data/levers';
 import { timelineEvents, type TimelineEvent } from '~/data/timeline';
 import { allPeople, type Person } from '~/data/people';
 
@@ -51,7 +51,8 @@ function _getAllLeverItems(): LeverItem[] {
   // Reserved for Phase 2 (LeverItem-level cross-refs render). Currently
   // unused but kept for symmetry with getAllPolicies.
   if (_allLeverItemsCache.length === 0) {
-    for (const lv of levers) for (const g of lv.groups) for (const it of g.items) _allLeverItemsCache.push(it);
+    for (const lv of levers)
+      for (const g of publicLeverGroups(lv)) for (const it of g.items) _allLeverItemsCache.push(it);
   }
   return _allLeverItemsCache;
 }

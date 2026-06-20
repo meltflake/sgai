@@ -42,8 +42,12 @@ export interface EmittableSpeech {
   publishedDate: string | null;
   paragraphsEn: string[];
   paragraphsZh: string[];
+  paragraphsJa: string[];
+  paragraphsKo: string[];
   tldrEn: string[];
   tldrZh: string[];
+  tldrJa: string[];
+  tldrKo: string[];
   titleZh: string;
   titleEn: string;
   titleJa: string;
@@ -95,8 +99,12 @@ export function combineForEmit(
     publishedDate: fetched.publishedDate,
     paragraphsEn: translated.paragraphsEn,
     paragraphsZh: translated.paragraphs,
+    paragraphsJa: translated.paragraphsJa,
+    paragraphsKo: translated.paragraphsKo,
     tldrEn: translated.tldrEn,
     tldrZh: translated.tldr,
+    tldrJa: translated.tldrJa,
+    tldrKo: translated.tldrKo,
     titleZh: enriched.titleZh,
     titleEn: enriched.titleEn,
     titleJa: enriched.titleJa,
@@ -157,8 +165,12 @@ function tsArray(items: string[], indent: number): string {
 function formatTranscriptEntry(s: EmittableSpeech): string {
   const paragraphsZh = s.paragraphsZh.map(cleanParagraph).filter(Boolean);
   const paragraphsEn = s.paragraphsEn.map(cleanParagraph).filter(Boolean);
+  const paragraphsJa = s.paragraphsJa.map(cleanParagraph).filter(Boolean);
+  const paragraphsKo = s.paragraphsKo.map(cleanParagraph).filter(Boolean);
   const tldrZh = s.tldrZh.map(cleanParagraph).filter(Boolean);
   const tldrEn = s.tldrEn.map(cleanParagraph).filter(Boolean);
+  const tldrJa = s.tldrJa.map(cleanParagraph).filter(Boolean);
+  const tldrKo = s.tldrKo.map(cleanParagraph).filter(Boolean);
   const fetchedAt = new Date().toISOString().slice(0, 10);
   const lines: string[] = [];
   lines.push(`  '${escapeQuote(s.speechId)}': {`);
@@ -169,8 +181,12 @@ function formatTranscriptEntry(s: EmittableSpeech): string {
   lines.push(`    source: 'mddi-newsroom',`);
   lines.push(`    paragraphs: ${tsArray(paragraphsZh, 4)},`);
   lines.push(`    paragraphsEn: ${tsArray(paragraphsEn, 4)},`);
+  if (paragraphsJa.length) lines.push(`    paragraphsJa: ${tsArray(paragraphsJa, 4)},`);
+  if (paragraphsKo.length) lines.push(`    paragraphsKo: ${tsArray(paragraphsKo, 4)},`);
   if (tldrZh.length) lines.push(`    tldr: ${tsArray(tldrZh, 4)},`);
   if (tldrEn.length) lines.push(`    tldrEn: ${tsArray(tldrEn, 4)},`);
+  if (tldrJa.length) lines.push(`    tldrJa: ${tsArray(tldrJa, 4)},`);
+  if (tldrKo.length) lines.push(`    tldrKo: ${tsArray(tldrKo, 4)},`);
   lines.push(`    translatedAt: \`${escapeBacktick(s.translatedAt)}\`,`);
   lines.push(`    translationSource: '${s.translationSource}',`);
   if (s.translationModel) {

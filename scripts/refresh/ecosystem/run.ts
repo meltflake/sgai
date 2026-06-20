@@ -79,6 +79,39 @@ async function main(): Promise<void> {
   const enrichResult = await enrich(scanResult.candidates, { force: flags.force });
   process.stdout.write(`  enriched: ${enrichResult.enriched.length}, failures: ${enrichResult.failures.length}\n`);
 
+  // Content-layer AI-relevance gate (shared). The BusinessTimes source now
+  // admits the whole tech section by document type, so confirm each entity's
+  // body actually concerns AI before emitting — summarizePage only classifies
+  // + scores, it never asks "is this AI?". Conservative: drop only a
+  // high-confidence "no"; low/medium stays for the _pendingReview backstop.
+  {
+    const { judgeAiRelevance } = await import('../../lib/judge-ai-relevance.ts');
+    const kept: typeof enrichResult.enriched = [];
+    let dropped = 0;
+    for (const e of enrichResult.enriched) {
+      const verdict = await judgeAiRelevance(
+        {
+          title: e.summary.titleEn || e.pageTitle,
+          contentText: e.contentText,
+          sourceUrl: e.candidate.sourceUrl,
+        },
+        {
+          kind: 'a company / product / ecosystem news item',
+          scope:
+            'AI / artificial-intelligence companies, products, infrastructure, or ecosystem developments — especially in Singapore',
+        }
+      );
+      if (!verdict.relevant && verdict.confidence === 'high') {
+        dropped += 1;
+        process.stdout.write(`    ⊘ off-topic: ${e.candidate.sourceUrl} — ${verdict.reason.slice(0, 60)}\n`);
+        continue;
+      }
+      kept.push(e);
+    }
+    enrichResult.enriched = kept;
+    if (dropped > 0) process.stdout.write(`  AI gate: kept ${kept.length}, dropped ${dropped} off-topic\n`);
+  }
+
   if (enrichResult.enriched.length === 0) {
     process.stdout.write('\n[ecosystem-refresh] no enriched items. exiting.\n');
     return;
