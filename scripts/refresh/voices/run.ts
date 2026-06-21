@@ -27,6 +27,7 @@ import { resolve } from 'node:path';
 import { loadState, saveState } from '../../lib/state.ts';
 import { autoCommit, pushAndOpenPR, buildPRBody } from '../../lib/auto-commit.ts';
 import { translateBatch } from '../../lib/translate.ts';
+import { ensureClaudeAuthed } from '../../lib/llm.ts';
 import {
   scan,
   readExistingSpeechUrls,
@@ -198,6 +199,15 @@ async function main(): Promise<void> {
   process.stdout.write('\n[voices-refresh] starting\n');
   if (flags.dryRun) process.stdout.write('  --dry-run: scan only\n');
 
+  // Preflight: prove `claude -p` can actually run inference before burning any
+  // fetch + per-record work. `claude --version` still exits 0 with an expired
+  // OAuth token; the 401 only bites at the first real call and then shows up as
+  // N cryptic per-record failures. Skip for --dry-run (scan only, no LLM).
+  if (!flags.dryRun) {
+    ensureClaudeAuthed();
+    process.stdout.write('  preflight: claude auth OK\n');
+  }
+
   const existingUrls = readExistingSpeechUrls();
   const existingSpeechIds = readExistingSpeechIds();
   process.stdout.write(
@@ -269,7 +279,7 @@ async function main(): Promise<void> {
     `  fetched: ${fetchResult.successes.length}, failures: ${fetchResult.failures.length}\n`
   );
   for (const f of fetchResult.failures) {
-    process.stdout.write(`    ! ${f.speechId}: ${f.error.slice(0, 80)}\n`);
+    process.stdout.write(`    ! ${f.speechId}: ${f.error}\n`);
   }
 
   if (fetchResult.successes.length === 0) {
@@ -315,7 +325,7 @@ async function main(): Promise<void> {
     `  translated: ${translateResult.translated.length}, failures: ${translateResult.failures.length}\n`
   );
   for (const f of translateResult.failures) {
-    process.stdout.write(`    ! ${f.speechId}: ${f.error.slice(0, 80)}\n`);
+    process.stdout.write(`    ! ${f.speechId}: ${f.error}\n`);
   }
 
   // 4. Enrich → trilingual title + event + speaker title.

@@ -19,6 +19,7 @@ import { isEmptyShellSummary } from '../../lib/empty-shell.ts';
 import { autoCommit, pushAndOpenPR, buildPRBody } from '../../lib/auto-commit.ts';
 import { findUnpairedFields } from '../../lib/i18n-pair.ts';
 import { formatWithPrettier } from '../../lib/prettier-format.ts';
+import { ensureClaudeAuthed } from '../../lib/llm.ts';
 import { loadState, saveState } from '../../lib/state.ts';
 
 const TARGET_FILE = resolve('src/data/legal-ai.ts');
@@ -217,6 +218,14 @@ async function main(): Promise<void> {
 
   process.stdout.write('\n[legal-ai-refresh] starting\n');
   if (!existsSync(TARGET_FILE)) throw new Error(`Target not found: ${TARGET_FILE}`);
+
+  // Preflight: prove `claude -p` can run inference before per-candidate AI
+  // work. `claude --version` still passes with an expired token; fail fast here
+  // with one clear message. Skip for --dry-run (scan only, no LLM).
+  if (!flags.dryRun) {
+    ensureClaudeAuthed();
+    process.stdout.write('  preflight: claude auth OK\n');
+  }
 
   const existingUrls = readExistingUrls();
   process.stdout.write(`  existing legal-ai URLs: ${existingUrls.size}\n`);

@@ -18,6 +18,7 @@ import { isEmptyShellSummary } from '../../lib/empty-shell.ts';
 import { autoCommit, pushAndOpenPR, buildPRBody } from '../../lib/auto-commit.ts';
 import { appendAutoDiscovered } from '../../lib/auto-discovered-emit.ts';
 import { judgeAiRelevance } from '../../lib/judge-ai-relevance.ts';
+import { ensureClaudeAuthed } from '../../lib/llm.ts';
 import { loadState, saveState } from '../../lib/state.ts';
 
 export interface PipelineSource {
@@ -136,6 +137,15 @@ export async function runPipeline(config: PipelineConfig): Promise<void> {
   const targetAbs = resolve(config.targetFile);
 
   process.stdout.write(`\n[${config.domain}-refresh] starting\n`);
+
+  // Preflight: prove `claude -p` can run inference before per-candidate AI
+  // summarisation / judging / translation. `claude --version` still passes with
+  // an expired OAuth token — fail fast here with one clear message instead of N
+  // truncated per-record errors. Skip for --dry-run (scan only, no LLM).
+  if (!flags.dryRun) {
+    ensureClaudeAuthed();
+    process.stdout.write('  preflight: claude auth OK\n');
+  }
 
   const existingUrls = await readExistingUrls(targetAbs, config.urlExtractRegex);
   process.stdout.write(`  existing ${config.domain} URLs: ${existingUrls.size}\n`);
