@@ -76,10 +76,151 @@ export function ensureClaudeAvailable(): void {
   );
 }
 
+function getAuthTimeout(): number {
+  return Number(process.env.SGAI_LLM_AUTH_TIMEOUT_MS || 60000);
+}
+
+const CLAUDE_AUTH_HINT =
+  'Re-authenticate the Claude CLI, then retry:\n' +
+  '  claude setup-token      # token auth (recommended for headless / cron)\n' +
+  '  claude auth login       # interactive OAuth login\n' +
+  'If the CLI lives at a non-standard path, set SGAI_CLAUDE_BIN.';
+
+interface SmokeResult {
+  type?: string;
+  is_error?: boolean;
+  api_error_status?: number;
+  result?: string;
+}
+
+/** Pull the result-ish object out of `claude -p --output-format json` output.
+ *  The shape varies: a single {type:"result",...} object, an auth-failure
+ *  object {is_error:true,api_error_status:401,...} (no `type`), or a streamed
+ *  array of events. Be lenient — we only need is_error / api_error_status. */
+function pickSmokeResult(parsed: unknown): SmokeResult | undefined {
+  const isResultish = (o: unknown): o is SmokeResult =>
+    typeof o === 'object' &&
+    o !== null &&
+    ('is_error' in o ||
+      'api_error_status' in o ||
+      'result' in o ||
+      (o as { type?: string }).type === 'result');
+  if (Array.isArray(parsed)) {
+    return (
+      parsed.find((e): e is SmokeResult => isResultish(e) && (e.type === 'result' || e.is_error === true)) ||
+      [...parsed].reverse().find(isResultish)
+    );
+  }
+  return isResultish(parsed) ? parsed : undefined;
+}
+
+/** Per (bin, model) memo so the real smoke-test runs once per process. */
+const authCache = new Map<string, { ok: boolean; error?: Error }>();
+
+function runAuthSmokeTest(bin: string, model: string): void {
+  const timeoutMs = getAuthTimeout();
+  // Mirror callLlm: short prompt over stdin, run in /tmp so the CLI stays a
+  // stateless completion (no project CLAUDE.md / MCP / skills loaded).
+  const r = spawnSync(bin, ['-p', '--output-format', 'json', '--model', model], {
+    input: 'ping',
+    encoding: 'utf8',
+    cwd: '/tmp',
+    timeout: timeoutMs,
+    maxBuffer: 8 * 1024 * 1024,
+  });
+
+  if (r.error) {
+    const e = r.error as NodeJS.ErrnoException;
+    if (e.code === 'ETIMEDOUT') {
+      throw new Error(
+        `Claude CLI auth smoke-test timed out after ${timeoutMs}ms (\`${bin} -p --model ${model}\`). ` +
+          `Raise SGAI_LLM_AUTH_TIMEOUT_MS if the network is slow.\n${CLAUDE_AUTH_HINT}`
+      );
+    }
+    throw new Error(`Claude CLI auth smoke-test failed to spawn: ${e.message}\n${CLAUDE_AUTH_HINT}`);
+  }
+
+  const stdout = r.stdout || '';
+  const stderr = r.stderr || '';
+
+  let parsed: unknown;
+  try {
+    parsed = JSON.parse(stdout);
+  } catch {
+    throw new Error(
+      `Claude CLI auth smoke-test: \`claude -p\` produced no parseable JSON (exit ${r.status}). ` +
+        `stderr: ${stderr.trim().slice(0, 300) || '(none)'} | stdout: ${stdout.trim().slice(0, 300) || '(none)'}\n` +
+        CLAUDE_AUTH_HINT
+    );
+  }
+
+  const evt = pickSmokeResult(parsed);
+  const apiStatus = typeof evt?.api_error_status === 'number' ? evt.api_error_status : undefined;
+  const resultText = typeof evt?.result === 'string' ? evt.result : '';
+
+  if (apiStatus === 401 || /\b401\b|invalid authentication|failed to authenticate/i.test(resultText)) {
+    throw new Error(
+      `Claude CLI is not authenticated (API ${apiStatus ?? 401}): ${resultText || 'authentication failed'}\n${CLAUDE_AUTH_HINT}`
+    );
+  }
+  if (evt?.is_error === true || apiStatus !== undefined) {
+    throw new Error(
+      `Claude CLI inference smoke-test failed${apiStatus ? ` (API ${apiStatus})` : ''}: ` +
+        `${resultText || stderr.trim() || `exit ${r.status}`}\n${CLAUDE_AUTH_HINT}`
+    );
+  }
+  if (r.status !== 0) {
+    throw new Error(
+      `Claude CLI auth smoke-test exited ${r.status}: ${stderr.trim().slice(0, 300) || resultText || '(no output)'}\n` +
+        CLAUDE_AUTH_HINT
+    );
+  }
+  // Healthy: inference returned a non-error result. The model's reply to
+  // "ping" is irrelevant — we only needed proof the call round-tripped.
+}
+
+/**
+ * Verify the `claude` CLI can actually run inference — not merely that the
+ * binary exists. `claude --version` (what ensureClaudeAvailable checks) still
+ * exits 0 when the OAuth token has expired; the failure only surfaces at the
+ * first real `claude -p` call as
+ *   {"is_error":true,"api_error_status":401,"result":"Failed to authenticate…"}
+ * which, mid-pipeline, shows up as N cryptic truncated per-record errors.
+ *
+ * This pipes a one-word prompt through `claude -p --output-format json` and
+ * throws an actionable error (telling the user to run `claude setup-token` /
+ * `claude auth login`) when auth is broken, so pipelines fail fast at startup
+ * with one clear message. Cached per (bin, model): the real call runs once per
+ * process; subsequent invocations are a Map lookup.
+ */
+export function ensureClaudeAuthed(model?: string): void {
+  const bin = getClaudeBin();
+  const useModel = model || getDefaultModel();
+  const key = `${bin}::${useModel}`;
+
+  const cached = authCache.get(key);
+  if (cached) {
+    if (cached.ok) return;
+    throw cached.error;
+  }
+
+  try {
+    ensureClaudeAvailable(); // cheap: binary on PATH + responds to --version
+    runAuthSmokeTest(bin, useModel); // real: one inference round-trip
+    authCache.set(key, { ok: true });
+  } catch (error) {
+    const err = error instanceof Error ? error : new Error(String(error));
+    authCache.set(key, { ok: false, error: err });
+    throw err;
+  }
+}
+
 interface ResultEvent {
   type: 'result';
   subtype: 'success' | string;
   is_error?: boolean;
+  /** Present on transport failures, e.g. 401 when the OAuth token expired. */
+  api_error_status?: number;
   result?: string;
   total_cost_usd?: number;
   duration_ms?: number;
@@ -226,6 +367,75 @@ export async function callLlm(userPrompt: string, options: LlmCallOptions = {}):
 }
 
 /**
+ * Best-effort repair for the single most common way the model breaks JSON:
+ * unescaped ASCII double-quotes INSIDE a string value — a coined term like
+ * "AI Bilingual", a quoted programme name, etc. The model is told to use
+ * full-width / curly quotes but routinely forgets, and one unescaped `"`
+ * mid-string makes JSON.parse fail with `Expected ',' or ']' after array
+ * element`.
+ *
+ * Strategy: a single left-to-right scan tracking string state. A `"` seen
+ * while inside a string is a STRUCTURAL closing quote only when the next
+ * non-whitespace char is one of `] } :` or end-of-input, or — for the `,`
+ * case — when the token after the comma is itself `"` / `]` / `}` (a real
+ * next element). Otherwise the `"` is an inner quote and gets escaped.
+ * Backslash escapes are passed through untouched.
+ *
+ * Intentionally conservative, and only ever invoked on input that already
+ * failed JSON.parse. If it mis-splits, downstream length checks (e.g.
+ * translate.ts's "count mismatch") reject the result rather than emit
+ * corrupted data — so the worst case is the same failure we already had.
+ */
+export function repairJsonInnerQuotes(raw: string): string {
+  const isWs = (c: string): boolean => c === ' ' || c === '\t' || c === '\n' || c === '\r';
+  let out = '';
+  let inString = false;
+  for (let i = 0; i < raw.length; i += 1) {
+    const ch = raw[i];
+    if (!inString) {
+      out += ch;
+      if (ch === '"') inString = true;
+      continue;
+    }
+    if (ch === '\\') {
+      // Escape sequence — copy this char and the next one verbatim.
+      out += ch;
+      if (i + 1 < raw.length) {
+        out += raw[i + 1];
+        i += 1;
+      }
+      continue;
+    }
+    if (ch !== '"') {
+      out += ch;
+      continue;
+    }
+    // A `"` inside a string: structural close or inner quote?
+    let j = i + 1;
+    while (j < raw.length && isWs(raw[j])) j += 1;
+    const next = j < raw.length ? raw[j] : '';
+    let structural: boolean;
+    if (next === '' || next === ']' || next === '}' || next === ':') {
+      structural = true;
+    } else if (next === ',') {
+      let k = j + 1;
+      while (k < raw.length && isWs(raw[k])) k += 1;
+      const afterComma = k < raw.length ? raw[k] : '';
+      structural = afterComma === '' || afterComma === '"' || afterComma === ']' || afterComma === '}';
+    } else {
+      structural = false;
+    }
+    if (structural) {
+      out += ch;
+      inString = false;
+    } else {
+      out += '\\"';
+    }
+  }
+  return out;
+}
+
+/**
  * Convenience: call the LLM and JSON.parse the result. Throws if the
  * output isn't valid JSON.
  *
@@ -242,6 +452,15 @@ export async function callLlmJson<T = unknown>(userPrompt: string, options: LlmC
     try {
       return JSON.parse(raw) as T;
     } catch (error) {
+      // Dominant flake: unescaped ASCII quotes inside a string value (e.g. a
+      // coined term like "AI Bilingual"). Try a deterministic repair before
+      // burning the retry. Only runs on already-failed parses, so it can
+      // never corrupt a valid parse.
+      try {
+        return JSON.parse(repairJsonInnerQuotes(raw)) as T;
+      } catch {
+        /* repair didn't help — fall through to retry / throw */
+      }
       attempts.push({ error: error as Error, raw });
       if (attempt === 1) {
         process.stderr.write(

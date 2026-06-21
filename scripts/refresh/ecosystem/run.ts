@@ -6,6 +6,7 @@ import { resolve } from 'node:path';
 
 import { loadState, saveState } from '../../lib/state.ts';
 import { autoCommit, pushAndOpenPR, buildPRBody } from '../../lib/auto-commit.ts';
+import { ensureClaudeAuthed } from '../../lib/llm.ts';
 import { scan, readExistingEcosystemUrls } from './scan.ts';
 import { enrich } from './enrich.ts';
 import { emit } from './emit.ts';
@@ -40,6 +41,14 @@ async function main(): Promise<void> {
 
   process.stdout.write('\n[ecosystem-refresh] starting\n');
   if (flags.dryRun) process.stdout.write('  --dry-run: scan only\n');
+
+  // Preflight: prove `claude -p` can run inference before per-candidate AI
+  // work. `claude --version` still passes with an expired token; fail fast here
+  // with one clear message. Skip for --dry-run (scan only, no LLM).
+  if (!flags.dryRun) {
+    ensureClaudeAuthed();
+    process.stdout.write('  preflight: claude auth OK\n');
+  }
 
   const existingUrls = readExistingEcosystemUrls();
   process.stdout.write(`  existing ecosystem URLs: ${existingUrls.size}\n`);

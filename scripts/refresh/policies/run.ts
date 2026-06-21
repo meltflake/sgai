@@ -23,6 +23,7 @@ import { resolve } from 'node:path';
 
 import { loadState, saveState } from '../../lib/state.ts';
 import { autoCommit, pushAndOpenPR, buildPRBody } from '../../lib/auto-commit.ts';
+import { ensureClaudeAuthed } from '../../lib/llm.ts';
 import { scan, readExistingPolicyUrls } from './scan.ts';
 import { enrich } from './enrich.ts';
 import { emit } from './emit.ts';
@@ -57,6 +58,14 @@ async function main(): Promise<void> {
 
   process.stdout.write('\n[policies-refresh] starting\n');
   if (flags.dryRun) process.stdout.write('  --dry-run: scan only\n');
+
+  // Preflight: prove `claude -p` can run inference before per-candidate AI
+  // work. `claude --version` still passes with an expired token; fail fast here
+  // with one clear message. Skip for --dry-run (scan only, no LLM).
+  if (!flags.dryRun) {
+    ensureClaudeAuthed();
+    process.stdout.write('  preflight: claude auth OK\n');
+  }
 
   // 1. Existing URLs (dedup set).
   const existingUrls = readExistingPolicyUrls();
