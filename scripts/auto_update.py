@@ -413,7 +413,7 @@ def cleanup_old_logs(logger):
 
 
 # ── 主流程 ────────────────────────────────────────────────────────────────────
-def run_tsx_pipeline(pipeline: dict, logger) -> dict:
+def run_tsx_pipeline(pipeline: dict, logger, dry_run: bool = False) -> dict:
     """运行一条 type=tsx 管线（subprocess npx tsx <script>）。
 
     新管线在 stdout 末尾 print 一行 JSON 报告（{domain, added/changed, pr_url, ...}）。
@@ -427,6 +427,13 @@ def run_tsx_pipeline(pipeline: dict, logger) -> dict:
         return {"count": 0, "items": [], "error": "registry entry missing script"}
 
     cmd = ["npx", "tsx", script, *extra_args]
+    # Propagate --dry-run into the tsx subprocess. Without this, a top-level
+    # --dry-run only suppressed this script's own email/issue (see main below)
+    # while the tsx pipeline still ran scan→emit→commit→push→PR — which opened
+    # an accidental PR on 2026-06-28. Every tsx run.ts honours --dry-run
+    # (CLAUDE.md "添加新管线" requires --dry-run / --limit / --no-commit / --no-push).
+    if dry_run and "--dry-run" not in cmd:
+        cmd.append("--dry-run")
     logger.info(f"  [{pipeline['id']}] $ {' '.join(cmd)}")
     proc = subprocess.run(
         cmd,
@@ -475,7 +482,7 @@ def run_tsx_pipeline(pipeline: dict, logger) -> dict:
 
 def main():
     parser = argparse.ArgumentParser(description="sgai 数据自动更新 (registry-driven)")
-    parser.add_argument("--dry-run", action="store_true", help="运行但不发邮件")
+    parser.add_argument("--dry-run", action="store_true", help="不发邮件、不写盘、不开 PR（透传 --dry-run 给 tsx 子管线）")
     parser.add_argument("--only", help="只运行指定管线（逗号分隔；如 videos,policies）")
     parser.add_argument(
         "--schedule",
@@ -532,7 +539,7 @@ def main():
                 else:
                     raise RuntimeError(f"unknown python-builtin pipeline id: {pid}")
             elif ptype == "tsx":
-                results[pid] = run_tsx_pipeline(entry, logger)
+                results[pid] = run_tsx_pipeline(entry, logger, dry_run=args.dry_run)
             else:
                 raise RuntimeError(f"unknown pipeline type: {ptype}")
         except Exception as e:
