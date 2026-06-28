@@ -10975,6 +10975,66 @@ export const videoTranscripts: Record<string, VideoTranscript> = {
     translationSource: 'claude',
     translationModel: 'haiku',
   },
+  v067: {
+    videoId: 'v067',
+    youtubeId: 'Y9Dnbumn1Bg',
+    captionLanguage: 'en',
+    fetchedAt: '2026-06-28',
+    source: 'youtube-subtitles',
+    paragraphs: [
+      '人工智能可以做很多事情。它们可以帮助我们加快处理信息、获取目标、选择武器系统以达成目标效果的过程。这一切都是自动化的一部分。有些人称之为人工智能，有些人我们称之为Excel电子表格，但这就是你如何更好更快地做出决策的方式。但在我们设计的所有这些流程中有一点是不变的，那就是 >> [清了清嗓子] >> 你必须拥有我们所说的「人在回路」。对吧？所以，这不是那么多地为了减慢过程，而是你必须将其纳入你的流程中，确保你不能出现我们所说的「失职」的情况，即你只是把你不理解的工具和算法交付出去。所以，这就是我们的运营哲学。',
+      '但对我来说，>> [清了清嗓子] >> 我会尽我所能利用公众委托给MINDEF和SAF的资源为我的士兵获得最好的装备，因为如果他们真的进行作战，我希望我的人员有最好的成功机会。但最终，成功的最好机会不仅仅取决于我们拥有什么样的装备，还取决于我们人员的警觉性、训练和承诺，这正是使我们与众不同的原因。',
+    ],
+    paragraphsEn: [
+      'There are many things that AI can do. They can help us to speed up the process which we interpret information, acquire targets, select the weapon system to get the target effects. All that is part of automation. Some people call it AI, some people we call it the Excel spreadsheet, but it is how you make decisions better and faster. But what is invariant in all these processes that we design is that >> [clears throat] >> you must have what we call the man in the loop. Right? So, not so much to slow down the process, but you must have put it into your processes that you cannot have a what we call the dereliction of duty where you just pass on this tools and algorithm that you do not understand. So, that is our operating philosophy.',
+      'But for me, >> [clears throat] >> I will do what I can with the resources that the public have entrusted to MINDEF and SAF to get the best equipment for my soldiers because if ever they go into operations, I want my people to have the best chance of success. But ultimately, the best chance of success is not just about the kind of equipment that we have, but it is also the vigilance, the training, and the commitment of our people that makes us stand out.',
+    ],
+    paragraphsKo: [
+      '인공지능은 많은 일들을 할 수 있습니다. 이들은 정보 처리, 목표 획득, 무기 체계 선택을 통해 목표 효과를 달성하는 과정을 가속화하는 데 도움이 될 수 있습니다. 이 모든 것은 자동화의 일부입니다. 어떤 사람들은 이를 인공지능이라고 부르고, 어떤 사람들은 우리가 엑셀 스프레드시트라고 부르는 것이라고 부릅니다만, 이것이 더 잘, 더 빠르게 의사결정을 내리는 방법입니다. 그러나 우리가 설계한 이 모든 프로세스 중에는 불변의 한 가지가 있습니다. 그것이 바로 >> [목청을 가다듬고] >> 당신이 우리가 「루프 내 인간」이라고 부르는 것을 갖춰야 한다는 것입니다. 맞지요? 따라서 이는 프로세스를 늦추기 위한 것이 아니라, 당신이 이를 당신의 프로세스에 포함시켜야 하며, 우리가 「직무 태만」이라고 부르는 상황, 즉 당신이 이해하지 못하는 도구와 알고리즘을 단순히 배포해 버리는 경우가 발생하지 않도록 보장해야 한다는 것입니다. 따라서 이것이 우리의 운영 철학입니다.',
+      '하지만 제 입장에서는, >> [목청을 가다듬고] >> 저는 국민이 MINDEF와 SAF에 위탁한 자원을 최대한 활용하여 제 병사들을 위해 최고의 장비를 확보하겠습니다. 왜냐하면 만약 그들이 실제로 전투에 나가게 된다면, 저는 제 인원이 최고의 성공 기회를 갖기를 원하기 때문입니다. 하지만 궁극적으로, 성공의 최고의 기회는 단순히 우리가 어떤 종류의 장비를 가지고 있느냐에 달려 있는 것이 아니라, 우리 인원의 경계심, 훈련 및 헌신에 달려 있으며, 이것이 바로 우리를 다른 사람들과 구별하게 하는 이유입니다.',
+    ],
+    paragraphsJa: [
+      '人工知能は多くのことを行うことができます。それらは、情報処理を加速し、目標を取得し、武器システムを選択して目標効果を達成するプロセスを支援することができます。これはすべて自動化の一部です。それを人工知能と呼ぶ人もいれば、私たちがExcelスプレッドシートと呼ぶ人もいますが、これがより良く、より速く意思決定を行う方法です。しかし、我々が設計したすべてのこれらのプロセスにおいて、変わらないことが1つあります。それは、>> [喉を清めた] >> 私たちが「ヒューマン・イン・ザ・ループ」と呼ぶものを持つ必要があるということです。そうですね？つまり、これはプロセスを減速させるためではなく、むしろ、あなたはそれをあなたのプロセスに組み込まなければならず、我々が「職務怠慢」と呼ぶ状況、つまり、あなたが理解していないツールとアルゴリズムを単に引き渡してしまう状況が発生しないようにしなければなりません。だから、これが私たちの運用哲学です。',
+      'しかし、私にとっては、>> [喉を清めた] >> 公衆がMINDEFとSAFに委託したリソースを最大限に活用し、自分の兵士のために最良の装備を調達するために全力を尽くします。なぜなら、もし彼らが実際に戦闘に従事した場合、私の人員が最良の成功の機会を得ることを望むからです。しかし最終的には、成功する最良の機会は、我々がどのような装備を保有しているかばかりでなく、我々の人員の警戒心、訓練、およびコミットメントにも依存しており、これが我々を他と異なるものにしているのです。',
+    ],
+    translatedAt: '2026-06-28',
+    translationSource: 'claude',
+    translationModel: 'haiku',
+  },
+  v068: {
+    videoId: 'v068',
+    youtubeId: 'rxisjSudqLw',
+    captionLanguage: 'en',
+    fetchedAt: '2026-06-28',
+    source: 'youtube-subtitles',
+    paragraphs: [
+      '[music] >> 我们发现仍有一群开发者在采用代理编码工具方面速度较慢。AI加速器的设计目的实际上是为了激励这些人尽快开始。但更重要的是，要开始并进行适当的代理编码，而不是写不好的代码。而是使用最佳实践、已知的技术来产生可靠、安全的代码。所以我们创建了一个课程，提供社区验证的最佳实践，这将实现安全、健壮、可工作的代码。>> 现在是成为开发者的最好时代。我认为我们从使用AI编码工具的开发者身上看到的真实情况是，他们能够编写更多代码、更有创意、比他们以前曾经能够做到的任何时候都更快地探索想法。',
+      '所以AI编码对开发者来说真的超级令人兴奋，因为他们可以超快地制作原型、尝试、学习。真的很令人兴奋。>> 希望通过这个伙伴关系，我们能够帮助更多人真正学会以正确的方式使用AI。这是每个人都在经历的探索阶段。但通过将人们聚集在一起，它就变成了基于社区的学习，在我的看法中这是非常高价值的。>> 我认为加入AI加速器项目的一个优势是，它允许你切换和改变不同的代理提供者。所以现在我们有Kuro、我们有Codex，还有GitHub Copilot。而>> [music] >> 每个月我都可以决定改用一个新的提供者。他们有自己的脚手架，有自己的工具集。',
+      '我可以用不同的模型类型进行实验和尝试，这让我能够巩固我对这些各种代理的理解，它给了我更好的理解——当我把它带回到工作场所时，这些模型将如何工作。>> 我们已经强制所有技术专业人士参加AI培训和课程[music]，以确保他们了解最新的技术，并且能够使用最新的技术进行编码。',
+      '我觉得这个课程非常适合技术专业人士，因为由于不同的模型和技术发展非常迅速，我们[music]今天知道的东西可能明天就过时了或者所以，我想确保我们的[music]团队始终配备最新的技术，他们了解来自不同工具的最新情况，并利用这项技术。>> [music]',
+    ],
+    paragraphsEn: [
+      "[music] >> We found that there was still a group of developers who are a bit slow to pick up uh agentic coding tools. And AI accelerator was actually designed to actually try to incentivize these people to get started uh as quickly as possible. But also importantly, to get started and do uh proper agentic coding, not bad code. But use the best practices, the known techniques to that produces uh reliable, secure code. So we came up with a curriculum that provides the community proven best practices that will achieve um secure, robust, working code. >> There's never been a better time to be a developer. I think really what we see from developer using AI coding tools is they're able to code more stuff, be more creative, explore ideas faster than ever they've never been able to do.",
+      "So really AI coding is super exciting from that for for developers cuz they can prototype things super fast, try, learn. Really exciting for that. >> Hopefully through this partnership we can uh enable more people to really learn how to use AI the correct way. It's an exploratory phase everyone is in. But by bringing together people, it becomes a community-based learning which is uh very high value in my opinion. >> I think one advantage of joining the AI accelerator program is that it allows you to switch and change different agent providers. So right now we have Kuro, we have uh Codex, and we have GitHub Copilot. And >> [music] >> every month I can decide to change to a new provider. They have their own scaffold, they have their own harness.",
+      'I can experiment and try with different model types, and this allows me to solidify the understanding that I have of these various agents, and it gives me a better understanding of how how these models will work if when I bring it back to the the workplace. >> We have already made it mandatory for all our tech professionals to take the AI trainings and courses [music] to make sure that they are aware of the latest technology, and they are able to do the coding using the latest technology.',
+      'I feel that the course is very suitable for the tech professional because since the different models and the technologies advancing so quickly, what [music] we have know today may be outdated tomorrow or the So, I want to make sure our [music] team is equipped with the always the latest technology, and they are aware of what is happening from the different tools, and to take advantage of the technology. >> [music]',
+    ],
+    paragraphsKo: [
+      '[music] >> 저희는 여전히 에이전트 코딩 도구 도입 속도가 느린 개발자들이 있다는 점을 발견했습니다. AI 가속기의 설계 목적은 실제로 이런 분들이 빠르게 시작하도록 격려하는 것입니다. 그러나 더 중요한 것은 시작해서 적절한 에이전트 코딩을 수행하는 것이지, 좋지 못한 코드를 작성하는 것이 아니라는 점입니다. 최상의 실무 관행과 검증된 기술을 사용하여 신뢰할 수 있고 안전한 코드를 생성해야 합니다. 따라서 저희는 커뮤니티에서 검증한 최상의 실무 관행을 제공하는 교육 과정을 만들었으며, 이는 안전하고 견고하며 작동하는 코드를 구현할 것입니다. >> 지금은 개발자가 되기에 최고의 시대입니다. AI 코딩 도구를 사용하는 개발자들로부터 보이는 실제 상황은 그들이 더 많은 코드를 작성할 수 있고, 더 창의적이며, 이전에 할 수 있었던 어느 때보다도 빠르게 아이디어를 탐구할 수 있다는 것입니다.',
+      '따라서 AI 코딩은 개발자들에게 정말로 엄청나게 흥미롭습니다. 왜냐하면 그들이 초고속으로 프로토타입을 만들고, 시도하고, 배울 수 있기 때문입니다. 정말로 흥미로운 일입니다. >> 이 파트너십을 통해 더 많은 사람들이 올바른 방식으로 AI를 사용하는 방법을 정말로 배우도록 도울 수 있기를 바랍니다. 이는 모두가 경험하고 있는 탐구 단계입니다. 그러나 사람들을 모음으로써 이것은 커뮤니티 기반의 학습이 되며, 제 관점에서는 이것이 매우 높은 가치를 지닙니다. >> AI 가속기 프로젝트에 참여하는 한 가지 장점은 서로 다른 에이전트 제공자 간에 전환하고 변경할 수 있다는 것입니다. 따라서 현재 저희는 Kuro, Codex, 그리고 GitHub Copilot을 가지고 있습니다. 그리고 >> [music] >> [music] >> 매월 저는 새로운 제공자로 변경하기로 결정할 수 있습니다. 그들은 자신의 스캐폴딩과 자신의 도구 세트를 가지고 있습니다.',
+      '저는 서로 다른 모델 유형으로 실험하고 시도할 수 있으며, 이를 통해 이러한 다양한 에이전트에 대한 이해를 강화할 수 있으며, 이것은 저에게 더 나은 이해를 제공합니다. 제가 이것을 직장으로 가져갈 때, 이러한 모델이 어떻게 작동할지에 대한 이해입니다. >> 저희는 이미 모든 기술 전문가가 AI 교육과 과정에 참여하도록 의무화했습니다[music]. 그들이 최신 기술을 이해하고, 최신 기술을 사용하여 코딩할 수 있도록 보장하기 위해서입니다.',
+      '저는 이 과정이 기술 전문가에게 매우 적합하다고 생각합니다. 왜냐하면 서로 다른 모델과 기술의 발전이 매우 빠르기 때문에, 저희[music]가 오늘날 알고 있는 것은 내일 구식이 될 수 있기 때문입니다. 또는 그래서, 저는 저희[music]팀이 항상 최신 기술을 갖추도록 보장하고 싶으며, 그들이 다양한 도구의 최신 소식을 이해하고 이 기술을 활용하도록 합니다. >> [music]',
+    ],
+    paragraphsJa: [
+      '[music] >> 私たちはまだ、エージェント・コーディング・ツールの採用が遅い開発者のグループが存在することに気づいています。AI アクセラレータは実際には、これらの人たちが迅速に始めるよう促すために設計されています。しかし、より重要なのは、開始して適切なエージェント・コーディングを行うことです。悪いコードを書くのではなく、ベストプラクティスと既知の技術を使用して、信頼性と安全性のあるコードを生成することです。ですから、私たちはコミュニティで検証されたベストプラクティスを提供するコースを作成しました。これにより、安全で堅牢で、実装可能なコードが実現します。>> 今は開発者になるための最良の時代です。AI コーディング・ツールを使用している開発者から見られる実態は、彼らがより多くのコードを書くことができ、より創意的であり、以前のいかなる時点よりも速くアイデアを探索できるということです。',
+      'ですから、AI コーディングは開発者にとって本当にすごく興奮的です。なぜなら、彼らは超高速でプロトタイプを作成し、試行し、学習することができるからです。本当に興奮的です。>> このパートナーシップを通じて、より多くの人々が本当に正しい方法で AI を使用することを学べるよう支援できることを願っています。これは誰もが経験している探索段階です。しかし、人々を一堂に集めることで、それはコミュニティ・ベースの学習となり、私の見方では非常に高い価値があります。>> AI アクセラレータプログラムに参加することの利点の1つは、異なるエージェント・プロバイダーを切り替え、変更することができることだと思います。ですから、今は Kuro、Codex、そして GitHub Copilot があります。そして>> [music] >> 毎月、新しいプロバイダーに変更することを決定できます。彼らは独自のスキャフォルディングを持っており、独自のツールセットを持っています。',
+      '異なるモデルタイプで実験と試行ができることで、職場に戻したときにこれらのモデルがどのように機能するかについて、より良い理解が得られます。>> 私たちはすべてのテクノロジープロフェッショナルに AI トレーニングとコース [music] への参加を義務付けています。これにより、彼らが最新のテクノロジーを理解し、最新のテクノロジーを使用してコーディングできることを確認しています。',
+      'このコースは技術専門家にとって非常に適切であると感じています。異なるモデルとテクノロジーが非常に迅速に発展しているため、私たち [music] 今日知っていることは明日には時代遅れになる可能性があります。ですから、私たちの [music] チームが常に最新のテクノロジーで装備されていることを確認したいのです。彼らは異なるツールからの最新情報を理解し、このテクノロジーを活用しています。>> [music]',
+    ],
+    translatedAt: '2026-06-28',
+    translationSource: 'claude',
+    translationModel: 'haiku',
+  },
 };
 
 export function getVideoTranscript(videoId: string): VideoTranscript | undefined {

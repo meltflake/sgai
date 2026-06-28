@@ -120,8 +120,8 @@ const SPEAKER_REGISTRY: Record<
     speakerType: 'government',
   },
   'chan chun sing': {
-    speakerTitle: '公共服务部长',
-    speakerTitleEn: 'Minister-in-charge of Public Service, Singapore',
+    speakerTitle: '新加坡国防部长',
+    speakerTitleEn: 'Minister for Defence, Singapore',
     speakerType: 'government',
   },
   'ong ye kung': {
