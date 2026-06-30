@@ -1447,7 +1447,7 @@ Strategically, this moves AI Verify from tools and frameworks into market infras
         sourceJa: '個人データ保護委員会 (PDPC)',
         sourceOrgUrl: 'https://www.pdpc.gov.sg/',
         sourceUrl:
-          'https://www.pdpc.gov.sg/guidelines-and-consultation/2024/02/advisory-guidelines-on-use-of-personal-data-in-ai-recommendation-and-decision-systems',
+          'https://www.pdpc.gov.sg/organisations/regulations-decisions/regulatory-guidance/advisory-guidelines-on-use-of-personal-data-in-ai-recommendation-and-decision-systems',
         summary: 'PDPC 明确 PDPA 在 AI 推荐与决策系统中的合规边界——为企业用个人数据训练和运行 AI 提供确定性。',
         summaryKo:
           'PDPC가 AI 추천 및 의사결정 시스템에서 PDPA의 준수 경계를 명확히 함으로써, 기업이 개인정보를 사용하여 AI를 훈련하고 운영하는 데 명확성을 제공합니다.',

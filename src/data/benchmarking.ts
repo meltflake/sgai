@@ -5619,7 +5619,7 @@ export const regionDetails: RegionDetail[] = [
             labelKo: 'Pan-Canadian AI Strategy 공식 페이지',
             labelJa: 'Pan-Canadian AI Strategy 公式ページ',
             labelEn: 'Pan-Canadian AI Strategy (ISED)',
-            url: 'https://ised-isde.canada.ca/site/ai-strategy/en/pan-canadian-artificial-intelligence-strategy',
+            url: 'https://ised-isde.canada.ca/site/ised/en/pan-canadian-artificial-intelligence-strategy',
           },
           {
             label: 'CIFAR Pan-Canadian AI Strategy',
@@ -5673,7 +5673,7 @@ export const regionDetails: RegionDetail[] = [
           {
             label: 'Pan-Canadian AI Strategy（ISED）',
             labelEn: 'Pan-Canadian AI Strategy (ISED)',
-            url: 'https://ised-isde.canada.ca/site/ai-strategy/en/pan-canadian-artificial-intelligence-strategy',
+            url: 'https://ised-isde.canada.ca/site/ised/en/pan-canadian-artificial-intelligence-strategy',
           },
         ],
       },
@@ -5719,7 +5719,7 @@ export const regionDetails: RegionDetail[] = [
           {
             label: 'Pan-Canadian AI Strategy（ISED）',
             labelEn: 'Pan-Canadian AI Strategy (ISED)',
-            url: 'https://ised-isde.canada.ca/site/ai-strategy/en/pan-canadian-artificial-intelligence-strategy',
+            url: 'https://ised-isde.canada.ca/site/ised/en/pan-canadian-artificial-intelligence-strategy',
           },
           {
             label: 'CIFAR Pan-Canadian AI Strategy',
@@ -5746,7 +5746,7 @@ export const regionDetails: RegionDetail[] = [
           {
             label: 'Pan-Canadian AI Strategy（ISED）',
             labelEn: 'Pan-Canadian AI Strategy (ISED)',
-            url: 'https://ised-isde.canada.ca/site/ai-strategy/en/pan-canadian-artificial-intelligence-strategy',
+            url: 'https://ised-isde.canada.ca/site/ised/en/pan-canadian-artificial-intelligence-strategy',
           },
         ],
       },
@@ -5878,7 +5878,7 @@ export const regionDetails: RegionDetail[] = [
             labelKo: 'CAISI 공식 웹사이트',
             labelJa: 'Pan-Canadian AI Strategy（ISED、CAISI コンテキスト含む）',
             labelEn: 'Pan-Canadian AI Strategy (ISED, CAISI context)',
-            url: 'https://ised-isde.canada.ca/site/ai-strategy/en/pan-canadian-artificial-intelligence-strategy',
+            url: 'https://ised-isde.canada.ca/site/ised/en/pan-canadian-artificial-intelligence-strategy',
           },
         ],
       },
@@ -5912,7 +5912,7 @@ export const regionDetails: RegionDetail[] = [
           {
             label: 'Pan-Canadian AI Strategy（ISED）',
             labelEn: 'Pan-Canadian AI Strategy (ISED)',
-            url: 'https://ised-isde.canada.ca/site/ai-strategy/en/pan-canadian-artificial-intelligence-strategy',
+            url: 'https://ised-isde.canada.ca/site/ised/en/pan-canadian-artificial-intelligence-strategy',
           },
         ],
       },
@@ -5991,7 +5991,7 @@ export const regionDetails: RegionDetail[] = [
           {
             label: 'Pan-Canadian AI Strategy（ISED）',
             labelEn: 'Pan-Canadian AI Strategy (ISED)',
-            url: 'https://ised-isde.canada.ca/site/ai-strategy/en/pan-canadian-artificial-intelligence-strategy',
+            url: 'https://ised-isde.canada.ca/site/ised/en/pan-canadian-artificial-intelligence-strategy',
           },
         ],
       },
