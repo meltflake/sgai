@@ -3,6 +3,8 @@
 sgai.md 每个页面的数据来源、更新频率、对应脚本与命令的统一索引。
 **新加管线时，先读这份。要更新某个页面时，找到对应小节按命令执行。**
 
+> 🔒 **覆盖由机器强制**：哪个 `src/data/*.ts` 归哪条管线，单一真相是 [`scripts/refresh/registry.json`](../scripts/refresh/registry.json)——每条 pipeline 的 `targets[]` + 顶层 `editorial[]`。`scripts/evals/coverage-audit/check.ts`（weekly evals + CI 硬门）断言每个数据文件都有归属、无 orphan、无 stale 路径。本文档的状态列是人读副本，**以 registry 为准**；改了管线产物记得同步 registry `targets`。
+
 ---
 
 ## 设计原则
@@ -157,15 +159,16 @@ npx tsx scripts/refresh/ecosystem/run.ts --limit=5
 
 - **数据**: `src/data/tracker.ts`（53 KB / 6 dimensions：investment / talent / compute / adoption / research / governance）
 - **来源**: Stanford AI Index、IMD WCY、Tortoise GAII、政府发布数（年度）
-- **现状**: ❌ 无 pipeline
-- **建议**: 半自动——脚本下载报告 PDF → 抽数 → 人工审核
+- **现状**: ✅ auto-PR pipeline（已建，half-yearly）；`scripts/refresh/tracker/run.ts` 仅追踪新数据点，落库数字仍需人工提取
+- **更新命令**: `npx tsx scripts/refresh/tracker/run.ts --dry-run --limit=3`
 - **频率**: 半年/年
 
 #### `/benchmarking` + `/benchmarking/[region]`
 
 - **数据**: `src/data/benchmarking.ts`（58 KB / 23 regions）
 - **来源**: 同 tracker
-- **现状**: ❌ 无 pipeline
+- **现状**: ✅ auto-PR pipeline（已建，half-yearly）；`scripts/refresh/benchmarking/run.ts` 仅追踪新年度报告，数字仍需人工提取
+- **更新命令**: `npx tsx scripts/refresh/benchmarking/run.ts --dry-run --limit=3`
 - **频率**: 年级
 
 #### `/levers` + `/levers/[id]`
@@ -194,14 +197,16 @@ npx tsx scripts/refresh/levers/run.ts --limit=3
 
 - **数据**: `src/data/talent.ts`（41 KB / 8 programmes + expandable profiles）
 - **来源**: AISG / SkillsFuture / IMDA 公布数字
-- **现状**: ❌ 无 pipeline
+- **现状**: ✅ auto-PR pipeline（已建，half-yearly）；新条目入 `autoDiscovered[]` 待人工 promote
+- **更新命令**: `npx tsx scripts/refresh/talent/run.ts --dry-run --limit=3`
 - **频率**: 半年
 
 #### `/startups`
 
 - **数据**: `src/data/startups.ts`（13 KB / unicorns, exits, investors）
 - **来源**: Crunchbase / e27 / 自研
-- **现状**: ❌ 无 pipeline
+- **现状**: ✅ auto-PR pipeline（已建，quarterly）；新条目入 `autoDiscovered[]` 待人工 promote
+- **更新命令**: `npx tsx scripts/refresh/startups/run.ts --dry-run --limit=3`
 - **i18n 注意**: `Unicorn.name` 没有 zh/en 区分（多英文原名）；`startups.ts` 是 i18n 双字段覆盖率最低的文件之一
 - **频率**: 季度
 

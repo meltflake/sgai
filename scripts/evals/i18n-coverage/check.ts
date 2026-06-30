@@ -258,11 +258,23 @@ interface SitemapIssue {
   missing: string[];
 }
 
-function classifyUrl(u: string, origin: string): { lang: 'en' | 'zh' | 'ja'; path: string } | null {
+type SiteLang = 'en' | 'zh' | 'ja' | 'zh-tw' | 'ko';
+
+// The site ships 5 locales. Strip whichever locale prefix a URL carries to get
+// its canonical (en-relative) path, so all locale variants of one page collapse
+// to a single byPath key. Order matters: 'zh-tw' must be tested before 'zh'.
+// (Before this handled ko/zh-tw, every /ko/* and /zh-tw/* URL fell through to
+// the `en` branch keyed by its full prefixed path — 2129 phantom "missing zh,ja"
+// parity failures, since the real siblings live at the unprefixed path.)
+function classifyUrl(u: string, origin: string): { lang: SiteLang; path: string } | null {
   if (!u.startsWith(origin)) return null;
   const tail = u.slice(origin.length);
-  if (tail.startsWith('/zh/') || tail === '/zh') return { lang: 'zh', path: tail.replace(/^\/zh/, '') || '/' };
-  if (tail.startsWith('/ja/') || tail === '/ja') return { lang: 'ja', path: tail.replace(/^\/ja/, '') || '/' };
+  for (const lang of ['zh-tw', 'zh', 'ja', 'ko'] as const) {
+    const prefix = `/${lang}`;
+    if (tail === prefix || tail.startsWith(`${prefix}/`)) {
+      return { lang, path: tail.slice(prefix.length) || '/' };
+    }
+  }
   return { lang: 'en', path: tail || '/' };
 }
 
@@ -277,11 +289,11 @@ function runLayerB(): { issues: SitemapIssue[]; totalUrls: number; passed: boole
   const m = first.match(/^(https?:\/\/[^/]+)/);
   const origin = m ? m[1] : '';
 
-  const byPath = new Map<string, Set<'en' | 'zh' | 'ja'>>();
+  const byPath = new Map<string, Set<SiteLang>>();
   for (const u of urls) {
     const c = classifyUrl(u, origin);
     if (!c) continue;
-    const set = byPath.get(c.path) ?? new Set();
+    const set = byPath.get(c.path) ?? new Set<SiteLang>();
     set.add(c.lang);
     byPath.set(c.path, set);
   }
@@ -290,6 +302,11 @@ function runLayerB(): { issues: SitemapIssue[]; totalUrls: number; passed: boole
   // Everywhere else, three-language parity is required.
   const SINGLE_OK = /^\/(blog|fieldnotes|updates)\//;
 
+  // Parity is enforced for the mandatory trio only — zh (source) + en + ja
+  // (CLAUDE.md: only *En + *Ja data fields are required). ko and zh-tw are
+  // best-effort locales (ko backfilling, zh-tw OpenCC-derived); their pages are
+  // still recorded above so they don't pollute the en bucket, but their absence
+  // is not a parity failure.
   const issues: SitemapIssue[] = [];
   for (const [path, langs] of byPath) {
     const missing: string[] = [];
