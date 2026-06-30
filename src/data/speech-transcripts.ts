@@ -385,7 +385,6 @@ export const speechTranscripts: Record<string, SpeechTranscript> = {
     fetchedAt: `2026-05-02`,
     source: 'mddi-newsroom',
     paragraphs: [
-      `本文已从早期版本的网站迁移过来——格式可能有不一致之处。`,
       `数码发展及新闻部高级政务部长 Janil Puthucheary 博士在「新加坡国际网络周」（SICW）AI 高级别讨论会上的主旨演讲（2024 年 10 月 16 日）`,
       `AI 能被安全地使用吗？`,
       `各位阁下、`,
@@ -439,7 +438,6 @@ export const speechTranscripts: Record<string, SpeechTranscript> = {
       `20. 感谢邀请我今天来。祝大家会议富有成效、网络周愉快。`,
     ],
     paragraphsEn: [
-      `This article has been migrated from an earlier version of the site and may display formatting inconsistencies.`,
       `Keynote Address by SMS Janil Puthucheary at the Singapore International Cyber Week (SICW) High-Level Panel on AI on 16 Oct 2024`,
       `CAN AI BE SECURE?`,
       `Your excellencies,`,
@@ -1089,7 +1087,6 @@ export const speechTranscripts: Record<string, SpeechTranscript> = {
     fetchedAt: `2026-05-02`,
     source: 'mddi-newsroom',
     paragraphs: [
-      `本文已从早期版本的网站迁移过来——格式可能有不一致之处。`,
       `Tam Huynh 助理秘书长，`,
       `AiSP 成员、`,
       `各位女士、先生：`,
@@ -1139,7 +1136,6 @@ export const speechTranscripts: Record<string, SpeechTranscript> = {
       `祝大家今天的会议讨论富有成效。非常感谢。`,
     ],
     paragraphsEn: [
-      `This article has been migrated from an earlier version of the site and may display formatting inconsistencies.`,
       `Assistant Secretary Mr. Tam Huynh,`,
       `AiSP Members,`,
       `Ladies and gentlemen,`,
@@ -1271,7 +1267,6 @@ export const speechTranscripts: Record<string, SpeechTranscript> = {
     fetchedAt: `2026-05-02`,
     source: 'mddi-newsroom',
     paragraphs: [
-      `本文已从早期版本的网站迁移过来——格式可能有不一致之处。`,
       `数码发展及新闻部高级政务部长 Tan Kiat How 在「亚洲人工智能节」（AIFA）上的开幕致辞（2025 年 1 月 17 日）`,
       `新加坡中小企业商会（ASME）会长 Ang Yuit 先生，`,
       `各位女士、先生：`,
@@ -1325,7 +1320,6 @@ export const speechTranscripts: Record<string, SpeechTranscript> = {
       `43. 谢谢。`,
     ],
     paragraphsEn: [
-      `This article has been migrated from an earlier version of the site and may display formatting inconsistencies.`,
       `Opening Address by Mr Tan Kiat How, Senior Minister of State, Ministry of Digital Development and Information, at the Artificial Intelligence Festival Asia (AIFA) (17 January 2025)`,
       `Mr Ang Yuit, President, Association of Small and Medium Enterprises`,
       `Ladies and Gentlemen`,
@@ -1402,7 +1396,6 @@ export const speechTranscripts: Record<string, SpeechTranscript> = {
     fetchedAt: `2026-05-02`,
     source: 'mddi-newsroom',
     paragraphs: [
-      `本文已从早期版本的网站迁移过来——格式可能有不一致之处。`,
       `SingHealth 集团首席执行官 Ng Wai Hoe 教授，`,
       `Duke-NUS 医学院研究高级副院长 Patrick Tan 副教授，`,
       `A*STAR 生物医学研究理事会助理首席执行官 Lisa Ooi 博士，`,
@@ -1470,7 +1463,6 @@ export const speechTranscripts: Record<string, SpeechTranscript> = {
       `祝大家峰会顺利。`,
     ],
     paragraphsEn: [
-      `This article has been migrated from an earlier version of the site and may display formatting inconsistencies.`,
       `Professor Ng Wai Hoe, Group CEO of SingHealth`,
       `Associate Professor Patrick Tan, Senior Vice-Dean of Research at Duke-NUS Medical School`,
       `Dr Lisa Ooi, Assistant Chief Executive of the Biomedical Research Council at A*STAR`,
@@ -1658,7 +1650,6 @@ export const speechTranscripts: Record<string, SpeechTranscript> = {
     fetchedAt: `2026-05-02`,
     source: 'mddi-newsroom',
     paragraphs: [
-      `本文已从早期版本的网站迁移过来——格式可能有不一致之处。`,
       `数码发展及新闻部高级政务部长 Tan Kiat How 在「医学 AI 中心」（C-AIM）启动仪式上的开幕致辞（2024 年 9 月 30 日）`,
       `新加坡李光前医学院（LKC Medicine）治理委员会主席 Lim Chuan Poh 先生；`,
       `新加坡全国医疗集团（NHG）集团首席执行官 Joe Sim 教授；`,
@@ -1688,7 +1679,6 @@ export const speechTranscripts: Record<string, SpeechTranscript> = {
       `21. 非常感谢。`,
     ],
     paragraphsEn: [
-      `This article has been migrated from an earlier version of the site and may display formatting inconsistencies.`,
       `OPENING ADDRESS BY SENIOR MINISTER OF STATE, MINISTRY OF DIGITAL DEVELOPMENT AND INFORMATION, MR TAN KIAT HOW AT THE LAUNCH OF CENTRE AI IN MEDICINE (C-AIM) ON 30 SEP 2024`,
       `Mr Lim Chuan Poh, Chairman of the Governing Board at LKC Medicine;`,
       `Professor Joe Sim, Group CEO of the National Healthcare Group;`,
@@ -1980,7 +1970,6 @@ export const speechTranscripts: Record<string, SpeechTranscript> = {
     fetchedAt: `2026-05-02`,
     source: 'mddi-newsroom',
     paragraphs: [
-      `本文已从早期版本的网站迁移过来——格式可能有不一致之处。`,
       `IMDA、CSA 与 GovTech 的同事们；`,
       `奖学金获得者，与各位家长、家人；`,
       `各位女士、先生：`,
@@ -2009,7 +1998,6 @@ export const speechTranscripts: Record<string, SpeechTranscript> = {
       `谢谢。`,
     ],
     paragraphsEn: [
-      `This article has been migrated from an earlier version of the site and may display formatting inconsistencies.`,
       `Colleagues from IMDA, CSA and GovTech`,
       `Scholarship Recipients, Parents & Families,`,
       `Ladies & Gentlemen,`,
@@ -2702,7 +2690,6 @@ export const speechTranscripts: Record<string, SpeechTranscript> = {
     fetchedAt: `2026-05-02`,
     source: 'mddi-newsroom',
     paragraphs: [
-      `本文已从早期版本的网站迁移过来——格式可能有不一致之处。`,
       `数码发展及新闻部政务次长 Rahayu Mahzam 在「IBM AI 时代未来劳动力」活动上的开幕致辞（2024 年 8 月 23 日）`,
       `IBM 全球企业社会责任副总裁兼首席影响官 Justina Nixon-Saintil 女士、`,
       `IBM 亚太区企业社会责任负责人 Yean Feng Yue 女士、`,
@@ -2745,7 +2732,6 @@ export const speechTranscripts: Record<string, SpeechTranscript> = {
       `谢谢。`,
     ],
     paragraphsEn: [
-      `This article has been migrated from an earlier version of the site and may display formatting inconsistencies.`,
       `Opening Remarks by Ms Rahayu Mahzam, Minister of State for Digital Development and Information, At IBM Future Workforce in AI Era (23 August 2024)`,
       `Justina Nixon - Saintil, Vice President for Corporate Social Responsibility and Chief Impact Officer, IBM Global`,
       `Yean Feng Yue, Corporate Social Responsibility Leader, IBM APAC`,
@@ -3026,7 +3012,6 @@ export const speechTranscripts: Record<string, SpeechTranscript> = {
     fetchedAt: `2026-05-02`,
     source: 'mddi-newsroom',
     paragraphs: [
-      `本文已从早期版本的网站迁移过来——格式可能有不一致之处。`,
       `Yaacob Ibrahim 博士、新加坡电脑学会（SCS）会长 Chong Yoke Sin 博士、各位嘉宾、女士、先生：`,
       `各位早安。首先——我很高兴再次出席「Tech3 Forum」。这一论坛由 SCS 每年组织——把公司与专业人士聚到一起——讨论增强 ICT 行业活力的想法与策略。鉴于数字化对经济的「广泛影响」——SCS 近年扩大了参与者范围——纳入其他行业的专业人士。整体上——这一论坛仍是讨论「支撑数字转型的技术、人才与趋势」的重要平台。`,
       `今年的主题——「黑天鹅与蓝海：新数字范式」——非常贴合时代。我们今天的聚会——大部分是虚拟的，不是常规的实体——是这场疫情所造成的处境与挑战的恰当反映。它也凝结了——「借力技术」是克服 COVID-19 挑战、保持相关的关键。也有人会说——SCS 这样办一场虚拟活动是合适的——还有谁比 SCS 更适合给我们示范这些「新做法」呢？`,
@@ -3052,7 +3037,6 @@ export const speechTranscripts: Record<string, SpeechTranscript> = {
       `演讲 PDF 版本`,
     ],
     paragraphsEn: [
-      `This article has been migrated from an earlier version of the site and may display formatting inconsistencies.`,
       `Dr Yaacob Ibrahim Dr Chong Yoke Sin, President of the Singapore Computer Society Distinguished Guests Ladies and Gentlemen`,
       `Good morning everyone. First, I am happy to join you all again at the Tech3 Forum. This Forum organised annually by SCS brings companies and professionals together to discuss ideas and strategies to enhance the vibrancy of our ICT sector. Given the pervasive impact of digitalisation on the economy, SCS has broadened the participation in recent years to include professionals from other sectors. Overall, the Forum remains an important platform to discuss the technology, talent and trends that underpin digital transformation.`,
       `This year’s theme, Black Swans and Blue Oceans: A New Digital Paradigm, is apt for our times. Our gathering today which is mostly virtual; not the usual physical in the dimensional sense, is an apt reflection of the situation and the challenges posed by the pandemic. It also encapsulates how leveraging technology is key to overcoming the challenges posed by COVID-19 and staying relevant. Some would argue that it is appropriate that the SCS is doing a virtual event like this – who better to show the way on some of these new ways of doing things.`,
@@ -3420,7 +3404,6 @@ export const speechTranscripts: Record<string, SpeechTranscript> = {
     fetchedAt: `2026-05-02`,
     source: 'mddi-newsroom',
     paragraphs: [
-      `本文已从早期版本的网站迁移过来——格式可能有不一致之处。`,
       `尊敬的尹力书记、庄荣文主任、殷勇市长，各位嘉宾大家好。`,
       `感谢北京市政府邀请我出席全球数字经济大会，`,
       `也诚心感谢主办方指定新加坡为主宾国。`,
@@ -3446,7 +3429,6 @@ export const speechTranscripts: Record<string, SpeechTranscript> = {
       `演讲 PDF 版本`,
     ],
     paragraphsEn: [
-      `This article has been migrated from an earlier version of the site and may display formatting inconsistencies.`,
       `尊敬的尹力书记，庄荣文主任，殷勇市长，各位嘉宾大家好.`,
       `感谢北京市政府邀请我出席全球数字经济大会，`,
       `也诚心感谢主办方指定新加坡为主宾国`,
@@ -3493,7 +3475,6 @@ export const speechTranscripts: Record<string, SpeechTranscript> = {
     fetchedAt: `2026-05-02`,
     source: 'mddi-newsroom',
     paragraphs: [
-      `本文已从早期版本的网站迁移过来——格式可能有不一致之处。`,
       `Google Cloud 亚太区副总裁 Karan Bajwa 先生、各位同仁与朋友——早安。`,
       `我很高兴出席「Trailblazers」倡议的启动。这是 Google、新加坡通讯及新闻部（MCI）、智慧国与数码政府办公室（SNDGO）、新加坡数码产业局（DISG）之间——一次及时而激动人心的伙伴关系。感谢各位与我们一起推进这件事。`,
       `驾驭 AI 的变革潜能`,
@@ -3527,7 +3508,6 @@ export const speechTranscripts: Record<string, SpeechTranscript> = {
       `演讲 PDF 版本`,
     ],
     paragraphsEn: [
-      `This article has been migrated from an earlier version of the site and may display formatting inconsistencies.`,
       `Mr Karan Bajwa, Vice President Asia Pacific, Google Cloud, Colleagues and friends, Good morning.`,
       `I’m thrilled to be here for the launch of the Trailblazers initiative. This is a timely and exciting partnership between Google, the Ministry for Communications and Information (MCI), the Smart Nation and Digital Government Office (SNDGO), and Digital Industry Singapore (DISG). Thank you for working with us on it.`,
       `Harnessing the Transformative Potential of AI`,
@@ -3582,7 +3562,6 @@ export const speechTranscripts: Record<string, SpeechTranscript> = {
     fetchedAt: `2026-05-02`,
     source: 'mddi-newsroom',
     paragraphs: [
-      `本文已从早期版本的网站迁移过来——格式可能有不一致之处。`,
       `Q1) 您能分享新加坡在「确保可信 AI」上的愿景与努力吗？`,
       `AI 安全如今是大小国家共同的关切。同时——我相信我们都看到 AI 能带来的巨大机会。AI 显然有变革潜力——我们相信它能被用于公共利益。对于一个根本上受劳动力规模约束的国家——新加坡——我们对 AI 的兴趣——其实根植于它作为「力量倍增器」的潜力。`,
       `但我们也清楚——AI 的广泛使用——伴随多个领域不安感的上升——包括它如何被用于诈骗、网络攻击、误导与虚假信息。构建可信生态——是「为公共利益借力 AI」的核心基础。这意味着——把标准与治理框架放就位——确保 AI 被安全、负责任地开发与部署——并在缓释风险的同时为创新留出空间。`,
@@ -3604,7 +3583,6 @@ export const speechTranscripts: Record<string, SpeechTranscript> = {
       `演讲实录的 PDF 版本`,
     ],
     paragraphsEn: [
-      `This article has been migrated from an earlier version of the site and may display formatting inconsistencies.`,
       `Q1) Could you share the vision and efforts of Singapore to ensure trustworthy AI in your country?`,
       `AI safety is now an issue of concern for all countries, both large and small. At the same time, I think we all see the tremendous opportunities that AI can bring. AI certainly has transformative potential, and we believe can be harnessed for the public good. And for a country like Singapore that is fundamentally constrained by the size of our workforce, our interest in AI is really grounded in its potential as a force multiplier.`,
       `However, we are also aware that the use of AI on a widespread basis is accompanied by a growing sense of unease in several areas, including how they can be used for scams, cyberattacks, and for misinformation and disinformation. Building a trusted ecosystem is the core foundation for harnessing AI for the public good. And this means putting in place standards and governance frameworks to ensure that AI is developed and deployed safely and responsibly, and that we can mitigate risks, while maximising the room for innovation.`,
@@ -3643,7 +3621,6 @@ export const speechTranscripts: Record<string, SpeechTranscript> = {
     fetchedAt: `2026-05-02`,
     source: 'mddi-newsroom',
     paragraphs: [
-      `本文已从早期版本的网站迁移过来——格式可能有不一致之处。`,
       `1. 感谢 Google 再次接待我。我看到台下许多同仁——很高兴回来。两周前我在瑞士达沃斯——见到许多 Google 同仁。政府与 Google 的所有活动都指向一个好目的——我们都关心 AI 能做什么。不只是为公司或行业——也许听起来宏大或过分雄心——我们也关心——我们能做什么帮助这个世界。`,
       `2. 在达沃斯——AI 不出意外地高居议程。围绕 AI 的一个问题——是「我们到底需要什么才能把它治理好」。与新加坡生态打交道的人会注意到——在治理上——我们不会只把它当作监管。监管当然是良好治理的一部分——但在数字、特别是 AI 上——我们必须确保有支撑活动的良好基础设施。`,
       `3. 因此——当我们提出更新版《国家 AI 战略》时——我们认为——产业、研究、政府这些「活动驱动力」——只能在「基础设施」语境的支撑下——才能走得很远。这种基础设施包括——算力与工具的可获得性、各项治理框架的就位。所以——基础设施（以及与之配套的「公用事业」）——是绝对必要的。`,
@@ -3660,7 +3637,6 @@ export const speechTranscripts: Record<string, SpeechTranscript> = {
       `演讲 PDF 版本`,
     ],
     paragraphsEn: [
-      `This article has been migrated from an earlier version of the site and may display formatting inconsistencies.`,
       `1. Thank you Google for hosting me again. I see many colleagues in the audience, and I am happy to be back. Two weeks ago, I was in Davos, Switzerland where I met many colleagues from Google. The activities that the Government has with Google have are all towards a good cause - we are all interested in seeing what AI can do. Not just for companies or industries - but it may sound lofty and overly ambitious - we are interested to see what we can do to help the world.`,
       `2. In Davos, unsurprisingly, AI was very high on the agenda. One of the questions around AI is about what we really need to govern it well. For those who have interacted with the Singaporean ecosystem, they notice that in terms of governance, we tend not to just think of it as just regulations. Regulations are certainly part of good governance, but in digital, and certainly in AI, we have to make sure there is good infrastructure to support the activities.`,
       `3. So, when we put forward our refreshed National AI Strategy, we felt that the activity drivers of industry, research, and government can only push far ahead if supported within the context of that infrastructure. Such infrastructure would include having the compute and tools available, and the various governance frameworks in place. So, the infrastructure and utilities, which go along with that infrastructure, are absolutely essential.`,
@@ -3779,7 +3755,6 @@ export const speechTranscripts: Record<string, SpeechTranscript> = {
     fetchedAt: `2026-05-02`,
     source: 'mddi-newsroom',
     paragraphs: [
-      `本文已从早期版本的网站迁移过来——格式可能有不一致之处。`,
       `Mrs Josephine Teo（数码发展及新闻部部长）在保诚（Prudential）新加坡全球 AI 实验室启动仪式上的主旨演讲`,
       `保诚集团首席执行官 Anil Wadhwani 先生，`,
       `各位嘉宾，`,
@@ -3821,7 +3796,6 @@ export const speechTranscripts: Record<string, SpeechTranscript> = {
       `17. 谢谢。`,
     ],
     paragraphsEn: [
-      `This article has been migrated from an earlier version of the site and may display formatting inconsistencies.`,
       `Keynote Address by Mrs Josephine Teo, Minister of Digital Development and Information, at Launch of Prudential’s Global AI Lab in Singapore`,
       `Mr Anil Wadhwani, CEO of Prudential plc`,
       `Distinguished Guests`,
@@ -3886,7 +3860,6 @@ export const speechTranscripts: Record<string, SpeechTranscript> = {
     fetchedAt: `2026-05-02`,
     source: 'mddi-newsroom',
     paragraphs: [
-      `本文已从早期版本的网站迁移过来——格式可能有不一致之处。`,
       `各位阁下、`,
       `产业伙伴、`,
       `朋友们：`,
@@ -3946,7 +3919,6 @@ export const speechTranscripts: Record<string, SpeechTranscript> = {
       `演讲 PDF 版本`,
     ],
     paragraphsEn: [
-      `This article has been migrated from an earlier version of the site and may display formatting inconsistencies.`,
       `Excellencies,`,
       `Industry Partners,`,
       `Friends.`,
@@ -4369,7 +4341,6 @@ export const speechTranscripts: Record<string, SpeechTranscript> = {
     fetchedAt: `2026-05-02`,
     source: 'mddi-newsroom',
     paragraphs: [
-      `本文已从早期版本的网站迁移过来——格式可能有不一致之处。`,
       `MOS Rahayu Mahzam 在巴西马塞约（Maceió）G20 数码经济部长级会议上的发言（2024 年 9 月 13 日）`,
       `优先议题 1：数字包容、普遍且有意义的连通性`,
       `优先议题 2：数字政府——构建可信、包容的数字公共基础设施`,
@@ -4393,7 +4364,6 @@ export const speechTranscripts: Record<string, SpeechTranscript> = {
       `谢谢。`,
     ],
     paragraphsEn: [
-      `This article has been migrated from an earlier version of the site and may display formatting inconsistencies.`,
       `MOS RAHAYU MAHZAM’S INTERVENTIONS AT G20 DIGITAL ECONOMY MINISTERIAL MEETING IN MACEIÓ, BRAZIL (13 SEP 2024)`,
       `Priority Issue 1: Digital Inclusion, Universal and Meaningful Connectivity`,
       `Priority Issue 2: Digital Government: Building a Trustworthy and Inclusive Digital Public Infrastructure`,
@@ -4676,7 +4646,6 @@ export const speechTranscripts: Record<string, SpeechTranscript> = {
     fetchedAt: `2026-05-02`,
     source: 'mddi-newsroom',
     paragraphs: [
-      `本文已从早期版本的网站迁移过来——格式可能有不一致之处。`,
       `新加坡电脑学会（SCS）会长 Chong Yoke Sin 博士、SCS 的朋友与会员、参赛者、学生与各位嘉宾：`,
       `感谢邀请我出席今年的 Splash Awards。希望大家在这一充满挑战的时期都好好的。这一奖项是激发青少年对数字创新兴趣的极佳方式——他们是下一代科技领导者与创新者。`,
       `和 Yoke Sin 一样——我对早些时候看到的项目质量印象极深。所有团队不仅展现了技术能力——还展现了热情与创造力——我祝贺所有参赛者「干得漂亮」。`,
@@ -4708,7 +4677,6 @@ export const speechTranscripts: Record<string, SpeechTranscript> = {
       `谢谢——再次祝贺。`,
     ],
     paragraphsEn: [
-      `This article has been migrated from an earlier version of the site and may display formatting inconsistencies.`,
       `Dr Chong Yoke Sin, President of Singapore Computer Society, Friends and Members of the SCS, Participants, students, and guests,`,
       `Thank you for having me here today at this year’s Splash Awards. I hope everyone is staying well during this very challenging period. The Awards are a fantastic way to spur interest in digital innovation amongst our youths who are the next generation of tech leaders and innovators.`,
       `Like Yoke Sin, I was extremely impressed by the quality of the projects that I saw earlier. All the teams demonstrated passion and creativity, in addition to technical competence and I congratulate all our participants on a job very well done.`,
@@ -4761,7 +4729,6 @@ export const speechTranscripts: Record<string, SpeechTranscript> = {
     fetchedAt: `2026-05-02`,
     source: 'mddi-newsroom',
     paragraphs: [
-      `本文已从早期版本的网站迁移过来——格式可能有不一致之处。`,
       `解锁「数字常态」时代的全部潜能`,
       `各位阁下、各位嘉宾、女士、先生：`,
       `前言`,
@@ -4783,7 +4750,6 @@ export const speechTranscripts: Record<string, SpeechTranscript> = {
       `谢谢。`,
     ],
     paragraphsEn: [
-      `This article has been migrated from an earlier version of the site and may display formatting inconsistencies.`,
       `UNLOCKING THE FULL POTENTIAL OF A DIGITAL-AS-USUAL AGE`,
       `Your Excellencies, Distinguished Guests, Ladies and Gentlemen,`,
       `Introduction`,
@@ -4828,7 +4794,6 @@ export const speechTranscripts: Record<string, SpeechTranscript> = {
     fetchedAt: `2026-05-02`,
     source: 'mddi-newsroom',
     paragraphs: [
-      `本文已从早期版本的网站迁移过来——格式可能有不一致之处。`,
       `数码发展及新闻部高级政务部长 Janil Puthucheary 博士在 EuroCham《AI：超越炒作》报告发布会上的演讲（2024 年 10 月 21 日）`,
       `各位阁下、`,
       `各位嘉宾、`,
@@ -4854,7 +4819,6 @@ export const speechTranscripts: Record<string, SpeechTranscript> = {
       `19. 谢谢——我也期待稍后炉边对话中详细讨论公私合作。`,
     ],
     paragraphsEn: [
-      `This article has been migrated from an earlier version of the site and may display formatting inconsistencies.`,
       `Speech by Dr Janil Puthucheary, Senior Minister of State for Digital Development and Information, at Eurocham’s AI: Beyond the Buzz Report Launch on 21 October 2024`,
       `Excellencies,`,
       `Distinguished guests,`,
@@ -4901,7 +4865,6 @@ export const speechTranscripts: Record<string, SpeechTranscript> = {
     fetchedAt: `2026-05-02`,
     source: 'mddi-newsroom',
     paragraphs: [
-      `本文已从早期版本的网站迁移过来——格式可能有不一致之处。`,
       `下午好，各位女士、先生。非常感谢 Kate Brandt 女士的介绍——也感谢精彩的演讲。我去过 Google 几次——每次来——我都觉得学到点新东西——今天也不例外。可惜的是——每次我来这里——似乎都要来一场小测验。感谢 Google 邀请我——很高兴和大家在一起。`,
       `让我从 Brandt 女士演讲中关于 AI 的一点接续。新加坡去年 12 月发布《国家 AI 战略 2.0》（NAIS 2.0）——刷新了我们「把新加坡推为 AI 领先者、释放其巨大变革潜能」的战略。我们在 NAIS 2.0 之下进行雄心勃勃的投入——包括投入高达 5 亿新元——为 AI 创新提供算力可获得性。`,
       `自那之后——AI 发展的节奏从未停歇。AI 技术与采用持续快速增长。仅上个月——Google 发布了一系列 AI 产品（包括从文本提示生成视频的「Veo」），OpenAI 发布了 GPT-4o。这些进展昭示了 AI 的动态成长与快速「民主化」——也只能强化我们的决心——把 AI 用在「公共利益」上——为新加坡，也为世界。`,
@@ -4918,7 +4881,6 @@ export const speechTranscripts: Record<string, SpeechTranscript> = {
       `谢谢。`,
     ],
     paragraphsEn: [
-      `This article has been migrated from an earlier version of the site and may display formatting inconsistencies.`,
       `Good afternoon, ladies and gentlemen. Thank you very much to Ms Kate Brandt for the introduction, and for the lecture as well. I’ve been to Google a few times, and every time I come here, I feel like I learn something new — today is no different. Unfortunately, it seems like every time I come here, I’ll have to take a quiz. I thank Google for inviting me here today. It is my pleasure to be with all of you.`,
       `Let me pick up from a point that Ms Brandt made in her presentation, which is about AI. Singapore launched our National AI Strategy 2.0 in December last year. NAIS 2.0 sets out our refreshed strategy to propel Singapore as a leader in AI to realise its enormous transformative potential. We are making ambitious investments under NAIS 2.0, including investing up to $500 million to enable access to compute for AI innovation.`,
       `The pace of AI development since then has been relentless. AI tech and adoption continue to grow swiftly. Just last month, Google launched a slew of AI products including Veo, a generative AI model that creates videos from text prompts, while OpenAI released GPT-4o. These developments signal the dynamic growth and rapid democratisation of AI. They only reinforce our resolve to harness AI for the Public Good, both for Singapore and the world.`,
@@ -4958,7 +4920,6 @@ export const speechTranscripts: Record<string, SpeechTranscript> = {
     fetchedAt: `2026-05-02`,
     source: 'mddi-newsroom',
     paragraphs: [
-      `本文已从早期版本的网站迁移过来——格式可能有不一致之处。`,
       `数码发展及新闻部高级政务部长 Tan Kiat How 先生在「新加坡电脑学会（SCS）Splash 论坛」上的演讲（2024 年 10 月 4 日）`,
       `各位早安——欢迎来到首届 SCS Splash 论坛。我很高兴今天能在这里。`,
       `今天的主题是「职业与实习」——正如 Sam Liew 先生刚才所讲——这是非常贴切的主题。我希望今天在场的所有人——都能拥抱前方众多「学习、协作、成长」的机会。`,
@@ -5020,7 +4981,6 @@ export const speechTranscripts: Record<string, SpeechTranscript> = {
       `我以感谢 TIP Alliance 的承诺收尾。这是它的第二个周年——我们希望未来还有更多年——这意味着每个人都还有更多年的辛勤工作。请给他们一阵掌声。非常感谢。`,
     ],
     paragraphsEn: [
-      `This article has been migrated from an earlier version of the site and may display formatting inconsistencies.`,
       `Speech by Mr Tan Kiat How, Senior Minister of State for Digital Development and Information, At Singapore Computer Society (SCS) Splash Forum (4 October 2024)`,
       `Good morning, everyone, and a very warm welcome to the inaugural SCS Splash Forum. It is my real pleasure to be here today.`,
       `Today’s theme is “Careers and Internships”, and I think it’s a very apt theme as described by Mr Sam Liew just now. I hope that all of you here today will embrace the many opportunities for learning, collaboration, and growth that lie ahead.`,
@@ -5105,7 +5065,6 @@ export const speechTranscripts: Record<string, SpeechTranscript> = {
     fetchedAt: `2026-05-02`,
     source: 'mddi-newsroom',
     paragraphs: [
-      `本文已从早期版本的网站迁移过来——格式可能有不一致之处。`,
       `Lee Yi Shyan 先生，`,
       `Liang Xinjun 先生，`,
       `Ho Chee Hin 先生，`,
@@ -5149,7 +5108,6 @@ export const speechTranscripts: Record<string, SpeechTranscript> = {
       `演讲 PDF 版本`,
     ],
     paragraphsEn: [
-      `This article has been migrated from an earlier version of the site and may display formatting inconsistencies.`,
       `Mr Lee Yi Shyan,`,
       `Mr Liang Xinjun,`,
       `Mr Ho Chee Hin,`,
@@ -5375,7 +5333,6 @@ export const speechTranscripts: Record<string, SpeechTranscript> = {
     fetchedAt: `2026-05-02`,
     source: 'mddi-newsroom',
     paragraphs: [
-      `本文已从早期版本的网站迁移过来——格式可能有不一致之处。`,
       `数码发展及新闻部高级政务部长 Tan Kiat How 在 HCLTech AI 实验室媒体发布会上的演讲（2024 年 11 月 4 日）`,
       `1. 印度驻新加坡高级专员 Shilpak Ambule 博士阁下、来自 HCLTech 的朋友们——无论你们扎根本地还是再次来访——欢迎回到新加坡。`,
       `2. 我很高兴出席与 HCLTech 一同庆祝又一里程碑。我们与 HCLTech 已是 40 多年的伙伴——这一伙伴关系经历不同的时代——从硬件，到软件，再到当今的前沿——不只是云服务，还包括 AI 与生成式 AI。`,
@@ -5396,7 +5353,6 @@ export const speechTranscripts: Record<string, SpeechTranscript> = {
       `17. 谢谢。`,
     ],
     paragraphsEn: [
-      `This article has been migrated from an earlier version of the site and may display formatting inconsistencies.`,
       `SPEECH BY SENIOR MINISTER OF STATE FOR DIGITAL DEVELOPMENT AND INFORMATION TAN KIAT HOW AT HCLTECH’S AI LAB MEDIA LAUNCH, 4 NOVEMBER 2024`,
       `1. Your Excellency, Dr Shilpak Ambule, High Commissioner of India to Singapore, friends from HCLTech, whether you are based here or visiting us again, a very warm welcome back to Singapore.`,
       `2. I am very happy to be part of the celebration of another milestone with HCLTech. We have been partners with HCLTech for more than four decades and our partnership has evolved through the different times, starting from hardware to software and now at the cutting edge of technology, looking at not just cloud services, but also AI and generative AI.`,
@@ -5692,7 +5648,6 @@ export const speechTranscripts: Record<string, SpeechTranscript> = {
     fetchedAt: `2026-05-02`,
     source: 'mddi-newsroom',
     paragraphs: [
-      `本文已从早期版本的网站迁移过来——格式可能有不一致之处。`,
       `数码发展及新闻部高级政务部长 Tan Kiat How 先生在 Databricks「Data + AI World Tour 新加坡」上的演讲（2024 年 8 月 30 日）`,
       `Databricks 亚太与日本区高级副总裁兼总经理 Ed Lenta 先生，`,
       `ASEAN 与大中华区副总裁兼总经理 Cecily Ng 女士，`,
@@ -5738,7 +5693,6 @@ export const speechTranscripts: Record<string, SpeechTranscript> = {
       `谢谢。`,
     ],
     paragraphsEn: [
-      `This article has been migrated from an earlier version of the site and may display formatting inconsistencies.`,
       `Speech by Mr Tan Kiat How, Senior Minister of State for Digital Development and Information at the Data + AI World Tour Singapore on 30 August 2024`,
       `Mr Ed Lenta, Senior Vice President and General Manager of Asia Pacific and Japan,`,
       `Ms Cecily Ng, Vice President and General Manager of ASEAN and Greater China,`,
@@ -5809,7 +5763,6 @@ export const speechTranscripts: Record<string, SpeechTranscript> = {
     fetchedAt: `2026-05-02`,
     source: 'mddi-newsroom',
     paragraphs: [
-      `本文已从早期版本的网站迁移过来——格式可能有不一致之处。`,
       `早安——尊敬的与会者与朋友们：`,
       `感谢邀请我今天发言——这是一场把顶级临床医生、数据科学家、创新者聚到一起、应对医疗紧迫问题的活动。我祝贺新加坡国立大学医学组织（NUHS）、新加坡国立大学（NUS）与麻省理工学院（MIT）「Critical Data」组织这一重要活动。`,
       `我有幸在公共服务生涯的多个岗位上与你们的社群合作——在卫生部——与许多人一起开发新加坡国家电子临床医疗记录与医疗 IT；推动学术医学；推进生物医学研究与创新；现在则共同主持政府对「智慧国与数字经济」的资助与发展工作。`,
@@ -5839,7 +5792,6 @@ export const speechTranscripts: Record<string, SpeechTranscript> = {
       `-------------------------------------------------------------------------------------------------------------------------- 1 Identifying Infection Disease Combination Therapy with AI（用 AI 识别感染疾病的联合治疗方案）`,
     ],
     paragraphsEn: [
-      `This article has been migrated from an earlier version of the site and may display formatting inconsistencies.`,
       `Good morning, distinguished participants and friends.`,
       `Thank you for inviting me to speak today in an event bringing together top clinicians, data scientists and innovators to address pressing problems in healthcare. I congratulate National University Health System (NUHS), National University of Singapore (NUS) and the Massachusetts Institute of Technology (MIT) Critical Data for organising this important event.`,
       `I have had the pleasure of working with your community in my various jobs in my public service career – at the Ministry of Health, working with many of you to develop our national electronic clinical medical records and healthcare IT, on developing academic medicine and advancing our work in biomedical sciences research and innovation, and now co-chairing the Govt’s funding and development effort on Smart Nation and the Digital Economy.`,
@@ -6441,7 +6393,6 @@ export const speechTranscripts: Record<string, SpeechTranscript> = {
     fetchedAt: `2026-05-02`,
     source: 'mddi-newsroom',
     paragraphs: [
-      `本文已从早期版本的网站迁移过来——格式可能有不一致之处。`,
       `点击此处观看 Bloomberg.com 上的视频`,
       `[彭博后续与维文部长的离线访谈实录如下。]`,
       `彭博：能介绍下「智慧国」吗？未来 1 到 2 年里有没有想看到的近期目标？因为眼下有一种紧迫感。`,
@@ -6486,7 +6437,6 @@ export const speechTranscripts: Record<string, SpeechTranscript> = {
       `维文·巴拉克里什南医生——「智慧国」倡议主管部长`,
     ],
     paragraphsEn: [
-      `This article has been migrated from an earlier version of the site and may display formatting inconsistencies.`,
       `Click here to view video from Bloomberg.com`,
       `[The transcript of Bloomberg's subsequent offline interview with Minister Vivian Balakrishnan continues below.]`,
       `Bloomberg: Can you tell us about Smart Nation? Are there immediate targets over the next 1 to 2 years that you want to see, because there’s a certain urgency to it now?`,
@@ -7070,28 +7020,24 @@ export const speechTranscripts: Record<string, SpeechTranscript> = {
       fetchedAt: `2026-05-22`,
       source: 'mddi-newsroom',
       paragraphs: [
-        `新闻室 MDDI 对 PQ 的回应：审查 2012 年《个人数据保护法》以应对人工智能生成的推断或衍生数据 国会 MDDI 对 PQ 的回应：审查 2012 年《个人数据保护法》以应对人工智能生成的推断或衍生数据 2026 年 5 月 5 日`,
         `39. 陈立锋先生向数字发展与信息部长提问 (a) 该部是否打算审查 2012 年《个人数据保护法》以应对推断或衍生数据的使用，包括由人工智能系统生成的行为档案；以及 (b) 如果是，哪些原则将指导此类审查。`,
         `答复`,
         `根据《个人数据保护法》，关于可识别个人的数据被视为个人数据，组织有义务保护其掌握或控制的此类数据。这还包括组织在业务过程中从此类个人数据衍生出的关于该个人的数据。`,
         `个人数据保护委员会已发布《在 AI 推荐和决策系统中使用个人数据的咨询指南》。它规定了指导组织和消费者负责任地收集和使用个人数据在 AI 系统中的原则，例如仅将数据用于合法商业目的，并将数据收集限制在所需范围内。`,
       ],
       paragraphsEn: [
-        `Newsroom MDDI&#x27;s Response to PQ on Review of Personal Data Protection Act 2012 to Address Use of Inferred or Derived Data Generated by AI Parliament MDDI&#x27;s Response to PQ on Review of Personal Data Protection Act 2012 to Address Use of Inferred or Derived Data Generated by AI 5 May 2026`,
         `39. Mr Dennis Tan Lip Fong asked the Minister for Digital Development and Information (a) whether the Ministry intends to review the Personal Data Protection Act 2012 to address the use of inferred or derived data, including behavioural profiles generated by artificial intelligence systems; and (b) if so, what principles will guide such a review.`,
         `Answer`,
         `Under the Personal Data Protection Act, data about an identifiable individual is considered personal data, and an organisation has obligations to safeguard such data in its possession or control. This also covers data about the individual that an organisation derives in the course of business from such personal data.`,
         `The Personal Data Protection Commission has published Advisory Guidelines on the Use of Personal Data in AI Recommendation and Decision Systems. It sets out principles to guide organisations and consumers on the responsible collection and use of personal data in AI systems, such as using data only for legitimate business purposes, and limiting data collection to what is needed.`,
       ],
       paragraphsJa: [
-        `ニュースルーム MDDI PQへの回答：人工知能生成の推論または派生データに対応するための2012年『個人データ保護法』の見直し 議会 MDDI PQへの回答：人工知能生成の推論または派生データに対応するための2012年『個人データ保護法』の見直し 2026年5月5日`,
         `39. チェン・リーフェン氏がデジタル開発・情報大臣に質問します：(a) 当該部門は推論またはデリバティブデータの使用に対処するため、2012年の《個人データ保護法》を見直す予定がありますか。これには人工知能システムによって生成された行動プロファイルが含まれます；および (b) もしそうであれば、このようなレビューを導く原則は何ですか。`,
         '回答',
         `《個人データ保護法》に基づけば、個人を特定できるデータは個人データとみなされ、組織はそれが所有または管理するそのようなデータを保護する義務があります。これには、組織が業務プロセス中にそのような個人データから派生した、当該個人に関するデータも含まれます。`,
         `個人データ保護委員会は《AI推奨・意思決定システムにおける個人データ使用ガイドライン》を発表しました。これは、組織および消費者がAIシステムにおいて個人データを責任を持って収集・使用することを導く原則を規定しており、例えば、データを合法的なビジネス目的のためだけに使用すること、および個人データの収集を必要な範囲に限定することが含まれています。`,
       ],
       paragraphsKo: [
-        `언론실 MDDI의 PQ에 대한 응답: 인공지능이 생성한 추론 또는 파생 데이터에 대응하기 위해 2012년 『개인정보보호법』 검토 국회 MDDI의 PQ에 대한 응답: 인공지능이 생성한 추론 또는 파생 데이터에 대응하기 위해 2012년 『개인정보보호법』 검토 2026년 5월 5일`,
         `39. Chen Lifeng 씨가 디지털 발전 및 정보부 장관에게 제기한 질문 (a) 해당 부처가 2012년 개인정보보호법을 검토할 의향이 있는지 여부, 추론 또는 파생 데이터의 사용에 대응하기 위해, 인공지능 시스템이 생성한 행동 프로필을 포함하여; 그리고 (b) 그렇다면, 어떤 원칙들이 이러한 검토를 지도할 것인지.`,
         '답변',
         `개인정보보호법에 따르면, 식별 가능한 개인에 관한 데이터는 개인정보로 간주되며, 조직은 자신이 소유하거나 통제하는 이러한 데이터를 보호할 의무가 있습니다. 여기에는 조직이 업무 과정에서 이러한 개인정보로부터 파생된 해당 개인에 관한 데이터도 포함됩니다.`,
@@ -7133,7 +7079,6 @@ export const speechTranscripts: Record<string, SpeechTranscript> = {
       fetchedAt: `2026-05-22`,
       source: 'mddi-newsroom',
       paragraphs: [
-        `新闻 Josephine Teo部长在2026年国际人工智能安全科学交流大会主论坛致辞 演讲 Josephine Teo部长在2026年国际人工智能安全科学交流大会主论坛致辞 2026年5月18日`,
         `大家早上好。`,
         `我很高兴能欢迎大家，并感谢各位参与国际科学交流2026。我们深切感谢各位对人工智能安全和有意义对话的承诺。新加坡能够成为这样对话的东道主，这对我们来说是一种荣幸，我们不会轻视这一特权。`,
         `在过去的一年中，人工智能的发展继续加速。对于许多更多的组织和个人来说，它从偶尔使用发展到了塑造日常生活的力量。我们可以看到并感受到它对我们如何学习、企业如何运营、政府如何提供服务，甚至公民如何形成观点和做出决定的影响。`,
@@ -7188,7 +7133,6 @@ export const speechTranscripts: Record<string, SpeechTranscript> = {
         `再次感谢你们的到来。`,
       ],
       paragraphsEn: [
-        `Newsroom Opening Speech by Minister Josephine Teo at the International Scientific Exchange for AI Safety 2026 Main Conference Speeches Opening Speech by Minister Josephine Teo at the International Scientific Exchange for AI Safety 2026 Main Conference 18 May 2026`,
         `Good morning, everyone.`,
         `I am truly delighted to welcome you and want to thank you for being part of the International Scientific Exchange 2026. We deeply appreciate your commitment to AI Safety and meaningful dialogue. The fact that Singapore can be a host for such dialogue is an honour for us, and we do not take this privilege lightly.`,
         `In the year past, AI developments have continued to accelerate. For many more organisations and individuals, it is moving from occasional use to a shaper of everyday life. We can see and feel its influence on how we learn, how businesses operate, how governments deliver services, and even how citizens form opinions and make decisions.`,
@@ -7243,7 +7187,6 @@ export const speechTranscripts: Record<string, SpeechTranscript> = {
         `Thank you once again for being here.`,
       ],
       paragraphsJa: [
-        'ニュース ジョセフィーン・テオ大臣が2026年国際人工知能安全科学交流会議で基調演説を行う 講演 ジョセフィーン・テオ大臣が2026年国際人工知能安全科学交流会議で基調演説を行う 2026年5月18日',
         'おはようございます。',
         `皆様をお迎えすることができて嬉しく、2026年国際科学交流にご参加いただきありがとうございます。人工知能の安全性と意義のある対話へのコミットメントに心から感謝いたします。シンガポールがこのような対話のホストになることができるのは、私たちにとって栄誉であり、この特権を軽視することはありません。`,
         `過去1年間、人工知能の発展は加速を続けています。より多くの組織や個人にとって、それは散発的な使用から日常生活を形作る力へと進化しました。私たちは、それが私たちの学習方法、企業がどのように運営するか、政府がどのようにサービスを提供するか、さらには市民がどのように見方を形成し決定を下すかに与える影響を見て感じることができます。`,
@@ -7298,7 +7241,6 @@ export const speechTranscripts: Record<string, SpeechTranscript> = {
         '改めてお越しいただきありがとうございます。',
       ],
       paragraphsKo: [
-        '뉴스 Josephine Teo 장관의 2026년 국제인공지능안전과학교류대회 메인 포럼 기조연설 연설 Josephine Teo 장관의 2026년 국제인공지능안전과학교류대회 메인 포럼 기조연설 2026년 5월 18일',
         '여러분 안녕하세요.',
         `여러분을 환영하게 되어 매우 기쁘며, 국제과학교류 2026에 참여해주신 데 감사드립니다. 인공지능 안전과 의미 있는 대화에 대한 여러분의 약속에 깊이 감사드립니다. 싱가포르가 이러한 대화의 개최국이 될 수 있다는 것은 저희에게 영광이며, 저희는 이 특권을 가볍게 여기지 않습니다.`,
         `지난 1년간 인공지능의 발전이 계속 가속화되고 있습니다. 많은 조직과 개인들에게 있어 인공지능은 간헐적인 사용에서 일상생활을 형성하는 힘으로 발전했습니다. 우리는 인공지능이 우리가 학습하는 방식, 기업이 운영되는 방식, 정부가 서비스를 제공하는 방식, 그리고 시민들이 의견을 형성하고 결정을 내리는 방식에 미치는 영향을 볼 수 있고 느낄 수 있습니다.`,
@@ -7395,7 +7337,6 @@ export const speechTranscripts: Record<string, SpeechTranscript> = {
     fetchedAt: `2026-05-22`,
     source: 'mddi-newsroom',
     paragraphs: [
-      `新闻室开幕演讲 MOS 哈妮亚·玛哈扎姆在「AI in Health x ATxSummit」演讲 开幕演讲 MOS 哈妮亚·玛哈扎姆在「AI in Health x ATxSummit」2026年5月19日`,
       `不丹格列普治正念城州长Dasho博士洛泰·谢林，`,
       `尊敬的嘉宾、主持人、代表、合作伙伴和朋友们。`,
       `早上好。`,
@@ -7424,7 +7365,6 @@ export const speechTranscripts: Record<string, SpeechTranscript> = {
       `在这一点上，我很高兴宣布ATx峰会关于「从智慧国家到蓝色区域国家」的会议正式开幕。谢谢。`,
     ],
     paragraphsEn: [
-      `Newsroom Opening Speech by MOS Rahayu Mahzam at the AI in Health x ATxSummit Speeches Opening Speech by MOS Rahayu Mahzam at the AI in Health x ATxSummit 19 May 2026`,
       `Dasho Dr Lotay Tshering, Governor of Gelephu Mindfulness City, Bhutan,`,
       `Distinguished panellists, moderators, delegates, partners, and friends.`,
       `Good morning.`,
@@ -7478,7 +7418,6 @@ export const speechTranscripts: Record<string, SpeechTranscript> = {
       fetchedAt: `2026-06-09`,
       source: 'mddi-newsroom',
       paragraphs: [
-        `新闻室开幕词 部长Josephine Teo在国家超级计算中心(NSCC)推出ASPIRE 2B超级计算机 演讲开幕词 部长Josephine Teo在国家超级计算中心(NSCC)推出ASPIRE 2B超级计算机 2026年6月8日`,
         `Tan Chor Chuan教授`,
         `Quek Gim Pew先生`,
         `Terence Hung博士`,
@@ -7548,7 +7487,6 @@ export const speechTranscripts: Record<string, SpeechTranscript> = {
         `谢谢。`,
       ],
       paragraphsEn: [
-        `Newsroom Opening Address by Minister Josephine Teo at National Supercomputing Centre (NSCC)&#x27;s Launch of ASPIRE 2B Supercomputer Speeches Opening Address by Minister Josephine Teo at National Supercomputing Centre (NSCC)&#x27;s Launch of ASPIRE 2B Supercomputer 8 June 2026`,
         `Professor Tan Chor Chuan`,
         `Mr Quek Gim Pew`,
         `Dr Terence Hung`,
@@ -7646,7 +7584,6 @@ export const speechTranscripts: Record<string, SpeechTranscript> = {
     fetchedAt: `2026-06-09`,
     source: 'mddi-newsroom',
     paragraphs: [
-      `新闻室演讲 MOS Jasmin Lau关于国会动议「无失业增长的人工智能过渡」的演讲 演讲 MOS Jasmin Lau关于国会动议「无失业增长的人工智能过渡」的演讲 2026年5月6日`,
       `副议长先生，我今天认真听取了议员们的意见。`,
       `整个议院都对人工智能对我们工人意味着什么有真诚的关切。这些关切是真实的，政府也分享这些关切。`,
       `我们无法放缓人工智能的发展。但我们不会将其结果留给机遇。`,
@@ -7748,7 +7685,6 @@ export const speechTranscripts: Record<string, SpeechTranscript> = {
       `我支持这项动议。`,
     ],
     paragraphsEn: [
-      `Newsroom Speech by MOS Jasmin Lau for Parliamentary Motion on “An AI Transition with No Jobless Growth” Speeches Speech by MOS Jasmin Lau for Parliamentary Motion on “An AI Transition with No Jobless Growth” 6 May 2026`,
       `Mr Deputy Speaker, I have listened carefully to Members today.`,
       `There is genuine concern across the House about what AI will mean for our workers. And these concerns are real, the Government shares them.`,
       `We cannot slow down the development of AI. But we will not leave its outcomes to chance.`,
@@ -7876,7 +7812,6 @@ export const speechTranscripts: Record<string, SpeechTranscript> = {
     fetchedAt: `2026-06-09`,
     source: 'mddi-newsroom',
     paragraphs: [
-      `新闻室 MOS Jasmin Lau在毕马威（KPMG）新加坡「可信AI卓越中心」启动仪式上的演讲 演讲 MOS Jasmin Lau在毕马威新加坡「可信AI卓越中心」启动仪式上的演讲 2026年5月25日`,
       `毕马威管理合伙人 Lee Sze Yeng 女士`,
       `毕马威合伙人兼AI卓越中心负责人 Lyon Poh 先生`,
       `各位业界伙伴与同仁，`,
@@ -7915,7 +7850,6 @@ export const speechTranscripts: Record<string, SpeechTranscript> = {
       `非常感谢。`,
     ],
     paragraphsEn: [
-      `Newsroom MOS Jasmin Lau’s Speech at KPMG Singapore’s Launch of Trusted AI Centre of Excellence Speeches MOS Jasmin Lau’s Speech at KPMG Singapore’s Launch of Trusted AI Centre of Excellence 25 May 2026`,
       `Ms Lee Sze Yeng, Managing Partner, KPMG`,
       `Mr Lyon Poh, Partner and AI CoE Lead, KPMG`,
       `Industry partners and colleagues,`,
