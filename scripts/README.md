@@ -186,13 +186,32 @@ python3 auto_update.py --dry-run
 python3 auto_update.py --only videos
 ```
 
-### 4. 设置 crontab（4 个 schedule）
+### 4. 设置定时（推荐：一条心跳 + --due 自愈）
 
-新管线（policies / ecosystem / github-stars / startups / talent / tracker / benchmarking / levers / legal-ai）会自动 push 分支 + open PR；本地 cron 跑完后 Luca 在 GitHub review/merge。crontab 推荐 4 行（替换路径）：
+新管线（policies / ecosystem / github-stars / startups / talent / tracker / benchmarking / levers / legal-ai）会自动 push 分支 + open PR；本地 cron 跑完后 Luca 在 GitHub review/merge。
+
+**推荐做法——脚本自管理 crontab。** 用「要跑 cron 的那个解释器」（即装了 `requests`/`feedparser`/`bs4` 的 venv）跑一次：
+
+```bash
+# 用带依赖的 venv 解释器跑，cron 会沿用同一个解释器
+~/.venvs/sgai/bin/python scripts/auto_update.py --install-cron
+```
+
+它会写入**一行**幂等的 managed crontab（每天 08:00 跑 `--due`），并把当前 PATH 烤进去，`npx`/`gh`/`node` 在 cron 下可解析。装好后：
+
+```bash
+python scripts/auto_update.py --status          # 看每个 schedule 上次跑/是否到期/cron 装没装
+python scripts/auto_update.py --uninstall-cron  # 撤销
+crontab -l                                       # 确认 managed 块已写入
+```
+
+**为什么是一条心跳而不是 4 行精确 cron**：纯 cron 在 Mac 睡眠/合盖时会**静默跳过**那一分钟的触发（1 号月度刷新合盖了就永远不跑）。`--due` 把 cadence 逻辑搬进脚本，按「距上次成功是否超过间隔」判断，每天一跳就能自愈式驱动 weekly/monthly/quarterly/half-yearly——掉电/睡眠后下次开机自动补跑过期的那几档。`--cron-hour=9` 可改触发小时。
+
+**手动 4 行（旧法，仍可用）**——若你更想要精确 calendar 触发、且 Mac 长期开机：
 
 ```cron
 PROJECT=/Users/lucawu/Library/CloudStorage/Dropbox/Github/sgai
-PYTHON=/tmp/sgai-venv/bin/python
+PYTHON=~/.venvs/sgai/bin/python
 
 # 周一 08:00 — 旧三条 Python 管线（hansard / videos / voices）
 0 8 * * 1         cd $PROJECT && $PYTHON scripts/auto_update.py --schedule=weekly      >> scripts/logs/cron.log 2>&1
@@ -231,7 +250,7 @@ cat /path/to/sgai/scripts/logs/auto_update_$(date +%Y-%m-%d).log
 
 - **PATH**: crontab 中必须使用 Python 的**完整路径**（cron 的 PATH 只有 `/usr/bin:/bin`）
 - **磁盘访问**: macOS Ventura+ 可能需要在 系统设置 > 隐私与安全 > 完全磁盘访问 中添加 `/usr/sbin/cron`
-- **睡眠**: Mac 处于睡眠状态时 cron 不会触发，下次醒来后的下一个周期会执行（对数据扫描来说可接受）
+- **睡眠**: Mac 睡眠时 cron 不触发那一分钟。用推荐的 `--install-cron` + `--due`（§4）后这不成问题——脚本按上次成功时间判断到期，下次开机自动补跑过期的档；只有手动 4 行精确 cron 才会丢触发。
 
 ### Linux 服务器注意事项
 
