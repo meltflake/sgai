@@ -29,6 +29,15 @@ export type ValidateOptions = {
   concurrency?: number;
   /** Per-request timeout. Default 10 s. */
   timeoutMs?: number;
+  /**
+   * Times to retry a *transient* result (an `ERR:*` fetch error — TypeError /
+   * AbortError / network reset — or a 5xx server error) before declaring a URL
+   * broken. Default 2. A 4xx (incl. 404/410) is deterministic and never retried.
+   * Without this, a slow-but-live URL (200 in 3–6 s) intermittently times out
+   * under concurrent load, or a big site blips a momentary 500, and gets flagged
+   * broken — a false positive that opens a spurious weekly issue.
+   */
+  retries?: number;
 };
 
 /**
@@ -58,6 +67,7 @@ export async function validateUrls(
 ): Promise<UrlCheckResult[]> {
   const concurrency = opts.concurrency ?? 6;
   const timeoutMs = opts.timeoutMs ?? 10000;
+  const retries = opts.retries ?? 2;
   const broken: UrlCheckResult[] = [];
   const queue = [...entries];
 
@@ -65,7 +75,7 @@ export async function validateUrls(
     while (queue.length) {
       const item = queue.shift();
       if (!item) break;
-      const status = await checkOne(item.url, timeoutMs);
+      const status = await checkWithRetry(item.url, timeoutMs, retries);
       if (!isReachable(status)) broken.push({ url: item.url, context: item.context, status });
     }
   }
@@ -73,6 +83,33 @@ export async function validateUrls(
   const workers = Array.from({ length: Math.min(concurrency, entries.length) }, () => worker());
   await Promise.all(workers);
   return broken;
+}
+
+const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
+
+/**
+ * A *transient* result worth retrying: the fetch threw (timeout / network reset
+ * / TLS → `ERR:*` string), or the server returned 5xx. Both are "not the page's
+ * fault, probably temporary" — a slow homepage that times out under concurrent
+ * load, or a momentary 502/500 on a big site. A 4xx (incl. 404/410) is a
+ * deterministic "page not there" — re-fetching won't change it, so we don't
+ * retry it (and 401/403/429/999 are already soft-passed by isReachable).
+ */
+export function isTransient(status: number | string): boolean {
+  return typeof status === 'string' || status >= 500;
+}
+
+/**
+ * checkOne, but retry transient results with a short backoff so a slow-but-live
+ * URL gets independent chances instead of an intermittent false "broken".
+ */
+async function checkWithRetry(url: string, timeoutMs: number, retries: number): Promise<number | string> {
+  let status = await checkOne(url, timeoutMs);
+  for (let attempt = 1; isTransient(status) && attempt <= retries; attempt += 1) {
+    await sleep(400 * attempt);
+    status = await checkOne(url, timeoutMs);
+  }
+  return status;
 }
 
 async function checkOne(url: string, timeoutMs: number): Promise<number | string> {
