@@ -89,6 +89,7 @@ const L_RAW = isJa
       trendHint: '棒グラフをクリックしてその年でフィルターしてください。',
       listTitle: '討論記録',
       listHint: 'リストはデフォルトで圧縮。カードを展開するか詳細ページで完全な概要を確認してください。',
+      showEarlier: 'それ以前の討論 {n} 件を表示',
       noResults: '一致する討論記録が見つかりません',
       details: '概要、立場、原文を展開',
       keyPoints: '要点',
@@ -156,6 +157,7 @@ const L_RAW = isJa
         trendHint: '막대를 클릭하여 해당 연도로 필터링하세요.',
         listTitle: '토론 기록',
         listHint: '간편한 아카이브 카드로, 카드를 열거나 상세 페이지를 열어 전체 요약을 확인할 수 있습니다.',
+        showEarlier: '이전 토론 {n}건 더 보기',
         noResults: '현재 필터와 일치하는 토론이 없습니다.',
         details: '다이제스트, 입장, 전사본 열기',
         keyPoints: '주요 포인트',
@@ -224,6 +226,7 @@ const L_RAW = isJa
           trendHint: 'Click a bar to filter that year.',
           listTitle: 'Debate Records',
           listHint: 'Compact archive cards; open a card or detail page for the full digest.',
+          showEarlier: 'Show {n} earlier debates',
           noResults: 'No debates match the current filters.',
           details: 'Open digest, stances, and transcript',
           keyPoints: 'Key Points',
@@ -290,6 +293,7 @@ const L_RAW = isJa
           trendHint: '点击柱状图筛选该年。',
           listTitle: '辩论记录',
           listHint: '列表默认压缩；展开卡片或进入详情页看完整摘要。',
+          showEarlier: '展开更早的 {n} 条辩论',
           noResults: '没有找到匹配的辩论记录',
           details: '展开摘要、立场与原文',
           keyPoints: '要点',
@@ -420,6 +424,13 @@ const topicEntries = Object.entries(topicLabels)
   .sort((a, b) => b.count - a.count);
 
 const maxCount = Math.max(...Object.values(DEBATE_STATS.byYear));
+
+// Initial render window: cards past this index ship with `hidden` so the
+// unfiltered page stays light (the archive is 179+ cards and grows weekly).
+// The client script reveals them when a filter/search is active or the
+// "show earlier" button is pressed.
+const DEFAULT_VISIBLE = 25;
+const earlierCount = Math.max(0, debates.length - DEFAULT_VISIBLE);
 const latestDate = debates[0]?.date || String(DEBATE_STATS.yearRange.to);
 const latestYear = latestDate.slice(0, 4);
 
@@ -799,7 +810,7 @@ const typeMixLabel = Object.entries(DEBATE_STATS.byType)
 
       <div id="debate-list" class="space-y-3">
         {
-          debates.map((d) => {
+          debates.map((d, cardIndex) => {
             const cLevel = d.controversyLevel || 1;
             const cLabel = controversyLabels[cLevel] || 'Unknown';
             const cColor = controversyColors[cLevel] || 'bg-gray-100 text-gray-600';
@@ -820,6 +831,7 @@ const typeMixLabel = Object.entries(DEBATE_STATS.byType)
                 data-topics={(d.topics || []).join('|')}
                 data-speakers={(d.speakers || []).join('|')}
                 data-search={searchBlob(d)}
+                hidden={cardIndex >= DEFAULT_VISIBLE}
                 class="overflow-hidden rounded-xl border border-subtle bg-surface shadow-sm"
               >
                 <div class="p-4 md:p-5">
@@ -978,6 +990,20 @@ const typeMixLabel = Object.entries(DEBATE_STATS.byType)
           })
         }
       </div>
+
+      {
+        earlierCount > 0 && (
+          <div class="mt-6 text-center">
+            <button
+              id="show-earlier-btn"
+              type="button"
+              class="rounded-lg border border-subtle bg-surface px-5 py-2.5 text-sm font-medium text-gray-700 shadow-sm transition-colors hover:border-blue-300 hover:text-blue-700 dark:text-gray-200 dark:hover:text-blue-300"
+            >
+              {L.showEarlier.replace('{n}', String(earlierCount))}
+            </button>
+          </div>
+        )
+      }
 
       <div id="debate-empty-state" class="hidden py-16 text-center text-gray-400">
         <div class="mb-3 text-4xl">🔍</div>
@@ -1248,8 +1274,12 @@ const typeMixLabel = Object.entries(DEBATE_STATS.byType)
   </div>
 </Layout>
 
-<script define:vars={{ typeMap, controversyLabels, topicLabels, L }}>
+<script define:vars={{ typeMap, controversyLabels, topicLabels, L, DEFAULT_VISIBLE }}>
   const cards = () => Array.from(document.querySelectorAll('[data-debate-card]'));
+
+  // Cards past DEFAULT_VISIBLE ship server-hidden. Collapse only applies to
+  // the unfiltered view; any active filter/search reveals every match.
+  let listCollapsed = true;
 
   let activeFilters = {
     search: '',
@@ -1378,8 +1408,20 @@ const typeMixLabel = Object.entries(DEBATE_STATS.byType)
       activeFilters.topicsOr = [];
     }
 
+    const hasActiveFilters = Boolean(
+      activeFilters.search ||
+      activeFilters.type ||
+      activeFilters.topic ||
+      activeFilters.topicsOr.length > 0 ||
+      activeFilters.year ||
+      activeFilters.speaker ||
+      activeFilters.controversy ||
+      activeFilters._yearRange
+    );
+
     const all = cards();
     let visible = 0;
+    let matched = 0;
 
     for (const card of all) {
       const cType = card.dataset.type || '';
@@ -1410,8 +1452,13 @@ const typeMixLabel = Object.entries(DEBATE_STATS.byType)
       else if (match && activeFilters.controversy === '1' && cControversy > 2) match = false;
 
       if (match) {
-        card.removeAttribute('hidden');
-        visible++;
+        matched++;
+        if (!hasActiveFilters && listCollapsed && matched > DEFAULT_VISIBLE) {
+          card.setAttribute('hidden', '');
+        } else {
+          card.removeAttribute('hidden');
+          visible++;
+        }
       } else {
         card.setAttribute('hidden', '');
       }
@@ -1421,13 +1468,26 @@ const typeMixLabel = Object.entries(DEBATE_STATS.byType)
     if (count) count.textContent = `${L.showing} ${visible} / ${all.length} ${L.results}`;
 
     const empty = document.getElementById('debate-empty-state');
-    if (empty) empty.classList.toggle('hidden', visible !== 0);
+    if (empty) empty.classList.toggle('hidden', matched !== 0);
+
+    const earlierBtn = document.getElementById('show-earlier-btn');
+    if (earlierBtn) {
+      earlierBtn.parentElement?.classList.toggle(
+        'hidden',
+        hasActiveFilters || !listCollapsed || matched <= DEFAULT_VISIBLE
+      );
+    }
 
     updateActiveFilterBar(visible);
   }
 
   function initDebates() {
     applyFilters();
+
+    document.getElementById('show-earlier-btn')?.addEventListener('click', () => {
+      listCollapsed = false;
+      applyFilters();
+    });
 
     document.getElementById('search-input')?.addEventListener('input', () => {
       activeFilters._yearRange = null;
