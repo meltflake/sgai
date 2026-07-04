@@ -1,0 +1,14 @@
+{
+  "id": "openai-sg-lab",
+  "description": "OpenAI for Singapore — Japanese.",
+  "source": "OpenAI 宣布投入超过 3 亿新元，在新加坡设立美国以外首个 Applied AI Lab，创造 200 多个本地技术岗位。",
+  "expectedTermsJa": [
+    "OpenAI"
+  ],
+  "minLengthRatio": 0.6,
+  "maxLengthRatio": 2.8,
+  "preserveTokens": [
+    "OpenAI",
+    "200"
+  ]
+}

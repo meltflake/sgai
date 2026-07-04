@@ -1,0 +1,16 @@
+{
+  "id": "sealion-v4",
+  "description": "SEA-LION v4 release — Japanese.",
+  "source": "AI Singapore 发布 SEA-LION v4 开源模型家族，包含 56 个模型，累计下载超过 27,000 次，覆盖东南亚 11 种语言。",
+  "expectedTermsJa": [
+    "SEA-LION"
+  ],
+  "minLengthRatio": 0.6,
+  "maxLengthRatio": 2.8,
+  "preserveTokens": [
+    "SEA-LION",
+    "56",
+    "27,000",
+    "11"
+  ]
+}

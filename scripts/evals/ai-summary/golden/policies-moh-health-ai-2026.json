@@ -1,0 +1,36 @@
+{
+  "id": "policies-moh-health-ai-2026",
+  "description": "MOH health AI deployment guideline — industry adoption in a regulated sector.",
+  "input": {
+    "sourceUrl": "https://www.moh.gov.sg/newsroom/ai-in-healthcare-guidelines-2026",
+    "title": "Public Healthcare Clusters Scale AI Deployment to Over 60 Clinical Tools",
+    "contentText": "SINGAPORE, 18 March 2026 — Singapore's three public healthcare clusters have scaled their AI deployment to more than 60 tools in production, the Ministry of Health said. The AimSG radiology platform now screens over 400,000 chest X-rays a year across polyclinics, while AI-assisted triage in emergency departments has cut median waiting times by 18 per cent. Selene, an administrative AI assistant, drafts discharge summaries for 12,000 patients a month. MOH said adoption will expand to community hospitals next year, with S$120 million budgeted for health AI procurement and integration, and clinician training delivered through the AI in Healthcare Academy."
+  },
+  "expected": {
+    "categories": [
+      "National Strategy",
+      "Trust & Safety",
+      "Industry Adoption",
+      "Talent & Education",
+      "Compute & Infrastructure",
+      "Other"
+    ],
+    "domainContext": "Singapore AI policy observatory (sgai.md)",
+    "category": "Industry Adoption",
+    "publishedDate": "2026-03-18",
+    "minTitleZhLen": 8,
+    "maxTitleZhLen": 60,
+    "minDescZhLen": 30,
+    "maxDescZhLen": 250,
+    "minDescEnLen": 50,
+    "maxDescEnLen": 700,
+    "minConfidence": "medium",
+    "requiredTermsZh": [
+      "卫生部"
+    ],
+    "requiredTermsEn": [
+      "Ministry of Health",
+      "AI"
+    ]
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "id": "aiap-expansion",
+  "description": "AIAP doubling — Japanese (distinct from existing aiap-cohort).",
+  "source": "AI 学徒计划将从 2026 年 10 月的第 15 期开始，每期学徒人数从 100 人增加到 200 人，扩张资金来自政府 10 亿新元 AI 研发计划。",
+  "expectedTermsJa": [
+    "AI"
+  ],
+  "minLengthRatio": 0.6,
+  "maxLengthRatio": 2.8,
+  "preserveTokens": [
+    "100",
+    "200",
+    "2026",
+    "15"
+  ]
+}

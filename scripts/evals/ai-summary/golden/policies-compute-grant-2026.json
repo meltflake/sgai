@@ -1,0 +1,36 @@
+{
+  "id": "policies-compute-grant-2026",
+  "description": "Enterprise Compute Initiative — compute & infrastructure classification.",
+  "input": {
+    "sourceUrl": "https://www.imda.gov.sg/resources/enterprise-compute-initiative",
+    "title": "Enterprise Compute Initiative Opens Applications for AI Compute Credits",
+    "contentText": "SINGAPORE, 20 January 2026 — The Enterprise Compute Initiative announced at Budget 2025 opened applications today. Eligible enterprises can access up to S$250,000 in credits to procure AI compute capacity and professional services from appointed cloud providers, including AWS, Google Cloud and Microsoft Azure. The S$150 million initiative targets companies deploying AI in production rather than experimentation, and complements the National Supercomputing Centre's research-focused allocations. IMDA said early demand has been strongest from precision manufacturing, logistics and financial services firms building custom AI applications."
+  },
+  "expected": {
+    "categories": [
+      "National Strategy",
+      "Trust & Safety",
+      "Industry Adoption",
+      "Talent & Education",
+      "Compute & Infrastructure",
+      "Other"
+    ],
+    "domainContext": "Singapore AI policy observatory (sgai.md)",
+    "category": "Compute & Infrastructure",
+    "publishedDate": "2026-01-20",
+    "minTitleZhLen": 8,
+    "maxTitleZhLen": 60,
+    "minDescZhLen": 30,
+    "maxDescZhLen": 250,
+    "minDescEnLen": 50,
+    "maxDescEnLen": 700,
+    "minConfidence": "medium",
+    "requiredTermsZh": [
+      "新元"
+    ],
+    "requiredTermsEn": [
+      "compute",
+      "S$"
+    ]
+  }
+}

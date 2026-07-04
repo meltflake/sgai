@@ -23,9 +23,16 @@
     "minDescZhLen": 30,
     "maxDescZhLen": 250,
     "minDescEnLen": 50,
-    "maxDescEnLen": 500,
+    "maxDescEnLen": 700,
     "minConfidence": "medium",
-    "requiredTermsZh": ["AI Verify", "IMDA"],
-    "requiredTermsEn": ["AI Verify", "IMDA", "open source"]
+    "requiredTermsZh": [
+      "AI Verify",
+      "IMDA"
+    ],
+    "requiredTermsEn": [
+      "AI Verify",
+      "IMDA",
+      "Apache"
+    ]
   }
 }

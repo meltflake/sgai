@@ -1,0 +1,14 @@
+{
+  "id": "budget-ai-billion",
+  "description": "Budget 2024 AI billion — Japanese.",
+  "source": "2024 年财政预算案宣布未来五年投入 10 亿新元发展 AI 算力、人才与产业生态，目标将 AI 从业者扩大至 15,000 人。",
+  "expectedTermsJa": [
+    "2024"
+  ],
+  "minLengthRatio": 0.6,
+  "maxLengthRatio": 2.8,
+  "preserveTokens": [
+    "2024",
+    "15,000"
+  ]
+}
