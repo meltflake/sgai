@@ -64,6 +64,15 @@ const STAGES: Stage[] = [
     needsDist: false,
     frequency: 'weekly',
   },
+  // stale-stats — assert every manually-stamped `dataDate` in src/data/*.ts
+  // is younger than its owning pipeline's cadence allows. Rot alarm for
+  // homepage-grade aggregate numbers (ecosystemStats, seaLionStats...).
+  {
+    name: 'stale-stats',
+    cmd: ['npx', 'tsx', 'scripts/evals/stale-stats/check.ts'],
+    needsDist: false,
+    frequency: 'weekly',
+  },
   {
     name: 'transcript-coverage',
     cmd: ['npx', 'tsx', 'scripts/evals/transcript-coverage/check.ts', '--include-historical'],
