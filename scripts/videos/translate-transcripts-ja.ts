@@ -204,11 +204,13 @@ function ensureInterfaceHasParagraphsJa(source: string): string {
 
 function ensureGetterHandlesJa(source: string): string {
   const newGetter =
-    `export function getVideoTranscriptParagraphs(videoId: string, lang: 'zh' | 'en' | 'ja'): string[] {\n` +
+    `export function getVideoTranscriptParagraphs(videoId: string, lang: string): string[] {\n` +
     `  const transcript = getVideoTranscript(videoId);\n` +
     `  if (!transcript) return [];\n` +
     `  if (lang === 'zh') return transcript.paragraphs;\n` +
-    `  if (lang === 'ja') return transcript.paragraphsJa || transcript.paragraphs;\n` +
+    `  if (lang === 'zh-tw') return transcript.paragraphs.map((p) => toTraditional(p));\n` +
+    `  if (lang === 'ja') return transcript.paragraphsJa || transcript.paragraphsEn || transcript.paragraphs;\n` +
+    `  if (lang === 'ko') return transcript.paragraphsKo || transcript.paragraphsEn || transcript.paragraphs;\n` +
     `  return transcript.paragraphsEn || transcript.paragraphs;\n` +
     `}`;
   return source.replace(/export function getVideoTranscriptParagraphs[\s\S]*?^}/m, newGetter);
@@ -216,11 +218,13 @@ function ensureGetterHandlesJa(source: string): string {
 
 function ensureLanguageGetterHandlesJa(source: string): string {
   const newGetter =
-    `export function getVideoTranscriptLanguage(videoId: string, lang: 'zh' | 'en' | 'ja'): string | undefined {\n` +
+    `export function getVideoTranscriptLanguage(videoId: string, lang: string): string | undefined {\n` +
     `  const transcript = getVideoTranscript(videoId);\n` +
     `  if (!transcript) return undefined;\n` +
     `  if (lang === 'zh') return transcript.paragraphs.length ? 'zh-CN' : undefined;\n` +
+    `  if (lang === 'zh-tw') return transcript.paragraphs.length ? 'zh-Hant' : undefined;\n` +
     `  if (lang === 'ja' && transcript.paragraphsJa?.length) return 'ja';\n` +
+    `  if (lang === 'ko' && transcript.paragraphsKo?.length) return 'ko';\n` +
     `  if (transcript.paragraphsEn?.length) return transcript.captionLanguage || (lang === 'en' ? 'en' : lang);\n` +
     `  return transcript.paragraphs.length ? 'zh-CN' : undefined;\n` +
     `}`;

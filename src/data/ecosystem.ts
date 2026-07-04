@@ -2504,7 +2504,7 @@ But IMDA also has structural challenges: **with telecoms, media, and AI all unde
             labelJa: 'Model AI Governance Framework',
             labelKo: 'Model AI Governance Framework',
             labelEn: 'Model AI Governance Framework',
-            url: 'https://www.imda.gov.sg/-/media/imda/files/sgdigital/sgdgo/ai-governance-framework.pdf',
+            url: 'https://www.imda.gov.sg/-/media/imda/files/infocomm-media-landscape/sg-digital/tech-pillars/artificial-intelligence/second-edition-of-the-model-ai-governance-framework.pdf',
           },
         ],
         updated: '2026-05-02',

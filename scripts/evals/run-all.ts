@@ -55,6 +55,15 @@ const STAGES: Stage[] = [
     needsDist: false,
     frequency: 'weekly',
   },
+  // coverage-audit — assert every src/data/*.ts is owned by a pipeline
+  // `targets[]` or an `editorial` entry in registry.json (no orphan data
+  // files, no stale manifest paths). Full-state check, no --base.
+  {
+    name: 'coverage-audit',
+    cmd: ['npx', 'tsx', 'scripts/evals/coverage-audit/check.ts'],
+    needsDist: false,
+    frequency: 'weekly',
+  },
   {
     name: 'transcript-coverage',
     cmd: ['npx', 'tsx', 'scripts/evals/transcript-coverage/check.ts', '--include-historical'],

@@ -51,6 +51,15 @@ jobs:
       - name: addedAt coverage (PR diff vs main)
         run: npm run eval:addedAt -- --base=origin/main
 
+      # Enforce that every src/data/*.ts is owned by a refresh pipeline
+      # (`targets[]`) or listed under `editorial` in scripts/refresh/registry.json.
+      # A new data file with no owner = a new page that auto_update.py can never
+      # refresh and that nobody is alarmed about. Also fails if a manifest path
+      # is stale (file renamed/removed). Full-state check — no --base needed.
+      # See scripts/evals/coverage-audit/check.ts.
+      - name: coverage audit (every data file has a refresh owner)
+        run: npm run eval:coverage-audit
+
       # Enforce that every mddiSpeeches entry in voices.ts has a matching
       # speechTranscripts entry with non-empty paragraphs + paragraphsEn.
       # Without it, /speeches/<id>/ silently renders the "尚未本地存档"

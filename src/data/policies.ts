@@ -1447,7 +1447,7 @@ Strategically, this moves AI Verify from tools and frameworks into market infras
         sourceJa: '個人データ保護委員会 (PDPC)',
         sourceOrgUrl: 'https://www.pdpc.gov.sg/',
         sourceUrl:
-          'https://www.pdpc.gov.sg/guidelines-and-consultation/2024/02/advisory-guidelines-on-use-of-personal-data-in-ai-recommendation-and-decision-systems',
+          'https://www.pdpc.gov.sg/organisations/regulations-decisions/regulatory-guidance/advisory-guidelines-on-use-of-personal-data-in-ai-recommendation-and-decision-systems',
         summary: 'PDPC 明确 PDPA 在 AI 推荐与决策系统中的合规边界——为企业用个人数据训练和运行 AI 提供确定性。',
         summaryKo:
           'PDPC가 AI 추천 및 의사결정 시스템에서 PDPA의 준수 경계를 명확히 함으로써, 기업이 개인정보를 사용하여 AI를 훈련하고 운영하는 데 명확성을 제공합니다.',
@@ -1741,6 +1741,88 @@ Strategically, this moves AI Verify from tools and frameworks into market infras
     nameEn: 'International Collaboration',
     icon: '🌏',
     policies: [
+      {
+        id: 'imda-microsoft-ai-safety-security-mou-2026',
+        title: 'IMDA × 微软 AI 安全与安全合作备忘录',
+        titleKo: 'IMDA × Microsoft AI 안전 및 보안 협력 양해각서',
+        titleJa: 'IMDA × Microsoft AI 安全・セキュリティ協力覚書',
+        titleEn: 'IMDA × Microsoft AI Safety and Security MOU',
+        date: '2026-06',
+        source: '资讯通信媒体发展局 (IMDA) / 微软 (Microsoft)',
+        sourceKo: '정보통신미디어발전청 (IMDA) / 마이크로소프트 (Microsoft)',
+        sourceJa: '情報通信メディア発展庁 (IMDA) / マイクロソフト (Microsoft)',
+        sourceEn: 'Infocomm Media Development Authority (IMDA) / Microsoft',
+        sourceOrgUrl: 'https://www.imda.gov.sg/',
+        sourceUrl:
+          'https://www.imda.gov.sg/resources/press-releases-factsheets-and-speeches/imda-and-microsoft-commit-to-advancing-ai-safety-and-security',
+        summary:
+          '2026 年 6 月 12 日 ATxSummit 2026 上，IMDA 与微软签署 AI 安全与安全合作备忘录，聚焦三大领域：技术与研究合作（含 agentic AI、多语言 AI 安全评测）、信息共享、可信前沿模型访问的政策框架。IMDA 副局长 Kiren Kumar 与微软首席负责任 AI 官 Natasha Crampton 签署。',
+        summaryKo:
+          '2026년 6월 12일 ATxSummit 2026에서 IMDA와 Microsoft가 AI 안전 및 보안 협력 양해각서를 체결했으며, 세 가지 영역에 중점을 둡니다: 기술 및 연구 협력(agentic AI, 다국어 AI 안전 평가 포함), 정보 공유, 신뢰할 수 있는 프런티어 모델 접근을 위한 정책 프레임워크. IMDA 부청장 Kiren Kumar와 Microsoft 최고 책임 AI 책임자 Natasha Crampton이 서명했습니다.',
+        summaryJa:
+          '2026 年 6 月 12 日の ATxSummit 2026 で、IMDA と Microsoft が AI 安全・セキュリティ協力覚書を締結しました。3 つの領域に焦点を当てます：技術・研究協力（agentic AI、多言語 AI 安全評価を含む）、情報共有、信頼できるフロンティアモデルアクセスのための政策フレームワーク。IMDA 副長官の Kiren Kumar と Microsoft 最高責任 AI 責任者の Natasha Crampton が署名しました。',
+        summaryEn:
+          'On 12 June 2026, at ATxSummit 2026, IMDA and Microsoft signed an MOU to advance AI safety and security, focused on three areas: technical and research collaboration (including agentic AI and multilingual AI safety evaluation), information sharing, and a policy framework for trusted access to frontier models. Signed by IMDA Deputy Chief Executive Kiren Kumar and Microsoft Chief Responsible AI Officer Natasha Crampton.',
+        content: `2026 年 6 月 12 日，在 ATxSummit 2026（ATxSG）上，资讯通信媒体发展局（IMDA）与微软签署一份 AI 安全与安全（AI safety and security）合作备忘录（MOU），由 IMDA 副局长 **Kiren Kumar** 与微软首席负责任 AI 官（Chief Responsible AI Officer）**Natasha Crampton** 签署。数字发展与信息部长 Josephine Teo 在峰会上宣布此合作。
+
+**三大合作领域**：
+
+1. **技术与研究合作**——共同推进 AI 安全与安全的技术与研究，重点包括 **agentic AI（自主体 AI）**的安全、评测方法 / 工具 / benchmark 的开发，特别关注**多语言 AI 安全**（multilingual AI safety）——这对东南亚多语种环境尤为关键。
+2. **信息共享**——在生态伙伴之间交换 AI 安全与安全的知识、最佳实践、治理框架与研究成果。
+3. **可信前沿模型访问的政策框架**——为前沿 AI 模型的安全与安全测试建立负责任的访问结构。IMDA、**新加坡 AI 安全研究所（Singapore AI Safety Institute）**与微软将合写一份白皮书，同时审视需求侧（政府机构、关键基础设施运营商对可信模型访问的需求）与供给侧（模型提供方的政策考量）——即业界所称的「主权 AI 访问（Sovereign AI Access）」议题。
+
+**意义**：这是 IMDA「政府 + 产业」共建 AI 治理的又一落子，与新加坡 AI 安全研究所主导的 [国际科学交流](/policies/international-scientific-exchange-on-ai-safety/)、[新加坡共识](/policies/singapore-consensus-on-global-ai-safety-research-priorities/) 同属一条战略主线——把新加坡定位为前沿模型安全评测与治理的中立枢纽。多语言 AI 安全的侧重，也呼应新加坡作为东南亚多语种社会的独特价值。
+
+Kiren Kumar：「Our collaboration on AI safety with Microsoft demonstrates how government and industry can partner together to drive and scale good governance for the public good.」（我们与微软在 AI 安全上的合作，展示了政府与产业如何携手推动并规模化造福公众的良好治理。）
+
+Natasha Crampton：「Through this partnership with IMDA, we can combine government insight with Microsoft's technical and operational experience to strengthen AI evaluation.」（通过与 IMDA 的伙伴关系，我们能把政府洞见与微软的技术和运营经验结合，强化 AI 评测。）`,
+        contentKo: `2026년 6월 12일, ATxSummit 2026(ATxSG)에서 정보통신미디어발전청(IMDA)과 Microsoft가 AI 안전 및 보안(AI safety and security) 협력 양해각서(MOU)를 체결했으며, IMDA 부청장 **Kiren Kumar**와 Microsoft 최고 책임 AI 책임자(Chief Responsible AI Officer) **Natasha Crampton**이 서명했습니다. 디지털개발정보부 장관 Josephine Teo가 정상회담에서 이 협력을 발표했습니다.
+
+**세 가지 협력 영역**:
+
+1. **기술 및 연구 협력**——AI 안전 및 보안의 기술과 연구를 공동으로 추진하며, **agentic AI(자율형 AI)**의 안전, 평가 방법 / 도구 / benchmark 개발에 중점을 두고, 특히 **다국어 AI 안전**(multilingual AI safety)에 주목합니다——이는 동남아시아 다국어 환경에 특히 중요합니다.
+2. **정보 공유**——생태계 파트너 간에 AI 안전 및 보안 관련 지식, 모범 사례, 거버넌스 프레임워크, 연구 성과를 교환합니다.
+3. **신뢰할 수 있는 프런티어 모델 접근을 위한 정책 프레임워크**——프런티어 AI 모델의 안전 및 보안 테스트를 위한 책임 있는 접근 구조를 구축합니다. IMDA, **싱가포르 AI 안전 연구소(Singapore AI Safety Institute)**, Microsoft가 백서를 공동 작성하여 수요 측(정부 기관, 핵심 인프라 운영자의 신뢰할 수 있는 모델 접근 수요)과 공급 측(모델 제공자의 정책 고려사항)을 동시에 검토합니다——업계에서 말하는 「주권 AI 접근(Sovereign AI Access)」 의제입니다.
+
+**의의**: 이는 IMDA의 「정부 + 산업」 AI 거버넌스 공동 구축의 또 다른 행보로, 싱가포르 AI 안전 연구소가 주도하는 [국제 과학 교류](/policies/international-scientific-exchange-on-ai-safety/), [싱가포르 컨센서스](/policies/singapore-consensus-on-global-ai-safety-research-priorities/)와 동일한 전략 노선에 속합니다——싱가포르를 프런티어 모델 안전 평가 및 거버넌스의 중립 허브로 자리매김합니다. 다국어 AI 안전에 대한 강조는 동남아시아 다국어 사회로서 싱가포르의 독특한 가치와도 호응합니다.
+
+Kiren Kumar: 「Our collaboration on AI safety with Microsoft demonstrates how government and industry can partner together to drive and scale good governance for the public good.」(Microsoft와의 AI 안전 협력은 정부와 산업이 어떻게 협력하여 공익을 위한 좋은 거버넌스를 추진하고 확장할 수 있는지를 보여줍니다.)
+
+Natasha Crampton: 「Through this partnership with IMDA, we can combine government insight with Microsoft's technical and operational experience to strengthen AI evaluation.」(IMDA와의 파트너십을 통해 정부의 통찰력과 Microsoft의 기술 및 운영 경험을 결합하여 AI 평가를 강화할 수 있습니다.)`,
+        contentJa: `2026 年 6 月 12 日、ATxSummit 2026（ATxSG）で、情報通信メディア発展庁（IMDA）と Microsoft が AI 安全・セキュリティ（AI safety and security）協力覚書（MOU）を締結し、IMDA 副長官 **Kiren Kumar** と Microsoft 最高責任 AI 責任者（Chief Responsible AI Officer）**Natasha Crampton** が署名しました。デジタル発展・情報相の Josephine Teo がサミットでこの協力を発表しました。
+
+**3 つの協力領域**：
+
+1. **技術・研究協力**――AI 安全・セキュリティの技術と研究を共同で推進し、**agentic AI（自律型 AI）**の安全、評価手法 / ツール / benchmark の開発に重点を置き、特に**多言語 AI 安全**（multilingual AI safety）に注目します――これは東南アジアの多言語環境において特に重要です。
+2. **情報共有**――エコシステムパートナー間で AI 安全・セキュリティに関する知識、ベストプラクティス、ガバナンスフレームワーク、研究成果を交換します。
+3. **信頼できるフロンティアモデルアクセスのための政策フレームワーク**――フロンティア AI モデルの安全・セキュリティテストのための責任あるアクセス構造を構築します。IMDA、**シンガポール AI 安全研究所（Singapore AI Safety Institute）**、Microsoft が白書を共同執筆し、需要側（政府機関、重要インフラ運営者の信頼できるモデルアクセスのニーズ）と供給側（モデル提供者の政策的考慮）を同時に検討します――業界が言う「主権 AI アクセス（Sovereign AI Access）」の議題です。
+
+**意義**：これは IMDA の「政府 + 産業」による AI ガバナンス共同構築のもう一手であり、シンガポール AI 安全研究所が主導する [国際科学交流](/policies/international-scientific-exchange-on-ai-safety/)、[シンガポール・コンセンサス](/policies/singapore-consensus-on-global-ai-safety-research-priorities/) と同じ戦略路線に属します――シンガポールをフロンティアモデルの安全評価とガバナンスの中立的ハブとして位置づけます。多言語 AI 安全への重点は、東南アジアの多言語社会としてのシンガポールの独自の価値とも呼応しています。
+
+Kiren Kumar：「Our collaboration on AI safety with Microsoft demonstrates how government and industry can partner together to drive and scale good governance for the public good.」（Microsoft との AI 安全に関する協力は、政府と産業がどのように連携して公共の利益のための良いガバナンスを推進・拡大できるかを示しています。）
+
+Natasha Crampton：「Through this partnership with IMDA, we can combine government insight with Microsoft's technical and operational experience to strengthen AI evaluation.」（IMDA とのパートナーシップを通じて、政府の洞察と Microsoft の技術的・運用的経験を組み合わせ、AI 評価を強化できます。）`,
+        contentEn: `On 12 June 2026, at ATxSummit 2026 (ATxSG), the Infocomm Media Development Authority (IMDA) and Microsoft signed a memorandum of understanding (MOU) to advance AI safety and security, signed by IMDA Deputy Chief Executive **Kiren Kumar** and Microsoft Chief Responsible AI Officer **Natasha Crampton**. Minister for Digital Development and Information Josephine Teo announced the collaboration at the summit.
+
+**Three areas of collaboration**:
+
+1. **Technical and research collaboration** — jointly advancing the technical and research dimensions of AI safety and security, with a focus on **agentic AI** safety and the development of evaluation methods, tools and benchmarks, particularly **multilingual AI safety** — especially relevant for Southeast Asia's multilingual environment.
+2. **Information sharing** — exchanging knowledge, best practices, governance frameworks and research findings on AI safety and security with ecosystem partners.
+3. **Policy framework for trusted frontier model access** — establishing responsible access structures for the safety and security testing of frontier AI models. IMDA, the **Singapore AI Safety Institute** and Microsoft will co-author a white paper examining both demand-side needs (government agencies and critical-infrastructure operators that need trusted model access) and supply-side policy considerations (for model providers) — the "Sovereign AI Access" question.
+
+**Significance**: this is another move in IMDA's "government + industry" approach to building AI governance, sitting on the same strategic line as the Singapore AI Safety Institute-led [international scientific exchange](/policies/international-scientific-exchange-on-ai-safety/) and the [Singapore Consensus](/policies/singapore-consensus-on-global-ai-safety-research-priorities/) — positioning Singapore as a neutral hub for frontier-model safety evaluation and governance. The emphasis on multilingual AI safety also echoes Singapore's distinctive value as a multilingual Southeast Asian society.
+
+Kiren Kumar: "Our collaboration on AI safety with Microsoft demonstrates how government and industry can partner together to drive and scale good governance for the public good."
+
+Natasha Crampton: "Through this partnership with IMDA, we can combine government insight with Microsoft's technical and operational experience to strengthen AI evaluation."`,
+        ministry: 'MDDI',
+        authorPersonIds: ['josephine-teo'],
+        relatedDebateIds: [],
+        relatedLeverNumbers: [2, 6],
+        relatedTimelineYears: [2026],
+        relatedPostSlugs: [],
+        addedAt: '2026-06-29',
+      },
       {
         id: 'seoul-ai-safety-commitment',
         title: '首尔 AI 安全峰会承诺',

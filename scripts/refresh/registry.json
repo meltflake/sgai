@@ -1,5 +1,5 @@
 {
-  "comment": "Pipeline registry consumed by scripts/auto_update.py. Each entry describes one refresh pipeline: how to invoke it, on what schedule, and what to do with its output. Schedules are evaluated by the cron entry that runs auto_update.py with --schedule=<level>. type=python entries are imported in-process; type=tsx entries are subprocessed via npx tsx.",
+  "comment": "Pipeline registry consumed by scripts/auto_update.py. Each entry describes one refresh pipeline: how to invoke it, on what schedule, and what to do with its output. Schedules are evaluated by the cron entry that runs auto_update.py with --schedule=<level>. type=python entries are imported in-process; type=tsx entries are subprocessed via npx tsx. The `targets` array on each pipeline (and the top-level `editorial` list) is the SINGLE SOURCE OF TRUTH for which src/data/*.ts files are accounted for — scripts/evals/coverage-audit/check.ts fails CI if any data file is neither a pipeline target nor an editorial entry, or if a target/editorial path no longer exists. Keep targets in sync with each pipeline's emit.ts.",
   "schedules": {
     "daily": "Every day 8:00 (cron: 0 8 * * *)",
     "weekly": "Every Monday 8:00 (cron: 0 8 * * 1)",
@@ -14,7 +14,8 @@
       "schedule": "weekly",
       "label": "Singapore Parliament Hansard",
       "description": "SPRS API scan for AI-related debates. Existing pipeline.",
-      "mode": "scan-only-email"
+      "mode": "scan-only-email",
+      "targets": ["src/data/debates.ts", "src/data/debate-transcripts.ts"]
     },
     {
       "id": "videos",
@@ -22,7 +23,8 @@
       "schedule": "daily",
       "label": "YouTube AI videos",
       "description": "Channel RSS+HTML scan, manual review queue. Daily because CNA/ST publish 30+ vids/day and our scrape window covers <24h.",
-      "mode": "scan-only-email"
+      "mode": "scan-only-email",
+      "targets": ["src/data/videos.ts", "src/data/video-transcripts.ts"]
     },
     {
       "id": "voices",
@@ -32,17 +34,19 @@
       "description": "MDDI sitemap scan + page fetch + Claude haiku translation (zh paragraphs, zh+en tldr) + trilingual title/event/speakerTitle. Emits to voices.ts mddiSpeeches[] + speech-transcripts.ts speechTranscripts map.",
       "script": "scripts/refresh/voices/run.ts",
       "args": ["--limit=3"],
-      "mode": "auto-pr"
+      "mode": "auto-pr",
+      "targets": ["src/data/voices.ts", "src/data/speech-transcripts.ts"]
     },
     {
       "id": "github-stars",
       "type": "tsx",
       "schedule": "monthly",
       "label": "GitHub stars refresh",
-      "description": "Pull live stargazer counts and bump dataDate.",
+      "description": "Pull live stargazer counts and bump dataDate. Rewrites stars on existing GitHub blocks only (no new-repo discovery).",
       "script": "scripts/refresh/github-stars.ts",
       "args": ["--bump-version"],
-      "mode": "auto-pr"
+      "mode": "auto-pr",
+      "targets": ["src/data/opensource.ts", "src/data/community-opensource.ts"]
     },
     {
       "id": "policies",
@@ -52,7 +56,8 @@
       "description": "Scan smartnation/MAS/IMDA/PDPC/AIVerify for new AI advisories.",
       "script": "scripts/refresh/policies/run.ts",
       "args": ["--limit=5"],
-      "mode": "auto-pr"
+      "mode": "auto-pr",
+      "targets": ["src/data/policies.ts"]
     },
     {
       "id": "ecosystem",
@@ -62,7 +67,8 @@
       "description": "Scan e27/tech.gov.sg for new SG AI startups & government products. Auto-added entries marked _pendingReview.",
       "script": "scripts/refresh/ecosystem/run.ts",
       "args": ["--limit=5"],
-      "mode": "auto-pr"
+      "mode": "auto-pr",
+      "targets": ["src/data/ecosystem.ts"]
     },
     {
       "id": "levers",
@@ -72,7 +78,8 @@
       "description": "Scan IMDA/tech.gov.sg/EDB for new programmes / funds / data centre deals.",
       "script": "scripts/refresh/levers/run.ts",
       "args": ["--limit=3"],
-      "mode": "auto-pr"
+      "mode": "auto-pr",
+      "targets": ["src/data/levers.ts"]
     },
     {
       "id": "startups",
@@ -82,7 +89,8 @@
       "description": "Business Times tech RSS + AISG + EDB; surface funding rounds, exits, new SG AI companies.",
       "script": "scripts/refresh/startups/run.ts",
       "args": ["--limit=3"],
-      "mode": "auto-pr"
+      "mode": "auto-pr",
+      "targets": ["src/data/startups.ts"]
     },
     {
       "id": "legal-ai",
@@ -92,7 +100,8 @@
       "description": "Monitor sso.agc.gov.sg / MAS / PDPC for new AI-related legislation & regulatory guidance.",
       "script": "scripts/refresh/legal-ai/run.ts",
       "args": ["--limit=3"],
-      "mode": "auto-pr"
+      "mode": "auto-pr",
+      "targets": ["src/data/legal-ai.ts"]
     },
     {
       "id": "talent",
@@ -102,7 +111,8 @@
       "description": "AISG / IMDA / GovTech for new training, scholarship, apprentice, K-12 AI education programmes.",
       "script": "scripts/refresh/talent/run.ts",
       "args": ["--limit=3"],
-      "mode": "auto-pr"
+      "mode": "auto-pr",
+      "targets": ["src/data/talent.ts"]
     },
     {
       "id": "tracker",
@@ -112,7 +122,8 @@
       "description": "Surface new investment / talent / compute / adoption / research / governance data points.",
       "script": "scripts/refresh/tracker/run.ts",
       "args": ["--limit=3"],
-      "mode": "auto-pr"
+      "mode": "auto-pr",
+      "targets": ["src/data/tracker.ts"]
     },
     {
       "id": "benchmarking",
@@ -122,7 +133,8 @@
       "description": "Stanford AI Index + IMD WCY for new annual reports; flag for manual data extraction.",
       "script": "scripts/refresh/benchmarking/run.ts",
       "args": ["--limit=3"],
-      "mode": "auto-pr"
+      "mode": "auto-pr",
+      "targets": ["src/data/benchmarking.ts"]
     },
     {
       "id": "evals",
@@ -132,7 +144,8 @@
       "description": "Sweep every sourceUrl/url in src/data/*.ts and assert reachability; assert all CJK string fields have *En + *Ja siblings; assert every commit that net-added records to a tracked data file also surfaced an entry on src/data/updates.ts. Layers B/C/D need a build and run via `npm run build && npm run eval` separately.",
       "script": "scripts/evals/run-all.ts",
       "args": [],
-      "mode": "issue-on-fail"
+      "mode": "issue-on-fail",
+      "targets": []
     },
     {
       "id": "evals-monthly",
@@ -142,7 +155,17 @@
       "description": "LLM-backed quality regressions. Runs scripts/lib/ai-summarize.ts and scripts/lib/translate.ts against golden corpus; asserts schema validity, classification closed-set, length bands, term hits, glossary fidelity, language purity. Cost: ~30 Claude haiku calls (~few cents). Issue opens if any case fails an assertion.",
       "script": "scripts/evals/run-all.ts",
       "args": ["--frequency=monthly"],
-      "mode": "issue-on-fail"
+      "mode": "issue-on-fail",
+      "targets": []
     }
+  ],
+  "editorialComment": "src/data/*.ts files with NO refresh pipeline that are legitimately human-edited or derived. coverage-audit treats these as accounted-for. Adding a new data file means either giving some pipeline a `targets` entry for it or adding it here with a reason.",
+  "editorial": [
+    { "file": "src/data/timeline.ts", "reason": "大事年表，半事件半编辑，重大里程碑时手动追加", "owner": "editorial" },
+    { "file": "src/data/references.ts", "reason": "外部资源索引，看到好文章手工加", "owner": "editorial" },
+    { "file": "src/data/fieldnotes.ts", "reason": "类博客随笔，自研内容", "owner": "editorial" },
+    { "file": "src/data/people.ts", "reason": "人物档案，靠 scripts/voices/prospect-stubs.mjs 半自动 review queue（季度手动 promote），非全自动管线", "owner": "voices" },
+    { "file": "src/data/policy-source-texts.ts", "reason": "政策原文全文缓存，policies 详情页消费，手工维护", "owner": "policies" },
+    { "file": "src/data/updates.ts", "reason": "首页『最近更新』从各数据文件的 addedAt 派生（src/utils/derived-updates.ts），只剩 site/fix/longform 手动 override，非刷新目标", "owner": "derived" }
   ]
 }

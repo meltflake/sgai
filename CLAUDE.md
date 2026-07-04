@@ -276,6 +276,25 @@ npx prettier --write src/
 
 历史踩点：2026-06-02 给 `debates.ts` 新增 8 条辩论时撞到——CLAUDE.md 有 rule #8 写了 video-transcripts 的等价硬门，却漏写 debate-transcripts 的同款门，差点直接跑 `fetch:debate-transcripts` 全量重写、连带抹掉已回填的 `paragraphsKo`。本条即补这个文档盲区。
 
+### 12. 数据文件刷新归属（关键 — 最高优先级）
+
+> **🔴 顶层硬规则：任何新增的 `src/data/*.ts` 必须在 [`scripts/refresh/registry.json`](scripts/refresh/registry.json) 有归属——要么是某条 pipeline 的 `targets[]` 成员，要么登记进顶层 `editorial[]`（带 `reason`）。否则 `coverage-audit` eval（weekly evals + CI 硬门）当场 exit 1。**
+>
+> `scripts/auto_update.py` 只是 dispatcher——它能刷新的范围 = registry 里列的管线。过去"哪个数据文件归哪条管线"只活在人脑和 [`docs/refresh-playbook.md`](docs/refresh-playbook.md) 里，导致两个 bug 类：(1) 新加数据文件/页面 → 零刷新覆盖、没人报警；(2) playbook drift（把 startups/talent/tracker/benchmarking 标成"❌ 无 pipeline"，其实早建好）。现在 registry 的 `targets[]` + `editorial[]` 是**机器校验的单一真相**。
+>
+> - ✅ 加新管线产物：在该 pipeline entry 的 `targets[]` 里列出它 emit 的 `src/data/*.ts`。
+> - ✅ 加纯编辑/派生数据文件（无管线）：在 `editorial[]` 加一条 `{file, reason, owner}`。
+> - ✅ 改了某管线的 emit 目标（重命名/拆分数据文件）：同步改 registry `targets`，否则 stale-manifest 断言 fail。
+> - ❌ 禁止"先合数据文件，下个 PR 补 registry 归属"——`npm run eval:coverage-audit` 当场 fail，CI block merge。
+>
+> 强制点：
+>
+> 1. `npm run eval:coverage-audit`（[scripts/evals/coverage-audit/check.ts](scripts/evals/coverage-audit/check.ts)）**全量扫** `src/data/*.ts`：有 orphan（无归属）或 stale（target/editorial 路径不存在）→ exit 1。
+> 2. `.github/workflows/actions.yaml` 的 `check` job 跑此 eval，CI 硬门，PR 不能 merge。
+> 3. 挂在 `scripts/evals/run-all.ts` 的 weekly STAGES，cron 也跑，失败自动开 issue。
+
+历史踩点：2026-06-30 审计 `auto_update.py` 覆盖面时发现——它定时能跑，但"全站所有该更新的地方是否都被某条管线覆盖"无任何机器校验，纯靠 registry + playbook 的手工纪律，且 playbook 已 drift。本规则把覆盖从纪律变成 CI 强制门，根除 orphan-data-file 与 manifest-drift 两个 bug 类。
+
 ## 项目结构
 
 ```

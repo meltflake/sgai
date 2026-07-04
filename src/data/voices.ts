@@ -1502,7 +1502,8 @@ export const mddiSpeeches: MddiSpeech[] = [
     addedAt: '2026-06-21',
   },
   {
-    titleEn: 'Keynote Address by Minister Josephine Teo at the Launch of the Global Institute of Finance, Technology, and Society (GIFTS)',
+    titleEn:
+      'Keynote Address by Minister Josephine Teo at the Launch of the Global Institute of Finance, Technology, and Society (GIFTS)',
     title: 'Josephine Teo 部长在全球金融、科技与社会研究院（GIFTS）成立大会的主旨演讲',
     titleJa: 'Josephine Teo 大臣による Global Institute of Finance, Technology, and Society (GIFTS) 設立式での基調演説',
     titleKo: '조세핀 테오 장관의 Global Institute of Finance, Technology, and Society (GIFTS) 출범식 기조연설',
@@ -2440,7 +2441,8 @@ export const mddiSpeeches: MddiSpeech[] = [
   {
     titleEn: 'Speech by SMS Janil Puthucheary at the Launch of Meta’s Llama Incubator Programme in Singapore',
     title: '高级政务部长Janil Puthucheary在Meta Llama孵化器计划新加坡启动仪式上的致辞',
-    titleJa: 'SMS Janil Puthucheary によるシンガポールにおける Meta の Llama Incubator Programme 立ち上げ式典でのスピーチ',
+    titleJa:
+      'SMS Janil Puthucheary によるシンガポールにおける Meta の Llama Incubator Programme 立ち上げ式典でのスピーチ',
     titleKo: 'SMS Janil Puthucheary의 싱가포르 Meta Llama 인큐베이터 프로그램 출범식 연설문',
     speaker: 'Janil Puthucheary',
     speakerTitle: 'MDDI 前高级政务部长',
@@ -2656,7 +2658,7 @@ export const mddiSpeeches: MddiSpeech[] = [
   {
     titleEn: 'Transcript of MOS Rahayu Mahzam’s Opening Address at Singapore Semiconductor Women’s Forum',
     title: '政务部长拉哈尤·玛赞在新加坡半导体女性论坛开幕式上的致辞文字实录',
-    titleJa: 'Singapore Semiconductor Women\'s Forum における MOS Rahayu Mahzam の開会挨拶の記録',
+    titleJa: "Singapore Semiconductor Women's Forum における MOS Rahayu Mahzam の開会挨拶の記録",
     titleKo: '싱가포르 반도체 여성 포럼에서의 MOS Rahayu Mahzam 개회사 전문',
     speaker: 'Rahayu Mahzam',
     speakerTitle: 'MDDI 政务次长',
@@ -2710,7 +2712,8 @@ export const mddiSpeeches: MddiSpeech[] = [
   {
     titleEn: 'Opening Remarks by SMS Tan Kiat How at Launch of Expanded Cyber Essentials and Cyber Trust Marks',
     title: '高级政务次长 Tan Kiat How 在推出扩展型 Cyber Essentials 和 Cyber Trust Marks 时的开场致辞',
-    titleJa: 'Tan Kiat How SMS による拡張されたサイバー・エッセンシャルズおよびサイバー・トラスト・マークのローンチでのオープニング・リマーク',
+    titleJa:
+      'Tan Kiat How SMS による拡張されたサイバー・エッセンシャルズおよびサイバー・トラスト・マークのローンチでのオープニング・リマーク',
     titleKo: 'Tan Kiat How SMS의 확대된 Cyber Essentials 및 Cyber Trust Marks 출범식 개막 연설',
     speaker: 'Tan Kiat How',
     speakerTitle: 'MDDI 高级政务部长',
@@ -2729,7 +2732,7 @@ export const mddiSpeeches: MddiSpeech[] = [
     titleEn: 'Speech by Minister Josephine Teo at the 4th ASEAN Digital Ministers’ Meeting',
     title: '部长 Josephine Teo 在第四届 ASEAN 数字部长会议上的致辞',
     titleJa: 'Josephine Teo大臣による第4回ASEANデジタル大臣会議でのスピーチ',
-    titleKo: 'Josephine Teo 장관의 제4차 ASEAN Digital Ministers\' Meeting 연설',
+    titleKo: "Josephine Teo 장관의 제4차 ASEAN Digital Ministers' Meeting 연설",
     speaker: 'Josephine Teo',
     speakerTitle: '数码发展及新闻部长',
     speakerTitleJa: 'デジタル開発・ニュース相',
@@ -2739,7 +2742,7 @@ export const mddiSpeeches: MddiSpeech[] = [
     url: 'https://www.mddi.gov.sg/newsroom/speech-by-minister-josephine-teo-at-4th-asean-digital-ministers-meeting/',
     eventEn: '4th ASEAN Digital Ministers’ Meeting',
     event: '第四届ASEAN数字部长会议',
-    eventJa: '第4回 ASEAN Digital Ministers\' Meeting',
+    eventJa: "第4回 ASEAN Digital Ministers' Meeting",
     eventKo: '제4차 ASEAN 디지털 장관 회의',
     addedAt: '2026-07-04',
   },
@@ -2760,5 +2763,23 @@ export const mddiSpeeches: MddiSpeech[] = [
     eventJa: 'NUS School of Computing 50周年ガラディナーにおける How',
     eventKo: 'NUS School of Computing 50주년 갈라 디너에서의 발언',
     addedAt: '2026-07-04',
+  },
+  {
+    titleEn: 'Address by MOS Rahayu Mahzam at Cisco Connect 2026',
+    title: 'MOS Rahayu Mahzam 在 Cisco Connect 2026 的致辞',
+    titleJa: 'Cisco Connect 2026 での MOS Rahayu Mahzam による演説',
+    titleKo: 'MOS Rahayu Mahzam이 Cisco Connect 2026에서 전한 연설',
+    speaker: 'Rahayu Mahzam',
+    speakerTitle: 'MDDI 政务次长',
+    speakerTitleJa: 'MDDI 政務次官',
+    speakerTitleEn: 'Minister of State, MDDI',
+    speakerTitleKo: 'MDDI 정무차관',
+    date: '2026-06-23',
+    url: 'https://www.mddi.gov.sg/newsroom/address-by-mos-rahayu-mahzam-at-cisco-connect-2026-/',
+    eventEn: 'Cisco Connect',
+    event: 'Cisco Connect',
+    eventJa: 'Cisco Connect',
+    eventKo: 'Cisco Connect',
+    addedAt: '2026-06-28',
   },
 ];

@@ -17,6 +17,17 @@ sgai 数据自动更新 — 统一包装脚本（registry-driven）。
   python auto_update.py --only videos,policies       # 多个管线（逗号分隔）
   python auto_update.py --dry-run                    # 不发邮件、不写盘
   python auto_update.py --verbose                    # 详细输出
+
+定期运行（推荐——一条 cron 心跳驱动所有 cadence）:
+  python auto_update.py --due                        # 跑所有「已到期」的 schedule（按 state 里上次成功时间判断）
+  python auto_update.py --status                     # 看每个 schedule 上次跑/是否到期/cron 是否装好
+  python auto_update.py --install-cron               # 装一行 managed crontab（每天 08:00 跑 --due），幂等
+  python auto_update.py --uninstall-cron             # 移除 managed crontab 块
+
+为什么用 --due 而不是给每个 cadence 配一条精确 cron：纯 cron 在 Mac 睡眠时会
+静默跳过那一分钟的触发（比如 1 号月度刷新——合盖了就永远不跑）。--due 把 cadence
+逻辑搬进脚本，按「距上次成功是否超过间隔」判断，一条每日心跳就能自愈式驱动
+weekly/monthly/quarterly/half-yearly，掉电/睡眠后下次开机补跑。
 """
 
 import argparse
@@ -38,6 +49,28 @@ LOG_DIR = SCRIPT_DIR / "logs"
 STATE_FILE = DATA_DIR / "last_scan_state.json"
 REGISTRY_FILE = SCRIPT_DIR / "refresh" / "registry.json"
 LOG_RETENTION_DAYS = 30
+
+# ── --due 调度间隔 ────────────────────────────────────────────────────────────
+# Each schedule level maps to how often it should fire. --due reads the
+# per-schedule last-success timestamp from state and runs any level whose
+# elapsed time >= interval - GRACE. GRACE absorbs the gap between cron's
+# 08:00 trigger and the previous run's slightly-different clock time so a
+# weekly job that ran at 08:03 last Monday still fires at 08:00 this Monday.
+SCHEDULE_INTERVALS = {
+    "daily": timedelta(days=1),
+    "weekly": timedelta(days=7),
+    "monthly": timedelta(days=30),
+    "quarterly": timedelta(days=91),
+    "half-yearly": timedelta(days=182),
+}
+DUE_GRACE = timedelta(hours=12)
+
+# ── managed crontab 标记 ──────────────────────────────────────────────────────
+# install/uninstall edit only the lines between these two markers, so a
+# re-install is idempotent and never clobbers the user's other cron entries.
+CRON_BEGIN = "# >>> sgai auto_update (managed) >>>"
+CRON_END = "# <<< sgai auto_update (managed) <<<"
+DEFAULT_CRON_HOUR = 8
 
 
 def load_registry() -> dict:
@@ -114,6 +147,9 @@ def load_state() -> dict:
     # 默认初始状态（基于 debates.ts 中的最高 ID）
     return {
         "last_run": None,
+        # Per-schedule last-success timestamp, consumed by --due. Empty on a
+        # fresh state means "everything is due" → first --due run does a full sweep.
+        "schedule_runs": {},
         "domains": {
             "videos": {"video_ids": []},
             "voices": {"urls": []},
@@ -413,7 +449,7 @@ def cleanup_old_logs(logger):
 
 
 # ── 主流程 ────────────────────────────────────────────────────────────────────
-def run_tsx_pipeline(pipeline: dict, logger) -> dict:
+def run_tsx_pipeline(pipeline: dict, logger, dry_run: bool = False) -> dict:
     """运行一条 type=tsx 管线（subprocess npx tsx <script>）。
 
     新管线在 stdout 末尾 print 一行 JSON 报告（{domain, added/changed, pr_url, ...}）。
@@ -427,6 +463,13 @@ def run_tsx_pipeline(pipeline: dict, logger) -> dict:
         return {"count": 0, "items": [], "error": "registry entry missing script"}
 
     cmd = ["npx", "tsx", script, *extra_args]
+    # Propagate --dry-run into the tsx subprocess. Without this, a top-level
+    # --dry-run only suppressed this script's own email/issue (see main below)
+    # while the tsx pipeline still ran scan→emit→commit→push→PR — which opened
+    # an accidental PR on 2026-06-28. Every tsx run.ts honours --dry-run
+    # (CLAUDE.md "添加新管线" requires --dry-run / --limit / --no-commit / --no-push).
+    if dry_run and "--dry-run" not in cmd:
+        cmd.append("--dry-run")
     logger.info(f"  [{pipeline['id']}] $ {' '.join(cmd)}")
     proc = subprocess.run(
         cmd,
@@ -473,49 +516,65 @@ def run_tsx_pipeline(pipeline: dict, logger) -> dict:
     }
 
 
-def main():
-    parser = argparse.ArgumentParser(description="sgai 数据自动更新 (registry-driven)")
-    parser.add_argument("--dry-run", action="store_true", help="运行但不发邮件")
-    parser.add_argument("--only", help="只运行指定管线（逗号分隔；如 videos,policies）")
-    parser.add_argument(
-        "--schedule",
-        choices=["daily", "weekly", "monthly", "quarterly", "half-yearly", "all"],
-        default="all",
-        help="仅运行匹配此 schedule 的管线",
-    )
-    parser.add_argument("--verbose", action="store_true", help="详细输出")
-    args = parser.parse_args()
+# ── --due 调度判定 ────────────────────────────────────────────────────────────
+def registry_schedules(registry: dict) -> set[str]:
+    """Schedules that at least one registry pipeline actually uses."""
+    return {e.get("schedule") for e in registry.get("pipelines", []) if e.get("schedule")}
 
-    # 切换工作目录到脚本所在位置
-    os.chdir(SCRIPT_DIR)
 
-    logger = setup_logging(args.verbose)
-    logger.info("=" * 50)
-    logger.info("AISG 数据自动更新开始")
-    logger.info("=" * 50)
+def compute_due_schedules(registry: dict, state: dict, now: datetime | None = None) -> set[str]:
+    """Schedules whose elapsed-since-last-success >= interval - grace.
 
-    state = load_state()
-    results = {}
-    errors = []
-    start_time = time.time()
+    A schedule that has never run (no entry in state.schedule_runs) is always due.
+    """
+    now = now or datetime.now()
+    runs = state.get("schedule_runs", {})
+    due = set()
+    for sched in registry_schedules(registry):
+        interval = SCHEDULE_INTERVALS.get(sched)
+        if interval is None:
+            continue  # unknown schedule label — leave it to explicit --schedule
+        last = runs.get(sched)
+        if not last:
+            due.add(sched)
+            continue
+        try:
+            last_dt = datetime.fromisoformat(last)
+        except ValueError:
+            due.add(sched)
+            continue
+        if now - last_dt >= interval - DUE_GRACE:
+            due.add(sched)
+    return due
 
-    # ── 从 registry 决定要跑哪些管线 ──
-    registry = load_registry()
-    only_set = None
-    if args.only:
-        only_set = {s.strip() for s in args.only.split(",") if s.strip()}
 
+def record_schedule_runs(state: dict, schedules: set[str]):
+    """Stamp the given schedule levels as having just succeeded (for --due math)."""
+    if not schedules:
+        return
+    runs = state.setdefault("schedule_runs", {})
+    stamp = datetime.now().isoformat()
+    for s in schedules:
+        runs[s] = stamp
+
+
+# ── 管线选择 + 运行（normal / --schedule / --due 共用）─────────────────────────
+def select_pipelines(registry: dict, schedules: set[str] | None, only_set: set[str] | None) -> list[dict]:
+    """Filter registry entries by schedule set (None = all) and an optional id allowlist."""
     selected = []
     for entry in registry.get("pipelines", []):
         if only_set is not None and entry["id"] not in only_set:
             continue
-        if args.schedule != "all" and entry.get("schedule") != args.schedule:
+        if schedules is not None and entry.get("schedule") not in schedules:
             continue
         selected.append(entry)
+    return selected
 
-    logger.info(f"已选 {len(selected)} 条管线: {[e['id'] for e in selected]}")
 
-    # ── 运行各管线 ──
+def run_pipelines(selected: list[dict], state: dict, logger, dry_run: bool) -> tuple[dict, list[str]]:
+    """Run the selected pipelines, returning (results, errors)."""
+    results: dict = {}
+    errors: list[str] = []
     for entry in selected:
         pid = entry["id"]
         ptype = entry.get("type")
@@ -532,7 +591,7 @@ def main():
                 else:
                     raise RuntimeError(f"unknown python-builtin pipeline id: {pid}")
             elif ptype == "tsx":
-                results[pid] = run_tsx_pipeline(entry, logger)
+                results[pid] = run_tsx_pipeline(entry, logger, dry_run=dry_run)
             else:
                 raise RuntimeError(f"unknown pipeline type: {ptype}")
         except Exception as e:
@@ -540,6 +599,198 @@ def main():
             logger.debug(traceback.format_exc())
             errors.append(f"{pid}: {e}")
             results[pid] = {"count": 0, "items": [], "error": str(e)}
+    return results, errors
+
+
+# ── managed crontab 自管理 ────────────────────────────────────────────────────
+def _read_crontab() -> str:
+    """Current user crontab text ('' if none / not yet created)."""
+    import subprocess
+
+    r = subprocess.run(["crontab", "-l"], capture_output=True, text=True)
+    return r.stdout if r.returncode == 0 else ""
+
+
+def _write_crontab(content: str):
+    import subprocess
+
+    body = content.rstrip("\n") + "\n" if content.strip() else ""
+    r = subprocess.run(["crontab", "-"], input=body, capture_output=True, text=True)
+    if r.returncode != 0:
+        raise RuntimeError(f"crontab write failed: {r.stderr.strip()}")
+
+
+def _strip_managed_block(content: str) -> str:
+    """Drop everything between CRON_BEGIN/CRON_END (inclusive), keep the rest."""
+    out, skip = [], False
+    for ln in content.splitlines():
+        if ln.strip() == CRON_BEGIN:
+            skip = True
+            continue
+        if ln.strip() == CRON_END:
+            skip = False
+            continue
+        if not skip:
+            out.append(ln)
+    return "\n".join(out).strip("\n")
+
+
+def build_managed_block(hour: int = DEFAULT_CRON_HOUR) -> str:
+    """One daily heartbeat that calls --due. PATH is baked in so npx/gh/node
+    resolve under cron's minimal environment."""
+    py = sys.executable
+    path = os.environ.get("PATH", "/usr/local/bin:/usr/bin:/bin")
+    return "\n".join(
+        [
+            CRON_BEGIN,
+            f"PATH={path}",
+            "# Daily heartbeat — --due runs whichever schedule level is overdue.",
+            "# Self-heals after sleep/downtime; do not add per-cadence cron lines.",
+            f"{0} {hour} * * *  cd {PROJECT_ROOT} && {py} scripts/auto_update.py --due "
+            f">> {LOG_DIR / 'cron.log'} 2>&1",
+            CRON_END,
+        ]
+    )
+
+
+def _probe_builtin_deps() -> list[str]:
+    """Which deps the hansard/videos builtin scans need but the current
+    interpreter (= the one cron will use) can't import."""
+    import importlib.util
+
+    missing = []
+    for mod in ("requests", "feedparser", "bs4"):
+        if importlib.util.find_spec(mod) is None:
+            missing.append(mod)
+    return missing
+
+
+def cmd_install_cron(logger, hour: int = DEFAULT_CRON_HOUR):
+    base = _strip_managed_block(_read_crontab())
+    block = build_managed_block(hour)
+    new = f"{base}\n\n{block}" if base.strip() else block
+    _write_crontab(new)
+    logger.info(f"✅ 已安装 managed crontab 块（每天 {hour:02d}:00 跑 --due），用解释器: {sys.executable}")
+    for line in block.splitlines():
+        logger.info(f"    {line}")
+    logger.info(
+        "⚠ macOS: 项目在 Dropbox/CloudStorage 下时，需到「系统设置 → 隐私与安全性 → "
+        "完全磁盘访问」给 /usr/sbin/cron 授权，否则 cron 读不到项目文件。"
+    )
+    missing = _probe_builtin_deps()
+    if missing:
+        logger.warning(
+            f"⚠ 当前解释器缺 {', '.join(missing)}——cron 跑 hansard/videos 时会失败。"
+            f"\n    请改用带依赖的 venv 重装：<venv>/bin/python scripts/auto_update.py --install-cron"
+            f"\n    （建议 venv 放 ~/.venvs/sgai/ 而非 /tmp——/tmp 重启会清空）"
+        )
+
+
+def cmd_uninstall_cron(logger):
+    existing = _read_crontab()
+    if CRON_BEGIN not in existing:
+        logger.info("没有 managed crontab 块，无需卸载。")
+        return
+    _write_crontab(_strip_managed_block(existing))
+    logger.info("🧹 已移除 managed crontab 块。")
+
+
+def cmd_status(registry: dict, state: dict, logger):
+    now = datetime.now()
+    runs = state.get("schedule_runs", {})
+    due = compute_due_schedules(registry, state, now)
+    print(f"last full run : {state.get('last_run') or '(never)'}")
+    print(f"{'schedule':<14}{'last success':<22}{'interval':<10}{'due now?'}")
+    print("-" * 54)
+    for sched in sorted(registry_schedules(registry)):
+        last = runs.get(sched) or "(never)"
+        if last != "(never)":
+            last = last[:19].replace("T", " ")
+        iv = SCHEDULE_INTERVALS.get(sched)
+        iv_s = f"{iv.days}d" if iv else "?"
+        print(f"{sched:<14}{last:<22}{iv_s:<10}{'YES' if sched in due else 'no'}")
+    print("-" * 54)
+    installed = CRON_BEGIN in _read_crontab()
+    print(f"managed crontab: {'installed' if installed else 'NOT installed (run --install-cron)'}")
+    if due:
+        print(f"\n→ `--due` would now run: {', '.join(sorted(due))}")
+    else:
+        print("\n→ nothing due right now.")
+
+
+def main():
+    parser = argparse.ArgumentParser(description="sgai 数据自动更新 (registry-driven)")
+    parser.add_argument("--dry-run", action="store_true", help="不发邮件、不写盘、不开 PR（透传 --dry-run 给 tsx 子管线）")
+    parser.add_argument("--only", help="只运行指定管线（逗号分隔；如 videos,policies）")
+    parser.add_argument(
+        "--schedule",
+        choices=["daily", "weekly", "monthly", "quarterly", "half-yearly", "all"],
+        default="all",
+        help="仅运行匹配此 schedule 的管线",
+    )
+    parser.add_argument("--verbose", action="store_true", help="详细输出")
+    parser.add_argument(
+        "--due",
+        action="store_true",
+        help="跑所有「已到期」的 schedule（按 state 里上次成功时间判断）——cron 心跳用这个",
+    )
+    parser.add_argument("--status", action="store_true", help="打印每个 schedule 的到期状态 + cron 安装情况后退出")
+    parser.add_argument("--install-cron", action="store_true", help="安装 managed crontab（每天 08:00 跑 --due），幂等")
+    parser.add_argument("--uninstall-cron", action="store_true", help="移除 managed crontab 块")
+    parser.add_argument(
+        "--cron-hour", type=int, default=DEFAULT_CRON_HOUR, help=f"--install-cron 的触发小时（默认 {DEFAULT_CRON_HOUR}）"
+    )
+    args = parser.parse_args()
+
+    # 切换工作目录到脚本所在位置
+    os.chdir(SCRIPT_DIR)
+
+    logger = setup_logging(args.verbose)
+
+    # ── 管理类子命令（不跑管线，处理完即退出）──
+    registry = load_registry()
+    if args.status:
+        cmd_status(registry, load_state(), logger)
+        return
+    if args.install_cron:
+        cmd_install_cron(logger, hour=args.cron_hour)
+        return
+    if args.uninstall_cron:
+        cmd_uninstall_cron(logger)
+        return
+
+    logger.info("=" * 50)
+    logger.info("AISG 数据自动更新开始")
+    logger.info("=" * 50)
+
+    state = load_state()
+    start_time = time.time()
+
+    only_set = None
+    if args.only:
+        only_set = {s.strip() for s in args.only.split(",") if s.strip()}
+
+    # ── 决定本次驱动哪些 schedule ──
+    #   --due       → state 里到期的那些（cron 心跳路径）
+    #   --schedule  → 指定那一个
+    #   都没给       → 全部（None = 不按 schedule 过滤）
+    if args.due:
+        driven = compute_due_schedules(registry, state)
+        if not driven:
+            logger.info("✅ 没有到期的 schedule，本次 --due 无事可做。")
+            return
+        logger.info(f"--due 到期 schedule: {sorted(driven)}")
+        schedules: set[str] | None = driven
+    elif args.schedule != "all":
+        schedules = {args.schedule}
+    else:
+        schedules = None
+
+    selected = select_pipelines(registry, schedules, only_set)
+    logger.info(f"已选 {len(selected)} 条管线: {[e['id'] for e in selected]}")
+
+    # ── 运行各管线 ──
+    results, errors = run_pipelines(selected, state, logger, dry_run=args.dry_run)
 
     elapsed = time.time() - start_time
 
@@ -550,8 +801,12 @@ def main():
     # ── 通知（GitHub Issue 取代 SMTP）──
     # 新管线（type=tsx, mode=auto-pr）已经各自开了 PR + assign @me，不需重复通知。
     # 这里只为 scan-only 旧管线（hansard / videos）和失败开 issue。
+    # auto_update_config.py is optional + gitignored. Accept either NOTIFY_IF_NO_NEW
+    # (current name) or the legacy SEND_IF_NO_NEW so an old local config still works.
     try:
-        from auto_update_config import NOTIFY_IF_NO_NEW
+        import auto_update_config as _cfg
+
+        NOTIFY_IF_NO_NEW = getattr(_cfg, "NOTIFY_IF_NO_NEW", getattr(_cfg, "SEND_IF_NO_NEW", False))
     except ImportError:
         NOTIFY_IF_NO_NEW = False
 
@@ -570,6 +825,12 @@ def main():
         notify_via_github_issue(subject, html_to_markdown(body), logger, labels=labels)
     else:
         logger.info("无新 scan-only 内容、无错误，跳过 GitHub Issue（auto-PR 管线已各自 assign @me）")
+
+    # ── 记录 schedule 成功时间（供 --due 判定）──
+    # 只在「按 schedule 驱动」或「全量跑」时记账；--only 是临时手动跑，不污染 cadence。
+    if not args.dry_run and not only_set:
+        recorded = schedules if schedules is not None else registry_schedules(registry)
+        record_schedule_runs(state, recorded)
 
     # ── 保存状态 ──
     save_state(state)

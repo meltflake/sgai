@@ -1607,7 +1607,7 @@ export const people: Person[] = [
         roleEn: 'IEEE Fellow',
         organization: 'IEEE',
         organizationEn: 'IEEE',
-        sourceUrl: 'https://www.a-star.edu.sg/cfar/news/news/features/ieee-fellow',
+        sourceUrl: 'https://www.a-star.edu.sg/cfar/about-cfar/management/prof-ivor-tsang',
       },
       {
         role: '首届 A*STAR AI Fellow',
@@ -1676,8 +1676,7 @@ export const people: Person[] = [
           'A*STAR チーフ AI サイエンティストとしての職責において国家 AI 研究方向を形成し、CFAR 設立の重要な推進力となりました。2025 年に Clarivate highly cited researcher（クロスドメイン）に選出されました。',
         descriptionEn:
           "As A*STAR's Chief AI Scientist, shapes national AI research direction; key force behind establishing CFAR. Named to Clarivate's 2025 Highly Cited Researchers (Cross-Field).",
-        sourceUrl:
-          'https://www.a-star.edu.sg/cfar/news/news/features/clarivate%27s-list-of-highly-cited-researchers-2025',
+        sourceUrl: 'https://www.a-star.edu.sg/cfar/about-cfar/management/prof-ong-yew-soon',
       },
     ],
     externalRoles: [
@@ -1689,8 +1688,7 @@ export const people: Person[] = [
         organization: 'Clarivate',
         organizationEn: 'Clarivate',
         since: '2025',
-        sourceUrl:
-          'https://www.a-star.edu.sg/cfar/news/news/features/clarivate%27s-list-of-highly-cited-researchers-2025',
+        sourceUrl: 'https://www.a-star.edu.sg/cfar/about-cfar/management/prof-ong-yew-soon',
       },
     ],
   },

@@ -5,7 +5,7 @@ export const seaLionStats = {
   topModel: 'Gemma-SEA-LION-v4-27B-IT',
   topModelDownloads: 5034,
   dataSource: 'HuggingFace API',
-  dataDate: '2026-06-19',
+  dataDate: '2026-07-01',
   huggingfaceUrl: 'https://huggingface.co/aisingapore',
 };
 
@@ -377,7 +377,7 @@ For sgai.md, it should be tracked as a long-running entity: tooling evolution, d
     descriptionKo: '동남아 언어 및 문화 맥락을 대상으로 하는 대규모 언어모델 가족',
     descriptionJa: '東南アジアの言語および文化的文脈に向けた大規模言語モデルファミリー',
     descriptionEn: 'A large-model family for Southeast Asian languages and cultural contexts',
-    stars: 413,
+    stars: 414,
     language: 'Python / Models',
     url: 'https://github.com/aisingapore/sealion',
     websiteUrl: 'https://sea-lion.ai/',
@@ -646,7 +646,7 @@ If SEA-LION is to enter sensitive sectors such as government, education, healthc
     descriptionKo: '무료 RPA 웹/데스크톱 자동화 도구',
     descriptionJa: '無料の RPA ウェブ/デスクトップ自動化ツール',
     descriptionEn: 'Free RPA tool for web and desktop automation',
-    stars: 6305,
+    stars: 6309,
     language: 'JavaScript',
     url: 'https://github.com/aisingapore/TagUI',
     websiteUrl: 'https://tagui.readthedocs.io/',
