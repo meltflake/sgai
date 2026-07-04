@@ -25,6 +25,7 @@ import { resolve } from 'node:path';
 
 import { parseGithubUrl, fetchRepoStats, findGithubBlocks, rewriteStarsLine } from '../lib/github-stars.ts';
 import { autoCommit, pushAndOpenPR, buildPRBody } from '../lib/auto-commit.ts';
+import { loadState, saveState, setDomainState } from '../lib/state.ts';
 
 interface UpdateResult {
   url: string;
@@ -241,6 +242,15 @@ async function main(): Promise<void> {
 
   const totalErrors = allChanges.filter((r) => r.error).length;
   const allErrored = totalErrors === allChanges.length && allChanges.length > 0;
+
+  // Persist lastRun so scan-state reflects reality (GithubStarsState was
+  // declared in lib/state.ts but never written — it sat at null forever).
+  // Dry runs and all-errored runs don't count as a completed refresh.
+  if (!dryRun && !allErrored) {
+    const state = loadState();
+    setDomainState(state, 'github-stars', { lastRun: new Date().toISOString() });
+    saveState(state);
+  }
 
   if (dryRun || filesWritten.length === 0 || noCommit) {
     let label: string;
