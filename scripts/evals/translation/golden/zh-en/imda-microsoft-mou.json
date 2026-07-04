@@ -1,0 +1,17 @@
+{
+  "id": "imda-microsoft-mou",
+  "description": "IMDA x Microsoft AI safety MOU — org names + framework fidelity.",
+  "source": "新加坡资讯通信媒体发展局 (IMDA) 与微软签署合作备忘录，深化 AI 安全合作：对在新加坡部署的前沿模型开展联合红队测试，并将微软的负责任 AI 标准与新加坡的 AI Verify 测试框架对齐。",
+  "expectedTermsEn": [
+    "IMDA",
+    "Microsoft",
+    "AI Verify",
+    "red team"
+  ],
+  "minLengthRatio": 0.6,
+  "maxLengthRatio": 2.5,
+  "preserveTokens": [
+    "IMDA",
+    "AI Verify"
+  ]
+}

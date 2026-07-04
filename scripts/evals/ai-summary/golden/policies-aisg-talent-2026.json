@@ -23,9 +23,16 @@
     "minDescZhLen": 30,
     "maxDescZhLen": 250,
     "minDescEnLen": 50,
-    "maxDescEnLen": 500,
+    "maxDescEnLen": 700,
     "minConfidence": "medium",
-    "requiredTermsZh": ["AISG", "AIAP"],
-    "requiredTermsEn": ["AI Singapore", "AIAP", "apprentic"]
+    "requiredTermsZh": [
+      "AISG",
+      "AIAP"
+    ],
+    "requiredTermsEn": [
+      "AI Singapore",
+      "AIAP",
+      "apprentic"
+    ]
   }
 }

@@ -1,0 +1,15 @@
+{
+  "id": "aisg-100e",
+  "description": "AISG 100 Experiments programme — programme name preservation.",
+  "source": "AI Singapore 的 100 Experiments (100E) 计划与企业共同出资开发定制 AI 方案，每个项目最高资助 25 万新元，迄今已完成超过 100 个产业项目。",
+  "expectedTermsEn": [
+    "100 Experiments",
+    "AI Singapore"
+  ],
+  "minLengthRatio": 0.6,
+  "maxLengthRatio": 2.5,
+  "preserveTokens": [
+    "100E",
+    "100"
+  ]
+}

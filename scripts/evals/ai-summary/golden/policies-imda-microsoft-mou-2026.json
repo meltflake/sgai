@@ -1,0 +1,38 @@
+{
+  "id": "policies-imda-microsoft-mou-2026",
+  "description": "IMDA x Microsoft AI safety & security MOU — industry adoption / trust boundary case.",
+  "input": {
+    "sourceUrl": "https://www.imda.gov.sg/resources/press-releases-factsheets-and-speeches/press-releases/2026/imda-microsoft-mou",
+    "title": "IMDA and Microsoft Sign MOU to Deepen Cooperation on AI Safety and Security",
+    "contentText": "SINGAPORE, 29 June 2026 — The Infocomm Media Development Authority (IMDA) and Microsoft today signed a Memorandum of Understanding on AI safety and security testing. Under the MOU, Microsoft will conduct joint red-teaming exercises with IMDA on frontier models deployed in Singapore, align its responsible AI standards with Singapore's AI Verify testing framework, and contribute test cases to the AI Verify Foundation's open toolkit. The two parties will also co-develop evaluation benchmarks for multilingual safety in Southeast Asian languages and share incident-response playbooks for AI system failures. IMDA said the agreement makes third-party safety testing a standard step before frontier model deployment in Singapore."
+  },
+  "expected": {
+    "categories": [
+      "National Strategy",
+      "Trust & Safety",
+      "Industry Adoption",
+      "Talent & Education",
+      "Compute & Infrastructure",
+      "Other"
+    ],
+    "domainContext": "Singapore AI policy observatory (sgai.md)",
+    "category": "Trust & Safety",
+    "publishedDate": "2026-06-29",
+    "minTitleZhLen": 8,
+    "maxTitleZhLen": 60,
+    "minDescZhLen": 30,
+    "maxDescZhLen": 250,
+    "minDescEnLen": 50,
+    "maxDescEnLen": 700,
+    "minConfidence": "medium",
+    "requiredTermsZh": [
+      "IMDA",
+      "微软"
+    ],
+    "requiredTermsEn": [
+      "IMDA",
+      "Microsoft",
+      "AI Verify"
+    ]
+  }
+}

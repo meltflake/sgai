@@ -1,0 +1,36 @@
+{
+  "id": "policies-nais-refresh-2026",
+  "description": "NAIS 2.0 progress update — national strategy classification.",
+  "input": {
+    "sourceUrl": "https://www.smartnation.gov.sg/nais/progress-2026",
+    "title": "Singapore Marks Two Years of NAIS 2.0 with S$1 Billion Commitment On Track",
+    "contentText": "SINGAPORE, 28 February 2026 — Two years into the National AI Strategy 2.0, the Government reported that the S$1 billion committed at Budget 2024 for AI compute, talent and industry development is on track, with over 60 per cent deployed. Key milestones include the expansion of the AI Apprenticeship Programme, new compute agreements with hyperscalers to secure sovereign capacity, and sector AI centres of excellence in healthcare, finance and logistics. The update reiterated the strategy's goal of tripling Singapore's AI practitioner pool to 15,000 and positioning Singapore as a trusted global AI hub."
+  },
+  "expected": {
+    "categories": [
+      "National Strategy",
+      "Trust & Safety",
+      "Industry Adoption",
+      "Talent & Education",
+      "Compute & Infrastructure",
+      "Other"
+    ],
+    "domainContext": "Singapore AI policy observatory (sgai.md)",
+    "category": "National Strategy",
+    "publishedDate": "2026-02-28",
+    "minTitleZhLen": 8,
+    "maxTitleZhLen": 60,
+    "minDescZhLen": 30,
+    "maxDescZhLen": 250,
+    "minDescEnLen": 50,
+    "maxDescEnLen": 700,
+    "minConfidence": "medium",
+    "requiredTermsZh": [
+      "NAIS"
+    ],
+    "requiredTermsEn": [
+      "NAIS 2.0",
+      "S$1 billion"
+    ]
+  }
+}

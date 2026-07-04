@@ -1,0 +1,18 @@
+{
+  "id": "sealion-v4",
+  "description": "SEA-LION open model release — model name + download metrics.",
+  "source": "AI Singapore 发布 SEA-LION v4 开源模型家族，包含 Gemma-SEA-LION-v4-27B-IT 等 56 个模型，累计下载超过 27,000 次，覆盖东南亚 11 种语言。",
+  "expectedTermsEn": [
+    "AI Singapore",
+    "SEA-LION",
+    "Southeast Asia"
+  ],
+  "minLengthRatio": 0.6,
+  "maxLengthRatio": 2.5,
+  "preserveTokens": [
+    "SEA-LION",
+    "56",
+    "27,000",
+    "11"
+  ]
+}
