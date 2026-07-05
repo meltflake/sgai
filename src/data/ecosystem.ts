@@ -6358,16 +6358,16 @@ A take: **Singapore being able to sit at the AI Safety Summit table is a manifes
         milestones: [
           {
             date: '2023-11',
-            title: 'Bletchley AI Safety Summit',
-            titleJa: 'Bletchley AI Safety Summit',
-            titleKo: 'Bletchley AI Safety Summit',
+            title: 'Bletchley AI 安全峰会',
+            titleJa: 'Bletchley AI 安全サミット',
+            titleKo: 'Bletchley AI 안전 정상회의',
             titleEn: 'Bletchley AI Safety Summit',
           },
           {
             date: '2024-05',
-            title: 'Seoul AI Safety Summit',
-            titleJa: 'Seoul AI Safety Summit',
-            titleKo: 'Seoul AI Safety Summit',
+            title: '首尔 AI 安全峰会',
+            titleJa: 'ソウル AI 安全サミット',
+            titleKo: '서울 AI 안전 정상회의',
             titleEn: 'Seoul AI Safety Summit',
           },
         ],

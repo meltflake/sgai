@@ -794,7 +794,9 @@ export const people: Person[] = [
     ],
     signatureWork: [
       {
-        title: '100 Experiments（100E）',
+        title: '百项实验计划（100E）',
+        titleKo: '100 실험 프로그램(100E)',
+        titleJa: '100 の実験プログラム（100E）',
         titleEn: '100 Experiments (100E)',
         description: 'AISG 的旗舰产学合作项目，撮合企业和 AI 研究者共同落地真实世界 AI 应用，Laurence 是项目架构师。',
         descriptionKo:
@@ -808,7 +810,9 @@ export const people: Person[] = [
           'https://aifirstnation.org/singapores-journey-from-local-innovation-to-global-impact-with-the-ai-apprenticeship-programme-aiap/',
       },
       {
-        title: 'AI Apprenticeship Programme（AIAP）',
+        title: 'AI 学徒计划（AIAP）',
+        titleKo: 'AI 도제 프로그램(AIAP)',
+        titleJa: 'AI アプレンティスシッププログラム（AIAP）',
         titleEn: 'AI Apprenticeship Programme (AIAP)',
         description: '新加坡培养 AI 工程师的标杆项目，已建立 200+ 人的 AI Engineering 团队，并通过 AIAPX 输出到多国。',
         descriptionKo:
@@ -822,7 +826,9 @@ export const people: Person[] = [
           'https://govinsider.asia/intl-en/article/how-did-ai-singapore-build-a-200-strong-ai-engineering-team-with-the-blue-ocean-strategy-laurence-liew',
       },
       {
-        title: 'LearnAI（AI4E / AI4I）',
+        title: 'LearnAI 全民 AI 普及计划（AI4E / AI4I）',
+        titleKo: 'LearnAI 전 국민 AI 보급 계획(AI4E / AI4I)',
+        titleJa: 'LearnAI 全国民 AI 普及計画（AI4E / AI4I）',
         titleEn: 'LearnAI (AI4E / AI4I)',
         description: 'AI for Everyone 与 AI for Industry 的全国 AI 普及计划；超过 20 万新加坡人通过这条线接触 AI。',
         descriptionKo:
@@ -2496,7 +2502,9 @@ export const people: Person[] = [
     ],
     signatureWork: [
       {
-        title: 'IMDA Digital Industry & Talent Group',
+        title: 'IMDA 数字产业与人才业务群',
+        titleKo: 'IMDA 디지털 산업·인재 그룹',
+        titleJa: 'IMDA デジタル産業・人材グループ',
         titleEn: 'IMDA Digital Industry & Talent Group',
         description:
           '主管 IMDA 数字经济与媒体产业发展，包括 AI、5G、数据中心方向的产业政策，以及与产业的合作伙伴关系。',
@@ -2679,7 +2687,9 @@ export const people: Person[] = [
     ],
     signatureWork: [
       {
-        title: 'AI Verify Foundation',
+        title: 'AI Verify 基金会（AI Verify Foundation）',
+        titleKo: 'AI Verify 재단(AI Verify Foundation)',
+        titleJa: 'AI Verify 財団（AI Verify Foundation）',
         titleEn: 'AI Verify Foundation',
         description:
           '新加坡牵头的开源 AI 治理测试框架与全球开源社区，2023-06 由 IMDA 在 Ong Chen Hui 主导下发起，旨在塑造国际 AI 标准。',
@@ -3020,7 +3030,9 @@ export const people: Person[] = [
     ],
     signatureWork: [
       {
-        title: 'MAS Markets & Development Group',
+        title: 'MAS 市场与发展业务群',
+        titleKo: 'MAS 시장·개발 그룹',
+        titleJa: 'MAS マーケット・開発グループ',
         titleEn: 'MAS Markets & Development Group',
         description:
           '统领 MAS Markets & Investment、Development & International、FinTech & Innovation 三个业务群——AI、tokenisation、跨境金融的核心推动方。',

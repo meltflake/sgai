@@ -686,7 +686,7 @@ This is not just a regional-HQ story. It connects OpenAI’s deployment engineer
       },
       {
         id: 'saf-digital-and-intelligence-service-fourth-service',
-        title: 'SAF Digital and Intelligence Service (DIS)',
+        title: 'SAF 数字与情报军种 (DIS)',
         titleKo: 'SAF 디지털 및 정보 서비스 (DIS)',
         titleJa: 'SAF デジタル・インテリジェンスサービス (DIS)',
         titleEn: 'SAF Digital and Intelligence Service — Fourth Service',
@@ -715,7 +715,7 @@ This is not just a regional-HQ story. It connects OpenAI’s deployment engineer
       },
       {
         id: 'singapore-ai-safety-institute',
-        title: 'Singapore AI Safety Institute (AISI)',
+        title: '新加坡 AI 安全研究所 (AISI)',
         titleKo: '싱가포르 AI 안전 연구소 (AISI)',
         titleJa: 'シンガポール AI 安全研究所 (AISI)',
         titleEn: 'Singapore AI Safety Institute',
@@ -979,9 +979,9 @@ The official risk themes include human oversight, customisation and control, cyb
       },
       {
         id: 'ai-tester-accreditation-programme-2026',
-        title: 'AI Tester Accreditation Programme (AI TAP)',
-        titleKo: 'AI Tester Accreditation Programme (AI TAP)',
-        titleJa: 'AI Tester Accreditation Programme (AI TAP)',
+        title: 'AI 测试服务商认可计划（AI TAP）',
+        titleKo: 'AI 테스터 인증 프로그램 (AI TAP)',
+        titleJa: 'AI テスター認定プログラム（AI TAP）',
         titleEn: 'AI Tester Accreditation Programme (AI TAP)',
         date: '2026-05',
         source: 'AI Verify Foundation / IMDA',
@@ -1184,7 +1184,7 @@ Strategically, this moves AI Verify from tools and frameworks into market infras
       },
       {
         id: 'project-mindforge-genai-risk-framework-for-financial-sector',
-        title: 'MAS Project MindForge',
+        title: 'Project MindForge — 金融业 GenAI 风险框架',
         titleKo: 'Project MindForge — 금융권 GenAI 위험 프레임워크',
         titleJa: 'Project MindForge — 金融セクター向け GenAI リスクフレームワーク',
         titleEn: 'Project MindForge — GenAI Risk Framework for Financial Sector',
@@ -1215,7 +1215,7 @@ Strategically, this moves AI Verify from tools and frameworks into market infras
       },
       {
         id: 'ai-risk-management-guidelines-for-banks',
-        title: 'MAS AI Risk Management Guidelines',
+        title: 'MAS AI 风险管理指引',
         titleKo: 'MAS AI 위험 관리 지침',
         titleJa: 'MAS AI リスク管理ガイドライン',
         titleEn: 'AI Risk Management Guidelines for Banks',
@@ -1917,9 +1917,9 @@ Natasha Crampton: "Through this partnership with IMDA, we can combine government
       },
       {
         id: 'singapore-consensus-on-global-ai-safety-research-priorities',
-        title: 'Singapore Consensus on Global AI Safety Research Priorities',
-        titleKo: 'Singapore Consensus on Global AI Safety Research Priorities',
-        titleJa: 'Singapore Consensus on Global AI Safety Research Priorities',
+        title: '全球 AI 安全研究优先级新加坡共识（Singapore Consensus）',
+        titleKo: '글로벌 AI 안전 연구 우선순위 싱가포르 공감대 (Singapore Consensus)',
+        titleJa: 'グローバル AI 安全研究優先事項シンガポール・コンセンサス（Singapore Consensus）',
         titleEn: 'Singapore Consensus on Global AI Safety Research Priorities',
         date: '2025-05',
         source: 'Singapore Conference on AI (SCAI) / Singapore AI Safety Institute',
@@ -1973,7 +1973,7 @@ This remains one of Singapore’s most important international governance levers
       },
       {
         id: 'asean-guide-on-ai-governance-and-ethics',
-        title: 'ASEAN Guide on AI Governance and Ethics',
+        title: 'ASEAN AI 治理与伦理指南',
         titleKo: 'ASEAN AI 거버넌스 및 윤리 가이드',
         titleJa: 'ASEAN AI ガバナンス・倫理ガイド',
         titleEn: 'ASEAN Guide on AI Governance and Ethics',
@@ -2034,9 +2034,9 @@ This remains one of Singapore’s most important international governance levers
       },
       {
         id: 'international-scientific-exchange-on-ai-safety',
-        title: 'International Scientific Exchange on AI Safety (ISE)',
-        titleKo: 'International Scientific Exchange on AI Safety (ISE)',
-        titleJa: 'International Scientific Exchange on AI Safety (ISE)',
+        title: 'AI 安全国际科学交流会（ISE）',
+        titleKo: 'AI 안전 국제 과학 교류회 (ISE)',
+        titleJa: 'AI 安全に関する国際科学交流会（ISE）',
         titleEn: 'International Scientific Exchange on AI Safety',
         date: '2025-04',
         source: 'IMDA / Singapore AI Safety Institute',
