@@ -72,18 +72,41 @@ jobs:
       # must pass before anything ships.
       - run: npm run check:dist
 
+      # Resolves the account id defensively: the dashboard sidebar shows Zone
+      # ID and Account ID side by side and they're easy to swap. If the
+      # CLOUDFLARE_ACCOUNT_ID secret doesn't route, derive the id from the
+      # API token itself (a Pages:Edit token can list its own accounts).
       - name: Check Cloudflare credentials
         id: creds
         env:
           CF_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CF_ACCOUNT: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
         run: |
-          if [ -n "$CF_TOKEN" ] && [ -n "$CF_ACCOUNT" ]; then
-            echo "ok=true" >> "$GITHUB_OUTPUT"
-          else
+          if [ -z "$CF_TOKEN" ]; then
             echo "ok=false" >> "$GITHUB_OUTPUT"
-            echo "::notice title=Deploy skipped::CLOUDFLARE_API_TOKEN / CLOUDFLARE_ACCOUNT_ID not configured — build verified but not deployed (cutover pending, see header of this workflow)."
+            echo "::notice title=Deploy skipped::CLOUDFLARE_API_TOKEN not configured — build verified but not deployed (cutover pending, see header of this workflow)."
+            exit 0
           fi
+          api() { curl -s -H "Authorization: Bearer $CF_TOKEN" "https://api.cloudflare.com/client/v4/$1"; }
+          valid=false
+          if [ -n "$CF_ACCOUNT" ]; then
+            valid=$(api "accounts/$CF_ACCOUNT" | jq -r '.success // false')
+          fi
+          if [ "$valid" != "true" ]; then
+            accounts_json=$(api accounts)
+            derived=$(echo "$accounts_json" | jq -r '.result[0].id // empty')
+            count=$(echo "$accounts_json" | jq -r '.result | length')
+            if [ -z "$derived" ]; then
+              echo "::error title=Deploy failed::CLOUDFLARE_ACCOUNT_ID is invalid and the API token cannot list accounts. Re-check both secrets."
+              exit 1
+            fi
+            name=$(echo "$accounts_json" | jq -r '.result[0].name')
+            echo "::warning title=Account ID auto-derived::CLOUDFLARE_ACCOUNT_ID secret is unset or does not route (Zone ID pasted by mistake?). Using account \"$name\" ($derived) derived from the API token ($count account(s) accessible). Update the secret to silence this warning."
+            CF_ACCOUNT="$derived"
+          fi
+          echo "::add-mask::$CF_ACCOUNT"
+          echo "ok=true" >> "$GITHUB_OUTPUT"
+          echo "account_id=$CF_ACCOUNT" >> "$GITHUB_OUTPUT"
 
       # First-run convenience: create the direct-upload project if it does
       # not exist yet, so cutover needs no local wrangler login — just the
@@ -93,10 +116,10 @@ jobs:
         if: steps.creds.outputs.ok == 'true'
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ steps.creds.outputs.account_id }}
           PROJECT: ${{ vars.CLOUDFLARE_PAGES_PROJECT || 'sgai-ci' }}
         run: |
-          if ! npx wrangler pages project list 2>/dev/null | grep -q "\b$PROJECT\b"; then
+          if ! npx wrangler pages project list | grep -q "\b$PROJECT\b"; then
             npx wrangler pages project create "$PROJECT" --production-branch=main
           fi
 
@@ -105,5 +128,5 @@ jobs:
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          accountId: ${{ steps.creds.outputs.account_id }}
           command: pages deploy dist --project-name=${{ vars.CLOUDFLARE_PAGES_PROJECT || 'sgai-ci' }} --branch=main --commit-dirty=true
