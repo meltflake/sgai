@@ -841,7 +841,6 @@ export const zh = {
 
   // Voice profile detail page (/voices/[id]/)
   voicePositioningHeading: '一句话定位',
-  voiceOfficialChannelsHeading: '官方渠道',
   voicePoliciesChampionedHeading: '主导政策（{count}）',
   voiceAiVideosHeading: '视频观点（{count}）',
 
@@ -1424,7 +1423,6 @@ export const en: Partial<Record<keyof typeof zh, string>> = {
 
   // Voice profile detail page (/voices/[id]/)
   voicePositioningHeading: 'Positioning',
-  voiceOfficialChannelsHeading: 'Official channels',
   voicePoliciesChampionedHeading: 'Policies championed ({count})',
   voiceAiVideosHeading: 'AI videos ({count})',
 
@@ -1991,7 +1989,6 @@ export const ja: Partial<Record<keyof typeof zh, string>> = {
 
   // Voice profile detail page (/voices/[id]/)
   voicePositioningHeading: 'ポジショニング',
-  voiceOfficialChannelsHeading: '公式チャンネル',
   voicePoliciesChampionedHeading: '主導政策（{count} 件）',
   voiceAiVideosHeading: 'AI 動画（{count} 本）',
 
@@ -2562,7 +2559,6 @@ export const ko: Partial<Record<keyof typeof zh, string>> = {
 
   // Voice profile detail page (/voices/[id]/)
   voicePositioningHeading: '포지셔닝',
-  voiceOfficialChannelsHeading: '공식 채널',
   voicePoliciesChampionedHeading: '주도 정책 ({count}건)',
   voiceAiVideosHeading: 'AI 영상 ({count}편)',
 
