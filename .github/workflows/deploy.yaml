@@ -75,7 +75,14 @@ jobs:
       # Resolves the account id defensively: the dashboard sidebar shows Zone
       # ID and Account ID side by side and they're easy to swap. If the
       # CLOUDFLARE_ACCOUNT_ID secret doesn't route, derive the id from the
-      # API token itself (a Pages:Edit token can list its own accounts).
+      # API token itself when its scope allows account listing.
+      #
+      # Endpoint choice matters: a minimally-scoped token (Pages:Edit only,
+      # the recommended setup) can NOT read /accounts/{id} or list /accounts
+      # — those need Account Settings:Read. So the account id is validated
+      # against /accounts/{id}/pages/projects, the exact route wrangler
+      # deploys through; token liveness is checked via /user/tokens/verify,
+      # which every token may call on itself.
       - name: Check Cloudflare credentials
         id: creds
         env:
@@ -88,21 +95,28 @@ jobs:
             exit 0
           fi
           api() { curl -s -H "Authorization: Bearer $CF_TOKEN" "https://api.cloudflare.com/client/v4/$1"; }
-          valid=false
-          if [ -n "$CF_ACCOUNT" ]; then
-            valid=$(api "accounts/$CF_ACCOUNT" | jq -r '.success // false')
+
+          token_ok=$(api user/tokens/verify | jq -r '.success // false')
+          if [ "$token_ok" != "true" ]; then
+            echo "::error title=Deploy failed::CLOUDFLARE_API_TOKEN is invalid or expired (failed /user/tokens/verify). Re-create the token (Account → Cloudflare Pages → Edit) and update the secret."
+            exit 1
           fi
-          if [ "$valid" != "true" ]; then
-            accounts_json=$(api accounts)
-            derived=$(echo "$accounts_json" | jq -r '.result[0].id // empty')
-            count=$(echo "$accounts_json" | jq -r '.result | length')
-            if [ -z "$derived" ]; then
-              echo "::error title=Deploy failed::CLOUDFLARE_ACCOUNT_ID is invalid and the API token cannot list accounts. Re-check both secrets."
+
+          pages_ok=false
+          if [ -n "$CF_ACCOUNT" ]; then
+            pages_ok=$(api "accounts/$CF_ACCOUNT/pages/projects" | jq -r '.success // false')
+          fi
+          if [ "$pages_ok" != "true" ]; then
+            # Best-effort auto-derive — only works if the token can list
+            # accounts (needs Account Settings:Read; minimal tokens can't).
+            derived=$(api accounts | jq -r '.result[0].id // empty')
+            if [ -n "$derived" ] && [ "$(api "accounts/$derived/pages/projects" | jq -r '.success // false')" = "true" ]; then
+              echo "::warning title=Account ID auto-derived::CLOUDFLARE_ACCOUNT_ID secret does not route; using $derived derived from the token. Update the secret to silence this warning."
+              CF_ACCOUNT="$derived"
+            else
+              echo "::error title=Deploy failed::Token is valid but CLOUDFLARE_ACCOUNT_ID does not route to a Pages-accessible account. The Account ID is the 32-hex segment in your dashboard URL (dash.cloudflare.com/<ACCOUNT_ID>/...) — the domain page sidebar's Zone ID is NOT it. Fix with: gh secret set CLOUDFLARE_ACCOUNT_ID --repo meltflake/sgai"
               exit 1
             fi
-            name=$(echo "$accounts_json" | jq -r '.result[0].name')
-            echo "::warning title=Account ID auto-derived::CLOUDFLARE_ACCOUNT_ID secret is unset or does not route (Zone ID pasted by mistake?). Using account \"$name\" ($derived) derived from the API token ($count account(s) accessible). Update the secret to silence this warning."
-            CF_ACCOUNT="$derived"
           fi
           echo "::add-mask::$CF_ACCOUNT"
           echo "ok=true" >> "$GITHUB_OUTPUT"
