@@ -402,6 +402,7 @@ export const zh = {
   debatesPageTitle: '国会 AI 焦点',
   blogIndexTitle: '观察',
   blogPageNumber: '第 {n} 页',
+  blogTagTitle: '标签「{tag}」的文章',
   aboutPageTitle: '关于本站',
   aboutPageDesc: '关于新加坡 AI 观察——独立维护的新加坡 AI 战略观察平台。研究方法、利益声明、反馈方式。',
   evolutionPageTitle: '政策演进分析',
@@ -963,6 +964,7 @@ export const en: Partial<Record<keyof typeof zh, string>> = {
   debatesPageTitle: 'Parliamentary AI Focus',
   blogIndexTitle: 'Opinion',
   blogPageNumber: 'Page {n}',
+  blogTagTitle: "Posts by tag '{tag}'",
   aboutPageTitle: 'About',
   aboutPageDesc:
     "About Singapore AI Observatory — an independently-maintained research platform tracking Singapore's AI strategy. Methodology, conflict-of-interest disclosure, feedback channels.",
@@ -1544,6 +1546,7 @@ export const ja: Partial<Record<keyof typeof zh, string>> = {
   debatesPageTitle: '議会 AI フォーカス',
   blogIndexTitle: 'コラム',
   blogPageNumber: '{n} ページ目',
+  blogTagTitle: 'タグ「{tag}」の投稿',
   aboutPageTitle: 'このサイトについて',
   aboutPageDesc:
     'シンガポール AI 観測について——独立運営のシンガポール AI 戦略観測プラットフォーム。研究方法、利益声明、フィードバック方法。',
@@ -2117,6 +2120,7 @@ export const ko: Partial<Record<keyof typeof zh, string>> = {
   debatesPageTitle: '국회 AI 초점',
   blogIndexTitle: '컬럼',
   blogPageNumber: '{n}페이지',
+  blogTagTitle: "'{tag}' 태그 글",
   aboutPageTitle: '사이트 소개',
   aboutPageDesc:
     '싱가포르 AI 옵저버토리 소개 — 독립적으로 유지 관리되는 싱가포르 AI 전략 관찰 플랫폼. 연구 방법론, 이해관계 선언, 피드백 방식.',

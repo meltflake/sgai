@@ -9,7 +9,7 @@ import Layout from '~/layouts/PageLayout.astro';
 import BlogList from '~/components/blog/List.astro';
 import Headline from '~/components/blog/Headline.astro';
 import Pagination from '~/components/blog/Pagination.astro';
-import { NON_DEFAULT_ROUTE_LOCALES, type Lang } from '~/i18n';
+import { NON_DEFAULT_ROUTE_LOCALES, t, type Lang } from '~/i18n';
 
 export const prerender = true;
 
@@ -47,7 +47,7 @@ const lang = Astro.params.lang as Lang;
 const currentPage = page.currentPage ?? 1;
 
 const metadata = {
-  title: `Posts by tag '${tag.title}'${currentPage > 1 ? ` — Page ${currentPage} ` : ''}`,
+  title: `${t(lang, 'blogTagTitle').replace('{tag}', tag.title)}${currentPage > 1 ? ` — ${t(lang, 'blogPageNumber').replace('{n}', String(currentPage))}` : ''}`,
   robots: {
     index: blogTagRobots?.index,
     follow: blogTagRobots?.follow,
