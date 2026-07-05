@@ -530,6 +530,7 @@ export const zh = {
   trackerCategoryEnterprise: '企业采用',
   trackerCategoryGovernment: '政府自用',
   trackerMethodologyTitle: '仪表盘方法论',
+  trackerMethodologyDesc: '我们怎么做仪表盘——呈现什么、不呈现什么、为什么不打总评分。',
   trackerHomeSummaryTitle: '🇸🇬 新加坡 AI 仪表盘',
   trackerHomeSummaryCta: '6 维度看现状 → 完整仪表盘',
   trackerEditorialAttribution: 'sgai 编辑解读',
@@ -1106,6 +1107,8 @@ export const en: Partial<Record<keyof typeof zh, string>> = {
   trackerCategoryEnterprise: 'Enterprise Adoption',
   trackerCategoryGovernment: 'Government Adoption',
   trackerMethodologyTitle: 'Dashboard Methodology',
+  trackerMethodologyDesc:
+    "How the dashboard is built — what we present, what we don't, and why we don't assign overall grades.",
   trackerHomeSummaryTitle: '🇸🇬 Singapore AI Dashboard',
   trackerHomeSummaryCta: '6 dimensions, current state → Full dashboard',
   trackerEditorialAttribution: 'sgai editorial interpretation',
@@ -1679,6 +1682,7 @@ export const ja: Partial<Record<keyof typeof zh, string>> = {
   trackerCategoryEnterprise: '企業採用',
   trackerCategoryGovernment: '政府自己使用',
   trackerMethodologyTitle: 'ダッシュボード方法論',
+  trackerMethodologyDesc: 'ダッシュボードの作り方——何を提示し、何を提示しないか、そしてなぜ総合評点をつけないのか。',
   trackerHomeSummaryTitle: '🇸🇬 シンガポール AI ダッシュボード',
   trackerHomeSummaryCta: '6 つの観点で現状を見る → 完全なダッシュボード',
   trackerEditorialAttribution: 'sgai 編集解釈',
@@ -2250,6 +2254,8 @@ export const ko: Partial<Record<keyof typeof zh, string>> = {
   trackerCategoryEnterprise: '기업 채택',
   trackerCategoryGovernment: '정부 자체 사용',
   trackerMethodologyTitle: '대시보드 방법론',
+  trackerMethodologyDesc:
+    '대시보드를 어떻게 만드는가——무엇을 보여주고, 무엇을 보여주지 않으며, 왜 종합 등급을 매기지 않는가.',
   trackerHomeSummaryTitle: '🇸🇬 싱가포르 AI 대시보드',
   trackerHomeSummaryCta: '6개 차원으로 현황 보기 → 전체 대시보드',
   trackerEditorialAttribution: 'sgai 편집 해석',
