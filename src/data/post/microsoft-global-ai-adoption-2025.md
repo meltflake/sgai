@@ -3,6 +3,7 @@ publishDate: 2026-02-19
 title: '【译】2025 年全球 AI 采用率——数字鸿沟在扩大'
 excerpt: '微软 AI 经济研究所报告：新加坡 AI 采用率 60.9%，全球第二。全球约六分之一的人口正在使用生成式 AI，但南北差距在扩大。'
 category: '报告翻译'
+topicIds: ['economy-industry', 'international']
 tags:
   - 微软
   - AI 采用率

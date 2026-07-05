@@ -166,6 +166,8 @@
     { "file": "src/data/fieldnotes.ts", "reason": "类博客随笔，自研内容", "owner": "editorial" },
     { "file": "src/data/people.ts", "reason": "人物档案，靠 scripts/voices/prospect-stubs.mjs 半自动 review queue（季度手动 promote），非全自动管线", "owner": "voices" },
     { "file": "src/data/policy-source-texts.ts", "reason": "政策原文全文缓存，policies 详情页消费，手工维护", "owner": "policies" },
-    { "file": "src/data/updates.ts", "reason": "首页『最近更新』从各数据文件的 addedAt 派生（src/utils/derived-updates.ts），只剩 site/fix/longform 手动 override，非刷新目标", "owner": "derived" }
+    { "file": "src/data/updates.ts", "reason": "首页『最近更新』从各数据文件的 addedAt 派生（src/utils/derived-updates.ts），只剩 site/fix/longform 手动 override，非刷新目标", "owner": "derived" },
+    { "file": "src/data/topics.ts", "reason": "受控主题词表（15 个，/topics hub 的 taxonomy），产品级词表人工维护，非内容 record（无 addedAt）", "owner": "editorial" },
+    { "file": "src/data/topic-mappings.ts", "reason": "枚举→topicIds 派生映射表 + 解析器，随词表人工维护；verify-graph 校验其值域与枚举完备性", "owner": "editorial" }
   ]
 }
