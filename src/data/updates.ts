@@ -80,6 +80,31 @@ const MANUAL_TYPES = new Set<UpdateType>(['site', 'fix', 'longform']);
 export const MANUAL_UPDATES: Update[] = [
   {
     date: '2026-07-05',
+    type: 'site',
+    title: '生态实体互链上线：21 个核心机构关联政策与国会辩论',
+    titleEn: 'Ecosystem cross-links live: 21 core entities now link to policies and debates',
+    titleJa: 'エコシステム相互リンク公開：中核 21 機関が政策・国会討論と連携',
+    titleKo: '생태계 상호 링크 공개: 핵심 기관 21곳이 정책·의회 토론과 연결',
+    summary:
+      '为 AISG、IMDA、PDPC、AI Verify Foundation、MAS、A*STAR、四所大学等 21 个核心生态实体回填 133 条关联：51 条政策 + 82 条国会辩论，辩论关联全部经 Hansard 全文核验。生态详情页自此展示"相关政策 / 相关国会辩论"互链区块；知识图谱校验器同步覆盖 ecosystem 外键，杜绝悬空引用。',
+    summaryEn:
+      'Backfilled 133 cross-references for 21 core ecosystem entities — AISG, IMDA, PDPC, AI Verify Foundation, MAS, A*STAR, the four universities and more: 51 policy links and 82 parliamentary debate links, every debate link verified against the Hansard full text. Ecosystem profile pages now render "Related policies / Related debates" blocks, and the knowledge-graph verifier now covers ecosystem foreign keys to rule out dangling references.',
+    summaryJa:
+      'AISG、IMDA、PDPC、AI Verify Foundation、MAS、A*STAR、4 大学など中核エコシステム 21 実体に 133 件の相互参照を追加：政策リンク 51 件と国会討論リンク 82 件で、討論リンクはすべて Hansard 全文で検証済み。エコシステム詳細ページに「関連政策 / 関連議会記録」ブロックが表示されるようになり、ナレッジグラフ検証器も ecosystem の外部キーをカバーし、参照切れを排除しました。',
+    summaryKo:
+      'AISG, IMDA, PDPC, AI Verify Foundation, MAS, A*STAR, 4개 대학 등 핵심 생태계 21개 실체에 133건의 상호 참조를 추가: 정책 링크 51건과 의회 토론 링크 82건이며, 토론 링크는 모두 Hansard 전문으로 검증했습니다. 생태계 상세 페이지에 "관련 정책 / 관련 의회 토론" 블록이 표시되며, 지식 그래프 검증기도 ecosystem 외래 키를 커버해 끊어진 참조를 차단합니다.',
+    links: [
+      {
+        href: '/ecosystem/imda/',
+        label: '查看 IMDA 档案示例',
+        labelEn: 'See the IMDA profile as an example',
+        labelJa: '例として IMDA プロフィールを見る',
+        labelKo: '예시로 IMDA 프로필 보기',
+      },
+    ],
+  },
+  {
+    date: '2026-07-05',
     type: 'fix',
     title: '创业生态基础统计重定基线：逐项锚定可溯源公开口径',
     titleEn: 'Startup ecosystem stats re-baselined, each figure pinned to a named public source',
