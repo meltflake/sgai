@@ -45,13 +45,13 @@ const { lang } = Astro.props;
 }
 <section class="pt-10 md:pt-14 pb-12 md:pb-16">
   <div class="max-w-6xl mx-auto px-4 sm:px-6">
-    <div class="grid gap-12 md:grid-cols-[2fr_1fr] md:gap-10 lg:gap-14">
+    <div class="grid grid-cols-1 gap-12 md:grid-cols-[2fr_1fr] md:gap-10 lg:gap-14">
       <div class="min-w-0 space-y-12">
         <FocusHeadline lang={lang} />
         <LatestUpdatesFeed lang={lang} limit={8} />
         <LatestDebates lang={lang} limit={6} />
       </div>
-      <div class="md:sticky md:top-20 md:self-start">
+      <div class="min-w-0 md:sticky md:top-20 md:self-start">
         <HomeSidebar lang={lang} />
       </div>
     </div>
