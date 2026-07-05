@@ -2,15 +2,24 @@
 import Layout from '~/layouts/PageLayout.astro';
 import Headline from '~/components/ui/Headline.astro';
 import { NON_DEFAULT_ROUTE_LOCALES, t, type Lang } from '~/i18n';
+import { toTraditional } from '~/i18n/opencc';
 
 export function getStaticPaths() {
   return NON_DEFAULT_ROUTE_LOCALES.map((lang) => ({ params: { lang } }));
 }
 
 const lang = Astro.params.lang as Lang;
-const isZh = lang === 'zh';
 
-const challengesZh = [
+interface ChallengeItem {
+  icon: string;
+  title: string;
+  content: string;
+}
+
+// Single-use page content — kept local per the project's i18n convention
+// rather than growing the central dictionary for one-off long-form copy.
+// zh-tw is derived from zh via OpenCC below rather than duplicated.
+const CHALLENGES_ZH: ChallengeItem[] = [
   {
     icon: '👥',
     title: '1. 人才短缺与竞争',
@@ -49,7 +58,7 @@ const challengesZh = [
   },
 ];
 
-const challengesEn = [
+const CHALLENGES_EN: ChallengeItem[] = [
   {
     icon: '👥',
     title: '1. Talent Scarcity and Competition',
@@ -88,7 +97,101 @@ const challengesEn = [
   },
 ];
 
-const challenges = isZh ? challengesZh : challengesEn;
+const CHALLENGES_JA: ChallengeItem[] = [
+  {
+    icon: '👥',
+    title: '1. 人材不足と競争',
+    content:
+      'シンガポールの AI 人材プールは構造的に限られており（人口約 570 万人）、シリコンバレー、中国、ロンドンとの激しい競争に直面している。AI 学徒計画や Tech.Pass ビザは助けになるが、トップクラスの AI 研究人材の流出は依然として懸念材料だ。国内の AI 人材育成のペースは需要の伸びに追いついていない。',
+  },
+  {
+    icon: '📦',
+    title: '2. データの取得と質',
+    content:
+      '小国であるため、データセットの規模は自然に制限される。PDPA は保護とイノベーションのバランスを取っているが、越境データ流通にはなお摩擦がある。大規模な中英混在コーパスの不足も国産大規模モデルの開発を制約している。政府のデータ公開は大きく進展した（data.gov.sg）が、省庁間のデータサイロは依然として存在する。',
+  },
+  {
+    icon: '⚖️',
+    title: '3. 倫理とガバナンスのバランス',
+    content:
+      '「ソフトロー」型のガバナンス（自主的な遵守を軸とする）は柔軟だが、実効性を欠く可能性がある。AI が医療や金融など重要分野に深く浸透するにつれ、任意の枠組みだけで十分かが問われている。AI Verify の採用はまだ広範に普及しておらず、企業の参加度も向上の余地がある。',
+  },
+  {
+    icon: '🔗',
+    title: '4. 技術依存のリスク',
+    content:
+      'シンガポールの AI エコシステムは外国技術への依存度が高い——GPU は NVIDIA、クラウド基盤は AWS/Azure/GCP、基盤モデルは OpenAI/Google/Meta に依存している。この依存は地政学的緊張が高まった際に戦略的な脆弱性となりうる。SEA-LION などの国産大規模モデルは重要な試みだが、最先端との差はなお大きい。',
+  },
+  {
+    icon: '🏗️',
+    title: '5. 実行のギャップ',
+    content:
+      '政策文書の質は高いが、「紙の上」と「現場」の間には実際にギャップがある。大企業と政府機関の AI 導入率は比較的高いが、経済の大部分を占める中小企業（SME）の AI 浸透率は低い。100 Experiments プログラム後のスケールアップも課題に直面している。',
+  },
+  {
+    icon: '🌏',
+    title: '6. 地域競争の激化',
+    content:
+      'ASEAN 域内では、マレーシア（AI データセンター投資）、インドネシア（人口データの規模）、ベトナム（AI 人材コスト）がいずれも急速に追い上げている。世界的には、米中の AI 競争がシンガポールの「中間者」としての役割を圧迫する可能性がある。シンガポールは自らの立ち位置を継続的に差別化していく必要がある。',
+  },
+];
+
+const CHALLENGES_KO: ChallengeItem[] = [
+  {
+    icon: '👥',
+    title: '1. 인재 부족과 경쟁',
+    content:
+      '싱가포르의 AI 인재 풀은 구조적으로 제한적이며(인구 약 570만 명), 실리콘밸리, 중국, 런던과의 치열한 경쟁에 직면해 있다. AI 견습 프로그램과 Tech.Pass 비자가 도움이 되지만, 최상위 AI 연구 인재의 유출은 여전히 우려 사항이다. 국내 AI 인재 양성 속도는 수요 증가를 따라가지 못하고 있다.',
+  },
+  {
+    icon: '📦',
+    title: '2. 데이터 접근성과 품질',
+    content:
+      '소국이기에 데이터셋 규모는 자연히 제한된다. PDPA는 보호와 혁신의 균형을 이루지만, 국경 간 데이터 이동에는 여전히 마찰이 있다. 대규모 중영 혼합 코퍼스의 부족도 현지 대형 모델 개발을 제약한다. 정부 데이터 개방은 크게 진전되었지만(data.gov.sg), 부처 간 데이터 사일로는 여전히 존재한다.',
+  },
+  {
+    icon: '⚖️',
+    title: '3. 윤리와 거버넌스의 균형',
+    content:
+      '"소프트 로" 거버넌스 모델(자율 준수 중심)은 유연하지만 집행력이 부족할 수 있다. AI가 의료, 금융 등 핵심 분야에 깊숙이 침투하면서, 자율적 프레임워크만으로 충분한지에 대한 의문이 제기된다. AI Verify의 채택률은 아직 널리 확산되지 않았으며, 기업 참여도도 개선이 필요하다.',
+  },
+  {
+    icon: '🔗',
+    title: '4. 기술 의존 리스크',
+    content:
+      '싱가포르의 AI 생태계는 외국 기술에 크게 의존한다: GPU는 NVIDIA, 클라우드 플랫폼은 AWS/Azure/GCP, 파운데이션 모델은 OpenAI/Google/Meta에서 온다. 이러한 의존은 지정학적 긴장이 고조될 때 전략적 취약점이 될 수 있다. SEA-LION 등 현지 대형 모델은 중요한 시도이지만, 최전선과의 격차는 여전히 크다.',
+  },
+  {
+    icon: '🏗️',
+    title: '5. 실행 격차',
+    content:
+      '정책 문서의 품질은 높지만, "종이 위"와 "현장" 사이의 격차는 실재한다. 대기업과 정부 기관의 AI 채택률은 비교적 높지만, 경제의 대부분을 차지하는 중소기업(SME)의 AI 침투율은 낮다. 100 Experiments 프로그램 이후의 확대 적용도 과제에 직면해 있다.',
+  },
+  {
+    icon: '🌏',
+    title: '6. 지역 경쟁 심화',
+    content:
+      'ASEAN 역내에서는 말레이시아(AI 데이터센터 투자), 인도네시아(인구 데이터 규모), 베트남(AI 인재 비용)이 모두 빠르게 추격하고 있다. 글로벌 차원에서는 미중 AI 경쟁이 싱가포르의 "중간자" 역할을 압박할 수 있다. 싱가포르는 자신의 포지셔닝을 지속적으로 차별화해야 한다.',
+  },
+];
+
+const CHALLENGES: Record<Lang, ChallengeItem[]> = {
+  zh: CHALLENGES_ZH,
+  en: CHALLENGES_EN,
+  ja: CHALLENGES_JA,
+  ko: CHALLENGES_KO,
+  'zh-tw': CHALLENGES_ZH.map((c) => ({ ...c, title: toTraditional(c.title), content: toTraditional(c.content) })),
+};
+
+const challenges = CHALLENGES[lang] || CHALLENGES.en;
+
+const SUBTITLE: Record<Lang, string> = {
+  zh: '新加坡在推进 AI 战略过程中面临的六个核心挑战。',
+  en: 'Six core challenges Singapore faces as it advances its AI strategy.',
+  ja: 'シンガポールが AI 戦略を推進する過程で直面する 6 つの核心的課題。',
+  'zh-tw': '新加坡在推進 AI 戰略過程中面臨的六個核心挑戰。',
+  ko: '싱가포르가 AI 전략을 추진하는 과정에서 직면한 여섯 가지 핵심 과제.',
+};
 ---
 
 <Layout
@@ -100,12 +203,7 @@ const challenges = isZh ? challengesZh : challengesEn;
   lang={lang}
 >
   <section class="px-4 py-16 sm:px-6 mx-auto lg:px-8 max-w-4xl">
-    <Headline
-      title={`⚠️ ${t(lang, 'challengesPageTitle')}`}
-      subtitle={isZh
-        ? '新加坡在推进 AI 战略过程中面临的六个核心挑战。'
-        : 'Six core challenges Singapore faces as it advances its AI strategy.'}
-    />
+    <Headline title={`⚠️ ${t(lang, 'challengesPageTitle')}`} subtitle={SUBTITLE[lang]} />
 
     <div class="space-y-6">
       {

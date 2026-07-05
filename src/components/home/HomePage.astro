@@ -31,6 +31,15 @@ interface Props {
   lang: Lang;
 }
 const { lang } = Astro.props;
+
+// The compressed-thesis headline is two dict strings joined inline. English
+// needs a joining space between the two sentence fragments; every other
+// locale's dict strings already carry their own closing punctuation, so no
+// separator is needed. This is a layout/spacing decision, not a content
+// pick — kept as an `if` rather than an inline ternary per the project's
+// i18n lint (non-copy lang branches must not use ternary form).
+let heroHeadlineJoiner = '';
+if (lang === 'en') heroHeadlineJoiner = ' ';
 ---
 
 {/* S0 · Masthead — freshness signal above everything. */}
@@ -71,7 +80,7 @@ const { lang } = Astro.props;
       {t(lang, 'fpStartHereSection')}
     </p>
     <h2 class="t-h2 text-gray-900 dark:text-white mb-4 max-w-3xl">
-      {t(lang, 'heroHeadline')}{lang === 'en' ? ' ' : ''}{t(lang, 'heroHeadline2')}
+      {t(lang, 'heroHeadline')}{heroHeadlineJoiner}{t(lang, 'heroHeadline2')}
     </h2>
     <p class="t-lead text-gray-700 dark:text-gray-300 mb-6 max-w-prose">
       {t(lang, 'heroSubtitle')}

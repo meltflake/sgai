@@ -509,6 +509,14 @@ const truncate = (text: string | null | undefined, max: number) => {
   return s.length > max ? `${s.slice(0, max).trim()}...` : s;
 };
 
+// English prose runs longer per unit of meaning than CJK text, so the card
+// summary gets a longer character budget on the en locale specifically —
+// not a binary en-vs-everyone-else split, just en's own truncation length.
+// Written as an `if` rather than an inline ternary per the project's i18n
+// lint (non-copy lang branches must not use ternary form).
+let summaryTruncateLen = 220;
+if (lang === 'en') summaryTruncateLen = 320;
+
 // Field pickers go through pickLocalized to support all 5 locales. The
 // pickLocalized shape-B form (4-arg) walks FALLBACK_CHAINS automatically
 // so each call covers ja/ko/zh-tw/en/zh.
@@ -891,7 +899,7 @@ const typeMixLabel = Object.entries(DEBATE_STATS.byType)
                   </div>
 
                   <p class="text-sm leading-relaxed text-gray-700 dark:text-gray-300">
-                    {truncate(summary, isEn ? 320 : 220)}
+                    {truncate(summary, summaryTruncateLen)}
                   </p>
 
                   {signal && (

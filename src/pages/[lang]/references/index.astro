@@ -2,14 +2,38 @@
 import Layout from '~/layouts/PageLayout.astro';
 import Headline from '~/components/ui/Headline.astro';
 import { sections } from '~/data/references';
-import { NON_DEFAULT_ROUTE_LOCALES, t, type Lang } from '~/i18n';
+import { NON_DEFAULT_ROUTE_LOCALES, pickLocalized, t, type Lang } from '~/i18n';
 
 export function getStaticPaths() {
   return NON_DEFAULT_ROUTE_LOCALES.map((lang) => ({ params: { lang } }));
 }
 
 const lang = Astro.params.lang as Lang;
-const isZh = lang === 'zh';
+
+// One-off page copy (intro subtitle + footer note), not reused elsewhere —
+// kept as a local per-locale dict per the project's i18n convention rather
+// than growing the central dictionary for single-use strings.
+const SUBTITLE: Record<Lang, string> = {
+  zh: '新加坡 AI 政策相关的官方文件、研究报告、新闻报道和分析文章。',
+  en: "Official documents, research reports, news coverage, and analytical reading on Singapore's AI policy.",
+  ja: 'シンガポールの AI 政策に関する公式文書、調査報告書、報道、分析記事。',
+  'zh-tw': '新加坡 AI 政策相關的官方文件、研究報告、新聞報道和分析文章。',
+  ko: '싱가포르 AI 정책 관련 공식 문서, 연구 보고서, 뉴스 보도 및 분석 기사.',
+};
+const FOOTER_NOTE: Record<Lang, string> = {
+  zh: '共 30+ 条参考资料，持续更新中。欢迎提交新资源。',
+  en: '30+ references; the list grows over time. Submit additions on GitHub.',
+  ja: '30 件以上の参考資料を継続的に更新しています。GitHub から新規リソースの提案を歓迎します。',
+  'zh-tw': '共 30+ 條參考資料，持續更新中。歡迎提交新資源。',
+  ko: '30개 이상의 참고 자료를 지속적으로 업데이트하고 있습니다. GitHub에서 새로운 자료를 제안해 주세요.',
+};
+const CHINESE_TRANSLATION_LABEL: Record<Lang, string> = {
+  zh: '[中文翻译]',
+  en: '[Chinese translation]',
+  ja: '[中国語訳]',
+  'zh-tw': '[中文翻譯]',
+  ko: '[중국어 번역]',
+};
 ---
 
 <Layout
@@ -21,19 +45,14 @@ const isZh = lang === 'zh';
   lang={lang}
 >
   <section class="px-4 py-16 sm:px-6 mx-auto lg:px-8 max-w-4xl">
-    <Headline
-      title={`📚 ${t(lang, 'referencesPageTitle')}`}
-      subtitle={isZh
-        ? '新加坡 AI 政策相关的官方文件、研究报告、新闻报道和分析文章。'
-        : "Official documents, research reports, news coverage, and analytical reading on Singapore's AI policy."}
-    />
+    <Headline title={`📚 ${t(lang, 'referencesPageTitle')}`} subtitle={SUBTITLE[lang]} />
 
     <div class="space-y-8">
       {
         sections.map((section) => (
           <div>
             <h2 class="t-h3 mb-3">
-              {section.icon} {isZh ? section.title : section.titleEn || section.title}
+              {section.icon} {pickLocalized(section, 'title', lang)}
             </h2>
             <ul class="space-y-2">
               {section.links.map((link) => (
@@ -46,18 +65,18 @@ const isZh = lang === 'zh';
                       rel="noopener"
                       class="text-blue-600 dark:text-blue-400 hover:underline"
                     >
-                      {isZh ? link.text : link.textEn || link.text}
+                      {pickLocalized(link, 'text', lang)}
                     </a>
                     {link.translation && (
                       <a
                         href={link.translation}
                         class="text-sm text-green-600 dark:text-green-400 hover:underline ml-2"
                       >
-                        {isZh ? '[中文翻译]' : '[Chinese translation]'}
+                        {CHINESE_TRANSLATION_LABEL[lang]}
                       </a>
                     )}
-                    {(isZh ? link.note : link.noteEn || link.note) && (
-                      <span class="text-sm text-muted ml-2">— {isZh ? link.note : link.noteEn || link.note}</span>
+                    {pickLocalized(link, 'note', lang) && (
+                      <span class="text-sm text-muted ml-2">— {pickLocalized(link, 'note', lang)}</span>
                     )}
                   </div>
                 </li>
@@ -68,12 +87,6 @@ const isZh = lang === 'zh';
       }
     </div>
 
-    <p class="mt-8 text-sm text-muted">
-      {
-        isZh
-          ? '共 30+ 条参考资料，持续更新中。欢迎提交新资源。'
-          : '30+ references; the list grows over time. Submit additions on GitHub.'
-      }
-    </p>
+    <p class="mt-8 text-sm text-muted">{FOOTER_NOTE[lang]}</p>
   </section>
 </Layout>

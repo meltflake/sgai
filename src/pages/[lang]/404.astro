@@ -7,14 +7,51 @@ export function getStaticPaths() {
 }
 
 const lang = Astro.params.lang as Lang;
-const isZh = lang === 'zh';
-const title = isZh ? '页面未找到' : 'Page Not Found';
+
+// Single-use page copy — kept local per the project's i18n convention
+// rather than growing the central dictionary for a one-off error page.
+const TITLE: Record<Lang, string> = {
+  zh: '页面未找到',
+  en: 'Page Not Found',
+  ja: 'ページが見つかりません',
+  'zh-tw': '頁面未找到',
+  ko: '페이지를 찾을 수 없습니다',
+};
+const META_DESC: Record<Lang, string> = {
+  zh: '您访问的页面不存在。',
+  en: 'The page you requested does not exist.',
+  ja: 'お探しのページは存在しません。',
+  'zh-tw': '您訪問的頁面不存在。',
+  ko: '요청하신 페이지가 존재하지 않습니다.',
+};
+const ERROR_LABEL: Record<Lang, string> = {
+  zh: '错误',
+  en: 'Error',
+  ja: 'エラー',
+  'zh-tw': '錯誤',
+  ko: '오류',
+};
+const BODY_TEXT: Record<Lang, string> = {
+  zh: '您访问的页面不存在，但您可以回到首页继续浏览。',
+  en: 'The page you were looking for doesn’t exist, but you can head back to the home page.',
+  ja: 'お探しのページは存在しませんが、ホームページから引き続きご覧いただけます。',
+  'zh-tw': '您訪問的頁面不存在，但您可以回到首頁繼續瀏覽。',
+  ko: '요청하신 페이지가 존재하지 않지만, 홈페이지로 돌아가 계속 둘러보실 수 있습니다.',
+};
+const BACK_HOME: Record<Lang, string> = {
+  zh: '返回首页',
+  en: 'Back to Home',
+  ja: 'ホームに戻る',
+  'zh-tw': '返回首頁',
+  ko: '홈으로 돌아가기',
+};
+const title = TITLE[lang];
 ---
 
 <Layout
   metadata={{
     title,
-    description: isZh ? '您访问的页面不存在。' : 'The page you requested does not exist.',
+    description: META_DESC[lang],
     robots: { index: false, follow: false },
   }}
   lang={lang}
@@ -23,19 +60,13 @@ const title = isZh ? '页面未找到' : 'Page Not Found';
     <div class="container flex flex-col items-center justify-center px-5 mx-auto my-8">
       <div class="max-w-md text-center">
         <h2 class="mb-8 font-bold text-9xl">
-          <span class="sr-only">{isZh ? '错误' : 'Error'}</span>
+          <span class="sr-only">{ERROR_LABEL[lang]}</span>
           <span class="text-primary">404</span>
         </h2>
         <p class="text-3xl font-semibold md:text-3xl">{title}</p>
-        <p class="mt-4 mb-8 text-lg text-muted dark:text-slate-400">
-          {
-            isZh
-              ? '您访问的页面不存在，但您可以回到首页继续浏览。'
-              : 'The page you were looking for doesn’t exist, but you can head back to the home page.'
-          }
-        </p>
+        <p class="mt-4 mb-8 text-lg text-muted dark:text-slate-400">{BODY_TEXT[lang]}</p>
         <a rel="noopener noreferrer" href={localizedHref('/', lang)} class="btn ml-4">
-          {isZh ? '返回首页' : 'Back to Home'}
+          {BACK_HOME[lang]}
         </a>
       </div>
     </div>

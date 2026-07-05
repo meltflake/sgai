@@ -401,6 +401,7 @@ export const zh = {
   backToPolicies: '返回政策库',
   debatesPageTitle: '国会 AI 焦点',
   blogIndexTitle: '观察',
+  blogPageNumber: '第 {n} 页',
   aboutPageTitle: '关于本站',
   aboutPageDesc: '关于新加坡 AI 观察——独立维护的新加坡 AI 战略观察平台。研究方法、利益声明、反馈方式。',
   evolutionPageTitle: '政策演进分析',
@@ -424,6 +425,7 @@ export const zh = {
   talentOfficialSourceHeading: '官方来源',
   talentCheckedByThisSite: '本站校验：',
   talentMoreProgrammes: '其他人才项目',
+  talentSourcesNote: '数据来源：AI Singapore、LearnAI、AIAP、NAISC 与 IOAI 官方页面。本站校验日期：{date}。',
   videosPageTitle: 'AI 视频观点',
   videosPageDesc: '新加坡政府官员、学者和行业领袖关于 AI 战略、治理、人才和产业的 YouTube 演讲与访谈合集。',
   voicesPageTitle: '新加坡 AI 影响力图谱 — 关键人物、机构、MDDI 演讲库 · sgai',
@@ -960,6 +962,7 @@ export const en: Partial<Record<keyof typeof zh, string>> = {
   backToPolicies: 'Back to Policy Library',
   debatesPageTitle: 'Parliamentary AI Focus',
   blogIndexTitle: 'Opinion',
+  blogPageNumber: 'Page {n}',
   aboutPageTitle: 'About',
   aboutPageDesc:
     "About Singapore AI Observatory — an independently-maintained research platform tracking Singapore's AI strategy. Methodology, conflict-of-interest disclosure, feedback channels.",
@@ -988,6 +991,8 @@ export const en: Partial<Record<keyof typeof zh, string>> = {
   talentOfficialSourceHeading: 'Official Source',
   talentCheckedByThisSite: 'Checked by this site: ',
   talentMoreProgrammes: 'More Talent Programmes',
+  talentSourcesNote:
+    'Sources: official AI Singapore, LearnAI, AIAP, NAISC and IOAI pages. Checked by this site on {date}.',
   videosPageTitle: 'AI Video Library',
   videosPageDesc:
     'A curated collection of YouTube talks and interviews from Singapore government officials, academics, and industry leaders on AI strategy, governance, talent, and applications.',
@@ -1538,6 +1543,7 @@ export const ja: Partial<Record<keyof typeof zh, string>> = {
   backToPolicies: '政策ライブラリに戻る',
   debatesPageTitle: '議会 AI フォーカス',
   blogIndexTitle: 'コラム',
+  blogPageNumber: '{n} ページ目',
   aboutPageTitle: 'このサイトについて',
   aboutPageDesc:
     'シンガポール AI 観測について——独立運営のシンガポール AI 戦略観測プラットフォーム。研究方法、利益声明、フィードバック方法。',
@@ -1564,6 +1570,8 @@ export const ja: Partial<Record<keyof typeof zh, string>> = {
   talentOfficialSourceHeading: '公式ソース',
   talentCheckedByThisSite: '本サイトによる確認：',
   talentMoreProgrammes: '他の人材プログラム',
+  talentSourcesNote:
+    'データ出典：AI Singapore、LearnAI、AIAP、NAISC、IOAI 各公式ページ。本サイトによる確認日：{date}。',
   videosPageTitle: 'AI ビデオ・オピニオン',
   videosPageDesc:
     'シンガポール政府高官、学者、業界リーダーによる AI 戦略・ガバナンス・人材・産業に関する YouTube スピーチとインタビュー集。',
@@ -2108,6 +2116,7 @@ export const ko: Partial<Record<keyof typeof zh, string>> = {
   backToPolicies: '정책 라이브러리로 돌아가기',
   debatesPageTitle: '국회 AI 초점',
   blogIndexTitle: '컬럼',
+  blogPageNumber: '{n}페이지',
   aboutPageTitle: '사이트 소개',
   aboutPageDesc:
     '싱가포르 AI 옵저버토리 소개 — 독립적으로 유지 관리되는 싱가포르 AI 전략 관찰 플랫폼. 연구 방법론, 이해관계 선언, 피드백 방식.',
@@ -2133,6 +2142,7 @@ export const ko: Partial<Record<keyof typeof zh, string>> = {
   talentOfficialSourceHeading: '공식 출처',
   talentCheckedByThisSite: '본 사이트 확인: ',
   talentMoreProgrammes: '다른 인재 프로그램',
+  talentSourcesNote: '출처: AI Singapore, LearnAI, AIAP, NAISC 및 IOAI 공식 페이지. 본 사이트 확인일: {date}.',
   videosPageTitle: 'AI 영상 인사이트',
   videosPageDesc:
     '싱가포르 정부 관계자, 학자, 업계 지도자의 AI 전략, 거버넌스, 인재 및 산업에 관한 YouTube 강연 및 인터뷰 모음입니다.',

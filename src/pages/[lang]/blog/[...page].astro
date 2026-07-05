@@ -28,13 +28,27 @@ export const getStaticPaths = (async ({ paginate }) => {
 const { page } = Astro.props as { page: Page<Post> };
 const lang = Astro.params.lang as Lang;
 const currentPage = page.currentPage ?? 1;
-const isZh = lang === 'zh';
+
+// Single-use page copy — kept local per the project's i18n convention
+// rather than growing the central dictionary for one-off descriptions.
+const BLOG_DESC: Record<Lang, string> = {
+  zh: '新加坡 AI 观察的栏目文章——新加坡 AI 生态的研究、记录与评论。',
+  en: "Singapore AI Observatory opinion — research and commentary on Singapore's AI ecosystem.",
+  ja: 'シンガポール AI 観察のコラム記事——シンガポールの AI エコシステムに関する調査、記録、論評。',
+  'zh-tw': '新加坡 AI 觀察的欄目文章——新加坡 AI 生態的研究、記錄與評論。',
+  ko: '싱가포르 AI 옵저버토리의 칼럼 기사——싱가포르 AI 생태계에 대한 연구, 기록, 논평.',
+};
+const BLOG_SUBTITLE: Record<Lang, string> = {
+  zh: '新加坡 AI 生态的研究、记录与评论',
+  en: "Research and commentary on Singapore's AI ecosystem",
+  ja: 'シンガポールの AI エコシステムに関する調査と論評',
+  'zh-tw': '新加坡 AI 生態的研究、記錄與評論',
+  ko: '싱가포르 AI 생태계에 대한 연구와 논평',
+};
 
 const metadata = {
-  title: `${t(lang, 'navAnalysis')}${currentPage > 1 ? ` — ${isZh ? '第' : 'Page'} ${currentPage} ${isZh ? '页' : ''}` : ''}`,
-  description: isZh
-    ? '新加坡 AI 观察的栏目文章——新加坡 AI 生态的研究、记录与评论。'
-    : "Singapore AI Observatory opinion — research and commentary on Singapore's AI ecosystem.",
+  title: `${t(lang, 'navAnalysis')}${currentPage > 1 ? ` — ${t(lang, 'blogPageNumber').replace('{n}', String(currentPage))}` : ''}`,
+  description: BLOG_DESC[lang],
   robots: {
     index: blogListRobots?.index && currentPage === 1,
     follow: blogListRobots?.follow,
@@ -49,9 +63,7 @@ const breadcrumbs = [{ label: t(lang, 'navAnalysis') }];
 
 <Layout metadata={metadata} breadcrumbs={breadcrumbs} lang={lang}>
   <section class="px-6 sm:px-6 py-12 sm:py-16 lg:py-20 mx-auto max-w-4xl">
-    <Headline
-      subtitle={isZh ? '新加坡 AI 生态的研究、记录与评论' : "Research and commentary on Singapore's AI ecosystem"}
-    >
+    <Headline subtitle={BLOG_SUBTITLE[lang]}>
       {t(lang, 'navAnalysis')}
     </Headline>
     <BlogList posts={page.data} />
