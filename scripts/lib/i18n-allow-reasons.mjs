@@ -36,6 +36,32 @@
 //     severity (ratchet / error) as EN-sentence hits.
 //
 // When you add a new marker in a component/page, register its reason here.
+//
+// ── TRUST BOUNDARY (read before touching a `langs: 'all'` reason) ────────
+// The six `langs: 'all'` verbatim reasons below (hansard-original,
+// hansard-transcript-verbatim, speech-verbatim-source,
+// video-transcript-verbatim, citation-original, debate-title-original) are a
+// TRUSTED, UNVALIDATED escape hatch — the i18n equivalent of
+// dangerouslySetInnerHTML. Content wrapped in them is stripped from the scan
+// on EVERY locale with NO marker-violation recorded. There is no structural
+// check that the wrapped text is actually verbatim source, so the scanner
+// cannot tell a real Hansard quote from fabricated English someone wrapped to
+// silence it.
+//
+// Therefore these reasons are ONLY for TRUE verbatim originals — Hansard
+// English, MDDI speech / video-transcript originals, and bibliographic
+// citation quotations. They must NEVER be used to muffle a component/field
+// FALLBACK leak (e.g. an EN string rendered on zh-tw because a component
+// branched `lang !== 'zh'`). That is what the ko-only `*-en-fallback` reasons
+// and the zh-tw marker=error gate exist to surface; laundering such a leak
+// through an all-locale verbatim reason defeats the entire ratchet.
+//
+// Adding a new `langs: 'all'` reason — or widening an existing reason to
+// 'all' — requires (a) a PR justification of why the content is genuinely
+// verbatim, and (b) updating the registry unit test
+// (scripts/lib/__tests__/i18n-allow-reasons.test.ts), which pins the exact
+// attr + langs of every reason and fails on any silent change. See CLAUDE.md
+// rule #13.
 
 /**
  * @typedef {Object} AllowReason

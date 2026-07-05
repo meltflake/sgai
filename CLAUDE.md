@@ -318,7 +318,9 @@ npx prettier --write src/
 >
 > `data-i18n-allow-en` / `data-i18n-allow-cjk` marker 只允许 [scripts/lib/i18n-allow-reasons.mjs](scripts/lib/i18n-allow-reasons.mjs) 注册过的 reason。EN-fallback 类 reason（`*-en-fallback`）注册为**仅 ko**；一旦出现在 zh-tw 页面即 marker-violation，**zh-tw 上 marker=error 硬门**（无 baseline 豁免）。
 >
-> 数据层：base 字段（`title` / `summary` / `description` / `headline` / `tagline`）禁止 EN-only（并入 rule #5），gate = `i18n-pair --en-only-base`（已进 `check:i18n-completeness`）。
+> 🔴 **`langs: 'all'` 的 6 个 verbatim reason 是受信任边界（信任逃生舱）**——hansard-original / hansard-transcript-verbatim / speech-verbatim-source / video-transcript-verbatim / citation-original / debate-title-original。它们包住的内容在**所有 locale**都被 scanner 直接剥离且**不记 marker-violation**，等价于 `dangerouslySetInnerHTML`：scanner 无法分辨里面是真·Hansard 原文还是有人为了消音塞进去的编造英文。**只允许包真·逐字原文**（Hansard 英文、MDDI 演讲 / 视频原文、参考文献引文）；**严禁**拿它洗白组件/字段的 fallback 泄漏（那是 `*-en-fallback` ko-only reason + zh-tw marker=error 的职责，别绕过 ratchet）。**新增 all-locale reason，或把现有 reason 放宽成 `'all'`，必须：(a) 在 PR 说明为何内容确属逐字原文；(b) 更新注册表单测 [scripts/lib/\_\_tests\_\_/i18n-allow-reasons.test.ts](scripts/lib/__tests__/i18n-allow-reasons.test.ts)**（该测试 pin 死每个 reason 的 attr + langs，任何静默改动即 fail，逼你走 review）。
+>
+> 数据层：base 字段（`title` / `summary` / `description` / `headline` / `tagline`）禁止 EN-only（并入 rule #5），gate = `i18n-pair --en-only-base`（**已覆盖全部 `src/data/*.ts`**——`check:i18n-completeness` 改用 `--data-dir=src/data` 目录扫描，新数据文件自动纳入，不再靠手维护文件列表）。
 >
 > 双层防御：
 >
