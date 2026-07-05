@@ -2,6 +2,7 @@
 // Timeline page (en) — thin wrapper.
 
 import Layout from '~/layouts/PageLayout.astro';
+import CrossDomainRail from '~/components/listing/CrossDomainRail.astro';
 import TimelinePage from '~/components/timeline/TimelinePage.astro';
 import { t } from '~/i18n';
 
@@ -17,4 +18,5 @@ const lang = 'en' as const;
   lang={lang}
 >
   <TimelinePage lang={lang} />
+  <CrossDomainRail lang={lang} current="timeline" class="max-w-6xl mx-auto px-4 sm:px-6 pb-16" />
 </Layout>

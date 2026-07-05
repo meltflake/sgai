@@ -2,6 +2,8 @@
 import { Icon } from 'astro-icon/components';
 
 import Layout from '~/layouts/PageLayout.astro';
+import CrossDomainRail from '~/components/listing/CrossDomainRail.astro';
+import LatestAdditions from '~/components/listing/LatestAdditions.astro';
 import Headline from '~/components/ui/Headline.astro';
 import { ecosystemStats, exits, investors, unicorns, verticals } from '~/data/startups';
 import { getStartupAiRelation, startupEntitySlug } from '~/utils/entity-pages';
@@ -45,6 +47,7 @@ const stats = [
         ? '新加坡 AI-native、AI-enabled 与相邻资本生态的实体目录；每家公司、项目与投资者都进入可持续扩展的档案。'
         : 'A directory of Singapore AI-native, AI-enabled, and adjacent capital ecosystem entities, with growing profiles for companies, projects, exits, and investors.'}
     />
+    <LatestAdditions lang={lang} source="startup" class="mt-8 mb-2" />
 
     <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-12">
       {
@@ -283,4 +286,5 @@ const stats = [
       }
     </p>
   </section>
+  <CrossDomainRail lang={lang} current="startups" class="max-w-6xl mx-auto px-4 sm:px-6 pb-16" />
 </Layout>

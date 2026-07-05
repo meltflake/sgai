@@ -1,5 +1,6 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
+import CrossDomainRail from '~/components/listing/CrossDomainRail.astro';
 import TimelinePage from '~/components/timeline/TimelinePage.astro';
 import { NON_DEFAULT_ROUTE_LOCALES, t, type Lang } from '~/i18n';
 
@@ -19,4 +20,5 @@ const lang = Astro.params.lang as Lang;
   lang={lang}
 >
   <TimelinePage lang={lang} />
+  <CrossDomainRail lang={lang} current="timeline" class="max-w-6xl mx-auto px-4 sm:px-6 pb-16" />
 </Layout>

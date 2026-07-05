@@ -3,6 +3,8 @@ import { Icon } from 'astro-icon/components';
 
 import Headline from '~/components/ui/Headline.astro';
 import Layout from '~/layouts/PageLayout.astro';
+import CrossDomainRail from '~/components/listing/CrossDomainRail.astro';
+import LatestAdditions from '~/components/listing/LatestAdditions.astro';
 import { programmes, talentDataDate, type TalentStatusTone } from '~/data/talent';
 import { t } from '~/i18n';
 
@@ -29,6 +31,7 @@ const statusClasses: Record<TalentStatusTone, string> = {
       title="AI Talent Pipeline"
       subtitle="Singapore's AI talent system is not a single path. It is a set of trackable project entry points: students, educators, career switchers, enterprise teams, and research talent from undergraduate to PhD."
     />
+    <LatestAdditions lang={lang} source="talent" class="mt-8 mb-2" />
 
     <div class="grid gap-5 md:grid-cols-2">
       {
@@ -95,4 +98,5 @@ const statusClasses: Record<TalentStatusTone, string> = {
       Sources: official AI Singapore, LearnAI, AIAP, NAISC and IOAI pages. Checked by this site on {talentDataDate}.
     </p>
   </section>
+  <CrossDomainRail lang={lang} current="talent" class="max-w-6xl mx-auto px-4 sm:px-6 pb-16" />
 </Layout>

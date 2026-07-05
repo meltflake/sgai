@@ -1,5 +1,7 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
+import CrossDomainRail from '~/components/listing/CrossDomainRail.astro';
+import LatestAdditions from '~/components/listing/LatestAdditions.astro';
 import Headline from '~/components/ui/Headline.astro';
 import { sections, dataDate } from '~/data/legal-ai';
 import { legalItemSlug } from '~/utils/entity-pages';
@@ -45,6 +47,7 @@ This is one of the structural reasons OpenAI, Anthropic, DeepMind, Mistral and o
       title="⚖️ Singapore AI Legal Framework"
       subtitle={`Last updated: ${dataDate}. "Permissive on training + strict on outputs" — a dual track that makes Singapore one of the world's most predictable jurisdictions for AI companies today.`}
     />
+    <LatestAdditions lang={lang} source="legal" class="mt-8 mb-2" />
 
     <div class="callout-note rounded-lg mb-12 leading-relaxed">
       <p class="font-bold text-base mb-3">Core Position</p>
@@ -132,4 +135,5 @@ This is one of the structural reasons OpenAI, Anthropic, DeepMind, Mistral and o
       <a href="/policies/" class="text-blue-600 dark:text-blue-400 hover:underline">Full policy library</a>
     </div>
   </section>
+  <CrossDomainRail lang={lang} current="legal-ai" class="max-w-6xl mx-auto px-4 sm:px-6 pb-16" />
 </Layout>
