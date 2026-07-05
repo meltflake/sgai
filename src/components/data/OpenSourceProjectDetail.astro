@@ -1,6 +1,6 @@
 ---
 import { Icon } from 'astro-icon/components';
-import { localizedHref, type Lang } from '~/i18n';
+import { localizedHref, pickLocalized, t, type Lang } from '~/i18n';
 import type { OfficialOpenSourceProject, OpenSourceResource } from '~/data/opensource';
 import EcosystemProse from '~/components/data/EcosystemProse.astro';
 
@@ -10,36 +10,34 @@ interface Props {
 }
 
 const { project, lang } = Astro.props;
-// `isEn` is true for any non-zh locale — local label dictionaries only
-// branch zh vs. non-zh; ja falls back to en until per-locale strings land.
-const isJa = lang === 'ja';
-const isEn = lang !== 'zh';
-const displayName = isEn ? project.nameEn || project.name : project.name;
-const owner = isEn ? project.ownerEn || project.owner : project.owner;
-const category = isEn ? project.categoryEn || project.category : project.category;
-const status = isEn ? project.statusEn || project.status : project.status;
-const summary = isEn ? project.summaryEn : project.summary;
-const whatItIs = isEn ? project.whatItIsEn : project.whatItIs;
-const aiRelevance = isEn ? project.aiRelevanceEn : project.aiRelevance;
-const singaporeRelevance = isEn ? project.singaporeRelevanceEn : project.singaporeRelevance;
-const license = isEn ? project.licenseEn || project.license : project.license;
+// All user-visible fields carry *Ja / *Ko siblings, so pickLocalized resolves
+// every locale (zh-tw via OpenCC). No en fallback leaks → no marker needed.
+const displayName = pickLocalized(project, 'name', lang) || project.name;
+const owner = pickLocalized(project, 'owner', lang) || project.owner;
+const category = pickLocalized(project, 'category', lang) || project.category;
+const status = pickLocalized(project, 'status', lang) || project.status;
+const summary = pickLocalized(project, 'summary', lang) || project.summary;
+const whatItIs = pickLocalized(project, 'whatItIs', lang) || project.whatItIs;
+const aiRelevance = pickLocalized(project, 'aiRelevance', lang) || project.aiRelevance;
+const singaporeRelevance = pickLocalized(project, 'singaporeRelevance', lang) || project.singaporeRelevance;
+const license = pickLocalized(project, 'license', lang) || project.license;
 
 const labels = {
-  back: isJa ? '公式オープンソース・研究に戻る' : isEn ? 'Back to Official Open Source' : '返回官方开源与研究',
-  owner: isJa ? '所属' : isEn ? 'Owner' : '归属',
-  category: isJa ? 'カテゴリー' : isEn ? 'Category' : '类别',
-  status: isJa ? 'ステータス' : isEn ? 'Status' : '状态',
-  founded: isJa ? 'ローンチ' : isEn ? 'Started' : '启动',
-  language: isJa ? '言語 / 形態' : isEn ? 'Language / Form' : '语言 / 形态',
-  license: isJa ? 'ライセンス' : isEn ? 'License' : '协议',
-  stars: isEn ? 'GitHub Stars' : 'GitHub Stars',
-  updated: isJa ? '情報更新' : isEn ? 'Updated' : '信息更新',
-  whatItIs: isJa ? '説明' : isEn ? 'What It Is' : '是什么',
-  aiRelevance: isJa ? 'AIとの関係' : isEn ? 'AI Relevance' : '与 AI 的关系',
-  singaporeRelevance: isJa ? 'シンガポールとの関係' : isEn ? 'Singapore Relevance' : '与新加坡的关系',
-  milestones: isJa ? '重要マイルストーン' : isEn ? 'Milestones' : '关键里程碑',
-  resources: isJa ? 'リソース入口' : isEn ? 'Resources' : '资源入口',
-  profile: isJa ? 'プロジェクト情報' : isEn ? 'Project Profile' : '项目档案',
+  back: t(lang, 'osBack'),
+  owner: t(lang, 'osOwner'),
+  category: t(lang, 'osCategory'),
+  status: t(lang, 'osStatus'),
+  founded: t(lang, 'osFounded'),
+  language: t(lang, 'osLanguage'),
+  license: t(lang, 'osLicense'),
+  stars: 'GitHub Stars',
+  updated: t(lang, 'osUpdated'),
+  whatItIs: t(lang, 'osWhatItIs'),
+  aiRelevance: t(lang, 'osAiRelevance'),
+  singaporeRelevance: t(lang, 'osSingaporeRelevance'),
+  milestones: t(lang, 'osMilestones'),
+  resources: t(lang, 'osResources'),
+  profile: t(lang, 'osProfile'),
 };
 
 function hrefFor(resource: OpenSourceResource): string {
@@ -84,7 +82,7 @@ const facts = [
   <p class="text-sm uppercase tracking-wider text-gray-500 dark:text-gray-400 font-semibold mb-2">{labels.profile}</p>
   <h1 class="t-display text-gray-900 dark:text-white mb-3">{displayName}</h1>
   <p class="text-lg text-gray-600 dark:text-gray-300 leading-relaxed mb-8">
-    {isEn ? project.descriptionEn : project.description}
+    {pickLocalized(project, 'description', lang)}
   </p>
 
   {
@@ -93,13 +91,13 @@ const facts = [
         {project.metrics.map((metric) => (
           <div class="bg-surface rounded-lg border border-subtle p-4">
             <div class="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-1">
-              {isEn ? metric.labelEn || metric.label : metric.label}
+              {pickLocalized(metric, 'label', lang) || metric.label}
             </div>
             <div class="t-stat text-blue-600 dark:text-blue-400">
-              {isEn ? metric.valueEn || metric.value : metric.value}
+              {pickLocalized(metric, 'value', lang) || metric.value}
             </div>
-            {(isEn ? metric.noteEn || metric.note : metric.note) && (
-              <div class="text-xs text-muted mt-1">{isEn ? metric.noteEn || metric.note : metric.note}</div>
+            {pickLocalized(metric, 'note', lang) && (
+              <div class="text-xs text-muted mt-1">{pickLocalized(metric, 'note', lang)}</div>
             )}
           </div>
         ))}
@@ -150,10 +148,12 @@ const facts = [
             <li class="relative">
               <span class="absolute -left-[33px] top-1 w-3 h-3 rounded-full bg-blue-500 dark:bg-blue-400 ring-4 ring-blue-50 dark:ring-blue-900/40" />
               <div class="text-xs font-mono text-gray-500 dark:text-gray-400 mb-1">{m.date}</div>
-              <div class="font-semibold text-gray-900 dark:text-white">{isEn ? m.titleEn || m.title : m.title}</div>
-              {(isEn ? m.descriptionEn || m.description : m.description) && (
+              <div class="font-semibold text-gray-900 dark:text-white">
+                {pickLocalized(m, 'title', lang) || m.title}
+              </div>
+              {pickLocalized(m, 'description', lang) && (
                 <p class="text-sm text-gray-600 dark:text-gray-400 mt-1 leading-relaxed">
-                  {isEn ? m.descriptionEn || m.description : m.description}
+                  {pickLocalized(m, 'description', lang)}
                 </p>
               )}
             </li>
@@ -180,7 +180,7 @@ const facts = [
               class="flex items-center justify-between gap-3 bg-surface rounded-lg border border-subtle p-4 hover:border-blue-300 hover:shadow-sm transition-all"
             >
               <span class="text-sm font-medium text-gray-900 dark:text-white">
-                {isEn ? resource.labelEn || resource.label : resource.label}
+                {pickLocalized(resource, 'label', lang) || resource.label}
               </span>
               <Icon
                 name={external ? 'tabler:external-link' : 'tabler:arrow-right'}

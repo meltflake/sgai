@@ -18,7 +18,7 @@
 // no whitespace shift on the host page.
 
 import { getRelated, type EntityRef, type RelatedBundle } from '~/utils/graph';
-import { getLangFromPath, localizedHref, type Lang } from '~/i18n';
+import { getLangFromPath, localizedHref, pickLocalized, t, type Lang } from '~/i18n';
 import { leverSlug } from '~/utils/entity-pages';
 
 interface Props {
@@ -51,46 +51,45 @@ const {
 } = Astro.props;
 
 const lang: Lang = langOverride ?? getLangFromPath(new URL(Astro.url).pathname);
-// `isEn` is true for any non-zh locale — local label dictionaries only
-// branch zh vs. non-zh; ja falls back to en until per-locale strings land.
-const isJa = lang === 'ja';
-const isEn = lang !== 'zh';
-// Localized labels.
+// Localized UI labels via the central dict (all 5 locales; zh-tw via OpenCC).
+// `leverWord` reuses the shared home-dict key. Aria labels (invisible, not
+// scanned by i18n-check) are built from a generic `related` prefix so they
+// localize for every locale without a binary lang branch.
+const relatedWord = t(lang, 'related');
+const leverWord = t(lang, 'leverWord');
 const L = {
-  rel: isJa ? '関連：' : isEn ? 'Related: ' : '关联：',
-  relatedReading: isJa ? '関連記事' : isEn ? 'Related Reading' : '相关阅读',
-  noneYet: isJa
-    ? '他のリソースはまだ関連付けられていません。'
-    : isEn
-      ? 'No related references yet.'
-      : '尚未关联其他资源。',
-  hPeople: isJa ? '人物' : isEn ? 'People' : '人物',
-  hPolicies: isJa ? '政策' : isEn ? 'Policies' : '政策',
-  hDebates: isJa ? '議会討論' : isEn ? 'Parliamentary debates' : '国会辩论',
-  hLevers: isJa ? 'レバー' : isEn ? 'Levers' : '抓手',
-  hTimeline: isJa ? '時点' : isEn ? 'Timeline' : '时间节点',
-  hAnalyses: isJa ? '観点' : isEn ? 'Opinions' : '观点',
-  moreDebates: (n: number) => (isEn ? `… and ${n} more` : `…另有 ${n} 条`),
-  moreDebatesInline: (n: number) => (isEn ? `+${n} more debates` : `+${n} 条辩论`),
-  ariaPerson: (name: string) => (isEn ? `Related person: ${name}` : `相关人物：${name}`),
-  ariaPolicy: (title: string) => (isEn ? `Related policy: ${title}` : `相关政策：${title}`),
-  ariaDebate: (title: string) => (isEn ? `Related debate: ${title}` : `相关辩论：${title}`),
-  ariaLever: (n: number, name: string) => (isEn ? `Related lever: ${n} ${name}` : `相关抓手：${name}`),
-  ariaTimeline: (year: string | number, title: string) =>
-    isEn ? `Related milestone: ${year} ${title}` : `相关时间节点：${year} ${title}`,
-  ariaAnalysis: (slug: string) => (isEn ? `Related opinion: ${slug}` : `相关观点：${slug}`),
-  leverTag: (n: number, name: string) => (isEn ? `Lever ${n} · ${name}` : `抓手 ${n}：${name}`),
+  rel: t(lang, 'railRel'),
+  relatedReading: t(lang, 'relatedReading'),
+  noneYet: t(lang, 'railNoneYet'),
+  hPeople: t(lang, 'railPeople'),
+  hPolicies: t(lang, 'railPolicies'),
+  hDebates: t(lang, 'railDebates'),
+  hLevers: t(lang, 'railLevers'),
+  hTimeline: t(lang, 'railTimeline'),
+  hAnalyses: t(lang, 'railAnalyses'),
+  moreDebates: (n: number) => t(lang, 'railMoreDebates').replace('{n}', String(n)),
+  moreDebatesInline: (n: number) => t(lang, 'railMoreDebatesInline').replace('{n}', String(n)),
+  ariaPerson: (name: string) => `${relatedWord}: ${name}`,
+  ariaPolicy: (title: string) => `${relatedWord}: ${title}`,
+  ariaDebate: (title: string) => `${relatedWord}: ${title}`,
+  ariaLever: (n: number, name: string) => `${relatedWord}: ${leverWord} ${n} ${name}`,
+  ariaTimeline: (year: string | number, title: string) => `${relatedWord}: ${year} ${title}`,
+  ariaAnalysis: (slug: string) => `${relatedWord}: ${slug}`,
+  leverTag: (n: number, name: string) => `${leverWord} ${n} · ${name}`,
 };
 
-// Localized field pickers.
+// Localized field pickers. The bundle members are full data records
+// (Person / Policy / Debate / Lever / TimelineEvent) that carry *Ja/*Ko
+// siblings, so pickLocalized resolves every locale (zh-tw via OpenCC).
 const personLabel = (p: { name?: string; nameEn?: string }) =>
-  isEn ? p.nameEn || p.name || '' : p.name || p.nameEn || '';
-const personSub = (p: { title?: string; titleEn?: string }) => (isEn ? p.titleEn || p.title : p.title || p.titleEn);
-const policyLabel = (p: { title: string; titleEn?: string }) => (isEn ? p.titleEn || p.title : p.title);
-const debateLabel = (d: { title: string; titleEn?: string }) => (isEn ? d.titleEn || d.title : d.title);
-const leverNameLabel = (lv: { name: string; nameEn?: string }) => (isEn ? lv.nameEn || lv.name : lv.name);
-const leverSub = (lv: { subtitle: string; subtitleEn?: string }) => (isEn ? lv.subtitleEn || lv.subtitle : lv.subtitle);
-const tlTitle = (e: { title: string; titleEn?: string }) => (isEn ? e.titleEn || e.title : e.title);
+  pickLocalized<string>(p, 'name', lang) || p.name || p.nameEn || '';
+const personSub = (p: { title?: string; titleEn?: string }) => pickLocalized<string>(p, 'title', lang) || p.title;
+const policyLabel = (p: { title: string; titleEn?: string }) => pickLocalized<string>(p, 'title', lang) || p.title;
+const debateLabel = (d: { title: string; titleEn?: string }) => pickLocalized<string>(d, 'title', lang) || d.title;
+const leverNameLabel = (lv: { name: string; nameEn?: string }) => pickLocalized<string>(lv, 'name', lang) || lv.name;
+const leverSub = (lv: { subtitle: string; subtitleEn?: string }) =>
+  pickLocalized<string>(lv, 'subtitle', lang) || lv.subtitle;
+const tlTitle = (e: { title: string; titleEn?: string }) => pickLocalized<string>(e, 'title', lang) || e.title;
 
 const linkPolicies = localizedHref('/policies/', lang);
 const linkTimeline = localizedHref('/timeline/', lang);
