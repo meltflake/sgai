@@ -1,0 +1,66 @@
+---
+// Front-page masthead strip — the "this site is alive" signal, first thing
+// under the header. Left: latest-developments tagline. Right: data scale
+// inline + derived last-updated date + RSS + full updates feed link.
+// Replaces the old mid-page freshness strip (same numbers, new position).
+//
+// Copy deliberately says "updated {date}", never "today" — static builds
+// can be days apart and a stale "today" reads worse than an honest date.
+
+import { Icon } from 'astro-icon/components';
+import { debates } from '~/data/debates';
+import { categories as policyCategories } from '~/data/policies';
+import { levers, publicLeverGroups } from '~/data/levers';
+import { videos } from '~/data/videos';
+import { SITE_UPDATED } from '~/version';
+import { t, localizedHref, type Lang } from '~/i18n';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+
+const totalPolicies = policyCategories.flatMap((c) => c.policies).length;
+const totalLeverItems = levers.reduce((sum, lv) => sum + publicLeverGroups(lv).flatMap((g) => g.items).length, 0);
+
+const scale = [
+  { n: debates.length, label: t(lang, 'freshnessDebates') },
+  { n: totalPolicies, label: t(lang, 'freshnessPolicies') },
+  { n: totalLeverItems, label: t(lang, 'freshnessLevers') },
+  { n: videos.length, label: t(lang, 'fpStatVideos') },
+];
+---
+
+<section class="border-b border-subtle bg-surface">
+  <div
+    class="max-w-6xl mx-auto px-4 sm:px-6 py-2.5 flex flex-wrap items-baseline gap-x-5 gap-y-1.5 text-xs leading-tight"
+  >
+    <span class="uppercase tracking-[0.18em] text-primary font-semibold">{t(lang, 'fpMastheadTagline')}</span>
+    <span class="text-gray-500 dark:text-gray-400 hidden sm:flex flex-wrap gap-x-3">
+      {
+        scale.map((s) => (
+          <span class="whitespace-nowrap">
+            <span class="tabular-nums font-semibold text-gray-700 dark:text-gray-300">{s.n}</span> {s.label}
+          </span>
+        ))
+      }
+    </span>
+    <span class="ml-auto flex items-center gap-x-3 text-gray-500 dark:text-gray-400">
+      <span class="whitespace-nowrap tabular-nums">{t(lang, 'fpMastheadUpdated')} {SITE_UPDATED}</span>
+      <a
+        href={localizedHref('/updates/', lang)}
+        class="text-primary hover:text-secondary font-medium whitespace-nowrap transition-colors"
+      >
+        {t(lang, 'updatesHomeCta')}
+      </a>
+      <a
+        href={localizedHref('/rss.xml', lang)}
+        class="text-gray-400 hover:text-primary transition-colors"
+        aria-label="RSS"
+        title="RSS"
+      >
+        <Icon name="tabler:rss" class="w-3.5 h-3.5" />
+      </a>
+    </span>
+  </div>
+</section>

@@ -168,6 +168,7 @@
     { "file": "src/data/policy-source-texts.ts", "reason": "政策原文全文缓存，policies 详情页消费，手工维护", "owner": "policies" },
     { "file": "src/data/updates.ts", "reason": "首页『最近更新』从各数据文件的 addedAt 派生（src/utils/derived-updates.ts），只剩 site/fix/longform 手动 override，非刷新目标", "owner": "derived" },
     { "file": "src/data/topics.ts", "reason": "受控主题词表（15 个，/topics hub 的 taxonomy），产品级词表人工维护，非内容 record（无 addedAt）", "owner": "editorial" },
-    { "file": "src/data/topic-mappings.ts", "reason": "枚举→topicIds 派生映射表 + 解析器，随词表人工维护；verify-graph 校验其值域与枚举完备性", "owner": "editorial" }
+    { "file": "src/data/topic-mappings.ts", "reason": "枚举→topicIds 派生映射表 + 解析器，随词表人工维护；verify-graph 校验其值域与枚举完备性", "owner": "editorial" },
+    { "file": "src/data/frontpage.ts", "reason": "首页头条编辑指针（FEATURED），只引用既有 record 的 id，不是内容 record，无 addedAt/i18n 字段", "owner": "editorial" }
   ]
 }

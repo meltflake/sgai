@@ -36,13 +36,34 @@ import { levers, type Lever } from '~/data/levers';
 import { verticals, type Startup } from '~/data/startups';
 import { sections as legalSections, type LegalItem } from '~/data/legal-ai';
 import { programmes as talentProgrammes, type TalentProgramme } from '~/data/talent';
+import { legalItemSlug } from '~/utils/entity-pages';
 
 import type { Update, UpdateLink, UpdateType } from '~/data/updates';
 
 // ── Common shape produced by each per-type harvester ────────────────────
 
-interface Harvested {
+// Fine-grained origin of a harvested record. Unlike UpdateType (the feed's
+// display taxonomy, where legal-ai folds into 'policy' and talent folds
+// into 'people'), `source` keeps the original data-file granularity so the
+// homepage domain directory / listing "latest additions" strips can filter
+// by actual domain.
+export type DataSource =
+  | 'policy'
+  | 'debate'
+  | 'video'
+  | 'people'
+  | 'speech'
+  | 'tracker'
+  | 'benchmark'
+  | 'ecosystem'
+  | 'lever'
+  | 'startup'
+  | 'legal'
+  | 'talent';
+
+export interface Harvested {
   type: UpdateType;
+  source: DataSource;
   addedAt: string; // YYYY-MM-DD
   zhTitle: string;
   enTitle: string;
@@ -258,6 +279,7 @@ function harvestVideos(rs: VideoItem[]): Harvested[] {
     if (!r.addedAt) continue;
     out.push({
       type: 'video',
+      source: 'video',
       addedAt: r.addedAt,
       zhTitle: r.title,
       enTitle: pickEn(r.title, r.titleEn),
@@ -276,6 +298,7 @@ function harvestPolicies(cats: Array<{ policies: Policy[] }>): Harvested[] {
       if (!r.addedAt) continue;
       out.push({
         type: 'policy',
+        source: 'policy',
         addedAt: r.addedAt,
         zhTitle: r.title,
         enTitle: pickEn(r.title, r.titleEn),
@@ -294,6 +317,7 @@ function harvestDebates(rs: Debate[]): Harvested[] {
     if (!r.addedAt) continue;
     out.push({
       type: 'debate',
+      source: 'debate',
       addedAt: r.addedAt,
       zhTitle: r.title,
       enTitle: pickEn(r.title, r.titleEn),
@@ -311,6 +335,7 @@ function harvestPeople(rs: Person[]): Harvested[] {
     if (!r.addedAt) continue;
     out.push({
       type: 'people',
+      source: 'people',
       addedAt: r.addedAt,
       zhTitle: r.name,
       enTitle: pickEn(r.name, r.nameEn),
@@ -328,6 +353,7 @@ function harvestSpeeches(rs: MddiSpeech[]): Harvested[] {
     if (!r.addedAt) continue;
     out.push({
       type: 'speech',
+      source: 'speech',
       addedAt: r.addedAt,
       zhTitle: r.title,
       enTitle: pickEn(r.title, r.titleEn),
@@ -345,6 +371,7 @@ function harvestTracker(rs: Dimension[]): Harvested[] {
     if (!r.addedAt) continue;
     out.push({
       type: 'tracker',
+      source: 'tracker',
       addedAt: r.addedAt,
       zhTitle: r.title,
       enTitle: pickEn(r.title, r.titleEn),
@@ -362,6 +389,7 @@ function harvestBenchmarking(rs: BenchmarkCase[]): Harvested[] {
     if (!r.addedAt) continue;
     out.push({
       type: 'benchmark',
+      source: 'benchmark',
       addedAt: r.addedAt,
       zhTitle: r.name,
       enTitle: pickEn(r.name, r.nameEn),
@@ -383,6 +411,7 @@ function harvestEcosystem(cats: Array<{ entities: EcosystemEntity[] }>): Harvest
       if (r._pendingReview) continue;
       out.push({
         type: 'ecosystem',
+        source: 'ecosystem',
         addedAt: r.addedAt,
         zhTitle: r.name,
         enTitle: pickEn(r.name, r.nameEn),
@@ -401,6 +430,7 @@ function harvestLevers(rs: Lever[]): Harvested[] {
     if (!r.addedAt) continue;
     out.push({
       type: 'lever',
+      source: 'lever',
       addedAt: r.addedAt,
       zhTitle: r.name,
       enTitle: pickEn(r.name, r.nameEn),
@@ -419,6 +449,7 @@ function harvestStartups(verts: Array<{ startups: Startup[] }>): Harvested[] {
       if (!r.addedAt) continue;
       out.push({
         type: 'startup',
+        source: 'startup',
         addedAt: r.addedAt,
         zhTitle: r.name,
         enTitle: r.name, // Startup names are usually brand strings — same in en
@@ -438,12 +469,13 @@ function harvestLegalAi(secs: Array<{ items: LegalItem[] }>): Harvested[] {
       if (!r.addedAt) continue;
       out.push({
         type: 'policy', // legal-ai surfaces as 'policy' in the updates feed
+        source: 'legal',
         addedAt: r.addedAt,
         zhTitle: r.title,
         enTitle: pickEn(r.title, r.titleEn),
         jaTitle: pickJa(r.title, r.titleJa, r.titleEn),
         koTitle: pickKo(r.title, r.titleKo, r.titleEn),
-        href: '/legal-ai/',
+        href: `/legal-ai/${legalItemSlug(r)}/`,
       });
     }
   }
@@ -456,6 +488,7 @@ function harvestTalent(rs: TalentProgramme[]): Harvested[] {
     if (!r.addedAt) continue;
     out.push({
       type: 'people', // talent programmes surface as 'people' in the feed
+      source: 'talent',
       addedAt: r.addedAt,
       zhTitle: r.name,
       enTitle: pickEn(r.name, r.nameEn),
@@ -537,8 +570,14 @@ function buildUpdate(date: string, type: UpdateType, items: Harvested[]): Update
  * Manual editorial entries (site / fix / longform) are NOT produced here —
  * they come from the manual UPDATES array in src/data/updates.ts.
  */
-export function deriveUpdates(): Update[] {
-  const all: Harvested[] = [
+/**
+ * Flat list of every record that carries `addedAt`, tagged with its
+ * fine-grained `source` domain. This is the raw material both for
+ * deriveUpdates() (grouped feed) and for the homepage / listing "latest
+ * additions" strips (per-domain, ungrouped).
+ */
+export function harvestAll(): Harvested[] {
+  return [
     ...harvestVideos(videos),
     ...harvestPolicies(policyCategories),
     ...harvestDebates(debates),
@@ -552,6 +591,10 @@ export function deriveUpdates(): Update[] {
     ...harvestLegalAi(legalSections),
     ...harvestTalent(talentProgrammes),
   ];
+}
+
+export function deriveUpdates(): Update[] {
+  const all: Harvested[] = harvestAll();
 
   const groups = new Map<string, Harvested[]>();
   for (const h of all) {
