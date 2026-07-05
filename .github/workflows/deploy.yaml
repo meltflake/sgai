@@ -1,0 +1,146 @@
+# Production deploy: build on GitHub Actions, push dist/ to Cloudflare Pages
+# via wrangler Direct Upload.
+#
+# Why this exists (2026-07-05): the git-integrated Cloudflare build queued a
+# full ~12-min build for EVERY commit pushed to main — a burst of 9 merges
+# meant ~2 hours of serial builds, most of them for commits already
+# superseded. The `concurrency` block below is the fix: a newer push to main
+# cancels any in-flight/queued deploy, so only the latest commit ever ships.
+#
+# ── Cutover checklist (one-time, dashboard side) ─────────────────────────
+# Until the two secrets below exist, this workflow builds + gate-checks but
+# SKIPS the deploy step with a notice — the legacy Cloudflare git-integration
+# build keeps serving production, so merging this is zero-risk.
+#
+#   1. Cloudflare dashboard → My Profile → API Tokens → Create Token
+#      (template "Edit Cloudflare Workers"/Pages, scope: Account.Cloudflare
+#      Pages:Edit). Account ID is on the Pages project overview page.
+#   2. GitHub repo → Settings → Secrets and variables → Actions:
+#        CLOUDFLARE_API_TOKEN, CLOUDFLARE_ACCOUNT_ID
+#   3. Direct Upload cannot target a git-connected Pages project. Create a
+#      fresh project:  npx wrangler pages project create sgai-ci
+#      then set repo Variable CLOUDFLARE_PAGES_PROJECT=sgai-ci, let this
+#      workflow deploy once, verify the *.pages.dev preview, and move the
+#      custom domain sgai.md from the old project to the new one.
+#   4. Pause/delete the old project's automatic git builds.
+#
+# Manual redeploy of current main: Actions tab → Deploy → Run workflow.
+
+name: Deploy
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+# One production deploy at a time; a newer commit cancels older runs —
+# this is what kills the "9 merges = 9 serial builds" queue amplification.
+concurrency:
+  group: deploy-production
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Use Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      # Astro's asset cache (remote YouTube thumbnails etc.) lives in
+      # node_modules/.astro. Restore AFTER npm ci — npm ci wipes
+      # node_modules, so restoring first would be undone. Unique key +
+      # prefix restore = always save fresh, always restore newest.
+      - name: Restore Astro asset cache
+        uses: actions/cache@v4
+        with:
+          path: node_modules/.astro
+          key: astro-assets-${{ github.run_id }}
+          restore-keys: |
+            astro-assets-
+
+      - run: npm run build
+
+      # Dist-layer gates (i18n residue, JSON-LD schema, zh-tw misconversion)
+      # must pass before anything ships.
+      - run: npm run check:dist
+
+      # Resolves the account id defensively: the dashboard sidebar shows Zone
+      # ID and Account ID side by side and they're easy to swap. If the
+      # CLOUDFLARE_ACCOUNT_ID secret doesn't route, derive the id from the
+      # API token itself when its scope allows account listing.
+      #
+      # Endpoint choice matters: a minimally-scoped token (Pages:Edit only,
+      # the recommended setup) can NOT read /accounts/{id} or list /accounts
+      # — those need Account Settings:Read. So the account id is validated
+      # against /accounts/{id}/pages/projects, the exact route wrangler
+      # deploys through; token liveness is checked via /user/tokens/verify,
+      # which every token may call on itself.
+      - name: Check Cloudflare credentials
+        id: creds
+        env:
+          CF_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CF_ACCOUNT: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          if [ -z "$CF_TOKEN" ]; then
+            echo "ok=false" >> "$GITHUB_OUTPUT"
+            echo "::notice title=Deploy skipped::CLOUDFLARE_API_TOKEN not configured — build verified but not deployed (cutover pending, see header of this workflow)."
+            exit 0
+          fi
+          api() { curl -s -H "Authorization: Bearer $CF_TOKEN" "https://api.cloudflare.com/client/v4/$1"; }
+
+          token_ok=$(api user/tokens/verify | jq -r '.success // false')
+          if [ "$token_ok" != "true" ]; then
+            echo "::error title=Deploy failed::CLOUDFLARE_API_TOKEN is invalid or expired (failed /user/tokens/verify). Re-create the token (Account → Cloudflare Pages → Edit) and update the secret."
+            exit 1
+          fi
+
+          pages_ok=false
+          if [ -n "$CF_ACCOUNT" ]; then
+            pages_ok=$(api "accounts/$CF_ACCOUNT/pages/projects" | jq -r '.success // false')
+          fi
+          if [ "$pages_ok" != "true" ]; then
+            # Best-effort auto-derive — only works if the token can list
+            # accounts (needs Account Settings:Read; minimal tokens can't).
+            derived=$(api accounts | jq -r '.result[0].id // empty')
+            if [ -n "$derived" ] && [ "$(api "accounts/$derived/pages/projects" | jq -r '.success // false')" = "true" ]; then
+              echo "::warning title=Account ID auto-derived::CLOUDFLARE_ACCOUNT_ID secret does not route; using $derived derived from the token. Update the secret to silence this warning."
+              CF_ACCOUNT="$derived"
+            else
+              echo "::error title=Deploy failed::Token is valid but CLOUDFLARE_ACCOUNT_ID does not route to a Pages-accessible account. The Account ID is the 32-hex segment in your dashboard URL (dash.cloudflare.com/<ACCOUNT_ID>/...) — the domain page sidebar's Zone ID is NOT it. Fix with: gh secret set CLOUDFLARE_ACCOUNT_ID --repo meltflake/sgai"
+              exit 1
+            fi
+          fi
+          echo "::add-mask::$CF_ACCOUNT"
+          echo "ok=true" >> "$GITHUB_OUTPUT"
+          echo "account_id=$CF_ACCOUNT" >> "$GITHUB_OUTPUT"
+
+      # First-run convenience: create the direct-upload project if it does
+      # not exist yet, so cutover needs no local wrangler login — just the
+      # two secrets. `project create` fails if the name exists; the list
+      # check keeps this step idempotent.
+      - name: Ensure Pages project exists
+        if: steps.creds.outputs.ok == 'true'
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ steps.creds.outputs.account_id }}
+          PROJECT: ${{ vars.CLOUDFLARE_PAGES_PROJECT || 'sgai-ci' }}
+        run: |
+          if ! npx wrangler pages project list | grep -q "\b$PROJECT\b"; then
+            npx wrangler pages project create "$PROJECT" --production-branch=main
+          fi
+
+      - name: Deploy to Cloudflare Pages
+        if: steps.creds.outputs.ok == 'true'
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ steps.creds.outputs.account_id }}
+          command: pages deploy dist --project-name=${{ vars.CLOUDFLARE_PAGES_PROJECT || 'sgai-ci' }} --branch=main --commit-dirty=true

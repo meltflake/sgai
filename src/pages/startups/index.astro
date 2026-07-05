@@ -11,7 +11,7 @@ const lang = 'en' as const;
 const hrefFor = (entity: { id?: string; name: string; nameEn?: string }) => `/startups/${startupEntitySlug(entity)}/`;
 
 const stats = [
-  { value: ecosystemStats.totalStartups, label: 'AI-related startup samples' },
+  { value: ecosystemStats.totalStartups, label: 'AI companies (Tracxn)' },
   { value: `#${ecosystemStats.globalRank}`, label: 'Global AI hub rank' },
   { value: ecosystemStats.seaFundingShare, label: 'SEA AI funding share' },
   { value: ecosystemStats.totalVCRaised, label: 'Total VC raised' },
@@ -248,9 +248,15 @@ const stats = [
     </section>
 
     <p class="mt-8 text-sm text-muted text-center">
-      Aggregate statistics use the public baseline as of {ecosystemStats.dataDate}; entity profiles were organized on {
+      Aggregate statistics were re-baselined on {ecosystemStats.dataDate}, each pinned to a single named source: the AI
+      company count and total VC raised are from Tracxn (as of May 2026: 548 companies, US$1.9B cumulative); the SEA AI
+      funding share is estimated from the e-Conomy SEA 2025 report by Google, Temasek and Bain (Singapore US$1.31B of
+      the region's US$2.3B+ in the 12 months to June 2025); the government AI commitment sums announcements since 2024
+      (over S$1B at Budget 2024, up to S$150M for the Enterprise Compute Initiative at Budget 2025, and over S$1B for
+      the National AI R&D Plan announced in January 2026); the AI hub rank is from the Tortoise Global AI Index 2025;
+      the unicorn count is the number of profiles curated on this page. Entity profiles were organized on {
         ecosystemStats.profileUpdated
-      }. Some figures are estimates. Funding amounts are drawn from public reporting and actual numbers may differ.
+      }. Funding amounts follow public reporting and actual numbers may differ.
     </p>
   </section>
 </Layout>

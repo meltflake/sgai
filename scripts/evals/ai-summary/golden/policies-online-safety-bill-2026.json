@@ -1,0 +1,36 @@
+{
+  "id": "policies-online-safety-bill-2026",
+  "description": "Online Safety (Relief and Accountability) Bill — trust & safety legislative classification.",
+  "input": {
+    "sourceUrl": "https://www.mddi.gov.sg/newsroom/online-safety-relief-accountability-bill",
+    "title": "Online Safety (Relief and Accountability) Bill Introduced in Parliament",
+    "contentText": "SINGAPORE, 6 May 2026 — The Ministry of Digital Development and Information introduced the Online Safety (Relief and Accountability) Bill in Parliament today. The Bill establishes a new Online Safety Commission with powers to direct platforms to remove harmful content, including AI-generated deepfakes used for harassment or impersonation. Victims will gain statutory rights to seek redress, and platforms that fail to comply face civil penalties. The Minister of State said the Bill closes a gap where victims of intimate image abuse and deepfake impersonation previously had no fast civil remedy. The Commission is expected to begin operations in mid-2026."
+  },
+  "expected": {
+    "categories": [
+      "National Strategy",
+      "Trust & Safety",
+      "Industry Adoption",
+      "Talent & Education",
+      "Compute & Infrastructure",
+      "Other"
+    ],
+    "domainContext": "Singapore AI policy observatory (sgai.md)",
+    "category": "Trust & Safety",
+    "publishedDate": "2026-05-06",
+    "minTitleZhLen": 8,
+    "maxTitleZhLen": 60,
+    "minDescZhLen": 30,
+    "maxDescZhLen": 250,
+    "minDescEnLen": 50,
+    "maxDescEnLen": 700,
+    "minConfidence": "medium",
+    "requiredTermsZh": [
+      "法案"
+    ],
+    "requiredTermsEn": [
+      "Online Safety",
+      "deepfake"
+    ]
+  }
+}

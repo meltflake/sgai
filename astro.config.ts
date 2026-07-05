@@ -115,13 +115,14 @@ export default defineConfig({
       })
     ),
 
+    // HTML minification is intentionally OFF: Cloudflare's edge already
+    // serves HTML brotli/gzip-compressed, and minifying the ~175 MB dist
+    // with html-minifier-terser cost ~3 min per build (over a third of
+    // total build time) for negligible wire-size gain. CSS/JS stay on —
+    // they're cheap and not redundant with edge compression.
     compress({
       CSS: true,
-      HTML: {
-        'html-minifier-terser': {
-          removeAttributeQuotes: false,
-        },
-      },
+      HTML: false,
       Image: false,
       JavaScript: true,
       SVG: false,

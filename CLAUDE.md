@@ -4,7 +4,7 @@
 
 新加坡 AI 观察 (https://github.com/meltflake/sgai) — 深度观察新加坡 AI 生态与战略的中文网站。
 仓库于 2026-05 从 `aisg` 重命名为 `sgai`（避开 AI Singapore 缩写撞名）。同时从 meltflake-site 子站"毕业"，作为独立站点部署，线上地址 `https://sgai.md/`（DNS/Cloudflare 配置另行处理）。
-基于 Astro 5.0 + Tailwind CSS 的静态站点，部署于 Netlify。
+基于 Astro 5.0 + Tailwind CSS 的静态站点，部署于 Cloudflare Pages。
 
 ## 技术栈
 
@@ -12,7 +12,7 @@
 - **样式**: Tailwind CSS
 - **语言**: TypeScript + Astro
 - **内容**: Markdown 博客文章 (`src/data/post/*.md`)，TypeScript 数据文件 (`src/data/*.ts`)
-- **部署**: Netlify (自动部署 main 分支)
+- **部署**: Cloudflare Pages（`.github/workflows/deploy.yaml` 构建 + wrangler 直传，见「部署」一节）
 
 ## CI 管线
 
@@ -319,7 +319,7 @@ src/
 1. 修改内容 / 代码
 2. 运行 `npm run check` 确认通过
 3. 更新 `src/version.ts` 中的版本号和日期
-4. 提交并推送到 main 分支，Netlify 自动部署
+4. 提交并推送到 main 分支，`.github/workflows/deploy.yaml` 自动构建部署（连发多个合并时后来的 push 自动取消排队中的旧构建，只部署最新 commit；不想触发构建的提交在 commit message 加 `[CI Skip]`）
 
 ## 内容管理
 
@@ -572,6 +572,13 @@ CLI 必须支持：`--dry-run / --limit=N / --no-commit / --no-push`
 
 ## 部署
 
-独立部署在 Cloudflare Pages，绑定 `sgai.md`。push main 分支后 Cloudflare 自动构建（`npm run build` → `dist/`）。
+独立部署在 Cloudflare Pages，绑定 `sgai.md`。
 
-CI gating 由 `.github/workflows/actions.yaml` 跑 build matrix + `npm run check`，与 Cloudflare 部署相互独立。
+**部署链路（2026-07-05 起）**：push main → `.github/workflows/deploy.yaml` 在 GitHub Actions 构建（`npm run build` → `check:dist` 门 → `wrangler pages deploy dist`）。要点：
+
+- **`concurrency: cancel-in-progress`**：连发多个 commit 时自动取消被淘汰的构建，只部署最新——根治「9 个合并排 9 个全量构建」的队列放大（2026-07-04 v0.20 发版实测近 2 小时）。
+- **Astro 资产缓存**（`node_modules/.astro`）跨构建复用，YouTube 缩略图等远程资源不用每次重拉。
+- **HTML 不做构建期 minify**（astro.config `compress.HTML: false`）：Cloudflare 边缘本来就对 HTML 做 brotli 压缩，构建期 minify 曾占单次构建约 3 分钟，纯重复劳动。CSS/JS 压缩保留。
+- **cutover 状态**：secrets（`CLOUDFLARE_API_TOKEN` / `CLOUDFLARE_ACCOUNT_ID`）未配置时 deploy workflow 只构建验证、跳过部署，旧的 Cloudflare git-integration 构建继续生效。切换步骤见 deploy.yaml 文件头注释（需新建 direct-upload 项目 + 迁移自定义域名，git-connected 项目不接受 wrangler 直传）。
+
+CI gating 由 `.github/workflows/actions.yaml` 承担：`build` job（Node 22 单版本，仅 PR 时跑——main 上 deploy.yaml 会再构建，避免重复）+ `check` job（源码级检查 + 各 eval 门，PR 和 main 都跑）。

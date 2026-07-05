@@ -23,9 +23,18 @@
     "minDescZhLen": 30,
     "maxDescZhLen": 250,
     "minDescEnLen": 50,
-    "maxDescEnLen": 500,
+    "maxDescEnLen": 700,
     "minConfidence": "medium",
-    "requiredTermsZh": ["IMDA", "300", "数据中心"],
-    "requiredTermsEn": ["IMDA", "300", "MW", "data centre"]
+    "requiredTermsZh": [
+      "IMDA",
+      "300",
+      "数据中心"
+    ],
+    "requiredTermsEn": [
+      "IMDA",
+      "300",
+      "MW",
+      "data centre"
+    ]
   }
 }

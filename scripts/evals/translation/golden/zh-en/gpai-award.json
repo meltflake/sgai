@@ -1,0 +1,13 @@
+{
+  "id": "gpai-award",
+  "description": "Tracker note — index rank fidelity.",
+  "source": "新加坡在 Tortoise 全球 AI 指数中连续两年位列全球第三，仅次于美国和中国，在人均 AI 科学家密度等相对指标上领先。",
+  "expectedTermsEn": [
+    "Tortoise",
+    "third",
+    "United States"
+  ],
+  "minLengthRatio": 0.6,
+  "maxLengthRatio": 2.5,
+  "preserveTokens": []
+}

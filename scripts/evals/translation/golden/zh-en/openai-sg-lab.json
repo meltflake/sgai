@@ -1,0 +1,16 @@
+{
+  "id": "openai-sg-lab",
+  "description": "OpenAI for Singapore commitment — money + jobs figures.",
+  "source": "OpenAI 宣布 \"OpenAI for Singapore\" 计划：承诺投入超过 3 亿新元，在新加坡设立美国以外首个 Applied AI Lab，创造 200 多个本地技术岗位。",
+  "expectedTermsEn": [
+    "OpenAI",
+    "Applied AI Lab",
+    "Singapore"
+  ],
+  "minLengthRatio": 0.6,
+  "maxLengthRatio": 2.5,
+  "preserveTokens": [
+    "OpenAI",
+    "200"
+  ]
+}

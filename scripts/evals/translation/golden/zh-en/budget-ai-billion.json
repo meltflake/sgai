@@ -1,0 +1,16 @@
+{
+  "id": "budget-ai-billion",
+  "description": "Budget 2024 AI allocation — currency + horizon fidelity.",
+  "source": "2024 年财政预算案宣布未来五年投入 10 亿新元发展 AI 算力、人才与产业生态，目标将新加坡 AI 从业者规模扩大两倍至 15,000 人。",
+  "expectedTermsEn": [
+    "Budget",
+    "S$1 billion",
+    "15,000"
+  ],
+  "minLengthRatio": 0.6,
+  "maxLengthRatio": 2.5,
+  "preserveTokens": [
+    "2024",
+    "15,000"
+  ]
+}

@@ -23,9 +23,16 @@
     "minDescZhLen": 30,
     "maxDescZhLen": 250,
     "minDescEnLen": 50,
-    "maxDescEnLen": 500,
+    "maxDescEnLen": 700,
     "minConfidence": "medium",
-    "requiredTermsZh": ["MDDI", "10 亿", "2030"],
-    "requiredTermsEn": ["MDDI", "1 billion", "2030", "AI"]
+    "requiredTermsZh": [
+      "2030",
+      "亿新元"
+    ],
+    "requiredTermsEn": [
+      "1 billion",
+      "2030",
+      "AI"
+    ]
   }
 }

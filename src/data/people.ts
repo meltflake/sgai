@@ -368,6 +368,124 @@ export const people: Person[] = [
         primary: true,
       },
     ],
+    notableQuotes: [
+      {
+        quote:
+          "We can't leave it to the law of the jungle and most especially, we can't leave AI to the law of the jungle.",
+        quoteZh: '我们不能把一切交给丛林法则，尤其不能把 AI 交给丛林法则。',
+        context: '亚洲科技×新加坡峰会（ATxSummit）开幕晚宴演讲',
+        contextEn: 'Asia Tech x Singapore Summit Opening Gala speech',
+        date: '2024-05-29',
+        sourceUrl:
+          'https://www.istana.gov.sg/newsroom/speech-by-president-tharman-shanmugaratnam-at-the-asia-tech-x-summit-opening-gala/',
+        contextJa: 'Asia Tech x Singapore サミット開幕ガラでのスピーチ',
+        contextKo: 'Asia Tech x Singapore 서밋 개막 갈라 연설',
+      },
+      {
+        quote: 'And in the race to get there first, speed of advance in AI models is taking precedence over safety.',
+        quoteZh: '而在这场争先的竞赛中，AI 模型的推进速度正凌驾于安全之上。',
+        context: 'ATxSG 五周年开幕晚宴演讲《治理 AI：亦友亦敌》',
+        contextEn: "Speech 'Governing AI: A Friend and Foe' at the ATxSG 5th Anniversary Opening Gala",
+        date: '2025-05-27',
+        sourceUrl:
+          'https://www.istana.gov.sg/Newsroom/Speeches/2025/05/27/Transcript-of-speech-by-President-at-the-Asia-Tech-X-Singapore',
+        contextJa: 'ATxSG 5周年開幕ガラでのスピーチ「AI を統治する：友にして敵」',
+        contextKo: "ATxSG 5주년 개막 갈라 연설 '거버닝 AI: 친구이자 적'",
+      },
+      {
+        quote:
+          'We first need the AI equivalent of the IPCC on climate change: an independent group of scientists to keep track of fast-changing AI developments and provide objective advice to governments on the opportunities and risks.',
+        quoteZh:
+          '我们首先需要 AI 领域的「IPCC」——由独立科学家团体跟踪快速变化的 AI 进展，就机遇与风险向各国政府提供客观建议。',
+        context: 'IMF 年会 Per Jacobsson 基金演讲《一个充满可能的时代》',
+        contextEn: "Per Jacobsson Foundation Lecture 'An Era of Possibility', IMF Annual Meetings",
+        date: '2025-10-15',
+        sourceUrl:
+          'https://www.istana.gov.sg/newsroom/an-era-of-possibility-renewing-economic-order-and-shared-purpose-by-president-tharman-shanmugaratnam/',
+        contextJa: 'IMF 年次総会 Per Jacobsson 財団講演「可能性の時代」',
+        contextKo: "IMF 연차총회 Per Jacobsson 재단 강연 '가능성의 시대'",
+      },
+    ],
+    speakingRecord: [
+      {
+        event: '亚洲科技×新加坡峰会（ATxSummit）开幕晚宴',
+        eventEn: 'Asia Tech x Singapore Summit Opening Gala',
+        role: '主旨演讲：监管 AI 的可能与次优艺术',
+        roleEn: 'Keynote: Regulating AI — the art of the possible, the attainable, the next best',
+        date: '2024-05-29',
+        sourceUrl:
+          'https://www.istana.gov.sg/newsroom/speech-by-president-tharman-shanmugaratnam-at-the-asia-tech-x-summit-opening-gala/',
+        eventJa: 'Asia Tech x Singapore サミット開幕ガラ',
+        eventKo: 'Asia Tech x Singapore 서밋 개막 갈라',
+        roleJa: '基調講演：AI 規制の「可能・到達可能・次善」の技法',
+        roleKo: '기조연설: AI 규제의 가능·도달 가능·차선의 기술',
+      },
+      {
+        event: '世界经济论坛 2025 年会（达沃斯）',
+        eventEn: 'World Economic Forum Annual Meeting 2025, Davos',
+        role: '“缩小就业差距”专场发言：让 AI 互补而非替代人类技能',
+        roleEn: "Remarks at 'Closing the Jobs Gap': making AI complement rather than substitute human skills",
+        date: '2025-01-22',
+        sourceUrl:
+          'https://www.istana.gov.sg/newsroom/closing-the-jobs-gap-remarks-by-president-tharman-shanmugaratnam-at-the-world-economic-forum-2025/',
+        eventJa: '世界経済フォーラム 2025 年次総会（ダボス）',
+        eventKo: '세계경제포럼 2025 연차총회(다보스)',
+        roleJa: '「雇用ギャップの解消」セッションでの発言：AI を人間のスキルの代替ではなく補完に',
+        roleKo: "'일자리 격차 해소' 세션 발언: AI가 인간 기술을 대체가 아닌 보완하도록",
+      },
+      {
+        event: 'ATxSG 五周年开幕晚宴',
+        eventEn: 'Asia Tech x Singapore 5th Anniversary Opening Gala',
+        role: '主旨演讲：治理 AI，亦友亦敌',
+        roleEn: 'Keynote: Governing AI — A Friend and Foe',
+        date: '2025-05-27',
+        sourceUrl:
+          'https://www.istana.gov.sg/Newsroom/Speeches/2025/05/27/Transcript-of-speech-by-President-at-the-Asia-Tech-X-Singapore',
+        eventJa: 'ATxSG 5周年開幕ガラ',
+        eventKo: 'ATxSG 5주년 개막 갈라',
+        roleJa: '基調講演：AI を統治する——友にして敵',
+        roleKo: '기조연설: 거버닝 AI — 친구이자 적',
+      },
+      {
+        event: 'IMF 年会 Per Jacobsson 基金演讲（华盛顿）',
+        eventEn: 'Per Jacobsson Foundation Lecture, IMF Annual Meetings, Washington DC',
+        role: '演讲：提出建立“AI 版 IPCC”独立科学机制',
+        roleEn: 'Lecture proposing an IPCC-equivalent independent scientific body for AI',
+        date: '2025-10-15',
+        sourceUrl:
+          'https://www.istana.gov.sg/newsroom/an-era-of-possibility-renewing-economic-order-and-shared-purpose-by-president-tharman-shanmugaratnam/',
+        eventJa: 'IMF 年次総会 Per Jacobsson 財団講演（ワシントン DC）',
+        eventKo: 'IMF 연차총회 Per Jacobsson 재단 강연(워싱턴 DC)',
+        roleJa: '講演：「AI 版 IPCC」に相当する独立科学機関の設立を提唱',
+        roleKo: "강연: 'AI판 IPCC'에 해당하는 독립 과학기구 설립 제안",
+      },
+    ],
+    externalRoles: [
+      {
+        role: '联合主席',
+        roleEn: 'Co-Chair',
+        organization: '世界银行就业问题高级别咨询理事会',
+        organizationEn: 'World Bank Group High-Level Advisory Council on Jobs',
+        since: '2024-08',
+        sourceUrl:
+          'https://www.worldbank.org/en/news/press-release/2024/08/12/world-bank-group-launches-high-level-council-to-tackle-looming-jobs-crisis',
+        roleJa: '共同議長',
+        roleKo: '공동 의장',
+        organizationJa: '世界銀行グループ雇用問題ハイレベル諮問評議会',
+        organizationKo: '세계은행그룹 일자리 고위급 자문위원회',
+      },
+      {
+        role: '基金理事会成员',
+        roleEn: 'Member, Board of Trustees',
+        organization: '世界经济论坛',
+        organizationEn: 'World Economic Forum',
+        sourceUrl: 'https://www.istana.gov.sg/the-president/president-tharman-shanmugaratnam/',
+        roleJa: '財団評議員会メンバー',
+        roleKo: '재단 이사회 멤버',
+        organizationJa: '世界経済フォーラム',
+        organizationKo: '세계경제포럼',
+      },
+    ],
   },
   {
     id: 'tan-kiat-how',
@@ -433,6 +551,198 @@ export const people: Person[] = [
         labelKo: 'NTU 공식 아카이브',
         labelJa: 'NTU 公式アーカイブ',
         labelEn: 'NTU official profile',
+      },
+    ],
+    signatureWork: [
+      {
+        title: '创建并执掌国家 AI 计划 AI Singapore',
+        titleEn: 'Founded and led AI Singapore, the national AI programme',
+        description:
+          '2017 年牵头创立 AI Singapore 并任创始执行主席，推动 100 Experiments、AIAP 学徒计划与 SEA-LION 东南亚语言模型等旗舰项目，2026 年 6 月 30 日卸任。',
+        descriptionEn:
+          'Spearheaded the creation of AI Singapore in 2017 as founding Executive Chairman, driving 100 Experiments, the AI Apprenticeship Programme and the SEA-LION Southeast Asian language model; stepped down on 30 June 2026.',
+        since: '2017',
+        sourceUrl: 'https://www.mddi.gov.sg/newsroom/appointment-of-new-executive-chairman-of-ai-singapore/',
+        titleJa: '国家 AI プログラム AI Singapore の創設と指揮',
+        titleKo: '국가 AI 프로그램 AI Singapore 창설 및 총괄',
+        descriptionJa:
+          '2017 年に AI Singapore を創設し創設エグゼクティブチェアマンに就任。100 Experiments、AIAP 見習いプログラム、SEA-LION 東南アジア言語モデルなどの旗艦プロジェクトを推進し、2026 年 6 月 30 日に退任。',
+        descriptionKo:
+          '2017년 AI Singapore를 창설하고 창립 총괄의장을 맡아 100 Experiments, AIAP 견습 프로그램, SEA-LION 동남아시아 언어 모델 등 플래그십 프로젝트를 이끌었으며 2026년 6월 30일 퇴임.',
+      },
+      {
+        title: 'NTU 全校 AI 战略',
+        titleEn: "NTU's university-wide AI strategy",
+        description:
+          '2024 年 2 月提出 NTU 的 AI 雄心：跨学科 AI 与社会理学士、图灵 AI 学者计划、全体本科生 AI 辅修，首期投入 400 万新元。',
+        descriptionEn:
+          "Laid out NTU's AI ambition in February 2024: an interdisciplinary BSc in AI and Society, the Turing AI Scholars Programme and a Minor in AI for all undergraduates, with an initial S$4 million investment.",
+        since: '2024-02',
+        sourceUrl: "https://www.ntu.edu.sg/news/detail/ntu's-big-artificial-intelligence-push",
+        titleJa: 'NTU 全学 AI 戦略',
+        titleKo: 'NTU 전교 AI 전략',
+        descriptionJa:
+          '2024 年 2 月に NTU の AI 構想を発表：学際的な「AI と社会」学士課程、チューリング AI スカラーズ・プログラム、全学部生向け AI 副専攻を、初期投資 400 万シンガポールドルで開始。',
+        descriptionKo:
+          "2024년 2월 NTU의 AI 구상을 발표: 학제간 'AI와 사회' 학사 과정, 튜링 AI 스칼라 프로그램, 전체 학부생 대상 AI 부전공을 초기 투자 400만 싱가포르달러로 시작.",
+      },
+      {
+        title: '创设 NTU 计算与数据科学学院（CCDS）',
+        titleEn: "Launched NTU's College of Computing and Data Science (CCDS)",
+        description:
+          '2024 年成立新学院深耕 AI 与数据科学，并首设「AI 与数字经济」副校长职位，支撑新加坡可信 AI 枢纽目标。',
+        descriptionEn:
+          "Established a new college in 2024 to deepen NTU's investment in AI and data science, alongside the university's first Vice President (AI & Digital Economy) role, supporting Singapore's trusted-AI-hub ambition.",
+        since: '2024-02',
+        sourceUrl:
+          'https://www.ntu.edu.sg/docs/default-source/corporate-ntu/hub-news/ntu-singapore-launches-new-college-of-computing-and-data-science-to-propel-ai-ambitions.pdf?sfvrsn=5a38a7bc_1',
+        titleJa: 'NTU コンピューティング・データサイエンス学院（CCDS）の創設',
+        titleKo: 'NTU 컴퓨팅·데이터과학대학(CCDS) 설립',
+        descriptionJa:
+          '2024 年に AI とデータサイエンスを深耕する新学院を設立し、大学初の「AI・デジタル経済」担当副学長職を新設。シンガポールの信頼される AI ハブ構想を支える。',
+        descriptionKo:
+          "2024년 AI와 데이터과학에 집중하는 새 단과대학을 설립하고 대학 최초의 'AI·디지털 경제' 부총장직을 신설, 싱가포르의 신뢰할 수 있는 AI 허브 목표를 뒷받침.",
+      },
+      {
+        title: 'NTU2030：AI 全面嵌入本科课程',
+        titleEn: 'NTU2030: embedding AI across the undergraduate curriculum',
+        description:
+          '2026 年 4 月发布 NTU2030 五年计划，把 AI 嵌入全部本科课程，学生毕业时带着可部署的 AI 智能体组合进入职场。',
+        descriptionEn:
+          'Unveiled the NTU2030 five-year plan in April 2026 to embed AI across the undergraduate curriculum, with graduates leaving NTU with a portfolio of deployable AI agents.',
+        since: '2026-04',
+        sourceUrl: 'https://www.ntu.edu.sg/news/detail/empowering-students-to-thrive-in-the-age-of-ai',
+        titleJa: 'NTU2030：学部カリキュラム全体への AI の組み込み',
+        titleKo: 'NTU2030: 학부 커리큘럼 전반에 AI 통합',
+        descriptionJa:
+          '2026 年 4 月に 5 カ年計画 NTU2030 を発表。全学部課程に AI を組み込み、学生は即戦力の AI エージェント・ポートフォリオを携えて卒業する。',
+        descriptionKo:
+          '2026년 4월 5개년 계획 NTU2030을 발표. 전체 학부 과정에 AI를 통합해 학생들이 배포 가능한 AI 에이전트 포트폴리오를 갖고 졸업하도록 함.',
+      },
+    ],
+    notableQuotes: [
+      {
+        quote:
+          "If everyone had nine AI assistants with different functions, Singapore's effective population would not be 6 million; it would feel like 60 million.",
+        quoteZh: '如果每个人都拥有九个功能各异的 AI 助手，新加坡的有效人口就不只是 600 万，而会感觉像 6000 万。',
+        context: '《联合早报》专访（NTU Pushing Frontiers 英文转载）',
+        contextEn: "Lianhe Zaobao interview (English version in NTU's Pushing Frontiers)",
+        date: '2025-02-01',
+        sourceUrl: 'https://www.ntu.edu.sg/research/research-hub/news/detail/ai-assistants-could-double-productivity',
+        contextJa: '聯合早報インタビュー（NTU Pushing Frontiers 英語版転載）',
+        contextKo: '롄허짜오바오 인터뷰(NTU Pushing Frontiers 영문 전재)',
+      },
+      {
+        quote:
+          "Our goal for the new College is to nurture an NTU community that stays ahead of the curve in the AI age. By doing so, we can better support Singapore's ambition to be a major trusted AI hub.",
+        quoteZh:
+          '新学院的目标是培育一个在 AI 时代始终走在前沿的 NTU 社群，以更好支撑新加坡成为全球主要可信 AI 枢纽的雄心。',
+        context: 'NTU 计算与数据科学学院成立新闻稿',
+        contextEn: 'NTU news release launching the College of Computing and Data Science',
+        date: '2024-02-19',
+        sourceUrl:
+          'https://www.ntu.edu.sg/docs/default-source/corporate-ntu/hub-news/ntu-singapore-launches-new-college-of-computing-and-data-science-to-propel-ai-ambitions.pdf?sfvrsn=5a38a7bc_1',
+        contextJa: 'NTU コンピューティング・データサイエンス学院設立プレスリリース',
+        contextKo: 'NTU 컴퓨팅·데이터과학대학 설립 보도자료',
+      },
+      {
+        quote:
+          'By embedding AI across our curriculum, our graduates will leave NTU with not just a deep understanding of AI, but also a portfolio of AI agents ready to deploy from day one in the workforce.',
+        quoteZh:
+          '通过把 AI 嵌入全部课程，毕业生离开南大时不仅深入理解 AI，还带着一套从入职第一天就能部署的 AI 智能体组合。',
+        context: 'NTU2030 五年计划发布',
+        contextEn: 'Launch of the NTU2030 five-year plan',
+        date: '2026-04-06',
+        sourceUrl: 'https://www.ntu.edu.sg/news/detail/empowering-students-to-thrive-in-the-age-of-ai',
+        contextJa: 'NTU2030 5カ年計画の発表',
+        contextKo: 'NTU2030 5개년 계획 발표',
+      },
+    ],
+    speakingRecord: [
+      {
+        event: '世界经济论坛第 54 届年会（达沃斯）大学领袖会议',
+        eventEn: 'University Leaders Meeting, 54th World Economic Forum Annual Meeting, Davos',
+        role: '小组讨论嘉宾：携手探索 AI 的未来',
+        roleEn: 'Panellist: Joining forces to explore the future of artificial intelligence',
+        date: '2024-01',
+        sourceUrl: 'http://www.teckho.com/uploads/pdfs/CV-TeckHuaHO.pdf',
+        eventJa: '第 54 回世界経済フォーラム年次総会（ダボス）大学リーダー会議',
+        eventKo: '제54차 세계경제포럼 연차총회(다보스) 대학 리더 회의',
+        roleJa: 'パネリスト：協力して AI の未来を探る',
+        roleKo: '패널리스트: 함께 탐구하는 AI의 미래',
+      },
+      {
+        event: '《联合早报》AI 深度专访',
+        eventEn: 'Lianhe Zaobao in-depth interview on AI',
+        role: '受访：SEA-LION、AI 改善生活与中美 AI 竞争下的新加坡定位',
+        roleEn: "Interviewee: SEA-LION, AI for better lives, and Singapore's position amid US-China AI competition",
+        date: '2025-02',
+        sourceUrl: 'https://www.ntu.edu.sg/news/detail/ntu-singapore-president-on-singapore-s-ai-future',
+        eventJa: '聯合早報による AI 特別インタビュー',
+        eventKo: '롄허짜오바오 AI 심층 인터뷰',
+        roleJa: 'インタビュー：SEA-LION、生活を良くする AI、米中 AI 競争下のシンガポールの立ち位置',
+        roleKo: '인터뷰: SEA-LION, 삶을 개선하는 AI, 미중 AI 경쟁 속 싱가포르의 위치',
+      },
+      {
+        event: '环太平洋大学联盟（APRU）年度校长会议',
+        eventEn: "APRU Annual Presidents' Meeting (CUHK)",
+        role: '以 APRU 主席身份谈 AI 颠覆下的高等教育',
+        roleEn: 'As APRU chair, on AI-driven disruption in higher education',
+        date: '2026-06',
+        sourceUrl:
+          'https://www.thestandard.com.hk/education/article/335273/Academic-leaders-discuss-AI-talent-and-global-challenges-at-CUHK-summit',
+        eventJa: '環太平洋大学協会（APRU）年次学長会議',
+        eventKo: '환태평양대학협회(APRU) 연례 총장회의',
+        roleJa: 'APRU 議長として AI がもたらす高等教育の変革を語る',
+        roleKo: 'APRU 의장으로서 AI가 뒤흔드는 고등교육을 논함',
+      },
+    ],
+    externalRoles: [
+      {
+        role: '创始执行主席（2017–2026，已卸任）',
+        roleEn: 'Founding Executive Chairman (2017–2026, stepped down)',
+        organization: 'AI Singapore',
+        organizationEn: 'AI Singapore',
+        since: '2017',
+        sourceUrl: 'https://www.mddi.gov.sg/newsroom/appointment-of-new-executive-chairman-of-ai-singapore/',
+        roleJa: '創設エグゼクティブチェアマン（2017–2026、退任済み）',
+        roleKo: '창립 총괄의장(2017–2026, 퇴임)',
+      },
+      {
+        role: '董事会成员',
+        roleEn: 'Board member',
+        organization: '新加坡政府科技局（GovTech）',
+        organizationEn: 'Government Technology Agency (GovTech)',
+        since: '2020',
+        sourceUrl: 'https://www.ntu.edu.sg/about-us/university-leadership/profiles/professor-ho-teck-hua',
+        roleJa: '理事会メンバー',
+        roleKo: '이사회 멤버',
+        organizationJa: 'シンガポール政府技術庁（GovTech）',
+        organizationKo: '싱가포르 정부기술청(GovTech)',
+      },
+      {
+        role: '董事会成员',
+        roleEn: 'Board member',
+        organization: '新加坡国家研究基金会（NRF）',
+        organizationEn: 'National Research Foundation (NRF)',
+        since: '2023',
+        sourceUrl: 'https://www.ntu.edu.sg/about-us/university-leadership/profiles/professor-ho-teck-hua',
+        roleJa: '理事会メンバー',
+        roleKo: '이사회 멤버',
+        organizationJa: 'シンガポール国立研究財団（NRF）',
+        organizationKo: '싱가포르 국가연구재단(NRF)',
+      },
+      {
+        role: '董事会成员',
+        roleEn: 'Board member',
+        organization: '新加坡金融管理局（MAS）',
+        organizationEn: 'Monetary Authority of Singapore (MAS)',
+        since: '2025',
+        sourceUrl: 'https://www.ntu.edu.sg/about-us/university-leadership/profiles/professor-ho-teck-hua',
+        roleJa: '理事会メンバー',
+        roleKo: '이사회 멤버',
+        organizationJa: 'シンガポール金融管理局（MAS）',
+        organizationKo: '싱가포르 통화청(MAS)',
       },
     ],
   },

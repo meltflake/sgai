@@ -599,6 +599,13 @@ def run_pipelines(selected: list[dict], state: dict, logger, dry_run: bool) -> t
             logger.debug(traceback.format_exc())
             errors.append(f"{pid}: {e}")
             results[pid] = {"count": 0, "items": [], "error": str(e)}
+        # run_tsx_pipeline reports a non-zero child exit inside its result dict
+        # instead of raising, so it never reached `errors` — a failing
+        # issue-on-fail pipeline (e.g. evals-monthly on 2026-07-01) was logged
+        # as "无错误" and the GitHub issue was silently skipped. Surface it.
+        result_error = results.get(pid, {}).get("error") if isinstance(results.get(pid), dict) else None
+        if result_error and f"{pid}: {result_error}" not in errors:
+            errors.append(f"{pid}: {result_error}")
     return results, errors
 
 

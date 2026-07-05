@@ -1,0 +1,11 @@
+{
+  "id": "deepfake-debate",
+  "description": "Deepfake parliamentary exchange — Japanese.",
+  "source": "多名议员在国会质询 AI 深度伪造对选举与未成年人的威胁，部长回应称新法案将赋予受害者法定救济权。",
+  "expectedTermsJa": [
+    "ディープフェイク"
+  ],
+  "minLengthRatio": 0.6,
+  "maxLengthRatio": 2.8,
+  "preserveTokens": []
+}

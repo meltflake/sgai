@@ -1,14 +1,30 @@
 // AI 创业生态数据
-// 基础统计口径截至 2026-02-17；实体档案整理于 2026-05-04
+// 基础统计重定基线于 2026-07-05：混合口径，每个数字锚定单一命名来源（见各字段注释）。
+// 实体档案整理于 2026-05-04。
 
 export const ecosystemStats = {
-  totalStartups: '650+',
+  // Tracxn "Artificial Intelligence in Singapore" (page updated 2026-05-01): 548 AI companies tracked.
+  // https://tracxn.com/d/artificial-intelligence/ai-startups-in-singapore/__YBFhVmcmOHEexm4oJQjCpjL_x5V8m4mhfvfBLMMT4pI
+  totalStartups: '548',
+  // Tortoise Global AI Index 2025 — verified 2026-07-04, no change needed.
   globalRank: 3,
-  seaFundingShare: '68%',
-  totalVCRaised: '$8.4B+',
+  // e-Conomy SEA 2025 (Google / Temasek / Bain): Singapore AI startups drew US$1.31B of the
+  // region's US$2.3B+ in the 12 months to Jun 2025 → ~57%.
+  // https://www.scmp.com/week-asia/economics/article/3332375/singapore-based-ai-start-ups-draw-most-funding-southeast-asia-report
+  seaFundingShare: '~57%',
+  // Tracxn (same page as totalStartups): 143 funded companies collectively raised $1.9B (VC + PE, cumulative).
+  totalVCRaised: '$1.9B',
+  // Count of unicorn profiles curated on this site (the `unicorns` array below).
   unicorns: 9,
-  govCommitment: 'S$1.6B+',
-  dataDate: '2026-02-17',
+  // Sum of government AI commitments announced since 2024 (> S$2.15B):
+  //  - Budget 2024: over S$1B over five years for AI compute, talent and industry development
+  //    https://www.mddi.gov.sg/newsroom/ai-initiatives-launched-to-uplift-sg-economic-potential/
+  //  - Budget 2025: up to S$150M Enterprise Compute Initiative
+  //    https://www.disg.gov.sg/enterprise-compute-initiative/
+  //  - 2026-01: over S$1B additional for the National AI R&D Plan, 2025-2030
+  //    https://www.mddi.gov.sg/newsroom/singapore-invests-over-s-1-billion-in-national-ai-research-and-development-plan-to-strengthen-ai-research-capabilities-and-our-position-as-global-ai-hub/
+  govCommitment: 'S$2.1B+',
+  dataDate: '2026-07-05',
   profileUpdated: '2026-05-04',
 };
 
