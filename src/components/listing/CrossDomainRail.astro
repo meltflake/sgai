@@ -59,11 +59,11 @@ const cards = wanted.map((k) => stats.find((s) => s.key === k)).filter((s): s is
       <h2 class="text-xs uppercase tracking-[0.18em] text-gray-500 dark:text-gray-400 font-semibold mb-4">
         {t(lang, 'crossRailHeading')}
       </h2>
-      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {cards.map((s) => (
           <a
             href={localizedHref(s.href, lang)}
-            class="group block border border-subtle rounded-md p-4 bg-surface hover:shadow-md hover:border-gray-300 dark:hover:border-slate-600 transition-all"
+            class="group block min-w-0 border border-subtle rounded-md p-4 bg-surface hover:shadow-md hover:border-gray-300 dark:hover:border-slate-600 transition-all"
           >
             <div class="flex items-baseline justify-between gap-2 mb-1">
               <span class="font-serif text-base font-semibold text-gray-900 dark:text-white group-hover:text-primary transition-colors leading-snug">
@@ -81,7 +81,7 @@ const cards = wanted.map((k) => stats.find((s) => s.key === k)).filter((s): s is
         {TOPICS_ENABLED && (
           <a
             href={localizedHref('/topics/', lang)}
-            class="group flex items-center border border-dashed border-subtle rounded-md p-4 hover:border-primary transition-colors"
+            class="group flex items-center min-w-0 border border-dashed border-subtle rounded-md p-4 hover:border-primary transition-colors"
           >
             <span class="font-serif text-base font-semibold text-gray-900 dark:text-white group-hover:text-primary transition-colors leading-snug">
               {t(lang, 'fpBrowseByTopic')} →
