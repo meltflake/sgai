@@ -3,29 +3,37 @@
 // Layer E — Source-level i18n hardcode scan.
 //
 // What this is for:
-//   sgai is a tri-locale site (zh / en / ja). Layers A–D verify that DATA
-//   files are paired (A) and that BUILT pages are clean (B/C/D). They do
-//   NOT see the source-template-level reason a JA page silently renders
-//   English content: code like `lang === 'zh' ? '中文' : 'English'`,
-//   `isZh ? '...' : '...'`, or a `COPY` map missing a `ja` entry.
+//   sgai is a five-locale site (zh / en / ja / zh-tw / ko). Layers A–D verify
+//   that DATA files are paired (A) and that BUILT pages are clean (B/C/D).
+//   They do NOT see the source-template-level reason a non-en page silently
+//   renders English content: code like `lang === 'zh' ? '中文' : 'English'`,
+//   `isZh ? '...' : '...'`, `isEn = lang !== 'zh'`, or a `COPY` map missing a
+//   `ja` entry.
 //
 //   The 2026-05-10 audit found 25 .astro files with 376 such hardcodes.
-//   On a JA page they all silently fall into the EN branch — Layer D's
-//   CJK-residue scan can't see EN-on-JA leakage, so it under-reports by
+//   On a non-en page they all silently fall into the EN branch — Layer D's
+//   CJK-residue scan can't see EN-on-<lang> leakage, so it under-reports by
 //   construction. Layer E closes that loop at the SOURCE level.
 //
 // What it flags:
 //   1. `lang === 'zh' ?` and `lang === 'en' ?` ternary expressions
-//      (the JA branch is silently missing).
-//   2. `isZh ? ... : ...` and `isEn ? ... : ...` ternaries
-//      (always a 2-locale mindset; ja is implicit and wrong).
-//   3. `COPY[lang] ?? COPY.en` / `COPY[lang] ?? COPY.zh` patterns where
+//      (the ja/zh-tw/ko branches are silently missing).
+//   2. `isZh ? ... : ...` / `isEn ? ... : ...` / `isJa ? ... : ...` ternaries
+//      — a binary-locale mindset where the other three locales are implicit
+//      and wrong. isJa is flagged too: `isJa ? ja : en` throws zh-tw/ko into
+//      the EN branch (the 2026-07 fallback-leak bug class).
+//   3. `isEn = lang !== '<x>'` / `isZh = lang !== '<x>'` alias definitions —
+//      the root of the binary anti-pattern: any non-<x> locale (including
+//      zh-tw/ko) is collapsed into a single "the other one" branch.
+//   4. `lang !== 'zh' ?` ternaries — same collapse, inline.
+//   5. `COPY[lang] ?? COPY.en` / `COPY[lang] ?? COPY.zh` patterns where
 //      the same file's COPY map literal does NOT declare a `ja:` key.
 //      ja silently falls back to en/zh.
 //
 // What it does NOT flag:
 //   - `lang === 'ja' ?` ternaries (these are usually CORRECT, e.g.
-//     ja-specific date formats that genuinely need a ja branch).
+//     ja-specific date formats that genuinely need a ja branch). Note this
+//     differs from `isJa ?`, which is a binary alias and IS flagged.
 //   - `lang === 'zh'` boolean expressions used in non-ternary control flow
 //     (e.g. `if (lang === 'zh') return ...`) — these are usually intentional
 //     locale-specific routing rather than chrome-text leakage.
@@ -84,7 +92,15 @@ const SKIP_FILE_PATTERNS: RegExp[] = [/\.test\.tsx?$/, /\.spec\.tsx?$/];
 
 const IGNORE_MARKER = 'i18n-allow-hardcode';
 
-type Rule = 'lang-eq-zh-ternary' | 'lang-eq-en-ternary' | 'isZh-ternary' | 'isEn-ternary' | 'copy-no-ja';
+type Rule =
+  | 'lang-eq-zh-ternary'
+  | 'lang-eq-en-ternary'
+  | 'isZh-ternary'
+  | 'isEn-ternary'
+  | 'isJa-ternary'
+  | 'binary-lang-alias'
+  | 'lang-neq-zh-ternary'
+  | 'copy-no-ja';
 
 interface Finding {
   file: string;
@@ -133,24 +149,26 @@ function* walkSource(dir: string): Generator<string> {
 }
 
 const PATTERNS: { rule: Rule; re: RegExp }[] = [
-  // `lang === 'zh' ?` — common shape: `lang === 'zh' ? '中文' : 'English'`
-  // The ja branch is silently absent. The 'lang === ja' check is
+  // Binary-locale alias definition: `const isEn = lang !== 'zh'` (or isZh).
+  // This is the ROOT of the whole anti-pattern — it collapses four non-<x>
+  // locales (en OR ja OR zh-tw OR ko) into one boolean, so every later
+  // `isEn ? ... : ...` throws zh-tw/ko into whichever branch. Placed first so
+  // the definition line is tagged as the alias rather than a ternary.
+  { rule: 'binary-lang-alias', re: /\b(isEn|isZh)\s*=\s*lang\s*!==\s*['"]/ },
+  // `lang === 'zh' ?` — common shape: `lang === 'zh' ? '中文' : 'English'`.
+  // The ja/zh-tw/ko branches are silently absent. `lang === 'ja' ?` is
   // intentionally NOT here — explicit ja handling is usually correct.
   { rule: 'lang-eq-zh-ternary', re: /\blang\s*===\s*['"]zh['"]\s*\?/ },
   { rule: 'lang-eq-en-ternary', re: /\blang\s*===\s*['"]en['"]\s*\?/ },
-  // `isZh ? '中' : 'EN'` etc. 2-locale mindset — flagged unless the same
-  // line also contains an explicit ja branch (`isJa ?` or `lang === 'ja' ?`),
-  // which means the author wrote a 3-locale chain and ja IS covered.
+  // `lang !== 'zh' ? ... : ...` — the inline form of the binary collapse:
+  // any non-zh locale (ja/en/zh-tw/ko) gets the same branch.
+  { rule: 'lang-neq-zh-ternary', re: /\blang\s*!==\s*['"]zh['"]\s*\?/ },
+  // `isZh ? '中' : 'EN'` / `isEn ? ... : ...` / `isJa ? ja : en` — binary-locale
+  // mindset. isJa is flagged too: `isJa ? ja : en` sends zh-tw/ko to EN.
   { rule: 'isZh-ternary', re: /\bisZh\s*\?/ },
   { rule: 'isEn-ternary', re: /\bisEn\s*\?/ },
+  { rule: 'isJa-ternary', re: /\bisJa\s*\?/ },
 ];
-
-// If a line contains an explicit ja branch, that line is multilocale-aware
-// regardless of which other ternary it also contains. Examples:
-//   `isJa ? '日' : isEn ? 'EN' : '中'`           ← ternary chain, OK
-//   `lang === 'ja' ? '日本語' : ... : '中'`       ← ternary chain, OK
-//   `isJa ? jaLabel : (isEn ? enLabel : zhLabel)` ← parenthesised, OK
-const JA_BRANCH_RE = /(\bisJa\s*\?|\blang\s*===\s*['"]ja['"]\s*\?)/;
 
 /** Scan a file for i18n hardcode anti-patterns. Returns findings tagged with
  *  rule and 1-indexed line number. Each rule is at most one finding per line.
@@ -178,9 +196,11 @@ function scanFile(filePath: string): Finding[] {
     const line = lines[i];
     const lineNumber = i + 1;
     if (ignored.has(lineNumber)) continue;
-    // If this line already covers ja explicitly (3-locale ternary chain),
-    // skip it — it's not a 2-locale leakage bug.
-    if (JA_BRANCH_RE.test(line)) continue;
+    // NOTE: the old "skip lines with an explicit ja branch" heuristic was
+    // removed for the 5-locale site. A line like `isJa ? ja : isEn ? en : zh`
+    // still throws zh-tw/ko into the en/zh branches, so covering ja does NOT
+    // make the line locale-complete. isJa-ternary is now flagged in its own
+    // right; do not re-add a ja-branch bypass.
     for (const { rule, re } of PATTERNS) {
       if (re.test(line)) {
         out.push({
@@ -303,6 +323,9 @@ function summarize(findings: Finding[], totalFiles: number): Summary {
     'lang-eq-en-ternary': 0,
     'isZh-ternary': 0,
     'isEn-ternary': 0,
+    'isJa-ternary': 0,
+    'binary-lang-alias': 0,
+    'lang-neq-zh-ternary': 0,
     'copy-no-ja': 0,
   };
   const dirty = new Set<string>();

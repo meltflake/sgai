@@ -391,8 +391,10 @@ function runLayerC(): { issues: HreflangIssue[]; totalPages: number; passed: boo
 // heuristic for ja pages. Reinventing that here was producing thousands
 // of false positives on the language toggle widget.
 //
-// Layer D runs i18n-check.mjs once per non-default locale (en, ja) and
-// rolls up exit codes + line counts.
+// Layer D runs i18n-check.mjs once per non-default locale (en, ja, zh-tw, ko)
+// and rolls up exit codes + line counts. zh-tw / ko were added for the 5-locale
+// site — i18n-check.mjs now scans EN-sentence residue + marker-violations there
+// against its own ratchet baseline.
 
 interface PurityRunResult {
   locale: string;
@@ -407,7 +409,7 @@ function runLayerD(): {
 } {
   if (!existsSync(DIST_DIR)) return { results: [], passed: false, skipped: true };
   const results: PurityRunResult[] = [];
-  for (const lang of ['en', 'ja']) {
+  for (const lang of ['en', 'ja', 'zh-tw', 'ko']) {
     const r = spawnSync('node', ['scripts/i18n-check.mjs', '--lang', lang], {
       cwd: REPO_ROOT,
       encoding: 'utf8',
