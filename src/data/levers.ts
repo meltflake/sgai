@@ -2675,6 +2675,7 @@ export const levers: Lever[] = [
             scaleKo: '양자 협력 프레임워크',
             scaleJa: '二国間協力枠組み',
             scaleEn: 'Bilateral cooperation framework',
+            // i18n-allow-unpaired — English programme proper names (US-Singapore bilateral); item's primary display field is `name`, all locales intentionally identical
             description: 'Smart Cities Programme + Digital Economic Cooperation Roadmap',
             descriptionJa: 'Smart Cities Programme + Digital Economic Cooperation Roadmap',
             descriptionKo: 'Smart Cities Programme + Digital Economic Cooperation Roadmap',

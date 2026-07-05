@@ -21,7 +21,7 @@
     "check:video-transcripts": "tsx scripts/evals/video-transcript-coverage/check.ts",
     "check:video-transcripts:full": "tsx scripts/evals/video-transcript-coverage/check.ts --include-historical",
     "check:debate-transcripts": "tsx scripts/hansard/check-debate-transcript-i18n.ts",
-    "check:i18n-completeness": "tsx scripts/lib/i18n-pair.ts --mode=both --locales=en,ja,ko src/data/ecosystem.ts && tsx scripts/lib/i18n-pair.ts --locales=en,ja,ko src/data/debates.ts src/data/benchmarking.ts src/data/tracker.ts src/data/levers.ts src/data/people.ts src/data/videos.ts src/data/talent.ts src/data/policies.ts src/data/startups.ts src/data/legal-ai.ts src/data/timeline.ts src/data/topics.ts",
+    "check:i18n-completeness": "tsx scripts/lib/i18n-pair.ts --mode=both --en-only-base --locales=en,ja,ko src/data/ecosystem.ts && tsx scripts/lib/i18n-pair.ts --en-only-base --locales=en,ja,ko src/data/debates.ts src/data/benchmarking.ts src/data/tracker.ts src/data/levers.ts src/data/people.ts src/data/videos.ts src/data/talent.ts src/data/policies.ts src/data/startups.ts src/data/legal-ai.ts src/data/timeline.ts src/data/topics.ts",
     "check:i18n": "node scripts/i18n-check.mjs --all",
     "check:i18n:en-only": "node scripts/i18n-check.mjs",
     "check:zh-tw-renderers": "node scripts/check-zh-tw-renderers.mjs",
