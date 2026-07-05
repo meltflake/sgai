@@ -1,5 +1,6 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
+import CrossDomainRail from '~/components/listing/CrossDomainRail.astro';
 import {
   debates,
   DEBATE_STATS,
@@ -1272,6 +1273,7 @@ const typeMixLabel = Object.entries(DEBATE_STATS.byType)
       </section>
     </section>
   </div>
+  <CrossDomainRail lang={lang} current="debates" class="max-w-6xl mx-auto px-4 sm:px-6 pb-16" />
 </Layout>
 
 <script define:vars={{ typeMap, controversyLabels, topicLabels, L, DEFAULT_VISIBLE }}>

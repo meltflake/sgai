@@ -1,5 +1,7 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
+import CrossDomainRail from '~/components/listing/CrossDomainRail.astro';
+import LatestAdditions from '~/components/listing/LatestAdditions.astro';
 import Headline from '~/components/ui/Headline.astro';
 import PolicyCard from '~/components/data/PolicyCard.astro';
 import { categories } from '~/data/policies';
@@ -23,6 +25,7 @@ const totalPolicies = categories.reduce((sum, cat) => sum + cat.policies.length,
 >
   <section class="px-4 py-16 sm:px-6 mx-auto lg:px-8 max-w-6xl">
     <Headline title={`📋 ${t(lang, 'policiesPageTitle')}`} subtitle={t(lang, 'policiesPageBlurb')} />
+    <LatestAdditions lang={lang} source="policy" class="mt-8 mb-2" />
 
     <div class="grid gap-3 sm:grid-cols-3 mb-12">
       <div class="bg-surface rounded-lg border border-subtle p-4">
@@ -63,4 +66,5 @@ const totalPolicies = categories.reduce((sum, cat) => sum + cat.policies.length,
       ))
     }
   </section>
+  <CrossDomainRail lang={lang} current="policies" class="max-w-6xl mx-auto px-4 sm:px-6 pb-16" />
 </Layout>

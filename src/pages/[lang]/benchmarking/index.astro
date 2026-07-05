@@ -3,6 +3,8 @@ import { Icon } from 'astro-icon/components';
 
 import Headline from '~/components/ui/Headline.astro';
 import Layout from '~/layouts/PageLayout.astro';
+import CrossDomainRail from '~/components/listing/CrossDomainRail.astro';
+import LatestAdditions from '~/components/listing/LatestAdditions.astro';
 import {
   benchmarkCaseProfileUpdated,
   benchmarkCases,
@@ -51,6 +53,7 @@ function insightHref(index: number): string {
         : 'From national strategy down to concrete companies, projects, institutions, and infrastructure.'}
       classes={{ title: 'text-3xl md:text-4xl', subtitle: 'text-lg md:text-xl' }}
     />
+    <LatestAdditions lang={lang} source="benchmark" class="mt-8 mb-2" />
 
     <div class="mb-12 grid gap-4 md:grid-cols-[1.25fr_0.75fr]">
       <div class="callout-note rounded-lg p-6">
@@ -244,4 +247,5 @@ function insightHref(index: number): string {
       </p>
     </div>
   </section>
+  <CrossDomainRail lang={lang} current="benchmarking" class="max-w-6xl mx-auto px-4 sm:px-6 pb-16" />
 </Layout>

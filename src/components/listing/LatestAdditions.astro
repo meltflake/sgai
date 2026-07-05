@@ -1,0 +1,42 @@
+---
+// "Latest additions" strip for listing pages — the newest N records of
+// this page's domain by addedAt (not by event date), so returning readers
+// see what entered the archive since their last visit. Skips rendering
+// when the domain has no addedAt-carrying records yet.
+
+import { latestBySource, harvestedTitle } from '~/utils/latest-content';
+import type { DataSource } from '~/utils/derived-updates';
+import { t, localizedHref, type Lang } from '~/i18n';
+
+interface Props {
+  lang: Lang;
+  source: DataSource | DataSource[];
+  limit?: number;
+  class?: string;
+}
+
+const { lang, source, limit = 5, class: className = '' } = Astro.props;
+const items = latestBySource(source, limit);
+---
+
+{
+  items.length > 0 && (
+    <section class={className}>
+      <h2 class="text-xs uppercase tracking-[0.18em] text-gray-500 dark:text-gray-400 font-semibold mb-3">
+        {t(lang, 'listingLatestSection')}
+      </h2>
+      <ul class="divide-y divide-gray-100 dark:divide-slate-800 border-y border-subtle">
+        {items.map((h) => (
+          <li>
+            <a href={localizedHref(h.href, lang)} class="group flex items-baseline gap-4 py-2">
+              <span class="text-xs text-gray-400 dark:text-gray-500 tabular-nums shrink-0 w-24">{h.addedAt}</span>
+              <span class="text-sm text-gray-800 dark:text-gray-200 group-hover:text-primary transition-colors leading-snug truncate">
+                {harvestedTitle(h, lang)}
+              </span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+  )
+}

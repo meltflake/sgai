@@ -552,6 +552,8 @@ export const zh = {
   fpLatestPrefix: '最新',
   fpEntriesSuffix: '条记录',
   fpStartHereSection: '理解这套框架',
+  listingLatestSection: '最新收录',
+  crossRailHeading: '继续探索',
 
   // Nav additions (news-portal)
   navLatest: '最新',
@@ -883,6 +885,8 @@ export const en: Partial<Record<keyof typeof zh, string>> = {
   fpLatestPrefix: 'Latest',
   fpEntriesSuffix: 'entries',
   fpStartHereSection: 'Understand the framework',
+  listingLatestSection: 'Latest additions',
+  crossRailHeading: 'Keep exploring',
 
   // Nav additions (news-portal)
   navLatest: 'Latest',
@@ -1208,6 +1212,8 @@ export const ja: Partial<Record<keyof typeof zh, string>> = {
   fpLatestPrefix: '最新',
   fpEntriesSuffix: '件',
   fpStartHereSection: 'フレームワークを理解する',
+  listingLatestSection: '新着収録',
+  crossRailHeading: 'さらに探索',
 
   // Nav additions (news-portal)
   navLatest: '最新',
@@ -1536,6 +1542,8 @@ export const ko: Partial<Record<keyof typeof zh, string>> = {
   fpLatestPrefix: '최신',
   fpEntriesSuffix: '건',
   fpStartHereSection: '프레임워크 이해하기',
+  listingLatestSection: '최신 수록',
+  crossRailHeading: '계속 탐색하기',
 
   // Nav additions (news-portal)
   navLatest: '최신',

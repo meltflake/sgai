@@ -1,5 +1,7 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
+import CrossDomainRail from '~/components/listing/CrossDomainRail.astro';
+import LatestAdditions from '~/components/listing/LatestAdditions.astro';
 import Headline from '~/components/ui/Headline.astro';
 import { Icon } from 'astro-icon/components';
 import { ecosystemCategories } from '~/data/ecosystem';
@@ -22,6 +24,7 @@ const lang = Astro.params.lang as Lang;
 >
   <section class="px-4 py-16 sm:px-6 mx-auto lg:px-8 max-w-6xl">
     <Headline title={`🗺️ ${t(lang, 'ecosystemPageTitle')}`} subtitle={t(lang, 'ecosystemSubtitle')} />
+    <LatestAdditions lang={lang} source="ecosystem" class="mt-8 mb-2" />
 
     <div class="space-y-12">
       {
@@ -93,4 +96,5 @@ const lang = Astro.params.lang as Lang;
 
     <p class="mt-12 text-sm text-muted text-center">{t(lang, 'ecosystemSourceFootnote')}</p>
   </section>
+  <CrossDomainRail lang={lang} current="ecosystem" class="max-w-6xl mx-auto px-4 sm:px-6 pb-16" />
 </Layout>

@@ -1,5 +1,7 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
+import CrossDomainRail from '~/components/listing/CrossDomainRail.astro';
+import LatestAdditions from '~/components/listing/LatestAdditions.astro';
 import { people, institutions, mddiSpeeches } from '~/data/voices';
 import { speechId } from '~/data/speech-transcripts';
 import { videos, VIDEO_CATEGORIES } from '~/data/videos';
@@ -83,6 +85,7 @@ const videosSorted = [...videos].sort((a, b) => b.date.localeCompare(a.date));
             : "Singapore's key AI people and institutions, and the official channels through which they communicate."
         }
       </p>
+      <LatestAdditions lang={lang} source={['people', 'speech']} class="mt-8 mb-2" />
       <p class="text-gray-400 dark:text-gray-500 text-sm mt-1">
         {
           isZh
@@ -499,6 +502,7 @@ const videosSorted = [...videos].sort((a, b) => b.date.localeCompare(a.date));
       </div>
     </section>
   </div>
+  <CrossDomainRail lang={lang} current="voices" class="max-w-6xl mx-auto px-4 sm:px-6 pb-16" />
 </Layout>
 
 <style>

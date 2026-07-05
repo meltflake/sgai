@@ -3,6 +3,8 @@ import { Icon } from 'astro-icon/components';
 
 import Headline from '~/components/ui/Headline.astro';
 import Layout from '~/layouts/PageLayout.astro';
+import CrossDomainRail from '~/components/listing/CrossDomainRail.astro';
+import LatestAdditions from '~/components/listing/LatestAdditions.astro';
 import { programmes, talentDataDate, type TalentStatusTone } from '~/data/talent';
 import { NON_DEFAULT_ROUTE_LOCALES, localizedHref, pickLocalized, t, type Lang } from '~/i18n';
 
@@ -38,6 +40,7 @@ const statusClasses: Record<TalentStatusTone, string> = {
         ? '新加坡 AI 人才体系不是一条线，而是一组可追踪的项目入口：学生、教师、职业转型、企业内训、本硕博研究，各自有承办方、门槛和交付物。'
         : "Singapore's AI talent system is not a single path. It is a set of trackable project entry points: students, educators, career switchers, enterprise teams, and research talent from undergraduate to PhD."}
     />
+    <LatestAdditions lang={lang} source="talent" class="mt-8 mb-2" />
 
     <div class="grid gap-5 md:grid-cols-2">
       {
@@ -115,4 +118,5 @@ const statusClasses: Record<TalentStatusTone, string> = {
       }
     </p>
   </section>
+  <CrossDomainRail lang={lang} current="talent" class="max-w-6xl mx-auto px-4 sm:px-6 pb-16" />
 </Layout>

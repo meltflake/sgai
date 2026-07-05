@@ -1,0 +1,94 @@
+---
+// "Keep exploring" — end-of-listing rail pointing sideways at sibling
+// domains, each card carrying a live record count and the domain's latest
+// addition. This is the listing pages' answer to "where do I go next":
+// nobody should hit the bottom of a listing without 3-4 onward exits.
+
+import { domainStats, harvestedTitle, type DomainKey } from '~/utils/latest-content';
+import { TOPICS_ENABLED } from '~/config/features';
+import { t, localizedHref, type Lang } from '~/i18n';
+
+interface Props {
+  lang: Lang;
+  current: DomainKey;
+  targets?: DomainKey[];
+  class?: string;
+}
+
+// Editorial adjacency: which domains sit "next to" each listing page.
+const ADJACENCY: Record<DomainKey, DomainKey[]> = {
+  policies: ['legal-ai', 'levers', 'debates', 'timeline'],
+  debates: ['voices', 'videos', 'policies'],
+  videos: ['voices', 'debates', 'ecosystem'],
+  voices: ['debates', 'videos', 'talent'],
+  levers: ['policies', 'tracker', 'timeline'],
+  ecosystem: ['startups', 'policies', 'levers'],
+  startups: ['ecosystem', 'talent', 'tracker'],
+  talent: ['startups', 'ecosystem', 'voices'],
+  'legal-ai': ['policies', 'debates', 'timeline'],
+  benchmarking: ['tracker', 'policies', 'timeline'],
+  timeline: ['policies', 'debates', 'levers'],
+  tracker: ['benchmarking', 'levers', 'startups'],
+};
+
+const LABEL_KEY: Record<DomainKey, Parameters<typeof t>[1]> = {
+  policies: 'navPolicies',
+  debates: 'navParliament',
+  videos: 'navVideos',
+  voices: 'navVoices',
+  levers: 'navLevers',
+  ecosystem: 'navEcosystem',
+  startups: 'navStartups',
+  talent: 'navTalent',
+  'legal-ai': 'navLegalAi',
+  benchmarking: 'navBenchmarking',
+  timeline: 'navTimeline',
+  tracker: 'navTracker',
+};
+
+const { lang, current, targets, class: className = '' } = Astro.props;
+
+const wanted = targets ?? ADJACENCY[current] ?? [];
+const stats = domainStats();
+const cards = wanted.map((k) => stats.find((s) => s.key === k)).filter((s): s is NonNullable<typeof s> => Boolean(s));
+---
+
+{
+  cards.length > 0 && (
+    <section class={className}>
+      <h2 class="text-xs uppercase tracking-[0.18em] text-gray-500 dark:text-gray-400 font-semibold mb-4">
+        {t(lang, 'crossRailHeading')}
+      </h2>
+      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        {cards.map((s) => (
+          <a
+            href={localizedHref(s.href, lang)}
+            class="group block border border-subtle rounded-md p-4 bg-surface hover:shadow-md hover:border-gray-300 dark:hover:border-slate-600 transition-all"
+          >
+            <div class="flex items-baseline justify-between gap-2 mb-1">
+              <span class="font-serif text-base font-semibold text-gray-900 dark:text-white group-hover:text-primary transition-colors leading-snug">
+                {t(lang, LABEL_KEY[s.key])}
+              </span>
+              <span class="text-xs text-gray-400 dark:text-gray-500 tabular-nums shrink-0">{s.count}</span>
+            </div>
+            {s.latest && (
+              <div class="text-xs text-gray-500 dark:text-gray-400 truncate">
+                {t(lang, 'fpLatestPrefix')}: {harvestedTitle(s.latest, lang)}
+              </div>
+            )}
+          </a>
+        ))}
+        {TOPICS_ENABLED && (
+          <a
+            href={localizedHref('/topics/', lang)}
+            class="group flex items-center border border-dashed border-subtle rounded-md p-4 hover:border-primary transition-colors"
+          >
+            <span class="font-serif text-base font-semibold text-gray-900 dark:text-white group-hover:text-primary transition-colors leading-snug">
+              {t(lang, 'fpBrowseByTopic')} →
+            </span>
+          </a>
+        )}
+      </div>
+    </section>
+  )
+}
