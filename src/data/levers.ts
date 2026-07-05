@@ -2663,9 +2663,9 @@ export const levers: Lever[] = [
         items: [
           {
             id: 'us-singapore-smart-cities-digital-economic-cooperation',
-            name: 'US-Singapore Smart Cities + Digital Economic Cooperation',
-            nameJa: 'US-Singapore Smart Cities + Digital Economic Cooperation',
-            nameKo: 'US-Singapore Smart Cities + Digital Economic Cooperation',
+            name: '美新智慧城市与数字经济合作',
+            nameJa: '米・シンガポール スマートシティ＋デジタル経済協力',
+            nameKo: '미국-싱가포르 스마트시티 + 디지털 경제 협력',
             nameEn: 'US-Singapore Smart Cities + Digital Economic Cooperation',
             ministry: 'MFA',
             ministryEn: 'MFA',
@@ -2675,10 +2675,9 @@ export const levers: Lever[] = [
             scaleKo: '양자 협력 프레임워크',
             scaleJa: '二国間協力枠組み',
             scaleEn: 'Bilateral cooperation framework',
-            // i18n-allow-unpaired — English programme proper names (US-Singapore bilateral); item's primary display field is `name`, all locales intentionally identical
-            description: 'Smart Cities Programme + Digital Economic Cooperation Roadmap',
-            descriptionJa: 'Smart Cities Programme + Digital Economic Cooperation Roadmap',
-            descriptionKo: 'Smart Cities Programme + Digital Economic Cooperation Roadmap',
+            description: '智慧城市计划 + 数字经济合作路线图',
+            descriptionJa: 'スマートシティ計画＋デジタル経済協力ロードマップ',
+            descriptionKo: '스마트시티 계획 + 디지털 경제 협력 로드맵',
             descriptionEn: 'Smart Cities Programme + Digital Economic Cooperation Roadmap',
             sourceUrl: 'https://www.mfa.gov.sg/',
           },
