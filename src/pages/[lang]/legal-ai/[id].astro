@@ -6,6 +6,7 @@ import { Icon } from 'astro-icon/components';
 
 import JsonLd from '~/components/common/JsonLd.astro';
 import Layout from '~/layouts/PageLayout.astro';
+import SameTopicRail from '~/components/data/SameTopicRail.astro';
 import { dataDate } from '~/data/legal-ai';
 import { categories as policyCategories } from '~/data/policies';
 import { legalItemPages, legalItemSlug } from '~/utils/entity-pages';
@@ -194,4 +195,5 @@ const schema = {
       </a>
     </nav>
   </article>
+  <SameTopicRail lang={lang} kind="legal" id={page.slug} class="max-w-5xl mx-auto px-4 sm:px-6 pb-16 mt-4" />
 </Layout>

@@ -5,6 +5,7 @@ import type { GetStaticPaths } from 'astro';
 import { Icon } from 'astro-icon/components';
 
 import Layout from '~/layouts/PageLayout.astro';
+import SameTopicRail from '~/components/data/SameTopicRail.astro';
 import JsonLd from '~/components/common/JsonLd.astro';
 import EcosystemProse from '~/components/data/EcosystemProse.astro';
 import { ecosystemStats } from '~/data/startups';
@@ -387,4 +388,5 @@ const schema = {
       </a>
     </nav>
   </article>
+  <SameTopicRail lang={lang} kind="startup" id={page.slug} class="max-w-5xl mx-auto px-4 sm:px-6 pb-16 mt-4" />
 </Layout>

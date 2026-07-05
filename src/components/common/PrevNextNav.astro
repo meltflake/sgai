@@ -1,0 +1,53 @@
+---
+// Linear prev/next navigation for date-ordered detail pages (debates,
+// videos, policies, speeches). Dumb component: the caller computes the
+// neighbours (and their localized labels) — this only renders.
+// "prev" = older, "next" = newer.
+
+import { t, type Lang } from '~/i18n';
+
+interface NavTarget {
+  href: string;
+  label: string;
+}
+
+interface Props {
+  lang: Lang;
+  prev?: NavTarget;
+  next?: NavTarget;
+  class?: string;
+}
+
+const { lang, prev, next, class: className = '' } = Astro.props;
+---
+
+{
+  (prev || next) && (
+    <nav class={`grid gap-4 sm:grid-cols-2 ${className}`}>
+      {prev ? (
+        <a
+          href={prev.href}
+          class="group block border border-subtle rounded-md p-4 bg-surface hover:border-primary transition-colors"
+        >
+          <div class="text-xs text-gray-400 dark:text-gray-500 mb-1">{t(lang, 'pnOlder')}</div>
+          <div class="text-sm text-gray-800 dark:text-gray-200 group-hover:text-primary transition-colors leading-snug">
+            {prev.label}
+          </div>
+        </a>
+      ) : (
+        <span class="hidden sm:block" />
+      )}
+      {next && (
+        <a
+          href={next.href}
+          class="group block border border-subtle rounded-md p-4 bg-surface hover:border-primary transition-colors sm:text-right"
+        >
+          <div class="text-xs text-gray-400 dark:text-gray-500 mb-1">{t(lang, 'pnNewer')}</div>
+          <div class="text-sm text-gray-800 dark:text-gray-200 group-hover:text-primary transition-colors leading-snug">
+            {next.label}
+          </div>
+        </a>
+      )}
+    </nav>
+  )
+}

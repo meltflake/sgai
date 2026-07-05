@@ -1,0 +1,50 @@
+---
+// /topics/ index — one card per vocabulary entry with live content counts.
+// Shared by the en route and the [lang] route (policies double-route
+// pattern); lang comes in via props.
+
+import { Icon } from 'astro-icon/components';
+import { topics } from '~/data/topics';
+import { entriesByTopic } from '~/utils/topic-graph';
+import { t, pickLocalized, localizedHref, type Lang } from '~/i18n';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+
+const cards = topics.map((topic) => ({
+  topic,
+  count: entriesByTopic(topic.id).length,
+}));
+---
+
+<section class="px-4 py-12 md:py-16 sm:px-6 mx-auto max-w-6xl">
+  <h1 class="t-h1 text-gray-900 dark:text-white mb-3">{t(lang, 'fpBrowseByTopic')}</h1>
+  <p class="text-gray-600 dark:text-gray-400 mb-10 max-w-prose leading-relaxed">
+    {t(lang, 'topicsIndexDesc')}
+  </p>
+  <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    {
+      cards.map(({ topic, count }) => (
+        <a
+          href={localizedHref(`/topics/${topic.id}/`, lang)}
+          class="group block border border-subtle rounded-md p-5 bg-surface hover:shadow-md hover:border-gray-300 dark:hover:border-slate-600 transition-all"
+        >
+          <div class="flex items-center gap-2.5 mb-2">
+            <Icon name={topic.icon} class="w-5 h-5 text-primary shrink-0" />
+            <span class="font-serif text-lg font-semibold text-gray-900 dark:text-white group-hover:text-primary transition-colors leading-snug">
+              {pickLocalized(topic, 'name', lang)}
+            </span>
+          </div>
+          <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-3">
+            {pickLocalized(topic, 'description', lang)}
+          </p>
+          <span class="text-xs text-gray-400 dark:text-gray-500 tabular-nums">
+            {t(lang, 'topicEntriesCount').replace('{count}', String(count))}
+          </span>
+        </a>
+      ))
+    }
+  </div>
+</section>

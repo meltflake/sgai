@@ -1,6 +1,7 @@
 ---
 import type { GetStaticPaths } from 'astro';
 import Layout from '~/layouts/PageLayout.astro';
+import SameTopicRail from '~/components/data/SameTopicRail.astro';
 import { Icon } from 'astro-icon/components';
 import { ecosystemEntityPages, type EcosystemEntityPage } from '~/utils/entity-pages';
 import { type EcosystemEntity } from '~/data/ecosystem';
@@ -568,4 +569,5 @@ const breadcrumbs = [
       </a>
     </nav>
   </article>
+  <SameTopicRail lang={lang} kind="ecosystem" id={page.slug} class="max-w-5xl mx-auto px-4 sm:px-6 pb-16 mt-4" />
 </Layout>

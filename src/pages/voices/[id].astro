@@ -4,6 +4,7 @@ import { Icon } from 'astro-icon/components';
 
 import JsonLd from '~/components/common/JsonLd.astro';
 import Layout from '~/layouts/PageLayout.astro';
+import SameTopicRail from '~/components/data/SameTopicRail.astro';
 import ParliamentaryRecord from '~/components/widgets/ParliamentaryRecord.astro';
 import PersonContributions from '~/components/widgets/PersonContributions.astro';
 import { allPeople, type Person } from '~/data/people';
@@ -227,4 +228,5 @@ const personSchema = {
       </a>
     </nav>
   </article>
+  <SameTopicRail lang={lang} kind="person" id={person.id} class="max-w-5xl mx-auto px-4 sm:px-6 pb-16 mt-4" />
 </Layout>

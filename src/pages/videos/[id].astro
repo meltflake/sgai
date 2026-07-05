@@ -4,6 +4,8 @@ import { Icon } from 'astro-icon/components';
 
 import JsonLd from '~/components/common/JsonLd.astro';
 import Layout from '~/layouts/PageLayout.astro';
+import SameTopicRail from '~/components/data/SameTopicRail.astro';
+import PrevNextNav from '~/components/common/PrevNextNav.astro';
 import {
   getVideoDigest,
   getVideoTranscript,
@@ -13,7 +15,7 @@ import {
 import { SPEAKER_TYPE_LABELS_EN, videos } from '~/data/videos';
 import { findPersonId } from '~/utils/people';
 import { toSchemaOrgDateTime } from '~/utils/utils';
-import { pickLocalized, t } from '~/i18n';
+import { pickLocalized, t, localizedHref } from '~/i18n';
 
 export const prerender = true;
 
@@ -23,6 +25,12 @@ export const getStaticPaths = (() =>
   videos.map((video) => ({ params: { id: video.id }, props: { video } }))) satisfies GetStaticPaths;
 
 const { video } = Astro.props;
+
+// Linear prev/next: date ascending, ties broken by id for stability.
+const _pnSorted = [...videos].sort((a, b) => (a.date === b.date ? (a.id < b.id ? -1 : 1) : a.date < b.date ? -1 : 1));
+const _pnIdx = _pnSorted.findIndex((r) => r.id === video.id);
+const pnPrev = _pnIdx > 0 ? _pnSorted[_pnIdx - 1] : undefined;
+const pnNext = _pnIdx >= 0 && _pnIdx < _pnSorted.length - 1 ? _pnSorted[_pnIdx + 1] : undefined;
 const transcript = getVideoTranscript(video.id);
 const transcriptParagraphs = getVideoTranscriptParagraphs(video.id, lang);
 const transcriptLanguage = getVideoTranscriptLanguage(video.id, lang);
@@ -224,4 +232,17 @@ const videoSchema = {
       </a>
     </nav>
   </article>
+  <PrevNextNav
+    lang={lang}
+    prev={pnPrev && {
+      href: localizedHref(`/videos/${pnPrev.id}/`, lang),
+      label: pickLocalized<string>(pnPrev, 'title', lang) || pnPrev.title,
+    }}
+    next={pnNext && {
+      href: localizedHref(`/videos/${pnNext.id}/`, lang),
+      label: pickLocalized<string>(pnNext, 'title', lang) || pnNext.title,
+    }}
+    class="max-w-5xl mx-auto px-4 sm:px-6 mt-8"
+  />
+  <SameTopicRail lang={lang} kind="video" id={video.id} class="max-w-5xl mx-auto px-4 sm:px-6 pb-16 mt-4" />
 </Layout>

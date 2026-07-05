@@ -1,0 +1,94 @@
+---
+// "More on these topics" — cross-domain rail for detail pages, powered by
+// the controlled topic vocabulary (src/data/topics.ts). Complements
+// RelatedRail: that one renders hand-confirmed strong links; this one
+// renders topic-derived neighbours across ALL domains, which is how
+// videos / startups / ecosystem / talent / legal / benchmarking pages get
+// cross-domain exits without per-pair curation.
+//
+// Renders nothing when the anchor has no topics or no neighbours.
+
+import { Icon } from 'astro-icon/components';
+import { getTopicById } from '~/data/topics';
+import { getTopicEntry, getSameTopic, type TopicEntryKind } from '~/utils/topic-graph';
+import { t, pickLocalized, localizedHref, type Lang } from '~/i18n';
+
+interface Props {
+  lang: Lang;
+  kind: TopicEntryKind;
+  /** The anchor record's id/slug — same value topic-graph indexed it by. */
+  id: string;
+  limit?: number;
+  /** Keys (`kind:id`) already rendered elsewhere on the page (e.g. by
+   *  RelatedRail) — excluded to avoid duplicate suggestions. */
+  excludeKeys?: string[];
+  class?: string;
+}
+
+const { lang, kind, id, limit = 6, excludeKeys = [], class: className = '' } = Astro.props;
+
+const anchor = getTopicEntry(kind, id);
+const items = anchor ? getSameTopic(anchor.key, anchor.topicIds, limit, excludeKeys) : [];
+
+const KIND_LABEL_KEY: Record<TopicEntryKind, Parameters<typeof t>[1]> = {
+  debate: 'updateTypeDebate',
+  policy: 'updateTypePolicy',
+  video: 'updateTypeVideo',
+  lever: 'updateTypeLever',
+  timeline: 'topicKindTimeline',
+  tracker: 'updateTypeTracker',
+  talent: 'topicKindTalent',
+  legal: 'topicKindLegal',
+  benchmark: 'updateTypeBenchmark',
+  startup: 'updateTypeStartup',
+  ecosystem: 'updateTypeEcosystem',
+  person: 'updateTypePeople',
+};
+
+const anchorTopics = (anchor?.topicIds ?? []).map((tid) => getTopicById(tid)).filter(Boolean);
+---
+
+{
+  items.length > 0 && (
+    <section class={className}>
+      <h2 class="text-xs uppercase tracking-[0.18em] text-gray-500 dark:text-gray-400 font-semibold mb-4">
+        {t(lang, 'sameTopicHeading')}
+      </h2>
+      <ul class="space-y-2.5">
+        {items.map((e) => (
+          <li>
+            <a href={localizedHref(e.href, lang)} class="group flex items-baseline gap-2.5">
+              <span class="text-[11px] uppercase tracking-wider font-medium px-1.5 py-0.5 rounded bg-gray-100 text-gray-600 dark:bg-slate-800 dark:text-gray-400 shrink-0">
+                {t(lang, KIND_LABEL_KEY[e.kind])}
+              </span>
+              <span class="text-sm text-gray-800 dark:text-gray-200 group-hover:text-primary transition-colors leading-snug min-w-0">
+                {pickLocalized(e, 'title', lang) || e.title}
+              </span>
+              {e.date && (
+                <span class="ml-auto text-xs text-gray-400 dark:text-gray-500 tabular-nums shrink-0 hidden sm:inline">
+                  {e.date}
+                </span>
+              )}
+            </a>
+          </li>
+        ))}
+      </ul>
+      {anchorTopics.length > 0 && (
+        <div class="mt-4 flex flex-wrap gap-2">
+          {anchorTopics.map(
+            (tp) =>
+              tp && (
+                <a
+                  href={localizedHref(`/topics/${tp.id}/`, lang)}
+                  class="inline-flex items-center gap-1.5 border border-subtle rounded-full px-3 py-1 text-xs text-gray-600 dark:text-gray-400 hover:border-primary hover:text-primary transition-colors bg-surface"
+                >
+                  <Icon name={tp.icon} class="w-3.5 h-3.5" />
+                  {pickLocalized(tp, 'name', lang)}
+                </a>
+              )
+          )}
+        </div>
+      )}
+    </section>
+  )
+}

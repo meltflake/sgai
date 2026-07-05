@@ -1,0 +1,218 @@
+---
+// /topics/[slug] hub body — everything on one topic, grouped by domain,
+// newest first inside each group. Shared by the en and [lang] routes.
+//
+// Blog posts are layered in here (not in topic-graph) because frontmatter
+// lives in the content collection: zh sources carry topicIds; the display
+// lang picks its own mirror by slug (zh-tw converts the zh source through
+// pickLocalized/toTraditional at render). Posts with no mirror in the
+// current lang are dropped rather than leaking zh text onto EN/JA/KO pages.
+
+import { getCollection } from 'astro:content';
+import { Icon } from 'astro-icon/components';
+import type { Topic } from '~/data/topics';
+import { entriesByTopic, relatedTopics, type TopicEntry, type TopicEntryKind } from '~/utils/topic-graph';
+import { t, pickLocalized, localizedHref, type Lang } from '~/i18n';
+import { toTraditional } from '~/i18n/opencc';
+
+interface Props {
+  lang: Lang;
+  topic: Topic;
+}
+const { lang, topic } = Astro.props;
+
+const entries = entriesByTopic(topic.id);
+const related = relatedTopics(topic.id, 4);
+
+// ── Posts for this topic, localized ─────────────────────────────────────
+const allPosts = await getCollection('post');
+const zhSources = allPosts.filter((p) => (p.data.lang ?? 'zh') === 'zh' && (p.data.topicIds ?? []).includes(topic.id));
+const postLang = lang === 'zh-tw' ? 'zh' : lang;
+interface PostRow {
+  title: string;
+  href: string;
+  date: string | undefined;
+}
+const postRows: PostRow[] = zhSources
+  .map((zh) => {
+    const slug = zh.id.replace(/^.*\//, '').replace(/\.md$/, '');
+    const mirror =
+      postLang === 'zh' ? zh : allPosts.find((p) => (p.data.lang ?? 'zh') === postLang && p.id.endsWith(`/${slug}.md`));
+    if (!mirror) return null;
+    const rawTitle = mirror.data.title;
+    return {
+      title: lang === 'zh-tw' ? toTraditional(rawTitle) : rawTitle,
+      href: localizedHref(`/${slug}/`, lang),
+      date: mirror.data.publishDate ? new Date(mirror.data.publishDate).toISOString().slice(0, 10) : undefined,
+    };
+  })
+  .filter((r): r is PostRow => Boolean(r))
+  .sort((a, b) => ((a.date ?? '') < (b.date ?? '') ? 1 : -1));
+
+// ── Domain groups (editorial order) ─────────────────────────────────────
+const KIND_ORDER: TopicEntryKind[] = [
+  'debate',
+  'policy',
+  'video',
+  'lever',
+  'timeline',
+  'tracker',
+  'startup',
+  'ecosystem',
+  'talent',
+  'legal',
+  'benchmark',
+  'person',
+];
+
+const KIND_LABEL_KEY: Record<TopicEntryKind, Parameters<typeof t>[1]> = {
+  debate: 'updateTypeDebate',
+  policy: 'updateTypePolicy',
+  video: 'updateTypeVideo',
+  lever: 'updateTypeLever',
+  timeline: 'topicKindTimeline',
+  tracker: 'updateTypeTracker',
+  talent: 'topicKindTalent',
+  legal: 'topicKindLegal',
+  benchmark: 'updateTypeBenchmark',
+  startup: 'updateTypeStartup',
+  ecosystem: 'updateTypeEcosystem',
+  person: 'updateTypePeople',
+};
+
+// Listing page per kind for the "view all" exit.
+const KIND_LISTING: Record<TopicEntryKind, string> = {
+  debate: '/debates/',
+  policy: '/policies/',
+  video: '/videos/',
+  lever: '/levers/',
+  timeline: '/timeline/',
+  tracker: '/tracker/',
+  talent: '/talent/',
+  legal: '/legal-ai/',
+  benchmark: '/benchmarking/',
+  startup: '/startups/',
+  ecosystem: '/ecosystem/',
+  person: '/voices/',
+};
+
+const PREVIEW_LIMIT = 6;
+
+const groups = KIND_ORDER.map((kind) => ({
+  kind,
+  items: entries.filter((e) => e.kind === kind),
+})).filter((g) => g.items.length > 0);
+
+const totalCount = entries.length + postRows.length;
+
+const entryTitle = (e: TopicEntry) => pickLocalized<string>(e, 'title', lang) || e.title;
+---
+
+<section class="px-4 py-12 md:py-16 sm:px-6 mx-auto max-w-6xl">
+  {/* Header */}
+  <div class="mb-10 max-w-3xl">
+    <div class="flex items-center gap-3 mb-3">
+      <Icon name={topic.icon} class="w-8 h-8 text-primary shrink-0" />
+      <h1 class="t-h1 text-gray-900 dark:text-white">{pickLocalized(topic, 'name', lang)}</h1>
+    </div>
+    <p class="text-gray-600 dark:text-gray-400 leading-relaxed mb-3">
+      {pickLocalized(topic, 'description', lang)}
+    </p>
+    <p class="text-sm text-gray-400 dark:text-gray-500 tabular-nums">
+      {t(lang, 'topicEntriesCount').replace('{count}', String(totalCount))}
+    </p>
+  </div>
+
+  <div class="grid gap-x-12 gap-y-10 md:grid-cols-2">
+    {/* Posts group first when present — editorial analysis leads. */}
+    {
+      postRows.length > 0 && (
+        <div>
+          <div class="flex items-baseline justify-between gap-3 mb-3 border-b border-subtle pb-2">
+            <h2 class="font-serif text-lg font-semibold text-gray-900 dark:text-white">
+              {t(lang, 'updateTypeLongform')}
+              <span class="ml-2 text-xs text-gray-400 dark:text-gray-500 tabular-nums">{postRows.length}</span>
+            </h2>
+            <a
+              href={localizedHref('/blog/', lang)}
+              class="text-xs text-gray-500 hover:text-primary dark:text-gray-400 transition-colors whitespace-nowrap"
+            >
+              {t(lang, 'navAllArticles')} →
+            </a>
+          </div>
+          <ul class="space-y-2.5">
+            {postRows.slice(0, PREVIEW_LIMIT).map((row) => (
+              <li>
+                <a href={row.href} class="group flex items-baseline gap-3">
+                  {row.date && (
+                    <span class="text-xs text-gray-400 dark:text-gray-500 tabular-nums shrink-0 w-20">{row.date}</span>
+                  )}
+                  <span class="text-sm text-gray-800 dark:text-gray-200 group-hover:text-primary transition-colors leading-snug">
+                    {row.title}
+                  </span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )
+    }
+
+    {
+      groups.map((g) => (
+        <div>
+          <div class="flex items-baseline justify-between gap-3 mb-3 border-b border-subtle pb-2">
+            <h2 class="font-serif text-lg font-semibold text-gray-900 dark:text-white">
+              {t(lang, KIND_LABEL_KEY[g.kind])}
+              <span class="ml-2 text-xs text-gray-400 dark:text-gray-500 tabular-nums">{g.items.length}</span>
+            </h2>
+            {g.items.length > PREVIEW_LIMIT && (
+              <a
+                href={localizedHref(KIND_LISTING[g.kind], lang)}
+                class="text-xs text-gray-500 hover:text-primary dark:text-gray-400 transition-colors whitespace-nowrap"
+              >
+                {t(lang, 'topicViewAll').replace('{count}', String(g.items.length))}
+              </a>
+            )}
+          </div>
+          <ul class="space-y-2.5">
+            {g.items.slice(0, PREVIEW_LIMIT).map((e) => (
+              <li>
+                <a href={localizedHref(e.href, lang)} class="group flex items-baseline gap-3">
+                  {e.date && (
+                    <span class="text-xs text-gray-400 dark:text-gray-500 tabular-nums shrink-0 w-20">{e.date}</span>
+                  )}
+                  <span class="text-sm text-gray-800 dark:text-gray-200 group-hover:text-primary transition-colors leading-snug">
+                    {entryTitle(e)}
+                  </span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))
+    }
+  </div>
+
+  {/* Related topics */}
+  {
+    related.length > 0 && (
+      <div class="mt-14 pt-8 border-t border-subtle">
+        <h2 class="text-xs uppercase tracking-[0.18em] text-gray-500 dark:text-gray-400 font-semibold mb-4">
+          {t(lang, 'relatedTopicsHeading')}
+        </h2>
+        <div class="flex flex-wrap gap-2.5">
+          {related.map((tp) => (
+            <a
+              href={localizedHref(`/topics/${tp.id}/`, lang)}
+              class="inline-flex items-center gap-1.5 border border-subtle rounded-full px-3.5 py-1.5 text-sm text-gray-700 dark:text-gray-300 hover:border-primary hover:text-primary transition-colors bg-surface"
+            >
+              <Icon name={tp.icon} class="w-4 h-4" />
+              {pickLocalized(tp, 'name', lang)}
+            </a>
+          ))}
+        </div>
+      </div>
+    )
+  }
+</section>

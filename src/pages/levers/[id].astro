@@ -5,6 +5,7 @@ import { Icon } from 'astro-icon/components';
 import JsonLd from '~/components/common/JsonLd.astro';
 import RelatedRail from '~/components/data/RelatedRail.astro';
 import Layout from '~/layouts/PageLayout.astro';
+import SameTopicRail from '~/components/data/SameTopicRail.astro';
 import { dataDate, publicLeverGroups } from '~/data/levers';
 import { pickLocalized } from '~/i18n';
 import { getDebateById, getPolicyById } from '~/utils/graph';
@@ -250,4 +251,10 @@ const schema = {
       </a>
     </nav>
   </article>
+  <SameTopicRail
+    lang={lang}
+    kind="lever"
+    id={String(page.lever.number)}
+    class="max-w-5xl mx-auto px-4 sm:px-6 pb-16 mt-4"
+  />
 </Layout>
