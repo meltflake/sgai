@@ -1,0 +1,69 @@
+---
+// Front-page domain directory — one card per listing page, each with a
+// live record count and its latest addition as a preview line. This is
+// the homepage's main "go deeper" surface: every dataset gets an entry
+// point without scrolling through a nav dropdown.
+
+import { domainStats, harvestedTitle, type DomainKey } from '~/utils/latest-content';
+import { t, localizedHref, type Lang } from '~/i18n';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+
+const LABEL_KEY: Record<DomainKey, Parameters<typeof t>[1]> = {
+  policies: 'navPolicies',
+  debates: 'navParliament',
+  videos: 'navVideos',
+  voices: 'navVoices',
+  levers: 'navLevers',
+  ecosystem: 'navEcosystem',
+  startups: 'navStartups',
+  talent: 'navTalent',
+  'legal-ai': 'navLegalAi',
+  benchmarking: 'navBenchmarking',
+  timeline: 'navTimeline',
+  tracker: 'navTracker',
+};
+
+const stats = domainStats();
+---
+
+<section class="py-12 md:py-16 border-t border-subtle">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <div class="mb-8">
+      <h2 class="t-h3 text-gray-900 dark:text-white mb-2">{t(lang, 'fpDirectorySection')}</h2>
+      <p class="text-sm text-gray-600 dark:text-gray-400 max-w-prose leading-relaxed">
+        {t(lang, 'fpDirectoryBlurb')}
+      </p>
+    </div>
+    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        stats.map((s) => (
+          <a
+            href={localizedHref(s.href, lang)}
+            class="group block border border-subtle rounded-md p-4 bg-surface hover:shadow-md hover:border-gray-300 dark:hover:border-slate-600 transition-all"
+          >
+            <div class="flex items-baseline justify-between gap-2 mb-1.5">
+              <span class="font-serif text-base font-semibold text-gray-900 dark:text-white group-hover:text-primary transition-colors leading-snug">
+                {t(lang, LABEL_KEY[s.key])}
+              </span>
+              <span class="text-xs text-gray-400 dark:text-gray-500 tabular-nums whitespace-nowrap shrink-0">
+                {s.count} {t(lang, 'fpEntriesSuffix')}
+              </span>
+            </div>
+            {s.latest && (
+              <div class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">
+                <span class="text-gray-400 dark:text-gray-500">
+                  {t(lang, 'fpLatestPrefix')} · {s.latest.addedAt}
+                </span>
+                <div class="truncate text-gray-600 dark:text-gray-300 mt-0.5">{harvestedTitle(s.latest, lang)}</div>
+              </div>
+            )}
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</section>

@@ -538,6 +538,29 @@ export const zh = {
   updateTypeSite: '站点',
   updateTypeFix: '修正',
 
+  // Front page (news-portal homepage)
+  fpMastheadTagline: '最新动态',
+  fpMastheadUpdated: '更新于',
+  fpStatVideos: '视频观点',
+  fpFocusEyebrow: '焦点',
+  fpBrowseSection: '浏览方式',
+  fpBrowseByTime: '按时间浏览',
+  fpBrowseByTopic: '按主题浏览',
+  fpHotSection: '热门入口',
+  fpDirectorySection: '全站内容导览',
+  fpDirectoryBlurb: '12 个持续更新的数据域，每张卡片都显示最新收录。',
+  fpLatestPrefix: '最新',
+  fpEntriesSuffix: '条记录',
+  fpStartHereSection: '理解这套框架',
+
+  // Nav additions (news-portal)
+  navLatest: '最新',
+  navChallenges: '挑战与约束',
+  navEvolution: '政策演进',
+
+  // Full-page search (/search/)
+  searchPageDesc: '搜索全站内容：政策、辩论、视频、人物、抓手、文章。支持中文、English、日本語、한국어、繁體中文。',
+
   // Detail page sections (shared across debate/speech/video/voice detail pages)
   fullTextZh: '完整译文（中文）',
   coreViewpoint: '核心观点',
@@ -834,6 +857,29 @@ export const en: Partial<Record<keyof typeof zh, string>> = {
   updateTypeSite: 'Site',
   updateTypeFix: 'Fix',
 
+  // Front page (news-portal homepage)
+  fpMastheadTagline: 'Latest developments',
+  fpMastheadUpdated: 'Updated',
+  fpStatVideos: 'Videos',
+  fpFocusEyebrow: 'Focus',
+  fpBrowseSection: 'Ways to browse',
+  fpBrowseByTime: 'Browse by timeline',
+  fpBrowseByTopic: 'Browse by topic',
+  fpHotSection: 'Popular sections',
+  fpDirectorySection: 'Browse the whole site',
+  fpDirectoryBlurb: '12 continuously updated datasets — each card shows its latest addition.',
+  fpLatestPrefix: 'Latest',
+  fpEntriesSuffix: 'entries',
+  fpStartHereSection: 'Understand the framework',
+
+  // Nav additions (news-portal)
+  navLatest: 'Latest',
+  navChallenges: 'Challenges',
+  navEvolution: 'Policy evolution',
+
+  // Full-page search (/search/)
+  searchPageDesc: 'Search everything on this site: policies, debates, videos, people, levers and articles.',
+
   fullTextZh: 'Chinese Translation',
   coreViewpoint: 'In Brief',
   relatedVideos: 'Related Videos',
@@ -1122,6 +1168,30 @@ export const ja: Partial<Record<keyof typeof zh, string>> = {
   updateTypeLongform: 'ロング記事',
   updateTypeSite: 'サイト',
   updateTypeFix: '修正',
+
+  // Front page (news-portal homepage)
+  fpMastheadTagline: '最新の動き',
+  fpMastheadUpdated: '更新日',
+  fpStatVideos: '動画',
+  fpFocusEyebrow: '注目',
+  fpBrowseSection: '閲覧方法',
+  fpBrowseByTime: '時系列で見る',
+  fpBrowseByTopic: 'テーマで見る',
+  fpHotSection: '人気セクション',
+  fpDirectorySection: 'サイト全体を見る',
+  fpDirectoryBlurb: '継続的に更新される 12 のデータ領域。各カードに最新の収録を表示します。',
+  fpLatestPrefix: '最新',
+  fpEntriesSuffix: '件',
+  fpStartHereSection: 'フレームワークを理解する',
+
+  // Nav additions (news-portal)
+  navLatest: '最新',
+  navChallenges: '課題と制約',
+  navEvolution: '政策の変遷',
+
+  // Full-page search (/search/)
+  searchPageDesc: 'サイト全体を検索：政策、議会討論、動画、人物、レバー、記事。',
+
   fullTextZh: '完全翻訳（中国語）',
   coreViewpoint: 'コア観点',
   relatedVideos: '関連動画',
@@ -1414,6 +1484,30 @@ export const ko: Partial<Record<keyof typeof zh, string>> = {
   updateTypeLongform: '장문',
   updateTypeSite: '사이트',
   updateTypeFix: '정정',
+
+  // Front page (news-portal homepage)
+  fpMastheadTagline: '최신 동향',
+  fpMastheadUpdated: '업데이트',
+  fpStatVideos: '비디오',
+  fpFocusEyebrow: '포커스',
+  fpBrowseSection: '탐색 방법',
+  fpBrowseByTime: '시간순으로 보기',
+  fpBrowseByTopic: '주제별로 보기',
+  fpHotSection: '인기 섹션',
+  fpDirectorySection: '사이트 전체 보기',
+  fpDirectoryBlurb: '지속적으로 업데이트되는 12개 데이터 영역. 각 카드에 최신 수록을 표시합니다.',
+  fpLatestPrefix: '최신',
+  fpEntriesSuffix: '건',
+  fpStartHereSection: '프레임워크 이해하기',
+
+  // Nav additions (news-portal)
+  navLatest: '최신',
+  navChallenges: '도전과 제약',
+  navEvolution: '정책 변천',
+
+  // Full-page search (/search/)
+  searchPageDesc: '사이트 전체 검색: 정책, 국회 토론, 비디오, 인물, 레버, 글.',
+
   fullTextZh: '완전 번역본(중문)',
   coreViewpoint: '핵심 관점',
   relatedVideos: '관련 영상',
