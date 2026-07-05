@@ -169,11 +169,13 @@ export interface Person {
    *  entry. Set automatically by emit pipelines; manual additions must set
    *  it too. Old records may be undefined → not surfaced. */
   addedAt?: string;
+  topicIds?: string[]; // controlled topic ids (src/data/topics.ts); explicit values override topic-mappings
 }
 
 export const people: Person[] = [
   {
     id: 'josephine-teo',
+    topicIds: ['national-strategy', 'governance-regulation'],
     nameEn: 'Josephine Teo',
     name: '杨莉明',
     nameKo: 'Josephine Teo',
@@ -264,6 +266,7 @@ export const people: Person[] = [
   },
   {
     id: 'lawrence-wong',
+    topicIds: ['national-strategy'],
     nameEn: 'Lawrence Wong',
     name: '黄循财',
     nameKo: 'Lawrence Wong',
@@ -300,6 +303,7 @@ export const people: Person[] = [
   },
   {
     id: 'vivian-balakrishnan',
+    topicIds: ['international', 'national-strategy'],
     nameEn: 'Vivian Balakrishnan',
     name: '维文',
     nameKo: 'Vivian Balakrishnan',
@@ -338,6 +342,7 @@ export const people: Person[] = [
   },
   {
     id: 'tharman',
+    topicIds: ['national-strategy', 'international'],
     nameEn: 'Tharman Shanmugaratnam',
     name: '尚达曼',
     nameKo: 'Tharman Shanmugaratnam',
@@ -489,6 +494,7 @@ export const people: Person[] = [
   },
   {
     id: 'tan-kiat-how',
+    topicIds: ['national-strategy', 'governance-regulation'],
     nameEn: 'Tan Kiat How',
     name: '陈杰豪',
     nameKo: 'Tan Kiat How',
@@ -518,6 +524,7 @@ export const people: Person[] = [
   },
   {
     id: 'ho-teck-hua',
+    topicIds: ['infrastructure-research', 'talent-education'],
     nameEn: 'Ho Teck Hua',
     name: '何德华',
     nameKo: 'Ho Teck Hua',
@@ -748,6 +755,7 @@ export const people: Person[] = [
   },
   {
     id: 'laurence-liew',
+    topicIds: ['economy-industry', 'talent-education'],
     nameEn: 'Laurence Liew',
     name: '刘劲松',
     nameKo: 'Laurence Liew',
@@ -904,6 +912,7 @@ export const people: Person[] = [
   },
   {
     id: 'leslie-teo',
+    topicIds: ['open-source', 'infrastructure-research'],
     nameEn: 'Leslie Teo',
     name: '张志强',
     nameKo: 'Zhang Zhiqiang',
@@ -1028,6 +1037,7 @@ export const people: Person[] = [
   },
   {
     id: 'mohan-kankanhalli',
+    topicIds: ['talent-education', 'infrastructure-research'],
     nameEn: 'Mohan Kankanhalli',
     name: '莫汉·坎卡纳哈利',
     nameKo: 'Mohan Kankanhalli',
@@ -1125,6 +1135,7 @@ export const people: Person[] = [
   },
   {
     id: 'luke-ong',
+    topicIds: ['economy-industry', 'infrastructure-research'],
     nameEn: 'Luke Ong',
     name: '翁之昊',
     nameKo: 'Luke Ong',
@@ -1247,6 +1258,7 @@ export const people: Person[] = [
   },
   {
     id: 'phoon-kok-kwang',
+    topicIds: ['infrastructure-research'],
     nameEn: 'Phoon Kok Kwang',
     name: '潘国强',
     nameKo: 'Phoon Kok Kwang',
@@ -1358,6 +1370,7 @@ export const people: Person[] = [
   },
   {
     id: 'simon-chesterman',
+    topicIds: ['governance-regulation', 'safety-ethics'],
     nameEn: 'Simon Chesterman',
     name: '陈西文',
     nameKo: 'Simon Chesterman',
@@ -1478,6 +1491,7 @@ export const people: Person[] = [
   },
   {
     id: 'bryan-low',
+    topicIds: ['infrastructure-research'],
     nameEn: 'Bryan Kian Hsiang Low',
     name: '刘建祥',
     nameKo: 'Bryan Kian Hsiang Low',
@@ -1562,6 +1576,7 @@ export const people: Person[] = [
   },
   {
     id: 'ng-see-kiong',
+    topicIds: ['infrastructure-research'],
     nameEn: 'Ng See Kiong',
     name: '黄思琼',
     nameKo: 'Huang Siqiong',
@@ -1643,6 +1658,7 @@ export const people: Person[] = [
   // ── A*STAR leadership ──────────────────────────────────────────────
   {
     id: 'beh-kian-teik',
+    topicIds: ['infrastructure-research', 'national-strategy'],
     nameEn: 'Beh Kian Teik',
     name: '马建德',
     nameKo: 'Ma Jiande',
@@ -1725,6 +1741,7 @@ export const people: Person[] = [
   },
   {
     id: 'andy-hor',
+    topicIds: ['infrastructure-research'],
     nameEn: 'Andy Hor',
     name: '何天伦',
     nameKo: 'He Tianlun',
@@ -1781,6 +1798,7 @@ export const people: Person[] = [
   },
   {
     id: 'lim-keng-hui',
+    topicIds: ['infrastructure-research'],
     nameEn: 'Lim Keng Hui',
     name: '林敬辉',
     nameKo: 'Lim Keng Hui',
@@ -1864,6 +1882,7 @@ export const people: Person[] = [
   },
   {
     id: 'ivor-tsang',
+    topicIds: ['infrastructure-research'],
     nameEn: 'Ivor Tsang',
     name: '曾以友',
     nameKo: 'Ivor Tsang',
@@ -1932,6 +1951,7 @@ export const people: Person[] = [
   },
   {
     id: 'ong-yew-soon',
+    topicIds: ['infrastructure-research'],
     nameEn: 'Ong Yew Soon',
     name: '王悦舜',
     nameKo: 'Ong Yew Soon',
@@ -2005,6 +2025,7 @@ export const people: Person[] = [
   // ── EDB leadership ────────────────────────────────────────────────
   {
     id: 'jermaine-loy',
+    topicIds: ['economy-industry', 'startups-investment'],
     nameEn: 'Jermaine Loy',
     name: 'Jermaine Loy',
     nameJa: 'Jermaine Loy',
@@ -2090,6 +2111,7 @@ export const people: Person[] = [
   // ── NUS leadership ────────────────────────────────────────────────
   {
     id: 'tan-eng-chye',
+    topicIds: ['talent-education'],
     nameEn: 'Tan Eng Chye',
     name: '陈永财',
     nameKo: 'Tan Eng Chye',
@@ -2178,6 +2200,7 @@ export const people: Person[] = [
   },
   {
     id: 'aaron-thean',
+    topicIds: ['talent-education', 'infrastructure-research'],
     nameEn: 'Aaron Thean',
     name: '陈奋耀',
     nameKo: 'Aaron Thean',
@@ -2251,6 +2274,7 @@ export const people: Person[] = [
   // ── SMU leadership ────────────────────────────────────────────────
   {
     id: 'lily-kong',
+    topicIds: ['talent-education'],
     nameEn: 'Lily Kong',
     name: '江莉莉',
     nameKo: 'Lily Kong',
@@ -2339,6 +2363,7 @@ export const people: Person[] = [
   // ── IMDA leadership ───────────────────────────────────────────────
   {
     id: 'ng-cher-pong',
+    topicIds: ['governance-regulation', 'economy-industry'],
     nameEn: 'Ng Cher Pong',
     name: '黄志彭',
     nameKo: 'Ng Cher Pong',
@@ -2417,6 +2442,7 @@ export const people: Person[] = [
   },
   {
     id: 'aileen-chia',
+    topicIds: ['governance-regulation'],
     nameEn: 'Aileen Chia',
     name: '谢美琳',
     nameKo: 'Aileen Chia',
@@ -2440,6 +2466,7 @@ export const people: Person[] = [
   },
   {
     id: 'kiren-kumar',
+    topicIds: ['economy-industry'],
     nameEn: 'Kiren Kumar',
     name: '基伦·库马尔',
     nameKo: 'Kiren Kumar',
@@ -2516,6 +2543,7 @@ export const people: Person[] = [
   },
   {
     id: 'denise-wong',
+    topicIds: ['governance-regulation'],
     nameEn: 'Denise Wong',
     name: '王玉玲',
     nameKo: 'Denise Wong',
@@ -2621,6 +2649,7 @@ export const people: Person[] = [
   },
   {
     id: 'ong-chen-hui',
+    topicIds: ['economy-industry'],
     nameEn: 'Ong Chen Hui',
     name: '王振辉',
     nameKo: 'Ong Chen Hui',
@@ -2734,6 +2763,7 @@ export const people: Person[] = [
   // ── AI Verify Foundation ──────────────────────────────────────────
   {
     id: 'shameek-kundu',
+    topicIds: ['safety-ethics', 'governance-regulation'],
     nameEn: 'Shameek Kundu',
     name: '沙米克·昆杜',
     nameKo: 'Shameek Kundu',
@@ -2832,6 +2862,7 @@ export const people: Person[] = [
   // ── MAS leadership ────────────────────────────────────────────────
   {
     id: 'chia-der-jiun',
+    topicIds: ['finance', 'governance-regulation'],
     nameEn: 'Chia Der Jiun',
     name: '谢德俊',
     nameKo: 'Chia Der Jiun',
@@ -2960,6 +2991,7 @@ export const people: Person[] = [
   },
   {
     id: 'leong-sing-chiong',
+    topicIds: ['finance'],
     nameEn: 'Leong Sing Chiong',
     name: '梁星仲',
     nameKo: 'Leong Sing Chiong',
@@ -3032,6 +3064,7 @@ export const people: Person[] = [
   // ── Synapxe leadership ────────────────────────────────────────────
   {
     id: 'foo-hee-jug',
+    topicIds: ['healthcare', 'public-sector'],
     nameEn: 'Foo Hee Jug',
     name: '符喜祝',
     nameKo: 'Foo Hee Jug',

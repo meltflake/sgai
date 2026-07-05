@@ -3,6 +3,7 @@ publishDate: 2026-06-09
 title: 'GIC 与淡马锡在 AI 上投了什么：已公开投资全梳理'
 excerpt: '2026 年 5 月，Anthropic 完成 650 亿美元 Series H 融资，GIC 共同领投、淡马锡跟投——新加坡两家主权基金同时出现在同一家前沿 AI 公司的股东名单上。本文按公开信息梳理 GIC 和淡马锡在 AI 上的投资：前沿模型、AI 基础设施、数据平台，每笔注明时间、规模和信源等级。'
 category: '观察'
+topicIds: ['startups-investment', 'international']
 tags:
   - 观察
   - 新加坡

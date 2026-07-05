@@ -31,6 +31,7 @@ export interface VideoItem {
    *  entry. Set automatically by emit pipelines; manual additions must set
    *  it too. Old records may be undefined → not surfaced. */
   addedAt?: string;
+  topicIds?: string[]; // controlled topic ids (src/data/topics.ts); explicit values override topic-mappings
 }
 
 export interface VideoCategory {
