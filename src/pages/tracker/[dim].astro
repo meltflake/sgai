@@ -2,6 +2,7 @@
 import type { GetStaticPaths } from 'astro';
 import { Icon } from 'astro-icon/components';
 import Layout from '~/layouts/PageLayout.astro';
+import SameTopicRail from '~/components/data/SameTopicRail.astro';
 import { dimensions, dataDate, type Dimension, type MetricRow } from '~/data/tracker';
 import { getLangFromPath, localizedHref, pickLocalized, t, type Lang } from '~/i18n';
 
@@ -251,4 +252,5 @@ const resolvedMetrics: ResolvedMetric[] = dim.metrics.map((row: MetricRow) => ({
       </a>
     </nav>
   </article>
+  <SameTopicRail lang={lang} kind="tracker" id={dim.id} class="max-w-5xl mx-auto px-4 sm:px-6 pb-16 mt-4" />
 </Layout>

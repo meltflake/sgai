@@ -3,6 +3,7 @@ import { Icon } from 'astro-icon/components';
 
 import JsonLd from '~/components/common/JsonLd.astro';
 import Layout from '~/layouts/PageLayout.astro';
+import SameTopicRail from '~/components/data/SameTopicRail.astro';
 import { benchmarkCaseProfileUpdated, dataDate, dataDisclaimer, dataDisclaimerEn } from '~/data/benchmarking';
 import { benchmarkCasePages, regionPages, type BenchmarkCasePage } from '~/utils/entity-pages';
 import { localizedHref, pickLocalized, type Lang } from '~/i18n';
@@ -310,4 +311,5 @@ const breadcrumbs = [{ label: labels.benchmarkCrumb, href: localizedHref('/bench
       </a>
     </nav>
   </article>
+  <SameTopicRail lang={lang} kind="benchmark" id={page.slug} class="max-w-4xl mx-auto px-4 sm:px-6 pb-16" />
 </Layout>

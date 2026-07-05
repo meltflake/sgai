@@ -1,0 +1,46 @@
+---
+// /topics/[slug] hub (en) — thin wrapper around TopicHub.astro.
+// [lang] variant: src/pages/[lang]/topics/[slug].astro.
+
+import type { GetStaticPaths } from 'astro';
+import Layout from '~/layouts/PageLayout.astro';
+import JsonLd from '~/components/common/JsonLd.astro';
+import TopicHub from '~/components/topics/TopicHub.astro';
+import { topics, type Topic } from '~/data/topics';
+import { t, pickLocalized, IN_LANGUAGES } from '~/i18n';
+
+export const getStaticPaths = (() =>
+  topics.map((topic) => ({ params: { slug: topic.id }, props: { topic } }))) satisfies GetStaticPaths;
+
+interface Props {
+  topic: Topic;
+}
+const { topic } = Astro.props as Props;
+const lang = 'en' as const;
+
+const name = pickLocalized<string>(topic, 'name', lang) ?? topic.nameEn;
+const description = pickLocalized<string>(topic, 'description', lang) ?? topic.descriptionEn;
+
+const metadata = {
+  title: `${name} · ${t(lang, 'fpBrowseByTopic')} · ${t(lang, 'siteName')}`,
+  description,
+};
+
+const collectionSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name,
+  description,
+  url: `https://sgai.md/topics/${topic.id}/`,
+  inLanguage: IN_LANGUAGES[lang],
+};
+---
+
+<Layout
+  metadata={metadata}
+  breadcrumbs={[{ label: t(lang, 'fpBrowseByTopic'), href: '/topics/' }, { label: name }]}
+  lang={lang}
+>
+  <JsonLd schema={collectionSchema} />
+  <TopicHub lang={lang} topic={topic} />
+</Layout>

@@ -1,0 +1,30 @@
+---
+// /topics/ index (en) — thin wrapper around TopicIndex.astro.
+// [lang] variant: src/pages/[lang]/topics/index.astro.
+
+import Layout from '~/layouts/PageLayout.astro';
+import JsonLd from '~/components/common/JsonLd.astro';
+import TopicIndex from '~/components/topics/TopicIndex.astro';
+import { t, IN_LANGUAGES } from '~/i18n';
+
+const lang = 'en' as const;
+
+const metadata = {
+  title: `${t(lang, 'fpBrowseByTopic')} · ${t(lang, 'siteName')}`,
+  description: t(lang, 'topicsIndexDesc'),
+};
+
+const collectionSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: t(lang, 'fpBrowseByTopic'),
+  description: t(lang, 'topicsIndexDesc'),
+  url: 'https://sgai.md/topics/',
+  inLanguage: IN_LANGUAGES[lang],
+};
+---
+
+<Layout metadata={metadata} breadcrumbs={[{ label: t(lang, 'fpBrowseByTopic') }]} lang={lang}>
+  <JsonLd schema={collectionSchema} />
+  <TopicIndex lang={lang} />
+</Layout>

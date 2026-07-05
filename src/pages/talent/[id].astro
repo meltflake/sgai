@@ -4,6 +4,7 @@ import { Icon } from 'astro-icon/components';
 
 import JsonLd from '~/components/common/JsonLd.astro';
 import Layout from '~/layouts/PageLayout.astro';
+import SameTopicRail from '~/components/data/SameTopicRail.astro';
 import { programmes, type TalentProgramme, type TalentStatusTone } from '~/data/talent';
 import { SITE_UPDATED } from '~/version';
 
@@ -185,4 +186,5 @@ const schema = {
       </div>
     </section>
   </article>
+  <SameTopicRail lang={lang} kind="talent" id={programme.id} class="max-w-5xl mx-auto px-4 sm:px-6 pb-16 mt-4" />
 </Layout>
