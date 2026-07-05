@@ -85,6 +85,21 @@ jobs:
             echo "::notice title=Deploy skipped::CLOUDFLARE_API_TOKEN / CLOUDFLARE_ACCOUNT_ID not configured — build verified but not deployed (cutover pending, see header of this workflow)."
           fi
 
+      # First-run convenience: create the direct-upload project if it does
+      # not exist yet, so cutover needs no local wrangler login — just the
+      # two secrets. `project create` fails if the name exists; the list
+      # check keeps this step idempotent.
+      - name: Ensure Pages project exists
+        if: steps.creds.outputs.ok == 'true'
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          PROJECT: ${{ vars.CLOUDFLARE_PAGES_PROJECT || 'sgai-ci' }}
+        run: |
+          if ! npx wrangler pages project list 2>/dev/null | grep -q "\b$PROJECT\b"; then
+            npx wrangler pages project create "$PROJECT" --production-branch=main
+          fi
+
       - name: Deploy to Cloudflare Pages
         if: steps.creds.outputs.ok == 'true'
         uses: cloudflare/wrangler-action@v3
