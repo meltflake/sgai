@@ -46,7 +46,6 @@ export function getHeaderData(lang: Lang) {
       // News-portal signal: a top-level "Latest" link straight to the
       // updates feed, ahead of the editorial sections.
       { text: t(lang, labelKeys.latest), href: lh('/updates', lang) },
-      { text: t(lang, labelKeys.analysis), href: lh('/blog', lang) },
       {
         text: t(lang, labelKeys.policy),
         links: [
@@ -60,6 +59,9 @@ export function getHeaderData(lang: Lang) {
       {
         text: t(lang, labelKeys.debates),
         links: [
+          // "观察" (editorial analysis) folds in here rather than holding a
+          // top-level slot of its own — a single-link section reads too thin.
+          { text: t(lang, labelKeys.analysis), href: lh('/blog', lang) },
           { text: t(lang, labelKeys.parliament), href: lh('/debates', lang) },
           { text: t(lang, labelKeys.voices), href: lh('/voices', lang) },
           { text: t(lang, labelKeys.videos), href: lh('/videos', lang) },
@@ -89,10 +91,6 @@ export function getFooterData(lang: Lang) {
   return {
     links: [
       {
-        title: t(lang, labelKeys.analysis),
-        links: [{ text: t(lang, 'navAllArticles'), href: lh('/blog', lang) }],
-      },
-      {
         title: t(lang, labelKeys.policy),
         links: [
           { text: t(lang, labelKeys.policies), href: lh('/policies', lang) },
@@ -105,6 +103,9 @@ export function getFooterData(lang: Lang) {
       {
         title: t(lang, labelKeys.debates),
         links: [
+          // Same fold-in as the header: "观察" lives under 辩论与声音 instead
+          // of a one-link column of its own.
+          { text: t(lang, labelKeys.analysis), href: lh('/blog', lang) },
           { text: t(lang, labelKeys.parliament), href: lh('/debates', lang) },
           { text: t(lang, labelKeys.voices), href: lh('/voices', lang) },
           { text: t(lang, labelKeys.videos), href: lh('/videos', lang) },

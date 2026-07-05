@@ -1,0 +1,302 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import CrossDomainRail from '~/components/listing/CrossDomainRail.astro';
+import LatestAdditions from '~/components/listing/LatestAdditions.astro';
+import Headline from '~/components/ui/Headline.astro';
+import { sections, dataDate, introBody, conclusion } from '~/data/legal-ai';
+import { legalItemSlug } from '~/utils/entity-pages';
+import { renderInlineMarkdown } from '~/utils/inline-markdown';
+import { t, pickLocalized, localizedHref, type Lang } from '~/i18n';
+import { toTraditional } from '~/i18n/opencc';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const isZh = lang === 'zh';
+
+// Two en labels predate their dict keys and differ from them
+// (t('en', 'legalAiPageTitle') = 'AI Legal Framework', t('en', 'navPolicies')
+// = 'Policy Library'); preserved verbatim so the shared component renders
+// the en page unchanged.
+const headlineTitle = lang === 'en' ? '⚖️ Singapore AI Legal Framework' : `⚖️ ${t(lang, 'legalAiPageTitle')}`;
+const policiesLinkLabel = lang === 'en' ? 'Full policy library' : t(lang, 'navPolicies');
+
+// Scope label per locale. The colour classes are identical across
+// locales (visual treatment doesn't depend on the lang), only the label
+// text changes. Hand-typed for the three real translations; zh-tw runs
+// through OpenCC; ko uses Korean.
+const SCOPE_LABELS_BY_LANG: Record<Lang, Record<string, string>> = {
+  zh: { training: '训练侧', output: '输出侧', liability: '责任', governance: '治理' },
+  en: { training: 'Training', output: 'Output', liability: 'Liability', governance: 'Governance' },
+  ja: { training: '訓練側', output: '出力側', liability: '責任', governance: 'ガバナンス' },
+  'zh-tw': {
+    training: toTraditional('训练侧'),
+    output: toTraditional('输出侧'),
+    liability: toTraditional('责任'),
+    governance: toTraditional('治理'),
+  },
+  ko: { training: '훈련 측', output: '출력 측', liability: '책임', governance: '거버넌스' },
+};
+const SCOPE_COLORS: Record<string, string> = {
+  training: 'bg-emerald-100 dark:bg-emerald-900 text-emerald-800 dark:text-emerald-200',
+  output: 'bg-rose-100 dark:bg-rose-900 text-rose-800 dark:text-rose-200',
+  liability: 'bg-amber-100 dark:bg-amber-900 text-amber-800 dark:text-amber-200',
+  governance: 'bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200',
+};
+const scopeLabels = SCOPE_LABELS_BY_LANG[lang] || SCOPE_LABELS_BY_LANG.en;
+
+// Long-form intro / conclusion markdown. For ko, use a Korean version
+// (literal translation of the zh source via haiku, hand-polished). For
+// zh-tw run zh through OpenCC. For ja, en, zh use existing copy.
+const introBodyEn = `Singapore's AI legal framework reduces to a single line: **permissive on training + strict on outputs**.
+
+- **Training side**: Legally acquired content (with or without copyright) can be used to train AI — among the world's most permissive regimes, on par with Japan.
+- **Output side**: Deepfakes, AI-generated intimate images, AI-driven disinformation, and election manipulation — strictly governed by a four-piece legislative bundle.
+
+This combination makes Singapore one of the **most predictable legal jurisdictions for AI companies** today: the boundaries of what you can and cannot do are clear. It is one of the key reasons EDB has been able to attract OpenAI, Anthropic, DeepMind, Mistral and others to set up here.`;
+
+const introBodyKo = `싱가포르의 AI 법적 프레임워크는 한 줄로 요약됩니다: **훈련에는 관대, 출력에는 엄격**.
+
+- **훈련 측**: 합법적으로 취득한 콘텐츠(저작권 유무 무관)는 AI 훈련에 사용될 수 있습니다 — 일본과 함께 세계에서 가장 관대한 체제 중 하나입니다.
+- **출력 측**: 딥페이크, AI 생성 사적 이미지, AI 기반 허위정보, 선거 조작은 4법 입법 패키지에 의해 엄격히 규제됩니다.
+
+이 조합은 싱가포르를 오늘날 **AI 기업이 가장 예측 가능한 법적 관할권 중 하나**로 만듭니다: 무엇이 허용되고 무엇이 금지되는지 명확합니다. EDB가 OpenAI, Anthropic, DeepMind, Mistral 등의 진출을 이끌어낼 수 있었던 핵심 배경 중 하나입니다.`;
+
+const conclusionEn = `**Why this legal package is attractive to AI companies**:
+
+1. **Permissive training, strict outputs** — clear boundaries; you know what is and isn't allowed.
+2. **One-stop governance** — IMDA + MAS + CSA + MINLAW form a unified framework, no policy fragmentation.
+3. **Soft law as the default** — voluntary frameworks first, hard law only when the soft law is exceeded; gives industry room to adjust.
+4. **English common-law system** — judicial reasoning is highly transparent and reusable for cross-border legal opinions.
+
+This is one of the structural reasons OpenAI, Anthropic, DeepMind, Mistral and others have set up regional headquarters in Singapore — beyond capital, talent, and infrastructure, the legal certainty is itself a moat.`;
+
+const conclusionKo = `**이 법적 패키지가 AI 기업에 매력적인 이유**:
+
+1. **훈련에는 관대, 출력에는 엄격** — 명확한 경계선; 허용되는 것과 금지되는 것이 분명합니다.
+2. **원스톱 거버넌스** — IMDA + MAS + CSA + MINLAW가 통합 프레임워크를 구성하여 정책 분절이 없습니다.
+3. **소프트 로 우선** — 자발적 프레임워크가 기본; 소프트 로를 넘어설 때만 하드 로 적용; 업계에 조정 여지를 제공합니다.
+4. **영국 보통법 체계** — 사법적 추론이 고도로 투명하며 국경 간 법률 의견에 재사용 가능합니다.
+
+이는 OpenAI, Anthropic, DeepMind, Mistral 등이 싱가포르에 지역 본부를 설립한 구조적 이유 중 하나입니다 — 자본, 인재, 인프라 외에도 법적 확실성 자체가 해자입니다.`;
+
+function pickIntro(): string {
+  if (lang === 'zh') return introBody;
+  if (lang === 'zh-tw') return toTraditional(introBody);
+  if (lang === 'ko') return introBodyKo;
+  return introBodyEn;
+}
+function pickConclusion(): string {
+  if (lang === 'zh') return conclusion;
+  if (lang === 'zh-tw') return toTraditional(conclusion);
+  if (lang === 'ko') return conclusionKo;
+  return conclusionEn;
+}
+
+const introContent = pickIntro();
+const conclusionContent = pickConclusion();
+
+const SUBTITLE_BY_LANG: Record<Lang, string> = {
+  zh: `数据更新：${dataDate}。"训练宽松 + 输出严管"双轨——这让新加坡成为目前世界上对 AI 公司最清晰可预测的法域之一。`,
+  en: `Last updated: ${dataDate}. "Permissive on training + strict on outputs" — a dual track that makes Singapore one of the world's most predictable jurisdictions for AI companies today.`,
+  ja: `データ更新：${dataDate}。「訓練には寛容、出力には厳格」のデュアルトラック — シンガポールを今日 AI 企業にとって世界で最も予測可能な法域の 1 つにしています。`,
+  'zh-tw': toTraditional(
+    `数据更新：${dataDate}。"训练宽松 + 输出严管"双轨——这让新加坡成为目前世界上对 AI 公司最清晰可预测的法域之一。`
+  ),
+  ko: `데이터 업데이트: ${dataDate}. "훈련에는 관대 + 출력에는 엄격" 듀얼 트랙 — 싱가포르를 오늘날 AI 기업에 가장 예측 가능한 법적 관할권 중 하나로 만듭니다.`,
+};
+const subtitle = SUBTITLE_BY_LANG[lang] || SUBTITLE_BY_LANG.en;
+
+const CORE_POSITION_BY_LANG: Record<Lang, string> = {
+  zh: '核心立场',
+  en: 'Core Position',
+  ja: 'コアな立場',
+  'zh-tw': toTraditional('核心立场'),
+  ko: '핵심 입장',
+};
+const corePositionLabel = CORE_POSITION_BY_LANG[lang] || CORE_POSITION_BY_LANG.en;
+
+const WHY_ATTRACTIVE_BY_LANG: Record<Lang, string> = {
+  zh: '为什么这套组合对 AI 公司有吸引力',
+  en: 'Why this combination is attractive to AI companies',
+  ja: 'なぜこの組み合わせが AI 企業にとって魅力的なのか',
+  'zh-tw': toTraditional('为什么这套组合对 AI 公司有吸引力'),
+  ko: '이 조합이 AI 기업에 매력적인 이유',
+};
+const whyAttractiveLabel = WHY_ATTRACTIVE_BY_LANG[lang] || WHY_ATTRACTIVE_BY_LANG.en;
+
+const FURTHER_READING_BY_LANG: Record<Lang, string> = {
+  zh: '延伸阅读：',
+  en: 'Further reading: ',
+  ja: '関連の読み物：',
+  'zh-tw': toTraditional('延伸阅读：'),
+  ko: '추가 자료: ',
+};
+const furtherReadingLabel = FURTHER_READING_BY_LANG[lang] || FURTHER_READING_BY_LANG.en;
+
+const STATUTE_TEXT_BY_LANG: Record<Lang, string> = {
+  zh: '🔗 法律原文',
+  en: '🔗 Statute text',
+  ja: '🔗 法令本文',
+  'zh-tw': toTraditional('🔗 法律原文'),
+  ko: '🔗 법률 원문',
+};
+const statuteTextLabel = STATUTE_TEXT_BY_LANG[lang] || STATUTE_TEXT_BY_LANG.en;
+
+const NATIVE_VS_NATIONS_LABEL: Record<Lang, string> = {
+  zh: '从 50 人到 5,700,000 人——同一种 AI-native 架构',
+  en: 'From 50 to 5,700,000 — the same AI-native architecture',
+  ja: '50 人から 570 万人へ — 同じ AI-native アーキテクチャ',
+  'zh-tw': toTraditional('从 50 人到 5,700,000 人——同一种 AI-native 架构'),
+  ko: '50명에서 570만명까지 — 동일한 AI-native 아키텍처',
+};
+const nativeVsNationsLabel = NATIVE_VS_NATIONS_LABEL[lang] || NATIVE_VS_NATIONS_LABEL.en;
+
+const VIEW_DETAILS_PREFIX: Record<Lang, string> = {
+  zh: '查看',
+  en: 'View details for',
+  ja: '詳細を表示：',
+  'zh-tw': toTraditional('查看'),
+  ko: '자세히 보기:',
+};
+const VIEW_DETAILS_SUFFIX: Record<Lang, string> = {
+  zh: ' 详情',
+  en: '',
+  ja: '',
+  'zh-tw': toTraditional(' 详情'),
+  ko: '',
+};
+function viewDetailsAria(name: string): string {
+  const prefix = VIEW_DETAILS_PREFIX[lang] || VIEW_DETAILS_PREFIX.en;
+  const suffix = VIEW_DETAILS_SUFFIX[lang] || '';
+  return isZh ? `${prefix} ${name}${suffix}` : `${prefix} ${name}`;
+}
+
+// Item helpers extracted to frontmatter — pickLocalized<string> inside
+// section.items.map(...) callbacks in the JSX template trips Astro's
+// TS-in-JSX parser. Moving to top-level avoids the issue.
+type LegalItem = (typeof sections)[number]['items'][number];
+const itemTitle = (item: LegalItem) => pickLocalized<string>(item, 'title', 'titleEn', lang) || item.title;
+const itemStatus = (item: LegalItem) => pickLocalized<string>(item, 'status', 'statusEn', lang) || item.status;
+const itemAuthority = (item: LegalItem) =>
+  pickLocalized<string>(item, 'authority', 'authorityEn', lang) || item.authority;
+const itemSummary = (item: LegalItem) => pickLocalized<string>(item, 'summary', 'summaryEn', lang) || item.summary;
+const itemBody = (item: LegalItem) => pickLocalized<string>(item, 'body', 'bodyEn', lang) || item.body;
+const itemDate = (item: LegalItem) => pickLocalized<string>(item, 'date', 'dateEn', lang) || item.date;
+const sectionTitle = (s: (typeof sections)[number]) => pickLocalized<string>(s, 'title', 'titleEn', lang) || s.title;
+const sectionPhilosophy = (s: (typeof sections)[number]) =>
+  pickLocalized<string>(s, 'philosophy', 'philosophyEn', lang) || s.philosophy;
+---
+
+<Layout
+  metadata={{
+    title: t(lang, 'legalAiPageTitle'),
+    description: t(lang, 'legalAiPageDesc'),
+  }}
+  breadcrumbs={[{ label: t(lang, 'navLegalAi') }]}
+  lang={lang}
+>
+  <section class="px-4 py-16 sm:px-6 mx-auto lg:px-8 max-w-5xl">
+    <Headline title={headlineTitle} subtitle={subtitle} />
+    <LatestAdditions lang={lang} source="legal" class="mt-8 mb-2" />
+
+    <div class="callout-note rounded-lg mb-12 leading-relaxed">
+      <p class="font-bold text-base mb-3">{corePositionLabel}</p>
+      <div class="text-sm leading-relaxed space-y-3" set:html={renderInlineMarkdown(introContent)} />
+    </div>
+
+    {
+      sections.map((section, sectionIdx) => (
+        <div class="mb-16">
+          <h2 class="t-h2 mb-3 border-b-2 border-blue-600 dark:border-blue-400 pb-2">
+            {sectionIdx + 1}. {sectionTitle(section)}
+          </h2>
+          <p class="text-sm italic text-muted mb-6">{sectionPhilosophy(section)}</p>
+
+          <div class="space-y-4">
+            {section.items.map((item) => (
+              <div class="group relative border border-subtle rounded-lg p-6 bg-surface hover:shadow-md hover:border-blue-300 dark:hover:border-blue-700 transition-all">
+                <a
+                  href={localizedHref(`/legal-ai/${legalItemSlug(item)}/`, lang)}
+                  class="absolute inset-0 z-0 rounded-lg"
+                  aria-label={viewDetailsAria(itemTitle(item))}
+                />
+                <div class="flex items-start gap-2 flex-wrap mb-2">
+                  <h3 class="text-lg font-bold m-0 flex-1 min-w-0 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                    {itemTitle(item)}
+                  </h3>
+                  <span class={`text-xs font-bold px-2 py-1 rounded shrink-0 ${SCOPE_COLORS[item.scope]}`}>
+                    {scopeLabels[item.scope] || item.scope}
+                  </span>
+                  <span class="text-xs bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 px-2 py-1 rounded shrink-0">
+                    {itemStatus(item)}
+                  </span>
+                </div>
+                {!isZh && item.titleEn && item.titleEn !== itemTitle(item) && (
+                  <p class="text-sm text-muted mb-3">{item.titleEn}</p>
+                )}
+                <div class="flex gap-2 mb-3 flex-wrap text-xs">
+                  {item.authorityUrl ? (
+                    <a
+                      href={item.authorityUrl}
+                      target="_blank"
+                      rel="noopener"
+                      class="relative z-10 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 px-2 py-1 rounded hover:underline"
+                    >
+                      {itemAuthority(item)}
+                    </a>
+                  ) : (
+                    <span class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 px-2 py-1 rounded">
+                      {itemAuthority(item)}
+                    </span>
+                  )}
+                  <span class="bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 px-2 py-1 rounded">
+                    {itemDate(item)}
+                  </span>
+                </div>
+                <p class="text-sm font-medium mb-2">{itemSummary(item)}</p>
+                <p class="text-sm text-muted mb-3">{itemBody(item)}</p>
+                {item.sourceUrl && (
+                  <a
+                    href={item.sourceUrl}
+                    target="_blank"
+                    rel="noopener"
+                    class="relative z-10 text-sm text-blue-600 dark:text-blue-400 hover:underline"
+                  >
+                    {statuteTextLabel}
+                  </a>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      ))
+    }
+
+    <div class="mt-12 bg-surface rounded-xl p-8 border border-subtle">
+      <h2 class="t-h3 mb-4">{whyAttractiveLabel}</h2>
+      <div class="text-sm leading-relaxed space-y-3" set:html={renderInlineMarkdown(conclusionContent)} />
+    </div>
+
+    <div class="mt-12 text-sm text-muted text-center">
+      {furtherReadingLabel}
+      <a
+        href={localizedHref('/singapore-ai-native-companies-vs-nations/', lang)}
+        class="text-blue-600 dark:text-blue-400 hover:underline"
+      >
+        {nativeVsNationsLabel}
+      </a>
+      ·
+      <a href={localizedHref('/levers/', lang)} class="text-blue-600 dark:text-blue-400 hover:underline">
+        {t(lang, 'navLevers')}
+      </a>
+      ·
+      <a href={localizedHref('/policies/', lang)} class="text-blue-600 dark:text-blue-400 hover:underline">
+        {policiesLinkLabel}
+      </a>
+    </div>
+  </section>
+  <CrossDomainRail lang={lang} current="legal-ai" class="max-w-6xl mx-auto px-4 sm:px-6 pb-16" />
+</Layout>
