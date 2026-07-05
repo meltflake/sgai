@@ -1,0 +1,94 @@
+---
+// Lever map — visual evidence for the site thesis. Two columns by
+// transmissionMode: pass-through (4) wide-left, direct (2) narrow-right.
+// Extracted verbatim from the old HomePage hero fold; now lives inside
+// the "understand the framework" band below the news front page.
+
+import { levers, publicLeverGroups } from '~/data/levers';
+import { leverSlug } from '~/utils/entity-pages';
+import { t, pickLocalized, localizedHref, type Lang } from '~/i18n';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+
+const leverProjectCount = (lv: (typeof levers)[number]) => publicLeverGroups(lv).flatMap((g) => g.items).length;
+const passThroughLevers = levers.filter((lv) => lv.transmissionMode === 'transmitted');
+const directLevers = levers.filter((lv) => lv.transmissionMode === 'direct');
+
+const totalLeverItems = levers.reduce((sum, lv) => sum + publicLeverGroups(lv).flatMap((g) => g.items).length, 0);
+---
+
+<section class="pb-16 md:pb-24">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6">
+    <div class="flex items-baseline justify-between mb-3 gap-4 flex-wrap">
+      <h2 class="t-h3 text-gray-900 dark:text-white">
+        {t(lang, 'leversSection')}
+      </h2>
+      <a
+        href={localizedHref('/levers/', lang)}
+        class="text-sm text-gray-500 hover:text-primary dark:text-gray-400 transition-colors"
+      >
+        {t(lang, 'viewAllLeversCta')}
+      </a>
+    </div>
+    <p class="text-sm text-gray-600 dark:text-gray-400 mb-10 max-w-prose leading-relaxed">
+      {t(lang, 'leversBlurb').replace('{count}', String(totalLeverItems))}
+    </p>
+
+    <div class="grid gap-10 md:grid-cols-[2fr_1fr] md:gap-12">
+      {/* Pass-through column (4 levers) */}
+      <div>
+        <div class="text-xs uppercase tracking-[0.18em] text-primary font-semibold mb-6">
+          {t(lang, 'leverMapColPassThroughHint')}
+        </div>
+        <div class="grid sm:grid-cols-2 gap-x-8 gap-y-7">
+          {
+            passThroughLevers.map((lv) => (
+              <a href={localizedHref(`/levers/${leverSlug(lv)}/`, lang)} class="group block transition-colors">
+                <div class="font-serif text-lg md:text-xl font-semibold text-gray-900 dark:text-white group-hover:text-primary transition-colors mb-1.5 leading-tight">
+                  <span class="mr-1.5">{lv.icon}</span>
+                  {pickLocalized(lv, 'name', lang)}
+                </div>
+                <div class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                  {pickLocalized(lv, 'subtitle', lang)}
+                  <span class="text-gray-400 dark:text-gray-500 tabular-nums">
+                    {' '}
+                    · {leverProjectCount(lv)} {t(lang, 'leverProjectsSuffix')}
+                  </span>
+                </div>
+              </a>
+            ))
+          }
+        </div>
+      </div>
+
+      {/* Direct column (2 levers) */}
+      <div class="md:border-l md:border-subtle md:pl-12">
+        <div class="text-xs uppercase tracking-[0.18em] text-amber-700 dark:text-amber-400 font-semibold mb-6">
+          {t(lang, 'leverMapColDirectHint')}
+        </div>
+        <div class="grid gap-y-7">
+          {
+            directLevers.map((lv) => (
+              <a href={localizedHref(`/levers/${leverSlug(lv)}/`, lang)} class="group block transition-colors">
+                <div class="font-serif text-lg md:text-xl font-semibold text-gray-900 dark:text-white group-hover:text-primary transition-colors mb-1.5 leading-tight">
+                  <span class="mr-1.5">{lv.icon}</span>
+                  {pickLocalized(lv, 'name', lang)}
+                </div>
+                <div class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                  {pickLocalized(lv, 'subtitle', lang)}
+                  <span class="text-gray-400 dark:text-gray-500 tabular-nums">
+                    {' '}
+                    · {leverProjectCount(lv)} {t(lang, 'leverProjectsSuffix')}
+                  </span>
+                </div>
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

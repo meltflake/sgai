@@ -1,0 +1,93 @@
+---
+// Full-page Pagefind search — the /search/ route body. Unlike the header
+// modal (lazy, opened via / shortcut), this initializes on load and honors
+// a ?q= query param so other pages can deep-link into a search. The page
+// itself is noindex + excluded from the Pagefind index (searchIndex=false
+// on the layout).
+
+import { t, type Lang } from '~/i18n';
+import { PAGEFIND_TRANSLATIONS } from '~/i18n/pagefind-translations';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+
+const pagefindTranslations = PAGEFIND_TRANSLATIONS[lang] ?? PAGEFIND_TRANSLATIONS.en;
+---
+
+<section class="pt-10 md:pt-14 pb-16 md:pb-24">
+  <div class="max-w-3xl mx-auto px-4 sm:px-6">
+    <h1 class="t-h1 text-gray-900 dark:text-white mb-3">{t(lang, 'searchSiteLabel')}</h1>
+    <p class="text-sm text-gray-600 dark:text-gray-400 mb-8 max-w-prose leading-relaxed">
+      {t(lang, 'searchPageDesc')}
+    </p>
+    <div id="search-page" data-pagefind-translations={JSON.stringify(pagefindTranslations)} class="min-h-[50vh]">
+      <p id="search-page-fallback" class="hidden text-sm text-gray-500 dark:text-gray-400 leading-relaxed">
+        {t(lang, 'searchFallbackMessage')}
+      </p>
+    </div>
+  </div>
+</section>
+
+<link rel="stylesheet" href="/pagefind/pagefind-ui.css" />
+
+<script>
+  function loadScript(src: string): Promise<void> {
+    return new Promise((resolve, reject) => {
+      const s = document.createElement('script');
+      s.src = src;
+      s.onload = () => resolve();
+      s.onerror = () => reject(new Error('failed to load ' + src));
+      document.head.appendChild(s);
+    });
+  }
+
+  async function initSearchPage() {
+    const host = document.getElementById('search-page');
+    if (!host) return;
+    try {
+      await loadScript('/pagefind/pagefind-ui.js');
+      const translations = JSON.parse(host.dataset.pagefindTranslations || '{}');
+      // @ts-expect-error - PagefindUI is exposed as a global by the script above
+      const ui = new window.PagefindUI({
+        element: '#search-page',
+        showSubResults: true,
+        showImages: false,
+        translations,
+      });
+      const q = new URLSearchParams(window.location.search).get('q');
+      if (q) ui.triggerSearch(q);
+      setTimeout(() => {
+        host.querySelector<HTMLInputElement>('input[type="text"]')?.focus();
+      }, 50);
+    } catch (err) {
+      document.getElementById('search-page-fallback')?.classList.remove('hidden');
+      console.warn('Pagefind not available:', err);
+    }
+  }
+
+  initSearchPage();
+</script>
+
+<style is:global>
+  /* Match the header modal's Pagefind theming (SearchModal.astro). */
+  :root {
+    --pagefind-ui-scale: 0.9;
+    --pagefind-ui-primary: rgb(200 16 46);
+    --pagefind-ui-text: rgb(26 26 26);
+    --pagefind-ui-background: rgb(250 247 242);
+    --pagefind-ui-border: rgb(229 229 224);
+    --pagefind-ui-tag: rgb(243 240 234);
+    --pagefind-ui-border-width: 1px;
+    --pagefind-ui-border-radius: 6px;
+    --pagefind-ui-font: var(--aw-font-serif);
+  }
+
+  .dark {
+    --pagefind-ui-text: rgb(229 226 220);
+    --pagefind-ui-background: rgb(15 15 18);
+    --pagefind-ui-border: rgb(40 40 48);
+    --pagefind-ui-tag: rgb(28 28 34);
+  }
+</style>

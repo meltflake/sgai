@@ -7,11 +7,14 @@ import { localizedHref, t, type Lang } from './i18n';
 // resolve their labels through the dictionary.
 
 const labelKeys = {
+  latest: 'navLatest',
   analysis: 'navAnalysis',
   policy: 'navPolicy',
   debates: 'navDebates',
   data: 'navData',
   about: 'navAbout',
+  challenges: 'navChallenges',
+  evolution: 'navEvolution',
   policies: 'navPolicies',
   levers: 'navLevers',
   legalAi: 'navLegalAi',
@@ -39,6 +42,9 @@ function lh(path: string, lang: Lang): string {
 export function getHeaderData(lang: Lang) {
   return {
     links: [
+      // News-portal signal: a top-level "Latest" link straight to the
+      // updates feed, ahead of the editorial sections.
+      { text: t(lang, labelKeys.latest), href: lh('/updates', lang) },
       { text: t(lang, labelKeys.analysis), href: lh('/blog', lang) },
       {
         text: t(lang, labelKeys.policy),
@@ -113,6 +119,17 @@ export function getFooterData(lang: Lang) {
           { text: t(lang, labelKeys.opensource), href: lh('/opensource', lang) },
           { text: t(lang, labelKeys.communityOpensource), href: lh('/community-opensource', lang) },
           { text: t(lang, labelKeys.benchmarking), href: lh('/benchmarking', lang) },
+        ],
+      },
+      {
+        // Orphan-page rescue: about + challenges had no nav entry at all;
+        // evolution / fieldnotes / references move here from Data so the
+        // Data column stays scannable.
+        title: t(lang, labelKeys.about),
+        links: [
+          { text: t(lang, labelKeys.aboutSite), href: lh('/about', lang) },
+          { text: t(lang, labelKeys.challenges), href: lh('/challenges', lang) },
+          { text: t(lang, labelKeys.evolution), href: lh('/evolution', lang) },
           { text: t(lang, labelKeys.fieldnotes), href: lh('/fieldnotes', lang) },
           { text: t(lang, labelKeys.references), href: lh('/references', lang) },
         ],
