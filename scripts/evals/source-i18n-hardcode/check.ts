@@ -22,13 +22,18 @@
 //      — a binary-locale mindset where the other three locales are implicit
 //      and wrong. isJa is flagged too: `isJa ? ja : en` throws zh-tw/ko into
 //      the EN branch (the 2026-07 fallback-leak bug class).
-//   3. `isEn = lang !== '<x>'` / `isZh = lang !== '<x>'` alias definitions —
-//      the root of the binary anti-pattern: any non-<x> locale (including
-//      zh-tw/ko) is collapsed into a single "the other one" branch.
+//   3. `<anyAlias> = lang !== 'zh'` alias definitions (name unrestricted) —
+//      the root of the binary anti-pattern: any non-zh locale (including
+//      zh-tw/ko) is collapsed into a single "the other one" branch. The alias
+//      name is NOT limited to isEn/isZh — `const isNonZh = lang !== 'zh'`
+//      (the 2026-07 methodology.astro escape hatch) is flagged too.
 //   4. `lang !== 'zh' ?` ternaries — same collapse, inline.
 //   5. `COPY[lang] ?? COPY.en` / `COPY[lang] ?? COPY.zh` patterns where
-//      the same file's COPY map literal does NOT declare a `ja:` key.
-//      ja silently falls back to en/zh.
+//      the same file's COPY map literal does NOT declare BOTH a `ja:` and a
+//      `ko:` key, OR the file has no explicit zh-tw handling
+//      (`'zh-tw'` branch or `toTraditional`/`deepToTraditional`). Any of
+//      those missing means zh-tw and/or ko silently fall back to en/zh —
+//      the 2026-07 EvolutionPage.astro leak class.
 //
 // What it does NOT flag:
 //   - `lang === 'ja' ?` ternaries (these are usually CORRECT, e.g.
@@ -100,7 +105,7 @@ type Rule =
   | 'isJa-ternary'
   | 'binary-lang-alias'
   | 'lang-neq-zh-ternary'
-  | 'copy-no-ja';
+  | 'copy-missing-locale';
 
 interface Finding {
   file: string;
@@ -149,12 +154,22 @@ function* walkSource(dir: string): Generator<string> {
 }
 
 const PATTERNS: { rule: Rule; re: RegExp }[] = [
-  // Binary-locale alias definition: `const isEn = lang !== 'zh'` (or isZh).
-  // This is the ROOT of the whole anti-pattern — it collapses four non-<x>
-  // locales (en OR ja OR zh-tw OR ko) into one boolean, so every later
-  // `isEn ? ... : ...` throws zh-tw/ko into whichever branch. Placed first so
-  // the definition line is tagged as the alias rather than a ternary.
-  { rule: 'binary-lang-alias', re: /\b(isEn|isZh)\s*=\s*lang\s*!==\s*['"]/ },
+  // Binary-locale alias definition: `const isEn = lang !== 'zh'` — but the
+  // alias name is UNRESTRICTED. This is the ROOT of the whole anti-pattern —
+  // it collapses four non-zh locales (en OR ja OR zh-tw OR ko) into one
+  // boolean, so every later `alias ? ... : ...` throws zh-tw/ko into whichever
+  // branch. The 2026-07 methodology.astro leak used `const isNonZh = lang !==
+  // 'zh'` precisely to escape the old `isEn|isZh`-only regex, so we now match
+  // any identifier assigned `lang !== 'zh'`. We deliberately match ONLY the
+  // `!== 'zh'` form: the equal-value form (`lang === 'en'`, `lang === 'zh'`)
+  // is a legitimate single-locale gate and must NOT be flagged here (that would
+  // false-positive on the many correct `const isEn = lang === 'en'` lines in
+  // shared components). Placed first so the definition line is tagged as the
+  // alias rather than a ternary.
+  {
+    rule: 'binary-lang-alias',
+    re: /\b(?:const\s+|let\s+|var\s+)?[A-Za-z_$][\w$]*\s*=\s*lang\s*!==\s*['"]zh['"]/,
+  },
   // `lang === 'zh' ?` — common shape: `lang === 'zh' ? '中文' : 'English'`.
   // The ja/zh-tw/ko branches are silently absent. `lang === 'ja' ?` is
   // intentionally NOT here — explicit ja handling is usually correct.
@@ -214,13 +229,25 @@ function scanFile(filePath: string): Finding[] {
     }
   }
 
-  // COPY-no-ja whole-file check.
-  // Look for the canonical "ja-missing fallback" shape:
-  //   const c = COPY[lang] ?? COPY.en ?? COPY.zh!;
-  // and assert COPY object literal declares a `ja:` key. If not, flag the
-  // first `COPY[lang]` line.
+  // copy-missing-locale whole-file check (supersedes the old copy-no-ja,
+  // which only asserted a `ja:` key existed).
+  //
+  // Look for the canonical "locale-incomplete fallback" shape:
+  //   const c = COPY[lang] ?? COPY.en;    // (or ?? COPY.zh)
+  // On a five-locale site this is only safe when the COPY object literal
+  // declares BOTH `ja:` and `ko:` keys AND the file has explicit zh-tw
+  // handling (a `'zh-tw'` branch, or a `toTraditional`/`deepToTraditional`
+  // call that derives the Traditional string from zh). The 2026-07
+  // EvolutionPage.astro leak passed the old ja-only check — its COPY had
+  // `ja:` — yet still threw zh-tw and ko into the EN fallback because it had
+  // no ko key and no zh-tw derivation. Flag the first `COPY[lang]` line when
+  // any of those three coverings is missing.
   const copyFallbackRe = /COPY\s*\[\s*lang\s*\]\s*\?\?\s*COPY\.(en|zh)/;
-  const copyDeclaresJa = /\bja\s*:\s*\{/m;
+  const copyDeclaresJa = /\bja\s*:\s*[{[('"`]/m;
+  const copyDeclaresKo = /\bko\s*:\s*[{[('"`]/m;
+  // zh-tw is handled either by an explicit locale branch or by deriving the
+  // Traditional string from zh via OpenCC at render time.
+  const zhTwHandled = /['"]zh-tw['"]/.test(src) || /\b(?:deepT|t)oTraditional\b/.test(src);
   let copyFallbackLine = -1;
   for (let i = 0; i < lines.length; i++) {
     if (copyFallbackRe.test(lines[i])) {
@@ -228,11 +255,15 @@ function scanFile(filePath: string): Finding[] {
       break;
     }
   }
-  if (copyFallbackLine !== -1 && !copyDeclaresJa.test(src) && !ignored.has(copyFallbackLine)) {
+  if (
+    copyFallbackLine !== -1 &&
+    !ignored.has(copyFallbackLine) &&
+    (!copyDeclaresJa.test(src) || !copyDeclaresKo.test(src) || !zhTwHandled)
+  ) {
     out.push({
       file: rel,
       line: copyFallbackLine,
-      rule: 'copy-no-ja',
+      rule: 'copy-missing-locale',
       excerpt: lines[copyFallbackLine - 1].trim().slice(0, 120),
     });
   }
@@ -326,7 +357,7 @@ function summarize(findings: Finding[], totalFiles: number): Summary {
     'isJa-ternary': 0,
     'binary-lang-alias': 0,
     'lang-neq-zh-ternary': 0,
-    'copy-no-ja': 0,
+    'copy-missing-locale': 0,
   };
   const dirty = new Set<string>();
   for (const f of findings) {
@@ -411,7 +442,7 @@ async function main(): Promise<void> {
     process.stdout.write('\nFix options:\n');
     process.stdout.write('  - Replace inline ternary with t(lang, "key") + add ja dict entry in src/i18n/index.ts\n');
     process.stdout.write('  - Replace record-field ternary with pickLocalized(record, "field", lang)\n');
-    process.stdout.write('  - For COPY map, add a `ja:` entry alongside `zh:` and `en:`\n');
+    process.stdout.write('  - For COPY map, add `ja:` + `ko:` entries and a zh-tw branch (or deepToTraditional)\n');
     process.stdout.write('  - Last resort: add `// i18n-allow-hardcode` on the line above (NEEDS rationale comment)\n');
     if (!opts.reportOnly) process.exit(1);
   } else {

