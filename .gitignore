@@ -60,6 +60,8 @@ scripts/i18n/data/
 
 # eval reports — historical artefacts, regenerated each run
 scripts/evals/*/reports/
+# eval caches (sha256-keyed ai-summary / translation output), regenerated each run
+scripts/evals/*/cache/
 scripts/hansard/data/translate-cache-ko/
 
 # data-relations review queues are review-in-progress working files;
