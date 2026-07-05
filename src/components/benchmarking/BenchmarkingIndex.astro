@@ -42,9 +42,15 @@ const PULL_QUOTE_STRAIGHT =
   'Useful benchmarking is not "Country X is strong at AI". It asks which concrete object became a national capability: a fund, a university, a model, a testing framework, a government assistant, or a supply-chain node.';
 const PULL_QUOTE_ZH =
   '真正有用的对标，不是"某国 AI 很强"这种空话，而是看它把哪个具体对象做成了国家能力：一只基金、一所大学、一个模型、一套测试框架、一个政府 AI 助手，或一个供应链节点。';
+const PULL_QUOTE_JA =
+  '本当に有用なベンチマークとは「某国は AI に強い」といった空論ではなく、どの具体的な対象を国家的能力へと変えたかを見ることだ——一つのファンド、一つの大学、一つのモデル、一つのテスト枠組み、一つの政府 AI アシスタント、あるいは一つのサプライチェーン・ノード。';
+const PULL_QUOTE_KO =
+  "정말 유용한 벤치마킹은 '어느 나라가 AI에 강하다'는 공허한 말이 아니라, 어떤 구체적 대상을 국가 역량으로 만들었는지를 보는 것이다——하나의 펀드, 하나의 대학, 하나의 모델, 하나의 테스트 프레임워크, 하나의 정부 AI 어시스턴트, 또는 하나의 공급망 노드.";
 let pullQuoteCopy = PULL_QUOTE_STRAIGHT;
 if (lang === 'zh') pullQuoteCopy = PULL_QUOTE_ZH;
 if (lang === 'zh-tw') pullQuoteCopy = toTraditional(PULL_QUOTE_ZH);
+if (lang === 'ja') pullQuoteCopy = PULL_QUOTE_JA;
+if (lang === 'ko') pullQuoteCopy = PULL_QUOTE_KO;
 if (lang === 'en')
   pullQuoteCopy =
     'Useful benchmarking is not “Country X is strong at AI”. It asks which concrete object became a national capability: a fund, a university, a model, a testing framework, a government assistant, or a supply-chain node.';
