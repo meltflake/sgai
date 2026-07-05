@@ -735,106 +735,6 @@
     "rule": "isZh-ternary"
   },
   {
-    "file": "src/pages/[lang]/benchmarking/index.astro",
-    "line": 24,
-    "rule": "isZh-ternary"
-  },
-  {
-    "file": "src/pages/[lang]/benchmarking/index.astro",
-    "line": 67,
-    "rule": "isZh-ternary"
-  },
-  {
-    "file": "src/pages/[lang]/benchmarking/index.astro",
-    "line": 71,
-    "rule": "isZh-ternary"
-  },
-  {
-    "file": "src/pages/[lang]/benchmarking/index.astro",
-    "line": 75,
-    "rule": "isZh-ternary"
-  },
-  {
-    "file": "src/pages/[lang]/benchmarking/index.astro",
-    "line": 84,
-    "rule": "isZh-ternary"
-  },
-  {
-    "file": "src/pages/[lang]/benchmarking/index.astro",
-    "line": 94,
-    "rule": "isZh-ternary"
-  },
-  {
-    "file": "src/pages/[lang]/benchmarking/index.astro",
-    "line": 130,
-    "rule": "isZh-ternary"
-  },
-  {
-    "file": "src/pages/[lang]/benchmarking/index.astro",
-    "line": 140,
-    "rule": "isZh-ternary"
-  },
-  {
-    "file": "src/pages/[lang]/benchmarking/index.astro",
-    "line": 162,
-    "rule": "isZh-ternary"
-  },
-  {
-    "file": "src/pages/[lang]/benchmarking/index.astro",
-    "line": 167,
-    "rule": "isZh-ternary"
-  },
-  {
-    "file": "src/pages/[lang]/benchmarking/index.astro",
-    "line": 168,
-    "rule": "isZh-ternary"
-  },
-  {
-    "file": "src/pages/[lang]/benchmarking/index.astro",
-    "line": 169,
-    "rule": "isZh-ternary"
-  },
-  {
-    "file": "src/pages/[lang]/benchmarking/index.astro",
-    "line": 170,
-    "rule": "isZh-ternary"
-  },
-  {
-    "file": "src/pages/[lang]/benchmarking/index.astro",
-    "line": 171,
-    "rule": "isZh-ternary"
-  },
-  {
-    "file": "src/pages/[lang]/benchmarking/index.astro",
-    "line": 172,
-    "rule": "isZh-ternary"
-  },
-  {
-    "file": "src/pages/[lang]/benchmarking/index.astro",
-    "line": 173,
-    "rule": "isZh-ternary"
-  },
-  {
-    "file": "src/pages/[lang]/benchmarking/index.astro",
-    "line": 212,
-    "rule": "isZh-ternary"
-  },
-  {
-    "file": "src/pages/[lang]/benchmarking/index.astro",
-    "line": 230,
-    "rule": "isZh-ternary"
-  },
-  {
-    "file": "src/pages/[lang]/benchmarking/index.astro",
-    "line": 242,
-    "rule": "isZh-ternary"
-  },
-  {
-    "file": "src/pages/[lang]/benchmarking/index.astro",
-    "line": 243,
-    "rule": "isZh-ternary"
-  },
-  {
     "file": "src/pages/[lang]/blog/[...page].astro",
     "line": 34,
     "rule": "isZh-ternary"
@@ -1405,101 +1305,6 @@
     "rule": "isZh-ternary"
   },
   {
-    "file": "src/pages/[lang]/legal-ai/index.astro",
-    "line": 30,
-    "rule": "isZh-ternary"
-  },
-  {
-    "file": "src/pages/[lang]/legal-ai/index.astro",
-    "line": 48,
-    "rule": "isZh-ternary"
-  },
-  {
-    "file": "src/pages/[lang]/legal-ai/index.astro",
-    "line": 49,
-    "rule": "isZh-ternary"
-  },
-  {
-    "file": "src/pages/[lang]/legal-ai/index.astro",
-    "line": 69,
-    "rule": "isZh-ternary"
-  },
-  {
-    "file": "src/pages/[lang]/legal-ai/index.astro",
-    "line": 77,
-    "rule": "isZh-ternary"
-  },
-  {
-    "file": "src/pages/[lang]/legal-ai/index.astro",
-    "line": 80,
-    "rule": "isZh-ternary"
-  },
-  {
-    "file": "src/pages/[lang]/legal-ai/index.astro",
-    "line": 89,
-    "rule": "isZh-ternary"
-  },
-  {
-    "file": "src/pages/[lang]/legal-ai/index.astro",
-    "line": 93,
-    "rule": "isZh-ternary"
-  },
-  {
-    "file": "src/pages/[lang]/legal-ai/index.astro",
-    "line": 99,
-    "rule": "isZh-ternary"
-  },
-  {
-    "file": "src/pages/[lang]/legal-ai/index.astro",
-    "line": 111,
-    "rule": "isZh-ternary"
-  },
-  {
-    "file": "src/pages/[lang]/legal-ai/index.astro",
-    "line": 115,
-    "rule": "isZh-ternary"
-  },
-  {
-    "file": "src/pages/[lang]/legal-ai/index.astro",
-    "line": 119,
-    "rule": "isZh-ternary"
-  },
-  {
-    "file": "src/pages/[lang]/legal-ai/index.astro",
-    "line": 122,
-    "rule": "isZh-ternary"
-  },
-  {
-    "file": "src/pages/[lang]/legal-ai/index.astro",
-    "line": 123,
-    "rule": "isZh-ternary"
-  },
-  {
-    "file": "src/pages/[lang]/legal-ai/index.astro",
-    "line": 131,
-    "rule": "isZh-ternary"
-  },
-  {
-    "file": "src/pages/[lang]/legal-ai/index.astro",
-    "line": 143,
-    "rule": "isZh-ternary"
-  },
-  {
-    "file": "src/pages/[lang]/legal-ai/index.astro",
-    "line": 149,
-    "rule": "isZh-ternary"
-  },
-  {
-    "file": "src/pages/[lang]/legal-ai/index.astro",
-    "line": 162,
-    "rule": "isZh-ternary"
-  },
-  {
-    "file": "src/pages/[lang]/legal-ai/index.astro",
-    "line": 166,
-    "rule": "isZh-ternary"
-  },
-  {
     "file": "src/pages/[lang]/levers/[id].astro",
     "line": 59,
     "rule": "isZh-ternary"
@@ -1990,141 +1795,6 @@
     "rule": "isZh-ternary"
   },
   {
-    "file": "src/pages/[lang]/startups/index.astro",
-    "line": 21,
-    "rule": "isZh-ternary"
-  },
-  {
-    "file": "src/pages/[lang]/startups/index.astro",
-    "line": 23,
-    "rule": "isZh-ternary"
-  },
-  {
-    "file": "src/pages/[lang]/startups/index.astro",
-    "line": 24,
-    "rule": "isZh-ternary"
-  },
-  {
-    "file": "src/pages/[lang]/startups/index.astro",
-    "line": 26,
-    "rule": "isZh-ternary"
-  },
-  {
-    "file": "src/pages/[lang]/startups/index.astro",
-    "line": 27,
-    "rule": "isZh-ternary"
-  },
-  {
-    "file": "src/pages/[lang]/startups/index.astro",
-    "line": 28,
-    "rule": "isZh-ternary"
-  },
-  {
-    "file": "src/pages/[lang]/startups/index.astro",
-    "line": 29,
-    "rule": "isZh-ternary"
-  },
-  {
-    "file": "src/pages/[lang]/startups/index.astro",
-    "line": 64,
-    "rule": "isZh-ternary"
-  },
-  {
-    "file": "src/pages/[lang]/startups/index.astro",
-    "line": 66,
-    "rule": "isZh-ternary"
-  },
-  {
-    "file": "src/pages/[lang]/startups/index.astro",
-    "line": 77,
-    "rule": "isZh-ternary"
-  },
-  {
-    "file": "src/pages/[lang]/startups/index.astro",
-    "line": 92,
-    "rule": "isZh-ternary"
-  },
-  {
-    "file": "src/pages/[lang]/startups/index.astro",
-    "line": 96,
-    "rule": "isZh-ternary"
-  },
-  {
-    "file": "src/pages/[lang]/startups/index.astro",
-    "line": 100,
-    "rule": "isZh-ternary"
-  },
-  {
-    "file": "src/pages/[lang]/startups/index.astro",
-    "line": 113,
-    "rule": "isZh-ternary"
-  },
-  {
-    "file": "src/pages/[lang]/startups/index.astro",
-    "line": 124,
-    "rule": "isZh-ternary"
-  },
-  {
-    "file": "src/pages/[lang]/startups/index.astro",
-    "line": 152,
-    "rule": "isZh-ternary"
-  },
-  {
-    "file": "src/pages/[lang]/startups/index.astro",
-    "line": 157,
-    "rule": "isZh-ternary"
-  },
-  {
-    "file": "src/pages/[lang]/startups/index.astro",
-    "line": 162,
-    "rule": "isZh-ternary"
-  },
-  {
-    "file": "src/pages/[lang]/startups/index.astro",
-    "line": 178,
-    "rule": "isZh-ternary"
-  },
-  {
-    "file": "src/pages/[lang]/startups/index.astro",
-    "line": 182,
-    "rule": "isZh-ternary"
-  },
-  {
-    "file": "src/pages/[lang]/startups/index.astro",
-    "line": 194,
-    "rule": "isZh-ternary"
-  },
-  {
-    "file": "src/pages/[lang]/startups/index.astro",
-    "line": 209,
-    "rule": "isZh-ternary"
-  },
-  {
-    "file": "src/pages/[lang]/startups/index.astro",
-    "line": 213,
-    "rule": "isZh-ternary"
-  },
-  {
-    "file": "src/pages/[lang]/startups/index.astro",
-    "line": 230,
-    "rule": "isZh-ternary"
-  },
-  {
-    "file": "src/pages/[lang]/startups/index.astro",
-    "line": 234,
-    "rule": "isZh-ternary"
-  },
-  {
-    "file": "src/pages/[lang]/startups/index.astro",
-    "line": 259,
-    "rule": "isZh-ternary"
-  },
-  {
-    "file": "src/pages/[lang]/startups/index.astro",
-    "line": 263,
-    "rule": "isZh-ternary"
-  },
-  {
     "file": "src/pages/[lang]/talent/[id].astro",
     "line": 46,
     "rule": "isZh-ternary"
@@ -2220,101 +1890,6 @@
     "rule": "isZh-ternary"
   },
   {
-    "file": "src/pages/[lang]/talent/index.astro",
-    "line": 34,
-    "rule": "isZh-ternary"
-  },
-  {
-    "file": "src/pages/[lang]/talent/index.astro",
-    "line": 85,
-    "rule": "isZh-ternary"
-  },
-  {
-    "file": "src/pages/[lang]/talent/index.astro",
-    "line": 96,
-    "rule": "isZh-ternary"
-  },
-  {
-    "file": "src/pages/[lang]/videos/index.astro",
-    "line": 15,
-    "rule": "isZh-ternary"
-  },
-  {
-    "file": "src/pages/[lang]/videos/index.astro",
-    "line": 17,
-    "rule": "isZh-ternary"
-  },
-  {
-    "file": "src/pages/[lang]/videos/index.astro",
-    "line": 64,
-    "rule": "isZh-ternary"
-  },
-  {
-    "file": "src/pages/[lang]/videos/index.astro",
-    "line": 68,
-    "rule": "isZh-ternary"
-  },
-  {
-    "file": "src/pages/[lang]/videos/index.astro",
-    "line": 72,
-    "rule": "isZh-ternary"
-  },
-  {
-    "file": "src/pages/[lang]/videos/index.astro",
-    "line": 80,
-    "rule": "isZh-ternary"
-  },
-  {
-    "file": "src/pages/[lang]/videos/index.astro",
-    "line": 88,
-    "rule": "isZh-ternary"
-  },
-  {
-    "file": "src/pages/[lang]/videos/index.astro",
-    "line": 110,
-    "rule": "isZh-ternary"
-  },
-  {
-    "file": "src/pages/[lang]/videos/index.astro",
-    "line": 118,
-    "rule": "isZh-ternary"
-  },
-  {
-    "file": "src/pages/[lang]/videos/index.astro",
-    "line": 140,
-    "rule": "isZh-ternary"
-  },
-  {
-    "file": "src/pages/[lang]/videos/index.astro",
-    "line": 148,
-    "rule": "isZh-ternary"
-  },
-  {
-    "file": "src/pages/[lang]/videos/index.astro",
-    "line": 174,
-    "rule": "isZh-ternary"
-  },
-  {
-    "file": "src/pages/[lang]/videos/index.astro",
-    "line": 244,
-    "rule": "isZh-ternary"
-  },
-  {
-    "file": "src/pages/[lang]/videos/index.astro",
-    "line": 247,
-    "rule": "isZh-ternary"
-  },
-  {
-    "file": "src/pages/[lang]/videos/index.astro",
-    "line": 282,
-    "rule": "isZh-ternary"
-  },
-  {
-    "file": "src/pages/[lang]/videos/index.astro",
-    "line": 283,
-    "rule": "isZh-ternary"
-  },
-  {
     "file": "src/pages/[lang]/voices/[id].astro",
     "line": 36,
     "rule": "isZh-ternary"
@@ -2380,138 +1955,493 @@
     "rule": "isZh-ternary"
   },
   {
-    "file": "src/pages/[lang]/voices/index.astro",
-    "line": 99,
+    "file": "src/components/benchmarking/BenchmarkingIndex.astro",
+    "line": 26,
     "rule": "isZh-ternary"
   },
   {
-    "file": "src/pages/[lang]/voices/index.astro",
+    "file": "src/components/benchmarking/BenchmarkingIndex.astro",
+    "line": 75,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/components/benchmarking/BenchmarkingIndex.astro",
+    "line": 79,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/components/benchmarking/BenchmarkingIndex.astro",
+    "line": 83,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/components/benchmarking/BenchmarkingIndex.astro",
+    "line": 92,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/components/benchmarking/BenchmarkingIndex.astro",
+    "line": 102,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/components/benchmarking/BenchmarkingIndex.astro",
+    "line": 138,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/components/benchmarking/BenchmarkingIndex.astro",
+    "line": 148,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/components/benchmarking/BenchmarkingIndex.astro",
+    "line": 170,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/components/benchmarking/BenchmarkingIndex.astro",
+    "line": 175,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/components/benchmarking/BenchmarkingIndex.astro",
+    "line": 176,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/components/benchmarking/BenchmarkingIndex.astro",
+    "line": 177,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/components/benchmarking/BenchmarkingIndex.astro",
+    "line": 178,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/components/benchmarking/BenchmarkingIndex.astro",
+    "line": 179,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/components/benchmarking/BenchmarkingIndex.astro",
+    "line": 180,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/components/benchmarking/BenchmarkingIndex.astro",
+    "line": 181,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/components/benchmarking/BenchmarkingIndex.astro",
+    "line": 220,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/components/benchmarking/BenchmarkingIndex.astro",
+    "line": 238,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/components/benchmarking/BenchmarkingIndex.astro",
+    "line": 250,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/components/benchmarking/BenchmarkingIndex.astro",
+    "line": 251,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/components/ecosystem/EcosystemIndex.astro",
+    "line": 19,
+    "rule": "lang-eq-en-ternary"
+  },
+  {
+    "file": "src/components/legal-ai/LegalAiIndex.astro",
+    "line": 23,
+    "rule": "lang-eq-en-ternary"
+  },
+  {
+    "file": "src/components/legal-ai/LegalAiIndex.astro",
+    "line": 24,
+    "rule": "lang-eq-en-ternary"
+  },
+  {
+    "file": "src/components/legal-ai/LegalAiIndex.astro",
+    "line": 174,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/components/startups/StartupsIndex.astro",
+    "line": 22,
+    "rule": "lang-eq-en-ternary"
+  },
+  {
+    "file": "src/components/startups/StartupsIndex.astro",
+    "line": 28,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/components/startups/StartupsIndex.astro",
+    "line": 30,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/components/startups/StartupsIndex.astro",
+    "line": 31,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/components/startups/StartupsIndex.astro",
+    "line": 33,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/components/startups/StartupsIndex.astro",
+    "line": 34,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/components/startups/StartupsIndex.astro",
+    "line": 35,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/components/startups/StartupsIndex.astro",
+    "line": 36,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/components/startups/StartupsIndex.astro",
+    "line": 72,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/components/startups/StartupsIndex.astro",
+    "line": 74,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/components/startups/StartupsIndex.astro",
+    "line": 85,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/components/startups/StartupsIndex.astro",
+    "line": 100,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/components/startups/StartupsIndex.astro",
+    "line": 104,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/components/startups/StartupsIndex.astro",
+    "line": 108,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/components/startups/StartupsIndex.astro",
+    "line": 121,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/components/startups/StartupsIndex.astro",
+    "line": 132,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/components/startups/StartupsIndex.astro",
+    "line": 160,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/components/startups/StartupsIndex.astro",
+    "line": 165,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/components/startups/StartupsIndex.astro",
+    "line": 170,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/components/startups/StartupsIndex.astro",
+    "line": 186,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/components/startups/StartupsIndex.astro",
+    "line": 190,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/components/startups/StartupsIndex.astro",
+    "line": 202,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/components/startups/StartupsIndex.astro",
+    "line": 217,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/components/startups/StartupsIndex.astro",
+    "line": 221,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/components/startups/StartupsIndex.astro",
+    "line": 238,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/components/startups/StartupsIndex.astro",
+    "line": 242,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/components/startups/StartupsIndex.astro",
+    "line": 267,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/components/startups/StartupsIndex.astro",
+    "line": 271,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/components/talent/TalentIndex.astro",
+    "line": 38,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/components/talent/TalentIndex.astro",
     "line": 103,
     "rule": "isZh-ternary"
   },
   {
-    "file": "src/pages/[lang]/voices/index.astro",
-    "line": 107,
+    "file": "src/components/videos/VideosIndex.astro",
+    "line": 17,
     "rule": "isZh-ternary"
   },
   {
-    "file": "src/pages/[lang]/voices/index.astro",
-    "line": 111,
+    "file": "src/components/videos/VideosIndex.astro",
+    "line": 19,
     "rule": "isZh-ternary"
   },
   {
-    "file": "src/pages/[lang]/voices/index.astro",
-    "line": 117,
+    "file": "src/components/videos/VideosIndex.astro",
+    "line": 67,
     "rule": "isZh-ternary"
   },
   {
-    "file": "src/pages/[lang]/voices/index.astro",
-    "line": 129,
+    "file": "src/components/videos/VideosIndex.astro",
+    "line": 71,
     "rule": "isZh-ternary"
   },
   {
-    "file": "src/pages/[lang]/voices/index.astro",
-    "line": 171,
+    "file": "src/components/videos/VideosIndex.astro",
+    "line": 75,
     "rule": "isZh-ternary"
   },
   {
-    "file": "src/pages/[lang]/voices/index.astro",
-    "line": 210,
+    "file": "src/components/videos/VideosIndex.astro",
+    "line": 83,
     "rule": "isZh-ternary"
   },
   {
-    "file": "src/pages/[lang]/voices/index.astro",
-    "line": 219,
+    "file": "src/components/videos/VideosIndex.astro",
+    "line": 91,
     "rule": "isZh-ternary"
   },
   {
-    "file": "src/pages/[lang]/voices/index.astro",
-    "line": 227,
+    "file": "src/components/videos/VideosIndex.astro",
+    "line": 113,
     "rule": "isZh-ternary"
   },
   {
-    "file": "src/pages/[lang]/voices/index.astro",
-    "line": 249,
+    "file": "src/components/videos/VideosIndex.astro",
+    "line": 121,
     "rule": "isZh-ternary"
   },
   {
-    "file": "src/pages/[lang]/voices/index.astro",
-    "line": 257,
+    "file": "src/components/videos/VideosIndex.astro",
+    "line": 143,
     "rule": "isZh-ternary"
   },
   {
-    "file": "src/pages/[lang]/voices/index.astro",
-    "line": 283,
+    "file": "src/components/videos/VideosIndex.astro",
+    "line": 151,
     "rule": "isZh-ternary"
   },
   {
-    "file": "src/pages/[lang]/voices/index.astro",
-    "line": 330,
+    "file": "src/components/videos/VideosIndex.astro",
+    "line": 177,
     "rule": "isZh-ternary"
   },
   {
-    "file": "src/pages/[lang]/voices/index.astro",
-    "line": 351,
+    "file": "src/components/videos/VideosIndex.astro",
+    "line": 247,
     "rule": "isZh-ternary"
   },
   {
-    "file": "src/pages/[lang]/voices/index.astro",
-    "line": 354,
+    "file": "src/components/videos/VideosIndex.astro",
+    "line": 250,
     "rule": "isZh-ternary"
   },
   {
-    "file": "src/pages/[lang]/voices/index.astro",
-    "line": 363,
+    "file": "src/components/videos/VideosIndex.astro",
+    "line": 286,
     "rule": "isZh-ternary"
   },
   {
-    "file": "src/pages/[lang]/voices/index.astro",
-    "line": 372,
+    "file": "src/components/videos/VideosIndex.astro",
+    "line": 287,
     "rule": "isZh-ternary"
   },
   {
-    "file": "src/pages/[lang]/voices/index.astro",
-    "line": 380,
+    "file": "src/components/voices/VoicesIndex.astro",
+    "line": 25,
+    "rule": "lang-eq-en-ternary"
+  },
+  {
+    "file": "src/components/voices/VoicesIndex.astro",
+    "line": 100,
     "rule": "isZh-ternary"
   },
   {
-    "file": "src/pages/[lang]/voices/index.astro",
-    "line": 391,
+    "file": "src/components/voices/VoicesIndex.astro",
+    "line": 104,
     "rule": "isZh-ternary"
   },
   {
-    "file": "src/pages/[lang]/voices/index.astro",
-    "line": 402,
+    "file": "src/components/voices/VoicesIndex.astro",
+    "line": 108,
     "rule": "isZh-ternary"
   },
   {
-    "file": "src/pages/[lang]/voices/index.astro",
-    "line": 410,
+    "file": "src/components/voices/VoicesIndex.astro",
+    "line": 112,
     "rule": "isZh-ternary"
   },
   {
-    "file": "src/pages/[lang]/voices/index.astro",
-    "line": 436,
+    "file": "src/components/voices/VoicesIndex.astro",
+    "line": 118,
     "rule": "isZh-ternary"
   },
   {
-    "file": "src/pages/[lang]/voices/index.astro",
-    "line": 494,
+    "file": "src/components/voices/VoicesIndex.astro",
+    "line": 130,
     "rule": "isZh-ternary"
   },
   {
-    "file": "src/pages/[lang]/voices/index.astro",
-    "line": 497,
+    "file": "src/components/voices/VoicesIndex.astro",
+    "line": 172,
     "rule": "isZh-ternary"
   },
   {
-    "file": "src/pages/[lang]/voices/index.astro",
-    "line": 557,
+    "file": "src/components/voices/VoicesIndex.astro",
+    "line": 211,
     "rule": "isZh-ternary"
   },
   {
-    "file": "src/pages/[lang]/voices/index.astro",
-    "line": 558,
+    "file": "src/components/voices/VoicesIndex.astro",
+    "line": 220,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/components/voices/VoicesIndex.astro",
+    "line": 228,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/components/voices/VoicesIndex.astro",
+    "line": 250,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/components/voices/VoicesIndex.astro",
+    "line": 258,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/components/voices/VoicesIndex.astro",
+    "line": 284,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/components/voices/VoicesIndex.astro",
+    "line": 331,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/components/voices/VoicesIndex.astro",
+    "line": 352,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/components/voices/VoicesIndex.astro",
+    "line": 355,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/components/voices/VoicesIndex.astro",
+    "line": 364,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/components/voices/VoicesIndex.astro",
+    "line": 373,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/components/voices/VoicesIndex.astro",
+    "line": 381,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/components/voices/VoicesIndex.astro",
+    "line": 392,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/components/voices/VoicesIndex.astro",
+    "line": 403,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/components/voices/VoicesIndex.astro",
+    "line": 411,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/components/voices/VoicesIndex.astro",
+    "line": 437,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/components/voices/VoicesIndex.astro",
+    "line": 495,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/components/voices/VoicesIndex.astro",
+    "line": 498,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/components/voices/VoicesIndex.astro",
+    "line": 559,
+    "rule": "isZh-ternary"
+  },
+  {
+    "file": "src/components/voices/VoicesIndex.astro",
+    "line": 560,
     "rule": "isZh-ternary"
   }
 ]
