@@ -8,28 +8,43 @@ import Headline from '~/components/ui/Headline.astro';
 import { ecosystemStats, exits, investors, unicorns, verticals } from '~/data/startups';
 import { getStartupAiRelation, startupEntitySlug } from '~/utils/entity-pages';
 import { NON_DEFAULT_ROUTE_LOCALES, localizedHref, pickLocalized, t, type Lang } from '~/i18n';
+import { toTraditional } from '~/i18n/opencc';
 
 export function getStaticPaths() {
   return NON_DEFAULT_ROUTE_LOCALES.map((lang) => ({ params: { lang } }));
 }
 
 const lang = Astro.params.lang as Lang;
-const isZh = lang === 'zh';
 
 const hrefFor = (entity: { id?: string; name: string; nameEn?: string }) =>
   localizedHref(`/startups/${startupEntitySlug(entity)}/`, lang);
 
 const stats = [
-  { value: ecosystemStats.totalStartups, label: isZh ? 'AI 公司数（Tracxn 收录）' : 'AI companies (Tracxn)' },
+  { value: ecosystemStats.totalStartups, label: t(lang, 'startupStatAiCompanies') },
   {
-    value: isZh ? `全球第 ${ecosystemStats.globalRank}` : `#${ecosystemStats.globalRank}`,
-    label: isZh ? 'AI 枢纽排名' : 'Global AI hub rank',
+    value: t(lang, 'startupStatGlobalRank').replace('{rank}', String(ecosystemStats.globalRank)),
+    label: t(lang, 'startupStatHubRank'),
   },
-  { value: ecosystemStats.seaFundingShare, label: isZh ? '东南亚 AI 融资占比' : 'SEA AI funding share' },
-  { value: ecosystemStats.totalVCRaised, label: isZh ? 'VC 融资总额' : 'Total VC raised' },
-  { value: String(ecosystemStats.unicorns), label: isZh ? '独角兽' : 'Unicorns' },
-  { value: ecosystemStats.govCommitment, label: isZh ? '政府 AI 承诺投入' : 'Government AI commitment' },
+  { value: ecosystemStats.seaFundingShare, label: t(lang, 'startupStatSeaFundingShare') },
+  { value: ecosystemStats.totalVCRaised, label: t(lang, 'startupStatTotalVcRaised') },
+  { value: String(ecosystemStats.unicorns), label: t(lang, 'startupStatUnicorns') },
+  { value: ecosystemStats.govCommitment, label: t(lang, 'startupStatGovCommitment') },
 ];
+
+// Bottom data-note disclaimer — one-off long-form text with embedded dynamic
+// values (dataDate / profileUpdated), so it's kept as a page-local per-lang
+// template rather than a dictionary key. zh-tw derives from zh via OpenCC.
+const disclaimerTemplates: Record<Lang, string> = {
+  zh: `基础统计重定基线于 {dataDate}，逐项锚定单一来源：AI 公司数与 VC 融资总额来自 Tracxn（2026-05 口径：548 家、累计融资 US$1.9B）；东南亚 AI 融资占比按 e-Conomy SEA 2025 报告（Google/Temasek/Bain）估算——新加坡 US$1.31B / 区域逾 US$2.3B（截至 2025 年 6 月的 12 个月）；政府 AI 承诺投入为 2024 年以来公告合计（Budget 2024 逾 S$10 亿 + Budget 2025 企业算力计划至多 S$1.5 亿 + 2026 年 1 月国家 AI 研发计划追加逾 S$10 亿）；AI 枢纽排名来自 Tortoise Global AI Index 2025；独角兽为本页收录档案数。实体档案整理于 {profileUpdated}。融资金额来源于公开报道，实际数字可能有出入。`,
+  en: `Aggregate statistics were re-baselined on {dataDate}, each pinned to a single named source: the AI company count and total VC raised are from Tracxn (as of May 2026: 548 companies, US$1.9B cumulative); the SEA AI funding share is estimated from the e-Conomy SEA 2025 report by Google, Temasek and Bain (Singapore US$1.31B of the region's US$2.3B+ in the 12 months to June 2025); the government AI commitment sums announcements since 2024 (over S$1B at Budget 2024, up to S$150M for the Enterprise Compute Initiative at Budget 2025, and over S$1B for the National AI R&D Plan announced in January 2026); the AI hub rank is from the Tortoise Global AI Index 2025; the unicorn count is the number of profiles curated on this page. Entity profiles were organized on {profileUpdated}. Funding amounts follow public reporting and actual numbers may differ.`,
+  ja: `集計統計は {dataDate} にリベースラインされ、各数値は単一の出典に紐づいています：AI 企業数と VC 資金調達総額は Tracxn（2026年5月時点：548社、累計 US$1.9B）；東南アジア AI 資金調達シェアは e-Conomy SEA 2025 レポート（Google/Temasek/Bain）による推計——シンガポールは US$1.31B／地域全体は 2025年6月までの12か月で US$2.3B 超；政府 AI コミットメントは2024年以降の発表額の合計（Budget 2024 で50億シンガポールドル超 + Budget 2025 の Enterprise Compute Initiative で最大1.5億シンガポールドル + 2026年1月の国家 AI 研究開発計画で追加10億シンガポールドル超）；AI ハブランキングは Tortoise Global AI Index 2025 による；ユニコーン数は本ページに掲載されたプロフィール数です。エンティティプロフィールは {profileUpdated} に整理されました。資金調達額は公開報道に基づくため、実際の数値と異なる場合があります。`,
+  ko: `집계 통계는 {dataDate} 기준으로 재기준되었으며, 각 수치는 단일 출처에 고정되어 있습니다: AI 기업 수와 VC 총 자금 조달액은 Tracxn 기준(2026년 5월 기준: 548개사, 누적 US$1.9B); 동남아 AI 자금 조달 비중은 e-Conomy SEA 2025 보고서(Google/Temasek/Bain) 추정치——싱가포르 US$1.31B / 지역 전체 2025년 6월까지 12개월간 US$2.3B 이상; 정부 AI 투자 공약은 2024년 이후 발표된 금액의 합계(Budget 2024에서 S$10억 이상 + Budget 2025 Enterprise Compute Initiative 최대 S$1.5억 + 2026년 1월 국가 AI R&D 계획 추가 S$10억 이상); AI 허브 순위는 Tortoise Global AI Index 2025 기준; 유니콘 수는 이 페이지에 수록된 프로필 수입니다. 엔티티 프로필은 {profileUpdated}에 정리되었습니다. 자금 조달 금액은 공개 보도에 근거하며 실제 수치와 차이가 있을 수 있습니다.`,
+  'zh-tw': '',
+};
+disclaimerTemplates['zh-tw'] = toTraditional(disclaimerTemplates.zh);
+const disclaimer = disclaimerTemplates[lang]
+  .replace('{dataDate}', ecosystemStats.dataDate)
+  .replace('{profileUpdated}', ecosystemStats.profileUpdated);
 ---
 
 <Layout
@@ -41,12 +56,7 @@ const stats = [
   lang={lang}
 >
   <section class="px-4 py-16 sm:px-6 mx-auto lg:px-8 max-w-6xl">
-    <Headline
-      title={t(lang, 'startupsPageTitle')}
-      subtitle={isZh
-        ? '新加坡 AI-native、AI-enabled 与相邻资本生态的实体目录；每家公司、项目与投资者都进入可持续扩展的档案。'
-        : 'A directory of Singapore AI-native, AI-enabled, and adjacent capital ecosystem entities, with growing profiles for companies, projects, exits, and investors.'}
-    />
+    <Headline title={t(lang, 'startupsPageTitle')} subtitle={t(lang, 'startupsPageSubtitle')} />
     <LatestAdditions lang={lang} source="startup" class="mt-8 mb-2" />
 
     <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-12">
@@ -64,9 +74,9 @@ const stats = [
       <div class="flex items-end justify-between gap-4 mb-5">
         <div>
           <p class="text-xs uppercase tracking-wider text-muted font-semibold mb-2">Scale Signals</p>
-          <h2 class="t-h3">{isZh ? '独角兽与上市样本' : 'Unicorns And Listed-Scale Companies'}</h2>
+          <h2 class="t-h3">{t(lang, 'startupUnicornsSectionTitle')}</h2>
         </div>
-        <span class="text-sm text-muted">{unicorns.length} {isZh ? '家' : 'companies'}</span>
+        <span class="text-sm text-muted">{unicorns.length} {t(lang, 'companiesCountSuffix')}</span>
       </div>
       <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         {
@@ -77,7 +87,7 @@ const stats = [
             >
               <div class="flex items-start justify-between gap-3 mb-4">
                 <div>
-                  <p class="text-xs text-muted mb-1">{isZh ? '独角兽' : 'Unicorn'}</p>
+                  <p class="text-xs text-muted mb-1">{t(lang, 'startupUnicornBadge')}</p>
                   <h3 class="text-lg font-bold text-gray-900 dark:text-white group-hover:text-primary transition-colors">
                     {u.name}
                   </h3>
@@ -92,15 +102,15 @@ const stats = [
               </p>
               <dl class="grid grid-cols-2 gap-3 text-xs">
                 <div>
-                  <dt class="text-muted mb-1">{isZh ? '融资' : 'Raised'}</dt>
+                  <dt class="text-muted mb-1">{t(lang, 'startupRaisedLabel')}</dt>
                   <dd class="font-semibold text-gray-900 dark:text-white">{u.raised}</dd>
                 </div>
                 <div>
-                  <dt class="text-muted mb-1">{isZh ? '估值' : 'Valuation'}</dt>
+                  <dt class="text-muted mb-1">{t(lang, 'startupValuation')}</dt>
                   <dd class="font-semibold text-primary">{u.valuation}</dd>
                 </div>
                 <div class="col-span-2">
-                  <dt class="text-muted mb-1">{isZh ? '状态' : 'Status'}</dt>
+                  <dt class="text-muted mb-1">{t(lang, 'startupStatusLabel')}</dt>
                   <dd>{pickLocalized(u, 'status', lang)}</dd>
                 </div>
               </dl>
@@ -113,7 +123,7 @@ const stats = [
     <section class="mb-14">
       <div class="mb-6">
         <p class="text-xs uppercase tracking-wider text-muted font-semibold mb-2">Vertical Map</p>
-        <h2 class="t-h3">{isZh ? '按领域分类' : 'By Vertical'}</h2>
+        <h2 class="t-h3">{t(lang, 'startupByVerticalTitle')}</h2>
       </div>
       <div class="space-y-10">
         {
@@ -124,7 +134,7 @@ const stats = [
                   {v.icon} {pickLocalized(v, 'name', lang)}
                 </h3>
                 <span class="text-sm text-muted">
-                  {v.startups.length} {isZh ? '个实体' : 'entities'}
+                  {v.startups.length} {t(lang, 'entitiesCountSuffix')}
                 </span>
               </div>
               <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
@@ -152,17 +162,17 @@ const stats = [
                     <div class="flex flex-wrap gap-2 text-xs text-muted">
                       {s.raised && (
                         <span class="bg-gray-100 dark:bg-slate-800 px-2 py-1 rounded">
-                          {isZh ? '融资' : 'Raised'} {s.raised}
+                          {t(lang, 'startupRaisedLabel')} {s.raised}
                         </span>
                       )}
                       {s.investors && (
                         <span class="bg-gray-100 dark:bg-slate-800 px-2 py-1 rounded">
-                          {isZh ? '投资者' : 'Investors'} {s.investors}
+                          {t(lang, 'startupInvestorsLabel')} {s.investors}
                         </span>
                       )}
                     </div>
                     <div class="mt-5 inline-flex items-center gap-1 text-sm font-medium text-primary">
-                      {isZh ? '查看档案' : 'Open profile'}
+                      {t(lang, 'openProfileCta')}
                       <Icon name="tabler:arrow-right" class="w-4 h-4" />
                     </div>
                   </a>
@@ -178,11 +188,11 @@ const stats = [
       <div class="flex items-end justify-between gap-4 mb-5">
         <div>
           <p class="text-xs uppercase tracking-wider text-muted font-semibold mb-2">Exit Signals</p>
-          <h2 class="t-h3">{isZh ? '重要退出与收购' : 'Notable Exits And Acquisitions'}</h2>
+          <h2 class="t-h3">{t(lang, 'startupExitsSectionTitle')}</h2>
         </div>
         <span class="text-sm text-muted">
           {exits.length}
-          {isZh ? '条' : 'records'}
+          {t(lang, 'recordsCountSuffix')}
         </span>
       </div>
       <div class="grid gap-4 md:grid-cols-2">
@@ -194,7 +204,7 @@ const stats = [
             >
               <div class="flex items-start justify-between gap-3 mb-3">
                 <div>
-                  <p class="text-xs text-muted mb-1">{e.year || (isZh ? '年份待补' : 'Year pending')}</p>
+                  <p class="text-xs text-muted mb-1">{e.year || t(lang, 'yearPending')}</p>
                   <h3 class="text-lg font-bold text-gray-900 dark:text-white group-hover:text-primary transition-colors">
                     {e.name}
                   </h3>
@@ -209,11 +219,11 @@ const stats = [
               </p>
               <dl class="grid gap-3 sm:grid-cols-2 text-xs">
                 <div>
-                  <dt class="text-muted mb-1">{isZh ? '收购方' : 'Acquirer'}</dt>
+                  <dt class="text-muted mb-1">{t(lang, 'startupAcquirerLabel')}</dt>
                   <dd class="font-semibold text-gray-900 dark:text-white">{pickLocalized(e, 'acquirer', lang)}</dd>
                 </div>
                 <div>
-                  <dt class="text-muted mb-1">{isZh ? '金额' : 'Amount'}</dt>
+                  <dt class="text-muted mb-1">{t(lang, 'benchmarkAmountLabel')}</dt>
                   <dd class="font-semibold text-primary">{e.amount}</dd>
                 </div>
               </dl>
@@ -230,11 +240,11 @@ const stats = [
       <div class="flex items-end justify-between gap-4 mb-5">
         <div>
           <p class="text-xs uppercase tracking-wider text-muted font-semibold mb-2">Capital Network</p>
-          <h2 class="t-h3">{isZh ? '投资者生态' : 'Investor Ecosystem'}</h2>
+          <h2 class="t-h3">{t(lang, 'startupInvestorEcosystemTitle')}</h2>
         </div>
         <span class="text-sm text-muted">
           {investors.length}
-          {isZh ? '家机构' : 'institutions'}
+          {t(lang, 'institutionsCountSuffix')}
         </span>
       </div>
       <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
@@ -259,11 +269,11 @@ const stats = [
                 <Icon name="tabler:arrow-up-right" class="w-5 h-5 text-muted group-hover:text-primary shrink-0" />
               </div>
               <p class="text-sm mt-3">
-                <span class="text-muted">{isZh ? '投资记录：' : 'Track record: '}</span>
+                <span class="text-muted">{t(lang, 'startupTrackRecordColon')}</span>
                 {pickLocalized(inv, 'stats', lang)}
               </p>
               <p class="text-sm">
-                <span class="text-muted">{isZh ? '重点领域：' : 'Focus: '}</span>
+                <span class="text-muted">{t(lang, 'startupFocusColon')}</span>
                 {pickLocalized(inv, 'focus', lang)}
               </p>
               {pickLocalized(inv, 'notableDeals', lang) && (
@@ -278,13 +288,7 @@ const stats = [
       </div>
     </section>
 
-    <p class="mt-8 text-sm text-muted text-center">
-      {
-        isZh
-          ? `基础统计重定基线于 ${ecosystemStats.dataDate}，逐项锚定单一来源：AI 公司数与 VC 融资总额来自 Tracxn（2026-05 口径：548 家、累计融资 US$1.9B）；东南亚 AI 融资占比按 e-Conomy SEA 2025 报告（Google/Temasek/Bain）估算——新加坡 US$1.31B / 区域逾 US$2.3B（截至 2025 年 6 月的 12 个月）；政府 AI 承诺投入为 2024 年以来公告合计（Budget 2024 逾 S$10 亿 + Budget 2025 企业算力计划至多 S$1.5 亿 + 2026 年 1 月国家 AI 研发计划追加逾 S$10 亿）；AI 枢纽排名来自 Tortoise Global AI Index 2025；独角兽为本页收录档案数。实体档案整理于 ${ecosystemStats.profileUpdated}。融资金额来源于公开报道，实际数字可能有出入。`
-          : `Aggregate statistics were re-baselined on ${ecosystemStats.dataDate}, each pinned to a single named source: the AI company count and total VC raised are from Tracxn (as of May 2026: 548 companies, US$1.9B cumulative); the SEA AI funding share is estimated from the e-Conomy SEA 2025 report by Google, Temasek and Bain (Singapore US$1.31B of the region's US$2.3B+ in the 12 months to June 2025); the government AI commitment sums announcements since 2024 (over S$1B at Budget 2024, up to S$150M for the Enterprise Compute Initiative at Budget 2025, and over S$1B for the National AI R&D Plan announced in January 2026); the AI hub rank is from the Tortoise Global AI Index 2025; the unicorn count is the number of profiles curated on this page. Entity profiles were organized on ${ecosystemStats.profileUpdated}. Funding amounts follow public reporting and actual numbers may differ.`
-      }
-    </p>
+    <p class="mt-8 text-sm text-muted text-center">{disclaimer}</p>
   </section>
   <CrossDomainRail lang={lang} current="startups" class="max-w-6xl mx-auto px-4 sm:px-6 pb-16" />
 </Layout>

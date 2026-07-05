@@ -17,13 +17,12 @@ export const getStaticPaths = (() =>
 
 const { project } = Astro.props;
 const lang = Astro.params.lang as Lang;
-const isZh = lang === 'zh';
-const name = isZh ? project.name : project.nameEn || project.name;
+const name = pickLocalized(project, 'name', lang) || project.name;
 ---
 
 <Layout
   metadata={{
-    title: `${name} · ${isZh ? '官方开源与研究' : t(lang, 'opensourcePageTitle')}`,
+    title: `${name} · ${t(lang, 'opensourcePageTitle')}`,
     description:
       pickLocalized(project, 'summary', lang) || pickLocalized(project, 'description', lang) || project.description,
   }}
