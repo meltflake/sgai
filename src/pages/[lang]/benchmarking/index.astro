@@ -11,10 +11,13 @@ import {
   dataDate,
   dataDisclaimer,
   dataDisclaimerEn,
+  dataDisclaimerJa,
+  dataDisclaimerKo,
   insights,
   regions,
 } from '~/data/benchmarking';
 import { NON_DEFAULT_ROUTE_LOCALES, localizedHref, pickLocalized, t, type Lang } from '~/i18n';
+import { toTraditional } from '~/i18n/opencc';
 import { benchmarkCaseSlug, regionPages, regionSlug } from '~/utils/entity-pages';
 
 export function getStaticPaths() {
@@ -22,8 +25,14 @@ export function getStaticPaths() {
 }
 
 const lang = Astro.params.lang as Lang;
-const isZh = lang === 'zh';
-const disclaimer = isZh ? dataDisclaimer : dataDisclaimerEn || dataDisclaimer;
+const disclaimerByLang: Record<Lang, string> = {
+  zh: dataDisclaimer,
+  en: dataDisclaimerEn,
+  ja: dataDisclaimerJa,
+  'zh-tw': toTraditional(dataDisclaimer),
+  ko: dataDisclaimerKo,
+};
+const disclaimer = disclaimerByLang[lang] || dataDisclaimerEn || dataDisclaimer;
 const insightCaseIds = ['ai-verify', 'mgx-ai-fund', 'unit-8200-ai-talent-pipeline', 'falcon-llm'];
 const caseById = new Map(benchmarkCases.map((caseItem) => [caseItem.id, caseItem]));
 
@@ -48,9 +57,7 @@ function insightHref(index: number): string {
   <section class="px-4 py-16 sm:px-6 mx-auto lg:px-8 max-w-6xl">
     <Headline
       title={t(lang, 'benchmarkingPageTitle')}
-      subtitle={isZh
-        ? '从国家战略下钻到具体公司、项目、机构和基础设施。'
-        : 'From national strategy down to concrete companies, projects, institutions, and infrastructure.'}
+      subtitle={t(lang, 'benchmarkIntroSubtitle')}
       classes={{ title: 'text-3xl md:text-4xl', subtitle: 'text-lg md:text-xl' }}
     />
     <LatestAdditions lang={lang} source="benchmark" class="mt-8 mb-2" />
@@ -58,24 +65,20 @@ function insightHref(index: number): string {
     <div class="mb-12 grid gap-4 md:grid-cols-[1.25fr_0.75fr]">
       <div class="callout-note rounded-lg p-6">
         <p class="font-serif text-lg leading-[1.85] text-gray-900 dark:text-white">
-          {
-            isZh
-              ? '真正有用的对标，不是"某国 AI 很强"这种空话，而是看它把哪个具体对象做成了国家能力：一只基金、一所大学、一个模型、一套测试框架、一个政府 AI 助手，或一个供应链节点。'
-              : 'Useful benchmarking is not "Country X is strong at AI". It asks which concrete object became a national capability: a fund, a university, a model, a testing framework, a government assistant, or a supply-chain node.'
-          }
+          {t(lang, 'benchmarkIntroCallout')}
         </p>
       </div>
       <dl class="grid gap-3 sm:grid-cols-3 md:grid-cols-1">
         <div class="rounded-lg border border-subtle bg-surface p-4">
-          <dt class="text-xs uppercase tracking-wider text-muted">{isZh ? '案例档案' : 'Case profiles'}</dt>
+          <dt class="text-xs uppercase tracking-wider text-muted">{t(lang, 'benchmarkStatCaseProfiles')}</dt>
           <dd class="mt-1 t-stat text-gray-900 dark:text-white">{benchmarkCases.length}</dd>
         </div>
         <div class="rounded-lg border border-subtle bg-surface p-4">
-          <dt class="text-xs uppercase tracking-wider text-muted">{isZh ? '地区背景' : 'Region profiles'}</dt>
+          <dt class="text-xs uppercase tracking-wider text-muted">{t(lang, 'benchmarkStatRegionProfiles')}</dt>
           <dd class="mt-1 t-stat text-gray-900 dark:text-white">{regionPages.length}</dd>
         </div>
         <div class="rounded-lg border border-subtle bg-surface p-4">
-          <dt class="text-xs uppercase tracking-wider text-muted">{isZh ? '档案更新' : 'Profiles updated'}</dt>
+          <dt class="text-xs uppercase tracking-wider text-muted">{t(lang, 'benchmarkStatProfilesUpdated')}</dt>
           <dd class="mt-1 text-sm font-semibold text-gray-900 dark:text-white">{benchmarkCaseProfileUpdated}</dd>
         </div>
       </dl>
@@ -84,17 +87,11 @@ function insightHref(index: number): string {
     <div class="mb-12">
       <div class="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between mb-5">
         <div>
-          <h2 class="t-h3">{isZh ? '标杆案例库' : 'Benchmark Case Library'}</h2>
-          <p class="text-sm text-muted mt-1">
-            {
-              isZh
-                ? '每张卡片对应一个可继续丰富的公司、项目或机构档案。'
-                : 'Each card maps to a profile that can grow over time.'
-            }
-          </p>
+          <h2 class="t-h3">{t(lang, 'benchmarkLibraryHeading')}</h2>
+          <p class="text-sm text-muted mt-1">{t(lang, 'benchmarkLibrarySubtitle')}</p>
         </div>
         <a href="#region-overview" class="text-sm text-primary hover:text-secondary inline-flex items-center gap-1">
-          {isZh ? '看地区总览' : 'View region overview'}
+          {t(lang, 'benchmarkViewRegionOverview')}
           <Icon name="tabler:arrow-down" class="w-4 h-4" />
         </a>
       </div>
@@ -130,7 +127,7 @@ function insightHref(index: number): string {
                 ))}
               </dl>
               <span class="mt-auto pt-5 text-sm font-medium text-primary inline-flex items-center gap-1">
-                {isZh ? '打开档案' : 'Open profile'}
+                {t(lang, 'openProfileCta')}
                 <Icon name="tabler:arrow-right" class="w-4 h-4" />
               </span>
             </a>
@@ -140,7 +137,7 @@ function insightHref(index: number): string {
     </div>
 
     <div class="mb-12">
-      <h2 class="t-h3 mb-4">{isZh ? '关键洞察' : 'Key Insights'}</h2>
+      <h2 class="t-h3 mb-4">{t(lang, 'benchmarkKeyInsightsHeading')}</h2>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         {
           insights.map((insight, index) => (
@@ -162,18 +159,18 @@ function insightHref(index: number): string {
     </div>
 
     <div id="region-overview" class="mb-12 scroll-mt-24">
-      <h2 class="t-h3 mb-4">{isZh ? '总览对比表' : 'Overview Comparison'}</h2>
+      <h2 class="t-h3 mb-4">{t(lang, 'benchmarkOverviewComparisonHeading')}</h2>
       <div class="overflow-x-auto">
         <table class="w-full text-sm border-collapse min-w-[900px]">
           <thead>
             <tr class="bg-slate-100 dark:bg-slate-800">
-              <th class="text-left p-3 border border-subtle">{isZh ? '地区' : 'Region'}</th>
-              <th class="text-left p-3 border border-subtle">{isZh ? '核心战略' : 'Core strategy'}</th>
-              <th class="text-left p-3 border border-subtle">{isZh ? '年份' : 'Year'}</th>
-              <th class="text-left p-3 border border-subtle">{isZh ? '投资规模' : 'Investment'}</th>
-              <th class="text-left p-3 border border-subtle">{isZh ? '治理模式' : 'Governance'}</th>
-              <th class="text-left p-3 border border-subtle">{isZh ? '核心优势' : 'Strength'}</th>
-              <th class="text-left p-3 border border-subtle">{isZh ? 'AI 排名' : 'AI ranking'}</th>
+              <th class="text-left p-3 border border-subtle">{t(lang, 'benchmarkColRegion')}</th>
+              <th class="text-left p-3 border border-subtle">{t(lang, 'benchmarkColCoreStrategy')}</th>
+              <th class="text-left p-3 border border-subtle">{t(lang, 'benchmarkColYear')}</th>
+              <th class="text-left p-3 border border-subtle">{t(lang, 'benchmarkColInvestment')}</th>
+              <th class="text-left p-3 border border-subtle">{t(lang, 'benchmarkColGovernance')}</th>
+              <th class="text-left p-3 border border-subtle">{t(lang, 'benchmarkColStrength')}</th>
+              <th class="text-left p-3 border border-subtle">{t(lang, 'benchmarkColAiRanking')}</th>
             </tr>
           </thead>
           <tbody>
@@ -212,7 +209,7 @@ function insightHref(index: number): string {
     </div>
 
     <div class="mb-12">
-      <h2 class="t-h3 mb-5">{isZh ? '地区背景页' : 'Region Background Pages'}</h2>
+      <h2 class="t-h3 mb-5">{t(lang, 'benchmarkRegionPagesHeading')}</h2>
       <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         {
           regionPages.map((page) => (
@@ -230,7 +227,7 @@ function insightHref(index: number): string {
                 {pickLocalized(page.summary, 'strength', lang)}
               </p>
               <span class="mt-4 inline-flex items-center gap-1 text-sm font-medium text-primary">
-                {isZh ? '查看国家 / 地区档案' : 'View region profile'}
+                {t(lang, 'benchmarkViewRegionProfile')}
                 <Icon name="tabler:arrow-right" class="w-4 h-4" />
               </span>
             </a>
@@ -242,8 +239,8 @@ function insightHref(index: number): string {
     <div class="p-4 rounded-lg bg-slate-50 dark:bg-slate-800 border border-subtle">
       <p class="text-sm text-muted">⚠️ {disclaimer}</p>
       <p class="text-xs text-muted mt-1">
-        {isZh ? '基础数据更新' : 'Base data updated'}: {dataDate};{' '}
-        {isZh ? '案例档案整理' : 'case profiles curated'}: {benchmarkCaseProfileUpdated}
+        {t(lang, 'benchmarkBaseDataUpdated')}: {dataDate};{' '}
+        {t(lang, 'benchmarkCaseProfilesCurated')}: {benchmarkCaseProfileUpdated}
       </p>
     </div>
   </section>

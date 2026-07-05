@@ -11,6 +11,7 @@ import { dataDate } from '~/data/legal-ai';
 import { categories as policyCategories } from '~/data/policies';
 import { legalItemPages, legalItemSlug } from '~/utils/entity-pages';
 import { NON_DEFAULT_ROUTE_LOCALES, IN_LANGUAGES, pickLocalized, localizedHref, t, type Lang } from '~/i18n';
+import { toTraditional } from '~/i18n/opencc';
 import { getCanonical } from '~/utils/permalinks';
 
 export const prerender = true;
@@ -25,28 +26,59 @@ export const getStaticPaths = (() =>
 
 const { page } = Astro.props;
 const lang = Astro.params.lang as Lang;
-const isZh = lang === 'zh';
 
 const { item, section } = page;
 const relatedItems = section.items.filter((candidate) => candidate.title !== item.title).slice(0, 4);
 
-const scopeLabelZh: Record<string, { label: string; color: string }> = {
-  training: { label: '训练侧', color: 'bg-emerald-100 dark:bg-emerald-900 text-emerald-800 dark:text-emerald-200' },
-  output: { label: '输出侧', color: 'bg-rose-100 dark:bg-rose-900 text-rose-800 dark:text-rose-200' },
-  liability: { label: '责任', color: 'bg-amber-100 dark:bg-amber-900 text-amber-800 dark:text-amber-200' },
-  governance: { label: '治理', color: 'bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200' },
+const SCOPE_LABELS_BY_LANG: Record<Lang, Record<string, { label: string; color: string }>> = {
+  zh: {
+    training: { label: '训练侧', color: 'bg-emerald-100 dark:bg-emerald-900 text-emerald-800 dark:text-emerald-200' },
+    output: { label: '输出侧', color: 'bg-rose-100 dark:bg-rose-900 text-rose-800 dark:text-rose-200' },
+    liability: { label: '责任', color: 'bg-amber-100 dark:bg-amber-900 text-amber-800 dark:text-amber-200' },
+    governance: { label: '治理', color: 'bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200' },
+  },
+  en: {
+    training: { label: 'Training', color: 'bg-emerald-100 dark:bg-emerald-900 text-emerald-800 dark:text-emerald-200' },
+    output: { label: 'Output', color: 'bg-rose-100 dark:bg-rose-900 text-rose-800 dark:text-rose-200' },
+    liability: { label: 'Liability', color: 'bg-amber-100 dark:bg-amber-900 text-amber-800 dark:text-amber-200' },
+    governance: { label: 'Governance', color: 'bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200' },
+  },
+  ja: {
+    training: { label: '訓練側', color: 'bg-emerald-100 dark:bg-emerald-900 text-emerald-800 dark:text-emerald-200' },
+    output: { label: '出力側', color: 'bg-rose-100 dark:bg-rose-900 text-rose-800 dark:text-rose-200' },
+    liability: { label: '責任', color: 'bg-amber-100 dark:bg-amber-900 text-amber-800 dark:text-amber-200' },
+    governance: { label: 'ガバナンス', color: 'bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200' },
+  },
+  'zh-tw': {
+    training: {
+      label: toTraditional('训练侧'),
+      color: 'bg-emerald-100 dark:bg-emerald-900 text-emerald-800 dark:text-emerald-200',
+    },
+    output: { label: toTraditional('输出侧'), color: 'bg-rose-100 dark:bg-rose-900 text-rose-800 dark:text-rose-200' },
+    liability: {
+      label: toTraditional('责任'),
+      color: 'bg-amber-100 dark:bg-amber-900 text-amber-800 dark:text-amber-200',
+    },
+    governance: {
+      label: toTraditional('治理'),
+      color: 'bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200',
+    },
+  },
+  ko: {
+    training: { label: '훈련 측', color: 'bg-emerald-100 dark:bg-emerald-900 text-emerald-800 dark:text-emerald-200' },
+    output: { label: '출력 측', color: 'bg-rose-100 dark:bg-rose-900 text-rose-800 dark:text-rose-200' },
+    liability: { label: '책임', color: 'bg-amber-100 dark:bg-amber-900 text-amber-800 dark:text-amber-200' },
+    governance: { label: '거버넌스', color: 'bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200' },
+  },
 };
-const scopeLabelEn: Record<string, { label: string; color: string }> = {
-  training: { label: 'Training', color: 'bg-emerald-100 dark:bg-emerald-900 text-emerald-800 dark:text-emerald-200' },
-  output: { label: 'Output', color: 'bg-rose-100 dark:bg-rose-900 text-rose-800 dark:text-rose-200' },
-  liability: { label: 'Liability', color: 'bg-amber-100 dark:bg-amber-900 text-amber-800 dark:text-amber-200' },
-  governance: { label: 'Governance', color: 'bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200' },
-};
-const scopeLabel = isZh ? scopeLabelZh : scopeLabelEn;
+const scopeLabel = SCOPE_LABELS_BY_LANG[lang] || SCOPE_LABELS_BY_LANG.en;
 
-const title = isZh ? item.title : item.titleEn || item.title;
-const summary = isZh ? item.summary : item.summaryEn || item.summary;
-const body = isZh ? item.body : item.bodyEn || item.body;
+const title = pickLocalized<string>(item, 'title', lang) || item.title;
+const summary = pickLocalized<string>(item, 'summary', lang) || item.summary;
+const body = pickLocalized<string>(item, 'body', lang) || item.body;
+const status = pickLocalized<string>(item, 'status', lang) || item.status;
+const dateLocalized = pickLocalized<string>(item, 'date', lang) || item.date;
+const authority = pickLocalized<string>(item, 'authority', lang) || item.authority;
 
 // Mirrors the root legal-ai page: items that also exist as policy-archive
 // pages under the same slug canonicalise to the richer policy page.
@@ -58,13 +90,18 @@ const metadata = {
   ...(policyTwin ? { canonical: String(getCanonical(localizedHref(`/policies/${page.slug}/`, lang))) } : {}),
 };
 
+// alternateName only makes sense when the primary `name` (English) differs
+// from the zh source string the zh reader actually sees on the page.
+const schemaAlternateName: Record<string, string> = {};
+if (lang === 'zh') schemaAlternateName.alternateName = item.title;
+
 const schema = {
   '@context': 'https://schema.org',
   '@type': 'Legislation',
   name: item.titleEn || item.title,
-  ...(isZh ? { alternateName: item.title } : {}),
+  ...schemaAlternateName,
   description: summary,
-  datePublished: isZh ? item.date : item.dateEn || item.date,
+  datePublished: item.dateEn || item.date,
   inLanguage: IN_LANGUAGES[lang],
   legislationJurisdiction: 'Singapore',
   ...(item.sourceUrl ? { url: item.sourceUrl } : {}),
@@ -87,7 +124,7 @@ const schema = {
         {title}
       </h1>
       {
-        isZh && item.titleEn && (
+        lang !== 'zh' && item.titleEn && (
           <p class="text-base md:text-lg text-gray-500 dark:text-gray-400 italic">{item.titleEn}</p>
         )
       }
@@ -98,10 +135,10 @@ const schema = {
         {scopeLabel[item.scope].label}
       </span>
       <span class="text-xs bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 px-2 py-1 rounded">
-        {isZh ? item.status : item.statusEn || item.status}
+        {status}
       </span>
       <span class="text-xs bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 px-2 py-1 rounded">
-        {isZh ? item.date : item.dateEn || item.date}
+        {dateLocalized}
       </span>
       {
         item.authorityUrl ? (
@@ -111,30 +148,28 @@ const schema = {
             rel="noopener"
             class="text-xs bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 px-2 py-1 rounded hover:underline"
           >
-            {isZh ? item.authority : item.authorityEn || item.authority}
+            {authority}
           </a>
         ) : (
           <span class="text-xs bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 px-2 py-1 rounded">
-            {isZh ? item.authority : item.authorityEn || item.authority}
+            {authority}
           </span>
         )
       }
     </section>
 
     <section class="callout-note rounded-lg p-5 mb-8">
-      <h2 class="t-h3 text-gray-900 dark:text-white mb-3">{isZh ? '核心结论' : 'Core Point'}</h2>
+      <h2 class="t-h3 text-gray-900 dark:text-white mb-3">{t(lang, 'legalCorePoint')}</h2>
       <p class="text-gray-800 dark:text-gray-200 leading-[1.85]">{summary}</p>
     </section>
 
     <section class="prose prose-lg dark:prose-invert max-w-none font-serif mb-10">
-      <h2>{isZh ? '详细说明' : 'Detailed Note'}</h2>
+      <h2>{t(lang, 'legalDetailedNote')}</h2>
       <p>{body}</p>
     </section>
 
     <section class="bg-surface border border-subtle rounded-lg p-5 mb-10">
-      <h2 class="t-h3 text-gray-900 dark:text-white mb-3">
-        {isZh ? '在法律框架中的位置' : 'Position in the Legal Framework'}
-      </h2>
+      <h2 class="t-h3 text-gray-900 dark:text-white mb-3">{t(lang, 'legalFrameworkPosition')}</h2>
       <p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
         {pickLocalized(section, 'philosophy', lang)}
       </p>
@@ -150,7 +185,7 @@ const schema = {
             class="inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-secondary border border-primary/30 hover:border-primary px-4 py-2 rounded-md transition-colors"
           >
             <Icon name="tabler:external-link" class="w-4 h-4" />
-            {isZh ? '法律原文 / 来源' : 'Statute text / source'}
+            {t(lang, 'legalStatuteSource')}
           </a>
         )
       }
@@ -159,14 +194,14 @@ const schema = {
         class="inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-secondary border border-primary/30 hover:border-primary px-4 py-2 rounded-md transition-colors"
       >
         <Icon name="tabler:target" class="w-4 h-4" />
-        {isZh ? '查看国家 AI 抓手' : 'View National AI Levers'}
+        {t(lang, 'legalViewLevers')}
       </a>
     </div>
 
     {
       relatedItems.length > 0 && (
         <section class="mb-10">
-          <h2 class="t-h3 text-gray-900 dark:text-white mb-4">{isZh ? '同组法律卡片' : 'Related Legal Cards'}</h2>
+          <h2 class="t-h3 text-gray-900 dark:text-white mb-4">{t(lang, 'legalRelatedCards')}</h2>
           <div class="grid gap-3">
             {relatedItems.map((related) => (
               <a

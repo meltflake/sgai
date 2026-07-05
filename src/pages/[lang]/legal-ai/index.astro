@@ -14,7 +14,6 @@ export function getStaticPaths() {
 }
 
 const lang = Astro.params.lang as Lang;
-const isZh = lang === 'zh';
 
 // Scope label per locale. The colour classes are identical across
 // locales (visual treatment doesn't depend on the lang), only the label
@@ -164,7 +163,7 @@ const VIEW_DETAILS_SUFFIX: Record<Lang, string> = {
 function viewDetailsAria(name: string): string {
   const prefix = VIEW_DETAILS_PREFIX[lang] || VIEW_DETAILS_PREFIX.en;
   const suffix = VIEW_DETAILS_SUFFIX[lang] || '';
-  return isZh ? `${prefix} ${name}${suffix}` : `${prefix} ${name}`;
+  return `${prefix} ${name}${suffix}`;
 }
 
 // Item helpers extracted to frontmatter — pickLocalized<string> inside
@@ -227,7 +226,7 @@ const sectionPhilosophy = (s: (typeof sections)[number]) =>
                     {itemStatus(item)}
                   </span>
                 </div>
-                {!isZh && item.titleEn && item.titleEn !== itemTitle(item) && (
+                {lang !== 'zh' && item.titleEn && item.titleEn !== itemTitle(item) && (
                   <p class="text-sm text-muted mb-3">{item.titleEn}</p>
                 )}
                 <div class="flex gap-2 mb-3 flex-wrap text-xs">

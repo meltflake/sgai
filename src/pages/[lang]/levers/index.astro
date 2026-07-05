@@ -4,6 +4,8 @@ import Headline from '~/components/ui/Headline.astro';
 import RelatedRail from '~/components/data/RelatedRail.astro';
 import { levers, publicLeverGroups, transmissionExplainer, dataDate } from '~/data/levers';
 import { NON_DEFAULT_ROUTE_LOCALES, localizedHref, pickLocalized, t, type Lang } from '~/i18n';
+import { toTraditional } from '~/i18n/opencc';
+import { renderInlineMarkdown } from '~/utils/inline-markdown';
 import { leverItemSlug, leverSlug } from '~/utils/entity-pages';
 
 export function getStaticPaths() {
@@ -11,7 +13,91 @@ export function getStaticPaths() {
 }
 
 const lang = Astro.params.lang as Lang;
-const isZh = lang === 'zh';
+
+// Long-form subtitle + "why classify by lever" intro. Hand-typed for zh/en/ja/ko;
+// zh-tw runs the zh source through OpenCC.
+const SUBTITLE_BY_LANG: Record<Lang, string> = {
+  zh: `数据更新：${dataDate}。把新加坡 Budget 2026 + 各部委的 AI 政策按"AI 引入路径"重新分类，6 个抓手跨多部委——这比按部门分类更能看出整体形状。`,
+  en: `${t(lang, 'freshnessUpdated')}: ${dataDate}. Re-classifying Singapore's Budget 2026 plus all ministry-level AI policies along "AI-injection paths" yields six cross-ministry levers — a clearer view of the whole shape than reading them department by department.`,
+  ja: `データ更新：${dataDate}。シンガポールの Budget 2026 と各省庁の AI 政策を「AI 導入経路」で再分類——6 つのレバーが複数省庁を横断し、部門別に読むより全体像がはっきり見えます。`,
+  'zh-tw': toTraditional(
+    `数据更新：${dataDate}。把新加坡 Budget 2026 + 各部委的 AI 政策按"AI 引入路径"重新分类，6 个抓手跨多部委——这比按部门分类更能看出整体形状。`
+  ),
+  ko: `데이터 업데이트: ${dataDate}. 싱가포르 Budget 2026과 각 부처의 AI 정책을 "AI 도입 경로"에 따라 재분류 — 6개 레버가 여러 부처를 횡단하며, 부서별로 읽는 것보다 전체 형태를 더 명확히 볼 수 있습니다.`,
+};
+const subtitle = SUBTITLE_BY_LANG[lang] || SUBTITLE_BY_LANG.en;
+
+const WHY_LEVER_HEADING: Record<Lang, string> = {
+  zh: '为什么按抓手分类？',
+  en: 'Why classify by lever?',
+  ja: 'なぜレバーで分類するのか？',
+  'zh-tw': toTraditional('为什么按抓手分类？'),
+  ko: '왜 레버로 분류하는가?',
+};
+const whyLeverHeading = WHY_LEVER_HEADING[lang] || WHY_LEVER_HEADING.en;
+
+const WHY_LEVER_BODY_MD: Record<Lang, string> = {
+  zh: `多数 AI 政策文章把"国家"和"企业"并列分析——错过了嵌套关系。新加坡战略的本质是**把整个国家当成企业 AI-native 转型的"包装层"**：国家自己不必成为 AI-native，只要把企业转型速度放大就够了。
+
+6 个抓手按"AI 引入路径"分类（基建 → 治理 → 人才 → 应用 → 政府自用 → 外交）。每个抓手都跨多个部委，串起来才是完整的执行管线。`,
+  en: `Most analyses treat the state and the enterprise as parallel actors — and miss the nesting relationship. The essence of Singapore's strategy is to **treat the entire state as the wrapper layer for enterprise AI-native transformation**: the state itself need not become AI-native; it is enough to amplify the speed at which enterprises do.
+
+The six levers map "AI-injection paths" (infrastructure → governance → talent → applications → government self-use → diplomacy). Each lever crosses multiple ministries; chained together, they form the full execution pipeline.`,
+  ja: `多くの AI 政策分析は「国家」と「企業」を並列のアクターとして扱い——入れ子関係を見落としています。シンガポール戦略の本質は**国家全体を企業の AI-native トランスフォーメーションの「ラッパー層」とする**ことです：国家自身が AI-native になる必要はなく、企業のトランスフォーメーション速度を増幅すれば十分です。
+
+6 つのレバーは「AI 導入経路」で分類されます（インフラ → ガバナンス → 人材 → 応用 → 政府自用 → 外交）。各レバーは複数の省庁を横断し、つなげて初めて完全な実行パイプラインになります。`,
+  'zh-tw': '',
+  ko: `대부분의 AI 정책 분석은 "국가"와 "기업"을 병렬적 행위자로 다루어——중첩 관계를 놓칩니다. 싱가포르 전략의 본질은 **국가 전체를 기업 AI-native 전환의 "래퍼 계층"으로 삼는 것**입니다: 국가 스스로 AI-native가 될 필요는 없으며, 기업 전환 속도를 증폭시키는 것으로 충분합니다.
+
+6개 레버는 "AI 도입 경로"에 따라 분류됩니다 (인프라 → 거버넌스 → 인재 → 응용 → 정부 자체 활용 → 외교). 각 레버는 여러 부처를 횡단하며, 연결되어야 비로소 완전한 실행 파이프라인이 됩니다.`,
+};
+WHY_LEVER_BODY_MD['zh-tw'] = toTraditional(WHY_LEVER_BODY_MD.zh);
+const whyLeverBodyMd = WHY_LEVER_BODY_MD[lang] || WHY_LEVER_BODY_MD.en;
+
+const STATE_DIRECT_LABEL: Record<Lang, string> = {
+  zh: '国家直接做的事',
+  en: 'What the state does',
+  ja: '国家が直接行うこと',
+  'zh-tw': toTraditional('国家直接做的事'),
+  ko: '국가가 직접 하는 일',
+};
+const stateDirectLabel = STATE_DIRECT_LABEL[lang] || STATE_DIRECT_LABEL.en;
+
+const BOTTLENECK_LABEL: Record<Lang, string> = {
+  zh: '解决企业的什么瓶颈',
+  en: 'Enterprise bottleneck solved',
+  ja: '企業のどのボトルネックを解決するか',
+  'zh-tw': toTraditional('解决企业的什么瓶颈'),
+  ko: '기업의 어떤 병목을 해결하는가',
+};
+const bottleneckLabel = BOTTLENECK_LABEL[lang] || BOTTLENECK_LABEL.en;
+
+const DETAIL_ARROW_LABEL: Record<Lang, string> = {
+  zh: '详情 →',
+  en: 'Detail →',
+  ja: '詳細を見る →',
+  'zh-tw': toTraditional('详情 →'),
+  ko: '자세히 보기 →',
+};
+const detailArrowLabel = DETAIL_ARROW_LABEL[lang] || DETAIL_ARROW_LABEL.en;
+
+const FURTHER_READING_LABEL: Record<Lang, string> = {
+  zh: '延伸阅读：',
+  en: 'Further reading:',
+  ja: '関連の読み物：',
+  'zh-tw': toTraditional('延伸阅读：'),
+  ko: '추가 자료:',
+};
+const furtherReadingLabel = FURTHER_READING_LABEL[lang] || FURTHER_READING_LABEL.en;
+
+const NATIVE_VS_NATIONS_LABEL: Record<Lang, string> = {
+  zh: '从 50 人到 5,700,000 人——同一种 AI-native 架构，两个尺度',
+  en: 'From 50 to 5,700,000 — the same AI-native architecture, two scales',
+  ja: '50 人から 570 万人へ — 同じ AI-native アーキテクチャ、2 つのスケール',
+  'zh-tw': toTraditional('从 50 人到 5,700,000 人——同一种 AI-native 架构，两个尺度'),
+  ko: '50명에서 570만명까지 — 동일한 AI-native 아키텍처, 두 가지 규모',
+};
+const nativeVsNationsLabel = NATIVE_VS_NATIONS_LABEL[lang] || NATIVE_VS_NATIONS_LABEL.en;
 ---
 
 <Layout
@@ -23,40 +109,11 @@ const isZh = lang === 'zh';
   lang={lang}
 >
   <section class="px-4 py-16 sm:px-6 mx-auto lg:px-8 max-w-6xl">
-    <Headline
-      title={`🎯 ${t(lang, 'leversPageTitle')}`}
-      subtitle={isZh
-        ? `数据更新：${dataDate}。把新加坡 Budget 2026 + 各部委的 AI 政策按"AI 引入路径"重新分类，6 个抓手跨多部委——这比按部门分类更能看出整体形状。`
-        : `${t(lang, 'freshnessUpdated')}: ${dataDate}. Re-classifying Singapore's Budget 2026 plus all ministry-level AI policies along "AI-injection paths" yields six cross-ministry levers — a clearer view of the whole shape than reading them department by department.`}
-    />
+    <Headline title={`🎯 ${t(lang, 'leversPageTitle')}`} subtitle={subtitle} />
 
     <div class="callout-note rounded-lg mb-12 leading-relaxed">
-      <p class="font-bold text-base mb-2">{isZh ? '为什么按抓手分类？' : 'Why classify by lever?'}</p>
-      <p class="mb-2">
-        {
-          isZh ? (
-            <>
-              多数 AI 政策文章把"国家"和"企业"并列分析——错过了嵌套关系。新加坡战略的本质是
-              <strong>把整个国家当成企业 AI-native 转型的"包装层"</strong>
-              ：国家自己不必成为 AI-native，只要把企业转型速度放大就够了。
-            </>
-          ) : (
-            <>
-              Most analyses treat the state and the enterprise as parallel actors — and miss the nesting relationship.
-              The essence of Singapore's strategy is to{' '}
-              <strong>treat the entire state as the wrapper layer for enterprise AI-native transformation</strong>: the
-              state itself need not become AI-native; it is enough to amplify the speed at which enterprises do.
-            </>
-          )
-        }
-      </p>
-      <p>
-        {
-          isZh
-            ? '6 个抓手按"AI 引入路径"分类（基建 → 治理 → 人才 → 应用 → 政府自用 → 外交）。每个抓手都跨多个部委，串起来才是完整的执行管线。'
-            : 'The six levers map "AI-injection paths" (infrastructure → governance → talent → applications → government self-use → diplomacy). Each lever crosses multiple ministries; chained together, they form the full execution pipeline.'
-        }
-      </p>
+      <p class="font-bold text-base mb-2">{whyLeverHeading}</p>
+      <div class="text-base space-y-2" set:html={renderInlineMarkdown(whyLeverBodyMd)} />
     </div>
 
     <div class="space-y-16">
@@ -72,16 +129,16 @@ const isZh = lang === 'zh';
                       href={localizedHref(`/levers/${leverSlug(lever)}/`, lang)}
                       class="hover:text-blue-600 dark:hover:text-blue-400"
                     >
-                      {isZh ? '抓手' : 'Lever'} {lever.number} · {pickLocalized(lever, 'name', lang)}
+                      {t(lang, 'leverWord')} {lever.number} · {pickLocalized(lever, 'name', lang)}
                     </a>
                   </h2>
                   {lever.transmissionMode === 'direct' ? (
                     <span class="text-xs font-bold bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200 px-2 py-1 rounded">
-                      {isZh ? '国家直接做' : 'State-direct'}
+                      {t(lang, 'leverMapColDirect')}
                     </span>
                   ) : (
                     <span class="text-xs font-bold bg-amber-100 dark:bg-amber-900 text-amber-800 dark:text-amber-200 px-2 py-1 rounded">
-                      {isZh ? '穿透到企业' : 'Transmitted to enterprise'}
+                      {t(lang, 'leverMapColPassThrough')}
                     </span>
                   )}
                 </div>
@@ -91,15 +148,11 @@ const isZh = lang === 'zh';
 
             <div class="grid md:grid-cols-2 gap-4 mb-6 text-sm">
               <div class="bg-slate-50 dark:bg-slate-800 p-4 rounded-lg">
-                <div class="text-xs font-bold uppercase tracking-wide text-slate-500 mb-1">
-                  {isZh ? '国家直接做的事' : 'What the state does'}
-                </div>
+                <div class="text-xs font-bold uppercase tracking-wide text-slate-500 mb-1">{stateDirectLabel}</div>
                 <div>{pickLocalized(lever, 'whatStateDoes', lang)}</div>
               </div>
               <div class="bg-slate-50 dark:bg-slate-800 p-4 rounded-lg">
-                <div class="text-xs font-bold uppercase tracking-wide text-slate-500 mb-1">
-                  {isZh ? '解决企业的什么瓶颈' : 'Enterprise bottleneck solved'}
-                </div>
+                <div class="text-xs font-bold uppercase tracking-wide text-slate-500 mb-1">{bottleneckLabel}</div>
                 <div>{pickLocalized(lever, 'bottleneckSolved', lang)}</div>
               </div>
             </div>
@@ -137,7 +190,7 @@ const isZh = lang === 'zh';
                             href={localizedHref(`/levers/${leverItemSlug(item)}/`, lang)}
                             class="text-xs text-blue-600 dark:text-blue-400 hover:underline"
                           >
-                            {isZh ? '详情 →' : 'Detail →'}
+                            {detailArrowLabel}
                           </a>
                           <a
                             href={item.sourceUrl}
@@ -171,16 +224,12 @@ const isZh = lang === 'zh';
     </div>
 
     <div class="mt-12 text-sm text-muted text-center">
-      {isZh ? '延伸阅读：' : 'Further reading:'}
+      {furtherReadingLabel}
       <a
         href={localizedHref('/singapore-ai-native-companies-vs-nations/', lang)}
         class="text-blue-600 dark:text-blue-400 hover:underline"
       >
-        {
-          isZh
-            ? '从 50 人到 5,700,000 人——同一种 AI-native 架构，两个尺度'
-            : 'From 50 to 5,700,000 — the same AI-native architecture, two scales'
-        }
+        {nativeVsNationsLabel}
       </a>
     </div>
   </section>

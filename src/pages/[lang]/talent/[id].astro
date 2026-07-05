@@ -9,7 +9,7 @@ import Layout from '~/layouts/PageLayout.astro';
 import SameTopicRail from '~/components/data/SameTopicRail.astro';
 import { programmes, type TalentProgramme, type TalentStatusTone } from '~/data/talent';
 import { SITE_UPDATED } from '~/version';
-import { NON_DEFAULT_ROUTE_LOCALES, localizedHref, pickLocalized, IN_LANGUAGES, type Lang } from '~/i18n';
+import { NON_DEFAULT_ROUTE_LOCALES, localizedHref, pickLocalized, t, IN_LANGUAGES, type Lang } from '~/i18n';
 import { toTraditional } from '~/i18n/opencc';
 
 export const prerender = true;
@@ -27,7 +27,6 @@ interface Props {
 }
 
 const lang = Astro.params.lang as Lang;
-const isZh = lang === 'zh';
 const { programme } = Astro.props as Props;
 const relatedProgrammes = programmes.filter((candidate) => candidate.id !== programme.id).slice(0, 4);
 
@@ -40,6 +39,15 @@ const statusClasses: Record<TalentStatusTone, string> = {
 
 const progName = pickLocalized<string>(programme, 'name', lang) ?? programme.name;
 const progNameEn = programme.nameEn;
+// Secondary identifier shown under the H1: zh readers get the canonical
+// English name (their H1 is already zh); every other locale's H1 already
+// shows the English/localized name, so show the short acronym instead
+// (shortName is lang-neutral, e.g. "AIAP", "LADP").
+function pickProgSubtitle(): string | undefined {
+  if (lang === 'zh') return progNameEn;
+  return programme.shortName;
+}
+const progSubtitle = pickProgSubtitle();
 const progDescription = pickLocalized<string>(programme, 'description', lang) ?? programme.description;
 const progCategory = pickLocalized<string>(programme, 'category', lang) ?? programme.category;
 const progStatus = pickLocalized<string>(programme, 'status', lang) ?? programme.status;
@@ -61,10 +69,18 @@ const metadata = {
   description: progDescription,
 };
 
+// zh readers get a bilingual headline (their H1 is zh, so pairing it with
+// the canonical English name adds context); every other locale's H1 is
+// already the English/localized name, so the headline is just that.
+function pickSchemaHeadline(): string {
+  if (lang === 'zh') return `${programme.name} - ${progNameEn}`;
+  return progNameEn;
+}
+
 const schema = {
   '@context': 'https://schema.org',
   '@type': 'Article',
-  headline: isZh ? `${programme.name} - ${progNameEn}` : progNameEn,
+  headline: pickSchemaHeadline(),
   description: progDescription,
   datePublished: SITE_UPDATED,
   dateModified: SITE_UPDATED,
@@ -74,12 +90,12 @@ const schema = {
   isBasedOn: programme.profile.sourceUrl,
   publisher: {
     '@type': 'Organization',
-    name: isZh ? '新加坡 AI 观察' : 'Singapore AI Observatory',
+    name: t(lang, 'siteName'),
     url: 'https://sgai.md/',
   },
 };
 
-const breadcrumbLabel = isZh ? '人才培养' : 'Talent Pipeline';
+const breadcrumbLabel = t(lang, 'navTalent');
 
 // Pre-resolve related programme fields to avoid pickLocalized<string> generic in JSX
 const resolvedRelated = relatedProgrammes.map((r) => ({
@@ -123,15 +139,7 @@ const resolvedRelated = relatedProgrammes.map((r) => ({
           <h1 class="t-display text-gray-900 dark:text-white mb-2">
             {progName}
           </h1>
-          {
-            isZh ? (
-              <p class="text-base md:text-lg text-gray-500 dark:text-gray-400 italic">{progNameEn}</p>
-            ) : (
-              programme.shortName && (
-                <p class="text-base md:text-lg text-gray-500 dark:text-gray-400 italic">{programme.shortName}</p>
-              )
-            )
-          }
+          {progSubtitle && <p class="text-base md:text-lg text-gray-500 dark:text-gray-400 italic">{progSubtitle}</p>}
         </div>
       </div>
 
@@ -161,7 +169,7 @@ const resolvedRelated = relatedProgrammes.map((r) => ({
 
     <section class="mb-10">
       <h2 class="t-h3 text-gray-900 dark:text-white mb-4">
-        {isZh ? '项目档案' : 'Programme Profile'}
+        {t(lang, 'talentProgrammeProfile')}
       </h2>
       <dl class="bg-surface border border-subtle rounded-lg p-5 grid sm:grid-cols-2 gap-x-6 gap-y-4 text-sm">
         {
@@ -202,7 +210,7 @@ const resolvedRelated = relatedProgrammes.map((r) => ({
 
     <section class="callout-muted rounded-lg mb-10">
       <h2 class="t-h3 text-gray-900 dark:text-white mb-3">
-        {isZh ? '官方来源' : 'Official Source'}
+        {t(lang, 'talentOfficialSourceHeading')}
       </h2>
       <a
         href={programme.profile.sourceUrl}
@@ -217,13 +225,14 @@ const resolvedRelated = relatedProgrammes.map((r) => ({
         {pickLocalized(programme.profile, 'sourceNote', lang) || programme.profile.sourceNote}
       </p>
       <p class="mt-2 text-xs text-muted">
-        {isZh ? `本站校验：${programme.profile.lastChecked}` : `Checked by this site: ${programme.profile.lastChecked}`}
+        {t(lang, 'talentCheckedByThisSite')}
+        {programme.profile.lastChecked}
       </p>
     </section>
 
     <section class="mb-10">
       <h2 class="t-h3 text-gray-900 dark:text-white mb-4">
-        {isZh ? '其他人才项目' : 'More Talent Programmes'}
+        {t(lang, 'talentMoreProgrammes')}
       </h2>
       <div class="grid sm:grid-cols-2 gap-3">
         {
