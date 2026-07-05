@@ -10,13 +10,17 @@ export function getStaticPaths() {
 }
 
 const lang = Astro.params.lang as Lang;
-const isZh = lang === 'zh';
 
 const speakerTypeLabels = pickSpeakerTypeLabels(lang);
 
-const pickName = (cat: { name: string; nameEn?: string }) => (isZh ? cat.name : cat.nameEn || cat.name);
-const pickDesc = (cat: { description: string; descriptionEn?: string }) =>
-  isZh ? cat.description : cat.descriptionEn || cat.description;
+const pickName = (cat: { name: string; nameEn?: string; nameJa?: string; nameKo?: string }) =>
+  pickLocalized(cat, 'name', lang) || cat.name;
+const pickDesc = (cat: {
+  description: string;
+  descriptionEn?: string;
+  descriptionJa?: string;
+  descriptionKo?: string;
+}) => pickLocalized(cat, 'description', lang) || cat.description;
 
 const meta = {
   title: t(lang, 'videosPageTitle'),
@@ -44,19 +48,11 @@ const allYears = [...new Set(videos.map((v) => v.date.slice(0, 4)))].sort().reve
     <div class="mb-10">
       <h1 class="t-h1 text-gray-900 dark:text-white mb-3">{t(lang, 'videosPageTitle')}</h1>
       <p class="text-gray-600 dark:text-gray-400 text-lg">
-        {
-          isZh
-            ? '新加坡政府官员、学者和行业领袖关于人工智能的 YouTube 演讲与访谈。'
-            : 'YouTube talks and interviews from Singapore government officials, academics, and industry leaders on artificial intelligence.'
-        }
+        {t(lang, 'videosIntroBlurb')}
       </p>
       <LatestAdditions lang={lang} source="video" class="mt-8 mb-2" />
       <p class="text-gray-400 dark:text-gray-500 text-sm mt-1">
-        {
-          isZh
-            ? '点击视频卡片查看摘要、字幕与关联视频'
-            : 'Click any video card for the readable transcript, summary, and related videos.'
-        }
+        {t(lang, 'videosIntroSubBlurb')}
       </p>
     </div>
 
@@ -64,15 +60,15 @@ const allYears = [...new Set(videos.map((v) => v.date.slice(0, 4)))].sort().reve
     <div class="grid grid-cols-3 gap-4 mb-10">
       <div class="bg-surface rounded-xl p-5 shadow-sm border border-subtle text-center">
         <div class="t-stat text-blue-600">{totalVideos}</div>
-        <div class="text-sm text-gray-500 mt-1">{isZh ? '视频总数' : 'Total videos'}</div>
+        <div class="text-sm text-gray-500 mt-1">{t(lang, 'videosStatTotal')}</div>
       </div>
       <div class="bg-surface rounded-xl p-5 shadow-sm border border-subtle text-center">
         <div class="t-stat text-purple-600">{speakerCount}</div>
-        <div class="text-sm text-gray-500 mt-1">{isZh ? '演讲者' : 'Speakers'}</div>
+        <div class="text-sm text-gray-500 mt-1">{t(lang, 'videosStatSpeakers')}</div>
       </div>
       <div class="bg-surface rounded-xl p-5 shadow-sm border border-subtle text-center">
         <div class="t-stat text-green-600">{yearRange}</div>
-        <div class="text-sm text-gray-500 mt-1">{isZh ? '覆盖年份' : 'Years covered'}</div>
+        <div class="text-sm text-gray-500 mt-1">{t(lang, 'videosStatYears')}</div>
       </div>
     </div>
 
@@ -80,7 +76,7 @@ const allYears = [...new Set(videos.map((v) => v.date.slice(0, 4)))].sort().reve
     <div class="bg-surface rounded-xl p-4 shadow-sm border border-subtle mb-8">
       <div class="mb-3">
         <div class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-2">
-          {isZh ? '主题' : 'Topic'}
+          {t(lang, 'filterTopicLabel')}
         </div>
         <div class="flex flex-wrap gap-2">
           <button
@@ -88,7 +84,7 @@ const allYears = [...new Set(videos.map((v) => v.date.slice(0, 4)))].sort().reve
             data-value=""
             class="filter-btn filter-btn-active px-3 py-1.5 rounded-full text-sm border transition-all cursor-pointer"
           >
-            {isZh ? '全部' : 'All'}
+            {t(lang, 'filterAllLabel')}
           </button>
           {
             VIDEO_CATEGORIES.map((cat) => {
@@ -110,7 +106,7 @@ const allYears = [...new Set(videos.map((v) => v.date.slice(0, 4)))].sort().reve
 
       <div class="mb-3">
         <div class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-2">
-          {isZh ? '年份' : 'Year'}
+          {t(lang, 'filterYearLabel')}
         </div>
         <div class="flex flex-wrap gap-2">
           <button
@@ -118,7 +114,7 @@ const allYears = [...new Set(videos.map((v) => v.date.slice(0, 4)))].sort().reve
             data-value=""
             class="filter-btn filter-btn-active px-3 py-1.5 rounded-full text-sm border transition-all cursor-pointer"
           >
-            {isZh ? '全部' : 'All'}
+            {t(lang, 'filterAllLabel')}
           </button>
           {
             allYears.map((year) => {
@@ -140,7 +136,7 @@ const allYears = [...new Set(videos.map((v) => v.date.slice(0, 4)))].sort().reve
 
       <div class="mb-2">
         <div class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-2">
-          {isZh ? '演讲者类型' : 'Speaker type'}
+          {t(lang, 'filterSpeakerTypeLabel')}
         </div>
         <div class="flex flex-wrap gap-2">
           <button
@@ -148,7 +144,7 @@ const allYears = [...new Set(videos.map((v) => v.date.slice(0, 4)))].sort().reve
             data-value=""
             class="filter-btn filter-btn-active px-3 py-1.5 rounded-full text-sm border transition-all cursor-pointer"
           >
-            {isZh ? '全部' : 'All'}
+            {t(lang, 'filterAllLabel')}
           </button>
           {
             Object.entries(speakerTypeLabels).map(([key, label]) => {
@@ -174,7 +170,7 @@ const allYears = [...new Set(videos.map((v) => v.date.slice(0, 4)))].sort().reve
           id="clear-filters-btn"
           class="hidden text-sm text-red-500 hover:text-red-700 border border-red-200 hover:border-red-400 px-3 py-1.5 rounded-lg transition-all"
         >
-          {isZh ? '清除筛选' : 'Clear filters'}
+          {t(lang, 'filterClearLabel')}
         </button>
       </div>
     </div>
@@ -244,10 +240,10 @@ const allYears = [...new Set(videos.map((v) => v.date.slice(0, 4)))].sort().reve
     <!-- Empty state -->
     <div id="empty-state" class="hidden text-center py-16">
       <p class="text-gray-400 text-lg">
-        {isZh ? '没有符合筛选条件的视频' : 'No videos match the current filters.'}
+        {t(lang, 'noVideosMatchFilter')}
       </p>
       <button id="clear-all-btn" class="mt-3 text-blue-600 hover:text-blue-800 text-sm underline">
-        {isZh ? '清除所有筛选' : 'Clear all filters'}
+        {t(lang, 'filterClearAllLabel')}
       </button>
     </div>
   </div>
@@ -281,10 +277,8 @@ const allYears = [...new Set(videos.map((v) => v.date.slice(0, 4)))].sort().reve
   }
 </style>
 
-<script define:vars={{ isZh }}>
+<script define:vars={{ showingLabel: t(lang, 'filterShowingLabel'), resultsLabel: t(lang, 'filterResultsSuffix') }}>
   const filters = { topic: '', year: '', speakerType: '' };
-  const showingLabel = isZh ? '显示' : 'Showing';
-  const resultsLabel = isZh ? '条结果' : 'results';
 
   function init() {
     document.querySelectorAll('.filter-btn').forEach((btn) => {

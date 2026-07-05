@@ -110,7 +110,9 @@ const articleSchema = {
   '@context': 'https://schema.org',
   '@type': 'Article',
   headline: debateTitle,
-  ...(isZh ? { alternativeHeadline: debate.title } : {}),
+  // Both zh and zh-tw display the CJK title as primary (isCjk, defined
+  // above), so both benefit from the raw zh title as an alternativeHeadline.
+  ...(isCjk ? { alternativeHeadline: debate.title } : {}),
   description: summaryShort,
   datePublished: debate.date,
   inLanguage: IN_LANGUAGES[lang],
@@ -277,8 +279,8 @@ const breadcrumbs = [
           <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-4">
             <h2 class="t-h3 text-gray-900 dark:text-white">{t(lang, 'fullTextEn')}</h2>
             <p class="text-xs text-gray-500 dark:text-gray-400">
-              {isZh ? 'SPRS Hansard 原始记录' : 'SPRS Hansard'}
-              {transcript?.fetchedAt && ` · ${isZh ? '抓取日期：' : 'Fetched: '}${transcript.fetchedAt}`}
+              {t(lang, 'sprsHansardOriginal')}
+              {transcript?.fetchedAt && ` · ${t(lang, 'fetchedAtColon')}${transcript.fetchedAt}`}
             </p>
           </div>
           <div class="space-y-4 text-sm text-gray-600 dark:text-gray-400 leading-relaxed">

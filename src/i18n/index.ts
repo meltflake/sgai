@@ -770,6 +770,49 @@ export const zh = {
   recordsCountSuffix: '条',
   yearPending: '年份待补',
 
+  // Generic filter-bar chrome (voices/videos listing pages)
+  filterTopicLabel: '主题',
+  filterYearLabel: '年份',
+  filterSpeakerLabel: '演讲者',
+  filterSpeakerTypeLabel: '演讲者类型',
+  filterAllLabel: '全部',
+  filterClearLabel: '清除筛选',
+  filterClearAllLabel: '清除所有筛选',
+  filterShowingLabel: '显示',
+  filterResultsSuffix: '条结果',
+  noVideosMatchFilter: '没有符合筛选条件的视频',
+  noSpeechesMatchFilter: '没有符合筛选条件的演讲稿',
+
+  // Voices listing page (/voices/)
+  voicesIntroBlurb: '新加坡 AI 领域的关键人物与机构，及其官方信息传播渠道。',
+  voicesIntroSubBlurb: '追踪他们的动态，获取第一手 AI 政策与战略信息',
+  voicesStatPeople: '关键人物',
+  voicesStatInstitutions: '核心机构',
+  voicesStatSpeeches: 'MDDI 演讲稿',
+  voicesStatVideos: 'YouTube 视频',
+  voicesKeyPeopleSection: '关键人物',
+  voicesCoreInstitutionsSection: '核心机构',
+  voicesMddiSpeechesSection: 'MDDI AI 相关演讲稿',
+  voicesYoutubeVideosSection: 'YouTube AI 视频',
+  mddiSourceTitle: 'MDDI 官网原文',
+
+  // Videos listing page (/videos/)
+  videosIntroBlurb: '新加坡政府官员、学者和行业领袖关于人工智能的 YouTube 演讲与访谈。',
+  videosIntroSubBlurb: '点击视频卡片查看摘要、字幕与关联视频',
+  videosStatTotal: '视频总数',
+  videosStatSpeakers: '演讲者',
+  videosStatYears: '覆盖年份',
+
+  // Voice profile detail page (/voices/[id]/)
+  voicePositioningHeading: '一句话定位',
+  voiceOfficialChannelsHeading: '官方渠道',
+  voicePoliciesChampionedHeading: '主导政策（{count}）',
+  voiceAiVideosHeading: '视频观点（{count}）',
+
+  // Debate/speech detail page chrome
+  sprsHansardOriginal: 'SPRS Hansard 原始记录',
+  fetchedAtColon: '抓取日期：',
+
   // Misc
   viewSource: '查看源码',
   countSuffix: '场',
@@ -1269,6 +1312,51 @@ export const en: Partial<Record<keyof typeof zh, string>> = {
   recordsCountSuffix: 'records',
   yearPending: 'Year pending',
 
+  // Generic filter-bar chrome (voices/videos listing pages)
+  filterTopicLabel: 'Topic',
+  filterYearLabel: 'Year',
+  filterSpeakerLabel: 'Speaker',
+  filterSpeakerTypeLabel: 'Speaker type',
+  filterAllLabel: 'All',
+  filterClearLabel: 'Clear filters',
+  filterClearAllLabel: 'Clear all filters',
+  filterShowingLabel: 'Showing',
+  filterResultsSuffix: 'results',
+  noVideosMatchFilter: 'No videos match the current filters.',
+  noSpeechesMatchFilter: 'No speeches match the current filters.',
+
+  // Voices listing page (/voices/)
+  voicesIntroBlurb:
+    "Singapore's key AI people and institutions, and the official channels through which they communicate.",
+  voicesIntroSubBlurb: 'Track them to get first-hand AI policy and strategy intelligence.',
+  voicesStatPeople: 'Key people',
+  voicesStatInstitutions: 'Core institutions',
+  voicesStatSpeeches: 'MDDI speeches',
+  voicesStatVideos: 'YouTube videos',
+  voicesKeyPeopleSection: 'Key People',
+  voicesCoreInstitutionsSection: 'Core Institutions',
+  voicesMddiSpeechesSection: 'MDDI AI Speeches',
+  voicesYoutubeVideosSection: 'YouTube AI Videos',
+  mddiSourceTitle: 'Source on mddi.gov.sg',
+
+  // Videos listing page (/videos/)
+  videosIntroBlurb:
+    'YouTube talks and interviews from Singapore government officials, academics, and industry leaders on artificial intelligence.',
+  videosIntroSubBlurb: 'Click any video card for the readable transcript, summary, and related videos.',
+  videosStatTotal: 'Total videos',
+  videosStatSpeakers: 'Speakers',
+  videosStatYears: 'Years covered',
+
+  // Voice profile detail page (/voices/[id]/)
+  voicePositioningHeading: 'Positioning',
+  voiceOfficialChannelsHeading: 'Official channels',
+  voicePoliciesChampionedHeading: 'Policies championed ({count})',
+  voiceAiVideosHeading: 'AI videos ({count})',
+
+  // Debate/speech detail page chrome
+  sprsHansardOriginal: 'SPRS Hansard Record',
+  fetchedAtColon: 'Fetched: ',
+
   viewSource: 'View source',
   countSuffix: '',
   copyrightOpenSource: 'Source MIT-licensed; content CC BY 4.0',
@@ -1755,6 +1843,49 @@ export const ja: Partial<Record<keyof typeof zh, string>> = {
   companiesCountSuffix: '社',
   recordsCountSuffix: '件',
   yearPending: '年度未定',
+
+  // Generic filter-bar chrome (voices/videos listing pages)
+  filterTopicLabel: 'テーマ',
+  filterYearLabel: '年',
+  filterSpeakerLabel: '講演者',
+  filterSpeakerTypeLabel: '講演者タイプ',
+  filterAllLabel: 'すべて',
+  filterClearLabel: 'フィルターをクリア',
+  filterClearAllLabel: 'すべてのフィルターをクリア',
+  filterShowingLabel: '表示中',
+  filterResultsSuffix: '件の結果',
+  noVideosMatchFilter: '条件に一致する動画がありません。',
+  noSpeechesMatchFilter: '条件に一致するスピーチがありません。',
+
+  // Voices listing page (/voices/)
+  voicesIntroBlurb: 'シンガポールの AI 分野における重要な人物と機関、およびその公式情報発信チャネル。',
+  voicesIntroSubBlurb: '彼らの動向を追跡し、AI 政策と戦略の一次情報を入手しましょう。',
+  voicesStatPeople: '重要人物',
+  voicesStatInstitutions: '主要機関',
+  voicesStatSpeeches: 'MDDI スピーチ',
+  voicesStatVideos: 'YouTube 動画',
+  voicesKeyPeopleSection: '重要人物',
+  voicesCoreInstitutionsSection: '主要機関',
+  voicesMddiSpeechesSection: 'MDDI AI 関連スピーチ',
+  voicesYoutubeVideosSection: 'YouTube AI 動画',
+  mddiSourceTitle: 'MDDI 公式サイト原文',
+
+  // Videos listing page (/videos/)
+  videosIntroBlurb: 'シンガポール政府高官、学者、業界リーダーによる人工知能に関する YouTube スピーチとインタビュー。',
+  videosIntroSubBlurb: '動画カードをクリックすると、読みやすい字幕、要約、関連動画を確認できます。',
+  videosStatTotal: '動画総数',
+  videosStatSpeakers: '講演者',
+  videosStatYears: 'カバー年数',
+
+  // Voice profile detail page (/voices/[id]/)
+  voicePositioningHeading: 'ポジショニング',
+  voiceOfficialChannelsHeading: '公式チャンネル',
+  voicePoliciesChampionedHeading: '主導政策（{count} 件）',
+  voiceAiVideosHeading: 'AI 動画（{count} 本）',
+
+  // Debate/speech detail page chrome
+  sprsHansardOriginal: 'SPRS Hansard 原本記録',
+  fetchedAtColon: '取得日：',
 
   viewSource: 'ソースコードを表示',
   countSuffix: '件',
@@ -2246,6 +2377,49 @@ export const ko: Partial<Record<keyof typeof zh, string>> = {
   companiesCountSuffix: '개',
   recordsCountSuffix: '건',
   yearPending: '연도 미정',
+
+  // Generic filter-bar chrome (voices/videos listing pages)
+  filterTopicLabel: '주제',
+  filterYearLabel: '연도',
+  filterSpeakerLabel: '연설자',
+  filterSpeakerTypeLabel: '연설자 유형',
+  filterAllLabel: '전체',
+  filterClearLabel: '필터 초기화',
+  filterClearAllLabel: '모든 필터 초기화',
+  filterShowingLabel: '표시 중',
+  filterResultsSuffix: '건 결과',
+  noVideosMatchFilter: '필터 조건에 맞는 영상이 없습니다.',
+  noSpeechesMatchFilter: '필터 조건에 맞는 연설문이 없습니다.',
+
+  // Voices listing page (/voices/)
+  voicesIntroBlurb: '싱가포르 AI 분야의 핵심 인물과 기관, 그리고 이들의 공식 정보 채널.',
+  voicesIntroSubBlurb: '이들의 동향을 추적하여 AI 정책과 전략에 대한 1차 정보를 얻으세요.',
+  voicesStatPeople: '핵심 인물',
+  voicesStatInstitutions: '핵심 기관',
+  voicesStatSpeeches: 'MDDI 연설문',
+  voicesStatVideos: 'YouTube 영상',
+  voicesKeyPeopleSection: '핵심 인물',
+  voicesCoreInstitutionsSection: '핵심 기관',
+  voicesMddiSpeechesSection: 'MDDI AI 관련 연설문',
+  voicesYoutubeVideosSection: 'YouTube AI 영상',
+  mddiSourceTitle: 'MDDI 공식 웹사이트 원문',
+
+  // Videos listing page (/videos/)
+  videosIntroBlurb: '싱가포르 정부 관계자, 학자, 업계 리더가 인공지능에 대해 이야기하는 YouTube 강연과 인터뷰.',
+  videosIntroSubBlurb: '영상 카드를 클릭하면 읽기 쉬운 자막, 요약, 관련 영상을 볼 수 있습니다.',
+  videosStatTotal: '영상 총수',
+  videosStatSpeakers: '연설자',
+  videosStatYears: '커버 연도',
+
+  // Voice profile detail page (/voices/[id]/)
+  voicePositioningHeading: '포지셔닝',
+  voiceOfficialChannelsHeading: '공식 채널',
+  voicePoliciesChampionedHeading: '주도 정책 ({count}건)',
+  voiceAiVideosHeading: 'AI 영상 ({count}편)',
+
+  // Debate/speech detail page chrome
+  sprsHansardOriginal: 'SPRS Hansard 원본 기록',
+  fetchedAtColon: '수집일: ',
 
   viewSource: '소스 코드 보기',
   countSuffix: '장',

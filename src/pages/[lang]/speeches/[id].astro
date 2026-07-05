@@ -65,7 +65,9 @@ const articleSchema = {
   '@context': 'https://schema.org',
   '@type': 'Article',
   headline: titleDisplay,
-  ...(isZh ? { alternativeHeadline: speech.title } : {}),
+  // Both zh and zh-tw display the CJK title as primary, so both benefit
+  // from the raw zh title as an alternativeHeadline.
+  ...(isZhLike ? { alternativeHeadline: speech.title } : {}),
   datePublished: speech.date,
   inLanguage: IN_LANGUAGES[lang],
   author: { '@type': 'Person', name: speakerDisplay },
