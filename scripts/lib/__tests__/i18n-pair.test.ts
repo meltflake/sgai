@@ -250,6 +250,183 @@ export const x = [
   });
 });
 
+// ── en-only-base (opt-in) ───────────────────────────────────────────────
+//
+// Detects a base field (title/summary/description/headline/tagline) that
+// carries an English multi-word value with NO CJK — i.e. the zh source side
+// was never authored, only the English got filled. Distinct from the
+// alignment check (which fires on a CJK base missing a sibling); this fires
+// on an English base with a missing zh source.
+
+test('en-only-base: flags English multi-word title with no CJK', () => {
+  const src = `
+export const x = [
+  {
+    title: 'National AI Strategy Review',
+    description: 'A detailed English description with several words here.',
+  },
+];
+`;
+  withFile(src, (p) => {
+    const issues = findUnpairedFields(p, { enOnlyBase: true, locales: ['en', 'ja'] });
+    const fields = issues.map((i) => i.field).sort();
+    assert.deepEqual(fields, ['description', 'title']);
+    assert.ok(issues.every((i) => i.reason === 'en-only-base'));
+  });
+});
+
+test('en-only-base: does NOT flag single-token brand names', () => {
+  const src = `
+export const x = [
+  {
+    title: 'SEA-LION',
+    summary: 'AIAP',
+    tagline: 'Anthropic',
+  },
+];
+`;
+  withFile(src, (p) => {
+    const issues = findUnpairedFields(p, { enOnlyBase: true, locales: ['en', 'ja'] });
+    assert.deepEqual(issues, []);
+  });
+});
+
+test('en-only-base: does NOT flag values containing CJK (that is the alignment check)', () => {
+  const src = `
+export const x = [
+  {
+    title: '智能国家 Strategy Review',
+  },
+];
+`;
+  withFile(src, (p) => {
+    const issues = findUnpairedFields(p, { enOnlyBase: true, locales: ['en', 'ja'] });
+    // A CJK-bearing base is the alignment check's job (missing-sibling), NOT
+    // en-only-base. en-only-base must contribute nothing here.
+    assert.equal(
+      issues.filter((i) => i.reason === 'en-only-base').length,
+      0
+    );
+  });
+});
+
+test('en-only-base: respects i18n-allow-unpaired annotation', () => {
+  const src = `
+export const x = [
+  {
+    // i18n-allow-unpaired
+    title: 'English Only Allowed Title',
+  },
+];
+`;
+  withFile(src, (p) => {
+    const issues = findUnpairedFields(p, { enOnlyBase: true, locales: ['en', 'ja'] });
+    assert.deepEqual(issues, []);
+  });
+});
+
+test('en-only-base: respects per-field i18n-allow-unpaired annotation', () => {
+  const src = `
+export const x = [
+  {
+    // i18n-allow-unpaired
+    title: 'English Only Allowed Title',
+    description: 'Another English description without a Chinese source.',
+  },
+];
+`;
+  withFile(src, (p) => {
+    const issues = findUnpairedFields(p, { enOnlyBase: true, locales: ['en', 'ja'] });
+    // title is exempt, description is not.
+    assert.equal(issues.length, 1);
+    assert.equal(issues[0].field, 'description');
+    assert.equal(issues[0].reason, 'en-only-base');
+  });
+});
+
+test('en-only-base: only checks title/summary/description/headline/tagline base fields', () => {
+  const src = `
+export const x = [
+  {
+    role: 'Chief Executive Officer',
+    org: 'Some English Organisation Name',
+    title: 'Board Member Appointment',
+  },
+];
+`;
+  withFile(src, (p) => {
+    const issues = findUnpairedFields(p, { enOnlyBase: true, locales: ['en', 'ja'] });
+    // role / org are not en-only-base fields; only title fires.
+    assert.equal(issues.length, 1);
+    assert.equal(issues[0].field, 'title');
+  });
+});
+
+test('en-only-base: flags array base fields with English multi-word elements', () => {
+  const src = `
+export const x = [
+  {
+    summary: ['First English point here', 'Second English point too'],
+  },
+];
+`;
+  withFile(src, (p) => {
+    const issues = findUnpairedFields(p, { enOnlyBase: true, locales: ['en', 'ja'] });
+    assert.equal(issues.length, 1);
+    assert.equal(issues[0].field, 'summary');
+    assert.equal(issues[0].reason, 'en-only-base');
+  });
+});
+
+test('en-only-base: number + word counts as multi-token (calibration boundary)', () => {
+  // Real people.ts value: `100 Experiments（100E）`. Two whitespace tokens,
+  // one is a real word → flag. Guards the token-count heuristic against a
+  // regression to per-token letter-run counting (which would skip `100`).
+  const src = `
+export const x = [
+  {
+    title: '100 Experiments（100E）',
+  },
+];
+`;
+  withFile(src, (p) => {
+    const issues = findUnpairedFields(p, { enOnlyBase: true, locales: ['en', 'ja'] });
+    assert.equal(issues.length, 1);
+    assert.equal(issues[0].field, 'title');
+    assert.equal(issues[0].reason, 'en-only-base');
+  });
+});
+
+test('en-only-base: hyphenated single brand token is exempt (calibration boundary)', () => {
+  // `SEA-LION` is one whitespace token → must NOT flag (guards against
+  // reverting to `/[A-Za-z]{2,}/g` match-counting, which sees SEA + LION).
+  const src = `
+export const x = [
+  {
+    title: 'SEA-LION',
+    summary: 'GPT-4',
+  },
+];
+`;
+  withFile(src, (p) => {
+    assert.deepEqual(findUnpairedFields(p, { enOnlyBase: true, locales: ['en', 'ja'] }), []);
+  });
+});
+
+test('en-only-base: default (opt-out) does not change alignment behaviour', () => {
+  const src = `
+export const x = [
+  {
+    title: 'English Only Title Value',
+  },
+];
+`;
+  withFile(src, (p) => {
+    // Without enOnlyBase, a pure-English base is fine (no CJK to pair).
+    assert.deepEqual(findUnpairedFields(p, { locales: ['en', 'ja'] }), []);
+  });
+});
+
 // ── findIncompleteRecords ───────────────────────────────────────────────
 
 const ECOSYSTEM_TEST_SCHEMA: FileSchema = {

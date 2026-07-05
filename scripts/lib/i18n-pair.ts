@@ -35,6 +35,7 @@
 //   npx tsx scripts/lib/i18n-pair.ts --fields=title,description src/data/policies.ts
 //   npx tsx scripts/lib/i18n-pair.ts --locales=en,ja,ko src/data/*.ts
 //   npx tsx scripts/lib/i18n-pair.ts --locales=en,ja,zh-tw,ko src/data/*.ts  # all five
+//   npx tsx scripts/lib/i18n-pair.ts --en-only-base src/data/*.ts            # flag EN-only base fields
 //
 // LOCALE CODES: pass Lang codes that mirror src/i18n/index.ts
 // (en, ja, zh-tw, ko). The CLI converts them to sibling suffixes via the
@@ -62,8 +63,9 @@ export interface UnpairedField {
   recordStartLine: number;
   field: string;
   chineseValue: string;
-  reason: 'missing-sibling' | 'empty-sibling';
-  /** Which target locale's sibling is missing/empty (e.g. 'en', 'ja'). */
+  reason: 'missing-sibling' | 'empty-sibling' | 'en-only-base';
+  /** Which target locale's sibling is missing/empty (e.g. 'en', 'ja').
+   *  For 'en-only-base' this is 'zh' — the missing side is the zh source. */
   locale: string;
 }
 
@@ -98,6 +100,31 @@ const DEFAULT_FIELDS = [
 ];
 
 const DEFAULT_LOCALES = ['en', 'ja', 'ko'];
+
+// en-only-base: the base fields whose values, when authored in English only
+// (no zh source), indicate a record that was filled from the English side and
+// never localized back to the zh source. Independent of DEFAULT_FIELDS (the
+// CJK-alignment field set) — an English-only base carries no CJK, so the
+// alignment loop never sees it.
+const EN_ONLY_BASE_FIELDS = ['title', 'summary', 'description', 'headline', 'tagline'];
+
+// A value counts as "English prose" (worth flagging as en-only-base) when it
+// has ≥2 whitespace-separated tokens AND at least one token contains a
+// 2+-letter run. Single-token values are almost always brand names / acronyms
+// and are exempt.
+//
+// Heuristic note (calibration 2026-07). Three boundary cases pin this down:
+//   - `SEA-LION`               → 1 whitespace token → SKIP (brand). A naïve
+//                                `/[A-Za-z]{2,}/g` match-count>=2 over-reports
+//                                it (SEA + LION = 2 matches).
+//   - `100 Experiments（100E）` → 2 whitespace tokens, one is a real word
+//                                → FLAG. A "each token must have a 2+ letter
+//                                run" rule under-reports it (`100` has none).
+//   - `LearnAI（AI4E / AI4I）`  → ≥2 tokens with a word → FLAG.
+// The rule below (token-count>=2 && any token has a letter run) is the
+// unique heuristic that gets all three right. Do NOT revert to match-counting
+// or per-token letter-runs without re-running the calibration in the brief.
+const EN_LETTER_RUN_RE = /[A-Za-z]{2,}/;
 
 const CJK_RE = /[一-鿿]/;
 const IGNORE_MARKER = 'i18n-allow-unpaired';
@@ -250,11 +277,32 @@ function getRecordIdentifier(obj: ts.ObjectLiteralExpression): string | undefine
   return undefined;
 }
 
+/** True when a string value is English prose (no CJK, ≥2 whitespace tokens
+ *  with at least one letter-run). Single-token values (brand names / acronyms
+ *  like SEA-LION, AIAP, Anthropic) return false so they aren't flagged. */
+function isEnglishMultiWord(text: string): boolean {
+  const trimmed = text.trim();
+  if (trimmed.length === 0) return false;
+  if (CJK_RE.test(trimmed)) return false;
+  const tokens = trimmed.split(/\s+/);
+  if (tokens.length < 2) return false;
+  return tokens.some((token) => EN_LETTER_RUN_RE.test(token));
+}
+
 // ── Public API: alignment check (back-compat) ───────────────────────────
 
 export function findUnpairedFields(
   filePath: string,
-  options: { fields?: string[]; locales?: string[]; ignoreUnpairedAnnotation?: string } = {}
+  options: {
+    fields?: string[];
+    locales?: string[];
+    ignoreUnpairedAnnotation?: string;
+    /** Opt-in: additionally flag base fields (title/summary/description/
+     *  headline/tagline) whose value is English-only prose with no zh source.
+     *  Default false — does NOT affect the emit-pipeline baseline-diff callers
+     *  that rely on the alignment-only behaviour. */
+    enOnlyBase?: boolean;
+  } = {}
 ): UnpairedField[] {
   if (!existsSync(filePath)) {
     throw new Error(`File not found: ${filePath}`);
@@ -262,12 +310,45 @@ export function findUnpairedFields(
   void options.ignoreUnpairedAnnotation; // marker is fixed (`i18n-allow-unpaired`); kept for signature compat
   const fields = options.fields || DEFAULT_FIELDS;
   const locales = options.locales || DEFAULT_LOCALES;
+  const enOnlyBase = options.enOnlyBase ?? false;
   const sourceFile = parseSourceFile(filePath);
   const issues: UnpairedField[] = [];
 
   for (const obj of walkObjectLiterals(sourceFile)) {
     if (hasIgnoreAnnotation(obj, sourceFile)) continue;
     const recordStartLine = getLine(obj, sourceFile);
+
+    // en-only-base pass (independent field set from CJK alignment above).
+    if (enOnlyBase) {
+      for (const field of EN_ONLY_BASE_FIELDS) {
+        const value = getPropertyValue(obj, field);
+        let isEnOnly = false;
+        let representativeValue = '';
+        if (value.kind === 'string') {
+          isEnOnly = isEnglishMultiWord(value.text);
+          representativeValue = value.text;
+        } else if (value.kind === 'array') {
+          isEnOnly = value.elements.some((el) => isEnglishMultiWord(el));
+          representativeValue = value.elements.join(' | ');
+        } else {
+          continue;
+        }
+        if (!isEnOnly) continue;
+
+        const fieldProp = getProperty(obj, field)!;
+        // Per-field exemption: comment immediately above the field line.
+        if (hasIgnoreAnnotation(fieldProp, sourceFile)) continue;
+        issues.push({
+          file: filePath,
+          line: getLine(fieldProp, sourceFile),
+          recordStartLine,
+          field,
+          chineseValue: representativeValue,
+          reason: 'en-only-base',
+          locale: 'zh',
+        });
+      }
+    }
 
     for (const field of fields) {
       const value = getPropertyValue(obj, field);
@@ -417,11 +498,12 @@ async function cliMain(): Promise<void> {
         .split(',')
         .map((s) => s.trim())
     : undefined;
+  const enOnlyBase = argv.includes('--en-only-base');
   const files = argv.filter((a) => !a.startsWith('--'));
 
   if (files.length === 0) {
     process.stderr.write(
-      'Usage: i18n-pair <file...> [--mode=alignment|completeness|both] [--fields=title,description] [--locales=en,ja]\n'
+      'Usage: i18n-pair <file...> [--mode=alignment|completeness|both] [--fields=title,description] [--locales=en,ja] [--en-only-base]\n'
     );
     process.exit(2);
   }
@@ -433,7 +515,7 @@ async function cliMain(): Promise<void> {
     const abs = resolve(file);
 
     if (mode === 'alignment' || mode === 'both') {
-      const issues = findUnpairedFields(abs, { fields, locales });
+      const issues = findUnpairedFields(abs, { fields, locales, enOnlyBase });
       if (issues.length > 0) {
         totalUnpaired += issues.length;
         process.stdout.write(`\n${file}: ${issues.length} unpaired (alignment)\n`);
