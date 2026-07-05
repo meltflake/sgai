@@ -501,17 +501,70 @@ function isAllowed(s) {
 //   1. Split visible text on sentence-end punctuation (zh/en/ja).
 //   2. For each sentence with ≥ minTokens English word tokens
 //      AND zero hiragana/katakana characters → flag.
-//   3. Skip sentences whose substring matches any of conf.enSentence.allowPatterns
-//      (brand names, programme proper nouns, native UI labels).
+//   3. Exempt a sentence only if, AFTER deleting every allowPatterns match
+//      (brand / programme proper nouns), the REMAINING English falls below
+//      minTokens. See enSentenceExempt below for why whole-substring
+//      exemption was a false-negative hole (Finding C).
 //
 // "Sentence" is approximated by punctuation split — good enough for the
 // "wrong-language sentence" failure mode this is designed to catch. We
 // truncate flagged sentences to 150 chars in reports to keep output usable.
-const EN_TOKEN_RE = /[A-Za-z][A-Za-z0-9'’-]*/g;
+export const EN_TOKEN_RE = /[A-Za-z][A-Za-z0-9'’-]*/g;
 const SENTENCE_SPLIT_RE = /[.。！!？?]+/;
 
+/**
+ * Decide whether an allow-list should exempt a suspect EN sentence.
+ *
+ * OLD behaviour (Finding C false-negative): a sentence was exempted if it
+ * merely *contained* any allow substring — so
+ * "OpenAI announced a comprehensive new national partnership across every
+ * sector this year" was fully whitelisted just because it contains "OpenAI".
+ * A real fallback leak that happens to sit next to a brand name slipped
+ * through the ratchet.
+ *
+ * NEW behaviour: delete every allow-pattern occurrence from the sentence,
+ * then re-count English tokens on what's left. Exempt ONLY if the residue is
+ * below minTokens (i.e. the sentence is essentially just brand/programme
+ * proper nouns). "OpenAI" alone → 0 residual tokens → exempt; the long
+ * partnership sentence → residue still ≥ minTokens → NOT exempt → reported.
+ *
+ * Longer allow patterns are removed first so a short pattern can't partially
+ * consume a longer one (e.g. remove "AI Singapore" before "sgai").
+ *
+ * @param {string} sent      the (whitespace-normalised) sentence
+ * @param {string[]} allow   allowPatterns from the locale's enSentence config
+ * @param {number} minTokens residual English-token threshold
+ * @returns {boolean} true → exempt (skip); false → keep scanning
+ */
+export function enSentenceExempt(sent, allow, minTokens) {
+  if (!allow || allow.length === 0) return false;
+  let residue = sent;
+  for (const pattern of [...allow].sort((a, b) => b.length - a.length)) {
+    if (!pattern) continue;
+    // Global, case-insensitive, literal removal of every occurrence.
+    residue = residue.split(pattern).join(' ');
+  }
+  const residualTokens = residue.match(EN_TOKEN_RE) || [];
+  const distinct = new Set(residualTokens.map((t) => t.toLowerCase()));
+  // Below the token threshold, OR fewer than 2 distinct residual tokens
+  // (a single brand-ish token left over is not a leak) → exempt.
+  return residualTokens.length < minTokens || distinct.size < 2;
+}
+
 function findEnSentences(text) {
-  const cfg = conf.enSentence;
+  return filterEnSentences(text, conf.enSentence);
+}
+
+/**
+ * Pure, config-injected core of the EN-sentence scan (extracted so it can be
+ * unit-tested without booting the whole scanner). `findEnSentences` above
+ * wires it to the active locale's `conf.enSentence`.
+ *
+ * @param {string} text
+ * @param {{minTokens?: number, allowPatterns?: string[], nativeScriptRegex?: RegExp}|undefined} cfg
+ * @returns {string[]} suspect sentences (truncated to 150 chars)
+ */
+export function filterEnSentences(text, cfg) {
   if (!cfg) return [];
   const minTokens = cfg.minTokens || 4;
   const allow = cfg.allowPatterns || [];
@@ -527,7 +580,9 @@ function findEnSentences(text) {
     if (targetScript && targetScript.test(sent)) continue;
     const tokens = sent.match(EN_TOKEN_RE) || [];
     if (tokens.length < minTokens) continue;
-    if (allow.some((p) => sent.includes(p))) continue;
+    // Exempt only if the residue after stripping brand/programme allow-terms
+    // is itself below threshold (Finding C — no more whole-sentence bypass).
+    if (enSentenceExempt(sent, allow, minTokens)) continue;
     // Don't double-count sentences that are pure punctuation/numbers/EN tokens
     // counted as a single "URL-ish" token. Require at least 2 distinct tokens.
     const distinct = new Set(tokens.map((t) => t.toLowerCase()));
@@ -862,4 +917,8 @@ function main() {
   if (exitCode > 0) process.exit(exitCode);
 }
 
-main();
+// Run the scan only when invoked directly, not when imported by a test that
+// only wants the pure helpers (filterEnSentences / enSentenceExempt).
+if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) {
+  main();
+}
