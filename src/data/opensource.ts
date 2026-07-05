@@ -1235,6 +1235,7 @@ export interface Paper {
 
 export const papers: Paper[] = [
   {
+    // i18n-allow-unpaired — canonical English arXiv paper title; zh render uses `titleZh` (Paper schema is title=EN + titleZh)
     title: 'SEA-Guard: Culturally Grounded Multilingual Safeguard for Southeast Asia',
     titleZh: 'SEA-Guard：面向东南亚的文化本地化多语言安全护栏',
     arxivId: '2602.01618',
@@ -1243,6 +1244,7 @@ export const papers: Paper[] = [
     year: 2026,
   },
   {
+    // i18n-allow-unpaired — canonical English arXiv paper title; zh render uses `titleZh`
     title: 'SEA-SafeguardBench: Evaluating AI Safety in SEA Languages and Cultures',
     titleZh: 'SEA-SafeguardBench：东南亚语言与文化 AI 安全评测基准',
     arxivId: '2512.05501',
@@ -1251,6 +1253,7 @@ export const papers: Paper[] = [
     year: 2025,
   },
   {
+    // i18n-allow-unpaired — canonical English arXiv paper title; zh render uses `titleZh`
     title: 'SEA-LION: Southeast Asian Languages in One Network',
     titleZh: 'SEA-LION：东南亚语言统一网络',
     arxivId: '2504.05747',
@@ -1259,6 +1262,7 @@ export const papers: Paper[] = [
     year: 2025,
   },
   {
+    // i18n-allow-unpaired — canonical English arXiv paper title; zh render uses `titleZh`
     title: 'SEA-HELM: Southeast Asian Holistic Evaluation of Language Models',
     titleZh: 'SEA-HELM：东南亚语言模型综合评测',
     arxivId: '2502.14301',
