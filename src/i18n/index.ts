@@ -563,6 +563,18 @@ export const zh = {
   // Full-page search (/search/)
   searchPageDesc: '搜索全站内容：政策、辩论、视频、人物、抓手、文章。支持中文、English、日本語、한국어、繁體中文。',
 
+  // Topics hub (/topics/)
+  topicsIndexDesc: '15 个主题横切全站内容——每个主题一页，汇集相关辩论、政策、视频、人物与文章。',
+  topicEntriesCount: '{count} 条相关内容',
+  topicViewAll: '查看全部 {count} 条 →',
+  relatedTopicsHeading: '相关主题',
+  sameTopicHeading: '同主题更多',
+  topicKindLegal: '法律',
+  topicKindTimeline: '时间线',
+  topicKindTalent: '人才',
+  pnOlder: '← 更早一条',
+  pnNewer: '更新一条 →',
+
   // Detail page sections (shared across debate/speech/video/voice detail pages)
   fullTextZh: '完整译文（中文）',
   coreViewpoint: '核心观点',
@@ -884,6 +896,19 @@ export const en: Partial<Record<keyof typeof zh, string>> = {
   // Full-page search (/search/)
   searchPageDesc: 'Search everything on this site: policies, debates, videos, people, levers and articles.',
 
+  // Topics hub (/topics/)
+  topicsIndexDesc:
+    '15 topics cut across everything on this site — each one gathers the related debates, policies, videos, people and articles on a single page.',
+  topicEntriesCount: '{count} related items',
+  topicViewAll: 'View all {count} →',
+  relatedTopicsHeading: 'Related topics',
+  sameTopicHeading: 'More on these topics',
+  topicKindLegal: 'Legal',
+  topicKindTimeline: 'Timeline',
+  topicKindTalent: 'Talent',
+  pnOlder: '← Older',
+  pnNewer: 'Newer →',
+
   fullTextZh: 'Chinese Translation',
   coreViewpoint: 'In Brief',
   relatedVideos: 'Related Videos',
@@ -1197,6 +1222,18 @@ export const ja: Partial<Record<keyof typeof zh, string>> = {
 
   // Full-page search (/search/)
   searchPageDesc: 'サイト全体を検索：政策、議会討論、動画、人物、レバー、記事。',
+
+  // Topics hub (/topics/)
+  topicsIndexDesc: '15 のテーマでサイト全体を横断——各テーマのページに関連する議会討論・政策・動画・人物・記事を集約。',
+  topicEntriesCount: '関連コンテンツ {count} 件',
+  topicViewAll: 'すべて見る（{count} 件）→',
+  relatedTopicsHeading: '関連テーマ',
+  sameTopicHeading: '同じテーマの続き',
+  topicKindLegal: '法律',
+  topicKindTimeline: '年表',
+  topicKindTalent: '人材',
+  pnOlder: '← 前へ（古い）',
+  pnNewer: '次へ（新しい）→',
 
   fullTextZh: '完全翻訳（中国語）',
   coreViewpoint: 'コア観点',
@@ -1515,6 +1552,19 @@ export const ko: Partial<Record<keyof typeof zh, string>> = {
 
   // Full-page search (/search/)
   searchPageDesc: '사이트 전체 검색: 정책, 국회 토론, 비디오, 인물, 레버, 글.',
+
+  // Topics hub (/topics/)
+  topicsIndexDesc:
+    '15개 주제로 사이트 전체를 가로지릅니다 — 주제별 페이지에 관련 토론·정책·비디오·인물·글을 한데 모았습니다.',
+  topicEntriesCount: '관련 콘텐츠 {count}건',
+  topicViewAll: '전체 {count}건 보기 →',
+  relatedTopicsHeading: '관련 주제',
+  sameTopicHeading: '같은 주제 더 보기',
+  topicKindLegal: '법률',
+  topicKindTimeline: '타임라인',
+  topicKindTalent: '인재',
+  pnOlder: '← 이전(과거)',
+  pnNewer: '다음(최신) →',
 
   fullTextZh: '완전 번역본(중문)',
   coreViewpoint: '핵심 관점',

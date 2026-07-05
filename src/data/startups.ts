@@ -42,6 +42,7 @@ export interface Unicorn {
   statusJa?: string;
   statusKo?: string;
   url: string;
+  topicIds?: string[]; // controlled topic ids (src/data/topics.ts); explicit values override topic-mappings
 }
 
 export const unicorns: Unicorn[] = [
@@ -76,6 +77,7 @@ export const unicorns: Unicorn[] = [
   {
     id: 'advance-ai',
     name: 'Advance Intelligence',
+    topicIds: ['finance'],
     sector: '金融科技 AI / BNPL',
     sectorKo: '핀테크 AI / BNPL',
     sectorJa: 'フィンテック AI / BNPL',
@@ -90,6 +92,7 @@ export const unicorns: Unicorn[] = [
   },
   {
     name: 'Biofourmis',
+    topicIds: ['healthcare'],
     sector: '数字健康 AI',
     sectorKo: '디지털 헬스케어 AI',
     sectorJa: 'デジタルヘルス AI',
@@ -104,6 +107,7 @@ export const unicorns: Unicorn[] = [
   },
   {
     name: 'Nium',
+    topicIds: ['finance'],
     sector: '跨境支付基础设施',
     sectorKo: '국경 간 결제 인프라',
     sectorJa: 'クロスボーダー決済インフラ',
@@ -146,6 +150,7 @@ export const unicorns: Unicorn[] = [
   },
   {
     name: 'Sygnum',
+    topicIds: ['finance'],
     sector: '数字资产银行',
     sectorKo: '디지털 자산 은행',
     sectorJa: 'デジタルアセット銀行',
@@ -206,6 +211,7 @@ export interface Startup {
    *  Set automatically by emit pipelines; manual additions must set it too.
    *  Old records may be undefined → not surfaced. */
   addedAt?: string;
+  topicIds?: string[]; // controlled topic ids (src/data/topics.ts); explicit values override topic-mappings
 }
 
 export interface Vertical {
@@ -535,6 +541,7 @@ export interface Exit {
   noteEn?: string;
   noteJa?: string;
   noteKo?: string;
+  topicIds?: string[]; // controlled topic ids (src/data/topics.ts); explicit values override topic-mappings
 }
 
 export const exits: Exit[] = [
@@ -636,6 +643,7 @@ export interface Investor {
   notableDealsJa?: string;
   notableDealsKo?: string;
   url: string;
+  topicIds?: string[]; // controlled topic ids (src/data/topics.ts); explicit values override topic-mappings
 }
 
 export const investors: Investor[] = [

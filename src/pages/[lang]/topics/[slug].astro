@@ -1,0 +1,48 @@
+---
+// /topics/[slug] hub (zh / zh-tw / ja / ko) — thin wrapper around
+// TopicHub.astro; see src/pages/topics/[slug].astro for the en variant.
+
+import type { GetStaticPaths } from 'astro';
+import Layout from '~/layouts/PageLayout.astro';
+import JsonLd from '~/components/common/JsonLd.astro';
+import TopicHub from '~/components/topics/TopicHub.astro';
+import { topics, type Topic } from '~/data/topics';
+import { NON_DEFAULT_ROUTE_LOCALES, t, pickLocalized, localizedHref, IN_LANGUAGES, type Lang } from '~/i18n';
+
+export const getStaticPaths = (() =>
+  NON_DEFAULT_ROUTE_LOCALES.flatMap((lang) =>
+    topics.map((topic) => ({ params: { lang, slug: topic.id }, props: { topic } }))
+  )) satisfies GetStaticPaths;
+
+interface Props {
+  topic: Topic;
+}
+const { topic } = Astro.props as Props;
+const lang = Astro.params.lang as Lang;
+
+const name = pickLocalized<string>(topic, 'name', lang) ?? topic.name;
+const description = pickLocalized<string>(topic, 'description', lang) ?? topic.description;
+
+const metadata = {
+  title: `${name} · ${t(lang, 'fpBrowseByTopic')} · ${t(lang, 'siteName')}`,
+  description,
+};
+
+const collectionSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name,
+  description,
+  url: `https://sgai.md${localizedHref(`/topics/${topic.id}/`, lang)}`,
+  inLanguage: IN_LANGUAGES[lang],
+};
+---
+
+<Layout
+  metadata={metadata}
+  breadcrumbs={[{ label: t(lang, 'fpBrowseByTopic'), href: localizedHref('/topics/', lang) }, { label: name }]}
+  lang={lang}
+>
+  <JsonLd schema={collectionSchema} />
+  <TopicHub lang={lang} topic={topic} />
+</Layout>

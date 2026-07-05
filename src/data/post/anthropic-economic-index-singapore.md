@@ -3,6 +3,7 @@ publishDate: 2026-05-29
 title: '新加坡的 Claude 使用强度全球第一：5.53 是什么意思'
 excerpt: 'Anthropic 2026 年 3 月的 Economic Index 报告把各国按人口归一化的 Claude 使用强度排名，新加坡以 5.53 居首。这个数字量的是人均普及强度，不是绝对用量，也不是用得多高级。新加坡登顶，靠政策连续推动，也靠它小而富、说英语、知识工作者密集的城市国家底子。'
 category: '观察'
+topicIds: ['economy-industry']
 tags:
   - 观察
   - 新加坡

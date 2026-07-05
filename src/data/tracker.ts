@@ -101,6 +101,7 @@ export interface DimensionBase {
    *  src/utils/derived-updates.ts to surface a homepage "Recent updates" entry.
    *  Old records may be undefined → not surfaced. */
   addedAt?: string;
+  topicIds?: string[]; // controlled topic ids (src/data/topics.ts); explicit values override topic-mappings
 }
 
 export interface QuantifiedDimension extends DimensionBase {

@@ -6090,6 +6090,7 @@ export interface BenchmarkCase {
    *  Set automatically by emit pipelines; manual additions must set it too.
    *  Old records may be undefined → not surfaced. */
   addedAt?: string;
+  topicIds?: string[]; // controlled topic ids (src/data/topics.ts); explicit values override topic-mappings
 }
 
 export const benchmarkCaseProfileUpdated = '2026-05-04';
@@ -6097,6 +6098,7 @@ export const benchmarkCaseProfileUpdated = '2026-05-04';
 export const benchmarkCases: BenchmarkCase[] = [
   {
     id: 'ai-verify',
+    topicIds: ['safety-ethics', 'governance-regulation'],
     flag: '🇸🇬',
     name: 'AI Verify',
     nameEn: 'AI Verify',
@@ -6236,6 +6238,7 @@ export const benchmarkCases: BenchmarkCase[] = [
   },
   {
     id: 'cyberport-ai-supercomputing-centre',
+    topicIds: ['infrastructure-research'],
     canonicalPath: '/benchmarking/hong-kong-initiative-1-cyberport-3000-pflops-supercomputing-centre/',
     flag: '🇭🇰',
     name: '数码港 AI 超算中心',
@@ -6377,6 +6380,7 @@ export const benchmarkCases: BenchmarkCase[] = [
   },
   {
     id: 'tsmc-ai-chip-manufacturing',
+    topicIds: ['infrastructure-research', 'economy-industry'],
     flag: '🇹🇼',
     name: 'TSMC AI 芯片制造',
     nameKo: 'TSMC AI 칩 제조',
@@ -6517,6 +6521,7 @@ export const benchmarkCases: BenchmarkCase[] = [
   },
   {
     id: 'falcon-llm',
+    topicIds: ['open-source'],
     flag: '🇦🇪',
     name: 'Falcon LLM',
     nameEn: 'Falcon LLM',
@@ -6646,6 +6651,7 @@ export const benchmarkCases: BenchmarkCase[] = [
   },
   {
     id: 'mgx-ai-fund',
+    topicIds: ['startups-investment'],
     flag: '🇦🇪',
     name: 'MGX AI Fund',
     nameEn: 'MGX AI Fund',
@@ -6781,6 +6787,7 @@ export const benchmarkCases: BenchmarkCase[] = [
   },
   {
     id: 'mbzuai',
+    topicIds: ['talent-education'],
     flag: '🇦🇪',
     name: 'MBZUAI',
     nameEn: 'MBZUAI',
@@ -6899,6 +6906,7 @@ export const benchmarkCases: BenchmarkCase[] = [
   },
   {
     id: 'unit-8200-ai-talent-pipeline',
+    topicIds: ['talent-education', 'national-security'],
     flag: '🇮🇱',
     name: 'Unit 8200 AI 人才管线',
     nameKo: 'Unit 8200 AI 인재 파이프라인',
@@ -7032,6 +7040,7 @@ export const benchmarkCases: BenchmarkCase[] = [
   },
   {
     id: 'korea-chaebol-llm-stack',
+    topicIds: ['economy-industry'],
     flag: '🇰🇷',
     name: '韩国财阀自研大模型栈',
     nameKo: '한국 재벌 자체 개발 대규모 모델 스택',
@@ -7170,6 +7179,7 @@ export const benchmarkCases: BenchmarkCase[] = [
   },
   {
     id: 'burokratt',
+    topicIds: ['public-sector'],
     flag: '🇪🇪',
     name: 'Bürokratt',
     nameEn: 'Bürokratt',
@@ -7305,6 +7315,7 @@ export const benchmarkCases: BenchmarkCase[] = [
   },
   {
     id: 'elements-of-ai',
+    topicIds: ['talent-education'],
     flag: '🇫🇮',
     name: 'Elements of AI',
     nameEn: 'Elements of AI',
@@ -7435,6 +7446,7 @@ export const benchmarkCases: BenchmarkCase[] = [
   },
   {
     id: 'eth-ai-center',
+    topicIds: ['infrastructure-research', 'talent-education'],
     flag: '🇨🇭',
     name: 'ETH AI Center',
     nameEn: 'ETH AI Center',
@@ -7568,6 +7580,7 @@ export const benchmarkCases: BenchmarkCase[] = [
   },
   {
     id: 'pan-canadian-ai-institute-network',
+    topicIds: ['infrastructure-research'],
     flag: '🇨🇦',
     name: 'Mila / Vector / Amii 研究网络',
     nameKo: 'Mila / Vector / Amii 연구 네트워크',

@@ -140,6 +140,7 @@ export interface EcosystemEntity {
    *  Set automatically by emit pipelines; manual additions must set it too.
    *  Old records may be undefined â†’ not surfaced. */
   addedAt?: string;
+  topicIds?: string[]; // controlled topic ids (src/data/topics.ts); explicit values override topic-mappings
 }
 
 export interface EcosystemCategory {
@@ -3120,6 +3121,7 @@ Worth watching going forward: **when MAS will allow GenAI in direct customer-fac
     entities: [
       {
         id: 'sea-lion',
+        topicIds: ['open-source', 'infrastructure-research'],
         name: 'SEA-LION',
         nameJa: 'SEA-LION',
         nameKo: 'SEA-LION',
@@ -3451,6 +3453,7 @@ These bottlenecks are exactly the questions to be answered in the NAIS 2.0 era â
       },
       {
         id: 'sea-helm',
+        topicIds: ['open-source', 'safety-ethics'],
         name: 'SEA-HELM',
         nameJa: 'SEA-HELM',
         nameKo: 'SEA-HELM',
@@ -3672,6 +3675,7 @@ Worth watching: **how quickly SEA-HELM updates** (GenAI moves fast and benchmark
       },
       {
         id: 'sea-guard',
+        topicIds: ['open-source', 'safety-ethics'],
         name: 'SEA-Guard',
         nameJa: 'SEA-Guard',
         nameKo: 'SEA-Guard',
@@ -3858,6 +3862,7 @@ But SEA-Guard's maturity is still not enough: **today it is more demo than produ
       },
       {
         id: 'aquarium',
+        topicIds: ['open-source'],
         name: 'Aquarium',
         nameJa: 'Aquarium',
         nameKo: 'Aquarium',

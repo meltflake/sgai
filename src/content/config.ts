@@ -72,6 +72,11 @@ const postCollection = defineCollection({
     relatedTimelineYears: z.array(z.number()).optional(),
     relatedPersonIds: z.array(z.string()).optional(),
 
+    // Controlled topic ids (src/data/topics.ts) — zh source posts only;
+    // translated mirrors resolve through the zh source at hub level.
+    // verify-graph.ts gates coverage + validity.
+    topicIds: z.array(z.string()).optional(),
+
     // Phase 2 long-form features.
     citations: z
       .array(

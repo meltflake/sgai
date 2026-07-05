@@ -15,7 +15,7 @@ export interface Debate {
   // Phase 1 knowledge-graph fields (optional during migration; populated
   // for new entries by codemod-debates.ts and hand-curated over time).
   personIds?: string[]; // resolved Person.id (subset of speakers that matched)
-  topicIds?: string[]; // controlled vocabulary (Phase 2 wires up)
+  topicIds?: string[]; // controlled topic ids (src/data/topics.ts); explicit values override topic-mappings
   relatedPolicyIds?: string[]; // → src/data/policies.ts ids
   relatedLeverNumbers?: number[]; // 1–6, → src/data/levers.ts
   relatedTimelineYears?: number[]; // → src/data/timeline.ts (events with matching year)

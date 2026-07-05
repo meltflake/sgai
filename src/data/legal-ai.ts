@@ -36,6 +36,7 @@ export interface LegalItem {
    *  Set automatically by emit pipelines; manual additions must set it too.
    *  Old records may be undefined → not surfaced. */
   addedAt?: string;
+  topicIds?: string[]; // controlled topic ids (src/data/topics.ts); explicit values override topic-mappings
 }
 
 export interface LegalSection {
@@ -83,6 +84,7 @@ export const sections: LegalSection[] = [
     items: [
       {
         title: 'Copyright Act §244',
+        topicIds: ['governance-regulation'],
         titleEn: 'Copyright Act 2021 — Section 244 (Computational Data Analysis Exception)',
         date: '2021-11',
         authority: 'MINLAW',
@@ -111,6 +113,7 @@ export const sections: LegalSection[] = [
       },
       {
         title: 'IPOS "When Code Creates" 报告',
+        topicIds: ['governance-regulation'],
         titleKo: 'IPOS 「When Code Creates」 보고서',
         titleJa: 'IPOS 「When Code Creates」報告',
         titleEn: 'IPOS — When Code Creates: AI Authorship Position Paper',
@@ -158,6 +161,7 @@ export const sections: LegalSection[] = [
     items: [
       {
         title: 'Online Criminal Harms Act (OCHA)',
+        topicIds: ['governance-regulation', 'deepfakes-disinformation'],
         titleEn: 'Online Criminal Harms Act (OCHA)',
         date: '2023-07',
         authority: 'MHA',
@@ -184,6 +188,7 @@ export const sections: LegalSection[] = [
       },
       {
         title: 'Elections (Integrity of Online Advertising) (Amendment) Bill',
+        topicIds: ['deepfakes-disinformation', 'governance-regulation'],
         titleEn: 'Elections (Integrity of Online Advertising) (Amendment) Bill',
         date: '2024-09',
         authority: 'MDDI / Elections Department',
@@ -211,6 +216,7 @@ export const sections: LegalSection[] = [
       },
       {
         title: 'Criminal Law (Miscellaneous Amendments) Bill 2025',
+        topicIds: ['governance-regulation', 'deepfakes-disinformation'],
         titleEn: 'Criminal Law (Miscellaneous Amendments) Bill 2025',
         date: '2025',
         authority: 'MHA',
@@ -236,6 +242,7 @@ export const sections: LegalSection[] = [
       },
       {
         title: 'Online Safety (Relief and Accountability) Bill 2025',
+        topicIds: ['governance-regulation', 'safety-ethics'],
         titleEn: 'Online Safety (Relief and Accountability) Bill 2025',
         date: '2025',
         authority: 'MDDI',
@@ -276,6 +283,7 @@ export const sections: LegalSection[] = [
     items: [
       {
         title: '法院生成式 AI 使用指南',
+        topicIds: ['governance-regulation', 'public-sector'],
         titleKo: '법원 생성형 AI 사용 지침',
         titleJa: '裁判所生成型 AI 使用ガイドライン',
         titleEn: 'Guide on Use of Generative AI Tools by Court Users',
@@ -307,6 +315,7 @@ export const sections: LegalSection[] = [
       },
       {
         title: 'MAS AI Risk Management Guidelines',
+        topicIds: ['finance', 'governance-regulation'],
         titleEn: 'AI Risk Management Guidelines for Banks',
         date: '2024-12',
         authority: 'MAS',
@@ -333,6 +342,7 @@ export const sections: LegalSection[] = [
       },
       {
         title: 'CSA Securing AI Systems Guidelines',
+        topicIds: ['safety-ethics', 'national-security'],
         titleEn: 'Guidelines and Companion Guide on Securing AI Systems',
         date: '2024-10',
         authority: 'CSA',
@@ -359,6 +369,7 @@ export const sections: LegalSection[] = [
       },
       {
         title: 'PDPA × AI 边界',
+        topicIds: ['governance-regulation'],
         titleKo: 'PDPA × AI 경계',
         titleJa: 'PDPA × AI 境界',
         titleEn: 'Personal Data Protection Act (PDPA) — AI Application',
