@@ -9,25 +9,23 @@ on:
       - main
 
 jobs:
+  # PR gate only: on main pushes, deploy.yaml builds (and runs check:dist)
+  # anyway — building here too would double the Actions minutes per merge.
+  # Node matrix trimmed to 22 (the version the site deploys on): the 18/20
+  # legs tripled build cost without ever catching a version-specific break.
   build:
+    if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version:
-          - 18
-          - 20
-          - 22
     steps:
       - uses: actions/checkout@v4
-      - name: Use Node.js v${{ matrix.node-version }}
+      - name: Use Node.js 22
         uses: actions/setup-node@v4
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: 22
           cache: npm
       - run: npm ci
       - run: npm run build
       - run: npm run check:dist
-      # - run: npm test
 
   check:
     runs-on: ubuntu-latest
