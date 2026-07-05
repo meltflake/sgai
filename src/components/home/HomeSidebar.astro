@@ -64,7 +64,7 @@ const hotEntries = HOT_KEYS.map((k) => stats.find((s) => s.key === k)).filter((s
                 href={localizedHref(`/tracker/${dim.id}/`, lang)}
                 class="group flex items-center justify-between gap-2 py-1.5 text-sm"
               >
-                <span class="text-gray-700 dark:text-gray-300 group-hover:text-primary transition-colors truncate">
+                <span class="min-w-0 text-gray-700 dark:text-gray-300 group-hover:text-primary transition-colors truncate">
                   <span class="mr-1.5">{dim.icon}</span>
                   {pickLocalized(dim, 'title', lang)}
                 </span>

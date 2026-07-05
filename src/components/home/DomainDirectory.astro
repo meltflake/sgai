@@ -38,12 +38,12 @@ const stats = domainStats();
         {t(lang, 'fpDirectoryBlurb')}
       </p>
     </div>
-    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
       {
         stats.map((s) => (
           <a
             href={localizedHref(s.href, lang)}
-            class="group block border border-subtle rounded-md p-4 bg-surface hover:shadow-md hover:border-gray-300 dark:hover:border-slate-600 transition-all"
+            class="group block min-w-0 border border-subtle rounded-md p-4 bg-surface hover:shadow-md hover:border-gray-300 dark:hover:border-slate-600 transition-all"
           >
             <div class="flex items-baseline justify-between gap-2 mb-1.5">
               <span class="font-serif text-base font-semibold text-gray-900 dark:text-white group-hover:text-primary transition-colors leading-snug">
