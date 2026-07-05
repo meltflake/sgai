@@ -3,9 +3,9 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { mkdtempSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
-import { join } from 'node:path';
+import { join, resolve } from 'node:path';
 
-import { findUnpairedFields, findIncompleteRecords } from '../i18n-pair.ts';
+import { findUnpairedFields, findIncompleteRecords, listDataDirFiles } from '../i18n-pair.ts';
 import type { FileSchema } from '../../i18n-config.ts';
 
 function withFile<T>(content: string, fn: (path: string) => T): T {
@@ -631,4 +631,60 @@ export const cats = [
     // zh side filled, En sibling missing → only whatItIsEn flagged
     assert.deepEqual(issues[0].missingFields, ['whatItIsEn']);
   });
+});
+
+// ── listDataDirFiles (Finding B: dynamic data-dir coverage) ─────────────
+//
+// The completeness gate used to hard-code a 13-file list; a NEW src/data/*.ts
+// escaped it. listDataDirFiles backs the `--data-dir` flag that replaced the
+// list. These tests lock in that (1) it discovers every *.ts, (2) it sorts,
+// (3) it skips non-.ts, and (4) the REAL src/data dir has no file the
+// completeness command would now miss.
+
+function withDir<T>(files: Record<string, string>, fn: (dir: string) => T): T {
+  const dir = mkdtempSync(join(tmpdir(), 'sgai-datadir-test-'));
+  for (const [name, content] of Object.entries(files)) {
+    writeFileSync(join(dir, name), content);
+  }
+  try {
+    return fn(dir);
+  } finally {
+    rmSync(dir, { recursive: true, force: true });
+  }
+}
+
+test('listDataDirFiles: returns every .ts file, sorted, absolute', () => {
+  withDir({ 'b.ts': '', 'a.ts': '', 'c.ts': '' }, (dir) => {
+    const found = listDataDirFiles(dir);
+    assert.deepEqual(
+      found.map((p) => p.slice(dir.length + 1)),
+      ['a.ts', 'b.ts', 'c.ts']
+    );
+    assert.ok(found.every((p) => p === resolve(p)), 'paths must be absolute');
+  });
+});
+
+test('listDataDirFiles: skips non-.ts files (json, md, d.ts is still .ts)', () => {
+  withDir({ 'x.ts': '', 'y.json': '', 'z.md': '', 'w.d.ts': '' }, (dir) => {
+    const names = listDataDirFiles(dir).map((p) => p.slice(dir.length + 1));
+    // .d.ts ends with .ts so it is included; json/md are excluded.
+    assert.deepEqual(names, ['w.d.ts', 'x.ts']);
+  });
+});
+
+test('listDataDirFiles: throws on a missing directory', () => {
+  assert.throws(() => listDataDirFiles('/no/such/dir/anywhere'), /--data-dir not found/);
+});
+
+test('listDataDirFiles: covers every real src/data/*.ts (regression safeguard)', () => {
+  // The point of Finding B: no data file may silently escape the completeness
+  // gate. If a real src/data file is added it MUST show up here — this test
+  // fails loudly if listDataDirFiles ever stops discovering the whole dir.
+  const dataDir = resolve(import.meta.dirname, '../../../src/data');
+  const found = listDataDirFiles(dataDir);
+  assert.ok(found.length >= 25, `expected the full data dir, got ${found.length} files`);
+  assert.ok(
+    found.some((p) => p.endsWith('/ecosystem.ts')),
+    'ecosystem.ts must be discovered'
+  );
 });

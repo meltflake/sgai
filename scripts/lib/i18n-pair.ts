@@ -36,6 +36,8 @@
 //   npx tsx scripts/lib/i18n-pair.ts --locales=en,ja,ko src/data/*.ts
 //   npx tsx scripts/lib/i18n-pair.ts --locales=en,ja,zh-tw,ko src/data/*.ts  # all five
 //   npx tsx scripts/lib/i18n-pair.ts --en-only-base src/data/*.ts            # flag EN-only base fields
+//   npx tsx scripts/lib/i18n-pair.ts --data-dir=src/data --mode=both --en-only-base  # scan the whole data dir
+//                                                                            # (covers new files automatically)
 //
 // LOCALE CODES: pass Lang codes that mirror src/i18n/index.ts
 // (en, ja, zh-tw, ko). The CLI converts them to sibling suffixes via the
@@ -50,8 +52,8 @@
 // BOTH checks. Use sparingly — it's the sgai equivalent of `// eslint-disable-next-line`.
 
 import * as ts from 'typescript';
-import { readFileSync, existsSync } from 'node:fs';
-import { resolve } from 'node:path';
+import { readFileSync, readdirSync, existsSync } from 'node:fs';
+import { resolve, join } from 'node:path';
 
 import { I18N_CONFIG, isPlaceholderValue, type FileSchema, type RecordSchema } from '../i18n-config.ts';
 
@@ -470,6 +472,28 @@ void isSiblingPaired;
 
 // ── CLI ─────────────────────────────────────────────────────────────────
 
+/**
+ * Expand a `--data-dir=<dir>` flag into the list of every `*.ts` file it
+ * contains (non-recursive). This is the regression safeguard for Finding B:
+ * a hand-maintained file list in package.json silently skipped any NEW
+ * src/data/*.ts, so a fresh data file escaped both the en-only-base gate and
+ * completeness. Scanning the directory means a new data file is covered the
+ * moment it lands — no list to remember to update.
+ *
+ * @param dir directory to scan (resolved relative to cwd)
+ * @returns absolute paths of every `.ts` file directly inside `dir`, sorted
+ */
+export function listDataDirFiles(dir: string): string[] {
+  const abs = resolve(dir);
+  if (!existsSync(abs)) {
+    throw new Error(`--data-dir not found: ${dir}`);
+  }
+  return readdirSync(abs)
+    .filter((name) => name.endsWith('.ts'))
+    .sort()
+    .map((name) => join(abs, name));
+}
+
 type Mode = 'alignment' | 'completeness' | 'both';
 
 function parseMode(argv: string[]): Mode {
@@ -499,11 +523,18 @@ async function cliMain(): Promise<void> {
         .map((s) => s.trim())
     : undefined;
   const enOnlyBase = argv.includes('--en-only-base');
-  const files = argv.filter((a) => !a.startsWith('--'));
+  const dataDirArg = argv.find((a) => a.startsWith('--data-dir='));
+  const explicitFiles = argv.filter((a) => !a.startsWith('--'));
+  // `--data-dir=<dir>` expands to every *.ts inside the directory, so a new
+  // src/data file is covered automatically (Finding B safeguard). Any
+  // explicitly-listed files are appended.
+  const files = dataDirArg
+    ? [...listDataDirFiles(dataDirArg.split('=')[1]), ...explicitFiles]
+    : explicitFiles;
 
   if (files.length === 0) {
     process.stderr.write(
-      'Usage: i18n-pair <file...> [--mode=alignment|completeness|both] [--fields=title,description] [--locales=en,ja] [--en-only-base]\n'
+      'Usage: i18n-pair <file...|--data-dir=DIR> [--mode=alignment|completeness|both] [--fields=title,description] [--locales=en,ja] [--en-only-base]\n'
     );
     process.exit(2);
   }

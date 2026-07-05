@@ -214,7 +214,12 @@ function runLayerA(): {
   let totalUnpaired = 0;
   let totalImpure = 0;
   for (const f of files) {
-    const unpaired = findUnpairedFields(f, { locales: [...LOCALES] });
+    // enOnlyBase: also flag base fields (title/summary/description/headline/
+    // tagline) authored in English only with no zh source. Layer A globs the
+    // whole data dir, so without this the pure-English-base leak (a record
+    // filled from the EN side, never localized back to zh) slips past — the
+    // same class Finding B closed in the PR-time completeness gate.
+    const unpaired = findUnpairedFields(f, { locales: [...LOCALES], enOnlyBase: true });
     const impure = findImpureLocaleFields(f);
     const cjk = countCjkFields(f);
     results.push({ file: relative(REPO_ROOT, f), unpaired, impure, cjkFieldsScanned: cjk });
