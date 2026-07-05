@@ -5,7 +5,8 @@ import JsonLd from '~/components/common/JsonLd.astro';
 import Layout from '~/layouts/PageLayout.astro';
 import { dataDate, dataDisclaimer, dataDisclaimerEn } from '~/data/benchmarking';
 import { getBenchmarkDrilldownsForRegion, regionPages, type RegionPage } from '~/utils/entity-pages';
-import { localizedHref, type Lang } from '~/i18n';
+import { IN_LANGUAGES, localizedHref, pickLocalized, t, type Lang } from '~/i18n';
+import { toTraditional } from '~/i18n/opencc';
 
 interface Props {
   page: RegionPage & { kind: 'region' };
@@ -13,24 +14,24 @@ interface Props {
 }
 
 const { page, lang } = Astro.props;
-// `isEn` is true for any non-zh locale — the page-local label dictionary
-// only branches zh vs. non-zh, so non-default locales (en, ja, ...) all
-// share the English copy until per-locale strings are added.
-const isJa = lang === 'ja';
-const isEn = lang !== 'zh';
-const benchmarkRoot = isEn ? '/benchmarking/' : '/benchmarking/';
-const leversHref = isEn ? '/levers/' : '/levers/';
-const legalAiHref = isEn ? '/legal-ai/' : '/legal-ai/';
+// Scalar summary/detail fields carry *Ja / *Ko siblings, so pickLocalized
+// resolves ja → *Ja, ko → *Ko, and zh-tw → OpenCC(zh). The list fields
+// (strengths / weaknesses / keyInitiatives / sources) only have *En, so ko
+// falls back to en by design (marked below) while zh-tw still derives from
+// the zh source via OpenCC.
+const benchmarkRoot = localizedHref('/benchmarking/', lang);
+const leversHref = localizedHref('/levers/', lang);
+const legalAiHref = localizedHref('/legal-ai/', lang);
 
 const summary = page.summary;
 const detail = page.detail;
-const regionName = isEn ? summary.nameEn || summary.name : summary.name;
-const fullName = isEn ? detail?.fullNameEn || detail?.fullName : detail?.fullName;
-const overview = isEn ? detail?.overviewEn || detail?.overview : detail?.overview;
-const strategy = isEn ? summary.strategyEn || summary.strategy : summary.strategy;
-const investment = isEn ? summary.investmentEn || summary.investment : summary.investment;
-const governance = isEn ? summary.governanceEn || summary.governance : summary.governance;
-const strength = isEn ? summary.strengthEn || summary.strength : summary.strength;
+const regionName = pickLocalized<string>(summary, 'name', lang) || summary.name;
+const fullName = detail ? pickLocalized<string>(detail, 'fullName', lang) || detail.fullName : undefined;
+const overview = detail ? pickLocalized<string>(detail, 'overview', lang) || detail.overview : undefined;
+const strategy = pickLocalized<string>(summary, 'strategy', lang) || summary.strategy;
+const investment = pickLocalized<string>(summary, 'investment', lang) || summary.investment;
+const governance = pickLocalized<string>(summary, 'governance', lang) || summary.governance;
+const strength = pickLocalized<string>(summary, 'strength', lang) || summary.strength;
 
 const regionDrilldowns = getBenchmarkDrilldownsForRegion(page.slug);
 const regionDrilldownByLocalId = new Map(regionDrilldowns.map((item) => [item.localId, item]));
@@ -42,71 +43,105 @@ function drilldownHref(localId: string): string {
 
 const relatedRegions = regionPages.filter((candidate) => candidate.slug !== page.slug).slice(0, 6);
 
-const labels = {
-  benchmarkCrumb: isJa ? '国際ベンチマーク' : isEn ? 'International Benchmarks' : '国际对标',
-  eyebrow: isJa
-    ? 'International Benchmark · データ更新'
-    : isEn
-      ? 'International Benchmark · Updated'
-      : 'International Benchmark · 数据更新',
-  pageHeading: isEn ? `${regionName} AI Strategy Benchmark` : `${regionName} AI 战略对标`,
-  coreStrategy: isJa ? 'コア戦略' : isEn ? 'Core strategy' : '核心战略',
-  investmentScale: isJa ? '投資規模' : isEn ? 'Investment' : '投资规模',
-  governanceModel: isJa ? 'ガバナンスモデル' : isEn ? 'Governance' : '治理模式',
-  comparativeStrength: isJa ? 'コア優位' : isEn ? 'Core strength' : '核心优势',
-  oneLineRead: isJa ? '一文判定' : isEn ? 'One-line Read' : '一句话判断',
-  oneLineReadFallback: isEn
-    ? `${regionName}'s AI strategy centres on ${strategy}; its governance model is ${governance}; its comparative strength is ${strength}.`
-    : `${regionName} 的 AI 战略可概括为：${strategy}；治理模式是 ${governance}；相对优势是 ${strength}。`,
-  coreStrategiesHeading: isJa ? 'コア戦略' : isEn ? 'Core Strategies' : '核心战略',
-  investmentHeading: isJa ? '投資とリソース' : isEn ? 'Investment and Resources' : '投资与资源',
-  governanceHeading: isJa ? 'ガバナンスモデル' : isEn ? 'Governance Model' : '治理模式',
-  strengthsHeading: isJa ? '対シンガポール優位' : isEn ? 'Strengths vs Singapore' : '相对新加坡的优势',
-  weaknessesHeading: isJa ? '対シンガポール劣位' : isEn ? 'Weaknesses vs Singapore' : '相对新加坡的劣势',
-  keyHeading: isJa ? '主要施策と機関' : isEn ? 'Key Initiatives and Bodies' : '关键举措与机构',
-  keyInitiatives: isJa ? '主要施策' : isEn ? 'Key Initiatives' : '关键举措',
-  keyBodies: isJa ? '主要機関' : isEn ? 'Key Bodies' : '关键机构',
-  itemLabel: isJa ? 'プロジェクト' : isEn ? 'Item' : '项目',
-  amountLabel: isJa ? '金額' : isEn ? 'Amount' : '金额',
-  noteLabel: isJa ? '備考' : isEn ? 'Note' : '备注',
-  sourcesHeading: isJa ? '参考出典' : isEn ? 'Sources' : '参考来源',
-  pendingHeading: isJa ? '詳細は今後追加予定' : isEn ? 'Detail profile pending' : '详情待扩展',
-  pendingNote: isEn
-    ? `This page is currently generated from the overview table. Add a full RegionDetail record in src/data/benchmarking.ts and this route will automatically expand with strategy, investment, governance, strengths/weaknesses, and sources.`
-    : `本页目前使用总览表数据生成。后续可在 src/data/benchmarking.ts 补充完整 RegionDetail，页面会自动展开战略、投资、治理、优势/劣势与来源。`,
-  relatedHeading: isJa ? '関連記事' : isEn ? 'Related Reading' : '关联阅读',
-  benchmarkOverview: isJa ? '国際ベンチマーク概要' : isEn ? 'Benchmark Overview' : '国际对标总览',
-  leversCta: isJa ? 'シンガポール国家 AI レバー' : isEn ? 'Singapore National AI Levers' : '新加坡国家 AI 抓手',
-  legalCta: isJa ? 'シンガポール AI 法的枠組み' : isEn ? 'Singapore AI Legal Framework' : '新加坡 AI 法律框架',
-  continueHeading: isJa ? '比較を続ける' : isEn ? 'Continue Comparing' : '继续比较',
-  backTo: isJa ? '国際ベンチマークに戻る' : isEn ? 'Back to International Benchmarks' : '返回国际对标',
-  disclaimer: (isEn ? dataDisclaimerEn : null) || dataDisclaimer,
+// Page-local prose (one-line-read fallback + pending note). zh source with
+// zh-tw derived via OpenCC; en/ja/ko hand-written.
+const oneLineReadZh = `${regionName} 的 AI 战略可概括为：${strategy}；治理模式是 ${governance}；相对优势是 ${strength}。`;
+const oneLineReadByLang: Record<Lang, string> = {
+  zh: oneLineReadZh,
+  'zh-tw': toTraditional(oneLineReadZh),
+  en: `${regionName}'s AI strategy centres on ${strategy}; its governance model is ${governance}; its comparative strength is ${strength}.`,
+  ja: `${regionName} の AI 戦略は ${strategy} を中心とし、ガバナンスモデルは ${governance}、相対的な優位は ${strength} です。`,
+  ko: `${regionName}의 AI 전략은 ${strategy}를 중심으로 하며, 거버넌스 모델은 ${governance}, 상대적 우위는 ${strength}입니다.`,
+};
+const pendingNoteZh = `本页目前使用总览表数据生成。后续可在 src/data/benchmarking.ts 补充完整 RegionDetail，页面会自动展开战略、投资、治理、优势/劣势与来源。`;
+const pendingNoteByLang: Record<Lang, string> = {
+  zh: pendingNoteZh,
+  'zh-tw': toTraditional(pendingNoteZh),
+  en: `This page is currently generated from the overview table. Add a full RegionDetail record in src/data/benchmarking.ts and this route will automatically expand with strategy, investment, governance, strengths/weaknesses, and sources.`,
+  ja: `本ページは概要テーブルのデータから生成されています。src/data/benchmarking.ts に完全な RegionDetail を追加すると、戦略・投資・ガバナンス・優位/劣位・出典が自動的に展開されます。`,
+  ko: `이 페이지는 현재 개요 표 데이터로 생성됩니다. src/data/benchmarking.ts에 완전한 RegionDetail을 보완하면 전략, 투자, 거버넌스, 강점/약점, 출처가 자동으로 확장됩니다.`,
 };
 
-const metadata = isJa
-  ? {
-      title: `${regionName} AI 戦略ベンチマーク · 国際ベンチマーク`,
-      description: overview || `${regionName} AI 战略、投资、治理模式与核心优势对标。`,
-    }
-  : isEn
-    ? {
-        title: `${regionName} AI Strategy Benchmark · International Benchmarks`,
-        description:
-          overview || `${regionName}'s AI strategy, investment, governance model, and comparative strengths.`,
-      }
-    : {
-        title: `${regionName} AI 战略对标 · 国际对标`,
-        description: overview || `${regionName} AI 战略、投资、治理模式与核心优势对标。`,
-      };
+const eyebrowByLang: Record<Lang, string> = {
+  zh: 'International Benchmark · 数据更新',
+  'zh-tw': `International Benchmark · ${toTraditional('数据更新')}`,
+  en: 'International Benchmark · Updated',
+  ja: 'International Benchmark · データ更新',
+  ko: 'International Benchmark · 데이터 업데이트',
+};
+const pageHeadingSuffixByLang: Record<Lang, string> = {
+  zh: 'AI 战略对标',
+  'zh-tw': toTraditional('AI 战略对标'),
+  en: 'AI Strategy Benchmark',
+  ja: 'AI 戦略ベンチマーク',
+  ko: 'AI 전략 벤치마크',
+};
+
+const labels = {
+  benchmarkCrumb: t(lang, 'benchmarkCrumb'),
+  eyebrow: eyebrowByLang[lang] || eyebrowByLang.en,
+  pageHeading: `${regionName} ${pageHeadingSuffixByLang[lang] || pageHeadingSuffixByLang.en}`,
+  coreStrategy: t(lang, 'benchmarkCoreStrategy'),
+  investmentScale: t(lang, 'benchmarkInvestmentScale'),
+  governanceModel: t(lang, 'benchmarkGovernanceModel'),
+  comparativeStrength: t(lang, 'benchmarkComparativeStrength'),
+  oneLineRead: t(lang, 'benchmarkOneLineRead'),
+  oneLineReadFallback: oneLineReadByLang[lang] || oneLineReadByLang.en,
+  coreStrategiesHeading: t(lang, 'benchmarkCoreStrategiesHeading'),
+  investmentHeading: t(lang, 'benchmarkInvestmentHeading'),
+  governanceHeading: t(lang, 'benchmarkGovernanceHeading'),
+  strengthsHeading: t(lang, 'benchmarkStrengthsHeading'),
+  weaknessesHeading: t(lang, 'benchmarkWeaknessesHeading'),
+  keyHeading: t(lang, 'benchmarkKeyHeading'),
+  keyInitiatives: t(lang, 'benchmarkKeyInitiatives'),
+  keyBodies: t(lang, 'benchmarkKeyBodies'),
+  itemLabel: t(lang, 'benchmarkItemLabel'),
+  amountLabel: t(lang, 'benchmarkAmountLabel'),
+  noteLabel: t(lang, 'benchmarkNoteLabel'),
+  sourcesHeading: t(lang, 'benchmarkSourcesHeading'),
+  pendingHeading: t(lang, 'benchmarkPendingHeading'),
+  pendingNote: pendingNoteByLang[lang] || pendingNoteByLang.en,
+  relatedHeading: t(lang, 'benchmarkRelatedHeading'),
+  benchmarkOverview: t(lang, 'benchmarkOverview'),
+  leversCta: t(lang, 'benchmarkLeversCta'),
+  legalCta: t(lang, 'benchmarkLegalCta'),
+  continueHeading: t(lang, 'benchmarkContinueHeading'),
+  backTo: t(lang, 'benchmarkBackTo'),
+  disclaimer:
+    lang === 'zh-tw'
+      ? toTraditional(dataDisclaimer)
+      : lang === 'en' || lang === 'ja' || lang === 'ko'
+        ? dataDisclaimerEn || dataDisclaimer
+        : dataDisclaimer,
+};
+
+const metaDescByLang: Record<Lang, string> = {
+  zh: `${regionName} AI 战略、投资、治理模式与核心优势对标。`,
+  'zh-tw': toTraditional(`${regionName} AI 战略、投资、治理模式与核心优势对标。`),
+  en: `${regionName}'s AI strategy, investment, governance model, and comparative strengths.`,
+  ja: `${regionName} の AI 戦略・投資・ガバナンスモデル・コア優位のベンチマーク。`,
+  ko: `${regionName}의 AI 전략, 투자, 거버넌스 모델, 핵심 우위 벤치마크.`,
+};
+const metaTitleSuffixByLang: Record<Lang, string> = {
+  zh: '国际对标',
+  'zh-tw': toTraditional('国际对标'),
+  en: 'International Benchmarks',
+  ja: '国際ベンチマーク',
+  ko: '국제 벤치마크',
+};
+const metadata = {
+  title: `${labels.pageHeading} · ${metaTitleSuffixByLang[lang] || metaTitleSuffixByLang.en}`,
+  description: overview || metaDescByLang[lang] || metaDescByLang.en,
+};
 
 const articleSchema = {
   '@context': 'https://schema.org',
   '@type': 'Article',
-  headline: isEn ? `${regionName} AI Strategy Benchmark` : `${regionName} AI 战略对标`,
+  headline: labels.pageHeading,
   description: metadata.description,
   datePublished: dataDate,
   dateModified: dataDate,
-  inLanguage: isEn ? 'en' : 'zh-CN',
+  inLanguage: IN_LANGUAGES[lang],
   about: [
     { '@type': 'Place', name: summary.nameEn || summary.name },
     { '@type': 'Thing', name: 'AI strategy' },
@@ -118,19 +153,26 @@ const breadcrumbs = [
   { label: regionName },
 ];
 
-const strengthsList = (isEn && detail?.strengthsEn?.length ? detail.strengthsEn : detail?.strengths) || [];
-const weaknessesList = (isEn && detail?.weaknessesEn?.length ? detail.weaknessesEn : detail?.weaknesses) || [];
-const keyInitiativesList =
-  (isEn && detail?.keyInitiativesEn?.length ? detail.keyInitiativesEn : detail?.keyInitiatives) || [];
-const sourcesList = (isEn && detail?.sourcesEn?.length ? detail.sourcesEn : detail?.sources) || [];
+// These list fields carry only *En siblings. pickLocalized walks the chain
+// per locale: zh → zh, zh-tw → OpenCC(zh), en/ja/ko → *En (ja/ko by design,
+// no *Ja/*Ko backfilled yet). detail may be undefined → empty arrays.
+const strengthsList = (detail ? pickLocalized<string[]>(detail, 'strengths', lang) : null) || [];
+const weaknessesList = (detail ? pickLocalized<string[]>(detail, 'weaknesses', lang) : null) || [];
+const keyInitiativesList = (detail ? pickLocalized<string[]>(detail, 'keyInitiatives', lang) : null) || [];
+const sourcesList = (detail ? pickLocalized<string[]>(detail, 'sources', lang) : null) || [];
 ---
 
 <Layout metadata={metadata} breadcrumbs={breadcrumbs} lang={lang}>
   <JsonLd schema={articleSchema} />
 
+  {
+    /* ko: strengths/weaknesses/keyInitiatives/sources have no *Ko sibling and
+     fall back to en by design (see list getters above). zh-tw derives from zh
+     via OpenCC and never leaks en, so the marker is ko-only. */
+  }
   <article
     class="max-w-4xl mx-auto px-4 sm:px-6 py-12 md:py-16"
-    {...lang === 'ko' || lang === 'zh-tw' ? { 'data-i18n-allow-en': 'benchmark-region-en-fallback' } : {}}
+    {...lang === 'ko' ? { 'data-i18n-allow-en': 'benchmark-region-en-fallback' } : {}}
   >
     <header class="mb-8">
       <p class="text-xs uppercase tracking-[0.18em] text-primary font-semibold mb-4">
@@ -194,10 +236,10 @@ const sourcesList = (isEn && detail?.sourcesEn?.length ? detail.sourcesEn : deta
                 >
                   <div class="text-xs font-mono text-blue-600 dark:text-blue-400 mb-1">{strategyItem.year}</div>
                   <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-primary">
-                    {isEn ? strategyItem.nameEn || strategyItem.name : strategyItem.name}
+                    {pickLocalized(strategyItem, 'name', lang) || strategyItem.name}
                   </h3>
                   <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
-                    {isEn ? strategyItem.descriptionEn || strategyItem.description : strategyItem.description}
+                    {pickLocalized(strategyItem, 'description', lang) || strategyItem.description}
                   </p>
                 </a>
               ))}
@@ -215,19 +257,19 @@ const sourcesList = (isEn && detail?.sourcesEn?.length ? detail.sourcesEn : deta
                   <div>
                     <div class="text-xs uppercase tracking-wider text-muted mb-1">{labels.itemLabel}</div>
                     <div class="font-semibold text-gray-900 dark:text-white group-hover:text-primary">
-                      {isEn ? item.itemEn || item.item : item.item}
+                      {pickLocalized(item, 'item', lang) || item.item}
                     </div>
                   </div>
                   <div>
                     <div class="text-xs uppercase tracking-wider text-muted mb-1">{labels.amountLabel}</div>
                     <div class="font-semibold text-gray-900 dark:text-white">
-                      {isEn ? item.amountEn || item.amount : item.amount}
+                      {pickLocalized(item, 'amount', lang) || item.amount}
                     </div>
                   </div>
                   <div>
                     <div class="text-xs uppercase tracking-wider text-muted mb-1">{labels.noteLabel}</div>
                     <div class="text-sm text-gray-600 dark:text-gray-400">
-                      {isEn ? item.noteEn || item.note : item.note}
+                      {pickLocalized(item, 'note', lang) || item.note}
                     </div>
                   </div>
                 </a>
@@ -238,7 +280,7 @@ const sourcesList = (isEn && detail?.sourcesEn?.length ? detail.sourcesEn : deta
           <section class="mb-10">
             <h2 class="t-h3 text-gray-900 dark:text-white mb-3">{labels.governanceHeading}</h2>
             <p class="text-gray-700 dark:text-gray-300 leading-[1.85]">
-              {isEn ? detail.governanceEn || detail.governance : detail.governance}
+              {pickLocalized(detail, 'governance', lang) || detail.governance}
             </p>
           </section>
 
@@ -287,10 +329,10 @@ const sourcesList = (isEn && detail?.sourcesEn?.length ? detail.sourcesEn : deta
                       class="group block rounded-md border border-subtle p-3 hover:border-primary/50 hover:bg-slate-50 dark:hover:bg-slate-800/60 transition-colors"
                     >
                       <div class="font-semibold text-gray-900 dark:text-white group-hover:text-primary">
-                        {isEn ? body.nameEn || body.name : body.name}
+                        {pickLocalized(body, 'name', lang) || body.name}
                       </div>
                       <div class="mt-1 text-gray-700 dark:text-gray-300">
-                        {isEn ? body.roleEn || body.role : body.role}
+                        {pickLocalized(body, 'role', lang) || body.role}
                       </div>
                     </a>
                   ))}
@@ -350,10 +392,10 @@ const sourcesList = (isEn && detail?.sourcesEn?.length ? detail.sourcesEn : deta
               class="block bg-surface rounded-lg p-4 border border-subtle hover:border-blue-300 hover:shadow-sm transition-all"
             >
               <h3 class="font-semibold text-gray-800 dark:text-white text-sm">
-                {item.summary.flag} {isEn ? item.summary.nameEn || item.summary.name : item.summary.name}
+                {item.summary.flag} {pickLocalized(item.summary, 'name', lang) || item.summary.name}
               </h3>
               <p class="text-xs text-gray-600 dark:text-gray-400 mt-2">
-                {isEn ? item.summary.strengthEn || item.summary.strength : item.summary.strength}
+                {pickLocalized(item.summary, 'strength', lang) || item.summary.strength}
               </p>
             </a>
           ))

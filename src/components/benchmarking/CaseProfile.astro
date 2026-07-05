@@ -4,9 +4,10 @@ import { Icon } from 'astro-icon/components';
 import JsonLd from '~/components/common/JsonLd.astro';
 import Layout from '~/layouts/PageLayout.astro';
 import SameTopicRail from '~/components/data/SameTopicRail.astro';
-import { benchmarkCaseProfileUpdated, dataDate, dataDisclaimer, dataDisclaimerEn } from '~/data/benchmarking';
+import { benchmarkCaseProfileUpdated, dataDate } from '~/data/benchmarking';
 import { benchmarkCasePages, regionPages, type BenchmarkCasePage } from '~/utils/entity-pages';
-import { localizedHref, pickLocalized, type Lang } from '~/i18n';
+import { IN_LANGUAGES, localizedHref, pickLocalized, t, type Lang } from '~/i18n';
+import { toTraditional } from '~/i18n/opencc';
 import { getCanonical } from '~/utils/permalinks';
 
 interface Props {
@@ -15,9 +16,8 @@ interface Props {
 }
 
 const { page, lang } = Astro.props;
-const isJa = lang === 'ja';
-const isEn = lang !== 'zh';
-const benchmarkRoot = isEn ? '/benchmarking/' : '/benchmarking/';
+const isEn = lang === 'en';
+const benchmarkRoot = localizedHref('/benchmarking/', lang);
 
 const caseItem = page.caseItem;
 const name = pickLocalized(caseItem, 'name', lang) || caseItem.name;
@@ -40,22 +40,30 @@ const caseRegionPage = regionPages.find(
     candidate.summary.name === caseItem.regionEn
 );
 
+// Page-local data note: zh source with zh-tw derived via OpenCC; en/ja/ko
+// hand-written.
+const dataNoteZh = `本页为国际对标案例档案，整理于 ${benchmarkCaseProfileUpdated}；基础地区数据沿用 ${dataDate} 的公开口径。后续可继续补充官方链接、时间线、指标、引用和跨页关系。`;
+const dataNoteByLang: Record<Lang, string> = {
+  zh: dataNoteZh,
+  'zh-tw': toTraditional(dataNoteZh),
+  en: `International benchmark case profile, curated on ${benchmarkCaseProfileUpdated}; underlying region data follows the public reading on ${dataDate}. Future updates can add official links, timelines, indicators, citations, and cross-page relations.`,
+  ja: `本ページは国際ベンチマーク事例のファイルで、${benchmarkCaseProfileUpdated} に整理されました。基礎となる地域データは ${dataDate} 時点の公開情報に基づきます。今後、公式リンク、タイムライン、指標、引用、ページ間の関連を追加できます。`,
+  ko: `이 페이지는 국제 벤치마크 사례 파일로, ${benchmarkCaseProfileUpdated}에 정리되었습니다. 기초 지역 데이터는 ${dataDate} 시점의 공개 기준을 따릅니다. 이후 공식 링크, 타임라인, 지표, 인용, 페이지 간 관계를 계속 보완할 수 있습니다.`,
+};
+
 const labels = {
-  benchmarkCrumb: isJa ? '国際ベンチマーク' : isEn ? 'International Benchmarks' : '国际对标',
+  benchmarkCrumb: t(lang, 'benchmarkCrumb'),
   caseEyebrow: 'Benchmark Case · Updated',
-  ownerLabel: isJa ? '所属機関' : isEn ? 'Owner' : '归属方',
-  whyItMatters: isJa ? '観察に値する理由' : isEn ? 'Why It Matters' : '为什么值得观察',
-  singaporeTakeaway: isJa ? 'シンガポール向けの示唆' : isEn ? 'Singapore Takeaway' : '对新加坡的启发',
-  sourcesHeading: isJa ? '参考出典' : isEn ? 'Sources' : '参考来源',
-  regionBackground: isJa ? '地域背景' : isEn ? 'Region background' : '地区背景',
-  anotherCase: isJa ? '別の事例' : isEn ? 'Another case' : '另一个案例',
-  continueCases: isJa ? '事例を見る' : isEn ? 'Continue With Cases' : '继续看案例',
-  dataNoteHeading: isJa ? 'データの説明' : isEn ? 'Data Note' : '数据说明',
-  dataNote: isEn
-    ? `International benchmark case profile, curated on ${benchmarkCaseProfileUpdated}; underlying region data follows the public reading on ${dataDate}. Future updates can add official links, timelines, indicators, citations, and cross-page relations.`
-    : `本页为国际对标案例档案，整理于 ${benchmarkCaseProfileUpdated}；基础地区数据沿用 ${dataDate} 的公开口径。后续可继续补充官方链接、时间线、指标、引用和跨页关系。`,
-  backTo: isJa ? '国際ベンチマークに戻る' : isEn ? 'Back to International Benchmarks' : '返回国际对标',
-  disclaimer: (isEn ? dataDisclaimerEn : null) || dataDisclaimer,
+  ownerLabel: t(lang, 'benchmarkOwnerLabel'),
+  whyItMatters: t(lang, 'benchmarkWhyItMatters'),
+  singaporeTakeaway: t(lang, 'benchmarkSingaporeTakeaway'),
+  sourcesHeading: t(lang, 'benchmarkSourcesHeading'),
+  regionBackground: t(lang, 'benchmarkRegionBackground'),
+  anotherCase: t(lang, 'benchmarkAnotherCase'),
+  continueCases: t(lang, 'benchmarkContinueCases'),
+  dataNoteHeading: t(lang, 'benchmarkDataNoteHeading'),
+  dataNote: dataNoteByLang[lang] || dataNoteByLang.en,
+  backTo: t(lang, 'benchmarkBackTo'),
 };
 
 // When the case duplicates another page (e.g. a region drilldown on the same
@@ -64,32 +72,27 @@ const canonicalOverride = caseItem.canonicalPath
   ? { canonical: String(getCanonical(localizedHref(caseItem.canonicalPath, lang))) }
   : {};
 
-const metadata = isJa
-  ? {
-      title: `${name} · 国際ベンチマーク事例`,
-      description: summary,
-      ...canonicalOverride,
-    }
-  : isEn
-    ? {
-        title: `${name} · International Benchmark Case`,
-        description: summary,
-        ...canonicalOverride,
-      }
-    : {
-        title: `${name} · 国际对标案例`,
-        description: summary,
-        ...canonicalOverride,
-      };
+const caseSuffixByLang: Record<Lang, string> = {
+  zh: '国际对标案例',
+  'zh-tw': toTraditional('国际对标案例'),
+  en: 'International Benchmark Case',
+  ja: '国際ベンチマーク事例',
+  ko: '국제 벤치마크 사례',
+};
+const metadata = {
+  title: `${name} · ${caseSuffixByLang[lang] || caseSuffixByLang.en}`,
+  description: summary,
+  ...canonicalOverride,
+};
 
 const articleSchema = {
   '@context': 'https://schema.org',
   '@type': 'Article',
-  headline: isEn ? metadata.title : `${name} · 国际对标案例`,
+  headline: metadata.title,
   description: summary,
   datePublished: benchmarkCaseProfileUpdated,
   dateModified: benchmarkCaseProfileUpdated,
-  inLanguage: isEn ? 'en' : 'zh-CN',
+  inLanguage: IN_LANGUAGES[lang],
   mainEntityOfPage: new URL(Astro.url).href,
   about: [
     { '@type': 'Thing', name: caseItem.nameEn || caseItem.name },
@@ -97,8 +100,8 @@ const articleSchema = {
   ],
   isPartOf: {
     '@type': 'WebSite',
-    name: isJa ? 'シンガポール AI 観測' : isEn ? 'Singapore AI Observatory' : '新加坡 AI 观察',
-    url: isEn ? 'https://sgai.md/' : 'https://sgai.md/',
+    name: t(lang, 'siteName'),
+    url: 'https://sgai.md/',
   },
 };
 
@@ -108,10 +111,7 @@ const breadcrumbs = [{ label: labels.benchmarkCrumb, href: localizedHref('/bench
 <Layout metadata={metadata} breadcrumbs={breadcrumbs} lang={lang}>
   <JsonLd schema={articleSchema} />
 
-  <article
-    class="max-w-4xl mx-auto px-4 sm:px-6 py-12 md:py-16"
-    {...lang === 'ko' || lang === 'zh-tw' ? { 'data-i18n-allow-en': 'benchmark-case-en-fallback' } : {}}
-  >
+  <article class="max-w-4xl mx-auto px-4 sm:px-6 py-12 md:py-16">
     <header class="mb-8">
       <div class="mb-5 flex flex-wrap items-center gap-2 text-xs">
         <a
@@ -139,7 +139,7 @@ const breadcrumbs = [{ label: labels.benchmarkCrumb, href: localizedHref('/bench
       </p>
       <h1 class="t-display text-gray-900 dark:text-white mb-3">{name}</h1>
       {
-        !isEn && caseItem.nameEn && caseItem.nameEn !== caseItem.name && (
+        !isEn && caseItem.nameEn && caseItem.nameEn !== name && (
           <p class="text-base md:text-lg text-gray-500 dark:text-gray-400 italic">{caseItem.nameEn}</p>
         )
       }
@@ -264,7 +264,7 @@ const breadcrumbs = [{ label: labels.benchmarkCrumb, href: localizedHref('/bench
               {related.caseItem.flag} {pickLocalized(related.caseItem, 'name', lang) || related.caseItem.name}
             </h2>
             <p class="mt-2 text-sm text-gray-700 dark:text-gray-300">
-              {isEn ? related.caseItem.headlineEn || related.caseItem.headline : related.caseItem.headline}
+              {pickLocalized(related.caseItem, 'headline', lang) || related.caseItem.headline}
             </p>
           </a>
         ))
@@ -282,12 +282,11 @@ const breadcrumbs = [{ label: labels.benchmarkCrumb, href: localizedHref('/bench
                 class="group bg-surface rounded-lg p-4 border border-subtle hover:border-primary transition-colors"
               >
                 <p class="text-xs text-muted">
-                  {related.caseItem.flag}{' '}
-                  {isEn ? related.caseItem.regionEn || related.caseItem.region : related.caseItem.region} ·{' '}
-                  {isEn ? related.caseItem.typeEn || related.caseItem.type : related.caseItem.type}
+                  {related.caseItem.flag} {pickLocalized(related.caseItem, 'region', lang) || related.caseItem.region} ·{' '}
+                  {pickLocalized(related.caseItem, 'type', lang) || related.caseItem.type}
                 </p>
                 <h3 class="mt-1 font-semibold text-gray-900 dark:text-white group-hover:text-primary">
-                  {isEn ? related.caseItem.nameEn || related.caseItem.name : related.caseItem.name}
+                  {pickLocalized(related.caseItem, 'name', lang) || related.caseItem.name}
                 </h3>
               </a>
             ))}

@@ -5,7 +5,8 @@ import JsonLd from '~/components/common/JsonLd.astro';
 import Layout from '~/layouts/PageLayout.astro';
 import { benchmarkCaseProfileUpdated } from '~/data/benchmarking';
 import { getBenchmarkDrilldownsForRegion, type BenchmarkDrilldownPage } from '~/utils/entity-pages';
-import { localizedHref, type Lang } from '~/i18n';
+import { IN_LANGUAGES, localizedHref, pickLocalized, t, type Lang } from '~/i18n';
+import { toTraditional } from '~/i18n/opencc';
 
 interface Props {
   page: BenchmarkDrilldownPage;
@@ -13,57 +14,77 @@ interface Props {
 }
 
 const { page, lang } = Astro.props;
-// `isEn` is true for any non-zh locale — the page-local label dictionary
-// only branches zh vs. non-zh, so non-default locales (en, ja, ...) all
-// share the English copy until per-locale strings are added.
-const isJa = lang === 'ja';
-const isEn = lang !== 'zh';
-const benchmarkRoot = isEn ? '/benchmarking/' : '/benchmarking/';
+// Drilldown pages are synthesized in entity-pages.ts with only *En siblings
+// (no *Ja / *Ko). pickLocalized therefore resolves zh → zh, zh-tw → OpenCC(zh),
+// and en/ja/ko → *En. The en fallback on ja is ratchet-tolerated; on ko it is
+// design-internal and marked below. zh-tw never leaks en.
+const benchmarkRoot = localizedHref('/benchmarking/', lang);
 
-const title = isEn ? page.titleEn || page.title : page.title;
-const description = isEn ? page.descriptionEn || page.description : page.description;
-const body = isEn ? page.bodyEn || page.body : page.body;
-const category = isEn ? page.categoryEn || page.category : page.category;
-const regionName = isEn ? page.region.summary.nameEn || page.region.summary.name : page.region.summary.name;
+const title = pickLocalized<string>(page, 'title', lang) || page.title;
+const description = pickLocalized<string>(page, 'description', lang) || page.description;
+const body = pickLocalized<string>(page, 'body', lang) || page.body;
+const category = pickLocalized<string>(page, 'category', lang) || page.category;
+const regionName = pickLocalized<string>(page.region.summary, 'name', lang) || page.region.summary.name;
 const regionHref = `${benchmarkRoot}${page.region.slug}/`;
-const inheritedSources = isEn && page.sourcesEn?.length ? page.sourcesEn : page.sources;
+const inheritedSources = (pickLocalized<string[]>(page, 'sources', lang) as string[] | null) || page.sources;
 const analysisSources = page.analysisSources;
 
 const relatedDrilldowns = getBenchmarkDrilldownsForRegion(page.region.slug)
   .filter((candidate) => candidate.slug !== page.slug)
   .slice(0, 6);
 
-const labels = {
-  benchmarkCrumb: isJa ? '国際ベンチマーク' : isEn ? 'International Benchmarks' : '国际对标',
-  drilldownEyebrow: 'Benchmark Drilldown · Updated',
-  expandHeading: isJa ? '説明を展開' : isEn ? 'Detail' : '展开说明',
-  sourcesHeading: isJa ? '参考出典' : isEn ? 'References' : '参考来源',
-  relatedHeading: isJa ? '同じ地域で掘り下げる' : isEn ? 'Continue exploring this region' : '同地区继续下钻',
-  dataNoteHeading: isJa ? 'データの説明' : isEn ? 'Data note' : '数据说明',
-  dataNote: page.analysisPending
-    ? isEn
-      ? `This page is auto-generated from regional benchmark data and is awaiting deep analysis (curated on ${benchmarkCaseProfileUpdated}). It is excluded from search indexing until enrichment lands.`
-      : `本页由地区对标数据自动生成，深度分析尚未补齐（整理于 ${benchmarkCaseProfileUpdated}）。在补深之前不进入搜索索引。`
-    : isEn
-      ? `Curated benchmark drilldown profile, last updated ${benchmarkCaseProfileUpdated}.`
-      : `已补深的对标下钻档案，最近整理于 ${benchmarkCaseProfileUpdated}。`,
-  backTo: isEn ? `Back to ${regionName}` : `返回 ${regionName}`,
+// Page-local data note + back label. zh source with zh-tw derived via OpenCC;
+// en/ja/ko hand-written.
+const dataNotePendingZh = `本页由地区对标数据自动生成，深度分析尚未补齐（整理于 ${benchmarkCaseProfileUpdated}）。在补深之前不进入搜索索引。`;
+const dataNoteReadyZh = `已补深的对标下钻档案，最近整理于 ${benchmarkCaseProfileUpdated}。`;
+const dataNotePendingByLang: Record<Lang, string> = {
+  zh: dataNotePendingZh,
+  'zh-tw': toTraditional(dataNotePendingZh),
+  en: `This page is auto-generated from regional benchmark data and is awaiting deep analysis (curated on ${benchmarkCaseProfileUpdated}). It is excluded from search indexing until enrichment lands.`,
+  ja: `本ページは地域ベンチマークデータから自動生成され、詳細分析は今後追加予定です（${benchmarkCaseProfileUpdated} 整理）。補強されるまで検索インデックスには含まれません。`,
+  ko: `이 페이지는 지역 벤치마크 데이터로 자동 생성되며 심층 분석은 아직 보완 중입니다(${benchmarkCaseProfileUpdated} 정리). 보완 전까지 검색 색인에 포함되지 않습니다.`,
+};
+const dataNoteReadyByLang: Record<Lang, string> = {
+  zh: dataNoteReadyZh,
+  'zh-tw': toTraditional(dataNoteReadyZh),
+  en: `Curated benchmark drilldown profile, last updated ${benchmarkCaseProfileUpdated}.`,
+  ja: `補強済みのベンチマーク詳細ファイル、最終整理日 ${benchmarkCaseProfileUpdated}。`,
+  ko: `보완 완료된 벤치마크 세부 파일, 최근 정리 ${benchmarkCaseProfileUpdated}.`,
+};
+const backToByLang: Record<Lang, string> = {
+  zh: `返回 ${regionName}`,
+  'zh-tw': `${toTraditional('返回')} ${regionName}`,
+  en: `Back to ${regionName}`,
+  ja: `${regionName} に戻る`,
+  ko: `${regionName}(으)로 돌아가기`,
 };
 
-const baseMetadata = isJa
-  ? {
-      title: `${title} · ${regionName}国際ベンチマーク`,
-      description,
-    }
-  : isEn
-    ? {
-        title: `${title} · ${regionName} Benchmark`,
-        description,
-      }
-    : {
-        title: `${title} · ${regionName}国际对标`,
-        description,
-      };
+const labels = {
+  benchmarkCrumb: t(lang, 'benchmarkCrumb'),
+  drilldownEyebrow: 'Benchmark Drilldown · Updated',
+  expandHeading: t(lang, 'benchmarkExpandHeading'),
+  sourcesHeading: t(lang, 'benchmarkReferencesHeading'),
+  relatedHeading: t(lang, 'benchmarkContinueRegion'),
+  dataNoteHeading: t(lang, 'benchmarkDataNoteHeading'),
+  dataNote: page.analysisPending
+    ? dataNotePendingByLang[lang] || dataNotePendingByLang.en
+    : dataNoteReadyByLang[lang] || dataNoteReadyByLang.en,
+  backTo: backToByLang[lang] || backToByLang.en,
+};
+
+// "<region> benchmark" label — the separator between the region name and the
+// suffix is baked per-locale (a Latin space for en, direct concatenation for CJK).
+const regionBenchmarkLabelByLang: Record<Lang, string> = {
+  zh: `${regionName}国际对标`,
+  'zh-tw': `${regionName}${toTraditional('国际对标')}`,
+  en: `${regionName} Benchmark`,
+  ja: `${regionName}国際ベンチマーク`,
+  ko: `${regionName} 국제 벤치마크`,
+};
+const baseMetadata = {
+  title: `${title} · ${regionBenchmarkLabelByLang[lang] || regionBenchmarkLabelByLang.en}`,
+  description,
+};
 
 // Until per-drilldown enrichment lands, mark the page noindex,follow so
 // thin auto-generated stubs don't erode site-wide SEO quality. Once an
@@ -78,7 +99,7 @@ const articleSchema = {
   description,
   datePublished: benchmarkCaseProfileUpdated,
   dateModified: benchmarkCaseProfileUpdated,
-  inLanguage: isEn ? 'en' : 'zh-CN',
+  inLanguage: IN_LANGUAGES[lang],
   mainEntityOfPage: new URL(Astro.url).href,
   about: [
     { '@type': 'Thing', name: page.titleEn || page.title },
@@ -86,8 +107,8 @@ const articleSchema = {
   ],
   isPartOf: {
     '@type': 'WebSite',
-    name: isJa ? 'シンガポール AI 観測' : isEn ? 'Singapore AI Observatory' : '新加坡 AI 观察',
-    url: isEn ? 'https://sgai.md/' : 'https://sgai.md/',
+    name: t(lang, 'siteName'),
+    url: 'https://sgai.md/',
   },
 };
 
@@ -101,9 +122,13 @@ const breadcrumbs = [
 <Layout metadata={metadata} breadcrumbs={breadcrumbs} lang={lang}>
   <JsonLd schema={articleSchema} />
 
+  {
+    /* ko: drilldown pages carry only *En siblings (synthesized), so ko falls
+     back to en by design. zh-tw derives from zh via OpenCC — marker is ko-only. */
+  }
   <article
     class="max-w-4xl mx-auto px-4 sm:px-6 py-12 md:py-16"
-    {...lang === 'ko' || lang === 'zh-tw' ? { 'data-i18n-allow-en': 'benchmark-drilldown-en-fallback' } : {}}
+    {...lang === 'ko' ? { 'data-i18n-allow-en': 'benchmark-drilldown-en-fallback' } : {}}
   >
     <header class="mb-8">
       <div class="mb-5 flex flex-wrap items-center gap-2 text-xs">
@@ -134,9 +159,9 @@ const breadcrumbs = [
         page.facts.map((fact) => (
           <div>
             <dt class="text-xs uppercase tracking-wider text-muted mb-1">
-              {isEn ? fact.labelEn || fact.label : fact.label}
+              {pickLocalized(fact, 'label', lang) || fact.label}
             </dt>
-            <dd class="text-gray-900 dark:text-white">{isEn ? fact.valueEn || fact.value : fact.value}</dd>
+            <dd class="text-gray-900 dark:text-white">{pickLocalized(fact, 'value', lang) || fact.value}</dd>
           </div>
         ))
       }
@@ -160,7 +185,7 @@ const breadcrumbs = [
                   rel="noopener"
                   class="inline-flex items-center gap-1 text-primary hover:text-secondary"
                 >
-                  {isEn ? source.labelEn || source.label : source.label}
+                  {pickLocalized(source, 'label', lang) || source.label}
                   {source.date && <span class="text-muted ml-1 text-xs">· {source.date}</span>}
                   <Icon name="tabler:external-link" class="w-3.5 h-3.5" />
                 </a>
@@ -194,12 +219,12 @@ const breadcrumbs = [
                 href={`${benchmarkRoot}${related.slug}/`}
                 class="group bg-surface rounded-lg p-4 border border-subtle hover:border-primary/50 hover:shadow-sm transition-all"
               >
-                <p class="text-xs text-muted">{isEn ? related.categoryEn || related.category : related.category}</p>
+                <p class="text-xs text-muted">{pickLocalized(related, 'category', lang) || related.category}</p>
                 <h3 class="mt-1 font-semibold text-gray-900 dark:text-white group-hover:text-primary">
-                  {isEn ? related.titleEn || related.title : related.title}
+                  {pickLocalized(related, 'title', lang) || related.title}
                 </h3>
                 <p class="mt-2 text-xs text-gray-600 dark:text-gray-400 line-clamp-2">
-                  {isEn ? related.descriptionEn || related.description : related.description}
+                  {pickLocalized(related, 'description', lang) || related.description}
                 </p>
               </a>
             ))}

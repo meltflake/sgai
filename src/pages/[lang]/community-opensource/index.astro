@@ -18,9 +18,8 @@ export function getStaticPaths() {
 }
 
 const lang = Astro.params.lang as Lang;
-const isZh = lang === 'zh';
-const note = isZh ? summary.note : summary.noteEn || summary.note;
-const disclaimer = isZh ? dataDisclaimer : dataDisclaimerEn || dataDisclaimer;
+const note = pickLocalized(summary, 'note', lang) || summary.note;
+const disclaimer = pickLocalized({ dataDisclaimer, dataDisclaimerEn }, 'dataDisclaimer', lang) || dataDisclaimer;
 ---
 
 <Layout
@@ -32,12 +31,7 @@ const disclaimer = isZh ? dataDisclaimer : dataDisclaimerEn || dataDisclaimer;
   lang={lang}
 >
   <section class="px-4 py-16 sm:px-6 mx-auto lg:px-8 max-w-6xl">
-    <Headline
-      title={t(lang, 'communityOsPageTitle')}
-      subtitle={isZh
-        ? '新加坡大学、国际企业实验室与创业公司的 AI 开源项目'
-        : "AI open-source projects from Singapore's universities, international corporate labs, and startups."}
-    />
+    <Headline title={t(lang, 'communityOsPageTitle')} subtitle={t(lang, 'communityOsPageSubtitle')} />
 
     <div
       class="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-4 mb-12 text-sm text-blue-800 dark:text-blue-200"
@@ -47,14 +41,10 @@ const disclaimer = isZh ? dataDisclaimer : dataDisclaimerEn || dataDisclaimer;
 
     <div class="mb-16">
       <h2 class="t-h2 mb-2">
-        {isZh ? '大学与研究机构' : 'Universities & Research Institutions'}
+        {t(lang, 'communityOsUniversitiesSection')}
       </h2>
       <p class="text-sm text-muted mb-6">
-        {
-          isZh
-            ? '高校实验室输出的模型、工具箱和训练系统；每张卡片进入独立项目档案。'
-            : 'Models, toolboxes, and training systems from university labs. Each card opens a project profile.'
-        }
+        {t(lang, 'communityOsUniversitiesBlurb')}
       </p>
       <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         {
@@ -94,7 +84,7 @@ const disclaimer = isZh ? dataDisclaimer : dataDisclaimerEn || dataDisclaimer;
               <div class="mt-auto pt-4 border-t border-subtle flex items-center justify-between gap-3">
                 <span class="text-xs text-muted">{proj.updated}</span>
                 <span class="inline-flex items-center gap-1 text-sm font-medium text-primary group-hover:text-secondary">
-                  {isZh ? '查看档案' : 'Open profile'}
+                  {t(lang, 'openProfileCta')}
                   <Icon name="tabler:arrow-right" class="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
                 </span>
               </div>
@@ -106,14 +96,10 @@ const disclaimer = isZh ? dataDisclaimer : dataDisclaimerEn || dataDisclaimer;
 
     <div class="mb-16">
       <h2 class="t-h2 mb-2">
-        {isZh ? '国际企业新加坡实验室' : 'International Corporate Labs in Singapore'}
+        {t(lang, 'communityOsCorporateLabsSection')}
       </h2>
       <p class="text-sm text-muted mb-6">
-        {
-          isZh
-            ? '跨国科技公司在新加坡及相关研究网络中的开源模型、训练框架和工具。'
-            : 'Open models, training frameworks, and tools from multinational technology research networks connected to Singapore.'
-        }
+        {t(lang, 'communityOsCorporateLabsBlurb')}
       </p>
       <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         {
@@ -153,7 +139,7 @@ const disclaimer = isZh ? dataDisclaimer : dataDisclaimerEn || dataDisclaimer;
               <div class="mt-auto pt-4 border-t border-subtle flex items-center justify-between gap-3">
                 <span class="text-xs text-muted">{proj.updated}</span>
                 <span class="inline-flex items-center gap-1 text-sm font-medium text-primary group-hover:text-secondary">
-                  {isZh ? '查看档案' : 'Open profile'}
+                  {t(lang, 'openProfileCta')}
                   <Icon name="tabler:arrow-right" class="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
                 </span>
               </div>
@@ -164,13 +150,9 @@ const disclaimer = isZh ? dataDisclaimer : dataDisclaimerEn || dataDisclaimer;
     </div>
 
     <div class="mb-16">
-      <h2 class="t-h2 mb-2">{isZh ? '创业公司' : 'Startups'}</h2>
+      <h2 class="t-h2 mb-2">{t(lang, 'communityOsStartupsSection')}</h2>
       <p class="text-sm text-muted mb-6">
-        {
-          isZh
-            ? '以开源作为产品分发和开发者社区入口的新加坡 AI 创业样本。'
-            : 'Singapore AI startup examples using open source as product distribution and developer-community entry.'
-        }
+        {t(lang, 'communityOsStartupsBlurb')}
       </p>
       <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         {
@@ -205,7 +187,7 @@ const disclaimer = isZh ? dataDisclaimer : dataDisclaimerEn || dataDisclaimer;
               <div class="mt-auto pt-4 border-t border-subtle flex items-center justify-between gap-3">
                 <span class="text-xs text-muted">{proj.updated}</span>
                 <span class="inline-flex items-center gap-1 text-sm font-medium text-primary group-hover:text-secondary">
-                  {isZh ? '查看档案' : 'Open profile'}
+                  {t(lang, 'openProfileCta')}
                   <Icon name="tabler:arrow-right" class="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
                 </span>
               </div>

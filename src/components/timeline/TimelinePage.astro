@@ -6,6 +6,7 @@ import Headline from '~/components/ui/Headline.astro';
 import RelatedRail from '~/components/data/RelatedRail.astro';
 import { timelineEvents } from '~/data/timeline';
 import { pickLocalized, type Lang } from '~/i18n';
+import { toTraditional } from '~/i18n/opencc';
 
 interface Props {
   lang: Lang;
@@ -40,8 +41,21 @@ const COPY: Partial<Record<Lang, { title: string; subtitle: string; sources: str
   },
 };
 
-// Per-locale page copy with fallback chain ja → en → zh.
-const c = COPY[lang] ?? COPY.en ?? COPY.zh!;
+// Per-locale page copy.
+//   zh / en / ja / ko → hand-written COPY entries.
+//   zh-tw             → derived from COPY.zh via OpenCC at render time (never
+//                       an EN fallback — zh source always exists). Deriving
+//                       here rather than adding a COPY['zh-tw'] entry keeps the
+//                       Traditional text in sync with any future zh edit.
+const zhTw = COPY.zh!;
+const c =
+  lang === 'zh-tw'
+    ? {
+        title: toTraditional(zhTw.title),
+        subtitle: toTraditional(zhTw.subtitle),
+        sources: toTraditional(zhTw.sources),
+      }
+    : (COPY[lang] ?? COPY.en ?? COPY.zh!);
 ---
 
 <section class="px-4 py-16 sm:px-6 mx-auto lg:px-8 max-w-4xl">

@@ -4,6 +4,7 @@
 
 import Headline from '~/components/ui/Headline.astro';
 import { DEFAULT_LOCALE, localizedHref, pickLocalized, type Lang } from '~/i18n';
+import { deepToTraditional, toTraditional } from '~/i18n/opencc';
 
 interface Props {
   lang: Lang;
@@ -147,7 +148,16 @@ const phases: Phase[] = [
     ],
   },
   {
-    period: lang === DEFAULT_LOCALE ? '2024–至今' : lang === 'ja' ? '2024 年–現在' : '2024–present',
+    period:
+      lang === DEFAULT_LOCALE
+        ? '2024–至今'
+        : lang === 'zh-tw'
+          ? '2024–至今'
+          : lang === 'ja'
+            ? '2024 年–現在'
+            : lang === 'ko'
+              ? '2024–현재'
+              : '2024–present',
     title: '第五阶段：生态深化期',
     titleEn: 'Phase 5: Ecosystem Deepening',
     titleJa: '第五段階：エコシステム深化期',
@@ -217,14 +227,29 @@ const COPY: Partial<Record<Lang, PageCopy>> = {
       '2014 年の Smart Nation は業務プロセスを紙からスクリーンへと移しました。2026 年の AI 戦略は判断を人間の認知からモデルへと移しています。同じ国家動員の脚本ですが、ストレスのかかり方は異なります——なぜ今回はホワイトカラーの中間層が矢面に立つのか、なぜ物語が発展ではなく危機として語られるのか。',
     furtherReadingCta: '本編を読む',
   },
+  ko: {
+    pageTitle: '📈 싱가포르 AI 정책의 진화',
+    pageSubtitle:
+      '2014년 Smart Nation 구상부터 2024년 생성형 AI 거버넌스 프레임워크까지, 싱가포르의 AI 정책은 다섯 개의 뚜렷한 단계를 거쳐 왔습니다.',
+    definingEventLabel: '분기점이 된 사건: ',
+    furtherReadingEyebrow: '관련 장문 · 칼럼',
+    furtherReadingTitle: '디지털화에서 AI로: 싱가포르의 두 번째 국가적 전환',
+    furtherReadingBlurb:
+      '2014년 Smart Nation은 업무 프로세스를 종이에서 화면으로 옮겼습니다. 2026년 AI 전략은 판단을 인간의 인지에서 모델로 옮기고 있습니다. 같은 국가 동원의 각본이지만, 부담이 걸리는 방식은 다릅니다——왜 이번에는 화이트칼라 중산층이 정면에 서게 되는가, 왜 서사가 발전이 아니라 위기로 그려지는가.',
+    furtherReadingCta: '전문 읽기',
+  },
 };
 
-// Per-locale page copy with fallback chain ja → en → zh.
-const c = COPY[lang] ?? COPY.en ?? COPY.zh!;
+// Per-locale page copy. zh-tw is derived from zh via OpenCC; other locales
+// fall back through en → zh.
+const c: PageCopy = lang === 'zh-tw' ? deepToTraditional(COPY.zh!) : (COPY[lang] ?? COPY.en ?? COPY.zh!);
 const pick = (p: Phase, key: 'title' | 'event' | 'description'): string =>
   pickLocalized<string>(p, key, lang) ?? (p[key] as string);
 const pickItems = (p: Phase): string[] => {
   if (lang === DEFAULT_LOCALE) return p.items;
+  // zh-tw has no `itemsZhTw` data field — derive from the zh list via
+  // OpenCC so it renders Traditional, not English or Simplified.
+  if (lang === 'zh-tw') return p.items.map((item) => toTraditional(item));
   // For non-default locales, prefer the en list; ja falls back through
   // the same chain. Future per-locale `itemsJa` etc. can be added with no
   // call-site changes.

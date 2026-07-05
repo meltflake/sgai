@@ -7782,3 +7782,7 @@ export const dataDisclaimer =
   '本页数据综合自各国政府官方文件、国际组织报告及公开报道，由 新加坡 AI 观察独立整理。数据截至 2026 年 2 月。';
 export const dataDisclaimerEn =
   'Data on this page is compiled from official government documents, international organisation reports and public sources, independently curated by Singapore AI Observatory. Data as of February 2026.';
+export const dataDisclaimerJa =
+  '本ページのデータは各国政府の公式文書、国際機関の報告書、公開報道を基に、シンガポール AI 観測が独自に整理したものです。データは 2026 年 2 月時点。';
+export const dataDisclaimerKo =
+  '이 페이지의 데이터는 각국 정부의 공식 문서, 국제기구 보고서 및 공개 보도를 종합하여 Singapore AI Observatory가 독립적으로 정리한 것입니다. 데이터는 2026년 2월 기준입니다.';

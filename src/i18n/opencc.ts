@@ -144,6 +144,26 @@ export function toTraditional(input: string): string {
   return getConverter()(input);
 }
 
+/** Recursively convert every string reachable from `value` to Traditional
+ *  (Taiwan idiom). Walks strings, arrays, and plain objects; functions and
+ *  other non-serialisable values pass through untouched (callers that carry
+ *  functions in the tree — e.g. AboutPage's `versionLine` — must wrap the
+ *  function's *return value* with toTraditional separately). Used to derive a
+ *  zh-tw view of a page-local zh COPY block without hand-maintaining a
+ *  parallel `*ZhTw` structure. */
+export function deepToTraditional<T>(value: T): T {
+  if (typeof value === 'string') return toTraditional(value) as T;
+  if (Array.isArray(value)) return value.map((item) => deepToTraditional(item)) as T;
+  if (value && typeof value === 'object') {
+    const out: Record<string, unknown> = {};
+    for (const [key, item] of Object.entries(value as Record<string, unknown>)) {
+      out[key] = deepToTraditional(item);
+    }
+    return out as T;
+  }
+  return value;
+}
+
 // Exported for unit tests so they can assert the two-pass pipeline in
 // isolation without the OpenCC singleton bootstrap.
 export const _internals = { preProtect, postRestore, SORTED_TERMS };

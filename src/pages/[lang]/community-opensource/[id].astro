@@ -23,10 +23,9 @@ interface Props {
 }
 
 const lang = Astro.params.lang as Lang;
-const isZh = lang === 'zh';
 const { project } = Astro.props as Props;
-const name = isZh ? project.name : project.nameEn || project.name;
-const orgName = isZh ? project.org : project.orgEn || project.org;
+const name = pickLocalized(project, 'name', lang) || project.name;
+const orgName = pickLocalized(project, 'org', lang) || project.org;
 const description =
   pickLocalized(project, 'summary', lang) || pickLocalized(project, 'description', lang) || project.description;
 
@@ -43,7 +42,7 @@ const schema = {
   isBasedOn: project.resources.map((resource) => resource.url),
   publisher: {
     '@type': 'Organization',
-    name: isZh ? '新加坡 AI 观察' : t(lang, 'siteName'),
+    name: t(lang, 'siteName'),
     url: 'https://sgai.md/',
   },
 };

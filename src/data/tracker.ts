@@ -816,6 +816,7 @@ export const dimensions: Dimension[] = [
     oneLinerJa: '最先端モデルを実行できるか？',
     oneLinerEn: 'Can it run frontier models?',
     trend: 'flat',
+    // i18n-allow-unpaired — language-neutral metric value (gigawatts); record's zh title is `算力底座`
     headline: '1.4 GW',
     headlineEn: '1.4 GW',
     benchmark: '数据中心容量 + 70+ 设施 + NSCC ASPIRE 2A+ 20 PFLOPS',

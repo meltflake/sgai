@@ -7,13 +7,13 @@ import CrossDomainRail from '~/components/listing/CrossDomainRail.astro';
 import LatestAdditions from '~/components/listing/LatestAdditions.astro';
 import { programmes, talentDataDate, type TalentStatusTone } from '~/data/talent';
 import { localizedHref, pickLocalized, t, type Lang } from '~/i18n';
+import { toTraditional } from '~/i18n/opencc';
 
 interface Props {
   lang: Lang;
 }
 
 const { lang } = Astro.props;
-const isZh = lang === 'zh';
 const pickStringArray = (record: unknown, field: string, fallback: string[]): string[] =>
   (pickLocalized(record, field, lang) as string[] | null | undefined) || fallback;
 
@@ -22,6 +22,25 @@ const statusClasses: Record<TalentStatusTone, string> = {
   scheduled: 'bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-200',
   closed: 'bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300',
   evergreen: 'bg-teal-100 text-teal-800 dark:bg-teal-900/30 dark:text-teal-200',
+};
+
+// One-off headline copy (distinct from the shorter talentPageTitle dict key
+// used for <title>/breadcrumbs) — page-local per-locale template.
+const HEADLINE: Record<Lang, string> = {
+  zh: 'AI 人才培养',
+  en: 'AI Talent Pipeline',
+  ja: 'AI 人材育成',
+  'zh-tw': toTraditional('AI 人才培养'),
+  ko: 'AI 인재 양성',
+};
+const SUBTITLE: Record<Lang, string> = {
+  zh: '新加坡 AI 人才体系不是一条线，而是一组可追踪的项目入口：学生、教师、职业转型、企业内训、本硕博研究，各自有承办方、门槛和交付物。',
+  en: "Singapore's AI talent system is not a single path. It is a set of trackable project entry points: students, educators, career switchers, enterprise teams, and research talent from undergraduate to PhD.",
+  ja: 'シンガポールの AI 人材システムは一本道ではなく、学生、教育者、キャリアチェンジ、企業内チーム、学部から博士までの研究人材まで、それぞれ担当機関・要件・成果物を持つ追跡可能なプロジェクトの入り口の集合です。',
+  'zh-tw': toTraditional(
+    '新加坡 AI 人才体系不是一条线，而是一组可追踪的项目入口：学生、教师、职业转型、企业内训、本硕博研究，各自有承办方、门槛和交付物。'
+  ),
+  ko: '싱가포르의 AI 인재 시스템은 하나의 경로가 아니라 추적 가능한 여러 프로젝트 진입점의 집합입니다: 학생, 교육자, 커리어 전환자, 기업 내부 교육, 학부부터 박사까지의 연구 인재 — 각각 담당 기관, 요건, 결과물을 갖습니다.',
 };
 ---
 
@@ -34,12 +53,7 @@ const statusClasses: Record<TalentStatusTone, string> = {
   lang={lang}
 >
   <section class="px-4 py-14 sm:px-6 mx-auto lg:px-8 max-w-6xl">
-    <Headline
-      title={isZh ? 'AI 人才培养' : 'AI Talent Pipeline'}
-      subtitle={isZh
-        ? '新加坡 AI 人才体系不是一条线，而是一组可追踪的项目入口：学生、教师、职业转型、企业内训、本硕博研究，各自有承办方、门槛和交付物。'
-        : "Singapore's AI talent system is not a single path. It is a set of trackable project entry points: students, educators, career switchers, enterprise teams, and research talent from undergraduate to PhD."}
-    />
+    <Headline title={HEADLINE[lang]} subtitle={SUBTITLE[lang]} />
     <LatestAdditions lang={lang} source="talent" class="mt-8 mb-2" />
 
     <div class="grid gap-5 md:grid-cols-2">
@@ -60,8 +74,8 @@ const statusClasses: Record<TalentStatusTone, string> = {
                       {pickLocalized(prog, 'category', lang)}
                     </p>
                     <h3 class="t-h3 text-gray-900 dark:text-white">{pickLocalized(prog, 'name', lang)}</h3>
-                    {isZh && <p class="text-sm text-muted mt-1">{prog.nameEn}</p>}
-                    {!isZh && prog.shortName && <p class="text-sm text-muted mt-1">{prog.shortName}</p>}
+                    {lang === 'zh' && <p class="text-sm text-muted mt-1">{prog.nameEn}</p>}
+                    {lang !== 'zh' && prog.shortName && <p class="text-sm text-muted mt-1">{prog.shortName}</p>}
                   </div>
                 </div>
                 <span
@@ -100,7 +114,7 @@ const statusClasses: Record<TalentStatusTone, string> = {
               <div class="mt-auto pt-4 border-t border-subtle flex items-center justify-between gap-3">
                 <span class="text-xs text-muted">{pickLocalized(prog, 'owner', lang)}</span>
                 <span class="inline-flex items-center gap-1 text-sm font-medium text-primary group-hover:text-secondary">
-                  {isZh ? '查看档案' : 'Open profile'}
+                  {t(lang, 'openProfileCta')}
                   <Icon name="tabler:arrow-right" class="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
                 </span>
               </div>
@@ -111,11 +125,7 @@ const statusClasses: Record<TalentStatusTone, string> = {
     </div>
 
     <p class="mt-10 text-sm text-muted text-center">
-      {
-        isZh
-          ? `数据来源：AI Singapore、LearnAI、AIAP、NAISC 与 IOAI 官方页面。本站校验日期：${talentDataDate}。`
-          : `Sources: official AI Singapore, LearnAI, AIAP, NAISC and IOAI pages. Checked by this site on ${talentDataDate}.`
-      }
+      {t(lang, 'talentSourcesNote').replace('{date}', talentDataDate)}
     </p>
   </section>
   <CrossDomainRail lang={lang} current="talent" class="max-w-6xl mx-auto px-4 sm:px-6 pb-16" />

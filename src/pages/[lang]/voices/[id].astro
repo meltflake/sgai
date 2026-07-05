@@ -34,12 +34,12 @@ const isZh = lang === 'zh';
 
 const related = getRelated({ type: 'person', id: person.id });
 const counts = getPersonCounts(person.id);
+// video.speaker is always stored in Latin/Roman form (Singapore press
+// convention), so match against person.nameEn regardless of lang — the
+// previous logic picked person.name (Chinese) on zh pages when lang was
+// 'zh', comparing it against the Latin video.speaker, which never matched.
 const relatedVideos = videos
-  .filter(
-    (video) =>
-      video.speaker === (isZh ? person.name : person.nameEn || person.name) ||
-      (person.aliases || []).includes(video.speaker)
-  )
+  .filter((video) => video.speaker === (person.nameEn || person.name) || (person.aliases || []).includes(video.speaker))
   .sort((a, b) => b.date.localeCompare(a.date));
 
 const summary = pickLocalized(person, 'summary', lang) || '';
@@ -55,10 +55,22 @@ const isStub =
 // derived inside the builder via OpenCC (rule #10).
 const parlSummary = isStub ? buildParliamentarySummary(person, lang) : null;
 const bioLine = (isStub && parlSummary ? parlSummary : summary) || '';
-// zh uses personDisplayName(id) for the curated bilingual name + honorific.
-// Other locales prefer pickLocalized (which walks ja → en → zh chain via shape A).
-const displayName = isZh ? personDisplayName(person.id) : pickLocalized(person, 'name', lang) || person.name;
-const displayTitle = isZh ? person.title : pickLocalized(person, 'title', lang) || person.title;
+// zh/zh-tw use personDisplayName(id) for the curated bilingual name +
+// honorific (with its own nameEn fallback baked in); zh-tw runs it through
+// toTraditional per CLAUDE.md rule #10. Other locales prefer pickLocalized
+// (which walks ja → en → zh chain via shape A).
+const displayName =
+  lang === 'zh'
+    ? personDisplayName(person.id)
+    : lang === 'zh-tw'
+      ? toTraditional(personDisplayName(person.id))
+      : pickLocalized(person, 'name', lang) || person.name;
+const displayTitle =
+  lang === 'zh'
+    ? person.title
+    : lang === 'zh-tw'
+      ? toTraditional(person.title)
+      : pickLocalized(person, 'title', lang) || person.title;
 
 const categoryLabels: Record<Person['category'], string> = {
   government: t(lang, 'categoryGovernment'),
@@ -155,12 +167,15 @@ const metadata = {
   robots: { index: !isLowSignal, follow: true },
 };
 
+// Both zh and zh-tw display the CJK name as primary, so both benefit from
+// the Latin name as an alternateName (helps schema.org entity resolution).
+const isCjkPrimary = lang === 'zh' || lang === 'zh-tw';
 const personSchema = {
   '@context': 'https://schema.org',
   '@type': 'Person',
-  name: isZh ? person.name || person.nameEn : person.nameEn || person.name,
-  ...(isZh ? { alternateName: person.nameEn || person.name } : {}),
-  jobTitle: isZh ? person.title || person.titleEn : person.titleEn || person.title,
+  name: pickLocalized(person, 'name', lang) || person.nameEn || person.name,
+  ...(isCjkPrimary ? { alternateName: person.nameEn || person.name } : {}),
+  jobTitle: pickLocalized(person, 'title', lang) || person.titleEn || person.title,
   description: bioLine,
   affiliation: person.affiliations.map((name) => ({ '@type': 'Organization', name })),
   sameAs: person.channels.map((ch) => ch.url),
@@ -209,7 +224,7 @@ const personSchema = {
     {
       ((!isStub && summary) || (isStub && parlSummary)) && (
         <section class="callout-note p-5 rounded-lg mb-8">
-          <h2 class="font-semibold mb-2">{isZh ? '一句话定位' : 'Positioning'}</h2>
+          <h2 class="font-semibold mb-2">{t(lang, 'voicePositioningHeading')}</h2>
           <p class="text-gray-800 dark:text-gray-200 leading-relaxed">{isStub ? parlSummary : summary}</p>
         </section>
       )
@@ -227,7 +242,7 @@ const personSchema = {
       person.channels.length > 0 && (
         <section class="mb-10">
           <h2 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-3">
-            {isZh ? '官方渠道' : 'Official channels'}
+            {t(lang, 'officialChannels')}
           </h2>
           <div class="flex flex-wrap gap-2">
             {person.channels.map((ch) => (
@@ -258,7 +273,7 @@ const personSchema = {
       related.policies.length > 0 && (
         <section class="mb-10">
           <h2 class="t-h3 text-gray-800 dark:text-white mb-4">
-            {isZh ? `主导政策（${related.policies.length}）` : `Policies championed (${related.policies.length})`}
+            {t(lang, 'voicePoliciesChampionedHeading').replace('{count}', String(related.policies.length))}
           </h2>
           <div class="grid gap-3">
             {related.policies.map((policy) => (
@@ -282,7 +297,7 @@ const personSchema = {
       relatedVideos.length > 0 && (
         <section class="mb-10">
           <h2 class="t-h3 text-gray-800 dark:text-white mb-4">
-            {isZh ? `视频观点（${relatedVideos.length}）` : `AI videos (${relatedVideos.length})`}
+            {t(lang, 'voiceAiVideosHeading').replace('{count}', String(relatedVideos.length))}
           </h2>
           <div class="grid gap-3">
             {relatedVideos.map((video) => (

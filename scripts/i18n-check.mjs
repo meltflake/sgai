@@ -8,6 +8,10 @@
 //   node scripts/i18n-check.mjs --lang zh         # scan ZH at dist/zh/
 //   node scripts/i18n-check.mjs --lang en --root dist
 //   node scripts/i18n-check.mjs --all             # scan every locale from src/i18n/index.ts
+//   node scripts/i18n-check.mjs --all --update-en-baseline
+//                                                 # re-snapshot the EN-sentence /
+//                                                 # marker-violation ratchet baseline
+//                                                 # (scripts/i18n-check.baseline.json)
 //
 // Layout (post-Phase-2): EN is the route default and lives at the bare
 // dist/ root; non-default locales live under dist/<lang>/. The script
@@ -26,11 +30,13 @@
 // LANG_CONFIG. The script is locale-agnostic; only the regex and
 // allow-list change per target.
 
-import { readFileSync, readdirSync, statSync } from 'node:fs';
-import { join, relative } from 'node:path';
+import { readFileSync, readdirSync, statSync, writeFileSync, existsSync } from 'node:fs';
+import { join, relative, dirname } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import process from 'node:process';
 
 import { getProjectLocaleConfig } from './lib/i18n-locales.mjs';
+import { ALLOW_REASONS } from './lib/i18n-allow-reasons.mjs';
 
 // Parse --lang and --root flags.
 const argv = process.argv.slice(2);
@@ -39,7 +45,12 @@ function arg(name, fallback) {
   return i >= 0 && argv[i + 1] ? argv[i + 1] : fallback;
 }
 const CHECK_ALL = argv.includes('--all');
+// When set, snapshot the current EN-sentence + marker-violation counts into
+// the ratchet baseline (scripts/i18n-check.baseline.json) instead of failing.
+const UPDATE_EN_BASELINE = argv.includes('--update-en-baseline');
 const ROOT_BASE = arg('--root', 'dist');
+const SCRIPT_DIR = dirname(fileURLToPath(import.meta.url));
+const EN_BASELINE_PATH = join(SCRIPT_DIR, 'i18n-check.baseline.json');
 const PROJECT_I18N = getProjectLocaleConfig();
 // EN is the route-default locale and lives at the bare ROOT_BASE.
 // Other locales live under ROOT_BASE/<lang>/. Lang codes double as URL
@@ -73,6 +84,77 @@ let SKIP_SUBDIRS = new Set(LANG === ROUTE_DEFAULT ? LOCALES.filter((locale) => l
 //                    suffice for verbatim source (hansard, transcripts),
 //                    but inline EN UI text leaks through invisibly.
 //                    See Layer D in scripts/evals/i18n-coverage/check.ts.
+//
+//   enSentence     — sentence-level EN-residue scan config. Fields:
+//                      minTokens        — min EN word tokens to flag (ja/ko=4,
+//                                         zh/zh-tw=6; zh names/short quotes are
+//                                         noisier so the bar is higher).
+//                      nativeScriptRegex — a sentence containing this locale's
+//                                         native script is NOT EN residue and is
+//                                         skipped. ja=kana, ko=hangul, zh/zh-tw=Han.
+//                                         (For ja, kanji is NOT "native script"
+//                                         here — a kana-free run may still be
+//                                         zh residue; only kana proves Japanese.)
+//                      allowPatterns    — brand / programme proper nouns that
+//                                         are legal EN even on a target-locale
+//                                         page. Shared across locales via
+//                                         EN_SENTENCE_ALLOW below.
+//   enSentenceSeverity — 'error' | 'ratchet'. Governs the EN-SENTENCE scan.
+//                    'error' → any EN-sentence hit fails immediately.
+//                    'ratchet' → compared against scripts/i18n-check.baseline.json
+//                    per page; only a count ABOVE baseline fails.
+//                    ALL locales stay 'ratchet' for enSentence — including
+//                    zh / zh-tw. The zh base locale LEGITIMATELY carries English
+//                    (MP verbatim quotes in debates, official-quote pull-quotes
+//                    in policies, blog footnote references ↩, mono-lingual
+//                    long-form posts); OpenCC carries these unchanged into
+//                    zh-tw. These are NOT fallback bugs, so forcing zh/zh-tw
+//                    enSentence to 'error' would demand wrapping every legit
+//                    quote in a marker (large content-engineering cost, out of
+//                    scope). Ratchet still blocks any NEW leak — which is
+//                    exactly how the 2026-07 242-marker bug would have been
+//                    caught. ja/ko stay ratchet too; their backlog is burned
+//                    down by the weekly issue.
+//   markerViolationSeverity — 'error' | 'ratchet'. Governs the MARKER-VIOLATION
+//                    check independently of enSentenceSeverity. Defaults to
+//                    enSentenceSeverity when unset. zh-tw sets this to 'error':
+//                    an *-en-fallback marker (registered ko-only) appearing on
+//                    a zh-tw page is ALWAYS a leak (zh source exists → OpenCC is
+//                    the only correct path), and the count is already 0, so the
+//                    hard gate cannot false-positive on existing content. This
+//                    precisely locks the 2026-07 242-marker bug class shut.
+
+// Brand / programme proper nouns that are legal EN on ANY target-locale page.
+// Shared by ja / ko / zh / zh-tw enSentence scans (previously duplicated in
+// ja and ko). Each entry is an exact-substring check against a suspect
+// sentence; one hit exempts the whole sentence.
+const EN_SENTENCE_ALLOW = [
+  // Site identity / branding (allowed in all locales).
+  'Singapore AI Observatory',
+  'sgai',
+  // LanguageToggle button label.
+  'English',
+  // Policy / programme proper nouns that legitimately appear inside
+  // target-locale sentences. Re-casing these per locale is wrong.
+  'Smart Nation',
+  'AI Singapore',
+  'AI Verify',
+  'SEA-LION',
+  'NAIS 2.0',
+  'NAIS2.0',
+  'Model AI Governance Framework',
+  'National AI Strategy',
+  'AI Centre of Excellence',
+  'AI Trailblazers',
+  'SkillsFuture',
+  'GenAI Sandbox',
+  'TechSkills Accelerator',
+  'OpenAI',
+  'Anthropic',
+  'GovTech',
+  'GovAI',
+];
+
 const LANG_CONFIG = {
   zh: {
     // Simplified Chinese is the source locale. Source-level completeness
@@ -86,6 +168,19 @@ const LANG_CONFIG = {
       'おもてなし',
       'こもり',
     ],
+    // Sentence-level EN-residue scan. A zh page rendering a whole English
+    // sentence (component hardcoded `lang === 'zh' ? ... : 'EN'` and zh fell
+    // into the EN branch, or a source field with no zh value) is a leak.
+    // minTokens is 6 (vs ja/ko 4): zh pages carry more incidental English
+    // (person names, short quotes) so the bar is raised to cut noise.
+    // nativeScriptRegex is Han — any sentence with a Chinese character is
+    // native content, not EN residue, and is skipped.
+    enSentence: {
+      minTokens: 6,
+      nativeScriptRegex: /[一-鿿]/,
+      allowPatterns: EN_SENTENCE_ALLOW,
+    },
+    enSentenceSeverity: 'ratchet',
   },
   en: {
     // English pages must not contain CJK, Japanese kana, or Korean
@@ -177,38 +272,15 @@ const LANG_CONFIG = {
     enSentence: {
       // Tokens-per-sentence threshold for EN flag.
       minTokens: 4,
-      // Words/phrases that are LEGAL on a JA page even when they form a
-      // long EN string. Brand names, official programme names, native-
-      // language UI affordances. Each entry is an exact substring check
-      // against the suspect sentence; one hit exempts the whole sentence.
-      allowPatterns: [
-        // Site identity / branding (allowed in all locales).
-        'Singapore AI Observatory',
-        'sgai',
-        // LanguageToggle button label
-        'English',
-        // Common policy / programme proper nouns that legitimately
-        // appear inside JA sentences. These would otherwise need to be
-        // re-cased per locale, and they're just wrong to translate.
-        'Smart Nation',
-        'AI Singapore',
-        'AI Verify',
-        'SEA-LION',
-        'NAIS 2.0',
-        'NAIS2.0',
-        'Model AI Governance Framework',
-        'National AI Strategy',
-        'AI Centre of Excellence',
-        'AI Trailblazers',
-        'SkillsFuture',
-        'GenAI Sandbox',
-        'TechSkills Accelerator',
-        'OpenAI',
-        'Anthropic',
-        'GovTech',
-        'GovAI',
-      ],
+      // A sentence containing kana is Japanese, not EN residue → skip.
+      // (Kanji is deliberately NOT native script here: a kana-free run may
+      // still be zh residue, handled by foreignRegex/validate above.)
+      nativeScriptRegex: /[぀-ゟ゠-ヿ]/,
+      // Brand / programme proper nouns legal on a JA page — shared across
+      // all target locales via EN_SENTENCE_ALLOW.
+      allowPatterns: EN_SENTENCE_ALLOW,
     },
+    enSentenceSeverity: 'ratchet',
   },
   'zh-tw': {
     // Traditional Chinese (Taiwan idiom) pages are produced by passing the
@@ -229,6 +301,26 @@ const LANG_CONFIG = {
     // would be brand/legal text we want preserved verbatim, which OpenCC
     // already leaves alone since they aren't Simplified codepoints.
     allowPatterns: [],
+    // Sentence-level EN-residue scan. zh-tw derives from zh via OpenCC and
+    // should never show English fallback; a whole EN sentence here means a
+    // component branched `lang !== 'zh'` and threw zh-tw into the EN branch
+    // (the core 2026-07 fallback-leak bug). Same tuning as zh: minTokens 6,
+    // native script is Han (traditional glyphs are also matched by /一-鿿/).
+    enSentence: {
+      minTokens: 6,
+      nativeScriptRegex: /[一-鿿]/,
+      allowPatterns: EN_SENTENCE_ALLOW,
+    },
+    // enSentence stays ratchet: the zh base locale (which zh-tw derives from
+    // via OpenCC) legitimately carries English quotes/citations that flow
+    // through to zh-tw. Forcing this to error would need every legit quote
+    // marker-wrapped. See the enSentenceSeverity note at the top of this file.
+    enSentenceSeverity: 'ratchet',
+    // markerViolation is a HARD ERROR on zh-tw: an *-en-fallback marker is
+    // registered ko-only, so seeing one on a zh-tw page is always a leak. The
+    // count is already 0 (B1–B4 cleaned it), so error cannot false-positive.
+    // This is the precise gate for the 2026-07 242-marker bug class.
+    markerViolationSeverity: 'error',
   },
   ko: {
     // Korean pages should contain hangul, not Han characters. Flag CJK
@@ -241,32 +333,14 @@ const LANG_CONFIG = {
     allowPatterns: ['中文', '日本語', '繁體中文'],
     // Sentence-level EN-residue scan: catches "Read more →"-style English
     // sentences that leaked into KO pages because a template fell
-    // through pickLocalized's fallback chain to en.
+    // through pickLocalized's fallback chain to en. A sentence containing
+    // hangul is Korean, not EN residue → skip via nativeScriptRegex.
     enSentence: {
       minTokens: 4,
-      allowPatterns: [
-        'Singapore AI Observatory',
-        'sgai',
-        'English',
-        'Smart Nation',
-        'AI Singapore',
-        'AI Verify',
-        'SEA-LION',
-        'NAIS 2.0',
-        'NAIS2.0',
-        'Model AI Governance Framework',
-        'National AI Strategy',
-        'AI Centre of Excellence',
-        'AI Trailblazers',
-        'SkillsFuture',
-        'GenAI Sandbox',
-        'TechSkills Accelerator',
-        'OpenAI',
-        'Anthropic',
-        'GovTech',
-        'GovAI',
-      ],
+      nativeScriptRegex: /[가-힣]/,
+      allowPatterns: EN_SENTENCE_ALLOW,
     },
+    enSentenceSeverity: 'ratchet',
   },
 };
 
@@ -296,29 +370,62 @@ function listHtml(dir, isRoot = true) {
   return out;
 }
 
-function visibleText(htmlSrc) {
+// Tags whose blocks may carry a data-i18n-allow-{cjk,en} marker. `p` and
+// `span` were added for the 2026-07 fallback-leak fix: benchmark / about /
+// startup EN-fallback prose is wrapped in <p>/<span>, not block containers.
+const MARKER_TAGS = ['section', 'div', 'article', 'details', 'aside', 'p', 'span'];
+
+/**
+ * Strip non-visible / markered blocks and return the remaining visible text
+ * plus any marker-violations found on this page for `lang`.
+ *
+ * Marker handling (2026-07 reason-registry model):
+ *   Each block marked `data-i18n-allow-cjk="<reason>"` (CJK verbatim source)
+ *   or `data-i18n-allow-en="<reason>"` (EN verbatim / EN fallback) is ALWAYS
+ *   stripped from visible text — so its wrapped content is never double-reported
+ *   by the foreign-script / EN-sentence scanners. We additionally consult the
+ *   ALLOW_REASONS registry (scripts/lib/i18n-allow-reasons.mjs):
+ *     - reason registered AND `lang` in its `langs` → legitimate, no violation.
+ *     - reason unknown, OR `lang` not in its `langs` → record a marker-violation.
+ *   The canonical bug this catches: an `*-en-fallback` marker (legit only on
+ *   ko) appearing on a zh-tw page because a component branched `lang !== 'zh'`.
+ *
+ * @param {string} htmlSrc
+ * @param {string} lang
+ * @returns {{ text: string, markerViolations: {reason: string, attr: string, snippet: string}[] }}
+ */
+function visibleText(htmlSrc, lang) {
   let s = htmlSrc;
+  const markerViolations = [];
   // Strip <script> / <style> / <template> blocks
   s = s.replace(/<script[\s\S]*?<\/script>/gi, ' ');
   s = s.replace(/<style[\s\S]*?<\/style>/gi, ' ');
   s = s.replace(/<template[\s\S]*?<\/template>/gi, ' ');
-  // Strip any element block explicitly marked with
-  // `data-i18n-allow-cjk="<reason>"` (CJK verbatim source — hansard-original,
-  // speech-verbatim-source, ecosystem-pending-translation) OR
-  // `data-i18n-allow-en="<reason>"` (EN verbatim source — video transcripts,
-  // policy English originals, MDDI source links). Both markers behave
-  // identically for this scan: the wrapped element block is dropped from
-  // visible text entirely, so neither CJK nor EN scans see its contents.
-  // The reason value is informational; the marker itself suppresses the scan.
-  // Supports common block-level wrappers (section/div/article/details/aside).
-  // `details` is included because Hansard transcript blocks in DebatesIndex
-  // wrap verbatim EN source in <details> for collapsible UX.
-  for (const tag of ['section', 'div', 'article', 'details', 'aside']) {
+  // Strip every element block explicitly marked with a data-i18n-allow-{cjk,en}
+  // reason. Capture the attr + reason so we can validate it against the
+  // registry before stripping. Block is dropped regardless (see above);
+  // an unregistered / lang-mismatched reason additionally records a violation.
+  for (const tag of MARKER_TAGS) {
     const re = new RegExp(
-      `<${tag}[^>]*\\sdata-i18n-allow-(?:cjk|en)=["'][^"']+["'][^>]*>[\\s\\S]*?<\\/${tag}>`,
+      `<${tag}\\b[^>]*\\sdata-i18n-allow-(cjk|en)=["']([^"']+)["'][^>]*>([\\s\\S]*?)<\\/${tag}>`,
       'gi'
     );
-    s = s.replace(re, ' ');
+    s = s.replace(re, (_full, kind, reason, inner) => {
+      const attr = `data-i18n-allow-${kind}`;
+      const spec = ALLOW_REASONS[reason];
+      const langOk = spec && (spec.langs === 'all' || spec.langs.includes(lang));
+      const attrOk =
+        spec && (spec.attr === 'both' || spec.attr === attr);
+      if (!spec || !langOk || !attrOk) {
+        markerViolations.push({
+          reason,
+          attr,
+          // Short snippet of the wrapped content for the report.
+          snippet: inner.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim().slice(0, 120),
+        });
+      }
+      return ' ';
+    });
   }
   // Strip <head>...</head> entirely — meta/title is checked separately
   s = s.replace(/<head[\s\S]*?<\/head>/i, ' ');
@@ -330,7 +437,7 @@ function visibleText(htmlSrc) {
   s = s.replace(/<\/?[a-zA-Z][^>]*>/g, ' ');
   // Drop any leftover stray angle bracket
   s = s.replace(/<[^>]+>/g, ' ');
-  return s
+  const text = s
     .replace(/&amp;/g, '&')
     .replace(/&lt;/g, '<')
     .replace(/&gt;/g, '>')
@@ -338,6 +445,7 @@ function visibleText(htmlSrc) {
     .replace(/&#39;/g, "'")
     .replace(/&#x27;/g, "'")
     .replace(/&nbsp;/g, ' ');
+  return { text, markerViolations };
 }
 
 function metaText(htmlSrc) {
@@ -393,31 +501,77 @@ function isAllowed(s) {
 //   1. Split visible text on sentence-end punctuation (zh/en/ja).
 //   2. For each sentence with ≥ minTokens English word tokens
 //      AND zero hiragana/katakana characters → flag.
-//   3. Skip sentences whose substring matches any of conf.enSentence.allowPatterns
-//      (brand names, programme proper nouns, native UI labels).
+//   3. Exempt a sentence only if, AFTER deleting every allowPatterns match
+//      (brand / programme proper nouns), the REMAINING English falls below
+//      minTokens. See enSentenceExempt below for why whole-substring
+//      exemption was a false-negative hole (Finding C).
 //
 // "Sentence" is approximated by punctuation split — good enough for the
 // "wrong-language sentence" failure mode this is designed to catch. We
 // truncate flagged sentences to 150 chars in reports to keep output usable.
-const KANA_RE = /[぀-ゟ゠-ヿ]/;
-const HANGUL_RE = /[가-힣]/;
-const EN_TOKEN_RE = /[A-Za-z][A-Za-z0-9'’-]*/g;
+export const EN_TOKEN_RE = /[A-Za-z][A-Za-z0-9'’-]*/g;
 const SENTENCE_SPLIT_RE = /[.。！!？?]+/;
 
-// Per-locale "target script" regex used to skip sentences that already
-// contain the target language's native script (those aren't EN residue).
-// Mirrors KANA_RE for ja — the original implementation only handled ja.
-const TARGET_SCRIPT_RE = {
-  ja: KANA_RE,
-  ko: HANGUL_RE,
-};
+/**
+ * Decide whether an allow-list should exempt a suspect EN sentence.
+ *
+ * OLD behaviour (Finding C false-negative): a sentence was exempted if it
+ * merely *contained* any allow substring — so
+ * "OpenAI announced a comprehensive new national partnership across every
+ * sector this year" was fully whitelisted just because it contains "OpenAI".
+ * A real fallback leak that happens to sit next to a brand name slipped
+ * through the ratchet.
+ *
+ * NEW behaviour: delete every allow-pattern occurrence from the sentence,
+ * then re-count English tokens on what's left. Exempt ONLY if the residue is
+ * below minTokens (i.e. the sentence is essentially just brand/programme
+ * proper nouns). "OpenAI" alone → 0 residual tokens → exempt; the long
+ * partnership sentence → residue still ≥ minTokens → NOT exempt → reported.
+ *
+ * Longer allow patterns are removed first so a short pattern can't partially
+ * consume a longer one (e.g. remove "AI Singapore" before "sgai").
+ *
+ * @param {string} sent      the (whitespace-normalised) sentence
+ * @param {string[]} allow   allowPatterns from the locale's enSentence config
+ * @param {number} minTokens residual English-token threshold
+ * @returns {boolean} true → exempt (skip); false → keep scanning
+ */
+export function enSentenceExempt(sent, allow, minTokens) {
+  if (!allow || allow.length === 0) return false;
+  let residue = sent;
+  for (const pattern of [...allow].sort((a, b) => b.length - a.length)) {
+    if (!pattern) continue;
+    // Global, case-insensitive, literal removal of every occurrence.
+    residue = residue.split(pattern).join(' ');
+  }
+  const residualTokens = residue.match(EN_TOKEN_RE) || [];
+  const distinct = new Set(residualTokens.map((t) => t.toLowerCase()));
+  // Below the token threshold, OR fewer than 2 distinct residual tokens
+  // (a single brand-ish token left over is not a leak) → exempt.
+  return residualTokens.length < minTokens || distinct.size < 2;
+}
 
 function findEnSentences(text) {
-  const cfg = conf.enSentence;
+  return filterEnSentences(text, conf.enSentence);
+}
+
+/**
+ * Pure, config-injected core of the EN-sentence scan (extracted so it can be
+ * unit-tested without booting the whole scanner). `findEnSentences` above
+ * wires it to the active locale's `conf.enSentence`.
+ *
+ * @param {string} text
+ * @param {{minTokens?: number, allowPatterns?: string[], nativeScriptRegex?: RegExp}|undefined} cfg
+ * @returns {string[]} suspect sentences (truncated to 150 chars)
+ */
+export function filterEnSentences(text, cfg) {
   if (!cfg) return [];
   const minTokens = cfg.minTokens || 4;
   const allow = cfg.allowPatterns || [];
-  const targetScript = TARGET_SCRIPT_RE[LANG] || null;
+  // A sentence containing this locale's native script is native content, not
+  // EN residue. Config-driven (nativeScriptRegex): ja=kana, ko=hangul,
+  // zh/zh-tw=Han. Kanji is deliberately not "native" for ja.
+  const targetScript = cfg.nativeScriptRegex || null;
   const out = [];
   for (const raw of text.split(SENTENCE_SPLIT_RE)) {
     const sent = raw.replace(/\s+/g, ' ').trim();
@@ -426,7 +580,9 @@ function findEnSentences(text) {
     if (targetScript && targetScript.test(sent)) continue;
     const tokens = sent.match(EN_TOKEN_RE) || [];
     if (tokens.length < minTokens) continue;
-    if (allow.some((p) => sent.includes(p))) continue;
+    // Exempt only if the residue after stripping brand/programme allow-terms
+    // is itself below threshold (Finding C — no more whole-sentence bypass).
+    if (enSentenceExempt(sent, allow, minTokens)) continue;
     // Don't double-count sentences that are pure punctuation/numbers/EN tokens
     // counted as a single "URL-ish" token. Require at least 2 distinct tokens.
     const distinct = new Set(tokens.map((t) => t.toLowerCase()));
@@ -438,27 +594,21 @@ function findEnSentences(text) {
 
 function scanFile(file) {
   const html = readFileSync(file, 'utf8');
-  // Two-bucket findings:
-  //   `findings`     — hard-fail residue (foreign-script: CJK on EN pages,
-  //                    SIMPLIFIED_ONLY on JA pages). exit 1 if any.
-  //   `enWarnings`   — sentence-level EN-on-JA residue. Reported but does
-  //                    NOT affect exit code, because:
-  //                      • baseline of these is being burned down PR by PR
-  //                        via the Layer E source-level scan (which IS
-  //                        hard-fail for new additions);
-  //                      • the existing 4000+ hits would block every PR
-  //                        until backlog is cleared, defeating the gate.
-  //                    The Layer E source scan prevents NEW EN-on-JA
-  //                    hardcodes from being introduced; this dist-level
-  //                    EN warning surfaces residual cases (e.g. data-driven
-  //                    pages that pull EN from a source field) for visibility.
-  //                    To re-enable hard-fail once backlog reaches zero,
-  //                    flip `EN_SENTENCE_HARD_FAIL` below.
+  // Three-bucket findings:
+  //   `findings`     — hard-fail foreign-script residue (CJK on EN pages,
+  //                    SIMPLIFIED_ONLY on JA pages). Always exit 1 if any.
+  //   `enWarnings`   — sentence-level wrong-language (EN) residue. Governed
+  //                    by per-lang enSentenceSeverity (ratchet | error).
+  //   `markerViolations` — a data-i18n-allow-{cjk,en} marker whose reason is
+  //                    unregistered, or is used on a locale where it's not
+  //                    legitimate (e.g. an *-en-fallback marker on zh-tw).
+  //                    Governed by the same per-lang severity as enWarnings.
   const findings = [];
   const enWarnings = [];
 
   // 1) Visible body text — foreign-script residue (CJK on EN pages, etc.)
-  const body = visibleText(html);
+  //    visibleText also surfaces marker-violations for this lang.
+  const { text: body, markerViolations } = visibleText(html, LANG);
   for (const hit of findForeign(body)) {
     if (!isAllowed(hit)) findings.push({ where: 'body', hit });
   }
@@ -470,16 +620,18 @@ function scanFile(file) {
     }
   }
 
-  // 3) Wrong-language sentence scan (currently ja only). Catches the
+  // 3) Wrong-language sentence scan. Catches the
   //    "lang === 'zh' ? '中文' : 'English'" anti-pattern in templates,
-  //    where ja silently falls into the EN branch and the foreignRegex
-  //    sees no CJK to flag.
-  for (const hit of findEnSentences(body)) {
-    enWarnings.push({ where: 'body-en-sentence', hit });
-  }
-  for (const [name, content] of metaText(html)) {
-    for (const hit of findEnSentences(content)) {
-      enWarnings.push({ where: `${name}-en-sentence`, hit });
+  //    where a non-zh locale silently falls into the EN branch and the
+  //    foreignRegex sees no CJK to flag.
+  if (conf.enSentence) {
+    for (const hit of findEnSentences(body)) {
+      enWarnings.push({ where: 'body-en-sentence', hit });
+    }
+    for (const [name, content] of metaText(html)) {
+      for (const hit of findEnSentences(content)) {
+        enWarnings.push({ where: `${name}-en-sentence`, hit });
+      }
     }
   }
 
@@ -495,10 +647,63 @@ function scanFile(file) {
     }
     return uniq;
   }
-  return { findings: dedup(findings), enWarnings: dedup(enWarnings) };
+  return {
+    findings: dedup(findings),
+    enWarnings: dedup(enWarnings),
+    markerViolations,
+  };
 }
 
-function mainForLang(lang) {
+// ── EN-sentence + marker-violation ratchet baseline ───────────────────────
+//
+// Baseline file: scripts/i18n-check.baseline.json
+// Shape:
+//   {
+//     "<lang>": {
+//       "<page path e.g. zh-tw/debates/index.html>": <enSentence hit count>,
+//       ...,
+//       "__markerViolations__": <total marker-violation count for this lang>
+//     },
+//     ...
+//   }
+// The reserved key "__markerViolations__" holds the per-lang aggregate of
+// marker-violations (folding them per-page would bloat the baseline and marker
+// leaks are lang-scoped by nature). Everything else is a page → hit count map.
+// Ratchet semantics (per lang, enSentenceSeverity === 'ratchet'):
+//   - a page whose current count > its baseline value (default 0)        → FAIL
+//   - marker-violation total > baseline "__markerViolations__" (default 0) → FAIL
+//   - current < baseline → baseline can shrink (prints a hint, does not fail)
+// severity === 'error' → any hit fails immediately, no baseline exemption.
+const MARKER_BASELINE_KEY = '__markerViolations__';
+
+function loadEnBaseline() {
+  if (!existsSync(EN_BASELINE_PATH)) return {};
+  try {
+    return JSON.parse(readFileSync(EN_BASELINE_PATH, 'utf8'));
+  } catch (err) {
+    console.error(`[i18n-check] Failed to parse ${EN_BASELINE_PATH}: ${err instanceof Error ? err.message : err}`);
+    return {};
+  }
+}
+
+// Deep-sort object keys so baseline diffs stay stable regardless of scan order.
+function sortedBaseline(obj) {
+  const out = {};
+  for (const lang of Object.keys(obj).sort()) {
+    const seg = obj[lang];
+    const sortedSeg = {};
+    for (const key of Object.keys(seg).sort()) sortedSeg[key] = seg[key];
+    out[lang] = sortedSeg;
+  }
+  return out;
+}
+
+function writeEnBaseline(baseline) {
+  writeFileSync(EN_BASELINE_PATH, JSON.stringify(sortedBaseline(baseline), null, 2) + '\n');
+}
+
+function mainForLang(lang, opts = {}) {
+  const { baseline = {}, updateMode = false } = opts;
   try {
     configureLang(lang);
   } catch (error) {
@@ -514,36 +719,77 @@ function mainForLang(lang) {
     return 2;
   }
 
+  const severity = conf.enSentenceSeverity || 'ratchet';
+  // Marker-violations have their own per-lang severity, decoupled from the
+  // enSentence severity. zh-tw is 'error' (an en-fallback marker there is
+  // always a leak); everything else defaults to its enSentence severity.
+  const markerSeverity = conf.markerViolationSeverity || severity;
+  const langBaseline = baseline[lang] || {};
+
   let totalPages = 0;
   let dirtyPages = 0;
   let warnPages = 0;
   let totalHits = 0;
   let totalWarnings = 0;
+  let totalMarkerViolations = 0;
   const perPage = [];
   const perPageWarn = [];
+  const markerViolations = []; // { path, reason, attr, snippet }
+  // Current per-page enSentence counts, used for ratchet comparison + snapshot.
+  const currentCounts = {}; // path → enSentence hit count
 
   for (const f of files) {
     totalPages++;
-    const { findings, enWarnings } = scanFile(f);
+    const { findings, enWarnings, markerViolations: mv } = scanFile(f);
+    const rel = relative('dist', f);
     if (findings.length > 0) {
       dirtyPages++;
       totalHits += findings.length;
-      perPage.push({ path: relative('dist', f), findings });
+      perPage.push({ path: rel, findings });
     }
     if (enWarnings.length > 0) {
       warnPages++;
       totalWarnings += enWarnings.length;
-      perPageWarn.push({ path: relative('dist', f), findings: enWarnings });
+      currentCounts[rel] = enWarnings.length;
+      perPageWarn.push({ path: rel, findings: enWarnings });
+    }
+    for (const v of mv) {
+      totalMarkerViolations++;
+      markerViolations.push({ path: rel, ...v });
     }
   }
 
   perPage.sort((a, b) => b.findings.length - a.findings.length);
   perPageWarn.sort((a, b) => b.findings.length - a.findings.length);
 
+  // ── Baseline snapshot mode ──────────────────────────────────────────────
+  if (updateMode) {
+    const seg = {};
+    for (const { path, findings } of perPageWarn) seg[path] = findings.length;
+    // Never baseline marker-violations on a locale where they are a hard error
+    // (zh-tw). Snapshotting them would grant a silent exemption the error gate
+    // is specifically meant to deny. On error locales the count must stay 0.
+    if (totalMarkerViolations > 0 && markerSeverity !== 'error') seg[MARKER_BASELINE_KEY] = totalMarkerViolations;
+    baseline[lang] = seg;
+    const markerNote =
+      markerSeverity === 'error'
+        ? `${totalMarkerViolations} marker-violations NOT baselined (hard error on ${LANG})`
+        : `${totalMarkerViolations} marker-violations`;
+    console.log(`[i18n-check] lang=${LANG}: snapshot ${perPageWarn.length} EN-sentence pages, ${markerNote} into baseline.`);
+    // Even in update mode, hard foreign-script residue is a real failure.
+    if (dirtyPages > 0) {
+      console.log(`[i18n-check] lang=${LANG}: WARNING — ${dirtyPages} pages still have foreign-script residue (not baselined).`);
+    }
+    return dirtyPages > 0 ? 1 : 0;
+  }
+
   console.log(`[i18n-check] lang=${LANG}, root=${ROOT}`);
   console.log(`[i18n-check] Scanned ${totalPages} pages.`);
   console.log(`[i18n-check] Pages with foreign-script residue (FAIL): ${dirtyPages} — ${totalHits} hits`);
-  console.log(`[i18n-check] Pages with EN-sentence warnings (NON-FATAL): ${warnPages} — ${totalWarnings} hits`);
+  console.log(
+    `[i18n-check] Pages with EN-sentence hits: ${warnPages} — ${totalWarnings} hits (severity=${severity}); ` +
+      `marker-violations: ${totalMarkerViolations} (severity=${markerSeverity})`
+  );
 
   const max = parseInt(process.env.I18N_REPORT_LIMIT || '20', 10);
   for (const { path, findings } of perPage.slice(0, max)) {
@@ -557,45 +803,122 @@ function mainForLang(lang) {
     }
   }
 
-  // Warning section is shown but does not affect exit code. Surfaces the
-  // EN-on-JA residue backlog (Layer E source scan governs new additions).
-  if (warnPages > 0) {
-    console.log(`\n[i18n-check] EN-sentence warnings (informational; Layer E gates new additions in source):`);
-    for (const { path, findings } of perPageWarn.slice(0, Math.min(5, max))) {
-      console.log(`  ${findings.length}  ${path}`);
+  // ── EN-sentence + marker-violation severity evaluation ──────────────────
+  // Regressions: pages whose hit count exceeds the baseline (ratchet), or any
+  // hit at all (error). Same treatment for the marker-violation aggregate.
+  const enRegressions = []; // { path, current, baseline, findings }
+  const enShrinks = []; // { path, current, baseline }
+  for (const { path, findings } of perPageWarn) {
+    const base = severity === 'error' ? 0 : langBaseline[path] || 0;
+    if (findings.length > base) {
+      enRegressions.push({ path, current: findings.length, baseline: base, findings });
+    } else if (findings.length < base) {
+      enShrinks.push({ path, current: findings.length, baseline: base });
+    }
+  }
+  // Baseline pages that dropped to zero (no longer in perPageWarn) also shrink.
+  if (severity !== 'error') {
+    for (const [path, base] of Object.entries(langBaseline)) {
+      if (path === MARKER_BASELINE_KEY) continue;
+      if (!(path in currentCounts) && base > 0) enShrinks.push({ path, current: 0, baseline: base });
+    }
+  }
+  const markerBase = markerSeverity === 'error' ? 0 : langBaseline[MARKER_BASELINE_KEY] || 0;
+  const markerRegressed = totalMarkerViolations > markerBase;
+  const markerShrunk = totalMarkerViolations < markerBase;
+
+  // Report EN-sentence regressions (the actionable failures).
+  if (enRegressions.length > 0) {
+    console.log(
+      `\n[i18n-check] EN-sentence ${severity === 'error' ? 'hits' : 'REGRESSIONS above baseline'} (${enRegressions.length} page(s)):`
+    );
+    for (const { path, current, baseline: base, findings } of enRegressions.slice(0, Math.min(8, max))) {
+      console.log(`  ${current} (baseline ${base})  ${path}`);
       for (const { where, hit } of findings.slice(0, 3)) {
         console.log(`     [${where}] ${hit}`);
       }
       if (findings.length > 3) console.log(`     … and ${findings.length - 3} more`);
     }
-    if (perPageWarn.length > 5) {
-      console.log(`  … and ${perPageWarn.length - 5} more pages with EN warnings`);
-    }
+    if (enRegressions.length > 8) console.log(`  … and ${enRegressions.length - 8} more pages`);
   }
 
+  // Report marker-violations (unregistered reason or wrong-locale marker).
+  if (markerRegressed && markerViolations.length > 0) {
+    console.log(
+      `\n[i18n-check] Marker-violations ${markerSeverity === 'error' ? '' : `above baseline (${totalMarkerViolations} > ${markerBase}) `}(${totalMarkerViolations} total):`
+    );
+    for (const { path, reason, attr, snippet } of markerViolations.slice(0, Math.min(8, max))) {
+      console.log(`  [${attr}="${reason}"] ${path}`);
+      if (snippet) console.log(`     ${snippet}`);
+    }
+    if (markerViolations.length > 8) console.log(`  … and ${markerViolations.length - 8} more`);
+  }
+
+  // Shrink hints — baseline can be tightened (informational, never fails).
+  if (enShrinks.length > 0 || markerShrunk) {
+    console.log(
+      `\n[i18n-check] lang=${LANG}: baseline can shrink (${enShrinks.length} page(s)` +
+        `${markerShrunk ? `, marker-violations ${totalMarkerViolations} < ${markerBase}` : ''}). ` +
+        `Run \`node scripts/i18n-check.mjs --all --update-en-baseline\` to re-snapshot.`
+    );
+  }
+
+  // ── Exit decision ───────────────────────────────────────────────────────
+  const enFail = enRegressions.length > 0 || markerRegressed;
   if (dirtyPages > 0) {
     console.log(`\n[i18n-check] FAIL — fix the foreign-script residue above.`);
     return 1;
-  } else {
-    const what = LANG === 'en' ? 'non-English script residue on EN' : `foreign-script residue on ${LANG.toUpperCase()}`;
-    console.log(`\n[i18n-check] OK — no ${what} pages.`);
-    if (warnPages > 0) {
-      console.log(
-        `[i18n-check] (${totalWarnings} EN-sentence warnings still present — informational only; track via Layer E.)`
-      );
-    }
-    return 0;
   }
+  if (enFail) {
+    // A marker-violation under markerSeverity='error' (zh-tw) has NO baseline
+    // exemption — do not suggest re-snapshotting. Only offer the re-snapshot
+    // hint when every failing bucket is a ratchet regression.
+    const markerErrorFail = markerRegressed && markerSeverity === 'error';
+    const onlyRatchet = severity === 'ratchet' && !markerErrorFail;
+    console.log(
+      `\n[i18n-check] FAIL — new EN-sentence / marker leaks on ${LANG.toUpperCase()}` +
+        (markerErrorFail ? ' (marker-violation is a hard error on this locale).' : ' above baseline.') +
+        (onlyRatchet
+          ? ` If this is an intentional pre-existing change, run \`node scripts/i18n-check.mjs --all --update-en-baseline\` to re-snapshot.`
+          : ` (no baseline exemption.)`)
+    );
+    return 1;
+  }
+  const what = LANG === 'en' ? 'non-English script residue on EN' : `foreign-script residue on ${LANG.toUpperCase()}`;
+  console.log(`\n[i18n-check] OK — no ${what} pages; EN-sentence / marker leaks within baseline.`);
+  return 0;
 }
 
 function main() {
   const langs = CHECK_ALL ? LOCALES : [LANG];
+
+  // Baseline snapshot mode: rescan and rewrite scripts/i18n-check.baseline.json.
+  // Segments are merged: `--lang zh-tw --update-en-baseline` only rewrites the
+  // zh-tw segment; `--all --update-en-baseline` rewrites every scanned segment.
+  if (UPDATE_EN_BASELINE) {
+    const baseline = loadEnBaseline();
+    let exitCode = 0;
+    for (const lang of langs) {
+      const code = mainForLang(lang, { baseline, updateMode: true });
+      if (code > exitCode) exitCode = code;
+    }
+    writeEnBaseline(baseline);
+    console.log(`[i18n-check] Wrote baseline: ${relative(process.cwd(), EN_BASELINE_PATH)}`);
+    if (exitCode > 0) process.exit(exitCode);
+    return;
+  }
+
+  const baseline = loadEnBaseline();
   let exitCode = 0;
   for (const lang of langs) {
-    const code = mainForLang(lang);
+    const code = mainForLang(lang, { baseline });
     if (code > exitCode) exitCode = code;
   }
   if (exitCode > 0) process.exit(exitCode);
 }
 
-main();
+// Run the scan only when invoked directly, not when imported by a test that
+// only wants the pure helpers (filterEnSentences / enSentenceExempt).
+if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) {
+  main();
+}

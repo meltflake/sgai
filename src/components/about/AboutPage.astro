@@ -7,6 +7,7 @@
 import { Icon } from 'astro-icon/components';
 import { SITE_VERSION, SITE_UPDATED } from '~/version';
 import { localizedHref, type Lang } from '~/i18n';
+import { deepToTraditional, toTraditional } from '~/i18n/opencc';
 
 interface Props {
   lang: Lang;
@@ -241,13 +242,33 @@ const COPY: Partial<Record<Lang, AboutCopy>> = {
   },
 };
 
-// Per-locale page copy with fallback chain ja → en → zh.
-// zh-tw and ko don't have hand-translated COPY entries — they fall back
-// to en. The prose block is marked `data-i18n-allow-en` so the i18n-check
-// EN-sentence scanner accepts the legitimate fallback (and so a future
-// PR adding a Korean COPY entry will silently turn off the marker).
-const c = COPY[lang] ?? COPY.en ?? COPY.zh!;
-const usingEnFallback = !COPY[lang] && (lang === 'zh-tw' || lang === 'ko');
+// Per-locale page copy.
+//   zh / en / ja   → hand-written COPY entries.
+//   zh-tw          → derived from COPY.zh via OpenCC (deep string convert on
+//                    the block/list prose; versionLine's return value wrapped
+//                    separately since it's a function). No en leak.
+//   ko             → falls back to COPY.en by design (no hand-written ko COPY
+//                    yet). The prose block is marked `about-prose-en-fallback`
+//                    (registered ko-only) so the i18n-check EN-sentence scanner
+//                    accepts the legitimate fallback; adding a ko COPY entry
+//                    later turns the marker off automatically.
+function zhTwCopy(zh: AboutCopy): AboutCopy {
+  return {
+    eyebrow: toTraditional(zh.eyebrow),
+    headline: toTraditional(zh.headline),
+    lead: toTraditional(zh.lead),
+    body: deepToTraditional(zh.body),
+    versionLine: (v, d) => toTraditional(zh.versionLine(v, d)),
+    ctaRead: toTraditional(zh.ctaRead),
+    ctaSource: toTraditional(zh.ctaSource),
+  };
+}
+// i18n-allow-hardcode: zh-tw is derived above via zhTwCopy (OpenCC, no en leak);
+// the remaining COPY[lang] ?? COPY.en fallback is the deliberate ko→en path,
+// gated to lang==='ko' below and surfaced with the registered
+// `about-prose-en-fallback` marker (ko-only). COPY has no ko key by design.
+const c = lang === 'zh-tw' ? zhTwCopy(COPY.zh!) : (COPY[lang] ?? COPY.en ?? COPY.zh!);
+const usingEnFallback = !COPY[lang] && lang === 'ko';
 ---
 
 <article

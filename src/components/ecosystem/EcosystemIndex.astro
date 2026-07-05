@@ -16,7 +16,8 @@ const { lang } = Astro.props;
 // The en route's visible heading predates the dict key and is longer than
 // t('en', 'ecosystemPageTitle') ('Ecosystem Map'); preserved verbatim so the
 // shared component renders the en page unchanged.
-const headlineTitle = lang === 'en' ? '🗺️ Singapore AI Ecosystem Map' : `🗺️ ${t(lang, 'ecosystemPageTitle')}`;
+let headlineTitle = `🗺️ ${t(lang, 'ecosystemPageTitle')}`;
+if (lang === 'en') headlineTitle = '🗺️ Singapore AI Ecosystem Map';
 ---
 
 <Layout

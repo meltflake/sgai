@@ -295,6 +295,45 @@ npx prettier --write src/
 
 历史踩点：2026-06-30 审计 `auto_update.py` 覆盖面时发现——它定时能跑，但"全站所有该更新的地方是否都被某条管线覆盖"无任何机器校验，纯靠 registry + playbook 的手工纪律，且 playbook 已 drift。本规则把覆盖从纪律变成 CI 强制门，根除 orphan-data-file 与 manifest-drift 两个 bug 类。
 
+### 13. 多语言渲染禁止二元 lang 逻辑（关键 — 最高优先级）
+
+> **🔴 顶层硬规则：任何 `src/components/` / `src/pages/` / `src/layouts/` 里的组件/页面，禁止把"非 zh 就当英文"的二元逻辑当作多语言渲染路径。sgai 是五语站（zh / en / ja / zh-tw / ko），任何 `lang !== 'zh'` 形态的判断都会把 en / ja / zh-tw / ko 四种语言塌缩成一个"另一种"分支，导致 zh-tw / ko 静默落英文。** Layer E（`npm run eval:source-i18n`，CI 硬门）+ dist 层 `check:i18n --all`（zh-tw marker=error 硬门）双层拦截。
+>
+> 二元逻辑长这样，全部禁止：
+>
+> - ❌ `const isEn = lang !== 'zh'` / `const isNonZh = lang !== 'zh'`（**别名名不限** `isEn`/`isZh`，任意标识符赋 `lang !== 'zh'` 都被 Layer E 抓）
+> - ❌ `lang === 'zh' ? zh : en` / `lang !== 'zh' ? en : zh` 内联三元渲染文案
+> - ❌ `isZh ? ... : ...` / `isEn ? ... : ...` / `isJa ? ... : ...` / `isNonZh ? ... : ...` 三元渲染文案
+> - ❌ `COPY[lang] ?? COPY.en` 这类 fallback map——COPY 对象字面量缺 `ja:` 或 `ko:` 键，或文件对 zh-tw 无显式处理（`'zh-tw'` 分支 / `toTraditional` / `deepToTraditional`）
+>
+> 布尔判断只允许**等值形式**（`lang === 'en'` / `lang === 'zh'`），且只用于单语种路由（`if (lang === 'ja') formatJaDate()`），不得当"其余都是英文"用。
+>
+> UI 文案三选一：
+>
+> 1. `t(lang, key)` —— 全语言字典（[src/i18n/index.ts](src/i18n/index.ts)）
+> 2. `pickLocalized(record, 'field', lang)` —— 数据字段自动按 lang 选 sibling（含 zh-tw OpenCC）
+> 3. 页面本地 `Record<Lang, …>` COPY —— **必须**声明全部 authored locale（`zh` / `en` / `ja` / `ko`），zh-tw 用 `toTraditional(zh)` / `deepToTraditional(zh)` 派生，绝不落 en
+>
+> 🔴 **zh-tw 页面出现英文正文（非注册的原文引用 / 品牌名）一律是 bug**——zh 源永远存在，正确路径是 OpenCC 运行时转换。`ko → en` / `ja → en` fallback 是设计内的，但**条件必须精确到** `lang === 'ko'` / `lang === 'ja'`，绝不能用 `!== 'zh'` 连带把 zh-tw 也扔进 en 分支。
+>
+> `data-i18n-allow-en` / `data-i18n-allow-cjk` marker 只允许 [scripts/lib/i18n-allow-reasons.mjs](scripts/lib/i18n-allow-reasons.mjs) 注册过的 reason。EN-fallback 类 reason（`*-en-fallback`）注册为**仅 ko**；一旦出现在 zh-tw 页面即 marker-violation，**zh-tw 上 marker=error 硬门**（无 baseline 豁免）。
+>
+> 🔴 **`langs: 'all'` 的 6 个 verbatim reason 是受信任边界（信任逃生舱）**——hansard-original / hansard-transcript-verbatim / speech-verbatim-source / video-transcript-verbatim / citation-original / debate-title-original。它们包住的内容在**所有 locale**都被 scanner 直接剥离且**不记 marker-violation**，等价于 `dangerouslySetInnerHTML`：scanner 无法分辨里面是真·Hansard 原文还是有人为了消音塞进去的编造英文。**只允许包真·逐字原文**（Hansard 英文、MDDI 演讲 / 视频原文、参考文献引文）；**严禁**拿它洗白组件/字段的 fallback 泄漏（那是 `*-en-fallback` ko-only reason + zh-tw marker=error 的职责，别绕过 ratchet）。**新增 all-locale reason，或把现有 reason 放宽成 `'all'`，必须：(a) 在 PR 说明为何内容确属逐字原文；(b) 更新注册表单测 [scripts/lib/\_\_tests\_\_/i18n-allow-reasons.test.ts](scripts/lib/__tests__/i18n-allow-reasons.test.ts)**（该测试 pin 死每个 reason 的 attr + langs，任何静默改动即 fail，逼你走 review）。
+>
+> 数据层：base 字段（`title` / `summary` / `description` / `headline` / `tagline`）禁止 EN-only（并入 rule #5），gate = `i18n-pair --en-only-base`（**已覆盖全部 `src/data/*.ts`**——`check:i18n-completeness` 改用 `--data-dir=src/data` 目录扫描，新数据文件自动纳入，不再靠手维护文件列表）。
+>
+> 双层防御：
+>
+> | 层      | 命令 / 时机                                          | 抓什么                                                                                                                            | severity                                           |
+> | ------- | ---------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------- |
+> | 源码层  | `npm run eval:source-i18n`（Layer E，PR check job）  | `isZh`/`isEn`/`isJa`/`isNonZh` 三元 + **任意别名** `binary-lang-alias` + `copy-missing-locale`（COPY 缺 ja/ko 键或无 zh-tw 处理） | baseline=0，新增即 fail                            |
+> | dist 层 | `npm run check:i18n --all`（PR build job，需 build） | zh-tw / ko / ja / zh 页面的 enSentence 残留 + marker-violation                                                                    | zh-tw marker=**error 硬门**；enSentence 全 ratchet |
+> | Layer D | `npm run eval:i18n --layer=all`（weekly cron）       | 4-locale sitemap / hreflang parity + 语言纯度                                                                                     | weekly issue                                       |
+>
+> 为什么 enSentence 是 ratchet 而非 error：zh 基准 locale **合法含英文引文**（辩论 MP 原话、政策官员 quote、博客脚注参考文献 ↩、单语博客长文），OpenCC 原样带到 zh-tw。强行归零要给每条引文包 marker（大量内容工程）。ratchet 拦任何新增泄漏——这正是 242-bug 会被拦下的机制；存量由 weekly issue 烧。而 marker-violation 不同：`*-en-fallback` marker 注册为 ko-only，出现在 zh-tw 上永远是 bug，且已归 0，所以翻 error 不误伤。
+
+历史踩点：2026-07 一次系统治理——zh-tw 页面大量英文 fallback。根因三类：(1) `const isEn = lang !== 'zh'` 二元逻辑（150+ 处）把 zh-tw / ko 塌缩进 en 分支；(2) `data-i18n-allow-en` marker 遮蔽 dist 检查（242 处 ko-only marker 泄漏到 zh-tw）；(3) methodology / evolution 两页用 `const isNonZh = lang !== 'zh'` / `COPY[lang] ?? COPY.en`（缺 ja/ko 键）逃过当时只认 `isEn`/`isZh` 别名和只查缺 `ja` 键的 Layer E。修复 = 全面 `pickLocalized` / `t` 化 + Layer E 升 5 语并 widen（`binary-lang-alias` 认任意别名、`copy-missing-locale` 要求 ja+ko 键+zh-tw 处理）+ zh-tw marker-violation 翻 error 硬门。本规则即此次治理的事后加固。
+
 ## 项目结构
 
 ```

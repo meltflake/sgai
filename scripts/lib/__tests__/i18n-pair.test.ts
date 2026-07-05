@@ -3,9 +3,9 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { mkdtempSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
-import { join } from 'node:path';
+import { join, resolve } from 'node:path';
 
-import { findUnpairedFields, findIncompleteRecords } from '../i18n-pair.ts';
+import { findUnpairedFields, findIncompleteRecords, listDataDirFiles } from '../i18n-pair.ts';
 import type { FileSchema } from '../../i18n-config.ts';
 
 function withFile<T>(content: string, fn: (path: string) => T): T {
@@ -250,6 +250,183 @@ export const x = [
   });
 });
 
+// ── en-only-base (opt-in) ───────────────────────────────────────────────
+//
+// Detects a base field (title/summary/description/headline/tagline) that
+// carries an English multi-word value with NO CJK — i.e. the zh source side
+// was never authored, only the English got filled. Distinct from the
+// alignment check (which fires on a CJK base missing a sibling); this fires
+// on an English base with a missing zh source.
+
+test('en-only-base: flags English multi-word title with no CJK', () => {
+  const src = `
+export const x = [
+  {
+    title: 'National AI Strategy Review',
+    description: 'A detailed English description with several words here.',
+  },
+];
+`;
+  withFile(src, (p) => {
+    const issues = findUnpairedFields(p, { enOnlyBase: true, locales: ['en', 'ja'] });
+    const fields = issues.map((i) => i.field).sort();
+    assert.deepEqual(fields, ['description', 'title']);
+    assert.ok(issues.every((i) => i.reason === 'en-only-base'));
+  });
+});
+
+test('en-only-base: does NOT flag single-token brand names', () => {
+  const src = `
+export const x = [
+  {
+    title: 'SEA-LION',
+    summary: 'AIAP',
+    tagline: 'Anthropic',
+  },
+];
+`;
+  withFile(src, (p) => {
+    const issues = findUnpairedFields(p, { enOnlyBase: true, locales: ['en', 'ja'] });
+    assert.deepEqual(issues, []);
+  });
+});
+
+test('en-only-base: does NOT flag values containing CJK (that is the alignment check)', () => {
+  const src = `
+export const x = [
+  {
+    title: '智能国家 Strategy Review',
+  },
+];
+`;
+  withFile(src, (p) => {
+    const issues = findUnpairedFields(p, { enOnlyBase: true, locales: ['en', 'ja'] });
+    // A CJK-bearing base is the alignment check's job (missing-sibling), NOT
+    // en-only-base. en-only-base must contribute nothing here.
+    assert.equal(
+      issues.filter((i) => i.reason === 'en-only-base').length,
+      0
+    );
+  });
+});
+
+test('en-only-base: respects i18n-allow-unpaired annotation', () => {
+  const src = `
+export const x = [
+  {
+    // i18n-allow-unpaired
+    title: 'English Only Allowed Title',
+  },
+];
+`;
+  withFile(src, (p) => {
+    const issues = findUnpairedFields(p, { enOnlyBase: true, locales: ['en', 'ja'] });
+    assert.deepEqual(issues, []);
+  });
+});
+
+test('en-only-base: respects per-field i18n-allow-unpaired annotation', () => {
+  const src = `
+export const x = [
+  {
+    // i18n-allow-unpaired
+    title: 'English Only Allowed Title',
+    description: 'Another English description without a Chinese source.',
+  },
+];
+`;
+  withFile(src, (p) => {
+    const issues = findUnpairedFields(p, { enOnlyBase: true, locales: ['en', 'ja'] });
+    // title is exempt, description is not.
+    assert.equal(issues.length, 1);
+    assert.equal(issues[0].field, 'description');
+    assert.equal(issues[0].reason, 'en-only-base');
+  });
+});
+
+test('en-only-base: only checks title/summary/description/headline/tagline base fields', () => {
+  const src = `
+export const x = [
+  {
+    role: 'Chief Executive Officer',
+    org: 'Some English Organisation Name',
+    title: 'Board Member Appointment',
+  },
+];
+`;
+  withFile(src, (p) => {
+    const issues = findUnpairedFields(p, { enOnlyBase: true, locales: ['en', 'ja'] });
+    // role / org are not en-only-base fields; only title fires.
+    assert.equal(issues.length, 1);
+    assert.equal(issues[0].field, 'title');
+  });
+});
+
+test('en-only-base: flags array base fields with English multi-word elements', () => {
+  const src = `
+export const x = [
+  {
+    summary: ['First English point here', 'Second English point too'],
+  },
+];
+`;
+  withFile(src, (p) => {
+    const issues = findUnpairedFields(p, { enOnlyBase: true, locales: ['en', 'ja'] });
+    assert.equal(issues.length, 1);
+    assert.equal(issues[0].field, 'summary');
+    assert.equal(issues[0].reason, 'en-only-base');
+  });
+});
+
+test('en-only-base: number + word counts as multi-token (calibration boundary)', () => {
+  // Real people.ts value: `100 Experiments（100E）`. Two whitespace tokens,
+  // one is a real word → flag. Guards the token-count heuristic against a
+  // regression to per-token letter-run counting (which would skip `100`).
+  const src = `
+export const x = [
+  {
+    title: '100 Experiments（100E）',
+  },
+];
+`;
+  withFile(src, (p) => {
+    const issues = findUnpairedFields(p, { enOnlyBase: true, locales: ['en', 'ja'] });
+    assert.equal(issues.length, 1);
+    assert.equal(issues[0].field, 'title');
+    assert.equal(issues[0].reason, 'en-only-base');
+  });
+});
+
+test('en-only-base: hyphenated single brand token is exempt (calibration boundary)', () => {
+  // `SEA-LION` is one whitespace token → must NOT flag (guards against
+  // reverting to `/[A-Za-z]{2,}/g` match-counting, which sees SEA + LION).
+  const src = `
+export const x = [
+  {
+    title: 'SEA-LION',
+    summary: 'GPT-4',
+  },
+];
+`;
+  withFile(src, (p) => {
+    assert.deepEqual(findUnpairedFields(p, { enOnlyBase: true, locales: ['en', 'ja'] }), []);
+  });
+});
+
+test('en-only-base: default (opt-out) does not change alignment behaviour', () => {
+  const src = `
+export const x = [
+  {
+    title: 'English Only Title Value',
+  },
+];
+`;
+  withFile(src, (p) => {
+    // Without enOnlyBase, a pure-English base is fine (no CJK to pair).
+    assert.deepEqual(findUnpairedFields(p, { locales: ['en', 'ja'] }), []);
+  });
+});
+
 // ── findIncompleteRecords ───────────────────────────────────────────────
 
 const ECOSYSTEM_TEST_SCHEMA: FileSchema = {
@@ -454,4 +631,60 @@ export const cats = [
     // zh side filled, En sibling missing → only whatItIsEn flagged
     assert.deepEqual(issues[0].missingFields, ['whatItIsEn']);
   });
+});
+
+// ── listDataDirFiles (Finding B: dynamic data-dir coverage) ─────────────
+//
+// The completeness gate used to hard-code a 13-file list; a NEW src/data/*.ts
+// escaped it. listDataDirFiles backs the `--data-dir` flag that replaced the
+// list. These tests lock in that (1) it discovers every *.ts, (2) it sorts,
+// (3) it skips non-.ts, and (4) the REAL src/data dir has no file the
+// completeness command would now miss.
+
+function withDir<T>(files: Record<string, string>, fn: (dir: string) => T): T {
+  const dir = mkdtempSync(join(tmpdir(), 'sgai-datadir-test-'));
+  for (const [name, content] of Object.entries(files)) {
+    writeFileSync(join(dir, name), content);
+  }
+  try {
+    return fn(dir);
+  } finally {
+    rmSync(dir, { recursive: true, force: true });
+  }
+}
+
+test('listDataDirFiles: returns every .ts file, sorted, absolute', () => {
+  withDir({ 'b.ts': '', 'a.ts': '', 'c.ts': '' }, (dir) => {
+    const found = listDataDirFiles(dir);
+    assert.deepEqual(
+      found.map((p) => p.slice(dir.length + 1)),
+      ['a.ts', 'b.ts', 'c.ts']
+    );
+    assert.ok(found.every((p) => p === resolve(p)), 'paths must be absolute');
+  });
+});
+
+test('listDataDirFiles: skips non-.ts files (json, md, d.ts is still .ts)', () => {
+  withDir({ 'x.ts': '', 'y.json': '', 'z.md': '', 'w.d.ts': '' }, (dir) => {
+    const names = listDataDirFiles(dir).map((p) => p.slice(dir.length + 1));
+    // .d.ts ends with .ts so it is included; json/md are excluded.
+    assert.deepEqual(names, ['w.d.ts', 'x.ts']);
+  });
+});
+
+test('listDataDirFiles: throws on a missing directory', () => {
+  assert.throws(() => listDataDirFiles('/no/such/dir/anywhere'), /--data-dir not found/);
+});
+
+test('listDataDirFiles: covers every real src/data/*.ts (regression safeguard)', () => {
+  // The point of Finding B: no data file may silently escape the completeness
+  // gate. If a real src/data file is added it MUST show up here — this test
+  // fails loudly if listDataDirFiles ever stops discovering the whole dir.
+  const dataDir = resolve(import.meta.dirname, '../../../src/data');
+  const found = listDataDirFiles(dataDir);
+  assert.ok(found.length >= 25, `expected the full data dir, got ${found.length} files`);
+  assert.ok(
+    found.some((p) => p.endsWith('/ecosystem.ts')),
+    'ecosystem.ts must be discovered'
+  );
 });

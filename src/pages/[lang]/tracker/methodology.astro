@@ -1,6 +1,7 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
 import { NON_DEFAULT_ROUTE_LOCALES, localizedHref, t, type Lang } from '~/i18n';
+import { deepToTraditional } from '~/i18n/opencc';
 
 export function getStaticPaths() {
   return NON_DEFAULT_ROUTE_LOCALES.map((lang) => ({ params: { lang } }));
@@ -9,15 +10,516 @@ export function getStaticPaths() {
 const lang = Astro.params.lang as Lang;
 const dashboardHref = localizedHref('/tracker/', lang);
 
-// ja currently falls back to en content for the methodology body until a
-// per-locale ja translation lands. zh stays on the zh copy.
-const isNonZh = lang !== 'zh';
 const metadata = {
   title: `${t(lang, 'trackerMethodologyTitle')} · ${t(lang, 'trackerPageTitle')}`,
-  description: isNonZh
-    ? `How the dashboard is built — what we present, what we don't, and why we don't assign overall grades.`
-    : '我们怎么做仪表盘——呈现什么、不呈现什么、为什么不打总评分。',
+  description: t(lang, 'trackerMethodologyDesc'),
 };
+
+// Methodology body modelled as structured data so each locale is a data
+// entry rather than a JSX branch. zh-tw is derived from zh via OpenCC
+// (deepToTraditional) instead of a hand-maintained parallel structure.
+//
+// A "block" is one rendered element. `p` renders a paragraph; `ul` / `ol`
+// render lists; `h3` renders a sub-heading. Inline `**bold**` and `*em*`
+// markers are parsed by the renderer below, so bold labels and emphasis
+// survive the transcription verbatim.
+type Block = { kind: 'p'; text: string } | { kind: 'h3'; text: string } | { kind: 'ul' | 'ol'; items: string[] };
+type Section = { h: string; blocks: Block[] };
+
+const CONTENT: Record<'zh' | 'en' | 'ja' | 'ko', Section[]> = {
+  zh: [
+    {
+      h: '我们做什么',
+      blocks: [
+        {
+          kind: 'p',
+          text: '新加坡 AI 观察仪表盘**呈现**新加坡 AI 的真实状态——用数字、第三方排名、目标进度、趋势，加上 sgai 编辑团队对每个维度的解读。',
+        },
+        { kind: 'p', text: '**我们不打分。**' },
+      ],
+    },
+    {
+      h: '为什么不打分',
+      blocks: [
+        {
+          kind: 'ul',
+          items: [
+            'sgai 是观察站，不是评级机构。打分是把多维事实压缩到单一刻度，会丢失最有价值的张力（强投入 vs 弱原创、强治理 vs 弱执法）',
+            '评级让访客停止思考——看到 A- 就觉得"还行"，不再点进去看依据。仪表盘的价值在于让访客**点进去看数字、看解读、自己得结论**',
+            '国际上做得最严肃的观察机构（CSIS、Stanford AI Index、Tortoise）都不打总评分，只列子项 + 文字分析',
+          ],
+        },
+      ],
+    },
+    {
+      h: '每个维度呈现什么',
+      blocks: [
+        { kind: 'p', text: '每张卡由 5 个数据元素 + 2 段编辑文字组成：' },
+        { kind: 'h3', text: '数据元素' },
+        {
+          kind: 'ol',
+          items: [
+            '**核心数字**——这维度最该被看到的 1–2 个数字',
+            '**参照系**——和谁比、差多少、领先多少',
+            '**目标进度**（如适用）——vs 政府发布的明确目标（15K AI 专才 by 2029、150K 公务员 Pair、10K 企业 NAIIP）',
+            '**第三方排名锚**——Tortoise / Oxford / WIPO / Stanford / Microsoft 等已有的国际排名',
+            '**趋势箭头**（↗ → ↘）',
+          ],
+        },
+        { kind: 'h3', text: '编辑文字' },
+        {
+          kind: 'ul',
+          items: [
+            '**解读**（50–80 字，治理卡因数字少所以更长）：这些数字代表什么状态、值得关注什么。**不是**"为什么是 A"，而是"这意味着什么"',
+            '**关键短板**（20–60 字）：公开数据没说的盲点 / 风险 / 结构性问题',
+          ],
+        },
+      ],
+    },
+    {
+      h: '我们引用的第三方排名',
+      blocks: [
+        {
+          kind: 'ul',
+          items: [
+            '**Tortoise Global AI Index** — 综合实力（投资 + 实施 + 创新）',
+            '**Oxford Government AI Readiness Index** — 政府就绪度',
+            '**Microsoft AI Economy Institute** — 企业 AI 采用率',
+            '**Stanford AI Index** — 投资 + 学术产出',
+            '**WIPO Global Innovation Index** — 创新生态',
+            '**CSRankings / QS** — 学术研究',
+          ],
+        },
+      ],
+    },
+    {
+      h: '我们引用的政府目标',
+      blocks: [
+        {
+          kind: 'ul',
+          items: [
+            'NAIS 2.0：15,000 AI 专才 by 2029',
+            'NAIIP：10,000 企业 + 100,000 工人（2026–2029）',
+            'GovTech Pair：150,000 公务员',
+            '公共 AI 研究 2026–2030：S$1B+',
+            'Smart Nation 2.0：S$270M 下一代超算（2025 年底投运）',
+          ],
+        },
+      ],
+    },
+    {
+      h: '复评节奏',
+      blocks: [
+        {
+          kind: 'ul',
+          items: [
+            '**常规**：季度复评（每 3 个月）',
+            '**触发**：Budget、重大政策发布、年度排名更新（Tortoise / Oxford 等）',
+            '每次复评的数字和解读变更记在本页底部 changelog',
+          ],
+        },
+      ],
+    },
+    {
+      h: '关于 sgai 编辑',
+      blocks: [
+        {
+          kind: 'p',
+          text: '仪表盘由 sgai（Singapore AI Observatory）编辑团队 @meltflake 维护。我们**不是中立第三方**，是有立场的观察站：',
+        },
+        {
+          kind: 'ul',
+          items: [
+            '**不接受任何政府或企业资助**——选指标和写解读独立于资金影响',
+            '**立场体现在选哪些数字、怎么解读**，不体现在打几分',
+            '**公开依据**——每张卡的数字源、第三方排名、政府目标都附 URL，可追溯',
+            '**承认局限**——我们读得到的是公开数据，企业内部和政府内部的实际进度可能与公开值有差距',
+            '**欢迎挑战**——发现数字过期、解读偏差、有更好的指标，请发邮件 / 提 issue',
+          ],
+        },
+      ],
+    },
+    {
+      h: 'Changelog',
+      blocks: [{ kind: 'ul', items: ['2026-05-02 · v1.0 仪表盘上线，6 维度初始数据 + 解读'] }],
+    },
+  ],
+  en: [
+    {
+      h: 'What we do',
+      blocks: [
+        {
+          kind: 'p',
+          text: "The Singapore AI Observatory Dashboard **presents** the actual state of Singapore's AI — using headline numbers, third-party rankings, target progress, and trends, plus our editorial team's interpretation of each dimension.",
+        },
+        { kind: 'p', text: '**We do not assign grades.**' },
+      ],
+    },
+    {
+      h: 'Why no grades',
+      blocks: [
+        {
+          kind: 'ul',
+          items: [
+            'sgai is an observatory, not a rating agency. Compressing multi-dimensional reality into a single grade discards the most valuable tensions (strong investment vs. weak frontier research; strong governance vs. weak enforcement).',
+            'Grades make readers stop thinking — "oh, A-, fine" — instead of clicking through. The dashboard exists to make people **read the numbers and the analysis** and reach their own conclusions.',
+            "The most respected international observatories (CSIS, Stanford AI Index, Tortoise) don't assign overall grades either. They list sub-scores and qualitative analysis. There's a reason for that.",
+          ],
+        },
+      ],
+    },
+    {
+      h: 'What each dimension shows',
+      blocks: [
+        { kind: 'p', text: 'Each card has 5 data elements + 2 editorial paragraphs:' },
+        { kind: 'h3', text: 'Data' },
+        {
+          kind: 'ol',
+          items: [
+            '**Headline** — the 1–2 numbers that should be seen first',
+            "**Benchmark** — what we're compared against",
+            '**Target progress** (if applicable) — vs. published government targets',
+            '**Third-party ranking anchors** — Tortoise / Oxford / WIPO / Stanford / Microsoft',
+            '**Trend** (↗ → ↘)',
+          ],
+        },
+        { kind: 'h3', text: 'Editorial' },
+        {
+          kind: 'ul',
+          items: [
+            '**Interpretation** (50–80 words; longer for qualitative cards): what these numbers mean — *not* "why grade A"',
+            "**Key shortcoming** (20–60 words): the blind spot, risk, or structural problem the public data doesn't state",
+          ],
+        },
+      ],
+    },
+    {
+      h: 'Third-party rankings we cite',
+      blocks: [
+        {
+          kind: 'ul',
+          items: [
+            '**Tortoise Global AI Index** — overall (investment + implementation + innovation)',
+            '**Oxford Government AI Readiness Index** — government readiness',
+            '**Microsoft AI Economy Institute** — enterprise AI adoption',
+            '**Stanford AI Index** — investment + academic output',
+            '**WIPO Global Innovation Index** — innovation ecosystem',
+            '**CSRankings / QS** — academic research',
+          ],
+        },
+      ],
+    },
+    {
+      h: 'Government targets we cite',
+      blocks: [
+        {
+          kind: 'ul',
+          items: [
+            'NAIS 2.0: 15,000 AI professionals by 2029',
+            'NAIIP: 10,000 firms + 100,000 workers (2026–2029)',
+            'GovTech Pair: 150,000 civil servants',
+            'Public AI R&D 2026–2030: S$1B+',
+            'Smart Nation 2.0: S$270M next-gen supercomputer (online by end of 2025)',
+          ],
+        },
+      ],
+    },
+    {
+      h: 'Update cadence',
+      blocks: [
+        {
+          kind: 'ul',
+          items: [
+            '**Regular**: quarterly review (every 3 months)',
+            '**Triggered**: Budget releases, major policy announcements, annual ranking updates',
+            "Each review's number and interpretation changes are logged below",
+          ],
+        },
+      ],
+    },
+    {
+      h: 'About sgai editorial',
+      blocks: [
+        {
+          kind: 'p',
+          text: 'The dashboard is maintained by the sgai (Singapore AI Observatory) editorial team @meltflake. We are **not a neutral third party** — we are an opinionated observatory:',
+        },
+        {
+          kind: 'ul',
+          items: [
+            '**No government or corporate funding** — choice of metrics and interpretations is independent of money',
+            '**Our position shows in what we choose to track and how we interpret it**, not in any grade',
+            '**Sources are public** — every metric, ranking anchor, and government target links to its origin',
+            '**We acknowledge limits** — public data may diverge from internal corporate or government reality',
+            '**Challenges welcome** — outdated numbers, biased interpretations, better metrics: file an issue or email us',
+          ],
+        },
+      ],
+    },
+    {
+      h: 'Changelog',
+      blocks: [
+        { kind: 'ul', items: ['2026-05-02 · v1.0 dashboard launch — 6 dimensions with initial data + interpretation'] },
+      ],
+    },
+  ],
+  ja: [
+    {
+      h: '私たちがやること',
+      blocks: [
+        {
+          kind: 'p',
+          text: 'シンガポール AI 観測ダッシュボードは、シンガポールの AI の実像を**提示**します——ヘッドライン数値、第三者ランキング、目標進捗、トレンドに、各観点に対する sgai 編集チームの解釈を加えて示します。',
+        },
+        { kind: 'p', text: '**私たちは評点をつけません。**' },
+      ],
+    },
+    {
+      h: 'なぜ評点をつけないのか',
+      blocks: [
+        {
+          kind: 'ul',
+          items: [
+            'sgai は観測所であり、格付機関ではありません。多次元の現実を単一の評点に圧縮すると、最も価値のある緊張関係（強い投資 vs 弱いフロンティア研究、強いガバナンス vs 弱い執行）が失われてしまいます。',
+            '評点は読者の思考を止めてしまいます——「あぁ A-、まあまあだ」で終わり、中身を見に行かなくなる。ダッシュボードは、人々に**数値と分析を読み込んでもらい**、自分自身で結論に至ってもらうために存在します。',
+            '最も信頼される国際的な観測機関（CSIS、Stanford AI Index、Tortoise）も総合評点をつけません。サブスコアと定性的な分析を並べるだけです。そこには理由があります。',
+          ],
+        },
+      ],
+    },
+    {
+      h: '各観点が示すもの',
+      blocks: [
+        { kind: 'p', text: '各カードは 5 つのデータ要素 + 2 段落の編集文で構成されます：' },
+        { kind: 'h3', text: 'データ要素' },
+        {
+          kind: 'ol',
+          items: [
+            '**ヘッドライン**——真っ先に見るべき 1〜2 個の数値',
+            '**ベンチマーク**——何と比較しているか',
+            '**目標進捗**（該当する場合）——政府が公表した目標との対比',
+            '**第三者ランキングの基準**——Tortoise / Oxford / WIPO / Stanford / Microsoft',
+            '**トレンド**（↗ → ↘）',
+          ],
+        },
+        { kind: 'h3', text: '編集文' },
+        {
+          kind: 'ul',
+          items: [
+            '**解釈**（50〜80 語、定性的なカードはより長め）：これらの数値が何を意味するか——*「なぜ A なのか」ではなく*、「これが何を意味するのか」',
+            '**主要な弱点**（20〜60 語）：公開データが語らない盲点・リスク・構造的問題',
+          ],
+        },
+      ],
+    },
+    {
+      h: '私たちが引用する第三者ランキング',
+      blocks: [
+        {
+          kind: 'ul',
+          items: [
+            '**Tortoise Global AI Index** — 総合力（投資 + 実装 + イノベーション）',
+            '**Oxford Government AI Readiness Index** — 政府の準備度',
+            '**Microsoft AI Economy Institute** — 企業の AI 導入',
+            '**Stanford AI Index** — 投資 + 学術的成果',
+            '**WIPO Global Innovation Index** — イノベーション・エコシステム',
+            '**CSRankings / QS** — 学術研究',
+          ],
+        },
+      ],
+    },
+    {
+      h: '私たちが引用する政府目標',
+      blocks: [
+        {
+          kind: 'ul',
+          items: [
+            'NAIS 2.0：2029 年までに AI 人材 15,000 人',
+            'NAIIP：10,000 社 + 100,000 人の労働者（2026〜2029 年）',
+            'GovTech Pair：公務員 150,000 人',
+            '公共 AI 研究開発 2026〜2030 年：S$1B 超',
+            'Smart Nation 2.0：次世代スーパーコンピュータ S$270M（2025 年末までに稼働）',
+          ],
+        },
+      ],
+    },
+    {
+      h: '更新の頻度',
+      blocks: [
+        {
+          kind: 'ul',
+          items: [
+            '**定期**：四半期ごとのレビュー（3 か月ごと）',
+            '**トリガー**：予算の発表、主要な政策発表、年次ランキングの更新',
+            '各レビューでの数値と解釈の変更は下部に記録されます',
+          ],
+        },
+      ],
+    },
+    {
+      h: 'sgai 編集部について',
+      blocks: [
+        {
+          kind: 'p',
+          text: 'このダッシュボードは sgai（Singapore AI Observatory）編集チーム @meltflake が運営しています。私たちは**中立的な第三者ではありません**——立場を持つ観測所です：',
+        },
+        {
+          kind: 'ul',
+          items: [
+            '**政府や企業からの資金提供は受けていません**——指標の選択と解釈は資金の影響から独立しています',
+            '**私たちの立場は、何を追跡し、どう解釈するかに表れます**。評点には表れません',
+            '**出典は公開されています**——すべての指標、ランキングの基準、政府目標はその出所へリンクされています',
+            '**限界を認めます**——公開データは企業や政府の内部の実態と食い違う場合があります',
+            '**異議を歓迎します**——古い数値、偏った解釈、より良い指標があれば、issue を立てるかメールをください',
+          ],
+        },
+      ],
+    },
+    {
+      h: 'Changelog',
+      blocks: [{ kind: 'ul', items: ['2026-05-02 · v1.0 ダッシュボード公開——初期データ + 解釈を備えた 6 観点'] }],
+    },
+  ],
+  ko: [
+    {
+      h: '우리가 하는 일',
+      blocks: [
+        {
+          kind: 'p',
+          text: '싱가포르 AI 옵저버토리 대시보드는 싱가포르 AI의 실제 상태를 **제시**합니다——핵심 수치, 제3자 랭킹, 목표 진척도, 추세에 더해 각 차원에 대한 sgai 편집팀의 해석을 함께 보여줍니다.',
+        },
+        { kind: 'p', text: '**우리는 등급을 매기지 않습니다.**' },
+      ],
+    },
+    {
+      h: '왜 등급을 매기지 않는가',
+      blocks: [
+        {
+          kind: 'ul',
+          items: [
+            'sgai는 옵저버토리이지 평가 기관이 아닙니다. 다차원의 현실을 하나의 등급으로 압축하면 가장 가치 있는 긴장 관계(강한 투자 vs 약한 프런티어 연구, 강한 거버넌스 vs 약한 집행)를 잃게 됩니다.',
+            '등급은 독자가 생각을 멈추게 합니다——"아, A-, 괜찮네"로 끝나고 근거를 들여다보지 않게 됩니다. 대시보드는 사람들이 **수치와 분석을 직접 읽고** 스스로 결론에 이르게 하기 위해 존재합니다.',
+            '가장 신뢰받는 국제 옵저버토리(CSIS, Stanford AI Index, Tortoise)도 종합 등급을 매기지 않습니다. 세부 점수와 정성적 분석을 나열할 뿐입니다. 거기에는 이유가 있습니다.',
+          ],
+        },
+      ],
+    },
+    {
+      h: '각 차원이 보여주는 것',
+      blocks: [
+        { kind: 'p', text: '각 카드는 5개의 데이터 요소 + 2개 문단의 편집 글로 구성됩니다:' },
+        { kind: 'h3', text: '데이터 요소' },
+        {
+          kind: 'ol',
+          items: [
+            '**핵심 수치**——가장 먼저 보아야 할 1~2개의 숫자',
+            '**비교 기준**——무엇과 비교하는가',
+            '**목표 진척도**(해당하는 경우)——정부가 공표한 목표 대비',
+            '**제3자 랭킹 기준점**——Tortoise / Oxford / WIPO / Stanford / Microsoft',
+            '**추세**(↗ → ↘)',
+          ],
+        },
+        { kind: 'h3', text: '편집 글' },
+        {
+          kind: 'ul',
+          items: [
+            '**해석**(50~80단어, 정성적 카드는 더 길게): 이 수치들이 무엇을 의미하는가——*"왜 A 등급인가"가 아니라*, "이것이 무엇을 의미하는가"',
+            '**핵심 취약점**(20~60단어): 공개 데이터가 말하지 않는 맹점·리스크·구조적 문제',
+          ],
+        },
+      ],
+    },
+    {
+      h: '우리가 인용하는 제3자 랭킹',
+      blocks: [
+        {
+          kind: 'ul',
+          items: [
+            '**Tortoise Global AI Index** — 종합(투자 + 실행 + 혁신)',
+            '**Oxford Government AI Readiness Index** — 정부 준비도',
+            '**Microsoft AI Economy Institute** — 기업 AI 도입',
+            '**Stanford AI Index** — 투자 + 학술 성과',
+            '**WIPO Global Innovation Index** — 혁신 생태계',
+            '**CSRankings / QS** — 학술 연구',
+          ],
+        },
+      ],
+    },
+    {
+      h: '우리가 인용하는 정부 목표',
+      blocks: [
+        {
+          kind: 'ul',
+          items: [
+            'NAIS 2.0: 2029년까지 AI 전문 인력 15,000명',
+            'NAIIP: 10,000개 기업 + 100,000명 근로자(2026~2029)',
+            'GovTech Pair: 공무원 150,000명',
+            '공공 AI R&D 2026~2030: S$1B+',
+            'Smart Nation 2.0: 차세대 슈퍼컴퓨터 S$270M(2025년 말까지 가동)',
+          ],
+        },
+      ],
+    },
+    {
+      h: '갱신 주기',
+      blocks: [
+        {
+          kind: 'ul',
+          items: [
+            '**정기**: 분기별 검토(3개월마다)',
+            '**트리거**: 예산 발표, 주요 정책 발표, 연례 랭킹 갱신',
+            '각 검토에서의 수치 및 해석 변경 사항은 아래에 기록됩니다',
+          ],
+        },
+      ],
+    },
+    {
+      h: 'sgai 편집부에 대하여',
+      blocks: [
+        {
+          kind: 'p',
+          text: '이 대시보드는 sgai(Singapore AI Observatory) 편집팀 @meltflake가 운영합니다. 우리는 **중립적인 제3자가 아닙니다**——관점을 가진 옵저버토리입니다:',
+        },
+        {
+          kind: 'ul',
+          items: [
+            '**정부나 기업의 자금 지원을 받지 않습니다**——지표 선택과 해석은 자금의 영향에서 독립적입니다',
+            '**우리의 입장은 무엇을 추적하고 어떻게 해석하는가에 드러납니다**. 등급에는 드러나지 않습니다',
+            '**출처는 공개되어 있습니다**——모든 지표, 랭킹 기준점, 정부 목표는 그 출처로 링크됩니다',
+            '**한계를 인정합니다**——공개 데이터는 기업이나 정부 내부의 실제와 다를 수 있습니다',
+            '**이의 제기를 환영합니다**——오래된 수치, 편향된 해석, 더 나은 지표가 있다면 issue를 열거나 이메일을 보내 주세요',
+          ],
+        },
+      ],
+    },
+    {
+      h: 'Changelog',
+      blocks: [{ kind: 'ul', items: ['2026-05-02 · v1.0 대시보드 출시——초기 데이터 + 해석을 갖춘 6개 차원'] }],
+    },
+  ],
+};
+
+const content =
+  lang === 'zh-tw' ? deepToTraditional(CONTENT.zh) : (CONTENT[lang as 'zh' | 'en' | 'ja' | 'ko'] ?? CONTENT.en);
+
+// Parse inline **bold** / *em* markers into segment tuples the template can
+// render without dangerouslySetInnerHTML. Order matters: strong (`**`) is
+// matched before em (`*`) so `**x**` isn't mis-split as two em runs.
+type Seg = { t: 'text' | 'strong' | 'em'; v: string };
+function parseInline(s: string): Seg[] {
+  const segs: Seg[] = [];
+  const re = /\*\*([^*]+)\*\*|\*([^*]+)\*/g;
+  let last = 0;
+  let m: RegExpExecArray | null;
+  while ((m = re.exec(s)) !== null) {
+    if (m.index > last) segs.push({ t: 'text', v: s.slice(last, m.index) });
+    if (m[1] !== undefined) segs.push({ t: 'strong', v: m[1] });
+    else segs.push({ t: 'em', v: m[2] });
+    last = re.lastIndex;
+  }
+  if (last < s.length) segs.push({ t: 'text', v: s.slice(last) });
+  return segs;
+}
 ---
 
 <Layout
@@ -32,268 +534,30 @@ const metadata = {
     <h1 class="not-prose t-display mb-6">{t(lang, 'trackerMethodologyTitle')}</h1>
 
     {
-      isNonZh ? (
+      content.map((section) => (
         <>
-          <h2>What we do</h2>
-          <p>
-            The Singapore AI Observatory Dashboard <strong>presents</strong> the actual state of Singapore's AI — using
-            headline numbers, third-party rankings, target progress, and trends, plus our editorial team's
-            interpretation of each dimension.
-          </p>
-          <p>
-            <strong>We do not assign grades.</strong>
-          </p>
-
-          <h2>Why no grades</h2>
-          <ul>
-            <li>
-              sgai is an observatory, not a rating agency. Compressing multi-dimensional reality into a single grade
-              discards the most valuable tensions (strong investment vs. weak frontier research; strong governance vs.
-              weak enforcement).
-            </li>
-            <li>
-              Grades make readers stop thinking — "oh, A-, fine" — instead of clicking through. The dashboard exists to
-              make people <strong>read the numbers and the analysis</strong> and reach their own conclusions.
-            </li>
-            <li>
-              The most respected international observatories (CSIS, Stanford AI Index, Tortoise) don't assign overall
-              grades either. They list sub-scores and qualitative analysis. There's a reason for that.
-            </li>
-          </ul>
-
-          <h2>What each dimension shows</h2>
-          <p>Each card has 5 data elements + 2 editorial paragraphs:</p>
-          <h3>Data</h3>
-          <ol>
-            <li>
-              <strong>Headline</strong> — the 1–2 numbers that should be seen first
-            </li>
-            <li>
-              <strong>Benchmark</strong> — what we're compared against
-            </li>
-            <li>
-              <strong>Target progress</strong> (if applicable) — vs. published government targets
-            </li>
-            <li>
-              <strong>Third-party ranking anchors</strong> — Tortoise / Oxford / WIPO / Stanford / Microsoft
-            </li>
-            <li>
-              <strong>Trend</strong> (↗ → ↘)
-            </li>
-          </ol>
-          <h3>Editorial</h3>
-          <ul>
-            <li>
-              <strong>Interpretation</strong> (50–80 words; longer for qualitative cards): what these numbers mean —{' '}
-              <em>not</em> "why grade A"
-            </li>
-            <li>
-              <strong>Key shortcoming</strong> (20–60 words): the blind spot, risk, or structural problem the public
-              data doesn't state
-            </li>
-          </ul>
-
-          <h2>Third-party rankings we cite</h2>
-          <ul>
-            <li>
-              <strong>Tortoise Global AI Index</strong> — overall (investment + implementation + innovation)
-            </li>
-            <li>
-              <strong>Oxford Government AI Readiness Index</strong> — government readiness
-            </li>
-            <li>
-              <strong>Microsoft AI Economy Institute</strong> — enterprise AI adoption
-            </li>
-            <li>
-              <strong>Stanford AI Index</strong> — investment + academic output
-            </li>
-            <li>
-              <strong>WIPO Global Innovation Index</strong> — innovation ecosystem
-            </li>
-            <li>
-              <strong>CSRankings / QS</strong> — academic research
-            </li>
-          </ul>
-
-          <h2>Government targets we cite</h2>
-          <ul>
-            <li>NAIS 2.0: 15,000 AI professionals by 2029</li>
-            <li>NAIIP: 10,000 firms + 100,000 workers (2026–2029)</li>
-            <li>GovTech Pair: 150,000 civil servants</li>
-            <li>Public AI R&amp;D 2026–2030: S$1B+</li>
-            <li>Smart Nation 2.0: S$270M next-gen supercomputer (online by end of 2025)</li>
-          </ul>
-
-          <h2>Update cadence</h2>
-          <ul>
-            <li>
-              <strong>Regular</strong>: quarterly review (every 3 months)
-            </li>
-            <li>
-              <strong>Triggered</strong>: Budget releases, major policy announcements, annual ranking updates
-            </li>
-            <li>Each review's number and interpretation changes are logged below</li>
-          </ul>
-
-          <h2>About sgai editorial</h2>
-          <p>
-            The dashboard is maintained by the sgai (Singapore AI Observatory) editorial team @meltflake. We are{' '}
-            <strong>not a neutral third party</strong> — we are an opinionated observatory:
-          </p>
-          <ul>
-            <li>
-              <strong>No government or corporate funding</strong> — choice of metrics and interpretations is independent
-              of money
-            </li>
-            <li>
-              <strong>Our position shows in what we choose to track and how we interpret it</strong>, not in any grade
-            </li>
-            <li>
-              <strong>Sources are public</strong> — every metric, ranking anchor, and government target links to its
-              origin
-            </li>
-            <li>
-              <strong>We acknowledge limits</strong> — public data may diverge from internal corporate or government
-              reality
-            </li>
-            <li>
-              <strong>Challenges welcome</strong> — outdated numbers, biased interpretations, better metrics: file an
-              issue or email us
-            </li>
-          </ul>
-
-          <h2>Changelog</h2>
-          <ul>
-            <li>2026-05-02 · v1.0 dashboard launch — 6 dimensions with initial data + interpretation</li>
-          </ul>
+          <h2>{section.h}</h2>
+          {section.blocks.map((block) => {
+            if (block.kind === 'h3') return <h3>{block.text}</h3>;
+            if (block.kind === 'p')
+              return (
+                <p>
+                  {parseInline(block.text).map((seg) =>
+                    seg.t === 'strong' ? <strong>{seg.v}</strong> : seg.t === 'em' ? <em>{seg.v}</em> : seg.v
+                  )}
+                </p>
+              );
+            const items = block.items.map((item) => (
+              <li>
+                {parseInline(item).map((seg) =>
+                  seg.t === 'strong' ? <strong>{seg.v}</strong> : seg.t === 'em' ? <em>{seg.v}</em> : seg.v
+                )}
+              </li>
+            ));
+            return block.kind === 'ol' ? <ol>{items}</ol> : <ul>{items}</ul>;
+          })}
         </>
-      ) : (
-        <>
-          <h2>我们做什么</h2>
-          <p>
-            新加坡 AI 观察仪表盘<strong>呈现</strong>新加坡 AI 的真实状态——用数字、第三方排名、目标进度、趋势，加上 sgai
-            编辑团队对每个维度的解读。
-          </p>
-          <p>
-            <strong>我们不打分。</strong>
-          </p>
-
-          <h2>为什么不打分</h2>
-          <ul>
-            <li>
-              sgai 是观察站，不是评级机构。打分是把多维事实压缩到单一刻度，会丢失最有价值的张力（强投入 vs
-              弱原创、强治理 vs 弱执法）
-            </li>
-            <li>
-              评级让访客停止思考——看到 A- 就觉得"还行"，不再点进去看依据。仪表盘的价值在于让访客
-              <strong>点进去看数字、看解读、自己得结论</strong>
-            </li>
-            <li>国际上做得最严肃的观察机构（CSIS、Stanford AI Index、Tortoise）都不打总评分，只列子项 + 文字分析</li>
-          </ul>
-
-          <h2>每个维度呈现什么</h2>
-          <p>每张卡由 5 个数据元素 + 2 段编辑文字组成：</p>
-          <h3>数据元素</h3>
-          <ol>
-            <li>
-              <strong>核心数字</strong>——这维度最该被看到的 1–2 个数字
-            </li>
-            <li>
-              <strong>参照系</strong>——和谁比、差多少、领先多少
-            </li>
-            <li>
-              <strong>目标进度</strong>（如适用）——vs 政府发布的明确目标（15K AI 专才 by 2029、150K 公务员 Pair、10K
-              企业 NAIIP）
-            </li>
-            <li>
-              <strong>第三方排名锚</strong>——Tortoise / Oxford / WIPO / Stanford / Microsoft 等已有的国际排名
-            </li>
-            <li>
-              <strong>趋势箭头</strong>（↗ → ↘）
-            </li>
-          </ol>
-          <h3>编辑文字</h3>
-          <ul>
-            <li>
-              <strong>解读</strong>（50–80 字，治理卡因数字少所以更长）：这些数字代表什么状态、值得关注什么。
-              <strong>不是</strong>"为什么是 A"，而是"这意味着什么"
-            </li>
-            <li>
-              <strong>关键短板</strong>（20–60 字）：公开数据没说的盲点 / 风险 / 结构性问题
-            </li>
-          </ul>
-
-          <h2>我们引用的第三方排名</h2>
-          <ul>
-            <li>
-              <strong>Tortoise Global AI Index</strong> — 综合实力（投资 + 实施 + 创新）
-            </li>
-            <li>
-              <strong>Oxford Government AI Readiness Index</strong> — 政府就绪度
-            </li>
-            <li>
-              <strong>Microsoft AI Economy Institute</strong> — 企业 AI 采用率
-            </li>
-            <li>
-              <strong>Stanford AI Index</strong> — 投资 + 学术产出
-            </li>
-            <li>
-              <strong>WIPO Global Innovation Index</strong> — 创新生态
-            </li>
-            <li>
-              <strong>CSRankings / QS</strong> — 学术研究
-            </li>
-          </ul>
-
-          <h2>我们引用的政府目标</h2>
-          <ul>
-            <li>NAIS 2.0：15,000 AI 专才 by 2029</li>
-            <li>NAIIP：10,000 企业 + 100,000 工人（2026–2029）</li>
-            <li>GovTech Pair：150,000 公务员</li>
-            <li>公共 AI 研究 2026–2030：S$1B+</li>
-            <li>Smart Nation 2.0：S$270M 下一代超算（2025 年底投运）</li>
-          </ul>
-
-          <h2>复评节奏</h2>
-          <ul>
-            <li>
-              <strong>常规</strong>：季度复评（每 3 个月）
-            </li>
-            <li>
-              <strong>触发</strong>：Budget、重大政策发布、年度排名更新（Tortoise / Oxford 等）
-            </li>
-            <li>每次复评的数字和解读变更记在本页底部 changelog</li>
-          </ul>
-
-          <h2>关于 sgai 编辑</h2>
-          <p>
-            仪表盘由 sgai（Singapore AI Observatory）编辑团队 @meltflake 维护。我们<strong>不是中立第三方</strong>
-            ，是有立场的观察站：
-          </p>
-          <ul>
-            <li>
-              <strong>不接受任何政府或企业资助</strong>——选指标和写解读独立于资金影响
-            </li>
-            <li>
-              <strong>立场体现在选哪些数字、怎么解读</strong>，不体现在打几分
-            </li>
-            <li>
-              <strong>公开依据</strong>——每张卡的数字源、第三方排名、政府目标都附 URL，可追溯
-            </li>
-            <li>
-              <strong>承认局限</strong>——我们读得到的是公开数据，企业内部和政府内部的实际进度可能与公开值有差距
-            </li>
-            <li>
-              <strong>欢迎挑战</strong>——发现数字过期、解读偏差、有更好的指标，请发邮件 / 提 issue
-            </li>
-          </ul>
-
-          <h2>Changelog</h2>
-          <ul>
-            <li>2026-05-02 · v1.0 仪表盘上线，6 维度初始数据 + 解读</li>
-          </ul>
-        </>
-      )
+      ))
     }
   </article>
 </Layout>

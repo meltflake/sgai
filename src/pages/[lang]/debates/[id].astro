@@ -71,10 +71,18 @@ const controversyLabels = CONTROVERSY_LABELS[lang] || CONTROVERSY_LABELS.en;
 const speakers = debate.speakers.map((raw) => {
   const pid = findPersonId(raw);
   const p = pid ? getPerson(pid) : undefined;
-  // Speaker display: on zh use the curated zh name; on every other
-  // locale fall through to nameEn (Latin Roman name — universally
-  // recognisable to ja/ko/zh-Hant readers via Singapore press).
-  return { raw, pid, display: p ? (isZh ? personDisplayName(pid!) : p.nameEn || p.name || raw) : raw };
+  // Speaker display: zh and zh-tw use the curated Chinese name (zh-tw via
+  // OpenCC), keeping speaker names consistent with the rest of the localized
+  // page. ja / ko / en fall through to the Latin Roman name — no *Ja/*Ko name
+  // fields exist at the data layer, and Singapore MP names are written in
+  // Latin in ja/ko press.
+  let display = raw;
+  if (p) {
+    if (lang === 'zh') display = personDisplayName(pid!);
+    else if (lang === 'zh-tw') display = toTraditional(personDisplayName(pid!));
+    else display = p.nameEn || p.name || raw;
+  }
+  return { raw, pid, display };
 });
 
 const summaryShort = pickLocalized<string>(debate, 'summary', lang) || debate.summary || '';
@@ -110,7 +118,9 @@ const articleSchema = {
   '@context': 'https://schema.org',
   '@type': 'Article',
   headline: debateTitle,
-  ...(isZh ? { alternativeHeadline: debate.title } : {}),
+  // Both zh and zh-tw display the CJK title as primary (isCjk, defined
+  // above), so both benefit from the raw zh title as an alternativeHeadline.
+  ...(isCjk ? { alternativeHeadline: debate.title } : {}),
   description: summaryShort,
   datePublished: debate.date,
   inLanguage: IN_LANGUAGES[lang],
@@ -277,8 +287,8 @@ const breadcrumbs = [
           <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-4">
             <h2 class="t-h3 text-gray-900 dark:text-white">{t(lang, 'fullTextEn')}</h2>
             <p class="text-xs text-gray-500 dark:text-gray-400">
-              {isZh ? 'SPRS Hansard 原始记录' : 'SPRS Hansard'}
-              {transcript?.fetchedAt && ` · ${isZh ? '抓取日期：' : 'Fetched: '}${transcript.fetchedAt}`}
+              {t(lang, 'sprsHansardOriginal')}
+              {transcript?.fetchedAt && ` · ${t(lang, 'fetchedAtColon')}${transcript.fetchedAt}`}
             </p>
           </div>
           <div class="space-y-4 text-sm text-gray-600 dark:text-gray-400 leading-relaxed">

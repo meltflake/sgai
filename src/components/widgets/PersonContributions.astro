@@ -63,11 +63,13 @@ const hasAny = sigWork.length + quotes.length + talks.length + ext.length > 0;
           <div class="space-y-3">
             {quotes.map((q) => {
               // Quote schema is reversed vs. other fields: `q.quote` holds
-              // the English source, `q.quoteZh` holds the Chinese
-              // translation. ja currently falls back to the English quote;
-              // a `quoteJa` field can be added later without call-site changes.
-              const display =
-                lang === 'zh' ? q.quoteZh || q.quote : ((q as { quoteJa?: string }).quoteJa ?? '') || q.quote;
+              // the English source (the original pull-quote as spoken/
+              // published), `q.quoteZh` holds the Chinese translation. There
+              // is no quoteJa/quoteKo/quoteZhTw sibling — every non-zh locale
+              // renders the verbatim English original, which is the correct
+              // citation-original behaviour for a pull-quote, not an i18n gap.
+              let display = q.quote;
+              if (lang === 'zh') display = q.quoteZh || q.quote;
               return (
                 <figure class="bg-surface rounded-lg p-4 border border-subtle border-l-4 border-l-primary">
                   <blockquote class="text-sm text-gray-800 dark:text-gray-200 italic leading-relaxed">
