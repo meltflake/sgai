@@ -413,9 +413,9 @@ export const zh = {
   leversPageDesc:
     '新加坡国家级 AI-native 转型，按"AI 引入路径"重新归类 Budget 2026 + 各部委 AI 政策——基建、治理、人才、应用、政府自用、外交六个抓手，每条抓手都跨部委，链接政策原文。',
   investorNotableDeals: '代表交易：',
-  startupsPageTitle: '新加坡 AI 创业生态 — 650+ 公司、独角兽、融资、投资人 · sgai',
+  startupsPageTitle: '新加坡 AI 创业生态 — 500+ 公司、独角兽、融资、投资人 · sgai',
   startupsPageDesc:
-    '新加坡 AI 创业生态完整地图：650+ AI-native / AI-enabled 公司样本、独角兽与上市级公司、按垂直领域分类、退出与并购案例、投资人网络与融资数据。',
+    '新加坡 AI 创业生态完整地图：500+ AI-native / AI-enabled 公司样本、独角兽与上市级公司、按垂直领域分类、退出与并购案例、投资人网络与融资数据。',
   talentPageTitle: '人才培养',
   talentPageDesc: '新加坡 AI 人才培养体系——高校项目、政府培训计划、人才引进政策一览。',
   videosPageTitle: 'AI 视频观点',
@@ -705,9 +705,9 @@ export const en: Partial<Record<keyof typeof zh, string>> = {
   leversPageDesc:
     "Singapore's national AI-native transformation re-classified by AI-injection path — infrastructure, governance, talent, applications, government self-use, and diplomacy. Six cross-ministry levers, with policy-source links from Budget 2026 and every ministry.",
   investorNotableDeals: 'Notable AI deals: ',
-  startupsPageTitle: 'Singapore AI Startup Ecosystem — 650+ companies, unicorns, funding, VCs · sgai',
+  startupsPageTitle: 'Singapore AI Startup Ecosystem — 500+ companies, unicorns, funding, VCs · sgai',
   startupsPageDesc:
-    "Singapore's AI startup ecosystem map: 650+ AI-native / AI-enabled company samples, unicorns and listed-scale companies, vertical breakdowns, exits and acquisitions, investor network, and funding data.",
+    "Singapore's AI startup ecosystem map: 500+ AI-native / AI-enabled company samples, unicorns and listed-scale companies, vertical breakdowns, exits and acquisitions, investor network, and funding data.",
   talentPageTitle: 'Talent Pipeline',
   talentPageDesc:
     "Singapore's AI talent pipeline — university programmes, government-led training schemes, and talent attraction policies in one view.",
@@ -1003,9 +1003,9 @@ export const ja: Partial<Record<keyof typeof zh, string>> = {
   leversPageDesc:
     'シンガポールの国家レベル AI ネイティブ転換を「AI 導入経路」で再分類——インフラ・ガバナンス・人材・応用・政府自身の活用・外交の6つのレバー。Budget 2026 と各省庁政策の原典リンク付き。',
   investorNotableDeals: '主な AI 取引：',
-  startupsPageTitle: 'シンガポール AI スタートアップエコシステム — 650+ 社、ユニコーン、資金、投資家 · sgai',
+  startupsPageTitle: 'シンガポール AI スタートアップエコシステム — 500+ 社、ユニコーン、資金、投資家 · sgai',
   startupsPageDesc:
-    'シンガポール AI スタートアップ生態地図：650+ の AI ネイティブ / AI 活用企業サンプル、ユニコーンと上場規模企業、バーティカル分類、エグジットと M&A 事例、投資家ネットワークと資金調達データ。',
+    'シンガポール AI スタートアップ生態地図：500+ の AI ネイティブ / AI 活用企業サンプル、ユニコーンと上場規模企業、バーティカル分類、エグジットと M&A 事例、投資家ネットワークと資金調達データ。',
   talentPageTitle: '人材育成',
   talentPageDesc: 'シンガポール AI 人材育成体系——大学プログラム、政府研修計画、人材招致政策の一覧。',
   videosPageTitle: 'AI ビデオ・オピニオン',
@@ -1297,9 +1297,9 @@ export const ko: Partial<Record<keyof typeof zh, string>> = {
   leversPageDesc:
     '싱가포르의 국가급 AI-native 전환을 「AI 도입 경로」로 재분류 — 기반시설, 거버넌스, 인재, 애플리케이션, 정부 자체 사용, 외교의 6개 레버. Budget 2026 및 각 부처 정책 원문 링크 포함.',
   investorNotableDeals: '주요 AI 거래: ',
-  startupsPageTitle: '싱가포르 AI 스타트업 생태계 — 650+ 기업·유니콘·자금·투자자 · sgai',
+  startupsPageTitle: '싱가포르 AI 스타트업 생태계 — 500+ 기업·유니콘·자금·투자자 · sgai',
   startupsPageDesc:
-    '싱가포르 AI 스타트업 생태계 지도: 650+ AI-native / AI-enabled 기업 샘플, 유니콘과 상장 규모 기업, 수직 분야 분류, 엑싯과 인수 사례, 투자자 네트워크와 자금 조달 데이터.',
+    '싱가포르 AI 스타트업 생태계 지도: 500+ AI-native / AI-enabled 기업 샘플, 유니콘과 상장 규모 기업, 수직 분야 분류, 엑싯과 인수 사례, 투자자 네트워크와 자금 조달 데이터.',
   talentPageTitle: '인재 양성',
   talentPageDesc: '싱가포르 AI 인재 양성 체계 — 대학 프로그램, 정부 교육 계획, 인재 유입 정책 개요입니다.',
   videosPageTitle: 'AI 영상 인사이트',

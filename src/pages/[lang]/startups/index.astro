@@ -18,7 +18,7 @@ const hrefFor = (entity: { id?: string; name: string; nameEn?: string }) =>
   localizedHref(`/startups/${startupEntitySlug(entity)}/`, lang);
 
 const stats = [
-  { value: ecosystemStats.totalStartups, label: isZh ? 'AI 相关创业样本' : 'AI-related startup samples' },
+  { value: ecosystemStats.totalStartups, label: isZh ? 'AI 公司数（Tracxn 收录）' : 'AI companies (Tracxn)' },
   {
     value: isZh ? `全球第 ${ecosystemStats.globalRank}` : `#${ecosystemStats.globalRank}`,
     label: isZh ? 'AI 枢纽排名' : 'Global AI hub rank',
@@ -278,8 +278,8 @@ const stats = [
     <p class="mt-8 text-sm text-muted text-center">
       {
         isZh
-          ? `基础统计口径截至 ${ecosystemStats.dataDate}，实体档案整理于 ${ecosystemStats.profileUpdated}。部分为估算值，融资金额来源于公开报道，实际数字可能有出入。`
-          : `Aggregate statistics use the public baseline as of ${ecosystemStats.dataDate}; entity profiles were organized on ${ecosystemStats.profileUpdated}. Some figures are estimates. Funding amounts are drawn from public reporting and actual numbers may differ.`
+          ? `基础统计重定基线于 ${ecosystemStats.dataDate}，逐项锚定单一来源：AI 公司数与 VC 融资总额来自 Tracxn（2026-05 口径：548 家、累计融资 US$1.9B）；东南亚 AI 融资占比按 e-Conomy SEA 2025 报告（Google/Temasek/Bain）估算——新加坡 US$1.31B / 区域逾 US$2.3B（截至 2025 年 6 月的 12 个月）；政府 AI 承诺投入为 2024 年以来公告合计（Budget 2024 逾 S$10 亿 + Budget 2025 企业算力计划至多 S$1.5 亿 + 2026 年 1 月国家 AI 研发计划追加逾 S$10 亿）；AI 枢纽排名来自 Tortoise Global AI Index 2025；独角兽为本页收录档案数。实体档案整理于 ${ecosystemStats.profileUpdated}。融资金额来源于公开报道，实际数字可能有出入。`
+          : `Aggregate statistics were re-baselined on ${ecosystemStats.dataDate}, each pinned to a single named source: the AI company count and total VC raised are from Tracxn (as of May 2026: 548 companies, US$1.9B cumulative); the SEA AI funding share is estimated from the e-Conomy SEA 2025 report by Google, Temasek and Bain (Singapore US$1.31B of the region's US$2.3B+ in the 12 months to June 2025); the government AI commitment sums announcements since 2024 (over S$1B at Budget 2024, up to S$150M for the Enterprise Compute Initiative at Budget 2025, and over S$1B for the National AI R&D Plan announced in January 2026); the AI hub rank is from the Tortoise Global AI Index 2025; the unicorn count is the number of profiles curated on this page. Entity profiles were organized on ${ecosystemStats.profileUpdated}. Funding amounts follow public reporting and actual numbers may differ.`
       }
     </p>
   </section>

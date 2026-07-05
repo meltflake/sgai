@@ -79,6 +79,31 @@ const MANUAL_TYPES = new Set<UpdateType>(['site', 'fix', 'longform']);
 // sort regardless. Add new entries at the top.
 export const MANUAL_UPDATES: Update[] = [
   {
+    date: '2026-07-05',
+    type: 'fix',
+    title: '创业生态基础统计重定基线：逐项锚定可溯源公开口径',
+    titleEn: 'Startup ecosystem stats re-baselined, each figure pinned to a named public source',
+    titleJa: 'スタートアップ生態系の基礎統計を再基準化：数値ごとに出典を明示',
+    titleKo: '스타트업 생태계 기초 통계 재기준화: 수치별 공개 출처 명시',
+    summary:
+      '旧基线（650+ 公司 / US$8.4B 融资 / 68% SEA 占比 / S$1.6B 政府投入，2026-02-17 口径）为多源混合、已无法溯源。本次逐项重定：AI 公司数 548 与累计融资 US$1.9B 锚定 Tracxn 2026-05 口径；东南亚 AI 融资占比约 57% 按 e-Conomy SEA 2025（Google/Temasek/Bain）估算；政府 AI 承诺投入 S$2.1B+ 为 Budget 2024（逾 S$10 亿）、Budget 2025 企业算力计划（至多 S$1.5 亿）与 2026 年 1 月国家 AI 研发计划（追加逾 S$10 亿）三笔公告合计。创业生态页口径说明同步写明全部来源。',
+    summaryEn:
+      'The previous baseline (650+ companies / US$8.4B raised / 68% SEA share / S$1.6B government commitment, dated 2026-02-17) mixed sources that could no longer be traced. Each figure is now pinned to a named source: 548 AI companies and US$1.9B cumulative funding follow Tracxn as of May 2026; the ~57% SEA AI funding share is estimated from the e-Conomy SEA 2025 report by Google, Temasek and Bain; and the S$2.1B+ government commitment sums Budget 2024 (over S$1B), the Budget 2025 Enterprise Compute Initiative (up to S$150M) and the National AI R&D Plan announced in January 2026 (over S$1B). The methodology note on the startups page now names every source.',
+    summaryJa:
+      '旧ベースライン（650+ 社 / 累計 US$8.4B / SEA シェア 68% / 政府投入 S$1.6B、2026-02-17 時点）は複数ソースの混合で出典を遡れなくなっていた。今回、各数値を単一の出典に固定：AI 企業数 548 社と累計調達 US$1.9B は Tracxn 2026 年 5 月時点、東南アジア AI 資金調達シェア約 57% は e-Conomy SEA 2025（Google/Temasek/Bain）から推計、政府 AI コミットメント S$2.1B+ は Budget 2024（10 億 S$ 超）+ Budget 2025 Enterprise Compute Initiative（最大 1.5 億 S$）+ 2026 年 1 月発表の国家 AI 研究開発計画（追加 10 億 S$ 超）の合計。スタートアップページの注記にも全出典を明記。',
+    summaryKo:
+      '기존 기준선(650+ 기업 / 누적 US$8.4B / SEA 점유율 68% / 정부 투입 S$1.6B, 2026-02-17 기준)은 여러 출처가 뒤섞여 더 이상 추적할 수 없었다. 이번에 각 수치를 단일 출처에 고정: AI 기업 수 548개와 누적 조달 US$1.9B는 Tracxn 2026년 5월 기준, 동남아 AI 펀딩 점유율 약 57%는 e-Conomy SEA 2025(Google/Temasek/Bain) 보고서에서 추산, 정부 AI 커밋 S$2.1B+는 Budget 2024(S$10억 초과) + Budget 2025 Enterprise Compute Initiative(최대 S$1.5억) + 2026년 1월 발표 국가 AI R&D 계획(추가 S$10억 초과)의 합계다. 스타트업 페이지 설명에도 모든 출처를 명시했다.',
+    links: [
+      {
+        href: '/startups/',
+        label: '查看创业生态',
+        labelEn: 'View the startup ecosystem',
+        labelJa: 'スタートアップ生態系を見る',
+        labelKo: '스타트업 생태계 보기',
+      },
+    ],
+  },
+  {
     date: '2026-06-10',
     type: 'fix',
     title: 'AISG 档案补硬数据：拨款脉络、IOAI 2027、Kampong AI 归属澄清',
