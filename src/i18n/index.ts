@@ -661,6 +661,7 @@ export const zh = {
 
   // Benchmarking profile pages (CaseProfile / RegionProfile / DrilldownProfile)
   benchmarkCrumb: '国际对标',
+  benchmarkDrilldownEyebrow: '对标下钻 · 更新于',
   benchmarkOwnerLabel: '归属方',
   benchmarkWhyItMatters: '为什么值得观察',
   benchmarkSingaporeTakeaway: '对新加坡的启发',
@@ -1240,6 +1241,7 @@ export const en: Partial<Record<keyof typeof zh, string>> = {
 
   // Benchmarking profile pages
   benchmarkCrumb: 'International Benchmarks',
+  benchmarkDrilldownEyebrow: 'Benchmark Drilldown · Updated',
   benchmarkOwnerLabel: 'Owner',
   benchmarkWhyItMatters: 'Why It Matters',
   benchmarkSingaporeTakeaway: 'Singapore Takeaway',
@@ -1809,6 +1811,7 @@ export const ja: Partial<Record<keyof typeof zh, string>> = {
 
   // Benchmarking profile pages
   benchmarkCrumb: '国際ベンチマーク',
+  benchmarkDrilldownEyebrow: 'ベンチマーク詳細 · 更新日',
   benchmarkOwnerLabel: '所属機関',
   benchmarkWhyItMatters: '観察に値する理由',
   benchmarkSingaporeTakeaway: 'シンガポール向けの示唆',
@@ -2379,6 +2382,7 @@ export const ko: Partial<Record<keyof typeof zh, string>> = {
     '데이터 출처: AI Singapore 공식 웹사이트 및 공개 정보. 생태계는 지속적으로 진화하고 있으며, 보완을 환영합니다.',
   // Benchmarking profile pages
   benchmarkCrumb: '국제 벤치마크',
+  benchmarkDrilldownEyebrow: '벤치마크 상세 · 업데이트',
   benchmarkOwnerLabel: '소유 기관',
   benchmarkWhyItMatters: '주목할 이유',
   benchmarkSingaporeTakeaway: '싱가포르를 위한 시사점',

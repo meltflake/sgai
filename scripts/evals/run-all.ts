@@ -99,6 +99,17 @@ const STAGES: Stage[] = [
     needsDist: false,
     frequency: 'weekly',
   },
+  // entity-pages-i18n — synthesized page objects (benchmark drilldowns,
+  // startup entities, AI relations) must carry Ja/Ko siblings for every
+  // CJK base field that has an En sibling. Guards the 2026-07 regression
+  // where entity-pages.ts synthesized En-only templates (2220 EN-sentence
+  // hits on /ja/). Runtime import, no build required.
+  {
+    name: 'entity-pages-i18n',
+    cmd: ['npx', 'tsx', 'scripts/evals/entity-pages-i18n/check.ts'],
+    needsDist: false,
+    frequency: 'weekly',
+  },
   {
     name: 'i18n-coverage:layer-bcd',
     cmd: ['npx', 'tsx', 'scripts/evals/i18n-coverage/check.ts', '--layer=b,c,d'],

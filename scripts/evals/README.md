@@ -12,6 +12,7 @@
 | Transcript Coverage (speeches)| `npm run eval:transcript`                         | PR + 周    | 否         | 否        |
 | Transcript Coverage (videos)  | `npm run eval:video-transcript`                   | PR + 周    | 否         | 否        |
 | Layer E source-i18n           | `npm run eval:source-i18n`                        | PR + 周    | 否         | 否        |
+| Entity-pages i18n             | `npm run eval:entity-pages-i18n`                  | PR + 周    | 否         | 否        |
 | i18n Coverage Layer B         | `npm run eval:i18n -- --layer=b`                  | 周         | 是         | 否        |
 | i18n Coverage Layer C         | `npm run eval:i18n -- --layer=c`                  | 周         | 是         | 否        |
 | i18n Coverage Layer D         | `npm run eval:i18n -- --layer=d`                  | 周         | 是         | 否        |
