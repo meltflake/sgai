@@ -558,6 +558,10 @@ const searchBlob = (d: (typeof debates)[number]) => {
     d.date,
     d.type,
     titleField,
+    // Keep the English Hansard title in the blob on every locale: it lives in
+    // the data-search *attribute* (invisible body text, not rendered), lets
+    // readers match debates by their English keywords, and i18n-check never
+    // scans attributes — so this is not an EN-sentence leak.
     d.titleEn,
     debateSummary(d),
     debateSignal(d),
@@ -863,8 +867,16 @@ const typeMixLabel = Object.entries(DEBATE_STATS.byType)
                     </a>
                   </h3>
 
-                  {/* Show original English title as secondary for non-en locales. */}
-                  {!isEn && <p class="mb-2 text-xs italic text-gray-400">{truncate(d.titleEn || '', 120)}</p>}
+                  {/* Show the original Hansard English title as a secondary line
+                      on every non-en locale — it carries first-hand look-up value
+                      for readers cross-referencing the official record. The <p>
+                      is marked debate-title-original (legit on all locales) so the
+                      i18n-check EN-sentence scanner accepts the verbatim original. */}
+                  {!isEn && (
+                    <p class="mb-2 text-xs italic text-gray-400" data-i18n-allow-en="debate-title-original">
+                      {truncate(d.titleEn || '', 120)}
+                    </p>
+                  )}
 
                   <div class="mb-3 flex flex-wrap gap-1.5">
                     {(d.topics || []).map((topic) => (
