@@ -619,6 +619,21 @@ But AISG's bottlenecks are real: **talent retention is weak** (apprentices leave
           },
         ],
         relatedLeverNumbers: [2, 3, 5, 6],
+        relatedPolicyIds: [
+          'national-ai-strategy-nais-10',
+          'national-ai-strategy-20-nais-20',
+          'public-ai-research-investment-2026-2030',
+          'research-innovation-and-enterprise-2025-plan',
+          'budget-2026-national-ai-acceleration',
+        ],
+        relatedDebateIds: [
+          'motion-2976',
+          'budget-2620',
+          'oral-answer-3738',
+          'budget-2362',
+          'oral-answer-3375',
+          'written-answer-9318',
+        ],
         relatedEntityIds: ['sea-lion', 'ai-verify-foundation', 'imda', 'a-star', 'nus', 'ntu'],
         sources: [
           {
@@ -964,6 +979,8 @@ But A*STAR has obvious bottlenecks: **less attractive than universities or big t
           },
         ],
         relatedLeverNumbers: [1, 3, 5],
+        relatedPolicyIds: ['research-innovation-and-enterprise-2025-plan', 'public-ai-research-investment-2026-2030'],
+        relatedDebateIds: ['oral-answer-4129', 'cos-mddi-2026', 'cos-mti-2026', 'budget-2570', 'motion-2296'],
         relatedEntityIds: ['ai-singapore', 'sea-lion', 'nus', 'ntu'],
         sources: [
           {
@@ -1261,6 +1278,12 @@ But NUS AI Institute (founded 2024) is still in its integration phase. **Whether
           },
         ],
         relatedLeverNumbers: [1, 2, 3],
+        relatedPolicyIds: [
+          'national-ai-strategy-nais-10',
+          'research-innovation-and-enterprise-2025-plan',
+          'public-ai-research-investment-2026-2030',
+        ],
+        relatedDebateIds: ['budget-2570', 'budget-2361', 'budget-2362', 'budget-1313'],
         relatedEntityIds: ['ai-singapore', 'a-star', 'ntu', 'sea-lion'],
         sources: [
           {
@@ -1529,6 +1552,12 @@ Variables to watch: whether the post-integration CCDS produces flagship projects
           },
         ],
         relatedLeverNumbers: [1, 2, 3],
+        relatedPolicyIds: [
+          'singapore-ai-safety-institute',
+          'research-innovation-and-enterprise-2025-plan',
+          'public-ai-research-investment-2026-2030',
+        ],
+        relatedDebateIds: ['budget-2570', 'written-answer-18184', 'budget-2361', 'budget-2362'],
         relatedEntityIds: ['nus', 'a-star', 'ai-singapore'],
         sources: [
           {
@@ -1722,6 +1751,8 @@ Take: SMU is not the source of AI innovation, but it is the key node that **"tra
           },
         ],
         relatedLeverNumbers: [3, 4],
+        relatedPolicyIds: ['research-innovation-and-enterprise-2025-plan', 'model-ai-governance-framework'],
+        relatedDebateIds: ['motion-2976', 'budget-2362', 'written-answer-5627'],
         relatedEntityIds: ['nus', 'ntu', 'mas'],
         sources: [
           {
@@ -1913,6 +1944,8 @@ Take: SUTD's existence saves the Singapore university system from **"the risk of
           },
         ],
         relatedLeverNumbers: [1, 2],
+        relatedPolicyIds: ['research-innovation-and-enterprise-2025-plan'],
+        relatedDebateIds: ['motion-2976', 'oral-answer-3393', 'budget-2336', 'budget-2072'],
         relatedEntityIds: ['nus', 'ntu'],
         sources: [
           {
@@ -2211,6 +2244,19 @@ Tensions worth watching: **PDPC vs MAS coordination** (financial-sector AI sits 
           },
         ],
         relatedLeverNumbers: [4],
+        relatedPolicyIds: [
+          'personal-data-protection-act-pdpa',
+          'pdpc-advisory-guidelines-on-use-of-personal-data-in-ai',
+          'model-ai-governance-framework',
+        ],
+        relatedDebateIds: [
+          'written-answer-23162',
+          'written-answer-16262',
+          'written-answer-16024',
+          'written-answer-5800',
+          'oral-answer-1955',
+          'oral-answer-1902',
+        ],
         relatedEntityIds: ['imda', 'mas', 'ai-verify-foundation'],
         sources: [
           {
@@ -2489,6 +2535,24 @@ But IMDA also has structural challenges: **with telecoms, media, and AI all unde
           },
         ],
         relatedLeverNumbers: [3, 4, 6],
+        relatedPolicyIds: [
+          'model-ai-governance-framework',
+          'proposed-model-ai-governance-framework-for-generative-ai',
+          'model-ai-governance-framework-for-agentic-ai',
+          'ai-verify',
+          'ai-tester-accreditation-programme-2026',
+          'imda-microsoft-ai-safety-security-mou-2026',
+          'google-singapore-ai-agents-sandbox-2026',
+          'singapore-ai-safety-institute',
+        ],
+        relatedDebateIds: [
+          'cos-mddi-2026',
+          'budget-2620',
+          'budget-2362',
+          'oral-answer-3295',
+          'oral-answer-3193',
+          'budget-2072',
+        ],
         relatedEntityIds: ['ai-verify-foundation', 'pdpc', 'ai-singapore', 'mas'],
         sources: [
           {
@@ -2730,6 +2794,20 @@ Bottlenecks to watch: **the Foundation's funding sustainability** (currently rel
           },
         ],
         relatedLeverNumbers: [4, 6],
+        relatedPolicyIds: [
+          'ai-verify',
+          'proposed-model-ai-governance-framework-for-generative-ai',
+          'model-ai-governance-framework-for-agentic-ai',
+          'ai-tester-accreditation-programme-2026',
+          'iso-iec-42119-8-generative-ai-testing-standard',
+        ],
+        relatedDebateIds: [
+          'oral-answer-3729',
+          'motion-2296',
+          'written-answer-15158',
+          'oral-answer-3240',
+          'oral-answer-3193',
+        ],
         relatedEntityIds: ['imda', 'ai-singapore', 'pdpc'],
         sources: [
           {
@@ -3000,6 +3078,13 @@ Worth watching going forward: **when MAS will allow GenAI in direct customer-fac
           },
         ],
         relatedLeverNumbers: [3, 4, 6],
+        relatedPolicyIds: [
+          'fairness-ethics-accountability-transparency-feat-principles',
+          'veritas-initiative',
+          'project-mindforge-genai-risk-framework-for-financial-sector',
+          'ai-risk-management-guidelines-for-banks',
+        ],
+        relatedDebateIds: ['oral-answer-3852', 'oral-answer-3551', 'written-answer-13935'],
         relatedEntityIds: ['imda', 'ai-verify-foundation'],
         sources: [
           {
@@ -3319,6 +3404,8 @@ These bottlenecks are exactly the questions to be answered in the NAIS 2.0 era �
           },
         ],
         relatedLeverNumbers: [3, 5, 6],
+        relatedPolicyIds: ['national-ai-strategy-20-nais-20'],
+        relatedDebateIds: ['budget-2362', 'oral-answer-3375'],
         relatedEntityIds: ['ai-singapore', 'sea-helm', 'sea-guard', 'imda'],
         sources: [
           {
@@ -4068,6 +4155,8 @@ A take: **100E being archived is not failure, but a sign that the model has matu
           },
         ],
         relatedLeverNumbers: [2, 3],
+        relatedPolicyIds: ['national-ai-strategy-nais-10'],
+        relatedDebateIds: ['written-answer-9318', 'budget-1112'],
         relatedEntityIds: ['ai-singapore', 'aiap'],
         sources: [
           {
@@ -4263,6 +4352,8 @@ The key questions for AIAP in the NAIS 2.0 era: **Can it scale to 200+ per year?
           },
         ],
         relatedLeverNumbers: [2, 3],
+        relatedPolicyIds: ['national-ai-strategy-nais-10', 'national-ai-strategy-20-nais-20'],
+        relatedDebateIds: ['motion-2976', 'cos-mom-2026', 'budget-2620', 'oral-answer-3738', 'budget-832'],
         relatedEntityIds: ['ai-singapore', 'nus', 'ntu'],
         sources: [
           {
@@ -6009,6 +6100,14 @@ A take: GPAI gives a small country like Singapore "founding member" status at th
           },
         ],
         relatedLeverNumbers: [6],
+        relatedPolicyIds: ['global-partnership-on-ai-gpai'],
+        relatedDebateIds: [
+          'motion-2296',
+          'written-answer-15158',
+          'oral-answer-3295',
+          'oral-answer-3193',
+          'written-answer-9318',
+        ],
         relatedEntityIds: ['imda', 'ai-verify-foundation'],
         sources: [
           {
@@ -6268,6 +6367,13 @@ A take: **Singapore being able to sit at the AI Safety Summit table is a manifes
           },
         ],
         relatedLeverNumbers: [6],
+        relatedPolicyIds: [
+          'bletchley-declaration-on-ai-safety',
+          'seoul-ai-safety-commitment',
+          'singapore-consensus-on-global-ai-safety-research-priorities',
+          'international-scientific-exchange-on-ai-safety',
+        ],
+        relatedDebateIds: ['cos-mddi-2026', 'written-answer-15158'],
         relatedEntityIds: ['imda', 'gpai', 'ai-verify-foundation'],
         sources: [
           {
@@ -6541,6 +6647,11 @@ But Synapxe also faces challenges: **medical AI's safety-cautious requirements m
           },
         ],
         relatedLeverNumbers: [3, 5],
+        relatedPolicyIds: [
+          'ai-in-healthcare-guidelines-aihgle',
+          'moh-committee-of-supply-2026-healthcare-ai-medisave-reform',
+        ],
+        relatedDebateIds: ['cos-moh-2026', 'motion-2194', 'motion-2190', 'budget-1131', 'oral-answer-1902'],
         relatedEntityIds: ['ai-singapore', 'a-star', 'nus'],
         sources: [
           {
@@ -6962,6 +7073,8 @@ Key variables to watch: **how big the lab can grow** (100 people? 500?), **wheth
           },
         ],
         relatedLeverNumbers: [1, 2, 6],
+        relatedPolicyIds: ['google-singapore-ai-agents-sandbox-2026'],
+        relatedDebateIds: ['cos-mddi-2026'],
         relatedEntityIds: ['nus', 'a-star', 'ai-singapore'],
         sources: [
           {
@@ -7126,6 +7239,8 @@ A take: **MSR Asia's presence in Singapore means Google DeepMind no longer "stan
           },
         ],
         relatedLeverNumbers: [1, 2, 6],
+        relatedPolicyIds: ['imda-microsoft-ai-safety-security-mou-2026'],
+        relatedDebateIds: ['cos-mddi-2026', 'motion-2976'],
         relatedEntityIds: ['nus', 'google-deepmind'],
         sources: [
           {
@@ -7290,6 +7405,7 @@ A take: **the scale of the AWS investment is a double-edged sword for Singapore*
           },
         ],
         relatedLeverNumbers: [1, 3],
+        relatedDebateIds: ['motion-2976', 'motion-2970', 'cos-mti-2026', 'budget-2620', 'budget-2072', 'budget-1862'],
         relatedEntityIds: ['ai-singapore', 'sea-lion', 'nvidia'],
         sources: [
           {
@@ -7468,6 +7584,8 @@ Worth watching: whether US GPU export controls on Singapore will tighten, whethe
           },
         ],
         relatedLeverNumbers: [1, 6],
+        relatedPolicyIds: ['nvidia-singapore-ai-research-lab-2026'],
+        relatedDebateIds: ['motion-2976', 'oral-answer-3785', 'budget-2328'],
         relatedEntityIds: ['ai-singapore', 'sea-lion', 'aws', 'a-star'],
         sources: [
           { label: 'NVIDIA', labelJa: 'NVIDIA', labelKo: 'NVIDIA', labelEn: 'NVIDIA', url: 'https://www.nvidia.com/' },
@@ -7607,6 +7725,8 @@ A take: this is heavier than a “regional HQ” announcement. A regional HQ is 
           },
         ],
         relatedLeverNumbers: [1, 3, 6],
+        relatedPolicyIds: ['openai-for-singapore-2026'],
+        relatedDebateIds: ['oral-answer-4126', 'motion-2976', 'budget-2328'],
         relatedEntityIds: ['ai-singapore'],
         sources: [
           {

@@ -14,6 +14,7 @@ import { categories } from '../src/data/policies';
 import { levers } from '../src/data/levers';
 import { timelineEvents } from '../src/data/timeline';
 import { allPeople } from '../src/data/people';
+import { ecosystemCategories } from '../src/data/ecosystem';
 
 const errors: string[] = [];
 
@@ -74,6 +75,21 @@ for (const e of timelineEvents) {
   check(`timeline[${e.id}].relatedDebateIds`, e.relatedDebateIds, debateIds as Set<string | number>);
 }
 
+// ── ecosystem.ts ─────────────────────────────────────────────────────────
+const ecosystemIds = new Set<string>();
+for (const c of ecosystemCategories) for (const e of c.entities) if (e.id) ecosystemIds.add(e.id);
+for (const c of ecosystemCategories) {
+  for (const e of c.entities) {
+    const label = `ecosystem[${e.id ?? e.name}]`;
+    check(`${label}.relatedPolicyIds`, e.relatedPolicyIds, policyIds as Set<string | number>);
+    check(`${label}.relatedDebateIds`, e.relatedDebateIds, debateIds as Set<string | number>);
+    check(`${label}.relatedLeverNumbers`, e.relatedLeverNumbers, leverNumbers as Set<string | number>);
+    check(`${label}.relatedEntityIds`, e.relatedEntityIds, ecosystemIds as Set<string | number>);
+    check(`${label}.championPersonIds`, e.championPersonIds, personIds as Set<string | number>);
+    if (e.parentEntityId) check(`${label}.parentEntityId`, [e.parentEntityId], ecosystemIds as Set<string | number>);
+  }
+}
+
 // ── Report ───────────────────────────────────────────────────────────────
 const stats = {
   people: personIds.size,
@@ -81,6 +97,7 @@ const stats = {
   policies: policyIds.size,
   leverNumbers: leverNumbers.size,
   timelineYears: timelineYears.size,
+  ecosystemEntities: ecosystemIds.size,
 };
 
 console.log('=== verify-graph ===');
