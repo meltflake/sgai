@@ -1,0 +1,67 @@
+---
+// Front-page latest-debates module — the debates list extracted from the
+// old HomePage body, restyled as a main-column module (heading row instead
+// of a full-bleed section). Sorted by sitting date, FT-style dates first.
+
+import { debates, DEBATE_STATS } from '~/data/debates';
+import { t, pickLocalized, localizedHref, type Lang } from '~/i18n';
+import { debateTypeLabel, debateTopicLabel } from '~/utils/debate-labels';
+
+interface Props {
+  lang: Lang;
+  limit?: number;
+}
+
+const { lang, limit = 6 } = Astro.props;
+
+const latestDebates = [...debates].sort((a, b) => (a.date < b.date ? 1 : -1)).slice(0, limit);
+const totalDebates = DEBATE_STATS.total;
+
+const debateTitle = (d: (typeof debates)[number]) => pickLocalized<string>(d, 'title', lang) || d.title || '';
+---
+
+<div>
+  <div class="flex items-baseline justify-between mb-2 gap-4 flex-wrap">
+    <h2 class="t-h3 text-gray-900 dark:text-white">{t(lang, 'recentDebatesSection')}</h2>
+    <a
+      href={localizedHref('/debates/', lang)}
+      class="text-sm text-gray-500 hover:text-primary dark:text-gray-400 transition-colors"
+    >
+      {t(lang, 'viewAllDebatesCta').replace('{count}', String(totalDebates))}
+    </a>
+  </div>
+  <p class="text-sm text-gray-600 dark:text-gray-400 mb-5 max-w-prose leading-relaxed">
+    {
+      t(lang, 'recentDebatesBlurb')
+        .replace('{from}', String(DEBATE_STATS.yearRange.from))
+        .replace('{to}', String(DEBATE_STATS.yearRange.to))
+    }
+  </p>
+  <ul class="divide-y divide-gray-200 dark:divide-slate-800">
+    {
+      latestDebates.map((d) => (
+        <li class="py-3.5">
+          <a href={localizedHref(`/debates/${d.id}/`, lang)} class="group block">
+            <div class="flex items-baseline gap-4">
+              <span class="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 tabular-nums w-24 shrink-0">
+                {d.date}
+              </span>
+              <div class="flex-1 min-w-0">
+                <div class="font-medium text-gray-900 dark:text-white group-hover:text-primary transition-colors leading-snug">
+                  {debateTitle(d)}
+                </div>
+                <div class="text-xs text-gray-500 dark:text-gray-400 mt-1 truncate">
+                  {debateTypeLabel(d.type, lang)} ·{' '}
+                  {d.topics
+                    .slice(0, 2)
+                    .map((tp) => debateTopicLabel(tp, lang))
+                    .join(' · ')}
+                </div>
+              </div>
+            </div>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</div>

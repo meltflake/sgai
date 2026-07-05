@@ -1,0 +1,155 @@
+---
+// Front-page sidebar — three stacked rails next to the main column:
+//   1. TrackerMini — the 6 dashboard dimensions as a compact list
+//      (replaces the old full-width tracker section)
+//   2. QuickBrowse — search / by-time / by-topic entry points
+//   3. HotEntries — the 4 highest-traffic domains with live counts and
+//      each one's latest addition as a preview line
+//
+// The search button reuses the header's Pagefind modal (#search-trigger)
+// so there is exactly one search UI; /search/ is linked as fallback for
+// no-JS readers.
+
+import { Icon } from 'astro-icon/components';
+import { dimensions, dataDate as trackerDataDate } from '~/data/tracker';
+import { domainStats, harvestedTitle, type DomainKey } from '~/utils/latest-content';
+import { TOPICS_ENABLED } from '~/config/features';
+import { t, pickLocalized, localizedHref, type Lang } from '~/i18n';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+
+const HOT_KEYS: DomainKey[] = ['debates', 'policies', 'videos', 'voices'];
+const HOT_LABEL_KEY: Partial<Record<DomainKey, Parameters<typeof t>[1]>> = {
+  debates: 'navParliament',
+  policies: 'navPolicies',
+  videos: 'navVideos',
+  voices: 'navVoices',
+};
+const stats = domainStats();
+const hotEntries = HOT_KEYS.map((k) => stats.find((s) => s.key === k)).filter((s): s is NonNullable<typeof s> =>
+  Boolean(s)
+);
+---
+
+<aside class="space-y-8">
+  {/* 1 · Tracker mini */}
+  <div class="border border-subtle rounded-md p-4 bg-surface">
+    <div class="flex items-baseline justify-between mb-3 gap-2">
+      <h3 class="font-serif text-base font-semibold text-gray-900 dark:text-white">
+        {t(lang, 'homeTrackerSection')}
+      </h3>
+      <a
+        href={localizedHref('/tracker/', lang)}
+        class="text-xs text-gray-500 hover:text-primary dark:text-gray-400 transition-colors whitespace-nowrap"
+      >
+        {t(lang, 'homeTrackerCta')}
+      </a>
+    </div>
+    <ul class="divide-y divide-gray-100 dark:divide-slate-800">
+      {
+        dimensions.map((dim) => {
+          const arrow = dim.trend === 'up' ? '↗' : dim.trend === 'down' ? '↘' : '→';
+          const arrowColor =
+            dim.trend === 'up'
+              ? 'text-emerald-600 dark:text-emerald-400'
+              : dim.trend === 'down'
+                ? 'text-rose-600 dark:text-rose-400'
+                : 'text-gray-400 dark:text-gray-500';
+          return (
+            <li>
+              <a
+                href={localizedHref(`/tracker/${dim.id}/`, lang)}
+                class="group flex items-center justify-between gap-2 py-1.5 text-sm"
+              >
+                <span class="text-gray-700 dark:text-gray-300 group-hover:text-primary transition-colors truncate">
+                  <span class="mr-1.5">{dim.icon}</span>
+                  {pickLocalized(dim, 'title', lang)}
+                </span>
+                <span class={`shrink-0 tabular-nums ${arrowColor}`}>{arrow}</span>
+              </a>
+            </li>
+          );
+        })
+      }
+    </ul>
+    <div class="mt-2 text-[11px] text-gray-400 dark:text-gray-500 tabular-nums">
+      {t(lang, 'trackerLastUpdated')}: {trackerDataDate}
+    </div>
+  </div>
+
+  {/* 2 · Quick browse */}
+  <div>
+    <h3 class="text-xs uppercase tracking-[0.18em] text-gray-500 dark:text-gray-400 font-semibold mb-3">
+      {t(lang, 'fpBrowseSection')}
+    </h3>
+    <div class="space-y-2">
+      <button
+        id="home-search-trigger"
+        type="button"
+        class="w-full flex items-center gap-2 border border-subtle rounded-md px-3 py-2 text-sm text-gray-700 dark:text-gray-300 hover:border-primary hover:text-primary transition-colors bg-surface"
+      >
+        <Icon name="tabler:search" class="w-4 h-4 shrink-0" />
+        {t(lang, 'searchSiteLabel')}
+      </button>
+      <a
+        href={localizedHref('/timeline/', lang)}
+        class="w-full flex items-center gap-2 border border-subtle rounded-md px-3 py-2 text-sm text-gray-700 dark:text-gray-300 hover:border-primary hover:text-primary transition-colors bg-surface"
+      >
+        <Icon name="tabler:timeline" class="w-4 h-4 shrink-0" />
+        {t(lang, 'fpBrowseByTime')}
+      </a>
+      {
+        TOPICS_ENABLED && (
+          <a
+            href={localizedHref('/topics/', lang)}
+            class="w-full flex items-center gap-2 border border-subtle rounded-md px-3 py-2 text-sm text-gray-700 dark:text-gray-300 hover:border-primary hover:text-primary transition-colors bg-surface"
+          >
+            <Icon name="tabler:category" class="w-4 h-4 shrink-0" />
+            {t(lang, 'fpBrowseByTopic')}
+          </a>
+        )
+      }
+    </div>
+  </div>
+
+  {/* 3 · Hot entries */}
+  <div>
+    <h3 class="text-xs uppercase tracking-[0.18em] text-gray-500 dark:text-gray-400 font-semibold mb-3">
+      {t(lang, 'fpHotSection')}
+    </h3>
+    <ul class="space-y-3">
+      {
+        hotEntries.map((s) => {
+          const labelKey = HOT_LABEL_KEY[s.key];
+          return (
+            <li>
+              <a href={localizedHref(s.href, lang)} class="group block">
+                <div class="flex items-baseline justify-between gap-2">
+                  <span class="text-sm font-medium text-gray-900 dark:text-white group-hover:text-primary transition-colors">
+                    {labelKey ? t(lang, labelKey) : s.key}
+                  </span>
+                  <span class="text-xs text-gray-400 dark:text-gray-500 tabular-nums shrink-0">{s.count}</span>
+                </div>
+                {s.latest && (
+                  <div class="text-xs text-gray-500 dark:text-gray-400 mt-0.5 truncate">
+                    {t(lang, 'fpLatestPrefix')}: {harvestedTitle(s.latest, lang)}
+                  </div>
+                )}
+              </a>
+            </li>
+          );
+        })
+      }
+    </ul>
+  </div>
+</aside>
+
+<script>
+  // Delegate to the header's search modal so there is one Pagefind UI.
+  document.getElementById('home-search-trigger')?.addEventListener('click', () => {
+    document.getElementById('search-trigger')?.click();
+  });
+</script>

@@ -1,0 +1,24 @@
+---
+// Full-page search (zh / zh-tw / ja / ko) — thin wrapper around
+// SearchPage.astro; see src/pages/search.astro for the en variant.
+
+import Layout from '~/layouts/PageLayout.astro';
+import SearchPage from '~/components/common/SearchPage.astro';
+import { NON_DEFAULT_ROUTE_LOCALES, t, type Lang } from '~/i18n';
+
+export function getStaticPaths() {
+  return NON_DEFAULT_ROUTE_LOCALES.map((lang) => ({ params: { lang } }));
+}
+
+const lang = Astro.params.lang as Lang;
+
+const metadata = {
+  title: `${t(lang, 'searchSiteLabel')} · ${t(lang, 'siteName')}`,
+  description: t(lang, 'searchPageDesc'),
+  robots: { index: false, follow: true },
+};
+---
+
+<Layout metadata={metadata} lang={lang} searchIndex={false}>
+  <SearchPage lang={lang} />
+</Layout>

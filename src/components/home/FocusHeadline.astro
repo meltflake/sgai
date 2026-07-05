@@ -1,0 +1,118 @@
+---
+// Front-page focus headline — the single lead story at the top of the
+// main column. Resolution order:
+//   1. src/data/frontpage.ts FEATURED pointer (editorial pin)
+//   2. fallback: the latest blog post for the current lang
+//
+// zh-tw has no post mirrors on disk; its post pages are generated from zh
+// sources with OpenCC, so we pick the zh post and convert title/excerpt
+// here the same way.
+
+import { Icon } from 'astro-icon/components';
+import { FEATURED } from '~/data/frontpage';
+import { fetchPosts } from '~/utils/blog';
+import { debates } from '~/data/debates';
+import { categories as policyCategories } from '~/data/policies';
+import { videos } from '~/data/videos';
+import { t, pickLocalized, localizedHref, type Lang } from '~/i18n';
+import { toTraditional } from '~/i18n/opencc';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+
+interface Focus {
+  chip: string;
+  title: string;
+  excerpt?: string;
+  date?: string;
+  href: string;
+}
+
+function fromRecord(
+  record: unknown,
+  chipKey: 'updateTypeDebate' | 'updateTypePolicy' | 'updateTypeVideo',
+  href: string,
+  date?: string
+): Focus {
+  return {
+    chip: t(lang, chipKey),
+    title: pickLocalized<string>(record, 'title', lang) ?? '',
+    excerpt: pickLocalized<string>(record, 'summary', lang) ?? undefined,
+    date,
+    href,
+  };
+}
+
+async function latestPostFocus(pinnedSlug?: string): Promise<Focus | null> {
+  const postLang = lang === 'zh-tw' ? 'zh' : lang;
+  const posts = (await fetchPosts()).filter((p) => (p.lang ?? 'zh') === postLang);
+  const post = pinnedSlug ? posts.find((p) => p.slug === pinnedSlug) : posts[0];
+  if (!post) return null;
+  const tw = (s: string | undefined) => (lang === 'zh-tw' && s ? toTraditional(s) : s);
+  return {
+    chip: t(lang, 'updateTypeLongform'),
+    title: tw(post.title) ?? post.title,
+    excerpt: tw(post.excerpt),
+    date: post.publishDate ? new Date(post.publishDate).toISOString().slice(0, 10) : undefined,
+    href: localizedHref(`/${post.slug}/`, lang),
+  };
+}
+
+async function resolveFocus(): Promise<Focus | null> {
+  const featured = FEATURED;
+  if (featured) {
+    if (featured.kind === 'debate') {
+      const d = debates.find((r) => r.id === featured.id);
+      if (d) return fromRecord(d, 'updateTypeDebate', localizedHref(`/debates/${d.id}/`, lang), d.date);
+    }
+    if (featured.kind === 'policy') {
+      const p = policyCategories.flatMap((c) => c.policies).find((r) => r.id === featured.id);
+      if (p) return fromRecord(p, 'updateTypePolicy', localizedHref(`/policies/${p.id}/`, lang), p.date);
+    }
+    if (featured.kind === 'video') {
+      const v = videos.find((r) => r.id === featured.id);
+      if (v) return fromRecord(v, 'updateTypeVideo', localizedHref(`/videos/${v.id}/`, lang), v.date);
+    }
+    if (featured.kind === 'post') {
+      const pinned = await latestPostFocus(featured.id);
+      if (pinned) return pinned;
+    }
+  }
+  return latestPostFocus();
+}
+
+const focus = await resolveFocus();
+
+// Keep the lead scannable — a two-line excerpt, not the full digest.
+const excerpt =
+  focus?.excerpt && focus.excerpt.length > 160 ? `${focus.excerpt.slice(0, 160)}…` : (focus?.excerpt ?? undefined);
+---
+
+{
+  focus && (
+    <article>
+      <div class="flex items-center gap-2 mb-3 text-xs">
+        <span class="uppercase tracking-[0.18em] text-primary font-semibold">{t(lang, 'fpFocusEyebrow')}</span>
+        <span class="uppercase tracking-wider font-medium px-2 py-0.5 rounded bg-gray-100 text-gray-700 dark:bg-slate-800 dark:text-gray-300">
+          {focus.chip}
+        </span>
+        {focus.date && <span class="text-gray-500 dark:text-gray-400 tabular-nums">{focus.date}</span>}
+      </div>
+      <h2 class="font-serif text-2xl md:text-[2rem] leading-tight font-semibold text-gray-900 dark:text-white mb-3">
+        <a href={focus.href} class="hover:text-primary transition-colors">
+          {focus.title}
+        </a>
+      </h2>
+      {excerpt && <p class="text-gray-600 dark:text-gray-400 leading-relaxed max-w-prose mb-3">{excerpt}</p>}
+      <a
+        href={focus.href}
+        class="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:text-secondary transition-colors"
+      >
+        {t(lang, 'readMore')}
+        <Icon name="tabler:arrow-right" class="w-4 h-4" />
+      </a>
+    </article>
+  )
+}
