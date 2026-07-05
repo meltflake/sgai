@@ -71,10 +71,18 @@ const controversyLabels = CONTROVERSY_LABELS[lang] || CONTROVERSY_LABELS.en;
 const speakers = debate.speakers.map((raw) => {
   const pid = findPersonId(raw);
   const p = pid ? getPerson(pid) : undefined;
-  // Speaker display: on zh use the curated zh name; on every other
-  // locale fall through to nameEn (Latin Roman name — universally
-  // recognisable to ja/ko/zh-Hant readers via Singapore press).
-  return { raw, pid, display: p ? (isZh ? personDisplayName(pid!) : p.nameEn || p.name || raw) : raw };
+  // Speaker display: zh and zh-tw use the curated Chinese name (zh-tw via
+  // OpenCC), keeping speaker names consistent with the rest of the localized
+  // page. ja / ko / en fall through to the Latin Roman name — no *Ja/*Ko name
+  // fields exist at the data layer, and Singapore MP names are written in
+  // Latin in ja/ko press.
+  let display = raw;
+  if (p) {
+    if (lang === 'zh') display = personDisplayName(pid!);
+    else if (lang === 'zh-tw') display = toTraditional(personDisplayName(pid!));
+    else display = p.nameEn || p.name || raw;
+  }
+  return { raw, pid, display };
 });
 
 const summaryShort = pickLocalized<string>(debate, 'summary', lang) || debate.summary || '';
