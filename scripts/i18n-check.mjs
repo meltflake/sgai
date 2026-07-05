@@ -99,12 +99,30 @@ let SKIP_SUBDIRS = new Set(LANG === ROUTE_DEFAULT ? LOCALES.filter((locale) => l
 //                                         are legal EN even on a target-locale
 //                                         page. Shared across locales via
 //                                         EN_SENTENCE_ALLOW below.
-//   enSentenceSeverity — 'error' | 'ratchet'. 'error' → any EN-sentence or
-//                    marker-violation fails immediately. 'ratchet' → compared
-//                    against scripts/i18n-check.baseline.json per page; only a
-//                    count ABOVE baseline fails. All locales are 'ratchet' in
-//                    this phase (existing render-layer leaks are tolerated and
-//                    burned down by later tasks).
+//   enSentenceSeverity — 'error' | 'ratchet'. Governs the EN-SENTENCE scan.
+//                    'error' → any EN-sentence hit fails immediately.
+//                    'ratchet' → compared against scripts/i18n-check.baseline.json
+//                    per page; only a count ABOVE baseline fails.
+//                    ALL locales stay 'ratchet' for enSentence — including
+//                    zh / zh-tw. The zh base locale LEGITIMATELY carries English
+//                    (MP verbatim quotes in debates, official-quote pull-quotes
+//                    in policies, blog footnote references ↩, mono-lingual
+//                    long-form posts); OpenCC carries these unchanged into
+//                    zh-tw. These are NOT fallback bugs, so forcing zh/zh-tw
+//                    enSentence to 'error' would demand wrapping every legit
+//                    quote in a marker (large content-engineering cost, out of
+//                    scope). Ratchet still blocks any NEW leak — which is
+//                    exactly how the 2026-07 242-marker bug would have been
+//                    caught. ja/ko stay ratchet too; their backlog is burned
+//                    down by the weekly issue.
+//   markerViolationSeverity — 'error' | 'ratchet'. Governs the MARKER-VIOLATION
+//                    check independently of enSentenceSeverity. Defaults to
+//                    enSentenceSeverity when unset. zh-tw sets this to 'error':
+//                    an *-en-fallback marker (registered ko-only) appearing on
+//                    a zh-tw page is ALWAYS a leak (zh source exists → OpenCC is
+//                    the only correct path), and the count is already 0, so the
+//                    hard gate cannot false-positive on existing content. This
+//                    precisely locks the 2026-07 242-marker bug class shut.
 
 // Brand / programme proper nouns that are legal EN on ANY target-locale page.
 // Shared by ja / ko / zh / zh-tw enSentence scans (previously duplicated in
@@ -293,7 +311,16 @@ const LANG_CONFIG = {
       nativeScriptRegex: /[一-鿿]/,
       allowPatterns: EN_SENTENCE_ALLOW,
     },
+    // enSentence stays ratchet: the zh base locale (which zh-tw derives from
+    // via OpenCC) legitimately carries English quotes/citations that flow
+    // through to zh-tw. Forcing this to error would need every legit quote
+    // marker-wrapped. See the enSentenceSeverity note at the top of this file.
     enSentenceSeverity: 'ratchet',
+    // markerViolation is a HARD ERROR on zh-tw: an *-en-fallback marker is
+    // registered ko-only, so seeing one on a zh-tw page is always a leak. The
+    // count is already 0 (B1–B4 cleaned it), so error cannot false-positive.
+    // This is the precise gate for the 2026-07 242-marker bug class.
+    markerViolationSeverity: 'error',
   },
   ko: {
     // Korean pages should contain hangul, not Han characters. Flag CJK
@@ -638,6 +665,10 @@ function mainForLang(lang, opts = {}) {
   }
 
   const severity = conf.enSentenceSeverity || 'ratchet';
+  // Marker-violations have their own per-lang severity, decoupled from the
+  // enSentence severity. zh-tw is 'error' (an en-fallback marker there is
+  // always a leak); everything else defaults to its enSentence severity.
+  const markerSeverity = conf.markerViolationSeverity || severity;
   const langBaseline = baseline[lang] || {};
 
   let totalPages = 0;
@@ -680,9 +711,16 @@ function mainForLang(lang, opts = {}) {
   if (updateMode) {
     const seg = {};
     for (const { path, findings } of perPageWarn) seg[path] = findings.length;
-    if (totalMarkerViolations > 0) seg[MARKER_BASELINE_KEY] = totalMarkerViolations;
+    // Never baseline marker-violations on a locale where they are a hard error
+    // (zh-tw). Snapshotting them would grant a silent exemption the error gate
+    // is specifically meant to deny. On error locales the count must stay 0.
+    if (totalMarkerViolations > 0 && markerSeverity !== 'error') seg[MARKER_BASELINE_KEY] = totalMarkerViolations;
     baseline[lang] = seg;
-    console.log(`[i18n-check] lang=${LANG}: snapshot ${perPageWarn.length} EN-sentence pages` + `, ${totalMarkerViolations} marker-violations into baseline.`);
+    const markerNote =
+      markerSeverity === 'error'
+        ? `${totalMarkerViolations} marker-violations NOT baselined (hard error on ${LANG})`
+        : `${totalMarkerViolations} marker-violations`;
+    console.log(`[i18n-check] lang=${LANG}: snapshot ${perPageWarn.length} EN-sentence pages, ${markerNote} into baseline.`);
     // Even in update mode, hard foreign-script residue is a real failure.
     if (dirtyPages > 0) {
       console.log(`[i18n-check] lang=${LANG}: WARNING — ${dirtyPages} pages still have foreign-script residue (not baselined).`);
@@ -694,7 +732,8 @@ function mainForLang(lang, opts = {}) {
   console.log(`[i18n-check] Scanned ${totalPages} pages.`);
   console.log(`[i18n-check] Pages with foreign-script residue (FAIL): ${dirtyPages} — ${totalHits} hits`);
   console.log(
-    `[i18n-check] Pages with EN-sentence hits: ${warnPages} — ${totalWarnings} hits; marker-violations: ${totalMarkerViolations} (severity=${severity})`
+    `[i18n-check] Pages with EN-sentence hits: ${warnPages} — ${totalWarnings} hits (severity=${severity}); ` +
+      `marker-violations: ${totalMarkerViolations} (severity=${markerSeverity})`
   );
 
   const max = parseInt(process.env.I18N_REPORT_LIMIT || '20', 10);
@@ -729,7 +768,7 @@ function mainForLang(lang, opts = {}) {
       if (!(path in currentCounts) && base > 0) enShrinks.push({ path, current: 0, baseline: base });
     }
   }
-  const markerBase = severity === 'error' ? 0 : langBaseline[MARKER_BASELINE_KEY] || 0;
+  const markerBase = markerSeverity === 'error' ? 0 : langBaseline[MARKER_BASELINE_KEY] || 0;
   const markerRegressed = totalMarkerViolations > markerBase;
   const markerShrunk = totalMarkerViolations < markerBase;
 
@@ -751,7 +790,7 @@ function mainForLang(lang, opts = {}) {
   // Report marker-violations (unregistered reason or wrong-locale marker).
   if (markerRegressed && markerViolations.length > 0) {
     console.log(
-      `\n[i18n-check] Marker-violations ${severity === 'error' ? '' : `above baseline (${totalMarkerViolations} > ${markerBase}) `}(${totalMarkerViolations} total):`
+      `\n[i18n-check] Marker-violations ${markerSeverity === 'error' ? '' : `above baseline (${totalMarkerViolations} > ${markerBase}) `}(${totalMarkerViolations} total):`
     );
     for (const { path, reason, attr, snippet } of markerViolations.slice(0, Math.min(8, max))) {
       console.log(`  [${attr}="${reason}"] ${path}`);
@@ -776,11 +815,17 @@ function mainForLang(lang, opts = {}) {
     return 1;
   }
   if (enFail) {
+    // A marker-violation under markerSeverity='error' (zh-tw) has NO baseline
+    // exemption — do not suggest re-snapshotting. Only offer the re-snapshot
+    // hint when every failing bucket is a ratchet regression.
+    const markerErrorFail = markerRegressed && markerSeverity === 'error';
+    const onlyRatchet = severity === 'ratchet' && !markerErrorFail;
     console.log(
-      `\n[i18n-check] FAIL — new EN-sentence / marker leaks on ${LANG.toUpperCase()} above baseline.` +
-        (severity === 'ratchet'
+      `\n[i18n-check] FAIL — new EN-sentence / marker leaks on ${LANG.toUpperCase()}` +
+        (markerErrorFail ? ' (marker-violation is a hard error on this locale).' : ' above baseline.') +
+        (onlyRatchet
           ? ` If this is an intentional pre-existing change, run \`node scripts/i18n-check.mjs --all --update-en-baseline\` to re-snapshot.`
-          : ` (severity=error: no baseline exemption.)`)
+          : ` (no baseline exemption.)`)
     );
     return 1;
   }
