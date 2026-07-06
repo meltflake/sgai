@@ -32,6 +32,73 @@ const stats = domainStats();
 const hotEntries = HOT_KEYS.map((k) => stats.find((s) => s.key === k)).filter((s): s is NonNullable<typeof s> =>
   Boolean(s)
 );
+
+// 4 · In-focus picks — detail pages with proven search demand (GSC 2026-07
+// striking-distance queries), hand-picked so each gets a homepage internal
+// link. Labels are per-locale Records (zh-tw derives via toTraditional in
+// pickLocalized-equivalent form: authored here since these are one-offs).
+const picks: Array<{ href: string; label: Record<Lang, string> }> = [
+  {
+    href: '/startups/',
+    label: {
+      zh: '新加坡 AI 创业公司全景',
+      'zh-tw': '新加坡 AI 創業公司全景',
+      en: 'Singapore AI startups map',
+      ja: 'シンガポール AI スタートアップ全景',
+      ko: '싱가포르 AI 스타트업 전경',
+    },
+  },
+  {
+    href: '/policies/national-ai-strategy-20-nais-20/',
+    label: {
+      zh: '国家 AI 战略 2.0（NAIS 2.0）',
+      'zh-tw': '國家 AI 戰略 2.0（NAIS 2.0）',
+      en: 'National AI Strategy 2.0 (NAIS 2.0)',
+      ja: '国家 AI 戦略 2.0（NAIS 2.0）',
+      ko: '국가 AI 전략 2.0(NAIS 2.0)',
+    },
+  },
+  {
+    href: '/talent/international-olympiad-in-ai-2027/',
+    label: {
+      zh: 'IOAI 2027 国际 AI 奥赛（新加坡）',
+      'zh-tw': 'IOAI 2027 國際 AI 奧賽（新加坡）',
+      en: 'IOAI 2027 — the AI olympiad in Singapore',
+      ja: 'IOAI 2027 国際 AI オリンピック（シンガポール）',
+      ko: 'IOAI 2027 국제 AI 올림피아드(싱가포르)',
+    },
+  },
+  {
+    href: '/talent/national-ai-student-challenge/',
+    label: {
+      zh: 'NAISC 全国 AI 学生挑战赛',
+      'zh-tw': 'NAISC 全國 AI 學生挑戰賽',
+      en: 'National AI Student Challenge (NAISC)',
+      ja: 'NAISC 全国 AI 学生チャレンジ',
+      ko: 'NAISC 전국 AI 학생 챌린지',
+    },
+  },
+  {
+    href: '/ecosystem/pdpc/',
+    label: {
+      zh: 'PDPC 个人数据保护委员会',
+      'zh-tw': 'PDPC 個人資料保護委員會',
+      en: 'PDPC (Personal Data Protection Commission)',
+      ja: 'PDPC 個人データ保護委員会',
+      ko: 'PDPC 개인정보보호위원회',
+    },
+  },
+  {
+    href: '/ecosystem/ai-trailblazers/',
+    label: {
+      zh: 'AI Trailblazers 政企共建计划',
+      'zh-tw': 'AI Trailblazers 政企共建計劃',
+      en: 'AI Trailblazers (with Google Cloud)',
+      ja: 'AI Trailblazers 官民共創プログラム',
+      ko: 'AI Trailblazers 민관 공동 프로그램',
+    },
+  },
+];
 ---
 
 <aside class="space-y-8">
@@ -142,6 +209,27 @@ const hotEntries = HOT_KEYS.map((k) => stats.find((s) => s.key === k)).filter((s
             </li>
           );
         })
+      }
+    </ul>
+  </div>
+
+  {/* 4 · In-focus picks — internal links to high-demand detail pages. */}
+  <div>
+    <h3 class="text-xs uppercase tracking-[0.18em] text-gray-500 dark:text-gray-400 font-semibold mb-3">
+      {t(lang, 'fpPicksSection')}
+    </h3>
+    <ul class="space-y-2">
+      {
+        picks.map((p) => (
+          <li>
+            <a
+              href={localizedHref(p.href, lang)}
+              class="text-sm text-gray-700 dark:text-gray-300 hover:text-primary transition-colors"
+            >
+              {p.label[lang] || p.label.en}
+            </a>
+          </li>
+        ))
       }
     </ul>
   </div>

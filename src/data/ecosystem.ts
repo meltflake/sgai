@@ -4110,6 +4110,231 @@ A take: Aquarium is not AISG's flagship external product, but it is the engineer
     descriptionEn: 'From experiment to product — accelerating AI innovation',
     entities: [
       {
+        id: 'ai-trailblazers',
+        name: 'AI Trailblazers',
+        nameJa: 'AI Trailblazers',
+        nameKo: 'AI Trailblazers',
+        nameEn: 'AI Trailblazers',
+        description: 'MDDI（前 MCI）、DISG、SNDGO 与 Google Cloud 的生成式 AI 共建计划',
+        descriptionKo: 'MDDI(전 MCI), DISG, SNDGO와 Google Cloud의 생성형 AI 공동 구축 프로그램',
+        descriptionJa: 'MDDI（旧 MCI）、DISG、SNDGO と Google Cloud による生成 AI 共創プログラム',
+        descriptionEn: 'Generative-AI co-creation programme by MDDI (formerly MCI), DISG, SNDGO and Google Cloud',
+        entityType: 'program',
+        status: 'active',
+        founded: '2023-07',
+        ministry: 'MDDI / DISG / SNDGO',
+        ministryEn: 'MDDI / DISG / SNDGO',
+        ministryJa: 'MDDI / DISG / SNDGO',
+        ministryKo: 'MDDI / DISG / SNDGO',
+        scale: '第一期目标「100 天做出 100 个生成式 AI 用例」；2024 年 1 月扩展为 2.0',
+        scaleKo: '1기 목표 「100일 안에 100개 생성형 AI 유스케이스」; 2024년 1월 2.0으로 확대',
+        scaleJa: '第 1 期の目標は「100 日で 100 件の生成 AI ユースケース」；2024 年 1 月に 2.0 へ拡大',
+        scaleEn: 'Wave 1 target: "100 GenAI use cases in 100 days"; expanded into 2.0 in January 2024',
+        summary:
+          'AI Trailblazers 是 2023 年 7 月由 MCI（现 MDDI）、DISG、SNDGO 与 Google Cloud 联合发起的生成式 AI 共建计划：政府出场景、Google Cloud 出工具，帮助公共部门和企业在 100 天内把生成式 AI 用例做成原型。2024 年 1 月扩展为 2.0。它常被误认为是 AI Singapore 的项目——实际上两者相互独立。',
+        summaryKo:
+          'AI Trailblazers는 2023년 7월 MCI(현 MDDI), DISG, SNDGO와 Google Cloud가 공동 발족한 생성형 AI 공동 구축 프로그램입니다. 정부가 시나리오를 제공하고 Google Cloud가 도구를 제공하여 공공 부문과 기업이 100일 안에 생성형 AI 유스케이스를 프로토타입으로 만들도록 지원합니다. 2024년 1월 2.0으로 확대되었습니다. AI Singapore의 프로그램으로 오해받기 쉽지만 실제로는 서로 독립적입니다.',
+        summaryJa:
+          'AI Trailblazers は 2023 年 7 月に MCI（現 MDDI）、DISG、SNDGO と Google Cloud が共同で立ち上げた生成 AI 共創プログラムです。政府がユースケースの場を提供し、Google Cloud がツールを提供して、公共部門と企業が 100 日以内に生成 AI のユースケースをプロトタイプ化できるよう支援します。2024 年 1 月に 2.0 へ拡大されました。AI Singapore のプロジェクトと誤解されがちですが、両者は独立しています。',
+        summaryEn:
+          'AI Trailblazers is a generative-AI co-creation programme launched in July 2023 by MCI (now MDDI), DISG and SNDGO together with Google Cloud: government brings the use cases, Google Cloud brings the tooling, and public agencies and companies prototype GenAI solutions within 100 days. It expanded into 2.0 in January 2024. It is often mistaken for an AI Singapore programme — the two are independent.',
+        whatItIs: `AI Trailblazers 的机制是「政企共建加速器」：
+
+- **工具包**：参与方获得免费的生成式 AI 工作区——Google Cloud Vertex AI 平台、预置解决方案模板与培训
+- **双轨制**：公共部门轨（政府机构用例）+ 企业轨（本地企业用例），并行推进
+- **第一期（2023-07）**：目标 100 天内做出 100 个生成式 AI 用例原型
+- **2.0（2024-01）**：扩大参与规模，延续「用例先行」路线
+
+牵头方为 MCI（现 MDDI）、DISG（EDB 与 IMDA 的联合办公室）和 SNDGO，技术伙伴为 Google Cloud。`,
+        whatItIsKo: `AI Trailblazers의 메커니즘은 「민관 공동 액셀러레이터」입니다:
+
+- **툴킷**: 참여 기관은 무료 생성형 AI 워크스페이스를 제공받습니다——Google Cloud Vertex AI 플랫폼, 사전 구축 솔루션 템플릿, 교육
+- **투트랙**: 공공 부문 트랙(정부 기관 유스케이스) + 기업 트랙(현지 기업 유스케이스) 병행 추진
+- **1기(2023-07)**: 100일 안에 100개 생성형 AI 유스케이스 프로토타입 목표
+- **2.0(2024-01)**: 참여 규모를 확대하고 「유스케이스 우선」 노선 지속
+
+주관 기관은 MCI(현 MDDI), DISG(EDB와 IMDA의 합동 사무소), SNDGO이며 기술 파트너는 Google Cloud입니다.`,
+        whatItIsJa: `AI Trailblazers の仕組みは「官民共創アクセラレーター」です：
+
+- **ツールキット**：参加者は無償の生成 AI ワークスペースを取得——Google Cloud Vertex AI プラットフォーム、事前構築のソリューションテンプレート、トレーニング
+- **2 トラック制**：公共部門トラック（政府機関のユースケース）＋企業トラック（ローカル企業のユースケース）を並行推進
+- **第 1 期（2023-07）**：100 日以内に 100 件の生成 AI ユースケースのプロトタイプ化が目標
+- **2.0（2024-01）**：参加規模を拡大し、「ユースケース先行」路線を継続
+
+主導は MCI（現 MDDI）、DISG（EDB と IMDA の合同オフィス）、SNDGO で、技術パートナーは Google Cloud です。`,
+        whatItIsEn: `AI Trailblazers runs as a public-private co-creation accelerator:
+
+- **Toolkit**: participants get a no-cost GenAI workspace — Google Cloud's Vertex AI platform, pre-built solution templates, and training
+- **Two tracks**: a public-sector track (agency use cases) and an enterprise track (local-company use cases), run in parallel
+- **Wave 1 (July 2023)**: target of prototyping 100 GenAI use cases within 100 days
+- **2.0 (January 2024)**: expanded intake, continuing the use-case-first approach
+
+It is led by MCI (now MDDI), DISG (the joint EDB-IMDA office) and SNDGO, with Google Cloud as the technology partner.`,
+        aiRelevance: `AI Trailblazers 不做研究，它是**生成式 AI 的采纳加速器**——把「要不要用生成式 AI」的决策成本压到最低：工具免费、模板现成、100 天出原型。它也是新加坡「借力超大云厂商」路线的代表案例：政府不自建大模型平台，直接把 Vertex AI 当作公共创新基础设施用。`,
+        aiRelevanceKo: `AI Trailblazers는 연구를 하지 않습니다. 이것은 **생성형 AI 도입 액셀러레이터**입니다——「생성형 AI를 쓸 것인가」라는 의사결정 비용을 최소화합니다: 도구 무료, 템플릿 제공, 100일 내 프로토타입. 또한 싱가포르의 「하이퍼스케일러 활용」 노선의 대표 사례입니다: 정부가 자체 대형 모델 플랫폼을 구축하지 않고 Vertex AI를 공공 혁신 인프라로 직접 활용합니다.`,
+        aiRelevanceJa: `AI Trailblazers は研究を行いません。これは**生成 AI の導入アクセラレーター**です——「生成 AI を使うべきか」という意思決定コストを最小化します：ツールは無償、テンプレートは既製、100 日でプロトタイプ。またシンガポールの「ハイパースケーラー活用」路線の代表例でもあります：政府は独自の大規模モデル基盤を作らず、Vertex AI を公共イノベーションのインフラとしてそのまま使います。`,
+        aiRelevanceEn: `AI Trailblazers does no research — it is an **adoption accelerator for generative AI**, driving the cost of the "should we try GenAI" decision to near zero: free tooling, ready-made templates, a prototype in 100 days. It is also the flagship example of Singapore's "ride the hyperscalers" playbook: rather than building a national LLM platform, the government uses Vertex AI as public innovation infrastructure.`,
+        singaporeRelevance: `在「七条传导杠杆」里，AI Trailblazers 同时压在两条杠杆上：
+
+- **杠杆 5（政府自用）**：公共部门轨直接产出政府机构的生成式 AI 用例
+- **杠杆 4（应用）**：企业轨把本地企业拉进生成式 AI 采纳曲线
+
+观点：它是新加坡「小政府大杠杆」的典型操作——政府不出钱建平台，用场景和组织力换 Google Cloud 的工具与培训，100 天节奏保证项目不烂尾。注意：它**不是** AI Singapore 的项目（常见误解），牵头方是 MDDI/DISG/SNDGO。`,
+        singaporeRelevanceKo: `「일곱 가지 전달 레버」에서 AI Trailblazers는 두 레버에 동시에 걸쳐 있습니다:
+
+- **레버 5(정부 자체 사용)**: 공공 부문 트랙이 정부 기관의 생성형 AI 유스케이스를 직접 산출
+- **레버 4(응용)**: 기업 트랙이 현지 기업을 생성형 AI 도입 곡선으로 끌어들임
+
+관점: 이는 싱가포르 「작은 정부, 큰 레버」의 전형적인 수법입니다——정부는 플랫폼 구축에 돈을 쓰지 않고, 시나리오와 조직력으로 Google Cloud의 도구와 교육을 교환하며, 100일 리듬으로 프로젝트가 흐지부지되지 않도록 보장합니다. 주의: 이것은 AI Singapore의 프로그램이 **아닙니다**(흔한 오해). 주관은 MDDI/DISG/SNDGO입니다.`,
+        singaporeRelevanceJa: `「7 つの伝導レバー」の中で、AI Trailblazers は 2 つのレバーに同時にかかっています：
+
+- **レバー 5（政府自用）**：公共部門トラックが政府機関の生成 AI ユースケースを直接産出
+- **レバー 4（応用）**：企業トラックがローカル企業を生成 AI 採用曲線に引き込む
+
+見解：これはシンガポールの「小さな政府・大きなレバー」の典型的な手法です——政府はプラットフォーム構築に資金を出さず、ユースケースと組織力で Google Cloud のツールとトレーニングを引き出し、100 日のリズムでプロジェクトの停滞を防ぎます。注意：これは AI Singapore のプロジェクトでは**ありません**（よくある誤解）。主導は MDDI/DISG/SNDGO です。`,
+        singaporeRelevanceEn: `In the "seven transmission levers" framework, AI Trailblazers presses on two levers at once:
+
+- **Lever 5 (government self-use)**: the public-sector track directly produces GenAI use cases inside agencies
+- **Lever 4 (application)**: the enterprise track pulls local companies onto the GenAI adoption curve
+
+A take: this is Singapore's "small government, big leverage" playbook in action — the state spends no platform money, trading use cases and organising power for Google Cloud's tooling and training, with the 100-day cadence keeping projects from stalling. Note: it is **not** an AI Singapore programme (a common mix-up); it is led by MDDI, DISG and SNDGO.`,
+        milestones: [
+          {
+            date: '2023-07',
+            title: 'AI Trailblazers 启动：100 天 100 个生成式 AI 用例',
+            titleKo: 'AI Trailblazers 발족: 100일 안에 100개 생성형 AI 유스케이스',
+            titleJa: 'AI Trailblazers 開始：100 日で 100 件の生成 AI ユースケース',
+            titleEn: 'AI Trailblazers launches: 100 GenAI use cases in 100 days',
+          },
+          {
+            date: '2024-01',
+            title: '扩展为 AI Trailblazers 2.0',
+            titleKo: 'AI Trailblazers 2.0으로 확대',
+            titleJa: 'AI Trailblazers 2.0 へ拡大',
+            titleEn: 'Expanded into AI Trailblazers 2.0',
+          },
+        ],
+        relatedLeverNumbers: [4, 5],
+        relatedEntityIds: ['ai-singapore', 'imda'],
+        sources: [
+          {
+            label: 'EDB 新闻稿：MCI/DISG/SNDGO 与 Google Cloud 发布 AI Trailblazers',
+            labelKo: 'EDB 보도자료: MCI/DISG/SNDGO와 Google Cloud, AI Trailblazers 발표',
+            labelJa: 'EDB プレスリリース：MCI/DISG/SNDGO と Google Cloud が AI Trailblazers を発表',
+            labelEn: 'EDB media release: MCI, DISG, SNDGO and Google Cloud launch AI Trailblazers',
+            url: 'https://www.edb.gov.sg/en/about-edb/media-releases-publications/mci-disg-sndgo-and-google-cloud-launch-ai-trailblazers-initiative-to-accelerate-the-development-of-impactful-generative-ai-solution-singapore.html',
+            date: '2026-07-06',
+          },
+        ],
+        updated: '2026-07-06',
+        addedAt: '2026-07-06',
+      },
+      {
+        id: 'kampong-ai',
+        name: 'Kampong AI',
+        nameJa: 'Kampong AI',
+        nameKo: 'Kampong AI',
+        nameEn: 'Kampong AI',
+        description: 'JTC 在 one-north LaunchPad 规划的 AI 创业园区',
+        descriptionKo: 'JTC가 one-north LaunchPad에 조성하는 AI 스타트업 캠퍼스',
+        descriptionJa: 'JTC が one-north の LaunchPad に計画する AI スタートアップキャンパス',
+        descriptionEn: "JTC's AI startup campus planned at LaunchPad @ one-north",
+        entityType: 'initiative',
+        status: 'active',
+        founded: '2026-03',
+        ministry: 'MOF / JTC',
+        ministryEn: 'MOF / JTC',
+        ministryJa: 'MOF / JTC',
+        ministryKo: 'MOF / JTC',
+        scale: '14,500 平方米，可容纳约 70 家 AI 公司；邻栋配 200 余套住宅；2026-03 试点，2028 建成',
+        scaleKo: '14,500제곱미터, 약 70개 AI 기업 수용; 인접 동에 200세대 이상 주거; 2026-03 파일럿, 2028 완공',
+        scaleJa:
+          '14,500 平方メートル、約 70 社の AI 企業を収容可能；隣接ブロックに 200 戸超の住宅；2026-03 パイロット、2028 完成',
+        scaleEn:
+          '14,500 m² for about 70 AI companies; 200+ dwelling units next door; pilot from March 2026, completion in 2028',
+        summary:
+          'Kampong AI 是 JTC 在 one-north LaunchPad 总体规划更新（2026 年 3 月）中提出的 AI 创业园区：14,500 平方米空间容纳约 70 家 AI 公司，邻栋配 200 余套人才住宅，把「工作 + 居住 + 社区」压进同一个街区。试点从 2026 年 3 月开始，2028 年建成。它不是 AI Singapore 的项目，业主是 JTC。',
+        summaryKo:
+          'Kampong AI는 JTC가 one-north LaunchPad 마스터플랜 갱신(2026년 3월)에서 제시한 AI 스타트업 캠퍼스입니다. 14,500제곱미터 공간에 약 70개 AI 기업을 수용하고, 인접 동에 200세대 이상의 인재 주거를 배치하여 「업무 + 거주 + 커뮤니티」를 같은 블록에 압축합니다. 파일럿은 2026년 3월부터 시작되며 2028년 완공 예정입니다. AI Singapore의 프로젝트가 아니며, 소유주는 JTC입니다.',
+        summaryJa:
+          'Kampong AI は JTC が one-north LaunchPad マスタープラン更新（2026 年 3 月）で打ち出した AI スタートアップキャンパスです。14,500 平方メートルの空間に約 70 社の AI 企業を収容し、隣接ブロックに 200 戸超の人材住宅を配置して、「働く＋住む＋コミュニティ」を同じ街区に凝縮します。パイロットは 2026 年 3 月から、完成は 2028 年の予定です。AI Singapore のプロジェクトではなく、オーナーは JTC です。',
+        summaryEn:
+          'Kampong AI is the AI startup campus JTC unveiled in its refreshed LaunchPad @ one-north masterplan (March 2026): 14,500 m² housing around 70 AI companies, with 200+ dwelling units in the adjacent block — compressing work, housing and community into one city block. The pilot runs from March 2026, with completion targeted for 2028. It is not an AI Singapore project; JTC owns it.',
+        whatItIs: `Kampong AI 是一个**物理空间打法**，核心设计有三层：
+
+- **产业密度**：14,500 平方米集中容纳约 70 家 AI 公司，用密度制造偶遇和协作
+- **职住一体**：邻栋 200 余套住宅留给创业者与工程师——"kampong"（马来语「村庄」）指的就是这种共居形态
+- **区位复用**：落在 one-north 的 LaunchPad 板块，天然叠加周边的孵化器、VC、研究机构存量
+
+时间线：2026 年 3 月 JTC 发布 LaunchPad 总体规划更新并启动试点，2028 年整体建成。`,
+        whatItIsKo: `Kampong AI는 **물리적 공간 전략**이며, 핵심 설계는 세 층입니다:
+
+- **산업 밀도**: 14,500제곱미터에 약 70개 AI 기업을 집중 수용하여 밀도로 우연한 만남과 협업을 만들어냄
+- **직주 일체**: 인접 동의 200세대 이상 주거를 창업자와 엔지니어에게 배정——"kampong"(말레이어로 「마을」)은 바로 이런 공동 거주 형태를 가리킴
+- **입지 재활용**: one-north의 LaunchPad 구역에 위치하여 주변의 인큐베이터, VC, 연구 기관 스톡을 자연스럽게 중첩
+
+타임라인: 2026년 3월 JTC가 LaunchPad 마스터플랜 갱신을 발표하고 파일럿을 시작, 2028년 전체 완공.`,
+        whatItIsJa: `Kampong AI は**物理空間の戦略**であり、中核設計は 3 層です：
+
+- **産業密度**：14,500 平方メートルに約 70 社の AI 企業を集中的に収容し、密度によって偶発的な出会いと協業を生み出す
+- **職住一体**：隣接ブロックの 200 戸超の住宅を起業家とエンジニアに割り当てる——"kampong"（マレー語で「村」）はまさにこの共住形態を指す
+- **立地の再利用**：one-north の LaunchPad 地区に位置し、周辺のインキュベーター、VC、研究機関の蓄積を自然に重ね合わせる
+
+タイムライン：2026 年 3 月に JTC が LaunchPad マスタープラン更新を発表しパイロットを開始、2028 年に全体完成。`,
+        whatItIsEn: `Kampong AI is a **physical-space play** with three design layers:
+
+- **Industrial density**: 14,500 m² concentrating about 70 AI companies, using density to manufacture serendipity and collaboration
+- **Live-work integration**: 200+ dwelling units next door reserved for founders and engineers — "kampong" (Malay for "village") names exactly this co-living form
+- **Location reuse**: sited in the LaunchPad precinct of one-north, it stacks on top of the existing incubators, VCs and research institutes around it
+
+Timeline: JTC unveiled the refreshed LaunchPad masterplan and started the pilot in March 2026, with full completion in 2028.`,
+        aiRelevance: `Kampong AI 本身不产出模型或论文——它赌的是**集聚效应**：把 AI 公司、人才和生活空间压进同一街区，缩短「想法 → 合作 → 公司」的物理距离。对比国际同类（硅谷的 Hacker House、深圳的产业园），它的差异点是政府地产商（JTC）直接操盘、且从规划起就配住宅。`,
+        aiRelevanceKo: `Kampong AI 자체는 모델이나 논문을 산출하지 않습니다——이것이 거는 것은 **집적 효과**입니다: AI 기업, 인재, 생활 공간을 같은 블록에 압축하여 「아이디어 → 협업 → 회사」의 물리적 거리를 단축합니다. 국제 유사 사례(실리콘밸리의 Hacker House, 선전의 산업단지)와 비교하면, 차별점은 정부 디벨로퍼(JTC)가 직접 운영하고 계획 단계부터 주거를 배치한다는 것입니다.`,
+        aiRelevanceJa: `Kampong AI 自体はモデルや論文を産出しません——賭けているのは**集積効果**です：AI 企業、人材、生活空間を同じ街区に凝縮し、「アイデア → 協業 → 会社」の物理的距離を短縮します。国際的な同類（シリコンバレーの Hacker House、深圳の産業パーク）と比べた差別化ポイントは、政府系デベロッパー（JTC)が直接運営し、計画段階から住宅を組み込んでいることです。`,
+        aiRelevanceEn: `Kampong AI itself produces no models or papers — its bet is **agglomeration**: compress AI companies, talent and living space into one block and shorten the physical distance from idea to collaboration to company. Against international peers (Silicon Valley hacker houses, Shenzhen industrial parks), its differentiator is that a government developer (JTC) runs it directly and housing is designed in from day one.`,
+        singaporeRelevance: `在「七条传导杠杆」里，Kampong AI 属于**杠杆 1（基建）**的物理基建分支——和数据中心、算力集群同列，但它建的是「人的密度」而不是「机的密度」。
+
+观点：新加坡土地极贵，把 one-north 的地块专门划给 AI 创业公司 + 人才住宅，是财政上的真实表态。风险同样明显：园区经济学的成败取决于招商质量，2028 年建成后值得回看入驻率和公司构成。注意它**不是** AI Singapore 的项目——业主与操盘方是 JTC。`,
+        singaporeRelevanceKo: `「일곱 가지 전달 레버」에서 Kampong AI는 **레버 1(기초 시설)**의 물리적 인프라 분기에 속합니다——데이터센터, 컴퓨팅 클러스터와 같은 줄이지만, 이것이 짓는 것은 「기계의 밀도」가 아니라 「사람의 밀도」입니다.
+
+관점: 싱가포르의 토지는 극히 비싸며, one-north의 부지를 AI 스타트업 + 인재 주거에 전용으로 할당한 것은 재정적으로 진실된 의사 표시입니다. 리스크도 명확합니다: 캠퍼스 경제학의 성패는 입주 기업의 질에 달려 있으며, 2028년 완공 후 입주율과 기업 구성을 되돌아볼 가치가 있습니다. 이것은 AI Singapore의 프로젝트가 **아니며**——소유주와 운영 주체는 JTC입니다.`,
+        singaporeRelevanceJa: `「7 つの伝導レバー」の中で、Kampong AI は**レバー 1（インフラ）**の物理インフラ分岐に属します——データセンター、計算クラスターと同列ですが、これが建てるのは「機械の密度」ではなく「人の密度」です。
+
+見解：シンガポールの土地は極めて高く、one-north の地块を AI スタートアップ＋人材住宅に専用で割り当てたことは、財政上の本気の意思表示です。リスクも同様に明白です：キャンパス経済学の成否は誘致の質に依存し、2028 年の完成後に入居率と企業構成を振り返る価値があります。これは AI Singapore のプロジェクトでは**ありません**——オーナーと運営は JTC です。`,
+        singaporeRelevanceEn: `In the "seven transmission levers" framework, Kampong AI belongs to the physical-infrastructure branch of **Lever 1 (infrastructure)** — same column as data centres and compute clusters, except what it builds is density of people rather than density of machines.
+
+A take: land in Singapore is scarce and expensive; dedicating a one-north parcel to AI startups plus talent housing is a genuine fiscal statement. The risk is equally plain: campus economics live or die on tenant quality — worth revisiting occupancy and company mix after completion in 2028. Note it is **not** an AI Singapore project; JTC owns and runs it.`,
+        milestones: [
+          {
+            date: '2026-03',
+            title: 'JTC 发布 LaunchPad 总体规划更新，Kampong AI 启动试点',
+            titleKo: 'JTC, LaunchPad 마스터플랜 갱신 발표 및 Kampong AI 파일럿 시작',
+            titleJa: 'JTC が LaunchPad マスタープラン更新を発表、Kampong AI パイロット開始',
+            titleEn: 'JTC unveils refreshed LaunchPad masterplan; Kampong AI pilot starts',
+          },
+          {
+            date: '2028',
+            title: '园区整体建成（目标）',
+            titleKo: '캠퍼스 전체 완공(목표)',
+            titleJa: 'キャンパス全体の完成（目標）',
+            titleEn: 'Full campus completion (target)',
+          },
+        ],
+        relatedLeverNumbers: [1],
+        sources: [
+          {
+            label: 'JTC 新闻稿：LaunchPad 总体规划更新与 Kampong AI（2026-03-02）',
+            labelKo: 'JTC 보도자료: LaunchPad 마스터플랜 갱신과 Kampong AI(2026-03-02)',
+            labelJa: 'JTC プレスリリース：LaunchPad マスタープラン更新と Kampong AI（2026-03-02）',
+            labelEn: 'JTC press release: refreshed LaunchPad masterplan and Kampong AI (2 Mar 2026)',
+            url: 'https://www.jtc.gov.sg/about-jtc/news-and-stories/press-releases/jtc-unveils-refreshed-masterplan-for-launchpad',
+            date: '2026-07-06',
+          },
+        ],
+        updated: '2026-07-06',
+        addedAt: '2026-07-06',
+      },
+      {
         id: '100e',
         name: '100E（已归档）',
         nameKo: '100E(이미 보관됨)',

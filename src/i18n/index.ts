@@ -442,9 +442,7 @@ export const zh = {
   leversPageDesc:
     '新加坡国家级 AI-native 转型，按"AI 引入路径"重新归类 Budget 2026 + 各部委 AI 政策——基建、治理、人才、应用、政府自用、外交六个抓手，每条抓手都跨部委，链接政策原文。',
   investorNotableDeals: '代表交易：',
-  startupsPageTitle: '新加坡 AI 创业生态 — 500+ 公司、独角兽、融资、投资人',
-  startupsPageDesc:
-    '新加坡 AI 创业生态完整地图：500+ AI-native / AI-enabled 公司样本、独角兽与上市级公司、按垂直领域分类、退出与并购案例、投资人网络与融资数据。',
+  startupsPageTitle: '新加坡 AI 创业公司',
   startupsPageSubtitle:
     '新加坡 AI-native、AI-enabled 与相邻资本生态的实体目录；每家公司、项目与投资者都进入可持续扩展的档案。',
   talentPageTitle: '人才培养',
@@ -622,6 +620,7 @@ export const zh = {
   fpBrowseByTime: '按时间浏览',
   fpBrowseByTopic: '按主题浏览',
   fpHotSection: '热门入口',
+  fpPicksSection: '热门专题',
   fpDirectorySection: '全站内容导览',
   fpDirectoryBlurb: '12 个持续更新的数据域，每张卡片都显示最新收录。',
   fpLatestPrefix: '最新',
@@ -694,6 +693,7 @@ export const zh = {
   benchmarkSingaporeTakeaway: '对新加坡的启发',
   benchmarkSourcesHeading: '参考来源',
   benchmarkReferencesHeading: '参考来源',
+  benchmarkOfficialSourceLabel: '官方来源',
   benchmarkRegionBackground: '地区背景',
   benchmarkAnotherCase: '另一个案例',
   benchmarkContinueCases: '继续看案例',
@@ -1009,9 +1009,7 @@ export const en: Partial<Record<keyof typeof zh, string>> = {
   leversPageDesc:
     "Singapore's national AI-native transformation re-classified by AI-injection path — infrastructure, governance, talent, applications, government self-use, and diplomacy. Six cross-ministry levers, with policy-source links from Budget 2026 and every ministry.",
   investorNotableDeals: 'Notable AI deals: ',
-  startupsPageTitle: 'Singapore AI Startup Ecosystem — 500+ companies, unicorns, funding, VCs',
-  startupsPageDesc:
-    "Singapore's AI startup ecosystem map: 500+ AI-native / AI-enabled company samples, unicorns and listed-scale companies, vertical breakdowns, exits and acquisitions, investor network, and funding data.",
+  startupsPageTitle: 'Singapore AI Startups',
   startupsPageSubtitle:
     'A directory of Singapore AI-native, AI-enabled, and adjacent capital ecosystem entities, with growing profiles for companies, projects, exits, and investors.',
   talentPageTitle: 'Talent Pipeline',
@@ -1199,6 +1197,7 @@ export const en: Partial<Record<keyof typeof zh, string>> = {
   fpBrowseByTime: 'Browse by timeline',
   fpBrowseByTopic: 'Browse by topic',
   fpHotSection: 'Popular sections',
+  fpPicksSection: 'In focus',
   fpDirectorySection: 'Browse the whole site',
   fpDirectoryBlurb: '12 continuously updated datasets — each card shows its latest addition.',
   fpLatestPrefix: 'Latest',
@@ -1274,6 +1273,7 @@ export const en: Partial<Record<keyof typeof zh, string>> = {
   benchmarkSingaporeTakeaway: 'Singapore Takeaway',
   benchmarkSourcesHeading: 'Sources',
   benchmarkReferencesHeading: 'References',
+  benchmarkOfficialSourceLabel: 'Official source',
   benchmarkRegionBackground: 'Region background',
   benchmarkAnotherCase: 'Another case',
   benchmarkContinueCases: 'Continue With Cases',
@@ -1592,9 +1592,7 @@ export const ja: Partial<Record<keyof typeof zh, string>> = {
   leversPageDesc:
     'シンガポールの国家レベル AI ネイティブ転換を「AI 導入経路」で再分類——インフラ・ガバナンス・人材・応用・政府自身の活用・外交の6つのレバー。Budget 2026 と各省庁政策の原典リンク付き。',
   investorNotableDeals: '主な AI 取引：',
-  startupsPageTitle: 'シンガポール AI スタートアップエコシステム — 500+ 社、ユニコーン、資金、投資家',
-  startupsPageDesc:
-    'シンガポール AI スタートアップ生態地図：500+ の AI ネイティブ / AI 活用企業サンプル、ユニコーンと上場規模企業、バーティカル分類、エグジットと M&A 事例、投資家ネットワークと資金調達データ。',
+  startupsPageTitle: 'シンガポール AI スタートアップ',
   startupsPageSubtitle:
     'シンガポールの AI ネイティブ、AI 活用、および隣接資本エコシステムのエンティティディレクトリ——企業、プロジェクト、投資家それぞれが拡張可能なプロフィールを持ちます。',
   talentPageTitle: '人材育成',
@@ -1771,6 +1769,7 @@ export const ja: Partial<Record<keyof typeof zh, string>> = {
   fpBrowseByTime: '時系列で見る',
   fpBrowseByTopic: 'テーマで見る',
   fpHotSection: '人気セクション',
+  fpPicksSection: '注目トピック',
   fpDirectorySection: 'サイト全体を見る',
   fpDirectoryBlurb: '継続的に更新される 12 のデータ領域。各カードに最新の収録を表示します。',
   fpLatestPrefix: '最新',
@@ -1844,6 +1843,7 @@ export const ja: Partial<Record<keyof typeof zh, string>> = {
   benchmarkSingaporeTakeaway: 'シンガポール向けの示唆',
   benchmarkSourcesHeading: '参考出典',
   benchmarkReferencesHeading: '参考出典',
+  benchmarkOfficialSourceLabel: '公式ソース',
   benchmarkRegionBackground: '地域背景',
   benchmarkAnotherCase: '別の事例',
   benchmarkContinueCases: '事例を見る',
@@ -2166,9 +2166,7 @@ export const ko: Partial<Record<keyof typeof zh, string>> = {
   leversPageDesc:
     '싱가포르의 국가급 AI-native 전환을 「AI 도입 경로」로 재분류 — 기반시설, 거버넌스, 인재, 애플리케이션, 정부 자체 사용, 외교의 6개 레버. Budget 2026 및 각 부처 정책 원문 링크 포함.',
   investorNotableDeals: '주요 AI 거래: ',
-  startupsPageTitle: '싱가포르 AI 스타트업 생태계 — 500+ 기업·유니콘·자금·투자자',
-  startupsPageDesc:
-    '싱가포르 AI 스타트업 생태계 지도: 500+ AI-native / AI-enabled 기업 샘플, 유니콘과 상장 규모 기업, 수직 분야 분류, 엑싯과 인수 사례, 투자자 네트워크와 자금 조달 데이터.',
+  startupsPageTitle: '싱가포르 AI 스타트업',
   startupsPageSubtitle:
     '싱가포르 AI-native, AI-enabled 및 인접 자본 생태계 엔티티 디렉터리 — 각 기업, 프로젝트, 투자자가 계속 확장되는 프로필을 갖습니다.',
   talentPageTitle: '인재 양성',
@@ -2342,6 +2340,7 @@ export const ko: Partial<Record<keyof typeof zh, string>> = {
   fpBrowseByTime: '시간순으로 보기',
   fpBrowseByTopic: '주제별로 보기',
   fpHotSection: '인기 섹션',
+  fpPicksSection: '주목 토픽',
   fpDirectorySection: '사이트 전체 보기',
   fpDirectoryBlurb: '지속적으로 업데이트되는 12개 데이터 영역. 각 카드에 최신 수록을 표시합니다.',
   fpLatestPrefix: '최신',
@@ -2415,6 +2414,7 @@ export const ko: Partial<Record<keyof typeof zh, string>> = {
   benchmarkSingaporeTakeaway: '싱가포르를 위한 시사점',
   benchmarkSourcesHeading: '참고 출처',
   benchmarkReferencesHeading: '참고 출처',
+  benchmarkOfficialSourceLabel: '공식 출처',
   benchmarkRegionBackground: '지역 배경',
   benchmarkAnotherCase: '다른 사례',
   benchmarkContinueCases: '사례 계속 보기',

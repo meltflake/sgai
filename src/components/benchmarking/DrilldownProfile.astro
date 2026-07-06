@@ -65,6 +65,7 @@ const labels = {
   benchmarkCrumb: t(lang, 'benchmarkCrumb'),
   drilldownEyebrow: t(lang, 'benchmarkDrilldownEyebrow'),
   expandHeading: t(lang, 'benchmarkExpandHeading'),
+  officialSource: t(lang, 'benchmarkOfficialSourceLabel'),
   sourcesHeading: t(lang, 'benchmarkReferencesHeading'),
   relatedHeading: t(lang, 'benchmarkContinueRegion'),
   dataNoteHeading: t(lang, 'benchmarkDataNoteHeading'),
@@ -166,6 +167,27 @@ const breadcrumbs = [
             <dd class="text-gray-900 dark:text-white">{pickLocalized(fact, 'value', lang) || fact.value}</dd>
           </div>
         ))
+      }
+      {
+        /* Primary-source link up top: name-brand queries and AI-agent
+           "find the official source" lookups both land here — don't make
+           them scroll to the references section. */
+        analysisSources && analysisSources.length > 0 && (
+          <div class="sm:col-span-2 pt-3 border-t border-subtle">
+            <dt class="text-xs uppercase tracking-wider text-muted mb-1">{labels.officialSource}</dt>
+            <dd>
+              <a
+                href={analysisSources[0].url}
+                target="_blank"
+                rel="noopener"
+                class="inline-flex items-center gap-1 text-primary hover:text-secondary break-all"
+              >
+                {pickLocalized(analysisSources[0], 'label', lang) || analysisSources[0].label}
+                <Icon name="tabler:external-link" class="w-3.5 h-3.5 shrink-0" />
+              </a>
+            </dd>
+          </div>
+        )
       }
     </dl>
 
