@@ -51,6 +51,8 @@ export interface UpdateLinkInput {
   label: string;
   labelJa: string;
   labelEn: string;
+  /** Optional but encouraged — run zh through translate.ts 'zh→ko'. */
+  labelKo?: string;
 }
 
 export interface UpdateInput {
@@ -59,9 +61,13 @@ export interface UpdateInput {
   title: string;
   titleJa: string;
   titleEn: string;
+  /** Optional but encouraged — run zh through translate.ts 'zh→ko'. */
+  titleKo?: string;
   summary: string;
   summaryJa: string;
   summaryEn: string;
+  /** Optional but encouraged — run zh through translate.ts 'zh→ko'. */
+  summaryKo?: string;
   links?: UpdateLinkInput[];
 }
 
@@ -73,14 +79,16 @@ function escapeQuote(s: string): string {
 }
 
 function formatLink(link: UpdateLinkInput): string {
-  return [
+  const lines = [
     '      {',
     `        href: '${escapeQuote(link.href)}',`,
     `        label: '${escapeQuote(link.label)}',`,
     `        labelJa: '${escapeQuote(link.labelJa)}',`,
     `        labelEn: '${escapeQuote(link.labelEn)}',`,
-    '      },',
-  ].join('\n');
+  ];
+  if (link.labelKo) lines.push(`        labelKo: '${escapeQuote(link.labelKo)}',`);
+  lines.push('      },');
+  return lines.join('\n');
 }
 
 function formatEntry(e: UpdateInput): string {
@@ -91,9 +99,11 @@ function formatEntry(e: UpdateInput): string {
   lines.push(`    title: '${escapeQuote(e.title)}',`);
   lines.push(`    titleJa: '${escapeQuote(e.titleJa)}',`);
   lines.push(`    titleEn: '${escapeQuote(e.titleEn)}',`);
+  if (e.titleKo) lines.push(`    titleKo: '${escapeQuote(e.titleKo)}',`);
   lines.push(`    summary: '${escapeQuote(e.summary)}',`);
   lines.push(`    summaryJa: '${escapeQuote(e.summaryJa)}',`);
   lines.push(`    summaryEn: '${escapeQuote(e.summaryEn)}',`);
+  if (e.summaryKo) lines.push(`    summaryKo: '${escapeQuote(e.summaryKo)}',`);
   if (e.links && e.links.length > 0) {
     lines.push('    links: [');
     for (const link of e.links) lines.push(formatLink(link));

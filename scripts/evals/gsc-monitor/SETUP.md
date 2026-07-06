@@ -1,19 +1,24 @@
 # GSC Monitor 设置指南
 
-> **📦 状态：PARKED（2026-05-10）**
+> **✅ 状态：已实现（2026-07-06），等待凭据**
 >
-> 这个 eval 暂未启用——配置成本（GCP 项目 + service account + IAM）跟"每周省 5 分钟"的收益不成正比。code stub 留着，cron 已撤下。
->
-> 哪天觉得"每周开 GSC 烦"，再照下面步骤花 15 分钟配置。
+> Search Analytics API 客户端已内置（service-account JWT 自签,**零 npm 依赖**）。
+> 只差你按下面步骤配一次凭据（约 15 分钟）。没有凭据时 eval 打印本指引并
+> exit 0（skip 不 fail），weekly cron 已接回 `scripts/evals/run-all.ts`。
 
+## 它做什么
 
-GSC monitor 拉 Google Search Console 的 indexing / rich-results 错误，比对上一次快照，新增即开 GitHub issue。今天靠 Luca 人肉读 GSC 邮件——这块自动化能消除一类盲区（CLAUDE.md 已知盲区第 1 条）。
+每周拉 GSC Search Analytics 近 28 天数据（query + page 两个维度），跑三个检测器（阈值来自 2026-07 SEO 数据复盘）：
+
+1. **striking-distance** — 排名 8–15、曝光 ≥50 的查询清单 + 周环比位次变化（"差一脚上首页"的词）
+2. **ctr-anomaly** — 排名 ≤8、曝光 ≥200 但 CTR <1% 的页面（排名没问题、摘要不行,该改 title/description）
+3. **zh-recovery** — `/zh/` 页面的曝光加权平均排名（2026-05-05 路由迁移后中文区从零重建,基线 ~28）
+
+**退出语义**（issue-on-fail cron 用）：只有**周环比恶化**才 exit 1 开 issue——已跟踪的 striking 词掉 >5 位、全站 CTR 腰斩、`/zh/` 平均位次恶化 >5。清单长本身是机会不是故障。报告每次都写到 `reports/report-YYYYMMDD.md`。
 
 ## 一次性设置（约 15 分钟）
 
 ### 1. 准备 Google Cloud 项目
-
-如果还没有 GCP 项目，新建一个（免费层够用，不会触发计费）：
 
 ```bash
 gcloud projects create sgai-gsc-monitor --name "sgai GSC monitor"
@@ -59,69 +64,30 @@ export GSC_PROPERTY_URL="sc-domain:sgai.md"
 - **Domain property**（推荐，覆盖所有子域）：`sc-domain:sgai.md`
 - **URL prefix property**：`https://sgai.md/`（注意尾斜杠）
 
-### 5. 装 googleapis SDK
+> 注：只实现了 service-account 路径。早期草稿提过的 `GSC_OAUTH_REFRESH_TOKEN`
+> OAuth 流程**没有**实现（还需要 client_id/secret,配置反而更麻烦）。
+
+### 5. 测试
 
 ```bash
-npm install --save-dev googleapis
+npm run eval:gsc              # 或 npx tsx scripts/evals/gsc-monitor/check.ts
+npm run eval:gsc -- --window=7 --no-snapshot   # 短窗口试跑,不动快照
 ```
 
-### 6. 把 stub 替换成真实实现
+第一次跑会写 `state/last-snapshot.json`（此时无环比,不会 fail）。第二次起会对比快照,报告位次变化。
 
-打开 [scripts/evals/gsc-monitor/check.ts](check.ts)，找到 `fetchGscIssues()` 函数（搜 "STUB"），把抛错那段换成：
+### 6. cron
 
-```typescript
-async function fetchGscIssues(property: string, since: string): Promise<GscIssue[]> {
-  const { google } = await import('googleapis');
-  const auth = new google.auth.GoogleAuth({
-    keyFile: process.env.GSC_SERVICE_ACCOUNT_JSON,
-    scopes: ['https://www.googleapis.com/auth/webmasters.readonly'],
-  });
-  const webmasters = google.webmasters({ version: 'v3', auth });
-
-  // Pull last-7-days search analytics by page+query (use this as a tracer
-  // for indexing health — pages with sudden 0 impressions hint at indexing
-  // drops). For richer indexing/rich-results errors, also poll
-  // urlInspection per URL and aggregate.
-  const resp = await webmasters.searchanalytics.query({
-    siteUrl: property,
-    requestBody: {
-      startDate: since,
-      endDate: new Date().toISOString().slice(0, 10),
-      dimensions: ['page'],
-      rowLimit: 5000,
-    },
-  });
-
-  const rows = resp.data.rows ?? [];
-  // TODO: cross-check rows with previous snapshot — pages that disappeared
-  //       are likely deindexed → flag as 'IndexingDrop' issues.
-  //       For now just return empty (wiring placeholder).
-  void rows;
-  return [];
-}
-```
-
-### 7. 测试
-
-```bash
-npx tsx scripts/evals/gsc-monitor/check.ts
-```
-
-第一次跑会写 `state/last-snapshot.json`。第二次起会比对快照、报新增 / 已解决 issue。
-
-### 8. 接进 cron
-
-`scripts/refresh/registry.json` 已经有 entry（详见主 README），失败时 `gh issue create --assignee @me` 自动开 issue。
+`scripts/evals/run-all.ts` 的 weekly STAGES 已包含 `gsc-monitor`,由 registry 的 evals entry（`mode: issue-on-fail`）调度——恶化时 `gh issue create --assignee @me` 自动开 issue。
 
 ## 已知限制
 
-- **API 配额**：免费层 1200 queries/min（够用）
-- **时间精度**：GSC 数据延迟 ~2 天，weekly cron 拉的是 7 天前的快照
-- **服务账号需在 GSC 显式授权**：第一次运行报 `403 User does not have permission` 时检查第 3 步
+- **API 配额**：免费层 1200 queries/min,每次跑只发 2 个请求,够用
+- **数据延迟**：GSC 数据滞后 2-3 天,窗口自动截到 3 天前保证数字定型（`dataState: 'final'`）
+- **rowLimit 5000**：当前站点量级足够;曝光行数超过后需要翻页（`startRow`）
+- **服务账号需在 GSC 显式授权**：报 `403 User does not have permission` 时检查第 3 步
 
 ## 删除凭据
-
-如果想撤销访问：
 
 ```bash
 gcloud iam service-accounts keys list --iam-account sgai-gsc-reader@sgai-gsc-monitor.iam.gserviceaccount.com
