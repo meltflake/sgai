@@ -94,3 +94,12 @@ jobs:
       # failure mode and docs/CHANGELOG.md (2026-05-10) for the regression context.
       - name: Source i18n hardcode scan (no new findings beyond baseline)
         run: npm run eval:source-i18n
+
+      # Synthesized entity-page objects (benchmark drilldowns, startup
+      # entities, AI relations in src/utils/entity-pages.ts) must carry
+      # ja/ko siblings for every CJK template field. Layer A only scans
+      # src/data/*.ts and never sees these runtime-built objects — this
+      # gate closes the 2026-07 En-only-synthesis regression class.
+      # See scripts/evals/entity-pages-i18n/check.ts.
+      - name: Entity-pages synthesized i18n completeness
+        run: npm run eval:entity-pages-i18n

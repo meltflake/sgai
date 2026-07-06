@@ -14,10 +14,11 @@ interface Props {
 }
 
 const { page, lang } = Astro.props;
-// Drilldown pages are synthesized in entity-pages.ts with only *En siblings
-// (no *Ja / *Ko). pickLocalized therefore resolves zh → zh, zh-tw → OpenCC(zh),
-// and en/ja/ko → *En. The en fallback on ja is ratchet-tolerated; on ko it is
-// design-internal and marked below. zh-tw never leaks en.
+// Drilldown pages are synthesized in entity-pages.ts with full zh/en/ja/ko
+// siblings (templates authored per locale; data values ride
+// `xJa || xEn || x` chains). pickLocalized resolves each locale directly and
+// derives zh-tw from zh via OpenCC. scripts/evals/entity-pages-i18n/check.ts
+// hard-gates any future En-only synthesized field.
 const benchmarkRoot = localizedHref('/benchmarking/', lang);
 
 const title = pickLocalized<string>(page, 'title', lang) || page.title;
@@ -61,7 +62,7 @@ const backToByLang: Record<Lang, string> = {
 
 const labels = {
   benchmarkCrumb: t(lang, 'benchmarkCrumb'),
-  drilldownEyebrow: 'Benchmark Drilldown · Updated',
+  drilldownEyebrow: t(lang, 'benchmarkDrilldownEyebrow'),
   expandHeading: t(lang, 'benchmarkExpandHeading'),
   sourcesHeading: t(lang, 'benchmarkReferencesHeading'),
   relatedHeading: t(lang, 'benchmarkContinueRegion'),
@@ -122,14 +123,7 @@ const breadcrumbs = [
 <Layout metadata={metadata} breadcrumbs={breadcrumbs} lang={lang}>
   <JsonLd schema={articleSchema} />
 
-  {
-    /* ko: drilldown pages carry only *En siblings (synthesized), so ko falls
-     back to en by design. zh-tw derives from zh via OpenCC — marker is ko-only. */
-  }
-  <article
-    class="max-w-4xl mx-auto px-4 sm:px-6 py-12 md:py-16"
-    {...lang === 'ko' ? { 'data-i18n-allow-en': 'benchmark-drilldown-en-fallback' } : {}}
-  >
+  <article class="max-w-4xl mx-auto px-4 sm:px-6 py-12 md:py-16">
     <header class="mb-8">
       <div class="mb-5 flex flex-wrap items-center gap-2 text-xs">
         <a

@@ -91,9 +91,9 @@ export const ALLOW_REASONS = {
   // Benchmarking profile prose with no ko sibling falls back to en.
   'benchmark-case-en-fallback': { attr: 'data-i18n-allow-en', langs: ['ko'] },
   'benchmark-region-en-fallback': { attr: 'data-i18n-allow-en', langs: ['ko'] },
-  'benchmark-drilldown-en-fallback': { attr: 'data-i18n-allow-en', langs: ['ko'] },
   // About-page prose with no ko sibling falls back to en.
   'about-prose-en-fallback': { attr: 'data-i18n-allow-en', langs: ['ko'] },
-  // Startup profile prose with no ko sibling falls back to en.
-  'startup-en-fallback': { attr: 'data-i18n-allow-en', langs: ['ko'] },
+  // (removed 2026-07: benchmark-drilldown-en-fallback + startup-en-fallback —
+  //  entity-pages.ts now synthesizes full ja/ko siblings, so those pages carry
+  //  real Korean and the masking markers were deleted from their components.)
 };

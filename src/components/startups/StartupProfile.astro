@@ -1,0 +1,448 @@
+---
+// Shared startup entity profile — one template for all five locales
+// (extracted from the twin startups/[id] routes, PR #100 listing precedent).
+//
+// Localization model (CLAUDE.md rule #13):
+//   - Synthesized page fields (category/description/aiRelation) carry full
+//     zh/en/ja/ko siblings in entity-pages.ts and resolve via pickLocalized
+//     (zh-tw derives from zh through OpenCC inside pickLocalized).
+//   - Page-local prose is authored in zh/en/ja/ko as Record<Lang, string>
+//     via withZhTw (zh-tw = toTraditional(zh)) — never an en fallback.
+
+import { Icon } from 'astro-icon/components';
+
+import Layout from '~/layouts/PageLayout.astro';
+import SameTopicRail from '~/components/data/SameTopicRail.astro';
+import JsonLd from '~/components/common/JsonLd.astro';
+import EcosystemProse from '~/components/data/EcosystemProse.astro';
+import { ecosystemStats } from '~/data/startups';
+import { getStartupAiRelation, getStartupEntitySiblings, type StartupEntityKind } from '~/utils/entity-pages';
+import type { StartupEntityPage } from '~/utils/entity-pages';
+import { localizedHref, pickLocalized, t, type Lang } from '~/i18n';
+import { toTraditional } from '~/i18n/opencc';
+
+interface Props {
+  page: StartupEntityPage;
+  lang: Lang;
+}
+
+const { page, lang } = Astro.props;
+const { startup, unicorn, exit, investor } = page;
+
+/** Five-locale record from four authored strings; zh-tw derives from zh via OpenCC. */
+const withZhTw = (r: { zh: string; en: string; ja: string; ko: string }): Record<Lang, string> => ({
+  ...r,
+  'zh-tw': toTraditional(r.zh),
+});
+
+/** Resolve one data field into all four authored locales (pickLocalized handles
+ *  the ja/ko → en → zh fallback chains), for interpolation into withZhTw records. */
+const pick4 = (record: object, field: string): { zh: string; en: string; ja: string; ko: string } => ({
+  zh: pickLocalized<string>(record, field, 'zh') || '',
+  en: pickLocalized<string>(record, field, 'en') || '',
+  ja: pickLocalized<string>(record, field, 'ja') || '',
+  ko: pickLocalized<string>(record, field, 'ko') || '',
+});
+
+const kindLabelKeys: Record<StartupEntityKind, 'startupKindCompany' | 'startupKindExit' | 'startupKindInvestor'> = {
+  company: 'startupKindCompany',
+  exit: 'startupKindExit',
+  investor: 'startupKindInvestor',
+};
+const kindLabel = t(lang, kindLabelKeys[page.kind]);
+
+const externalUrl = page.url || null;
+const externalLabel = externalUrl?.replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, '');
+const raised = unicorn?.raised || startup?.raised;
+const pageCategory = pickLocalized<string>(page, 'category', lang) || page.category;
+const pageDescription = pickLocalized<string>(page, 'description', lang) || page.description;
+const profileText = startup ? pickLocalized<string>(startup, 'profile', lang) : null;
+const description = profileText || pageDescription;
+const relatedPages = getStartupEntitySiblings(page);
+const aiRelation = getStartupAiRelation(page);
+const aiRelationLabel = pickLocalized<string>(aiRelation, 'label', lang) || aiRelation.label;
+const aiRelationDescription = pickLocalized<string>(aiRelation, 'description', lang) || aiRelation.description;
+
+// Per-locale pieces for interpolation into the authored records below.
+const cat = pick4(page, 'category');
+const desc = pick4(page, 'description');
+const pendingLabel = withZhTw({ zh: '待补', en: 'pending', ja: '未定', ko: '미정' })[lang];
+
+const overview =
+  profileText ||
+  (investor
+    ? withZhTw({
+        zh: `${page.name} 是新加坡 AI 创业生态中的${investor.type}。这类机构决定了早期公司能否获得耐心资本、产业连接和跨境扩张资源。`,
+        en: `${page.name} is part of the capital layer in Singapore's AI startup ecosystem. Institutions in this layer shape whether early companies can access patient capital, industry networks, and regional expansion support.`,
+        ja: `${page.name} はシンガポール AI スタートアップ生態系の資本レイヤーに属します。このレイヤーの機関は、初期段階の企業が忍耐強い資本、産業ネットワーク、地域展開の支援を得られるかどうかを左右します。`,
+        ko: `${page.name}은(는) 싱가포르 AI 스타트업 생태계의 자본 레이어에 속합니다. 이 레이어의 기관들은 초기 기업이 인내 자본, 산업 네트워크, 지역 확장 지원을 확보할 수 있는지를 좌우합니다.`,
+      })[lang]
+    : exit
+      ? withZhTw({
+          zh: `${page.name} 是新加坡 AI 创业生态中的退出与并购样本。它的价值不只在交易本身，也在于说明本地 AI 项目是否能被全球平台、产业买家或监管体系重新定价。`,
+          en: `${page.name} is tracked here as an exit or acquisition signal in Singapore's AI ecosystem. The point is not just the transaction, but what the transaction says about how AI assets, teams, and regional headquarters are being valued.`,
+          ja: `${page.name} はシンガポール AI 生態系におけるイグジット・買収のサンプルとして収録されています。その価値は取引そのものだけでなく、ローカル AI プロジェクトがグローバルプラットフォーム、産業バイヤー、規制体系によって再評価され得るかを示す点にもあります。`,
+          ko: `${page.name}은(는) 싱가포르 AI 생태계의 엑시트·인수 사례로 수록되어 있습니다. 그 가치는 거래 자체뿐 아니라, 로컬 AI 프로젝트가 글로벌 플랫폼, 산업 인수자, 규제 체계에 의해 재평가될 수 있는지를 보여 준다는 점에 있습니다.`,
+        })[lang]
+      : withZhTw({
+          zh: `${page.name} 是新加坡 AI 创业生态中偏「${page.category}」的公司 / 项目。当前公开定位是：${page.description}。`,
+          en: `${page.name} is tracked as a company or project in the ${cat.en} vertical of Singapore's AI startup ecosystem. Its public positioning is: ${desc.en}.`,
+          ja: `${page.name} はシンガポール AI スタートアップ生態系における「${cat.ja}」系の企業／プロジェクトです。現在の公開ポジショニングは：${desc.ja}。`,
+          ko: `${page.name}은(는) 싱가포르 AI 스타트업 생태계에서 「${cat.ko}」 계열의 기업/프로젝트입니다. 현재 공개 포지셔닝은 ${desc.ko}입니다.`,
+        })[lang]);
+
+const relevance = investor
+  ? withZhTw({
+      zh: `${page.name} 所在的位置是资本供给层。观察它的投资节奏，可以看到新加坡 AI 生态是偏向基础设施、深科技，还是偏向应用层和东南亚市场落地。`,
+      en: `${page.name} sits in the capital-supply layer. Its investment pattern helps show whether Singapore's AI market is leaning toward infrastructure, deep tech, application software, or Southeast Asia platform companies.`,
+      ja: `${page.name} は資本供給レイヤーに位置します。その投資パターンを観察すると、シンガポールの AI 生態系がインフラ・ディープテック寄りか、それともアプリケーション層や東南アジア市場への展開寄りかが見えてきます。`,
+      ko: `${page.name}은(는) 자본 공급 레이어에 위치합니다. 그 투자 패턴을 관찰하면 싱가포르 AI 생태계가 인프라·딥테크 쪽인지, 아니면 애플리케이션 계층과 동남아시아 시장 안착 쪽인지 볼 수 있습니다.`,
+    })[lang]
+  : exit
+    ? withZhTw({
+        zh: `${page.name} 对新加坡的意义在于“退出路径”。一个生态能否持续吸引创业者，不只看公司数量，也看是否有上市、并购、跨境整合这些可兑现路径。`,
+        en: `${page.name} matters because ecosystem quality is measured not only by startup count, but also by credible exit paths such as IPOs, acquisitions, and cross-border consolidation.`,
+        ja: `${page.name} がシンガポールにとって重要なのは「イグジット経路」だからです。生態系が起業家を惹きつけ続けられるかは、企業数だけでなく、上場・買収・国境を越えた統合といった現金化可能な経路の有無にもかかっています。`,
+        ko: `${page.name}이(가) 싱가포르에 중요한 이유는 「엑시트 경로」에 있습니다. 생태계가 창업자를 지속적으로 끌어들일 수 있는지는 기업 수뿐 아니라 상장, 인수합병, 국경 간 통합 같은 실현 가능한 경로의 유무에도 달려 있습니다.`,
+      })[lang]
+    : withZhTw({
+        zh: `${page.name} 所在的「${page.category}」方向，是判断新加坡 AI 创业是否能从政策、人才和研究投入转化为真实商业公司的一个具体观察点。`,
+        en: `${page.name} is a concrete signal for whether Singapore can turn policy, talent, and research inputs into commercially useful AI companies in the ${cat.en} vertical.`,
+        ja: `${page.name} が属する「${cat.ja}」分野は、シンガポールの AI スタートアップが政策・人材・研究投入を実際の商業企業へ転換できるかを判断する具体的な観察ポイントです。`,
+        ko: `${page.name}이(가) 속한 「${cat.ko}」 분야는 싱가포르 AI 창업이 정책·인재·연구 투입을 실제 상업 기업으로 전환할 수 있는지를 판단하는 구체적인 관찰 지점입니다.`,
+      })[lang];
+
+const uStatus = unicorn ? pick4(unicorn, 'status') : null;
+const eAcquirer = exit ? pick4(exit, 'acquirer') : null;
+const iStats = investor ? pick4(investor, 'stats') : null;
+const iFocus = investor ? pick4(investor, 'focus') : null;
+const sHighlight = startup ? pick4(startup, 'highlight') : null;
+
+const signalRecords = [
+  unicorn &&
+    uStatus &&
+    withZhTw({
+      zh: `独角兽 / 上市尺度：融资 ${unicorn.raised}，估值 ${unicorn.valuation}，状态为「${unicorn.status}」。`,
+      en: `Unicorn / listed-scale signal: raised ${unicorn.raised}, valuation ${unicorn.valuation}, status ${uStatus.en}.`,
+      ja: `ユニコーン／上場規模のシグナル：調達 ${unicorn.raised}、評価額 ${unicorn.valuation}、ステータスは「${uStatus.ja}」。`,
+      ko: `유니콘/상장 규모 시그널: 조달 ${unicorn.raised}, 기업 가치 ${unicorn.valuation}, 상태는 「${uStatus.ko}」.`,
+    }),
+  raised &&
+    withZhTw({
+      zh: `公开融资信号：${raised}。`,
+      en: `Public funding signal: ${raised}.`,
+      ja: `公開資金調達シグナル：${raised}。`,
+      ko: `공개 투자 유치 시그널: ${raised}.`,
+    }),
+  startup?.investors &&
+    withZhTw({
+      zh: `公开关联投资者：${startup.investors}。`,
+      en: `Named investors or backers: ${startup.investors}.`,
+      ja: `公開されている関連投資家：${startup.investors}。`,
+      ko: `공개된 관련 투자자: ${startup.investors}.`,
+    }),
+  (startup?.highlight || startup?.highlightEn) &&
+    sHighlight &&
+    withZhTw({
+      zh: `当前标签：${sHighlight.zh || sHighlight.en}。`,
+      en: `Current tag: ${sHighlight.en}.`,
+      ja: `現在のタグ：${sHighlight.ja}。`,
+      ko: `현재 태그: ${sHighlight.ko}.`,
+    }),
+  exit &&
+    eAcquirer &&
+    withZhTw({
+      zh: `退出事件：收购方 / 交易方为 ${exit.acquirer}，金额 ${exit.amount}，年份 ${exit.year || '待补'}。`,
+      en: `Exit event: acquirer or transaction party ${eAcquirer.en}, amount ${exit.amount}, year ${exit.year || 'pending'}.`,
+      ja: `イグジットイベント：買収側／取引相手は ${eAcquirer.ja}、金額 ${exit.amount}、年は ${exit.year || '未定'}。`,
+      ko: `엑시트 이벤트: 인수자/거래 상대는 ${eAcquirer.ko}, 금액 ${exit.amount}, 연도 ${exit.year || '미정'}.`,
+    }),
+  investor &&
+    iStats &&
+    iFocus &&
+    withZhTw({
+      zh: `投资记录：${investor.stats}；重点领域：${investor.focus}。`,
+      en: `Track record: ${iStats.en}; focus: ${iFocus.en}.`,
+      ja: `投資実績：${iStats.ja}；重点領域：${iFocus.ja}。`,
+      ko: `투자 실적: ${iStats.ko}; 중점 영역: ${iFocus.ko}.`,
+    }),
+];
+const signalItems = signalRecords
+  .filter((record): record is Record<Lang, string> => Boolean(record))
+  .map((record) => record[lang]);
+
+const trackingByKind: Record<StartupEntityKind, Array<Record<Lang, string>>> = {
+  investor: [
+    withZhTw({
+      zh: 'AI 投资是否集中在基础设施、模型、垂直应用，还是偏东南亚平台型公司。',
+      en: 'Whether AI investment concentrates in infrastructure, models, vertical applications, or Southeast Asia platform companies.',
+      ja: 'AI 投資がインフラ、モデル、垂直アプリケーションに集中しているか、それとも東南アジアのプラットフォーム型企業寄りか。',
+      ko: 'AI 투자가 인프라, 모델, 버티컬 애플리케이션에 집중되는지, 아니면 동남아시아 플랫폼형 기업 쪽인지.',
+    }),
+    withZhTw({
+      zh: '是否出现从早期投资到并购、IPO 的连续退出路径。',
+      en: 'Whether the market develops a continuous path from early funding to acquisitions or IPOs.',
+      ja: '早期投資から買収・IPO へと続く連続的なイグジット経路が生まれているか。',
+      ko: '초기 투자에서 인수합병·IPO로 이어지는 연속적인 엑시트 경로가 나타나는지.',
+    }),
+  ],
+  exit: [
+    withZhTw({
+      zh: '交易是否真正完成，以及监管、数据、技术主权因素是否改变跨境并购路径。',
+      en: 'Whether the transaction completes, and whether regulation, data, or technology-sovereignty concerns reshape cross-border acquisitions.',
+      ja: '取引が実際に完了するか、また規制・データ・技術主権の要因が国境を越えた買収経路を変えるか。',
+      ko: '거래가 실제로 완료되는지, 그리고 규제·데이터·기술 주권 요인이 국경 간 인수 경로를 바꾸는지.',
+    }),
+    withZhTw({
+      zh: '收购方看中的到底是产品、团队、客户，还是新加坡作为区域总部的结构位置。',
+      en: 'Whether the buyer valued the product, the team, the customer base, or Singapore as a regional headquarters structure.',
+      ja: '買収側が評価したのは製品か、チームか、顧客基盤か、それとも地域本部としてのシンガポールの構造的ポジションか。',
+      ko: '인수자가 평가한 것이 제품인지, 팀인지, 고객 기반인지, 아니면 지역 본부로서 싱가포르의 구조적 위치인지.',
+    }),
+  ],
+  company: [
+    withZhTw({
+      zh: '产品是否从单点 AI 功能走向可重复交付的平台或行业工作流。',
+      en: 'Whether the product moves from a single AI feature toward a repeatable platform or industry workflow.',
+      ja: '製品が単発の AI 機能から、繰り返し提供可能なプラットフォームや業界ワークフローへ進化しているか。',
+      ko: '제품이 단일 AI 기능에서 반복 제공 가능한 플랫폼 또는 산업 워크플로로 나아가는지.',
+    }),
+    withZhTw({
+      zh: '客户主要在新加坡本地、东南亚区域，还是全球市场。',
+      en: 'Whether customers are mainly local, regional across Southeast Asia, or global.',
+      ja: '顧客が主にシンガポール国内か、東南アジア地域か、それともグローバル市場か。',
+      ko: '고객이 주로 싱가포르 현지인지, 동남아시아 지역인지, 아니면 글로벌 시장인지.',
+    }),
+    withZhTw({
+      zh: '融资、收入、开源影响力、监管许可等信号是否继续增强。',
+      en: 'Whether signals such as funding, revenue, open-source traction, or regulatory clearance keep strengthening.',
+      ja: '資金調達、売上、オープンソースの影響力、規制上の許認可といったシグナルが強まり続けているか。',
+      ko: '투자 유치, 매출, 오픈소스 영향력, 규제 허가 등의 시그널이 계속 강해지는지.',
+    }),
+  ],
+};
+const trackingItems = trackingByKind[page.kind].map((record) => record[lang]);
+
+// Fact labels come from the central dict; values resolve per locale via
+// pickLocalized (zh-tw derives from zh through OpenCC inside pickLocalized).
+const facts = [
+  { label: t(lang, 'startupTypeLabel'), value: kindLabel },
+  { label: t(lang, 'startupVerticalLabel'), value: pageCategory },
+  { label: t(lang, 'startupAiRelationLabel'), value: aiRelationLabel },
+  raised && { label: t(lang, 'startupPublicFunding'), value: raised },
+  unicorn?.valuation && { label: t(lang, 'startupValuation'), value: unicorn.valuation },
+  unicorn?.status && {
+    label: t(lang, 'startupStatusLabel'),
+    value: pickLocalized<string>(unicorn, 'status', lang) || unicorn.status,
+  },
+  startup?.investors && { label: t(lang, 'startupInvestorsLabel'), value: startup.investors },
+  exit && {
+    label: t(lang, 'startupAcquirerLabel'),
+    value: pickLocalized<string>(exit, 'acquirer', lang) || exit.acquirer,
+  },
+  exit && {
+    label: t(lang, 'startupAmountYear'),
+    value: `${exit.amount} · ${exit.year || pendingLabel}`,
+  },
+  investor && {
+    label: t(lang, 'startupTrackRecord'),
+    value: pickLocalized<string>(investor, 'stats', lang) || investor.stats,
+  },
+  investor && {
+    label: t(lang, 'startupFocusLabel'),
+    value: pickLocalized<string>(investor, 'focus', lang) || investor.focus,
+  },
+  externalUrl && { label: t(lang, 'officialWebsite'), value: externalLabel || externalUrl, href: externalUrl },
+].filter((fact): fact is { label: string; value: string; href?: string } => Boolean(fact));
+
+const exitNote = exit ? pickLocalized<string>(exit, 'note', lang) : null;
+
+const dataNote = withZhTw({
+  zh: `本页为创业生态实体档案，档案整理与 AI 关联口径校订于 ${ecosystemStats.profileUpdated}；基础统计（公司数、融资占比、总融资等）沿用 ${ecosystemStats.dataDate} 的公开口径。融资、估值、退出金额等均以公开报道或公开资料为准；同一公司在不同数据库中的口径可能不同。`,
+  en: `This entity profile was organized and its AI-relation label was checked on ${ecosystemStats.profileUpdated}. Aggregate ecosystem statistics such as startup count, funding share, and total VC raised use the public baseline as of ${ecosystemStats.dataDate}. Funding, valuation, and exit amounts follow public reporting or public datasets; different databases may use different definitions for the same company.`,
+  ja: `本ページはスタートアップ生態系エンティティのアーカイブです。アーカイブ整理と AI 関連ラベルの確認は ${ecosystemStats.profileUpdated} 時点、基礎統計（企業数、資金調達シェア、総調達額など）は ${ecosystemStats.dataDate} 時点の公開ベースラインに基づきます。資金調達、評価額、イグジット金額は公開報道または公開データに準拠しており、同じ企業でもデータベースによって定義が異なる場合があります。`,
+  ko: `이 페이지는 스타트업 생태계 엔티티 아카이브입니다. 아카이브 정리와 AI 관련 라벨 확인은 ${ecosystemStats.profileUpdated} 기준이며, 기초 통계(기업 수, 투자 비중, 총 조달액 등)는 ${ecosystemStats.dataDate} 기준 공개 베이스라인을 따릅니다. 투자 유치, 기업 가치, 엑시트 금액은 공개 보도 또는 공개 데이터를 기준으로 하며, 같은 회사라도 데이터베이스에 따라 정의가 다를 수 있습니다.`,
+})[lang];
+
+const startupBrandSuffix = withZhTw({
+  zh: '新加坡 AI 创业生态档案 · sgai',
+  en: 'Singapore AI startup profile · sgai',
+  ja: 'シンガポール AI スタートアップ ・プロファイル · sgai',
+  ko: '싱가포르 AI 스타트업 프로파일 · sgai',
+})[lang];
+const titleSep = withZhTw({ zh: '：', en: ': ', ja: '：', ko: ': ' })[lang];
+const metadata = {
+  title: `${page.name} · ${startupBrandSuffix}`,
+  description: `${page.name}${titleSep}${pageDescription}`,
+};
+
+const canonicalUrl = `https://sgai.md/startups/${page.slug}/`;
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: page.name,
+  description: metadata.description,
+  url: externalUrl || canonicalUrl,
+  sameAs: externalUrl ? [externalUrl] : undefined,
+  mainEntityOfPage: canonicalUrl,
+  isPartOf: {
+    '@type': 'WebSite',
+    name: t(lang, 'siteName'),
+    url: 'https://sgai.md/',
+  },
+};
+---
+
+<Layout
+  metadata={metadata}
+  breadcrumbs={[{ label: t(lang, 'startupNav'), href: localizedHref('/startups/', lang) }, { label: page.name }]}
+  lang={lang}
+>
+  <JsonLd schema={schema} />
+  <article class="max-w-3xl mx-auto px-4 sm:px-6 py-10 md:py-12">
+    <div class="mb-6 flex flex-wrap items-center gap-2 text-xs">
+      <a
+        href={localizedHref('/startups/', lang)}
+        class="inline-flex items-center gap-1 bg-primary/10 text-primary px-3 py-1.5 rounded-full font-semibold hover:bg-primary/15 transition-colors"
+      >
+        <span>{page.icon}</span>
+        <span>{pageCategory}</span>
+      </a>
+      <span class="bg-gray-100 dark:bg-slate-800 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-full">
+        {kindLabel}
+      </span>
+      <span class="bg-gray-100 dark:bg-slate-800 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-full">
+        {aiRelationLabel}
+      </span>
+      {
+        unicorn && (
+          <span class="bg-gray-100 dark:bg-slate-800 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-full">
+            {t(lang, 'startupUnicornBadge')}
+          </span>
+        )
+      }
+    </div>
+
+    <h1 class="t-display text-gray-900 dark:text-white mb-3">{page.name}</h1>
+    <p class="font-serif text-lg leading-[1.85] text-gray-800 dark:text-gray-200 mb-8 border-l-4 border-primary pl-5">
+      {description}
+    </p>
+
+    <dl
+      class="bg-surface rounded-lg border border-subtle p-5 mb-10 grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4 text-sm"
+    >
+      {
+        facts.map((fact) => (
+          <div>
+            <dt class="text-xs uppercase tracking-wider text-muted mb-1">{fact.label}</dt>
+            <dd class="text-gray-900 dark:text-white">
+              {fact.href ? (
+                <a
+                  href={fact.href}
+                  target="_blank"
+                  rel="noopener"
+                  class="text-primary hover:underline inline-flex items-center gap-1"
+                >
+                  {fact.value}
+                  <Icon name="tabler:external-link" class="w-3.5 h-3.5" />
+                </a>
+              ) : (
+                fact.value
+              )}
+            </dd>
+          </div>
+        ))
+      }
+    </dl>
+
+    <section class="mb-10">
+      <h2 class="t-h3 text-gray-900 dark:text-white mb-4">{t(lang, 'startupPositioning')}</h2>
+      <EcosystemProse content={overview} />
+    </section>
+
+    <section class="mb-10">
+      <h2 class="t-h3 text-gray-900 dark:text-white mb-4">{t(lang, 'startupCapitalSignals')}</h2>
+      {
+        signalItems.length > 0 ? (
+          <ul class="list-disc list-outside pl-6 space-y-2 text-gray-800 dark:text-gray-200 leading-relaxed">
+            {signalItems.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+        ) : (
+          <p class="text-gray-700 dark:text-gray-300 leading-relaxed">{t(lang, 'startupSignalsPending')}</p>
+        )
+      }
+    </section>
+
+    <section class="mb-10">
+      <h2 class="t-h3 text-gray-900 dark:text-white mb-4">{t(lang, 'startupAiRelationHeading')}</h2>
+      <EcosystemProse content={aiRelationDescription} />
+    </section>
+
+    <section class="mb-10">
+      <h2 class="t-h3 text-gray-900 dark:text-white mb-4">{t(lang, 'startupWhyItMatters')}</h2>
+      <EcosystemProse content={relevance} />
+    </section>
+
+    <section class="mb-10">
+      <h2 class="t-h3 text-gray-900 dark:text-white mb-4">{t(lang, 'startupSignalsToTrack')}</h2>
+      <ul class="list-disc list-outside pl-6 space-y-2 text-gray-800 dark:text-gray-200 leading-relaxed">
+        {trackingItems.map((item) => <li>{item}</li>)}
+      </ul>
+    </section>
+
+    {
+      exitNote && (
+        <section class="mb-10 callout-note">
+          <h2 class="font-semibold text-gray-900 dark:text-white mb-2">{t(lang, 'startupNote')}</h2>
+          <p class="leading-relaxed text-gray-800 dark:text-gray-200">{exitNote}</p>
+        </section>
+      )
+    }
+
+    {
+      relatedPages.length > 0 && (
+        <section class="mb-10 pt-6 border-t border-subtle">
+          <h2 class="text-sm uppercase tracking-wider text-muted font-semibold mb-3">
+            {t(lang, 'startupRelatedEntities')}
+          </h2>
+          <div class="grid gap-3 sm:grid-cols-2">
+            {relatedPages.map((related) => (
+              <a
+                href={localizedHref(`/startups/${related.slug}/`, lang)}
+                class="group bg-surface rounded-lg p-4 border border-subtle hover:border-primary transition-colors"
+              >
+                <div class="text-xs text-muted mb-1">
+                  {pickLocalized(related, 'category', lang) || related.category}
+                </div>
+                <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-primary transition-colors">
+                  {related.name}
+                </h3>
+                <p class="text-xs text-gray-600 dark:text-gray-400 mt-1 line-clamp-2">
+                  {pickLocalized(related, 'description', lang) || related.description}
+                </p>
+              </a>
+            ))}
+          </div>
+        </section>
+      )
+    }
+
+    <section class="mb-10 pt-6 border-t border-subtle">
+      <h2 class="text-sm uppercase tracking-wider text-muted font-semibold mb-3">{t(lang, 'startupDataNote')}</h2>
+      <p class="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">{dataNote}</p>
+    </section>
+
+    <nav class="mt-12 pt-6 border-t border-subtle">
+      <a
+        href={localizedHref('/startups/', lang)}
+        class="text-sm text-primary hover:text-secondary font-medium inline-flex items-center gap-1"
+      >
+        <Icon name="tabler:arrow-left" class="w-4 h-4" />
+        {t(lang, 'startupBackTo')}
+      </a>
+    </nav>
+  </article>
+  <SameTopicRail lang={lang} kind="startup" id={page.slug} class="max-w-5xl mx-auto px-4 sm:px-6 pb-16 mt-4" />
+</Layout>

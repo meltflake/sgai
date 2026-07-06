@@ -32,9 +32,7 @@ const EXPECTED = {
   'video-digest-en-fallback': { attr: 'data-i18n-allow-en', langs: ['ko'] },
   'benchmark-case-en-fallback': { attr: 'data-i18n-allow-en', langs: ['ko'] },
   'benchmark-region-en-fallback': { attr: 'data-i18n-allow-en', langs: ['ko'] },
-  'benchmark-drilldown-en-fallback': { attr: 'data-i18n-allow-en', langs: ['ko'] },
   'about-prose-en-fallback': { attr: 'data-i18n-allow-en', langs: ['ko'] },
-  'startup-en-fallback': { attr: 'data-i18n-allow-en', langs: ['ko'] },
 };
 
 // The six reasons that are `langs: 'all'` — the trusted verbatim boundary.
