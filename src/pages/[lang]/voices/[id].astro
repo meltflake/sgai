@@ -89,17 +89,16 @@ const categoryColors: Record<Person['category'], string> = {
 // 一旦补上任何信号自动放开。
 const isLowSignal = isLowSignalPerson(person);
 
-// Title suffix per locale — keeps brand keyword + AI topic in first 60 chars.
-const titleSuffix =
-  lang === 'zh'
-    ? '的 AI 政策影响力 · sgai'
-    : lang === 'ja'
-      ? 'の AI 政策影響力 · sgai'
-      : lang === 'ko'
-        ? '의 AI 정책 영향력 · sgai'
-        : lang === 'zh-tw'
-          ? '的 AI 政策影響力 · sgai'
-          : ' on AI — Singapore policy, speeches, videos · sgai';
+// Title suffix per locale — AI topic keyword up front; Metadata.astro's
+// template appends the `· sgai` brand token.
+const titleSuffixByLang: Record<Lang, string> = {
+  zh: '的 AI 政策影响力',
+  'zh-tw': toTraditional('的 AI 政策影响力'),
+  ja: 'の AI 政策影響力',
+  ko: '의 AI 정책 영향력',
+  en: ' on AI — Singapore policy, speeches, videos',
+};
+const titleSuffix = titleSuffixByLang[lang] || titleSuffixByLang.en;
 
 // Build signal line from counts. Empty if all-zero (low-signal profile).
 // zh-tw uses zh source strings routed through toTraditional() per CLAUDE.md

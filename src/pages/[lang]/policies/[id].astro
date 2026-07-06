@@ -9,6 +9,7 @@ import Layout from '~/layouts/PageLayout.astro';
 import SameTopicRail from '~/components/data/SameTopicRail.astro';
 import { categories } from '~/data/policies';
 import { NON_DEFAULT_ROUTE_LOCALES, localizedHref, pickLocalized, t, type Lang } from '~/i18n';
+import { toTraditional } from '~/i18n/opencc';
 
 export const prerender = true;
 
@@ -32,18 +33,17 @@ const lang = Astro.params.lang as Lang;
 const title = pickLocalized<string>(policy, 'title', lang) || policy.title;
 const summary = pickLocalized<string>(policy, 'summary', lang) || '';
 
-// Per-locale brand suffix; year + ministry baked into description.
+// Per-locale distinguisher (Metadata.astro's template appends `· sgai`);
+// year + ministry baked into description.
 const isCjk = lang === 'zh' || lang === 'zh-tw';
-const brandSuffix =
-  lang === 'zh'
-    ? ' · 新加坡 AI 政策 · sgai'
-    : lang === 'zh-tw'
-      ? ' · 新加坡 AI 政策 · sgai'
-      : lang === 'ja'
-        ? ' · シンガポール AI 政策 · sgai'
-        : lang === 'ko'
-          ? ' · 싱가포르 AI 정책 · sgai'
-          : ' · Singapore AI Policy · sgai';
+const brandSuffixByLang: Record<Lang, string> = {
+  zh: ' · 新加坡 AI 政策',
+  'zh-tw': toTraditional(' · 新加坡 AI 政策'),
+  ja: ' · シンガポール AI 政策',
+  ko: ' · 싱가포르 AI 정책',
+  en: ' · Singapore AI Policy',
+};
+const brandSuffix = brandSuffixByLang[lang] || brandSuffixByLang.en;
 const yearMatch = (policy.date || '').slice(0, 4);
 const metaPrefix = [yearMatch, policy.ministry].filter(Boolean).join(' · ');
 const metaJoiner = isCjk ? '。' : '. ';

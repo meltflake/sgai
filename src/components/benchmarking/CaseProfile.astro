@@ -6,9 +6,10 @@ import Layout from '~/layouts/PageLayout.astro';
 import SameTopicRail from '~/components/data/SameTopicRail.astro';
 import { benchmarkCaseProfileUpdated, dataDate } from '~/data/benchmarking';
 import { benchmarkCasePages, regionPages, type BenchmarkCasePage } from '~/utils/entity-pages';
-import { IN_LANGUAGES, localizedHref, pickLocalized, t, type Lang } from '~/i18n';
+import { IN_LANGUAGES, localizedHref, pickLocalized, pickLocalizedOwn, t, type Lang } from '~/i18n';
 import { toTraditional } from '~/i18n/opencc';
 import { getCanonical } from '~/utils/permalinks';
+import { synthesizeMetaDescription } from '~/utils/utils';
 
 interface Props {
   page: BenchmarkCasePage;
@@ -79,16 +80,24 @@ const caseSuffixByLang: Record<Lang, string> = {
   ja: '国際ベンチマーク事例',
   ko: '국제 벤치마크 사례',
 };
+// Extend the snippet with the Singapore takeaway (or why-it-matters) only
+// when the exact-locale sibling exists — the fallback-chain picks above are
+// fine for body copy but would splice EN sentences into ja/ko meta tags.
+const metaDescription =
+  synthesizeMetaDescription([
+    pickLocalizedOwn(caseItem, 'summary', lang),
+    pickLocalizedOwn(caseItem, 'singaporeTakeaway', lang) || pickLocalizedOwn(caseItem, 'whyItMatters', lang),
+  ]) || summary;
 const metadata = {
   title: `${name} · ${caseSuffixByLang[lang] || caseSuffixByLang.en}`,
-  description: summary,
+  description: metaDescription,
   ...canonicalOverride,
 };
 
 const articleSchema = {
   '@context': 'https://schema.org',
   '@type': 'Article',
-  headline: metadata.title,
+  headline: name,
   description: summary,
   datePublished: benchmarkCaseProfileUpdated,
   dateModified: benchmarkCaseProfileUpdated,

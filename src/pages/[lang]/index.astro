@@ -11,16 +11,16 @@ export function getStaticPaths() {
 
 const lang = Astro.params.lang as Lang;
 
-const homeTitleSuffix =
-  lang === 'zh'
-    ? ' — 新加坡 AI 战略、政策与生态 · sgai'
-    : lang === 'zh-tw'
-      ? toTraditional(' — 新加坡 AI 战略、政策与生态 · sgai')
-      : lang === 'ja'
-        ? ' — シンガポール AI 戦略・政策・エコシステム · sgai'
-        : lang === 'ko'
-          ? ' — 싱가포르 AI 전략·정책·생태계 · sgai'
-          : ' — Singapore AI strategy, policy & ecosystem · sgai';
+// siteName already carries the country word in every locale — the suffix
+// adds the topic triplet only, keeping the whole title inside ~60 chars.
+const homeTitleSuffixByLang: Record<Lang, string> = {
+  zh: ' — AI 战略、政策与生态 · sgai',
+  'zh-tw': toTraditional(' — AI 战略、政策与生态 · sgai'),
+  ja: ' — AI 戦略・政策・エコシステム · sgai',
+  ko: ' — AI 전략·정책·생태계 · sgai',
+  en: ' — AI strategy, policy & ecosystem · sgai',
+};
+const homeTitleSuffix = homeTitleSuffixByLang[lang] || homeTitleSuffixByLang.en;
 const metadata = {
   title: `${t(lang, 'siteName')}${homeTitleSuffix}`,
   ignoreTitleTemplate: true,

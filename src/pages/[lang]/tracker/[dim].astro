@@ -6,7 +6,8 @@ import { Icon } from 'astro-icon/components';
 import Layout from '~/layouts/PageLayout.astro';
 import SameTopicRail from '~/components/data/SameTopicRail.astro';
 import { dimensions, dataDate, type Dimension, type MetricRow } from '~/data/tracker';
-import { NON_DEFAULT_ROUTE_LOCALES, localizedHref, pickLocalized, t, type Lang } from '~/i18n';
+import { NON_DEFAULT_ROUTE_LOCALES, localizedHref, pickLocalized, pickLocalizedOwn, t, type Lang } from '~/i18n';
+import { synthesizeMetaDescription } from '~/utils/utils';
 
 export const prerender = true;
 
@@ -54,9 +55,15 @@ const progressPct = dim.kind === 'quantified' ? (dim.progress?.pct ?? null) : nu
 const dashboardHref = localizedHref('/tracker/', lang);
 
 const seoTitle = pickLocalized<string>(dim, 'seoTitle', lang) ?? null;
+// oneLiner + judgment beat judgment alone as a snippet, but only extend
+// when the exact-locale siblings exist (pickLocalizedOwn) — falling back
+// through the chain here would put EN sentences on ko pages.
+const metaDescription =
+  synthesizeMetaDescription([pickLocalizedOwn(dim, 'oneLiner', lang), pickLocalizedOwn(dim, 'judgment', lang)]) ||
+  judgment;
 const metadata = {
-  title: seoTitle ? `${seoTitle} · sgai` : `${title} · ${t(lang, 'trackerPageTitle')}`,
-  description: judgment,
+  title: seoTitle ? seoTitle : `${title} · ${t(lang, 'trackerPageTitle')}`,
+  description: metaDescription,
 };
 
 // Pre-resolve ranking anchors to avoid pickLocalized<string>??-in-JSX TypeScript issues

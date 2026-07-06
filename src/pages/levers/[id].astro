@@ -43,8 +43,10 @@ const metaDescription = (descPrefix && description ? `${descPrefix}. ${descripti
   200
 );
 
+// Lever pages already start with "Lever N ·" — avoid repeating the number
+// in the suffix. Item pages get the lever number as their distinguisher.
 const metadata = {
-  title: `${title} · Singapore National AI Lever ${lever.number} · sgai`,
+  title: isLever ? `${title} — Singapore AI` : `${title} · Singapore AI Lever ${lever.number}`,
   description: metaDescription,
 };
 

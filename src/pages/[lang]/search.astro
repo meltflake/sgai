@@ -13,7 +13,7 @@ export function getStaticPaths() {
 const lang = Astro.params.lang as Lang;
 
 const metadata = {
-  title: `${t(lang, 'searchSiteLabel')} · ${t(lang, 'siteName')}`,
+  title: t(lang, 'searchSiteLabel'),
   description: t(lang, 'searchPageDesc'),
   robots: { index: false, follow: true },
 };

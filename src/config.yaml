@@ -10,7 +10,8 @@ site:
 metadata:
   title:
     default: 新加坡 AI 观察
-    template: '%s — 新加坡 AI 观察'
+    # Short brand token; full site name stays in og:site_name + WebSite JSON-LD.
+    template: '%s · sgai'
   description: '持续整理新加坡 AI 相关政策、治理框架与落地执行情况。'
   robots:
     index: true
