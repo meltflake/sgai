@@ -73,6 +73,16 @@ const STAGES: Stage[] = [
     needsDist: false,
     frequency: 'weekly',
   },
+  // gsc-monitor — Search Analytics watch: striking-distance queries, CTR
+  // anomalies, /zh/ position recovery. Skips (exit 0) with setup guidance
+  // when GSC_SERVICE_ACCOUNT_JSON / GSC_PROPERTY_URL are absent, so wiring
+  // it here is safe before credentials land.
+  {
+    name: 'gsc-monitor',
+    cmd: ['npx', 'tsx', 'scripts/evals/gsc-monitor/check.ts'],
+    needsDist: false,
+    frequency: 'weekly',
+  },
   {
     name: 'transcript-coverage',
     cmd: ['npx', 'tsx', 'scripts/evals/transcript-coverage/check.ts', '--include-historical'],

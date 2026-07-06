@@ -74,14 +74,20 @@ export const toUiAmount = (amount: number) => {
 export const toSchemaOrgDateTime = (date: string): string => `${date}T00:00:00+08:00`;
 
 /** Build a meta description from prose fragments: strip markdown syntax
- *  (links, emphasis, headings), collapse whitespace, join with a space,
- *  and cut at a word boundary near `maxLen`. Data fields like whatItIs /
- *  judgment are authored as markdown body copy, so they can't go into
- *  <meta name="description"> verbatim. */
+ *  (fenced code, links, emphasis, headings, list markers), collapse
+ *  whitespace, join with a space, and cut at a word boundary near `maxLen`.
+ *  Data fields like whatItIs / judgment are authored as markdown body copy,
+ *  so they can't go into <meta name="description"> verbatim. Fenced code
+ *  blocks in particular (e.g. an entity's ```yaml config example) must be
+ *  dropped WHOLE — stripping only the backtick fences would flatten the
+ *  code body into the snippet ("yaml nodes: - input.visual: source: webcam
+ *  …"), which also trips the ja/ko enSentence purity ratchet. */
 export const synthesizeMetaDescription = (parts: Array<string | null | undefined>, maxLen = 200): string => {
   const text = parts
     .filter((p): p is string => Boolean(p && p.trim()))
-    .join(' ')
+    .join('\n')
+    .replace(/```[\s\S]*?```/g, ' ') // drop fenced code blocks whole (before other strips)
+    .replace(/^[ \t]*[-*+]\s+/gm, '') // drop list-item markers
     .replace(/\[([^\]]*)\]\([^)]*\)/g, '$1') // [label](url) → label
     .replace(/[*_`#>]+/g, '')
     .replace(/\s+/g, ' ')
