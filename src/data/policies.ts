@@ -1242,6 +1242,40 @@ Strategically, this moves AI Verify from tools and frameworks into market infras
         relatedTimelineYears: [],
         relatedPostSlugs: [],
       },
+      {
+        id: 'speech-by-mos-rahayu-mahzam-at-the-committee-of-supply-debate-2026',
+        title: '部长拉哈尤·玛哈扎姆在2026年预算委员会辩论上的演讲',
+        titleEn: 'Speech by MOS Rahayu Mahzam at the Committee of Supply Debate 2026',
+        titleJa: '2026年予算委員会の議論におけるラハユ・マハザム大臣のスピーチ',
+        titleKo: '라하유 마하잠 장관의 2026년 예산위원회 토론 연설',
+        date: '2026-03',
+        source: '数字发展与信息部 (MDDI)',
+        sourceOrgUrl: 'https://www.mddi.gov.sg/',
+        sourceUrl:
+          'https://www.mddi.gov.sg/newsroom/-speech-by-mos-rahayu-mahzam-at-the-committee-of-supply-debate-2026/',
+        summary:
+          '新加坡数码发展及信息部政务部长阐述政府在在线安全和数字素养方面的综合策略。主要举措包括根据《在线安全（救济与问责）法》建立在线安全委员会，为受害者提供支持；对应用商店和社交媒体服务实施年龄验证措施；将人工智能素养融入学校课程，包括更新"Code for Fun"项目；以及为低收入家庭、老年人和残疾人士等弱势群体提供数字学习支持。政府强调采用"数字优先，但并非数字唯一"的方式确保包容性发展。',
+        content: `新加坡数码发展及信息部政务部长阐述政府在在线安全和数字素养方面的综合策略。主要举措包括根据《在线安全（救济与问责）法》建立在线安全委员会，为受害者提供支持；对应用商店和社交媒体服务实施年龄验证措施；将人工智能素养融入学校课程，包括更新"Code for Fun"项目；以及为低收入家庭、老年人和残疾人士等弱势群体提供数字学习支持。政府强调采用"数字优先，但并非数字唯一"的方式确保包容性发展。`,
+        summaryEn:
+          "Singapore's Minister of State for Digital Development and Information outlines the government's comprehensive strategy on online safety and digital literacy. Key initiatives include establishing the Online Safety Commission under the Online Safety (Relief and Accountability) Act to support victims of online harms; implementing age assurance measures for app stores and social media services; integrating AI literacy into school curricula through the Code for Fun programme; and providing targeted digital learning support for vulnerable groups including low-income families, seniors, and persons with disabilities. The government emphasizes a 'digital first, but not digital-only' approach to ensure inclusive development.",
+        contentEn: `Singapore's Minister of State for Digital Development and Information outlines the government's comprehensive strategy on online safety and digital literacy. Key initiatives include establishing the Online Safety Commission under the Online Safety (Relief and Accountability) Act to support victims of online harms; implementing age assurance measures for app stores and social media services; integrating AI literacy into school curricula through the Code for Fun programme; and providing targeted digital learning support for vulnerable groups including low-income families, seniors, and persons with disabilities. The government emphasizes a 'digital first, but not digital-only' approach to ensure inclusive development.`,
+        summaryJa:
+          'シンガポールのデジタル開発・情報省の政務大臣が、オンライン安全とデジタルリテラシーに関する政府の包括的な戦略について説明しています。主要な施策には、「オンライン安全（救済と説明責任）法」に基づくオンライン安全委員会の設立と被害者支援、アプリケーションストアとソーシャルメディアサービスへの年齢認証措置の実施、学校カリキュラムへの人工知能リテラシー統合（「Code for Fun」プログラムの更新を含む）、および低所得家庭、高齢者、身体障害者などの脆弱な層へのデジタル学習支援の提供が含まれます。政府は「デジタル優先、ただしデジタルのみではない」というアプローチを採用することで、包括的な発展を確保することを強調しています。',
+        contentJa: `シンガポールのデジタル開発・情報省の政務大臣が、オンライン安全とデジタルリテラシーに関する政府の包括的な戦略について説明しています。主要な施策には、「オンライン安全（救済と説明責任）法」に基づくオンライン安全委員会の設立と被害者支援、アプリケーションストアとソーシャルメディアサービスへの年齢認証措置の実施、学校カリキュラムへの人工知能リテラシー統合（「Code for Fun」プログラムの更新を含む）、および低所得家庭、高齢者、身体障害者などの脆弱な層へのデジタル学習支援の提供が含まれます。政府は「デジタル優先、ただしデジタルのみではない」というアプローチを採用することで、包括的な発展を確保することを強調しています。`,
+        summaryKo:
+          '싱가포르 디지털 발전 및 정보부 정무차관이 온라인 안전 및 디지털 문해력 분야에서 정부의 종합 전략을 설명했습니다. 주요 조치에는 「온라인 안전(구제 및 책임)법」에 따른 온라인 안전 위원회 설립 및 피해자 지원, 앱 스토어 및 소셜 미디어 서비스에 대한 연령 검증 조치 시행, 「Code for Fun」 프로그램 업데이트를 포함하는 학교 교육과정으로의 인공지능 문해력 통합, 그리고 저소득 가정, 노인, 장애인 등 취약 계층에 대한 디지털 학습 지원 제공이 포함됩니다. 정부는 포용적 발전을 보장하기 위해 「디지털 우선이지만 디지털만이 아닌」 방식 채택을 강조했습니다.',
+        contentKo: `싱가포르 디지털 발전 및 정보부 정무차관이 온라인 안전 및 디지털 문해력 분야에서 정부의 종합 전략을 설명했습니다. 주요 조치에는 「온라인 안전(구제 및 책임)법」에 따른 온라인 안전 위원회 설립 및 피해자 지원, 앱 스토어 및 소셜 미디어 서비스에 대한 연령 검증 조치 시행, 「Code for Fun」 프로그램 업데이트를 포함하는 학교 교육과정으로의 인공지능 문해력 통합, 그리고 저소득 가정, 노인, 장애인 등 취약 계층에 대한 디지털 학습 지원 제공이 포함됩니다. 정부는 포용적 발전을 보장하기 위해 「디지털 우선이지만 디지털만이 아닌」 방식 채택을 강조했습니다.`,
+        sourceEn: 'Ministry of Digital Development and Information (MDDI)',
+        sourceJa: 'デジタル開発情報省 (MDDI)',
+        sourceKo: '디지털개발정보부 (MDDI)',
+        ministry: 'MDDI',
+        authorPersonIds: [],
+        relatedDebateIds: [],
+        relatedLeverNumbers: [],
+        relatedTimelineYears: [],
+        relatedPostSlugs: [],
+        addedAt: '2026-07-06',
+      },
     ],
   },
   {
