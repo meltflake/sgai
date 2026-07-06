@@ -51,7 +51,9 @@ export interface UpdateLinkInput {
   label: string;
   labelJa: string;
   labelEn: string;
-  /** Optional but encouraged — run zh through translate.ts 'zh→ko'. */
+  /** Required when `label` contains CJK — the post-write pairing gate
+   *  (locales include 'ko') rolls back an entry whose CJK base field is
+   *  missing any locale sibling. Run zh through translate.ts 'zh→ko'. */
   labelKo?: string;
 }
 
@@ -61,12 +63,16 @@ export interface UpdateInput {
   title: string;
   titleJa: string;
   titleEn: string;
-  /** Optional but encouraged — run zh through translate.ts 'zh→ko'. */
+  /** Required when `title` contains CJK — the post-write pairing gate
+   *  (locales include 'ko') rolls back an entry whose CJK base field is
+   *  missing any locale sibling. Run zh through translate.ts 'zh→ko'. */
   titleKo?: string;
   summary: string;
   summaryJa: string;
   summaryEn: string;
-  /** Optional but encouraged — run zh through translate.ts 'zh→ko'. */
+  /** Required when `summary` contains CJK — the post-write pairing gate
+   *  (locales include 'ko') rolls back an entry whose CJK base field is
+   *  missing any locale sibling. Run zh through translate.ts 'zh→ko'. */
   summaryKo?: string;
   links?: UpdateLinkInput[];
 }
@@ -134,7 +140,12 @@ export function appendUpdate(
   if (!openRe.test(original)) {
     throw new Error(`Could not find UPDATES export anchor in ${file}`);
   }
-  const updated = original.replace(openRe, `$1${formatted}\n`);
+  // Function-form replacement: `formatted` carries arbitrary entry text
+  // (titles/summaries in every language, incl. money like "$15M 투자").
+  // A string-form replacement would interpret `$1`/`$&`/`$$` in that text
+  // as replacement directives and corrupt the emitted TS. escapeQuote does
+  // not cover `$`. The callback form disables all `$` interpretation.
+  const updated = original.replace(openRe, (match) => `${match}${formatted}\n`);
 
   const baselineCount = findUnpairedFields(file, {
     fields: ['title', 'summary', 'label'],
