@@ -7786,3 +7786,76 @@ export const dataDisclaimerJa =
   '本ページのデータは各国政府の公式文書、国際機関の報告書、公開報道を基に、シンガポール AI 観測が独自に整理したものです。データは 2026 年 2 月時点。';
 export const dataDisclaimerKo =
   '이 페이지의 데이터는 각국 정부의 공식 문서, 국제기구 보고서 및 공개 보도를 종합하여 Singapore AI Observatory가 독립적으로 정리한 것입니다. 데이터는 2026년 2월 기준입니다.';
+
+export interface AutoDiscoveredEntry {
+  title: string;
+  titleEn: string;
+  titleJa?: string;
+  titleKo?: string;
+  description: string;
+  descriptionEn: string;
+  descriptionJa?: string;
+  descriptionKo?: string;
+  category: string;
+  confidence: 'high' | 'medium' | 'low';
+  sourceUrl: string;
+  discoveredAt: string;
+  reasonForLowConfidence?: string;
+}
+
+export const autoDiscovered: AutoDiscoveredEntry[] = [
+  {
+    title: '2017年AI指数报告',
+    titleEn: 'The 2017 AI Index Report',
+    titleJa: '2017年AI指数レポート',
+    titleKo: '2017년 AI 지수 보고서',
+    description:
+      '斯坦福HAI发布的2017年AI指数报告通过汇总活动量（会议参与度、风险投资）、技术性能基准和行业趋势，提供了人工智能进展的全面分析。报告引入"AI活力指数"衡量学术界和产业界的活跃程度，包含专家评论，并追踪AI系统接近或超越人类性能的领域。',
+    descriptionEn:
+      'The 2017 AI Index Report from Stanford HAI aggregates data on AI progress across volume of activity (conference attendance, VC investments), technical performance benchmarks, and sector-wide trends. The report introduces the AI Vibrancy Index to measure the liveliness of AI development across academia and industry, includes expert commentary, and tracks areas where AI systems approach or exceed human performance. It serves as a foundational resource for understanding AI development.',
+    descriptionJa:
+      'スタンフォード大学のHAIが発表した2017年AI指数レポートは、活動量（学会参加度、ベンチャー投資）、技術性能ベンチマーク、および業界トレンドを集約することにより、人工知能の進展に関する包括的な分析を提供しています。報告書では「AI活力指数」を導入して、学術界と産業界の活動度を測定し、専門家の見解を含め、AIシステムが人間レベルのパフォーマンスに接近または超越している領域を追跡しています。',
+    descriptionKo:
+      'Stanford HAI가 발표한 2017년 AI 지수 보고서는 활동량(회의 참석도, 벤처 투자), 기술 성능 벤치마크, 그리고 산업 동향을 종합하여 인공지능의 진행 상황에 대한 포괄적 분석을 제공합니다. 보고서는 「AI 활력 지수」를 도입하여 학계와 산업계의 활동 수준을 측정하며, 전문가 의견을 포함하고 AI 시스템이 인간 수준의 성능에 근접하거나 초월하는 영역을 추적합니다.',
+    category: '国际排名',
+    confidence: 'high',
+    sourceUrl: 'https://hai.stanford.edu/ai-index/2017-ai-index-report',
+    discoveredAt: '2026-07-06',
+  },
+  {
+    title: '2018年AI指数报告',
+    titleEn: 'The 2018 AI Index Report',
+    titleJa: '2018年AI指数レポート',
+    titleKo: '2018년 AI 지수 보고서',
+    description:
+      '斯坦福人工智能中心(HAI)发布的2018年AI指数报告，是一项由跨学术和业界的专家组成的独立倡议。报告通过汇总和整理与人工智能相关的多样化指标数据，为政策制定者、研究人员、记者、企业高管和公众提供关于AI领域的无偏见、严谨和全面的认识。报告主要分为四大部分：活动量度(如会议参与度和风险投资规模)、技术性能、衍生指标分析以及AI系统向人工水平靠近的进展。',
+    descriptionEn:
+      'The Stanford HAI 2018 AI Index Report is an independent initiative led by the AI Index Steering Committee, comprising experts from academia and industry. The report aggregates diverse metrics and data to provide unbiased, rigorous, and comprehensive insights for policymakers, researchers, journalists, executives, and the public to understand the AI field. The report is structured into four main sections: Volume of Activity (including conference attendance and VC investments), Technical Performance, Derivative Measures, and progress towards Human Performance.',
+    descriptionJa:
+      'スタンフォード大学の人工知能センター（HAI）が発表した2018年AI指数レポートは、学術界と産業界にまたがる専門家で構成された独立したイニシアティブです。報告書は、人工知能に関連する多様な指標データを集約・整理することにより、政策立案者、研究者、ジャーナリスト、企業経営者、および一般市民にAI分野に関する偏りのない厳密で包括的な理解を提供しています。報告書は主に4つの主要部分から構成されています：活動指標（学会参加度およびベンチャー投資規模など）、技術性能、派生指標分析、およびAIシステムが人間レベルに接近する進展です。',
+    descriptionKo:
+      'Stanford Artificial Intelligence Center(HAI)가 발표한 2018년 AI 지수 보고서는 학계와 산업계 전문가들로 구성된 독립적 이니셔티브입니다. 보고서는 인공지능과 관련된 다양한 지표 데이터를 종합하고 정리함으로써 정책 입안자, 연구자, 기자, 기업 경영진 및 일반 대중에게 AI 분야에 대한 편견 없고 엄밀하며 포괄적인 인식을 제공합니다. 보고서는 주로 네 가지 주요 부분으로 나뉩니다: 활동 측도(회의 참석도 및 벤처 투자 규모 등), 기술 성능, 파생 지표 분석, 그리고 AI 시스템이 인간 수준에 근접하는 진전입니다.',
+    category: '国际排名',
+    confidence: 'high',
+    sourceUrl: 'https://hai.stanford.edu/ai-index/2018-ai-index-report',
+    discoveredAt: '2026-07-06',
+  },
+  {
+    title: '2019年AI指数报告',
+    titleEn: 'The 2019 AI Index Report',
+    titleJa: '2019年AI指数レポート',
+    titleKo: '2019년 AI 지수 보고서',
+    description:
+      '由斯坦福大学人工智能研究所发布的《2019年AI指数报告》是一份全面的国际AI发展基准研究，涵盖研发、会议、技术性能、经济、教育、自主系统等九个维度。报告通过全球AI活力工具对28个国家的34项指标进行对标，包括研发、经济和包容性三个核心维度。该项目汇集150余位业界与学术专家，致力于提供无偏见、严谨的数据，帮助政策制定者、研究人员和公众理解全球AI发展态势。',
+    descriptionEn:
+      'The 2019 AI Index Report from Stanford HAI is a comprehensive international AI benchmarking initiative covering nine dimensions including research and development, conferences, technical performance, economy, education, and autonomous systems. The report introduces the Global AI Vibrancy Tool, which benchmarks 28 countries across 34 indicators spanning research and development, economy, and inclusion. Developed with input from over 150 industry and academic experts, the report provides unbiased, rigorous data to help policymakers, researchers, and the public understand the global AI landscape.',
+    descriptionJa:
+      'スタンフォード大学人工知能研究所により発表された『2019年AI指数レポート』は、研究開発、会議、技術性能、経済、教育、自律システムなど9つの次元をカバーする包括的な国際AI発展ベンチマーク研究です。報告書は、グローバルAI活力ツールを通じて、28カ国における34の指標を対標し、研究開発、経済、および包括性の3つのコア次元を含んでいます。本プロジェクトは業界および学術の150人以上の専門家を結集させ、偏りのない厳密なデータを提供し、政策立案者、研究者、および一般市民が世界的なAI発展状況を理解するのを支援しています。',
+    descriptionKo:
+      'Stanford University Artificial Intelligence Research Institute가 발표한 「2019년 AI 지수 보고서」는 연구 개발, 회의, 기술 성능, 경제, 교육, 자율 시스템 등 9가지 차원을 포함하는 포괄적 국제 AI 발전 벤치마크 연구입니다. 보고서는 글로벌 AI 활력 도구를 통해 28개 국가의 34개 지표에 대해 벤치마크를 수행하며, 연구 개발, 경제, 포용성 등 3개의 핵심 차원을 포함합니다. 본 프로젝트는 150명 이상의 업계 및 학계 전문가를 모아 편견 없고 엄밀한 데이터를 제공하여 정책 입안자, 연구자 및 일반 대중이 글로벌 AI 발전 동향을 이해할 수 있도록 노력합니다.',
+    category: '国际排名',
+    confidence: 'high',
+    sourceUrl: 'https://hai.stanford.edu/ai-index/2019-ai-index-report',
+    discoveredAt: '2026-07-06',
+  },
+];
