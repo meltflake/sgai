@@ -1960,6 +1960,66 @@ Take: SUTD's existence saves the Singapore university system from **"the risk of
         ],
         updated: '2026-05-02',
       },
+      // i18n-allow-unpaired — auto-discovered stub; complete required fields on promotion
+      {
+        id: 'aisg-research-collaborative-project-with-us-nsf-researchers',
+        name: 'AI新加坡与美国NSF研究人员的研究合作项目',
+        nameEn: 'AISG Research Collaborative Project with US-NSF Researchers',
+        nameJa: 'AI Singapore と米国 NSF 研究者による研究協力プロジェクト',
+        nameKo: 'AI Singapore와 미국 NSF 연구자들의 연구 협력 프로젝트',
+        description:
+          '该项目由南洋理工大学张捷教授领导，与美国麻省理工学院合作，致力于开发可信任、可解释的人工智能-人类交互优化系统。研究重点是建立自然语言作为组合优化问题的鲁棒接口，使AI系统能够从人类语言中制定优化问题、进行强大的AI辅助优化，并提供可解释的反馈。该项目旨在为物流、制造、金融等行业提供高效的决策支持工具，同时推进可信任AI的基础研究。',
+        descriptionEn:
+          'This collaborative project, led by Professor Jie Zhang (NTU) in partnership with MIT researchers including Associate Professor Jacob Andreas, focuses on developing trustworthy and interpretable human-AI collaborative systems for combinatorial optimization. The research establishes natural language as a robust interface for human-AI interaction, enabling systems to formulate complex optimization problems from imprecise input, perform robust AI-assisted solving, and provide explainable feedback. The outcomes aim to serve industries like logistics, manufacturing, and finance with intelligent decision-making tools, while advancing the theoretical foundations of trustworthy AI collaboration.',
+        descriptionJa:
+          '本プロジェクトは南洋理工大学の張潔教授がリードし、米国マサチューセッツ工科大学（MIT）と協力して、信頼性があり解釈可能な人工知能・人間相互作用最適化システムの開発に取り組んでいます。研究の重点は、自然言語を組合せ最適化問題のロバストなインターフェースとして確立することであり、AI システムが人間の言語から最適化問題を定式化し、強力な AI 支援最適化を実施し、解釈可能なフィードバックを提供できるようにします。本プロジェクトは、物流、製造、金融などの産業に対して効率的な意思決定支援ツールを提供し、同時に信頼性のある AI の基礎研究を推進することを目的としています。',
+        descriptionKo:
+          '해당 프로젝트는 난양공과대학교 Zhang Jie 교수가 주도하며 미국 매사추세츠공과대학교(MIT)와 협력하고 있으며, 신뢰할 수 있고 해석 가능한 인공지능-인간 상호작용 최적화 시스템 개발에 힘쓰고 있습니다. 연구 중점은 자연언어를 조합 최적화 문제의 견고한 인터페이스로 확립하는 것으로, AI 시스템이 인간 언어로부터 최적화 문제를 수립하고, 강력한 AI 보조 최적화를 수행하며, 해석 가능한 피드백을 제공할 수 있도록 합니다. 해당 프로젝트는 물류, 제조, 금융 등 산업에 효율적인 의사결정 지원 도구를 제공하는 것을 목표로 하며, 동시에 신뢰할 수 있는 AI의 기초 연구를 추진합니다.',
+        url: 'https://aisingapore.org/aisg-research-collaborative-with-us-nsf-researchers/',
+        entityType: 'program',
+        status: 'active',
+        sources: [
+          // i18n-allow-unpaired — provenance for the pending-review stub above
+          {
+            label: 'AI Singapore',
+            url: 'https://aisingapore.org/aisg-research-collaborative-with-us-nsf-researchers/',
+            date: '2026-07-06',
+          },
+        ],
+        updated: '2026-07-06',
+        _pendingReview: true,
+        discoveryNote: 'Auto-discovered via AI Singapore; confidence=high',
+      },
+      // i18n-allow-unpaired — auto-discovered stub; complete required fields on promotion
+      {
+        id: 'pinnacle-pinn-adaptive-collocation-and-experimental-points-selection',
+        name: 'PINNACLE：PINN 自适应配置点和实验点选择方法',
+        nameEn: 'PINNACLE: PINN Adaptive ColLocation and Experimental Points Selection',
+        nameJa: 'PINNACLE：PINN 適応的配置点と実験点選択方法',
+        nameKo: 'PINNACLE: PINN 자적응 배치점 및 실험점 선택 방법',
+        description:
+          'PINNACLE 是一种自适应点选择方法，用于改进物理信息神经网络(PINN)的训练效率。该方法基于经验神经切线核理论，能够自动联合优化所有类型训练点的选择，包括实验点和配置点，在前向问题、反演问题和迁移学习等多个任务中显著超越现有基准方法。',
+        descriptionEn:
+          'PINNACLE is an adaptive point selection method that improves Physics Informed Neural Networks (PINNs) training efficiency by automatically optimizing the selection of all training point types using empirical Neural Tangent Kernel theory. The method outperforms existing benchmarks across multiple problem types including forward problems, inverse problems, and transfer learning applications.',
+        descriptionJa:
+          'PINNACLE は、物理情報神経ネットワーク（PINN）の訓練効率を改善するための適応的点選択方法です。本方法は経験的ニューラル接線核理論に基づいており、実験点および配置点を含むすべての種類の訓練点の選択を自動的に共同で最適化することができ、前進問題、逆問題、転移学習などの複数のタスクにおいて既存のベンチマーク方法を大幅に上回ります。',
+        descriptionKo:
+          'PINNACLE은 물리 정보 신경망(PINN)의 훈련 효율을 개선하기 위한 자적응 점 선택 방법입니다. 해당 방법은 경험적 신경 접선 커널 이론을 기반으로 하며, 모든 유형의 훈련점 선택을 자동으로 결합 최적화할 수 있으며, 실험점과 배치점을 포함합니다. 정방향 문제, 역문제 및 전이 학습 등 다양한 작업에서 기존 기준 방법을 현저히 능가합니다.',
+        url: 'https://aisingapore.org/pinnacle-pinn-adaptive-collocation-and-experimental-points-selection/',
+        entityType: 'program',
+        status: 'active',
+        sources: [
+          // i18n-allow-unpaired — provenance for the pending-review stub above
+          {
+            label: 'AI Singapore',
+            url: 'https://aisingapore.org/pinnacle-pinn-adaptive-collocation-and-experimental-points-selection/',
+            date: '2026-07-06',
+          },
+        ],
+        updated: '2026-07-06',
+        _pendingReview: true,
+        discoveryNote: 'Auto-discovered via AI Singapore; confidence=high',
+      },
     ],
   },
   {
@@ -6391,6 +6451,36 @@ A take: **Singapore being able to sit at the AI Safety Summit table is a manifes
           },
         ],
         updated: '2026-05-02',
+      },
+      // i18n-allow-unpaired — auto-discovered stub; complete required fields on promotion
+      {
+        id: 'breaking-barriers-building-bridges-increasing-language-representation-in-southea',
+        name: '打破壁垒，构建桥梁：增进东南亚语言在AI中的代表性',
+        nameEn: 'Breaking Barriers, Building Bridges: Increasing Language Representation in Southeast Asia',
+        nameJa: '障壁を打破し、橋を構築する：東南アジア言語の AI における代表性の向上',
+        nameKo: '장벽을 깨고 다리를 구축하다: 동남아시아 언어의 AI 내 대표성 증진',
+        description:
+          'AI新加坡与谷歌和威兹特姆科技公司在曼谷联合举办第三届语言峰会，首次在新加坡外举办，汇聚了来自东南亚各地的AI专家和研究人员。峰会发布了SEA-LION v2、Project SEALD、SEACrowd等创新成果，以及即将推出的Project Aquarium社区数据平台，旨在填补区域高质量数据获取的空白。参与者围绕LLM发展、数据可访问性、版权问题和区域合作进行了深入讨论，分享了印度尼西亚、菲律宾、泰国和越南等地语言模型的最新进展。',
+        descriptionEn:
+          'AI Singapore co-hosted the third Languages Summit in Bangkok with Google and VISTEC, the first time held outside Singapore, bringing together AI experts and researchers from across Southeast Asia. The summit announced SEA-LION v2, Project SEALD, SEACrowd, and the upcoming Project Aquarium community data platform designed to address gaps in regional high-quality data accessibility. Participants engaged in roundtable discussions on LLM development, data challenges, copyright concerns, and regional collaboration, while sharing progress on language models for Indonesian, Filipino, Thai, and Vietnamese systems.',
+        descriptionJa:
+          'AI Singapore は Google および Wiztem Technologies と、バンコクで第 3 回言語サミットを共同開催しました。これはシンガポール外での初開催であり、東南アジア全域から AI 専門家と研究者を集約しました。サミットでは、SEA-LION v2、Project SEALD、SEACrowd などの革新的な成果のほか、近々推出予定の Project Aquarium コミュニティデータプラットフォームを発表し、地域の高品質データ取得のギャップを埋めることを目指しています。参加者は LLM 開発、データアクセシビリティ、著作権問題、地域協力について深い議論を行い、インドネシア、フィリピン、タイ、ベトナムなどの地域における言語モデルの最新の進展を共有しました。',
+        descriptionKo:
+          'AI Singapore은 Google 및 Wiztem Technologies와 함께 방콕에서 제3회 언어 정상회담을 공동으로 개최했습니다. 이번 정상회담은 처음으로 싱가포르 외 지역에서 개최되었으며, 동남아시아 각지의 AI 전문가 및 연구자들이 참석했습니다. 정상회담에서는 SEA-LION v2, Project SEALD, SEACrowd 등의 혁신적 성과와 지역 고품질 데이터 획득의 공백을 메우기 위한 Project Aquarium 커뮤니티 데이터 플랫폼(곧 출시 예정)을 발표했습니다. 참여자들은 LLM 발전, 데이터 접근성, 저작권 문제 및 지역 협력에 대해 심층적 토론을 진행했으며, 인도네시아, 필리핀, 태국 및 베트남 등지의 언어 모델의 최신 진전을 공유했습니다.',
+        url: 'https://aisingapore.org/breaking-barriers-building-bridges-increasing-language-representation-in-southeast-asia/',
+        entityType: 'program',
+        status: 'active',
+        sources: [
+          // i18n-allow-unpaired — provenance for the pending-review stub above
+          {
+            label: 'AI Singapore',
+            url: 'https://aisingapore.org/breaking-barriers-building-bridges-increasing-language-representation-in-southeast-asia/',
+            date: '2026-07-06',
+          },
+        ],
+        updated: '2026-07-06',
+        _pendingReview: true,
+        discoveryNote: 'Auto-discovered via AI Singapore; confidence=high',
       },
     ],
   },
