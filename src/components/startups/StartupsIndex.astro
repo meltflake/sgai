@@ -16,11 +16,40 @@ interface Props {
 
 const { lang } = Astro.props;
 
-// The en route's visible heading predates the dict key and is shorter than
-// t('en', 'startupsPageTitle') (the long SEO title); preserved verbatim so
-// the shared component renders the en page unchanged.
-let headlineTitle = t(lang, 'startupsPageTitle');
-if (lang === 'en') headlineTitle = 'AI Startup Ecosystem';
+// H1 = the exact query phrase ("singapore ai startups" — 501 impressions
+// at position 31, GSC 2026-07); the dict key now holds the short per-locale
+// keyword form shared by all routes.
+const headlineTitle = t(lang, 'startupsPageTitle');
+
+// SEO title / description carry live counts from ecosystemStats so they
+// never go stale inside a dict literal. Year comes from the stats baseline.
+const statsYear = ecosystemStats.dataDate.slice(0, 4);
+const metaTitleByLang: Record<Lang, string> = {
+  zh: `新加坡 AI 创业公司 — ${ecosystemStats.totalStartups} 家公司、${ecosystemStats.unicorns} 家独角兽（${statsYear}）`,
+  'zh-tw': '',
+  en: `Singapore AI Startups — ${ecosystemStats.totalStartups} companies, ${ecosystemStats.unicorns} unicorns (${statsYear})`,
+  ja: `シンガポール AI スタートアップ — ${ecosystemStats.totalStartups} 社、ユニコーン ${ecosystemStats.unicorns} 社（${statsYear}）`,
+  ko: `싱가포르 AI 스타트업 — ${ecosystemStats.totalStartups}개사, 유니콘 ${ecosystemStats.unicorns}개(${statsYear})`,
+};
+metaTitleByLang['zh-tw'] = toTraditional(metaTitleByLang.zh);
+const metaDescByLang: Record<Lang, string> = {
+  zh: `新加坡 AI 创业生态全景（${statsYear}）：${ecosystemStats.totalStartups} 家 AI 公司、${ecosystemStats.unicorns} 家独角兽、累计融资 ${ecosystemStats.totalVCRaised}、全球 AI 枢纽第 ${ecosystemStats.globalRank} 名。按垂直领域分类，含退出案例与投资人网络，数据基线 ${ecosystemStats.dataDate}。`,
+  'zh-tw': '',
+  en: `Singapore's AI startup ecosystem (${statsYear}): ${ecosystemStats.totalStartups} AI companies, ${ecosystemStats.unicorns} unicorns, ${ecosystemStats.totalVCRaised} cumulative VC raised, ranked #${ecosystemStats.globalRank} global AI hub. Mapped by vertical, with exits and the investor network. Baselined ${ecosystemStats.dataDate}.`,
+  ja: `シンガポール AI スタートアップ生態系（${statsYear}）：AI 企業 ${ecosystemStats.totalStartups} 社、ユニコーン ${ecosystemStats.unicorns} 社、累計調達 ${ecosystemStats.totalVCRaised}、グローバル AI ハブ第 ${ecosystemStats.globalRank} 位。垂直分野別マップ、イグジット事例と投資家ネットワーク付き（基準日 ${ecosystemStats.dataDate}）。`,
+  ko: `싱가포르 AI 스타트업 생태계(${statsYear}): AI 기업 ${ecosystemStats.totalStartups}개사, 유니콘 ${ecosystemStats.unicorns}개, 누적 투자 ${ecosystemStats.totalVCRaised}, 글로벌 AI 허브 ${ecosystemStats.globalRank}위. 버티컬별 지도, 엑시트 사례와 투자자 네트워크 포함(기준일 ${ecosystemStats.dataDate}).`,
+};
+metaDescByLang['zh-tw'] = toTraditional(metaDescByLang.zh);
+// Visible freshness marker under the H1 — "is this list current?" is the
+// first question on a listing page competing for a year-qualified query.
+const updatedNoteByLang: Record<Lang, string> = {
+  zh: `数据基线 ${ecosystemStats.dataDate} · 档案整理 ${ecosystemStats.profileUpdated}`,
+  'zh-tw': '',
+  en: `Data baseline ${ecosystemStats.dataDate} · profiles curated ${ecosystemStats.profileUpdated}`,
+  ja: `データ基準日 ${ecosystemStats.dataDate} · プロファイル整理 ${ecosystemStats.profileUpdated}`,
+  ko: `데이터 기준일 ${ecosystemStats.dataDate} · 프로필 정리 ${ecosystemStats.profileUpdated}`,
+};
+updatedNoteByLang['zh-tw'] = toTraditional(updatedNoteByLang.zh);
 
 const hrefFor = (entity: { id?: string; name: string; nameEn?: string }) =>
   localizedHref(`/startups/${startupEntitySlug(entity)}/`, lang);
@@ -51,14 +80,15 @@ DISCLAIMER['zh-tw'] = toTraditional(DISCLAIMER.zh);
 
 <Layout
   metadata={{
-    title: t(lang, 'startupsPageTitle'),
-    description: t(lang, 'startupsPageDesc'),
+    title: metaTitleByLang[lang] || metaTitleByLang.en,
+    description: metaDescByLang[lang] || metaDescByLang.en,
   }}
   breadcrumbs={[{ label: t(lang, 'navStartups') }]}
   lang={lang}
 >
   <section class="px-4 py-16 sm:px-6 mx-auto lg:px-8 max-w-6xl">
     <Headline title={headlineTitle} subtitle={t(lang, 'startupsPageSubtitle')} />
+    <p class="text-xs text-muted -mt-6 mb-2 text-center">{updatedNoteByLang[lang] || updatedNoteByLang.en}</p>
     <LatestAdditions lang={lang} source="startup" class="mt-8 mb-2" />
 
     <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-12">
