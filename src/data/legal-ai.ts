@@ -416,6 +416,70 @@ export const sections: LegalSection[] = [
       },
     ],
   },
+  {
+    title: 'Auto-discovered (pending review)',
+    titleEn: 'Auto-discovered (pending review)',
+    titleJa: 'Auto-discovered（レビュー待ち）',
+    philosophy: '由 refresh 管线自动发现的法律 / 监管条目，需 Luca 审核后移入正式分组。',
+    philosophyEn:
+      'Items auto-discovered by the refresh pipeline. Luca to review and move into the right section before merge.',
+    philosophyJa:
+      'リフレッシュパイプラインが自動検出した法律・規制項目。Luca がレビュー後、正式なセクションに移動します。',
+    items: [
+      {
+        title: '浏览现行法案 - 全部 - 新加坡法律在线',
+        titleEn: 'Browse Current Acts - All - Singapore Statutes Online',
+        titleJa: '「現行法案を閲覧する - 全て - シンガポール法律オンライン」',
+        titleKo: '현행 법안 열람 - 전체 - 싱가포르 법률 온라인',
+        date: '2026-07',
+        authority: 'Auto: 待审核',
+        authorityEn: 'Auto: pending review',
+        authorityJa: 'Auto: 審査待機中',
+        authorityKo: 'Auto: 검토 대기 중',
+        scope: 'governance',
+        status: '提案',
+        summary:
+          '这是新加坡法律在线的目录索引页面，列出523项现行法案的元数据，但不包含具体的立法内容或AI相关指导。页面仅显示法案标题、链接和文件大小，无法进行有意义的分类总结。',
+        summaryEn:
+          'This is a directory browse page from Singapore Statutes Online listing metadata for 523 current acts. The page contains only titles, links, and file sizes without substantive legislative content or AI-specific guidance, making meaningful classification impossible.',
+        summaryJa:
+          'これはシンガポール法律オンラインの目録索引ページであり、523件の現行法案のメタデータを列挙しています。しかし、具体的な立法内容またはAI関連の指針は含まれていません。ページは法案の標題、リンク、ファイルサイズのみを表示しており、有意義な分類要約を提供することができません。',
+        summaryKo:
+          '이는 싱가포르 법률 온라인의 목록 색인 페이지로, 523건의 현행 법안 메타데이터를 나열하지만 구체적인 입법 내용이나 AI 관련 지침을 포함하지 않습니다. 페이지는 법안 제목, 링크 및 파일 크기만 표시하며, 의미 있는 분류 요약을 할 수 없습니다.',
+        body: `这是新加坡法律在线的目录索引页面，列出523项现行法案的元数据，但不包含具体的立法内容或AI相关指导。页面仅显示法案标题、链接和文件大小，无法进行有意义的分类总结。`,
+        bodyEn: `This is a directory browse page from Singapore Statutes Online listing metadata for 523 current acts. The page contains only titles, links, and file sizes without substantive legislative content or AI-specific guidance, making meaningful classification impossible.`,
+        bodyJa: `これはシンガポール法律オンラインの目録索引ページであり、523件の現行法案のメタデータを列挙しています。しかし、具体的な立法内容またはAI関連の指針は含まれていません。ページは法案の標題、リンク、ファイルサイズのみを表示しており、有意義な分類要約を提供することができません。`,
+        bodyKo: `이는 싱가포르 법률 온라인의 목록 색인 페이지로, 523건의 현행 법안 메타데이터를 나열하지만 구체적인 입법 내용이나 AI 관련 지침을 포함하지 않습니다. 페이지는 법안 제목, 링크 및 파일 크기만 표시하며, 의미 있는 분류 요약을 할 수 없습니다.`,
+        sourceUrl: 'https://sso.agc.gov.sg/Browse/Act/Current',
+      },
+      {
+        title: '浏览未生效法案 - 全部 - 新加坡法案在线',
+        titleEn: 'Browse Uncommenced Acts - All - Singapore Statutes Online',
+        titleJa: '「未生効法案を閲覧する - 全て - シンガポール法案オンライン」',
+        titleKo: '미발효 법안 열람 - 전체 - 싱가포르 법안 온라인',
+        date: '2026-07',
+        authority: 'Auto: 待审核',
+        authorityEn: 'Auto: pending review',
+        authorityJa: 'Auto: 審査待機中',
+        authorityKo: 'Auto: 검토 대기 중',
+        scope: 'governance',
+        status: '提案',
+        summary:
+          '这是新加坡法案在线网站的法案目录列表页面，展示了12项已颁布但尚未生效的法案。这些法案涵盖多个法律领域，包括企业登记增强、反洗钱、海岸保护、电子契约、卫生信息、种族和谐、融资扩散预防和工作场所公平等。该页面是一个导航索引，不包含实质性的立法内容或政策指导。',
+        summaryEn:
+          'This is a directory listing page from Singapore Statutes Online displaying 12 uncommenced acts (enacted but not yet in force). The listed acts cover diverse legal domains including corporate registry enhancements, anti-money laundering, coastal protection, electronic conveyancing, health information, racial harmony, and workplace fairness. The page serves as a navigational index rather than substantive legislative content or policy guidance.',
+        summaryJa:
+          'これはシンガポール法案オンラインのウェブサイトの法案目録リストページであり、12件の成立しているが未だ発効していない法案を表示しています。これらの法案は複数の法律領域をカバーしており、企業登記強化、マネーロンダリング防止、海岸保護、電子契約、衛生情報、人種調和、融資拡散予防、職場公正などが含まれています。このページはナビゲーション索引であり、実質的な立法内容またはポリシー指導は含まれていません。',
+        summaryKo:
+          '이는 싱가포르 법안 온라인 웹사이트의 법안 목록 페이지로, 12건의 공포되었지만 아직 발효하지 않은 법안을 나열합니다. 이 법안들은 여러 법률 분야를 포함하며, 기업 등록 강화, 자금 세탁 방지, 해안 보호, 전자 계약, 보건 정보, 인종 조화, 자금 조달 확산 방지 및 직장 공평 등을 포함합니다. 이 페이지는 네비게이션 색인으로, 실질적인 입법 내용이나 정책 지침을 포함하지 않습니다.',
+        body: `这是新加坡法案在线网站的法案目录列表页面，展示了12项已颁布但尚未生效的法案。这些法案涵盖多个法律领域，包括企业登记增强、反洗钱、海岸保护、电子契约、卫生信息、种族和谐、融资扩散预防和工作场所公平等。该页面是一个导航索引，不包含实质性的立法内容或政策指导。`,
+        bodyEn: `This is a directory listing page from Singapore Statutes Online displaying 12 uncommenced acts (enacted but not yet in force). The listed acts cover diverse legal domains including corporate registry enhancements, anti-money laundering, coastal protection, electronic conveyancing, health information, racial harmony, and workplace fairness. The page serves as a navigational index rather than substantive legislative content or policy guidance.`,
+        bodyJa: `これはシンガポール法案オンラインのウェブサイトの法案目録リストページであり、12件の成立しているが未だ発効していない法案を表示しています。これらの法案は複数の法律領域をカバーしており、企業登記強化、マネーロンダリング防止、海岸保護、電子契約、衛生情報、人種調和、融資拡散予防、職場公正などが含まれています。このページはナビゲーション索引であり、実質的な立法内容またはポリシー指導は含まれていません。`,
+        bodyKo: `이는 싱가포르 법안 온라인 웹사이트의 법안 목록 페이지로, 12건의 공포되었지만 아직 발효하지 않은 법안을 나열합니다. 이 법안들은 여러 법률 분야를 포함하며, 기업 등록 강화, 자금 세탁 방지, 해안 보호, 전자 계약, 보건 정보, 인종 조화, 자금 조달 확산 방지 및 직장 공평 등을 포함합니다. 이 페이지는 네비게이션 색인으로, 실질적인 입법 내용이나 정책 지침을 포함하지 않습니다.`,
+        sourceUrl: 'https://sso.agc.gov.sg/Browse/Act/Uncommenced',
+      },
+    ],
+  },
 ];
 
 export const conclusion = `**为什么这套法律组合对 AI 公司有吸引力**：
