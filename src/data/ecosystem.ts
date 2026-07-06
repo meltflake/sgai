@@ -1960,7 +1960,6 @@ Take: SUTD's existence saves the Singapore university system from **"the risk of
         ],
         updated: '2026-05-02',
       },
-      // i18n-allow-unpaired — auto-discovered stub; complete required fields on promotion
       {
         id: 'aisg-research-collaborative-project-with-us-nsf-researchers',
         name: 'AI新加坡与美国NSF研究人员的研究合作项目',
@@ -1975,22 +1974,46 @@ Take: SUTD's existence saves the Singapore university system from **"the risk of
           '本プロジェクトは南洋理工大学の張潔教授がリードし、米国マサチューセッツ工科大学（MIT）と協力して、信頼性があり解釈可能な人工知能・人間相互作用最適化システムの開発に取り組んでいます。研究の重点は、自然言語を組合せ最適化問題のロバストなインターフェースとして確立することであり、AI システムが人間の言語から最適化問題を定式化し、強力な AI 支援最適化を実施し、解釈可能なフィードバックを提供できるようにします。本プロジェクトは、物流、製造、金融などの産業に対して効率的な意思決定支援ツールを提供し、同時に信頼性のある AI の基礎研究を推進することを目的としています。',
         descriptionKo:
           '해당 프로젝트는 난양공과대학교 Zhang Jie 교수가 주도하며 미국 매사추세츠공과대학교(MIT)와 협력하고 있으며, 신뢰할 수 있고 해석 가능한 인공지능-인간 상호작용 최적화 시스템 개발에 힘쓰고 있습니다. 연구 중점은 자연언어를 조합 최적화 문제의 견고한 인터페이스로 확립하는 것으로, AI 시스템이 인간 언어로부터 최적화 문제를 수립하고, 강력한 AI 보조 최적화를 수행하며, 해석 가능한 피드백을 제공할 수 있도록 합니다. 해당 프로젝트는 물류, 제조, 금융 등 산업에 효율적인 의사결정 지원 도구를 제공하는 것을 목표로 하며, 동시에 신뢰할 수 있는 AI의 기초 연구를 추진합니다.',
+        whatItIs:
+          '这是 AI Singapore 支持的一项国际研究合作，由南洋理工大学张捷教授领导，联合美国麻省理工学院（含副教授 Jacob Andreas）共同开展，聚焦可信任、可解释的人机协作组合优化系统。',
+        whatItIsEn:
+          'An AI Singapore–supported international research collaboration led by Professor Jie Zhang (NTU) together with MIT (including Associate Professor Jacob Andreas), focused on trustworthy and interpretable human-AI collaborative systems for combinatorial optimization.',
+        whatItIsJa:
+          'これは AI Singapore が支援する国際共同研究であり、南洋理工大学の張潔教授が率い、米国マサチューセッツ工科大学（副教授 Jacob Andreas を含む）と共同で、信頼性があり解釈可能な人間・AI 協調型の組合せ最適化システムに取り組んでいます。',
+        whatItIsKo:
+          'AI Singapore가 지원하는 국제 공동 연구로, 난양공과대학교 Zhang Jie 교수가 주도하고 미국 매사추세츠공과대학교(부교수 Jacob Andreas 포함)와 함께 신뢰할 수 있고 해석 가능한 인간-AI 협업 조합 최적화 시스템을 연구합니다.',
+        aiRelevance:
+          '项目把自然语言确立为组合优化问题的鲁棒接口，让 AI 系统能从不精确的人类输入中制定优化问题、进行 AI 辅助求解并给出可解释反馈，直接服务于可信任 AI 与人机协作的基础研究。',
+        aiRelevanceEn:
+          'The project establishes natural language as a robust interface for combinatorial optimization, letting AI systems formulate problems from imprecise human input, perform AI-assisted solving, and return explainable feedback—advancing the foundations of trustworthy AI and human-AI collaboration.',
+        aiRelevanceJa:
+          '本プロジェクトは自然言語を組合せ最適化問題のロバストなインターフェースとして確立し、AI システムが不正確な人間の入力から問題を定式化し、AI 支援求解を行い、解釈可能なフィードバックを返せるようにするもので、信頼できる AI と人間・AI 協調の基礎研究に直接資するものです。',
+        aiRelevanceKo:
+          '이 프로젝트는 자연언어를 조합 최적화 문제의 견고한 인터페이스로 확립하여, AI 시스템이 부정확한 인간 입력으로부터 문제를 정식화하고 AI 보조 해결을 수행하며 해석 가능한 피드백을 반환할 수 있게 하며, 신뢰할 수 있는 AI와 인간-AI 협업의 기초 연구에 직접 기여합니다.',
+        singaporeRelevance:
+          '作为 AI Singapore 主导、以新加坡高校（NTU）为核心的国际合作，项目把新加坡的基础 AI 研究接入全球顶尖机构网络，成果面向物流、制造、金融等对新加坡经济关键的行业。',
+        singaporeRelevanceEn:
+          'As an AI Singapore–led collaboration anchored at a Singapore university (NTU), the project plugs Singapore’s fundamental AI research into a network of top global institutions, with outcomes aimed at logistics, manufacturing, and finance—sectors central to Singapore’s economy.',
+        singaporeRelevanceJa:
+          'AI Singapore が主導し、シンガポールの大学（NTU）を中核とする国際共同研究として、本プロジェクトはシンガポールの基礎 AI 研究を世界トップクラスの機関ネットワークに接続し、その成果は物流・製造・金融というシンガポール経済の中核産業に向けられています。',
+        singaporeRelevanceKo:
+          'AI Singapore가 주도하고 싱가포르 대학교(NTU)를 중심으로 하는 국제 협력으로서, 이 프로젝트는 싱가포르의 기초 AI 연구를 세계 최고 수준의 기관 네트워크에 연결하며, 그 성과는 싱가포르 경제의 핵심 산업인 물류·제조·금융을 겨냥합니다.',
         url: 'https://aisingapore.org/aisg-research-collaborative-with-us-nsf-researchers/',
         entityType: 'program',
         status: 'active',
         sources: [
-          // i18n-allow-unpaired — provenance for the pending-review stub above
           {
             label: 'AI Singapore',
+            labelEn: 'AI Singapore',
+            labelJa: 'AI Singapore',
+            labelKo: 'AI Singapore',
             url: 'https://aisingapore.org/aisg-research-collaborative-with-us-nsf-researchers/',
             date: '2026-07-06',
           },
         ],
         updated: '2026-07-06',
-        _pendingReview: true,
-        discoveryNote: 'Auto-discovered via AI Singapore; confidence=high',
+        addedAt: '2026-07-06',
       },
-      // i18n-allow-unpaired — auto-discovered stub; complete required fields on promotion
       {
         id: 'pinnacle-pinn-adaptive-collocation-and-experimental-points-selection',
         name: 'PINNACLE：PINN 自适应配置点和实验点选择方法',
@@ -2005,20 +2028,45 @@ Take: SUTD's existence saves the Singapore university system from **"the risk of
           'PINNACLE は、物理情報神経ネットワーク（PINN）の訓練効率を改善するための適応的点選択方法です。本方法は経験的ニューラル接線核理論に基づいており、実験点および配置点を含むすべての種類の訓練点の選択を自動的に共同で最適化することができ、前進問題、逆問題、転移学習などの複数のタスクにおいて既存のベンチマーク方法を大幅に上回ります。',
         descriptionKo:
           'PINNACLE은 물리 정보 신경망(PINN)의 훈련 효율을 개선하기 위한 자적응 점 선택 방법입니다. 해당 방법은 경험적 신경 접선 커널 이론을 기반으로 하며, 모든 유형의 훈련점 선택을 자동으로 결합 최적화할 수 있으며, 실험점과 배치점을 포함합니다. 정방향 문제, 역문제 및 전이 학습 등 다양한 작업에서 기존 기준 방법을 현저히 능가합니다.',
+        whatItIs:
+          'PINNACLE 是 AI Singapore 研究组合中收录的一项方法研究，提出一种自适应点选择方法，用于提升物理信息神经网络（PINN）的训练效率。',
+        whatItIsEn:
+          'A methods research entry in the AI Singapore research portfolio, PINNACLE proposes an adaptive point-selection method for improving the training efficiency of Physics-Informed Neural Networks (PINNs).',
+        whatItIsJa:
+          'AI Singapore の研究ポートフォリオに収録された手法研究であり、PINNACLE は物理情報神経ネットワーク（PINN）の訓練効率を高めるための適応的点選択手法を提案しています。',
+        whatItIsKo:
+          'AI Singapore 연구 포트폴리오에 수록된 방법 연구로, PINNACLE은 물리 정보 신경망(PINN)의 훈련 효율을 높이기 위한 자적응 점 선택 방법을 제안합니다.',
+        aiRelevance:
+          '该方法基于经验神经切线核（NTK）理论，自动联合优化实验点与配置点等所有类型训练点的选择，在前向问题、反演问题和迁移学习等任务中显著超越现有基准，属于科学计算与 AI 交叉的方法层进展。',
+        aiRelevanceEn:
+          'Built on empirical Neural Tangent Kernel (NTK) theory, the method jointly and automatically optimizes the selection of all training-point types (experimental and collocation points), significantly outperforming existing benchmarks on forward, inverse, and transfer-learning tasks—an advance at the methods layer where scientific computing meets AI.',
+        aiRelevanceJa:
+          '本手法は経験的ニューラル接線核（NTK）理論に基づき、実験点と配置点を含むすべての種類の訓練点の選択を自動的に共同最適化し、前進問題・逆問題・転移学習などのタスクで既存ベンチマークを大幅に上回るもので、科学計算と AI が交わる手法層の進展です。',
+        aiRelevanceKo:
+          '이 방법은 경험적 신경 접선 커널(NTK) 이론을 기반으로 실험점과 배치점을 포함한 모든 유형의 훈련점 선택을 자동으로 공동 최적화하며, 정방향·역·전이 학습 과제에서 기존 벤치마크를 크게 능가하는, 과학 계산과 AI가 교차하는 방법 계층의 진전입니다.',
+        singaporeRelevance:
+          '作为出现在 AI Singapore 研究门户中的成果，PINNACLE 体现了新加坡在 AI 用于科学计算（AI4Science）方向的基础方法研究布局。',
+        singaporeRelevanceEn:
+          'Surfaced through the AI Singapore research portal, PINNACLE reflects Singapore’s investment in fundamental methods research for AI applied to scientific computing (AI4Science).',
+        singaporeRelevanceJa:
+          'AI Singapore の研究ポータルを通じて公開された成果として、PINNACLE はシンガポールが AI を科学計算に応用する（AI4Science）方向の基礎手法研究に投資していることを示しています。',
+        singaporeRelevanceKo:
+          'AI Singapore 연구 포털을 통해 공개된 성과로서, PINNACLE은 싱가포르가 과학 계산에 AI를 적용하는(AI4Science) 방향의 기초 방법 연구에 투자하고 있음을 보여줍니다.',
         url: 'https://aisingapore.org/pinnacle-pinn-adaptive-collocation-and-experimental-points-selection/',
         entityType: 'program',
         status: 'active',
         sources: [
-          // i18n-allow-unpaired — provenance for the pending-review stub above
           {
             label: 'AI Singapore',
+            labelEn: 'AI Singapore',
+            labelJa: 'AI Singapore',
+            labelKo: 'AI Singapore',
             url: 'https://aisingapore.org/pinnacle-pinn-adaptive-collocation-and-experimental-points-selection/',
             date: '2026-07-06',
           },
         ],
         updated: '2026-07-06',
-        _pendingReview: true,
-        discoveryNote: 'Auto-discovered via AI Singapore; confidence=high',
+        addedAt: '2026-07-06',
       },
     ],
   },
@@ -6452,7 +6500,6 @@ A take: **Singapore being able to sit at the AI Safety Summit table is a manifes
         ],
         updated: '2026-05-02',
       },
-      // i18n-allow-unpaired — auto-discovered stub; complete required fields on promotion
       {
         id: 'breaking-barriers-building-bridges-increasing-language-representation-in-southea',
         name: '打破壁垒，构建桥梁：增进东南亚语言在AI中的代表性',
@@ -6467,20 +6514,45 @@ A take: **Singapore being able to sit at the AI Safety Summit table is a manifes
           'AI Singapore は Google および Wiztem Technologies と、バンコクで第 3 回言語サミットを共同開催しました。これはシンガポール外での初開催であり、東南アジア全域から AI 専門家と研究者を集約しました。サミットでは、SEA-LION v2、Project SEALD、SEACrowd などの革新的な成果のほか、近々推出予定の Project Aquarium コミュニティデータプラットフォームを発表し、地域の高品質データ取得のギャップを埋めることを目指しています。参加者は LLM 開発、データアクセシビリティ、著作権問題、地域協力について深い議論を行い、インドネシア、フィリピン、タイ、ベトナムなどの地域における言語モデルの最新の進展を共有しました。',
         descriptionKo:
           'AI Singapore은 Google 및 Wiztem Technologies와 함께 방콕에서 제3회 언어 정상회담을 공동으로 개최했습니다. 이번 정상회담은 처음으로 싱가포르 외 지역에서 개최되었으며, 동남아시아 각지의 AI 전문가 및 연구자들이 참석했습니다. 정상회담에서는 SEA-LION v2, Project SEALD, SEACrowd 등의 혁신적 성과와 지역 고품질 데이터 획득의 공백을 메우기 위한 Project Aquarium 커뮤니티 데이터 플랫폼(곧 출시 예정)을 발표했습니다. 참여자들은 LLM 발전, 데이터 접근성, 저작권 문제 및 지역 협력에 대해 심층적 토론을 진행했으며, 인도네시아, 필리핀, 태국 및 베트남 등지의 언어 모델의 최신 진전을 공유했습니다.',
+        whatItIs:
+          '这是 AI Singapore 与 Google、VISTEC 联合举办的第三届东南亚语言峰会（首次在新加坡以外的曼谷举办），围绕东南亚语言在 AI 中的代表性汇聚区域专家与研究人员。',
+        whatItIsEn:
+          'The third Southeast Asian Languages Summit, co-hosted by AI Singapore with Google and VISTEC and held in Bangkok (the first time outside Singapore), convening regional experts and researchers around language representation for Southeast Asia in AI.',
+        whatItIsJa:
+          'AI Singapore が Google および VISTEC と共同開催した第 3 回東南アジア言語サミット（シンガポール外では初開催、バンコクで実施）であり、東南アジア言語の AI における代表性をめぐって地域の専門家と研究者を集めました。',
+        whatItIsKo:
+          'AI Singapore가 Google 및 VISTEC와 공동 개최한 제3회 동남아시아 언어 정상회담(싱가포르 외 최초로 방콕에서 개최)으로, 동남아시아 언어의 AI 내 대표성을 주제로 지역 전문가와 연구자를 모았습니다.',
+        aiRelevance:
+          '峰会发布了 SEA-LION v2、Project SEALD、SEACrowd 及即将推出的 Project Aquarium 社区数据平台，直接推进东南亚多语言大模型与区域高质量数据的建设，并就 LLM 发展、数据可访问性和版权问题展开讨论。',
+        aiRelevanceEn:
+          'The summit announced SEA-LION v2, Project SEALD, SEACrowd, and the upcoming Project Aquarium community data platform—directly advancing Southeast Asian multilingual LLMs and regional high-quality data—alongside discussions on LLM development, data accessibility, and copyright.',
+        aiRelevanceJa:
+          'サミットでは SEA-LION v2、Project SEALD、SEACrowd、および近日公開予定の Project Aquarium コミュニティデータプラットフォームを発表し、東南アジアの多言語大規模モデルと地域の高品質データの構築を直接推進するとともに、LLM 開発・データアクセシビリティ・著作権について議論しました。',
+        aiRelevanceKo:
+          '정상회담에서는 SEA-LION v2, Project SEALD, SEACrowd 및 곧 출시될 Project Aquarium 커뮤니티 데이터 플랫폼을 발표하여 동남아시아 다국어 대규모 모델과 지역 고품질 데이터 구축을 직접 추진했으며, LLM 발전·데이터 접근성·저작권 문제를 논의했습니다.',
+        singaporeRelevance:
+          '峰会由 AI Singapore 主导，是新加坡通过 SEA-LION 系列扮演东南亚多语言 AI 区域枢纽角色的标志性活动，把新加坡的模型与数据基建输出到整个区域生态。',
+        singaporeRelevanceEn:
+          'Led by AI Singapore, the summit is a flagship expression of Singapore’s role—via the SEA-LION series—as the regional hub for Southeast Asian multilingual AI, exporting its model and data infrastructure across the regional ecosystem.',
+        singaporeRelevanceJa:
+          'AI Singapore が主導する本サミットは、シンガポールが SEA-LION シリーズを通じて東南アジア多言語 AI の地域ハブとして果たす役割を象徴するイベントであり、そのモデルとデータ基盤を地域全体のエコシステムに展開するものです。',
+        singaporeRelevanceKo:
+          'AI Singapore가 주도하는 이번 정상회담은 싱가포르가 SEA-LION 시리즈를 통해 동남아시아 다국어 AI의 지역 허브 역할을 수행함을 상징하는 대표 행사로, 자국의 모델 및 데이터 인프라를 지역 생태계 전반에 확산합니다.',
         url: 'https://aisingapore.org/breaking-barriers-building-bridges-increasing-language-representation-in-southeast-asia/',
         entityType: 'program',
         status: 'active',
         sources: [
-          // i18n-allow-unpaired — provenance for the pending-review stub above
           {
             label: 'AI Singapore',
+            labelEn: 'AI Singapore',
+            labelJa: 'AI Singapore',
+            labelKo: 'AI Singapore',
             url: 'https://aisingapore.org/breaking-barriers-building-bridges-increasing-language-representation-in-southeast-asia/',
             date: '2026-07-06',
           },
         ],
         updated: '2026-07-06',
-        _pendingReview: true,
-        discoveryNote: 'Auto-discovered via AI Singapore; confidence=high',
+        addedAt: '2026-07-06',
       },
     ],
   },

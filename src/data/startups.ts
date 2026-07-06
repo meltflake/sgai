@@ -769,46 +769,4 @@ export interface AutoDiscoveredEntry {
   reasonForLowConfidence?: string;
 }
 
-export const autoDiscovered: AutoDiscoveredEntry[] = [
-  {
-    title: 'AI交易失去其关键信号之一',
-    titleEn: 'The AI trade is losing one of its key signals',
-    titleJa: 'AI取引がその重要なシグナルの1つを失う',
-    titleKo: 'AI 거래가 핵심 신호 중 하나를 잃습니다',
-    description:
-      '本文分析了硅谷数据公司追踪的LLM代币支出指数。该指数自2025年12月推出以来几乎翻倍，但从5月高点下跌近20%。文章讨论了代币价格下跌对AI公司定价能力和盈利能力的影响，并呈现了市场对这一趋势的多种解读：看涨者认为这反映市场消化期，看跌者担忧需求疲软和监管压力。',
-    descriptionEn:
-      "This article analyzes the Silicon Data LLM Token Expenditure Index tracking AI token spending. After nearly doubling since its December 2025 inception, the index has declined almost 20% from a May peak. The piece examines implications for AI companies' pricing power and profitability, presenting divergent market interpretations: bulls view it as market digestion amid real underlying demand, while bears warn of weakening demand and regulatory headwinds that could crack the most expensive end of the AI trade.",
-    descriptionJa:
-      '本記事は、シリコンバレーのデータ企業が追跡しているLLMトークン支出指数を分析しています。この指数は2025年12月の開始以来ほぼ倍増していますが、5月の高値から約20%低下しています。記事では、トークン価格の低下がAI企業の価格設定能力と収益性に与える影響について論じており、この傾向に対する市場の複数の解釈を示しています。強気派は、これが市場の消化期を反映していると考えており、弱気派は需要の弱さと規制圧力を懸念しています。',
-    descriptionKo:
-      '본 글은 실리콘밸리 데이터 회사가 추적하는 LLM 토큰 지출 지수를 분석합니다. 이 지수는 2025년 12월 출시 이후 거의 두 배로 증가했으나, 5월의 최고점에서 약 20% 하락했습니다. 본 글은 토큰 가격 하락이 AI 회사의 가격 책정 능력과 수익성에 미치는 영향을 논의하며 이 추세에 대한 시장의 다양한 해석을 제시합니다. 강세론자들은 이것이 시장 소화 기간을 반영한다고 보는 반면, 약세론자들은 수요 약세와 규제 압력을 우려합니다.',
-    category: '独角兽',
-    confidence: 'low',
-    sourceUrl: 'https://www.businesstimes.com.sg/startups-tech/technology/ai-trade-losing-one-its-key-signals',
-    discoveredAt: '2026-07-06',
-    reasonForLowConfidence:
-      'Article is market analysis and commentary on AI token pricing trends, not news about a specific Singapore AI startup, company launch, funding round, or investment. Does not fit assigned categories and is not relevant to Singapore AI startup ecosystem tracking.',
-  },
-  {
-    title: '微软动员6000名员工帮助客户采用人工智能',
-    titleEn: 'Microsoft mobilises 6,000 workers to help customers adopt AI',
-    titleJa: 'マイクロソフトが6000人の従業員を動員して顧客のAI採用を支援',
-    titleKo: 'Microsoft가 6,000명의 직원을 동원하여 고객의 인공지능 도입을 지원합니다',
-    description:
-      '微软成立一个新部门，拥有6000名员工，专门帮助企业进行人工智能的技术部署和战略规划工作。该部门员工具有工程、企业培训、管理和特定行业（如银行、零售、能源、生命科学）的丰富经验。微软希望通过与客户更密切的合作，帮助他们更高效地实施AI解决方案，同时为微软自身的产品开发决策提供信息。',
-    descriptionEn:
-      "Microsoft established a new division with 6,000 employees to assist businesses with the technical and strategic deployment of artificial intelligence. The division comprises workers with experience in engineering, corporate training, management, and specific industries including banking, retail, energy, and life sciences. The initiative aims to help customers implement AI more efficiently while informing Microsoft's own product development decisions.",
-    descriptionJa:
-      'マイクロソフトは、6000人の従業員を持つ新部門を設立し、企業のAI技術展開と戦略計画を専門的に支援しています。同部門の従業員は、エンジニアリング、企業研修、マネジメント、および銀行、小売、エネルギー、ライフサイエンスなどの特定業界での豊かな経験を有しています。マイクロソフトは、顧客とのより緊密な協力を通じて、彼らがより効率的にAIソリューションを実装するのを支援し、同時にマイクロソフト自身の製品開発の意思決定に情報を提供することを期待しています。',
-    descriptionKo:
-      'Microsoft는 6,000명의 직원을 보유한 새로운 부서를 설립했으며, 이 부서는 기업의 인공지능 기술 배포 및 전략 계획 업무를 전문으로 지원합니다. 해당 부서의 직원들은 엔지니어링, 기업 교육, 관리 및 특정 산업(예: 은행, 소매, 에너지, 생명과학)의 풍부한 경험을 갖추고 있습니다. Microsoft는 고객과의 더욱 긴밀한 협력을 통해 그들이 AI 솔루션을 더욱 효율적으로 구현하도록 돕는 한편, Microsoft의 제품 개발 의사결정에 정보를 제공하기를 희망합니다.',
-    category: '新公司',
-    confidence: 'low',
-    sourceUrl:
-      'https://www.businesstimes.com.sg/companies-markets/microsoft-mobilises-6000-workers-help-customers-adopt-ai',
-    discoveredAt: '2026-07-06',
-    reasonForLowConfidence:
-      'This article focuses on Microsoft, a US-based multinational technology company, and does not relate to the Singapore AI startup ecosystem. While it discusses AI adoption strategies, it does not report on Singapore-based company launches, funding rounds, exits, or local investors—which are the target categories for this research task.',
-  },
-];
+export const autoDiscovered: AutoDiscoveredEntry[] = [];
