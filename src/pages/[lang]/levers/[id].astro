@@ -176,19 +176,28 @@ const metaJoiner = isCjk ? '。' : '. ';
 const metaDescription = (
   descPrefix && description ? `${descPrefix}${metaJoiner}${description}` : description || descPrefix
 ).slice(0, 200);
-const brandSuffix =
-  lang === 'zh'
-    ? `新加坡国家 AI 抓手 ${lever.number} · sgai`
-    : lang === 'zh-tw'
-      ? toTraditional(`新加坡国家 AI 抓手 ${lever.number} · sgai`)
-      : lang === 'ja'
-        ? `シンガポール国家 AI レバー ${lever.number} · sgai`
-        : lang === 'ko'
-          ? `싱가포르 국가 AI 레버 ${lever.number} · sgai`
-          : `Singapore National AI Lever ${lever.number} · sgai`;
+// Item pages get the lever number as their distinguisher; lever pages
+// already start with "Lever N ·", so a short country tag avoids repeating
+// the number. Metadata.astro's template appends `· sgai`.
+const brandSuffixByLang: Record<Lang, string> = {
+  zh: `新加坡国家 AI 抓手 ${lever.number}`,
+  'zh-tw': toTraditional(`新加坡国家 AI 抓手 ${lever.number}`),
+  ja: `シンガポール国家 AI レバー ${lever.number}`,
+  ko: `싱가포르 국가 AI 레버 ${lever.number}`,
+  en: `Singapore National AI Lever ${lever.number}`,
+};
+const leverTagByLang: Record<Lang, string> = {
+  zh: '新加坡 AI',
+  'zh-tw': toTraditional('新加坡 AI'),
+  ja: 'シンガポール AI',
+  ko: '싱가포르 AI',
+  en: 'Singapore AI',
+};
 
 const metadata = {
-  title: `${title} · ${brandSuffix}`,
+  title: isLever
+    ? `${title} — ${leverTagByLang[lang] || leverTagByLang.en}`
+    : `${title} · ${brandSuffixByLang[lang] || brandSuffixByLang.en}`,
   description: metaDescription,
 };
 

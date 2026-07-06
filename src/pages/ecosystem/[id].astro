@@ -9,6 +9,7 @@ import { getPolicyById, getDebateById, getLeverByNumber } from '~/utils/graph';
 import { allPeople } from '~/data/people';
 import EcosystemProse from '~/components/data/EcosystemProse.astro';
 import { isStubEcosystemEntity } from '~/utils/quality';
+import { synthesizeMetaDescription } from '~/utils/utils';
 
 export const prerender = true;
 
@@ -92,9 +93,12 @@ const description = entity.descriptionEn || entity.description;
 //      canonical." Auto-flips back to indexable once the EN fields land.
 const isPendingReview = entity._pendingReview === true;
 const isEnStub = isStubEcosystemEntity(entity, 'en');
+// Meta description prefers the deep EN fields (never the zh-falling-back
+// `pick()` above — an English SERP snippet must not carry Chinese).
+const metaDescription = synthesizeMetaDescription([entity.whatItIsEn, entity.aiRelevanceEn]) || description;
 const metadata = {
-  title: `${displayName} · Singapore AI ecosystem — ${categoryName} · sgai`,
-  description: description,
+  title: `${displayName} — ${categoryName}, Singapore AI`,
+  description: metaDescription,
   robots: { index: !isPendingReview && !isEnStub, follow: true },
 };
 

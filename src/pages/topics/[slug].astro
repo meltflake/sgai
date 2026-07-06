@@ -22,7 +22,7 @@ const name = pickLocalized<string>(topic, 'name', lang) ?? topic.nameEn;
 const description = pickLocalized<string>(topic, 'description', lang) ?? topic.descriptionEn;
 
 const metadata = {
-  title: `${name} · ${t(lang, 'fpBrowseByTopic')} · ${t(lang, 'siteName')}`,
+  title: `${name} · ${t(lang, 'fpBrowseByTopic')}`,
   description,
 };
 

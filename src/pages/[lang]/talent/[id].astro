@@ -54,18 +54,16 @@ const progStatus = pickLocalized<string>(programme, 'status', lang) ?? programme
 const pickStringArray = (record: unknown, field: string, fallback: string[]): string[] =>
   (pickLocalized(record, field, lang) as string[] | null | undefined) || fallback;
 
-const brandSuffix =
-  lang === 'zh'
-    ? '新加坡 AI 人才培养项目 · sgai'
-    : lang === 'zh-tw'
-      ? toTraditional('新加坡 AI 人才培养项目 · sgai')
-      : lang === 'ja'
-        ? 'シンガポール AI 人材育成プログラム · sgai'
-        : lang === 'ko'
-          ? '싱가포르 AI 인재 양성 프로그램 · sgai'
-          : 'Singapore AI talent programme · sgai';
+// Distinguisher only — Metadata.astro's template appends `· sgai`.
+const brandSuffixByLang: Record<Lang, string> = {
+  zh: '新加坡 AI 人才培养项目',
+  'zh-tw': toTraditional('新加坡 AI 人才培养项目'),
+  ja: 'シンガポール AI 人材育成プログラム',
+  ko: '싱가포르 AI 인재 양성 프로그램',
+  en: 'Singapore AI talent programme',
+};
 const metadata = {
-  title: `${progName} · ${brandSuffix}`,
+  title: `${progName} — ${brandSuffixByLang[lang] || brandSuffixByLang.en}`,
   description: progDescription,
 };
 

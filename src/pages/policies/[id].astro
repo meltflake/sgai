@@ -38,7 +38,7 @@ const metaPrefix = [yearMatch, policy.ministry].filter(Boolean).join(' · ');
 const metaDescription = (metaPrefix && summary ? `${metaPrefix}. ${summary}` : summary || metaPrefix).slice(0, 200);
 
 const metadata = {
-  title: `${title}${yearMatch ? ` (${yearMatch})` : ''} · Singapore AI Policy · sgai`,
+  title: `${title}${yearMatch ? ` (${yearMatch})` : ''} · Singapore AI Policy`,
   description: metaDescription,
 };
 

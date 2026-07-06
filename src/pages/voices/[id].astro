@@ -73,8 +73,18 @@ const signalLine = signalParts.length > 0 ? signalParts.join(' · ') + '.' : '';
 const descParts = [displayTitle ? `${displayTitle}.` : '', bioLine, signalLine].filter(Boolean);
 const builtDescription = descParts.join(' ').slice(0, 200);
 
+// SERP title = name + real job title (what people searching a person's
+// name expect to see). Never fall back to the zh `title` here — this is
+// the EN page. Long job titles get cut at a word boundary.
+const truncateAtWord = (s: string, max: number): string => {
+  if (s.length <= max) return s;
+  const cut = s.slice(0, max);
+  const lastSpace = cut.lastIndexOf(' ');
+  return (lastSpace > max * 0.5 ? cut.slice(0, lastSpace) : cut).replace(/[,;:]$/, '');
+};
+const jobTitleSegment = person.titleEn ? truncateAtWord(person.titleEn, 45) : 'Singapore AI policy & speeches';
 const metadata = {
-  title: `${displayName} on AI — Singapore policy, speeches, videos · sgai`,
+  title: `${displayName} — ${jobTitleSegment}`,
   description: builtDescription || `${displayName}'s speeches, policy links, and public AI video records in Singapore.`,
   robots: { index: !isLowSignal, follow: true },
 };

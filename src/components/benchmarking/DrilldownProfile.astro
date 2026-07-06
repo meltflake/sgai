@@ -7,6 +7,7 @@ import { benchmarkCaseProfileUpdated } from '~/data/benchmarking';
 import { getBenchmarkDrilldownsForRegion, type BenchmarkDrilldownPage } from '~/utils/entity-pages';
 import { IN_LANGUAGES, localizedHref, pickLocalized, t, type Lang } from '~/i18n';
 import { toTraditional } from '~/i18n/opencc';
+import { synthesizeMetaDescription } from '~/utils/utils';
 
 interface Props {
   page: BenchmarkDrilldownPage;
@@ -82,9 +83,16 @@ const regionBenchmarkLabelByLang: Record<Lang, string> = {
   ja: `${regionName}国際ベンチマーク`,
   ko: `${regionName} 국제 벤치마크`,
 };
+// description alone is one thin line ("HK$3 billion — subsidies …");
+// on enriched pages, chain the human-written analysis body behind it so
+// the SERP snippet carries substance. Pending pages keep the plain
+// description: they are noindex and their auto-generated body is
+// boilerplate that just repeats the title. Both fields are synthesized
+// with full 4-locale siblings (see the note at the top of this file),
+// so no per-locale gating is needed here.
 const baseMetadata = {
   title: `${title} · ${regionBenchmarkLabelByLang[lang] || regionBenchmarkLabelByLang.en}`,
-  description,
+  description: page.analysisPending ? description : synthesizeMetaDescription([description, body]) || description,
 };
 
 // Until per-drilldown enrichment lands, mark the page noindex,follow so

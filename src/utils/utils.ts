@@ -72,3 +72,24 @@ export const toUiAmount = (amount: number) => {
 // schema.org/VideoObject.uploadDate. Google Search Console flags pure dates ("2026-05-02")
 // as "Invalid datetime value" + "missing a timezone".
 export const toSchemaOrgDateTime = (date: string): string => `${date}T00:00:00+08:00`;
+
+/** Build a meta description from prose fragments: strip markdown syntax
+ *  (links, emphasis, headings), collapse whitespace, join with a space,
+ *  and cut at a word boundary near `maxLen`. Data fields like whatItIs /
+ *  judgment are authored as markdown body copy, so they can't go into
+ *  <meta name="description"> verbatim. */
+export const synthesizeMetaDescription = (parts: Array<string | null | undefined>, maxLen = 200): string => {
+  const text = parts
+    .filter((p): p is string => Boolean(p && p.trim()))
+    .join(' ')
+    .replace(/\[([^\]]*)\]\([^)]*\)/g, '$1') // [label](url) → label
+    .replace(/[*_`#>]+/g, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+  if (text.length <= maxLen) return text;
+  const cut = text.slice(0, maxLen);
+  // Prefer the last word boundary; CJK prose has no spaces, so fall back
+  // to a hard cut when none is found in the tail.
+  const lastSpace = cut.lastIndexOf(' ');
+  return (lastSpace > maxLen * 0.6 ? cut.slice(0, lastSpace) : cut).trimEnd() + '…';
+};

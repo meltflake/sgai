@@ -11,8 +11,9 @@ import { getPolicyById, getDebateById, getLeverByNumber } from '~/utils/graph';
 import { allPeople } from '~/data/people';
 import { isStubEcosystemEntity } from '~/utils/quality';
 import EcosystemProse from '~/components/data/EcosystemProse.astro';
-import { NON_DEFAULT_ROUTE_LOCALES, localizedHref, pickLocalized, type Lang } from '~/i18n';
+import { NON_DEFAULT_ROUTE_LOCALES, localizedHref, pickLocalized, pickLocalizedOwn, type Lang } from '~/i18n';
 import { toTraditional } from '~/i18n/opencc';
+import { synthesizeMetaDescription } from '~/utils/utils';
 
 export const prerender = true;
 
@@ -161,19 +162,25 @@ const isStub = !summary && !whatItIs;
 const isPendingReview = entity._pendingReview === true;
 const isZhStub = isStubEcosystemEntity(entity, 'zh');
 
-const ecosystemBrandSuffix =
-  lang === 'zh'
-    ? `新加坡 AI 生态 — ${categoryName} · sgai`
-    : lang === 'zh-tw'
-      ? toTraditional(`新加坡 AI 生态 — ${categoryName} · sgai`)
-      : lang === 'ja'
-        ? `シンガポール AI エコシステム — ${categoryName} · sgai`
-        : lang === 'ko'
-          ? `싱가포르 AI 생태계 — ${categoryName} · sgai`
-          : `Singapore AI ecosystem — ${categoryName} · sgai`;
+// One distinguisher segment only — Metadata.astro's template appends `· sgai`.
+const titleByLang: Record<Lang, string> = {
+  zh: `${displayName} — ${categoryName}，新加坡 AI`,
+  'zh-tw': toTraditional(`${displayName} — ${categoryName}，新加坡 AI`),
+  ja: `${displayName} — ${categoryName}・シンガポール AI`,
+  ko: `${displayName} — ${categoryName} · 싱가포르 AI`,
+  en: `${displayName} — ${categoryName}, Singapore AI`,
+};
+// Extend the description with deep fields only when their exact-locale
+// sibling exists (pickLocalizedOwn) — a fallback-chain pick here would
+// splice EN sentences into ja/ko snippets.
+const metaDescription =
+  synthesizeMetaDescription([
+    pickLocalizedOwn(entity, 'whatItIs', lang),
+    pickLocalizedOwn(entity, 'aiRelevance', lang),
+  ]) || description;
 const metadata = {
-  title: `${displayName} · ${ecosystemBrandSuffix}`,
-  description: description,
+  title: titleByLang[lang] || titleByLang.en,
+  description: metaDescription,
   robots: { index: !isPendingReview && !isZhStub, follow: true },
 };
 
