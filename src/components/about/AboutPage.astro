@@ -8,11 +8,23 @@ import { Icon } from 'astro-icon/components';
 import { SITE_VERSION, SITE_UPDATED } from '~/version';
 import { localizedHref, type Lang } from '~/i18n';
 import { deepToTraditional, toTraditional } from '~/i18n/opencc';
+import { debates } from '~/data/debates';
+import { ecosystemStats } from '~/data/startups';
+import { levers, publicLeverGroups } from '~/data/levers';
 
 interface Props {
   lang: Lang;
 }
 const { lang } = Astro.props;
+
+// Front-door figures interpolated from the data files, never hand-written —
+// hand-written copies drifted (150 vs 179 debates, 500+/650+ vs 548 startups).
+// The facade-stats eval asserts these interpolations stay in place.
+const debateCount = debates.length;
+const startupCount = ecosystemStats.totalStartups;
+const unicornCount = ecosystemStats.unicorns;
+const leverCount = levers.length;
+const leverItemCount = levers.reduce((n, l) => n + publicLeverGroups(l).reduce((m, g) => m + g.items.length, 0), 0);
 
 type Block = { kind: 'p'; html: string } | { kind: 'h2'; text: string } | { kind: 'ul'; items: string[] };
 
@@ -42,10 +54,10 @@ const COPY: Partial<Record<Lang, AboutCopy>> = {
         kind: 'ul',
         items: [
           '<strong>政策原文</strong>——从 Smart Nation 2014 到 NAIRD 2026，按机构归类，可追溯到原始 PDF。',
-          '<strong>国会辩论</strong>——150 场 Hansard 记录，按议题、议员、年份索引，每条带摘要和政策信号分析。',
-          '<strong>抓手图谱</strong>——把跨部委的 110+ 个落地项目归到 6 个国家级"AI 引入路径"，看清整体形状。',
+          `<strong>国会辩论</strong>——${debateCount} 场 Hansard 记录，按议题、议员、年份索引，每条带摘要和政策信号分析。`,
+          `<strong>抓手图谱</strong>——把跨部委的 ${leverItemCount} 个落地项目归到 ${leverCount} 个国家级"AI 引入路径"，看清整体形状。`,
           '<strong>法律框架</strong>——Copyright §244 训练宽松 + Online Safety Bill 输出严管的双轨结构。',
-          '<strong>创业生态</strong>——500+ AI 公司、9 家独角兽，按垂直领域和融资轮次。',
+          `<strong>创业生态</strong>——${startupCount} 家 AI 公司、${unicornCount} 家独角兽，按垂直领域和融资轮次。`,
         ],
       },
       { kind: 'h2', text: '方法论' },
@@ -104,17 +116,17 @@ const COPY: Partial<Record<Lang, AboutCopy>> = {
       { kind: 'h2', text: 'What this site does' },
       {
         kind: 'p',
-        html: 'Singapore is a city-state — population 5.9 million, GDP US$390 billion — but its national-scale moves in the AI era far outweigh its size. Smart Nation, National AI Strategy 1.0/2.0, the Budget 2026 AI mega-bet, the SEA-LION model, the AI Verify governance framework — some of these are underrated abroad and others are overrated locally.',
+        html: 'Singapore is a city-state — population 5.9 million, GDP US$530 billion — but its national-scale moves in the AI era far outweigh its size. Smart Nation, National AI Strategy 1.0/2.0, the Budget 2026 AI mega-bet, the SEA-LION model, the AI Verify governance framework — some of these are underrated abroad and others are overrated locally.',
       },
       { kind: 'p', html: 'This site tracks them systematically:' },
       {
         kind: 'ul',
         items: [
           '<strong>Policy library</strong> — every key document from Smart Nation 2014 to NAIRD 2026, organised by ministry, traceable to the original PDF.',
-          '<strong>Parliamentary debates</strong> — 150 Hansard records indexed by topic, MP, and year, each with a digest and policy-signal analysis.',
-          '<strong>Lever map</strong> — 110+ concrete projects across ministries, mapped to 6 national-scale "AI-injection paths" so you can see the whole shape.',
+          `<strong>Parliamentary debates</strong> — ${debateCount} Hansard records indexed by topic, MP, and year, each with a digest and policy-signal analysis.`,
+          `<strong>Lever map</strong> — ${leverItemCount} concrete projects across ministries, mapped to ${leverCount} national-scale "AI-injection paths" so you can see the whole shape.`,
           '<strong>Legal framework</strong> — the dual-track structure of Copyright §244 (permissive training) plus the Online Safety Bill (strict outputs).',
-          '<strong>Startup ecosystem</strong> — 500+ AI companies, 9 unicorns, segmented by vertical and funding stage.',
+          `<strong>Startup ecosystem</strong> — ${startupCount} AI companies, ${unicornCount} unicorns, segmented by vertical and funding stage.`,
         ],
       },
       { kind: 'h2', text: 'Methodology' },
@@ -176,17 +188,17 @@ const COPY: Partial<Record<Lang, AboutCopy>> = {
       { kind: 'h2', text: 'このサイトの目的' },
       {
         kind: 'p',
-        html: 'シンガポールは都市国家です——人口 590 万人、GDP 約 3,900 億米ドル——しかし AI 時代における国家規模の動きは規模を遥かに超えています。Smart Nation、National AI Strategy 1.0/2.0、Budget 2026 における AI 大胆投資、SEA-LION 大規模モデル、AI Verify ガバナンス枠組みなど、海外で過小評価されているものもあれば、国内で過大評価されているものもあります。',
+        html: 'シンガポールは都市国家です——人口 590 万人、GDP 約 5,300 億米ドル——しかし AI 時代における国家規模の動きは規模を遥かに超えています。Smart Nation、National AI Strategy 1.0/2.0、Budget 2026 における AI 大胆投資、SEA-LION 大規模モデル、AI Verify ガバナンス枠組みなど、海外で過小評価されているものもあれば、国内で過大評価されているものもあります。',
       },
       { kind: 'p', html: 'このサイトは次のものを体系的に追跡します：' },
       {
         kind: 'ul',
         items: [
           '<strong>政策原文</strong>——Smart Nation 2014 から NAIRD 2026 まで、所管機関別に整理し、原本 PDF まで遡れます。',
-          '<strong>議会討論</strong>——150 件の Hansard 記録を議題・議員・年別にインデックス化し、それぞれにサマリーと政策シグナル分析を付しています。',
-          '<strong>レバーマップ</strong>——省庁横断の 110 以上の実行プロジェクトを、6 つの国家規模「AI 導入経路」に整理し、全体像を可視化します。',
+          `<strong>議会討論</strong>——${debateCount} 件の Hansard 記録を議題・議員・年別にインデックス化し、それぞれにサマリーと政策シグナル分析を付しています。`,
+          `<strong>レバーマップ</strong>——省庁横断の ${leverItemCount} 件の実行プロジェクトを、${leverCount} つの国家規模「AI 導入経路」に整理し、全体像を可視化します。`,
           '<strong>法的枠組み</strong>——Copyright §244（学習に寛容）と Online Safety Bill（出力に厳格）のデュアルトラック構造。',
-          '<strong>スタートアップ・エコシステム</strong>——650 社以上の AI 企業、9 社のユニコーンを業種・資金調達ラウンド別に整理。',
+          `<strong>スタートアップ・エコシステム</strong>——${startupCount} 社の AI 企業、${unicornCount} 社のユニコーンを業種・資金調達ラウンド別に整理。`,
         ],
       },
       { kind: 'h2', text: '方法論' },
