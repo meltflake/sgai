@@ -26481,15 +26481,18 @@ export function getSpeechTranscript(id: string): SpeechTranscript | undefined {
 }
 
 // Locale handling: zh-tw runs zh paragraphs through OpenCC s2twp.
-// ja/ko intentionally return no body until dedicated transcript fields
-// exist. Rendering English originals as localized body text caused silent
-// wrong-language pages under /ja/ and /ko/.
+// ja/ko read their dedicated translated tracks; when a record's backfill is
+// missing they return no body rather than falling back to English — rendering
+// English originals as localized body text caused silent wrong-language pages
+// under /ja/ and /ko/.
 export function getSpeechTranscriptParagraphs(id: string, lang: string): string[] {
   const t = getSpeechTranscript(id);
   if (!t) return [];
   if (lang === 'zh') return t.paragraphs;
   if (lang === 'zh-tw') return t.paragraphs.map((p) => toTraditional(p));
   if (lang === 'en') return t.paragraphsEn?.length ? t.paragraphsEn : t.paragraphs;
+  if (lang === 'ja') return t.paragraphsJa ?? [];
+  if (lang === 'ko') return t.paragraphsKo ?? [];
   return [];
 }
 
@@ -26499,5 +26502,7 @@ export function getSpeechTranscriptTldr(id: string, lang: string): string[] | un
   if (lang === 'zh') return t.tldr;
   if (lang === 'zh-tw') return t.tldr?.map((p) => toTraditional(p));
   if (lang === 'en') return t.tldrEn ?? t.tldr;
+  if (lang === 'ja') return t.tldrJa ?? undefined;
+  if (lang === 'ko') return t.tldrKo ?? undefined;
   return undefined;
 }
