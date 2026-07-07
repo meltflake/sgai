@@ -59,6 +59,7 @@ npm run eval:url -- --changed-only # 只扫 PR 改过的 src/data/*.ts
 npm run eval:i18n -- --layer=a     # 数据层：每条 record 的 CJK 字段 *En + *Ja 配对（zero-cost）
 npm run eval:i18n -- --layer=all   # +B sitemap parity / +C hreflang parity / +D 语言纯度（需 build）
 npm run eval:updates-ledger        # 数据文件改了但 src/data/updates.ts 没追加 → fail（防 2026-05-09 那次"最近更新"漏记）
+npm run eval:facade-stats          # README/About 门面数字 vs src/data 真值（辩论/政策/创业/独角兽/经济体/指标），漂移即 fail（PR + 周都跑）
 ```
 
 cron 入口：`scripts/refresh/registry.json` → `id=evals`，weekly schedule。

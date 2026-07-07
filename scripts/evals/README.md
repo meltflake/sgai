@@ -13,6 +13,7 @@
 | Transcript Coverage (videos)  | `npm run eval:video-transcript`                   | PR + 周    | 否         | 否        |
 | Layer E source-i18n           | `npm run eval:source-i18n`                        | PR + 周    | 否         | 否        |
 | Entity-pages i18n             | `npm run eval:entity-pages-i18n`                  | PR + 周    | 否         | 否        |
+| Facade Stats                  | `npm run eval:facade-stats`                       | PR + 周    | 否         | 否        |
 | i18n Coverage Layer B         | `npm run eval:i18n -- --layer=b`                  | 周         | 是         | 否        |
 | i18n Coverage Layer C         | `npm run eval:i18n -- --layer=c`                  | 周         | 是         | 否        |
 | i18n Coverage Layer D         | `npm run eval:i18n -- --layer=d`                  | 周         | 是         | 否        |
@@ -97,6 +98,23 @@ npm run eval:video-transcript -- --base=HEAD~5 --dry-run            # 自定义 
 1. 一键 chain：`npm run fetch:video-transcripts -- --ids=<ids>` 已自动 chain en→zh→ja translate
 2. 没字幕轨：fetch 自动写 `source: 'unavailable'` 占位
 3. 历史回填：批量跑 `npx tsx scripts/videos/translate-transcripts-ja.ts` 补 paragraphsJa
+
+### Facade Stats（2026-07-07 加，根因修复）
+
+防御 2026-07-07 审计判断 5 的**根本修复**：对外门面数字多口径打架——README.md 同一文件里辩论数 139 与 179 并存、创业公司 "650+" vs `ecosystemStats.totalStartups` 真值 548、政策 "20 份核心" vs 实际 44 条；About 页还有第三套口径（150 场辩论、"500+" 公司）。站点卖点是"每条可溯源"，门面数字对不上直接伤信誉。
+
+逻辑（两层）：
+
+- **README.md**：12 组声称值（辩论 / 政策 / 创业公司 / 独角兽 / 经济体 / 关键指标 × zh + en 段），逐 pattern 提取数字与 `src/data/*.ts` 真值比对。同一 pattern 的**每一处出现**都校验（139/179 并存正是原始 bug 形态）；pattern 匹配不到也 fail（改写文案必须同步改 `README_CLAIMS`，不许静默逃逸）。
+- **AboutPage.astro**：门面数字已改为从数据文件插值（`${debateCount}` 等，zh/en/ja 三个 authored locale 各一处；zh-tw 走 OpenCC 派生、ko 回落 en）。本 eval 断言插值 snippet 保持在位，防止将来改回手写数字。
+
+CLI：
+
+```bash
+npm run eval:facade-stats          # PR + weekly cron 都跑；漂移即 exit 1
+```
+
+修复路径：数据真值变了（如新增辩论）→ 按 fail 信息更新 README.md 对应数字；About 页无需动（自动跟随数据）。
 
 ## 退出码
 

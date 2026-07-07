@@ -103,3 +103,13 @@ jobs:
       # See scripts/evals/entity-pages-i18n/check.ts.
       - name: Entity-pages synthesized i18n completeness
         run: npm run eval:entity-pages-i18n
+
+      # Enforce that the front-door numbers in README.md (debates, policies,
+      # startups, unicorns, economies, tracker metrics — zh + en sections)
+      # match the src/data/*.ts ground truth, and that AboutPage.astro keeps
+      # interpolating its figures from the data files instead of hand-writing
+      # them. Closes the 2026-07-07 audit judgment-5 class: three generations
+      # of stats coexisting on the public facade (139/179 debates, 650+/548
+      # startups). See scripts/evals/facade-stats/check.ts.
+      - name: Facade stats (README/About numbers vs data ground truth)
+        run: npm run eval:facade-stats

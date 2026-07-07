@@ -73,6 +73,17 @@ const STAGES: Stage[] = [
     needsDist: false,
     frequency: 'weekly',
   },
+  // facade-stats — assert the front-door numbers in README.md and the
+  // AboutPage.astro data interpolations agree with src/data/*.ts ground
+  // truth (debates / policies / startups / unicorns / economies / metrics).
+  // Companion to stale-stats: that one catches rotting dataDate stamps,
+  // this one catches hand-written copies of the numbers themselves.
+  {
+    name: 'facade-stats',
+    cmd: ['npx', 'tsx', 'scripts/evals/facade-stats/check.ts'],
+    needsDist: false,
+    frequency: 'weekly',
+  },
   // gsc-monitor — Search Analytics watch: striking-distance queries, CTR
   // anomalies, /zh/ position recovery. Skips (exit 0) with setup guidance
   // when GSC_SERVICE_ACCOUNT_JSON / GSC_PROPERTY_URL are absent, so wiring

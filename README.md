@@ -10,12 +10,12 @@
 
 核心内容：
 
-- **AI 政策库** — 20 份核心政策文档，中英标题、来源机构、摘要与原文链接
+- **AI 政策库** — 44 份政策文档，中英标题、来源机构、摘要与原文链接
 - **发展时间线** — 从 2014 年智慧国家倡议到 2026 年 NAIRD 的完整里程碑
-- **落地执行追踪** — 42 项关键指标：投资、人才、研究、采用率、基础设施
-- **国会 AI 焦点** — 139 场议会辩论的中文摘要、议员立场分析与政策信号提炼
+- **落地执行追踪** — 83 项关键指标：投资、人才、算力、采用、研究、治理
+- **国会 AI 焦点** — 179 场议会辩论的中文摘要、议员立场分析与政策信号提炼
 - **开源与研究** — 官方开源项目与产学研生态追踪
-- **创业生态** — 650+ AI 创业公司、9 家独角兽、五大垂直领域全景
+- **创业生态** — 548 家 AI 创业公司、9 家独角兽、五大垂直领域全景
 - **国际对标** — 10 个经济体 AI 政策横向对比
 - **观点** — 站方的解读与分析框架
 
@@ -23,7 +23,7 @@
 
 - [Astro 5.0](https://astro.build/) + [Tailwind CSS](https://tailwindcss.com/)
 - TypeScript 数据文件 + Markdown 博客文章
-- 部署：Cloudflare Pages（经由 [meltflake-site](https://github.com/meltflake/meltflake-site) 构建）
+- 部署：Cloudflare Pages（GitHub Actions 构建 + wrangler 直传，见 [.github/workflows/deploy.yaml](.github/workflows/deploy.yaml)）
 
 ## 本地开发
 
@@ -41,7 +41,7 @@ npm run fix       # 自动修复 eslint 和 prettier 问题
 src/
 ├── data/
 │   ├── post/           # Markdown 博客文章
-│   ├── debates.ts      # 179 条国会辩论数据
+│   ├── debates.ts      # 国会辩论数据
 │   ├── policies.ts     # 政策文件数据
 │   ├── timeline.ts     # 时间线数据
 │   ├── startups.ts     # AI 创业公司数据
@@ -72,12 +72,12 @@ Singapore AI Observatory tracks Singapore's AI strategy through policy documents
 
 Key sections:
 
-- **AI Policy Library** — 20 core policy documents with bilingual titles, source agencies, summaries, and original links
+- **AI Policy Library** — 44 policy documents with bilingual titles, source agencies, summaries, and original links
 - **Development Timeline** — Full milestones from Smart Nation Initiative (2014) to NAIRD (2026)
-- **Execution Tracker** — 42 key metrics: investment, talent, research, adoption rates, infrastructure
+- **Execution Tracker** — 83 key metrics: investment, talent, compute, adoption, research, governance
 - **Parliamentary AI Focus** — Chinese summaries of 179 parliamentary debates with MP stance analysis and policy signal extraction
 - **Open Source & Research** — Government open-source projects and industry-academia ecosystem
-- **Startup Ecosystem** — 650+ AI startups, 9 unicorns, five vertical sectors
+- **Startup Ecosystem** — 548 AI startups, 9 unicorns, five vertical sectors
 - **International Benchmarking** — Cross-comparison of AI policies across 10 economies
 - **Opinion** — Our perspectives and analytical framework
 
@@ -85,7 +85,7 @@ Key sections:
 
 - [Astro 5.0](https://astro.build/) + [Tailwind CSS](https://tailwindcss.com/)
 - TypeScript data files + Markdown blog posts
-- Deployment: Cloudflare Pages (via [meltflake-site](https://github.com/meltflake/meltflake-site) build pipeline)
+- Deployment: Cloudflare Pages (built on GitHub Actions, deployed with wrangler direct upload — see [.github/workflows/deploy.yaml](.github/workflows/deploy.yaml))
 
 ## Local Development
 
