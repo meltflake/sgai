@@ -2,6 +2,11 @@
 import { getAsset, getCanonical } from '~/utils/permalinks';
 import { IN_LANGUAGES, LOCALES, ROUTE_DEFAULT_LOCALE, localizedHref, unprefixed } from '~/i18n';
 
+export interface Props {
+  /** Page-level canonical override (Layout forwards metadata.canonical). */
+  canonical?: string | URL;
+}
+
 // After Phase 2 routing migration, every content page has a route-default
 // (en, unprefixed) version and one /<segment>/<path>/ mirror per non-default
 // locale. We emit one hreflang alternate per LOCALES entry plus x-default
@@ -10,12 +15,24 @@ import { IN_LANGUAGES, LOCALES, ROUTE_DEFAULT_LOCALE, localizedHref, unprefixed 
 const pathname = String(Astro.url.pathname);
 const basePath = unprefixed(pathname);
 
+// Pages whose rel=canonical points at a DIFFERENT page (the legal-ai ↔
+// policies twins, benchmarking cases with canonicalPath) must not emit an
+// hreflang cluster: Google requires every URL in an hreflang set to be
+// self-canonical, so alternates here would contradict the canonical signal
+// and the two annotations would fight each other in GSC. The canonical
+// target's own pages carry the cluster instead. scripts/check-meta.mjs
+// asserts this invariant on dist/; Layer C of eval:i18n skips these pages.
+const { canonical } = Astro.props;
+const crossPageCanonical = Boolean(canonical) && String(canonical) !== String(getCanonical(pathname));
+
 // BCP 47 hreflang codes come from IN_LANGUAGES (single source of truth,
 // shared with JSON-LD inLanguage and Layout's <html lang>).
-const alternates = LOCALES.map((lang) => ({
-  hreflang: IN_LANGUAGES[lang] ?? lang,
-  href: String(getCanonical(localizedHref(basePath, lang))),
-}));
+const alternates = crossPageCanonical
+  ? []
+  : LOCALES.map((lang) => ({
+      hreflang: IN_LANGUAGES[lang] ?? lang,
+      href: String(getCanonical(localizedHref(basePath, lang))),
+    }));
 const xDefault = String(getCanonical(localizedHref(basePath, ROUTE_DEFAULT_LOCALE)));
 ---
 
@@ -26,4 +43,4 @@ const xDefault = String(getCanonical(localizedHref(basePath, ROUTE_DEFAULT_LOCAL
 <link rel="sitemap" href={getAsset('/sitemap-index.xml')} />
 <link rel="manifest" href={getAsset('/manifest.json')} />
 {alternates.map((a) => <link rel="alternate" hreflang={a.hreflang} href={a.href} />)}
-<link rel="alternate" hreflang="x-default" href={xDefault} />
+{!crossPageCanonical && <link rel="alternate" hreflang="x-default" href={xDefault} />}

@@ -41,7 +41,9 @@ const body = item.bodyEn || item.body;
 const policyTwin = policyCategories.some((c) => c.policies.some((p) => p.id === page.slug));
 
 const metadata = {
-  title: `${title} · AI Legal Framework`,
+  // No section suffix: Metadata.astro's template appends `· sgai`, and a
+  // page-level suffix on top double-branded the title (GSC 2026-07).
+  title: title,
   description: summary,
   ...(policyTwin ? { canonical: String(getCanonical(localizedHref(`/policies/${page.slug}/`, lang))) } : {}),
 };

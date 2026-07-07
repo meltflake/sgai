@@ -14,6 +14,7 @@ import { debateTypeLabel, debateTopicLabel } from '~/utils/debate-labels';
 import { findPersonId, getPerson, personDisplayName } from '~/utils/people';
 import { NON_DEFAULT_ROUTE_LOCALES, IN_LANGUAGES, t, pickLocalized, localizedHref, type Lang } from '~/i18n';
 import { toTraditional } from '~/i18n/opencc';
+import { synthesizeMetaDescription } from '~/utils/seo-meta';
 
 export const prerender = true;
 
@@ -105,12 +106,12 @@ const topicListForMeta = (debate.topics || [])
   .slice(0, 2)
   .join(' · ');
 const metaDescPrefix = [debate.date, typeLabelForMeta, topicListForMeta].filter(Boolean).join(' · ');
-const metaDescription = (
-  metaDescPrefix && summaryShort ? `${metaDescPrefix}。${summaryShort}` : summaryShort || metaDescPrefix
-).slice(0, 200);
+const metaDescription = synthesizeMetaDescription([
+  metaDescPrefix && summaryShort ? `${metaDescPrefix}。${summaryShort}` : summaryShort || metaDescPrefix,
+]);
 
 const metadata = {
-  title: `${debateTitle}（${yearMatch}）· ${t(lang, 'navDebates')}`,
+  title: `${debateTitle}（${yearMatch}）`,
   description: metaDescription,
 };
 

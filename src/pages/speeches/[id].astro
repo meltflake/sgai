@@ -38,7 +38,9 @@ const speakerPid = findPersonId(speech.speaker);
 const speakerTitle = pickLocalized(speech, 'speakerTitle', 'speakerTitleEn', lang);
 
 const metadata = {
-  title: `${speech.titleEn || speech.title} · MDDI Speech`,
+  // No section suffix: Metadata.astro's template appends `· sgai`, and a
+  // page-level suffix on top double-branded the title (GSC 2026-07).
+  title: speech.titleEn || speech.title,
   description: speech.titleEn || speech.title,
 };
 
