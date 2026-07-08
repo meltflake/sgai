@@ -63,6 +63,9 @@ scripts/evals/*/reports/
 # eval caches (sha256-keyed ai-summary / translation output), regenerated each run
 scripts/evals/*/cache/
 scripts/hansard/data/translate-cache-ko/
+scripts/hansard/data/translate-cache-ja/
+# transient backfill run logs
+scripts/hansard/data/*.log
 
 # data-relations review queues are review-in-progress working files;
 # .gitkeep keeps the directory, individual queues stay local
