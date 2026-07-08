@@ -56,6 +56,20 @@ if command -v gh >/dev/null 2>&1; then
   else
     print_fail "gh not logged in — run: gh auth login"
   fi
+  # Cron token file: keychain is unreachable during locked-screen /
+  # no-login-session windows, so cron's gh calls 401 without this file
+  # (audit 2026-07-07 #16). auto_update.py injects it as GH_TOKEN at startup.
+  tokfile="$HOME/.config/sgai/gh-token"
+  if [ -s "$tokfile" ]; then
+    tokuser=$(env -i HOME="$HOME" PATH="$PATH" GH_TOKEN="$(cat "$tokfile")" gh api user --jq .login 2>/dev/null || true)
+    if [ -n "$tokuser" ]; then
+      print_ok "cron gh token valid ($tokfile → $tokuser)"
+    else
+      print_fail "cron gh token INVALID/expired — refresh: gh auth token > $tokfile && chmod 600 $tokfile"
+    fi
+  else
+    print_fail "cron gh token missing — run: gh auth token > $tokfile && chmod 600 $tokfile (else cron notifications 401 while screen is locked)"
+  fi
 else
   print_fail "gh missing — run: brew install gh"
 fi
