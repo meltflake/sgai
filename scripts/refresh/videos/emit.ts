@@ -129,6 +129,11 @@ const SPEAKER_REGISTRY: Record<
     speakerTitleEn: 'Minister for Health, Singapore',
     speakerType: 'government',
   },
+  'chee hong tat': {
+    speakerTitle: '新加坡国家发展部长',
+    speakerTitleEn: 'Minister for National Development, Singapore',
+    speakerType: 'government',
+  },
   'edwin tong': {
     speakerTitle: '新加坡律政部长兼文化、社区及青年部长',
     speakerTitleEn: 'Minister for Law and Minister for Culture, Community and Youth, Singapore',
@@ -543,6 +548,17 @@ async function main() {
       console.log(`  🤖 LLM generating bilingual fields for ${c.videoId} ...`);
       fields = await generateFields(c);
       writeCachedFields(c.videoId, h, fields);
+    }
+    // Re-apply the known-speaker override on every path: cached fields carry
+    // whatever SPEAKER_REGISTRY said at generation time, so registry fixes
+    // never reach cache hits otherwise (2026-07-07: a stale June cache
+    // resurfaced 公共服务部长 for Chan Chun Sing past the corrected entry).
+    // Runs before the ja/ko translate step, so those siblings follow suit.
+    const known = SPEAKER_REGISTRY[fields.speaker.trim().toLowerCase()];
+    if (known) {
+      fields.speakerTitle = known.speakerTitle;
+      fields.speakerTitleEn = known.speakerTitleEn;
+      fields.speakerType = known.speakerType;
     }
     console.log(`  ⏱  fetching duration via yt-dlp for ${c.videoId} ...`);
     const duration = getDurationViaYtDlp(c.videoId);
