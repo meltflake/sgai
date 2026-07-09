@@ -650,7 +650,7 @@ export const zh = {
   pnNewer: '更新一条 →',
 
   // Detail page sections (shared across debate/speech/video/voice detail pages)
-  fullTextZh: '完整译文（中文）',
+  fullTextTranslated: '完整译文（中文）',
   coreViewpoint: '核心观点',
   relatedVideos: '关联视频',
   speaker: '演讲者',
@@ -1227,7 +1227,7 @@ export const en: Partial<Record<keyof typeof zh, string>> = {
   pnOlder: '← Older',
   pnNewer: 'Newer →',
 
-  fullTextZh: 'Chinese Translation',
+  fullTextTranslated: 'Full Translation',
   coreViewpoint: 'In Brief',
   relatedVideos: 'Related Videos',
   speaker: 'Speaker',
@@ -1798,7 +1798,7 @@ export const ja: Partial<Record<keyof typeof zh, string>> = {
   pnOlder: '← 前へ（古い）',
   pnNewer: '次へ（新しい）→',
 
-  fullTextZh: '完全翻訳（中国語）',
+  fullTextTranslated: '全文翻訳（日本語）',
   coreViewpoint: 'コア観点',
   relatedVideos: '関連動画',
   speaker: '講演者',
@@ -2370,7 +2370,7 @@ export const ko: Partial<Record<keyof typeof zh, string>> = {
   pnOlder: '← 이전(과거)',
   pnNewer: '다음(최신) →',
 
-  fullTextZh: '완전 번역본(중문)',
+  fullTextTranslated: '전문 번역(한국어)',
   coreViewpoint: '핵심 관점',
   relatedVideos: '관련 영상',
   speaker: '연사',
