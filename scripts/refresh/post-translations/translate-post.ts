@@ -13,7 +13,8 @@
 // and body; all other frontmatter fields copied verbatim; `lang` set.
 
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
-import { basename, join } from 'node:path';
+import { basename, dirname, join, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import yaml from 'js-yaml';
 
 import { translateBatch, type TranslateDirection } from '../../lib/translate.ts';
@@ -77,7 +78,9 @@ function buildSystemPrompt(direction: TranslateDirection): string {
 
 async function main(): Promise<void> {
   const { src, target, dryRun } = parseArgs();
-  const ROOT = '/Users/lucawu/Library/CloudStorage/Dropbox/Github/sgai';
+  // Derive repo root from this script's location (scripts/refresh/post-translations/)
+  // so the tool is portable across machines/checkouts instead of a hardcoded path.
+  const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '../../..');
   const srcPath = src.startsWith('/') ? src : join(ROOT, src);
 
   const raw = readFileSync(srcPath, 'utf-8');
@@ -92,11 +95,21 @@ async function main(): Promise<void> {
 
   const title = String(fm.title ?? '');
   const excerpt = String(fm.excerpt ?? '');
+  // Localizable frontmatter: category label, byline author, and tag chips.
+  // These render on the page (and tags spawn /<lang>/blog/<slug> archive URLs),
+  // so leaving them in zh leaks Chinese onto en/ja/ko pages. Proper nouns inside
+  // them (e.g. "Smart Nation", "Anthropic") are preserved by the system prompt.
+  const category = fm.category != null ? String(fm.category) : '';
+  const author = fm.author != null ? String(fm.author) : '';
+  const tags = Array.isArray(fm.tags) ? fm.tags.map((t) => String(t)) : [];
 
-  const toTranslate = [title, excerpt, ...blocks];
+  const meta = [title, excerpt, category, author];
+  const toTranslate = [...meta, ...tags, ...blocks];
   const direction = `zh→${target}` as TranslateDirection;
 
-  console.log(`[translate-post] ${target}: ${toTranslate.length} items (title + excerpt + ${blocks.length} blocks)`);
+  console.log(
+    `[translate-post] ${target}: ${toTranslate.length} items (title + excerpt + category + author + ${tags.length} tags + ${blocks.length} blocks)`
+  );
 
   if (dryRun) {
     console.log('[translate-post] dry-run, skipping translation');
@@ -115,8 +128,13 @@ async function main(): Promise<void> {
     throw new Error(`Length mismatch: input ${toTranslate.length}, output ${translated.length}`);
   }
 
-  const [tTitle, tExcerpt, ...tBlocks] = translated;
+  const [tTitle, tExcerpt, tCategory, tAuthor] = translated;
+  const tTags = translated.slice(meta.length, meta.length + tags.length);
+  const tBlocks = translated.slice(meta.length + tags.length);
   const outFm: Record<string, unknown> = { ...fm, title: tTitle, excerpt: tExcerpt, lang: target };
+  if (category) outFm.category = tCategory;
+  if (author) outFm.author = tAuthor;
+  if (tags.length) outFm.tags = tTags;
   const outBody = tBlocks.join('\n\n');
 
   const slug = basename(srcPath).replace(/\.(md|mdx)$/i, '');
