@@ -5,6 +5,10 @@ function hasCjk(value: string): boolean {
   return /[\u3400-\u9fff]/.test(value);
 }
 
+function hasHangul(value: string): boolean {
+  return /[\uac00-\ud7a3]/.test(value);
+}
+
 const errors: string[] = [];
 
 for (const debate of debates) {
@@ -29,8 +33,10 @@ for (const debate of debates) {
     const ko = transcript.paragraphsKo ?? [];
     if (ja.length === 0) errors.push(`${debate.id}: missing Japanese transcript (paragraphsJa)`);
     else if (ja.length !== zhLen) errors.push(`${debate.id}: paragraphsJa length ${ja.length} != zh ${zhLen}`);
+    else if (!hasCjk(ja.join(''))) errors.push(`${debate.id}: paragraphsJa has no CJK — not Japanese?`);
     if (ko.length === 0) errors.push(`${debate.id}: missing Korean transcript (paragraphsKo)`);
     else if (ko.length !== zhLen) errors.push(`${debate.id}: paragraphsKo length ${ko.length} != zh ${zhLen}`);
+    else if (!hasHangul(ko.join(''))) errors.push(`${debate.id}: paragraphsKo has no Hangul — not Korean?`);
   }
 }
 

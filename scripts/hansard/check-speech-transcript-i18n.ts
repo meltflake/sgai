@@ -15,6 +15,14 @@
 
 import { speechTranscripts } from '../../src/data/speech-transcripts.ts';
 
+function hasCjk(value: string): boolean {
+  return /[㐀-鿿]/.test(value);
+}
+
+function hasHangul(value: string): boolean {
+  return /[가-힣]/.test(value);
+}
+
 const errors: string[] = [];
 
 for (const [id, t] of Object.entries(speechTranscripts)) {
@@ -25,12 +33,14 @@ for (const [id, t] of Object.entries(speechTranscripts)) {
   const ko = t.paragraphsKo ?? [];
   if (ja.length === 0) errors.push(`${id}: missing Japanese transcript (paragraphsJa)`);
   else if (ja.length !== zhLen) errors.push(`${id}: paragraphsJa length ${ja.length} != zh ${zhLen}`);
+  else if (!hasCjk(ja.join(''))) errors.push(`${id}: paragraphsJa has no CJK — not Japanese?`);
   if (ko.length === 0) errors.push(`${id}: missing Korean transcript (paragraphsKo)`);
   else if (ko.length !== zhLen) errors.push(`${id}: paragraphsKo length ${ko.length} != zh ${zhLen}`);
+  else if (!hasHangul(ko.join(''))) errors.push(`${id}: paragraphsKo has no Hangul — not Korean?`);
 
-  // tldr, when present in zh, must carry ja/ko siblings (parity not required —
-  // bullet counts can differ after translation compression is disallowed, but
-  // presence is). Keep it strict: same length as zh tldr.
+  // tldr, when present in zh, must carry ja/ko siblings with the SAME length as
+  // the zh tldr — strict parity. A missing tldrJa/tldrKo surfaces as length
+  // 0 !== zhLen, so this also catches absence.
   const tldrZhLen = (t.tldr ?? []).length;
   if (tldrZhLen > 0) {
     const tj = t.tldrJa ?? [];
