@@ -32,7 +32,7 @@ npm run fix:prettier  # 仅修复 prettier (prettier -w .)
 
 ### 构建产物层检查（dist gate）
 
-`npm run check` 跑的是源码级静态检查，看不见 JSON-LD 字符串语义、meta tag 完整性、地区化字段是否漏翻。下面三个命令针对 `dist/` 跑，PR 前手动跑（CI 暂不跑，build 太慢）：
+`npm run check` 跑的是源码级静态检查，看不见 JSON-LD 字符串语义、meta tag 完整性、地区化字段是否漏翻。下面三个命令针对 `dist/` 跑，PR 前手动跑（`check:i18n` + `check:schema` 由 `.github/workflows/actions.yaml` 的 build job 在 PR 时跑，见「部署」一节；本地手动跑做提交前预检）：
 
 ```bash
 npm run build && npm run check:dist
@@ -61,6 +61,7 @@ npm run eval:url -- --changed-only # 只扫 PR 改过的 src/data/*.ts
 npm run eval:i18n -- --layer=a     # 数据层：每条 record 的 CJK 字段 *En + *Ja 配对（zero-cost）
 npm run eval:i18n -- --layer=all   # +B sitemap parity / +C hreflang parity / +D 语言纯度（需 build）
 npm run eval:updates-ledger        # 数据文件改了但 src/data/updates.ts 没追加 → fail（防 2026-05-09 那次"最近更新"漏记）
+npm run eval:facade-stats          # README/About 门面数字 vs src/data 真值（辩论/政策/创业/独角兽/经济体/指标），漂移即 fail（PR + 周都跑）
 ```
 
 cron 入口：`scripts/refresh/registry.json` → `id=evals`，weekly schedule。
@@ -121,18 +122,20 @@ npx prettier --write src/
 
 ### 5. i18n 双字段约定（关键 — 最高优先级）
 
-> **🔴 顶层硬规则：sgai 是 zh + en + ja + zh-tw + ko 五语站点。**
+> **🔴 顶层硬规则：sgai 是 zh + en + ja + zh-tw + ko 五语站点。en / ja / ko 三个书写语言全部强制，zh-tw 从 zh 派生。**
 >
-> 但**只有 `*En` 和 `*Ja` 数据字段是强制的**，其余两个语言走不同路径：
+> 2026-07 起「ko 可选」已废除——`en`、`ja`、`ko` 三语数据字段全部强制（`check:i18n-completeness --locales=en,ja,ko` 是 CI 硬门）。四类内容的强制形态：
 >
-> - `zh-tw`（繁體中文，`/zh-tw/...`）：**不写数据字段**。运行时跑 OpenCC s2twp 从 zh 自动转换（[src/i18n/opencc.ts](src/i18n/opencc.ts)）。手动 override 用 `zhTwDict` 字典或可选 `*ZhTw` 字段。
-> - `ko`（한국어，`/ko/...`）：**`*Ko` 字段可选但鼓励**。当前 UI 字典完整、数据字段陆续回填中。缺失时按 `ko → en → zh` fallback 链回落（可读但非母语）。
+> - **标量 CJK 字段**（`title` / `summary` / `description` / `label` / `ministry` ...）：`*En` + `*Ja` + `*Ko` 三个兄弟字段全部必填，同一次 commit。gate = `check:i18n-completeness`。
+> - **Transcript 正文数组**（debate / speech / video 的 `paragraphs*`）：`paragraphs`(zh) + `paragraphsEn` + `paragraphsJa` + `paragraphsKo` 四条全部非空且**段数配平**。gate = `check:debate-transcripts` / `check:speech-transcripts` / `eval:video-transcript`（全是 CI 硬门，见 rule #8/#11）。
+> - **长文 post**（`src/data/post/*.md`）：每篇 zh 原文必须有 `en/ja/ko/zh-tw` 四个同名实体文件。gate = `check:post-i18n`（CI 硬门）。**注意 post 是唯一 zh-tw 也要实体文件的内容类型**（blog.ts 按物理文件加载，无运行时派生）——zh-tw 用 [scripts/hansard/derive-zh-tw-posts.ts](scripts/hansard/derive-zh-tw-posts.ts) 确定性 OpenCC 转换生成，ja/ko 用 [scripts/refresh/post-translations/translate-post.ts](scripts/refresh/post-translations/translate-post.ts) 真翻译。
+> - **`zh-tw`（繁體中文，`/zh-tw/...`）**：除 post 外**不写数据字段**。运行时跑 OpenCC s2twp 从 zh 自动转换（[src/i18n/opencc.ts](src/i18n/opencc.ts)）。手动 override 用 `zhTwDict` 字典或可选 `*ZhTw` 字段。
 >
-> 任何 `src/data/*.ts` 的数据更新——无论是 agent 自动 PR、手动编辑、批量 codemod、回填，还是粘贴翻译——必须 zh / en / ja 三语同步写入。zh-tw 自动派生不用管。ko 鼓励同步（可后批量补）。
+> 任何 `src/data/*.ts` 的数据更新——agent 自动 PR、手动编辑、批量 codemod、回填、粘贴翻译——必须 zh / en / ja / ko 四语同步写入。zh-tw 自动派生不用管（post 除外）。
 >
-> - ✅ 加新条目：`title` 和 `titleEn` 和 `titleJa` 必须同时给值，同一次 commit。`titleKo` 加是 bonus，不加靠 fallback。
-> - ✅ 改老条目：改了 `title` 必须连带改 `titleEn` 和 `titleJa`，反之亦然。同一次 commit。
-> - ❌ 禁止「先 commit 中文版，下一个 PR 补英文和日文」这种分步操作。EN/JA 页面会立刻渲染断裂。
+> - ✅ 加新条目：`title` / `titleEn` / `titleJa` / `titleKo` 必须同时给值，同一次 commit。
+> - ✅ 改老条目：改了 `title` 必须连带改 `titleEn` / `titleJa` / `titleKo`，反之亦然。同一次 commit。
+> - ❌ 禁止「先 commit 中文版，下一个 PR 补英文/日文/韩文」这种分步操作。EN/JA/KO 页面会立刻渲染断裂或被 CI 挡下。
 > - 不会写英文/日文/韩文？用 [scripts/lib/translate.ts](scripts/lib/translate.ts) 的 `translateRecords(records, ['title','description'], { direction: 'zh→en' })` / `'zh→ja'` / `'zh→ko'` 一行调出来。Claude haiku，零 API key，已带 sha256 缓存。
 > - 真要「这个字段我现在没法翻译」时，**必须**在该字段所在行上面注释 `// i18n-allow-unpaired` 显式豁免，否则 [scripts/lib/i18n-pair.ts](scripts/lib/i18n-pair.ts) 会 fail。
 
@@ -186,9 +189,11 @@ npx prettier --write src/
 
 历史踩点：[a608bc0](https://github.com/meltflake/sgai/commit/a608bc0)（2026-05-09 videos 手动 fix）补 v059/v060 但漏掉 `updates.ts`，首页"最近更新"看不到当天新增视频。当时 ledger 是手工双源真相，靠纪律维护——失败一次就漏了。本规则把"最近更新"改成**派生模式**，从根上消除 drift bug 类。手动 ledger 那条规则（CLAUDE.md 之前的版本写的）已废弃。
 
-### 8. video-transcripts 三语对齐（关键 — 最高优先级）
+### 8. video-transcripts 四语对齐（关键 — 最高优先级）
 
-> **🔴 顶层硬规则：`src/data/video-transcripts.ts` 里任何一条 record 只要有 `paragraphsEn`，就必须同时有 `paragraphs`（zh）和 `paragraphsJa`。`digest` / `digestEn` / `digestJa` 同样三语共存共缺。同时 `src/data/videos.ts` 里的每个 video 必须在 `videoTranscripts` 里有 record（带内容，或显式 `source: 'unavailable'` 占位），否则 `/ja/videos/<id>/` 会渲染开发者文案 "Run npm run fetch:video-transcripts to refresh"。**
+> **🔴 顶层硬规则：`src/data/video-transcripts.ts` 里任何一条 record 只要有 `paragraphsEn`，就必须同时有 `paragraphs`（zh）、`paragraphsJa`、`paragraphsKo`，四条段数配平。`digest` / `digestEn` / `digestJa` / `digestKo` 同样四语共存共缺。同时 `src/data/videos.ts` 里的每个 video 必须在 `videoTranscripts` 里有 record（带内容，或显式 `source: 'unavailable'` 占位），否则 `/ja/videos/<id>/` 会渲染开发者文案 "Run npm run fetch:video-transcripts to refresh"。**
+>
+> （2026-07 起 ko 并入硬门——`eval:video-transcript` 从三语升四语。zh-tw 不入库，OpenCC 运行时派生。）
 >
 > - ✅ 标准链：`npm run fetch:video-transcripts -- --ids=vNNN` 已经自动 chain en→zh→ja translate，单条命令到三语对齐
 > - ✅ YouTube 视频根本没字幕轨：fetch 会自动写 `source: 'unavailable'` 占位，前端渲染"字幕不可用"友好文案（不是开发者 fallback）
@@ -252,31 +257,32 @@ npx prettier --write src/
 
 ### 11. debate-transcripts 同步（关键 — 最高优先级）
 
-> **🔴 顶层硬规则：`src/data/debates.ts` 里每一条 debate 必须在 `src/data/debate-transcripts.ts` 的 `debateTranscripts` map 里有对应 record，且该 record 的 `paragraphs`（zh）与 `paragraphsEn`（原始 Hansard）都非空、`paragraphs` 含 CJK。缺 record 或任一为空，`npm run check` 里的 `check:debate-transcripts`（CI 硬门）当场 exit 1；同时详情页 `/<lang>/debates/<id>/` 会丢掉 Hansard 全文区。**
+> **🔴 顶层硬规则：`src/data/debates.ts` 里每一条 debate 必须在 `src/data/debate-transcripts.ts` 的 `debateTranscripts` map 里有对应 record，且该 record 的 `paragraphs`（zh，含 CJK）、`paragraphsEn`（原始 Hansard）、`paragraphsJa`、`paragraphsKo` **四条全部非空且段数配平**（Ja/Ko 段数 == zh 段数）。缺 record 或任一为空/段数不齐，`npm run check` 里的 `check:debate-transcripts`（CI 硬门）当场 exit 1；同时详情页 `/<lang>/debates/<id>/` 会丢掉全文区或回落英文。**
 >
-> 和 rule #8（video-transcripts 三语对齐）不同：debate transcript body 是**双语**——`paragraphs`（zh 摘要式分段）+ `paragraphsEn`（原始 Hansard 英文分段）。CI 硬门只校验这两条，**不**要求 `paragraphsJa` / `paragraphsKo`（二者可选：Ja 暂未回填；Ko 已大量逐 record 回填，见 rule #9）。
+> 2026-07 起 debate transcript 与 rule #8（video）看齐，四语全强制（Ja/Ko 不再可选）。zh-tw 不入库——`[id].astro` + 数据文件尾部 helper 的 `toTraditional()` 运行时派生（见 rule #10）。
 >
-> - `paragraphsEn` 放原始 Hansard 英文分段。详情页（`src/pages/[lang]/debates/[id].astro`）的 "Hansard 原文" 区带 `data-i18n-allow-cjk="hansard-original"` + `data-i18n-allow-en` 豁免，所以英文原文里夹中文引文不会触发 i18n 残留检查。
-> - `paragraphs`（zh）是摘要式分段，必须含中文（check 校验 CJK，否则报 "does not appear to contain Chinese"）。zh-tw 页面**不写**数据字段，靠 `[id].astro` 的 `toTraditional(paragraph)` 运行时转换（见 rule #10）。
+> - `paragraphsEn` 放原始 Hansard 英文分段。详情页（`src/pages/[lang]/debates/[id].astro`）的 "Hansard 原文" 区带 `data-i18n-allow-cjk="hansard-original"` + `data-i18n-allow-en` 豁免。
+> - `paragraphs`（zh）摘要式分段必须含中文；`paragraphsJa`/`paragraphsKo` 是 zh 的逐段翻译，段数必须等于 zh（gate 校验配平，抓「ko 1 段 vs zh 3 段」这类残缺）。
+> - 详情页的「完整译文」区按 lang 取轨（`getDebateTranscriptParagraphs(id, lang)`）：ja/ko 读各自译文，缺失才回落英文原文——**绝不在译文标题下渲染英文**。
 >
-> **🔴 不要用 `npm run fetch:debate-transcripts` 补单条。** 它的 emit（[fetch-debate-transcripts.ts:226](scripts/hansard/fetch-debate-transcripts.ts)）是**全量重写**，会静默毁掉现有回填：
+> **🔴 `fetch:debate-transcripts` 的 emit 已改为 merge 模式（2026-07），但仍需谨慎。** 旧版是全量重写会静默毁掉回填；现在 emit（[fetch-debate-transcripts.ts](scripts/hansard/fetch-debate-transcripts.ts)）**与数据文件 merge**：保留已有 `paragraphsJa`/`paragraphsKo`、拒绝 zh 降级、缺 record 只警告不静默丢。**但两条铁律不变**：
 >
-> - emit 在 line 249 无条件跑 `emitData(loadCachedRecords())`，扫**所有** debate 的 raw cache —— `--ids=X` 只限制 fetch 那一步，emit 永远整文件 `writeFileSync`。
-> - emit 模板（约 line 189-206）的 `DebateTranscript` interface **只声明 `paragraphs` + `paragraphsEn`**，没有 `paragraphsJa?` / `paragraphsKo?`。跑一次就把文件里现有全部 `paragraphsKo`（写本条时 161 条，逐 record 翻译、成本见 rule #9）连同字段声明一起抹掉。
-> - emit 还 `.filter((r) => r.paragraphs.length > 0)`（line 162）—— 本地缺 zh translation cache 时该 record 直接消失 → check 报 "missing transcript record"。
+> - emit 模板的 `DebateTranscript` interface + 尾部 helper 是**第二真相源**，必须与 `src/data/debate-transcripts.ts` 字节同步（改一处改两处，rule #8 二次踩点）。
+> - 补单条仍首选手工插入或逐 record 翻译脚本，别依赖 fetch 全量跑。
 >
 > 正确补法：
 >
-> - ✅ 手工 / 一次性脚本把新 record **插入 map 开头**（紧跟 `export const debateTranscripts ... = {` 那行），`paragraphs` + `paragraphsEn` 都填齐、`paragraphs` 含中文，**绝不动现有条目**。zh 摘要分段自己写或用 [scripts/lib/translate.ts](scripts/lib/translate.ts)。
-> - ✅ 补 Ko：用 rule #9 的 [translate-debate-transcripts-ko.ts](scripts/hansard/translate-debate-transcripts-ko.ts)（逐 record 写盘），禁用 `backfill-ko-arrays.ts`。
+> - ✅ 新 record 插入 map 开头，`paragraphs` + `paragraphsEn` 填齐、`paragraphs` 含中文，**绝不动现有条目**。
+> - ✅ 补 Ja：[translate-debate-transcripts-ja.ts](scripts/hansard/translate-debate-transcripts-ja.ts)；补 Ko：[translate-debate-transcripts-ko.ts](scripts/hansard/translate-debate-transcripts-ko.ts)（都逐 record 写盘 + sha256 缓存，rule #9 纪律，禁用 `backfill-ko-arrays.ts`）。`SGAI_LLM_TIMEOUT_MS=300000`，串行/低并发。
 > - ❌ 禁止「先合 `debates.ts`，下一个 PR 补 transcript」—— `npm run check` 当场 fail，CI block merge。
 >
 > 强制点：
 >
-> 1. `npm run check:debate-transcripts`（[check-debate-transcript-i18n.ts](scripts/hansard/check-debate-transcript-i18n.ts)）挂在 `npm run check` 链里（package.json `check` script）。它**全量扫**每条 debate（非 diff 模式，新老一起查）：缺 record / `paragraphs` 空 / `paragraphsEn` 空 / `paragraphs` 不含 CJK → exit 1。
-> 2. `.github/workflows/actions.yaml` 的 check job 跑 `npm run check`，CI 硬门，PR 不能 merge。
+> 1. `npm run check:debate-transcripts`（[check-debate-transcript-i18n.ts](scripts/hansard/check-debate-transcript-i18n.ts)）挂在 `npm run check` 链里。**全量扫**每条 debate：缺 record / 四字段任一空 / `paragraphs` 不含 CJK / Ja·Ko 段数不配平 → exit 1。
+> 2. speech transcript 有同款四语全量门 `check:speech-transcripts`（[check-speech-transcript-i18n.ts](scripts/hansard/check-speech-transcript-i18n.ts)），同挂 `npm run check`。
+> 3. `.github/workflows/actions.yaml` 的 check job 跑 `npm run check`，CI 硬门。
 
-历史踩点：2026-06-02 给 `debates.ts` 新增 8 条辩论时撞到——CLAUDE.md 有 rule #8 写了 video-transcripts 的等价硬门，却漏写 debate-transcripts 的同款门，差点直接跑 `fetch:debate-transcripts` 全量重写、连带抹掉已回填的 `paragraphsKo`。本条即补这个文档盲区。
+历史踩点：2026-06-02 给 `debates.ts` 新增 8 条辩论时发现 debate 门缺失。2026-07 项目审计（[docs/20260707-project-audit.md](docs/20260707-project-audit.md)）进一步发现：debate `paragraphsJa` 覆盖为 0、speech ja/ko 各缺 55、长文 ko/zh-tw 各缺 3——根因是「五语言」从来只在标量字段强制，transcript 正文与 post 的门只到 {zh,en} 甚至 {zh}。本轮把四语补齐到零并把 debate/speech/video/post 全部升为四语硬门。
 
 ### 12. 数据文件刷新归属（关键 — 最高优先级）
 

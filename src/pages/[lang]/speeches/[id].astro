@@ -31,13 +31,12 @@ const isZhLike = lang === 'zh' || lang === 'zh-tw';
 const { speech } = Astro.props as { speech: MddiSpeech };
 const id = speechId(speech);
 const transcript = getSpeechTranscript(id);
-const paragraphsZh = getSpeechTranscriptParagraphs(id, 'zh');
 const paragraphsEn = getSpeechTranscriptParagraphs(id, 'en');
-const tldrZh = getSpeechTranscriptTldr(id, 'zh');
-const tldrEn = getSpeechTranscriptTldr(id, 'en');
-const localizeZhTrack = (items: string[]) => (lang === 'zh-tw' ? items.map((item) => toTraditional(item)) : items);
-const paragraphsLocal = isZhLike ? localizeZhTrack(paragraphsZh) : [];
-const tldrLocal = isZhLike && tldrZh ? localizeZhTrack(tldrZh) : undefined;
+// The getters are lang-aware: zh-tw converts via OpenCC, ja/ko read their
+// dedicated translated tracks and return nothing while a backfill is missing
+// (never English — that made silent wrong-language pages under /ja/ /ko/).
+const paragraphsLocal = getSpeechTranscriptParagraphs(id, lang);
+const tldrLocal = getSpeechTranscriptTldr(id, lang);
 
 const speakerPid = findPersonId(speech.speaker);
 // Resolve speaker display name via Person record so non-zh locales get
@@ -83,12 +82,7 @@ const articleSchema = {
 const breadcrumbs = [{ label: t(lang, 'navVoices'), href: localizedHref('/voices/', lang) }, { label: titleDisplay }];
 
 const hasLocalCopy = !!transcript && paragraphsEn.length > 0;
-const tldrByLang: Partial<Record<Lang, string[] | undefined>> = {
-  zh: tldrLocal,
-  'zh-tw': tldrLocal,
-  en: tldrEn,
-};
-const tldr = tldrByLang[lang];
+const tldr = tldrLocal;
 
 const speechCopy: Record<
   Lang,
@@ -212,7 +206,7 @@ const copy = speechCopy[lang];
     }
 
     {
-      isZhLike && paragraphsLocal.length > 0 && (
+      paragraphsLocal.length > 0 && (
         <section class="my-8 border border-primary/20 bg-primary/5 rounded-xl p-5">
           <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-4">
             <h2 class="t-h3 text-gray-900 dark:text-white">{copy.translatedHeading}</h2>
@@ -231,7 +225,7 @@ const copy = speechCopy[lang];
     }
 
     {
-      isZhLike && paragraphsEn.length > 0 && paragraphsLocal.length === 0 && (
+      paragraphsEn.length > 0 && paragraphsLocal.length === 0 && (
         <section class="my-8 callout-muted rounded-xl p-5 text-sm text-amber-900 dark:text-amber-200">
           {copy.pending}
         </section>
@@ -239,7 +233,7 @@ const copy = speechCopy[lang];
     }
 
     {
-      isZhLike && paragraphsEn.length > 0 && (
+      paragraphsEn.length > 0 && (
         <section class="my-8 border border-subtle rounded-xl p-5" data-i18n-allow-en="speech-verbatim-source">
           <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-4">
             <h2 class="t-h3 text-gray-900 dark:text-white">{copy.originalHeading}</h2>
@@ -258,18 +252,7 @@ const copy = speechCopy[lang];
     }
 
     {
-      !isZhLike && (
-        <section class="my-8 callout-muted rounded-xl p-5 text-sm text-amber-900 dark:text-amber-200">
-          {copy.pending}{' '}
-          <a href={speech.url} target="_blank" rel="noopener" class="underline">
-            {t(lang, 'mddiSourceLabel') || 'MDDI website'}
-          </a>
-        </section>
-      )
-    }
-
-    {
-      isZhLike && !hasLocalCopy && (
+      !hasLocalCopy && (
         <section class="my-8 callout-muted rounded-xl p-5 text-sm">
           <p class="text-amber-900 dark:text-amber-200">
             {copy.pending}{' '}

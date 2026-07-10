@@ -2,6 +2,7 @@ import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 
 import { join, resolve } from 'node:path';
 
 import { debates } from '../../src/data/debates';
+import { debateTranscripts as existingTranscripts } from '../../src/data/debate-transcripts';
 
 interface TranscriptRecord {
   debateId: string;
@@ -157,35 +158,61 @@ async function fetchTranscript(debate: (typeof debates)[number]): Promise<Transc
   }
 }
 
-function emitData(records: TranscriptRecord[]): void {
-  const available = records
-    .filter((record) => record.paragraphs.length > 0)
-    .map((record) => {
-      const translation = readTranslation(record.debateId);
-      return [
-        record.debateId,
-        {
-          debateId: record.debateId,
-          reportId: record.reportId,
-          sourceUrl: record.sourceUrl,
-          sourceLanguage: record.sourceLanguage,
-          fetchedAt: record.fetchedAt,
-          source: record.source,
-          paragraphs: translation?.paragraphs || [],
-          paragraphsEn: record.paragraphs,
-          ...(translation
-            ? {
-                translatedAt: translation.translatedAt,
-                translationSource: translation.source,
-                translationModel: translation.model,
-              }
-            : {}),
-          ...(record.error ? { error: record.error } : {}),
-        },
-      ] as const;
-    });
+// Emit merges three sources per debate, never discarding what only lives in the
+// data file (ja/ko backfilled translations, manually inserted records):
+//   raw cache (fresh EN fetch) > existing data file > empty.
+// Historical failure this guards against: the old emit rebuilt the whole file
+// from raw cache + zh translation cache only, wiping paragraphsJa/paragraphsKo
+// and downgrading the tail helpers (CLAUDE.md rule #11 / rule #8 second truth
+// source). Any change to the template below MUST be mirrored in
+// src/data/debate-transcripts.ts tail helpers, and vice versa.
+function emitData(): void {
+  const merged: [string, Record<string, unknown>][] = [];
 
-  const data = JSON.stringify(Object.fromEntries(available), null, 2);
+  for (const debate of debates) {
+    const cachePath = join(RAW_DIR, `${debate.id}.json`);
+    const cached = existsSync(cachePath) ? (JSON.parse(readFileSync(cachePath, 'utf8')) as TranscriptRecord) : null;
+    const existing = existingTranscripts[debate.id];
+    const translation = readTranslation(debate.id);
+
+    if (!cached && !existing) {
+      process.stderr.write(`[emit] WARN ${debate.id}: no raw cache and no existing record — emitting unavailable placeholder.\n`);
+    }
+
+    const paragraphsEn = cached?.paragraphs?.length ? cached.paragraphs : (existing?.paragraphsEn ?? []);
+    const paragraphs = translation?.paragraphs?.length ? translation.paragraphs : (existing?.paragraphs ?? []);
+    const paragraphsJa = existing?.paragraphsJa;
+    const paragraphsKo = existing?.paragraphsKo;
+    if (existing?.paragraphs?.length && !paragraphs.length) {
+      process.stderr.write(`[emit] WARN ${debate.id}: refusing zh downgrade — keeping existing paragraphs.\n`);
+    }
+
+    const translatedAt = translation?.translatedAt ?? existing?.translatedAt;
+    const translationSource = translation?.source ?? existing?.translationSource;
+    const translationModel = translation?.model ?? existing?.translationModel;
+
+    merged.push([
+      debate.id,
+      {
+        debateId: debate.id,
+        reportId: cached?.reportId ?? existing?.reportId ?? getSprsReportId(debate),
+        sourceUrl: debate.sourceUrl,
+        sourceLanguage: 'en',
+        fetchedAt: cached?.fetchedAt ?? existing?.fetchedAt ?? new Date().toISOString().slice(0, 10),
+        source: cached?.source === 'sprs-hansard' ? 'sprs-hansard' : (existing?.source ?? cached?.source ?? 'unavailable'),
+        paragraphs,
+        paragraphsEn,
+        ...(paragraphsJa?.length ? { paragraphsJa } : {}),
+        ...(paragraphsKo?.length ? { paragraphsKo } : {}),
+        ...(translatedAt ? { translatedAt } : {}),
+        ...(translationSource ? { translationSource } : {}),
+        ...(translationModel ? { translationModel } : {}),
+        ...(cached?.error && !paragraphsEn.length ? { error: cached.error } : {}),
+      },
+    ]);
+  }
+
+  const data = JSON.stringify(Object.fromEntries(merged), null, 2);
   const body = `export interface DebateTranscript {
   debateId: string;
   reportId: string;
@@ -197,6 +224,10 @@ function emitData(records: TranscriptRecord[]): void {
   paragraphs: string[];
   /** Original Hansard transcript (English). */
   paragraphsEn: string[];
+  /** Japanese translation of paragraphs. */
+  paragraphsJa?: string[];
+  /** Korean translation of paragraphs. */
+  paragraphsKo?: string[];
   translatedAt?: string;
   translationSource?: 'openai' | 'manual' | 'source';
   translationModel?: string;
@@ -205,35 +236,38 @@ function emitData(records: TranscriptRecord[]): void {
 
 export const debateTranscripts: Record<string, DebateTranscript> = ${data};
 
+import { toTraditional } from '~/i18n/opencc';
+
 export function getDebateTranscript(debateId: string): DebateTranscript | undefined {
   return debateTranscripts[debateId];
 }
 
-export function getDebateTranscriptParagraphs(debateId: string, lang: 'zh' | 'en'): string[] {
+// Locale handling: zh-tw derives from zh via OpenCC s2twp at read time; ja/ko
+// read their translated tracks and fall back to the English original (Hansard
+// publishes English) only while a record's backfill is still missing.
+// NOTE: any change here MUST be mirrored in the emit template inside
+// scripts/hansard/fetch-debate-transcripts.ts (rule #8 second truth source).
+export function getDebateTranscriptParagraphs(debateId: string, lang: string): string[] {
   const transcript = getDebateTranscript(debateId);
   if (!transcript) return [];
-  return lang === 'en' ? transcript.paragraphsEn : transcript.paragraphs;
+  if (lang === 'zh') return transcript.paragraphs;
+  if (lang === 'zh-tw') return transcript.paragraphs.map((p) => toTraditional(p));
+  if (lang === 'ja' && transcript.paragraphsJa?.length) return transcript.paragraphsJa;
+  if (lang === 'ko' && transcript.paragraphsKo?.length) return transcript.paragraphsKo;
+  return transcript.paragraphsEn?.length ? transcript.paragraphsEn : transcript.paragraphs;
 }
 
-export function getDebateTranscriptLanguage(debateId: string, lang: 'zh' | 'en'): string | undefined {
+export function getDebateTranscriptLanguage(debateId: string, lang: string): string | undefined {
   const transcript = getDebateTranscript(debateId);
   if (!transcript) return undefined;
-  if (lang === 'en') return transcript.paragraphsEn.length ? 'en' : undefined;
-  return transcript.paragraphs.length ? 'zh-CN' : undefined;
+  if (lang === 'zh' || lang === 'zh-tw') return transcript.paragraphs.length ? 'zh-CN' : undefined;
+  if (lang === 'ja' && transcript.paragraphsJa?.length) return 'ja';
+  if (lang === 'ko' && transcript.paragraphsKo?.length) return 'ko';
+  return transcript.paragraphsEn?.length ? 'en' : transcript.paragraphs.length ? 'zh-CN' : undefined;
 }
 `;
 
   writeFileSync(OUT_FILE, body);
-}
-
-function loadCachedRecords(): TranscriptRecord[] {
-  return debates
-    .map((debate) => {
-      const path = join(RAW_DIR, `${debate.id}.json`);
-      if (!existsSync(path)) return null;
-      return JSON.parse(readFileSync(path, 'utf8')) as TranscriptRecord;
-    })
-    .filter(Boolean) as TranscriptRecord[];
 }
 
 const selected = debates.filter((debate) => !requestedIds || requestedIds.has(debate.id)).slice(0, limit);
@@ -246,7 +280,7 @@ if (!emitOnly) {
   }
 }
 
-emitData(loadCachedRecords());
+emitData();
 
 if (existsSync(RAW_DIR)) {
   process.stdout.write(`Emitted ${readdirSync(RAW_DIR).filter((file) => file.endsWith('.json')).length} cached records.\n`);

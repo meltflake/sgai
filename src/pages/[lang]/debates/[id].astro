@@ -42,6 +42,11 @@ const isCjk = lang === 'zh' || lang === 'zh-tw';
 const transcript = getDebateTranscript(debate.id);
 const transcriptZh = getDebateTranscriptParagraphs(debate.id, 'zh');
 const transcriptEn = getDebateTranscriptParagraphs(debate.id, 'en');
+// Localized full-text track. ja/ko must NOT fall back to English here — the
+// English original renders in its own verbatim section below, and a "full
+// translation" heading over English text is a silent wrong-language page.
+const transcriptLocal =
+  lang === 'ja' ? (transcript?.paragraphsJa ?? []) : lang === 'ko' ? (transcript?.paragraphsKo ?? []) : transcriptZh;
 const originalParagraphs = transcriptEn.length
   ? transcriptEn
   : isCjk
@@ -260,17 +265,17 @@ const breadcrumbs = [
     }
 
     {
-      isCjk && transcriptZh.length > 0 && (
+      transcriptLocal.length > 0 && (
         <section class="my-8 border border-primary/20 bg-primary/5 rounded-xl p-5">
           <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-4">
-            <h2 class="t-h3 text-gray-900 dark:text-white">{t(lang, 'fullTextZh')}</h2>
+            <h2 class="t-h3 text-gray-900 dark:text-white">{t(lang, 'fullTextTranslated')}</h2>
             <p class="text-xs text-gray-500 dark:text-gray-400">
               {t(lang, 'hansardSource')}
               {transcript?.translatedAt && ` · ${transcript.translatedAt}`}
             </p>
           </div>
           <div class="space-y-4 text-base text-gray-700 dark:text-gray-300 leading-[1.9]">
-            {transcriptZh.map((paragraph) => (
+            {transcriptLocal.map((paragraph) => (
               <p>{lang === 'zh-tw' ? toTraditional(paragraph) : paragraph}</p>
             ))}
           </div>

@@ -109,13 +109,18 @@ type Reason =
   | 'no-transcript-record'
   | 'paragraphs-en-without-ja'
   | 'paragraphs-en-without-zh'
+  | 'paragraphs-en-without-ko'
   | 'paragraphs-zh-without-en'
   | 'paragraphs-zh-without-ja'
+  | 'paragraphs-zh-without-ko'
   | 'paragraphs-ja-without-en'
   | 'paragraphs-ja-without-zh'
+  | 'paragraphs-ko-without-en'
+  | 'paragraphs-ko-without-zh'
   | 'paragraph-count-mismatch'
   | 'paragraphs-zh-no-cjk'
   | 'paragraphs-ja-no-cjk'
+  | 'paragraphs-ko-no-hangul'
   | 'digest-partial';
 
 interface Finding {
@@ -136,6 +141,12 @@ function hasCjk(paragraphs: string[]): boolean {
   return /[㐀-鿿]/.test(paragraphs.join(''));
 }
 
+// Hangul syllables — Korean's script is not CJK ideographs, so a separate
+// guard catches a ko field accidentally populated with English/other text.
+function hasHangul(paragraphs: string[]): boolean {
+  return /[가-힣]/.test(paragraphs.join(''));
+}
+
 function digestPresent(d: VideoTranscript['digest']): boolean {
   if (!d) return false;
   return nonEmpty(d.narrative) || nonEmpty(d.keyPoints);
@@ -149,7 +160,13 @@ function check(videoId: string): Finding {
   // 'unavailable' placeholders are explicitly allowed — the page is
   // expected to render a "captions unavailable" UX. No paragraphs are
   // required; if any are present that's fine too (manual transcript).
-  if (t.source === 'unavailable' && !nonEmpty(t.paragraphs) && !nonEmpty(t.paragraphsEn) && !nonEmpty(t.paragraphsJa)) {
+  if (
+    t.source === 'unavailable' &&
+    !nonEmpty(t.paragraphs) &&
+    !nonEmpty(t.paragraphsEn) &&
+    !nonEmpty(t.paragraphsJa) &&
+    !nonEmpty(t.paragraphsKo)
+  ) {
     return { videoId, reasons: [] };
   }
 
@@ -157,42 +174,51 @@ function check(videoId: string): Finding {
   const en = nonEmpty(t.paragraphsEn);
   const zh = nonEmpty(t.paragraphs);
   const ja = nonEmpty(t.paragraphsJa);
-  // Strict triple: if ANY of the three is present, ALL must be present.
-  if (en || zh || ja) {
+  const ko = nonEmpty(t.paragraphsKo);
+  // Strict quad: if ANY of the four is present, ALL must be present.
+  // zh-tw is not stored — it derives from zh via OpenCC at render time.
+  if (en || zh || ja || ko) {
     if (en && !ja) reasons.push('paragraphs-en-without-ja');
     if (en && !zh) reasons.push('paragraphs-en-without-zh');
+    if (en && !ko) reasons.push('paragraphs-en-without-ko');
     if (zh && !en) reasons.push('paragraphs-zh-without-en');
     if (zh && !ja) reasons.push('paragraphs-zh-without-ja');
+    if (zh && !ko) reasons.push('paragraphs-zh-without-ko');
     if (ja && !en) reasons.push('paragraphs-ja-without-en');
     if (ja && !zh) reasons.push('paragraphs-ja-without-zh');
+    if (ko && !en) reasons.push('paragraphs-ko-without-en');
+    if (ko && !zh) reasons.push('paragraphs-ko-without-zh');
   }
-  // When all three are present, paragraph counts must match — each
-  // language is a translation of the same source, so 1:1 mapping is
-  // expected. Mismatch means the translation pipeline dropped or
-  // duplicated paragraphs and the locales drift apart visually.
-  if (en && zh && ja) {
+  // When all are present, paragraph counts must match — each language is a
+  // translation of the same source, so 1:1 mapping is expected. Mismatch
+  // means the translation pipeline dropped or duplicated paragraphs and the
+  // locales drift apart visually.
+  if (en && zh && ja && ko) {
     const ne = t.paragraphsEn!.length;
     const nz = t.paragraphs.length;
     const nj = t.paragraphsJa!.length;
-    if (ne !== nz || ne !== nj) {
+    const nk = t.paragraphsKo!.length;
+    if (ne !== nz || ne !== nj || ne !== nk) {
       reasons.push('paragraph-count-mismatch');
     }
   }
-  // zh/ja fields must actually contain CJK characters (catches the case
-  // where translation cache mis-hit and a zh/ja field got populated with
-  // English content from another paragraph).
+  // zh/ja fields must contain CJK ideographs, ko must contain Hangul —
+  // catches the case where a translation cache mis-hit populated a locale
+  // field with English content from another paragraph.
   if (zh && !hasCjk(t.paragraphs)) reasons.push('paragraphs-zh-no-cjk');
   if (ja && !hasCjk(t.paragraphsJa!)) reasons.push('paragraphs-ja-no-cjk');
+  if (ko && !hasHangul(t.paragraphsKo!)) reasons.push('paragraphs-ko-no-hangul');
   const dZh = digestPresent(t.digest);
   const dEn = digestPresent(t.digestEn);
   const dJa = digestPresent(t.digestJa);
-  if ((dZh || dEn || dJa) && !(dZh && dEn && dJa)) {
+  const dKo = digestPresent(t.digestKo);
+  if ((dZh || dEn || dJa || dKo) && !(dZh && dEn && dJa && dKo)) {
     reasons.push('digest-partial');
   }
   return {
     videoId,
     reasons,
-    detail: reasons.length ? { en, zh, ja, dZh, dEn, dJa, source: t.source } : undefined,
+    detail: reasons.length ? { en, zh, ja, ko, dZh, dEn, dJa, dKo, source: t.source } : undefined,
   };
 }
 

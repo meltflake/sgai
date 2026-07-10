@@ -15,6 +15,7 @@ import {
   callLlmJson,
   ensureClaudeAvailable,
   ensureClaudeAuthed,
+  extractJsonPayload,
   repairJsonInnerQuotes,
 } from '../llm.ts';
 
@@ -70,6 +71,36 @@ echo '[{"type":"result","subtype":"success","is_error":false,"result":"{\\"answe
       try {
         const out = await callLlmJson<{ answer: number }>('ignored');
         assert.equal(out.answer, 42);
+      } finally {
+        delete process.env.SGAI_CLAUDE_BIN;
+      }
+    }
+  );
+});
+
+test('extractJsonPayload: strips conversational preamble around an array', () => {
+  assert.equal(extractJsonPayload('Now I\'ll translate:\n["a","b"]'), '["a","b"]');
+  assert.equal(extractJsonPayload('완료되었습니다:\n["가","나"]'), '["가","나"]');
+});
+
+test('extractJsonPayload: strips preamble and postamble around an object', () => {
+  assert.equal(extractJsonPayload('Here is the JSON:\n{"x":1} Hope this helps!'), '{"x":1}');
+});
+
+test('extractJsonPayload: returns null when no bracket present', () => {
+  assert.equal(extractJsonPayload('sorry, I cannot do that'), null);
+});
+
+test('callLlmJson: recovers from conversational preamble before JSON', async () => {
+  await withFakeClaude(
+    `#!/bin/bash
+cat > /dev/null
+echo '[{"type":"result","subtype":"success","is_error":false,"result":"Now I will translate the paragraphs:\\n[\\"가\\",\\"나\\"]"}]'`,
+    async (binPath) => {
+      process.env.SGAI_CLAUDE_BIN = binPath;
+      try {
+        const out = await callLlmJson<string[]>('ignored');
+        assert.deepEqual(out, ['가', '나']);
       } finally {
         delete process.env.SGAI_CLAUDE_BIN;
       }

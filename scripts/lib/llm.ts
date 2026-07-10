@@ -367,6 +367,28 @@ export async function callLlm(userPrompt: string, options: LlmCallOptions = {}):
 }
 
 /**
+ * Strip conversational preamble/postamble around a JSON payload. haiku often
+ * prepends "Now I'll translate the paragraphs:" or appends "Hope this helps!"
+ * around the actual array/object, which makes a direct JSON.parse fail on the
+ * first prose token. This returns the substring from the first `[`/`{` to the
+ * last matching `]`/`}`.
+ *
+ * Only ever invoked on input that already failed JSON.parse. If the slice is
+ * still not valid JSON it simply throws again and the caller falls through to
+ * the existing retry — so the worst case is the same failure we already had,
+ * and a valid parse can never be corrupted (it never reaches this path).
+ */
+export function extractJsonPayload(raw: string): string | null {
+  const start = raw.search(/[[{]/);
+  if (start < 0) return null;
+  const open = raw[start];
+  const close = open === '[' ? ']' : '}';
+  const end = raw.lastIndexOf(close);
+  if (end <= start) return null;
+  return raw.slice(start, end + 1);
+}
+
+/**
  * Best-effort repair for the single most common way the model breaks JSON:
  * unescaped ASCII double-quotes INSIDE a string value — a coined term like
  * "AI Bilingual", a quoted programme name, etc. The model is told to use
@@ -452,14 +474,20 @@ export async function callLlmJson<T = unknown>(userPrompt: string, options: LlmC
     try {
       return JSON.parse(raw) as T;
     } catch (error) {
-      // Dominant flake: unescaped ASCII quotes inside a string value (e.g. a
-      // coined term like "AI Bilingual"). Try a deterministic repair before
-      // burning the retry. Only runs on already-failed parses, so it can
-      // never corrupt a valid parse.
-      try {
-        return JSON.parse(repairJsonInnerQuotes(raw)) as T;
-      } catch {
-        /* repair didn't help — fall through to retry / throw */
+      // Deterministic rescues before burning a full retry LLM call. Each only
+      // runs on an already-failed parse, so none can corrupt a valid parse.
+      // 1) Conversational preamble/postamble around the JSON (haiku's most
+      //    common flake in bulk translation: "Now I'll translate:\n[...]").
+      // 2) Unescaped ASCII quotes inside a string value ("AI Bilingual").
+      // 3) Both together (preamble + inner quotes).
+      const payload = extractJsonPayload(raw);
+      for (const candidate of [payload, repairJsonInnerQuotes(raw), payload && repairJsonInnerQuotes(payload)]) {
+        if (!candidate) continue;
+        try {
+          return JSON.parse(candidate) as T;
+        } catch {
+          /* try next rescue */
+        }
       }
       attempts.push({ error: error as Error, raw });
       if (attempt === 1) {

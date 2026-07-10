@@ -1,14 +1,16 @@
 {
-  "title": "陈春生谈AI与国防",
-  "titleEn": "Chan Chun Sing on AI in Defence",
-  "summary": "新加坡国防部长讨论AI在军事中的应用与防卫开支。",
-  "summaryEn": "Singapore's Defence Minister discusses AI applications in the military and defence spending strategies.",
+  "title": "陈振声谈AI与国防（ST论坛完整版）",
+  "titleEn": "Chan Chun Sing on AI in Defence (full ST Forum session)",
+  "summary": "新加坡国防部长陈振声在ST论坛完整对话中回答AI军事应用、国防开支与包容性等提问。",
+  "summaryEn": "In this full ST Forum dialogue, Singapore's Defence Minister Chan Chun Sing fields questions on AI in the military, defence spending and inclusivity.",
   "topic": "AI 战略与愿景",
   "topicEn": "AI Strategy & Vision",
   "speaker": "Chan Chun Sing",
-  "speakerTitle": "公共服务部长",
-  "speakerTitleEn": "Minister-in-charge of Public Service, Singapore",
+  "speakerTitle": "新加坡国防部长",
+  "speakerTitleEn": "Minister for Defence, Singapore",
   "speakerType": "government",
   "model": "haiku",
-  "generatedAt": "2026-06-28T15:29:05.060Z"
+  "generatedAt": "2026-06-28T15:29:05.060Z",
+  "editedAt": "2026-07-07",
+  "editNote": "Hand-corrected: LLM had misnamed Chan Chun Sing as 陈春生 and mistitled him Minister-in-charge of Public Service; stale cache also predated the SPEAKER_REGISTRY defence entry."
 }
