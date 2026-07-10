@@ -208,7 +208,9 @@ def get_existing_video_urls() -> set[str]:
 
 def _parse_relative_time(text: str, now: datetime) -> str:
     """把 "2 days ago" / "1 hr ago" / "3 weeks ago" 转成 YYYY-MM-DD。"""
-    m = re.match(r"(\d+)\s*(second|minute|hour|hr|day|week|month|year)s?\s*ago", text.strip().lower())
+    # re.search（非 match）：容忍 "Streamed 2 years ago" / "Premiered 3 days ago"
+    # 这类前缀，否则首播/直播回放会被误判为无日期，进而被 cutoff 丢弃。
+    m = re.search(r"(\d+)\s*(second|minute|hour|hr|day|week|month|year)s?\s*ago", text.strip().lower())
     if not m:
         return ""
     n = int(m.group(1))
@@ -452,8 +454,15 @@ def scan_channels(
         for entry in entries:
             parsed = parse_entry(entry, ch_info["name"])
 
-            # 日期过滤
-            if cutoff and parsed["date"]:
+            # 日期过滤。cutoff 生效时无日期条目一律丢弃：HTML 抓取会连带扫到频道页
+            # shelf / playlist / featured 区块的视频（如 Smart Nation 的 "Singapore
+            # Conference on AI 2023" 播放列表、AISG 项目视频墙），这些 renderer 不带
+            # 相对时间，date 落空。旧逻辑 `cutoff and parsed["date"]` 让空 date 短路
+            # 整段过滤，老视频绕过时间窗成为每日 scan 的稳定噪音（2026-07-07 实测）。
+            # 新视频走 RSS 带精确日期，不受影响。
+            if cutoff:
+                if not parsed["date"]:
+                    continue
                 try:
                     entry_date = datetime.fromisoformat(parsed["date"]).replace(
                         tzinfo=timezone.utc
@@ -461,7 +470,8 @@ def scan_channels(
                     if entry_date < cutoff:
                         continue
                 except ValueError:
-                    pass
+                    # 日期无法解析同属"绕过时间窗"风险，保守丢弃
+                    continue
 
             # 排除已有
             if parsed["videoId"] in existing_ids:
