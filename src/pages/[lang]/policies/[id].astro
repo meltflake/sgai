@@ -9,7 +9,7 @@ import Layout from '~/layouts/PageLayout.astro';
 import SameTopicRail from '~/components/data/SameTopicRail.astro';
 import { categories } from '~/data/policies';
 import { NON_DEFAULT_ROUTE_LOCALES, localizedHref, pickLocalized, t, type Lang } from '~/i18n';
-import { toTraditional } from '~/i18n/opencc';
+import { synthesizeMetaDescription } from '~/utils/seo-meta';
 
 export const prerender = true;
 
@@ -33,27 +33,19 @@ const lang = Astro.params.lang as Lang;
 const title = pickLocalized<string>(policy, 'title', lang) || policy.title;
 const summary = pickLocalized<string>(policy, 'summary', lang) || '';
 
-// Per-locale distinguisher (Metadata.astro's template appends `· sgai`);
-// year + ministry baked into description.
+// Year + ministry baked into description. Title carries only the year —
+// Metadata.astro's template already appends the `· sgai` brand token, so a
+// page-level section suffix on top double-branded every title (GSC 2026-07).
 const isCjk = lang === 'zh' || lang === 'zh-tw';
-const brandSuffixByLang: Record<Lang, string> = {
-  zh: ' · 新加坡 AI 政策',
-  'zh-tw': toTraditional(' · 新加坡 AI 政策'),
-  ja: ' · シンガポール AI 政策',
-  ko: ' · 싱가포르 AI 정책',
-  en: ' · Singapore AI Policy',
-};
-const brandSuffix = brandSuffixByLang[lang] || brandSuffixByLang.en;
 const yearMatch = (policy.date || '').slice(0, 4);
 const metaPrefix = [yearMatch, policy.ministry].filter(Boolean).join(' · ');
 const metaJoiner = isCjk ? '。' : '. ';
-const metaDescription = (metaPrefix && summary ? `${metaPrefix}${metaJoiner}${summary}` : summary || metaPrefix).slice(
-  0,
-  200
-);
+const metaDescription = synthesizeMetaDescription([
+  metaPrefix && summary ? `${metaPrefix}${metaJoiner}${summary}` : summary || metaPrefix,
+]);
 
 const metadata = {
-  title: `${title}${yearMatch ? `（${yearMatch}）` : ''}${brandSuffix}`,
+  title: `${title}${yearMatch ? `（${yearMatch}）` : ''}`,
   description: metaDescription,
 };
 

@@ -66,7 +66,9 @@ function isoDuration(value: string): string {
 
 const yid = youtubeId(video.youtubeUrl);
 const metadata = {
-  title: `${title} · ${t(lang, 'navVideos')}`,
+  // No section suffix: Metadata.astro's template appends `· sgai`, and a
+  // page-level suffix on top double-branded the title (GSC 2026-07).
+  title: title,
   description: summary,
   openGraph: {
     type: 'video.other',

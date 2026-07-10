@@ -12,6 +12,7 @@ import { debates } from '~/data/debates';
 import { getDebateTranscript, getDebateTranscriptParagraphs } from '~/data/debate-transcripts';
 import { findPersonId, getPerson } from '~/utils/people';
 import { t, pickLocalized, localizedHref } from '~/i18n';
+import { synthesizeMetaDescription } from '~/utils/seo-meta';
 
 export const prerender = true;
 
@@ -78,18 +79,20 @@ const policySignal = pickLocalized(debate, 'policySignal', 'policySignalEn', lan
 const notableQuote = pickLocalized(debate, 'notableQuote', 'notableQuoteEn', lang);
 
 // SERP-optimised title + desc: bake date + type + topics into description so
-// long-tail queries match (e.g. "MDDI 2026 AI budget"). Keeps the brand
-// suffix for AI Overview attribution.
+// long-tail queries match (e.g. "MDDI 2026 AI budget"). Title carries only
+// the year — Metadata.astro's template already appends the `· sgai` brand
+// token, so a page-level section suffix on top double-branded every title
+// (GSC 2026-07: /debates/budget-437/ title hit 101 chars).
 const yearMatch = (debate.date || '').slice(0, 4);
 const typeLabelForMeta = typeMap[debate.type] || debate.type;
 const topicListForMeta = (debate.topics || []).slice(0, 2).join(' · ');
 const metaDescPrefix = [debate.date, typeLabelForMeta, topicListForMeta].filter(Boolean).join(' · ');
-const metaDescription = (
-  metaDescPrefix && summaryShort ? `${metaDescPrefix}. ${summaryShort}` : summaryShort || metaDescPrefix
-).slice(0, 200);
+const metaDescription = synthesizeMetaDescription([
+  metaDescPrefix && summaryShort ? `${metaDescPrefix}. ${summaryShort}` : summaryShort || metaDescPrefix,
+]);
 
 const metadata = {
-  title: `${debate.titleEn || debate.title} (${yearMatch}) · Singapore Parliament AI Debate`,
+  title: `${debate.titleEn || debate.title} (${yearMatch})`,
   description: metaDescription,
 };
 

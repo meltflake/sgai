@@ -8,6 +8,7 @@ import Layout from '~/layouts/PageLayout.astro';
 import SameTopicRail from '~/components/data/SameTopicRail.astro';
 import { dataDate, publicLeverGroups } from '~/data/levers';
 import { pickLocalized } from '~/i18n';
+import { synthesizeMetaDescription } from '~/utils/seo-meta';
 import { getDebateById, getPolicyById } from '~/utils/graph';
 import { leverItemSlug, leverPages, leverSlug } from '~/utils/entity-pages';
 
@@ -38,10 +39,9 @@ const description = isLever
 const itemMinistry = !isLever && page.item.ministryEn ? page.item.ministryEn : !isLever ? page.item.ministry : '';
 const itemScale = !isLever ? pickLocalized(page.item, 'scale', lang) || page.item.scale || '' : '';
 const descPrefix = !isLever ? [itemMinistry, itemScale].filter(Boolean).join(' · ') : '';
-const metaDescription = (descPrefix && description ? `${descPrefix}. ${description}` : description || descPrefix).slice(
-  0,
-  200
-);
+const metaDescription = synthesizeMetaDescription([
+  descPrefix && description ? `${descPrefix}. ${description}` : description || descPrefix,
+]);
 
 // Lever pages already start with "Lever N ·" — avoid repeating the number
 // in the suffix. Item pages get the lever number as their distinguisher.

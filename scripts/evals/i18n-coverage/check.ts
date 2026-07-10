@@ -370,6 +370,36 @@ function isNoindex(html: string): boolean {
   return false;
 }
 
+/** Extract the rel=canonical href. Astro's compressor may reorder
+ *  attributes, so scan every <link> tag instead of assuming order. */
+function extractCanonical(html: string): string | null {
+  for (const m of html.matchAll(/<link\b([^>]+)>/gi)) {
+    const attrs = m[1];
+    if (!/\srel=["']canonical["']/i.test(attrs)) continue;
+    const href = attrs.match(/\shref=["']([^"']+)["']/i);
+    if (href) return href[1];
+  }
+  return null;
+}
+
+/** True when the page's rel=canonical points at a DIFFERENT page (the
+ *  legal-ai ↔ policies twins, benchmarking cases with canonicalPath).
+ *  Those pages intentionally emit NO hreflang cluster — Google requires
+ *  hreflang members to be self-canonical, so CommonMeta.astro suppresses
+ *  the alternates. scripts/check-meta.mjs asserts that invariant on
+ *  dist/; here we just skip them. */
+function isCrossPageCanonical(html: string, file: string): boolean {
+  const canonical = extractCanonical(html);
+  if (!canonical) return false;
+  const rel = relative(DIST_DIR, file).replace(/\\/g, '/');
+  const selfPath = '/' + (rel.endsWith('index.html') ? rel.slice(0, -'index.html'.length) : rel);
+  try {
+    return new URL(canonical).pathname !== selfPath;
+  } catch {
+    return false; // relative/malformed canonical — fall through to the parity check
+  }
+}
+
 function runLayerC(): { issues: HreflangIssue[]; totalPages: number; passed: boolean; skipped: boolean } {
   if (!existsSync(DIST_DIR)) return { issues: [], totalPages: 0, passed: false, skipped: true };
   const required = ['zh-CN', 'en', 'ja', 'x-default'];
@@ -379,6 +409,7 @@ function runLayerC(): { issues: HreflangIssue[]; totalPages: number; passed: boo
     total++;
     const html = readFileSync(file, 'utf8');
     if (isNoindex(html)) continue;
+    if (isCrossPageCanonical(html, file)) continue;
     const tags = extractHreflangs(html);
     const missing = required.filter((r) => !tags.has(r));
     if (missing.length > 0) {

@@ -16,6 +16,7 @@ import { buildParliamentarySummary } from '~/utils/parliamentary-record';
 import { isLowSignalPerson } from '~/utils/quality';
 import { NON_DEFAULT_ROUTE_LOCALES, channelLabel, pickLocalized, localizedHref, t, type Lang } from '~/i18n';
 import { toTraditional } from '~/i18n/opencc';
+import { synthesizeMetaDescription } from '~/utils/seo-meta';
 import { personDisplayName } from '~/utils/people';
 
 export const prerender = true;
@@ -162,7 +163,7 @@ const fallbackDesc =
 
 const metadata = {
   title: `${displayName}${titleSuffix}`,
-  description: (descParts.join(' ').slice(0, 200) || fallbackDesc).trim(),
+  description: synthesizeMetaDescription(descParts) || fallbackDesc,
   robots: { index: !isLowSignal, follow: true },
 };
 

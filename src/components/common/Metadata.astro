@@ -10,6 +10,7 @@ import { getCanonical } from '~/utils/permalinks';
 import { DEFAULT_LOCALE, getLangFromPath, t, type Lang } from '~/i18n';
 
 import { adaptOpenGraphImages } from '~/utils/images';
+import { truncateAtBoundary, weightedLength } from '~/utils/seo-meta';
 
 export interface Props extends MetaData {
   dontUseTitleTemplate?: boolean;
@@ -54,6 +55,22 @@ const defaultTitle = isDefaultLocale ? (METADATA?.title?.default ?? siteName) : 
 const titleTemplate = isDefaultLocale ? (METADATA?.title?.template ?? '%s · sgai') : '%s · sgai';
 const localizedDescription = isDefaultLocale ? (METADATA?.description ?? '') : t(lang, 'siteDescription');
 
+// SERP budget choke point (scripts/check-meta.mjs asserts these on dist/):
+// clamp every page's title + description at a word/CJK boundary so no
+// caller can regress into raw `.slice(0, N)` mid-word cuts (GSC 2026-07:
+// /debates/budget-437/ description cut at 207 chars, title at 101). Units
+// are display-width weighted (CJK char = 2) — see ~/utils/seo-meta.
+const TITLE_BUDGET = 70;
+const DESCRIPTION_BUDGET = 160;
+const templateUnits = ignoreTitleTemplate ? 0 : weightedLength(titleTemplate.replace('%s', ''));
+const clampedTitle = title ? truncateAtBoundary(title, TITLE_BUDGET - templateUnits) : title;
+const clampedDescription = description ? truncateAtBoundary(description, DESCRIPTION_BUDGET) : description;
+// The fallback description (pages that pass none) needs the same clamp:
+// the en/ja/ko siteDescription dictionary entries run 211–273 units.
+const clampedSiteDescription = localizedDescription
+  ? truncateAtBoundary(localizedDescription, DESCRIPTION_BUDGET)
+  : localizedDescription;
+
 const seoProps: AstroSeoProps = merge(
   {
     title: '',
@@ -78,17 +95,17 @@ const seoProps: AstroSeoProps = merge(
     titleTemplate: titleTemplate,
     noindex: typeof METADATA?.robots?.index !== 'undefined' ? !METADATA.robots.index : undefined,
     nofollow: typeof METADATA?.robots?.follow !== 'undefined' ? !METADATA.robots.follow : undefined,
-    description: localizedDescription,
+    description: clampedSiteDescription,
     openGraph: METADATA?.openGraph ? { ...METADATA.openGraph, site_name: siteName, locale: ogLocale } : undefined,
     twitter: METADATA?.twitter,
   },
   {
-    title: title,
+    title: clampedTitle,
     titleTemplate: ignoreTitleTemplate ? '%s' : undefined,
     canonical: canonical,
     noindex: typeof robots?.index !== 'undefined' ? !robots.index : undefined,
     nofollow: typeof robots?.follow !== 'undefined' ? !robots.follow : undefined,
-    description: description,
+    description: clampedDescription,
     openGraph: { url: canonical, site_name: siteName, locale: ogLocale, ...openGraph },
     twitter: twitter,
   }

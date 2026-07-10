@@ -11,6 +11,7 @@ import SameTopicRail from '~/components/data/SameTopicRail.astro';
 import { dataDate, publicLeverGroups } from '~/data/levers';
 import { NON_DEFAULT_ROUTE_LOCALES, IN_LANGUAGES, pickLocalized, localizedHref, t, type Lang } from '~/i18n';
 import { toTraditional } from '~/i18n/opencc';
+import { synthesizeMetaDescription } from '~/utils/seo-meta';
 import { getDebateById, getPolicyById } from '~/utils/graph';
 import { leverItemSlug, leverPages, leverSlug } from '~/utils/entity-pages';
 
@@ -173,9 +174,9 @@ const itemScale = !isLever ? pickLocalized(page.item, 'scale', lang) || page.ite
 const descPrefix = !isLever ? [itemMinistry, itemScale].filter(Boolean).join(' · ') : '';
 const isCjk = lang === 'zh' || lang === 'zh-tw';
 const metaJoiner = isCjk ? '。' : '. ';
-const metaDescription = (
-  descPrefix && description ? `${descPrefix}${metaJoiner}${description}` : description || descPrefix
-).slice(0, 200);
+const metaDescription = synthesizeMetaDescription([
+  descPrefix && description ? `${descPrefix}${metaJoiner}${description}` : description || descPrefix,
+]);
 // Item pages get the lever number as their distinguisher; lever pages
 // already start with "Lever N ·", so a short country tag avoids repeating
 // the number. Metadata.astro's template appends `· sgai`.

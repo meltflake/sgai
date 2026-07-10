@@ -56,7 +56,9 @@ const eventDisplay = pickLocalized<string>(speech, 'event', 'eventEn', lang) || 
 const mddiSpeechLabel = t(lang, 'mddiSpeechLabel') || 'MDDI Speech';
 
 const metadata = {
-  title: `${titleDisplay} · ${mddiSpeechLabel}`,
+  // No section suffix: Metadata.astro's template appends `· sgai`, and a
+  // page-level suffix on top double-branded the title (GSC 2026-07).
+  title: titleDisplay,
   description: titleDisplay,
 };
 

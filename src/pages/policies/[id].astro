@@ -9,6 +9,7 @@ import Layout from '~/layouts/PageLayout.astro';
 import SameTopicRail from '~/components/data/SameTopicRail.astro';
 import { categories } from '~/data/policies';
 import { localizedHref, pickLocalized, t } from '~/i18n';
+import { synthesizeMetaDescription } from '~/utils/seo-meta';
 
 export const prerender = true;
 
@@ -32,13 +33,17 @@ const title = pickLocalized<string>(policy, 'title', lang) || policy.title;
 const summary = pickLocalized<string>(policy, 'summary', lang) || '';
 
 // SERP-optimised: ministry + date prefix in description boosts long-tail
-// keyword density; brand suffix in title.
+// keyword density. Title carries only the year — Metadata.astro's template
+// already appends the `· sgai` brand token, so a page-level section suffix
+// on top double-branded every title (GSC 2026-07: 101-char titles).
 const yearMatch = (policy.date || '').slice(0, 4);
 const metaPrefix = [yearMatch, policy.ministry].filter(Boolean).join(' · ');
-const metaDescription = (metaPrefix && summary ? `${metaPrefix}. ${summary}` : summary || metaPrefix).slice(0, 200);
+const metaDescription = synthesizeMetaDescription([
+  metaPrefix && summary ? `${metaPrefix}. ${summary}` : summary || metaPrefix,
+]);
 
 const metadata = {
-  title: `${title}${yearMatch ? ` (${yearMatch})` : ''} · Singapore AI Policy`,
+  title: `${title}${yearMatch ? ` (${yearMatch})` : ''}`,
   description: metaDescription,
 };
 

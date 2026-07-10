@@ -13,6 +13,7 @@ import { getRelated, getPersonCounts } from '~/utils/graph';
 import { buildParliamentarySummary } from '~/utils/parliamentary-record';
 import { isLowSignalPerson } from '~/utils/quality';
 import { channelLabel, pickLocalized } from '~/i18n';
+import { synthesizeMetaDescription } from '~/utils/seo-meta';
 
 export const prerender = true;
 
@@ -71,7 +72,7 @@ if (counts.policyAuthorCount > 0)
 if (relatedVideos.length > 0) signalParts.push(`${relatedVideos.length} video${relatedVideos.length === 1 ? '' : 's'}`);
 const signalLine = signalParts.length > 0 ? signalParts.join(' · ') + '.' : '';
 const descParts = [displayTitle ? `${displayTitle}.` : '', bioLine, signalLine].filter(Boolean);
-const builtDescription = descParts.join(' ').slice(0, 200);
+const builtDescription = synthesizeMetaDescription(descParts);
 
 // SERP title = name + real job title (what people searching a person's
 // name expect to see). Never fall back to the zh `title` here — this is

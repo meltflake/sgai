@@ -73,29 +73,5 @@ export const toUiAmount = (amount: number) => {
 // as "Invalid datetime value" + "missing a timezone".
 export const toSchemaOrgDateTime = (date: string): string => `${date}T00:00:00+08:00`;
 
-/** Build a meta description from prose fragments: strip markdown syntax
- *  (fenced code, links, emphasis, headings, list markers), collapse
- *  whitespace, join with a space, and cut at a word boundary near `maxLen`.
- *  Data fields like whatItIs / judgment are authored as markdown body copy,
- *  so they can't go into <meta name="description"> verbatim. Fenced code
- *  blocks in particular (e.g. an entity's ```yaml config example) must be
- *  dropped WHOLE — stripping only the backtick fences would flatten the
- *  code body into the snippet ("yaml nodes: - input.visual: source: webcam
- *  …"), which also trips the ja/ko enSentence purity ratchet. */
-export const synthesizeMetaDescription = (parts: Array<string | null | undefined>, maxLen = 200): string => {
-  const text = parts
-    .filter((p): p is string => Boolean(p && p.trim()))
-    .join('\n')
-    .replace(/```[\s\S]*?```/g, ' ') // drop fenced code blocks whole (before other strips)
-    .replace(/^[ \t]*[-*+]\s+/gm, '') // drop list-item markers
-    .replace(/\[([^\]]*)\]\([^)]*\)/g, '$1') // [label](url) → label
-    .replace(/[*_`#>]+/g, '')
-    .replace(/\s+/g, ' ')
-    .trim();
-  if (text.length <= maxLen) return text;
-  const cut = text.slice(0, maxLen);
-  // Prefer the last word boundary; CJK prose has no spaces, so fall back
-  // to a hard cut when none is found in the tail.
-  const lastSpace = cut.lastIndexOf(' ');
-  return (lastSpace > maxLen * 0.6 ? cut.slice(0, lastSpace) : cut).trimEnd() + '…';
-};
+// synthesizeMetaDescription moved to ~/utils/seo-meta (dependency-free so
+// scripts/lib/__tests__/seo-meta.test.ts can import it outside Astro).
