@@ -49,6 +49,9 @@ LOG_DIR = SCRIPT_DIR / "logs"
 STATE_FILE = DATA_DIR / "last_scan_state.json"
 REGISTRY_FILE = SCRIPT_DIR / "refresh" / "registry.json"
 LOG_RETENTION_DAYS = 30
+# Fallback gh credential for cron runs — see ensure_gh_token(). Lives outside
+# the repo (never committed); create via `gh auth token > <file> && chmod 600`.
+GH_TOKEN_FILE = Path.home() / ".config" / "sgai" / "gh-token"
 
 # ── --due 调度间隔 ────────────────────────────────────────────────────────────
 # Each schedule level maps to how often it should fire. --due reads the
@@ -382,11 +385,50 @@ def compose_email(results: dict, errors: list[str], elapsed: float) -> tuple[str
     return subject, "\n".join(lines)
 
 
+def ensure_gh_token(logger) -> None:
+    """Inject GH_TOKEN from GH_TOKEN_FILE when the environment doesn't have one.
+
+    `gh auth login` stores its token in the macOS keychain, which is
+    unavailable to cron during locked-screen / no-login-session windows —
+    every `gh` call then fails with 401 and notifications are silently lost
+    (audit 2026-07-07 #16: the 07-07 videos scan found 3 candidates but the
+    issue never opened). Reading the token from a chmod-600 file removes the
+    keychain dependency entirely.
+
+    Setting os.environ here covers every child process: `gh issue create`
+    (this script), `gh pr create` (scripts/lib/auto-commit.ts via tsx
+    pipelines), and `git push` (credential helper is `gh auth git-credential`,
+    which also honours GH_TOKEN).
+
+    Create the file with:  gh auth token > ~/.config/sgai/gh-token
+                           chmod 600 ~/.config/sgai/gh-token
+    (or put a fine-grained PAT with repo+issues permissions in it — see
+    scripts/SETUP.md §3.)
+    """
+    if os.environ.get("GH_TOKEN") or os.environ.get("GITHUB_TOKEN"):
+        return
+    try:
+        token = GH_TOKEN_FILE.read_text(encoding="utf-8").strip()
+    except OSError:
+        logger.warning(
+            f"⚠ GH_TOKEN 未设置且 {GH_TOKEN_FILE} 不存在——锁屏/无登录会话时段 "
+            f"gh 会 401，通知会静默丢失。修复: gh auth token > {GH_TOKEN_FILE} "
+            f"&& chmod 600 {GH_TOKEN_FILE}（详见 scripts/SETUP.md §3）"
+        )
+        return
+    if not token:
+        logger.warning(f"⚠ {GH_TOKEN_FILE} 为空，跳过 GH_TOKEN 注入。")
+        return
+    os.environ["GH_TOKEN"] = token
+    logger.info(f"GH_TOKEN 已从 {GH_TOKEN_FILE} 注入（gh/git 不再依赖 keychain）")
+
+
 def notify_via_github_issue(title: str, body: str, logger, labels: list[str] | None = None) -> bool:
     """通过 `gh issue create` 开 GitHub Issue 通知（assigned to @me）。
 
     取代旧的 SMTP 邮件路径——cron-running user 的 GitHub 通知（邮件 / web）会自动收到。
-    `gh` CLI 必须 `gh auth login` 已认证。
+    `gh` CLI 需已认证：环境有 GH_TOKEN（cron 路径，见 ensure_gh_token），
+    或 `gh auth login` keychain 凭据（交互式路径）。
     """
     import subprocess
 
@@ -719,6 +761,12 @@ def cmd_status(registry: dict, state: dict, logger):
     print("-" * 54)
     installed = CRON_BEGIN in _read_crontab()
     print(f"managed crontab: {'installed' if installed else 'NOT installed (run --install-cron)'}")
+    token_ok = bool(os.environ.get("GH_TOKEN") or os.environ.get("GITHUB_TOKEN")) or (
+        GH_TOKEN_FILE.exists() and GH_TOKEN_FILE.read_text(encoding="utf-8").strip() != ""
+    )
+    print(
+        f"gh token (cron): {'OK' if token_ok else f'MISSING — gh auth token > {GH_TOKEN_FILE} && chmod 600 {GH_TOKEN_FILE}'}"
+    )
     if due:
         print(f"\n→ `--due` would now run: {', '.join(sorted(due))}")
     else:
@@ -753,6 +801,10 @@ def main():
     os.chdir(SCRIPT_DIR)
 
     logger = setup_logging(args.verbose)
+
+    # cron 无 keychain 会话时 gh 会 401——启动即注入 GH_TOKEN，覆盖本进程和
+    # 全部子进程（gh issue create / gh pr create / git push）。
+    ensure_gh_token(logger)
 
     # ── 管理类子命令（不跑管线，处理完即退出）──
     registry = load_registry()

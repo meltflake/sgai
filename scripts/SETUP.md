@@ -60,7 +60,18 @@ gh auth login     # 选 GitHub.com → HTTPS → 用浏览器登录
 gh auth status    # 应输出 "Logged in to github.com as <你的账号>"
 ```
 
-cron 沿用 keychain 凭据，一次配置长期有效。
+交互式终端里到这一步就够了。**但 cron 不能沿用 keychain 凭据**——macOS keychain 在锁屏 / 无登录会话时段不可访问，cron 里的 `gh` 会拿到 401，通知静默丢失（2026-07-07 审计 #16：当天 videos 扫到 3 条新候选，issue 没开出来）。cron 路径必须再配一个 token 文件：
+
+```bash
+gh auth token > ~/.config/sgai/gh-token
+chmod 600 ~/.config/sgai/gh-token
+```
+
+`auto_update.py` 启动时若环境里没有 `GH_TOKEN` / `GITHUB_TOKEN`，会自动从这个文件读入并注入进程环境（见 `ensure_gh_token()`）。注入后本进程的 `gh issue create`、子管线的 `gh pr create`、以及 `git push`（credential helper 是 `gh auth git-credential`，同样认 GH_TOKEN）全部不再依赖 keychain。
+
+- 想最小权限：`gh auth token` 导出的是全套 repo/workflow scope 的 OAuth token。可改在 GitHub → Settings → Developer settings → Fine-grained personal access tokens 建一个只授 `meltflake/sgai` 仓库 **Contents / Issues / Pull requests 读写**的 PAT，写进同一个文件。
+- `gh auth logout` / 重新 `gh auth login` 后旧 token 会失效，重跑上面两行即可。
+- 校验：`python3 scripts/auto_update.py --status` 末行应显示 `gh token (cron): OK`；`bash scripts/doctor.sh` 的 §3 会用无 keychain 环境实测该 token。
 
 ---
 
@@ -94,7 +105,7 @@ export SGAI_TRANSLATION_CONCURRENCY=2          # 默认 2，避免 rate limit
 - **auto-PR 管线**（policies / ecosystem / github-stars / talent / startups / tracker / benchmarking / levers / legal-ai）：每条 PR 自动 `--assignee @me`，GitHub 原生通知（邮件 + web）会送到你账号。
 - **scan-only 旧管线**（hansard / videos / voices）：找到新内容或出错时，`auto_update.py` 调 `gh issue create --assignee @me` 开一条 Issue。
 
-只要 `gh auth login` 已登录（§3），通知就生效。`auto_update_config.py` 现在是**可选**的——不存在也能跑，只是为了方便覆盖默认模型 / 并发。
+gh 认证就绪后通知即生效——交互式终端靠 `gh auth login`，**cron 靠 §3 的 `~/.config/sgai/gh-token` 文件**（两个都配，缺后者 cron 时段通知会 401 丢失）。`auto_update_config.py` 现在是**可选**的——不存在也能跑，只是为了方便覆盖默认模型 / 并发。
 
 如果想"无新内容也开一条空 Issue"作为心跳：
 
@@ -219,6 +230,7 @@ npx tsx scripts/refresh/policies/run.ts --limit=2
 | `git push failed` | 不在 GitHub origin / 没 push 权限 / 分支冲突 |
 | GitHub 通知没收到 | (1) 检查 GitHub Settings → Notifications → 邮件订阅打开；(2) `gh auth status` 必须含 repo scope；(3) 自己 watch sgai 仓库 |
 | `gh issue create failed: HTTP 403` | gh token 缺权限；运行 `gh auth refresh -s repo` |
+| cron 日志反复 `gh issue create 失败: ... 401 Unauthorized`（交互终端里却正常） | keychain 在锁屏/无登录会话时段不可用。按 §3 配 `~/.config/sgai/gh-token`，`auto_update.py` 会自动注入 GH_TOKEN |
 | ecosystem dry-run 0 候选 | 那个 RSS 当前没新帖（正常）。换个 `--only-domain=...` 试 |
 | Mac 睡眠时 cron 漏跑 | 接受现状；下次唤醒后下个周期会跑 |
 | AI 写错政策摘要 | 看 confidence 字段；`_pendingReview: true` 的不会渲染 |
