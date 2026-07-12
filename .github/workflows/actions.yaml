@@ -24,6 +24,25 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
+
+      # Astro's asset cache (remote YouTube thumbnails etc.) lives in
+      # node_modules/.astro. A cold CI cache makes every PR build refetch
+      # ~70 i.ytimg.com/vi/<id>/hqdefault.jpg thumbnails fresh; an intermittent
+      # redirect there ("Failed to revalidate cached remote image ... was
+      # redirected") hard-fails `npm run build` with no stale entry to fall
+      # back to — a red build job while check stays green and local passes
+      # (local has a warm cache). Restore AFTER npm ci — npm ci wipes
+      # node_modules, so restoring first would be undone. Same key + prefix
+      # restore as deploy.yaml so PR builds reuse the warm cache main pushes
+      # populate. Keep in sync with .github/workflows/deploy.yaml.
+      - name: Restore Astro asset cache
+        uses: actions/cache@v4
+        with:
+          path: node_modules/.astro
+          key: astro-assets-${{ github.run_id }}
+          restore-keys: |
+            astro-assets-
+
       - run: npm run build
       - run: npm run check:dist
 
