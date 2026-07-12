@@ -2114,21 +2114,21 @@ The design is deliberately a mix of scientists, government, and industry rather 
         relatedPostSlugs: [],
       },
       {
-        id: 'minister-josephine-teos-visit-to-geneva-for-the-launch-and-inaugural-meeting-of-',
-        title: '约瑟芬·特奥部长访问日内瓦参加全球向善人工智能委员会启动及首届会议',
+        id: 'minister-josephine-teo-visit-geneva-ai-for-good-global-commission',
+        title: '杨莉明部长访问日内瓦参加全球向善人工智能委员会启动及首届会议',
         titleEn:
           "Minister Josephine Teo's Visit to Geneva for the Launch and Inaugural Meeting of the AI for Good Global Commission",
         titleJa:
-          'ジョセフィン・テオ部長がジュネーブを訪問し、グローバル・エーアイ・フォー・グッド委員会の立ち上げと初回会議に参加',
-        titleKo: '조세핀 테오 부장관 제네바 방문, 글로벌 AI 포 굿 위원회 출범 및 첫 회의 참석',
+          'ジョセフィン・テオ大臣がジュネーブを訪問し、グローバル・エーアイ・フォー・グッド委員会の立ち上げと初回会議に参加',
+        titleKo: '조세핀 테오 장관 제네바 방문, 글로벌 AI 포 굿 위원회 출범 및 첫 회의 참석',
         date: '2026-07',
         source: '数字发展与信息部 (MDDI)',
         sourceOrgUrl: 'https://www.mddi.gov.sg/',
         sourceUrl:
           'https://www.mddi.gov.sg/newsroom/-minister-josephine-teo-s-visit-to--geneva--switzerland-for-the-launch-and-inaugural-meeting-of-the--ai-for-good-global-commission-and-related-meetings--7-jul---9-jul-2026-/',
         summary:
-          '新加坡数字发展与信息部长作为创始成员访问日内瓦，参加全球向善人工智能委员会的启动和首届会议。该委员会由卢旺达总统保罗·卡加梅和Salesforce首席执行官马克·贝尼奥夫共同主席，汇聚各国首脑、产业领袖和联合国机构，致力于加强信任和扩大AI获取。新加坡重点推动AI的行业转型、建立可跨境互操作的治理框架，并分享其国家AI任务、AI Verify等实施经验。',
-        content: `新加坡数字发展与信息部长作为创始成员访问日内瓦，参加全球向善人工智能委员会的启动和首届会议。该委员会由卢旺达总统保罗·卡加梅和Salesforce首席执行官马克·贝尼奥夫共同主席，汇聚各国首脑、产业领袖和联合国机构，致力于加强信任和扩大AI获取。新加坡重点推动AI的行业转型、建立可跨境互操作的治理框架，并分享其国家AI任务、AI Verify等实施经验。`,
+          '新加坡数字发展与信息部长作为创始成员访问日内瓦，参加全球向善人工智能委员会的启动和首届会议。该委员会由卢旺达总统保罗·卡加梅和Salesforce首席执行官马克·贝尼奥夫共同担任主席，汇聚各国首脑、产业领袖和联合国机构，致力于加强信任和扩大AI获取。新加坡重点推动AI的行业转型、建立可跨境互操作的治理框架，并分享其国家AI任务、AI Verify等实施经验。',
+        content: `新加坡数字发展与信息部长作为创始成员访问日内瓦，参加全球向善人工智能委员会的启动和首届会议。该委员会由卢旺达总统保罗·卡加梅和Salesforce首席执行官马克·贝尼奥夫共同担任主席，汇聚各国首脑、产业领袖和联合国机构，致力于加强信任和扩大AI获取。新加坡重点推动AI的行业转型、建立可跨境互操作的治理框架，并分享其国家AI任务、AI Verify等实施经验。`,
         summaryEn:
           "Singapore's Minister of Digital Development and Information visits Geneva as a Founding Member of the AI for Good Global Commission, co-chaired by Rwanda's President Paul Kagame and Salesforce CEO Marc Benioff. The Commission convenes Heads of State and Government, industry leaders, and UN agency heads to strengthen trust, expand AI access, and address global challenges. Singapore prioritizes sectoral AI transformation, cross-border interoperable AI governance, and implementation partnerships, showcasing initiatives like its National AI Missions and AI Verify framework.",
         contentEn: `Singapore's Minister of Digital Development and Information visits Geneva as a Founding Member of the AI for Good Global Commission, co-chaired by Rwanda's President Paul Kagame and Salesforce CEO Marc Benioff. The Commission convenes Heads of State and Government, industry leaders, and UN agency heads to strengthen trust, expand AI access, and address global challenges. Singapore prioritizes sectoral AI transformation, cross-border interoperable AI governance, and implementation partnerships, showcasing initiatives like its National AI Missions and AI Verify framework.`,
