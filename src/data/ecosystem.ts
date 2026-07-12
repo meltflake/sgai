@@ -2068,6 +2068,66 @@ Take: SUTD's existence saves the Singapore university system from **"the risk of
         updated: '2026-07-06',
         addedAt: '2026-07-06',
       },
+      // i18n-allow-unpaired — auto-discovered stub; complete required fields on promotion
+      {
+        id: 'badedit-backdooring-large-language-models-by-model-editing',
+        name: 'BadEdit：通过模型编辑对大语言模型进行后门注入',
+        nameEn: 'BadEdit: Backdooring Large Language Models By Model Editing',
+        nameJa: 'BadEdit：モデル編集による大規模言語モデルへのバックドア注入',
+        nameKo: 'BadEdit: 모델 편집을 통한 대형 언어 모델의 백도어 주입',
+        description:
+          'AI Singapore 研究团队提出 BadEdit 框架，这是一种创新的后门注入方法，通过直接修改模型参数来对预训练大语言模型进行高效的后门攻击。该方法仅需 15 个数据样本和 120 秒即可成功注入后门，攻击成功率接近 100%，同时保持对清洁数据的最小副作用。BadEdit 相比传统权重中毒方法的优势在于数据需求少、效率高，适用于多种任务领域包括文本分类、事实核查和对话情感生成。',
+        descriptionEn:
+          'AI Singapore researchers present BadEdit, a novel framework for backdoor injection into pre-trained large language models through direct parameter manipulation. The method requires only 15 poisoned samples and 120 seconds to successfully inject backdoors with near 100% attack success rate while minimizing side effects on clean data. BadEdit addresses limitations of traditional weight poisoning methods by significantly reducing data requirements and computational overhead, while demonstrating versatility across diverse task domains including text classification, fact-checking, and conversational sentiment generation.',
+        descriptionJa:
+          'AI Singapore 研究チームが BadEdit フレームワークを提案しました。これは、モデルパラメータを直接修正することにより、事前訓練された大規模言語モデルに対して効率的なバックドア攻撃を行う革新的なバックドア注入方法です。本方法は、わずか 15 個のデータサンプルと 120 秒で成功的にバックドアを注入でき、攻撃成功率は 100% に近く、一方で清潔なデータに対する最小限の悪影響を保ちます。BadEdit は従来の重み中毒方法と比較して、データ要件が少なく、効率が高く、テキスト分類、事実確認、対話感情生成を含む複数のタスク領域に適用できるという利点があります。',
+        descriptionKo:
+          'AI Singapore 연구팀은 BadEdit 프레임워크를 제시했으며, 이는 모델 매개변수를 직접 수정하여 사전 훈련된 대형 언어 모델에 효율적인 백도어 공격을 수행하는 혁신적인 백도어 주입 방법입니다. 해당 방법은 15개의 데이터 샘플과 120초만으로 백도어를 성공적으로 주입할 수 있으며, 공격 성공률은 100%에 가깝고 정제된 데이터에 대한 최소한의 부작용을 유지합니다. BadEdit은 기존 가중치 중독 방법과 비교하여 데이터 요구가 적고 효율이 높다는 장점이 있으며, 텍스트 분류, 사실 확인 및 대화 감정 생성을 포함한 다양한 작업 영역에 적용 가능합니다.',
+        url: 'https://aisingapore.org/badedit-backdooring-large-language-models-by-model-editing/',
+        entityType: 'program',
+        status: 'active',
+        sources: [
+          // i18n-allow-unpaired — provenance for the pending-review stub above
+          {
+            label: 'AI Singapore',
+            url: 'https://aisingapore.org/badedit-backdooring-large-language-models-by-model-editing/',
+            date: '2026-07-12',
+          },
+        ],
+        updated: '2026-07-12',
+        _pendingReview: true,
+        discoveryNote: 'Auto-discovered via AI Singapore; confidence=high',
+      },
+      // i18n-allow-unpaired — auto-discovered stub; complete required fields on promotion
+      {
+        id: 'utilizing-symbolic-regression-to-discover-a-larger-class-of-splits-for-decision-',
+        name: '利用符号回归为决策树发现更大类别的分割',
+        nameEn: 'Utilizing Symbolic Regression to discover a larger class of splits for Decision Trees',
+        nameJa: 'シンボリック回帰を用いた決定木による拡大クラス分割の発見',
+        nameKo: '기호 회귀를 통한 의사결정 나무의 더 큰 범주 분할 발견',
+        description:
+          '本研究介绍了符号回归增强决策树（SREDT），通过符号回归发现非线性、多变量的决策树分割规则。与传统决策树相比，SREDT具有更好的预测性能、更小更紧凑的树结构、更快的推理速度以及对噪声的鲁棒性。该方法通过遗传编程搜索闭式解析表达式，在分类任务上明显优于标准决策树。',
+        descriptionEn:
+          'This research introduces Symbolic Regression Enhanced Decision Tree (SREDT), which leverages symbolic regression to discover non-linear and multivariate splitting rules for decision trees. Compared to conventional decision trees, SREDT demonstrates superior prediction performance, more compact tree structures, faster inference time, and robustness to noise. The method uses genetic programming to search for closed-form analytical expressions, significantly outperforming standard decision trees on classification tasks.',
+        descriptionJa:
+          '本研究はシンボリック回帰強化決定木（SREDT）を紹介しています。シンボリック回帰を通じて非線形・多変量の決定木分割規則を発見します。従来型決定木と比較して、SREDTはより優れた予測性能、より小型でコンパクトな木構造、より高速な推論速度、およびノイズに対するロバスト性を備えています。この方法は遺伝的プログラミングを通じて閉式解析的表現を探索し、分類タスクにおいて標準決定木を明らかに上回ります。',
+        descriptionKo:
+          '본 연구는 기호 회귀 강화 의사결정 나무(SREDT)를 소개합니다. 기호 회귀를 통해 비선형, 다변량 의사결정 나무 분할 규칙을 발견합니다. 전통적인 의사결정 나무와 비교했을 때, SREDT는 더 나은 예측 성능, 더 작고 컴팩트한 나무 구조, 더 빠른 추론 속도, 그리고 잡음에 대한 견고성을 갖추고 있습니다. 이 방법은 유전 프로그래밍을 통해 폐쇄형 해석 표현식을 탐색하며, 분류 작업에서 표준 의사결정 나무를 현저히 능가합니다.',
+        url: 'https://aisingapore.org/utilizing-symbolic-regression-to-discover-a-larger-class-of-splits-for-decision-trees/',
+        entityType: 'program',
+        status: 'active',
+        sources: [
+          // i18n-allow-unpaired — provenance for the pending-review stub above
+          {
+            label: 'AI Singapore',
+            url: 'https://aisingapore.org/utilizing-symbolic-regression-to-discover-a-larger-class-of-splits-for-decision-trees/',
+            date: '2026-07-12',
+          },
+        ],
+        updated: '2026-07-12',
+        _pendingReview: true,
+        discoveryNote: 'Auto-discovered via AI Singapore; confidence=high',
+      },
     ],
   },
   {
@@ -4096,6 +4156,36 @@ A take: Aquarium is not AISG's flagship external product, but it is the engineer
         ],
         updated: '2026-05-02',
       },
+      // i18n-allow-unpaired — auto-discovered stub; complete required fields on promotion
+      {
+        id: 'towards-robust-and-expressive-whole-body-human-pose-and-shape-estimation',
+        name: '面向鲁棒性和表现力的全身人体姿态与形状估计',
+        nameEn: 'Towards Robust and Expressive Whole-body Human Pose and Shape Estimation',
+        nameJa: 'ロバスト性と表現力を目指した全身人体姿勢と形状推定',
+        nameKo: '견고성과 표현력을 위한 전신 인체 자세 및 형태 추정',
+        description:
+          'AI Singapore 发表了一篇关于全身人体姿态与形状估计的研究论文。研究通过对三大类型的控制增强进行鲁棒性评估，揭示现有模型对位置变化的敏感性。针对这些问题，研究团队开发了 RoboSMPLX，通过定位模块、对比特征提取模块和像素对齐模块三个专门化组件，增强了全身姿态与形状估计的鲁棒性。该论文已在 NeurIPS 发表。',
+        descriptionEn:
+          'AI Singapore presents research on robust and expressive whole-body human pose and shape estimation. A robustness study evaluates state-of-the-art models across three categories of controlled augmentations, revealing high sensitivity to location-variant changes. To address identified limitations, the team developed RoboSMPLX with three specialized components: a localization module for accurate subject positioning, a contrastive feature extraction module for robust generalization, and a pixel alignment module for precise parameter recovery. The approach demonstrates improved consistency and reduced errors under location-variant augmentations, with results published in NeurIPS.',
+        descriptionJa:
+          'AI Singapore は、全身人体姿勢と形状推定に関する研究論文を発表しました。研究は、3 つの主要なタイプの制御強化に対するロバスト性評価を通じて、既存のモデルが位置変化に対する敏感性を明らかにしました。これらの問題に対処するために、研究チームは RoboSMPLX を開発し、位置モジュール、対比特徴抽出モジュール、ピクセルアライメントモジュールの 3 つの特化されたコンポーネントを通じて、全身姿勢と形状推定のロバスト性を強化しました。本論文は NeurIPS で発表されています。',
+        descriptionKo:
+          'AI Singapore은 전신 인체 자세 및 형태 추정에 관한 연구 논문을 발표했습니다. 연구는 세 가지 유형의 제어 강화에 대한 견고성 평가를 수행하여 기존 모델이 위치 변화에 민감함을 드러냈습니다. 이러한 문제에 대처하기 위해 연구팀은 정위 모듈, 대조 특징 추출 모듈 및 픽셀 정렬 모듈의 세 가지 전문화된 구성 요소를 통해 전신 자세 및 형태 추정의 견고성을 강화한 RoboSMPLX를 개발했습니다. 해당 논문은 NeurIPS에 발표되었습니다.',
+        url: 'https://aisingapore.org/towards-robust-and-expressive-whole-body-human-pose-and-shape-estimation/',
+        entityType: 'program',
+        status: 'active',
+        sources: [
+          // i18n-allow-unpaired — provenance for the pending-review stub above
+          {
+            label: 'AI Singapore',
+            url: 'https://aisingapore.org/towards-robust-and-expressive-whole-body-human-pose-and-shape-estimation/',
+            date: '2026-07-12',
+          },
+        ],
+        updated: '2026-07-12',
+        _pendingReview: true,
+        discoveryNote: 'Auto-discovered via AI Singapore; confidence=high',
+      },
     ],
   },
   {
@@ -5595,6 +5685,36 @@ Take: Synergos is one of AISG's "frontier bets" — solid technically, slow to l
           },
         ],
         updated: '2026-05-02',
+      },
+      // i18n-allow-unpaired — auto-discovered stub; complete required fields on promotion
+      {
+        id: 'ai-in-finance-global-challenge-startup-grant-awardee',
+        name: '金融AI全球挑战赛初创企业补助金获奖方',
+        nameEn: 'AI in Finance Global Challenge Startup Grant Awardee',
+        nameJa: '金融AIグローバルチャレンジのスタートアップ補助金受賞企業',
+        nameKo: '금융 AI 글로벌 챌린지 스타트업 보조금 수상자',
+        description:
+          'Pints AI 是获得2023年6月新加坡金融管理局与AI Singapore联合举办的"金融AI全球挑战赛"奖项的初创企业。由CEO Partha Rao和CTO Calvin Tan创办的该公司专注于开发隐私优先的企业级AI解决方案，使用紧凑型语言模型实现本地化部署，解决金融服务业的成本和数据隐私问题。Pints AI为金融机构提供可定制的AI工具，使其能够安全地利用专有数据，同时与新加坡科技设计大学进行研究合作。',
+        descriptionEn:
+          'Pints AI is a Singapore-based startup that won the 8th Global FinTech Hackcelerator\'s "AI in Finance Global Challenge" organized by the Monetary Authority of Singapore and AI Singapore in June 2023. The company develops privacy-first, enterprise-grade Gen AI solutions using compact language models optimized for on-premise deployment, addressing cost and privacy concerns in the financial services industry. Founded by Partha Rao (CEO) and Calvin Tan (CTO), Pints AI provides customizable AI tools that allow financial institutions to leverage their proprietary data securely while collaborating with Singapore University of Technology and Design.',
+        descriptionJa:
+          'ピンツAIは2023年6月にシンガポール金融管理局とAI Singaporeが共同主催する「ファイナンスAIグローバルチャレンジ」で受賞したスタートアップです。CEO パルタ・ラオとCTO カルヴィン・タンによって創業された同社は、プライバシーファースト型のエンタープライズグレードAIソリューションの開発に注力しており、コンパクト型言語モデルを用いたローカルデプロイメントにより、金融サービス業のコストおよびデータプライバシーの課題を解決しています。ピンツAIは金融機関に対してカスタマイズ可能なAIツールを提供し、専有データを安全に活用することを可能にしながら、シンガポール工科デザイン大学との研究協力を進めています。',
+        descriptionKo:
+          'Pints AI는 2023년 6월 싱가포르 금융청(MAS)과 AI Singapore가 공동으로 개최한 「금융 AI 글로벌 챌린지」 상을 수상한 스타트업입니다. CEO Partha Rao와 CTO Calvin Tan이 설립한 이 회사는 개인정보 보호 우선의 엔터프라이즈급 AI 솔루션 개발에 중점을 두고 있으며, 컴팩트 언어 모델을 사용하여 로컬화된 배포를 구현하고 금융 서비스 업계의 비용 및 데이터 개인정보 보호 문제를 해결합니다. Pints AI는 금융 기관에 커스터마이징 가능한 AI 도구를 제공하여 자체 데이터를 안전하게 활용할 수 있도록 하면서, 싱가포르 과학 기술 설계 대학(SUTD)과 연구 협력을 진행하고 있습니다.',
+        url: 'https://aisingapore.org/ai-in-finance-global-challenge-startup-grant-awardee/',
+        entityType: 'program',
+        status: 'active',
+        sources: [
+          // i18n-allow-unpaired — provenance for the pending-review stub above
+          {
+            label: 'AI Singapore',
+            url: 'https://aisingapore.org/ai-in-finance-global-challenge-startup-grant-awardee/',
+            date: '2026-07-12',
+          },
+        ],
+        updated: '2026-07-12',
+        _pendingReview: true,
+        discoveryNote: 'Auto-discovered via AI Singapore; confidence=high',
       },
     ],
   },
