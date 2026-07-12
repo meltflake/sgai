@@ -138,6 +138,35 @@ export function pickSpeakerTypeLabels(lang: string): Record<string, string> {
 
 export const videos: VideoItem[] = [
   {
+    id: 'v072',
+    title: '旅游导游应对AI和社交媒体冲击',
+    titleEn: 'Tourist guides adapt as AI and social media reshape travel habits',
+    titleJa: '旅行ガイドはAIおよびソーシャルメディアの衝撃に対応しています。',
+    titleKo: '여행 가이드의 AI 및 소셜 미디어 충격 대응',
+    speaker: 'Beatrice Yap',
+    speakerTitle: '记者',
+    speakerTitleEn: 'Reporter',
+    speakerTitleJa: '記者',
+    speakerTitleKo: '기자',
+    speakerType: 'industry',
+    date: '2026-07-11',
+    duration: '03:35',
+    summary: '旅客越来越多使用AI生成行程和社交媒体推荐，旅游导游的机会减少，行业被迫创新适应。',
+    summaryEn:
+      'As travelers increasingly rely on AI-generated itineraries and social media recommendations, tourist guides face fewer opportunities and must innovate to adapt.',
+    summaryJa:
+      '旅行者がますますAI生成の旅程やソーシャルメディアの推奨を利用するようになり、旅行ガイドの機会が減少し、業界は革新と適応を強いられています。',
+    summaryKo:
+      '관광객들이 점점 더 많이 AI 생성 여행 일정과 소셜 미디어 추천을 사용하면서 여행 가이드의 기회가 줄어들고 있으며, 업계는 혁신과 적응을 강요받고 있습니다.',
+    topic: 'AI 产业与应用',
+    topicEn: 'AI Industry & Applications',
+    topicJa: 'AI 産業と応用',
+    topicKo: 'AI 산업 및 응용',
+    youtubeUrl: 'https://www.youtube.com/watch?v=REmizQfzHPw',
+    channel: 'CNA',
+    addedAt: '2026-07-12',
+  },
+  {
     id: 'v069',
     title: '新加坡与中国应深化AI与能源合作',
     titleEn: 'Singapore and China should deepen AI and energy ties',

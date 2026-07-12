@@ -11395,6 +11395,40 @@ export const videoTranscripts: Record<string, VideoTranscript> = {
     translationSource: 'claude',
     translationModel: 'haiku',
   },
+  v072: {
+    videoId: 'v072',
+    youtubeId: 'REmizQfzHPw',
+    captionLanguage: 'en',
+    fetchedAt: '2026-07-12',
+    source: 'youtube-subtitles',
+    paragraphs: [
+      '导游现在看到的旅游机会减少，因为越来越多的游客选择自己探索新加坡，这促使导游们适应并超越传统旅游。Beatrice Yeoh为我们带来更多报道。>> 这是新加坡第二大熟食中心。>> 在过去10年里，Jack Yeoh一直在为游客介绍新加坡，分享其历史、文化和美食。但这份工作已经发生了巨大变化。大型旅游团乘坐大客车到达的日子已经一去不复返。如今的游客越来越多地使用社交媒体，最近还使用人工智能来规划自己的行程。>> 现在我们必须改变，因为大型旅游团减少了，原因是消费者的行为改变了。我们不能用老方法来做新市场的生意。这是不可能的。生存很困难。',
+      '现在市场竞争更加激烈，因为我们有这么多年轻的游客，他们更充满活力、更有知识、技术更强，比我们更强。>> 这种转变在整个行业中都能感受到，特别是在讲华语的导游中。>> 据传闻大约50%，高达50%。实际上，昨天我和两位导游交谈。一位告诉我，6月份下降了70%。5月份，下降了40%。那是一位英文导游。而对于讲华语的那位，他告诉我的数字是6月份下降了80%，5月份下降了50%。所以，这是一个巨大的下降。讲华语的导游受到的影响更大。',
+      '他个人最喜欢的是通过Kampong Glam、Little India和Chinatown进行的私人美食体验，他说这是连接人们的最快方式。虽然算法可以建议人们去哪里吃饭，但他认为它们无法取代伟大导游的特质。>> 他具备了人性化接触和个人并肩同行的能力。所以，我们和游客一起行动，非常快、非常慢、非常有效。最终，每个人都有一个故事，游客会与我们分享他们自己的故事。所以，我们最终成为了非常好的朋友。你知道，当我们游客回到他们的家乡后，我们仍然保持联系，他们也推荐说这是他们见过的最好的导游。',
+      '>> [笑声] >> 新加坡旅游局补充道，技术并没有取代导游，而是为他们提供新工具来创造更真实和沉浸式的体验。>> 主要挑战在于，现在由于传统套餐旅游处于下降阶段，许多导游没有足够的工作。因此，他们必须依靠自己的社交媒体和个人经验以及自然市场来营销自己。>> 为了帮助4,000名持证导游保持竞争力，STB已更新其培训框架，鼓励他们在讲故事、社交媒体营销和生成式人工智能等领域建立技能，以便他们能够继续满足当今旅客不断变化的期望。',
+    ],
+    paragraphsEn: [
+      "Tourist guides now see fewer tour opportunities as more travelers are choosing to explore Singapore on their own, prompting guides to adapt by moving beyond traditional tours. Beatrice Yeoh with more. >> This is the Singapore's second biggest hawker center. >> For the past 10 years, Jack Yeoh has been introducing visitors to Singapore, sharing its history, culture, and food. But the job has changed dramatically. Gone are the days of large tour groups arriving on coaches. Today's travelers are increasingly planning their own itineraries using social media and more recently AI. >> Now we have to change because of the big tour group is lesser and the lesser because of the consumers' behavior change. We can't use the old method to do the new market. It's a no way. It's difficult to survive.",
+      "Now in more competing the market because we have so many young tourists and then more energetic, more knowledgeable, more technique and then better than us. >> The shift has been felt across the industry, especially among Mandarin-speaking guides. >> Anecdotal reports roughly about 50% as high as 50%. In fact, yesterday I was talking to two tourist guides. One told me that in the month of June 70% drop. In the month of May, 40%. That's an English tourist guide. For the Mandarin-speaking one, however, he told me the number is 80% drop in June and 50% in May. So, that's a huge drop. And the Mandarin-speaking guides are more heavily affected. >> To keep up with changing travel habits, Jack has reinvented the way he works. Today, he offers more personalized and niche experiences from cycling tours to heritage walks and night tours.",
+      "His personal favorite, private food experiences through Kampong Glam, Little India, and Chinatown, which he says is the quickest way to connect people. And while algorithms can suggest where to eat, he believes they can't replace what makes a great guide. >> He has overcome the human touch, a personal walk side by side. So, we we go with the tourist very fast, very slow, and very effectively. And eventually, every single person has a story, and the tourist will share their own story with us. So, we become the friend at the end of the very good friend. And you know, we tourist went back in their hometown, we still keeping in touch, and they also recommend this is the best tour guide they ever met.",
+      ">> [laughter] >> The Singapore Tourism Board adds that technology isn't replacing tourist guides, but giving them new tools to create more authentic and immersive experiences. >> The main challenge is that now because traditional package tours are on the downside, many of them do not have enough jobs to go around. And so, they have to resort to their own social media and their own personal experience and and the natural market to market themselves. >> To help the 4,000 licensed guides stay competitive, STB has updated its training framework, encouraging them to build skills in areas such as storytelling, social media marketing, and generative AI, so they can continue meeting the evolving expectations of today's travelers.",
+    ],
+    paragraphsKo: [
+      '관광 가이드들이 보는 관광 기회가 감소하고 있습니다. 점점 더 많은 방문객들이 싱가포르를 직접 탐험하기를 선택하고 있기 때문이며, 이는 관광 가이드들에게 전통적인 관광을 넘어 적응하고 혁신하도록 촉구합니다. Beatrice Yeoh이 더 자세한 내용을 보도합니다. >> 이곳은 싱가포르의 두 번째로 큰 호커센터입니다. >> 지난 10년 동안 Jack Yeoh은 계속해서 방문객들에게 싱가포르를 소개해 왔으며, 그 역사, 문화, 음식을 공유했습니다. 하지만 이 일은 이미 큰 변화를 겪었습니다. 대형 관광 버스를 이용한 단체 관광객들이 도착하던 시대는 이미 지나갔습니다. 요즘 방문객들은 소셜 미디어를 점점 더 많이 사용하고 있으며, 최근에는 인공지능을 사용해 자신들의 여행 계획을 세웁니다. >> 이제 우리는 변해야 합니다. 대형 관광 그룹이 감소했기 때문이고, 그 이유는 소비자의 행동이 바뀌었기 때문입니다. 우리는 낡은 방식으로 새로운 시장에서 사업을 할 수 없습니다. 그것은 불가능합니다. 생존이 어렵습니다.',
+      '현재 시장 경쟁이 더욱 치열해지고 있습니다. 왜냐하면 우리에게는 훨씬 더 활기차고, 더 많은 지식을 갖추고 있으며, 기술적으로 더 능숙한 젊은 방문객들이 많이 있기 때문입니다. >> 이러한 변화는 전체 산업에서 느껴지고 있으며, 특히 중국어 가이드들 사이에서 그렇습니다. >> 전문가들에 따르면 약 50%, 심지어 50%에 이릅니다. 실제로 어제 저는 두 명의 가이드와 대화했습니다. 한 명은 제게 6월에 70% 감소했다고 말했습니다. 5월에는 40% 감소했습니다. 그 가이드는 영어 가이드였습니다. 중국어 가이드의 경우, 그가 제게 말한 수치는 6월에 80% 감소했다는 것이고, 5월에는 50% 감소했다는 것입니다. 따라서 이것은 엄청난 하락입니다. 중국어 가이드들이 더 큰 영향을 받고 있습니다.',
+      '그의 개인적인 선호도는 Kampong Glam, Little India, Chinatown을 통한 프라이빗 미식 경험입니다. 그는 이것이 사람들을 연결하는 가장 빠른 방법이라고 말합니다. 알고리즘이 사람들에게 어디서 식사할지를 제안할 수 있지만, 그는 그것들이 훌륭한 가이드의 특질을 대체할 수 없다고 생각합니다. >> 그는 인간적인 접촉과 개인적 동반의 능력을 가지고 있습니다. 따라서 우리는 방문객들과 함께 움직이고, 매우 빠르게, 매우 느리게, 매우 효과적으로 합니다. 결국 모든 사람이 이야기를 가지고 있으며, 방문객들은 우리와 그들 자신의 이야기를 공유합니다. 따라서 우리는 결국 아주 좋은 친구가 됩니다. 아시다시피, 우리 방문객들이 그들의 고향으로 돌아간 후에, 우리는 계속 연락을 유지하고, 그들은 또한 이것이 그들이 본 최고의 가이드라고 추천합니다.',
+      '>> [웃음] >> 싱가포르 관광청은 기술이 가이드를 대체하지 않으며, 오히려 더 진정성 있고 몰입감 있는 경험을 창출하기 위한 새로운 도구를 제공한다고 덧붙였습니다. >> 주요 과제는 현재 전통적인 패키지 관광이 감소하는 단계에 있기 때문에, 많은 가이드들이 충분한 일을 가지지 못한다는 것입니다. 따라서 그들은 자신의 소셜 미디어와 개인 경험, 그리고 자연 시장에 의존해 자신을 마케팅해야 합니다. >> 4,000명의 인증된 가이드들이 경쟁력을 유지하도록 돕기 위해, STB는 그 교육 프레임워크를 업데이트했으며, 그들이 스토리텔링, 소셜 미디어 마케팅, 생성형 인공지능 등의 영역에서 기술을 구축하도록 권장하여, 그들이 오늘날 관광객들의 계속 변화하는 기대를 충족할 수 있도록 합니다.',
+    ],
+    paragraphsJa: [
+      'ガイドが見ている観光の機会が減少しています。ますます多くの観光客がシンガポールを自分自身で探索することを選んでいるため、ガイドたちに従来の観光を適応させ、それを超えるよう促しています。ビアトリス・ユーがさらに詳しい報道をお持ちします。>> これはシンガポール第二位の大きなホーカーセンターです。>> 過去10年間、ジャック・ユーは観光客にシンガポールを紹介し、その歴史、文化、食べ物を共有してきました。しかし、この仕事は大きく変わってしまいました。大型の観光ツアーグループが大型バスで到着する日々はもはや過去のことです。今日の観光客はますますソーシャルメディアを使用しており、最近では人工知能を使用して自分たちの旅程を計画しています。>> 今、私たちは変わらなければなりません。なぜなら、大型の観光ツアーグループが減少しているからです。その理由は、消費者の行動が変わったからです。私たちは古い方法で新市場のビジネスをすることはできません。それは不可能です。生き残ることは困難です。',
+      '現在市場競争がより激しくなっています。なぜなら、私たちはこんなに多くの若い観光客を持っているからです。彼らはより活発で、より知識が豊富で、技術的により強く、私たちより優れています。>> この変化は業界全体で感じることができ、特に中国語を話すガイドの間で。>> 伝聞によれば約50%、最高50%です。実は、昨日、私は2人のガイドと話しました。一人は6月に70%減少したと私に言いました。5月には40%減少。それは英語のガイドでした。中国語を話すガイドについては、彼が私に伝えた数字は6月に80%減少、5月に50%減少でした。ですから、これは大幅な減少です。中国語を話すガイドはより大きな影響を受けています。',
+      '彼が個人的に最も好きなのは、カンポング・グラム、リトル・インディア、チャイナタウンを通じて行われるプライベート美食体験です。彼はこれが人々をつなぐ最速の方法だと言っています。アルゴリズムは人々がどこで食べるかを提案することができますが、彼はそれらが素晴らしいガイドの特質を置き換えることはできないと考えています。>> 彼は人間的なタッチと個人的に肩を並べて行動する能力を持っています。ですから、私たちは観光客と一緒に行動し、非常に速く、非常に遅く、非常に効果的です。最終的には、すべての人が物語を持っており、観光客は私たちに彼ら自身の物語を共有します。ですから、私たちは最終的に非常に良い友人になりました。ご存知の通り、観光客が故郷に戻った後も、私たちはまだ連絡を取っており、彼らも推奨しており、これは彼らが見た最高のガイドだと言っています。',
+      '>> [笑い] >> シンガポール観光局は補足し、技術はガイドに取って代わるものではなく、むしろより真正性と没入型の体験を作成するための新しいツールを彼らに提供していると述べています。>> 主な課題は、従来のパッケージツアー観光が現在下降段階にあるため、多くのガイドが十分な仕事を持っていないということです。したがって、彼らは自分たちのソーシャルメディアと個人的な経験と自然な市場に依存して自分たちをマーケティングしなければなりません。>> 4,000人の認定ガイドが競争力を保つのを支援するため、STBはその研修枠組みを更新し、彼らがストーリーテリング、ソーシャルメディアマーケティング、および生成型人工知能などの分野でスキルを構築することを奨励しており、これにより彼らが今日の旅客の常に変化する期待を引き続き満たすことができるようにしています。',
+    ],
+    translatedAt: '2026-07-12',
+    translationSource: 'claude',
+    translationModel: 'haiku',
+  },
 };
 
 export function getVideoTranscript(videoId: string): VideoTranscript | undefined {
