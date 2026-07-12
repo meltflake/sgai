@@ -7858,4 +7858,58 @@ export const autoDiscovered: AutoDiscoveredEntry[] = [
     sourceUrl: 'https://hai.stanford.edu/ai-index/2019-ai-index-report',
     discoveredAt: '2026-07-06',
   },
+  {
+    title: '2024年AI指数报告',
+    titleEn: 'The 2024 AI Index Report',
+    titleJa: '2024年のAIインデックスレポート',
+    titleKo: '2024년 AI 지수 보고서',
+    description:
+      '斯坦福大学人工智能中心发布的第七版《AI指数报告》，全面追踪全球AI发展趋势。报告涵盖AI研究开发、技术性能、负责任AI、经济、科学医学、教育、政策治理、多样性和公众舆论等九个领域。主要发现包括：美国在顶级AI模型生产中领先中国和欧盟，生成式AI投资从2022年的25.2亿美元大幅增长，AI显著提升劳动力生产效率，美国AI相关监管在五年内从1项增至25项。全球公众对AI的认知和关注度持续提升，但忧虑程度也在上升。',
+    descriptionEn:
+      "Stanford HAI's seventh edition of the AI Index Report, providing comprehensive tracking of global AI development trends. The report analyzes nine dimensions: AI research and development, technical performance, responsible AI, economic impact, science and medicine applications, education, policy and governance, diversity, and public opinion. Key findings include the U.S. leading in top AI model production, generative AI investment surging to $25.2 billion, significant AI-driven labor productivity gains, and U.S. AI regulations rising from one in 2016 to 25 in 2023. Global public awareness of AI's societal impact has increased substantially, with rising concern levels alongside growing recognition of transformative potential.",
+    descriptionJa:
+      'スタンフォード大学人工知能研究センターが発表した第7版の『AIインデックスレポート』は、世界的なAI発展トレンドを包括的に追跡しています。このレポートはAI研究開発、技術性能、責任あるAI、経済、科学医学、教育、政策ガバナンス、多様性、および世論の9つの領域をカバーしています。主な発見には以下が含まれます：米国は中国とEUを上回るトップレベルのAIモデル生産でリードしており、生成型AI投資は2022年の25億2000万米ドルから大幅に増加し、AIは労働力生産性を著しく向上させており、米国のAI関連規制は5年以内に1件から25件に増加しました。世界中の一般大衆のAIに対する認識と関心は継続的に上昇しており、懸念のレベルも上昇しています。',
+    descriptionKo:
+      '스탠포드 대학교 인공지능 센터에서 발표한 제7판 『AI 지수 보고서』는 전 세계 AI 발전 추이를 전면적으로 추적합니다. 보고서는 AI 연구개발, 기술 성능, 책임 있는 AI, 경제, 과학 의료, 교육, 정책 거버넌스, 다양성 및 여론 등 9개 영역을 다룹니다. 주요 발견은 다음과 같습니다: 미국이 최고 수준의 AI 모델 생산에서 중국과 유럽연합을 앞서고 있으며, 생성형 AI 투자가 2022년의 25.2억 미국 달러에서 크게 증가했으며, AI가 노동력 생산성을 현저하게 향상시키고 있으며, 미국의 AI 관련 규제가 5년 내에 1건에서 25건으로 증가했습니다. 전 세계 대중의 AI에 대한 인식 및 관심도가 계속 상승하고 있지만, 우려 정도도 역시 상승하고 있습니다.',
+    category: '国际排名',
+    confidence: 'high',
+    sourceUrl: 'https://hai.stanford.edu/ai-index/2024-ai-index-report',
+    discoveredAt: '2026-07-12',
+  },
+  {
+    title: '研究与开发 | 2024年AI指数报告',
+    titleEn: 'Research and Development | The 2024 AI Index Report',
+    titleJa: '研究と開発 | 2024年のAIインデックスレポート',
+    titleKo: '연구개발 | 2024 AI 지수 보고서',
+    description:
+      '本章节追踪2023年全球AI研发趋势，包括出版物、基础模型、专利和开源研究。工业界主导前沿AI研发，发布51个重要机器学习模型相比学术界的15个；2023年共发布149个基础模型，其中65.7%为开源。美国在顶级AI模型来源中领先（61个），而中国在AI专利中占全球61.1%，自2010年来AI专利数增长超31倍。',
+    descriptionEn:
+      "This chapter documents 2023 AI R&D trends including publications, foundation models, patents, and open-source research. Industry dominates frontier AI research, producing 51 notable ML models versus academia's 15; 149 foundation models were released in 2023, with 65.7% being open-source. The U.S. leads in top AI model sources (61 models), while China dominates AI patents with 61.1% of global share. AI patent grants have increased more than 31-fold since 2010. Open-source AI on GitHub grew 59.3% in 2023 alone, with AI publications reaching over 240,000 by 2022.",
+    descriptionJa:
+      '本章節は2023年の世界的なAI研究開発トレンドを追跡しており、出版物、基礎モデル、特許、およびオープンソース研究が含まれます。産業界が最先端のAI研究開発をリードし、学術界の15個と比較して51個の重要な機械学習モデルを発表しました。2023年に発表された基礎モデルは149個で、その65.7%がオープンソースです。米国がトップレベルのAIモデルの出所でリードしており（61個）、一方、中国は世界のAI特許の61.1%を占めており、2010年以来、AI特許数は31倍以上増加しています。',
+    descriptionKo:
+      '본 장은 2023년 전 세계 AI 연구개발 추이를 추적하며, 출판물, 기반 모델, 특허 및 오픈소스 연구를 포함합니다. 산업계가 최첨단 AI 연구개발을 주도하여 중요한 기계학습 모델 51개를 발표했는데, 이는 학계의 15개보다 훨씬 많습니다. 2023년에 총 149개의 기반 모델이 발표되었으며, 이 중 65.7%가 오픈소스입니다. 미국이 최고 수준의 AI 모델 출처에서 앞서고 있으며(61개), 중국은 AI 특허에서 전 세계의 61.1%를 차지하고 있으며, 2010년 이래로 AI 특허 수가 31배 이상 증가했습니다.',
+    category: '国际排名',
+    confidence: 'high',
+    sourceUrl: 'https://hai.stanford.edu/ai-index/2024-ai-index-report/research-and-development',
+    discoveredAt: '2026-07-12',
+  },
+  {
+    title: '2022年AI指数报告',
+    titleEn: 'The 2022 AI Index Report',
+    titleJa: '2022年AI指数報告',
+    titleKo: '2022 AI 지수 보고서',
+    description:
+      '斯坦福大学人工智能研究所(HAI)发布的独立年度AI指数报告。报告追踪AI领域的关键进展：2021年私人投资达93.5亿美元（相比2020年翻倍），美中国际合作最为密切，大语言模型性能提升但偏见加剧，AI伦理研究自2014年增长5倍，AI训练成本自2018年下降63.6%，2021年全球通过18项AI相关法案，机器人手臂成本五年内下降46.2%。报告涵盖研究开发、技术性能、AI伦理、经济教育和政策治理五大章节。',
+    descriptionEn:
+      "The 2022 AI Index Report from Stanford's Human-Centered AI Institute provides comprehensive benchmarking of global AI progress. Key findings include: private investment surged to $93.5 billion in 2021 (more than double 2020), US-China collaborations dominated cross-country AI research partnerships, large language models achieved record performance while exhibiting increased toxicity and bias, AI ethics research publications grew 5-fold since 2014, image classification training costs declined 63.6% since 2018, global AI legislation increased to 18 bills passed in 25 countries by 2021, and robotic arm prices fell 46.2% over five years. The report spans five chapters covering research and development, technical performance, AI ethics, economy and education, and policy and governance.",
+    descriptionJa:
+      'スタンフォード大学人工知能研究所（HAI）が発表した独立した年次のAI指数報告書です。報告書はAI分野における主要な進展を追跡しています：2021年、民間投資は93.5億米ドルに達し（2020年比で倍増）、米中国際協力が最も密接であり、大規模言語モデルのパフォーマンスは向上しましたが偏見が悪化し、AI倫理研究は2014年以来5倍増加し、AI訓練コストは2018年以来63.6%低下し、2021年には世界中で18のAI関連法案が可決され、ロボットアームのコストは5年以内に46.2%低下しました。報告書は、研究開発、技術性能、AI倫理、経済教育、政策ガバナンスの5つの主要な章を網羅しています。',
+    descriptionKo:
+      '스탠포드 대학교 인공지능 연구소(HAI)에서 발표한 독립적인 연례 AI 지수 보고서입니다. 보고서는 AI 분야의 핵심 발전을 추적합니다: 2021년 민간 투자가 93.5억 미국 달러에 달했으며(2020년 대비 2배), 미중 국제 협력이 가장 긴밀하고, 대형 언어 모델의 성능은 향상되었지만 편견은 악화되었으며, AI 윤리 연구는 2014년 이래로 5배 증가했으며, AI 훈련 비용은 2018년 이래로 63.6% 감소했으며, 2021년 전 세계에서 18개의 AI 관련 법안이 통과되었으며, 로봇 팔의 비용은 5년 내에 46.2% 감소했습니다. 보고서는 연구개발, 기술 성능, AI 윤리, 경제 및 교육, 정책 거버넌스의 5개 주요 장을 다룹니다.',
+    category: '国际排名',
+    confidence: 'high',
+    sourceUrl: 'https://hai.stanford.edu/ai-index/2022-ai-index-report',
+    discoveredAt: '2026-07-12',
+  },
 ];
