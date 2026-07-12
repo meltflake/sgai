@@ -416,6 +416,96 @@ export const sections: LegalSection[] = [
       },
     ],
   },
+  {
+    title: 'Auto-discovered (pending review)',
+    titleEn: 'Auto-discovered (pending review)',
+    titleJa: 'Auto-discovered（レビュー待ち）',
+    philosophy: '由 refresh 管线自动发现的法律 / 监管条目，需 Luca 审核后移入正式分组。',
+    philosophyEn:
+      'Items auto-discovered by the refresh pipeline. Luca to review and move into the right section before merge.',
+    philosophyJa:
+      'リフレッシュパイプラインが自動検出した法律・規制項目。Luca がレビュー後、正式なセクションに移動します。',
+    items: [
+      {
+        title: '浏览现行法案 - 全部',
+        titleEn: 'Browse Current Acts - All',
+        titleJa: '現行法案の閲覧 - すべて',
+        titleKo: '현행 법안 열람 - 전체',
+        date: '2026-07',
+        authority: 'Auto: 待审核',
+        authorityEn: 'Auto: pending review',
+        authorityJa: 'Auto: 審査待機中',
+        authorityKo: 'Auto: 검토 대기 중',
+        scope: 'governance',
+        status: '提案',
+        summary:
+          '新加坡法律在线门户的立法索引页面,列出523项现行法案,用户可按字母顺序检索各类法律如会计师法、主动流动性法、航空导航法等。页面提供目录导航功能,无实质法律内容或政策指导。',
+        summaryEn:
+          "A directory index page from Singapore Statutes Online listing 523 current acts, allowing users to browse legislation alphabetically. The page serves as a navigation interface to Singapore's statutes and contains metadata only, with no substantive legislative or regulatory content.",
+        summaryJa:
+          'シンガポール法律オンラインポータルの立法索引ページで、523件の現行法案が掲載されており、ユーザーはアルファベット順で会計士法、アクティブモビリティ法、航空航法など各種の法律を検索することができます。ページはディレクトリナビゲーション機能を提供していますが、実質的な法律内容または政策指導は含まれていません。',
+        summaryKo:
+          '싱가포르 법률 온라인 포털의 입법 색인 페이지로, 523개의 현행 법안을 나열하고 있습니다. 사용자는 알파벳 순서에 따라 회계사법, 적극적 유동성법, 항공항법법 등 여러 유형의 법률을 검색할 수 있습니다. 페이지는 디렉토리 네비게이션 기능을 제공하나, 실질적인 법률 내용이나 정책 지침은 포함하고 있지 않습니다.',
+        body: `新加坡法律在线门户的立法索引页面,列出523项现行法案,用户可按字母顺序检索各类法律如会计师法、主动流动性法、航空导航法等。页面提供目录导航功能,无实质法律内容或政策指导。`,
+        bodyEn: `A directory index page from Singapore Statutes Online listing 523 current acts, allowing users to browse legislation alphabetically. The page serves as a navigation interface to Singapore's statutes and contains metadata only, with no substantive legislative or regulatory content.`,
+        bodyJa: `シンガポール法律オンラインポータルの立法索引ページで、523件の現行法案が掲載されており、ユーザーはアルファベット順で会計士法、アクティブモビリティ法、航空航法など各種の法律を検索することができます。ページはディレクトリナビゲーション機能を提供していますが、実質的な法律内容または政策指導は含まれていません。`,
+        bodyKo: `싱가포르 법률 온라인 포털의 입법 색인 페이지로, 523개의 현행 법안을 나열하고 있습니다. 사용자는 알파벳 순서에 따라 회계사법, 적극적 유동성법, 항공항법법 등 여러 유형의 법률을 검색할 수 있습니다. 페이지는 디렉토리 네비게이션 기능을 제공하나, 실질적인 법률 내용이나 정책 지침은 포함하고 있지 않습니다.`,
+        sourceUrl: 'https://sso.agc.gov.sg/Browse/Act/Current',
+      },
+      {
+        title: '新加坡法令网站 - 浏览已废除/已失效的法令 - 全部',
+        titleEn: 'Browse Repealed/Spent Acts - All - Singapore Statutes Online',
+        titleJa: 'シンガポール法令ウェブサイト - 廃止/失効法令の閲覧 - すべて',
+        titleKo: '싱가포르 법령 웹사이트 - 폐지/실효된 법령 열람 - 전체',
+        date: '2026-07',
+        authority: 'Auto: 待审核',
+        authorityEn: 'Auto: pending review',
+        authorityJa: 'Auto: 審査待機中',
+        authorityKo: 'Auto: 검토 대기 중',
+        scope: 'governance',
+        status: '提案',
+        summary:
+          '这是一个新加坡司法部(AGC)法令网站的目录列表页面，用于浏览已被废除或失效的新加坡法令。页面提供了298项已废除/失效法令的浏览界面，支持按标题、日期等方式排序和筛选。',
+        summaryEn:
+          "A directory listing page from Singapore Statutes Online (provided by the Attorney-General's Chambers) for browsing repealed and spent Acts. The page presents 298 repealed/spent acts across 15 pages with navigation and filtering options, but contains no substantive legislative or regulatory content.",
+        summaryJa:
+          'これはシンガポール司法長官室（AGC）法令ウェブサイトのディレクトリリストページで、廃止または失効したシンガポール法令を閲覧するためのものです。ページは298項目の廃止/失効法令の閲覧インターフェースを提供しており、タイトル、日付などの方法でソートおよびフィルタリングすることができます。',
+        summaryKo:
+          '이는 싱가포르 법무부(AGC) 법령 웹사이트의 디렉토리 목록 페이지로, 폐지되거나 실효된 싱가포르 법령을 열람하기 위한 것입니다. 페이지는 폐지/실효된 법령 298개의 열람 인터페이스를 제공하며, 제목, 날짜 등의 방식으로 정렬 및 필터링을 지원합니다.',
+        body: `这是一个新加坡司法部(AGC)法令网站的目录列表页面，用于浏览已被废除或失效的新加坡法令。页面提供了298项已废除/失效法令的浏览界面，支持按标题、日期等方式排序和筛选。`,
+        bodyEn: `A directory listing page from Singapore Statutes Online (provided by the Attorney-General's Chambers) for browsing repealed and spent Acts. The page presents 298 repealed/spent acts across 15 pages with navigation and filtering options, but contains no substantive legislative or regulatory content.`,
+        bodyJa: `これはシンガポール司法長官室（AGC）法令ウェブサイトのディレクトリリストページで、廃止または失効したシンガポール法令を閲覧するためのものです。ページは298項目の廃止/失効法令の閲覧インターフェースを提供しており、タイトル、日付などの方法でソートおよびフィルタリングすることができます。`,
+        bodyKo: `이는 싱가포르 법무부(AGC) 법령 웹사이트의 디렉토리 목록 페이지로, 폐지되거나 실효된 싱가포르 법령을 열람하기 위한 것입니다. 페이지는 폐지/실효된 법령 298개의 열람 인터페이스를 제공하며, 제목, 날짜 등의 방식으로 정렬 및 필터링을 지원합니다.`,
+        sourceUrl: 'https://sso.agc.gov.sg/Browse/Act/Repealed',
+      },
+      {
+        title: '浏览未生效法案 - 新加坡法令在线',
+        titleEn: 'Browse Uncommenced Acts - Singapore Statutes Online',
+        titleJa: '未発効法案の閲覧 - シンガポール法令オンライン',
+        titleKo: '미발효 법안 열람 - 싱가포르 법령 온라인',
+        date: '2026-07',
+        authority: 'Auto: 待审核',
+        authorityEn: 'Auto: pending review',
+        authorityJa: 'Auto: 審査待機中',
+        authorityKo: 'Auto: 검토 대기 중',
+        scope: 'governance',
+        status: '提案',
+        summary:
+          '这是新加坡法令在线网站上未生效法案的目录浏览页面。页面列出了12项已通过但尚未生效的新加坡法案,包括ACRA法案2024、反洗钱及其他事项法案2024、健康信息法案2026等。该页面主要是一个导航和查找界面,提供了各项法案的PDF下载链接,但不包含这些法案的实质性内容或与AI监管相关的信息。',
+        summaryEn:
+          'This is a directory browsing page on Singapore Statutes Online listing uncommenced acts (laws passed but not yet in force). The page displays 12 items including the ACRA (Registry and Regulatory Enhancements) Act 2024, Anti-Money Laundering and Other Matters Act 2024, and Health Information Act 2026. It is primarily a navigation interface providing PDF download links to these acts, with no substantive legislative content or information relevant to AI regulation.',
+        summaryJa:
+          'これはシンガポール法令オンラインウェブサイト上の未発効法案のディレクトリ閲覧ページです。ページは12件の可決されたがまだ発効していないシンガポール法案を掲載しており、ACRA法案2024、マネーロンダリング防止及びその他の事項法案2024、健康情報法案2026などが含まれます。このページは主にナビゲーションと検索インターフェースであり、各法案のPDFダウンロードリンクを提供していますが、これらの法案の実質的内容またはAI規制関連の情報は含まれていません。',
+        summaryKo:
+          '이는 싱가포르 법령 온라인 웹사이트의 미발효 법안 디렉토리 열람 페이지입니다. 페이지는 통과되었지만 아직 발효되지 않은 싱가포르 법안 12개를 나열하고 있으며, ACRA법안2024, 자금세탁방지 및 기타 사항 법안2024, 건강정보법안2026 등을 포함합니다. 이 페이지는 주로 네비게이션 및 검색 인터페이스이며, 각 법안의 PDF 다운로드 링크를 제공하지만, 이러한 법안의 실질적 내용이나 AI 규제와 관련된 정보는 포함하지 않습니다.',
+        body: `这是新加坡法令在线网站上未生效法案的目录浏览页面。页面列出了12项已通过但尚未生效的新加坡法案,包括ACRA法案2024、反洗钱及其他事项法案2024、健康信息法案2026等。该页面主要是一个导航和查找界面,提供了各项法案的PDF下载链接,但不包含这些法案的实质性内容或与AI监管相关的信息。`,
+        bodyEn: `This is a directory browsing page on Singapore Statutes Online listing uncommenced acts (laws passed but not yet in force). The page displays 12 items including the ACRA (Registry and Regulatory Enhancements) Act 2024, Anti-Money Laundering and Other Matters Act 2024, and Health Information Act 2026. It is primarily a navigation interface providing PDF download links to these acts, with no substantive legislative content or information relevant to AI regulation.`,
+        bodyJa: `これはシンガポール法令オンラインウェブサイト上の未発効法案のディレクトリ閲覧ページです。ページは12件の可決されたがまだ発効していないシンガポール法案を掲載しており、ACRA法案2024、マネーロンダリング防止及びその他の事項法案2024、健康情報法案2026などが含まれます。このページは主にナビゲーションと検索インターフェースであり、各法案のPDFダウンロードリンクを提供していますが、これらの法案の実質的内容またはAI規制関連の情報は含まれていません。`,
+        bodyKo: `이는 싱가포르 법령 온라인 웹사이트의 미발효 법안 디렉토리 열람 페이지입니다. 페이지는 통과되었지만 아직 발효되지 않은 싱가포르 법안 12개를 나열하고 있으며, ACRA법안2024, 자금세탁방지 및 기타 사항 법안2024, 건강정보법안2026 등을 포함합니다. 이 페이지는 주로 네비게이션 및 검색 인터페이스이며, 각 법안의 PDF 다운로드 링크를 제공하지만, 이러한 법안의 실질적 내용이나 AI 규제와 관련된 정보는 포함하지 않습니다.`,
+        sourceUrl: 'https://sso.agc.gov.sg/Browse/Act/Uncommenced',
+      },
+    ],
+  },
 ];
 
 export const conclusion = `**为什么这套法律组合对 AI 公司有吸引力**：
