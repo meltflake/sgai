@@ -17,9 +17,16 @@
 //      pollute Luca's WIP). Exception: changes confined to the pipeline's
 //      own data dir or the target file are allowed because we just made them.
 //   2. Create a branch named `data-refresh/<domain>/<YYYY-MM-DD>` (idempotent
-//      — appends `-N` suffix if branch exists).
+//      — appends `-N` suffix if branch exists). The branch is cut from
+//      `main` (not the current HEAD): sequential pipeline runs used to
+//      stack each branch on the previous pipeline's branch, so every PR
+//      carried its predecessors' commits and a fix to one conflicted all
+//      of them (2026-07-12 full run). Override via `baseRef`; repos with
+//      no `main` (test fixtures) fall back to the current HEAD.
 //   3. Commit ONLY the listed files. Never `git add -A`.
-//   4. Stay on the new branch on success; return SHA + diff stat.
+//   4. Stay on the new branch on success; return SHA + diff stat. The
+//      cron dispatcher (auto_update.py) restores the checkout to its
+//      start branch between pipelines and after the run.
 //   5. Never push to main. Never amend. Never force.
 //   6. PR step requires `gh` CLI authenticated (`gh auth status`). On Mac,
 //      this uses the user's keychain; cron jobs inherit it.
@@ -50,6 +57,10 @@ export interface AutoCommitOptions {
   allowDirtyPaths?: string[];
   /** Set to true to commit on the current branch instead of cutting a new one. */
   inPlace?: boolean;
+  /** Ref to cut the new branch from. Defaults to `main` when that branch
+   *  exists, else the current HEAD (test repos without a main). Prevents
+   *  sequential pipelines from stacking branches on each other. */
+  baseRef?: string;
 }
 
 export interface AutoCommitResult {
@@ -123,6 +134,17 @@ export function getUnexpectedDirty(allowDirtyPaths: string[] = [], targetFiles: 
 }
 
 /**
+ * Resolve the ref new pipeline branches are cut from: the caller's
+ * explicit `baseRef`, else local `main` when it exists, else the current
+ * HEAD (keeps test fixtures with other default-branch names working).
+ */
+export function resolveBaseRef(explicit?: string): string {
+  if (explicit) return explicit;
+  const hasMain = git(['rev-parse', '--verify', '--quiet', 'refs/heads/main']).code === 0;
+  return hasMain ? 'main' : getCurrentBranch();
+}
+
+/**
  * Cut a unique branch name. If `data-refresh/policies/2026-05-03` exists,
  * tries `-2`, `-3`, ... up to -99.
  */
@@ -164,7 +186,15 @@ export function autoCommit(options: AutoCommitOptions): AutoCommitResult {
 
   if (!options.inPlace) {
     branchName = uniqueBranchName(options.domain);
-    gitOk(['checkout', '-b', branchName]);
+    const base = resolveBaseRef(options.baseRef);
+    if (base !== startBranch) {
+      process.stderr.write(`  [auto-commit] cutting ${branchName} from ${base} (checkout was on ${startBranch})\n`);
+    }
+    // Working-tree changes (the pipeline's fresh writes) carry over the
+    // switch. If a target file differs between HEAD and the base AND is
+    // dirty, git refuses and we throw — better a loud failure than a PR
+    // stacked on the wrong branch.
+    gitOk(['checkout', '-b', branchName, base]);
   }
 
   try {

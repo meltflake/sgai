@@ -527,7 +527,12 @@ def run_tsx_pipeline(pipeline: dict, logger, dry_run: bool = False) -> dict:
         for line in proc.stderr.splitlines():
             logger.debug(f"    | err: {line}")
     if proc.returncode != 0:
-        return {"count": 0, "items": [], "error": f"exit {proc.returncode}: {proc.stderr[:300]}"}
+        # npm warn 噪音会挤掉 300 字符预算里的真实错误（2026-07-12 issue #134
+        # 的 evals 错误全被 "npm warn Unknown project config" 淹没）——先滤掉。
+        stderr_signal = "\n".join(
+            line for line in proc.stderr.splitlines() if line.strip() and not line.startswith("npm warn")
+        )
+        return {"count": 0, "items": [], "error": f"exit {proc.returncode}: {stderr_signal[:300]}"}
 
     # Find last JSON line in stdout
     last_json = None
@@ -539,7 +544,12 @@ def run_tsx_pipeline(pipeline: dict, logger, dry_run: bool = False) -> dict:
             except json.JSONDecodeError:
                 continue
     if not last_json:
-        return {"count": 0, "items": [], "error": "no JSON report from pipeline"}
+        # 干净退出 (exit 0) 但没打 JSON report = 零结果早退（候选全被质量闸门
+        # 丢弃等）。这不是失败——真崩溃会以非零 exit code 走上面的分支。
+        # 2026-07-06/07-12 两轮跑批把 5 条健康管线误报成 "⚠ failed"，与真失败
+        # 无法区分，此处放行。（run-template.ts 现在所有路径都打 JSON，
+        # 自有 run.ts 的旧管线零结果路径仍可能不打——同样适用本契约。）
+        return {"count": 0, "items": [], "note": "zero-result exit (no JSON report)"}
 
     count = last_json.get("added", last_json.get("changed", 0)) or 0
     items = []
@@ -600,6 +610,45 @@ def record_schedule_runs(state: dict, schedules: set[str]):
         runs[s] = stamp
 
 
+# ── checkout 卫生 ─────────────────────────────────────────────────────────────
+def _git_current_branch() -> str:
+    """当前 checkout 的分支名（detached/失败返回 ''）。"""
+    import subprocess
+
+    r = subprocess.run(
+        ["git", "rev-parse", "--abbrev-ref", "HEAD"],
+        cwd=PROJECT_ROOT,
+        capture_output=True,
+        text=True,
+    )
+    return r.stdout.strip() if r.returncode == 0 else ""
+
+
+def _restore_checkout(branch: str, logger):
+    """把 checkout 恢复到 `branch`（管线跑完停在自己的 data-refresh 分支上）。
+
+    不恢复的话：(1) 串行跑批时下一条管线从上一条的分支切分支——PR 互相夹带
+    （2026-07-12 全量跑实测，5 个 PR 堆叠）；(2) 整轮跑完 checkout 留在最后
+    一个管线分支，第二天 cron 从错误分支跑（audit 2026-07-07 #16 同款）。
+    恢复失败只 warning 不抛——脏工作树等场景下宁可留现场也别毁掉数据。
+    """
+    import subprocess
+
+    current = _git_current_branch()
+    if not branch or not current or current == branch:
+        return
+    r = subprocess.run(
+        ["git", "checkout", branch],
+        cwd=PROJECT_ROOT,
+        capture_output=True,
+        text=True,
+    )
+    if r.returncode == 0:
+        logger.info(f"  checkout 已从 {current} 恢复到 {branch}")
+    else:
+        logger.warning(f"⚠ checkout 无法从 {current} 恢复到 {branch}: {r.stderr.strip()[:200]}")
+
+
 # ── 管线选择 + 运行（normal / --schedule / --due 共用）─────────────────────────
 def select_pipelines(registry: dict, schedules: set[str] | None, only_set: set[str] | None) -> list[dict]:
     """Filter registry entries by schedule set (None = all) and an optional id allowlist."""
@@ -617,6 +666,9 @@ def run_pipelines(selected: list[dict], state: dict, logger, dry_run: bool) -> t
     """Run the selected pipelines, returning (results, errors)."""
     results: dict = {}
     errors: list[str] = []
+    start_branch = _git_current_branch()
+    if start_branch and start_branch != "main":
+        logger.warning(f"⚠ checkout 起点是 {start_branch}（不是 main）——管线读到的数据可能不是线上真相")
     for entry in selected:
         pid = entry["id"]
         ptype = entry.get("type")
@@ -648,6 +700,9 @@ def run_pipelines(selected: list[dict], state: dict, logger, dry_run: bool) -> t
         result_error = results.get(pid, {}).get("error") if isinstance(results.get(pid), dict) else None
         if result_error and f"{pid}: {result_error}" not in errors:
             errors.append(f"{pid}: {result_error}")
+        # 管线的 autoCommit 停在自己的 data-refresh 分支上——立刻恢复，
+        # 让下一条管线（和明天的 cron）从跑批起点分支开始。
+        _restore_checkout(start_branch, logger)
     return results, errors
 
 

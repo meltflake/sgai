@@ -136,6 +136,16 @@ export async function runPipeline(config: PipelineConfig): Promise<void> {
   const startedAt = Date.now();
   const targetAbs = resolve(config.targetFile);
 
+  // Every exit path must end with one JSON report line: the dispatcher
+  // (auto_update.py run_tsx_pipeline) parses the last JSON line of stdout.
+  // Zero-result early returns used to skip it, and the run showed up as
+  // "no JSON report from pipeline" — indistinguishable from a real failure
+  // (2026-07-06 and 07-12 runs flagged 5 healthy pipelines as ⚠ failed).
+  const printReport = (fields: Record<string, unknown>): void => {
+    const elapsed = Math.round((Date.now() - startedAt) / 1000);
+    process.stdout.write(JSON.stringify({ domain: config.domain, elapsed_seconds: elapsed, ...fields }) + '\n');
+  };
+
   process.stdout.write(`\n[${config.domain}-refresh] starting\n`);
 
   // Preflight: prove `claude -p` can run inference before per-candidate AI
@@ -157,6 +167,7 @@ export async function runPipeline(config: PipelineConfig): Promise<void> {
   if (candidates.length === 0 || flags.dryRun) {
     if (flags.dryRun) process.stdout.write(`\n[${config.domain}-refresh] dry-run done.\n`);
     saveState(loadState());
+    printReport({ added: 0, failures: 0, reason: flags.dryRun ? 'dry-run' : 'no-candidates' });
     return;
   }
 
@@ -231,6 +242,13 @@ export async function runPipeline(config: PipelineConfig): Promise<void> {
 
   if (enriched.length === 0) {
     process.stdout.write(`\n[${config.domain}-refresh] no enriched items.\n`);
+    printReport({
+      added: 0,
+      failures: failures.length,
+      skipped_empty_shell: skipped.length,
+      dropped_off_topic: offTopic.length,
+      reason: 'no-enriched',
+    });
     return;
   }
 
@@ -264,7 +282,10 @@ export async function runPipeline(config: PipelineConfig): Promise<void> {
   // When a human moves an entry from autoDiscovered to the canonical array
   // in PR review, that's when they should set addedAt: today.
 
-  if (flags.noCommit) return;
+  if (flags.noCommit) {
+    printReport({ added: result.added, failures: failures.length, reason: 'no-commit' });
+    return;
+  }
 
   const commitFiles = [targetAbs];
   const commit = autoCommit({
@@ -275,6 +296,7 @@ export async function runPipeline(config: PipelineConfig): Promise<void> {
   });
   process.stdout.write(`  branch: ${commit.branch}, sha: ${commit.sha}\n`);
 
+  let prUrl: string | undefined;
   if (!flags.noPush) {
     const body = buildPRBody({
       domain: config.domain,
@@ -295,19 +317,21 @@ export async function runPipeline(config: PipelineConfig): Promise<void> {
       labels: ['data-refresh', config.domain, 'pending-review'],
     });
     if (prResult.error) process.stdout.write(`  ⚠ PR error: ${prResult.error}\n`);
-    if (prResult.pr) process.stdout.write(`  PR: ${prResult.pr.url}\n`);
+    if (prResult.pr) {
+      process.stdout.write(`  PR: ${prResult.pr.url}\n`);
+      prUrl = prResult.pr.url;
+    }
   }
 
   saveState(loadState());
-  const elapsed = Math.round((Date.now() - startedAt) / 1000);
-  process.stdout.write(
-    JSON.stringify({
-      domain: config.domain,
-      added: result.added,
-      failures: failures.length,
-      branch: commit.branch,
-      sha: commit.sha,
-      elapsed_seconds: elapsed,
-    }) + '\n'
-  );
+  // pr_url feeds the dispatcher's "PRs awaiting review" issue section —
+  // it was missing here, so template pipelines' PRs (e.g. benchmarking
+  // #133) never showed a review link in the summary issue.
+  printReport({
+    added: result.added,
+    failures: failures.length,
+    branch: commit.branch,
+    sha: commit.sha,
+    pr_url: prUrl,
+  });
 }
