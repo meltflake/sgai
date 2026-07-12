@@ -7877,24 +7877,6 @@ export const autoDiscovered: AutoDiscoveredEntry[] = [
     discoveredAt: '2026-07-12',
   },
   {
-    title: '研究与开发 | 2024年AI指数报告',
-    titleEn: 'Research and Development | The 2024 AI Index Report',
-    titleJa: '研究と開発 | 2024年のAIインデックスレポート',
-    titleKo: '연구개발 | 2024 AI 지수 보고서',
-    description:
-      '本章节追踪2023年全球AI研发趋势，包括出版物、基础模型、专利和开源研究。工业界主导前沿AI研发，发布51个重要机器学习模型相比学术界的15个；2023年共发布149个基础模型，其中65.7%为开源。美国在顶级AI模型来源中领先（61个），而中国在AI专利中占全球61.1%，自2010年来AI专利数增长超31倍。',
-    descriptionEn:
-      "This chapter documents 2023 AI R&D trends including publications, foundation models, patents, and open-source research. Industry dominates frontier AI research, producing 51 notable ML models versus academia's 15; 149 foundation models were released in 2023, with 65.7% being open-source. The U.S. leads in top AI model sources (61 models), while China dominates AI patents with 61.1% of global share. AI patent grants have increased more than 31-fold since 2010. Open-source AI on GitHub grew 59.3% in 2023 alone, with AI publications reaching over 240,000 by 2022.",
-    descriptionJa:
-      '本章節は2023年の世界的なAI研究開発トレンドを追跡しており、出版物、基礎モデル、特許、およびオープンソース研究が含まれます。産業界が最先端のAI研究開発をリードし、学術界の15個と比較して51個の重要な機械学習モデルを発表しました。2023年に発表された基礎モデルは149個で、その65.7%がオープンソースです。米国がトップレベルのAIモデルの出所でリードしており（61個）、一方、中国は世界のAI特許の61.1%を占めており、2010年以来、AI特許数は31倍以上増加しています。',
-    descriptionKo:
-      '본 장은 2023년 전 세계 AI 연구개발 추이를 추적하며, 출판물, 기반 모델, 특허 및 오픈소스 연구를 포함합니다. 산업계가 최첨단 AI 연구개발을 주도하여 중요한 기계학습 모델 51개를 발표했는데, 이는 학계의 15개보다 훨씬 많습니다. 2023년에 총 149개의 기반 모델이 발표되었으며, 이 중 65.7%가 오픈소스입니다. 미국이 최고 수준의 AI 모델 출처에서 앞서고 있으며(61개), 중국은 AI 특허에서 전 세계의 61.1%를 차지하고 있으며, 2010년 이래로 AI 특허 수가 31배 이상 증가했습니다.',
-    category: '国际排名',
-    confidence: 'high',
-    sourceUrl: 'https://hai.stanford.edu/ai-index/2024-ai-index-report/research-and-development',
-    discoveredAt: '2026-07-12',
-  },
-  {
     title: '2022年AI指数报告',
     titleEn: 'The 2022 AI Index Report',
     titleJa: '2022年AI指数報告',
