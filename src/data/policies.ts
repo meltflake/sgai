@@ -2113,6 +2113,42 @@ The design is deliberately a mix of scientists, government, and industry rather 
         relatedTimelineYears: [],
         relatedPostSlugs: [],
       },
+      {
+        id: 'minister-josephine-teo-visit-geneva-ai-for-good-global-commission',
+        title: '杨莉明部长访问日内瓦参加全球向善人工智能委员会启动及首届会议',
+        titleEn:
+          "Minister Josephine Teo's Visit to Geneva for the Launch and Inaugural Meeting of the AI for Good Global Commission",
+        titleJa:
+          'ジョセフィン・テオ大臣がジュネーブを訪問し、グローバル・エーアイ・フォー・グッド委員会の立ち上げと初回会議に参加',
+        titleKo: '조세핀 테오 장관 제네바 방문, 글로벌 AI 포 굿 위원회 출범 및 첫 회의 참석',
+        date: '2026-07',
+        source: '数字发展与信息部 (MDDI)',
+        sourceOrgUrl: 'https://www.mddi.gov.sg/',
+        sourceUrl:
+          'https://www.mddi.gov.sg/newsroom/-minister-josephine-teo-s-visit-to--geneva--switzerland-for-the-launch-and-inaugural-meeting-of-the--ai-for-good-global-commission-and-related-meetings--7-jul---9-jul-2026-/',
+        summary:
+          '新加坡数字发展与信息部长作为创始成员访问日内瓦，参加全球向善人工智能委员会的启动和首届会议。该委员会由卢旺达总统保罗·卡加梅和Salesforce首席执行官马克·贝尼奥夫共同担任主席，汇聚各国首脑、产业领袖和联合国机构，致力于加强信任和扩大AI获取。新加坡重点推动AI的行业转型、建立可跨境互操作的治理框架，并分享其国家AI任务、AI Verify等实施经验。',
+        content: `新加坡数字发展与信息部长作为创始成员访问日内瓦，参加全球向善人工智能委员会的启动和首届会议。该委员会由卢旺达总统保罗·卡加梅和Salesforce首席执行官马克·贝尼奥夫共同担任主席，汇聚各国首脑、产业领袖和联合国机构，致力于加强信任和扩大AI获取。新加坡重点推动AI的行业转型、建立可跨境互操作的治理框架，并分享其国家AI任务、AI Verify等实施经验。`,
+        summaryEn:
+          "Singapore's Minister of Digital Development and Information visits Geneva as a Founding Member of the AI for Good Global Commission, co-chaired by Rwanda's President Paul Kagame and Salesforce CEO Marc Benioff. The Commission convenes Heads of State and Government, industry leaders, and UN agency heads to strengthen trust, expand AI access, and address global challenges. Singapore prioritizes sectoral AI transformation, cross-border interoperable AI governance, and implementation partnerships, showcasing initiatives like its National AI Missions and AI Verify framework.",
+        contentEn: `Singapore's Minister of Digital Development and Information visits Geneva as a Founding Member of the AI for Good Global Commission, co-chaired by Rwanda's President Paul Kagame and Salesforce CEO Marc Benioff. The Commission convenes Heads of State and Government, industry leaders, and UN agency heads to strengthen trust, expand AI access, and address global challenges. Singapore prioritizes sectoral AI transformation, cross-border interoperable AI governance, and implementation partnerships, showcasing initiatives like its National AI Missions and AI Verify framework.`,
+        summaryJa:
+          'シンガポール情報・デジタル発展大臣は、創設メンバーとしてジュネーブを訪問し、グローバル・エーアイ・フォー・グッド委員会の立ち上げと初回会議に参加しました。同委員会はルワンダ大統領ポール・カガメ氏とSalesforce最高経営責任者マーク・ベニオフ氏が共同議長を務め、各国首脳、産業リーダー、国連機関が一堂に集い、信頼の強化とAIアクセスの拡大に取り組みます。シンガポールはAIによる産業の変革、国境を超えた相互運用可能なガバナンス枠組みの構築、および国家AI任務、AI Verifyなどの実装経験の共有に注力しています。',
+        contentJa: `シンガポール情報・デジタル発展大臣は、創設メンバーとしてジュネーブを訪問し、グローバル・エーアイ・フォー・グッド委員会の立ち上げと初回会議に参加しました。同委員会はルワンダ大統領ポール・カガメ氏とSalesforce最高経営責任者マーク・ベニオフ氏が共同議長を務め、各国首脳、産業リーダー、国連機関が一堂に集い、信頼の強化とAIアクセスの拡大に取り組みます。シンガポールはAIによる産業の変革、国境を超えた相互運用可能なガバナンス枠組みの構築、および国家AI任務、AI Verifyなどの実装経験の共有に注力しています。`,
+        summaryKo:
+          '싱가포르 디지털발전정보부 장관이 창립 회원으로서 제네바를 방문하여 글로벌 AI 포 굿 위원회의 출범 및 첫 회의에 참석합니다. 본 위원회는 르완다 대통령 폴 카가메와 Salesforce CEO 마크 베니오프가 공동 의장을 맡고 있으며, 각국 정상, 산업 지도자, 유엔 기구를 한데 모아 신뢰 강화 및 AI 접근 확대를 도모합니다. 싱가포르는 AI 산업 전환 추진, 국경 간 상호운용 가능한 거버넌스 프레임워크 구축, 국가 AI 임무 및 AI Verify 등의 구현 경험 공유를 중점적으로 추진합니다.',
+        contentKo: `싱가포르 디지털발전정보부 장관이 창립 회원으로서 제네바를 방문하여 글로벌 AI 포 굿 위원회의 출범 및 첫 회의에 참석합니다. 본 위원회는 르완다 대통령 폴 카가메와 Salesforce CEO 마크 베니오프가 공동 의장을 맡고 있으며, 각국 정상, 산업 지도자, 유엔 기구를 한데 모아 신뢰 강화 및 AI 접근 확대를 도모합니다. 싱가포르는 AI 산업 전환 추진, 국경 간 상호운용 가능한 거버넌스 프레임워크 구축, 국가 AI 임무 및 AI Verify 등의 구현 경험 공유를 중점적으로 추진합니다.`,
+        sourceEn: 'Ministry of Digital Development and Information (MDDI)',
+        sourceJa: 'デジタル開発情報省 (MDDI)',
+        sourceKo: '디지털개발정보부 (MDDI)',
+        ministry: 'MDDI',
+        authorPersonIds: [],
+        relatedDebateIds: [],
+        relatedLeverNumbers: [],
+        relatedTimelineYears: [],
+        relatedPostSlugs: [],
+        addedAt: '2026-07-12',
+      },
     ],
   },
 ];
