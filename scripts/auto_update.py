@@ -532,6 +532,13 @@ def run_tsx_pipeline(pipeline: dict, logger, dry_run: bool = False) -> dict:
         stderr_signal = "\n".join(
             line for line in proc.stderr.splitlines() if line.strip() and not line.startswith("npm warn")
         )
+        if not stderr_signal:
+            # evals 这类管线把失败细节打在 stdout（[FAIL] 行）而非 stderr——
+            # 滤完 npm warn 后 stderr 为空时（2026-07-13 issue #138 显示
+            # "exit 1: " 空错误），回落到 stdout 的信号行。
+            stdout_lines = [line for line in proc.stdout.splitlines() if line.strip()]
+            fail_lines = [line for line in stdout_lines if "FAIL" in line or "Error" in line or "error" in line]
+            stderr_signal = "\n".join((fail_lines or stdout_lines)[-5:])
         return {"count": 0, "items": [], "error": f"exit {proc.returncode}: {stderr_signal[:300]}"}
 
     # Find last JSON line in stdout

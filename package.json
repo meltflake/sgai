@@ -11,6 +11,7 @@
     "dev": "astro dev",
     "start": "astro dev",
     "build": "NODE_OPTIONS=--max-old-space-size=8192 astro build",
+    "postbuild": "git rev-parse HEAD > dist/.build-commit 2>/dev/null || true",
     "preview": "astro preview",
     "astro": "astro",
     "check": "npm run check:astro && npm run check:eslint && npm run check:prettier && npm run check:graph && npm run check:video-transcripts && npm run check:debate-transcripts && npm run check:speech-transcripts && npm run check:post-i18n && npm run check:i18n-completeness && npm run check:zh-tw-renderers && npm run test:lib",
