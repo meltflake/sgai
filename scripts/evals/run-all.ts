@@ -29,8 +29,9 @@ import { spawnSync } from 'node:child_process';
 import { existsSync } from 'node:fs';
 import { resolve, join } from 'node:path';
 
+import { distState } from '../lib/dist-freshness.ts';
+
 const REPO_ROOT = resolve(import.meta.dirname, '../..');
-const HAS_DIST = existsSync(join(REPO_ROOT, 'dist'));
 
 type Frequency = 'weekly' | 'monthly' | 'all';
 
@@ -184,15 +185,42 @@ function selectStages(stages: Stage[], target: Frequency): Stage[] {
   return stages.filter((s) => s.frequency === 'weekly');
 }
 
+// ── dist freshness ───────────────────────────────────────────────────────
+//
+// dist-dependent evals used to trust WHATEVER dist/ was lying on disk —
+// two phantom-failure incidents in two days (stacked-branch scan on
+// 2026-07-12, stale-dist scan on 07-13). See scripts/lib/dist-freshness.ts
+// for the full story; here we rebuild whenever the stamp doesn't match HEAD.
+
+/** Rebuild dist when any selected stage depends on it and it isn't fresh.
+ *  Returns whether dist is usable. `--no-build` keeps the old behaviour
+ *  (scan whatever exists; skip when missing) for quick manual runs. */
+function ensureFreshDist(stages: Stage[], noBuild: boolean): boolean {
+  if (!stages.some((s) => s.needsDist)) return true;
+  const state = distState(REPO_ROOT);
+  if (state === 'fresh') return true;
+  if (noBuild) {
+    process.stdout.write(`\n[dist] state=${state}, --no-build set — scanning dist/ as-is (results may be stale)\n`);
+    return existsSync(join(REPO_ROOT, 'dist'));
+  }
+  process.stdout.write(`\n[dist] state=${state} — rebuilding so dist-dependent evals scan HEAD, not a stale tree…\n`);
+  const r = spawnSync('npm', ['run', 'build'], { cwd: REPO_ROOT, stdio: 'inherit' });
+  if (r.status !== 0) {
+    process.stdout.write('[dist] build FAILED — dist-dependent evals will be skipped\n');
+    return false;
+  }
+  return true;
+}
+
 interface StageResult {
   name: string;
   exitCode: number;
   skipped: boolean;
 }
 
-function runStage(stage: Stage): StageResult {
-  if (stage.needsDist && !HAS_DIST) {
-    process.stdout.write(`\n[SKIP] ${stage.name} — dist/ not present (run \`npm run build\` first)\n`);
+function runStage(stage: Stage, distUsable: boolean): StageResult {
+  if (stage.needsDist && !distUsable) {
+    process.stdout.write(`\n[SKIP] ${stage.name} — no usable dist/ (build failed or absent)\n`);
     return { name: stage.name, exitCode: 0, skipped: true };
   }
   process.stdout.write(`\n=== ${stage.name} ===\n`);
@@ -202,12 +230,15 @@ function runStage(stage: Stage): StageResult {
 }
 
 function main() {
-  const frequency = parseFrequency(process.argv.slice(2));
+  const argv = process.argv.slice(2);
+  const frequency = parseFrequency(argv);
   const stages = selectStages(STAGES, frequency);
   process.stdout.write(`Running ${stages.length} stage(s) at frequency=${frequency}.\n`);
 
+  const distUsable = ensureFreshDist(stages, argv.includes('--no-build'));
+
   const results: StageResult[] = [];
-  for (const stage of stages) results.push(runStage(stage));
+  for (const stage of stages) results.push(runStage(stage, distUsable));
 
   process.stdout.write('\n=== Eval Summary ===\n');
   let anyFail = false;
