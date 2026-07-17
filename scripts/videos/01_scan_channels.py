@@ -66,9 +66,15 @@ CHANNELS = {
     },
 }
 
-# ── AI 关键词（标题/描述中匹配任一即可）───────────────────────────────────────
-AI_KEYWORDS = [
-    r"\bAI\b",
+# ── AI 关键词（两级）──────────────────────────────────────────────────────────
+# 分两级是为了压制假阳性：新闻/政府频道的 video description 常在结尾 boilerplate 或
+# 顺带一句里出现 "AI"，一条讲 GDP / 交通 / 组屋商贩的视频因此被裸 \bAI\b 命中入队
+# （2026-07 Tharman 见媒体 / Future of Transport / GovTech 裁员等反复误报）。
+#
+# STRONG：语义足够专指 AI 的词，标题或描述任意命中即算。
+# TITLE_ONLY（弱信号）：裸 AI / robot / data centre 这类在 description 里太容易零星
+#   出现，只有当它们出现在 **标题** 时才可信——标题写 AI 的视频基本就是讲 AI 的。
+AI_KEYWORDS_STRONG = [
     r"artificial intelligence",
     r"machine learning",
     r"deep\s?learning",
@@ -84,9 +90,7 @@ AI_KEYWORDS = [
     r"ai strateg",
     r"ai safety",
     r"ai regulat",
-    r"data centre",
-    r"compute infrastructure",
-    # Modern AI vocabulary — lockup videos are title-only, so widen the net.
+    # Modern AI vocabulary — specific enough to trust anywhere.
     r"agentic",
     r"\bcopilot\b",
     r"co-?pilot",
@@ -96,9 +100,20 @@ AI_KEYWORDS = [
     r"multimodal",
     r"neural network",
     r"computer vision",
-    r"\brobot",
     r"humanoid",
 ]
+
+# 弱信号：只在标题命中才算。裸 \bAI\b 是最大噪声源；robot/data centre/compute
+# 在 description 里也常是无关顺带提及（机器人展、数据中心地产、算力新闻）。
+AI_KEYWORDS_TITLE_ONLY = [
+    r"\bAI\b",
+    r"\brobot",
+    r"data centre",
+    r"compute infrastructure",
+]
+
+# 组合视图，仅用于任何需要"完整 AI 词表"的场景（如日志/调试）。
+AI_KEYWORDS = AI_KEYWORDS_STRONG + AI_KEYWORDS_TITLE_ONLY
 
 # 新加坡相关关键词（用于 CNA/ST/WEF/Bloomberg 等非纯本地频道的二次过滤）
 # 维护规则：现任内阁部长 + 国务部长（含 AI 相关 portfolio）+ 主要部委缩写 +
@@ -189,6 +204,24 @@ def matches_keywords(text: str, patterns: list[str]) -> bool:
     """检查文本是否匹配任一关键词模式"""
     text_lower = text.lower()
     return any(re.search(p, text_lower, re.IGNORECASE) for p in patterns)
+
+
+def is_ai_video(title: str, description: str, channel_key: str) -> bool:
+    """两级 AI 判定（见 AI_KEYWORDS_STRONG / AI_KEYWORDS_TITLE_ONLY 注释）。
+
+    - AISG 频道整频道都是 AI，直接放行。
+    - 强信号词：标题或描述任意命中即算。
+    - 弱信号词（裸 AI / robot / data centre / compute）：只有出现在**标题**才算，
+      避免新闻/政府视频 description 里零星一句 "AI" 造成假阳性。
+    """
+    if channel_key == "AISG":
+        return True
+    text = f"{title} {description}"
+    if matches_keywords(text, AI_KEYWORDS_STRONG):
+        return True
+    if matches_keywords(title, AI_KEYWORDS_TITLE_ONLY):
+        return True
+    return False
 
 
 def get_existing_video_urls() -> set[str]:
@@ -482,8 +515,7 @@ def scan_channels(
             # 关键词门会漏掉标题不含 AI 字样的真 AI 内容（2026-06 voices
             # slug-only 同类盲区）。CNA/ST/WEF/Bloomberg 仍走关键词门，否则
             # 新闻频道每天 30+ 非 AI 视频会塞爆人工 review 队列。
-            text = f"{parsed['title']} {parsed['description']}"
-            if ch_key != "AISG" and not matches_keywords(text, AI_KEYWORDS):
+            if not is_ai_video(parsed["title"], parsed["description"], ch_key):
                 continue
 
             # 国际频道需要二次过滤新加坡相关性

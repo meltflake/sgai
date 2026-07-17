@@ -7,7 +7,7 @@
     "AI Singapore"
   ],
   "minLengthRatio": 0.6,
-  "maxLengthRatio": 2.5,
+  "maxLengthRatio": 5.5,
   "preserveTokens": [
     "100E",
     "100"
