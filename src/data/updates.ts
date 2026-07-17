@@ -79,6 +79,31 @@ const MANUAL_TYPES = new Set<UpdateType>(['site', 'fix', 'longform']);
 // sort regardless. Add new entries at the top.
 export const MANUAL_UPDATES: Update[] = [
   {
+    date: '2026-07-17',
+    type: 'longform',
+    title: '新发布：几个关于 AI 的问答',
+    titleEn: 'New essay: A few Q&As about AI',
+    titleJa: '新規公開：AI をめぐるいくつかの問答',
+    titleKo: '신규 공개: AI에 관한 몇 가지 문답',
+    summary:
+      'sgai 编辑在 NUS 新全球企业家新加坡论坛的圆桌发言整理：企业如何选模型（一个原则、两个例外）、模型趋同后为何押注 Data、CEO 为何要亲自把最聪明模型的额度用光，以及什么才是围绕数据组织的 AI Native Company。中英日韩繁体五语同步。',
+    summaryEn:
+      'Notes from an sgai editor on a panel at the NUS Global Entrepreneurship Singapore forum: how enterprises should choose models (one principle, two exceptions), why Data becomes the real moat once model capabilities converge, why a CEO must personally burn through the quota of the smartest model, and what actually makes a company AI-native — being organized around its data. Published in all five languages.',
+    summaryJa:
+      'sgai 編集者が NUS 新グローバル起業家シンガポール・フォーラムのパネルで語った内容の整理：企業はどうモデルを選ぶか（一つの原則と二つの例外）、モデルが収束した後の本当の堀はなぜ Data なのか、CEO はなぜ最も賢いモデルの枠を自ら使い切るべきか、そしてデータを軸に組織された真の AI ネイティブ企業とは何か。5 言語で同時公開。',
+    summaryKo:
+      'sgai 편집자가 NUS 글로벌 기업가 싱가포르 포럼 패널에서 밝힌 내용 정리: 기업이 모델을 어떻게 고를지(하나의 원칙과 두 가지 예외), 모델이 수렴한 뒤 진짜 해자가 왜 Data인지, CEO가 왜 가장 똑똑한 모델의 할당량을 직접 다 써야 하는지, 그리고 데이터를 중심으로 조직된 진정한 AI 네이티브 기업이란 무엇인가. 5개 언어로 동시 공개.',
+    links: [
+      {
+        href: '/enterprise-ai-four-questions/',
+        label: '阅读全文',
+        labelEn: 'Read the article',
+        labelJa: '記事を読む',
+        labelKo: '글 읽기',
+      },
+    ],
+  },
+  {
     date: '2026-07-05',
     type: 'site',
     title: '生态实体互链上线：21 个核心机构关联政策与国会辩论',
