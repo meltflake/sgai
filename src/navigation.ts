@@ -71,6 +71,7 @@ export function getHeaderData(lang: Lang) {
         text: t(lang, labelKeys.data),
         links: [
           { text: t(lang, labelKeys.updates), href: lh('/updates', lang) },
+          { text: t(lang, labelKeys.topics), href: lh('/topics', lang) },
           { text: t(lang, labelKeys.tracker), href: lh('/tracker', lang) },
           { text: t(lang, labelKeys.startups), href: lh('/startups', lang) },
           { text: t(lang, labelKeys.talent), href: lh('/talent', lang) },
