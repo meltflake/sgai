@@ -147,7 +147,12 @@ const HIRAGANA_KATAKANA_RE = /[぀-ゟ゠-ヿ]/;
 
 function termsHitAssert(name: string, haystack: string, terms: string[]): Assertion {
   if (terms.length === 0) return { name, passed: true, detail: 'no terms required' };
-  const missing = terms.filter((t) => !haystack.toLowerCase().includes(t.toLowerCase()));
+  // Treat hyphen and whitespace runs as equivalent so "red team" matches the
+  // equally-valid "red-team" the model may emit. Normalization only loosens
+  // matching, so it never turns a passing term into a failing one.
+  const norm = (s: string) => s.toLowerCase().replace(/[-\s]+/g, ' ');
+  const hay = norm(haystack);
+  const missing = terms.filter((t) => !hay.includes(norm(t)));
   const hits = terms.length - missing.length;
   const rate = hits / terms.length;
   return rate >= 0.8
@@ -219,10 +224,16 @@ function evaluate(
   // Token preservation.
   if (c.preserveTokens) {
     for (const tok of c.preserveTokens) {
+      // Numbers legitimately gain/lose thousands separators across languages
+      // (zh "8500" → en "8,500"); compare digit-run tokens comma-insensitively.
+      const isNumeric = /^\d[\d,]*$/.test(tok);
+      const present = isNumeric
+        ? output.replace(/,/g, '').includes(tok.replace(/,/g, ''))
+        : output.includes(tok);
       a.push({
         name: `preserve.${tok}`,
-        passed: output.includes(tok),
-        detail: output.includes(tok) ? '' : `missing token "${tok}"`,
+        passed: present,
+        detail: present ? '' : `missing token "${tok}"`,
       });
     }
   }

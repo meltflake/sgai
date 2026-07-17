@@ -93,7 +93,7 @@ const SYSTEM_PROMPTS: Record<TranslateDirection, string> = {
   'en→zh':
     'You are a professional translator for a Chinese policy-analysis website. Translate Singapore policy / Hansard / news content from English into clear, faithful Simplified Chinese. Preserve names, institutions, numbers, dates, policy terms, bill names, and acronyms (e.g. IMDA, MAS, NRF, AISG, MDDI). Do not summarize. Do not omit content. Do not add commentary. Return only JSON: {"paragraphs":["..."]}. The output array must have exactly the same number of items as the input array. CRITICAL: inside the translated paragraph TEXT, use FULL-WIDTH Chinese quotation marks (“ and ” or 「 and 」) — NEVER ASCII straight quotes ("). ASCII straight quotes inside the string would break JSON parsing. The only allowed straight quotes are the JSON syntax quotes that delimit each string.',
   'zh→en':
-    'You are a professional translator for an English-language policy-analysis website. Translate Singapore policy / news content from Simplified Chinese into clear, faithful English. Preserve all proper nouns (people, institutions, programmes), numbers, dates, and acronyms. Do not summarize. Do not omit content. Do not add commentary. Return only JSON: {"paragraphs":["..."]}. The output array must have exactly the same number of items as the input array. CRITICAL: inside the translated paragraph TEXT, use curly typographic quotes (“ and ”) — NEVER ASCII straight quotes ("). ASCII straight quotes inside the string would break JSON parsing. The only allowed straight quotes are the JSON syntax quotes that delimit each string.',
+    'You are a professional translator for an English-language policy-analysis website. Translate Singapore policy / news content from Simplified Chinese into clear, faithful English. Preserve all proper nouns (people, institutions, programmes), numbers, dates, and acronyms. Render Singapore-dollar amounts with the S$ prefix (e.g. S$1 billion, S$8,500), never as a suffix (1 billion S$) or spelled out as Singapore dollars. Do not summarize. Do not omit content. Do not add commentary. Return only JSON: {"paragraphs":["..."]}. The output array must have exactly the same number of items as the input array. CRITICAL: inside the translated paragraph TEXT, use curly typographic quotes (“ and ”) — NEVER ASCII straight quotes ("). ASCII straight quotes inside the string would break JSON parsing. The only allowed straight quotes are the JSON syntax quotes that delimit each string.',
   'zh→ja':
     'You are a professional translator for a Japanese policy-analysis website. Translate Singapore AI policy / Hansard / news content from Simplified Chinese into clear, faithful Japanese using the です・ます polite-but-professional register. Preserve all proper nouns (people, institutions, programmes), numbers, dates, and acronyms (e.g. IMDA, MAS, NRF, AISG, MDDI) in their original form. Use established Japanese AI-policy terminology where it exists; otherwise transliterate to katakana. SCRIPT PURITY (CRITICAL): output pure Japanese — every Han character MUST be a valid Japanese shinjitai kanji. NEVER emit Simplified-Chinese-only characters (e.g. 战经现观产东严门龙实发选进话说远转); write their Japanese forms (戦経現観産東厳門龍実発選進話説遠転). Transliterate Chinese proper nouns — Singapore person names, place names, programme names, phonetic renderings such as 亚历山大 / 皇后镇 / 乐龄邻里 — into katakana or a romanized Latin name; do NOT keep them as Chinese characters. Do not summarize. Do not omit content. Do not add commentary. Return only JSON: {"paragraphs":["..."]}. The output array must have exactly the same number of items as the input array. CRITICAL: inside the translated paragraph TEXT, use Japanese quotation marks 「 」 (or 『 』 for nested) — NEVER ASCII straight quotes ("). ASCII straight quotes inside the string would break JSON parsing. The only allowed straight quotes are the JSON syntax quotes that delimit each string.',
   'ja→zh':
@@ -121,6 +121,86 @@ const SYSTEM_PROMPTS: Record<TranslateDirection, string> = {
   'ko→ja':
     'You are a professional translator for a Japanese policy-analysis website. Translate Singapore-related Korean content into clear, faithful Japanese using the です・ます polite-but-professional register. Preserve all proper nouns, numbers, dates, and acronyms in their original form. Do not summarize. Do not omit content. Do not add commentary. Return only JSON: {"paragraphs":["..."]}. The output array must have exactly the same number of items as the input array. CRITICAL: inside the translated paragraph TEXT, use Japanese quotation marks 「 」 (or 『 』 for nested) — NEVER ASCII straight quotes ("). ASCII straight quotes inside the string would break JSON parsing. The only allowed straight quotes are the JSON syntax quotes that delimit each string.',
 };
+
+// ── Glossary injection (issue #85) ──────────────────────────────────────────
+// The term-fidelity source of truth is scripts/evals/translation/glossary.json
+// (also consumed by the translation eval). Injecting it into the system prompt
+// makes every pipeline's ja/ko/en output respect the same proper-noun and
+// acronym mappings the eval asserts — instead of trusting the model's memory,
+// which drifts across model upgrades (IMDA/MDDI dropped, 深度伪造 not rendered
+// as ディープフェイク, 黄循财 not as ローレンス・ウォン). A missing/malformed
+// glossary degrades gracefully to the prior prompt-only behaviour.
+//
+// The per-paragraph cache key is (direction + source) only — NOT the prompt —
+// so adding this hint deliberately does NOT invalidate existing cached
+// translations (already committed transcripts stay put); only fresh/forced
+// translations pick up the glossary. Run the eval with --force to re-verify.
+
+type GlossaryLang = 'en' | 'ja' | 'ko';
+
+interface GlossaryEntry {
+  zh: string;
+  en?: string[];
+  ja?: string[];
+  ko?: string[];
+}
+
+const GLOSSARY_PATH = join(import.meta.dirname, '..', 'evals', 'translation', 'glossary.json');
+let glossaryCache: GlossaryEntry[] | null | undefined;
+
+function loadGlossaryTerms(): GlossaryEntry[] | null {
+  if (glossaryCache !== undefined) return glossaryCache;
+  try {
+    const raw = JSON.parse(readFileSync(GLOSSARY_PATH, 'utf8')) as Record<string, unknown>;
+    const terms: GlossaryEntry[] = [];
+    for (const section of Object.values(raw)) {
+      if (!section || typeof section !== 'object') continue; // skip the _comment string
+      for (const [zh, exp] of Object.entries(section as Record<string, { en?: string[]; ja?: string[]; ko?: string[] }>)) {
+        if (!exp || typeof exp !== 'object') continue;
+        terms.push({ zh, en: exp.en, ja: exp.ja, ko: exp.ko });
+      }
+    }
+    glossaryCache = terms.length > 0 ? terms : null;
+  } catch {
+    glossaryCache = null;
+  }
+  return glossaryCache;
+}
+
+function glossaryTargetOf(direction: TranslateDirection): GlossaryLang | null {
+  const target = direction.split('→')[1];
+  return target === 'en' || target === 'ja' || target === 'ko' ? target : null;
+}
+
+/** Build a terminology block for the glossary terms that actually appear in
+ *  this batch's source text. Renders `zhTerm → canonical(ACRONYM)` so both the
+ *  localized form and its acronym land in the output, satisfying the eval's
+ *  glossary + preserveTokens assertions and keeping institution names
+ *  consistent across the site's ja/ko pages. Returns '' when nothing matches. */
+function buildGlossaryHint(sources: string[], target: GlossaryLang): string {
+  const terms = loadGlossaryTerms();
+  if (!terms) return '';
+  const haystack = sources.join('\n');
+  const [open, close] = target === 'en' ? ['(', ')'] : ['（', '）'];
+  const lines: string[] = [];
+  for (const t of terms) {
+    if (!haystack.includes(t.zh)) continue;
+    const allowed = t[target];
+    if (!allowed || allowed.length === 0) continue;
+    // First entry = canonical localized form; a trailing all-caps Latin entry
+    // (IMDA, MDDI, AIAP …) is the acronym to keep verbatim. Render both.
+    const canonical = allowed[0];
+    const acronym = allowed.slice(1).find((a) => /^[A-Z0-9.\s-]{2,}$/.test(a));
+    const rendered = acronym && !canonical.includes(acronym) ? `${canonical}${open}${acronym}${close}` : canonical;
+    lines.push(`- ${t.zh} → ${rendered}`);
+  }
+  if (lines.length === 0) return '';
+  return (
+    `TERMINOLOGY — the source contains these fixed terms. Render each EXACTLY as ` +
+    `specified below and keep any parenthesized acronym verbatim (never translate, ` +
+    `transliterate, or omit the acronym):\n${lines.join('\n')}`
+  );
+}
 
 /** Derive the sibling-field suffix to use when writing translation output
  *  to a record. e.g. 'zh→en' → 'En', 'zh→ja' → 'Ja'. zh is the bare-key
@@ -181,9 +261,15 @@ function sleep(ms: number): Promise<void> {
 
 async function callClaudeTranslate(
   paragraphs: string[],
-  options: { model: string; systemPrompt: string; signal?: AbortSignal }
+  options: { model: string; systemPrompt: string; signal?: AbortSignal; glossaryTarget?: GlossaryLang | null }
 ): Promise<string[]> {
   let lastError = '';
+
+  // Prepend a terminology block for the glossary terms present in THESE
+  // paragraphs (see buildGlossaryHint). Computed per actual LLM call so each
+  // batch only carries the terms it needs.
+  const hint = options.glossaryTarget ? buildGlossaryHint(paragraphs, options.glossaryTarget) : '';
+  const systemPrompt = hint ? `${options.systemPrompt}\n\n${hint}` : options.systemPrompt;
 
   for (let attempt = 1; attempt <= 4; attempt += 1) {
     try {
@@ -194,7 +280,7 @@ async function callClaudeTranslate(
         `Output ONLY raw JSON {"paragraphs":["..."]} with the same array length. ` +
         `Input:\n${JSON.stringify({ paragraphs })}`;
       const parsed = await callLlmJson<{ paragraphs?: unknown }>(userPrompt, {
-        systemPrompt: options.systemPrompt,
+        systemPrompt,
         model: options.model,
         signal: options.signal,
       });
@@ -219,7 +305,7 @@ async function callClaudeTranslate(
 
 async function callBatchWithFallback(
   paragraphs: string[],
-  options: { model: string; systemPrompt: string; signal?: AbortSignal }
+  options: { model: string; systemPrompt: string; signal?: AbortSignal; glossaryTarget?: GlossaryLang | null }
 ): Promise<string[]> {
   try {
     return await callClaudeTranslate(paragraphs, options);
@@ -258,6 +344,7 @@ export async function translateBatch(paragraphs: string[], options: TranslateOpt
   const batchItems = options.batchItems || DEFAULT_BATCH_ITEMS;
   const concurrency = Math.max(1, options.concurrency || DEFAULT_CONCURRENCY);
   const systemPrompt = options.systemPrompt || SYSTEM_PROMPTS[options.direction];
+  const glossaryTarget = glossaryTargetOf(options.direction);
   const cacheDir = options.cacheDir;
 
   // 1) Resolve cache hits.
@@ -301,7 +388,7 @@ export async function translateBatch(paragraphs: string[], options: TranslateOpt
       const idx = nextChunk;
       nextChunk += 1;
       const chunk = chunks[idx];
-      const translated = await callBatchWithFallback(chunk, { model, systemPrompt, signal: options.signal });
+      const translated = await callBatchWithFallback(chunk, { model, systemPrompt, signal: options.signal, glossaryTarget });
       const offset = chunkOffsets[idx];
       for (let i = 0; i < translated.length; i += 1) {
         flatResults[offset + i] = translated[i];

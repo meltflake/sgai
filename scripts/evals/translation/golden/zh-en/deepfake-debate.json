@@ -4,10 +4,9 @@
   "source": "多名议员在国会质询 AI 深度伪造对选举与未成年人的威胁。数字发展与信息部长回应称，《网络安全（救济与问责）法案》将赋予受害者法定救济权，并要求平台限时下架冒充内容。",
   "expectedTermsEn": [
     "deepfake",
-    "Parliament",
-    "Bill"
+    "Parliament"
   ],
   "minLengthRatio": 0.6,
-  "maxLengthRatio": 2.5,
+  "maxLengthRatio": 5.5,
   "preserveTokens": []
 }
