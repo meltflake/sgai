@@ -24,6 +24,13 @@ export interface Topic {
   descriptionEn: string;
   descriptionJa: string;
   descriptionKo?: string;
+  /** Optional multi-paragraph editorial intro (paragraphs split on blank
+   *  lines). Rendered on the hub under the H1 for keyword depth + context.
+   *  When present, all four language siblings are required (i18n-pair). */
+  intro?: string;
+  introEn?: string;
+  introJa?: string;
+  introKo?: string;
   icon: string; // tabler:* icon name
 }
 
@@ -98,6 +105,14 @@ export const topics: Topic[] = [
     descriptionJa:
       'OCHA、選挙の公正性に関する立法、プラットフォームガバナンス——生成 AI コンテンツリスクへの立法と執行。',
     descriptionKo: 'OCHA, 선거 공정성 입법과 플랫폼 거버넌스 — 생성형 AI 콘텐츠 위험에 대한 입법과 집행.',
+    intro:
+      '新加坡对深度伪造(deepfake)与 AI 生成虚假信息的治理,走的是「先备齐立法工具箱、再筑全民信息韧性」的双轨路线。2024 年《选举(网络广告诚信)法》禁止在竞选期间发布伪造候选人的深伪内容;《网络犯罪危害法》(OCHA)、FICA、POFMA、《维护种族和谐法》构成一套可对不同威胁快速出手的立法杠杆。\n\n本主题汇集国会对深伪与虚假信息的每一次辩论、相关政策文件,以及部长在国会内外的表态——从选举安全到外国干预、从平台限时下架义务到公众媒介素养。你可以顺着时间线看到:议员们如何质询、政府如何回应、这套框架如何一步步演化。',
+    introEn:
+      'Singapore governs deepfakes and AI-generated disinformation on two tracks: build the legislative toolbox first, then population-wide information resilience. The Elections (Integrity of Online Advertising) Act 2024 bans deepfake content depicting candidates during an election; the Online Criminal Harms Act (OCHA), FICA, POFMA and the Maintenance of Racial Harmony Act form a set of levers the government can pull quickly against different threats.\n\nThis hub gathers every parliamentary debate on deepfakes and disinformation, the related policy documents, and ministers’ statements inside and outside the House — from election security to foreign interference, from platform takedown duties to public media literacy. You can trace how MPs press, how the government responds, and how the framework has evolved step by step.',
+    introJa:
+      'シンガポールはディープフェイクと AI 生成の偽情報を二つの軸で統治している——まず立法の道具箱を整え、次に国民全体の情報強靭性を築く。2024 年の選挙(オンライン広告の公正性)法は選挙期間中に候補者を描くディープフェイクを禁じ、オンライン犯罪危害法(OCHA)、FICA、POFMA、種族調和維持法が、異なる脅威に素早く対処できる立法上のレバーを構成する。\n\n本テーマはディープフェイクと偽情報に関する国会討論のすべて、関連する政策文書、そして議場内外での大臣の発言を集約する——選挙の安全から外国干渉まで、プラットフォームの期限付き削除義務から国民のメディアリテラシーまで。議員がどう追及し、政府がどう応じ、この枠組みがどのように段階的に進化してきたかを追える。',
+    introKo:
+      '싱가포르는 딥페이크와 AI 생성 허위정보를 두 축으로 다스린다 — 먼저 입법 도구함을 갖추고, 다음으로 국민 전체의 정보 회복력을 쌓는다. 2024년 선거(온라인 광고 공정성)법은 선거 기간 중 후보자를 묘사하는 딥페이크를 금지하며, 온라인범죄피해법(OCHA), FICA, POFMA, 종족화합유지법이 서로 다른 위협에 신속히 대응할 수 있는 입법 레버를 구성한다.\n\n이 주제는 딥페이크와 허위정보에 관한 모든 국회 토론, 관련 정책 문서, 그리고 의사당 안팎에서의 장관 발언을 집약한다 — 선거 안보부터 외국 간섭까지, 플랫폼의 기한부 삭제 의무부터 국민 미디어 리터러시까지. 의원들이 어떻게 추궁하고 정부가 어떻게 응답하며 이 틀이 어떻게 단계적으로 진화해왔는지 추적할 수 있다.',
     icon: 'tabler:mask',
   },
   {
