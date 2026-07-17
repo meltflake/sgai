@@ -2438,7 +2438,9 @@ export const people: Person[] = [
         roleKo: 'PDPC 데이터 보호 위원',
         roleJa: 'PDPC データ保護委員',
         roleEn: 'Commissioner, PDPC',
-        organization: 'Personal Data Protection Commission',
+        organization: '个人数据保护委员会',
+        organizationJa: '個人データ保護委員会',
+        organizationKo: '개인정보보호위원회',
         organizationEn: 'Personal Data Protection Commission',
         since: '2025-11',
         sourceUrl:
