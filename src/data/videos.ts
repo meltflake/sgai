@@ -138,6 +138,35 @@ export function pickSpeakerTypeLabels(lang: string): Record<string, string> {
 
 export const videos: VideoItem[] = [
   {
+    id: 'v074',
+    title: 'AI虚假主播在TikTok散布关于新加坡的误导信息',
+    titleEn: "The AI 'news anchors' spreading misleading claims about Singapore on TikTok",
+    titleJa: 'AI生成の虚偽配信者がTikTok上でシンガポールに関する誤導情報を拡散しています。',
+    titleKo: 'AI 생성 가짜 호스트가 TikTok에서 싱가포르에 관한 오도 정보를 유포하고 있습니다.',
+    speaker: 'CNA',
+    speakerTitle: '亚洲新闻台报道',
+    speakerTitleEn: 'CNA report',
+    speakerTitleJa: 'アジアニュース放送による報道',
+    speakerTitleKo: '아시아 뉴스 채널 보도',
+    speakerType: 'industry',
+    date: '2026-07-17',
+    duration: '02:17',
+    summary: 'CNA调查发现550多个TikTok视频使用AI生成虚假女性形象传播关于新加坡和马来西亚的虚假或误导信息。',
+    summaryEn:
+      "CNA's investigation uncovered over 550 TikTok videos using AI-generated female personas, with nearly 9 in 10 spreading false or misleading claims about Singapore and Malaysia.",
+    summaryJa:
+      'CNAの調査により、550以上のTikTok動画がAIで生成された虚偽の女性像を使用してシンガポールおよびマレーシアに関する虚偽または誤導情報を拡散していることが判明しました。',
+    summaryKo:
+      'CNA 조사에 따르면 550개 이상의 TikTok 동영상이 AI 생성 가짜 여성 이미지를 사용하여 싱가포르와 말레이시아에 관한 거짓 또는 오도 정보를 퍼뜨리고 있습니다.',
+    topic: 'AI 治理与监管',
+    topicEn: 'AI Governance & Regulation',
+    topicJa: 'AI ガバナンスと規制',
+    topicKo: 'AI 거버넌스와 규제',
+    youtubeUrl: 'https://www.youtube.com/watch?v=x3zh_TenNa4',
+    channel: 'CNA',
+    addedAt: '2026-07-17',
+  },
+  {
     id: 'v073',
     title: '新加坡用本地数据训练 AI 医疗模型',
     titleEn: 'Singapore to train AI models using local clinical data, medical guidelines',
