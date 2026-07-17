@@ -520,6 +520,7 @@ def scan_channels(
 
             # 国际频道需要二次过滤新加坡相关性
             if ch_key not in LOCAL_CHANNELS:
+                text = f"{parsed['title']} {parsed['description']}"
                 if not matches_keywords(text, SG_KEYWORDS):
                     continue
 

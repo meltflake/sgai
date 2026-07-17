@@ -11565,6 +11565,36 @@ export const videoTranscripts: Record<string, VideoTranscript> = {
     translationSource: 'claude',
     translationModel: 'haiku',
   },
+  v074: {
+    videoId: 'v074',
+    youtubeId: 'x3zh_TenNa4',
+    captionLanguage: 'en',
+    fetchedAt: '2026-07-17',
+    source: 'youtube-subtitles',
+    paragraphs: [
+      '他们看起来像播报员，听起来很有权威性，他们自信地谈论新加坡和马来西亚。但关键是，其中许多人实际上并不存在。在过去9个月里，CNA的一项调查发现了超过550个TikTok视频，这些视频使用了AI生成的、被篡改的或复制的女性人物。其中近九成推送虚假和误导性的说法。在更多离谱的说法中，有一个视频错误地声称新加坡外交部长维文·巴拉克里什南曾支持中国和印度尼西亚不让新的航运路线绕过新加坡港口。这从未发生过。问题是，这些视频看起来不像宣传。它们更像是普通的地缘政治或金融评论，这使得它们更难被识别。这些视频总共获得了超过300万次观看。',
+      '许多视频以真实新闻开始，然后歪曲事实，最后得出误导性的结论。[音乐] 一个视频声称新加坡港口因为一个新的中国航运枢纽而面临崩溃。另一个视频用埃克森美孚工厂关闭作为新加坡衰退的所谓证据。这些说法都不符合现实。CNA还发现相同的脚本被不同的播报员重复使用。有时不同的账户使用完全相同的声音。有时，同一张面孔配着不同的声音出现。结果是什么？看起来像是独立创作者得出相同的结论，但实际上他们似乎是同一条内容生产线的一部分。专家表示，这正是关键所在。这个活动不一定要完全说服人们。它只需要让某些叙述看起来很熟悉。',
+      '专家警告，像这样重复的叙述会随着时间推移侵蚀信任并加深分歧。专家还表示，识别虚假面孔或AI故障变得越来越难。相反，你应该注意这个套路。不同账户重复相同的论点，未在其他地方报道的声称，以及用重复代替证据。因为虽然面孔会改变，但策略通常不会。',
+    ],
+    paragraphsEn: [
+      "They look like presenters, they sound authoritative, and they speak confidently about Singapore and Malaysia. But here's the catch. Many of them don't actually exist. Over the past 9 months, a CNA investigation has uncovered more than 550 TikTok videos built using AI-generated, manipulated, or copied female personas. Almost nine in 10 of them push false and misleading claims. Among the more outrageous claims, one video falsely claims Singapore's Foreign Minister Vivian Balakrishnan had backed China and Indonesia not to let a new shipping route bypass Singapore's port. It never happened. The thing is, these videos don't look like propaganda. They look more like ordinary geopolitical or financial commentary, and that makes them harder to spot. Together, the videos racked up more than 3 million views.",
+      "Many start with real news before distorting facts and ending in a misleading conclusion. [music] One claims Singapore's port was on the verge of collapse because of a new Chinese shipping hub. Another used ExxonMobil's plant closure as supposed proof that Singapore is in decline. Neither claims reflect reality. CNA also found the same scripts being repeated by different presenters. Sometimes different accounts use the exact same voice. Other times, the same face appeared with different voices. The result? It looked like independent creators reaching the same conclusions when they instead appeared to be part of the same content production line. Experts say that's exactly the point. The campaign doesn't have to convince people all right. It just has to make certain narratives feel familiar.",
+      "Experts warn repeated narratives like these can erode trust and deepen divisions over time. Experts also say spotting fake faces or AI glitches is becoming harder. Instead, you should watch for the playbook. Different accounts repeating the same talking points, claims that aren't reported anywhere else, and repetition replacing evidence. Because while the faces may change, the tactics often don't.",
+    ],
+    paragraphsKo: [
+      '그들은 뉴스 앵커처럼 보이고, 매우 권위 있게 들리며, 싱가포르와 말레이시아에 대해 자신감 있게 이야기합니다. 하지만 중요한 점은, 이들 중 많은 사람들이 실제로는 존재하지 않는다는 것입니다. 지난 9개월 동안 CNA의 한 조사에서 550개가 넘는 TikTok 영상을 발견했습니다. 이들 영상은 AI가 생성하거나, 조작되거나, 복제한 여성 인물을 사용했습니다. 이 중 약 90%가 거짓 및 오도적인 주장을 전파했습니다. 더욱 황당한 주장들 중에는 싱가포르 외교부 장관 비비안 발라크리슈난이 중국과 인도네시아가 새로운 해운 항로가 싱가포르 항구를 우회하지 않도록 하는 것을 지지했다고 거짓 주장한 영상이 있습니다. 이는 절대 일어나지 않았습니다. 문제는 이런 영상들이 홍보처럼 보이지 않는다는 것입니다. 더 일반적인 지정학적 또는 금융 평론처럼 보이며, 이는 식별하기를 더 어렵게 만듭니다. 이들 영상은 총 300만 회 이상의 조회를 기록했습니다.',
+      '많은 영상들이 실제 뉴스로 시작한 다음, 사실을 왜곡하고, 마지막으로 오도적인 결론에 도달합니다. [음악] 한 영상은 싱가포르 항구가 새로운 중국 해운 허브 때문에 붕괴 위기에 처해 있다고 주장합니다. 또 다른 영상은 ExxonMobil 공장 폐쇄를 싱가포르 쇠퇴의 소위 증거로 제시합니다. 이런 주장들은 모두 현실과 맞지 않습니다. CNA는 또한 동일한 대본이 다른 앵커들에 의해 반복해서 사용되는 것을 발견했습니다. 때때로 다른 계정들이 정확히 동일한 목소리를 사용합니다. 때때로, 같은 얼굴이 다른 목소리로 나타납니다. 결과는 무엇입니까? 독립 창작자들이 같은 결론에 도달한 것처럼 보이지만, 사실상 그들은 동일한 콘텐츠 생산 라인의 일부인 것 같습니다. 전문가들은 이것이 바로 핵심이라고 말합니다. 이 활동이 사람들을 완전히 설득할 필요는 없습니다. 단지 특정 이야기를 친숙해 보이게 할 필요만 있습니다.',
+      '전문가들은 이런 반복적인 이야기가 시간이 지남에 따라 신뢰를 침식하고 분열을 심화할 것이라고 경고합니다. 전문가들은 또한 거짓 얼굴이나 AI 오류를 식별하기가 점점 더 어려워지고 있다고 말합니다. 반대로, 당신이 주목해야 할 것은 이 패턴입니다. 다른 계정들이 동일한 주장을 반복하고, 다른 곳에서 보도되지 않은 주장들, 그리고 증거 대신 반복을 사용합니다. 왜냐하면 비록 얼굴은 바뀌지만, 전략은 보통 바뀌지 않기 때문입니다.',
+    ],
+    paragraphsJa: [
+      '彼らはニュースキャスターのように見え、非常に権威的に聞こえ、シンガポールとマレーシアについて自信を持って論じています。しかし重要なのは、これらの人物の多くが実は存在しないということです。過去9か月間で、CNAの調査により、550本を超えるTikTok動画が発見されました。これらの動画には、AI生成、改ざん、または複製された女性の人物が使用されていました。そのうちのほぼ90%が虚偽および誤導的な主張を拡散しています。より奇想天外な主張の中には、シンガポール外相ビヴィアン・バラクリシナンが中国とインドネシアをサポートして、新しい航運路線がシンガポール港を迂回しないようにしたという誤った主張をする動画があります。これは一度も起こっていません。問題は、これらの動画がプロパガンダのようには見えないということです。むしろ通常の地政学的または金融に関するコメンテーションのように見え、より識別しにくくなっています。これらの動画は合計で300万回以上の再生数を獲得しています。',
+      '多くの動画は真のニュースから始まり、その後に事実を歪めて、最後に誤導的な結論に達しています。【音楽】 一つの動画は、シンガポール港が新しい中国の海運ハブのために崩壊の危機に直面していると主張しています。別の動画は、エクソンモービルの工場閉鎖をシンガポールの衰退の所謂証拠として使用しています。これらの主張は現実と符合していません。CNAはまた、同一のスクリプトが異なるナレーターによって繰り返し使用されていることを発見しました。時には異なるアカウントが全く同じ声を使用しています。時には、同じ顔が異なる声で登場します。その結果は何でしょうか。独立系クリエイターが同じ結論に達したように見えますが、実際には彼らは同じコンテンツ製造ラインの一部のようです。専門家は、これが要点だと述べています。このキャンペーンは必ずしも人々を完全に納得させる必要はありません。それは単に特定の叙述が非常に身近に見えるようにするだけで十分です。',
+      '専門家は、このような繰り返される叙述が時間とともに信頼を蝕き、分裂を深めると警告しています。専門家はまた、偽りの顔やAIの欠陥を識別することがますます困難になっていると述べています。代わりに、このパターンに注意すべきです。異なるアカウントが同じ議論を繰り返し、他の場所では報道されていない主張、および証拠の代わりに反復を使用しています。なぜなら、顔は変わるかもしれませんが、戦略は通常変わらないからです。',
+    ],
+    translatedAt: '2026-07-17',
+    translationSource: 'claude',
+    translationModel: 'haiku',
+  },
 };
 
 export function getVideoTranscript(videoId: string): VideoTranscript | undefined {

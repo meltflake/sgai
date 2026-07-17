@@ -113,6 +113,29 @@ CASES = [
 ]
 
 
+def _smoke_scan_channels_source() -> list[str]:
+    """Static end-to-end guard for scan_channels' filter block.
+
+    2026-07-17 regression: the is_ai_video() refactor deleted the local
+    `text` variable that the SG-keyword filter below still referenced —
+    unit tests on is_ai_video passed while scan_channels itself crashed
+    with NameError on the first non-local-channel video (the daily cron
+    entrypoint). compile() alone can't catch a runtime NameError, so
+    assert the invariant directly: within scan_channels' source, every
+    `matches_keywords(text, ...)` use must come after a `text = ` binding.
+    """
+    import inspect
+
+    errors = []
+    src = inspect.getsource(scan.scan_channels)
+    for lineno, line in enumerate(src.splitlines(), 1):
+        if "matches_keywords(text" in line:
+            preceding = "\n".join(src.splitlines()[: lineno - 1])
+            if "text = " not in preceding:
+                errors.append(f"scan_channels line {lineno}: `matches_keywords(text, ...)` before any `text =` binding")
+    return errors
+
+
 def main() -> int:
     failures = []
     for title, desc, ch, expected, why in CASES:
@@ -122,13 +145,20 @@ def main() -> int:
             failures.append((title, expected, got, why))
         print(f"  [{status}] want={expected!s:5} got={got!s:5}  {why}  :: {title[:48]!r}")
 
+    smoke = _smoke_scan_channels_source()
+    for e in smoke:
+        print(f"  [FAIL] smoke: {e}")
+        failures.append((e, "no unbound text", "unbound", "scan_channels smoke"))
+    if not smoke:
+        print("  [ok] smoke: scan_channels has no unbound `text` reference")
+
     print()
     if failures:
         print(f"{len(failures)} FAILED:")
         for title, exp, got, why in failures:
             print(f"  - {title!r}: expected {exp}, got {got} ({why})")
         return 1
-    print(f"All {len(CASES)} cases passed.")
+    print(f"All {len(CASES)} keyword cases + smoke passed.")
     return 0
 
 
