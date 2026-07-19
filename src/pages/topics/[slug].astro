@@ -7,6 +7,7 @@ import Layout from '~/layouts/PageLayout.astro';
 import JsonLd from '~/components/common/JsonLd.astro';
 import TopicHub from '~/components/topics/TopicHub.astro';
 import { topics, type Topic } from '~/data/topics';
+import { entriesByTopic } from '~/utils/topic-graph';
 import { t, pickLocalized, IN_LANGUAGES } from '~/i18n';
 
 export const getStaticPaths = (() =>
@@ -21,8 +22,12 @@ const lang = 'en' as const;
 const name = pickLocalized<string>(topic, 'name', lang) ?? topic.nameEn;
 const description = pickLocalized<string>(topic, 'description', lang) ?? topic.descriptionEn;
 
+const entries = entriesByTopic(topic.id);
+const url = `https://sgai.md/topics/${topic.id}/`;
+
 const metadata = {
-  title: `${name} · ${t(lang, 'fpBrowseByTopic')}`,
+  // Compact geo+domain anchor so the hub targets "<topic> Singapore AI".
+  title: `${name} — Singapore AI`,
   description,
 };
 
@@ -31,8 +36,23 @@ const collectionSchema = {
   '@type': 'CollectionPage',
   name,
   description,
-  url: `https://sgai.md/topics/${topic.id}/`,
+  url,
   inLanguage: IN_LANGUAGES[lang],
+};
+
+// Enumerate the aggregated entries so search engines see this hub as a
+// concrete, exhaustive list of records (not just a landing page).
+const itemListSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name,
+  numberOfItems: entries.length,
+  itemListElement: entries.slice(0, 100).map((e, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    url: `https://sgai.md${e.href}`,
+    name: pickLocalized<string>(e, 'title', lang) || e.title,
+  })),
 };
 ---
 
@@ -42,5 +62,6 @@ const collectionSchema = {
   lang={lang}
 >
   <JsonLd schema={collectionSchema} />
+  {entries.length > 0 && <JsonLd schema={itemListSchema} />}
   <TopicHub lang={lang} topic={topic} />
 </Layout>

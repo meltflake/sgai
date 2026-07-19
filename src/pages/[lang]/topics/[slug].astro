@@ -7,6 +7,7 @@ import Layout from '~/layouts/PageLayout.astro';
 import JsonLd from '~/components/common/JsonLd.astro';
 import TopicHub from '~/components/topics/TopicHub.astro';
 import { topics, type Topic } from '~/data/topics';
+import { entriesByTopic } from '~/utils/topic-graph';
 import { NON_DEFAULT_ROUTE_LOCALES, t, pickLocalized, localizedHref, IN_LANGUAGES, type Lang } from '~/i18n';
 
 export const getStaticPaths = (() =>
@@ -23,18 +24,48 @@ const lang = Astro.params.lang as Lang;
 const name = pickLocalized<string>(topic, 'name', lang) ?? topic.name;
 const description = pickLocalized<string>(topic, 'description', lang) ?? topic.description;
 
+// Compact geo+domain anchor appended to every hub title so the page targets
+// "<topic> Singapore AI" queries, not a bare topic label. Kept short to stay
+// under the 72-unit check:meta budget for the longest topic names.
+const GEO_ANCHOR: Record<Lang, string> = {
+  zh: '新加坡 AI',
+  'zh-tw': '新加坡 AI',
+  en: 'Singapore AI',
+  ja: 'シンガポールAI',
+  ko: '싱가포르 AI',
+};
+
+const entries = entriesByTopic(topic.id);
+
 const metadata = {
-  title: `${name} · ${t(lang, 'fpBrowseByTopic')}`,
+  title: `${name} — ${GEO_ANCHOR[lang]}`,
   description,
 };
+
+const url = `https://sgai.md${localizedHref(`/topics/${topic.id}/`, lang)}`;
 
 const collectionSchema = {
   '@context': 'https://schema.org',
   '@type': 'CollectionPage',
   name,
   description,
-  url: `https://sgai.md${localizedHref(`/topics/${topic.id}/`, lang)}`,
+  url,
   inLanguage: IN_LANGUAGES[lang],
+};
+
+// Enumerate the aggregated entries so search engines see this hub as a
+// concrete, exhaustive list of records (not just a landing page).
+const itemListSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name,
+  numberOfItems: entries.length,
+  itemListElement: entries.slice(0, 100).map((e, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    url: `https://sgai.md${localizedHref(e.href, lang)}`,
+    name: pickLocalized<string>(e, 'title', lang) || e.title,
+  })),
 };
 ---
 
@@ -44,5 +75,6 @@ const collectionSchema = {
   lang={lang}
 >
   <JsonLd schema={collectionSchema} />
+  {entries.length > 0 && <JsonLd schema={itemListSchema} />}
   <TopicHub lang={lang} topic={topic} />
 </Layout>
