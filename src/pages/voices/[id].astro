@@ -9,6 +9,10 @@ import ParliamentaryRecord from '~/components/widgets/ParliamentaryRecord.astro'
 import PersonContributions from '~/components/widgets/PersonContributions.astro';
 import { allPeople, type Person } from '~/data/people';
 import { videos } from '~/data/videos';
+import { mddiSpeeches } from '~/data/voices';
+import { speechId } from '~/data/speech-transcripts';
+import { getTopicById } from '~/data/topics';
+import { findPersonId } from '~/utils/people';
 import { getRelated, getPersonCounts } from '~/utils/graph';
 import { buildParliamentarySummary } from '~/utils/parliamentary-record';
 import { isLowSignalPerson } from '~/utils/quality';
@@ -42,6 +46,10 @@ const isStub = !summary || summary === 'Profile pending.' || summary.startsWith(
 // unique, query-matching summary instead of a shared content fingerprint.
 const parlSummary = isStub ? buildParliamentarySummary(person, lang) : null;
 const bioLine = (isStub && parlSummary ? parlSummary : summary) || '';
+
+// Editorial "About" bio paragraphs (blank-line split). Only high-search-value
+// figures carry a bio; falls back cleanly to nothing.
+const bioParas = (pickLocalized<string>(person, 'bio', lang) || '').split(/\n{2,}/).filter(Boolean);
 
 const categoryLabels: Record<Person['category'], string> = {
   government: 'Government',
@@ -90,6 +98,17 @@ const metadata = {
   robots: { index: !isLowSignal, follow: true },
 };
 
+// MDDI speeches by this person, matched from the raw speaker string via
+// findPersonId (same resolver as Hansard speakers).
+const personSpeeches = mddiSpeeches
+  .filter((s) => findPersonId(s.speaker) === person.id)
+  .sort((a, b) => (a.date < b.date ? 1 : -1));
+
+const knowsAboutNames = (person.topicIds || [])
+  .map((tid) => getTopicById(tid))
+  .filter((topic): topic is NonNullable<typeof topic> => Boolean(topic))
+  .map((topic) => topic.nameEn);
+
 const personSchema = {
   '@context': 'https://schema.org',
   '@type': 'Person',
@@ -97,6 +116,7 @@ const personSchema = {
   jobTitle: person.titleEn || person.title,
   description: bioLine,
   affiliation: person.affiliations.map((name) => ({ '@type': 'Organization', name })),
+  ...(knowsAboutNames.length > 0 ? { knowsAbout: knowsAboutNames } : {}),
   sameAs: person.channels.map((ch) => ch.url),
 };
 ---
@@ -155,6 +175,19 @@ const personSchema = {
             Profile pending. This page currently summarises parliamentary appearances and policy links from existing
             records.
           </p>
+        </section>
+      )
+    }
+
+    {
+      bioParas.length > 0 && (
+        <section class="mb-10">
+          <h2 class="t-h3 text-gray-800 dark:text-white mb-4">About</h2>
+          <div class="space-y-3 text-gray-700 dark:text-gray-300 leading-relaxed">
+            {bioParas.map((para) => (
+              <p>{para}</p>
+            ))}
+          </div>
         </section>
       )
     }
@@ -225,6 +258,27 @@ const personSchema = {
                   {video.date} · {video.duration} · {video.channel}
                 </p>
                 <p class="text-xs text-gray-600 dark:text-gray-400 mt-2">{video.summaryEn || video.summary}</p>
+              </a>
+            ))}
+          </div>
+        </section>
+      )
+    }
+
+    {
+      personSpeeches.length > 0 && (
+        <section class="mb-10">
+          <h2 class="t-h3 text-gray-800 dark:text-white mb-4">Speeches ({personSpeeches.length})</h2>
+          <div class="grid gap-3">
+            {personSpeeches.map((s) => (
+              <a
+                href={`/speeches/${speechId(s)}/`}
+                class="block bg-surface rounded-lg p-4 border border-subtle hover:border-primary/40 hover:shadow-sm transition-all"
+              >
+                <h3 class="font-semibold text-gray-800 dark:text-white text-sm">{s.titleEn}</h3>
+                <p class="text-xs text-gray-500 mt-0.5">
+                  {s.date} · {s.eventEn}
+                </p>
               </a>
             ))}
           </div>

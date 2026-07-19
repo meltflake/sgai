@@ -11,13 +11,16 @@ import ParliamentaryRecord from '~/components/widgets/ParliamentaryRecord.astro'
 import PersonContributions from '~/components/widgets/PersonContributions.astro';
 import { allPeople, type Person } from '~/data/people';
 import { videos } from '~/data/videos';
+import { mddiSpeeches } from '~/data/voices';
+import { speechId } from '~/data/speech-transcripts';
+import { getTopicById } from '~/data/topics';
 import { getRelated, getPersonCounts } from '~/utils/graph';
 import { buildParliamentarySummary } from '~/utils/parliamentary-record';
 import { isLowSignalPerson } from '~/utils/quality';
 import { NON_DEFAULT_ROUTE_LOCALES, channelLabel, pickLocalized, localizedHref, t, type Lang } from '~/i18n';
 import { toTraditional } from '~/i18n/opencc';
 import { synthesizeMetaDescription } from '~/utils/seo-meta';
-import { personDisplayName } from '~/utils/people';
+import { personDisplayName, findPersonId } from '~/utils/people';
 
 export const prerender = true;
 
@@ -56,6 +59,21 @@ const isStub =
 // derived inside the builder via OpenCC (rule #10).
 const parlSummary = isStub ? buildParliamentarySummary(person, lang) : null;
 const bioLine = (isStub && parlSummary ? parlSummary : summary) || '';
+
+// Editorial "About" bio (paragraphs split on blank lines). Computed here so
+// the template avoids a pickLocalized<string>() generic that Astro/JSX would
+// misparse as a <string> tag. Only high-search-value figures carry a bio.
+const bioParas = (pickLocalized<string>(person, 'bio', lang) || '').split(/\n{2,}/).filter(Boolean);
+const aboutHeading =
+  lang === 'ja'
+    ? '概要'
+    : lang === 'ko'
+      ? '소개'
+      : lang === 'zh'
+        ? '关于'
+        : lang === 'zh-tw'
+          ? toTraditional('关于')
+          : 'About';
 // zh/zh-tw use personDisplayName(id) for the curated bilingual name +
 // honorific (with its own nameEn fallback baked in); zh-tw runs it through
 // toTraditional per CLAUDE.md rule #10. Other locales prefer pickLocalized
@@ -170,6 +188,31 @@ const metadata = {
 // Both zh and zh-tw display the CJK name as primary, so both benefit from
 // the Latin name as an alternateName (helps schema.org entity resolution).
 const isCjkPrimary = lang === 'zh' || lang === 'zh-tw';
+// MDDI speeches by this person — matched from the raw speaker string via
+// findPersonId (the same resolver used for Hansard speakers). Previously a
+// minister's own ministry speeches never appeared on their profile.
+const personSpeeches = mddiSpeeches
+  .filter((s) => findPersonId(s.speaker) === person.id)
+  .sort((a, b) => (a.date < b.date ? 1 : -1));
+
+// Topics this person is associated with — powers Person.knowsAbout and reads
+// as "what they work on" for search engines.
+const knowsAboutNames = (person.topicIds || [])
+  .map((tid) => getTopicById(tid))
+  .filter((topic): topic is NonNullable<typeof topic> => Boolean(topic))
+  .map((topic) => pickLocalized<string>(topic, 'name', lang) || topic.nameEn);
+
+const speechesHeading =
+  lang === 'ja'
+    ? `演説・講演 ${personSpeeches.length} 件`
+    : lang === 'ko'
+      ? `연설·강연 ${personSpeeches.length}건`
+      : lang === 'zh'
+        ? `演讲与致辞 ${personSpeeches.length} 篇`
+        : lang === 'zh-tw'
+          ? zhTw(`演讲与致辞 ${personSpeeches.length} 篇`)
+          : `${personSpeeches.length} speech${personSpeeches.length === 1 ? '' : 'es'}`;
+
 const personSchema = {
   '@context': 'https://schema.org',
   '@type': 'Person',
@@ -178,6 +221,7 @@ const personSchema = {
   jobTitle: pickLocalized(person, 'title', lang) || person.titleEn || person.title,
   description: bioLine,
   affiliation: person.affiliations.map((name) => ({ '@type': 'Organization', name })),
+  ...(knowsAboutNames.length > 0 ? { knowsAbout: knowsAboutNames } : {}),
   sameAs: person.channels.map((ch) => ch.url),
 };
 ---
@@ -234,6 +278,19 @@ const personSchema = {
       isStub && !parlSummary && (
         <section class="callout-muted p-4 rounded-lg mb-8 text-sm">
           <p class="text-amber-900 dark:text-amber-200">{t(lang, 'profilePending')}</p>
+        </section>
+      )
+    }
+
+    {
+      bioParas.length > 0 && (
+        <section class="mb-10">
+          <h2 class="t-h3 text-gray-800 dark:text-white mb-4">{aboutHeading}</h2>
+          <div class="space-y-3 text-gray-700 dark:text-gray-300 leading-relaxed">
+            {bioParas.map((para) => (
+              <p>{para}</p>
+            ))}
+          </div>
         </section>
       )
     }
@@ -312,6 +369,29 @@ const personSchema = {
                   {video.date} · {video.duration} · {video.channel}
                 </p>
                 <p class="text-xs text-gray-600 dark:text-gray-400 mt-2">{pickLocalized(video, 'summary', lang)}</p>
+              </a>
+            ))}
+          </div>
+        </section>
+      )
+    }
+
+    {
+      personSpeeches.length > 0 && (
+        <section class="mb-10">
+          <h2 class="t-h3 text-gray-800 dark:text-white mb-4">{speechesHeading}</h2>
+          <div class="grid gap-3">
+            {personSpeeches.map((s) => (
+              <a
+                href={localizedHref(`/speeches/${speechId(s)}/`, lang)}
+                class="block bg-surface rounded-lg p-4 border border-subtle hover:border-primary/40 hover:shadow-sm transition-all"
+              >
+                <h3 class="font-semibold text-gray-800 dark:text-white text-sm">
+                  {pickLocalized(s, 'title', lang) || s.titleEn}
+                </h3>
+                <p class="text-xs text-gray-500 mt-0.5">
+                  {s.date} · {pickLocalized(s, 'event', lang) || s.eventEn}
+                </p>
               </a>
             ))}
           </div>

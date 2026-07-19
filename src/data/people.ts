@@ -152,6 +152,14 @@ export interface Person {
   summaryEn?: string;
   summaryJa?: string;
   summaryKo?: string;
+  /** Optional multi-paragraph editorial bio (paragraphs split on blank
+   *  lines), rendered in an "About" section on the profile below the
+   *  one-line positioning. Reserved for high-search-value figures; when
+   *  present, all four language siblings are required (i18n-pair). */
+  bio?: string;
+  bioEn?: string;
+  bioJa?: string;
+  bioKo?: string;
   channels: SocialChannel[];
   // Curated extensions — populated for high-signal voices via
   // scripts/voices-prospect.mjs (proposes) + manual review (commits).
@@ -175,6 +183,13 @@ export interface Person {
 export const people: Person[] = [
   {
     id: 'josephine-teo',
+    bio: '杨莉明(Josephine Teo)是新加坡数码发展与信息部(MDDI)部长,也是新加坡 AI 政策对外最主要的面孔。她主导《国家人工智能战略》(NAIS)的更新与落地,2026 年 5 月在 ATxSummit 上公布四项 National AI Missions,并推动 AI 治理框架、AI Verify、数据中心与信任技术等一系列政策。\n\n在国会,她多次就 AI 战略、生成式 AI 治理、深伪与就业冲击等议题答复质询。本页汇集她的国会发言、MDDI 演讲、主导政策与公开视频,勾勒出她如何把新加坡的 AI 蓝图从愿景一步步推向执行。',
+    bioEn:
+      'Josephine Teo is Singapore’s Minister for Digital Development and Information (MDDI) and the most public face of the country’s AI policy. She leads the update and delivery of the National AI Strategy (NAIS), unveiled the four National AI Missions at ATxSummit in May 2026, and drives a run of policy from AI governance frameworks and AI Verify to data centres and trust technologies.\n\nIn Parliament she has fielded questions on AI strategy, generative-AI governance, deepfakes and the employment impact of AI. This page brings together her parliamentary speeches, MDDI addresses, the policies she leads and her public video record — a picture of how she moves Singapore’s AI blueprint from vision to execution.',
+    bioJa:
+      'ジョセフィン・テオ(楊莉明)はシンガポールのデジタル発展・情報省(MDDI)大臣であり、同国の AI 政策を対外的に最も体現する人物である。《国家人工知能戦略》(NAIS)の更新と実行を主導し、2026 年 5 月の ATxSummit で四つの National AI Missions を公表、AI ガバナンス枠組みや AI Verify からデータセンター、信頼技術まで一連の政策を推進する。\n\n国会では AI 戦略、生成 AI ガバナンス、ディープフェイク、雇用への影響について繰り返し答弁してきた。本ページは彼女の国会答弁、MDDI での演説、主導する政策、公開動画を集約し、シンガポールの AI 構想をビジョンから実行へどう動かすかを描き出す。',
+    bioKo:
+      '조세핀 테오(양리밍)는 싱가포르 디지털발전정보부(MDDI) 장관이자 이 나라 AI 정책의 가장 대표적인 얼굴이다. 《국가인공지능전략》(NAIS)의 갱신과 실행을 주도하고, 2026년 5월 ATxSummit에서 네 개의 National AI Missions를 공개했으며, AI 거버넌스 프레임워크와 AI Verify부터 데이터센터, 신뢰 기술까지 일련의 정책을 추진한다.\n\n국회에서는 AI 전략, 생성형 AI 거버넌스, 딥페이크, 고용 영향에 대해 거듭 답변해 왔다. 이 페이지는 그의 국회 발언, MDDI 연설, 주도하는 정책, 공개 영상을 집약해 싱가포르의 AI 청사진을 비전에서 실행으로 어떻게 옮기는지 그려낸다.',
     topicIds: ['national-strategy', 'governance-regulation'],
     nameEn: 'Josephine Teo',
     name: '杨莉明',
@@ -266,6 +281,13 @@ export const people: Person[] = [
   },
   {
     id: 'lawrence-wong',
+    bio: '黄循财(Lawrence Wong)是新加坡总理兼财政部长。AI 于他而言首先是国家层面的战略与预算问题:2026 年 2 月他亲自出任新成立的全国人工智能理事会(NAIC)主席,为新加坡的 AI 议程定方向;Budget 2026 则把 AI 列为国家竞争力的核心押注,投入巨额资源。\n\n从预算演讲到国会答复,他把 AI 放在经济转型、就业与国家安全的整体框架里权衡。本页汇集他在国会和公开场合与 AI 相关的发言、政策与视频,呈现最高决策层如何为新加坡的 AI 之路定调。',
+    bioEn:
+      'Lawrence Wong is Singapore’s Prime Minister and Minister for Finance. For him, AI is first a matter of national strategy and budget: in February 2026 he took the chair of the newly formed National AI Council (NAIC), setting direction for Singapore’s AI agenda, while Budget 2026 made AI a central bet on national competitiveness backed by major resources.\n\nFrom budget speeches to parliamentary replies, he weighs AI within the larger frame of economic transformation, jobs and national security. This page gathers his AI-related statements, policies and videos in Parliament and in public — how the top of government sets the tone for Singapore’s AI path.',
+    bioJa:
+      'ローレンス・ウォン(黄循財)はシンガポールの首相兼財務相である。彼にとって AI はまず国家戦略と予算の問題だ。2026 年 2 月には新設の全国人工知能評議会(NAIC)の議長に自ら就き、同国の AI アジェンダの方向を定めた。Budget 2026 は AI を国家競争力の中核的な賭けと位置づけ、巨額の資源を投じた。\n\n予算演説から国会答弁まで、彼は AI を経済転換、雇用、国家安全保障という大きな枠組みの中で秤にかける。本ページは彼の AI に関わる国会・公開の発言、政策、動画を集約し、政府中枢がシンガポールの AI の道筋をどう定めるかを示す。',
+    bioKo:
+      '로런스 웡(황순재)은 싱가포르 총리 겸 재무장관이다. 그에게 AI는 무엇보다 국가 전략과 예산의 문제다. 2026년 2월 신설된 전국인공지능위원회(NAIC) 의장을 직접 맡아 싱가포르 AI 의제의 방향을 정했고, Budget 2026은 AI를 국가 경쟁력의 핵심 베팅으로 삼아 막대한 자원을 투입했다.\n\n예산 연설부터 국회 답변까지, 그는 AI를 경제 전환·고용·국가 안보라는 큰 틀 안에서 저울질한다. 이 페이지는 국회와 공개 석상에서의 그의 AI 관련 발언·정책·영상을 집약해, 정부 최고위층이 싱가포르의 AI 경로를 어떻게 조율하는지 보여준다.',
     topicIds: ['national-strategy'],
     nameEn: 'Lawrence Wong',
     name: '黄循财',
@@ -494,6 +516,13 @@ export const people: Person[] = [
   },
   {
     id: 'tan-kiat-how',
+    bio: '陈杰豪(Tan Kiat How)是新加坡数码发展与信息部(MDDI)高级政务部长,是 AI 与数字政策落地层面的关键操盘手之一。他常代表 MDDI 出席行业与社群场合,把 AI 治理、数字包容、企业采用等议题从部长层面的框架落到具体项目。\n\n在国会,他就数字发展、AI 应用与网络安全等议题多次发言与答复。本页汇集他的国会发言、演讲、相关政策与视频,呈现他在新加坡 AI 政策执行链条上的角色。',
+    bioEn:
+      'Tan Kiat How is Singapore’s Senior Minister of State at the Ministry of Digital Development and Information (MDDI), one of the key operators turning AI and digital policy into delivery. He often represents MDDI at industry and community events, translating AI governance, digital inclusion and enterprise adoption from ministerial framing into concrete programmes.\n\nIn Parliament he has spoken and replied on digital development, AI applications and cybersecurity. This page gathers his parliamentary speeches, addresses, related policies and videos — his role in the execution chain of Singapore’s AI policy.',
+    bioJa:
+      'タン・キアットハウ(陳杰豪)はシンガポールのデジタル発展・情報省(MDDI)上級政務相であり、AI とデジタル政策を実行へ移す鍵となる担い手の一人だ。業界やコミュニティの場で MDDI を代表することが多く、AI ガバナンス、デジタル包摂、企業導入といった課題を大臣レベルの枠組みから具体的な施策へ落とし込む。\n\n国会ではデジタル発展、AI 応用、サイバーセキュリティについて発言・答弁してきた。本ページは彼の国会答弁、演説、関連政策、動画を集約し、シンガポールの AI 政策の実行過程における役割を示す。',
+    bioKo:
+      '탄 키앗하우(천제하오)는 싱가포르 디지털발전정보부(MDDI) 선임정무장관으로, AI와 디지털 정책을 실행으로 옮기는 핵심 실무자 중 한 명이다. 업계와 지역사회 행사에서 MDDI를 대표하는 경우가 많고, AI 거버넌스·디지털 포용·기업 도입 같은 과제를 장관급 프레임에서 구체적 프로그램으로 옮긴다.\n\n국회에서는 디지털 발전, AI 응용, 사이버 보안에 대해 발언하고 답변해 왔다. 이 페이지는 그의 국회 발언·연설·관련 정책·영상을 집약해 싱가포르 AI 정책의 실행 사슬에서의 역할을 보여준다.',
     topicIds: ['national-strategy', 'governance-regulation'],
     nameEn: 'Tan Kiat How',
     name: '陈杰豪',
@@ -2369,6 +2398,13 @@ export const people: Person[] = [
   // ── IMDA leadership ───────────────────────────────────────────────
   {
     id: 'ng-cher-pong',
+    bio: '黄志彭(Ng Cher Pong)自 2025 年 11 月起出任信息通信媒体发展局(IMDA)首席执行官,同时兼任个人数据保护委员会(PDPC)委员。IMDA 是新加坡 AI 治理的核心机构——AI Verify、《模型 AI 治理框架》、数据中心与数字经济政策多由其推动,因此他的位置正处在新加坡「用软法与可检验框架治理 AI」这套打法的中枢。\n\n他有 30 多年公务员资历,曾任国家图书馆管理局 CEO 与 SkillsFuture Singapore 创始 CEO。本页汇集他相关的政策、公开表态与记录,呈现 IMDA 层面如何把 AI 治理的原则落成工具与规则。',
+    bioEn:
+      'Ng Cher Pong has been Chief Executive of the Infocomm Media Development Authority (IMDA) since November 2025, and concurrently a Commissioner of the Personal Data Protection Commission (PDPC). IMDA is the hub of Singapore’s AI governance — AI Verify, the Model AI Governance Framework, data-centre and digital-economy policy largely run through it — which puts him at the centre of Singapore’s “govern AI through soft law and testable frameworks” approach.\n\nWith 30-plus years in public service, he was previously CEO of the National Library Board and founding CEO of SkillsFuture Singapore. This page gathers the policies, public statements and records tied to him — how, at the IMDA level, AI-governance principles become tools and rules.',
+    bioJa:
+      'ン・チャーポン(黄志彭)は 2025 年 11 月より情報通信メディア開発庁(IMDA)の最高経営責任者を務め、同時に個人データ保護委員会(PDPC)委員を兼任する。IMDA はシンガポールの AI ガバナンスの中枢であり、AI Verify、《モデル AI ガバナンス枠組み》、データセンターやデジタル経済の政策の多くを担う。ゆえに彼は「ソフトローと検証可能な枠組みで AI を統治する」という同国の手法の中心に位置する。\n\n30 年以上の公務員歴を持ち、以前は国立図書館庁 CEO、SkillsFuture Singapore の創設 CEO を務めた。本ページは彼に関わる政策、公開の発言、記録を集約し、IMDA のレベルで AI ガバナンスの原則がどう道具と規則になるかを示す。',
+    bioKo:
+      '응 처퐁(황즈펑)은 2025년 11월부터 정보통신미디어개발청(IMDA) 최고경영자를 맡고 있으며, 동시에 개인정보보호위원회(PDPC) 위원을 겸임한다. IMDA는 싱가포르 AI 거버넌스의 중심 기관으로 — AI Verify, 《모델 AI 거버넌스 프레임워크》, 데이터센터와 디지털 경제 정책 상당수가 이곳을 거친다 — 그를 “연성법과 검증 가능한 프레임워크로 AI를 통치”하는 이 나라 방식의 중심에 놓는다.\n\n30년 넘는 공직 경력을 지녔고, 이전에는 국립도서관청 CEO와 SkillsFuture Singapore 창립 CEO를 지냈다. 이 페이지는 그와 연결된 정책·공개 발언·기록을 집약해 IMDA 차원에서 AI 거버넌스 원칙이 어떻게 도구와 규칙이 되는지 보여준다.',
     topicIds: ['governance-regulation', 'economy-industry'],
     nameEn: 'Ng Cher Pong',
     name: '黄志彭',
