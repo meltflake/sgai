@@ -6,6 +6,8 @@ import RelatedRail from '~/components/data/RelatedRail.astro';
 import { categories, type Policy, type PolicyResource } from '~/data/policies';
 import { getPolicySourceText } from '~/data/policy-source-texts';
 import { levers } from '~/data/levers';
+import { getTopicById } from '~/data/topics';
+import { policyTopicIds } from '~/data/topic-mappings';
 import { localizedHref, pickLocalized, t, type Lang } from '~/i18n';
 import { toTraditional } from '~/i18n/opencc';
 import { leverSlug } from '~/utils/entity-pages';
@@ -47,6 +49,9 @@ const categoryName =
   policy._categoryName ||
   '';
 const authors = (policy.authorPersonIds || []).map((id) => getPerson(id)).filter(Boolean);
+const policyTopics = policyTopicIds(policy, policy._categoryName || '')
+  .map((tid) => getTopicById(tid))
+  .filter((tp): tp is NonNullable<typeof tp> => Boolean(tp));
 const linkedLevers = (policy.relatedLeverNumbers || [])
   .map((n) => levers.find((lv) => lv.number === n))
   .filter(Boolean);
@@ -299,6 +304,20 @@ function policySource(candidate: Policy): string {
   <p class="text-sm uppercase tracking-wider text-gray-500 dark:text-gray-400 font-semibold mb-2">{labels.profile}</p>
   <h1 class="t-display text-gray-900 dark:text-white mb-3">{title}</h1>
   {subtitle && <p class="text-base md:text-lg text-gray-500 dark:text-gray-400 italic mb-5">{subtitle}</p>}
+  {
+    policyTopics.length > 0 && (
+      <div class="flex flex-wrap gap-2 mb-6">
+        {policyTopics.map((tp) => (
+          <a
+            href={localizedHref(`/topics/${tp.id}/`, lang)}
+            class="text-xs bg-primary/10 text-primary hover:bg-primary/20 px-3 py-1.5 rounded-full transition-colors"
+          >
+            {pickLocalized(tp, 'name', lang)}
+          </a>
+        ))}
+      </div>
+    )
+  }
   <p
     class="font-serif text-lg leading-[1.85] text-gray-800 dark:text-gray-200 mb-8 border-l-4 border-primary pl-5 italic"
   >

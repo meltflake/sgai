@@ -13,6 +13,7 @@ import { getDebateTranscript, getDebateTranscriptParagraphs } from '~/data/debat
 import { findPersonId, getPerson } from '~/utils/people';
 import { t, pickLocalized, localizedHref } from '~/i18n';
 import { synthesizeMetaDescription } from '~/utils/seo-meta';
+import { DEBATE_TOPIC_TO_TOPIC_IDS } from '~/data/topic-mappings';
 
 export const prerender = true;
 
@@ -124,9 +125,20 @@ const breadcrumbs = [{ label: t(lang, 'navParliament'), href: '/debates/' }, { l
     {
       debate.topics && debate.topics.length > 0 && (
         <div class="flex flex-wrap gap-2 mb-8">
-          {debate.topics.map((tp) => (
-            <span class="text-xs bg-primary/10 text-primary px-3 py-1.5 rounded-full">{topicEn[tp] || tp}</span>
-          ))}
+          {debate.topics.map((tp) => {
+            const tid = DEBATE_TOPIC_TO_TOPIC_IDS[tp]?.[0];
+            const label = topicEn[tp] || tp;
+            return tid ? (
+              <a
+                href={localizedHref(`/topics/${tid}/`, lang)}
+                class="text-xs bg-primary/10 text-primary hover:bg-primary/20 px-3 py-1.5 rounded-full transition-colors"
+              >
+                {label}
+              </a>
+            ) : (
+              <span class="text-xs bg-primary/10 text-primary px-3 py-1.5 rounded-full">{label}</span>
+            );
+          })}
           <span class="text-xs bg-gray-100 dark:bg-slate-800 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-full ml-auto">
             {t(lang, 'controversyLevel')} {debate.controversyLevel} · {controversyLabels[debate.controversyLevel] || ''}
           </span>

@@ -80,23 +80,10 @@ const KIND_LABEL_KEY: Record<TopicEntryKind, Parameters<typeof t>[1]> = {
   person: 'updateTypePeople',
 };
 
-// Listing page per kind for the "view all" exit.
-const KIND_LISTING: Record<TopicEntryKind, string> = {
-  debate: '/debates/',
-  policy: '/policies/',
-  video: '/videos/',
-  lever: '/levers/',
-  timeline: '/timeline/',
-  tracker: '/tracker/',
-  talent: '/talent/',
-  legal: '/legal-ai/',
-  benchmark: '/benchmarking/',
-  startup: '/startups/',
-  ecosystem: '/ecosystem/',
-  person: '/voices/',
-};
-
-const PREVIEW_LIMIT = 6;
+// Hubs render every entry per kind (no preview cap): the topic page is the
+// exhaustive, crawlable authority surface for its topic — that is the SEO
+// point. Rows are compact (title + date), so even ~90-debate topics stay a
+// reasonable single page.
 
 const groups = KIND_ORDER.map((kind) => ({
   kind,
@@ -106,6 +93,11 @@ const groups = KIND_ORDER.map((kind) => ({
 const totalCount = entries.length + postRows.length;
 
 const entryTitle = (e: TopicEntry) => pickLocalized<string>(e, 'title', lang) || e.title;
+
+// Editorial intro paragraphs (split on blank lines). Computed here so the
+// template avoids a pickLocalized<string>() generic, which the Astro/JSX
+// parser would mis-read as a <string> tag.
+const introParas = (pickLocalized<string>(topic, 'intro', lang) || '').split(/\n{2,}/).filter(Boolean);
 ---
 
 <section class="px-4 py-12 md:py-16 sm:px-6 mx-auto max-w-6xl">
@@ -118,6 +110,15 @@ const entryTitle = (e: TopicEntry) => pickLocalized<string>(e, 'title', lang) ||
     <p class="text-gray-600 dark:text-gray-400 leading-relaxed mb-3">
       {pickLocalized(topic, 'description', lang)}
     </p>
+    {
+      introParas.length > 0 && (
+        <div class="mb-4 space-y-3 text-gray-700 dark:text-gray-300 leading-relaxed">
+          {introParas.map((para) => (
+            <p>{para}</p>
+          ))}
+        </div>
+      )
+    }
     <p class="text-sm text-gray-400 dark:text-gray-500 tabular-nums">
       {t(lang, 'topicEntriesCount').replace('{count}', String(totalCount))}
     </p>
@@ -141,7 +142,7 @@ const entryTitle = (e: TopicEntry) => pickLocalized<string>(e, 'title', lang) ||
             </a>
           </div>
           <ul class="space-y-2.5">
-            {postRows.slice(0, PREVIEW_LIMIT).map((row) => (
+            {postRows.map((row) => (
               <li>
                 <a href={row.href} class="group flex items-baseline gap-3">
                   {row.date && (
@@ -166,17 +167,9 @@ const entryTitle = (e: TopicEntry) => pickLocalized<string>(e, 'title', lang) ||
               {t(lang, KIND_LABEL_KEY[g.kind])}
               <span class="ml-2 text-xs text-gray-400 dark:text-gray-500 tabular-nums">{g.items.length}</span>
             </h2>
-            {g.items.length > PREVIEW_LIMIT && (
-              <a
-                href={localizedHref(KIND_LISTING[g.kind], lang)}
-                class="text-xs text-gray-500 hover:text-primary dark:text-gray-400 transition-colors whitespace-nowrap"
-              >
-                {t(lang, 'topicViewAll').replace('{count}', String(g.items.length))}
-              </a>
-            )}
           </div>
           <ul class="space-y-2.5">
-            {g.items.slice(0, PREVIEW_LIMIT).map((e) => (
+            {g.items.map((e) => (
               <li>
                 <a href={localizedHref(e.href, lang)} class="group flex items-baseline gap-3">
                   {e.date && (
