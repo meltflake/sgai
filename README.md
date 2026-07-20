@@ -13,7 +13,7 @@
 - **AI 政策库** — 45 份政策文档，中英标题、来源机构、摘要与原文链接
 - **发展时间线** — 从 2014 年智慧国家倡议到 2026 年 NAIRD 的完整里程碑
 - **落地执行追踪** — 83 项关键指标：投资、人才、算力、采用、研究、治理
-- **国会 AI 焦点** — 182 场议会辩论的中文摘要、议员立场分析与政策信号提炼
+- **国会 AI 焦点** — 187 场议会辩论的中文摘要、议员立场分析与政策信号提炼
 - **开源与研究** — 官方开源项目与产学研生态追踪
 - **创业生态** — 548 家 AI 创业公司、9 家独角兽、五大垂直领域全景
 - **国际对标** — 10 个经济体 AI 政策横向对比
@@ -75,7 +75,7 @@ Key sections:
 - **AI Policy Library** — 45 policy documents with bilingual titles, source agencies, summaries, and original links
 - **Development Timeline** — Full milestones from Smart Nation Initiative (2014) to NAIRD (2026)
 - **Execution Tracker** — 83 key metrics: investment, talent, compute, adoption, research, governance
-- **Parliamentary AI Focus** — Chinese summaries of 182 parliamentary debates with MP stance analysis and policy signal extraction
+- **Parliamentary AI Focus** — Chinese summaries of 187 parliamentary debates with MP stance analysis and policy signal extraction
 - **Open Source & Research** — Government open-source projects and industry-academia ecosystem
 - **Startup Ecosystem** — 548 AI startups, 9 unicorns, five vertical sectors
 - **International Benchmarking** — Cross-comparison of AI policies across 10 economies
