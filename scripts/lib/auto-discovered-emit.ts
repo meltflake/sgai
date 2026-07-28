@@ -112,6 +112,13 @@ export function appendAutoDiscovered(
   // Look for existing array close. Pattern: lines starting with `export const autoDiscovered:`
   // followed eventually by `];` on its own line.
   const exportRe = /export const autoDiscovered:\s*AutoDiscoveredEntry\[\]\s*=\s*\[([\s\S]*?)\n\];/;
+  // An EMPTY array is typically the prettier one-liner `= [];` — no newline
+  // before `];`, so exportRe misses it and the helper used to append a
+  // DUPLICATE interface + export, breaking the build with ts(2451)
+  // "Cannot redeclare block-scoped variable" (caught live on startups.ts,
+  // PR #170; benchmarking.ts has the same one-liner since its archive
+  // entries were promoted out).
+  const emptyExportRe = /export const autoDiscovered:\s*AutoDiscoveredEntry\[\]\s*=\s*\[\s*\];/;
   const match = original.match(exportRe);
 
   if (match) {
@@ -119,6 +126,11 @@ export function appendAutoDiscovered(
     const arrayBody = match[1];
     const newBody = arrayBody.endsWith('\n') ? `${arrayBody}${formatted}` : `${arrayBody}\n${formatted}`;
     updated = original.replace(exportRe, `export const autoDiscovered: AutoDiscoveredEntry[] = [${newBody}\n];`);
+  } else if (emptyExportRe.test(original)) {
+    updated = original.replace(
+      emptyExportRe,
+      `export const autoDiscovered: AutoDiscoveredEntry[] = [\n${formatted}\n];`
+    );
   } else {
     // Append interface + new array at end of file.
     const tail = original.endsWith('\n') ? original : `${original}\n`;

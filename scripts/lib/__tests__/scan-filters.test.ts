@@ -23,7 +23,9 @@ test('generic sections are rejected (policies denylist preserved)', () => {
 test('bare listing roots are rejected, article slugs under them pass', () => {
   assert.equal(isGenericOrLanding('https://www.smartnation.gov.sg/initiatives/'), true);
   assert.equal(isGenericOrLanding('https://www.mddi.gov.sg/newsroom/'), true);
+  assert.equal(isGenericOrLanding('https://www.tech.gov.sg/media/'), true);
   assert.equal(isGenericOrLanding('https://www.mddi.gov.sg/newsroom/some-real-speech-slug/'), false);
+  assert.equal(isGenericOrLanding('https://www.tech.gov.sg/media/some-press-release-slug/'), false);
 });
 
 test('sso.agc.gov.sg /Browse/ statute-navigation shells are rejected (issue #166 legal-ai)', () => {

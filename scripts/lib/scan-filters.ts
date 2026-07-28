@@ -48,6 +48,7 @@ export const LISTING_ROOTS = new Set([
   'programmes-and-initiatives',
   'news',
   'newsroom',
+  'media',
   'media-room',
   'press-releases',
   'resources',

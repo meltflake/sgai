@@ -20,8 +20,13 @@ await runPipeline({
   // story whose URL is /companies/startup-x-raises-50m (no "ai"/"fund" in
   // the slug) is no longer dropped at the URL layer.
   judgeKind: 'a startup / funding / tech business news article',
-  judgeScope:
-    'AI / artificial-intelligence companies, startups, funding rounds, exits, or investors — especially in Singapore',
+  judgeScope: 'AI / artificial-intelligence companies, startups, funding rounds, exits, or investors',
+  // Hard Singapore gate (issue #166): "especially in Singapore" inside
+  // judgeScope was a hint, not a condition — the whole-domain BT feed
+  // passed China model launches, US chip-maker listings and global
+  // Nvidia/OpenAI deals. requireScope makes the nexus NECESSARY.
+  judgeRequire:
+    'a substantive Singapore nexus — a Singapore-based or Singapore-operating company, Singapore funding / programme / investor participation, or concrete Singapore market activity; a global AI story with no Singapore angle fails',
   sources: [
     {
       domain: 'businesstimes.com.sg',
