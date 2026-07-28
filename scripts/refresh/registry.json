@@ -19,11 +19,13 @@
     },
     {
       "id": "videos",
-      "type": "python-builtin",
+      "type": "tsx",
       "schedule": "daily",
       "label": "YouTube AI videos",
-      "description": "Channel RSS+HTML scan, manual review queue. Daily because CNA/ST publish 30+ vids/day and our scrape window covers <24h.",
-      "mode": "scan-only-email",
+      "description": "Daily auto-PR: python scan (RSS+HTML, merge-writes candidates.json) → emit.ts (LLM bilingual fields + 4-language transcript chain + i18n gate) → commit → PR. Daily because CNA/ST publish 30+ vids/day and the scrape window covers <24h. Was scan-only-email + manual emit until 2026-07-28 (audit P1: lost videos twice).",
+      "script": "scripts/refresh/videos/run.ts",
+      "args": [],
+      "mode": "auto-pr",
       "targets": ["src/data/videos.ts", "src/data/video-transcripts.ts"]
     },
     {
