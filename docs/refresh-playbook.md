@@ -69,31 +69,33 @@ npx tsx scripts/hansard/translate-debate-transcripts.ts --ids=<id>
 
 #### `/videos` + `/videos/[id]` + transcript
 
-- **数据**: `src/data/videos.ts`（62 条），`src/data/video-transcripts.ts`（2.6 MB）
-- **来源**: 7 个 YouTube 频道 RSS（CNA / ST / govsg / Smart Nation / AISG / WEF / Bloomberg）
-- **现状**: ✅ 完整 pipeline，但 step 2 是人工 review
+- **数据**: `src/data/videos.ts`，`src/data/video-transcripts.ts`
+- **来源**: 7 个 YouTube 频道 RSS+HTML（CNA / ST / govsg / Smart Nation / AISG / WEF / Bloomberg）
+- **现状**: ✅ **全自动 auto-PR**（2026-07-28 起；此前是 scan-only + 人工 emit，两次丢视频后按审计 P1 改造）
 - **更新命令**:
 
 ```bash
-# 扫描候选
-cd scripts && python3 videos/01_scan_channels.py --exclude-existing --days 14
+# 全链路（daily cron 跑的就是这条）：扫描 → 过滤 → emit → 四语字幕 → commit → PR
+npx tsx scripts/refresh/videos/run.ts               # 全流程
+npx tsx scripts/refresh/videos/run.ts --dry-run     # 只看会 emit 什么
+npx tsx scripts/refresh/videos/run.ts --limit=2 --no-push   # 小批量本地验证
 
-# 人工审核（交互）
-python3 videos/02_review_and_merge.py
+# 手动指定视频（绕过扫描，直接 emit 已知 videoId）
+npx tsx scripts/refresh/videos/emit.ts --ids=<videoId1,videoId2>
 
-# 抓字幕（需 yt-dlp）—— 自动 chain en→zh→ja 翻译，单条命令到三语对齐
+# 单独抓字幕（需 yt-dlp）—— 自动 chain en→zh→ja→ko，单条命令到四语对齐
 npx tsx scripts/videos/fetch-transcripts.ts --ids=<id>
 
-# 高级用法：
-#   --no-translate  只抓 + emit，不自动 chain 翻译（schema 改造时用）
-#   --emit-only     跳过 yt-dlp，只重 emit 已有 raw cache（zh translation 出现后用）
-
-# 校验三语对齐（CI 强制门）
+# 校验四语对齐（CI 强制门）
 npm run eval:video-transcript -- --base=origin/main          # PR diff 模式
 npm run eval:video-transcript -- --include-historical        # 全量审计
 ```
 
-- **频率**: 周级
+- **机制要点**：
+  - 扫描落盘 `scripts/videos/data/candidates.json` 走 **merge-write**（按 videoId 并集、剔除已入库），RSS 窗口只有 15 条也不丢候选
+  - `state.domains.videos.video_ids` 记录「已 emit 过」的 id——PR 未合并期间不重复 emit；**PR 被拒的视频永久不回来**（人说过的 no 就是 no），要重发就从 state 里删掉该 id
+  - emit 失败 → state 不更新 → 次日自动重试；字幕翻译失败 → PR 上 `eval:video-transcript` 红灯挡合并
+- **频率**: 日级（cron auto-PR）
 
 #### `/speeches/[id]` + `/voices` + `/voices/[id]`
 

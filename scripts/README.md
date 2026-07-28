@@ -32,21 +32,23 @@ scripts/
 
 ### 1. YouTube 视频发现 (`videos/`)
 
-扫描 7 个 YouTube 频道（CNA、ST、govsg、Smart Nation、AI Singapore、WEF、Bloomberg），通过 RSS feed 获取最新视频，用 AI 关键词过滤。
+扫描 7 个 YouTube 频道（CNA、ST、govsg、Smart Nation、AI Singapore、WEF、Bloomberg），通过 RSS+HTML 获取最新视频，用 AI 关键词过滤。**2026-07-28 起全自动 auto-PR**——扫描、emit、四语字幕、开 PR 全链路由 `scripts/refresh/videos/run.ts` 编排，人只做 PR merge。
 
 | 步骤 | 脚本 | 自动化 | 依赖 |
 |------|------|--------|------|
-| 扫描频道 | `01_scan_channels.py` | 可自动 | requests, feedparser |
-| 人工审核 | `02_review_and_merge.py` | 需人工 | — |
+| 全链路编排 | `refresh/videos/run.ts` | 全自动（daily cron） | python3, claude CLI, yt-dlp |
+| 扫描频道 | `videos/01_scan_channels.py` | run.ts 调用（也可单跑） | requests, feedparser |
+| emit + 字幕 | `refresh/videos/emit.ts` | run.ts 调用（也可 `--ids=` 单跑） | claude CLI, yt-dlp |
 
 ```bash
-# 手动运行
-cd scripts
-python videos/01_scan_channels.py --exclude-existing --days 14
-python videos/02_review_and_merge.py  # 交互式审核
+# 全流程（cron 跑的就是这条）
+npx tsx scripts/refresh/videos/run.ts
+
+# 只看会 emit 什么
+npx tsx scripts/refresh/videos/run.ts --dry-run
 ```
 
-输出: `data/candidates.json` -> 人工审核后合并到 `src/data/videos.ts`
+候选持久化在 `videos/data/candidates.json`（merge-write，按 videoId 去重）；已 emit 的 id 记录在 `data/last_scan_state.json` 的 `domains.videos.video_ids`。
 
 ### 2. MDDI 演讲稿 (`voices/`)
 

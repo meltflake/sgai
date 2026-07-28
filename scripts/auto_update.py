@@ -171,42 +171,11 @@ def save_state(state: dict):
 
 
 # ── 管线 1: YouTube 视频 ─────────────────────────────────────────────────────
-def run_videos(logger, dry_run: bool = False) -> dict:
-    import importlib
-
-    mod = importlib.import_module("videos.01_scan_channels")
-    candidates = mod.scan_channels(exclude_existing=True, days=14)
-    # Persist via merge-write. The cron path used to call scan_channels()
-    # without ever writing candidates.json (only main() wrote it), so daily
-    # results lived solely in the issue body — which also stripped videoId.
-    # Candidates that aged out of the RSS window before a human ran emit
-    # were unrecoverable (2026-07-07 and 2026-07-28 incidents, 3 videos
-    # each, both recovered only via yt-dlp title search).
-    if dry_run:
-        # --dry-run contract: 不写盘。Report what WOULD be pending.
-        pending = candidates
-        logger.info(f"YouTube 扫描完成 (dry-run, 不写盘): {len(candidates)} 条新候选")
-    else:
-        pending = mod.merge_write_candidates(candidates)
-        logger.info(f"YouTube 扫描完成: {len(candidates)} 条新候选, 合并后待处理 {len(pending)} 条")
-    return {
-        "count": len(candidates),
-        "pending": len(pending),
-        # Full pending list, with videoId + youtubeUrl so the issue alone is
-        # enough to run emit even if candidates.json is lost. No [:10] cap —
-        # daily volume is 0-5, and a silent cap hid the tail while `count`
-        # claimed the true total.
-        "items": [
-            {
-                "date": v.get("date", ""),
-                "title": v.get("title", ""),
-                "channel": v.get("channel", ""),
-                "videoId": v.get("videoId", ""),
-                "youtubeUrl": v.get("youtubeUrl", ""),
-            }
-            for v in pending
-        ],
-    }
+# Removed: videos is now type=tsx + mode=auto-pr (scripts/refresh/videos/run.ts).
+# The tsx pipeline chains scan (python) → emit (LLM fields + 4-language
+# transcripts) → commit → PR, closing the audit-P1 "scan-only + manual emit"
+# gap that lost videos twice (2026-07-07, 2026-07-28). Dispatched by
+# run_tsx_pipeline() below; state lives in domains.videos.video_ids.
 
 
 # ── 管线 2: MDDI 演讲 ────────────────────────────────────────────────────────
@@ -358,27 +327,8 @@ def compose_email(results: dict, errors: list[str], elapsed: float) -> tuple[str
         lines.append("</ul>")
 
     # Per-pipeline blocks.
-    if "videos" in results:
-        r = results["videos"]
-        pending = r.get("pending", r.get("count", 0))
-        lines.append(f"<h3>YouTube 视频: {r.get('count', 0)} 条新候选 · 待处理共 {pending} 条</h3>")
-        if r.get("items"):
-            lines.append("<ul>")
-            for v in r["items"]:
-                vid = v.get("videoId", "")
-                url = v.get("youtubeUrl", "")
-                link = f" · <a href='{url}'>{vid}</a>" if url and vid else (f" · {vid}" if vid else "")
-                lines.append(
-                    f"  <li>[{v.get('date','?')}] {v.get('channel','?')}: {v.get('title','?')}{link}</li>"
-                )
-            lines.append("</ul>")
-            ids = ",".join(v.get("videoId", "") for v in r["items"] if v.get("videoId"))
-            lines.append(f"<p>Emit: <code>npx tsx scripts/refresh/videos/emit.ts --ids={ids}</code></p>")
-        elif not r.get("error"):
-            lines.append("<p>无新内容</p>")
-
-    # voices is now a tsx auto-pr pipeline (scripts/refresh/voices/run.ts) —
-    # its result is rendered by the generic tsx block at the bottom, not here.
+    # videos + voices are tsx auto-pr pipelines now — rendered by the
+    # generic tsx block at the bottom (the PR link is the action).
 
     if "hansard" in results:
         r = results["hansard"]
@@ -394,7 +344,7 @@ def compose_email(results: dict, errors: list[str], elapsed: float) -> tuple[str
 
     # New tsx pipelines block (no items detail; PR link is the action).
     for pid, r in results.items():
-        if pid in ("videos", "hansard"):
+        if pid == "hansard":
             continue
         c = r.get("count", 0) or 0
         f = r.get("failures", 0) or 0
@@ -788,9 +738,7 @@ def run_pipelines(selected: list[dict], state: dict, logger, dry_run: bool) -> t
         ptype = entry.get("type")
         try:
             if ptype == "python-builtin":
-                if pid == "videos":
-                    results["videos"] = run_videos(logger, dry_run=dry_run)
-                elif pid == "hansard":
+                if pid == "hansard":
                     hansard_result = run_hansard(state, logger)
                     results["hansard"] = hansard_result
                     state["domains"]["hansard"]["max_oral_id"] = hansard_result["new_max_oral"]
@@ -1038,7 +986,7 @@ def main():
     except ImportError:
         NOTIFY_IF_NO_NEW = False
 
-    scan_only_pids = {"hansard", "videos"}
+    scan_only_pids = {"hansard"}
     scan_only_results = {pid: r for pid, r in results.items() if pid in scan_only_pids}
     scan_only_total = sum(r.get("count", 0) or 0 for r in scan_only_results.values())
     should_notify = scan_only_total > 0 or NOTIFY_IF_NO_NEW or errors
