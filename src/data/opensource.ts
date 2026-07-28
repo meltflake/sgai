@@ -973,11 +973,14 @@ This page is a good future home for more detail: model list, demo status, whethe
         kind: 'github',
       },
       {
-        label: 'SGNLP 文档 / Demo',
-        labelKo: 'SGNLP 문서 / Demo',
-        labelJa: 'SGNLP ドキュメント / デモ',
-        labelEn: 'SGNLP docs / demo',
-        url: 'https://sgnlp.aisingapore.net/',
+        // The original docs/demo host sgnlp.aisingapore.net went NXDOMAIN
+        // (caught by the url-health eval on 2026-07-28). The PyPI page is
+        // the surviving canonical home for the package and its README.
+        label: 'SGNLP PyPI 包',
+        labelKo: 'SGNLP PyPI 패키지',
+        labelJa: 'SGNLP PyPI パッケージ',
+        labelEn: 'SGNLP on PyPI',
+        url: 'https://pypi.org/project/sgnlp/',
         kind: 'docs',
       },
       {
