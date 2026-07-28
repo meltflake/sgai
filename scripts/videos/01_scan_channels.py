@@ -535,6 +535,45 @@ def scan_channels(
     return candidates
 
 
+def merge_write_candidates(new_candidates: list[dict]) -> list[dict]:
+    """Merge-write candidates.json instead of overwriting it.
+
+    Why merge: YouTube RSS only covers ~15 entries (<24h for CNA's 30+/day
+    volume), so a candidate that isn't emitted the same day ages out of the
+    next scan. Overwrite semantics lost 3 CNA videos twice (2026-07-07 and
+    2026-07-28 incidents — both recovered only via yt-dlp title search).
+    Merging keeps every un-emitted candidate on disk until it either lands
+    in videos.ts or is removed by hand.
+
+    Semantics: union by videoId (fresh scan entry wins — it may carry a
+    better description), drop entries already present in videos.ts, sort
+    date-desc, write back. Returns the merged list.
+    """
+    merged: dict[str, dict] = {}
+    if OUTPUT_FILE.exists():
+        try:
+            for entry in json.loads(OUTPUT_FILE.read_text(encoding="utf-8")):
+                vid = entry.get("videoId")
+                if vid:
+                    merged[vid] = entry
+        except (json.JSONDecodeError, OSError):
+            # Corrupt/unreadable file: rebuild from the fresh scan alone.
+            merged = {}
+
+    for entry in new_candidates:
+        merged[entry["videoId"]] = entry
+
+    existing_ids = get_existing_video_urls()
+    result = [e for vid, e in merged.items() if vid not in existing_ids]
+    result.sort(key=lambda x: x.get("date", ""), reverse=True)
+
+    DATA_DIR.mkdir(parents=True, exist_ok=True)
+    OUTPUT_FILE.write_text(
+        json.dumps(result, ensure_ascii=False, indent=2), encoding="utf-8"
+    )
+    return result
+
+
 def main():
     parser = argparse.ArgumentParser(description="扫描 YouTube 频道发现 AI 相关视频")
     parser.add_argument("--channel", help="只扫描指定频道 (如 CNA, ST, govsg)")
@@ -552,15 +591,9 @@ def main():
         exclude_existing=args.exclude_existing,
     )
 
-    # 确保输出目录存在
-    DATA_DIR.mkdir(parents=True, exist_ok=True)
+    merged = merge_write_candidates(candidates)
 
-    # 写入 JSON
-    OUTPUT_FILE.write_text(
-        json.dumps(candidates, ensure_ascii=False, indent=2), encoding="utf-8"
-    )
-
-    print(f"\n共发现 {len(candidates)} 条候选视频")
+    print(f"\n本次扫描 {len(candidates)} 条候选，合并后待处理 {len(merged)} 条")
     print(f"已保存到 {OUTPUT_FILE}")
 
     if candidates:
