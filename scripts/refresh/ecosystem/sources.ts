@@ -24,6 +24,11 @@ export interface EcosystemSourceEntry {
   /** Filter on URL slug. */
   urlFilter: RegExp;
   urlExcludes?: RegExp[];
+  /** RSS only: drop items whose WordPress <category> matches one of these
+   *  (exact, case-insensitive). URL-path excludes can't work on bare-slug
+   *  permalinks (aisingapore.org/<slug>/), but the feed's own taxonomy
+   *  separates paper posts from ecosystem content. */
+  rssCategoryExcludes?: string[];
 }
 
 // Working sources (verified 2026-05-03):
@@ -44,6 +49,13 @@ export const ECOSYSTEM_SOURCES: EcosystemSourceEntry[] = [
     defaultCategory: '基础研究',
     defaultEntityType: 'program',
     urlFilter: /.*/,
+    // The AISG WordPress feed is dominated by research paper posts —
+    // content, not ecosystem entities. The 2026-07-28 dry-run (issue #166)
+    // surfaced only these. Their permalinks are bare slugs
+    // (aisingapore.org/<slug>/), so path excludes can't catch them; the
+    // feed's own 'AI Research' category can (verified against the live
+    // feed: 7/10 items carry it, all paper posts).
+    rssCategoryExcludes: ['AI Research'],
   },
   {
     domain: 'businesstimes.com.sg',

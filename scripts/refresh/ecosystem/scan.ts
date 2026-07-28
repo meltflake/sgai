@@ -7,6 +7,7 @@ import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 
 import { listSitemap } from '../../lib/gov-fetch.ts';
+import { isGenericOrLanding, normalizeUrl } from '../../lib/scan-filters.ts';
 import type { ScanState } from '../../lib/state.ts';
 import { ECOSYSTEM_SOURCES, type EcosystemSourceEntry } from './sources.ts';
 
@@ -39,6 +40,7 @@ interface RSSItem {
   title: string;
   link: string;
   pubDate?: string;
+  categories: string[];
 }
 
 const REAL_UA =
@@ -62,7 +64,10 @@ async function parseRss(feedUrl: string): Promise<RSSItem[]> {
       const title = block.match(/<title>(?:<!\[CDATA\[)?([\s\S]*?)(?:\]\]>)?<\/title>/)?.[1]?.trim();
       const link = block.match(/<link>([\s\S]*?)<\/link>/)?.[1]?.trim();
       const pubDate = block.match(/<pubDate>([\s\S]*?)<\/pubDate>/)?.[1]?.trim();
-      if (title && link) items.push({ title, link, pubDate });
+      const categories = [...block.matchAll(/<category>(?:<!\[CDATA\[)?([\s\S]*?)(?:\]\]>)?<\/category>/g)]
+        .map((c) => c[1].trim())
+        .filter(Boolean);
+      if (title && link) items.push({ title, link, pubDate, categories });
     }
     return items;
   } catch {
@@ -75,17 +80,32 @@ async function scanSource(
   opts: { existingUrls: Set<string> }
 ): Promise<{ found: EcosystemCandidate[]; checked: number; error?: string }> {
   const found: EcosystemCandidate[] = [];
+  // Normalized keys: catch `?page=N` / trailing-slash / fragment variants of
+  // stored URLs, and collapse in-scan duplicates (issue #166).
+  const existingKeys = new Set([...opts.existingUrls].map(normalizeUrl));
+  const seenKeys = new Set<string>();
   let checked = 0;
+
+  const admit = (url: string): boolean => {
+    const key = normalizeUrl(url);
+    if (opts.existingUrls.has(url) || existingKeys.has(key)) return false;
+    if (seenKeys.has(key)) return false;
+    if (isGenericOrLanding(url)) return false;
+    seenKeys.add(key);
+    return true;
+  };
 
   try {
     if (source.feedType === 'rss') {
       const items = await parseRss(source.feedUrl);
       checked = items.length;
+      const catExcludes = (source.rssCategoryExcludes ?? []).map((c) => c.toLowerCase());
       for (const item of items) {
-        if (opts.existingUrls.has(item.link)) continue;
         const slug = item.link + ' ' + item.title;
         if (!source.urlFilter.test(slug)) continue;
         if (source.urlExcludes?.some((re) => re.test(item.link))) continue;
+        if (catExcludes.length && item.categories.some((c) => catExcludes.includes(c.toLowerCase()))) continue;
+        if (!admit(item.link)) continue;
         found.push({
           sourceUrl: item.link,
           domain: source.domain,
@@ -100,9 +120,9 @@ async function scanSource(
       const urls = await listSitemap(source.feedUrl);
       checked = urls.length;
       for (const url of urls) {
-        if (opts.existingUrls.has(url)) continue;
         if (!source.urlFilter.test(url)) continue;
         if (source.urlExcludes?.some((re) => re.test(url))) continue;
+        if (!admit(url)) continue;
         found.push({
           sourceUrl: url,
           domain: source.domain,

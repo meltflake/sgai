@@ -20,6 +20,12 @@ import { appendAutoDiscovered } from '../../lib/auto-discovered-emit.ts';
 import { judgeAiRelevance } from '../../lib/judge-ai-relevance.ts';
 import { ensureClaudeAuthed } from '../../lib/llm.ts';
 import { loadState, saveState } from '../../lib/state.ts';
+import {
+  extractYearFromUrl,
+  isGenericOrLanding,
+  normalizeUrl,
+  selectCandidates,
+} from '../../lib/scan-filters.ts';
 
 export interface PipelineSource {
   domain: string;
@@ -27,6 +33,11 @@ export interface PipelineSource {
   feedType: 'rss' | 'sitemap';
   urlFilter: RegExp;
   urlExcludes?: RegExp[];
+  /** Skip URLs whose path carries a year token older than this. Fail-open:
+   *  URLs with no year token are admitted. Use on archive-heavy sources
+   *  (benchmarking's hai.stanford.edu kept resurfacing 2017-2024 AI Index
+   *  editions — issue #166). */
+  minUrlYear?: number;
 }
 
 export interface PipelineConfig {
@@ -109,26 +120,41 @@ async function parseRss(feedUrl: string): Promise<Array<{ title: string; link: s
 }
 
 async function scanSources(sources: PipelineSource[], existing: Set<string>, limit: number): Promise<string[]> {
-  const found = new Set<string>();
+  // Normalized dedupe keys for the stored-URL set, so `?page=N` / trailing
+  // slash / fragment variants of an already-stored URL don't re-candidate.
+  const existingKeys = new Set([...existing].map(normalizeUrl));
+  const perSource: string[][] = [];
   for (const s of sources) {
+    const kept: string[] = [];
+    const seenKeys = new Set<string>();
     try {
       const items =
         s.feedType === 'rss'
           ? (await parseRss(s.feedUrl)).map((i) => i.link)
           : await listSitemap(s.feedUrl);
       for (const url of items) {
-        if (existing.has(url)) continue;
+        const key = normalizeUrl(url);
+        if (existing.has(url) || existingKeys.has(key)) continue;
+        if (seenKeys.has(key)) continue;
         if (!s.urlFilter.test(url)) continue;
         if (s.urlExcludes?.some((re) => re.test(url))) continue;
-        found.add(url);
-        if (found.size >= limit * 4) break;
+        if (isGenericOrLanding(url)) continue;
+        if (s.minUrlYear !== undefined) {
+          const year = extractYearFromUrl(url);
+          if (year !== undefined && year < s.minUrlYear) continue;
+        }
+        seenKeys.add(key);
+        kept.push(url);
+        // Per-source cap only — the old `limit * 4` break here let the
+        // FIRST source starve every later one (issue #166).
+        if (kept.length >= limit) break;
       }
     } catch {
       /* skip source */
     }
-    if (found.size >= limit * 4) break;
+    perSource.push(kept);
   }
-  return [...found].slice(0, limit);
+  return selectCandidates(perSource, limit);
 }
 
 export async function runPipeline(config: PipelineConfig): Promise<void> {
