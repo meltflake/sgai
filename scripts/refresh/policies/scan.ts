@@ -50,60 +50,15 @@ export interface ScanOptions {
   onlyDomain?: string;
 }
 
-// Sections that never hold a substantive AI policy / news document. Applied
-// to ALL sources — the 2026-06-19 sweep surfaced only generic smartnation
-// engagement / about / event / showcase pages (matched via the `smart-nation`
-// token in AI_SLUG_KEYWORDS and the broad `/initiatives/` pattern). Keeping
-// this here (not per-source) means every source is protected and the
-// AI-keyword signal stays intact for real article pages.
-const GENERIC_SECTION_EXCLUDES: RegExp[] = [
-  /\/about(?:-us)?\//,
-  /\/citizen-engagement\//,
-  /\/engagement-programmes?\//,
-  /\/events?\//,
-  /\/showcases?\//,
-  /\/careers?\//,
-  /\/contact(?:-us)?\b/,
-  /\/faqs?\b/,
-  /\/feedback\//,
-  /\/newsletter\b/,
-  /\/subscribe\b/,
-  /\/our-people\//,
-  /\/leadership\//,
-  /\/tenders?\//,
-  /\/sitemap/,
-  /\/search\b/,
-];
+// The generic-section / listing-index filter now lives in
+// scripts/lib/scan-filters.ts so every pipeline shares one denylist (issue
+// #166: legal-ai / tracker / ecosystem scanned raw while only policies was
+// protected). Re-exported here so existing imports and the policies scan
+// tests keep working unchanged. The shared version adds query-string
+// awareness: `?page=N` pagination views are generic too.
+import { isGenericOrLanding } from '../../lib/scan-filters.ts';
 
-// Listing / section-index roots: the URL terminates at the section itself
-// with no article slug after it (e.g. `/initiatives/`,
-// `/initiatives/programmes-and-initiatives/`, `/news/`). Substantive
-// documents always carry a further slug.
-const LISTING_ROOTS = new Set([
-  'initiatives',
-  'programmes-and-initiatives',
-  'news',
-  'newsroom',
-  'media-room',
-  'press-releases',
-  'resources',
-  'publications',
-  'announcements',
-]);
-
-/** True when a URL is a generic section, an engagement/about page, or a bare
- *  listing index rather than a specific policy / news document. */
-export function isGenericOrLanding(url: string): boolean {
-  let path: string;
-  try {
-    path = new URL(url).pathname;
-  } catch {
-    return true; // unparseable → drop
-  }
-  if (GENERIC_SECTION_EXCLUDES.some((re) => re.test(path))) return true;
-  const lastSeg = path.replace(/\/+$/, '').split('/').pop() || '';
-  return LISTING_ROOTS.has(lastSeg);
-}
+export { isGenericOrLanding };
 
 export function applyFilters(urls: string[], source: PolicySource): string[] {
   const out = new Set<string>();
