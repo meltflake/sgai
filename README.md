@@ -10,7 +10,7 @@
 
 核心内容：
 
-- **AI 政策库** — 45 份政策文档，中英标题、来源机构、摘要与原文链接
+- **AI 政策库** — 48 份政策文档，中英标题、来源机构、摘要与原文链接
 - **发展时间线** — 从 2014 年智慧国家倡议到 2026 年 NAIRD 的完整里程碑
 - **落地执行追踪** — 83 项关键指标：投资、人才、算力、采用、研究、治理
 - **国会 AI 焦点** — 187 场议会辩论的中文摘要、议员立场分析与政策信号提炼
@@ -72,7 +72,7 @@ Singapore AI Observatory tracks Singapore's AI strategy through policy documents
 
 Key sections:
 
-- **AI Policy Library** — 45 policy documents with bilingual titles, source agencies, summaries, and original links
+- **AI Policy Library** — 48 policy documents with bilingual titles, source agencies, summaries, and original links
 - **Development Timeline** — Full milestones from Smart Nation Initiative (2014) to NAIRD (2026)
 - **Execution Tracker** — 83 key metrics: investment, talent, compute, adoption, research, governance
 - **Parliamentary AI Focus** — Chinese summaries of 187 parliamentary debates with MP stance analysis and policy signal extraction

@@ -784,6 +784,148 @@ This is not just a regional-HQ story. It connects OpenAI’s deployment engineer
     icon: '⚖️',
     policies: [
       {
+        id: 'pdpc-advisory-guidelines-personal-data-in-generative-ai-2026',
+        title: 'PDPC 生成式 AI 个人数据使用指南',
+        titleKo: 'PDPC 생성형 AI 개인정보 사용 지침',
+        titleJa: 'PDPC 生成 AI 個人データ利用ガイドライン',
+        titleEn: 'PDPC Advisory Guidelines on Use of Personal Data in Generative AI',
+        date: '2026-07',
+        source: '个人数据保护委员会 (PDPC)',
+        sourceKo: '개인정보 보호위원회 (PDPC)',
+        sourceJa: '個人データ保護委員会 (PDPC)',
+        sourceEn: 'Personal Data Protection Commission (PDPC)',
+        sourceOrgUrl: 'https://www.pdpc.gov.sg/',
+        sourceUrl:
+          'https://www.pdpc.gov.sg/organisations/regulations-decisions/regulatory-guidance/advisory-guidelines-on-use-of-personal-data-in-generative-ai',
+        summary:
+          '拿个人数据训生成式 AI，同意书上必须说人话。PDPC 要求组织明确写出"用于开发或改进生成式 AI 模型"，不能藏在用户看不懂的宽泛描述里；同时覆盖 AI 价值链各方责任划分与公开数据的尽职调查义务。',
+        summaryKo:
+          '개인정보로 생성형 AI를 훈련하려면 동의서에 알기 쉽게 써야 합니다. PDPC는 조직이 「생성형 AI 모델의 개발 또는 개선에 사용」한다고 명시적으로 밝히고, 사용자가 이해하기 어려운 광범위한 설명 뒤에 숨기지 말 것을 요구합니다. 또한 AI 밸류체인 각 주체의 책임 구분과 공개 데이터 사용 시의 실사 의무도 다룹니다.',
+        summaryJa:
+          '個人データで生成 AI を訓練するなら、同意書に平易な言葉で書かねばならない。PDPC は組織に対し「生成 AI モデルの開発または改善に使用する」と明示的に述べることを求め、利用者が理解できない広範な記述の陰に隠すことを認めない。あわせて AI バリューチェーン各当事者の責任分担と、公開データ利用時のデューデリジェンス義務も扱う。',
+        summaryEn:
+          'If you train generative AI on personal data, the consent notice has to say so in plain words. PDPC requires organisations to state explicitly that data is used to develop or improve a generative AI model, rather than bury it in broad descriptions users will not notice or understand. The guidelines also allocate responsibilities across the AI value chain and set due-diligence expectations when relying on publicly available data.',
+        content: `2026 年 7 月 20 日，个人数据保护委员会 (PDPC) 在新加坡数据节 (Singapore Data Festival) 发布《生成式 AI 个人数据使用咨询指南》。这份指南**不新增法律义务**——它解释 PDPA 里早已存在的"须向数据主体取得同意"要求，在生成式 AI 场景下具体怎么落地。
+
+**核心要求：告知要具体，不能含糊。** 部长杨莉明在发布现场举的例子最能说明问题：一个客服团队想用通话录音改进生成式 AI 模型，好让回答更快更准。我们都接过这种电话，被告知"通话可能被录音以作质量检查与改进"——但录音里含姓名、地址、账单信息这些个人数据。那么在拿这些数据做模型训练之前，客服团队对客户有什么义务？
+
+指南的答案是：**明说**。组织应当在隐私政策里写清楚"已同意客户的通话录音将用于训练和改进 AI 模型"，并同步更新员工征求同意时使用的话术，让客户理解用途后再做知情选择。不能依赖用户根本不会注意、也读不懂的宽泛描述。
+
+**超出通知义务的两块。** PDPC 明确"许多组织今天已经在提供 AI 专项通知，所以指南要走得更远"：(1) **AI 价值链各方的角色与责任划分**——模型开发者、微调方、应用部署方各自承担什么；(2) **依赖公开可得数据时的尽职调查义务**——不是"公开的就能随便用"。
+
+**与 2024 年那份的关系。** PDPC 2024 年 3 月已发布《AI 推荐与决策系统个人数据使用咨询指南》，覆盖的是判别式 AI（推荐、评分、决策）。这份 2026 年的新指南针对生成式 AI 的训练与改进场景，两份并行，不是替代关系。
+
+同日 IMDA 还发布了《生成式 AI 聊天机器人透明度指南》，要求"聊天机器人信息卡"（Chatbot Information Card）——像药品包装上的标签一样，把用途、局限、数据处理方式与用户申诉渠道集中披露，而不是散落在服务条款和隐私声明里。两份文件一起构成新加坡在生成式 AI 上"数据层 + 应用层"的双层问责设计。`,
+        contentKo: `2026년 7월 20일 개인정보 보호위원회(PDPC)는 싱가포르 데이터 페스티벌(Singapore Data Festival)에서 《생성형 AI 개인정보 사용 자문 지침》을 발표했습니다. 이 지침은 **새로운 법적 의무를 추가하지 않습니다**——PDPA에 이미 존재하는 「데이터 주체로부터 동의를 얻어야 한다」는 요구 사항이 생성형 AI 상황에서 구체적으로 어떻게 적용되는지 설명합니다.
+
+**핵심 요구 사항: 고지는 구체적이어야 하며 모호해서는 안 됩니다.** 조세핀 테오 장관이 발표 현장에서 든 예시가 문제를 가장 잘 보여줍니다: 어떤 고객 서비스 팀이 통화 녹음으로 생성형 AI 모델을 개선하여 더 빠르고 정확하게 답변하고자 합니다. 우리 모두 이런 전화를 받아본 적이 있으며 「통화가 품질 점검 및 개선을 위해 녹음될 수 있습니다」라는 안내를 들었습니다——그러나 녹음에는 이름, 주소, 청구 정보 같은 개인정보가 포함됩니다. 그렇다면 이 데이터로 모델을 훈련하기 전에 고객 서비스 팀은 고객에게 어떤 의무가 있을까요?
+
+지침의 답은 **명시하라**입니다. 조직은 개인정보 처리방침에 「동의한 고객의 통화 녹음이 AI 모델 훈련 및 개선에 사용됩니다」라고 명확히 기재하고, 직원이 동의를 구할 때 사용하는 스크립트도 함께 갱신하여, 고객이 목적을 이해한 후 정보에 입각한 선택을 하도록 해야 합니다. 사용자가 전혀 알아차리지 못하고 이해할 수도 없는 광범위한 설명에 의존해서는 안 됩니다.
+
+**고지 의무를 넘어서는 두 가지.** PDPC는 「많은 조직이 이미 오늘날 AI 전용 고지를 제공하고 있으므로 지침은 더 나아간다」고 명시합니다: (1) **AI 밸류체인 각 주체의 역할과 책임 구분**——모델 개발자, 파인튜닝 주체, 애플리케이션 배포자가 각각 무엇을 부담하는지; (2) **공개적으로 이용 가능한 데이터에 의존할 때의 실사 의무**——「공개된 것은 마음대로 써도 된다」가 아닙니다.
+
+**2024년판과의 관계.** PDPC는 2024년 3월 《AI 추천 및 결정 시스템 개인정보 사용 자문 지침》을 발표했으며, 이는 판별형 AI(추천, 점수화, 의사결정)를 다룹니다. 이번 2026년 신규 지침은 생성형 AI의 훈련 및 개선 상황을 대상으로 하며, 두 지침은 병행하며 대체 관계가 아닙니다.
+
+같은 날 IMDA는 《생성형 AI 챗봇 투명성 지침》도 발표하여 「챗봇 정보 카드」(Chatbot Information Card)를 요구했습니다——의약품 포장의 라벨처럼 용도, 한계, 데이터 처리 방식, 사용자 구제 경로를 한곳에 공개하며, 서비스 약관과 개인정보 처리방침에 흩어지지 않도록 합니다. 두 문서는 함께 싱가포르의 생성형 AI에 대한 「데이터 계층 + 애플리케이션 계층」의 이중 책임 설계를 구성합니다.`,
+        contentJa: `2026 年 7 月 20 日、個人データ保護委員会 (PDPC) はシンガポールデータフェスティバル (Singapore Data Festival) で《生成 AI 個人データ利用に関する諮問ガイドライン》を発表した。このガイドラインは**新たな法的義務を追加しない**——PDPA にすでに存在する「データ主体から同意を得なければならない」という要件が、生成 AI の文脈で具体的にどう適用されるかを説明するものである。
+
+**中核的要求：告知は具体的でなければならず、曖昧であってはならない。** ジョセフィン・テオ大臣が発表の場で挙げた例が問題をよく示している。あるカスタマーサービスチームが通話録音を使って生成 AI モデルを改善し、より速く正確に回答したいと考えている。私たちは皆こうした電話を受け、「通話は品質チェックと改善のために録音される場合があります」と告げられた経験がある——しかし録音には氏名、住所、請求情報といった個人データが含まれる。ではこのデータをモデル訓練に使う前に、カスタマーサービスチームは顧客に対しどのような義務を負うのか。
+
+ガイドラインの答えは**明言せよ**である。組織はプライバシーポリシーに「同意した顧客の通話録音は AI モデルの訓練と改善に使用される」と明記し、スタッフが同意を求める際に用いるスクリプトも併せて更新し、顧客が目的を理解した上で情報に基づく選択ができるようにすべきである。利用者が気づきもせず、理解もできない広範な記述に依拠してはならない。
+
+**告知義務を超える 2 点。** PDPC は「多くの組織はすでに AI 専用の通知を提供しているため、ガイドラインはさらに踏み込む」と明示する：(1) **AI バリューチェーン各当事者の役割と責任の切り分け**——モデル開発者、ファインチューニング実施者、アプリケーション展開者がそれぞれ何を負うのか；(2) **公開されているデータに依拠する際のデューデリジェンス義務**——「公開されているものは自由に使ってよい」ではない。
+
+**2024 年版との関係。** PDPC は 2024 年 3 月に《AI 推薦・意思決定システムにおける個人データ利用に関する諮問ガイドライン》を発表しており、これは識別型 AI（推薦、スコアリング、意思決定）を対象とする。2026 年のこの新ガイドラインは生成 AI の訓練・改善の場面を対象とし、両者は並行するものであって置き換えではない。
+
+同日 IMDA は《生成 AI チャットボット透明性ガイドライン》も発表し、「チャットボット情報カード」(Chatbot Information Card) を求めた——医薬品パッケージのラベルのように、用途、限界、データの取り扱い、利用者の救済経路を一箇所に開示し、利用規約やプライバシー通知に散在させない。この 2 つの文書が合わさって、シンガポールの生成 AI に対する「データ層 + アプリケーション層」の二層的アカウンタビリティ設計を構成する。`,
+        contentEn: `On 20 July 2026, the Personal Data Protection Commission (PDPC) issued its Advisory Guidelines on the Use of Personal Data in Generative AI at the Singapore Data Festival. The guidelines **add no new legal obligation** — they explain how the PDPA's long-standing requirement to obtain consent from the data subject applies concretely in a generative-AI setting.
+
+**The core requirement: notice must be specific, not vague.** The example Minister Josephine Teo gave at the launch makes the point best. A customer service team wants to improve a generative AI model using call recordings so it can answer queries faster and more accurately. We have all been on the receiving end of such calls, told that "this call may be recorded for quality checks and improvement" — but those recordings contain personal data: names, addresses, billing details. What obligations does that team owe the customer before using the data for model training?
+
+The guidelines' answer is: **say so plainly.** Organisations should update the privacy policy to state that call recordings of consenting customers will be used to train and improve AI models, and update the scripts staff use when seeking consent, so customers understand the purpose and make an informed choice before consenting. Relying on broad descriptions users will not notice or understand is not enough.
+
+**Two things beyond the notice duty.** PDPC notes explicitly that "many organisations already provide such AI-specific notices today, therefore the Guidelines go further": (1) **roles and responsibilities across the AI value chain** — what model developers, fine-tuners and application deployers each carry; and (2) **due diligence when relying on publicly available data** — public does not mean free to use however you like.
+
+**Relationship to the 2024 guidelines.** PDPC issued Advisory Guidelines on the Use of Personal Data in AI Recommendation and Decision Systems in March 2024, covering discriminative AI (recommendation, scoring, decisions). These 2026 guidelines address the training and improvement of generative AI. The two run in parallel; the newer does not replace the older.
+
+The same day, IMDA launched Generative AI Chatbot Transparency Guidelines calling for a Chatbot Information Card — like the label on a medicine package, disclosing purpose, limitations, data handling and user recourse in one place rather than scattered across terms of service and privacy notices. Together the two documents form Singapore's two-layer accountability design for generative AI: one at the data layer, one at the application layer.`,
+        ministry: 'MDDI',
+        addedAt: '2026-07-28',
+        authorPersonIds: ['josephine-teo'],
+        relatedDebateIds: [],
+        relatedLeverNumbers: [],
+        relatedTimelineYears: [2026],
+        relatedPostSlugs: [],
+        topicIds: ['governance-regulation', 'safety-ethics'],
+      },
+      {
+        id: 'imda-generative-ai-chatbot-transparency-guidelines-2026',
+        title: 'IMDA 生成式 AI 聊天机器人透明度指南',
+        titleKo: 'IMDA 생성형 AI 챗봇 투명성 지침',
+        titleJa: 'IMDA 生成 AI チャットボット透明性ガイドライン',
+        titleEn: 'IMDA Generative AI Chatbot Transparency Guidelines',
+        date: '2026-07',
+        source: '资讯通信媒体发展局 (IMDA)',
+        sourceKo: '정보통신미디어개발청(IMDA)',
+        sourceJa: '情報通信メディア開発庁 (IMDA)',
+        sourceEn: 'Infocomm Media Development Authority (IMDA)',
+        sourceOrgUrl: 'https://www.imda.gov.sg/',
+        sourceUrl:
+          'https://www.imda.gov.sg/resources/press-releases-factsheets-and-speeches/new-transparency-guidelines-to-help-consumers-use-generative-ai-chatbots-safely-and-responsibly',
+        summary:
+          '给聊天机器人配一张"药品说明书"。IMDA 提出聊天机器人信息卡（Chatbot Information Card），把用途、局限、数据处理与申诉渠道集中披露，取代散落在服务条款与隐私声明里、要么太简化要么太技术的现状。',
+        summaryKo:
+          '챗봇에 「의약품 설명서」를 붙입니다. IMDA는 챗봇 정보 카드(Chatbot Information Card)를 제안하여 용도, 한계, 데이터 처리, 구제 경로를 한곳에 공개하도록 하며, 서비스 약관과 개인정보 처리방침에 흩어져 있고 지나치게 단순하거나 지나치게 기술적인 현재 상황을 대체합니다.',
+        summaryJa:
+          'チャットボットに「医薬品添付文書」を付ける。IMDA はチャットボット情報カード (Chatbot Information Card) を提唱し、用途、限界、データの取り扱い、救済経路を一箇所に開示させ、利用規約やプライバシー通知に散在し、簡略すぎるか技術的すぎる現状を置き換える。',
+        summaryEn:
+          'A medicine-style label for chatbots. IMDA proposes a Chatbot Information Card disclosing purpose, limitations, data handling and recourse in one place, replacing information currently scattered across terms of service and privacy notices and pitched either too simply or too technically for ordinary users.',
+        content: `2026 年 7 月 20 日，资讯通信媒体发展局 (IMDA) 在新加坡数据节发布《生成式 AI 聊天机器人透明度指南》，作为应用层问责的第一步。
+
+**要解决的问题。** 对绝大多数人来说，日常最常接触的生成式 AI 应用就是聊天机器人。我们在用，但往往不知道它的局限在哪、我们的数据去了哪里。信息其实是存在的——只是散落在服务条款、隐私声明和其他文档里，而且通常要么过于简化、要么过于技术化，普通用户读不懂。
+
+**做法：信息卡。** 指南提出"聊天机器人信息卡"(Chatbot Information Card)，运作方式类似药品包装上的标签——不列出每一条科学细节，而是把用户真正需要知道的关键事项集中、可读地呈现：这个机器人是做什么用的、它的局限是什么、你的数据会被怎样处理、出了问题你可以找谁。
+
+**与 PDPC 指南的分工。** 同日 PDPC 发布的《生成式 AI 个人数据使用指南》管的是**数据层**——组织拿个人数据训模型时的告知与同意义务。IMDA 这份管的是**应用层**——终端用户面对聊天机器人时能不能看懂自己在用什么。两者合起来是新加坡在生成式 AI 上的双层问责设计。
+
+这也延续了新加坡一贯的路径：先出自愿性、可操作的工具化框架（AI Verify、Model AI Governance Framework 都是这个路数），让业界先跑起来，而不是一步到位立法。`,
+        contentKo: `2026년 7월 20일 정보통신미디어개발청(IMDA)은 싱가포르 데이터 페스티벌에서 《생성형 AI 챗봇 투명성 지침》을 발표하며 애플리케이션 계층 책임의 첫걸음으로 삼았습니다.
+
+**해결하려는 문제.** 대다수 사람에게 일상적으로 가장 자주 접하는 생성형 AI 애플리케이션은 챗봇입니다. 우리는 사용하고 있지만 그 한계가 어디에 있는지, 우리 데이터가 어디로 가는지 알지 못하는 경우가 많습니다. 정보는 실제로 존재합니다——다만 서비스 약관, 개인정보 처리방침 및 기타 문서에 흩어져 있고, 대개 지나치게 단순하거나 지나치게 기술적이어서 일반 사용자가 이해할 수 없습니다.
+
+**방법: 정보 카드.** 지침은 「챗봇 정보 카드」(Chatbot Information Card)를 제안하며, 작동 방식은 의약품 포장의 라벨과 유사합니다——모든 과학적 세부 사항을 나열하지 않고, 사용자가 실제로 알아야 할 핵심 사항을 한곳에 읽기 쉽게 제시합니다: 이 봇은 무엇을 위한 것인지, 한계는 무엇인지, 당신의 데이터는 어떻게 처리되는지, 문제가 생기면 누구를 찾아야 하는지.
+
+**PDPC 지침과의 역할 분담.** 같은 날 PDPC가 발표한 《생성형 AI 개인정보 사용 지침》은 **데이터 계층**을 다룹니다——조직이 개인정보로 모델을 훈련할 때의 고지 및 동의 의무. IMDA의 이 지침은 **애플리케이션 계층**을 다룹니다——최종 사용자가 챗봇을 마주할 때 자신이 무엇을 쓰고 있는지 이해할 수 있는가. 두 가지를 합치면 싱가포르의 생성형 AI에 대한 이중 책임 설계가 됩니다.
+
+이는 싱가포르의 일관된 경로를 이어갑니다: 먼저 자발적이고 실행 가능한 도구화 프레임워크를 내놓고(AI Verify, Model AI Governance Framework 모두 이 방식), 업계가 먼저 움직이게 하며, 단번에 입법하지 않습니다.`,
+        contentJa: `2026 年 7 月 20 日、情報通信メディア開発庁 (IMDA) はシンガポールデータフェスティバルで《生成 AI チャットボット透明性ガイドライン》を発表し、アプリケーション層のアカウンタビリティの第一歩と位置づけた。
+
+**解こうとしている問題。** 大多数の人にとって、日常で最もよく触れる生成 AI アプリケーションはチャットボットである。私たちは使っているが、その限界がどこにあるのか、自分のデータがどこへ行くのかを知らないことが多い。情報は実際には存在する——ただ利用規約、プライバシー通知、その他の文書に散在しており、しかも通常は簡略すぎるか技術的すぎて、一般の利用者には読み取れない。
+
+**手法：情報カード。** ガイドラインは「チャットボット情報カード」(Chatbot Information Card) を提唱する。仕組みは医薬品パッケージのラベルに似ている——すべての科学的詳細を列挙するのではなく、利用者が本当に知る必要のある要点を一箇所に読みやすくまとめる。このボットは何のためのものか、その限界は何か、あなたのデータはどう扱われるのか、問題が起きたら誰に相談できるのか。
+
+**PDPC ガイドラインとの役割分担。** 同日 PDPC が発表した《生成 AI 個人データ利用ガイドライン》が扱うのは**データ層**——組織が個人データでモデルを訓練する際の告知・同意義務である。IMDA のこのガイドラインが扱うのは**アプリケーション層**——エンドユーザーがチャットボットに向き合うとき、自分が何を使っているのかを理解できるかどうかである。両者を合わせたものが、シンガポールの生成 AI における二層的アカウンタビリティ設計になる。
+
+これはシンガポールの一貫した路線の延長でもある。まず自発的で実行可能なツール化フレームワークを出し（AI Verify も Model AI Governance Framework もこの流儀である）、業界に先に動いてもらう。一足飛びに立法はしない。`,
+        contentEn: `On 20 July 2026, the Infocomm Media Development Authority (IMDA) launched Generative AI Chatbot Transparency Guidelines at the Singapore Data Festival, framed as a first step toward accountability at the application layer.
+
+**The problem being solved.** For most people, the generative AI application they meet most often is the chatbot. We use it, but often do not know its limitations, or what happens to our data. The information usually exists — it is just scattered across terms of service, privacy notices and other documents, and is typically either too simplistic or too technical for ordinary users.
+
+**The approach: an information card.** The guidelines call for a Chatbot Information Card that works like the label on a medicine package — it does not list every scientific detail, but presents the things a user actually needs to know in one readable place: what this bot is for, what its limitations are, how your data is handled, and where you can turn when something goes wrong.
+
+**Division of labour with the PDPC guidelines.** The PDPC's Advisory Guidelines on the Use of Personal Data in Generative AI, issued the same day, govern the **data layer** — the notice and consent obligations organisations owe when training models on personal data. IMDA's guidelines govern the **application layer** — whether an end user facing a chatbot can understand what they are using. Together they form Singapore's two-layer accountability design for generative AI.
+
+It also continues Singapore's consistent pattern: start with a voluntary, operational, toolised framework (AI Verify and the Model AI Governance Framework both followed this route), let industry move first, rather than legislating in one step.`,
+        ministry: 'IMDA',
+        addedAt: '2026-07-28',
+        authorPersonIds: [],
+        relatedDebateIds: [],
+        relatedLeverNumbers: [],
+        relatedTimelineYears: [2026],
+        relatedPostSlugs: [],
+        topicIds: ['governance-regulation', 'safety-ethics'],
+      },
+      {
         id: 'iso-iec-42119-8-generative-ai-testing-standard',
         title: 'ISO/IEC 42119-8 生成式 AI 测试标准（提案）',
         titleKo: 'ISO/IEC 42119-8 생성형 AI 테스팅 표준(제안)',
@@ -1285,6 +1427,73 @@ Strategically, this moves AI Verify from tools and frameworks into market infras
     nameEn: 'Sector Regulation',
     icon: '🏢',
     policies: [
+      {
+        id: 'digital-infrastructure-bill-consultation-2026',
+        title: '数字基础设施法案 (DIB) 公众咨询',
+        titleKo: '디지털 인프라 법안(DIB) 공개 협의',
+        titleJa: 'デジタルインフラ法案 (DIB) パブリックコンサルテーション',
+        titleEn: 'Digital Infrastructure Bill — Public Consultation',
+        date: '2026-07',
+        source: '数字发展与信息部 (MDDI) / 资讯通信媒体发展局 (IMDA)',
+        sourceKo: '디지털 개발 및 정보부(MDDI) / 정보통신미디어개발청(IMDA)',
+        sourceJa: 'デジタル発展・情報省 (MDDI) / 情報通信メディア開発庁 (IMDA)',
+        sourceEn:
+          'Ministry of Digital Development and Information (MDDI) / Infocomm Media Development Authority (IMDA)',
+        sourceOrgUrl: 'https://www.mddi.gov.sg/',
+        sourceUrl: 'https://www.mddi.gov.sg/newsroom/public-consultation-on-digital-infrastructure-bill/',
+        summary:
+          '给数据中心和云服务发牌照——AI 算力底座第一次被纳入硬法监管。≥10MW 数据中心与年收入 ≥S$1 亿的 IaaS/PaaS 云服务须申请「重大 FDI 牌照」，≥3MW 数据中心须申请「数据中心牌照」并满足强制 PUE 能效门槛。咨询期 2026 年 7 月 1 日至 7 月 22 日。',
+        summaryKo:
+          '데이터 센터와 클라우드 서비스에 라이선스를 부여합니다——AI 컴퓨팅 기반이 처음으로 강행법 규제에 편입되었습니다. ≥10MW 데이터 센터와 연간 매출 ≥S$1억의 IaaS/PaaS 클라우드 서비스는 「주요 FDI 라이선스」를 신청해야 하며, ≥3MW 데이터 센터는 「데이터 센터 라이선스」를 신청하고 강제 PUE 에너지 효율 기준을 충족해야 합니다. 협의 기간은 2026년 7월 1일부터 7월 22일까지입니다.',
+        summaryJa:
+          'データセンターとクラウドサービスにライセンスを付与する——AI コンピューティング基盤が初めて強行法規制に組み込まれた。≥10MW のデータセンターと年間収益 ≥S$1 億の IaaS/PaaS クラウドサービスは「主要 FDI ライセンス」の申請が必要で、≥3MW のデータセンターは「データセンターライセンス」を申請し、強制 PUE エネルギー効率基準を満たす必要がある。コンサルテーション期間は 2026 年 7 月 1 日から 7 月 22 日まで。',
+        summaryEn:
+          'Licensing for data centres and cloud services — the first time Singapore brings the AI compute layer under hard-law regulation. Data centres with ≥10MW critical IT load and IaaS/PaaS cloud services earning ≥S$100m/year in Singapore must obtain a "major FDI licence"; data centres ≥3MW must hold a "DC licence" and meet mandatory power usage effectiveness (PUE) requirements. Consultation ran 1–22 July 2026.',
+        content: `2026 年 7 月 1 日，数字发展与信息部 (MDDI) 与资讯通信媒体发展局 (IMDA) 就《数字基础设施法案》(Digital Infrastructure Bill, DIB) 草案启动公众咨询，7 月 22 日上午 10 时截止。这部法案对新加坡 AI 议题的意义在于：**它第一次把「算力底座」本身变成受牌照监管的行业**，而不是只监管跑在上面的模型和应用。
+
+**两套牌照。** 第一套是「重大基础性数字基础设施牌照」(major FDI licence)，覆盖两类服务：(1) 关键 IT 负载 (critical IT load, CIL) ≥ 10 兆瓦、且对外提供服务的数据中心设施服务（即云与托管型数据中心）；(2) 在新加坡年均收入 ≥ 1 亿新元、属于 IaaS 或 PaaS（不含 SaaS）的云计算服务。持牌方须落实物理与网络安全措施、业务连续性与灾难恢复计划，并向 IMDA 报告网络安全事件与服务中断。第二套是「数据中心牌照」(DC licence)，门槛更低——CIL ≥ 3 兆瓦的数据中心运营商都要申请，重点是能效与可持续性。同时符合两类的运营商须同时持有两张牌照，IMDA 会合并申请流程。
+
+**能效从自愿变强制。** IMDA 审批数据中心牌照时，除运营经验外还要看能效与水效，并可考虑能源来源的可再生程度、发电温室气体排放量，以及申请方业务对新加坡经济的战略重要性。持牌运营商须满足设施级 PUE（电能使用效率）要求；法案还为 IMDA 未来对 IT 设备能效与设施级水效设限留了口子。这是对 Green DC Roadmap 的硬化——政府明确表态「自愿措施无法保证全行业一致的可持续性结果」。
+
+**与既有法律的接口。** 2024 年《网络安全法》修订已针对重大 FDI 服务设了网络安全要求，但缺少更广义的「运营韧性」框架，DIB 补的正是这一块，并同步修订 2018 年《网络安全法》与 2024 年修订案，统一「基础性数字基础设施服务」与「数据中心设施服务」的定义。执法方面，IMDA 获得发牌、续牌、暂停、吊销、发布实务守则与指令、处以罚款、以及执法调查的权力。
+
+**为什么这条对 AI 观察重要。** 新加坡一贯的做法是「不立横切 AI 法，用既有行业法把 AI 纳管」。DIB 是这套方法论在算力层的落地：它不谈模型、不谈训练，但通过给数据中心和云服务发牌照，把 AI 基础设施的安全、韧性与能耗全部纳入监管视野。这也回应了国会关于 one-north AI 园区能耗、AI 能源足迹的多次质询——政府的答案始终是「监管重心在基础设施层，而非模型层」。`,
+        contentKo: `2026년 7월 1일, 디지털 개발 및 정보부(MDDI)와 정보통신미디어개발청(IMDA)은 《디지털 인프라 법안》(Digital Infrastructure Bill, DIB) 초안에 대한 공개 협의를 시작했으며, 7월 22일 오전 10시에 마감되었습니다. 이 법안이 싱가포르 AI 의제에 갖는 의미는: **처음으로 「컴퓨팅 기반」 자체를 라이선스 규제 대상 산업으로 만들었다는 점**이며, 그 위에서 실행되는 모델과 애플리케이션만 규제하는 것이 아닙니다.
+
+**두 가지 라이선스.** 첫 번째는 「주요 기초 디지털 인프라 라이선스」(major FDI licence)로, 두 가지 서비스를 포함합니다: (1) 핵심 IT 부하(critical IT load, CIL)가 ≥ 10메가와트이고 외부에 서비스를 제공하는 데이터 센터 시설 서비스(즉 클라우드 및 코로케이션 데이터 센터); (2) 싱가포르에서 연평균 수익이 ≥ 1억 싱가포르 달러이며 IaaS 또는 PaaS(SaaS 제외)에 속하는 클라우드 컴퓨팅 서비스. 라이선스 보유자는 물리적 및 사이버 보안 조치, 비즈니스 연속성 및 재해 복구 계획을 실행하고, IMDA에 사이버 보안 사고 및 서비스 중단을 보고해야 합니다. 두 번째는 「데이터 센터 라이선스」(DC licence)로, 기준이 더 낮습니다——CIL ≥ 3메가와트의 데이터 센터 운영자는 모두 신청해야 하며, 에너지 효율과 지속 가능성에 중점을 둡니다. 두 유형에 모두 해당하는 운영자는 두 라이선스를 모두 보유해야 하며, IMDA는 신청 절차를 통합합니다.
+
+**에너지 효율이 자발적에서 강제로.** IMDA는 데이터 센터 라이선스를 심사할 때 운영 경험 외에도 에너지 효율과 수자원 효율을 고려하며, 에너지원의 재생 가능 정도, 발전 온실가스 배출량, 신청자 사업이 싱가포르 경제에 갖는 전략적 중요성도 고려할 수 있습니다. 라이선스 운영자는 시설 수준 PUE(전력 사용 효율) 요구 사항을 충족해야 하며, 법안은 IMDA가 향후 IT 장비 에너지 효율과 시설 수준 수자원 효율에 제한을 두는 여지도 남겨두었습니다. 이는 Green DC Roadmap의 강화입니다——정부는 「자발적 조치만으로는 업계 전반의 일관된 지속 가능성 결과를 보장할 수 없다」고 명확히 밝혔습니다.
+
+**기존 법률과의 인터페이스.** 2024년 《사이버보안법》 개정은 이미 주요 FDI 서비스에 대한 사이버 보안 요구 사항을 마련했지만, 더 광범위한 「운영 회복력」 프레임워크가 부족했습니다. DIB가 보완하는 것이 바로 이 부분이며, 동시에 2018년 《사이버보안법》과 2024년 개정안을 수정하여 「기초 디지털 인프라 서비스」와 「데이터 센터 시설 서비스」의 정의를 통일합니다. 집행 측면에서 IMDA는 라이선스 발급, 갱신, 정지, 취소, 실무 규범 및 지침 발표, 벌금 부과, 집행 조사 권한을 갖게 됩니다.
+
+**AI 관찰에 왜 중요한가.** 싱가포르의 일관된 접근 방식은 「횡단적 AI 법을 제정하지 않고, 기존 산업법으로 AI를 규제한다」입니다. DIB는 이 방법론이 컴퓨팅 계층에서 구현된 것입니다: 모델이나 훈련을 논하지 않지만, 데이터 센터와 클라우드 서비스에 라이선스를 부여함으로써 AI 인프라의 보안, 회복력, 에너지 소비를 모두 규제 시야에 넣습니다. 이는 one-north AI 단지 에너지 소비, AI 에너지 발자국에 관한 국회의 여러 질의에도 응답한 것입니다——정부의 답변은 항상 「규제 중심은 모델 계층이 아니라 인프라 계층에 있다」였습니다.`,
+        contentJa: `2026 年 7 月 1 日、デジタル発展・情報省 (MDDI) と情報通信メディア開発庁 (IMDA) は《デジタルインフラ法案》(Digital Infrastructure Bill, DIB) 草案についてパブリックコンサルテーションを開始し、7 月 22 日午前 10 時に締め切られました。この法案がシンガポールの AI 議題に持つ意義は：**初めて「コンピューティング基盤」そのものをライセンス規制対象産業にした点**であり、その上で動くモデルとアプリケーションだけを規制するのではありません。
+
+**2 種類のライセンス。** 1 つ目は「主要基礎デジタルインフラライセンス」(major FDI licence) で、2 種類のサービスをカバーします：(1) 重要 IT 負荷 (critical IT load, CIL) が ≥ 10 メガワットで、外部にサービスを提供するデータセンター施設サービス（すなわちクラウドおよびコロケーション型データセンター）；(2) シンガポールでの年間平均収益が ≥ 1 億シンガポールドルで、IaaS または PaaS（SaaS を除く）に属するクラウドコンピューティングサービス。ライセンス保有者は物理的およびサイバーセキュリティ対策、事業継続および災害復旧計画を実施し、IMDA にサイバーセキュリティインシデントとサービス中断を報告する必要があります。2 つ目は「データセンターライセンス」(DC licence) で、基準はより低く——CIL ≥ 3 メガワットのデータセンター運営者はすべて申請が必要で、エネルギー効率と持続可能性に重点が置かれます。両方に該当する運営者は 2 つのライセンスを同時に保有する必要があり、IMDA は申請プロセスを統合します。
+
+**エネルギー効率が任意から強制へ。** IMDA はデータセンターライセンスを審査する際、運営経験に加えてエネルギー効率と水効率も考慮し、エネルギー源の再生可能性、発電による温室効果ガス排出量、申請者の事業がシンガポール経済に持つ戦略的重要性も考慮できます。ライセンス運営者は施設レベルの PUE（電力使用効率）要件を満たす必要があり、法案は IMDA が将来 IT 機器のエネルギー効率と施設レベルの水効率に制限を設ける余地も残しています。これは Green DC Roadmap の硬化です——政府は「任意の措置だけでは業界全体で一貫した持続可能性の結果を保証できない」と明確に表明しました。
+
+**既存法律とのインターフェース。** 2024 年《サイバーセキュリティ法》改正はすでに主要 FDI サービスに対するサイバーセキュリティ要件を定めていましたが、より広義の「運用レジリエンス」フレームワークが欠けていました。DIB が補うのはまさにこの部分であり、同時に 2018 年《サイバーセキュリティ法》と 2024 年改正案を修正し、「基礎デジタルインフラサービス」と「データセンター施設サービス」の定義を統一します。執行面では、IMDA はライセンスの発行、更新、停止、取消、実務規範および指令の発出、罰金の賦課、執行調査の権限を得ます。
+
+**なぜ AI 観察にとって重要か。** シンガポールの一貫したアプローチは「横断的 AI 法を制定せず、既存の産業法で AI を規制する」ことです。DIB はこの方法論のコンピューティング層での実装です：モデルや訓練については語らないものの、データセンターとクラウドサービスにライセンスを付与することで、AI インフラのセキュリティ、レジリエンス、エネルギー消費をすべて規制の視野に入れます。これは one-north AI パークのエネルギー消費、AI のエネルギーフットプリントに関する国会での度重なる質問にも応えるものです——政府の答えは常に「規制の重心はモデル層ではなくインフラ層にある」でした。`,
+        contentEn: `On 1 July 2026, the Ministry of Digital Development and Information (MDDI) and the Infocomm Media Development Authority (IMDA) opened public consultation on the draft Digital Infrastructure Bill (DIB), closing 22 July 2026 at 10am. Its significance for Singapore's AI agenda: **it is the first time the compute layer itself becomes a licensed industry**, rather than regulating only the models and applications running on top of it.
+
+**Two licences.** The first is the *major FDI licence* (foundational digital infrastructure), covering two service types: (1) data centre facility services provided in a DC with a critical IT load (CIL) of ≥ 10 megawatts serving unrelated third parties — i.e. cloud and co-location DCs; and (2) cloud computing services generating ≥ S$100 million per year in Singapore revenue averaged over the preceding three years, falling within IaaS or PaaS (but not SaaS). Licensees must implement physical and cybersecurity measures, business continuity and disaster recovery plans, and notify IMDA of cybersecurity incidents and service delivery disruptions. The second is the *DC licence*, with a lower threshold — every DC operator with CIL ≥ 3 megawatts must apply — focused on energy efficiency and sustainability. Operators meeting both criteria need both licences; IMDA will streamline the joint application.
+
+**Energy efficiency moves from voluntary to mandatory.** In assessing a DC licence application, IMDA will weigh energy and water efficiency alongside operating experience, and may consider the renewability of energy sources, greenhouse gas emissions from electricity generation, and the economic or strategic importance of the applicant's operations to Singapore. Licensed operators must meet facility-level power usage effectiveness (PUE) requirements; the Bill also leaves room for IMDA to set IT-equipment energy efficiency and facility-level water efficiency requirements in future. This hardens the Green DC Roadmap — the government states plainly that "voluntary measures alone cannot ensure consistent sustainability outcomes across the sector."
+
+**Interface with existing law.** The 2024 Cybersecurity Act amendments already imposed cybersecurity requirements on major FDI services, but there was no statutory framework for broader operational resilience. The DIB fills exactly that gap, while making related amendments to the Cybersecurity Act 2018 and the Cybersecurity (Amendment) Act 2024 to align the definitions of "foundational digital infrastructure service" and "data centre facility service". On enforcement, IMDA gains powers to grant, renew, suspend and revoke licences, issue codes of practice and directions, impose financial penalties, and conduct enforcement and investigation.
+
+**Why this matters for AI watchers.** Singapore's consistent approach is to avoid a horizontal AI act and instead bring AI under existing sector statutes. The DIB is that methodology applied at the compute layer: it says nothing about models or training, yet by licensing data centres and cloud services it pulls the security, resilience and energy footprint of AI infrastructure into regulatory view. It also answers repeated parliamentary questions on one-north AI park energy consumption and AI's energy footprint — where the government's answer has consistently been that the regulatory centre of gravity sits at the infrastructure layer, not the model layer.`,
+        ministry: 'MDDI',
+        addedAt: '2026-07-28',
+        authorPersonIds: [],
+        relatedDebateIds: ['written-answer-22443'],
+        relatedLeverNumbers: [],
+        relatedTimelineYears: [2026],
+        relatedPostSlugs: [],
+        topicIds: ['governance-regulation', 'infrastructure-research'],
+      },
       {
         id: 'ai-in-healthcare-guidelines-aihgle',
         title: '医疗 AI 联合指南 (AIHGle)',

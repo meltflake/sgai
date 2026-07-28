@@ -205,11 +205,19 @@ export const ecosystemCategories: EcosystemCategory[] = [
           'Initial funding of up to S$150M over 5 years from NRF (2017–2022, since extended to 2027); 500+ AIAP apprentices to date; SEA-LION downloads in the millions',
         leaders: [
           {
+            name: 'Christian Wolfrum',
+            title: '执行主席（2026 年 7 月起）',
+            titleKo: '집행회장(2026년 7월부터)',
+            titleJa: '執行会長（2026 年 7 月より）',
+            titleEn: 'Executive Chairman (from July 2026)',
+            personId: 'christian-wolfrum',
+          },
+          {
             name: 'Ho Teck Hua',
-            title: '创始执行主席',
-            titleKo: '초대 집행회장',
-            titleJa: '創設執行会長',
-            titleEn: 'Founding Executive Chairman',
+            title: '创始执行主席（2017–2026 年 6 月）',
+            titleKo: '초대 집행회장(2017–2026년 6월)',
+            titleJa: '創設執行会長（2017–2026 年 6 月）',
+            titleEn: 'Founding Executive Chairman (2017–June 2026)',
             personId: 'ho-teck-hua',
           },
           {

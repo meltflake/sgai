@@ -48,6 +48,34 @@ test('does NOT flag a speech that mentions privacy / data / newsletters in passi
   assert.equal(isNoiseParagraph("Singapore's AI governance framework was the first in Asia."), false);
 });
 
+// REGRESSION (2026-07-28): the Singapore Data Festival speech announcing
+// the PDPC Advisory Guidelines on generative AI failed the CI gate because
+// a body paragraph told organisations to update their privacy policy. A
+// digital-policy minister naming these documents out loud is the normal
+// case, not chrome — footer patterns must require chrome-like length.
+test('does NOT flag speech prose that names a Privacy Policy / Terms of Use', () => {
+  assert.equal(
+    isNoiseParagraph(
+      'For the customer service team in the example that I described, they can update the privacy policy to state that call recordings of consenting customers will be used to train and improve AI models.'
+    ),
+    false
+  );
+  assert.equal(
+    isNoiseParagraph(
+      'Platforms should set out clearly in their Terms of Use how automated systems moderate content, so that users understand what recourse they have when a decision goes against them.'
+    ),
+    false
+  );
+});
+
+test('still flags footer chrome, which is always a short standalone line', () => {
+  assert.equal(isNoiseParagraph('Privacy Statement'), true);
+  assert.equal(isNoiseParagraph('Terms of Use'), true);
+  assert.equal(isNoiseParagraph('© 2026 Government of Singapore, last updated 27 July 2026'), true);
+  assert.equal(isNoiseParagraph('All Rights Reserved'), true);
+  assert.equal(isNoiseParagraph('MDDI (P) 025/05/2026'), true);
+});
+
 test('findNoiseParagraphs returns indexed hits, skips clean paragraphs', () => {
   const paras = [
     'Newsroom Keynote by Minister at AI Summit Speeches',

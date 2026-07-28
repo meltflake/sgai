@@ -552,6 +552,74 @@ export const people: Person[] = [
     ],
   },
   {
+    id: 'christian-wolfrum',
+    topicIds: ['infrastructure-research', 'talent-education'],
+    nameEn: 'Christian Wolfrum',
+    name: 'Christian Wolfrum',
+    nameKo: '크리스티안 볼프룸',
+    nameJa: 'クリスチャン・ヴォルフルム',
+    aliases: ['Prof Christian Wolfrum', 'Professor Christian Wolfrum'],
+    titleEn: 'Executive Chairman of AI Singapore; Deputy President and Provost, NTU',
+    title: 'AI Singapore 执行主席 / 南洋理工大学常务副校长兼教务长',
+    titleKo: 'AI Singapore 집행회장 / 난양이공대학 부총장 겸 교무처장',
+    titleJa: 'AI Singapore 執行会長 / 南洋理工大学副学長兼教務長',
+    category: 'academic',
+    roles: ['academic', 'researcher'],
+    affiliations: ['NTU', 'AISG'],
+    party: null,
+    summary:
+      '2026 年 7 月 1 日接任 AI Singapore 执行主席，接替创始执行主席何德华。现任南洋理工大学常务副校长兼教务长，曾任苏黎世联邦理工学院（ETH Zurich）研究副校长，参与创建瑞士国家 AI 研究所与 Swiss AI Initiative。',
+    summaryKo:
+      '2026년 7월 1일 AI Singapore 집행회장으로 취임하여 창립 집행회장 Ho Teck Hua의 뒤를 이었습니다. 현재 난양이공대학 부총장 겸 교무처장이며, 취리히 연방공과대학(ETH Zurich) 연구 부총장을 역임하고 스위스 국립 AI 연구소와 Swiss AI Initiative 설립에 참여했습니다.',
+    summaryJa:
+      '2026 年 7 月 1 日に AI Singapore 執行会長に就任し、創設執行会長の何德華の後任となった。現在は南洋理工大学副学長兼教務長で、チューリッヒ工科大学（ETH Zurich）研究担当副学長を務め、スイス国立 AI 研究所と Swiss AI Initiative の設立に関与した。',
+    summaryEn:
+      'Took over as Executive Chairman of AI Singapore on 1 July 2026, succeeding founding Executive Chairman Ho Teck Hua. Currently Deputy President and Provost at NTU; previously Vice President for Research at ETH Zurich, where he helped establish the Swiss National AI Institute and the Swiss AI Initiative.',
+    channels: [
+      {
+        platform: 'website',
+        url: 'https://www.ntu.edu.sg/about-us/university-leadership/profiles/professor-christian-wolfrum',
+        label: 'NTU 官方档案',
+        labelKo: 'NTU 공식 아카이브',
+        labelJa: 'NTU 公式アーカイブ',
+        labelEn: 'NTU official profile',
+        primary: true,
+      },
+    ],
+    signatureWork: [
+      {
+        title: '出任 AI Singapore 第二任执行主席',
+        titleEn: 'Appointed second Executive Chairman of AI Singapore',
+        titleJa: 'AI Singapore 第 2 代執行会長に就任',
+        titleKo: 'AI Singapore 제2대 집행회장 취임',
+        description:
+          '2026 年 7 月 1 日接任 AI Singapore 执行主席，将带领 AISG 推进国家 AI 战略 2.0 的优先方向，并强化 AISG 在《国家 AI 研发计划》下的研究与创新产出。',
+        descriptionEn:
+          "Became Executive Chairman of AI Singapore on 1 July 2026, tasked with advancing Singapore's priorities under National AI Strategy 2.0 and strengthening AISG's research and innovation outcomes under the National AI Research & Development Plan.",
+        descriptionJa:
+          '2026 年 7 月 1 日に AI Singapore 執行会長に就任。AISG を率いて国家 AI 戦略 2.0 の優先方向を推進し、《国家 AI 研究開発計画》の下での研究・イノベーション成果を強化する。',
+        descriptionKo:
+          '2026년 7월 1일 AI Singapore 집행회장으로 취임했습니다. AISG를 이끌고 국가 AI 전략 2.0의 우선 방향을 추진하며, 《국가 AI 연구개발 계획》 하의 연구 및 혁신 성과를 강화합니다.',
+        since: '2026-07',
+        sourceUrl: 'https://www.mddi.gov.sg/newsroom/appointment-of-new-executive-chairman-of-ai-singapore/',
+      },
+    ],
+    externalRoles: [
+      {
+        organization: '南洋理工大学 (NTU)',
+        organizationEn: 'Nanyang Technological University (NTU)',
+        organizationJa: '南洋理工大学 (NTU)',
+        organizationKo: '난양이공대학 (NTU)',
+        role: '常务副校长兼教务长',
+        roleEn: 'Deputy President and Provost',
+        roleJa: '副学長兼教務長',
+        roleKo: '부총장 겸 교무처장',
+        sourceUrl: 'https://www.ntu.edu.sg/about-us/university-leadership/profiles/professor-christian-wolfrum',
+      },
+    ],
+    addedAt: '2026-07-28',
+  },
+  {
     id: 'ho-teck-hua',
     topicIds: ['infrastructure-research', 'talent-education'],
     nameEn: 'Ho Teck Hua',
