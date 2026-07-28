@@ -769,24 +769,6 @@ export interface AutoDiscoveredEntry {
   reasonForLowConfidence?: string;
 }
 
-export const autoDiscovered: AutoDiscoveredEntry[] = [];
-
-export interface AutoDiscoveredEntry {
-  title: string;
-  titleEn: string;
-  titleJa?: string;
-  titleKo?: string;
-  description: string;
-  descriptionEn: string;
-  descriptionJa?: string;
-  descriptionKo?: string;
-  category: string;
-  confidence: 'high' | 'medium' | 'low';
-  sourceUrl: string;
-  discoveredAt: string;
-  reasonForLowConfidence?: string;
-}
-
 export const autoDiscovered: AutoDiscoveredEntry[] = [
   {
     title: 'Pints AI荣获新加坡AI财务全球挑战创业补助金',
