@@ -31,6 +31,7 @@ weekly/monthly/quarterly/half-yearly，掉电/睡眠后下次开机补跑。
 """
 
 import argparse
+import html as _html
 import json
 import logging
 import os
@@ -170,17 +171,40 @@ def save_state(state: dict):
 
 
 # ── 管线 1: YouTube 视频 ─────────────────────────────────────────────────────
-def run_videos(logger) -> dict:
+def run_videos(logger, dry_run: bool = False) -> dict:
     import importlib
 
     mod = importlib.import_module("videos.01_scan_channels")
     candidates = mod.scan_channels(exclude_existing=True, days=14)
-    logger.info(f"YouTube 扫描完成: {len(candidates)} 条候选")
+    # Persist via merge-write. The cron path used to call scan_channels()
+    # without ever writing candidates.json (only main() wrote it), so daily
+    # results lived solely in the issue body — which also stripped videoId.
+    # Candidates that aged out of the RSS window before a human ran emit
+    # were unrecoverable (2026-07-07 and 2026-07-28 incidents, 3 videos
+    # each, both recovered only via yt-dlp title search).
+    if dry_run:
+        # --dry-run contract: 不写盘。Report what WOULD be pending.
+        pending = candidates
+        logger.info(f"YouTube 扫描完成 (dry-run, 不写盘): {len(candidates)} 条新候选")
+    else:
+        pending = mod.merge_write_candidates(candidates)
+        logger.info(f"YouTube 扫描完成: {len(candidates)} 条新候选, 合并后待处理 {len(pending)} 条")
     return {
         "count": len(candidates),
+        "pending": len(pending),
+        # Full pending list, with videoId + youtubeUrl so the issue alone is
+        # enough to run emit even if candidates.json is lost. No [:10] cap —
+        # daily volume is 0-5, and a silent cap hid the tail while `count`
+        # claimed the true total.
         "items": [
-            {"date": v["date"], "title": v["title"], "channel": v["channel"]}
-            for v in candidates[:10]
+            {
+                "date": v.get("date", ""),
+                "title": v.get("title", ""),
+                "channel": v.get("channel", ""),
+                "videoId": v.get("videoId", ""),
+                "youtubeUrl": v.get("youtubeUrl", ""),
+            }
+            for v in pending
         ],
     }
 
@@ -336,13 +360,20 @@ def compose_email(results: dict, errors: list[str], elapsed: float) -> tuple[str
     # Per-pipeline blocks.
     if "videos" in results:
         r = results["videos"]
-        lines.append(f"<h3>YouTube 视频: {r.get('count', 0)} 条新候选</h3>")
+        pending = r.get("pending", r.get("count", 0))
+        lines.append(f"<h3>YouTube 视频: {r.get('count', 0)} 条新候选 · 待处理共 {pending} 条</h3>")
         if r.get("items"):
             lines.append("<ul>")
             for v in r["items"]:
-                lines.append(f"  <li>[{v.get('date','?')}] {v.get('channel','?')}: {v.get('title','?')}</li>")
+                vid = v.get("videoId", "")
+                url = v.get("youtubeUrl", "")
+                link = f" · <a href='{url}'>{vid}</a>" if url and vid else (f" · {vid}" if vid else "")
+                lines.append(
+                    f"  <li>[{v.get('date','?')}] {v.get('channel','?')}: {v.get('title','?')}{link}</li>"
+                )
             lines.append("</ul>")
-            lines.append("<p>人工审核: <code>cd scripts && python videos/02_review_and_merge.py</code></p>")
+            ids = ",".join(v.get("videoId", "") for v in r["items"] if v.get("videoId"))
+            lines.append(f"<p>Emit: <code>npx tsx scripts/refresh/videos/emit.ts --ids={ids}</code></p>")
         elif not r.get("error"):
             lines.append("<p>无新内容</p>")
 
@@ -369,17 +400,22 @@ def compose_email(results: dict, errors: list[str], elapsed: float) -> tuple[str
         f = r.get("failures", 0) or 0
         err = r.get("error")
         if err:
-            lines.append(f"<h3>[{pid}] ⚠ failed</h3><p style='color:red'>{err}</p>")
+            # <pre> (not <p>): the signal is now multi-line (eval summary
+            # block + stderr tail) and may contain angle brackets from TS
+            # error messages — escape it, and html_to_markdown converts the
+            # block to a fenced ``` region that GitHub renders verbatim.
+            lines.append(f"<h3>[{pid}] ⚠ failed</h3><pre>{_html.escape(str(err))}</pre>")
         elif r.get("pr_url"):
             lines.append(f"<h3>[{pid}] {c} new entries · PR opened · {f} failures</h3>")
         else:
             lines.append(f"<h3>[{pid}] {c} new entries · {f} failures</h3>")
 
     if errors:
-        lines.append("<h3>错误</h3><ul>")
+        lines.append("<h3>错误</h3>")
         for e in errors:
-            lines.append(f"  <li style='color:red'>{e}</li>")
-        lines.append("</ul>")
+            # <pre> per error, not <li>: multi-line signals collapse into an
+            # unreadable run-on inside a list item.
+            lines.append(f"<pre>{_html.escape(str(e))}</pre>")
 
     lines.append(f"<hr><p>运行耗时: {elapsed:.0f}s | 错误: {len(errors)} 个</p>")
     return subject, "\n".join(lines)
@@ -458,18 +494,37 @@ def html_to_markdown(html: str) -> str:
     import re as _re
 
     s = html
+
+    # <pre> FIRST, stashed behind placeholders: the content is an escaped
+    # error signal that may contain <angle-bracket> fragments the generic
+    # tag-stripper below would otherwise eat, and its newlines must survive
+    # to render as a fenced block on GitHub. DOTALL because the signal is
+    # multi-line (the old <p> rule silently failed to match it at all).
+    pre_blocks: list[str] = []
+
+    def _stash_pre(m: "_re.Match[str]") -> str:
+        pre_blocks.append(m.group(1))
+        return f"\n\x00PRE{len(pre_blocks) - 1}\x00\n"
+
+    s = _re.sub(r"<pre>(.*?)</pre>", _stash_pre, s, flags=_re.DOTALL)
+
     s = _re.sub(r"<h2>(.*?)</h2>", r"## \1\n", s)
     s = _re.sub(r"<h3>(.*?)</h3>", r"### \1\n", s)
-    s = _re.sub(r"<p[^>]*>(.*?)</p>", r"\1\n", s)
+    s = _re.sub(r"<p[^>]*>(.*?)</p>", r"\1\n", s, flags=_re.DOTALL)
     s = _re.sub(r"<ul>", "", s)
     s = _re.sub(r"</ul>", "\n", s)
-    s = _re.sub(r"<li>(.*?)</li>", r"- \1", s)
+    s = _re.sub(r"<li[^>]*>(.*?)</li>", r"- \1", s)
     s = _re.sub(r"<a href=['\"]([^'\"]+)['\"]>([^<]+)</a>", r"[\2](\1)", s)
     s = _re.sub(r"<strong>(.*?)</strong>", r"**\1**", s)
     s = _re.sub(r"<code>(.*?)</code>", r"`\1`", s)
     s = _re.sub(r"<hr>", "---", s)
     s = _re.sub(r"<[^>]+>", "", s)
     s = _re.sub(r"\n{3,}", "\n\n", s)
+
+    for i, block in enumerate(pre_blocks):
+        fenced = "```\n" + _html.unescape(block).strip("\n") + "\n```"
+        s = s.replace(f"\x00PRE{i}\x00", fenced)
+
     return s.strip()
 
 
@@ -488,6 +543,65 @@ def cleanup_old_logs(logger):
             pass
     if count:
         logger.info(f"清理了 {count} 个过期日志文件")
+
+
+# ── 失败信号提取 ──────────────────────────────────────────────────────────────
+# npm writes notice/warn/fund chatter to stderr on virtually every command
+# (the bogus pnpm-only `shamefully-hoist` key in .npmrc makes at least one
+# warn line a certainty). Three generations of this bug (#134 → #137 fix,
+# #138 → #139 fix, #162/#165) all came from that chatter crowding the real
+# error out of the issue body.
+NPM_NOISE_PREFIXES = ("npm warn", "npm notice", "npm fund", "npm err!")
+
+# Environment for tsx subprocesses: silence npm's own chatter at the source.
+# Inherited by the nested `npx` children that run-all.ts spawns with
+# stdio:'inherit', which is the interleaving path a stderr filter can't
+# reliably win against.
+NPM_QUIET_ENV = {
+    "NPM_CONFIG_UPDATE_NOTIFIER": "false",
+    "NO_UPDATE_NOTIFIER": "1",
+    "NPM_CONFIG_LOGLEVEL": "error",
+    "NPM_CONFIG_FUND": "false",
+}
+
+EVAL_SUMMARY_MARKER = "=== Eval Summary ==="
+
+
+def extract_failure_signal(returncode: int, stdout: str, stderr: str) -> str:
+    """Distill a failed subprocess's output down to what a human must see.
+
+    Rules (each one is the fix for a past regression):
+    - stdout is harvested UNCONDITIONALLY. Evals print their verdict to
+      stdout (`=== Eval Summary ===` block, run-all.ts); issue #165 happened
+      because the stdout fallback was gated on stderr being empty and one
+      surviving `npm notice` line suppressed it.
+    - stderr drops npm notice/warn/fund noise lines, then keeps the tail.
+    - The combined signal is TAIL-sliced ([-1500:]), never head-sliced —
+      real errors live at the end of the stream ([:300] hid them).
+    """
+    parts: list[str] = []
+
+    stdout_lines = [ln for ln in stdout.splitlines() if ln.strip()]
+    marker_idx = None
+    for i, ln in enumerate(stdout_lines):
+        if EVAL_SUMMARY_MARKER in ln:
+            marker_idx = i  # keep the LAST occurrence
+    if marker_idx is not None:
+        parts.append("\n".join(stdout_lines[marker_idx:]))
+    elif stdout_lines:
+        signal_lines = [ln for ln in stdout_lines if "FAIL" in ln or "Error" in ln or "error" in ln]
+        parts.append("\n".join((signal_lines or stdout_lines)[-5:]))
+
+    stderr_lines = [
+        ln
+        for ln in stderr.splitlines()
+        if ln.strip() and not ln.lstrip().lower().startswith(NPM_NOISE_PREFIXES)
+    ]
+    if stderr_lines:
+        parts.append("\n".join(stderr_lines[-10:]))
+
+    signal = "\n".join(p for p in parts if p).strip()
+    return f"exit {returncode}: {signal[-1500:]}"
 
 
 # ── 主流程 ────────────────────────────────────────────────────────────────────
@@ -519,6 +633,7 @@ def run_tsx_pipeline(pipeline: dict, logger, dry_run: bool = False) -> dict:
         capture_output=True,
         text=True,
         encoding="utf-8",
+        env={**os.environ, **NPM_QUIET_ENV},
     )
     if proc.stdout:
         for line in proc.stdout.splitlines():
@@ -527,19 +642,11 @@ def run_tsx_pipeline(pipeline: dict, logger, dry_run: bool = False) -> dict:
         for line in proc.stderr.splitlines():
             logger.debug(f"    | err: {line}")
     if proc.returncode != 0:
-        # npm warn 噪音会挤掉 300 字符预算里的真实错误（2026-07-12 issue #134
-        # 的 evals 错误全被 "npm warn Unknown project config" 淹没）——先滤掉。
-        stderr_signal = "\n".join(
-            line for line in proc.stderr.splitlines() if line.strip() and not line.startswith("npm warn")
-        )
-        if not stderr_signal:
-            # evals 这类管线把失败细节打在 stdout（[FAIL] 行）而非 stderr——
-            # 滤完 npm warn 后 stderr 为空时（2026-07-13 issue #138 显示
-            # "exit 1: " 空错误），回落到 stdout 的信号行。
-            stdout_lines = [line for line in proc.stdout.splitlines() if line.strip()]
-            fail_lines = [line for line in stdout_lines if "FAIL" in line or "Error" in line or "error" in line]
-            stderr_signal = "\n".join((fail_lines or stdout_lines)[-5:])
-        return {"count": 0, "items": [], "error": f"exit {proc.returncode}: {stderr_signal[:300]}"}
+        return {
+            "count": 0,
+            "items": [],
+            "error": extract_failure_signal(proc.returncode, proc.stdout, proc.stderr),
+        }
 
     # Find last JSON line in stdout
     last_json = None
@@ -682,7 +789,7 @@ def run_pipelines(selected: list[dict], state: dict, logger, dry_run: bool) -> t
         try:
             if ptype == "python-builtin":
                 if pid == "videos":
-                    results["videos"] = run_videos(logger)
+                    results["videos"] = run_videos(logger, dry_run=dry_run)
                 elif pid == "hansard":
                     hansard_result = run_hansard(state, logger)
                     results["hansard"] = hansard_result
