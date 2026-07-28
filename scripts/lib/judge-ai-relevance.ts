@@ -37,6 +37,14 @@ export interface JudgeAiOptions {
   kind?: string;
   /** What counts as on-topic. Defaults to the Singapore AI ecosystem. */
   scope?: string;
+  /** Optional SECOND necessary condition. When set, relevant=true requires
+   *  BOTH the scope test AND this one to hold. Motivation (issue #166):
+   *  `scope` alone asks "is this about AI?" — a whole-domain source like
+   *  the Business Times tech feed then passes global AI stories (China
+   *  model launches, US chip deals) that have nothing to do with
+   *  Singapore. Softening `scope` with "especially in Singapore" is a
+   *  hint, not a gate; this is the gate. */
+  requireScope?: string;
 }
 
 interface JudgeModelOutput {
@@ -48,16 +56,28 @@ interface JudgeModelOutput {
 const DEFAULT_SCOPE =
   'artificial intelligence — AI / machine learning / generative AI / LLMs / AI governance / AI safety / AI compute / AI talent / AI adoption — especially in the Singapore context';
 
-function buildSystemPrompt(kind: string, scope: string): string {
+/** Exported for prompt-assembly unit tests (no LLM call needed). */
+export function buildSystemPrompt(kind: string, scope: string, requireScope?: string): string {
+  const decisionRule = requireScope
+    ? [
+        'Decision rule — BOTH conditions must hold:',
+        `- Condition A: the piece substantively concerns ${scope}.`,
+        `- Condition B: the piece has ${requireScope}.`,
+        '- relevant=true  → A AND B both hold, each with substance.',
+        '- relevant=false → either condition fails. A piece that satisfies A but not B is off-topic for this observatory.',
+      ]
+    : [
+        'Decision rule:',
+        '- relevant=true  → the subject is central and developed with substance.',
+        '- relevant=false → the subject is absent, or only name-dropped once while the piece is really about something else.',
+      ];
   return [
     'You are a research analyst for sgai.md, a Singapore AI policy & ecosystem observatory.',
     `You read ${kind} and decide ONE thing: does it SUBSTANTIVELY concern ${scope}?`,
     '',
     `"Substantively" means the subject is a MAIN theme — developed with specifics (policy, programme, funding, product, capability, figures, stance) — not a one-line passing mention.`,
     '',
-    'Decision rule:',
-    '- relevant=true  → the subject is central and developed with substance.',
-    '- relevant=false → the subject is absent, or only name-dropped once while the piece is really about something else.',
+    ...decisionRule,
     '',
     'Return STRICT JSON, no prose, no markdown:',
     '{ "relevant": boolean, "confidence": "high"|"medium"|"low", "reason": string }',
@@ -81,7 +101,7 @@ export async function judgeAiRelevance(
   }\nBody:\n\n${body}`;
   try {
     const out = await callLlmJson<JudgeModelOutput>(userPrompt, {
-      systemPrompt: buildSystemPrompt(kind, scope),
+      systemPrompt: buildSystemPrompt(kind, scope, options.requireScope),
       model,
     });
     const confidence =

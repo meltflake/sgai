@@ -61,6 +61,9 @@ export interface PipelineConfig {
   judgeKind?: string;
   /** Override what counts as on-topic for the judge. */
   judgeScope?: string;
+  /** Optional second NECESSARY judge condition (e.g. a Singapore nexus).
+   *  See JudgeAiOptions.requireScope. */
+  judgeRequire?: string;
 }
 
 interface CliFlags {
@@ -231,7 +234,7 @@ export async function runPipeline(config: PipelineConfig): Promise<void> {
       if (config.judgeAiRelevance !== false) {
         const verdict = await judgeAiRelevance(
           { title: page.title, contentText: page.contentText, sourceUrl: url },
-          { kind: config.judgeKind, scope: config.judgeScope }
+          { kind: config.judgeKind, scope: config.judgeScope, requireScope: config.judgeRequire }
         );
         if (!verdict.relevant && verdict.confidence === 'high') {
           offTopic.push({ url, reason: verdict.reason });

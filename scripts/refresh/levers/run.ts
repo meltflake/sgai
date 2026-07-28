@@ -14,6 +14,8 @@ import { resolve } from 'node:path';
 import { govFetch, listSitemap } from '../../lib/gov-fetch.ts';
 import { summarizePage } from '../../lib/ai-summarize.ts';
 import { isEmptyShellSummary } from '../../lib/empty-shell.ts';
+import { judgeAiRelevance } from '../../lib/judge-ai-relevance.ts';
+import { isGenericOrLanding, normalizeUrl, selectCandidates } from '../../lib/scan-filters.ts';
 import { autoCommit, pushAndOpenPR, buildPRBody } from '../../lib/auto-commit.ts';
 import { findUnpairedFields } from '../../lib/i18n-pair.ts';
 import { formatWithPrettier } from '../../lib/prettier-format.ts';
@@ -181,22 +183,32 @@ function injectIntoAutoDiscoveredGroup(lines: string[], formattedItems: string):
 }
 
 async function scanAll(existing: Set<string>, limit: number): Promise<string[]> {
-  const found = new Set<string>();
+  // Same shape as run-template's scanSources (issue #166 fixes): shared
+  // generic-page filter, normalized dedupe keys, per-source cap +
+  // round-robin instead of a first-source-wins early break.
+  const existingKeys = new Set([...existing].map(normalizeUrl));
+  const perSource: string[][] = [];
   for (const source of SOURCES) {
+    const kept: string[] = [];
+    const seenKeys = new Set<string>();
     try {
       const urls = await listSitemap(source.sitemapUrl);
       for (const url of urls) {
-        if (existing.has(url)) continue;
+        const key = normalizeUrl(url);
+        if (existing.has(url) || existingKeys.has(key)) continue;
+        if (seenKeys.has(key)) continue;
         if (!source.urlFilter.test(url)) continue;
-        found.add(url);
-        if (found.size >= limit * 4) break;
+        if (isGenericOrLanding(url)) continue;
+        seenKeys.add(key);
+        kept.push(url);
+        if (kept.length >= limit) break;
       }
     } catch {
       /* skip */
     }
-    if (found.size >= limit * 4) break;
+    perSource.push(kept);
   }
-  return [...found].slice(0, limit);
+  return selectCandidates(perSource, limit);
 }
 
 async function main(): Promise<void> {
@@ -258,6 +270,23 @@ async function main(): Promise<void> {
       );
 
       if (isEmptyShellSummary(summary)) {
+        skipped.push(url);
+        continue;
+      }
+
+      // Content-layer AI-relevance gate (issue #166: levers predated the
+      // shared judge and admitted filmmaking grants / graduate programmes).
+      // Same contract as run-template: drop only a high-confidence "no";
+      // judge errors fail open into the pending-review section.
+      const verdict = await judgeAiRelevance(
+        { title: page.title, contentText: page.contentText, sourceUrl: url },
+        {
+          kind: 'a government programme / initiative / announcement page',
+          scope:
+            "Singapore's national AI levers — AI infrastructure, AI funding programmes, AI talent schemes, AI standards, government AI adoption, or AI diplomacy",
+        }
+      );
+      if (!verdict.relevant && verdict.confidence === 'high') {
         skipped.push(url);
         continue;
       }

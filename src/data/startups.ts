@@ -770,3 +770,40 @@ export interface AutoDiscoveredEntry {
 }
 
 export const autoDiscovered: AutoDiscoveredEntry[] = [];
+
+export interface AutoDiscoveredEntry {
+  title: string;
+  titleEn: string;
+  titleJa?: string;
+  titleKo?: string;
+  description: string;
+  descriptionEn: string;
+  descriptionJa?: string;
+  descriptionKo?: string;
+  category: string;
+  confidence: 'high' | 'medium' | 'low';
+  sourceUrl: string;
+  discoveredAt: string;
+  reasonForLowConfidence?: string;
+}
+
+export const autoDiscovered: AutoDiscoveredEntry[] = [
+  {
+    title: 'Pints AI荣获新加坡AI财务全球挑战创业补助金',
+    titleEn: 'Pints AI Wins AI in Finance Global Challenge Startup Grant',
+    titleJa: 'Pints AIが「AI in Finance Global Challenge」起業助成金を獲得しました。',
+    titleKo: 'Pints AI 싱가포르 AI 금융 글로벌 챌린지 창업 보조금 획득',
+    description:
+      'Pints AI是一家隐私优先的企业生成式AI平台，致力于为金融机构提供私有化部署的AI解决方案。该公司在2023年MAS和AI新加坡联合举办的"AI in Finance Global Challenge"比赛中获胜，并获得AI新加坡创业补助金。Pints AI通过开发紧凑型语言模型，使金融机构能够在不暴露敏感数据的情况下构建安全的AI工具，解决了数据隐私和高计算成本的核心问题。',
+    descriptionEn:
+      'Pints AI, a privacy-first enterprise Gen AI platform, won the "AI in Finance Global Challenge" organized by Singapore\'s Monetary Authority (MAS) and AI Singapore (AISG), and was awarded the AIGC Startup Grant. The company specializes in deploying compact language models within clients\' private infrastructure, enabling financial institutions to build secure AI solutions without exposing sensitive data. Pints AI addresses key barriers to Gen AI adoption in finance, including data privacy concerns and computational costs.',
+    descriptionJa:
+      'Pints AIは、プライバシー優先のエンタープライズ向け生成型AIプラットフォームであり、金融機関がプライベート環境でAIソリューションを展開できるようにすることに取り組んでいます。同社は、2023年にMASとAISGが共同で開催した「AI in Finance Global Challenge」コンテストで優勝し、AISGスタートアップ助成金を獲得しました。Pints AIは、コンパクト言語モデルの開発を通じて、金融機関が機密データを暴露することなく安全なAIツールを構築できるようにし、データプライバシーと高い計算コストの課題を解決しました。',
+    descriptionKo:
+      'Pints AI는 프라이버시 우선의 기업용 생성형 AI 플랫폼으로, 금융기관에 프라이빗 배포 AI 솔루션을 제공하는 데 주력하고 있습니다. 이 회사는 2023년 MAS와 AISG가 공동 주최한 「AI in Finance Global Challenge」 대회에서 우승했으며, AISG 창업 보조금을 획득했습니다. Pints AI는 경량 언어 모델 개발을 통해 금융기관이 민감한 데이터를 노출하지 않고도 안전한 AI 도구를 구축할 수 있도록 했으며, 데이터 프라이버시와 높은 계산 비용이라는 핵심 문제를 해결했습니다.',
+    category: '融资轮',
+    confidence: 'high',
+    sourceUrl: 'https://aisingapore.org/ai-in-finance-global-challenge-startup-grant-awardee/',
+    discoveredAt: '2026-07-28',
+  },
+];
