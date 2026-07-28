@@ -20,7 +20,14 @@ await runPipeline({
       domain: 'imda.gov.sg',
       feedUrl: 'https://www.imda.gov.sg/sitemap.xml',
       feedType: 'sitemap',
-      urlFilter: /(report|study|statistic|investment|adoption|workforce|index|annual)/i,
+      // Token must appear in the final path segment (the document slug).
+      // Substring-anywhere matching admitted the whole
+      // /research-and-statistics/ subtree — film pages, section landings —
+      // because "statistic" sat in the middle of the path (issue #166).
+      urlFilter: /(report|study|statistics?|investment|adoption|workforce|index|annual)[^/]*\/?$/i,
+      // Archived stats pages carry year ranges in the slug
+      // (…-2015-2018); real current-year content rarely does. Fail-open.
+      minUrlYear: new Date().getFullYear() - 1,
     },
     {
       domain: 'edb.gov.sg',
@@ -32,7 +39,15 @@ await runPipeline({
       domain: 'hai.stanford.edu',
       feedUrl: 'https://hai.stanford.edu/sitemap.xml',
       feedType: 'sitemap',
-      urlFilter: /(ai-index|country|investment|talent|research)/i,
+      // AI Index pages only — the broad token list matched HAI news
+      // articles (same failure as benchmarking's hai source).
+      urlFilter: /\/ai-index\//i,
+      // Same archive-year gate as benchmarking (issue #166): the sitemap
+      // kept resurfacing 2017/2018 AI Index editions as tracker candidates.
+      minUrlYear: new Date().getFullYear() - 1,
+      // Edition landing pages only — chapter sub-pages are parts of a
+      // report already tracked at the edition level.
+      urlExcludes: [/\d{4}-ai-index-report\/./],
     },
   ],
 });

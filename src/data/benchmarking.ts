@@ -7787,6 +7787,186 @@ export const dataDisclaimerJa =
 export const dataDisclaimerKo =
   '이 페이지의 데이터는 각국 정부의 공식 문서, 국제기구 보고서 및 공개 보도를 종합하여 Singapore AI Observatory가 독립적으로 정리한 것입니다. 데이터는 2026년 2월 기준입니다.';
 
+/** One annual edition of an external benchmark report series (currently the
+ *  Stanford HAI AI Index). Promoted from autoDiscovered[] on 2026-07-28 —
+ *  these entries carried complete four-language summaries but sat in an
+ *  array no page renders. Rendered as the "Report Archive" section on
+ *  /benchmarking. */
+export interface BenchmarkReportEdition {
+  year: number;
+  title: string;
+  titleEn: string;
+  titleJa: string;
+  titleKo: string;
+  description: string;
+  descriptionEn: string;
+  descriptionJa: string;
+  descriptionKo: string;
+  sourceUrl: string;
+  /** YYYY-MM-DD; when this edition entered the archive (rule #7). */
+  addedAt?: string;
+}
+
+// Note: there is NO 2020 edition — the AI Index skipped from the December
+// 2019 report to the March 2021 report. hai.stanford.edu/ai-index/
+// 2020-ai-index-report returns a soft-404 (HTTP 200, body "404") — do not
+// "complete" the sequence with it.
+export const reportArchive: BenchmarkReportEdition[] = [
+  {
+    year: 2026,
+    title: '2026年AI指数报告',
+    titleEn: 'The 2026 AI Index Report',
+    titleJa: '2026年AI指数レポート',
+    titleKo: '2026년 AI 지수 보고서',
+    description:
+      '斯坦福 HAI 第九版年度 AI 指数报告，九章覆盖研发、技术性能、负责任 AI、经济、科学、医学、政策、教育与公众舆论。核心判断：AI 能力没有进入平台期，反而在加速——2025 年产业界产出 90% 以上的前沿模型，多个模型在博士级科学问题、多模态推理与竞赛数学上达到或超过人类基线；SWE-bench Verified 编程基准一年内从 60% 升至接近 100%；组织采用率达 88%，五分之四的大学生已在使用生成式 AI。',
+    descriptionEn:
+      "Stanford HAI's ninth annual AI Index Report, spanning nine chapters across R&D, technical performance, responsible AI, economy, science, medicine, policy, education and public opinion. Its central finding: AI capability is not plateauing but accelerating — industry produced over 90% of notable frontier models in 2025, several of which meet or exceed human baselines on PhD-level science questions, multimodal reasoning and competition mathematics; performance on the SWE-bench Verified coding benchmark rose from 60% to near 100% in a single year; organisational adoption reached 88%, and four in five university students now use generative AI.",
+    descriptionJa:
+      'スタンフォード HAI の第 9 版年次 AI 指数レポート。研究開発、技術性能、責任ある AI、経済、科学、医学、政策、教育、世論の 9 章構成。中心的な結論：AI の能力は頭打ちではなく加速している——2025 年には産業界が著名なフロンティアモデルの 90% 以上を産出し、その多くが博士レベルの科学問題、マルチモーダル推論、競技数学で人間のベースラインに到達または超過した。SWE-bench Verified コーディングベンチマークの性能は 1 年で 60% から 100% 近くまで上昇し、組織の採用率は 88% に達し、大学生の 5 人に 4 人が生成 AI を使用している。',
+    descriptionKo:
+      '스탠퍼드 HAI의 제9판 연례 AI 지수 보고서로, 연구개발, 기술 성능, 책임 있는 AI, 경제, 과학, 의학, 정책, 교육, 여론의 9개 장으로 구성됩니다. 핵심 결론: AI 능력은 정체되지 않고 가속화되고 있습니다——2025년 산업계가 주요 프런티어 모델의 90% 이상을 산출했으며, 여러 모델이 박사급 과학 문제, 멀티모달 추론, 경시 수학에서 인간 기준선에 도달하거나 초과했습니다. SWE-bench Verified 코딩 벤치마크 성능은 1년 만에 60%에서 100% 가까이로 상승했으며, 조직 채택률은 88%에 달하고 대학생 5명 중 4명이 생성형 AI를 사용하고 있습니다.',
+    sourceUrl: 'https://hai.stanford.edu/ai-index/2026-ai-index-report',
+    addedAt: '2026-07-28',
+  },
+  {
+    year: 2025,
+    title: '2025年AI指数报告',
+    titleEn: 'The 2025 AI Index Report',
+    titleJa: '2025年AI指数レポート',
+    titleKo: '2025년 AI 지수 보고서',
+    description:
+      '斯坦福 HAI 年度 AI 指数报告，首次同步发布官方中文版。要点：MMMU / GPQA / SWE-bench 等高难基准一年内分别提升 18.8 / 48.9 / 67.3 个百分点；2024 年美国私人 AI 投资 1091 亿美元（约为中国 12 倍），78% 的组织已使用 AI；美国产出 40 个著名模型对中国 15 个，但中美模型在 MMLU 等基准上的差距缩至接近持平；GPT-3.5 级推理成本自 2022 年 11 月以来下降超 280 倍；2024 年美国联邦机构出台 59 项 AI 相关法规，为 2023 年的两倍多。',
+    descriptionEn:
+      "Stanford HAI's annual AI Index Report, published for the first time with an official Chinese translation. Highlights: scores on the demanding MMMU, GPQA and SWE-bench benchmarks rose 18.8, 48.9 and 67.3 percentage points respectively in one year; US private AI investment reached $109.1 billion in 2024 (about 12 times China's), with 78% of organisations using AI; the US produced 40 notable models to China's 15, yet Chinese models closed the MMLU-class performance gap to near parity; inference cost at GPT-3.5 level fell over 280-fold since November 2022; and US federal agencies introduced 59 AI-related regulations in 2024, more than double 2023.",
+    descriptionJa:
+      'スタンフォード HAI の年次 AI 指数レポート。初めて公式中国語版が同時公開された。要点：MMMU / GPQA / SWE-bench などの高難度ベンチマークが 1 年でそれぞれ 18.8 / 48.9 / 67.3 ポイント向上。2024 年の米国民間 AI 投資は 1,091 億ドル（中国の約 12 倍）で、78% の組織が AI を使用。米国は 40 の著名モデルを産出（中国は 15）だが、中国モデルは MMLU 級ベンチマークでの差をほぼ互角まで縮めた。GPT-3.5 級の推論コストは 2022 年 11 月以来 280 倍以上低下。2024 年に米国連邦機関は 59 の AI 関連規制を導入し、2023 年の 2 倍超となった。',
+    descriptionKo:
+      '스탠퍼드 HAI의 연례 AI 지수 보고서로, 처음으로 공식 중국어판이 동시 발표되었습니다. 요점: MMMU / GPQA / SWE-bench 등 고난도 벤치마크가 1년 만에 각각 18.8 / 48.9 / 67.3 퍼센트포인트 상승했습니다. 2024년 미국 민간 AI 투자는 1,091억 달러(중국의 약 12배)이며 조직의 78%가 AI를 사용하고 있습니다. 미국은 40개의 주요 모델을 산출했고(중국은 15개), 중국 모델은 MMLU급 벤치마크 격차를 거의 대등한 수준까지 좁혔습니다. GPT-3.5급 추론 비용은 2022년 11월 이래 280배 이상 하락했으며, 2024년 미국 연방 기관은 59개의 AI 관련 규제를 도입해 2023년의 2배를 넘었습니다.',
+    sourceUrl: 'https://hai.stanford.edu/ai-index/2025-ai-index-report',
+    addedAt: '2026-07-28',
+  },
+  {
+    year: 2024,
+    title: '2024年AI指数报告',
+    titleEn: 'The 2024 AI Index Report',
+    titleJa: '2024年のAIインデックスレポート',
+    titleKo: '2024년 AI 지수 보고서',
+    description:
+      '斯坦福大学人工智能中心发布的第七版《AI指数报告》，全面追踪全球AI发展趋势。报告涵盖AI研究开发、技术性能、负责任AI、经济、科学医学、教育、政策治理、多样性和公众舆论等九个领域。主要发现包括：美国在顶级AI模型生产中领先中国和欧盟，生成式AI投资从2022年的25.2亿美元大幅增长，AI显著提升劳动力生产效率，美国AI相关监管在五年内从1项增至25项。全球公众对AI的认知和关注度持续提升，但忧虑程度也在上升。',
+    descriptionEn:
+      "Stanford HAI's seventh edition of the AI Index Report, providing comprehensive tracking of global AI development trends. The report analyzes nine dimensions: AI research and development, technical performance, responsible AI, economic impact, science and medicine applications, education, policy and governance, diversity, and public opinion. Key findings include the U.S. leading in top AI model production, generative AI investment surging to $25.2 billion, significant AI-driven labor productivity gains, and U.S. AI regulations rising from one in 2016 to 25 in 2023. Global public awareness of AI's societal impact has increased substantially, with rising concern levels alongside growing recognition of transformative potential.",
+    descriptionJa:
+      'スタンフォード大学人工知能研究センターが発表した第7版の『AIインデックスレポート』は、世界的なAI発展トレンドを包括的に追跡しています。このレポートはAI研究開発、技術性能、責任あるAI、経済、科学医学、教育、政策ガバナンス、多様性、および世論の9つの領域をカバーしています。主な発見には以下が含まれます：米国は中国とEUを上回るトップレベルのAIモデル生産でリードしており、生成型AI投資は2022年の25億2000万米ドルから大幅に増加し、AIは労働力生産性を著しく向上させており、米国のAI関連規制は5年以内に1件から25件に増加しました。世界中の一般大衆のAIに対する認識と関心は継続的に上昇しており、懸念のレベルも上昇しています。',
+    descriptionKo:
+      '스탠포드 대학교 인공지능 센터에서 발표한 제7판 『AI 지수 보고서』는 전 세계 AI 발전 추이를 전면적으로 추적합니다. 보고서는 AI 연구개발, 기술 성능, 책임 있는 AI, 경제, 과학 의료, 교육, 정책 거버넌스, 다양성 및 여론 등 9개 영역을 다룹니다. 주요 발견은 다음과 같습니다: 미국이 최고 수준의 AI 모델 생산에서 중국과 유럽연합을 앞서고 있으며, 생성형 AI 투자가 2022년의 25.2억 미국 달러에서 크게 증가했으며, AI가 노동력 생산성을 현저하게 향상시키고 있으며, 미국의 AI 관련 규제가 5년 내에 1건에서 25건으로 증가했습니다. 전 세계 대중의 AI에 대한 인식 및 관심도가 계속 상승하고 있지만, 우려 정도도 역시 상승하고 있습니다.',
+    sourceUrl: 'https://hai.stanford.edu/ai-index/2024-ai-index-report',
+    addedAt: '2026-07-28',
+  },
+  {
+    year: 2023,
+    title: '2023年AI指数报告',
+    titleEn: 'The 2023 AI Index Report',
+    titleJa: '2023年AI指数レポート',
+    titleKo: '2023년 AI 지수 보고서',
+    description:
+      '斯坦福 HAI 年度 AI 指数报告，聚焦生成式 AI 元年前后的拐点：产业界首次全面超越学术界成为重要机器学习模型的主要产出方（2022 年 32 个对学术界 3 个）；十年来 AI 私人投资首次同比下降，但仍是 2013 年的 18 倍；AI 相关立法在 127 个受调查国家中从 2016 年的 1 项增至 2022 年的 37 项；对 AI 滥用事件的追踪显示争议事件数量自 2012 年以来增长 26 倍。',
+    descriptionEn:
+      "Stanford HAI's annual AI Index Report, capturing the inflection around generative AI's breakout year: industry decisively overtook academia as the main producer of significant machine learning models (32 vs 3 in 2022); private AI investment fell year-on-year for the first time in a decade yet remained 18 times its 2013 level; AI-related laws passed across 127 surveyed countries grew from 1 in 2016 to 37 in 2022; and tracked AI misuse incidents rose 26-fold since 2012.",
+    descriptionJa:
+      'スタンフォード HAI の年次 AI 指数レポート。生成 AI ブレイクの前後の転換点を捉えている：産業界が初めて学術界を全面的に上回り、重要な機械学習モデルの主要な産出者となった（2022 年は 32 対 3）。AI 民間投資は 10 年で初めて前年比減少したが、それでも 2013 年の 18 倍の水準。調査対象 127 カ国での AI 関連立法は 2016 年の 1 件から 2022 年の 37 件に増加。AI 濫用インシデントの追跡では、争議事件が 2012 年以来 26 倍に増えたことが示された。',
+    descriptionKo:
+      '스탠퍼드 HAI의 연례 AI 지수 보고서로, 생성형 AI 원년 전후의 변곡점을 포착합니다: 산업계가 처음으로 학계를 전면적으로 추월하여 중요한 머신러닝 모델의 주요 산출자가 되었습니다(2022년 32개 대 3개). AI 민간 투자는 10년 만에 처음으로 전년 대비 감소했지만 여전히 2013년의 18배 수준입니다. 조사 대상 127개국의 AI 관련 입법은 2016년 1건에서 2022년 37건으로 증가했으며, AI 오용 사건 추적 결과 논란 사건이 2012년 이래 26배 증가했습니다.',
+    sourceUrl: 'https://hai.stanford.edu/ai-index/2023-ai-index-report',
+    addedAt: '2026-07-28',
+  },
+  {
+    year: 2022,
+    title: '2022年AI指数报告',
+    titleEn: 'The 2022 AI Index Report',
+    titleJa: '2022年AI指数報告',
+    titleKo: '2022 AI 지수 보고서',
+    description:
+      '斯坦福大学人工智能研究所(HAI)发布的独立年度AI指数报告。报告追踪AI领域的关键进展：2021年私人投资达93.5亿美元（相比2020年翻倍），美中国际合作最为密切，大语言模型性能提升但偏见加剧，AI伦理研究自2014年增长5倍，AI训练成本自2018年下降63.6%，2021年全球通过18项AI相关法案，机器人手臂成本五年内下降46.2%。报告涵盖研究开发、技术性能、AI伦理、经济教育和政策治理五大章节。',
+    descriptionEn:
+      "The 2022 AI Index Report from Stanford's Human-Centered AI Institute provides comprehensive benchmarking of global AI progress. Key findings include: private investment surged to $93.5 billion in 2021 (more than double 2020), US-China collaborations dominated cross-country AI research partnerships, large language models achieved record performance while exhibiting increased toxicity and bias, AI ethics research publications grew 5-fold since 2014, image classification training costs declined 63.6% since 2018, global AI legislation increased to 18 bills passed in 25 countries by 2021, and robotic arm prices fell 46.2% over five years. The report spans five chapters covering research and development, technical performance, AI ethics, economy and education, and policy and governance.",
+    descriptionJa:
+      'スタンフォード大学人工知能研究所（HAI）が発表した独立した年次のAI指数報告書です。報告書はAI分野における主要な進展を追跡しています：2021年、民間投資は93.5億米ドルに達し（2020年比で倍増）、米中国際協力が最も密接であり、大規模言語モデルのパフォーマンスは向上しましたが偏見が悪化し、AI倫理研究は2014年以来5倍増加し、AI訓練コストは2018年以来63.6%低下し、2021年には世界中で18のAI関連法案が可決され、ロボットアームのコストは5年以内に46.2%低下しました。報告書は、研究開発、技術性能、AI倫理、経済教育、政策ガバナンスの5つの主要な章を網羅しています。',
+    descriptionKo:
+      '스탠포드 대학교 인공지능 연구소(HAI)에서 발표한 독립적인 연례 AI 지수 보고서입니다. 보고서는 AI 분야의 핵심 발전을 추적합니다: 2021년 민간 투자가 93.5억 미국 달러에 달했으며(2020년 대비 2배), 미중 국제 협력이 가장 긴밀하고, 대형 언어 모델의 성능은 향상되었지만 편견은 악화되었으며, AI 윤리 연구는 2014년 이래로 5배 증가했으며, AI 훈련 비용은 2018년 이래로 63.6% 감소했으며, 2021년 전 세계에서 18개의 AI 관련 법안이 통과되었으며, 로봇 팔의 비용은 5년 내에 46.2% 감소했습니다. 보고서는 연구개발, 기술 성능, AI 윤리, 경제 및 교육, 정책 거버넌스의 5개 주요 장을 다룹니다.',
+    sourceUrl: 'https://hai.stanford.edu/ai-index/2022-ai-index-report',
+    addedAt: '2026-07-28',
+  },
+  {
+    year: 2021,
+    title: '2021年AI指数报告',
+    titleEn: 'The 2021 AI Index Report',
+    titleJa: '2021年AI指数レポート',
+    titleKo: '2021년 AI 지수 보고서',
+    description:
+      '斯坦福 HAI 年度 AI 指数报告（该系列自 2019 年 12 月版后跳过 2020、于 2021 年 3 月发布本版）。疫情之年的记录：AI 领域私人投资在 2020 年逆势增长 40% 至 679 亿美元，药物研发成为投资最集中的方向；中国在 AI 期刊引用总量上首次超过美国，而美国在会议论文引用与重要模型产出上保持领先。报告也记录了 AI 人才流向产业界加速、多样性数据缺口等结构问题。',
+    descriptionEn:
+      "Stanford HAI's annual AI Index Report (the series skipped 2020, moving from the December 2019 edition to this March 2021 one). A record of the pandemic year: private AI investment grew 40% against the downturn to $67.9 billion in 2020, with drug discovery the most-funded area; China overtook the US in total AI journal citations for the first time, while the US kept its lead in conference-paper citations and significant model production. The report also documents the accelerating flow of AI talent into industry and persistent gaps in diversity data.",
+    descriptionJa:
+      'スタンフォード HAI の年次 AI 指数レポート（本シリーズは 2020 年版を跳ばし、2019 年 12 月版の次は 2021 年 3 月発表の本版）。パンデミックの年の記録：2020 年の AI 民間投資は逆風の中 40% 増の 679 億ドルに達し、創薬が最も資金の集まる分野となった。中国は AI 学術誌の総引用数で初めて米国を上回り、米国は会議論文の引用と重要モデルの産出でリードを維持した。レポートは AI 人材の産業界への流出の加速や、多様性データの欠如といった構造的問題も記録している。',
+    descriptionKo:
+      '스탠퍼드 HAI의 연례 AI 지수 보고서(이 시리즈는 2020년판을 건너뛰고 2019년 12월판 다음이 2021년 3월 발표된 본판입니다). 팬데믹 해의 기록: 2020년 AI 민간 투자는 역풍 속에서도 40% 증가한 679억 달러에 달했으며, 신약 개발이 가장 많은 투자가 집중된 분야였습니다. 중국은 AI 학술지 총 인용 수에서 처음으로 미국을 추월했으며, 미국은 학회 논문 인용과 중요 모델 산출에서 선두를 유지했습니다. 보고서는 AI 인재의 산업계 유입 가속화와 다양성 데이터 격차 등 구조적 문제도 기록하고 있습니다.',
+    sourceUrl: 'https://hai.stanford.edu/ai-index/2021-ai-index-report',
+    addedAt: '2026-07-28',
+  },
+  {
+    year: 2019,
+    title: '2019年AI指数报告',
+    titleEn: 'The 2019 AI Index Report',
+    titleJa: '2019年AI指数レポート',
+    titleKo: '2019년 AI 지수 보고서',
+    description:
+      '由斯坦福大学人工智能研究所发布的《2019年AI指数报告》是一份全面的国际AI发展基准研究，涵盖研发、会议、技术性能、经济、教育、自主系统等九个维度。报告通过全球AI活力工具对28个国家的34项指标进行对标，包括研发、经济和包容性三个核心维度。该项目汇集150余位业界与学术专家，致力于提供无偏见、严谨的数据，帮助政策制定者、研究人员和公众理解全球AI发展态势。',
+    descriptionEn:
+      'The 2019 AI Index Report from Stanford HAI is a comprehensive international AI benchmarking initiative covering nine dimensions including research and development, conferences, technical performance, economy, education, and autonomous systems. The report introduces the Global AI Vibrancy Tool, which benchmarks 28 countries across 34 indicators spanning research and development, economy, and inclusion. Developed with input from over 150 industry and academic experts, the report provides unbiased, rigorous data to help policymakers, researchers, and the public understand the global AI landscape.',
+    descriptionJa:
+      'スタンフォード大学人工知能研究所により発表された『2019年AI指数レポート』は、研究開発、会議、技術性能、経済、教育、自律システムなど9つの次元をカバーする包括的な国際AI発展ベンチマーク研究です。報告書は、グローバルAI活力ツールを通じて、28カ国における34の指標を対標し、研究開発、経済、および包括性の3つのコア次元を含んでいます。本プロジェクトは業界および学術の150人以上の専門家を結集させ、偏りのない厳密なデータを提供し、政策立案者、研究者、および一般市民が世界的なAI発展状況を理解するのを支援しています。',
+    descriptionKo:
+      'Stanford University Artificial Intelligence Research Institute가 발표한 「2019년 AI 지수 보고서」는 연구 개발, 회의, 기술 성능, 경제, 교육, 자율 시스템 등 9가지 차원을 포함하는 포괄적 국제 AI 발전 벤치마크 연구입니다. 보고서는 글로벌 AI 활력 도구를 통해 28개 국가의 34개 지표에 대해 벤치마크를 수행하며, 연구 개발, 경제, 포용성 등 3개의 핵심 차원을 포함합니다. 본 프로젝트는 150명 이상의 업계 및 학계 전문가를 모아 편견 없고 엄밀한 데이터를 제공하여 정책 입안자, 연구자 및 일반 대중이 글로벌 AI 발전 동향을 이해할 수 있도록 노력합니다.',
+    sourceUrl: 'https://hai.stanford.edu/ai-index/2019-ai-index-report',
+    addedAt: '2026-07-28',
+  },
+  {
+    year: 2018,
+    title: '2018年AI指数报告',
+    titleEn: 'The 2018 AI Index Report',
+    titleJa: '2018年AI指数レポート',
+    titleKo: '2018년 AI 지수 보고서',
+    description:
+      '斯坦福人工智能中心(HAI)发布的2018年AI指数报告，是一项由跨学术和业界的专家组成的独立倡议。报告通过汇总和整理与人工智能相关的多样化指标数据，为政策制定者、研究人员、记者、企业高管和公众提供关于AI领域的无偏见、严谨和全面的认识。报告主要分为四大部分：活动量度(如会议参与度和风险投资规模)、技术性能、衍生指标分析以及AI系统向人工水平靠近的进展。',
+    descriptionEn:
+      'The Stanford HAI 2018 AI Index Report is an independent initiative led by the AI Index Steering Committee, comprising experts from academia and industry. The report aggregates diverse metrics and data to provide unbiased, rigorous, and comprehensive insights for policymakers, researchers, journalists, executives, and the public to understand the AI field. The report is structured into four main sections: Volume of Activity (including conference attendance and VC investments), Technical Performance, Derivative Measures, and progress towards Human Performance.',
+    descriptionJa:
+      'スタンフォード大学の人工知能センター（HAI）が発表した2018年AI指数レポートは、学術界と産業界にまたがる専門家で構成された独立したイニシアティブです。報告書は、人工知能に関連する多様な指標データを集約・整理することにより、政策立案者、研究者、ジャーナリスト、企業経営者、および一般市民にAI分野に関する偏りのない厳密で包括的な理解を提供しています。報告書は主に4つの主要部分から構成されています：活動指標（学会参加度およびベンチャー投資規模など）、技術性能、派生指標分析、およびAIシステムが人間レベルに接近する進展です。',
+    descriptionKo:
+      'Stanford Artificial Intelligence Center(HAI)가 발표한 2018년 AI 지수 보고서는 학계와 산업계 전문가들로 구성된 독립적 이니셔티브입니다. 보고서는 인공지능과 관련된 다양한 지표 데이터를 종합하고 정리함으로써 정책 입안자, 연구자, 기자, 기업 경영진 및 일반 대중에게 AI 분야에 대한 편견 없고 엄밀하며 포괄적인 인식을 제공합니다. 보고서는 주로 네 가지 주요 부분으로 나뉩니다: 활동 측도(회의 참석도 및 벤처 투자 규모 등), 기술 성능, 파생 지표 분석, 그리고 AI 시스템이 인간 수준에 근접하는 진전입니다.',
+    sourceUrl: 'https://hai.stanford.edu/ai-index/2018-ai-index-report',
+    addedAt: '2026-07-28',
+  },
+  {
+    year: 2017,
+    title: '2017年AI指数报告',
+    titleEn: 'The 2017 AI Index Report',
+    titleJa: '2017年AI指数レポート',
+    titleKo: '2017년 AI 지수 보고서',
+    description:
+      '斯坦福HAI发布的2017年AI指数报告通过汇总活动量（会议参与度、风险投资）、技术性能基准和行业趋势，提供了人工智能进展的全面分析。报告引入"AI活力指数"衡量学术界和产业界的活跃程度，包含专家评论，并追踪AI系统接近或超越人类性能的领域。',
+    descriptionEn:
+      'The 2017 AI Index Report from Stanford HAI aggregates data on AI progress across volume of activity (conference attendance, VC investments), technical performance benchmarks, and sector-wide trends. The report introduces the AI Vibrancy Index to measure the liveliness of AI development across academia and industry, includes expert commentary, and tracks areas where AI systems approach or exceed human performance. It serves as a foundational resource for understanding AI development.',
+    descriptionJa:
+      'スタンフォード大学のHAIが発表した2017年AI指数レポートは、活動量（学会参加度、ベンチャー投資）、技術性能ベンチマーク、および業界トレンドを集約することにより、人工知能の進展に関する包括的な分析を提供しています。報告書では「AI活力指数」を導入して、学術界と産業界の活動度を測定し、専門家の見解を含め、AIシステムが人間レベルのパフォーマンスに接近または超越している領域を追跡しています。',
+    descriptionKo:
+      'Stanford HAI가 발표한 2017년 AI 지수 보고서는 활동량(회의 참석도, 벤처 투자), 기술 성능 벤치마크, 그리고 산업 동향을 종합하여 인공지능의 진행 상황에 대한 포괄적 분석을 제공합니다. 보고서는 「AI 활력 지수」를 도입하여 학계와 산업계의 활동 수준을 측정하며, 전문가 의견을 포함하고 AI 시스템이 인간 수준의 성능에 근접하거나 초월하는 영역을 추적합니다.',
+    sourceUrl: 'https://hai.stanford.edu/ai-index/2017-ai-index-report',
+    addedAt: '2026-07-28',
+  },
+];
+
 export interface AutoDiscoveredEntry {
   title: string;
   titleEn: string;
@@ -7803,95 +7983,4 @@ export interface AutoDiscoveredEntry {
   reasonForLowConfidence?: string;
 }
 
-export const autoDiscovered: AutoDiscoveredEntry[] = [
-  {
-    title: '2017年AI指数报告',
-    titleEn: 'The 2017 AI Index Report',
-    titleJa: '2017年AI指数レポート',
-    titleKo: '2017년 AI 지수 보고서',
-    description:
-      '斯坦福HAI发布的2017年AI指数报告通过汇总活动量（会议参与度、风险投资）、技术性能基准和行业趋势，提供了人工智能进展的全面分析。报告引入"AI活力指数"衡量学术界和产业界的活跃程度，包含专家评论，并追踪AI系统接近或超越人类性能的领域。',
-    descriptionEn:
-      'The 2017 AI Index Report from Stanford HAI aggregates data on AI progress across volume of activity (conference attendance, VC investments), technical performance benchmarks, and sector-wide trends. The report introduces the AI Vibrancy Index to measure the liveliness of AI development across academia and industry, includes expert commentary, and tracks areas where AI systems approach or exceed human performance. It serves as a foundational resource for understanding AI development.',
-    descriptionJa:
-      'スタンフォード大学のHAIが発表した2017年AI指数レポートは、活動量（学会参加度、ベンチャー投資）、技術性能ベンチマーク、および業界トレンドを集約することにより、人工知能の進展に関する包括的な分析を提供しています。報告書では「AI活力指数」を導入して、学術界と産業界の活動度を測定し、専門家の見解を含め、AIシステムが人間レベルのパフォーマンスに接近または超越している領域を追跡しています。',
-    descriptionKo:
-      'Stanford HAI가 발표한 2017년 AI 지수 보고서는 활동량(회의 참석도, 벤처 투자), 기술 성능 벤치마크, 그리고 산업 동향을 종합하여 인공지능의 진행 상황에 대한 포괄적 분석을 제공합니다. 보고서는 「AI 활력 지수」를 도입하여 학계와 산업계의 활동 수준을 측정하며, 전문가 의견을 포함하고 AI 시스템이 인간 수준의 성능에 근접하거나 초월하는 영역을 추적합니다.',
-    category: '国际排名',
-    confidence: 'high',
-    sourceUrl: 'https://hai.stanford.edu/ai-index/2017-ai-index-report',
-    discoveredAt: '2026-07-06',
-  },
-  {
-    title: '2018年AI指数报告',
-    titleEn: 'The 2018 AI Index Report',
-    titleJa: '2018年AI指数レポート',
-    titleKo: '2018년 AI 지수 보고서',
-    description:
-      '斯坦福人工智能中心(HAI)发布的2018年AI指数报告，是一项由跨学术和业界的专家组成的独立倡议。报告通过汇总和整理与人工智能相关的多样化指标数据，为政策制定者、研究人员、记者、企业高管和公众提供关于AI领域的无偏见、严谨和全面的认识。报告主要分为四大部分：活动量度(如会议参与度和风险投资规模)、技术性能、衍生指标分析以及AI系统向人工水平靠近的进展。',
-    descriptionEn:
-      'The Stanford HAI 2018 AI Index Report is an independent initiative led by the AI Index Steering Committee, comprising experts from academia and industry. The report aggregates diverse metrics and data to provide unbiased, rigorous, and comprehensive insights for policymakers, researchers, journalists, executives, and the public to understand the AI field. The report is structured into four main sections: Volume of Activity (including conference attendance and VC investments), Technical Performance, Derivative Measures, and progress towards Human Performance.',
-    descriptionJa:
-      'スタンフォード大学の人工知能センター（HAI）が発表した2018年AI指数レポートは、学術界と産業界にまたがる専門家で構成された独立したイニシアティブです。報告書は、人工知能に関連する多様な指標データを集約・整理することにより、政策立案者、研究者、ジャーナリスト、企業経営者、および一般市民にAI分野に関する偏りのない厳密で包括的な理解を提供しています。報告書は主に4つの主要部分から構成されています：活動指標（学会参加度およびベンチャー投資規模など）、技術性能、派生指標分析、およびAIシステムが人間レベルに接近する進展です。',
-    descriptionKo:
-      'Stanford Artificial Intelligence Center(HAI)가 발표한 2018년 AI 지수 보고서는 학계와 산업계 전문가들로 구성된 독립적 이니셔티브입니다. 보고서는 인공지능과 관련된 다양한 지표 데이터를 종합하고 정리함으로써 정책 입안자, 연구자, 기자, 기업 경영진 및 일반 대중에게 AI 분야에 대한 편견 없고 엄밀하며 포괄적인 인식을 제공합니다. 보고서는 주로 네 가지 주요 부분으로 나뉩니다: 활동 측도(회의 참석도 및 벤처 투자 규모 등), 기술 성능, 파생 지표 분석, 그리고 AI 시스템이 인간 수준에 근접하는 진전입니다.',
-    category: '国际排名',
-    confidence: 'high',
-    sourceUrl: 'https://hai.stanford.edu/ai-index/2018-ai-index-report',
-    discoveredAt: '2026-07-06',
-  },
-  {
-    title: '2019年AI指数报告',
-    titleEn: 'The 2019 AI Index Report',
-    titleJa: '2019年AI指数レポート',
-    titleKo: '2019년 AI 지수 보고서',
-    description:
-      '由斯坦福大学人工智能研究所发布的《2019年AI指数报告》是一份全面的国际AI发展基准研究，涵盖研发、会议、技术性能、经济、教育、自主系统等九个维度。报告通过全球AI活力工具对28个国家的34项指标进行对标，包括研发、经济和包容性三个核心维度。该项目汇集150余位业界与学术专家，致力于提供无偏见、严谨的数据，帮助政策制定者、研究人员和公众理解全球AI发展态势。',
-    descriptionEn:
-      'The 2019 AI Index Report from Stanford HAI is a comprehensive international AI benchmarking initiative covering nine dimensions including research and development, conferences, technical performance, economy, education, and autonomous systems. The report introduces the Global AI Vibrancy Tool, which benchmarks 28 countries across 34 indicators spanning research and development, economy, and inclusion. Developed with input from over 150 industry and academic experts, the report provides unbiased, rigorous data to help policymakers, researchers, and the public understand the global AI landscape.',
-    descriptionJa:
-      'スタンフォード大学人工知能研究所により発表された『2019年AI指数レポート』は、研究開発、会議、技術性能、経済、教育、自律システムなど9つの次元をカバーする包括的な国際AI発展ベンチマーク研究です。報告書は、グローバルAI活力ツールを通じて、28カ国における34の指標を対標し、研究開発、経済、および包括性の3つのコア次元を含んでいます。本プロジェクトは業界および学術の150人以上の専門家を結集させ、偏りのない厳密なデータを提供し、政策立案者、研究者、および一般市民が世界的なAI発展状況を理解するのを支援しています。',
-    descriptionKo:
-      'Stanford University Artificial Intelligence Research Institute가 발표한 「2019년 AI 지수 보고서」는 연구 개발, 회의, 기술 성능, 경제, 교육, 자율 시스템 등 9가지 차원을 포함하는 포괄적 국제 AI 발전 벤치마크 연구입니다. 보고서는 글로벌 AI 활력 도구를 통해 28개 국가의 34개 지표에 대해 벤치마크를 수행하며, 연구 개발, 경제, 포용성 등 3개의 핵심 차원을 포함합니다. 본 프로젝트는 150명 이상의 업계 및 학계 전문가를 모아 편견 없고 엄밀한 데이터를 제공하여 정책 입안자, 연구자 및 일반 대중이 글로벌 AI 발전 동향을 이해할 수 있도록 노력합니다.',
-    category: '国际排名',
-    confidence: 'high',
-    sourceUrl: 'https://hai.stanford.edu/ai-index/2019-ai-index-report',
-    discoveredAt: '2026-07-06',
-  },
-  {
-    title: '2024年AI指数报告',
-    titleEn: 'The 2024 AI Index Report',
-    titleJa: '2024年のAIインデックスレポート',
-    titleKo: '2024년 AI 지수 보고서',
-    description:
-      '斯坦福大学人工智能中心发布的第七版《AI指数报告》，全面追踪全球AI发展趋势。报告涵盖AI研究开发、技术性能、负责任AI、经济、科学医学、教育、政策治理、多样性和公众舆论等九个领域。主要发现包括：美国在顶级AI模型生产中领先中国和欧盟，生成式AI投资从2022年的25.2亿美元大幅增长，AI显著提升劳动力生产效率，美国AI相关监管在五年内从1项增至25项。全球公众对AI的认知和关注度持续提升，但忧虑程度也在上升。',
-    descriptionEn:
-      "Stanford HAI's seventh edition of the AI Index Report, providing comprehensive tracking of global AI development trends. The report analyzes nine dimensions: AI research and development, technical performance, responsible AI, economic impact, science and medicine applications, education, policy and governance, diversity, and public opinion. Key findings include the U.S. leading in top AI model production, generative AI investment surging to $25.2 billion, significant AI-driven labor productivity gains, and U.S. AI regulations rising from one in 2016 to 25 in 2023. Global public awareness of AI's societal impact has increased substantially, with rising concern levels alongside growing recognition of transformative potential.",
-    descriptionJa:
-      'スタンフォード大学人工知能研究センターが発表した第7版の『AIインデックスレポート』は、世界的なAI発展トレンドを包括的に追跡しています。このレポートはAI研究開発、技術性能、責任あるAI、経済、科学医学、教育、政策ガバナンス、多様性、および世論の9つの領域をカバーしています。主な発見には以下が含まれます：米国は中国とEUを上回るトップレベルのAIモデル生産でリードしており、生成型AI投資は2022年の25億2000万米ドルから大幅に増加し、AIは労働力生産性を著しく向上させており、米国のAI関連規制は5年以内に1件から25件に増加しました。世界中の一般大衆のAIに対する認識と関心は継続的に上昇しており、懸念のレベルも上昇しています。',
-    descriptionKo:
-      '스탠포드 대학교 인공지능 센터에서 발표한 제7판 『AI 지수 보고서』는 전 세계 AI 발전 추이를 전면적으로 추적합니다. 보고서는 AI 연구개발, 기술 성능, 책임 있는 AI, 경제, 과학 의료, 교육, 정책 거버넌스, 다양성 및 여론 등 9개 영역을 다룹니다. 주요 발견은 다음과 같습니다: 미국이 최고 수준의 AI 모델 생산에서 중국과 유럽연합을 앞서고 있으며, 생성형 AI 투자가 2022년의 25.2억 미국 달러에서 크게 증가했으며, AI가 노동력 생산성을 현저하게 향상시키고 있으며, 미국의 AI 관련 규제가 5년 내에 1건에서 25건으로 증가했습니다. 전 세계 대중의 AI에 대한 인식 및 관심도가 계속 상승하고 있지만, 우려 정도도 역시 상승하고 있습니다.',
-    category: '国际排名',
-    confidence: 'high',
-    sourceUrl: 'https://hai.stanford.edu/ai-index/2024-ai-index-report',
-    discoveredAt: '2026-07-12',
-  },
-  {
-    title: '2022年AI指数报告',
-    titleEn: 'The 2022 AI Index Report',
-    titleJa: '2022年AI指数報告',
-    titleKo: '2022 AI 지수 보고서',
-    description:
-      '斯坦福大学人工智能研究所(HAI)发布的独立年度AI指数报告。报告追踪AI领域的关键进展：2021年私人投资达93.5亿美元（相比2020年翻倍），美中国际合作最为密切，大语言模型性能提升但偏见加剧，AI伦理研究自2014年增长5倍，AI训练成本自2018年下降63.6%，2021年全球通过18项AI相关法案，机器人手臂成本五年内下降46.2%。报告涵盖研究开发、技术性能、AI伦理、经济教育和政策治理五大章节。',
-    descriptionEn:
-      "The 2022 AI Index Report from Stanford's Human-Centered AI Institute provides comprehensive benchmarking of global AI progress. Key findings include: private investment surged to $93.5 billion in 2021 (more than double 2020), US-China collaborations dominated cross-country AI research partnerships, large language models achieved record performance while exhibiting increased toxicity and bias, AI ethics research publications grew 5-fold since 2014, image classification training costs declined 63.6% since 2018, global AI legislation increased to 18 bills passed in 25 countries by 2021, and robotic arm prices fell 46.2% over five years. The report spans five chapters covering research and development, technical performance, AI ethics, economy and education, and policy and governance.",
-    descriptionJa:
-      'スタンフォード大学人工知能研究所（HAI）が発表した独立した年次のAI指数報告書です。報告書はAI分野における主要な進展を追跡しています：2021年、民間投資は93.5億米ドルに達し（2020年比で倍増）、米中国際協力が最も密接であり、大規模言語モデルのパフォーマンスは向上しましたが偏見が悪化し、AI倫理研究は2014年以来5倍増加し、AI訓練コストは2018年以来63.6%低下し、2021年には世界中で18のAI関連法案が可決され、ロボットアームのコストは5年以内に46.2%低下しました。報告書は、研究開発、技術性能、AI倫理、経済教育、政策ガバナンスの5つの主要な章を網羅しています。',
-    descriptionKo:
-      '스탠포드 대학교 인공지능 연구소(HAI)에서 발표한 독립적인 연례 AI 지수 보고서입니다. 보고서는 AI 분야의 핵심 발전을 추적합니다: 2021년 민간 투자가 93.5억 미국 달러에 달했으며(2020년 대비 2배), 미중 국제 협력이 가장 긴밀하고, 대형 언어 모델의 성능은 향상되었지만 편견은 악화되었으며, AI 윤리 연구는 2014년 이래로 5배 증가했으며, AI 훈련 비용은 2018년 이래로 63.6% 감소했으며, 2021년 전 세계에서 18개의 AI 관련 법안이 통과되었으며, 로봇 팔의 비용은 5년 내에 46.2% 감소했습니다. 보고서는 연구개발, 기술 성능, AI 윤리, 경제 및 교육, 정책 거버넌스의 5개 주요 장을 다룹니다.',
-    category: '国际排名',
-    confidence: 'high',
-    sourceUrl: 'https://hai.stanford.edu/ai-index/2022-ai-index-report',
-    discoveredAt: '2026-07-12',
-  },
-];
+export const autoDiscovered: AutoDiscoveredEntry[] = [];

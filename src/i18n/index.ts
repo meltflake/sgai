@@ -745,6 +745,10 @@ export const zh = {
   benchmarkViewRegionProfile: '查看国家 / 地区档案',
   benchmarkBaseDataUpdated: '基础数据更新',
   benchmarkCaseProfilesCurated: '案例档案整理',
+  benchmarkReportArchiveHeading: 'Stanford AI Index 报告档案',
+  benchmarkReportArchiveIntro:
+    '本页多项国际对比数据源自斯坦福 HAI 的年度 AI Index 报告。这里按年份归档各版报告的核心内容与原文链接。',
+  benchmarkReportArchiveRead: '阅读原报告',
 
   // Open source / community open source project detail pages
   osBack: '返回官方开源与研究',
@@ -1326,6 +1330,10 @@ export const en: Partial<Record<keyof typeof zh, string>> = {
   benchmarkViewRegionProfile: 'View region profile',
   benchmarkBaseDataUpdated: 'Base data updated',
   benchmarkCaseProfilesCurated: 'case profiles curated',
+  benchmarkReportArchiveHeading: 'Stanford AI Index Report Archive',
+  benchmarkReportArchiveIntro:
+    "Much of this page's cross-country data draws on Stanford HAI's annual AI Index reports. Each edition is archived here with its key findings and a link to the original.",
+  benchmarkReportArchiveRead: 'Read the report',
 
   // Open source / community open source project detail pages
   osBack: 'Back to Official Open Source',
@@ -1895,6 +1903,10 @@ export const ja: Partial<Record<keyof typeof zh, string>> = {
   benchmarkViewRegionProfile: '国・地域プロファイルを見る',
   benchmarkBaseDataUpdated: '基礎データ更新',
   benchmarkCaseProfilesCurated: '事例プロファイル整理',
+  benchmarkReportArchiveHeading: 'Stanford AI Index レポートアーカイブ',
+  benchmarkReportArchiveIntro:
+    '本ページの国際比較データの多くは、スタンフォード HAI の年次 AI Index レポートに基づいています。ここでは各年版の要点と原文リンクを年別に整理しています。',
+  benchmarkReportArchiveRead: 'レポート原文を読む',
 
   // Open source / community open source project detail pages
   osBack: '公式オープンソース・研究に戻る',
@@ -2466,6 +2478,10 @@ export const ko: Partial<Record<keyof typeof zh, string>> = {
   benchmarkViewRegionProfile: '국가/지역 프로필 보기',
   benchmarkBaseDataUpdated: '기본 데이터 업데이트',
   benchmarkCaseProfilesCurated: '사례 프로필 정리',
+  benchmarkReportArchiveHeading: 'Stanford AI Index 보고서 아카이브',
+  benchmarkReportArchiveIntro:
+    '이 페이지의 국제 비교 데이터 다수는 스탠퍼드 HAI의 연례 AI Index 보고서에 기반합니다. 여기에서는 각 연도판의 핵심 내용과 원문 링크를 연도별로 정리합니다.',
+  benchmarkReportArchiveRead: '보고서 원문 읽기',
 
   // Open source / community open source project detail pages
   osBack: '공식 오픈소스 및 연구로 돌아가기',
