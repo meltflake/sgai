@@ -21,13 +21,28 @@ await runPipeline({
       domain: 'hai.stanford.edu',
       feedUrl: 'https://hai.stanford.edu/sitemap.xml',
       feedType: 'sitemap',
-      urlFilter: /(ai-index|report|country|index|ranking|compute|talent)/i,
+      // AI Index pages only. The old broad token list matched HAI news
+      // articles ("computer-science" hits /compute/, etc.) — this source
+      // exists to flag new AI Index editions, nothing else.
+      urlFilter: /\/ai-index\//i,
+      // This pipeline's job is to flag NEW report editions; the sitemap
+      // lists every archive year and kept resurfacing 2017-2024 AI Index
+      // pages (issue #166). All editions ≤ current live in
+      // src/data/benchmarking.ts reportArchive[] already.
+      minUrlYear: new Date().getFullYear(),
+      // Chapter sub-pages of an edition (…/2026-ai-index-report/economy)
+      // are parts of a report we already track — only the edition landing
+      // page should candidate.
+      urlExcludes: [/\d{4}-ai-index-report\/./],
     },
     {
       domain: 'imd.org',
       feedUrl: 'https://www.imd.org/feed/',
       feedType: 'rss',
       urlFilter: /(competitiveness|ranking|digital|talent|wcy|wcr)/i,
+      // /ibyimd/ is IMD's magazine — opinion pieces in several languages
+      // ("talento" hits /talent/). WCY/WCR ranking releases live outside it.
+      urlExcludes: [/\/ibyimd\//i],
     },
   ],
 });
