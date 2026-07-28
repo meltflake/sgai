@@ -24,8 +24,11 @@ test('bare listing roots are rejected, article slugs under them pass', () => {
   assert.equal(isGenericOrLanding('https://www.smartnation.gov.sg/initiatives/'), true);
   assert.equal(isGenericOrLanding('https://www.mddi.gov.sg/newsroom/'), true);
   assert.equal(isGenericOrLanding('https://www.tech.gov.sg/media/'), true);
+  assert.equal(isGenericOrLanding('https://www.mas.gov.sg/regulation'), true);
   assert.equal(isGenericOrLanding('https://www.mddi.gov.sg/newsroom/some-real-speech-slug/'), false);
   assert.equal(isGenericOrLanding('https://www.tech.gov.sg/media/some-press-release-slug/'), false);
+  // Exact-segment matching: a doc slug that merely ENDS in the word passes.
+  assert.equal(isGenericOrLanding('https://www.mas.gov.sg/x/artificial-intelligence-regulation'), false);
 });
 
 test('sso.agc.gov.sg /Browse/ statute-navigation shells are rejected (issue #166 legal-ai)', () => {

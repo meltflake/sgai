@@ -16,6 +16,8 @@ import { resolve } from 'node:path';
 import { govFetch, listSitemap } from '../../lib/gov-fetch.ts';
 import { summarizePage } from '../../lib/ai-summarize.ts';
 import { isEmptyShellSummary } from '../../lib/empty-shell.ts';
+import { judgeAiRelevance } from '../../lib/judge-ai-relevance.ts';
+import { isGenericOrLanding, normalizeUrl, selectCandidates } from '../../lib/scan-filters.ts';
 import { autoCommit, pushAndOpenPR, buildPRBody } from '../../lib/auto-commit.ts';
 import { findUnpairedFields } from '../../lib/i18n-pair.ts';
 import { formatWithPrettier } from '../../lib/prettier-format.ts';
@@ -176,14 +178,20 @@ function appendAutoDiscoveredSection(lines: string[], formattedItems: string): s
   }
   if (arrayClose === -1) throw new Error('legalSections close ] not found');
 
+  // Every CJK field needs its full En/Ja/Ko sibling set — the missing
+  // philosophyKo (and titleKo) here is why every legal-ai auto-PR failed
+  // the check:i18n-completeness CI gate and this pipeline never merged a
+  // single PR (audit 2026-07-07 #18).
   const newSection = [
     '  {',
     "    title: 'Auto-discovered (pending review)',",
     "    titleEn: 'Auto-discovered (pending review)',",
     "    titleJa: 'Auto-discovered（レビュー待ち）',",
+    "    titleKo: 'Auto-discovered(검토 대기)',",
     "    philosophy: '由 refresh 管线自动发现的法律 / 监管条目，需 Luca 审核后移入正式分组。',",
     "    philosophyEn: 'Items auto-discovered by the refresh pipeline. Luca to review and move into the right section before merge.',",
     "    philosophyJa: 'リフレッシュパイプラインが自動検出した法律・規制項目。Luca がレビュー後、正式なセクションに移動します。',",
+    "    philosophyKo: '리프레시 파이프라인이 자동 발견한 법률/규제 항목입니다. Luca가 검토 후 정식 분류로 이동합니다.',",
     '    items: [',
     formattedItems,
     '    ],',
@@ -194,22 +202,34 @@ function appendAutoDiscoveredSection(lines: string[], formattedItems: string): s
 }
 
 async function scanAll(existingUrls: Set<string>, limit: number): Promise<string[]> {
-  const found = new Set<string>();
+  // Same shape as run-template's scanSources (issue #166 fixes): shared
+  // generic-page filter (whose /browse/ rule kills the SSO statute-browser
+  // shells this pipeline used to surface — /Browse/Act/Current etc.),
+  // normalized dedupe keys, per-source cap + round-robin instead of a
+  // first-source-wins early break.
+  const existingKeys = new Set([...existingUrls].map(normalizeUrl));
+  const perSource: string[][] = [];
   for (const source of SOURCES) {
+    const kept: string[] = [];
+    const seenKeys = new Set<string>();
     try {
       const urls = await listSitemap(source.sitemapUrl);
       for (const url of urls) {
-        if (existingUrls.has(url)) continue;
+        const key = normalizeUrl(url);
+        if (existingUrls.has(url) || existingKeys.has(key)) continue;
+        if (seenKeys.has(key)) continue;
         if (!source.urlFilter.test(url)) continue;
-        found.add(url);
-        if (found.size >= limit * 4) break; // rough early exit
+        if (isGenericOrLanding(url)) continue;
+        seenKeys.add(key);
+        kept.push(url);
+        if (kept.length >= limit) break;
       }
     } catch {
       /* skip */
     }
-    if (found.size >= limit * 4) break;
+    perSource.push(kept);
   }
-  return [...found].slice(0, limit);
+  return selectCandidates(perSource, limit);
 }
 
 async function main(): Promise<void> {
@@ -271,6 +291,24 @@ async function main(): Promise<void> {
       );
 
       if (isEmptyShellSummary(summary)) {
+        skipped.push(url);
+        continue;
+      }
+
+      // Content-layer AI-relevance gate (issue #166: legal-ai predated the
+      // shared judge and had NO relevance check — a statute merely matching
+      // /data|protection|safety/ in its URL went straight to enrichment).
+      // Same contract as run-template: drop only a high-confidence "no";
+      // judge errors fail open into the pending-review section.
+      const verdict = await judgeAiRelevance(
+        { title: page.title, contentText: page.contentText, sourceUrl: url },
+        {
+          kind: 'a statute / bill / regulatory guidance page',
+          scope:
+            'AI-relevant law or regulation — legislation, amendments, or regulatory guidance that governs AI systems, AI-generated content, automated decision-making, AI training data, or digital infrastructure for AI',
+        }
+      );
+      if (!verdict.relevant && verdict.confidence === 'high') {
         skipped.push(url);
         continue;
       }
@@ -340,9 +378,9 @@ async function main(): Promise<void> {
     lines = appendAutoDiscoveredSection(lines, formattedItems);
   }
 
-  const baselineCount = findUnpairedFields(TARGET_FILE, { fields: ['title', 'description', 'summary'] }).length;
+  const baselineCount = findUnpairedFields(TARGET_FILE, { fields: ['title', 'description', 'summary', 'philosophy'] }).length;
   writeFileSync(TARGET_FILE, lines.join('\n'));
-  const issuesAfter = findUnpairedFields(TARGET_FILE, { fields: ['title', 'description', 'summary'] });
+  const issuesAfter = findUnpairedFields(TARGET_FILE, { fields: ['title', 'description', 'summary', 'philosophy'] });
   if (issuesAfter.length > baselineCount) {
     writeFileSync(TARGET_FILE, original);
     throw new Error(
