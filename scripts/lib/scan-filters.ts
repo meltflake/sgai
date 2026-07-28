@@ -54,6 +54,10 @@ export const LISTING_ROOTS = new Set([
   'resources',
   'publications',
   'announcements',
+  // Bare regulatory-section landings (mas.gov.sg/regulation). Exact-segment
+  // matching keeps real doc slugs like …/artificial-intelligence-regulation.
+  'regulation',
+  'regulations',
 ]);
 
 /** Query params that mark a paginated listing view rather than a document.
