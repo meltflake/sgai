@@ -292,6 +292,41 @@ export const sections: LegalSection[] = [
       'A gradual path from principles to tools to enforcement — FEAT → Veritas → MindForge → AI Risk Management Guidelines.',
     items: [
       {
+        title: '数字基础设施法案（DIB，草案）',
+        topicIds: ['governance-regulation', 'infrastructure-research'],
+        titleKo: '디지털 인프라 법안(DIB, 초안)',
+        titleJa: 'デジタルインフラ法案（DIB、草案）',
+        titleEn: 'Digital Infrastructure Bill (DIB, draft)',
+        date: '2026-07',
+        authority: '数字发展与信息部 (MDDI) / 资讯通信媒体发展局 (IMDA)',
+        authorityKo: '디지털 개발 및 정보부(MDDI) / 정보통신미디어개발청(IMDA)',
+        authorityJa: 'デジタル発展・情報省 (MDDI) / 情報通信メディア開発庁 (IMDA)',
+        authorityEn:
+          'Ministry of Digital Development and Information (MDDI) / Infocomm Media Development Authority (IMDA)',
+        authorityUrl: 'https://www.imda.gov.sg/',
+        scope: 'governance',
+        status: '咨询中',
+        statusKo: '협의 중',
+        statusJa: '協議中',
+        statusEn: 'In consultation',
+        summary: '给数据中心和云服务发牌照，把 AI 算力底座第一次纳入硬法监管；能效要求从自愿转强制。',
+        summaryKo:
+          '데이터 센터와 클라우드 서비스에 라이선스를 부여하여 AI 컴퓨팅 기반을 처음으로 강행법 규제에 편입시키며, 에너지 효율 요구 사항이 자발적에서 강제로 전환됩니다.',
+        summaryJa:
+          'データセンターとクラウドサービスにライセンスを付与し、AI コンピューティング基盤を初めて強行法規制に組み込む。エネルギー効率要件は任意から強制へ転換する。',
+        summaryEn:
+          'Licenses data centres and cloud services, bringing the AI compute layer under hard-law regulation for the first time; energy-efficiency requirements shift from voluntary to mandatory.',
+        body: '2026 年 7 月 1 日 MDDI 与 IMDA 就《数字基础设施法案》草案启动公众咨询，7 月 22 日截止。两套牌照：(1) **重大 FDI 牌照**——关键 IT 负载 ≥10 兆瓦且对外服务的数据中心设施服务，以及在新加坡年均收入 ≥1 亿新元的 IaaS/PaaS 云服务，须落实物理与网络安全措施、业务连续性与灾难恢复计划，并向 IMDA 报告安全事件与服务中断；(2) **数据中心牌照**——关键 IT 负载 ≥3 兆瓦的数据中心运营商全部纳管，须满足设施级 PUE 能效要求，IMDA 审批时还会考虑能源来源的可再生程度与温室气体排放。法案同步修订 2018 年《网络安全法》与 2024 年修正案，统一"基础性数字基础设施服务"与"数据中心设施服务"的定义。IMDA 获得发牌、吊销、发布实务守则与指令、罚款、执法调查的完整权力。对 AI 的意义：这是新加坡"不立横切 AI 法、用既有行业法纳管"方法论在算力层的落地——不谈模型不谈训练，但把 AI 基础设施的安全、韧性与能耗全部纳入监管视野。',
+        bodyKo:
+          '2026년 7월 1일 MDDI와 IMDA는 《디지털 인프라 법안》 초안에 대한 공개 협의를 시작했으며 7월 22일 마감되었습니다. 두 가지 라이선스: (1) **주요 FDI 라이선스**——핵심 IT 부하 ≥10메가와트이며 외부에 서비스를 제공하는 데이터 센터 시설 서비스, 그리고 싱가포르에서 연평균 수익 ≥1억 싱가포르 달러의 IaaS/PaaS 클라우드 서비스는 물리적 및 사이버 보안 조치, 비즈니스 연속성 및 재해 복구 계획을 실행하고 IMDA에 보안 사고와 서비스 중단을 보고해야 합니다. (2) **데이터 센터 라이선스**——핵심 IT 부하 ≥3메가와트의 데이터 센터 운영자가 모두 규제 대상이며, 시설 수준 PUE 에너지 효율 요구 사항을 충족해야 하고, IMDA는 심사 시 에너지원의 재생 가능 정도와 온실가스 배출도 고려합니다. 법안은 2018년 《사이버보안법》과 2024년 개정안을 동시에 수정하여 「기초 디지털 인프라 서비스」와 「데이터 센터 시설 서비스」의 정의를 통일합니다. IMDA는 라이선스 발급, 취소, 실무 규범 및 지침 발표, 벌금 부과, 집행 조사의 완전한 권한을 갖습니다. AI에 대한 의미: 이것은 싱가포르의 「횡단적 AI 법을 제정하지 않고 기존 산업법으로 규제한다」는 방법론이 컴퓨팅 계층에서 구현된 것입니다——모델이나 훈련을 논하지 않지만 AI 인프라의 보안, 회복력, 에너지 소비를 모두 규제 시야에 넣습니다.',
+        bodyJa:
+          '2026 年 7 月 1 日、MDDI と IMDA は《デジタルインフラ法案》草案についてパブリックコンサルテーションを開始し、7 月 22 日に締め切られた。2 種類のライセンス：(1) **主要 FDI ライセンス**——重要 IT 負荷 ≥10 メガワットで外部にサービスを提供するデータセンター施設サービス、およびシンガポールでの年間平均収益 ≥1 億シンガポールドルの IaaS/PaaS クラウドサービスは、物理的・サイバーセキュリティ対策、事業継続および災害復旧計画を実施し、IMDA にセキュリティインシデントとサービス中断を報告する必要がある。(2) **データセンターライセンス**——重要 IT 負荷 ≥3 メガワットのデータセンター運営者がすべて規制対象となり、施設レベルの PUE エネルギー効率要件を満たす必要があり、IMDA は審査時にエネルギー源の再生可能性と温室効果ガス排出も考慮する。法案は 2018 年《サイバーセキュリティ法》と 2024 年改正案を同時に修正し、「基礎デジタルインフラサービス」と「データセンター施設サービス」の定義を統一する。IMDA はライセンスの発行、取消、実務規範・指令の発出、罰金、執行調査の完全な権限を得る。AI にとっての意義：これはシンガポールの「横断的 AI 法を制定せず、既存の産業法で規制する」方法論のコンピューティング層での実装である——モデルも訓練も語らないが、AI インフラのセキュリティ、レジリエンス、エネルギー消費をすべて規制の視野に入れる。',
+        bodyEn:
+          'On 1 July 2026, MDDI and IMDA opened public consultation on the draft Digital Infrastructure Bill, closing 22 July. Two licences: (1) **major FDI licence** — data centre facility services in DCs with a critical IT load of ≥10MW serving unrelated third parties, plus IaaS/PaaS cloud services earning ≥S$100m a year in Singapore, must implement physical and cybersecurity measures, business continuity and disaster recovery plans, and notify IMDA of security incidents and service disruptions; (2) **DC licence** — every data centre operator with a critical IT load of ≥3MW falls in scope and must meet facility-level PUE efficiency requirements, with IMDA also weighing the renewability of energy sources and greenhouse gas emissions when assessing applications. The Bill concurrently amends the Cybersecurity Act 2018 and its 2024 amendment to align the definitions of "foundational digital infrastructure service" and "data centre facility service". IMDA gains full powers to grant and revoke licences, issue codes of practice and directions, impose financial penalties, and conduct enforcement investigations. Why it matters for AI: this is Singapore\'s "no horizontal AI act, regulate through existing sector statutes" methodology applied at the compute layer — it says nothing about models or training, yet pulls the security, resilience and energy footprint of AI infrastructure into regulatory view.',
+        sourceUrl: 'https://www.mddi.gov.sg/newsroom/public-consultation-on-digital-infrastructure-bill/',
+        addedAt: '2026-07-28',
+      },
+      {
         title: '法院生成式 AI 使用指南',
         topicIds: ['governance-regulation', 'public-sector'],
         titleKo: '법원 생성형 AI 사용 지침',

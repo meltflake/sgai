@@ -47,6 +47,30 @@ export const timelineEvents: TimelineEvent[] = [
     tagsKo: ['인재', '국제'],
   },
   {
+    id: 'evt-2026-regulatory-machinery-goes-live',
+    year: 2026,
+    date: '2026-07-01',
+    title: 'AI 监管机器上线：在线安全委员会运作、数字基础设施法案咨询、AISG 换帅',
+    topicIds: ['governance-regulation', 'infrastructure-research'],
+    titleKo: 'AI 규제 기계 가동: 온라인안전위원회 운영, 디지털 인프라 법안 협의, AISG 수장 교체',
+    titleJa: 'AI 規制マシンが稼働：オンライン安全委員会の運用開始、デジタルインフラ法案の協議、AISG のトップ交代',
+    titleEn: 'Regulatory Machinery Goes Live: OSC Operations, Digital Infrastructure Bill, AISG Leadership Change',
+    description:
+      '2026 年年中，新加坡把过去两年写在纸上的 AI 治理框架逐一变成运转中的机构与法条。6 月 29 日，在线安全委员会（OSC）正式开始运作，受害者可就深伪与非自愿私密影像直接投诉，平台须在限期内处理。7 月 1 日，MDDI 与 IMDA 就《数字基础设施法案》草案启动公众咨询（7 月 22 日截止）——关键 IT 负载 ≥10 兆瓦的数据中心与年收入 ≥1 亿新元的 IaaS/PaaS 云服务须申领「重大 FDI 牌照」，≥3 兆瓦的数据中心须持「数据中心牌照」并满足强制 PUE 能效门槛，AI 算力底座第一次被纳入硬法监管。同日，Christian Wolfrum 接替创始执行主席何德华出任 AI Singapore 执行主席，何德华在任九年间交付 300+ AI 项目、培养近 500 名本地 AI 工程师、推动 SEA-LION 开源模型。7 月下旬，PDPC 与 IMDA 在新加坡数据节发布生成式 AI 个人数据使用指南，划清训练数据与用户告知的边界。',
+    descriptionKo:
+      '2026년 중반, 싱가포르는 지난 2년간 문서로만 존재하던 AI 거버넌스 프레임워크를 하나씩 작동하는 기관과 법조문으로 전환했습니다. 6월 29일 온라인안전위원회(OSC)가 공식 가동되어 피해자가 딥페이크와 비동의 사적 이미지에 대해 직접 신고할 수 있게 되었으며, 플랫폼은 기한 내에 처리해야 합니다. 7월 1일 MDDI와 IMDA는 《디지털 인프라 법안》 초안에 대한 공개 협의를 시작했습니다(7월 22일 마감)——핵심 IT 부하 ≥10메가와트 데이터 센터와 연간 수익 ≥1억 싱가포르 달러의 IaaS/PaaS 클라우드 서비스는 「주요 FDI 라이선스」를 신청해야 하고, ≥3메가와트 데이터 센터는 「데이터 센터 라이선스」를 보유하고 강제 PUE 에너지 효율 기준을 충족해야 하며, AI 컴퓨팅 기반이 처음으로 강행법 규제에 편입되었습니다. 같은 날 Christian Wolfrum이 창립 집행회장 Ho Teck Hua의 뒤를 이어 AI Singapore 집행회장으로 취임했습니다. Ho Teck Hua는 재임 9년간 300개 이상의 AI 프로젝트를 수행하고 약 500명의 현지 AI 엔지니어를 양성했으며 SEA-LION 오픈소스 모델을 추진했습니다. 7월 하순 PDPC와 IMDA는 싱가포르 데이터 페스티벌에서 생성형 AI 개인 데이터 사용 지침을 발표하여 훈련 데이터와 사용자 고지의 경계를 명확히 했습니다.',
+    descriptionJa:
+      '2026 年半ば、シンガポールは過去 2 年間紙の上にあった AI ガバナンス枠組みを、一つずつ稼働する機関と法条文に変えていった。6 月 29 日、オンライン安全委員会（OSC）が正式に運用を開始し、被害者はディープフェイクや非同意の私的画像について直接申し立てができるようになり、プラットフォームは期限内に対処する義務を負う。7 月 1 日、MDDI と IMDA は《デジタルインフラ法案》草案についてパブリックコンサルテーションを開始した（7 月 22 日締切）——重要 IT 負荷 ≥10 メガワットのデータセンターと年間収益 ≥1 億シンガポールドルの IaaS/PaaS クラウドサービスは「主要 FDI ライセンス」の申請が必要で、≥3 メガワットのデータセンターは「データセンターライセンス」を保有し強制 PUE エネルギー効率基準を満たす必要があり、AI コンピューティング基盤が初めて強行法規制に組み込まれた。同日、Christian Wolfrum が創設執行会長の何德華の後任として AI Singapore 執行会長に就任した。何德華は在任 9 年間で 300 以上の AI プロジェクトを実施し、約 500 名の現地 AI エンジニアを育成、SEA-LION オープンソースモデルを推進した。7 月下旬、PDPC と IMDA はシンガポールデータフェスティバルで生成 AI の個人データ使用ガイドラインを発表し、訓練データとユーザーへの告知の境界を明確にした。',
+    descriptionEn:
+      "Through mid-2026, Singapore turned two years of paper AI-governance frameworks into working institutions and statutes. On 29 June the Online Safety Commission (OSC) began operations, letting victims file complaints directly over deepfakes and non-consensual intimate images, with platforms required to act within fixed deadlines. On 1 July, MDDI and IMDA opened public consultation on the draft Digital Infrastructure Bill (closing 22 July) — data centres with ≥10MW critical IT load and IaaS/PaaS cloud services earning ≥S$100m a year must obtain a 'major FDI licence', while data centres ≥3MW need a 'DC licence' and must meet mandatory PUE efficiency thresholds, bringing the AI compute layer under hard-law regulation for the first time. The same day, Christian Wolfrum succeeded founding Executive Chairman Ho Teck Hua at AI Singapore; over nine years Ho delivered 300+ AI projects, trained close to 500 local AI engineers, and championed the SEA-LION open-source models. Later in July, PDPC and IMDA released generative-AI personal data guidelines at the Singapore Data Festival, drawing clearer lines around training data and user notification.",
+    tags: ['监管', '基础设施', '治理'],
+    tagsEn: ['Regulation', 'Infrastructure', 'Governance'],
+    tagsJa: ['規制', 'インフラ', 'ガバナンス'],
+    tagsKo: ['규제', '인프라', '거버넌스'],
+    personIds: ['christian-wolfrum', 'ho-teck-hua', 'josephine-teo'],
+    relatedPolicyIds: ['digital-infrastructure-bill-consultation-2026'],
+  },
+  {
     id: 'evt-2026-anthropic-series-h-gic-temasek',
     year: 2026,
     date: '2026-05-28',

@@ -1286,6 +1286,73 @@ Strategically, this moves AI Verify from tools and frameworks into market infras
     icon: '🏢',
     policies: [
       {
+        id: 'digital-infrastructure-bill-consultation-2026',
+        title: '数字基础设施法案 (DIB) 公众咨询',
+        titleKo: '디지털 인프라 법안(DIB) 공개 협의',
+        titleJa: 'デジタルインフラ法案 (DIB) パブリックコンサルテーション',
+        titleEn: 'Digital Infrastructure Bill — Public Consultation',
+        date: '2026-07',
+        source: '数字发展与信息部 (MDDI) / 资讯通信媒体发展局 (IMDA)',
+        sourceKo: '디지털 개발 및 정보부(MDDI) / 정보통신미디어개발청(IMDA)',
+        sourceJa: 'デジタル発展・情報省 (MDDI) / 情報通信メディア開発庁 (IMDA)',
+        sourceEn:
+          'Ministry of Digital Development and Information (MDDI) / Infocomm Media Development Authority (IMDA)',
+        sourceOrgUrl: 'https://www.mddi.gov.sg/',
+        sourceUrl: 'https://www.mddi.gov.sg/newsroom/public-consultation-on-digital-infrastructure-bill/',
+        summary:
+          '给数据中心和云服务发牌照——AI 算力底座第一次被纳入硬法监管。≥10MW 数据中心与年收入 ≥S$1 亿的 IaaS/PaaS 云服务须申请「重大 FDI 牌照」，≥3MW 数据中心须申请「数据中心牌照」并满足强制 PUE 能效门槛。咨询期 2026 年 7 月 1 日至 7 月 22 日。',
+        summaryKo:
+          '데이터 센터와 클라우드 서비스에 라이선스를 부여합니다——AI 컴퓨팅 기반이 처음으로 강행법 규제에 편입되었습니다. ≥10MW 데이터 센터와 연간 매출 ≥S$1억의 IaaS/PaaS 클라우드 서비스는 「주요 FDI 라이선스」를 신청해야 하며, ≥3MW 데이터 센터는 「데이터 센터 라이선스」를 신청하고 강제 PUE 에너지 효율 기준을 충족해야 합니다. 협의 기간은 2026년 7월 1일부터 7월 22일까지입니다.',
+        summaryJa:
+          'データセンターとクラウドサービスにライセンスを付与する——AI コンピューティング基盤が初めて強行法規制に組み込まれた。≥10MW のデータセンターと年間収益 ≥S$1 億の IaaS/PaaS クラウドサービスは「主要 FDI ライセンス」の申請が必要で、≥3MW のデータセンターは「データセンターライセンス」を申請し、強制 PUE エネルギー効率基準を満たす必要がある。コンサルテーション期間は 2026 年 7 月 1 日から 7 月 22 日まで。',
+        summaryEn:
+          'Licensing for data centres and cloud services — the first time Singapore brings the AI compute layer under hard-law regulation. Data centres with ≥10MW critical IT load and IaaS/PaaS cloud services earning ≥S$100m/year in Singapore must obtain a "major FDI licence"; data centres ≥3MW must hold a "DC licence" and meet mandatory power usage effectiveness (PUE) requirements. Consultation ran 1–22 July 2026.',
+        content: `2026 年 7 月 1 日，数字发展与信息部 (MDDI) 与资讯通信媒体发展局 (IMDA) 就《数字基础设施法案》(Digital Infrastructure Bill, DIB) 草案启动公众咨询，7 月 22 日上午 10 时截止。这部法案对新加坡 AI 议题的意义在于：**它第一次把「算力底座」本身变成受牌照监管的行业**，而不是只监管跑在上面的模型和应用。
+
+**两套牌照。** 第一套是「重大基础性数字基础设施牌照」(major FDI licence)，覆盖两类服务：(1) 关键 IT 负载 (critical IT load, CIL) ≥ 10 兆瓦、且对外提供服务的数据中心设施服务（即云与托管型数据中心）；(2) 在新加坡年均收入 ≥ 1 亿新元、属于 IaaS 或 PaaS（不含 SaaS）的云计算服务。持牌方须落实物理与网络安全措施、业务连续性与灾难恢复计划，并向 IMDA 报告网络安全事件与服务中断。第二套是「数据中心牌照」(DC licence)，门槛更低——CIL ≥ 3 兆瓦的数据中心运营商都要申请，重点是能效与可持续性。同时符合两类的运营商须同时持有两张牌照，IMDA 会合并申请流程。
+
+**能效从自愿变强制。** IMDA 审批数据中心牌照时，除运营经验外还要看能效与水效，并可考虑能源来源的可再生程度、发电温室气体排放量，以及申请方业务对新加坡经济的战略重要性。持牌运营商须满足设施级 PUE（电能使用效率）要求；法案还为 IMDA 未来对 IT 设备能效与设施级水效设限留了口子。这是对 Green DC Roadmap 的硬化——政府明确表态「自愿措施无法保证全行业一致的可持续性结果」。
+
+**与既有法律的接口。** 2024 年《网络安全法》修订已针对重大 FDI 服务设了网络安全要求，但缺少更广义的「运营韧性」框架，DIB 补的正是这一块，并同步修订 2018 年《网络安全法》与 2024 年修订案，统一「基础性数字基础设施服务」与「数据中心设施服务」的定义。执法方面，IMDA 获得发牌、续牌、暂停、吊销、发布实务守则与指令、处以罚款、以及执法调查的权力。
+
+**为什么这条对 AI 观察重要。** 新加坡一贯的做法是「不立横切 AI 法，用既有行业法把 AI 纳管」。DIB 是这套方法论在算力层的落地：它不谈模型、不谈训练，但通过给数据中心和云服务发牌照，把 AI 基础设施的安全、韧性与能耗全部纳入监管视野。这也回应了国会关于 one-north AI 园区能耗、AI 能源足迹的多次质询——政府的答案始终是「监管重心在基础设施层，而非模型层」。`,
+        contentKo: `2026년 7월 1일, 디지털 개발 및 정보부(MDDI)와 정보통신미디어개발청(IMDA)은 《디지털 인프라 법안》(Digital Infrastructure Bill, DIB) 초안에 대한 공개 협의를 시작했으며, 7월 22일 오전 10시에 마감되었습니다. 이 법안이 싱가포르 AI 의제에 갖는 의미는: **처음으로 「컴퓨팅 기반」 자체를 라이선스 규제 대상 산업으로 만들었다는 점**이며, 그 위에서 실행되는 모델과 애플리케이션만 규제하는 것이 아닙니다.
+
+**두 가지 라이선스.** 첫 번째는 「주요 기초 디지털 인프라 라이선스」(major FDI licence)로, 두 가지 서비스를 포함합니다: (1) 핵심 IT 부하(critical IT load, CIL)가 ≥ 10메가와트이고 외부에 서비스를 제공하는 데이터 센터 시설 서비스(즉 클라우드 및 코로케이션 데이터 센터); (2) 싱가포르에서 연평균 수익이 ≥ 1억 싱가포르 달러이며 IaaS 또는 PaaS(SaaS 제외)에 속하는 클라우드 컴퓨팅 서비스. 라이선스 보유자는 물리적 및 사이버 보안 조치, 비즈니스 연속성 및 재해 복구 계획을 실행하고, IMDA에 사이버 보안 사고 및 서비스 중단을 보고해야 합니다. 두 번째는 「데이터 센터 라이선스」(DC licence)로, 기준이 더 낮습니다——CIL ≥ 3메가와트의 데이터 센터 운영자는 모두 신청해야 하며, 에너지 효율과 지속 가능성에 중점을 둡니다. 두 유형에 모두 해당하는 운영자는 두 라이선스를 모두 보유해야 하며, IMDA는 신청 절차를 통합합니다.
+
+**에너지 효율이 자발적에서 강제로.** IMDA는 데이터 센터 라이선스를 심사할 때 운영 경험 외에도 에너지 효율과 수자원 효율을 고려하며, 에너지원의 재생 가능 정도, 발전 온실가스 배출량, 신청자 사업이 싱가포르 경제에 갖는 전략적 중요성도 고려할 수 있습니다. 라이선스 운영자는 시설 수준 PUE(전력 사용 효율) 요구 사항을 충족해야 하며, 법안은 IMDA가 향후 IT 장비 에너지 효율과 시설 수준 수자원 효율에 제한을 두는 여지도 남겨두었습니다. 이는 Green DC Roadmap의 강화입니다——정부는 「자발적 조치만으로는 업계 전반의 일관된 지속 가능성 결과를 보장할 수 없다」고 명확히 밝혔습니다.
+
+**기존 법률과의 인터페이스.** 2024년 《사이버보안법》 개정은 이미 주요 FDI 서비스에 대한 사이버 보안 요구 사항을 마련했지만, 더 광범위한 「운영 회복력」 프레임워크가 부족했습니다. DIB가 보완하는 것이 바로 이 부분이며, 동시에 2018년 《사이버보안법》과 2024년 개정안을 수정하여 「기초 디지털 인프라 서비스」와 「데이터 센터 시설 서비스」의 정의를 통일합니다. 집행 측면에서 IMDA는 라이선스 발급, 갱신, 정지, 취소, 실무 규범 및 지침 발표, 벌금 부과, 집행 조사 권한을 갖게 됩니다.
+
+**AI 관찰에 왜 중요한가.** 싱가포르의 일관된 접근 방식은 「횡단적 AI 법을 제정하지 않고, 기존 산업법으로 AI를 규제한다」입니다. DIB는 이 방법론이 컴퓨팅 계층에서 구현된 것입니다: 모델이나 훈련을 논하지 않지만, 데이터 센터와 클라우드 서비스에 라이선스를 부여함으로써 AI 인프라의 보안, 회복력, 에너지 소비를 모두 규제 시야에 넣습니다. 이는 one-north AI 단지 에너지 소비, AI 에너지 발자국에 관한 국회의 여러 질의에도 응답한 것입니다——정부의 답변은 항상 「규제 중심은 모델 계층이 아니라 인프라 계층에 있다」였습니다.`,
+        contentJa: `2026 年 7 月 1 日、デジタル発展・情報省 (MDDI) と情報通信メディア開発庁 (IMDA) は《デジタルインフラ法案》(Digital Infrastructure Bill, DIB) 草案についてパブリックコンサルテーションを開始し、7 月 22 日午前 10 時に締め切られました。この法案がシンガポールの AI 議題に持つ意義は：**初めて「コンピューティング基盤」そのものをライセンス規制対象産業にした点**であり、その上で動くモデルとアプリケーションだけを規制するのではありません。
+
+**2 種類のライセンス。** 1 つ目は「主要基礎デジタルインフラライセンス」(major FDI licence) で、2 種類のサービスをカバーします：(1) 重要 IT 負荷 (critical IT load, CIL) が ≥ 10 メガワットで、外部にサービスを提供するデータセンター施設サービス（すなわちクラウドおよびコロケーション型データセンター）；(2) シンガポールでの年間平均収益が ≥ 1 億シンガポールドルで、IaaS または PaaS（SaaS を除く）に属するクラウドコンピューティングサービス。ライセンス保有者は物理的およびサイバーセキュリティ対策、事業継続および災害復旧計画を実施し、IMDA にサイバーセキュリティインシデントとサービス中断を報告する必要があります。2 つ目は「データセンターライセンス」(DC licence) で、基準はより低く——CIL ≥ 3 メガワットのデータセンター運営者はすべて申請が必要で、エネルギー効率と持続可能性に重点が置かれます。両方に該当する運営者は 2 つのライセンスを同時に保有する必要があり、IMDA は申請プロセスを統合します。
+
+**エネルギー効率が任意から強制へ。** IMDA はデータセンターライセンスを審査する際、運営経験に加えてエネルギー効率と水効率も考慮し、エネルギー源の再生可能性、発電による温室効果ガス排出量、申請者の事業がシンガポール経済に持つ戦略的重要性も考慮できます。ライセンス運営者は施設レベルの PUE（電力使用効率）要件を満たす必要があり、法案は IMDA が将来 IT 機器のエネルギー効率と施設レベルの水効率に制限を設ける余地も残しています。これは Green DC Roadmap の硬化です——政府は「任意の措置だけでは業界全体で一貫した持続可能性の結果を保証できない」と明確に表明しました。
+
+**既存法律とのインターフェース。** 2024 年《サイバーセキュリティ法》改正はすでに主要 FDI サービスに対するサイバーセキュリティ要件を定めていましたが、より広義の「運用レジリエンス」フレームワークが欠けていました。DIB が補うのはまさにこの部分であり、同時に 2018 年《サイバーセキュリティ法》と 2024 年改正案を修正し、「基礎デジタルインフラサービス」と「データセンター施設サービス」の定義を統一します。執行面では、IMDA はライセンスの発行、更新、停止、取消、実務規範および指令の発出、罰金の賦課、執行調査の権限を得ます。
+
+**なぜ AI 観察にとって重要か。** シンガポールの一貫したアプローチは「横断的 AI 法を制定せず、既存の産業法で AI を規制する」ことです。DIB はこの方法論のコンピューティング層での実装です：モデルや訓練については語らないものの、データセンターとクラウドサービスにライセンスを付与することで、AI インフラのセキュリティ、レジリエンス、エネルギー消費をすべて規制の視野に入れます。これは one-north AI パークのエネルギー消費、AI のエネルギーフットプリントに関する国会での度重なる質問にも応えるものです——政府の答えは常に「規制の重心はモデル層ではなくインフラ層にある」でした。`,
+        contentEn: `On 1 July 2026, the Ministry of Digital Development and Information (MDDI) and the Infocomm Media Development Authority (IMDA) opened public consultation on the draft Digital Infrastructure Bill (DIB), closing 22 July 2026 at 10am. Its significance for Singapore's AI agenda: **it is the first time the compute layer itself becomes a licensed industry**, rather than regulating only the models and applications running on top of it.
+
+**Two licences.** The first is the *major FDI licence* (foundational digital infrastructure), covering two service types: (1) data centre facility services provided in a DC with a critical IT load (CIL) of ≥ 10 megawatts serving unrelated third parties — i.e. cloud and co-location DCs; and (2) cloud computing services generating ≥ S$100 million per year in Singapore revenue averaged over the preceding three years, falling within IaaS or PaaS (but not SaaS). Licensees must implement physical and cybersecurity measures, business continuity and disaster recovery plans, and notify IMDA of cybersecurity incidents and service delivery disruptions. The second is the *DC licence*, with a lower threshold — every DC operator with CIL ≥ 3 megawatts must apply — focused on energy efficiency and sustainability. Operators meeting both criteria need both licences; IMDA will streamline the joint application.
+
+**Energy efficiency moves from voluntary to mandatory.** In assessing a DC licence application, IMDA will weigh energy and water efficiency alongside operating experience, and may consider the renewability of energy sources, greenhouse gas emissions from electricity generation, and the economic or strategic importance of the applicant's operations to Singapore. Licensed operators must meet facility-level power usage effectiveness (PUE) requirements; the Bill also leaves room for IMDA to set IT-equipment energy efficiency and facility-level water efficiency requirements in future. This hardens the Green DC Roadmap — the government states plainly that "voluntary measures alone cannot ensure consistent sustainability outcomes across the sector."
+
+**Interface with existing law.** The 2024 Cybersecurity Act amendments already imposed cybersecurity requirements on major FDI services, but there was no statutory framework for broader operational resilience. The DIB fills exactly that gap, while making related amendments to the Cybersecurity Act 2018 and the Cybersecurity (Amendment) Act 2024 to align the definitions of "foundational digital infrastructure service" and "data centre facility service". On enforcement, IMDA gains powers to grant, renew, suspend and revoke licences, issue codes of practice and directions, impose financial penalties, and conduct enforcement and investigation.
+
+**Why this matters for AI watchers.** Singapore's consistent approach is to avoid a horizontal AI act and instead bring AI under existing sector statutes. The DIB is that methodology applied at the compute layer: it says nothing about models or training, yet by licensing data centres and cloud services it pulls the security, resilience and energy footprint of AI infrastructure into regulatory view. It also answers repeated parliamentary questions on one-north AI park energy consumption and AI's energy footprint — where the government's answer has consistently been that the regulatory centre of gravity sits at the infrastructure layer, not the model layer.`,
+        ministry: 'MDDI',
+        addedAt: '2026-07-28',
+        authorPersonIds: [],
+        relatedDebateIds: ['written-answer-22443'],
+        relatedLeverNumbers: [],
+        relatedTimelineYears: [2026],
+        relatedPostSlugs: [],
+        topicIds: ['governance-regulation', 'infrastructure-research'],
+      },
+      {
         id: 'ai-in-healthcare-guidelines-aihgle',
         title: '医疗 AI 联合指南 (AIHGle)',
         titleKo: '의료 AI 공동 지침(AIHGle)',
