@@ -19,4 +19,12 @@ export interface FeaturedPointer {
   id: string;
 }
 
-export const FEATURED: FeaturedPointer | null = null;
+// 2026-07-31: lead with the Digital Infrastructure Bill — July's biggest
+// structural story (first hard-law licensing of the AI compute layer:
+// ≥10MW DCs + ≥S$100m/yr IaaS/PaaS need licences, mandatory PUE floors).
+// Consultation closed 22 Jul; swap or null this when the Bill is tabled in
+// Parliament or a bigger story lands.
+export const FEATURED: FeaturedPointer | null = {
+  kind: 'policy',
+  id: 'digital-infrastructure-bill-consultation-2026',
+};

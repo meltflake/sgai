@@ -6098,6 +6098,7 @@ export const benchmarkCaseProfileUpdated = '2026-05-04';
 export const benchmarkCases: BenchmarkCase[] = [
   {
     id: 'ai-verify',
+    addedAt: '2026-05-04',
     topicIds: ['safety-ethics', 'governance-regulation'],
     flag: '🇸🇬',
     name: 'AI Verify',
@@ -6238,6 +6239,7 @@ export const benchmarkCases: BenchmarkCase[] = [
   },
   {
     id: 'cyberport-ai-supercomputing-centre',
+    addedAt: '2026-05-04',
     topicIds: ['infrastructure-research'],
     canonicalPath: '/benchmarking/hong-kong-initiative-1-cyberport-3000-pflops-supercomputing-centre/',
     flag: '🇭🇰',
@@ -6380,6 +6382,7 @@ export const benchmarkCases: BenchmarkCase[] = [
   },
   {
     id: 'tsmc-ai-chip-manufacturing',
+    addedAt: '2026-05-04',
     topicIds: ['infrastructure-research', 'economy-industry'],
     flag: '🇹🇼',
     name: 'TSMC AI 芯片制造',
@@ -6521,6 +6524,7 @@ export const benchmarkCases: BenchmarkCase[] = [
   },
   {
     id: 'falcon-llm',
+    addedAt: '2026-05-04',
     topicIds: ['open-source'],
     flag: '🇦🇪',
     name: 'Falcon LLM',
@@ -6651,6 +6655,7 @@ export const benchmarkCases: BenchmarkCase[] = [
   },
   {
     id: 'mgx-ai-fund',
+    addedAt: '2026-05-04',
     topicIds: ['startups-investment'],
     flag: '🇦🇪',
     name: 'MGX AI Fund',
@@ -6787,6 +6792,7 @@ export const benchmarkCases: BenchmarkCase[] = [
   },
   {
     id: 'mbzuai',
+    addedAt: '2026-05-04',
     topicIds: ['talent-education'],
     flag: '🇦🇪',
     name: 'MBZUAI',
@@ -6906,6 +6912,7 @@ export const benchmarkCases: BenchmarkCase[] = [
   },
   {
     id: 'unit-8200-ai-talent-pipeline',
+    addedAt: '2026-05-04',
     topicIds: ['talent-education', 'national-security'],
     flag: '🇮🇱',
     name: 'Unit 8200 AI 人才管线',
@@ -7040,6 +7047,7 @@ export const benchmarkCases: BenchmarkCase[] = [
   },
   {
     id: 'korea-chaebol-llm-stack',
+    addedAt: '2026-05-04',
     topicIds: ['economy-industry'],
     flag: '🇰🇷',
     name: '韩国财阀自研大模型栈',
@@ -7179,6 +7187,7 @@ export const benchmarkCases: BenchmarkCase[] = [
   },
   {
     id: 'burokratt',
+    addedAt: '2026-05-04',
     topicIds: ['public-sector'],
     flag: '🇪🇪',
     name: 'Bürokratt',
@@ -7315,6 +7324,7 @@ export const benchmarkCases: BenchmarkCase[] = [
   },
   {
     id: 'elements-of-ai',
+    addedAt: '2026-05-04',
     topicIds: ['talent-education'],
     flag: '🇫🇮',
     name: 'Elements of AI',
@@ -7446,6 +7456,7 @@ export const benchmarkCases: BenchmarkCase[] = [
   },
   {
     id: 'eth-ai-center',
+    addedAt: '2026-05-04',
     topicIds: ['infrastructure-research', 'talent-education'],
     flag: '🇨🇭',
     name: 'ETH AI Center',
@@ -7580,6 +7591,7 @@ export const benchmarkCases: BenchmarkCase[] = [
   },
   {
     id: 'pan-canadian-ai-institute-network',
+    addedAt: '2026-05-04',
     topicIds: ['infrastructure-research'],
     flag: '🇨🇦',
     name: 'Mila / Vector / Amii 研究网络',

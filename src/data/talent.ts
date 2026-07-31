@@ -86,6 +86,7 @@ export interface TalentProgramme {
 export const programmes: TalentProgramme[] = [
   {
     id: 'ai-apprenticeship-programme',
+    addedAt: '2026-05-04',
     name: 'AI 学徒计划',
     nameKo: 'AI 견습 프로그램',
     nameJa: 'AI 学徒計画',
@@ -287,6 +288,7 @@ export const programmes: TalentProgramme[] = [
   },
   {
     id: 'llm-application-developer-programme',
+    addedAt: '2026-05-04',
     name: 'LLM 应用开发者计划',
     nameKo: 'LLM 애플리케이션 개발자 프로그램',
     nameJa: 'LLM アプリケーション開発者計画',
@@ -493,6 +495,7 @@ export const programmes: TalentProgramme[] = [
   },
   {
     id: 'aisg-phd-fellowship',
+    addedAt: '2026-05-04',
     name: 'AI 博士奖学金',
     nameKo: 'AI 박사 장학금',
     nameJa: 'AI 博士号奨学金',
@@ -683,6 +686,7 @@ export const programmes: TalentProgramme[] = [
   },
   {
     id: 'ai-accelerated-masters-programme',
+    addedAt: '2026-05-04',
     name: 'AI 硕士加速计划',
     nameKo: 'AI 석사 가속 프로그램',
     nameJa: 'AI 修士課程加速計画',
@@ -861,6 +865,7 @@ export const programmes: TalentProgramme[] = [
   },
   {
     id: 'learnai-ai4i',
+    addedAt: '2026-05-04',
     name: 'LearnAI / AI4I',
     nameEn: 'LearnAI / AI for Industry',
     shortName: 'LearnAI',
@@ -1057,6 +1062,7 @@ export const programmes: TalentProgramme[] = [
   },
   {
     id: 'national-ai-student-challenge',
+    addedAt: '2026-05-04',
     name: '全国 AI 学生挑战赛',
     nameKo: '전국 AI 학생 챌린지',
     nameJa: '全国 AI 学生チャレンジ大会',
@@ -1255,6 +1261,7 @@ export const programmes: TalentProgramme[] = [
   },
   {
     id: 'international-olympiad-in-ai-2027',
+    addedAt: '2026-05-04',
     name: 'IOAI 2027 新加坡',
     nameKo: 'IOAI 2027 싱가포르',
     nameJa: 'IOAI 2027 シンガポール',
@@ -1446,6 +1453,7 @@ export const programmes: TalentProgramme[] = [
   },
   {
     id: 'ai-singapore-goes-to-school',
+    addedAt: '2026-05-04',
     name: 'AI 进校园',
     nameKo: 'AI 학교 진입',
     nameJa: 'AI 校園進出',
