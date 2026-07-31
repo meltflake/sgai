@@ -233,6 +233,7 @@ export const verticals: Vertical[] = [
     startups: [
       {
         name: 'ADVANCE.AI',
+        addedAt: '2026-02-17',
         description: 'AI 驱动的数字身份验证和风控',
         descriptionKo: 'AI 기반 디지털 신원 검증 및 위험 관리',
         descriptionJa: 'AI駆動型デジタル本人確認・リスク管理',
@@ -242,6 +243,7 @@ export const verticals: Vertical[] = [
       },
       {
         name: 'Aspire',
+        addedAt: '2026-02-17',
         description: '中小企业金融平台（AI-enabled）',
         descriptionKo: '중소기업 금융 플랫폼(AI 기반)',
         descriptionJa: '中小企業金融プラットフォーム（AI対応）',
@@ -251,6 +253,7 @@ export const verticals: Vertical[] = [
       },
       {
         name: 'Endowus',
+        addedAt: '2026-02-17',
         description: 'AI 智能投顾',
         descriptionKo: 'AI 스마트 자문',
         descriptionJa: 'AI ロボアドバイザー',
@@ -262,6 +265,7 @@ export const verticals: Vertical[] = [
       },
       {
         name: 'Tookitaki',
+        addedAt: '2026-02-17',
         description: 'AI 反洗钱合规',
         descriptionKo: 'AI 자금 세탁 방지 규정 준수',
         descriptionJa: 'AI マネーロンダリング対策コンプライアンス',
@@ -271,6 +275,7 @@ export const verticals: Vertical[] = [
       },
       {
         name: 'CredoLab',
+        addedAt: '2026-02-17',
         description: '替代数据 AI 信用评分',
         descriptionKo: '대체 데이터 AI 신용 평가',
         descriptionJa: 'オルタナティブデータ AI クレジットスコアリング',
@@ -280,6 +285,7 @@ export const verticals: Vertical[] = [
       },
       {
         name: 'Transparently.AI',
+        addedAt: '2026-02-17',
         description: 'AI 财务欺诈检测',
         descriptionKo: 'AI 금융 사기 탐지',
         descriptionJa: 'AI 財務詐欺検出',
@@ -311,6 +317,7 @@ export const verticals: Vertical[] = [
       },
       {
         name: 'Qritive',
+        addedAt: '2026-02-17',
         description: 'AI 数字病理诊断',
         descriptionKo: 'AI 디지털 병리 진단',
         descriptionJa: 'AI デジタル病理診断',
@@ -320,6 +327,7 @@ export const verticals: Vertical[] = [
       },
       {
         name: 'Engine Bio',
+        addedAt: '2026-02-17',
         description: 'CRISPR + ML 诊断平台',
         descriptionKo: 'CRISPR + ML 진단 플랫폼',
         descriptionJa: 'CRISPR + ML 診断プラットフォーム',
@@ -329,6 +337,7 @@ export const verticals: Vertical[] = [
       },
       {
         name: 'Bot MD',
+        addedAt: '2026-02-17',
         description: '医疗 AI 助手',
         descriptionKo: '의료 AI 어시스턴트',
         descriptionJa: '医療 AI アシスタント',
@@ -338,6 +347,7 @@ export const verticals: Vertical[] = [
       },
       {
         name: 'Nanyang Biologics',
+        addedAt: '2026-02-17',
         description: 'AI 药物发现',
         descriptionKo: 'AI 약물 발견',
         descriptionJa: 'AI 医薬品発見',
@@ -381,6 +391,7 @@ export const verticals: Vertical[] = [
       },
       {
         name: 'ViSenze',
+        addedAt: '2026-02-17',
         description: 'AI 视觉搜索',
         descriptionKo: 'AI 시각 검색',
         descriptionJa: 'AI ビジュアルサーチ',
@@ -390,6 +401,7 @@ export const verticals: Vertical[] = [
       },
       {
         name: 'WIZ.AI',
+        addedAt: '2026-02-17',
         description: 'Singlish 方言 AI 客服',
         descriptionKo: 'Singlish 방언 AI 고객서비스',
         descriptionJa: 'シングリッシュ方言 AI カスタマーサービス',
@@ -399,6 +411,7 @@ export const verticals: Vertical[] = [
       },
       {
         name: 'Level3AI',
+        addedAt: '2026-02-17',
         description: '企业 AI Agent',
         descriptionKo: '엔터프라이즈 AI 에이전트',
         descriptionJa: 'エンタープライズ AI エージェント',
@@ -418,6 +431,7 @@ export const verticals: Vertical[] = [
     startups: [
       {
         name: 'Aicadium',
+        addedAt: '2026-02-17',
         description: 'MLOps 平台',
         descriptionKo: 'MLOps 플랫폼',
         descriptionJa: 'MLOps プラットフォーム',
@@ -430,6 +444,7 @@ export const verticals: Vertical[] = [
       },
       {
         name: 'Datature',
+        addedAt: '2026-02-17',
         description: '无代码计算机视觉平台',
         descriptionKo: '노코드 컴퓨터 비전 플랫폼',
         descriptionJa: 'ノーコード コンピュータビジョン プラットフォーム',
@@ -439,6 +454,7 @@ export const verticals: Vertical[] = [
       },
       {
         name: 'Sentient.io',
+        addedAt: '2026-02-17',
         description: '东盟 AI API 微服务',
         descriptionKo: 'ASEAN AI API 마이크로서비스',
         descriptionJa: 'ASEAN AI API マイクロサービス',
@@ -448,6 +464,7 @@ export const verticals: Vertical[] = [
       },
       {
         name: 'Mindverse AI',
+        addedAt: '2026-02-17',
         description: '主权 AI 基础设施',
         descriptionKo: '주권 AI 인프라',
         descriptionJa: 'ソブリン AI インフラストラクチャ',
@@ -457,6 +474,7 @@ export const verticals: Vertical[] = [
       },
       {
         name: 'Jan',
+        addedAt: '2026-02-17',
         description: '离线本地 AI 助手（开源）',
         descriptionKo: '오프라인 로컬 AI 어시스턴트(오픈소스)',
         descriptionJa: 'オフライン・ローカル AI アシスタント（オープンソース）',
@@ -467,6 +485,7 @@ export const verticals: Vertical[] = [
       },
       {
         name: 'Galatek',
+        addedAt: '2026-02-17',
         description: '生命科学/半导体 AI 自动化',
         descriptionKo: '생명과학/반도체 AI 자동화',
         descriptionJa: 'ライフサイエンス/半導体 AI 自動化',
@@ -485,6 +504,7 @@ export const verticals: Vertical[] = [
     startups: [
       {
         name: 'Eureka Robotics',
+        addedAt: '2026-02-17',
         description: 'AI 精密视觉机器人',
         descriptionKo: 'AI 정밀 시각 로봇',
         descriptionJa: 'AI 精密ビジョン ロボット',
@@ -495,6 +515,7 @@ export const verticals: Vertical[] = [
       },
       {
         name: 'Augmentus',
+        addedAt: '2026-02-17',
         description: '无代码机器人编程',
         descriptionKo: '노코드 로봇 프로그래밍',
         descriptionJa: 'ノーコード ロボット プログラミング',
@@ -504,6 +525,7 @@ export const verticals: Vertical[] = [
       },
       {
         name: 'Botsync',
+        addedAt: '2026-02-17',
         description: '自主移动机器人',
         descriptionKo: '자율 이동 로봇',
         descriptionJa: '自律移動ロボット',
@@ -513,6 +535,7 @@ export const verticals: Vertical[] = [
       },
       {
         name: 'Moovita',
+        addedAt: '2026-02-17',
         description: '自动驾驶出行',
         descriptionKo: '자율주행 모빌리티',
         descriptionJa: '自動運転モビリティ',

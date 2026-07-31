@@ -58,7 +58,13 @@ let _sorted: Harvested[] | null = null;
 
 function sortedHarvest(): Harvested[] {
   if (!_sorted) {
-    _sorted = [...harvestAll()].sort((a, b) => (a.addedAt < b.addedAt ? 1 : -1));
+    // localeCompare (not `< ? 1 : -1`): the old comparator never returned 0
+    // for equal addedAt, which violates the comparator contract and lets
+    // the engine shuffle same-day runs arbitrarily — the benchmarking card
+    // surfaced the 2017 report-archive edition instead of the 2026 one.
+    // A consistent comparator keeps sort stability, so same-day records
+    // preserve harvest (data-file) order: newest-first arrays stay that way.
+    _sorted = [...harvestAll()].sort((a, b) => b.addedAt.localeCompare(a.addedAt));
   }
   return _sorted;
 }
@@ -89,11 +95,15 @@ export function harvestedTitle(h: Harvested, lang: Lang): string {
 // shape so the directory card code stays uniform.
 function latestTimelineEntry(): Harvested | undefined {
   if (timelineEvents.length === 0) return undefined;
-  const newest = [...timelineEvents].sort((a, b) => {
-    const ad = a.date ?? `${a.year}-01-01`;
-    const bd = b.date ?? `${b.year}-01-01`;
-    return ad < bd ? 1 : -1;
-  })[0];
+  // Future-dated events (the 2027 IOAI hosting entry) must not occupy the
+  // "latest" slot until they happen — a card reading "最新 · 2027" for a
+  // year is a freshness signal pointing at the future. Prefer the newest
+  // event that has already occurred; fall back to the global newest only
+  // if every event is in the future.
+  const today = new Date().toISOString().slice(0, 10);
+  const synthDate = (e: (typeof timelineEvents)[number]) => e.date ?? `${e.year}-01-01`;
+  const sorted = [...timelineEvents].sort((a, b) => (synthDate(a) < synthDate(b) ? 1 : -1));
+  const newest = sorted.find((e) => synthDate(e) <= today) ?? sorted[0];
   return {
     type: 'site',
     source: 'policy', // unused for display; timeline has no DataSource

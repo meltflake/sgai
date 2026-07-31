@@ -30,7 +30,7 @@ import { people, type Person } from '~/data/people';
 import { mddiSpeeches, type MddiSpeech } from '~/data/voices';
 import { speechId } from '~/data/speech-transcripts';
 import { dimensions, type Dimension } from '~/data/tracker';
-import { benchmarkCases, type BenchmarkCase } from '~/data/benchmarking';
+import { benchmarkCases, reportArchive, type BenchmarkCase, type BenchmarkReportEdition } from '~/data/benchmarking';
 import { ecosystemCategories, type EcosystemEntity } from '~/data/ecosystem';
 import { levers, type Lever } from '~/data/levers';
 import { verticals, type Startup } from '~/data/startups';
@@ -401,6 +401,28 @@ function harvestBenchmarking(rs: BenchmarkCase[]): Harvested[] {
   return out;
 }
 
+function harvestReportArchive(rs: BenchmarkReportEdition[]): Harvested[] {
+  // Report-archive editions (promoted 2026-07-28) are real published
+  // content on /benchmarking/ — surface their arrival in the feed and let
+  // the benchmarking directory card show them as its latest addition.
+  // They link to the listing (the archive is a section, not detail pages).
+  const out: Harvested[] = [];
+  for (const r of rs) {
+    if (!r.addedAt) continue;
+    out.push({
+      type: 'benchmark',
+      source: 'benchmark',
+      addedAt: r.addedAt,
+      zhTitle: r.title,
+      enTitle: pickEn(r.title, r.titleEn),
+      jaTitle: pickJa(r.title, r.titleJa, r.titleEn),
+      koTitle: pickKo(r.title, r.titleKo, r.titleEn),
+      href: '/benchmarking/',
+    });
+  }
+  return out;
+}
+
 function harvestEcosystem(cats: Array<{ entities: EcosystemEntity[] }>): Harvested[] {
   const out: Harvested[] = [];
   for (const cat of cats) {
@@ -585,6 +607,7 @@ export function harvestAll(): Harvested[] {
     ...harvestSpeeches(mddiSpeeches),
     ...harvestTracker(dimensions),
     ...harvestBenchmarking(benchmarkCases),
+    ...harvestReportArchive(reportArchive),
     ...harvestEcosystem(ecosystemCategories),
     ...harvestLevers(levers),
     ...harvestStartups(verticals),

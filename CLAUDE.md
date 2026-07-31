@@ -350,7 +350,7 @@ src/
 ├── content/config.ts     # 内容集合配置 (博客文章 schema)
 ├── data/
 │   ├── post/             # Markdown 博客文章
-│   ├── stats.ts          # 首页统计数据和功能板块
+│   ├── frontpage.ts      # 首页头条编辑指针（FEATURED）
 │   ├── debates.ts        # 国会辩论数据
 │   ├── policies.ts       # 政策文件数据
 │   ├── timeline.ts       # 时间线数据
@@ -390,7 +390,7 @@ author: '新加坡 AI 观察'
 ### 更新导航
 
 - 头部/底部导航：`src/navigation.ts`
-- 首页功能板块：`src/data/stats.ts`
+- 首页头条：`src/data/frontpage.ts`（FEATURED 指针；null = 回落最新博文）；域名目录卡片与"最近更新"均从各数据文件 addedAt 派生，无需手动维护
 
 ## 国会辩论数据更新（Hansard Pipeline）
 
