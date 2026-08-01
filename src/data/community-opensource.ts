@@ -489,7 +489,7 @@ This page is a place to keep adding citations, follow-on models, industrial tran
     descriptionKo: '다중 모달리티 이해 및 생성을 통합하는 단일 Transformer 모델',
     descriptionJa: 'マルチモーダル理解・生成を統一した単一 Transformer モデル',
     descriptionEn: 'A single-Transformer model for unified multimodal understanding and generation',
-    stars: 1964,
+    stars: 1965,
     url: 'https://github.com/showlab/Show-o',
     websiteUrl: 'https://showlab.github.io/Show-o/',
     language: 'Python / Models',
@@ -616,7 +616,7 @@ Future tracking should cover Show Lab’s model series, paper acceptances, Huggi
     descriptionKo: 'GUI Agent 및 Computer Use를 위한 비전-언어-동작 모델',
     descriptionJa: 'GUI Agent および Computer Use に向けた視覚-言語-動作モデル',
     descriptionEn: 'A vision-language-action model for GUI agents and computer use',
-    stars: 1887,
+    stars: 1885,
     url: 'https://github.com/showlab/ShowUI',
     websiteUrl: 'https://showlab.github.io/ShowUI/',
     language: 'Python / Models',
@@ -726,7 +726,7 @@ If GUI agents become a general capability, work such as ShowUI becomes a base mo
     descriptionKo: '비디오 생성 모델을 위한 효율적 시스템 프레임워크',
     descriptionJa: '動画生成モデル向けの効率的なシステムフレームワーク',
     descriptionEn: 'An efficient system framework for video generation models',
-    stars: 2025,
+    stars: 2022,
     url: 'https://github.com/NUS-HPC-AI-Lab/VideoSys',
     language: 'Python',
     license: 'Apache-2.0',
@@ -959,7 +959,7 @@ export const corporateLabProjects: OpenSourceProject[] = [
     descriptionKo: '시각 언어 기초 모델 및 원스톱 라이브러리, 글로벌 이미지-텍스트 AI의 초석 중 하나',
     descriptionJa: 'ビジョン言語基礎モデルおよび統合ライブラリ、グローバル画像テキスト AI の基石の一つ',
     descriptionEn: 'Vision-language foundation models and a one-stop library; a cornerstone of global image-text AI',
-    stars: 11257,
+    stars: 11258,
     url: 'https://github.com/salesforce/LAVIS',
     language: 'Python / Jupyter Notebook',
     license: 'BSD-3-Clause',
@@ -1076,7 +1076,7 @@ This is an important but often underestimated layer of Singapore’s AI ecosyste
     descriptionKo: '프로그램 합성 모델, 초기 OpenAI Codex와 동시대 경쟁',
     descriptionJa: 'プログラム合成モデル、初期のOpenAI Codexとの同時期の競争',
     descriptionEn: 'Program synthesis model from the early open code-generation wave',
-    stars: 5180,
+    stars: 5179,
     url: 'https://github.com/salesforce/CodeGen',
     language: 'Python',
     license: 'Apache-2.0',
@@ -1192,7 +1192,7 @@ On this site, it is a reminder that Singapore’s AI influence does not only com
     descriptionKo: '오픈소스 멀티모달 통합 모델, 이해 및 생성 포함',
     descriptionJa: 'オープンソースマルチモーダル統一モデル、理解と生成をカバー',
     descriptionEn: 'Open-source unified multimodal model for understanding and generation',
-    stars: 6122,
+    stars: 6131,
     url: 'https://github.com/ByteDance-Seed/BAGEL',
     language: 'Python',
     license: 'Apache-2.0',
@@ -1758,7 +1758,7 @@ export const startupProjects: OpenSourceProject[] = [
     descriptionKo: '오프라인 ChatGPT 대체 제품, 로컬 실행 AI 어시스턴트',
     descriptionJa: 'オフライン ChatGPT 代替品、ローカル実行 AI アシスタント',
     descriptionEn: 'Offline ChatGPT alternative; an AI assistant that runs locally',
-    stars: 43737,
+    stars: 43792,
     url: 'https://github.com/janhq/jan',
     websiteUrl: 'https://jan.ai',
     language: 'TypeScript',
@@ -1879,10 +1879,10 @@ export const summary = {
     'シンガポールの AI オープンソース貢献は、政府プロジェクト自体をはるかに上回ります。Salesforce Singapore Lab の BLIP シリーズはグローバルなビジュアル言語 AI の基礎となり、NUS が孵化した Colossal-AI は最も人気のある分散トレーニング フレームワークの 1 つであり、NTU の OpenMMLab はコンピューター ビジョン分野の事実上の標準の 1 つです。',
   noteEn:
     "Singapore's open-source AI work goes well beyond the government's own projects. Salesforce's Singapore lab produced the BLIP family, a cornerstone of global vision-language AI; NUS-incubated Colossal-AI is one of the most popular distributed-training frameworks; and NTU's OpenMMLab is a widely used computer-vision toolbox ecosystem.",
-  dataDate: '2026-07-28',
+  dataDate: '2026-08-01',
 };
 
 export const dataDisclaimer =
-  '数据截至 2026 年 7 月，GitHub stars 为近似值。统计采集：2026-05-04；项目档案更新：2026-05-04。如有遗漏或错误，欢迎提交 Issue。';
+  '数据截至 2026 年 8 月，GitHub stars 为近似值。统计采集：2026-05-04；项目档案更新：2026-05-04。如有遗漏或错误，欢迎提交 Issue。';
 export const dataDisclaimerEn =
-  'Data is current as of July 2026; GitHub star counts are approximate. Stats collected: 2026-05-04; project profiles updated: 2026-05-04. Please open an Issue if you spot omissions or errors.';
+  'Data is current as of August 2026; GitHub star counts are approximate. Stats collected: 2026-05-04; project profiles updated: 2026-05-04. Please open an Issue if you spot omissions or errors.';
