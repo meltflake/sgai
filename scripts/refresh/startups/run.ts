@@ -47,5 +47,16 @@ await runPipeline({
       feedType: 'sitemap',
       urlFilter: /(news|investment|startup|fund|company)/i,
     },
+    {
+      // Source-expansion 2026-08-03: CNA's article RSS catches SG AI
+      // funding/launch stories BT paywalls or skips. Site-wide feed →
+      // slug filter; the Singapore-nexus judgeRequire above is the
+      // content gate (proven against China/US global stories).
+      domain: 'channelnewsasia.com',
+      feedUrl: 'https://www.channelnewsasia.com/api/v1/rss-outbound-feed?_format=xml',
+      feedType: 'rss',
+      urlFilter: /(artificial.intelligence|-ai-|openai|anthropic|\bllm\b|startup|funding|venture)/i,
+      urlExcludes: [/\/advertorial\//i, /\/sponsored\//i],
+    },
   ],
 });
