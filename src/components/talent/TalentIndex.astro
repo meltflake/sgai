@@ -6,6 +6,7 @@ import Layout from '~/layouts/PageLayout.astro';
 import CrossDomainRail from '~/components/listing/CrossDomainRail.astro';
 import LatestAdditions from '~/components/listing/LatestAdditions.astro';
 import { programmes, talentDataDate, type TalentStatusTone } from '~/data/talent';
+import { latestJobsSnapshot, previousJobsSnapshot, METHODOLOGY_VERSION, type RoleTypeId } from '~/data/ai-jobs-index';
 import { localizedHref, pickLocalized, t, type Lang } from '~/i18n';
 import { toTraditional } from '~/i18n/opencc';
 
@@ -14,6 +15,19 @@ interface Props {
 }
 
 const { lang } = Astro.props;
+
+// AI Jobs Index demand-side section (renders only after the first capture).
+const jobsSnapshot = latestJobsSnapshot();
+const prevSnapshot = previousJobsSnapshot();
+const momDelta = jobsSnapshot && prevSnapshot ? jobsSnapshot.totalOpenings - prevSnapshot.totalOpenings : null;
+const ROLE_LABEL_KEY: Record<RoleTypeId, Parameters<typeof t>[1]> = {
+  engineering: 'jobsRoleEngineering',
+  research: 'jobsRoleResearch',
+  data: 'jobsRoleData',
+  product: 'jobsRoleProduct',
+  gtm: 'jobsRoleGtm',
+  'ops-other': 'jobsRoleOpsOther',
+};
 const pickStringArray = (record: unknown, field: string, fallback: string[]): string[] =>
   (pickLocalized(record, field, lang) as string[] | null | undefined) || fallback;
 
@@ -127,6 +141,110 @@ const SUBTITLE: Record<Lang, string> = {
     <p class="mt-10 text-sm text-muted text-center">
       {t(lang, 'talentSourcesNote').replace('{date}', talentDataDate)}
     </p>
+
+    {
+      /* Demand-side monthly snapshot from the AI Jobs Index. Renders only
+        after the first pipeline capture; QoQ views unlock later as the
+        series accumulates (see src/data/ai-jobs-index.ts methodology). */
+      jobsSnapshot && (
+        <div class="mt-14 pt-10 border-t border-subtle" id="jobs-index">
+          <h2 class="t-h3 text-gray-900 dark:text-white mb-2">{t(lang, 'jobsIndexHeading')}</h2>
+          <p class="text-sm text-muted max-w-3xl mb-6">{t(lang, 'jobsIndexIntro')}</p>
+
+          <dl class="grid gap-3 sm:grid-cols-2 lg:grid-cols-4 mb-8">
+            <div class="rounded-lg border border-subtle bg-surface p-4">
+              <dt class="text-xs uppercase tracking-wider text-muted">{t(lang, 'jobsIndexTotalLabel')}</dt>
+              <dd class="mt-1 t-stat text-gray-900 dark:text-white">
+                {jobsSnapshot.totalOpenings.toLocaleString('en-SG')}
+              </dd>
+              {momDelta !== null && (
+                <dd class={`text-xs mt-1 ${momDelta >= 0 ? 'text-emerald-600' : 'text-red-500'}`}>
+                  {momDelta >= 0 ? '+' : ''}
+                  {momDelta.toLocaleString('en-SG')} {t(lang, 'jobsIndexMoMLabel')}
+                </dd>
+              )}
+            </div>
+            <div class="rounded-lg border border-subtle bg-surface p-4">
+              <dt class="text-xs uppercase tracking-wider text-muted">{t(lang, 'jobsIndexMedianLabel')}</dt>
+              <dd class="mt-1 t-stat text-gray-900 dark:text-white">
+                {jobsSnapshot.salaryMidpointMedian
+                  ? `S$${jobsSnapshot.salaryMidpointMedian.toLocaleString('en-SG')}`
+                  : '—'}
+              </dd>
+            </div>
+            <div class="rounded-lg border border-subtle bg-surface p-4">
+              <dt class="text-xs uppercase tracking-wider text-muted">{t(lang, 'jobsIndexBandLabel')}</dt>
+              <dd class="mt-1 text-lg font-semibold text-gray-900 dark:text-white">
+                {jobsSnapshot.salaryMidpointP25 && jobsSnapshot.salaryMidpointP75
+                  ? `S$${jobsSnapshot.salaryMidpointP25.toLocaleString('en-SG')} – S$${jobsSnapshot.salaryMidpointP75.toLocaleString('en-SG')}`
+                  : '—'}
+              </dd>
+            </div>
+            <div class="rounded-lg border border-subtle bg-surface p-4">
+              <dt class="text-xs uppercase tracking-wider text-muted">{t(lang, 'jobsIndexDisclosureLabel')}</dt>
+              <dd class="mt-1 t-stat text-gray-900 dark:text-white">
+                {(jobsSnapshot.salaryDisclosureRate * 100).toFixed(0)}%
+              </dd>
+            </div>
+          </dl>
+
+          <div class="grid gap-8 md:grid-cols-2">
+            <div>
+              <h3 class="font-serif text-base font-semibold text-gray-900 dark:text-white mb-3">
+                {t(lang, 'jobsIndexTopEmployersLabel')}
+              </h3>
+              <ol class="space-y-1.5">
+                {jobsSnapshot.topEmployers.map((e, i) => (
+                  <li class="flex items-baseline justify-between gap-3 text-sm">
+                    <span class="text-gray-700 dark:text-gray-300 truncate">
+                      <span class="text-muted tabular-nums mr-2">{i + 1}.</span>
+                      {e.employer}
+                    </span>
+                    <span class="tabular-nums text-muted shrink-0">{e.openings}</span>
+                  </li>
+                ))}
+              </ol>
+            </div>
+            <div>
+              <h3 class="font-serif text-base font-semibold text-gray-900 dark:text-white mb-3">
+                {t(lang, 'jobsIndexRolesLabel')}
+              </h3>
+              <ul class="space-y-2">
+                {jobsSnapshot.roleTypes.map((r) => (
+                  <li class="text-sm">
+                    <div class="flex items-baseline justify-between gap-3 mb-1">
+                      <span class="text-gray-700 dark:text-gray-300">{t(lang, ROLE_LABEL_KEY[r.roleType])}</span>
+                      <span class="tabular-nums text-muted">{r.count}</span>
+                    </div>
+                    <div class="h-1.5 rounded bg-gray-100 dark:bg-slate-800 overflow-hidden">
+                      <div
+                        class="h-full bg-primary/70"
+                        style={`width: ${Math.max(2, Math.round((r.count / jobsSnapshot.totalOpenings) * 100))}%`}
+                      />
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          {!prevSnapshot && <p class="mt-6 text-xs text-muted">{t(lang, 'jobsIndexAccumulating')}</p>}
+          <p class="mt-2 text-xs text-muted">
+            {t(lang, 'jobsIndexMethodNote')
+              .replace('{v}', String(METHODOLOGY_VERSION))
+              .replace('{month}', jobsSnapshot.month)}{' '}
+            <a
+              href={jobsSnapshot.sourceUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-primary hover:text-secondary underline underline-offset-2"
+            >
+              MyCareersFuture ↗
+            </a>
+          </p>
+        </div>
+      )
+    }
   </section>
   <CrossDomainRail lang={lang} current="talent" class="max-w-6xl mx-auto px-4 sm:px-6 pb-16" />
 </Layout>
