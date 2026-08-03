@@ -11759,6 +11759,31 @@ export const videoTranscripts: Record<string, VideoTranscript> = {
     translationSource: 'claude',
     translationModel: 'haiku',
   },
+  v079: {
+    videoId: 'v079',
+    youtubeId: 'R_EfquZrnHg',
+    captionLanguage: 'en',
+    fetchedAt: '2026-08-03',
+    source: 'youtube-subtitles',
+    paragraphs: [
+      '我们为航空航天和半导体行业的制造商服务。我们偶然了解到 AI Singapore，旅程由此开始。将 AI 与自动化结合，可以缩短零件制造的工时和生产周期，提高生产率。我的工作之一是为视觉检测微调模型。AIAP 先安排三个月的密集技能训练，再用三个月参与真实项目。因此来到公司后，我们已有信心设计方案并付诸实践。AIAP 期间我们以小组协作；即使毕业后，仍可回去向同学请教他们处理过的问题。',
+      '我是中途转行者，过去积累的技能仍然有效、可以继续使用，我缺少的只是 AI 专项能力，而 AIAP 很适合补上这部分技能。优秀的 AI 工程师需要同时具备 AI 领域知识和软件工程能力，AIAP 能帮助学员找到两者之间的平衡。',
+    ],
+    paragraphsEn: [
+      "Send >> [music] >> manufacturers for the aerospace, or as the semicon industry. So, we chance upon AI Singapore, and that's where the journey started. [music] >> Using AI and automation together, we can help to reduce the the work time and production time of the parts [music] that we manufacture. We can increase productivity. >> So, part of my work is to fine-tune models for our visual inspections. [music] >> During the AIAP, we have a 3 months of deep skilling phase, and then we had another 3 months of working on real-life projects. So, when we come here, [music] we have the confidence to design solutions and then and then we have to put them into practice. >> We also [music] work in group in AIAP. Even though we are graduated now, we are still can go back to them and ask for advice on certain topics that they may have worked [music] on.",
+      ">> I'm a mid-career switcher. So, all my previous skills are still valid [music] and usable. What I need is the AI specific part. AIAP is a great place to do your plus skilling. >> To be a good AI engineer, you need to have a [music] combination of AI domain knowledge and software engineering skills. AIAP can help you find this balance.",
+    ],
+    paragraphsJa: [
+      '私たちは航空宇宙・半導体業界のメーカー向けに仕事をしています。AI Singapore を偶然知ったことが、すべての始まりでした。AI と自動化を組み合わせれば、部品製造にかかる作業時間と生産時間を短縮し、生産性を高められます。私の仕事の一つは、外観検査用モデルの微調整です。AIAP では最初の 3 か月で集中的にスキルを学び、その後の 3 か月で実際のプロジェクトに取り組みました。そのため入社時には、解決策を設計し、実務に落とし込む自信がついていました。AIAP ではチームで働くため、卒業後も仲間に連絡し、彼らが経験したテーマについて助言を求められます。',
+      '私はキャリアの途中で転職しました。これまで身につけたスキルは今も有効で、そのまま活用できます。必要だったのは AI に特化した知識であり、AIAP はそのスキルを上乗せするのに最適な場でした。優れた AI エンジニアになるには、AI のドメイン知識とソフトウェアエンジニアリングのスキルを兼ね備える必要があります。AIAP は、そのバランスを見つける手助けをしてくれます。',
+    ],
+    paragraphsKo: [
+      '우리는 항공우주 및 반도체 업계 제조사를 대상으로 일합니다. 우연히 AI Singapore를 알게 된 것이 이 여정의 시작이었습니다. AI와 자동화를 함께 활용하면 부품 제조에 드는 작업 시간과 생산 시간을 줄여 생산성을 높일 수 있습니다. 제 업무 중 하나는 육안 검사용 모델을 미세 조정하는 것입니다. AIAP에서는 먼저 3개월 동안 집중적으로 역량을 쌓고, 이어 3개월 동안 실제 프로젝트를 수행했습니다. 덕분에 회사에 왔을 때 해결책을 설계하고 실무에 적용할 자신감이 있었습니다. AIAP에서는 팀으로 일하기 때문에 졸업한 뒤에도 동료들에게 연락해 그들이 다뤄본 주제에 관해 조언을 구할 수 있습니다.',
+      '저는 경력 전환자입니다. 이전에 쌓은 기술은 여전히 유효하고 활용할 수 있었으며, 제게 필요했던 것은 AI 전문 역량이었습니다. AIAP는 그 역량을 더하기에 좋은 곳입니다. 훌륭한 AI 엔지니어가 되려면 AI 도메인 지식과 소프트웨어 엔지니어링 역량을 함께 갖춰야 합니다. AIAP는 그 균형을 찾도록 도와줍니다.',
+    ],
+    translatedAt: '2026-08-03',
+    translationSource: 'manual',
+  },
 };
 
 export function getVideoTranscript(videoId: string): VideoTranscript | undefined {

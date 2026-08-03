@@ -138,6 +138,36 @@ export function pickSpeakerTypeLabels(lang: string): Record<string, string> {
 
 export const videos: VideoItem[] = [
   {
+    id: 'v079',
+    title: '为什么我们聘用 AIAP 毕业生——SAM 第二部分',
+    titleEn: 'Why We Hire AIAP Graduates — SAM Part 2',
+    titleJa: 'なぜ私たちはAIAP卒業生を採用するのか——SAM第二部',
+    titleKo: 'AIAP 졸업생을 채용하는 이유——SAM 제2부',
+    speaker: 'Victor & Ming Wah',
+    speakerTitle: 'AI 工程师及资深 AI 经理',
+    speakerTitleEn: 'AI Engineer & Senior AI Manager',
+    speakerTitleJa: 'AIエンジニアおよびシニアAIマネージャー',
+    speakerTitleKo: 'AI 엔지니어 및 수석 AI 매니저',
+    speakerType: 'industry',
+    date: '2026-07-31',
+    duration: '01:00',
+    summary:
+      'SAM 的 AI 工程师 Victor 和资深 AI 经理 Ming Wah 分享他们在 AI 学徒项目中的经历，以及该项目如何为他们当前的工作做准备。',
+    summaryEn:
+      'SAM AI engineers Victor and Ming Wah discuss their experience in the AI Apprenticeship Programme and how it prepared them for their current roles in AI engineering.',
+    summaryJa:
+      'SAMのAIエンジニアであるビクターとシニアAIマネージャーであるミン・ワーが、AI学徒プログラムでの経験と、そのプログラムが現在の職務にどのように役立つかについて共有しています。',
+    summaryKo:
+      'SAM의 AI 엔지니어 Victor와 수석 AI 매니저 Ming Wah는 AI 견습 프로그램에서의 경험과 이 프로그램이 현재 업무를 위해 어떻게 그들을 준비했는지를 공유합니다.',
+    topic: 'AI 人才与教育',
+    topicEn: 'AI Talent & Education',
+    topicJa: 'AI 人材と教育',
+    topicKo: 'AI 인재와 교육',
+    youtubeUrl: 'https://www.youtube.com/watch?v=R_EfquZrnHg',
+    channel: 'AI Singapore',
+    addedAt: '2026-08-03',
+  },
+  {
     id: 'v075',
     title: '新加坡发布生成式 AI 数据使用新指南',
     titleEn: 'Singapore introduces generative AI guidelines on use of personal data, chatbots',
