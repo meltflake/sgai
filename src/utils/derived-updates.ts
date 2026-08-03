@@ -35,6 +35,8 @@ import { ecosystemCategories, type EcosystemEntity } from '~/data/ecosystem';
 import { levers, type Lever } from '~/data/levers';
 import { verticals, type Startup } from '~/data/startups';
 import { sections as legalSections, type LegalItem } from '~/data/legal-ai';
+import { consultations as regConsultations, bills as regBills } from '~/data/reg-lookahead';
+import type { ConsultationItem, BillItem } from '~/data/reg-lookahead';
 import { programmes as talentProgrammes, type TalentProgramme } from '~/data/talent';
 import { legalItemSlug } from '~/utils/entity-pages';
 
@@ -504,6 +506,40 @@ function harvestLegalAi(secs: Array<{ items: LegalItem[] }>): Harvested[] {
   return out;
 }
 
+function harvestRegLookahead(cs: ConsultationItem[], bs: BillItem[]): Harvested[] {
+  // Lookahead records surface as 'policy' updates (precedent: legal-ai →
+  // 'policy'); lifecycle TRANSITIONS on existing records don't create new
+  // addedAt and are surfaced by the weekly PR itself, not the feed.
+  const out: Harvested[] = [];
+  for (const r of cs) {
+    if (!r.addedAt) continue;
+    out.push({
+      type: 'policy',
+      source: 'legal',
+      addedAt: r.addedAt,
+      zhTitle: r.title,
+      enTitle: pickEn(r.title, r.titleEn),
+      jaTitle: pickJa(r.title, r.titleJa, r.titleEn),
+      koTitle: pickKo(r.title, r.titleKo, r.titleEn),
+      href: '/legal-ai/#reg-lookahead',
+    });
+  }
+  for (const r of bs) {
+    if (!r.addedAt) continue;
+    out.push({
+      type: 'policy',
+      source: 'legal',
+      addedAt: r.addedAt,
+      zhTitle: r.title,
+      enTitle: pickEn(r.title, r.titleEn),
+      jaTitle: pickJa(r.title, r.titleJa, r.titleEn),
+      koTitle: pickKo(r.title, r.titleKo, r.titleEn),
+      href: '/legal-ai/#reg-lookahead',
+    });
+  }
+  return out;
+}
+
 function harvestTalent(rs: TalentProgramme[]): Harvested[] {
   const out: Harvested[] = [];
   for (const r of rs) {
@@ -612,6 +648,7 @@ export function harvestAll(): Harvested[] {
     ...harvestLevers(levers),
     ...harvestStartups(verticals),
     ...harvestLegalAi(legalSections),
+    ...harvestRegLookahead(regConsultations, regBills),
     ...harvestTalent(talentProgrammes),
   ];
 }

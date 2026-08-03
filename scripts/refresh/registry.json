@@ -15,7 +15,10 @@
       "label": "Singapore Parliament Hansard",
       "description": "SPRS API scan for AI-related debates. Existing pipeline.",
       "mode": "scan-only-email",
-      "targets": ["src/data/debates.ts", "src/data/debate-transcripts.ts"]
+      "targets": [
+        "src/data/debates.ts",
+        "src/data/debate-transcripts.ts"
+      ]
     },
     {
       "id": "videos",
@@ -26,7 +29,10 @@
       "script": "scripts/refresh/videos/run.ts",
       "args": [],
       "mode": "auto-pr",
-      "targets": ["src/data/videos.ts", "src/data/video-transcripts.ts"]
+      "targets": [
+        "src/data/videos.ts",
+        "src/data/video-transcripts.ts"
+      ]
     },
     {
       "id": "voices",
@@ -35,9 +41,14 @@
       "label": "MDDI speeches",
       "description": "MDDI sitemap scan + page fetch + Claude haiku translation (zh paragraphs, zh+en tldr) + trilingual title/event/speakerTitle. Emits to voices.ts mddiSpeeches[] + speech-transcripts.ts speechTranscripts map.",
       "script": "scripts/refresh/voices/run.ts",
-      "args": ["--limit=3"],
+      "args": [
+        "--limit=3"
+      ],
       "mode": "auto-pr",
-      "targets": ["src/data/voices.ts", "src/data/speech-transcripts.ts"]
+      "targets": [
+        "src/data/voices.ts",
+        "src/data/speech-transcripts.ts"
+      ]
     },
     {
       "id": "github-stars",
@@ -46,9 +57,14 @@
       "label": "GitHub stars refresh",
       "description": "Pull live stargazer counts and bump dataDate. Rewrites stars on existing GitHub blocks only (no new-repo discovery).",
       "script": "scripts/refresh/github-stars.ts",
-      "args": ["--bump-version"],
+      "args": [
+        "--bump-version"
+      ],
       "mode": "auto-pr",
-      "targets": ["src/data/opensource.ts", "src/data/community-opensource.ts"]
+      "targets": [
+        "src/data/opensource.ts",
+        "src/data/community-opensource.ts"
+      ]
     },
     {
       "id": "policies",
@@ -57,9 +73,13 @@
       "label": "Government AI policies",
       "description": "Scan smartnation/MAS/IMDA/PDPC/AIVerify for new AI advisories.",
       "script": "scripts/refresh/policies/run.ts",
-      "args": ["--limit=5"],
+      "args": [
+        "--limit=5"
+      ],
       "mode": "auto-pr",
-      "targets": ["src/data/policies.ts"]
+      "targets": [
+        "src/data/policies.ts"
+      ]
     },
     {
       "id": "ecosystem",
@@ -68,9 +88,13 @@
       "label": "Ecosystem entities",
       "description": "Scan e27/tech.gov.sg for new SG AI startups & government products. Auto-added entries marked _pendingReview.",
       "script": "scripts/refresh/ecosystem/run.ts",
-      "args": ["--limit=5"],
+      "args": [
+        "--limit=5"
+      ],
       "mode": "auto-pr",
-      "targets": ["src/data/ecosystem.ts"]
+      "targets": [
+        "src/data/ecosystem.ts"
+      ]
     },
     {
       "id": "levers",
@@ -79,9 +103,13 @@
       "label": "AI levers",
       "description": "Scan IMDA/tech.gov.sg/EDB for new programmes / funds / data centre deals.",
       "script": "scripts/refresh/levers/run.ts",
-      "args": ["--limit=3"],
+      "args": [
+        "--limit=3"
+      ],
       "mode": "auto-pr",
-      "targets": ["src/data/levers.ts"]
+      "targets": [
+        "src/data/levers.ts"
+      ]
     },
     {
       "id": "startups",
@@ -90,9 +118,13 @@
       "label": "AI startups",
       "description": "Business Times tech RSS + AISG + EDB; surface funding rounds, exits, new SG AI companies.",
       "script": "scripts/refresh/startups/run.ts",
-      "args": ["--limit=3"],
+      "args": [
+        "--limit=3"
+      ],
       "mode": "auto-pr",
-      "targets": ["src/data/startups.ts"]
+      "targets": [
+        "src/data/startups.ts"
+      ]
     },
     {
       "id": "legal-ai",
@@ -101,9 +133,13 @@
       "label": "Legal framework",
       "description": "Monitor sso.agc.gov.sg / MAS / PDPC for new AI-related legislation & regulatory guidance.",
       "script": "scripts/refresh/legal-ai/run.ts",
-      "args": ["--limit=3"],
+      "args": [
+        "--limit=3"
+      ],
       "mode": "auto-pr",
-      "targets": ["src/data/legal-ai.ts"]
+      "targets": [
+        "src/data/legal-ai.ts"
+      ]
     },
     {
       "id": "talent",
@@ -112,9 +148,13 @@
       "label": "AI talent programmes",
       "description": "AISG / IMDA / GovTech for new training, scholarship, apprentice, K-12 AI education programmes.",
       "script": "scripts/refresh/talent/run.ts",
-      "args": ["--limit=3"],
+      "args": [
+        "--limit=3"
+      ],
       "mode": "auto-pr",
-      "targets": ["src/data/talent.ts"]
+      "targets": [
+        "src/data/talent.ts"
+      ]
     },
     {
       "id": "tracker",
@@ -123,9 +163,13 @@
       "label": "National AI tracker (6 dimensions)",
       "description": "Surface new investment / talent / compute / adoption / research / governance data points.",
       "script": "scripts/refresh/tracker/run.ts",
-      "args": ["--limit=3"],
+      "args": [
+        "--limit=3"
+      ],
       "mode": "auto-pr",
-      "targets": ["src/data/tracker.ts"]
+      "targets": [
+        "src/data/tracker.ts"
+      ]
     },
     {
       "id": "benchmarking",
@@ -134,9 +178,13 @@
       "label": "International benchmarking",
       "description": "Stanford AI Index + IMD WCY for new annual reports; flag for manual data extraction.",
       "script": "scripts/refresh/benchmarking/run.ts",
-      "args": ["--limit=3"],
+      "args": [
+        "--limit=3"
+      ],
       "mode": "auto-pr",
-      "targets": ["src/data/benchmarking.ts"]
+      "targets": [
+        "src/data/benchmarking.ts"
+      ]
     },
     {
       "id": "ai-jobs-index",
@@ -147,7 +195,24 @@
       "script": "scripts/refresh/jobs-index/run.ts",
       "args": [],
       "mode": "auto-pr",
-      "targets": ["src/data/ai-jobs-index.ts"]
+      "targets": [
+        "src/data/ai-jobs-index.ts"
+      ]
+    },
+    {
+      "id": "reg-lookahead",
+      "type": "tsx",
+      "schedule": "weekly",
+      "label": "Regulatory lookahead (consultations + bills)",
+      "description": "Weekly lifecycle tracker for the pipeline BEFORE the law: open AI-relevant public consultations (IMDA/PDPC/MDDI sitemaps) and bills moving through Parliament (fixture-pinned parser of bills-introduced). New records appended; stage/status transitions edited IN PLACE with observation history — the git diff is the review surface. DIB-class events become day-1-week-1 captures instead of the ~4-week miss of 2026-07. Renders as /legal-ai #reg-lookahead.",
+      "script": "scripts/refresh/reg-lookahead/run.ts",
+      "args": [
+        "--limit=3"
+      ],
+      "mode": "auto-pr",
+      "targets": [
+        "src/data/reg-lookahead.ts"
+      ]
     },
     {
       "id": "evals",
@@ -167,21 +232,59 @@
       "label": "Evals (monthly): AI summary + Translation golden regressions",
       "description": "LLM-backed quality regressions. Runs scripts/lib/ai-summarize.ts and scripts/lib/translate.ts against golden corpus; asserts schema validity, classification closed-set, length bands, term hits, glossary fidelity, language purity. Cost: ~30 Claude haiku calls (~few cents). Issue opens if any case fails an assertion.",
       "script": "scripts/evals/run-all.ts",
-      "args": ["--frequency=monthly"],
+      "args": [
+        "--frequency=monthly"
+      ],
       "mode": "issue-on-fail",
       "targets": []
     }
   ],
   "editorialComment": "src/data/*.ts files with NO refresh pipeline that are legitimately human-edited or derived. coverage-audit treats these as accounted-for. Adding a new data file means either giving some pipeline a `targets` entry for it or adding it here with a reason.",
   "editorial": [
-    { "file": "src/data/timeline.ts", "reason": "大事年表，半事件半编辑，重大里程碑时手动追加", "owner": "editorial" },
-    { "file": "src/data/references.ts", "reason": "外部资源索引，看到好文章手工加", "owner": "editorial" },
-    { "file": "src/data/fieldnotes.ts", "reason": "类博客随笔，自研内容", "owner": "editorial" },
-    { "file": "src/data/people.ts", "reason": "人物档案，靠 scripts/voices/prospect-stubs.mjs 半自动 review queue（季度手动 promote），非全自动管线", "owner": "voices" },
-    { "file": "src/data/policy-source-texts.ts", "reason": "政策原文全文缓存，policies 详情页消费，手工维护", "owner": "policies" },
-    { "file": "src/data/updates.ts", "reason": "首页『最近更新』从各数据文件的 addedAt 派生（src/utils/derived-updates.ts），只剩 site/fix/longform 手动 override，非刷新目标", "owner": "derived" },
-    { "file": "src/data/topics.ts", "reason": "受控主题词表（15 个，/topics hub 的 taxonomy），产品级词表人工维护，非内容 record（无 addedAt）", "owner": "editorial" },
-    { "file": "src/data/topic-mappings.ts", "reason": "枚举→topicIds 派生映射表 + 解析器，随词表人工维护；verify-graph 校验其值域与枚举完备性", "owner": "editorial" },
-    { "file": "src/data/frontpage.ts", "reason": "首页头条编辑指针（FEATURED），只引用既有 record 的 id，不是内容 record，无 addedAt/i18n 字段", "owner": "editorial" }
+    {
+      "file": "src/data/timeline.ts",
+      "reason": "大事年表，半事件半编辑，重大里程碑时手动追加",
+      "owner": "editorial"
+    },
+    {
+      "file": "src/data/references.ts",
+      "reason": "外部资源索引，看到好文章手工加",
+      "owner": "editorial"
+    },
+    {
+      "file": "src/data/fieldnotes.ts",
+      "reason": "类博客随笔，自研内容",
+      "owner": "editorial"
+    },
+    {
+      "file": "src/data/people.ts",
+      "reason": "人物档案，靠 scripts/voices/prospect-stubs.mjs 半自动 review queue（季度手动 promote），非全自动管线",
+      "owner": "voices"
+    },
+    {
+      "file": "src/data/policy-source-texts.ts",
+      "reason": "政策原文全文缓存，policies 详情页消费，手工维护",
+      "owner": "policies"
+    },
+    {
+      "file": "src/data/updates.ts",
+      "reason": "首页『最近更新』从各数据文件的 addedAt 派生（src/utils/derived-updates.ts），只剩 site/fix/longform 手动 override，非刷新目标",
+      "owner": "derived"
+    },
+    {
+      "file": "src/data/topics.ts",
+      "reason": "受控主题词表（15 个，/topics hub 的 taxonomy），产品级词表人工维护，非内容 record（无 addedAt）",
+      "owner": "editorial"
+    },
+    {
+      "file": "src/data/topic-mappings.ts",
+      "reason": "枚举→topicIds 派生映射表 + 解析器，随词表人工维护；verify-graph 校验其值域与枚举完备性",
+      "owner": "editorial"
+    },
+    {
+      "file": "src/data/frontpage.ts",
+      "reason": "首页头条编辑指针（FEATURED），只引用既有 record 的 id，不是内容 record，无 addedAt/i18n 字段",
+      "owner": "editorial"
+    }
   ]
 }
