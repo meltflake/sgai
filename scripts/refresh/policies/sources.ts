@@ -118,6 +118,28 @@ export const POLICY_SOURCES: PolicySource[] = [
     urlPatterns: [/\/news/, /\/guidelines/, AI_SLUG_KEYWORDS],
   },
   {
+    // Source-expansion 2026-08-03: CSA covers the AI-security regulatory
+    // angle (Guidelines on Securing AI Systems already live in legal-ai;
+    // its successor documents should arrive automatically). Sitemap is
+    // dominated by cert-scheme pages (951) and alerts (754) — the single
+    // combined pattern requires BOTH a substantive section AND an AI-ish
+    // slug, because urlPatterns are OR'd and a bare section pattern would
+    // admit hundreds of non-AI advisories. /careers/ noise dies in the
+    // shared generic filter.
+    domain: 'csa.gov.sg',
+    label: 'Cyber Security Agency of Singapore',
+    defaultCategory: '治理框架',
+    defaultSource: '网络安全局 (CSA)',
+    defaultSourceEn: 'Cyber Security Agency of Singapore (CSA)',
+    defaultSourceJa: 'サイバーセキュリティ庁 (CSA)',
+    defaultSourceKo: '사이버보안청 (CSA)',
+    defaultSourceOrgUrl: 'https://www.csa.gov.sg/',
+    sitemapUrls: ['https://www.csa.gov.sg/sitemap.xml'],
+    urlPatterns: [
+      /\/(press-releases|advisories|publications)\/.*(\bai\b|artificial|machine-learning|llm|generative|deepfake|agentic)/i,
+    ],
+  },
+  {
     domain: 'moh.gov.sg',
     label: 'Ministry of Health',
     defaultCategory: '行业监管',

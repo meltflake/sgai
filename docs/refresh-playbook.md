@@ -122,7 +122,7 @@ npx tsx scripts/voices/prospect-stubs.mjs apply <id>  # 出 TS 片段，粘到 p
 #### `/policies` + `/policies/[id]`
 
 - **数据**: `src/data/policies.ts`（80 KB / 5 categories / ~36 条）
-- **来源**: smartnation / MDDI / IMDA / AI Verify / MAS / PDPC / MOH / NRF / MOF（sitemap + listing 双扫）
+- **来源**: smartnation / MDDI / IMDA / AI Verify / MAS / PDPC / CSA / MOH / NRF / MOF（sitemap + listing 双扫；CSA 2026-08-03 加入，AI 安全监管层）
 - **现状**: ✅ 完整 auto-PR pipeline
 - **更新命令**:
 
@@ -140,7 +140,7 @@ npx tsx scripts/refresh/policies/run.ts --no-push              # 仅 commit 不�
 #### `/ecosystem` + `/ecosystem/[id]`
 
 - **数据**: `src/data/ecosystem.ts`（272 KB / 10 categories / 几百实体）
-- **来源**: aisingapore.org RSS、businesstimes.com.sg tech RSS、tech.gov.sg sitemap（`scripts/refresh/ecosystem/sources.ts` 可扩展）
+- **来源**: aisingapore.org RSS、businesstimes.com.sg tech RSS、tech.gov.sg sitemap、channelnewsasia.com RSS、news.nus.edu.sg sitemap（2026-08-03 扩源；`scripts/refresh/ecosystem/sources.ts` 可扩展）
 - **现状**: ✅ auto-PR pipeline 已建；schema 已加 `_pendingReview` 字段，自动 emit 的条目 default 标 pending。e27 / govinsider / straitstimes 已于 2026-05-03 因 Cloudflare JS challenge / JS-rendered 无真实 RSS 而弃用（2026-07-04 复测 e27 带浏览器 UA 仍 403，结论不变），换用上面三个已验证可用源
 - **更新命令**:
 

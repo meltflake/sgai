@@ -78,6 +78,33 @@ export const ECOSYSTEM_SOURCES: EcosystemSourceEntry[] = [
     defaultEntityType: 'platform',
     urlFilter: /(media|news|product|launch|smart-nation|ai)/i,
   },
+  // ── Source-expansion 2026-08-03 ─────────────────────────────────────────
+  {
+    // CNA's real article RSS (verified live, carries AI stories the video
+    // scan misses). Site-wide feed → tight slug filter caps judge volume;
+    // ecosystem's entity gate (requireScope) rejects article-only pieces,
+    // so what survives is launch/entity news.
+    domain: 'channelnewsasia.com',
+    label: 'CNA',
+    feedUrl: 'https://www.channelnewsasia.com/api/v1/rss-outbound-feed?_format=xml',
+    feedType: 'rss',
+    defaultCategory: '产业伙伴',
+    defaultEntityType: 'product',
+    urlFilter: /(artificial.intelligence|\bai\b|-ai-|openai|anthropic|\bllm\b|chatbot|deepfake|data.centre|robot|semiconductor)/i,
+    urlExcludes: [/\/advertorial\//i, /\/sponsored\//i],
+  },
+  {
+    // NUS research/enterprise news — flat slug-based sitemap; AI institute
+    // launches, spin-offs, national-programme participation.
+    domain: 'news.nus.edu.sg',
+    label: 'NUS News',
+    feedUrl: 'https://news.nus.edu.sg/sitemap.xml',
+    feedType: 'sitemap',
+    defaultCategory: '基础研究',
+    defaultEntityType: 'program',
+    urlFilter: /(\bai\b|-ai-|artificial-intelligence|machine-learning|robotic|deep-learning|llm|generative)/i,
+    urlExcludes: [/\/media-library\//i],
+  },
 ];
 
 /**
