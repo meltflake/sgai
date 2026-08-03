@@ -31,6 +31,15 @@ import { resolve } from 'node:path';
 import { findUnpairedFields } from '../../lib/i18n-pair.ts';
 import type { FetchedSpeech } from './fetch.ts';
 import type { TranslatedSpeech } from './translate.ts';
+import { ministryFromUrl } from './sources.ts';
+
+/** Transcript `source` literal per ministry (SpeechTranscript.source
+ *  union in src/data/speech-transcripts.ts). */
+const SOURCE_BY_MINISTRY = {
+  MDDI: 'mddi-newsroom',
+  MAS: 'mas-newsroom',
+  PMO: 'pmo-newsroom',
+} as const;
 
 const VOICES_FILE = resolve('src/data/voices.ts');
 const TRANSCRIPTS_FILE = resolve('src/data/speech-transcripts.ts');
@@ -172,13 +181,14 @@ function formatTranscriptEntry(s: EmittableSpeech): string {
   const tldrJa = s.tldrJa.map(cleanParagraph).filter(Boolean);
   const tldrKo = s.tldrKo.map(cleanParagraph).filter(Boolean);
   const fetchedAt = new Date().toISOString().slice(0, 10);
+  const ministry = ministryFromUrl(s.sourceUrl) ?? 'MDDI';
   const lines: string[] = [];
   lines.push(`  '${escapeQuote(s.speechId)}': {`);
   lines.push(`    speechId: \`${escapeBacktick(s.speechId)}\`,`);
   lines.push(`    sourceUrl: \`${escapeBacktick(s.sourceUrl)}\`,`);
   lines.push(`    sourceLanguage: 'en',`);
   lines.push(`    fetchedAt: \`${escapeBacktick(fetchedAt)}\`,`);
-  lines.push(`    source: 'mddi-newsroom',`);
+  lines.push(`    source: '${SOURCE_BY_MINISTRY[ministry]}',`);
   lines.push(`    paragraphs: ${tsArray(paragraphsZh, 4)},`);
   lines.push(`    paragraphsEn: ${tsArray(paragraphsEn, 4)},`);
   if (paragraphsJa.length) lines.push(`    paragraphsJa: ${tsArray(paragraphsJa, 4)},`);
@@ -220,6 +230,10 @@ function formatVoicesEntry(s: EmittableSpeech, today: string): string {
   lines.push(`    eventJa: '${escapeQuote(s.eventJa)}',`);
   if (s.eventKo) lines.push(`    eventKo: '${escapeQuote(s.eventKo)}',`);
   lines.push(`    addedAt: '${today}',`);
+  // Ministry written only for non-MDDI sources — absent means MDDI
+  // (keeps legacy records' shape and byte-stability).
+  const ministry = ministryFromUrl(s.sourceUrl);
+  if (ministry && ministry !== 'MDDI') lines.push(`    ministry: '${ministry}',`);
   lines.push('  },');
   return lines.join('\n');
 }
@@ -337,8 +351,11 @@ export function emit(
       skipped.push({ speechId: s.speechId, reason: 'missing sourceUrl' });
       continue;
     }
-    if (!/mddi\.gov\.sg/.test(s.sourceUrl)) {
-      skipped.push({ speechId: s.speechId, reason: 'sourceUrl not under mddi.gov.sg' });
+    if (ministryFromUrl(s.sourceUrl) === null) {
+      skipped.push({
+        speechId: s.speechId,
+        reason: 'sourceUrl not under a registered ministry domain (mddi/mas/pmo .gov.sg)',
+      });
       continue;
     }
     if (!options.transcriptsOnly) {

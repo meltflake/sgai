@@ -53,7 +53,20 @@ const titleDisplay = pickLocalized<string>(speech, 'title', 'titleEn', lang) || 
 const speakerTitle = pickLocalized(speech, 'speakerTitle', 'speakerTitleEn', lang);
 const eventDisplay = pickLocalized<string>(speech, 'event', 'eventEn', lang) || speech.event;
 
-const mddiSpeechLabel = t(lang, 'mddiSpeechLabel') || 'MDDI Speech';
+// Ministry-aware labels: every locale's mddi* dict value carries the
+// literal 'MDDI' token, so swapping in the record's ministry acronym
+// (Latin, display-safe in all locales) localizes MAS / PMO speeches
+// without new dict keys. Absent ministry = MDDI (legacy records).
+const ministry = speech.ministry ?? 'MDDI';
+const sourceHost = new URL(speech.url).host.replace(/^www\./, '');
+const mddiSpeechLabel = (t(lang, 'mddiSpeechLabel') || 'MDDI Speech').replace('MDDI', ministry);
+const sourceLabel = (t(lang, 'mddiSourceLabel') || `Source on ${sourceHost}`).replace('MDDI', ministry);
+
+const PUBLISHERS: Record<'MDDI' | 'MAS' | 'PMO', { name: string; url: string }> = {
+  MDDI: { name: 'Ministry of Digital Development and Information', url: 'https://www.mddi.gov.sg/' },
+  MAS: { name: 'Monetary Authority of Singapore', url: 'https://www.mas.gov.sg/' },
+  PMO: { name: "Prime Minister's Office, Singapore", url: 'https://www.pmo.gov.sg/' },
+};
 
 const metadata = {
   // No section suffix: Metadata.astro's template appends `· sgai`, and a
@@ -74,8 +87,8 @@ const articleSchema = {
   author: { '@type': 'Person', name: speakerDisplay },
   publisher: {
     '@type': 'GovernmentOrganization',
-    name: 'Ministry of Digital Development and Information',
-    url: 'https://www.mddi.gov.sg/',
+    name: PUBLISHERS[ministry].name,
+    url: PUBLISHERS[ministry].url,
   },
 };
 
@@ -98,51 +111,48 @@ const speechCopy: Record<
 > = {
   zh: {
     translatedHeading: '完整译文（中文）',
-    translatedNote: 'MDDI 英文原文译文',
+    translatedNote: `${ministry} 英文原文译文`,
     translatedAtLabel: '翻译日期',
     originalHeading: '英文原文',
-    originalNote: 'MDDI 官网原始记录',
+    originalNote: `${ministry} 官网原始记录`,
     fetchedAtLabel: '抓取日期',
-    pending: '此演讲尚未本地存档。暂时请到 MDDI 官网阅读原文。我们正在分批补全所有 AI 相关演讲稿的本地存档与中文译文。',
+    pending: `此演讲尚未本地存档。暂时请到 ${ministry} 官网阅读原文。我们正在分批补全所有 AI 相关演讲稿的本地存档与中文译文。`,
   },
   'zh-tw': {
     translatedHeading: '完整譯文（繁體中文）',
-    translatedNote: 'MDDI 英文原文譯文',
+    translatedNote: `${ministry} 英文原文譯文`,
     translatedAtLabel: '翻譯日期',
     originalHeading: '英文原文',
-    originalNote: 'MDDI 官網原始記錄',
+    originalNote: `${ministry} 官網原始記錄`,
     fetchedAtLabel: '抓取日期',
-    pending: '此演講尚未本地存檔。暫時請到 MDDI 官網閱讀原文。我們正在分批補全所有 AI 相關演講稿的本地存檔與中文譯文。',
+    pending: `此演講尚未本地存檔。暫時請到 ${ministry} 官網閱讀原文。我們正在分批補全所有 AI 相關演講稿的本地存檔與中文譯文。`,
   },
   ja: {
     translatedHeading: '全文翻訳',
-    translatedNote: 'MDDI 英語原文の翻訳',
+    translatedNote: `${ministry} 英語原文の翻訳`,
     translatedAtLabel: '翻訳日',
     originalHeading: '英語原文',
-    originalNote: 'MDDI 公式サイト原文',
+    originalNote: `${ministry} 公式サイト原文`,
     fetchedAtLabel: '取得日',
-    pending:
-      'このスピーチの日本語全文はまだ準備中です。現時点では MDDI 公式サイトの原文をご確認ください。全文翻訳は順次追加します。',
+    pending: `このスピーチの日本語全文はまだ準備中です。現時点では ${ministry} 公式サイトの原文をご確認ください。全文翻訳は順次追加します。`,
   },
   ko: {
     translatedHeading: '전체 번역',
-    translatedNote: 'MDDI 영어 원문의 번역',
+    translatedNote: `${ministry} 영어 원문의 번역`,
     translatedAtLabel: '번역일',
     originalHeading: '영어 원문',
-    originalNote: 'MDDI 공식 웹사이트 원문',
+    originalNote: `${ministry} 공식 웹사이트 원문`,
     fetchedAtLabel: '수집일',
-    pending:
-      '이 연설의 한국어 전문 번역은 아직 준비 중입니다. 현재는 MDDI 공식 웹사이트의 원문을 확인해 주세요. 전문 번역은 순차적으로 추가합니다.',
+    pending: `이 연설의 한국어 전문 번역은 아직 준비 중입니다. 현재는 ${ministry} 공식 웹사이트의 원문을 확인해 주세요. 전문 번역은 순차적으로 추가합니다.`,
   },
   en: {
     translatedHeading: 'Full translation',
-    translatedNote: 'Translation of the MDDI English original',
+    translatedNote: `Translation of the ${ministry} English original`,
     translatedAtLabel: 'translated',
     originalHeading: 'Full speech',
-    originalNote: 'Archived from mddi.gov.sg',
+    originalNote: `Archived from ${sourceHost}`,
     fetchedAtLabel: 'fetched',
-    pending:
-      'Local archive is not yet available. Please read the original on the MDDI website. We are progressively archiving full text and translations for all AI-related MDDI speeches.',
+    pending: `Local archive is not yet available. Please read the original on the ${ministry} website. We are progressively archiving full text and translations for all AI-related speeches.`,
   },
 };
 
@@ -257,7 +267,7 @@ const copy = speechCopy[lang];
           <p class="text-amber-900 dark:text-amber-200">
             {copy.pending}{' '}
             <a href={speech.url} target="_blank" rel="noopener" class="underline">
-              {t(lang, 'mddiSourceLabel') || 'MDDI website'}
+              {sourceLabel}
             </a>
           </p>
         </section>
@@ -272,7 +282,7 @@ const copy = speechCopy[lang];
         class="inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-secondary border border-primary/30 hover:border-primary px-4 py-2 rounded-md transition-colors"
       >
         <Icon name="tabler:external-link" class="w-4 h-4" />
-        {t(lang, 'mddiSourceLabel') || 'Source on mddi.gov.sg'}
+        {sourceLabel}
       </a>
     </div>
 

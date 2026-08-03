@@ -1,27 +1,40 @@
 // scripts/refresh/voices/scan.ts
 // ────────────────────────────────────────────────────────────────────────
-// Discover new MDDI AI-speech URLs from the MDDI sitemap.
+// Discover new ministry AI-speech URLs from source sitemaps (MDDI + MAS
+// + PMO — see sources.ts for per-source shapes).
 //
-// Dedupe against TWO existing sources:
+// Dedupe against THREE existing sources:
 //   1. mddiSpeeches[].url in src/data/voices.ts (already-known metadata)
 //   2. Existing keys in src/data/speech-transcripts.ts (already-archived
 //      transcripts; their URL was derived from the speechId slug). This
 //      protects against the case where a row exists in voices.ts but the
 //      transcript was added separately, and vice versa.
+//   3. rejected-ids.json (pre-floor / non-ai decisions from earlier runs)
+//      — without it, rejected candidates would eat the --limit slots on
+//      every run and the pipeline would stall (see rejected-cache.ts).
 
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 
 import { listSitemap } from '../../lib/gov-fetch.ts';
 import { type ScanState, getDomainState, setDomainState } from '../../lib/state.ts';
-import { VOICES_SOURCES, isAiSpeechUrl, isSpeechUrl, newsroomSlug, type VoicesSource } from './sources.ts';
+import { loadRejectedIds } from './rejected-cache.ts';
+import {
+  VOICES_SOURCES,
+  isAiSpeechUrlForSource,
+  isSpeechUrlForSource,
+  speechIdForSource,
+  type SpeechMinistry,
+  type VoicesSource,
+} from './sources.ts';
 
 export interface VoicesCandidate {
   sourceUrl: string;
-  /** /newsroom/<slug>/ extracted. Used as speech id key. */
+  /** idPrefix + slug (bare slug for MDDI). Used as speech id key. */
   speechId: string;
   domain: string;
   label: string;
+  ministry: SpeechMinistry;
   /** true when the slug itself names AI (fast-pass, high confidence).
    *  false → admitted as a speech but AI relevance must be confirmed by
    *  a content-level judgement downstream (run.ts judgeAiRelevance). */
@@ -45,7 +58,7 @@ export interface ScanOptions {
 
 async function scanSource(
   source: VoicesSource,
-  opts: { existingUrls: Set<string>; existingSpeechIds: Set<string> }
+  opts: { existingUrls: Set<string>; existingSpeechIds: Set<string>; rejectedIds: Set<string> }
 ): Promise<{ found: VoicesCandidate[]; checked: number; error?: string }> {
   const found = new Map<string, VoicesCandidate>();
   let checked = 0;
@@ -57,23 +70,25 @@ async function scanSource(
       for (const raw of urls) {
         if (source.urlExcludes?.some((re) => re.test(raw))) continue;
         if (!source.urlPatterns.some((re) => re.test(raw))) continue;
-        // Admit ALL speeches (coarse slug filter), not just slugs that
-        // name AI. Relevance is judged on content downstream. aiSlugMatch
-        // records whether the slug already names AI (fast-pass).
-        if (!isSpeechUrl(raw)) continue;
-        const aiSlugMatch = isAiSpeechUrl(raw);
-        const slug = newsroomSlug(raw);
-        if (!slug) continue;
+        // Admit ALL speeches (coarse per-source filter), not just slugs
+        // that name AI. Relevance is judged on content downstream.
+        // aiSlugMatch records whether the slug already names AI.
+        if (!isSpeechUrlForSource(raw, source)) continue;
+        const aiSlugMatch = isAiSpeechUrlForSource(raw, source);
+        const speechId = speechIdForSource(raw, source);
+        if (!speechId) continue;
         // Normalize trailing slash for dedupe parity with voices.ts entries.
         const normalized = raw.endsWith('/') ? raw : `${raw}/`;
         if (opts.existingUrls.has(normalized) || opts.existingUrls.has(raw)) continue;
-        if (opts.existingSpeechIds.has(slug)) continue;
-        if (found.has(slug)) continue;
-        found.set(slug, {
+        if (opts.existingSpeechIds.has(speechId)) continue;
+        if (opts.rejectedIds.has(speechId)) continue;
+        if (found.has(speechId)) continue;
+        found.set(speechId, {
           sourceUrl: normalized,
-          speechId: slug,
+          speechId,
           domain: source.domain,
           label: source.label,
+          ministry: source.ministry,
           aiSlugMatch,
         });
       }
@@ -88,19 +103,36 @@ async function scanSource(
   }
 }
 
+/** Round-robin interleave per-source candidate lists so a large backlog
+ *  on one source (PMO: hundreds of historical pages awaiting the
+ *  post-fetch date floor) can never starve the other sources out of the
+ *  --limit slots. */
+function interleave(perSource: VoicesCandidate[][]): VoicesCandidate[] {
+  const out: VoicesCandidate[] = [];
+  const maxLen = perSource.reduce((max, list) => Math.max(max, list.length), 0);
+  for (let i = 0; i < maxLen; i += 1) {
+    for (const list of perSource) {
+      if (list[i] !== undefined) out.push(list[i]);
+    }
+  }
+  return out;
+}
+
 export async function scan(options: ScanOptions): Promise<ScanResult> {
   // Voices state stores the URL set we've already considered. We still
   // dedupe against the actual data files (canonical), but stash any new
   // discoveries so a future run-with-state knows what's already on disk.
   void getDomainState(options.state, 'voices');
 
-  const candidates: VoicesCandidate[] = [];
+  const rejectedIds = new Set(Object.keys(loadRejectedIds()));
+  const perSourceFound: VoicesCandidate[][] = [];
   const perSource: ScanResult['perSource'] = [];
 
   for (const source of VOICES_SOURCES) {
     const result = await scanSource(source, {
       existingUrls: options.existingUrls,
       existingSpeechIds: options.existingSpeechIds,
+      rejectedIds,
     });
     perSource.push({
       domain: source.domain,
@@ -108,9 +140,10 @@ export async function scan(options: ScanOptions): Promise<ScanResult> {
       matched: result.found.length,
       error: result.error,
     });
-    candidates.push(...result.found);
-    if (options.dryRun) break;
+    perSourceFound.push(result.found);
   }
+
+  const candidates = interleave(perSourceFound);
 
   // Persist seen-URLs for observational use (not required for dedupe).
   const seen = new Set<string>([

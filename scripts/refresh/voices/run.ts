@@ -1,10 +1,10 @@
 // scripts/refresh/voices/run.ts
 // ────────────────────────────────────────────────────────────────────────
-// Orchestrator for the MDDI voices refresh pipeline.
+// Orchestrator for the ministry voices refresh pipeline (MDDI + MAS + PMO).
 //
 // Flow:
 //   1. Read existing mddiSpeeches[].url + speechTranscripts keys (dedup set).
-//   2. scan() → candidate URLs from MDDI sitemap, filtered to AI speeches.
+//   2. scan() → candidate URLs from source sitemaps, filtered to AI speeches.
 //   3. fetch() → page <h1> + paragraphs[] per candidate.
 //   4. translate() → zh paragraphs + bilingual (zh + en) 4-7 bullet tldr.
 //   5. enrich() → trilingual title + event + speaker title (uses
@@ -27,7 +27,7 @@ import { resolve } from 'node:path';
 import { loadState, saveState } from '../../lib/state.ts';
 import { autoCommit, pushAndOpenPR, buildPRBody } from '../../lib/auto-commit.ts';
 import { translateBatch } from '../../lib/translate.ts';
-import { ensureClaudeAuthed } from '../../lib/llm.ts';
+import { callLlmJson, ensureClaudeAuthed } from '../../lib/llm.ts';
 import {
   scan,
   readExistingSpeechUrls,
@@ -36,9 +36,21 @@ import {
 } from './scan.ts';
 import { fetchSpeeches, type FetchedSpeech } from './fetch.ts';
 import { judgeAiRelevance } from './judge.ts';
+import { loadRejectedIds, saveRejectedIds } from './rejected-cache.ts';
 import { translateSpeeches, type TranslatedSpeech } from './translate.ts';
 import { combineForEmit, emit, type EmittableSpeech } from './emit.ts';
 import { speakerFromSlug } from './sources.ts';
+
+/** Intake floor for the non-MDDI sources added 2026-08 (MAS / PMO): no
+ *  historical backfill — only speeches published on/after this date are
+ *  archived. MDDI (the founding source) has no floor. */
+const NEW_SOURCE_DATE_FLOOR = '2026-01-01';
+
+// Rule #9 (CLAUDE.md): full-speech paragraph batches regularly exceed the
+// default 120s claude CLI timeout — the 2026-08-03 MAS e2e timed out 9
+// batches in a row and lost the run. Default to 300s unless the caller
+// already set an override (lib/llm.ts reads the env at call time).
+if (!process.env.SGAI_LLM_TIMEOUT_MS) process.env.SGAI_LLM_TIMEOUT_MS = '300000';
 
 interface CliFlags {
   dryRun: boolean;
@@ -107,6 +119,26 @@ function uniqueBy<T>(arr: T[], keyFn: (v: T) => string): T[] {
   return out;
 }
 
+/** LLM fallback speaker extraction for SPEAKER_MAP misses: pull
+ *  {name, roleEn} from the title + opening paragraphs. Replaces the old
+ *  'Speaker' placeholder path whenever the page itself names the
+ *  speaker (salutation blocks and PMO/MAS titles almost always do).
+ *  Null on failure/uncertainty — caller keeps the placeholder. */
+async function guessSpeaker(f: FetchedSpeech): Promise<{ name: string; roleEn: string } | null> {
+  try {
+    const res = await callLlmJson<{ name?: string; roleEn?: string }>(
+      `This is a Singapore government speech page. Identify the PERSON DELIVERING the speech and their role/title.\n\nTitle: ${f.title}\n\nOpening paragraphs:\n${f.paragraphs.slice(0, 3).join('\n')}\n\nReturn STRICT JSON {"name": "Full Name", "roleEn": "English role title"}. If the deliverer cannot be determined with confidence, return {"name": "", "roleEn": ""}.`,
+      { systemPrompt: 'You extract structured facts. Output strict JSON only.', model: 'haiku' }
+    );
+    const name = (res.name ?? '').trim();
+    const roleEn = (res.roleEn ?? '').trim();
+    if (!name || !roleEn) return null;
+    return { name, roleEn };
+  } catch {
+    return null;
+  }
+}
+
 async function enrichTrilingual(
   fetched: FetchedSpeech[],
   translated: TranslatedSpeech[]
@@ -116,13 +148,37 @@ async function enrichTrilingual(
 
   // Step 1: derive titleEn + eventEn + speaker. titleEn defaults to the
   // page <h1>; eventEn is regex-extracted; speaker comes from SPEAKER_MAP
-  // (slug lookup) and the page <h1> fallback.
-  const partials = fetched.map((f) => {
+  // (slug lookup), then an LLM read of the page itself, then the fixed
+  // placeholder.
+  const partials = [] as Array<{
+    fetched: FetchedSpeech;
+    translatedSpeech: TranslatedSpeech | undefined;
+    titleEn: string;
+    eventEn: string;
+    speakerName: string;
+    speakerTitleEn: string;
+    speakerTitleZh: string;
+    speakerTitleJa: string;
+    speakerTitleKo: string;
+    /** Set when the LLM supplied roleEn — zh/ja/ko siblings are batch-
+     *  translated below instead of using the placeholder titles. */
+    llmRoleEn?: string;
+  }>;
+  for (const f of fetched) {
     const translatedSpeech = tMap.get(f.speechId);
     const titleEn = f.title || humaniseSlug(f.speechId);
     const eventEn = extractEventEn(titleEn) || titleEn;
-    const speakerInfo = speakerFromSlug(f.speechId);
-    return {
+    let speakerInfo = speakerFromSlug(f.speechId);
+    let llmRoleEn: string | undefined;
+    if (!speakerInfo.name) {
+      const guess = await guessSpeaker(f);
+      if (guess) {
+        speakerInfo = { name: guess.name, titleZh: '', titleEn: guess.roleEn, titleJa: '', titleKo: '' };
+        llmRoleEn = guess.roleEn;
+        process.stdout.write(`    speaker via LLM: ${f.speechId} → ${guess.name} (${guess.roleEn})\n`);
+      }
+    }
+    partials.push({
       fetched: f,
       translatedSpeech,
       titleEn,
@@ -132,8 +188,9 @@ async function enrichTrilingual(
       speakerTitleZh: speakerInfo.titleZh,
       speakerTitleJa: speakerInfo.titleJa,
       speakerTitleKo: speakerInfo.titleKo,
-    };
-  });
+      llmRoleEn,
+    });
+  }
 
   // Step 2: batch-translate titleEn/eventEn into zh + ja so we minimise
   // the number of LLM round-trips. SpeakerTitle is intentionally NOT
@@ -145,15 +202,25 @@ async function enrichTrilingual(
   // check whenever the *En fallback collapsed to '' upstream.
   const titles = partials.map((p) => p.titleEn);
   const events = partials.map((p) => p.eventEn);
+  // LLM-extracted speaker roles (SPEAKER_MAP misses) get real zh/ja/ko
+  // siblings via the same batch-translate path — dedup'd, empties out.
+  const llmRoles = [...new Set(partials.map((p) => p.llmRoleEn).filter((r): r is string => !!r))];
 
-  const [titlesZh, titlesJa, titlesKo, eventsZh, eventsJa, eventsKo] = await Promise.all([
-    translateBatch(titles, { direction: 'en→zh', cacheDir: ZH_CACHE }),
-    translateBatch(titles, { direction: 'en→ja', cacheDir: JA_CACHE }),
-    translateBatch(titles, { direction: 'en→ko', cacheDir: KO_CACHE }),
-    translateBatch(events, { direction: 'en→zh', cacheDir: ZH_CACHE }),
-    translateBatch(events, { direction: 'en→ja', cacheDir: JA_CACHE }),
-    translateBatch(events, { direction: 'en→ko', cacheDir: KO_CACHE }),
-  ]);
+  const [titlesZh, titlesJa, titlesKo, eventsZh, eventsJa, eventsKo, rolesZh, rolesJa, rolesKo] =
+    await Promise.all([
+      translateBatch(titles, { direction: 'en→zh', cacheDir: ZH_CACHE }),
+      translateBatch(titles, { direction: 'en→ja', cacheDir: JA_CACHE }),
+      translateBatch(titles, { direction: 'en→ko', cacheDir: KO_CACHE }),
+      translateBatch(events, { direction: 'en→zh', cacheDir: ZH_CACHE }),
+      translateBatch(events, { direction: 'en→ja', cacheDir: JA_CACHE }),
+      translateBatch(events, { direction: 'en→ko', cacheDir: KO_CACHE }),
+      translateBatch(llmRoles, { direction: 'en→zh', cacheDir: ZH_CACHE }),
+      translateBatch(llmRoles, { direction: 'en→ja', cacheDir: JA_CACHE }),
+      translateBatch(llmRoles, { direction: 'en→ko', cacheDir: KO_CACHE }),
+    ]);
+  const roleZhMap = new Map(llmRoles.map((r, i) => [r, rolesZh[i]]));
+  const roleJaMap = new Map(llmRoles.map((r, i) => [r, rolesJa[i]]));
+  const roleKoMap = new Map(llmRoles.map((r, i) => [r, rolesKo[i]]));
 
   const out: EmittableSpeech[] = [];
   for (let i = 0; i < partials.length; i += 1) {
@@ -161,9 +228,12 @@ async function enrichTrilingual(
     const t = p.translatedSpeech;
     if (!t) continue;
     const speakerTitleEn = p.speakerTitleEn || 'Speaker';
-    const speakerTitleZh = p.speakerTitleZh || '演讲者';
-    const speakerTitleJa = p.speakerTitleJa || '講演者';
-    const speakerTitleKo = p.speakerTitleKo || '연사';
+    const speakerTitleZh =
+      p.speakerTitleZh || (p.llmRoleEn && roleZhMap.get(p.llmRoleEn)) || '演讲者';
+    const speakerTitleJa =
+      p.speakerTitleJa || (p.llmRoleEn && roleJaMap.get(p.llmRoleEn)) || '講演者';
+    const speakerTitleKo =
+      p.speakerTitleKo || (p.llmRoleEn && roleKoMap.get(p.llmRoleEn)) || '연사';
     out.push(
       combineForEmit(p.fetched, t, {
         titleZh: titlesZh[i],
@@ -287,16 +357,47 @@ async function main(): Promise<void> {
     return;
   }
 
+  // 2a. Date floor for new sources (MAS / PMO): no historical backfill.
+  // Rejects are cached so they never eat --limit slots again. A missing
+  // date is fail-open (kept, not cached) — a parser regression must not
+  // silently poison the cache. MDDI has no floor (founding source).
+  const rejected = loadRejectedIds();
+  const today = new Date().toISOString().slice(0, 10);
+  const ministryMap = new Map(candidates.map((c) => [c.speechId, c.ministry]));
+  const inWindow: FetchedSpeech[] = [];
+  let droppedPreFloor = 0;
+  for (const f of fetchResult.successes) {
+    const ministry = ministryMap.get(f.speechId) ?? 'MDDI';
+    if (ministry !== 'MDDI' && f.publishedDate && f.publishedDate < NEW_SOURCE_DATE_FLOOR) {
+      droppedPreFloor += 1;
+      rejected[f.speechId] = { reason: 'pre-floor', date: f.publishedDate, decidedAt: today };
+      process.stdout.write(`    ⊘ pre-floor (${f.publishedDate}): ${f.speechId}\n`);
+      continue;
+    }
+    if (ministry !== 'MDDI' && !f.publishedDate) {
+      process.stdout.write(`    ! no date extracted (kept, fail-open): ${f.speechId}\n`);
+    }
+    inWindow.push(f);
+  }
+  if (droppedPreFloor > 0) {
+    process.stdout.write(`  date floor: dropped ${droppedPreFloor} pre-${NEW_SOURCE_DATE_FLOOR}\n`);
+  }
+
   // 2b. AI-relevance gate. Fast-pass candidates (slug already names AI) are
   // trusted; the rest are judged on their fetched body. This is the fix for
   // slug-only dropping — e.g. "asia-economic-summit" is about AI sovereignty
   // but its slug has no AI keyword.
   process.stdout.write('\n  Judging AI relevance (non-fast-pass only)...\n');
   const aiSlugMap = new Map(candidates.map((c) => [c.speechId, c.aiSlugMatch]));
+  // --ids is an explicit operator selection (backfill / judge-veto): the
+  // named speeches skip the content judge. This is the deterministic
+  // promote path after deleting a wrong 'non-ai' line from
+  // rejected-ids.json in PR review.
+  const trustedIds = new Set(flags.ids);
   const aiRelevant: FetchedSpeech[] = [];
   let droppedNonAi = 0;
-  for (const f of fetchResult.successes) {
-    if (aiSlugMap.get(f.speechId)) {
+  for (const f of inWindow) {
+    if (aiSlugMap.get(f.speechId) || trustedIds.has(f.speechId)) {
       aiRelevant.push(f);
       continue;
     }
@@ -306,10 +407,23 @@ async function main(): Promise<void> {
       process.stdout.write(`    ✓ AI: ${f.speechId} (${verdict.confidence})\n`);
     } else {
       droppedNonAi += 1;
+      rejected[f.speechId] = {
+        reason: 'non-ai',
+        decidedAt: today,
+        note: verdict.reason.slice(0, 120),
+      };
       process.stdout.write(`    ⊘ non-AI: ${f.speechId} — ${verdict.reason.slice(0, 70)}\n`);
     }
   }
   process.stdout.write(`  AI gate: kept ${aiRelevant.length}, dropped ${droppedNonAi} non-AI\n`);
+
+  // Persist reject decisions (pre-floor + non-ai) so future scans skip them.
+  if (droppedPreFloor + droppedNonAi > 0) {
+    saveRejectedIds(rejected);
+    process.stdout.write(
+      `  reject cache: +${droppedPreFloor + droppedNonAi} (${Object.keys(rejected).length} total)\n`
+    );
+  }
 
   if (aiRelevant.length === 0) {
     process.stdout.write('\n[voices-refresh] no AI-relevant speeches. exiting.\n');
@@ -367,8 +481,15 @@ async function main(): Promise<void> {
   process.stdout.write('\n  Committing...\n');
   const commit = autoCommit({
     domain: 'voices',
-    files: [resolve('src/data/voices.ts'), resolve('src/data/speech-transcripts.ts')],
-    message: `data(voices): refresh +${emitResult.recordsAdded} MDDI speeches`,
+    files: [
+      resolve('src/data/voices.ts'),
+      resolve('src/data/speech-transcripts.ts'),
+      // Reject decisions ride along so every weekly PR shows what was
+      // dropped (pre-floor / non-ai) — a wrong drop is vetoed by deleting
+      // its line in PR review (the next run re-examines it).
+      resolve('scripts/refresh/voices/data/rejected-ids.json'),
+    ],
+    message: `data(voices): refresh +${emitResult.recordsAdded} ministry speeches`,
     allowDirtyPaths: ['scripts/refresh/voices/data/', 'scripts/i18n/data/'],
   });
   process.stdout.write(`  branch: ${commit.branch}\n`);
@@ -400,7 +521,7 @@ async function main(): Promise<void> {
     });
     const prResult = await pushAndOpenPR({
       branch: commit.branch,
-      title: `[data-refresh] voices: +${emitResult.recordsAdded} MDDI speeches`,
+      title: `[data-refresh] voices: +${emitResult.recordsAdded} ministry speeches`,
       body,
       labels: ['data-refresh', 'voices'],
     });

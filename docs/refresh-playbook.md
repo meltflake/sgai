@@ -99,13 +99,19 @@ npm run eval:video-transcript -- --include-historical        # 全量审计
 
 #### `/speeches/[id]` + `/voices` + `/voices/[id]`
 
-- **数据**: `src/data/voices.ts`（含 `mddiSpeeches`），`src/data/speech-transcripts.ts`（1.2 MB），`src/data/people.ts`（91 KB）
-- **来源**: MDDI 新闻室 + 政府官网 + LinkedIn + AISG/IMDA 名单
-- **现状**: ⚠️ MDDI 演讲扫描完成；people 仍靠 prospect-stubs 半自动
+- **数据**: `src/data/voices.ts`（含 `mddiSpeeches`，数组名保留但已收 MDDI+MAS+PMO 三源，靠可选 `ministry` 字段区分），`src/data/speech-transcripts.ts`（1.2 MB），`src/data/people.ts`（91 KB）
+- **来源**: MDDI 新闻室 + MAS `/news/speeches/` + PMO 新闻室（2026-08 扩源）+ 政府官网 + LinkedIn + AISG/IMDA 名单
+- **现状**: ✅ 三部委演讲 weekly 自动扫描（MAS/PMO 只收 ≥2026-01-01，拒绝决策缓存在 `scripts/refresh/voices/data/rejected-ids.json`）；people 仍靠 prospect-stubs 半自动
 - **更新命令**:
 
 ```bash
-# MDDI 演讲扫描
+# 三部委演讲扫描（MDDI + MAS + PMO，weekly cron 同款入口）
+npx tsx scripts/refresh/voices/run.ts --dry-run          # 预览候选
+npx tsx scripts/refresh/voices/run.ts --limit=3          # 全流程 + auto-PR
+# 新源接入时的一次性回填闸排空（fetch 日期→写 pre-floor 拒绝缓存，无 LLM）
+npx tsx scripts/refresh/voices/seed-date-floor.ts --source=pmo
+
+# 旧版 Python 管线（仅 MDDI，已被上面 tsx 管线取代，留档）
 cd scripts && python3 voices/01_scan_mddi.py --exclude-existing
 python3 voices/02_fetch_speeches.py
 python3 voices/03_generate_ts.py
