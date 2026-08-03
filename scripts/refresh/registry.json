@@ -139,6 +139,17 @@
       "targets": ["src/data/benchmarking.ts"]
     },
     {
+      "id": "ai-jobs-index",
+      "type": "tsx",
+      "schedule": "monthly",
+      "label": "AI Jobs Index (MyCareersFuture)",
+      "description": "Monthly aggregate snapshot of live AI job postings: uuid-dedup'd count across a frozen query basket, salary percentiles (disclosed Monthly ranges only), top-10 employers, role-type mix. Aggregates only — no listing republication. History is unrecoverable, so the sanity bound refuses implausibly small sweeps rather than corrupt the immutable series. Surfaces: /talent demand-side section + a render-time-derived /tracker talent metric.",
+      "script": "scripts/refresh/jobs-index/run.ts",
+      "args": [],
+      "mode": "auto-pr",
+      "targets": ["src/data/ai-jobs-index.ts"]
+    },
+    {
       "id": "evals",
       "type": "tsx",
       "schedule": "weekly",

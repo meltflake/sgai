@@ -6,6 +6,8 @@
 //
 // Design doc: docs/20260502-tracker-dashboard-design.md
 
+import { jobsIndexMetricRows } from '~/data/ai-jobs-index';
+
 export type Trend = 'up' | 'flat' | 'down'; // visual: ↗ → ↘
 export type DimensionId = 'investment' | 'talent' | 'compute' | 'adoption' | 'research' | 'governance';
 
@@ -645,6 +647,11 @@ export const dimensions: Dimension[] = [
     shortcomingEn:
       'AIAP capacity is capped at ~60 apprentices per cohort. Top local AI PhDs leak to the US or industry. "AI Bilingual 100K" only launches H1 2026 (accounting/legal first) — outcomes unknown. Non-engineering AI roles (PM, design, sales) are undersupplied.',
     metrics: [
+      // Live demand-side row derived at render time from the AI Jobs Index
+      // (src/data/ai-jobs-index.ts) — the first tracker metric that updates
+      // itself from a pipeline instead of manual extraction. Empty until
+      // the first monthly capture.
+      ...jobsIndexMetricRows(),
       {
         name: 'AI 专业人才目标',
         nameKo: 'AI 전문 인재 목표',
