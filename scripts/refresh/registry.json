@@ -215,6 +215,19 @@
       ]
     },
     {
+      "id": "research-digest",
+      "type": "tsx",
+      "schedule": "monthly",
+      "label": "SG AI research monthly digest (OpenAlex)",
+      "description": "Previous-month SG-institution AI works from OpenAlex (~600) → deterministic prefilter (SG first-author or ≥0.3 SG share) + venue/citation ranking → sonnet triage picks 5-10 notable papers → one 4-language FieldNote on /fieldnotes. PR body lists chosen AND near-miss papers so triage quality is phone-reviewable. Thin months (<3 picks) skip rather than pad.",
+      "script": "scripts/refresh/research-digest/run.ts",
+      "args": [],
+      "mode": "auto-pr",
+      "targets": [
+        "src/data/fieldnotes.ts"
+      ]
+    },
+    {
       "id": "evals",
       "type": "tsx",
       "schedule": "weekly",
@@ -249,11 +262,6 @@
     {
       "file": "src/data/references.ts",
       "reason": "外部资源索引，看到好文章手工加",
-      "owner": "editorial"
-    },
-    {
-      "file": "src/data/fieldnotes.ts",
-      "reason": "类博客随笔，自研内容",
       "owner": "editorial"
     },
     {
