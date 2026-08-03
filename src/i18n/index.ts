@@ -489,7 +489,7 @@ export const zh = {
     '方法论 v{v}：固定查询篮子按职位 uuid 去重；薪资仅统计披露的月薪区间中点；快照不可变。快照月份：{month}。',
   videosPageTitle: 'AI 视频观点',
   videosPageDesc: '新加坡政府官员、学者和行业领袖关于 AI 战略、治理、人才和产业的 YouTube 演讲与访谈合集。',
-  voicesPageTitle: '新加坡 AI 影响力图谱 — 关键人物、机构、MDDI 演讲库',
+  voicesPageTitle: '新加坡 AI 影响力图谱 — 关键人物、机构、官方演讲库',
   voicesPageDesc:
     '新加坡 AI 政策关键决策者完整档案：部长、议员、学者、企业家——其国会发言、主导政策、视频观点与官方信息渠道；含 MDDI AI 相关演讲全文检索。',
   opensourcePageTitle: '官方开源与研究',
@@ -891,11 +891,11 @@ export const zh = {
   voicesIntroSubBlurb: '追踪他们的动态，获取第一手 AI 政策与战略信息',
   voicesStatPeople: '关键人物',
   voicesStatInstitutions: '核心机构',
-  voicesStatSpeeches: 'MDDI 演讲稿',
+  voicesStatSpeeches: '官方演讲稿',
   voicesStatVideos: 'YouTube 视频',
   voicesKeyPeopleSection: '关键人物',
   voicesCoreInstitutionsSection: '核心机构',
-  voicesMddiSpeechesSection: 'MDDI AI 相关演讲稿',
+  voicesMddiSpeechesSection: '官方 AI 相关演讲稿',
   voicesYoutubeVideosSection: 'YouTube AI 视频',
   mddiSourceTitle: 'MDDI 官网原文',
 
@@ -1099,7 +1099,7 @@ export const en: Partial<Record<keyof typeof zh, string>> = {
   videosPageTitle: 'AI Video Library',
   videosPageDesc:
     'A curated collection of YouTube talks and interviews from Singapore government officials, academics, and industry leaders on AI strategy, governance, talent, and applications.',
-  voicesPageTitle: 'Singapore AI Influence Map — Ministers, MPs, Academics, MDDI speeches',
+  voicesPageTitle: 'Singapore AI Influence Map — Ministers, MPs, Academics, official speeches',
   voicesPageDesc:
     "Singapore's AI policy decision-makers in one map: ministers, MPs, academics, and industry leaders — their parliamentary speeches, policies championed, video positions, and official channels; full MDDI AI speech archive.",
   opensourcePageTitle: 'Official Open Source & Research',
@@ -1513,11 +1513,11 @@ export const en: Partial<Record<keyof typeof zh, string>> = {
   voicesIntroSubBlurb: 'Track them to get first-hand AI policy and strategy intelligence.',
   voicesStatPeople: 'Key people',
   voicesStatInstitutions: 'Core institutions',
-  voicesStatSpeeches: 'MDDI speeches',
+  voicesStatSpeeches: 'Official speeches',
   voicesStatVideos: 'YouTube videos',
   voicesKeyPeopleSection: 'Key People',
   voicesCoreInstitutionsSection: 'Core Institutions',
-  voicesMddiSpeechesSection: 'MDDI AI Speeches',
+  voicesMddiSpeechesSection: 'Official AI Speeches',
   voicesYoutubeVideosSection: 'YouTube AI Videos',
   mddiSourceTitle: 'Source on mddi.gov.sg',
 
@@ -1720,7 +1720,7 @@ export const ja: Partial<Record<keyof typeof zh, string>> = {
   videosPageTitle: 'AI ビデオ・オピニオン',
   videosPageDesc:
     'シンガポール政府高官、学者、業界リーダーによる AI 戦略・ガバナンス・人材・産業に関する YouTube スピーチとインタビュー集。',
-  voicesPageTitle: 'シンガポール AI インフルエンスマップ — 大臣・議員・学者・MDDI スピーチ',
+  voicesPageTitle: 'シンガポール AI インフルエンスマップ — 大臣・議員・学者・公式スピーチ',
   voicesPageDesc:
     'シンガポール AI 政策の意思決定者を一望：大臣、議員、学者、産業リーダー——議会発言、主導政策、動画ポジション、公式チャネル。MDDI AI 関連スピーチ全文検索付き。',
   opensourcePageTitle: '公式オープンソースと研究',
@@ -2120,11 +2120,11 @@ export const ja: Partial<Record<keyof typeof zh, string>> = {
   voicesIntroSubBlurb: '彼らの動向を追跡し、AI 政策と戦略の一次情報を入手しましょう。',
   voicesStatPeople: '重要人物',
   voicesStatInstitutions: '主要機関',
-  voicesStatSpeeches: 'MDDI スピーチ',
+  voicesStatSpeeches: '公式スピーチ',
   voicesStatVideos: 'YouTube 動画',
   voicesKeyPeopleSection: '重要人物',
   voicesCoreInstitutionsSection: '主要機関',
-  voicesMddiSpeechesSection: 'MDDI AI 関連スピーチ',
+  voicesMddiSpeechesSection: '公式 AI 関連スピーチ',
   voicesYoutubeVideosSection: 'YouTube AI 動画',
   mddiSourceTitle: 'MDDI 公式サイト原文',
 
@@ -2332,7 +2332,7 @@ export const ko: Partial<Record<keyof typeof zh, string>> = {
   videosPageTitle: 'AI 영상 인사이트',
   videosPageDesc:
     '싱가포르 정부 관계자, 학자, 업계 지도자의 AI 전략, 거버넌스, 인재 및 산업에 관한 YouTube 강연 및 인터뷰 모음입니다.',
-  voicesPageTitle: '싱가포르 AI 영향력 지도 — 장관·국회의원·학자·MDDI 연설',
+  voicesPageTitle: '싱가포르 AI 영향력 지도 — 장관·국회의원·학자·공식 연설',
   voicesPageDesc:
     '싱가포르 AI 정책 의사결정자를 한 눈에: 장관, 국회의원, 학자, 산업 리더 — 국회 발언, 주도 정책, 영상 입장, 공식 채널. MDDI AI 관련 연설 전문 검색 포함.',
   opensourcePageTitle: '공식 오픈소스 및 연구',
@@ -2730,11 +2730,11 @@ export const ko: Partial<Record<keyof typeof zh, string>> = {
   voicesIntroSubBlurb: '이들의 동향을 추적하여 AI 정책과 전략에 대한 1차 정보를 얻으세요.',
   voicesStatPeople: '핵심 인물',
   voicesStatInstitutions: '핵심 기관',
-  voicesStatSpeeches: 'MDDI 연설문',
+  voicesStatSpeeches: '공식 연설문',
   voicesStatVideos: 'YouTube 영상',
   voicesKeyPeopleSection: '핵심 인물',
   voicesCoreInstitutionsSection: '핵심 기관',
-  voicesMddiSpeechesSection: 'MDDI AI 관련 연설문',
+  voicesMddiSpeechesSection: '공식 AI 관련 연설문',
   voicesYoutubeVideosSection: 'YouTube AI 영상',
   mddiSourceTitle: 'MDDI 공식 웹사이트 원문',
 

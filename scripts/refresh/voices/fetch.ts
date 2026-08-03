@@ -1,15 +1,28 @@
 // scripts/refresh/voices/fetch.ts
 // ────────────────────────────────────────────────────────────────────────
-// Fetch one MDDI newsroom page and extract:
+// Fetch one ministry speech page (MDDI / MAS / PMO) and extract:
 //   - h1 title (used for the AI summarizer's title input)
 //   - publishedDate (best-effort)
 //   - English paragraphs[] (main body text, multi-strategy)
 //
 // Strategies ported from scripts/voices/02_fetch_speeches.py
 // BeautifulSoup logic, but implemented with regex over the raw HTML
-// because the repo doesn't ship cheerio / node-html-parser. The MDDI
-// template is stable enough that this is fine; if MDDI ever rebuilds the
-// site we can wrap one of those parsers behind the same interface.
+// because the repo doesn't ship cheerio / node-html-parser. The
+// per-ministry templates are stable enough that this is fine; if a site
+// rebuilds we can wrap a real parser behind the same interface.
+//
+// Per-source notes (2026-08 live probes):
+//   MAS: body lives in a `_mas-typeset ... mas-rte-content` div; <main>
+//        also carries related-article teasers (`mas-search-card`) that
+//        must NOT leak into the transcript. First <h1> is the site logo
+//        (empty text) so extractH1 falls through to og:title, which is
+//        the full speech title. Publication date appears as a
+//        "Published Date: 19 May 2026" text marker (with &#160;).
+//   PMO: body is ordinary <p> blocks inside <main>; the container also
+//        emits a "Newsroom <title>" breadcrumb paragraph (dropped by
+//        MDDI_HEADER_RE), a bare speaker byline ("DPM Gan Kim Yong")
+//        and a "Topics" tag-list header — both dropped by the
+//        title-substring / NOISE_LINES filters below.
 //
 // CloudFront is sensitive: we send a real desktop UA + standard headers,
 // matching 02_fetch_speeches.py.
@@ -47,7 +60,7 @@ const SKIP_SUBSTRINGS = [
   'This article has been migrated from an earlier version of the site',
 ];
 
-const NOISE_LINES = new Set(['***', '.  .  .  .  .', '. . . . .']);
+const NOISE_LINES = new Set(['***', '.  .  .  .  .', '. . . . .', 'Topics', 'Summary']);
 
 function sleep(ms: number): Promise<void> {
   return new Promise((r) => setTimeout(r, ms));
@@ -77,7 +90,7 @@ function stripInlineTags(html: string): string {
   return decodeEntities(html.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim());
 }
 
-function extractH1(html: string): string {
+export function extractH1(html: string): string {
   const m = html.match(/<h1[^>]*>([\s\S]*?)<\/h1>/i);
   if (m) {
     const text = stripInlineTags(m[1]);
@@ -90,7 +103,18 @@ function extractH1(html: string): string {
   return '';
 }
 
-function extractDate(html: string): string | null {
+export function extractDate(html: string): string | null {
+  // MAS's explicit "Published Date: 19 May 2026" marker beats every
+  // heuristic below (the inline-date fallback could otherwise pick up a
+  // related-article date). Decode &#160; (NBSP entities) first.
+  const published = html.match(
+    /Published Date:\s*((?:&#160;|&nbsp;|\s)*\d{1,2}(?:&#160;|&nbsp;|\s)+\w+(?:&#160;|&nbsp;|\s)+\d{4})/i
+  );
+  if (published) {
+    const cleaned = published[1].replace(/&#160;|&nbsp;/g, ' ').replace(/\s+/g, ' ').trim();
+    const normalized = normalizeDate(cleaned);
+    if (normalized) return normalized;
+  }
   const timeTag = html.match(/<time[^>]+datetime=["']([^"']+)["']/i);
   if (timeTag) return normalizeDate(timeTag[1]);
   const metas = [
@@ -136,10 +160,18 @@ function normalizeDate(input: string): string | null {
 // machine translation of the title.)
 const MDDI_HEADER_RE = /^\s*Newsroom\b/i;
 
+export interface ExtractOptions {
+  /** Speech URL — selects the per-ministry body container strategy. */
+  sourceUrl?: string;
+  /** Page title — short paragraphs that are substrings of the title
+   *  (PMO's bare speaker byline, breadcrumb fragments) are dropped. */
+  title?: string;
+}
+
 /** Walk <p>...</p> blocks inside a given HTML chunk, returning their
  *  stripped text. Drops empty paragraphs and lines hit by SKIP_SUBSTRINGS
- *  / NOISE_LINES / the MDDI breadcrumb header. */
-function extractPs(chunk: string): string[] {
+ *  / NOISE_LINES / the MDDI breadcrumb header / title fragments. */
+function extractPs(chunk: string, opts: ExtractOptions = {}): string[] {
   const out: string[] = [];
   for (const m of chunk.matchAll(/<p[^>]*>([\s\S]*?)<\/p>/gi)) {
     const text = stripInlineTags(m[1]);
@@ -148,36 +180,78 @@ function extractPs(chunk: string): string[] {
     if (SKIP_SUBSTRINGS.some((s) => text.includes(s))) continue;
     if (MDDI_HEADER_RE.test(text)) continue;
     if (/^\d{1,2}\s+\w+\s+\d{4}$/.test(text)) continue;
+    // PMO byline: a short paragraph that is verbatim part of the page
+    // title ("DPM Gan Kim Yong"). Length-capped so a genuine short body
+    // line ("Thank you.") can't be hit unless it literally appears in
+    // the title.
+    if (opts.title && text.length < 80 && opts.title.includes(text)) continue;
     out.push(text);
   }
   return out;
 }
 
-/** Try to isolate the body container before scanning <p>. MDDI's
- *  template uses a few distinctive class patterns; we try each. */
-function tryBodyContainer(html: string): string | null {
-  // Strategy 1: div.w-full.overflow-x-auto.break-words
+/** Try to isolate the body container before scanning <p>. Per-ministry
+ *  strategies first, then the generic MDDI / <main> fallbacks. */
+function tryBodyContainer(html: string, opts: ExtractOptions = {}): string | null {
+  // MAS: rich-text body div, sliced off before the related-article
+  // teasers (mas-search-card) that live inside the same <main>.
+  if (opts.sourceUrl && /mas\.gov\.sg/i.test(opts.sourceUrl)) {
+    const start = html.indexOf('_mas-typeset');
+    if (start !== -1) {
+      const stops = [html.indexOf('mas-search-card', start), html.indexOf('</main>', start)].filter(
+        (i) => i !== -1
+      );
+      const end = stops.length ? Math.min(...stops) : html.length;
+      return html.slice(start, end);
+    }
+  }
+  // Strategy 1: div.w-full.overflow-x-auto.break-words (MDDI)
   const s1 = html.match(
     /<div[^>]*class=["'][^"']*\bw-full\b[^"']*\boverflow-x-auto\b[^"']*\bbreak-words\b[^"']*["'][\s\S]*?(?=<\/div>\s*<(?:footer|nav|aside))/i
   );
   if (s1) return s1[0];
-  // Strategy 2: <main>...</main>
+  // Strategy 2: <main>...</main> (PMO body is plain <p> blocks in main)
   const s2 = html.match(/<main\b[\s\S]*?<\/main>/i);
   if (s2) return s2[0];
   return null;
 }
 
-export function extractParagraphs(html: string): string[] {
-  const container = tryBodyContainer(html);
+/** MAS packs multiple numbered speech points ("21. …&nbsp;22. …") and
+ *  "o"-bullet sublists into single <p> blocks on some pages (the
+ *  2026-08-03 insurers-promise page rendered as 5 mega-paragraphs).
+ *  Split them back into one paragraph per point so transcripts read —
+ *  and translate — as the speech was delivered. */
+export function splitMasPoints(paragraphs: string[]): string[] {
+  // A point boundary needs BOTH a sentence-ending mark before it and a
+  // "N. Capital" / "a. Capital" marker after — the lookbehind is what
+  // keeps identifiers like "RBC 2. Our framework…" from false-splitting.
+  const pointBoundary = /(?<=[.!?:;'"”’)])\s+(?=(?:\d{1,2}|[a-z])\.\s+[A-Z“"'])/;
+  const bulletBoundary = /(?<=[.:;])\s+(?=o\s+[A-Z])/;
+  const out: string[] = [];
+  for (const p of paragraphs) {
+    for (const part of p.split(pointBoundary)) {
+      for (const sub of part.split(bulletBoundary)) {
+        const cleaned = sub.replace(/^o\s+/, '').trim();
+        if (cleaned) out.push(cleaned);
+      }
+    }
+  }
+  return out;
+}
+
+export function extractParagraphs(html: string, opts: ExtractOptions = {}): string[] {
+  const isMas = !!opts.sourceUrl && /mas\.gov\.sg/i.test(opts.sourceUrl);
+  const container = tryBodyContainer(html, opts);
   if (container) {
-    const ps = extractPs(container);
-    if (ps.length >= 5) return ps;
+    const ps = extractPs(container, opts);
+    if (ps.length >= 5) return isMas ? splitMasPoints(ps) : ps;
   }
   // Fallback: whole document. Strip script/style first to avoid noise.
   const cleaned = html
     .replace(/<script[\s\S]*?<\/script>/gi, ' ')
     .replace(/<style[\s\S]*?<\/style>/gi, ' ');
-  return extractPs(cleaned);
+  const ps = extractPs(cleaned, opts);
+  return isMas ? splitMasPoints(ps) : ps;
 }
 
 async function fetchHtml(url: string): Promise<string> {
@@ -231,7 +305,10 @@ export async function fetchSpeeches(
       if (options.saveRaw) {
         writeFileSync(`${RAW_DIR}/${c.speechId}.html`, html);
       }
-      const paragraphs = extractParagraphs(html);
+      const paragraphs = extractParagraphs(html, {
+        sourceUrl: c.sourceUrl,
+        title: extractH1(html),
+      });
       if (paragraphs.length === 0) {
         failures.push({
           speechId: c.speechId,

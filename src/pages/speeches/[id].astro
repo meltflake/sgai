@@ -30,6 +30,14 @@ interface Props {
 
 const { speech } = Astro.props;
 const id = speechId(speech);
+// Ministry-aware labels; absent ministry = MDDI (legacy records).
+const ministry = speech.ministry ?? 'MDDI';
+const sourceHost = new URL(speech.url).host.replace(/^www\./, '');
+const PUBLISHERS: Record<'MDDI' | 'MAS' | 'PMO', { name: string; url: string }> = {
+  MDDI: { name: 'Ministry of Digital Development and Information', url: 'https://www.mddi.gov.sg/' },
+  MAS: { name: 'Monetary Authority of Singapore', url: 'https://www.mas.gov.sg/' },
+  PMO: { name: "Prime Minister's Office, Singapore", url: 'https://www.pmo.gov.sg/' },
+};
 const transcript = getSpeechTranscript(id);
 const paragraphsEn = getSpeechTranscriptParagraphs(id, 'en');
 const tldrEn = getSpeechTranscriptTldr(id, 'en');
@@ -53,8 +61,8 @@ const articleSchema = {
   author: { '@type': 'Person', name: speech.speaker },
   publisher: {
     '@type': 'GovernmentOrganization',
-    name: 'Ministry of Digital Development and Information',
-    url: 'https://www.mddi.gov.sg/',
+    name: PUBLISHERS[ministry].name,
+    url: PUBLISHERS[ministry].url,
   },
 };
 
@@ -66,7 +74,7 @@ const breadcrumbs = [{ label: 'AI Influence Map', href: '/voices/' }, { label: s
 
   <article class="max-w-3xl mx-auto px-4 sm:px-6 py-12 md:py-16">
     <p class="text-xs uppercase tracking-[0.18em] text-primary font-semibold mb-4">
-      MDDI Speech · {speech.date}
+      {ministry} Speech · {speech.date}
     </p>
     <h1 class="t-display text-gray-900 dark:text-white mb-6">
       {speech.titleEn || speech.title}
@@ -119,7 +127,7 @@ const breadcrumbs = [{ label: 'AI Influence Map', href: '/voices/' }, { label: s
           <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-4">
             <h2 class="t-h3 text-gray-900 dark:text-white">Full speech</h2>
             <p class="text-xs text-gray-500 dark:text-gray-400">
-              Archived from mddi.gov.sg
+              Archived from {sourceHost}
               {transcript?.fetchedAt && ` · Fetched ${transcript.fetchedAt}`}
             </p>
           </div>
@@ -133,9 +141,9 @@ const breadcrumbs = [{ label: 'AI Influence Map', href: '/voices/' }, { label: s
         <section class="my-8 callout-muted rounded-xl p-5 text-sm text-amber-900 dark:text-amber-200">
           Local archive not yet available. Please read the original on the
           <a href={speech.url} target="_blank" rel="noopener" class="underline mx-1">
-            MDDI website
+            {ministry} website
           </a>
-          . We are progressively archiving full text and translations for all AI-related MDDI speeches.
+          . We are progressively archiving full text and translations for all AI-related speeches.
         </section>
       )
     }
@@ -148,7 +156,7 @@ const breadcrumbs = [{ label: 'AI Influence Map', href: '/voices/' }, { label: s
         class="inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-secondary border border-primary/30 hover:border-primary px-4 py-2 rounded-md transition-colors"
       >
         <Icon name="tabler:external-link" class="w-4 h-4" />
-        Source on mddi.gov.sg
+        Source on {sourceHost}
       </a>
     </div>
 

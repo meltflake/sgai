@@ -79,7 +79,10 @@ function newlyAddedSpeechUrls(base: string): string[] {
   }
   if (!raw.trim()) return [];
   const urls = new Set<string>();
-  const re = /^\+\s*url:\s*['"`](https?:\/\/www\.mddi\.gov\.sg\/newsroom\/[^'"`]+)['"`]/;
+  // All registered voices source domains (MDDI/PMO newsroom, MAS
+  // speeches path) — a new-source speech must not dodge the noise gate.
+  const re =
+    /^\+\s*url:\s*['"`](https?:\/\/www\.(?:mddi|pmo)\.gov\.sg\/newsroom\/[^'"`]+|https?:\/\/www\.mas\.gov\.sg\/news\/speeches\/[^'"`]+)['"`]/;
   for (const line of raw.split('\n')) {
     const m = line.match(re);
     if (m) urls.add(m[1]);

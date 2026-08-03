@@ -44,6 +44,10 @@ export interface MddiSpeech {
    *  set this (enforced by scripts/evals/addedAt-coverage). Pre-rule
    *  records may stay undefined. */
   addedAt?: string;
+  /** Publishing ministry/agency. Absent = MDDI (all pre-2026-08 records
+   *  came from the MDDI newsroom; the array name stays mddiSpeeches for
+   *  its 8 consumers). Values are display-safe Latin acronyms. */
+  ministry?: 'MDDI' | 'MAS' | 'PMO';
 }
 
 // ── 关键人物 ─────────────────────────────────────────────────────────────────
@@ -2903,5 +2907,28 @@ export const mddiSpeeches: MddiSpeech[] = [
     eventJa: 'AI for Good Festival',
     eventKo: 'AI 포 굿 페스티벌',
     addedAt: '2026-07-28',
+  },
+  {
+    titleEn:
+      'Delivering on the Insurer’s Promise - Keynote speech by Mr Marcus Lim, Assistant Managing Director, Monetary Authority of Singapore, at the Life Insurance Association, Singapore (LIA) Annual Luncheon on 30 March 2026',
+    title:
+      '兑现保险人的承诺——新加坡金融管理局助理局长 Marcus Lim 先生在新加坡人寿保险协会(LIA)年度午餐会上的主旨演讲，2026年3月30日',
+    titleJa:
+      '保険者の約束の実現 — Marcus Lim 副専務取締役（Monetary Authority of Singapore）による基調演説、Life Insurance Association, Singapore (LIA) Annual Luncheon において、2026年3月30日',
+    titleKo:
+      '보험자의 약속 이행 - Marcus Lim 싱가포르 금융통화청(MAS) 부관리이사의 기조연설, 싱가포르 생명보험협회(LIA) 연례 오찬, 2026년 3월 30일',
+    speaker: 'Marcus Lim',
+    speakerTitle: '新加坡金融管理局助理局长',
+    speakerTitleJa: 'シンガポール金融管理局アシスタント・マネージング・ディレクター',
+    speakerTitleEn: 'Assistant Managing Director, Monetary Authority of Singapore',
+    speakerTitleKo: '싱가포르 통화청 부총재보',
+    date: '2026-03-30',
+    url: 'https://www.mas.gov.sg/news/speeches/2026/delivering-on-the-insurers-promise/',
+    eventEn: 'Life Insurance Association, Singapore (LIA) Annual Luncheon on 30 March',
+    event: '新加坡人寿保险协会(LIA)3月30日年度午宴',
+    eventJa: 'Life Insurance Association, Singapore（LIA）年次昼食会（30 March）',
+    eventKo: '싱가포르 생명보험협회(LIA) 연례 오찬 - 3월 30일',
+    addedAt: '2026-08-03',
+    ministry: 'MAS',
   },
 ];

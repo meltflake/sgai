@@ -53,7 +53,10 @@ scripts/refresh/talent/data/
 scripts/refresh/startups/data/
 scripts/refresh/tracker/data/
 scripts/refresh/benchmarking/data/
-scripts/refresh/voices/data/
+scripts/refresh/voices/data/*
+# Reject-decision cache IS tracked: weekly PRs surface drops for review
+# and fresh checkouts inherit the seeded PMO date-floor backlog.
+!scripts/refresh/voices/data/rejected-ids.json
 
 # i18n translation cache (sha256-keyed claude haiku output)
 scripts/i18n/data/
