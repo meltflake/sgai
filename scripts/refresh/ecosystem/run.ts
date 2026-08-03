@@ -108,6 +108,14 @@ async function main(): Promise<void> {
           kind: 'a company / product / ecosystem news item',
           scope:
             'AI / artificial-intelligence companies, products, infrastructure, or ecosystem developments — especially in Singapore',
+          // Entity gate (2026-08-03): the ecosystem map catalogues THINGS,
+          // not writing. The August run passed an AISG how-to blog post
+          // ("Leveraging Generative AI in Project Management") because it
+          // is genuinely about AI — but an article about USING AI is not an
+          // ecosystem entity. requireScope makes entity-ness a second
+          // necessary condition (same mechanism as startups' SG nexus).
+          requireScope:
+            'an identifiable organisation, programme, product, platform, or facility as its subject — a how-to article, opinion piece, or research write-up ABOUT using AI fails',
         }
       );
       if (!verdict.relevant && verdict.confidence === 'high') {

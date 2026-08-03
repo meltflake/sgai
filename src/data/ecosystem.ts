@@ -3282,13 +3282,12 @@ Worth watching going forward: **when MAS will allow GenAI in direct customer-fac
         ],
         updated: '2026-05-02',
       },
-      // i18n-allow-unpaired — auto-discovered stub; complete required fields on promotion
       {
-        id: 'ai-guide-for-boards-in-singapore-launched-amid-call-for-board-investment-in-ai',
-        name: '新加坡董事会AI指南发布，强调董事会不可低估AI投资',
-        nameEn: 'AI Guide for Boards in Singapore launched amid call for board investment in AI',
-        nameJa: 'シンガポール取締役会AIガイドラインが発表――取締役会はAI投資を軽視してはならないと強調',
-        nameKo: '싱가포르 이사회 AI 지침 발표, AI 투자 저평가 금지 강조',
+        id: 'sid-ai-guide-for-boards',
+        name: '新加坡董事会 AI 指南（SID）',
+        nameEn: 'AI Guide for Boards in Singapore (SID)',
+        nameJa: 'シンガポール取締役会 AI ガイド（SID）',
+        nameKo: '싱가포르 이사회 AI 가이드(SID)',
         description:
           '新加坡董事学会于2026年7月31日发布《新加坡董事会AI指南》，这是一份116页的实用指南，旨在帮助董事会管理人工智能带来的机遇与风险。该指南由OpenAI和微软合作开发，获得新加坡信息通信媒体发展局（IMDA）支持，重点是提升董事会成员的AI素养，将AI治理从被动的技术委员会议题转变为董事会的核心职责。数字发展与信息部长约瑟芬·特奥在论坛的主旨演讲中强调，没有董事会能承受在AI领域投资不足，该指南补充了新加坡《国家AI战略2.0》，为企业提供了整合AI战略、识别机遇和管理风险的实践框架。',
         descriptionEn:
@@ -3298,20 +3297,45 @@ Worth watching going forward: **when MAS will allow GenAI in direct customer-fac
         descriptionKo:
           '싱가포르 이사협회는 2026년 7월 31일 「싱가포르 이사회 AI 지침」을 발표했습니다. 이는 이사회가 인공지능이 가져오는 기회와 위험을 관리하도록 돕기 위한 116페이지 실용 지침입니다. 본 지침은 OpenAI와 마이크로소프트의 협업으로 개발되었으며, 싱가포르 정보통신미디어개발청(IMDA)의 지원을 받았습니다. 초점은 이사회 구성원의 AI 리터러시 향상에 맞춰져 있으며, AI 거버넌스를 수동적인 기술 위원회 안건에서 이사회의 핵심 책임으로 전환하는 것입니다. 디지털 개발·정보부 장관 조세핀 테오는 포럼의 기조 연설에서 어떤 이사회도 AI 영역에서의 투자 부족을 감당할 수 없다고 강조했습니다. 본 지침은 싱가포르 「국가 AI 전략 2.0」을 보완하며, 기업들에게 AI 전략 통합, 기회 파악, 위험 관리를 위한 실행 프레임워크를 제공합니다.',
         url: 'https://www.businesstimes.com.sg/singapore/no-board-can-afford-be-under-invested-ai-josephine-teo-sid-ai-guide-launch',
+        whatItIs:
+          '新加坡董事学会（SID）2026 年 7 月 31 日发布的 116 页实用指南，与 OpenAI、微软合作开发，获 IMDA 支持，面向董事会成员讲清 AI 的机遇、风险与治理责任。',
+        whatItIsEn:
+          "A 116-page practical guide published by the Singapore Institute of Directors (SID) on 31 July 2026, developed with OpenAI and Microsoft and supported by IMDA, walking board members through AI's opportunities, risks and governance duties.",
+        whatItIsJa:
+          'シンガポール取締役協会（SID）が 2026 年 7 月 31 日に発表した 116 ページの実用ガイド。OpenAI・マイクロソフトと共同開発し、IMDA の支援を受け、取締役会メンバーに AI の機会・リスク・ガバナンス責任を解説する。',
+        whatItIsKo:
+          '싱가포르 이사협회(SID)가 2026년 7월 31일 발표한 116페이지 실용 가이드로, OpenAI·마이크로소프트와 공동 개발하고 IMDA의 지원을 받아 이사회 구성원에게 AI의 기회·위험·거버넌스 책임을 설명합니다.',
+        aiRelevance:
+          '把 AI 治理从技术委员会的被动议题提升为董事会核心职责——AI 素养、战略整合、风险管理进入董事问责范围。',
+        aiRelevanceEn:
+          'Elevates AI governance from a passive technology-committee topic to a core boardroom mandate — AI literacy, strategy integration and risk management enter director accountability.',
+        aiRelevanceJa:
+          'AI ガバナンスを技術委員会の受動的議題から取締役会の中核的責務へ引き上げる——AI リテラシー、戦略統合、リスク管理が取締役の説明責任の範囲に入る。',
+        aiRelevanceKo:
+          'AI 거버넌스를 기술 위원회의 수동적 안건에서 이사회의 핵심 책무로 격상합니다——AI 리터러시, 전략 통합, 위험 관리가 이사의 책임 범위에 들어갑니다.',
+        singaporeRelevance:
+          '发布现场由数字发展与信息部长杨莉明主旨站台，定位为 NAIS 2.0 在企业治理层的配套——新加坡把「董事会懂 AI」纳入国家 AI 采纳路径的标志。',
+        singaporeRelevanceEn:
+          'Launched with a keynote by Minister Josephine Teo and positioned as the corporate-governance companion to NAIS 2.0 — a marker of Singapore folding board-level AI literacy into its national adoption path.',
+        singaporeRelevanceJa:
+          'デジタル発展・情報大臣ジョセフィン・テオの基調講演とともに発表され、NAIS 2.0 の企業ガバナンス層の補完と位置づけられる——「取締役会が AI を理解する」ことを国家の AI 採用経路に組み込むシンガポールの指標。',
+        singaporeRelevanceKo:
+          '디지털개발정보부 장관 조세핀 테오의 기조연설과 함께 발표되었으며, NAIS 2.0의 기업 거버넌스 층 보완으로 자리매김합니다——「이사회가 AI를 이해한다」를 국가 AI 채택 경로에 편입한 싱가포르의 지표입니다.',
         entityType: 'product',
         status: 'active',
         founded: '2026-07',
         sources: [
-          // i18n-allow-unpaired — provenance for the pending-review stub above
           {
             label: 'Business Times Tech',
+            labelEn: 'Business Times Tech',
+            labelJa: 'Business Times Tech',
+            labelKo: 'Business Times Tech',
             url: 'https://www.businesstimes.com.sg/singapore/no-board-can-afford-be-under-invested-ai-josephine-teo-sid-ai-guide-launch',
             date: '2026-07-31',
           },
         ],
         updated: '2026-08-01',
-        _pendingReview: true,
-        discoveryNote: 'Auto-discovered via Business Times Tech; confidence=high',
+        addedAt: '2026-08-03',
       },
     ],
   },
@@ -4959,36 +4983,6 @@ A take: LADP solves AIAP's long-standing "applicant pool too small" problem — 
           },
         ],
         updated: '2026-05-02',
-      },
-      // i18n-allow-unpaired — auto-discovered stub; complete required fields on promotion
-      {
-        id: 'leveraging-generative-ai-in-project-management',
-        name: '在项目管理中应用生成式AI',
-        nameEn: 'Leveraging Generative AI in Project Management',
-        nameJa: 'プロジェクト管理における生成AIの応用',
-        nameKo: '프로젝트 관리에 생성형 AI 적용',
-        description:
-          'AI Singapore介绍了生成式AI在项目管理中的两大应用实例：自动化会议纪要总结和项目启动演示幻灯片生成。通过利用GPT-4等AI模型从会议录音和提案文档中提取关键信息，这些实现大幅减少了人工负担，改善了团队沟通和信息一致性。尽管自动化提升了效率，但组织强调了人工审核的必要性和敏感项目数据的数据保护措施的重要性。',
-        descriptionEn:
-          'AI Singapore demonstrates practical applications of generative AI in project management, focusing on two key use cases: automated meeting minutes summarization and automated generation of project kickoff slides. The implementation uses AI models like GPT-4 to extract key information from meetings and proposal documents, significantly reducing manual workload and improving team communication. While automation enhances efficiency and consistency, the organization emphasizes the continued importance of human oversight and robust data protection measures for sensitive project information.',
-        descriptionJa:
-          'AI Singaporeは、プロジェクト管理における生成AIの2つの主要な応用例を紹介しました。具体的には、会議記録の自動要約生成とプロジェクト立ち上げ時のプレゼンテーションスライド自動生成です。GPT-4などのAIモデルを活用して、会議音声記録と提案文書から重要情報を抽出することにより、これらの実装は人的負担を大幅に削減し、チームコミュニケーションと情報の一貫性を改善しました。ただし、自動化は効率性を向上させる一方で、組織は人による審査の必要性と機密プロジェクトデータの保護措置の重要性を強調しています。',
-        descriptionKo:
-          'AI Singapore는 프로젝트 관리에서 생성형 AI의 두 가지 주요 응용 사례를 소개했습니다. 자동화된 회의록 요약과 프로젝트 킥오프 프레젠테이션 슬라이드 생성입니다. GPT-4 같은 AI 모델을 활용해 회의 녹음과 제안 문서에서 핵심 정보를 추출함으로써, 이러한 구현들은 인력 부담을 크게 줄였고 팀 소통과 정보 일관성을 개선했습니다. 자동화가 효율성을 높였지만, 조직은 수동 검토의 필요성과 민감한 프로젝트 데이터에 대한 데이터 보호 조치의 중요성을 강조했습니다.',
-        url: 'https://aisingapore.org/leveraging-generative-ai-in-project-management/',
-        entityType: 'program',
-        status: 'active',
-        sources: [
-          // i18n-allow-unpaired — provenance for the pending-review stub above
-          {
-            label: 'AI Singapore',
-            url: 'https://aisingapore.org/leveraging-generative-ai-in-project-management/',
-            date: '2026-08-01',
-          },
-        ],
-        updated: '2026-08-01',
-        _pendingReview: true,
-        discoveryNote: 'Auto-discovered via AI Singapore; confidence=high',
       },
     ],
   },
