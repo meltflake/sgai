@@ -4,6 +4,7 @@ import CrossDomainRail from '~/components/listing/CrossDomainRail.astro';
 import LatestAdditions from '~/components/listing/LatestAdditions.astro';
 import Headline from '~/components/ui/Headline.astro';
 import { sections, dataDate, introBody, conclusion } from '~/data/legal-ai';
+import { openConsultations, activeBills, archivedLookahead } from '~/data/reg-lookahead';
 import { legalItemSlug } from '~/utils/entity-pages';
 import { renderInlineMarkdown } from '~/utils/inline-markdown';
 import { t, pickLocalized, localizedHref, type Lang } from '~/i18n';
@@ -14,6 +15,49 @@ interface Props {
 }
 
 const { lang } = Astro.props;
+
+// ── Regulatory lookahead (weekly pipeline; see src/data/reg-lookahead.ts) ──
+const TODAY = new Date().toISOString().slice(0, 10);
+const lookaheadOpen = openConsultations(TODAY);
+const lookaheadBills = activeBills();
+const lookaheadArchive = archivedLookahead(TODAY);
+
+function daysLeft(deadline: string): number | null {
+  const diff = Math.ceil((new Date(deadline).getTime() - new Date(TODAY).getTime()) / 86400000);
+  return diff >= 0 ? diff : null;
+}
+
+type LookaheadBill = ReturnType<typeof activeBills>[number];
+const BILL_STAGES = [
+  { key: 'introduced', labelKey: 'regLookaheadStage_introduced' },
+  { key: 'second-reading', labelKey: 'regLookaheadStage_second-reading' },
+  { key: 'passed', labelKey: 'regLookaheadStage_passed' },
+  { key: 'assented', labelKey: 'regLookaheadStage_assented' },
+] as const;
+const STAGE_ORDER = ['introduced', 'second-reading', 'passed', 'assented', 'withdrawn'];
+function stageReached(b: LookaheadBill, stage: string): boolean {
+  return STAGE_ORDER.indexOf(stage) <= STAGE_ORDER.indexOf(b.stage);
+}
+function stageDate(b: LookaheadBill, stage: string): string | undefined {
+  if (stage === 'introduced') return b.introducedAt;
+  if (stage === 'second-reading') return b.secondReadingAt;
+  if (stage === 'passed') return b.passedAt;
+  if (stage === 'assented') return b.assentedAt;
+  return undefined;
+}
+function effectiveStatusOf(c: ReturnType<typeof openConsultations>[number]): string {
+  if (c.status === 'open' && c.deadline && c.deadline < TODAY) return 'closed';
+  return c.status;
+}
+// Generic casts must live in frontmatter — the Astro template parser reads
+// `Parameters<typeof t>` inside an expression as JSX.
+type DictKey = Parameters<typeof t>[1];
+function consultationStatusLabel(c: ReturnType<typeof openConsultations>[number]): string {
+  return t(lang, `regLookaheadStatus_${effectiveStatusOf(c)}` as DictKey);
+}
+function billStageLabel(stage: string): string {
+  return t(lang, `regLookaheadStage_${stage}` as DictKey);
+}
 
 // Two en labels predate their dict keys and differ from them
 // (t('en', 'legalAiPageTitle') = 'AI Legal Framework', t('en', 'navPolicies')
@@ -207,6 +251,127 @@ const sectionPhilosophy = (s: (typeof sections)[number]) =>
       <p class="font-bold text-base mb-3">{corePositionLabel}</p>
       <div class="text-sm leading-relaxed space-y-3" set:html={renderInlineMarkdown(introContent)} />
     </div>
+
+    {
+      /* Regulatory lookahead — the pipeline BEFORE the law: open
+        consultations with countdowns + bills moving through Parliament.
+        Weekly-refreshed by scripts/refresh/reg-lookahead/. Renders only
+        when there is anything live or archived. */
+      (lookaheadOpen.length > 0 ||
+        lookaheadBills.length > 0 ||
+        lookaheadArchive.consultations.length > 0 ||
+        lookaheadArchive.bills.length > 0) && (
+        <div class="mb-16" id="reg-lookahead">
+          <h2 class="t-h2 mb-3 border-b-2 border-amber-500 dark:border-amber-400 pb-2">
+            {t(lang, 'regLookaheadHeading')}
+          </h2>
+          <p class="text-sm italic text-muted mb-6">{t(lang, 'regLookaheadIntro')}</p>
+
+          {lookaheadOpen.length > 0 && (
+            <div class="space-y-3 mb-8">
+              {lookaheadOpen.map((c) => (
+                <div class="border border-amber-200 dark:border-amber-900/60 rounded-lg p-5 bg-surface">
+                  <div class="flex items-start gap-2 flex-wrap mb-1.5">
+                    <span class="text-xs font-bold px-2 py-0.5 rounded bg-amber-100 text-amber-800 dark:bg-amber-900/40 dark:text-amber-200 shrink-0">
+                      {c.agency}
+                    </span>
+                    <span class="text-xs px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-200 shrink-0">
+                      {t(lang, 'regLookaheadOpenBadge')}
+                    </span>
+                    {c.deadline && (
+                      <span class="text-xs text-muted tabular-nums">
+                        {t(lang, 'regLookaheadDeadline')} {c.deadline}
+                        {daysLeft(c.deadline) !== null &&
+                          ` · ${t(lang, 'regLookaheadDaysLeft').replace('{n}', String(daysLeft(c.deadline)))}`}
+                      </span>
+                    )}
+                  </div>
+                  <h3 class="text-base font-bold text-gray-900 dark:text-white mb-1.5">
+                    <a href={c.sourceUrl} target="_blank" rel="noopener noreferrer" class="hover:text-primary">
+                      {pickLocalized(c, 'title', lang)}
+                    </a>
+                  </h3>
+                  <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                    {pickLocalized(c, 'summary', lang)}
+                  </p>
+                </div>
+              ))}
+            </div>
+          )}
+
+          {lookaheadBills.length > 0 && (
+            <div class="space-y-3 mb-6">
+              {lookaheadBills.map((b) => (
+                <div class="border border-subtle rounded-lg p-5 bg-surface">
+                  <div class="flex items-start gap-2 flex-wrap mb-2">
+                    {b.billNumber && <span class="text-xs text-muted tabular-nums shrink-0">{b.billNumber}</span>}
+                    {b.aiRelevance === 'core' && (
+                      <span class="text-xs font-bold px-2 py-0.5 rounded bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-200 shrink-0">
+                        {t(lang, 'regLookaheadCoreBadge')}
+                      </span>
+                    )}
+                  </div>
+                  <h3 class="text-base font-bold text-gray-900 dark:text-white mb-2">
+                    <a href={b.sourceUrl} target="_blank" rel="noopener noreferrer" class="hover:text-primary">
+                      {pickLocalized(b, 'title', lang)}
+                    </a>
+                  </h3>
+                  <ol class="flex flex-wrap items-center gap-1.5 text-xs mb-2">
+                    {BILL_STAGES.map((stage, i) => (
+                      <>
+                        {i > 0 && <span class="text-gray-300 dark:text-slate-700">→</span>}
+                        <li
+                          class={`px-2 py-1 rounded ${
+                            stage.key === b.stage
+                              ? 'bg-primary text-white font-semibold'
+                              : stageReached(b, stage.key)
+                                ? 'bg-slate-200 dark:bg-slate-700 text-gray-700 dark:text-gray-300'
+                                : 'bg-slate-50 dark:bg-slate-800/60 text-gray-400 dark:text-gray-500'
+                          }`}
+                        >
+                          {t(lang, stage.labelKey)}
+                          {stageDate(b, stage.key) && <span class="tabular-nums"> {stageDate(b, stage.key)}</span>}
+                        </li>
+                      </>
+                    ))}
+                  </ol>
+                  <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                    {pickLocalized(b, 'summary', lang)}
+                  </p>
+                </div>
+              ))}
+            </div>
+          )}
+
+          {(lookaheadArchive.consultations.length > 0 || lookaheadArchive.bills.length > 0) && (
+            <details class="text-sm">
+              <summary class="cursor-pointer text-muted select-none">
+                {t(lang, 'regLookaheadArchive')} (
+                {lookaheadArchive.consultations.length + lookaheadArchive.bills.length})
+              </summary>
+              <ul class="mt-3 space-y-1.5 pl-1">
+                {lookaheadArchive.consultations.map((c) => (
+                  <li class="text-gray-600 dark:text-gray-400">
+                    <a href={c.sourceUrl} target="_blank" rel="noopener noreferrer" class="hover:text-primary">
+                      [{c.agency}] {pickLocalized(c, 'title', lang)}
+                    </a>{' '}
+                    · {consultationStatusLabel(c)}
+                  </li>
+                ))}
+                {lookaheadArchive.bills.map((b) => (
+                  <li class="text-gray-600 dark:text-gray-400">
+                    <a href={b.sourceUrl} target="_blank" rel="noopener noreferrer" class="hover:text-primary">
+                      {pickLocalized(b, 'title', lang)}
+                    </a>{' '}
+                    · {billStageLabel(b.stage)}
+                  </li>
+                ))}
+              </ul>
+            </details>
+          )}
+        </div>
+      )
+    }
 
     {
       sections.map((section, sectionIdx) => (

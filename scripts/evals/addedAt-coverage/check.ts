@@ -47,6 +47,7 @@ const DATA_FILES = [
   'src/data/startups.ts',
   'src/data/legal-ai.ts',
   'src/data/talent.ts',
+  'src/data/reg-lookahead.ts', // consultations[] + bills[] drive 'policy' derived updates
 ];
 
 const REPO_ROOT = resolve(import.meta.dirname, '../../..');
