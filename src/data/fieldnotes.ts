@@ -13,7 +13,9 @@ export interface FieldNote {
   tagsEn?: string[];
   tagsJa?: string[];
   tagsKo?: string[];
-  companyProfile: string;
+  /** Optional since 2026-08 — the monthly research digest entries
+   *  (scripts/refresh/research-digest/) have no company to profile. */
+  companyProfile?: string;
   companyProfileEn?: string;
   companyProfileJa?: string;
   companyProfileKo?: string;
@@ -38,6 +40,128 @@ export interface FieldNote {
 }
 
 export const fieldNotes: FieldNote[] = [
+  {
+    id: 'sg-ai-research-2026-07',
+    title: '新加坡 AI 研究月报（2026 年 7 月）',
+    titleEn: 'Singapore AI Research Monthly (2026-07)',
+    titleJa: 'Singapore AI 研究月報（2026-07）',
+    titleKo: '싱가포르 AI 연구 월간 (2026-07)',
+    date: '2026-07',
+    source: 'OpenAlex + 站方筛选',
+    sourceEn: 'OpenAlex + our curation',
+    sourceJa: 'OpenAlex + 当サイトの選定',
+    sourceKo: 'OpenAlex + 사이트 큐레이션',
+    tags: ['研究月报', 'National University of Singapore', 'Nanyang Technological University'],
+    tagsEn: ['Research monthly', 'National University of Singapore', 'Nanyang Technological University'],
+    tagsJa: ['研究マンスリー', 'National University of Singapore', 'Nanyang Technological University'],
+    tagsKo: ['연구 월간', 'National University of Singapore', 'Nanyang Technological University'],
+    sections: [
+      {
+        heading: 'AI 安全与评估',
+        headingEn: 'AI safety & evaluation',
+        headingJa: 'AI安全と評価',
+        headingKo: 'AI 안전성 및 평가',
+        points: [
+          '【National University of Singapore】A Practical Guide to Interpretability Metrics for Chain of Thought Reasoning — 一份由 NUS 撰写的调查系统地组织了思维链可解释性指标这一零散的领域，直接解决 LLM 推理轨迹是否忠实而非仅仅看起来可信的问题。这是人工智能安全/评估领域的核心工作，涉及相信前沿推理模型的一个中心问题。（https://doi.org/10.5281/zenodo.21127002）',
+          '【Nanyang Technological University】Are heterogeneous graph neural networks truly effective for node classification? A causal perspective — 这篇由南洋理工大学（NTU）牵头的论文使用因果推断来测试异构图神经网络在节点分类上报告的性能提升是否真实，或是被数据集工件混淆，这是一项注重严谨性的贡献，发表在备受尊敬的期刊《Knowledge-Based Systems》上。它代表了实质性的新加坡主导的AI方法论工作，而不是下游领域应用。（https://doi.org/10.1016/j.knosys.2026.116595）',
+          '【Singapore University of Social Sciences】Governance-Aware Agentic AI for Enterprise Engineering Systems: A Design-Science Reference Architecture and Quantitative Risk-Control Model — 该论文来自新加坡社会科学大学，提出了设计科学参考架构和定量风险控制模型，用于在企业环境中治理代理型AI，涵盖可审计性、工具调用控制和人工升级。随着企业代理型AI采纳加速，该治理框架与新加坡的AI政策生态系统直接相关，虽然该论文仍为概念性预印本（Zenodo），未经实证验证。（https://doi.org/10.5281/zenodo.21264296）',
+        ],
+        pointsEn: [
+          '[National University of Singapore] A Practical Guide to Interpretability Metrics for Chain of Thought Reasoning — A NUS-authored survey systematically organizes the fragmented landscape of chain-of-thought interpretability metrics, directly addressing whether LLM reasoning traces are faithful rather than just plausible-looking. This is core AI safety/evaluation work on a problem central to trusting frontier reasoning models. (https://doi.org/10.5281/zenodo.21127002)',
+          "[Nanyang Technological University] Are heterogeneous graph neural networks truly effective for node classification? A causal perspective — This NTU-led paper uses causal inference to test whether heterogeneous graph neural networks' reported gains on node classification are genuine or confounded by dataset artifacts, a rigor-focused contribution published in the respected journal Knowledge-Based Systems. It represents substantive Singapore-led AI methodology work rather than a downstream domain application. (https://doi.org/10.1016/j.knosys.2026.116595)",
+          "[Singapore University of Social Sciences] Governance-Aware Agentic AI for Enterprise Engineering Systems: A Design-Science Reference Architecture and Quantitative Risk-Control Model — Authored at the Singapore University of Social Sciences, this paper proposes a design-science reference architecture and quantitative risk-control model for governing agentic AI in enterprise settings, covering auditability, tool-invocation control, and human escalation. As enterprise agentic AI adoption accelerates, the governance framing is directly relevant to Singapore's AI policy ecosystem, though it remains a conceptual preprint (Zenodo) without empirical validation. (https://doi.org/10.5281/zenodo.21264296)",
+        ],
+        pointsJa: [
+          '【National University of Singapore】A Practical Guide to Interpretability Metrics for Chain of Thought Reasoning — NUS著の調査は、思考の連鎖解釈可能性指標の断片化された状況を体系的に整理し、LLM推論トレースが忠実であるか、単なるもっともらしく見えるだけかという問題に直接対処しています。これはフロンティア推論モデルへの信頼に中心的な問題に関する中核的なAI安全性・評価作業です。（https://doi.org/10.5281/zenodo.21127002）',
+          '【Nanyang Technological University】Are heterogeneous graph neural networks truly effective for node classification? A causal perspective — 本論文はNTUが主導し、因果推論を用いて、ヘテロジニアスグラフニューラルネットワークのノード分類における報告された改善が本物であるか、あるいはデータセット・アーティファクトによる交絡であるかをテストするもので、厳密性に焦点を当てた貢献として尊敬される学術誌『Knowledge-Based Systems』に掲載されています。本研究はダウンストリーム領域応用というより、実質的なシンガポール主導のAI方法論研究を表しています。（https://doi.org/10.1016/j.knosys.2026.116595）',
+          '【Singapore University of Social Sciences】Governance-Aware Agentic AI for Enterprise Engineering Systems: A Design-Science Reference Architecture and Quantitative Risk-Control Model — シンガポール社会科学大学で執筆された本論文は、エンタープライズ環境におけるエージェント型AIを統治するための、デザイン・サイエンス参照アーキテクチャおよび定量的リスク管理モデルを提案しており、監査可能性、ツール呼び出し制御、および人間へのエスカレーションをカバーしています。エンタープライズ・エージェント型AIの採用が加速する中、このガバナンス・フレームワークはシンガポールのAIポリシー・エコシステムに直接的に関連していますが、これは概念段階のプレプリント（Zenodo）のままであり、経験的検証がされていません。（https://doi.org/10.5281/zenodo.21264296）',
+        ],
+        pointsKo: [
+          '[National University of Singapore] A Practical Guide to Interpretability Metrics for Chain of Thought Reasoning — NUS가 저술한 조사 논문은 체인-오브-소트 해석 가능성 지표의 단편화된 지형을 체계적으로 정리하면서, LLM 추론 흔적이 그저 그럴듯해 보이기만 한 것이 아니라 충실한지를 직접 다룬다. 이는 최첨단 추론 모델을 신뢰하는 데에 중추적인 문제에 관한 핵심 AI 안전성/평가 연구이다. (https://doi.org/10.5281/zenodo.21127002)',
+          '[Nanyang Technological University] Are heterogeneous graph neural networks truly effective for node classification? A causal perspective — 이 NTU-주도 논문은 인과 추론을 활용하여 이질형 그래프 신경망의 노드 분류 성능 향상이 진정한지 아니면 데이터셋 인공물에 의해 교란된 것인지를 검증하는 엄밀성 중심의 기여로서, 존경받는 저널 Knowledge-Based Systems에 발표되었습니다. 이는 하위 도메인 응용이 아닌 실질적인 싱가포르-주도 AI 방법론 연구를 대표합니다. (https://doi.org/10.1016/j.knosys.2026.116595)',
+          '[Singapore University of Social Sciences] Governance-Aware Agentic AI for Enterprise Engineering Systems: A Design-Science Reference Architecture and Quantitative Risk-Control Model — Singapore University of Social Sciences에서 저술된 본 논문은 기업 환경에서 에이전트 AI를 관리하기 위한 설계 과학 참조 아키텍처와 정량적 위험 제어 모델을 제안하며, 감사 용이성, 도구 호출 제어, 인간 상향 에스컬레이션을 다룬다. 기업 에이전트 AI 도입이 가속화되는 가운데 거버넌스 프레이밍은 싱가포르의 AI 정책 생태계와 직접 관련성이 있으나, 현재는 경험적 검증이 없는 개념적 프리프린트(Zenodo)로 남아 있다. (https://doi.org/10.5281/zenodo.21264296)',
+        ],
+      },
+      {
+        heading: 'LLMs 与智能体',
+        headingEn: 'LLMs & agents',
+        headingJa: 'LLMとエージェント',
+        headingKo: 'LLMs와 에이전트',
+        points: [
+          '【Nanyang Technological University】Beyond Textual Repository Exploration: Dual-Modal Structural Reasoning for Agentic Issue Resolution — 南洋理工大学研究人员提出 DUALVIEW，这是一种双模态（文本+代码结构）推理方法，用于智能体自动解决 issue，可以解决编码智能体在导航大型代码仓库时的已知失效模式。它正处于当前 LLM 智能体研究快速发展的 agentic coding 领域核心。（https://openalex.org/W7167379738）',
+          '【Singapore Management University】Knowledge-State Generative Agents for Pre Assessment Question Evaluation — 新加坡管理大学(SMU)研究人员构建并实证验证了基于大语言模型的生成型代理，这些代理模拟具有不同掌握水平的学生以评估评估问题的质量，并基于来自424名学生的真实数据进行了测试。该研究发表在顶级信息系统期刊上，展示了可信的应用型大语言模型-代理研究，具有明确的教育生态系统相关性。（https://openalex.org/W7164709949）',
+          '【National University of Singapore】ChakapBot: A Generative AI-Powered Chatbot for the Revitalisation of Baba Malay — ChakapBot 由新加坡国立大学（NUS）开发，是一款生成式 AI 聊天机器人，基于社区策划的语料库进行训练，旨在支持濒危新加坡遗产语言巴巴马来语（Baba Malay）的复兴和文献记录，已在 26 名参与者的试点项目中进行验证。这是一个独特的、社会性基础的 LLM 应用，具有明确的生态系统和文化保护意义，超越了典型的商业用途。（https://doi.org/10.3390/languages11070145）',
+        ],
+        pointsEn: [
+          "[Nanyang Technological University] Beyond Textual Repository Exploration: Dual-Modal Structural Reasoning for Agentic Issue Resolution — NTU researchers propose DUALVIEW, a dual-modal (text + code-structure) reasoning approach for agentic issue resolution that tackles a known failure mode of coding agents navigating large repositories. It's squarely in the fast-moving agentic-coding space that dominates current LLM agent research. (https://openalex.org/W7167379738)",
+          '[Singapore Management University] Knowledge-State Generative Agents for Pre Assessment Question Evaluation — SMU researchers built and empirically validated LLM-based generative agents that simulate students with varying mastery levels to evaluate assessment question quality, tested on real data from 424 students. Published in a top Information Systems journal, it shows credible applied LLM-agent research with clear educational-ecosystem relevance. (https://openalex.org/W7164709949)',
+          "[National University of Singapore] ChakapBot: A Generative AI-Powered Chatbot for the Revitalisation of Baba Malay — ChakapBot, built at NUS, is a generative AI chatbot trained on a community-curated corpus to support revitalization and documentation of Baba Malay, an endangered Singapore heritage language, validated in a 26-participant pilot. It's a distinctive, socially-grounded LLM application with clear ecosystem and cultural-preservation significance beyond typical commercial use. (https://doi.org/10.3390/languages11070145)",
+        ],
+        pointsJa: [
+          '【Nanyang Technological University】Beyond Textual Repository Exploration: Dual-Modal Structural Reasoning for Agentic Issue Resolution — NTU の研究者は、大規模リポジトリをナビゲートするコーディングエージェントの既知の失敗モードに対処するエージェント型課題解決のための二重モーダル（テキスト＋コード構造）推論アプローチ DUALVIEW を提案しています。このアプローチは、現在の LLM エージェント研究を支配する急速に進化するエージェント型コーディング領域に正に位置しています。（https://openalex.org/W7167379738）',
+          '【Singapore Management University】Knowledge-State Generative Agents for Pre Assessment Question Evaluation — SMUの研究者は、さまざまな習熟度レベルを有する学生をシミュレートするLLMベースの生成エージェントを構築し、実証的に検証しました。これは評価問題の質を評価するために設計されており、424人の学生からの実データでテストされました。この研究は一流の情報システム誌に掲載されており、教育エコシステムとの明確な関連性を有する、信頼できる応用的なLLMエージェント研究を示しています。（https://openalex.org/W7164709949）',
+          '【National University of Singapore】ChakapBot: A Generative AI-Powered Chatbot for the Revitalisation of Baba Malay — NUS で構築された ChakapBot は、絶滅危機にある Singapore の伝統言語である Baba Malay の復興と記録を支援するため、コミュニティによってキュレーションされたコーパスで訓練された生成 AI チャットボットであり、26 人の参加者による試験で検証されました。これは特徴的で社会的に根ざした LLM アプリケーションであり、明確なエコシステムおよび文化保全の意義を有し、典型的な商用利用を超えた価値を持つものです。（https://doi.org/10.3390/languages11070145）',
+        ],
+        pointsKo: [
+          '[Nanyang Technological University] Beyond Textual Repository Exploration: Dual-Modal Structural Reasoning for Agentic Issue Resolution — NTU 연구진이 DUALVIEW를 제안합니다. 이는 대규모 저장소를 탐색하는 코딩 에이전트의 알려진 실패 모드를 해결하기 위한 이중 모달(텍스트 + 코드 구조) 추론 접근법입니다. 현재 LLM 에이전트 연구를 주도하고 있는 빠르게 발전하는 에이전트 코딩 분야에 정확히 위치합니다. (https://openalex.org/W7167379738)',
+          '[Singapore Management University] Knowledge-State Generative Agents for Pre Assessment Question Evaluation — SMU 연구진이 다양한 숙달 수준을 지닌 학생들을 모의하는 LLM 기반 생성형 에이전트를 개발하고 실증적으로 검증했으며, 424명 학생의 실제 데이터를 통해 평가 문항 품질을 평가했습니다. 상위 정보 시스템 저널에 게시된 이 연구는 명확한 교육 생태계 관련성을 갖춘 신뢰할 수 있는 응용 LLM-에이전트 연구를 보여줍니다. (https://openalex.org/W7164709949)',
+          '[National University of Singapore] ChakapBot: A Generative AI-Powered Chatbot for the Revitalisation of Baba Malay — NUS에서 구축되고 커뮤니티 큐레이션 말뭉치로 학습되며 26명이 참여한 파일럿에서 검증된 ChakapBot은 싱가포르의 멸종 위기 유산 언어인 바바 말레이어의 부흥과 문서화를 지원하는 생성 AI 챗봇입니다. 이는 일반적인 상용 사용을 넘어 명확한 생태계 및 문화 보존 의의를 지닌 독특하고 사회 기반의 LLM 애플리케이션입니다. (https://doi.org/10.3390/languages11070145)',
+        ],
+      },
+      {
+        heading: '多模态与视觉',
+        headingEn: 'Multimodal & vision',
+        headingJa: 'マルチモーダル・ビジョン',
+        headingKo: '멀티모달 & 시각',
+        points: [
+          '【Nanyang Technological University】LongVQUBench: Benchmarking Long-Term Video Quality Understanding of Vision-Language Models — LongVQUBench 是 NTU 推出的一项重要新基准（1,200+ 个视频，1,500 个问答对），用于评估大型视觉语言模型的长期视频质量理解能力，填补了真实存在的空白，因为先前的基准只覆盖短视频片段。它直接测试前沿多模态模型在时序推理上的能力。（https://openalex.org/W7167289797）',
+          '【National University of Singapore】NoPA: Non-Parametric Online 3D Scene Graph Generation — 由NUS主导的NoPA通过替换粗糙的单高斯对象近似，推进了实时3D场景图生成，既改进了速度，也提高了具身/机器人感知的几何保真度。这是对核心多模态感知问题的扎实技术贡献，具有实际的机器人相关性。（https://openalex.org/W7167290256）',
+        ],
+        pointsEn: [
+          '[Nanyang Technological University] LongVQUBench: Benchmarking Long-Term Video Quality Understanding of Vision-Language Models — LongVQUBench is a substantial new benchmark (1,200+ videos, 1,500 QA pairs) from NTU for evaluating long-term video quality understanding in large vision-language models, filling a real gap since prior benchmarks only cover short clips. It directly tests frontier multimodal model capabilities on temporal reasoning. (https://openalex.org/W7167289797)',
+          "[National University of Singapore] NoPA: Non-Parametric Online 3D Scene Graph Generation — NUS-led NoPA advances real-time 3D scene graph generation by replacing coarse single-Gaussian object approximations, improving both speed and geometric fidelity for embodied/robotic perception. It's a solid technical contribution to a core multimodal perception problem with practical robotics relevance. (https://openalex.org/W7167290256)",
+        ],
+        pointsJa: [
+          '【Nanyang Technological University】LongVQUBench: Benchmarking Long-Term Video Quality Understanding of Vision-Language Models — LongVQUBenchは、NTUが開発した実質的な新ベンチマーク（1,200本以上の動画、1,500のQAペア）です。大規模なビジョン言語モデルにおける長期的な動画品質理解を評価するためのもので、従来のベンチマークが短いクリップのみをカバーしているという現実のギャップを埋めています。最先端のマルチモーダルモデルの時間的推論能力を直接テストするものです。（https://openalex.org/W7167289797）',
+          '【National University of Singapore】NoPA: Non-Parametric Online 3D Scene Graph Generation — NUS主導のNoPA は、粗い単一ガウス分布オブジェクト近似を置き換えることで、リアルタイム3Dシーングラフ生成を進展させ、身体的/ロボット知覚に対する速度と幾何学的忠実性の両方を改善しています。これは、実用的なロボット工学への関連性を持つ中核的なマルチモーダル知覚問題への堅実な技術的貢献です。（https://openalex.org/W7167290256）',
+        ],
+        pointsKo: [
+          '[Nanyang Technological University] LongVQUBench: Benchmarking Long-Term Video Quality Understanding of Vision-Language Models — LongVQUBench는 NTU에서 개발한 상당한 규모의 새로운 벤치마크(1,200개 이상의 동영상, 1,500개의 QA 쌍)입니다. 대규모 시각-언어 모델의 장기 동영상 품질 이해를 평가하기 위해 설계되었으며, 이전 벤치마크가 짧은 클립만을 다루었던 점에서 실질적인 공백을 채웁니다. 최첨단 다중 모달 모델의 시간적 추론 능력을 직접 검증합니다. (https://openalex.org/W7167289797)',
+          '[National University of Singapore] NoPA: Non-Parametric Online 3D Scene Graph Generation — NUS 주도의 NoPA는 거친 단일-Gaussian 객체 근사를 대체함으로써 실시간 3D 장면 그래프 생성을 발전시키고, embodied/robotic perception을 위한 속도와 기하학적 충실도를 모두 개선합니다. 이는 실질적인 로봇공학 연관성이 있는 핵심 multimodal perception 문제에 대한 견고한 기술적 기여입니다. (https://openalex.org/W7167290256)',
+        ],
+      },
+      {
+        heading: '科学与健康的人工智能',
+        headingEn: 'AI for science & health',
+        headingJa: '科学とヘルスケアのAI',
+        headingKo: '과학과 보건을 위한 AI',
+        points: [
+          '【Nanyang Technological University】Reaction-aware molecular representation learning: Toward generalizable artificial intelligence for enzymatic catalysis — NTU研究人员推出了一个反应感知分子表征学习框架，旨在实现用于酶催化的可泛化AI，发表于《Acta Pharmaceutica Sinica B》。它针对的是AI-for-science领域的核心瓶颈——"化学反应的可转移表征"——而不是一个狭窄的、增量式的应用场景。（https://doi.org/10.1016/j.apsb.2026.06.033）',
+          '【Agency for Science, Technology and Research】CycPeptMPDB-4D: Multi-Solvent Conformational Ensembles for Predicting Cyclic Peptide Permeability — CycPeptMPDB-4D是一个大规模多机构（A*STAR、NUS、NTU）资源，包含5,160个环肽的分子动力学衍生构象集合，明确为训练用于膜通透性预测的3D/4D深度学习模型而构建。这是一项基础数据集贡献，桥接了基于物理的模拟与AI驱动的药物发现，反映了新加坡在AI科学基础设施中日益增长的角色。（https://doi.org/10.5281/zenodo.21237441）',
+        ],
+        pointsEn: [
+          '[Nanyang Technological University] Reaction-aware molecular representation learning: Toward generalizable artificial intelligence for enzymatic catalysis — NTU researchers introduce a reaction-aware molecular representation learning framework aimed at generalizable AI for enzymatic catalysis, published in Acta Pharmaceutica Sinica B. It targets a core AI-for-science bottleneck—transferable representations of chemical reactions—rather than a narrow, incremental use case. (https://doi.org/10.1016/j.apsb.2026.06.033)',
+          "[Agency for Science, Technology and Research] CycPeptMPDB-4D: Multi-Solvent Conformational Ensembles for Predicting Cyclic Peptide Permeability — CycPeptMPDB-4D is a large multi-institution (A*STAR, NUS, NTU) resource of molecular-dynamics-derived conformational ensembles for 5,160 cyclic peptides, built explicitly to train 3D/4D deep learning models for membrane permeability prediction. It's a foundational dataset contribution bridging physics-based simulation and AI-driven drug discovery, reflecting Singapore's growing AI-for-science infrastructure role. (https://doi.org/10.5281/zenodo.21237441)",
+        ],
+        pointsJa: [
+          '【Nanyang Technological University】Reaction-aware molecular representation learning: Toward generalizable artificial intelligence for enzymatic catalysis — NTU研究者が、酵素触媒作用のための汎用化可能なAIを目指す反応認識型分子表現学習フレームワークを提案し、Acta Pharmaceutica Sinica Bに発表しました。これは狭い段階的なユースケースではなく、AI-for-scienceの中核的なボトルネック—化学反応の転移可能な表現—を対象としています。（https://doi.org/10.1016/j.apsb.2026.06.033）',
+          '【Agency for Science, Technology and Research】CycPeptMPDB-4D: Multi-Solvent Conformational Ensembles for Predicting Cyclic Peptide Permeability — CycPeptMPDB-4Dは、A*STAR、NUS、NTUを含む複数機関による大規模なリソースです。5,160個の環状ペプチドに対する分子動力学から導出された立体配置アンサンブルを備えており、膜透過性予測のための3D/4D深層学習モデルの訓練を明示的な目的として構築されています。これは物理ベースシミュレーションとAI駆動型創薬を橋渡しする基礎的なデータセット貢献であり、シンガポールの科学向けAI基盤分野における成長する役割を反映しています。（https://doi.org/10.5281/zenodo.21237441）',
+        ],
+        pointsKo: [
+          '[Nanyang Technological University] Reaction-aware molecular representation learning: Toward generalizable artificial intelligence for enzymatic catalysis — NTU 연구팀이 효소 촉매작용을 위한 일반화 가능한 AI를 목표로 하는 반응 인식 분자 표현 학습 프레임워크를 소개했으며, Acta Pharmaceutica Sinica B에 게재되었습니다. 이는 좁고 점진적인 사용 사례가 아닌, 과학 AI의 핵심 병목인 화학 반응의 전이 가능한 표현을 겨냥합니다. (https://doi.org/10.1016/j.apsb.2026.06.033)',
+          '[Agency for Science, Technology and Research] CycPeptMPDB-4D: Multi-Solvent Conformational Ensembles for Predicting Cyclic Peptide Permeability — CycPeptMPDB-4D는 다기관(A*STAR, NUS, NTU)의 대규모 자원으로, 5,160개 고리형 펩타이드에 대한 분자동역학 유래 구조 앙상블을 제공하며, 막 투과성 예측을 위한 3D/4D 딥러닝 모델 훈련을 위해 명시적으로 구축되었습니다. 이는 물리 기반 시뮬레이션과 AI 기반 신약 개발을 연결하는 기초 데이터셋 기여이며, 싱가포르의 성장하는 AI-과학 인프라 역할을 반영합니다. (https://doi.org/10.5281/zenodo.21237441)',
+        ],
+      },
+    ],
+    takeaway:
+      '新加坡七月论文揭示了一个战略转向——从前沿模型开发转向智能体AI系统和AI-科学基础设施，同时越来越强调治理、可解释性和严格的评估方法。该投资组合涵盖实时3D感知智能体、应用教育智能体、分子发现数据集和企业治理框架，将新加坡明确定位为既是可信度评估者，也是高风险领域AI部署基础设施的架构者。',
+    takeawayEn:
+      "Singapore's July papers reveal a strategic pivot from frontier model development toward agentic AI systems and AI-for-science infrastructure, paired with growing emphasis on governance, interpretability, and rigorous evaluation methods. The portfolio—spanning real-time 3D perception agents, applied educational agents, molecular discovery datasets, and enterprise governance frameworks—positions Singapore distinctly as both a trustworthiness evaluator and an architect of AI deployment infrastructure for high-stakes domains.",
+    takeawayJa:
+      'シンガポールの7月の論文は、フロンティアモデル開発からエージェント型AIシステムおよびAI for Science基盤へのシフト、ならびにガバナンス、解釈可能性、および厳密な評価手法への重点の高まりを明らかにしています。リアルタイム3D知覚エージェント、応用教育エージェント、分子発見データセット、およびエンタープライズガバナンスフレームワークを網羅するポートフォリオは、シンガポールを信頼性評価者およびハイステークス領域向けAI配備基盤の設計者として明確に位置付けています。',
+    takeawayKo:
+      '싱가포르의 7월 논문들은 프론티어 모델 개발에서 에이전틱 AI 시스템 및 과학용 AI 인프라로의 전략적 전환을 드러내고 있으며, 거버넌스, 해석가능성, 엄격한 평가 방법론에 대한 강조가 점차 커지고 있습니다. 실시간 3D 인식 에이전트, 적용형 교육 에이전트, 분자 발견 데이터셋, 기업 거버넌스 프레임워크를 아우르는 포트폴리오는 싱가포르를 신뢰성 평가자이자 고위험 영역을 위한 AI 배포 인프라의 설계자로서 뚜렷하게 위치시킵니다.',
+  },
   {
     id: 'edb-meeting-ai-infra-2026-02',
     title: 'AI 创业公司与 EDB 会议纪要',

@@ -74,13 +74,15 @@ const lang = 'en' as const;
               </div>
             </div>
 
-            {/* Company profile */}
-            <div class="px-6 py-3 bg-slate-50 dark:bg-slate-800/50 border-b border-subtle">
-              <div class="text-xs text-muted">
-                <span class="font-semibold">🏢 Company profile: </span>
-                {note.companyProfileEn || note.companyProfile}
+            {/* Company profile (absent on research-digest notes) */}
+            {(note.companyProfileEn || note.companyProfile) && (
+              <div class="px-6 py-3 bg-slate-50 dark:bg-slate-800/50 border-b border-subtle">
+                <div class="text-xs text-muted">
+                  <span class="font-semibold">🏢 Company profile: </span>
+                  {note.companyProfileEn || note.companyProfile}
+                </div>
               </div>
-            </div>
+            )}
 
             {/* Content sections */}
             <div class="px-6 py-5 space-y-6">
