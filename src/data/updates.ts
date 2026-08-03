@@ -79,6 +79,56 @@ const MANUAL_TYPES = new Set<UpdateType>(['site', 'fix', 'longform']);
 // sort regardless. Add new entries at the top.
 export const MANUAL_UPDATES: Update[] = [
   {
+    date: '2026-08-03',
+    type: 'site',
+    title: '上线 AI 职位指数：月度追踪新加坡 AI 招聘需求与薪资',
+    titleEn: 'New: AI Jobs Index — monthly tracking of Singapore AI hiring demand and salaries',
+    titleJa: '新機能：AI 求人指数 — シンガポールの AI 採用需要と給与を月次で追跡',
+    titleKo: '신규: AI 채용 지수 — 싱가포르 AI 채용 수요와 급여를 월간 추적',
+    summary:
+      '基于 MyCareersFuture 官方 API 的月度快照：首期（2026-08）捕获 1,475 个在招 AI 职位，披露薪资中位数 S$8,000/月（P25–P75：S$6,000–10,500），TikTok、字节跳动、南洋理工大学、Google、新加坡国立大学居雇主前列。方法论冻结、快照不可变——历史不可回溯采集，序列本身就是资产；积满两个季度后开放环比视图。',
+    summaryEn:
+      'Monthly snapshots from the official MyCareersFuture API: the first capture (2026-08) counts 1,475 open AI positions, with a disclosed-salary median of S$8,000/month (P25–P75: S$6,000–10,500); TikTok, ByteDance, NTU, Google and NUS lead the employer table. Methodology is frozen and snapshots are immutable — history cannot be collected retroactively, so the series itself is the asset; quarter-over-quarter views unlock once two quarters accumulate.',
+    summaryJa:
+      'MyCareersFuture 公式 API による月次スナップショット：初回（2026-08）は 1,475 件の AI 求人を捕捉し、開示給与の中央値は月額 S$8,000（P25–P75：S$6,000–10,500）。雇用主上位は TikTok、ByteDance、南洋理工大学、Google、シンガポール国立大学。手法は凍結、スナップショットは不変——過去に遡って収集できないため、時系列そのものが資産。2 四半期分たまると前期比ビューが解放されます。',
+    summaryKo:
+      'MyCareersFuture 공식 API 기반 월간 스냅샷: 첫 회(2026-08)는 1,475개의 AI 채용 공고를 포착했으며, 공개 급여 중앙값은 월 S$8,000(P25–P75: S$6,000–10,500), 상위 고용주는 TikTok, ByteDance, 난양이공대학, Google, 싱가포르국립대학. 방법론은 동결되고 스냅샷은 불변 — 과거는 소급 수집할 수 없어 시계열 자체가 자산이며, 두 분기가 쌓이면 전분기 대비 뷰가 열립니다.',
+    links: [
+      {
+        href: '/talent/#jobs-index',
+        label: '查看职位指数',
+        labelEn: 'View the jobs index',
+        labelJa: '求人指数を見る',
+        labelKo: '채용 지수 보기',
+      },
+    ],
+  },
+  {
+    date: '2026-08-03',
+    type: 'longform',
+    title: '新栏目：新加坡 AI 研究月报（2026 年 7 月）',
+    titleEn: 'New section: Singapore AI Research Monthly (July 2026)',
+    titleJa: '新コーナー：Singapore AI 研究月報（2026 年 7 月）',
+    titleKo: '신규 코너: 싱가포르 AI 연구 월간 (2026년 7월)',
+    summary:
+      '每月从 OpenAlex 数百篇新加坡署名 AI 论文中筛出最值得读的 5–10 篇：确定性预筛（新加坡一作或作者占比 ≥30%）+ venue 强度与引用排序 + 模型精选。首期收录 6 篇、3 个主题——AI 安全与评估、LLM 与智能体、AI for Science，覆盖 NUS、NTU、SUSS 等机构，四语同步。',
+    summaryEn:
+      'A monthly digest that distils the most notable 5–10 papers from the hundreds of Singapore-affiliated AI publications on OpenAlex: deterministic prefiltering (Singapore first author or ≥30% authorship share), venue-strength and citation ranking, then model-assisted curation. The first issue features 6 papers across 3 themes — AI safety & evaluation, LLMs & agents, and AI for Science — from NUS, NTU and SUSS, published in four languages.',
+    summaryJa:
+      'OpenAlex 上の数百件のシンガポール署名 AI 論文から、毎月最も注目すべき 5–10 本を厳選するダイジェスト：決定論的な事前フィルタ（シンガポール第一著者または著者比率 30% 以上）+ 会場強度・引用数ランキング + モデルによる選定。初回は 3 テーマ（AI 安全と評価、LLM とエージェント、AI for Science）にわたる 6 本を収録。NUS、NTU、SUSS などをカバーし、4 言語で同時公開。',
+    summaryKo:
+      'OpenAlex의 수백 편에 달하는 싱가포르 소속 AI 논문 중 매달 가장 주목할 만한 5–10편을 선별하는 다이제스트: 결정론적 사전 필터(싱가포르 제1저자 또는 저자 비율 30% 이상) + 학회/저널 강도·인용 순위 + 모델 큐레이션. 첫 호는 AI 안전성·평가, LLM과 에이전트, AI for Science 3개 주제에 걸쳐 6편을 수록 — NUS, NTU, SUSS 등을 다루며 4개 언어로 동시 공개.',
+    links: [
+      {
+        href: '/fieldnotes/',
+        label: '阅读首期月报',
+        labelEn: 'Read the first issue',
+        labelJa: '創刊号を読む',
+        labelKo: '첫 호 읽기',
+      },
+    ],
+  },
+  {
     date: '2026-07-17',
     type: 'longform',
     title: '新发布：几个关于 AI 的问答',
