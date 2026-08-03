@@ -3282,6 +3282,61 @@ Worth watching going forward: **when MAS will allow GenAI in direct customer-fac
         ],
         updated: '2026-05-02',
       },
+      {
+        id: 'sid-ai-guide-for-boards',
+        name: '新加坡董事会 AI 指南（SID）',
+        nameEn: 'AI Guide for Boards in Singapore (SID)',
+        nameJa: 'シンガポール取締役会 AI ガイド（SID）',
+        nameKo: '싱가포르 이사회 AI 가이드(SID)',
+        description:
+          '新加坡董事学会于2026年7月31日发布《新加坡董事会AI指南》，这是一份116页的实用指南，旨在帮助董事会管理人工智能带来的机遇与风险。该指南由OpenAI和微软合作开发，获得新加坡信息通信媒体发展局（IMDA）支持，重点是提升董事会成员的AI素养，将AI治理从被动的技术委员会议题转变为董事会的核心职责。数字发展与信息部长约瑟芬·特奥在论坛的主旨演讲中强调，没有董事会能承受在AI领域投资不足，该指南补充了新加坡《国家AI战略2.0》，为企业提供了整合AI战略、识别机遇和管理风险的实践框架。',
+        descriptionEn:
+          'The Singapore Institute of Directors launched the "AI Guide for Boards in Singapore" on July 31, 2026, a 116-page practical guide designed to help boards navigate artificial intelligence opportunities and risks. Developed in partnership with OpenAI and Microsoft, with support from the Infocomm Media Development Authority (IMDA), the guide elevates board members\' AI literacy and establishes AI governance as a core boardroom mandate rather than a passive technology committee topic. Minister Josephine Teo highlighted that no board can afford to be under-invested in AI as global competition intensifies, and emphasized the need for boards to balance innovation with effective risk management. The guide complements Singapore\'s National AI Strategy 2.0 and provides practical frameworks for integrating AI into corporate strategy, identifying opportunities, and managing regulatory, cybersecurity, and ethical risks.',
+        descriptionJa:
+          'シンガポール取締役協会は2026年7月31日に『シンガポール取締役会AIガイドライン』を発表しました。これは116ページの実用ガイドで、AIがもたらす機会とリスクを取締役会が管理することを支援することを目的としています。本ガイドラインはOpenAIとマイクロソフトの協力により開発され、シンガポール情報通信メディア発展局（IMDA）からのサポートを得ています。重点は、取締役会メンバーのAIリテラシーを向上させ、AIガバナンスを受動的な技術委員会の議題から取締役会の核心的な職責へと転換することです。デジタル発展・情報省（MDDI）大臣ジョゼフィン・テオはフォーラムでの基調演説で、いかなる取締役会もAI領域への投資不足に耐えることはできないと強調しました。本ガイドラインはシンガポール『国家AI戦略2.0』を補完し、企業にAI戦略の統合、機会の特定、およびリスク管理の実践的フレームワークを提供しています。',
+        descriptionKo:
+          '싱가포르 이사협회는 2026년 7월 31일 「싱가포르 이사회 AI 지침」을 발표했습니다. 이는 이사회가 인공지능이 가져오는 기회와 위험을 관리하도록 돕기 위한 116페이지 실용 지침입니다. 본 지침은 OpenAI와 마이크로소프트의 협업으로 개발되었으며, 싱가포르 정보통신미디어개발청(IMDA)의 지원을 받았습니다. 초점은 이사회 구성원의 AI 리터러시 향상에 맞춰져 있으며, AI 거버넌스를 수동적인 기술 위원회 안건에서 이사회의 핵심 책임으로 전환하는 것입니다. 디지털 개발·정보부 장관 조세핀 테오는 포럼의 기조 연설에서 어떤 이사회도 AI 영역에서의 투자 부족을 감당할 수 없다고 강조했습니다. 본 지침은 싱가포르 「국가 AI 전략 2.0」을 보완하며, 기업들에게 AI 전략 통합, 기회 파악, 위험 관리를 위한 실행 프레임워크를 제공합니다.',
+        url: 'https://www.businesstimes.com.sg/singapore/no-board-can-afford-be-under-invested-ai-josephine-teo-sid-ai-guide-launch',
+        whatItIs:
+          '新加坡董事学会（SID）2026 年 7 月 31 日发布的 116 页实用指南，与 OpenAI、微软合作开发，获 IMDA 支持，面向董事会成员讲清 AI 的机遇、风险与治理责任。',
+        whatItIsEn:
+          "A 116-page practical guide published by the Singapore Institute of Directors (SID) on 31 July 2026, developed with OpenAI and Microsoft and supported by IMDA, walking board members through AI's opportunities, risks and governance duties.",
+        whatItIsJa:
+          'シンガポール取締役協会（SID）が 2026 年 7 月 31 日に発表した 116 ページの実用ガイド。OpenAI・マイクロソフトと共同開発し、IMDA の支援を受け、取締役会メンバーに AI の機会・リスク・ガバナンス責任を解説する。',
+        whatItIsKo:
+          '싱가포르 이사협회(SID)가 2026년 7월 31일 발표한 116페이지 실용 가이드로, OpenAI·마이크로소프트와 공동 개발하고 IMDA의 지원을 받아 이사회 구성원에게 AI의 기회·위험·거버넌스 책임을 설명합니다.',
+        aiRelevance:
+          '把 AI 治理从技术委员会的被动议题提升为董事会核心职责——AI 素养、战略整合、风险管理进入董事问责范围。',
+        aiRelevanceEn:
+          'Elevates AI governance from a passive technology-committee topic to a core boardroom mandate — AI literacy, strategy integration and risk management enter director accountability.',
+        aiRelevanceJa:
+          'AI ガバナンスを技術委員会の受動的議題から取締役会の中核的責務へ引き上げる——AI リテラシー、戦略統合、リスク管理が取締役の説明責任の範囲に入る。',
+        aiRelevanceKo:
+          'AI 거버넌스를 기술 위원회의 수동적 안건에서 이사회의 핵심 책무로 격상합니다——AI 리터러시, 전략 통합, 위험 관리가 이사의 책임 범위에 들어갑니다.',
+        singaporeRelevance:
+          '发布现场由数字发展与信息部长杨莉明主旨站台，定位为 NAIS 2.0 在企业治理层的配套——新加坡把「董事会懂 AI」纳入国家 AI 采纳路径的标志。',
+        singaporeRelevanceEn:
+          'Launched with a keynote by Minister Josephine Teo and positioned as the corporate-governance companion to NAIS 2.0 — a marker of Singapore folding board-level AI literacy into its national adoption path.',
+        singaporeRelevanceJa:
+          'デジタル発展・情報大臣ジョセフィン・テオの基調講演とともに発表され、NAIS 2.0 の企業ガバナンス層の補完と位置づけられる——「取締役会が AI を理解する」ことを国家の AI 採用経路に組み込むシンガポールの指標。',
+        singaporeRelevanceKo:
+          '디지털개발정보부 장관 조세핀 테오의 기조연설과 함께 발표되었으며, NAIS 2.0의 기업 거버넌스 층 보완으로 자리매김합니다——「이사회가 AI를 이해한다」를 국가 AI 채택 경로에 편입한 싱가포르의 지표입니다.',
+        entityType: 'product',
+        status: 'active',
+        founded: '2026-07',
+        sources: [
+          {
+            label: 'Business Times Tech',
+            labelEn: 'Business Times Tech',
+            labelJa: 'Business Times Tech',
+            labelKo: 'Business Times Tech',
+            url: 'https://www.businesstimes.com.sg/singapore/no-board-can-afford-be-under-invested-ai-josephine-teo-sid-ai-guide-launch',
+            date: '2026-07-31',
+          },
+        ],
+        updated: '2026-08-01',
+        addedAt: '2026-08-03',
+      },
     ],
   },
   {
