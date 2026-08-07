@@ -19,12 +19,14 @@ export interface FeaturedPointer {
   id: string;
 }
 
-// 2026-07-31: lead with the Digital Infrastructure Bill — July's biggest
-// structural story (first hard-law licensing of the AI compute layer:
-// ≥10MW DCs + ≥S$100m/yr IaaS/PaaS need licences, mandatory PUE floors).
-// Consultation closed 22 Jul; swap or null this when the Bill is tabled in
-// Parliament or a bigger story lands.
+// 2026-08-07: lead with the OpenAI Signals translation — OpenAI's first
+// country-by-country ChatGPT release puts Singapore #1 of 147 on messages
+// per capita (Q2 2026), the third independent vendor dataset to rank it at
+// or near the top after Anthropic (AUI 5.53, #1) and Microsoft (60.9%, #2).
+// Swap back to the Digital Infrastructure Bill
+// ('digital-infrastructure-bill-consultation-2026') when it is tabled in
+// Parliament, or to whatever bigger story lands next.
 export const FEATURED: FeaturedPointer | null = {
-  kind: 'policy',
-  id: 'digital-infrastructure-bill-consultation-2026',
+  kind: 'post',
+  id: 'openai-signals-chatgpt-at-work-2026',
 };

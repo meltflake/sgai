@@ -184,6 +184,18 @@ export const sections: ReferenceSection[] = [
         translation: '/microsoft-global-ai-adoption-2025/',
       },
       {
+        text: 'OpenAI Signals — 国家级 ChatGPT 使用数据',
+        textKo: 'OpenAI Signals — 국가별 ChatGPT 이용 데이터',
+        textJa: 'OpenAI Signals — 国別 ChatGPT 利用データ',
+        textEn: 'OpenAI Signals — country-level ChatGPT usage data',
+        url: 'https://openai.com/signals/data/',
+        note: '新加坡人均消息量 147 国第一（2026 Q2），CC BY 4.0 开放数据',
+        noteKo: '싱가포르 1인당 메시지 수 147개국 중 1위(2026 Q2), CC BY 4.0 공개 데이터',
+        noteJa: 'シンガポールの一人当たりメッセージ数が147か国中1位（2026 Q2）、CC BY 4.0 オープンデータ',
+        noteEn: 'Singapore ranked 1st of 147 countries on messages per capita (Q2 2026); open data under CC BY 4.0',
+        translation: '/openai-signals-chatgpt-at-work-2026/',
+      },
+      {
         text: 'AI Diffusion 技术论文',
         textKo: 'AI Diffusion 기술 논문',
         textJa: 'AI Diffusion 技術論文',

@@ -79,6 +79,31 @@ const MANUAL_TYPES = new Set<UpdateType>(['site', 'fix', 'longform']);
 // sort regardless. Add new entries at the top.
 export const MANUAL_UPDATES: Update[] = [
   {
+    date: '2026-08-07',
+    type: 'longform',
+    title: '译介：OpenAI 首份国家级 ChatGPT 使用数据，新加坡人均第一',
+    titleEn: "Translated: OpenAI's first country-level ChatGPT data puts Singapore #1 per capita",
+    titleJa: '翻訳：OpenAI 初の国別 ChatGPT 利用データ、シンガポールが一人当たり世界一',
+    titleKo: '번역: OpenAI 첫 국가별 ChatGPT 이용 데이터, 싱가포르 1인당 세계 1위',
+    summary:
+      'OpenAI 于 2026-08-06 首次公布按国家拆分的 ChatGPT 使用数据。配套 Signals 数据集显示，2026 年第二季度新加坡人均消息量在 147 个国家中排第一（阿联酋第 6、美国第 51、日本第 57、印尼第 101）。这是继 Anthropic（AUI 5.53，116 地区第一）和微软（采用率 60.9%，全球第二）之后，第三家独立厂商数据把新加坡排进最前列。原文里新加坡唯一一次出场是反例——35 岁以上用户消息占比只涨 1.2 个百分点，各国中位数 5.1；站方补注解释了这个数字为何量的是消息构成而非采用水平。',
+    summaryEn:
+      "On 2026-08-06 OpenAI published country-by-country ChatGPT usage data for the first time. The accompanying Signals dataset ranks Singapore #1 of 147 countries on messages per capita for Q2 2026 (UAE #6, United States #51, Japan #57, Indonesia #101). This is the third independent vendor dataset to place Singapore at or near the top, after Anthropic (AUI 5.53, 1st of 116 regions) and Microsoft (60.9% adoption, 2nd globally). Singapore appears in the article body only as a counter-example — the share of messages from users aged 35+ rose just 1.2 percentage points against a 5.1-point country median; our editor's note explains why that figure measures message composition rather than adoption.",
+    summaryJa:
+      'OpenAI は 2026-08-06、国別に分解した ChatGPT 利用データを初めて公開しました。付随する Signals データセットでは、2026 年第 2 四半期の一人当たりメッセージ数でシンガポールが 147 か国中 1 位（UAE 6 位、米国 51 位、日本 57 位、インドネシア 101 位）。Anthropic（AUI 5.53、116 地域中 1 位）、マイクロソフト（採用率 60.9%、世界 2 位）に続き、独立した 3 社目のデータがシンガポールを最上位に置いたことになります。本文でのシンガポールへの唯一の言及は反例として——35 歳以上ユーザーのメッセージ比率の伸びが 1.2 ポイントにとどまり、各国中央値 5.1 を大きく下回った点です。編集部注でこの数値が採用水準ではなくメッセージ構成を測るものである理由を解説しています。',
+    summaryKo:
+      'OpenAI는 2026-08-06 국가별로 나눈 ChatGPT 이용 데이터를 처음 공개했습니다. 함께 공개된 Signals 데이터셋에서 2026년 2분기 1인당 메시지 수 기준 싱가포르가 147개국 중 1위(UAE 6위, 미국 51위, 일본 57위, 인도네시아 101위)를 기록했습니다. Anthropic(AUI 5.53, 116개 지역 중 1위)과 마이크로소프트(채택률 60.9%, 세계 2위)에 이어 세 번째 독립 업체 데이터가 싱가포르를 최상위에 올린 것입니다. 본문에서 싱가포르는 반례로 한 번 등장하는데, 35세 이상 사용자의 메시지 비중이 1.2%p 상승에 그쳐 국가 중앙값 5.1%p에 크게 못 미쳤습니다. 편집자 주에서 이 수치가 채택 수준이 아니라 메시지 구성을 측정한다는 점을 설명합니다.',
+    links: [
+      {
+        href: '/openai-signals-chatgpt-at-work-2026/',
+        label: '阅读全文翻译',
+        labelEn: 'Read the full translation',
+        labelJa: '全文翻訳を読む',
+        labelKo: '전문 번역 읽기',
+      },
+    ],
+  },
+  {
     date: '2026-08-03',
     type: 'site',
     title: '上线 AI 职位指数：月度追踪新加坡 AI 招聘需求与薪资',
