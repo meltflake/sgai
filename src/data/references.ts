@@ -151,6 +151,17 @@ export const sections: ReferenceSection[] = [
     titleEn: 'Indicators and Reports',
     links: [
       {
+        text: 'Temasek Review 2026（含 §3.3 Our AI Strategy）',
+        textKo: 'Temasek Review 2026(§3.3 Our AI Strategy 포함)',
+        textJa: 'Temasek Review 2026（§3.3 Our AI Strategy を含む）',
+        textEn: 'Temasek Review 2026 (incl. §3.3 Our AI Strategy)',
+        url: 'https://www.temasekreview.com.sg/',
+        note: '淡马锡, 2026-07',
+        noteKo: '테마섹, 2026-07',
+        noteJa: 'テマセク, 2026-07',
+        noteEn: 'Temasek, July 2026',
+      },
+      {
         text: 'Stanford AI Index Report',
         textEn: 'Stanford AI Index Report',
         url: 'https://aiindex.stanford.edu/',

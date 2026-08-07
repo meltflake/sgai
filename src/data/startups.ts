@@ -696,18 +696,18 @@ export const investors: Investor[] = [
     statsKo: '2025년 60건 거래',
     statsJa: '2025年 60件の取引',
     statsEn: '60 deals in 2025',
-    focus: 'AI 基础设施、数据中心',
-    focusKo: 'AI 인프라, 데이터센터',
-    focusJa: 'AI インフラストラクチャ、データセンター',
-    focusEn: 'AI infrastructure, data centres',
+    focus: 'AI 基础设施、数据中心、基础模型、半导体',
+    focusKo: 'AI 인프라, 데이터센터, 파운데이션 모델, 반도체',
+    focusJa: 'AI インフラストラクチャ、データセンター、基盤モデル、半導体',
+    focusEn: 'AI infrastructure, data centres, foundation models, semiconductors',
     notableDeals:
-      '2026 年入股 OpenAI（1220 亿美元轮）与 Anthropic（Series H）；2025 年加入 BlackRock/MGX/微软/Nvidia 发起的 AI Infrastructure Partnership',
+      '2026 年入股 OpenAI（1220 亿美元轮）与 Anthropic（Series H）；FY2026 另投 xAI、SpaceX、CuspAI、PhysicsX，增持 ASML/Broadcom/Nvidia、新买 Lam Research；2025 年加入 BlackRock/MGX/微软/Nvidia 发起的 AI Infrastructure Partnership。年报 2026 定下目标：AI 相关投资占比从 6% 提到 10–15%（2031 年 3 月前）',
     notableDealsEn:
-      'Took stakes in OpenAI ($122B round) and Anthropic (Series H) in 2026; joined the BlackRock/MGX/Microsoft/Nvidia-launched AI Infrastructure Partnership in 2025',
+      'Took stakes in OpenAI ($122B round) and Anthropic (Series H) in 2026; also invested in xAI, SpaceX, CuspAI, and PhysicsX in FY2026, added to ASML/Broadcom/Nvidia and newly bought Lam Research; joined the BlackRock/MGX/Microsoft/Nvidia-launched AI Infrastructure Partnership in 2025. Temasek Review 2026 sets a target of growing AI-related exposure from 6% to 10–15% by March 2031',
     notableDealsJa:
-      '2026 年に OpenAI（1220 億ドルラウンド）と Anthropic（Series H）に出資；2025 年に BlackRock/MGX/マイクロソフト/Nvidia が立ち上げた AI Infrastructure Partnership に参加',
+      '2026 年に OpenAI（1220 億ドルラウンド）と Anthropic（Series H）に出資；FY2026 には xAI、SpaceX、CuspAI、PhysicsX にも投資し、ASML/Broadcom/Nvidia を買い増し、Lam Research を新規購入；2025 年に BlackRock/MGX/マイクロソフト/Nvidia が立ち上げた AI Infrastructure Partnership に参加。年次報告書 2026 は AI 関連投資比率を 6%から 10–15%へ（2031 年 3 月まで）という目標を設定',
     notableDealsKo:
-      '2026년 OpenAI(1220억 달러 라운드)와 Anthropic(Series H)에 투자; 2025년 BlackRock/MGX/마이크로소프트/Nvidia가 출범시킨 AI Infrastructure Partnership에 합류',
+      '2026년 OpenAI(1220억 달러 라운드)와 Anthropic(Series H)에 투자; FY2026에는 xAI, SpaceX, CuspAI, PhysicsX에도 투자하고 ASML/Broadcom/Nvidia를 추가 매수, Lam Research를 신규 매입; 2025년 BlackRock/MGX/마이크로소프트/Nvidia가 출범시킨 AI Infrastructure Partnership에 합류. 연차보고서 2026은 AI 관련 투자 비중을 6%에서 10–15%로(2031년 3월까지) 확대한다는 목표를 설정',
     url: 'https://www.temasek.com.sg/en/index',
   },
   {

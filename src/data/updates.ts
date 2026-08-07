@@ -81,6 +81,31 @@ export const MANUAL_UPDATES: Update[] = [
   {
     date: '2026-08-07',
     type: 'longform',
+    title: '长文：淡马锡年报 2026 里的 AI——从 6% 到 15%',
+    titleEn: 'Longform: The AI Chapter in Temasek Review 2026 — from 6% to 15%',
+    titleJa: '長文：テマセク年次報告書 2026 の AI——6%から 15%へ',
+    titleKo: '장문: 테마섹 연차보고서 2026의 AI——6%에서 15%로',
+    summary:
+      '淡马锡 2026-07-08 发布的年报给 AI 单开一章（§3.3 Our AI Strategy），带日期的数字承诺只有一条：AI 相关投资现占组合 6%，2031 年 3 月 31 日前提到 10–15%——按 5,180 亿新元的组合总值，涨到 15% 意味着 AI 持仓翻一倍多。本文梳理四根支柱、年内买入清单（Anthropic / OpenAI / xAI / CuspAI / PhysicsX / Lam Research 等），和落在新加坡本地的机构：Temus AI Foundry、Aicadium × gategroup、Resaro、与斯坦福商学院合办的 AI Leadership Programme。',
+    summaryEn:
+      "Temasek's annual review, published 2026-07-08, gives AI its own chapter (§3.3 Our AI Strategy). It carries exactly one dated numeric commitment: AI-related investments now make up 6% of the portfolio, to be raised to 10–15% by 31 March 2031 — against a S$518 billion portfolio, reaching 15% means more than doubling AI holdings. The piece walks through the four pillars, the year's purchases (Anthropic / OpenAI / xAI / CuspAI / PhysicsX / Lam Research and others), and what lands in Singapore: Temus's AI Foundry, Aicadium × gategroup, Resaro, and the AI Leadership Programme run with Stanford Graduate School of Business.",
+    summaryJa:
+      'テマセクが 2026-07-08 に発表した年次報告書は AI に独立した章（§3.3 Our AI Strategy）を設けました。日付付きの数値コミットメントは 1 つだけ：AI 関連投資は現在ポートフォリオの 6%で、2031 年 3 月 31 日までに 10–15%へ引き上げる——5,180 億シンガポールドルのポートフォリオ総額では、15%への拡大は AI 保有額が倍以上になることを意味します。本稿は 4 つの柱、年内の購入リスト（Anthropic / OpenAI / xAI / CuspAI / PhysicsX / Lam Research など）、そしてシンガポール現地に根づく機関——Temus の AI Foundry、Aicadium × gategroup、Resaro、スタンフォード大学経営大学院と共催の AI Leadership Programme——を整理します。',
+    summaryKo:
+      '테마섹이 2026-07-08 발표한 연차보고서는 AI에 별도의 장(§3.3 Our AI Strategy)을 신설했습니다. 날짜가 명시된 수치 약속은 하나뿐입니다: AI 관련 투자가 현재 포트폴리오의 6%이며, 2031년 3월 31일까지 10–15%로 확대합니다——5,180억 싱가포르달러의 포트폴리오 총액 기준으로 15%까지 늘리면 AI 보유 자산이 두 배 이상이 됩니다. 이 글은 네 개의 기둥, 연중 매입 목록(Anthropic / OpenAI / xAI / CuspAI / PhysicsX / Lam Research 등), 그리고 싱가포르 현지에 자리 잡는 기관들——Temus의 AI Foundry, Aicadium × gategroup, Resaro, 스탠퍼드 경영대학원과 공동 개최한 AI Leadership Programme——을 정리합니다.',
+    links: [
+      {
+        href: '/temasek-review-2026-ai/',
+        label: '阅读全文',
+        labelEn: 'Read the full piece',
+        labelJa: '全文を読む',
+        labelKo: '전문 읽기',
+      },
+    ],
+  },
+  {
+    date: '2026-08-07',
+    type: 'longform',
     title: '译介：OpenAI 首份国家级 ChatGPT 使用数据，新加坡人均第一',
     titleEn: "Translated: OpenAI's first country-level ChatGPT data puts Singapore #1 per capita",
     titleJa: '翻訳：OpenAI 初の国別 ChatGPT 利用データ、シンガポールが一人当たり世界一',

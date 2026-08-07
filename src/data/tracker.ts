@@ -244,13 +244,13 @@ export const dimensions: Dimension[] = [
       },
     ],
     judgment:
-      '人均 S$139 是美国 4.2 倍、中国 19 倍。Budget 2026 在已有 S$2B 基础上加 S$70M Multimodal LLM、S$1.5B FSDF、400% 税收激励——节奏不放缓。RIE2030 总盘 S$37B 兜底未来 5 年。资金强度处于全球第一梯队。财政投入之外还有另一条线：GIC 与淡马锡 2025–2026 年先后入股 Anthropic 与 OpenAI，主权资本直接持有前沿模型公司股权。',
+      '人均 S$139 是美国 4.2 倍、中国 19 倍。Budget 2026 在已有 S$2B 基础上加 S$70M Multimodal LLM、S$1.5B FSDF、400% 税收激励——节奏不放缓。RIE2030 总盘 S$37B 兜底未来 5 年。资金强度处于全球第一梯队。财政投入之外还有另一条线：GIC 与淡马锡 2025–2026 年先后入股 Anthropic 与 OpenAI，主权资本直接持有前沿模型公司股权。淡马锡年报 2026 进一步给出可核对的目标：AI 相关投资占组合比例从 6% 提到 10–15%（2031 年 3 月前，不含持股的新加坡公司自身投入）。',
     judgmentKo:
-      '1인당 S$139는 미국의 4.2배, 중국의 19배입니다. 2026년 예산은 기존 S$2B에 S$70M 다중모드 LLM, S$1.5B FSDF, 400% 세제 인센티브를 추가했습니다—투자 속도가 둔화되지 않았습니다. RIE2030 총 규모 S$37B는 향후 5년을 담보합니다. 자금 강도는 글로벌 최상위 수준입니다. 재정 투입 외에 또 하나의 축이 있습니다: GIC와 테마섹은 2025–2026년에 걸쳐 Anthropic과 OpenAI에 잇따라 투자해, 주권 자본이 프런티어 모델 기업 지분을 직접 보유하게 되었습니다.',
+      '1인당 S$139는 미국의 4.2배, 중국의 19배입니다. 2026년 예산은 기존 S$2B에 S$70M 다중모드 LLM, S$1.5B FSDF, 400% 세제 인센티브를 추가했습니다—투자 속도가 둔화되지 않았습니다. RIE2030 총 규모 S$37B는 향후 5년을 담보합니다. 자금 강도는 글로벌 최상위 수준입니다. 재정 투입 외에 또 하나의 축이 있습니다: GIC와 테마섹은 2025–2026년에 걸쳐 Anthropic과 OpenAI에 잇따라 투자해, 주권 자본이 프런티어 모델 기업 지분을 직접 보유하게 되었습니다. 테마섹 연차보고서 2026은 검증 가능한 목표도 제시했습니다: AI 관련 투자 비중을 포트폴리오의 6%에서 10–15%로(2031년 3월까지, 보유 싱가포르 기업 자체 투입 제외) 확대합니다.',
     judgmentJa:
-      '一人当たり S$139 は米国の 4.2 倍、中国の 19 倍。Budget 2026 は既存の S$2B を基礎に、S$70M Multimodal LLM、S$1.5B FSDF、400% 税控除を追加し、ペースは緩みません。RIE2030 総額 S$37B が今後 5 年の基礎となります。資金の強度は世界の第一梯隊にあります。財政投入のほかにもう一つの線があります：GIC とテマセクは 2025–2026 年に Anthropic と OpenAI に相次いで出資し、ソブリン資本がフロンティアモデル企業の株式を直接保有しています。',
+      '一人当たり S$139 は米国の 4.2 倍、中国の 19 倍。Budget 2026 は既存の S$2B を基礎に、S$70M Multimodal LLM、S$1.5B FSDF、400% 税控除を追加し、ペースは緩みません。RIE2030 総額 S$37B が今後 5 年の基礎となります。資金の強度は世界の第一梯隊にあります。財政投入のほかにもう一つの線があります：GIC とテマセクは 2025–2026 年に Anthropic と OpenAI に相次いで出資し、ソブリン資本がフロンティアモデル企業の株式を直接保有しています。テマセク年次報告書 2026 は検証可能な目標も示しました：AI 関連投資のポートフォリオ比率を 6%から 10–15%へ（2031 年 3 月まで、保有するシンガポール企業自身の投入は含まず）引き上げます。',
     judgmentEn:
-      "S$139 per capita is 4.2× the US and 19× China. Budget 2026 adds S$70M Multimodal LLM, S$1.5B FSDF, and a 400% tax incentive on top of an existing S$2B base — pace is not slowing. RIE2030's S$37B total backstops the next 5 years. Investment intensity sits in the global top tier. Beyond fiscal spending there is a second track: GIC and Temasek took stakes in Anthropic and OpenAI across 2025–2026, putting sovereign capital directly on frontier-model cap tables.",
+      "S$139 per capita is 4.2× the US and 19× China. Budget 2026 adds S$70M Multimodal LLM, S$1.5B FSDF, and a 400% tax incentive on top of an existing S$2B base — pace is not slowing. RIE2030's S$37B total backstops the next 5 years. Investment intensity sits in the global top tier. Beyond fiscal spending there is a second track: GIC and Temasek took stakes in Anthropic and OpenAI across 2025–2026, putting sovereign capital directly on frontier-model cap tables. Temasek Review 2026 adds a checkable target: growing AI-related exposure from 6% to 10–15% of the portfolio by March 2031 (excluding the AI spending of its Singapore portfolio companies).",
     shortcoming:
       '私有部门跟投比例偏低，仍是政府推为主；钱花在算力和大企业上较多，SME 端补贴渗透不够；估算和披露口径偶尔不一致，跨年比较要小心。',
     shortcomingKo:

@@ -47,6 +47,29 @@ export const timelineEvents: TimelineEvent[] = [
     tagsKo: ['인재', '국제'],
   },
   {
+    id: 'evt-2026-temasek-review-ai-strategy',
+    year: 2026,
+    date: '2026-07-08',
+    title: '淡马锡年报首设 AI 战略章：AI 投资占比目标 2031 年前提到 10–15%',
+    topicIds: ['startups-investment', 'national-strategy'],
+    titleKo: '테마섹 연차보고서, 첫 AI 전략 장 신설: AI 투자 비중 목표 2031년까지 10–15%',
+    titleJa: 'テマセク年次報告書に初の AI 戦略章：AI 投資比率の目標を 2031 年までに 10–15%へ',
+    titleEn: 'Temasek Review Adds an AI Strategy Chapter: 10–15% AI Exposure Target by 2031',
+    description:
+      '《Temasek Review 2026》给 AI 单开一章（§3.3 Our AI Strategy），写下四根支柱：自己先用起来、让持股公司跟上、加大投资、推动扩散。带日期的数字承诺只有一条：AI 相关投资现占组合 6%（不含持股的新加坡公司自身投入），2031 年 3 月 31 日前提高到 10–15%——按 5,180 亿新元的组合总值，涨到 15% 意味着 AI 持仓翻一倍多。年内买入 Anthropic、OpenAI、xAI、CuspAI、PhysicsX，增持 ASML、Broadcom、Nvidia，新买 Lam Research。落在新加坡本地的动作：Temus 开 AI Foundry 培养人才，Aicadium 帮 gategroup 做飞机餐质检，Resaro 做第三方 AI 测试，2026 年 3 月与斯坦福商学院合办 AI Leadership Programme（70 多人，含新加坡政府官员）。',
+    descriptionKo:
+      '《Temasek Review 2026》는 AI에 별도의 장(§3.3 Our AI Strategy)을 신설하고 네 개의 기둥을 제시했습니다: 자체 활용, 보유 기업의 전환 지원, 투자 확대, 확산 촉진. 날짜가 명시된 수치 약속은 하나입니다: AI 관련 투자가 현재 포트폴리오의 6%(보유 싱가포르 기업 자체 투입 제외)이며, 2031년 3월 31일까지 10–15%로 확대합니다——5,180억 싱가포르달러의 포트폴리오 총액 기준으로 15%까지 늘리면 AI 보유 자산이 두 배 이상이 됩니다. 연중 Anthropic, OpenAI, xAI, CuspAI, PhysicsX를 매입하고 ASML, Broadcom, Nvidia를 추가 매수했으며 Lam Research를 신규 매입했습니다. 싱가포르 현지의 움직임: Temus가 AI Foundry를 열어 인재를 양성하고, Aicadium이 gategroup의 기내식 품질 검사를 지원하며, Resaro가 제3자 AI 테스트를 수행하고, 2026년 3월 스탠퍼드 경영대학원과 AI Leadership Programme(70여 명, 싱가포르 정부 관료 포함)을 공동 개최했습니다.',
+    descriptionJa:
+      '《Temasek Review 2026》は AI に独立した章（§3.3 Our AI Strategy）を新設し、4 つの柱を示しました：自ら使いこなす、保有企業の転換を支える、投資を拡大する、普及を後押しする。日付付きの数値コミットメントは 1 つだけ：AI 関連投資は現在ポートフォリオの 6%（保有するシンガポール企業自身の投入は含まず）で、2031 年 3 月 31 日までに 10–15%へ引き上げる——5,180 億シンガポールドルのポートフォリオ総額で換算すると、15%への拡大は AI 保有額が倍以上になることを意味します。年内に Anthropic、OpenAI、xAI、CuspAI、PhysicsX を購入し、ASML、Broadcom、Nvidia を買い増し、Lam Research を新規購入しました。シンガポール現地での動き：Temus が AI Foundry を開設して人材を育成、Aicadium が gategroup の機内食品質検査を支援、Resaro が第三者 AI テストを実施、2026 年 3 月にはスタンフォード大学経営大学院と AI Leadership Programme（70 名超、シンガポール政府関係者を含む）を共催しました。',
+    descriptionEn:
+      'Temasek Review 2026 gives AI its own chapter (§3.3 Our AI Strategy) built on four pillars: AI-enabling itself, AI-proofing its portfolio, scaling its AI exposure, and supporting AI diffusion. It carries exactly one dated numeric commitment: AI-related investments now make up 6% of the portfolio (excluding the AI spending of its Singapore portfolio companies), to be raised to 10–15% by 31 March 2031 — against a S$518 billion portfolio, reaching 15% means more than doubling AI holdings. Over the year Temasek bought into Anthropic, OpenAI, xAI, CuspAI, and PhysicsX, added to ASML, Broadcom, and Nvidia, and newly bought Lam Research. On the ground in Singapore: Temus launched its AI Foundry to build local talent, Aicadium is helping gategroup run AI quality checks on in-flight catering, Resaro provides third-party AI testing, and in March 2026 Temasek co-ran the AI Leadership Programme with Stanford Graduate School of Business (70+ participants, including Singapore Government officials).',
+    tags: ['资本', '战略', '产业'],
+    tagsEn: ['Capital', 'Strategy', 'Industry'],
+    tagsJa: ['資本', '戦略', '産業'],
+    tagsKo: ['자본', '전략', '산업'],
+    relatedPostSlugs: ['temasek-review-2026-ai'],
+  },
+  {
     id: 'evt-2026-regulatory-machinery-goes-live',
     year: 2026,
     date: '2026-07-01',
