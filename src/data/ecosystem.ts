@@ -3006,6 +3006,264 @@ Bottlenecks to watch: **the Foundation's funding sustainability** (currently rel
         updated: '2026-05-02',
       },
       {
+        id: 'resaro',
+        name: 'Resaro',
+        nameJa: 'Resaro',
+        nameKo: 'Resaro',
+        nameEn: 'Resaro',
+        description: '淡马锡设立的独立第三方 AI 保障测试公司，新加坡与德国双总部',
+        descriptionKo: '테마섹이 설립한 독립 제3자 AI 보증 테스트 회사, 싱가포르와 독일 이중 본사',
+        descriptionJa: 'テマセク設立の独立第三者 AI 保証テスト企業、シンガポールとドイツの二重本社',
+        descriptionEn:
+          'Temasek-established independent third-party AI assurance firm, co-headquartered in Singapore and Germany',
+        url: 'https://resaro.ai/',
+        entityType: 'partner',
+        status: 'active',
+        founded: '2023',
+        headquarters: '新加坡 + 德国（双总部）',
+        headquartersKo: '싱가포르 + 독일(이중 본사)',
+        headquartersJa: 'シンガポール + ドイツ（二重本社）',
+        headquartersEn: 'Singapore + Germany (dual HQ)',
+        parentOrg: '淡马锡设立',
+        parentOrgKo: '테마섹이 설립',
+        parentOrgJa: 'テマセクにより設立',
+        parentOrgEn: 'Established by Temasek',
+        leaders: [
+          {
+            name: 'April Chin',
+            title: '联席 CEO（新加坡）',
+            titleKo: '공동 CEO(싱가포르)',
+            titleJa: '共同 CEO（シンガポール）',
+            titleEn: 'Co-CEO (Singapore)',
+          },
+        ],
+        summary:
+          'Resaro 是淡马锡 2023 年设立的独立第三方 AI 保障（AI assurance）公司，新加坡与德国双总部，专做关键任务 AI 系统的性能、安全与安保测试。它是 AI Verify Foundation 的创始成员和 premier 会员，2024 年 10 月与新加坡网络安全局（CSA）合著 AI 安全风险讨论论文。淡马锡年报 2026「支持 AI 扩散」支柱下设的第三方测试机构，指的就是这家。',
+        summaryKo:
+          'Resaro는 테마섹이 2023년 설립한 독립 제3자 AI 보증(AI assurance) 회사로, 싱가포르와 독일에 이중 본사를 두고 미션 크리티컬 AI 시스템의 성능·안전성·보안 테스트를 전문으로 합니다. AI Verify Foundation의 창립 멤버이자 프리미어 회원이며, 2024년 10월 싱가포르 사이버보안청(CSA)과 AI 보안 리스크에 관한 토론 논문을 공동 저술했습니다. 테마섹 리뷰 2026 「AI 확산 지원」 기둥에 있는 제3자 테스트 기관이 바로 이 회사입니다.',
+        summaryJa:
+          'Resaro はテマセクが 2023 年に設立した独立系第三者 AI 保証（AI assurance）企業で、シンガポールとドイツに二重本社を置き、ミッションクリティカルな AI システムの性能・安全性・セキュリティのテストを専門とします。AI Verify Foundation の創設メンバー兼プレミア会員であり、2024 年 10 月にはシンガポール サイバーセキュリティ庁（CSA）と AI セキュリティリスクに関するディスカッションペーパーを共著しました。テマセクレビュー 2026 の「AI 普及支援」の柱にある第三者テスト機関とは、この会社を指します。',
+        summaryEn:
+          'Resaro is an independent third-party AI assurance firm established by Temasek in 2023, co-headquartered in Singapore and Germany, specialising in testing the performance, safety and security of mission-critical AI systems. It is a founding and premier member of the AI Verify Foundation, and in October 2024 co-authored a discussion paper on AI security risks with the Cyber Security Agency of Singapore (CSA). The third-party testing entity under the Supporting AI Diffusion pillar of Temasek Review 2026 refers to this company.',
+        whatItIs: `Resaro 的业务是给「关键任务 AI 系统」（mission-critical AI）做独立第三方测试——测性能、测安全（safety）、测安保（security）。具体服务三类：
+
+- **算法审计**（algorithm audit）：独立验证 AI 系统是否达到宣称的性能
+- **技术压力测试**（technical stress testing）：在边界条件下测系统的稳健性
+- **红队测试**（red teaming）：模拟对抗攻击找弱点
+
+产品层面是一个叫 **Approved Intelligence** 的 AI 保障平台，把测试、评估、验证、确认（TEVV）流程做成可复用的工作流，持续生成部署证据；另开源了测试框架 **ASQI Engineer**。
+
+客户集中在国防、政府、关键基础设施、医疗（新加坡国家医疗集团 NHG）、金融（Tookitaki）等高风险行业；HTX（内政科技局）、MSD、Cap Vista 都在其公开客户名单上。
+
+生态位置：AI Verify Foundation 创始成员 + premier 会员（全球仅少数几家）、Partnership on AI 成员、德国 KI Park 成员、NVIDIA Inception 计划成员。`,
+        whatItIsKo: `Resaro의 사업은 「미션 크리티컬 AI 시스템」에 대한 독립 제3자 테스트——성능, 안전성(safety), 보안(security)을 검증하는 것입니다. 서비스는 세 가지:
+
+- **알고리즘 감사**: AI 시스템이 주장하는 성능을 실제로 달성하는지 독립 검증
+- **기술 스트레스 테스트**: 경계 조건에서 시스템의 견고성 검증
+- **레드팀 테스트**: 적대적 공격을 모의하여 약점 발견
+
+제품 차원에서는 **Approved Intelligence**라는 AI 보증 플랫폼을 운영하며, 테스트·평가·검증·확인(TEVV)을 재사용 가능한 워크플로로 만들어 배포 증거를 지속적으로 생성합니다. 또한 테스트 프레임워크 **ASQI Engineer**를 오픈소스로 공개했습니다.
+
+고객은 국방, 정부, 핵심 인프라, 의료(싱가포르 국립의료그룹 NHG), 금융(Tookitaki) 등 고위험 업계에 집중되어 있으며, HTX(내무과학기술청), MSD, Cap Vista도 공개 고객 명단에 있습니다.
+
+생태계 위치: AI Verify Foundation 창립 멤버 겸 프리미어 회원(전 세계 소수만), Partnership on AI 회원, 독일 KI Park 회원, NVIDIA Inception 프로그램 회원.`,
+        whatItIsJa: `Resaro の事業は「ミッションクリティカルな AI システム」への独立した第三者テスト——性能、安全性（safety）、セキュリティ（security）を検証することです。サービスは 3 種類：
+
+- **アルゴリズム監査**：AI システムが謳う性能を実際に達成しているかを独立検証
+- **技術ストレステスト**：境界条件下でシステムの堅牢性を検証
+- **レッドチーミング**：敵対的攻撃を模擬して弱点を発見
+
+製品レベルでは **Approved Intelligence** という AI 保証プラットフォームを運営し、テスト・評価・検証・確認（TEVV）を再利用可能なワークフローに変え、デプロイの証拠を継続的に生成します。また、テストフレームワーク **ASQI Engineer** をオープンソース化しています。
+
+顧客は国防、政府、重要インフラ、医療（シンガポール国立医療グループ NHG）、金融（Tookitaki）などハイリスク業界に集中し、HTX（内務科学技術庁）、MSD、Cap Vista も公開顧客リストに含まれます。
+
+エコシステムでの位置：AI Verify Foundation の創設メンバー兼プレミア会員（世界でも数社のみ）、Partnership on AI メンバー、ドイツ KI Park メンバー、NVIDIA Inception プログラムメンバー。`,
+        whatItIsEn: `Resaro's business is independent third-party testing of mission-critical AI systems — testing performance, safety, and security. Three service lines:
+
+- **Algorithm audit**: independently verifying whether an AI system delivers its claimed performance
+- **Technical stress testing**: probing system robustness under boundary conditions
+- **Red teaming**: simulating adversarial attacks to find weaknesses
+
+At the product level it runs **Approved Intelligence**, an AI assurance platform that turns testing, evaluation, validation and verification (TEVV) into reusable workflows that continuously generate deployment evidence; it has also open-sourced the testing framework **ASQI Engineer**.
+
+Clients concentrate in high-stakes sectors — defence, government, critical infrastructure, healthcare (Singapore's National Healthcare Group), and financial services (Tookitaki); HTX (Home Team Science and Technology Agency), MSD and Cap Vista are on its public client list.
+
+Ecosystem positions: founding and premier member of the AI Verify Foundation (one of only a handful globally), member of Partnership on AI, member of Germany's KI Park, and NVIDIA Inception programme member.`,
+        aiRelevance: `Resaro 押注的是 AI 治理的**「测试缺口」**：治理框架（原则、指南、法规）和实际部署之间，缺一个能回答「这个系统到底行不行」的独立环节。软件业有第三方审计、汽车业有 TÜV，AI 行业的对应物在 2023 年之前基本是空白。
+
+它在新加坡治理版图里的三个落点：
+
+- **CSA 合著论文**：2024 年 10 月 SICW 上，CSA 发布《Securing AI Systems》指南时，配套的讨论论文《Securing AI: A Collective Responsibility》就是与 Resaro 合写的——探讨 AI 安全与传统 IT 安全的差异，以及 AI 自适应特性带来的新攻击面
+- **AI Verify 开源贡献**：把 AI Verify 工具包重构成可独立运行的测试模块，加了 PyTorch / TensorFlow 支持，代码经同行评审后并入主仓库
+- **医疗 AI 评估**：与 PRIME-CXR（胸片分诊 AI）合作开发「哪些 AI 方案带来最高临床价值」的评估框架（见站内新加坡医学 AI 中心启动演讲）
+
+观点：**测试是治理的「最后一公里」**。新加坡出了框架（AI Verify）、出了认证（AI 测试师认证计划）、推了标准（ISO/IEC 42119-8），但框架不会自己跑——需要商业化的测试机构把纸面要求变成可执行的工程。Resaro 就是淡马锡出资填这个缺口的动作。`,
+        aiRelevanceKo: `Resaro가 베팅하는 것은 AI 거버넌스의 **「테스트 갭」**입니다: 거버넌스 프레임워크(원칙, 지침, 규제)와 실제 배포 사이에는 「이 시스템이 정말 쓸 만한가」에 답할 수 있는 독립적인 단계가 빠져 있습니다. 소프트웨어 업계에는 제3자 감사가 있고 자동차 업계에는 TÜV가 있지만, AI 업계의 대응물은 2023년 이전 거의 공백이었습니다.
+
+싱가포르 거버넌스 지형에서의 세 가지 발판:
+
+- **CSA 공동 저술 논문**: 2024년 10월 SICW에서 CSA가 「Securing AI Systems」 지침을 발표할 때, 함께 나온 토론 논문 「Securing AI: A Collective Responsibility」는 Resaro와 공동 집필했습니다——AI 보안과 전통 IT 보안의 차이, AI의 적응적 특성이 만드는 새로운 공격면을 다룹니다
+- **AI Verify 오픈소스 기여**: AI Verify 툴킷을 테스트가 독립 모듈로 실행되도록 리팩터링하고 PyTorch / TensorFlow 지원을 추가했으며, 코드는 동료 검토를 거쳐 메인 저장소에 병합되었습니다
+- **의료 AI 평가**: PRIME-CXR(흉부 X선 분류 AI)과 협력하여 「어떤 AI 솔루션이 최고의 임상 가치를 가져오는가」를 평가하는 프레임워크 개발(사이트 내 싱가포르 의학 AI 센터 출범 연설 참조)
+
+관점: **테스트는 거버넌스의 「라스트 마일」입니다**. 싱가포르는 프레임워크(AI Verify)를 내놓고, 인증(AI 테스터 인증 프로그램)을 내놓고, 표준(ISO/IEC 42119-8)을 추진했습니다. 하지만 프레임워크는 스스로 돌아가지 않습니다——종이 위의 요구를 실행 가능한 엔지니어링으로 바꾸는 상업 테스트 기관이 필요합니다. Resaro는 테마섹이 자본을 들여 이 갭을 메우는 수입니다.`,
+        aiRelevanceJa: `Resaro が賭けているのは AI ガバナンスの**「テストギャップ」**です：ガバナンスフレームワーク（原則、ガイドライン、規制）と実際のデプロイの間には、「このシステムは本当に使えるのか」に答えられる独立した工程が欠けています。ソフトウェア業界には第三者監査があり、自動車業界には TÜV がありますが、AI 業界の対応物は 2023 年以前ほぼ空白でした。
+
+シンガポールのガバナンス地図における 3 つの足場：
+
+- **CSA との共著論文**：2024 年 10 月の SICW で CSA が「Securing AI Systems」ガイドラインを発表した際、付属のディスカッションペーパー「Securing AI: A Collective Responsibility」は Resaro との共著でした——AI セキュリティと従来の IT セキュリティの違い、AI の適応的性質が生む新しい攻撃面を検討しています
+- **AI Verify へのオープンソース貢献**：AI Verify ツールキットをテストが独立モジュールとして動くようにリファクタリングし、PyTorch / TensorFlow 対応を追加、コードはピアレビューを経て本体リポジトリにマージされました
+- **医療 AI 評価**：PRIME-CXR（胸部 X 線トリアージ AI）と協力し、「どの AI ソリューションが最高の臨床価値をもたらすか」を評価するフレームワークを開発（サイト内のシンガポール医学 AI センター発足スピーチ参照）
+
+見方：**テストはガバナンスの「ラストマイル」です**。シンガポールはフレームワーク（AI Verify）を出し、認証（AI テスター認証プログラム）を出し、標準（ISO/IEC 42119-8）を推進しました。しかしフレームワークは自走しません——紙の要求を実行可能なエンジニアリングに変える商業テスト機関が必要です。Resaro はテマセクが資本を出してこのギャップを埋める一手です。`,
+        aiRelevanceEn: `Resaro's bet is on the **"testing gap"** in AI governance: between governance frameworks (principles, guidelines, regulation) and actual deployment, there is a missing independent step that can answer "does this system actually work". Software has third-party audits, cars have TÜV — before 2023, AI had essentially no equivalent.
+
+Its three footprints in Singapore's governance landscape:
+
+- **CSA co-authored paper**: when CSA launched its Guidelines on Securing AI Systems at SICW in October 2024, the accompanying discussion paper "Securing AI: A Collective Responsibility" was co-written with Resaro — exploring how AI security differs from traditional IT security, and the new attack surfaces created by AI's adaptive nature
+- **Open-source contributions to AI Verify**: refactored the AI Verify toolkit so tests run as independent modules, added PyTorch / TensorFlow support, with code merged into the main repository after peer review
+- **Healthcare AI evaluation**: collaborating with PRIME-CXR (a chest X-ray triage AI) on a framework for evaluating which AI solutions deliver the highest clinical value (see the on-site speech from the launch of Singapore's Centre of AI in Medicine)
+
+A take: **testing is the "last mile" of governance**. Singapore shipped the framework (AI Verify), the accreditation (the AI tester accreditation programme), and pushed the standard (ISO/IEC 42119-8) — but frameworks don't run themselves; you need commercial testing firms to turn paper requirements into executable engineering. Resaro is Temasek's capital filling exactly that gap.`,
+        singaporeRelevance: `Resaro 是淡马锡年报 2026「Supporting AI Diffusion（推动扩散）」支柱下的实体之一——年报里「设第三方测试机构」指的就是它。对照淡马锡在新加坡落地的另外两家 AI 机构（Temus 做交付、Aicadium 做工程），Resaro 占的是**保障/测试**这一格。
+
+在传导杠杆里：
+
+- **杠杆 2（治理）**：把 CSA / IMDA 的治理要求转化为可采购的商业测试服务
+- **杠杆 6（国际 + 标准）**：新加坡与德国双总部——一头接新加坡的 AI Verify 生态，一头接欧盟 AI Act 催生的合规测试需求
+
+观点：**主权资本下场做治理基础设施，是新加坡模式的一个独特样本**。政府出框架和认证（IMDA、CSA），国家投资公司出商业实体（Resaro），两条线在「AI 保障」这个新市场上会师。这种安排让「独立第三方」的独立性有一个微妙之处——Resaro 测的对象经常也是淡马锡系或政府系的 AI 系统。
+
+可观察的瓶颈：**保障市场本身还早**（多数企业还没到「需要第三方测试」的部署深度）、**监管驱动的需求节奏**（生意大小取决于各国 AI 法规落地快慢）、**规模**（相对国防、医疗、金融多行业的测试需求，团队还小）。`,
+        singaporeRelevanceKo: `Resaro는 테마섹 리뷰 2026 「Supporting AI Diffusion(AI 확산 지원)」 기둥에 있는 실체 중 하나로, 보고서의 「제3자 테스트 기관 설립」은 이 회사를 가리킵니다. 테마섹이 싱가포르에 둔 다른 두 AI 기관(딜리버리의 Temus, 엔지니어링의 Aicadium)과 나란히 놓으면, Resaro가 차지하는 것은 **보증/테스트** 칸입니다.
+
+전달 레버 프레임워크에서:
+
+- **레버 2(거버넌스)**: CSA / IMDA의 거버넌스 요구를 구매 가능한 상업 테스트 서비스로 변환
+- **레버 6(국제 + 표준)**: 싱가포르와 독일 이중 본사——한쪽은 싱가포르의 AI Verify 생태계에, 다른 쪽은 EU AI Act가 만드는 컴플라이언스 테스트 수요에 연결
+
+관점: **주권 자본이 직접 거버넌스 인프라를 만드는 것은 싱가포르 모델의 독특한 표본입니다**. 정부가 프레임워크와 인증을 내놓고(IMDA, CSA), 국가 투자회사가 상업 실체를 내놓습니다(Resaro). 두 줄기가 「AI 보증」이라는 새 시장에서 합류합니다. 이 구도는 「독립 제3자」의 독립성에 미묘한 문제를 남깁니다——Resaro가 테스트하는 대상이 종종 테마섹계나 정부계 AI 시스템이기 때문입니다.
+
+관찰 가능한 병목: **보증 시장 자체가 아직 초기**(대부분 기업은 제3자 테스트가 필요한 배포 깊이에 도달하지 못함), **규제 주도의 수요 리듬**(사업 규모는 각국 AI 규제의 진행 속도에 달려 있음), **규모**(국방·의료·금융에 걸친 테스트 수요 대비 팀은 아직 작음).`,
+        singaporeRelevanceJa: `Resaro はテマセクレビュー 2026 の「Supporting AI Diffusion（AI 普及支援）」の柱にある実体の一つで、報告書の「第三者テスト機関の設立」はこの会社を指します。テマセクがシンガポールに置く他の 2 つの AI 機関（デリバリーの Temus、エンジニアリングの Aicadium）と並べると、Resaro が占めるのは**保証/テスト**の枠です。
+
+伝導レバーの枠組みでは：
+
+- **レバー 2（ガバナンス）**：CSA / IMDA のガバナンス要求を、調達可能な商業テストサービスに変換
+- **レバー 6（国際 + 標準）**：シンガポールとドイツの二重本社——一方はシンガポールの AI Verify エコシステムに、もう一方は EU AI Act が生むコンプライアンステスト需要に接続
+
+見方：**ソブリン資本がガバナンスインフラを自ら作るのは、シンガポールモデルの独特なサンプルです**。政府がフレームワークと認証を出し（IMDA、CSA）、国家投資会社が商業実体を出す（Resaro）。2 つの線が「AI 保証」という新市場で合流します。この構図は「独立第三者」の独立性に微妙な問題を残します——Resaro がテストする対象は、しばしばテマセク系や政府系の AI システムだからです。
+
+観察可能なボトルネック：**保証市場自体がまだ早期**（多くの企業は第三者テストが必要なデプロイ深度に達していない）、**規制駆動の需要リズム**（ビジネスの規模は各国の AI 規制の進み具合に依存）、**規模**（国防・医療・金融にまたがるテスト需要に対してチームはまだ小さい）。`,
+        singaporeRelevanceEn: `Resaro is one of the entities under the "Supporting AI Diffusion" pillar of Temasek Review 2026 — the "third-party testing entity" in the report refers to it. Against Temasek's other two Singapore-based AI institutions (Temus for delivery, Aicadium for engineering), Resaro occupies the **assurance/testing** slot.
+
+In the transmission levers framework:
+
+- **Lever 2 (governance)**: converting CSA / IMDA governance requirements into commercially procurable testing services
+- **Lever 6 (international + standards)**: dual headquarters in Singapore and Germany — one end plugged into Singapore's AI Verify ecosystem, the other into the compliance-testing demand created by the EU AI Act
+
+A take: **sovereign capital building governance infrastructure is a distinctly Singaporean pattern**. The government ships frameworks and accreditation (IMDA, CSA); the state investor ships a commercial entity (Resaro); the two lines converge on the new "AI assurance" market. The arrangement gives "independent third party" a subtle wrinkle — the systems Resaro tests are often themselves Temasek-linked or government-linked.
+
+Bottlenecks to watch: **the assurance market itself is early** (most enterprises haven't reached the deployment depth where third-party testing is needed), **regulation-driven demand cadence** (the size of the business depends on how fast AI regulation lands in each market), and **scale** (the team is small relative to testing demand across defence, healthcare and finance).`,
+        milestones: [
+          {
+            date: '2023',
+            title: '淡马锡设立 Resaro',
+            titleKo: '테마섹이 Resaro 설립',
+            titleJa: 'テマセクが Resaro を設立',
+            titleEn: 'Temasek establishes Resaro',
+            description: '新加坡与德国双总部，定位独立第三方 AI 保障。',
+            descriptionKo: '싱가포르와 독일 이중 본사, 독립 제3자 AI 보증으로 포지셔닝.',
+            descriptionJa: 'シンガポールとドイツの二重本社、独立第三者 AI 保証と位置づけ。',
+            descriptionEn:
+              'Co-headquartered in Singapore and Germany, positioned as independent third-party AI assurance.',
+          },
+          {
+            date: '2024-10',
+            title: '与 CSA 合著 AI 安全讨论论文',
+            titleKo: 'CSA와 AI 보안 토론 논문 공동 저술',
+            titleJa: 'CSA と AI セキュリティ討論論文を共著',
+            titleEn: 'Co-authors AI security discussion paper with CSA',
+            description:
+              '《Securing AI: A Collective Responsibility》随 CSA《Securing AI Systems》指南在 SICW 2024 同场发布。',
+            descriptionKo:
+              '「Securing AI: A Collective Responsibility」는 SICW 2024에서 CSA의 「Securing AI Systems」 지침과 함께 발표.',
+            descriptionJa:
+              '「Securing AI: A Collective Responsibility」は SICW 2024 で CSA の「Securing AI Systems」ガイドラインと同時発表。',
+            descriptionEn:
+              '"Securing AI: A Collective Responsibility" released at SICW 2024 alongside CSA\'s Guidelines on Securing AI Systems.',
+            sourceUrl: 'https://www.csa.gov.sg/Tips-Resource/publications/2024/securing-ai-a-collective-responsibility',
+          },
+          {
+            date: '2025-10',
+            title: '与 Temus 建立战略合作',
+            titleKo: 'Temus와 전략 제휴',
+            titleJa: 'Temus と戦略提携',
+            titleEn: 'Strategic partnership with Temus',
+            description: 'Temus 出 AI 治理战略咨询，Resaro 出独立第三方保障评估；同批还有 IMDA、Peak3。',
+            descriptionKo:
+              'Temus는 AI 거버넌스 전략 컨설팅을, Resaro는 독립 제3자 보증 평가를 담당. 같은 시기에 IMDA·Peak3 제휴도 발표.',
+            descriptionJa:
+              'Temus が AI ガバナンスの戦略コンサルティングを、Resaro が独立第三者の保証評価を担当。同時に IMDA、Peak3 との提携も発表。',
+            descriptionEn:
+              'Temus provides strategic advisory on AI governance; Resaro provides independent third-party assurance; IMDA and Peak3 partnerships announced in the same batch.',
+            sourceUrl:
+              'https://www.crnasia.com/news/2025/partners/temus-accelerates-singapore-growth-with-strategic-partnershi',
+          },
+        ],
+        relatedLeverNumbers: [2, 6],
+        relatedPolicyIds: [
+          'guidelines-on-securing-ai-systems',
+          'ai-verify',
+          'ai-tester-accreditation-programme-2026',
+          'iso-iec-42119-8-generative-ai-testing-standard',
+        ],
+        relatedEntityIds: ['ai-verify-foundation', 'imda', 'temus'],
+        sources: [
+          {
+            label: 'Resaro 官网',
+            labelKo: 'Resaro 공식 웹사이트',
+            labelJa: 'Resaro 公式サイト',
+            labelEn: 'Resaro official site',
+            url: 'https://resaro.ai/',
+            date: '2026-08-07',
+          },
+          {
+            label: 'CSA 讨论论文《Securing AI: A Collective Responsibility》',
+            labelKo: 'CSA 토론 논문 「Securing AI: A Collective Responsibility」',
+            labelJa: 'CSA 討論論文「Securing AI: A Collective Responsibility」',
+            labelEn: 'CSA discussion paper "Securing AI: A Collective Responsibility"',
+            url: 'https://www.csa.gov.sg/Tips-Resource/publications/2024/securing-ai-a-collective-responsibility',
+            date: '2024-10-15',
+          },
+          {
+            label: 'MDDI：SICW 高级别 AI 论坛主旨演讲（宣布 CSA × Resaro 论文）',
+            labelKo: 'MDDI: SICW 고위급 AI 패널 기조연설(CSA × Resaro 논문 발표)',
+            labelJa: 'MDDI：SICW ハイレベル AI パネル基調講演（CSA × Resaro 論文を発表）',
+            labelEn: 'MDDI: SICW High-Level Panel on AI keynote (announcing the CSA × Resaro paper)',
+            url: 'https://www.mddi.gov.sg/newsroom/keynote-address-by-sms-janil-puthucheary-at-the-sicw-high-level-panel-on-ai/',
+            date: '2024-10-16',
+          },
+          {
+            label: 'AI Verify Foundation：Resaro 开源贡献案例',
+            labelKo: 'AI Verify Foundation: Resaro의 오픈소스 기여 사례',
+            labelJa: 'AI Verify Foundation：Resaro のオープンソース貢献事例',
+            labelEn: "AI Verify Foundation: Resaro's open-source contributions",
+            url: 'https://aiverifyfoundation.sg/ai-verify-users/resaro-leading-the-charge-in-contributing-to-open-source-development/',
+          },
+          {
+            label: 'CRN Asia：Temus 与 IMDA、Peak3、Resaro 战略合作',
+            labelKo: 'CRN Asia: Temus와 IMDA·Peak3·Resaro 전략 제휴',
+            labelJa: 'CRN Asia：Temus と IMDA、Peak3、Resaro の戦略提携',
+            labelEn: 'CRN Asia: Temus partnerships with IMDA, Peak3, Resaro',
+            url: 'https://www.crnasia.com/news/2025/partners/temus-accelerates-singapore-growth-with-strategic-partnershi',
+            date: '2025-10-02',
+          },
+        ],
+        updated: '2026-08-07',
+        addedAt: '2026-08-07',
+      },
+      {
         id: 'mas',
         name: 'MAS',
         nameJa: 'MAS',
@@ -6484,6 +6742,271 @@ Take: AMP isn't large in scale, but it complements the PhD Fellowship — the Ph
           },
         ],
         updated: '2026-05-02',
+      },
+      {
+        id: 'temus',
+        name: 'Temus',
+        nameJa: 'Temus',
+        nameKo: 'Temus',
+        nameEn: 'Temus',
+        description: '淡马锡设立的数字化转型公司，旗下 AI Foundry 培养本地 AI 人才',
+        descriptionKo: '테마섹이 설립한 디지털 전환 회사, 산하 AI Foundry가 현지 AI 인재를 양성',
+        descriptionJa: 'テマセク設立のデジタルトランスフォーメーション企業、傘下の AI Foundry が現地 AI 人材を育成',
+        descriptionEn: 'Temasek-established digital transformation firm; its AI Foundry builds local AI talent',
+        url: 'https://temus.com/',
+        entityType: 'partner',
+        status: 'active',
+        founded: '2021-04',
+        headquarters: '新加坡',
+        headquartersKo: '싱가포르',
+        headquartersJa: 'シンガポール',
+        headquartersEn: 'Singapore',
+        parentOrg: '淡马锡（与 UST 合作设立）',
+        parentOrgKo: '테마섹(UST와 제휴하여 설립)',
+        parentOrgJa: 'テマセク（UST と提携して設立）',
+        parentOrgEn: 'Temasek (established in partnership with UST)',
+        scale: '约 500 人（2026）；AI Foundry 计划招募 50 名本地 AI 专业人才',
+        scaleKo: '약 500명(2026); AI Foundry는 현지 AI 전문 인력 50명 채용 예정',
+        scaleJa: '約 500 人（2026 年）；AI Foundry は現地 AI 専門人材 50 名を採用予定',
+        scaleEn: 'About 500 staff (2026); AI Foundry hiring 50 Singapore-based AI professionals',
+        leaders: [
+          {
+            name: 'Sng Ren Yeong',
+            title: '首席执行官',
+            titleKo: '최고경영자',
+            titleJa: '最高経営責任者',
+            titleEn: 'Chief Executive Officer',
+          },
+        ],
+        summary:
+          'Temus 是淡马锡 2021 年 4 月与数字服务公司 UST 合作设立的数字化转型公司，总部新加坡，约 500 人，客户覆盖公共部门与私营企业。2026 年 5 月在数字工业署（DISG）支持下启动 AI Foundry——招募、培养并部署 50 名新加坡本地 AI 专业人才，主攻金融服务与精准医疗两个行业的生产级 AI 交付。淡马锡年报 2026 把它列为落在新加坡本地的 AI 机构之一。',
+        summaryKo:
+          'Temus는 테마섹이 2021년 4월 디지털 서비스 기업 UST와 제휴하여 설립한 디지털 전환 회사로, 본사는 싱가포르, 약 500명 규모이며 공공 부문과 민간 기업을 모두 고객으로 합니다. 2026년 5월 디지털산업청(DISG)의 지원 아래 AI Foundry를 시작——싱가포르 기반 AI 전문 인력 50명을 채용·육성·배치하여 금융 서비스와 정밀 의료 두 업계의 프로덕션급 AI 딜리버리에 주력합니다. 테마섹 리뷰 2026은 테마섹이 싱가포르에 둔 AI 기관 중 하나로 꼽았습니다.',
+        summaryJa:
+          'Temus はテマセクが 2021 年 4 月にデジタルサービス企業 UST と提携して設立したデジタルトランスフォーメーション企業で、本社はシンガポール、約 500 人、公共部門と民間企業の両方を顧客とします。2026 年 5 月、デジタル産業庁（DISG）の支援の下で AI Foundry を始動——シンガポール拠点の AI 専門人材 50 名を採用・育成・配置し、金融サービスと精密医療の 2 業界でプロダクショングレードの AI デリバリーに注力します。テマセクレビュー 2026 は、テマセクがシンガポールに置く AI 機関の一つとして挙げています。',
+        summaryEn:
+          'Temus is a digital transformation firm established by Temasek in April 2021 in partnership with digital services company UST, headquartered in Singapore with around 500 staff serving public agencies and private enterprises. In May 2026, with support from Digital Industry Singapore (DISG), it launched the AI Foundry — hiring, developing and deploying 50 Singapore-based AI professionals focused on production-grade AI delivery in financial services and precision health. Temasek Review 2026 lists it among the AI institutions Temasek has placed in Singapore.',
+        whatItIs: `Temus 的定位是「数字化转型交付方」：AI 与数据、应用工程、云基础设施、咨询与设计、低代码，客户横跨医疗、国防、金融服务、教育和政府。约 500 人（2026 年），新加坡为大本营。
+
+两个招牌项目：
+
+- **Step IT Up**（2022 年落地新加坡）：「先聘用、再安置、再培训」的人才转换计划——零编程背景者 4 个月训练营 + 全额赞助 + 毕业保就业。模式源自合作方 UST 2014 年在美国发起的同名项目
+- **AI Foundry**（2026 年 5 月启动）：在数字工业署（DISG）支持下，招募 50 名本地 AI 专业人才（AI 架构师、数据科学家、ML 工程师、产品负责人、全栈/DevOps/UX 工程师），做 AI 加速器、治理框架和企业级交付能力，首攻金融服务与精准医疗——与国家 AI 影响计划（NAIIP）的行业选择对齐，并与 AI Singapore 合作衔接研究与部署
+
+2025 年 10 月起密集补强 AI 阵容：与 IMDA（TeSA 技能加速 + AI Verify Foundation）、Peak3（保险 AI）、Resaro（可信 AI 保障）建立战略合作，并从卫生部、EY、AWS 等挖来一批董事总经理级高管。2026 年 7 月战略投资菲律宾数据科学公司 Thinking Machines，把企业 AI 交付摊向东南亚。`,
+        whatItIsKo: `Temus의 포지셔닝은 「디지털 전환 딜리버리 회사」입니다: AI·데이터, 애플리케이션 엔지니어링, 클라우드 인프라, 컨설팅·디자인, 로우코드. 고객은 의료, 국방, 금융 서비스, 교육, 정부에 걸쳐 있습니다. 약 500명(2026년), 싱가포르가 본거지입니다.
+
+간판 프로그램은 두 가지:
+
+- **Step IT Up**(2022년 싱가포르 도입): 「먼저 채용하고, 배치하고, 훈련하는」 인재 전환 프로그램——코딩 경험이 없는 사람을 위한 4개월 부트캠프 + 전액 지원 + 졸업 후 취업 보장. 모델은 파트너 UST가 2014년 미국에서 시작한 동명 프로그램에서 유래
+- **AI Foundry**(2026년 5월 시작): 디지털산업청(DISG) 지원 아래 현지 AI 전문 인력 50명(AI 아키텍트, 데이터 과학자, ML 엔지니어, 프로덕트 오너, 풀스택/DevOps/UX 엔지니어)을 채용하여 AI 액셀러레이터, 거버넌스 프레임워크, 엔터프라이즈급 딜리버리 역량을 구축. 우선 금융 서비스와 정밀 의료부터 착수——국가 AI 임팩트 프로그램(NAIIP)의 업계 선정과 정렬되며, AI Singapore와 협력해 연구와 배포를 연결합니다
+
+2025년 10월부터 AI 진용을 집중 보강했습니다: IMDA(TeSA 스킬 가속 + AI Verify Foundation), Peak3(보험 AI), Resaro(신뢰할 수 있는 AI 보증)와 전략 제휴를 맺고, 보건부·EY·AWS에서 매니징 디렉터급 임원을 영입했습니다. 2026년 7월에는 필리핀 데이터 과학 기업 Thinking Machines에 전략 투자하여 엔터프라이즈 AI 딜리버리를 동남아로 확장하고 있습니다.`,
+        whatItIsJa: `Temus の位置づけは「デジタルトランスフォーメーションのデリバリー役」：AI・データ、アプリケーションエンジニアリング、クラウドインフラ、コンサルティング・デザイン、ローコード。顧客は医療、国防、金融サービス、教育、政府にまたがります。約 500 人（2026 年）、シンガポールが本拠地です。
+
+看板プログラムは 2 つ：
+
+- **Step IT Up**（2022 年シンガポール展開）：「採用してから配置し、育成する」人材転換プログラム——プログラミング経験ゼロの人向けの 4 ヶ月ブートキャンプ + 全額支援 + 卒業後の就職保証。モデルはパートナー UST が 2014 年に米国で始めた同名プログラムに由来します
+- **AI Foundry**（2026 年 5 月始動）：デジタル産業庁（DISG）の支援の下、現地 AI 専門人材 50 名（AI アーキテクト、データサイエンティスト、ML エンジニア、プロダクトオーナー、フルスタック/DevOps/UX エンジニア）を採用し、AI アクセラレーター、ガバナンスフレームワーク、エンタープライズ級デリバリー能力を構築。まず金融サービスと精密医療から着手——国家 AI インパクトプログラム（NAIIP）の業界選定と整合し、AI Singapore と連携して研究とデプロイをつなぎます
+
+2025 年 10 月以降、AI 陣容を集中的に補強：IMDA（TeSA スキル加速 + AI Verify Foundation）、Peak3（保険 AI）、Resaro（信頼できる AI 保証）との戦略提携を結び、保健省、EY、AWS からマネージングディレクター級の幹部を迎え入れました。2026 年 7 月にはフィリピンのデータサイエンス企業 Thinking Machines に戦略投資し、エンタープライズ AI デリバリーを東南アジアに広げています。`,
+        whatItIsEn: `Temus positions itself as a "digital transformation delivery house": AI & data, application engineering, cloud infrastructure, consulting & design, and low code, with clients across healthcare, defence, financial services, education and government. Around 500 staff (2026), anchored in Singapore.
+
+Two signature programmes:
+
+- **Step IT Up** (launched in Singapore in 2022): a "hire, place and train" talent-conversion programme — a four-month bootcamp for people with no coding background, fully sponsored, with guaranteed full-time employment on graduation. The model comes from partner UST's programme of the same name, first run in the US in 2014
+- **AI Foundry** (launched May 2026): with support from Digital Industry Singapore (DISG), hiring 50 Singapore-based AI professionals (AI architects, data scientists, ML engineers, product owners, full-stack/DevOps/UX engineers) to build AI accelerators, governance frameworks and enterprise delivery capabilities, starting with financial services and precision health — aligned with the sector picks of the National AI Impact Programme (NAIIP), and partnering with AI Singapore to bridge research and deployment
+
+From October 2025 Temus has been stacking its AI bench: strategic partnerships with IMDA (TeSA skills acceleration + AI Verify Foundation), Peak3 (insurance AI) and Resaro (trustworthy AI assurance), plus a wave of managing-director hires from MOH, EY and AWS. In July 2026 it made a strategic investment in Philippines-based data science firm Thinking Machines to scale enterprise AI delivery across Southeast Asia.`,
+        aiRelevance: `Temus 的 AI 故事是从「数字化转型」滑向「AI 交付」的过程，AI Foundry 是这一转向的落点。它瞄准的是行业共识里的**「部署缺口」**：企业的 AI 能力跑得快、可用性跟不上——实验性项目多，能进生产环境、产生业务结果的少。
+
+AI Foundry 的三块产出：
+
+- **人**：50 名本地 AI 专业人才的「聘用—培养—部署」管道
+- **工具**：可复用的 AI 加速器和治理框架
+- **交付**：把客户的 AI 战略从实验阶段推进到生产级项目
+
+CEO Sng Ren Yeong 对 Foundry 的定位是「生态的补位者」——不与各家卓越中心（COE）竞争，而是帮 COE 更快规模化。
+
+观点：**Temus 与 Resaro 是同一盘棋的两枚子**。2025 年 10 月两家结成的分工——Temus 做 AI 治理战略咨询、Resaro 做独立第三方保障评估——正好覆盖企业「敢不敢用 AI」的两端：怎么建（交付），怎么信（测试）。加上做 AI 工程的 Aicadium，淡马锡在新加坡本地凑齐了企业 AI 采用链条上的三个环节。`,
+        aiRelevanceKo: `Temus의 AI 스토리는 「디지털 전환」에서 「AI 딜리버리」로 미끄러져 가는 과정이며, AI Foundry는 그 전환의 착지점입니다. 겨냥하는 것은 업계 공통 인식인 **「배포 갭」**: AI 역량은 빠르게 발전하는데 활용도가 따라가지 못한다——실험 프로젝트는 많지만 프로덕션 환경에 들어가 비즈니스 성과를 내는 것은 적습니다.
+
+AI Foundry의 세 가지 산출물:
+
+- **사람**: 현지 AI 전문 인력 50명의 「채용—육성—배치」 파이프라인
+- **도구**: 재사용 가능한 AI 액셀러레이터와 거버넌스 프레임워크
+- **딜리버리**: 고객의 AI 전략을 실험 단계에서 프로덕션급 프로젝트로 전진
+
+CEO Sng Ren Yeong은 Foundry를 「생태계의 조력자」로 자리매김합니다——각사의 우수센터(COE)와 경쟁하는 것이 아니라 COE가 더 빨리 규모를 키우도록 돕는 역할입니다.
+
+관점: **Temus와 Resaro는 같은 바둑판의 두 돌입니다**. 2025년 10월 두 회사가 맺은 분업——Temus는 AI 거버넌스 전략 컨설팅, Resaro는 독립 제3자 보증 평가——은 기업이 「AI를 쓸 용기를 낼 수 있는가」의 양 끝을 커버합니다: 어떻게 만들 것인가(딜리버리)와 어떻게 믿을 것인가(테스트). AI 엔지니어링의 Aicadium까지 더하면, 테마섹은 싱가포르에서 엔터프라이즈 AI 도입 체인의 세 고리를 갖춘 셈입니다.`,
+        aiRelevanceJa: `Temus の AI ストーリーは「デジタルトランスフォーメーション」から「AI デリバリー」への移行過程であり、AI Foundry はその転換の着地点です。狙うのは業界共通認識の**「デプロイギャップ」**：AI の能力は急速に進むが使いこなしが追いつかない——実験プロジェクトは多いのに、本番環境に入りビジネス成果を生むものは少ない。
+
+AI Foundry の 3 つのアウトプット：
+
+- **人**：現地 AI 専門人材 50 名の「採用—育成—配置」パイプライン
+- **ツール**：再利用可能な AI アクセラレーターとガバナンスフレームワーク
+- **デリバリー**：顧客の AI 戦略を実験段階からプロダクショングレードのプロジェクトへ
+
+CEO の Sng Ren Yeong は Foundry を「エコシステムの補完役」と位置づけます——各社の卓越センター（COE）と競争するのではなく、COE のスケールを速める支援役です。
+
+見方：**Temus と Resaro は同じ盤面の 2 つの駒です**。2025 年 10 月に両社が結んだ分業——Temus が AI ガバナンスの戦略コンサルティング、Resaro が独立第三者の保証評価——は、企業が「AI を使う勇気を持てるか」の両端をカバーします：どう作るか（デリバリー）と、どう信じるか（テスト）。AI エンジニアリングの Aicadium を加えると、テマセクはシンガポールでエンタープライズ AI 採用チェーンの 3 つの環を揃えたことになります。`,
+        aiRelevanceEn: `Temus's AI story is a slide from "digital transformation" into "AI delivery", and the AI Foundry is where that turn lands. It targets the industry-consensus **"deployment gap"**: AI capability is moving fast while usability lags — plenty of experiments, few projects that reach production and produce business results.
+
+The AI Foundry's three outputs:
+
+- **People**: a hire-develop-deploy pipeline of 50 local AI professionals
+- **Tooling**: reusable AI accelerators and governance frameworks
+- **Delivery**: moving clients' AI strategies from experimentation into production-grade projects
+
+CEO Sng Ren Yeong frames the Foundry as an "enabler for the ecosystem" — not competing with centres of excellence (COEs) but helping COEs scale faster.
+
+A take: **Temus and Resaro are two pieces of the same game**. The division of labour the two firms struck in October 2025 — Temus doing strategic advisory for AI governance, Resaro doing independent third-party assurance — covers both ends of whether an enterprise dares to use AI: how to build (delivery) and how to trust (testing). Add Aicadium on AI engineering, and Temasek has assembled three links of the enterprise AI adoption chain in Singapore.`,
+        singaporeRelevance: `Temus 是淡马锡年报 2026 里落在新加坡本地的 AI 机构之一，也是「AI-Proofing Our Portfolio / Supporting AI Diffusion」两根支柱在人才侧的实体。
+
+在传导杠杆里：
+
+- **杠杆 3（人才）**：Step IT Up 做数字人才转换，AI Foundry 做 AI 专业人才管道；与 IMDA 的 TeSA 合作把私营训练能力接入国家技能体系
+- **杠杆 4（落地）**：AI Foundry 首攻金融服务与精准医疗，与国家 AI 影响计划（NAIIP）的行业旗舰选择同频
+
+观点：**AI Foundry 是「国家计划 + 主权资本」协同的一个小样本**——DISG（EDB 旗下）背书、AISG 合作、行业选择对齐 NAIIP，一家淡马锡系公司把自己的商业扩张嵌进了国家 AI 议程。这符合新加坡的一贯打法：政府不直接下场做交付，让国资背景的商业实体去占位。
+
+可观察的瓶颈：**规模**（50 人的 Foundry 相对全国企业 AI 交付需求是杯水车薪）、**商业可持续性**（人才转换项目的成本结构决定它依赖政府补贴与淡马锡系订单）、**与咨询大厂的同质化竞争**（埃森哲、四大都在做同样的「实验到生产」生意）。`,
+        singaporeRelevanceKo: `Temus는 테마섹 리뷰 2026에서 싱가포르에 둔 AI 기관 중 하나로 꼽히며, 「AI-Proofing Our Portfolio / Supporting AI Diffusion」 두 기둥의 인재 측 실체입니다.
+
+전달 레버 프레임워크에서:
+
+- **레버 3(인재)**: Step IT Up은 디지털 인재 전환을, AI Foundry는 AI 전문 인력 파이프라인을 담당. IMDA와의 TeSA 제휴로 민간 훈련 역량을 국가 스킬 체계에 접속
+- **레버 4(구현)**: AI Foundry는 금융 서비스와 정밀 의료부터 착수——국가 AI 임팩트 프로그램(NAIIP)의 플래그십 업계 선정과 동기화
+
+관점: **AI Foundry는 「국가 프로그램 + 주권 자본」 협동의 작은 표본입니다**——DISG(EDB 산하)의 지원, AI Singapore와의 협력, NAIIP와 정렬된 업계 선정. 테마섹계 기업이 자사의 상업 확장을 국가 AI 어젠다에 심어 넣은 형태입니다. 정부가 직접 딜리버리를 하지 않고 국유 배경의 상업 실체가 자리를 잡게 하는——싱가포르의 일관된 방식에 부합합니다.
+
+관찰 가능한 병목: **규모**(50명의 Foundry는 전국 엔터프라이즈 AI 딜리버리 수요에 비해 새 발의 피), **상업적 지속 가능성**(인재 전환 프로그램의 비용 구조는 정부 보조금과 테마섹계 발주에 의존하기 쉬움), **대형 컨설팅사와의 동질화 경쟁**(액센츄어와 Big4 모두 같은 「실험에서 프로덕션으로」 비즈니스를 팔고 있음).`,
+        singaporeRelevanceJa: `Temus はテマセクレビュー 2026 でシンガポールに置かれた AI 機関の一つとして挙げられ、「AI-Proofing Our Portfolio / Supporting AI Diffusion」2 本の柱の人材側の実体です。
+
+伝導レバーの枠組みでは：
+
+- **レバー 3（人材）**：Step IT Up がデジタル人材転換を、AI Foundry が AI 専門人材パイプラインを担当。IMDA との TeSA 提携で民間の育成能力を国家スキル体系に接続
+- **レバー 4（実装）**：AI Foundry は金融サービスと精密医療から着手——国家 AI インパクトプログラム（NAIIP）の旗艦業界選定と同期
+
+見方：**AI Foundry は「国家プログラム + ソブリン資本」連携の小さな標本です**——DISG（EDB 傘下）の後押し、AISG との連携、NAIIP と整合した業界選定。テマセク系企業が自社の商業拡大を国家 AI アジェンダに埋め込んだ形です。政府は自らデリバリーをせず、国資背景の商業実体にポジションを取らせる——シンガポールの一貫したやり方に合致します。
+
+観察可能なボトルネック：**規模**（50 人の Foundry は全国のエンタープライズ AI デリバリー需要に対して焼け石に水）、**商業的持続性**（人材転換プログラムのコスト構造は政府補助とテマセク系の発注に依存しがち）、**大手コンサルとの同質化競争**（アクセンチュアも Big4 も同じ「実験から本番へ」のビジネスを売っている）。`,
+        singaporeRelevanceEn: `Temus is one of the AI institutions Temasek has placed in Singapore per Temasek Review 2026, and the talent-side embodiment of the "AI-Proofing Our Portfolio / Supporting AI Diffusion" pillars.
+
+In the transmission levers framework:
+
+- **Lever 3 (talent)**: Step IT Up converts workers into digital roles; the AI Foundry builds an AI-professional pipeline; the TeSA partnership with IMDA plugs private training capacity into the national skills system
+- **Lever 4 (deployment)**: the AI Foundry opens with financial services and precision health — in step with the flagship sector picks of the National AI Impact Programme (NAIIP)
+
+A take: **the AI Foundry is a small specimen of "national programme + sovereign capital" coordination** — DISG (under EDB) backing, an AI Singapore partnership, sector picks aligned with NAIIP: a Temasek company embedding its commercial expansion into the national AI agenda. This fits Singapore's standing playbook: the government doesn't do delivery itself; state-linked commercial entities take the position.
+
+Bottlenecks to watch: **scale** (a 50-person Foundry is a drop in the bucket against nationwide enterprise AI delivery demand), **commercial sustainability** (the cost structure of talent-conversion programmes leaves them dependent on government subsidy and Temasek-linked orders), and **commoditised competition with the big consultancies** (Accenture and the Big Four are all selling the same "experimentation to production" story).`,
+        milestones: [
+          {
+            date: '2021-04',
+            title: '淡马锡与 UST 合作设立 Temus',
+            titleKo: '테마섹이 UST와 제휴하여 Temus 설립',
+            titleJa: 'テマセクが UST と提携して Temus を設立',
+            titleEn: 'Temasek establishes Temus in partnership with UST',
+          },
+          {
+            date: '2022-09',
+            title: '正式亮相，Step IT Up 落地新加坡',
+            titleKo: '공식 데뷔, Step IT Up 싱가포르 도입',
+            titleJa: '正式デビュー、Step IT Up がシンガポールに展開',
+            titleEn: 'Public launch; Step IT Up lands in Singapore',
+            description: '零编程背景 4 个月训练营 + 毕业保就业，目标 2025 年前惠及约 400 人。',
+            descriptionKo:
+              '코딩 경험이 없는 사람을 위한 4개월 부트캠프 + 졸업 후 취업 보장. 2025년까지 약 400명 수혜 목표.',
+            descriptionJa:
+              'プログラミング経験ゼロ向けの 4 ヶ月ブートキャンプ + 卒業後の就職保証。2025 年までに約 400 人への提供を目標。',
+            descriptionEn:
+              'A four-month bootcamp for people with no coding background, with guaranteed jobs on graduation; targeting ~400 beneficiaries by 2025.',
+            sourceUrl:
+              'https://temus.com/press-releases/temus-poised-to-support-transformation-of-enterprises-and-public-sector-to-shape-singapores-digital-future/',
+          },
+          {
+            date: '2025-10',
+            title: '与 IMDA、Peak3、Resaro 建立战略合作',
+            titleKo: 'IMDA·Peak3·Resaro와 전략 제휴',
+            titleJa: 'IMDA、Peak3、Resaro と戦略提携',
+            titleEn: 'Strategic partnerships with IMDA, Peak3 and Resaro',
+            sourceUrl:
+              'https://www.crnasia.com/news/2025/partners/temus-accelerates-singapore-growth-with-strategic-partnershi',
+          },
+          {
+            date: '2026-05',
+            title: 'AI Foundry 启动（DISG 支持）',
+            titleKo: 'AI Foundry 시작(DISG 지원)',
+            titleJa: 'AI Foundry 始動（DISG 支援）',
+            titleEn: 'AI Foundry launched with DISG support',
+            description: '招募 50 名本地 AI 专业人才，首攻金融服务与精准医疗。',
+            descriptionKo: '현지 AI 전문 인력 50명 채용, 금융 서비스와 정밀 의료부터 착수.',
+            descriptionJa: '現地 AI 専門人材 50 名を採用、金融サービスと精密医療から着手。',
+            descriptionEn:
+              'Hiring 50 Singapore-based AI professionals, starting with financial services and precision health.',
+            sourceUrl:
+              'https://www.edb.gov.sg/en/about-edb/media-releases-publications/temus-expands-ai-hiring-launches-foundry-in-singapore.html',
+          },
+          {
+            date: '2026-07',
+            title: '战略投资 Thinking Machines Data Science',
+            titleKo: 'Thinking Machines Data Science에 전략 투자',
+            titleJa: 'Thinking Machines Data Science へ戦略投資',
+            titleEn: 'Strategic investment in Thinking Machines Data Science',
+            description: '与这家菲律宾数据科学公司联手，把企业 AI 交付扩展到东南亚。',
+            descriptionKo: '필리핀 데이터 과학 기업과 손잡고 엔터프라이즈 AI 딜리버리를 동남아로 확장.',
+            descriptionJa: 'フィリピンのデータサイエンス企業と組み、エンタープライズ AI デリバリーを東南アジアへ拡大。',
+            descriptionEn:
+              'Joining forces with the Philippines-based data science firm to scale enterprise AI delivery across Southeast Asia.',
+          },
+        ],
+        relatedLeverNumbers: [3, 4],
+        relatedEntityIds: ['resaro', 'imda', 'ai-singapore'],
+        sources: [
+          {
+            label: 'Temus 官网',
+            labelKo: 'Temus 공식 웹사이트',
+            labelJa: 'Temus 公式サイト',
+            labelEn: 'Temus official site',
+            url: 'https://temus.com/',
+            date: '2026-08-07',
+          },
+          {
+            label: 'EDB：Temus 扩大 AI 招聘、启动 AI Foundry',
+            labelKo: 'EDB: Temus, AI 채용 확대 및 AI Foundry 시작',
+            labelJa: 'EDB：Temus が AI 採用を拡大、AI Foundry を始動',
+            labelEn: 'EDB: Temus expands AI hiring, launches Foundry in Singapore',
+            url: 'https://www.edb.gov.sg/en/about-edb/media-releases-publications/temus-expands-ai-hiring-launches-foundry-in-singapore.html',
+            date: '2026-05-20',
+          },
+          {
+            label: 'CRN Asia：Temus 在新加坡启动 AI Foundry',
+            labelKo: 'CRN Asia: Temus, 싱가포르에서 AI Foundry 시작',
+            labelJa: 'CRN Asia：Temus がシンガポールで AI Foundry を始動',
+            labelEn: 'CRN Asia: Temus launches AI Foundry in Singapore',
+            url: 'https://www.crnasia.com/news/2026/artificial-intelligence/temus-launches-ai-foundry-in-singapore-to-scale-deployment-a',
+          },
+          {
+            label: 'CRN Asia：Temus 与 IMDA、Peak3、Resaro 战略合作',
+            labelKo: 'CRN Asia: Temus와 IMDA·Peak3·Resaro 전략 제휴',
+            labelJa: 'CRN Asia：Temus と IMDA、Peak3、Resaro の戦略提携',
+            labelEn: 'CRN Asia: Temus partnerships with IMDA, Peak3, Resaro',
+            url: 'https://www.crnasia.com/news/2025/partners/temus-accelerates-singapore-growth-with-strategic-partnershi',
+            date: '2025-10-02',
+          },
+          {
+            label: 'Temus 新闻稿：设立与 Step IT Up（2022）',
+            labelKo: 'Temus 보도자료: 설립과 Step IT Up(2022)',
+            labelJa: 'Temus プレスリリース：設立と Step IT Up（2022）',
+            labelEn: 'Temus press release: launch and Step IT Up (2022)',
+            url: 'https://temus.com/press-releases/temus-poised-to-support-transformation-of-enterprises-and-public-sector-to-shape-singapores-digital-future/',
+            date: '2022-09-08',
+          },
+        ],
+        updated: '2026-08-07',
+        addedAt: '2026-08-07',
       },
     ],
   },
