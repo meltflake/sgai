@@ -12509,9 +12509,9 @@ export const MP_PROFILES = [
   },
   {
     nameEn: 'Janil Puthucheary',
-    name: '贾尼尔·普图查里',
-    nameKo: '가니엘·푸투차리',
-    nameJa: 'ジャニエル・プトゥチャリ',
+    name: '普杰立',
+    nameKo: '자닐 푸투체아리',
+    nameJa: 'ジャニル・プトゥチェアリ',
     role: '执政党',
     roleKo: '여당',
     roleJa: '執政党',

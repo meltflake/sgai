@@ -508,9 +508,10 @@ export const mddiSpeeches: MddiSpeech[] = [
   {
     titleEn:
       "Opening Address by MOS Jasmin Lau at the Association of Small and Medium Enterprises (ASME)'s AI Festival Asia 2026",
-    title: '刘佩芬政务次长在新加坡中小企业商会(ASME)亚洲 AI 节 2026 上的开幕致辞',
-    titleKo: 'Liu Peifen 정무 차관의 싱가포르 중소기업 상공회의소(ASME) 아시아 AI 축제 2026 개막 연설',
-    titleJa: '劉佩芬政務官のシンガポール中小企業商会(ASME)アジア AI フェスティバル 2026 でのオープニングスピーチ',
+    title: '刘洁敏政务次长在新加坡中小企业商会(ASME)亚洲 AI 节 2026 上的开幕致辞',
+    titleKo: 'Jasmin Lau 정무 차관의 싱가포르 중소기업 상공회의소(ASME) 아시아 AI 축제 2026 개막 연설',
+    titleJa:
+      'ジャスミン・ラウ政務官のシンガポール中小企業商会(ASME)アジア AI フェスティバル 2026 でのオープニングスピーチ',
     speaker: 'Jasmin Lau',
     speakerTitle: 'MDDI 政务次长',
     speakerTitleKo: 'MDDI 정무 차관',
@@ -526,10 +527,10 @@ export const mddiSpeeches: MddiSpeech[] = [
   {
     titleEn:
       'Opening Address by MOS Jasmin Lau at Launch of NUS Executive Master in AI and Digital Transformation on 14 Jan',
-    title: '刘佩芬政务次长在新加坡国立大学 AI 与数码转型高管硕士课程启动仪式上的开幕致辞',
-    titleKo: '류페이펀 정무차관의 싱가포르 국립대학교 AI 및 디지털 전환 임원 석사 과정 개시식 개막 인사말',
+    title: '刘洁敏政务次长在新加坡国立大学 AI 与数码转型高管硕士课程启动仪式上的开幕致辞',
+    titleKo: 'Jasmin Lau 정무차관의 싱가포르 국립대학교 AI 및 디지털 전환 임원 석사 과정 개시식 개막 인사말',
     titleJa:
-      '劉佩芬政務官のシンガポール国立大学 AI とデジタル変革エグゼクティブ修士課程ローンチセレモニーでのオープニングスピーチ',
+      'ジャスミン・ラウ政務官のシンガポール国立大学 AI とデジタル変革エグゼクティブ修士課程ローンチセレモニーでのオープニングスピーチ',
     speaker: 'Jasmin Lau',
     speakerTitle: 'MDDI 政务次长',
     speakerTitleKo: 'MDDI 정무차관',
@@ -545,9 +546,9 @@ export const mddiSpeeches: MddiSpeech[] = [
   {
     titleEn:
       'Opening Remarks by SPS Goh Hanyan at the launch of AI Centre of Excellence (CoE) at Manulife Singapore on 5 December 2025',
-    title: '吴翰阳政务次长在宏利新加坡 AI 卓越中心启动仪式上的开幕致辞',
-    titleKo: '오한양 정무차관의 Manulife 싱가포르 AI 우수 센터 개시식 개막 인사말',
-    titleJa: '呉漢陽政務官の Manulife シンガポール AI 卓越センターローンチセレモニーでのオープニングスピーチ',
+    title: '吴函燕政务次长在宏利新加坡 AI 卓越中心启动仪式上的开幕致辞',
+    titleKo: 'Goh Hanyan 정무차관의 Manulife 싱가포르 AI 우수 센터 개시식 개막 인사말',
+    titleJa: 'Goh Hanyan 政務官の Manulife シンガポール AI 卓越センターローンチセレモニーでのオープニングスピーチ',
     speaker: 'Goh Hanyan',
     speakerTitle: 'MDDI 政务次长',
     speakerTitleKo: 'MDDI 정무차관',
@@ -1306,8 +1307,8 @@ export const mddiSpeeches: MddiSpeech[] = [
   {
     titleEn:
       'Opening Speech by Minister Josephine Teo at the International Scientific Exchange for AI Safety 2026 Main Conference',
-    title: '部长何晶在2026年国际AI安全科学交流主会议上的开幕演讲',
-    titleKo: 'Ho Ching 장관의 2026년 국제 AI 안전 과학 교류 주요 회의 개막 연설',
+    title: '部长杨莉明在2026年国际AI安全科学交流主会议上的开幕演讲',
+    titleKo: 'Josephine Teo 장관의 2026년 국제 AI 안전 과학 교류 주요 회의 개막 연설',
     titleJa:
       'Josephine Teo 大臣による International Scientific Exchange for AI Safety 2026 Main Conference でのオープニングスピーチ',
     speaker: 'Josephine Teo',
@@ -1471,7 +1472,7 @@ export const mddiSpeeches: MddiSpeech[] = [
   },
   {
     titleEn: 'Keynote Address by Minister Josephine Teo at Nomura Investment Forum Asia',
-    title: '何晶部长在野村投资论坛亚洲大会上的主题演讲',
+    title: '杨莉明部长在野村投资论坛亚洲大会上的主题演讲',
     titleJa: 'Nomura Investment Forum Asia における Josephine Teo 大臣による基調講演',
     titleKo: 'Nomura Investment Forum Asia에서 Minister Josephine Teo의 기조연설',
     speaker: 'Josephine Teo',
@@ -1544,7 +1545,7 @@ export const mddiSpeeches: MddiSpeech[] = [
   },
   {
     titleEn: 'Minister Josephine Teo&#x27;s Remarks at TBI panel on Global Leadership in an Age of AI Opportunities',
-    title: '部长josephine teo在TBI人工智能机遇时代全球领导力小组讨论上的发言',
+    title: '杨莉明部长在TBI人工智能机遇时代全球领导力小组讨论上的发言',
     titleJa: '「AI機会の時代におけるグローバル・リーダーシップ」TBIパネルにおける Josephine Teo 大臣の発言',
     titleKo: 'AI 기회의 시대, 글로벌 리더십에 관한 TBI 패널에서의 Josephine Teo 장관 발언',
     speaker: 'Josephine Teo',
@@ -1580,7 +1581,7 @@ export const mddiSpeeches: MddiSpeech[] = [
   },
   {
     titleEn: 'Opening Address by Minister Josephine Teo at Digital Government Exchange (DGX) Welcome Dinner',
-    title: '张思乐部长在数字政府交流(DGX)欢迎晚宴上的开幕致词',
+    title: '杨莉明部长在数字政府交流(DGX)欢迎晚宴上的开幕致词',
     titleJa: 'Digital Government Exchange (DGX) ウェルカムディナーでのMinister Josephine Teoによる開会演説',
     titleKo: '조세핀 테오 장관의 Digital Government Exchange (DGX) 환영 만찬 개막 연설',
     speaker: 'Josephine Teo',
@@ -1598,7 +1599,7 @@ export const mddiSpeeches: MddiSpeech[] = [
   },
   {
     titleEn: 'Opening Address by Minister Josephine Teo at SGTech Gala Dinner 2026',
-    title: '约瑟芬·谭部长在SGTech 2026慈善晚宴上的开幕致辞',
+    title: '杨莉明部长在SGTech 2026慈善晚宴上的开幕致辞',
     titleJa: 'SGTech Gala Dinner 2026 Josephine Teo 大臣による開幕スピーチ',
     titleKo: '조세핀 테오 장관의 SGTech 갈라 디너 2026 개회사',
     speaker: 'Josephine Teo',
@@ -1832,7 +1833,7 @@ export const mddiSpeeches: MddiSpeech[] = [
   },
   {
     titleEn: 'Opening Remarks by Minister Josephine Teo at France-Singapore Frontier Technologies',
-    title: '部长张仪龄在法新前沿科技论坛上的开幕致辞',
+    title: '部长杨莉明在法新前沿科技论坛上的开幕致辞',
     titleJa: 'France-Singapore Frontier Technologies における Josephine Teo 大臣の開会挨拶',
     titleKo: '프랑스-싱가포르 프런티어 테크놀로지스에서의 Josephine Teo 장관 개회사',
     speaker: 'Josephine Teo',
@@ -1850,7 +1851,7 @@ export const mddiSpeeches: MddiSpeech[] = [
   },
   {
     titleEn: 'Opening Remarks by Minister Josephine Teo at IBM Think Singapore 2024',
-    title: '部长张仪龄在IBM Think新加坡2024上的开幕致辞',
+    title: '部长杨莉明在IBM Think新加坡2024上的开幕致辞',
     titleJa: 'IBM Think Singapore 2024 における Josephine Teo 大臣の開会挨拶',
     titleKo: 'IBM Think Singapore 2024에서의 Josephine Teo 장관 개회사',
     speaker: 'Josephine Teo',
@@ -1868,7 +1869,7 @@ export const mddiSpeeches: MddiSpeech[] = [
   },
   {
     titleEn: 'Opening Remarks by Minister Josephine Teo at the 5th ASEAN Digital Ministers Meeting',
-    title: '部长张仪龄在第五届东盟数字部长会议上的开幕致辞',
+    title: '部长杨莉明在第五届东盟数字部长会议上的开幕致辞',
     titleJa: '第5回 ASEAN デジタル大臣会議における Josephine Teo 大臣の開会挨拶',
     titleKo: '제5차 ASEAN 디지털 장관 회의에서의 Josephine Teo 장관 개회사',
     speaker: 'Josephine Teo',
@@ -1886,7 +1887,7 @@ export const mddiSpeeches: MddiSpeech[] = [
   },
   {
     titleEn: 'Opening Remarks by Minister Josephine Teo at the Singapore Conference on Artificial Intelligence',
-    title: '部长张仪龄在新加坡人工智能大会上的开幕致辞',
+    title: '部长杨莉明在新加坡人工智能大会上的开幕致辞',
     titleJa: 'Singapore Conference on Artificial Intelligence における Josephine Teo 大臣の開会挨拶',
     titleKo: '싱가포르 인공지능 컨퍼런스에서의 Josephine Teo 장관 개회사',
     speaker: '',
@@ -1976,7 +1977,7 @@ export const mddiSpeeches: MddiSpeech[] = [
   },
   {
     titleEn: 'Opening Remarks by SPS Goh Hanyan at the AI4Life Summit 2025',
-    title: '吴汉雁高级政务次长在 AI4Life 峰会 2025 的开幕致辞',
+    title: '吴函燕高级政务次长在 AI4Life 峰会 2025 的开幕致辞',
     titleJa: 'AI4Life Summit 2025 における SPS Goh Hanyan の開会挨拶',
     titleKo: 'AI4Life Summit 2025에서 개최된 SPS Goh Hanyan의 개회사',
     speaker: '',
@@ -1994,7 +1995,7 @@ export const mddiSpeeches: MddiSpeech[] = [
   },
   {
     titleEn: 'Opening Speech by Minister Josephine Teo at the Second Reading of the ELIONA Bill',
-    title: '张莉媚部长在《ELIONA 法案》二读时的开幕演讲',
+    title: '杨莉明部长在《ELIONA 法案》二读时的开幕演讲',
     titleJa: 'ELIONA 法案第二読会における Josephine Teo 大臣の開会演説',
     titleKo: 'ELIONA 법안 2독회에서의 Josephine Teo 장관 개회 연설',
     speaker: 'Josephine Teo',
@@ -2012,7 +2013,7 @@ export const mddiSpeeches: MddiSpeech[] = [
   },
   {
     titleEn: 'Panel Discussion Remarks by Minister Josephine Teo at Asia Economic Summit',
-    title: '张莉媚部长在亚洲经济峰会小组讨论上的发言',
+    title: '杨莉明部长在亚洲经济峰会小组讨论上的发言',
     titleJa: 'Asia Economic Summit パネルディスカッションにおける Josephine Teo 大臣の発言',
     titleKo: 'Asia Economic Summit에서의 Josephine Teo 장관 패널 토론 발언',
     speaker: 'Josephine Teo',
@@ -2030,7 +2031,7 @@ export const mddiSpeeches: MddiSpeech[] = [
   },
   {
     titleEn: 'Remarks By Minister Josephine Teo at the Singapore Press Club Awards 2025',
-    title: '张莉媚部长在新加坡报业俱乐部 2025 颁奖典礼上的致辞',
+    title: '杨莉明部长在新加坡报业俱乐部 2025 颁奖典礼上的致辞',
     titleJa: 'Singapore Press Club Awards 2025 における Josephine Teo 大臣のスピーチ',
     titleKo: 'Singapore Press Club Awards 2025에서의 Josephine Teo 장관 발언',
     speaker: 'Josephine Teo',
@@ -2048,7 +2049,7 @@ export const mddiSpeeches: MddiSpeech[] = [
   },
   {
     titleEn: 'Remarks by Minister S Iswaran at the Joint Press Conference with WEF Centre',
-    title: '伊斯万部长在与 WEF 中心联合新闻发布会上的致辞',
+    title: '易华仁部长在与 WEF 中心联合新闻发布会上的致辞',
     titleJa: 'WEF Centre との合同記者会見における S Iswaran 大臣の発言',
     titleKo: 'WEF Centre와의 공동 기자회견에서의 S Iswaran 장관 발언',
     speaker: '',
@@ -2210,7 +2211,7 @@ export const mddiSpeeches: MddiSpeech[] = [
   },
   {
     titleEn: 'Speech by Minister Josephine Teo at SCS Gala Dinner & Tech Leader Awards 2025',
-    title: '张仁宝部长在新加坡电脑学会颁奖晚宴暨2025年科技领袖奖上的致辞',
+    title: '杨莉明部长在新加坡电脑学会颁奖晚宴暨2025年科技领袖奖上的致辞',
     titleJa: 'SCS ガラディナー＆テックリーダー賞2025におけるJosephine Teo大臣のスピーチ',
     titleKo: 'SCS 갈라 디너 & 테크 리더 어워즈 2025에서의 Josephine Teo 장관 연설',
     speaker: 'Josephine Teo',
@@ -2228,7 +2229,7 @@ export const mddiSpeeches: MddiSpeech[] = [
   },
   {
     titleEn: 'Speech by Minister Josephine Teo at Singapore Business Awards',
-    title: '张仁宝部长在新加坡商业奖颁奖典礼上的致辞',
+    title: '杨莉明部长在新加坡商业奖颁奖典礼上的致辞',
     titleJa: 'シンガポール・ビジネス・アワードにおけるJosephine Teo大臣のスピーチ',
     titleKo: '싱가포르 비즈니스 어워즈에서의 Josephine Teo 장관 연설',
     speaker: 'Josephine Teo',
@@ -2246,7 +2247,7 @@ export const mddiSpeeches: MddiSpeech[] = [
   },
   {
     titleEn: 'Speech by Minister Josephine Teo at the Business and Philanthropy Forum',
-    title: '张仁宝部长在商业与慈善论坛上的致辞',
+    title: '杨莉明部长在商业与慈善论坛上的致辞',
     titleJa: 'ビジネス・アンド・フィランソロピー・フォーラムにおけるJosephine Teo大臣のスピーチ',
     titleKo: '비즈니스 및 자선 포럼에서의 Josephine Teo 장관 연설',
     speaker: 'Josephine Teo',
@@ -2264,7 +2265,7 @@ export const mddiSpeeches: MddiSpeech[] = [
   },
   {
     titleEn: 'Speech by Minister Josephine Teo at the Committee of Supply Debate 2025',
-    title: '张仁宝部长在2025年供应委员会辩论上的致辞',
+    title: '杨莉明部长在2025年供应委员会辩论上的致辞',
     titleJa: '2025年歳出委員会審議におけるJosephine Teo大臣のスピーチ',
     titleKo: '2025년 예산위원회 심의에서의 Josephine Teo 장관 연설',
     speaker: 'Josephine Teo',
@@ -2282,7 +2283,7 @@ export const mddiSpeeches: MddiSpeech[] = [
   },
   {
     titleEn: 'Speech by Minister Josephine Teo at the Committee of Supply Debate 2026',
-    title: '张仁宝部长在2026年供应委员会辩论上的致辞',
+    title: '杨莉明部长在2026年供应委员会辩论上的致辞',
     titleJa: '2026年歳出委員会審議におけるJosephine Teo大臣のスピーチ',
     titleKo: '2026년 예산위원회 심의에서의 Josephine Teo 장관 연설',
     speaker: 'Josephine Teo',
@@ -2300,7 +2301,7 @@ export const mddiSpeeches: MddiSpeech[] = [
   },
   {
     titleEn: 'Speech by Minister Josephine Teo at the Launch of the AUMOVIO-NTU Corporate Lab',
-    title: '张仁宝部长在AUMOVIO-NTU企业实验室启动仪式上的致辞',
+    title: '杨莉明部长在AUMOVIO-NTU企业实验室启动仪式上的致辞',
     titleJa: 'AUMOVIO-NTUコーポレート・ラボ設立式典におけるJosephine Teo大臣のスピーチ',
     titleKo: 'AUMOVIO-NTU 기업 연구소 출범식에서의 Josephine Teo 장관 연설',
     speaker: 'Josephine Teo',
@@ -2318,7 +2319,7 @@ export const mddiSpeeches: MddiSpeech[] = [
   },
   {
     titleEn: 'Speech by Minister Josephine Teo at the NUS ISS Annual Luncheon',
-    title: '张仁宝部长在新加坡国立大学信息系统学院年度午宴上的致辞',
+    title: '杨莉明部长在新加坡国立大学信息系统学院年度午宴上的致辞',
     titleJa: 'NUS ISSアニュアル・ランチョンにおけるJosephine Teo大臣のスピーチ',
     titleKo: 'NUS ISS 연례 오찬에서의 Josephine Teo 장관 연설',
     speaker: 'Josephine Teo',
@@ -2571,7 +2572,7 @@ export const mddiSpeeches: MddiSpeech[] = [
   },
   {
     titleEn: 'Keynote Address by Minister Josephine Teo at the Asia Economic Summit in Jakarta, Indonesia',
-    title: '部长尤索夫·依萨法迪在印度尼西亚雅加达亚洲经济峰会上的主旨演讲',
+    title: '部长杨莉明在印度尼西亚雅加达亚洲经济峰会上的主旨演讲',
     titleJa: 'インドネシア・ジャカルタで開催されたアジア経済サミットにおける Josephine Teo 大臣の基調講演',
     titleKo: '인도네시아 자카르타에서 개최된 아시아 경제 정상회담에서의 Josephine Teo 장관 기조연설',
     speaker: 'Josephine Teo',

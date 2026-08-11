@@ -720,7 +720,7 @@ export const videos: VideoItem[] = [
   },
   {
     id: 'v060',
-    title: '马斯戈：AI 推进不应遗漏弱势群体',
+    title: '马善高：AI 推进不应遗漏弱势群体',
     titleKo: 'Masagos Zulkifli: AI 추진이 취약계층을 빠뜨려서는 안 됨',
     titleEn: 'Masagos: No Vulnerable Group Should Be Left Behind in AI Push',
     titleJa: 'マサゴス：AI推進で脆弱な層を取り残してはならない（サンガレン・シンポジウム）',
@@ -732,7 +732,7 @@ export const videos: VideoItem[] = [
     speakerType: 'government',
     date: '2026-05-08',
     duration: '02:33',
-    summary: '社会及家庭发展部长马斯戈在圣加仑论坛上强调，AI 推进必须兼顾弱势群体，避免技术红利只惠及少数人。',
+    summary: '社会及家庭发展部长马善高在圣加仑论坛上强调，AI 推进必须兼顾弱势群体，避免技术红利只惠及少数人。',
     summaryKo:
       '사회 및 가족 발전부 장관 Masagos Zulkifli는 St. Gallen Forum에서 AI 추진이 취약계층을 고려해야 하며, 기술 혜택이 소수에게만 가지 않아야 한다고 강조했다.',
     summaryEn:
