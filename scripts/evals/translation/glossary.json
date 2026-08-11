@@ -4,9 +4,10 @@
     "黄循财": { "en": ["Lawrence Wong"], "ja": ["ローレンス・ウォン"] },
     "李显龙": { "en": ["Lee Hsien Loong"], "ja": ["リー・シェンロン"] },
     "陈振声": { "en": ["Chan Chun Sing"], "ja": ["チャン・チュンシン"] },
-    "蔡其生": { "en": ["Josephine Teo", "Mrs Teo"], "ja": ["ジョセフィン・テオ"] },
+    "杨莉明": { "en": ["Josephine Teo", "Mrs Teo"], "ja": ["ジョセフィン・テオ"] },
     "王瑞杰": { "en": ["Heng Swee Keat"], "ja": ["ヘン・スイキャット"] },
-    "陈杰豪": { "en": ["Tan Kiat How"], "ja": ["タン・キアットハウ"] }
+    "陈杰豪": { "en": ["Tan Kiat How"], "ja": ["タン・キアットハウ"] },
+    "颜金勇": { "en": ["Gan Kim Yong"], "ja": ["ガン・キムヨン"] }
   },
   "institutions": {
     "数字发展与信息部": { "en": ["Ministry of Digital Development and Information", "MDDI"], "ja": ["デジタル発展・情報省", "MDDI"] },
