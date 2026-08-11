@@ -2933,8 +2933,8 @@ export const mddiSpeeches: MddiSpeech[] = [
   },
   {
     titleEn: 'DPM Gan Kim Yong at the "Trust and AI: Navigating a World in Transition" Leaders Dialogue',
-    title: 'DPM甘照胜出席「信任与人工智能：探索转型世界」领导力对话',
-    titleJa: 'DPM ガン・キム・ヨン、「信頼と AI：転換期の世界をナビゲートする」リーダーズ・ダイアログで登壇',
+    title: 'DPM颜金勇出席「信任与人工智能：探索转型世界」领导力对话',
+    titleJa: 'DPM ガン・キムヨン、「信頼と AI：転換期の世界をナビゲートする」リーダーズ・ダイアログで登壇',
     titleKo: 'DPM Gan Kim Yong의 「Trust and AI: Navigating a World in Transition」 Leaders Dialogue',
     speaker: 'Gan Kim Yong',
     speakerTitle: '副总理兼贸工部长',
