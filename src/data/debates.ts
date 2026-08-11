@@ -12489,9 +12489,9 @@ export const MP_PROFILES = [
   },
   {
     nameEn: 'Desmond Choo',
-    name: '朱德明',
-    nameKo: '주덕명',
-    nameJa: '朱德明',
+    name: '朱倍庆',
+    nameKo: '데스몬드 추',
+    nameJa: '朱倍庆',
     role: '执政党',
     roleKo: '여당',
     roleJa: '執政党',
