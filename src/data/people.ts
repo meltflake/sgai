@@ -520,9 +520,9 @@ export const people: Person[] = [
     bioEn:
       'Tan Kiat How is Singapore’s Senior Minister of State at the Ministry of Digital Development and Information (MDDI), one of the key operators turning AI and digital policy into delivery. He often represents MDDI at industry and community events, translating AI governance, digital inclusion and enterprise adoption from ministerial framing into concrete programmes.\n\nIn Parliament he has spoken and replied on digital development, AI applications and cybersecurity. This page gathers his parliamentary speeches, addresses, related policies and videos — his role in the execution chain of Singapore’s AI policy.',
     bioJa:
-      'タン・キアットハウ(陳杰豪)はシンガポールのデジタル発展・情報省(MDDI)上級政務相であり、AI とデジタル政策を実行へ移す鍵となる担い手の一人だ。業界やコミュニティの場で MDDI を代表することが多く、AI ガバナンス、デジタル包摂、企業導入といった課題を大臣レベルの枠組みから具体的な施策へ落とし込む。\n\n国会ではデジタル発展、AI 応用、サイバーセキュリティについて発言・答弁してきた。本ページは彼の国会答弁、演説、関連政策、動画を集約し、シンガポールの AI 政策の実行過程における役割を示す。',
+      'タン・キアットハウ(陳杰豪)はシンガポールのデジタル発展・情報省(MDDI)上級国務大臣であり、AI とデジタル政策を実行へ移す鍵となる担い手の一人だ。業界やコミュニティの場で MDDI を代表することが多く、AI ガバナンス、デジタル包摂、企業導入といった課題を大臣レベルの枠組みから具体的な施策へ落とし込む。\n\n国会ではデジタル発展、AI 応用、サイバーセキュリティについて発言・答弁してきた。本ページは彼の国会答弁、演説、関連政策、動画を集約し、シンガポールの AI 政策の実行過程における役割を示す。',
     bioKo:
-      '탄 키앗하우(천제하오)는 싱가포르 디지털발전정보부(MDDI) 선임정무장관으로, AI와 디지털 정책을 실행으로 옮기는 핵심 실무자 중 한 명이다. 업계와 지역사회 행사에서 MDDI를 대표하는 경우가 많고, AI 거버넌스·디지털 포용·기업 도입 같은 과제를 장관급 프레임에서 구체적 프로그램으로 옮긴다.\n\n국회에서는 디지털 발전, AI 응용, 사이버 보안에 대해 발언하고 답변해 왔다. 이 페이지는 그의 국회 발언·연설·관련 정책·영상을 집약해 싱가포르 AI 정책의 실행 사슬에서의 역할을 보여준다.',
+      '탄 키앗하우(천제하오)는 싱가포르 디지털발전정보부(MDDI) 선임국무장관으로, AI와 디지털 정책을 실행으로 옮기는 핵심 실무자 중 한 명이다. 업계와 지역사회 행사에서 MDDI를 대표하는 경우가 많고, AI 거버넌스·디지털 포용·기업 도입 같은 과제를 장관급 프레임에서 구체적 프로그램으로 옮긴다.\n\n국회에서는 디지털 발전, AI 응용, 사이버 보안에 대해 발언하고 답변해 왔다. 이 페이지는 그의 국회 발언·연설·관련 정책·영상을 집약해 싱가포르 AI 정책의 실행 사슬에서의 역할을 보여준다.',
     topicIds: ['national-strategy', 'governance-regulation'],
     nameEn: 'Tan Kiat How',
     name: '陈杰豪',
@@ -531,8 +531,8 @@ export const people: Person[] = [
     aliases: ['Mr Tan Kiat How'],
     titleEn: 'Senior Minister of State for Digital Development and Information',
     title: 'MDDI 高级政务部长',
-    titleKo: 'MDDI 선임정무부장관',
-    titleJa: 'MDDI 上級政務部長',
+    titleKo: 'MDDI 선임정무부선임국무장관',
+    titleJa: 'MDDI 上級上級国務大臣',
     category: 'government',
     roles: ['minister', 'mp', 'civil-servant'],
     affiliations: ['MDDI', 'IMDA'],
