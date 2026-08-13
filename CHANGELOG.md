@@ -4,6 +4,22 @@
 
 ---
 
+## 0.23.5 — 2026-08-13
+
+### 新增：近期 AI 生态与资本动态
+
+- 新增 Theseus Infrastructure 生态实体：记录 Anthropic、Macquarie Asset Management 与 GIC 设立 AI 数据中心投资平台，以及 GIC 通过主权资本持有海外 AI 算力资产的战略意义。
+- 新增 Razer 产业伙伴实体：补录新加坡 AI Centre of Excellence、Razer–NUS AI Research Lab 与 Gaming Artificial Narrow Intelligence（GANI）研究方向。
+
+### 更新：NUS、OpenAI 与 GIC
+
+- 更新 NUS 与 OpenAI 生态实体：加入 2026-08-11 全校 ChatGPT Edu 合作、THE1008 本科新生必修课、AI Sense Maker，以及 NUS × Razer 联合实验室里程碑和来源。
+- 将人才杠杆中的高校 AI 课改改为可验证的 NUS 全校覆盖与新生必修范围。
+- 更新 GIC 投资者记录，加入 Theseus Infrastructure 的职责分工；中英日韩四语同步。
+- 修正国会辩论数据文件头的过期统计：总数由 179 条更新为 187 条，数据更新时间更新为 2026-07-20；移除列表组件中会继续漂移的硬编码数量注释。
+- 图谱验证新增生态实体 ID 唯一性检查，避免重复 ID 静默生成冲突的详情页路由。
+- 将 Theseus 的实体类型修正为平台；依据 NUS 来源，将 Razer 新加坡 AI Centre of Excellence 的规模改为现有 100+ 人，而非未来计划。
+
 ## 0.18.1 — 2026-05-26
 
 ### 加固：繁体中文渲染的系统性防御

@@ -725,13 +725,13 @@ export const investors: Investor[] = [
     focusJa: 'AI インフラストラクチャ',
     focusEn: 'AI infrastructure',
     notableDeals:
-      '连续三轮投资 Anthropic（Series F/G/H，其中 Series G 与 Coatue 共同领投）；与 Equinix、CPP 设超 150 亿美元数据中心合资',
+      '连续三轮投资 Anthropic（Series F/G/H，其中 Series G 与 Coatue 共同领投）；与 Equinix、CPP 设超 150 亿美元数据中心合资；2026 年与 Macquarie、Anthropic 成立 Theseus Infrastructure，为初期聚焦美国的 AI 数据中心项目提供主要股权资本',
     notableDealsEn:
-      'Invested in Anthropic across three consecutive rounds (Series F/G/H, co-leading Series G with Coatue); formed a >$15B data centre JV with Equinix and CPP',
+      'Invested in Anthropic across three consecutive rounds (Series F/G/H, co-leading Series G with Coatue); formed a >$15B data centre JV with Equinix and CPP; formed Theseus Infrastructure with Macquarie and Anthropic in 2026, providing most of the equity for initially US-focused AI data-centre projects',
     notableDealsJa:
-      'Anthropic に 3 ラウンド連続で投資（Series F/G/H、Series G は Coatue と共同リード）；Equinix、CPP と 150 億ドル超のデータセンター合弁を設立',
+      'Anthropic に 3 ラウンド連続で投資（Series F/G/H、Series G は Coatue と共同リード）；Equinix、CPP と 150 億ドル超のデータセンター合弁を設立；2026 年に Macquarie、Anthropic と Theseus Infrastructure を設立し、当初米国に注力する AI データセンタープロジェクトの主要エクイティを提供',
     notableDealsKo:
-      'Anthropic에 3개 라운드 연속 투자(Series F/G/H, Series G는 Coatue와 공동 리드); Equinix, CPP와 150억 달러 초과 데이터센터 합작 설립',
+      'Anthropic에 3개 라운드 연속 투자(Series F/G/H, Series G는 Coatue와 공동 리드); Equinix, CPP와 150억 달러 초과 데이터센터 합작 설립; 2026년 Macquarie, Anthropic과 Theseus Infrastructure를 설립해 초기 미국 중심 AI 데이터센터 프로젝트의 주요 자기자본을 제공',
     url: 'https://www.gic.com.sg/',
   },
   {

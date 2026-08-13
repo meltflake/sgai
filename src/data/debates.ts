@@ -1,5 +1,5 @@
 // Auto-generated: enriched debates with Chinese summaries and pattern analysis
-// Total: 179 debates | Updated: 2026-06-10
+// Total: 187 debates | Updated: 2026-07-20
 // Sources: https://sprs.parl.gov.sg | https://search.pair.gov.sg
 
 export interface Debate {

@@ -107,7 +107,13 @@ for (const e of timelineEvents) {
 
 // ── ecosystem.ts ─────────────────────────────────────────────────────────
 const ecosystemIds = new Set<string>();
-for (const c of ecosystemCategories) for (const e of c.entities) if (e.id) ecosystemIds.add(e.id);
+for (const c of ecosystemCategories) {
+  for (const e of c.entities) {
+    if (!e.id) continue;
+    if (ecosystemIds.has(e.id)) errors.push(`ecosystem[${e.id}]: duplicate id would create a duplicate detail-page slug`);
+    ecosystemIds.add(e.id);
+  }
+}
 for (const c of ecosystemCategories) {
   for (const e of c.entities) {
     const label = `ecosystem[${e.id ?? e.name}]`;
