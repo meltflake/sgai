@@ -17,12 +17,12 @@ Rules:
 7. Freshness. The digest reflects the site as of its stated update date. For events likely after that date, say your information may not be current.`;
 
 const LANG_DIRECTIVES: Record<AskLang, string> = {
-  zh: 'Answer directive: reply in Simplified Chinese (简体中文), unless the question is clearly written in another language — then match that language.',
-  en: 'Answer directive: reply in English, unless the question is clearly written in another language — then match that language.',
-  ja: 'Answer directive: reply in Japanese (日本語), unless the question is clearly written in another language — then match that language.',
+  zh: 'Answer directive: reply in Simplified Chinese (简体中文), unless the question is clearly written in another language — then match that language. MANDATORY: every sgai.md link you output must carry the /zh/ prefix — rewrite https://sgai.md/<path>/ to https://sgai.md/zh/<path>/.',
+  en: 'Answer directive: reply in English, unless the question is clearly written in another language — then match that language. Site links keep their bare paths exactly as given in the digest (no language prefix).',
+  ja: 'Answer directive: reply in Japanese (日本語), unless the question is clearly written in another language — then match that language. MANDATORY: every sgai.md link you output must carry the /ja/ prefix — rewrite https://sgai.md/<path>/ to https://sgai.md/ja/<path>/.',
   'zh-tw':
-    'Answer directive: reply in Traditional Chinese (繁體中文, Taiwan/Hong Kong conventions — never Simplified), unless the question is clearly written in another language — then match that language.',
-  ko: 'Answer directive: reply in Korean (한국어), unless the question is clearly written in another language — then match that language.',
+    'Answer directive: reply in Traditional Chinese (繁體中文, Taiwan/Hong Kong conventions — never Simplified), unless the question is clearly written in another language — then match that language. MANDATORY: every sgai.md link you output must carry the /zh-tw/ prefix — rewrite https://sgai.md/<path>/ to https://sgai.md/zh-tw/<path>/.',
+  ko: 'Answer directive: reply in Korean (한국어), unless the question is clearly written in another language — then match that language. MANDATORY: every sgai.md link you output must carry the /ko/ prefix — rewrite https://sgai.md/<path>/ to https://sgai.md/ko/<path>/.',
 };
 
 export function buildSystemPrompt(corpus: string, lang: AskLang): string {
