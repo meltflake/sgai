@@ -1,10 +1,13 @@
 ---
 // Ask-AI page body — the /ask/ route (all 5 locales). Multi-turn chat over
-// POST /api/ask (functions/api/ask.ts, SSE). Conversation lives only in
-// sessionStorage; the API is stateless. All copy resolves server-side via
-// t() / the PRESETS record, so the client script is language-free.
+// POST /api/ask (functions/api/ask.ts, SSE). Conversation lives in module
+// memory only: it survives ClientRouter navigations within a tab but a
+// reload starts clean (deliberate — persisted threads annoyed users). The
+// API is stateless. All copy resolves server-side via t() / local COPY, so
+// the client script is language-free.
 
 import { t, type Lang } from '~/i18n';
+import { toTraditional } from '~/i18n/opencc';
 import { ASK_API_PATH, TURNSTILE_SITE_KEY } from '~/config/ask';
 import { ASK_PAGE_PRESET_COUNT, ASK_PRESET_POOL } from '~/config/ask-presets';
 
@@ -17,6 +20,15 @@ const { lang } = Astro.props;
 // ASK_PAGE_PRESET_COUNT per load, merged with AI-vetted user questions
 // from /api/suggest. No-JS fallback: the first N stay visible.
 const presets = ASK_PRESET_POOL[lang];
+
+// Page-local copy (rule #13: all authored locales + zh-tw via OpenCC).
+const FOLLOWUP_COPY: Record<Lang, string> = {
+  zh: '继续追问',
+  en: 'Keep asking',
+  ja: '続けて質問',
+  ko: '이어서 질문하기',
+  'zh-tw': toTraditional('继续追问'),
+};
 
 const askConfig = {
   lang,
@@ -42,24 +54,11 @@ const askConfig = {
     <p class="text-xs text-gray-500 dark:text-gray-500 mb-8 max-w-prose leading-relaxed">{t(lang, 'askDisclaimer')}</p>
 
     <div id="ask-app" data-ask-config={JSON.stringify(askConfig)}>
-      <div id="ask-thread" class="space-y-5 mb-6"></div>
+      <div id="ask-thread" class="space-y-5 mb-6 empty:hidden"></div>
 
-      <div id="ask-empty">
-        <p class="text-xs uppercase tracking-[0.18em] text-primary font-semibold mb-3">{t(lang, 'askPresetHeading')}</p>
-        <div class="grid sm:grid-cols-2 gap-2 mb-8">
-          {
-            presets.map((q, i) => (
-              <button
-                type="button"
-                class="ask-preset text-left text-sm px-4 py-3 rounded-lg border border-subtle bg-surface hover:border-primary hover:text-primary transition-colors leading-relaxed"
-                data-q={q}
-                hidden={i >= ASK_PAGE_PRESET_COUNT}
-              >
-                {q}
-              </button>
-            ))
-          }
-        </div>
+      <div id="ask-followups" class="mb-6" hidden>
+        <p class="text-xs uppercase tracking-[0.18em] text-primary font-semibold mb-3">{FOLLOWUP_COPY[lang]}</p>
+        <div id="ask-followup-list" class="flex flex-col items-start gap-2"></div>
       </div>
 
       <form id="ask-form" class="rounded-lg border border-subtle bg-surface p-3">
@@ -88,6 +87,24 @@ const askConfig = {
           </button>
         </div>
       </form>
+
+      <div id="ask-rail" class="mt-8">
+        <p class="text-xs uppercase tracking-[0.18em] text-primary font-semibold mb-3">{t(lang, 'askPresetHeading')}</p>
+        <div class="grid sm:grid-cols-2 gap-2">
+          {
+            presets.map((q, i) => (
+              <button
+                type="button"
+                class="ask-preset text-left text-sm px-4 py-3 rounded-lg border border-subtle bg-surface hover:border-primary hover:text-primary transition-colors leading-relaxed"
+                data-q={q}
+                hidden={i >= ASK_PAGE_PRESET_COUNT}
+              >
+                {q}
+              </button>
+            ))
+          }
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -116,6 +133,21 @@ const askConfig = {
     reset: (widgetId: string) => void;
   }
 
+  // The model appends this marker plus follow-up questions (one per line)
+  // after every answer (functions/_lib/prompt.ts rule 8). The client strips
+  // it from the rendered/stored answer and turns the tail into chips.
+  const FOLLOWUP_MARKER = '===FOLLOWUP===';
+
+  // Conversation state lives at module scope: ClientRouter swaps the DOM
+  // without re-evaluating this module, so navigating away and back keeps
+  // the thread, while a full reload starts a fresh page (by design).
+  interface ConvoState {
+    sessionId: string;
+    messages: Msg[];
+    followups: string[];
+  }
+  const convoStates: Record<string, ConvoState> = {};
+
   // ClientRouter swaps the DOM without re-evaluating this module, so init must
   // re-run on every astro:page-load. The dataset flag keeps the initial full
   // load (direct call + astro:page-load both firing) from double-binding.
@@ -133,28 +165,28 @@ const askConfig = {
     const config: AskConfig = JSON.parse(app.dataset.askConfig || '{}');
     const labels = config.labels || {};
     const thread = document.getElementById('ask-thread') as HTMLElement;
-    const empty = document.getElementById('ask-empty') as HTMLElement;
+    const rail = document.getElementById('ask-rail') as HTMLElement;
+    const followupsWrap = document.getElementById('ask-followups') as HTMLElement;
+    const followupList = document.getElementById('ask-followup-list') as HTMLElement;
     const form = document.getElementById('ask-form') as HTMLFormElement;
     const input = document.getElementById('ask-input') as HTMLTextAreaElement;
     const quotaEl = document.getElementById('ask-quota') as HTMLElement;
     const sendBtn = document.getElementById('ask-send') as HTMLButtonElement;
     const newBtn = document.getElementById('ask-new') as HTMLButtonElement;
 
-    const storeKey = `sgai_ask_${config.lang}`;
-    let messages: Msg[] = [];
-    let sessionId = '';
-    let busy = false;
-
+    // Drop threads persisted by the old sessionStorage implementation.
     try {
-      const saved = JSON.parse(sessionStorage.getItem(storeKey) || 'null');
-      if (saved && Array.isArray(saved.messages)) {
-        messages = saved.messages;
-        sessionId = typeof saved.sessionId === 'string' ? saved.sessionId : '';
-      }
+      sessionStorage.removeItem(`sgai_ask_${config.lang}`);
     } catch {
-      messages = [];
+      // Storage blocked — nothing to clean.
     }
-    if (!sessionId) sessionId = crypto.randomUUID();
+
+    let state = convoStates[config.lang];
+    if (!state) {
+      state = { sessionId: crypto.randomUUID(), messages: [], followups: [] };
+      convoStates[config.lang] = state;
+    }
+    let busy = false;
     renderAll();
 
     const q = new URLSearchParams(window.location.search).get('q');
@@ -181,16 +213,21 @@ const askConfig = {
     // Preset rail: click delegation (covers dynamically added chips), a
     // per-load shuffle, then AI-vetted user questions merged from
     // /api/suggest (progressive enhancement — static pool is the floor).
-    empty.addEventListener('click', (e) => {
+    rail.addEventListener('click', (e) => {
       const btn = (e.target as HTMLElement).closest<HTMLButtonElement>('.ask-preset');
       const preset = btn?.dataset.q;
       if (preset) void send(preset);
+    });
+    followupList.addEventListener('click', (e) => {
+      const btn = (e.target as HTMLElement).closest<HTMLButtonElement>('.ask-followup');
+      const question = btn?.dataset.q;
+      if (question) void send(question);
     });
     shufflePresets();
     void mergeSuggestions();
 
     function presetGrid(): HTMLElement | null {
-      return empty.querySelector<HTMLElement>('.ask-preset')?.parentElement ?? null;
+      return rail.querySelector<HTMLElement>('.ask-preset')?.parentElement ?? null;
     }
 
     function shufflePresets(): void {
@@ -241,26 +278,62 @@ const askConfig = {
           grid.appendChild(chip);
           added = true;
         }
-        if (added && messages.length === 0) shufflePresets();
+        if (added && state.messages.length === 0) shufflePresets();
       } catch {
         // Suggestions are optional; the static pool is already rendered.
       }
     }
 
-    function persist(): void {
-      try {
-        sessionStorage.setItem(storeKey, JSON.stringify({ sessionId, messages }));
-      } catch {
-        // Storage full/blocked — the conversation just won't survive reloads.
-      }
+    function resetConversation(): void {
+      state.messages = [];
+      state.followups = [];
+      state.sessionId = crypto.randomUUID();
+      thread.innerHTML = '';
+      renderFollowups();
     }
 
-    function resetConversation(): void {
-      messages = [];
-      sessionId = crypto.randomUUID();
-      persist();
-      thread.innerHTML = '';
-      empty.hidden = false;
+    // Split a raw model answer into the visible body and follow-up chips.
+    function splitAnswer(text: string): { body: string; followups: string[] } {
+      const idx = text.indexOf(FOLLOWUP_MARKER);
+      if (idx === -1) return { body: text, followups: [] };
+      const body = text
+        .slice(0, idx)
+        .replace(/\n[-*_]{3,}\s*$/, '')
+        .trimEnd();
+      const followups = text
+        .slice(idx + FOLLOWUP_MARKER.length)
+        .split('\n')
+        .map((line) => line.replace(/^\s*(?:[-*•]|\d+[.)、])?\s*/, '').trim())
+        .filter((line) => line.length > 0)
+        .slice(0, 3);
+      return { body, followups };
+    }
+
+    // While streaming, also hide a partially-arrived marker at the tail so
+    // "===FOLL" never flashes as answer text.
+    function visibleBody(text: string): string {
+      const { body } = splitAnswer(text);
+      if (body !== text) return body;
+      for (let k = FOLLOWUP_MARKER.length - 1; k > 0; k--) {
+        if (body.endsWith(FOLLOWUP_MARKER.slice(0, k))) return body.slice(0, body.length - k).trimEnd();
+      }
+      return body;
+    }
+
+    function renderFollowups(): void {
+      followupList.innerHTML = '';
+      const items = state.followups;
+      followupsWrap.hidden = items.length === 0 || state.messages.length === 0;
+      for (const question of items) {
+        const chip = document.createElement('button');
+        chip.type = 'button';
+        chip.className =
+          'ask-followup text-left text-sm px-4 py-3 rounded-lg border border-subtle bg-surface hover:border-primary hover:text-primary transition-colors leading-relaxed';
+        chip.dataset.q = question;
+        // textContent only — model output must never become HTML here.
+        chip.textContent = question;
+        followupList.appendChild(chip);
+      }
     }
 
     function renderMarkdown(target: HTMLElement, text: string): void {
@@ -307,15 +380,15 @@ const askConfig = {
 
     function renderAll(): void {
       thread.innerHTML = '';
-      empty.hidden = messages.length > 0;
-      for (let i = 0; i < messages.length; i += 2) {
-        const question = messages[i];
-        const reply = messages[i + 1];
+      for (let i = 0; i < state.messages.length; i += 2) {
+        const question = state.messages[i];
+        const reply = state.messages[i + 1];
         if (!question || question.role !== 'user') continue;
         const { answer, status } = addExchange(question.content);
         status.remove();
         if (reply && reply.role === 'assistant') renderMarkdown(answer, reply.content);
       }
+      renderFollowups();
     }
 
     function showError(
@@ -395,10 +468,11 @@ const askConfig = {
       if (busy) return;
       busy = true;
       sendBtn.disabled = true;
-      empty.hidden = true;
       input.value = '';
+      state.followups = [];
+      renderFollowups();
 
-      const history = messages.slice(-12);
+      const history = state.messages.slice(-12);
       const { exchange, answer, status } = addExchange(question);
       let streamed = '';
 
@@ -407,7 +481,13 @@ const askConfig = {
         const res = await fetch(config.apiPath, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ question, history, lang: config.lang, sessionId, turnstileToken }),
+          body: JSON.stringify({
+            question,
+            history,
+            lang: config.lang,
+            sessionId: state.sessionId,
+            turnstileToken,
+          }),
         });
 
         if (!res.ok || !res.body) {
@@ -453,7 +533,7 @@ const askConfig = {
               if (typeof delta.text === 'string') {
                 if (!streamed) status.remove();
                 streamed += delta.text;
-                renderMarkdown(answer, streamed);
+                renderMarkdown(answer, visibleBody(streamed));
               }
             } catch {
               // Ignore malformed delta.
@@ -480,9 +560,14 @@ const askConfig = {
           return;
         }
 
-        messages.push({ role: 'user', content: question });
-        messages.push({ role: 'assistant', content: streamed });
-        persist();
+        const { body: answerBody, followups } = splitAnswer(streamed);
+        renderMarkdown(answer, answerBody);
+        state.messages.push({ role: 'user', content: question });
+        state.messages.push({ role: 'assistant', content: answerBody });
+        state.followups = followups;
+        renderFollowups();
+        // Rotate the rail so every answer surfaces a fresh set of ideas.
+        shufflePresets();
       } catch {
         showError(exchange, answer, status, errorMessageFor(undefined), question);
       } finally {

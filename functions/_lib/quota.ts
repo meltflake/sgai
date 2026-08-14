@@ -1,6 +1,6 @@
 import type { Env, KVNamespaceLike } from './types';
 
-const DEFAULT_DAILY_LIMIT = 20;
+const DEFAULT_DAILY_LIMIT = 30;
 const DEFAULT_GLOBAL_DAILY_LIMIT = 3000;
 // Counters expire two days after creation — long enough to outlive their
 // SGT day, short enough to keep the namespace tidy.

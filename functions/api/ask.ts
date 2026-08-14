@@ -39,6 +39,9 @@ const MOCK_ANSWER = [
   '这是开发环境的**模拟回答**（未配置 DeepSeek API key）。',
   '',
   '- Example link: [National AI Strategy 2.0](https://sgai.md/policies/national-ai-strategy-20-nais-20/)',
+  '===FOLLOWUP===',
+  'Mock follow-up question one?',
+  'Mock follow-up question two?',
 ].join('\n');
 
 function jsonError(status: number, code: string, message: string): Response {
