@@ -294,6 +294,7 @@ export const fieldNotes: FieldNote[] = [
           '预期是要放弃一部分原有团队',
           '结论：正常公司走正常流程，成功率更高。特殊协助只出现在"已经没有第二种选择"的情况下',
           '后续验证（2026-04-27）：中国国家发改委以国安为由叫停 Meta 对 Manus 的 20 亿美元收购，划三条红线（技术主权/数据主权/国家安全）。EDB 当时所说的「时间窗口压力」与「迁出核心团队」事后被证实是源自来源国监管走向——单凭迁注册地不足以脱离来源国管辖，这是「Singapore washing」策略的第一次被显式驳回。',
+          '后续验证（2026-08-11）：Manus 致信用户宣布恢复独立运营，Meta 收购正式拆解，Meta 所有权期间（2025-12-29 起）的用户数据被删除。从否决到拆解的闭环走完，Manus 总部仍在新加坡。',
         ],
         pointsEn: [
           'EDB raised Manus on its own initiative, but made clear that it was a special case.',
@@ -302,6 +303,7 @@ export const fieldNotes: FieldNote[] = [
           'The expectation was that part of the original team would have to be left behind.',
           'Bottom line: ordinary companies should follow the ordinary process, where success rates are higher. Special assistance is reserved for situations where there is no alternative.',
           'Follow-up (27 April 2026): China\'s NDRC blocked Meta\'s US$2B acquisition of Manus on national-security grounds, drawing three red lines (technology sovereignty, data sovereignty, national security). The "time-window pressure" and the "core-team relocation" EDB referenced were, in hindsight, downstream of source-country regulatory direction — re-domiciling alone is not enough to exit source-country jurisdiction, and the "Singapore washing" play was, for the first time, explicitly rejected.',
+          "Follow-up (11 August 2026): Manus wrote to users announcing a return to independent operations, formally unwinding the Meta acquisition; user data generated under Meta's ownership (from 29 December 2025) is being deleted. The case has now run its full course from veto to unwind, with Manus still headquartered in Singapore.",
         ],
         pointsJa: [
           'EDB 側から Manus の話題が出ましたが、同時にそれは特殊ケースだと明確に説明されました。',
@@ -310,6 +312,7 @@ export const fieldNotes: FieldNote[] = [
           '元のチームの一部を残さざるを得ない、という前提でした。',
           '結論：通常の会社は通常プロセスを進めた方が成功率が高い。特別支援は「他に選択肢がない」状況でだけ現れます。',
           '後続検証（2026-04-27）：中国国家発展改革委員会は国家安全保障を理由に、Meta による Manus の 20 億米ドル買収を停止し、技術主権・データ主権・国家安全保障の 3 つのレッドラインを示しました。EDB が当時語った「時間制約」と「中核チーム移転」は、後から見ると出所国の規制動向に由来していました。登記地を移すだけでは出所国の管轄から離れられず、「Singapore washing」戦略は初めて明示的に退けられました。',
+          '後続検証（2026-08-11）：Manus はユーザーへの書簡で独立運営への復帰を発表し、Meta による買収は正式に解消されました。Meta 所有期間（2025-12-29 以降）のユーザーデータは削除されます。否決から解消までの一連の流れが完結し、Manus の本社は引き続きシンガポールにあります。',
         ],
         pointsKo: [
           'EDB가 먼저 Manus를 언급했지만, 동시에 그것이 특수 사례임을 분명히 했습니다.',
@@ -318,6 +321,7 @@ export const fieldNotes: FieldNote[] = [
           '원래 팀의 일부는 포기해야 한다는 전제가 있었습니다.',
           '결론: 일반 회사는 일반 절차를 밟는 편이 성공률이 높습니다. 특별 지원은 “두 번째 선택지가 없는” 상황에서만 나옵니다.',
           '후속 확인(2026-04-27): 중국 국가발전개혁위원회는 국가안보를 이유로 Meta의 Manus 20억 달러 인수를 중단시키고, 기술 주권·데이터 주권·국가안보라는 세 가지 레드라인을 그었습니다. EDB가 당시 말한 “시간 압박”과 “핵심 팀 이전”은 사후적으로 보면 출처 국가의 규제 방향에서 비롯된 것이었습니다. 등록지를 옮기는 것만으로는 출처 국가 관할을 벗어날 수 없으며, “Singapore washing” 전략은 처음으로 명시적으로 거부되었습니다.',
+          '후속 확인(2026-08-11): Manus는 사용자에게 보낸 서한에서 독립 운영 복귀를 발표했고, Meta의 인수는 공식적으로 해제되었습니다. Meta 소유 기간(2025-12-29 이후)의 사용자 데이터는 삭제됩니다. 부결에서 해제까지의 흐름이 마무리되었으며, Manus 본사는 여전히 싱가포르에 있습니다.',
         ],
       },
       {
