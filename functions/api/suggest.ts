@@ -122,22 +122,35 @@ export const onRequestGet = async (context: PagesContext): Promise<Response> => 
   const lang: AskLang = ASK_LANGS.includes(langParam) ? langParam : 'en';
   const headers = {
     'Content-Type': 'application/json; charset=utf-8',
-    'Cache-Control': 'public, max-age=3600',
+    'Cache-Control': 'public, max-age=300',
   };
 
   if (!env.QA_KV) return new Response('{"questions":[]}', { headers });
 
-  // ?debug=1 — run one refresh round inline and return the breadcrumb
-  // trace instead of suggestions. Ops-only escape hatch (exposes step
-  // labels and counts, never question text); the KV lock still applies.
-  if (new URL(request.url).searchParams.get('debug') === '1') {
+  // Refresh runs INLINE on demand — Pages waitUntil silently drops this
+  // work chain (D1 + external fetch + KV never executed in background),
+  // so the page fires a non-blocking ?refresh=1 ping when it sees
+  // stale:true and the pinging visitor's browser absorbs the latency.
+  // The KV lock caps this at one judge round per LOCK_TTL per language.
+  //
+  // ?debug=1 is the ops variant: same round, returns the breadcrumb
+  // trace (step labels and counts only, never question text).
+  const mode =
+    new URL(request.url).searchParams.get('debug') === '1'
+      ? 'debug'
+      : new URL(request.url).searchParams.get('refresh') === '1'
+        ? 'refresh'
+        : 'serve';
+  if (mode !== 'serve') {
     const trace: string[] = [];
     try {
       await refreshSuggestions(env, lang, trace);
     } catch (err) {
       trace.push(`threw: ${err instanceof Error ? (err.stack ?? err.message) : String(err)}`);
+      console.error(`[suggest:${lang}] refresh failed:`, trace[trace.length - 1]);
     }
-    return new Response(JSON.stringify({ trace }), {
+    const body = mode === 'debug' ? JSON.stringify({ trace }) : '{"ok":true}';
+    return new Response(body, {
       headers: { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' },
     });
   }
@@ -152,15 +165,7 @@ export const onRequestGet = async (context: PagesContext): Promise<Response> => 
 
   const questions = Array.isArray(stored?.questions) ? stored.questions.filter((q) => typeof q === 'string') : [];
   const fresh = typeof stored?.ts === 'number' && Date.now() - stored.ts < FRESH_MS;
-  if (!fresh && env.QA_DB && env.DEEPSEEK_API_KEY) {
-    context.waitUntil(
-      refreshSuggestions(env, lang).catch((err) => {
-        // Surface the failure in `wrangler pages deployment tail` — a
-        // silent catch here cost a debugging round on launch day.
-        console.error(`[suggest:${lang}] refresh failed:`, err instanceof Error ? (err.stack ?? err.message) : err);
-      })
-    );
-  }
+  const stale = !fresh && Boolean(env.QA_DB && env.DEEPSEEK_API_KEY);
 
-  return new Response(JSON.stringify({ questions }), { headers });
+  return new Response(JSON.stringify({ questions, stale }), { headers });
 };

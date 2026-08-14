@@ -213,7 +213,12 @@ const askConfig = {
       try {
         const res = await fetch(`${config.suggestPath}?lang=${encodeURIComponent(config.lang)}`);
         if (!res.ok) return;
-        const data = (await res.json()) as { questions?: unknown };
+        const data = (await res.json()) as { questions?: unknown; stale?: unknown };
+        if (data.stale === true) {
+          // Fire-and-forget: this visitor's browser triggers the daily
+          // mine-and-judge round (Pages waitUntil drops background work).
+          void fetch(`${config.suggestPath}?lang=${encodeURIComponent(config.lang)}&refresh=1`).catch(() => undefined);
+        }
         if (!Array.isArray(data.questions) || data.questions.length === 0) return;
         const grid = presetGrid();
         if (!grid) return;
