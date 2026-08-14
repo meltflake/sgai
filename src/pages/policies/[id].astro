@@ -7,6 +7,7 @@ import JsonLd from '~/components/common/JsonLd.astro';
 import PolicyProfile from '~/components/data/PolicyProfile.astro';
 import Layout from '~/layouts/PageLayout.astro';
 import SameTopicRail from '~/components/data/SameTopicRail.astro';
+import CiteBlock from '~/components/common/CiteBlock.astro';
 import { categories } from '~/data/policies';
 import { localizedHref, pickLocalized, t } from '~/i18n';
 import { synthesizeMetaDescription } from '~/utils/seo-meta';
@@ -76,5 +77,6 @@ const breadcrumbs = [{ label: t(lang, 'navPolicies'), href: localizedHref('/poli
   <JsonLd schema={articleSchema} />
   <JsonLd schema={govServiceSchema} />
   <PolicyProfile policy={policy} lang={lang} />
+  <CiteBlock title={title} anchorId={policy.id ?? 'policy'} />
   <SameTopicRail lang={lang} kind="policy" id={policy.id ?? ''} class="max-w-5xl mx-auto px-4 sm:px-6 pb-16 mt-4" />
 </Layout>

@@ -8,6 +8,7 @@ import JsonLd from '~/components/common/JsonLd.astro';
 import Layout from '~/layouts/PageLayout.astro';
 import SameTopicRail from '~/components/data/SameTopicRail.astro';
 import PrevNextNav from '~/components/common/PrevNextNav.astro';
+import CiteBlock from '~/components/common/CiteBlock.astro';
 import {
   getVideoDigest,
   getVideoTranscript,
@@ -281,5 +282,6 @@ const videoSchema = {
     }}
     class="max-w-5xl mx-auto px-4 sm:px-6 mt-8"
   />
+  <CiteBlock title={title} anchorId={video.id} />
   <SameTopicRail lang={lang} kind="video" id={video.id} class="max-w-5xl mx-auto px-4 sm:px-6 pb-16 mt-4" />
 </Layout>

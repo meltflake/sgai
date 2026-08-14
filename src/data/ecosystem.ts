@@ -7381,8 +7381,8 @@ A take: GPAI gives a small country like Singapore "founding member" status at th
       {
         id: 'oecd-ai-observatory',
         name: 'OECD AI Policy Observatory',
-        nameJa: 'OECD AI Policy Observatory',
-        nameKo: 'OECD AI Policy Observatory',
+        nameJa: 'OECD AI 政策観測所',
+        nameKo: 'OECD AI 정책 관측소',
         nameEn: 'OECD AI Policy Observatory',
         description: '参与 OECD AI 政策制定',
         descriptionKo: 'OECD AI 정책 입안에 참여',

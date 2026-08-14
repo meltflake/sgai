@@ -130,6 +130,31 @@ export const MANUAL_UPDATES: Update[] = [
     ],
   },
   {
+    date: '2026-08-14',
+    type: 'longform',
+    title: '长文：新加坡 AI 2026 全景盘点——六个维度、三条判断',
+    titleEn: 'Longform: State of Singapore AI 2026 — six dimensions, three judgments',
+    titleJa: '長文：シンガポール AI 2026 全景レビュー——6 つの次元、3 つの判断',
+    titleKo: '장문: 싱가포르 AI 2026 종합 점검——6개 차원과 3가지 판단',
+    summary:
+      '本站第一份年度全景盘点：把执行追踪的六个维度（投资、人才、算力、采用、研究、治理）合成一页——人均政府 AI 投入 S$139、AI 从业者 5,000/15,000、算力 1.4 GW、大企业采用 62.5% / SME 14.5%、人均论文全球第一、规则制定者地位。三条判断：放大倍数（每 S$1 政府投入约拉动 S$13 超大规模厂商承诺）才是真指标；SME 断层是未来 2–3 年主战场；规则制定不等于规则被遵守。全文不新增任何数字，每个数字带数据截至日期与来源。',
+    summaryEn:
+      "The site's first annual synthesis: the tracker's six dimensions (investment, talent, compute, adoption, research, governance) on one page — S$139 per-capita government AI spend, 5,000 of 15,000 AI practitioners, 1.4 GW of compute, 62.5% large-enterprise vs 14.5% SME adoption, per-capita papers #1, and rule-maker status. Three judgments: the amplification ratio (roughly S$13 of hyperscaler commitments per S$1 of government spend) is the real metric; the SME gap is the main battlefield for the next 2–3 years; rule-making is not rule-enforcement. No new numbers — every figure carries its own as-of date and source.",
+    summaryJa:
+      '当サイト初の年間全景レビュー。実行トラッカーの 6 つの次元（投資・人材・計算力・採用・研究・ガバナンス）を 1 ページに合成——1 人当たり政府 AI 投資 S$139、AI 人材 5,000/15,000 人、計算力 1.4 GW、大企業採用率 62.5% / SME 14.5%、1 人当たり論文数世界 1 位、ルール制定者としての地位。3 つの判断：政府投資 1 ドルあたり約 13 ドルのハイパースケーラー投資を引き出す「増幅倍率」こそ真の指標、SME の格差は今後 2〜3 年の主戦場、ルール制定はルール遵守ではない。新規の数字は一切なし——すべての数字にデータ基準日と出典を付記。',
+    summaryKo:
+      '사이트 첫 연간 종합 점검: 실행 트래커의 여섯 차원(투자·인재·컴퓨팅·도입·연구·거버넌스)을 한 페이지로 합성——1인당 정부 AI 투자 S$139, AI 인력 5,000/15,000명, 컴퓨팅 1.4GW, 대기업 도입률 62.5% / SME 14.5%, 1인당 논문 세계 1위, 규칙 제정자 지위. 세 가지 판단: 정부 투자 1달러당 약 13달러의 하이퍼스케일러 투자를 끌어내는 증폭 배수가 진짜 지표, SME 격차는 향후 2~3년의 주 전장, 규칙 제정은 규칙 준수가 아니다. 새로운 숫자는 전혀 없으며 모든 수치에 데이터 기준일과 출처가 붙어 있습니다.',
+    links: [
+      {
+        href: '/state-of-singapore-ai-2026/',
+        label: '阅读全文',
+        labelEn: 'Read the full piece',
+        labelJa: '全文を読む',
+        labelKo: '전문 읽기',
+      },
+    ],
+  },
+  {
     date: '2026-08-07',
     type: 'longform',
     title: '长文：淡马锡年报 2026 里的 AI——从 6% 到 15%',

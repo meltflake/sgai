@@ -20,6 +20,35 @@
 - **P2-7 议员 stub 转正**：核实为已实现功能（isLowSignalPerson 两档阈值 + parliamentary-record 派生），无需新工单。
 - **P2-2**：待三份厂商报告原文的行业表，另开 PR。
 
+||||||| 027ec01
+
+## 0.24.0 — 2026-08-14
+
+### 新增：年度全景盘点长文（State of Singapore AI 2026）
+
+- 第一份年度合成层内容：把执行追踪六个维度（投资 / 人才 / 算力 / 采用 / 研究 / 治理）合成一页，五语同步发布（zh / en / ja / ko / zh-tw）。
+- 全文不新增任何数字，每个数字带自己的数据截至日期与来源；文末附数据与方法声明。
+- 导航「数据」组新增「年度报告 2026」入口；首页最近更新自动露出（MANUAL_UPDATES longform 条目）。
+- 写作纪律：按 writing.md 去 AI 味——无对比抬杠句式（不是…而是）、无结构报幕、无读者指令，金句密度约每千字一句。
+
+### 新增：引用此条（CiteBlock）
+
+- 新组件 [`src/components/common/CiteBlock.astro`](src/components/common/CiteBlock.astro)：五类详情页（辩论 / 政策 / 视频 / 生态实体 / 追踪维度）渲染建议引文 + 检索日期 + canonical URL + 复制按钮。
+- 引文品牌串走 `t(lang, 'siteName')` 本地化，避免在 ja/ko/zh/zh-tw 页面注入英文句（dist 层 EN-sentence ratchet 验证通过）。
+- 修复 OECD 生态实体的 ja/ko 名称 EN 占位（`OECD AI 政策観測所` / `OECD AI 정책 관측소`）。
+
+### 新增：渲染层 as-of 时间戳（tracker）
+
+- `MetricRow.asOfDate` / `QuantifiedDimension.headlineAsOf` / 定性维 `asOfDate` 三个可选字段，六个维度全部带「数据截至」日期（依据各自头条数字的最新可溯源证据，注释写明出处）。
+- 仪表盘卡片与详情页头条卡、指标表均渲染截至 chip；AI 职位指数行自动带快照日。
+- [`scripts/evals/stale-stats/check.ts`](scripts/evals/stale-stats/check.ts) 新增 as-of 告警通道：超过 365 天的 `headlineAsOf`/`asOfDate` 在周巡检中输出 WARN（不 fail，防止诚实的老数字被硬门误杀）；新增 3 个单元测试。
+- tracker 文件 `dataDate` 随本次编辑刷新为 2026-08-14。
+
+### 文档
+
+- 新增 [`docs/20260814-stakeholder-iteration-plan.md`](docs/20260814-stakeholder-iteration-plan.md)：以新加坡总理 / EDB / AI 管理者三方视角收敛的迭代规划（P0–P2 路线图 + 执行状态盘点 + 维护协议）。
+- 20260707 项目审计顶部加后继规划指针，遗留行动项移交表闭环。
+
 ## 0.23.5 — 2026-08-13
 
 ### 新增：近期 AI 生态与资本动态

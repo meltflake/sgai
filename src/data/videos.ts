@@ -138,6 +138,35 @@ export function pickSpeakerTypeLabels(lang: string): Record<string, string> {
 
 export const videos: VideoItem[] = [
   {
+    id: 'v080',
+    title: '海尼根为何聘用AIAP学员',
+    titleEn: 'Why We Hire AIAP Graduates — Heineken',
+    titleJa: 'ハイネケンがAIAP学員を採用する理由',
+    titleKo: '하이네켄이 AIAP 훈련생을 채용하는 이유',
+    speaker: 'Dr. Ralph Ostertag',
+    speakerTitle: '首席信息官（亚太）兼全球GenAI实验室主任',
+    speakerTitleEn: 'Regional CIO (APAC) and Director, Global GenAI Lab',
+    speakerTitleJa: '最高情報責任者（アジア太平洋）兼グローバルGenAI実験室長',
+    speakerTitleKo: '최고 정보 책임자(아시아태평양) 겸 글로벌 GenAI 실험실 책임자',
+    speakerType: 'industry',
+    date: '2026-08-06',
+    duration: '01:00',
+    summary: '海尼根全球GenAI实验室负责人讲述如何利用AI推动EverGreen 2030战略，及AIAP学员的重要作用。',
+    summaryEn:
+      "Heineken's Regional CIO discusses how the company is leveraging AI and GenAI Lab to drive its EverGreen 2030 strategy, and the role of AI Apprenticeship Programme graduates in this transformation.",
+    summaryJa:
+      'ハイネケンのグローバルGenAI実験室の責任者が、AIを活用してEverGreen 2030戦略を推進する方法、およびAIAP学員の重要な役割について説明しています。',
+    summaryKo:
+      '하이네켄 글로벌 GenAI 실험실 책임자가 AI를 활용하여 EverGreen 2030 전략을 추진하는 방법과 AIAP 훈련생의 중요한 역할에 대해 설명합니다.',
+    topic: 'AI 人才与教育',
+    topicEn: 'AI Talent & Education',
+    topicJa: 'AI 人材と教育',
+    topicKo: 'AI 인재와 교육',
+    youtubeUrl: 'https://www.youtube.com/watch?v=4hN78mxFW7M',
+    channel: 'AI Singapore',
+    addedAt: '2026-08-14',
+  },
+  {
     id: 'v079',
     title: '为什么我们聘用 AIAP 毕业生——SAM 第二部分',
     titleEn: 'Why We Hire AIAP Graduates — SAM Part 2',

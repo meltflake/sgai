@@ -43,6 +43,11 @@ const progressDesc =
 
 const badge = dim.kind === 'qualitative' ? (pickLocalized<string>(dim, 'badge', lang) ?? dim.badge) : null;
 const judgment = dim.kind === 'qualitative' ? (pickLocalized<string>(dim, 'judgment', lang) ?? dim.judgment) : null;
+
+// P0-2: per-dimension currency stamp. Quantified dims stamp the headline
+// claim; qualitative dims stamp the judgment. Absent = no chip (never guess).
+const asOfStamp =
+  dim.kind === 'quantified' ? (dim.headlineAsOf ?? null) : dim.kind === 'qualitative' ? (dim.asOfDate ?? null) : null;
 ---
 
 <a
@@ -64,6 +69,9 @@ const judgment = dim.kind === 'qualitative' ? (pickLocalized<string>(dim, 'judgm
     dim.kind === 'quantified' && (
       <>
         <div class="t-stat text-slate-900 dark:text-white mb-2">{headline}</div>
+        {asOfStamp && (
+          <div class="text-[11px] text-muted mb-2">{t(lang, 'trackerAsOf').replace('{date}', asOfStamp)}</div>
+        )}
         {progressPct !== null && (
           <div class="w-full bg-slate-200 dark:bg-slate-700 h-1.5 rounded mb-2 overflow-hidden">
             <div class="h-full bg-blue-500" style={`width: ${Math.min(100, Math.max(0, progressPct))}%`} />
@@ -80,6 +88,9 @@ const judgment = dim.kind === 'qualitative' ? (pickLocalized<string>(dim, 'judgm
         <div class="inline-block text-sm font-bold bg-amber-100 dark:bg-amber-900 text-amber-800 dark:text-amber-200 px-2 py-1 rounded mb-3">
           {badge}
         </div>
+        {asOfStamp && (
+          <div class="text-[11px] text-muted mb-2">{t(lang, 'trackerAsOf').replace('{date}', asOfStamp)}</div>
+        )}
         <p class="text-sm leading-relaxed text-slate-700 dark:text-slate-300 mb-3 m-0">{judgment}</p>
       </>
     )

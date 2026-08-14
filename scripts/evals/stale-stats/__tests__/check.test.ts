@@ -12,6 +12,8 @@ import assert from 'node:assert/strict';
 import {
   auditStaleStats,
   extractDataDates,
+  extractAsOfDates,
+  auditAsOfWarnings,
   scheduleForFile,
   ageInDays,
   MAX_AGE_DAYS,
@@ -76,4 +78,33 @@ test('editorial file gets the 365d ceiling', () => {
 test('file without dataDate yields no findings', () => {
   const findings = auditStaleStats(REGISTRY, { 'src/data/startups.ts': 'export const nothing = 1;' }, '2026-07-04');
   assert.equal(findings.length, 0);
+});
+
+test('extractAsOfDates: matches all three granularities, skips dataDate', () => {
+  const src = [
+    "  headlineAsOf: '2026-02',",
+    "  asOfDate: '2026-08-03',",
+    "  asOfDate: '2024',",
+    "  dataDate: '2026-05-20',",
+  ].join('\n');
+  assert.deepEqual(extractAsOfDates(src), ['2026-02', '2026-08-03', '2024']);
+});
+
+test('auditAsOfWarnings: only flags stamps older than a year', () => {
+  const warnings = auditAsOfWarnings(
+    {
+      'src/data/tracker.ts': [
+        "  headlineAsOf: '2026-02',", // fresh
+        "  headlineAsOf: '2024',", // 365d+ → warned, year-normalised
+      ].join('\n'),
+    },
+    '2026-07-04',
+  );
+  assert.equal(warnings.length, 1);
+  assert.equal(warnings[0].dataDate, '2024');
+  assert.equal(warnings[0].schedule, 'as-of');
+});
+
+test('auditAsOfWarnings: no as-of stamps yields no warnings', () => {
+  assert.equal(auditAsOfWarnings({ 'src/data/tracker.ts': 'export const x = 1;' }, '2026-07-04').length, 0);
 });

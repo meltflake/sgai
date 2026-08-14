@@ -12,6 +12,7 @@ const labelKeys = {
   policy: 'navPolicy',
   debates: 'navDebates',
   data: 'navData',
+  annualReport: 'navAnnualReport',
   about: 'navAbout',
   challenges: 'navChallenges',
   evolution: 'navEvolution',
@@ -73,6 +74,7 @@ export function getHeaderData(lang: Lang) {
       {
         text: t(lang, labelKeys.data),
         links: [
+          { text: t(lang, labelKeys.annualReport), href: lh('/state-of-singapore-ai-2026/', lang) },
           { text: t(lang, labelKeys.updates), href: lh('/updates', lang) },
           { text: t(lang, labelKeys.topics), href: lh('/topics', lang) },
           { text: t(lang, labelKeys.tracker), href: lh('/tracker', lang) },
