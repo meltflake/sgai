@@ -41,17 +41,25 @@ function staticPoolFor(lang: AskLang): string[] {
   return ASK_PRESET_DATA[key];
 }
 
-async function refreshSuggestions(env: Env, lang: AskLang): Promise<void> {
+async function refreshSuggestions(env: Env, lang: AskLang, trace?: string[]): Promise<void> {
+  const step = (msg: string) => {
+    console.log(`[suggest:${lang}] ${msg}`);
+    trace?.push(msg);
+  };
   const kv = env.QA_KV;
   const db = env.QA_DB;
-  if (!kv || !db) return;
+  if (!kv || !db) {
+    step('missing binding');
+    return;
+  }
 
   const lockKey = `suggest-lock:${lang}`;
   if (await kv.get(lockKey)) {
-    console.log(`[suggest:${lang}] lock held, skipping`);
+    step('lock held, skipping');
     return;
   }
   await kv.put(lockKey, '1', { expirationTtl: LOCK_TTL_SECONDS });
+  step('lock acquired');
 
   const res = await db
     .prepare(
@@ -61,7 +69,7 @@ async function refreshSuggestions(env: Env, lang: AskLang): Promise<void> {
     )
     .bind(lang)
     .all();
-  console.log(`[suggest:${lang}] d1 rows: ${(res.results || []).length}`);
+  step(`d1 rows: ${(res.results || []).length}`);
 
   const staticNorms = new Set(staticPoolFor(lang).map(normalize));
   const seen = new Set<string>();
@@ -82,9 +90,7 @@ async function refreshSuggestions(env: Env, lang: AskLang): Promise<void> {
       { role: 'system', content: JUDGE_PROMPT },
       { role: 'user', content: JSON.stringify({ language: lang, candidates }) },
     ]);
-    console.log(
-      `[suggest:${lang}] candidates: ${candidates.length}, judge content: ${content ? content.length : 'null'}`
-    );
+    step(`candidates: ${candidates.length}, judge content: ${content ? content.length : 'null'}`);
     if (content) {
       try {
         const parsed = JSON.parse(content) as { approved?: unknown };
@@ -107,7 +113,7 @@ async function refreshSuggestions(env: Env, lang: AskLang): Promise<void> {
   await kv.put(`suggest:${lang}`, JSON.stringify({ ts: Date.now(), questions }), {
     expirationTtl: STORE_TTL_SECONDS,
   });
-  console.log(`[suggest:${lang}] stored ${questions.length} suggestions`);
+  step(`stored ${questions.length} suggestions`);
 }
 
 export const onRequestGet = async (context: PagesContext): Promise<Response> => {
@@ -120,6 +126,21 @@ export const onRequestGet = async (context: PagesContext): Promise<Response> => 
   };
 
   if (!env.QA_KV) return new Response('{"questions":[]}', { headers });
+
+  // ?debug=1 — run one refresh round inline and return the breadcrumb
+  // trace instead of suggestions. Ops-only escape hatch (exposes step
+  // labels and counts, never question text); the KV lock still applies.
+  if (new URL(request.url).searchParams.get('debug') === '1') {
+    const trace: string[] = [];
+    try {
+      await refreshSuggestions(env, lang, trace);
+    } catch (err) {
+      trace.push(`threw: ${err instanceof Error ? (err.stack ?? err.message) : String(err)}`);
+    }
+    return new Response(JSON.stringify({ trace }), {
+      headers: { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' },
+    });
+  }
 
   let stored: { ts?: number; questions?: unknown } | null = null;
   try {
