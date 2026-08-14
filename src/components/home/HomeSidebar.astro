@@ -241,8 +241,20 @@ const picks: Array<{ href: string; label: Record<Lang, string> }> = [
 </aside>
 
 <script>
-  // Delegate to the header's search modal so there is one Pagefind UI.
-  document.getElementById('home-search-trigger')?.addEventListener('click', () => {
-    document.getElementById('search-trigger')?.click();
-  });
+  // ClientRouter swaps the DOM without re-evaluating this module, so the
+  // listener must re-bind on every astro:page-load. The dataset flag keeps
+  // the initial full load (direct call + astro:page-load both firing) from
+  // double-binding.
+  function boot() {
+    const btn = document.getElementById('home-search-trigger');
+    if (btn && !btn.dataset.searchBound) {
+      btn.dataset.searchBound = '1';
+      // Delegate to the header's search modal so there is one Pagefind UI.
+      btn.addEventListener('click', () => {
+        document.getElementById('search-trigger')?.click();
+      });
+    }
+  }
+  boot();
+  document.addEventListener('astro:page-load', boot);
 </script>

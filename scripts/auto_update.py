@@ -583,7 +583,15 @@ def run_tsx_pipeline(pipeline: dict, logger, dry_run: bool = False) -> dict:
         capture_output=True,
         text=True,
         encoding="utf-8",
-        env={**os.environ, **NPM_QUIET_ENV},
+        env={
+            **os.environ,
+            **NPM_QUIET_ENV,
+            # Let tsx pipelines reuse this interpreter for their nested python
+            # scans (videos scan needs the venv's requests/feedparser; a bare
+            # `python3` under cron resolves to the system python and silently
+            # fails — see scripts/refresh/videos/run.ts resolveScanPython()).
+            "SGAI_PIPELINE_PYTHON": sys.executable,
+        },
     )
     if proc.stdout:
         for line in proc.stdout.splitlines():

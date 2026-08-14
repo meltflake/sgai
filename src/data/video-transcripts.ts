@@ -11784,6 +11784,32 @@ export const videoTranscripts: Record<string, VideoTranscript> = {
     translatedAt: '2026-08-03',
     translationSource: 'manual',
   },
+  v080: {
+    videoId: 'v080',
+    youtubeId: '4hN78mxFW7M',
+    captionLanguage: 'en',
+    fetchedAt: '2026-08-14',
+    source: 'youtube-subtitles',
+    paragraphs: [
+      '我叫Ralph，是Heineken区域首席信息官，同时我还负责我们去年在新加坡启动的生成式AI实验室的全球[music]职责。对我们来说，[music]AI实际上是我们Heineken Evergreen 2030业务战略的关键推动力。我们有三个主要优先事项：加速增长、提升生产力以及使我们的组织具备未来[music]适应力。我通过来自AI Singapore的Lawrence Leo了解到AIP培养的人才。AIP工程师之所以与众不同有三个原因。[music]首先，他们具备非常高的专业能力。他们已在项目中获得了优秀的培训。拥有与大型组织合作解决复杂问题的实际经验。他们都非常谦虚且务实。',
+      '[music]自从AIP培养的工程师加入我们团队以来，效果一直非常显著。我强烈建议想在新加坡建立AI能力的公司利用[music]生态系统，特别是借助AI Singapore获得合适的人才，然后总的来说>>[music]>>从思维角度讲，要放大格局但从小处开始，展示其威力，然后快速扩展。',
+    ],
+    paragraphsEn: [
+      "My name is Ralph and I'm the regional CIO for Heineken and I also have a global [music] responsibility for the generative AI lab which we launched here in Singapore last year. Now for us, [music] AI is actually a key enabler for our Heineken Evergreen 2030 business strategy. We have three major priorities, accelerate growth, uplift productivity and make our organization future [music] fit. I got to know the AIP trained talents via Lawrence Leo from AI Singapore actually. And AIP engineer shows up differently because of three things. [music] First, they come with a very high competence. They get excellent trainings in the program already. Come with practical experience working with big organizations on complex problems. They're all very humble and hands-on.",
+      '[music] Since the AIP trained engineers have joined our team, the impact has been really significant. What I would highly recommend for companies who want to build AI capabilities in Singapore is to leverage [music] the ecosystem and in particular AI Singapore to get the right talents and then in general >> [music] >> from a mindset perspective to think big but then start small, show the power of it and then scale fast.',
+    ],
+    paragraphsKo: [
+      '제 이름은 Ralph이고, Heineken 지역 최고정보책임자이며, 동시에 저희가 지난해 싱가포르에서 시작한 생성형 AI 연구소의 글로벌 [music] 책임을 담당하고 있습니다. 저희에게는 [music] AI가 실제로 Heineken Evergreen 2030 비즈니스 전략의 핵심 추진력입니다. 저희는 세 가지 주요 우선순위를 가지고 있습니다: 성장 가속화, 생산성 향상, 그리고 조직이 미래 [music] 적응력을 갖추게 하기입니다. 저는 AI Singapore의 Lawrence Leo를 통해 AIP가 양성한 인재에 대해 알게 되었습니다. AIP 엔지니어가 남다른 이유는 세 가지입니다. [music] 첫째, 그들은 매우 높은 전문 능력을 갖추고 있습니다. 그들은 이미 프로젝트에서 우수한 훈련을 받았습니다. 대규모 조직과 협력하여 복잡한 문제를 해결한 실무 경험을 가지고 있습니다. 그들은 모두 매우 겸손하고 실무적입니다.',
+      '[music] AIP가 양성한 엔지니어가 저희 팀에 입사한 이래로 효과가 항상 매우 뚜렷합니다. 저는 싱가포르에서 AI 역량을 구축하려는 회사들에게 [music] 에코시스템을 활용하기를 강력히 권고합니다. 특히 AI Singapore를 통해 적절한 인재를 확보하고, 그 다음 전반적으로 말하자면 >> [music] >> 사고 관점에서 말하자면, 큰 그림을 그리되 작은 곳에서 시작하고, 그 위력을 보여주고, 그 다음 빠르게 확대하세요.',
+    ],
+    paragraphsJa: [
+      '私はRalphと申します。Heineken地域最高情報責任者であり、同時に昨年シンガポールで開始した生成型AI実験室のグローバルな[music]責務を担当しています。私たちにとって、[music]AIは実は私たちのHeineken Evergreen 2030事業戦略の重要な推進力です。私たちには3つの主要な優先事項があります。成長の加速、生産性の向上、そして私たちの組織が将来の[music]適応力を備えることです。私はAI SingaporeのLawrence Leoを通じてAIPが育成した人材について知りました。AIP技術者が異なっている理由は3つあります。[music]まず、彼らは非常に高い専門能力を持っています。彼らはプロジェクト中で優れた訓練を受けています。大規模な組織と協力して複雑な問題を解決した実務経験を持っています。彼らはみな非常に謙虚で現実的です。',
+      '[music]AIPが育成した技術者が私たちのチームに加わって以来、効果は非常に顕著です。シンガポールでAI能力を構築したいと考えている企業に対して、[music]エコシステムを活用することを強く勧めます。特にAI Singaporeを通じて適切な人材を取得することです。そして全体的には>>[music]>>思考の観点から言うと、格局を拡大する必要がありますが、小さなところから始めて、その力を示して、その後急速に拡張します。',
+    ],
+    translatedAt: '2026-08-14',
+    translationSource: 'claude',
+    translationModel: 'haiku',
+  },
 };
 
 export function getVideoTranscript(videoId: string): VideoTranscript | undefined {
