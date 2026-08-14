@@ -24,11 +24,13 @@ const years = [...new Set(videos.map((v) => v.date.slice(0, 4)))].sort();
 const yearRange = years.length > 0 ? `${years[0]}–${years[years.length - 1]}` : '';
 const speakerCount = new Set(videos.map((v) => v.speaker)).size;
 
-// Group by topic, sort by date desc within each
+// Group by topic, sort by date desc within each; order sections by their newest video
 const videosByTopic = VIDEO_CATEGORIES.map((cat) => ({
   ...cat,
   videos: videos.filter((v) => v.topic === cat.name).sort((a, b) => b.date.localeCompare(a.date)),
-})).filter((group) => group.videos.length > 0);
+}))
+  .filter((group) => group.videos.length > 0)
+  .sort((a, b) => b.videos[0].date.localeCompare(a.videos[0].date));
 
 const allYears = [...new Set(videos.map((v) => v.date.slice(0, 4)))].sort().reverse();
 ---
@@ -78,19 +80,16 @@ const allYears = [...new Set(videos.map((v) => v.date.slice(0, 4)))].sort().reve
             {t(lang, 'filterAllLabel')}
           </button>
           {
-            VIDEO_CATEGORIES.map((cat) => {
-              const count = videos.filter((v) => v.topic === cat.name).length;
-              return (
-                <button
-                  data-filter="topic"
-                  data-value={cat.name}
-                  class="filter-btn px-3 py-1.5 rounded-full text-sm border transition-all cursor-pointer"
-                >
-                  {pickLocalized(cat, 'name', lang)}
-                  <span class="text-xs opacity-60 ml-1">({count})</span>
-                </button>
-              );
-            })
+            videosByTopic.map((cat) => (
+              <button
+                data-filter="topic"
+                data-value={cat.name}
+                class="filter-btn px-3 py-1.5 rounded-full text-sm border transition-all cursor-pointer"
+              >
+                {pickLocalized(cat, 'name', lang)}
+                <span class="text-xs opacity-60 ml-1">({cat.videos.length})</span>
+              </button>
+            ))
           }
         </div>
       </div>

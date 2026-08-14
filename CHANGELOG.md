@@ -4,6 +4,10 @@
 
 ---
 
+## 0.25.3 — 2026-08-14
+
+- **/videos 分类板块按时间排序**：分类板块按各自最新视频日期倒序排列（最近有新视频的分类排前面），顶部分类筛选按钮同步同一顺序；组内原有按日期倒序不变（[VideosIndex.astro](src/components/videos/VideosIndex.astro)）。
+
 ## 0.24.1 — 2026-08-14
 
 ### P1/P2 迭代批（docs/20260814-stakeholder-iteration-plan.md）
