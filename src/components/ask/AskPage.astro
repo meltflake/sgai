@@ -116,8 +116,18 @@ const askConfig = {
     reset: (widgetId: string) => void;
   }
 
-  const app = document.getElementById('ask-app');
-  if (app) initAsk(app);
+  // ClientRouter swaps the DOM without re-evaluating this module, so init must
+  // re-run on every astro:page-load. The dataset flag keeps the initial full
+  // load (direct call + astro:page-load both firing) from double-binding.
+  function boot(): void {
+    const app = document.getElementById('ask-app');
+    if (app && !app.dataset.askReady) {
+      app.dataset.askReady = '1';
+      initAsk(app);
+    }
+  }
+  boot();
+  document.addEventListener('astro:page-load', boot);
 
   function initAsk(app: HTMLElement): void {
     const config: AskConfig = JSON.parse(app.dataset.askConfig || '{}');
