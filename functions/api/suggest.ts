@@ -47,7 +47,10 @@ async function refreshSuggestions(env: Env, lang: AskLang): Promise<void> {
   if (!kv || !db) return;
 
   const lockKey = `suggest-lock:${lang}`;
-  if (await kv.get(lockKey)) return;
+  if (await kv.get(lockKey)) {
+    console.log(`[suggest:${lang}] lock held, skipping`);
+    return;
+  }
   await kv.put(lockKey, '1', { expirationTtl: LOCK_TTL_SECONDS });
 
   const res = await db
@@ -58,6 +61,7 @@ async function refreshSuggestions(env: Env, lang: AskLang): Promise<void> {
     )
     .bind(lang)
     .all();
+  console.log(`[suggest:${lang}] d1 rows: ${(res.results || []).length}`);
 
   const staticNorms = new Set(staticPoolFor(lang).map(normalize));
   const seen = new Set<string>();
@@ -78,6 +82,9 @@ async function refreshSuggestions(env: Env, lang: AskLang): Promise<void> {
       { role: 'system', content: JUDGE_PROMPT },
       { role: 'user', content: JSON.stringify({ language: lang, candidates }) },
     ]);
+    console.log(
+      `[suggest:${lang}] candidates: ${candidates.length}, judge content: ${content ? content.length : 'null'}`
+    );
     if (content) {
       try {
         const parsed = JSON.parse(content) as { approved?: unknown };
@@ -100,6 +107,7 @@ async function refreshSuggestions(env: Env, lang: AskLang): Promise<void> {
   await kv.put(`suggest:${lang}`, JSON.stringify({ ts: Date.now(), questions }), {
     expirationTtl: STORE_TTL_SECONDS,
   });
+  console.log(`[suggest:${lang}] stored ${questions.length} suggestions`);
 }
 
 export const onRequestGet = async (context: PagesContext): Promise<Response> => {
@@ -124,7 +132,13 @@ export const onRequestGet = async (context: PagesContext): Promise<Response> => 
   const questions = Array.isArray(stored?.questions) ? stored.questions.filter((q) => typeof q === 'string') : [];
   const fresh = typeof stored?.ts === 'number' && Date.now() - stored.ts < FRESH_MS;
   if (!fresh && env.QA_DB && env.DEEPSEEK_API_KEY) {
-    context.waitUntil(refreshSuggestions(env, lang).catch(() => undefined));
+    context.waitUntil(
+      refreshSuggestions(env, lang).catch((err) => {
+        // Surface the failure in `wrangler pages deployment tail` — a
+        // silent catch here cost a debugging round on launch day.
+        console.error(`[suggest:${lang}] refresh failed:`, err instanceof Error ? (err.stack ?? err.message) : err);
+      })
+    );
   }
 
   return new Response(JSON.stringify({ questions }), { headers });

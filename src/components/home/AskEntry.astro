@@ -55,7 +55,7 @@ const chips = ASK_PRESET_POOL[lang].slice(0, ASK_ENTRY_CANDIDATE_COUNT);
   </div>
 </div>
 
-<script is:inline define:vars={{ chipCount: ASK_ENTRY_CHIP_COUNT }}>
+<script is:inline data-astro-rerun define:vars={{ chipCount: ASK_ENTRY_CHIP_COUNT }}>
   (() => {
     const box = document.getElementById('ask-entry-chips');
     if (!box) return;
