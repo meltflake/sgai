@@ -15,6 +15,7 @@ export interface KVNamespaceLike {
 export interface D1PreparedStatementLike {
   bind(...values: unknown[]): D1PreparedStatementLike;
   run(): Promise<unknown>;
+  all(): Promise<{ results?: unknown[] }>;
 }
 
 export interface D1DatabaseLike {

@@ -5,7 +5,7 @@
 
 import { Icon } from 'astro-icon/components';
 import { t, localizedHref, type Lang } from '~/i18n';
-import { toTraditional } from '~/i18n/opencc';
+import { ASK_ENTRY_CANDIDATE_COUNT, ASK_ENTRY_CHIP_COUNT, ASK_PRESET_POOL } from '~/config/ask-presets';
 
 interface Props {
   lang: Lang;
@@ -14,15 +14,9 @@ const { lang } = Astro.props;
 
 const askHref = localizedHref('/ask/', lang);
 
-const CHIPS_ZH = ['NAIS 2.0 是什么？', '新加坡怎么监管 AI？'];
-const CHIPS: Record<Lang, string[]> = {
-  zh: CHIPS_ZH,
-  'zh-tw': CHIPS_ZH.map((q) => toTraditional(q)),
-  en: ['What is NAIS 2.0?', 'How does Singapore regulate AI?'],
-  ja: ['NAIS 2.0 とは？', 'シンガポールの AI 規制は？'],
-  ko: ['NAIS 2.0이란?', '싱가포르는 AI를 어떻게 규제하나요?'],
-};
-const chips = CHIPS[lang];
+// Server renders a handful of candidates; the tiny inline script shows a
+// random ASK_ENTRY_CHIP_COUNT per visit. No-JS fallback: first chips stay.
+const chips = ASK_PRESET_POOL[lang].slice(0, ASK_ENTRY_CANDIDATE_COUNT);
 ---
 
 <div class="rounded-lg border border-subtle bg-surface p-4 mb-8">
@@ -46,12 +40,13 @@ const chips = CHIPS[lang];
       <Icon name="tabler:send" class="w-4 h-4" />
     </button>
   </form>
-  <div class="flex flex-wrap gap-1.5">
+  <div class="flex flex-wrap gap-1.5" id="ask-entry-chips">
     {
-      chips.map((chip) => (
+      chips.map((chip, i) => (
         <a
           href={`${askHref}?q=${encodeURIComponent(chip)}`}
           class="text-xs px-2.5 py-1 rounded-full border border-subtle text-gray-600 dark:text-gray-400 hover:border-primary hover:text-primary transition-colors"
+          hidden={i >= ASK_ENTRY_CHIP_COUNT}
         >
           {chip}
         </a>
@@ -59,3 +54,19 @@ const chips = CHIPS[lang];
     }
   </div>
 </div>
+
+<script is:inline define:vars={{ chipCount: ASK_ENTRY_CHIP_COUNT }}>
+  (() => {
+    const box = document.getElementById('ask-entry-chips');
+    if (!box) return;
+    const chips = Array.from(box.querySelectorAll('a'));
+    for (let i = chips.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [chips[i], chips[j]] = [chips[j], chips[i]];
+    }
+    chips.forEach((chip, i) => {
+      chip.hidden = i >= chipCount;
+      box.appendChild(chip);
+    });
+  })();
+</script>

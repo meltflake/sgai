@@ -16,6 +16,36 @@ export interface DeepseekStreamHandlers {
 
 const REQUEST_TIMEOUT_MS = 60_000;
 
+/**
+ * Non-streaming completion in JSON mode (temperature 0). Used by the
+ * suggestion judge. Returns the raw content string or null on any failure.
+ */
+export async function chatCompletionJson(env: Env, messages: ChatMessage[]): Promise<string | null> {
+  const baseUrl = (env.DEEPSEEK_BASE_URL || 'https://api.deepseek.com').replace(/\/$/, '');
+  try {
+    const res = await fetch(`${baseUrl}/chat/completions`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${env.DEEPSEEK_API_KEY}`,
+      },
+      body: JSON.stringify({
+        model: env.DEEPSEEK_MODEL || 'deepseek-chat',
+        messages,
+        stream: false,
+        response_format: { type: 'json_object' },
+        temperature: 0,
+        max_tokens: 800,
+      }),
+    });
+    if (!res.ok) return null;
+    const data = (await res.json()) as { choices?: Array<{ message?: { content?: string } }> };
+    return data.choices?.[0]?.message?.content ?? null;
+  } catch {
+    return null;
+  }
+}
+
 export async function streamChatCompletion(
   env: Env,
   messages: ChatMessage[],

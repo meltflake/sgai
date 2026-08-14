@@ -5,57 +5,24 @@
 // t() / the PRESETS record, so the client script is language-free.
 
 import { t, type Lang } from '~/i18n';
-import { toTraditional } from '~/i18n/opencc';
 import { ASK_API_PATH, TURNSTILE_SITE_KEY } from '~/config/ask';
+import { ASK_PAGE_PRESET_COUNT, ASK_PRESET_POOL } from '~/config/ask-presets';
 
 interface Props {
   lang: Lang;
 }
 const { lang } = Astro.props;
 
-const PRESETS_ZH = [
-  '新加坡的国家 AI 战略 NAIS 2.0 讲了什么？',
-  '和其他国家比，新加坡 AI 的独特优势在哪里？',
-  '新加坡怎么监管生成式 AI 和 deepfake？',
-  '国会最近在辩论哪些 AI 议题？',
-  'SEA-LION 是什么？下载量怎么样？',
-  '新加坡 AI 人才有哪些培养计划？',
-];
-
-const PRESETS: Record<Lang, string[]> = {
-  zh: PRESETS_ZH,
-  'zh-tw': PRESETS_ZH.map((q) => toTraditional(q)),
-  en: [
-    'What is Singapore’s National AI Strategy 2.0 (NAIS 2.0)?',
-    'What makes Singapore’s AI strategy different from other countries?',
-    'How does Singapore regulate generative AI and deepfakes?',
-    'What AI topics has Parliament debated recently?',
-    'What is SEA-LION and how widely is it used?',
-    'What AI talent programmes does Singapore run?',
-  ],
-  ja: [
-    'シンガポールの国家 AI 戦略 NAIS 2.0 とは何ですか？',
-    '他国と比べたシンガポール AI の強みはどこですか？',
-    'シンガポールは生成 AI やディープフェイクをどう規制していますか？',
-    '国会では最近どんな AI 議題が討論されていますか？',
-    'SEA-LION とは何ですか？どのくらい使われていますか？',
-    'シンガポールにはどんな AI 人材育成プログラムがありますか？',
-  ],
-  ko: [
-    '싱가포르의 국가 AI 전략 NAIS 2.0은 어떤 내용인가요?',
-    '다른 나라와 비교해 싱가포르 AI의 강점은 무엇인가요?',
-    '싱가포르는 생성형 AI와 딥페이크를 어떻게 규제하나요?',
-    '국회에서 최근 어떤 AI 의제를 토론했나요?',
-    'SEA-LION은 무엇이며 얼마나 사용되나요?',
-    '싱가포르에는 어떤 AI 인재 양성 프로그램이 있나요?',
-  ],
-};
-
-const presets = PRESETS[lang];
+// Full pool server-rendered; the client shuffles and shows a random
+// ASK_PAGE_PRESET_COUNT per load, merged with AI-vetted user questions
+// from /api/suggest. No-JS fallback: the first N stay visible.
+const presets = ASK_PRESET_POOL[lang];
 
 const askConfig = {
   lang,
   apiPath: ASK_API_PATH,
+  suggestPath: '/api/suggest',
+  presetCount: ASK_PAGE_PRESET_COUNT,
   turnstileSiteKey: TURNSTILE_SITE_KEY,
   labels: {
     thinking: t(lang, 'askThinking'),
@@ -81,11 +48,12 @@ const askConfig = {
         <p class="text-xs uppercase tracking-[0.18em] text-primary font-semibold mb-3">{t(lang, 'askPresetHeading')}</p>
         <div class="grid sm:grid-cols-2 gap-2 mb-8">
           {
-            presets.map((q) => (
+            presets.map((q, i) => (
               <button
                 type="button"
                 class="ask-preset text-left text-sm px-4 py-3 rounded-lg border border-subtle bg-surface hover:border-primary hover:text-primary transition-colors leading-relaxed"
                 data-q={q}
+                hidden={i >= ASK_PAGE_PRESET_COUNT}
               >
                 {q}
               </button>
@@ -136,6 +104,8 @@ const askConfig = {
   interface AskConfig {
     lang: string;
     apiPath: string;
+    suggestPath: string;
+    presetCount: number;
     turnstileSiteKey: string;
     labels: Record<string, string>;
   }
@@ -198,12 +168,69 @@ const askConfig = {
       resetConversation();
       input.focus();
     });
-    app.querySelectorAll<HTMLButtonElement>('.ask-preset').forEach((btn) => {
-      btn.addEventListener('click', () => {
-        const preset = btn.dataset.q;
-        if (preset) void send(preset);
-      });
+    // Preset rail: click delegation (covers dynamically added chips), a
+    // per-load shuffle, then AI-vetted user questions merged from
+    // /api/suggest (progressive enhancement — static pool is the floor).
+    empty.addEventListener('click', (e) => {
+      const btn = (e.target as HTMLElement).closest<HTMLButtonElement>('.ask-preset');
+      const preset = btn?.dataset.q;
+      if (preset) void send(preset);
     });
+    shufflePresets();
+    void mergeSuggestions();
+
+    function presetGrid(): HTMLElement | null {
+      return empty.querySelector<HTMLElement>('.ask-preset')?.parentElement ?? null;
+    }
+
+    function shufflePresets(): void {
+      const grid = presetGrid();
+      if (!grid) return;
+      const chips = Array.from(grid.querySelectorAll<HTMLButtonElement>('.ask-preset'));
+      for (let i = chips.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [chips[i], chips[j]] = [chips[j], chips[i]];
+      }
+      const count = config.presetCount || 6;
+      chips.forEach((chip, i) => {
+        chip.hidden = i >= count;
+        grid.appendChild(chip);
+      });
+    }
+
+    async function mergeSuggestions(): Promise<void> {
+      if (!config.suggestPath) return;
+      try {
+        const res = await fetch(`${config.suggestPath}?lang=${encodeURIComponent(config.lang)}`);
+        if (!res.ok) return;
+        const data = (await res.json()) as { questions?: unknown };
+        if (!Array.isArray(data.questions) || data.questions.length === 0) return;
+        const grid = presetGrid();
+        if (!grid) return;
+        const existing = new Set(
+          Array.from(grid.querySelectorAll<HTMLButtonElement>('.ask-preset')).map((c) => (c.dataset.q || '').trim())
+        );
+        const template = grid.querySelector<HTMLButtonElement>('.ask-preset');
+        let added = false;
+        for (const q of data.questions) {
+          if (typeof q !== 'string') continue;
+          const question = q.trim();
+          if (!question || existing.has(question)) continue;
+          const chip = document.createElement('button');
+          chip.type = 'button';
+          chip.className = template ? template.className : 'ask-preset';
+          chip.dataset.q = question;
+          // textContent only — user-authored text must never become HTML.
+          chip.textContent = question;
+          chip.hidden = true;
+          grid.appendChild(chip);
+          added = true;
+        }
+        if (added && messages.length === 0) shufflePresets();
+      } catch {
+        // Suggestions are optional; the static pool is already rendered.
+      }
+    }
 
     function persist(): void {
       try {
