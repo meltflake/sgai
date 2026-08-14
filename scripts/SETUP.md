@@ -18,19 +18,20 @@ bash scripts/doctor.sh
 ## 1. Python venv（hansard / videos / voices 旧三条管线必需）
 
 ```bash
-python3 -m venv /tmp/sgai-venv
-/tmp/sgai-venv/bin/pip install -r scripts/requirements.txt
+python3 -m venv ~/.venvs/sgai
+~/.venvs/sgai/bin/pip install -r scripts/requirements.txt yt-dlp
 ```
 
 校验：
 
 ```bash
-/tmp/sgai-venv/bin/python -c "import requests, feedparser, bs4; print('ok')"
+~/.venvs/sgai/bin/python -c "import requests, feedparser, bs4; print('ok')"
+~/.venvs/sgai/bin/yt-dlp --version
 ```
 
-应输出 `ok`。
+应输出 `ok` 和版本号。
 
-> Mac 重启会清 `/tmp`，要重跑这两行。如果想持久，把 venv 放 `~/.venvs/sgai/` 或类似位置，并改 [scripts/README.md](README.md) 里的 crontab 路径。
+> ⚠️ 不要放 `/tmp`：Mac 重启会清空。2026-07-29 → 08-14 曾因 `/tmp/sgai-venv` 重建后缺依赖，让 videos 每日扫描静默失败 17 天。`~/.venvs/sgai/` 是标准位置（`scripts/refresh/videos/run.ts` 的 `resolveScanPython()` 按 `SGAI_PIPELINE_PYTHON` → `~/.venvs/sgai` → `/tmp/sgai-venv`（兼容旧装）顺序探测可用解释器）。装了新 venv 后必须重装 cron 让解释器路径生效：`~/.venvs/sgai/bin/python scripts/auto_update.py --install-cron`。
 
 ---
 

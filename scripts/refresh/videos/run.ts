@@ -62,10 +62,12 @@ const EMIT_SCRIPT = resolve('scripts/refresh/videos/emit.ts');
  *
  * Resolution probes each candidate for `import feedparser, requests` and
  * returns the first that passes: the dispatcher's own interpreter when
- * exported (auto_update.py sets SGAI_PIPELINE_PYTHON), then the known venv
- * paths, then a bare `python3` fallback. Probing (not mere existence) matters:
- * cron's interpreter may have requests for the in-process hansard scan but
- * still lack feedparser, which used to break only the videos scan.
+ * exported (auto_update.py sets SGAI_PIPELINE_PYTHON), then the canonical
+ * persistent venv (~/.venvs/sgai), then the legacy /tmp venv for machines
+ * still on the old SETUP path, then a bare `python3` fallback. Probing (not
+ * mere existence) matters: cron's interpreter may have requests for the
+ * in-process hansard scan but still lack feedparser, which used to break
+ * only the videos scan.
  */
 function canRunScan(python: string): boolean {
   const probe = spawnSync(python, ['-c', 'import feedparser, requests'], {
@@ -78,8 +80,8 @@ function canRunScan(python: string): boolean {
 function resolveScanPython(): string {
   const candidates = [
     ...(process.env.SGAI_PIPELINE_PYTHON ? [process.env.SGAI_PIPELINE_PYTHON] : []),
-    resolve('/tmp/sgai-venv/bin/python'),
     ...(process.env.HOME ? [resolve(process.env.HOME, '.venvs/sgai/bin/python')] : []),
+    resolve('/tmp/sgai-venv/bin/python'),
   ];
   for (const candidate of candidates) {
     if (existsSync(candidate) && canRunScan(candidate)) return candidate;
