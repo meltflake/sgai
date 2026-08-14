@@ -4,13 +4,14 @@ publishDate: 2026-08-14
 title: '新加坡 AI 2026 全景盤點：六個維度、三條判斷'
 excerpt: '把本站六個維度的執行追蹤合成一頁：投資 S$139/人、AI 從業者 5,000/15,000、算力 1.4 GW、大企業採用 62.5%、人均論文全球第一、規則制定者地位——以及資料背後的三條判斷：放大倍數才是真正的指標、SME 斷層是主戰場、規則制定不等於規則被遵守。'
 category: '觀察'
-topicIds: ['national-strategy', 'economy-industry']
+topicIds: ['national-strategy', 'economy-industry', 'advanced-manufacturing', 'connectivity', 'finance', 'healthcare']
 tags:
   - 觀察
   - 新加坡
   - 年度報告
   - 全景盤點
 author: '新加坡 AI 觀察'
+image: '~/assets/images/og/state-of-singapore-ai-2026.png'
 relatedPolicyIds:
   - nais-update-2026
 relatedLeverNumbers:

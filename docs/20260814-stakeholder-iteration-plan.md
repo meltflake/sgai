@@ -15,17 +15,17 @@
 | P0-1 | 年度合成页 State of Singapore AI 2026（pillar 长文 v1） | ✅ 已落地 | 2026-08-14 本地完成，待提交 |
 | P0-2 | 渲染层 as-of 时间戳（tracker 六维 + MetricRow） | ✅ 已落地 | 2026-08-14 本地完成，待提交 |
 | P0-3 | 引用此条 CiteBlock（五类详情页） | ✅ 已落地 | 2026-08-14 本地完成，待提交 |
-| P1-1 | 资本与基础设施结构化视图（ai-capital.ts + /ecosystem section） | ⏳ 未开始 | |
-| P1-2 | National AI Missions 垂直 hub（+2 topics + 策展） | ⏳ 未开始 | |
-| P1-3 | AISG 支柱长文 | ⏳ 未开始 | |
-| P1-4 | 月报 newsletter（半自动 + Buttondown） | ⏳ 未开始 | |
-| P2-1 | jobs-index 行业切片（METHODOLOGY_VERSION → 2） | ⏳ 未开始 | |
-| P2-2 | 企业采用行业切片（adoption 维 sector 级行） | ⏳ 未开始 | |
-| P2-3 | 旗舰项目完备性校验（verify-graph 扩展） | ⏳ 未开始 | |
-| P2-4 | 数据导出（debates/policies/tracker JSON+CSV） | ⏳ 未开始 | |
-| P2-5 | sitemap lastmod（serialize 钩子扩展） | ⏳ 未开始 | |
-| P2-6 | OG 动态图接线（首页 + 六维 + 年度报告） | ⏳ 未开始 | |
-| P2-7 | 议员 stub 转正（议会记录派生页） | ⏳ 未开始 | |
+| P1-1 | 资本与基础设施结构化视图（ai-capital.ts + /ecosystem section） | ✅ 已落地 | PR #197 |
+| P1-2 | National AI Missions 垂直 hub（+2 topics + 策展） | ✅ 已落地 | PR #197 |
+| P1-3 | AISG 支柱长文 | ✅ 已落地 | PR #197 |
+| P1-4 | 月报 newsletter（半自动 + Buttondown） | ✅ 代码就绪 | PR #197；待 Buttondown 账号激活 |
+| P2-1 | jobs-index 行业切片（METHODOLOGY_VERSION → 2） | ✅ 代码就绪 | PR #197；sector 序列自 2026-09 快照 |
+| P2-2 | 企业采用行业切片（adoption 维 sector 级行） | ✅ 已落地 | PR #197；用官方 IMDA SGDE 脉冲调查的职能级切片（厂商数据仅国家层） |
+| P2-3 | 旗舰项目完备性校验（verify-graph 扩展） | ✅ 已落地 | PR #197（含补建 NOAI 实体） |
+| P2-4 | 数据导出（debates/policies/tracker JSON+CSV） | ✅ 已落地 | PR #197 |
+| P2-5 | sitemap lastmod（serialize 钩子扩展） | ✅ 已落地 | PR #197（build 链预构建脚本） |
+| P2-6 | OG 动态图接线（首页 + 六维 + 年度报告） | ✅ 已落地 | PR #197 + 本 PR（年度报告挂图） |
+| P2-7 | 议员 stub 转正（议会记录派生页） | ✅ 已存在 | 核实 isLowSignalPerson + parliamentary-record 已实现 |
 
 > P0 执行备忘（2026-08-14）：P0-1 v1 走 pillar 长文（`state-of-singapore-ai-2026`，五语实体文件 + MANUAL_UPDATES longform 条目 + 导航「年度报告 2026」入口）；P0-2 新增 `MetricRow.asOfDate` / `QuantifiedDimension.headlineAsOf` / 定性维 `asOfDate`，六维全部带数据截至 chip，stale-stats 增加 as-of warning 通道（>365 天告警、不 fail）；P0-3 新组件 `CiteBlock.astro` 接入 debate/policy/video/ecosystem/tracker 五类详情页（10 个页面文件），品牌串走 `t(lang,'siteName')` 防 EN 泄漏；顺带修复 OECD 实体 ja/ko 名称 EN 占位问题；EN-sentence baseline 按扫描器指引重快照（仅新增一处合法引用：法案官方英文名）。
 

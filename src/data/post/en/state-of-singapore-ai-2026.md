@@ -12,6 +12,7 @@ tags:
   - Annual Report
   - Comprehensive Overview
 author: Singapore AI Observatory
+image: '~/assets/images/og/state-of-singapore-ai-2026.png'
 relatedPolicyIds:
   - nais-update-2026
 relatedLeverNumbers:
