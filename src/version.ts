@@ -20,7 +20,7 @@
 import { deriveUpdates } from '~/utils/derived-updates';
 import { MANUAL_UPDATES } from '~/data/updates';
 
-export const SITE_VERSION = '0.24.1';
+export const SITE_VERSION = '0.24.2';
 
 // Pre-rule fallback: only used when no record carries addedAt yet (which
 // cannot happen in the current repo — kept for type-narrowing and to make
