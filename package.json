@@ -10,7 +10,7 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "NODE_OPTIONS=--max-old-space-size=8192 astro build",
+    "build": "tsx scripts/build-lastmod.ts && NODE_OPTIONS=--max-old-space-size=8192 astro build",
     "postbuild": "git rev-parse HEAD > dist/.build-commit 2>/dev/null || true",
     "preview": "astro preview",
     "astro": "astro",
@@ -63,7 +63,8 @@
     "fix": "npm run fix:eslint && npm run fix:prettier",
     "fix:eslint": "eslint --fix .",
     "fix:prettier": "prettier -w .",
-    "dev:api": "npx wrangler pages dev dist --port 8788"
+    "dev:api": "npx wrangler pages dev dist --port 8788",
+    "generate:og-images": "tsx scripts/generate-og-images.ts"
   },
   "dependencies": {
     "@astrojs/rss": "^4.0.12",

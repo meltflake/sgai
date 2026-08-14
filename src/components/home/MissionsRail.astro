@@ -1,0 +1,55 @@
+---
+// src/components/home/MissionsRail.astro
+//
+// Homepage rail for the four National AI Missions (P1-2). Each card links
+// to the mission's topic hub (/topics/<id>/), which aggregates debates,
+// policies, videos and the mission posts. Names come from topics.ts —
+// no hardcoded labels. Values are pre-resolved in the frontmatter because
+// generic calls like pickLocalized<string>(...) do not parse as JSX child
+// expressions (the `<string>` is read as a tag).
+
+import { topics, type Topic } from '~/data/topics';
+import { Icon } from 'astro-icon/components';
+import { getLangFromPath, localizedHref, pickLocalized, t, type Lang } from '~/i18n';
+
+const lang: Lang = getLangFromPath(new URL(Astro.url).pathname);
+
+const MISSION_IDS = ['advanced-manufacturing', 'connectivity', 'finance', 'healthcare'] as const;
+
+const missions: Array<{ id: string; icon: string; name: string; description: string; href: string }> = [];
+for (const id of MISSION_IDS) {
+  const tp: Topic | undefined = topics.find((x) => x.id === id);
+  if (!tp) continue;
+  missions.push({
+    id: tp.id,
+    icon: tp.icon,
+    name: pickLocalized<string>(tp, 'name', lang) ?? tp.name,
+    description: pickLocalized<string>(tp, 'description', lang) ?? tp.description,
+    href: localizedHref(`/topics/${tp.id}/`, lang),
+  });
+}
+---
+
+<section class="pt-12 md:pt-16 border-t border-subtle">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <p class="text-xs uppercase tracking-[0.18em] text-primary font-semibold mb-4">
+      {t(lang, 'fpMissionsSection')}
+    </p>
+    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      {
+        missions.map((m) => (
+          <a
+            href={m.href}
+            class="bg-surface border border-subtle rounded-lg p-5 hover:border-blue-300 hover:shadow-md transition-all"
+          >
+            <div class="text-2xl mb-2 text-primary">
+              <Icon name={m.icon} class="w-6 h-6" />
+            </div>
+            <h3 class="font-bold text-base mb-1 text-gray-900 dark:text-white">{m.name}</h3>
+            <p class="text-xs text-muted leading-relaxed m-0">{m.description}</p>
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</section>

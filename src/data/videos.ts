@@ -1109,6 +1109,7 @@ export const videos: VideoItem[] = [
       '黄循財首相が予算案演説を発表し、AI が核心テーマとなり、国家 AI 委員会の設立と自らが委員長を務めることを宣言した。',
     summaryEn:
       'PM Lawrence Wong delivers the Budget speech with AI as a core theme, announcing the establishment of the National AI Council, which he will personally chair.',
+    topicIds: ['national-strategy', 'advanced-manufacturing', 'connectivity', 'finance', 'healthcare'],
     topic: 'AI 战略与愿景',
     topicKo: 'AI 전략과 비전',
     topicJa: 'AI 戦略とビジョン',

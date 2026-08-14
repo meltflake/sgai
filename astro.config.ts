@@ -18,6 +18,37 @@ import astrowind from './vendor/integration';
 import { readingTimeRemarkPlugin, responsiveTablesRehypePlugin, lazyImagesRehypePlugin } from './src/utils/frontmatter';
 import { IN_LANGUAGES, LOCALES, ROUTE_DEFAULT_LOCALE } from './src/i18n';
 
+// P2-5: URL → lastmod map for sitemap serialization. Materialised by the
+// pre-build step scripts/build-lastmod.ts (run inside the npm build chain)
+// because astro.config cannot import src/data directly — the config is
+// evaluated without `~` alias resolution. Read lazily so `astro dev` works
+// before the first build.
+let lastmodByPath: Map<string, string> | null = null;
+
+function loadLastmodMap(): Map<string, string> {
+  if (lastmodByPath) return lastmodByPath;
+  lastmodByPath = new Map();
+  try {
+    const raw = JSON.parse(fs.readFileSync(path.join(__dirname, 'scripts/data/lastmod-map.json'), 'utf8'));
+    for (const [p, d] of Object.entries(raw as Record<string, string>)) lastmodByPath.set(p, d);
+  } catch {
+    // Map missing (fresh checkout, dev server): degrade to no lastmod —
+    // sitemap stays valid, just without freshness hints.
+  }
+  return lastmodByPath;
+}
+
+function lastmodForPathname(pathname: string): string | undefined {
+  let p = pathname;
+  for (const loc of LOCALES) {
+    if (p === `/${loc}` || p.startsWith(`/${loc}/`)) {
+      p = p.slice(loc.length + 1) || '/';
+      break;
+    }
+  }
+  return loadLastmodMap().get(p);
+}
+
 // Sitemap locale config. Keys are URL segments (== Lang codes,
 // kebab-cased where needed — e.g. 'zh-tw'). Values are BCP 47 hreflang
 // codes from IN_LANGUAGES, the single source of truth shared with
@@ -88,7 +119,9 @@ export default defineConfig({
         } catch {
           // File not found / unreadable: keep the URL (safer default than dropping).
         }
-        return item;
+        // P2-5: attach the record's currency date as <lastmod> when known.
+        const lastmod = lastmodForPathname(new URL(item.url).pathname);
+        return lastmod ? { ...item, lastmod } : item;
       },
     }),
     mdx(),

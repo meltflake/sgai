@@ -65,6 +65,7 @@ const metaDescription =
 const metadata = {
   title: seoTitle ? seoTitle : `${title} · ${t(lang, 'trackerPageTitle')}`,
   description: metaDescription,
+  openGraph: { images: [{ url: `~/assets/images/og/${dim.id}.png`, width: 1200, height: 630 }] },
 };
 
 // Pre-resolve ranking anchors to avoid pickLocalized<string>??-in-JSX TypeScript issues

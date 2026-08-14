@@ -7,6 +7,7 @@
 // Design doc: docs/20260502-tracker-dashboard-design.md
 
 import { jobsIndexMetricRows } from '~/data/ai-jobs-index';
+import { capitalMetricRows } from '~/data/ai-capital';
 
 export type Trend = 'up' | 'flat' | 'down'; // visual: ↗ → ↘
 export type DimensionId = 'investment' | 'talent' | 'compute' | 'adoption' | 'research' | 'governance';
@@ -284,6 +285,9 @@ export const dimensions: Dimension[] = [
       'Private sector co-investment ratio is low — government still drives most of the spend. Capital flows mostly to compute and large enterprises; SME-side subsidies underpenetrate. Disclosure conventions occasionally diverge year-over-year, so cross-year comparisons need care.',
     relatedPostSlugs: ['sovereign-capital-frontier-ai'],
     metrics: [
+      // Derived at render time from the capital ledger (ai-capital.ts) —
+      // the S$1→S$13 amplification ratio, computed, never hand-copied.
+      ...capitalMetricRows(),
       {
         name: '政府 AI 专项投入',
         nameKo: '정부 AI 전담 투입',
@@ -1162,7 +1166,46 @@ export const dimensions: Dimension[] = [
     shortcomingEn:
       'SME 14.5% looks fast-growing but absolute level is low — broad-based AI usage takes another 2–3 years. Government use is mostly productivity tools; decision-grade AI is shallow. NAIIP funding sizing is not public — execution is hard to assess. Government-side public penetration data has targets but no tracked progress.',
     metrics: [
-      // 17 rows from old "产业采用" section + 1 row from old "国际排名" (东南亚深科技融资份额) = 18 total
+      // 17 rows from old "产业采用" section + 1 row from old "国际排名" (东南亚深科技融资份额) = 18 total.
+      // +2 rows (P2-2): business-function slice from the IMDA pulse survey
+      // published with SGDE 2025 — the only official sector/function-level
+      // adoption cut available (the three vendor datasets are country-level).
+      {
+        name: 'AI 使用广度（业务职能）',
+        nameEn: 'AI usage breadth (business functions)',
+        nameJa: 'AI 利用の広がり（業務機能）',
+        nameKo: 'AI 활용 폭(업무 기능)',
+        value: 'SME 平均 3 个职能 / 非 SME 平均 5 个；最常见：IT、客服、财务会计',
+        valueEn:
+          'SMEs use AI in 3 business functions on average; non-SMEs 5. Most common: IT, customer service, finance & accounting',
+        valueJa: 'SME は平均 3 機能、非 SME は平均 5 機能で AI を利用。最多は IT、カスタマーサービス、財務会計',
+        valueKo: 'SME는 평균 3개, 비SME는 평균 5개 업무 기능에 AI 사용. 가장 흔한 곳은 IT, 고객서비스, 재무회계',
+        source: 'IMDA 委托脉冲调查（SGDE 2025）',
+        sourceEn: 'IMDA-commissioned pulse survey (SGDE 2025)',
+        sourceJa: 'IMDA 委託パルス調査（SGDE 2025）',
+        sourceKo: 'IMDA 의뢰 펄스 조사(SGDE 2025)',
+        sourceUrl:
+          'https://www.imda.gov.sg/resources/press-releases-factsheets-and-speeches/press-releases/2025/singapore-digital-economy',
+        asOfDate: '2025-10',
+      },
+      {
+        name: 'AI 工具形态',
+        nameEn: 'AI tool sophistication',
+        nameJa: 'AI ツールの形態',
+        nameKo: 'AI 도구 형태',
+        value: '84% 现成生成式工具 / 52% 领域定制方案 / 44% 自研或私有工具',
+        valueEn:
+          '84% off-the-shelf generative tools / 52% domain-specific solutions / 44% customised or proprietary tools',
+        valueJa: '84% 既製生成ツール / 52% 領域特化ソリューション / 44% 自社開発・専有ツール',
+        valueKo: '84% 기성 생성형 도구 / 52% 도메인 맞춤 솔루션 / 44% 자체 개발·전용 도구',
+        source: 'IMDA 委托脉冲调查（SGDE 2025）',
+        sourceEn: 'IMDA-commissioned pulse survey (SGDE 2025)',
+        sourceJa: 'IMDA 委託パルス調査（SGDE 2025）',
+        sourceKo: 'IMDA 의뢰 펄스 조사(SGDE 2025)',
+        sourceUrl:
+          'https://www.imda.gov.sg/resources/press-releases-factsheets-and-speeches/press-releases/2025/singapore-digital-economy',
+        asOfDate: '2025-10',
+      },
       {
         name: '数字经济占 GDP',
         nameKo: '디지털 경제 점유율(GDP 대비)',

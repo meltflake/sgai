@@ -294,6 +294,49 @@ export const topics: Topic[] = [
     icon: 'tabler:coin',
   },
   {
+    id: 'advanced-manufacturing',
+    name: '先进制造',
+    nameEn: 'Advanced Manufacturing',
+    nameJa: '先端製造',
+    nameKo: '첨단 제조',
+    description: 'National AI Mission 第一项——AI 驱动的机器人、工厂数字化与制造业升级。',
+    descriptionEn:
+      'The first National AI Mission — AI-driven robotics, factory digitalisation and the upgrading of manufacturing.',
+    descriptionJa: 'National AI Mission の第一弾——AI 駆動のロボティクス、工場のデジタル化、製造業の高度化。',
+    descriptionKo: 'National AI Mission 첫 번째 — AI 기반 로보틱스, 공장 디지털화와 제조업 고도화.',
+    intro:
+      '先进制造是 2026 年 National AI Missions 的第一项。新加坡制造业占 GDP 约五分之一，NAIS Update 把 AI 驱动的机器人当作制造部门的力量倍增器——从半导体、精密工程到航空航天，公共资金通过 CTC 补助与企业转型计划流入这些行业。\n\n本主题汇集与制造 AI 相关的国会辩论、政策、抓手与案例，跟踪这项任务从预算案承诺走向工厂车间的过程。',
+    introEn:
+      'Advanced manufacturing is the first of the 2026 National AI Missions. Manufacturing is roughly a fifth of Singapore’s GDP, and the NAIS Update casts AI-driven robotics as a force multiplier for the sector — from semiconductors and precision engineering to aerospace, with public money flowing in through CTC grants and enterprise transformation programmes.\n\nThis hub gathers the parliamentary debates, policies, levers and cases tied to manufacturing AI, tracking how the mission moves from budget commitments to the factory floor.',
+    introJa:
+      '先端製造は 2026 年の National AI Missions の第一弾である。製造業はシンガポール GDP の約 5 分の 1 を占め、NAIS Update は AI 駆動のロボティクスを製造部門の力の倍率器と位置づける——半導体、精密工学、航空宇宙まで、CTC 助成と企業変革プログラムを通じて公的資金が流入する。\n\n本テーマは製造 AI に関わる国会討論、政策、レバー、事例を集約し、このミッションが予算の約束から工場の現場へ進む過程を追う。',
+    introKo:
+      '첨단 제조는 2026년 National AI Missions의 첫 번째다. 제조업은 싱가포르 GDP의 약 5분의 1을 차지하며, NAIS Update는 AI 기반 로보틱스를 제조 부문의 힘 배가 장치로 본다 — 반도체, 정밀 공학, 항공우주까지 CTC 보조금과 기업 전환 프로그램을 통해 공적 자금이 흘러든다.\n\n이 주제는 제조 AI와 관련된 국회 토론, 정책, 레버, 사례를 집약해 이 미션이 예산의 약속에서 공장 현장으로 나아가는 과정을 추적한다.',
+    icon: 'tabler:robot',
+  },
+  {
+    id: 'connectivity',
+    name: '互联互通',
+    nameEn: 'Connectivity',
+    nameJa: 'コネクティビティ',
+    nameKo: '연결성',
+    description: 'National AI Mission 之一——AI 自动化机场、港口与物流，强化全球枢纽地位。',
+    descriptionEn:
+      'One of the National AI Missions — AI automating airports, ports and logistics to strengthen Singapore’s global-hub position.',
+    descriptionJa:
+      'National AI Mission の一つ——AI が空港・港湾・物流を自動化し、グローバルハブとしての地位を強化する。',
+    descriptionKo: 'National AI Mission 중 하나 — AI가 공항·항만·물류를 자동화해 글로벌 허브 지위를 강화한다.',
+    intro:
+      '互联互通与物流是 National AI Missions 的第二个方向。政府的目标是用 AI 自动化机场与港口的运营，让货物流动更高效，稳住新加坡作为全球贸易、人员与资本流动门户的位置。\n\n本主题汇集与互联互通、物流与交通 AI 相关的国会辩论、政策与案例，跟踪樟宜、港口与供应链数字化这条线。',
+    introEn:
+      'Connectivity and logistics form the second National AI Mission. The government’s goal is to use AI to automate airport and port operations, move goods more efficiently, and hold Singapore’s position as a global gateway for trade, people and capital.\n\nThis hub gathers the parliamentary debates, policies and cases tied to connectivity, logistics and transport AI, tracking the digitalisation of Changi, the ports and the supply chain.',
+    introJa:
+      'コネクティビティと物流は National AI Missions の二つ目の方向である。政府の狙いは AI で空港と港湾の運用を自動化し、貨物の流れを効率化して、貿易・人・資本のグローバルゲートウェイとしてのシンガポールの地位を保つことだ。\n\n本テーマはコネクティビティ、物流、交通 AI に関わる国会討論、政策、事例を集約し、チャンギ、港湾、サプライチェーンのデジタル化を追う。',
+    introKo:
+      '연결성과 물류는 National AI Missions의 두 번째 방향이다. 정부의 목표는 AI로 공항과 항만 운영을 자동화하고 화물 흐름을 효율화해, 무역·사람·자본의 글로벌 게이트웨이로서 싱가포르의 지위를 지키는 것이다.\n\n이 주제는 연결성, 물류, 교통 AI와 관련된 국회 토론, 정책, 사례를 집약해 창이, 항만, 공급망의 디지털화를 추적한다.',
+    icon: 'tabler:plane',
+  },
+  {
     id: 'startups-investment',
     name: '创业与投资',
     nameEn: 'Startups & Investment',

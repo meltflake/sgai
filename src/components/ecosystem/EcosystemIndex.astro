@@ -3,6 +3,7 @@ import Layout from '~/layouts/PageLayout.astro';
 import CrossDomainRail from '~/components/listing/CrossDomainRail.astro';
 import LatestAdditions from '~/components/listing/LatestAdditions.astro';
 import Headline from '~/components/ui/Headline.astro';
+import CapitalSection from '~/components/data/CapitalSection.astro';
 import { Icon } from 'astro-icon/components';
 import { ecosystemCategories } from '~/data/ecosystem';
 import { localizedHref, pickLocalized, t, type Lang } from '~/i18n';
@@ -99,6 +100,8 @@ if (lang === 'en') headlineTitle = '🗺️ Singapore AI Ecosystem Map';
         ))
       }
     </div>
+
+    <CapitalSection />
 
     <p class="mt-12 text-sm text-muted text-center">{t(lang, 'ecosystemSourceFootnote')}</p>
   </section>

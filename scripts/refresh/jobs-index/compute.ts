@@ -5,7 +5,7 @@
 // methodology is FROZEN (see src/data/ai-jobs-index.ts header); changes
 // require a METHODOLOGY_VERSION bump and break series comparability.
 
-import type { RoleTypeId } from '../../../src/data/ai-jobs-index.ts';
+import type { RoleTypeId, SectorId } from '../../../src/data/ai-jobs-index.ts';
 
 /** Subset of the MyCareersFuture job payload we consume. */
 export interface McfJob {
@@ -142,6 +142,36 @@ export function roleTypeCounts(assignments: RoleTypeId[]): Array<{ roleType: Rol
   for (const r of assignments) counts.set(r, (counts.get(r) ?? 0) + 1);
   const ORDER: RoleTypeId[] = ['engineering', 'research', 'data', 'product', 'gtm', 'ops-other'];
   return ORDER.filter((r) => counts.has(r)).map((roleType) => ({ roleType, count: counts.get(roleType)! }));
+}
+
+// ── Sectors (v2) ───────────────────────────────────────────────────────
+
+/** Company-name keywords first (a bank is a bank whatever the role title),
+ *  then title keywords. Order matters — first match wins. */
+const SECTOR_RULES: Array<{ companyRe: RegExp | null; titleRe: RegExp; sector: SectorId }> = [
+  { companyRe: /(bank|financial|insurance|capital|mas|temasek|gic|dbs|ocbc|uob|paypal|visa|mastercard)/i, titleRe: /(finance|banking|insurance|trading|risk|compliance|aml)/i, sector: 'finance' },
+  { companyRe: /(hospital|health|medical|clinic|pharma|biotech|care|singhealth|nuhs)/i, titleRe: /(health|medical|clinical|pharma|biotech|nurse|doctor)/i, sector: 'health' },
+  { companyRe: /(manufactur|semiconductor|electronics|micron|precision|engineering|fabricat)/i, titleRe: /(manufactur|semiconductor|process engineer|production|quality)/i, sector: 'manufacturing' },
+  { companyRe: /(logistics|shipping|port|airport|airline|changi|psa|dhl|fedex|ups|maersk)/i, titleRe: /(logistics|supply chain|shipping|freight|aviation|maritime)/i, sector: 'logistics' },
+  { companyRe: /(university|school|ministry|gov|agency|govtech|board|institute|polytechnic)/i, titleRe: /(education|lecturer|professor|teacher|public|policy)/i, sector: 'gov-edu' },
+  { companyRe: /(google|microsoft|amazon|meta|apple|nvidia|byte|tiktok|shopee|grab|openai|anthropic|software|tech|it can)/i, titleRe: /(software|engineer|developer|ai|machine learning|data|cloud|platform)/i, sector: 'tech' },
+];
+
+/** Deterministic first pass; unmatched entries go to the LLM fallback. */
+export function classifySectorByRules(title: string, companyName: string | undefined | null): SectorId | null {
+  const co = companyName ?? '';
+  for (const { companyRe, titleRe, sector } of SECTOR_RULES) {
+    if (companyRe && companyRe.test(co)) return sector;
+    if (titleRe.test(title)) return sector;
+  }
+  return null;
+}
+
+export function sectorCounts(assignments: SectorId[]): Array<{ sector: SectorId; count: number }> {
+  const counts = new Map<SectorId, number>();
+  for (const s of assignments) counts.set(s, (counts.get(s) ?? 0) + 1);
+  const ORDER: SectorId[] = ['tech', 'finance', 'health', 'manufacturing', 'logistics', 'gov-edu', 'other'];
+  return ORDER.filter((s) => counts.has(s)).map((sector) => ({ sector, count: counts.get(sector)! }));
 }
 
 // ── Sanity bound ────────────────────────────────────────────────────────

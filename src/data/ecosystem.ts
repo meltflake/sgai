@@ -5171,6 +5171,68 @@ The key questions for AIAP in the NAIS 2.0 era: **Can it scale to 200+ per year?
         updated: '2026-05-02',
       },
       {
+        id: 'noai',
+        name: 'NOAI 全国 AI 奥赛',
+        nameJa: 'NOAI 全国 AI オリンピック',
+        nameKo: 'NOAI 전국 AI 올림피아드',
+        nameEn: 'NOAI (National Olympiad in AI)',
+        description: 'AISG 的青少年 AI 赛事入口，选拔新加坡队参加 IOAI',
+        descriptionJa: 'AISG の青少年 AI コンテスト入口、シンガポール代表を IOAI に派遣',
+        descriptionKo: 'AISG의 청소년 AI 대회 입구, 싱가포르 대표팀을 IOAI에 파견',
+        descriptionEn: "AISG's youth AI competition entry point; selects the Singapore team for the IOAI",
+        entityType: 'initiative',
+        status: 'active',
+        founded: '2024',
+        scale: 'IOAI 2024 保加利亚 2 金；2025 北京 2 金 5 银；与 NTU 联合主办 IOAI 2027',
+        scaleJa: 'IOAI 2024 ブルガリア金 2；2025 北京金 2 銀 5；NTU と共同で IOAI 2027 を主催',
+        scaleKo: 'IOAI 2024 불가리아 금 2개; 2025 베이징 금 2개·은 5개; NTU와 공동으로 IOAI 2027 개최',
+        scaleEn:
+          '2 golds at IOAI 2024 (Bulgaria); 2 golds + 5 silvers at IOAI 2025 (Beijing); co-hosting IOAI 2027 with NTU',
+        summary:
+          'NOAI 是 AISG 的全国 AI 奥林匹克，新加坡队通往 IOAI 的国内选拔。新加坡队 2024 年保加利亚站拿 2 金，2025 年北京站拿 2 金 5 银。2027 年 AISG 与 NTU 联合主办 IOAI，这是该赛事首次落地新加坡。',
+        summaryJa:
+          'NOAI は AISG の全国 AI オリンピックで、IOAI へのシンガポール代表を選抜する。代表チームは 2024 年ブルガリア大会で金 2、2025 年北京大会で金 2 銀 5 を獲得。2027 年には AISG と NTU が IOAI を共同主催し、同大会として初のシンガポール開催となる。',
+        summaryKo:
+          'NOAI는 AISG의 전국 AI 올림피아드로, IOAI에 나갈 싱가포르 대표를 뽑는 국내 관문이다. 대표팀은 2024년 불가리아에서 금 2개, 2025년 베이징에서 금 2개·은 5개를 획득했다. 2027년에는 AISG와 NTU가 IOAI를 공동 개최해 대회 사상 첫 싱가포르 개최가 된다.',
+        summaryEn:
+          "NOAI is AISG's National Olympiad in AI, the domestic pathway that selects Singapore's team for the IOAI. The team took 2 golds at IOAI 2024 in Bulgaria and 2 golds plus 5 silvers at IOAI 2025 in Beijing. In 2027 AISG and NTU co-host the IOAI — the first time the olympiad lands in Singapore.",
+        whatItIs:
+          'NOAI 是 AISG 的全国 AI 奥林匹克：面向青少年选拔新加坡队参加 IOAI 的国内通道。选拔出的队伍代表新加坡参加国际赛场。',
+        whatItIsJa:
+          'NOAI は AISG の全国 AI オリンピックである。青少年から IOAI に出場するシンガポール代表を選抜する国内経路で、選ばれたチームが国際大会でシンガポールを代表する。',
+        whatItIsKo:
+          'NOAI는 AISG의 전국 AI 올림피아드다. 청소년 중 IOAI에 나갈 싱가포르 대표팀을 뽑는 국내 관문이며, 선발된 팀이 국제 무대에서 싱가포르를 대표한다.',
+        whatItIsEn:
+          "NOAI is AISG's National Olympiad in AI: the domestic pathway that selects Singapore's youth team for the IOAI, with the selected team representing Singapore internationally.",
+        aiRelevance: '赛事成绩是青少年 AI 人才梯队的硬指标：2024 保加利亚站 2 金，2025 北京站 2 金 5 银。',
+        aiRelevanceJa:
+          '大会の成績は青少年 AI 人材のパイプラインの硬い指標である。2024 年ブルガリア大会で金 2、2025 年北京大会で金 2 銀 5 を獲得した。',
+        aiRelevanceKo:
+          '대회 성적은 청소년 AI 인재 파이프라인의 확실한 지표다. 2024년 불가리아에서 금 2개, 2025년 베이징에서 금 2개·은 5개를 획득했다.',
+        aiRelevanceEn:
+          'Competition results are a hard signal for the youth AI talent pipeline: 2 golds at the 2024 edition in Bulgaria and 2 golds plus 5 silvers at the 2025 edition in Beijing.',
+        singaporeRelevance:
+          '与 NTU 联合主办 IOAI 2027，是该项赛事首次落地新加坡，延续新加坡在 AI 治理与教育上的东道主叙事。',
+        singaporeRelevanceJa:
+          'NTU と共同で IOAI 2027 を主催する。同大会のシンガポール開催は初で、AI ガバナンスと教育におけるシンガポールのホスト国としての位置づけを継続する。',
+        singaporeRelevanceKo:
+          'NTU와 공동으로 IOAI 2027을 개최한다. 대회 사상 첫 싱가포르 개최로, AI 거버넌스와 교육에서 싱가포르의 주최국 서사를 이어간다.',
+        singaporeRelevanceEn:
+          "Co-hosting IOAI 2027 with NTU marks the competition's first Singapore edition, extending the country's hosting record in AI governance and education.",
+        url: 'https://www.ioai-singapore.org/',
+        sources: [
+          {
+            label: 'IOAI Singapore 官方站',
+            labelJa: 'IOAI Singapore 公式サイト',
+            labelKo: 'IOAI Singapore 공식 사이트',
+            labelEn: 'IOAI Singapore official site',
+            url: 'https://www.ioai-singapore.org/',
+            date: '2026-05-02',
+          },
+        ],
+        updated: '2026-08-14',
+      },
+      {
         id: 'ladp',
         name: 'LADP',
         nameJa: 'LADP',
