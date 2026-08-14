@@ -62,8 +62,6 @@ const pagefindTranslations = PAGEFIND_TRANSLATIONS[lang] ?? PAGEFIND_TRANSLATION
 <script>
   // Lazy-init: only fetch Pagefind UI when the modal opens for the first
   // time. This keeps the homepage TTI clean.
-  let initialized = false;
-
   function loadScript(src: string): Promise<void> {
     return new Promise((resolve, reject) => {
       const s = document.createElement('script');
@@ -75,19 +73,23 @@ const pagefindTranslations = PAGEFIND_TRANSLATIONS[lang] ?? PAGEFIND_TRANSLATION
   }
 
   async function initPagefind() {
-    if (initialized) return;
-    initialized = true;
+    // Init state lives on the dialog element, not in module scope: ClientRouter
+    // swaps in a fresh (empty) dialog on navigation, which must be re-initialized.
+    const dlg = document.getElementById('search-dialog');
+    if (!dlg || dlg.dataset.pagefindInit) return;
+    dlg.dataset.pagefindInit = '1';
 
     try {
       // Pagefind's UI bundle is emitted by astro-pagefind into /pagefind/
       // at build time. We inject it via <script src> so Vite doesn't try
-      // to resolve it during dev/build.
-      await loadScript('/pagefind/pagefind-ui.js');
+      // to resolve it during dev/build. The global survives DOM swaps.
+      if (!('PagefindUI' in window)) {
+        await loadScript('/pagefind/pagefind-ui.js');
+      }
       // UI strings are rendered server-side per locale into the dialog's
       // data attribute (see PAGEFIND_TRANSLATIONS in the frontmatter).
       // Result-language filtering is automatic via <html lang>.
-      const dlg = document.getElementById('search-dialog');
-      const translations = JSON.parse(dlg?.dataset.pagefindTranslations || '{}');
+      const translations = JSON.parse(dlg.dataset.pagefindTranslations || '{}');
       // @ts-expect-error - PagefindUI is exposed as a global by the script above
       new window.PagefindUI({
         element: '#search',
@@ -118,8 +120,36 @@ const pagefindTranslations = PAGEFIND_TRANSLATIONS[lang] ?? PAGEFIND_TRANSLATION
     if (dlg?.open) dlg.close();
   }
 
-  document.getElementById('search-trigger')?.addEventListener('click', openSearch);
-  document.getElementById('search-close')?.addEventListener('click', closeSearch);
+  // ClientRouter swaps the DOM without re-evaluating this module, so
+  // per-element listeners must re-bind on every astro:page-load. The dataset
+  // flags keep the initial full load (direct call + astro:page-load both
+  // firing) from double-binding. Document-level listeners bind once below.
+  function boot() {
+    const trigger = document.getElementById('search-trigger');
+    if (trigger && !trigger.dataset.searchBound) {
+      trigger.dataset.searchBound = '1';
+      trigger.addEventListener('click', openSearch);
+    }
+    const close = document.getElementById('search-close');
+    if (close && !close.dataset.searchBound) {
+      close.dataset.searchBound = '1';
+      close.addEventListener('click', closeSearch);
+    }
+    const dlg = document.getElementById('search-dialog');
+    if (dlg && !dlg.dataset.searchBound) {
+      dlg.dataset.searchBound = '1';
+      // Click outside the inner panel on the backdrop to dismiss.
+      dlg.addEventListener('click', (e) => {
+        const d = e.currentTarget as HTMLDialogElement;
+        const rect = d.getBoundingClientRect();
+        const isInDialog =
+          e.clientY >= rect.top && e.clientY <= rect.bottom && e.clientX >= rect.left && e.clientX <= rect.right;
+        if (!isInDialog) closeSearch();
+      });
+    }
+  }
+  boot();
+  document.addEventListener('astro:page-load', boot);
 
   // Global "/" shortcut. Avoid hijacking when user is typing in a field.
   document.addEventListener('keydown', (e) => {
@@ -131,15 +161,6 @@ const pagefindTranslations = PAGEFIND_TRANSLATIONS[lang] ?? PAGEFIND_TRANSLATION
       openSearch();
     }
     if (e.key === 'Escape') closeSearch();
-  });
-
-  // Click outside the inner panel on the backdrop to dismiss.
-  document.getElementById('search-dialog')?.addEventListener('click', (e) => {
-    const dlg = e.currentTarget as HTMLDialogElement;
-    const rect = dlg.getBoundingClientRect();
-    const isInDialog =
-      e.clientY >= rect.top && e.clientY <= rect.bottom && e.clientX >= rect.left && e.clientX <= rect.right;
-    if (!isInDialog) closeSearch();
   });
 </script>
 
