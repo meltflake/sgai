@@ -79,6 +79,31 @@ const MANUAL_TYPES = new Set<UpdateType>(['site', 'fix', 'longform']);
 // sort regardless. Add new entries at the top.
 export const MANUAL_UPDATES: Update[] = [
   {
+    date: '2026-08-14',
+    type: 'site',
+    title: '上线 AI 问答：就新加坡 AI 随便提问，基于全站数据回答',
+    titleEn: 'Ask AI is live: ask anything about Singapore AI, answered from the site’s data',
+    titleJa: 'AI 質問機能を公開：シンガポール AI について何でも質問、サイト全体のデータに基づいて回答',
+    titleKo: 'AI 질문 기능 공개: 싱가포르 AI에 대해 무엇이든 질문하면 사이트 데이터 기반으로 답변',
+    summary:
+      '新增 /ask/ 页面：多轮对话，回答基于全站辩论、政策、追踪器等数据并附来源链接，五种语言可用。首页侧栏和导航都有入口。',
+    summaryEn:
+      'New /ask/ page: multi-turn chat grounded in the site’s debates, policies, tracker and other datasets, with source links, available in all five languages. Entry points in the homepage sidebar and the navigation.',
+    summaryJa:
+      '新しい /ask/ ページ：サイト内の議会討論・政策・トラッカーなどのデータに基づき、出典リンク付きで回答するマルチターン対話。5 言語で利用可能。ホームのサイドバーとナビゲーションから入れます。',
+    summaryKo:
+      '새 /ask/ 페이지: 사이트의 국회 토론·정책·트래커 등 데이터에 기반해 출처 링크와 함께 답변하는 멀티턴 대화. 5개 언어로 이용 가능합니다. 홈 사이드바와 내비게이션에서 접근할 수 있습니다.',
+    links: [
+      {
+        href: '/ask/',
+        label: '去提问',
+        labelEn: 'Ask a question',
+        labelJa: '質問してみる',
+        labelKo: '질문하러 가기',
+      },
+    ],
+  },
+  {
     date: '2026-08-07',
     type: 'longform',
     title: '长文：淡马锡年报 2026 里的 AI——从 6% 到 15%',

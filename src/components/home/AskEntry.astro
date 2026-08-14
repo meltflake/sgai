@@ -1,0 +1,61 @@
+---
+// Front-page sidebar rail 0 — Ask-AI entry. Zero-JS on purpose: a plain
+// GET form that lands on /ask/?q=… (AskPage auto-sends the query), plus two
+// preset-question chips as ordinary links. Keeps the homepage JS-free.
+
+import { Icon } from 'astro-icon/components';
+import { t, localizedHref, type Lang } from '~/i18n';
+import { toTraditional } from '~/i18n/opencc';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+
+const askHref = localizedHref('/ask/', lang);
+
+const CHIPS_ZH = ['NAIS 2.0 是什么？', '新加坡怎么监管 AI？'];
+const CHIPS: Record<Lang, string[]> = {
+  zh: CHIPS_ZH,
+  'zh-tw': CHIPS_ZH.map((q) => toTraditional(q)),
+  en: ['What is NAIS 2.0?', 'How does Singapore regulate AI?'],
+  ja: ['NAIS 2.0 とは？', 'シンガポールの AI 規制は？'],
+  ko: ['NAIS 2.0이란?', '싱가포르는 AI를 어떻게 규제하나요?'],
+};
+const chips = CHIPS[lang];
+---
+
+<div class="rounded-lg border border-subtle bg-surface p-4 mb-8">
+  <p class="text-xs uppercase tracking-[0.18em] text-primary font-semibold mb-3 flex items-center gap-1.5">
+    <Icon name="tabler:message-chatbot" class="w-4 h-4" />
+    {t(lang, 'askEntryTitle')}
+  </p>
+  <form action={askHref} method="get" class="flex items-center gap-2 mb-3">
+    <input
+      type="text"
+      name="q"
+      maxlength="200"
+      placeholder={t(lang, 'askPlaceholder')}
+      class="min-w-0 flex-1 text-sm px-3 py-2 rounded-md border border-subtle bg-page text-gray-900 dark:text-gray-100 placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:outline-none focus:border-primary"
+    />
+    <button
+      type="submit"
+      class="shrink-0 bg-primary hover:bg-secondary text-white font-semibold px-3 py-2 rounded-md transition-colors text-sm"
+      aria-label={t(lang, 'askSend')}
+    >
+      <Icon name="tabler:send" class="w-4 h-4" />
+    </button>
+  </form>
+  <div class="flex flex-wrap gap-1.5">
+    {
+      chips.map((chip) => (
+        <a
+          href={`${askHref}?q=${encodeURIComponent(chip)}`}
+          class="text-xs px-2.5 py-1 rounded-full border border-subtle text-gray-600 dark:text-gray-400 hover:border-primary hover:text-primary transition-colors"
+        >
+          {chip}
+        </a>
+      ))
+    }
+  </div>
+</div>

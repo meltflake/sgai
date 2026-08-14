@@ -1,0 +1,24 @@
+---
+// Ask-AI page (zh / zh-tw / ja / ko) — thin wrapper around AskPage.astro;
+// see src/pages/ask/index.astro for the en variant.
+
+import Layout from '~/layouts/PageLayout.astro';
+import AskPage from '~/components/ask/AskPage.astro';
+import { NON_DEFAULT_ROUTE_LOCALES, t, type Lang } from '~/i18n';
+
+export function getStaticPaths() {
+  return NON_DEFAULT_ROUTE_LOCALES.map((lang) => ({ params: { lang } }));
+}
+
+const lang = Astro.params.lang as Lang;
+
+const metadata = {
+  title: t(lang, 'navAsk'),
+  description: t(lang, 'askPageDesc'),
+  robots: { index: false, follow: true },
+};
+---
+
+<Layout metadata={metadata} lang={lang} searchIndex={false}>
+  <AskPage lang={lang} />
+</Layout>
