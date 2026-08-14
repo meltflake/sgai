@@ -1,0 +1,79 @@
+---
+// src/components/common/CiteBlock.astro
+//
+// "引用此条 / Cite this record" block for detail pages (P0-3). Renders a
+// suggested citation + stable permalink + copy button, so researchers can
+// cite records and — as a side effect — anyone spotting an error has an
+// obvious place to start the correction loop (the citation carries the
+// retrieval date; citing forces a date check).
+//
+// Props are minimal on purpose: the component derives lang from the URL
+// (same convention as DimensionCard) and builds the citation from the
+// localized title + SITE_UPDATED. `anchorId` must be unique per page —
+// pass the record id (e.g. `debate.id`, `video.id`) so the inline copy
+// script can target its own button when several blocks coexist.
+//
+// Citation format (APA-inspired, intentionally compact):
+//   sgai (Singapore AI Observatory). <localized title>. Retrieved
+//   <SITE_UPDATED>, from <canonical URL>.
+
+import { SITE_UPDATED } from '~/version';
+import { getLangFromPath, t, type Lang } from '~/i18n';
+import { getCanonical } from '~/utils/permalinks';
+
+export interface Props {
+  title: string;
+  anchorId: string;
+}
+
+const { title, anchorId } = Astro.props;
+const lang: Lang = getLangFromPath(new URL(Astro.url).pathname);
+
+// getCanonical resolves against the configured site host, so this is the
+// absolute canonical URL of the current (locale-aware) page.
+const canonicalUrl = getCanonical(Astro.url.pathname);
+
+// Brand in the citation is the locale-aware site name (rule #13): a
+// hardcoded "Singapore AI Observatory" would inject EN sentences onto
+// ja/ko/zh/zh-tw pages and trip the dist-level EN-sentence ratchet.
+const siteName = t(lang, 'siteName');
+const citation = `${siteName}. ${title}. ${t(lang, 'citeRetrieved')} ${SITE_UPDATED}, ${String(canonicalUrl)}`;
+const copiedLabel = t(lang, 'citeCopied');
+const copyBtnId = `cite-copy-${anchorId}`;
+---
+
+<section class="max-w-4xl mx-auto px-4 sm:px-6 mb-10" aria-label={t(lang, 'citeTitle')}>
+  <div class="bg-surface border border-subtle rounded-lg p-5 text-sm">
+    <div class="flex items-center justify-between gap-3 mb-3">
+      <h2 class="text-xs font-bold uppercase tracking-wider text-gray-500 m-0">{t(lang, 'citeTitle')}</h2>
+      <button
+        id={copyBtnId}
+        type="button"
+        class="text-xs font-medium text-primary hover:text-secondary border border-subtle rounded px-2 py-1"
+      >
+        {t(lang, 'citeCopy')}
+      </button>
+    </div>
+    <p class="font-serif text-gray-700 dark:text-gray-300 leading-relaxed m-0 break-words">{citation}</p>
+  </div>
+</section>
+
+<script define:vars={{ copyBtnId, citation, copiedLabel }}>
+  // Copy-to-clipboard with a visible confirmation. Guarded by the unique
+  // anchor id so multiple cite blocks on one page each target their own
+  // button. Values are inlined at build time via define:vars.
+  (() => {
+    const btn = document.getElementById(copyBtnId);
+    if (!btn) return;
+    btn.addEventListener('click', () => {
+      const label = btn.textContent ?? '';
+      navigator.clipboard
+        .writeText(citation)
+        .then(() => {
+          btn.textContent = copiedLabel;
+          setTimeout(() => (btn.textContent = label), 1500);
+        })
+        .catch(() => {});
+    });
+  })();
+</script>

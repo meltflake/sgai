@@ -92,6 +92,35 @@ export function extractDataDates(source: string): string[] {
   return out;
 }
 
+/** Extract per-claim currency stamps (P0-2: MetricRow.asOfDate and
+ *  headlineAsOf / qualitative asOfDate fields). Date granularity varies by
+ *  design — YYYY, YYYY-MM, or YYYY-MM-DD — and these stamps can legitimately
+ *  be OLD (e.g. an adoption headline resting on a 2024 survey). They are
+ *  therefore warning-only, never a hard gate. */
+export function extractAsOfDates(source: string): string[] {
+  const re = /(?:headlineAsOf|asOfDate)\s*[:=]\s*'(\d{4}(?:-\d{2}(?:-\d{2})?)?)'/g;
+  const out: string[] = [];
+  for (const m of source.matchAll(re)) out.push(m[1]);
+  return out;
+}
+
+/** Warning-only age audit for as-of stamps. Threshold fixed at 365 days —
+ *  older than a year means "check whether the claim is being presented as
+ *  current". Returns findings sorted oldest-first; callers decide reporting. */
+export function auditAsOfWarnings(sources: Record<string, string>, today: string): StampFinding[] {
+  const findings: StampFinding[] = [];
+  for (const [file, content] of Object.entries(sources)) {
+    for (const stamp of extractAsOfDates(content)) {
+      const full = stamp.length === 10 ? stamp : stamp.length === 7 ? `${stamp}-01` : `${stamp}-01-01`;
+      const ageDays = ageInDays(full, today);
+      if (ageDays > 365) {
+        findings.push({ file, dataDate: stamp, ageDays, schedule: 'as-of', maxAgeDays: 365, stale: true });
+      }
+    }
+  }
+  return findings.sort((a, b) => b.ageDays - a.ageDays || a.file.localeCompare(b.file));
+}
+
 /** Map each data file to its owning schedule via registry targets. */
 export function scheduleForFile(registry: RegistryShape, repoRelPath: string): string {
   for (const p of registry.pipelines ?? []) {
@@ -151,10 +180,10 @@ function main() {
   const opts = parseCli(process.argv.slice(2));
   const today = opts.today ?? new Date().toISOString().slice(0, 10);
   let findings: StampFinding[];
+  const sources: Record<string, string> = {};
   try {
     const registry = JSON.parse(readFileSync(REGISTRY, 'utf8')) as RegistryShape;
     const dataDirAbs = join(REPO_ROOT, DATA_DIR);
-    const sources: Record<string, string> = {};
     for (const f of readdirSync(dataDirAbs)) {
       if (!f.endsWith('.ts') || f.endsWith('.d.ts')) continue;
       sources[`${DATA_DIR}/${f}`] = readFileSync(join(dataDirAbs, f), 'utf8');
@@ -174,6 +203,15 @@ function main() {
   }
   if (stale.length) {
     process.stdout.write('  → re-verify the stat block against public sources and bump its dataDate\n');
+  }
+
+  // P0-2: as-of stamps are warning-only (never a hard gate) — they exist so
+  // a quietly-rotting per-claim date gets a weekly review nudge.
+  const asOfWarnings = auditAsOfWarnings(sources, today);
+  for (const w of asOfWarnings) {
+    process.stdout.write(
+      `  WARN as-of ${w.file}: stamp '${w.dataDate}' is ${w.ageDays}d old — confirm the claim is not presented as current\n`,
+    );
   }
 
   if (!opts.dryRun) writeReport(findings, today);

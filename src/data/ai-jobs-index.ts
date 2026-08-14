@@ -162,5 +162,7 @@ export function jobsIndexMetricRow(): MetricRow | null {
     sourceJa: `MyCareersFuture、${s.month} スナップショット（当サイト集計）`,
     sourceKo: `MyCareersFuture, ${s.month} 스냅샷(사이트 집계)`,
     sourceUrl: s.sourceUrl,
+    // Row-level currency stamp (P0-2): the sweep date, not the month label.
+    asOfDate: s.capturedAt,
   };
 }
