@@ -18,7 +18,7 @@
 | P1-1 | 资本与基础设施结构化视图（ai-capital.ts + /ecosystem section） | ✅ 已落地 | PR #197 |
 | P1-2 | National AI Missions 垂直 hub（+2 topics + 策展） | ✅ 已落地 | PR #197 |
 | P1-3 | AISG 支柱长文 | ✅ 已落地 | PR #197 |
-| P1-4 | 月报 newsletter（半自动 + Buttondown） | ✅ 代码就绪 | PR #197；待 Buttondown 账号激活 |
+| P1-4 | 月报 newsletter（半自动 + Buttondown） | ⏸ 暂不激活 | 代码就绪（PR #197）；2026-08-14 Luca 决定不维护，休眠待命 |
 | P2-1 | jobs-index 行业切片（METHODOLOGY_VERSION → 2） | ✅ 代码就绪 | PR #197；sector 序列自 2026-09 快照 |
 | P2-2 | 企业采用行业切片（adoption 维 sector 级行） | ✅ 已落地 | PR #197；用官方 IMDA SGDE 脉冲调查的职能级切片（厂商数据仅国家层） |
 | P2-3 | 旗舰项目完备性校验（verify-graph 扩展） | ✅ 已落地 | PR #197（含补建 NOAI 实体） |
