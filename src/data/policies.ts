@@ -116,6 +116,7 @@ export const categories: PolicyCategory[] = [
         titleKo: '국가 AI 전략 업데이트 (NAIS Update 2026)',
         titleJa: '国家 AI 戦略アップデート (NAIS Update 2026)',
         titleEn: 'National AI Strategy Update 2026',
+        topicIds: ['national-strategy', 'advanced-manufacturing', 'connectivity', 'finance', 'healthcare'],
         date: '2026-05',
         source: '数字发展与信息部 (MDDI) / 国家 AI 理事会 (NAIC)',
         sourceKo: '디지털 개발 및 정보부 (MDDI) / 국가 AI 위원회 (NAIC)',

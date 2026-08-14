@@ -80,6 +80,32 @@ const MANUAL_TYPES = new Set<UpdateType>(['site', 'fix', 'longform']);
 export const MANUAL_UPDATES: Update[] = [
   {
     date: '2026-08-14',
+    type: 'longform',
+    title: '长文：AISG 是什么——新加坡 AI 的执行引擎',
+    titleEn: "Longform: What AISG Is — Singapore AI's execution engine",
+    titleJa: '長文：AISG とは何か——シンガポール AI の実行エンジン',
+    titleKo: '장문: AISG란 무엇인가 — 싱가포르 AI의 실행 엔진',
+    summary:
+      'AISG 2017 年成立，NRF 初始资助 5 年最高 S$1.5 亿，累计超 S$5 亿。研究、人才、产品、治理四块都做：SEA-LION 面向东南亚 11 种语言，AIAP 22 批毕业约 500–600 人，NOAI 奥赛两届 4 金。文中澄清两个常被挂错的名字（AI Trailblazers、Kampong AI），并讲清 100E 归档后的瓶颈：AIAP 每批 60 人的产能。',
+    summaryEn:
+      'AISG launched in 2017 with up to S$150M over five years from NRF, over S$500M cumulatively. It runs research, talent, products and governance at once: SEA-LION covers 11 Southeast Asian languages, AIAP has graduated about 500–600 apprentices across 22 cohorts, and NOAI has taken four golds across two IOAI editions. The piece also clears up two names often misattributed to AISG (AI Trailblazers, Kampong AI) and the bottleneck after 100E was archived: AIAP capacity of about 60 apprentices per cohort.',
+    summaryJa:
+      'AISG は 2017 年設立、NRF が当初 5 年間で最大 S$1.5 億を拠出し、累計 S$5 億超。研究・人材・製品・ガバナンスの 4 つを同時に手がける：SEA-LION は東南アジア 11 言語に対応、AIAP は 22 期で約 500–600 人を輩出、NOAI は 2 大会で金 4 個。AISG のものと誤解されやすい 2 つの名前（AI Trailblazers、Kampong AI）を整理し、100E アーカイブ後のボトルネック——AIAP の 1 バッチ 60 人の生産能力——を解説。',
+    summaryKo:
+      'AISG는 2017년 출범해 NRF가 5년간 최대 S$1.5억을 지원했고 누적 S$5억을 넘습니다. 연구·인재·제품·거버넌스 네 가지를 동시에 합니다: SEA-LION은 동남아 11개 언어를 다루고, AIAP는 22기에서 약 500–600명을 배출했으며, NOAI는 두 대회에서 금메달 4개를 땄습니다. AISG의 것으로 오해되기 쉬운 두 이름(AI Trailblazers, Kampong AI)을 정리하고, 100E 아카이빙 이후의 병목 — AIAP의 기수당 60명 생산능력 — 을 짚습니다.',
+    links: [
+      {
+        href: '/aisg-explained/',
+        label: '阅读全文',
+        labelEn: 'Read the full piece',
+        labelJa: '全文を読む',
+        labelKo: '전문 읽기',
+      },
+    ],
+  },
+
+  {
+    date: '2026-08-14',
     type: 'site',
     title: '上线 AI 问答：就新加坡 AI 随便提问，基于全站数据回答',
     titleEn: 'Ask AI is live: ask anything about Singapore AI, answered from the site’s data',

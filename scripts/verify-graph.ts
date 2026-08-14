@@ -135,6 +135,29 @@ for (const c of ecosystemCategories) {
 //      an enum or a completed hand-label pass) must resolve to ≥1 topic
 //      per record. people stays validity-only (soft domain).
 
+// ── Flagship programme completeness (P2-3) ─────────────────────────────
+//
+// The "Singapore AI calling cards" must exist as first-class ecosystem
+// entities so every programme has a deep page and i18n coverage — the AI
+// Trailblazers / Kampong AI misattribution confusion showed how easily a
+// programme's ownership gets lost when it has no canonical record. Adding
+// a new flagship REQUIRES an entity here and below.
+
+const FLAGSHIP_PROGRAMS: Record<string, string> = {
+  'AIAP (AI Apprenticeship Programme)': 'aiap',
+  'SEA-LION': 'sea-lion',
+  'AI Verify': 'ai-verify-foundation',
+  'TagUI': 'tagui',
+  '100 Experiments (100E)': '100e',
+  'NOAI (National Olympiad in AI)': 'noai',
+};
+
+for (const [name, entityId] of Object.entries(FLAGSHIP_PROGRAMS)) {
+  if (!ecosystemIds.has(entityId)) {
+    errors.push(`FLAGSHIP_PROGRAMS: "${name}" has no ecosystem entity with id "${entityId}"`);
+  }
+}
+
 function checkTopicIds(label: string, ids: string[] | undefined) {
   if (!ids) return;
   for (const id of ids) {

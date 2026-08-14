@@ -25,6 +25,7 @@ import LatestUpdatesFeed from '~/components/home/LatestUpdatesFeed.astro';
 import LatestDebates from '~/components/home/LatestDebates.astro';
 import HomeSidebar from '~/components/home/HomeSidebar.astro';
 import DomainDirectory from '~/components/home/DomainDirectory.astro';
+import MissionsRail from '~/components/home/MissionsRail.astro';
 import LeverMap from '~/components/home/LeverMap.astro';
 import TaskEntries from '~/components/home/TaskEntries.astro';
 
@@ -70,6 +71,9 @@ if (lang === 'en') heroHeadlineJoiner = ' ';
 
 {/* S2 · Domain directory — every dataset, one card, latest addition. */}
 <DomainDirectory lang={lang} />
+
+{/* S2.5 · National AI Missions rail — four mission topic hubs. */}
+<MissionsRail />
 
 {
   /* S3 · Start here — the editorial argument, now the second act.

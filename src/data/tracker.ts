@@ -7,6 +7,7 @@
 // Design doc: docs/20260502-tracker-dashboard-design.md
 
 import { jobsIndexMetricRows } from '~/data/ai-jobs-index';
+import { capitalMetricRows } from '~/data/ai-capital';
 
 export type Trend = 'up' | 'flat' | 'down'; // visual: ↗ → ↘
 export type DimensionId = 'investment' | 'talent' | 'compute' | 'adoption' | 'research' | 'governance';
@@ -261,6 +262,9 @@ export const dimensions: Dimension[] = [
       'Private sector co-investment ratio is low — government still drives most of the spend. Capital flows mostly to compute and large enterprises; SME-side subsidies underpenetrate. Disclosure conventions occasionally diverge year-over-year, so cross-year comparisons need care.',
     relatedPostSlugs: ['sovereign-capital-frontier-ai'],
     metrics: [
+      // Derived at render time from the capital ledger (ai-capital.ts) —
+      // the S$1→S$13 amplification ratio, computed, never hand-copied.
+      ...capitalMetricRows(),
       {
         name: '政府 AI 专项投入',
         nameKo: '정부 AI 전담 투입',

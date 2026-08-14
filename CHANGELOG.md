@@ -4,6 +4,22 @@
 
 ---
 
+## 0.24.1 — 2026-08-14
+
+### P1/P2 迭代批（docs/20260814-stakeholder-iteration-plan.md）
+
+- **P1-1 资本与基础设施视图**：新数据文件 [`src/data/ai-capital.ts`](src/data/ai-capital.ts)（9 条带日期/金额/来源的资本记录，实体名复用 ecosystem id、数据值零 CJK）；`/ecosystem` 页新增资本节（[`CapitalSection.astro`](src/components/data/CapitalSection.astro)）；tracker 投资维新增渲染期派生的「资本放大倍数」行（S$1→S$13，公式与口径 caveat 显式呈现）；registry editorial 登记。
+- **P1-2 Missions 垂直 hub**：新增 `advanced-manufacturing`、`connectivity` 两个 topic（四语）；四条 mission 垂直线跨域策展（2 场辩论 + NAIS 政策 + 预算演讲视频 v006 + 两篇长文）；首页新增 MissionsRail。
+- **P1-3 AISG 支柱长文**：`/aisg-explained/` 五语同步，按 writing.md 写作规范（无加粗/无对比抬杠/短段），MANUAL_UPDATES longform 条目 + OG 图。
+- **P1-4 newsletter**：月报生成脚本 [`scripts/refresh/newsletter/generate-monthly.ts`](scripts/refresh/newsletter/generate-monthly.ts)（deriveUpdates 驱动，站方判断段手写）+ 零 JS Buttondown 订阅表单（填 form id 激活）+ /updates 页接入。
+- **P2-1 jobs-index 行业切片**：METHODOLOGY_VERSION → 2，新增 SectorId 分类（公司名优先规则 + LLM 兜底）；sector 序列自 2026-09 快照起（v1 8 月快照冻结不回溯）。
+- **P2-3 旗舰项目完备性校验**：verify-graph 新增 FLAGSHIP_PROGRAMS 断言（AIAP/SEA-LION/AI Verify/TagUI/100E/NOAI 必有生态实体）；补建 NOAI 实体（含四语深字段）。
+- **P2-4 数据导出**：`/data/debates.json|csv`、`/data/policies.json`、`/data/tracker.json` 静态导出端点（与页面渲染同源）。
+- **P2-5 sitemap lastmod**：build 链新增 [`scripts/build-lastmod.ts`](scripts/build-lastmod.ts) 预构建步骤，serialize 钩子按 addedAt 输出 `<lastmod>`（195 条路径映射）。
+- **P2-6 OG 动态图**：新脚本 [`scripts/generate-og-images.ts`](scripts/generate-og-images.ts) 生成首页/六维/两篇长文共 9 张 OG 图（`src/assets/images/og/`），首页与六维详情页已接线，年度报告图待 P0 合并后挂 frontmatter。
+- **P2-7 议员 stub 转正**：核实为已实现功能（isLowSignalPerson 两档阈值 + parliamentary-record 派生），无需新工单。
+- **P2-2**：待三份厂商报告原文的行业表，另开 PR。
+
 ## 0.23.5 — 2026-08-13
 
 ### 新增：近期 AI 生态与资本动态
