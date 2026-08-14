@@ -87,17 +87,32 @@
   }
 }
 
+/* Sticky header must always have an opaque backdrop: its background used to
+   appear only after scrollY > 60 (.scroll), so in the 0-60px window content
+   scrolled underneath and showed through the transparent header (most visible
+   on mobile, where the ticker text overlapped the logo). The base color equals
+   the page background, so nothing changes visually at rest. */
+#header[data-aw-sticky-header] > div:first-child {
+  background-color: var(--aw-color-bg-page);
+}
 #header.scroll > div:first-child {
-  background-color: color-mix(in srgb, var(--aw-color-bg-page) 92%, transparent);
   @apply md:backdrop-blur-md;
   box-shadow: 0 0.375rem 1.5rem 0 rgb(140 152 164 / 13%);
 }
 .dark #header.scroll > div:first-child,
 #header.scroll.dark > div:first-child {
-  background-color: color-mix(in srgb, var(--aw-color-bg-page) 92%, transparent);
   @apply md:backdrop-blur-md border-b;
   border-color: var(--aw-color-border-subtle);
   box-shadow: none;
+}
+/* Frosted-glass look only where backdrop-blur actually runs (md+); on mobile
+   a translucent background without blur just lets text bleed through. */
+@media (min-width: 768px) {
+  #header.scroll > div:first-child,
+  .dark #header.scroll > div:first-child,
+  #header.scroll.dark > div:first-child {
+    background-color: color-mix(in srgb, var(--aw-color-bg-page) 92%, transparent);
+  }
 }
 /* #header.scroll > div:last-child {
   @apply py-3;
