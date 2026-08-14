@@ -11,7 +11,6 @@ tags:
   - SEA-LION
   - AIAP
 author: '新加坡 AI 观察'
-image: '~/assets/images/og/aisg-explained.png'
 relatedLeverNumbers:
   - 3
   - 5

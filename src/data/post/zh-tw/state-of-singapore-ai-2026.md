@@ -11,7 +11,6 @@ tags:
   - 年度報告
   - 全景盤點
 author: '新加坡 AI 觀察'
-image: '~/assets/images/og/state-of-singapore-ai-2026.png'
 relatedPolicyIds:
   - nais-update-2026
 relatedLeverNumbers:

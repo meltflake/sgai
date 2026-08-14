@@ -1,14 +1,20 @@
 // scripts/generate-og-images.ts
 // ────────────────────────────────────────────────────────────────────────
 // Per-page OG images (P2-6). Extends the default-OG design (see
-// generate-og-image.mjs) into page-specific variants: homepage, the six
-// tracker dimensions, and the pillar longforms. Output lands in
+// generate-og-image.mjs) into page-specific variants: the homepage and
+// the six tracker dimensions. Output lands in
 // src/assets/images/og/<name>.png (versioned); pages point their
 // openGraph.images at ~/assets/images/og/<name>.png so the asset pipeline
 // resolves intrinsic dimensions.
 //
 // USAGE: npx tsx scripts/generate-og-images.ts
 // Re-run after renaming any of the covered pages' titles.
+//
+// NOTE — the two pillar longforms (state-of-singapore-ai-2026 and
+// aisg-explained) deliberately have NO per-post cover: their in-article
+// hero images added confusion and no incremental information, so both
+// posts fall back to the site-wide default OG (src/assets/images/
+// og-default.png) for link previews.
 
 import { mkdir } from 'node:fs/promises';
 import { readFile } from 'node:fs/promises';
@@ -38,8 +44,6 @@ const targets: OgTarget[] = [
     title: d.kind === 'quantified' ? (d.headlineEn ?? d.headline) : (d.badgeEn ?? d.badge),
     subtitle: d.titleEn ?? d.title,
   })),
-  { name: 'state-of-singapore-ai-2026', title: 'State of Singapore AI 2026', subtitle: 'Six dimensions, three judgments' },
-  { name: 'aisg-explained', title: 'What AISG is', subtitle: "Singapore AI's execution engine" },
 ];
 
 function svgFor(t: OgTarget): string {

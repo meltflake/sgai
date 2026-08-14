@@ -13,7 +13,6 @@ tags:
   - 年間レビュー
   - 全景
 author: 新加坡 AI 観察
-image: '~/assets/images/og/state-of-singapore-ai-2026.png'
 relatedPolicyIds:
   - nais-update-2026
 relatedLeverNumbers:

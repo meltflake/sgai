@@ -12,7 +12,6 @@ tags:
   - 연간 보고서
   - 전체 현황 점검
 author: 싱가포르 AI 관찰
-image: '~/assets/images/og/state-of-singapore-ai-2026.png'
 relatedPolicyIds:
   - nais-update-2026
 relatedLeverNumbers:
