@@ -50,6 +50,42 @@ import { ensureClaudeAuthed } from '../../lib/llm.ts';
 const ROOT = resolve('.');
 const SCAN_SCRIPT = resolve('scripts/videos/01_scan_channels.py');
 const EMIT_SCRIPT = resolve('scripts/refresh/videos/emit.ts');
+
+/**
+ * Python interpreter for the channel scan. 01_scan_channels.py imports
+ * requests + feedparser, which live in the pipeline venv (scripts/SETUP.md),
+ * not in the system python. This script is spawned via `npx tsx`, so a bare
+ * `python3` resolves to whichever python leads PATH under cron — historically
+ * the system one, which lacks feedparser and silently failed every daily scan
+ * for 2026-07-29 → 2026-08-14 (the run kept going on the stale candidates
+ * backlog, so the failures masqueraded as "no new videos").
+ *
+ * Resolution probes each candidate for `import feedparser, requests` and
+ * returns the first that passes: the dispatcher's own interpreter when
+ * exported (auto_update.py sets SGAI_PIPELINE_PYTHON), then the known venv
+ * paths, then a bare `python3` fallback. Probing (not mere existence) matters:
+ * cron's interpreter may have requests for the in-process hansard scan but
+ * still lack feedparser, which used to break only the videos scan.
+ */
+function canRunScan(python: string): boolean {
+  const probe = spawnSync(python, ['-c', 'import feedparser, requests'], {
+    encoding: 'utf8',
+    timeout: 15000,
+  });
+  return probe.status === 0;
+}
+
+function resolveScanPython(): string {
+  const candidates = [
+    ...(process.env.SGAI_PIPELINE_PYTHON ? [process.env.SGAI_PIPELINE_PYTHON] : []),
+    resolve('/tmp/sgai-venv/bin/python'),
+    ...(process.env.HOME ? [resolve(process.env.HOME, '.venvs/sgai/bin/python')] : []),
+  ];
+  for (const candidate of candidates) {
+    if (existsSync(candidate) && canRunScan(candidate)) return candidate;
+  }
+  return 'python3';
+}
 const CANDIDATES_JSON = resolve('scripts/videos/data/candidates.json');
 const VIDEOS_TS = resolve('src/data/videos.ts');
 
@@ -125,13 +161,16 @@ async function main(): Promise<void> {
   //    in candidates.json is still worth emitting (that resilience is the
   //    whole point of persisting it).
   let scanFailed = false;
-  const scan = spawnSync('python3', [SCAN_SCRIPT, '--exclude-existing', '--days', '14'], {
+  const scanPython = resolveScanPython();
+  const scan = spawnSync(scanPython, [SCAN_SCRIPT, '--exclude-existing', '--days', '14'], {
     cwd: ROOT,
     encoding: 'utf-8',
   });
   if (scan.status !== 0) {
     scanFailed = true;
-    process.stdout.write(`  ! scan failed (exit ${scan.status}): ${(scan.stderr || '').trim().slice(-300)}\n`);
+    process.stdout.write(
+      `  ! scan failed (exit ${scan.status}, interpreter ${scanPython}): ${(scan.stderr || '').trim().slice(-300)}\n`
+    );
     process.stdout.write('  continuing with existing candidates.json backlog\n');
   } else {
     for (const line of (scan.stdout || '').split('\n')) {
