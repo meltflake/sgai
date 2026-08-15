@@ -1817,3 +1817,40 @@ export const dimensions: Dimension[] = [
     relatedLeverNumbers: [2, 6],
   },
 ];
+
+export interface AutoDiscoveredEntry {
+  title: string;
+  titleEn: string;
+  titleJa?: string;
+  titleKo?: string;
+  description: string;
+  descriptionEn: string;
+  descriptionJa?: string;
+  descriptionKo?: string;
+  category: string;
+  confidence: 'high' | 'medium' | 'low';
+  sourceUrl: string;
+  discoveredAt: string;
+  reasonForLowConfidence?: string;
+}
+
+export const autoDiscovered: AutoDiscoveredEntry[] = [
+  {
+    title: '2025年AI指数报告',
+    titleEn: 'The 2025 AI Index Report',
+    titleJa: '2025年AI指数レポート',
+    titleKo: '2025년 AI 지수 보고서',
+    description:
+      '斯坦福大学HAI发布的第七版《AI指数报告》，综合分析全球AI发展趋势。报告涵盖研究与开发、技术性能、负责任AI、经济、科学与医学以及政策治理六大章节。关键发现包括：AI在基准测试中性能持续提升（MMMU提升18.8%、GPQA提升48.9%、SWE-bench提升67.3%）；AI在医疗和自动驾驶等领域的现实部署不断扩大；2024年美国私人AI投资达1091亿美元创历史新高；美国在AI模型生产中领先（40个模型对比中国15个），但中国快速缩小性能差距；全球政府AI治理和投资力度加大。',
+    descriptionEn:
+      "Stanford HAI's seventh edition of the AI Index Report, a comprehensive data-driven analysis of global AI trends. The report covers six major areas: research & development, technical performance, responsible AI, economy, science & medicine, and policy & governance. Key findings include: AI performance continues to surge on demanding benchmarks (18.8% improvement on MMMU, 48.9% on GPQA, 67.3% on SWE-bench within one year); real-world AI deployment expands in healthcare (223 FDA-approved AI medical devices in 2024 vs. six in 2015) and autonomous vehicles (Waymo providing 150,000+ rides weekly); U.S. private AI investment reached record $109.1 billion in 2024; the U.S. leads in model production (40 models vs. China's 15), yet China is rapidly closing the performance gap; global governments intensify AI regulation and investment.",
+    descriptionJa:
+      'スタンフォード大学のHAIが発表した第七版『AI指数レポート』は、世界のAI発展トレンドを包括的に分析しています。レポートは研究開発、技術的性能、責任あるAI、経済、科学・医学および政策ガバナンスの6つの主要セクションをカバーしています。主な発見には以下が含まれます：AIはベンチマークテストにおける性能が継続的に向上しています（MMMU は18.8%向上、GPQA は48.9%向上、SWE-bench は67.3%向上）；AIは医療および自動運転などの分野での実装が拡大し続けています；2024年、米国の民間AI投資は1091億米ドルに達し、史上最高を記録しました；米国はAIモデル製造でリードしており（40モデル対中国の15モデル）、しかし中国は性能ギャップを急速に縮めています；世界的に政府のAIガバナンスと投資が強化されています。',
+    descriptionKo:
+      '스탠포드 대학교 HAI가 발표한 제7판 「AI 인덱스 보고서」는 전 세계 AI 발전 추세를 종합적으로 분석하고 있습니다. 보고서는 연구 및 개발, 기술 성능, 책임 있는 AI, 경제, 과학 및 의학, 정책 거버넌스 등 6개 주요 장을 다루고 있습니다. 주요 발견으로는 AI가 벤치마크 테스트에서 성능을 지속적으로 향상시키고 있다는 점을 들 수 있습니다(MMMU 18.8% 향상, GPQA 48.9% 향상, SWE-bench 67.3% 향상). 또한 의료 및 자율 주행 등 분야에서 AI의 실제 배포가 계속 확대되고 있습니다. 2024년 미국의 민간 AI 투자는 1091억 달러에 도달하여 사상 최고 기록을 세웠습니다. 미국은 AI 모델 생산에서 선도하고 있으며(40개 모델 대비 중국 15개), 중국은 성능 격차를 빠르게 좁히고 있습니다. 전 세계 정부들의 AI 거버넌스 및 투자 역량이 강화되고 있습니다.',
+    category: '研究',
+    confidence: 'high',
+    sourceUrl: 'https://hai.stanford.edu/ai-index/2025-ai-index-report',
+    discoveredAt: '2026-08-15',
+  },
+];
