@@ -6153,6 +6153,37 @@ Take: Synergos is one of AISG's "frontier bets" — solid technically, slow to l
         _pendingReview: true,
         discoveryNote: 'Auto-discovered via AI Singapore; confidence=high',
       },
+      // i18n-allow-unpaired — auto-discovered stub; complete required fields on promotion
+      {
+        id: 'deepseek-publicises-efforts-to-challenge-rivals-like-anthropic',
+        name: 'DeepSeek 公开宣布挑战 Anthropic 等对手的努力',
+        nameEn: 'DeepSeek publicises efforts to challenge rivals like Anthropic',
+        nameJa: 'DeepSeek による Anthropic などの競合他社への挑戦の公開宣言',
+        nameKo: 'DeepSeek이 Anthropic 등 경쟁사에 도전하려는 노력을 공개 선언합니다',
+        description:
+          'DeepSeek 为其 "DeepSeek Harness Team" 建立了官方微信账号，以开发能与 Anthropic 的 Claude 服务竞争的 AI 代理。该公司正在积极招聘，并于近日更新了 V4 Pro 模型，增强了代理功能。Harness 技术是指围绕大语言模型的软件框架，使其能够管理更复杂的任务。此举反映了中美 AI 开发者之间日益激烈的竞争，旨在构建先进且经济高效的 AI 解决方案。',
+        descriptionEn:
+          'DeepSeek has established an official WeChat account for its "DeepSeek Harness Team" to develop AI agents capable of competing with Anthropic\'s Claude services. The company is actively recruiting for this team and recently updated its V4 Pro model with enhanced agentic capabilities. Harness technology refers to software scaffolding that enables language models to manage more complex tasks and automate professional work. This move reflects intensifying competition between Chinese and US AI developers to build advanced yet affordable AI solutions.',
+        descriptionJa:
+          'DeepSeek は「DeepSeek Harness Team」の公式 WeChat アカウントを設立し、Anthropic の Claude サービスと競争できる AI エージェントを開発しています。同社は積極的に採用を行っており、最近 V4 Pro モデルを更新し、エージェント機能を強化しました。Harness 技術は大規模言語モデル（LLM）を中心とするソフトウェアフレームワークを指し、より複雑なタスク管理を可能にします。この動きは中米 AI 開発者間の激化する競争を反映しており、先進的でコスト効率的な AI ソリューション構築を目指しています。',
+        descriptionKo:
+          'DeepSeek은 Anthropic의 Claude 서비스와 경쟁할 수 있는 AI 에이전트를 개발하기 위해 「DeepSeek Harness Team」이라는 공식 WeChat 계정을 개설했습니다. 해당 회사는 적극적으로 인재를 모집하고 있으며, 최근 V4 Pro 모델을 업데이트했고 에이전트 기능을 강화했습니다. Harness 기술은 대형 언어 모델(LLM) 주변의 소프트웨어 프레임워크를 의미하며, 더 복잡한 작업을 관리할 수 있게 합니다. 이러한 움직임은 중국과 미국 AI 개발자 간의 치열해지는 경쟁을 반영하며, 선진적이고 경제효율적인 AI 솔루션을 구축하려는 목표를 나타냅니다.',
+        url: 'https://www.businesstimes.com.sg/companies-markets/deepseek-publicises-efforts-challenge-rivals-anthropic',
+        entityType: 'product',
+        status: 'active',
+        founded: '2026-08',
+        sources: [
+          // i18n-allow-unpaired — provenance for the pending-review stub above
+          {
+            label: 'Business Times Tech',
+            url: 'https://www.businesstimes.com.sg/companies-markets/deepseek-publicises-efforts-challenge-rivals-anthropic',
+            date: '2026-08-13',
+          },
+        ],
+        updated: '2026-08-15',
+        _pendingReview: true,
+        discoveryNote: 'Auto-discovered via Business Times Tech; confidence=high',
+      },
     ],
   },
   {
