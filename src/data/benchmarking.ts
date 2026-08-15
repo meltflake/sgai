@@ -7995,4 +7995,43 @@ export interface AutoDiscoveredEntry {
   reasonForLowConfidence?: string;
 }
 
-export const autoDiscovered: AutoDiscoveredEntry[] = [];
+export const autoDiscovered: AutoDiscoveredEntry[] = [
+  {
+    title: '哪些国家在AI领域处于领先地位？全球AI活力工具',
+    titleEn: 'Which countries are leading in AI? Global AI Vibrancy Tool',
+    titleJa: 'どの国がAIの領域で先導的地位にあるのか？グローバルAI活力ツール',
+    titleKo: 'AI 분야에서 선도적 지위를 차지한 국가는? 글로벌 AI 활력 도구',
+    description:
+      '斯坦福HAI推出的全球AI活力工具是一个交互式可视化平台，用于比较36个国家在AI领域的发展情况，涵盖23个指标、7个支柱。该工具提供2017-2024年的年度排名、指标级对标分析，以及39个指标的时间序列数据，用户可自定义权重方案。此外，该工具还汇集66个国家的数据，是全球最全面的AI活力指标之一。',
+    descriptionEn:
+      "Stanford HAI's Global AI Vibrancy Tool is an interactive visualization platform for comparing AI development across 36 countries, covering 23 indicators organized into 7 pillars. The tool provides annual rankings from 2017-2024, indicator-level comparisons, and time-series data for 39 metrics, with customizable weighting schemas. It also incorporates data from 66 countries and is presented as one of the most comprehensive indices of AI vibrancy globally.",
+    descriptionJa:
+      'スタンフォード大学のHAIが開発したグローバルAI活力ツールは、AIの領域における36ヵ国の発展状況を比較するためのインタラクティブなビジュアライゼーション・プラットフォームで、23の指標と7つの支柱をカバーしています。このツールは2017～2024年の年度ランキング、指標レベルのベンチマーク分析、および39の指標の時系列データを提供しており、ユーザーは重み付けスキームをカスタマイズできます。さらに、このツールは66ヵ国のデータを集約しており、グローバルで最も包括的なAI活力指標の1つです。',
+    descriptionKo:
+      '스탠포드 HAI가 출시한 글로벌 AI 활력 도구는 36개 국가의 AI 분야 발전 현황을 비교하기 위한 대화형 시각화 플랫폼으로, 23개 지표와 7개 기둥을 포함합니다. 이 도구는 2017년부터 2024년까지의 연간 순위, 지표 수준의 벤치마킹 분석, 그리고 39개 지표의 시계열 데이터를 제공하며, 사용자는 가중치 방안을 맞춤 설정할 수 있습니다. 또한 이 도구는 66개 국가의 데이터를 집계하여 전 세계 가장 포괄적인 AI 활력 지표 중 하나입니다.',
+    category: '国际排名',
+    confidence: 'high',
+    sourceUrl: 'https://hai.stanford.edu/ai-index/global-vibrancy-tool',
+    discoveredAt: '2026-08-15',
+  },
+  {
+    title: 'AI指数指导委员会成员',
+    titleEn: 'People of AI Index Steering Committee',
+    titleJa: 'AIインデックス指導委員会メンバー',
+    titleKo: 'AI 지수 자문 위원회 위원',
+    description:
+      '该页面列出了斯坦福大学人工智能指数(AI Index)计划的指导委员会成员、员工和附属研究人员。该计划由来自学术界和工业界的跨学科专家组成，包括来自Google、Northeastern University、Partnership on AI等机构的知名研究人员和领导者。页面主要是一个组织人员花名册，详细列出了每位成员的职位和所属机构。',
+    descriptionEn:
+      'This page presents the organizational membership of the Stanford AI Index program, including Steering Committee members, staff, and affiliated researchers from academia and industry. Members include prominent researchers and leaders from Google, Northeastern University, Partnership on AI, and other institutions. The page serves primarily as a personnel directory rather than a substantive benchmarking or research analysis.',
+    descriptionJa:
+      'このページはスタンフォード大学の人工知能指数（AI Index）プログラムの指導委員会メンバー、スタッフ、および関連研究員を掲載しています。本プログラムは学界と業界の双方から集められた学際的専門家で構成されており、Google、Northeastern University、Partnership on AIなどの機関から著名な研究者とリーダーが含まれています。本ページは主に組織のメンバー名簿で、各メンバーの職務と所属機関を詳細に掲載しています。',
+    descriptionKo:
+      '이 페이지는 스탠포드 대학교 인공지능 지수(AI Index) 프로그램의 자문 위원회 위원, 직원 및 제휴 연구원을 나열하고 있습니다. 이 프로그램은 학계와 산업계의 학제간 전문가로 구성되어 있으며, Google, Northeastern University, Partnership on AI 등의 기관의 저명한 연구원과 리더를 포함합니다. 이 페이지는 본질적으로 조직 인원 명부이며, 각 위원의 직위와 소속 기관을 자세히 나열하고 있습니다.',
+    category: '人才评估',
+    confidence: 'low',
+    sourceUrl: 'https://hai.stanford.edu/ai-index/people-of-ai-index',
+    discoveredAt: '2026-08-15',
+    reasonForLowConfidence:
+      'This page is an organizational personnel roster listing team members and their affiliations. It does not contain benchmarking rankings, international comparisons, talent evaluation metrics, investment data, governance maturity assessments, or infrastructure analysis. It is off-topic for the summarization mission, which focuses on international AI benchmarking reports, rankings, and indices—not administrative team directories.',
+  },
+];
