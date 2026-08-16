@@ -138,6 +138,35 @@ export function pickSpeakerTypeLabels(lang: string): Record<string, string> {
 
 export const videos: VideoItem[] = [
   {
+    id: 'v081',
+    title: '脑力计算：脑细胞数据中心原型',
+    titleEn: 'Brain power: Data centre powered by brain cells',
+    titleJa: '脳力計算：脳細胞データセンター原型',
+    titleKo: '뇌 컴퓨팅: 뇌세포 데이터 센터 프로토타입',
+    speaker: 'National University of Singapore',
+    speakerTitle: '研究人员',
+    speakerTitleEn: 'Researchers',
+    speakerTitleJa: '研究者',
+    speakerTitleKo: '연구원',
+    speakerType: 'academic',
+    date: '2026-08-15',
+    duration: '00:00',
+    summary: '新加坡国立大学研究人员开发了用脑细胞而非芯片运行的生物数据中心原型，有望比传统计算机更节能。',
+    summaryEn:
+      'NUS researchers developed a biological data centre prototype using human brain cells instead of chips, potentially offering better energy efficiency than traditional computers.',
+    summaryJa:
+      'シンガポール国立大学の研究者たちは、チップではなく脳細胞を使用して動作する生物データセンター原型を開発しました。従来型コンピュータと比較してより省エネとなることが見込まれています。',
+    summaryKo:
+      '싱가포르 국립대학교 연구원들이 칩 대신 뇌세포로 작동하는 생물 데이터 센터 프로토타입을 개발했으며, 기존 컴퓨터보다 더 에너지 효율적일 것으로 기대됩니다.',
+    topic: 'AI 产业与应用',
+    topicEn: 'AI Industry & Applications',
+    topicJa: 'AI 産業と応用',
+    topicKo: 'AI 산업 및 응용',
+    youtubeUrl: 'https://www.youtube.com/watch?v=mwISkfdRN4o',
+    channel: 'CNA',
+    addedAt: '2026-08-16',
+  },
+  {
     id: 'v080',
     title: '海尼根为何聘用AIAP学员',
     titleEn: 'Why We Hire AIAP Graduates — Heineken',
