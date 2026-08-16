@@ -441,7 +441,7 @@ export const levers: Lever[] = [
         ],
       },
       {
-        title: 'Auto-discovered (pending review)',
+        title: '自动发现（待审核）',
         titleEn: 'Auto-discovered (pending review)',
         titleJa: 'Auto-discovered（レビュー待ち）',
         titleKo: '자동 발견됨(검토 대기)',
