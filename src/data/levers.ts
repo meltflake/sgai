@@ -444,6 +444,7 @@ export const levers: Lever[] = [
         title: 'Auto-discovered (pending review)',
         titleEn: 'Auto-discovered (pending review)',
         titleJa: 'Auto-discovered（レビュー待ち）',
+        titleKo: '자동 발견됨(검토 대기)',
         items: [
           {
             id: '30-per-cent-increase-in-fy2020-ict-spend-to-accelerate-digitalisation-and-suppor',
