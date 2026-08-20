@@ -79,6 +79,32 @@ const MANUAL_TYPES = new Set<UpdateType>(['site', 'fix', 'longform']);
 // sort regardless. Add new entries at the top.
 export const MANUAL_UPDATES: Update[] = [
   {
+    date: '2026-08-20',
+    type: 'longform',
+    title: '长文：新加坡管 AI 的部门有哪些，各自管哪一段',
+    titleEn: 'Longform: Which Singapore agencies run AI, and what each one owns',
+    titleJa: '長文：シンガポールで AI を所管する官庁はどこで、それぞれ何を担うのか',
+    titleKo: '장문: 싱가포르에서 AI를 담당하는 부처는 어디이고, 각각 무엇을 맡는가',
+    summary:
+      '新加坡没有「AI 部」，40 多个部委和法定机构各占一段。按八段梳理：PMO/NAIC 与 MDDI 定方向，IMDA、PDPC、MAS、CSA、AISI、MinLaw 各管一块规矩，MOF/MTI/EDB/EnterpriseSG 出钱引资，NRF/A*STAR/AISG/SSG 供人和研究，GovTech 让政府自己先用，各行业部委自行落地。国防（MINDEF+DSTA+DSO+DIS）和内政（MHA+HTX+SPF+ICA）是两条线——HTX 归内政部，常被误挂到国防部。',
+    summaryEn:
+      'Singapore has no "AI ministry"; more than forty ministries and statutory boards each own a slice. Eight segments: PMO/NAIC and MDDI set direction; IMDA, PDPC, MAS, CSA, AISI and MinLaw each hold a piece of the rulebook; MOF/MTI/EDB/EnterpriseSG fund and attract investment; NRF/A*STAR/AISG/SSG supply talent and research; GovTech puts AI inside government first; line ministries deploy per sector. Defence (MINDEF+DSTA+DSO+DIS) and home affairs (MHA+HTX+SPF+ICA) are separate chains — HTX sits under MHA and is often misattributed to MINDEF.',
+    summaryJa:
+      'シンガポールに「AI 省」はなく、40 を超える省庁と法定機関がそれぞれ一区画を担う。8 区分で整理：PMO/NAIC と MDDI が方向を定め、IMDA・PDPC・MAS・CSA・AISI・法務省がルールを分担し、MOF/MTI/EDB/EnterpriseSG が資金と投資誘致、NRF/A*STAR/AISG/SSG が人材と研究、GovTech が政府自身の利用、各省庁が産業ごとに実装する。国防（MINDEF+DSTA+DSO+DIS）と内政（MHA+HTX+SPF+ICA）は別系統——HTX は内務省の所属で、国防省と誤解されやすい。',
+    summaryKo:
+      '싱가포르에는 "AI 부처"가 없고 40개가 넘는 부처와 법정기관이 각자 한 구간을 맡는다. 여덟 구간으로 정리: PMO/NAIC와 MDDI가 방향을 정하고, IMDA·PDPC·MAS·CSA·AISI·법무부가 규칙을 나눠 맡으며, MOF/MTI/EDB/EnterpriseSG가 자금과 투자 유치를, NRF/A*STAR/AISG/SSG가 인재와 연구를, GovTech가 정부 자체 활용을, 각 부처가 산업별 적용을 담당한다. 국방(MINDEF+DSTA+DSO+DIS)과 내무(MHA+HTX+SPF+ICA)는 별개 계통이며, HTX는 내무부 소속인데 국방부로 잘못 알려지는 경우가 많다.',
+    links: [
+      {
+        href: '/singapore-ai-agencies-map/',
+        label: '阅读全文',
+        labelEn: 'Read the full piece',
+        labelJa: '全文を読む',
+        labelKo: '전문 읽기',
+      },
+    ],
+  },
+
+  {
     date: '2026-08-14',
     type: 'longform',
     title: '长文：AISG 是什么——新加坡 AI 的执行引擎',
