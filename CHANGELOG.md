@@ -4,6 +4,17 @@
 
 ---
 
+## 0.25.4 — 2026-08-20
+
+### 数据订正：AISI 与 CSA Agentic AI 增补稿
+
+- **AISI 记录去掉无源数字**（[policies.ts](src/data/policies.ts) `singapore-ai-safety-institute`）：原文写「2024 年成立，年度预算 S$10M」「红队评估、对齐研究、可追溯性测试三类核心研究」，均无官方来源。按 [IMDA 2024-05-22 factsheet](https://www.imda.gov.sg/resources/press-releases-factsheets-and-speeches/factsheets/2024/digital-trust-centre) 订正为：2024-05-22 IMDA 将 DTC 指定为 AISI；DTC 2022 年 6 月由 IMDA 委托 NTU 设立、Lam Kwok Yen 教授领衔、**初始拨款 S$5,000 万**；官方四个初始研究方向为测试与评估、安全的模型设计与开发部署、内容保障、治理与政策。`sourceUrl` 从 `sgaisi.sg` 改指 IMDA factsheet（原 `sgaisi.sg` 保留在 `sourceOrgUrl`）。DTC/NTU 承载 + IMDA 主管这一分工原记录已正确，未改。
+- **CSA Securing Agentic AI 增补稿补齐两段时间线**（[policies.ts](src/data/policies.ts)、[legal-ai.ts](src/data/legal-ai.ts)）：原文只写「增补稿（2025）」，漏了定稿。实为草案 2025-10-22 公开征求意见（截止 2025-12-31）、定稿 **2026-06-17** 发布。
+- **新增独立政策记录** `securing-agentic-ai-addendum`（2026-06，四语齐全）：此前政策库只在 CSA 2024 指南正文里带一句，没有独立条目。
+- **HTX 归属显式化**（[levers.ts](src/data/levers.ts)）：原数据只写 `ministry: 'HTX'` 这个裸缩写，没有任何字段标出它的上级部门，站内 AI 问答因此把 HTX 说成国防部（MINDEF）下属。HTX 是内政科技局，归**内政部 MHA**。4 条 HTX lever 的 `ministry*` 补上 MHA，两个板块标题（「家国安全」「家国安全侧算力」）也点明 MHA。数据本身没有把 HTX 挂到 MINDEF 的地方——这是缺上级字段导致的生成侧误判，补字段是为了堵住这个口子。
+- **README 政策数 48 → 49**：新增政策记录后 `eval:facade-stats`（CI 门，不在本地 `npm run check` 里）报 drift。
+- **修掉 CHANGELOG 里的残留 merge marker**（`||||||| 027ec01`，0.24.1 与 0.24.0 之间）。
+
 ## 0.25.3 — 2026-08-14
 
 - **/videos 分类板块按时间排序**：分类板块按各自最新视频日期倒序排列（最近有新视频的分类排前面），顶部分类筛选按钮同步同一顺序；组内原有按日期倒序不变（[VideosIndex.astro](src/components/videos/VideosIndex.astro)）。
@@ -23,8 +34,6 @@
 - **P2-6 OG 动态图**：新脚本 [`scripts/generate-og-images.ts`](scripts/generate-og-images.ts) 生成首页/六维共 7 张 OG 图（`src/assets/images/og/`），首页与六维详情页已接线。两篇长文（年度盘点 / AISG）不配专属图——封面只增困惑、无增量信息，回落站点默认 OG。
 - **P2-7 议员 stub 转正**：核实为已实现功能（isLowSignalPerson 两档阈值 + parliamentary-record 派生），无需新工单。
 - **P2-2**：待三份厂商报告原文的行业表，另开 PR。
-
-||||||| 027ec01
 
 ## 0.24.0 — 2026-08-14
 
