@@ -4,6 +4,14 @@
 
 ---
 
+## 0.25.5 — 2026-08-20
+
+### 新增长文：新加坡管 AI 的部门有哪些
+
+- `singapore-ai-agencies-map` 五语同步（zh / en / ja / ko / zh-tw）。按「拍板、定规矩、出钱、供人、自己先用、行业落地、国防内政、对外」八段梳理 40+ 部委与法定机构，每个数字带来源。
+- **翻译术语表扩容**（[glossary.json](scripts/evals/translation/glossary.json)）：原 `institutions` 只有 7 条，本文涉及的机构几乎全部未收录，`translate-post` 因此把 MinLaw 译成 Attorney-General's Chambers、DSO 译成 Defence Science and Technology Research Institute、JTC 译成 Jurong Group、HTX 全称也错。新增 40 条机构词条（en/ja/ko 三语），并给原有 7 条补上此前完全缺失的 `ko`（loader 支持 ko，但表里一条都没有，韩文翻译等于无术语约束）。
+- ja / ko 译文改为直接撰写：`translate-post` 对本文反复触发 `callLlm: timeout after 120000ms` 并逐层对半拆批，单语种跑逾 30 分钟未完；且其产出的机构名仍需逐条人工校正。en 译文保留脚本产出并做了 19 处专有名词修正。
+
 ## 0.25.4 — 2026-08-20
 
 ### 数据订正：AISI 与 CSA Agentic AI 增补稿
