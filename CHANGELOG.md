@@ -8,7 +8,7 @@
 
 ### 数据订正：AISI 与 CSA Agentic AI 增补稿
 
-- **AISI 记录去掉无源数字**（[policies.ts](src/data/policies.ts) `singapore-ai-safety-institute`）：原文写「2024 年成立，年度预算 S$10M」「红队评估、对齐研究、可追溯性测试三类核心研究」，均无官方来源。按 [IMDA 2024-05-22 factsheet](https://www.imda.gov.sg/resources/press-releases-factsheets-and-speeches/factsheets/2024/digital-trust-centre) 订正为：2024-05-22 IMDA 将 DTC 指定为 AISI；DTC 2022 年 6 月由 IMDA 委托 NTU 设立、林国彦教授领衔、**初始拨款 S$5,000 万**；官方四个初始研究方向为测试与评估、安全的模型设计与开发部署、内容保障、治理与政策。`sourceUrl` 从 `sgaisi.sg` 改指 IMDA factsheet（原 `sgaisi.sg` 保留在 `sourceOrgUrl`）。DTC/NTU 承载 + IMDA 主管这一分工原记录已正确，未改。
+- **AISI 记录去掉无源数字**（[policies.ts](src/data/policies.ts) `singapore-ai-safety-institute`）：原文写「2024 年成立，年度预算 S$10M」「红队评估、对齐研究、可追溯性测试三类核心研究」，均无官方来源。按 [IMDA 2024-05-22 factsheet](https://www.imda.gov.sg/resources/press-releases-factsheets-and-speeches/factsheets/2024/digital-trust-centre) 订正为：2024-05-22 IMDA 将 DTC 指定为 AISI；DTC 2022 年 6 月由 IMDA 委托 NTU 设立、Lam Kwok Yen 教授领衔、**初始拨款 S$5,000 万**；官方四个初始研究方向为测试与评估、安全的模型设计与开发部署、内容保障、治理与政策。`sourceUrl` 从 `sgaisi.sg` 改指 IMDA factsheet（原 `sgaisi.sg` 保留在 `sourceOrgUrl`）。DTC/NTU 承载 + IMDA 主管这一分工原记录已正确，未改。
 - **CSA Securing Agentic AI 增补稿补齐两段时间线**（[policies.ts](src/data/policies.ts)、[legal-ai.ts](src/data/legal-ai.ts)）：原文只写「增补稿（2025）」，漏了定稿。实为草案 2025-10-22 公开征求意见（截止 2025-12-31）、定稿 **2026-06-17** 发布。
 - **新增独立政策记录** `securing-agentic-ai-addendum`（2026-06，四语齐全）：此前政策库只在 CSA 2024 指南正文里带一句，没有独立条目。
 - **HTX 归属显式化**（[levers.ts](src/data/levers.ts)）：原数据只写 `ministry: 'HTX'` 这个裸缩写，没有任何字段标出它的上级部门，站内 AI 问答因此把 HTX 说成国防部（MINDEF）下属。HTX 是内政科技局，归**内政部 MHA**。4 条 HTX lever 的 `ministry*` 补上 MHA，两个板块标题（「家国安全」「家国安全侧算力」）也点明 MHA。数据本身没有把 HTX 挂到 MINDEF 的地方——这是缺上级字段导致的生成侧误判，补字段是为了堵住这个口子。
