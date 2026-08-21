@@ -12,7 +12,7 @@ import { tmpdir } from 'node:os';
 import { createHash } from 'node:crypto';
 import { join } from 'node:path';
 
-import { translateBatch, translateRecords } from '../translate.ts';
+import { buildGlossaryHint, translateBatch, translateRecords } from '../translate.ts';
 
 function hashOf(direction: string, source: string): string {
   return createHash('sha256').update(`${direction}::${source}`).digest('hex');
@@ -126,4 +126,26 @@ test('translateBatch: cache hits for many short strings (regression: batchItems 
       else delete process.env.SGAI_CLAUDE_BIN;
     }
   });
+});
+
+test('buildGlossaryHint: zh-target matches en aliases and pins official zh names', () => {
+  const hint = buildGlossaryHint(
+    ['Speech by Deputy Prime Minister Gan Kim Yong at the Leaders Dialogue.'],
+    'zh'
+  );
+  // The en→zh direction must pin the official Chinese name — the model
+  // otherwise invents phonetic renderings (甘金勇 / 甘照胜, PR #184).
+  assert.match(hint, /- Gan Kim Yong → 颜金勇/);
+});
+
+test('buildGlossaryHint: zh-target skips acronym-only aliases', () => {
+  // MAS / AI are acronym aliases; zh copy keeps them verbatim, so they must
+  // not trigger hint lines (over-triggering would pollute every batch).
+  const hint = buildGlossaryHint(['MAS said AI is transforming finance.'], 'zh');
+  assert.equal(hint, '');
+});
+
+test('buildGlossaryHint: zh-source directions keep prior behaviour', () => {
+  const hint = buildGlossaryHint(['黄循财总理谈人工智能。'], 'ja');
+  assert.match(hint, /- 黄循财 → ローレンス・ウォン/);
 });
