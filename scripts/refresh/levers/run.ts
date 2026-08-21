@@ -17,10 +17,10 @@ import { isEmptyShellSummary } from '../../lib/empty-shell.ts';
 import { judgeAiRelevance } from '../../lib/judge-ai-relevance.ts';
 import { isGenericOrLanding, normalizeUrl, selectCandidates } from '../../lib/scan-filters.ts';
 import { autoCommit, pushAndOpenPR, buildPRBody } from '../../lib/auto-commit.ts';
-import { findUnpairedFields } from '../../lib/i18n-pair.ts';
 import { formatWithPrettier } from '../../lib/prettier-format.ts';
 import { ensureClaudeAuthed } from '../../lib/llm.ts';
 import { loadState, saveState } from '../../lib/state.ts';
+import { findLeverI18nIssues, formatLeverItem, injectIntoAutoDiscoveredGroup } from './emit.ts';
 
 const TARGET_FILE = resolve('src/data/levers.ts');
 const CACHE_DIR = resolve('scripts/refresh/levers/data/summaries');
@@ -63,123 +63,8 @@ function readExistingUrls(): Set<string> {
   return urls;
 }
 
-function escapeQuote(s: string): string {
-  return s.replace(/'/g, "\\'");
-}
-
-function formatLeverItem(item: {
-  id: string;
-  name: string;
-  nameEn: string;
-  nameJa?: string;
-  nameKo?: string;
-  ministry: string;
-  ministryEn: string;
-  ministryJa?: string;
-  ministryKo?: string;
-  description: string;
-  descriptionEn: string;
-  descriptionJa?: string;
-  descriptionKo?: string;
-  sourceUrl: string;
-}): string {
-  const lines: string[] = [];
-  lines.push('          {');
-  lines.push(`            id: '${item.id}',`);
-  lines.push(`            name: '${escapeQuote(item.name)}',`);
-  lines.push(`            nameEn: '${escapeQuote(item.nameEn)}',`);
-  if (item.nameJa) lines.push(`            nameJa: '${escapeQuote(item.nameJa)}',`);
-  if (item.nameKo) lines.push(`            nameKo: '${escapeQuote(item.nameKo)}',`);
-  lines.push(`            ministry: '${escapeQuote(item.ministry)}',`);
-  lines.push(`            ministryEn: '${escapeQuote(item.ministryEn)}',`);
-  if (item.ministryJa) lines.push(`            ministryJa: '${escapeQuote(item.ministryJa)}',`);
-  if (item.ministryKo) lines.push(`            ministryKo: '${escapeQuote(item.ministryKo)}',`);
-  lines.push(`            description: '${escapeQuote(item.description)}',`);
-  lines.push(`            descriptionEn: '${escapeQuote(item.descriptionEn)}',`);
-  if (item.descriptionJa) lines.push(`            descriptionJa: '${escapeQuote(item.descriptionJa)}',`);
-  if (item.descriptionKo) lines.push(`            descriptionKo: '${escapeQuote(item.descriptionKo)}',`);
-  lines.push(`            sourceUrl: '${item.sourceUrl}',`);
-  lines.push('          },');
-  return lines.join('\n');
-}
-
 function slugify(s: string): string {
   return s.toLowerCase().replace(/[^a-z0-9\s-]/g, '').trim().replace(/\s+/g, '-').slice(0, 80);
-}
-
-/**
- * Inject new items into a special "Auto-discovered (pending review)" group
- * inside the FIRST lever (基建). Creates the group if it doesn't yet exist.
- */
-function injectIntoAutoDiscoveredGroup(lines: string[], formattedItems: string): string[] {
-  // Find first lever's groups: [
-  let leverNumberLine = -1;
-  for (let i = 0; i < lines.length; i += 1) {
-    if (/^\s*number:\s*1,/.test(lines[i])) {
-      leverNumberLine = i;
-      break;
-    }
-  }
-  if (leverNumberLine === -1) throw new Error('lever number 1 not found');
-
-  let groupsOpen = -1;
-  for (let i = leverNumberLine; i < lines.length; i += 1) {
-    if (/^\s*groups:\s*\[/.test(lines[i])) {
-      groupsOpen = i;
-      break;
-    }
-  }
-  if (groupsOpen === -1) throw new Error('groups: [ for lever 1 not found');
-
-  // Look for existing auto-discovered group within lever 1.
-  for (let i = groupsOpen; i < lines.length; i += 1) {
-    if (/title:\s*['"]Auto-discovered \(pending review\)['"]/.test(lines[i])) {
-      // Find items: [ for this group, then matching ]
-      let itemsOpen = -1;
-      for (let j = i; j < Math.min(lines.length, i + 30); j += 1) {
-        if (/^\s*items:\s*\[/.test(lines[j])) {
-          itemsOpen = j;
-          break;
-        }
-      }
-      if (itemsOpen === -1) break;
-      let depth = 0;
-      for (let j = itemsOpen; j < lines.length; j += 1) {
-        depth += (lines[j].match(/\[/g) || []).length;
-        depth -= (lines[j].match(/\]/g) || []).length;
-        if (depth === 0 && j > itemsOpen) {
-          return [...lines.slice(0, j), formattedItems, ...lines.slice(j)];
-        }
-      }
-    }
-    // Stop search at lever 2 boundary.
-    if (/^\s*number:\s*2,/.test(lines[i])) break;
-  }
-
-  // Group doesn't exist — append new group at end of lever-1 groups array.
-  let depth = 0;
-  let groupsClose = -1;
-  for (let i = groupsOpen; i < lines.length; i += 1) {
-    depth += (lines[i].match(/\[/g) || []).length;
-    depth -= (lines[i].match(/\]/g) || []).length;
-    if (depth === 0 && i > groupsOpen) {
-      groupsClose = i;
-      break;
-    }
-  }
-  if (groupsClose === -1) throw new Error('groups close ] not found');
-
-  const newGroup = [
-    '      {',
-    "        title: 'Auto-discovered (pending review)',",
-    "        titleEn: 'Auto-discovered (pending review)',",
-    "        titleJa: 'Auto-discovered（レビュー待ち）',",
-    '        items: [',
-    formattedItems,
-    '        ],',
-    '      },',
-  ].join('\n');
-  return [...lines.slice(0, groupsClose), newGroup, ...lines.slice(groupsClose)];
 }
 
 async function scanAll(existing: Set<string>, limit: number): Promise<string[]> {
@@ -342,25 +227,16 @@ async function main(): Promise<void> {
   }
 
   const original = readFileSync(TARGET_FILE, 'utf8');
-  // Capture baseline unpaired count BEFORE we write, so we only fail on
-  // newly-introduced issues (the file may have pre-existing baseline gaps
-  // that aren't this pipeline's responsibility).
-  const baselineCount = (() => {
-    // findUnpairedFields needs a file path; the file we'll edit is `TARGET_FILE`
-    // and its current contents == `original`, so we can just check it directly
-    // before writeFileSync changes anything.
-    return findUnpairedFields(TARGET_FILE, { fields: ['name', 'description', 'title'] }).length;
-  })();
   const formattedItems = enriched.map((e) => formatLeverItem(e.item)).join('\n');
   let lines = original.split('\n');
   lines = injectIntoAutoDiscoveredGroup(lines, formattedItems);
 
   writeFileSync(TARGET_FILE, lines.join('\n'));
-  const issuesAfter = findUnpairedFields(TARGET_FILE, { fields: ['name', 'description', 'title'] });
-  if (issuesAfter.length > baselineCount) {
+  const issuesAfter = findLeverI18nIssues(TARGET_FILE);
+  if (issuesAfter.alignment.length > 0 || issuesAfter.completeness.length > 0) {
     writeFileSync(TARGET_FILE, original);
     throw new Error(
-      `i18n pairing regressed: ${baselineCount} → ${issuesAfter.length} unpaired (introduced ${issuesAfter.length - baselineCount}). Rolled back.`
+      `i18n validation failed: ${issuesAfter.alignment.length} alignment, ${issuesAfter.completeness.length} completeness issue(s). Rolled back.`
     );
   }
   formatWithPrettier(TARGET_FILE);
