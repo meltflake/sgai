@@ -41,10 +41,14 @@ import { translateSpeeches, type TranslatedSpeech } from './translate.ts';
 import { combineForEmit, emit, type EmittableSpeech } from './emit.ts';
 import { speakerFromSlug } from './sources.ts';
 
-/** Intake floor for the non-MDDI sources added 2026-08 (MAS / PMO): no
- *  historical backfill — only speeches published on/after this date are
- *  archived. MDDI (the founding source) has no floor. */
-const NEW_SOURCE_DATE_FLOOR = '2026-01-01';
+/** Intake floor for ALL sources: no historical backfill — only speeches
+ *  published on/after this date are archived. Originally MDDI was
+ *  exempt (founding source, archive hand-completed), but the 2026-08
+ *  dialogue/fireside slug widening let a 2017 MDDI dialogue page
+ *  through on 2026-08-17 — empty speaker, zero strategic value, and a
+ *  wasted LLM judge call. The 149-record MDDI archive predates the
+ *  floor and is untouched; the floor only gates NEW intake. */
+const SPEECH_DATE_FLOOR = '2026-01-01';
 
 // Rule #9 (CLAUDE.md): full-speech paragraph batches regularly exceed the
 // default 120s claude CLI timeout — the 2026-08-03 MAS e2e timed out 9
@@ -357,30 +361,28 @@ async function main(): Promise<void> {
     return;
   }
 
-  // 2a. Date floor for new sources (MAS / PMO): no historical backfill.
-  // Rejects are cached so they never eat --limit slots again. A missing
-  // date is fail-open (kept, not cached) — a parser regression must not
-  // silently poison the cache. MDDI has no floor (founding source).
+  // 2a. Date floor (all sources): no historical backfill. Rejects are
+  // cached so they never eat --limit slots again. A missing date is
+  // fail-open (kept, not cached) — a parser regression must not
+  // silently poison the cache.
   const rejected = loadRejectedIds();
   const today = new Date().toISOString().slice(0, 10);
-  const ministryMap = new Map(candidates.map((c) => [c.speechId, c.ministry]));
   const inWindow: FetchedSpeech[] = [];
   let droppedPreFloor = 0;
   for (const f of fetchResult.successes) {
-    const ministry = ministryMap.get(f.speechId) ?? 'MDDI';
-    if (ministry !== 'MDDI' && f.publishedDate && f.publishedDate < NEW_SOURCE_DATE_FLOOR) {
+    if (f.publishedDate && f.publishedDate < SPEECH_DATE_FLOOR) {
       droppedPreFloor += 1;
       rejected[f.speechId] = { reason: 'pre-floor', date: f.publishedDate, decidedAt: today };
       process.stdout.write(`    ⊘ pre-floor (${f.publishedDate}): ${f.speechId}\n`);
       continue;
     }
-    if (ministry !== 'MDDI' && !f.publishedDate) {
+    if (!f.publishedDate) {
       process.stdout.write(`    ! no date extracted (kept, fail-open): ${f.speechId}\n`);
     }
     inWindow.push(f);
   }
   if (droppedPreFloor > 0) {
-    process.stdout.write(`  date floor: dropped ${droppedPreFloor} pre-${NEW_SOURCE_DATE_FLOOR}\n`);
+    process.stdout.write(`  date floor: dropped ${droppedPreFloor} pre-${SPEECH_DATE_FLOOR}\n`);
   }
 
   // 2b. AI-relevance gate. Fast-pass candidates (slug already names AI) are
