@@ -3,7 +3,7 @@ publishDate: 2026-05-26
 title: '新加坡公布四项 National AI Missions：先进制造、互联互通、金融、医疗'
 excerpt: '2026 年 5 月 20 日 ATxSummit 上，数字发展与信息部长 Josephine Teo 公布 National AI Strategy 更新，确立四项 National AI Missions：先进制造、互联互通、金融、医疗。同日还公布 NVIDIA Singapore AI Research Lab 和 Punggol Digital District 多运营商机器人 testbed。'
 category: '观察'
-topicIds: ['national-strategy']
+topicIds: ['national-strategy', 'advanced-manufacturing', 'connectivity', 'finance', 'healthcare']
 tags:
   - 战略
   - 观察

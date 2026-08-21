@@ -7,7 +7,8 @@
 // News-front-page layout (v0.21):
 //   S0  Masthead        — latest-developments strip: data scale + updated date
 //   S1  Front page      — 2-col: focus headline + updates feed + latest
-//                         debates | sidebar (tracker mini / browse / hot)
+//                         debates | sidebar (ask-AI entry / tracker mini /
+//                         browse / hot)
 //   S2  Domain directory— one card per dataset with count + latest addition
 //   S3  Start here      — compressed thesis + task entries + lever map
 //   S4  Closing thesis
@@ -24,6 +25,7 @@ import LatestUpdatesFeed from '~/components/home/LatestUpdatesFeed.astro';
 import LatestDebates from '~/components/home/LatestDebates.astro';
 import HomeSidebar from '~/components/home/HomeSidebar.astro';
 import DomainDirectory from '~/components/home/DomainDirectory.astro';
+import MissionsRail from '~/components/home/MissionsRail.astro';
 import LeverMap from '~/components/home/LeverMap.astro';
 import TaskEntries from '~/components/home/TaskEntries.astro';
 
@@ -69,6 +71,9 @@ if (lang === 'en') heroHeadlineJoiner = ' ';
 
 {/* S2 · Domain directory — every dataset, one card, latest addition. */}
 <DomainDirectory lang={lang} />
+
+{/* S2.5 · National AI Missions rail — four mission topic hubs. */}
+<MissionsRail />
 
 {
   /* S3 · Start here — the editorial argument, now the second act.

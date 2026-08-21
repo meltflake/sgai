@@ -1285,6 +1285,36 @@ But NUS AI Institute (founded 2024) is still in its integration phase. **Whether
             descriptionJa: 'インダストリアル博士課程（Industrial PhD Programme）です。',
             descriptionEn: 'Industrial PhD Programme (IPP).',
           },
+          {
+            date: '2026-08-05',
+            title: 'NUS 与 Razer 成立游戏 AI 联合研究实验室',
+            titleKo: 'NUS와 Razer, 게임 AI 공동 연구소 설립',
+            titleJa: 'NUS と Razer がゲーム AI 共同研究ラボを設立',
+            titleEn: 'NUS and Razer establish a joint gaming AI research lab',
+            description:
+              '实验室研究 Gaming Artificial Narrow Intelligence（GANI），覆盖核心模型创新、实时内容系统和高级个性化。',
+            descriptionKo:
+              '연구소는 Gaming Artificial Narrow Intelligence(GANI)를 연구하며 핵심 모델 혁신, 실시간 콘텐츠 시스템, 고급 개인화를 다룹니다.',
+            descriptionJa:
+              '研究ラボは Gaming Artificial Narrow Intelligence（GANI）を研究し、基盤モデルの革新、リアルタイムコンテンツシステム、高度なパーソナライゼーションを扱います。',
+            descriptionEn:
+              'The lab researches Gaming Artificial Narrow Intelligence (GANI), spanning core model innovation, real-time content systems, and advanced personalisation.',
+          },
+          {
+            date: '2026-08-11',
+            title: 'NUS 与 OpenAI 将 ChatGPT Edu 扩展至全校',
+            titleKo: 'NUS와 OpenAI, ChatGPT Edu를 대학 전체로 확대',
+            titleJa: 'NUS と OpenAI が ChatGPT Edu を全学展開',
+            titleEn: 'NUS and OpenAI expand ChatGPT Edu university-wide',
+            description:
+              '8 月 31 日起覆盖学生及教职员工；2026/27 学年所有本科新生必修 THE1008 应用生成式 AI，AI Sense Maker 计划于 8 月 20 日上线。Codex 不在此次全校范围内——它来自更早与计算机学院（SoC）的合作，OpenAI 称 NUS 的 Codex 采用率高于同规模高校。',
+            descriptionKo:
+              '8월 31일부터 모든 학생과 교직원이 이용하며, 2026/27학년도 학부 신입생은 THE1008 응용 생성형 AI 과목을 필수로 이수합니다. AI Sense Maker는 8월 20일 출시 예정입니다. Codex는 이번 전교 확대 범위가 아니며, 앞서 컴퓨팅학부(SoC)와의 협력에서 나온 것으로, OpenAI는 NUS의 Codex 도입률이 비슷한 규모의 대학보다 높다고 밝혔습니다.',
+            descriptionJa:
+              '8 月 31 日から全学生・教職員が利用可能となり、2026/27 学年度の学部新入生は応用生成 AI 科目 THE1008 を必修とします。AI Sense Maker は 8 月 20 日に公開予定です。Codex は今回の全学展開の対象ではなく、より早いコンピューティング学部（SoC）との協力によるもので、OpenAI は NUS の Codex 採用率が同規模大学を上回ると述べています。',
+            descriptionEn:
+              'From 31 August, access extends to all students, faculty, and staff; every undergraduate freshman in AY2026/27 must take THE1008 Applied Generative AI. AI Sense Maker is scheduled to launch on 20 August. Codex is not part of this university-wide rollout — it came through the earlier collaboration with the School of Computing, and OpenAI says NUS adoption of Codex runs ahead of similarly sized universities.',
+          },
         ],
         relatedLeverNumbers: [1, 2, 3],
         relatedPolicyIds: [
@@ -1293,7 +1323,7 @@ But NUS AI Institute (founded 2024) is still in its integration phase. **Whether
           'public-ai-research-investment-2026-2030',
         ],
         relatedDebateIds: ['budget-2570', 'budget-2361', 'budget-2362', 'budget-1313'],
-        relatedEntityIds: ['ai-singapore', 'a-star', 'ntu', 'sea-lion'],
+        relatedEntityIds: ['ai-singapore', 'a-star', 'ntu', 'sea-lion', 'openai', 'razer'],
         sources: [
           {
             label: 'NUS 官网',
@@ -1310,8 +1340,32 @@ But NUS AI Institute (founded 2024) is still in its integration phase. **Whether
             labelEn: 'NUS AI Institute',
             url: 'https://ai.nus.edu.sg/',
           },
+          {
+            label: 'NUS × Razer 游戏 AI 联合研究实验室公告',
+            labelKo: 'NUS × Razer 게임 AI 공동 연구소 발표',
+            labelJa: 'NUS × Razer ゲーム AI 共同研究ラボ発表',
+            labelEn: 'NUS × Razer joint gaming AI research lab announcement',
+            url: 'https://news.nus.edu.sg/razer-nus-ai-research-lab/',
+            date: '2026-08-05',
+          },
+          {
+            label: 'NUS × OpenAI 全校战略合作公告',
+            labelKo: 'NUS × OpenAI 대학 전체 전략적 협력 발표',
+            labelJa: 'NUS × OpenAI 全学戦略提携発表',
+            labelEn: 'NUS × OpenAI university-wide strategic collaboration announcement',
+            url: 'https://news.nus.edu.sg/nus-powers-education-research-and-administration-to-new-heights-with-ai-through-a-strategic-collaboration-with-openai/',
+            date: '2026-08-11',
+          },
+          {
+            label: 'CNA：NUS 全校 ChatGPT 与新生 AI 必修课',
+            labelKo: 'CNA: NUS 전교 ChatGPT 및 신입생 AI 필수 과목',
+            labelJa: 'CNA：NUS 全学 ChatGPT と新入生 AI 必修科目',
+            labelEn: 'CNA: university-wide ChatGPT access and compulsory freshman AI module at NUS',
+            url: 'https://www.channelnewsasia.com/singapore/nus-chatgpt-compulsory-ai-module-6306826',
+            date: '2026-08-11',
+          },
         ],
-        updated: '2026-05-02',
+        updated: '2026-08-11',
       },
       {
         id: 'ntu',
@@ -4560,7 +4614,7 @@ A take: this is Singapore's "small government, big leverage" playbook in action 
         descriptionKo: 'JTC가 one-north LaunchPad에 조성하는 AI 스타트업 캠퍼스',
         descriptionJa: 'JTC が one-north の LaunchPad に計画する AI スタートアップキャンパス',
         descriptionEn: "JTC's AI startup campus planned at LaunchPad @ one-north",
-        entityType: 'initiative',
+        entityType: 'platform',
         status: 'active',
         founded: '2026-03',
         ministry: 'MOF / JTC',
@@ -5025,6 +5079,68 @@ The key questions for AIAP in the NAIS 2.0 era: **Can it scale to 200+ per year?
           },
         ],
         updated: '2026-05-02',
+      },
+      {
+        id: 'noai',
+        name: 'NOAI 全国 AI 奥赛',
+        nameJa: 'NOAI 全国 AI オリンピック',
+        nameKo: 'NOAI 전국 AI 올림피아드',
+        nameEn: 'NOAI (National Olympiad in AI)',
+        description: 'AISG 的青少年 AI 赛事入口，选拔新加坡队参加 IOAI',
+        descriptionJa: 'AISG の青少年 AI コンテスト入口、シンガポール代表を IOAI に派遣',
+        descriptionKo: 'AISG의 청소년 AI 대회 입구, 싱가포르 대표팀을 IOAI에 파견',
+        descriptionEn: "AISG's youth AI competition entry point; selects the Singapore team for the IOAI",
+        entityType: 'initiative',
+        status: 'active',
+        founded: '2024',
+        scale: 'IOAI 2024 保加利亚 2 金；2025 北京 2 金 5 银；与 NTU 联合主办 IOAI 2027',
+        scaleJa: 'IOAI 2024 ブルガリア金 2；2025 北京金 2 銀 5；NTU と共同で IOAI 2027 を主催',
+        scaleKo: 'IOAI 2024 불가리아 금 2개; 2025 베이징 금 2개·은 5개; NTU와 공동으로 IOAI 2027 개최',
+        scaleEn:
+          '2 golds at IOAI 2024 (Bulgaria); 2 golds + 5 silvers at IOAI 2025 (Beijing); co-hosting IOAI 2027 with NTU',
+        summary:
+          'NOAI 是 AISG 的全国 AI 奥林匹克，新加坡队通往 IOAI 的国内选拔。新加坡队 2024 年保加利亚站拿 2 金，2025 年北京站拿 2 金 5 银。2027 年 AISG 与 NTU 联合主办 IOAI，这是该赛事首次落地新加坡。',
+        summaryJa:
+          'NOAI は AISG の全国 AI オリンピックで、IOAI へのシンガポール代表を選抜する。代表チームは 2024 年ブルガリア大会で金 2、2025 年北京大会で金 2 銀 5 を獲得。2027 年には AISG と NTU が IOAI を共同主催し、同大会として初のシンガポール開催となる。',
+        summaryKo:
+          'NOAI는 AISG의 전국 AI 올림피아드로, IOAI에 나갈 싱가포르 대표를 뽑는 국내 관문이다. 대표팀은 2024년 불가리아에서 금 2개, 2025년 베이징에서 금 2개·은 5개를 획득했다. 2027년에는 AISG와 NTU가 IOAI를 공동 개최해 대회 사상 첫 싱가포르 개최가 된다.',
+        summaryEn:
+          "NOAI is AISG's National Olympiad in AI, the domestic pathway that selects Singapore's team for the IOAI. The team took 2 golds at IOAI 2024 in Bulgaria and 2 golds plus 5 silvers at IOAI 2025 in Beijing. In 2027 AISG and NTU co-host the IOAI — the first time the olympiad lands in Singapore.",
+        whatItIs:
+          'NOAI 是 AISG 的全国 AI 奥林匹克：面向青少年选拔新加坡队参加 IOAI 的国内通道。选拔出的队伍代表新加坡参加国际赛场。',
+        whatItIsJa:
+          'NOAI は AISG の全国 AI オリンピックである。青少年から IOAI に出場するシンガポール代表を選抜する国内経路で、選ばれたチームが国際大会でシンガポールを代表する。',
+        whatItIsKo:
+          'NOAI는 AISG의 전국 AI 올림피아드다. 청소년 중 IOAI에 나갈 싱가포르 대표팀을 뽑는 국내 관문이며, 선발된 팀이 국제 무대에서 싱가포르를 대표한다.',
+        whatItIsEn:
+          "NOAI is AISG's National Olympiad in AI: the domestic pathway that selects Singapore's youth team for the IOAI, with the selected team representing Singapore internationally.",
+        aiRelevance: '赛事成绩是青少年 AI 人才梯队的硬指标：2024 保加利亚站 2 金，2025 北京站 2 金 5 银。',
+        aiRelevanceJa:
+          '大会の成績は青少年 AI 人材のパイプラインの硬い指標である。2024 年ブルガリア大会で金 2、2025 年北京大会で金 2 銀 5 を獲得した。',
+        aiRelevanceKo:
+          '대회 성적은 청소년 AI 인재 파이프라인의 확실한 지표다. 2024년 불가리아에서 금 2개, 2025년 베이징에서 금 2개·은 5개를 획득했다.',
+        aiRelevanceEn:
+          'Competition results are a hard signal for the youth AI talent pipeline: 2 golds at the 2024 edition in Bulgaria and 2 golds plus 5 silvers at the 2025 edition in Beijing.',
+        singaporeRelevance:
+          '与 NTU 联合主办 IOAI 2027，是该项赛事首次落地新加坡，延续新加坡在 AI 治理与教育上的东道主叙事。',
+        singaporeRelevanceJa:
+          'NTU と共同で IOAI 2027 を主催する。同大会のシンガポール開催は初で、AI ガバナンスと教育におけるシンガポールのホスト国としての位置づけを継続する。',
+        singaporeRelevanceKo:
+          'NTU와 공동으로 IOAI 2027을 개최한다. 대회 사상 첫 싱가포르 개최로, AI 거버넌스와 교육에서 싱가포르의 주최국 서사를 이어간다.',
+        singaporeRelevanceEn:
+          "Co-hosting IOAI 2027 with NTU marks the competition's first Singapore edition, extending the country's hosting record in AI governance and education.",
+        url: 'https://www.ioai-singapore.org/',
+        sources: [
+          {
+            label: 'IOAI Singapore 官方站',
+            labelJa: 'IOAI Singapore 公式サイト',
+            labelKo: 'IOAI Singapore 공식 사이트',
+            labelEn: 'IOAI Singapore official site',
+            url: 'https://www.ioai-singapore.org/',
+            date: '2026-05-02',
+          },
+        ],
+        updated: '2026-08-14',
       },
       {
         id: 'ladp',
@@ -6902,6 +7018,103 @@ Bottlenecks to watch: **scale** (a 50-person Foundry is a drop in the bucket aga
     descriptionEn: 'An active hand in global AI governance and cooperation',
     entities: [
       {
+        id: 'theseus-infrastructure',
+        name: 'Theseus Infrastructure',
+        nameKo: 'Theseus Infrastructure',
+        nameJa: 'Theseus Infrastructure',
+        nameEn: 'Theseus Infrastructure',
+        description: 'Anthropic、Macquarie Asset Management 与 GIC 共同设立的 AI 数据中心投资平台',
+        descriptionKo: 'Anthropic, Macquarie Asset Management, GIC가 공동 설립한 AI 데이터센터 투자 플랫폼',
+        descriptionJa:
+          'Anthropic、Macquarie Asset Management、GIC が共同設立した AI データセンター投資プラットフォーム',
+        descriptionEn: 'AI data-centre investment platform formed by Anthropic, Macquarie Asset Management, and GIC',
+        entityType: 'initiative',
+        status: 'active',
+        founded: '2026-08',
+        parentOrg: 'Anthropic × Macquarie Asset Management × GIC',
+        parentOrgKo: 'Anthropic × Macquarie Asset Management × GIC',
+        parentOrgJa: 'Anthropic × Macquarie Asset Management × GIC',
+        parentOrgEn: 'Anthropic × Macquarie Asset Management × GIC',
+        scale: '投资规模未公布；初期聚焦美国 AI 计算设施',
+        scaleKo: '투자 규모 미공개; 초기에는 미국 AI 컴퓨팅 시설에 집중',
+        scaleJa: '投資規模は非公開；当初は米国の AI コンピュート施設に注力',
+        scaleEn: 'Investment size undisclosed; initial focus on US AI compute facilities',
+        summary:
+          'Theseus Infrastructure 是 Anthropic、Macquarie Asset Management 与新加坡主权财富基金 GIC 在 2026 年 8 月设立的 AI 数据中心开发与投资平台。Macquarie 与 GIC 为各项目提供主要股权资本，Anthropic 提供长期算力需求，并承诺承担设施导致当地消费者电价上涨的成本。平台初期聚焦美国，未宣称在新加坡建设或运营数据中心。',
+        summaryKo:
+          'Theseus Infrastructure는 Anthropic, Macquarie Asset Management, 싱가포르 국부펀드 GIC가 2026년 8월 설립한 AI 데이터센터 개발·투자 플랫폼입니다. Macquarie와 GIC가 각 프로젝트의 주요 자기자본을 제공하고, Anthropic은 장기 컴퓨팅 수요를 제공하며 시설로 인해 지역 소비자 전기요금이 상승할 경우 그 비용을 부담하기로 했습니다. 초기 초점은 미국이며 싱가포르 내 데이터센터 건설이나 운영은 발표되지 않았습니다.',
+        summaryJa:
+          'Theseus Infrastructure は、Anthropic、Macquarie Asset Management、シンガポール政府系ファンド GIC が 2026 年 8 月に設立した AI データセンター開発・投資プラットフォームです。Macquarie と GIC が各プロジェクトの主要なエクイティ資金を提供し、Anthropic は長期的なコンピュート需要を提供するとともに、施設による地域消費者の電気料金上昇分を負担するとしています。当初は米国に注力し、シンガポールでのデータセンター建設・運営は表明していません。',
+        summaryEn:
+          'Theseus Infrastructure is an AI data-centre development and investment platform formed in August 2026 by Anthropic, Macquarie Asset Management, and Singapore sovereign wealth fund GIC. Macquarie and GIC will provide most of the equity for each project, while Anthropic supplies long-term compute demand and has committed to cover increases in local consumer electricity prices caused by the facilities. The initial focus is the United States; no Singapore data-centre construction or operation has been announced.',
+        whatItIs: `Theseus 的分工结构：
+
+- **Macquarie Asset Management + GIC**：为每个项目提供大部分股权资本
+- **Anthropic**：成为长期算力客户，并承担项目引起的居民电价上涨成本
+- **项目范围**：开发 AI 计算设施，初期聚焦美国
+
+截至公告时，各项目规模、总投资额和首批地点均未披露。`,
+        whatItIsKo: `Theseus의 역할 분담 구조:
+
+- **Macquarie Asset Management + GIC**: 각 프로젝트 자기자본의 대부분을 제공
+- **Anthropic**: 장기 컴퓨팅 고객이 되고 프로젝트로 인한 주민 전기요금 상승 비용을 부담
+- **프로젝트 범위**: AI 컴퓨팅 시설 개발, 초기에는 미국에 집중
+
+발표 시점 기준 개별 프로젝트 규모, 총투자액, 첫 부지는 공개되지 않았습니다.`,
+        whatItIsJa: `Theseus の役割分担：
+
+- **Macquarie Asset Management + GIC**：各プロジェクトのエクイティの大部分を提供
+- **Anthropic**：長期コンピュート顧客となり、プロジェクトによる住民向け電気料金の上昇分を負担
+- **プロジェクト範囲**：AI コンピュート施設を開発し、当初は米国に注力
+
+発表時点で、各プロジェクトの規模、総投資額、最初の立地は非公開です。`,
+        whatItIsEn: `Theseus divides responsibilities as follows:
+
+- **Macquarie Asset Management + GIC**: provide most of the equity for each project
+- **Anthropic**: acts as the long-term compute customer and covers project-related increases in residential electricity prices
+- **Project scope**: develop AI compute facilities, initially in the United States
+
+Project sizes, total investment, and the first locations were undisclosed at announcement.`,
+        aiRelevance:
+          '它把前沿模型公司的算力需求与长期基础设施资本直接绑定，减少 Anthropic 自建数据中心所需的前期资本，同时让投资者获得由确定性算力需求支撑的基础设施资产。',
+        aiRelevanceKo:
+          '프런티어 모델 기업의 컴퓨팅 수요를 장기 인프라 자본과 직접 결합해 Anthropic의 자체 데이터센터 선투자 부담을 낮추고, 투자자에게 확정적 컴퓨팅 수요가 뒷받침하는 인프라 자산을 제공합니다.',
+        aiRelevanceJa:
+          'フロンティアモデル企業のコンピュート需要と長期インフラ資本を直接結びつけ、Anthropic の自社データセンター建設に必要な先行資本を抑えつつ、投資家には確度の高い需要に支えられたインフラ資産を提供します。',
+        aiRelevanceEn:
+          'It directly ties a frontier-model company’s compute demand to long-duration infrastructure capital, reducing Anthropic’s upfront burden for dedicated capacity while giving investors infrastructure assets backed by committed demand.',
+        singaporeRelevance:
+          '新加坡关联来自 GIC 的主权资本，而不是本地数据中心建设。它说明新加坡的 AI 基础设施策略不仅是吸引算力落地，也包括通过国家资本持有海外 AI 算力资产。',
+        singaporeRelevanceKo:
+          '싱가포르와의 연계는 현지 데이터센터 건설이 아니라 GIC의 국부 자본에서 나옵니다. 이는 싱가포르의 AI 인프라 전략이 국내 컴퓨팅 유치뿐 아니라 국가 자본을 통한 해외 AI 컴퓨팅 자산 보유까지 포함한다는 뜻입니다.',
+        singaporeRelevanceJa:
+          'シンガポールとの接点は国内データセンター建設ではなく、GIC の政府系資本です。シンガポールの AI インフラ戦略が、国内へのコンピュート誘致だけでなく、国家資本による海外 AI コンピュート資産の保有も含むことを示します。',
+        singaporeRelevanceEn:
+          'The Singapore connection is GIC’s sovereign capital, not local data-centre construction. It shows that Singapore’s AI infrastructure strategy includes owning overseas AI compute assets through state capital, alongside attracting compute onshore.',
+        milestones: [
+          {
+            date: '2026-08-10',
+            title: 'Anthropic、Macquarie 与 GIC 成立 Theseus Infrastructure',
+            titleKo: 'Anthropic, Macquarie, GIC가 Theseus Infrastructure 설립',
+            titleJa: 'Anthropic、Macquarie、GIC が Theseus Infrastructure を設立',
+            titleEn: 'Anthropic, Macquarie, and GIC form Theseus Infrastructure',
+          },
+        ],
+        relatedLeverNumbers: [1, 6],
+        sources: [
+          {
+            label: 'Business Times / Bloomberg：Theseus Infrastructure 成立报道',
+            labelKo: 'Business Times / Bloomberg: Theseus Infrastructure 설립 보도',
+            labelJa: 'Business Times / Bloomberg：Theseus Infrastructure 設立報道',
+            labelEn: 'Business Times / Bloomberg: Theseus Infrastructure formation report',
+            url: 'https://www.businesstimes.com.sg/startups-tech/technology/anthropic-macquarie-and-gic-form-venture-ai-data-centres',
+            date: '2026-08-11',
+          },
+        ],
+        updated: '2026-08-11',
+        addedAt: '2026-08-13',
+      },
+      {
         id: 'gpai',
         name: 'GPAI',
         nameJa: 'GPAI',
@@ -7048,8 +7261,8 @@ A take: GPAI gives a small country like Singapore "founding member" status at th
       {
         id: 'oecd-ai-observatory',
         name: 'OECD AI Policy Observatory',
-        nameJa: 'OECD AI Policy Observatory',
-        nameKo: 'OECD AI Policy Observatory',
+        nameJa: 'OECD AI 政策観測所',
+        nameKo: 'OECD AI 정책 관측소',
         nameEn: 'OECD AI Policy Observatory',
         description: '参与 OECD AI 政策制定',
         descriptionKo: 'OECD AI 정책 입안에 참여',
@@ -7832,6 +8045,108 @@ Worth watching: **actual prediction accuracy**, **clinician adoption** (do docto
     descriptionJa: 'グローバル技術大手との深い協力',
     descriptionEn: 'Deep partnerships with global technology leaders',
     entities: [
+      {
+        id: 'razer',
+        name: 'Razer',
+        nameKo: 'Razer',
+        nameJa: 'Razer',
+        nameEn: 'Razer',
+        description: '新加坡游戏科技公司，以 AI Centre of Excellence 和 NUS 联合实验室推进游戏 AI',
+        descriptionKo: 'AI Centre of Excellence와 NUS 공동 연구소를 통해 게임 AI를 추진하는 싱가포르 게임 기술 기업',
+        descriptionJa:
+          'AI Centre of Excellence と NUS 共同研究ラボを通じてゲーム AI を推進するシンガポールのゲームテック企業',
+        descriptionEn:
+          'Singapore gaming technology company advancing gaming AI through an AI Centre of Excellence and a joint NUS lab',
+        url: 'https://www.razer.com/',
+        entityType: 'partner',
+        status: 'active',
+        headquarters: '新加坡 / 美国尔湾（双总部）',
+        headquartersKo: '싱가포르 / 미국 어바인(이중 본사)',
+        headquartersJa: 'シンガポール / 米国アーバイン（二重本社）',
+        headquartersEn: 'Singapore / Irvine, United States (dual headquarters)',
+        scale: '新加坡 AI Centre of Excellence 现有 100+ 名工程师、数据科学家和研究人员',
+        scaleKo: '싱가포르 AI Centre of Excellence에 엔지니어, 데이터 과학자, 연구원 100명 이상 재직',
+        scaleJa: 'シンガポール AI Centre of Excellence にエンジニア、データサイエンティスト、研究者 100 人以上が在籍',
+        scaleEn: 'Singapore AI Centre of Excellence currently hosts 100+ engineers, data scientists, and researchers',
+        summary:
+          'Razer 是一家以新加坡为双总部之一的游戏科技公司。公司在 2025 年设立 AI Centre of Excellence，目前在新加坡拥有超过 100 名工程师、数据科学家和研究人员；2026 年 8 月又与 NUS 成立联合 AI 研究实验室，提出 Gaming Artificial Narrow Intelligence（GANI）研究方向，连接模型研究、实时游戏内容和个性化体验。',
+        summaryKo:
+          'Razer는 싱가포르를 두 본사 중 하나로 둔 게임 기술 기업입니다. 2025년 AI Centre of Excellence를 설립했으며 현재 싱가포르에서 엔지니어, 데이터 과학자, 연구원 100명 이상이 근무합니다. 2026년 8월에는 NUS와 공동 AI 연구소를 설립해 Gaming Artificial Narrow Intelligence(GANI)를 핵심 모델 연구, 실시간 게임 콘텐츠, 개인화 경험과 연결했습니다.',
+        summaryJa:
+          'Razer はシンガポールを二つの本社の一つとするゲームテック企業です。2025 年に AI Centre of Excellence を設立し、現在シンガポールで 100 人以上のエンジニア、データサイエンティスト、研究者を擁しています。2026 年 8 月には NUS と共同 AI 研究ラボを設立し、Gaming Artificial Narrow Intelligence（GANI）を基盤モデル研究、リアルタイムゲームコンテンツ、パーソナライズ体験に結びつけています。',
+        summaryEn:
+          'Razer is a gaming technology company with Singapore as one of its dual headquarters. It established an AI Centre of Excellence in 2025, which currently hosts more than 100 engineers, data scientists, and researchers in Singapore. In August 2026 it formed a joint AI research lab with NUS and introduced Gaming Artificial Narrow Intelligence (GANI) as a research direction connecting core models, real-time game content, and personalised experiences.',
+        whatItIs: `Razer 在新加坡的 AI 布局有两层：
+
+- **AI Centre of Excellence**：建设本地 AI 工程和研究团队，研发游戏开发工具与体验产品
+- **Razer–NUS AI Research Lab**：研究 GANI，重点覆盖核心模型创新、实时内容系统和高级个性化
+
+联合实验室采用研究到转化模式，成果可进入 Razer 的产品与开发系统。`,
+        whatItIsKo: `Razer의 싱가포르 AI 전략은 두 층으로 구성됩니다:
+
+- **AI Centre of Excellence**: 현지 AI 엔지니어링·연구팀을 구축해 게임 개발 도구와 경험 제품을 개발
+- **Razer–NUS AI Research Lab**: GANI를 연구하며 핵심 모델 혁신, 실시간 콘텐츠 시스템, 고급 개인화에 집중
+
+공동 연구소는 연구 결과를 Razer 제품과 개발 시스템으로 이전할 수 있는 연구-사업화 모델을 채택합니다.`,
+        whatItIsJa: `Razer のシンガポール AI 戦略は二層構造です：
+
+- **AI Centre of Excellence**：現地の AI エンジニアリング・研究チームを構築し、ゲーム開発ツールと体験製品を開発
+- **Razer–NUS AI Research Lab**：GANI を研究し、基盤モデルの革新、リアルタイムコンテンツシステム、高度なパーソナライゼーションに注力
+
+共同研究ラボは、成果を Razer の製品・開発システムへ移せる研究から実用化へのモデルを採用します。`,
+        whatItIsEn: `Razer's Singapore AI presence has two layers:
+
+- **AI Centre of Excellence**: builds a local AI engineering and research team for game-development tools and player-experience products
+- **Razer–NUS AI Research Lab**: researches GANI, focusing on core model innovation, real-time content systems, and advanced personalisation
+
+The joint lab follows a research-to-translation model, allowing outputs to feed into Razer products and development systems.`,
+        aiRelevance:
+          'Razer 把游戏 AI 从单点工具提升为专门研究方向。GANI 强调受游戏环境约束、可实时响应并能持续个性化的模型，与追求通用能力的基础模型形成明确分工。',
+        aiRelevanceKo:
+          'Razer는 게임 AI를 개별 도구에서 독립적인 연구 방향으로 끌어올렸습니다. GANI는 게임 환경의 제약을 따르고 실시간 반응과 지속적 개인화를 지원하는 모델을 강조해 범용 능력을 추구하는 파운데이션 모델과 역할을 구분합니다.',
+        aiRelevanceJa:
+          'Razer はゲーム AI を個別ツールから独立した研究領域へ引き上げました。GANI はゲーム環境の制約下でリアルタイム応答と継続的なパーソナライゼーションを行うモデルを重視し、汎用能力を追求する基盤モデルとの役割を明確に分けます。',
+        aiRelevanceEn:
+          'Razer elevates gaming AI from isolated tools into a dedicated research direction. GANI emphasises models constrained by game environments that can respond in real time and personalise continuously, a distinct role from general-purpose foundation models.',
+        singaporeRelevance:
+          '这项合作把新加坡本土游戏公司、高校研究和 AI 人才岗位接到同一条转化链上，是国家 AI 战略在垂直产业中的具体落点。',
+        singaporeRelevanceKo:
+          '이 협력은 싱가포르 게임 기업, 대학 연구, AI 인재 일자리를 하나의 사업화 흐름으로 연결하며 국가 AI 전략이 수직 산업에 적용되는 구체적 사례입니다.',
+        singaporeRelevanceJa:
+          'この提携は、シンガポールのゲーム企業、大学研究、AI 人材の雇用を一つの実用化チェーンに結びつけ、国家 AI 戦略が垂直産業に落ちる具体例です。',
+        singaporeRelevanceEn:
+          'The partnership connects a Singapore gaming company, university research, and local AI jobs in one translation pipeline — a concrete vertical-industry landing point for the national AI strategy.',
+        milestones: [
+          {
+            date: '2025',
+            title: 'Razer 在新加坡设立 AI Centre of Excellence',
+            titleKo: 'Razer, 싱가포르에 AI Centre of Excellence 설립',
+            titleJa: 'Razer がシンガポールに AI Centre of Excellence を設立',
+            titleEn: 'Razer establishes an AI Centre of Excellence in Singapore',
+          },
+          {
+            date: '2026-08-05',
+            title: 'Razer 与 NUS 成立联合 AI 研究实验室',
+            titleKo: 'Razer와 NUS, 공동 AI 연구소 설립',
+            titleJa: 'Razer と NUS が共同 AI 研究ラボを設立',
+            titleEn: 'Razer and NUS establish a joint AI research lab',
+          },
+        ],
+        relatedLeverNumbers: [2, 3],
+        relatedEntityIds: ['nus'],
+        sources: [
+          {
+            label: 'NUS：Razer–NUS AI Research Lab 公告',
+            labelKo: 'NUS: Razer–NUS AI Research Lab 발표',
+            labelJa: 'NUS：Razer–NUS AI Research Lab 発表',
+            labelEn: 'NUS: Razer–NUS AI Research Lab announcement',
+            url: 'https://news.nus.edu.sg/razer-nus-ai-research-lab/',
+            date: '2026-08-05',
+          },
+        ],
+        updated: '2026-08-05',
+        addedAt: '2026-08-13',
+      },
       {
         id: 'google-deepmind',
         name: 'Google DeepMind',
@@ -8701,11 +9016,26 @@ A take: this is heavier than a “regional HQ” announcement. A regional HQ is 
             titleJa: 'MDDI / IMDA が協力を ATxSummit 2026 AI 実装パッケージに組み込み',
             titleEn: 'MDDI / IMDA include the partnership in the ATxSummit 2026 AI deployment package',
           },
+          {
+            date: '2026-08-11',
+            title: 'OpenAI 与 NUS 将 ChatGPT Edu 扩展至全校',
+            titleKo: 'OpenAI와 NUS, ChatGPT Edu를 대학 전체로 확대',
+            titleJa: 'OpenAI と NUS が ChatGPT Edu を全学展開',
+            titleEn: 'OpenAI and NUS expand ChatGPT Edu university-wide',
+            description:
+              '8 月 31 日起覆盖所有学生及教职员工，并配合本科新生必修生成式 AI 课程与 AI Sense Maker。Codex 不在此次全校范围内，来自更早与计算机学院（SoC）的合作。',
+            descriptionKo:
+              '8월 31일부터 모든 학생과 교직원에게 제공되며, 학부 신입생 생성형 AI 필수 과목과 AI Sense Maker를 함께 추진합니다. Codex는 이번 전교 확대 범위가 아니라 앞서 컴퓨팅학부(SoC)와의 협력에서 나온 것입니다.',
+            descriptionJa:
+              '8 月 31 日から全学生・教職員へ提供し、学部新入生向け生成 AI 必修科目と AI Sense Maker を組み合わせます。Codex は今回の全学展開の対象ではなく、より早いコンピューティング学部（SoC）との協力によるものです。',
+            descriptionEn:
+              'Access extends to all students, faculty, and staff from 31 August, alongside a compulsory generative-AI module for undergraduate freshmen and AI Sense Maker. Codex is not part of this university-wide rollout; it came through the earlier collaboration with the School of Computing.',
+          },
         ],
         relatedLeverNumbers: [1, 3, 6],
         relatedPolicyIds: ['openai-for-singapore-2026'],
         relatedDebateIds: ['oral-answer-4126', 'motion-2976', 'budget-2328'],
-        relatedEntityIds: ['ai-singapore'],
+        relatedEntityIds: ['ai-singapore', 'nus'],
         sources: [
           {
             label: 'OpenAI',
@@ -8721,8 +9051,24 @@ A take: this is heavier than a “regional HQ” announcement. A regional HQ is 
             labelEn: 'IMDA ATxSummit 2026 announcement',
             url: 'https://www.imda.gov.sg/resources/press-releases-factsheets-and-speeches/press-releases/2026/accelerate-real-world-deployment',
           },
+          {
+            label: 'NUS × OpenAI 全校战略合作公告',
+            labelKo: 'NUS × OpenAI 대학 전체 전략적 협력 발표',
+            labelJa: 'NUS × OpenAI 全学戦略提携発表',
+            labelEn: 'NUS × OpenAI university-wide strategic collaboration announcement',
+            url: 'https://news.nus.edu.sg/nus-powers-education-research-and-administration-to-new-heights-with-ai-through-a-strategic-collaboration-with-openai/',
+            date: '2026-08-11',
+          },
+          {
+            label: 'CNA：NUS 全校 ChatGPT 与新生 AI 必修课',
+            labelKo: 'CNA: NUS 전교 ChatGPT 및 신입생 AI 필수 과목',
+            labelJa: 'CNA：NUS 全学 ChatGPT と新入生 AI 必修科目',
+            labelEn: 'CNA: university-wide ChatGPT access and compulsory freshman AI module at NUS',
+            url: 'https://www.channelnewsasia.com/singapore/nus-chatgpt-compulsory-ai-module-6306826',
+            date: '2026-08-11',
+          },
         ],
-        updated: '2026-05-24',
+        updated: '2026-08-11',
       },
       {
         id: 'sony-research',

@@ -116,6 +116,7 @@ export const categories: PolicyCategory[] = [
         titleKo: '국가 AI 전략 업데이트 (NAIS Update 2026)',
         titleJa: '国家 AI 戦略アップデート (NAIS Update 2026)',
         titleEn: 'National AI Strategy Update 2026',
+        topicIds: ['national-strategy', 'advanced-manufacturing', 'connectivity', 'finance', 'healthcare'],
         date: '2026-05',
         source: '数字发展与信息部 (MDDI) / 国家 AI 理事会 (NAIC)',
         sourceKo: '디지털 개발 및 정보부 (MDDI) / 국가 AI 위원회 (NAIC)',
@@ -724,16 +725,17 @@ This is not just a regional-HQ story. It connects OpenAI’s deployment engineer
         sourceKo: 'IMDA / 디지털 신뢰 센터',
         sourceJa: 'IMDA / デジタルトラストセンター',
         sourceOrgUrl: 'https://sgaisi.sg/',
-        sourceUrl: 'https://sgaisi.sg/',
+        sourceUrl:
+          'https://www.imda.gov.sg/resources/press-releases-factsheets-and-speeches/factsheets/2024/digital-trust-centre',
         summary: '前沿 AI 安全研究的国家级研究所，承担 Singapore Consensus 协调职能。',
         summaryKo: '선도적 AI 안전 연구의 국가급 연구소로 Singapore Consensus 협력 기능을 담당합니다.',
         summaryJa: '最先端の AI 安全研究に関する国家レベルの研究所。Singapore Consensus の調整機能を担当しています。',
-        content: `Singapore AI Safety Institute (AISI) 于 2024 年成立，年度预算 S$10M，由 IMDA 与 Digital Trust Centre 联合运营，挂靠 NTU。承担前沿 AI 模型的红队评估、对齐研究、可追溯性测试三类核心研究。AISI 还作为 Singapore Consensus on Global AI Safety Research Priorities 的协调中心，并主办 International Scientific Exchange on AI Safety。官方口径中，Singapore Consensus 来自 2025 年 SCAI: ISE，汇集 11 个国家的 100+ 参与者形成“活文件”，2026 年 ISE 继续更新研究优先级；它不是“11 国签署”的政府间协议。AISI 是新加坡"用 0.07% 全球人口撬动 G7 级 AI 治理话语权"战略最关键的机构。`,
-        contentKo: `Singapore AI Safety Institute(AISI)는 2024년 설립되었으며, 연간 예산은 S$10M이고, IMDA와 Digital Trust Centre가 공동으로 운영하며 NTU에 속합니다. 선도적 AI 모델의 레드팀 평가, 정렬 연구, 추적 가능성 테스트의 세 가지 핵심 연구를 수행합니다. AISI는 Singapore Consensus on Global AI Safety Research Priorities의 조율 중심이며 International Scientific Exchange on AI Safety를 주최합니다. 공식 구도에서 Singapore Consensus는 2025년 SCAI: ISE에서 나왔고, 11개국의 100명 이상 참여자가 만든 “살아 있는 문서”이며, 2026년 ISE가 연구 우선순위를 계속 업데이트합니다. 이는 “11개국이 서명한” 정부 간 협정이 아닙니다. AISI는 싱가포르의 「0.07% 글로벌 인구로 G7급 AI 거버넌스 발언권을 활용하는」 전략의 가장 중요한 기관입니다.`,
-        contentJa: `Singapore AI Safety Institute (AISI) は 2024 年に設立され、年間予算は S$10M、IMDA と Digital Trust Centre が共同運営し、NTU に置かれています。最先端 AI モデルのレッドチーム評価、アライメント研究、トレーサビリティテストを担います。AISI は Singapore Consensus on Global AI Safety Research Priorities の調整中心でもあり、International Scientific Exchange on AI Safety を主催します。公式口径では、Singapore Consensus は 2025 年 SCAI: ISE から生まれ、11 カ国の 100 名超の参加者による「living document」で、2026 年 ISE が研究優先事項を更新します。これは「11 カ国が署名した」政府間協定ではありません。AISI は、シンガポールが「世界人口の 0.07% を用いて G7 級の AI 治理発言権を得る」戦略において、最も重要な機関です。`,
+        content: `2024 年 5 月 22 日，IMDA 把数字信任中心（Digital Trust Centre，DTC）指定为新加坡 AI 安全研究所（AISI）。DTC 成立于 2022 年 6 月，由 IMDA 委托南洋理工大学（NTU）设立、Lam Kwok Yen 教授领衔，初始拨款 S$5,000 万，原本聚焦 AI 测试与隐私增强技术。指定为 AISI 后的分工是：DTC 承担技术研究与测评，IMDA 作为主管政府机构负责基线政策与国际对接。官方公布的四个初始研究方向是测试与评估、安全的模型设计与开发部署、内容保障、治理与政策。AISI 还作为 Singapore Consensus on Global AI Safety Research Priorities 的协调中心，并主办 International Scientific Exchange on AI Safety。官方口径中，Singapore Consensus 来自 2025 年 SCAI: ISE，汇集 11 个国家的 100+ 参与者形成“活文件”，2026 年 ISE 继续更新研究优先级；它不是“11 国签署”的政府间协议。AISI 是新加坡"用 0.07% 全球人口撬动 G7 级 AI 治理话语权"战略最关键的机构。`,
+        contentKo: `2024년 5월 22일 IMDA는 디지털 신뢰 센터(Digital Trust Centre, DTC)를 싱가포르 AI 안전 연구소(AISI)로 지정했습니다. DTC는 2022년 6월에 설립되었으며, IMDA의 위탁으로 난양이공대학교(NTU)에 설치되어 Lam Kwok Yen 교수가 이끌었고 초기 자금은 S$5,000만이며, 원래는 AI 테스트와 프라이버시 강화 기술에 중점을 두었습니다. AISI 지정 이후 역할 분담은 DTC가 기술 연구와 평가를 맡고 IMDA가 주무 정부 기관으로서 기준 정책과 국제 협력을 담당하는 것입니다. 공식 발표된 네 가지 초기 연구 영역은 테스트 및 평가, 안전한 모델 설계·개발·배포, 콘텐츠 보증, 거버넌스 및 정책입니다. AISI는 Singapore Consensus on Global AI Safety Research Priorities의 조율 중심이며 International Scientific Exchange on AI Safety를 주최합니다. 공식 구도에서 Singapore Consensus는 2025년 SCAI: ISE에서 나왔고, 11개국의 100명 이상 참여자가 만든 “살아 있는 문서”이며, 2026년 ISE가 연구 우선순위를 계속 업데이트합니다. 이는 “11개국이 서명한” 정부 간 협정이 아닙니다. AISI는 싱가포르의 「0.07% 글로벌 인구로 G7급 AI 거버넌스 발언권을 활용하는」 전략의 가장 중요한 기관입니다.`,
+        contentJa: `2024 年 5 月 22 日、IMDA はデジタルトラストセンター（Digital Trust Centre、DTC）をシンガポール AI 安全研究所（AISI）に指定しました。DTC は 2022 年 6 月に設立され、IMDA の委託により南洋理工大学（NTU）に置かれ、Lam Kwok Yen 教授が率い、初期資金は S$5,000 万で、当初は AI テストとプライバシー強化技術に注力していました。AISI 指定後の分担は、DTC が技術研究と評価を担い、IMDA が所管政府機関としてベースライン政策と国際連携を担当します。公表された 4 つの初期研究領域は、テストと評価、安全なモデルの設計・開発・展開、コンテンツ保証、ガバナンスと政策です。AISI は Singapore Consensus on Global AI Safety Research Priorities の調整中心でもあり、International Scientific Exchange on AI Safety を主催します。公式口径では、Singapore Consensus は 2025 年 SCAI: ISE から生まれ、11 カ国の 100 名超の参加者による「living document」で、2026 年 ISE が研究優先事項を更新します。これは「11 カ国が署名した」政府間協定ではありません。AISI は、シンガポールが「世界人口の 0.07% を用いて G7 級の AI 治理発言権を得る」戦略において、最も重要な機関です。`,
         summaryEn:
           'National research institute for frontier AI safety, hosting the Singapore Consensus coordination function.',
-        contentEn: `The Singapore AI Safety Institute (AISI) was established in 2024 with an annual budget of S$10M, jointly operated by IMDA and the Digital Trust Centre and hosted at NTU. It covers three core research areas on frontier AI models: red-team evaluation, alignment research, and traceability testing. AISI also serves as the coordination centre for the Singapore Consensus on Global AI Safety Research Priorities and hosts the International Scientific Exchange on AI Safety. In the official account, the Singapore Consensus came out of SCAI: ISE 2025, gathering 100+ participants from 11 countries into a living document; ISE 2026 continues to update the research priorities. It is not an intergovernmental agreement "signed by 11 countries." AISI is the most critical institution in Singapore's strategy of "leveraging 0.07% of the world's population into G7-level AI governance influence."`,
+        contentEn: `On 22 May 2024, IMDA designated the Digital Trust Centre (DTC) as Singapore's AI Safety Institute (AISI). DTC itself was set up in June 2022, established at Nanyang Technological University (NTU) under an IMDA appointment and led by Professor Lam Kwok Yen, with initial funding of S$50 million, originally focused on AI testing and privacy-enhancing technologies. Under the AISI designation DTC carries the technical research and evaluation work, while IMDA is the overall government agency responsible for baseline policy and international engagement. The four initial research areas announced are Testing & Evaluation; Safe Model Design, Development and Deployment; Content Assurance; and Governance & Policy. AISI also serves as the coordination centre for the Singapore Consensus on Global AI Safety Research Priorities and hosts the International Scientific Exchange on AI Safety. In the official account, the Singapore Consensus came out of SCAI: ISE 2025, gathering 100+ participants from 11 countries into a living document; ISE 2026 continues to update the research priorities. It is not an intergovernmental agreement "signed by 11 countries." AISI is the most critical institution in Singapore's strategy of "leveraging 0.07% of the world's population into G7-level AI governance influence."`,
         sourceEn: 'IMDA / Digital Trust Centre',
         ministry: undefined,
         authorPersonIds: [],
@@ -1605,11 +1607,69 @@ Strategically, this moves AI Verify from tools and frameworks into market infras
         summary: 'AI 系统全生命周期安全最佳实践指南。',
         summaryKo: 'AI 시스템 전체 생명 주기 보안 모범 사례 지침입니다.',
         summaryJa: 'AI システムの全ライフサイクル・セキュリティに関するベストプラクティスガイドライン。',
-        content: `CSA 于 2024 年 10 月发布 AI 系统安全指南及配套实践手册，填补了 AI 安全领域的治理空白。指南覆盖 AI 系统全生命周期：规划与设计阶段的威胁建模、开发阶段的数据与模型安全、部署阶段的安全测试、运维阶段的监控与事件响应。重点关注对抗性攻击防御、数据投毒防范、模型窃取防护、供应链安全等 AI 特有风险。`,
-        contentKo: `CSA는 2024년 10월 AI 시스템 안전 지침 및 관련 실무 매뉴얼을 발표했으며, AI 보안 분야의 거버넌스 공백을 메웠습니다. 지침은 AI 시스템의 전체 생명 주기를 포함합니다: 계획 및 설계 단계의 위협 모델링, 개발 단계의 데이터 및 모델 보안, 배포 단계의 보안 테스트, 운영 단계의 모니터링 및 사건 대응. 적대적 공격 방어, 데이터 중독 방지, 모델 도용 방지, 공급망 보안 등 AI 특화 위험을 중점적으로 관심 있게 봅니다.`,
-        contentJa: `CSA は 2024 年 10 月に AI システムセキュリティガイドラインおよび実装ハンドブックを発表し、AI セキュリティ領域のガバナンスギャップを埋めました。ガイドラインは AI システムの完全なライフサイクルをカバーしています。計画と設計段階での脅威モデリング、開発段階でのデータとモデルのセキュリティ、展開段階でのセキュリティテスト、運用段階での監視とインシデント対応です。主要な焦点は、敵対的攻撃防御、データポイズニング防止、モデル盗難保護、サプライチェーンセキュリティなど AI 固有のリスクです。`,
+        content: `CSA 于 2024 年 10 月发布 AI 系统安全指南及配套实践手册，填补了 AI 安全领域的治理空白。指南覆盖 AI 系统全生命周期：规划与设计阶段的威胁建模、开发阶段的数据与模型安全、部署阶段的安全测试、运维阶段的监控与事件响应。重点关注对抗性攻击防御、数据投毒防范、模型窃取防护、供应链安全等 AI 特有风险。
+
+配套的 Securing Agentic AI 增补稿 2025 年 10 月 22 日发布草案公开征求意见（至 2025 年 12 月 31 日），定稿于 2026 年 6 月 17 日发布，把这套指南扩展到 Agentic AI 场景：按 agent 能力识别与评估风险、映射工作流找出可利用的薄弱环节，并按不同自主程度给出开发生命周期各阶段的控制措施。`,
+        contentKo: `CSA는 2024년 10월 AI 시스템 안전 지침 및 관련 실무 매뉴얼을 발표했으며, AI 보안 분야의 거버넌스 공백을 메웠습니다. 지침은 AI 시스템의 전체 생명 주기를 포함합니다: 계획 및 설계 단계의 위협 모델링, 개발 단계의 데이터 및 모델 보안, 배포 단계의 보안 테스트, 운영 단계의 모니터링 및 사건 대응. 적대적 공격 방어, 데이터 중독 방지, 모델 도용 방지, 공급망 보안 등 AI 특화 위험을 중점적으로 관심 있게 봅니다.
+
+부속 문서인 Securing Agentic AI 보충 문서는 2025년 10월 22일 초안이 공개 협의용으로 발표되었고(2025년 12월 31일 마감), 최종본은 2026년 6월 17일 공개되어 이 지침을 Agentic AI 시나리오까지 확장했습니다. agent 역량에 따라 위험을 식별·평가하고, 워크플로를 매핑해 악용 가능한 취약 지점을 찾아내며, 자율성 수준별로 개발 생명주기 각 단계의 통제 방안을 제시합니다.`,
+        contentJa: `CSA は 2024 年 10 月に AI システムセキュリティガイドラインおよび実装ハンドブックを発表し、AI セキュリティ領域のガバナンスギャップを埋めました。ガイドラインは AI システムの完全なライフサイクルをカバーしています。計画と設計段階での脅威モデリング、開発段階でのデータとモデルのセキュリティ、展開段階でのセキュリティテスト、運用段階での監視とインシデント対応です。主要な焦点は、敵対的攻撃防御、データポイズニング防止、モデル盗難保護、サプライチェーンセキュリティなど AI 固有のリスクです。
+
+付属の Securing Agentic AI 補足文書は 2025 年 10 月 22 日に草案がパブリックコンサルテーション用に公開され（2025 年 12 月 31 日締切）、確定版は 2026 年 6 月 17 日に公表され、本ガイドラインを Agentic AI のシナリオへ拡張しました。agent の能力に応じたリスクの識別と評価、ワークフローのマッピングによる悪用可能な脆弱点の洗い出し、自律性のレベル別に開発ライフサイクル各段階の統制策を示しています。`,
         summaryEn: 'Best-practice guidelines for end-to-end security across the AI system lifecycle.',
-        contentEn: `In October 2024, CSA released the Guidelines on Securing AI Systems together with a companion practice handbook, filling a governance gap in the AI security space. The guidelines cover the full AI system lifecycle: threat modelling at the planning and design stage, data and model security during development, security testing at deployment, and monitoring and incident response in operations. They focus on AI-specific risks including adversarial attack defence, data poisoning prevention, model theft protection, and supply chain security.`,
+        contentEn: `In October 2024, CSA released the Guidelines on Securing AI Systems together with a companion practice handbook, filling a governance gap in the AI security space. The guidelines cover the full AI system lifecycle: threat modelling at the planning and design stage, data and model security during development, security testing at deployment, and monitoring and incident response in operations. They focus on AI-specific risks including adversarial attack defence, data poisoning prevention, model theft protection, and supply chain security.
+
+The companion addendum "Securing Agentic AI" was issued in draft for public consultation on 22 October 2025 (closing 31 December 2025), and the finalised version was released on 17 June 2026, extending the guidelines to agentic AI: identifying and assessing risk according to agent capabilities, mapping workflows to surface exploitable weak points, and setting out controls across the development lifecycle for different levels of autonomy.`,
+        sourceEn: 'Cyber Security Agency (CSA)',
+        ministry: undefined,
+        authorPersonIds: [],
+        relatedDebateIds: [],
+        relatedLeverNumbers: [],
+        relatedTimelineYears: [],
+        relatedPostSlugs: [],
+      },
+      {
+        id: 'securing-agentic-ai-addendum',
+        title: 'Securing Agentic AI 增补稿',
+        titleKo: 'Securing Agentic AI 보충 문서',
+        titleJa: 'Securing Agentic AI 補足文書',
+        titleEn: 'Securing Agentic AI — Addendum to the Guidelines on Securing AI Systems',
+        topicIds: ['safety-ethics', 'governance-regulation', 'national-security'],
+        date: '2026-06',
+        addedAt: '2026-08-20',
+        source: '网络安全局 (CSA)',
+        sourceKo: '사이버보안청(CSA)',
+        sourceJa: 'サイバーセキュリティ庁 (CSA)',
+        sourceOrgUrl: 'https://www.csa.gov.sg/',
+        sourceUrl: 'https://www.csa.gov.sg/resources/publications/addendum-on-securing-ai-systems/',
+        summary:
+          'CSA 2024 年 AI 系统安全指南的 Agentic AI 增补稿：2025 年 10 月 22 日发布草案征求意见，2026 年 6 月 17 日发布定稿。',
+        summaryKo:
+          'CSA의 2024년 AI 시스템 보안 지침에 대한 Agentic AI 보충 문서: 2025년 10월 22일 초안 공개 협의, 2026년 6월 17일 최종본 공개.',
+        summaryJa:
+          'CSA の 2024 年 AI システムセキュリティガイドラインに対する Agentic AI 補足文書：2025 年 10 月 22 日に草案を公開協議、2026 年 6 月 17 日に確定版を公表。',
+        summaryEn:
+          'The agentic-AI addendum to CSA’s 2024 Guidelines on Securing AI Systems: draft opened for consultation on 22 October 2025, finalised version released on 17 June 2026.',
+        content: `CSA 2024 年 10 月发布的《Guidelines and Companion Guide on Securing AI Systems》针对的是一般 AI 系统。Agentic AI 能理解上下文并自主行动，攻击面和一般 AI 不同，CSA 为此单出一份增补稿。
+
+时间线分两段，容易被记混：**2025 年 10 月 22 日**发布草案并开启公开征求意见，截止 **2025 年 12 月 31 日**；**2026 年 6 月 17 日**发布定稿。
+
+增补稿的三块内容：按 agent 的能力识别与评估风险，包括映射工作流找出可被利用的薄弱环节；给出开发生命周期各阶段的实际控制措施，并按不同自主程度分别举例；用应用开发助手、客户开户自动化、欺诈自动检测等场景做示范。`,
+        contentKo: `CSA가 2024년 10월 발표한 《Guidelines and Companion Guide on Securing AI Systems》는 일반 AI 시스템을 대상으로 합니다. Agentic AI는 맥락을 이해하고 자율적으로 행동하기 때문에 공격면이 일반 AI와 달라, CSA는 이를 위해 별도의 보충 문서를 냈습니다.
+
+타임라인은 두 단계로 나뉘며 혼동하기 쉽습니다: **2025년 10월 22일** 초안을 발표하고 공개 협의를 시작해 **2025년 12월 31일** 마감했으며, **2026년 6월 17일** 최종본을 공개했습니다.
+
+보충 문서의 세 가지 내용: agent의 역량에 따라 위험을 식별하고 평가하며, 워크플로를 매핑해 악용될 수 있는 취약 지점을 찾아냅니다. 개발 생명주기 각 단계의 실질적 통제 방안을 제시하고 자율성 수준별로 예시를 듭니다. 앱 개발 어시스턴트, 고객 온보딩 자동화, 사기 자동 탐지 같은 시나리오로 시연합니다.`,
+        contentJa: `CSA が 2024 年 10 月に公表した《Guidelines and Companion Guide on Securing AI Systems》は一般的な AI システムを対象としています。Agentic AI は文脈を理解し自律的に行動するため攻撃面が一般の AI と異なり、CSA は別途補足文書を用意しました。
+
+タイムラインは 2 段階に分かれ、混同されやすい点です：**2025 年 10 月 22 日**に草案を公表しパブリックコンサルテーションを開始、**2025 年 12 月 31 日**締切。**2026 年 6 月 17 日**に確定版を公表しました。
+
+補足文書の 3 つの柱：agent の能力に応じてリスクを識別・評価し、ワークフローをマッピングして悪用され得る脆弱点を洗い出す。開発ライフサイクル各段階の実務的な統制策を示し、自律性のレベル別に例示する。アプリ開発アシスタント、顧客オンボーディングの自動化、不正検知の自動化といったシナリオで実演する。`,
+        contentEn: `CSA’s Guidelines and Companion Guide on Securing AI Systems, published in October 2024, address AI systems in general. Agentic AI understands context and acts on its own, giving it a different attack surface, so CSA issued a separate addendum for it.
+
+The timeline runs in two stages, which are easy to conflate: the draft was published for public consultation on **22 October 2025**, closing **31 December 2025**; the finalised version was released on **17 June 2026**.
+
+The addendum covers three things: identifying and assessing risk according to agent capabilities, including mapping workflows to surface exploitable weak points; practical controls across the development lifecycle, with examples for different levels of autonomy; and worked scenarios such as app development assistants, automated client onboarding, and automated fraud detection.`,
         sourceEn: 'Cyber Security Agency (CSA)',
         ministry: undefined,
         authorPersonIds: [],

@@ -71,10 +71,6 @@ const routeData = {
 
 <script define:vars={{ BANNER_MESSAGES, SWITCH_LABELS, routeData }}>
   (() => {
-    const banner = document.getElementById('lang-banner');
-    if (!banner) return;
-    const currentLang = banner.dataset.currentLang;
-    const candidates = JSON.parse(banner.dataset.suggestLocales || '[]');
     const { routeDefault, nonDefaultLangs } = routeData;
 
     function localeUrl(targetLang) {
@@ -115,30 +111,52 @@ const routeData = {
       return false;
     }
 
-    const stored = localStorage.getItem('sgai_lang');
-    if (stored) return;
+    // ClientRouter swaps the DOM without re-running identical inline scripts,
+    // so the show/hide decision and listeners must re-run on every
+    // astro:page-load against the freshly swapped-in banner. The dataset flag
+    // keeps the initial full load (direct call + astro:page-load both firing)
+    // from double-binding; the window flag keeps re-evaluations of this
+    // script (leaving and re-entering pages that render it) from stacking
+    // astro:page-load listeners.
+    function boot() {
+      const banner = document.getElementById('lang-banner');
+      if (!banner || banner.dataset.langBannerReady) return;
+      banner.dataset.langBannerReady = '1';
 
-    const prefs = (navigator.languages?.length ? navigator.languages : [navigator.language]).map((l) =>
-      l.toLowerCase()
-    );
-    if (prefersLang(prefs, currentLang)) return;
+      const currentLang = banner.dataset.currentLang;
+      const candidates = JSON.parse(banner.dataset.suggestLocales || '[]');
 
-    const suggestLang = candidates.find((lang) => prefersLang(prefs, lang));
-    if (!suggestLang) return;
+      const stored = localStorage.getItem('sgai_lang');
+      if (stored) return;
 
-    document.getElementById('lang-banner-msg').textContent = BANNER_MESSAGES[suggestLang] || '';
-    const switchEl = document.getElementById('lang-banner-switch');
-    switchEl.textContent = SWITCH_LABELS[suggestLang] || '';
-    banner.classList.remove('hidden');
+      const prefs = (navigator.languages?.length ? navigator.languages : [navigator.language]).map((l) =>
+        l.toLowerCase()
+      );
+      if (prefersLang(prefs, currentLang)) return;
 
-    switchEl?.addEventListener('click', (e) => {
-      e.preventDefault();
-      localStorage.setItem('sgai_lang', suggestLang);
-      location.assign(localeUrl(suggestLang));
-    });
-    document.getElementById('lang-banner-dismiss')?.addEventListener('click', () => {
-      localStorage.setItem('sgai_lang', currentLang);
-      banner.classList.add('hidden');
-    });
+      const suggestLang = candidates.find((lang) => prefersLang(prefs, lang));
+      if (!suggestLang) return;
+
+      document.getElementById('lang-banner-msg').textContent = BANNER_MESSAGES[suggestLang] || '';
+      const switchEl = document.getElementById('lang-banner-switch');
+      switchEl.textContent = SWITCH_LABELS[suggestLang] || '';
+      banner.classList.remove('hidden');
+
+      switchEl?.addEventListener('click', (e) => {
+        e.preventDefault();
+        localStorage.setItem('sgai_lang', suggestLang);
+        location.assign(localeUrl(suggestLang));
+      });
+      document.getElementById('lang-banner-dismiss')?.addEventListener('click', () => {
+        localStorage.setItem('sgai_lang', currentLang);
+        banner.classList.add('hidden');
+      });
+    }
+
+    boot();
+    if (!window.__sgaiLangBannerBound) {
+      window.__sgaiLangBannerBound = true;
+      document.addEventListener('astro:page-load', boot);
+    }
   })();
 </script>

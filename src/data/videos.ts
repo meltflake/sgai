@@ -138,6 +138,35 @@ export function pickSpeakerTypeLabels(lang: string): Record<string, string> {
 
 export const videos: VideoItem[] = [
   {
+    id: 'v080',
+    title: '海尼根为何聘用AIAP学员',
+    titleEn: 'Why We Hire AIAP Graduates — Heineken',
+    titleJa: 'ハイネケンがAIAP学員を採用する理由',
+    titleKo: '하이네켄이 AIAP 훈련생을 채용하는 이유',
+    speaker: 'Dr. Ralph Ostertag',
+    speakerTitle: '首席信息官（亚太）兼全球GenAI实验室主任',
+    speakerTitleEn: 'Regional CIO (APAC) and Director, Global GenAI Lab',
+    speakerTitleJa: '最高情報責任者（アジア太平洋）兼グローバルGenAI実験室長',
+    speakerTitleKo: '최고 정보 책임자(아시아태평양) 겸 글로벌 GenAI 실험실 책임자',
+    speakerType: 'industry',
+    date: '2026-08-06',
+    duration: '01:00',
+    summary: '海尼根全球GenAI实验室负责人讲述如何利用AI推动EverGreen 2030战略，及AIAP学员的重要作用。',
+    summaryEn:
+      "Heineken's Regional CIO discusses how the company is leveraging AI and GenAI Lab to drive its EverGreen 2030 strategy, and the role of AI Apprenticeship Programme graduates in this transformation.",
+    summaryJa:
+      'ハイネケンのグローバルGenAI実験室の責任者が、AIを活用してEverGreen 2030戦略を推進する方法、およびAIAP学員の重要な役割について説明しています。',
+    summaryKo:
+      '하이네켄 글로벌 GenAI 실험실 책임자가 AI를 활용하여 EverGreen 2030 전략을 추진하는 방법과 AIAP 훈련생의 중요한 역할에 대해 설명합니다.',
+    topic: 'AI 人才与教育',
+    topicEn: 'AI Talent & Education',
+    topicJa: 'AI 人材と教育',
+    topicKo: 'AI 인재와 교육',
+    youtubeUrl: 'https://www.youtube.com/watch?v=4hN78mxFW7M',
+    channel: 'AI Singapore',
+    addedAt: '2026-08-14',
+  },
+  {
     id: 'v079',
     title: '为什么我们聘用 AIAP 毕业生——SAM 第二部分',
     titleEn: 'Why We Hire AIAP Graduates — SAM Part 2',
@@ -720,7 +749,7 @@ export const videos: VideoItem[] = [
   },
   {
     id: 'v060',
-    title: '马斯戈：AI 推进不应遗漏弱势群体',
+    title: '马善高：AI 推进不应遗漏弱势群体',
     titleKo: 'Masagos Zulkifli: AI 추진이 취약계층을 빠뜨려서는 안 됨',
     titleEn: 'Masagos: No Vulnerable Group Should Be Left Behind in AI Push',
     titleJa: 'マサゴス：AI推進で脆弱な層を取り残してはならない（サンガレン・シンポジウム）',
@@ -732,7 +761,7 @@ export const videos: VideoItem[] = [
     speakerType: 'government',
     date: '2026-05-08',
     duration: '02:33',
-    summary: '社会及家庭发展部长马斯戈在圣加仑论坛上强调，AI 推进必须兼顾弱势群体，避免技术红利只惠及少数人。',
+    summary: '社会及家庭发展部长马善高在圣加仑论坛上强调，AI 推进必须兼顾弱势群体，避免技术红利只惠及少数人。',
     summaryKo:
       '사회 및 가족 발전부 장관 Masagos Zulkifli는 St. Gallen Forum에서 AI 추진이 취약계층을 고려해야 하며, 기술 혜택이 소수에게만 가지 않아야 한다고 강조했다.',
     summaryEn:
@@ -778,7 +807,7 @@ export const videos: VideoItem[] = [
   {
     id: 'v056',
     title: '劳动节集会：黄循财总理承诺 AI 时代的「新更好」工作',
-    titleKo: '노동절 집회: 황순재 총리가 약속한 AI 시대의 「새롭고 더 나은」일자리',
+    titleKo: '노동절 집회: 로런스 웡 총리가 약속한 AI 시대의 「새롭고 더 나은」일자리',
     titleJa: '労働節集会：黄循財首相が AI 時代の「新たにして一層良い」仕事を約束',
     titleEn: "May Day Rally: PM Wong pledges 'new and better' jobs as AI transforms Singapore's economy",
     speaker: 'Lawrence Wong',
@@ -792,7 +821,7 @@ export const videos: VideoItem[] = [
     summary:
       '新加坡总理黄循财在劳动节集会上承诺在 AI 驱动的经济转型中创造更好的就业机会，同时呼吁国民学习和应用这项技术。',
     summaryKo:
-      '싱가포르 총리 황순재는 노동절 집회에서 AI 주도 경제 변환 속에서 더 나은 고용 기회를 창출할 것을 약속했으며, 국민들이 이 기술을 학습하고 활용할 것을 촉구했습니다.',
+      '싱가포르 총리 로런스 웡은 노동절 집회에서 AI 주도 경제 변환 속에서 더 나은 고용 기회를 창출할 것을 약속했으며, 국민들이 이 기술을 학습하고 활용할 것을 촉구했습니다.',
     summaryJa:
       'シンガポール総理黄循財は労働節集会で、AI 駆動経済への転型の中で、より良い雇用機会を創出することを約束し、国民に対してこの技術の学習と応用を呼びかけた。',
     summaryEn:
@@ -807,7 +836,7 @@ export const videos: VideoItem[] = [
   {
     id: 'v057',
     title: '黄循财总理五一演讲：没有新加坡人会被落下',
-    titleKo: '황순재 총리 5월 1일 연설: 싱가포르인 누구도 뒤처지지 않을 것',
+    titleKo: '로런스 웡 총리 5월 1일 연설: 싱가포르인 누구도 뒤처지지 않을 것',
     titleJa: '黄循財首相五一演説：シンガポール人が取り残されることはない',
     titleEn: "PM Wong's May Day Rally speech: 'No Singaporean will be left behind'",
     speaker: 'Lawrence Wong',
@@ -821,7 +850,7 @@ export const videos: VideoItem[] = [
     summary:
       '新加坡总理黄循财在五一劳动节大会上表示，政府虽然无法保护每个工作岗位，但会保护每个工人；计划扩大公司培训委员会应对AI转型。',
     summaryKo:
-      '싱가포르 총리 황순재는 5월 1일 노동절 대회에서 정부가 모든 일자리를 보호할 수는 없지만 모든 노동자를 보호할 것이라고 밝혔으며, 회사 훈련 위원회를 확대하여 AI 변환에 대응할 계획이라고 했습니다.',
+      '싱가포르 총리 로런스 웡은 5월 1일 노동절 대회에서 정부가 모든 일자리를 보호할 수는 없지만 모든 노동자를 보호할 것이라고 밝혔으며, 회사 훈련 위원회를 확대하여 AI 변환에 대응할 계획이라고 했습니다.',
     summaryJa:
       'シンガポール総理黄循財は五一労働節大会で、政府はすべての仕事を保護することはできないが、すべての労働者を保護することを表明した。また、AI 転型に対応するために公式訓練評議会の拡大を計画している。',
     summaryEn:
@@ -985,7 +1014,7 @@ export const videos: VideoItem[] = [
     speaker: 'Vivian Balakrishnan',
     speakerTitle: '新加坡外交部长',
     speakerTitleKo: '싱가포르 외교 장관',
-    speakerTitleJa: 'シンガポール外交部長',
+    speakerTitleJa: 'シンガポール外交大臣',
     speakerTitleEn: 'Minister for Foreign Affairs, Singapore',
     speakerType: 'government',
     date: '2026-03-02',
@@ -1062,7 +1091,7 @@ export const videos: VideoItem[] = [
   {
     id: 'v006',
     title: '黄循财总理 2026 财政预算案全文演讲',
-    titleKo: '황순재 총리 2026 재정 예산안 전문 연설',
+    titleKo: '로런스 웡 총리 2026 재정 예산안 전문 연설',
     titleJa: '黄循財首相 2026 年財政予算案全文演説',
     titleEn: "PM Lawrence Wong's full Budget 2026 speech",
     speaker: 'Lawrence Wong',
@@ -1075,11 +1104,12 @@ export const videos: VideoItem[] = [
     duration: '90:19',
     summary: '黄循财总理发表预算案演讲,AI 成为核心主题,宣布设立国家 AI 委员会并亲自担任主席。',
     summaryKo:
-      '황순재 총리가 예산안 연설에서 AI가 핵심 주제가 되었으며, 국가 AI 위원회 설립을 선언하고 직접 의장을 맡기로 했습니다.',
+      '로런스 웡 총리가 예산안 연설에서 AI가 핵심 주제가 되었으며, 국가 AI 위원회 설립을 선언하고 직접 의장을 맡기로 했습니다.',
     summaryJa:
       '黄循財首相が予算案演説を発表し、AI が核心テーマとなり、国家 AI 委員会の設立と自らが委員長を務めることを宣言した。',
     summaryEn:
       'PM Lawrence Wong delivers the Budget speech with AI as a core theme, announcing the establishment of the National AI Council, which he will personally chair.',
+    topicIds: ['national-strategy', 'advanced-manufacturing', 'connectivity', 'finance', 'healthcare'],
     topic: 'AI 战略与愿景',
     topicKo: 'AI 전략과 비전',
     topicJa: 'AI 戦略とビジョン',
@@ -1394,7 +1424,7 @@ export const videos: VideoItem[] = [
   {
     id: 'v018',
     title: '黄循财总理接受英国金融时报专访',
-    titleKo: '황순재 총리, 영국 파이낸셜 타임스 전담 인터뷰',
+    titleKo: '로런스 웡 총리, 영국 파이낸셜 타임스 전담 인터뷰',
     titleJa: '黄循財首相、英国フィナンシャル・タイムズ紙のインタビューを受ける',
     titleEn: 'PM Lawrence Wong interviewed by the Financial Times',
     speaker: 'Lawrence Wong',
@@ -1407,7 +1437,7 @@ export const videos: VideoItem[] = [
     duration: '27:44',
     summary: '黄循财在金融时报专访中讨论后美国秩序下的全球格局,包括 AI 对新加坡经济的战略意义。',
     summaryKo:
-      '황순재가 파이낸셜타임스 인터뷰에서 미국 이후 질서 속 글로벌 환경과 AI가 싱가포르 경제에 가진 전략적 의의를 논의합니다.',
+      '로런스 웡이 파이낸셜타임스 인터뷰에서 미국 이후 질서 속 글로벌 환경과 AI가 싱가포르 경제에 가진 전략적 의의를 논의합니다.',
     summaryJa:
       '黄循財はフィナンシャル・タイムズ紙のインタビューで、米国後の世界秩序およびシンガポール経済に対する AI の戦略的意義を含む、グローバル状況について論じた。',
     summaryEn:
@@ -1754,7 +1784,7 @@ export const videos: VideoItem[] = [
     speaker: 'Vivian Balakrishnan',
     speakerTitle: '新加坡外交部长',
     speakerTitleKo: '싱가포르 외교부 장관',
-    speakerTitleJa: 'シンガポール外交部長',
+    speakerTitleJa: 'シンガポール外交大臣',
     speakerTitleEn: 'Minister for Foreign Affairs, Singapore',
     speakerType: 'government',
     date: '2023-09-19',
@@ -1810,7 +1840,7 @@ export const videos: VideoItem[] = [
     speaker: 'Vivian Balakrishnan',
     speakerTitle: '新加坡外交部长 / 智慧国负责人',
     speakerTitleKo: '싱가포르 외교부 장관 / 스마트 싱가포르 담당자',
-    speakerTitleJa: 'シンガポール外交部長／スマートネーション責任者',
+    speakerTitleJa: 'シンガポール外交大臣／スマートネーション責任者',
     speakerTitleEn: 'Minister for Foreign Affairs / Minister-in-charge of Smart Nation, Singapore',
     speakerType: 'government',
     date: '2021-07-14',

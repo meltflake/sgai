@@ -19,13 +19,15 @@ import { execFileSync } from 'node:child_process';
 
 import { callLlmJson, ensureClaudeAuthed } from '../../lib/llm.ts';
 import { autoCommit, pushAndOpenPR, buildPRBody } from '../../lib/auto-commit.ts';
-import { QUERY_BASKET, type JobsIndexSnapshot, type RoleTypeId } from '../../../src/data/ai-jobs-index.ts';
+import { QUERY_BASKET, type JobsIndexSnapshot, type RoleTypeId, type SectorId } from '../../../src/data/ai-jobs-index.ts';
 import { sweepQuery, searchUrl, type QuerySweep } from './api.ts';
 import {
   dedupByUuid,
   salaryStats,
   topEmployers,
   classifyRoleByRules,
+  classifySectorByRules,
+  sectorCounts,
   roleTypeCounts,
   MIN_PLAUSIBLE_TOTAL,
 } from './compute.ts';
@@ -57,6 +59,7 @@ function report(fields: Record<string, unknown>): void {
 }
 
 const VALID_ROLES: RoleTypeId[] = ['engineering', 'research', 'data', 'product', 'gtm', 'ops-other'];
+const VALID_SECTORS: SectorId[] = ['finance', 'health', 'manufacturing', 'logistics', 'tech', 'gov-edu', 'other'];
 
 /** One batched haiku call for titles the deterministic rules couldn't
  *  place. Failure is non-fatal: leftovers become 'ops-other'. */
@@ -75,6 +78,31 @@ async function classifyLeftovers(titles: string[], cap: number): Promise<Map<str
     }
   } catch (err) {
     process.stdout.write(`  ! role LLM fallback failed (non-fatal): ${err instanceof Error ? err.message : err}\n`);
+  }
+  return out;
+}
+
+/** One batched haiku call for entries the sector rules couldn't place.
+ *  Failure is non-fatal: leftovers become 'other'. */
+async function classifySectorLeftovers(
+  entries: Array<{ title: string; company: string }>,
+  cap: number,
+): Promise<Map<string, SectorId>> {
+  const out = new Map<string, SectorId>();
+  if (entries.length === 0) return out;
+  const batch = entries.slice(0, cap);
+  try {
+    const res = await callLlmJson<Record<string, string>>(
+      `Classify each job (title + company) into exactly one sector: finance, health, manufacturing, logistics, tech, gov-edu, other.\n` +
+        `Return STRICT JSON mapping "title @ company" → sector, no prose.\n\nEntries:\n` +
+        batch.map((e) => `- ${e.title} @ ${e.company}`).join('\n'),
+      { systemPrompt: 'You classify job postings by industry sector. Output strict JSON only.', model: 'haiku' }
+    );
+    for (const [key, sector] of Object.entries(res)) {
+      if ((VALID_SECTORS as string[]).includes(sector)) out.set(key, sector as SectorId);
+    }
+  } catch (err) {
+    process.stdout.write(`  ! sector LLM fallback failed (non-fatal): ${err instanceof Error ? err.message : err}\n`);
   }
   return out;
 }
@@ -142,6 +170,29 @@ async function main(): Promise<void> {
     ...leftoverTitles.map((t) => llmAssigned.get(t) ?? ('ops-other' as RoleTypeId)),
   ];
 
+  // Sectors (v2): company-first keyword rules, LLM fallback for the rest.
+  const sectorRuleAssigned: SectorId[] = [];
+  const sectorLeftovers: Array<{ title: string; company: string }> = [];
+  for (const j of jobs) {
+    const sector = classifySectorByRules(j.title, j.postedCompany?.name);
+    if (sector) sectorRuleAssigned.push(sector);
+    else sectorLeftovers.push({ title: j.title, company: j.postedCompany?.name ?? '' });
+  }
+  let sectorLlmAssigned = new Map<string, SectorId>();
+  if (sectorLeftovers.length > 0) {
+    try {
+      ensureClaudeAuthed();
+      sectorLlmAssigned = await classifySectorLeftovers(sectorLeftovers, flags.limit);
+    } catch {
+      // auth failure in scan-only runs: all leftovers become 'other'
+    }
+  }
+  const allSectors: SectorId[] = [
+    ...sectorRuleAssigned,
+    ...sectorLeftovers.map((e) => sectorLlmAssigned.get(`${e.title} @ ${e.company}`) ?? ('other' as SectorId)),
+  ];
+  process.stdout.write(`  sectors: rules=${sectorRuleAssigned.length}, leftover=${sectorLeftovers.length}\n`);
+
   const snapshot: JobsIndexSnapshot = {
     month,
     capturedAt: today,
@@ -155,6 +206,7 @@ async function main(): Promise<void> {
     salaryMidpointP75: stats.p75,
     topEmployers: employers,
     roleTypes: roleTypeCounts(allRoles),
+    sectors: sectorCounts(allSectors),
     sourceUrl: searchUrl(QUERY_BASKET[0]),
   };
 

@@ -1,34 +1,915 @@
 {
   "_comment": "Term-level expectations for Singapore AI translation. zh source → expected en + ja translations. Used by translation eval to assert proper-noun fidelity. Add new terms when you spot them mistranslated in PR review.",
   "people": {
-    "黄循财": { "en": ["Lawrence Wong"], "ja": ["ローレンス・ウォン"] },
-    "李显龙": { "en": ["Lee Hsien Loong"], "ja": ["リー・シェンロン"] },
-    "陈振声": { "en": ["Chan Chun Sing"], "ja": ["チャン・チュンシン"] },
-    "蔡其生": { "en": ["Josephine Teo", "Mrs Teo"], "ja": ["ジョセフィン・テオ"] },
-    "王瑞杰": { "en": ["Heng Swee Keat"], "ja": ["ヘン・スイキャット"] },
-    "陈杰豪": { "en": ["Tan Kiat How"], "ja": ["タン・キアットハウ"] }
+    "黄循财": {
+      "en": [
+        "Lawrence Wong"
+      ],
+      "ja": [
+        "ローレンス・ウォン"
+      ]
+    },
+    "李显龙": {
+      "en": [
+        "Lee Hsien Loong"
+      ],
+      "ja": [
+        "リー・シェンロン"
+      ]
+    },
+    "陈振声": {
+      "en": [
+        "Chan Chun Sing"
+      ],
+      "ja": [
+        "チャン・チュンシン"
+      ]
+    },
+    "杨莉明": {
+      "en": [
+        "Josephine Teo",
+        "Mrs Teo"
+      ],
+      "ja": [
+        "ジョセフィン・テオ"
+      ]
+    },
+    "王瑞杰": {
+      "en": [
+        "Heng Swee Keat"
+      ],
+      "ja": [
+        "ヘン・スイキャット"
+      ]
+    },
+    "陈杰豪": {
+      "en": [
+        "Tan Kiat How"
+      ],
+      "ja": [
+        "タン・キアットハウ"
+      ]
+    },
+    "颜金勇": {
+      "en": [
+        "Gan Kim Yong"
+      ],
+      "ja": [
+        "ガン・キムヨン"
+      ]
+    },
+    "普杰立": {
+      "en": [
+        "Janil Puthucheary",
+        "Dr Janil"
+      ]
+    },
+    "尚达曼": {
+      "en": [
+        "Tharman Shanmugaratnam",
+        "Tharman"
+      ],
+      "ja": [
+        "タルマン・シャンムガラトナム"
+      ]
+    },
+    "张志贤": {
+      "en": [
+        "Teo Chee Hean"
+      ]
+    },
+    "维文": {
+      "en": [
+        "Vivian Balakrishnan"
+      ],
+      "ja": [
+        "ビビアン・バラクリシュナン"
+      ]
+    },
+    "王乙康": {
+      "en": [
+        "Ong Ye Kung"
+      ]
+    },
+    "徐芳达": {
+      "en": [
+        "Chee Hong Tat"
+      ]
+    },
+    "马善高": {
+      "en": [
+        "Masagos Zulkifli"
+      ],
+      "ja": [
+        "マサゴス・ズルキフリ"
+      ]
+    },
+    "陈诗龙": {
+      "en": [
+        "Tan See Leng"
+      ]
+    },
+    "易华仁": {
+      "en": [
+        "S Iswaran",
+        "Iswaran"
+      ]
+    },
+    "扎吉": {
+      "en": [
+        "Zaqy Mohamad"
+      ]
+    },
+    "英兰妮": {
+      "en": [
+        "Indranee Rajah"
+      ]
+    },
+    "刘洁敏": {
+      "en": [
+        "Jasmin Lau"
+      ],
+      "ja": [
+        "ジャスミン・ラウ"
+      ]
+    },
+    "吴函燕": {
+      "en": [
+        "Goh Hanyan"
+      ]
+    },
+    "拉哈尤·玛赞": {
+      "en": [
+        "Rahayu Mahzam"
+      ]
+    },
+    "谢曜全": {
+      "en": [
+        "Xie Yao Quan"
+      ]
+    },
+    "何德华": {
+      "en": [
+        "Ho Teck Hua"
+      ]
+    },
+    "萧振祥": {
+      "en": [
+        "Jeffrey Siow"
+      ]
+    },
+    "杨颖仪": {
+      "en": [
+        "Yong Ying-I"
+      ]
+    }
   },
   "institutions": {
-    "数字发展与信息部": { "en": ["Ministry of Digital Development and Information", "MDDI"], "ja": ["デジタル発展・情報省", "MDDI"] },
-    "通讯及新闻部": { "en": ["Ministry of Communications and Information", "MCI"], "ja": ["通信情報省", "MCI"] },
-    "新加坡金融管理局": { "en": ["Monetary Authority of Singapore", "MAS"], "ja": ["シンガポール金融管理局", "MAS"] },
-    "资讯通信媒体发展局": { "en": ["Infocomm Media Development Authority", "IMDA"], "ja": ["情報通信メディア開発庁", "IMDA"] },
-    "新加坡人工智能": { "en": ["AI Singapore", "AISG"], "ja": ["AIシンガポール", "AISG"] },
-    "国会": { "en": ["Parliament"], "ja": ["国会"] },
-    "国家研究基金会": { "en": ["National Research Foundation", "NRF"], "ja": ["国家研究基金会", "NRF"] }
+    "数字发展与信息部": {
+      "en": [
+        "Ministry of Digital Development and Information",
+        "MDDI"
+      ],
+      "ja": [
+        "デジタル発展・情報省",
+        "MDDI"
+      ],
+      "ko": [
+        "디지털개발정보부",
+        "MDDI"
+      ]
+    },
+    "通讯及新闻部": {
+      "en": [
+        "Ministry of Communications and Information",
+        "MCI"
+      ],
+      "ja": [
+        "通信情報省",
+        "MCI"
+      ],
+      "ko": [
+        "통신정보부",
+        "MCI"
+      ]
+    },
+    "新加坡金融管理局": {
+      "en": [
+        "Monetary Authority of Singapore",
+        "MAS"
+      ],
+      "ja": [
+        "シンガポール金融管理局",
+        "MAS"
+      ],
+      "ko": [
+        "싱가포르 통화청",
+        "MAS"
+      ]
+    },
+    "资讯通信媒体发展局": {
+      "en": [
+        "Infocomm Media Development Authority",
+        "IMDA"
+      ],
+      "ja": [
+        "情報通信メディア開発庁",
+        "IMDA"
+      ],
+      "ko": [
+        "정보통신미디어개발청",
+        "IMDA"
+      ]
+    },
+    "新加坡人工智能": {
+      "en": [
+        "AI Singapore",
+        "AISG"
+      ],
+      "ja": [
+        "AIシンガポール",
+        "AISG"
+      ],
+      "ko": [
+        "AI 싱가포르",
+        "AISG"
+      ]
+    },
+    "国会": {
+      "en": [
+        "Parliament"
+      ],
+      "ja": [
+        "国会"
+      ],
+      "ko": [
+        "국회"
+      ]
+    },
+    "国家研究基金会": {
+      "en": [
+        "National Research Foundation",
+        "NRF"
+      ],
+      "ja": [
+        "国家研究基金会",
+        "NRF"
+      ],
+      "ko": [
+        "국립연구재단",
+        "NRF"
+      ]
+    },
+    "总理公署": {
+      "en": [
+        "Prime Minister's Office",
+        "PMO"
+      ],
+      "ja": [
+        "首相府",
+        "PMO"
+      ],
+      "ko": [
+        "총리실",
+        "PMO"
+      ]
+    },
+    "国家人工智能理事会": {
+      "en": [
+        "National AI Council",
+        "NAIC"
+      ],
+      "ja": [
+        "国家AI評議会",
+        "NAIC"
+      ],
+      "ko": [
+        "국가 AI 위원회",
+        "NAIC"
+      ]
+    },
+    "财政部": {
+      "en": [
+        "Ministry of Finance",
+        "MOF"
+      ],
+      "ja": [
+        "財務省",
+        "MOF"
+      ],
+      "ko": [
+        "재무부",
+        "MOF"
+      ]
+    },
+    "贸工部": {
+      "en": [
+        "Ministry of Trade and Industry",
+        "MTI"
+      ],
+      "ja": [
+        "貿易産業省",
+        "MTI"
+      ],
+      "ko": [
+        "통상산업부",
+        "MTI"
+      ]
+    },
+    "律政部": {
+      "en": [
+        "Ministry of Law",
+        "MinLaw"
+      ],
+      "ja": [
+        "法務省",
+        "MinLaw"
+      ],
+      "ko": [
+        "법무부",
+        "MinLaw"
+      ]
+    },
+    "知识产权局": {
+      "en": [
+        "Intellectual Property Office of Singapore",
+        "IPOS"
+      ],
+      "ja": [
+        "シンガポール知的財産庁",
+        "IPOS"
+      ],
+      "ko": [
+        "싱가포르 지식재산청",
+        "IPOS"
+      ]
+    },
+    "个人资料保护委员会": {
+      "en": [
+        "Personal Data Protection Commission",
+        "PDPC"
+      ],
+      "ja": [
+        "個人情報保護委員会",
+        "PDPC"
+      ],
+      "ko": [
+        "개인정보보호위원회",
+        "PDPC"
+      ]
+    },
+    "网络安全局": {
+      "en": [
+        "Cyber Security Agency of Singapore",
+        "CSA"
+      ],
+      "ja": [
+        "サイバーセキュリティ庁",
+        "CSA"
+      ],
+      "ko": [
+        "사이버보안청",
+        "CSA"
+      ]
+    },
+    "数字信任中心": {
+      "en": [
+        "Digital Trust Centre",
+        "DTC"
+      ],
+      "ja": [
+        "デジタルトラストセンター",
+        "DTC"
+      ],
+      "ko": [
+        "디지털 신뢰 센터",
+        "DTC"
+      ]
+    },
+    "新加坡 AI 安全研究所": {
+      "en": [
+        "Singapore AI Safety Institute",
+        "AISI"
+      ],
+      "ja": [
+        "シンガポールAI安全研究所",
+        "AISI"
+      ],
+      "ko": [
+        "싱가포르 AI 안전 연구소",
+        "AISI"
+      ]
+    },
+    "经济发展局": {
+      "en": [
+        "Economic Development Board",
+        "EDB"
+      ],
+      "ja": [
+        "経済開発庁",
+        "EDB"
+      ],
+      "ko": [
+        "경제개발청",
+        "EDB"
+      ]
+    },
+    "企业发展局": {
+      "en": [
+        "Enterprise Singapore",
+        "EnterpriseSG"
+      ],
+      "ja": [
+        "エンタープライズ・シンガポール",
+        "EnterpriseSG"
+      ],
+      "ko": [
+        "엔터프라이즈 싱가포르",
+        "EnterpriseSG"
+      ]
+    },
+    "科技研究局": {
+      "en": [
+        "Agency for Science, Technology and Research",
+        "A*STAR"
+      ],
+      "ja": [
+        "科学技術研究庁",
+        "A*STAR"
+      ],
+      "ko": [
+        "과학기술연구청",
+        "A*STAR"
+      ]
+    },
+    "技能未来": {
+      "en": [
+        "SkillsFuture Singapore",
+        "SSG"
+      ],
+      "ja": [
+        "スキルズフューチャー・シンガポール",
+        "SSG"
+      ],
+      "ko": [
+        "스킬스퓨처 싱가포르",
+        "SSG"
+      ]
+    },
+    "劳动力发展局": {
+      "en": [
+        "Workforce Singapore",
+        "WSG"
+      ],
+      "ja": [
+        "ワークフォース・シンガポール",
+        "WSG"
+      ],
+      "ko": [
+        "워크포스 싱가포르",
+        "WSG"
+      ]
+    },
+    "教育部": {
+      "en": [
+        "Ministry of Education",
+        "MOE"
+      ],
+      "ja": [
+        "教育省",
+        "MOE"
+      ],
+      "ko": [
+        "교육부",
+        "MOE"
+      ]
+    },
+    "国立教育学院": {
+      "en": [
+        "National Institute of Education",
+        "NIE"
+      ],
+      "ja": [
+        "国立教育学院",
+        "NIE"
+      ],
+      "ko": [
+        "국립교육원",
+        "NIE"
+      ]
+    },
+    "政府科技局": {
+      "en": [
+        "Government Technology Agency",
+        "GovTech"
+      ],
+      "ja": [
+        "政府技術庁",
+        "GovTech"
+      ],
+      "ko": [
+        "정부기술청",
+        "GovTech"
+      ]
+    },
+    "卫生部": {
+      "en": [
+        "Ministry of Health",
+        "MOH"
+      ],
+      "ja": [
+        "保健省",
+        "MOH"
+      ],
+      "ko": [
+        "보건부",
+        "MOH"
+      ]
+    },
+    "保健科技局": {
+      "en": [
+        "Synapxe"
+      ],
+      "ja": [
+        "Synapxe"
+      ],
+      "ko": [
+        "Synapxe"
+      ]
+    },
+    "交通部": {
+      "en": [
+        "Ministry of Transport",
+        "MOT"
+      ],
+      "ja": [
+        "運輸省",
+        "MOT"
+      ],
+      "ko": [
+        "교통부",
+        "MOT"
+      ]
+    },
+    "陆路交通管理局": {
+      "en": [
+        "Land Transport Authority",
+        "LTA"
+      ],
+      "ja": [
+        "陸上交通庁",
+        "LTA"
+      ],
+      "ko": [
+        "육상교통청",
+        "LTA"
+      ]
+    },
+    "国家发展部": {
+      "en": [
+        "Ministry of National Development",
+        "MND"
+      ],
+      "ja": [
+        "国家開発省",
+        "MND"
+      ],
+      "ko": [
+        "국가개발부",
+        "MND"
+      ]
+    },
+    "建屋局": {
+      "en": [
+        "Housing & Development Board",
+        "HDB"
+      ],
+      "ja": [
+        "住宅開発庁",
+        "HDB"
+      ],
+      "ko": [
+        "주택개발청",
+        "HDB"
+      ]
+    },
+    "建设局": {
+      "en": [
+        "Building and Construction Authority",
+        "BCA"
+      ],
+      "ja": [
+        "建設庁",
+        "BCA"
+      ],
+      "ko": [
+        "건설청",
+        "BCA"
+      ]
+    },
+    "市区重建局": {
+      "en": [
+        "Urban Redevelopment Authority",
+        "URA"
+      ],
+      "ja": [
+        "都市再開発庁",
+        "URA"
+      ],
+      "ko": [
+        "도시재개발청",
+        "URA"
+      ]
+    },
+    "裕廊集团": {
+      "en": [
+        "JTC Corporation",
+        "JTC"
+      ],
+      "ja": [
+        "JTCコーポレーション",
+        "JTC"
+      ],
+      "ko": [
+        "JTC 코퍼레이션",
+        "JTC"
+      ]
+    },
+    "可持续发展与环境部": {
+      "en": [
+        "Ministry of Sustainability and the Environment",
+        "MSE"
+      ],
+      "ja": [
+        "持続可能性・環境省",
+        "MSE"
+      ],
+      "ko": [
+        "지속가능환경부",
+        "MSE"
+      ]
+    },
+    "国家环境局": {
+      "en": [
+        "National Environment Agency",
+        "NEA"
+      ],
+      "ja": [
+        "国家環境庁",
+        "NEA"
+      ],
+      "ko": [
+        "국가환경청",
+        "NEA"
+      ]
+    },
+    "公用事业局": {
+      "en": [
+        "PUB",
+        "PUB"
+      ],
+      "ja": [
+        "公益事業庁",
+        "PUB"
+      ],
+      "ko": [
+        "공익사업청",
+        "PUB"
+      ]
+    },
+    "人力部": {
+      "en": [
+        "Ministry of Manpower",
+        "MOM"
+      ],
+      "ja": [
+        "人材省",
+        "MOM"
+      ],
+      "ko": [
+        "인력부",
+        "MOM"
+      ]
+    },
+    "国防部": {
+      "en": [
+        "Ministry of Defence",
+        "MINDEF"
+      ],
+      "ja": [
+        "国防省",
+        "MINDEF"
+      ],
+      "ko": [
+        "국방부",
+        "MINDEF"
+      ]
+    },
+    "国防科技局": {
+      "en": [
+        "Defence Science and Technology Agency",
+        "DSTA"
+      ],
+      "ja": [
+        "国防科学技術庁",
+        "DSTA"
+      ],
+      "ko": [
+        "국방과학기술청",
+        "DSTA"
+      ]
+    },
+    "国防科技研究院": {
+      "en": [
+        "DSO National Laboratories",
+        "DSO"
+      ],
+      "ja": [
+        "DSO国立研究所",
+        "DSO"
+      ],
+      "ko": [
+        "DSO 국립연구소",
+        "DSO"
+      ]
+    },
+    "数字与情报军": {
+      "en": [
+        "Digital and Intelligence Service",
+        "DIS"
+      ],
+      "ja": [
+        "デジタル・情報部隊",
+        "DIS"
+      ],
+      "ko": [
+        "디지털정보사령부",
+        "DIS"
+      ]
+    },
+    "内政部": {
+      "en": [
+        "Ministry of Home Affairs",
+        "MHA"
+      ],
+      "ja": [
+        "内務省",
+        "MHA"
+      ],
+      "ko": [
+        "내무부",
+        "MHA"
+      ]
+    },
+    "内政科技局": {
+      "en": [
+        "Home Team Science and Technology Agency",
+        "HTX"
+      ],
+      "ja": [
+        "ホームチーム科学技術庁",
+        "HTX"
+      ],
+      "ko": [
+        "홈팀 과학기술청",
+        "HTX"
+      ]
+    },
+    "新加坡警察部队": {
+      "en": [
+        "Singapore Police Force",
+        "SPF"
+      ],
+      "ja": [
+        "シンガポール警察",
+        "SPF"
+      ],
+      "ko": [
+        "싱가포르 경찰",
+        "SPF"
+      ]
+    },
+    "移民与关卡局": {
+      "en": [
+        "Immigration & Checkpoints Authority",
+        "ICA"
+      ],
+      "ja": [
+        "出入国・検問所庁",
+        "ICA"
+      ],
+      "ko": [
+        "출입국·검문소청",
+        "ICA"
+      ]
+    },
+    "外交部": {
+      "en": [
+        "Ministry of Foreign Affairs",
+        "MFA"
+      ],
+      "ja": [
+        "外務省",
+        "MFA"
+      ],
+      "ko": [
+        "외교부",
+        "MFA"
+      ]
+    }
   },
   "programmes": {
-    "国家人工智能战略": { "en": ["National AI Strategy"], "ja": ["国家AI戦略"] },
-    "AI Verify": { "en": ["AI Verify"], "ja": ["AI Verify"] },
-    "AI 学徒计划": { "en": ["AI Apprenticeship Programme", "AIAP"], "ja": ["AIアプレンティスシップ・プログラム", "AIAP"] },
-    "可信赖人工智能": { "en": ["Trustworthy AI", "trusted AI"], "ja": ["信頼できるAI"] },
-    "智慧国": { "en": ["Smart Nation"], "ja": ["スマートネーション"] }
+    "国家人工智能战略": {
+      "en": [
+        "National AI Strategy"
+      ],
+      "ja": [
+        "国家AI戦略"
+      ]
+    },
+    "AI Verify": {
+      "en": [
+        "AI Verify"
+      ],
+      "ja": [
+        "AI Verify"
+      ]
+    },
+    "AI 学徒计划": {
+      "en": [
+        "AI Apprenticeship Programme",
+        "AIAP"
+      ],
+      "ja": [
+        "AIアプレンティスシップ・プログラム",
+        "AIAP"
+      ]
+    },
+    "可信赖人工智能": {
+      "en": [
+        "Trustworthy AI",
+        "trusted AI"
+      ],
+      "ja": [
+        "信頼できるAI"
+      ]
+    },
+    "智慧国": {
+      "en": [
+        "Smart Nation"
+      ],
+      "ja": [
+        "スマートネーション"
+      ]
+    }
   },
   "concepts": {
-    "人工智能": { "en": ["AI", "artificial intelligence"], "ja": ["AI", "人工知能"] },
-    "深度伪造": { "en": ["deepfake"], "ja": ["ディープフェイク"] },
-    "数据中心": { "en": ["data centre", "data center"], "ja": ["データセンター"] },
-    "大语言模型": { "en": ["large language model", "LLM"], "ja": ["大規模言語モデル", "LLM"] },
-    "通用人工智能": { "en": ["AGI", "artificial general intelligence"], "ja": ["AGI", "汎用人工知能"] }
+    "人工智能": {
+      "en": [
+        "AI",
+        "artificial intelligence"
+      ],
+      "ja": [
+        "AI",
+        "人工知能"
+      ]
+    },
+    "深度伪造": {
+      "en": [
+        "deepfake"
+      ],
+      "ja": [
+        "ディープフェイク"
+      ]
+    },
+    "数据中心": {
+      "en": [
+        "data centre",
+        "data center"
+      ],
+      "ja": [
+        "データセンター"
+      ]
+    },
+    "大语言模型": {
+      "en": [
+        "large language model",
+        "LLM"
+      ],
+      "ja": [
+        "大規模言語モデル",
+        "LLM"
+      ]
+    },
+    "通用人工智能": {
+      "en": [
+        "AGI",
+        "artificial general intelligence"
+      ],
+      "ja": [
+        "AGI",
+        "汎用人工知能"
+      ]
+    }
   }
 }

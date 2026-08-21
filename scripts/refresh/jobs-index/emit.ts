@@ -27,6 +27,10 @@ function fmtRoleTypes(rows: JobsIndexSnapshot['roleTypes']): string {
   return rows.map((r) => `      { roleType: '${r.roleType}', count: ${r.count} },`).join('\n');
 }
 
+function fmtSectors(rows: NonNullable<JobsIndexSnapshot['sectors']>): string {
+  return rows.map((r) => `      { sector: '${r.sector}', count: ${r.count} },`).join('\n');
+}
+
 function fmtQueryTotals(qt: Record<string, number>): string {
   return Object.entries(qt)
     .map(([q, n]) => `      '${q.replace(/'/g, "\\'")}': ${n},`)
@@ -54,6 +58,9 @@ export function formatSnapshot(s: JobsIndexSnapshot): string {
     '    roleTypes: [',
     fmtRoleTypes(s.roleTypes),
     '    ],',
+    ...(s.sectors && s.sectors.length > 0
+      ? ['    sectors: [', fmtSectors(s.sectors), '    ],']
+      : []),
     `    sourceUrl: '${s.sourceUrl}',`,
     '  },',
   ].join('\n');

@@ -167,32 +167,56 @@ function loadGlossaryTerms(): GlossaryEntry[] | null {
   return glossaryCache;
 }
 
-function glossaryTargetOf(direction: TranslateDirection): GlossaryLang | null {
+type GlossaryTarget = GlossaryLang | 'zh';
+
+function glossaryTargetOf(direction: TranslateDirection): GlossaryTarget | null {
   const target = direction.split('→')[1];
-  return target === 'en' || target === 'ja' || target === 'ko' ? target : null;
+  return target === 'en' || target === 'ja' || target === 'ko' || target === 'zh' ? target : null;
 }
+
+const ACRONYM_RE = /^[A-Z0-9.\s-]{2,}$/;
 
 /** Build a terminology block for the glossary terms that actually appear in
  *  this batch's source text. Renders `zhTerm → canonical(ACRONYM)` so both the
  *  localized form and its acronym land in the output, satisfying the eval's
  *  glossary + preserveTokens assertions and keeping institution names
- *  consistent across the site's ja/ko pages. Returns '' when nothing matches. */
-function buildGlossaryHint(sources: string[], target: GlossaryLang): string {
+ *  consistent across the site's ja/ko pages. Returns '' when nothing matches.
+ *
+ *  For zh-target directions (en→zh etc.) the matching is reversed: the entry's
+ *  en/ja/ko aliases are searched in the source and rendered `alias → zhTerm`.
+ *  Acronym-only aliases (AI, MAS, LLM …) are skipped as match keys — zh copy
+ *  legitimately keeps them verbatim, and they would over-trigger. This is the
+ *  guard against phonetic name hallucination (Gan Kim Yong rendered 甘金勇 /
+ *  甘照胜 instead of the official 颜金勇, caught 2026-08-11 in PR #184).
+ *
+ *  Exported for unit tests. */
+export function buildGlossaryHint(sources: string[], target: GlossaryTarget): string {
   const terms = loadGlossaryTerms();
   if (!terms) return '';
   const haystack = sources.join('\n');
-  const [open, close] = target === 'en' ? ['(', ')'] : ['（', '）'];
   const lines: string[] = [];
-  for (const t of terms) {
-    if (!haystack.includes(t.zh)) continue;
-    const allowed = t[target];
-    if (!allowed || allowed.length === 0) continue;
-    // First entry = canonical localized form; a trailing all-caps Latin entry
-    // (IMDA, MDDI, AIAP …) is the acronym to keep verbatim. Render both.
-    const canonical = allowed[0];
-    const acronym = allowed.slice(1).find((a) => /^[A-Z0-9.\s-]{2,}$/.test(a));
-    const rendered = acronym && !canonical.includes(acronym) ? `${canonical}${open}${acronym}${close}` : canonical;
-    lines.push(`- ${t.zh} → ${rendered}`);
+  if (target === 'zh') {
+    for (const t of terms) {
+      const aliases = [...(t.en ?? []), ...(t.ja ?? []), ...(t.ko ?? [])];
+      for (const alias of aliases) {
+        if (alias === t.zh || ACRONYM_RE.test(alias)) continue;
+        if (!haystack.includes(alias)) continue;
+        lines.push(`- ${alias} → ${t.zh}`);
+      }
+    }
+  } else {
+    const [open, close] = target === 'en' ? ['(', ')'] : ['（', '）'];
+    for (const t of terms) {
+      if (!haystack.includes(t.zh)) continue;
+      const allowed = t[target];
+      if (!allowed || allowed.length === 0) continue;
+      // First entry = canonical localized form; a trailing all-caps Latin entry
+      // (IMDA, MDDI, AIAP …) is the acronym to keep verbatim. Render both.
+      const canonical = allowed[0];
+      const acronym = allowed.slice(1).find((a) => ACRONYM_RE.test(a));
+      const rendered = acronym && !canonical.includes(acronym) ? `${canonical}${open}${acronym}${close}` : canonical;
+      lines.push(`- ${t.zh} → ${rendered}`);
+    }
   }
   if (lines.length === 0) return '';
   return (
@@ -261,7 +285,7 @@ function sleep(ms: number): Promise<void> {
 
 async function callClaudeTranslate(
   paragraphs: string[],
-  options: { model: string; systemPrompt: string; signal?: AbortSignal; glossaryTarget?: GlossaryLang | null }
+  options: { model: string; systemPrompt: string; signal?: AbortSignal; glossaryTarget?: GlossaryTarget | null }
 ): Promise<string[]> {
   let lastError = '';
 
@@ -305,7 +329,7 @@ async function callClaudeTranslate(
 
 async function callBatchWithFallback(
   paragraphs: string[],
-  options: { model: string; systemPrompt: string; signal?: AbortSignal; glossaryTarget?: GlossaryLang | null }
+  options: { model: string; systemPrompt: string; signal?: AbortSignal; glossaryTarget?: GlossaryTarget | null }
 ): Promise<string[]> {
   try {
     return await callClaudeTranslate(paragraphs, options);

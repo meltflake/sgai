@@ -574,19 +574,19 @@ export const exits: Exit[] = [
     descriptionKo: 'AI 에이전트 플랫폼(Butterfly Effect 산하)',
     descriptionJa: 'AI エージェント プラットフォーム（Butterfly Effect 傘下）',
     descriptionEn: 'AI agent platform (operated by Butterfly Effect)',
-    acquirer: 'Meta（已被中国 NDRC 否决）',
-    acquirerKo: 'Meta(이미 중국 NDRC에 의해 거부됨)',
-    acquirerJa: 'Meta（既に中国 NDRC により却下）',
-    acquirerEn: 'Meta (blocked by China NDRC)',
-    amount: '$2B (blocked)',
+    acquirer: 'Meta（NDRC 否决，2026-08 收购拆解）',
+    acquirerKo: 'Meta(NDRC 부결, 2026-08 인수 해제)',
+    acquirerJa: 'Meta（NDRC 否決、2026-08 買収解消）',
+    acquirerEn: 'Meta (blocked by China NDRC; unwound Aug 2026)',
+    amount: '$2B (unwound)',
     year: 2025,
-    note: '2025-12 宣布拟收购，2026-04-27 中国国家发改委以国家安全为由叫停（AI 领域首例外资并购否决，三条红线：技术主权 / 数据主权 / 国家安全）。新加坡作为「AI 离岸中转枢纽」战略首次被来源国监管显式划红线。',
+    note: '2025-12 宣布收购并交割，2026-04-27 中国国家发改委以国家安全为由叫停（AI 领域首例外资并购否决，三条红线：技术主权 / 数据主权 / 国家安全）。新加坡作为「AI 离岸中转枢纽」战略首次被来源国监管显式划红线。2026-08-11 Manus 宣布恢复独立运营，收购正式拆解——Meta 所有权期间（2025-12-29 起）的用户数据于 8 月下旬删除，原投资方（含腾讯）洽谈按原估值收回股份。',
     noteKo:
-      '2025-12월에 인수 계획을 발표하고, 2026-04-27에 중국 국가발개위(NDRC)가 국가안보를 사유로 중단했습니다(AI 분야 첫 외자 합병 거부, 세 가지 금지선: 기술주권 / 데이터주권 / 국가안보). 싱가포르는 「AI 오프쇼어 중계 허브」 전략으로서 처음으로 출처국 규제에 의해 명시적으로 금지선이 그어졌습니다.',
+      '2025-12월에 인수를 발표하고 마무리했으며, 2026-04-27에 중국 국가발개위(NDRC)가 국가안보를 사유로 중단했습니다(AI 분야 첫 외자 합병 거부, 세 가지 금지선: 기술주권 / 데이터주권 / 국가안보). 싱가포르는 「AI 오프쇼어 중계 허브」 전략으로서 처음으로 출처국 규제에 의해 명시적으로 금지선이 그어졌습니다. 2026-08-11 Manus는 독립 운영 재개를 발표했고 인수는 공식 해제되었습니다——Meta 소유 기간(2025-12-29 이후)의 사용자 데이터는 8월 하순에 삭제되며, 기존 투자자(Tencent 포함)는 당초 평가액으로 지분 회복을 협상 중입니다.',
     noteJa:
-      '2025-12 に買収を発表、2026-04-27 中国国家発展改革委員会が国家安全保障を理由として中止（AI 領域における初の外資M&A却下、3本の赤線：技術主権 / データ主権 / 国家安全保障）。シンガポールの 「AI オフショア・トランジットハブ」 戦略が、発信国の規制当局により初めて明示的に赤線を引かれた。',
+      '2025-12 に買収を発表・クローズ、2026-04-27 中国国家発展改革委員会が国家安全保障を理由として中止（AI 領域における初の外資M&A却下、3本の赤線：技術主権 / データ主権 / 国家安全保障）。シンガポールの 「AI オフショア・トランジットハブ」 戦略が、発信国の規制当局により初めて明示的に赤線を引かれた。2026-08-11、Manus は独立運営の再開を発表し、買収は正式に解消——Meta 所有期間（2025-12-29 以降）のユーザーデータは 8 月下旬に削除され、旧投資家（Tencent を含む）は当初の評価額での持分回復を交渉中。',
     noteEn:
-      'Acquisition announced December 2025; blocked by China\'s NDRC on 27 April 2026 on national-security grounds — the first foreign acquisition vetoed in the AI sector, citing three red lines: technology sovereignty, data sovereignty, and national security. Singapore\'s "AI offshore transit hub" strategy was, for the first time, explicitly red-lined by a source-country regulator.',
+      "Acquisition announced and closed December 2025; blocked by China's NDRC on 27 April 2026 on national-security grounds — the first foreign acquisition vetoed in the AI sector, citing three red lines: technology sovereignty, data sovereignty, and national security. Singapore's \"AI offshore transit hub\" strategy was, for the first time, explicitly red-lined by a source-country regulator. On 11 August 2026 Manus announced a return to independent operations, formally unwinding the deal — user data generated under Meta's ownership (from 29 December 2025) is being deleted in late August, and former investors including Tencent are negotiating to recover stakes at the original valuation.",
   },
   {
     name: 'AIDA Technologies',
@@ -725,13 +725,13 @@ export const investors: Investor[] = [
     focusJa: 'AI インフラストラクチャ',
     focusEn: 'AI infrastructure',
     notableDeals:
-      '连续三轮投资 Anthropic（Series F/G/H，其中 Series G 与 Coatue 共同领投）；与 Equinix、CPP 设超 150 亿美元数据中心合资',
+      '连续三轮投资 Anthropic（Series F/G/H，其中 Series G 与 Coatue 共同领投）；与 Equinix、CPP 设超 150 亿美元数据中心合资；2026 年与 Macquarie、Anthropic 成立 Theseus Infrastructure，为初期聚焦美国的 AI 数据中心项目提供主要股权资本',
     notableDealsEn:
-      'Invested in Anthropic across three consecutive rounds (Series F/G/H, co-leading Series G with Coatue); formed a >$15B data centre JV with Equinix and CPP',
+      'Invested in Anthropic across three consecutive rounds (Series F/G/H, co-leading Series G with Coatue); formed a >$15B data centre JV with Equinix and CPP; formed Theseus Infrastructure with Macquarie and Anthropic in 2026, providing most of the equity for initially US-focused AI data-centre projects',
     notableDealsJa:
-      'Anthropic に 3 ラウンド連続で投資（Series F/G/H、Series G は Coatue と共同リード）；Equinix、CPP と 150 億ドル超のデータセンター合弁を設立',
+      'Anthropic に 3 ラウンド連続で投資（Series F/G/H、Series G は Coatue と共同リード）；Equinix、CPP と 150 億ドル超のデータセンター合弁を設立；2026 年に Macquarie、Anthropic と Theseus Infrastructure を設立し、当初米国に注力する AI データセンタープロジェクトの主要エクイティを提供',
     notableDealsKo:
-      'Anthropic에 3개 라운드 연속 투자(Series F/G/H, Series G는 Coatue와 공동 리드); Equinix, CPP와 150억 달러 초과 데이터센터 합작 설립',
+      'Anthropic에 3개 라운드 연속 투자(Series F/G/H, Series G는 Coatue와 공동 리드); Equinix, CPP와 150억 달러 초과 데이터센터 합작 설립; 2026년 Macquarie, Anthropic과 Theseus Infrastructure를 설립해 초기 미국 중심 AI 데이터센터 프로젝트의 주요 자기자본을 제공',
     url: 'https://www.gic.com.sg/',
   },
   {

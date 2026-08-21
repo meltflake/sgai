@@ -79,6 +79,108 @@ const MANUAL_TYPES = new Set<UpdateType>(['site', 'fix', 'longform']);
 // sort regardless. Add new entries at the top.
 export const MANUAL_UPDATES: Update[] = [
   {
+    date: '2026-08-20',
+    type: 'longform',
+    title: '长文：新加坡管 AI 的部门有哪些，各自管哪一段',
+    titleEn: 'Longform: Which Singapore agencies run AI, and what each one owns',
+    titleJa: '長文：シンガポールで AI を所管する官庁はどこで、それぞれ何を担うのか',
+    titleKo: '장문: 싱가포르에서 AI를 담당하는 부처는 어디이고, 각각 무엇을 맡는가',
+    summary:
+      '新加坡没有「AI 部」，40 多个部委和法定机构各占一段。按八段梳理：PMO/NAIC 与 MDDI 定方向，IMDA、PDPC、MAS、CSA、AISI、MinLaw 各管一块规矩，MOF/MTI/EDB/EnterpriseSG 出钱引资，NRF/A*STAR/AISG/SSG 供人和研究，GovTech 让政府自己先用，各行业部委自行落地。国防（MINDEF+DSTA+DSO+DIS）和内政（MHA+HTX+SPF+ICA）是两条线——HTX 归内政部，常被误挂到国防部。',
+    summaryEn:
+      'Singapore has no "AI ministry"; more than forty ministries and statutory boards each own a slice. Eight segments: PMO/NAIC and MDDI set direction; IMDA, PDPC, MAS, CSA, AISI and MinLaw each hold a piece of the rulebook; MOF/MTI/EDB/EnterpriseSG fund and attract investment; NRF/A*STAR/AISG/SSG supply talent and research; GovTech puts AI inside government first; line ministries deploy per sector. Defence (MINDEF+DSTA+DSO+DIS) and home affairs (MHA+HTX+SPF+ICA) are separate chains — HTX sits under MHA and is often misattributed to MINDEF.',
+    summaryJa:
+      'シンガポールに「AI 省」はなく、40 を超える省庁と法定機関がそれぞれ一区画を担う。8 区分で整理：PMO/NAIC と MDDI が方向を定め、IMDA・PDPC・MAS・CSA・AISI・法務省がルールを分担し、MOF/MTI/EDB/EnterpriseSG が資金と投資誘致、NRF/A*STAR/AISG/SSG が人材と研究、GovTech が政府自身の利用、各省庁が産業ごとに実装する。国防（MINDEF+DSTA+DSO+DIS）と内政（MHA+HTX+SPF+ICA）は別系統——HTX は内務省の所属で、国防省と誤解されやすい。',
+    summaryKo:
+      '싱가포르에는 "AI 부처"가 없고 40개가 넘는 부처와 법정기관이 각자 한 구간을 맡는다. 여덟 구간으로 정리: PMO/NAIC와 MDDI가 방향을 정하고, IMDA·PDPC·MAS·CSA·AISI·법무부가 규칙을 나눠 맡으며, MOF/MTI/EDB/EnterpriseSG가 자금과 투자 유치를, NRF/A*STAR/AISG/SSG가 인재와 연구를, GovTech가 정부 자체 활용을, 각 부처가 산업별 적용을 담당한다. 국방(MINDEF+DSTA+DSO+DIS)과 내무(MHA+HTX+SPF+ICA)는 별개 계통이며, HTX는 내무부 소속인데 국방부로 잘못 알려지는 경우가 많다.',
+    links: [
+      {
+        href: '/singapore-ai-agencies-map/',
+        label: '阅读全文',
+        labelEn: 'Read the full piece',
+        labelJa: '全文を読む',
+        labelKo: '전문 읽기',
+      },
+    ],
+  },
+
+  {
+    date: '2026-08-14',
+    type: 'longform',
+    title: '长文：AISG 是什么——新加坡 AI 的执行引擎',
+    titleEn: "Longform: What AISG Is — Singapore AI's execution engine",
+    titleJa: '長文：AISG とは何か——シンガポール AI の実行エンジン',
+    titleKo: '장문: AISG란 무엇인가 — 싱가포르 AI의 실행 엔진',
+    summary:
+      'AISG 2017 年成立，NRF 初始资助 5 年最高 S$1.5 亿，累计超 S$5 亿。研究、人才、产品、治理四块都做：SEA-LION 面向东南亚 11 种语言，AIAP 22 批毕业约 500–600 人，NOAI 奥赛两届 4 金。文中澄清两个常被挂错的名字（AI Trailblazers、Kampong AI），并讲清 100E 归档后的瓶颈：AIAP 每批 60 人的产能。',
+    summaryEn:
+      'AISG launched in 2017 with up to S$150M over five years from NRF, over S$500M cumulatively. It runs research, talent, products and governance at once: SEA-LION covers 11 Southeast Asian languages, AIAP has graduated about 500–600 apprentices across 22 cohorts, and NOAI has taken four golds across two IOAI editions. The piece also clears up two names often misattributed to AISG (AI Trailblazers, Kampong AI) and the bottleneck after 100E was archived: AIAP capacity of about 60 apprentices per cohort.',
+    summaryJa:
+      'AISG は 2017 年設立、NRF が当初 5 年間で最大 S$1.5 億を拠出し、累計 S$5 億超。研究・人材・製品・ガバナンスの 4 つを同時に手がける：SEA-LION は東南アジア 11 言語に対応、AIAP は 22 期で約 500–600 人を輩出、NOAI は 2 大会で金 4 個。AISG のものと誤解されやすい 2 つの名前（AI Trailblazers、Kampong AI）を整理し、100E アーカイブ後のボトルネック——AIAP の 1 バッチ 60 人の生産能力——を解説。',
+    summaryKo:
+      'AISG는 2017년 출범해 NRF가 5년간 최대 S$1.5억을 지원했고 누적 S$5억을 넘습니다. 연구·인재·제품·거버넌스 네 가지를 동시에 합니다: SEA-LION은 동남아 11개 언어를 다루고, AIAP는 22기에서 약 500–600명을 배출했으며, NOAI는 두 대회에서 금메달 4개를 땄습니다. AISG의 것으로 오해되기 쉬운 두 이름(AI Trailblazers, Kampong AI)을 정리하고, 100E 아카이빙 이후의 병목 — AIAP의 기수당 60명 생산능력 — 을 짚습니다.',
+    links: [
+      {
+        href: '/aisg-explained/',
+        label: '阅读全文',
+        labelEn: 'Read the full piece',
+        labelJa: '全文を読む',
+        labelKo: '전문 읽기',
+      },
+    ],
+  },
+
+  {
+    date: '2026-08-14',
+    type: 'site',
+    title: '上线 AI 问答：就新加坡 AI 随便提问，基于全站数据回答',
+    titleEn: 'Ask AI is live: ask anything about Singapore AI, answered from the site’s data',
+    titleJa: 'AI 質問機能を公開：シンガポール AI について何でも質問、サイト全体のデータに基づいて回答',
+    titleKo: 'AI 질문 기능 공개: 싱가포르 AI에 대해 무엇이든 질문하면 사이트 데이터 기반으로 답변',
+    summary:
+      '新增 /ask/ 页面：多轮对话，回答基于全站辩论、政策、追踪器等数据并附来源链接，五种语言可用。首页侧栏和导航都有入口。',
+    summaryEn:
+      'New /ask/ page: multi-turn chat grounded in the site’s debates, policies, tracker and other datasets, with source links, available in all five languages. Entry points in the homepage sidebar and the navigation.',
+    summaryJa:
+      '新しい /ask/ ページ：サイト内の議会討論・政策・トラッカーなどのデータに基づき、出典リンク付きで回答するマルチターン対話。5 言語で利用可能。ホームのサイドバーとナビゲーションから入れます。',
+    summaryKo:
+      '새 /ask/ 페이지: 사이트의 국회 토론·정책·트래커 등 데이터에 기반해 출처 링크와 함께 답변하는 멀티턴 대화. 5개 언어로 이용 가능합니다. 홈 사이드바와 내비게이션에서 접근할 수 있습니다.',
+    links: [
+      {
+        href: '/ask/',
+        label: '去提问',
+        labelEn: 'Ask a question',
+        labelJa: '質問してみる',
+        labelKo: '질문하러 가기',
+      },
+    ],
+  },
+  {
+    date: '2026-08-14',
+    type: 'longform',
+    title: '长文：新加坡 AI 2026 全景盘点——六个维度、三条判断',
+    titleEn: 'Longform: State of Singapore AI 2026 — six dimensions, three judgments',
+    titleJa: '長文：シンガポール AI 2026 全景レビュー——6 つの次元、3 つの判断',
+    titleKo: '장문: 싱가포르 AI 2026 종합 점검——6개 차원과 3가지 판단',
+    summary:
+      '本站第一份年度全景盘点：把执行追踪的六个维度（投资、人才、算力、采用、研究、治理）合成一页——人均政府 AI 投入 S$139、AI 从业者 5,000/15,000、算力 1.4 GW、大企业采用 62.5% / SME 14.5%、人均论文全球第一、规则制定者地位。三条判断：放大倍数（每 S$1 政府投入约拉动 S$13 超大规模厂商承诺）才是真指标；SME 断层是未来 2–3 年主战场；规则制定不等于规则被遵守。全文不新增任何数字，每个数字带数据截至日期与来源。',
+    summaryEn:
+      "The site's first annual synthesis: the tracker's six dimensions (investment, talent, compute, adoption, research, governance) on one page — S$139 per-capita government AI spend, 5,000 of 15,000 AI practitioners, 1.4 GW of compute, 62.5% large-enterprise vs 14.5% SME adoption, per-capita papers #1, and rule-maker status. Three judgments: the amplification ratio (roughly S$13 of hyperscaler commitments per S$1 of government spend) is the real metric; the SME gap is the main battlefield for the next 2–3 years; rule-making is not rule-enforcement. No new numbers — every figure carries its own as-of date and source.",
+    summaryJa:
+      '当サイト初の年間全景レビュー。実行トラッカーの 6 つの次元（投資・人材・計算力・採用・研究・ガバナンス）を 1 ページに合成——1 人当たり政府 AI 投資 S$139、AI 人材 5,000/15,000 人、計算力 1.4 GW、大企業採用率 62.5% / SME 14.5%、1 人当たり論文数世界 1 位、ルール制定者としての地位。3 つの判断：政府投資 1 ドルあたり約 13 ドルのハイパースケーラー投資を引き出す「増幅倍率」こそ真の指標、SME の格差は今後 2〜3 年の主戦場、ルール制定はルール遵守ではない。新規の数字は一切なし——すべての数字にデータ基準日と出典を付記。',
+    summaryKo:
+      '사이트 첫 연간 종합 점검: 실행 트래커의 여섯 차원(투자·인재·컴퓨팅·도입·연구·거버넌스)을 한 페이지로 합성——1인당 정부 AI 투자 S$139, AI 인력 5,000/15,000명, 컴퓨팅 1.4GW, 대기업 도입률 62.5% / SME 14.5%, 1인당 논문 세계 1위, 규칙 제정자 지위. 세 가지 판단: 정부 투자 1달러당 약 13달러의 하이퍼스케일러 투자를 끌어내는 증폭 배수가 진짜 지표, SME 격차는 향후 2~3년의 주 전장, 규칙 제정은 규칙 준수가 아니다. 새로운 숫자는 전혀 없으며 모든 수치에 데이터 기준일과 출처가 붙어 있습니다.',
+    links: [
+      {
+        href: '/state-of-singapore-ai-2026/',
+        label: '阅读全文',
+        labelEn: 'Read the full piece',
+        labelJa: '全文を読む',
+        labelKo: '전문 읽기',
+      },
+    ],
+  },
+  {
     date: '2026-08-07',
     type: 'longform',
     title: '长文：淡马锡年报 2026 里的 AI——从 6% 到 15%',

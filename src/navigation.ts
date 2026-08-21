@@ -12,6 +12,7 @@ const labelKeys = {
   policy: 'navPolicy',
   debates: 'navDebates',
   data: 'navData',
+  annualReport: 'navAnnualReport',
   about: 'navAbout',
   challenges: 'navChallenges',
   evolution: 'navEvolution',
@@ -34,6 +35,7 @@ const labelKeys = {
   references: 'navReferences',
   updates: 'updatesNav',
   topics: 'fpBrowseByTopic',
+  ask: 'navAsk',
 } as const;
 
 function lh(path: string, lang: Lang): string {
@@ -46,6 +48,8 @@ export function getHeaderData(lang: Lang) {
       // News-portal signal: a top-level "Latest" link straight to the
       // updates feed, ahead of the editorial sections.
       { text: t(lang, labelKeys.latest), href: lh('/updates', lang) },
+      // Ask-AI: a top-level entry — it's a doorway into every section.
+      { text: t(lang, labelKeys.ask), href: lh('/ask', lang) },
       {
         text: t(lang, labelKeys.policy),
         links: [
@@ -70,6 +74,7 @@ export function getHeaderData(lang: Lang) {
       {
         text: t(lang, labelKeys.data),
         links: [
+          { text: t(lang, labelKeys.annualReport), href: lh('/state-of-singapore-ai-2026/', lang) },
           { text: t(lang, labelKeys.updates), href: lh('/updates', lang) },
           { text: t(lang, labelKeys.topics), href: lh('/topics', lang) },
           { text: t(lang, labelKeys.tracker), href: lh('/tracker', lang) },
@@ -132,6 +137,7 @@ export function getFooterData(lang: Lang) {
         title: t(lang, labelKeys.about),
         links: [
           { text: t(lang, labelKeys.aboutSite), href: lh('/about', lang) },
+          { text: t(lang, labelKeys.ask), href: lh('/ask', lang) },
           { text: t(lang, labelKeys.challenges), href: lh('/challenges', lang) },
           { text: t(lang, labelKeys.evolution), href: lh('/evolution', lang) },
           { text: t(lang, labelKeys.fieldnotes), href: lh('/fieldnotes', lang) },

@@ -21,6 +21,7 @@ const { target = 'article', class: extraClass = '' } = Astro.props;
 
 <div
   id="reading-progress"
+  data-target={target}
   class={`fixed top-0 left-0 right-0 h-[2px] z-[100] pointer-events-none ${extraClass}`}
   role="progressbar"
   aria-label="Reading progress"
@@ -36,34 +37,44 @@ const { target = 'article', class: extraClass = '' } = Astro.props;
   </div>
 </div>
 
-<script is:inline define:vars={{ target }}>
-  (() => {
-    const article = document.querySelector(target);
-    const bar = document.getElementById('reading-progress-bar');
-    const wrap = document.getElementById('reading-progress');
+<script>
+  // ClientRouter swaps the DOM without re-evaluating this module, so boot()
+  // re-captures the swapped-in elements on every astro:page-load. The window
+  // scroll/resize listeners bind once at module scope and no-op on pages
+  // without the progress bar (elements resolve to null there).
+  let article: Element | null = null;
+  let bar: HTMLElement | null = null;
+  let wrap: HTMLElement | null = null;
+  let ticking = false;
+
+  const update = () => {
+    ticking = false;
     if (!article || !bar || !wrap) return;
+    const rect = article.getBoundingClientRect();
+    const start = window.scrollY + rect.top;
+    const end = window.scrollY + rect.bottom - window.innerHeight;
+    const total = Math.max(end - start, 1);
+    const progress = Math.max(0, Math.min(1, (window.scrollY - start) / total));
+    const pct = Math.round(progress * 100);
+    bar.style.width = pct + '%';
+    wrap.setAttribute('aria-valuenow', String(pct));
+  };
 
-    let ticking = false;
-    const update = () => {
-      const rect = article.getBoundingClientRect();
-      const start = window.scrollY + rect.top;
-      const end = window.scrollY + rect.bottom - window.innerHeight;
-      const total = Math.max(end - start, 1);
-      const progress = Math.max(0, Math.min(1, (window.scrollY - start) / total));
-      const pct = Math.round(progress * 100);
-      bar.style.width = pct + '%';
-      wrap.setAttribute('aria-valuenow', String(pct));
-      ticking = false;
-    };
+  const onScroll = () => {
+    if (!ticking) {
+      window.requestAnimationFrame(update);
+      ticking = true;
+    }
+  };
 
-    const onScroll = () => {
-      if (!ticking) {
-        window.requestAnimationFrame(update);
-        ticking = true;
-      }
-    };
-    window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', onScroll, { passive: true });
+  function boot(): void {
+    wrap = document.getElementById('reading-progress');
+    bar = document.getElementById('reading-progress-bar');
+    article = wrap ? document.querySelector(wrap.dataset.target || 'article') : null;
     update();
-  })();
+  }
+  boot();
+  document.addEventListener('astro:page-load', boot);
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll, { passive: true });
 </script>
