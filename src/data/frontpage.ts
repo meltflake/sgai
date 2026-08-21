@@ -19,14 +19,16 @@ export interface FeaturedPointer {
   id: string;
 }
 
-// 2026-08-07: lead with the OpenAI Signals translation — OpenAI's first
-// country-by-country ChatGPT release puts Singapore #1 of 147 on messages
-// per capita (Q2 2026), the third independent vendor dataset to rank it at
-// or near the top after Anthropic (AUI 5.53, #1) and Microsoft (60.9%, #2).
-// Swap back to the Digital Infrastructure Bill
+// 2026-08-20: lead with the agencies map — the reference piece for "who runs
+// AI in Singapore", covering 40+ ministries and statutory boards across eight
+// segments. It is evergreen rather than news-pegged, so it holds the slot
+// until a dated story outranks it.
+// Previous: 'openai-signals-chatgpt-at-work-2026' (2026-08-07, OpenAI's first
+// country-by-country ChatGPT release, Singapore #1 of 147 on messages per
+// capita). Swap to the Digital Infrastructure Bill
 // ('digital-infrastructure-bill-consultation-2026') when it is tabled in
 // Parliament, or to whatever bigger story lands next.
 export const FEATURED: FeaturedPointer | null = {
   kind: 'post',
-  id: 'openai-signals-chatgpt-at-work-2026',
+  id: 'singapore-ai-agencies-map',
 };

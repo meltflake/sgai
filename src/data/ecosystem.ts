@@ -1307,13 +1307,13 @@ But NUS AI Institute (founded 2024) is still in its integration phase. **Whether
             titleJa: 'NUS と OpenAI が ChatGPT Edu を全学展開',
             titleEn: 'NUS and OpenAI expand ChatGPT Edu university-wide',
             description:
-              '8 月 31 日起覆盖学生及教职员工；2026/27 学年所有本科新生必修 THE1008 应用生成式 AI，AI Sense Maker 计划于 8 月 20 日上线。',
+              '8 月 31 日起覆盖学生及教职员工；2026/27 学年所有本科新生必修 THE1008 应用生成式 AI，AI Sense Maker 计划于 8 月 20 日上线。Codex 不在此次全校范围内——它来自更早与计算机学院（SoC）的合作，OpenAI 称 NUS 的 Codex 采用率高于同规模高校。',
             descriptionKo:
-              '8월 31일부터 모든 학생과 교직원이 이용하며, 2026/27학년도 학부 신입생은 THE1008 응용 생성형 AI 과목을 필수로 이수합니다. AI Sense Maker는 8월 20일 출시 예정입니다.',
+              '8월 31일부터 모든 학생과 교직원이 이용하며, 2026/27학년도 학부 신입생은 THE1008 응용 생성형 AI 과목을 필수로 이수합니다. AI Sense Maker는 8월 20일 출시 예정입니다. Codex는 이번 전교 확대 범위가 아니며, 앞서 컴퓨팅학부(SoC)와의 협력에서 나온 것으로, OpenAI는 NUS의 Codex 도입률이 비슷한 규모의 대학보다 높다고 밝혔습니다.',
             descriptionJa:
-              '8 月 31 日から全学生・教職員が利用可能となり、2026/27 学年度の学部新入生は応用生成 AI 科目 THE1008 を必修とします。AI Sense Maker は 8 月 20 日に公開予定です。',
+              '8 月 31 日から全学生・教職員が利用可能となり、2026/27 学年度の学部新入生は応用生成 AI 科目 THE1008 を必修とします。AI Sense Maker は 8 月 20 日に公開予定です。Codex は今回の全学展開の対象ではなく、より早いコンピューティング学部（SoC）との協力によるもので、OpenAI は NUS の Codex 採用率が同規模大学を上回ると述べています。',
             descriptionEn:
-              'From 31 August, access extends to all students, faculty, and staff; every undergraduate freshman in AY2026/27 must take THE1008 Applied Generative AI. AI Sense Maker is scheduled to launch on 20 August.',
+              'From 31 August, access extends to all students, faculty, and staff; every undergraduate freshman in AY2026/27 must take THE1008 Applied Generative AI. AI Sense Maker is scheduled to launch on 20 August. Codex is not part of this university-wide rollout — it came through the earlier collaboration with the School of Computing, and OpenAI says NUS adoption of Codex runs ahead of similarly sized universities.',
           },
         ],
         relatedLeverNumbers: [1, 2, 3],
@@ -9142,13 +9142,14 @@ A take: this is heavier than a “regional HQ” announcement. A regional HQ is 
             titleKo: 'OpenAI와 NUS, ChatGPT Edu를 대학 전체로 확대',
             titleJa: 'OpenAI と NUS が ChatGPT Edu を全学展開',
             titleEn: 'OpenAI and NUS expand ChatGPT Edu university-wide',
-            description: '8 月 31 日起覆盖所有学生及教职员工，并配合本科新生必修生成式 AI 课程与 AI Sense Maker。',
+            description:
+              '8 月 31 日起覆盖所有学生及教职员工，并配合本科新生必修生成式 AI 课程与 AI Sense Maker。Codex 不在此次全校范围内，来自更早与计算机学院（SoC）的合作。',
             descriptionKo:
-              '8월 31일부터 모든 학생과 교직원에게 제공되며, 학부 신입생 생성형 AI 필수 과목과 AI Sense Maker를 함께 추진합니다.',
+              '8월 31일부터 모든 학생과 교직원에게 제공되며, 학부 신입생 생성형 AI 필수 과목과 AI Sense Maker를 함께 추진합니다. Codex는 이번 전교 확대 범위가 아니라 앞서 컴퓨팅학부(SoC)와의 협력에서 나온 것입니다.',
             descriptionJa:
-              '8 月 31 日から全学生・教職員へ提供し、学部新入生向け生成 AI 必修科目と AI Sense Maker を組み合わせます。',
+              '8 月 31 日から全学生・教職員へ提供し、学部新入生向け生成 AI 必修科目と AI Sense Maker を組み合わせます。Codex は今回の全学展開の対象ではなく、より早いコンピューティング学部（SoC）との協力によるものです。',
             descriptionEn:
-              'Access extends to all students, faculty, and staff from 31 August, alongside a compulsory generative-AI module for undergraduate freshmen and AI Sense Maker.',
+              'Access extends to all students, faculty, and staff from 31 August, alongside a compulsory generative-AI module for undergraduate freshmen and AI Sense Maker. Codex is not part of this university-wide rollout; it came through the earlier collaboration with the School of Computing.',
           },
         ],
         relatedLeverNumbers: [1, 3, 6],
