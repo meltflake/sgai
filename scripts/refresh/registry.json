@@ -39,7 +39,7 @@
       "type": "tsx",
       "schedule": "weekly",
       "label": "Ministry speeches (MDDI/MAS/PMO)",
-      "description": "Ministry speech scan (MDDI + MAS + PMO sitemaps, 2026-08 expansion) + page fetch + Claude haiku translation (zh paragraphs, zh+en tldr) + trilingual title/event/speakerTitle. New sources floor at >=2026-01-01 (rejected-ids.json cache). Emits to voices.ts mddiSpeeches[] + speech-transcripts.ts speechTranscripts map.",
+      "description": "Ministry speech scan (MDDI + MAS + PMO sitemaps, 2026-08 expansion) + page fetch + Claude haiku translation (zh paragraphs, zh+en tldr) + trilingual title/event/speakerTitle. All sources floor at >=2026-01-01 for new intake (rejected-ids.json cache; MDDI archive predates and is untouched). Emits to voices.ts mddiSpeeches[] + speech-transcripts.ts speechTranscripts map.",
       "script": "scripts/refresh/voices/run.ts",
       "args": [
         "--limit=3"
