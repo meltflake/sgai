@@ -408,13 +408,13 @@ export const sections: LegalSection[] = [
           'AI システムの全ライフサイクルセキュリティベストプラクティス――AI セキュリティガバナンスのギャップを埋める。',
         summaryEn:
           'Best practices for AI system security across the full lifecycle — filling a gap in AI security governance.',
-        body: 'CSA 2024 年 10 月发布，覆盖 AI 系统全生命周期：规划与设计阶段的威胁建模、开发阶段的数据与模型安全、部署阶段的安全测试、运维阶段的监控与事件响应。重点关注对抗性攻击防御、数据投毒防范、模型窃取防护、供应链安全等 AI 特有风险。配套 Securing Agentic AI 增补稿（2025）扩展到 Agentic AI 场景。',
+        body: 'CSA 2024 年 10 月发布，覆盖 AI 系统全生命周期：规划与设计阶段的威胁建模、开发阶段的数据与模型安全、部署阶段的安全测试、运维阶段的监控与事件响应。重点关注对抗性攻击防御、数据投毒防范、模型窃取防护、供应链安全等 AI 特有风险。配套的 Securing Agentic AI 增补稿 2025 年 10 月 22 日发布草案公开征求意见（至 2025 年 12 月 31 日），定稿于 2026 年 6 月 17 日发布，把框架扩展到 Agentic AI 场景。',
         bodyKo:
-          'CSA는 2024년 10월에 공표되었으며, AI 시스템의 전 생명주기를 다룹니다: 계획·설계 단계의 위협 모델링, 개발 단계의 데이터·모델 보안, 배포 단계의 보안 테스트, 운영 단계의 모니터링 및 사건 대응. 적대적 공격 방어, 데이터 오염 방지, 모델 도용 방지, 공급망 보안 등 AI 특유의 위험에 중점을 둡니다. Securing Agentic AI 보충 문서(2025)가 함께 제공되어 Agentic AI 시나리오까지 확장됩니다.',
+          'CSA는 2024년 10월에 공표되었으며, AI 시스템의 전 생명주기를 다룹니다: 계획·설계 단계의 위협 모델링, 개발 단계의 데이터·모델 보안, 배포 단계의 보안 테스트, 운영 단계의 모니터링 및 사건 대응. 적대적 공격 방어, 데이터 오염 방지, 모델 도용 방지, 공급망 보안 등 AI 특유의 위험에 중점을 둡니다. 부속 문서인 Securing Agentic AI 보충 문서는 2025년 10월 22일 초안이 공개 협의용으로 발표되었고(2025년 12월 31일 마감), 최종본은 2026년 6월 17일 공개되어 프레임워크를 Agentic AI 시나리오까지 확장했습니다.',
         bodyJa:
-          'CSA 2024年10月に発布され、AIシステムの全ライフサイクルをカバーします：計画および設計段階の脅威モデリング、開発段階のデータおよびモデル安全性、展開段階のセキュリティテスト、運用段階の監視およびインシデント対応。敵対的攻撃防御、データポイズニング防止、モデル盗難防御、サプライチェーンセキュリティなどのAI固有のリスクに重点を置きます。付属のSecuring Agentic AI補足稿（2025）をAgentic AIシナリオに拡張します。',
+          'CSA 2024年10月に発布され、AIシステムの全ライフサイクルをカバーします：計画および設計段階の脅威モデリング、開発段階のデータおよびモデル安全性、展開段階のセキュリティテスト、運用段階の監視およびインシデント対応。敵対的攻撃防御、データポイズニング防止、モデル盗難防御、サプライチェーンセキュリティなどのAI固有のリスクに重点を置きます。付属の Securing Agentic AI 補足文書は 2025 年 10 月 22 日に草案がパブリックコンサルテーション用に公開され（2025 年 12 月 31 日締切）、確定版は 2026 年 6 月 17 日に公表され、フレームワークを Agentic AI のシナリオへ拡張しています。',
         bodyEn:
-          'Issued by CSA in October 2024, the guidelines cover the full AI system lifecycle: threat modelling at the planning and design stage, data and model security during development, security testing at deployment, and monitoring and incident response in operations. Particular focus is given to AI-specific risks such as adversarial attacks, data poisoning, model theft and supply-chain security. A 2025 companion paper, "Securing Agentic AI", extends the framework to agentic AI use cases.',
+          'Issued by CSA in October 2024, the guidelines cover the full AI system lifecycle: threat modelling at the planning and design stage, data and model security during development, security testing at deployment, and monitoring and incident response in operations. Particular focus is given to AI-specific risks such as adversarial attacks, data poisoning, model theft and supply-chain security. The companion addendum "Securing Agentic AI" was issued in draft for public consultation on 22 October 2025 (closing 31 December 2025), with the finalised version released on 17 June 2026, extending the framework to agentic AI use cases.',
       },
       {
         title: 'PDPA × AI 边界',

@@ -1,5 +1,6 @@
 ---
-// Front-page sidebar — three stacked rails next to the main column:
+// Front-page sidebar — stacked rails next to the main column:
+//   0. AskEntry — Ask-AI input + preset chips (zero-JS, lands on /ask/)
 //   1. TrackerMini — the 6 dashboard dimensions as a compact list
 //      (replaces the old full-width tracker section)
 //   2. QuickBrowse — search / by-time / by-topic entry points
@@ -11,6 +12,7 @@
 // no-JS readers.
 
 import { Icon } from 'astro-icon/components';
+import AskEntry from '~/components/home/AskEntry.astro';
 import { dimensions, dataDate as trackerDataDate } from '~/data/tracker';
 import { domainStats, harvestedTitle, type DomainKey } from '~/utils/latest-content';
 import { TOPICS_ENABLED } from '~/config/features';
@@ -102,6 +104,9 @@ const picks: Array<{ href: string; label: Record<Lang, string> }> = [
 ---
 
 <aside class="space-y-8">
+  {/* 0 · Ask-AI entry */}
+  <AskEntry lang={lang} />
+
   {/* 1 · Tracker mini */}
   <div class="border border-subtle rounded-md p-4 bg-surface">
     <div class="flex items-baseline justify-between mb-3 gap-2">
@@ -236,8 +241,20 @@ const picks: Array<{ href: string; label: Record<Lang, string> }> = [
 </aside>
 
 <script>
-  // Delegate to the header's search modal so there is one Pagefind UI.
-  document.getElementById('home-search-trigger')?.addEventListener('click', () => {
-    document.getElementById('search-trigger')?.click();
-  });
+  // ClientRouter swaps the DOM without re-evaluating this module, so the
+  // listener must re-bind on every astro:page-load. The dataset flag keeps
+  // the initial full load (direct call + astro:page-load both firing) from
+  // double-binding.
+  function boot() {
+    const btn = document.getElementById('home-search-trigger');
+    if (btn && !btn.dataset.searchBound) {
+      btn.dataset.searchBound = '1';
+      // Delegate to the header's search modal so there is one Pagefind UI.
+      btn.addEventListener('click', () => {
+        document.getElementById('search-trigger')?.click();
+      });
+    }
+  }
+  boot();
+  document.addEventListener('astro:page-load', boot);
 </script>

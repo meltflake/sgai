@@ -47,6 +47,29 @@ export const timelineEvents: TimelineEvent[] = [
     tagsKo: ['인재', '국제'],
   },
   {
+    id: 'evt-2026-manus-unwind',
+    year: 2026,
+    date: '2026-08-11',
+    title: 'Meta–Manus 收购正式拆解：Manus 宣布恢复独立运营',
+    topicIds: ['startups-investment', 'international'],
+    titleKo: 'Meta–Manus 인수 공식 해제: Manus, 독립 운영 재개 발표',
+    titleJa: 'Meta–Manus 買収が正式に解消：Manus が独立経営の再開を発表',
+    titleEn: 'Meta–Manus Deal Unwound: Manus Returns to Independent Operations',
+    description:
+      '8 月 11 日，Manus 致信用户宣布"即将恢复独立公司运营"——2025 年 12 月 29 日交割的 Meta 约 20 亿美元收购正式拆解，公司称此举是"与 Meta 分离的一部分"，为"遵守特定司法辖区的监管要求"。这是 4 月 27 日中国 NDRC 否决令的执行落地：Meta 所有权期间（2025-12-29 起）产生的用户数据将于 8 月 23–24 日删除，受影响用户须在 8 月 23 日 07:59（新加坡时间）前备份、8 月 25 日 08:00 起恢复。据报道，原投资方（含拟成为最大股东的腾讯）正洽谈按原 20 亿美元估值收回股份。至此「Singapore washing」案走完从否决到拆解的完整闭环：总部仍在新加坡的 Manus 回到独立运营，但来源国监管贯穿了交易的每一步。',
+    descriptionKo:
+      '8월 11일, Manus는 사용자에게 보낸 서한에서 "곧 독립 회사로서 운영을 재개한다"고 발표했습니다——2025년 12월 29일 마무리된 Meta의 약 20억 달러 인수가 공식적으로 해제된 것으로, 회사는 이를 "Meta와의 분리의 일환"이며 "특정 관할권의 규제 요건을 준수하기 위한 조치"라고 설명했습니다. 이는 4월 27일 중국 NDRC 부결의 집행입니다: Meta 소유 기간(2025-12-29 이후)에 생성된 사용자 데이터는 8월 23–24일에 삭제되며, 영향을 받는 사용자는 8월 23일 07:59(싱가포르 시간)까지 백업하고 8월 25일 08:00부터 복원해야 합니다. 보도에 따르면 기존 투자자(최대 주주가 될 예정인 Tencent 포함)는 당초 20억 달러 평가액으로 지분 회복을 협상 중입니다. 이로써 「Singapore washing」 사례는 부결에서 해제까지의 전체 과정을 완주했습니다: 본사를 싱가포르에 둔 채 Manus는 독립 운영으로 돌아가지만, 출처국의 감독이 거래의 모든 단계를 관통했습니다.',
+    descriptionJa:
+      '8 月 11 日、Manus はユーザーへの書簡で「まもなく独立企業としての運営を再開する」と発表しました——2025 年 12 月 29 日にクローズした Meta による約 20 億ドルの買収が正式に解消され、同社はこれを「Meta からの分離の一環」であり「特定の法域の規制要件を遵守するため」の措置と説明しました。これは 4 月 27 日の中国 NDRC による否決の執行です：Meta 所有期間（2025-12-29 以降）に生成されたユーザーデータは 8 月 23–24 日に削除され、対象ユーザーは 8 月 23 日 07:59（シンガポール時間）までにバックアップし、8 月 25 日 08:00 から復元する必要があります。報道によれば、旧投資家（筆頭株主になる見込みの Tencent を含む）は当初の 20 億ドルの評価額で持分の回復を交渉中です。これで「Singapore washing」案件は否決から解消までの一連の流れを完走しました：本社をシンガポールに置いたまま、Manus は独立運営に戻りますが、ソース国の監督が取引の全過程を貫きました。',
+    descriptionEn:
+      'On 11 August, Manus wrote to users that it would "soon resume operating as an independent company" — formally unwinding Meta\'s roughly US$2B acquisition that closed on 29 December 2025, a step the company described as "part of our separation from Meta," required to comply with regulatory requirements in certain jurisdictions. This executes China NDRC\'s 27 April veto: user data generated under Meta\'s ownership (from 29 December 2025) will be deleted over 23–24 August, with affected users told to back up before 07:59 SGT on 23 August and restore from 08:00 SGT on 25 August. Former investors — reportedly including Tencent, set to become the largest shareholder — are negotiating to recover stakes at the original US$2B valuation. The "Singapore washing" case has now run its full course from veto to unwind: Manus, still headquartered in Singapore, returns to independent operations, with source-country oversight shaping every step of the deal.',
+    tags: ['治理', '产业', '国际', '数据主权'],
+    tagsEn: ['Governance', 'Industry', 'International', 'Data sovereignty'],
+    tagsJa: ['ガバナンス', '産業', '国際', 'データ主権'],
+    tagsKo: ['거버넌스', '산업', '국제', '데이터 주권'],
+    relatedPostSlugs: [],
+  },
+  {
     id: 'evt-2026-temasek-review-ai-strategy',
     year: 2026,
     date: '2026-07-08',

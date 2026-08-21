@@ -1,0 +1,21 @@
+---
+// Ask-AI page (en) — thin wrapper around AskPage.astro.
+// noindex: a chat surface has no stable content to index; the layout's
+// searchIndex=false keeps it out of the Pagefind index too.
+
+import Layout from '~/layouts/PageLayout.astro';
+import AskPage from '~/components/ask/AskPage.astro';
+import { t } from '~/i18n';
+
+const lang = 'en' as const;
+
+const metadata = {
+  title: t(lang, 'navAsk'),
+  description: t(lang, 'askPageDesc'),
+  robots: { index: false, follow: true },
+};
+---
+
+<Layout metadata={metadata} lang={lang} searchIndex={false}>
+  <AskPage lang={lang} />
+</Layout>

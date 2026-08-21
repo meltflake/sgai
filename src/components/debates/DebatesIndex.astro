@@ -427,7 +427,7 @@ const topicEntries = Object.entries(topicLabels)
 const maxCount = Math.max(...Object.values(DEBATE_STATS.byYear));
 
 // Initial render window: cards past this index ship with `hidden` so the
-// unfiltered page stays light (the archive is 179+ cards and grows weekly).
+// unfiltered page stays light as the archive grows weekly.
 // The client script reveals them when a filter/search is active or the
 // "show earlier" button is pressed.
 const DEFAULT_VISIBLE = 25;

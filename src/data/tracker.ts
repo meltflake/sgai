@@ -7,6 +7,7 @@
 // Design doc: docs/20260502-tracker-dashboard-design.md
 
 import { jobsIndexMetricRows } from '~/data/ai-jobs-index';
+import { capitalMetricRows } from '~/data/ai-capital';
 
 export type Trend = 'up' | 'flat' | 'down'; // visual: ↗ → ↘
 export type DimensionId = 'investment' | 'talent' | 'compute' | 'adoption' | 'research' | 'governance';
@@ -68,6 +69,13 @@ export interface MetricRow {
   categoryEn?: string;
   categoryJa?: string;
   categoryKo?: string;
+  /**
+   * Currency date of THIS row's claim — 'YYYY-MM-DD' or 'YYYY-MM' for
+   * monthly snapshots. Rendered as a "数据截至" chip (P0-2). Deliberately
+   * optional: rows without a dated source keep no chip rather than a
+   * guessed date. Must never be newer than the underlying source datum.
+   */
+  asOfDate?: string;
 }
 
 export interface DimensionBase {
@@ -112,6 +120,14 @@ export interface QuantifiedDimension extends DimensionBase {
   headlineEn?: string;
   headlineJa?: string;
   headlineKo?: string;
+  /**
+   * Currency date of the headline claim — 'YYYY-MM-DD' (year or year-month
+   * granularity allowed when that is all the source discloses). Rendered as
+   * a "数据截至" chip (P0-2). Derivation rule: newest dated source the
+   * headline itself rests on, NOT the newest anchor on the page. Optional:
+   * absent = no chip (better than a guessed date).
+   */
+  headlineAsOf?: string;
   benchmark: string;
   benchmarkEn?: string;
   benchmarkJa?: string;
@@ -129,6 +145,9 @@ export interface QualitativeDimension extends DimensionBase {
   badgeEn?: string;
   badgeJa?: string;
   badgeKo?: string;
+  /** Currency date of the dimension's judgment (same semantics as
+   *  QuantifiedDimension.headlineAsOf; P0-2). */
+  asOfDate?: string;
   judgment: string;
   judgmentEn?: string;
   judgmentJa?: string;
@@ -150,7 +169,7 @@ export interface OverallSummary {
   methodologyNoteKo?: string;
 }
 
-export const dataDate = '2026-05-20';
+export const dataDate = '2026-08-14'; // bumped with the P0-2 as-of stamp pass (editorial refresh of this file)
 
 export const overallSummary: OverallSummary = {
   oneLiner:
@@ -211,6 +230,11 @@ export const dimensions: Dimension[] = [
     headlineKo: 'S$139/인',
     headlineJa: 'S$139/人',
     headlineEn: 'S$139 per person',
+    // Headline rests on the Budget 2026 commitment stack (Feb 2026) behind
+    // the per-capita computation; Stanford 2025 supplies the US/China
+    // comparators. Temasek Review (2026-07) lives in the judgment, not the
+    // headline, so it does not move this stamp.
+    headlineAsOf: '2026-02',
     benchmark: 'vs US $33 / 中国 $7（人均）',
     benchmarkKo: '미국 $33 / 중국 $7(1인당) 대비',
     benchmarkJa: 'vs US $33 / 中国 $7（一人当たり）',
@@ -261,6 +285,9 @@ export const dimensions: Dimension[] = [
       'Private sector co-investment ratio is low — government still drives most of the spend. Capital flows mostly to compute and large enterprises; SME-side subsidies underpenetrate. Disclosure conventions occasionally diverge year-over-year, so cross-year comparisons need care.',
     relatedPostSlugs: ['sovereign-capital-frontier-ai'],
     metrics: [
+      // Derived at render time from the capital ledger (ai-capital.ts) —
+      // the S$1→S$13 amplification ratio, computed, never hand-copied.
+      ...capitalMetricRows(),
       {
         name: '政府 AI 专项投入',
         nameKo: '정부 AI 전담 투입',
@@ -592,6 +619,9 @@ export const dimensions: Dimension[] = [
     trend: 'up',
     headline: '5,000 / 15,000',
     headlineEn: '5,000 / 15,000',
+    // The 5,000-of-15,000 figure comes from the MDDI NAIRD announcement
+    // (Jan 2026); the live jobs-index row carries its own per-row stamp.
+    headlineAsOf: '2026-01',
     benchmark: '目标 2029 完成 33%（外籍占比 35%）',
     benchmarkKo: '2029년 목표 달성도 33%（외국인 비율 35%）',
     benchmarkJa: '2029 年までの目標達成率 33%（外籍占有率 35%）',
@@ -826,6 +856,9 @@ export const dimensions: Dimension[] = [
     // i18n-allow-unpaired — language-neutral metric value (gigawatts); record's zh title is `算力底座`
     headline: '1.4 GW',
     headlineEn: '1.4 GW',
+    // 1.4 GW / 70+ facilities comes from the Introl 2025.8 datacentre-market
+    // row; the 300MW allocation note (2025) is the newest dated increment.
+    headlineAsOf: '2025-08',
     benchmark: '数据中心容量 + 70+ 设施 + NSCC ASPIRE 2A+ 20 PFLOPS',
     benchmarkKo: '데이터센터 용량 + 70+ 설비 + NSCC ASPIRE 2A+ 20 PFLOPS',
     benchmarkJa: 'データセンター容量 + 70+ 施設 + NSCC ASPIRE 2A+ 20 PFLOPS',
@@ -1075,6 +1108,10 @@ export const dimensions: Dimension[] = [
     headlineKo: '62.5% 대기업 / 14.5% SME',
     headlineJa: '62.5% 大企業 / 14.5% SME',
     headlineEn: '62.5% large enterprises / 14.5% SMEs',
+    // Headline figures are the 2024 IMDA survey vintage (benchmark cites the
+    // 2023→2024 SME jump). The Microsoft 60.9% (2026) is an anchor, not the
+    // headline claim, so it does not move this stamp.
+    headlineAsOf: '2024',
     benchmark: 'SME YoY 3 倍增长（2023 4.2% → 2024 14.5%）',
     benchmarkKo: 'SME YoY 3배 증가（2023 4.2% → 2024 14.5%）',
     benchmarkJa: 'SME YoY 3 倍増加（2023 4.2% → 2024 14.5%）',
@@ -1129,7 +1166,46 @@ export const dimensions: Dimension[] = [
     shortcomingEn:
       'SME 14.5% looks fast-growing but absolute level is low — broad-based AI usage takes another 2–3 years. Government use is mostly productivity tools; decision-grade AI is shallow. NAIIP funding sizing is not public — execution is hard to assess. Government-side public penetration data has targets but no tracked progress.',
     metrics: [
-      // 17 rows from old "产业采用" section + 1 row from old "国际排名" (东南亚深科技融资份额) = 18 total
+      // 17 rows from old "产业采用" section + 1 row from old "国际排名" (东南亚深科技融资份额) = 18 total.
+      // +2 rows (P2-2): business-function slice from the IMDA pulse survey
+      // published with SGDE 2025 — the only official sector/function-level
+      // adoption cut available (the three vendor datasets are country-level).
+      {
+        name: 'AI 使用广度（业务职能）',
+        nameEn: 'AI usage breadth (business functions)',
+        nameJa: 'AI 利用の広がり（業務機能）',
+        nameKo: 'AI 활용 폭(업무 기능)',
+        value: 'SME 平均 3 个职能 / 非 SME 平均 5 个；最常见：IT、客服、财务会计',
+        valueEn:
+          'SMEs use AI in 3 business functions on average; non-SMEs 5. Most common: IT, customer service, finance & accounting',
+        valueJa: 'SME は平均 3 機能、非 SME は平均 5 機能で AI を利用。最多は IT、カスタマーサービス、財務会計',
+        valueKo: 'SME는 평균 3개, 비SME는 평균 5개 업무 기능에 AI 사용. 가장 흔한 곳은 IT, 고객서비스, 재무회계',
+        source: 'IMDA 委托脉冲调查（SGDE 2025）',
+        sourceEn: 'IMDA-commissioned pulse survey (SGDE 2025)',
+        sourceJa: 'IMDA 委託パルス調査（SGDE 2025）',
+        sourceKo: 'IMDA 의뢰 펄스 조사(SGDE 2025)',
+        sourceUrl:
+          'https://www.imda.gov.sg/resources/press-releases-factsheets-and-speeches/press-releases/2025/singapore-digital-economy',
+        asOfDate: '2025-10',
+      },
+      {
+        name: 'AI 工具形态',
+        nameEn: 'AI tool sophistication',
+        nameJa: 'AI ツールの形態',
+        nameKo: 'AI 도구 형태',
+        value: '84% 现成生成式工具 / 52% 领域定制方案 / 44% 自研或私有工具',
+        valueEn:
+          '84% off-the-shelf generative tools / 52% domain-specific solutions / 44% customised or proprietary tools',
+        valueJa: '84% 既製生成ツール / 52% 領域特化ソリューション / 44% 自社開発・専有ツール',
+        valueKo: '84% 기성 생성형 도구 / 52% 도메인 맞춤 솔루션 / 44% 자체 개발·전용 도구',
+        source: 'IMDA 委托脉冲调查（SGDE 2025）',
+        sourceEn: 'IMDA-commissioned pulse survey (SGDE 2025)',
+        sourceJa: 'IMDA 委託パルス調査（SGDE 2025）',
+        sourceKo: 'IMDA 의뢰 펄스 조사(SGDE 2025)',
+        sourceUrl:
+          'https://www.imda.gov.sg/resources/press-releases-factsheets-and-speeches/press-releases/2025/singapore-digital-economy',
+        asOfDate: '2025-10',
+      },
       {
         name: '数字经济占 GDP',
         nameKo: '디지털 경제 점유율(GDP 대비)',
@@ -1456,6 +1532,9 @@ export const dimensions: Dimension[] = [
     headlineKo: '1인당 논문 수 전 세계 #1',
     headlineJa: '論文一人当たり世界 #1',
     headlineEn: 'Per-capita papers #1 globally',
+    // Publication date of the Wiley analysis the headline rests on (the
+    // underlying datum is 2022, stated in the metric row itself).
+    headlineAsOf: '2024-09',
     benchmark: 'NTU AI #3（仅次 MIT/CMU）· NUS AI #9',
     benchmarkKo: 'NTU AI #3(MIT/CMU 다음) · NUS AI #9',
     benchmarkJa: 'NTU AI #3（MIT/CMU のみに次ぐ）· NUS AI #9',
@@ -1609,6 +1688,9 @@ export const dimensions: Dimension[] = [
     badgeKo: '규칙 제정자',
     badgeJa: 'ルール制定者',
     badgeEn: 'Rule-maker',
+    // Newest dated evidence in the judgment: ISE 2026 continued updates
+    // (SCAI/AISI 2025–2026 metrics). Year granularity — no month disclosed.
+    asOfDate: '2026',
     judgment:
       'Singapore Consensus on AI Safety 由 2025 SCAI: ISE 产出，100+ 参与者来自 11 个国家，并在 2026 ISE 持续更新；ASEAN Guide on AI Governance 10 国采纳（新加坡主导起草）；AI Verify Foundation 推出 AI TAP；Agentic AI Governance Framework 已加入 60+ 机构反馈和 10+ 真实案例——新加坡是规则制定者而不是接受者，话语权显著超出体量。Bletchley、Seoul、Paris 三届 AI Safety Summit 全程参与；MAS Project MindForge 拉到 24 家机构 + 四大云厂；UN Independent International Scientific Panel 有席位。',
     judgmentKo:

@@ -1,0 +1,106 @@
+---
+// src/components/data/CapitalSection.astro
+//
+// "资本与基础设施" section (P1-1) — renders the ai-capital.ts ledger on the
+// /ecosystem page: the amplification ratio with its definition, then one
+// row per capital event (kind badge + amount + parties + date + source).
+// Zero data-layer CJK: every label comes from the t() dictionary.
+
+import { capitalRecords, amplificationRatio, type CapitalRecord, type AmountType } from '~/data/ai-capital';
+import { getLangFromPath, localizedHref, t, zh, type Lang } from '~/i18n';
+
+const lang: Lang = getLangFromPath(new URL(Astro.url).pathname);
+
+const ratio = amplificationRatio();
+
+type DictKey = keyof typeof zh;
+
+const amountTypeKey: Record<AmountType, DictKey> = {
+  round: 'capitalAmountTypeRound',
+  commitment: 'capitalAmountTypeCommitment',
+  exposure: 'capitalAmountTypeExposure',
+  'joint-venture': 'capitalAmountTypeJointVenture',
+  cumulative: 'capitalAmountTypeCumulative',
+  envelope: 'capitalAmountTypeEnvelope',
+  undisclosed: 'capitalAmountTypeUndisclosed',
+};
+
+const kindKey: Record<CapitalRecord['kind'], DictKey> = {
+  'hyperscaler-commitment': 'capitalKindHyperscaler',
+  'sovereign-investment': 'capitalKindSovereign',
+  fund: 'capitalKindFund',
+};
+
+function fmtAmount(r: CapitalRecord): string {
+  if (r.amountType === 'undisclosed') return t(lang, 'capitalAmountTypeUndisclosed');
+  const n = r.amountUsd ?? r.amountSgd ?? 0;
+  const unit = r.amountUsd !== undefined ? 'US$' : 'S$';
+  const b = n / 1e9;
+  const num = b % 1 === 0 ? b.toFixed(0) : b.toFixed(1);
+  const floor = r.isFloor ? '+' : '';
+  return `${unit}${num}B${floor}`;
+}
+---
+
+<section id="capital" class="mt-14 border-t border-subtle pt-10">
+  <h2 class="t-h2 border-b-2 border-blue-600 dark:border-blue-400 pb-2">{t(lang, 'capitalSectionTitle')}</h2>
+  <p class="text-sm text-muted mt-2 mb-6">{t(lang, 'capitalSectionLead')}</p>
+
+  {
+    ratio && (
+      <div class="bg-surface border border-subtle rounded-lg p-5 mb-6">
+        <div class="text-xs uppercase tracking-wider text-gray-500 mb-1">{t(lang, 'capitalRatioLabel')}</div>
+        <div class="t-stat text-primary">1 : {ratio.ratio.toFixed(1)}</div>
+        <p class="text-xs text-muted mt-2 m-0 leading-relaxed">{t(lang, 'capitalRatioCaveat')}</p>
+      </div>
+    )
+  }
+
+  <div class="overflow-x-auto">
+    <table class="w-full text-sm border-collapse">
+      <thead>
+        <tr class="bg-slate-100 dark:bg-slate-800">
+          <th class="text-left p-3 border border-subtle">{t(lang, 'capitalEventLabel')}</th>
+          <th class="text-left p-3 border border-subtle whitespace-nowrap">{t(lang, 'capitalKindColumnLabel')}</th>
+          <th class="text-left p-3 border border-subtle">{t(lang, 'capitalAmountLabel')}</th>
+          <th class="text-left p-3 border border-subtle whitespace-nowrap">{t(lang, 'capitalDateLabel')}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {
+          capitalRecords.map((r) => (
+            <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50">
+              <td class="p-3 border border-subtle">
+                {r.ecosystemEntityId ? (
+                  <a
+                    href={localizedHref(`/ecosystem/${r.ecosystemEntityId}/`, lang)}
+                    class="text-blue-600 dark:text-blue-400 hover:underline font-medium"
+                  >
+                    {r.parties.join(' × ')}
+                  </a>
+                ) : (
+                  <span class="font-medium">{r.parties.join(' × ')}</span>
+                )}
+              </td>
+              <td class="p-3 border border-subtle text-muted whitespace-nowrap">
+                {t(lang, kindKey[r.kind])} · {t(lang, amountTypeKey[r.amountType])}
+              </td>
+              <td class="p-3 border border-subtle font-semibold whitespace-nowrap">{fmtAmount(r)}</td>
+              <td class="p-3 border border-subtle text-muted whitespace-nowrap">
+                {r.announcedAt}
+                <a
+                  href={r.sourceUrl}
+                  target="_blank"
+                  rel="noopener"
+                  class="text-blue-600 dark:text-blue-400 hover:underline ml-2"
+                >
+                  ↗
+                </a>
+              </td>
+            </tr>
+          ))
+        }
+      </tbody>
+    </table>
+  </div>
+</section>

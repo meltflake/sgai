@@ -1,0 +1,579 @@
+---
+// Ask-AI page body — the /ask/ route (all 5 locales). Multi-turn chat over
+// POST /api/ask (functions/api/ask.ts, SSE). Conversation lives in module
+// memory only: it survives ClientRouter navigations within a tab but a
+// reload starts clean (deliberate — persisted threads annoyed users). The
+// API is stateless. All copy resolves server-side via t() / local COPY, so
+// the client script is language-free.
+
+import { t, type Lang } from '~/i18n';
+import { toTraditional } from '~/i18n/opencc';
+import { ASK_API_PATH, TURNSTILE_SITE_KEY } from '~/config/ask';
+import { ASK_PAGE_PRESET_COUNT, ASK_PRESET_POOL } from '~/config/ask-presets';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+
+// Full pool server-rendered; the client shuffles and shows a random
+// ASK_PAGE_PRESET_COUNT per load, merged with AI-vetted user questions
+// from /api/suggest. No-JS fallback: the first N stay visible.
+const presets = ASK_PRESET_POOL[lang];
+
+// Page-local copy (rule #13: all authored locales + zh-tw via OpenCC).
+const FOLLOWUP_COPY: Record<Lang, string> = {
+  zh: '继续追问',
+  en: 'Keep asking',
+  ja: '続けて質問',
+  ko: '이어서 질문하기',
+  'zh-tw': toTraditional('继续追问'),
+};
+
+const askConfig = {
+  lang,
+  apiPath: ASK_API_PATH,
+  suggestPath: '/api/suggest',
+  presetCount: ASK_PAGE_PRESET_COUNT,
+  turnstileSiteKey: TURNSTILE_SITE_KEY,
+  labels: {
+    thinking: t(lang, 'askThinking'),
+    quotaLeft: t(lang, 'askQuotaLeft'),
+    quotaExceeded: t(lang, 'askQuotaExceeded'),
+    errorGeneric: t(lang, 'askErrorGeneric'),
+    errorUnavailable: t(lang, 'askErrorUnavailable'),
+    retry: t(lang, 'askRetry'),
+  },
+};
+---
+
+<section class="pt-10 md:pt-14 pb-16 md:pb-24">
+  <div class="max-w-3xl mx-auto px-4 sm:px-6">
+    <h1 class="t-h1 text-gray-900 dark:text-white mb-3">{t(lang, 'navAsk')}</h1>
+    <p class="text-sm text-gray-600 dark:text-gray-400 mb-2 max-w-prose leading-relaxed">{t(lang, 'askPageDesc')}</p>
+    <p class="text-xs text-gray-500 dark:text-gray-500 mb-8 max-w-prose leading-relaxed">{t(lang, 'askDisclaimer')}</p>
+
+    <div id="ask-app" data-ask-config={JSON.stringify(askConfig)}>
+      <div id="ask-thread" class="space-y-5 mb-6 empty:hidden"></div>
+
+      <div id="ask-followups" class="mb-6" hidden>
+        <p class="text-xs uppercase tracking-[0.18em] text-primary font-semibold mb-3">{FOLLOWUP_COPY[lang]}</p>
+        <div id="ask-followup-list" class="flex flex-col items-start gap-2"></div>
+      </div>
+
+      <form id="ask-form" class="rounded-lg border border-subtle bg-surface p-3">
+        <textarea
+          id="ask-input"
+          rows="2"
+          maxlength="2000"
+          placeholder={t(lang, 'askPlaceholder')}
+          class="w-full resize-none bg-transparent text-sm text-gray-900 dark:text-gray-100 placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:outline-none leading-relaxed"
+        ></textarea>
+        <div class="flex items-center justify-between gap-3 mt-2">
+          <button
+            type="button"
+            id="ask-new"
+            class="text-xs text-gray-500 dark:text-gray-400 hover:text-primary transition-colors underline-offset-4 hover:underline"
+          >
+            {t(lang, 'askNewChat')}
+          </button>
+          <span id="ask-quota" class="text-xs text-gray-400 dark:text-gray-500"></span>
+          <button
+            type="submit"
+            id="ask-send"
+            class="bg-primary hover:bg-secondary disabled:opacity-50 disabled:cursor-not-allowed text-white font-semibold px-5 py-2 rounded-md transition-colors text-sm"
+          >
+            {t(lang, 'askSend')}
+          </button>
+        </div>
+      </form>
+
+      <div id="ask-rail" class="mt-8">
+        <p class="text-xs uppercase tracking-[0.18em] text-primary font-semibold mb-3">{t(lang, 'askPresetHeading')}</p>
+        <div class="grid sm:grid-cols-2 gap-2">
+          {
+            presets.map((q, i) => (
+              <button
+                type="button"
+                class="ask-preset text-left text-sm px-4 py-3 rounded-lg border border-subtle bg-surface hover:border-primary hover:text-primary transition-colors leading-relaxed"
+                data-q={q}
+                hidden={i >= ASK_PAGE_PRESET_COUNT}
+              >
+                {q}
+              </button>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { marked } from 'marked';
+  import DOMPurify from 'dompurify';
+
+  type Role = 'user' | 'assistant';
+  interface Msg {
+    role: Role;
+    content: string;
+  }
+  interface AskConfig {
+    lang: string;
+    apiPath: string;
+    suggestPath: string;
+    presetCount: number;
+    turnstileSiteKey: string;
+    labels: Record<string, string>;
+  }
+
+  interface TurnstileApi {
+    render: (el: HTMLElement, opts: Record<string, unknown>) => string;
+    execute: (widgetId: string) => void;
+    reset: (widgetId: string) => void;
+  }
+
+  // The model appends this marker plus follow-up questions (one per line)
+  // after every answer (functions/_lib/prompt.ts rule 8). The client strips
+  // it from the rendered/stored answer and turns the tail into chips.
+  const FOLLOWUP_MARKER = '===FOLLOWUP===';
+
+  // Conversation state lives at module scope: ClientRouter swaps the DOM
+  // without re-evaluating this module, so navigating away and back keeps
+  // the thread, while a full reload starts a fresh page (by design).
+  interface ConvoState {
+    sessionId: string;
+    messages: Msg[];
+    followups: string[];
+  }
+  const convoStates: Record<string, ConvoState> = {};
+
+  // ClientRouter swaps the DOM without re-evaluating this module, so init must
+  // re-run on every astro:page-load. The dataset flag keeps the initial full
+  // load (direct call + astro:page-load both firing) from double-binding.
+  function boot(): void {
+    const app = document.getElementById('ask-app');
+    if (app && !app.dataset.askReady) {
+      app.dataset.askReady = '1';
+      initAsk(app);
+    }
+  }
+  boot();
+  document.addEventListener('astro:page-load', boot);
+
+  function initAsk(app: HTMLElement): void {
+    const config: AskConfig = JSON.parse(app.dataset.askConfig || '{}');
+    const labels = config.labels || {};
+    const thread = document.getElementById('ask-thread') as HTMLElement;
+    const rail = document.getElementById('ask-rail') as HTMLElement;
+    const followupsWrap = document.getElementById('ask-followups') as HTMLElement;
+    const followupList = document.getElementById('ask-followup-list') as HTMLElement;
+    const form = document.getElementById('ask-form') as HTMLFormElement;
+    const input = document.getElementById('ask-input') as HTMLTextAreaElement;
+    const quotaEl = document.getElementById('ask-quota') as HTMLElement;
+    const sendBtn = document.getElementById('ask-send') as HTMLButtonElement;
+    const newBtn = document.getElementById('ask-new') as HTMLButtonElement;
+
+    // Drop threads persisted by the old sessionStorage implementation.
+    try {
+      sessionStorage.removeItem(`sgai_ask_${config.lang}`);
+    } catch {
+      // Storage blocked — nothing to clean.
+    }
+
+    let state = convoStates[config.lang];
+    if (!state) {
+      state = { sessionId: crypto.randomUUID(), messages: [], followups: [] };
+      convoStates[config.lang] = state;
+    }
+    let busy = false;
+    renderAll();
+
+    const q = new URLSearchParams(window.location.search).get('q');
+    if (q && q.trim()) {
+      resetConversation();
+      void send(q.trim());
+    }
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const value = input.value.trim();
+      if (value) void send(value);
+    });
+    input.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' && !e.shiftKey) {
+        e.preventDefault();
+        form.requestSubmit();
+      }
+    });
+    newBtn.addEventListener('click', () => {
+      resetConversation();
+      input.focus();
+    });
+    // Preset rail: click delegation (covers dynamically added chips), a
+    // per-load shuffle, then AI-vetted user questions merged from
+    // /api/suggest (progressive enhancement — static pool is the floor).
+    rail.addEventListener('click', (e) => {
+      const btn = (e.target as HTMLElement).closest<HTMLButtonElement>('.ask-preset');
+      const preset = btn?.dataset.q;
+      if (preset) void send(preset);
+    });
+    followupList.addEventListener('click', (e) => {
+      const btn = (e.target as HTMLElement).closest<HTMLButtonElement>('.ask-followup');
+      const question = btn?.dataset.q;
+      if (question) void send(question);
+    });
+    shufflePresets();
+    void mergeSuggestions();
+
+    function presetGrid(): HTMLElement | null {
+      return rail.querySelector<HTMLElement>('.ask-preset')?.parentElement ?? null;
+    }
+
+    function shufflePresets(): void {
+      const grid = presetGrid();
+      if (!grid) return;
+      const chips = Array.from(grid.querySelectorAll<HTMLButtonElement>('.ask-preset'));
+      for (let i = chips.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [chips[i], chips[j]] = [chips[j], chips[i]];
+      }
+      const count = config.presetCount || 6;
+      chips.forEach((chip, i) => {
+        chip.hidden = i >= count;
+        grid.appendChild(chip);
+      });
+    }
+
+    async function mergeSuggestions(): Promise<void> {
+      if (!config.suggestPath) return;
+      try {
+        const res = await fetch(`${config.suggestPath}?lang=${encodeURIComponent(config.lang)}`);
+        if (!res.ok) return;
+        const data = (await res.json()) as { questions?: unknown; stale?: unknown };
+        if (data.stale === true) {
+          // Fire-and-forget: this visitor's browser triggers the daily
+          // mine-and-judge round (Pages waitUntil drops background work).
+          void fetch(`${config.suggestPath}?lang=${encodeURIComponent(config.lang)}&refresh=1`).catch(() => undefined);
+        }
+        if (!Array.isArray(data.questions) || data.questions.length === 0) return;
+        const grid = presetGrid();
+        if (!grid) return;
+        const existing = new Set(
+          Array.from(grid.querySelectorAll<HTMLButtonElement>('.ask-preset')).map((c) => (c.dataset.q || '').trim())
+        );
+        const template = grid.querySelector<HTMLButtonElement>('.ask-preset');
+        let added = false;
+        for (const q of data.questions) {
+          if (typeof q !== 'string') continue;
+          const question = q.trim();
+          if (!question || existing.has(question)) continue;
+          const chip = document.createElement('button');
+          chip.type = 'button';
+          chip.className = template ? template.className : 'ask-preset';
+          chip.dataset.q = question;
+          // textContent only — user-authored text must never become HTML.
+          chip.textContent = question;
+          chip.hidden = true;
+          grid.appendChild(chip);
+          added = true;
+        }
+        if (added && state.messages.length === 0) shufflePresets();
+      } catch {
+        // Suggestions are optional; the static pool is already rendered.
+      }
+    }
+
+    function resetConversation(): void {
+      state.messages = [];
+      state.followups = [];
+      state.sessionId = crypto.randomUUID();
+      thread.innerHTML = '';
+      renderFollowups();
+    }
+
+    // Split a raw model answer into the visible body and follow-up chips.
+    function splitAnswer(text: string): { body: string; followups: string[] } {
+      const idx = text.indexOf(FOLLOWUP_MARKER);
+      if (idx === -1) return { body: text, followups: [] };
+      const body = text
+        .slice(0, idx)
+        .replace(/\n[-*_]{3,}\s*$/, '')
+        .trimEnd();
+      const followups = text
+        .slice(idx + FOLLOWUP_MARKER.length)
+        .split('\n')
+        .map((line) => line.replace(/^\s*(?:[-*•]|\d+[.)、])?\s*/, '').trim())
+        .filter((line) => line.length > 0)
+        .slice(0, 3);
+      return { body, followups };
+    }
+
+    // While streaming, also hide a partially-arrived marker at the tail so
+    // "===FOLL" never flashes as answer text.
+    function visibleBody(text: string): string {
+      const { body } = splitAnswer(text);
+      if (body !== text) return body;
+      for (let k = FOLLOWUP_MARKER.length - 1; k > 0; k--) {
+        if (body.endsWith(FOLLOWUP_MARKER.slice(0, k))) return body.slice(0, body.length - k).trimEnd();
+      }
+      return body;
+    }
+
+    function renderFollowups(): void {
+      followupList.innerHTML = '';
+      const items = state.followups;
+      followupsWrap.hidden = items.length === 0 || state.messages.length === 0;
+      for (const question of items) {
+        const chip = document.createElement('button');
+        chip.type = 'button';
+        chip.className =
+          'ask-followup text-left text-sm px-4 py-3 rounded-lg border border-subtle bg-surface hover:border-primary hover:text-primary transition-colors leading-relaxed';
+        chip.dataset.q = question;
+        // textContent only — model output must never become HTML here.
+        chip.textContent = question;
+        followupList.appendChild(chip);
+      }
+    }
+
+    function renderMarkdown(target: HTMLElement, text: string): void {
+      const html = DOMPurify.sanitize(String(marked.parse(text, { async: false, gfm: true })));
+      target.innerHTML = html;
+      target.querySelectorAll<HTMLAnchorElement>('a').forEach((a) => {
+        const href = a.getAttribute('href') || '';
+        const external =
+          /^https?:\/\//.test(href) && !href.startsWith('https://sgai.md') && !href.startsWith(window.location.origin);
+        if (external) {
+          a.target = '_blank';
+          a.rel = 'noopener';
+        }
+      });
+    }
+
+    function addExchange(question: string): { exchange: HTMLElement; answer: HTMLElement; status: HTMLElement } {
+      const exchange = document.createElement('div');
+      exchange.className = 'space-y-4';
+
+      const userRow = document.createElement('div');
+      userRow.className = 'flex justify-end';
+      const userBubble = document.createElement('div');
+      userBubble.className =
+        'max-w-[85%] rounded-lg bg-primary/10 dark:bg-primary/20 px-4 py-3 text-sm text-gray-900 dark:text-gray-100 whitespace-pre-wrap leading-relaxed';
+      userBubble.textContent = question;
+      userRow.appendChild(userBubble);
+
+      const answerWrap = document.createElement('div');
+      const status = document.createElement('p');
+      status.className = 'text-xs text-gray-400 dark:text-gray-500 animate-pulse';
+      status.textContent = labels.thinking || '…';
+      const answer = document.createElement('div');
+      answer.className = 'ask-answer prose prose-sm dark:prose-invert max-w-none leading-relaxed';
+      answerWrap.appendChild(status);
+      answerWrap.appendChild(answer);
+
+      exchange.appendChild(userRow);
+      exchange.appendChild(answerWrap);
+      thread.appendChild(exchange);
+      exchange.scrollIntoView({ block: 'end', behavior: 'smooth' });
+      return { exchange, answer, status };
+    }
+
+    function renderAll(): void {
+      thread.innerHTML = '';
+      for (let i = 0; i < state.messages.length; i += 2) {
+        const question = state.messages[i];
+        const reply = state.messages[i + 1];
+        if (!question || question.role !== 'user') continue;
+        const { answer, status } = addExchange(question.content);
+        status.remove();
+        if (reply && reply.role === 'assistant') renderMarkdown(answer, reply.content);
+      }
+      renderFollowups();
+    }
+
+    function showError(
+      exchange: HTMLElement,
+      answer: HTMLElement,
+      status: HTMLElement,
+      message: string,
+      question: string
+    ): void {
+      status.remove();
+      answer.classList.remove('prose', 'prose-sm', 'dark:prose-invert');
+      answer.innerHTML = '';
+      const note = document.createElement('p');
+      note.className = 'text-sm text-gray-600 dark:text-gray-400';
+      note.textContent = message;
+      const retry = document.createElement('button');
+      retry.type = 'button';
+      retry.className = 'mt-2 text-sm font-medium text-primary hover:underline underline-offset-4';
+      retry.textContent = labels.retry || 'Retry';
+      retry.addEventListener('click', () => {
+        exchange.remove();
+        void send(question);
+      });
+      answer.appendChild(note);
+      answer.appendChild(retry);
+    }
+
+    // --- Turnstile (only active when a site key is configured) ---
+    let turnstileWidgetId: string | null = null;
+    let turnstileResolve: ((token: string) => void) | null = null;
+
+    function loadTurnstileScript(): Promise<TurnstileApi | null> {
+      const existing = (window as unknown as { turnstile?: TurnstileApi }).turnstile;
+      if (existing) return Promise.resolve(existing);
+      return new Promise((resolve) => {
+        const s = document.createElement('script');
+        s.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';
+        s.async = true;
+        s.onload = () => resolve((window as unknown as { turnstile?: TurnstileApi }).turnstile || null);
+        s.onerror = () => resolve(null);
+        document.head.appendChild(s);
+      });
+    }
+
+    async function getTurnstileToken(): Promise<string> {
+      if (!config.turnstileSiteKey) return '';
+      const turnstile = await loadTurnstileScript();
+      if (!turnstile) return '';
+      if (turnstileWidgetId === null) {
+        const host = document.createElement('div');
+        host.style.display = 'none';
+        document.body.appendChild(host);
+        turnstileWidgetId = turnstile.render(host, {
+          sitekey: config.turnstileSiteKey,
+          size: 'invisible',
+          callback: (token: string) => {
+            if (turnstileResolve) turnstileResolve(token);
+          },
+        });
+      }
+      return new Promise((resolve) => {
+        turnstileResolve = resolve;
+        turnstile.reset(turnstileWidgetId as string);
+        turnstile.execute(turnstileWidgetId as string);
+        setTimeout(() => resolve(''), 15000);
+      });
+    }
+
+    function errorMessageFor(code: string | undefined): string {
+      if (code === 'quota_exceeded' || code === 'global_quota_exceeded')
+        return labels.quotaExceeded || 'Daily limit reached.';
+      if (code === 'unavailable') return labels.errorUnavailable || 'Not available yet.';
+      return labels.errorGeneric || 'Something went wrong.';
+    }
+
+    async function send(question: string): Promise<void> {
+      if (busy) return;
+      busy = true;
+      sendBtn.disabled = true;
+      input.value = '';
+      state.followups = [];
+      renderFollowups();
+
+      const history = state.messages.slice(-12);
+      const { exchange, answer, status } = addExchange(question);
+      let streamed = '';
+
+      try {
+        const turnstileToken = await getTurnstileToken();
+        const res = await fetch(config.apiPath, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            question,
+            history,
+            lang: config.lang,
+            sessionId: state.sessionId,
+            turnstileToken,
+          }),
+        });
+
+        if (!res.ok || !res.body) {
+          let code: string | undefined;
+          try {
+            const payload = await res.json();
+            code = payload?.error?.code;
+          } catch {
+            code = undefined;
+          }
+          showError(exchange, answer, status, errorMessageFor(code), question);
+          if (code === 'quota_exceeded' || code === 'global_quota_exceeded') {
+            quotaEl.textContent = (labels.quotaLeft || '{n}').replace('{n}', '0');
+          }
+          return;
+        }
+
+        const reader = res.body.getReader();
+        const decoder = new TextDecoder();
+        let buffer = '';
+        let failed = false;
+
+        const handleEvent = (raw: string): void => {
+          let event = '';
+          let data = '';
+          for (const line of raw.split('\n')) {
+            if (line.startsWith('event:')) event = line.slice(6).trim();
+            else if (line.startsWith('data:')) data += line.slice(5).trim();
+          }
+          if (!event) return;
+          if (event === 'meta') {
+            try {
+              const meta = JSON.parse(data);
+              if (typeof meta.remaining === 'number') {
+                quotaEl.textContent = (labels.quotaLeft || '{n}').replace('{n}', String(meta.remaining));
+              }
+            } catch {
+              // Ignore malformed meta.
+            }
+          } else if (event === 'delta') {
+            try {
+              const delta = JSON.parse(data);
+              if (typeof delta.text === 'string') {
+                if (!streamed) status.remove();
+                streamed += delta.text;
+                renderMarkdown(answer, visibleBody(streamed));
+              }
+            } catch {
+              // Ignore malformed delta.
+            }
+          } else if (event === 'error') {
+            failed = true;
+            showError(exchange, answer, status, errorMessageFor('upstream'), question);
+          }
+        };
+
+        for (;;) {
+          const { done, value } = await reader.read();
+          if (done) break;
+          buffer += decoder.decode(value, { stream: true });
+          let sep: number;
+          while ((sep = buffer.indexOf('\n\n')) !== -1) {
+            handleEvent(buffer.slice(0, sep));
+            buffer = buffer.slice(sep + 2);
+          }
+        }
+
+        if (failed || !streamed.trim()) {
+          if (!failed) showError(exchange, answer, status, errorMessageFor(undefined), question);
+          return;
+        }
+
+        const { body: answerBody, followups } = splitAnswer(streamed);
+        renderMarkdown(answer, answerBody);
+        state.messages.push({ role: 'user', content: question });
+        state.messages.push({ role: 'assistant', content: answerBody });
+        state.followups = followups;
+        renderFollowups();
+        // Rotate the rail so every answer surfaces a fresh set of ideas.
+        shufflePresets();
+      } catch {
+        showError(exchange, answer, status, errorMessageFor(undefined), question);
+      } finally {
+        busy = false;
+        sendBtn.disabled = false;
+      }
+    }
+  }
+</script>

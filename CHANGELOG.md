@@ -4,6 +4,88 @@
 
 ---
 
+## 0.25.5 — 2026-08-20
+
+### 新增长文：新加坡管 AI 的部门有哪些
+
+- `singapore-ai-agencies-map` 五语同步（zh / en / ja / ko / zh-tw）。按「拍板、定规矩、出钱、供人、自己先用、行业落地、国防内政、对外」八段梳理 40+ 部委与法定机构，每个数字带来源。
+- **翻译术语表扩容**（[glossary.json](scripts/evals/translation/glossary.json)）：原 `institutions` 只有 7 条，本文涉及的机构几乎全部未收录，`translate-post` 因此把 MinLaw 译成 Attorney-General's Chambers、DSO 译成 Defence Science and Technology Research Institute、JTC 译成 Jurong Group、HTX 全称也错。新增 40 条机构词条（en/ja/ko 三语），并给原有 7 条补上此前完全缺失的 `ko`（loader 支持 ko，但表里一条都没有，韩文翻译等于无术语约束）。
+- ja / ko 译文改为直接撰写：`translate-post` 对本文反复触发 `callLlm: timeout after 120000ms` 并逐层对半拆批，单语种跑逾 30 分钟未完；且其产出的机构名仍需逐条人工校正。en 译文保留脚本产出并做了 19 处专有名词修正。
+
+## 0.25.4 — 2026-08-20
+
+### 数据订正：AISI 与 CSA Agentic AI 增补稿
+
+- **AISI 记录去掉无源数字**（[policies.ts](src/data/policies.ts) `singapore-ai-safety-institute`）：原文写「2024 年成立，年度预算 S$10M」「红队评估、对齐研究、可追溯性测试三类核心研究」，均无官方来源。按 [IMDA 2024-05-22 factsheet](https://www.imda.gov.sg/resources/press-releases-factsheets-and-speeches/factsheets/2024/digital-trust-centre) 订正为：2024-05-22 IMDA 将 DTC 指定为 AISI；DTC 2022 年 6 月由 IMDA 委托 NTU 设立、Lam Kwok Yen 教授领衔、**初始拨款 S$5,000 万**；官方四个初始研究方向为测试与评估、安全的模型设计与开发部署、内容保障、治理与政策。`sourceUrl` 从 `sgaisi.sg` 改指 IMDA factsheet（原 `sgaisi.sg` 保留在 `sourceOrgUrl`）。DTC/NTU 承载 + IMDA 主管这一分工原记录已正确，未改。
+- **CSA Securing Agentic AI 增补稿补齐两段时间线**（[policies.ts](src/data/policies.ts)、[legal-ai.ts](src/data/legal-ai.ts)）：原文只写「增补稿（2025）」，漏了定稿。实为草案 2025-10-22 公开征求意见（截止 2025-12-31）、定稿 **2026-06-17** 发布。
+- **新增独立政策记录** `securing-agentic-ai-addendum`（2026-06，四语齐全）：此前政策库只在 CSA 2024 指南正文里带一句，没有独立条目。
+- **HTX 归属显式化**（[levers.ts](src/data/levers.ts)）：原数据只写 `ministry: 'HTX'` 这个裸缩写，没有任何字段标出它的上级部门，站内 AI 问答因此把 HTX 说成国防部（MINDEF）下属。HTX 是内政科技局，归**内政部 MHA**。4 条 HTX lever 的 `ministry*` 补上 MHA，两个板块标题（「家国安全」「家国安全侧算力」）也点明 MHA。数据本身没有把 HTX 挂到 MINDEF 的地方——这是缺上级字段导致的生成侧误判，补字段是为了堵住这个口子。
+- **README 政策数 48 → 49**：新增政策记录后 `eval:facade-stats`（CI 门，不在本地 `npm run check` 里）报 drift。
+- **修掉 CHANGELOG 里的残留 merge marker**（`||||||| 027ec01`，0.24.1 与 0.24.0 之间）。
+
+## 0.25.3 — 2026-08-14
+
+- **/videos 分类板块按时间排序**：分类板块按各自最新视频日期倒序排列（最近有新视频的分类排前面），顶部分类筛选按钮同步同一顺序；组内原有按日期倒序不变（[VideosIndex.astro](src/components/videos/VideosIndex.astro)）。
+
+## 0.24.1 — 2026-08-14
+
+### P1/P2 迭代批（docs/20260814-stakeholder-iteration-plan.md）
+
+- **P1-1 资本与基础设施视图**：新数据文件 [`src/data/ai-capital.ts`](src/data/ai-capital.ts)（9 条带日期/金额/来源的资本记录，实体名复用 ecosystem id、数据值零 CJK）；`/ecosystem` 页新增资本节（[`CapitalSection.astro`](src/components/data/CapitalSection.astro)）；tracker 投资维新增渲染期派生的「资本放大倍数」行（S$1→S$13，公式与口径 caveat 显式呈现）；registry editorial 登记。
+- **P1-2 Missions 垂直 hub**：新增 `advanced-manufacturing`、`connectivity` 两个 topic（四语）；四条 mission 垂直线跨域策展（2 场辩论 + NAIS 政策 + 预算演讲视频 v006 + 两篇长文）；首页新增 MissionsRail。
+- **P1-3 AISG 支柱长文**：`/aisg-explained/` 五语同步，按 writing.md 写作规范（无加粗/无对比抬杠/短段），MANUAL_UPDATES longform 条目。不配专属封面图——封面只增困惑、无增量信息，按反馈移除，回落站点默认 OG。
+- **P1-4 newsletter**：月报生成脚本 [`scripts/refresh/newsletter/generate-monthly.ts`](scripts/refresh/newsletter/generate-monthly.ts)（deriveUpdates 驱动，站方判断段手写）+ 零 JS Buttondown 订阅表单（填 form id 激活）+ /updates 页接入。
+- **P2-1 jobs-index 行业切片**：METHODOLOGY_VERSION → 2，新增 SectorId 分类（公司名优先规则 + LLM 兜底）；sector 序列自 2026-09 快照起（v1 8 月快照冻结不回溯）。
+- **P2-3 旗舰项目完备性校验**：verify-graph 新增 FLAGSHIP_PROGRAMS 断言（AIAP/SEA-LION/AI Verify/TagUI/100E/NOAI 必有生态实体）；补建 NOAI 实体（含四语深字段）。
+- **P2-4 数据导出**：`/data/debates.json|csv`、`/data/policies.json`、`/data/tracker.json` 静态导出端点（与页面渲染同源）。
+- **P2-5 sitemap lastmod**：build 链新增 [`scripts/build-lastmod.ts`](scripts/build-lastmod.ts) 预构建步骤，serialize 钩子按 addedAt 输出 `<lastmod>`（195 条路径映射）。
+- **P2-6 OG 动态图**：新脚本 [`scripts/generate-og-images.ts`](scripts/generate-og-images.ts) 生成首页/六维共 7 张 OG 图（`src/assets/images/og/`），首页与六维详情页已接线。两篇长文（年度盘点 / AISG）不配专属图——封面只增困惑、无增量信息，回落站点默认 OG。
+- **P2-7 议员 stub 转正**：核实为已实现功能（isLowSignalPerson 两档阈值 + parliamentary-record 派生），无需新工单。
+- **P2-2**：待三份厂商报告原文的行业表，另开 PR。
+
+## 0.24.0 — 2026-08-14
+
+### 新增：年度全景盘点长文（State of Singapore AI 2026）
+
+- 第一份年度合成层内容：把执行追踪六个维度（投资 / 人才 / 算力 / 采用 / 研究 / 治理）合成一页，五语同步发布（zh / en / ja / ko / zh-tw）。
+- 全文不新增任何数字，每个数字带自己的数据截至日期与来源；文末附数据与方法声明。
+- 导航「数据」组新增「年度报告 2026」入口；首页最近更新自动露出（MANUAL_UPDATES longform 条目）。
+- 写作纪律：按 writing.md 去 AI 味——无对比抬杠句式（不是…而是）、无结构报幕、无读者指令，金句密度约每千字一句。
+
+### 新增：引用此条（CiteBlock）
+
+- 新组件 [`src/components/common/CiteBlock.astro`](src/components/common/CiteBlock.astro)：五类详情页（辩论 / 政策 / 视频 / 生态实体 / 追踪维度）渲染建议引文 + 检索日期 + canonical URL + 复制按钮。
+- 引文品牌串走 `t(lang, 'siteName')` 本地化，避免在 ja/ko/zh/zh-tw 页面注入英文句（dist 层 EN-sentence ratchet 验证通过）。
+- 修复 OECD 生态实体的 ja/ko 名称 EN 占位（`OECD AI 政策観測所` / `OECD AI 정책 관측소`）。
+
+### 新增：渲染层 as-of 时间戳（tracker）
+
+- `MetricRow.asOfDate` / `QuantifiedDimension.headlineAsOf` / 定性维 `asOfDate` 三个可选字段，六个维度全部带「数据截至」日期（依据各自头条数字的最新可溯源证据，注释写明出处）。
+- 仪表盘卡片与详情页头条卡、指标表均渲染截至 chip；AI 职位指数行自动带快照日。
+- [`scripts/evals/stale-stats/check.ts`](scripts/evals/stale-stats/check.ts) 新增 as-of 告警通道：超过 365 天的 `headlineAsOf`/`asOfDate` 在周巡检中输出 WARN（不 fail，防止诚实的老数字被硬门误杀）；新增 3 个单元测试。
+- tracker 文件 `dataDate` 随本次编辑刷新为 2026-08-14。
+
+### 文档
+
+- 新增 [`docs/20260814-stakeholder-iteration-plan.md`](docs/20260814-stakeholder-iteration-plan.md)：以新加坡总理 / EDB / AI 管理者三方视角收敛的迭代规划（P0–P2 路线图 + 执行状态盘点 + 维护协议）。
+- 20260707 项目审计顶部加后继规划指针，遗留行动项移交表闭环。
+
+## 0.23.5 — 2026-08-13
+
+### 新增：近期 AI 生态与资本动态
+
+- 新增 Theseus Infrastructure 生态实体：记录 Anthropic、Macquarie Asset Management 与 GIC 设立 AI 数据中心投资平台，以及 GIC 通过主权资本持有海外 AI 算力资产的战略意义。
+- 新增 Razer 产业伙伴实体：补录新加坡 AI Centre of Excellence、Razer–NUS AI Research Lab 与 Gaming Artificial Narrow Intelligence（GANI）研究方向。
+
+### 更新：NUS、OpenAI 与 GIC
+
+- 更新 NUS 与 OpenAI 生态实体：加入 2026-08-11 全校 ChatGPT Edu 合作、THE1008 本科新生必修课、AI Sense Maker，以及 NUS × Razer 联合实验室里程碑和来源。
+- 将人才杠杆中的高校 AI 课改改为可验证的 NUS 全校覆盖与新生必修范围。
+- 更新 GIC 投资者记录，加入 Theseus Infrastructure 的职责分工；中英日韩四语同步。
+- 修正国会辩论数据文件头的过期统计：总数由 179 条更新为 187 条，数据更新时间更新为 2026-07-20；移除列表组件中会继续漂移的硬编码数量注释。
+- 图谱验证新增生态实体 ID 唯一性检查，避免重复 ID 静默生成冲突的详情页路由。
+- 将 Theseus 的实体类型修正为平台；依据 NUS 来源，将 Razer 新加坡 AI Centre of Excellence 的规模改为现有 100+ 人，而非未来计划。
+
 ## 0.18.1 — 2026-05-26
 
 ### 加固：繁体中文渲染的系统性防御

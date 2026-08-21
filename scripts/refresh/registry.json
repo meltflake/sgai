@@ -293,6 +293,11 @@
       "file": "src/data/frontpage.ts",
       "reason": "首页头条编辑指针（FEATURED），只引用既有 record 的 id，不是内容 record，无 addedAt/i18n 字段",
       "owner": "editorial"
+    },
+    {
+      "file": "src/data/ai-capital.ts",
+      "reason": "资本与基础设施台账（P1-1）：从 benchmarking 散文与生态实体迁移的带日期/金额/来源记录，事件级手工追加；渲染于 /ecosystem 资本节与 tracker 投资维派生行",
+      "owner": "editorial"
     }
   ]
 }

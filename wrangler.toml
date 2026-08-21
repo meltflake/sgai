@@ -1,0 +1,27 @@
+# Cloudflare Pages config-as-code for the GitHub-Actions deploy chain
+# (deploy.yaml → `wrangler pages deploy dist --project-name=sgai-ci`).
+# Bindings declared here attach to every NEW deployment of the sgai-ci
+# project automatically — no dashboard clicking, no config drift.
+#
+# Secrets are NOT stored here. Set them once per project:
+#   npx wrangler pages secret put DEEPSEEK_API_KEY --project-name=sgai-ci
+#   openssl rand -hex 32 | npx wrangler pages secret put QA_HMAC_SECRET --project-name=sgai-ci
+#
+# The pinned compatibility_date also fixes local `npm run dev:api`
+# (wrangler defaults to today's date, which the bundled workerd may not
+# support yet).
+
+name = "sgai-ci"
+pages_build_output_dir = "dist"
+compatibility_date = "2026-05-01"
+
+# Ask-AI quota counters + first-turn answer cache (docs/20260814-ask-ai.md)
+[[kv_namespaces]]
+binding = "QA_KV"
+id = "1098d30fe82744acb6f7e351746c332d"
+
+# Ask-AI per-turn usage log
+[[d1_databases]]
+binding = "QA_DB"
+database_name = "sgai-qa"
+database_id = "0f01dca8-c6e1-4630-a172-5b3b78ccfb3e"

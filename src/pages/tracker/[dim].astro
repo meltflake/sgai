@@ -3,6 +3,7 @@ import type { GetStaticPaths } from 'astro';
 import { Icon } from 'astro-icon/components';
 import Layout from '~/layouts/PageLayout.astro';
 import SameTopicRail from '~/components/data/SameTopicRail.astro';
+import CiteBlock from '~/components/common/CiteBlock.astro';
 import { dimensions, dataDate, type Dimension, type MetricRow } from '~/data/tracker';
 import { getLangFromPath, localizedHref, pickLocalized, pickLocalizedOwn, t, type Lang } from '~/i18n';
 import { synthesizeMetaDescription } from '~/utils/seo-meta';
@@ -34,6 +35,10 @@ const headline = dim.kind === 'quantified' ? (pickLocalized<string>(dim, 'headli
 const benchmark = dim.kind === 'quantified' ? (pickLocalized<string>(dim, 'benchmark', lang) ?? dim.benchmark) : null;
 const badge = dim.kind === 'qualitative' ? (pickLocalized<string>(dim, 'badge', lang) ?? dim.badge) : null;
 
+// P0-2: per-dimension currency stamp (same semantics as DimensionCard).
+const asOfStamp =
+  dim.kind === 'quantified' ? (dim.headlineAsOf ?? null) : dim.kind === 'qualitative' ? (dim.asOfDate ?? null) : null;
+
 const progressDesc =
   dim.kind === 'quantified' && dim.progress
     ? (pickLocalized<string>(dim.progress, 'description', lang) ?? dim.progress.description ?? null)
@@ -60,6 +65,7 @@ const metaDescription =
 const metadata = {
   title: seoTitle ? seoTitle : `${title} · ${t(lang, 'trackerPageTitle')}`,
   description: metaDescription,
+  openGraph: { images: [{ url: `~/assets/images/og/${dim.id}.png`, width: 1200, height: 630 }] },
 };
 
 // Pre-resolve ranking anchors to avoid pickLocalized<string>??-in-JSX TypeScript issues
@@ -81,6 +87,7 @@ interface ResolvedMetric {
   source: string;
   cat: string;
   sourceUrl: string;
+  asOfDate: string | null;
 }
 const resolvedMetrics: ResolvedMetric[] = dim.metrics.map((row: MetricRow) => ({
   name: pickLocalized<string>(row, 'name', lang) ?? row.name,
@@ -88,6 +95,7 @@ const resolvedMetrics: ResolvedMetric[] = dim.metrics.map((row: MetricRow) => ({
   source: pickLocalized<string>(row, 'source', lang) ?? row.source,
   cat: pickLocalized<string>(row, 'category', lang) ?? row.category ?? '',
   sourceUrl: row.sourceUrl,
+  asOfDate: row.asOfDate ?? null,
 }));
 ---
 
@@ -117,6 +125,9 @@ const resolvedMetrics: ResolvedMetric[] = dim.metrics.map((row: MetricRow) => ({
                 {t(lang, 'trackerDetailCardHeadline')}
               </div>
               <div class="t-stat text-primary">{headline}</div>
+              {asOfStamp && (
+                <div class="text-[11px] text-muted mt-1">{t(lang, 'trackerAsOf').replace('{date}', asOfStamp)}</div>
+              )}
             </div>
             <div class="bg-surface border border-subtle rounded-lg p-4">
               <div class="text-xs uppercase tracking-wider text-gray-500 mb-1">
@@ -132,6 +143,9 @@ const resolvedMetrics: ResolvedMetric[] = dim.metrics.map((row: MetricRow) => ({
           <div class="bg-surface border border-subtle rounded-lg p-4 md:col-span-2">
             <div class="text-xs uppercase tracking-wider text-gray-500 mb-1">{t(lang, 'trackerDetailCardBadge')}</div>
             <div class="font-semibold">{badge}</div>
+            {asOfStamp && (
+              <div class="text-[11px] text-muted mt-1">{t(lang, 'trackerAsOf').replace('{date}', asOfStamp)}</div>
+            )}
           </div>
         )
       }
@@ -240,6 +254,11 @@ const resolvedMetrics: ResolvedMetric[] = dim.metrics.map((row: MetricRow) => ({
                     ) : (
                       row.source
                     )}
+                    {row.asOfDate && (
+                      <span class="block text-[11px] mt-0.5">
+                        {t(lang, 'trackerAsOf').replace('{date}', row.asOfDate)}
+                      </span>
+                    )}
                   </td>
                 </tr>
               ))
@@ -259,5 +278,6 @@ const resolvedMetrics: ResolvedMetric[] = dim.metrics.map((row: MetricRow) => ({
       </a>
     </nav>
   </article>
+  <CiteBlock title={title} anchorId={`dim-${dim.id}`} />
   <SameTopicRail lang={lang} kind="tracker" id={dim.id} class="max-w-5xl mx-auto px-4 sm:px-6 pb-16 mt-4" />
 </Layout>

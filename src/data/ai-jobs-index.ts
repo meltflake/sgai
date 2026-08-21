@@ -34,12 +34,20 @@
 
 import type { MetricRow } from '~/data/tracker';
 
-export const METHODOLOGY_VERSION = 1;
+export const METHODOLOGY_VERSION = 2;
+// v2 (2026-08): adds sector classification (sectors[] on snapshots). The
+// frozen v1 snapshot (2026-08) predates sectors, so the sector series
+// starts with the 2026-09 capture; role/salary fields remain comparable
+// across v1→v2 — only sectors are new.
 
 /** Frozen query basket — changing this breaks series comparability. */
 export const QUERY_BASKET = ['artificial intelligence', 'machine learning', 'LLM', 'AI engineer'] as const;
 
 export type RoleTypeId = 'engineering' | 'research' | 'data' | 'product' | 'gtm' | 'ops-other';
+
+/** Closed sector vocabulary (v2). Company-name keyword rules first, job
+ *  title second; leftovers go to one batched LLM call. */
+export type SectorId = 'finance' | 'health' | 'manufacturing' | 'logistics' | 'tech' | 'gov-edu' | 'other';
 
 export interface JobsIndexSnapshot {
   /** 'YYYY-MM' — the record id; one snapshot per calendar month. */
@@ -63,6 +71,8 @@ export interface JobsIndexSnapshot {
   salaryMidpointP75: number | null;
   topEmployers: Array<{ employer: string; openings: number }>;
   roleTypes: Array<{ roleType: RoleTypeId; count: number }>;
+  /** v2: sector distribution of openings. Absent on the frozen v1 snapshot. */
+  sectors?: Array<{ sector: SectorId; count: number }>;
   /** Human-visitable search URL (url-health checked). */
   sourceUrl: string;
 }
@@ -162,5 +172,7 @@ export function jobsIndexMetricRow(): MetricRow | null {
     sourceJa: `MyCareersFuture、${s.month} スナップショット（当サイト集計）`,
     sourceKo: `MyCareersFuture, ${s.month} 스냅샷(사이트 집계)`,
     sourceUrl: s.sourceUrl,
+    // Row-level currency stamp (P0-2): the sweep date, not the month label.
+    asOfDate: s.capturedAt,
   };
 }

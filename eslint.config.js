@@ -54,6 +54,15 @@ export default [
     },
   },
   {
-    ignores: ['dist', 'node_modules', '.github', 'types.generated.d.ts', '.astro', '.claude', 'scripts/out'],
+    ignores: [
+      'dist',
+      'node_modules',
+      '.github',
+      'types.generated.d.ts',
+      '.astro',
+      '.claude',
+      '.wrangler',
+      'scripts/out',
+    ],
   },
 ];
