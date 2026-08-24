@@ -48,6 +48,7 @@ import { fileURLToPath } from 'node:url';
 import { callLlmJson, ensureClaudeAvailable } from '../../lib/llm.ts';
 import { autoCommit, pushAndOpenPR, buildPRBody } from '../../lib/auto-commit.ts';
 import { findUnpairedFields } from '../../lib/i18n-pair.ts';
+import { gatherRemoteVideoFacts } from './remote-truth.ts';
 
 // ── Paths ────────────────────────────────────────────────────────────────
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -509,24 +510,33 @@ async function main() {
   }
   console.log();
 
-  // Allocate IDs starting from current max + 1.
+  // Allocate IDs starting from current max + 1 — where "current" unions
+  // the local videos.ts with origin/main AND every open
+  // data-refresh/videos/* PR branch. A stale local main or an unmerged
+  // sibling PR must never cause a re-emit or an id collision again
+  // (2026-08-16/17: three PRs emitted the same video as v081). Remote
+  // reads are fail-open — worst case degrades to local-only behaviour.
   if (!existsSync(VIDEOS_TS)) {
     throw new Error(`videos.ts not found at ${VIDEOS_TS}`);
   }
   const videosContent = readFileSync(VIDEOS_TS, 'utf8');
-  const maxId = findMaxId(videosContent);
-  console.log(`🔢 Current max video id in videos.ts: v${String(maxId).padStart(3, '0')}`);
+  const remote = gatherRemoteVideoFacts();
+  for (const note of remote.notes) console.log(`  🌐 ${note}`);
+  const maxId = Math.max(findMaxId(videosContent), remote.facts.maxId);
+  console.log(`🔢 Max video id across local + remote: v${String(maxId).padStart(3, '0')}`);
   console.log(`   New entries will start at v${String(maxId + 1).padStart(3, '0')}\n`);
 
-  // Dedup: skip any candidate whose youtube id is already present.
+  // Dedup: skip any candidate whose youtube id is already present
+  // locally, on origin/main, or in an open videos PR.
   const existingIds = new Set(
     Array.from(videosContent.matchAll(/youtubeUrl:\s*'https?:\/\/(?:www\.)?youtube\.com\/watch\?v=([\w-]+)'/g)).map(
       (m) => m[1]
     )
   );
+  for (const id of remote.facts.youtubeIds) existingIds.add(id);
   const fresh = picked.filter((c) => {
     if (existingIds.has(c.videoId)) {
-      console.warn(`  ⏭  Skip ${c.videoId} — already in videos.ts`);
+      console.warn(`  ⏭  Skip ${c.videoId} — already in videos.ts, origin/main, or an open PR`);
       return false;
     }
     return true;

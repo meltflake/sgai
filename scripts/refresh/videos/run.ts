@@ -46,6 +46,7 @@ import { spawnSync } from 'node:child_process';
 
 import { loadState, saveState, getDomainState, setDomainState } from '../../lib/state.ts';
 import { ensureClaudeAuthed } from '../../lib/llm.ts';
+import { gatherRemoteVideoFacts } from './remote-truth.ts';
 
 const ROOT = resolve('.');
 const SCAN_SCRIPT = resolve('scripts/videos/01_scan_channels.py');
@@ -188,7 +189,15 @@ async function main(): Promise<void> {
   const emittedIds = new Set((videosState.video_ids || []).filter((id) => !existingIds.has(id)));
 
   const candidates = readCandidates();
-  const pending = candidates.filter((c) => !existingIds.has(c.videoId) && !emittedIds.has(c.videoId));
+  // Cross-checkout dedupe: a candidate already on origin/main or in an
+  // open videos PR must not re-enter the batch (emit re-checks this as
+  // the hard gate; filtering here just saves the LLM spend). Fail-open.
+  const remote = gatherRemoteVideoFacts();
+  for (const note of remote.notes) process.stdout.write(`    🌐 ${note}\n`);
+  const pending = candidates.filter(
+    (c) =>
+      !existingIds.has(c.videoId) && !emittedIds.has(c.videoId) && !remote.facts.youtubeIds.has(c.videoId)
+  );
   const batch = pending.slice(0, flags.limit);
 
   process.stdout.write(
