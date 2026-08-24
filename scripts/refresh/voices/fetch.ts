@@ -60,7 +60,11 @@ const SKIP_SUBSTRINGS = [
   'This article has been migrated from an earlier version of the site',
 ];
 
-const NOISE_LINES = new Set(['***', '.  .  .  .  .', '. . . . .', 'Topics', 'Summary']);
+const NOISE_LINES = new Set(['***', '.  .  .  .  .', '. . . . .', 'Topics', 'Summary', 'News Speeches']);
+
+// MOE renders a "Published on: 01 Apr 2026" line as a body <p>; it is a
+// date marker, not speech text.
+const PUBLISHED_ON_RE = /^Published on:/i;
 
 function sleep(ms: number): Promise<void> {
   return new Promise((r) => setTimeout(r, ms));
@@ -104,11 +108,15 @@ export function extractH1(html: string): string {
 }
 
 export function extractDate(html: string): string | null {
-  // MAS's explicit "Published Date: 19 May 2026" marker beats every
-  // heuristic below (the inline-date fallback could otherwise pick up a
-  // related-article date). Decode &#160; (NBSP entities) first.
+  // Explicit publication markers beat every heuristic below (the
+  // inline-date fallback could otherwise pick up an unrelated date —
+  // MOE pages embed JSON notices like "Sunday, 16 August 2026" that the
+  // whole-doc scan hit first): MAS renders "Published Date: 19 May
+  // 2026", MOE renders "Published on: <!-- -->01 Apr 2026" (hydration
+  // comment between marker and date). Allow comments/tags/NBSP entities
+  // between the marker and the date.
   const published = html.match(
-    /Published Date:\s*((?:&#160;|&nbsp;|\s)*\d{1,2}(?:&#160;|&nbsp;|\s)+\w+(?:&#160;|&nbsp;|\s)+\d{4})/i
+    /Published (?:Date|on):(?:<!--.*?-->|<[^>]*>|&#160;|&nbsp;|\s)*(\d{1,2}(?:&#160;|&nbsp;|\s)+\w+(?:&#160;|&nbsp;|\s)+\d{4})/i
   );
   if (published) {
     const cleaned = published[1].replace(/&#160;|&nbsp;/g, ' ').replace(/\s+/g, ' ').trim();
@@ -179,6 +187,7 @@ function extractPs(chunk: string, opts: ExtractOptions = {}): string[] {
     if (NOISE_LINES.has(text)) continue;
     if (SKIP_SUBSTRINGS.some((s) => text.includes(s))) continue;
     if (MDDI_HEADER_RE.test(text)) continue;
+    if (PUBLISHED_ON_RE.test(text)) continue;
     if (/^\d{1,2}\s+\w+\s+\d{4}$/.test(text)) continue;
     // PMO byline: a short paragraph that is verbatim part of the page
     // title ("DPM Gan Kim Yong"). Length-capped so a genuine short body

@@ -118,6 +118,30 @@ test('MAS: packed numbered points and o-bullets split into one paragraph each', 
   ]);
 });
 
+const MOE_HTML = `<!doctype html><html><head>
+<meta property="og:title" content="Speech by Minister for Education Mr Desmond Lee at the ST Education Forum" />
+<title>MOE speech</title></head><body>
+<main>
+<p>Published on: <!-- -->01 Apr 2026</p>
+<p>News Speeches</p>
+<p>Ms Karamjit Kaur, Associate Editor, The Straits Times My fellow panellists</p>
+<p>1. Thank you for having me at this forum on AI in higher education.</p>
+<p>2. AI is reshaping how our universities teach and assess.</p>
+</main>
+<script>{"notice":"maintenance on Sunday, 16 August 2026, from 12am"}</script>
+</body></html>`;
+
+test('MOE: "Published on:" line and "News Speeches" breadcrumb are dropped; date extracted', () => {
+  const ps = extractParagraphs(MOE_HTML, {
+    sourceUrl: 'https://www.moe.gov.sg/news/speeches/20260401-speech-desmond-lee',
+  });
+  assert.equal(ps.length, 3);
+  assert.match(ps[0], /^Ms Karamjit Kaur/);
+  assert.ok(!ps.some((p) => /^Published on:/i.test(p)), 'date marker leaked');
+  assert.ok(!ps.some((p) => p === 'News Speeches'), 'breadcrumb leaked');
+  assert.equal(extractDate(MOE_HTML), '2026-04-01');
+});
+
 test('MAS splitter: dates and decimals do not trigger false splits', () => {
   const p = ['3. In January 2026, growth hit 4.5 per cent. RBC 2. Our framework held.'];
   // "4.5" (decimal) and "RBC 2." (identifier) must not split; only true

@@ -126,5 +126,42 @@ test('ministryFromUrl maps registered domains and rejects others', () => {
   assert.equal(ministryFromUrl('https://www.mddi.gov.sg/newsroom/x/'), 'MDDI');
   assert.equal(ministryFromUrl('https://www.mas.gov.sg/news/speeches/2026/x'), 'MAS');
   assert.equal(ministryFromUrl('https://www.pmo.gov.sg/newsroom/x/'), 'PMO');
+  assert.equal(ministryFromUrl('https://www.moh.gov.sg/newsroom/x/'), 'MOH');
+  assert.equal(ministryFromUrl('https://www.moe.gov.sg/news/speeches/20260401-x'), 'MOE');
   assert.equal(ministryFromUrl('https://www.example.com/newsroom/x/'), null);
+});
+
+// ── PR-6 expansion (MOH + MOE) ─────────────────────────────────────────
+
+const mohSource = VOICES_SOURCES.find((s) => s.ministry === 'MOH')!;
+const moeSource = VOICES_SOURCES.find((s) => s.ministry === 'MOE')!;
+
+test('MOH: newsroom speech slugs admitted; ids sanitised (apostrophes/parens)', () => {
+  const url =
+    "https://www.moh.gov.sg/newsroom/voluntary-sterilization-(amendment)-bill-second-reading-closing-speech-by-the-minister-for-health-mr-gan-kim-yong/";
+  assert.equal(isSpeechUrlForSource(url, mohSource), true);
+  const id = speechIdForSource(url, mohSource)!;
+  assert.match(id, /^moh--/);
+  assert.match(id, /^[a-z0-9-]+$/, 'id must be route-safe');
+  assert.equal(id, speechIdFromUrl(url), 'lockstep with src speechIdFromUrl');
+});
+
+test("MOH: apostrophe slug (president's-address) sanitises identically on both sides", () => {
+  const url = "https://www.moh.gov.sg/newsroom/addenda-to-president's-address-caring-society/";
+  assert.equal(speechIdForSource(url, mohSource), speechIdFromUrl(url));
+});
+
+test('MOE: date-prefix path — every URL is a speech, year floor applies', () => {
+  const fresh =
+    'https://www.moe.gov.sg/news/speeches/20260401-speech-by-minister-for-education-mr-desmond-lee-at-the-st-education-forum';
+  assert.equal(isSpeechUrlForSource(fresh, moeSource), true);
+  assert.equal(
+    speechIdForSource(fresh, moeSource),
+    'moe--20260401-speech-by-minister-for-education-mr-desmond-lee-at-the-st-education-forum'
+  );
+  assert.equal(speechIdForSource(fresh, moeSource), speechIdFromUrl(fresh), 'lockstep');
+  const old = 'https://www.moe.gov.sg/news/speeches/20211127-speech-by-minister-chan-chun-sing';
+  assert.equal(isSpeechUrlForSource(old, moeSource), false, '2021 < minUrlYear must drop at scan');
+  const notSpeech = 'https://www.moe.gov.sg/news/press-releases/20260401-some-release';
+  assert.equal(isSpeechUrlForSource(notSpeech, moeSource), false);
 });
