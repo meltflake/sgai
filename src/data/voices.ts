@@ -47,7 +47,7 @@ export interface MddiSpeech {
   /** Publishing ministry/agency. Absent = MDDI (all pre-2026-08 records
    *  came from the MDDI newsroom; the array name stays mddiSpeeches for
    *  its 8 consumers). Values are display-safe Latin acronyms. */
-  ministry?: 'MDDI' | 'MAS' | 'PMO';
+  ministry?: 'MDDI' | 'MAS' | 'PMO' | 'MOH' | 'MOE';
 }
 
 // ── 关键人物 ─────────────────────────────────────────────────────────────────
@@ -2952,5 +2952,29 @@ export const mddiSpeeches: MddiSpeech[] = [
     eventKo: '「신뢰와 AI: 변화하는 세계를 항해하기」리더 대화',
     addedAt: '2026-08-10',
     ministry: 'PMO',
+  },
+  {
+    titleEn:
+      'Speech by Minister for Education Mr Desmond Lee at the Straits Times (ST) Education Forum "AI in Higher Education – Hype or Hope"',
+    title: '教育部长李智陞先生在海峡时报（ST）教育论坛「高等教育中的人工智能——炒作还是希望」的讲话',
+    titleJa:
+      '教育大臣デスモンド・リー氏によるStraits Times (ST) Education Forumでのスピーチ「高等教育におけるAI：期待か希望か」',
+    titleKo:
+      '교육부 장관 데스몬드 리의 스트레이츠 타임즈(ST) 교육 포럼 연설 「고등교육의 인공지능 - 과장인가, 희망인가」',
+    speaker: 'Desmond Lee',
+    speakerTitle: '教育部长',
+    speakerTitleJa: '教育相',
+    speakerTitleEn: 'Minister for Education',
+    speakerTitleKo: '교육부 장관',
+    date: '2026-04-01',
+    url: 'https://www.moe.gov.sg/news/speeches/20260401-speech-by-minister-for-education-mr-desmond-lee-at-the-straits-times-st-education-forum-ai-in-higher-education-hype-or-hope/',
+    eventEn:
+      'Education Mr Desmond Lee at the Straits Times (ST) Education Forum "AI in Higher Education – Hype or Hope"',
+    event: '教育 Mr Desmond Lee在《海峡时报》(ST)教育论坛「高等教育中的AI——炒作还是希望」',
+    eventJa:
+      '教育 デスモンド・リー氏がストレーツ・タイムズ（ST）教育フォーラム「高等教育におけるAI――ハイプか希望か」で',
+    eventKo: '교육 데스몬드 리 씨, 스트레이츠 타임즈(ST) 교육 포럼에서 「고등교육의 AI — 과대광고인가, 희망인가」',
+    addedAt: '2026-08-24',
+    ministry: 'MOE',
   },
 ];

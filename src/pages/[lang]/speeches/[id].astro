@@ -62,10 +62,12 @@ const sourceHost = new URL(speech.url).host.replace(/^www\./, '');
 const mddiSpeechLabel = (t(lang, 'mddiSpeechLabel') || 'MDDI Speech').replace('MDDI', ministry);
 const sourceLabel = (t(lang, 'mddiSourceLabel') || `Source on ${sourceHost}`).replace('MDDI', ministry);
 
-const PUBLISHERS: Record<'MDDI' | 'MAS' | 'PMO', { name: string; url: string }> = {
+const PUBLISHERS: Record<'MDDI' | 'MAS' | 'PMO' | 'MOH' | 'MOE', { name: string; url: string }> = {
   MDDI: { name: 'Ministry of Digital Development and Information', url: 'https://www.mddi.gov.sg/' },
   MAS: { name: 'Monetary Authority of Singapore', url: 'https://www.mas.gov.sg/' },
   PMO: { name: "Prime Minister's Office, Singapore", url: 'https://www.pmo.gov.sg/' },
+  MOH: { name: 'Ministry of Health, Singapore', url: 'https://www.moh.gov.sg/' },
+  MOE: { name: 'Ministry of Education, Singapore', url: 'https://www.moe.gov.sg/' },
 };
 
 const metadata = {

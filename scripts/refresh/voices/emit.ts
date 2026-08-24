@@ -39,6 +39,8 @@ const SOURCE_BY_MINISTRY = {
   MDDI: 'mddi-newsroom',
   MAS: 'mas-newsroom',
   PMO: 'pmo-newsroom',
+  MOH: 'moh-newsroom',
+  MOE: 'moe-newsroom',
 } as const;
 
 const VOICES_FILE = resolve('src/data/voices.ts');
