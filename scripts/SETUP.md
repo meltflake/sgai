@@ -74,6 +74,8 @@ chmod 600 ~/.config/sgai/gh-token
 - `gh auth logout` / 重新 `gh auth login` 后旧 token 会失效，重跑上面两行即可。
 - 校验：`python3 scripts/auto_update.py --status` 末行应显示 `gh token (cron): OK`；`bash scripts/doctor.sh` 的 §3 会用无 keychain 环境实测该 token。
 
+> 💡 **doctor 已挂 daily cron（2026-08-25 起）**：`scripts/doctor-cron.sh` 每天 07:50 跑（赶在 08:00 管线窗口前）。失败时发 macOS 通知（gh 挂了也能送达）+ 尽力开 gh issue，完整报告在 `scripts/logs/doctor.log`。gh token 过期是静默的，这个预检就是它的告警器——2026-07-07 / 08-16→21 / 08-24 三次数据滞留本地都是这个根因。crontab 行见 doctor-cron.sh 文件头。
+
 ---
 
 ## 4. Claude Code CLI（LLM 后端，无需 API key）

@@ -25,16 +25,20 @@ echo
 echo "sgai doctor — checking $PROJECT"
 echo
 
-# 1. Python venv
-echo "1. Python venv (/tmp/sgai-venv)"
-if [ -x /tmp/sgai-venv/bin/python ]; then
-  if /tmp/sgai-venv/bin/python -c "import requests, feedparser, bs4" 2>/dev/null; then
-    print_ok "venv exists, all 3 deps importable"
-  else
-    print_fail "venv exists but missing deps — run: /tmp/sgai-venv/bin/pip install -r scripts/requirements.txt"
+# 1. Python venv — canonical path first (~/.venvs/sgai), then the legacy
+#    /tmp location. Mirrors scripts/refresh/videos/run.ts resolveScanPython:
+#    the /tmp venv evaporates on reboot, which is why it was retired.
+echo "1. Python venv (~/.venvs/sgai, legacy /tmp/sgai-venv)"
+venv_ok=""
+for venv in "$HOME/.venvs/sgai" /tmp/sgai-venv; do
+  if [ -x "$venv/bin/python" ] && "$venv/bin/python" -c "import requests, feedparser, bs4" 2>/dev/null; then
+    print_ok "venv at $venv, all 3 deps importable"
+    venv_ok=1
+    break
   fi
-else
-  print_fail "venv missing — run: python3 -m venv /tmp/sgai-venv && /tmp/sgai-venv/bin/pip install -r scripts/requirements.txt"
+done
+if [ -z "$venv_ok" ]; then
+  print_fail "no working venv — run: python3 -m venv ~/.venvs/sgai && ~/.venvs/sgai/bin/pip install -r scripts/requirements.txt"
 fi
 
 # 2. Node deps
