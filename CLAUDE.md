@@ -60,7 +60,6 @@ npm run eval:url                   # 全量扫 sourceUrl 可达性（CLAUDE.md r
 npm run eval:url -- --changed-only # 只扫 PR 改过的 src/data/*.ts
 npm run eval:i18n -- --layer=a     # 数据层：每条 record 的 CJK 字段 *En + *Ja 配对（zero-cost）
 npm run eval:i18n -- --layer=all   # +B sitemap parity / +C hreflang parity / +D 语言纯度（需 build）
-npm run eval:updates-ledger        # 数据文件改了但 src/data/updates.ts 没追加 → fail（防 2026-05-09 那次"最近更新"漏记）
 npm run eval:facade-stats          # README/About 门面数字 vs src/data 真值（辩论/政策/创业/独角兽/经济体/指标），漂移即 fail（PR + 周都跑）
 ```
 
@@ -168,9 +167,9 @@ npx prettier --write src/
 
 ### 7. addedAt 约定（关键 — 最高优先级）
 
-> **🔴 顶层硬规则：任何加到 `src/data/{videos,policies,debates,people,tracker,benchmarking,ecosystem,levers,startups,legal-ai,talent}.ts` 的新 record 必须设 `addedAt: 'YYYY-MM-DD'`（写入当天的日期，永不修改）。**
+> **🔴 顶层硬规则：任何加到 `src/data/{videos,policies,debates,people,voices,tracker,benchmarking,ecosystem,levers,startups,legal-ai,talent,reg-lookahead,ai-capital}.ts` 的新 record 必须设 `addedAt: 'YYYY-MM-DD'`（写入当天的日期，永不修改）。**
 >
-> sgai 首页"最近更新"模块（[`src/components/home/RecentUpdates.astro`](src/components/home/RecentUpdates.astro)）的内容**从数据文件派生**——`src/utils/derived-updates.ts` 扫每条 record 的 `addedAt`，按 (date, type) group 后自动产出 update entry，三语齐全。`src/data/updates.ts` 只剩 `site` / `fix` / `longform` 三种**编辑性事件**的 manual override（`MANUAL_TYPES` 在 import 时强制校验，加错 type 会 build error）。
+> sgai 首页"最近更新"模块（[`src/components/home/LatestUpdatesFeed.astro`](src/components/home/LatestUpdatesFeed.astro)）与 `/updates/`、`updates.rss.xml` 的内容**从数据文件派生**——`src/utils/derived-updates.ts` 扫每条 record 的 `addedAt`，**每条 record 产出一个 update entry**（标题、一句 summary、record 自己的事件日期、直链），四语齐全。派生器覆盖的数据文件清单与 `scripts/evals/addedAt-coverage/check.ts` 的 `DATA_FILES` 由单测 `data-files-sync.test.ts` 锁死——新加 harvester 两边都要改。`src/data/updates.ts` 只剩 `site` / `fix` / `longform` 三种**编辑性事件**的 manual override（`MANUAL_TYPES` 在 import 时强制校验，加错 type 会 build error）。
 >
 > 这意味着：**忘了给新 record 加 `addedAt`，首页就看不到它。** 不需要再去碰 `updates.ts`，也不允许往 `updates.ts` 加 video/policy/debate 这类 type 的 entry。
 >

@@ -6,6 +6,18 @@
 
 ## Unreleased
 
+### 「最近更新」改为每条一行，变化可见
+
+- `src/utils/derived-updates.ts`：派生条目从「同日同类合并一行（A、B、C 等 N 条）」改为**每条 record 一行**——标题直链、record 自带的一句 summary、record 自己的事件日期（国会 / 发布 / 宣布）与收录日期并列。新增 `harvestAiCapital`：`ai-capital.ts` 自 2026-08-14 起有 `addedAt` 却没有 harvester，9 条资本事件从未上过首页。
+- 首页 Masthead：总量（187 辩论 …）退居次级，新增「过去 7 天新增 +N（2 辩论 · 3 视频）· 截至 <日期>」，锚在数据里最新的 `addedAt` 而非构建时间；RSS 图标改指 `updates.rss.xml`（原来指向博客 RSS）。
+- 首页 feed 窗口：最近 14 天全部、至少 8 行、最多 20 行；日期头「8月14日 · 星期五 · N 条」。
+- `/updates/`：最近 8 周按 ISO 周分组，更早按月；RSS 链接改 `localizedHref`。
+- 「上次访问后新增 N 条」徽标 + 行首圆点（`SinceLastVisit.astro`，浏览器本地，首页与 `/updates/` 都挂）。
+- `updates.rss.xml`（根 + 各语言）：每条 item 直链到 record 页；非 en 语言的标题 / 摘要改按语言取值（此前全部用中文字段）；去掉没人渲染的 `#date-type` 锚点。
+- 抽 `src/utils/update-type-ui.ts`（chip / 标签 / 严格按语言取文案，不回落中文）和 `src/utils/date-format.ts`；删除死代码 `RecentUpdates.astro`。
+- 新单测 `data-files-sync.test.ts` 锁死 `addedAt-coverage` 的 `DATA_FILES` 与派生器 import 的数据文件清单一致。
+- CLAUDE.md：删掉不存在的 `eval:updates-ledger`，rule #7 文件清单补 voices / reg-lookahead / ai-capital。
+
 - 修复 levers 自动发现管线的 i18n 漏检：待审核分组改用中文底稿并补齐中英日韩标题；生成器提交前改跑与 CI 一致的字段对齐和 schema 完整性校验，避免再次生成必挂 CI 的 PR。
 
 ## 0.25.5 — 2026-08-20

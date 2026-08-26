@@ -33,8 +33,9 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join, resolve } from 'node:path';
 
 // Tracked data files. The list mirrors src/utils/derived-updates.ts —
-// keep these two in sync when adding a new harvester.
-const DATA_FILES = [
+// __tests__/data-files-sync.test.ts asserts the two stay in sync (ai-capital
+// drifted in 2026-08: addedAt on every record, no harvester, never surfaced).
+export const DATA_FILES = [
   'src/data/videos.ts',
   'src/data/policies.ts',
   'src/data/debates.ts',
@@ -48,6 +49,7 @@ const DATA_FILES = [
   'src/data/legal-ai.ts',
   'src/data/talent.ts',
   'src/data/reg-lookahead.ts', // consultations[] + bills[] drive 'policy' derived updates
+  'src/data/ai-capital.ts', // capitalRecords[] drive 'ecosystem' derived updates (/ecosystem/#capital)
 ];
 
 const REPO_ROOT = resolve(import.meta.dirname, '../../..');
