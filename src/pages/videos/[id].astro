@@ -258,6 +258,6 @@ const videoSchema = {
     }}
     class="max-w-5xl mx-auto px-4 sm:px-6 mt-8"
   />
-  <CiteBlock title={title} anchorId={video.id} />
+  <CiteBlock title={title} anchorId={video.id} markdownHref={localizedHref(`/videos/${video.id}.md`, lang)} />
   <SameTopicRail lang={lang} kind="video" id={video.id} class="max-w-5xl mx-auto px-4 sm:px-6 pb-16 mt-4" />
 </Layout>

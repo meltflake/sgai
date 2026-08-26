@@ -1,0 +1,44 @@
+name: 纠错 / Correction
+description: 报告数据或翻译错误 / Report a data or translation error
+title: '[correction] '
+labels: ['correction']
+body:
+  - type: markdown
+    attributes:
+      value: |
+        感谢纠错。sgai 的错误多是事实层面的——官方译名、日期、机构归属。
+        只要指出「哪里错了」和「应该是什么」就够了，依据链接有则更好。
+
+        Thanks for the correction. sgai's errors are usually fact-level —
+        official names, dates, attributions. Telling us what is wrong and
+        what it should be is enough; a source link helps.
+  - type: input
+    id: page
+    attributes:
+      label: 页面 URL / Page URL
+      description: 出错的页面地址（从「报告错误」链接进来时已自动填好）/ The page where you saw it (prefilled when you arrive from the "report an error" link).
+      placeholder: https://sgai.md/zh/debates/oral-answer-4088/
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: 哪里错了 / What is wrong
+      description: 贴出错误的原文片段，或说明位置。/ Quote the wrong text, or describe where it is.
+    validations:
+      required: true
+  - type: textarea
+    id: should_be
+    attributes:
+      label: 应该是什么 / What it should be
+      description: 正确的说法。/ The correct version.
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: 依据 / Source link
+      description: 官方页面、Hansard 记录、新闻报道等。可留空。/ Official page, Hansard record, news report. Optional.
+      placeholder: https://www.parliament.gov.sg/...
+    validations:
+      required: false

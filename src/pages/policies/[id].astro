@@ -77,6 +77,10 @@ const breadcrumbs = [{ label: t(lang, 'navPolicies'), href: localizedHref('/poli
   <JsonLd schema={articleSchema} />
   <JsonLd schema={govServiceSchema} />
   <PolicyProfile policy={policy} lang={lang} />
-  <CiteBlock title={title} anchorId={policy.id ?? 'policy'} />
+  <CiteBlock
+    title={title}
+    anchorId={policy.id ?? 'policy'}
+    markdownHref={localizedHref(`/policies/${policy.id}.md`, lang)}
+  />
   <SameTopicRail lang={lang} kind="policy" id={policy.id ?? ''} class="max-w-5xl mx-auto px-4 sm:px-6 pb-16 mt-4" />
 </Layout>

@@ -308,6 +308,10 @@ const breadcrumbs = [{ label: t(lang, 'navParliament'), href: '/debates/' }, { l
     }}
     class="max-w-5xl mx-auto px-4 sm:px-6 mt-8"
   />
-  <CiteBlock title={debate.titleEn || debate.title} anchorId={debate.id} />
+  <CiteBlock
+    title={debate.titleEn || debate.title}
+    anchorId={debate.id}
+    markdownHref={localizedHref(`/debates/${debate.id}.md`, lang)}
+  />
   <SameTopicRail lang={lang} kind="debate" id={debate.id} class="max-w-5xl mx-auto px-4 sm:px-6 pb-16 mt-4" />
 </Layout>

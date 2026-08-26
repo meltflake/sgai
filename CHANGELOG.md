@@ -6,6 +6,16 @@
 
 ## Unreleased
 
+### 详情页 Markdown 孪生 + 「报告错误」入口
+
+- 每个辩论 / 政策 / 视频详情页新增 Markdown 孪生：`<页面路径去掉尾斜杠>.md`（如 `/zh/debates/oral-answer-4088.md`）。整条记录一次抓取——标题、日期、相关方、来源、永久链接、许可、为什么重要、摘要、要点、全文（辩论另附 Hansard 英文原文）。此前 agent 想读全文只能啃 200 KB 的 HTML，`llms-full.txt` 又只是链接索引。
+- 新增 `src/utils/markdown-export.ts`（`debateToMarkdown` / `policyToMarkdown` / `videoToMarkdown`）：所有本地化字段走 `pickLocalized`，段落标题用 per-heading 的四语字典 + zh-tw 走 `toTraditional`，五语各自成文，不回落中文。
+- 新增 6 条路由（`src/pages/{,[lang]/}{debates,policies,videos}/[id].md.ts`），`getStaticPaths` 与同名 `.astro` 页一一对齐；`public/_headers` 给 `/*.md` 加 `Content-Type: text/markdown` 与 CORS。
+- `CiteBlock.astro` 加「报告错误」与「Markdown 版」两个链接。前者直达 GitHub issue 表单并预填页面 URL——本站的错多是事实层面的（官方译名、日期、机构），读者比我们先看见。
+- 新增 `.github/ISSUE_TEMPLATE/correction.yml`（issue form，字段 `page` / `what` / `should_be` / `source`）与 `config.yml`（保留空白 issue；仓库未开 Discussions，故不加 contact link）。
+- 逐字原文一律带版权行：辩论的 Hansard、政策原文（`© <发布机构>`）、视频字幕（`© <频道>`）在 `## 全文` 下各自加一句「仅供引用」（五语，zh-tw 走 OpenCC）。同时修掉 EN 辩论孪生把 Hansard 全文印两遍的 bug——`getDebateTranscriptParagraphs` 在无本地化轨时返回的就是 `paragraphsEn`，按值判等去重，不加语言分支。
+- 新增门 `npm run check:markdown-export`（挂进 `check:dist`）：全量扫 `dist/**/*.md`，断言首行是 H1、含 `- sgai: https://sgai.md/` 永久链接行、含 CC BY 4.0 许可标记、元数据块内无 `undefined` / `[object Object]` 残留（正文是逐字原文，豁免）。带单测。
+
 ### 「为什么重要」字段（whyItMatters）四语回填
 
 - `Policy` / `VideoItem` / `Debate` 各加 `whyItMatters` + `En / Ja / Ko`：一句话说清这条对新加坡 AI 战略的意义（含具体数字 / 日期 / 机构），与 `summary`（发生了什么）分开。49 政策 + 84 视频 + 187 辩论整批回填。
