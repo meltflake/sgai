@@ -16,6 +16,18 @@
 - 逐字原文一律带版权行：辩论的 Hansard、政策原文（`© <发布机构>`）、视频字幕（`© <频道>`）在 `## 全文` 下各自加一句「仅供引用」（五语，zh-tw 走 OpenCC）。同时修掉 EN 辩论孪生把 Hansard 全文印两遍的 bug——`getDebateTranscriptParagraphs` 在无本地化轨时返回的就是 `paragraphsEn`，按值判等去重，不加语言分支。
 - 新增门 `npm run check:markdown-export`（挂进 `check:dist`）：全量扫 `dist/**/*.md`，断言首行是 H1、含 `- sgai: https://sgai.md/` 永久链接行、含 CC BY 4.0 许可标记、元数据块内无 `undefined` / `[object Object]` 残留（正文是逐字原文，豁免）。带单测。
 
+### 数据导出信封 + 三个新端点 + OpenAPI（⚠️ 破坏性变更）
+
+- **破坏性**：`/data/debates.json`、`/data/policies.json`、`/data/tracker.json` 不再是裸数组。行现在放在 `.items` 里，外面套一层信封：`schemaVersion`（=1）、`dataset`、`siteVersion`、`dataUpdated`、`license`、`attribution`、`count`、`items`。**下游从 `resp[0]` 改成 `resp.items[0]`。** 原有字段一个没删。
+- 每行新增 `links`：`links.sgai` 是这条记录在五种语言下各自的绝对页面地址（en 裸路径，其余走 `/<lang>/` 前缀），`links.source` 是上游原始链接。以前拿到一行数据没法回链具体页面，等于没法引用本站——这是加信封的主因。
+- 新端点：`/data/videos.json`（全部视频，四语标题 / 摘要 / whyItMatters，不含字幕全文）、`/data/records.json`（`harvestAll()` 的每条 record 一行，按 `addedAt` 倒序，跨域合并——更新流的机器版）、`/data/index.json`（数据集目录：地址 + 当前条数 + 一句话说明）。
+- 新增 [public/openapi.json](public/openapi.json)（OpenAPI 3.0，手写，线上 `https://sgai.md/openapi.json`）：六个 GET 路径 + `Envelope` / `Links` / 各数据集 item schema。`npx @redocly/cli lint` 通过。
+- `public/_headers` 显式加 `/data/*` 规则（`Access-Control-Allow-Origin: *` + `max-age=300, s-maxage=3600`）。线上的 CORS 头此前来自 Cloudflare 侧的全站规则，仓库里没有任何声明——现在这条保证进了 git。
+- 新增 [src/utils/data-export.ts](src/utils/data-export.ts)（`envelope()` / `recordLinks()`）。`dataUpdated` 取 `SITE_UPDATED`（从数据的 `addedAt` 派生），**不用构建时间戳**——否则每次部署所有数据集字节都变，ETag 全废、也没法从文件本身判断数据到底动没动。
+- 新门 `npm run check:data-export`（[scripts/evals/data-export/check.ts](scripts/evals/data-export/check.ts)），挂进 `check:dist`：扫 `dist/data/*.json` 断言信封契约与 `links.sgai` 的五语完整性 + 前缀匹配。13 个单测挂进 `test:lib`。
+- `/agent/` 页面（四语）与 `llms.txt` / `llms-full.txt` 同步：数据表补三个新端点、curl 样例改 `curl -s https://sgai.md/data/records.json | jq '.items[0]'`、加一句信封说明和 `openapi.json` 链接。
+- `/data/debates.csv` 未改动：加 `#` 注释头会打断 pandas / Excel 的表头解析，而这个文件对外宣传的用途正是「丢进表格或 notebook」。许可信息由同目录的 JSON 与 `openapi.json` 承担。
+
 ### Agent 接入：`/agent/` 页面 + 从本站发布 skill
 
 - 新增五语 `/agent/` 页面（`src/components/agent/AgentPage.astro` + `src/pages/agent/index.astro` + `src/pages/[lang]/agent/index.astro`）：一页讲清 skill 安装、RSS、JSON/CSV 数据集、Markdown 孪生页、`llms.txt`，以及署名与核对原始 `sourceUrl` 的规矩。zh / en / ja / ko 四语手写，zh-tw 走 OpenCC 派生。
