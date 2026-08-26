@@ -6,6 +6,15 @@
 
 ## Unreleased
 
+### 月报落地为站内长文 + 主题页「最近动态」
+
+- `scripts/refresh/newsletter/generate-monthly.ts` 加 `--emit-post`：把当月更新写成 zh 博文 `src/data/post/monthly-YYYY-MM.md`（`--out` / `--publish-date` / `--topics` 可覆盖），月报从此有永久 URL、SEO 和 llms.txt 条目，不再只活在 Buttondown 邮件里。原来的 stdout 邮件正文行为不变。
+- 正文组装抽成纯函数 `scripts/refresh/newsletter/build-monthly-post.ts` 的 `buildMonthlyPost()`（不依赖 `src/data`，可用假 `Update[]` 单测）：统计行（`本月站内更新 N 条：… · 阅读约 M 分钟`）、`## 本月主线` 手写占位、按 政策 / 辩论 / 视频 / 演讲 / 人物 / 其他 分节、每条带 record 自己的事件日期与一句 `whyItMatters` 判断。`topicIds` 取当月 policy / debate / video 的 topic 并集，为空回落 `national-strategy`（`check:graph` 的 post coverage 门）。
+- 主题页（`TopicHub.astro`）在分类分组之上加「最近动态」：跨所有类型 + 博文合并、按日期倒序取 20 条，日期 + 类型徽标 + 标题。不足 3 条有日期的条目就整段不显示。新 i18n key `topicRecentHeading`（中 / 英 / 日 / 韩，繁体自动派生）。
+- 页脚品牌栏加订阅表单 `NewsletterSignup`（`BUTTONDOWN_FORM_ID` 为空时整个组件不渲染，建号后填一行即上线）。
+- 文档：`docs/refresh-playbook.md` 新增「`/updates` + 月报（Newsletter）」一节，写清生成 → 手写主线 → 四语翻译 → `check:post-i18n` → PR 的完整月度流程。
+- 新单测 `scripts/refresh/newsletter/__tests__/build-monthly-post.test.ts`（7 例），已挂进 `test:lib`。
+
 ### 「为什么重要」字段（whyItMatters）四语回填
 
 - `Policy` / `VideoItem` / `Debate` 各加 `whyItMatters` + `En / Ja / Ko`：一句话说清这条对新加坡 AI 战略的意义（含具体数字 / 日期 / 机构），与 `summary`（发生了什么）分开。49 政策 + 84 视频 + 187 辩论整批回填。

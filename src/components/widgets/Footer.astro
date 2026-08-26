@@ -2,6 +2,7 @@
 import { Icon } from 'astro-icon/components';
 import { getHomePermalink } from '~/utils/permalinks';
 import ToggleTheme from '~/components/common/ToggleTheme.astro';
+import NewsletterSignup from '~/components/common/NewsletterSignup.astro';
 import { getLangFromPath, t, localizedHref } from '~/i18n';
 
 const lang = getLangFromPath(new URL(Astro.url).pathname);
@@ -54,6 +55,8 @@ const { socialLinks = [], secondaryLinks = [], links = [], footNote = '', theme 
             ))
           }
         </div>
+        {/* Renders nothing until BUTTONDOWN_FORM_ID is filled in — no-op today. */}
+        <NewsletterSignup />
       </div>
       <div class="grid grid-cols-2 md:grid-cols-4 gap-4 gap-y-8 sm:gap-8 lg:flex-1">
         {
