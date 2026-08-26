@@ -4,6 +4,7 @@ import { getRssString } from '@astrojs/rss';
 import { SITE } from 'astrowind:config';
 import { sortedUpdates } from '~/data/updates';
 import { NON_DEFAULT_ROUTE_LOCALES, localizedHref, t, type Lang } from '~/i18n';
+import { typeLabel, updateText } from '~/utils/update-type-ui';
 
 export const prerender = true;
 
@@ -20,12 +21,19 @@ export const GET: APIRoute = async ({ params }) => {
     description: t(lang, 'updatesRssDescription'),
     site: import.meta.env.SITE,
 
-    items: updates.map((u) => ({
-      link: localizedHref('/updates/', lang) + `#${u.date}-${u.type}`,
-      title: `[${t(lang, `updateType${u.type.charAt(0).toUpperCase()}${u.type.slice(1)}` as Parameters<typeof t>[1])}] ${u.title}`,
-      description: u.summary,
-      pubDate: new Date(u.date),
-    })),
+    // One item per record, linking straight to the record's own page in
+    // this locale. Titles / summaries resolve per lang (ja → en, ko → en,
+    // zh-tw ← zh via OpenCC) instead of the zh field for every locale.
+    items: updates.map((u) => {
+      const title = updateText(u, 'title', lang);
+      const summary = updateText(u, 'summary', lang);
+      return {
+        link: localizedHref(u.href ?? '/updates/', lang),
+        title: `[${typeLabel(u.type, lang)}] ${title}`,
+        description: summary || title,
+        pubDate: new Date(u.date),
+      };
+    }),
 
     trailingSlash: SITE.trailingSlash,
   });

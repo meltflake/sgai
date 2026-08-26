@@ -1,11 +1,14 @@
 ---
 // Front-page masthead strip — the "this site is alive" signal, first thing
-// under the header. Left: latest-developments tagline. Right: data scale
-// inline + derived last-updated date + RSS + full updates feed link.
-// Replaces the old mid-page freshness strip (same numbers, new position).
+// under the header. Left: latest-developments tagline + what changed in
+// the last 7 days (the delta, broken down by type). Right: derived
+// last-updated date + full updates feed link + updates RSS. The absolute
+// data-scale counts (187 debates …) sit between, de-emphasised: totals barely
+// move month to month and tell a returning reader nothing about change.
 //
-// Copy deliberately says "updated {date}", never "today" — static builds
-// can be days apart and a stale "today" reads worse than an honest date.
+// The delta is anchored on the newest addedAt in the data, not the build
+// clock — a site untouched for a month reads "+0 · as of <date>", never a
+// stale "this week".
 
 import { Icon } from 'astro-icon/components';
 import { debates } from '~/data/debates';
@@ -13,7 +16,10 @@ import { categories as policyCategories } from '~/data/policies';
 import { levers, publicLeverGroups } from '~/data/levers';
 import { videos } from '~/data/videos';
 import { SITE_UPDATED } from '~/version';
+import { deltaSince } from '~/utils/derived-updates';
+import { typeLabel } from '~/utils/update-type-ui';
 import { t, localizedHref, type Lang } from '~/i18n';
+import type { UpdateType } from '~/data/updates';
 
 interface Props {
   lang: Lang;
@@ -29,6 +35,9 @@ const scale = [
   { n: totalLeverItems, label: t(lang, 'freshnessLevers') },
   { n: videos.length, label: t(lang, 'fpStatVideos') },
 ];
+
+const delta = deltaSince(7);
+const deltaTop = (Object.entries(delta.byType) as Array<[UpdateType, number]>).sort((a, b) => b[1] - a[1]).slice(0, 3);
 ---
 
 <section class="border-b border-subtle bg-surface">
@@ -36,17 +45,32 @@ const scale = [
     class="max-w-6xl mx-auto px-4 sm:px-6 py-2.5 flex flex-wrap items-baseline gap-x-5 gap-y-1.5 text-xs leading-tight"
   >
     <span class="uppercase tracking-[0.18em] text-primary font-semibold">{t(lang, 'fpMastheadTagline')}</span>
-    <span class="text-gray-500 dark:text-gray-400 hidden sm:flex flex-wrap gap-x-3">
+    <span class="text-gray-700 dark:text-gray-300 flex flex-wrap items-baseline gap-x-1.5 whitespace-nowrap">
+      <span>{t(lang, 'mastheadDelta7d')}</span>
+      <span class="tabular-nums font-semibold text-primary">+{delta.total}</span>
+      {
+        deltaTop.length > 0 && (
+          <span class="text-gray-500 dark:text-gray-400 tabular-nums">
+            ({deltaTop.map(([type, n]) => `${n} ${typeLabel(type, lang)}`).join(' · ')})
+          </span>
+        )
+      }
+      <span class="text-gray-400 dark:text-gray-500 tabular-nums">
+        · {t(lang, 'mastheadAsOf')}
+        {delta.anchor}
+      </span>
+    </span>
+    <span class="text-gray-400 dark:text-gray-500 hidden lg:flex flex-wrap gap-x-3">
       {
         scale.map((s) => (
           <span class="whitespace-nowrap">
-            <span class="tabular-nums font-semibold text-gray-700 dark:text-gray-300">{s.n}</span> {s.label}
+            <span class="tabular-nums">{s.n}</span> {s.label}
           </span>
         ))
       }
     </span>
     <span class="ml-auto flex items-center gap-x-3 text-gray-500 dark:text-gray-400">
-      <span class="whitespace-nowrap tabular-nums">{t(lang, 'fpMastheadUpdated')} {SITE_UPDATED}</span>
+      <span class="whitespace-nowrap tabular-nums hidden sm:inline">{t(lang, 'fpMastheadUpdated')} {SITE_UPDATED}</span>
       <a
         href={localizedHref('/updates/', lang)}
         class="text-primary hover:text-secondary font-medium whitespace-nowrap transition-colors"
@@ -54,7 +78,7 @@ const scale = [
         {t(lang, 'updatesHomeCta')}
       </a>
       <a
-        href={localizedHref('/rss.xml', lang)}
+        href={localizedHref('/updates.rss.xml', lang)}
         class="text-gray-400 hover:text-primary transition-colors"
         aria-label="RSS"
         title="RSS"

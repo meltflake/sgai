@@ -1,0 +1,100 @@
+---
+// "New since your last visit" badge + per-row dot for any updates list.
+//
+// Usage: render this inside the list's header row, and give the list
+// container `id={scope}`. Every row that should count carries
+// `data-added="YYYY-MM-DD"` and (optionally) a hidden `[data-new-dot]`
+// element that gets revealed.
+//
+// Storage (browser-local, per viewer, try/catch everywhere):
+//   sgai_visit_day  — the calendar day of the current visit
+//   sgai_last_visit — the previous distinct visit day
+// On the first page load of a new day the previous `visit_day` becomes
+// `last_visit`; reloads within the same day keep the same baseline, so the
+// marks don't vanish on refresh. Rows with addedAt > last_visit count.
+//
+// ClientRouter: the inline script must re-run on astro:page-load (the DOM
+// is swapped, identical inline scripts are not re-executed). Same boot /
+// dataset-flag / window-flag idiom as LangBanner.astro.
+
+import { t, type Lang } from '~/i18n';
+
+interface Props {
+  lang: Lang;
+  scope: string;
+}
+const { lang, scope } = Astro.props;
+const label = t(lang, 'updatesSinceLastVisit');
+---
+
+<span
+  data-since-badge={scope}
+  class="hidden text-xs font-medium text-primary bg-primary/10 px-2 py-0.5 rounded-full tabular-nums whitespace-nowrap"
+></span>
+
+<script define:vars={{ scope, label }}>
+  (() => {
+    const DAY_KEY = 'sgai_visit_day';
+    const LAST_KEY = 'sgai_last_visit';
+
+    function read(key) {
+      try {
+        return localStorage.getItem(key);
+      } catch {
+        return null;
+      }
+    }
+    function write(key, value) {
+      try {
+        localStorage.setItem(key, value);
+      } catch {
+        /* private mode / blocked storage — feature degrades to nothing */
+      }
+    }
+
+    function boot() {
+      const root = document.getElementById(scope);
+      const badge = document.querySelector(`[data-since-badge="${scope}"]`);
+      if (!root || !badge || root.dataset.sinceReady) return;
+      root.dataset.sinceReady = '1';
+
+      const today = new Date().toISOString().slice(0, 10);
+      let last = read(LAST_KEY);
+      const day = read(DAY_KEY);
+      if (day !== today) {
+        last = day;
+        if (day) write(LAST_KEY, day);
+        write(DAY_KEY, today);
+      }
+      if (!last) return;
+
+      let n = 0;
+      root.querySelectorAll('[data-added]').forEach((el) => {
+        const added = el.getAttribute('data-added') || '';
+        if (added > last) {
+          n++;
+          const dot = el.querySelector('[data-new-dot]');
+          if (dot) dot.classList.remove('hidden');
+        }
+      });
+      if (n > 0) {
+        badge.textContent = label.replace('{n}', String(n));
+        badge.classList.remove('hidden');
+      }
+    }
+
+    // This inline script sits ABOVE the rows it counts. During the initial
+    // HTML parse the container element already exists but its rows do not,
+    // so booting immediately would count 0 and set the ready flag. Wait for
+    // the DOM to finish; astro:page-load covers ClientRouter navigations.
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', boot, { once: true });
+    } else {
+      boot();
+    }
+    if (!window.__sgaiSinceBound) {
+      window.__sgaiSinceBound = true;
+      document.addEventListener('astro:page-load', boot);
+    }
+  })();
+</script>

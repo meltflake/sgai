@@ -1,7 +1,7 @@
 // Updates feed — surfaced on:
-//   - Homepage (RecentUpdates widget, latest 8)
-//   - /updates/ and /updates/ (full list, grouped by month)
-//   - /updates.rss.xml and /updates.rss.xml (RSS feeds)
+//   - Homepage (LatestUpdatesFeed — last 14 days, 8–20 rows)
+//   - /updates/ and /[lang]/updates/ (full list, recent weeks then months)
+//   - /updates.rss.xml and /[lang]/updates.rss.xml (one item per record)
 //   - llms.txt (high-value pages section)
 //
 // ┌──────────────────────────────────────────────────────────────────┐
@@ -31,7 +31,8 @@
 // here, and frequently didn't (incident: 2026-05-09 / commit a608bc0).
 // The derive layer eliminated that class of drift.
 
-import { deriveUpdates } from '~/utils/derived-updates';
+import { deriveUpdates, type DataSource } from '~/utils/derived-updates';
+import { shiftIsoDate, startOfIsoWeek } from '~/utils/date-format';
 
 export type UpdateType =
   | 'policy'
@@ -63,11 +64,20 @@ export interface Update {
   titleEn: string;
   titleJa?: string;
   titleKo?: string;
-  summary: string; // 一句话站方判断（中文）
+  summary: string; // 一句话站方判断（中文）；派生条目用 record 自带的 summary，没有则为空串
   summaryEn: string;
   summaryJa?: string;
   summaryKo?: string;
   links?: UpdateLink[];
+  // ── Derived-only fields (set by src/utils/derived-updates.ts) ──
+  /** Direct link to the record's page (locale-unprefixed path). */
+  href?: string;
+  /** The record's own date (sitting / publication / announcement), raw. */
+  eventDate?: string;
+  /** Fine-grained data-file origin (drives the eventDate label). */
+  source?: DataSource;
+  /** Record id, where the record has one. */
+  id?: string;
 }
 
 // Editorial-only types. Data-record types (video / policy / debate / etc.)
@@ -752,6 +762,38 @@ export function recentUpdates(limit = 8): Update[] {
   return sortedUpdates().slice(0, limit);
 }
 
+export interface RecentWindow {
+  /** Days of history to show, counted back from the newest update. */
+  days: number;
+  /** If the window holds fewer rows than this, pad with older rows. */
+  min: number;
+  /** Hard cap (batch imports must not flood the front page). */
+  max: number;
+}
+
+/**
+ * Homepage feed window: every update from the last `days` days (anchored on
+ * the newest update, not the build clock), padded to at least `min` rows,
+ * capped at `max`.
+ */
+export function recentUpdatesWindow({ days, min, max }: RecentWindow): Update[] {
+  const all = sortedUpdates();
+  if (all.length === 0) return [];
+  const cutoff = shiftIsoDate(all[0].date, -(days - 1));
+  const inWindow = all.filter((u) => u.date >= cutoff);
+  const picked = inWindow.length >= min ? inWindow : all.slice(0, min);
+  if (picked.length <= max) return picked;
+  // Cap on a day boundary: a day header that says "6 items" while the day
+  // actually had 13 is worse than showing one day fewer. Only drop the
+  // partial last day if that still leaves at least `min` rows.
+  const capped = picked.slice(0, max);
+  const lastDate = capped[capped.length - 1].date;
+  const dayIsPartial = picked[max].date === lastDate;
+  if (!dayIsPartial) return capped;
+  const withoutLastDay = capped.filter((u) => u.date !== lastDate);
+  return withoutLastDay.length >= min ? withoutLastDay : capped;
+}
+
 export interface UpdatesByMonth {
   month: string; // YYYY-MM
   items: Update[];
@@ -765,6 +807,36 @@ export function updatesByMonth(): UpdatesByMonth[] {
     groups.get(m)!.push(u);
   }
   return [...groups.entries()].map(([month, items]) => ({ month, items }));
+}
+
+export type UpdateGroup =
+  | { kind: 'week'; start: string; end: string; items: Update[] } // Monday..Sunday
+  | { kind: 'month'; month: string; items: Update[] };
+
+/**
+ * /updates/ grouping: the most recent `weeks` ISO weeks (counted back from
+ * the week of the newest update) are grouped by week; everything older by
+ * month. Groups come out newest-first, matching sortedUpdates().
+ */
+export function updatesGrouped(weeks = 8): UpdateGroup[] {
+  const all = sortedUpdates();
+  if (all.length === 0) return [];
+  const weekCutoff = shiftIsoDate(startOfIsoWeek(all[0].date), -7 * (weeks - 1));
+  const groups = new Map<string, UpdateGroup>();
+  for (const u of all) {
+    if (u.date >= weekCutoff) {
+      const start = startOfIsoWeek(u.date);
+      const key = `w:${start}`;
+      if (!groups.has(key)) groups.set(key, { kind: 'week', start, end: shiftIsoDate(start, 6), items: [] });
+      groups.get(key)!.items.push(u);
+    } else {
+      const month = u.date.slice(0, 7);
+      const key = `m:${month}`;
+      if (!groups.has(key)) groups.set(key, { kind: 'month', month, items: [] });
+      groups.get(key)!.items.push(u);
+    }
+  }
+  return [...groups.values()];
 }
 
 // Backward-compat re-export. The old callsites imported `UPDATES`; keep
