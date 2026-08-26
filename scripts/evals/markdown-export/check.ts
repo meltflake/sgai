@@ -18,27 +18,30 @@
 //     1. first line is an H1        → the doc has a title, not a stray blank
 //     2. a `- sgai: https://sgai.md/` line → it is attributable back to the page
 //     3. the CC BY 4.0 license marker      → reuse terms travel with the text
-//     4. no `undefined` / `[object Object]` → no field-access rot
+//     4. no `undefined` / `[object Object]` in the metadata block → no
+//        field-access rot. Scoped to the bullet list above the first `## `
+//        heading on purpose: the body is verbatim Hansard / policy text /
+//        transcript, and a debate that genuinely discusses "undefined"
+//        behaviour must not be able to fail a build gate.
+//
+//   The scan is exhaustive — all 1600+ twins, well under two seconds. There
+//   is no sampling to reason about, so a bad twin cannot hide between samples.
 //
 // USAGE
 //   npx tsx scripts/evals/markdown-export/check.ts
 //   npx tsx scripts/evals/markdown-export/check.ts --dist=path/to/dist
-//   npx tsx scripts/evals/markdown-export/check.ts --sample=50
 //
 // EXIT CODES
-//   0 — every sampled file passes
+//   0 — every twin passes
 //   1 — at least one assertion failed (file paths printed)
 //   2 — invocation error (no dist, no .md files found)
 
 import { readFileSync, readdirSync, statSync, existsSync } from 'node:fs';
 import { join, relative, sep } from 'node:path';
 
-/** Sections whose `.md` twins we sample. Order is the reporting order. */
+/** Sections whose `.md` twins we scan. Order is the reporting order. */
 export const SECTIONS = ['debates', 'policies', 'videos'] as const;
 export type Section = (typeof SECTIONS)[number];
-
-/** Default number of files sampled per section. */
-export const DEFAULT_SAMPLE = 20;
 
 export interface Violation {
   /** Short machine-readable rule id. */
@@ -51,6 +54,17 @@ export interface Violation {
 const PERMALINK_PREFIX = '- sgai: https://sgai.md/';
 /** Marker for the license line (see src/utils/license.ts). */
 const LICENSE_MARKER = 'CC BY 4.0';
+
+/**
+ * The generated metadata block: the H1 plus the bullet list, everything
+ * above the first `## ` section heading. This is the part sgai templates
+ * field-by-field; below it is verbatim third-party prose we must not
+ * pattern-match for developer strings.
+ */
+export function metadataBlock(content: string): string {
+  const idx = content.indexOf('\n## ');
+  return idx >= 0 ? content.slice(0, idx) : content;
+}
 
 /**
  * Pure assertion core — everything the eval knows about a "good" twin.
@@ -73,20 +87,19 @@ export function assertMarkdownTwin(content: string): Violation[] {
     out.push({ rule: 'missing-license', detail: `license marker "${LICENSE_MARKER}" not found` });
   }
 
-  // `undefined` as a standalone word: a template that interpolated a
-  // missing field. Matching on a word boundary keeps prose like
-  // "undefined behaviour" out of the way only when it is genuinely part
-  // of a larger word, so we also require it not to be preceded by a
-  // letter — good enough, and a real transcript saying the bare word
-  // "undefined" is vanishingly rare compared to the bug it catches.
-  const undefinedMatch = /(^|[^A-Za-z_$])undefined([^A-Za-z0-9_$]|$)/.exec(content);
+  // Field-access rot, checked in the metadata block only. `undefined` as a
+  // standalone word is a template that interpolated a missing field; inside
+  // a Hansard answer or a policy document the same word is ordinary English
+  // and must not fail the gate.
+  const head = metadataBlock(content);
+
+  const undefinedMatch = /(^|[^A-Za-z_$])undefined([^A-Za-z0-9_$]|$)/.exec(head);
   if (undefinedMatch) {
-    out.push({ rule: 'undefined-literal', detail: `literal "undefined" at index ${undefinedMatch.index}` });
+    out.push({ rule: 'undefined-literal', detail: `literal "undefined" in the metadata block` });
   }
 
-  const objectIdx = content.indexOf('[object Object]');
-  if (objectIdx >= 0) {
-    out.push({ rule: 'object-literal', detail: `literal "[object Object]" at index ${objectIdx}` });
+  if (head.includes('[object Object]')) {
+    out.push({ rule: 'object-literal', detail: `literal "[object Object]" in the metadata block` });
   }
 
   return out;
@@ -121,15 +134,13 @@ interface Failure {
 
 function main(): void {
   let distRoot = 'dist';
-  let sampleSize = DEFAULT_SAMPLE;
   for (const a of process.argv.slice(2)) {
     if (a.startsWith('--dist=')) distRoot = a.slice('--dist='.length);
-    else if (a.startsWith('--sample=')) sampleSize = Number(a.slice('--sample='.length)) || DEFAULT_SAMPLE;
     else if (a === '--help' || a === '-h') {
       process.stdout.write(
-        'Usage: check:markdown-export [--dist=dist] [--sample=20]\n' +
-          '\nSamples dist/**/*.md page twins per section and asserts each is a\n' +
-          'well-formed, attributable Markdown document.\n',
+        'Usage: check:markdown-export [--dist=dist]\n' +
+          '\nScans every dist/**/*.md page twin and asserts each is a well-formed,\n' +
+          'attributable Markdown document.\n',
       );
       process.exit(0);
     }
@@ -166,22 +177,18 @@ function main(): void {
       process.stderr.write(`[markdown-export] section "${section}" has no *.md twins in ${distRoot}/.\n`);
       process.exit(2);
     }
-    // Even stride across the sorted list so the sample spans locales
-    // (dist/debates/… and dist/ja/debates/… interleave after sorting).
-    const stride = Math.max(1, Math.ceil(files.length / sampleSize));
-    const sample = files.filter((_, i) => i % stride === 0).slice(0, sampleSize);
-    for (const file of sample) {
+    for (const file of files) {
       checked++;
       const violations = assertMarkdownTwin(readFileSync(file, 'utf8'));
       if (violations.length > 0) failures.push({ file: relative(projectRoot, file), violations });
     }
-    process.stdout.write(`[markdown-export] ${section}: ${files.length} twin(s), sampled ${sample.length}\n`);
+    process.stdout.write(`[markdown-export] ${section}: ${files.length} twin(s) checked\n`);
   }
 
   process.stdout.write(`[markdown-export] ${totalFound} *.md file(s) in ${distRoot}/, ${checked} checked\n`);
 
   if (failures.length === 0) {
-    process.stdout.write('[markdown-export] ✔ all sampled Markdown twins well-formed\n');
+    process.stdout.write('[markdown-export] ✔ all Markdown twins well-formed\n');
     process.exit(0);
   }
 

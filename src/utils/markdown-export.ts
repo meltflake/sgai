@@ -59,12 +59,28 @@ const H_SUMMARY: LabelMap = { zh: '摘要', en: 'Summary', ja: '要約', ko: '�
 const H_KEY_POINTS: LabelMap = { zh: '要点', en: 'Key points', ja: '要点', ko: '핵심 포인트' };
 const H_FULL_TEXT: LabelMap = { zh: '全文', en: 'Full text', ja: '全文', ko: '전문' };
 
+/** "reproduced for reference only" — the rights phrase that has to travel
+ *  with every verbatim third-party block (Hansard, policy source texts,
+ *  video transcripts). Localized like any other heading; zh-tw via OpenCC. */
+const L_REPRODUCED: LabelMap = {
+  zh: '仅供引用。',
+  en: 'reproduced for reference only.',
+  ja: '参照目的でのみ掲載。',
+  ko: '참고용으로만 게재.',
+};
+
+/** `© <rights holder> — <localized phrase>`. */
+function rightsNotice(holder: string, lang: Lang): string {
+  const name = (holder ?? '').trim();
+  return name ? `© ${name} — ${label(L_REPRODUCED, lang)}` : '';
+}
+
 /** Hansard's own section marker. The block below it is verbatim English
  *  Hansard in every locale (the translated track already rendered under
  *  "full text"), so the heading and the rights notice stay English —
  *  mirroring the `hansard-original` verbatim marker on the HTML pages. */
 const HANSARD_HEADING = 'Hansard (original, English)';
-const HANSARD_RIGHTS = '© Parliament of Singapore — reproduced for reference only.';
+const HANSARD_RIGHTS = rightsNotice('Parliament of Singapore', 'en');
 
 /** A `## heading` plus its body, dropped entirely when the body is empty. */
 interface Section {
@@ -90,6 +106,21 @@ function paragraphs(lines: readonly string[] | undefined): string {
  *  the twin reads the way the page does. */
 function reflow(body: string | undefined | null): string {
   return paragraphs((body ?? '').split(/\n{1,}/));
+}
+
+/** Prefix a verbatim block with its rights notice. Empty body → no section
+ *  at all (so `section()` drops it), never a lone copyright line. */
+function withRights(rights: string, body: string): string {
+  const trimmed = body.trim();
+  if (!trimmed) return '';
+  return rights ? `${rights}\n\n${trimmed}` : trimmed;
+}
+
+/** Element-wise paragraph equality. Used to detect that the localized
+ *  full-text track and the English Hansard track are literally the same
+ *  array — see the comment in debateToMarkdown. */
+function sameParagraphs(a: readonly string[], b: readonly string[]): boolean {
+  return a.length === b.length && a.every((p, i) => p === b[i]);
 }
 
 function bulletList(items: readonly string[] | undefined): string {
@@ -144,14 +175,26 @@ export function debateToMarkdown(debate: Debate, lang: Lang): string {
     ...provenance(`/debates/${debate.id}/`, lang),
   ];
 
-  const hansard = paragraphs(transcript?.paragraphsEn);
+  // getDebateTranscriptParagraphs returns paragraphsEn whenever there is no
+  // localized track — always for en, and for ja/ko while their translation
+  // is still missing. In that case the "full text" and "Hansard (original)"
+  // sections are the SAME array, and emitting both shipped every English
+  // twin with its entire transcript printed twice. Detect it by value (no
+  // `lang === 'en'` branch — rule #13) and keep exactly one copy, with the
+  // rights notice moved onto whichever section survives.
+  const fullText = getDebateTranscriptParagraphs(debate.id, lang);
+  const hansard = transcript?.paragraphsEn ?? [];
+  const fullTextIsHansard = sameParagraphs(fullText, hansard);
 
   return render(title, meta, [
     section(t(lang, 'whyItMattersHeading'), whyItMatters),
     section(label(H_SUMMARY, lang), summary),
     section(label(H_KEY_POINTS, lang), bulletList(keyPoints)),
-    section(label(H_FULL_TEXT, lang), paragraphs(getDebateTranscriptParagraphs(debate.id, lang))),
-    section(HANSARD_HEADING, hansard ? `${HANSARD_RIGHTS}\n\n${hansard}` : ''),
+    section(
+      label(H_FULL_TEXT, lang),
+      fullTextIsHansard ? withRights(HANSARD_RIGHTS, paragraphs(fullText)) : paragraphs(fullText)
+    ),
+    section(HANSARD_HEADING, fullTextIsHansard ? '' : withRights(HANSARD_RIGHTS, paragraphs(hansard))),
   ]);
 }
 
@@ -185,11 +228,16 @@ export function policyToMarkdown(policy: Policy, lang: Lang): string {
     ...provenance(`/policies/${policy.id!}/`, lang),
   ];
 
+  // The source text is the agency's own document, reproduced verbatim — it
+  // is not sgai's to license, so it carries its own rights line (same shape
+  // as the Hansard notice on debate twins).
+  const issuer = pickLocalized<string>(policy, 'source', lang) || policy.source || '';
+
   return render(title, meta, [
     section(t(lang, 'whyItMattersHeading'), whyItMatters),
     section(label(H_SUMMARY, lang), summary),
     section(label(H_KEY_POINTS, lang), bulletList(facts)),
-    section(label(H_FULL_TEXT, lang), reflow(body)),
+    section(label(H_FULL_TEXT, lang), withRights(rightsNotice(issuer, lang), reflow(body))),
   ]);
 }
 
@@ -214,10 +262,15 @@ export function videoToMarkdown(video: VideoItem, lang: Lang): string {
     ...provenance(`/videos/${video.id}/`, lang),
   ];
 
+  // The transcript is the broadcaster's words, reproduced verbatim — same
+  // reasoning as the Hansard / policy-source rights lines.
   return render(title, meta, [
     section(t(lang, 'whyItMattersHeading'), whyItMatters),
     section(label(H_SUMMARY, lang), summary),
     section(label(H_KEY_POINTS, lang), bulletList(digest?.keyPoints)),
-    section(label(H_FULL_TEXT, lang), paragraphs(getVideoTranscriptParagraphs(video.id, lang))),
+    section(
+      label(H_FULL_TEXT, lang),
+      withRights(rightsNotice(video.channel, lang), paragraphs(getVideoTranscriptParagraphs(video.id, lang)))
+    ),
   ]);
 }
