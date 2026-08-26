@@ -369,6 +369,6 @@ const breadcrumbs = [
     }}
     class="max-w-5xl mx-auto px-4 sm:px-6 mt-8"
   />
-  <CiteBlock title={debateTitle} anchorId={debate.id} />
+  <CiteBlock title={debateTitle} anchorId={debate.id} markdownHref={localizedHref(`/debates/${debate.id}.md`, lang)} />
   <SameTopicRail lang={lang} kind="debate" id={debate.id} class="max-w-5xl mx-auto px-4 sm:px-6 pb-16 mt-4" />
 </Layout>

@@ -1,2 +1,9 @@
 /_astro/*
   Cache-Control: public, max-age=31536000, immutable
+
+# Markdown twins of the detail pages (/debates/<id>.md and friends). They
+# exist to be read by agents, so they must be served as text (not offered
+# as a download) and be cross-origin fetchable.
+/*.md
+  Content-Type: text/markdown; charset=utf-8
+  Access-Control-Allow-Origin: *
