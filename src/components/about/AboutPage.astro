@@ -8,6 +8,7 @@ import { Icon } from 'astro-icon/components';
 import { SITE_VERSION, SITE_UPDATED } from '~/version';
 import { localizedHref, type Lang } from '~/i18n';
 import { deepToTraditional, toTraditional } from '~/i18n/opencc';
+import { CC_BY_4_URL, DATA_LICENSE_URL } from '~/utils/license';
 import { debates } from '~/data/debates';
 import { ecosystemStats } from '~/data/startups';
 import { levers, publicLeverGroups } from '~/data/levers';
@@ -93,6 +94,15 @@ const COPY: Partial<Record<Lang, AboutCopy>> = {
           '<strong>媒体 / 分析师</strong>——写新加坡 AI 相关报道时需要可信赖的事实底座。',
         ],
       },
+      { kind: 'h2', text: '数据许可' },
+      {
+        kind: 'p',
+        html: `本站自产的内容——摘要、译文、分析、"为什么重要"判断——以 <a href="${CC_BY_4_URL}" target="_blank" rel="noopener" class="text-primary hover:text-secondary">CC BY 4.0</a> 开放：署名并链接到 sgai.md 的具体页面，即可转载、改编、用于研究或模型训练，无需联系。`,
+      },
+      {
+        kind: 'p',
+        html: `逐字原文不在此列：国会记录 © 新加坡国会，部长演讲 © 各部委，视频字幕 © 频道所有者，政策原文 © 发布机构。本站只做引用与索引，再利用请回到每页标注的原始来源。完整条款见 <a href="${DATA_LICENSE_URL}" target="_blank" rel="noopener" class="text-primary hover:text-secondary">DATA-LICENSE</a>。`,
+      },
       { kind: 'h2', text: '反馈与更正' },
       { kind: 'p', html: '数据有错？分析有偏？欢迎通过 GitHub 告诉我：' },
       {
@@ -104,7 +114,7 @@ const COPY: Partial<Record<Lang, AboutCopy>> = {
       { kind: 'h2', text: '版本与归档' },
     ],
     versionLine: (v, d) =>
-      `当前版本 <span class="font-semibold text-gray-700 dark:text-gray-300">v${v}</span>，最近更新 <span class="font-semibold text-gray-700 dark:text-gray-300">${d}</span>。<br />源代码 MIT 许可证；内容 CC BY 4.0——转载注明出处即可，无需联系。`,
+      `当前版本 <span class="font-semibold text-gray-700 dark:text-gray-300">v${v}</span>，最近更新 <span class="font-semibold text-gray-700 dark:text-gray-300">${d}</span>。<br />源代码 MIT 许可证；自产内容 CC BY 4.0（逐字原文除外，见上文"数据许可"）。`,
     ctaRead: '阅读观点',
     ctaSource: 'GitHub 源码',
   },
@@ -165,6 +175,15 @@ const COPY: Partial<Record<Lang, AboutCopy>> = {
           "<strong>Journalists / analysts</strong> — needing a reliable factual base when writing about Singapore's AI scene.",
         ],
       },
+      { kind: 'h2', text: 'Data license' },
+      {
+        kind: 'p',
+        html: `Everything sgai writes — summaries, translations, analysis, the "why it matters" judgments — is released under <a href="${CC_BY_4_URL}" target="_blank" rel="noopener" class="text-primary hover:text-secondary">CC BY 4.0</a>: attribute and link to the specific sgai.md page, and you may republish, adapt, or use it for research and model training without asking.`,
+      },
+      {
+        kind: 'p',
+        html: `Verbatim source text is excluded: Hansard records © Parliament of Singapore, ministerial speeches © the issuing ministry, video captions © the channel owner, policy documents © the issuing agency. This site quotes and indexes them; to reuse them, go back to the original source linked on each page. Full terms: <a href="${DATA_LICENSE_URL}" target="_blank" rel="noopener" class="text-primary hover:text-secondary">DATA-LICENSE</a>.`,
+      },
       { kind: 'h2', text: 'Feedback &amp; corrections' },
       { kind: 'p', html: 'Found an error? Disagree with an analysis? Open an issue on GitHub:' },
       {
@@ -176,7 +195,7 @@ const COPY: Partial<Record<Lang, AboutCopy>> = {
       { kind: 'h2', text: 'Versioning &amp; archive' },
     ],
     versionLine: (v, d) =>
-      `Current version <span class="font-semibold text-gray-700 dark:text-gray-300">v${v}</span>, last updated <span class="font-semibold text-gray-700 dark:text-gray-300">${d}</span>.<br />Source code MIT-licensed; content CC BY 4.0 — attribution required.`,
+      `Current version <span class="font-semibold text-gray-700 dark:text-gray-300">v${v}</span>, last updated <span class="font-semibold text-gray-700 dark:text-gray-300">${d}</span>.<br />Source code MIT-licensed; sgai-authored content CC BY 4.0 (verbatim source text excluded — see "Data license" above).`,
     ctaRead: 'Read the opinions',
     ctaSource: 'GitHub source',
   },
@@ -237,6 +256,15 @@ const COPY: Partial<Record<Lang, AboutCopy>> = {
           '<strong>メディア / アナリスト</strong>——シンガポール AI 関連報道を執筆する際に信頼できるファクトベースを必要とする方。',
         ],
       },
+      { kind: 'h2', text: 'データのライセンス' },
+      {
+        kind: 'p',
+        html: `本サイトが作成した内容——要約、翻訳、分析、「なぜ重要か」の判断——は <a href="${CC_BY_4_URL}" target="_blank" rel="noopener" class="text-primary hover:text-secondary">CC BY 4.0</a> で公開しています。出典を明記し sgai.md の該当ページにリンクすれば、転載・改変・研究・モデル学習への利用に連絡は不要です。`,
+      },
+      {
+        kind: 'p',
+        html: `逐語的な原文は対象外です：議会記録 © シンガポール議会、大臣演説 © 各省庁、動画字幕 © チャンネル所有者、政策原文 © 発行機関。本サイトは引用と索引のみを行っており、再利用は各ページに記載の原典に戻ってください。詳細は <a href="${DATA_LICENSE_URL}" target="_blank" rel="noopener" class="text-primary hover:text-secondary">DATA-LICENSE</a> を参照。`,
+      },
       { kind: 'h2', text: 'フィードバックと訂正' },
       { kind: 'p', html: 'データに誤りや偏りを発見した場合、GitHub からお知らせください：' },
       {
@@ -248,7 +276,7 @@ const COPY: Partial<Record<Lang, AboutCopy>> = {
       { kind: 'h2', text: 'バージョンとアーカイブ' },
     ],
     versionLine: (v, d) =>
-      `現在のバージョン <span class="font-semibold text-gray-700 dark:text-gray-300">v${v}</span>、最終更新 <span class="font-semibold text-gray-700 dark:text-gray-300">${d}</span>。<br />ソースコードは MIT ライセンス、コンテンツは CC BY 4.0 — 出典の明記をお願いします。`,
+      `現在のバージョン <span class="font-semibold text-gray-700 dark:text-gray-300">v${v}</span>、最終更新 <span class="font-semibold text-gray-700 dark:text-gray-300">${d}</span>。<br />ソースコードは MIT ライセンス、本サイト作成の内容は CC BY 4.0（逐語的な原文を除く。上記「データのライセンス」参照）。`,
     ctaRead: 'コラムを読む',
     ctaSource: 'GitHub ソース',
   },

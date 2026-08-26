@@ -27,6 +27,16 @@
 
 - 修复 levers 自动发现管线的 i18n 漏检：待审核分组改用中文底稿并补齐中英日韩标题；生成器提交前改跑与 CI 一致的字段对齐和 schema 完整性校验，避免再次生成必挂 CI 的 PR。
 
+## 0.25.6 — 2026-08-26
+
+### 数据许可声明改为字段级
+
+- 新增 `DATA-LICENSE.md`（中英）：sgai 自产内容（摘要、译文、分析、whyItMatters）CC BY 4.0；逐字原文（Hansard、部长演讲、视频字幕、政策原文）© 原权利人，仅供引用、不再授权。此前 About 页笼统写「内容 CC BY 4.0」，把不属于本站的原文一并授权了。
+- `LICENSE.md` 版权行补 sgai.md contributors，头部指向 DATA-LICENSE。
+- 新增 `src/utils/license.ts`：`licenseLine(lang)`（五语，zh-tw 走 OpenCC）+ `licenseObject()`，供 About / llms.txt / llms-full.txt 及后续 `.md` 导出、JSON 接口共用。
+- About 页（zh / en / ja）「反馈与更正」前加「数据许可」段；版本行文案同步。
+- `llms.txt` / `llms-full.txt` 元数据加 License 行。
+
 ## 0.25.5 — 2026-08-20
 
 ### 新增长文：新加坡管 AI 的部门有哪些

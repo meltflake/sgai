@@ -12,6 +12,7 @@ import {
   leverPages,
   startupEntityPages,
 } from '~/utils/entity-pages';
+import { licenseLine } from '~/utils/license';
 
 export const prerender = true;
 
@@ -38,6 +39,7 @@ const lines = [
   `Last updated: ${SITE_UPDATED}`,
   `Canonical domain: ${base}`,
   'Layout: EN at bare paths (route default), ZH mirrored under /zh/.',
+  licenseLine('en'),
   '',
   '## Core Sections',
   '',

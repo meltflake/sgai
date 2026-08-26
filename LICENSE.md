@@ -1,6 +1,10 @@
+sgai.md — source code is MIT-licensed (below). Site content and data are
+licensed separately; see DATA-LICENSE.md.
+
 MIT License
 
-Copyright (c) 2023 onWidget
+Copyright (c) 2023 onWidget (AstroWind template)
+Copyright (c) 2026 sgai.md contributors
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
