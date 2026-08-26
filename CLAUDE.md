@@ -616,7 +616,7 @@ echo 'export GITHUB_TOKEN=ghp_xxx' >> ~/.zshrc   # 可选，github-stars 5000 re
 - 改了 `url-map.json` 的任何 URL：跑 `npm run check:skill-urls`（联网，逐条 HEAD）。weekly evals 也跑（`run-all.ts` 的 `skill-urls` stage）。
 - URL 形状铁律：**EN 在裸路径，其余四语在 `/<lang>/` 前缀**（`/policies` vs `/zh/policies`）。2026-08 之前整份 url-map 和 SKILL.md 的 URL 表把 zh / en 写反了。
 - 面向人的入口是 `/agent/`（[src/components/agent/AgentPage.astro](src/components/agent/AgentPage.astro)）；页内的 curl / URL / JSON 样例必须包在 `<div data-i18n-allow-en="agent-api-sample">` 里（marker tag 只认 section/div/article/details/aside/p/span，`pre`/`code` 不算），且样例本身必须纯 ASCII。
-- 面向机器的契约是 [public/openapi.json](public/openapi.json)（线上 `https://sgai.md/openapi.json`，手写、OpenAPI 3.0）。六个 GET 路径全在里面。改了 `src/pages/data/*.ts` 的行结构就要同步改它，并跑 `npx @redocly/cli@latest lint public/openapi.json`。所有 `/data/*.json` 共用 [src/utils/data-export.ts](src/utils/data-export.ts) 的信封（`schemaVersion` / `license` / `count` / `items`），每行带 `links.sgai` 五语页面地址；构建产物层由 `check:data-export` 把门。
+- 面向机器的契约是 [public/openapi.json](public/openapi.json)（线上 `https://sgai.md/openapi.json`，手写、OpenAPI 3.0）。七个 GET 路径（六个 JSON + `debates.csv`）全在里面。改了 `src/pages/data/*.ts` 的行结构就要同步改它，并跑 `npx @redocly/cli@latest lint public/openapi.json`。所有 `/data/*.json` 共用 [src/utils/data-export.ts](src/utils/data-export.ts) 的信封（`schemaVersion` / `license` / `count` / `items`），每行带 `links.sgai` 五语页面地址；构建产物层由 `check:data-export` 把门。
 
 ### 添加新管线的 6 步流程
 

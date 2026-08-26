@@ -6,6 +6,14 @@
 
 ## Unreleased
 
+## 0.26.0 — 2026-08-26
+
+对标 AIHOT 的一整条 PR 栈（#234–#241，计划与执行记录见 [docs/20260825-aihot-learnings.md](docs/20260825-aihot-learnings.md)）。**含破坏性变更**：`/data/*.json` 不再是裸数组，见「数据导出信封」一节。
+
+### 修复 levers 自动发现管线的 i18n 漏检
+
+- 待审核分组改用中文底稿并补齐中英日韩标题；生成器提交前改跑与 CI 一致的字段对齐和 schema 完整性校验，避免再次生成必挂 CI 的 PR。
+
 ### 详情页 Markdown 孪生 + 「报告错误」入口
 
 - 每个辩论 / 政策 / 视频详情页新增 Markdown 孪生：`<页面路径去掉尾斜杠>.md`（如 `/zh/debates/oral-answer-4088.md`）。整条记录一次抓取——标题、日期、相关方、来源、永久链接、许可、为什么重要、摘要、要点、全文（辩论另附 Hansard 英文原文）。此前 agent 想读全文只能啃 200 KB 的 HTML，`llms-full.txt` 又只是链接索引。
@@ -21,7 +29,7 @@
 - **破坏性**：`/data/debates.json`、`/data/policies.json`、`/data/tracker.json` 不再是裸数组。行现在放在 `.items` 里，外面套一层信封：`schemaVersion`（=1）、`dataset`、`siteVersion`、`dataUpdated`、`license`、`attribution`、`count`、`items`。**下游从 `resp[0]` 改成 `resp.items[0]`。** 原有字段一个没删。
 - 每行新增 `links`：`links.sgai` 是这条记录在五种语言下各自的绝对页面地址（en 裸路径，其余走 `/<lang>/` 前缀），`links.source` 是上游原始链接。以前拿到一行数据没法回链具体页面，等于没法引用本站——这是加信封的主因。
 - 新端点：`/data/videos.json`（全部视频，四语标题 / 摘要 / whyItMatters，不含字幕全文）、`/data/records.json`（`harvestAll()` 的每条 record 一行，按 `addedAt` 倒序，跨域合并——更新流的机器版）、`/data/index.json`（数据集目录：地址 + 当前条数 + 一句话说明）。
-- 新增 [public/openapi.json](public/openapi.json)（OpenAPI 3.0，手写，线上 `https://sgai.md/openapi.json`）：六个 GET 路径 + `Envelope` / `Links` / 各数据集 item schema。`npx @redocly/cli lint` 通过。
+- 新增 [public/openapi.json](public/openapi.json)（OpenAPI 3.0，手写，线上 `https://sgai.md/openapi.json`）：七个 GET 路径（六个 JSON + `debates.csv`）+ `Envelope` / `Links` / 各数据集 item schema。`npx @redocly/cli lint` 通过。
 - `public/_headers` 显式加 `/data/*` 规则（`Access-Control-Allow-Origin: *` + `max-age=300, s-maxage=3600`）。线上的 CORS 头此前来自 Cloudflare 侧的全站规则，仓库里没有任何声明——现在这条保证进了 git。
 - 新增 [src/utils/data-export.ts](src/utils/data-export.ts)（`envelope()` / `recordLinks()`）。`dataUpdated` 取 `SITE_UPDATED`（从数据的 `addedAt` 派生），**不用构建时间戳**——否则每次部署所有数据集字节都变，ETag 全废、也没法从文件本身判断数据到底动没动。
 - 新门 `npm run check:data-export`（[scripts/evals/data-export/check.ts](scripts/evals/data-export/check.ts)），挂进 `check:dist`：扫 `dist/data/*.json` 断言信封契约与 `links.sgai` 的五语完整性 + 前缀匹配。13 个单测挂进 `test:lib`。
@@ -71,8 +79,6 @@
 - 抽 `src/utils/update-type-ui.ts`（chip / 标签 / 严格按语言取文案，不回落中文）和 `src/utils/date-format.ts`；删除死代码 `RecentUpdates.astro`。
 - 新单测 `data-files-sync.test.ts` 锁死 `addedAt-coverage` 的 `DATA_FILES` 与派生器 import 的数据文件清单一致。
 - CLAUDE.md：删掉不存在的 `eval:updates-ledger`，rule #7 文件清单补 voices / reg-lookahead / ai-capital。
-
-- 修复 levers 自动发现管线的 i18n 漏检：待审核分组改用中文底稿并补齐中英日韩标题；生成器提交前改跑与 CI 一致的字段对齐和 schema 完整性校验，避免再次生成必挂 CI 的 PR。
 
 ## 0.25.6 — 2026-08-26
 
