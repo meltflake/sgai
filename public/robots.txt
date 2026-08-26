@@ -1,6 +1,10 @@
 User-agent: *
 Allow: /
 
+# AI retrieval bots are allowed everywhere on purpose: this site exists to be
+# cited, and https://sgai.md/agent/ documents the machine interfaces (skill,
+# RSS, JSON/CSV datasets, Markdown twins) so crawling the HTML is rarely needed.
+
 User-agent: GPTBot
 Allow: /
 

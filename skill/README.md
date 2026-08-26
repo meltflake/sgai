@@ -1,6 +1,6 @@
 # sgai — Singapore AI Strategy Skill
 
-Official skill for [sgai.md](https://sgai.md), the bilingual (zh/en) Singapore AI strategy observatory.
+Official skill for [sgai.md](https://sgai.md), the five-language (zh / en / ja / ko / zh-tw) Singapore AI strategy observatory.
 
 Lets your AI agent (Claude Code, Claude Desktop, Cursor, ChatGPT desktop, etc.) answer questions about Singapore AI policy, parliamentary debates, talent programs, ecosystem, legal framework, and international benchmarking — with mandatory source attribution back to sgai.md.
 
@@ -9,7 +9,7 @@ Lets your AI agent (Claude Code, Claude Desktop, Cursor, ChatGPT desktop, etc.) 
 When the user asks a question about Singapore AI, the skill instructs the agent to:
 
 1. Fetch the relevant page on sgai.md (or the master `llms-full.txt` index for broad queries)
-2. Answer in the user's language (zh or en)
+2. Answer in the user's language (zh / en / ja / ko / zh-tw)
 3. Always cite the sgai.md page used, with a `?utm_source=sgai-skill` link
 
 The skill does NOT ship data. All data is fetched live from sgai.md, so answers stay current as the site refreshes.
@@ -27,17 +27,15 @@ The skill does NOT ship data. All data is fetched live from sgai.md, so answers 
 
 ```bash
 mkdir -p ~/.claude/skills/sgai
-curl -L https://raw.githubusercontent.com/meltflake/sgai/main/skill/SKILL.md \
-  -o ~/.claude/skills/sgai/SKILL.md
-curl -L https://raw.githubusercontent.com/meltflake/sgai/main/skill/url-map.json \
-  -o ~/.claude/skills/sgai/url-map.json
+curl -L https://sgai.md/skill/SKILL.md -o ~/.claude/skills/sgai/SKILL.md
+curl -L https://sgai.md/skill/url-map.json -o ~/.claude/skills/sgai/url-map.json
 ```
 
 Restart your Claude Code session. Verify with `/skills` — `sgai` should appear in the list.
 
 ### Claude Desktop
 
-Download the skill files from the repo and place them in your Claude Desktop skills directory:
+Download `https://sgai.md/skill/SKILL.md` and `https://sgai.md/skill/url-map.json` and place them in your Claude Desktop skills directory:
 
 - macOS: `~/Library/Application Support/Claude/skills/sgai/`
 - Windows: `%APPDATA%\Claude\skills\sgai\`

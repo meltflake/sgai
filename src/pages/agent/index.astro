@@ -1,0 +1,18 @@
+---
+// Agent-access page (en) — thin wrapper. Body lives in `src/components/agent/AgentPage.astro`.
+
+import Layout from '~/layouts/PageLayout.astro';
+import AgentPage from '~/components/agent/AgentPage.astro';
+import { t } from '~/i18n';
+
+const lang = 'en' as const;
+
+const metadata = {
+  title: t(lang, 'agentPageTitle'),
+  description: t(lang, 'agentPageDesc'),
+};
+---
+
+<Layout metadata={metadata} breadcrumbs={[{ label: t(lang, 'agentPageTitle') }]} lang={lang}>
+  <AgentPage lang={lang} />
+</Layout>

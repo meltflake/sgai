@@ -447,6 +447,9 @@ export const zh = {
   blogTagTitle: '标签「{tag}」的文章',
   aboutPageTitle: '关于本站',
   aboutPageDesc: '关于新加坡 AI 观察——独立维护的新加坡 AI 战略观察平台。研究方法、利益声明、反馈方式。',
+  navAgent: 'Agent 接入',
+  agentPageTitle: 'Agent 接入',
+  agentPageDesc: 'Skill、RSS、JSON、Markdown 四种方式把新加坡 AI 观察的数据接进你的 Agent——匿名只读，无需 API key。',
   evolutionPageTitle: '政策演进分析',
   evolutionPageDesc: '新加坡 AI 政策演进全景——从 2014 年智慧国家到 2024 年 NAIS 2.0 的战略转型历程。',
   timelinePageTitle: '发展时间线',
@@ -1108,6 +1111,10 @@ export const en: Partial<Record<keyof typeof zh, string>> = {
   aboutPageTitle: 'About',
   aboutPageDesc:
     "About Singapore AI Observatory — an independently-maintained research platform tracking Singapore's AI strategy. Methodology, conflict-of-interest disclosure, feedback channels.",
+  navAgent: 'For agents',
+  agentPageTitle: 'For agents & developers',
+  agentPageDesc:
+    'Four ways to feed Singapore AI Observatory data to your agent — skill, RSS, JSON, Markdown twins. Anonymous, read-only, no API key.',
   evolutionPageTitle: 'Singapore AI Policy Evolution',
   evolutionPageDesc:
     "Singapore's AI policy evolution — the strategic transformation arc from the 2014 Smart Nation Initiative to the 2024 generative AI governance framework.",
@@ -1790,6 +1797,10 @@ export const ja: Partial<Record<keyof typeof zh, string>> = {
   aboutPageTitle: 'このサイトについて',
   aboutPageDesc:
     'シンガポール AI 観測について——独立運営のシンガポール AI 戦略観測プラットフォーム。研究方法、利益声明、フィードバック方法。',
+  navAgent: 'エージェント連携',
+  agentPageTitle: 'エージェント連携',
+  agentPageDesc:
+    'Skill・RSS・JSON・Markdown の 4 つの方法でシンガポール AI 観測のデータをエージェントに接続。匿名・読み取り専用・API キー不要。',
   evolutionPageTitle: '政策変遷分析',
   evolutionPageDesc:
     'シンガポール AI 政策変遷の全体像——2014年スマートネイションから2024年 NAIS 2.0 への戦略転換の軌跡。',
@@ -2463,6 +2474,10 @@ export const ko: Partial<Record<keyof typeof zh, string>> = {
   aboutPageTitle: '사이트 소개',
   aboutPageDesc:
     '싱가포르 AI 옵저버토리 소개 — 독립적으로 유지 관리되는 싱가포르 AI 전략 관찰 플랫폼. 연구 방법론, 이해관계 선언, 피드백 방식.',
+  navAgent: '에이전트 연동',
+  agentPageTitle: '에이전트 연동',
+  agentPageDesc:
+    'Skill·RSS·JSON·Markdown 네 가지 방식으로 싱가포르 AI 관측 데이터를 에이전트에 연결. 익명·읽기 전용·API 키 불필요.',
   evolutionPageTitle: '정책 진화 분석',
   evolutionPageDesc: '싱가포르 AI 정책 진화 종합 전망 — 2014년 스마트 네이션에서 2024년 NAIS 2.0으로의 전략 전환 여정.',
   timelinePageTitle: '발전 타임라인',

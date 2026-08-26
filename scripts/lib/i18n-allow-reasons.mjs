@@ -96,4 +96,12 @@ export const ALLOW_REASONS = {
   // (removed 2026-07: benchmark-drilldown-en-fallback + startup-en-fallback —
   //  entity-pages.ts now synthesizes full ja/ko siblings, so those pages carry
   //  real Korean and the masking markers were deleted from their components.)
+
+  // ── Machine-interface samples (ASCII-only, identical in every locale) ──
+  // /agent/ copy-paste blocks: curl commands, feed/dataset URLs, JSON field
+  // names. Not prose and not a fallback — translating a shell command would
+  // break it, so there is nothing to localize and nothing to leak. Scoped to
+  // the four non-en locales, NOT 'all': on /agent/ (en) the component omits
+  // the marker entirely, so seeing it on an EN page would mean a bug.
+  'agent-api-sample': { attr: 'data-i18n-allow-en', langs: ['zh', 'zh-tw', 'ja', 'ko'] },
 };

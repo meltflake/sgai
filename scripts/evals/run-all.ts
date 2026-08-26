@@ -165,6 +165,16 @@ const STAGES: Stage[] = [
     needsDist: false,
     frequency: 'monthly',
   },
+  // skill-urls — HEAD-check every concrete URL in skill/url-map.json (list
+  // pages plus every policies/debates detail id). The published skill is a
+  // URL contract with third-party agents; a renamed route breaks it silently
+  // until someone's agent 404s. Network-bound, so weekly rather than per-PR.
+  {
+    name: 'skill-urls',
+    cmd: ['npx', 'tsx', 'scripts/skill-url-check.ts'],
+    needsDist: false,
+    frequency: 'weekly',
+  },
 ];
 
 function parseFrequency(argv: string[]): Frequency {
