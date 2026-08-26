@@ -1,0 +1,8 @@
+# Blank issues stay enabled: not every report fits the correction form
+# (feature requests, data-pipeline bugs, broken links).
+#
+# `contact_links` is deliberately absent — GitHub Discussions is not
+# enabled on meltflake/sgai (`gh api repos/meltflake/sgai --jq
+# .has_discussions` → false), and a contact link to a disabled tab is a
+# dead end. Add one here if Discussions is ever turned on.
+blank_issues_enabled: true
