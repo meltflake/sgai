@@ -129,15 +129,23 @@ interface SummarySource {
   summaryEn?: string;
   summaryJa?: string;
   summaryKo?: string;
+  whyItMatters?: string;
+  whyItMattersEn?: string;
+  whyItMattersJa?: string;
+  whyItMattersKo?: string;
 }
 
-/** Summary siblings — strictly per-lang, no zh fallback for en/ja/ko. */
+/**
+ * The feed's one-liner. Prefers the record's `whyItMatters` judgment (why a
+ * reader should care) over its `summary` (what happened) — that is the whole
+ * point of the field. Strictly per-lang, no zh fallback for en/ja/ko.
+ */
 function summaries(r: SummarySource): Pick<Harvested, 'zhSummary' | 'enSummary' | 'jaSummary' | 'koSummary'> {
   return {
-    zhSummary: r.summary || undefined,
-    enSummary: r.summaryEn || undefined,
-    jaSummary: r.summaryJa || undefined,
-    koSummary: r.summaryKo || undefined,
+    zhSummary: r.whyItMatters || r.summary || undefined,
+    enSummary: r.whyItMattersEn || r.summaryEn || undefined,
+    jaSummary: r.whyItMattersJa || r.summaryJa || undefined,
+    koSummary: r.whyItMattersKo || r.summaryKo || undefined,
   };
 }
 

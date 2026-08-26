@@ -6,6 +6,13 @@
 
 ## Unreleased
 
+### 「为什么重要」字段（whyItMatters）四语回填
+
+- `Policy` / `VideoItem` / `Debate` 各加 `whyItMatters` + `En / Ja / Ko`：一句话说清这条对新加坡 AI 战略的意义（含具体数字 / 日期 / 机构），与 `summary`（发生了什么）分开。49 政策 + 84 视频 + 187 辩论整批回填。
+- 新 `scripts/lib/why-it-matters.ts`（`draftWhyItMatters`，sonnet 草稿 + 形状校验 + sha256 缓存）与 `scripts/backfill-why-it-matters.ts`（按 `id` 定位、`summaryKo` 值后插 4 行、写前 TS 解析校验、prettier 回流；`--only / --limit / --dry-run / --force / --concurrency`）。
+- 展示：政策 / 辩论 / 视频详情页摘要下加「为什么重要」块；首页「最近更新」与 RSS 的一句话优先用它；`qa-corpus.txt` 每条追加 `Why it matters:`（Ask AI 语料）。
+- 门：`i18n-pair.ts` 的 `DEFAULT_FIELDS` 加 `whyItMatters`（有 zh 就必须四语），`i18n-config.ts` policy schema 登记（可选字段）。
+
 ### 「最近更新」改为每条一行，变化可见
 
 - `src/utils/derived-updates.ts`：派生条目从「同日同类合并一行（A、B、C 等 N 条）」改为**每条 record 一行**——标题直链、record 自带的一句 summary、record 自己的事件日期（国会 / 发布 / 宣布）与收录日期并列。新增 `harvestAiCapital`：`ai-capital.ts` 自 2026-08-14 起有 `addedAt` 却没有 harvester，9 条资本事件从未上过首页。
