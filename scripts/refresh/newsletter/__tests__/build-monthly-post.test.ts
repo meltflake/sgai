@@ -26,7 +26,7 @@ function u(over: Partial<Update> & { type: UpdateType }): Update {
   } as Update;
 }
 
-test('stats line: counts every present type, in policy→debate→video→speech→people→other order', () => {
+test('stats line: counts every present type, in policy→debate→video→speech→people→longform→other order', () => {
   const updates: Update[] = [
     u({ type: 'people', title: '人物 A', href: '/voices/a/' }),
     u({ type: 'debate', title: '辩论 A', href: '/debates/a/' }),
@@ -38,20 +38,30 @@ test('stats line: counts every present type, in policy→debate→video→speech
     u({ type: 'speech', title: '演讲 A', href: '/speeches/a/' }),
     u({ type: 'ecosystem', title: '生态 A', href: '/ecosystem/a/' }),
     u({ type: 'lever', title: '抓手 A', href: '/levers/1/' }),
+    u({ type: 'longform', title: '长文 A', href: undefined, links: [{ href: '/a/', label: '读', labelEn: 'Read' }] }),
   ];
   const { body, frontmatter } = buildMonthlyPost(updates, OPTS);
   const statsLine = body.split('\n')[0];
 
   assert.match(
     statsLine,
-    /^本月站内更新 10 条：3 政策 · 2 辩论 · 1 视频 · 1 演讲 · 1 人物 · 2 其他 · 阅读约 \d+ 分钟$/
+    /^本月站内更新 11 条：3 政策 · 2 辩论 · 1 视频 · 1 演讲 · 1 人物 · 1 长文 · 2 其他 · 阅读约 \d+ 分钟$/
   );
   // The excerpt is the stats line verbatim (well under the 160-char cap).
   assert.equal(frontmatter.excerpt, statsLine);
 
   // Section headings follow the same order, and only present types appear.
   const headings = body.split('\n').filter((l) => l.startsWith('## '));
-  assert.deepEqual(headings, ['## 本月主线', '## 政策', '## 辩论', '## 视频', '## 演讲', '## 人物', '## 其他']);
+  assert.deepEqual(headings, [
+    '## 本月主线',
+    '## 政策',
+    '## 辩论',
+    '## 视频',
+    '## 演讲',
+    '## 人物',
+    '## 长文',
+    '## 其他',
+  ]);
 });
 
 test('stats line: omits absent types and always carries a reading estimate ≥ 1 minute', () => {
@@ -84,7 +94,7 @@ test('a manual update without href renders unlinked', () => {
   assert.ok(body.includes('- [政策 A](/policies/a/)（2026-08-10）\n'));
 });
 
-test('a manual longform entry links through links[0] and lands in 其他', () => {
+test('a manual longform entry links through links[0] and gets its own 长文 section', () => {
   // Shape of a real MANUAL_UPDATES row: no href, one links[] entry. These
   // come from sortedUpdates(), not deriveUpdates() — the --emit-post path
   // must feed the former or every longform piece of the month disappears.
@@ -105,9 +115,33 @@ test('a manual longform entry links through links[0] and lands in 其他', () =>
   );
   // Only the FIRST link is used as the destination.
   assert.ok(!body.includes('(/about/)'));
-  // longform is not one of the five named sections — it belongs to 其他.
-  assert.equal(sectionOf('longform'), 'other');
-  assert.match(body.split('\n')[0], /^本月站内更新 3 条：1 政策 · 1 视频 · 1 其他 · 阅读约 \d+ 分钟$/);
+  // longform has its own section, between 人物 and 其他.
+  assert.equal(sectionOf('longform'), 'longform');
+  const headings = body.split('\n').filter((l) => l.startsWith('## '));
+  assert.deepEqual(headings, ['## 本月主线', '## 政策', '## 视频', '## 长文']);
+  // The row sits under 长文, not 其他.
+  const longformIdx = body.indexOf('## 长文');
+  assert.ok(longformIdx > -1);
+  assert.ok(body.indexOf('/singapore-ai-agencies-map/') > longformIdx);
+  assert.match(body.split('\n')[0], /^本月站内更新 3 条：1 政策 · 1 视频 · 1 长文 · 阅读约 \d+ 分钟$/);
+});
+
+test('site and fix stay in 其他 while longform splits out', () => {
+  const { body } = buildMonthlyPost(
+    [
+      u({ type: 'site', title: '上线 AI 问答', href: undefined, links: [{ href: '/ask/', label: '看', labelEn: 'See' }] }),
+      u({ type: 'fix', title: '修了个数字', href: undefined, summary: '' }),
+      u({ type: 'longform', title: '长文 B', href: undefined, links: [{ href: '/b/', label: '读', labelEn: 'Read' }] }),
+    ],
+    OPTS
+  );
+  assert.equal(sectionOf('site'), 'other');
+  assert.equal(sectionOf('fix'), 'other');
+  assert.match(body.split('\n')[0], /^本月站内更新 3 条：1 长文 · 2 其他 · 阅读约 \d+ 分钟$/);
+  const other = body.slice(body.indexOf('## 其他'));
+  assert.ok(other.includes('上线 AI 问答'));
+  assert.ok(other.includes('修了个数字'));
+  assert.ok(!other.includes('长文 B'));
 });
 
 test('eventDate is shown when it differs from addedAt, otherwise addedAt', () => {
@@ -131,8 +165,10 @@ test('eventDate is shown when it differs from addedAt, otherwise addedAt', () =>
 test('sectionOf buckets unknown types into 其他', () => {
   assert.equal(sectionOf('policy'), 'policy');
   assert.equal(sectionOf('speech'), 'speech');
+  assert.equal(sectionOf('longform'), 'longform');
   assert.equal(sectionOf('benchmark'), 'other');
   assert.equal(sectionOf('site'), 'other');
+  assert.equal(sectionOf('fix'), 'other');
 });
 
 test('renderPostFile emits a one-line topicIds array and the fixed frontmatter shape', () => {

@@ -19,9 +19,17 @@ import type { Update, UpdateType } from '../../../src/data/updates';
 import { formatEventDate } from '../../../src/utils/date-format';
 
 /** Section buckets, in the order they appear in the post. */
-export type MonthlySection = 'policy' | 'debate' | 'video' | 'speech' | 'people' | 'other';
+export type MonthlySection = 'policy' | 'debate' | 'video' | 'speech' | 'people' | 'longform' | 'other';
 
-export const SECTION_ORDER: MonthlySection[] = ['policy', 'debate', 'video', 'speech', 'people', 'other'];
+export const SECTION_ORDER: MonthlySection[] = [
+  'policy',
+  'debate',
+  'video',
+  'speech',
+  'people',
+  'longform',
+  'other',
+];
 
 const SECTION_LABEL_ZH: Record<MonthlySection, string> = {
   policy: '政策',
@@ -29,10 +37,17 @@ const SECTION_LABEL_ZH: Record<MonthlySection, string> = {
   video: '视频',
   speech: '演讲',
   people: '人物',
+  longform: '长文',
   other: '其他',
 };
 
-/** Which section an update's type falls into. Everything unlisted → 其他. */
+/**
+ * Which section an update's type falls into. `longform` gets its own
+ * section — the month's essays are the part a reader is most likely to have
+ * missed, and burying them in 其他 next to ecosystem rows wastes them. The
+ * other two manual types (`site` / `fix`) are housekeeping and stay in 其他,
+ * as does every unlisted type.
+ */
 export function sectionOf(type: UpdateType): MonthlySection {
   switch (type) {
     case 'policy':
@@ -40,6 +55,7 @@ export function sectionOf(type: UpdateType): MonthlySection {
     case 'video':
     case 'speech':
     case 'people':
+    case 'longform':
       return type;
     default:
       return 'other';
