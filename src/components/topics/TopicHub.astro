@@ -33,11 +33,21 @@ interface PostRow {
   href: string;
   date: string | undefined;
 }
+// Mirror lookup by canonical slug. The glob loader's `id` carries NO file
+// extension and prefixes the locale as either `en/foo` or `en-foo`
+// (loader-version dependent — same caveat src/utils/blog.ts documents), so
+// matching on `/${slug}.md` never hit and the longform group silently
+// rendered empty on every non-zh locale.
+const mirrorSlug = (id: string, l: Lang): string =>
+  id.replace(/\.(md|mdx)$/i, '').replace(new RegExp(`^${l}[/-]`, 'i'), '');
+
 const postRows: PostRow[] = zhSources
   .map((zh) => {
     const slug = zh.id.replace(/^.*\//, '').replace(/\.md$/, '');
     const mirror =
-      postLang === 'zh' ? zh : allPosts.find((p) => (p.data.lang ?? 'zh') === postLang && p.id.endsWith(`/${slug}.md`));
+      postLang === 'zh'
+        ? zh
+        : allPosts.find((p) => (p.data.lang ?? 'zh') === postLang && mirrorSlug(p.id, postLang) === slug);
     if (!mirror) return null;
     const rawTitle = mirror.data.title;
     return {
@@ -80,6 +90,13 @@ const KIND_LABEL_KEY: Record<TopicEntryKind, Parameters<typeof t>[1]> = {
   person: 'updateTypePeople',
 };
 
+// Blog posts are not a TopicEntryKind (they live in the content collection,
+// not the topic graph), but the recent-activity list treats them as one.
+const RECENT_LABEL_KEY: Record<TopicEntryKind | 'longform', Parameters<typeof t>[1]> = {
+  ...KIND_LABEL_KEY,
+  longform: 'updateTypeLongform',
+};
+
 // Hubs render every entry per kind (no preview cap): the topic page is the
 // exhaustive, crawlable authority surface for its topic — that is the SEO
 // point. Rows are compact (title + date), so even ~90-debate topics stay a
@@ -98,6 +115,31 @@ const entryTitle = (e: TopicEntry) => pickLocalized<string>(e, 'title', lang) ||
 // template avoids a pickLocalized<string>() generic, which the Astro/JSX
 // parser would mis-read as a <string> tag.
 const introParas = (pickLocalized<string>(topic, 'intro', lang) || '').split(/\n{2,}/).filter(Boolean);
+
+// ── Recent activity ─────────────────────────────────────────────────────
+// The kind groups below answer "what exists on this topic"; they don't
+// answer "what happened lately", which is the question a returning reader
+// actually has. One merged, date-sorted strip across every kind (posts
+// included) covers that without disturbing the exhaustive groups.
+interface RecentRow {
+  date: string;
+  kind: TopicEntryKind | 'longform';
+  title: string;
+  href: string;
+}
+const recentRows: RecentRow[] = [
+  ...entries
+    .filter((e) => Boolean(e.date))
+    .map((e) => ({ date: e.date as string, kind: e.kind, title: entryTitle(e), href: localizedHref(e.href, lang) })),
+  ...postRows
+    .filter((r) => Boolean(r.date))
+    .map((r) => ({ date: r.date as string, kind: 'longform' as const, title: r.title, href: r.href })),
+]
+  .sort((a, b) => (a.date < b.date ? 1 : -1))
+  .slice(0, 20);
+// Two or three dated rows is not a timeline, it is noise duplicated from
+// the groups right below — hide the section instead.
+const showRecent = recentRows.length >= 3;
 ---
 
 <section class="px-4 py-12 md:py-16 sm:px-6 mx-auto max-w-6xl">
@@ -123,6 +165,34 @@ const introParas = (pickLocalized<string>(topic, 'intro', lang) || '').split(/\n
       {t(lang, 'topicEntriesCount').replace('{count}', String(totalCount))}
     </p>
   </div>
+
+  {/* Recent activity — one merged strip across every kind, newest first. */}
+  {
+    showRecent && (
+      <div class="mb-12">
+        <div class="flex items-baseline justify-between gap-3 mb-3 border-b border-subtle pb-2">
+          <h2 class="font-serif text-lg font-semibold text-gray-900 dark:text-white">
+            {t(lang, 'topicRecentHeading')}
+          </h2>
+        </div>
+        <ul class="space-y-2.5">
+          {recentRows.map((row) => (
+            <li>
+              <a href={row.href} class="group flex items-baseline gap-3">
+                <span class="text-xs text-gray-400 dark:text-gray-500 tabular-nums shrink-0 w-20">{row.date}</span>
+                <span class="shrink-0 text-[11px] leading-4 px-1.5 py-0.5 rounded bg-gray-100 text-gray-600 dark:bg-slate-800 dark:text-gray-400">
+                  {t(lang, RECENT_LABEL_KEY[row.kind])}
+                </span>
+                <span class="text-sm text-gray-800 dark:text-gray-200 group-hover:text-primary transition-colors leading-snug">
+                  {row.title}
+                </span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    )
+  }
 
   <div class="grid gap-x-12 gap-y-10 md:grid-cols-2">
     {/* Posts group first when present — editorial analysis leads. */}

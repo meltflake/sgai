@@ -11,7 +11,18 @@
 
 import { getLangFromPath, t, type Lang } from '~/i18n';
 
+interface Props {
+  /**
+   * Appended to the input id so the same component can appear twice on one
+   * page (the footer renders it site-wide, /updates/ renders it in the body)
+   * without colliding ids breaking the <label for>.
+   */
+  idSuffix?: string;
+}
+const { idSuffix = '' } = Astro.props;
+
 const lang: Lang = getLangFromPath(new URL(Astro.url).pathname);
+const inputId = `bd-email${idSuffix}`;
 
 // TODO(activation): fill in after creating the Buttondown account.
 const BUTTONDOWN_FORM_ID = '';
@@ -26,13 +37,13 @@ const formAction = BUTTONDOWN_FORM_ID
       <h2 class="t-h3 text-gray-900 dark:text-white mb-2">{t(lang, 'newsletterTitle')}</h2>
       <p class="text-sm text-muted mb-4">{t(lang, 'newsletterBlurb')}</p>
       <form action={formAction} method="post" target="popupwindow" class="flex flex-wrap gap-2">
-        <label class="sr-only" for="bd-email">
+        <label class="sr-only" for={inputId}>
           {t(lang, 'newsletterEmailLabel')}
         </label>
         <input
           type="email"
           name="email"
-          id="bd-email"
+          id={inputId}
           required
           placeholder={t(lang, 'newsletterEmailLabel')}
           class="flex-1 min-w-48 px-3 py-2 rounded border border-subtle bg-white dark:bg-slate-800 text-sm"
