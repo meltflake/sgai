@@ -50,7 +50,7 @@ const SKILL_INSTALL = [
   'curl -L https://sgai.md/skill/url-map.json -o ~/.claude/skills/sgai/url-map.json',
 ];
 const RSS_URLS = ['https://sgai.md/updates.rss.xml', 'https://sgai.md/rss.xml'];
-const CURL_SAMPLE = ["curl -s https://sgai.md/data/debates.json | jq '.[0]'"];
+const CURL_SAMPLE = ["curl -s https://sgai.md/data/records.json | jq '.items[0]'"];
 const MARKDOWN_URLS = [
   'https://sgai.md/debates/written-answer-23654.md',
   'https://sgai.md/ja/policies/nais-update-2026.md',
@@ -73,7 +73,7 @@ const COPY: Partial<Record<Lang, AgentCopy>> = {
             items: [
               '<strong>Skill</strong>——一份 Claude 风格的技能文件，告诉你的 agent 什么时候该来查这个站、查完怎么标注来源。',
               '<strong>RSS</strong>——每新增一条记录就多一个 item，盯更新用它，不用爬全站。',
-              '<strong>JSON / CSV</strong>——国会辩论、政策、指标三个数据集的纯文件版本。',
+              '<strong>JSON / CSV</strong>——辩论、政策、指标、视频以及一条跨域更新流的纯文件版本，全部带许可和回链。',
               '<strong>Markdown 孪生页</strong>——每个辩论、政策、视频详情页都有一份去掉版式的 Markdown。',
             ],
           },
@@ -123,13 +123,20 @@ const COPY: Partial<Record<Lang, AgentCopy>> = {
             kind: 'table',
             head: ['文件', '里面是什么'],
             rows: [
+              ['/data/index.json', '数据集目录：每个文件的地址、当前条数和一句话说明。不知道从哪开始就先拿这个。'],
+              ['/data/records.json', '全站带日期的记录，按入库时间倒序，跨域合并——想知道「最近新增了什么」查这个。'],
               ['/data/debates.json', '全部国会辩论记录：id、日期、类型、中英标题与摘要、议题、发言人、原始来源链接。'],
               ['/data/policies.json', '全部政策文件：id、日期、发布机构、中英标题与摘要、来源与 PDF 链接。'],
               ['/data/tracker.json', '六个观测维度的头条数字、排名锚点和指标行。'],
+              ['/data/videos.json', '全部视频：讲者、机构、主题、YouTube 链接，以及四语摘要。不含字幕全文。'],
               ['/data/debates.csv', '辩论数据集的 CSV 版本，方便丢进表格或 notebook。'],
             ],
           },
-          { kind: 'p', html: '取辩论数据集的第一条记录：' },
+          {
+            kind: 'p',
+            html: '除 CSV 外，每个 JSON 都是同一个信封：<code>schemaVersion</code> 标结构版本，<code>license</code> 带着许可条款，正文在 <code>count</code> 和 <code>items</code> 里；每条记录还有 <code>links.sgai</code>——它在五种语言下各自的页面地址，引用时请链这个。完整接口定义见 <a href="/openapi.json">openapi.json</a>。',
+          },
+          { kind: 'p', html: '取更新流里的第一条记录：' },
           { kind: 'code', lines: CURL_SAMPLE },
         ],
       },
@@ -188,7 +195,7 @@ const COPY: Partial<Record<Lang, AgentCopy>> = {
             items: [
               '<strong>Skill</strong> — a Claude-style skill file that tells your agent when to consult this site and how to cite it.',
               '<strong>RSS</strong> — one item per new record, so a watcher can poll instead of crawling.',
-              '<strong>JSON / CSV</strong> — the debate, policy and tracker datasets as plain files.',
+              '<strong>JSON / CSV</strong> — debates, policies, tracker, videos and one cross-domain updates feed as plain files, each carrying its license and links back.',
               '<strong>Markdown twins</strong> — every debate, policy and video page with the layout stripped out.',
             ],
           },
@@ -239,6 +246,14 @@ const COPY: Partial<Record<Lang, AgentCopy>> = {
             head: ['File', 'What is in it'],
             rows: [
               [
+                '/data/index.json',
+                'The dataset catalogue: every file with its URL, current row count and a one-line description. Start here.',
+              ],
+              [
+                '/data/records.json',
+                'Every dated record on the site, newest first, all domains merged — the one to poll for what is new.',
+              ],
+              [
                 '/data/debates.json',
                 'Every parliamentary debate record: id, date, type, Chinese and English title and summary, topics, speakers, source URL.',
               ],
@@ -250,10 +265,18 @@ const COPY: Partial<Record<Lang, AgentCopy>> = {
                 '/data/tracker.json',
                 'The six tracker dimensions with their headline figures, ranking anchors and metric rows.',
               ],
+              [
+                '/data/videos.json',
+                'Every catalogued talk: speaker, affiliation, topic, YouTube URL and four-language summaries. Transcripts are not included.',
+              ],
               ['/data/debates.csv', 'The debate dataset as CSV, for spreadsheets and notebooks.'],
             ],
           },
-          { kind: 'p', html: 'One record out of the debate dataset:' },
+          {
+            kind: 'p',
+            html: 'Every JSON file except the CSV ships the same envelope: <code>schemaVersion</code> pins the shape, <code>license</code> travels with the data, and the rows live under <code>count</code> and <code>items</code>. Each row also carries <code>links.sgai</code> — its page URL in all five languages, which is what you should cite. The full contract is at <a href="/openapi.json">openapi.json</a>.',
+          },
+          { kind: 'p', html: 'The newest record in the feed:' },
           { kind: 'code', lines: CURL_SAMPLE },
         ],
       },
@@ -312,7 +335,7 @@ const COPY: Partial<Record<Lang, AgentCopy>> = {
             items: [
               '<strong>Skill</strong>——いつこのサイトを参照し、どう出典を示すかをエージェントに教える Claude 形式のスキルファイル。',
               '<strong>RSS</strong>——レコードが 1 件増えるごとに item が 1 つ増えます。巡回せずに更新を追えます。',
-              '<strong>JSON / CSV</strong>——議会審議・政策・指標の 3 データセットのプレーンなファイル版。',
+              '<strong>JSON / CSV</strong>——議会審議・政策・指標・動画と、領域横断の更新フィードのプレーンなファイル版。いずれもライセンスと元ページへのリンク付き。',
               '<strong>Markdown 版</strong>——議会審議・政策・動画の詳細ページから体裁を取り除いたもの。',
             ],
           },
@@ -362,6 +385,11 @@ const COPY: Partial<Record<Lang, AgentCopy>> = {
             kind: 'table',
             head: ['ファイル', '中身'],
             rows: [
+              ['/data/index.json', 'データセットの一覧。各ファイルの URL、現在の件数、一行の説明。まずはここから。'],
+              [
+                '/data/records.json',
+                'サイト上の日付を持つ全レコードを領域横断で新しい順に並べたもの。新着を追うならこれ。',
+              ],
               [
                 '/data/debates.json',
                 '議会審議の全レコード：id、日付、種別、中国語と英語のタイトルと要約、論点、発言者、出典 URL。',
@@ -371,10 +399,18 @@ const COPY: Partial<Record<Lang, AgentCopy>> = {
                 '政策文書の全件：id、日付、発行機関、中国語と英語のタイトルと要約、出典と PDF のリンク。',
               ],
               ['/data/tracker.json', '6 つの観測ディメンションの主要数値、ランキングの根拠、指標行。'],
+              [
+                '/data/videos.json',
+                '収録した講演・対談の全件：登壇者、所属、テーマ、YouTube の URL、4 言語の要約。字幕本文は含みません。',
+              ],
               ['/data/debates.csv', '議会審議データセットの CSV 版。表計算やノートブック向け。'],
             ],
           },
-          { kind: 'p', html: '議会審議データセットの先頭 1 件を取得する例：' },
+          {
+            kind: 'p',
+            html: 'CSV を除く各 JSON は同じ封筒に包まれています。<code>schemaVersion</code> が構造の版を示し、<code>license</code> が利用条件を一緒に運び、本体は <code>count</code> と <code>items</code> の中にあります。各レコードには <code>links.sgai</code>（5 言語それぞれのページ URL）が付いており、引用時はこれを指してください。仕様の全文は <a href="/openapi.json">openapi.json</a> にあります。',
+          },
+          { kind: 'p', html: '更新フィードの先頭 1 件を取得する例：' },
           { kind: 'code', lines: CURL_SAMPLE },
         ],
       },
@@ -433,7 +469,7 @@ const COPY: Partial<Record<Lang, AgentCopy>> = {
             items: [
               '<strong>Skill</strong> — 언제 이 사이트를 참조하고 출처를 어떻게 표기할지 에이전트에게 알려주는 Claude 형식 스킬 파일.',
               '<strong>RSS</strong> — 레코드가 하나 늘 때마다 item이 하나 늘어납니다. 크롤링 대신 폴링으로 업데이트를 따라갈 수 있습니다.',
-              '<strong>JSON / CSV</strong> — 국회 심의·정책·지표 세 데이터셋의 순수 파일 버전.',
+              '<strong>JSON / CSV</strong> — 국회 심의·정책·지표·영상과 영역을 가로지르는 업데이트 피드의 순수 파일 버전. 모두 라이선스와 원문 링크를 함께 실었습니다.',
               '<strong>Markdown 판</strong> — 국회 심의·정책·영상 상세 페이지에서 레이아웃을 걷어낸 버전.',
             ],
           },
@@ -484,15 +520,31 @@ const COPY: Partial<Record<Lang, AgentCopy>> = {
             head: ['파일', '내용'],
             rows: [
               [
+                '/data/index.json',
+                '데이터셋 목록: 파일별 URL, 현재 건수, 한 줄 설명. 어디서 시작할지 모르면 여기부터.',
+              ],
+              [
+                '/data/records.json',
+                '사이트의 날짜가 있는 모든 레코드를 영역 구분 없이 최신순으로 모은 것. 새로 올라온 것을 보려면 이것.',
+              ],
+              [
                 '/data/debates.json',
                 '국회 심의 전체 레코드: id, 날짜, 유형, 중국어·영어 제목과 요약, 논점, 발언자, 출처 URL.',
               ],
               ['/data/policies.json', '정책 문서 전체: id, 날짜, 발행 기관, 중국어·영어 제목과 요약, 출처와 PDF 링크.'],
               ['/data/tracker.json', '여섯 개 관측 차원의 대표 수치, 순위 근거, 지표 행.'],
+              [
+                '/data/videos.json',
+                '수록한 강연·대담 전체: 발표자, 소속, 주제, YouTube 링크, 4개 언어 요약. 자막 본문은 없습니다.',
+              ],
               ['/data/debates.csv', '국회 심의 데이터셋의 CSV 판. 스프레드시트와 노트북용.'],
             ],
           },
-          { kind: 'p', html: '국회 심의 데이터셋의 첫 레코드를 가져오는 예:' },
+          {
+            kind: 'p',
+            html: 'CSV를 뺀 모든 JSON은 같은 봉투에 담깁니다. <code>schemaVersion</code>이 구조 버전을 고정하고, <code>license</code>가 이용 조건을 함께 나르며, 본문은 <code>count</code>와 <code>items</code> 안에 있습니다. 각 레코드에는 <code>links.sgai</code>, 즉 다섯 개 언어별 페이지 주소가 들어 있으니 인용할 때는 이것을 쓰세요. 전체 규격은 <a href="/openapi.json">openapi.json</a>에 있습니다.',
+          },
+          { kind: 'p', html: '업데이트 피드의 첫 레코드를 가져오는 예:' },
           { kind: 'code', lines: CURL_SAMPLE },
         ],
       },

@@ -1,2 +1,11 @@
 /_astro/*
   Cache-Control: public, max-age=31536000, immutable
+
+# Machine-readable exports. The live site already answers with
+# `access-control-allow-origin: *` on every path (a Cloudflare-side rule,
+# not this file) — declaring it here makes the guarantee part of the repo,
+# so a dashboard change or a move off Cloudflare cannot silently revoke it.
+# Five-minute browser cache, one-hour edge cache: the data changes weekly.
+/data/*
+  Access-Control-Allow-Origin: *
+  Cache-Control: public, max-age=300, s-maxage=3600
