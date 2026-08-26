@@ -605,6 +605,15 @@ echo 'export GITHUB_TOKEN=ghp_xxx' >> ~/.zshrc   # 可选，github-stars 5000 re
 
 **通知零配置**：所有 PR 自动 `--assignee @me`；scan-only 旧管线（hansard/videos/voices）有新内容时调 `gh issue create --assignee @me`。GitHub 原生送邮件 + web 通知。
 
+### Agent 接入（skill 的发布链路）
+
+`skill/`（`SKILL.md` + `url-map.json` + `README.md`）是**唯一真相源**，进 git、走 review。`public/skill/` 是 `prebuild` / `predev` 时由 [scripts/publish-skill.mjs](scripts/publish-skill.mjs) 拷出来的产物，已 gitignore——**永远不要改 `public/skill/`**，改了下次构建就被覆盖。线上安装地址是 `https://sgai.md/skill/SKILL.md`。
+
+- 改了 `policies.ts` / `debates.ts` 的条目集合：跑 `npm run skill:build-url-map` 回填 `url-map.json` 的 `validIds`，提交生成结果。
+- 改了 `url-map.json` 的任何 URL：跑 `npm run check:skill-urls`（联网，逐条 HEAD）。weekly evals 也跑（`run-all.ts` 的 `skill-urls` stage）。
+- URL 形状铁律：**EN 在裸路径，其余四语在 `/<lang>/` 前缀**（`/policies` vs `/zh/policies`）。2026-08 之前整份 url-map 和 SKILL.md 的 URL 表把 zh / en 写反了。
+- 面向人的入口是 `/agent/`（[src/components/agent/AgentPage.astro](src/components/agent/AgentPage.astro)）；页内的 curl / URL / JSON 样例必须包在 `<div data-i18n-allow-en="agent-api-sample">` 里（marker tag 只认 section/div/article/details/aside/p/span，`pre`/`code` 不算），且样例本身必须纯 ASCII。
+
 ### 添加新管线的 6 步流程
 
 1. `mkdir -p scripts/refresh/<domain>/data/{raw,summaries}`

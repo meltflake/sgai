@@ -6,6 +6,15 @@
 
 ## Unreleased
 
+### Agent 接入：`/agent/` 页面 + 从本站发布 skill
+
+- 新增五语 `/agent/` 页面（`src/components/agent/AgentPage.astro` + `src/pages/agent/index.astro` + `src/pages/[lang]/agent/index.astro`）：一页讲清 skill 安装、RSS、JSON/CSV 数据集、Markdown 孪生页、`llms.txt`，以及署名与核对原始 `sourceUrl` 的规矩。zh / en / ja / ko 四语手写，zh-tw 走 OpenCC 派生。
+- skill 改为从本站发布：`scripts/publish-skill.mjs` 在 `prebuild` / `predev` 把 `skill/` 的三个文件拷进 `public/skill/`（已 gitignore），安装命令从 raw.githubusercontent.com 改为 `https://sgai.md/skill/SKILL.md`。**`skill/` 是唯一真相源，不要改 `public/skill/`。**
+- 修 `skill/url-map.json` 的 zh / en 路径倒挂：本站 EN 在裸路径、ZH 在 `/zh/`，此前整份 map（以及 SKILL.md 的 URL 表、人物示例、footer 模板）写反了。SKILL.md 升到 `0.2.0`，"bilingual (zh/en)" 全部改为五语表述。
+- 新增 `scripts/skill/build-url-map.ts`（`npm run skill:build-url-map`）：从 `policies.ts` / `debates.ts` 回填 `validIds`（49 + 187），让 `check:skill-urls` 能真正展开并逐条 HEAD 检查详情页 URL。补上此前 404 的 `public/schemas/skill-url-map.v1.json`（draft-07）。
+- `llms.txt` / `llms-full.txt` 加 `## Agent interfaces` 段；`robots.txt` 加注释说明 AI 检索爬虫是有意全站放行的。
+- `scripts/evals/run-all.ts` 加 weekly `skill-urls` stage；新 marker reason `agent-api-sample`（仅 zh / zh-tw / ja / ko，非全 locale）并同步 `i18n-allow-reasons.test.ts`。
+
 ### 「为什么重要」字段（whyItMatters）四语回填
 
 - `Policy` / `VideoItem` / `Debate` 各加 `whyItMatters` + `En / Ja / Ko`：一句话说清这条对新加坡 AI 战略的意义（含具体数字 / 日期 / 机构），与 `summary`（发生了什么）分开。49 政策 + 84 视频 + 187 辩论整批回填。

@@ -1,0 +1,643 @@
+---
+// Lang-aware /agent/ page body. Single source for `src/pages/agent/index.astro`
+// and `src/pages/[lang]/agent/index.astro`. Page-local COPY (rather than the
+// global i18n dict) because this is editorial prose, not chrome.
+//
+// Five locales, per CLAUDE.md rule #5 / #13:
+//   zh / en / ja / ko → hand-written COPY entries (no ko→en fallback here).
+//   zh-tw            → derived from COPY.zh via OpenCC (zhTwCopy below).
+//
+// Code samples (`kind: 'code'`) are ASCII shell commands / URLs and stay
+// identical in every locale — translating a curl command would break it. On
+// the four non-en locales they carry the registered `agent-api-sample`
+// marker so the dist EN-sentence scanner doesn't read them as leaked English.
+
+import { localizedHref, type Lang } from '~/i18n';
+import { deepToTraditional, toTraditional } from '~/i18n/opencc';
+import { DATA_LICENSE_URL, licenseLine } from '~/utils/license';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+
+type Block =
+  | { kind: 'p'; html: string }
+  | { kind: 'ul'; items: string[] }
+  | { kind: 'code'; lines: string[] }
+  | { kind: 'table'; head: [string, string]; rows: [string, string][] };
+
+interface Section {
+  id: string;
+  heading: string;
+  blocks: Block[];
+}
+
+interface AgentCopy {
+  eyebrow: string;
+  headline: string;
+  lead: string;
+  sections: Section[];
+  aboutCta: string;
+}
+
+// Sample ids used in the Markdown-twin example. Real records, so the sample
+// URLs resolve; both are the oldest entries in their data file and therefore
+// stable.
+const SKILL_INSTALL = [
+  'mkdir -p ~/.claude/skills/sgai',
+  'curl -L https://sgai.md/skill/SKILL.md -o ~/.claude/skills/sgai/SKILL.md',
+  'curl -L https://sgai.md/skill/url-map.json -o ~/.claude/skills/sgai/url-map.json',
+];
+const RSS_URLS = ['https://sgai.md/updates.rss.xml', 'https://sgai.md/rss.xml'];
+const CURL_SAMPLE = ["curl -s https://sgai.md/data/debates.json | jq '.[0]'"];
+const MARKDOWN_URLS = [
+  'https://sgai.md/debates/written-answer-23654.md',
+  'https://sgai.md/ja/policies/nais-update-2026.md',
+];
+const LLMS_URLS = ['https://sgai.md/llms.txt', 'https://sgai.md/llms-full.txt'];
+
+const COPY: Partial<Record<Lang, AgentCopy>> = {
+  zh: {
+    eyebrow: 'Agent 接入',
+    headline: '把这个站接进你的 Agent',
+    lead: '这个站的每一页都同时给人和机器准备了一份：一个 skill、几条 RSS、几个 JSON/CSV 数据集，以及每个详情页的 Markdown 孪生页。全部匿名、只读，不需要 API key，也不需要注册。',
+    sections: [
+      {
+        id: 'overview',
+        heading: '一共四条路',
+        blocks: [
+          { kind: 'p', html: '按「替你省多少事」从多到少排：' },
+          {
+            kind: 'ul',
+            items: [
+              '<strong>Skill</strong>——一份 Claude 风格的技能文件，告诉你的 agent 什么时候该来查这个站、查完怎么标注来源。',
+              '<strong>RSS</strong>——每新增一条记录就多一个 item，盯更新用它，不用爬全站。',
+              '<strong>JSON / CSV</strong>——国会辩论、政策、指标三个数据集的纯文件版本。',
+              '<strong>Markdown 孪生页</strong>——每个辩论、政策、视频详情页都有一份去掉版式的 Markdown。',
+            ],
+          },
+        ],
+      },
+      {
+        id: 'skill',
+        heading: 'Skill（Claude Code）',
+        blocks: [
+          { kind: 'p', html: '装进 Claude Code：' },
+          { kind: 'code', lines: SKILL_INSTALL },
+          {
+            kind: 'p',
+            html: '重启会话，跑 <code>/skills</code>，列表里应该出现 <code>sgai</code>。这个 skill 本身不带数据——它只告诉 agent 该抓哪一页，并要求每个答案都链回 sgai.md 的具体页面。',
+          },
+          { kind: 'p', html: '装好之后可以这样问：' },
+          {
+            kind: 'ul',
+            items: [
+              '「新加坡哪些部长在国会讲过 AI 安全？」',
+              '「外国创始人在新加坡能申请哪些 AI 相关的政府资助？」',
+              '「新加坡的 AI 治理框架和欧盟 AI Act 差在哪？」',
+            ],
+          },
+        ],
+      },
+      {
+        id: 'rss',
+        heading: 'RSS',
+        blocks: [
+          {
+            kind: 'p',
+            html: '<code>updates.rss.xml</code> 是每新增一条记录一个 item——辩论、政策、视频、创业公司都在里面。<code>rss.xml</code> 只发长文。',
+          },
+          { kind: 'code', lines: RSS_URLS },
+          {
+            kind: 'p',
+            html: '两条都有分语言镜像，前缀分别是 <code>/zh/</code>、<code>/ja/</code>、<code>/ko/</code>、<code>/zh-tw/</code>。比如 <code>https://sgai.md/zh/updates.rss.xml</code>。',
+          },
+        ],
+      },
+      {
+        id: 'data',
+        heading: 'JSON 和 CSV',
+        blocks: [
+          {
+            kind: 'table',
+            head: ['文件', '里面是什么'],
+            rows: [
+              ['/data/debates.json', '全部国会辩论记录：id、日期、类型、中英标题与摘要、议题、发言人、原始来源链接。'],
+              ['/data/policies.json', '全部政策文件：id、日期、发布机构、中英标题与摘要、来源与 PDF 链接。'],
+              ['/data/tracker.json', '六个观测维度的头条数字、排名锚点和指标行。'],
+              ['/data/debates.csv', '辩论数据集的 CSV 版本，方便丢进表格或 notebook。'],
+            ],
+          },
+          { kind: 'p', html: '取辩论数据集的第一条记录：' },
+          { kind: 'code', lines: CURL_SAMPLE },
+        ],
+      },
+      {
+        id: 'markdown',
+        heading: 'Markdown 孪生页',
+        blocks: [
+          {
+            kind: 'p',
+            html: '每个辩论、政策、视频详情页都有一份 Markdown 版本：把路径末尾的斜杠换成 <code>.md</code> 即可。内容一样，没有导航也没有样式，读起来更省 token，引用也更干净。',
+          },
+          { kind: 'code', lines: MARKDOWN_URLS },
+        ],
+      },
+      {
+        id: 'llms',
+        heading: 'llms.txt',
+        blocks: [
+          {
+            kind: 'p',
+            html: '<code>llms.txt</code> 是给模型看的简版站点地图；<code>llms-full.txt</code> 把每一页连同一句话描述全列出来。不知道该从哪查起，就先抓完整那份。',
+          },
+          { kind: 'code', lines: LLMS_URLS },
+        ],
+      },
+      {
+        id: 'rules',
+        heading: '几条规矩',
+        blocks: [
+          {
+            kind: 'ul',
+            items: [
+              '<strong>署名，并链到你实际用的那一页</strong>，不要只链首页。',
+              '<strong>数字、政策原文、引语，用之前先回到页面上标的 <code>sourceUrl</code> 核一遍。</strong>本站的摘要和译文由人和模型共同产出，出入以原始文件为准。',
+              '<strong>遵守 <code>robots.txt</code>。</strong>本站对 AI 检索类爬虫是全站放行的，这是有意为之。',
+              '<strong>不要整站镜像。</strong>需要哪页抓哪页——数据每周都在变。',
+            ],
+          },
+        ],
+      },
+    ],
+    aboutCta: '关于本站',
+  },
+  en: {
+    eyebrow: 'For agents',
+    headline: 'Use this site from an agent',
+    lead: 'Every page here ships in two forms — one for people, one for machines: a skill, RSS feeds, JSON and CSV datasets, and a Markdown twin of every detail page. All of it is anonymous, read-only, and needs no API key or sign-up.',
+    sections: [
+      {
+        id: 'overview',
+        heading: 'Four ways in',
+        blocks: [
+          { kind: 'p', html: 'Roughly ordered by how much work each one saves you:' },
+          {
+            kind: 'ul',
+            items: [
+              '<strong>Skill</strong> — a Claude-style skill file that tells your agent when to consult this site and how to cite it.',
+              '<strong>RSS</strong> — one item per new record, so a watcher can poll instead of crawling.',
+              '<strong>JSON / CSV</strong> — the debate, policy and tracker datasets as plain files.',
+              '<strong>Markdown twins</strong> — every debate, policy and video page with the layout stripped out.',
+            ],
+          },
+        ],
+      },
+      {
+        id: 'skill',
+        heading: 'Skill (Claude Code)',
+        blocks: [
+          { kind: 'p', html: 'Install it into Claude Code:' },
+          { kind: 'code', lines: SKILL_INSTALL },
+          {
+            kind: 'p',
+            html: 'Restart the session and run <code>/skills</code> — <code>sgai</code> should be in the list. The skill ships no data of its own: it tells the agent which page to fetch, and requires every answer to link back to the specific sgai.md page it used.',
+          },
+          { kind: 'p', html: 'Then ask, for example:' },
+          {
+            kind: 'ul',
+            items: [
+              '&ldquo;Which Singapore ministers have spoken on AI safety in Parliament?&rdquo;',
+              '&ldquo;What AI grants can a foreign founder apply for in Singapore?&rdquo;',
+              '&ldquo;How does Singapore&rsquo;s AI governance compare with the EU AI Act?&rdquo;',
+            ],
+          },
+        ],
+      },
+      {
+        id: 'rss',
+        heading: 'RSS',
+        blocks: [
+          {
+            kind: 'p',
+            html: '<code>updates.rss.xml</code> carries one item per new record — debates, policies, videos, startups. <code>rss.xml</code> carries longform posts only.',
+          },
+          { kind: 'code', lines: RSS_URLS },
+          {
+            kind: 'p',
+            html: 'Both have a per-locale mirror under the language prefix — <code>/zh/</code>, <code>/ja/</code>, <code>/ko/</code>, <code>/zh-tw/</code>. For example <code>https://sgai.md/zh/updates.rss.xml</code>.',
+          },
+        ],
+      },
+      {
+        id: 'data',
+        heading: 'JSON and CSV',
+        blocks: [
+          {
+            kind: 'table',
+            head: ['File', 'What is in it'],
+            rows: [
+              [
+                '/data/debates.json',
+                'Every parliamentary debate record: id, date, type, Chinese and English title and summary, topics, speakers, source URL.',
+              ],
+              [
+                '/data/policies.json',
+                'Every policy document: id, date, issuing body, Chinese and English title and summary, source and PDF links.',
+              ],
+              [
+                '/data/tracker.json',
+                'The six tracker dimensions with their headline figures, ranking anchors and metric rows.',
+              ],
+              ['/data/debates.csv', 'The debate dataset as CSV, for spreadsheets and notebooks.'],
+            ],
+          },
+          { kind: 'p', html: 'One record out of the debate dataset:' },
+          { kind: 'code', lines: CURL_SAMPLE },
+        ],
+      },
+      {
+        id: 'markdown',
+        heading: 'Markdown twins',
+        blocks: [
+          {
+            kind: 'p',
+            html: 'Every debate, policy and video detail page has a Markdown version: take the same path, drop the trailing slash, add <code>.md</code>. Same content, no navigation and no styling — cheaper to read and cleaner to quote.',
+          },
+          { kind: 'code', lines: MARKDOWN_URLS },
+        ],
+      },
+      {
+        id: 'llms',
+        heading: 'llms.txt',
+        blocks: [
+          {
+            kind: 'p',
+            html: '<code>llms.txt</code> is a short site map written for models; <code>llms-full.txt</code> lists every page with a one-line description. Fetch the full one first when you do not yet know where to look.',
+          },
+          { kind: 'code', lines: LLMS_URLS },
+        ],
+      },
+      {
+        id: 'rules',
+        heading: 'Ground rules',
+        blocks: [
+          {
+            kind: 'ul',
+            items: [
+              '<strong>Attribute, and link to the specific page you used</strong> — not to the homepage.',
+              '<strong>Verify numbers, policy text and quotations against the original <code>sourceUrl</code> on the page before relying on them.</strong> Summaries and translations here are produced by people and models together; the original document always wins.',
+              '<strong>Respect <code>robots.txt</code>.</strong> AI retrieval bots are allowed everywhere on this site, deliberately.',
+              '<strong>Do not mirror the site.</strong> Fetch the pages you need when you need them — the data changes weekly.',
+            ],
+          },
+        ],
+      },
+    ],
+    aboutCta: 'About this site',
+  },
+  ja: {
+    eyebrow: 'エージェント連携',
+    headline: 'このサイトをエージェントから使う',
+    lead: 'このサイトのページは人間向けと機械向けの二本立てです。skill、RSS、JSON と CSV のデータセット、そして詳細ページごとの Markdown 版があります。すべて匿名・読み取り専用で、API キーも登録も不要です。',
+    sections: [
+      {
+        id: 'overview',
+        heading: '入口は 4 つ',
+        blocks: [
+          { kind: 'p', html: '手間を省いてくれる度合いが大きい順に並べています。' },
+          {
+            kind: 'ul',
+            items: [
+              '<strong>Skill</strong>——いつこのサイトを参照し、どう出典を示すかをエージェントに教える Claude 形式のスキルファイル。',
+              '<strong>RSS</strong>——レコードが 1 件増えるごとに item が 1 つ増えます。巡回せずに更新を追えます。',
+              '<strong>JSON / CSV</strong>——議会審議・政策・指標の 3 データセットのプレーンなファイル版。',
+              '<strong>Markdown 版</strong>——議会審議・政策・動画の詳細ページから体裁を取り除いたもの。',
+            ],
+          },
+        ],
+      },
+      {
+        id: 'skill',
+        heading: 'Skill（Claude Code）',
+        blocks: [
+          { kind: 'p', html: 'Claude Code に入れる手順：' },
+          { kind: 'code', lines: SKILL_INSTALL },
+          {
+            kind: 'p',
+            html: 'セッションを再起動して <code>/skills</code> を実行すると、一覧に <code>sgai</code> が出ます。このスキル自体はデータを持ちません。どのページを取得すべきかを指示し、回答ごとに sgai.md の該当ページへリンクすることを求めるだけです。',
+          },
+          { kind: 'p', html: '導入後は、たとえばこう聞けます。' },
+          {
+            kind: 'ul',
+            items: [
+              '「シンガポールのどの大臣が議会で AI の安全性について発言しましたか？」',
+              '「外国人創業者がシンガポールで申請できる AI 関連の政府助成は？」',
+              '「シンガポールの AI ガバナンスは EU AI Act とどう違いますか？」',
+            ],
+          },
+        ],
+      },
+      {
+        id: 'rss',
+        heading: 'RSS',
+        blocks: [
+          {
+            kind: 'p',
+            html: '<code>updates.rss.xml</code> は新しいレコード 1 件につき item が 1 つ——議会審議・政策・動画・スタートアップが対象です。<code>rss.xml</code> は長文記事のみを配信します。',
+          },
+          { kind: 'code', lines: RSS_URLS },
+          {
+            kind: 'p',
+            html: 'どちらも言語プレフィックス付きのミラーがあります（<code>/zh/</code>、<code>/ja/</code>、<code>/ko/</code>、<code>/zh-tw/</code>）。例：<code>https://sgai.md/ja/updates.rss.xml</code>。',
+          },
+        ],
+      },
+      {
+        id: 'data',
+        heading: 'JSON と CSV',
+        blocks: [
+          {
+            kind: 'table',
+            head: ['ファイル', '中身'],
+            rows: [
+              [
+                '/data/debates.json',
+                '議会審議の全レコード：id、日付、種別、中国語と英語のタイトルと要約、論点、発言者、出典 URL。',
+              ],
+              [
+                '/data/policies.json',
+                '政策文書の全件：id、日付、発行機関、中国語と英語のタイトルと要約、出典と PDF のリンク。',
+              ],
+              ['/data/tracker.json', '6 つの観測ディメンションの主要数値、ランキングの根拠、指標行。'],
+              ['/data/debates.csv', '議会審議データセットの CSV 版。表計算やノートブック向け。'],
+            ],
+          },
+          { kind: 'p', html: '議会審議データセットの先頭 1 件を取得する例：' },
+          { kind: 'code', lines: CURL_SAMPLE },
+        ],
+      },
+      {
+        id: 'markdown',
+        heading: 'Markdown 版',
+        blocks: [
+          {
+            kind: 'p',
+            html: '議会審議・政策・動画の詳細ページには Markdown 版があります。同じパスの末尾のスラッシュを <code>.md</code> に置き換えるだけです。内容は同じでナビゲーションも装飾もないため、読み込みが軽く引用もきれいです。',
+          },
+          { kind: 'code', lines: MARKDOWN_URLS },
+        ],
+      },
+      {
+        id: 'llms',
+        heading: 'llms.txt',
+        blocks: [
+          {
+            kind: 'p',
+            html: '<code>llms.txt</code> はモデル向けの簡易サイトマップ、<code>llms-full.txt</code> は全ページを 1 行説明付きで並べたものです。どこを見ればよいか分からないときは、まず後者を取得してください。',
+          },
+          { kind: 'code', lines: LLMS_URLS },
+        ],
+      },
+      {
+        id: 'rules',
+        heading: '守ってほしいこと',
+        blocks: [
+          {
+            kind: 'ul',
+            items: [
+              '<strong>出典を示し、実際に使ったページへリンクしてください。</strong>トップページへのリンクではなく。',
+              '<strong>数値・政策の条文・引用は、利用前にページ上の <code>sourceUrl</code> で原典を確認してください。</strong>当サイトの要約と翻訳は人とモデルの共同作業です。食い違う場合は原典が優先します。',
+              '<strong><code>robots.txt</code> を尊重してください。</strong>AI 検索系のクローラーは全ページ許可しています。これは意図的な設定です。',
+              '<strong>サイト全体のミラーは作らないでください。</strong>必要なページを必要なときに取得してください。データは毎週変わります。',
+            ],
+          },
+        ],
+      },
+    ],
+    aboutCta: 'このサイトについて',
+  },
+  ko: {
+    eyebrow: '에이전트 연동',
+    headline: '이 사이트를 에이전트에서 사용하기',
+    lead: '이 사이트의 모든 페이지는 사람용과 기계용 두 가지로 제공됩니다. skill, RSS, JSON·CSV 데이터셋, 그리고 상세 페이지마다 있는 Markdown 판입니다. 전부 익명·읽기 전용이며 API 키도 가입도 필요 없습니다.',
+    sections: [
+      {
+        id: 'overview',
+        heading: '들어오는 길 네 가지',
+        blocks: [
+          { kind: 'p', html: '수고를 덜어주는 정도가 큰 순서대로 정리했습니다.' },
+          {
+            kind: 'ul',
+            items: [
+              '<strong>Skill</strong> — 언제 이 사이트를 참조하고 출처를 어떻게 표기할지 에이전트에게 알려주는 Claude 형식 스킬 파일.',
+              '<strong>RSS</strong> — 레코드가 하나 늘 때마다 item이 하나 늘어납니다. 크롤링 대신 폴링으로 업데이트를 따라갈 수 있습니다.',
+              '<strong>JSON / CSV</strong> — 국회 심의·정책·지표 세 데이터셋의 순수 파일 버전.',
+              '<strong>Markdown 판</strong> — 국회 심의·정책·영상 상세 페이지에서 레이아웃을 걷어낸 버전.',
+            ],
+          },
+        ],
+      },
+      {
+        id: 'skill',
+        heading: 'Skill (Claude Code)',
+        blocks: [
+          { kind: 'p', html: 'Claude Code에 설치하는 방법:' },
+          { kind: 'code', lines: SKILL_INSTALL },
+          {
+            kind: 'p',
+            html: '세션을 다시 시작하고 <code>/skills</code>를 실행하면 목록에 <code>sgai</code>가 보입니다. 이 스킬 자체는 데이터를 담고 있지 않습니다. 어떤 페이지를 가져올지 알려주고, 모든 답변이 사용한 sgai.md 페이지로 링크하도록 요구할 뿐입니다.',
+          },
+          { kind: 'p', html: '설치한 뒤에는 이렇게 물어볼 수 있습니다.' },
+          {
+            kind: 'ul',
+            items: [
+              '「싱가포르의 어느 장관이 국회에서 AI 안전에 대해 발언했나요?」',
+              '「외국인 창업자가 싱가포르에서 신청할 수 있는 AI 관련 정부 지원금은?」',
+              '「싱가포르의 AI 거버넌스는 EU AI Act와 어떻게 다른가요?」',
+            ],
+          },
+        ],
+      },
+      {
+        id: 'rss',
+        heading: 'RSS',
+        blocks: [
+          {
+            kind: 'p',
+            html: '<code>updates.rss.xml</code>은 새 레코드 하나마다 item 하나입니다 — 국회 심의·정책·영상·스타트업이 대상입니다. <code>rss.xml</code>은 장문 글만 내보냅니다.',
+          },
+          { kind: 'code', lines: RSS_URLS },
+          {
+            kind: 'p',
+            html: '둘 다 언어 접두사별 미러가 있습니다 — <code>/zh/</code>, <code>/ja/</code>, <code>/ko/</code>, <code>/zh-tw/</code>. 예: <code>https://sgai.md/ko/updates.rss.xml</code>.',
+          },
+        ],
+      },
+      {
+        id: 'data',
+        heading: 'JSON과 CSV',
+        blocks: [
+          {
+            kind: 'table',
+            head: ['파일', '내용'],
+            rows: [
+              [
+                '/data/debates.json',
+                '국회 심의 전체 레코드: id, 날짜, 유형, 중국어·영어 제목과 요약, 논점, 발언자, 출처 URL.',
+              ],
+              ['/data/policies.json', '정책 문서 전체: id, 날짜, 발행 기관, 중국어·영어 제목과 요약, 출처와 PDF 링크.'],
+              ['/data/tracker.json', '여섯 개 관측 차원의 대표 수치, 순위 근거, 지표 행.'],
+              ['/data/debates.csv', '국회 심의 데이터셋의 CSV 판. 스프레드시트와 노트북용.'],
+            ],
+          },
+          { kind: 'p', html: '국회 심의 데이터셋의 첫 레코드를 가져오는 예:' },
+          { kind: 'code', lines: CURL_SAMPLE },
+        ],
+      },
+      {
+        id: 'markdown',
+        heading: 'Markdown 판',
+        blocks: [
+          {
+            kind: 'p',
+            html: '국회 심의·정책·영상 상세 페이지에는 Markdown 판이 있습니다. 같은 경로에서 끝의 슬래시를 <code>.md</code>로 바꾸면 됩니다. 내용은 같고 내비게이션과 스타일이 없어 읽기 부담이 적고 인용하기도 깔끔합니다.',
+          },
+          { kind: 'code', lines: MARKDOWN_URLS },
+        ],
+      },
+      {
+        id: 'llms',
+        heading: 'llms.txt',
+        blocks: [
+          {
+            kind: 'p',
+            html: '<code>llms.txt</code>는 모델용 간략 사이트맵이고, <code>llms-full.txt</code>는 모든 페이지를 한 줄 설명과 함께 나열합니다. 어디를 봐야 할지 모를 때는 전체 버전을 먼저 가져오세요.',
+          },
+          { kind: 'code', lines: LLMS_URLS },
+        ],
+      },
+      {
+        id: 'rules',
+        heading: '지켜야 할 것',
+        blocks: [
+          {
+            kind: 'ul',
+            items: [
+              '<strong>출처를 표기하고, 실제로 사용한 페이지로 링크하세요.</strong> 홈페이지가 아니라요.',
+              '<strong>수치·정책 원문·인용문은 사용하기 전에 페이지에 표시된 <code>sourceUrl</code>로 원본을 확인하세요.</strong> 이곳의 요약과 번역은 사람과 모델이 함께 만든 것이며, 어긋날 때는 원본이 우선입니다.',
+              '<strong><code>robots.txt</code>를 지켜주세요.</strong> AI 검색 봇은 사이트 전체에서 허용하고 있으며, 이는 의도한 설정입니다.',
+              '<strong>사이트 전체를 미러링하지 마세요.</strong> 필요한 페이지를 필요할 때 가져오세요. 데이터는 매주 바뀝니다.',
+            ],
+          },
+        ],
+      },
+    ],
+    aboutCta: '사이트 소개',
+  },
+};
+
+// zh-tw is derived from zh via OpenCC (CLAUDE.md rule #10) — never an EN
+// fallback. `deepToTraditional` walks the section tree; the ASCII code lines
+// pass through unchanged.
+function zhTwCopy(zh: AgentCopy): AgentCopy {
+  return {
+    eyebrow: toTraditional(zh.eyebrow),
+    headline: toTraditional(zh.headline),
+    lead: toTraditional(zh.lead),
+    sections: deepToTraditional(zh.sections),
+    aboutCta: toTraditional(zh.aboutCta),
+  };
+}
+
+const c = lang === 'zh-tw' ? zhTwCopy(COPY.zh!) : COPY[lang]!;
+
+// The code blocks are ASCII shell / URL samples, identical in every locale.
+// On the four non-en locales they need the registered `agent-api-sample`
+// marker so the dist EN-sentence scanner skips them; on the EN page there is
+// nothing to suppress, and the reason is deliberately not registered for `en`
+// (an unexpected locale for a marker is itself a reported violation).
+// This is a marker toggle, not localized copy — every locale renders the same
+// bytes inside the block.
+const sampleAttrs: Record<string, string> = {};
+if (lang !== 'en') sampleAttrs['data-i18n-allow-en'] = 'agent-api-sample';
+
+// licenseLine() ends with the bare DATA-LICENSE URL. Rendered as text it is
+// both unclickable and read as a stray English sentence by the ja/ko dist
+// scanner, so swap it for a link with a one-token label (same treatment the
+// About page gives it).
+const licenseHtml = licenseLine(lang).replace(
+  DATA_LICENSE_URL,
+  `<a href="${DATA_LICENSE_URL}" target="_blank" rel="noopener" class="text-primary hover:text-secondary">DATA-LICENSE</a>`
+);
+---
+
+<article class="prose prose-lg dark:prose-invert max-w-3xl mx-auto px-4 sm:px-6 py-12 md:py-16 font-serif">
+  <p class="not-prose text-xs uppercase tracking-[0.18em] text-primary font-semibold mb-4">{c.eyebrow}</p>
+  <h1 class="t-display !mb-6 not-prose">{c.headline}</h1>
+
+  <p class="lead !text-lg md:!text-xl !leading-[1.85] text-gray-700 dark:text-gray-300">{c.lead}</p>
+
+  {
+    c.sections.map((s) => (
+      <section id={s.id}>
+        <h2>{s.heading}</h2>
+        {s.blocks.map((b) => {
+          if (b.kind === 'p') return <p set:html={b.html} />;
+          if (b.kind === 'ul')
+            return (
+              <ul>
+                {b.items.map((it) => (
+                  <li set:html={it} />
+                ))}
+              </ul>
+            );
+          if (b.kind === 'code')
+            return (
+              <div
+                class="not-prose my-6 overflow-x-auto rounded-md border border-subtle bg-gray-50 dark:bg-slate-900"
+                {...sampleAttrs}
+              >
+                <pre class="!m-0 !bg-transparent p-4 text-sm leading-relaxed">
+                  <code>{b.lines.join('\n')}</code>
+                </pre>
+              </div>
+            );
+          return (
+            <div class="overflow-x-auto">
+              <table class="text-sm">
+                <thead>
+                  <tr>
+                    <th>{b.head[0]}</th>
+                    <th>{b.head[1]}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {b.rows.map(([file, desc]) => (
+                    <tr>
+                      <td>
+                        <code>{file}</code>
+                      </td>
+                      <td>{desc}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          );
+        })}
+        {s.id === 'overview' && (
+          <p
+            class="not-prose text-sm text-muted border-t border-subtle pt-4 mt-6 leading-relaxed"
+            set:html={licenseHtml}
+          />
+        )}
+      </section>
+    ))
+  }
+
+  <p class="not-prose mt-12 text-sm">
+    <a href={localizedHref('/about/', lang)} class="text-primary hover:text-secondary">{c.aboutCta}</a>
+  </p>
+</article>

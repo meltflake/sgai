@@ -36,6 +36,7 @@ const labelKeys = {
   updates: 'updatesNav',
   topics: 'fpBrowseByTopic',
   ask: 'navAsk',
+  agent: 'navAgent',
 } as const;
 
 function lh(path: string, lang: Lang): string {
@@ -128,6 +129,9 @@ export function getFooterData(lang: Lang) {
           { text: t(lang, labelKeys.opensource), href: lh('/opensource', lang) },
           { text: t(lang, labelKeys.communityOpensource), href: lh('/community-opensource', lang) },
           { text: t(lang, labelKeys.benchmarking), href: lh('/benchmarking', lang) },
+          // Machine interfaces (skill / RSS / JSON / Markdown twins) belong
+          // with the other data entry points.
+          { text: t(lang, labelKeys.agent), href: localizedHref('/agent/', lang) },
         ],
       },
       {
@@ -145,7 +149,9 @@ export function getFooterData(lang: Lang) {
         ],
       },
     ],
-    secondaryLinks: [],
+    // Rendered next to the site name in the footer's left column. `/agent/`
+    // sits here too so the machine-interface doc is one click from anywhere.
+    secondaryLinks: [{ text: t(lang, labelKeys.agent), href: localizedHref('/agent/', lang) }],
     socialLinks: [
       { ariaLabel: 'Github', icon: 'tabler:brand-github', href: 'https://github.com/meltflake/sgai' },
       { ariaLabel: 'RSS', icon: 'tabler:rss', href: getAsset(localizedHref('/rss.xml', lang)) },

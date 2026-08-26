@@ -51,6 +51,14 @@ ${licenseLine('en')}
 - ${base}/community-opensource/ — ${communityOpenSourceCount} community open-source project profiles from universities, corporate labs, and startups.
 - ${base}/references/ — Official sources, reports, datasets, and research references.
 
+## Agent interfaces
+
+- ${base}/agent/ — how to use sgai from an agent (skill / RSS / JSON / Markdown twins); zh mirror at ${base}/zh/agent/.
+- ${base}/skill/SKILL.md — Claude-style skill; url map at ${base}/skill/url-map.json.
+- ${base}/data/debates.json, ${base}/data/policies.json, ${base}/data/tracker.json, ${base}/data/debates.csv — machine-readable datasets.
+- ${base}/updates.rss.xml — one RSS item per new record (zh/ja/ko/zh-tw mirrors under /<lang>/).
+- Markdown twin of every debate / policy / video page: same path without the trailing slash, plus .md (e.g. ${base}/debates/<id>.md).
+
 ## Content Notes
 
 - Pages are statically rendered by Astro; core text, headings, metadata, and JSON-LD are present in raw HTML.
