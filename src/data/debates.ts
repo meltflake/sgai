@@ -88,6 +88,14 @@ export const debates: Debate[] = [
     summaryEn: `Rachel Ong filed a written question to the Ministry of Digital Development and Information: (a) whether platforms directed by the Online Safety Commission (OSC) to remove verified non-consensual intimate images, including sexualised deepfakes, will also be required to implement stay-down measures such as hash-matching to prevent re-uploads or redistribution; and (b) what powers OSC has to prevent such content from remaining accessible globally, since access-disabling directions only pertain to Singapore end-users. Minister Josephine Teo replied that, on a valid report, the Commissioner of Online Safety is empowered to direct Online Service Providers (OSPs) to disable Singapore users' access to the specified harmful material, and the direction may be extended to identical copies on the platform. The Commissioner will not mandate specific technologies as long as the required outcome is achieved; non-compliance is an offence. Directions bind only access by Singapore users, but OSPs may remove access for others under their own policies and community guidelines.`,
     summaryJa: `レイチェル・オン(Rachel Ong)議員はデジタル発展・情報省に書面で質問した。(a) オンライン安全委員会(OSC)から非同意の親密画像(性的ディープフェイクを含む)の削除を指示されたプラットフォームは、ハッシュ照合などの再アップロード防止(stay-down)措置も義務づけられるか、(b) アクセス無効化指令はシンガポール利用者のみに及ぶため、こうしたコンテンツが世界的にアクセス可能なまま残るのを防ぐ権限を OSC は持つか、である。ジョセフィン・テオ大臣は、有効な通報を受けると、オンライン安全専門官は法により、オンラインサービス提供者(OSP)に対し指定の有害コンテンツへのシンガポール利用者のアクセスを遮断するよう指示でき、その指示はプラットフォーム上の同一コピーにも拡張し得ると答弁した。求める結果が達成される限り専門官は特定の技術を義務づけず、違反は犯罪となる。指示はシンガポール利用者のアクセスのみを拘束するが、OSP は自らの方針とコミュニティガイドラインに基づき他の利用者のアクセスを削除できる。`,
     summaryKo: `레이철 옹(Rachel Ong) 의원은 디지털발전정보부에 서면 질의했다. (a) 온라인안전위원회(OSC)로부터 비동의 친밀 이미지(성적 딥페이크 포함) 삭제를 지시받은 플랫폼이 해시 매칭 등 재게시 방지(stay-down) 조치도 의무화되는지, (b) 접근 차단 지시는 싱가포르 이용자에게만 적용되므로 이런 콘텐츠가 전 세계적으로 접근 가능한 채 남는 것을 막을 권한을 OSC가 갖는지이다. 조세핀 테오 장관은, 유효한 신고를 받으면 온라인안전위원은 법에 따라 온라인서비스제공자(OSP)에게 지정된 유해 콘텐츠에 대한 싱가포르 이용자의 접근을 차단하도록 지시할 수 있고, 그 지시는 플랫폼상의 동일 사본으로 확장될 수 있다고 답했다. 요구되는 결과가 달성되는 한 위원은 특정 기술을 강제하지 않으며, 위반은 범죄다. 지시는 싱가포르 이용자의 접근만 구속하지만, OSP는 자체 정책과 커뮤니티 가이드라인에 따라 다른 이용자의 접근을 삭제할 수 있다.`,
+    whyItMatters:
+      'OSC 可将下架令扩展到同一内容的所有副本且违令即属刑事犯罪,但效力只覆盖新加坡用户,全球下架仍系于平台自愿',
+    whyItMattersEn:
+      'OSC can extend removal orders to all copies of the same content and non-compliance constitutes a criminal offence, but its effect only covers Singapore users; global removal still depends on platform voluntary compliance.',
+    whyItMattersJa:
+      'OSC はコンテンツ削除令を同一内容のあらゆるコピーに拡大でき、違令は刑事犯罪に該当しますが、効力はシンガポール利用者のみに及び、全世界での削除はプラットフォームの自発的判断に委ねられています',
+    whyItMattersKo:
+      'OSC는 동일 콘텐츠의 모든 복사본으로 폐기령을 확대할 수 있으며 위반은 형사범죄가 되지만, 효력은 싱가포르 사용자에만 적용되고 전 지구적 폐기는 여전히 플랫폼의 자발성에 달려 있습니다.',
     keyPoints: [
       `在线安全专员可责令平台对新加坡用户禁用访问指定有害内容,并可延伸覆盖平台上的相同副本`,
       `只要达到指令结果,不强制指定技术手段(如哈希比对);违令即属犯罪`,
@@ -150,6 +158,14 @@ export const debates: Debate[] = [
     summaryEn: `Rachel Ong filed a written question to the Ministry of Digital Development and Information: while testing standards and technical solutions to manage AI-related risks are still developing, (a) whether the Government is studying watermarking or digital provenance standards for AI-generated media; (b) whether authorities can compel preservation and disclosure of metadata identifying original uploaders; and (c) what cross-platform coordination measures across social media and websites are being considered. Minister Josephine Teo replied that the Government tracks the development of technical standards for identifying AI-generated content, including watermarking and digital-provenance approaches, and engages international and industry platforms such as the Coalition for Content Provenance and Authenticity (C2PA), which has over 6,000 members including major technology and AI companies. As these standards evolve, it will assess their applicability in the Singapore context, including cross-platform measures. Where criminal offences are disclosed, the Police are empowered to require platforms to disclose information — including uploader metadata and identifiable data where available — to assist investigations.`,
     summaryJa: `レイチェル・オン(Rachel Ong)議員はデジタル発展・情報省に書面で質問した。AI 関連リスクを管理する試験標準や技術的解決策がなお発展途上にある中で、(a) 政府は AI 生成メディアの電子透かしやデジタル来歴の標準を研究しているか、(b) 当局は元の投稿者を特定するメタデータの保存と開示を強制できるか、(c) ソーシャルメディアやウェブサイト間でどのようなクロスプラットフォーム連携措置を検討しているか、である。ジョセフィン・テオ大臣は、政府は AI 生成コンテンツを識別する技術標準(電子透かしやデジタル来歴を含む)の発展を追跡し、主要な技術・AI 企業を含む 6,000 を超える会員を擁する「コンテンツ来歴・真正性連合」(C2PA)などの国際・業界プラットフォームに関与していると答弁した。標準の進展に応じ、クロスプラットフォーム措置を含めシンガポールの文脈での適用可能性を評価する。刑事犯罪が判明した場合、警察は捜査支援のため、可能な範囲で投稿者のメタデータや識別データを含む情報の開示をプラットフォームに求める権限を持つ。`,
     summaryKo: `레이철 옹(Rachel Ong) 의원은 디지털발전정보부에 서면 질의했다. AI 관련 위험을 관리할 시험 표준과 기술적 해법이 아직 발전 중인 가운데, (a) 정부가 AI 생성 미디어의 워터마킹이나 디지털 출처 표준을 연구하는지, (b) 당국이 원 업로더를 식별하는 메타데이터의 보존과 공개를 강제할 수 있는지, (c) 소셜미디어와 웹사이트 간 어떤 크로스 플랫폼 조율 조치를 검토하는지이다. 조세핀 테오 장관은, 정부가 AI 생성 콘텐츠를 식별하는 기술 표준(워터마킹과 디지털 출처 포함)의 발전을 추적하고, 주요 기술·AI 기업을 포함해 6,000곳이 넘는 회원을 둔 "콘텐츠 출처·진위 연합"(C2PA) 같은 국제·산업 플랫폼에 참여한다고 답했다. 표준이 진화함에 따라 크로스 플랫폼 조치를 포함해 싱가포르 맥락에서의 적용 가능성을 평가한다. 형사 범죄가 드러나면 경찰은 수사 지원을 위해 가능한 범위에서 업로더 메타데이터와 식별 데이터를 포함한 정보 공개를 플랫폼에 요구할 권한이 있다.`,
+    whyItMatters:
+      '新加坡不抢先自定水印标准,转而绑定 C2PA(超 6000 家成员)阵营待国际标准成熟,与其对深伪、选举等高风险场景的果断立法形成对比',
+    whyItMattersEn:
+      'Singapore does not unilaterally set watermark standards but instead aligns with the C2PA (over 6,000 members) coalition while international standards mature, contrasting with its decisive legislation on deepfakes, elections, and other high-risk scenarios.',
+    whyItMattersJa:
+      'シンガポールは独自にウォーターマーク標準を先制的に設定せず、代わりに C2PA（6000 以上の加盟企業）陣営に参加して国際標準の成熟を待つという姿勢をとっており、深偽動画や選挙など高リスクシナリオに対する断定的な立法とは対照的です',
+    whyItMattersKo:
+      '싱가포르는 워터마크 표준을 선제적으로 자체 정의하지 않고, 대신 C2PA（6,000개 이상 회원）진영에 결속하여 국제 표준이 성숙해질 때까지 기다리고 있으며, 이는 딥페이크와 선거 등 고위험 시나리오에 대한 단호한 입법과 대조를 이룹니다.',
     keyPoints: [
       `政府持续跟踪 AI 生成内容识别标准(含水印与数字溯源),尚未强制立标,而是随国际标准演进再评估适用性`,
       `深度参与"内容来源与真实性联盟"(C2PA,6,000+ 成员)等国际与行业平台`,
@@ -212,6 +228,13 @@ export const debates: Debate[] = [
     summaryEn: `Referring to the NAIS Update line that the Government will "regulate or legislate where necessary and effective," Alex Yeo asked MDDI: (a) what key risk factors or thresholds determine when a high-risk AI deployment would warrant regulation; and (b) whether the Ministry will mandate meaningful human oversight over fully automated decisions that materially affect individuals, such as employment decisions or high-risk scenarios. Minister Josephine Teo replied that, as with any technology, the need for regulation depends on how it is deployed, the nature of harm, and whether existing measures are effective. Many AI risks are already addressed by existing law — employers using AI must still comply with the upcoming Workplace Fairness Act, and the Online Criminal Harms Act lets the Police disrupt AI-enabled scams. Where existing measures are inadequate and a suitable response can be designed, the Government legislates in time, as with the Elections (Integrity of Online Advertising) (Amendment) Act. These are complemented by sectoral guidelines — MAS has consulted on Guidelines on AI Risk Management for financial services, and MOH has updated its AI in Healthcare Guidelines (AIHGle 2.0). The Government will keep studying the appropriate regulatory stance.`,
     summaryJa: `NAIS 更新の「必要かつ効果的な場合に規制または立法する」という一節に関し、アレックス・ヨー(Alex Yeo)議員はデジタル発展・情報省に質問した。(a) 高リスク AI 展開の規制を要するかを決める主要なリスク要因や閾値は何か、(b) 雇用の判断など個人に重大な影響を与える完全自動化された意思決定に、意味のある人間の監督を義務づけるか、である。ジョセフィン・テオ大臣は、いかなる技術も同様に、規制の要否は展開方法、想定される害の性質、既存措置の有効性に依ると答弁した。多くの AI リスクは既存法で対処済みで、AI を用いる雇用主も近く施行の《職場公正法》を守る必要があり、《オンライン犯罪危害法》は警察が AI を用いた詐欺を阻止できるようにする。既存措置が不十分で適切な対応を設計できる場合、政府は時宜を得て立法する(《選挙(オンライン広告の公正性)(改正)法》など)。これらは業界別ガイドラインで補完され、MAS は金融向け《AI リスク管理指針》を協議し、保健省は《医療 AI ガイドライン》(AIHGle 2.0)を更新した。政府は適切な規制姿勢を研究し続ける。`,
     summaryKo: `NAIS 업데이트의 "필요하고 효과적인 경우 규제 또는 입법한다"는 구절과 관련해, 알렉스 여(Alex Yeo) 의원은 디지털발전정보부에 질의했다. (a) 고위험 AI 배치의 규제 필요성을 결정하는 핵심 위험 요인이나 임계값은 무엇인지, (b) 고용 결정 등 개인에게 중대한 영향을 주는 완전 자동화 결정에 의미 있는 인간 감독을 의무화할지이다. 조세핀 테오 장관은, 어떤 기술이든 규제 필요성은 배치 방식, 발생할 수 있는 해의 성격, 기존 조치의 효과성에 달려 있다고 답했다. 많은 AI 위험은 기존 법으로 이미 다뤄지며, AI를 쓰는 고용주도 곧 시행될 《직장공정법》을 준수해야 하고, 《온라인범죄피해법》은 경찰이 AI 기반 사기를 차단하게 한다. 기존 조치가 미흡하고 적절한 대응을 설계할 수 있으면 정부는 적시에 입법한다(《선거(온라인 광고 공정성)(개정)법》 등). 이는 산업별 지침으로 보완되며, MAS는 금융권 《AI 위험관리 지침》을 협의했고 보건부는 《의료 AI 지침》(AIHGle 2.0)을 갱신했다. 정부는 적절한 규제 태도를 계속 연구한다.`,
+    whyItMatters: '杨莉明未就强制人工监督给出硬性承诺,仅以《职场公平法》等既有法兜底,AI 自动决策问责仍靠软法而非红线',
+    whyItMattersEn:
+      'Josephine Teo has not made a firm commitment to mandatory human oversight, relying only on existing laws such as the Workplace Fairness Act as backstop; accountability for AI automated decision-making still depends on soft law rather than clear red lines.',
+    whyItMattersJa:
+      'ジョセフィン・テオは強制的な人間による監督について明確な約束を示さず、《職場公平法》などの既存法律のみで対応しており、AI 自動決定の説明責任はなお軟法に頼って硬い規則ではありません',
+    whyItMattersKo:
+      '양리명은 강제 인적 감시에 대한 강제적 약속을 제시하지 않았으며, 「직장 공정법」 등 기존 법률로만 보완하고 있어 AI 자동 의사결정 문책은 여전히 소프트 법에만 의존하고 있습니다.',
     keyPoints: [
       `是否监管取决于部署方式、伤害性质与现有措施是否足够——不设一刀切的"高风险"阈值`,
       `许多 AI 风险已被现有法律覆盖:《职场公平法》管 AI 招聘、OCHA 阻断 AI 诈骗、选举法禁深伪`,
@@ -274,6 +297,13 @@ export const debates: Debate[] = [
     summaryEn: `Workers' Party MP Gerald Giam filed a written question to the Ministry of Law: (a) whether the Ministry has data on Singapore Citizens and Permanent Residents who died intestate in each of the last five years; and (b) whether it plans to integrate AI tools to improve the accessibility of will-writing services. Minister for Law Edwin Tong replied that the Ministry does not track intestate deaths. He encouraged the public to make a will, noting that AI tools exist today that might assist in preparing one — but that the public must exercise care, whether using AI or not, and should seek professional legal advice. The Government has made resources more accessible, recently launching a Will Learning Tool on MyLegacy@LifeSG to help people understand the considerations before seeking legal advice, which generates a Will Preparation Template for reference — though this is an education tool, not a substitute for legal advice. The Government will keep improving legacy-planning resources, including information on the responsible use of AI in will-making.`,
     summaryJa: `労働者党のジェラルド・ギアム(Gerald Giam)議員は法務省に書面で質問した。(a) 過去 5 年間に無遺言(intestate)で亡くなったシンガポール市民・永住者の数のデータを持っているか、(b) 遺言作成サービスの利用しやすさを高めるため AI ツールを統合する計画があるか、である。エドウィン・トン法相は、法務省は無遺言死亡を追跡していないと答弁した。彼は遺言作成を奨励し、今日では遺言作成を補助し得る AI ツールが存在するが、AI を使うか否かにかかわらず公衆は慎重を期し、専門家の法的助言を求めるべきだと述べた。政府は関連資源をより利用しやすくしており、最近 MyLegacy@LifeSG 上に「遺言学習ツール」を公開し、法的助言を求める前に遺言作成の検討事項を理解する助けとし、参考用の「遺言準備テンプレート」を生成する——ただしこれは教育ツールであり、法的助言の代替ではない。政府は AI の責任ある利用に関する情報を含め、身後計画の資源を改善し続ける。`,
     summaryKo: `노동자당 제럴드 지암(Gerald Giam) 의원은 법무부에 서면 질의했다. (a) 지난 5년간 매년 무유언(intestate)으로 사망한 싱가포르 시민·영주권자 수 데이터를 보유하는지, (b) 유언 작성 서비스의 접근성을 높이기 위해 AI 도구를 통합할 계획이 있는지이다. 에드윈 통 법무장관은 법무부가 무유언 사망을 추적하지 않는다고 답했다. 그는 유언 작성을 권장하며, 오늘날 유언 작성을 도울 수 있는 AI 도구가 있으나 AI 사용 여부와 무관하게 공중은 신중해야 하고 전문가의 법률 자문을 구해야 한다고 말했다. 정부는 관련 자원을 더 접근하기 쉽게 만들었고, 최근 MyLegacy@LifeSG에 "유언 학습 도구"를 공개해 법률 자문 전 유언 작성의 고려사항을 이해하도록 돕고 참고용 "유언 준비 템플릿"을 생성한다 — 다만 이는 교육 도구이지 법률 자문의 대체가 아니다. 정부는 AI의 책임 있는 사용 정보를 포함해 사후 계획 자원을 계속 개선한다.`,
+    whyItMatters: 'MyLegacy@LifeSG 遗嘱学习工具显示新加坡对法律类 AI 坚持工具辅助人类把关,或成其他受监管咨询领域的范本',
+    whyItMattersEn:
+      "MyLegacy@LifeSG, a will-drafting learning tool, demonstrates Singapore's commitment to human oversight when using legal AI tools, potentially serving as a model for other regulated advisory domains.",
+    whyItMattersJa:
+      'MyLegacy@LifeSG 遺言学習ツールは、シンガポールが法律関連 AI について人間による監督を支援するツールという立場を示しており、他の規制対象コンサルティング分野のモデルとなる可能性があります',
+    whyItMattersKo:
+      'MyLegacy@LifeSG 유언장 학습 도구는 싱가포르가 법률 AI에 대해 도구가 인간의 감시를 보조한다는 원칙을 유지하고 있음을 보여주며, 다른 규제 대상 상담 분야의 범본이 될 수 있습니다.',
     keyPoints: [
       `律政部不追踪无遗嘱去世人数`,
       `承认已有 AI 工具可协助起草遗嘱,但强调无论是否用 AI 都须谨慎并寻求专业法律意见`,
@@ -336,6 +366,14 @@ export const debates: Debate[] = [
     summaryEn: `Dr Choo Pei Ling filed written questions to the Coordinating Minister for Social Policies and Minister for Health: (a) how many public hospitals deploy (i) surgical robots and (ii) non-clinical service robots (logistics, cleaning, patient assistance); and (b) the measured impact on clinical outcomes, patient safety, staff workload and productivity — plus the Ministry's assessment of the long-term impact of robotics and automation on healthcare manpower in nursing, allied-health and support roles, and whether it plans to track and publish indicators on job redesign and productivity gains. Minister Ong Ye Kung replied that public hospitals such as NUH, SGH and TTSH have deployed robotic-assisted surgical (RAS) systems for minimally invasive soft-tissue surgeries, backed by clinical expertise and sufficient demand; outcomes and post-operative complications for indicated conditions have so far been comparable to conventional approaches. Robotics and automation can improve efficiency, ease workload and improve care; with rising patient numbers, appropriate use can help mitigate manpower shortages, including in allied-health and supportive roles, and a detailed academic study of the impact could be commissioned at an appropriate juncture.`,
     summaryJa: `チュー・ペイリン(Choo Pei Ling)議員は社会政策調整大臣兼保健大臣に書面で質問した。(a) 現在いくつの公立病院が(i)手術ロボットと(ii)物流・清掃・患者補助などの非臨床サービスロボットを導入しているか、(b) それらが臨床成果、患者安全、職員の負担、生産性に与えた実測の影響は何か。さらに、看護・コメディカル・支援職の人材需要に対するロボットと自動化の長期的影響の評価、及び職務再設計と生産性向上の指標を追跡・公表する計画があるかを尋ねた。オン・イエクン保健大臣は、NUH、SGH、TTSH などの公立病院が低侵襲の軟部組織手術にロボット支援手術(RAS)システムを導入しており、臨床的専門性と十分な需要に裏打ちされていると答弁した。適応症における成果や術後合併症は、これまで従来手術と同等である。ロボットと自動化は効率を高め、負担を軽減し、患者ケアを改善し得る。患者数の増加に伴い、適切な使用はコメディカルや支援職を含む人材不足の緩和に役立ち、適切な時期にその影響を評価する詳細な学術研究を委託し得る。`,
     summaryKo: `추 페이링(Choo Pei Ling) 의원은 사회정책조정장관 겸 보건장관에게 서면 질의했다. (a) 현재 몇 개의 공공병원이 (i) 수술 로봇과 (ii) 물류·청소·환자 보조 등 비임상 서비스 로봇을 배치했는지, (b) 그것들이 임상 결과·환자 안전·직원 업무량·생산성에 미친 실측 영향은 무엇인지. 나아가 간호·보건의료·지원 직무의 인력 수요에 대한 로봇·자동화의 장기 영향 평가와, 직무 재설계 및 생산성 향상 지표를 추적·공표할 계획이 있는지 물었다. 옹예쿵 보건장관은 NUH, SGH, TTSH 등 공공병원이 최소 침습 연조직 수술에 로봇 보조 수술(RAS) 시스템을 배치했으며 임상 전문성과 충분한 수요에 뒷받침된다고 답했다. 적응증에서의 결과와 수술 후 합병증은 지금까지 기존 방식과 비슷하다. 로봇과 자동화는 효율을 높이고 업무량을 줄이며 환자 케어를 개선할 수 있다. 환자 수 증가에 따라 적절한 사용은 보건의료·지원 직무를 포함한 인력 부족 완화에 도움이 되며, 적절한 시점에 그 영향을 평가하는 상세한 학술 연구를 위탁할 수 있다.`,
+    whyItMatters:
+      '王乙康将 RAS 机器人定调为补人力缺口而非替代岗位,却对岗位重塑影响研究不设时限,暴露自动化冲击就业的问责真空',
+    whyItMattersEn:
+      "Ong Ye Kung characterises RAS robots as filling labour gaps rather than displacing jobs, yet sets no timeline for studying the impact of job transformation, exposing an accountability vacuum regarding automation's employment effects.",
+    whyItMattersJa:
+      'ワン・イーコン氏は RAS ロボットを人手不足を補うためのものであり職を奪うものではないと位置づけていますが、職場変化の影響研究に対して期限を設けておらず、自動化が雇用に与える影響についての説明責任の空白が露呈しています',
+    whyItMattersKo:
+      '왕이강은 RAS 로봇을 인력 공백 메우기로 특징지었으나 직위 대체로는 하지 않았으며, 직위 재편 영향 연구에 시한을 설정하지 않아 자동화의 고용 영향에 대한 책임 공백을 드러냈습니다.',
     keyPoints: [
       `NUH、SGH、陈笃生等公立医院已用机器人辅助手术(RAS)做微创软组织手术;临床结果与传统手术相当`,
       `机器人与自动化被定位为缓解医疗人力短缺、减轻工作量的手段,涵盖专职医疗与支持岗位`,
@@ -398,6 +436,14 @@ export const debates: Debate[] = [
     summaryEn: `PAP MP Darryl David and Nominated MP Dr Neo Kok Beng put oral questions to the Coordinating Minister for National Security and Minister for Home Affairs about the 14 online social-media posts that targeted Singapore's Indian community and undermined its multiculturalism: whether investigations showed the posts to be a coordinated effort by any agency or organisation and what action would be taken, and whether the national framework and tools against such external influence would be reviewed and how residents could be equipped to discern it. Minister of State for Home Affairs Goh Pei Ming replied that there is no evidence this was a coordinated campaign by any particular government or organisation; the content likely originated from a China-based platform and was subsequently carried elsewhere. The posts sought to incite ill-will against the Indian community and undermine Singapore's model of multiculturalism, and were assessed to constitute an offence under section 298A(a) of the Penal Code; the Government issued Disabling Directions under the Online Criminal Harms Act (OCHA) to block Singapore users' access to the 14 posts. He noted that AI-enabled and inauthentic content seeping into Singapore's infospace has increased in recent years — the use of AI makes such posts easier to create — and that the Government tracks every case carefully, including investigating possible state actors, and wields legislative levers such as FICA, the Maintenance of Racial Harmony Act, POFMA and OCHA to act proactively and upstream (FICA online directions were first used in July 2024 and have been generally effective). Beyond legislation, the Government builds a discerning, resilient population through National Education and Total Defence, the SG101 website, the National Library Board's S.U.R.E programme and a 2025 MHA campaign on deepfake videos and AI-generated content — framed as the most effective defence against attempts to divide society.`,
     summaryJa: `人民行動党のダリル・デイビッド（Mr Darryl David）議員と官選議員のネオ・コクベン博士（Dr Neo Kok Beng）は、シンガポールのインド系コミュニティを標的とし多文化主義を損なった14件のソーシャルメディア投稿について、国家安全保障調整大臣兼内務大臣に口頭質問した。調査によりこれらの投稿が特定の機関や組織による協調的な取り組みであると判明したか、どのような措置が取られるか、また外部影響に対抗する国家的枠組みと手段を見直すか、住民がそれを見分けられるようどう備えるか、というものである。内務担当政務大臣のゴー・ペイミン（Mr Goh Pei Ming）は、これが特定の政府や組織による協調的キャンペーンであるという証拠はなく、内容は中国拠点のプラットフォームに由来し、その後他所へ転載された可能性が高いと答弁した。投稿はインド系コミュニティへの悪意を煽り、多文化主義のモデルを損なおうとするもので、刑法第298A条(a)の違反に当たると評価され、政府はオンライン犯罪危害法（OCHA）に基づく無効化指令を発し、シンガポールの利用者による14件の投稿へのアクセスを遮断した。彼は、AIを活用した不正確なコンテンツがシンガポールの情報空間に浸透する事例が近年増えており、AIの利用がこうした投稿の作成を容易にしていると指摘し、政府は国家主体の可能性の調査を含め一件ごとに注意深く追跡し、FICA、種族調和維持法、POFMA、OCHAなどの立法手段を用いて先手を打って上流で対処すると述べた（FICAのオンライン指令は2024年7月に初めて使われ、おおむね効果的だった）。立法に加え、政府は国民教育と全面防衛、SG101ウェブサイト、国立図書館庁のS.U.R.Eプログラム、ディープフェイク動画やAI生成コンテンツに関する2025年の内務省キャンペーンを通じて、見識と強靭さを備えた国民を育てており、これを社会を分断しようとする試みに対する最も効果的な防御と位置づけた。`,
     summaryKo: `인민행동당 대릴 데이비드(Mr Darryl David) 의원과 관선의원 네오콕벵 박사(Dr Neo Kok Beng)는 싱가포르 인도계 커뮤니티를 겨냥해 다문화주의를 훼손한 14건의 소셜미디어 게시물에 대해 국가안보조정장관 겸 내무장관에게 구두 질의했다. 조사에서 이 게시물들이 특정 기관이나 조직의 조직적 활동으로 드러났는지, 어떤 조치가 취해질지, 또 외부 영향에 대응하는 국가 프레임워크와 수단을 재검토할지, 주민이 이를 분별할 수 있도록 어떻게 대비시킬지를 물었다. 내무부 정무장관 고페이밍(Mr Goh Pei Ming)은 이것이 특정 정부나 조직의 조직적 캠페인이라는 증거는 없으며, 콘텐츠는 중국 기반 플랫폼에서 비롯되어 이후 다른 곳으로 옮겨졌을 가능성이 높다고 답했다. 게시물은 인도계 커뮤니티에 대한 악의를 부추기고 다문화주의 모델을 훼손하려는 것으로, 형법 제298A조(a)의 범죄를 구성한다고 평가되었으며, 정부는 온라인범죄피해법(OCHA)에 따른 무력화 지시를 내려 싱가포르 이용자의 14건 게시물 접근을 차단했다. 그는 AI 기반의 부정확한 콘텐츠가 싱가포르 정보 공간에 스며드는 사례가 최근 늘었고 AI가 이런 게시물 제작을 쉽게 만든다고 지적하며, 정부는 국가 행위자 가능성 조사를 포함해 모든 사안을 면밀히 추적하고 FICA, 종족화합유지법, POFMA, OCHA 같은 입법 수단을 활용해 선제적으로 상류에서 대응한다고 밝혔다(FICA 온라인 지시는 2024년 7월 처음 사용되어 대체로 효과적이었다). 입법 외에도 정부는 국민교육과 전면방위, SG101 웹사이트, 국립도서관청의 S.U.R.E 프로그램, 딥페이크 영상과 AI 생성 콘텐츠에 관한 2025년 내무부 캠페인을 통해 분별력 있고 회복력 있는 국민을 길러내며, 이를 사회를 분열시키려는 시도에 대한 가장 효과적인 방어로 규정했다.`,
+    whyItMatters:
+      'AI 降低造谣门槛，政府未新增专项立法，仍靠 OCHA 禁用指令、《刑法》298A(a) 条等旧工具封堵，真正的防线押注在公众媒体素养',
+    whyItMattersEn:
+      'AI lowers the barriers to spreading falsehoods; the government has not introduced new targeted legislation but instead relies on OCHA prohibitions, Penal Code Section 298A(a), and other existing tools to block such content; the real defence rests on public media literacy.',
+    whyItMattersJa:
+      'AI はデマの作成の敷居を低くしており、政府は新たな専門的立法を追加していないため、OCHA 禁止指令、《刑法》298A(a) 条など既存のツールに頼って対応しており、本当の防衛線は公衆メディアリテラシーに依存しています',
+    whyItMattersKo:
+      'AI가 거짓말 생성의 문턱을 낮추고 있으나, 정부는 새로운 특별 입법을 추가하지 않고 OCHA 금지 명령, 「형법」298A(a) 조 등 기존 도구에만 의존하고 있으며, 진정한 방어선은 대중 미디어 리터러시에 걸려 있습니다.',
     keyPoints: [
       `14 则针对印度裔社群的帖文无证据属特定政府或组织协调，内容很可能源自一个位于中国的平台后被转载`,
       `帖文被评估触犯《刑法》第 298A(a) 条，政府依 OCHA 发出"禁用指令"封锁新加坡用户访问`,
@@ -468,6 +514,13 @@ export const debates: Debate[] = [
     summaryEn: `Workers' Party MP He Ting Ru filed a written question to the Coordinating Minister for Social Policies and Minister for Health: is the Ministry aware of increasing recorded incidences of AI-induced psychosis; if so, how many cases were recorded in each of the past three years; and how is the Ministry working with relevant partners to better study and tackle the issue. Minister for Health Ong Ye Kung replied that there are international reports of psychological disturbances potentially related to intensive AI use, but this is not an established clinical diagnosis. Other than a few anecdotal cases, no clear upward trend has been observed locally — though the Ministry is monitoring the matter closely because the potential health risk posed by AI and digital media is of real concern. The exchange puts AI-related mental-health risk on the parliamentary record for the first time: the opposition presses the Government to recognise and quantify an emerging risk, while the Government responds cautiously — "not a clinical diagnosis, no clear local trend" — without dismissing the risk or ruling out continued monitoring.`,
     summaryJa: `労働者党のヒー・ティンルー（He Ting Ru）議員は、社会政策調整大臣兼保健大臣に書面で質問した。保健省は「AI誘発精神症」の記録症例の増加を認識しているか、認識している場合は過去3年間の各年の症例数はいくつか、そして同省はこの問題をより良く研究し対処するために関係パートナーとどのように連携しているか、というものである。オン・イエクン（Ong Ye Kung）保健大臣は、人工知能の集中的な利用に関連しうる心理的障害についての国際的な報告は存在するが、これは確立された臨床診断ではないと答弁した。少数の事例を除き、国内ではこうした症例が増加しているという明確な傾向は観察されていない。ただし、AIとデジタルメディアがもたらしうる健康リスクは「現実的な懸念」であるとして、保健省はこの問題を注視していると強調した。このやり取りはAI関連のメンタルヘルスリスクを初めて国会記録に載せた。野党は新たなリスクの認識と定量化を政府に迫り、政府は「臨床診断ではなく、国内に明確な傾向はない」と慎重に応じつつ、リスクを否定せず継続的な監視の余地を残した。`,
     summaryKo: `노동자당 허팅루(He Ting Ru) 의원은 사회정책조정장관 겸 보건장관에게 서면 질의했다. 보건부가 'AI 유발 정신증'의 기록 사례 증가를 인지하고 있는지, 그렇다면 지난 3년간 각 연도의 사례 수는 얼마인지, 그리고 이 문제를 더 잘 연구하고 대응하기 위해 관련 파트너와 어떻게 협력하고 있는지를 물었다. 옹예쿵(Ong Ye Kung) 보건장관은 인공지능의 집중적 사용과 관련될 수 있는 심리적 장애에 대한 국제적 보고는 있으나 이는 확립된 임상 진단이 아니라고 답했다. 소수의 일화적 사례를 제외하면 국내에서 이런 사례가 증가한다는 명확한 추세는 관찰되지 않았다. 다만 그는 AI와 디지털 미디어가 초래할 수 있는 건강 위험은 '실질적인 우려'라며 보건부가 이를 면밀히 모니터링하고 있다고 강조했다. 이 문답은 AI 관련 정신건강 위험을 처음으로 국회 기록에 올렸다. 야당은 신흥 위험의 인정과 정량화를 정부에 요구했고, 정부는 '임상 진단이 아니며 국내에 뚜렷한 추세가 없다'고 신중히 답하면서도 위험을 부정하지 않고 지속적 모니터링의 여지를 남겼다.`,
+    whyItMatters: '议员追问三年病例数据,卫生部只答个案零星未按年公布,为 AI 心理健康风险的国会监督留下数据空白',
+    whyItMattersEn:
+      'When MPs asked for three years of case data, the Ministry of Health(MOH) replied that cases are isolated and unpublished on an annual basis, leaving a data gap in parliamentary oversight of AI-related mental health risks.',
+    whyItMattersJa:
+      '議員が 3 年分の症例データについて質問したが、保健省（MOH）は個別案件が散発的で年別の公表がなされていないと答えるのみで、AI 心理衛生リスクの国会による監督に関するデータの空白が生じています',
+    whyItMattersKo:
+      '의원들이 3년간의 병례 데이터를 추궁했으나 보건부（MOH）는 개별 사례가 산발적이며 연별로 공표되지 않았다고만 답변했으며, AI 정신 건강 위험에 대한 국회 감시에 데이터 공백을 남겼습니다.',
     keyPoints: [
       `"AI 诱发精神病"目前尚非确立的临床诊断`,
       `本地除少数零星个案外，未见此类病例上升的明确趋势`,
@@ -530,6 +583,14 @@ export const debates: Debate[] = [
     summaryEn: `Workers' Party MP Dennis Tan Lip Fong filed a written question to the Ministry of Digital Development and Information on the resource footprint of the new artificial intelligence (AI) park at one-north: the projected annual electricity and water consumption at full capacity; how the Ministry will measure software-level energy efficiency for firms under the National AI Missions; and whether the Government will mandate energy-intensity disclosures for large-scale AI models to mitigate any rebound effect on national energy demand. Minister Josephine Teo replied that the one-north AI park is not a data-centre park but a hub for a growing community of AI developers and solution providers, with annual electricity and water consumption expected to be comparable to other technology-intensive industrial estates such as the Punggol Digital District. She stressed Singapore's commitment to advancing AI sustainably: the National AI R&D plan has named resource-efficient AI a research priority; green AI software is still a nascent field with no internationally recognised standard, so IMDA is working with the Green Software Foundation on the methodology for a new Software Carbon Intensity ISO standard and is promoting efficient compute use through the Green Software Trials and the newly launched Practical Green Software Guide for Enterprises; and on data centres, building on IMDA's Green DC roadmap, the Ministry will introduce baseline energy-efficiency standards through the Digital Infrastructure Act now being developed in consultation with industry.`,
     summaryJa: `労働者党のデニス・タン・リップフォン（Dennis Tan Lip Fong）議員は、one-north に新設される人工知能（AI）パークの資源消費について、デジタル発展・情報省に書面で質問した。すなわち、フル稼働時の年間電力・水消費の見通し、国家AIミッション（National AI Missions）の下にある企業のソフトウェアレベルのエネルギー効率をどう測定するか、そして全国のエネルギー需要へのリバウンド効果を緩和するため大規模AIモデルにエネルギー強度の開示を義務づけるか、である。ジョセフィン・テオ（Josephine Teo）大臣は、one-north のAIパークはデータセンター・パークではなく、成長するAI開発者・ソリューション提供者コミュニティの拠点であり、年間の電力・水消費はプンゴル・デジタル地区などの技術集約型工業団地と同程度になる見込みだと答弁した。さらにシンガポールはAI能力を持続可能に高めることに尽力しているとし、国家AI研究開発計画は「資源効率の高いAI」を研究の重点に位置づけ、グリーンAIソフトはなお新興分野で国際的に認められた標準はないため、IMDA（情報通信メディア開発庁）はグリーンソフトウェア財団と新しい「ソフトウェア炭素強度」ISO標準の方法論で協力し、「グリーンソフトウェア試行」や新たに公表した『企業向け実践グリーンソフトウェアガイド』を通じて計算資源の効率的利用を促していると述べた。データセンターについては、IMDAのグリーンDCロードマップを土台に、業界と協議しつつ策定中の「デジタルインフラ法」を通じてデータセンターの基準エネルギー効率基準を導入するとした。`,
     summaryKo: `노동자당 데니스 탄 립퐁(Dennis Tan Lip Fong) 의원은 one-north에 새로 들어서는 인공지능(AI) 파크의 자원 소비에 대해 디지털발전정보부에 서면 질의했다. 즉 완전 가동 시 연간 전력·물 소비 전망, 국가 AI 미션(National AI Missions)에 속한 기업의 소프트웨어 차원 에너지 효율을 어떻게 측정할지, 그리고 전국 에너지 수요의 반등 효과를 완화하기 위해 대규모 AI 모델에 에너지 강도 공개를 의무화할지를 물었다. 조세핀 테오(Josephine Teo) 장관은 one-north의 AI 파크는 데이터센터 파크가 아니라 성장하는 AI 개발자·솔루션 제공자 커뮤니티의 허브이며, 연간 전력·물 소비는 풍골 디지털 지구 등 기술집약형 산업단지와 비슷한 수준일 것으로 예상된다고 답했다. 또한 싱가포르는 AI 역량을 지속가능하게 발전시키는 데 힘쓰고 있다며, 국가 AI 연구개발 계획은 '자원 효율적 AI'를 연구 우선순위로 삼았고, 그린 AI 소프트웨어는 아직 신흥 분야로 국제적으로 인정된 표준이 없어 IMDA(정보통신미디어개발청)가 그린소프트웨어재단과 새로운 '소프트웨어 탄소 강도' ISO 표준 방법론을 협력 중이며, '그린 소프트웨어 시험'과 새로 발표한 『기업용 실용 그린 소프트웨어 가이드』를 통해 컴퓨팅 자원의 효율적 사용을 촉진하고 있다고 밝혔다. 데이터센터에 대해서는 IMDA의 그린 DC 로드맵을 토대로, 업계와 협의해 마련 중인 '디지털 인프라법'을 통해 데이터센터 기준 에너지 효율 표준을 도입하겠다고 했다.`,
+    whyItMatters:
+      '新加坡不强制 AI 模型披露能耗，转押《数字基础设施法案》的数据中心能效门槛，监管留在基础设施层而非模型层',
+    whyItMattersEn:
+      "Singapore does not mandate AI model energy consumption disclosure but instead relies on the Digital Infrastructure Bill's data centre energy efficiency thresholds; regulation remains at the infrastructure layer rather than the model layer.",
+    whyItMattersJa:
+      'シンガポールは AI モデルに対してエネルギー消費量の開示を強制していないため、《デジタル基盤インフラ法案》のデータセンターエネルギー効率基準に頼り、規制は基礎インフラレベルに留まり、モデルレベルではありません',
+    whyItMattersKo:
+      '싱가포르는 AI 모델의 에너지 소비 공개를 강제하지 않고, 대신 「디지털 기반시설 법안」의 데이터 센터 에너지 효율 임계값에 의존하며, 규제는 모델 레이어가 아닌 기반시설 레이어에 남아 있습니다.',
     keyPoints: [
       `one-north AI 园区定位为 AI 开发者与方案商聚集地，非数据中心园区，能耗预计与榜鹅数码园区相当`,
       `国家 AI 研发计划已将"资源高效型 AI"列为研究重点`,
@@ -594,6 +655,13 @@ export const debates: Debate[] = [
     topics: ['AI Governance & Regulation', 'AI Safety & Ethics'],
     summary: `议员Alex Yeo书面询问代交通部长：陆路交通管理局（LTA）的两阶段部署就绪评估中是否有自动驾驶车辆（AV）必须达到的具体、可量化的安全指标；这些标准是什么；以及在首批商业AV获准上路前，《技术参考68》（TR 68）是否会进一步加强，或是否会出台一套规范AI决策协议的正式AV标准。代部长Jeffrey Siow答复：AV部署就绪评估框架规定了技术性能和公众接受度指标，AV须先达标才能载客并逐步过渡到无人驾驶运营，具体包括在实际部署路线上累计足够的无需安全员干预的行驶里程，以及在授权地理围栏区域内应对各种交通场景的能力。作为AV行业指南的《技术参考68》上次更新是在2021年，目前正在复审；在此期间，AV部署将继续沿用现行授权制度。答复未列出具体量化阈值，也未承诺在商业部署前出台规范AI决策的正式标准。`,
     summaryKo: `알렉스 여 의원은 교통부 장관 대행에게 서면 질의했다. 육상교통청(LTA)의 2단계 배치 준비 평가에 자율주행차(AV)가 충족해야 할 구체적이고 정량적인 안전 지표가 있는지, 그 기준이 무엇인지, 그리고 첫 상용 AV의 도로 운행 허가 전에 기술참조 68(TR 68)을 강화하거나 AI 의사결정 프로토콜을 규율하는 공식 AV 표준을 도입할 것인지를 물었다. 제프리 시오 장관 대행은 AV 배치 준비 평가 체계가 기술 성능과 대중 수용성 지표를 규정하며, 이를 충족해야 승객 수송과 무인 운행으로 단계적으로 나아갈 수 있다고 답했다. 구체적으로는 실제 배치 노선에서 안전요원의 개입 없이 충분한 주행 거리를 쌓는 것과, 허가된 지오펜스 구역 내 다양한 교통 상황에 대응하는 능력이 포함된다. AV 업계 지침인 TR 68은 2021년에 마지막으로 갱신됐고 현재 재검토 중이며, 그동안 AV 배치는 기존 허가 제도하에서 계속된다. 답변은 구체적 정량 기준치를 제시하지 않았고 상용화 전 공식 표준 도입도 약속하지 않았다.`,
+    whyItMatters: 'LTA 以个案授权和里程指标替代硬性标准，TR 68 自 2021 年未更新，AI 决策规则仍是空白',
+    whyItMattersEn:
+      'The Land Transport Authority (LTA) uses case-by-case authorisations and mileage metrics as substitutes for hard standards; TR 68 has not been updated since 2021, leaving AI decision-making rules a blank slate.',
+    whyItMattersJa:
+      'LTA は個別の許可と走行距離マイルストーンを硬い基準の代わりに使用しており、TR 68 は 2021 年以来更新されておらず、AI 決定規則はなお空白のままです',
+    whyItMattersKo:
+      'LTA는 개별 사례 승인과 마일리지 지표로 경성 표준을 대체하고 있으며, TR 68은 2021년 이래 업데이트되지 않았고 AI 의사결정 규칙은 여전히 공백입니다.',
     summaryJa: `アレックス・ヨー議員は交通相代行に書面で質問した。陸上交通庁（LTA）の2段階の展開準備評価に自動運転車（AV）が満たすべき具体的かつ定量的な安全指標があるか、その基準は何か、また初の商用AVの公道走行が認められる前に、技術参照68（TR 68）を強化するか、AIの意思決定プロトコルを律する正式なAV標準を導入するかを問うた。ジェフリー・シオウ大臣代行は、AVの展開準備評価枠組みは技術性能と公衆受容性の指標を定めており、これを満たして初めて乗客輸送、さらには無人運転への段階的移行が認められると答弁。具体的には、実際の展開ルート上で安全オペレーターの介入を要しない十分な走行距離を積むことや、認可されたジオフェンス区域内で多様な交通シナリオに対応できる能力が含まれる。AV業界の指針であるTR 68は2021年に最終更新され、現在見直し中であり、その間AVの展開は既存の認可制度の下で継続される。答弁は具体的な定量閾値を示さず、商用展開前の正式標準の導入も約束しなかった。`,
     summaryEn: `Mr Alex Yeo asked the Acting Minister for Transport whether LTA's two-stage Deployment Readiness Assessment contains specific, quantifiable safety metrics that autonomous vehicles (AVs) must meet, what those standards are, and whether Technical Reference 68 (TR 68) will be enhanced — or a formal set of AV standards governing AI decision-making protocols introduced — before the first commercial AVs are allowed on the roads. Mr Jeffrey Siow replied that the deployment readiness assessment framework sets out technical performance and public acceptance metrics that must be met before AVs may take passengers and eventually progress to driverless operations. These include clocking sufficient distance on the actual deployment route without safety-operator intervention, and the ability to handle various traffic scenarios within the authorised geo-fenced area. TR 68, which serves as guidelines for Singapore's AV industry, was last updated in 2021 and is currently under review; in the meantime, AV deployments continue under the existing authorisation regime. The answer gave no specific quantitative thresholds and made no commitment to formal AI decision-making standards before commercial deployment.`,
     keyPoints: [
@@ -660,6 +728,14 @@ export const debates: Debate[] = [
     topics: ['AI in Education'],
     summary: `议员Eileen Chong Pei Shan就学校使用AI工具向教育部长提出两项书面询问：一问学校在指导学生使用非新加坡学生学习平台（SLS）托管的AI工具时须遵循哪些最低数据保护标准、学生为完成课业使用此类工具前是否需要家长知情或同意、以及如何监督合规情况；二问教育部关于AI对学生学习影响研究的范围（覆盖的教育阶段和测量的学习成效指标）、研究结果的发布时间表，以及结果将如何用于制定或修订AI教育战略。教育部长李智陞的书面答复未展开实质内容，仅指这些问题已由教育部在2026年5月6日对第2至5号口头议会询问的答复中一并处理，并请议员参阅《官方报告》第96卷第30期口头答复部分"监测小学生使用AI"一节。该答复反映家长关切的数据保护与学习成效问题已在前一日的口头质询中集中回应。`,
     summaryKo: `아일린 총 의원은 학교의 AI 도구 사용에 관해 교육부 장관에게 두 건의 서면 질의를 했다. 첫째, 싱가포르 학생학습플랫폼(SLS)에 호스팅되지 않은 AI 도구를 학생에게 사용하도록 안내할 때 학교가 지켜야 할 최소 데이터 보호 기준은 무엇인지, 학생이 과제 수행을 위해 그런 도구를 쓰기 전에 학부모 통지나 동의가 필요한지, 그리고 기준 준수를 어떻게 감독하는지를 물었다. 둘째, AI가 학생 학습에 미치는 영향에 관한 교육부 연구의 범위(대상 교육 단계와 측정하는 학습 성과), 결과 발표 일정, 그리고 결과를 AI 교육 전략 수립·수정에 어떻게 활용할지를 물었다. 데즈먼드 리 교육부 장관의 서면 답변은 실질 내용을 담지 않았고, 이 질문들은 2026년 5월 6일 구두 의회 질의 2~5번에 대한 교육부 답변에서 이미 다뤄졌다며 공식 보고서 제96권 제30호 구두 답변란의 "초등학생의 AI 사용 모니터링" 부분을 참조하라고 안내했다.`,
+    whyItMatters:
+      '教育部以 5 月 6 日口头答复搪塞两项书面质询，暴露非 SLS 工具数据保护标准和家长同意机制至今仍无明确规则',
+    whyItMattersEn:
+      'The Ministry of Education(MOE) deflected two written parliamentary questions with an oral response on 6 May, exposing the absence of clear rules on data protection standards for non-SLS tools and parental consent mechanisms.',
+    whyItMattersJa:
+      '教育省（MOE）は 5 月 6 日の口頭回答で 2 つの書面質問をかわし、非 SLS ツールのデータ保護基準と保護者の同意メカニズムについてなお明確な規則がないことが露呈しています',
+    whyItMattersKo:
+      '교육부（MOE）가 5월 6일 구두 답변으로 두 건의 서면 질의를 회피했으며, SLS가 아닌 도구에 대한 데이터 보호 표준과 부모 동의 메커니즘이 여전히 명확한 규칙이 없음을 드러냈습니다.',
     summaryJa: `アイリーン・チョン議員は学校でのAIツール利用について教育相に2件の書面質問を行った。第一に、シンガポール学生学習プラットフォーム（SLS）にホストされていないAIツールを生徒に使わせる際に学校が適用すべき最低限のデータ保護基準は何か、生徒が課題のためにそうしたツールを使う前に保護者への通知や同意が必要か、基準の遵守をどう監督するかを問うた。第二に、AIが生徒の学習に与える影響に関する教育省の調査の範囲（対象の教育段階と測定する学習成果）、結果の公表時期、結果をAI教育戦略の策定・改訂にどう活かすかを問うた。デズモンド・リー教育相の書面答弁は実質的な内容に踏み込まず、これらの質問は2026年5月6日の口頭議会質問2～5番への教育省の答弁で既に扱われたとして、公式報告書第96巻第30号の口頭答弁欄「小学生のAI利用のモニタリング」の項を参照するよう案内した。`,
     summaryEn: `Ms Eileen Chong Pei Shan filed two written questions to the Minister for Education on AI tools in schools: first, what minimum data protection standards schools must apply when directing students to use AI tools not hosted on the Singapore Student Learning Space (SLS), whether parental notification or consent is required before students use such tools for school-assigned work, and how compliance is monitored; second, the scope of the Ministry's study on AI's impact on students' learning — education levels covered and learning outcomes measured — the expected timeline for publishing findings, and how the findings will inform or revise the AI in education strategy. Mr Desmond Lee's written reply gave no new substance, stating that the questions had been addressed by the Ministry of Education's answer to oral Parliamentary Question Nos 2 to 5 on 6 May 2026, and referring the Member to "Monitoring AI Use by Primary School Students" in the Official Report, 6 May 2026, Vol 96, Issue 30, Oral Answers to Questions section.`,
     keyPoints: [
@@ -751,6 +827,14 @@ export const debates: Debate[] = [
     topics: ['AI & Employment', 'AI Strategy', 'AI Economy & Industry'],
     summary: `5月6日国会续辩职总秘书长黄志明提出的"人工智能转型不容无就业式增长"动议，约20名议员发言，是第15届国会迄今最具分量的AI辩论。动议要求承认AI的经济变革力量，把增长锚定在公平、韧性与人人有机会，装备工人与企业，确认新加坡不容无就业增长。执政党与工运议员聚焦岗位重设计、公司培训委员会（CTC）与新设的三方就业理事会；工人党议员全数支持动议但另提结构方案：严燕松倡全民AI股权基金（成年公民每年500新元分红加在职培训基金），Andre Low主张无收入上限的裁员保险、再培训税收抵免与"AI收益审计"，Kenneth Tiong呼吁高端AI工具全民可及。人力部长陈诗龙驳斥工人党方案是"和解金"而非赋权，引人力部调查称采用AI企业仅约6%裁员，承诺研究提高求职者援助收入门槛并推动更早裁员通报。朝野最终均表态支持动议。`,
     summaryKo: `5월 6일 국회는 전국노동조합회의(NTUC) 사무총장 응치멩이 발의한 "고용 없는 성장이 없는 AI 전환" 동의안 토론을 이어갔다. 약 20명의 의원이 발언한, 제15대 국회 들어 가장 비중 있는 AI 토론이다. 동의안은 AI의 경제 변혁력을 인정하고, AI 성장을 공정성·회복력·만인의 기회에 정박시키며, 노동자와 기업을 무장시키고, 싱가포르에 고용 없는 성장이 있어서는 안 된다는 점을 확인할 것을 요구했다. 여당과 노동운동 의원들은 직무 재설계, 기업훈련위원회(CTC), 신설 노사정 일자리협의회에 집중했다. 노동자당 의원들은 동의안을 전원 지지하면서도 구조적 대안을 제시했다. 제럴드 지암은 성인 시민 1인당 연 500싱가포르달러 배당과 직무훈련 기금을 담은 국가 AI 지분기금을, 앤드레 로우는 소득 상한 없는 해고보험과 재훈련 세액공제, "AI 이익 감사"를, 케네스 티옹은 프리미엄 AI 도구의 보편적 접근과 프런티어 AI 기업과의 주권적 협상을 제안했다. 탄시렝 인력부 장관은 노동자당 방안을 권한 부여가 아닌 "합의금"이라고 반박하고, AI 도입 기업 중 약 6%만 감원했다는 조사를 인용했으며, 구직자지원제도 소득 기준 상향 검토와 조기 해고 통보 추진을 약속했다. 여야 모두 동의안 지지를 표명했다.`,
+    whyItMatters:
+      '政府拒绝工人党全民 AI 股权基金（人均 500 新元）方案，选择三方机制而非立法应对 AI 转型，划定新加坡政策路线',
+    whyItMattersEn:
+      "The government rejected the Workers' Party's proposal for a universal AI equity fund (S$500 per capita), instead choosing tripartite mechanisms over legislation to address AI transformation, establishing Singapore's policy direction.",
+    whyItMattersJa:
+      '政府は労働党による全国民 AI 株式基金（1 人当たり 500 シンガポールドル）方案を拒否し、AI 転換への対応として立法ではなく三者メカニズムを選択し、シンガポール政策方向を確定しました',
+    whyItMattersKo:
+      '정부가 노동자당의 전국민 AI 지분 기금（1인당 500 싱가포르 달러）방안을 거부하고 AI 전환에 대응하기 위해 입법이 아닌 3자 메커니즘을 선택했으며, 싱가포르 정책 방향을 규정했습니다.',
     summaryJa: `5月6日、国会はNTUC（全国労働組合会議）事務総長ン・チーメンが提出した「雇用なき成長を許さないAI移行」動議の討論を続行した。約20名の議員が発言し、第15期国会で最も重みのあるAI討論となった。動議は、AIが次の経済発展段階をけん引する変革力を認め、AI主導の成長を公平・強靭・万人の機会に根ざすものとし、労働者と企業を支援し、シンガポールに雇用なき成長があってはならないと確認するよう求めた。与党と労働運動系議員は職務再設計、企業訓練委員会（CTC）、新設の政労使ジョブズ・カウンシルに焦点を当てた。労働者党議員は全員が動議に賛成しつつ構造的代案を提示した。ジェラルド・ギアムは成人国民1人あたり年500シンガポールドルの配当と職場内訓練基金からなる国家AIエクイティ基金を、アンドレ・ロウは所得上限のない解雇保険、再訓練税額控除、「AI利益監査」を、ケネス・ティオンはプレミアムAIツールの普遍的アクセスとフロンティアAI企業との主権レベルの交渉を提案した。タン・シーレン人材開発相は労働者党案をエンパワーメントではなく「手切れ金」と退け、AI導入企業の約6%しか人員削減していないとの調査を引用し、求職者支援制度の所得基準引き上げの検討と早期解雇通知の推進を約束した。与野党とも動議への支持を表明した。`,
     summaryEn: `On 6 May Parliament resumed debate on NTUC Secretary-General Ng Chee Meng's motion "An AI Transition with No Jobless Growth", with around 20 MPs speaking in the most substantive AI debate of the 15th Parliament to date. The motion asked the House to recognise AI's transformative power for Singapore's next phase of growth, anchor AI-enabled growth in fairness, resilience and opportunity for all, equip workers and enterprises, and affirm that Singapore must not have jobless growth. PAP and labour MPs focused on job redesign, Company Training Committees and the new Tripartite Jobs Council. Workers' Party MPs all supported the motion but proposed structural alternatives: Gerald Giam a National AI Equity Fund paying every adult citizen a $500 annual dividend plus an on-the-job mastery fund; Andre Low a redundancy insurance with no income ceiling, a retraining tax credit and an annual "AI gains audit"; Kenneth Tiong universal premium AI tool access and sovereign-level engagement with frontier AI firms. Manpower Minister Tan See Leng rejected the WP proposals as "a settlement" rather than empowerment, cited an MOM survey that only about 6% of AI-adopting firms cut headcount, and committed to studying a higher Jobseeker Support income threshold and earlier retrenchment notification. Speakers on both sides declared support for the motion.`,
     keyPoints: [
@@ -834,6 +918,14 @@ export const debates: Debate[] = [
     topics: ['AI & Employment', 'AI Economy & Industry', 'AI Strategy'],
     summary: `"AI转型不容无就业增长"动议辩论5月6日进入收尾。澄清环节中，工人党议员刘吴扬强调强社会安全网与鼓励国人拥抱AI并非零和；严燕松为其"全国AI公平基金"辩护，称该基金不是"对失败的补偿"、近半资金将直接投资工人技能，并追问政府如何让工人结构性分享AI生产力红利，人力部长陈诗龙回应分享方式是"实际收入的提升"，新加坡劳动力发展局（SWDA）将设明确KPI，把企业劳动力培训配套与职位重设计同实际工资和职业发展挂钩。工人党Kenneth Tiong质疑技能创前程课程质量、主张普及前沿AI工具；Mark Lee则质疑其"AI裁员90天强制通知"提案在渐进式转型下难以操作。杨涴凌追问AI补助是否强制绑定职位重设计，政务部长Jasmin Lau表示方向已定、细节将与三方伙伴商定。黄志明总结这场历时7小时18分钟、24场发言的辩论，支持把求职者援助计划合格门槛升至PME中位月入约8,400新元，表明职总对援助形式持开放态度，动议最终获国会一致通过。`,
     summaryKo: `"고용 없는 성장이 없는 AI 전환" 동의 토론이 5월 6일 마무리 단계에 들어갔다. 보충 질의에서 노동자당 앤드리 로우 의원은 강한 사회 안전망과 AI 수용 장려가 제로섬이 아니라고 강조했고, 제럴드 지암 의원은 자신의 "국가 AI 형평 기금"이 "실패에 대한 보상"이 아니며 기금의 절반 가까이가 노동자 기술에 직접 투자된다고 옹호하면서 정부가 AI 생산성 이익을 어떻게 구조적으로 노동자와 나눌 것인지 추궁했다. 탄시렝 인력부 장관은 그 방식이 "실질소득의 향상"이라며 SWDA가 기업 인력 훈련 패키지와 직무 재설계를 실질임금·경력 발전과 연계하는 명확한 KPI를 둘 것이라고 답했다. 노동자당 케네스 티옹 의원은 스킬스퓨처 과정의 질을 문제 삼고 최첨단 AI 도구의 보편적 보급을 주장했으며, 마크 리 의원은 그의 "AI발 감원 90일 의무 통지" 제안이 점진적 전환 현실에서 운용하기 어렵다고 반박했다. 여완링 의원은 AI 보조금에 직무 재설계를 의무 조건으로 둘 것인지 물었고, 재스민 라우 정무국무장관은 방향은 정해졌으며 세부는 3자 파트너와 협의하겠다고 답했다. 응치멩 사무총장은 7시간 18분, 24개 연설에 걸친 토론을 총괄하며 구직자지원제도 자격 기준을 PME 중위 월소득 약 8,400달러로 올리는 안을 지지했고, NTUC는 지원 형식에 열려 있다고 밝혔다. 동의는 만장일치로 가결됐다.`,
+    whyItMatters:
+      '国会一致通过看似共识，但政府用 SWDA 的 KPI 机制替代全国 AI 公平基金，分配红利仍靠三方协商而非立法保障',
+    whyItMattersEn:
+      "Parliament unanimously passed what appeared to be consensus, but the government substituted SWDA's KPI mechanism for a national AI fairness fund; distribution of dividends still relies on tripartite negotiation rather than legislative safeguards.",
+    whyItMattersJa:
+      '国会は一致して見かけ上の合意を採択しましたが、政府は SWDA の KPI メカニズムを全国 AI 公正基金の代わりに使用し、利益配分はなお三者協議に依存し、立法的保障ではありません',
+    whyItMattersKo:
+      '국회가 일치된 합의처럼 보이는 내용을 통과시켰으나, 정부는 SWDA의 KPI 메커니즘으로 전국 AI 공정성 기금을 대체했으며, 배당금 분배는 여전히 3자 협상에만 의존하고 입법 보장이 없습니다.',
     summaryJa: `「雇用なき成長を許さないAI移行」動議の討論は5月6日に大詰めを迎えた。質疑では、労働者党のアンドレ・ロウ議員が強い社会的セーフティネットとAI受容の奨励はゼロサムではないと強調。ジェラルド・ジアム議員は自身の「国家AI公平基金」について「失敗への補償」ではなく基金の半分近くを労働者のスキルに直接投資するものだと擁護し、政府はAIの生産性利益をどう構造的に労働者へ分配するのかと追及した。タン・シーレン人材開発相は、その方法は「実質所得の向上」であり、SWDAが企業人材訓練パッケージと職務再設計を実質賃金・キャリア発展に結びつける明確なKPIを設けると答えた。労働者党のケネス・ティオン議員はスキルズフューチャー講座の質を疑問視し最先端AIツールの普遍的提供を主張、マーク・リー議員は彼の「AI起因の人員削減90日前義務通知」案が漸進的な変革の実態では運用困難だと反論した。ヨー・ワンリン議員はAI助成金に職務再設計を義務条件とするか質し、ジャスミン・ラウ政務相は方向性は確定しており詳細は三者パートナーと協議すると答えた。ン・チーメン事務総長は7時間18分・24本の演説に及んだ討論を総括し、求職者支援制度の対象基準をPME中央値月収約8,400ドルへ引き上げる案を支持、NTUCは支援の形式にこだわらないと表明した。動議は全会一致で可決された。`,
     summaryEn: `The debate on the Motion "An AI Transition with No Jobless Growth" concluded on 6 May. In clarifications, WP's Andre Low stressed that strong social safety nets and urging Singaporeans to embrace AI are not zero-sum; Gerald Giam defended his proposed National AI Equity Fund as "not about a compensation for failure", with nearly half the fund invested directly in workers' skills, and pressed the Government on structurally sharing AI productivity gains. Manpower Minister Tan See Leng replied that the sharing would come through real income improvement, with SWDA setting clear KPIs tying the Enterprise Workforce Training Package and job redesign to real wages and career progression. WP's Kenneth Tiong questioned the quality of SkillsFuture courses and argued for universal access to frontier AI tools, while Mark Lee countered that Tiong's proposed 90-day mandatory notice for AI-driven role elimination is operationally ambiguous when transformation is gradual. Yeo Wan Ling asked whether job redesign would be an explicit condition of AI grants; Minister of State Jasmin Lau said the direction is committed and details would be worked out with tripartite partners. Wrapping up the debate of 7 hours 18 minutes and 24 speeches, Ng Chee Meng backed raising Jobseeker Support eligibility to the PME median income of about $8,400 and said NTUC is open on the form of support. The Motion was put and agreed to unanimously.`,
     keyPoints: [
@@ -900,6 +992,14 @@ export const debates: Debate[] = [
     topics: ['AI in Healthcare', 'AI Governance & Regulation'],
     summary: `叶汉荣议员书面询问社会政策统筹部长兼卫生部长：卫生部是否研究过 AI 研发药物能否缩短或绕过临床试验；若可以，AI 药物的审批与传统药物有何不同；现行哪些法规管辖 AI 医疗创新；以及当 AI 为产品概念化而调用国家患者数据时，现有个人数据保护与网络安全措施能否防止数据泄露。卫生部长王乙康答复：AI 研发药物与传统药物必须满足同样的国际质量、安全和疗效标准，不存在捷径；卫生科学局的监管思路与美国 FDA、欧洲药品管理局等国际机构一致，这些机构已就 AI 在药物研发中的负责任使用提出关键原则。患者数据受到包括《个人数据保护法》在内的现有数据保护和网络安全措施的有力保护，政府将持续监测发展并按需强化保障。答复确认了"同一标准"原则——AI 不改变药物审批的证据门槛。`,
     summaryKo: `입혼웡(Yip Hon Weng) 의원은 사회정책조정장관 겸 보건부 장관에게 서면 질의를 통해, AI 개발 의약품이 임상시험을 단축하거나 우회할 수 있는지 보건부가 연구했는지, 그렇다면 AI 의약품의 승인 절차가 기존 의약품과 어떻게 다른지, 현재 어떤 규정이 AI 의료 혁신을 규율하는지, 그리고 AI가 제품 개념화를 위해 국가 환자 데이터에 접근할 때 기존 개인정보 보호 및 사이버 보안 장치가 데이터 유출을 막을 수 있는지를 물었다. 옹예쿵(Ong Ye Kung) 보건부 장관은 AI 개발 의약품도 기존 의약품과 동일한 국제 품질·안전성·유효성 기준을 충족해야 하며, 보건과학청의 규제 접근은 AI의 책임 있는 활용 원칙을 제시한 미국 FDA, 유럽 의약품청 등 국제기관과 정렬되어 있다고 답했다. 환자 데이터는 개인정보보호법을 포함한 기존 장치로 견고하게 보호되며, 정부는 동향을 계속 모니터링하고 필요시 안전장치를 강화할 것이라고 밝혔다. 답변은 AI가 의약품 승인의 증거 기준을 바꾸지 않는다는 '동일 기준' 원칙을 확인했다.`,
+    whyItMatters:
+      '卫生部拒绝为 AI 药物开监管快车道,坚持与美国 FDA、欧洲药品管理局同一门槛,患者数据仍靠《个人数据保护法》兜底而非新规',
+    whyItMattersEn:
+      'The Ministry of Health(MOH) refused to create a fast-track regulatory pathway for AI-assisted drugs, insisting on the same threshold as the US FDA and European Medicines Agency; patient data protection still relies on the Personal Data Protection Act rather than new rules.',
+    whyItMattersJa:
+      '保健省（MOH）は AI 医薬品に対する規制の優先トラックを拒否し、米国 FDA、欧州医薬品庁と同じ基準を維持し、患者データはなお《個人データ保護法》に頼り、新規則ではありません',
+    whyItMattersKo:
+      '보건부（MOH）가 AI 의약품에 대한 규제 특급 통로를 거부하고 미국 FDA, 유럽의약품청과 동일한 기준을 고수하고 있으며, 환자 데이터는 여전히 PDPA로만 보호되고 새 규칙이 없습니다.',
     summaryJa: `イップ・ホンウェン（Yip Hon Weng）議員は社会政策調整大臣兼保健大臣に書面で質問し、AI 開発医薬品が臨床試験を短縮・回避できるかを保健省が研究したか、その場合 AI 医薬品の承認は従来品とどう異なるか、現在どの規制が AI 医療イノベーションを規律しているか、また AI が製品コンセプト立案のため国民患者データにアクセスする際、既存の個人データ保護とサイバーセキュリティ対策で情報漏洩を防げるかを質した。オン・イェクン（Ong Ye Kung）保健大臣は、AI 開発医薬品も従来型医薬品と同一の国際的な品質・安全性・有効性基準を満たさなければならないと回答。保健科学庁の規制アプローチは、AI の責任ある活用について主要原則を示した米 FDA や欧州医薬品庁など国際機関と整合している。患者データは個人データ保護法を含む既存の保護策で堅固に守られており、政府は動向を監視し必要に応じて保護策を強化すると述べた。回答は AI が医薬品承認のエビデンス基準を変えないという「同一基準」原則を確認した。`,
     summaryEn: `Mr Yip Hon Weng asked the Coordinating Minister for Social Policies and Minister for Health in writing whether the Ministry has studied if AI-developed drugs can shorten or bypass clinical trials; if so, how their regulatory approval would differ from conventional products; what regulations currently govern AI healthcare innovations; and whether existing personal data protection and cybersecurity safeguards can prevent data leakage when AI accesses national patient data for product conceptualisation. Health Minister Ong Ye Kung replied that both AI-developed and conventionally developed drugs must meet the same international standards of quality, safety and efficacy — no shortcuts. The Health Sciences Authority's regulatory approach is aligned with international agencies such as the US FDA and the European Medicines Agency, which have set out key principles on the responsible use of AI in drug development. Patient data is robustly protected, including under the Personal Data Protection Act, and the Government will continue to monitor developments and strengthen safeguards as needed. The reply affirmed a "same standards" principle: AI does not change the evidentiary bar for drug approval.`,
     keyPoints: [
@@ -966,6 +1066,14 @@ export const debates: Debate[] = [
     topics: ['Deepfakes & Disinformation', 'AI in Public Sector'],
     summary: `工人党议员林瑞莲书面询问数字发展与信息部长：智能深度伪造检测器 INDEPTH 从公共部门使用转向公众使用前，须满足什么技术准确率基准或责任框架；政府是否会在 ScamShield 应用中试点验证 API，为公民提供可疑媒体的实时风险评分。部长杨莉明答复：INDEPTH 是专为政府机构设计的深度伪造检测平台，不打算向公众开放；公开其检测能力不符合公共利益，因为恶意行为者可能利用这些信息。关于 ScamShield，她说明该应用可拦截已核实的诈骗电话、过滤诈骗短信，并允许用户查验和举报含深度伪造等篡改痕迹的可疑来电、消息及链接；政府将继续强化其检测能力和公众教育，但现阶段无计划开发实时风险评分的验证 API。张力在于：反对党要求把政府级检测工具下放给公众，政府以安全保密为由拒绝。`,
     summaryKo: `노동자당 실비아 림(Sylvia Lim) 의원은 디지털개발정보부 장관에게 서면 질의를 통해, 지능형 딥페이크 탐지기 INDEPTH가 공공부문용에서 대국민용으로 전환되기 전에 충족해야 할 기술적 정확도 기준이나 책임 체계가 무엇인지, 그리고 정부가 ScamShield 앱에 검증 API를 시범 도입해 시민에게 의심스러운 미디어의 실시간 위험 점수를 제공할 계획이 있는지를 물었다. 조세핀 테오(Josephine Teo) 장관은 INDEPTH는 정부 기관 전용으로 설계된 딥페이크 탐지 플랫폼이며 대국민 공개를 의도하지 않는다고 답했다. 탐지 역량을 공개하는 것은 악의적 행위자가 이를 악용할 수 있어 공익에 부합하지 않는다는 것이다. ScamShield에 대해서는 사기 전화 차단, 사기 문자 필터링, 의심스러운 전화·메시지·링크(딥페이크 등 디지털 조작 흔적 포함)의 확인·신고 기능을 설명하고, 탐지 역량과 공교육을 계속 강화하되 실시간 위험 점수 검증 API 개발 계획은 현재 없다고 밝혔다. 야당은 정부급 탐지 도구의 대중 개방을 요구하고 정부는 보안상 비공개를 고수하는 긴장이 드러난다.`,
+    whyItMatters:
+      'INDEPTH 检测能力对公众保密、ScamShield 现阶段无实时验证 API 计划，标志新加坡深伪治理选择政府端能力筑墙而非公民端赋能',
+    whyItMattersEn:
+      "INDEPTH's detection capabilities remain undisclosed to the public; ScamShield currently has no plans for real-time verification APIs, signalling that Singapore's deepfake governance prioritises building government-side capacity over empowering citizens.",
+    whyItMattersJa:
+      'INDEPTH の検出能力は公開されず、ScamShield は現段階ではリアルタイム検証 API を計画していないため、シンガポールの深偽動画ガバナンスが政府側の能力構築を選択し、市民側のエンパワーメントではないことを示しています',
+    whyItMattersKo:
+      'INDEPTH 탐지 능력은 공중에 비공개이고, ScamShield는 현 단계에서 실시간 검증 API 계획이 없으며, 이는 싱가포르의 딥페이크 거버넌스가 정부 측 역량으로 벽을 쌓는 것이지 시민 측 역량 강화가 아님을 나타냅니다.',
     summaryJa: `労働者党のシルビア・リム（Sylvia Lim）議員はデジタル開発情報大臣に書面で質問し、インテリジェント・ディープフェイク検出器 INDEPTH が公共部門向けから一般向けに移行する前に満たすべき技術的精度基準や責任枠組みは何か、また政府が ScamShield アプリに検証 API を試験導入し、疑わしいメディアのリアルタイムのリスクスコアを市民に提供する考えはあるかを質した。ジョセフィン・テオ（Josephine Teo）大臣は、INDEPTH は政府機関専用に設計されたディープフェイク検出プラットフォームであり一般公開は想定していないと回答。検出能力を明かすことは悪意ある行為者に悪用される恐れがあり公益に反するとした。ScamShield については、詐欺電話の遮断、詐欺 SMS のフィルタリング、ディープフェイクなどデジタル改ざんの兆候を含む疑わしい通話・メッセージ・リンクの確認・通報機能を説明し、検出能力と公衆教育を引き続き強化するが、リアルタイムのリスクスコアを提供する検証 API の開発計画は現時点でないと述べた。政府級の検出ツールの一般開放を求める野党と、安全保秘を理由に拒む政府の緊張が浮かぶ。`,
     summaryEn: `Workers' Party MP Sylvia Lim asked the Minister for Digital Development and Information in writing what technical accuracy benchmarks or liability frameworks the Intelligent Deepfake Detector (INDEPTH) must meet before transitioning from public service use to public use, and whether the Government will pilot a verification API within the ScamShield app to give citizens real-time risk scores for suspicious media. Minister Josephine Teo replied that INDEPTH is a deepfake detection platform designed specifically for Government agencies and is not intended for public use; revealing its detection capabilities would not be in the public interest as malicious actors may exploit such information. On ScamShield, she explained the app — built by Open Government Products with the National Crime Prevention Council and the Singapore Police Force — blocks verified scam calls, filters scam SMSes, and lets users check and report suspicious calls, messages and links, including content showing signs of digital manipulation such as deepfakes. The Government will keep strengthening its detection capabilities and public education, but has no plans at this juncture for a real-time risk-scoring verification API. The tension: the opposition wants government-grade detection tools in citizens' hands; the Government declines on security-through-secrecy grounds.`,
     keyPoints: [
@@ -1032,6 +1140,13 @@ export const debates: Debate[] = [
     topics: ['AI Governance & Regulation', 'AI Safety & Ethics'],
     summary: `工人党议员林瑞莲就《代理式 AI 示范治理框架》发布后续书面询问数字发展与信息部长：在没有明确披露要求的情况下，部门如何确保与公众交互的自主 AI 代理具备"实质性人类问责"；什么样的触发条件会促使该框架从自愿性准则转为高风险行业的强制性标准。部长杨莉明答复：框架为机构部署代理式 AI 提供指引——高风险或不可逆的操作不得在无人审核下执行，机构应设置需人工批准的检查点或行动边界；框架同时强调对用户透明，例如预先声明用户在与代理交互及其能力和数据访问权限。她表示代理式 AI 的应用场景和保障仍在演变，政府将与行业监管机构观察各行业部署实践、借鉴国际经验、按需调整框架——未给出从自愿转向强制的触发条件。张力在于：反对党追问治理硬化的明确路径，政府保持"观察—调整"的弹性立场。`,
     summaryKo: `노동자당 실비아 림(Sylvia Lim) 의원은 에이전틱 AI 모델 거버넌스 프레임워크 발표 이후 디지털개발정보부 장관에게 서면 질의를 통해, 명시적 공개 의무가 없는 상황에서 대중과 상호작용하는 자율 AI 에이전트의 '실질적 인간 책임성'을 어떻게 확보할 것인지, 그리고 어떤 조건이 충족되면 이 프레임워크가 자율 규범에서 고위험 부문의 강제 기준으로 전환되는지를 물었다. 조세핀 테오(Josephine Teo) 장관은 프레임워크가 에이전틱 AI 배치 시 실질적 인간 책임성을 확보하기 위한 지침을 제시한다고 답했다. 고위험이거나 되돌릴 수 없는 행동은 인간 검토 없이 실행되어서는 안 되며, 인간 승인이 필요한 체크포인트나 행동 경계를 설정해야 한다. 프레임워크는 또한 사용자가 에이전트와 상호작용하고 있다는 사실과 에이전트의 역량·데이터 접근 권한을 사전에 알리는 투명성을 강조한다. 장관은 에이전틱 AI의 활용 사례와 적절한 안전장치가 아직 진화 중이므로, 부문별 규제기관과 함께 배치 실태를 모니터링하고 국제 모범 사례를 참고해 필요시 프레임워크를 조정하겠다고 밝혔다. 자율에서 강제로의 구체적 전환 조건은 제시하지 않았다.`,
+    whyItMatters: '杨莉明未松口强制门槛，代理式 AI 示范治理框架仍是自愿准则，公众问责暂无法定保障',
+    whyItMattersEn:
+      'Josephine Teo has not relaxed mandatory thresholds; the agentic AI governance demonstration framework remains voluntary, with no statutory safeguards for public accountability.',
+    whyItMattersJa:
+      'ジョセフィン・テオは強制基準を緩めず、代理型 AI 示範ガバナンスフレームワークはなお自発的基準であり、公衆への説明責任はまだ法定の保障がありません',
+    whyItMattersKo:
+      '양리명이 강제 임계값을 완화하지 않았으며, 대리 방식 AI 시범 거버넌스 프레임워크는 여전히 자발적 규범이고, 대중 문책은 아직 법정 보장이 없습니다.',
     summaryJa: `労働者党のシルビア・リム（Sylvia Lim）議員は、エージェント型 AI のモデル AI ガバナンス枠組みの公表を受け、デジタル開発情報大臣に書面で質問した。明示的な開示義務がない中で、公衆と対話する自律型 AI エージェントの「実質的な人間の説明責任」をどう確保するのか、またどのような条件が満たされれば同枠組みが自主的な規範から高リスク分野の強制基準に移行するのか。ジョセフィン・テオ（Josephine Teo）大臣は、枠組みはエージェント型 AI の導入において実質的な人間の説明責任を確保するための指針を示していると回答。リスクが高い、または不可逆な行動を人間のレビューなしに実行させてはならず、人間の承認を要するチェックポイントや行動境界を設定すべきだとした。枠組みはまた、ユーザーがエージェントと対話していることや、エージェントの能力・データアクセスを事前に明示する透明性を重視する。大臣は、エージェント型 AI のユースケースと適切な安全策はなお進化中であり、各分野の規制当局とともに導入実態を監視し、国際的なベストプラクティスに学びながら必要に応じて枠組みを調整すると述べた。自主から強制への具体的な移行条件は示されなかった。`,
     summaryEn: `Following the launch of the Model AI Governance Framework for Agentic AI, Workers' Party MP Sylvia Lim asked the Minister for Digital Development and Information in writing how the Ministry intends to ensure "meaningful human accountability" for autonomous AI agents interacting with the public absent explicit disclosure requirements, and what triggers would shift the Framework from a voluntary code to enforceable standards for high-risk sectors. Minister Josephine Teo replied that the Framework sets out guidance for organisations: high-stakes or irreversible actions should not proceed without human review, with checkpoints or action boundaries requiring human approval. It also emphasises transparency towards users — declaring upfront that users are interacting with agents, and the agents' capabilities and data access. She said agentic AI use cases and safeguards are still evolving; together with sector regulators, the Government will monitor how sectors deploy agentic AI, consult international best practices, and adjust the framework as necessary. No concrete triggers for moving from voluntary to mandatory were given. The tension: the opposition pressed for a clear hardening pathway; the Government kept a flexible monitor-and-adjust stance.`,
     keyPoints: [
@@ -1098,6 +1213,13 @@ export const debates: Debate[] = [
     topics: ['Deepfakes & Disinformation', 'AI Governance & Regulation'],
     summary: `工人党议员林瑞莲书面询问数字发展与信息部长：政府在判定涉及政治公职人员的AI深度伪造视频"明显属于伪造"、无需援引《防止网络虚假信息和网络操纵法》（POFMA）发出指示之前，是否对弱势群体做过测试；以及此类视频须造成何种程度的公众混淆，才会触发《网络犯罪危害法》（OCHA）下的主动干预。部长杨莉明答复：POFMA下部长可对在新加坡传播且涉及公共利益的虚假事实陈述发出更正指示，包括深度伪造视频；OCHA下政府可在合理怀疑网络活动涉及附表一所列罪行、或为诈骗及恶意网络活动做准备时，指示平台屏蔽新加坡用户访问。她强调政府对有害内容做整体评估，干预不取决于单一因素；并称公共教育与立法同等重要，列举IMDA"数字技能为生活"框架和SG数字办公室面向年长者的生成式AI工作坊。`,
     summaryKo: `노동자당 실비아 림 의원은 디지털개발정보부 장관에게 서면 질의했다. 정치인 관련 AI 딥페이크 영상이 "명백한 조작"이어서 온라인 허위정보 및 조작 방지법(POFMA)상 지시가 불필요하다고 판단하기 전에 정부가 취약계층을 대상으로 검증을 실시하는지, 그리고 온라인 범죄 피해 방지법(OCHA)에 따른 선제적 개입이 발동되려면 어느 정도의 대중 혼란이 있어야 하는지를 물었다. 조세핀 테오 장관은 POFMA상 싱가포르에서 유포된 허위 사실에 대해 공익에 부합하면 정정 지시를 내릴 수 있으며 딥페이크 영상도 포함된다고 답했다. OCHA에 따라 부속서 1의 범죄나 사기·악성 사이버 활동의 준비가 의심되는 경우 플랫폼에 접근 차단을 지시할 수 있다. 정부는 유해 콘텐츠를 종합적으로 평가하며 개입은 단일 요인으로 결정되지 않는다고 강조했고, IMDA의 '생활을 위한 디지털 스킬' 프레임워크와 고령자 대상 생성형 AI 워크숍 등 공교육이 입법만큼 중요하다고 밝혔다.`,
+    whyItMatters: '政府拒绝为深伪干预设定量化门槛，POFMA 与 OCHA 均依赖个案裁量，暴露新加坡深伪治理缺乏可预期标准',
+    whyItMattersEn:
+      "The government refused to set quantitative thresholds for deepfake intervention; both POFMA and OCHA rely on case-by-case discretion, exposing the lack of predictable standards in Singapore's deepfake governance.",
+    whyItMattersJa:
+      '政府は深偽動画への介入に量的基準を設定することを拒否し、POFMA と OCHA の両方が個別案件の裁量に依存しており、シンガポール深偽動画ガバナンスが予測可能な基準を欠いていることを露呈しています',
+    whyItMattersKo:
+      '정부가 딥페이크 개입에 대한 량화된 임계값 설정을 거부했으며, POFMA와 OCHA 모두 개별 사례 판단에 의존하고 있어 싱가포르 딥페이크 거버넌스의 예측 가능한 표준 부재를 드러냈습니다.',
     summaryJa: `労働者党のシルビア・リム議員はデジタル開発情報相に書面で質問した。政治家を扱ったAIディープフェイク動画が「明らかに捏造」でありオンライン虚偽情報・操作防止法（POFMA）に基づく指示が不要だと判断する前に、政府は脆弱層を対象とした検証を行っているか、またオンライン犯罪被害法（OCHA）に基づく能動的介入にはどの程度の公衆の混乱が必要か、と問うた。ジョセフィン・テオ大臣は、POFMAの下では新加坡で流布された虚偽の事実について公益に適う場合に訂正指示を出せ、ディープフェイク動画も対象になると答弁。OCHAの下では、附則1の犯罪や詐欺・悪意あるサイバー活動の準備が疑われる場合、プラットフォームにアクセス遮断を指示できる。政府は有害コンテンツを総合的に評価し、介入は単一の要因では決まらないと強調し、IMDAの「生活のためのデジタルスキル」枠組みや高齢者向け生成AIワークショップなど、公共教育は立法と同等に重要だと述べた。`,
     summaryEn: `Workers' Party MP Ms Sylvia Lim filed written questions to the Minister for Digital Development and Information: does the Government test on vulnerable groups before deciding that AI-generated deepfake videos of political office-holders are so obviously fabricated that POFMA directions are unnecessary, and what threshold of public confusion must be met before proactive intervention under the Online Criminal Harms Act (OCHA)? Mrs Josephine Teo replied that under POFMA a Minister can issue a Correction Direction against false statements of fact communicated in Singapore where it is in the public interest, including deepfake videos; under OCHA the Government can direct online service providers to block Singapore users' access where there is reasonable suspicion of a First Schedule offence or activity preparatory to scams or malicious cyber activity. She stressed that harmful content is assessed holistically and intervention is not determined by any single factor, and pointed to public education — IMDA's Digital Skills for Life framework and the SG Digital Office's Gen AI workshops for seniors — as being as important as legislation.`,
     keyPoints: [
@@ -1164,6 +1286,13 @@ export const debates: Debate[] = [
     topics: ['AI Governance & Regulation', 'AI Safety & Ethics'],
     summary: `工人党议员严燕松书面询问数字发展与信息部长：部里是否会出台新规，要求智能眼镜配备可视指示灯以防止在公共场所偷拍；以及如何确保个人使用的AI可穿戴设备不会在未经周围非用户明确同意的情况下大规模采集生物特征或环境数据。部长杨莉明答复：《个人数据保护法》（PDPA）下，组织（包括为商业目的创作内容的个人）须对个人数据的收集和使用负责，拍照、录像或录音适用同样的规则和原则，与设备形态无关。虽然PDPA一般不要求在公共场所拍摄前征得同意，但组织对个人数据的后续使用或披露（包括用于AI功能）必须出于合理目的并遵守其他适用法律。她还指出，未经同意录制、分享或滥用私密内容可能构成《刑法》《防止骚扰法》下的刑事罪行，《网络安全（救济与问责）法》也可追究网络内容创作者对受害者造成伤害的责任。答复未承诺出台针对智能眼镜的设备专属新规。`,
     summaryKo: `노동자당 제럴드 지암 의원은 디지털개발정보부 장관에게 서면 질의했다. 공공장소 몰래 촬영을 막기 위해 스마트 글라스에 시각적 표시등을 의무화하는 새 규정을 도입할 것인지, 그리고 개인이 사용하는 AI 웨어러블 기기가 주변 비사용자의 명시적 동의 없이 생체·환경 데이터를 대량 수집하지 않도록 어떻게 보장하는지를 물었다. 조세핀 테오 장관은 개인정보보호법(PDPA)상 상업적 목적으로 콘텐츠를 만드는 개인을 포함한 조직은 개인정보의 수집·이용에 책임을 지며, 촬영·녹음은 기기 형태와 무관하게 동일한 규칙이 적용된다고 답했다. PDPA는 공공장소 촬영에 일반적으로 동의를 요구하지 않지만, AI 기능을 포함한 이후의 이용·공개는 합리적 목적이어야 하고 다른 법률을 준수해야 한다. 또한 비동의 촬영·유포는 형법과 괴롭힘 방지법상 범죄가 될 수 있으며, 온라인 안전(구제·책임)법에 따라 콘텐츠 제작자에게 책임을 물을 수 있다고 밝혔다. 기기 전용 신규 규제는 약속하지 않았다.`,
+    whyItMatters: '严燕松提案智能眼镜强制指示灯未被采纳，新加坡对 AI 可穿戴设备定调依旧套用 PDPA，不新增硬件规则',
+    whyItMattersEn:
+      "Yan Yansong's proposal for mandatory indicator lights on smart glasses was not adopted; Singapore's approach to AI wearable devices continues to apply the Personal Data Protection Act without introducing new hardware-specific rules.",
+    whyItMattersJa:
+      'ヤン・イェンソン氏のスマートグラス強制インジケーター提案は採用されず、シンガポール AI ウェアラブルデバイスの位置付けは引き続き PDPA を適用し、新しいハードウェア規則は追加されていません',
+    whyItMattersKo:
+      '엄연송의 스마트 안경 강제 표시등 제안이 채택되지 않았으며, 싱가포르의 AI 웨어러블 기기 정의는 여전히 PDPA를 적용하고 새로운 하드웨어 규칙을 추가하지 않았습니다.',
     summaryJa: `労働者党のジェラルド・ジアム議員はデジタル開発情報相に書面で質問した。公共空間での隠し撮りを防ぐためスマートグラスに可視インジケーターを義務付ける新規制を導入するか、また個人が使うAIウェアラブル機器が周囲の非利用者の明示的同意なしに生体・環境データを大量収集しないようどう担保するかを問うた。ジョセフィン・テオ大臣は、個人データ保護法（PDPA）の下では商業目的でコンテンツを作る個人を含む組織が個人データの収集・利用に責任を負い、撮影・録音は機器の形態にかかわらず同じ規則が適用されると答弁。PDPAは公共空間での撮影に一般に同意を求めないが、AI機能を含むその後の利用・開示は合理的な目的に基づき他の法令を遵守しなければならない。さらに、同意なき撮影・共有は刑法やハラスメント防止法上の犯罪となり得るほか、オンライン安全（救済・責任）法によりコンテンツ制作者の責任を問えると述べた。機器固有の新規制は約束しなかった。`,
     summaryEn: `Workers' Party MP Mr Gerald Giam asked the Minister for Digital Development and Information whether the Ministry will introduce visual indicator requirements for smart glasses to prevent surreptitious recording in public, and how it ensures AI-enabled wearables do not facilitate mass collection of biometric or environmental data without the explicit consent of bystanders. Mrs Josephine Teo replied that under the Personal Data Protection Act (PDPA), organisations — including individuals creating content for commercial purposes — are accountable for how personal data is collected and used, and that photography and recording are subject to the same rules regardless of the device's form factor. While the PDPA generally does not require consent for recording in public spaces, any subsequent use or disclosure, including for AI features, must be for a reasonable purpose and comply with other laws. Non-consensual recording or misuse of intimate content may constitute offences under the Penal Code and the Protection from Harassment Act, and content creators can be held accountable under the Online Safety (Relief and Accountability) Act. No device-specific new regulations were committed.`,
     keyPoints: [
@@ -1230,6 +1359,14 @@ export const debates: Debate[] = [
     topics: ['AI & Employment'],
     summary: `工人党议员何廷儒就AI对劳动力市场的冲击向人力部长提出两项书面询问：一问AI技能薪资溢价的最新评估及其在行业和资历层面的差异，二问最易被取代的职业评估，以及对文员、后台和入门级知识型岗位员工的针对性干预。部长陈诗龙答复：人力部数据显示，资讯通信、金融服务和专业服务领域的PMET（专业人士、经理、执行员与技师）近年裁员率相对较高，但这反映的是持续重组而非PMET需求萎缩；由于企业AI应用仍处早期，人力部没有AI技能薪资溢价的数据。扶持措施包括：新加坡劳动力局的职业转换计划帮助文员和后台岗位员工转入前景更好的职位，毕业生行业实习计划为未就业应届毕业生提供结构化工作经验；精深技能发展局正在简化AI学习路径；今年晚些时候，参加合格AI培训课程的新加坡人将获得六个月高级版AI工具的免费使用权。政府表示将持续监测劳动力市场并动态调整支持。`,
     summaryKo: `노동자당 허팅루 의원은 AI가 노동시장에 미치는 충격에 대해 인력부 장관에게 두 건의 서면 질의를 했다. AI 스킬의 임금 프리미엄에 대한 최신 평가와 업종·연차별 차이, 그리고 대체 위험이 가장 큰 직종 평가와 사무·백오피스·초급 지식 직군 근로자를 위한 맞춤 개입을 물었다. 탄시렝 장관은 인력부 데이터상 정보통신·금융·전문서비스 부문의 PMET(전문가·관리자·임원·기술자)의 최근 감원 비율이 상대적으로 높지만 이는 PMET 수요 위축이 아닌 지속적인 구조조정을 반영한다고 답했다. 기업의 AI 도입이 초기 단계라 AI 스킬 임금 프리미엄 데이터는 없다. 지원책으로는 사무·백오피스 직군의 전직을 돕는 경력전환프로그램(CCP), 미취업 졸업생에게 구조화된 실무 경험을 제공하는 졸업생 산업연수제도, 스킬스퓨처의 AI 학습 경로 간소화가 있으며, 올해 하반기에는 적격 AI 교육 수강자에게 프리미엄 AI 도구 6개월 무료 이용권을 제공한다. 정부는 노동시장을 계속 모니터링하며 지원을 조정하겠다고 밝혔다.`,
+    whyItMatters:
+      '人力部承认尚无 AI 技能薪资溢价数据，却押注 6 个月免费高级 AI 工具政策应对冲击，暴露新加坡劳动力政策的数据空白',
+    whyItMattersEn:
+      "The Ministry of Manpower(MOM) acknowledged the absence of data on AI skills wage premiums, yet bet on a six-month free advanced AI tools policy to mitigate the impact, exposing a data gap in Singapore's workforce policy.",
+    whyItMattersJa:
+      '人材省（MOM）は AI スキル給与プレミアムのデータがまだないことを認めており、6 ヶ月間の無料高度 AI ツール政策で影響に対応することに賭けており、シンガポール労働力政策のデータ空白を露呈しています',
+    whyItMattersKo:
+      '인력부（MOM）가 AI 기술 급여 프리미엄 데이터가 아직 없음을 인정했으나, 6개월 무료 프리미엄 AI 도구 정책으로 충격에 대응할 수 있을 것으로 기대하고 있으며, 싱가포르 노동력 정책의 데이터 공백을 드러냈습니다.',
     summaryJa: `労働者党のホー・ティンルー議員はAIの労働市場への影響について人材相に2件の書面質問を行った。AIスキルの賃金プレミアムの最新評価と業種・職位による差異、そして代替リスクが最も高い職種の評価と、事務・バックオフィス・初級ナレッジ職の労働者への的を絞った介入策を問うた。タン・シーレン大臣は、人材省のデータでは情報通信・金融・専門サービス部門のPMET（専門職・管理職・幹部・技術者）の近年の人員削減率が相対的に高いが、これはPMET需要の縮小ではなく継続的な事業再編を反映していると答弁。企業のAI導入は初期段階にあるため、AIスキルの賃金プレミアムに関するデータはない。支援策として、事務・バックオフィス職の転職を支援するキャリア転換プログラム、未就職の新卒者に構造化された実務経験を提供する卒業生産業研修制度、スキルズフューチャーによるAI学習経路の簡素化を挙げ、今年後半には適格なAI研修受講者にプレミアム版AIツールの6か月無料利用権を提供すると述べた。政府は労働市場を注視し支援を調整し続けるとした。`,
     summaryEn: `Workers' Party MP Ms He Ting Ru filed two written questions to the Minister for Manpower on AI's impact on the labour market: the latest assessment of the salary premium for AI skills and how it varies by sector and seniority, and the top occupations at risk of displacement plus targeted interventions for clerical, back-office and entry-level knowledge workers. Dr Tan See Leng replied that MOM data shows PMETs in infocomm, financial services and professional services have seen relatively higher retrenchment incidence in recent years, indicating ongoing restructuring rather than a contraction in PMET demand. MOM has no data on AI-skill salary premiums as corporate AI adoption is still at an early stage. Support measures include Workforce Singapore's Career Conversion Programmes for workers in clerical and back-office roles, the Graduate Industry Traineeship scheme for fresh graduates without full-time jobs, and SkillsFuture Singapore's simplified AI learning pathways. Later this year, Singaporeans taking eligible AI training courses will receive six months' complimentary access to premium AI tools. The Government will keep monitoring the labour market and calibrating support.`,
     keyPoints: [
@@ -1296,6 +1433,14 @@ export const debates: Debate[] = [
     topics: ['AI & Employment', 'AI Economy & Industry', 'AI Strategy'],
     summary: `全国职工总会（NTUC）秘书长黄志明（惹兰加由议员）5月5日晚提出"AI转型不容无就业增长"国会动议（联署人：Mark Lee、萨克蒂安迪、杨涴凌），要求国会确认AI驱动的增长必须以公平、韧性和人人有机会为锚，新加坡不能出现"无就业增长"。他援引NTUC调查（五分之一受访者把工作保障列为首要担忧、56%的PME自认需提升技能）说明工人焦虑，并提出四项实际举措：建立立足本地的劳动力市场情报与前瞻系统；通过企业培训委员会（CTC，2019年以来已设立逾3,800个、惠及逾30万工人）支持企业携工人转型，并提议与全国雇主联合会（SNEF）在三方就业理事会下共同推广；扩大AI-Ready SG等培训路径（目标未来数年逾100万个培训名额）；以及让被裁员工有尊严地重新站起，包括裁员前向政府提前通报、把技能创前程求职者援助计划（JSS）覆盖面从月入中位数约5,000新元上调至PME中位收入水平。发言结束后辩论延至次日继续。`,
     summaryKo: `전국노동조합총회(NTUC) 사무총장 응치멩(잘란카유 의원)은 5월 5일 밤 "고용 없는 성장이 없는 AI 전환" 동의를 제출했다(공동 제출: 마크 리, 삭티안디, 여완링). 동의는 AI 주도 성장이 공정성·회복력·만인의 기회에 뿌리내려야 하며 싱가포르에 "고용 없는 성장"이 있어서는 안 된다는 점을 의회가 확인할 것을 요구했다. 그는 NTUC 조사(응답자 5명 중 1명이 고용 안정을 최대 우려로 꼽았고 PME의 56%가 기술 향상 필요성을 느낌)를 들어 노동자의 불안을 설명하고 네 가지 실질적 조치를 제안했다. 싱가포르 실정에 맞는 노동시장 정보·전망 시스템 구축, 기업훈련위원회(CTC, 2019년 이후 3,800개 이상 설립, 30만 명 이상 수혜)를 통한 노동자 동반 기업 전환 지원 및 전국고용주연맹(SNEF)과의 공동 확대, AI-Ready SG 등 훈련 경로 확대(향후 수년간 100만 개 이상 훈련 자리 목표), 그리고 해고 전 정부 사전 통보와 구직자지원제도(JSS) 적용 범위를 중위소득 약 5,000달러에서 PME 중위소득 수준으로 상향하는 등 실직자의 존엄한 재기 지원이다. 연설 후 토론은 다음 날로 연기됐다.`,
+    whyItMatters:
+      'NTUC 借国会动议抢先划线,要求 JSS 覆盖上限升至 PME 中位收入、CTC 联手 SNEF 全国推广,倒逼政府补上 AI 战略的工人保障缺口',
+    whyItMattersEn:
+      'The NTUC seized a parliamentary motion to establish benchmarks, demanding that the JSS coverage cap be raised to the median income of PMEs, and partnering with SNEF to roll out CTC nationwide, forcing the government to fill the worker protection gap in its AI strategy.',
+    whyItMattersJa:
+      'NTUC は国会動議を利用して先制的に線を引き、JSS の適用上限を PME 中央値収入まで引き上げることを要求し、CTC が SNEF と連携して全国で推進し、政府が AI 戦略における労働者保障のギャップを埋めることを強制しています',
+    whyItMattersKo:
+      'NTUC가 국회 동의를 빌려 먼저 선을 그었으며, JSS 커버리지 상한을 PME 중위 소득으로 상향 요청하고, CTC가 SNEF와 연합하여 전국 확대를 요구하여 정부가 AI 전략의 노동자 보호 공백을 메우도록 강제했습니다.',
     summaryJa: `全国労働組合会議（NTUC）事務総長のン・チーメン議員（ジャラン・カユ選挙区）は5月5日夜、「雇用なき成長を許さないAI移行」動議を提出した（共同提出者：マーク・リー、サクティアンディ、ヨー・ワンリン）。動議は、AI主導の成長が公平性・強靭性・万人への機会に立脚すべきであり、シンガポールに「雇用なき成長」があってはならないことを議会が確認するよう求めた。彼はNTUC調査（回答者の5人に1人が雇用保障を最大の懸念に挙げ、PMEの56%がスキル向上の必要性を実感）を引いて労働者の不安を説明し、4つの実践的施策を提案した。シンガポールの実情に根ざした労働市場インテリジェンス・予見システムの構築、企業訓練委員会（CTC、2019年以降3,800超設立、30万人超が恩恵）を通じた労働者と共に進む企業変革の支援とシンガポール全国雇用者連盟（SNEF）との共同展開、AI-Ready SGなど訓練経路の拡大（今後数年で100万超の訓練枠が目標）、そして解雇前の政府への事前通知や求職者支援制度（JSS）の適用範囲を中央値月収約5,000ドルからPME中央値収入水準へ引き上げるなど、離職者が尊厳をもって再起できる支援である。演説後、討論は翌日に延期された。`,
     summaryEn: `NTUC Secretary-General Ng Chee Meng (Jalan Kayu) moved a parliamentary Motion on the evening of 5 May — also standing in the names of Mr Mark Lee, Mr Saktiandi Supaat and Ms Yeo Wan Ling — calling on the House to affirm that AI-enabled growth must be anchored in fairness, resilience and opportunity for all, and that Singapore must not have jobless growth. Citing NTUC surveys (one in five respondents named job security their top concern; 56% of PMEs felt they needed to upskill), he laid out four practical moves: building a Singapore-specific labour-market intelligence and foresight system; enabling enterprises to transform with AI alongside workers by scaling the Company Training Committee model (over 3,800 CTCs since 2019, benefiting more than 300,000 workers) jointly with SNEF under the new Tripartite Jobs Council; expanding training pathways such as AI-Ready SG (targeting over one million training places in the coming years); and helping displaced workers bounce back with dignity, including advance notification of retrenchments to the Government and expanding SkillsFuture Jobseeker Support coverage from the roughly $5,000 median income towards PME median income levels. The debate was adjourned to the next sitting day after his speech.`,
     keyPoints: [
@@ -1362,6 +1507,13 @@ export const debates: Debate[] = [
     topics: ['AI Governance & Regulation', 'AI Safety & Ethics'],
     summary: `工人党议员陈立峰书面质询数字发展与信息部：是否打算检讨 2012 年《个人数据保护法》（PDPA），以应对推断或衍生数据——包括 AI 生成的行为画像——的使用；若是，检讨将遵循什么原则。部长杨莉明答复：PDPA 下关于可识别个人的数据即属个人数据，机构对其持有或控制的此类数据负有保护义务，也涵盖机构在业务中从个人数据衍生的数据；个人数据保护委员会（PDPC）已发布 AI 推荐与决策系统个人数据使用咨询指引，原则包括仅用于正当商业目的、收集限于所需。答复实质上否定修法迫切性——政府认为现行定义已覆盖衍生数据，辅以软性指引即可，而议员指向的 AI 行为画像新型风险未获专门立法回应。`,
     summaryKo: `노동자당 의원 데니스 탄(Dennis Tan Lip Fong)은 디지털개발정보부에 추론·파생 데이터—AI 시스템이 생성한 행동 프로파일 포함—의 사용 문제를 다루기 위해 2012년 개인정보보호법(PDPA)을 재검토할 의향이 있는지, 있다면 어떤 원칙이 그 재검토를 이끌 것인지 서면 질의했다. 조세핀 테오(Josephine Teo) 장관은 PDPA상 식별 가능한 개인에 관한 데이터는 개인정보로 간주되며, 조직은 보유·통제하는 그러한 데이터를 보호할 의무가 있고, 이는 조직이 사업 과정에서 개인정보로부터 파생시킨 해당 개인에 관한 데이터도 포함한다고 답했다. 또한 개인정보보호위원회(PDPC)가 'AI 추천·의사결정 시스템에서의 개인정보 사용에 관한 자문 지침'을 발간해 정당한 사업 목적으로만 데이터를 사용하고 수집을 필요 범위로 제한하는 등의 원칙을 제시했다고 밝혔다. 이 답변은 사실상 법 개정의 시급성을 부인한 것으로, 정부는 현행 법률 정의가 파생 데이터를 이미 포괄하며 소프트한 지침으로 충분하다는 입장인 반면, 야당 의원이 지적한 AI 행동 프로파일링이라는 새로운 위험에 대한 별도의 입법 대응은 이루어지지 않았다.`,
+    whyItMatters: '政府以 PDPC 软性指引搪塞，未修订 2012 年 PDPA，暴露新加坡对 AI 推断数据缺乏硬法约束',
+    whyItMattersEn:
+      "The government deflected with PDPC soft guidance, refusing to amend the 2012 Personal Data Protection Act, exposing Singapore's lack of hard-law constraints on AI inferred data.",
+    whyItMattersJa:
+      '政府は PDPC ソフト指針で対応し、2012 年 PDPA を改訂していないため、シンガポール AI 推論データに対する硬い法的拘束力の欠如が露呈しています',
+    whyItMattersKo:
+      '정부가 PDPC 소프트 가이드라인으로 회피했으며 2012년 PDPA를 개정하지 않았으므로, 싱가포르가 AI 추론 데이터에 대한 경성 법적 제약이 없음을 드러냈습니다.',
     summaryJa: `労働者党のデニス・タン（Dennis Tan Lip Fong）議員は、推論データや派生データ——AI システムが生成する行動プロファイルを含む——の利用に対応するため 2012 年個人データ保護法（PDPA）を見直す意向があるか、あるならどのような原則が見直しを導くのかをデジタル開発情報省に書面で質した。ジョセフィン・テオ（Josephine Teo）大臣は、PDPA の下では識別可能な個人に関するデータは個人データとされ、組織は保有・管理するそうしたデータを保護する義務を負い、これには組織が事業の過程で個人データから派生させた当該個人に関するデータも含まれると答弁した。さらに個人データ保護委員会（PDPC）が「AI 推薦・意思決定システムにおける個人データ利用に関する助言ガイドライン」を公表し、正当な事業目的に限った利用やデータ収集の必要最小限化といった原則を示しているとした。この答弁は事実上、法改正の緊急性を否定するものであり、政府は現行法の定義が派生データを既にカバーしソフトな指針で足りるとの立場だが、野党議員が指摘した AI による行動プロファイリングという新たなリスクへの個別立法対応は示されなかった。`,
     summaryEn: `Workers' Party MP Dennis Tan Lip Fong asked the Ministry of Digital Development and Information in writing whether it intends to review the Personal Data Protection Act 2012 (PDPA) to address the use of inferred or derived data, including behavioural profiles generated by AI systems, and if so, what principles would guide such a review. Minister Josephine Teo replied that under the PDPA, data about an identifiable individual is personal data which organisations must safeguard when in their possession or control, and this also covers data about the individual that an organisation derives in the course of business from such personal data. She added that the Personal Data Protection Commission has published Advisory Guidelines on the Use of Personal Data in AI Recommendation and Decision Systems, setting out principles such as using data only for legitimate business purposes and limiting collection to what is needed. The reply effectively declines to commit to legislative review: the Government's position is that existing statutory definitions already cover derived data, supplemented by soft-law guidelines, leaving AI behavioural profiling without a dedicated legislative response.`,
     keyPoints: [
@@ -1428,6 +1580,13 @@ export const debates: Debate[] = [
     topics: ['AI & Employment', 'AI Economy & Industry'],
     summary: `工人党非选区议员刘吴扬（Low Wu Yang Andre）书面询问律政部长：律所大规模采用 AI 后，初级律师赖以磨练专业判断力的研究、起草等常规工作量是否会萎缩，政府是否评估过这一风险；以及新修订律师资格制度下的一年制执业培训框架是否专门针对此风险设计。律政部长唐振辉（Edwin Tong）未作实质答复，表示律政部将把这一问题与其他同主题国会问题合并，在下次适当时机以口头答复方式统一回应，并指引参阅 2026 年 5 月 6 日《官方报告》中"AI 使用导致律所工作量减少及相关使用指引"一文。背后的张力在于：AI 自动化正侵蚀法律行业传统的学徒式训练路径，而政府对培训管道断层的系统性评估尚未公开。`,
     summaryKo: `노동자당 비선거구 의원 로우 우양 안드레(Low Wu Yang Andre)는 법무부 장관에게 서면 질의를 통해, 로펌의 광범위한 AI 도입으로 주니어 변호사가 전문적 판단력을 길러온 리서치·문서 작성 등 일상 업무량이 줄어들 위험을 정부가 평가했는지, 그리고 개정된 변호사 자격 제도하의 1년제 실무 수습 제도가 이 위험에 특별히 대응하도록 설계되었는지를 물었다. 에드윈 통(Edwin Tong) 법무부 장관은 실질적 답변 대신, 같은 주제로 제출된 다른 의회 질의들과 함께 다음 기회에 구두로 일괄 답변하겠다고 밝히고, 2026년 5월 6일 공식 보고서의 "AI 사용에 따른 로펌 업무량 감소와 사용 지침" 답변을 참조하도록 안내했다. 핵심 긴장은 AI 자동화가 법조계의 전통적 도제식 훈련 경로를 잠식하는 가운데 정부의 체계적 평가가 아직 공개되지 않았다는 점이다.`,
+    whyItMatters: '国会已把 AI 是否掏空初级律师训练管道摆上台面，律政部对一年制框架能否补位仍未给出系统评估',
+    whyItMattersEn:
+      'Parliament has already tabled whether AI is depleting the junior lawyer pipeline; the Ministry of Law has yet to provide a systematic assessment of whether one-year training frameworks can fill the gap.',
+    whyItMattersJa:
+      '国会はすでに AI が初級弁護士訓練パイプラインを枯らすかどうかを議題に乗せており、法務省は 1 年制フレームワークで補充できるかについてなお体系的な評価を提供していません',
+    whyItMattersKo:
+      '국회가 AI가 초급 변호사 훈련 파이프라인을 비우고 있는지 여부를 테이블 위에 올렸으며, 법무부가 1년 제도 프레임워크가 공백을 메울 수 있는지에 대해 체계적 평가를 아직 제시하지 않았습니다.',
     summaryJa: `労働者党の非選挙区議員ロウ・ウーヤン・アンドレ（Low Wu Yang Andre）は法務大臣に書面で質問し、法律事務所での AI 普及により、若手弁護士が専門的判断力を培ってきたリサーチや起案などの定型業務量が減少するリスクを政府が評価したか、また改定された弁護士資格制度下の1年制実務研修フレームワークがこのリスクに特化して設計されているかを質した。エドウィン・トン（Edwin Tong）法務大臣は実質的な回答を行わず、同テーマで提出された他の議会質問とあわせて次の機会に口頭で一括回答するとし、2026年5月6日の公式報告書「AI 使用による法律事務所の業務量削減と使用指針」への参照を示した。背景にあるのは、AI の自動化が法曹界の伝統的な徒弟型訓練経路を侵食する一方、育成パイプライン断絶への政府の体系的評価がまだ公開されていないという緊張である。`,
     summaryEn: `Workers' Party NCMP Mr Low Wu Yang Andre asked the Minister for Law in writing whether the Government has assessed the risk that widespread AI adoption in law firms will shrink the routine work — research and drafting — through which junior lawyers have traditionally developed professional judgment, and whether the new one-year practice training framework under the revised admission process is designed specifically to address this risk. Minister for Law Edwin Tong gave no substantive reply, stating that the Ministry of Law would answer this question orally together with other parliamentary questions filed on the same topic at the next available opportunity, and pointed to the consolidated reply "Workload Reduction at Law Firms from AI Use and Guidelines for Such Use" in the Official Report of 6 May 2026. The underlying tension: AI automation is eroding the legal profession's traditional apprenticeship pathway, while the Government's systematic assessment of the training-pipeline gap has yet to be made public.`,
     keyPoints: [
@@ -1494,6 +1653,14 @@ export const debates: Debate[] = [
     topics: ['AI & National Security', 'AI Governance & Regulation'],
     summary: `工人党议员刘吴扬就政府安全机构使用第三方预测分析和数据融合软件提出书面质询：这些机构是否对底层算法进行独立审计？政府能否在依赖此类软件作出行动决策前独立验证其方法论？国家安全统筹部长兼内政部长尚穆根答复称，内政部已建立覆盖 AI 工具开发与使用的治理框架，所有预测分析和数据融合软件——包括第三方供应商提供的底层算法——都须按该框架评估，并针对具体用例实施风险评估与缓解措施；AI 应用部署前后均进行独立评估和审计以确保合规。这一问答触及安全机构算法决策的问责难题：反对党推动外部可验证性，政府则强调内部治理框架已足够覆盖，但未披露审计主体与方法细节。`,
     summaryKo: `노동자당 의원 앤드레 로우(Low Wu Yang Andre)는 정부 보안 기관이 사용하는 제3자 예측 분석·데이터 융합 소프트웨어에 대해 서면 질의했다. 해당 기관들이 기반 알고리즘에 대한 독립 감사를 수행하는지, 그리고 정부가 이런 소프트웨어를 작전 결정에 활용하기 전에 그 방법론을 독립적으로 검증할 수 있는지가 핵심이었다. 국가안보조정장관 겸 내무장관 샨무감(K Shanmugam)은 내무부가 AI 도구의 개발과 사용을 포괄하는 AI 거버넌스 프레임워크를 갖추고 있으며, 제3자 벤더의 알고리즘을 포함한 모든 예측 분석·데이터 융합 소프트웨어가 이 프레임워크에 따라 평가되고, 사용 사례별 위험 평가와 완화 조치가 적용되며, AI 애플리케이션 배포 전후에 독립 평가와 감사가 수행된다고 답했다. 이 문답은 보안 기관 알고리즘 의사결정의 책임성 문제를 건드린다. 야당은 외부 검증 가능성을 요구하고, 정부는 내부 거버넌스 프레임워크로 충분하다는 입장이지만 감사 주체와 방법의 세부 사항은 공개하지 않았다.`,
+    whyItMatters:
+      '内政部拒绝披露第三方算法审计的主体与方法，以内部治理框架自证合规，为新加坡安全机构 AI 问责设下不透明先例',
+    whyItMattersEn:
+      "The Ministry of Home Affairs(MHA) refused to disclose the identity and methodology of third-party algorithm audits, relying on internal governance frameworks to demonstrate compliance, setting a precedent of opacity in AI accountability for Singapore's security agencies.",
+    whyItMattersJa:
+      '内務省（MHA）は第三者アルゴリズム監査の実施主体と方法の開示を拒否し、内部ガバナンスフレームワークで自己適合性を証明し、シンガポール安全機関の AI 説明責任に関する不透明な先例を設定しています',
+    whyItMattersKo:
+      '내무부（MHA）가 제3자 알고리즘 감사의 주체와 방법 공개를 거부하고 내부 거버넌스 프레임워크로 자체 합규를 증명하려 하며, 싱가포르 보안 기관 AI 문책에 불투명한 선례를 남겼습니다.',
     summaryJa: `労働者党のアンドレ・ロウ（Low Wu Yang Andre）議員は、政府保安機関が使用するサードパーティ製の予測分析・データ融合ソフトウェアについて書面質問を提出した。これらの機関が基盤アルゴリズムの独立監査を実施しているか、また政府がこうしたソフトウェアを作戦上の意思決定に用いる前にその方法論を独立に検証できるかが問われた。国家安全保障調整大臣兼内務大臣のシャンムガム氏は、内務省（MHA）が AI ツールの開発・使用を対象とする AI ガバナンス枠組みを有しており、サードパーティベンダーのアルゴリズムを含むすべての予測分析・データ融合ソフトウェアが同枠組みに基づいて評価され、ユースケースごとにリスク評価と緩和措置が適用され、AI アプリケーションの展開前後に独立した評価・監査が行われると答弁した。このやり取りは保安機関のアルゴリズム的意思決定の説明責任という難題に触れている。野党は外部からの検証可能性を求め、政府は内部ガバナンス枠組みで十分とするが、監査主体や手法の詳細は明らかにしなかった。`,
     summaryEn: `Workers' Party MP Low Wu Yang Andre filed a written question on the third-party predictive analytics and data-fusion software used by Government security agencies: do these agencies conduct independent audits of the underlying algorithms, and is the Government satisfied it can independently verify such software's methodology before relying on it for operational decisions? Coordinating Minister for National Security and Minister for Home Affairs K Shanmugam replied that MHA has an AI governance framework covering the development and use of AI tools; all predictive analytics and data-fusion software, including third-party vendors' underlying algorithms, are evaluated against this framework, with risk assessment and mitigation applied per use case, and independent assessments and audits performed before and after deployment to ensure compliance. The exchange touches the accountability dilemma of algorithmic decision-making in security agencies: the opposition pushes for external verifiability, while the Government holds that its internal governance framework suffices, without disclosing who audits or how.`,
     keyPoints: [
@@ -1560,6 +1727,14 @@ export const debates: Debate[] = [
     topics: ['AI & National Security'],
     summary: `议员沙拉尔·塔哈以地缘政治紧张、网络行动日益成为混合冲突手段为背景，书面质询政府是否评估新加坡网络威胁暴露已上升，以及如何在不损害行动安全的前提下保护关键信息基础设施、政府系统、企业和个人抵御包括 AI 攻击在内的演变威胁。数字发展与信息部长杨莉明答复：新加坡作为金融枢纽和数字经济体是高价值目标；关键系统受《网络安全法》更高标准约束；网络安全局（CSA）将更新标准，并向关键系统业主提供专有威胁检测系统以应对高级威胁行为者和 AI 赋能威胁；GovTech 将要求管理关键系统的政府供应商满足 Cyber Trust Mark；家用路由器强制标准从标签计划一级升至二级，并拟扩展至 IP 摄像头。政府承认即使防御最佳仍须对 AI 网络威胁保持警惕。`,
     summaryKo: `샤라엘 타하(Sharael Taha) 의원은 지정학적 긴장 고조와 하이브리드 분쟁 수단으로서의 사이버 작전 증가를 배경으로, 싱가포르의 사이버 위협 노출이 높아졌다고 정부가 평가하는지, 그리고 작전 보안을 해치지 않으면서 핵심 정보 인프라·정부 시스템·기업·개인을 AI 기반 공격을 포함한 진화하는 위협으로부터 보호할 대비 태세를 어떻게 평가하는지 서면 질의했다. 조세핀 테오(Josephine Teo) 디지털개발정보부 장관은 금융 허브이자 디지털 경제인 싱가포르가 고가치 표적이라고 인정하며, 핵심 시스템은 사이버보안법에 따라 더 높은 기준을 적용받고, 사이버보안청(CSA)이 기준을 갱신하고 핵심 시스템 운영자에게 전용 위협 탐지 시스템을 제공해 고급 위협 행위자와 AI 기반 위협에 대응하며, GovTech는 핵심 시스템을 관리하는 정부 벤더에 Cyber Trust Mark 요건을 부과하고, 가정용 라우터 의무 기준을 사이버 라벨링 제도 1등급에서 2등급으로 상향하며 IP 카메라에도 유사 기준 도입을 검토한다고 답했다. 정부는 최선의 방어에도 AI 사이버 위협에 대한 경계가 필요하다고 인정했다.`,
+    whyItMatters:
+      'AI 威胁首次正式纳入国家网络防御模型，CSA 却仍靠路由器标签从一级升二级等存量工具下沉监管，尚无专门 AI 网络安全法案',
+    whyItMattersEn:
+      'AI threats have been formally incorporated into the national cyber defence model for the first time, yet the Cyber Security Agency (CSA) still relies on existing tools such as router labelling tiers rather than introducing dedicated AI cyber security legislation.',
+    whyItMattersJa:
+      'AI の脅威が初めて正式に国家サイバー防御モデルに組み込まれましたが、CSA はなおルーターラベルを一段階から二段階へ引き上げるなど既存ツールの規制を下ろし、専門的な AI サイバーセキュリティ法案はありません',
+    whyItMattersKo:
+      'AI 위협이 처음으로 국가 사이버방어 모델에 공식 포함되었으나, CSA는 여전히 라우터 레이블을 1단계에서 2단계 등으로 기존 도구 활용 감관으로 남겨두고 있으며, 전용 AI 사이버보안 법안이 아직 없습니다.',
     summaryJa: `シャラエル・タハ（Sharael Taha）議員は、地政学的緊張の高まりとハイブリッド紛争の手段としてのサイバー作戦の増加を背景に、シンガポールのサイバー脅威エクスポージャーが高まったと政府が評価しているか、また作戦保全を損なわずに重要情報インフラ・政府システム・企業・個人を AI を用いた攻撃を含む進化する脅威から守る即応態勢をどう評価しているかを書面で質した。ジョセフィン・テオ（Josephine Teo）デジタル開発情報大臣は、金融ハブかつデジタル経済であるシンガポールは攻撃者にとって魅力的な標的だと認めたうえで、重要システムはサイバーセキュリティ法の下でより高い基準と義務を課されていること、サイバーセキュリティ庁（CSA）が基準を更新し、高度な脅威主体や AI を用いた脅威に対応するため重要システム所有者に専用の脅威検知システムを提供すること、GovTech が重要システムを管理する政府ベンダーに Cyber Trust Mark 要件を課すこと、家庭用ルーターの義務基準をサイバーラベリング制度レベル 1 から 2 へ引き上げ、IP カメラへの同様の基準導入も検討することを挙げた。政府は最善の防御をもってしても AI サイバー脅威への警戒が必要だと認めた。`,
     summaryEn: `MP Sharael Taha, citing rising geopolitical tensions and the growing use of cyber operations in hybrid conflict, asked in writing whether the Government assesses that Singapore's cyber threat exposure has heightened, and how it assesses overall cybersecurity readiness to protect critical information infrastructure, Government systems, businesses and residents against evolving threats including AI-enabled attacks, without compromising operational security. Minister for Digital Development and Information Josephine Teo replied that Singapore's status as a financial hub and digital economy makes it an attractive target; critical systems face higher standards under the Cybersecurity Act; the Cyber Security Agency (CSA) will update standards and equip critical-system owners with proprietary threat detection systems against advanced threat actors and AI-enabled threats; GovTech will require Government vendors managing critical systems to meet Cyber Trust Mark requirements; and the mandatory baseline for home routers will rise from Cyber Labelling Scheme Level 1 to Level 2, with similar standards explored for IP cameras. The Government conceded that even with the best defences, vigilance against AI-enabled cyber threats remains necessary.`,
     keyPoints: [
@@ -1626,6 +1801,13 @@ export const debates: Debate[] = [
     topics: ['AI & Employment', 'AI in Education'],
     summary: `万里扎议员书面质询教育部是否追踪 AI 相关技能创前程课程学员的两项硬指标：结业六个月内是否进入 AI 相关岗位，以及结业 12 个月内工资中位数变化。教育部长李智陞答复：对安置型课程如职业转换计划（SCTP），精深技能发展局（SSG）追踪安置率——2022 年 6 月至 2025 年 3 月完成 ICT 相关 SCTP 的 8,000 名学员中，44% 在六个月内找到新岗位（截至 2025 年 9 月 30 日）；但未追踪工资结果，理由是影响因素多元。短期课程一般不追踪安置结果，仅靠 TRAQOM 学员调查收集质量与自评成效反馈，公开于 MySkillsFuture。张力在于：政府对 AI 技能培训投入巨大，效果衡量却以主观反馈为主，缺乏议员要求的就业与工资硬数据。`,
     summaryKo: `완 리잘(Wan Rizal) 의원은 AI 관련 스킬스퓨처 프로그램 수료자에 대해 교육부가 두 가지 정량 지표—수료 후 6개월 내 AI 관련 직무 취업 여부와 수료 후 12개월 내 중위 임금 변화—를 추적하는지 서면 질의했다. 데스몬드 리(Desmond Lee) 교육부 장관은 취업 연계형 프로그램인 스킬스퓨처 경력전환프로그램(SCTP)의 경우 SkillsFuture Singapore(SSG)가 취업률을 추적하며, 2022년 6월부터 2025년 3월까지 ICT 관련 SCTP를 수료한 8,000명 중 44%가 수료 후 6개월 내 새 직무나 일자리를 찾았다고(2025년 9월 30일 기준) 답했다. 다만 임금에 영향을 미치는 요인이 다양하다는 이유로 임금 성과는 추적하지 않으며, 단기 과정은 취업 성과를 추적하지 않고 TRAQOM 설문으로 과정 품질과 자기평가 성과 피드백을 수집해 MySkillsFuture 포털에 공개한다고 밝혔다. 이 문답은 AI 기능 훈련에 대한 정부의 대규모 투자에 비해 효과 측정이 주관적 피드백 위주이고, 의원이 요구한 취업·임금 정량 데이터가 부족하다는 긴장을 드러낸다.`,
+    whyItMatters: 'SSG 公布 44% 安置率却拒绝追踪工资数据，暴露新加坡 AI 再培训成效问责仍停留在自评与安置率层面',
+    whyItMattersEn:
+      "SkillsFuture Singapore (SSG) released a 44 per cent placement rate but refused to track wage data, exposing that accountability for Singapore's AI retraining effectiveness remains at the self-assessment and placement-rate level.",
+    whyItMattersJa:
+      'SSG は 44% の配置率を発表していますが、給与データの追跡を拒否しており、シンガポール AI 再トレーニング効果の説明責任がなお自己評価と配置率のレベルに留まっていることを露呈しています',
+    whyItMattersKo:
+      'SSG가 44% 배치율을 발표했으나 임금 데이터 추적을 거부했으며, 싱가포르 AI 재교육 성과 문책이 여전히 자체 평가 및 배치율 수준에 머물러 있음을 드러냈습니다.',
     summaryJa: `ワン・リザル（Wan Rizal）議員は、AI 関連スキルズフューチャー・プログラムの受講者について、教育省が（i）修了後 6 か月以内の AI 関連職への就業、（ii）修了後 12 か月以内の中央値賃金の変化、という 2 つの定量指標を追跡しているかを書面で質した。デズモンド・リー（Desmond Lee）教育大臣は、就業支援型のスキルズフューチャー・キャリア転換プログラム（SCTP）については SkillsFuture Singapore（SSG）が就業率を追跡しており、2022 年 6 月から 2025 年 3 月の間に ICT 関連 SCTP を修了した 8,000 人のうち 44% が修了後 6 か月以内に新たな職や雇用を得た（2025 年 9 月 30 日時点）と答弁した。ただし賃金に影響する要因は多様だとして賃金面の成果は追跡しておらず、短期コースは就業成果を追跡せず、TRAQOM 調査で講座の品質と受講者の自己評価による成果のフィードバックを収集し MySkillsFuture ポータルで公開しているとした。このやり取りは、AI スキル訓練への政府の大規模投資に対し、効果測定が主観的フィードバック中心で、議員の求める就業・賃金の定量データを欠くという緊張を浮き彫りにした。`,
     summaryEn: `Dr Wan Rizal asked in writing whether the Ministry of Education tracks two hard metrics for participants in AI-related SkillsFuture programmes: employment in AI-related roles within six months, and median wage change within 12 months of completion. Minister for Education Desmond Lee replied that for placement programmes such as the SkillsFuture Career Transition Programmes (SCTPs), SkillsFuture Singapore (SSG) tracks placement rates: of the 8,000 learners who completed ICT-related SCTPs between June 2022 and March 2025, 44% found new roles or employment within six months (as of 30 September 2025). Wage outcomes are not tracked, on the grounds that multiple factors affect wages. Shorter courses are generally not tracked for placement; instead, SSG collects learner feedback through the TRAQOM survey on programme quality and perceived outcomes, published on the MySkillsFuture portal. The exchange exposes a tension: government investment in AI skills training is substantial, but effectiveness measurement still leans on subjective feedback rather than the employment and wage data the MP sought.`,
     keyPoints: [
@@ -1692,6 +1874,14 @@ export const debates: Debate[] = [
     topics: ['AI Infrastructure & Research', 'AI & Employment', 'AI Economy & Industry'],
     summary: `Yio Chu Kang 议员 Yip Hon Weng 与 Bukit Panjang 议员 Liang Eng Hwa 询问中东冲突引发的能源危机如何冲击招聘前景。人力部长 Tan See Leng 称劳动市场暂时稳健，但企业转趋谨慎——未来三个月有意招聘的企业比例从 2 月的 54.6% 跌至 3 月的 44.6%，4 月初现企稳。被问到长期结构性影响时，他指危机会加速既有结构转型（供应链多元化、数字化），并直接点出 AI 的能源含义："随着 AI 普及，驱动数据中心和高算力需求将需要更多能源，能源已成为新货币。"Choo Pei Ling 追问劳动力规划是否正适应贸易碎片化、技术变革与产业重组叠加的长期不确定，部长以"斩钉截铁的肯定"回应，并提及连续两天合计逾 12 小时（其中谈 AI 七小时）的相关辩论。`,
     summaryKo: `Yio Chu Kang 지역구 Yip Hon Weng 의원과 Bukit Panjang 지역구 Liang Eng Hwa 의원은 중동 분쟁으로 촉발된 에너지 위기가 고용 전망에 미치는 영향을 물었다. Tan See Leng 인력부 장관은 노동시장이 당장은 견조하나 기업들이 신중해졌다고 답했다. 향후 3개월 내 채용 의향 기업 비율은 2월 54.6%에서 3월 44.6%로 하락했고 4월 초 안정 조짐이 나타났다. 장기 구조적 영향을 묻자 그는 위기가 기존의 구조 전환(공급망 다변화, 디지털화)을 가속하리라 보며, AI의 에너지 함의를 직접 언급했다. "AI가 보편화되면 데이터센터와 고연산 수요를 구동하기 위해 더 많은 에너지가 필요하다. 에너지가 곧 새로운 통화다." Choo Pei Ling 의원은 무역 분절, 기술 변화, 산업 재편이 겹치는 장기 불확실성에 인력 계획이 적응 중인지 추궁했고, 장관은 "단호한 그렇다"고 답하며 이틀간 총 12시간(이 중 AI 논의 7시간)의 관련 토론을 언급했다.`,
+    whyItMatters:
+      '招聘意向从 2 月的 54.6% 骤降至 3 月的 44.6%，印证能源正成为新加坡产业与人力规划的新硬约束，AI 数据中心用电竞争或成下一政策焦点',
+    whyItMattersEn:
+      "Hiring intentions plummeted from 54.6 per cent in February to 44.6 per cent in March, confirming that energy is becoming a hard constraint for Singapore's industrial and workforce planning; competition for AI data centre electricity may become the next policy flashpoint.",
+    whyItMattersJa:
+      '採用意欲が 2 月の 54.6% から 3 月の 44.6% へ急落し、エネルギーがシンガポール産業と人力計画の新しい硬い制約となっていることを証明し、AI データセンター電力消費競争が次の政策焦点になる可能性があります',
+    whyItMattersKo:
+      '채용 의향이 2월의 54.6%에서 3월의 44.6%로 급락했으며, 에너지가 싱가포르 산업 및 인력 계획의 새로운 경성 제약이 되고 있음을 나타내고, AI 데이터 센터 전력 소비 경쟁이 다음 정책 초점이 될 수 있습니다.',
     summaryJa: `Yio Chu Kang選出のYip Hon Weng議員とBukit Panjang選出のLiang Eng Hwa議員は、中東紛争に端を発するエネルギー危機が雇用見通しに与える影響を質問した。Tan See Leng人的資源相は、労働市場は当面堅調だが企業は慎重になっていると答えた。今後3か月で採用を予定する企業の割合は2月の54.6%から3月の44.6%へ低下し、4月初めに安定の兆しが見られた。長期的な構造的影響を問われると、危機は既存の構造転換（サプライチェーンの多角化、デジタル化）を加速させるとし、AIのエネルギー面の含意を直接指摘した。「AIが普及すれば、データセンターと高度な計算需要を動かすためにさらに多くのエネルギーが必要になる。エネルギーこそ新たな通貨だ」。Choo Pei Ling議員は、貿易の分断、技術変化、産業再編が重なる長期的な不確実性に人材計画が適応しつつあるか追及し、相は「断固としたイエス」と応じ、2日間で計12時間（うちAI議論7時間）に及ぶ関連討論に言及した。`,
     summaryEn: `Yio Chu Kang MP Yip Hon Weng and Bukit Panjang MP Liang Eng Hwa asked how the Middle East-triggered energy crisis is affecting hiring prospects. Manpower Minister Tan See Leng said the labour market remains resilient for now but firms have turned cautious — the share intending to hire in the next three months fell from 54.6% in February 2026 to 44.6% in March, with early signs of stabilisation in April. On longer-term structural impact, he said the crisis would accelerate shifts already underway (supply-chain diversification, digitalisation) and pointed directly to AI's energy implications: "with the move towards a pervasive adoption of AI, there will be a need for even more energy to drive the data centres and the high compute requirements of these AI data centres. Energy is really the new currency." Dr Choo Pei Ling asked whether workforce planning is adapting to persistent uncertainty from overlapping trade fragmentation, technological change and sectoral restructuring; the Minister answered "a resounding yes," citing over 12 hours of debate across two days (seven on AI).`,
     keyPoints: [
@@ -1766,6 +1956,13 @@ export const debates: Debate[] = [
     topics: ['AI & National Security', 'AI in Public Sector'],
     summary: `赖添来询问数字发展与新闻部是否会对批量 SIM 卡购买、SIM 再注册模式及 GSM 网关滥用引入更严管控与实时异常检测，因这些环节让海外诈骗电话伪装成本地来电。MDDI 高级政务部长陈杰豪回应已布置上游管控：自 2025 年 10 月 1 日起诈骗钱骡被禁开新移动号码，2026 年 2 月 28 日起每人跨所有电信商上限 10 张后付费 SIM（外加既有 3 张预付费上限）；2025 年警方瓦解逾 10.5 万条涉诈移动线路。IMDA、政府科技局 (GovTech) 与警方用数据分析侦测可疑购买与注册模式。赖添来追问是否有实时监测、阈值由谁设定。陈杰豪强调这是跨多机构加私营部门的全社会合力，引用"道高一尺，魔高一丈"说明阈值动态调整，并明言出于行动安全不公开细节，但确在运用包括 AI 在内的技术与数据分析。他还披露以电话为首次接触的案件下降、短信为首次接触的案件降约 65%（从 2024 年 1285 起降至 2025 年 450 起），并介绍 IMDA 与 GovTech 联合推出的 SIMCardHowMany 工具供公众自查名下后付费 SIM 数量。`,
     summaryKo: `빅터 라이 의원이 해외 사기 전화가 현지 발신으로 위장되는 통로가 된다는 점에서 대량 SIM 카드 구매, SIM 재등록 양상, GSM 게이트웨이 오용에 대해 더 엄격한 통제와 실시간 이상 탐지를 도입할지 디지털개발정보부에 물었다. MDDI 선임정무부선임국무장관 탄 키아트 하우는 상류 통제를 이미 마련했다고 답했다. 2025년 10월 1일부터 사기 자금책의 신규 회선 가입이 금지되고, 2026년 2월 28일부터 1인당 모든 통신사 합산 후불 SIM 10장(기존 선불 3장 한도에 추가)으로 제한되며, 2025년 경찰은 사기 관련 회선 10만5천여 개를 차단했다. IMDA, 정부기술청(GovTech), 경찰은 데이터 분석으로 의심스러운 구매·등록 양상을 탐지한다. 라이 의원이 실시간 모니터링 여부와 임계값 설정 주체를 추궁하자, 탄 장관은 다기관과 민간을 아우르는 범사회적 노력이라며 "도고일척, 마고일장"을 인용해 임계값을 동적으로 조정한다고 설명하고, 작전 보안상 세부는 공개하지 않지만 AI를 포함한 기술과 데이터 분석을 활용한다고 명확히 밝혔다. 또한 전화 최초 접촉 사건이 줄고 SMS 최초 접촉 사건이 약 65%(2024년 1,285건→2025년 450건) 감소했다며, IMDA와 GovTech가 공동 개발한 SIMCardHowMany 도구로 본인 명의 후불 SIM 수를 확인할 수 있다고 소개했다.`,
+    whyItMatters: '短信诈骗降 65% 背后，反诈 AI 阈值由部长自由裁量且拒绝公开，暴露新加坡 AI 治理的问责缺口',
+    whyItMattersEn:
+      "Behind the 65 per cent drop in SMS fraud, the anti-fraud AI threshold is set at the minister's discretion and remains undisclosed, exposing an accountability gap in Singapore's AI governance.",
+    whyItMattersJa:
+      'SMS 詐欺が 65% 減少している背後には、詐欺対策 AI の閾値が大臣の自由裁量であり公開を拒否していることがあり、シンガポール AI ガバナンスの説明責任のギャップを露呈しています',
+    whyItMattersKo:
+      'SMS 사기가 65% 감소한 뒤에, 사기 방지 AI 임계값은 부장관의 자유 재량으로 결정되고 공개를 거부하고 있어 싱가포르 AI 거버넌스의 문책 공백을 드러냈습니다.',
     summaryJa: `ビクター・ライ議員が、海外の詐欺電話を現地発信に見せかける通路になるとして、大量SIMカード購入、SIM再登録パターン、GSMゲートウェイ悪用に対し、より厳格な管理とリアルタイム異常検知を導入するかを情報通信省に尋ねた。MDDI上級国務大臣タン・キアットハウは、すでに上流管理を整えていると答えた。2025年10月1日から詐欺の出し子は新規回線契約を禁じられ、2026年2月28日から1人あたり全通信会社合算で後払いSIM10枚(既存のプリペイド3枚上限に加え)に制限され、2025年に警察は詐欺関連回線10万5,000本超を遮断した。IMDA、政府技術庁(GovTech)、警察はデータ分析で不審な購入・登録パターンを検知している。ライ議員がリアルタイム監視の有無と閾値の設定主体を追及すると、タン次官は多機関と民間を含む社会全体の取り組みだとし、「道高一尺、魔高一丈」を引いて閾値を動的に調整すると説明し、作戦上の安全のため詳細は明かさないが、AIを含む技術とデータ分析を活用していると明言した。さらに電話を最初の接触手段とする事件が減少し、SMSを最初の接触手段とする事件は約65%(2024年1,285件→2025年450件)減ったとし、IMDAとGovTechが共同開発したSIMCardHowManyという、自分名義の後払いSIM枚数を確認できるツールを紹介した。`,
     summaryEn: `Mr Victor Lye asked MDDI whether the Government would consider tighter controls and real-time anomaly detection for bulk SIM card purchases, SIM re-registration patterns and GSM gateway misuse, given their role in making overseas scam calls appear local. Senior Minister of State Tan Kiat How replied that upstream controls are already in place: from 1 October 2025 scam mules are barred from new mobile lines, and from 28 February 2026 each person is capped at 10 postpaid SIMs across all telcos (on top of the existing three-prepaid cap), while in 2025 the Police disrupted over 105,000 scam-related mobile lines. IMDA, GovTech and the Police use data analytics to detect suspicious purchase and registration patterns. Mr Lye pressed on whether there is real-time monitoring and who sets the thresholds. Mr Tan stressed this is a multi-agency and whole-of-society effort with the private sector, cited the saying (a Chinese proverb about defenders and adversaries perpetually escalating against one another) to explain that thresholds are adjusted dynamically, and — citing operational security — declined to share details while confirming the use of technology and data analytics, including AI. He noted phone-as-first-contact cases have fallen and SMS-as-first-contact cases dropped about 65% (from 1,285 in 2024 to 450 in 2025), and introduced SIMCardHowMany, a tool jointly built by IMDA and GovTech for the public to check how many postpaid SIMs are registered in their name.`,
     keyPoints: [
@@ -1839,6 +2036,14 @@ export const debates: Debate[] = [
     topics: ['AI Infrastructure & Research'],
     summary: `工人党何廷儒询问可持续发展与环境部，在数据中心、城市扩张与气候变率推升用水需求下，新加坡水资源不安全风险的最新评估（尤其 2061 年柔佛供水协议到期前），以及如何加速措施让"四大水喉"满足未来需求而不挤压粮食生产或家庭供应。部长傅海燕回应称公用事业局 (PUB) 持续超前规划并投资水务基建，将经济与人口增长及气候变化纳入考量，并通过海水淡化与新生水等抗气候来源多元化供水。何廷儒追问两点：一是世界银行已指水将从"背景资源"变为"硬约束"、水危机或致 2050 年损失高达 6% GDP，包含数据库建设在内的需求上升这一系统性风险如何纳入财政与基建前瞻估算；二是中东冲突推高能源价格，对高度依赖能源的海水淡化成本有何影响、如何应对长期能源价格波动。傅海燕重申已将气候变化纳入长期水务规划，能源成本一向是关注的驱动因素，PUB 持续以新技术降低含能源在内的产水成本，中东事件虽加剧成本压力但不改变长期降本方向。`,
     summaryKo: `노동당 허팅루 의원이 데이터센터·도시 확장·기후 변동성이 물 수요를 끌어올리는 가운데, 특히 2061년 조호르 물 협정 만료를 앞두고 싱가포르의 물 불안정 위험에 대한 최신 평가와, 식량 생산이나 가정 공급을 압박하지 않으면서 "네 개의 국가 수도꼭지"가 미래 수요를 충족하도록 가속화할 조치를 지속가능환경부에 물었다. 그레이스 푸 장관은 공공시설청(PUB)이 경제·인구 성장과 기후 변화를 고려해 물 인프라를 선제적으로 계획·투자하며, 해수 담수화와 뉴워터 등 기후 저항성 수원으로 공급을 다변화한다고 답했다. 허 의원은 두 가지를 추궁했다. 첫째, 세계은행이 물이 "배경 자원"에서 "구속적 제약"으로 바뀐다고 한 점과 물 위기로 2050년까지 GDP의 최대 6% 손실 가능성을 들며, 데이터뱅크 건설을 포함한 수요 증가라는 시스템적 위험을 재정 및 인프라 전망 추정에 어떻게 반영하는가. 둘째, 중동 분쟁이 에너지 가격을 끌어올린 가운데 에너지 집약적인 해수 담수화 비용에 미친 영향과 장기 에너지 가격 변동성에 대한 대응이다. 푸 장관은 기후 변화를 장기 물 계획에 반영해 왔고 에너지 비용은 늘 주시하는 요인이며, PUB가 신기술로 에너지를 포함한 생산 비용을 계속 낮추고 있고, 중동 사태가 비용 압박을 가중했지만 장기적 비용 절감 방향은 바뀌지 않는다고 재확인했다.`,
+    whyItMatters:
+      '数据中心用水需求首次被正式列入新加坡水安全风险账本，但政府仍未承诺专项应对，2061 年柔佛供水协议到期前的缺口依然悬而未决',
+    whyItMattersEn:
+      "Data centre water demand has been formally added to Singapore's water security risk account for the first time, but the government has yet to commit to targeted measures; the supply gap before the Johor water agreement expires in 2061 remains unresolved.",
+    whyItMattersJa:
+      'データセンター用水需要が初めて正式にシンガポール水安全リスク帳簿に列入されましたが、政府はなお専門的な対応を約束しておらず、2061 年のジョホール給水協定の期限満了前の不足が依然として未解決のままです',
+    whyItMattersKo:
+      '데이터 센터 용수 수요가 처음으로 싱가포르 물 안보 위험 계정에 공식 포함되었으나, 정부는 여전히 전용 대응을 약속하지 않았으며, 2061년 조호르 급수 협정 만료 전 공백은 여전히 미결정 상태입니다.',
     summaryJa: `労働党のヘ・ティンルー議員が、データセンター・都市拡大・気候変動が水需要を押し上げる中、特に2061年のジョホール水協定の失効を前にしたシンガポールの水の不安定リスクの最新評価と、食料生産や家庭への供給を圧迫せずに「4つの国家蛇口」が将来需要を満たせるよう加速する措置を、持続可能性・環境省に尋ねた。グレース・フー大臣は、公益事業庁(PUB)が経済・人口成長と気候変動を考慮して水インフラを先取りして計画・投資し、海水淡水化やNEWaterなど気候耐性のある水源で供給を多様化していると答えた。ヘ議員は2点を追及した。第一に、世界銀行が水を「背景資源」から「拘束的制約」へ変わるとした点と、水危機が2050年までにGDPの最大6%の損失をもたらしうる点を挙げ、データバンク建設を含む需要増という系統的リスクをいかに財政・インフラの将来推計に組み込むか。第二に、中東紛争がエネルギー価格を押し上げる中、エネルギー集約的な海水淡水化コストへの影響と、長期的なエネルギー価格変動への対応である。フー大臣は、気候変動を長期の水計画に反映してきたこと、エネルギーコストは常に注視する要因であること、PUBが新技術でエネルギーを含む生産コストを下げ続けていること、中東情勢がコスト圧力を強めたが長期的なコスト削減の方向は変わらないことを改めて述べた。`,
     summaryEn: `Workers' Party MP Ms He Ting Ru asked the Minister for Sustainability and the Environment, with rising water demands from data centres, urban expansion and climate variability affecting local reservoirs, for the latest assessment of Singapore's water-insecurity risks — particularly ahead of the 2061 Johor Water Agreement expiry — and what accelerated measures are planned so the Four National Taps meet future needs without compromising food production or household supply. Minister Grace Fu replied that PUB continues to plan ahead and invest in water infrastructure, factoring in economic and population growth and climate change, and has diversified supply through the Four National Taps, including weather-resilient desalinated water and NEWater. Ms He pressed on two points: first, citing the World Bank's view that water is shifting from a background resource to a binding constraint and estimates of up to 6% GDP impact by 2050, how this systemic-risk framing — including plans to build databanks — is incorporated into fiscal and forward estimates for infrastructure planning; and second, given that the Middle East conflict has driven up energy prices, the impact on energy-intensive desalination costs and how Singapore is responding to prolonged energy-price volatility. Ms Fu reiterated that climate change is built into long-term water planning, that energy cost is a driver PUB has always watched, that PUB keeps seeking new technology to lower production costs including energy, and that recent Middle East events, while exacerbating cost pressure, do not change the long-term focus on bringing costs down.`,
     keyPoints: [
@@ -1915,6 +2120,14 @@ export const debates: Debate[] = [
     topics: ['Deepfakes & Disinformation', 'AI Governance & Regulation'],
     summary: `工人党 Sylvia Lim 询问内政部：2025 年收到多少宗关于传播 AI 伪造真人淫秽图像的报警、其中多少涉及教育机构内"同学对同学"、以及受害者能期待怎样的后续处理。代表内政部答覆的高级政务部长 Sim Ann 坦言：警方并不单独统计淫秽物品案件中有多少涉及 AI 伪造真人图像。警方接报后会照常侦查——讯问被告与证人、检视数字鉴证证据；涉及未成年受害者会通知家长/监护人，并向需要心理支持的受害者提供受害者关怀服务；若伪造图像在网上流传，警方可依据《在线刑事危害法令》(OCHA) 向网络服务商发出指令，封锁新加坡用户访问。Lim 追问三点：(1) 受害者反映报警后被警方建议改走《防止骚扰法令》（非逮捕性罪行），这是否警方默认做法；(2) 经议员申诉后警方协助下架图像，这是否常规；(3) 《刑事法典》377BD、377BE 等条文本可作为逮捕性罪行处理，何时会这样定性并以起诉为目标侦办。Sim Ann 答：没有"默认走某条路"一说，一切视案情事实而定，若事实构成《刑事法典》下传播私密图像的罪行，警方就会据此行动；网上流传的图像在侦查中一旦掌握，警方可向服务商发指令封锁。`,
     summaryKo: `Workers' Party의 Sylvia Lim이 내무부에 질문했습니다: 2025년 실존 인물의 AI 생성 가짜 음란 이미지 유포에 관한 경찰 신고가 몇 건이었는지, 그중 교육기관 내 「학생 대 학생」 사례 비율은 얼마인지, 피해자가 어떤 후속 조치를 기대할 수 있는지. 내무부를 대표해 답한 Sim Ann 고급정무선임국무장관은 솔직히 말했습니다: 경찰은 음란물 사건 중 실존 인물의 AI 생성 이미지가 관련된 건수를 별도로 집계하지 않습니다. 신고를 받으면 경찰은 통상적으로 수사합니다——피고와 증인 신문, 디지털 포렌식 증거 검토; 미성년 피해자의 경우 부모/보호자에게 통지하고, 심리적 지원이 필요한 피해자에게 피해자 케어 서비스를 제공합니다; 가짜 이미지가 온라인에 유포되면 경찰은 「온라인 범죄 피해 방지법」(OCHA)에 따라 온라인 서비스 제공자에게 싱가포르 사용자의 접근을 차단하도록 지시할 수 있습니다. Lim은 세 가지를 추가로 물었습니다: (1) 피해자들이 신고 후 경찰로부터 「괴롭힘 방지법」(비체포 범죄)으로 조치하라는 안내를 받았다는데 이것이 경찰의 기본 입장인지; (2) 의원이 호소한 후 경찰이 이미지 삭제를 도왔는데 이것이 통상적 절차인지; (3) 「형법」 377BD, 377BE 등 조항은 체포 가능 범죄로 다룰 수 있는데 언제 그렇게 분류하여 기소를 목표로 수사하는지. Sim Ann은 답했습니다: 「특정 경로로 가는 기본 입장」은 없으며 모든 것은 사건 사실에 따라 결정되고, 사실이 「형법」상 사적 이미지 유포 범죄를 구성하면 경찰은 그에 따라 행동하며; 온라인에 유포되는 이미지는 수사 과정에서 파악되는 즉시 경찰이 서비스 제공자에게 차단을 지시할 수 있습니다.`,
+    whyItMatters:
+      '警方对 AI 换脸淫秽图像举报不单独统计，377BD/377BE 虽可入罪仍靠个案裁量，暴露 AI 深伪治理的数据空白与执法滞后',
+    whyItMattersEn:
+      "Police do not separately track reports of AI-generated intimate imagery; while Penal Code Sections 377BD/377BE can be invoked, prosecution still relies on case-by-case discretion, exposing data gaps and enforcement delays in Singapore's AI deepfake governance.",
+    whyItMattersJa:
+      '警察は AI フェイススワップの猥褻画像報告を別途統計しておらず、377BD/377BE は犯罪化が可能ですが個別案件の裁量に依存しており、AI 深偽動画ガバナンスのデータ空白と執行の遅延が露呈しています',
+    whyItMattersKo:
+      '경찰이 AI 딥페이크 외설 이미지 신고를 별도로 통계하지 않으며, 377BD/377BE가 범죄화될 수 있지만 여전히 개별 사례 판단에 의존하고 있어, AI 딥페이크 거버넌스의 데이터 공백과 집행 지연을 드러냈습니다.',
     summaryJa: `労働党の Sylvia Lim 議員は内務省に質問しました：2025年に実在の人物のAI生成偽わいせつ画像の流布に関する警察への通報は何件あったか、そのうち教育機関内の「生徒対生徒」が占める割合はどれくらいか、被害者はどのような後続対応を期待できるか。内務省を代表して答えた Sim Ann 上級政務上級国務大臣は率直に述べました：警察はわいせつ物事件のうち実在の人物のAI生成画像が関係する件数を個別に集計していません。通報を受けると警察は通常どおり捜査します——被告と証人の尋問、デジタル・フォレンジック証拠の精査；未成年の被害者の場合は親/保護者に通知し、心理的支援を必要とする被害者には被害者ケアサービスを提供します；偽画像がオンラインで流布している場合、警察は「オンライン犯罪危害法」(OCHA) に基づきオンラインサービス事業者にシンガポールのユーザーのアクセスを遮断するよう指示できます。Lim 議員は3点を追及しました：(1) 被害者が通報後に警察から「ハラスメント防止法」（非逮捕罪）で対処するよう案内されたが、これが警察の既定の立場なのか；(2) 議員が訴えた後に警察が画像の削除を手伝ったが、これは通常の対応なのか；(3) 「刑法」377BD、377BE 等の条項は逮捕可能な罪として扱えるが、いつそのように分類し起訴を視野に捜査するのか。Sim Ann は答えました：「特定の経路を取る既定の立場」はなく、すべては事件の事実次第であり、事実が「刑法」上の私的画像の流布罪を構成すれば警察はそれに従って行動し；オンラインで流布する画像は捜査の過程で把握され次第、警察は事業者に遮断を指示できます。`,
     summaryEn: `Workers' Party MP Sylvia Lim asked MHA how many police reports were received in 2025 over the circulation of AI-generated fake obscene images of real persons, what proportion involved perpetrators and victims who were fellow students, and what follow-up complainants can expect. Senior Minister of State Sim Ann (replying for the Coordinating Minister for National Security and Minister for Home Affairs) acknowledged that the Police do not separately track how many obscene-materials cases involve AI-generated images of real persons. On any obscene-material report, the Police investigate as usual — interviewing the accused and witnesses, examining digital forensic evidence; for young victims they may notify parents or guardians and offer victim care services for psychological support; and where the images circulate online, the Police may issue directions under the Online Criminal Harms Act (OCHA) to online service providers to disable Singapore users' access. Lim pressed three supplementaries: (1) whether it is the Police's default to advise victims to act under the Protection from Harassment Act (a non-arrestable offence); (2) whether assisting in image takedowns, as happened after MPs appealed, is routine; and (3) when the Police would classify cases under arrestable Penal Code offences (e.g. ss 377BD, 377BE) and investigate with a view to prosecution. Sim Ann replied that there is no default route — everything depends on the facts disclosed, and where the facts support Penal Code offences relating to the circulation of intimate images, the Police will act accordingly; images circulating online can be blocked via directions to service providers once known in the course of investigation.`,
     keyPoints: [
@@ -1996,6 +2209,14 @@ export const debates: Debate[] = [
     topics: ['AI in Education', 'AI Safety & Ethics'],
     summary: `多名议员（Charlene Chen、Kenneth Tiong、David Hoe 等）联合质询教育部从小学引入 AI 的保障与路线图。教长 Desmond Lee 合并答覆四道问题，端出 MOE "四学"框架——学习关于 AI、学会用 AI、用 AI 来学、最重要的是学会超越 AI。分级路线：小一至小三只做 AI 素养（认知 AI 存在），不布置任何需直接使用 AI 的作业；从小四起，学生已具备基础读写与执行功能，可在教师监督下使用专为教育设计、内置护栏的 AI 工具（如 SLS 里的写作助手 LEA、数学 LEA），工具被设计成不会直接喂答案、会以"苏格拉底式"提示把跑题学生拉回正轨；小四起强制 10 小时"Code for Fun"（含编程、计算思维、AI 入门），可选两个 5 小时"AI for Fun"模块（生成式 AI、计算机视觉）。数据匿名化、不用于训练外部模型；用商用 AI 工具须确保输入不含个人可识别信息。研究上由 A*STAR 的 SG-LEADS 纵向研究（2027 起采数）追踪儿童 AI 使用对学习与福祉的影响，同时配合学校做短期研究。Kenneth Tiong 以瑞典 Karolinska 研究院"数字工具有害学习"结论与瑞典 2023 年逆转数字化（投 2 亿欧元重回纸质课本）施压，问 MOE 的分歧点何在；Desmond Lee 答："瑞典是发到五岁、全盘数字化后又全盘退回纸质，我们走的是混合路线"——继续保留实体课本与教师中心教学，把 AI 当工具，且严格区分通用 AI 与专为教育设计的 AI，否则会走错政策方向、干脆完全不用 AI，那才是错误。家长可否退出：若是 SLS 课堂工具属教学一部分不可退出；若是外部引入、需家长同意的工具，未获同意则不让用。Eileen Chong 提"公平悖论"——更弱势、家中缺成人监督的孩子可能更依赖 AI、反被侵蚀认知发展；教长答这是"常青"议题，靠 AI 素养内化 + 家校社区伙伴关系应对。`,
     summaryKo: `여러 의원(Charlene Chen, Kenneth Tiong, David Hoe 등)이 교육부에 초등학교부터 AI를 도입하는 보호 장치와 로드맵을 공동 질의했습니다. Desmond Lee 교육장관은 네 개 질문을 통합 답변하며 MOE의 「네 가지 배움」 프레임워크를 제시했습니다——AI에 대해 배우기, AI 사용법 배우기, AI로 배우기, 그리고 가장 중요한 AI를 넘어서 배우기. 단계별 로드맵: 초1~초3은 AI 리터러시만(AI의 존재 인식) 다루며 AI를 직접 사용해야 하는 과제는 내지 않습니다; 초4부터 학생들이 기초 문해력·수리력과 실행 기능을 갖춘 후 교사 감독 하에 교육 전용으로 설계되고 내장 가드레일이 있는 AI 도구(SLS의 작문 보조 LEA, 수학 LEA 등)를 사용할 수 있으며, 이 도구들은 답을 직접 주지 않고 「소크라테스식」 힌트로 주제를 벗어난 학생을 다시 정상 궤도로 끌어옵니다; 초4부터 10시간 「Code for Fun」(코딩, 계산적 사고, AI 입문 포함)이 의무이고 5시간짜리 「AI for Fun」 모듈 두 개(생성형 AI, 컴퓨터 비전)는 선택입니다. 데이터는 익명화되며 외부 모델 훈련에 사용되지 않습니다; 상용 AI 도구 사용 시 입력에 개인 식별 정보가 없어야 합니다. 연구 면에서는 A*STAR의 SG-LEADS 종단 연구(2027년부터 데이터 수집)가 아동의 AI 사용이 학습과 웰빙에 미치는 영향을 추적하며, 동시에 학교와 단기 연구를 진행합니다. Kenneth Tiong은 스웨덴 카롤린스카 연구소의 「디지털 도구가 학습을 해친다」는 결론과 스웨덴의 2023년 디지털화 역전(2억 유로 투자해 종이 교과서 복귀)을 들어 MOE의 견해 차이를 압박했고; Desmond Lee는 답했습니다: 「스웨덴은 다섯 살에 배포하고 전면 디지털화한 뒤 전면 종이로 되돌렸지만, 우리는 혼합 노선입니다」——실물 교과서와 교사 중심 교육을 유지하고 AI를 도구로 삼으며, 범용 AI와 교육 전용 AI를 엄격히 구분하지 않으면 잘못된 정책 방향으로 가 AI를 아예 안 쓰게 되는데 그것이 오히려 실수라고 했습니다. 학부모 옵트아웃: SLS 수업 도구가 교육의 일부면 옵트아웃 불가; 외부 도입·학부모 동의 필요 도구는 동의 없으면 사용 불가. Eileen Chong은 「공평 역설」을 제기했습니다——더 취약하고 가정 내 성인 감독이 부족한 아이가 AI에 더 의존해 오히려 인지 발달이 침식될 수 있다; 교육장관은 이것이 「상록의」 과제이며 AI 리터러시 내재화와 가정·학교·지역사회 파트너십으로 대응한다고 답했습니다.`,
+    whyItMatters:
+      'MOE 靠 2027 年启动的 A*STAR SG-LEADS 纵向研究为证据，公开与瑞典式全面倒退划清界限，走分级放开 AI 的中间路线',
+    whyItMattersEn:
+      'The Ministry of Education(MOE) will rely on evidence from A*STAR SG-LEADS, a longitudinal study launching in 2027, to draw a public line between its approach and Sweden-style complete reversal, charting a middle course of incremental AI rollout in schools.',
+    whyItMattersJa:
+      '教育省（MOE）は 2027 年に開始される A*STAR SG-LEADS 縦断研究を証拠として、スウェーデン型全面後退と明確に一線を画し、AI の段階的解放という中間路線を採っています',
+    whyItMattersKo:
+      '교육부（MOE）가 2027년 시작될 A*STAR SG-LEADS 종단 연구를 근거로 삼아 스웨덴식 전면 후퇴와 명확히 거리를 두고, AI에 대한 단계적 개방의 중간 노선을 선택했습니다.',
     summaryJa: `複数の議員（Charlene Chen、Kenneth Tiong、David Hoe ら）が教育省に対し、小学校からAIを導入する際の保護措置とロードマップを合同で質問しました。Desmond Lee 教育相は4つの質問をまとめて答え、MOE の「四つの学び」フレームワークを示しました——AIについて学ぶ、AIの使い方を学ぶ、AIで学ぶ、そして最も重要なAIを超えて学ぶ。段階的ロードマップ：小1〜小3はAIリテラシーのみ（AIの存在を認識）を扱い、AIを直接使う必要のある課題は出しません；小4からは、基礎的な読み書き・計算力と実行機能を備えた生徒が、教師の監督の下で教育専用に設計され内蔵ガードレールのあるAIツール（SLS の作文補助 LEA、数学 LEA など）を使用でき、これらのツールは答えを直接与えず「ソクラテス式」のヒントで脱線した生徒を軌道に戻します；小4から10時間の「Code for Fun」（コーディング、計算論的思考、AI入門を含む）が必修で、5時間の「AI for Fun」モジュール2つ（生成AI、コンピュータビジョン）は選択です。データは匿名化され外部モデルの訓練には使われません；商用AIツールを使う場合は入力に個人識別情報が含まれないことが必要です。研究面では A*STAR の SG-LEADS 縦断研究（2027年からデータ収集）が子どものAI利用が学習と福祉に与える影響を追跡し、同時に学校と短期研究を行います。Kenneth Tiong はスウェーデンのカロリンスカ研究所の「デジタルツールは学習を損なう」という結論と、スウェーデンの2023年のデジタル化転換（2億ユーロを投じて紙の教科書に復帰）を挙げて MOE の相違点を追及し；Desmond Lee は答えました：「スウェーデンは5歳で配布し全面デジタル化した後、全面的に紙に戻したが、我々は混合路線だ」——実物の教科書と教師中心の教育を維持し、AIをツールとして扱い、汎用AIと教育専用AIを厳密に区別しなければ誤った政策方向に進みAIを全く使わなくなる、それこそが誤りだと述べました。保護者のオプトアウト：SLS の授業ツールが教育の一部なら不可；外部導入で保護者の同意が必要なツールは、同意がなければ使わせません。Eileen Chong は「公平のパラドックス」を提起しました——より脆弱で家庭内に大人の監督が乏しい子どもほどAIに依存し、かえって認知発達が侵食されかねない；教育相はこれは「常緑の」課題であり、AIリテラシーの内在化と家庭・学校・地域の連携で対応すると答えました。`,
     summaryEn: `Several MPs (Charlene Chen, Kenneth Tiong, David Hoe and others) jointly questioned MOE on the safeguards and roadmap for introducing AI from primary school. Education Minister Desmond Lee answered four questions together, setting out MOE's "Four Learns" framework — learn about AI, learn to use AI, learn with AI and, most importantly, learn beyond AI. The calibrated roadmap: Primary 1–3 covers AI literacy only (awareness of AI's presence) with no work requiring direct AI use; from Primary 4, once pupils have foundational literacy, numeracy and executive-functioning skills, they may use purpose-built educational AI tools with built-in guardrails under teacher supervision (e.g. the writing assistant LEA and Maths LEA in the Student Learning Space), which are designed not to spoon-feed answers and to redirect off-task pupils "Socratically". A mandatory 10-hour "Code for Fun" programme (coding, computational thinking, AI basics) starts from Primary 4, with optional five-hour "AI for Fun" modules on generative AI and computer vision. Pupil data is anonymised and not used to train external models; commercial off-the-shelf tools require checks that inputs contain no personally identifiable information. On research, A*STAR's SG-LEADS longitudinal study (data collection from 2027) will track how children's AI use affects learning and well-being, alongside short-term school-based studies. Kenneth Tiong pressed MOE using Sweden's Karolinska Institute conclusion that "digital tools impair rather than enhance student learning" and Sweden's 2023 reversal of digitalisation (over €200m to reintroduce physical textbooks); Desmond Lee replied that Sweden had gone all-digital from age five and then fully reverted to analog, whereas Singapore takes a blended approach — keeping physical textbooks and teacher-centric teaching, treating AI as a tool, and crucially distinguishing general-purpose AI from purpose-built educational AI, since failing to do so would risk the wrong policy of not using AI at all. On parental opt-out: SLS classroom tools that are part of teaching cannot be opted out of, but externally-brought-in tools requiring consent will not be used without it. Eileen Chong raised the "equity paradox" — that more disadvantaged children with less adult supervision at home may lean on AI more, eroding the very cognitive development it is meant to support; the Minister called this an "evergreen" concern, to be met through internalised AI literacy and home-school-community partnership.`,
     keyPoints: [
@@ -2074,6 +2295,14 @@ export const debates: Debate[] = [
     topics: ['AI Safety & Ethics', 'AI Governance & Regulation'],
     summary: `Vikram Nair 援引美国法院判定 Meta 与 Alphabet 在平台设计上对青少年造成伤害存在过失，问数字发展与新闻部会否监管青少年使用社媒、乃至考虑禁令。代表 MDDI 答覆的政务部长 Rahayu Mahzam 先指此前书面答覆已涵盖，再回应追问：政府正以该判决为参照，相关发现"为不断累积的证据体系再添一笔"，伤害是真实的、政府严肃对待——但走的是不同路径：要更有效、更经久、能抵御技术演变的做法。她强调判决揭示的是社媒"特定功能与维度"致害，而非平台本身，因此 MDDI 的做法针对具体伤害与产生伤害的具体设计特征、并按用户年龄校准——这比一刀切禁令"更严格、更费力"。新加坡并非从零起步：已有《在线安全行为准则》、对应用引入年龄核验、要求指定社媒服务年度报告，近期已据此对 X 与 TikTok 采取行动。下一步将把年龄核验扩展到指定社媒服务，并从内容延伸到设计特征——陌生人私信、自动播放、其他驱动过度使用的功能，以及"AI 伴侣（AI companions）带来的新兴风险"。政府不排除禁令选项（"会不惜一切保护年轻人"），但全面禁令并非全球共识——爱沙尼亚、比利时、纽约州未采用，澳洲也已修法转向更有针对性、聚焦设计特征的做法。`,
     summaryKo: `Vikram Nair은 미국 법원이 Meta와 Alphabet이 플랫폼 설계에서 청소년에게 해를 끼친 데 과실이 있다고 판결한 것을 인용해, 디지털발전뉴스부가 청소년의 소셜미디어 사용을 규제할지, 나아가 금지를 고려할지 물었습니다. MDDI를 대표해 답한 Rahayu Mahzam 정무국무장관은 먼저 앞선 서면 답변이 이미 다뤘다고 밝힌 뒤 추가 질문에 응답했습니다: 정부는 그 판결을 참고하고 있으며 해당 발견은 「계속 쌓이는 증거 체계에 한 건을 더한 것」이고, 해악은 실재하며 정부는 진지하게 받아들인다——다만 다른 경로를 택한다: 더 효과적이고 더 오래가며 기술 진화를 견딜 수 있는 방법이라고 했습니다. 그녀는 판결이 드러낸 것은 소셜미디어의 「특정 기능과 차원」이 해를 끼친다는 것이지 플랫폼 자체가 아니므로, MDDI의 접근은 구체적 해악과 그것을 낳는 구체적 설계 특징을 겨냥하고 사용자 연령에 따라 조정한다고 강조했습니다——이는 일률적 금지보다 「더 엄격하고 더 까다롭다」고 했습니다. 싱가포르는 백지에서 시작하지 않습니다: 이미 「온라인 안전 행동 준칙」, 앱 연령 확인 도입, 지정 소셜미디어 서비스의 연차 보고 의무가 있으며 최근 이를 근거로 X와 TikTok에 조치했습니다. 다음 단계로 연령 확인을 지정 소셜미디어 서비스로 확대하고 콘텐츠에서 설계 특징으로 범위를 넓힐 예정입니다——낯선 사람의 다이렉트 메시지, 자동 재생, 과도한 사용을 유발하는 기타 기능, 그리고 「AI 동반자(AI companions)가 가져오는 신흥 위험」. 정부는 금지 선택지를 배제하지 않지만(「젊은이를 지키기 위해 무엇이든 할 것」), 전면 금지는 세계적 합의가 아닙니다——에스토니아, 벨기에, 뉴욕주는 채택하지 않았고, 호주도 법을 개정해 더 표적화되고 설계 특징에 초점을 둔 방향으로 전환했습니다.`,
+    whyItMatters:
+      'MDDI 借美国 Meta/Alphabet 过失判决定调：不跟进澳洲式禁令，转而扩容《在线安全行为准则》覆盖设计特征与 AI 伴侣新风险',
+    whyItMattersEn:
+      'Citing US judgements against Meta and Alphabet for negligence, the Ministry of Digital Development and Information (MDDI) signalled it will not adopt Australia-style bans; instead, it will expand the Online Safety Code of Practice to cover design features and new risks from AI companions.',
+    whyItMattersJa:
+      'MDDI は米国 Meta/Alphabet の過失判決を根拠に方針を定め、オーストラリア型禁止に追従しないことを選択し、代わりに《オンラインセーフティ行為準則》を拡大して設計特性と AI コンパニオンの新しいリスクをカバーしています',
+    whyItMattersKo:
+      'MDDI가 미국의 Meta/Alphabet 과실 판결을 빌려 정조를 내렸으니: 호주식 금지령을 따르지 않고, 대신 「온라인 안전 행동 강령」의 적용 범위를 설계 특성과 AI 동반자 새로운 위험까지 확장하고 있습니다.',
     summaryJa: `Vikram Nair 議員は、米国の裁判所が Meta と Alphabet がプラットフォーム設計で若者に害を与えた点で過失があると認定したことを引き、デジタル発展・情報省が若者のソーシャルメディア利用を規制するか、さらには禁止を検討するかを質問しました。MDDI を代表して答えた Rahayu Mahzam 政務国務大臣は、まず先の書面答弁で既に扱ったと述べた上で追及に応じました：政府はその判決を参照しており、当該の認定は「積み上がり続ける証拠体系にもう一件を加えるもの」であり、害は実在し政府は真剣に受け止めている——ただし異なる経路を取る：より効果的で、より長続きし、技術の進化に耐えられる方法だと述べました。彼女は、判決が明らかにしたのはソーシャルメディアの「特定の機能と次元」が害を与えるということであってプラットフォーム自体ではないため、MDDI の取り組みは具体的な害とそれを生む具体的な設計特徴を狙い、利用者の年齢に応じて調整すると強調しました——これは一律禁止より「より厳格で手間がかかる」と述べました。シンガポールは白紙から始めるのではありません：既に「オンライン安全行動規範」、アプリへの年齢確認の導入、指定ソーシャルメディアサービスの年次報告義務があり、最近これに基づき X と TikTok に措置を講じました。次の段階として年齢確認を指定ソーシャルメディアサービスへ拡大し、コンテンツから設計特徴へ範囲を広げます——見知らぬ人からのダイレクトメッセージ、自動再生、過度の利用を促すその他の機能、そして「AI コンパニオン（AI companions）がもたらす新興リスク」。政府は禁止という選択肢を排除しませんが（「若者を守るためなら何でもする」）、全面禁止は世界的な合意ではありません——エストニア、ベルギー、ニューヨーク州は採用しておらず、オーストラリアも法を改正してより的を絞り設計特徴に焦点を当てた方向へ転換しました。`,
     summaryEn: `Mr Vikram Nair, citing the US Court's finding that Meta and Alphabet were negligent in designing platforms that harmed young people, asked MDDI whether the Government would regulate young people's access to social media, including a potential ban. Minister of State Ms Rahayu Mahzam (for MDDI) first noted the matter had been covered in earlier written replies, then engaged the supplementary: the Government is taking reference from the judgment, whose findings "add to the growing body of evidence"; the harms are real and taken seriously — but it takes a different approach, seeking something more effective and more durable that can withstand the evolution of technology. She stressed that the judgment showed it is specific features and dimensions of platforms that cause harm, not the platforms wholesale, so MDDI targets the specific harms and the specific design features that produce them, calibrated by the user's age — which is "more demanding, more rigorous than a blanket ban". Singapore is not starting from a blank slate: it already has the Code of Practice for Online Safety, age assurance for apps and annual reporting by designated social media services, and has recently acted against X and TikTok. Next, it will extend age assurance to designated social media services and move beyond content to design features — direct messaging from strangers, auto-play, other features driving excessive use, and "emerging risks from AI companions". The Government is not foreclosing a ban ("we will do whatever it takes to protect our young ones"), but notes a blanket ban is not a globally accepted position — Estonia, Belgium and New York State have not applied one, and Australia has amended its law toward a more targeted, design-feature-focused approach.`,
     keyPoints: [
@@ -2152,6 +2381,14 @@ export const debates: Debate[] = [
     topics: ['AI & National Security', 'AI Safety & Ethics', 'AI Governance & Regulation'],
     summary: `Saktiandi Supaat 与 Edward Chia 就前沿 AI 模型（点名 Anthropic 的 Mythos、能自主发现并利用软件漏洞）对新加坡金融体系与关键基础设施的威胁提问，并问这是否构成"新类别的系统性金融风险"。数字发展与新闻部高级政务部长陈杰豪代部长答覆，核心立场是把这视为"连续谱上的能力提升"而非"断点式跃迁"：政府并未取得 Mythos 访问权（Anthropic 仅向少数伙伴受控预览，无本地银行获权），但 OpenAI GPT-5.5 已有可比的网络能力且更易获得，开源模型几个月内会追上。他举证 AI 已实质改变攻击形态——Google 2025 年报告的 PROMPTFLUX 恶意软件会在攻击中实时调用 AI 改写自身代码以躲避检测；2024 年有犯罪集团用 AI 深度伪造视频通话冒充跨国公司 CFO，骗员工转账 2560 万美元。政府定性这是"对既有系统性风险的放大"而非全新类别。具体动作：MAS 已召集各大金融机构 CEO 推动集体网络韧性行动；CSA 当天向全部 11 个关键信息基础设施（CII）部门的董事会与高层发函，要求据 AI 威胁重审网络风险姿态。陈杰豪给出五点要务（重做风险评估、盘清资产、更快打补丁+持续监控、治理自身 AI 使用、用 AI 做防御），并强调政府正自研 AI 网络防御能力以免受制于单一外部方。`,
     summaryKo: `Saktiandi Supaat과 Edward Chia가 프런티어 AI 모델(Anthropic의 Mythos를 지목, 소프트웨어 취약점을 자율적으로 발견하고 악용할 수 있는 능력)이 싱가포르 금융 시스템과 핵심 기반시설에 미치는 위협에 대해 질문하고, 이것이 「새로운 범주의 시스템적 금융 위험」을 구성하는지 물었다. 디지털발전뉴스부 고급정무선임국무장관 Tan Kiat How가 장관을 대신해 답변하며, 핵심 입장은 이를 「불연속적 도약」이 아닌 「연속선상의 능력 향상」으로 본다는 것이다: 정부는 Mythos 접근 권한을 얻지 못했지만(Anthropic은 소수 파트너에게만 통제된 프리뷰를 제공, 접근 권한을 받은 현지 은행은 없음), OpenAI GPT-5.5는 이미 비슷한 사이버 능력을 갖추고 더 널리 사용 가능하며, 오픈소스 모델도 몇 달 내 따라잡을 것이다. 그는 AI가 이미 공격 형태를 실질적으로 바꿨다고 증거를 제시했다——Google이 2025년 보고한 PROMPTFLUX 멀웨어는 공격 중 실시간으로 AI를 호출해 탐지를 회피하기 위해 자체 코드를 다시 작성하고; 2024년 범죄 집단이 AI 딥페이크 영상 통화로 다국적 기업 CFO를 사칭해 직원에게 2,560만 달러를 송금하도록 속였다. 정부는 이를 「기존 시스템적 위험의 증폭」으로 규정하며 완전히 새로운 범주가 아니라고 본다. 구체적 조치: MAS는 이미 주요 금융기관 CEO들을 소집해 집단 사이버 회복력 행동을 추진했고; CSA는 당일 전체 11개 핵심 정보기반시설(CII) 부문의 이사회와 고위 지도부에 서한을 보내 AI 위협에 비추어 사이버 위험 태세를 재검토하도록 요구했다. Tan Kiat How는 다섯 가지 핵심 과제(위험 평가 재실시, 자산 파악, 더 빠른 패치+지속 모니터링, 자체 AI 사용 거버넌스, AI를 활용한 방어)를 제시하고, 정부가 단일 외부 당사자에 의존하지 않도록 AI 사이버 방어 역량을 자체 개발 중임을 강조했다.`,
+    whyItMatters:
+      '政府自认无法访问 Mythos，却仍令 CSA 向全部 11 个 CII 部门发函倒逼自查，标志监管重心从审查模型转向问责企业',
+    whyItMattersEn:
+      'The government acknowledges it cannot access Mythos, yet still mandates the CSA to send letters to all 11 CII departments to compel self-audits, signaling a shift in regulatory focus from model review to corporate accountability.',
+    whyItMattersJa:
+      '政府が Mythos へのアクセスが不可能であることを自認しながらも、依然として CSA に対し全 11 の CII 部門に通知を送付させ、自主点検を強要していることは、規制の焦点がモデル審査から企業責任追及へとシフトしたことを示しています。',
+    whyItMattersKo:
+      '정부는 마이토스(Mythos)에 접근할 수 없다고 인정하면서도, 여전히 CSA에 11개 모든 CII 부서에 서한을 발송하여 자체 감시를 강제했으며, 이는 규제 초점이 모델 심사에서 기업 책임 추궁으로 전환됨을 의미한다.',
     summaryJa: `Saktiandi Supaat 議員と Edward Chia 議員は、フロンティアAIモデル(Anthropic の Mythos を名指し、ソフトウェアの脆弱性を自律的に発見・悪用できる能力)がシンガポールの金融システムと重要インフラに与える脅威について質問し、これが「新たなカテゴリーのシステミックな金融リスク」を構成するかを問いました。デジタル発展・情報省のシニア政務上級国務大臣 Tan Kiat How が大臣に代わって答弁し、核心的な立場はこれを「不連続な飛躍」ではなく「連続体上の能力向上」と捉えることです。政府は Mythos へのアクセス権を得ていませんが(Anthropic は少数のパートナーにのみ管理されたプレビューを提供しており、アクセスを許可された地元銀行はない)、OpenAI GPT-5.5 は既に同等のサイバー能力を持ち、より広く利用可能であり、オープンソースモデルも数か月以内に追いつくでしょう。彼は AI が既に攻撃の形態を実質的に変えたと証拠を示しました——Google が2025年に報告した PROMPTFLUX マルウェアは攻撃中にリアルタイムで AI を呼び出し、検出を回避するために自らのコードを書き換え、2024年には犯罪集団が AI ディープフェイク動画通話で多国籍企業の CFO になりすまし、従業員に2,560万ドルを送金させました。政府はこれを「既存のシステミックリスクの増幅」と位置づけ、完全に新しいカテゴリーではないとしています。具体的な措置として、MAS は既に主要金融機関の CEO を召集して集団的なサイバーレジリエンス行動を推進し、CSA は同日、全11の重要情報インフラ(CII)部門の取締役会と上級指導部に書簡を送り、AI 脅威に照らしてサイバーリスク態勢を見直すよう要求しました。Tan Kiat How は五つの要点(リスク評価のやり直し、資産の把握、より速いパッチ適用+継続的監視、自らの AI 利用のガバナンス、AI を防御に使う)を示し、政府が単一の外部当事者に依存しないよう AI サイバー防御能力を自前で開発中であることを強調しました。`,
     summaryEn: `Mr Saktiandi Supaat and Mr Edward Chia asked MDDI about the threat that frontier AI models — naming Anthropic's Mythos, which can autonomously identify and exploit software vulnerabilities — pose to Singapore's financial system and critical infrastructure, and whether this constitutes a new class of systemic financial risk. Replying for the Minister, Senior Minister of State Mr Tan Kiat How framed it as a continuum rather than a step change: the Government has no access to Mythos (Anthropic released it only to a limited set of partners under controlled preview, with no local bank granted access), but OpenAI's GPT-5.5 already shows comparable cyber capabilities and is more widely available, and open-source models will likely catch up within months. He cited evidence that AI is already changing attacks — Google's 2025 report on PROMPTFLUX malware, which consults a live AI model mid-attack to rewrite its own code and evade detection, and a 2024 case where criminals used an AI-generated deepfake video call to impersonate a multinational's CFO and trick an employee into transferring US$25.6 million. The Government characterises this as an amplification of an existing systemic risk, not a wholly new category. Concrete actions: MAS has convened the CEOs of major financial institutions to drive collective cyber-resilience action; and CSA issued a letter that day to the boards and senior leadership of all 11 critical information infrastructure (CII) sectors, requiring a review of cyber risk posture in light of AI-enabled threats. Mr Tan set out five priorities (revisit risk assessments, know your assets, patch faster with continuous monitoring, govern your own AI use, and use AI in defence), stressing that the Government is building AI cyber-defence capabilities in-house to avoid dependence on any single external party.`,
     keyPoints: [
@@ -2232,6 +2469,14 @@ export const debates: Debate[] = [
     topics: ['Deepfakes & Disinformation', 'AI in Education', 'AI Safety & Ethics'],
     summary: `这场辩论主体是教育部《反霸凌全面行动检讨》（鞭刑、修复式实践、举报渠道等），AI 仅是其中一条实质支线。工人党 Sylvia Lim（阿裕尼）的国会问题第 25 号专门问：校园内学生制作并传播"AI 生成的同学不雅伪图"是否在增加，教育部是否提供处理指引。教育部长李智陞答覆：此类技术近几年才出现，案例从零起步、数量仍小，但教育部正密切关注。处理路径包括——更新的网络健康（cyber wellness）课程教学生合乎伦理、合法地使用这类强大工具；2026 年 6 月底"网络安全委员会"（OSC）启用后，亲密影像滥用等线上伤害的受害者可更快求助、申请下架；伪图在多平台扩散时下架是长期工作，需持续跟进。若加害者匿名，学校需联同 OSC 与警方处理。李智陞引 2024 年一起真实案例：数名中学生制作女同学的 AI 深度伪造不雅裸图，被查出后遭警方调查与校纪处分。Melvin Yong 追问是否会与 IMDA 及社媒平台合作加快有害内容下架，部长答"是"。`,
     summaryKo: `이 토론의 본체는 교육부의 「괴롭힘 종합 대응 검토」(체벌, 회복적 실천, 신고 채널 등)이며, AI는 그중 하나의 실질적 지선일 뿐이다. Workers' Party의 Sylvia Lim(Aljunied)의 국회 질문 제25호는 특별히 물었다: 교내에서 학생들이 「AI 생성 동급생 음란 가짜 이미지」를 제작·유포하는 것이 증가하는지, 교육부가 처리 지침을 제공하는지. 교육부 장관 Desmond Lee가 답변했다: 이런 기술은 최근 몇 년 사이에야 등장했고, 사례는 0에서 시작해 수가 여전히 적지만 교육부는 면밀히 주시하고 있다. 처리 경로에는——갱신된 사이버 웰니스 과정이 학생들에게 이런 강력한 도구를 윤리적·합법적으로 사용하도록 가르치고; 2026년 6월 말 「온라인안전위원회」(OSC) 가동 후 친밀한 이미지 남용 등 온라인 피해의 피해자가 더 빨리 도움을 요청하고 삭제를 신청할 수 있으며; 가짜 이미지가 여러 플랫폼에 확산될 때 삭제는 장기적 작업으로 지속적 추적이 필요하다. 가해자가 익명이면 학교는 OSC 및 경찰과 협력해 처리해야 한다. Desmond Lee는 2024년 실제 사례를 인용했다: 여러 중학생이 여학생의 AI 딥페이크 음란 누드 이미지를 제작했다가 적발되어 경찰 수사와 학교 징계를 받았다. Melvin Yong이 IMDA 및 소셜미디어 플랫폼과 협력해 유해 콘텐츠 삭제를 가속화할지 추궁하자 장관은 「예」라고 답했다.`,
+    whyItMatters:
+      'OSC 六月启用前，校园 AI 深伪案例已从零起步进入官方处理框架，暴露新加坡治理仍靠跨机构下架兜底而非专门立法',
+    whyItMattersEn:
+      "Before the OSC launches in June, campus AI deepfake cases have already escalated from zero into the official handling framework, exposing that Singapore's governance still relies on inter-agency takedown backstops rather than dedicated legislation.",
+    whyItMattersJa:
+      'OSC が 6 月に稼働する前に、キャンパス AI ディープフェイク事例は既にゼロから官方的な対処枠組みに入っており、シンガポールの治理が依然として機関横断的なコンテンツ削除をセーフティネットとして頼り、専門立法ではなくバックアップとして機能していることを露呈しています。',
+    whyItMattersKo:
+      'OSC가 6월에 가동되기 전, 캠퍼스 AI 딥페이크 사례가 0에서 출발하여 공식 처리 체계에 진입했으며, 이는 싱가포르의 거버넌스가 여전히 부처 간 제거식 안전망에 의존하고 전문 입법에는 의존하지 않음을 드러낸다.',
     summaryJa: `この討論の本体は教育省の「いじめ対策包括レビュー」(体罰、修復的実践、通報経路など)であり、AI はそのうちの一つの実質的な支線にすぎません。労働党の Sylvia Lim 議員(Aljunied)の国会質問第25号は特に問いました：校内で生徒が「AI 生成の同級生のわいせつ偽画像」を作成・拡散することが増えているか、教育省は対応指針を提供しているか。教育省大臣 Desmond Lee が答弁しました：この種の技術はここ数年で初めて登場し、事例はゼロから始まり数はまだ少ないが、教育省は注意深く見守っています。対応経路には——更新されたサイバーウェルネス課程が生徒にこうした強力なツールを倫理的・合法的に使うよう教え、2026年6月末に「オンライン安全委員会」(OSC)が稼働した後は、親密な画像の悪用などオンライン被害の被害者がより早く支援を求め削除を申請でき、偽画像が複数のプラットフォームに拡散する際の削除は長期的な作業で継続的な追跡が必要、が含まれます。加害者が匿名の場合、学校は OSC および警察と連携して対応する必要があります。Desmond Lee は2024年の実際の事例を引用しました：複数の中学生が女子生徒の AI ディープフェイクのわいせつなヌード画像を作成し、発覚後に警察の捜査と校則による処分を受けました。Melvin Yong が IMDA およびソーシャルメディアプラットフォームと連携して有害コンテンツの削除を加速するかを追及すると、大臣は「はい」と答えました。`,
     summaryEn: `The substance of this debate is MOE's Comprehensive Action Review Against Bullying (caning, restorative practice, reporting channels), with AI as one substantive strand within it. Workers' Party MP Ms Sylvia Lim (Aljunied), in Parliamentary Question No 25, specifically asked whether there is an increasing incidence of students creating and circulating AI-generated fake obscene images of fellow students, and whether MOE provides guidance on handling such cases. The Minister for Education, Mr Desmond Lee, replied that the technology is recent — cases have risen from zero and the numbers remain small, but MOE is watching closely. The handling pathway includes updated cyber wellness lessons teaching students to use such powerful tools ethically and legally; the Online Safety Commission (OSC), operational by end-June 2026, which will let victims of online harms such as intimate-image abuse seek faster assistance and takedowns; and the recognition that takedowns are a sustained effort when content proliferates across platforms. Where perpetrators are anonymous, schools must work with the OSC and the Police. Mr Lee cited a real 2024 case in which secondary-school students created AI-generated deepfake obscene nudes of female students and were dealt with firmly through both Police investigation and school discipline. Mr Melvin Yong asked whether MOE would work with IMDA and social-media platforms to speed up takedowns of harmful content; the Minister answered yes.`,
     keyPoints: [
@@ -2311,6 +2556,14 @@ export const debates: Debate[] = [
     topics: ['AI & National Security', 'AI Governance & Regulation'],
     summary: `工人党 Gerald Giam 询问数字发展与新闻部是否引入强制集中政府安全审查（针对接触关键信息基础设施 CII 的人员，含外籍技术专家），以应对内部威胁与国家级网络攻击。部长尤芳达以三点正面回应：(1) 不应基于个人画像（国籍/族群）预设谁更可信，否则反而漏掉风险；(2) 安全审查不是银弹，决心型 nefarious actor 会专门绕开已知审查流程；(3) 当前已实行"零信任"架构与"最小权限"原则——access control / 持续验证 / 异常监控的多层纵深防御才是核心。Giam 追问能否将公务员级别的安全审查（G50）扩展到 CII super user / admin，部长答覆：在某些场景已有相应安排，但出于安全考虑不公开披露具体要求，避免恶意行为者反向工程审查规则。`,
     summaryKo: `Workers' Party의 Gerald Giam이 디지털발전뉴스부에 주요 정보기반시설(CII) 접근 인원(외국인 기술 전문가 포함)을 대상으로 정부 차원의 강제적 중앙집중식 보안 심사 도입 여부를 질문했습니다. 이는 내부 위협과 국가급 사이버 공격에 대응하기 위함입니다. 장관 유방달은 다음 세 가지로 긍정적으로 응답했습니다: (1) 개인 프로필(국적/민족)을 바탕으로 누가 더 신뢰할 수 있는지 미리 설정해서는 안 됩니다. 그렇지 않으면 오히려 위험을 놓칩니다; (2) 보안 심사는 만능약이 아닙니다. 의도적인 nefarious actor는 알려진 심사 절차를 특별히 우회합니다; (3) 현재 「영 신뢰」 아키텍처와 「최소 권한」 원칙을 시행 중입니다——access control / 지속 검증 / 이상 모니터링의 다층 심층 방어가 핵심입니다. Giam이 공무원급(G50) 보안 심사를 CII super user / admin으로 확대할 수 있는지 추가로 질문했을 때, 장관은 다음과 같이 응답했습니다: 일부 시나리오에서는 이미 해당 조치가 마련되어 있지만, 보안상의 이유로 구체적인 요구사항을 공개하지 않습니다. 악의적 행위자의 역공학을 방지하기 위함입니다.`,
+    whyItMatters:
+      '面对 G50 审查扩至 CII 的追问，部长拒绝松口具体门槛，押注零信任架构而非国籍画像，为外籍技术人才保留空间',
+    whyItMattersEn:
+      'Faced with questions about expanding G50 reviews to CII, the minister refused to disclose specific thresholds, betting on zero-trust architecture rather than nationality-based profiles, preserving space for foreign technical talent.',
+    whyItMattersJa:
+      '部長が G50 審査の CII 拡大に関する質問に対して具体的な基準を明かすことを拒否し、国籍プロファイリングではなくゼロトラスト・アーキテクチャに賭けながら、外国籍技術人材のための余地を確保していることは、新加坡が外国人材受け入れのための政策柔軟性を保持していることを示しています。',
+    whyItMattersKo:
+      'G50 심사가 CII로 확대된 질문에 직면하여, 부장관은 구체적 기준선 공개를 거부했으며, 국적 프로필이 아닌 제로 트러스트 아키텍처에 베팅했고, 외국인 기술 인재를 위한 공간을 유지했다.',
     summaryJa: `労働党の Gerald Giam 議員は、デジタル発展・情報省に対して、重要情報インフラストラクチャー（CII）にアクセスする職員（外国人技術専門家を含む）を対象とした強制的かつ集中化した政府のセキュリティレビューの導入予定について質問しました。これは内部脅威と国家レベルのサイバー攻撃に対処するためです。大臣の Josephine Teo は3つのポイントで前向きに対応しました。(1) 個人プロフィール（国籍/民族）に基づいて誰がより信頼できるかを予め設定すべきではなく、さもなければリスクを見落とす可能性があります。(2) セキュリティレビューは万能薬ではなく、決定的な nefarious actor は既知のレビュープロセスを特に回避する方法を見つけるでしょう。(3) 現在は 「ゼロトラスト」アーキテクチャと 「最小権限」原則を実装しており、access control / 継続的な検証 / 異常監視の多層的な深い防御が中核です。Giam はさらに、公務員レベルのセキュリティレビュー（G50）を CII スーパーユーザー / 管理者に拡張できるかどうかを質問しました。大臣は答えました：いくつかのシナリオでは既に対応がありますが、セキュリティ上の理由から具体的な要件は公開されていません。これは悪意のある行為者がレビュー規則をリバースエンジニアリングするのを防ぐためです。`,
     summaryEn: `Workers' Party MP Gerald Giam asked MDDI whether mandatory centralised government security vetting should be introduced for personnel with access to Singapore's critical information infrastructure (CII) — including foreign-national technical experts in telco and energy — to mitigate insider threats and state-sponsored APTs. Minister Josephine Teo replied with three positions: (1) profile-based assumptions about who is "safer" are themselves a vulnerability — defence has to assume any person with access could be an insider threat; (2) security vetting is not a silver bullet, since determined adversaries will specifically work around any known vetting regime; (3) the operative model is zero-trust architecture with least-privileged access, continuous verification and anomaly monitoring — defence-in-depth, not vetting alone. Giam pressed whether the public-servant standard (G50) should be extended to CII super-user / admin roles; the Minister noted that for certain access types arrangements already exist, but specific requirements are not publicly disclosed for security reasons.`,
     keyPoints: [
@@ -2365,6 +2618,13 @@ export const debates: Debate[] = [
     topics: ['AI & Employment', 'AI Economy & Industry'],
     summary: `Melvin Yong（拉丁马士）询问就业市场为何同时呈现工程师/技术专才需求强劲与 PME（专业人员、经理、执行人员、技师）裁员上升的"双重信号"。人力部高级政务次长 Shawn Huang 答覆：错配源自技能要求结构性变化——企业扩张技术职能（AI 工程师等岗位需求持续上升），同时重组易被自动化的传统 PME 角色；被裁的 PME 普遍缺少新岗位所需的技术资格。截至 2025 年 12 月，金融与资讯通讯两大行业 PME 空缺合计 9,400（4,100 + 5,300），而当季两业 PME 裁员仅 960。WSG 的 Career Conversion Programme 过去三年已转岗 7,300+ 人到科技/工程职。Neo Kok Beng（提名议员）追问是否能让 WSG 与专业学会合作设计直接对接行业的课程，部长答覆"是，已经在这么做"。`,
     summaryKo: `Melvin Yong이 고용 시장에서 엔지니어/기술 전문가 수요 강세와 동시에 PME(전문가, 경영자, 실행원, 기술사)의 구조조정이 증가하는 「이중 신호」가 나타나는 이유를 물었다. 인력부 선임정무차관 Shawn Huang은 다음과 같이 답했다: 불일치는 기술 요구사항의 구조적 변화에서 비롯되었다——기업이 기술 직무를 확장하고 있고(AI 엔지니어 등 직책의 수요가 계속 증가), 동시에 자동화하기 쉬운 기존 PME 역할을 재편성하고 있다; 구조조정 대상이 된 PME는 보편적으로 새로운 직책에 필요한 기술 자격이 부족하다. 2025년 12월 말 기준, 금융 및 정보통신 두 대형 산업의 PME 공석은 총 9,400개(4,100 + 5,300)이며, 같은 분기에 두 산업의 PME 구조조정은 960명에 불과했다. WSG의 Career Conversion Programme은 지난 3년간 7,300명 이상을 과학기술/엔지니어링 직책으로 전직시켰다. Neo Kok Beng(추천의원)이 WSG가 전문 학회와 협력하여 산업에 직접 대응하는 교육 과정을 설계할 수 있는지 재차 물자, 인력부 장관은 「예, 이미 그렇게 하고 있습니다」라고 답했다.`,
+    whyItMatters: '金融与资讯通讯业 PME 空缺达 9400，是同期裁员 960 的近十倍，暴露技能再培训供给远跟不上 AI 转型速度',
+    whyItMattersEn:
+      'SME vacancies in finance and information communications reached 9,400, nearly ten times the 960 layoffs in the same period, exposing that reskilling supply far lags behind AI transformation pace.',
+    whyItMattersJa:
+      '金融・情報通信産業の PME（専門職・管理職・経営幹部）の求人数は 9400 に達し、同じ時期の人員削減 960 の約 10 倍となっており、スキル再教育の供給が AI トランスフォーメーションのペースに遠く及んでいないことが露呈しています。',
+    whyItMattersKo:
+      '금융 및 정보통신 업계의 중소기업(PME) 공석이 9,400에 달했으며, 이는 같은 시기 인원 감축 960의 거의 10배이며, 기술 재교육 공급이 AI 전환 속도에 훨씬 미치지 못함을 드러낸다.',
     summaryJa: `Melvin Yong（拉丁马士）議員は、労働市場が同時に工学者/技術専門家の需要の強さと PME（専門家、マネージャー、エグゼクティブ、テクニシャン）の人員削減の増加という 「二重シグナル」を示しているのはなぜかを質問しました。人力省シニア上級政務次官の Shawn Huang は答えました。ミスマッチは技能要件の構造的変化に由来しています。企業が技術機能を拡張しており（AI エンジニアなどの職位の需要が継続的に上昇）、同時に自動化されやすい従来の PME 役割を再編成しています。解雇された PME は通常、新しい職位に必要な技術資格を欠いています。2025年12月までに、金融と情報通信の2つの主要産業での PME の空き職は合計9,400（4,100 + 5,300）でしたが、その四半期中のこの2産業での PME 削減はわずか960でした。WSG のキャリア転換プログラムは過去3年で 7,300人以上を技術/エンジニアリング職に転職させました。提名議員の Neo Kok Beng は、WSG と専門職団体が業界と直接連携する課程を設計できるかどうかを質問しました。大臣は 「はい、既に実施しています」と答えました。`,
     summaryEn: `Mr Melvin Yong (Radin Mas) asked MOM about the labour-market mismatch — strong hiring demand for engineers and technology specialists alongside rising PMET retrenchments — flagged in the annual job vacancies report. Senior Parliamentary Secretary Mr Shawn Huang replied that the mismatch is structural: firms are expanding technology functions, sustaining demand for jobs like AI engineers, while restructuring traditional PMET roles that are easier to automate; retrenched PMETs typically lack the specific technical skills these new roles require. As of December 2025, finance and infocomm sectors had combined PMET vacancies of 9,400 (4,100 + 5,300) against just 960 PMET retrenchments across both sectors that quarter. Workforce Singapore's Career Conversion Programme has placed 7,300+ workers into tech and engineering roles over the last three years. Dr Neo Kok Beng (NMP) asked whether WSG could partner directly with professional institutions to design industry-relevant curricula instead of relying solely on universities and polytechnics; the Senior Parliamentary Secretary confirmed this is already happening.`,
     keyPoints: [
@@ -2422,6 +2682,13 @@ export const debates: Debate[] = [
     topics: ['AI Governance & Regulation', 'AI & National Security'],
     summary: `工人党非选区议员 Low Wu Yang Andre 提出关键质询：(a) 全政府数据架构是否允许外资总部的专有 AI / 数据分析平台处理公民数据；(b) 若允许，有何法律与技术保障防止外国政府依本国法（如美国 CLOUD Act）调取这些数据。MDDI 政务部长 Jasmin Lau 答覆：政府采用 risk-based approach，data access 严格按"最小权限/按需访问"原则，要求 vendor 实施非保留、加密、身份与访问管理；高敏感数据可要求 data residency；通过 governance framework 与合同条款限制使用、储存与披露。Low 的追问直指核心：他点名 Palantir Technologies——过去五年成为全球各国政府首选 AI/数据/安全方案供应商；并明确 CLOUD Act 强制美国公司在其法域内披露数据，**即使 data residency 在新加坡也可被强制**。Jasmin Lau 直接承认了这一点："legal and contractual agreements aside, the reality is that no matter what legal provisions the contracts may contain, some jurisdictions like the US may have legislation including with extraterritorial reach that empower government agencies to require companies within their jurisdictions to provide certain information... Such legislation can override contractual obligations." 这是政府首次在国会公开承认 contractual data residency 在外国域外管辖法律前可被覆盖。`,
     summaryKo: `야당 무소속 의원 Low Wu Yang Andre의 핵심 질의: (a) 정부 전체 데이터 아키텍처가 외국 자본 본사의 독점적 AI/데이터 분석 플랫폼이 시민 데이터를 처리하도록 허용하는지; (b) 허용한다면, 외국 정부가 자국 법(미국 CLOUD Act 등)을 근거로 이 데이터를 강제 소환하는 것을 방지하기 위한 법적·기술적 보장이 무엇인지. MDDI 행정부 국무장관 Jasmin Lau 답변: 정부는 위험 기반 접근법을 채택하고 있으며, 데이터 접근은 「최소 권한/필요에 따른 접근」 원칙을 엄격히 준수하고, 공급업체에 비보관, 암호화, 신원 및 접근 관리 이행을 요구하며, 고민감도 데이터는 데이터 레지던시를 요구할 수 있고, 거버넌스 프레임워크 및 계약 조항을 통해 사용, 저장, 공개를 제한한다고 답했다. Low의 추가 질문은 핵심을 직결했다: 지난 5년간 전 세계 각국 정부의 선호 AI/데이터/보안 솔루션 공급업체가 된 Palantir Technologies를 명시하며, CLOUD Act가 미국 기업의 법적 관할 범위 내 데이터 공개를 강제하며, 「싱가포르에 데이터 레지던시가 있어도 강제 소환될 수 있다」고 명확히 지적했다. Jasmin Lau는 이를 직접 인정했다: 「법적·계약상 약정은 별개로, 현실은 계약에 명시된 어떤 법적 조항이 있든 미국 같은 일부 관할권은 역외 효력을 포함한 법안을 가지고 있으며, 이를 통해 자국 내 기업에 특정 정보 제공을 강제할 수 있다… 그러한 법안은 계약 의무를 무효화할 수 있다」고 했다. 이는 정부가 계약상 데이터 레지던시가 외국의 역외 관할권 법률 앞에서 무효화될 수 있다는 점을 국회에서 처음으로 공개 인정한 것이다.`,
+    whyItMatters: '部长首次公开承认合同保障可被美国 CLOUD Act 域外管辖突破，新加坡数据主权防线现出缺口',
+    whyItMattersEn:
+      "The minister publicly acknowledged for the first time that contractual safeguards can be pierced by US CLOUD Act extraterritorial reach, exposing a gap in Singapore's data sovereignty defense line.",
+    whyItMattersJa:
+      '部長は初めて公開の場で、契約上の保障が米国の CLOUD Act による域外管辖権によって突破される可能性があることを認め、シンガポールのデータ主権の防線に欠陥が生じていることを明かしています。',
+    whyItMattersKo:
+      '부장관이 계약상 보장이 미국 CLOUD Act의 역외 관할권에 의해 뚫릴 수 있음을 처음으로 공개 인정했으며, 싱가포르의 데이터 주권 방어선에 허점이 드러났다.',
     summaryJa: `労働党非選挙区議員の Low Wu Yang Andre は重要な質問を提出しました。(a) 全政府データアーキテクチャは、外国の本社を持つ専有 AI / データ分析プラットフォームが市民データを処理することを許可しているかどうか。(b) 許可されている場合、本国法（米国の CLOUD Act など）に基づいて外国政府がこれらのデータを取得するのを防ぐためのどのような法的および技術的保証があるのか。MDDI 国務大臣の Jasmin Lau は答えました。政府はリスクベースのアプローチを採用し、データアクセスは 「最小権限/必要ベースアクセス」原則に厳密に従い、ベンダーに非保持、暗号化、アイデンティティおよびアクセス管理を実装するよう要求しており、高度に機密性の高いデータはデータレジデンシーを要求できます。ガバナンスフレームワークと契約条項を通じて使用、保存、および開示を制限しています。Low の追加の質問は核心を直指しました。彼は Palantir Technologies を指摘しました。過去5年間、世界中の政府向けのトップクラスの AI/データ/セキュリティソリューションプロバイダーとなっています。彼は CLOUD Act がシンガポール内にデータレジデンシーがある場合でも、米国企業に米国の司法管轄区域内でデータ開示することを強制することを明確に述べました。Jasmin Lau は直接これを認めました。「法的および契約上の合意はさておき、現実は、契約が含む可能性のある法的規定が何であるかに関わらず、米国のような一部の司法管轄区域は、彼らの司法管轄区域内の企業に特定の情報を提供することを要求する政府機関に権限を与える法律を持つ可能性があり、外国の司法管轄を含むそのような法律はあります。そのような法律は契約上の義務をオーバーライドすることができます。」これは政府が、契約によるデータレジデンシーが外国の域外管轄法律の前で上書きされる可能性があることを議会で初めて公開的に認めたものです。`,
     summaryEn: `Workers' Party NCMP Mr Low Wu Yang Andre asked MDDI: (a) whether the whole-of-Government data architecture permits proprietary AI / data analytics platforms from foreign-headquartered vendors to process citizen data; and (b) what legal and technical safeguards prevent foreign governments from compelling disclosure under their domestic laws. Minister of State Ms Jasmin Lau replied that the Government uses a risk-based approach: access on a needs basis under the principle of least privilege; vendors must implement non-retention, encryption, and identity/access management; data residency may be required for sensitive data; governance frameworks and contracts constrain use, storage and retention. In the supplementary, Mr Low named Palantir Technologies — which has become the dominant AI/data/security supplier to governments globally — and pressed on the US CLOUD Act, which compels US-headquartered companies to disclose data even when stored offshore. The Minister acknowledged this directly: "Legal and contractual agreements aside, the reality is that no matter what legal provisions the contracts may contain, some jurisdictions like the US may have legislation, including with extraterritorial reach, that empower government agencies to require companies within their jurisdictions to provide certain information... Such legislation can override contractual obligations." This is the first time the Government has publicly acknowledged on the parliamentary floor that contractual data residency can be overridden by foreign extraterritorial law.`,
     keyPoints: [
@@ -2484,6 +2751,14 @@ export const debates: Debate[] = [
     topics: ['AI in Healthcare', 'AI in Public Sector', 'AI Governance & Regulation'],
     summary: `卫生部长王乙康在供给委员会辩论中宣布新加坡正式成为超老龄社会（65岁以上人口超21%），推出ACE-AI预测工具（由Synapxe开发）用于糖尿病及高脂血症风险筛查，强调"AI增强而非AI决定"原则，2027年初推广至所有Healthier SG诊所。同时宣布BRCA1/2基因检测补贴（2026年12月起，最高70%补贴），MediShield Life将覆盖预防性手术（乳房切除术Q3 2026、输卵管卵巢切除术Q4 2026），MediSave慢性病与预防护理限额提升（2027年1月起500/700提至700/1000），惠及91万+患者。`,
     summaryKo: `보건부 장관 Wong Yan Kee는 공급 위원회 토론에서 싱가포르가 공식적으로 초고령 사회(65세 이상 인구 21% 초과)가 되었음을 선언하고, Synapxe에서 개발한 ACE-AI 예측 도구를 당뇨병 및 고지혈증 위험 선별을 위해 추진하며, 「AI 강화이지 AI 결정이 아님」 원칙을 강조하고, 2027년 초 모든 Healthier SG 진료소로 확대할 계획을 밝혔습니다. 동시에 BRCA1/2 유전자 검사 보조금(2026년 12월부터, 최대 70% 보조)을 선언했으며, MediShield Life는 예방적 수술(유방절제술 2026년 3분기, 수란관난소절제술 2026년 4분기)을 보장하고, MediSave 만성질환 및 예방 보건 한도가 인상되어(2027년 1월부터 500/700에서 700/1000으로) 91만 명 이상의 환자가 혜택을 받습니다.`,
+    whyItMatters:
+      'Synapxe 的 AI 增强而非决定原则先于专门 AI 立法为医疗场景设下先例，2027 年起覆盖所有 Healthier SG 诊所',
+    whyItMattersEn:
+      "Synapxe's principle of AI enhancing rather than deciding establishes a precedent for healthcare scenarios ahead of dedicated AI legislation, covering all Healthier SG clinics from 2027 onwards.",
+    whyItMattersJa:
+      'Synapxe の「AI による増強であり決定ではない」という原則が専門的な AI 立法に先立ち医療場面の先例を設定し、2027 年からすべての Healthier SG クリニックをカバーしています。',
+    whyItMattersKo:
+      'Synapxe의 「AI 강화, 결정 아님」 원칙이 전문 AI 입법보다 먼저 의료 장면의 선례를 수립했으며, 2027년부터 모든 Healthier SG 클리닉을 포괄한다.',
     summaryJa: `衛生大臣の王乙康は予算委員会討論において、シンガポールが正式に超高齢社会（65歳以上人口が21%超）となったことを宣言しました。ACE-AI 予測ツール（Synapxe 開発）を糖尿病および高脂血症のリスク検診に導入し、「AI 強化であり AI 決定ではない」原則を強調し、2027年初頭にすべての Healthier SG クリニックに拡大する予定です。同時に BRCA1/2 遺伝子検査補助金（2026年12月から、最高70%の補助）を発表し、MediShield Life は予防手術（乳房切除術 Q3 2026、卵管卵巣摘出術 Q4 2026）をカバーします。MediSave 慢性疾患および予防ケア限度額が引き上げられます（2027年1月から 500/700 から 700/1000 に）。これにより 91万人以上の患者が恩恵を受けます。`,
     summaryEn: `Health Minister Ong Ye Kung used the MOH Committee of Supply debate to announce that Singapore has officially become a super-aged society (over 21% of the population aged 65+). MOH unveiled the ACE-AI predictive tool (developed by Synapxe) for diabetes and hyperlipidaemia risk screening, anchored on an "AI-enhanced, not AI-decided" principle, with rollout to all Healthier SG clinics from early 2027. Other measures: BRCA1/2 genetic testing subsidy from December 2026 (up to 70%); MediShield Life cover for preventive surgeries (mastectomy in Q3 2026, salpingo-oophorectomy in Q4 2026); and higher MediSave chronic and preventive care limits (raised from 500/700 to 700/1000 from January 2027), benefiting 910,000+ patients.`,
     keyPoints: [
@@ -2570,6 +2845,13 @@ export const debates: Debate[] = [
     ],
     summary: `这是2026年预算案中AI议题最集中的辩论。MDDI GPC围绕六大主题进行协调审议：AI价值主张、数字能力建设、伦理治理、包容性增长、基础设施与网络安全、高信任数字社会。部长尤芳达(Mrs Josephine Teo)宣布：(1)支持10万名工人成为"AI双语人才"，从会计和法律行业开始，通过TeSA项目扩展；(2)发布全球首个《自主智能体AI治理框架》(Model Governance Framework for Agentic AI)；(3)新加坡将主办第二届国际AI安全科学交流大会，更新"新加坡共识"；(4)着力解决中小企业AI落差问题，避免大企业拉远距离。议员关注焦点包括：深伪技术监管(Christopher de Souza)、AI媒体素养(Fadli Fawzi)、数据中心投资竞争、AI对PME的冲击、网络安全应对AI威胁等。`,
     summaryKo: `이는 2026년 예산안 중 AI 의제가 가장 집중된 토론입니다. MDDI GPC는 6가지 주요 주제를 중심으로 조율 심의를 진행했습니다: AI 가치 제안, 디지털 역량 구축, 윤리 거버넌스, 포용적 성장, 기반 시설 및 사이버 보안, 높은 신뢰도의 디지털 사회. 장관 Mrs Josephine Teo는 다음을 발표했습니다: (1) 10만 명의 근로자가 「AI 이중언어 인재」가 되도록 지원하며, 회계 및 법률 산업부터 시작하여 TeSA 프로젝트를 통해 확대; (2) 세계 최초의 『자율 지능체 AI 거버넌스 프레임워크』(Model Governance Framework for Agentic AI) 발표; (3) 싱가포르가 제2회 국제 AI 안전 과학 교류 대회를 개최하며, 「싱가포르 공감대」를 업데이트; (4) 중소기업의 AI 격차 문제 해결에 주력하여 대기업이 거리를 더 벌리는 것을 방지. 의원들의 관심 초점은 다음을 포함합니다: 디ープ페이크 기술 규제(Christopher de Souza), AI 미디어 리터러시(Fadli Fawzi), 데이터 센터 투자 경쟁, AI가 PME에 미치는 영향, 사이버 보안의 AI 위협 대응.`,
+    whyItMatters: '新加坡以全球首个自主智能体 AI 治理框架抢占规则话语权，但中小企业 AI 落差未解，可能拖累这一先发优势',
+    whyItMattersEn:
+      "Singapore seizes rule-setting discourse with the world's first autonomous agent AI governance framework, yet unresolved SME AI gaps may undermine this first-mover advantage.",
+    whyItMattersJa:
+      'シンガポールは世界初の自律型エージェント AI 治理フレームワークで規則策定の言説権を占有していますが、中小企業における AI ギャップが解決されておらず、この先発優位性を損なう可能性があります。',
+    whyItMattersKo:
+      '싱가포르가 글로벌 최초의 자율 지능체(autonomous agent) AI 거버넌스 체계로 규칙 담론 주도권을 선점했으나, 중소기업의 AI 격차가 해결되지 않아 이러한 선발 우위를 저해할 수 있다.',
     summaryJa: `これは2026年予算案における AI 議題の最も集中した討論です。MDDI GPC は6つの主要テーマに関して協調審議を行いました。AI の価値提案、デジタル能力構築、倫理ガバナンス、包括的成長、インフラストラクチャーおよびサイバーセキュリティ、高信頼デジタル社会。大臣の Mrs Josephine Teo は以下を宣言しました。(1) 10万人の労働者が 「AI バイリンガル人材」となることを支援し、会計および法律業界から始まり、TeSA プロジェクトを通じて拡大します。(2) 自律型 AI のための最初の世界的な 「モデルガバナンスフレームワーク」(Model Governance Framework for Agentic AI) を発表します。(3) シンガポールは第2回国際 AI 安全科学会議を開催し、「シンガポール・コンセンサス」を更新します。(4) 中小企業の AI ギャップ問題に対処し、大企業が距離を拡大するのを防ぎます。議員の関心は以下を含みます。ディープフェイク技術規制（Christopher de Souza）、AI メディアリテラシー（Fadli Fawzi）、データセンター投資競争、PME に対する AI の影響、AI 脅威への対抗サイバーセキュリティなど。`,
     summaryEn: `The most AI-intensive debate in Budget 2026. The MDDI GPC delivered coordinated scrutiny across six themes: AI value proposition, digital capabilities, ethical governance, inclusive growth, infrastructure and cybersecurity, and a high-trust digital society. Minister Josephine Teo announced: (1) support for 100,000 workers to become "AI bilingual", starting with accountancy and legal professions and scaled via TeSA; (2) the world's first Model Governance Framework for Agentic AI; (3) Singapore will host the second International Scientific Exchange on AI Safety to update the "Singapore Consensus"; (4) targeted action to close the SME AI gap so that frontier firms do not pull away. MP focus areas: deepfake regulation (Christopher de Souza), AI media literacy (Fadli Fawzi), data centre investment competition, AI impact on PMEs, and cybersecurity against AI-enabled threats.`,
     keyPoints: [
@@ -2627,6 +2909,13 @@ export const debates: Debate[] = [
     topics: ['AI Economy & Industry', 'AI & Employment'],
     summary: `贸工部供给委员会辩论聚焦AI驱动的经济结构转型。议员质询产业转型地图(ITM)是否真正推动生产力提升而非仅助企业降本，追问如何衡量真正的生产力增益（管理升级、流程再造、商业模式变革）而非简单的数字工具采用率。关注焦点包括：中小企业AI实施困难、AI创业生态中大学/A*STAR研究成果商业化、投资退出缺口、AI暗模式（如虚假评论与订阅陷阱）对消费者的威胁。提出构建政府门户AI助手，基于企业画像自动推荐补贴和方案。`,
     summaryKo: `무역산업부 공급위원회 토론이 AI 구동 경제 구조 전환에 초점을 맞추고 있습니다. 의원들은 산업 전환 지도(ITM)가 진정으로 생산성 향상을 추진하는지, 아니면 단순히 기업 원가 절감만을 돕는 것인지를 질의하며, 단순한 디지털 도구 채택률이 아닌 진정한 생산성 이득（경영 업그레이드, 프로세스 재설계, 비즈니스 모델 변혁）을 어떻게 측정할 것인지를 추가 질의합니다. 주목 초점은 중소기업의 AI 실행 어려움, AI 스타트업 생태계에서 대학/A*STAR 연구 성과의 상업화, 투자 출구 격차, 소비자를 위협하는 AI 다크 패턴（허위 리뷰 및 구독 함정 등）을 포함합니다. 기업 프로필 기반으로 보조금 및 방안을 자동 추천하는 정부 포털 AI 어시스턴트 구축을 제안합니다.`,
+    whyItMatters: '辩论首次追问 ITM 能否衡量 AI 时代生产力增量而非停留在工具采用率',
+    whyItMattersEn:
+      'The debate raises for the first time whether ITM can measure AI-era productivity growth rather than remaining at tool-adoption rates.',
+    whyItMattersJa:
+      '討論は初めて、ITM が AI 時代の生産性増加を測定できるのか、単なるツール採用率に留まるのかについて質問を提起しています。',
+    whyItMattersKo:
+      '토론이 처음으로 ITM이 AI 시대의 생산성 증분을 측정할 수 있는지, 아니면 도구 채택률에만 머물 것인지를 추궁했다.',
     summaryJa: `貿易産業省予算委員会討論は AI 駆動型経済構造転換に焦点を当てています。議員は産業転換マップ（ITM）が実際に生産性向上を推進しているか、単に企業のコスト削減を支援しているだけではないかを質問し、真の生産性向上（管理改善、プロセス再設計、ビジネスモデル変革）をどのように測定するかを追及し、単純なデジタルツール採用率ではないことを強調しています。関心事項には以下が含まれます：中小企業の AI 実装の困難さ、AI スタートアップエコシステムにおける大学/A*STAR 研究成果の商業化、投資出口ギャップ、AI ダークパターン（虚偽レビュー、購読トラップなど）の消費者への脅威。企業プロフィールに基づいて補助金とソリューションを自動的に推奨する政府ポータル AI アシスタント構築を提案しました。`,
     summaryEn: `The MTI Committee of Supply debate focused on AI-driven structural economic transformation. MPs asked whether Industry Transformation Maps (ITMs) genuinely drive productivity gains or merely help firms cut costs, pressing on how to measure real productivity uplift (management upgrades, process redesign, business model change) rather than simple adoption rates of digital tools. Focus areas: SMEs struggling with AI implementation, the gap between university/A*STAR research and commercial exit in the AI startup scene, AI-enabled dark patterns (fake reviews, subscription traps) threatening consumers. A proposal: an AI assistant on government portals that recommends grants and schemes based on each firm's profile.`,
     keyPoints: [
@@ -2683,6 +2972,14 @@ export const debates: Debate[] = [
     topics: ['AI in Education', 'AI & Employment', 'AI Safety & Ethics'],
     summary: `教育部供给委员会辩论深入探讨AI对教育体系的结构性冲击。议员Darryl David指出，AI不仅是又一个技术趋势，而是正在重塑行业、组织模式和价值创造所需技能。辩论聚焦：(1)教师分级专业发展——基础AI工具与数字教学法培训、高级课程设计与伦理模块、持续跟踪AI趋势；(2)包容性AI教育——确保不同能力学生都能受益；(3)批判性思维培养——当生成式AI可秒出论文和代码时，差异化竞争力在于独立判断和批判性运用AI的能力；(4)成人教育与专业技术学院(如PACE)扩展AI和数据分析课程。`,
     summaryKo: `교육부 공급위원회 토론에서는 AI가 교육체계에 미치는 구조적 영향을 깊이 있게 논의했습니다. 의원 Darryl David는 AI가 단순한 기술 동향이 아니라 산업, 조직 방식, 가치 창출에 필요한 기술을 근본적으로 재편하고 있다고 지적했습니다. 토론의 주요 초점은 다음과 같습니다. (1) 교사 계층별 전문성 발전 — 기초 AI 도구 및 디지털 교수법 교육, 고급 교과과정 설계 및 윤리 모듈, AI 동향의 지속적 추적; (2) 포용적 AI 교육 — 다양한 능력을 가진 학생들이 모두 혜택을 받을 수 있도록 보장; (3) 비판적 사고 능력 양성 — 생성형 AI가 논문과 코드를 순식간에 생성할 수 있는 시대에 차별화된 경쟁력은 독립적인 판단력과 비판적 AI 활용 능력에 있다는 점; (4) 성인 교육 및 전문 기술 학원(예: PACE)에서의 AI 및 데이터 분석 과정 확대.`,
+    whyItMatters:
+      'MOE 在供给委员会辩论中将教师分级 AI 培训与 PACE 成人再培训捆绑，释放教育 AI 战略从工具采购转向全民技能重塑的信号',
+    whyItMattersEn:
+      'In Supply Committee debate, MOE bundles tiered AI training for teachers with PACE adult reskilling, signaling an education AI strategy shift from tool procurement toward universal skills reshaping.',
+    whyItMattersJa:
+      '教育省（MOE）は供給委員会の討論において、階層化された教師向け AI 研修と PACE 成人再教育をバンドルし、教育の AI 戦略がツール購買から国民全体のスキル再構築へシフトしていることを示唆しています。',
+    whyItMattersKo:
+      'MOE가 공급 위원회 토론에서 교사 계층별 AI 교육을 PACE 성인 재교육과 결합했으며, 교육 AI 전략이 도구 구매에서 전국민 기술 재교육으로 전환됨의 신호를 드러냈다.',
     summaryJa: `教育部予算委員会討論は AI が教育制度に与える構造的影響を深く探討しています。議員の Darryl David は、AI が単なる別の技術トレンドではなく、産業、組織モデル、価値創造に必要なスキルを再形成していることを指摘しました。討論は以下に焦点を当てています。(1) 教師段階別専門能力開発—基本的 AI ツールおよびデジタル教学法トレーニング、高度なカリキュラム設計および倫理モジュール、AI トレンドの継続的監視；(2) 包括的 AI 教育—異なる能力の学生がすべて恩恵を受けることを確保；(3) 批判的思考スキルの育成—生成型 AI が秒単位で論文とコードを作成できるとき、差別化された競争力は独立した判断と AI の批判的使用能力にあります；(4) 成人教育および専門技術大学（PACE など）への AI およびデータ分析コース拡大。`,
     summaryEn: `The MOE Committee of Supply debate examined AI's structural impact on the education system. MP Darryl David framed AI as more than another tech trend — it is reshaping industries, organisational models and the skills needed to create value. The debate focused on: (1) tiered professional development for teachers — foundational AI tool / digital pedagogy training, advanced curriculum design and ethics, continuous tracking of AI trends; (2) inclusive AI education ensuring students of all abilities benefit; (3) critical thinking — when generative AI can produce essays and code in seconds, the differentiator is independent judgement and critical use of AI; (4) expanding AI and data analytics courses through adult education (e.g. PACE).`,
     keyPoints: [
@@ -2766,6 +3063,14 @@ export const debates: Debate[] = [
     topics: ['AI & Employment', 'AI in Public Sector'],
     summary: `人力部供给委员会辩论是预算案中AI与劳动力议题的核心战场。部长陈诗龙指出AI正在改变工作本质——不仅是做什么工作，还包括工作如何组织、技能如何构建、职业如何演进。核心关切：(1)AI是颠覆者(gamechanger)——可增强也可替代工人，取决于工作和岗位如何重新设计；(2)SkillsFuture参与已超60万人，458,000+新加坡人使用了SkillsFuture学分；(3)要求将"岗位重新设计"升级为"人+AI岗位重新设计"，运用设计思维整合AI与人类判断力、同理心和创造力；(4)中年PME面临更高风险，需要将职业健康(career health)主流化、预防化和个性化；(5)生成式AI对白领职业的风险高于手工技能型岗位。议员关切：2016年首推的产业转型蓝图（ITM）须升级为提供AI驱动的业务流程重设计、劳动力转型时间表与可信的转岗路径；杨涴凌强调2026年扩大非传统来源职业列表（NTS-OL）须配套生产力挂钩条件——本地员工结构化培训、外籍员工技能转移、岗位重设计；受委议员Terence Ho警示"AI鸿沟"风险，建议向成熟工人限时免费/补贴、向低收入新加坡人长期补贴Premium AI工具（每月20-30美元档）；林志蔚（Jamus Lim）警告agentic AI威胁初级岗位，建议把GRIT计划机制化为国家级入职培训补贴。`,
     summaryKo: `인력부 공급위원회 토론은 예산안에서 AI와 노동력 의제의 핵심 전장입니다. 탄시렝(Tan See Leng) 장관은 AI가 업무의 본질을 변화시키고 있다고 지적했습니다. 단순히 어떤 업무를 하는지뿐 아니라 업무를 어떻게 조직하는지, 기술을 어떻게 구성하는지, 직업이 어떻게 진화하는지도 포함됩니다. 핵심 관심사는 다음과 같습니다. (1) AI는 게임 체인저(gamechanger)입니다 — 근로자를 강화하거나 대체할 수 있으며 업무와 일자리를 어떻게 재설계하는지에 따라 달라집니다; (2) SkillsFuture 참여가 60만 명을 초과했으며, 45만 8,000명 이상의 싱가포르인이 SkillsFuture 크레딧을 사용했습니다; (3) 「일자리 재설계」를 「인간 + AI 일자리 재설계」로 업그레이드하도록 요청하며 설계 사고를 활용하여 AI와 인간의 판단력, 공감 능력, 창의성을 통합하는 것; (4) 중년 PME가 더 높은 위험에 직면하고 있으며 직업 건강(career health)을 주류화, 예방화, 맞춤화할 필요성; (5) 생성형 AI가 화이트칼라 직업에 대한 위험이 수작업 기술 기반 일자리보다 높습니다. 의원들의 관심사: 2016년 처음 도입된 산업전환지도(ITM)는 AI 주도 업무 프로세스 재설계, 노동력 전환 일정, 신뢰할 수 있는 전직 경로를 제공하도록 업그레이드되어야 합니다; 여완링(Yeo Wan Ling) 의원은 2026년 비전통공급원 직업 목록(NTS-OL) 확대에 생산성 연계 조건 — 현지 직원의 구조화된 훈련, 외국인 근로자의 기술 이전, 직무 재설계 — 을 결합해야 한다고 강조했습니다; 테렌스 호(Terence Ho) 지명 의원은 "AI 격차" 위험을 경고하며 장년 근로자에게 한시적 무료/보조, 저소득 싱가포르인에게 장기 보조 방식으로 프리미엄 AI 도구(월 20~30달러대)를 지원하자고 제안했습니다; 자무스 림(Jamus Lim) 의원은 에이전틱 AI가 신입 일자리를 위협한다고 경고하며 GRIT 프로그램을 국가급 현장 연수 보조 제도로 제도화하자고 제안했습니다.`,
+    whyItMatters:
+      '新加坡劳动力政策首次把 AI 鸿沟和职业韧性列为议题，但 Terence Ho 提议的每月 US$20-30 补贴尚未获人力部承诺',
+    whyItMattersEn:
+      "Singapore's labor force policy lists AI gaps and occupational resilience as issues for the first time, yet a monthly US$20–30 subsidy proposed by Terence Ho has yet to receive Ministry of Manpower(MOM) commitment.",
+    whyItMattersJa:
+      'シンガポールの労働力政策は初めて AI 格差と職業レジリエンスを議題として挙げていますが、テレンス・ホーが提案した月額米ドル 20～30 の補助金はまだ人材省（MOM）から承認を得ていません。',
+    whyItMattersKo:
+      '싱가포르의 노동력 정책이 처음으로 AI 격차와 직무 복원력을 의제로 포함했으나, Terence Ho가 제안한 월 US$20-30 보조금은 여전히 인력부（MOM）약속을 얻지 못했다.',
     summaryJa: `人力省予算委員会討論は予算案における AI と労働力議題の中核戦場です。タン・シーレン（Tan See Leng）人材相は、AI が仕事の本質を変えていることを指摘しました。それは単に何をするかではなく、仕事がどのように組織されているか、スキルがどのように構築されているか、職業がどのように進化しているかも含みます。中核的関心事項：(1) AI は変革者（ゲームチェンジャー）です—労働者を強化することも置き換えることもでき、仕事と職位がどのように再設計されるかに依存します；(2) SkillsFuture 参加者は既に 60万人を超え、458,000 人以上のシンガポール人が SkillsFuture 学習クレジットを利用しています；(3) 「職位再設計」を 「人+AI 職位再設計」にアップグレードする要求—設計思考を使用して AI と人間の判断力、共感、創造性を統合します；(4) 中年 PME はより高いリスクに直面しており、職業健全性（career health）の主流化、予防的対応、および個人化が必要です；(5) 生成型 AI は手作業スキル型職位よりもホワイトカラー職業への高いリスクです。議員らの関心：2016年に初導入された産業変革マップ（ITM）は、AI駆動の業務プロセス再設計、労働力転換のタイムライン、信頼できる転職経路を提供するようアップグレードすべき；ヨー・ワンリン議員は2026年の非伝統的供給源職業リスト（NTS-OL）拡大に生産性連動条件——現地従業員の体系的訓練、外国人労働者からの技能移転、職務再設計——を組み合わせるべきと強調；テレンス・ホー任命議員は「AI格差」リスクを警告し、成熟労働者への期間限定の無料・補助、低所得シンガポール人への長期補助という形でプレミアムAIツール（月20〜30米ドル帯）の支援を提案；ジェイマス・リム議員はエージェント型AIが初級職を脅かすと警告し、GRITプログラムを国家級のOJT補助制度として制度化するよう提案しました。`,
     summaryEn: `The MOM Committee of Supply debate was the centrepiece for AI and workforce issues in the Budget. Minister Tan See Leng framed AI as transforming the nature of work — not only what jobs people do, but how work is organised, skills are built, and careers evolve. Key threads: (1) AI as a gamechanger that can augment or displace workers depending on how jobs are redesigned; (2) SkillsFuture participation exceeding 600,000, with 458,000+ Singaporeans using SkillsFuture credits; (3) reframing "job redesign" as "human-with-AI job redesign", using design thinking to combine AI with human judgement, empathy and creativity; (4) mid-career PMEs face the highest risk and need career health to become mainstream, preventive and personalised; (5) generative AI poses higher risk to white-collar work than to manual / dexterity-based roles. MPs' threads: Industry Transformation Maps (ITMs), forward-looking when introduced in 2016, must be sharpened to give clear direction on AI-driven business process redesign, workforce-transition timelines and credible pathways into new roles; Ms Yeo Wan Ling argued the 2026 expansion of the Non-traditional Sources Occupation List (NTS-OL) must be coupled with productivity-linked conditions — structured training of locals, skills transfer from foreign workers, and job redesign; NMP Assoc Prof Terence Ho warned of an "AI divide" and proposed free or subsidised time-limited access to premium AI tools (the US$20–30/month tier) for mature workers, with longer-term subsidies for lower-income Singaporeans; Assoc Prof Jamus Jerome Lim cautioned that agentic AI threatens entry-level positions and called for institutionalising the GRIT programme as a national on-the-job training subsidy.`,
     keyPoints: [
@@ -2862,6 +3167,14 @@ export const debates: Debate[] = [
     topics: ['AI Safety & Ethics', 'AI Governance & Regulation', 'AI in Healthcare'],
     summary: `议员Dr Charlene Chen质询政府如何监测青少年使用AI聊天机器人进行心理咨询的趋势，以及保护弱势用户的措施。卫生部高级政务部长许宝琨回应：AI聊天机器人已无处不在，追踪其在心理健康方面的使用已不切实际。他明确指出，生成式AI聊天机器人不适合替代合格的心理健康服务提供者，因其存在误导信息和不当回应风险，可能造成伤害。但年轻人使用这些工具是因为匿名性和24/7可用性。政府的策略是推广合法替代资源（如mindline 1771、mindline.sg、CHAT），并通过《在线安全实践守则》要求应用商店实施年龄验证措施（2026年3月底前）。`,
     summaryKo: `의원 Dr Charlene Chen은 정부가 청소년의 AI 챗봇을 통한 정신 건강 상담 이용 추세를 어떻게 모니터링하고 있으며 취약 사용자를 보호하기 위한 조치가 무엇인지 질의했습니다. 보건부 선임 정무부선임국무장관 허보흔은 다음과 같이 응답했습니다. AI 챗봇은 이미 어디에나 존재하며, 정신 건강 측면에서 그 사용을 추적하는 것은 더 이상 실질적이지 않습니다. 그는 생성형 AI 챗봇이 정보 오류 및 부적절한 응답 위험 때문에 자격 있는 정신 건강 서비스 제공자를 대체하기에 적합하지 않으며 해를 끼칠 수 있다고 명확히 지적했습니다. 그러나 청년들은 익명성과 24/7 가용성 때문에 이러한 도구를 사용합니다. 정부의 전략은 합법적 대안 자원(예: mindline 1771, mindline.sg, CHAT)을 활성화하고 《온라인 안전 실천 수칙》을 통해 앱 스토어가 연령 확인 조치를 시행(2026년 3월 말까지)하도록 요구하는 것입니다.`,
+    whyItMatters:
+      '政府放弃直接监管 AI 心理聊天机器人，改用《在线安全实践守则》要求应用商店在 2026 年 3 月底前完成年龄验证，监管责任转嫁平台',
+    whyItMattersEn:
+      'The government abandons direct regulation of AI mental health chatbots, instead using the Online Safety Practices Code to require app stores to complete age verification by March 31, 2026, transferring regulatory responsibility to platforms.',
+    whyItMattersJa:
+      '政府は AI メンタルヘルス・チャットボットの直接的な規制を放棄し、代わりに『オンライン安全実践ガイドライン』を使用してアプリ・ストアに 2026 年 3 月末までに年齢確認を完了することを要求し、規制責任をプラットフォームに転嫁しています。',
+    whyItMattersKo:
+      '정부가 AI 심리 상담 봇의 직접 규제를 포기하고, 대신 『온라인 안전 실천 수칙』을 사용하여 앱 스토어가 2026년 3월 말까지 연령 검증을 완료하도록 요구했으며, 규제 책임을 플랫폼으로 전가했다.',
     summaryJa: `議員の Dr Charlene Chen は、青少年による AI チャットボットの心理相談利用の傾向を政府がどのように監視し、脆弱なユーザーを保護するための対策についての質問を提起しました。衛生省シニア上級国務大臣の Hsu Baokun は答えました。AI チャットボットはすでに至る所にあり、心理健康の側面でのその使用を追跡することはもはや実用的ではありません。彼は、生成型 AI チャットボットは誤った情報と不適切な反応のリスクがあるため、適格な心理健康サービスプロバイダーを置き換えるのに適していないことを明確に述べ、害をもたらす可能性があります。しかし、若い人々がこれらのツールを使用しているのは、匿名性と24時間対応可能性があるからです。政府の戦略は、合法的な代替リソース（mindline 1771、mindline.sg、CHAT など）の普及と、「オンラインセーフティ実践基準」を通じてアプリストアに年齢確認措置の実装を要求する（2026年3月末までに）ことです。`,
     summaryEn: `MP Dr Charlene Chen asked how the government is monitoring teen use of AI chatbots for mental health counselling and how it protects vulnerable users. Senior Minister of State for Health Dr Koh Poh Koon replied that AI chatbots are now ubiquitous, making tracking impractical. He stated clearly that generative AI chatbots are not suitable substitutes for qualified mental-health providers because of risks of misinformation and inappropriate responses that could cause harm. Young people turn to them for anonymity and 24/7 availability. The government's strategy: promote legitimate alternatives (mindline 1771, mindline.sg, CHAT), and require app stores under the Code of Practice for Online Safety to implement age assurance by end-March 2026.`,
     keyPoints: [
@@ -2913,6 +3226,14 @@ export const debates: Debate[] = [
     topics: ['AI in Public Sector', 'AI Economy & Industry'],
     summary: `议员Valerie Lee质询政府采取什么措施推动AI在能源发电领域的应用，以及如何支持企业和家庭利用AI提高能源节约与效率。贸工部政务部长颜晓芳回应：(1)能源市场管理局(EMA)于2025年启动虚拟电厂(VPP)监管沙盒，利用AI预测可再生能源发电量并基于市场条件优化发电容量；(2)EMA内部已采用AI进行太阳能预测；(3)企业发展局支持新加坡商业联合会的"成本与碳减排计划"，利用AI工具帮助中小企业识别降本和脱碳机会。补充质询聚焦：能源领域AI专业人才培养计划，以及其他国家AI在电力调度和可再生能源领域的应用经验。`,
     summaryKo: `의원 Valerie Lee는 정부가 AI를 에너지 발전 분야에 어떻게 활용할 것인지, 그리고 기업과 가정이 에너지 절감 및 효율성 향상을 위해 AI를 활용하도록 어떻게 지원하는지 질의했습니다. 무역공업부 정무부국무장관 Yenn Siao Fang은 다음과 같이 응답했습니다. (1) 에너지 시장 관리국(EMA)은 2025년에 가상 발전소(VPP) 규제 샌드박스를 시작하여 AI로 재생 에너지 발전량을 예측하고 시장 조건에 따라 발전 용량을 최적화합니다; (2) EMA 내부는 이미 태양광 예측을 위해 AI를 채택했습니다; (3) 기업발전국은 싱가포르 상업 연합회의 「비용 및 탄소 감축 계획」을 지원하여 AI 도구가 중소기업이 비용 절감 및 탄소 감축 기회를 파악하도록 돕습니다. 추가 질의는 에너지 분야 AI 전문가 양성 계획 및 기타 국가의 전력 조정 및 재생 에너지 분야에서의 AI 응용 경험에 초점을 맞추고 있습니다.`,
+    whyItMatters:
+      'EMA 2025 年推出的虚拟电厂监管沙盒标志着新加坡电网调度首次引入 AI 市场化试点，为关键基础设施 AI 监管立先例',
+    whyItMattersEn:
+      "EMA's 2025 virtual power plant regulatory sandbox marks Singapore's first introduction of AI market-based pilots into grid dispatch, establishing a precedent for AI governance in critical infrastructure.",
+    whyItMattersJa:
+      'EMA が 2025 年に導入した仮想発電所の規制サンドボックスは、シンガポールの電力網運用が AI 市場化パイロットを初めて導入したことを示し、重要インフラの AI 規制の先例を確立しています。',
+    whyItMattersKo:
+      'EMA가 2025년에 출시한 가상발전소 규제 샌드박스는 싱가포르 전력망 디스패칭이 처음으로 AI 시장화 시범을 도입한 것으로, 핵심 기반시설 AI 규제의 선례를 세웠다.',
     summaryJa: `議員Valerie Leeが、AIをエネルギー発電分野に応用するための政府の施策や、企業・家庭によるAIの活用を通じたエネルギー節約と効率性の向上支援について質問しました。貿易・産業省国務大臣颜晓芳の応答：(1) エネルギー市場管理局(EMA)は2025年にバーチャルパワープラント(VPP)規制サンドボックスを開始し、AIを使用して再生可能エネルギー発電量を予測し、市場条件に基づいて発電容量を最適化しています。(2) EMA内では太陽光発電予測にAIを採用しています。(3) 企業開発局がシンガポール商業連合会の「コスト・カーボン削減計画」を支援しており、AIツールを活用して中小企業が低コスト化と脱炭素化の機会を特定するのを支援しています。補足的な質問は、エネルギー分野のAI専門人材育成計画、および他国のAI活用による電力調整と再生可能エネルギー分野での応用経験に焦点を当てていました。`,
     summaryEn: `MP Valerie Lee asked what government measures are pushing AI in the energy generation sector, and how households and businesses are supported to use AI for energy efficiency. MOS Gan Siow Huang responded: (1) the Energy Market Authority (EMA) launched a Virtual Power Plant (VPP) regulatory sandbox in 2025, using AI to forecast renewable output and optimise capacity against market conditions; (2) EMA already uses AI internally for solar forecasting; (3) Enterprise Singapore supports the SBF Cost and Carbon Reduction Programme, with AI tools helping SMEs identify cost-down and decarbonisation opportunities. Supplementaries focused on training AI talent for the energy sector and overseas experience with AI in dispatch and renewables.`,
     keyPoints: [
@@ -2962,6 +3283,14 @@ export const debates: Debate[] = [
     topics: ['AI Strategy', 'AI Economy & Industry'],
     summary: `副总理兼财政部长黄循财在预算案闭幕致辞中明确指出AI是2026年预算案的核心特色。Budget 2026旨在将AI作为战略优势，推动全国范围的AI应用，使新加坡人能充分利用技术带来的机遇。致辞将AI定位为应对地缘政治碎片化、多边体系削弱背景下的国家行动计划的关键组成部分。`,
     summaryKo: `부총리 겸 재무장관 Huang Xuancai는 폐회 연설에서 AI가 2026년 예산안의 핵심 특징임을 명확히 했습니다. Budget 2026은 AI를 전략적 이점으로 삼아 전국 범위의 AI 응용을 추진하고 싱가포르인이 기술이 가져오는 기회를 충분히 활용할 수 있도록 하는 것을 목표로 합니다. 연설은 AI를 지정학적 파편화와 다자 체계 약화 배경 속에서 국가 행동 계획의 핵심 요소로 위치 지었습니다.`,
+    whyItMatters:
+      'AI 从部门议题升格为 Budget 2026 全篇主线，意味着跨部门预算与政策将以 AI 采用为共同尺度，考验政府统筹执行力',
+    whyItMattersEn:
+      "AI escalates from a departmental issue to the main thread throughout Budget 2026, meaning cross-departmental budgets and policies will use AI adoption as a common measure, testing the government's coordination and execution capacity.",
+    whyItMattersJa:
+      'AI は部門固有の議題から 2026 年度予算全体の主要なテーマへと昇格し、これは跨部門的な予算と政策が AI 採用を共通の尺度として採用されることを意味し、政府の統合実行能力を試すものです。',
+    whyItMattersKo:
+      'AI가 부처 의제에서 Budget 2026의 전체 주제로 격상되었으며, 이는 부처 간 예산 및 정책이 AI 채택을 공통 척도로 삼을 것임을 의미하며, 정부의 통합 집행력을 시험하는 것이다.',
     summaryJa: `副首相兼財政大臣黄循財は予算案の閉幕演説で、AIが2026年予算案の中核的な特徴であることを明確に指摘しました。Budget 2026は、AIを戦略的優位性として位置づけ、全国規模のAI応用の推進を目指し、シンガポール国民が技術がもたらす機会を十分に活用できるようにするものです。演説ではAIを、地政学的分裂化と多国間体制の弱化という背景下での国家行動計画の重要な構成要素として位置づけました。`,
     summaryEn: `In his closing speech to the Budget debate, Deputy Prime Minister and Finance Minister Lawrence Wong explicitly identified AI as the centrepiece of Budget 2026. Budget 2026 aims to make AI a strategic advantage, drive nationwide AI adoption, and allow Singaporeans to fully capture technology-driven opportunities. The speech positions AI as a key component of the national action plan against a backdrop of geopolitical fragmentation and a weakening multilateral order.`,
     keyPoints: ['AI是Budget 2026的核心特色', 'AI作为国家战略优势', '推动全国AI应用普及', '应对地缘政治新常态的工具'],
@@ -3006,6 +3335,14 @@ export const debates: Debate[] = [
     topics: ['AI Safety & Ethics', 'AI Governance & Regulation'],
     summary: `社会及家庭发展部政务部长Zhulkarnain在COS辩论中回应多名议员关于儿童屏幕时间和网络安全的关切。政府的策略包括帮助儿童安全上网、负责任地使用AI，以及通过减少屏幕时间让家长为孩子创造更多亲子互动机会。讨论聚焦于如何在AI时代保护未成年人，同时不阻碍他们学习和适应新技术。`,
     summaryKo: `사회및가족발전부 정무부국무장관 Zhulkarnain은 COS 토론에서 아동 화면 시간 및 온라인 안전에 관한 여러 의원의 우려에 응답했습니다. 정부의 전략은 아동이 안전하게 온라인에 접속하고 책임감 있게 AI를 사용하도록 돕고, 화면 시간을 줄여 부모가 아이들을 위해 더 많은 부모-자식 상호작용 기회를 만들 수 있도록 하는 것입니다. 논의는 AI 시대에 미성년자를 보호하는 방법에 초점을 맞추면서도 동시에 새로운 기술 학습과 적응을 방해하지 않는 방법을 중심으로 했습니다.`,
+    whyItMatters:
+      '社会及家庭发展部在 2026 供给委员会辩论中，把儿童 AI 安全定位为家长自律议题而非平台监管，新加坡 AI 治理的儿童保护环节仍显空白',
+    whyItMattersEn:
+      "The Ministry of Social and Family Development positions child AI safety as a parental self-discipline issue rather than platform regulation in 2026 Supply Committee debate, with Singapore's AI governance still showing a gap in child protection.",
+    whyItMattersJa:
+      '社会・家族開発省は 2026 年の供給委員会討論において、児童 AI 安全をプラットフォーム規制ではなく保護者の自己規制の問題として位置づけており、シンガポール AI 治理の児童保護環節はまだ空白のままです。',
+    whyItMattersKo:
+      '사회 및 가족발전부가 2026 공급 위원회 토론에서 아동 AI 안전을 플랫폼 규제가 아닌 부모 자율 의제로 정위했으며, 싱가포르 AI 거버넌스의 아동 보호 부분이 여전히 공백으로 나타났다.',
     summaryJa: `社会・家族発展部国務大臣Zhulkarnainが、COS討論で、子どもの画面時間とネット安全に関する複数の議員からの懸念に応答しました。政府の戦略には、子どもの安全なインターネット利用、責任あるAI利用の支援、ならびに画面時間削減を通じて親が子どもとの交流機会をさらに増やすことが含まれています。討論はAI時代における未成年者の保護方法、同時に彼らの学習と新技術への適応を妨げないようにすることに焦点を当てていました。`,
     summaryEn: `MOS Zhulkarnain responded to several MPs' concerns about children's screen time and online safety during the MSF Committee of Supply debate. The government's strategy includes helping children stay safe online, use AI responsibly, and — by reducing screen time — giving parents more space for family interaction. The discussion centred on protecting minors in the AI era without blocking their ability to learn and adapt to new technologies.`,
     keyPoints: ['帮助儿童安全使用AI', '减少屏幕时间创造亲子互动', '在保护与学习之间寻找平衡'],
@@ -3049,6 +3386,14 @@ export const debates: Debate[] = [
     topics: ['AI Safety & Ethics', 'AI Economy & Industry', 'AI Governance & Regulation'],
     summary: `MSF供给委员会辩论中两个AI议题引发关注。议员Rachel Ong提出AI深伪技术（特别是性剥削内容）对儿童和弱势群体的威胁，要求政府说明保护措施以及MSF如何与其他部门协调应对。同时，议员Neo Kok Beng指出AI自动化正在取代残障人士传统就业岗位（包装、分拣、基础行政、编程），呼吁从"保护性就业"转向建设残障人士在AI经济中的韧性。`,
     summaryKo: `MSF 공급위원회 토론에서 두 가지 AI 의제가 주목을 받았습니다. 의원 Rachel Ong은 AI 딥페이크 기술(특히 성적 착취 콘텐츠)이 아동과 취약층에 대한 위협을 제기하고 정부의 보호 조치와 MSF가 다른 부처와 어떻게 협조하는지 설명하도록 요구했습니다. 동시에 의원 Neo Kok Beng은 AI 자동화가 장애인의 전통적인 고용 자리(포장, 분류, 기본 행정, 프로그래밍)를 대체하고 있다고 지적하고 「보호적 고용」에서 AI 경제에서 장애인의 회복력을 구축하는 것으로 전환할 것을 촉구했습니다.`,
+    whyItMatters:
+      'MSF 供给委员会同场提出 AI 深伪儿童保护与残障就业冲击，说明社会政策部门尚未建立应对 AI 风险的跨部门协调与转型方案',
+    whyItMattersEn:
+      "MSF's Supply Committee at the same session raises AI deepfake child protection and employment impacts for the disabled, indicating that social policy departments have yet to establish inter-agency coordination and transformation plans to address AI risks.",
+    whyItMattersJa:
+      'MSF の供給委員会は同じ場で AI ディープフェイク児童保護と障害者雇用への影響を提起し、社会政策部門がまだ AI リスク対応のための機関横断的協調と転換計画を確立していないことを示しています。',
+    whyItMattersKo:
+      'MSF 공급 위원회가 같은 자리에서 AI 딥페이크 아동 보호 및 장애인 고용 충격을 제기했으며, 사회정책 부처가 AI 위험에 대응하기 위한 부처 간 조율 및 전환 방안을 아직 수립하지 못했음을 보여준다.',
     summaryJa: `MSF供給委員会討論で、2つのAI議題が注目を集めました。議員Rachel Ongが、AI深偽技術（特に性的搾取コンテンツ）が児童と弱い立場にある人々への脅威であることを提起し、政府が保護措置を説明すること、およびMSFが他部門とどのように調整して対応しているかを要求しました。同時に、議員Neo Kok Bengは、AI自動化が障害者の従来の雇用職（包装、分類、基本的な事務、プログラミング）を置き換えていることを指摘し、「保護的就業」から障害者のAI経済における回復力構築への転換を呼びかけました。`,
     summaryEn: `Two AI issues drew attention in the MSF Committee of Supply debate. MP Rachel Ong raised the threat of AI deepfakes — especially sexually exploitative content — to children and vulnerable groups, asking what safeguards exist and how MSF coordinates with other agencies. Separately, MP Neo Kok Beng warned that AI automation is displacing traditional jobs for persons with disabilities (packing, sorting, basic admin, coding), calling for a shift from "protective employment" to building disability employment resilience in the AI economy.`,
     keyPoints: [
@@ -3105,6 +3450,14 @@ export const debates: Debate[] = [
     topics: ['AI Economy & Industry', 'AI in Education'],
     summary: `MCCY供给委员会辩论中，多名马来族议员聚焦社群在AI经济中的准备度。议员Saktiandi Supaat提出AI转型战略必须确保儿童和青年不仅会使用技术，还能创造价值。他举例一名中四学生对AI感兴趣但缺乏深入理解。议员Wan Rizal关注青年从高等教育到AI驱动就业市场的过渡。讨论提到国家AI委员会、国家AI使命和AI Champions计划为马来穆斯林企业带来新机遇，但质问：社群是否准备好迈入这个新世界？`,
     summaryKo: `MCCY 공급위원회 토론에서 여러 말레이계 의원들이 AI 경제에서 커뮤니티의 준비도에 초점을 맞춥니다. 의원 Saktiandi Supaat는 AI 전환 전략이 어린이와 청년들이 기술을 단순히 사용하는 것뿐만 아니라 가치를 창출할 수 있도록 보장해야 한다고 제시합니다. 그는 AI에 관심이 있지만 깊은 이해가 부족한 중4 학생의 사례를 들었습니다. 의원 Wan Rizal은 청년들이 고등교육에서 AI 주도 취업 시장으로의 전환에 주목합니다. 토론에서는 국가 AI 위원회, 국가 AI 미션, AI Champions 계획이 말레이 무슬림 기업에 새로운 기회를 가져온다고 언급했지만, 커뮤니티가 이 새로운 세계로 나아갈 준비가 되어 있는지 묻습니다.`,
+    whyItMatters:
+      '国家 AI 使命和 AI Champions 计划本应普惠全民，这场辩论首次把穆斯林社群排除风险摆上台面，考验政策能否真正下沉',
+    whyItMattersEn:
+      'The National AI Mission and AI Champions program should universally benefit everyone; this debate exposes Muslim community exclusion risks for the first time, testing whether policy can truly reach the grassroots.',
+    whyItMattersJa:
+      '国家 AI ミッションと AI Champions プログラムは本来すべての国民に裨益すべきものですが、この討論は初めてイスラム教徒コミュニティが除外されるリスクを取り上げ、政策が真に浸透できるかを試しています。',
+    whyItMattersKo:
+      '국가 AI 사명과 AI Champions 계획이 모든 국민에게 보편적 혜택을 제공해야 함에도, 이번 토론이 처음으로 무슬림 공동체 배제 위험을 쟁점화했으며, 정책이 정말로 기층에 침투할 수 있는지를 시험하는 것이다.',
     summaryJa: `MCCY供給委員会討論で、複数のマレー系議員がAI経済における社群の準備度に焦点を当てました。議員Saktiandi Supaatが、AI転換戦略は、児童と青年が単に技術を使用するだけでなく、価値を創造できることを確保する必要があると提起しました。彼はAIに関心がありますが深い理解に欠けるセカンダリー4の学生の例を挙げました。議員Wan Rizalは、高等教育からAI駆動型就業市場への青年の移行に関心を寄せました。討論では、国家AIコミッション、国家AIミッション、およびAI Championsプログラムがマレー・ムスリム系企業に新しい機会をもたらすことが言及されましたが、社群はこの新しい世界へ踏み出す準備ができているかという疑問が投げかけられました。`,
     summaryEn: `In the MCCY Committee of Supply debate, several Malay/Muslim MPs focused on the community's readiness for the AI economy. MP Saktiandi Supaat argued that AI transformation strategy must ensure children and youth not only use technology but create value with it, citing a Sec 4 student who is curious about AI but lacks deeper understanding. MP Wan Rizal addressed youth transitions from higher education into the AI-driven labour market. The debate referenced the National AI Council, National AI Mission and AI Champions programme as creating new opportunities for Malay/Muslim businesses, while asking: is the community ready to step into this new world?`,
     keyPoints: [
@@ -3157,6 +3510,13 @@ export const debates: Debate[] = [
     topics: ['AI in Healthcare', 'AI in Public Sector'],
     summary: `MOH供给委员会辩论中，议员Dr Choo Pei Ling专题发言"医疗技术与AI"。她指出临床医生面临临床复杂性、行政负担和协调需求三重压力，生成式AI可辅助医疗文档记录，临床决策支持系统可综合处理复杂信息。她呼吁推动AI在医疗中的实际应用，强调技术落地需要解决从实验到规模化的障碍。`,
     summaryKo: `MOH 공급위원회 토론에서 의원 Dr Choo Pei Ling이 「의료 기술과 AI」에 대해 특별 발언합니다. 그녀는 임상의들이 임상 복잡성, 행정 부담, 조율 필요성의 삼중 압박에 직면하고 있으며, 생성형 AI는 의료 문서 작성을 지원할 수 있고, 임상 의사결정 지원 시스템은 복잡한 정보를 통합적으로 처리할 수 있다고 지적합니다. 그녀는 의료에서 AI의 실질적 응용을 추진할 것을 촉구하며, 기술의 현실화를 위해서는 실험에서 규모화까지의 장벽을 해결해야 함을 강조합니다.`,
+    whyItMatters: 'MOH 2026 财年供给委员会首度点名生成式 AI 临床文档，暴露技术仍卡在试点、尚未规模化的政策空白',
+    whyItMattersEn:
+      "MOH's 2026 fiscal Supply Committee first calls out generative AI in clinical documentation, exposing technology still stuck in pilots and policy gaps in scaling.",
+    whyItMattersJa:
+      '保健省（MOH）の 2026 年度供給委員会は初めてジェネラティブ AI による臨床文書を具体的に言及し、技術がまだ試点段階にあり、スケーラブルな実装にはなっていない政策空白を露呈しています。',
+    whyItMattersKo:
+      '보건부（MOH）2026 회계연도 공급 위원회가 처음으로 생성형 AI 임상 문서화를 명점했으며, 기술이 여전히 시범 단계에 있고 규모화되지 않은 정책 공백을 드러냈다.',
     summaryJa: `MOH供給委員会の討論で、議員Dr Choo Pei Lingが「医療技術とAI」について専題発言を行いました。彼女は臨床医が臨床複雑性、行政負担、調整要求の三重圧力に直面していることを指摘し、生成AIが医療文書記録の支援に活用でき、臨床意思決定支援システムが複雑な情報を統合的に処理できることを述べました。彼女は医療におけるAIの実践的応用の推進を呼びかけ、技術実装には実験から規模化への障害を解決する必要があることを強調しました。`,
     summaryEn: `During the MOH Committee of Supply debate, MP Dr Choo Pei Ling delivered a focused speech on "healthcare technology and AI". She argued that clinicians face a triple burden of clinical complexity, administrative load, and coordination demands; generative AI can assist with clinical documentation, while clinical decision-support systems can synthesise complex information. She called for accelerating AI deployment in healthcare and stressed that scaling from pilots to routine clinical practice requires solving the rollout barriers.`,
     keyPoints: [
@@ -3224,6 +3584,14 @@ export const debates: Debate[] = [
     topics: ['AI in Healthcare', 'AI Strategy', 'AI in Public Sector'],
     summary: `MOH供给委员会辩论中，议员Mariam Jaafar发表重要AI医疗政策演说。她质问部长一个更大的问题：如果医疗真的是国家AI使命，目标就不能只是渐进式采用，必须建设一个完整的系统——基础设施、治理、人才、底层管道——让AI安全、有效、大规模地改善每一位患者的治疗效果。她指出新加坡需要培养同时精通临床实践和机器学习的"翻译型"人才。一旦证明AI能在大规模上安全可靠地改善患者结果，新加坡将获得全球竞争优势。`,
     summaryKo: `MOH 공급위원회 토론에서 의원 Mariam Jaafar는 중요한 AI 의료 정책 연설을 발표합니다. 그녀는 장관에게 더 큰 질문을 제기합니다: 의료가 정말로 국가 AI 미션이라면, 목표는 점진적 채택만으로는 충분하지 않으며, 기초 시설, 거버넌스, 인재, 기반 파이프라인을 포함한 완전한 시스템을 구축해야 하며, AI가 안전하고 효과적으로 모든 환자의 치료 결과를 대규모로 개선해야 합니다. 그녀는 싱가포르가 임상 실무와 머신러닝을 동시에 정통하게 다루는 「번역형」 인재를 양성해야 한다고 지적합니다. AI가 대규모에서 안전하고 신뢰할 수 있게 환자 결과를 개선할 수 있음이 입증되면, 싱가포르는 전 지구적 경쟁 우위를 얻게 될 것입니다.`,
+    whyItMatters:
+      'MOH 供给委员会被要求把医疗 AI 从渐进采用升级为国家使命级系统建设，暴露临床与机器学习复合人才的培养缺口',
+    whyItMattersEn:
+      'The MOH Supply Committee is asked to upgrade medical AI from gradual adoption to national-mission-level system building, exposing talent gaps in clinical and machine-learning hybrid expertise.',
+    whyItMattersJa:
+      '保健省（MOH）の供給委員会は医療 AI を漸進的採用から国家使命レベルのシステム構築へアップグレードするよう求められ、臨床と機械学習の複合スキルを持つ人材の育成ギャップが露呈しています。',
+    whyItMattersKo:
+      '보건부（MOH）공급 위원회가 의료 AI를 점진적 채택에서 국가 사명 수준의 시스템 구축으로 업그레이드하도록 요구받았으며, 임상과 기계학습 복합 인재 양성의 격차를 드러냈다.',
     summaryJa: `MOH供給委員会の討論で、議員Mariam Jaafar が重要なAI医療政策演説を発表しました。彼女は大臣に対し、より大きな問題を提起しました：医療が本当に国家AI任務であるならば、目標は段階的採用だけであってはならず、完全なシステム——基盤施設、ガバナンス、人材、基本パイプライン——を構築する必要があり、AIが安全かつ効果的に大規模で各患者の治療効果を改善することを可能にしなければなりません。彼女はシンガポールが臨床実践と機械学習の両方に精通する「翻訳型」人材を育成する必要があることを指摘しました。AIが大規模で安全かつ信頼できる方法で患者アウトカムを改善できることが実証されたら、シンガポールは世界的競争優位を獲得するでしょう。`,
     summaryEn: `During the MOH Committee of Supply debate, MP Mariam Jaafar delivered a landmark speech on AI in healthcare policy. She put a bigger question to the Minister: if healthcare is truly a national AI mission, the goal cannot just be incremental adoption — Singapore must build a complete system (infrastructure, governance, talent, and the underlying plumbing) so that AI safely, effectively and at scale improves outcomes for every patient. She identified the need to cultivate "translator" talent fluent in both clinical realities and machine learning. Once AI is shown to deliver real patient benefit safely and reliably at scale, Singapore will gain a decisive global competitive advantage.`,
     keyPoints: [
@@ -3287,6 +3655,14 @@ export const debates: Debate[] = [
     topics: ['AI in Public Sector', 'AI Economy & Industry', 'AI Infrastructure & Research'],
     summary: `交通部供给委员会辩论涉及两个重要AI议题。一是大士新一代港口利用自动化、先进传感器、预测分析和AI保持基础设施全球竞争力，但需负责任部署以管理劳动力转型。二是议员提出更宏大的愿景：在新柔廖(Sijori)框架下，国家AI使命可作为"力量倍增器"，实现跨境智慧工厂、多式联运优化、贸易金融嵌入和区域医药生物制造供应链强化，将基础设施扩张升级为协调的AI驱动经济引擎。`,
     summaryKo: `교통부 공급위원회 토론은 두 가지 중요한 AI 의제를 포함합니다. 하나는 Tuas 새로운 세대 항구가 자동화, 첨단 센서, 예측 분석, AI를 활용하여 기반 시설의 글로벌 경쟁력을 유지하지만, 노동력 전환을 관리하기 위해 책임감 있는 배포가 필요하다는 것입니다. 다른 하나는 의원들이 제시한 더 큰 비전입니다: Sijori 프레임워크 아래에서, 국가 AI 미션은 「력량 배증기」로 작용할 수 있으며, 국경 간 스마트 팩토리, 복합 운송 최적화, 무역 금융 임베딩, 지역 의약 생물 제조 공급망 강화를 실현하여, 기반 시설 확장을 조정된 AI 구동 경제 엔진으로 업그레이드합니다.`,
+    whyItMatters:
+      '议员借新柔廖框架把国家 AI 使命从大士港自动化工具重新定位为跨境经济力量倍增器，暴露新加坡 AI 战略尚未匹配区域协调机制',
+    whyItMattersEn:
+      "MPs leverage the Singapore-Johor-Riau framework to reposition the National AI Mission from Tuas Port automation tools to a cross-border economic force multiplier, exposing that Singapore's AI strategy hasn't yet aligned with regional coordination mechanisms.",
+    whyItMattersJa:
+      '議員は新柔廖フレームワークを利用して、国家 AI ミッションをタンジョン・パガル港の自動化ツールから跨境経済力倍増器へと再定義し、シンガポールの AI 戦略がまだ地域調整メカニズムと合致していないことを露呈しています。',
+    whyItMattersKo:
+      '의원들이 신유료 프레임워크를 활용하여 국가 AI 사명을 탄종파가 항만 자동화 도구에서 국경 간 경제력 배증기로 재정위했으며, 싱가포르 AI 전략이 아직 지역 조율 메커니즘과 부합하지 않음을 드러냈다.',
     summaryJa: `交通部供給委員会の討論は2つの重要なAI議題を扱っています。第1に、大士の新世代港湾が自動化、先進センサー、予測分析、およびAIを活用して基盤施設の世界的競争力を維持することですが、労働力の転換を管理するための責任ある展開が必要です。第2に、議員がより壮大なビジョンを提示しました：Sijoriフレームワークの下で、国家AI任務は「力の倍増器」として機能し、国境を越えたスマートファクトリー、マルチモーダル輸送の最適化、貿易金融の組み込み、および地域の医薬生物製造サプライチェーンの強化を実現し、基盤施設の拡張を調整されたAI駆動型経済エンジンにアップグレードすることができます。`,
     summaryEn: `The MOT Committee of Supply debate covered two significant AI threads. First, the Next-Generation Port at Tuas uses automation, advanced sensors, predictive analytics and AI to keep the infrastructure globally competitive — but requires responsible deployment to manage workforce transitions. Second, an MP proposed a bolder vision: under the Sijori framework, the National AI Mission can act as a "force multiplier", enabling cross-border smart factories, multimodal logistics optimisation, embedded trade finance, and stronger regional medical/bio-manufacturing supply chains — turning infrastructure expansion into a coordinated, AI-powered economic engine.`,
     keyPoints: [
@@ -3338,6 +3714,13 @@ export const debates: Debate[] = [
     topics: ['AI Economy & Industry', 'AI in Public Sector'],
     summary: `国家发展部供给委员会辩论中讨论了AI和机器人技术对建筑业的变革潜力。技术进步如何帮助建筑行业节省时间、降低成本、减少人力需求成为核心议题。AI和机器人有望将建筑业转变为快速、智能和高度自动化的行业。`,
     summaryKo: `국가발전부 공급위원회 토론에서 AI와 로봇 기술이 건축업의 변혁적 잠재력에 대해 논의했습니다. 기술 진보가 건축 산업의 시간 절감, 비용 절감, 인력 수요 감소를 어떻게 돕는지가 핵심 의제가 됩니다. AI와 로봇은 건축업을 빠르고, 지능적이고, 고도로 자동화된 산업으로 전환할 것으로 예상됩니다.`,
+    whyItMatters: '建筑业长期依赖外劳，国家发展部供给委员会辩论释放 AI 替代人力的信号，将倒逼外劳政策与技能转型加速',
+    whyItMattersEn:
+      'Construction has long relied on foreign workers; Ministry of National Development(MND) Supply Committee debate releases signals of AI labor substitution, which will drive acceleration of foreign labor policy reform and skills transformation.',
+    whyItMattersJa:
+      '建設業は長期的に外国人労働者に依存していますが、国家開発省（MND）の供給委員会討論は AI による人力置き換えの信号を放出し、外国人労働者政策とスキル転換の加速を強制することになります。',
+    whyItMattersKo:
+      '건설업이 장기간 외국인 노동력에 의존했으며, 국가개발부（MND）공급 위원회 토론이 AI 인력 대체 신호를 방출했고, 이는 외국인 노동 정책 및 기술 전환 가속화를 강제할 것이다.',
     summaryJa: `国家発展省供給委員会の討論では、AIとロボット技術が建設業にもたらす変革の可能性について議論されました。技術進歩がいかに建設業が時間を節約し、コストを低減し、労働力需要を削減するのを支援するかが中心議題となりました。AIとロボットは建設業を迅速で知的で高度に自動化された産業へと転換させることが期待されています。`,
     summaryEn: `The MND Committee of Supply debate discussed how AI and robotics could remake construction. The core thread: how tech progress can save time, cut costs, and reduce manpower demand. AI and robotics promise to turn construction into a fast, smart, highly automated industry, addressing the sector's chronic labour shortages and productivity issues.`,
     keyPoints: ['AI和机器人改造建筑业', '节省时间、降低成本、减少人力', '推动建筑业智能化自动化'],
@@ -3383,6 +3766,13 @@ export const debates: Debate[] = [
     topics: ['AI in Public Sector', 'AI Economy & Industry'],
     summary: `MSE供给委员会辩论（续）中，政务部长回应议员关于AI技术应用的提问。讨论集中在利用AI提高回收流的特异性和灵敏度，改善废物分类和资源回收效率。政府表示正在探索AI技术以增强新加坡食品故事2.0中的食品生产效率。`,
     summaryKo: `MSE 공급위원회 토론(계속)에서 정무부국무장관이 AI 기술 응용에 관한 의원들의 질문에 응답합니다. 토론은 AI를 활용하여 재활용 흐름의 특이성과 민감도를 향상시키고, 폐기물 분류 및 자원 재활용 효율을 개선하는 데 집중합니다. 정부는 싱가포르 Food Story 2.0에서 식품 생산 효율을 강화하기 위해 AI 기술을 탐구하고 있다고 표명합니다.`,
+    whyItMatters: 'MSE 首次公开将 AI 与循环经济、食品故事 2.0 绑定，但仅停留在探索表态，尚无预算或时间表锚定落地路径',
+    whyItMattersEn:
+      'MSE first publicly ties AI with circular economy and Food Story 2.0, but only remains at exploratory statements, lacking budget or timeline anchoring implementation pathways.',
+    whyItMattersJa:
+      '環境持続可能性省（MSE）は初めて公開の場で AI と循環経済および Food Story 2.0 をリンクさせていますが、探索的な表明に留まり、実装経路を定める予算やスケジュールがまだありません。',
+    whyItMattersKo:
+      'MSE가 처음으로 공개적으로 AI를 순환경제, 음식 이야기 2.0과 결합했으나, 오직 탐색 입장에만 머물렀으며, 아직 이행 경로를 확정하기 위한 예산이나 일정이 없다.',
     summaryJa: `MSE供給委員会討論（続）において、国務大臣は AI 技術応用に関する議員の質問に対応した。討論は、AI を利用して回収フローの特異性と敏感度を高め、廃棄物分類と資源回収効率を改善することに焦点を当てていた。政府は、シンガポール Food Story 2.0 における食品生産効率を強化するための AI 技術の探索を進めていると表明した。`,
     summaryEn: `In the continuation of the MSE Committee of Supply debate, the MOS responded to MPs' questions about AI applications. The discussion centred on using AI to improve the specificity and sensitivity of recycling streams and to lift waste-sorting and resource recovery efficiency. The government said it is exploring AI to boost food production efficiency under Singapore Food Story 2.0.`,
     keyPoints: ['AI提高回收分类的特异性和灵敏度', '改善废物管理效率'],
@@ -3422,6 +3812,14 @@ export const debates: Debate[] = [
     topics: ['AI in Public Sector', 'AI Infrastructure & Research'],
     summary: `环境可持续部长傅海燕在供给委员会辩论中介绍AI在气候预测中的应用。MSE研究项目之一利用AI增强暴雨和强风的预测能力，提高预警准确性。这是政府在气候适应策略中系统性引入AI的具体案例。`,
     summaryKo: `환경 지속성부장 Fu Haiyan이 공급위원회 토론에서 기후 예측에서의 AI의 응용을 소개합니다. MSE 연구 프로젝트 중 하나는 AI를 활용하여 폭우와 강풍의 예측 능력을 향상시키고 경고 정확도를 개선합니다. 이는 기후 적응 전략에서 AI를 체계적으로 도입하는 정부의 구체적 사례입니다.`,
+    whyItMatters:
+      'MSE 在供给委员会辩论中把 AI 暴雨预警定位为研究项目之一，未给出预算或时间表，显示气候适应类 AI 仍处于试点而非旗舰规格',
+    whyItMattersEn:
+      'MSE positions AI torrential-rainfall early-warning in Supply Committee debate as one research project, providing no budget or timeline, revealing that climate-adaptation AI remains in pilot phase rather than flagship scope.',
+    whyItMattersJa:
+      '環境持続可能性省（MSE）は供給委員会の討論で AI による豪雨警報を研究プロジェクトの一つとして位置づけ、予算やスケジュールを提示せず、気候適応 AI はまだパイロット段階であり、フラッグシップレベルではないことを示しています。',
+    whyItMattersKo:
+      'MSE가 공급 위원회 토론에서 AI 폭우 경보를 연구 프로젝트 중 하나로 정위했으며, 예산이나 일정을 제시하지 않았고, 기후 적응형 AI가 여전히 시범 단계이지 기함급 사양이 아님을 보여준다.',
     summaryJa: `環境持続可能大臣の傅海燕は、供給委員会討論の中で、気候予測における AI の応用について紹介した。MSE 研究プロジェクトの一つは、AI を利用して豪雨と強風の予測能力を強化し、警告精度を向上させている。これは、政府が気候適応戦略の中で体系的に AI を導入している具体的な事例である。`,
     summaryEn: `Sustainability and the Environment Minister Grace Fu spoke on AI's role in climate prediction during the MSE Committee of Supply debate. One MSE research project uses AI to improve forecasts of heavy rainfall and strong winds, sharpening early warnings. This is a concrete example of systematically embedding AI in the government's climate-adaptation strategy.`,
     keyPoints: ['AI增强暴雨和强风预测', '提高气候预警准确性', '气候适应策略中系统引入AI'],
@@ -3479,6 +3877,14 @@ export const debates: Debate[] = [
     topics: ['AI in Public Sector', 'AI Infrastructure & Research'],
     summary: `MSE供给委员会辩论中，议员质询MSE是否探索利用AI增强新加坡气候韧性举措。讨论聚焦于利用最新技术预测极端天气事件，以及AI在提升项目精准度方面的潜力。多名议员关注气候变化对新加坡的实际影响以及技术应对手段。`,
     summaryKo: `MSE 예산심사 중 의원들은 MSE가 AI를 활용하여 싱가포르의 기후 복원력을 강화하는 방안을 탐색하는지 질의했습니다. 논의는 최신 기술을 활용한 극한 기후 사건 예측 및 프로젝트 정확도 개선에 있어 AI의 잠재력에 집중했습니다. 다수의 의원들이 기후 변화가 싱가포르에 미치는 실질적 영향과 기술 대응 방안에 주목했습니다.`,
+    whyItMatters:
+      'MSE 面对多名议员追问，仅以探索表态回应 AI 气候预警需求，尚无路线图或预算承诺，凸显该领域仍处政策议程早期',
+    whyItMattersEn:
+      'MSE faces questioning from multiple MPs and only responds with exploratory statements to AI climate-warning demands, without roadmap or budget commitment, highlighting that this area remains in early policy agenda stages.',
+    whyItMattersJa:
+      '環境持続可能性省（MSE）は複数の議員の質問に対して、探索的な表明でのみ AI 気候警報の必要性に対応し、ロードマップや予算約束がなく、この領域がまだ政策議程の初期段階にあることが強調されています。',
+    whyItMattersKo:
+      'MSE가 여러 의원의 추궁에 직면하여 오직 탐색 입장으로만 AI 기후 경보 수요에 대응했으며, 아직 로드맵이나 예산 약속이 없고, 이 분야가 아직 정책 의제 초기 단계에 있음을 부각했다.',
     summaryJa: `MSE供給委員会討論の中で、議員は MSE が AI を利用してシンガポール気候強靭性措置を強化することを探索しているかどうかについて質問した。討論は、最新技術を利用して極端な気象イベントを予測すること、および AI がプロジェクト精度を向上させる上での可能性に焦点を当てていた。複数の議員は、気候変動がシンガポールに及ぼす実際の影響および技術的対応手段に注目していた。`,
     summaryEn: `During the MSE Committee of Supply debate, MPs asked whether the Ministry has explored using AI to strengthen Singapore's climate resilience initiatives. The discussion centred on using the latest technology to forecast extreme weather and the potential for AI to sharpen project accuracy. Multiple MPs raised concerns about the practical impacts of climate change on Singapore and the technological responses.`,
     keyPoints: ['探索AI增强气候韧性', '利用AI预测极端天气事件', '提升气候项目精准度'],
@@ -3548,6 +3954,13 @@ export const debates: Debate[] = [
     summaryEn: `Education Minister Desmond Lee anchored MOE's Committee of Supply debate, placing AI alongside the geopolitical paradigm shift and climate change as the three defining uncertainties facing the education system. MOE laid out a four-pronged AI literacy framework: (1) Learn about AI — understand principles and limits; (2) Learn to use AI — partner with industry so students use tools effectively and responsibly; (3) Learn with AI — educators infuse AI into teaching and learning to improve outcomes; (4) Learn beyond AI — develop the irreplaceable human capabilities so students "use AI to amplify their impact" rather than be displaced. Minister of State Jasmin Lau owns MOE's AI agenda and frames it within the national AI strategy. On teacher workflow, AI is being used to reduce administrative load, alongside the Reimagining the Teaching Profession Taskforce recommendations to streamline processes, strengthen support, and protect after-work hours. Senior Minister of State David Neo tied the COS theme "We Learn for Life Together" to the AI age — students must learn "to live life the way life was supposed to be lived" amid rapid technological change. SkillsFuture Singapore also announced the SME AI Skills Launchpad Initiative rolling out progressively from March 2026, with SkillsFuture Queen Bees delivering free AI masterclasses for SMEs.`,
     summaryJa: `デズモンド・リー教育相がMOEの予算委員会討論を主導し、AIを地政学的パラダイムシフト、気候変動と並ぶ教育システムの三大不確実性に位置づけた。MOEは「AIリテラシー4段階論」を提示：(1) AIを学ぶ（learn about AI）——原理と限界を理解する；(2) AIを使うことを学ぶ（learn to use AI）——産業界と連携し、生徒が効果的かつ責任を持ってツールを使えるようにする；(3) AIとともに学ぶ（learn with AI）——教育者がAIを教育と学習に取り込み、学習成果を高める；(4) AIを超えて学ぶ（learn beyond AI）——AIには代替し難い人間の中核能力を育み、生徒が置き換えられるのではなく「AIで自らの影響力を増幅する」ようにする。ジャスミン・ラウ国務相がMOEのAIアジェンダを担当し、国家AI戦略の枠組みに位置づける。教員の業務では、AIで事務負担を軽減し（業務プロセスの簡素化、支援体制の強化、勤務時間外の保護）、「教職再構想タスクフォース」の提言と連動させる。デービッド・ネオ上級国務相はCOSテーマ「We Learn for Life Together」をAI時代に結びつけた——急速に変化する世界で「本来あるべき生き方を学ぶ」ことがAI時代の教育の核心だと述べた。SkillsFuture Singaporeは2026年3月から「中小企業AIスキル・ローンチパッド」を段階的に展開し、SkillsFutureクイーンビー企業が中小企業向け無料AIマスタークラスを提供することも発表した。`,
     summaryKo: `데즈먼드 리 교육부 장관이 MOE 공급위원회 토론을 주도하며 AI를 지정학적 패러다임 전환, 기후 변화와 함께 교육 시스템이 직면한 3대 불확실성으로 규정했다. MOE는 "AI 리터러시 4단계론"을 제시했다. (1) AI를 배운다(learn about AI) — 원리와 한계를 이해한다; (2) AI 사용을 배운다(learn to use AI) — 산업계와 협력해 학생들이 도구를 효과적이고 책임감 있게 사용하게 한다; (3) AI와 함께 배운다(learn with AI) — 교육자가 AI를 교수·학습에 접목해 학습 성과를 높인다; (4) AI를 넘어 배운다(learn beyond AI) — AI가 대체하기 어려운 인간 핵심 역량을 길러 학생들이 대체되는 것이 아니라 "AI로 자신의 영향력을 증폭"하게 한다. 재스민 라우 정무장관이 MOE의 AI 어젠다를 맡아 국가 AI 전략 틀 안에 위치시킨다. 교사 업무에서는 AI로 행정 부담을 줄이고(업무 절차 간소화, 지원 체계 강화, 퇴근 후 시간 보호) "교직 재구상 태스크포스" 권고와 연계한다. 데이비드 네오 선임정무선임국무장관은 COS 주제 "We Learn for Life Together"를 AI 시대와 연결했다 — 급변하는 세계에서 "삶이 본래 살아져야 할 방식대로 사는 법을 배우는 것"이 AI 시대 교육의 핵심이라고 말했다. SkillsFuture Singapore는 2026년 3월부터 "중소기업 AI 스킬 런치패드"를 단계적으로 출시하고, SkillsFuture 퀸비 기업들이 중소기업에 무료 AI 마스터클래스를 제공한다고 발표했다.`,
+    whyItMatters: '刘燕玲专责统筹 MOE AI 议程并纳入国家框架，标志教育首次从单科工具试点升级为跨部委 AI 战略协同的先例',
+    whyItMattersEn:
+      "Liu Yanling exclusively coordinates MOE's AI agenda for integration into the national framework, marking education's first upgrade from single-subject tool pilots to cross-ministry AI strategy coordination precedent.",
+    whyItMattersJa:
+      '劉燕玲が MOE AI アジェンダを専任で調整し、国家フレームワークに組み入れることが、教育が初めて単一科目のツール試点から跨省庁 AI 戦略協調の先例へアップグレードされたことを示しています。',
+    whyItMattersKo:
+      '류연령이 MOE AI 의제를 전담하여 조율했으며 국가 체계에 포함했고, 교육이 처음으로 단일 과목 도구 시범에서 부처 간 AI 전략 협력의 선례로 격상됨을 표시했다.',
     keyPoints: [
       'AI被列为教育系统三大不确定性之一（与地缘政治、气候并列）',
       'MOE提出"learn about / use / with / beyond AI"四段教学框架',
@@ -3635,6 +4048,14 @@ export const debates: Debate[] = [
     topics: ['AI Governance & Regulation', 'AI & National Security', 'AI in Public Sector'],
     summary: `质询聚焦全球多边体系弱化及经济脆弱性，政府回应强调新全球秩序下经济韧性和AI投资的重要性，核心争议在于如何应对地缘政治紧张与经济不确定性。`,
     summaryKo: `질의는 글로벌 다자 체계의 약화와 경제 취약성에 집중되었으며, 정부는 새로운 글로벌 질서 하에서 경제 복원력과 AI 투자의 중요성을 강조했습니다. 핵심 쟁점은 지정학적 긴장과 경제 불확실성에 어떻게 대응할 것인가입니다.`,
+    whyItMatters:
+      '总理兼财政部长在 2026 财年预算辩论中把 AI 投资列为对冲多边体系弱化的增长支柱，标志增长逻辑从依赖多边规则转向自主科技投入',
+    whyItMattersEn:
+      'The Prime Minister and Minister of Finance(MOF) position AI investment in 2026 fiscal Budget debate as a growth pillar hedging against weakening multilateral systems, signaling a growth logic shift from dependence on multilateral rules to autonomous technology investment.',
+    whyItMattersJa:
+      '総理大臣兼財務大臣は 2026 年度予算討論において、AI 投資を多角的システムの弱化へのヘッジとなる成長の柱として位置づけ、成長ロジックが多国間ルールへの依存から自主的技術投資へシフトしたことを示しています。',
+    whyItMattersKo:
+      '총리 겸 재무부（MOF）장관이 2026 회계연도 예산 토론에서 AI 투자를 다자간 체계 약화를 상쇄하는 성장 축으로 열거했으며, 성장 논리가 다자간 규칙 의존에서 자주적 기술 투입으로 전환됨을 표시했다.',
     summaryJa: `質問は、グローバルな多国間体制の弱化および経済的脆弱性に焦点を当てていた。政府の応答は、新しいグローバル秩序における経済強靭性と AI 投資の重要性を強調していた。核心的な争議は、地政学的緊張と経済的不確実性にどのように対応するかにあった。`,
     summaryEn: `Questions focused on the weakening of the global multilateral order and economic vulnerability. The government emphasised economic resilience and AI investment under the new global order. The central debate is how to navigate geopolitical tension and economic uncertainty.`,
     keyPoints: ['全球多边体系弱化', '经济增长依赖AI投资', '地缘政治紧张加剧'],
@@ -3695,6 +4116,14 @@ We begin this next phase at a time of profound global change. For nearly eight d
     topics: ['AI Economy & Industry', 'AI & Employment', 'AI & National Security', 'AI Infrastructure & Research'],
     summary: `议员质询政府在推动AI经济及全球领导地位上的预算安排，探讨是否设立政府AI公司以保障数据主权及公共利益。政府回应强调国家AI战略2.0，注重数据安全、技术效能及国际合作。核心争议在于如何防止全球科技巨头主导本地AI市场，避免数据流失及技术依赖，及对外资使用公共数据的监管和收益分配问题。`,
     summaryKo: `의원들은 AI 경제 추진과 글로벌 리더십 확보를 위한 정부의 예산 배정을 질의했으며, 데이터 주권과 공공 이익을 보장하기 위해 정부 AI 회사 설립의 필요성을 제기했습니다. 정부는 국가 AI 전략 2.0을 강조하며 데이터 보안, 기술 효율성 및 국제 협력을 중심으로 추진할 것을 밝혔습니다. 핵심 쟁점은 글로벌 기술 대기업이 싱가포르 현지 AI 시장을 주도하는 것을 방지하고, 데이터 손실과 기술 의존도를 회피하며, 외자의 공공 데이터 사용에 대한 규제 및 수익 배분 문제입니다.`,
+    whyItMatters:
+      '政府以国家 AI 战略 2.0 的安全合作框架代替设立主权 AI 公司，暴露新加坡在数据主权硬约束上仍依赖外国科技巨头自律',
+    whyItMattersEn:
+      "The government replaces sovereign AI company establishment with National AI Strategy 2.0's security cooperation framework, exposing Singapore's continued reliance on foreign tech giants' self-regulation for hard data sovereignty constraints.",
+    whyItMattersJa:
+      '政府は国家 AI 戦略 2.0 のセキュリティ協力フレームワークで主権 AI 企業の設立に代え、シンガポールがデータ主権の厳密な制約において外国のテック大手の自主規制に依然として依存していることを露呈しています。',
+    whyItMattersKo:
+      '정부가 국가 AI 전략 2.0의 안전 협력 체계로 주권 AI 회사 설립을 대체했으며, 싱가포르가 데이터 주권의 강력한 제약에서 여전히 외국 기술 거대 기업의 자율에 의존함을 드러냈다.',
     summaryJa: `議員は、AI 経済およびグローバルなリーダーシップ地位を促進するための政府の予算措置について質問し、データ主権と公共の利益を保証するための政府 AI 企業の設立を検討すべきかどうかを議論した。政府の応答は、国家 AI 戦略 2.0 を強調し、データセキュリティ、技術的効率、および国際協力に焦点を当てていた。核心的な争議は、グローバルなテック巨人がローカル AI 市場を支配することを防止し、データ流出および技術依存を回避し、外資による公開データの使用に関する規制と収益分配の問題にあった。`,
     summaryEn: `MPs questioned the government's budget plans to push AI economy and global leadership, and probed whether a state-owned AI corporation should be set up to protect data sovereignty and the public interest. The government responded with National AI Strategy 2.0, emphasising data security, technical performance, and international cooperation. The core debate: how to prevent global tech giants from dominating Singapore's AI market, avoid data leakage and tech dependency, and regulate foreign use of public data including how returns are shared.`,
     keyPoints: ['政府AI战略投入', '数据主权与安全', '防止技术依赖'],
@@ -3745,6 +4174,14 @@ The Senior Minister of State for Digital Development and Informa`,
     summaryEn: `MP Denise Phua asked the Ministry of Digital Development and Information about alternative Singpass identity-verification options for users with medical conditions that prevent facial verification — particularly when setting up digital tokens with banks — and whether requirements would be reviewed to avoid excluding such users from essential services. Minister of State Jasmin Lau replied: (1) GovTech and MAS jointly issued a Straits Times Forum reply on 4 February 2026 confirming alternatives such as one-time passwords or hardware tokens for users unable to use facial-recognition technology due to medical conditions or disabilities; (2) MAS requires banks to provide at least one non-Singpass alternative; (3) Government digital services are tested with citizens of varying abilities to ensure accessibility; (4) the Government openly acknowledged "we can definitely do much better in communicating and explaining these different methods of access to our citizens." Phua's supplementaries pressed whether the alternatives are systematic across all digital banks and whether they are properly communicated; the Minister reiterated MAS's regulatory requirement and committed to stronger public education.`,
     summaryJa: `デニス・プア議員はデジタル開発情報省に対し、医療上の理由でSingpassの顔認証を使えない利用者が銀行のデジタルトークンを設定する際の代替本人確認手段、および現行要件を見直してこうした利用者が基本サービスから排除されないようにするかを質問した。ジャスミン・ラウ国務相の答弁：(1) 政府技術庁（GovTech）と金融管理局（MAS）は2026年2月4日、『ストレーツ・タイムズ』のフォーラム欄に共同回答を寄せ、医療上の理由や障害で顔認証技術を使えない利用者にはワンタイムパスワード（OTP）やハードウェアトークンなどの代替手段があると説明済み；(2) MASは銀行に対し、Singpass以外の代替認証手段を少なくとも一つ提供するよう義務づけている；(3) 政府のデジタルサービスは多様な能力の市民とともにテストし、アクセシビリティを確保している；(4)「これらの異なるアクセス方法を市民に伝え、説明することにおいて、私たちは間違いなくもっと改善できる」と率直に認めた。プア議員は代替手段がすべてのデジタル銀行を体系的にカバーしているか、周知は十分かを追及し、国務相はMASの監督要件を再確認し、公共教育の強化を約束した。`,
     summaryKo: `데니스 푸아 의원은 디지털개발정보부에 의료상 이유로 Singpass 얼굴 인식을 사용할 수 없는 이용자가 은행 디지털 토큰을 설정할 때 쓸 수 있는 대체 인증 수단이 무엇인지, 그리고 이런 이용자가 필수 서비스에서 배제되지 않도록 현행 요건을 재검토할 것인지 질의했다. 재스민 라우 정무장관의 답변: (1) 정부기술청(GovTech)과 통화청(MAS)은 2026년 2월 4일 스트레이츠 타임스 포럼에 공동 회신을 내어, 의료상 이유나 장애로 얼굴 인식 기술을 사용할 수 없는 이용자에게는 일회용 비밀번호(OTP)나 하드웨어 토큰 같은 대체 수단이 있다고 설명했다; (2) MAS는 은행에 Singpass 외 대체 인증 수단을 최소 한 가지 제공하도록 요구한다; (3) 정부 디지털 서비스는 다양한 능력의 시민들과 함께 테스트해 접근성을 보장한다; (4) "이런 다양한 접근 방법을 시민에게 알리고 설명하는 데 분명히 훨씬 더 잘할 수 있다"고 공개적으로 인정했다. 푸아 의원은 대체 수단이 모든 디지털 은행을 체계적으로 포괄하는지, 홍보가 충분한지 추가 질의했고, 정무장관은 MAS의 감독 요건을 재확인하며 공공 교육 강화를 약속했다.`,
+    whyItMatters:
+      '面部识别渐成金融数字身份的默认通道，MAS 划定银行须留替代验证的监管底线，但政府承认沟通仍未跟上，暴露无障碍设计滞后于技术普及',
+    whyItMattersEn:
+      'Facial recognition increasingly becomes the default channel for financial digital identity; MAS establishes a regulatory floor requiring banks to preserve alternative verification, yet the government acknowledges communications still lag, exposing accessibility design lagging behind technology proliferation.',
+    whyItMattersJa:
+      '顔認証が金融デジタル身分の既定のパスウェイとなりつつあり、MAS（シンガポール金融通貨庁）は銀行が代替検証を保持することを求める規制的最低基準を設定しましたが、政府は当局のコミュニケーションがまだついていないことを認め、アクセシビリティ設計が技術普及に遅れていることを露呈しています。',
+    whyItMattersKo:
+      '안면 인식이 금융 디지털 신원의 기본 경로가 되어가고 있으며, MAS가 은행이 대체 검증을 유지해야 함을 규제 기저선으로 설정했으나, 정부가 소통이 여전히 뒤떨어져 있음을 인정했으며, 접근성 설계가 기술 보급에 뒤쳐짐을 드러냈다.',
     keyPoints: [
       '面部识别是Singpass主流认证，但须为医疗/残障用户保留替代方法',
       'MAS要求银行至少提供一种非Singpass替代验证方法',
@@ -3817,6 +4254,13 @@ The Minister of State for Digital Development and Information (Ms Jasmin Lau) (f
     topics: ['AI Governance & Regulation', 'AI Economy & Industry', 'AI & Employment', 'AI Infrastructure & Research'],
     summary: `议员质询新加坡AI初创企业Manus被Meta收购后，本地员工比例、保留及技术转移保障情况。政府回应收购为商业协议，不干预具体条款，强调遵守新加坡劳工法及公平聘用，经济发展局推动技能转移和人才培养。质询方关注企业借新加坡营商环境便利，收购后是否真正惠及本地劳动力，提出对红地公司设定本地雇佣目标及防止"空壳公司"利用的建议。`,
     summaryKo: `의원들은 싱가포르 AI 스타트업 Manus가 Meta에 인수된 후 현지 직원 비율, 유지 및 기술 이전 보장 상황을 질의했습니다. 정부는 인수를 상업 협약으로 보아 구체적 조항에 개입하지 않으며, 싱가포르 노동법 준수 및 공정한 채용을 강조했고, 경제발전청은 기술 이전 및 인재 양성을 추진 중이라고 응답했습니다. 질의측은 기업이 싱가포르의 유리한 영업 환경을 활용한 이후 실질적으로 현지 근로자에게 혜택이 돌아가는지 우려했으며, 대형 기술 기업에 현지 고용 목표 설정 및 「페이퍼 컴퍼니」 악용 방지를 위한 제안을 제시했습니다.`,
+    whyItMatters: 'Manus 被 Meta 收购暴露新加坡 AI 独角兽外资并购缺乏强制性本地雇佣条款，经济发展局仅能倡导技能转移',
+    whyItMattersEn:
+      "Manus's acquisition by Meta exposes Singapore's AI unicorns lacking mandatory local employment clauses in foreign M&A, with Economic Development Board(EDB) able only to advocate for skills transfer.",
+    whyItMattersJa:
+      'Manus が Meta に買収されたことはシンガポール AI ユニコーンの外資 M&A に強制的な現地雇用条項がないことを露呈し、経済開発庁（EDB）はスキル移転を提唱することしかできません。',
+    whyItMattersKo:
+      '마누스(Manus)가 메타(Meta)에 인수됨으로써 싱가포르의 AI 유니콘 외국자본 인수가 강제적 로컬 고용 조항이 부족함을 드러냈으며, 경제개발청（EDB）은 기술 이전을 권장할 수만 있다.',
     summaryJa: `議員は、シンガポール AI スタートアップ企業 Manus が Meta に買収された後、ローカル従業員の比率、保持、および技術転移保証について質問した。政府の応答は、買収は商業契約であり、具体的な条件には干渉しないことを述べ、シンガポール労働法の遵守と公正な雇用を強調した。経済開発庁は、スキル転移と人材育成を推進している。質問側は、企業がシンガポールのビジネス環境の利便性を活用し、買収後にローカル労働力に実際に利益をもたらすかどうかに注目し、対象企業に対してローカル雇用目標を設定し、「空殻企業」の利用を防止する提案を提出した。`,
     summaryEn: `MPs asked, after Meta's acquisition of Singapore-based AI startup Manus, about the share of local employees, retention guarantees, and technology transfer safeguards. The government replied that the acquisition is a commercial agreement and it does not intervene in specific terms; firms must comply with Singapore labour law and fair hiring rules, and EDB drives skills transfer and talent development. MPs focused on whether firms benefiting from Singapore's business environment genuinely deliver value to local workers post-acquisition, and suggested setting local hiring targets for "red-card" companies and preventing the abuse of shell-company structures.`,
     keyPoints: ['收购属商业协议', '政府不披露员工数据', '推动技能转移培训'],
@@ -3866,6 +4310,13 @@ The Senior Minister of State for Manpower (Dr Koh Poh Koon) (for the Minister fo
     topics: ['AI Economy & Industry', 'AI & Employment', 'AI & National Security', 'AI Infrastructure & Research'],
     summary: `议员质询政府是否有针对新加坡中小企业与跨国公司及个人的人工智能软件采纳情况进行研究。政府回应称，自2023年以来，信息通信媒体发展局通过年度数字经济报告跟踪不同规模企业及员工的AI采纳数据。核心争议点在于不同主体的AI使用差异及数据透明度。`,
     summaryKo: `의원이 싱가포르 중소기업, 다국적 기업 및 개인의 인공지능 소프트웨어 채택 현황 연구 추진 여부를 정부에 질의했습니다. 정부는 2023년 이래 정보통신미디어발전청이 연간 디지털 경제 보고서를 통해 다양한 규모의 기업 및 직원의 AI 채택 데이터를 추적하고 있다고 응답했습니다. 핵심 논점은 서로 다른 주체의 AI 사용 차이와 데이터 투명성입니다.`,
+    whyItMatters: 'IMDA 自 2023 年起才按企业规模拆分 AI 采纳数据，个人使用情况仍是监测空白',
+    whyItMattersEn:
+      'IMDA has only disaggregated AI adoption data by company size since 2023; personal usage remains a monitoring gap.',
+    whyItMattersJa:
+      'IMDA は 2023 年以降、企業規模別に AI 採用データを分類し始めましたが、個人使用の状況はまだ監測上の盲点のままです。',
+    whyItMattersKo:
+      'IMDA가 2023년부터야 기업 규모별로 AI 채택 데이터를 분류했으며, 개인 사용 상황은 여전히 모니터링 공백이다.',
     summaryJa: `議員は、シンガポール中小企業および多国籍企業ならびに個人による AI ソフトウェア採用状況に関する研究を政府が実施しているかどうかについて質問した。政府の応答は、2023 年以来、情報通信メディア開発庁(IMDA)は年度デジタル経済レポートを通じて、異なるスケールの企業および従業員による AI 採用データを追跡していると述べた。核心的な争議点は、異なる主体による AI 使用の差異およびデータ透明性にあった。`,
     summaryEn: `An MP asked whether the government has studied AI software adoption broken down between Singapore SMEs, MNCs and individuals. The government replied that since 2023, IMDA has been tracking adoption across firms of different sizes and their workers via the annual Singapore Digital Economy Report. The core debate is on adoption differences across actors and the transparency of the data.`,
     keyPoints: ['AI采纳有官方数据', '区分中小企与跨国公司', '关注个人AI使用情况'],
@@ -3913,6 +4364,14 @@ Mrs Josephine Teo
     topics: ['AI Safety & Ethics', 'AI Economy & Industry', 'AI & Employment', 'AI & National Security'],
     summary: `议员质询政府是否开展研究，区分AI对劳动力的替代与互补效应，及中小企业与跨国公司差异。政府回应正研究AI对劳动力市场的影响，强调影响取决于业务性质和岗位类型，而非企业规模。政府支持所有企业进行岗位重塑和员工再培训，帮助被替代员工转岗，体现包容性劳动力转型策略。`,
     summaryKo: `의원이 AI가 노동력에 미치는 대체 및 상호 보완 효과를 구분하는 연구 추진 여부, 그리고 중소기업과 다국적 기업 간의 차이를 질의했습니다. 정부는 현재 AI가 노동력 시장에 미치는 영향을 연구 중이며, 그 영향은 기업 규모가 아닌 사업 성격과 직무 유형에 따라 달라진다고 강조했습니다. 정부는 모든 기업이 직무를 재편하고 직원을 재교육하도록 지원하며, 대체된 직원의 직무 전환을 도와 포용적 노동력 전환 전략을 실현하고 있습니다.`,
+    whyItMatters:
+      '政府 2026-02-04 书面答复认定 AI 冲击取决于岗位而非企业规模，中小企业与跨国公司同等对待，专项支持仍缺位',
+    whyItMattersEn:
+      "The government's 2026-02-04 written reply determined that AI impact depends on job type rather than company size, treating SMEs and multinationals equally, with dedicated support still absent.",
+    whyItMattersJa:
+      '政府は 2026 年 2 月 4 日の書面回答において、AI の影響は企業規模ではなく職務によって決まることを確認し、中小企業と多国籍企業を同等に扱い、専門的支援はまだ不在であることを明らかにしています。',
+    whyItMattersKo:
+      '정부가 2026-02-04에 서면 답변에서 AI 충격이 기업 규모가 아닌 업무 직급에 따라 결정된다고 인정했으며, 중소기업과 다국적 기업을 동등하게 취급했고, 전문적 지원은 여전히 부족하다.',
     summaryJa: `議員は、政府がAIが労働力に与える代替効果と補完効果を区別する研究を実施しているかどうか、また中小企業と多国籍企業の違いについて質問しました。政府は、AIが労働市場に与える影響について研究を進めていると回答し、その影響は企業規模ではなく業務の性質と職務の種類に左右されることを強調しました。政府はすべての企業に対して職務の再構築と従業員の再訓練をサポートし、代替される従業員の職務転換を支援することで、包括的な労働力転換戦略を示しています。`,
     summaryEn: `An MP asked whether the government is studying for whom AI is a substitute versus a complement, and whether there are differences between SMEs and MNCs. The government replied that it is studying AI's labour-market impact and that effects depend on the nature of business activities and job roles rather than firm size. The government supports all firms in job redesign and worker reskilling to help displaced workers transition — an inclusive workforce-transformation approach.`,
     keyPoints: ['AI影响因岗位而异', '企业规模非主要因素', '支持岗位重塑与再培训'],
@@ -3964,6 +4423,13 @@ Dr Tan See Leng
     topics: ['AI Governance & Regulation', 'AI & Employment', 'AI in Education', 'AI & National Security'],
     summary: `议员质询SkillsFuture支持的AI相关培训课程的参与率及是否设定PME群体的培训目标。政府回应去年有约10.5万人次参与，未设具体目标，但鼓励终身学习并提供补贴。质询方关注课程选择困难及高阶课程费用，建议优化课程推荐和增加针对PME的资金支持。政府表示将持续优化课程指引和与业界合作，推动个性化培训方案。`,
     summaryKo: `의원이 SkillsFuture가 지원하는 AI 관련 교육 과정의 참여율과 PME 그룹을 대상으로 한 교육 목표 설정 여부를 질의했습니다. 정부는 지난해 약 10만 5,000명이 참여했으며, 구체적인 목표를 설정하지는 않았으나 평생학습을 장려하고 보조금을 제공한다고 응답했습니다. 질의자는 과정 선택의 어려움과 고급 과정의 높은 비용에 주목하여 과정 추천을 최적화하고 PME를 대상으로 하는 자금 지원을 확대할 것을 제안했습니다. 정부는 과정 지침을 지속적으로 최적화하고 업계와 협력하여 개인맞춤형 교육 방안을 추진하겠다고 밝혔습니다.`,
+    whyItMatters: '10.5 万人次参与凸显培训规模优先，但政府未为 PME 群体设定量化目标，暴露 SkillsFuture 问责机制空白',
+    whyItMattersEn:
+      '1.05 million participant-instances highlight training scale prioritization, but the government has not set quantified targets for the PME community, exposing an accountability mechanism gap in SkillsFuture',
+    whyItMattersJa:
+      '105万回の参加は研修規模の優先度を示す一方で、政府はPMEグループに対する定量的目標を設定せず、SkillsFutureの問責メカニズムの空白を露呈しています。',
+    whyItMattersKo:
+      '105만 명 참여는 교육 규모 우선을 드러내고 있으나, 정부는 중소기업 집단을 위해 정량적 목표를 설정하지 않았으며, SkillsFuture 책임 메커니즘의 공백을 드러낸다',
     summaryJa: `議員は、SkillsFutureが支援するAI関連の研修課程への参加率と、PMEグループを対象とした研修目標が設定されているかどうかについて質問しました。政府は、前年度に約10万5,000人次の参加があったと回答し、具体的な目標は設定していないが、生涯学習を奨励し助成金を提供していると述べました。質問者は課程選択の困難さと高度な課程の費用に懸念を示し、課程推奨の最適化とPMEを対象とした資金支援の増加を提案しました。政府は、課程ガイダンスの継続的な最適化と業界との協力を通じて、個別化された研修方案の推進を表明しました。`,
     summaryEn: `MPs asked about take-up of SkillsFuture-supported AI training courses and whether targets exist for PMEs. The government replied that around 105,000 individuals participated last year, with no fixed targets but ongoing encouragement of lifelong learning backed by subsidies. MPs raised the difficulty of course selection and the cost of advanced courses, suggesting better course recommendations and more funding support for PMEs. The government said it will keep refining course guidance and industry collaboration to push more personalised training paths.`,
     keyPoints: ['AI课程参与人数多', '无具体PME培训目标', '将优化课程推荐'],
@@ -4021,6 +4487,13 @@ The Senior Minister of State for Education (Dr Janil Puthucheary) (for the Minis
     topics: ['AI Governance & Regulation', 'AI in Education', 'AI in Healthcare', 'AI in Public Sector'],
     summary: `议员质询教育部关于教师面临多样化学生需求及心理健康挑战下的最优班级规模政策。教育部长回应，班级规模依据学生学习需求调整，特殊教育和早期干预班级规模更小，同时增加辅导员和特教人员支持。核心争议在于如何平衡资源分配与教学质量，确保多样化需求学生获得足够支持。`,
     summaryKo: `의원이 다양화된 학생 요구 및 심리 건강 과제를 마주한 교사들을 위한 최적 반 규모 정책에 관해 교육부에 질문하였습니다. 교육부장은 반 규모가 학생의 학습 요구에 따라 조정되며, 특수 교육 및 조기 개입 반은 더욱 작은 규모를 유지하고 상담사 및 특수교육 인력 지원을 확대한다고 답변했습니다. 핵심 쟁점은 자원 배치와 교육 품질 간 균형을 어떻게 맞추고 다양한 요구를 가진 학생들이 충분한 지원을 받도록 할 것인지에 있습니다.`,
+    whyItMatters: '2026 年 2 月 3 日教育部仍以人力个案调整取代统一标准，凸显特教与心理健康支持尚未纳入 AI 辅助分流',
+    whyItMattersEn:
+      'On 3 February 2026, the Ministry of Education(MOE) continued to rely on case-by-case personnel adjustments rather than unified standards, highlighting that special education and mental health support have not yet been incorporated into AI-assisted placement',
+    whyItMattersJa:
+      '2026年2月3日、教育省（MOE）は依然として統一基準の代わりに人材個別案件調整を用いており、特別支援教育および心理健康支援がAI支援による分流に未だ組み込まれていないことを浮き彫りにしています。',
+    whyItMattersKo:
+      '2026년 2월 3일 교육부（MOE）는 여전히 인력 개별 사건 조정으로 통일 표준을 대체하고 있으며, 특수교육과 심리건강 지원이 아직 AI 보조 분류에 포함되지 않았음을 드러낸다',
     summaryJa: `議員は教育省に対して、多様な学生ニーズと心理健康上の課題に直面する教師に対する最適なクラスサイズ政策について質問しました。教育省長は、クラスサイズは学生の学習ニーズに基づいて調整され、特別教育と早期介入クラスはより小規模であり、同時にカウンセラーと特別教育職員の支援を増加させていると回答しました。主な議論の焦点は、リソース配分と教育の質のバランスをどのように取り、多様なニーズを持つ学生が十分な支援を受けることをどのように保証するかにあります。`,
     summaryEn: `MPs asked MOE about its policy on optimal class sizes given the increasingly complex challenges teachers face — diverse learning needs, mental-health challenges, and special educational needs. The Education Minister replied that class sizes are calibrated to students' learning needs, with smaller classes for special education and early intervention, alongside more counsellors and special-needs staff. The core debate is on balancing resource allocation and teaching quality so students with diverse needs get enough support.`,
     keyPoints: ['班级规模因需而异', '特殊教育班规模更小', '辅导员数量持续增加'],
@@ -4077,6 +4550,13 @@ The Minister for Education (Mr Desmond Lee)
     ],
     summary: `议员质询新加坡竞争监管机构是否审查Meta收购本地AI初创Manus，及此类收购对本地AI创新生态的影响。政府回应当前无审查行动，强调采用自愿合并申报制度，鼓励创新同时防范反竞争风险。核心争议在于监管框架是否足够应对快速发展的AI产业并购。`,
     summaryKo: `의원이 싱가포르 경쟁 규제 기관이 Meta의 현지 AI 스타트업 Manus 인수를 검토하는지, 그리고 이러한 인수가 현지 AI 혁신 생태계에 미치는 영향에 대해 질문하였습니다. 정부는 현재 검토 행동이 없다고 답변하면서 자발적 합병 신고 제도를 채택하여 혁신을 장려하면서 동시에 반경쟁 위험을 방지한다는 점을 강조했습니다. 핵심 쟁점은 규제 프레임워크가 빠르게 성장하는 AI 산업의 인수합병에 대응하기에 충분한지 여부입니다.`,
+    whyItMatters: '自愿合并申报制度下 Meta 收购 Manus 未受审查，凸显新加坡 AI 并购监管仍是被动追认而非事前把关',
+    whyItMattersEn:
+      "Under the voluntary merger notification regime, Meta's acquisition of Manus escaped review, illustrating that Singapore's AI M&A regulation remains reactive approval rather than proactive gatekeeping",
+    whyItMattersJa:
+      '自主的な合併申告制度の下で、MetaによるManus買収は審査を受けておらず、シンガポールのAI企業買収規制が依然として受動的承認であり事前審査ではないことを浮き彫りにしています。',
+    whyItMattersKo:
+      '자발적 합병 신고 제도 하에서 Meta의 Manus 인수는 심사를 받지 않았으며, 싱가포르 AI 인수합병 규제가 여전히 수동적 사후 인정이지 사전 단속이 아님을 드러낸다',
     summaryJa: `議員はシンガポールの競争規制機関に対して、Metaによる現地AI新興企業Manusの買収を審査しているかどうか、およびこのような買収が現地のAI創新エコシステムに与える影響について質問しました。政府は現在のところ審査措置はないと回答し、自発的な合併申告制度の採用を強調し、革新を奨励しながら反競争的リスクを防止していると述べました。主な議論の焦点は、規制枠組みが急速に発展するAI産業のM&Aに対応するのに十分であるかどうかにあります。`,
     summaryEn: `An MP asked whether the Competition and Consumer Commission of Singapore is reviewing Meta's acquisition of local AI startup Manus and how such acquisitions affect the domestic AI startup scene. The government replied there is no current review and stressed Singapore's voluntary merger notification regime, which encourages innovation while guarding against anti-competitive risks. The core debate is whether the framework is sufficient for fast-moving AI-industry M&A.`,
     keyPoints: ['采用自愿合并申报', '无当前审查行动', '关注AI市场竞争'],
@@ -4124,6 +4604,13 @@ Mr Gan Kim Yong
     topics: ['AI Economy & Industry', 'AI & Employment', 'AI & National Security', 'AI in Public Sector'],
     summary: `议员质询是否公布季度AI相关裁员及再就业数据，政府回应以业务重组为主因，包含AI技术影响，且将继续研究技术对就业的影响。核心争议在于AI裁员数据透明度及具体影响评估。`,
     summaryKo: `의원이 분기별 AI 관련 감원 및 재취업 데이터를 공개할지 여부를 질문하였습니다. 정부는 사업 개편을 주요 원인으로 답변하면서 AI 기술 영향을 포함하고 기술이 고용에 미치는 영향에 대해 계속 연구할 것이라고 밝혔습니다. 핵심 쟁점은 AI 감원 데이터의 투명성 및 구체적 영향 평가입니다.`,
+    whyItMatters: '2026 年 1 月 12 日的质询遭政府以业务重组带过，新加坡对 AI 就业冲击仍无官方数据支撑问责',
+    whyItMattersEn:
+      "A parliamentary question on 12 January 2026 was deflected by the government citing operational restructuring, demonstrating that Singapore still lacks official data to substantiate accountability for AI's employment impact",
+    whyItMattersJa:
+      '2026年1月12日の質問は政府の業務再編成によって一蹴され、シンガポールのAI雇用への影響に関する公式統計による説明責任が依然として欠けています。',
+    whyItMattersKo:
+      '2026년 1월 12일의 질문은 정부가 업무 재편성으로 넘어갔으며, 싱가포르는 AI 고용 충격에 대해 여전히 공식 데이터 뒷받침 없이 책임 추궁이 이루어지지 않고 있다',
     summaryJa: `議員は、四半期ごとのAI関連のレイオフと再雇用データを公表するかどうかについて質問しました。政府は、業務再編が主な原因であり、AI技術の影響を含んでおり、技術が雇用に与える影響の研究を継続すると回答しました。主な議論の焦点は、AI関連解雇データの透明性と具体的な影響評価にあります。`,
     summaryEn: `An MP asked whether quarterly statistics on AI-related retrenchments and the redeployment of affected workers will be published. The government replied that retrenchments are mainly attributed to business restructuring (which includes AI-driven productivity gains) and that it will continue to study technology's impact on jobs. The central debate is the transparency of AI retrenchment data and how its specific impact is assessed.`,
     keyPoints: ['质询AI裁员数据公开', '裁员多因业务重组', '政府持续研究技术影响'],
@@ -4175,6 +4662,13 @@ Dr Tan See Leng
     topics: ['AI Safety & Ethics', 'AI Economy & Industry', 'AI & National Security', 'AI Infrastructure & Research'],
     summary: `议员质询是否更新物业代理伦理守则，要求声明AI编辑的房源图像视频。政府回应现有守则要求广告材料准确描述物业，建议提供AI使用免责声明，避免误导消费者。CEA正审查相关指引，旨在平衡消费者保护与行业创新发展，核心争议在于如何规范AI技术应用与信息透明。`,
     summaryKo: `의원이 부동산 중개인 윤리 강령을 업데이트할지 여부를 질문하고, AI 편집 부동산 목록의 이미지 및 비디오에 대해 고지할 것을 요구하였습니다. 정부는 기존 강령이 광고 자료의 정확한 설명을 요구하며, AI 사용 면책 조항을 제공하여 소비자를 오도하지 않도록 할 것을 제안했습니다. CEA는 관련 지침을 현재 검토 중이며 소비자 보호와 산업 혁신 발전 간 균형을 목표로 하고 있으며, 핵심 쟁점은 AI 기술 적용 및 정보 투명성을 어떻게 규범화할 것인지입니다.`,
+    whyItMatters: '物业中介 AI 图像未立强制标注新规，CEA 以审查守则应对，新加坡 AI 治理仍倾向自律而非立法',
+    whyItMattersEn:
+      "AI-generated images in real estate intermediation lack mandatory disclosure requirements; the Council for Estate Agencies(CEA) responded through review guidelines, showing that Singapore's AI governance still tilts toward self-regulation rather than legislation",
+    whyItMattersJa:
+      '不動産仲介のAI画像に対して強制表示の新規則が設けられず、CEAが審査基準で対応し、シンガポールのAI治理が依然として立法ではなく自主規制へ傾斜していることを浮き彫りにしています。',
+    whyItMattersKo:
+      '부동산 중개 AI 이미지에 강제 라벨링 새로운 규칙을 수립하지 않았으며, CEA는 심사 지침으로 대응하고 있고, 싱가포르 AI 거버넌스는 여전히 입법보다는 자율규제에 경향을 두고 있다',
     summaryJa: `議員は、物件仲介業倫理規程を更新して、AI編集された物件画像・動画の開示を要求するかどうかについて質問しました。政府は、既存の規程は広告資料が物件を正確に説明することを要求していると回答し、AI使用に関する免責事項の提供を提案して、消費者を誤解させることを回避していると述べました。CEAは関連ガイドラインを審査中であり、消費者保護と業界のイノベーション発展のバランスを取ることを目指しており、主な議論の焦点はAI技術の応用と情報透明性をどのように規制するかにあります。`,
     summaryEn: `An MP asked whether the property-agent code of ethics will be updated to require declaration of AI-edited listing images and videos. The government responded that existing rules require advertising materials to accurately describe the property, and recommended that agents provide disclaimers about AI use to avoid misleading consumers. The CEA is reviewing the guidance to balance consumer protection with industry innovation. The central debate is how to regulate AI use and information transparency.`,
     keyPoints: ['要求声明AI编辑图像', '广告材料须准确描述', '审查指引平衡保护创新'],
@@ -4226,6 +4720,14 @@ Mr Chee Hong Tat
     topics: ['AI Safety & Ethics', 'AI & Employment', 'AI & National Security', 'AI Infrastructure & Research'],
     summary: `议员质询政府关于在公共服务中部署具代理能力的人工智能系统以自动化工作职能的计划，以及针对因AI导致岗位冗余的公务员的人力资源政策。政府回应称将谨慎推进AI部署，强调提升公务员技能以配合AI，聚焦复杂问题分析和解决方案设计，体现对效率提升与风险控制的平衡。`,
     summaryKo: `의원이 공공 서비스에서 업무 기능을 자동화하기 위해 대행 능력이 있는 인공지능 시스템을 배치하는 계획, 그리고 AI로 인한 직책 중복 공무원을 위한 인력 자원 정책에 대해 정부에 질문하였습니다. 정부는 AI 배치를 신중하게 추진할 것이며 AI에 맞추기 위해 공무원의 능력 향상을 강조하고, 복잡한 문제 분석과 솔루션 설계에 집중하여 효율 향상과 위험 제어 간 균형을 나타낸다고 답변했습니다.`,
+    whyItMatters:
+      '公共服务在 2025 年 11 月 6 日的国会问答中确认谨慎试水代理型 AI,却未承诺裁员保障,为全国用工政策立下保守而含糊的先例',
+    whyItMattersEn:
+      'The Public Service confirmed cautious experimentation with agent AI in Parliament on 6 November 2025, yet made no commitment to redundancy protections, setting a conservative and ambiguous precedent for national employment policy',
+    whyItMattersJa:
+      '公共サービスは2025年11月6日の国会質疑応答で代理型AIの慎重な試験的導入を確認しましたが、人員削減の保障を約束せず、全国雇用政策に保守的かつ曖昧な先例を立てています。',
+    whyItMattersKo:
+      '공공 서비스는 2025년 11월 6일의 국회 질의응답에서 대리형 AI를 신중하게 시범하겠다고 확인했지만, 고용유지 보장을 약속하지 않았으며, 전국 고용 정책에 보수적이고 모호한 선례를 남겼다',
     summaryJa: `議員は、公共サービスに代行能力を備えた人工知能システムを展開して職務を自動化する計画、およびAIによる職務廃止に対応する公務員の人的資源政策について政府に質問しました。政府は、AI展開を慎重に推進すると回答し、AIに対応するための公務員スキルの向上を強調し、複雑な問題分析とソリューション設計に焦点を当て、効率向上とリスク管理のバランスを示しています。`,
     summaryEn: `An MP asked about the government's plans to deploy agentic AI systems to automate civil service job functions, and about HR policies for officers made redundant by AI. The government replied that AI deployment will proceed cautiously, with a focus on upskilling officers to work alongside AI on complex problem analysis and solution design — reflecting a balance between efficiency gains and risk control.`,
     keyPoints: ['代理型AI定义与功能', '谨慎推进AI应用', '公务员技能提升'],
@@ -4293,6 +4795,13 @@ Agentic AI systems are AI tools capable of initiating and carrying out actions, 
     topics: ['AI Governance & Regulation', 'AI in Education', 'AI in Healthcare', 'AI in Public Sector'],
     summary: `议员质询教师压力高企及心理健康支持，关注年轻教师比例偏低及非教学工作负担。教育部长回应强调教师职业的崇高与责任，承认教师工作量大，表示将审视并改进非教学任务分配，保障教师福祉。核心争议在于如何有效减轻教师负担及吸引年轻教师留任。`,
     summaryKo: `의원이 교사 스트레스 고조 및 심리 건강 지원에 대해 질문하고, 젊은 교사의 낮은 비율 및 비교육 업무 부담에 주목하였습니다. 교육부장은 교사 직업의 숭고함과 책임을 강조하며 답변했고, 교사의 큰 업무량을 인정하면서 비교육 작업 배치를 검토하고 개선하여 교사 복지를 보장할 것이라고 밝혔습니다. 핵심 쟁점은 교사 부담을 효과적으로 경감하고 젊은 교사를 끌어들여 현직에 유지하는 방법입니다.`,
+    whyItMatters: '2025 年 11 月 4 日教育部仅承诺审视非教学负担未设时间表，暴露人力资本政策一贯的执行拖延惯性',
+    whyItMattersEn:
+      'On 4 November 2025, the Ministry of Education(MOE) only committed to reviewing non-teaching workload without establishing a timeline, exposing the chronic execution delays inherent in human capital policy',
+    whyItMattersJa:
+      '2025年11月4日、教育省（MOE）は非教学業務の再検討のみを約束し、タイムテーブルを設定しなかったため、人的資本政策における一貫した実行遅延の惰性を露呈しています。',
+    whyItMattersKo:
+      '2025년 11월 4일 교육부（MOE）는 비교육 업무 부담을 검토하겠다고만 약속하고 시간표를 설정하지 않았으며, 인력자본 정책의 일관된 실행 지연 관성을 드러낸다',
     summaryJa: `議員は、教師の高い圧力と心理健康サポート、若い教師の比率の低さと非教学業務の負担に焦点を当てて質問しました。教育省長は、教職の崇高性と責任を強調し、教師の業務量が大きいことを認め、非教学タスクの配分を見直し改善し、教師の福祉を保証すると述べました。主な議論の焦点は、教師の負担を効果的に軽減し、若い教師の留任をどのように促進するかにあります。`,
     summaryEn: `MPs raised teachers' high stress levels and mental-health support, with concern over the low share of young teachers and their non-teaching workload. The Education Minister stressed the noble responsibility of the teaching profession, acknowledged heavy workload, and committed to reviewing and improving the allocation of non-teaching tasks to safeguard teacher well-being. The central debate is how to effectively reduce teacher load and retain young teachers.`,
     keyPoints: ['教师压力高企', '年轻教师比例低', '减轻非教学负担'],
@@ -4338,6 +4847,13 @@ asked the Minister for Education given the OECD Teaching and Learning Internatio
     topics: ['AI Economy & Industry', 'AI in Education', 'AI in Public Sector'],
     summary: `议员质询PSLE是否侧重死记硬背，是否培养终身学习兴趣，以及与探究式、协作式学习的比较。教育部回应PSLE注重核心概念和批判思维，强调多元教学法和21世纪能力培养，且国际评比显示学生具备复杂问题解决能力。质询关注低收入及高需求学校的教学落实及国际经验借鉴，教育部强调教师培训中融入探究与协作技能。核心争议在于如何在学术严谨与创新能力培养间取得平衡。`,
     summaryKo: `의원들이 PSLE가 기계적 암기를 강조하는지, 평생 학습 관심을 기르는지, 탐구식·협력식 학습과의 비교에 대해 질문했습니다. 교육부는 PSLE가 핵심 개념과 비판적 사고를 강조하고 다양한 교수법과 21세기 능력 양성을 강조한다고 응답했으며, 국제 평가에서 학생들이 복잡한 문제 해결 능력을 갖추고 있음을 보여줍니다. 질문은 저소득 및 고수요 학교의 교수 실행과 국제 경험 차용에 초점을 맞췄으며, 교육부는 교사 교육에서 탐구와 협력 기술 통합을 강조했습니다. 핵심 논쟁은 학문적 엄밀성과 혁신 능력 양성 사이의 균형을 어떻게 맞출 것인가입니다.`,
+    whyItMatters: 'PSLE 应试压力仍在,教育部称重批判思维却无改革时间表,暴露基础教育与 AI 人才培养需求间的结构性落差',
+    whyItMattersEn:
+      'PSLE test pressure persists; the Ministry of Education(MOE) emphasizes critical thinking yet offers no reform timeline, exposing the structural gap between primary education and AI talent development needs',
+    whyItMattersJa:
+      'PSLEの試験対策プレッシャーは依然として存在し、教育省（MOE）はクリティカルシンキングを強調しながらも改革のタイムテーブルを持たず、基礎教育とAI人材育成需要間の構造的ギャップを露呈しています。',
+    whyItMattersKo:
+      'PSLE 시험 대비 압력은 여전히 존재하고, 교육부（MOE）는 비판적 사고를 중요시한다고 강조하지만 개혁 시간표가 없으며, 기초교육과 AI 인재 양성 수요 사이의 구조적 격차를 드러낸다',
     summaryJa: `議員は、PSLEが暗記に重きを置いているかどうか、生涯学習への関心を育むかどうか、および探究的・協働的学習との比較について質問しました。教育省はPSLEがコア概念と批判的思考に焦点を当てていると回答し、多様な教育方法と21世紀のスキル育成を強調し、国際的な比較評価では学生が複雑な問題解決能力を備えていることが示されていると述べました。質問は低所得および高ニーズのある学校での教学の実装と国際的な経験の参考についても焦点を当てており、教育省は教師研修に探究とコラボレーション能力を統合することを強調しました。主な議論の焦点は、学術的厳密さとイノベーション能力の育成の間でどのようにバランスを取るかにあります。`,
     summaryEn: `An MP asked whether the PSLE emphasises rote learning, whether it nurtures a love of lifelong learning, and how it compares with inquiry-based, collaborative approaches abroad. MOE replied that the PSLE focuses on core concepts and critical thinking, emphasising diverse pedagogies and 21st-century competencies, with international assessments showing students perform well in complex problem-solving. MPs raised concerns about teaching quality in lower-income, higher-needs schools and lessons from overseas. MOE highlighted that inquiry and collaboration are integrated in teacher training. The core debate: how to balance academic rigour with creative capacity.`,
     keyPoints: ['PSLE非死记硬背', '多元教学促进能力', '教师培训重探究协作'],
@@ -4390,6 +4906,13 @@ The Senior Minister of State for Education (Dr Janil Puthucheary) (for the Minis
     topics: ['AI Governance & Regulation', 'AI Safety & Ethics', 'AI in Education', 'AI & National Security'],
     summary: `议员质询教育部是否制定分龄的生成式AI使用框架及家长指导方案。教育部回应已通过《数字素养与技术技能指南》向学校提供年龄适宜的AI使用指导，并为家长提供相关资源，支持学生在家合理使用AI。核心争议在于如何系统化分龄指导及家校协同支持。`,
     summaryKo: `의원들이 교육부가 연령별 생성형 AI 사용 프레임워크와 부모 지도 방안을 수립했는지 질문했습니다. 교육부는 《디지털 리터러시 및 기술 기술 가이드》를 통해 학교에 연령에 적합한 AI 사용 지도를 제공하고 부모에게 관련 자료를 제공하여 학생이 집에서 AI를 합리적으로 사용하도록 지원한다고 응답했습니다. 핵심 논쟁은 연령별 지도와 가정·학교 협력 지원을 어떻게 체계화할 것인가입니다.`,
+    whyItMatters: '教育部仅以《数字素养与技术技能指南》应对分龄 AI 诉求，凸显新加坡 AI 教育治理仍缺系统化专项框架',
+    whyItMattersEn:
+      'The Ministry of Education(MOE) addresses age-differentiated AI needs only through the "Digital Literacy and Technical Skills Guidelines," highlighting that Singapore\'s AI education governance still lacks a systematic, dedicated framework',
+    whyItMattersJa:
+      '教育省（MOE）は『デジタルリテラシーと技術スキルのガイドライン』のみで年齢別AI需要に対応し、シンガポールのAI教育治理が依然として体系的な専門フレームワークを欠いていることを浮き彫りにしています。',
+    whyItMattersKo:
+      '교육부（MOE）는 「디지털 문해력과 기술 기능 지침」만으로 연령별 AI 요구에 대응하고 있으며, 싱가포르 AI 교육 거버넌스가 여전히 체계적 전담 틀이 부족함을 드러낸다',
     summaryJa: `議員は教育省に対し、年齢別の生成AI使用フレームワークおよび保護者向け指導計画の策定について質問した。教育省は『デジタルリテラシーと技術スキルガイド』を通じて学校に年齢に適切なAI使用指導を提供し、保護者に関連リソースを提供して、学生が家庭でAIを合理的に利用することを支援していると回答した。核心的な争点は、年齢別指導をいかに体系化し、家庭と学校の協力を支援するかという点にある。`,
     summaryEn: `An MP asked whether MOE will develop an age-progressive framework for responsible use of generative AI, plus parent guidance. MOE replied that it has provided schools with age-appropriate AI guidance via the Digital Literacy and Technology Skills guide and has resources for parents to support reasonable AI use at home. The central debate: how to systematise age-progressive guidance and school-family coordination.`,
     keyPoints: ['分龄AI使用框架需求', '学校已有指导资源', '家长支持资源提供'],
@@ -4441,6 +4964,14 @@ Mr Desmond Lee
     topics: ['AI Economy & Industry', 'AI & Employment', 'AI in Education', 'AI & National Security'],
     summary: `议员质询是否将SkillsFuture信用扩展至订阅优质AI生产力工具以促进实践学习。政府回应目前支持AI相关课程及工具使用，强调课程内含实用工具，且AI领域快速发展，将持续关注并支持相关技能培养。核心争议在于是否直接将订阅工具纳入信用使用范围。`,
     summaryKo: `의원들이 SkillsFuture 신용을 확대하여 우수 AI 생산성 도구 구독에 사용하도록 할지 질문했습니다. 정부는 현재 AI 관련 과정 및 도구 사용을 지원하고 과정에 실용적 도구가 포함되어 있다고 강조했으며, AI 분야가 빠르게 발전하므로 관련 기술 양성을 지속적으로 관찰하고 지원할 것이라고 응답했습니다. 핵심 논쟁은 구독 도구를 신용 사용 범위에 직접 포함시킬지 여부입니다.`,
+    whyItMatters:
+      '政府未松口把 SkillsFuture 信用用于 AI 工具订阅，暴露新加坡个人技能补贴仍锁定课程、跟不上工具迭代的结构性缺口',
+    whyItMattersEn:
+      "The government has not permitted SkillsFuture credits to fund AI tool subscriptions, exposing a structural gap: Singapore's personal skills subsidies remain course-locked and cannot keep pace with tool evolution",
+    whyItMattersJa:
+      '政府はSkillsFutureクレジットをAIツール購読に充てることを認めず、シンガポールの個人スキル補助金がコース限定であり、ツール迭代に追随できない構造的欠陥を露呈しています。',
+    whyItMattersKo:
+      '정부는 SkillsFuture 크레딧을 AI 도구 구독에 사용하도록 허락하지 않았으며, 싱가포르 개인 기술 보조금이 여전히 과정에 고정되어 도구 발전을 따라갈 수 없는 구조적 격차를 드러낸다',
     summaryJa: `議員はSkillsFutureクレジットを高品質なAI生産性ツールのサブスクリプションに拡張して実践的な学習を促進できるかを質問した。政府は現在AI関連コースおよびツール使用をサポートしており、カリキュラムに実用的なツールが含まれていること、およびAI分野が急速に発展しているため継続的に注視し関連スキルの育成をサポートすることを強調した。核心的な争点は、サブスクリプションツールをクレジット使用範囲に直接組み込むかどうかという点にある。`,
     summaryEn: `An MP asked whether SkillsFuture Credit eligibility will be extended to cover subscriptions to high-quality AI productivity tools for hands-on learning. The government replied that AI-related courses and tools are already supported, courses already include practical tools, and given the fast pace of AI it will keep watching and supporting relevant skills development. The central debate: whether tool subscriptions themselves should be directly covered by SkillsFuture Credit.`,
     keyPoints: ['质询扩展信用范围', '课程含AI工具支持', '持续关注AI发展'],
@@ -4492,6 +5023,13 @@ Mr Desmond Lee
     topics: ['AI Economy & Industry', 'AI & Employment', 'AI in Education', 'AI & National Security'],
     summary: `议员质询为何学生对传统工程专业兴趣下降，如何调整课程与薪酬以匹配新兴产业，以及公共部门招聘和奖学金政策是否调整。政府回应称教育部与经济机构合作，调整课程内容，推动跨学科工程教育，同时通过行业任务组解决建筑环境行业人才短缺和薪酬竞争问题，并加强职业指导和公共部门招聘力度。核心争议在于行业薪酬与工作环境对人才吸引力的影响。`,
     summaryKo: `의원들이 학생들의 전통 공학 전공에 대한 관심이 감소하는 이유, 과정 및 급여를 새로운 산업과 맞추기 위해 어떻게 조정할 것인지, 공공 부문 채용 및 장학금 정책 조정 여부를 질문했습니다. 정부는 교육부가 경제 기관과 협력하여 과정 내용을 조정하고 학제 간 공학 교육을 추진하고 있으며, 산업 태스크 포스를 통해 건축 환경 산업의 인재 부족 및 임금 경쟁 문제를 해결하고 진로 지도 및 공공 부문 채용 노력을 강화하고 있다고 응답했습니다. 핵심 논쟁은 산업 임금과 업무 환경이 인재 유치에 미치는 영향입니다.`,
+    whyItMatters: '工程生源萎缩威胁新加坡 AI 人才储备，教育部课程改革难解薪酬吸引力这一核心短板',
+    whyItMattersEn:
+      "Declining engineering intake threatens Singapore's AI talent pipeline; curriculum reform by the Ministry of Education(MOE) cannot bridge the core gap of compensation competitiveness",
+    whyItMattersJa:
+      'エンジニアリング学生供給の縮小はシンガポールAI人材備蓄を脅かし、教育省（MOE）のカリキュラム改革では報酬の魅力という本質的な弱点を払拭できません。',
+    whyItMattersKo:
+      '공학 지원자 축소는 싱가포르 AI 인재 비축을 위협하고 있으며, 교육부（MOE）의 교육과정 개혁이 급여 매력이라는 이 핵심 약점을 해결하기 어렵다',
     summaryJa: `議員は学生が従来のエンジニアリング専門分野への興味が低下している理由、新興産業に対応するためにカリキュラムと給与をどのように調整するか、および公共部門の採用と奨学金政策が見直されているかについて質問した。政府は教育省が経済機関と協力してカリキュラム内容を調整し、学際的なエンジニアリング教育を推進していると回答し、同時に業界タスクグループを通じて建築環境業界の人材不足と給与競争の問題を解決し、キャリアガイダンスと公共部門採用の強化を行っていると述べた。核心的な争点は、業界の給与と労働環境が人材の魅力度に与える影響にある。`,
     summaryEn: `An MP asked why students are turning away from traditional engineering disciplines, how curricula and pay can be aligned with emerging industries, and whether public-sector hiring and scholarship policies will be adjusted. MOE replied that it works with economic agencies to update curricula and promote interdisciplinary engineering education; industry taskforces address built-environment talent shortages and pay competition; and career guidance and public-sector recruitment are being strengthened. The core debate: how industry pay and working conditions affect talent attraction.`,
     keyPoints: ['工程毕业生供需匹配', '课程更新与跨学科融合', '行业薪酬与人才流失'],
@@ -4543,6 +5081,14 @@ Mr Desmond Lee
     topics: ['AI in Education', 'AI Infrastructure & Research', 'AI in Public Sector', 'AI Strategy'],
     summary: `议员质询教育部是否推动国立教育学院与早期儿童发展局合作，研究不同学习类型的脑科学学习方法，并建议成立跨学科工作组推动脑科学与自适应AI融合教育。教育部回应已有多方合作，课程设计基于神经科学和教育心理学理论，体现专家意见，未明确承诺新工作组成立。核心争议在于是否需要新专门团队推动脑科学与AI深度融合。`,
     summaryKo: `의원들이 교육부가 국립 교육원과 유아 발달국의 협력을 추진하여 다양한 학습 유형의 신경과학 학습 방법을 연구하고 신경과학과 적응형 AI 통합 교육을 추진하기 위해 학제 간 워킹 그룹을 설립할 것을 제안했습니다. 교육부는 이미 다자 협력이 진행 중이며 과정 설계가 신경과학 및 교육 심리학 이론을 기반으로 하고 전문가 의견을 반영하고 있다고 응답했으나 새로운 워킹 그룹 설립을 명확히 약속하지는 않았습니다. 핵심 논쟁은 신경과학과 AI의 심층적 통합을 추진하기 위해 새로운 전담 팀이 필요한지 여부입니다.`,
+    whyItMatters:
+      '教育部未承诺设立跨学科工作组，显示新加坡脑科学与 AI 融合教育仍靠国立教育学院等现有机构零散推进而非顶层统筹',
+    whyItMattersEn:
+      "The Ministry of Education(MOE) has not committed to establishing an interdisciplinary working group, showing that Singapore's convergence of neuroscience and AI education still advances piecemeal through existing institutions like the National Institute of Education(NIE) rather than through top-level coordination",
+    whyItMattersJa:
+      '教育省（MOE）は学際的ワーキンググループの設立を約束せず、シンガポール脳科学とAI融合教育が依然として国立教育学院（NIE）などの既存機構によって断片的に推進されており、トップレベルの統合調整ではないことを明かしています。',
+    whyItMattersKo:
+      '교육부（MOE）는 학제간 작업반 설립을 약속하지 않았으며, 싱가포르 뇌과학과 AI 융합 교육이 여전히 국립교육원（NIE） 등 기존 기관의 산발적 추진에 의존하고 있으며 최상층 조정이 아님을 보여준다',
     summaryJa: `議員は教育省に対し、国立教育学院と早期児童発達局の協力により、異なる学習タイプのための神経科学的学習方法を研究し、神経科学と適応型AI統合教育を推進するための学際的ワーキンググループの設立を提案するよう質問した。教育省は既に複数の協力関係があり、カリキュラム設計は神経科学と教育心理学理論に基づいており専門家意見を反映していると回答したが、新しいワーキンググループの設立を明確に約束していない。核心的な争点は、神経科学とAIの深い融合を推進するために新しい専門チームが必要かどうかという点にある。`,
     summaryEn: `An MP asked whether MOE will get NIE and ECDA to collaborate on brain-based learning research across learning profiles, and proposed an interdisciplinary taskforce on brain-based learning combined with adaptive AI in education. MOE replied that multi-party education research is already in place, curriculum design draws on neuroscience and educational psychology, and expert input is reflected — without explicitly committing to a new taskforce. The central debate: whether a dedicated team is needed to drive deeper integration of brain science and AI.`,
     keyPoints: ['推动脑科学学习研究', '建议成立跨学科工作组', '已有多方教育研究合作'],
@@ -4594,6 +5140,13 @@ Mr Desmond Lee
     topics: ['AI Economy & Industry', 'AI & Employment', 'AI Infrastructure & Research', 'AI in Public Sector'],
     summary: `质询聚焦就业转型图的最新进展、中年员工适应行业转变的支持措施，以及重组行业受影响员工的援助。政府回应介绍了19个就业转型图覆盖170万员工，强调通过职业转换计划帮助中年员工再培训，并结合行业洞察推动重组行业的技能提升和岗位重塑。核心争议点在于如何有效落实转型图建议，确保中年员工和重组行业工人顺利转型。`,
     summaryKo: `질문은 고용 전환 지도의 최신 진전, 중년 근로자의 산업 변화 적응 지원 조치, 구조 조정 산업 영향 근로자의 지원에 초점을 맞췄습니다. 정부는 19개의 고용 전환 지도가 170만 명의 근로자를 포함한다고 소개하고, 직업 전환 프로그램을 통해 중년 근로자의 재교육을 지원하며, 산업 통찰을 결합하여 구조 조정 산업의 기술 향상 및 직무 재설계를 추진하고 있다고 강조했습니다. 핵심 논쟁은 전환 지도 권장사항을 효과적으로 실행하고 중년 근로자 및 구조 조정 산업 근로자의 순조로운 전환을 보장하는 방법입니다.`,
+    whyItMatters: '19 张就业转型图覆盖 170 万员工，框架已成，能否让中年员工真正转岗才是新加坡应对 AI 冲击的试金石',
+    whyItMattersEn:
+      "Nineteen job transition roadmaps cover 1.7 million workers; the framework exists, but whether mid-career workers can genuinely transition is the litmus test for Singapore's response to AI disruption",
+    whyItMattersJa:
+      '19のジョブトランジションマップが170万人の従業員をカバーし、フレームワークは完成していますが、中年従業員が真の職務転換を実現できるかどうかが、シンガポールのAI衝撃への対応の試金石です。',
+    whyItMattersKo:
+      '19개의 고용 전환 맵이 170만 직원을 커버하고 있으며 틀은 이미 형성되었지만, 중년 직원이 정말 직무를 전환할 수 있는지가 AI 충격에 대한 싱가포르의 대응의 시금석이다',
     summaryJa: `質問は就業転職マップの最新進展、中年労働者の業界変化への対応支援措置、および再構成される業界で影響を受けた労働者への援助に焦点を当てた。政府は19の就業転職マップが170万人の労働者をカバーしていることを紹介し、キャリア転換プログラムを通じて中年労働者の再訓練を支援し、業界インサイトと組み合わせて再構成産業のスキルアップグレードと職務再設計を推進していることを強調した。核心的な争点は、転職マップの提案をいかに効果的に実施し、中年労働者と再構成産業労働者のスムーズな転職を確保するかという点にある。`,
     summaryEn: `Questions focused on the latest progress of Jobs Transformation Maps, support for mid-career employees adapting to industry shifts, and assistance for workers in restructuring sectors. The government replied that 19 JTMs have been launched, covering about 1.7 million workers, and that career conversion programmes help mid-career workers reskill while industry insights drive upskilling and job redesign in restructuring sectors. The core debate: how to effectively implement JTM recommendations so mid-career and restructuring-sector workers transition smoothly.`,
     keyPoints: ['19个就业转型图发布', '中年员工职业转换支持', '重组行业技能提升'],
@@ -4649,6 +5202,14 @@ To support mid-career employees in adapting to industry shifts, Workforce Singap
     ],
     summary: `议员质询新加坡是否借鉴丹麦利用版权法打击深度伪造。政府回应表示重视深度伪造带来的网络伤害，将通过新立法增强受害者救济权利。强调版权法主要支持创新创作，不适用于规制技术滥用，相关侵权行为可通过其他知识产权法律处理。核心争议在于版权法是否适合用于深度伪造治理。`,
     summaryKo: `의원들은 싱가포르가 덴마크의 저작권법을 이용하여 딥페이크에 대처하는 방식을 참고하고 있는지 질의했습니다. 정부는 딥페이크로 인한 온라인 피해를 중시하며, 신규 법안을 통해 피해자의 구제 권리를 강화할 것이라고 답변했습니다. 저작권법은 주로 혁신과 창작을 지원하기 위한 것으로, 기술 남용을 규제하기에는 적합하지 않으며, 관련 침해 행위는 다른 지식재산권법으로 처리할 수 있다고 강조했습니다. 핵심 쟁점은 저작권법이 딥페이크 규제에 적합한지 여부입니다.`,
+    whyItMatters:
+      'Edwin Tong Chun Fai 于 2025 年 9 月 24 日划清版权法与深度伪造治理的界限，将治理筹码压在待出台的新立法上',
+    whyItMattersEn:
+      'On 24 September 2025, Edwin Tong Chun Fai drew a clear boundary between copyright law and deepfake governance, staking regulatory leverage on forthcoming new legislation',
+    whyItMattersJa:
+      'Edwin Tong Chun Faiは2025年9月24日、著作権法とディープフェイク規制の界限を画し、規制の全権を今後施行予定の新立法に託しています。',
+    whyItMattersKo:
+      'Edwin Tong Chun Fai는 2025년 9월 24일 저작권법과 딥페이크 거버넌스의 경계를 명확히 하며, 거버넌스 책임을 출범 대기 중인 새로운 입법에 집중했다',
     summaryJa: `議員はシンガポールがデンマークの著作権法によるディープフェイク対抗の事例から学べるかを質問した。政府はディープフェイクがもたらすオンライン被害を重視しており、新しい法制を通じて被害者の救済権を強化すると回答した。著作権法は主に革新的な創作をサポートするもので、技術の悪用を規制するには適用できず、関連する侵害行為は他の知的財産法で対応できることを強調した。核心的な争点は、著作権法がディープフェイク管理に適しているかどうかという点にある。`,
     summaryEn: `An MP asked whether Singapore is studying Denmark's use of copyright law to fight deepfakes. The government said it takes the online harms of deepfakes seriously and will introduce new legislation to strengthen victims' redress. It stressed that copyright law primarily supports innovation and creativity, is not the right tool to regulate technology abuse, and related infringements can be handled via other IP laws. The core debate: whether copyright law is appropriate for deepfake governance.`,
     keyPoints: ['深度伪造引发网络伤害', '版权法支持创新非规制', '其他知识产权可补充治理'],
@@ -4722,6 +5283,13 @@ The Government recognises that deepfake technology can be misused to harass or c
     topics: ['AI Economy & Industry', 'AI & Employment', 'AI in Education', 'AI in Public Sector'],
     summary: `议员质询新加坡应届毕业生全职就业比例下降的周期性与结构性原因，探讨政府推行的GRaduate Industry Traineeships (GRIT) 计划如何缓解就业难题。辩论聚焦GRIT计划的实施细节、质量保障、长期收益及对战略行业的支持。政府强调通过结构化培训和企业参与提升毕业生就业竞争力，质询方关注计划成效及公平转换机制，核心争议在于计划能否真正提升毕业生长期就业质量。`,
     summaryKo: `의원들은 싱가포르 신입 졸업생 정규직 고용 비율의 주기적, 구조적 감소 원인을 질의했으며, 정부가 추진 중인 GRaduate Industry Traineeships (GRIT) 계획이 고용 어려움을 완화하는 방식을 논의했습니다. 토론은 GRIT 계획의 실행 세부사항, 품질 보장, 장기 효과 및 전략 산업에 대한 지원에 초점을 맞췄습니다. 정부는 구조화된 훈련과 기업 참여를 통해 졸업생 고용 경쟁력을 제고할 것이라고 강조했으며, 질의측은 계획 성과와 공정한 전환 메커니즘에 관심을 보였습니다. 핵심 쟁점은 계획이 졸업생의 장기 고용 질 제고에 실질적으로 기여할 수 있는지 여부입니다.`,
+    whyItMatters: 'GRIT 计划靠补贴实习对冲毕业生就业下滑，回避了 AI 是否正结构性挤压入门岗位这一追问',
+    whyItMattersEn:
+      'The GRIT initiative counters declining graduate employment through internship subsidies, dodging the question of whether AI is structurally squeezing entry-level roles',
+    whyItMattersJa:
+      'GRITプログラムはインターンシップ補助金で卒業生雇用の低下を相殺しようとしていますが、AIが構造的にエントリーレベルポジションを圧迫しているかどうかという追求を回避しています。',
+    whyItMattersKo:
+      'GRIT 계획은 인턴십 보조금에 의존하여 졸업생 고용 하락을 상쇄하려고 하지만, AI가 현재 구조적으로 입문 직책을 압박하고 있는지에 대한 이러한 추적 질문을 회피했다',
     summaryJa: `議員はシンガポールの新卒業生のフルタイム雇用率の低下の周期的および構造的原因、政府が推進するGraduate Industry Traineeships (GRIT) プログラムがどのように雇用の課題を緩和するかについて質問した。議論はGRITプログラムの実装の詳細、品質保証、長期的な利益、および戦略産業へのサポートに焦点を当てた。政府は構造化訓練とビジネス参加を通じて卒業生の雇用競争力を向上させることを強調し、質問者はプログラムの効果と公正な転換メカニズムに注視していたが、核心的な争点はプログラムが卒業生の長期雇用質を真に向上させることができるかどうかという点にある。`,
     summaryEn: `MPs asked about the cyclical and structural drivers behind the lower share of fresh graduates landing full-time employment, and how the Graduate Industry Traineeships (GRIT) programme can ease the difficulty. The debate focused on GRIT's implementation details, quality safeguards, long-term returns, and support for strategic industries. The government emphasised structured training and firm participation to lift graduate competitiveness; MPs focused on programme effectiveness and fair conversion mechanisms. The core debate: whether the programme genuinely improves long-term employment quality.`,
     keyPoints: ['就业比例下降原因', 'GRIT计划作用', '培训质量保障'],
@@ -4768,6 +5336,14 @@ asked the Minister for Manpower (a) whether the GRaduate Industry Traineeships (
     topics: ['AI Governance & Regulation', 'AI Safety & Ethics', 'AI Economy & Industry', 'AI & Employment'],
     summary: `议员质询政府如何与高等院校合作，制定框架以审视课程并追踪毕业生技能过时风险，以及如何衡量毕业生长期就业能力。政府回应通过就业调查监测毕业生就业状况，强调课程定期与产业需求对接，强化校企合作和实习安排，提升学生AI及跨领域能力。核心争议在于如何有效应对AI快速发展带来的技能更新挑战。`,
     summaryKo: `의원들은 정부가 고등교육기관과 협력하여 교과 과정을 검토하고 졸업생 기술 노후화 위험을 추적하기 위한 프레임워크를 제정하는 방법, 그리고 졸업생의 장기 고용 능력을 측정하는 방법을 질의했습니다. 정부는 고용 조사를 통해 졸업생의 고용 상황을 모니터링하며, 교과 과정을 정기적으로 산업 수요와 조율하고, 산학협력 및 인턴십을 강화하며, 학생의 AI 및 학제간 능력을 제고한다고 강조했습니다. 핵심 쟁점은 AI의 빠른 발전으로 인한 기술 업데이트 도전에 어떻게 효과적으로 대응할 것인가 하는 것입니다.`,
+    whyItMatters:
+      '政府在 2025 年 9 月的书面答复中仍依赖就业调查等存量工具，说明新加坡尚未建立应对 AI 技能过时的专项追踪框架',
+    whyItMattersEn:
+      "The government's written response in September 2025 still relies on legacy tools such as employment surveys, indicating that Singapore has not yet built a specialized tracking framework for addressing AI-driven skill obsolescence",
+    whyItMattersJa:
+      '政府は2025年9月の書面回答でも雇用調査などの既存ツールに依存しており、シンガポールがいまだAIスキル陳腐化に対応する専門的追跡フレームワークを構築していないことを示しています。',
+    whyItMattersKo:
+      '정부는 2025년 9월의 서면 답변에서 여전히 고용 조사 등 기존 도구에 의존하고 있으며, 싱가포르가 아직 AI 기술 구식화에 대응하는 전담 추적 틀을 수립하지 못했음을 나타낸다',
     summaryJa: `議員は、政府が高等教育機関とどのように協力して、カリキュラムを審視し、卒業生のスキル陳腐化リスクを追跡し、卒業生の長期的雇用能力をどのように測定するかについての枠組みを策定しているかについて質問しました。政府は、雇用調査を通じて卒業生の雇用状況を監視し、カリキュラムを定期的に産業ニーズと結びつけ、産学協力と実習配置を強化し、学生のAIと学際的能力を向上させることで対応しました。核心的な争点は、AIの急速な発展によってもたらされるスキル更新の課題にいかに効果的に対応するかということです。`,
     summaryEn: `An MP asked how the government works with IHLs to develop frameworks that review curricula and track skills-obsolescence risk for recent graduates, and how long-term employability is measured. The government replied that it monitors graduate outcomes via employment surveys, regularly aligns curricula with industry needs, and strengthens industry-school partnerships and internships to lift students' AI and interdisciplinary capabilities. The core debate: how to effectively respond to skills-update challenges from rapid AI advances.`,
     keyPoints: ['就业数据持续监测', '课程与产业紧密结合', '强化校企合作实习'],
@@ -4815,6 +5391,14 @@ Mr Desmond Lee
     topics: ['AI Economy & Industry', 'AI in Education', 'AI in Healthcare', 'AI & National Security'],
     summary: `质询了教育部如何确保课程定期更新以匹配未来经济需求，特别是数字化、可持续发展及医疗领域。政府回应称通过定期审查、行业咨询及教师产业实践，确保课程内容紧跟行业发展，学校课程每6-8年审查一次，IHL课程更频繁，重点领域如AI更新更快。核心争议点在于课程更新频率与行业需求的匹配度。`,
     summaryKo: `의원들은 교육부가 향후 경제 수요에 맞도록 교과 과정을 정기적으로 업데이트하는 방법, 특히 디지털화, 지속 가능한 발전 및 의료 분야에서의 업데이트 방법을 질의했습니다. 정부는 정기적인 검토, 산업 자문 및 교사의 산업 실습을 통해 교과 과정 내용이 산업 발전을 따라가고 있다고 답변했으며, 학교 교과 과정은 6~8년마다 검토되고 IHL 교과 과정은 더 자주 검토되며, AI와 같은 핵심 분야는 더 빠르게 업데이트된다고 설명했습니다. 핵심 쟁점은 교과 과정 업데이트 빈도와 산업 수요의 부합도입니다.`,
+    whyItMatters:
+      '课纲 6 至 8 年一轮的大修周期与 AI 技术迭代速度形成结构性落差，暴露新加坡人才培养体系响应产业变化的滞后风险',
+    whyItMattersEn:
+      "The curriculum's 6- to 8-year major revision cycle creates structural misalignment with AI technology iteration velocity, exposing the lag risk in Singapore's talent development system's responsiveness to industry shifts",
+    whyItMattersJa:
+      'カリキュラムの6〜8年ごとの大幅改定期間とAI技術イテレーション速度は構造的ギャップを形成し、シンガポール人材育成体系の産業変化への対応遅滞リスクを露呈しています。',
+    whyItMattersKo:
+      '교육과정 지침의 6년에서 8년 한 주기의 대대적 수정과 AI 기술 반복 속도가 구조적 격차를 형성하며, 싱가포르 인재 양성 체계의 산업 변화 대응 지연 위험을 드러낸다',
     summaryJa: `議員は、教育省がカリキュラムを定期的に更新して、将来の経済需要に対応することをいかに確保しているか、特にデジタル化、持続可能な開発および医療分野について質問しました。政府は、定期的な審査、業界相談および教師の業界実践を通じて、カリキュラムコンテンツが業界開発に歩調を合わせていることを確認していると回答しました。学校のカリキュラムは6～8年ごとに見直され、IHLカリキュラムはより頻繁に、AIのような重要分野はさらに速く更新されます。核心的な争点は、カリキュラム更新の頻度と業界ニーズのマッチング度です。`,
     summaryEn: `An MP asked how MOE ensures regular curriculum updates to match future economic needs, especially in digitalisation, sustainability, and healthcare. MOE replied that it uses regular reviews, industry consultations, and teacher industry stints to keep content tracking industry developments — school curricula are reviewed every 6–8 years, IHL curricula more frequently, and priority areas like AI update faster. The core debate: whether update frequency matches industry needs.`,
     keyPoints: ['课程定期审查', '行业深度参与', '重点领域快速更新'],
@@ -4862,6 +5446,13 @@ Mr Desmond Lee
     topics: ['AI Governance & Regulation', 'AI & National Security', 'AI in Public Sector', 'AI Strategy'],
     summary: `质询方关注审计署对合同管理和招标评估中存在的错误，询问公共服务部门是否采用AI及技术手段提升效率和减少错误。政府回应称已积极探索并在适当领域开始应用AI技术，以确保合同评审符合政府采购原则。核心争议点在于如何有效利用AI工具提升政府采购透明度和效率。`,
     summaryKo: `질의측은 감사 결과에서 발견된 계약 관리 및 입찰 평가의 오류에 주목하며, 공공 서비스 부문이 효율성을 제고하고 오류를 줄이기 위해 AI 및 기술 수단을 채택하고 있는지 질의했습니다. 정부는 이미 적절한 분야에서 AI 기술 적용을 적극적으로 탐색하고 시작했으며, 정부 조달 원칙을 준수하는 계약 검토를 보장한다고 답변했습니다. 핵심 쟁점은 AI 도구를 효과적으로 활용하여 정부 조달의 투명성과 효율성을 제고하는 방법입니다.`,
+    whyItMatters: '审计署揭出招标评估漏洞，倒逼政府表态探索 AI，暴露新加坡公共采购的智能化仍落后于其 AI 战略话语',
+    whyItMattersEn:
+      "The Audit Office exposed procurement evaluation gaps, forcing the government to stake a position on AI exploration, revealing that Singapore's public procurement automation still trails its AI strategy rhetoric",
+    whyItMattersJa:
+      '監査庁が入札評価の欠陥を暴露し、政府がAI探索を表明することを迫られ、シンガポール公共調達のAI化が依然としてAI戦略的言説に遅れていることを露呈しています。',
+    whyItMattersKo:
+      '감사원이 입찰 평가 허점을 드러내며 정부가 AI 탐색에 입장을 표시하도록 역박강요했으나, 싱가포르 공공 구매의 지능화가 여전히 그 AI 전략 담론보다 뒤지고 있음을 드러낸다',
     summaryJa: `質問者は、監査局による契約管理および入札評価における誤りに焦点を当て、公共サービス部門がAIおよび技術手段を採用して効率を向上させ、エラーを減らしているかどうかについて尋ねました。政府は、AI技術の探索を積極的に進めており、適切な領域で応用を開始し、契約審査が政府調達原則に準拠していることを確保していると回答しました。核心的な争点は、AIツールを効果的に利用して政府調達の透明性と効率を向上させる方法です。`,
     summaryEn: `In light of AGO findings on contract management and tender evaluation errors, an MP asked whether the Public Service Division uses AI and other technologies to lift efficiency and reduce errors. The government replied that it has been actively exploring such use and has begun applying AI in suitable areas to ensure contract evaluations align with procurement principles. The core debate: how to effectively use AI to increase transparency and efficiency in government procurement.`,
     keyPoints: ['审计署发现合同管理问题', '政府探索AI提升效率', '确保合同符合采购原则'],
@@ -4914,6 +5505,13 @@ Yes, the Government has been actively exploring the use of technology, including
     topics: ['AI Governance & Regulation', 'AI Safety & Ethics', 'AI Economy & Industry'],
     summary: `议员质询金融管理局（MAS）如何确保金融科技平台及非银行机构维持流动性、管理资金提取风险，并加强零售投资者保护。政府回应指出相关投资平台受资本市场服务牌照监管，客户资产与平台资产隔离，提现按规定时间有序进行。政府强调近期提现激增事件中，平台的风险管理机制发挥了作用，但对部分即时提现及关联借记卡功能进行了限制，体现监管灵活性与风险防控的平衡。`,
     summaryKo: `의원들은 금융관리청(MAS)이 금융기술 플랫폼과 비은행 기관이 유동성을 유지하고 자금 인출 위험을 관리하며 소매 투자자 보호를 강화하는 방법을 질의했습니다. 정부는 해당 투자 플랫폼이 자본시장 서비스 허가로 규제되며, 고객 자산이 플랫폼 자산과 분리되어 있고, 인출이 규정된 시간에 따라 순차적으로 진행된다고 답변했습니다. 정부는 최근의 인출 급증 사건에서 플랫폼의 위험 관리 메커니즘이 역할을 발휘했다고 강조했으나, 일부 즉시 인출 및 관련 직불카드 기능에 제한을 두었으며, 이는 규제 유연성과 위험 방지의 균형을 반영한 것이라고 설명했습니다.`,
+    whyItMatters: 'MAS 未另立新规，仅靠资本市场服务牌照事后限制提现平台，为未来 AI 驱动金融平台监管立下先例',
+    whyItMattersEn:
+      'The Monetary Authority of Singapore(MAS) introduced no new rules, only using capital markets services licenses to restrict withdrawal platforms after the fact, setting a precedent for future regulation of AI-driven financial platforms',
+    whyItMattersJa:
+      'MASは新規則を設けず、資本市場サービスライセンスのみで事後的に出金プラットフォームを制限し、将来的なAI推進型金融プラットフォーム規制の先例を立てています。',
+    whyItMattersKo:
+      'MAS는 별도의 새로운 규칙을 수립하지 않았으며, 자본시장 서비스 라이센스에만 의존하여 현금화 플랫폼을 사후 제한하며, 미래 AI 구동 금융 플랫폼 규제에 선례를 남긴다',
     summaryJa: `議員は金融管理局（MAS）に対し、フィンテック・プラットフォームおよび非銀行機関が流動性を維持し、資金引き出しのリスクを管理し、小売投資家の保護を強化する方法について質問しました。政府は、関連する投資プラットフォームが資本市場サービスライセンスの監督を受けており、顧客資産とプラットフォーム資産が分離されており、引き出しが規定の時間内に順序立てて行われることを指摘して対応しました。政府は、最近の引き出し急増イベントでプラットフォームのリスク管理メカニズムが機能していることを強調していますが、一部の即時引き出しおよび関連デビットカード機能に制限を課しており、規制の柔軟性とリスク管理のバランスを示しています。`,
     summaryEn: `MPs asked how MAS ensures fintech platforms and non-bank institutions maintain liquidity and manage withdrawal risks, and strengthens retail-investor protection. The government replied that such investment platforms operate under Capital Markets Services licences, client assets are segregated from platform assets, and withdrawals follow set timeframes. In a recent withdrawal surge incident, the platforms' risk management worked as intended, though limits were placed on some instant withdrawals and linked debit-card features — reflecting a balance between regulatory flexibility and risk control.`,
     keyPoints: ['投资平台受资本市场服务牌照监管', '客户资产与平台资产严格隔离', '提现功能受限以防风险扩散'],
@@ -4998,6 +5596,13 @@ asked the Prime Minister and Minister for Finance (a) how does MAS ensure that f
     topics: ['AI Economy & Industry', 'AI Infrastructure & Research', 'AI in Public Sector'],
     summary: `议员质询数字基础设施的韧性与安全保障措施，关注云服务和数据中心的安全指南。政府强调新加坡数字经济增长显著，已发布指导提升基础设施安全，确保数字转型可持续且包容。核心争议在于如何进一步强化基础设施以应对全天候运营风险。`,
     summaryKo: `의원들이 디지털 기반 인프라의 탄력성과 안전 보장 조치에 대해 질의했으며, 클라우드 서비스 및 데이터 센터의 안전 지침에 주목했습니다. 정부는 싱가포르 디지털 경제의 현저한 성장을 강조했으며, 기반 인프라 안전을 개선하기 위한 지침을 발표했고, 디지털 전환의 지속 가능성과 포용성을 보장했습니다. 핵심 논쟁은 연중무휴 운영 위험에 대응하기 위해 기반 인프라를 더욱 강화하는 방법에 있습니다.`,
+    whyItMatters: '云服务安全指南只是指导而非立法，暴露 AI 算力所倚重的数据中心安全仍缺强制底线',
+    whyItMattersEn:
+      'Cloud services security guidelines remain advisory rather than mandatory, exposing that data centre security—on which AI compute power depends—still lacks a binding floor',
+    whyItMattersJa:
+      'クラウドサービスセキュリティガイドラインは指導のみであり立法ではなく、AI演算能力が依存するデータセンターセキュリティが依然として強制的な最低ラインを欠いていることを露呈しています。',
+    whyItMattersKo:
+      '클라우드 서비스 보안 지침은 지도일 뿐 입법이 아니며, AI 컴퓨팅 파워가 의존하는 데이터센터 보안이 여전히 강제 최하한이 부족함을 드러낸다',
     summaryJa: `議員は、デジタルインフラストラクチャの回復力と安全保護対策について質問し、クラウドサービスとデータセンターの安全ガイドラインに焦点を当てました。政府は、シンガポールのデジタル経済の成長が顕著であることを強調し、インフラストラクチャのセキュリティを向上させるための指針を発表し、デジタル変革が持続可能かつ包括的であることを確保しています。核心的な争点は、24時間運用リスクに対応するためにインフラストラクチャをさらに強化する方法です。`,
     summaryEn: `MPs asked about digital infrastructure resilience and security safeguards, focusing on cloud and data centre security guidelines. The government emphasised the strong growth of Singapore's digital economy and the issuance of guidance to lift infrastructure security, ensuring digital transformation is sustainable and inclusive. The core debate: how to further strengthen infrastructure against round-the-clock operational risks.`,
     keyPoints: ['数字经济快速增长', '数字基础设施安全关键', '发布云服务安全指南'],
@@ -5088,6 +5693,13 @@ Singapore has always been unafraid of tr`,
     topics: ['AI Governance & Regulation', 'AI Safety & Ethics', 'AI Economy & Industry', 'AI & Employment'],
     summary: `议员质询人力部关于退休保障、劳动力素质提升及包容性职场建设成效，重点关注劳动力老龄化带来的挑战。质询方提出通过助力技术改造岗位、设立专门培训中心等措施提升老年人就业率。政府尚未明确回应，辩论聚焦如何应对老龄化劳动力短缺及经济影响。`,
     summaryKo: `의원들이 인력부에 은퇴 보장, 노동력 자질 향상 및 포용적 직장 건설의 효과에 대해 질의했으며, 노동력 고령화로 인한 도전 과제에 중점을 두었습니다. 질의자들은 기술을 통한 직무 혁신을 지원하고 전문 교육 센터를 설립하는 등의 조치를 통해 노인 고용률을 높일 것을 제안했습니다. 정부는 명확한 응답을 제시하지 않았으며, 토론은 고령화된 노동력 부족 및 경제적 영향에 대응하는 방법에 초점을 맞추고 있습니다.`,
+    whyItMatters: '人力部对技术改造岗位、专设培训中心等方案未给时间表，暴露 AI 冲击老龄劳动力时政策仍停留在辩论阶段',
+    whyItMattersEn:
+      'The Ministry of Manpower(MOM) has not set timelines for proposals such as reskilling roles and dedicated training facilities, exposing that policy remains at the debate stage when AI impacts aging workers',
+    whyItMattersJa:
+      '人材省（MOM）は技術転換ポジション、専門的トレーニングセンター設置などの計画に対してタイムテーブルを示さず、AIが高齢労働力に影響を与える際に政策が依然として議論段階に留まっていることを露呈しています。',
+    whyItMattersKo:
+      '인력부（MOM）는 기술 개조 직책, 전담 교육센터 등 계획에 시간표를 제시하지 않았으며, AI가 고령 노동력을 충격할 때 정책이 여전히 토론 단계에 머물러 있음을 드러낸다',
     summaryJa: `議員は、人力省に対し、年金給付、労働力の質の向上、および包括的な職場構築の効果についての質問をしており、労働力の高齢化によってもたらされた課題に焦点を当てています。質問者は、技術による職務改造の支援、専門的な訓練センターの設立などの措置を通じて、高齢者の雇用率を向上させることを提案しました。政府はまだ明確に対応していませんが、討論は高齢化した労働力の不足と経済的影響にどのように対応するかに焦点を当てています。`,
     summaryEn: `MPs questioned the effectiveness of MOM's retirement security, workforce-upgrading and inclusive workplace efforts, with a focus on the challenges of an ageing workforce. They proposed using assistive technologies to redesign jobs and setting up dedicated training centres to lift senior employment rates. The government has yet to respond fully; the debate centres on tackling ageing-workforce shortages and the economic impact.`,
     keyPoints: ['退休保障成效质询', '老龄劳动力岗位重塑', '专设培训支持老年工'],
@@ -5160,6 +5772,14 @@ We introduced the Complementarity Assessment (COMPASS) framework to ensure forei
     topics: ['AI Safety & Ethics', 'AI Economy & Industry', 'AI in Education', 'AI Infrastructure & Research'],
     summary: `议员质询了地缘政治紧张对新加坡经济的潜在影响，特别是贸易保护主义和关税战的风险。政府回应指出全球多边自由贸易体系受压，贸易战可能扰乱供应链，影响投资和经济增长。核心争议在于如何应对外部不确定性及国内资源限制，保障经济持续发展。`,
     summaryKo: `의원들이 지정학적 긴장이 싱가포르 경제에 미치는 잠재적 영향에 대해 질의했으며, 특히 무역 보호주의와 관세전의 위험성에 주목했습니다. 정부는 세계 다자간 자유무역 체제가 압박받고 있으며, 무역전이 공급망을 혼란케 할 수 있고 투자와 경제 성장에 영향을 미칠 수 있다고 응답했습니다. 핵심 논쟁은 외부 불확실성과 국내 자원 제한에 대응하고 경제의 지속적 발전을 보장하는 방법에 있습니다.`,
+    whyItMatters:
+      '2025 年 3 月 6 日预算辩论把关税战风险摆上台面，警示新加坡 AI 战略倚重的全球供应链与开放贸易秩序正受侵蚀',
+    whyItMattersEn:
+      "The 6 March 2025 budget debate brought tariff war risks into focus, warning that the global supply chains and open trade order underpinning Singapore's AI strategy face erosion",
+    whyItMattersJa:
+      '2025年3月6日の予算議論は関税戦争リスクを俎上に載せ、シンガポールAI戦略が依存するグローバルサプライチェーンとオープン貿易秩序が浸食されていることを警告しています。',
+    whyItMattersKo:
+      '2025년 3월 6일 예산 토론은 관세전 위험을 테이블에 올렸으며, 싱가포르 AI 전략이 의존하는 글로벌 공급망과 개방 무역 질서가 현재 침식받고 있음을 경고한다',
     summaryJa: `議員は、地政学的緊張がシンガポール経済に及ぼす潜在的な影響、特に貿易保護主義と関税戦争のリスクについて質問しました。政府は、グローバルな多国間自由貿易体系が圧力を受けており、貿易戦争がサプライチェーンを乱し、投資と経済成長に影響を与える可能性があると指摘して対応しました。核心的な争点は、外部の不確実性と国内資源の制限にどのように対応し、経済の継続的な発展を保障するかです。`,
     summaryEn: `MPs asked about the potential impact of geopolitical tensions on Singapore's economy, particularly the risks of protectionism and tariff wars. The government replied that the global multilateral free-trade system is under pressure and trade wars may disrupt supply chains, hurting investment and growth. The core debate: how to navigate external uncertainty and domestic resource constraints while sustaining growth.`,
     keyPoints: ['全球贸易体系受压', '贸易战扰乱供应链', '国内资源紧张挑战'],
@@ -5213,6 +5833,14 @@ The Minister for Trade and Industry (Mr Gan Kim Yong)
     topics: ['AI Economy & Industry', 'AI & Employment', 'AI Infrastructure & Research', 'AI in Public Sector'],
     summary: `议员质询疫情后就业恢复、通胀压力及弱势群体保障。人力部部长回应新加坡失业率降至2.8%，通过技能培训、渐进式工资模式及退休保障等多项措施支持不同年龄和弱势群体就业，强调收入增长超过通胀，整体劳动力市场稳健。核心争议聚焦于如何持续提升低收入者福利及应对全球经济不确定性。`,
     summaryKo: `의원들이 팬데믹 이후 고용 회복, 인플레이션 압력 및 취약 계층 보장에 대해 질의했습니다. 인력부 장관은 싱가포르의 실업률이 2.8%로 하락했으며, 기술 교육, 점진식 임금 제도 및 은퇴 보장 등 다양한 조치를 통해 다양한 연령대와 취약 계층의 고용을 지원했다고 응답했습니다. 소득 증가가 인플레이션을 초과했으며 전반적인 노동력 시장은 견고하다고 강조했습니다. 핵심 논쟁은 저소득층의 복지를 지속적으로 개선하고 세계 경제 불확실성에 대응하는 방법에 초점을 맞추고 있습니다.`,
+    whyItMatters:
+      '失业率降至 2.8% 的当口，辩论只字未提 AI 对就业结构的冲击，凸显新加坡劳动力政策仍是后疫情逻辑而非 AI 前瞻',
+    whyItMattersEn:
+      "With unemployment at 2.8%, the debate said nothing of AI's structural impact on employment, underscoring that Singapore's labor force policy remains post-pandemic logic rather than AI-forward thinking",
+    whyItMattersJa:
+      '失業率が2.8%に低下した時点で、議論がAIの就業構造へのインパクトに一言も触れず、シンガポール労働力政策が依然として先見的ではなくポストコロナ論理であることを浮き彫りにしています。',
+    whyItMattersKo:
+      '실업률이 2.8퍼센트로 하락한 시점에서, 토론은 AI의 고용 구조 충격에 한 글자도 언급하지 않았으며, 싱가포르 노동력 정책이 여전히 포스트 팬데믹 논리이지 AI 선견지명이 아님을 드러낸다',
     summaryJa: `議員はパンデミック後の雇用回復、インフレ圧力、および脆弱グループの保護について質問しました。人力省大臣はシンガポールの失業率が2.8%に低下したことに対応し、スキル訓練、段階的な賃金モデル、年金給付などの多くの措置を通じて異なる年齢と脆弱グループの雇用を支援し、所得成長がインフレを超えていること、全体的な労働市場が安定していることを強調しました。核心的な争点は、低所得者のウェルビーイングを継続的に向上させ、グローバル経済の不確実性に対応する方法に焦点を当てています。`,
     summaryEn: `MPs raised post-pandemic employment recovery, inflation pressure, and protection of vulnerable groups. The Manpower Minister replied that resident unemployment has dropped to 2.8%, with skills training, the Progressive Wage Model and retirement security supporting employment across different age and vulnerable groups; income growth has outpaced inflation and the labour market remains strong. The core debate: how to keep lifting low-income welfare and respond to global economic uncertainty.`,
     keyPoints: ['疫情后就业恢复', '低收入者工资提升', '弱势群体保障加强'],
@@ -5304,6 +5932,13 @@ During COVID-19, resident unemployment peaked at 4.8%. MOM's priority then was t
     topics: ['AI Economy & Industry', 'AI & Employment', 'AI Infrastructure & Research', 'AI in Public Sector'],
     summary: `议员质询新加坡经济能否超越2025年1%-3%的增长预期，强调经济增长对就业和国际竞争力的重要性。政府回应需克服土地、劳动力及碳排放限制，通过结构性生产力提升、企业转型和基础设施建设实现增长。核心争议在于如何在资源受限下实现更高增长。`,
     summaryKo: `의원들이 싱가포르 경제가 2025년 1%-3% 성장 전망을 초과할 수 있는지에 대해 질의했으며, 경제 성장이 고용과 국제 경쟁력에 미치는 중요성을 강조했습니다. 정부는 토지, 노동력 및 탄소 배출 제한을 극복해야 하며, 구조적 생산성 향상, 기업 전환 및 기반 인프라 건설을 통해 성장을 달성할 수 있다고 응답했습니다. 핵심 논쟁은 자원이 제한된 상황에서 더 높은 성장을 달성하는 방법에 있습니다.`,
+    whyItMatters: '土地与劳动力供给见顶，1%-3% 增长上限倒逼生产力转型，AI 应用成为跨越瓶颈的隐性唯一选项却未被点名',
+    whyItMattersEn:
+      'Land and labor supply have peaked; the 1–3% growth ceiling forces productivity transformation; AI applications become the implicit only option for transcending constraints, yet remain unmentioned',
+    whyItMattersJa:
+      '土地と労働力供給がピークに達し、1%〜3%の成長上限が生産性転換を迫り、AI応用がボトルネックを乗り越えるための暗黙的唯一の選択肢となっているにもかかわらず、名指しで言及されていません。',
+    whyItMattersKo:
+      '땅과 노동력 공급이 정점에 도달했으며, 1퍼센트에서 3퍼센트 성장 상한이 생산력 전환을 역박강요하고 있고, AI 응용이 병목을 넘기 위한 암묵적 유일한 선택지가 되었지만 아직 이름을 언급하지 않았다',
     summaryJa: `議員はシンガポール経済が2025年の1%-3%の成長予想を超えることができるかどうかを質問し、経済成長が就業と国際競争力に対する重要性を強調した。政府は土地、労働力および炭素排出の制限を克服する必要があり、構造的生産性向上、企業の転換、およびインフラ建設を通じて成長を実現する必要があると答えた。核心的な議論は、リソース制約下でより高い成長をいかに実現するかにある。`,
     summaryEn: `MPs asked whether Singapore's economy can outperform the 2025 1–3% growth forecast, emphasising the importance of growth for jobs and international competitiveness. The government replied that growth requires overcoming tight constraints on land, workforce and now carbon, through structural productivity gains, firm transformation, and infrastructure investment. The core debate: how to achieve higher growth under resource constraints.`,
     keyPoints: ['经济增长高于预期', '需突破土地与劳动力限制', '结构性生产力提升关键'],
@@ -5388,6 +6023,13 @@ Sir, the Singapore economy surprised on the upsize with a higher-than-expected g
     ],
     summary: `议员质询新加坡如何保持作为国际争端解决中心的竞争优势，特别面对阿布扎比等新兴竞争对手。政府强调新加坡凭借法治、专业人才及创新优势，持续吸引跨境争端案件，并推动调解国际公约。核心争议在于如何应对全球竞争及吸引人才，确保新加坡领先地位不被削弱。`,
     summaryKo: `의원들이 특히 아부다비와 같은 신흥 경쟁자를 상대로 국제 분쟁 해결 중심지로서의 경쟁 우위를 유지하는 방법에 대해 질의했습니다. 정부는 싱가포르가 법치주의, 전문 인력 및 혁신 우위를 바탕으로 국제 분쟁 사건을 지속적으로 유치하고 국제 중재 협약을 추진하고 있다고 강조했습니다. 핵심 논쟁은 세계 경쟁에 대응하고 인재를 유치하여 싱가포르의 선도적 지위가 약화되지 않도록 보장하는 방법에 있습니다.`,
+    whyItMatters: '新加坡把调解国际公约与法治人才优势当护城河，这套打法正是其 AI 治理话语权竞争的模板',
+    whyItMattersEn:
+      'Singapore treats its mediation of international treaties and rule-of-law talent as a moat; this playbook is precisely its template for competing in AI governance discourse',
+    whyItMattersJa:
+      'シンガポールは国際仲裁能力と法治国家としての人材優位を競争力の源泉と見なし、このアプローチがAI治理における言説権競争の模範となっています。',
+    whyItMattersKo:
+      '싱가포르는 중재 국제 조약과 법치 인재 우위를 방어선으로 여기고 있으며, 이 전술이 정확히 그것의 AI 거버넌스 담론권 경쟁의 모델이다',
     summaryJa: `議員は、特にアブダビなどの新興競争相手に直面する中で、シンガポールが国際紛争解決センターとしての競争優位をいかに維持するかを質問した。政府は、シンガポールが法の支配、専門人材およびイノベーション優位に基づき、継続的にクロスボーダー紛争事件を引き付け、調停に関する国際条約を推進していることを強調した。核心的な議論は、グローバル競争に対応し人材を引き付けながら、シンガポールの主導的地位が弱体化されないことを確保する方法にある。`,
     summaryEn: `MPs asked how Singapore can maintain its competitive edge as an international dispute resolution hub, especially against rising competitors like Abu Dhabi. The government stressed that Singapore's rule of law, professional talent and innovation continue to attract cross-border dispute cases, and pushes international mediation conventions. The core debate: how to handle global competition and attract talent so Singapore's lead is not eroded.`,
     keyPoints: ['新加坡国际争端中心地位', '全球竞争加剧挑战', '需持续吸引人才投资'],
@@ -5449,6 +6091,14 @@ Chairman, I am a disputes lawyer in an international arbitration practice. Singa
     topics: ['AI Safety & Ethics', 'AI & Employment', 'AI & National Security', 'AI in Public Sector'],
     summary: `议员质询内政部预算及应对技术犯罪措施，政府回应通过新清关概念提升边境安全和效率，利用AI技术加强风险评估和自动化，减少人力需求。辩论聚焦AI带来的犯罪挑战与人力资源压力，政府强调转型与再培训，反映出对未来安全与技术融合的重视。`,
     summaryKo: `의원들이 내무부 예산 및 기술 범죄 대응 조치에 대해 질의했으며, 정부는 새로운 통관 개념을 통해 국경 안보 및 효율성을 강화하고 AI 기술을 활용하여 위험 평가 및 자동화를 강화하며 인력 수요를 감소시킨다고 응답했습니다. 토론은 AI로 인한 범죄 도전 과제 및 인력 자원 압력에 초점을 맞추고 있으며, 정부는 전환 및 재교육을 강조함으로써 향후 안보와 기술 융합의 중요성을 강조했습니다.`,
+    whyItMatters:
+      '内政部承认 AI 边境自动化将压减人力，Patrick Tay Teck Guan 现场追问再培训保障，是新加坡 AI 转型绕不开的政治考验',
+    whyItMattersEn:
+      "The Ministry of Home Affairs(MHA) acknowledged that AI border automation will shrink staffing; Patrick Tay Teck Guan's follow-up on retraining safeguards marks an inescapable political test for Singapore's AI transition",
+    whyItMattersJa:
+      '内務省（MHA）はAI国境オートメーションが人力削減をもたらすことを認め、Patrick Tay Teck Guanが現場で再教育保障を追求し、これはシンガポールAI転換が避けられない政治的試験です。',
+    whyItMattersKo:
+      '내무부（MHA）는 AI 국경 자동화가 인력을 압박 감축할 것임을 인정했으며, Patrick Tay Teck Guan이 현장에서 재교육 보장에 대해 추적 질문했고, 이는 싱가포르 AI 전환이 회피할 수 없는 정치적 시험이다',
     summaryJa: `議員は内務省の予算および技術犯罪への対応措置について質問し、政府は新しい通関概念を通じて国境安全性と効率を向上させ、AI技術を活用してリスク評価と自動化を強化し、人員需要を削減することで対応した。議論はAIがもたらす犯罪課題と人的資源の圧力に焦点を当て、政府は転換と再訓練を強調し、将来の安全と技術統合に対する重視を反映している。`,
     summaryEn: `MPs raised the MHA budget and measures against tech-enabled crime. The government replied that a new clearance concept lifts border security and efficiency, using AI to strengthen risk assessment and automation while cutting manpower needs. The debate focused on AI-enabled crime challenges and HR pressure; the government emphasised transformation and reskilling, reflecting growing focus on integrating security and technology.`,
     keyPoints: ['新清关概念提升效率', 'AI助力风险评估', '人力资源转型升级'],
@@ -5528,6 +6178,14 @@ The Second Minister for Home Affairs (Mrs Josephine Teo)
     topics: ['AI Governance & Regulation', 'AI Safety & Ethics', 'AI in Education', 'Deepfakes & Disinformation'],
     summary: `议员质询政府如何与社区组织及公众合作，维护新加坡的种族宗教和谐，并应对全球普遍存在的公共机构信任赤字。质询强调谣言和错误信息对社会和谐的威胁，呼吁多方共同努力。政府回应尚未包含在节选中，核心争议在于如何平衡政策执行与社区参与，增强公众对执法机构的信任。`,
     summaryKo: `의원들이 정부가 지역사회 조직 및 대중과 어떻게 협력하여 싱가포르의 인종 종교 조화를 유지하고 전 지구적으로 만연한 공공기관 신뢰 결핍에 대응할 방법을 질의했습니다. 질의는 유언비어와 잘못된 정보가 사회 조화에 미치는 위협을 강조하며 여러 방면의 공동 노력을 촉구했습니다. 정부의 답변은 아직 발췌문에 포함되어 있지 않으며, 핵심 쟁점은 정책 실행과 지역사회 참여의 균형을 맞추고 대중의 집행 기관에 대한 신뢰를 강화하는 방법입니다.`,
+    whyItMatters:
+      '12 位跨党派议员齐问种族宗教互信问题时无人提及 AI 造谣风险，暴露新加坡治理尚未把生成式 AI 纳入社会韧性议程',
+    whyItMattersEn:
+      "When 12 cross-party parliamentarians jointly raised racial and religious trust concerns, no one mentioned AI disinformation risk, exposing that Singapore's governance has not yet integrated generative AI into its social resilience agenda",
+    whyItMattersJa:
+      '12人の超党派議員が人種宗教の相互信頼について一斉に質問した際、誰もAIデマのリスクに言及せず、シンガポール治理が生成型AIを社会的レジリエンスアジェンダに未だ組み込んでいないことを露呈しています。',
+    whyItMattersKo:
+      '12명의 초당파적 의원이 함께 인종 종교 상호신뢰 문제에 대해 물을 때 아무도 AI 유언비어 위험을 언급하지 않았으며, 싱가포르 거버넌스가 아직 생성형 AI를 사회 회복력 의제에 포함시키지 못했음을 드러낸다',
     summaryJa: `議員は政府がコミュニティー組織および市民とどのように協力し、シンガポールの人種・宗教調和を維持し、グローバルに普遍的に存在する公共機関に対する信頼欠如に対応するかを質問した。質問はデマおよび誤情報が社会調和に対する脅威であることを強調し、複数の利害関係者による共同の努力を呼びかけた。政府の対応はまだ抜粋に含まれていない。核心的な議論は、政策実行とコミュニティー参加をいかにバランスさせ、市民が法執行機関に対する信頼を強化する方法にある。`,
     summaryEn: `MPs asked how the government partners community groups and the public to safeguard Singapore's racial and religious harmony and respond to the global trust deficit in public institutions. They highlighted the threat of rumours and misinformation to social cohesion and called for collective effort. The government response is not included in the excerpt; the core debate is on balancing policy enforcement with community participation to strengthen public trust in law-enforcement institutions.`,
     keyPoints: ['维护种族宗教和谐', '打击错误信息传播', '提升公众对机构信任'],
@@ -5629,6 +6287,13 @@ In today’s world, where divisions and distrust are rising, preserving trust an
     topics: ['AI Governance & Regulation', 'AI & National Security', 'AI in Public Sector'],
     summary: `议员质询当前国际安全环境变化及其对新加坡国防预算的影响，重点关注美中关系紧张、国际规则体系的动摇及区域安全风险。政府强调国防和武装力量对保障国家安全的重要性，呼吁维持强大防御能力以应对复杂多变的国际局势。核心争议在于国际联盟的稳定性及新加坡应如何调整国防策略。`,
     summaryKo: `의원들이 현재 국제 안보 환경의 변화와 이것이 싱가포르 국방 예산에 미치는 영향을 질의하며, 미중 관계 긴장, 국제 규칙 체계의 동요, 역내 안보 위험에 주목했습니다. 정부는 국가 안보 보장에 있어 국방과 무장력의 중요성을 강조하고 복잡하게 변화하는 국제 정세에 대응하기 위한 강력한 방어 능력 유지를 촉구했습니다. 핵심 쟁점은 국제 연합의 안정성과 싱가포르가 국방 전략을 어떻게 조정해야 하는지입니다.`,
+    whyItMatters: '美中角力撕裂国际规则之际，新加坡 2025 年 3 月国防预算辩论表明，自主对冲的逻辑正同步延伸至 AI 战略',
+    whyItMattersEn:
+      "As US–China competition fractures international rules, Singapore's March 2025 defense budget debate demonstrates that the logic of autonomous hedging now extends in parallel to AI strategy",
+    whyItMattersJa:
+      '米中対立が国際ルールを引き裂く中で、シンガポール2025年3月防衛予算議論は、自主的ヘッジロジックがAI戦略へも並行して拡張していることを示しています。',
+    whyItMattersKo:
+      '미중 각축이 국제 규칙을 찢는 와중에, 싱가포르 2025년 3월 국방 예산 토론은 자율 헤징의 논리가 현재 동기적으로 AI 전략까지 연장되고 있음을 나타낸다',
     summaryJa: `議員は現在の国際安全環境の変化とシンガポール国防予算への影響について質問を行い、米中関係の緊張、国際ルール体系の動揺、および地域安全保障上のリスクに焦点を当てています。政府は国防と武装力が国家安全保障の確保に対する重要性を強調し、複雑で変化する国際情勢に対応するため強力な防御能力を維持することを呼びかけています。核心的な争点は、国際的な同盟体制の安定性とシンガポールが国防戦略をいかに調整すべきかという点にあります。`,
     summaryEn: `MPs asked about the changing international security environment and its impact on Singapore's defence budget, focusing on US-China tensions, the wavering rules-based order, and regional security risks. The government stressed the importance of defence and the SAF for national security and called for sustained, strong defensive capability to handle complex and shifting global conditions. The core debate: the stability of international alliances and how Singapore should adjust its defence strategy.`,
     keyPoints: ['国际规则体系受挑战', '美中竞争加剧', '区域安全风险上升'],
@@ -5693,6 +6358,13 @@ Sir, 10 years ago, at the Shangri-La Dialogue 2015, also the year Singapore cele
     ],
     summary: `议员质询政府是否考虑限制公职人员使用DeepSeek，类似他国对政府设备的禁令。政府回应称有政策框架评估技术适用性，强调安全与创新并重，但未直接回应DeepSeek限制问题。质询方追问政府自研AI工具Pair是否依赖国外商业平台，政府未详细说明，表示可私下跟进。核心争议在于政府对具体商业AI产品的态度及数据安全透明度。`,
     summaryKo: `의원들이 정부가 공직자의 DeepSeek 사용을 제한할 것을 고려하고 있는지, 다른 국가들이 정부 기기에 내린 금지령과 유사한 조치를 취할 것인지를 질의했습니다. 정부는 기술 적용성을 평가하기 위한 정책 프레임워크가 있다고 답변하며 안보와 혁신을 동등하게 강조했지만 DeepSeek 제한 문제에는 직접 답하지 않았습니다. 질의자들은 정부가 자체 개발한 AI 도구 Pair가 국외 상용 플랫폼에 의존하는지 추가 질의했으나 정부는 상세한 설명 없이 개별 논의로 진행할 수 있다고 표현했습니다. 핵심 쟁점은 정부의 구체적인 상용 AI 제품에 대한 입장과 데이터 안보 투명성입니다.`,
+    whyItMatters: '政府回避 DeepSeek 限制质询，自研工具 Pair 是否依赖境外平台不透明，暴露新加坡 AI 主权评估空白',
+    whyItMattersEn:
+      "The government sidestepped questions about DeepSeek restrictions; opacity around whether the in-house tool Pair depends on external platforms exposes a gap in Singapore's AI sovereignty assessment",
+    whyItMattersJa:
+      '政府はDeepSeek制限に関する質問を回避し、自社開発ツールPairが海外プラットフォームに依存しているかどうかが不透明であり、シンガポールAI主権評価の空白を露呈しています。',
+    whyItMattersKo:
+      '정부는 DeepSeek 제한 질문을 회피했으며, 자체 개발 도구 Pair가 국경 밖 플랫폼에 의존하는지의 여부가 불투명하고, 싱가포르 AI 주권 평가의 공백을 드러낸다',
     summaryJa: `議員は、政府が公務員のDeepSeek使用を制限することを検討しているかどうかを質問し、他国の政府設備に対する禁止令に類似した措置を言及しています。政府は技術適用性を評価するための政策フレームワークが存在すると回答し、セキュリティとイノベーションを両立させることを強調しましたが、DeepSeek制限問題には直接応答しませんでした。質問者はさらに、政府の自社開発AIツールPairが海外の商用プラットフォームに依存しているかどうかについて追加質問を行いましたが、政府は詳細な説明を行わず、プライベートでフォローアップできると述べました。核心的な争点は、政府が具体的な商用AI製品に対してどのような態度を取るか、およびデータセキュリティの透明性にあります。`,
     summaryEn: `An MP asked whether the government is considering restrictions on public officers using DeepSeek, similar to bans imposed on government devices in some other countries. The government replied that it has policy frameworks for assessing technology suitability and balances security with innovation, without directly addressing DeepSeek. Asked whether the government's in-house AI tool Pair relies on overseas commercial platforms, the government did not elaborate publicly and said it could follow up privately. The core debate: the government's attitude toward specific commercial AI products and the transparency of data security.`,
     keyPoints: ['政府有技术使用政策', '未明确限制DeepSeek', 'Pair AI工具细节未公开'],
@@ -5797,6 +6469,13 @@ The Senior Minister of State for Digital Development and Information (Dr Janil P
     topics: ['AI Governance & Regulation', 'AI Economy & Industry', 'AI & Employment', 'AI in Education'],
     summary: `议会辩论围绕2025年度预算展开，重点关注如何应对全球政治经济变局及科技变革，特别是人工智能等前沿技术对经济和社会的影响。政府强调在支持家庭和企业的同时，积极布局未来经济增长，推动科技创新和人才培养。核心争议点在于如何平衡短期支持与长期转型，以及AI技术带来的就业和治理挑战。`,
     summaryKo: `의회 토론이 2025년도 예산을 중심으로 전개되었으며, 전 지구적 정치 경제 변동 및 기술 혁신, 특히 인공지능 등 최첨단 기술이 경제 및 사회에 미치는 영향에 대응하는 방법에 주목했습니다. 정부는 가정과 기업을 지원하는 동시에 미래 경제 성장을 적극 배치하고 과학 기술 혁신과 인재 양성을 추진한다고 강조했습니다. 핵심 쟁점은 단기 지원과 장기 전환의 균형을 맞추는 방법과 AI 기술이 가져오는 고용 및 거버넌스 과제입니다.`,
+    whyItMatters: '2025 年度预算辩论让 AI 转型雄心与民生纾困同台博弈，标志 AI 战略正式挤入财政资源分配主战场',
+    whyItMattersEn:
+      'The 2025 budget debate pitted AI transformation ambitions against livelihood relief on the same stage, marking that AI strategy has formally entered the central battlefield for fiscal resource allocation',
+    whyItMattersJa:
+      '2025年度予算議論はAI転換の野心と民生救済が同一舞台で競争させられ、AI戦略が財政資源配分のメイン戦場に正式に割り込んだことを示しています。',
+    whyItMattersKo:
+      '2025년도 예산 토론은 AI 전환 야심과 민생 곤경 완화를 같은 무대에서 경쟁하도록 했으며, AI 전략이 공식적으로 재정 자원 배분 주전장에 진입했음을 신호한다',
     summaryJa: `議会討論は2025年度予算を中心に展開され、グローバルな政治経済の変動および科学技術変革への対応、特に人工知能などの先端技術が経済と社会に与える影響が重点的に取り上げられています。政府は、家庭と企業の支援と並行して、将来の経済成長を積極的に計画し、科学技術革新と人材育成を推進することを強調しています。核となる争点は、短期的な支援と長期的な転換のバランスをいかに取るか、およびAI技術がもたらす雇用および統治の課題にあります。`,
     summaryEn: `The parliamentary debate centred on Budget 2025, focusing on how to navigate global political-economic shifts and technological change — especially the impact of frontier technologies such as AI on the economy and society. The government emphasised supporting families and firms while actively positioning for future growth via tech innovation and talent development. The core debate: how to balance short-term support with long-term transformation, and the employment and governance challenges raised by AI.`,
     keyPoints: ['支持家庭和企业', '应对全球变局', '推动科技创新'],
@@ -5854,6 +6533,14 @@ The Deputy Prime Minister (Mr Heng Swee Keat)
     topics: ['AI Governance & Regulation', 'AI Economy & Industry', 'AI in Public Sector'],
     summary: `议员质询美出口管制对新加坡半导体产业及经济的影响，及政府如何防止企业利用新加坡规避美国限制。政府强调新加坡作为法治透明的国际商业枢纽，严厉打击违法行为，维护国家信誉。核心争议在于新加坡是否被列为美出口管制第二等级，及如何修复与美国的信任关系。`,
     summaryKo: `의원들이 미국 수출 관제가 싱가포르 반도체 산업 및 경제에 미치는 영향과 정부가 기업들이 싱가포르를 이용하여 미국 제한을 회피하는 것을 어떻게 방지할 것인지를 질의했습니다. 정부는 싱가포르가 법치 투명성을 갖춘 국제 상업 중심지로서 불법 행위를 엄격히 단속하고 국가 신뢰도를 유지한다고 강조했습니다. 핵심 쟁점은 싱가포르가 미국 수출 관제 2등급으로 분류되었는지 여부와 미국과의 신뢰 관계를 어떻게 복구할 것인지입니다.`,
+    whyItMatters:
+      '国会追问是否被列为美出口管制第二等级，暴露新加坡对美芯片自主权几乎为零，AI 战略被动系于华盛顿一纸分级',
+    whyItMattersEn:
+      'Parliament questions whether Singapore is classified in the second tier of US export controls, exposing near-zero autonomy over American chips and AI strategy passively tied to a Washington classification memo',
+    whyItMattersJa:
+      '国会が米国輸出管理第2階層への指定について追及し、シンガポールの米国チップに対する自主権がほぼゼロであること、AI戦略がワシントンの分級方針に受動的に従属していることが露呈されました。',
+    whyItMattersKo:
+      '국회가 싱가포르가 미국 수출통제 제2등급에 포함되어 있는지 추궁하며 싱가포르의 미국 칩 자주권이 거의 영(零)에 가까운 것을 노출시켰으며, AI 전략이 워싱턴의 분급 결정에 수동적으로 종속되어 있음을 드러냈다',
     summaryJa: `議員は、米国の輸出管制がシンガポール半導体産業および経済に及ぼす影響、ならびに政府がシンガポールを利用した米国制限の回避をいかに防止するかについて質問しました。政府は、シンガポールが法の支配と透明性を備えた国際商業ハブとして、違法行為に厳しく対処し、国家信用を維持することを強調しています。中核的争点は、シンガポールが米国輸出管制の第2層に指定されるかどうか、および米国との信頼関係をいかに修復するかにあります。`,
     summaryEn: `MPs asked about the impact of US export controls on Singapore's semiconductor industry and economy, and how the government will prevent firms from using Singapore to bypass US restrictions. The government stressed that Singapore is a transparent, rule-of-law international business hub that cracks down on violations and protects national reputation. The core debate: whether Singapore is placed in the second tier of US export controls and how trust with the US can be rebuilt.`,
     keyPoints: ['防止规避美出口管制', '维护国际商业信誉', '争取提升出口管制等级'],
@@ -5904,6 +6591,13 @@ asked the Deputy Prime Minister and Minister for Trade and Industry whether ther
     topics: ['AI Governance & Regulation', 'AI Economy & Industry', 'AI & National Security', 'AI in Public Sector'],
     summary: `议员质询美国2025年新AI扩散政策及出口管制对新加坡进口高端芯片及AI竞争力的影响。政府回应政策尚未最终确定，正密切监测并与企业沟通，必要时将采取措施保障新加坡企业获取美国高端技术。核心争议点在于新加坡未获例外名单资格，可能影响技术进口和竞争力。`,
     summaryKo: `의원들이 미국의 2025년 신규 AI 확산 정책 및 수출 관제가 싱가포르의 고급 칩 수입 및 AI 경쟁력에 미치는 영향을 질의했습니다. 정부는 정책이 아직 최종 확정되지 않았으며 현재 긴밀히 모니터링하고 기업과 소통하고 있으며, 필요시 싱가포르 기업들의 미국 고급 기술 획득을 보장하기 위한 조치를 취할 것이라고 답변했습니다. 핵심 쟁점은 싱가포르가 예외 명단 자격을 획득하지 못하여 기술 수입과 경쟁력이 영향을 받을 수 있다는 점입니다.`,
+    whyItMatters: '未进入美国 2025 年 AI 扩散新规的例外名单，暴露新加坡算力战略对美系芯片依赖的结构性风险',
+    whyItMattersEn:
+      "Failure to enter the US 2025 AI diffusion rule exceptions list exposes structural risk of Singapore's computing power strategy's dependence on American-system chips",
+    whyItMattersJa:
+      '米国の2025年AI拡散新規則の例外名単に含まれず、シンガポールの演算能力戦略が米系チップ依存の構造的リスクが露呈されました。',
+    whyItMattersKo:
+      '2025년 미국 AI 확산 신규 규칙의 예외 목록에 진입하지 못하며, 싱가포르의 연산력 전략이 미국계 칩에 대한 구조적 의존 위험을 노출시켰다',
     summaryJa: `議員は、米国の2025年新AI拡散政策および輸出管制がシンガポールのハイエンドチップ輸入およびAI競争力に及ぼす影響について質問しました。政府は、当該政策はまだ最終決定されておらず、密接に監視しており企業と協議中であり、必要に応じてシンガポール企業が米国のハイエンド技術を獲得できるようにするための措置を講じると回答しました。中核的争点は、シンガポールがホワイトリスト資格を取得できず、技術輸入と競争力に影響を与える可能性があることにあります。`,
     summaryEn: `An MP asked how the US 2025 AI diffusion rule and export controls affect Singapore's ability to import high-end chips and its AI competitiveness. The government replied that the rule is not yet final; it is closely monitoring and engaging firms, and will act when needed to protect Singapore-based firms' access to high-end US technology. The core debate: Singapore not being on the exception list may affect technology imports and competitiveness.`,
     keyPoints: ['美国AI政策未定', '新加坡未获例外', '政府密切监测'],
@@ -5949,6 +6643,13 @@ Mr Gan Kim Yong
     topics: ['AI Safety & Ethics', 'AI in Education', 'AI & National Security', 'AI Infrastructure & Research'],
     summary: `议员质询政府为何停止部分遮蔽身份证号码，及AI时代是否加剧个人数据被逆向工程风险。政府回应将于次日通过部长声明详细说明，核心争议在于数据隐私保护与技术发展带来的安全挑战之间的平衡。`,
     summaryKo: `의원이 정부에 신분증 번호의 일부 마스킹을 중단한 이유와 AI 시대에 개인 데이터의 리버스 엔지니어링 위험이 심화될 수 있는지에 관해 질문했습니다. 정부는 다음 날 장관 성명을 통해 이를 상세히 설명하겠다고 대응했으며, 핵심 논쟁은 데이터 개인정보 보호와 기술 발전으로 인한 보안 도전 사이의 균형에 있습니다.`,
+    whyItMatters: '政府次日仅以部长声明应对，暴露 AI 时代 NRIC 隐私规则修订滞后于逆向识别风险',
+    whyItMattersEn:
+      "Government's next-day response with only a ministerial statement exposes how NRIC privacy rules lag behind reverse-identification risks in the AI era",
+    whyItMattersJa:
+      '政府が翌日に部長声明のみで対応し、AI時代のNRIC個人情報保護規則改定が再識別リスクの進展に後れをとっていることが露呈されました。',
+    whyItMattersKo:
+      '정부가 다음날 장관 성명으로만 대응하며, AI 시대에 NRIC 개인정보 규칙 개정이 역방향 식별 위험에 뒤떨어져 있음을 드러냈다',
     summaryJa: `議員は、政府がなぜ個人ID番号のマスキングの一部を中止したのか、およびAI時代に個人データのリバースエンジニアリングのリスクが悪化するかどうかについて質問しました。政府は、翌日に大臣声明を通じて詳しく説明すると回答しました。中核的争点は、データプライバシー保護と技術発展がもたらすセキュリティ課題とのバランスにあります。`,
     summaryEn: `An MP asked why the government decided to stop the practice of partially masking NRIC numbers and whether the AI era has accelerated reverse-engineering risks for personal data. The government replied that this would be addressed in detail the next day via a Ministerial Statement. The core debate: balancing data privacy protection with the security challenges of advancing technology.`,
     keyPoints: ['停止部分遮蔽身份证号', 'AI加速数据逆向风险', '政府将发布部长声明'],
@@ -6000,6 +6701,13 @@ Mrs Josephine Teo
     topics: ['AI Governance & Regulation', 'AI Safety & Ethics', 'AI & Employment', 'AI & National Security'],
     summary: `议员质询政府是否考虑制定指导方针，规范雇主使用自动化决策工具以防止招聘和晋升中的偏见，并建议进行偏见审计及信息披露。人力部长回应现有《公平就业三方指引》已涵盖公平就业原则，且无相关投诉，强调AI技术快速发展，政府将持续监测并与相关机构合作评估现有规范的适用性。质询方补充关注数据隐私和员工同意问题，政府表示将考虑改进但不宜过度限制。`,
     summaryKo: `의원이 정부에 자동화된 의사결정 도구의 사용을 규범화하여 채용 및 승진 중 편견을 방지하기 위한 지도 방침 제정을 검토할 의향이 있는지 질문했으며, 편견 감사 및 정보 공시를 제안했습니다. 인력부 장관은 기존의 『공정 고용 삼자 지침』이 공정 고용 원칙을 이미 포함하고 있으며 관련 민원이 없다고 대응했습니다. 장관은 AI 기술이 빠르게 발전하고 있으며 정부가 현재 기준의 적용 가능성을 평가하기 위해 지속적으로 모니터링하고 관련 기관과 협력할 것이라고 강조했습니다. 질문 측은 데이터 개인정보 보호 및 직원 동의 문제에 대한 관심을 덧붙였으며, 정부는 개선을 검토하겠지만 과도한 제한은 바람직하지 않다고 표시했습니다.`,
+    whyItMatters: '人力部搬出《公平就业三方指引》挡下 AI 审计诉求，暴露新加坡就业 AI 治理仍靠软性框架而非专项强制规则',
+    whyItMattersEn:
+      'Ministry of Manpower(MOM) invokes the "Tripartite Fair Employment Guidance" to block AI audit demands, exposing how Singapore\'s employment AI governance still relies on soft frameworks rather than targeted mandatory rules',
+    whyItMattersJa:
+      '人材省（MOM）が「公正な雇用三者間指針」を持ち出してAI監査要求を退け、シンガポールの雇用におけるAI統治が依然として柔軟な枠組みに依存し、専門的な強制規則に頼っていないことが露呈されました。',
+    whyItMattersKo:
+      '인력부（MOM）가 「공정한 고용 삼자 지침」을 내세워 AI 감시 요구를 막으며, 싱가포르의 고용 AI 규제가 여전히 소프트 프레임워크에 의존하고 있으며 전문적 강제 규칙이 부재함을 드러냈다',
     summaryJa: `議員は、政府が雇用者による自動化意思決定ツールの使用を規制し、採用および昇進におけるバイアスを防止するためのガイドラインの制定を検討しているかどうかを質問し、バイアス監査および情報開示の実施を提案しました。人力大臣は、既存の「公平雇用三者ガイドライン」がすでに公平雇用原則をカバーしており、関連の苦情がないと回答しました。AI技術の急速な発展を強調し、政府は継続的に監視し、関連機構と協力して既存の規範の適用性を評価していくとしています。質問者はさらにデータプライバシーと従業員の同意に関する懸念を述べ、政府は改善を検討する意向を示しましたが、過度な制限は適切ではないと述べました。`,
     summaryEn: `An MP asked whether the government will introduce guidelines on employers' use of automated decision-making tools to prevent hiring and promotion bias, recommending bias audits and disclosure. The Manpower Minister replied that the existing Tripartite Guidelines on Fair Employment Practices already cover fair-employment principles, no related complaints have been received, AI is evolving fast, and the government will keep monitoring and work with relevant bodies to assess the applicability of current rules. MPs followed up on data privacy and employee consent; the government said it will consider improvements but cautioned against over-restriction.`,
     keyPoints: ['现有公平就业指引适用', '无AI歧视投诉记录', '关注数据隐私与同意'],
@@ -6051,6 +6759,13 @@ The Minister for Manpower (Dr Tan See Leng)
     topics: ['AI Economy & Industry', 'AI & Employment', 'AI in Education', 'AI & National Security'],
     summary: `议员质询过去三年通过职业转换计划培养IT及AI专业人才的进展及未来三至五年规划。政府回应介绍了技能未来及职业转换计划的培训成效，强调扩大中年职工培训及企业合作。质询方关注AI专业人才数量与目标差距，及私营部门参与情况，体现人才培养规模与目标之间的核心争议。`,
     summaryKo: `의원이 지난 3년간 직업 전환 프로그램을 통한 IT 및 AI 전문 인재 양성의 진전 및 향후 3~5년 계획에 관해 질문했습니다. 정부는 미래 기술 및 직업 전환 프로그램의 훈련 성과를 소개했으며, 중년층 근로자 훈련 확대 및 기업 협력을 강조했습니다. 질문 측은 AI 전문 인재 수량과 목표 간의 격차, 그리고 민간 부문의 참여 상황에 관심을 보였으며, 이는 인재 양성 규모와 목표 사이의 핵심 논쟁을 드러냅니다.`,
+    whyItMatters: '议员当面追问 AI 人才达标缺口与私企参与度，逼政府为未来三至五年职业转换计划给出量化目标',
+    whyItMattersEn:
+      'Lawmakers confront government on AI talent standards gaps and private sector engagement, forcing it to set quantified targets for job transition plans over the next three to five years',
+    whyItMattersJa:
+      '議員がAI人材目標達成の不足と民間企業の参画程度を直接質問し、政府が今後3～5年の職業転換計画について数値目標を提示することを強制しました。',
+    whyItMattersKo:
+      '의원들이 AI 인재 도달 기준의 공백과 민간기업의 참여도를 면전에서 추궁하며, 정부에게 향후 3~5년간의 직업 전환 계획에 대한 정량적 목표를 제시하도록 압박했다',
     summaryJa: `議員は、過去3年間にキャリア転換プログラムを通じてIT及びAI専門人材を育成した進展状況、および今後3～5年の計画について質問しました。政府はスキル・フューチャーおよびキャリア転換プログラムの訓練効果を紹介し、ミドル世代労働者の訓練拡大および企業との協力を強調しました。質問者はAI専門人材の数量と目標とのギャップ、ならびに民間部門の参加状況に関心を持ち、人材育成の規模と目標とのギャップに関する中核的な争点を反映しています。`,
     summaryEn: `An MP asked about progress over the past three years in developing IT and AI professionals through Career Conversion Programmes, plus plans for the next three to five years. The government cited training results from SkillsFuture and CCPs, emphasising expanded mid-career training and industry partnerships. MPs focused on the gap between current AI professional numbers and targets, and on private-sector participation — reflecting the core debate over training scale versus targets.`,
     keyPoints: ['多路径技能培训', '中年职工转型支持', '私企参与培训'],
@@ -6104,6 +6819,13 @@ The Senior Minister of State for Digital Development and Information (Mr Tan Kia
     topics: ['AI Governance & Regulation', 'AI Economy & Industry', 'AI in Education', 'AI Infrastructure & Research'],
     summary: `议员质询新加坡现有AI专用算力规模、国家云建设计划及相关法律框架。政府回应新加坡数据中心容量领先区域，AI算力动态调配，依托国家超级计算中心和商业云满足需求，暂不强制私营数据中心贡献算力。核心争议在于是否应立法强制私营部门参与国家云建设。`,
     summaryKo: `의원이 싱가포르의 기존 AI 전용 컴퓨팅 파워 규모, 국가 클라우드 건설 계획 및 관련 법적 프레임워크에 관해 질문했습니다. 정부는 싱가포르의 데이터 센터 용량이 지역을 선도하고 있으며 AI 컴퓨팅 파워가 동적으로 배정되고 국가 슈퍼컴퓨팅 센터와 상용 클라우드를 바탕으로 수요를 충족하고 있다고 대응했으며, 현재로서는 민간 데이터 센터에 컴퓨팅 파워 기여를 강제하지 않고 있습니다. 핵심 논쟁은 민간 부문의 국가 클라우드 건설 참여를 입법으로 강제해야 하는지 여부에 있습니다.`,
+    whyItMatters: '政府明确不立法强制私营数据中心贡献算力，新加坡 AI 算力韧性仍系于国家超级计算中心与商业云的自愿合作',
+    whyItMattersEn:
+      "Government explicitly refuses to legislate mandatory contributions from private data centres, leaving Singapore's AI computing resilience dependent on voluntary cooperation between the National Supercomputing Centre and commercial clouds",
+    whyItMattersJa:
+      '政府が民間データセンターに演算能力を提供することを強制する法制化を明確に否定し、シンガポールのAI演算能力の耐性が依然として国家スーパーコンピューティングセンターと商用クラウドの自発的協力に従属していることが示されました。',
+    whyItMattersKo:
+      '정부가 민간 데이터센터의 연산력 기여를 강제하는 입법을 명확히 거부하며, 싱가포르의 AI 연산력 회복력이 국가 슈퍼컴퓨팅센터와 상용 클라우드의 자발적 협력에 의존하고 있음을 드러냈다',
     summaryJa: `議員は、シンガポールの既存AI専用計算能力の規模、国家クラウド構築計画および関連する法的枠組みについて質問しました。政府は、シンガポールのデータセンター容量が地域をリードしており、AI計算能力を動的に配分し、国家スーパーコンピューティングセンターと商用クラウドに依存して需要を満たし、当面は民間データセンターに計算能力への貢献を強制しないと回答しました。中核的争点は、民間部門が国家クラウド構築に参加することを強制するための法律を制定すべきかどうかにあります。`,
     summaryEn: `An MP asked about the scale of Singapore's AI-specific compute, plans for a national cloud, and the related legal framework. The government replied that Singapore's data centre capacity leads the region, AI compute is dynamically allocated, demand is met via the National Supercomputing Centre and commercial cloud, and there is no current mandate for private data centres to contribute compute. The core debate: whether legislation should mandate private-sector participation in a national cloud.`,
     keyPoints: ['数据中心容量领先', 'AI算力动态调配', '无强制私营贡献'],
@@ -6156,6 +6878,13 @@ Mrs Josephine Teo
     topics: ['AI & National Security', 'AI Strategy'],
     summary: `质询聚焦社交媒体如何加速青年激进化、AI未来五年在激进化中的作用及应对计划。政府回应指出网络平台和算法助长极端内容传播，AI将加速激进化并助力恐怖宣传。政府通过立法和跨部门合作，采取阻断极端内容及社区外展等综合措施应对。核心争议在于技术带来的激进化速度提升及内容监管难度。`,
     summaryKo: `의원의 질문은 소셜 미디어가 어떻게 청년 급진화를 가속화하고 있는지, AI가 향후 5년간 급진화에서 어떤 역할을 하게 될지, 그리고 대응 계획이 무엇인지에 초점을 맞추었습니다. 정부는 온라인 플랫폼과 알고리즘이 극단적 콘텐츠 확산을 조장하며, AI가 급진화를 가속화하고 테러 선전을 조력할 것이라고 지적했습니다. 정부는 입법 및 부처 간 협력을 통해 극단적 콘텐츠 차단 및 커뮤니티 아웃리치 등의 포괄적인 조치를 취하고 있습니다. 핵심 논쟁은 기술이 초래하는 급진화 속도 증가 및 콘텐츠 규제 난제에 있습니다.`,
+    whyItMatters: 'K Shanmugam 将 AI 定性为未来五年激进化加速器，标志新加坡 AI 治理从产业促进延伸至国家安全防线',
+    whyItMattersEn:
+      "K Shanmugam defines AI as a radicalisation accelerator over the next five years, marking Singapore's AI governance expanding from industry promotion to national security frontlines",
+    whyItMattersJa:
+      'K Shanmugamがシンガポールのコンテクストで、AIを今後5年の急進化加速要因と位置付け、AI統治が産業振興から国家安全保障の防衛線への拡大を象徴しています。',
+    whyItMattersKo:
+      'K Shanmugam이 AI를 향후 5년간의 급진화 가속기로 규정하며, 싱가포르의 AI 규제가 산업 촉진에서 국가 안보 방어선으로 확대되었음을 표시했다',
     summaryJa: `質問は、ソーシャルメディアがどのように青少年のラディカル化を加速させるか、および今後5年間でAIがラディカル化において果たす役割と対応計画に焦点を当てています。政府は、オンラインプラットフォームとアルゴリズムが過激なコンテンツの拡散を助長し、AIはラディカル化を加速させてテロプロパガンダを支援すると指摘しました。政府は法律制定と部門横断的な協力を通じて、過激なコンテンツのブロックおよびコミュニティアウトリーチなどの包括的措置を講じています。中核的争点は、技術がもたらすラディカル化の速度向上とコンテンツ規制の困難さにあります。`,
     summaryEn: `Questions focused on how social media accelerates youth radicalisation, AI's role in radicalisation over the next five years, and the response plan. The government replied that online platforms and algorithms amplify extremist content, and AI will accelerate radicalisation and assist terrorist propaganda. It uses legislation and cross-agency coordination — blocking extremist content and community outreach — as a combined response. The core debate: the technology-driven acceleration of radicalisation and the difficulty of content regulation.`,
     keyPoints: ['社交媒体助长极端内容传播', 'AI加速激进化与恐怖宣传', '政府多管齐下防范激进化'],
@@ -6206,6 +6935,14 @@ Mr K Shanmugam
     topics: ['AI in Education', 'AI & National Security', 'AI Infrastructure & Research', 'AI Strategy'],
     summary: `质询了过去五年新加坡高校AI与机器学习课程中女性学生的入学及毕业率，并与男性学生进行比较，同时询问提升女性参与度的具体措施。政府回应女性占约四分之一入学比例，毕业率超过90%，并介绍了多项促进女性参与AI/STEM的项目和合作计划。核心争议点在于女性参与度偏低及如何有效提升。`,
     summaryKo: `의원이 지난 5년간 싱가포르 대학의 AI 및 머신러닝 과정에서 여성 학생의 입학률 및 졸업률에 관해 질문했으며 남성 학생과 비교했습니다. 또한 여성 참여도를 제고하기 위한 구체적인 조치를 물었습니다. 정부는 여성이 약 4분의 1의 입학 비율을 차지하며 졸업률이 90%를 초과한다고 대응했으며, 여성의 AI/STEM 참여를 촉진하기 위한 다양한 프로젝트 및 협력 계획을 소개했습니다. 핵심 논쟁점은 여성 참여도가 저조하고 이를 효과적으로 제고하는 방법에 있습니다.`,
+    whyItMatters:
+      '入学女性仅四分之一,但毕业率超 90%,说明性别失衡瓶颈在入学前而非在学阶段,现有 STEM 项目投入方向或需调整',
+    whyItMattersEn:
+      'Only one-quarter female enrolment, yet graduation rates exceed 90%, showing gender imbalance bottlenecks lie before enrolment rather than during study, suggesting current STEM programme funding directions may need adjustment',
+    whyItMattersJa:
+      '入学時の女性がわずか4分の1であるが、卒業率が90%を超えており、ジェンダー不均衡のボトルネックが在学中ではなく入学前段階にあることを示唆しており、現在のSTEM事業の投入方向の調整が必要な可能性があります。',
+    whyItMattersKo:
+      '입학 여성이 4분의 1에 불과하지만 졸업률이 90%를 넘으며, 성별 불균형 병목 지점이 입학 전에 있으며 학과 단계가 아님을 보여주고 있으며, 현행 STEM 프로그램 투입 방향이 조정될 필요가 있을 수 있다',
     summaryJa: `質問は、過去5年間にシンガポール高等教育機関のAI・機械学習プログラムにおける女性学生の入学率および卒業率を調べ、男性学生との比較を行い、同時に女性の参加度を向上させるための具体的措置を問いました。政府は、女性が約4分の1の入学比率を占め、卒業率が90%を超えていると回答し、女性のAI/STEM参加を促進するための複数のプロジェクトおよび協力計画を紹介しました。中核的争点は、女性の参加度が低いことと、いかに効果的に向上させるかにあります。`,
     summaryEn: `An MP asked about female enrolment and graduation rates in AI and machine learning programmes at Singapore's IHLs over the past five years, comparison with male students, and measures to lift female participation. The government replied that women make up about a quarter of enrolment, with graduation rates above 90%, and outlined multiple programmes and partnerships to push women's participation in AI/STEM. The core debate: low female participation and how to effectively raise it.`,
     keyPoints: ['女性占AI课程四分之一', '女性毕业率超90%', '多项目促进女性参与'],
@@ -6255,6 +6992,14 @@ Mr Chan Chun Sing
     topics: ['AI Economy & Industry', 'AI & Employment', 'AI in Education', 'AI & National Security'],
     summary: `质询聚焦新加坡人工智能（尤其是生成式AI）采纳中的性别差距及相关群体的接受度。政府回应指出新加坡女性在科技领域比例优于全球平均，生成式AI用户中女性占比亦较高。政府介绍多项针对不同群体的AI教育和培训计划，强调包容性和广泛普及。核心争议在于如何进一步针对特定群体设计有效推广策略。`,
     summaryKo: `질의는 싱가포르 인공지능(특히 생성형 AI) 채택 중 성별 격차 및 관련 집단의 수용도에 초점을 맞추었습니다. 정부 응답은 싱가포르 여성의 기술 분야 비율이 전 지구적 평균보다 우수하며, 생성형 AI 사용자 중 여성 비율도 높다는 점을 지적했습니다. 정부는 서로 다른 집단을 대상으로 한 AI 교육 및 훈련 계획을 소개했으며, 포용성과 광범위한 보급을 강조했습니다. 핵심 쟁점은 특정 집단을 대상으로 효과적인 홍보 전략을 추가로 어떻게 설계할 것인가에 있습니다.`,
+    whyItMatters:
+      '10 月 16 日国会答询中，政府用女性科技从业比例超全球均值的数据化解性别差距质询，却未松口分群推广的具体方案',
+    whyItMattersEn:
+      'In Parliament Q&A on October 16, government deflected gender-gap questions with data showing female tech workforce participation exceeding global averages, but refused to specify targeted promotion strategies',
+    whyItMattersJa:
+      '10月16日の国会答問で、政府が女性技術者の割合が世界平均を上回るというデータで性別格差の質問に対応したが、分群別推進プログラムの具体案については言及しませんでした。',
+    whyItMattersKo:
+      '10월 16일 국회 질의응답에서 정부가 여성 과학기술 종사자 비중이 전 세계 평균을 초과한다는 데이터로 성별 격차 질의를 해소하려 했으나, 분군 추진의 구체적 방안을 밝히지 않았다',
     summaryJa: `質問は、シンガポール AI（特に生成型AI）の採用におけるジェンダーギャップおよび関連グループの受容性に焦点を当てている。政府は、シンガポール国内のテクノロジー分野における女性の割合がグローバル平均を上回ることを指摘し、生成型AI ユーザーにおける女性の割合もまた高いと述べている。政府は、異なるグループを対象とした複数の AI 教育およびトレーニングプログラムを紹介し、インクルーシビティと広範な普及を強調している。コア争点は、特定グループに向けたさらに効果的な普及戦略をいかに設計するかにある。`,
     summaryEn: `Questions focused on the gender gap in Singapore's AI adoption (especially generative AI) and acceptance among different groups. The government replied that Singapore women's tech-sector share outperforms the global average and women make up a notable share of generative AI users. It outlined multiple AI education and training programmes for different groups, emphasising inclusion and broad reach. The core debate: how to design more effective targeted strategies for specific groups.`,
     keyPoints: ['女性科技从业比例较高', '生成式AI女性用户占优', '多样化AI教育培训举措'],
@@ -6303,6 +7048,13 @@ The Minister of State for Digital Development and Information (Ms Rahayu Mahzam)
     topics: ['AI Safety & Ethics', 'AI Economy & Industry', 'AI & National Security', 'AI Infrastructure & Research'],
     summary: `议员质询政府当前深伪检测技术的准确率、如何区分有害深伪与合法政治讽刺及误判处理。政府回应技术不断更新且不公开准确率，强调依据《反网络虚假信息法》处理有害内容，讽刺不构成违法。政府关注国际经验，研究是否需进一步保障选举安全。核心争议在于技术透明度与言论自由的平衡。`,
     summaryKo: `의원이 정부의 현재 딥페이크 탐지 기술의 정확도, 해로운 딥페이크와 합법적인 정치 풍자를 구분하는 방법, 오판 처리에 대해 질의했습니다. 정부는 기술이 지속적으로 업데이트되며 정확도를 공개하지 않는다고 응답하고, 《POFMA》에 따라 해로운 내용을 처리하며 풍자는 불법이 아니라는 점을 강조했습니다. 정부는 국제 경험에 주목하고 선거 보안을 추가로 보장할 필요가 있는지 연구하고 있습니다. 핵심 쟁점은 기술 투명성과 언론의 자유의 균형입니다.`,
+    whyItMatters: '政府以《反网络虚假信息法》自由裁量应对深伪，拒绝公开检测准确率，为选举安全埋下透明度缺口',
+    whyItMattersEn:
+      'Government exercises discretionary authority under the "Protection from Online Falsehoods and Manipulation Act" to address deepfakes, refuses to disclose detection accuracy, leaving a transparency gap for electoral security',
+    whyItMattersJa:
+      '政府が「反ネット虚偽情報法」の自由裁量でディープフェイクに対応し、検出精度の公開を拒否し、選挙安全保障の透明性ギャップを埋め込みました。',
+    whyItMattersKo:
+      '정부가 「온라인 거짓정보 대응법」의 재량권으로 딥페이크에 대응하며, 탐지 정확률 공개를 거부하여 선거 안보를 위해 투명성 공백을 남겼다',
     summaryJa: `議員は、政府の現在のディープフェイク検出技術の精度、有害なディープフェイクと合法的な政治風刺の区別方法、および誤判定への対応について質問している。政府は、技術が継続的に更新されており、精度は公開されていないと対応し、『虚偽情報対策法』に基づいて有害コンテンツに対応することを強調し、風刺は違法を構成しないと述べている。政府は国際的経験に注視し、選挙セキュリティをさらに保障する必要があるかどうかを検討している。コア争点は、技術の透明性と言論の自由のバランスにある。`,
     summaryEn: `An MP asked about the accuracy of the government's deepfake detection tools, how to distinguish harmful deepfakes from legitimate political satire, and how false positives are handled. The government replied that tools are constantly updated and accuracy rates are not published, with harmful content addressed under POFMA; satire is not automatically unlawful. It is studying international experience on whether further election-safety safeguards are needed. The core debate: balance between technical transparency and free speech.`,
     keyPoints: ['深伪检测技术持续更新', '讽刺不自动违法', '误判可司法申诉'],
@@ -6354,6 +7106,14 @@ Mrs Josephine Teo
     topics: ['AI Economy & Industry', 'AI & Employment', 'AI & National Security', 'AI Infrastructure & Research'],
     summary: `议员质询是否更新产业转型图以纳入AI对技能培训的影响，及是否设立培训连续图保障深度技能人才培养。政府回应已刷新23个产业转型图，推出岗位转型图支持岗位重塑和再培训，推动多项AI相关培训计划，强调通过政府与企业合作提升国人AI技能，促进就业转型。核心争议在于如何平衡AI替代与深度技能人才培养。`,
     summaryKo: `의원이 AI가 기술 훈련에 미치는 영향을 포함하기 위해 산업 전환 지도를 업데이트할 예정인지, 그리고 고급 기술 인재 양성을 보장하기 위해 훈련 연속 지도를 수립할 예정인지 질의했습니다. 정부는 23개의 산업 전환 지도를 새로고침했고, 직무 재구성과 재훈련을 지원하는 직무 전환 지도를 출시했으며, 여러 AI 관련 훈련 계획을 추진하고, 정부와 기업 간 협력을 통해 국민의 AI 기술을 향상하고 고용 전환을 촉진할 것을 강조했습니다. 핵심 쟁점은 AI 대체와 고급 기술 인재 양성의 균형을 맞추는 방법에 있습니다.`,
+    whyItMatters:
+      '政府以刷新 23 个产业转型图、增设岗位转型图作答，未正面回应培训连续图诉求，凸显广度调适优先于深度 AI 人才纵深布局',
+    whyItMattersEn:
+      'Government responds by refreshing 23 industry transformation maps and adding job transition maps, fails to directly address training continuity demands, highlighting breadth adaptation over deep AI talent planning',
+    whyItMattersJa:
+      '政府が23の産業転換ロードマップを更新し、職務転換ロードマップを追加することで対応し、継続的な研修の枠組みに対する要求に直接対応しなかった。これは深度的なAI人材の戦略的配置よりも広度的な調整が優先されていることを強調しています。',
+    whyItMattersKo:
+      '정부가 23개 산업 전환 로드맵을 새로 고치고 직무 전환 로드맵을 추가로 설정함으로써 답변했으나, 교육 연속 로드맵 요청에 정면으로 대응하지 않았으며, 너비 조정이 깊이 있는 AI 인재 종단 배치보다 우선되고 있음을 부각시켰다',
     summaryJa: `議員は、AI がスキル研修に及ぼす影響を取り込むために産業転換マップを更新するかどうか、および深度スキル人材育成を確保するための継続的訓練マップを確立するかどうかについて質問している。政府は、23 の産業転換マップをリフレッシュしたこと、職務転換マップを導入して職務の再編成と再研修を支援すること、および複数の AI 関連研修計画を推し進めていることで対応し、政府と企業の協力を通じて国民の AI スキルを向上させ、雇用転換を促進することを強調している。コア争点は、AI による代替と深度スキル人材育成のバランスをいかに取るかにある。`,
     summaryEn: `An MP asked whether Industry Transformation Maps will be updated to factor in AI's impact on skills training, and whether Training Continuity Maps should be set up to safeguard deep-skill talent. The government replied that 23 ITMs have been refreshed, Jobs Transformation Maps have been launched to support job redesign and reskilling, and multiple AI-related training programmes are running. It emphasised using government-industry collaboration to lift Singaporeans' AI skills and drive employment transition. The core debate: how to balance AI substitution with cultivation of deep-skill talent.`,
     keyPoints: ['产业转型图动态更新', '岗位转型图支持再培训', '多方合作推动AI培训'],
@@ -6401,6 +7161,13 @@ Mr Gan Kim Yong
     topics: ['Deepfakes & Disinformation'],
     summary: `议员Christopher de Souza质询警方是否追踪通过深度伪造视频和图像实施的诈骗案件数量。内政部长K Shanmugam回应称警方未专门追踪此类案件，虽然收到一些举报，但数量不多。核心争议在于政府对深度伪造诈骗的重视程度及数据透明度。`,
     summaryKo: `의원 Christopher de Souza가 경찰이 딥페이크 비디오와 이미지를 통해 실행된 사기 사건의 수를 추적하고 있는지 질의했습니다. 내무부 장관 K Shanmugam은 경찰이 이러한 유형의 사건을 특별히 추적하지 않고 있으며, 일부 신고를 받았지만 건수가 적다고 응답했습니다. 핵심 쟁점은 정부의 딥페이크 사기에 대한 중요성 정도와 데이터 투명성에 있습니다.`,
+    whyItMatters: '警方未专项追踪深伪诈骗案件，说明新加坡 AI 治理仍停留在原则表态，执法端风险监测能力尚未跟上',
+    whyItMattersEn:
+      "Police have not specifically tracked deepfake fraud cases, showing Singapore's AI governance remains at the level of principle statements, with enforcement-side risk monitoring capacity still lagging",
+    whyItMattersJa:
+      '警察がディープフェイク詐欺事件を専門的に追跡しておらず、シンガポールのAI統治が依然として原則的な表明に止まり、執行段階のリスク監視能力がまだ対応できていないことを示唆しています。',
+    whyItMattersKo:
+      '경찰이 딥페이크 사기 사건을 전문적으로 추적하지 않으며, 싱가포르의 AI 규제가 여전히 원칙 선언에 머물러 있고 집행 측면의 위험 모니터링 능력이 따라가지 못하고 있음을 보여주고 있다',
     summaryJa: `議員 Christopher de Souza は、警察がディープフェイク映像・画像を使用した詐欺事件の件数を追跡しているかどうかについて質問している。内政大臣 K Shanmugam は、警察がこのような事件を特別に追跡していないと答え、いくつかの通報は受けているが、件数は少ないと述べている。コア争点は、政府によるディープフェイク詐欺への注視の程度およびデータ透明性にある。`,
     summaryEn: `MP Christopher de Souza asked whether the police are tracking the number of scams perpetrated through deepfake video and images. Home Affairs Minister K Shanmugam replied that the police are not specifically tracking such cases — some reports have been received but the numbers are not high. The core debate: how seriously the government treats deepfake-enabled scams and the transparency of the data.`,
     keyPoints: ['未专门追踪深伪诈骗', '已有少量举报案件', '案件数量不高'],
@@ -6450,6 +7217,13 @@ Mr K Shanmugam
     topics: ['AI Safety & Ethics', 'AI Economy & Industry', 'AI Infrastructure & Research', 'AI Strategy'],
     summary: `议员质询跨国公司是否因成本因素迁出樟宜商务园及新加坡商业吸引力下降的原因与对策。政府回应新加坡经济竞争力强，持续吸引大型投资，承认部分企业因市场及工作模式变化调整布局。政府将通过投资研发、人才培养及财政激励措施保持商业环境吸引力。核心争议在于如何平衡成本与创新，防止企业外迁。`,
     summaryKo: `의원이 다국적 기업이 비용 요인으로 인해 Changi Business Park에서 이전했는지, 싱가포르의 비즈니스 매력 감소의 이유와 대책을 질의했습니다. 정부는 싱가포르의 경제 경쟁력이 강하고 지속적으로 대규모 투자를 유치하고 있으며, 일부 기업이 시장 및 근무 방식의 변화로 인해 배치를 조정했음을 인정했습니다. 정부는 R&D 투자, 인재 양성 및 재정 인센티브 조치를 통해 비즈니스 환경의 매력을 유지할 것입니다. 핵심 쟁점은 비용과 혁신의 균형을 맞추고 기업 이전을 방지하는 방법에 있습니다.`,
+    whyItMatters: '政府松口以可退还投资税收抵免留人，标志新加坡吸引 AI 等跨国投资的打法已从拼成本转向拼补贴',
+    whyItMattersEn:
+      "Government concedes with returnable investment tax credits to retain talent, marking Singapore's strategy for attracting multinational AI investment shifting from cost competition to subsidy competition",
+    whyItMattersJa:
+      '政府が返納可能な投資税額控除で人材を留めることを認め、シンガポールがAIなどの外国投資誘致の戦略をコスト競争から補助金競争へシフトさせたことを象徴しています。',
+    whyItMattersKo:
+      '정부가 환급 가능한 투자 세액공제로 인재를 유지하려는 데 양보하며, 싱가포르가 AI 등 다국적 투자를 유치하는 전략이 원가 경쟁에서 보조금 경쟁으로 전환되었음을 표시했다',
     summaryJa: `議員は、多国籍企業がコスト要因によってシンガポール樟宜ビジネスパークから撤出しているかどうか、およびシンガポールのビジネス吸引力低下の原因と対策について質問している。政府は、シンガポールの経済競争力が強く、継続的に大型投資を引き付けていると対応し、一部の企業が市場および労働モデルの変化のために事業配置を調整していることを認めている。政府は、研究開発投資、人材育成、および財政インセンティブ措置を通じて商業環境の吸引力を維持する予定である。コア争点は、コストとイノベーションのバランスをいかに取り、企業の移出を防ぐかにある。`,
     summaryEn: `An MP asked whether MNCs are leaving Changi Business Park due to cost factors and what is causing perceived decline in Singapore's business appeal — and how the government plans to respond. The government replied that Singapore's economy remains highly competitive and continues to attract major investment, while acknowledging some firms are adjusting footprints due to market and working-model changes. It will keep the environment attractive through R&D investment, talent development, and fiscal incentives. The core debate: how to balance cost and innovation to prevent firm relocation.`,
     keyPoints: ['新加坡经济竞争力强', '部分企业调整运营布局', '财政与非财政双重支持'],
@@ -6499,6 +7273,14 @@ asked the Deputy Prime Minister and Minister for Trade and Industry given report
     topics: ['AI Economy & Industry', 'AI in Education', 'AI & National Security', 'AI Infrastructure & Research'],
     summary: `议员质询新加坡AI语音克隆诈骗案件数量及政府应对措施。政府回应称相关案件数量不高，警方未专门追踪此类诈骗，但已采取包括终止涉诈通讯线路、限制后付费SIM卡数量等措施。强调全社会共同防范诈骗的重要性，呼吁公众增强防范意识。核心争议在于诈骗案件具体数据缺乏透明及技术威胁的现实性。`,
     summaryKo: `의원이 싱가포르의 AI 음성 복제 사기 사건 수 및 정부의 대응 조치를 질의했습니다. 정부는 관련 사건 수가 높지 않으며, 경찰이 이러한 유형의 사기를 전문적으로 추적하지 않았지만, 사기 관련 통신 선로 종료, 후불 SIM 카드 수 제한 등의 조치를 취했다고 응답했습니다. 전 사회적 사기 방지의 중요성을 강조하고 공중의 방지 의식 향상을 촉구했습니다. 핵심 쟁점은 사기 사건 구체적 데이터 투명성 부족과 기술 위협의 현실성에 있습니다.`,
+    whyItMatters:
+      'Minister of State for Home Affairs 承认警方未专门追踪 AI 语音克隆诈骗，新加坡仍靠电信管制而非专项立法应对生成式 AI 风险',
+    whyItMattersEn:
+      'Minister of State for Home Affairs acknowledges police have not specifically tracked AI voice-cloning fraud, Singapore still relies on telecommunications regulation rather than targeted legislation to address generative AI risks',
+    whyItMattersJa:
+      '内務大臣補佐がAI音声クローン詐欺について警察が専門的に追跡していないことを認め、シンガポールが依然として電気通信規制に頼り、生成型AI対応の専門立法に頼っていないことを示しました。',
+    whyItMattersKo:
+      '내무부차관급이 경찰이 AI 음성 복제 사기를 전문적으로 추적하지 않았음을 인정했으며, 싱가포르가 여전히 통신 규제에만 의존하고 생성형 AI 위험에 대한 전문 입법이 없음을 드러냈다',
     summaryJa: `議員は、シンガポール AI ボイスクローン詐欺事件の件数および政府の対応措置について質問している。政府は、関連事件の件数は高くなく、警察がこのような詐欺を特別に追跡していないと答えるが、詐欺関連通信回線の終止、後払い SIM カード枚数の制限などの措置を既に講じていると述べている。全社会による詐欺防止の共同努力の重要性を強調し、一般市民に防止意識を強化するよう呼びかけている。コア争点は、詐欺事件の具体的なデータの透明性不足および技術的脅威の現実性にある。`,
     summaryEn: `An MP asked about the number of AI voice-cloning scam cases in Singapore and the government's response. The government replied that case numbers are not high and the police are not specifically tracking such scams, but it has taken measures including terminating communication lines linked to scams and limiting the number of post-paid SIM cards. It stressed the importance of whole-of-society scam prevention and urged the public to strengthen awareness. The core debate: lack of transparency on specific case data and the reality of the technological threat.`,
     keyPoints: ['诈骗案件数量不高', '加强通讯渠道监管', '公众需提高防范意识'],
@@ -6550,6 +7332,14 @@ The Minister of State for Home Affairs (Assoc Prof Dr Muhammad Faishal Ibrahim) 
     topics: ['AI Economy & Industry', 'AI Strategy'],
     summary: `议员质询个人数据保护法中是否包含个人数据删除权及相关救济机制。政府回应指出，法律规定组织在数据不再需要时必须停止保留或妥善处理，无论是否有同意，且个人数据保护委员会有权指令组织销毁数据或停止使用。核心争议在于是否存在明确的"删除权"条款及其执行保障。`,
     summaryKo: `의원이 개인정보 보호법에 개인정보 삭제권 및 관련 구제 메커니즘이 포함되어 있는지를 질의하였습니다. 정부는 법률이 조직들에게 데이터가 더 이상 필요하지 않을 때 보존을 중단하거나 적절히 처분하도록 규정하고 있으며, 동의 여부와 관계없이 개인정보 보호위원회가 조직에 데이터 삭제 또는 사용 중단을 명령할 권한이 있다고 응답하였습니다. 핵심 논쟁은 명확한 「삭제권」 조항 및 그 이행 보장이 존재하는지 여부입니다.`,
+    whyItMatters:
+      '个人数据保护法没有法定删除权条款，执行全靠个人数据保护委员会自由裁量，为 AI 时代数据主体维权埋下隐患',
+    whyItMattersEn:
+      'Personal Data Protection Act lacks statutory deletion rights provisions, enforcement wholly dependent on Personal Data Protection Commission discretion, seeding risks for data subject redress in the AI era',
+    whyItMattersJa:
+      '個人データ保護法には法定削除権条項がなく、執行は完全に個人データ保護委員会の自由裁量に依存しており、AI時代のデータ主体の権利保護に潜在的なリスクを埋め込んでいます。',
+    whyItMattersKo:
+      '개인정보보호법에 법정 삭제권 조항이 없으며, 집행이 개인정보보호위원회의 재량권에만 의존하여, AI 시대에 데이터 주체 권리 구제를 위한 숨겨진 위험을 남겼다',
     summaryJa: `議員は、個人データ保護法において個人データ削除権および関連する救済メカニズムが含まれているかどうかについて質問している。政府は、法律は組織がデータがもはや必要でなくなった時点で、同意の有無を問わず、保有を中止するか適切に処理しなければならないと規定しており、個人データ保護委員会はデータの破棄または使用中止を指示する権限を有していると指摘している。コア争点は、明確な「削除権」条項およびその実施保障が存在するかどうかにある。`,
     summaryEn: `An MP asked whether the PDPA includes a right to deletion of personal data and the available recourse. The government replied that the law requires organisations to stop retaining or properly dispose of personal data when no longer needed, with or without consent, and the Personal Data Protection Commission has the power to direct organisations to destroy or stop using such data. The core debate: whether there is an explicit "right to erasure" clause and how it is enforced.`,
     keyPoints: ['无明确删除权条款', '数据保留有严格限制', '监管机构有执法权'],
@@ -6607,6 +7397,13 @@ Mrs Josephine Teo
     topics: ['AI Governance & Regulation', 'AI Economy & Industry', 'AI in Public Sector', 'AI Strategy'],
     summary: `议员质询钓鱼诈骗共责框架发布时间、Money Lock功能使用率及是否强制银行参与。政府回应将于2024年内公布框架，Money Lock账户超7.8万个，主要用户为50岁以上，MAS暂不强制银行参与。质询关注国际经验及老年人数字素养，政府强调提升宣传力度。`,
     summaryKo: `의원이 피싱 사기 공동 책임 프레임워크 공개 시간, Money Lock 기능 사용률 및 은행의 의무 참여 여부를 질의하였습니다. 정부는 2024년 내에 프레임워크를 공표할 것이며, Money Lock 계좌가 7만 8천 개를 초과하고 주요 사용자가 50세 이상이며 MAS가 은행의 의무 참여를 강제하지 않는다고 응답하였습니다. 질의는 국제 경험과 고령 인구의 디지털 리터러시에 주목하였으며, 정부는 홍보 강도 제고를 강조하였습니다.`,
+    whyItMatters: 'MAS 至今不强制银行担责，若换成 AI 生成的诈骗浪潮，现有自愿框架恐难跟上风险升级速度',
+    whyItMattersEn:
+      'Monetary Authority of Singapore has not mandated bank liability; if replaced by AI-generated fraud waves, existing voluntary frameworks may struggle to keep pace with escalating risks',
+    whyItMattersJa:
+      'MAS はこれまで銀行に責任を強制していませんが、AI生成詐欺の波に転換した場合、現存の自発的枠組みがリスク上昇速度に追いつくことは難しいと懸念されます。',
+    whyItMattersKo:
+      'MAS가 지금까지 은행에 책임을 강제하지 않고 있으며, 만약 생성형 AI 사기 파도로 바뀐다면 현존 자발적 프레임워크가 위험 상향 속도를 따라가기 어려울 우려가 있다',
     summaryJa: `議員は、フィッシング詐欺共責フレームワークの発表時期、Money Lock機能の利用率、および銀行の強制参加の可否について質問した。政府は2024年内にフレームワークを公表することを回答し、Money Lock口座は78,000口座を超えており、主なユーザーは50歳以上である。MASは現在銀行の強制参加を強制していない。質問は国際的経験と高齢者のデジタル・リテラシーに焦点を当て、政府は広報力の向上を強調した。`,
     summaryEn: `MPs asked about the release timeline of the Shared Responsibility Framework for phishing scams, take-up of Money Lock, and whether banks would be required to participate. The government replied that the framework will be released within 2024, more than 78,000 Money Lock accounts have been opened (mainly users aged 50+), and MAS will not mandate bank participation for now. MPs focused on overseas experience and elderly digital literacy; the government emphasised stronger publicity.`,
     keyPoints: ['共责框架年底发布', 'Money Lock用户分布', '暂不强制银行参与'],
@@ -6699,6 +7496,14 @@ The Minister of State for Culture, Community and Youth and Trade and Industry (M
     topics: ['AI Governance & Regulation', 'AI in Healthcare', 'AI in Public Sector'],
     summary: `议员质询卫生部关于医院居家护理服务的进展及规模化情况，探讨MediShield Life和MediSave是否可支持居家医疗理赔。同时质疑现行活动能力评估（ADL）标准是否合理，呼吁更灵活考量患者实际需求。核心争议在于居家护理政策的覆盖范围及补贴机制是否足够支持患者及其家庭。`,
     summaryKo: `의원이 보건부에 병원 기반 재가 요양 서비스의 진전 및 규모화 상황에 관해 질의하고, MediShield Life와 MediSave가 재가 의료 청구를 지원할 수 있는지 논의하였습니다. 동시에 현행 활동능력 평가(ADL) 기준의 합리성에 의문을 제기하고 환자의 실제 필요를 보다 유연하게 고려할 것을 촉구하였습니다. 핵심 논쟁은 재가 요양 정책의 보장 범위 및 보조금 메커니즘이 환자 및 그 가족을 충분히 지원할 수 있는지 여부입니다.`,
+    whyItMatters:
+      'ADL 评估标准僵化、MediSave 与 MediShield Life 理赔存疑，暴露新加坡居家 AI 照护规模化前必须先补的支付与数据标准缺口',
+    whyItMattersEn:
+      'Activities of Daily Living assessment standards are rigid, Medisave and Medishield Life claims processes remain uncertain, exposing payment and data standards gaps Singapore must close before scaling home-based AI care',
+    whyItMattersJa:
+      'ADL評価基準の硬直化とMediSave および MediShield Life の保険金支払いに対する疑念が、シンガポールの在宅AI介護スケール化前にあらかじめ補う必要のある支払いおよびデータ標準の空白を露呈しています。',
+    whyItMattersKo:
+      'ADL 평가 기준이 경직되어 있고, MediSave와 MediShield Life 보험금 청구에 의문이 있으며, 싱가포르의 가정 AI 케어 규모화 전에 먼저 보충해야 할 지급 및 데이터 표준 공백을 노출시켰다',
     summaryJa: `議員は保健省に対し、病院の在宅ケアサービスの進捗とスケーリング状況について質問し、MediShield LifeおよびMediSaveが在宅医療給付をサポートできるかどうかを検討した。同時に、現行の活動能力評価（ADL）基準の妥当性に疑問を呈し、患者の実際のニーズをより柔軟に考慮するよう求めた。核心的な争点は、在宅ケア政策のカバレッジ範囲と補助メカニズムが患者およびその家族を十分に支援できるかどうかにある。`,
     summaryEn: `MPs asked MOH about progress and scale-up of hospital-at-home services and whether MediShield Life and MediSave can support home-care claims. They also questioned whether current Activities of Daily Living (ADL) assessment criteria are reasonable, calling for more flexible consideration of patient need. The core debate: whether home-care coverage and subsidy mechanisms are sufficient to support patients and their families.`,
     keyPoints: ['推动居家医疗服务', '理赔政策需更灵活', 'ADL评估标准质疑'],
@@ -6751,6 +7556,14 @@ Today, we have already started thinking outside the box in healthcare policy. Su
     topics: ['AI Economy & Industry', 'AI & Employment', 'AI in Education', 'AI Infrastructure & Research'],
     summary: `议员质询教育部是否要求中学教师熟悉未来经济集群下的新兴职业路径及技能需求。教育部回应教师可通过教育及职业指导顾问及行业交流活动了解相关信息，且总部定期发送季度通讯。学生被鼓励主动利用MySkillsFuture平台及相关组织资源。核心争议在于教师对新兴职业信息的更新频率及深度是否足够。`,
     summaryKo: `의원이 교육부에 중학교 교사들이 향후 경제 클러스터 내 신흥 직업 경로 및 기술 요구사항에 정통할 것이 요구되는지를 질의하였습니다. 교육부는 교사들이 교육 및 직업 지도 고문과 산업 교류 활동을 통해 관련 정보를 알 수 있으며, 본부가 정기적으로 분기별 뉴스레터를 발송한다고 응답하였습니다. 학생들은 MySkillsFuture 플랫폼과 관련 조직 자원을 적극적으로 활용하도록 권장받았습니다. 핵심 논쟁은 교사들의 신흥 직업 정보 업데이트 빈도와 깊이가 충분한지 여부입니다.`,
+    whyItMatters:
+      '教师职业信息全靠季度通讯与 ECG 顾问零星更新，暴露 AI 驱动经济转型中师资跟进速度远落后于岗位变化的结构性缺口',
+    whyItMattersEn:
+      'Teacher career information relies wholly on quarterly newsletters and sporadic Education and Career Guidance adviser updates, exposing structural lag in educator adaptation speed during AI-driven economic transition',
+    whyItMattersJa:
+      '教師職業情報は四半期ニュースレターと ECG 顧問によるまばらな更新に頼っており、AI駆動経済転換における教職員の対応速度が職務の変化にはるかに遅れている構造的欠陥を浮き彫りにしています。',
+    whyItMattersKo:
+      '교사 직업 정보가 전적으로 분기별 통신과 ECG 상담원의 산발적 업데이트에 의존하고 있으며, AI 구동 경제 전환에서 교원 역량 강화 속도가 직무 변화에 훨씬 뒤떨어져 있는 구조적 공백을 드러냈다',
     summaryJa: `議員は教育省に対し、中学教師が将来の経済クラスターにおける新興職業パスおよび技能要件に精通するよう要求しているかについて質問した。教育省は、教師が教育および職業ガイダンスアドバイザーおよび業界交流活動を通じて関連情報を入手でき、本部が定期的に四半期ニュースレターを送付していることを回答した。学生はMySkillsFutureプラットフォームおよび関連組織リソースの活用を積極的に奨励されている。核心的な争点は、教師の新興職業情報に関する更新頻度および深度が十分かどうかである。`,
     summaryEn: `An MP asked whether MOE requires secondary school teachers to be familiar with emerging career pathways and skills under future economic clusters. MOE replied that teachers can learn from in-school Education and Career Guidance (ECG) counsellors and industry exchange events, with HQ sending quarterly newsletters. Students are encouraged to actively use the MySkillsFuture platform and related organisation resources. The core debate: whether the frequency and depth of teachers' updates on emerging careers are sufficient.`,
     keyPoints: ['教师通过ECG了解职业', '定期行业交流活动', '季度通讯更新信息'],
@@ -6807,6 +7620,13 @@ The Minister of State for Education (Ms Gan Siow Huang) (for the Minister for Ed
     ],
     summary: `议员质询面部识别技术在新加坡的风险与收益、监管框架及公众参与情况。政府回应强调面部图像作为生物识别数据受个人数据保护法约束，指出安全用途为主，已有相关指南和治理框架确保技术负责任和伦理使用。核心争议在于如何平衡技术应用与隐私保护。`,
     summaryKo: `의원이 싱가포르에서의 얼굴 인식 기술의 위험과 이점, 규제 프레임워크 및 공중 참여 상황을 질의하였습니다. 정부는 얼굴 이미지가 생물 인식 데이터로서 개인정보 보호법의 적용을 받으며, 안전한 용도가 주된 목적이며, 기술의 책임 있고 윤리적 사용을 보장하기 위한 관련 지침과 거버넌스 프레임워크가 있다고 강조하여 응답하였습니다. 핵심 논쟁은 기술 응용과 개인정보 보호의 균형을 어떻게 맞출 것인지입니다.`,
+    whyItMatters: '人脸识别未立专项法，仅靠 PDPA 与指南软约束，暴露新加坡安全优先于隐私的监管取舍',
+    whyItMattersEn:
+      "Facial recognition lacks dedicated legislation, relying only on Personal Data Protection Act and soft guidelines, exposing Singapore's regulatory choice of security over privacy",
+    whyItMattersJa:
+      '顔認識に関する専門法が制定されておらず、PDPA およびガイドラインのソフト制約に頼っており、シンガポールがセキュリティをプライバシーより優先する規制上の選択を露呈しています。',
+    whyItMattersKo:
+      '얼굴인식에 전문 법규가 없으며, PDPA와 지침의 소프트 제약에만 의존하고 있으며, 싱가포르가 보안을 개인정보보호보다 우선시하는 규제 선택을 드러냈다',
     summaryJa: `議員がシンガポールにおける顔認識技術のリスクとベネフィット、規制枠組みおよび公開参加について質問した。政府は、顔画像がバイオメトリック・データとして個人データ保護法の対象となることを強調し、セキュリティ目的が主であることを指摘し、技術の責任ある倫理的使用を確保するための関連ガイドラインおよび統治枠組みが存在することを述べた。核心的な争点は、技術応用とプライバシー保護のバランスをいかに取るかである。`,
     summaryEn: `An MP asked about the risks and benefits of widespread facial recognition technology (FRT) adoption in Singapore, the regulatory framework, and public engagement. The government replied that facial images, as biometric data, fall under the PDPA, security uses dominate, and existing guidance and governance frameworks ensure responsible, ethical use. The core debate: balancing technology adoption with privacy protection.`,
     keyPoints: ['面部图像属个人数据', '安全用途为主导', '已有监管与指导框架'],
@@ -6907,6 +7727,13 @@ Mrs Josephine Teo
     topics: ['AI Economy & Industry', 'AI & Employment', 'AI & National Security', 'AI Infrastructure & Research'],
     summary: `议员质询新加坡如何在土地、劳动力和碳排放限制下推动经济增长，特别关注生成式人工智能等新兴技术带来的机遇与挑战。政府回应强调保持投资吸引力，强化制造业和服务业，提升基础设施和人才培养，确保政策稳定以应对全球竞争和技术变革。核心争议点在于如何平衡创新发展与经济基础的稳固。`,
     summaryKo: `의원이 싱가포르가 토지, 노동력 및 탄소 배출 제한 하에서 경제 성장을 추진하는 방법을 질의하였으며, 특히 생성형 인공지능 등 신흥 기술이 가져오는 기회와 과제에 주목하였습니다. 정부는 투자 매력성을 유지하고, 제조업 및 서비스업을 강화하며, 기초 시설과 인재 양성을 제고하고, 글로벌 경쟁 및 기술 변화에 대응하기 위해 정책 안정성을 보장할 것을 강조하여 응답하였습니다. 핵심 논쟁점은 혁신 발전과 경제 기초의 견고화를 어떻게 균형 있게 추진할 것인지입니다.`,
+    whyItMatters: '生成式 AI 挑战被纳入 2024 预算国会辩论的经济增长叙事，政府回应仍限于稳定重申，未见对应产业新政',
+    whyItMattersEn:
+      'Generative AI challenges were included in 2024 budget Parliament debate economic growth narrative, government responses still limited to restating stability, with no corresponding new industry policy visible',
+    whyItMattersJa:
+      '生成型AI の課題が 2024 年度予算国会辩論の経済成長ナラティブに組み込まれましたが、政府の対応は依然として安定性の再言及に限定されており、対応する産業新政策は見当たりません。',
+    whyItMattersKo:
+      '생성형 AI 도전이 2024년 예산 국회 논쟁의 경제 성장 서사에 포함되었으나, 정부 대응이 여전히 안정성 재확인에만 제한되어 있으며, 이에 상응하는 산업 신정책을 보지 못했다',
     summaryJa: `議員は、土地、労働力、炭素排出制限の下でシンガポールがいかに経済成長を推し進めるかについて質問し、生成AIなどの新興技術がもたらす機会と課題に特に焦点を当てた。政府は、投資吸引力を維持し、製造業およびサービス業を強化し、インフラおよび人材育成を向上させ、グローバル競争および技術変化に対応するために政策の安定性を確保することを強調した。核心的な争点は、イノベーション開発と経済基盤の堅牢さのバランスをいかに取るかである。`,
     summaryEn: `MPs asked how Singapore will drive growth under land, manpower and carbon constraints, focusing on the opportunities and challenges from emerging technologies like generative AI. The government emphasised keeping the country attractive for investment, strengthening manufacturing and services, and lifting infrastructure and talent development, with policy stability to handle global competition and tech change. The core debate: balancing innovation with a solid economic base.`,
     keyPoints: ['经济增长面临多重限制', '新兴AI技术带来挑战机遇', '需持续吸引高价值投资'],
@@ -6984,6 +7811,13 @@ Sir, having a growing and vibrant economy is very much a part of our efforts to 
     topics: ['AI Safety & Ethics', 'AI Economy & Industry', 'AI & National Security', 'AI Infrastructure & Research'],
     summary: `议员质询新加坡在AI时代如何加强数字基础设施建设及人才培养，强调AI既带来机遇也有风险，需保持人类控制。政府回应将继续加大投资，推动国家AI战略2.0，提升网络速度和计算能力，保障数字信任。核心争议在于如何平衡技术发展与安全伦理，以及投资力度是否足够。`,
     summaryKo: `의원이 AI 시대에 싱가포르가 디지털 기초 시설 건설 및 인재 양성을 강화하는 방법을 질의하였으며, AI가 기회를 제공하는 한편 위험도 있으므로 인간 통제를 유지할 필요가 있음을 강조하였습니다. 정부는 계속해서 투자를 확대하고, 국가 AI 전략 2.0을 추진하며, 네트워크 속도와 컴퓨팅 능력을 제고하고, 디지털 신뢰를 보장할 것이라고 응답하였습니다. 핵심 논쟁은 기술 발전과 안전 윤리를 어떻게 균형 있게 추진할 것인지, 그리고 투자 강도가 충분한지 여부입니다.`,
+    whyItMatters: '国会跨党派追问国家 AI 战略 2.0 投入是否到位，凸显数字基建与人才储备可能存在缺口',
+    whyItMattersEn:
+      'Cross-party Parliament questions whether National AI Strategy 2.0 funding is in place, highlighting possible gaps in digital infrastructure and talent reserves',
+    whyItMattersJa:
+      '国会は超党派で国家AI戦略2.0の投資が十分であるかについて質問を重ね、デジタルインフラと人材備蓄に空白が存在する可能性を浮き彫りにしています。',
+    whyItMattersKo:
+      '국회 초당파 의원들이 국가 AI 전략 2.0 투입이 제때 이루어졌는지 추궁하며, 디지털 기반시설 및 인재 확보에 잠재적 공백이 있을 수 있음을 부각시켰다',
     summaryJa: `議員は、AI時代においてシンガポールがいかにしてデジタル基盤整備と人材育成を強化するかについて質問し、AIは機会もリスクも持つこと、人間のコントロールを維持する必要があることを強調した。政府は投資を継続的に増加させ、国家AI戦略2.0を推し進め、ネットワーク速度と計算能力を強化し、デジタル信頼を確保することで対応した。核心的な争点は、技術開発とセキュリティ倫理のバランスをいかに取るか、および投資力度が十分かどうかである。`,
     summaryEn: `MPs asked how Singapore will strengthen digital infrastructure and talent development in the AI era, stressing that AI brings both opportunity and risk and that humans must remain in control. The government replied that it will keep stepping up investment, drive National AI Strategy 2.0, lift network speeds and compute, and safeguard digital trust. The core debate: balance between tech progress and safety/ethics, and whether investment is sufficient.`,
     keyPoints: ['AI是未来关键技术', '需加强数字基础设施', '保持技术人类控制'],
@@ -7060,6 +7894,14 @@ Throughout history, the mastery of technology has been essential for a nation's 
     topics: ['AI in Education', 'AI in Healthcare', 'AI & National Security', 'AI Infrastructure & Research'],
     summary: `议员强调教育需适应快速技术变革，特别是生成式人工智能带来的挑战，呼吁拓展技能提升课程，支持学生多元发展。政府认可教育系统的韧性与国际表现，致力推动学生具备应变能力和创新精神。核心争议在于如何平衡传统教学与新兴技能培养，以及资金使用范围的扩展。`,
     summaryKo: `의원들은 교육이 빠른 기술 변화에 대응해야 함을 강조했으며, 특히 생성형 인공지능이 야기한 과제에 주목하여 기술 향상 과정을 확대하고 학생의 다양한 발전을 지원할 것을 촉구했습니다. 정부는 교육 체계의 회복력과 국제적 성과를 인정하며, 학생들이 변화 능력과 혁신 정신을 갖추도록 추진하기로 노력하고 있습니다. 핵심 쟁점은 전통 교육과 신흥 기술 양성 간의 균형을 어떻게 맞출 것인지, 그리고 자금 사용 범위를 어떻게 확장할 것인지입니다.`,
+    whyItMatters:
+      '2024 年教育预算辩论把生成式 AI 冲击带入中小学课程议题，显示国家 AI 战略正从职场延伸至基础教育，教育部应对仍停留在排名自证阶段',
+    whyItMattersEn:
+      '2024 education budget debate brought generative AI impact into primary and secondary curriculum discussion, showing national AI strategy extending from workplace to foundational education, Ministry of Education(MOE) response still at ranking self-justification stage',
+    whyItMattersJa:
+      '2024年度教育予算辩論は生成型AIの影響を小中学校カリキュラム議題に持ち込み、国家AI戦略が職場から基礎教育へと拡張していることを示していますが、教育省（MOE）の対応はランキング自証段階にとどまっています。',
+    whyItMattersKo:
+      '2024년 교육 예산 논쟁이 생성형 AI 충격을 초중고 교육과정 의제로 끌어들였으며, 국가 AI 전략이 직장에서 기초교육으로 확대되고 있음을 보여주고 있으나, 교육부（MOE）의 대응은 여전히 순위 자증 단계에 머물러 있다',
     summaryJa: `議員は、教育が急速な技術変化に適応する必要があることを強調し、特に生成AIがもたらす課題に焦点を当て、スキルアップ課程の拡張と学生の多様な発展を求めた。政府は教育システムの回復力と国際的パフォーマンスを認め、学生が適応能力と革新精神を備えるよう推し進めることを約束した。核心的な争点は、従来の教育と新興スキル育成のバランスをいかに取るか、および資金使用範囲の拡張にある。`,
     summaryEn: `MPs stressed that education must adapt to rapid technological change, especially the challenges from generative AI, calling for expanded upskilling courses and support for students' diverse development. The government acknowledged the system's resilience and international performance and committed to building students' adaptability and creativity. The core debate: balancing traditional teaching with cultivation of emerging skills, and broadening the scope of funding use.`,
     keyPoints: ['教育需适应技术变革', '推动多元课程发展', '提升学生综合能力'],
@@ -7112,6 +7954,13 @@ We are living in a disruptive world where the pace of change is rapid and relent
     topics: ['AI Economy & Industry', 'AI & Employment', 'AI & National Security', 'AI in Public Sector'],
     summary: `议员质询新加坡作为亚太区生成式AI最快采用国，是否低估了AI驱动的就业流失风险，是否会评估AI带来的就业置换规模，以及如何推动企业提前投资员工技能提升。政府回应该议题将在通讯及资讯部预算辩论中详细讨论，未直接回应具体问题，体现出议题尚处于政策研判阶段，存在信息透明度和应对策略的关注点。`,
     summaryKo: `의원들은 싱가포르가 아시아태평양 지역에서 생성형 AI를 가장 빠르게 도입한 국가로서 AI가 초래한 고용 손실 위험을 과소평가했는지, AI로 인한 고용 대체 규모를 평가할 것인지, 그리고 기업이 직원 기술 향상에 선제적으로 투자하도록 어떻게 추진할 것인지에 대해 질문했습니다. 정부는 이 문제가 통신정보부 예산 토론에서 상세히 논의될 것이라고 회신했으나, 구체적인 질문에는 직접 답변하지 않았으며, 이는 해당 문제가 여전히 정책 판단 단계에 있고 정보 투명성과 대응 전략에 대한 관심이 존재함을 보여줍니다.`,
+    whyItMatters: '政府把就业置换规模评估推迟至通讯及资讯部预算辩论，暴露新加坡在生成式 AI 冲击下量化答案仍缺席',
+    whyItMattersEn:
+      'Government defers employment displacement scale assessment to Ministry of Communications and Information budget debate, exposing that Singapore still lacks quantified answers under generative AI impact',
+    whyItMattersJa:
+      '政府は雇用置換規模評価を通信・情報部（MDDI）予算辩論まで延期しており、シンガポールが生成型AI の影響下での定量的回答がまだ不在であることを露呈しています。',
+    whyItMattersKo:
+      '정부가 고용 대체 규모 평가를 통신정보부 예산 논쟁으로 연기하며, 싱가포르가 생성형 AI 충격 아래에서 정량적 답변이 여전히 부재함을 노출시켰다',
     summaryJa: `議員は、アジア太平洋地域における生成AI最速導入国であるシンガポールは、AI駆動の雇用喪失リスクを過小評価していないか、AIによるジョブ置換の規模を評価するかどうか、および企業が従業員のスキルアップに先立ってどのように投資を推し進めるかについて質問した。政府は、このテーマは通信・情報部の予算討論で詳細に議論されることで対応し、具体的な質問には直接対応していない。これは、そのテーマがまだ政策判断段階にあり、情報透明性と対応戦略に関する懸念が存在することを反映している。`,
     summaryEn: `An MP asked whether Singapore — the fastest adopter of generative AI in Asia-Pacific — is underestimating the AI-driven job-loss risk, whether the government will assess the scale of AI-induced job displacement, and how to incentivise firms to invest early in upskilling. The government replied that this topic will be addressed in detail at the MCI Committee of Supply debate, without directly answering the specifics — indicating the issue is still at the policy-deliberation stage, with concerns over transparency and response strategy.`,
     keyPoints: ['担忧AI就业流失被低估', '计划评估就业置换规模', '推动企业投资员工再培训'],
@@ -7187,6 +8036,14 @@ asked the Minister for Communications and Information (a) whether there are conc
     topics: ['AI Governance & Regulation', 'AI & National Security', 'AI in Public Sector'],
     summary: `议员质询国防部关于全球及区域安全趋势的监测情况，特别关注俄乌战争及中东冲突对新加坡安全的影响。政府回应强调国际秩序动荡、网络战与信息战的挑战，表明将持续关注并调整国防策略以应对复杂多变的安全环境。核心争议点在于如何平衡预算分配与应对新兴安全威胁。`,
     summaryKo: `의원들은 전 지구적 및 지역 안보 추세에 대한 국방부의 감시 상황에 대해 질문했으며, 특히 러시아-우크라이나 전쟁과 중동 분쟁이 싱가포르 안보에 미치는 영향에 주목했습니다. 정부는 국제 질서 혼란, 사이버 전쟁과 정보 전쟁의 과제를 강조하며, 복잡하고 변화하는 안보 환경에 대응하기 위해 지속적으로 주시하고 국방 전략을 조정할 것임을 표명했습니다. 핵심 쟁점은 예산 배분과 신흥 안보 위협 대응 간의 균형을 어떻게 맞출 것인지입니다.`,
+    whyItMatters:
+      '2024-02-28 国防预算辩论聚焦俄乌与中东冲突及网络信息战风险，却未见 AI 军事化投入的具体拨款，暴露国防预算与 AI 战略尚未挂钩的空白',
+    whyItMattersEn:
+      '2024-02-28 Defence budget debate focused on Russia-Ukraine and Middle East conflicts and cyber-information war risks, yet saw no specific allocation for military AI investment, exposing a gap between Defence budget and AI strategy not yet linked',
+    whyItMattersJa:
+      '2024年2月28日の国防予算辩論はロシア・ウクライナ紛争および中東紛争、ならびに情報戦争リスクに焦点を当てましたが、AI軍事化投資の具体的な予算配分は見当たらず、国防予算とAI戦略がまだ結びついていない空白を露呈しています。',
+    whyItMattersKo:
+      '2024년 2월 28일 국방 예산 논쟁이 러시아-우크라이나 및 중동 분쟁과 사이버정보전 위험에 집중했으나, AI 군사화 투입의 구체적 배분을 보지 못했으며, 국방 예산과 AI 전략이 아직 연계되지 않은 공백을 드러냈다',
     summaryJa: `議員は国防省に対し、世界および地域の安全保障トレンドのモニタリング状況について質疑しました。特にロシア・ウクライナ戦争と中東紛争がシンガポール安全保障に及ぼす影響に注目しています。政府の回答は国際秩序の混乱、サイバー戦争および情報戦の課題を強調し、複雑で変化する安全環境に対応するために国防戦略の継続的な監視と調整を行うことを示しています。核心的な議論点は、予算配分と新興の安全保障脅威への対応とのバランスをいかに取るかにあります。`,
     summaryEn: `MPs asked MINDEF about its tracking of global and regional security trends, focusing on the impact of the Russia-Ukraine war and Middle East conflict on Singapore's security. The government emphasised the volatility of the international order and the challenges from cyber and information warfare, indicating it will keep watching and adjusting defence strategy to handle a complex, shifting security environment. The core debate: balancing budget allocation with response to emerging security threats.`,
     keyPoints: ['国际法与安全秩序', '非国家行为体威胁', '网络与信息战挑战'],
@@ -7254,6 +8111,13 @@ The Charter of the United Nations enshrines the prohibition against the use of f
     topics: ['AI Governance & Regulation', 'AI Safety & Ethics', 'AI Infrastructure & Research', 'AI in Public Sector'],
     summary: `议员Sharael Taha质询预算中对未来可持续发展的关注，指出居民对短期补贴的期待与对长期发展担忧的矛盾。政府副总理黄循财回应国际环境复杂多变，强调新冷战后世界更具冲突与不确定性。核心争议在于如何平衡当前民生需求与未来经济安全，及新形势下的政策应对。`,
     summaryKo: `의원 Sharael Taha는 예산에서 미래 지속 가능한 발전에 대한 관심에 대해 질문했으며, 주민들의 단기 보조금에 대한 기대와 장기 발전에 대한 우려 사이의 모순을 지적했습니다. 정부 부총리 로런스 웡은 국제 환경이 복잡하고 변화하고 있으며, 신냉전 이후 세계가 더욱 갈등과 불확실성으로 가득 차 있다고 강조하며 회신했습니다. 핵심 쟁점은 현재의 민생 수요와 미래 경제 안보 간의 균형을 어떻게 맞출 것인지, 그리고 새로운 상황 속에서의 정책 대응입니다.`,
+    whyItMatters: '黄循财将新冷战叙事嵌入 2024 财年预算辩论，预示新加坡 AI 投入将服从地缘安全逻辑而非民生诉求',
+    whyItMattersEn:
+      "Lawrence Wong embedded new Cold War narrative into 2024 fiscal-year budget debate, signalling Singapore's AI investment will follow geopolitical security logic rather than social welfare imperatives",
+    whyItMattersJa:
+      'ローレンス・ウォンは新冷戦ナラティブを2024会計年度の予算辩論に組み込み、シンガポールのAI投資が地政学的安全保障ロジックに従い、民生的訴求を優先しないことを示唆しています。',
+    whyItMattersKo:
+      '황순재가 신냉전 서사를 2024년 회계연도 예산 논쟁에 내장시키며, 싱가포르의 AI 투입이 지정학적 안보 논리에 복종할 것임을 예시했으며 민생 요청이 아님을 보여주었다',
     summaryJa: `議員の Sharael Taha は、予算における将来の持続可能な発展への関心について質疑し、住民の短期的な補助金への期待と長期的な発展への懸念の矛盾を指摘しました。政府副首相の Huang Xun Cai は、国際環境が複雑に変化していることに応答し、新しい冷戦後の世界がより多くの紛争と不確実性を抱えていることを強調しました。核心的な議論点は、現在の国民生活ニーズと将来の経済安全保障とのバランスをいかに取るか、および新しい状況下での政策対応にあります。`,
     summaryEn: `MP Sharael Taha questioned the Budget's focus on long-term sustainability, pointing to a tension between residents' expectations for short-term cash support and concerns about long-term development. DPM Lawrence Wong replied that the international environment is increasingly complex, with the post-Cold War world now more conflict-prone and uncertain. The core debate: how to balance immediate cost-of-living needs with future economic security, and the policy response under new conditions.`,
     keyPoints: ['居民期待短期补贴', '国际环境更趋复杂', '新冷战时代挑战大'],
@@ -7348,6 +8212,14 @@ Mr Sharael Taha (Pasir Ris-Punggol)
     topics: ['AI Governance & Regulation', 'AI Economy & Industry', 'AI & Employment'],
     summary: `本次辩论聚焦于新加坡2024年财政预算中经济增长的路径，特别是在全球经济放缓、高通胀及地缘政治不确定性加剧的背景下。政府强调通过结构性改革和支持企业与家庭应对挑战，推动长期可持续发展。辩论中提及技术创新、自动化和人工智能对就业及产业竞争力的影响，反映出对AI治理与产业发展的关注。核心争议点在于如何平衡经济增长与社会保障，以及应对全球保护主义带来的挑战。`,
     summaryKo: `이번 토론은 특히 글로벌 경제 둔화, 높은 인플레이션, 지정학적 불확실성 심화의 배경 속에서 싱가포르의 2024년 재정 예산 중 경제 성장의 경로에 초점을 맞추었습니다. 정부는 구조적 개혁과 기업 및 가정의 과제 대응을 지원함으로써 장기적 지속 가능한 발전을 추진할 것을 강조했습니다. 토론에서는 기술 혁신, 자동화, 인공지능이 고용 및 산업 경쟁력에 미치는 영향이 언급되었으며, 이는 AI 거버넌스와 산업 발전에 대한 관심을 반영합니다. 핵심 쟁점은 경제 성장과 사회 보장 간의 균형을 어떻게 맞출 것인지, 그리고 글로벌 보호주의가 초래하는 과제에 어떻게 대응할 것인지입니다.`,
+    whyItMatters:
+      '2024-02-27 单场预算辩论汇集 24 位议员发言，AI 仅被视为保护主义与通胀阴影下的次要变量，暴露彼时新加坡尚无独立 AI 产业政策',
+    whyItMattersEn:
+      "2024-02-27 single budget debate session gathered 24 lawmakers' speeches, AI treated merely as secondary variable under protectionism and inflation shadows, exposing Singapore's lack of standalone AI industry policy at that time",
+    whyItMattersJa:
+      '2024年2月27日の単一会期の予算辩論は24名の議員の発言を集約しましたが、AIは保護主義とインフレーション圧力の下で副次的な変数としてのみ見なされ、当時シンガポールがまだ独立したAI産業政策を持っていないことを露呈しています。',
+    whyItMattersKo:
+      '2024년 2월 27일 단일 예산 논쟁이 24명의 의원 발언을 모았으나, AI가 보호주의와 인플레이션 그림자 아래의 차순위 변수로만 여겨졌으며, 당시 싱가포르가 아직 독립적인 AI 산업 정책이 없었음을 드러냈다',
     summaryJa: `この討論はシンガポールの 2024 年度財政予算における経済成長の経路に焦点を当てています。特に世界経済の減速、高インフレーション、および地政学的不確実性の高まりという背景下においてです。政府は構造的改革と企業・家庭への支援を通じて課題に対応し、長期的な持続可能な発展を推進することを強調しています。この討論では技術革新、自動化、および人工知能が雇用と産業競争力に与える影響について触れており、AI ガバナンスと産業開発への関心を反映しています。核心的な議論点は、経済成長と社会保障とのバランスをいかに取るか、および世界的な保護主義がもたらす課題にいかに対応するかにあります。`,
     summaryEn: `The debate focused on the path to economic growth in Singapore's Budget 2024, against a backdrop of global slowdown, high inflation and rising geopolitical uncertainty. The government emphasised structural reform and support for firms and households to navigate challenges, driving long-term sustainability. References to tech innovation, automation, and AI's impact on jobs and industry competitiveness reflected concern over AI governance and industrial development. The core debate: how to balance growth with social protection and respond to rising global protectionism.`,
     keyPoints: ['经济结构需结构性改革', 'AI与自动化重塑就业', '全球环境趋向保护主义'],
@@ -7464,6 +8336,13 @@ I rise in support of the Budget, which lays out a confident path forward for Sin
     topics: ['AI Governance & Regulation', 'AI Economy & Industry', 'AI & Employment', 'AI in Public Sector'],
     summary: `辩论围绕2024年预算案展开，质询方关注政府信息透明度、社会公平及退休保障等问题。政府回应部分采纳反对党建议，如临时失业援助计划。核心争议在于政府是否真正开放接受多元意见及如何缩小理想与现实差距。`,
     summaryKo: `토론은 2024년 예산안을 중심으로 진행되었으며, 질문자들은 정부의 정보 투명성, 사회 공평성, 퇴직 보장 등의 문제에 관심을 기울였습니다. 정부는 야당의 일부 제안(예: 임시 실업 지원 계획)을 채택함으로써 대응했습니다. 핵심 쟁점은 정부가 다양한 의견을 진정으로 개방적으로 수용하는지, 그리고 이상과 현실의 격차를 어떻게 줄일 것인지입니다.`,
+    whyItMatters: '预算案首次让步接纳反对党临时失业援助计划，为日后 AI 冲击就业时社会保障改革松动开先例',
+    whyItMattersEn:
+      'Budget for the first time conceded to opposition temporary unemployment assistance proposal, setting precedent for loosened social security reform when AI impacts employment later',
+    whyItMattersJa:
+      '予算案は初めて譲歩し野党の一時的失業援助計画を受け入れ、将来AIが雇用に影響を与える時の社会保障改革緩和の先例を切り開きました。',
+    whyItMattersKo:
+      '예산안이 처음으로 야당의 임시 실업 지원 계획을 수용함으로써 양보하며, 향후 AI 고용 충격 시 사회보장 개혁 완화를 위한 선례를 열었다',
     summaryJa: `この討論は 2024 年度予算案を中心に展開しました。質問側は政府の情報透明性、社会的公平性、および退職保障などの問題に注目しました。政府は野党の提案の一部を採り入れており、例えば臨時失業援助計画などが挙げられます。核心的な議論は、政府が真に多様な意見を開放的に受け入れているかどうか、および理想と現実のギャップをいかに縮小するかにあります。`,
     summaryEn: `The debate centred on Budget 2024, with questions on government transparency, social fairness, and retirement security. The government adopted some opposition proposals, such as a temporary unemployment assistance scheme. The core debate: whether the government is genuinely open to diverse views, and how to narrow the gap between ideals and reality.`,
     keyPoints: ['信息透明度不足', '理想与现实脱节', '退休保障需加强'],
@@ -7523,6 +8402,13 @@ Mr Pritam Singh (Aljunied)
     topics: ['AI Safety & Ethics', 'AI Economy & Industry', 'AI in Education', 'AI Infrastructure & Research'],
     summary: `议员质询政府是否设定未来5至10年新加坡在全球计算能力的具体目标，政府回应未设具体目标，强调计算资源需求动态变化。议员进一步关切数据中心建设及其可持续性，政府表示支持建设符合环保标准的数据中心，并推动数字化带来就业和技能提升。核心争议点在于是否应设定明确目标及如何平衡发展与环保。`,
     summaryKo: `의원들이 향후 5~10년 싱가포르의 글로벌 컴퓨팅 능력에 대한 구체적 목표 설정 여부를 정부에 질의했습니다. 정부는 구체적 목표를 설정하지 않았다고 회답하면서 컴퓨팅 자원 수요의 동적 변화를 강조했습니다. 의원은 데이터센터 건설 및 지속가능성에 대한 우려를 제기했고, 정부는 환경 기준에 부합하는 데이터센터 건설을 지원하며 디지털화를 통한 고용 창출과 기술 향상을 추진한다고 밝혔습니다. 핵심 쟁점은 명확한 목표 설정의 필요성 및 발전과 환경 보호의 균형에 있습니다.`,
+    whyItMatters: '政府拒绝设定 5 至 10 年计算力份额硬指标，凸显新加坡 AI 战略以弹性应变优先于对标国际规模竞赛',
+    whyItMattersEn:
+      "Government refuses to set hard targets for 5-to-10-year computing power share, highlighting Singapore's AI strategy prioritising elastic adaptation over benchmarking international scale competition",
+    whyItMattersJa:
+      '政府は5～10年計算力シェアのハードターゲット設定を拒否し、シンガポールのAI戦略が国際規模競争との対標よりも柔軟な対応を優先していることを浮き彫りにしています。',
+    whyItMattersKo:
+      '정부가 5~10년 연산력 점유율 하드 지표 설정을 거부하며, 싱가포르의 AI 전략이 탄성 적응을 국제 규모 경쟁 대비보다 우선시하고 있음을 부각시켰다',
     summaryJa: `議員は政府に対し、シンガポールが今後 5～10 年間にグローバルコンピューティング能力において具体的な目標を設定しているかどうかについて質疑しました。政府は具体的な目標を設定していないと回答し、計算リソースの需要は動的に変化することを強調しました。議員はさらにデータセンター建設とその持続可能性について懸念を表明しました。政府は環境基準を満たすデータセンター建設をサポートし、デジタル化による雇用と技能向上を推進することを表明しました。核心的な議論点は、明確な目標を設定すべきかどうか、および開発と環境保護とのバランスをいかに取るかにあります。`,
     summaryEn: `An MP asked whether the government has set specific targets for Singapore's global share of compute over the next 5–10 years. The government replied that no such target has been set, emphasising that compute demand is dynamic. MPs followed up on data centre construction and sustainability; the government said it supports building data centres that meet environmental standards and pushes digitalisation to lift jobs and skills. The core debate: whether explicit targets should be set, and how to balance growth with environmental protection.`,
     keyPoints: ['未设具体计算能力目标', '支持建设环保数据中心', '推动数字化提升就业技能'],
@@ -7577,6 +8463,13 @@ The Senior Minister of State for Communications and Information (Dr Janil Puthuc
     topics: ['AI Governance & Regulation', 'AI Safety & Ethics', 'AI Economy & Industry', 'AI in Public Sector'],
     summary: `议员质询全球经济不确定性及地缘政治风险对新加坡经济的影响。政府回应指出2023年经济增长虽缓但避免衰退，2024年展望谨慎乐观，强调全球冲突加剧带来的挑战。核心争议在于如何平衡经济增长与地缘政治风险，以及政府财政政策的应对策略。`,
     summaryKo: `의원들이 글로벌 경제 불확실성 및 지정학적 위험이 싱가포르 경제에 미치는 영향을 정부에 질의했습니다. 정부는 2023년 경제 성장이 완만하기는 하나 경기 침체는 피했다고 지적했으며, 2024년 전망은 신중한 낙관을 강조했고 글로벌 분쟁 심화가 가져오는 도전을 강조했습니다. 핵심 쟁점은 경제 성장과 지정학적 위험의 균형 및 정부 재정 정책의 대응 전략에 있습니다.`,
+    whyItMatters: '副总理兼财政部长把地缘政治风险列为 2024 预算核心变量，等于给同年 AI 等新增拨款定下审慎审批基调',
+    whyItMattersEn:
+      'Deputy Prime Minister and Minister of Finance(MOF) lists geopolitical risk as 2024 budget core variable, effectively setting cautious-approval tone for new allocations including AI that year',
+    whyItMattersJa:
+      '副首相兼財務大臣（MOF）は地政学的リスクを2024年度予算の中核変数として列挙することで、同年のAI関連の新規予算配分に対して慎重な審査基調を設定したことと等しい状況になっています。',
+    whyItMattersKo:
+      '부총리 겸 재무부（MOF）장관이 지정학적 위험을 2024년 예산 핵심 변수로 규정하며, 이는 동년도 AI 등 신규 배분에 신중한 심사 기조를 규정한 것과 같다',
     summaryJa: `議員は政府に対し、世界経済の不確実性と地政学的リスクがシンガポール経済に与える影響について質疑しました。政府は 2023 年の経済成長が鈍化したものの衰退を回避したこと、2024 年の見通しは慎重ながら楽観的であることを回答しました。政府は世界的な紛争の激化がもたらす課題を強調しました。核心的な議論は、経済成長と地政学的リスクとのバランスをいかに取るか、および政府の財政政策の対応戦略についてです。`,
     summaryEn: `MPs asked about the impact of global economic uncertainty and geopolitical risk on Singapore's economy. The government replied that 2023 growth was modest but avoided recession; the 2024 outlook is cautiously optimistic, with rising global conflict bringing challenges. The core debate: balancing growth with geopolitical risk, and the government's fiscal-policy response.`,
     keyPoints: ['经济增长谨慎乐观', '地缘政治风险加剧', '全球通胀压力缓解'],
@@ -7623,6 +8516,13 @@ The past year has not been easy. The international environment was troubled. The
     topics: ['AI Governance & Regulation', 'AI Safety & Ethics', 'AI Economy & Industry', 'AI & National Security'],
     summary: `议员质询政府针对深度伪造软件被用于诈骗的监管和防范措施。政府回应通过《网络刑事危害法》授权监管网络平台，推动技术研发和行业合作，强化公众教育，提升检测和应对能力。核心争议在于如何有效遏制深伪技术滥用，保障网络安全与公众利益。`,
     summaryKo: `의원들이 딥페이크 소프트웨어가 사기에 악용되는 것에 대한 정부의 규제 및 방지 조치를 질의했습니다. 정부는 「온라인 형사해악법」을 통해 온라인 플랫폼 규제 권한을 확보했으며, 기술 개발 및 업계 협력을 추진하고 공중 교육을 강화하여 탐지 및 대응 능력을 향상시킨다고 회답했습니다. 핵심 쟁점은 딥페이크 기술 남용을 효과적으로 억제하고 사이버보안과 공공 이익을 보장하는 방법에 있습니다.`,
+    whyItMatters: '政府未订深伪专法，而是援引 2023 年《网络刑事危害法》下架授权，暴露 AI 生成内容监管仍靠旧工具补位',
+    whyItMattersEn:
+      'Government has not enacted deepfake-specific legislation but invokes 2023 "Online Criminal Harms Act" removal authority, exposing AI-generated content regulation still relying on legacy tools filling gaps',
+    whyItMattersJa:
+      '政府はディープフェイク専門法を制定していない代わりに、2023年の『サイバー犯罪危害法』の削除権限を援用しており、AI生成コンテンツの規制が依然として旧ツールで補われていることを露呈しています。',
+    whyItMattersKo:
+      '정부가 딥페이크 전문법을 제정하지 않고 2023년 「온라인 형사해악법」의 콘텐츠 제거 권한을 인용하며, AI 생성 콘텐츠 규제가 여전히 구식 도구로 보완되고 있음을 드러냈다',
     summaryJa: `議員は政府に対し、ディープフェイクソフトウェアが詐欺に悪用されることに関する規制措置と予防対策について質疑しました。政府は「ネットワーク刑事危害法」に基づいてオンラインプラットフォームを規制する権限を持つことを回答し、技術開発と業界協力の推進、公衆教育の強化、および検出と対応能力の向上を強調しました。核心的な議論は、ディープフェイク技術の悪用をいかに有効に抑止し、サイバーセキュリティと公共の利益をいかに保護するかにあります。`,
     summaryEn: `An MP asked about the government's regulation and prevention measures against deepfake software used in scams. The government replied that the Online Criminal Harms Act (OCHA) authorises action on online platforms, and it is pushing technology R&D and industry collaboration while strengthening public education to improve detection and response. The core debate: how to effectively curb deepfake abuse and protect online safety and public interest.`,
     keyPoints: ['多部门协作防范深伪', '《网络刑事危害法》赋权', '公众教育与技术研发'],
@@ -7675,6 +8575,13 @@ Mrs Josephine Teo
     topics: ['AI Safety & Ethics', 'AI Economy & Industry', 'AI & National Security', 'AI Infrastructure & Research'],
     summary: `议员质询政府如何帮助公众理解人工智能及其能力，以应对网络诈骗和深度伪造内容威胁。政府回应指出多部门协作保障网络安全，强调《线上刑事危害法》赋权监管平台，推动深度伪造检测技术研发，并开展多项公众教育活动。核心争议点在于如何有效结合技术与教育手段，提升公众防范意识和能力。`,
     summaryKo: `의원들이 정부에 공중이 인공지능 및 그 능력을 이해하도록 돕는 방법, 즉 온라인 사기 및 딥페이크 콘텐츠 위협에 대응하는 방법을 질의했습니다. 정부는 다부처 협력을 통해 사이버보안을 보장한다고 지적했으며, 「온라인 형사해악법」이 플랫폼 규제 권한을 부여한다고 강조했고, 딥페이크 탐지 기술 개발을 추진하며 다양한 공중 교육 활동을 전개하고 있다고 회답했습니다. 핵심 쟁점은 기술과 교육 수단을 효과적으로 결합하여 공중의 방지 의식과 능력을 향상시키는 방법에 있습니다.`,
+    whyItMatters: '凸显新加坡尚无专门 AI 深度伪造立法，仅靠《线上刑事危害法》等旧工具应急，监管缺口待填补',
+    whyItMattersEn:
+      'Underscores that Singapore lacks dedicated legislation on AI deepfakes and relies on emergency measures like the Online Criminal Harm Act, with regulatory gaps remaining to be filled',
+    whyItMattersJa:
+      'シンガポールがまだAIディープフェイク専門立法を持たず、「オンライン犯罪危害法」などの古いツールのみに依存しており、規制上の隙間が埋められるのを待っている状況が浮き彫りになります。',
+    whyItMattersKo:
+      '싱가포르가 아직 전문적인 AI 딥페이크 입법을 가지고 있지 않으며, 온라인형사피해법 등 구식 도구에만 의존하여 긴급 대응하고 있으며, 규제 공백이 메워져야 함을 드러낸다',
     summaryJa: `議員は、サイバー詐欺とディープフェイク・コンテンツの脅威に対応するために、人工知能とその能力の理解を支援する方法について政府に質問しました。政府は、複数部門による協力でネットワークセキュリティを確保し、『オンライン犯罪危害法』がプラットフォーム規制に権限を付与し、ディープフェイク検出技術の研究開発を推進し、複数の公衆教育活動を実施していることを強調しました。中核的な争点は、技術と教育手段を効果的に組み合わせて、公衆の防止意識と能力を向上させる方法にあります。`,
     summaryEn: `An MP asked how the government helps the public understand AI and its capabilities to combat cybercrime and deepfake content. The government cited cross-agency cybersecurity work, the OCHA's powers over platforms, R&D on deepfake detection, and multiple public education campaigns. The core debate: how to effectively combine technology and education to lift public awareness and capability.`,
     keyPoints: ['多部门协作保障安全', '《线上刑事危害法》监管', '公众教育与技术研发'],
@@ -7760,6 +8667,13 @@ Mrs Josephine Teo
     topics: ['AI Economy & Industry', 'AI in Healthcare', 'AI Infrastructure & Research', 'AI in Public Sector'],
     summary: `议员质询数字化进程中信任危机与网络安全挑战，强调诈骗等网络危害日益严重。政府回应强调新加坡数字经济发展成就及前瞻性基础设施建设，承诺采取全社会协作应对数字风险。核心争议在于如何平衡数字化发展与保障公众安全及信任。`,
     summaryKo: `의원들이 디지털화 과정에서의 신뢰 위기 및 사이버보안 도전을 정부에 질의했으며, 사기 등 온라인 피해의 심화를 강조했습니다. 정부는 싱가포르의 디지털 경제 발전 성과 및 선제적 기반시설 구축을 강조했으며, 전 사회적 협력을 통해 디지털 위험에 대응할 것을 약속했습니다. 핵심 쟁점은 디지털화 발전과 공중의 안전 및 신뢰 보장의 균형을 맞추는 방법에 있습니다.`,
+    whyItMatters: '19 位议员跨党派同场应对网络诈骗，暴露新加坡数字信任建设滞后于 AI 化转型的速度',
+    whyItMattersEn:
+      "19 parliamentarians from across party lines address cybercrime together, exposing that Singapore's digital trust development lags behind its AI transformation pace",
+    whyItMattersJa:
+      '19名の議員が超党派で同じ場所でサイバー詐欺に対処する一方で、シンガポールのデジタル信頼構築がAI化転換の速度に遅れている状況が露呈されます。',
+    whyItMattersKo:
+      '19명의 의원이 초당파적으로 같은 자리에서 온라인 사기에 대응하면서 싱가포르의 디지털 신뢰 구축이 AI 전환 속도에 뒤떨어져 있음을 노출한다',
     summaryJa: `議員は、デジタル化の進行過程における信頼危機とネットワークセキュリティの課題について質問し、詐欺などのネットワーク上の危害が深刻化していることを強調しました。政府は、シンガポールのデジタル経済発展の成果と先見的なインフラ構築を強調し、デジタルリスクに対応するため全社会での協力を約束しました。中核的な争点は、デジタル化の発展と公衆の安全および信頼の保護をいかにバランスさせるかにあります。`,
     summaryEn: `MPs raised a trust crisis and cybersecurity challenges in the digitalisation drive, stressing growing online harms like scams. The government cited Singapore's digital-economy progress and forward-looking infrastructure, committing to a whole-of-nation approach to digital risk. The core debate: balancing digitalisation with public safety and trust.`,
     keyPoints: ['数字经济快速增长', '网络诈骗威胁加剧', '需全社会协作应对'],
@@ -7812,6 +8726,13 @@ Speaker, Sir, the Government Parliamentary Committee (GPC) for Communications an
     topics: ['AI Safety & Ethics', 'AI Economy & Industry', 'AI & Employment', 'AI in Healthcare'],
     summary: `议员质询数字化对劳动力、人工智能影响及心理健康问题，政府回应强调AI带来的机遇，推行技能提升计划支持转型，注重数字包容与心理健康，核心争议在于AI对就业和社会的影响及应对策略。`,
     summaryKo: `의원들이 디지털화가 노동력과 인공지능에 미치는 영향 및 정신 건강 문제를 정부에 질의했습니다. 정부는 AI가 가져오는 기회를 강조했으며, 기술 향상 계획을 시행하여 전환을 지원하고 디지털 포용 및 정신 건강에 주력한다고 회답했습니다. 핵심 쟁점은 AI가 고용과 사회에 미치는 영향 및 그 대응 전략에 있습니다.`,
+    whyItMatters: '这场 2024 年 1 月的国会答询让技能提升计划成为新加坡应对 AI 冲击的默认路径而非社会保障网',
+    whyItMattersEn:
+      'This January 2024 parliamentary question makes upskilling initiatives the default pathway for Singapore to respond to AI disruption, rather than a social safety net',
+    whyItMattersJa:
+      'この2024年1月の国会質疑により、技能向上計画がシンガポールのAI衝撃への対応の必然的パスとなり、社会保障網ではなくなりました。',
+    whyItMattersKo:
+      '2024년 1월의 이 국회 질의응답은 기술 향상 계획을 싱가포르의 AI 충격에 대응하기 위한 기본 경로이자 사회 안전망이 아닌 것으로 만들었다',
     summaryJa: `議員は、デジタル化が労働力に及ぼす影響、人工知能の影響および心理的健康の問題について政府に質問しました。政府は、AIがもたらす機会を強調し、転換を支援するためのスキル向上計画を実施し、デジタル・インクルージョンと心理的健康に注力することを強調しました。中核的な争点は、AIが雇用と社会に及ぼす影響および対応戦略にあります。`,
     summaryEn: `MPs raised digitalisation's impact on the workforce, AI's effects, and mental-health issues. The government emphasised AI opportunities, ran upskilling programmes to support transition, and focused on digital inclusion and mental health. The core debate: AI's impact on employment and society and the response strategy.`,
     keyPoints: ['AI影响劳动力', '技能提升支持', '关注心理健康'],
@@ -7876,6 +8797,14 @@ With your permission, Sir, may I ask the Clerk to distribute to Members suppleme
     topics: ['AI Safety & Ethics', 'AI & Employment', 'AI in Education', 'AI & National Security'],
     summary: `议员质询教育部关于除新加坡学生学习空间AI工具外，如何提升学生AI基础素养，包括AI编程课程的计划及实施主体。教育部长回应，教育部通过课程融合、师资培训及校外项目如AI学生推广计划，推动学生理解AI及其伦理，强调网络健康教育防范AI风险。核心争议在于如何有效提升学生AI技能及扩大项目参与度。`,
     summaryKo: `의원들이 교육부에 싱가포르 학생 학습 플랫폼 AI 도구 외에도 학생의 AI 기초 소양을 제고하는 방법, 특히 AI 프로그래밍 과정의 계획 및 실행 주체에 대해 질의했습니다. 교육부 장관은 교육부가 교과과정 통합, 교사 훈련 및 AI 학생 추진 계획 같은 교외 프로젝트를 통해 학생이 AI 및 그 윤리를 이해하도록 추진하며, 온라인 건강 교육을 강조하여 AI 위험에 대비한다고 회답했습니다. 핵심 쟁점은 학생의 AI 기술을 효과적으로 향상시키고 프로젝트 참여도를 확대하는 방법에 있습니다.`,
+    whyItMatters:
+      '教育部靠课程渗透和课外的 AI 学生推广计划补基础素养，尚未设必修 AI 编程课，暴露国家 AI 战略在基础教育层的落地缺口',
+    whyItMattersEn:
+      'The Ministry of Education(MOE) addresses basic literacy through curriculum integration and extracurricular AI student promotion programmes, yet lacks mandatory AI coding courses, exposing implementation gaps in national AI strategy at the foundational education level',
+    whyItMattersJa:
+      '教育省（MOE）はカリキュラム浸透と課外AI学生推進計画により基礎素養を補っていますが、まだ必修AIプログラミング課程を設置していません。国家AI戦略の基礎教育段階での実装ギャップが露呈されます。',
+    whyItMattersKo:
+      '교육부(MOE)는 커리큘럼 침투와 과외 AI 학생 홍보 계획에 의존하여 기본 소양을 보충하고 있지만, 아직 필수 AI 프로그래밍 과정을 마련하지 않았으며, 국가 AI 전략이 기초 교육 수준에서의 실행 공백을 노출한다',
     summaryJa: `議員は、シンガポール学生学習スペースのAIツール以外に学生のAI基礎リテラシーをどのように向上させるか、またAIプログラミングコースの計画および実施主体について教育省に質問しました。教育大臣は、教育省がカリキュラム統合、教員研修およびAI学生推進プログラムなどの校外プロジェクトを通じて、学生がAIとその倫理を理解することを推進し、ネットワーク健全性教育がAIリスクを防止することを強調しました。中核的な争点は、学生のAIスキルを効果的に向上させプロジェクト参加度を拡大する方法にあります。`,
     summaryEn: `MPs asked MOE how it will develop baseline AI literacy for students beyond the AI tools on Singapore Student Learning Space, including plans for AI coding programmes and who would deliver them. The Education Minister replied that MOE drives student understanding of AI and its ethics through curriculum integration, teacher training, and out-of-school programmes like the AI Student Outreach Programme, with cyber wellness education to guard against AI risks. The core debate: how to effectively lift student AI skills and expand programme participation.`,
     keyPoints: ['推广AI基础知识', '师资培训与资源支持', 'AI学生推广计划'],
@@ -7927,6 +8856,13 @@ asked the Minister for Education (a) how many students have applied to join the 
     topics: ['AI Safety & Ethics', 'AI Economy & Industry', 'AI & Employment', 'AI & National Security'],
     summary: `议员质询政府关于哪些工种因AI面临最高失业风险及相关人数，并询问扩大再培训计划。政府回应强调AI影响难以完全预测，推行行业转型图谱及SkillsFuture等培训项目，支持工人技能提升和职业转换，鼓励向AI技术岗位转型，体现积极应对AI挑战的态度。核心争议在于AI对就业的具体影响及再培训成效。`,
     summaryKo: `의원들은 AI로 인해 가장 높은 실업 위험에 직면한 직종과 해당 인원 수에 관해 정부에 질의하고 재교육 계획의 확대를 요청했습니다. 정부는 AI의 영향이 완전히 예측되기 어렵다고 강조하면서, 산업 전환 지도 및 SkillsFuture 등의 교육 프로젝트를 추진하고 근로자의 기술 향상과 직업 전환을 지원하며 AI 기술 직무로의 전환을 장려하는 등 AI의 도전에 적극 대응하려는 태도를 보여주고 있습니다. 핵심 쟁점은 AI가 고용에 미치는 구체적 영향과 재교육의 효과입니다.`,
+    whyItMatters: '政府未给出 AI 高风险工种人数，显示新加坡仍以 SkillsFuture 通用框架应对冲击，缺乏专项预警与数据基础',
+    whyItMattersEn:
+      'The government has not disclosed numbers for high-risk AI-affected occupations, showing Singapore still relies on the SkillsFuture general framework to manage disruption, lacking targeted early-warning systems and data foundations',
+    whyItMattersJa:
+      '政府がAI高リスク職種の人数を示していないことから、シンガポールがSkillsFutureの汎用フレームワークで影響に対応し続けており、専門的な早期警戒と情報基盤が不足していることが明らかです。',
+    whyItMattersKo:
+      '정부가 AI 고위험 직종 인원 수를 제시하지 않았으며, 싱가포르가 여전히 SkillsFuture 범용 프레임워크로 충격에 대응하고 있으며, 전문적인 조기 경보 및 데이터 기반이 부족함을 보여준다',
     summaryJa: `議員は、AIにより最高の失業リスクに直面する職種および関連する人数について、また再訓練計画の拡大について政府に質問しました。政府は、AI影響を完全に予測することが難しいことを強調し、業界変革マップおよびSkillsFutureなどの訓練プロジェクトを実施し、労働者のスキル向上と職業転換を支援し、AI技術職への転換を奨励しました。中核的な争点は、AIが雇用に及ぼす具体的な影響および再訓練の効果にあります。`,
     summaryEn: `MPs asked which job categories face the highest displacement risk from AI, the projected numbers for each, and what expanded reskilling programmes are available. The government replied that AI's impact is not fully predictable; it runs Industry Transformation Maps, SkillsFuture and similar programmes to support upskilling and career conversion, and encourages transition into AI roles — reflecting an active stance on AI challenges. The core debate: AI's specific employment impact and the effectiveness of reskilling.`,
     keyPoints: ['AI影响难以完全预测', '推行业转型图谱辅助准备', '扩大技能提升与转换计划'],
@@ -7978,6 +8914,13 @@ Mrs Josephine Teo
     topics: ['AI & National Security', 'AI Infrastructure & Research', 'AI in Public Sector', 'AI Strategy'],
     summary: `议员质询政府如何在推动国家AI战略2.0所需的算力增长与能源可持续目标之间取得平衡。政府回应强调通过提升数据中心能效、推广液冷技术、制定绿色标准及支持绿色计算方法，确保AI基础设施环保可持续。核心争议在于如何兼顾AI发展需求与气候承诺的矛盾。`,
     summaryKo: `의원들은 국가 AI 전략 2.0 추진에 필요한 연산 능력 확대와 에너지 지속 가능성 목표 간의 균형을 어떻게 이룰 것인지 정부에 질의했습니다. 정부는 데이터센터의 에너지 효율 향상, 액체 냉각 기술 확대, 친환경 기준 마련, 친환경 컴퓨팅 방법 지원을 통해 AI 기반시설의 환경 친화적 지속 가능성을 보장할 것을 강조했습니다. 핵심 쟁점은 AI 발전 필요성과 기후 공약 간의 모순을 어떻게 조화시킬 것인가입니다.`,
+    whyItMatters: '国家 AI 战略 2.0 算力扩张优先于能耗硬约束，政府选择用液冷和绿色标准缓解而非限制数据中心增长',
+    whyItMattersEn:
+      'National AI Strategy 2.0 prioritizes computing power expansion over strict energy consumption limits, with the government choosing liquid cooling and green standards to mitigate rather than restrict data centre growth',
+    whyItMattersJa:
+      '国家AI戦略2.0では、計算能力の拡張が消費電力の厳しい制約より優先されており、政府はデータセンター増設を制限するのではなく、液冷却と緑色基準で緩和する選択をしています。',
+    whyItMattersKo:
+      '국가 AI 전략 2.0은 컴퓨팅 파워 확장이 에너지 소비 하드 제약보다 우선하며, 정부는 데이터 센터 증가를 제한하기보다는 액체 냉각과 녹색 표준으로 완화하는 것을 선택했다',
     summaryJa: `議員は、国家AI戦略2.0の推進に必要な演算能力の増加とエネルギー持続可能性の目標をいかにバランスさせるかについて政府に質問しました。政府は、データセンター能効の向上、液冷技術の推進、グリーン標準の策定およびグリーンコンピューティング手法の支援を通じて、AI基盤インフラストラクチャの環境保全と持続可能性を確保することを強調しました。中核的な争点は、AI発展の必要性と気候の約束をいかに両立させるかにあります。`,
     summaryEn: `MPs asked how the government will balance the compute growth required by NAIS 2.0 with energy sustainability goals. The government replied that it lifts data centre efficiency, promotes liquid cooling, sets green standards, and supports green compute methods to keep AI infrastructure environmentally sustainable. The core debate: reconciling AI development needs with climate commitments.`,
     keyPoints: ['提升数据中心能效', '推广液冷节能技术', '发展绿色计算方法'],
@@ -8026,6 +8969,14 @@ Mrs Josephine Teo
     topics: ['AI Economy & Industry', 'AI & Employment', 'AI in Education', 'AI & National Security'],
     summary: `议员质询自2019年以来参与"Code for Fun"编程项目的学生比例，未参与学生如何获得数字素养，以及未来如何更新课程以培养AI人才。政府回应指出小学高年级自2020年起强制参与，近三分之二中学提供该项目，且每年覆盖逾5万学生。课程将于2025年引入AI与数据素养内容，配合正式课程和课外活动推动数字及AI素养培养。核心争议在于如何确保未参与学生的基础数字能力及课程的持续更新。`,
     summaryKo: `의원들은 2019년 이후 「Code for Fun」프로그래밍 프로젝트에 참여한 학생의 비율, 미참여 학생의 디지털 소양 습득 방법, 향후 AI 인재 육성을 위한 교과과정 개정 방안에 관해 정부에 질의했습니다. 정부는 초등학교 고학년부터 2020년을 기점으로 의무 참여를 시행 중이며, 중학교의 약 3분의 2가 해당 프로젝트를 제공하고 있으며, 매년 5만 명 이상의 학생을 대상으로 한다고 설명했습니다. 교과과정은 2025년에 AI 및 데이터 소양 내용을 도입할 예정이며, 정규 교육과정 및 과외 활동과 함께 디지털 및 AI 소양 배양을 추진할 것입니다. 핵심 쟁점은 미참여 학생의 기초 디지털 능력 보장 및 교과과정의 지속적 개정입니다.`,
+    whyItMatters:
+      'Code for Fun 仍有约三分之一中学未跟进，AI 素养内容却排到 2025 年，新加坡人才管道追不上其 AI 战略节奏',
+    whyItMattersEn:
+      "Roughly one-third of secondary schools have yet to adopt Code for Fun, while AI literacy content is delayed to 2025, showing Singapore's talent pipeline cannot keep pace with its AI strategy",
+    whyItMattersJa:
+      '「Code for Fun」ではいまだ約3分の1の中等学校が参加していない一方で、AI素養コンテンツは2025年に予定されており、シンガポールの人材供給パイプラインがそのAI戦略のペースに追いついていません。',
+    whyItMattersKo:
+      'Code for Fun은 여전히 약 1/3의 중학교가 따라가지 못했으며, AI 소양 내용은 2025년으로 미루어졌으며, 싱가포르의 인재 파이프라인이 AI 전략의 속도를 따라가지 못한다',
     summaryJa: `議員は、2019年以来「Code for Fun」プログラミング・プロジェクトに参加した学生の割合、参加していない学生がデジタル・リテラシーをいかに習得するか、および将来的にAI人材を育成するためカリキュラムをいかに更新するかについて質問しました。政府は、小学高学年が2020年以降強制的に参加していること、約3分の2の中学校がこのプロジェクトを提供していること、および毎年5万人以上の学生をカバーしていることを指摘しました。カリキュラムは2025年にAIおよびデータ・リテラシーのコンテンツを導入し、正式なカリキュラムと課外活動と連携してデジタルおよびAI・リテラシーの育成を推進します。中核的な争点は、参加していない学生の基礎的なデジタル能力を確保しカリキュラムを継続的に更新する方法にあります。`,
     summaryEn: `An MP asked what proportion of students have gone through the Code for Fun (CFF) programme since 2019, how digital literacy is ensured for students who didn't take it, and how the curriculum will be updated to develop AI talent. The government replied that since 2020 CFF is mandatory at upper primary, around two-thirds of secondary schools offer it, and over 50,000 students are covered each year. From 2025, AI and data literacy will be added, supported by both formal curriculum and co-curricular activities. The core debate: how to ensure digital fundamentals for non-participants and keep the curriculum updated.`,
     keyPoints: ['小学高年级强制编程', '中学项目逐年普及', '2025年引入AI内容'],
@@ -8073,6 +9024,13 @@ Mrs Josephine Teo
     topics: ['AI & National Security'],
     summary: `议员质询关于新加坡奢侈度假村运营商购物会员数据泄露事件的报告时间及延迟通知原因。通讯及资讯部长回应事件已按规定时间向监管机构报告，解释延迟通知因需优先控制泄露、评估影响及确认通知要求。监管机构正调查事件是否对个人造成重大伤害及通知是否及时。`,
     summaryKo: `의원이 싱가포르 럭셔리 리조트 운영사의 쇼핑 멤버 데이터 유출 사건의 보고 시간 및 지연된 통지 원인에 대해 질의했습니다. 통신 및 정보부 장관은 당해 사건이 규정된 시간 내에 규제 기관에 보고되었다고 응답하며, 지연된 통지는 먼저 유출을 제어하고, 영향을 평가하며, 통지 요구사항을 확인해야 했기 때문이라고 설명했습니다. 규제 기관은 당해 사건이 개인에게 중대한 해를 초래했는지 여부 및 통지가 적시에 이루어졌는지 여부를 조사 중입니다.`,
+    whyItMatters: '2023 年 11 月 22 日质询揭示监管机构对泄露通知时限拿捏的裁量空间，考验数据治理能否为 AI 信任基座背书',
+    whyItMattersEn:
+      "An 22 November 2023 parliamentary question reveals regulators' discretionary space in breach notification timeframes, testing whether data governance can underpin AI trust foundations",
+    whyItMattersJa:
+      '2023年11月22日の質疑は、規制当局が情報漏洩通知期限の裁量空間を有していることを明かしました。データガバナンスがAI信頼の基盤を担保できるかが問われます。',
+    whyItMattersKo:
+      '2023년 11월 22일 질의는 규제 기관이 유출 통보 시간 제한에 대한 재량권을 드러냈으며, 데이터 거버넌스가 AI 신뢰 기반을 보증할 수 있는지를 시험한다',
     summaryJa: `議員は、シンガポールの高級リゾート運営者のショッピング会員データ漏洩事件の報告時間および遅延通知の原因について質問しました。通信・情報大臣は、事件は規定の時間内に規制当局に報告されたこと、遅延通知は漏洩をまず制御し影響を評価し通知要件を確認する必要があったことを説明しました。規制当局は、事件が個人に重大な危害を与えたかどうかおよび通知がタイムリーであったかどうかを調査中です。`,
     summaryEn: `An MP asked, regarding a data breach at a Singapore luxury resort operator's loyalty programme, when the incident was reported and why notification was delayed. The Communications and Information Minister replied that the incident was reported to the regulator within the required timeframe, with delayed user notification due to prioritising containment, impact assessment and confirming notification requirements. The regulator is investigating whether the breach caused significant harm and whether notification was timely.`,
     keyPoints: ['事件按规定及时报告', '延迟通知因优先控制泄露', '监管机构正在调查'],
@@ -8122,6 +9080,13 @@ The Minister for Communications and Information (Mrs Josephine Teo)
     topics: ['AI Governance & Regulation', 'AI Safety & Ethics', 'AI Economy & Industry', 'AI & National Security'],
     summary: `议员质询政府关于新加坡安全且负责任发展人工智能的政策及后续治理步骤。政府回应强调已有多次详细说明，支持国际合作与标准对齐，推动企业参与AI伦理认证，并通过双边及多边机制深化AI治理合作。核心争议点在于如何平衡技术发展与伦理安全，以及国际合作的具体落实。`,
     summaryKo: `의원이 싱가포르의 안전하고 책임 있는 인공지능 개발에 관한 정책 및 후속 거버넌스 조치에 대해 정부를 질의했습니다. 정부는 응답에서 이미 여러 차례 상세히 설명했음을 강조했으며, 국제 협력과 표준 정렬을 지지하고, 기업의 AI 윤리 인증 참여를 추진하며, 양자 및 다자 메커니즘을 통해 AI 거버넌스 협력을 심화한다고 밝혔습니다. 핵심 논점은 기술 발전과 윤리적 안전성을 어떻게 균형있게 유지할 것인가, 그리고 국제 협력의 구체적 실현입니다.`,
+    whyItMatters: '2023 年 11 月的书面答复仍以既有说明搪塞具体立法路径，暴露新加坡 AI 治理依赖企业自愿认证而非强制法规',
+    whyItMattersEn:
+      "The government's November 2023 written reply still uses existing guidance to evade specific legislative pathways, exposing that Singapore's AI governance relies on voluntary corporate certification rather than mandatory regulations",
+    whyItMattersJa:
+      '2023年11月の書面回答は既存の説明で具体的立法路を曖昧にしており、シンガポールのAI統治が企業の自発的認証に依存し、強制的法規に依存していないことが露呈されます。',
+    whyItMattersKo:
+      '2023년 11월의 서면 답변은 여전히 기존의 설명으로 구체적인 입법 경로를 회피했으며, 싱가포르의 AI 거버넌스가 기업의 자발적 인증에 의존하고 강제적 법규가 아님을 노출한다',
     summaryJa: `議員が、シンガポールの安全かつ責任ある人工知能開発政策および後続の治理ステップについて政府に質問しました。政府の対応は、すでに何度も詳細な説明を行ってきたことを強調し、国際協力と基準の調整を推進し、企業のAI倫理認証への参加を促進し、二国間および多国間メカニズムを通じてAI治理協力を深化させています。核心的な対立点は、技術開発と倫理安全のバランスをいかに取るか、および国際協力の具体的な実施にあります。`,
     summaryEn: `An MP asked about the government's policy on safe, responsible AI development in Singapore and the next steps in governance. The government replied that it has explained its approach multiple times, supports international cooperation and standards alignment, encourages firms to participate in AI ethics certification, and deepens AI governance collaboration through bilateral and multilateral mechanisms. The core debate: balancing tech progress with ethics/safety and the concrete implementation of international cooperation.`,
     keyPoints: ['持续推动AI伦理标准', '支持国际AI治理合作', '鼓励企业参与AI认证'],
@@ -8183,6 +9148,14 @@ Please refer to "Regulatory Framework for Artific`,
     topics: ['AI Economy & Industry', 'AI & National Security', 'AI Infrastructure & Research', 'AI in Public Sector'],
     summary: `议员质询政府是否有整体计划发展本土AI基础模型能力，包括设立国家研究机构。政府回应新加坡AI研究实力强，但不强调完全依赖本土能力，倾向快速采用国际先进技术。核心争议在于是否应自主研发基础模型及相关长期风险。`,
     summaryKo: `의원이 정부에 본토 AI 기초 모델 역량을 개발하기 위한 종합 계획의 유무를 질의하며, 여기에는 국가 연구기관 설립이 포함됩니다. 정부는 응답에서 싱가포르의 AI 연구 실력이 강하지만 현지 역량에 완전히 의존하는 것을 강조하지 않으며, 국제 선진 기술의 신속한 도입을 선호한다고 밝혔습니다. 핵심 논의는 기초 모델을 자율적으로 연구개발해야 하는지 여부 및 이와 관련된 장기 위험입니다.`,
+    whyItMatters:
+      '面对 Gerald Giam 关于设立国家基础模型机构的追问，政府未作承诺，2023 年即为新加坡定下引进优先于自研的 AI 主权路线',
+    whyItMattersEn:
+      "Facing Gerald Giam's follow-up question on establishing a national foundation model institute, the government made no commitment, effectively setting Singapore on a path in 2023 prioritising AI acquisition over domestic development for AI sovereignty",
+    whyItMattersJa:
+      'ジェラルド・ギャムが国家基礎モデル機関の設立についての追及を投げかけた際、政府は約束をしませんでした。2023年の時点で、シンガポールのAI主権路線は導入優先で自主開発は後回しと定められていました。',
+    whyItMattersKo:
+      '제럴드 기암(Gerald Giam)의 국가 기초 모델 기구 설립에 관한 재질문을 직면하여 정부는 약속하지 않았으며, 2023년은 싱가포르에 대해 자체 개발보다 도입을 우선하는 AI 주권 노선을 정했다',
     summaryJa: `議員が、本国のAI基盤モデル能力の発展に関する総合的な計画があるかどうか、国家研究機関の設立を含めて政府に質問しました。政府の対応は、シンガポールのAI研究の実力が強いことを指摘していますが、本国能力への完全な依存を強調せず、国際的な先進技術の迅速な採用を志向しており、核心的な対立点は、基盤モデルを自主的に研究開発すべきかどうか、および関連する長期的なリスクにあります。`,
     summaryEn: `An MP asked whether the government has a whole-of-government plan to develop indigenous foundation-model capability, including a national research institute. The government replied that Singapore's AI research is strong, but full reliance on indigenous capability is not the priority — it leans toward rapidly adopting international frontier technology. The core debate: whether to build foundation models in-house and the related long-term risks.`,
     keyPoints: ['新加坡AI研究实力强', '无整体本土基础模型计划', '倾向快速采用国际技术'],
@@ -8235,6 +9208,14 @@ The Senior Minister of State for Communications and Information (Dr Janil Puthuc
     topics: ['AI & National Security', 'AI in Public Sector'],
     summary: `议员质询新加坡警察部队如何将人工智能应用于执法工作，是否带来成效，以及未来发展方向。政府回应指出，AI已用于打击儿童性虐待材料和诈骗信息识别，提升调查效率，并将继续与相关机构合作，推动AI技术在警务中的应用。辩论核心在于AI技术的实际效果及未来潜力。`,
     summaryKo: `국회의원들은 싱가포르 경찰청이 어떻게 AI를 집행 업무에 적용하고 있으며 성과를 낼 수 있는지, 그리고 향후 발전 방향에 대해 질문했습니다. 정부는 AI가 이미 아동 성학대 자료에 대항하고 사기 정보 식별에 사용되고 있으며 수사 효율성을 향상시키고 있다고 지적했으며, 관련 기관과의 협력을 계속하여 경찰 업무에서 AI 기술의 응용을 추진할 계획이라고 밝혔습니다. 토론의 핵심은 AI 기술의 실질적 효과와 향후 잠재력에 있습니다.`,
+    whyItMatters:
+      '新加坡警察部队已用 AI 识别儿童性虐待材料与诈骗信息，比同年 12 月发布的新加坡 AI 战略 2.0 更早落地，暴露执法先行、立法滞后的治理缺口',
+    whyItMattersEn:
+      "The Singapore Police Force(SPF) has already deployed AI to identify child sexual abuse material and fraud, preceding the December release of Singapore's AI Strategy 2.0, exposing a governance gap where enforcement leads but legislation lags",
+    whyItMattersJa:
+      'シンガポール警察（SPF）は既にAIを使って児童性虐待資料と詐欺情報を識別しており、同年12月に発表されたシンガポールAI戦略2.0より先に実装されていました。執法先行・立法遅延の治理ギャップが露呈されます。',
+    whyItMattersKo:
+      '싱가포르 경찰(SPF)은 이미 AI를 사용하여 아동 성학대 자료와 사기 정보를 식별했으며, 같은 해 12월 발표된 싱가포르 AI 전략 2.0보다 더 일찍 구현되었으며, 집행이 선행하고 입법이 뒤떨어진 거버넌스 공백을 노출한다',
     summaryJa: `議員がシンガポール警察部隊に、人工知能を執法業務にいかに応用しているか、成果をもたらしているかどうか、および今後の発展方向について質問しました。政府の対応は、AIがすでに児童性虐待資料との対抗と詐欺情報識別に使用されており、調査効率を向上させていることを指摘しており、引き続き関連機関と協力し、警務におけるAI技術の応用を推進していきます。議論の焦点はAI技術の実際の成果と今後の可能性にあります。`,
     summaryEn: `An MP asked how the Singapore Police Force is using AI in enforcement, whether outcomes have improved, and the future direction. The government replied that AI is already used to combat child sexual abuse material and identify scam content, lifting investigation efficiency, and it will continue partnering with relevant agencies to push AI use in policing. The core debate: the actual effectiveness and future potential of AI.`,
     keyPoints: ['AI提升执法效率', '打击儿童性虐待材料', '防范诈骗信息'],
@@ -8286,6 +9267,13 @@ For example, it has used AI in its efforts against child sexual abuse materials.
     topics: ['AI Governance & Regulation', 'AI Safety & Ethics', 'AI Economy & Industry', 'AI & National Security'],
     summary: `质询关注AI在金融交易平台中可能导致的"羊群效应"风险及利益冲突问题。政府回应称，新加坡金融管理局（MAS）已实施技术中立的监管措施，推行FEAT原则保障公平与透明，认为当前AI模型应用尚处初期，风险较低，但将持续监控并与业界合作推动负责任使用AI。`,
     summaryKo: `질문자들은 금융 거래 플랫폼에서 AI가 초래할 수 있는 「군집 효과」 위험 및 이익 충돌 문제에 주목했습니다. 정부는 싱가포르 금융통화청(MAS)이 이미 기술 중립적 규제 조치를 시행했으며, FEAT 원칙을 추진하여 공정성과 투명성을 보장하고 있다고 응답했습니다. 정부는 현재 AI 모델 적용이 초기 단계에 있으며 위험이 상대적으로 낮다고 판단하지만, 지속적으로 모니터링할 것이며 업계와 협력하여 책임감 있는 AI 사용을 추진할 것이라고 밝혔습니다.`,
+    whyItMatters: 'MAS 未针对 AI 交易新增规则，仅沿用现有 FEAT 原则监管，赌注是风险仍处初期，而非提前防范',
+    whyItMattersEn:
+      'The Monetary Authority of Singapore has not introduced new rules for AI trading, merely applying existing FEAT principles, betting that risks remain nascent rather than taking preemptive measures',
+    whyItMattersJa:
+      'MASがAI取引に関する新規則を追加せず、既存のFEAT原則のみで監督しており、これはリスクがまだ初期段階にあると見なし、先制的防止ではなく様子見の立場を示しています。',
+    whyItMattersKo:
+      'MAS는 AI 거래에 대해 신규 규칙을 추가하지 않았으며, 기존의 FEAT 원칙만 계속 사용하여 규제하고 있으며, 위험이 여전히 초기 단계에 있다는 내기이지 미리 예방하는 것이 아니다',
     summaryJa: `質問はAIが金融取引プラットフォームで引き起こす可能性のある「羊群効果」のリスク及び利益相反の問題に注目しています。政府の対応によると、シンガポール金融管理局（MAS）はすでに技術的に中立な規制措置を実施しており、FEAT原則を推進して公平性と透明性を保障しており、現在のAIモデル応用はまだ初期段階にあり、リスクは相対的に低いと考えていますが、継続的に監視し、業界と協力して責任あるAI使用を推進していきます。`,
     summaryEn: `The question focused on AI in financial trading platforms — risks of "herding" effects and conflicts of interest. The government replied that MAS uses technology-neutral regulation, applies FEAT principles for fairness and transparency, and views current AI use as still early-stage with relatively low risk — but will continue monitoring and collaborate with industry on responsible AI use.`,
     keyPoints: ['监管要求防范利益冲突', '推行FEAT原则保障公平', 'AI交易风险目前较低'],
@@ -8337,6 +9325,14 @@ Mr Lawrence Wong (for the Prime Minister)
     topics: ['AI Governance & Regulation', 'AI Safety & Ethics', 'AI Economy & Industry', 'AI & National Security'],
     summary: `质询方询问政府是否研究设立AI监管机构及国际合作情况。政府回应强调采用实用且基于风险的治理方式，反对一刀切监管，介绍了现有IMDA和PDPC的多项AI治理举措，并强调国际合作重要性。核心争议在于是否设立专门监管机构及如何平衡创新与风险管理。`,
     summaryKo: `질문자들은 정부가 AI 규제 기관 설립에 대해 연구했는지 여부와 국제 협력 현황에 대해 질문했습니다. 정부는 실용적이고 위험 기반의 거버넌스 방식을 채택하고 있으며 획일적 규제에 반대한다고 강조했고, 기존 IMDA와 PDPC의 여러 AI 거버넌스 조치를 소개했으며 국제 협력의 중요성을 강조했습니다. 핵심 논쟁은 전담 규제 기관 설립 여부와 혁신과 위험 관리 사이의 균형을 어떻게 이룰 것인가에 있습니다.`,
+    whyItMatters:
+      '2023 年这场质询确认新加坡不设专职 AI 监管机构，转而依赖 IMDA、PDPC 分散执法，与欧盟集中立法路径分道扬镳',
+    whyItMattersEn:
+      "This 2023 parliamentary question confirms Singapore has no dedicated AI regulator and instead relies on distributed enforcement by IMDA and PDPC, diverging from the European Union's centralised legislative approach",
+    whyItMattersJa:
+      'この2023年の質疑により、シンガポールが専任のAI規制機関を持たず、IMDAとPDPCに分散執法を依存していることが確認されました。これはEUの集中立法路とは異なる道を歩んでいます。',
+    whyItMattersKo:
+      '2023년의 이 질의는 싱가포르가 전담하는 AI 규제 기구를 설치하지 않으며, 대신 IMDA와 PDPC에 의존하여 분산된 집행을 하고 있으며, EU의 중앙 집중식 입법 경로와 다른 길을 가고 있음을 확인한다',
     summaryJa: `質問者が、AI規制機関の設立を研究しているかどうか、および国際協力の状況について政府に質問しました。政府の対応は、実用的かつリスクベースの治理方法の採用を強調し、一律の規制に反対し、既存のIMDAおよびPDPCのAI治理施策の多くを紹介し、国際協力の重要性を強調しています。核心的な対立点は、専門的な規制機関を設立するかどうか、およびイノベーションとリスク管理のバランスをいかに取るかにあります。`,
     summaryEn: `MPs asked whether the government is studying the feasibility of an AI regulator and the state of international cooperation. The government emphasised a practical, risk-based governance approach, opposed one-size-fits-all regulation, cited existing IMDA and PDPC AI governance initiatives, and stressed the importance of international cooperation. The core debate: whether to establish a dedicated AI regulator and how to balance innovation with risk management.`,
     keyPoints: ['反对一刀切监管', '推行风险为本治理', '加强国际合作'],
@@ -8422,6 +9418,13 @@ The Minister for Communications and Information (Mrs Josephine Teo)
     topics: ['AI Economy & Industry', 'AI in Education', 'AI in Healthcare', 'AI Infrastructure & Research'],
     summary: `辩论聚焦疫情后持续支持医疗健康，特别强调学术界心理健康问题。议员指出学术压力导致研究人员和研究生焦虑抑郁比例高，呼吁关注精神健康。政府未直接回应，核心争议在于如何平衡学术绩效压力与心理健康保障。`,
     summaryKo: `토론은 팬데믹 이후 의료 건강의 지속적 지원에 초점을 맞추었으며, 특히 학계의 심리 건강 문제를 강조했습니다. 의원들은 학술 압력이 연구자와 대학원생들의 불안 및 우울증 비율을 높인다고 지적했으며, 정신 건강에 대한 관심을 촉구했습니다. 정부는 직접적인 응답을 하지 않았으며, 핵심 논쟁은 학술 성과 압력과 심리 건강 보장 사이의 균형을 어떻게 이룰 것인가에 있습니다.`,
+    whyItMatters: '研究生焦虑抑郁比例居高不下，政府 2023 年未正面回应，暴露新加坡 AI 人才储备链的隐忧',
+    whyItMattersEn:
+      "Graduate anxiety and depression rates remain persistently high; the government did not directly address this in 2023, exposing hidden concerns in Singapore's AI talent pipeline",
+    whyItMattersJa:
+      '大学院生の不安と抑うつ症状の比率が高止まりのままで、政府は2023年に正面から対応しませんでした。シンガポールのAI人材パイプラインの隠れた懸念が露呈されます。',
+    whyItMattersKo:
+      '대학원생의 불안 및 우울증 비율이 계속 높은 상태에 있으며, 정부가 2023년에 직접 대응하지 않았으며, 싱가포르의 AI 인재 비축 체계의 잠재적 우려를 노출한다',
     summaryJa: `議論はパンデミック後の医療健康への継続的なサポートに焦点を当てており、特に学術界のメンタルヘルスの問題を強調しています。議員は、学術的プレッシャーが研究者と大学院生の不安と抑うつの割合を高めていることを指摘し、メンタルヘルスへの注意を呼びかけています。政府は直接的な対応をしておらず、核心的な対立点は学術的パフォーマンスプレッシャーとメンタルヘルス保護のバランスをいかに取るかにあります。`,
     summaryEn: `The debate focused on continuing support for healthcare beyond the pandemic, with particular emphasis on mental health in academia. MPs noted that academic pressure drives high rates of anxiety and depression among researchers and graduate students, calling for attention to mental health. The government did not respond directly. The core debate: balancing academic performance pressure with mental-health protection.`,
     keyPoints: ['学术界心理健康问题突出', '学术压力导致焦虑抑郁', '需持续支持医疗健康'],
@@ -8494,6 +9497,13 @@ Our`,
     topics: ['AI Governance & Regulation', 'AI in Healthcare', 'AI in Public Sector'],
     summary: `议员Tan Yia Swam质询医疗体系在后疫情时代的可持续支持，强调医生与患者关系的复杂性及医疗资源有限。她呼吁政府采取全方位措施，关注医疗支出、慢性病管理及医疗服务质量。辩论聚焦医疗费用、患者权益与医生责任的平衡，体现对医疗系统长期发展的关切。`,
     summaryKo: `의원 Tan Yia Swam은 팬데믹 이후 시대의 의료 체계 지속 가능한 지원에 대해 질문했으며, 의사와 환자 관계의 복잡성과 의료 자원의 제한성을 강조했습니다. 그녀는 정부가 포괄적인 조치를 취할 것을 촉구했으며, 의료 지출, 만성질환 관리 및 의료 서비스 질의 향상에 주목했습니다. 토론은 의료 비용, 환자 권리와 의료진의 책임 사이의 균형에 초점을 맞추었으며, 의료 체계의 장기적 발전에 대한 관심을 반영합니다.`,
+    whyItMatters: '跨党派议员 2023 年 5 月同声警示医疗成本失控，预示 AI 辅助诊疗、慢病管理工具推行前须先过政治关',
+    whyItMattersEn:
+      'Across party lines, parliamentarians warned in May 2023 of runaway healthcare costs, signalling that AI-assisted diagnostics and chronic disease management tools must first gain political approval before deployment',
+    whyItMattersJa:
+      '超党派の議員が2023年5月に、医療費がコントロール不能になっていることを同声で警告しました。これはAI支援診断・慢性疾患管理ツールの導入前に政治的関門を通す必要があることを予示しています。',
+    whyItMattersKo:
+      '초당파 의원들이 2023년 5월에 한목소리로 의료 비용 통제 불능을 경고했으며, AI 보조 진료 및 만성질환 관리 도구 시행 전에 먼저 정치 관문을 통과해야 함을 암시한다',
     summaryJa: `議員のTan Yia Swamが、パンデミック後の時代における医療システムの持続可能なサポートについて質問し、医師と患者の関係の複雑さおよび医療資源の制限を強調しています。彼女は、政府に包括的な措置を講じることを呼びかけ、医療支出、慢性疾患管理および医療サービス品質に注目するよう求めています。議論は医療費、患者の権利と医師の責任のバランスに焦点を当てており、医療システムの長期的な発展への懸念を反映しています。`,
     summaryEn: `Dr Tan Yia Swam (NMP) called for sustainable post-pandemic support of the healthcare system, emphasising the complexity of doctor-patient relationships and limited healthcare resources. She urged a whole-of-government approach addressing healthcare expenditure, chronic-disease management, and care quality. The debate focused on the balance between healthcare costs, patient rights, and doctor responsibilities — reflecting concern over the system's long-term development.`,
     keyPoints: ['医生应关爱患者', '患者更自主质疑医生', '医疗支出需持续支持'],
@@ -8550,6 +9560,13 @@ I declare my interest as a breast surgeon in private practice and my various med
     topics: ['AI Governance & Regulation', 'AI Safety & Ethics', 'AI Economy & Industry', 'AI & National Security'],
     summary: `质询关注如何推动符合人类价值观的伦理AI发展及其标准维护。政府回应介绍了新加坡已有的AI治理框架、自测工具及个人数据使用指导，强调责任制和数据安全。质询方关注责任归属及AI身份标识，核心争议在于如何落实责任和透明度。`,
     summaryKo: `질문자들은 인류의 가치관에 부합하는 윤리적 AI 발전을 어떻게 추진할 것인지, 그리고 그 표준을 어떻게 유지할 것인지에 관심을 가졌습니다. 정부는 싱가포르가 이미 갖추고 있는 AI 거버넌스 프레임워크, 자체 평가 도구 및 개인 데이터 사용 지침을 소개했으며, 책임 체계와 데이터 보안을 강조했습니다. 질문자들은 책임 귀속과 AI 신원 식별에 주목했으며, 핵심 논쟁은 책임과 투명성을 어떻게 구현할 것인가에 있습니다.`,
+    whyItMatters: '新加坡 2023 年国会追问问责与 AI 身份标识时政府仍以自测工具和指引作答暴露其治理依赖软法而非强制立法',
+    whyItMattersEn:
+      "When Parliament questioned Singapore in 2023 on accountability and AI identity verification, the government's reply with self-testing tools and guidance exposed that its governance relies on soft law rather than mandatory legislation",
+    whyItMattersJa:
+      'シンガポール2023年国会での説明責任とAIアイデンティティ認証に関する追及において、政府は依然としてセルフチェックツールとガイドラインで回答し、その統治がソフトロー依存で強制法規ではないことが露呈されます。',
+    whyItMattersKo:
+      '싱가포르가 2023년 국회에서 책임 추궁과 AI 신원 식별에 대해 재질문받을 때 정부는 여전히 자체 테스트 도구와 지침으로 답변했으며, 거버넌스가 강제적 입법이 아닌 소프트 로우에 의존함을 노출한다',
     summaryJa: `質疑は、人間の価値観に適合する倫理的なAI開発とその標準維持をどのように推進するかに焦点を当てています。政府の回応は、シンガポールが既に有するAI統治フレームワーク、セルフテストツール、および個人データ使用ガイダンスを紹介し、アカウンタビリティとデータセキュリティを強調しています。質疑方は責任の帰属とAI身元識別に関心を持ち、核心的な争点は、責任と透明性をいかに実装するかにあります。`,
     summaryEn: `The question focused on how to advance ethical AI consistent with human values and maintain standards. The government cited Singapore's existing AI governance framework, self-assessment tools, and personal-data use guidance, emphasising accountability and data security. MPs focused on responsibility allocation and AI labelling. The core debate: how to operationalise accountability and transparency.`,
     keyPoints: ['推广负责任AI发展', '引入AI治理框架', '强调责任与透明'],
@@ -8606,6 +9623,14 @@ The Senior Minister of State for Communications and Information (Dr Janil Puthuc
     ],
     summary: `议员质询政府如何利用ChatGPT等新型人工智能技术提升电子政务服务，是否会替代现有聊天机器人以改善用户体验。政府回应已在多项数字服务中应用AI，强调新技术可提升服务质量和效率，但需确保准确性和可靠性，且将制定使用指南保障责任和数据安全。核心争议点在于技术应用的安全性与实用性平衡。`,
     summaryKo: `의원들은 정부가 ChatGPT 등 새로운 AI 기술을 어떻게 활용하여 전자정부 서비스를 개선할 것인지, 그리고 기존 챗봇을 대체하여 사용자 경험을 개선할 것인지 질문했습니다. 정부는 이미 여러 디지털 서비스에 AI를 적용하고 있다고 응답했으며, 새로운 기술이 서비스 질과 효율성을 향상시킬 수 있다고 강조했지만 정확성과 신뢰성을 보장해야 하며, 책임과 데이터 보안을 보장하는 사용 지침을 수립할 것이라고 밝혔습니다. 핵심 논쟁점은 기술 적용의 안전성과 실용성 사이의 균형에 있습니다.`,
+    whyItMatters:
+      '该质询发生于 2023 年 5 月，彼时新加坡尚无生成式 AI 政务应用的正式准则，政府选择先内部试点、后逐步开放，为后续治理框架定下审慎基调',
+    whyItMattersEn:
+      'This question occurred in May 2023, when Singapore had no formal guidelines for generative AI in government applications; the government chose pilot schemes first and gradual rollout, setting a cautious tone for subsequent governance frameworks',
+    whyItMattersJa:
+      'この質疑は2023年5月に発生しました。当時、シンガポールは生成型AIの行政応用に関する正式なガイドラインを有していません。政府は先に内部試験を実施し、その後段階的に開放する選択をし、後続の統治フレームワークに慎重な調子を設定しました。',
+    whyItMattersKo:
+      '그 질의는 2023년 5월에 발생했으며, 당시 싱가포르는 생성형 AI 정부 업무 응용에 대한 공식 기준이 없었으며, 정부는 먼저 내부 시범, 그 다음 단계적으로 개방하는 것을 선택했으며, 이후 거버넌스 프레임워크에 신중한 기조를 정했다',
     summaryJa: `議員は、ChatGPTなどの新しい人工知能技術を利用して電子政務サービスを改善する方法を政府に質問し、既存のチャットボットに置き換えてユーザーエクスペリエンスを改善するかどうかを尋ねています。政府の回応は、複数のデジタルサービスにおいてAIを既に適用しており、新技術がサービス品質と効率を向上させることができることを強調していますが、正確性と信頼性を確保する必要があり、責任とデータセキュリティを保障するための使用ガイドラインを制定することになっています。核心的な争点は、技術応用の安全性と実用性のバランスにあります。`,
     summaryEn: `An MP asked how the Public Service plans to use new AI technologies such as ChatGPT in e-government services and whether they will replace existing chatbots. The government replied that AI is already used in multiple digital services and that new technology can lift quality and efficiency, but accuracy and reliability must come first; usage guidance will be developed to safeguard accountability and data security. The core debate: balancing safety with usefulness in deployment.`,
     keyPoints: ['政府已应用AI服务', '新技术提升服务质量', '强调准确性与安全'],
@@ -8657,6 +9682,14 @@ Mrs Josephine Teo (for the Prime Minister)
     topics: ['AI Governance & Regulation', 'AI & National Security'],
     summary: `质询围绕"不可分割安全"概念及其在俄乌战争中的应用。政府回应强调主权、自决和领土完整为国际法基本原则，俄方以不可分割安全为由入侵乌克兰不被认可。核心争议在于不可分割安全是否为国际法原则，政府明确否认其法律地位，指出该概念被俄美双方引用但不具法律效力。`,
     summaryKo: `질의는 「불가분의 안보」 개념과 러시아-우크라이나 전쟁에서의 적용을 중심으로 전개되었습니다. 정부는 주권, 자결권, 영토 완정성이 국제법의 기본 원칙임을 강조하며, 러시아가 불가분의 안보를 이유로 우크라이나를 침략한 것은 인정되지 않는다고 응답했습니다. 핵심 분쟁은 불가분의 안보가 국제법 원칙인지 여부이며, 정부는 그 법적 지위를 명확히 부정하고, 이 개념이 러시아와 미국 양측에서 인용되지만 법적 효력이 없다고 지적했습니다.`,
+    whyItMatters:
+      '2023 年新加坡在国会明确否定不可分割安全具法律效力，重申主权先于强权，为其未来在 AI 地缘博弈中拒绝选边立下先例',
+    whyItMattersEn:
+      'In 2023, Singapore explicitly rejected the legal force of indivisible security in Parliament, reaffirming that sovereignty takes precedence over might, setting a precedent for refusing to take sides in future AI geopolitical contests',
+    whyItMattersJa:
+      '2023年、シンガポール国会は不可分割安全保障が法的効力を持つことを明確に否定し、主権は強権より優先することを改めて表明しました。これはAI地政学的競争における将来の中立維持の先例となります。',
+    whyItMattersKo:
+      '2023년 싱가포르는 국회에서 불가분의 안전이 법적 효력을 가진다는 것을 명확하게 부정했으며, 주권이 강대국의 권력보다 먼저라는 것을 재차 주장했으며, 미래에 지정학적 경쟁에서 진영 선택을 거부하는 선례를 세웠다',
     summaryJa: `質疑は「不可分割安全」概念とロシア・ウクライナ戦争におけるその応用を中心としています。政府の回応は、主権、自己決定、および領土保全が国際法の基本原則であることを強調し、不可分割安全を理由とするロシアによるウクライナ侵攻は認められていないと述べています。核心的な争点は、不可分割安全が国際法の原則であるかどうかにあり、政府は明確にその法的地位を否定し、その概念がロシアとアメリカの双方によって引用されていますが、法的効力を持たないことを指摘しています。`,
     summaryEn: `The question centred on the concept of "indivisible security" and its invocation in the Russia-Ukraine war. The government emphasised that sovereignty, self-determination, and territorial integrity are foundational principles of international law, and that Russia's invocation of indivisible security to justify invading Ukraine is not recognised. The core debate: whether indivisible security is itself a principle of international law — the government clearly rejected its legal status, noting the concept has been cited by both Russia and the US but has no legal force.`,
     keyPoints: ['主权与自决为国际法基石', '俄乌战争违反国际法', '不可分割安全非法律原则'],
@@ -8709,6 +9742,13 @@ The Minister for Law (Mr K Shanmugam)
     topics: ['AI Economy & Industry'],
     summary: `质询涉及客户未收到短信OTP却发生未授权银行交易的争议，政府回应此类情况极为罕见，警方无相关报告，金融纠纷调解中心仅接获少数争议案例。政府强调客户应及时联系银行及警方，银行需公平处理纠纷并可提供善意赔偿，客户可诉诸调解或法律途径。质询方关注银行与电信记录冲突时的复核机制及防范未来诈骗的准备。`,
     summaryKo: `질의는 고객이 문자 메시지 OTP를 받지 못했음에도 불구하고 무단 은행 거래가 발생한 분쟁과 관련되었습니다. 정부 응답은 이러한 상황이 매우 드물다고 지적했으며, 경찰은 관련 보고가 없고, 금융분쟁조정센터는 소수의 분쟁 사건만 접수했다고 했습니다. 정부는 고객이 즉시 은행 및 경찰에 연락할 것을 강조하고, 은행은 분쟁을 공정하게 처리하고 선의의 배상을 제공할 수 있으며, 고객은 조정이나 법적 수단에 호소할 수 있다고 했습니다. 질의자는 은행과 통신 기록이 상충할 때의 검증 메커니즘과 향후 사기 방지를 위한 준비에 관심을 가졌습니다.`,
+    whyItMatters: '银行赔付全凭善意而非强制规则，暴露 MAS 共同责任框架出台前的监管空白',
+    whyItMattersEn:
+      "Bank compensation is entirely voluntary rather than rule-mandated, exposing regulatory gaps before the Monetary Authority of Singapore's shared responsibility framework takes effect",
+    whyItMattersJa:
+      '銀行の補償は全く善意に依存しており、強制的ルールではありません。MASの共同責任枠組み導入前の規制的空白が露呈されます。',
+    whyItMattersKo:
+      '은행 배상이 강제 규칙이 아닌 선의에 전적으로 의존하며, MAS의 공동 책임 프레임워크 도입 전의 규제 공백을 노출한다',
     summaryJa: `質疑は、顧客がSMS OTPを受け取らなかったにもかかわらず、未承認の銀行取引が発生したという紛争に関するものです。政府の回応は、このような状況は極めて稀であり、警察は関連報告を有しておらず、金融紛争調停センターは少数の紛争ケースのみを受け取っていると述べています。政府は、顧客が銀行と警察に速やかに連絡すべきであることを強調し、銀行は紛争を公正に処理し、善意の補償を提供することができます。顧客は調停または法的手段に訴えることができます。質疑方は、銀行と通信記録が矛盾する場合の確認メカニズムと将来の詐欺を防ぐための準備に関心を持っています。`,
     summaryEn: `The question concerned disputes where unauthorised bank transactions occurred despite the customer not receiving SMS OTPs. The government replied that such cases are very rare, with no police reports and only a small number filed at the Financial Industry Disputes Resolution Centre. Customers should contact their bank and the police promptly; banks must handle disputes fairly and may offer goodwill compensation, while customers can pursue mediation or legal channels. MPs focused on the review mechanism when bank and telco records conflict, and preparation for future scams.`,
     keyPoints: ['未授权交易极罕见', '银行需公平处理纠纷', '客户可诉诸调解和法律'],
@@ -8759,6 +9799,13 @@ The Minister of State for Trade and Industry (Mr Alvin Tan) (for the Prime Minis
     topics: ['AI Governance & Regulation', 'AI Safety & Ethics', 'AI in Healthcare', 'AI & National Security'],
     summary: `质询聚焦于AI诊断方案的可信度及其广泛应用的监管考量。政府回应指出新加坡已在医疗领域广泛应用AI，强调安全、临床有效性和成本效益为采用前提，介绍了现有的监管框架和未来发布的治理指南，同时关注伦理问题。核心争议在于如何平衡技术创新与安全监管。`,
     summaryKo: `질의는 AI 진단 솔루션의 신뢰도와 그 광범위한 적용에 대한 규제 고려사항에 초점을 맞추었습니다. 정부 응답은 싱가포르가 이미 의료 분야에서 광범위하게 AI를 적용하고 있으며, 안전, 임상 유효성, 비용 효율성이 채택의 전제 조건임을 강조했습니다. 정부는 기존의 규제 프레임워크와 향후 발표할 거버넌스 지침을 소개했으며, 동시에 윤리 문제에 주목했습니다. 핵심 분쟁은 기술 혁신과 안전 규제 사이의 균형을 어떻게 맞힐 것인가입니다.`,
+    whyItMatters: '2023 年这场质询显示新加坡医疗 AI 已规模化落地，治理指南却仍未发布，暴露先应用后监管的战略缺口',
+    whyItMattersEn:
+      'This 2023 parliamentary question shows healthcare AI in Singapore has scaled into deployment, yet governance guidelines remain unpublished, exposing a strategic gap where applications precede regulation',
+    whyItMattersJa:
+      'この2023年の質疑により、シンガポールの医療AIが既に規模化して実装されていますが、統治ガイドラインはまだ発表されていないことが明らかになりました。先応用後規制の戦略ギャップが露呈されます。',
+    whyItMattersKo:
+      '2023년의 이 질의는 싱가포르의 의료 AI가 규모화된 형태로 이미 구현되었음을 보여주지만, 거버넌스 지침은 여전히 발표되지 않았으며, 먼저 응용을 하고 나중에 규제하는 전략 공백을 노출한다',
     summaryJa: `質疑はAI診断ソリューションの信頼性とその広範な適用における規制上の考慮に焦点を当てています。政府の回応は、シンガポールが医療領域におけるAIの広範な適用を既に進めていることを指摘し、安全性、臨床有効性、および費用対効果が採用の前提条件であることを強調し、既存の規制フレームワークと今後発布される統治ガイドラインを紹介し、倫理的な問題にも関心を向けています。核心的な争点は、技術革新と安全性規制のバランスをいかに取るかにあります。`,
     summaryEn: `The question focused on the credibility of AI-based diagnostic solutions and the regulatory considerations for wider adoption. The government noted AI is already widely used in Singapore healthcare, with safety, clinical efficacy and cost-effectiveness as preconditions for adoption. It outlined the existing regulatory framework, upcoming governance guidance, and ethical considerations. The core debate: balancing tech innovation with safety oversight.`,
     keyPoints: ['AI广泛应用医疗', '安全有效为前提', '完善监管与伦理'],
@@ -8816,6 +9863,14 @@ Mr Ong Ye Kung
     topics: ['AI Governance & Regulation', 'AI Safety & Ethics', 'AI Economy & Industry', 'AI & National Security'],
     summary: `质询方关注新加坡是否借鉴欧盟和中国的AI监管框架，重点领域及立法时间表。政府回应介绍现有的《AI治理模型框架》和AI Verify工具，强调持续审视监管策略，并计划发布个人数据保护指导。质询方进一步关注AI诈骗等具体风险，政府指出AI技术多样性，强调区别对待不同AI技术的必要性，体现审慎推进监管的态度。`,
     summaryKo: `질의자는 싱가포르가 유럽연합과 중국의 AI 규제 프레임워크를 참고하는지, 핵심 영역 및 입법 일정에 대해 질의했습니다. 정부는 기존의 「AI 거버넌스 모델 프레임워크」와 AI Verify 도구를 소개하고, 규제 전략을 지속적으로 검토하며, 개인 데이터 보호 지침 발표를 계획하고 있다고 응답했습니다. 질의자는 AI 사기 등 구체적인 위험에 대해 추가로 질의했으며, 정부는 AI 기술의 다양성을 지적하면서 서로 다른 AI 기술을 차별적으로 대우해야 함을 강조하고, 신중한 규제 추진 태도를 보여주었습니다.`,
+    whyItMatters:
+      '面对欧盟立法压力，2023 年 4 月新加坡国会重申以《AI治理模型框架》与 AI Verify 自愿工具应对，未松口立法时间表，坐实轻触式监管路线',
+    whyItMattersEn:
+      "Facing European Union legislative pressure, Singapore's Parliament reaffirmed in April 2023 that it will respond with the AI Governance Model Framework and the voluntary AI Verify tool, without yielding on a legislative timeline, cementing its light-touch regulatory approach",
+    whyItMattersJa:
+      'EU立法の圧力に直面し、2023年4月のシンガポール国会は「AIガバナンスモデルフレームワーク」とAI Verifyの自発的ツールによる対応を改めて示し、立法タイムラインでは歩み寄らず、軽触式規制路線を固めました。',
+    whyItMattersKo:
+      'EU 입법 압력을 직면하여, 2023년 4월 싱가포르 국회는 『AI 거버넌스 모델 프레임워크』와 AI Verify 자발적 도구로 대응하겠다고 재차 주장했으며, 입법 일정표에 양보하지 않았고, 가벼운 접촉식 규제 노선을 공고히 했다',
     summaryJa: `質疑方は、シンガポールが欧州連合と中国のAI規制フレームワークを参考にしているか、重点領域および立法タイムテーブルに関心を持っています。政府の回応は、既存の「AI統治モデルフレームワーク」とAI Verifyツールを紹介し、規制戦略の継続的な審視を強調し、個人データ保護ガイダンスの発布を計画しています。質疑方はさらにAI詐欺などの具体的なリスクに関心を持ち、政府はAI技術の多様性を指摘し、異なるAI技術を区別して対応する必要性を強調し、規制を慎重に推進する態度を体現しています。`,
     summaryEn: `MPs focused on whether Singapore is studying EU and China AI regulatory frameworks, the priority areas, and the legislative timeline. The government cited the existing Model AI Governance Framework and the AI Verify tool, emphasised ongoing review of regulatory strategy, and planned guidance on personal data protection. MPs followed up on specific risks like AI-enabled scams; the government noted AI is a group of technologies and emphasised the need to differentiate among them, reflecting a cautious approach to regulation.`,
     keyPoints: ['支持负责任AI发展', '已有AI治理框架', '关注AI诈骗风险'],
@@ -8920,6 +9975,14 @@ The Senior Minister of State for Communications and Information (Dr Janil Puthuc
     topics: ['AI Economy & Industry', 'AI & Employment', 'AI in Public Sector'],
     summary: `议员质询新加坡劳动力老龄化及人口结构变化对经济的影响，指出部分行业老年员工比例高，未来劳动力可能快速流失。强调技术变革与工作态度转变带来的挑战，呼吁政府关注灵活工作安排。政府回应未见，核心争议在于如何应对老龄化与技术变革带来的就业结构调整。`,
     summaryKo: `의원이 싱가포르의 노동력 고령화와 인구 구조 변화가 경제에 미치는 영향에 대해 질의했습니다. 의원은 일부 산업에서 노년 직원의 비율이 높으며, 향후 노동력이 급속히 감소할 수 있다고 지적했습니다. 의원은 기술 변혁과 업무 태도 변화가 가져오는 과제를 강조하고, 정부가 유연한 근무 제도에 주목할 것을 촉구했습니다. 정부 응답은 아직 없으며, 핵심 분쟁은 고령화와 기술 변혁으로 인한 고용 구조 조정에 어떻게 대응할 것인가입니다.`,
+    whyItMatters:
+      '人力部在 2023 年预算辩论上未松口灵活就业与技能再培训方案，暴露新加坡 AI 转型的人力政策仍慢于产业布局',
+    whyItMattersEn:
+      "The Ministry of Manpower(MOM) did not yield on flexible employment and reskilling schemes during the 2023 budget debate, exposing that Singapore's human resources policies for AI transformation still lag behind industry development",
+    whyItMattersJa:
+      '人材省（MOM）は2023年の予算討論で柔軟な雇用と技能再訓練スキームについて譲歩せず、シンガポールのAI転換における人材政策が産業布局に遅れている状況が露呈されます。',
+    whyItMattersKo:
+      '인력부(MOM)가 2023년 예산 토론에서 유연한 고용 및 기술 재훈련 계획에 양보하지 않았으며, 싱가포르의 AI 전환 인력 정책이 여전히 산업 배치보다 느림을 노출한다',
     summaryJa: `議員は、シンガポールの労働力の高齢化および人口構造の変化が経済に与える影響について質問し、一部の業界では高齢従業員の比率が高く、将来の労働力が急速に流失する可能性があることを指摘しています。技術的変化と仕事の態度の変化がもたらす課題を強調し、政府が柔軟な勤務体制に関心を持つよう促しています。政府の回応は見当たりませんが、核心的な争点は、高齢化と技術的変化がもたらす雇用構造の調整にいかに対応するかにあります。`,
     summaryEn: `MPs raised the impact of an ageing workforce and demographic shifts on Singapore's economy, noting that some sectors have a high share of older workers and may face rapid future labour outflow. They emphasised challenges from tech change and shifting work attitudes, urging attention to flexible work arrangements. The government did not respond directly. The core debate: how to manage employment-structure adjustment from ageing and technological change.`,
     keyPoints: ['人口老龄化加剧', '部分行业老年工人多', '技术与工作态度变化'],
@@ -9001,6 +10064,14 @@ When it was reported in January this year that China's population declined for t
     topics: ['AI Governance & Regulation', 'AI Safety & Ethics', 'AI Economy & Industry', 'AI & National Security'],
     summary: `议员质询了新加坡在数字经济发展中如何平衡数据利用与用户保护，关注在线安全法案实施进展及元宇宙等新兴领域的监管。强调法规需保护用户同时避免抑制创新，特别是中小企业的数字化发展。政府回应尚未详述，核心争议在于如何在促进数字经济与保障网络安全之间取得平衡。`,
     summaryKo: `의원이 싱가포르의 디지털 경제 발전에서 데이터 활용과 사용자 보호의 균형에 대해 질의했습니다. 의원은 온라인 안전 법안 시행 진행 상황과 메타버스 등 신흥 분야의 규제에 관심을 가졌습니다. 의원은 규정이 사용자를 보호하면서 동시에 혁신을 억제하지 않아야 함을 강조하며, 특히 중소기업의 디지털화 발전에 주목했습니다. 정부는 아직 상세한 응답을 하지 않았으며, 핵심 분쟁은 디지털 경제 촉진과 사이버 보안 보장 사이의 균형을 어떻게 맞힐 것인가입니다.`,
+    whyItMatters:
+      '在线安全法案已进入执行阶段，元宇宙等新业态却无监管细则，暴露新加坡数字经济立法追不上技术演进的结构性缺口',
+    whyItMattersEn:
+      "The Online Safety Act has entered implementation, yet emerging sectors like the metaverse lack regulatory guidelines, exposing a structural gap where Singapore's digital economy legislation cannot keep pace with technological evolution",
+    whyItMattersJa:
+      'オンライン安全法案は既に実装段階に入っていますが、メタバースなどの新しいビジネスモデルには規制細則がありません。シンガポールのデジタル経済立法が技術進化に追いつけない構造的ギャップが露呈されます。',
+    whyItMattersKo:
+      '온라인 안전 법안이 이미 집행 단계에 진입했지만, 메타버스 등 신규 업태는 규제 세부 규칙이 없으며, 싱가포르의 디지털 경제 입법이 기술 진화를 따라가지 못하는 구조적 공백을 노출한다',
     summaryJa: `議員は、シンガポールのデジタル経済発展においてデータ利用とユーザー保護のバランスをいかに取るかについて質問し、オンラインセーフティ法案の実装進捗状況とメタバースなどの新興領域の規制に関心を持っています。規制がユーザーを保護しつつイノベーションを抑制しないようにする必要があることを強調し、特に中小企業のデジタル化発展が重要です。政府の回応はまだ詳述されていませんが、核心的な争点は、デジタル経済を促進することとネットワークセキュリティを保障することの間のバランスをいかに取るかにあります。`,
     summaryEn: `MPs asked how Singapore balances data use with user protection in the digital economy, focusing on online-safety legislation progress and regulation of emerging areas like the metaverse. They stressed that rules must protect users without stifling innovation, especially SME digitalisation. The government's response is not yet detailed in the excerpt. The core debate: balancing the digital economy with cybersecurity.`,
     keyPoints: ['数据驱动创新与风险', '在线安全法案实施', '监管与创新平衡'],
@@ -9096,6 +10167,13 @@ But along with new capabilities com`,
     topics: ['AI Economy & Industry', 'AI & Employment', 'AI in Education', 'AI in Public Sector'],
     summary: `议员质询教育预算及职业指导支持，强调疫情期间教育工作者的贡献及未来技能培养的重要性。提出加强青年及在职人士的职业辅导，建议扩大SkillsFuture学分使用范围以促进终身学习。政府回应未见，核心争议在于如何更好支持青年职业发展及技能匹配。`,
     summaryKo: `의원이 교육 예산과 직업 지도 지원에 대해 질의했으며, 팬데믹 기간 교육 종사자들의 기여와 향후 기술 양성의 중요성을 강조했습니다. 의원은 청년 및 현직 근로자들을 위한 직업 지도를 강화할 것을 제안하고, SkillsFuture 학점 사용 범위를 확대하여 평생 학습을 촉진할 것을 제의했습니다. 정부 응답은 아직 없으며, 핵심 분쟁은 청년의 직업 발전과 기술 매칭을 더 잘 지원하는 방법에 있습니다.`,
+    whyItMatters: '政府未正面回应扩大 SkillsFuture 学分范围的呼吁，暴露新加坡 AI 转型期终身学习投入仍显不足',
+    whyItMattersEn:
+      "The government did not directly address calls to expand SkillsFuture credit scope, exposing that Singapore's lifelong learning investment during AI transformation remains insufficient",
+    whyItMattersJa:
+      '政府がSkillsFutureクレジット範囲の拡大を求める呼びかけに正面から対応していません。AI転換期におけるシンガポールの生涯学習投資が不足していることが露呈されます。',
+    whyItMattersKo:
+      '정부가 SkillsFuture 학점 범위 확대에 대한 요청에 직접 대응하지 않았으며, 싱가포르의 AI 전환 기간의 평생 학습 투입이 여전히 부족해 보임을 노출한다',
     summaryJa: `議員は教育予算とキャリア指導サポートについて質問し、パンデミック期間中の教育者の貢献と将来のスキル育成の重要性を強調しました。若者および就業者のキャリアカウンセリングを強化し、生涯学習を促進するためにSkillsFutureクレジットの使用範囲を拡大することを提案しました。政府からの応答は見られず、核心的な争点は若者のキャリア開発とスキルマッチングをより良くサポートする方法にあります。`,
     summaryEn: `MPs raised the education budget and career-guidance support, emphasising educators' contributions during the pandemic and the importance of future skills development. They proposed stronger career counselling for youth and working adults and broader use of SkillsFuture Credit for lifelong learning. The government has not yet responded in this excerpt. The core debate: how to better support youth career development and skills matching.`,
     keyPoints: ['加强青年职业指导', '提升继续教育培训', '扩大技能学分使用'],
@@ -9175,6 +10253,14 @@ The past few years have undoubtedly been a test of mettle. Especially so for our
     ],
     summary: `议员质询国防部关于当前全球及区域安全形势的评估，特别关注美中战略竞争、俄乌战争及朝鲜导弹试验等风险。政府回应了对多边主义衰退和地区安全复杂化的关注，强调新加坡需加强防务准备以应对不确定性。核心争议在于如何平衡国防投入与区域外交策略，确保国家安全与稳定。`,
     summaryKo: `의원들은 현재의 글로벌 및 지역 안보 상황에 대한 국방부의 평가를 질문했으며, 특히 미중 전략 경쟁, 러시아-우크라이나 전쟁, 북한의 미사일 시험 등의 위험에 주목했습니다. 정부는 다자주의의 쇠퇴와 지역 안보 복잡화에 대한 우려에 응답하면서 불확실성에 대응하기 위해 싱가포르가 국방 준비를 강화해야 함을 강조했습니다. 핵심 논쟁은 국방 투자와 지역 외교 전략의 균형을 맞추고 국가 안보와 안정을 보장하는 방법에 관한 것입니다.`,
+    whyItMatters:
+      '国防部 2023 年 2 月 24 日国会答复以安全对冲应对美中对抗，预示新加坡 AI 战略同样会把地缘风险置于产业效率之上',
+    whyItMattersEn:
+      "The Ministry of Defence(MINDEF) response in Parliament on 24 February 2023 uses security hedging to address US-China tensions, suggesting Singapore's AI strategy will likewise prioritise geopolitical risks over industrial efficiency",
+    whyItMattersJa:
+      '国防省（MINDEF）の2023年2月24日の国会回答は、安全保障ヘッジングで米中対抗に対処し、シンガポールのAI戦略が同様に地政学的リスクを産業効率より優先することを予兆させています。',
+    whyItMattersKo:
+      '국방부(MINDEF)가 2023년 2월 24일 국회 답변에서 안전 헤징으로 미중 대항을 대응했으며, 싱가포르의 AI 전략도 마찬가지로 지정학적 위험을 산업 효율보다 위에 놓을 것임을 암시한다',
     summaryJa: `議員は国防省に対して、現在のグローバルおよび地域的なセキュリティ状況の評価について質問し、米中の戦略的競争、ロシア・ウクライナ戦争および北朝鮮のミサイル試験などのリスクに特に懸念を持ちました。政府の応答は、多国間主義の衰退と地域セキュリティの複雑化への懸念を示し、シンガポールは不確実性に対処するために防衛準備を強化する必要があることを強調しました。核心的な争点は、国防投入と地域外交戦略のバランスをとり、国家安全と安定を確保する方法にあります。`,
     summaryEn: `MPs asked MINDEF for its assessment of the global and regional security situation, focusing on US-China strategic competition, the Russia-Ukraine war, and North Korean missile tests. The government acknowledged concerns over the erosion of multilateralism and increasingly complex regional security, stressing Singapore must strengthen defence readiness for uncertainty. The core debate: balancing defence investment with regional diplomatic strategy to safeguard national security and stability.`,
     keyPoints: ['多边主义承诺减弱', '美中战略竞争加剧', '区域安全环境复杂'],
@@ -9228,6 +10314,14 @@ Singapore had a turbulent journey to Independence, with our pioneer generation o
     topics: ['AI Safety & Ethics', 'AI in Education', 'AI & National Security', 'AI in Public Sector'],
     summary: `质询了教育部如何管理学校中ChatGPT等人工智能工具的使用。政府回应指出，AI工具既有机遇也有挑战，强调通过教师指导、数字素养教育和多元评估防范滥用，培养学生诚信和责任感。核心争议在于如何平衡AI辅助学习与防止学术不端。`,
     summaryKo: `의원들은 학교에서 ChatGPT 등 인공지능 도구의 사용을 어떻게 관리할 것인지에 대해 교육부에 질의했습니다. 정부는 AI 도구가 기회와 도전 모두를 제공한다고 지적하면서, 교사의 지도, 디지털 소양 교육, 다원적 평가를 통해 남용을 방지하고 학생의 정직성과 책임감을 기르는 것을 강조했습니다. 핵심 논쟁은 AI 보조 학습과 학술 부정행위 방지 사이의 균형을 맞추는 방법에 관한 것입니다.`,
+    whyItMatters:
+      '2023 年 2 月国会问责教育部，对策仍是教师把关与多元评估的软指引而非硬性规范，暴露教育系统尚无生成式 AI 专项规则的空白',
+    whyItMattersEn:
+      'When Parliament held the Ministry of Education(MOE) accountable in February 2023, the response remained soft guidance on teacher gatekeeping and diverse assessment rather than hard standards, exposing a blank slate for generative AI-specific rules in the education system',
+    whyItMattersJa:
+      '2023年2月の国会での教育省（MOE）への説明責任要求において、対策は依然として教師による把握と多元的評価のソフトガイドラインであり、硬い規範ではなく、教育システムが生成AIの専門的ルールを欠いていることが露呈されます。',
+    whyItMattersKo:
+      '2023년 2월 국회가 교육부(MOE)에 책임을 물었지만, 대책은 여전히 교사의 관문 유지와 다양한 평가의 소프트 지침이었으며 강제 규범이 아니었으며, 교육 시스템이 생성형 AI 전문 규칙이 없음을 노출한다',
     summaryJa: `教育省に対してChatGPTなどの人工知能ツールが学校でどのように管理されているか質問しました。政府の応答によれば、AIツールは機会と課題の両方をもたらし、教師の指導、デジタル・リテラシー教育および多様な評価を通じて乱用を防ぎ、学生の誠実性と責任感を養うことが強調されています。核心的な争点は、AI補助学習と学術的不正行為を防ぐことのバランスをとる方法にあります。`,
     summaryEn: `An MP asked how MOE will manage the use of AI tools like ChatGPT in schools. The government replied that AI tools bring both opportunities and challenges, and emphasised teacher guidance, digital literacy education, and diversified assessment to prevent misuse, while cultivating student integrity and responsibility. The core debate: balancing AI-assisted learning with preventing academic misconduct.`,
     keyPoints: ['AI具机遇与挑战', '加强数字素养教育', '多元评估防止滥用'],
@@ -9286,6 +10380,14 @@ The Ministry of Education (MOE) provides teachers with guidance and resources to
     topics: ['AI Safety & Ethics', 'AI Economy & Industry', 'AI & Employment', 'AI in Education'],
     summary: `议员质询AI技术如ChatGPT对学生作业和考试的影响、作弊问题及教育应对措施。教育部长回应，AI带来机遇与挑战，教育部提供指导资源，鼓励合理利用AI，同时强调基础知识掌握，防止过度依赖和作弊。核心争议在于如何平衡AI辅助学习与防范学术不端。`,
     summaryKo: `의원들은 ChatGPT와 같은 AI 기술이 학생의 과제와 시험에 미치는 영향, 부정행위 문제, 교육 대응 방안에 대해 질의했습니다. 교육부 장관은 AI가 기회와 도전을 모두 제공한다고 응답하면서, 교육부가 지도 자료를 제공하고 AI의 합리적 활용을 장려하되 기초 지식 습득을 강조하고 과도한 의존과 부정행위를 방지할 것이라고 했습니다. 핵심 논쟁은 AI 보조 학습과 학술 부정행위 방지 사이의 균형을 맞추는 방법에 관한 것입니다.`,
+    whyItMatters:
+      '2023 年 2 月，ChatGPT 面世仅两个月，教育部即选择疏导而非禁用，为新加坡 AI 教育政策定下鼓励善用、防风险的基调',
+    whyItMattersEn:
+      "In February 2023, merely two months after ChatGPT's debut, the Ministry of Education(MOE) chose guidance over prohibition, setting Singapore's AI education policy to encourage beneficial use while managing risks",
+    whyItMattersJa:
+      '2023年2月、ChatGPTが世に出てからわずか2か月で、教育省（MOE）は禁止ではなく誘導を選択し、シンガポールのAI教育政策に善用の奨励とリスク防止の基調を定めました。',
+    whyItMattersKo:
+      '2023년 2월, ChatGPT가 공개된 지 겨우 2개월 후, 교육부(MOE)는 금지가 아닌 유도를 선택했으며, 싱가포르 AI 교육 정책에 올바른 사용을 권장하고 위험을 방지하는 기조를 정했다',
     summaryJa: `議員はChatGPTなどのAI技術が学生の課題と試験に与える影響、不正行為の問題および教育的な対応策について質問しました。教育相は対応として、AI は機会と課題の両方をもたらすと述べ、教育省は指導リソースを提供し、AI の適切な利用を奨励する一方で、基礎知識の習得を強調し、過度な依存と不正行為を防ぐことを述べました。核心的な争点は、AI補助学習と学術的不正行為を防ぐことのバランスをとる方法にあります。`,
     summaryEn: `MPs asked about ChatGPT and similar AI's impact on student coursework and exams, cheating concerns, and the educational response. The Education Minister replied that AI brings opportunities and challenges, MOE provides teacher guidance and resources, and supports reasonable AI use while emphasising mastery of fundamentals — preventing over-reliance and cheating. The core debate: balancing AI-assisted learning with prevention of academic misconduct.`,
     keyPoints: ['AI带来机遇与挑战', '提供教师指导资源', '防范学生作弊行为'],
@@ -9338,6 +10440,14 @@ asked the Minister for Education (a) whe`,
     topics: ['AI Governance & Regulation', 'AI Safety & Ethics', 'AI in Education', 'AI & National Security'],
     summary: `质询关注AI技术（如ChatGPT）对学生在线考试和作业诚信的影响，政府回应强调技术既带来机遇也有挑战，学校和高等院校通过明确规则、监考措施及多元评估防范学术不端，持续教育学生诚信重要性，并将随AI发展调整应对策略。核心争议在于如何平衡AI辅助学习与防止作弊。`,
     summaryKo: `의원들은 ChatGPT와 같은 AI 기술이 학생의 온라인 시험과 과제 정직성에 미치는 영향에 주목했고, 정부는 기술이 기회와 도전을 모두 제공한다고 강조하면서, 학교와 고등 교육 기관이 명확한 규칙, 감시 조치, 다원적 평가를 통해 학술 부정행위를 방지하고, 학생에게 정직성의 중요성을 지속적으로 교육하며, AI의 발전에 따라 대응 전략을 조정할 것이라고 회신했습니다. 핵심 논쟁은 AI 보조 학습과 부정행위 방지 사이의 균형을 맞추는 방법에 관한 것입니다.`,
+    whyItMatters:
+      '2023 年 2 月的书面答复显示,面对 ChatGPT 冲击,教育部仍依赖监考和多元评估等旧手段,未推出专门的 AI 考试新规',
+    whyItMattersEn:
+      'The February 2023 written reply shows that when facing ChatGPT disruption, the Ministry of Education(MOE) still relied on old measures like proctoring and diverse assessment, rolling out no dedicated new AI examination rules',
+    whyItMattersJa:
+      '2023年2月の書面回答により、ChatGPTの影響に対して、教育省（MOE）は依然として試験監督と多元的評価などの古い手段に依存しており、AI試験用の専門的新規則を推出していないことが示されています。',
+    whyItMattersKo:
+      '2023년 2월의 서면 답변은 ChatGPT 충격에 직면하여 교육부(MOE)가 여전히 감독과 다양한 평가 등 구식 방법에 의존했으며, 전문적인 AI 시험 새로운 규칙을 내놓지 않았음을 보여준다',
     summaryJa: `ChatGPTなどのAI技術が学生のオンライン試験および課題の誠実性に与える影響についての質問に対し、政府の応答は、技術は機会と課題の両方をもたらすことを強調しており、学校および高等教育機関は明確なルール、試験監視措置および多様な評価を通じて学術的不正行為を防ぎ、学生の誠実性の重要性に関する教育を継続し、AI の発展に応じて対応戦略を調整する予定です。核心的な争点は、AI補助学習と不正行為を防ぐことのバランスをとる方法にあります。`,
     summaryEn: `The question focused on AI's impact (e.g. ChatGPT) on the integrity of online exams and assignments. The government replied that the technology brings both opportunities and challenges; schools and IHLs use clear rules, invigilation measures, and diversified assessment to deter misconduct, alongside continuous student education on integrity, and will adjust strategy as AI evolves. The core debate: balancing AI-assisted learning with cheating prevention.`,
     keyPoints: ['AI既是机遇也是挑战', '严格监考防止作弊', '多元评估识别异常'],
@@ -9389,6 +10499,14 @@ Mr Chan Chun Sing
     topics: ['AI Governance & Regulation', 'AI Infrastructure & Research', 'AI Strategy'],
     summary: `质询马来西亚拟在国际法院继续诉讼是否影响新加坡珊瑚礁开发。外交部长回应称2008年判决终局且时效已过，未收到马方具体诉讼细节。新加坡准备应对任何法律行动，开发活动均符合法律，核心争议在于主权维护与法律程序时效。`,
     summaryKo: `의원들은 말레이시아가 국제법원에서 소송을 계속할 계획이 싱가포르의 산호초 개발에 영향을 미치는지에 대해 질의했습니다. 외교부 장관은 2008년 판결이 확정되었고 시효가 만료되었으며 말레이시아 측의 구체적인 소송 세부 사항을 아직 받지 못했다고 응답했습니다. 싱가포르는 모든 법적 조치에 대응할 준비가 되어 있으며 개발 활동은 모두 법률을 준수한다고 했으며, 핵심 논쟁은 주권 보호와 법적 절차 시효에 관한 것입니다.`,
+    whyItMatters:
+      '外长以 2008 年判决终局、诉讼时效已过为由,在未获马方诉讼细节前仍力挺开发,彰显新加坡对未决主权风险的容忍底线',
+    whyItMattersEn:
+      "The Foreign Minister cited a 2008 judgment as final and the statute of limitations as expired, still championing development without obtaining Malaysian litigation details, showcasing Singapore's tolerance threshold for unresolved sovereignty risks",
+    whyItMattersJa:
+      '外務大臣は2008年の判決が終局であり、訴訟時効が完成したことを理由に、マレーシア側の訴訟詳細を得ずに依然として開発を強く支持しており、未決着の主権リスクに対するシンガポールの容認底線を示しています。',
+    whyItMattersKo:
+      '외교장관이 2008년 판결의 확정과 소송 시효 경과를 이유로, 말레이시아 측의 소송 세부 사항을 얻지 못하기 전에도 여전히 개발을 강력하게 지지했으며, 결정되지 않은 주권 위험에 대한 싱가포르의 용인 경계선을 드러낸다',
     summaryJa: `質問はマレーシアが国際司法裁判所で訴訟を継続する予定かどうかがシンガポールのサンゴ礁開発に影響を与えるかについてでした。外交相は対応として、2008年の判決は確定的であり時効は経過していると述べ、マレーシア側から具体的な訴訟の詳細を受け取っていないと述べました。シンガポールはいかなる法的行動にも対応する準備ができており、開発活動はすべて法律を遵守しています。核心的な争点は主権の維持と法的手続きの時効にあります。`,
     summaryEn: `The question asked whether Malaysia's intended legal action at the ICJ would affect Singapore's reclamation works around Pedra Branca. The Foreign Minister replied that the 2008 ICJ judgment is final, the time limit has passed, and Singapore has not received specific case details from Malaysia. Singapore stands ready to handle any legal action; all development is law-compliant. The core debate: sovereignty and the time limits of legal procedure.`,
     keyPoints: ['2008年判决终局', '诉讼时效已过', '开发符合法律'],
@@ -9438,6 +10556,13 @@ Dr Vivian Balakrishnan
     topics: ['AI Safety & Ethics', 'AI in Education', 'AI & National Security', 'AI Infrastructure & Research'],
     summary: `质询涉及是否设定社交媒体最低年龄限制及借鉴海外年龄验证经验。政府回应指出现行多数平台要求13岁以上注册，采用AI等技术检测未成年账户，但年龄验证技术难度大且涉及儿童数据保护问题。政府将推行线上安全行为守则，强化对年轻用户保护，同时鼓励家长积极引导。核心争议在于年龄验证技术的可行性与数据隐私保护的平衡。`,
     summaryKo: `의원들은 소셜 미디어에 최소 연령 제한을 설정할지 여부와 해외 연령 검증 경험을 참고할 계획에 대해 질의했습니다. 정부는 현재 대부분의 플랫폼이 13세 이상의 가입을 요구하고 있으며 AI 등의 기술을 사용하여 미성년자 계정을 탐지하고 있지만, 연령 검증 기술의 실현이 어렵고 아동 데이터 보호 문제와 관련이 있다고 지적했습니다. 정부는 온라인 안전 행동 지침을 시행하여 젊은 사용자 보호를 강화하고, 동시에 부모들이 적극적으로 자녀를 지도하도록 장려할 것이라고 했습니다. 핵심 논쟁은 연령 검증 기술의 실현 가능성과 개인정보 보호의 균형에 관한 것입니다.`,
+    whyItMatters: '政府拒绝强制年龄验证技术，转倚赖平台 AI 自查与线上安全行为守则，凸显轻监管路线下的隐私代价',
+    whyItMattersEn:
+      'The government rejected mandatory age verification technology, instead relying on platform AI self-audits and online safety conduct codes, highlighting the privacy cost of its light-touch regulatory approach',
+    whyItMattersJa:
+      '政府が強制的年齢確認技術を拒否し、代わりにプラットフォームAI自己検査とオンライン安全行為規範に依存しており、軽触式規制路線下のプライバシー代価を浮き彫りにします。',
+    whyItMattersKo:
+      '정부가 강제적 나이 검증 기술을 거부하고, 플랫폼의 AI 자체 검토와 온라인 안전 행동 준칙에 의존하는 것으로 바꾸었으며, 가벼운 규제 노선 아래의 프라이버시 대가를 드러낸다',
     summaryJa: `質問はソーシャルメディアの最低年齢制限を設定するかどうか、および海外の年齢検証経験から学ぶことに関するものでした。政府の応答によれば、現在のほとんどのプラットフォームは 13 歳以上の登録を要求し、AI などの技術を採用して未成年アカウントを検出していますが、年齢検証技術は難しく、また子どもデータ保護に関わる問題があります。政府はオンライン安全行動規範を実行する予定であり、若いユーザーの保護を強化し、同時に保護者の積極的なガイドを奨励しています。核心的な争点は、年齢検証技術の実行可能性とデータプライバシー保護のバランスにあります。`,
     summaryEn: `The question asked whether a minimum age for social media should be set and what overseas age-verification experience could inform Singapore. The government replied that most major platforms require users to be 13+, with AI used to detect minor accounts, but accurate age verification is technically difficult and raises child-data-protection issues. The government will roll out a Code of Practice on Online Safety to strengthen protection for young users while encouraging active parental guidance. The core debate: feasibility of age-verification technology and balance with data privacy.`,
     keyPoints: ['多数平台要求13岁以上', 'AI技术辅助年龄检测', '数据保护与技术难题'],
@@ -9535,6 +10660,13 @@ The Senior Minister of State for Communications and Information (Dr Janil Puthuc
     ],
     summary: `议员质询政府如何在推动数字基础设施和技术创新（如6G、Web 4.0）的同时，保障弱势群体数字包容，防止数字鸿沟扩大。关注数字监管的及时性与适度性，尤其是加密货币和元宇宙等新兴领域的风险与机遇。政府需在经济活力与社会凝聚力之间寻求平衡，确保全民赋能与安全防护。`,
     summaryKo: `의원들이 정부에 질의했습니다: 디지털 기반 시설과 기술 혁신(예: 6G, Web 4.0)을 추진하면서 동시에 취약 계층의 디지털 포용을 보장하고 디지털 격차 확대를 방지하는 방법은? 디지털 규제의 적시성과 적절성에 주목하고 있으며, 특히 암호화폐와 메타버스 같은 신흥 분야의 위험과 기회에 관심을 두고 있습니다. 정부는 경제 활력과 사회 응집력 사이에서 균형을 모색하여 전국민 역량 강화와 안전 방호를 보장해야 합니다.`,
+    whyItMatters: '在 6G、Web 4.0 尚处概念阶段的 2022 年就把包容性列为前提，为新加坡后续 AI 战略埋下先保底再冲刺的先例',
+    whyItMattersEn:
+      "In 2022, when 6G and Web 4.0 were still at the conceptual stage, inclusivity was positioned as a prerequisite, setting a precedent for Singapore's subsequent AI strategy to secure the foundation before scaling up.",
+    whyItMattersJa:
+      '6GおよびWeb 4.0がまだ概念段階にあった2022年の段階で、シンガポールはすでに包容性を前提として列挙し、その後のAI戦略のために「まず基盤を固めてから突進する」という先例を埋め込んだ',
+    whyItMattersKo:
+      '2022년 6G와 Web 4.0이 개념 단계에 머물러 있을 때 이미 포용성을 전제로 삼았으며, 싱가포르 이후 AI 전략을 위해 기초를 다진 후 도약하는 선례를 남겼습니다',
     summaryJa: `議員は、デジタルインフラと技術革新（6G、Web 4.0など）の推進と、脆弱層のデジタル包含の確保及びデジタル格差の拡大防止をいかにバランスするかについて政府に質問しています。デジタル規制の適時性と適切性に焦点が当たり、特に暗号資産やメタバースなどの新興分野のリスクと機会が重視されています。政府は経済的活力と社会的結束力のバランスを取りながら、全国民のエンパワーメントとセキュリティ保護を確保する必要があります。`,
     summaryEn: `MPs asked how the government balances investment in digital infrastructure and tech innovation (6G, Web 4.0) with digital inclusion of vulnerable groups to prevent a widening digital divide. They focused on the timeliness and proportionality of digital regulation, especially in emerging areas like crypto and the metaverse. The government must balance economic vitality with social cohesion, making sure the whole population stays included and safe.`,
     keyPoints: ['数字基础设施领先布局', '数字包容防止边缘化', '数字监管需及时适度'],
@@ -9614,6 +10746,14 @@ On the one hand, for survival and to keep relevant, Singapore has to continually
     topics: ['AI & Employment', 'AI in Healthcare', 'AI & National Security', 'AI in Public Sector'],
     summary: `议员质询国防部关于更新医疗分类系统的进展，关注如何实现更全面的服役能力评估及岗位匹配。政府回应该系统旨在提升人力资源运用效率，结合服役者技能与职业背景。核心争议在于如何确保评估的全面性及实际部署中技能的合理匹配。`,
     summaryKo: `의원들이 의료 분류 시스템 업데이트 진행 상황에 대해 국방부에 질의했습니다. 더욱 포괄적인 복무 역량 평가와 직책 매칭 실현 방식에 주목합니다. 정부는 이 시스템이 인력 자원 활용 효율성을 높이고 복무자의 역량과 직업 배경을 결합하기 위한 것이라고 답변했습니다. 핵심 논쟁은 평가의 포괄성을 보장하고 실제 배치에서 역량의 합리적 매칭을 달성하는 방법입니다.`,
+    whyItMatters:
+      '国防部借医疗分类改革把技能匹配逻辑嵌入人力决策核心，却游离于新加坡公开 AI 治理讨论之外，暴露国防数据化的监督盲区',
+    whyItMattersEn:
+      "The Ministry of Defence(MINDEF) embedded skill-matching logic into the core of human resource decisions through healthcare classification reform, yet remained outside Singapore's public AI governance discussion, exposing a regulatory blind spot in defence data digitization.",
+    whyItMattersJa:
+      '国防省（MINDEF）は医療分類改革を通じてスキルマッチング論理を人事決定の中核に組み込み、しかしシンガポール公開のAI治理議論の外に遊離し、国防データ化の監督盲点を露呈させた',
+    whyItMattersKo:
+      '국방부(MINDEF)는 의료 분류 개혁을 통해 기술 매칭 논리를 인력 결정의 핵심에 내장했으나, 싱가포르의 공개 AI 치리 논의 외곽에 머물러 있으며, 국방 데이터화의 감시 사각지대를 드러냅니다',
     summaryJa: `議員は、医療分類システム更新の進捗について国防省に質問し、より包括的なサービス能力評価と職位マッチングの実現方法に焦点を当てています。政府は、このシステムが人員資源の活用効率を向上させることを目的としており、サービス提供者のスキルと職務経歴を組み合わせていると回答しています。核心的な争点は、評価の包括性と実際の配置におけるスキルの合理的なマッチングをいかに確保するかです。`,
     summaryEn: `MPs asked MINDEF about progress on updating the medical classification system, focusing on how to make operational-fitness assessment and job matching more thorough. The government replied that the system aims to lift HR efficiency by combining servicemen's skills with their professional background. The core debate: how to make assessment thorough and ensure skills are properly matched in deployment.`,
     keyPoints: ['医疗分类系统更新', '服役能力全面评估', '技能与岗位匹配'],
@@ -9695,6 +10835,14 @@ Mr Mohd Fahmi Bin Aliman (Marine Parade)
     ],
     summary: `议员质询国防预算，强调俄乌战争暴露小国自卫重要性及信息战威胁。辩论聚焦地缘政治紧张、技术竞争及网络信息战的安全影响。政府回应强调加强自卫能力与技术防御，核心争议在于如何平衡预算与应对新兴安全威胁。`,
     summaryKo: `의원들이 국방 예산에 대해 질의했으며, 러-우 전쟁이 소국의 자위 중요성과 정보 전쟁 위협을 노출시켰다고 강조했습니다. 논의는 지정학적 긴장, 기술 경쟁 및 사이버 정보 전쟁의 안보 영향에 초점을 맞췄습니다. 정부는 자위 능력과 기술 방어 강화를 강조하며 답변했으며, 핵심 논쟁은 예산과 신흥 안보 위협 대응 사이의 균형을 어떻게 맞출지입니다.`,
+    whyItMatters:
+      '俄乌战争爆发一周,新加坡 2022 年 3 月国防预算辩论即纳入网络信息战与技术竞争,显示 AI 安全议题已从经济叙事外溢至国防核心',
+    whyItMattersEn:
+      "A week after the Russia-Ukraine war erupted, Singapore's March 2022 defence budget debate incorporated cyber-information warfare and technological competition, showing that AI security issues had spilled over from economic discourse to defence priorities.",
+    whyItMattersJa:
+      'ウクライナ・ロシア戦争勃発から1週間で、シンガポールの2022年3月国防予算議論はサイバー情報戦と技術競争を組み込み、AI安全議題がすでに経済叙事から国防中核に外溢していることを示した',
+    whyItMattersKo:
+      '러-우크라이나 전쟁 발발 일주일 후, 싱가포르 2022년 3월 국방 예산 논의는 즉시 사이버 정보전과 기술 경쟁을 포함했으며, AI 안보 의제가 경제 서사에서 국방 핵심으로 확대되었음을 보여줍니다',
     summaryJa: `議員は国防予算について質問し、ウクライナ紛争が小国の自衛の重要性と情報戦の脅威を明らかにしたことを強調しています。討論は地政学的緊張、技術競争、サイバー情報戦のセキュリティ影響に焦点が当てられています。政府は自衛能力と技術的防御の強化を強調していており、核心的な争点は予算と新興セキュリティ脅威への対応のバランスをいかに取るかです。`,
     summaryEn: `MPs raised the defence budget, stressing that the Russia-Ukraine war underlines the importance of small-state self-defence and the threat of information warfare. The debate focused on geopolitical tension, tech competition, and the security impact of cyber and information warfare. The government emphasised strengthening self-defence and tech defence capabilities. The core debate: balancing the budget with response to emerging security threats.`,
     keyPoints: ['小国自卫重要性', '信息战与假旗行动', '美中技术竞争加剧'],
@@ -9745,6 +10893,14 @@ We live in a dangerous world. In the past week, we have witnessed Russia's invas
     topics: ['AI & National Security', 'AI Strategy'],
     summary: `议员质询新加坡低生育率对武装部队兵力的影响，国防部长回应指出，国防部早已将人力需求纳入战略规划，通过技术提升兵力效能，如自动化雷达、无人舰艇及AI应用，持续优化人力资源，确保国防力量不因兵源减少而削弱。`,
     summaryKo: `의원들이 싱가포르의 저출산율이 무장 부대 병력에 미치는 영향에 대해 질의했으며, 국방부 장관은 국방부가 이미 인력 수요를 전략 계획에 포함시켜 왔으며, 자동화 레이더, 무인 함정 및 AI 응용 등 기술을 통해 병력 효능을 향상시키고 인력 자원을 지속적으로 최적화하여 병력 감소로 인한 국방력 약화를 방지하고 있다고 답변했습니다.`,
+    whyItMatters:
+      '国防部 2022 年已将 AI 与自动化列为应对少子化兵源缺口的对策，暴露人口结构危机是新加坡军事与产业 AI 投入的共同驱动力',
+    whyItMattersEn:
+      "By 2022, the Ministry of Defence(MINDEF) had already designated AI and automation as measures to address the shortage of military personnel due to low birth rates, exposing demographic structural crisis as a common driver for Singapore's military and industrial AI investment.",
+    whyItMattersJa:
+      '国防省（MINDEF）は2022年にAIと自動化を少子化による兵源不足に対処する対策として列挙し、人口構造危機がシンガポール軍事および産業AI投資の共通の駆動力であることを露呈させた',
+    whyItMattersKo:
+      '국방부(MINDEF)는 2022년 AI와 자동화를 저출산 병력 부족에 대응하는 대책으로 분류했으며, 인구 구조 위기가 싱가포르의 군사 및 산업 AI 투자의 공동 동력임을 드러냅니다',
     summaryJa: `議員はシンガポールの低出生率が武装部隊の人員に与える影響について質問し、国防長官は、国防省が人員需要を戦略計画に組み込んでおり、自動化レーダー、無人艦艇、AI応用など技術を通じて兵力の効率性を向上させ、人員源の減少にもかかわらず国防力を弱めないように人員資源を継続的に最適化していると指摘しています。`,
     summaryEn: `An MP asked how Singapore's low fertility rate affects SAF strength. The Defence Minister replied that MINDEF has long built manpower needs into strategic planning and uses technology to lift force effectiveness — automated radar, unmanned vessels, AI applications — continuously optimising HR so that defence capability is not weakened by smaller cohorts.`,
     keyPoints: ['低生育率影响兵力', '技术提升人力效率', '持续优化作业流程'],
@@ -9796,6 +10952,14 @@ Dr Ng Eng Hen
     topics: ['AI Safety & Ethics', 'AI Economy & Industry', 'AI in Education', 'AI in Healthcare'],
     summary: `议员质询新加坡通讯与资讯部关于发展人工智能生态系统及其应用的举措。政府回应介绍了国家人工智能战略及五大国家AI项目，强调通过产学研合作、资金投入及人才培养推动AI创新与应用，同时注重AI治理与国际合作。核心争议点在于如何平衡技术发展与伦理监管，确保AI安全可信。`,
     summaryKo: `의원들이 싱가포르 통신정보부에 인공지능 생태계 개발 및 응용 조치에 대해 질의했습니다. 정부는 국가 인공지능 전략 및 5대 국가 AI 프로젝트를 소개하면서, 산학연 협력, 자금 투입 및 인재 양성을 통해 AI 혁신과 응용을 추진하고 동시에 AI 거버넌스와 국제 협력에 주력하고 있다고 강조했습니다. 핵심 논쟁점은 기술 발전과 윤리 규제 사이의 균형을 어떻게 맞추고 AI의 안전성과 신뢰도를 보장할지입니다.`,
+    whyItMatters:
+      '这场问答发生在 ChatGPT 引爆全球 AI 监管潮的一年前，新加坡已把五大国家 AI 项目与治理框架并列作答，创新与监管从起步就绑定',
+    whyItMattersEn:
+      'This Q&A occurred a year before ChatGPT sparked a global wave of AI regulation; Singapore had already positioned five national AI projects alongside governance frameworks in its response, binding innovation and regulation from the outset.',
+    whyItMattersJa:
+      'このQ&AはチャットジーピーティーがAI規制の世界的潮を引き起こす1年前に発生し、シンガポールはすでに5つの国家AI項目と治理枠組みを並列して回答し、革新と規制は起動から相互に結合されていた',
+    whyItMattersKo:
+      '이 질의응답은 ChatGPT가 글로벌 AI 규제 열풍을 촉발하기 1년 전에 일어났으며, 싱가포르는 이미 다섯 가지 국가 AI 프로젝트와 치리 체계를 나란히 답변했고, 혁신과 규제는 출발부터 결합되었습니다',
     summaryJa: `議員は、シンガポール通信情報省に対し、人工知能エコシステムの発展及びその応用に関する取り組みについて質問しています。政府は国家AI戦略及び5つの国家AIプロジェクトを紹介し、産学研協力、資金投入及び人材育成を通じてAIイノベーションと応用を推進し、同時にAIガバナンスと国際協力を重視していることを強調しています。核心的な争点は、技術開発と倫理規制のバランスをいかに取り、AI安全性と信頼性を確保するかです。`,
     summaryEn: `An MP asked MCI about its initiatives to grow the AI scene and its deployment in Singapore. The government cited the National AI Strategy and the five National AI Projects, stressing industry-academia-research collaboration, funding, and talent development to drive AI innovation and adoption while prioritising governance and international cooperation. The core debate: balancing tech development with ethics oversight to keep AI safe and trustworthy.`,
     keyPoints: ['国家人工智能战略', '五大国家AI项目', 'AI治理与国际合作'],
@@ -9843,6 +11007,13 @@ Under the Strategy, five National AI Projects in logistics, smart estates, educa
     topics: ['AI in Education', 'AI Infrastructure & Research', 'AI Strategy'],
     summary: `质询聚焦于学校自适应学习计划的最新进展、试点安排及基础设施建设。教育部长回应称该计划是国家AI战略的一部分，强调教师核心作用，计划2022年先在部分学校试点数学科目，后续将推广至更多科目和年级。系统将整合入新加坡学生学习空间，确保便捷访问和资源融合。核心争议点在于如何平衡技术与教师角色，以及试点成效如何影响推广。`,
     summaryKo: `질의는 학교 자적응 학습 계획의 최신 진행 상황, 시범 운영 안배 및 기반 시설 건설에 초점을 맞췄습니다. 교육부 장관은 이 계획이 국가 AI 전략의 일부라고 답변했으며, 교사의 핵심 역할을 강조했습니다. 2022년에 먼저 일부 학교에서 수학 과목 시범을 계획하고 있으며, 이후 더 많은 과목과 학년으로 확대할 계획입니다. 시스템은 싱가포르 학생 학습 공간에 통합되어 편리한 접근과 자원 통합을 보장합니다. 핵심 논쟁점은 기술과 교사 역할의 균형을 어떻게 맞추고 시범 운영 성과가 확산에 어떻게 영향을 미칠지입니다.`,
+    whyItMatters: '数学试点定在2022年而非全科铺开,为国家AI战略以教师主导、成效验证优先的方式推进教育AI立下先例',
+    whyItMattersEn:
+      'With the mathematics pilot set for 2022 rather than a comprehensive rollout, the national AI strategy established a precedent for advancing educational AI in a teacher-led, outcomes-verification-first manner.',
+    whyItMattersJa:
+      '数学パイロット試行を2022年に定め、全科展開ではなく、国家AI戦略が教師主導・効果検証優先の方法で教育AIを推進するための先例を確立した',
+    whyItMattersKo:
+      '수학 시범이 2022년에 정해졌으며 전 과목 전개가 아니었으므로, 국가 AI 전략이 교사 주도, 성과 검증 우선 방식으로 교육 AI를 추진하는 선례를 세웠습니다',
     summaryJa: `質問は学校適応学習計画の最新の進捗、パイロット実施計画及びインフラ整備に焦点が当てられています。教育大臣は、この計画が国家AI戦略の一部であり、教師の核心的な役割を強調し、2022年に先ず一部の学校で数学科目の試点を実施し、その後より多くの科目と学年に拡大する予定だと回答しています。システムはシンガポール学生学習空間に統合され、便利なアクセスとリソースの統合が確保されます。核心的な争点は、技術と教師の役割をいかにバランスし、パイロット成果が拡大にいかに影響するかです。`,
     summaryEn: `Questions focused on progress of the adaptive learning initiative in schools, pilot arrangements, and infrastructure development. The Education Minister replied that the initiative is part of the National AI Strategy, emphasised teachers' central role, and said the 2022 pilot will start with mathematics in selected schools and later expand to more subjects and grades. The system will be integrated into Singapore Student Learning Space for easy access and resource integration. The core debate: balancing technology with teachers' role, and how pilot effectiveness shapes scale-up.`,
     keyPoints: ['AI支持个性化学习', '2022年数学试点启动', '整合国家在线平台'],
@@ -9944,6 +11115,13 @@ Mr Chan Chun Sing
     topics: ['AI Economy & Industry', 'AI & Employment', 'AI Infrastructure & Research', 'AI in Public Sector'],
     summary: `议员质询政府如何培养数字领导人才及推动女性进入科技领域，建议设立导师计划并关注性别比例失衡。政府已推出多项人才培养计划，但具体针对数字领导和女性参与的措施尚未明确。核心争议在于如何有效吸引和留住高端科技人才及缩小性别差距。`,
     summaryKo: `의원이 정부에 디지털 리더십 인재 양성 방법과 여성의 기술 분야 진출 추진 방안을 질의했으며, 멘토링 프로그램 신설과 성별 비율 불균형에 주의를 기울일 것을 제안했습니다. 정부는 이미 다양한 인재 양성 계획을 추진했지만, 디지털 리더십과 여성 참여를 구체적으로 겨냥한 조치는 아직 명확하지 않습니다. 핵심 쟁점은 고급 기술 인재를 효과적으로 유인하고 유지하며 성별 격차를 좁히는 방법입니다.`,
+    whyItMatters: '2021 年国会提出导师计划应对性别失衡，政府未拿出具体方案，暴露新加坡数字人才战略里女性参与仍是空白',
+    whyItMattersEn:
+      "In 2021, Parliament proposed a mentorship programme to address gender imbalance; the government's failure to deliver concrete proposals exposed that female participation remained a blank space in Singapore's digital talent strategy.",
+    whyItMattersJa:
+      '2021年、国会が性別不均衡に対応するメンター計画を提出したが、政府は具体的な方案を提出せず、シンガポールのデジタル人材戦略における女性参加がまだ空白のままであることを露呈させた',
+    whyItMattersKo:
+      '2021년 국회는 성별 불균형에 대응하는 멘토 계획을 제안했으나 정부는 구체적 방안을 내놓지 않았으며, 싱가포르 디지털 인재 전략에서 여성 참여가 여전히 공백임을 드러냅니다',
     summaryJa: `議員は、デジタル指導者人材の育成及び女性の科学技術分野への参入推進について政府に質問し、メンタープログラムの設立を提案し、性別比率の不均衡に焦点を当てています。政府は多くの人材育成計画を推出しているが、デジタル指導と女性参加に対する具体的な措置はまだ明確ではありません。核心的な争点は、高度な科学技術人材をいかに効果的に引き付け保持し、性別格差をいかに縮小するかです。`,
     summaryEn: `MPs asked how the government will develop digital leadership talent and push women into tech, proposing a mentorship programme and raising concerns about gender imbalance. The government has launched multiple talent programmes but specific measures for digital leadership and female participation are not yet clear. The core debate: how to effectively attract and retain top tech talent and close the gender gap.`,
     keyPoints: ['数字人才培养', '导师计划建议', '女性科技参与'],
@@ -9991,6 +11169,14 @@ In my Budget debate speech in February 2020, I talked about the need for a high 
     topics: ['AI Governance & Regulation', 'AI & National Security', 'AI in Public Sector', 'AI Strategy'],
     summary: `议员质询TraceTogether数据是否会用于刑事调查及相关法律保障。政府回应称警方可依刑事程序法获取数据，且设有严格访问权限和处罚措施保护数据安全。争议焦点在于数据是否仅限于防疫用途，及使用于刑事调查是否影响公众信任和应用率。`,
     summaryKo: `의원이 TraceTogether 데이터가 형사 수사에 사용될 수 있는지, 관련 법적 보호 방안을 질의했습니다. 정부는 경찰이 형사소송법에 따라 데이터에 접근할 수 있으며, 엄격한 접근 권한 및 처벌 조치로 데이터 보안을 보호하고 있다고 답변했습니다. 쟁점은 데이터가 방역 목적만으로 제한되는지, 그리고 형사 수사에 사용되는 것이 공중의 신뢰와 사용률에 영향을 미치는지입니다.`,
+    whyItMatters:
+      'TraceTogether 数据经刑事诉讼法向警方开放，坐实防疫专用承诺落空，为国家数字身份等项目的信任建设敲响警钟',
+    whyItMattersEn:
+      'TraceTogether data was opened to police through criminal procedure law, fulfilling fears that the pandemic-only-use pledge was broken, sounding an alarm for trust-building in national digital identity and similar projects.',
+    whyItMattersJa:
+      'TraceTogether のデータは刑事訴訟法を通じて警察に開放され、防疫専用の約束が空文に帰したことが確認され、国家デジタル身分証等の事業の信頼構築に警鐘を鳴らした',
+    whyItMattersKo:
+      'TraceTogether 데이터가 형사 소송법을 거쳐 경찰에 개방되었으며, 방역 전용 약속이 무너졌음을 확증하고, 국가 디지털 신원증 등 프로젝트의 신뢰 구축에 경종을 울렸습니다',
     summaryJa: `議員は、TraceTogetherデータが刑事調査に使用されるかどうか及び関連法的保障について質問しています。政府は警察が刑事訴訟法に基づいてデータを取得でき、また厳格なアクセス権限と処罰措置がデータセキュリティを保護していると回答しています。争点の焦点は、データが防疫用途に限定されるかどうか、および刑事調査への使用が公衆の信頼と応用率に影響するかどうかです。`,
     summaryEn: `MPs asked whether TraceTogether data would be used in criminal investigations and what legal safeguards apply. The government replied that the police can obtain such data under the Criminal Procedure Code, with strict access controls and penalties to protect data security. The debate centred on whether the data should be restricted to pandemic use, and whether use in criminal investigations would erode public trust and uptake.`,
     keyPoints: ['警方可依法获取数据', '数据访问权限严格', '担忧影响公众信任'],
@@ -10043,6 +11229,13 @@ The Government is the custodian of the TT data submitted by individuals, and str
     topics: ['AI Economy & Industry', 'AI & Employment', 'AI in Public Sector'],
     summary: `议员质询是否可用2020年CPF缴纳记录替代2018年收入等标准，尤其关注自雇人士低收入情况。政府回应称，GST券资格以综合评估收入为准，CPF记录仅反映部分收入，且已有灵活申诉机制和疫情专项补助，确保援助精准。核心争议点在于是否应调整资格标准以反映疫情影响。`,
     summaryKo: `의원이 2020년 CPF 납입 기록으로 2018년 소득 기준 등을 대체할 수 있는지 질의했으며, 특히 자영업자의 저소득 상황에 주목했습니다. 정부는 GST 바우처 자격이 종합 소득 평가에 따라 결정되며, CPF 기록은 부분적 소득만 반영하고, 이미 유연한 이의 제기 메커니즘과 팬데믹 특별 지원이 있어 지원이 정확함을 강조했습니다. 핵심 쟁점은 팬데믹 영향을 반영하기 위해 자격 기준을 조정해야 하는지 여부입니다.`,
+    whyItMatters: '政府拒绝以 2020 年 CPF 记录替代综合收入核定 GST 券资格，暴露自雇群体疫情期精准援助的结构缺口',
+    whyItMattersEn:
+      'The government refused to use 2020 CPF records as a substitute for comprehensive income in determining GST voucher eligibility, exposing structural gaps in targeted assistance for the self-employed during the pandemic.',
+    whyItMattersJa:
+      '政府は2020年のCPF記録で総合所得認定GST券資格を代替することを拒否し、自営業者集団に対する疫病期間の的確な援助の構造的欠陥を露呈させた',
+    whyItMattersKo:
+      '정부는 2020년 CPF 기록을 종합 소득 기반 GST 바우처 자격 인정에 사용하기를 거부했으며, 자영업자 집단의 팬데믹 기간 정밀 지원의 구조적 결함을 드러냅니다',
     summaryJa: `議員は2020年のCPF納付記録を2018年の収入などの基準の代わりに使用できるかどうかを質問し、特に自営業者の低収入の状況に懸念を持っています。政府は、GST バウチャー資格は総合的な収入評価に基づくべきであり、CPF記録は一部の収入しか反映されておらず、既に柔軟な異議申し立てメカニズムとパンデミック関連の特別補助が存在し、援助の的確さを確保していると応答しています。核心的な争点は、パンデミックの影響を反映するために資格基準を調整すべきかどうかです。`,
     summaryEn: `An MP asked whether 2020 CPF contribution records could replace 2018 income and other criteria for GST Voucher eligibility, especially for low-income self-employed people. The government replied that GST Voucher eligibility uses a comprehensive Assessable Income (AI) measure; CPF records only reflect part of income. Flexible appeal mechanisms and pandemic-specific support are in place to keep assistance targeted. The core debate: whether eligibility criteria should be adjusted to reflect the pandemic's impact. (Note: "AI" here refers to Assessable Income, not artificial intelligence.)`,
     keyPoints: ['GST券支持中低收入户', '资格以综合收入评估', 'CPF记录覆盖有限收入'],
@@ -10092,6 +11285,13 @@ asked the Deputy Prime Minister and Minister for Finance in light of the effect 
     topics: ['AI Governance & Regulation', 'AI in Public Sector'],
     summary: `议员质询政府公务员在采购流程培训及IT控制漏洞问题，关注是否有定期培训及系统性问题。政府回应承认审计报告指出的IT控制薄弱环节，说明政府IT系统复杂且分散，依赖人工调整权限易出错，正由智慧国与数字政府组推动自动化改进，逐步部署新工具以减少错误。`,
     summaryKo: `의원이 정부 공무원의 조달 프로세스 교육 및 IT 통제 허점 문제를 질의했으며, 정기적인 교육이 있는지, 시스템적 문제가 있는지를 주목했습니다. 정부는 감사 보고서가 지적한 IT 통제 약점을 인정하고, 정부 IT 시스템이 복잡하고 분산되어 있으며 수동으로 권한을 조정하면 오류가 발생하기 쉽다고 설명했습니다. 현재 Smart Nation and Digital Government Group에서 자동화 개선을 추진하고 오류를 줄이기 위해 새로운 도구를 단계적으로 배포하고 있습니다.`,
+    whyItMatters: '审计揭出的 IT 权限漏洞交由智慧国与数字政府组自动化整改，先于新加坡 AI 治理议程为数字基建补课',
+    whyItMattersEn:
+      "IT permission vulnerabilities uncovered by audit were handed to the Smart Nation and Digital Government Group for automated remediation, providing a catch-up lesson for digital infrastructure ahead of Singapore's AI governance agenda.",
+    whyItMattersJa:
+      '監査が明かしたIT権限の脆弱性はスマートネーションとデジタル政府グループの自動化改修に委ねられ、シンガポールのAI治理議程に先立ってデジタルインフラの補習を行った',
+    whyItMattersKo:
+      '감사가 밝혀낸 IT 권한 허점을 스마트 싱가포르 및 디지털 정부 그룹이 자동화 시정에 맡겼으며, 싱가포르 AI 치리 의제보다 먼저 디지털 기반 시설에 결함을 보충했습니다',
     summaryJa: `議員は、政府公務員の調達プロセス訓練およびIT制御の脆弱性に関する問題について質問し、定期的な訓練があるかどうかおよび体系的な問題があるかどうかについて懸念を持っています。政府は、監査報告書が指摘したIT制御の脆弱性を認め、政府のITシステムが複雑かつ分散しており、手動で権限を調整することに依存するとエラーが発生しやすいことを説明しており、Smart Nation と Digital Government グループが推進する自動化改善により、段階的に新しいツールを展開してエラーを減らしていると述べています。`,
     summaryEn: `MPs asked about civil-service training in procurement processes and IT control gaps, focusing on whether refresher training and systemic issues exist. The government acknowledged the AGO's findings on IT control weaknesses, explaining that the government IT estate is complex and decentralised, manual privilege adjustments are error-prone, and the Smart Nation and Digital Government Group is driving automation, gradually deploying new tools to reduce errors.`,
     keyPoints: ['公务员采购培训问题', 'IT权限管理漏洞', '推动自动化改进'],
@@ -10143,6 +11343,13 @@ asked the Deputy Prime Minister and Minister for Finance in view of the recurrin
     topics: ['AI Governance & Regulation', 'AI Safety & Ethics', 'AI Economy & Industry', 'AI & National Security'],
     summary: `议员质询政府是否考虑制定对本地部署AI系统具有约束力的法规，以确保AI的伦理和安全使用。政府回应称AI技术尚处于初期阶段，暂无立即立法计划，但已推出多项举措促进安全和伦理使用，包括模型治理框架、伦理咨询委员会及相关研究项目，并强调将持续关注全球动态，平衡监管与创新。`,
     summaryKo: `의원이 정부가 현지 배포된 AI 시스템에 구속력 있는 규정 제정을 고려하고 있는지, AI의 윤리적이고 안전한 사용을 보장하기 위해 질의했습니다. 정부는 AI 기술이 여전히 초기 단계에 있으며 즉시 입법 계획이 없다고 답변했지만, 모델 거버넌스 프레임워크, 윤리 자문 위원회 및 관련 연구 프로젝트를 포함하여 안전하고 윤리적인 사용을 촉진하는 여러 조치를 이미 시행했으며, 규제와 혁신의 균형을 맞추기 위해 전 세계 동향에 지속적으로 주의를 기울일 것을 강조했습니다.`,
+    whyItMatters: '政府在 2020 年已排除强制立法,为新加坡此后多年依赖自愿性框架治理 AI 定下先例',
+    whyItMattersEn:
+      'The government had ruled out mandatory legislation in 2020, setting a precedent for Singapore to rely on voluntary frameworks for AI governance in the years that followed.',
+    whyItMattersJa:
+      '政府は2020年に強制立法を除外し、シンガポール以降の数年間が自発的枠組みに依存してAIを治理するための先例を定めた',
+    whyItMattersKo:
+      '정부는 2020년 강제 입법을 배제했으며, 싱가포르가 이후 다년간 자발적 체계에 의존하여 AI를 치리하도록 선례를 정했습니다',
     summaryJa: `議員は、政府が現地に展開されるAIシステムに対して拘束力を持つ法規を制定することを検討しているかどうかを質問し、AIの倫理的かつ安全な使用を確保することを目指しています。政府は、AI技術はまだ初期段階にあり、差し迫った立法計画はないと応答しましたが、既に安全で倫理的な使用を促進するための多くの措置を打ち出しており、モデル統治フレームワーク、倫理相談委員会、および関連研究プロジェクトを含んでいます。政府は、グローバルな動向を継続的に注視し、規制とイノベーションのバランスを取ることを強調しています。`,
     summaryEn: `An MP asked whether the government is considering binding regulations on locally deployed AI systems to ensure ethical and safe use. The government replied that AI is still nascent and there are no immediate legislative plans, but multiple initiatives are in place to promote safe and ethical use — the Model AI Governance Framework, the ethics advisory council, and related research — and it will keep tracking global developments to balance regulation with innovation.`,
     keyPoints: ['暂无立即立法计划', '推行模型治理框架', '持续监测全球动态'],
@@ -10242,6 +11449,14 @@ However, MCI has launched several initiatives to ensure the safe and ethical use
     topics: ['AI Governance & Regulation', 'AI Economy & Industry', 'AI & Employment', 'AI in Education'],
     summary: `议员质询数字化转型中的数据共享、隐私保护、设计思维创新及AI伦理框架等问题，关注新加坡在数据量不足和中小企业数字化能力上的挑战。政府回应涉及数字贸易协定、数据隐私原则及推动创新的措施，强调制定AI伦理框架。核心争议点在于如何平衡数据共享与隐私保护，以及提升本地企业数字化能力。`,
     summaryKo: `의원이 디지털 전환 중 데이터 공유, 개인정보 보호, 디자인 씽킹 혁신 및 AI 윤리 프레임워크 등의 문제를 질의했으며, 싱가포르의 데이터 부족과 중소기업의 디지털화 역량 부족 문제에 주목했습니다. 정부 응답은 디지털 무역 협정, 데이터 개인정보 보호 원칙 및 혁신 촉진 조치를 포함하며, AI 윤리 프레임워크 제정을 강조했습니다. 핵심 쟁점은 데이터 공유와 개인정보 보호의 균형을 맞추는 방법과 현지 기업의 디지털화 역량을 향상시키는 것입니다.`,
+    whyItMatters:
+      '2020 年国会已提出 AI 伦理框架构想，但政府仅以数字贸易协定和原则性表态回应，未就中小企业数字化能力缺口给出具体资源承诺',
+    whyItMattersEn:
+      "By 2020, Parliament had proposed the concept of an AI ethics framework, but the government responded only with digital trade agreements and principled statements, without committing concrete resources to address SMEs' digital capability gaps.",
+    whyItMattersJa:
+      '2020年、国会はすでにAI倫理枠組みの構想を提出したが、政府はデジタル貿易協定と原則的表明でのみ応答し、中小企業のデジタル化能力不足に対する具体的なリソース約束を提供していなかった',
+    whyItMattersKo:
+      '2020년 국회는 이미 AI 윤리 체계 구상을 제시했으나, 정부는 디지털 무역 협정과 원칙적 표명으로만 대응했으며, 중소기업의 디지털화 역량 부족에 대한 구체적 자원 약속을 내놓지 않았습니다',
     summaryJa: `議員は、デジタル化転換の過程におけるデータ共有、プライバシー保護、デザイン思考によるイノベーション、およびAI倫理フレームワークなどの問題について質問しており、シンガポールがデータ量の不足および中小企業のデジタル化能力における課題に懸念を持っています。政府は、デジタル貿易協定、データプライバシー原則、およびイノベーション推進措置を含む応答をしており、AI倫理フレームワークの制定を強調しています。中核的な争点は、データ共有とプライバシー保護のバランスをどのように取るか、および国内企業のデジタル化能力をどのように向上させるかにあります。`,
     summaryEn: `MPs raised data-sharing, privacy protection, design-thinking innovation, and AI ethics frameworks in the digital transformation, focusing on Singapore's challenges with limited data scale and SME digitalisation capability. The government addressed digital trade agreements, data privacy principles, and innovation-driving measures, emphasising the development of an AI ethics framework. The core debate: balancing data sharing with privacy protection and lifting local-firm digital capability.`,
     keyPoints: ['数字化推动经济转型', '数据共享与隐私权衡', 'AI伦理框架建设'],
@@ -10326,6 +11541,13 @@ As a result of the digital economy, many of our top companies in the world are n
     topics: ['AI & National Security', 'Deepfakes & Disinformation', 'AI in Public Sector'],
     summary: `议员质询国防预算及新兴威胁应对，强调全球大国竞争及区域不稳定带来的安全挑战。政府回应指出新加坡需通过科技创新和装备升级（如F-35战机）应对人力减少和训练空间有限等问题。核心争议在于如何平衡有限资源与不断演变的安全威胁。`,
     summaryKo: `의원들이 국방 예산 및 새로운 위협 대응에 관해 질문하면서 글로벌 강대국 경쟁 및 지역 불안정으로 인한 안보 도전을 강조했습니다. 정부는 싱가포르가 기술 혁신 및 장비 업그레이드(예: F-35 전투기)를 통해 인력 감소 및 훈련 공간 제약 등의 문제에 대응해야 한다고 답변했습니다. 핵심 쟁점은 제한된 자원과 계속 변화하는 안보 위협 사이의 균형을 맞추는 방법입니다.`,
+    whyItMatters: 'F-35 采购案定调科技替代人力的国防逻辑，为新加坡日后将 AI 纳入国家资源战略埋下先例',
+    whyItMattersEn:
+      "The F-35 procurement case established the defence logic of technology replacing manpower, laying groundwork for Singapore's later incorporation of AI into national resource strategy.",
+    whyItMattersJa:
+      'F-35購入計画は、技術が人力を代替する国防論理を定調し、シンガポールが今後AIを国家リソース戦略に組み込むための先例を埋め込んだ',
+    whyItMattersKo:
+      'F-35 조달 건이 기술이 인력을 대체하는 국방 논리를 정조했으며, 싱가포르가 이후 AI를 국가 자원 전략에 포함시키도록 선례를 남겼습니다',
     summaryJa: `議員は国防予算及び新興脅威への対応について質疑し、世界的な大国競争及び地域的不安定性がもたらすセキュリティ上の課題を強調しています。政府の回応では、シンガポールは技術革新と装備のアップグレード（例えばF-35戦闘機）を通じて、人員減少と訓練スペースの制限といった問題に対応する必要があると指摘しています。核心的な争点は、限定的なリソースと絶えず変化するセキュリティ脅威をいかにバランスさせるかという点にあります。`,
     summaryEn: `MPs raised the defence budget and response to emerging threats, emphasising security challenges from great-power competition and regional instability. The government replied that Singapore must use tech innovation and equipment upgrades (e.g. the F-35 fighter) to address smaller manpower and limited training space. The core debate: balancing limited resources with evolving security threats.`,
     keyPoints: ['全球大国竞争加剧', '区域政治不稳定', '科技创新应对挑战'],
@@ -10413,6 +11635,14 @@ The last year has seen global tensions rise on multiple fronts. The rivalry betw
     topics: ['AI Governance & Regulation', 'AI Economy & Industry', 'AI & Employment', 'AI Infrastructure & Research'],
     summary: `议员质询政府在支持企业国际化方面的措施是否充足，特别是在新兴和边缘市场的布局与能力建设。强调疫情凸显市场多元化的重要性，关注政府如何通过经济机构和商会帮助企业应对复杂的国际环境。核心争议点在于政府支持力度及市场多元化策略的有效性。`,
     summaryKo: `의원들은 특히 신흥 및 변두리 시장에서의 포지셔닝 및 역량 강화 측면에서 정부의 기업 국제화 지원 조치가 충분한지 질문했습니다. 팬데믹이 시장 다각화의 중요성을 부각시켰으며, 정부가 경제 기관과 상공회의소를 통해 기업이 복잡한 국제 환경에 대응할 수 있도록 어떻게 지원하는지에 초점을 맞추었습니다. 핵심 쟁점은 정부의 지원 강도와 시장 다각화 전략의 효과성입니다.`,
+    whyItMatters:
+      '2020 年 3 月这场关于国际化的辩论，揭示新加坡对外部市场依赖的焦虑早于 AI 战略，后者不过是同一逻辑的最新版本',
+    whyItMattersEn:
+      "In March 2020, this debate on internationalisation revealed that Singapore's anxiety about dependence on external markets predated the AI strategy, which is merely the latest iteration of the same logic.",
+    whyItMattersJa:
+      '2020年3月のこの国際化に関する議論は、シンガポールの外部市場依存への不安がAI戦略より早くから存在し、後者は同じ論理の最新版であることを示唆している',
+    whyItMattersKo:
+      '2020년 3월 국제화에 관한 이 논의는 싱가포르의 외부 시장 의존에 대한 불안이 AI 전략보다 먼저 있었음을 드러냈으며, 후자는 동일한 논리의 최신 버전일 뿐입니다',
     summaryJa: `議員は、政府が企業の国際化を支援する措置が十分かどうかについて質疑し、特に新興市場及び周縁市場でのポジショニング及び能力構築に焦点を当てています。疫情が市場の多様化の重要性を明らかにしたことを強調し、政府がいかに経済機関及び商工会議所を通じて企業が複雑な国際環境に対応するのを支援するかに注目しています。核心的な争点は、政府の支援力度及び市場の多様化戦略の有効性にあります。`,
     summaryEn: `MPs asked whether government support for firms going international is adequate, particularly in emerging and frontier markets. They stressed the pandemic underscores the importance of market diversification and focused on how government economic agencies and business chambers help firms navigate a complex international environment. The core debate: the strength of government support and the effectiveness of market-diversification strategy.`,
     keyPoints: ['提升市场连接力', '支持企业国际化', '拓展新兴市场'],
@@ -10467,6 +11697,14 @@ As a small and open economy, Singapore can only be a price-taker in the global m
     topics: ['AI in Healthcare', 'AI in Public Sector'],
     summary: `质询政府在公众投诉中披露个人资料的考虑和保障措施，政府回应称为纠正错误信息维护公众信任，披露限于必要范围且保护隐私，同时强调多渠道服务保障公众诉求。核心争议在于如何平衡信息公开与个人隐私保护。`,
     summaryKo: `정부가 공중 민원 처리 중 개인정보 공개의 고려사항 및 보호 조치에 관해 질문했으며, 정부는 잘못된 정보를 바로잡고 공중 신뢰를 유지하기 위해 필요한 범위 내에서만 공개하고 개인정보를 보호한다고 답변했으며, 동시에 다채널 서비스를 강조하여 공중의 민원을 보장합니다. 핵심 쟁점은 정보 공개와 개인정보 보호 간의 균형을 맞추는 방법입니다.`,
+    whyItMatters:
+      '2020 年 2 月这场问答确立个人资料披露以必要范围为界的先例，但边界含糊，暴露新加坡推进 AI 数据治理前隐私保护规则仍待细化',
+    whyItMattersEn:
+      "In February 2020, this Q&A established the precedent that personal data disclosure should be limited to what is necessary; yet the boundary was vague, exposing that Singapore's privacy protection rules needed refinement before advancing AI data governance.",
+    whyItMattersJa:
+      '2020年2月のこのQ&Aは、個人情報開示を必要範囲を境界とする先例を確立したが、境界があいまいで、シンガポールがAIデータ治理を推進する前に、プライバシー保護規則がまだ精緻化を待っていることを露呈させた',
+    whyItMattersKo:
+      '2020년 2월 이 질의응답은 개인 정보 공개를 필요 범위 내로 제한하는 선례를 확립했으나 경계가 모호하며, 싱가포르가 AI 데이터 치리를 추진하기 전에 개인정보 보호 규칙이 여전히 세분화를 기다리고 있음을 드러냅니다',
     summaryJa: `議員は政府が公開投訴における個人情報の開示に関する配慮及び保障措置について質疑しています。政府の回応では、虚偽情報を正し公衆の信頼を維持するためであると述べており、開示は必要な範囲に限定され、プライバシーは保護されています。同時に、複数のチャネルによるサービスが公衆の申し立てを確保していることを強調しています。核心的な争点は、情報公開と個人のプライバシー保護のバランスをいかに取るかという点にあります。`,
     summaryEn: `MPs asked about the government's considerations and safeguards when disclosing personal data while addressing public complaints. The government replied that disclosure is to correct inaccuracies and protect public trust, is limited to what is necessary, and that privacy is preserved; multiple service channels protect grievances. The core debate: how to balance information disclosure with personal privacy.`,
     keyPoints: ['纠正错误信息', '披露限于必要', '保障公众诉求'],
@@ -10521,6 +11759,14 @@ The Senior Minister o`,
     topics: ['AI Governance & Regulation', 'AI Safety & Ethics', 'AI Economy & Industry', 'AI in Education'],
     summary: `质询关于2018年成立的伦理数据使用咨询会的工作进展。政府回应该咨询会推动了新加坡AI治理框架的制定和推广，促进组织负责任使用AI和数据，提升公众信任。核心争议点在于如何确保数据在未获知情同意情况下的商业使用符合伦理标准。`,
     summaryKo: `2018년 설립된 윤리 데이터 사용 자문회의 업무 진행 상황에 관해 질문했습니다. 정부는 자문회가 싱가포르의 AI 거버넌스 프레임워크 제정 및 추진을 촉진했으며, 조직의 책임 있는 AI 및 데이터 사용을 장려하고 공중 신뢰를 높였다고 답변했습니다. 핵심 쟁점은 개인 동의 없이 데이터의 상업적 사용이 윤리 기준을 충족하도록 보장하는 방법입니다.`,
+    whyItMatters:
+      '2018 年设立的咨询会靠软性框架而非立法应对未经同意的数据商用，暴露新加坡 AI 治理重指引轻强制的路径选择',
+    whyItMattersEn:
+      "The advisory body established in 2018 relied on soft frameworks rather than legislation to address unauthorised data commercialisation, exposing Singapore's AI governance approach of prioritising guidance over enforcement.",
+    whyItMattersJa:
+      '2018年に設立された咨詢委員会は、同意なしのデータ商用に対し、立法ではなくソフトな枠組みで対応し、シンガポールのAI治理が指針を重視し強制を軽視する路線選択を露呈させた',
+    whyItMattersKo:
+      '2018년 설립된 자문회는 소프트 프레임워크에 의존하여 동의 없는 데이터 상용화에 대응했으며, 싱가포르 AI 치리가 지침을 중시하고 강제를 경시하는 경로를 선택했음을 드러냅니다',
     summaryJa: `2018年に設立された倫理的データ利用諮問委員会の業務進捗に関する質問です。政府はこの諮問委員会がシンガポール AI ガバナンスフレームワークの策定と推進を推し進め、組織による責任あるAIとデータの利用を促進し、公衆の信頼を高めたと対応しました。核心的な論点は、情報提供された同意なしにデータを商業利用する場合に、倫理基準にどのように適合させるかです。`,
     summaryEn: `An MP asked about the progress of the Advisory Council on the Ethical Use of AI and Data, formed in 2018. The government replied that the council has driven the development and rollout of Singapore's AI governance framework, encouraging responsible AI and data use by organisations and lifting public trust. The core debate: how to ensure that commercial use of data without informed consent meets ethical standards.`,
     keyPoints: ['咨询会推动AI治理', '制定模型治理框架', '促进公众信任AI'],
@@ -10569,6 +11815,14 @@ It has made a good start in helping organisations improve their AI governance pr
     topics: ['AI Economy & Industry', 'AI Infrastructure & Research', 'AI in Public Sector'],
     summary: `质询方关注在当前经济形势下，Tech@SG计划是否仍需继续以协助科技企业雇佣外籍人才。政府回应强调科技人才短缺的全球竞争，必须加快培养本地科技人才，同时通过培训和教育扩大人才池，确保新加坡在全球科技生态中保持竞争力。核心争议点在于如何平衡引进外籍人才与优先发展本地人才。`,
     summaryKo: `질문자들은 현재의 경제 상황 하에서 Tech@SG 계획이 과학기술 기업이 외국 인재를 채용하도록 지원하기 위해 계속 진행되어야 하는지에 관심을 가졌습니다. 정부는 과학기술 인재 부족에 대한 글로벌 경쟁을 강조했으며, 현지 과학기술 인재 양성을 가속화하는 한편 훈련 및 교육을 통해 인재 풀을 확대하고 싱가포르가 글로벌 과학기술 생태계에서 경쟁력을 유지하도록 해야 한다고 강조했습니다. 핵심 쟁점은 외국 인재 유치와 현지 인재 우선 개발 간의 균형을 맞추는 방법입니다.`,
+    whyItMatters:
+      '2019 年 Tech@SG 存废之辩摆明新加坡科技人才战略的核心张力：外援填补缺口与本地培养优先如何取舍，至今仍未解',
+    whyItMattersEn:
+      "The 2019 debate over Tech@SG's continuation laid bare the core tension in Singapore's technology talent strategy: the trade-off between foreign talent filling the gap and prioritising local development remains unresolved to this day.",
+    whyItMattersJa:
+      '2019年のTech@SG存廃論争は、シンガポール科技人材戦略の核心的緊張を明らかにした：外部援助による欠落補填と本地育成優先のいずれを選ぶか、今もなお未解のままである',
+    whyItMattersKo:
+      '2019년 Tech@SG 존폐 논의는 싱가포르 기술 인재 전략의 핵심 긴장을 드러냈습니다: 외국 지원으로 결함을 메울 것인가 대 현지 육성 우선의 선택, 지금까지 미해결입니다',
     summaryJa: `質問者は現在の経済情勢下で、Tech@SGプログラムがテクノロジー企業の外国人人材採用を支援し続ける必要があるかどうかに関心を寄せました。政府はテクノロジー人材不足のグローバル競争を強調し、ローカル技術人材の育成を加速し、同時に訓練と教育を通じて人材プールを拡大し、シンガポールがグローバルテクノロジーエコシステムにおいて競争力を維持することを保証する必要があると対応しました。核心的な論点は、外国人人材の導入とローカル人材の優先的な開発のバランスをどのようにとるかです。`,
     summaryEn: `MPs questioned whether the Tech@SG programme — which helps tech firms hire foreign talent — should continue under current economic conditions. The government stressed global competition for scarce tech talent and the need to accelerate local tech talent development while expanding the talent pool through training and education to keep Singapore competitive globally. The core debate: balancing the inflow of foreign talent with prioritising local talent development.`,
     keyPoints: ['科技人才全球短缺', '加速本地人才培养', '科技企业需专业人才'],
@@ -10618,6 +11872,14 @@ The Minister for Trade and Industry (Mr Chan Chun Sing)
     topics: ['AI Governance & Regulation', 'AI Safety & Ethics', 'AI & National Security', 'AI in Public Sector'],
     summary: `议员质询公共机构是否享有《个人数据保护法》豁免权及其数据泄露责任。政府回应指出公共机构受《公共部门治理法》和《指令手册8》等法规约束，设有刑事处罚和内部纪律处分，并通过技术和管理措施防范数据泄露。核心争议在于公共机构数据保护责任的法律基础及执行力度。`,
     summaryKo: `의원들은 공공 기관이 「개인정보보호법」 면책권을 향유하는지 및 데이터 유출에 대한 책임이 무엇인지 질문했습니다. 정부는 공공 기관이 「공공 부문 거버넌스법」 및 「지침 매뉴얼 8」 등 법규로 규제되며, 형사 처벌 및 내부 징계 조치가 있고, 기술 및 관리 조치를 통해 데이터 유출을 방지한다고 답변했습니다. 핵심 쟁점은 공공 기관의 데이터 보호 책임의 법적 기초 및 실행 강도입니다.`,
+    whyItMatters:
+      '公共机构受《公共部门治理法》和《指令手册 8》规管而非《个人数据保护法》,双轨问责机制为政府扩大 AI 处理公民数据埋下监督缺口',
+    whyItMattersEn:
+      'Public institutions are governed by the Public Sector Governance Act and Instruction Manual 8 rather than the Personal Data Protection Act; the dual accountability mechanism creates a regulatory gap for government expansion of AI processing of citizen data.',
+    whyItMattersJa:
+      '公共機関は『公共部門治理法』および『指令手冊8』に基づいて規制されており、『個人データ保護法』ではなく、二元問責メカニズムが政府によるAIの市民データ処理拡大のための監督上の隙間を埋め込んだ',
+    whyItMattersKo:
+      '공공 기관은 「개인정보보호법」이 아닌 「공공부문 치리법」과 「지침 핸드북 8」의 규제를 받으며, 이중 문책 메커니즘은 정부가 AI로 시민 데이터 처리를 확대하도록 감시 결함을 남겼습니다',
     summaryJa: `議員は公的機関が『個人データ保護法』の免除権を享受しているかどうか、およびそのデータ漏洩責任について質問しました。政府は公的機関が『公共部門統治法』および『指令ハンドブック8』などの法規によって拘束され、刑事罰および内部規律処分を設けており、技術的および管理的措置を通じてデータ漏洩を防止していると指摘して対応しました。核心的な論点は、公的機関のデータ保護責任の法的基礎と執行力です。`,
     summaryEn: `An MP asked whether public agencies are exempt from the PDPA and what their accountability is for data breaches. The government replied that public agencies are bound by the Public Sector (Governance) Act and Instruction Manual 8, with criminal penalties and internal disciplinary action, and that breaches are prevented through technical and management measures. The core debate: the legal basis of public-agency data-protection responsibility and the strength of enforcement.`,
     keyPoints: ['公共机构受多法规约束', '刑事及纪律处分并行', '技术管理措施严格'],
@@ -10685,6 +11947,13 @@ Public agencies and their officers are subject to data protection provisions set
     topics: ['AI Governance & Regulation', 'AI Economy & Industry', 'AI in Healthcare', 'AI & National Security'],
     summary: `议员质询个人数据保护委员会（PDPC）在血液捐赠者数据泄露事件中的调查职责及公共机构是否应受《个人数据保护法》（PDPA）约束。政府回应PDPC正调查涉事私营IT供应商，公共机构受其他法规监管，数据保护标准不低于PDPA。核心争议在于公共机构是否应免于PDPA监管及其问责机制。`,
     summaryKo: `의원들은 혈액 기증자 데이터 유출 사건에서 개인정보보호위원회(PDPC)의 조사 책임 및 공공 기관이 「개인정보보호법」(PDPA)으로 규제되어야 하는지 질문했습니다. 정부는 PDPC가 관련 민간 IT 공급업체를 조사 중이며, 공공 기관은 다른 법규로 규제되고, 데이터 보호 기준이 PDPA 이하가 아니라고 답변했습니다. 핵심 쟁점은 공공 기관이 PDPA 감시에서 면제되어야 하는지 및 그 책임 메커니즘입니다.`,
+    whyItMatters: '公共机构游离于 PDPA 监管之外的先例，为日后政府主导的 AI 数据整合埋下问责隐忧',
+    whyItMattersEn:
+      'The precedent of public institutions remaining outside PDPA regulation planted accountability concerns for future government-led AI data integration.',
+    whyItMattersJa:
+      '公共機関がPDPA規制の外に遊離する先例は、日後の政府主導のAIデータ統合のための問責上の懸念を埋め込んだ',
+    whyItMattersKo:
+      '공공 기관이 PDPA 규제 외곽에 있는 선례는 이후 정부 주도 AI 데이터 통합을 위해 문책 우려를 남겼습니다',
     summaryJa: `議員は個人データ保護委員会（PDPC）の血液提供者データ漏洩事件における調査職責、および公的機関が『個人データ保護法』（PDPA）に拘束されるべきかどうかについて質問しました。政府はPDPCが関係する民間IT供給業者を調査中であり、公的機関が他の法規によって監督されており、データ保護基準がPDPA以下ではないと対応しました。核心的な論点は、公的機関がPDPA規制から免除されるべきかどうか、およびその責任体制です。`,
     summaryEn: `MPs asked about the PDPC's investigation role in the blood-donor data leak and whether public agencies should be subject to the PDPA. The government replied that PDPC is investigating the private IT vendor involved, and public agencies are governed by other regulations with data-protection standards no lower than the PDPA. The core debate: whether public agencies should be exempt from PDPA oversight and the accountability mechanisms.`,
     keyPoints: ['PDPC调查私营供应商', '公共机构受别法规监管', '公共机构数据保护标准高'],
@@ -10779,6 +12048,13 @@ asked the Minister for`,
     topics: ['AI Safety & Ethics', 'AI Economy & Industry', 'AI & Employment', 'AI Infrastructure & Research'],
     summary: `议员质询新加坡企业，尤其是中小企业在数字化转型中的挑战，关注如何帮助企业克服资金、技术和人才适应等问题。政府强调数字经济对提升生产力和应对人口老龄化的重要性，支持企业创新与能力建设。核心争议点在于中小企业数字化的实际困难及政府支持的有效性。`,
     summaryKo: `의원들이 싱가포르 기업, 특히 중소기업의 디지털화 전환 과정에서의 과제에 대해 질문했으며, 기업이 자금, 기술, 인재 적응 등의 문제를 극복하는 방법에 관심을 보였습니다. 정부는 생산성 향상과 고령 인구 문제 대응에 있어 디지털 경제의 중요성을 강조했으며, 기업 혁신과 역량 구축을 지원합니다. 핵심 논쟁점은 중소기업 디지털화의 실제 어려움과 정부 지원의 효과성에 있습니다.`,
+    whyItMatters: '2019 年国会辩论显示，中小企业数字化落差早于全国 AI 战略被点名，如今仍是政策未解难题',
+    whyItMattersEn:
+      "A 2019 parliamentary debate revealed that SMEs' digital divide was flagged earlier than the national AI strategy emerged; it remains an unresolved policy challenge today.",
+    whyItMattersJa:
+      '2019年の国会議論は、中小企業のデジタル化格差が全国AI戦略より早く指摘されたこと、およびそれが今なお政策上未解の難題であることを示している',
+    whyItMattersKo:
+      '2019년 국회 논의는 중소기업 디지털화 격차가 전국 AI 전략보다 먼저 지적되었으며, 지금도 여전히 정책 미해결 과제임을 보여줍니다',
     summaryJa: `議員はシンガポール企業、特に中小企業がデジタル化における課題、および企業が資金、技術、人材適応などの問題をどのように克服するかの支援方法に関心を寄せて質問しました。政府はデジタル経済が生産性向上と高齢化社会への対応に対する重要性を強調し、企業イノベーションと能力構築を支援しています。核心的な論点は、中小企業デジタル化の実際的困難と政府支援の有効性です。`,
     summaryEn: `MPs raised challenges for Singapore firms — especially SMEs — in digital transformation, focusing on helping them overcome funding, technology, and talent adaptation issues. The government emphasised the importance of the digital economy for lifting productivity and responding to population ageing, supporting firm innovation and capability-building. The core debate: practical SME digitalisation difficulties and the effectiveness of government support.`,
     keyPoints: ['数字经济促进生产力', '中小企业数字化难题', '人口老龄化带来压力'],
@@ -10845,6 +12121,13 @@ One of the basic building blocks of a strong nation is a vibrant economy. An eco
     topics: ['AI & National Security', 'AI in Public Sector'],
     summary: `议员质询国防预算及安全部署，政府回应强调新加坡在国际重大活动中加强安保，部署大量军力保障安全，并推动区域反恐合作。核心争议点在于国防开支的合理性及应对新兴安全威胁的能力。`,
     summaryKo: `의원들이 국방 예산 및 안보 배치에 대해 질문했고, 정부는 국제 주요 행사에서 보안 강화, 대규모 군사력 배치를 통한 안보 확보, 지역 반테러 협력 추진을 강조했습니다. 핵심 논쟁점은 국방 지출의 합리성과 새로운 안보 위협에 대응하는 능력입니다.`,
+    whyItMatters: '国防预算跨党派通过却全程未提 AI，暴露 2019 年 11 月国家 AI 战略出台前安全论述的空白',
+    whyItMattersEn:
+      'The defence budget passed with cross-party support yet AI was never mentioned throughout, exposing a gap in security discourse before the November 2019 launch of the national AI strategy.',
+    whyItMattersJa:
+      '国防予算は跨党派で通過したが、全過程でAIについて言及されず、2019年11月の国家AI戦略発表前の安全論述の空白を露呈させた',
+    whyItMattersKo:
+      '국방 예산이 초당파적으로 통과했으나 전 과정에서 AI를 언급하지 않았으며, 2019년 11월 국가 AI 전략 출범 전 안보 논의의 공백을 드러냅니다',
     summaryJa: `議員は国防予算およびセキュリティ配備について質問しました。政府は、シンガポールが国際的な重大イベントにおいてセキュリティを強化し、大量の軍事力を展開して安全を確保し、地域テロ対策協力を推進していると強調して対応しました。核心的な論点は、国防支出の合理性および新興セキュリティ脅威への対応能力です。`,
     summaryEn: `MPs raised the defence budget and security deployment. The government emphasised Singapore's stepped-up security at major international events, large troop deployments, and regional counter-terrorism cooperation. The core debate: the reasonableness of defence spending and capability to address emerging security threats.`,
     keyPoints: ['国防预算获跨党派支持', '重大国际活动强化安保', '推动区域反恐信息共享'],
@@ -10947,6 +12230,13 @@ I note the speeches that many Members in this House have given during the Budget
     topics: ['AI & National Security', 'AI in Public Sector'],
     summary: `议员质询新加坡武装部队面临的地缘政治和安全威胁，包括大国竞争、地区紧张局势及恐怖主义威胁。讨论了兵源减少和训练空间受限的挑战，强调需依赖自动化和先进装备提升防御能力。政府回应聚焦提升科技应用以应对新型威胁，核心争议在于如何平衡传统训练与未来科技投入。`,
     summaryKo: `의원들이 싱가포르 무장부대가 직면한 지정학적 및 안보 위협(대국 경쟁, 지역 긴장 상황, 테러 위협 포함)에 대해 질문했습니다. 병력 감소와 훈련 공간 제한이라는 과제에 대해 논의했으며, 자동화 및 고급 장비에 의존하여 방어 능력을 높일 필요성을 강조했습니다. 정부는 신종 위협에 대응하기 위해 과학기술 응용 강화에 초점을 맞춰 대응했으며, 핵심 논쟁점은 전통 훈련과 미래 과학기술 투자 간의 균형을 맞추는 방법입니다.`,
+    whyItMatters: '该辩论发生在新加坡 2019 年 11 月推出首份国家 AI 战略之前，说明兵源压力已倒逼 SAF 抢先布局防务自动化',
+    whyItMattersEn:
+      "This debate occurred before Singapore's November 2019 launch of its first national AI strategy, showing that manpower pressure had already driven the SAF to move ahead with defence automation.",
+    whyItMattersJa:
+      'その議論はシンガポールが2019年11月に初の国家AI戦略を推出する前に発生し、兵源圧力がすでにシンガポール武装部隊（SAF）に防務自動化を先制的に配置するよう強要していたことを示唆している',
+    whyItMattersKo:
+      '이 논의는 싱가포르 2019년 11월 첫 국가 AI 전략 출범 전에 일어났으며, 병력 부족 압박이 이미 SAF를 강제하여 방위 자동화를 먼저 배치했음을 보여줍니다',
     summaryJa: `議員はシンガポール武装軍が直面する地政学的およびセキュリティ脅威、大国競争、地域緊張およびテロリズム脅威について質問しました。兵力不足と訓練スペースの制限の課題が議論され、自動化と先進装備に依拠して防衛能力を向上させる必要性が強調されました。政府は新興脅威への対応のための技術応用の向上に焦点を当てて対応しました。核心的な論点は、従来型訓練と将来技術投資のバランスをどのようにとるかです。`,
     summaryEn: `MPs raised the geopolitical and security threats facing the SAF, including great-power competition, regional tension, and terrorism. They discussed challenges from smaller cohorts and limited training space and stressed reliance on automation and advanced equipment to lift defence capability. The government focused on adopting technology to address new threats. The core debate: balancing traditional training with future tech investment.`,
     keyPoints: ['地缘政治威胁升级', '兵源减少挑战', '依赖自动化装备'],
@@ -11063,6 +12353,14 @@ Yet, the nature of`,
     topics: ['AI Economy & Industry', 'AI & Employment', 'AI in Public Sector'],
     summary: `质询聚焦公共服务如何利用AI和数据分析提升效率，整合服务，满足市民需求。强调技术应以市民为中心，避免机械执法。政府需推动公共部门高科技、高触感和高适应性转型，提升生产力和服务质量。`,
     summaryKo: `질문은 공공서비스가 AI와 데이터 분석을 활용하여 효율성을 높이고 서비스를 통합하며 시민 수요를 충족시키는 방법에 초점을 맞추었습니다. 기술은 시민 중심이어야 하며 기계적 집행을 피해야 한다는 점을 강조했습니다. 정부는 공공부문이 고기술·고터치·고적응력 전환을 이루어 생산성과 서비스 질을 향상시킬 필요가 있습니다.`,
+    whyItMatters:
+      '早于国家人工智能战略 2019 年 11 月发布，国会已将 AI 定位为公共服务转型工具，为后续以市民为中心的治理定调',
+    whyItMattersEn:
+      "Ahead of the National AI Strategy's November 2019 release, Parliament had already positioned AI as a tool for public service transformation, setting the tone for subsequent citizen-centric governance.",
+    whyItMattersJa:
+      '国家AI戦略の2019年11月発表に先立ち、国会はすでにAIを公共サービス変革ツールと位置付け、その後の市民中心の治理に調子を定めた',
+    whyItMattersKo:
+      '국가 인공지능 전략의 2019년 11월 발표보다 앞서, 국회는 이미 AI를 공공 서비스 전환 도구로 정위했으며, 이후 시민 중심 치리의 기조를 정했습니다',
     summaryJa: `質問は公的サービスがAIとデータ分析をいかに活用して効率を向上させ、サービスを統合し、市民の需要を満たすかに焦点を当てました。テクノロジーは市民中心であるべき、機械的執法を避けるべきことが強調されました。政府は公的部門のハイテク、ハイタッチ、ハイ適応性への転換を推進し、生産性とサービス品質の向上が必要です。`,
     summaryEn: `Questions focused on how the Public Service can use AI and data analytics to lift efficiency, integrate services, and meet citizen needs. MPs emphasised that technology should be citizen-centred and avoid mechanical enforcement, with the government pushing high-tech, high-touch, and high-adaptability transformation in the public sector to lift productivity and service quality.`,
     keyPoints: ['公共服务需数字化转型', '技术应以市民需求为本', 'AI助力提升服务效率'],
@@ -11112,6 +12410,14 @@ The global operating environment is evolving rapidly. There are many growth oppo
     topics: ['AI & National Security', 'AI in Public Sector'],
     summary: `质询马来西亚政府是否在新加坡领海行使主权，以及如何保障新加坡船只不受外国管辖。外交部长回应事件发生在新加坡领海内，新加坡警方在场并记录，马来西亚未在新加坡水域扣押船只，强调不允许外国政府在新加坡水域行使权力。核心争议为外国政府是否有权在新加坡领海执法及新加坡的应对措施。`,
     summaryKo: `말레이시아 정부가 싱가포르 영해 내에서 주권을 행사하는지 여부 및 싱가포르 선박이 외국 관할권에 영향을 받지 않도록 하는 방법에 대해 질문했습니다. 외교부장은 사건이 싱가포르 영해 내에서 발생했으며, 싱가포르 경찰이 현장에 있었고 기록했으며, 말레이시아가 싱가포르 수역에서 선박을 억류하지 않았다고 대응했으며, 외국 정부가 싱가포르 수역에서 권력을 행사하는 것을 허용하지 않는다는 점을 강조했습니다. 핵심 논쟁은 외국 정부가 싱가포르 영해에서 집행 권한이 있는지 여부 및 싱가포르의 대응 조치입니다.`,
+    whyItMatters:
+      '2019-02-26 外交部的答复划清红线：拒绝承认外国政府在新加坡领海执法权，暴露小国维权依赖警力常驻而非强硬对抗',
+    whyItMattersEn:
+      "On 2019-02-26, the Ministry of Foreign Affairs(MFA) drew a red line in its response: rejecting recognition of foreign government enforcement authority in Singapore's territorial waters, exposing that small nations' rights protection relies on sustained police presence rather than confrontation.",
+    whyItMattersJa:
+      '2019年2月26日、外務省（MFA）の回答は明確な一線を引いた：外国政府によるシンガポール領海での執法権を認識することを拒否し、小国の権利維持が警力の恒久的配置に依存し、強硬な対抗ではないことを露呈させた',
+    whyItMattersKo:
+      '2019-02-26 외교부(MFA)의 답변은 명확히 선을 그었습니다: 외국 정부의 싱가포르 영해 집행권을 인정하기를 거부했으며, 소국의 권리 보호가 경찰 상주에 의존하고 강경 대응이 아님을 드러냅니다',
     summaryJa: `マレーシア政府がシンガポール領海内で主権を行使しているかどうか、およびシンガポール船舶が外国管轄から保護される方法に関する質疑。外務大臣は、事件がシンガポール領海内で発生し、シンガポール警察が現場に居合わせ記録していること、マレーシアがシンガポール水域内で船舶を抑留していないこと、およびシンガポール水域内での外国政府の権力行使が許可されないことを強調する対応を示しました。核心的な争点は、外国政府がシンガポール領海内で執法権を有するかどうか、およびシンガポールの対応措置です。`,
     summaryEn: `MPs asked whether the Malaysian government had asserted sovereignty within Singapore territorial waters and how Singapore vessels are protected from foreign jurisdiction. The Foreign Minister replied that the incident took place inside Singapore waters with police present and records taken, Malaysia did not detain the vessel within Singapore waters, and that no foreign government will be permitted to assert authority in Singapore waters. The core debate: whether a foreign government has the right to enforce in Singapore waters and Singapore's response.`,
     keyPoints: ['马来西亚未在新加坡水域扣押', '新加坡不容外国行使主权', '船只应听从新加坡海事局'],
@@ -11180,6 +12486,13 @@ The Minister for Foreign Affairs (Dr Vivia`,
     topics: ['AI Governance & Regulation', 'AI in Healthcare', 'AI in Public Sector'],
     summary: `议员质询涉及1.42万名HIV患者数据泄露后的具体防范措施，包括数据访问权限、数据泄露追踪、受害者心理保护及社会歧视应对。政府需回应如何防止数据扩散、保障患者权益及维护公众对HIV检测的信任。核心争议点在于数据安全管理漏洞、信息公开透明度及社会歧视问题。`,
     summaryKo: `의원들이 1만 4,200명의 HIV 환자 데이터 유출 이후의 구체적 방지 조치(데이터 액세스 권한, 데이터 유출 추적, 환자 심리 보호 및 사회적 차별 대응 포함)에 대해 질문했습니다. 정부는 데이터 확산 방지, 환자 권리 보호 및 HIV 검사에 대한 공중의 신뢰 유지 방법에 대해 대응해야 합니다. 핵심 논쟁점은 데이터 안전 관리 허점, 정보 공개 투명성 및 사회적 차별 문제입니다.`,
+    whyItMatters: '1.42万人 HIV 数据泄露打击公众信任，为新加坡 AI 医疗数据战略敲响数据治理警钟',
+    whyItMattersEn:
+      "The breach of HIV data affecting 14,200 individuals damaged public trust and sounded an alarm for data governance in Singapore's AI healthcare data strategy.",
+    whyItMattersJa:
+      '1万4,200人のHIVデータ漏洩は公衆信頼に打撃を与え、シンガポールのAI医療データ戦略に対してデータ治理の警鐘を鳴らした',
+    whyItMattersKo:
+      '14,200명의 HIV 데이터 유출이 공중 신뢰를 훼손했으며, 싱가포르 AI 의료 데이터 전략을 위해 데이터 치리의 경종을 울렸습니다',
     summaryJa: `1万4,200人のHIV患者のデータ漏洩後の具体的な防止措置に関する議員質疑。データアクセス権限、データ漏洩追跡、被害者の心理的保護、および社会的差別への対応が含まれています。政府は、データ拡散の防止方法、患者権の保護、およびHIV検査に対する公衆の信頼の維持についての対応を示す必要があります。核心的な争点はデータセキュリティ管理の漏洞、情報開示の透明性、および社会的差別の問題です。`,
     summaryEn: `MPs asked about specific preventive measures following the HIV data leak affecting 14,200 patients — data access permissions, leak tracking, psychological protection of victims, and addressing social discrimination. The government must respond on how to prevent further spread, protect patient rights, and maintain public trust in HIV testing. The core debate: data-security gaps, transparency, and social discrimination.`,
     keyPoints: ['加强数据访问控制', '保护患者心理健康', '防止社会歧视扩散'],
@@ -11230,6 +12543,13 @@ asked the Minister for Heal`,
     topics: ['AI Governance & Regulation', 'AI & National Security', 'AI in Public Sector', 'AI Strategy'],
     summary: `议员质询是否应修订个人数据保护法，取消公共机构豁免条款以应对数据泄露风险。政府回应公共部门已有多重法律和政策保障数据安全，强调公共部门数据管理与私营部门不同，采用不同法律体系，且将持续审视相关法规。核心争议在于公共机构数据保护是否应纳入个人数据保护法统一监管。`,
     summaryKo: `의원은 개인정보 보호법을 개정하고 공공기관 면제 조항을 폐지하여 데이터 유출 위험에 대응해야 하는지 질문했습니다. 정부는 공공부문이 데이터 보안을 보장하기 위한 다양한 법률과 정책을 이미 갖추고 있으며, 공공부문의 데이터 관리가 민간부문과 다르고 다른 법적 체계를 적용하고 있으며 관련 규정을 계속 검토할 것이라고 강조했습니다. 핵심 논쟁은 공공기관의 데이터 보호를 개인정보 보호법에 포함시켜 통일된 감독을 해야 하는지 여부입니다.`,
+    whyItMatters: '公共机构豁免于个人数据保护法的格局未被撼动，为政府扩大 AI 处理公民数据埋下监督真空',
+    whyItMattersEn:
+      'The pattern of public institutions being exempt from the Personal Data Protection Act remained unchallenged, creating a regulatory vacuum for government expansion of AI processing of citizen data.',
+    whyItMattersJa:
+      '公共機関が個人データ保護法から免除される状況は動揺させられず、政府によるAIの市民データ処理拡大のための監督の真空を埋め込んだ',
+    whyItMattersKo:
+      '공공 기관이 개인정보보호법 면제를 받는 구조가 흔들리지 않았으며, 정부가 AI로 시민 데이터 처리를 확대하도록 감시 진공을 남겼습니다',
     summaryJa: `個人データ保護法を改正し、データ漏洩リスクに対応するために公共機関の適用除外条項を廃止すべきかについての議員質疑。政府は、公共部門はすでにデータセキュリティを確保するための複数の法律および政策を有していること、公共部門のデータ管理は民間部門とは異なり異なる法律体系が適用されていること、および関連規制を継続的に見直すことを強調する対応を示しました。核心的な争点は、公共機関のデータ保護を個人データ保護法の統一的な規制に含めるべきかどうかです。`,
     summaryEn: `MPs asked whether the PDPA should be amended to remove the exemption for public agencies in light of data-leak risks. The government replied that the public sector already has multiple legal and policy safeguards, stressing that public-sector data management differs from the private sector, adopts a different legal regime, and the rules will be kept under review. The core debate: whether public-agency data protection should be brought under unified PDPA oversight.`,
     keyPoints: ['公共部门数据有多重法律保护', '公共部门数据管理与私营部门不同', '将持续审视相关法律法规'],
@@ -11291,6 +12611,13 @@ The Minister for Communications and Information (Mr S Iswaran)
     topics: ['AI in Public Sector'],
     summary: `议员质询数字经济发展及公共部门数字化转型，政府回应介绍了数字化提升民众生活便利和企业运营效率的具体案例，强调数字经济和数字素养提升的重要性。辩论聚焦于如何通过技术创新促进经济发展和社会包容，争议较低，更多为政策宣示和成效展示。`,
     summaryKo: `의원은 디지털 경제 발전 및 공공부문 디지털 전환에 대해 질문했으며, 정부는 디지털화가 국민의 생활 편의와 기업 운영 효율을 향상시키는 구체적 사례를 소개했고, 디지털 경제와 디지털 소양 향상의 중요성을 강조했습니다. 토론은 기술혁신을 통해 경제발전과 사회포용을 촉진하는 방법에 초점을 맞추고 있으며, 이견이 제한적이고 정책 선언과 성과 전시가 주를 이룹니다.`,
+    whyItMatters: '2018 年 3 月这场低争议辩论为 2019 年 NAIS 铺路，暴露新加坡 AI 战略脱胎于数字经济治理而非独立新政',
+    whyItMattersEn:
+      "This low-controversy debate in March 2018 paved the way for the 2019 National AI Strategy, exposing that Singapore's AI strategy originated from digital economy governance rather than as an independent new policy.",
+    whyItMattersJa:
+      '2018年3月のこの低争議議論は2019年NAISへの道を敷き、シンガポールのAI戦略がデジタル経済治理に由来し、独立した新政策ではないことを露呈させた',
+    whyItMattersKo:
+      '2018년 3월 이 저 논쟁 논의가 2019년 NAIS를 위해 길을 닦았으며, 싱가포르 AI 전략이 디지털 경제 치리에서 비롯되었지 독립적 신정책이 아님을 드러냅니다',
     summaryJa: `デジタル経済発展および公共部門のデジタル化転換に関する議員質疑。政府の対応は、デジタル化が市民の生活の利便性と企業の運営効率をいかに向上させるかについての具体例を紹介し、デジタル経済とデジタルリテラシー向上の重要性を強調しました。議論はいかにして技術革新を通じて経済発展と社会的包摂を促進するかに焦点を当てており、争点は比較的少なく、政策宣言と成果展示が中心です。`,
     summaryEn: `MPs asked about digital-economy development and public-sector digital transformation. The government cited concrete examples of digitalisation lifting daily convenience and firm efficiency, emphasising the importance of the digital economy and digital literacy. The debate focused on how tech innovation drives economic development and social inclusion — relatively low controversy, with more policy framing and outcome showcasing.`,
     keyPoints: ['数字化提升生活便利', '推动数字经济发展', '加强数字素养培训'],
@@ -11373,6 +12700,14 @@ The Chairman
     topics: ['AI Economy & Industry', 'AI & Employment', 'AI in Public Sector', 'AI Strategy'],
     summary: `议员质询政府如何推动数字经济发展，特别关注信息通信媒体（ICM）行业的数字化转型、国际化及创新能力。政府介绍了物流、零售等行业的数字化计划及中小企业支持措施，并强调通过人工智能、金融科技等深科技领域推动ICM行业成长。核心争议在于如何更有效帮助本地企业国际化及提升竞争力。`,
     summaryKo: `의원은 정부가 디지털 경제 발전을 어떻게 추진할 것인지 질문했으며, 정보통신미디어(ICM) 산업의 디지털 전환, 국제화 및 혁신 역량에 특히 주목했습니다. 정부는 물류, 소매 등 산업의 디지털화 계획과 중소기업 지원 조치를 소개했으며, 인공지능, 핀테크 등 심화 기술 분야를 통해 ICM 산업의 성장을 추진할 것을 강조했습니다. 핵심 논쟁은 현지 기업의 국제화를 더욱 효과적으로 지원하고 경쟁력을 향상시키는 방법입니다.`,
+    whyItMatters:
+      '该辩论早于 2019 年国家 AI 战略近两年，揭示新加坡彼时仍把 AI 归入深科技工具箱，服务 ICM 产业升级而非独立战略议程',
+    whyItMattersEn:
+      'This debate, occurring nearly two years before the 2019 national AI strategy, revealed that Singapore then still treated AI as part of a deep-tech toolkit serving ICM industry upgrade rather than as an independent strategic agenda.',
+    whyItMattersJa:
+      'その議論は2019年国家AI戦略より約2年前に発生し、シンガポール当時がAIをディープテック工具箱に分類し、ICM産業高度化に奉仕し、独立した戦略議程ではないことを示唆している',
+    whyItMattersKo:
+      '이 논의는 2019년 국가 AI 전략보다 거의 2년 앞서 일어났으며, 싱가포르가 당시 여전히 AI를 딥테크 툴킷에 분류했고, ICM 산업 업그레이드에 봉사했지 독립적 전략 의제가 아니었음을 드러냅니다',
     summaryJa: `デジタル経済発展の推進方法に関する議員質疑。情報通信メディア（ICM）産業のデジタル化転換、国際化および革新能力に特に焦点が当てられています。政府は物流、小売などの産業のデジタル化計画と中小企業支援措置を紹介し、人工知能、フィンテックなどのディープテック分野を通じてICM産業の成長を推進することを強調しました。核心的な争点は、本地企業の国際化と競争力向上をいかにしてより効果的に支援するかです。`,
     summaryEn: `MPs asked how the government will drive the digital economy, focusing on the Infocomm Media (ICM) industry's digital transformation, internationalisation, and innovation. The government outlined digitalisation plans for logistics, retail and other sectors plus SME support measures, and emphasised using deep-tech areas like AI and fintech to grow the ICM industry. The core debate: how to more effectively help local firms internationalise and lift competitiveness.`,
     keyPoints: ['数字经济带来机遇', '推动中小企业数字化', '支持ICM行业国际化'],
@@ -11477,6 +12812,14 @@ We are living in a world where industries and businesses are swarmed by digital 
     topics: ['AI Safety & Ethics', 'AI & National Security', 'AI Infrastructure & Research', 'AI in Public Sector'],
     summary: `议员质询新加坡国防预算，强调国防自主的重要性及面临的多元安全威胁，包括恐怖主义、核武风险及网络安全。政府回应需持续投资国防力量和维护国际防务联盟，以应对复杂且不断演变的安全环境。核心争议在于如何平衡有限资源与不断增长的安全需求。`,
     summaryKo: `의원은 싱가포르 국방 예산에 대해 질문했으며, 국방 자립의 중요성과 테러주의, 핵무기 위험, 사이버 보안을 포함한 다양한 안보 위협을 강조했습니다. 정부는 복잡하고 계속 변화하는 안보 환경에 대응하기 위해 국방력에 대한 지속적 투자와 국제 방위 동맹의 유지가 필요하다고 회신했습니다. 핵심 논쟁은 제한된 자원과 계속 증가하는 안보 수요 사이의 균형을 맞추는 방법입니다.`,
+    whyItMatters:
+      '2018 年 3 月的国防预算辩论虽提网络安全，却未单列预算，暴露新加坡防务体系彼时尚未把数字威胁纳入资源分配核心',
+    whyItMattersEn:
+      "Although cyber security was mentioned in the March 2018 defence budget debate, it received no dedicated budget, exposing that Singapore's defence system had not yet incorporated digital threats into the core of resource allocation.",
+    whyItMattersJa:
+      '2018年3月の国防予算議論はサイバーセキュリティに言及したが、予算を別立てにしなかった、シンガポール防務体系が当時デジタル脅威を資源配分の中核に組み込んでいなかったことを露呈させた',
+    whyItMattersKo:
+      '2018년 3월의 국방 예산 논의는 사이버보안을 언급했으나 별도 예산을 계상하지 않았으며, 싱가포르 방위 체계가 당시 디지털 위협을 자원 배분 핵심에 포함하지 않았음을 드러냅니다',
     summaryJa: `シンガポール国防予算に関する議員質疑。議員は国防自主の重要性および直面する多様なセキュリティ脅威（テロリズム、核兵器リスク、サイバーセキュリティを含む）を強調しました。政府は、複雑で進化し続けるセキュリティ環境に対処するために、国防力への継続的投資と国際防衛同盟の維持の必要性を強調する対応を示しました。核心的な争点は、限定的なリソースと増加し続けるセキュリティニーズのバランスをいかに取るかです。`,
     summaryEn: `MPs raised the defence budget, emphasising the importance of defence self-reliance and the diversified threats facing Singapore — terrorism, nuclear risk, and cybersecurity. The government replied that continuous investment in defence capability and international defence alliances is needed to address a complex and evolving security environment. The core debate: balancing limited resources with growing security needs.`,
     keyPoints: ['国防自主迫切需求', '多元安全威胁增加', '维护国际防务联盟'],
@@ -11526,6 +12869,14 @@ This precipitated the start of National Service in 1967 and the focused developm
     topics: ['AI Economy & Industry', 'AI in Education', 'AI in Public Sector'],
     summary: `质询新加坡年轻人创业趋势及创业公司成功率，政府回应指出本地年轻创业者比例上升，创业意愿增强，创业生态系统稳步发展，且国际排名优异。核心争议在于如何定义创业成功及与其他国家的比较。`,
     summaryKo: `싱가포르 청년의 창업 추세 및 창업회사 성공률에 대해 질문했으며, 정부는 현지 청년 창업자 비율 상승, 창업 의욕 강화, 창업 생태계의 점진적 발전 및 국제 순위의 우수성을 지적했습니다. 핵심 논쟁은 창업 성공을 정의하는 방법과 다른 국가와의 비교입니다.`,
+    whyItMatters:
+      '2018 年政府仅以创业意愿上升与国际排名回应成功率质询，暴露创业生态缺硬指标，为日后 AI 创业统计埋下同样争议',
+    whyItMattersEn:
+      'In 2018, the government responded to questions on success rates only with rising entrepreneurial intent and international rankings, exposing the lack of hard metrics in the startup ecosystem and foreshadowing similar controversies in later AI startup statistics.',
+    whyItMattersJa:
+      '2018年、政府は起業意欲の上昇と国際ランキングでのみ成功率の質問に応答し、起業エコシステムがハード指標を欠くこと、および日後のAI起業統計で同様の紛争を埋め込んだことを露呈させた',
+    whyItMattersKo:
+      '2018년 정부가 창업 의욕 상승과 국제 순위만으로 성공률 질문에 대응했으며, 창업 생태계가 하드 지표를 결여했고, 이후 AI 창업 통계에 동일한 논쟁을 남겼습니다',
     summaryJa: `シンガポール若年層の起業トレンドおよび起業企業の成功率に関する質疑。政府の対応は、本地の若い起業家の割合が上昇し、起業意欲が強まり、スタートアップエコシステムが着実に発展し、国際ランキングが優れていることを指摘しました。核心的な争点は、起業成功をいかに定義するか、および他国との比較です。`,
     summaryEn: `An MP asked about entrepreneurship trends among young Singaporeans and the success rate of startups. The government replied that the share of young local entrepreneurs is rising, entrepreneurial intent is stronger, the startup scene is steadily growing, and Singapore performs well in international rankings. The core debate: how to define startup success and how Singapore compares with other countries.`,
     keyPoints: ['年轻创业者比例提升', '创业生态持续成长', '国际排名表现良好'],
@@ -11585,6 +12936,13 @@ Young Singaporeans increasingly recognise entrepreneurship as a viable career pa
     topics: ['AI Governance & Regulation', 'AI Safety & Ethics', 'AI in Education', 'AI & National Security'],
     summary: `议员质询随着人工智能和自动机器的发展，是否会制定新法规或修订现有法律以涵盖伦理、道德、紧急停止装置及责任问题。政府回应强调将采取领域特定的监管策略，举例交通领域的自动驾驶车辆安全测试和保险要求，以及金融领域的算法监管。政府还提到将提升相关技术能力，推动智慧国建设。核心争议在于如何平衡技术发展与风险管理，确保公众利益和安全。`,
     summaryKo: `인공지능과 자동화 기계의 발전에 따라 윤리, 도덕, 긴급 정지 장치 및 책임 문제를 다루기 위한 새로운 법규를 제정하거나 기존 법률을 개정할 것인지에 대해 의원이 질문했습니다. 정부는 영역별 특정 규제 전략을 채택할 것이며, 교통 분야의 자율주행 차량 안전 테스트 및 보험 요건과 금융 분야의 알고리즘 규제를 예로 들었다고 강조했습니다. 정부는 또한 관련 기술 역량을 강화하고 스마트 국가 건설을 추진할 것이라고 언급했습니다. 핵심 논쟁은 기술 발전과 위험 관리 사이의 균형을 맞추고 공중 이익과 안전을 보장하는 방법입니다.`,
+    whyItMatters: '2018 年这场质询确立新加坡分领域监管而非统一 AI 立法的路径，成为其区别于欧盟 AI 法案的制度分水岭',
+    whyItMattersEn:
+      "This 2018 inquiry established Singapore's path toward sector-specific regulation rather than unified AI legislation, becoming the institutional watershed that distinguished it from the EU AI Act",
+    whyItMattersJa:
+      '2018年のこの質疑は、統一AI立法ではなくシンガポールの分野別規制の道を確立し、EU AI法案との対比において制度的な分岐点となった。',
+    whyItMattersKo:
+      '2018년 이 질의는 싱가포르의 통합 AI 입법이 아닌 분야별 규제 경로를 확립했으며, 유럽연합 AI 법안과 구별되는 제도적 분기점이 되었습니다.',
     summaryJa: `議員が人工知能と自動機械の発展に伴い、倫理、道徳、緊急停止装置、責任などを網羅する新しい法令を制定するか、既存の法律を修正するかについて質問しました。政府は分野別の規制戦略を採用することを強調し、交通分野の自動運転車の安全テストと保険要件、および金融分野のアルゴリズム規制を例に挙げました。政府はまた、関連する技術能力を向上させ、Smart Nation構想を推進すると述べました。中核的な争点は、技術発展とリスク管理のバランスをどのように取り、公衆の利益と安全を確保するかにあります。`,
     summaryEn: `MPs asked whether new legislation will be promulgated or existing laws reviewed to cover ethics, morality, kill switches, and liability with the rise of AI and autonomous machines. The government emphasised a domain-specific regulatory approach, citing safety testing and insurance requirements for autonomous vehicles in transport, and algorithmic oversight in finance. It also noted plans to lift relevant technical capability to drive Smart Nation. The core debate: how to balance tech development with risk management for public interest and safety.`,
     keyPoints: ['领域特定监管策略', '自动驾驶严格安全测试', '持续提升技术能力'],
@@ -11636,6 +12994,14 @@ The Senior Minister of State for Communications and Inf`,
     topics: ['AI in Education', 'AI in Public Sector'],
     summary: `议员质询教师在批改作业及行政工作上所花时间及减负措施，政府回应强调教师批改作业的重要性，介绍了教学指导及团队合作分担批改工作，同时采用技术自动批改选择题和数字测验，未来将继续推动技术应用与简化流程。核心争议在于如何平衡教师专业职责与减轻工作负担。`,
     summaryKo: `의원은 교사가 숙제 채점 및 행정 업무에 소비하는 시간 및 부담 경감 조치에 대해 질문했으며, 정부는 교사의 숙제 채점의 중요성을 강조하고 교학 지도 및 단체 협력을 통한 채점 업무 분담을 소개했으며, 동시에 기술을 활용한 객관식 문제 자동 채점 및 디지털 평가를 채택했으며, 향후 기술 적용과 프로세스 간소화를 지속적으로 추진할 것이라고 회신했습니다. 핵심 논쟁은 교사의 전문적 책임과 업무 부담 경감 사이의 균형을 맞추는 방법입니다.`,
+    whyItMatters:
+      '这场 2017 年国会辩论早于 2019 年国家 AI 战略两年，显示教育科技当时仅能处理选择题批改，论文式批改自动化仍是空白',
+    whyItMattersEn:
+      'This 2017 parliamentary debate preceded the 2019 National AI Strategy by two years, revealing that educational technology could then only handle multiple-choice question marking, while essay marking automation remained a blank space',
+    whyItMattersJa:
+      '2017年の国会議論は2019年の国家AI戦略より2年早く、当時の教育テクノロジーが選択肢問題の採点のみに対応でき、エッセイ式採点の自動化は空白のままであったことを示している。',
+    whyItMattersKo:
+      '이 2017년 국회 토론은 2019년 국가 AI 전략보다 2년 먼저였으며, 에드테크는 당시 객관식 채점만 처리할 수 있었고 논문식 자동 채점은 여전히 공백임을 보여주었습니다.',
     summaryJa: `議員は教師が宿題採点と行政業務に費やす時間と負担軽減措置について質問しました。政府は教師による宿題採点の重要性を強調し、教学ガイダンスとチームワークによる採点業務の分担、および選択問題とデジタルテストの自動採点技術の採用について説明しました。政府は今後、技術応用とプロセスの簡素化を引き続き推進すると述べました。中核的な争点は、教師の専門的職責と業務負担軽減のバランスをどのように取るかにあります。`,
     summaryEn: `MPs asked about teachers' time on marking and administrative work and measures to reduce the load. The government emphasised the importance of marking, outlining teaching guidance and team-based marking, with technology used to auto-mark MCQ and digital quizzes; it will continue pushing tech use and process simplification. The core debate: balancing teachers' professional responsibilities with reducing workload.`,
     keyPoints: ['教师批改作业重要', '团队合作分担批改', '技术辅助自动批改'],
@@ -11728,6 +13094,13 @@ Mr Ng Chee Meng
     topics: ['AI & National Security', 'AI Infrastructure & Research', 'AI in Public Sector'],
     summary: `议员质询国防部当前面临的主要安全威胁，包括地区大国冲突、朝鲜核试验、恐怖主义及网络攻击。政府强调多元威胁并重视网络安全，呼吁加强防御能力。核心争议在于如何平衡传统与非传统安全威胁的资源分配及应对策略。`,
     summaryKo: `의원이 국방부의 현재 직면하고 있는 주요 안보 위협을 질의했습니다. 여기에는 지역 강대국 간의 갈등, 북한 핵실험, 테러리즘 및 사이버 공격이 포함됩니다. 정부는 다원적 위협을 강조하고 사이버 보안을 중시하며, 방어 능력 강화를 촉구했습니다. 핵심 논쟁은 전통적 및 비전통적 보안 위협에 대한 자원 배분 및 대응 전략을 어떻게 조화시킬지에 있습니다.`,
+    whyItMatters: '2017 年国会防务质询聚焦网络攻击与恐怖主义，只字未提 AI，暴露国防 AI 议题彼时尚未进入国会视野',
+    whyItMattersEn:
+      "The 2017 parliamentary defence inquiry focused on cyber attacks and terrorism, making no mention whatsoever of AI, revealing that the defence AI issue had not yet entered Parliament's purview at that time",
+    whyItMattersJa:
+      '2017年の国会防衛質疑はサイバー攻撃とテロリズムに焦点を当て、AIについては全く言及されず、国防AI議題がその時点ではまだ国会の視野に入っていないことを明らかにした。',
+    whyItMattersKo:
+      '2017년 국회 국방 질의는 사이버 공격과 테러리즘에 집중했으며 AI에 대해 한 글자도 언급하지 않았고, 국방 AI 의제가 당시 국회의 관점에 아직 진입하지 않았음을 노출했습니다.',
     summaryJa: `議員は国防部が直面する主要なセキュリティ脅威（地域大国との対立、朝鮮の核実験、テロリズム、サイバー攻撃を含む）について質問しました。政府は複合的な脅威と包括的なセキュリティを強調し、防御能力の強化を呼び掛けました。中核的な争点は、従来型および非従来型のセキュリティ脅威に対するリソース配分と対応戦略のバランスをどのように取るかにあります。`,
     summaryEn: `MPs asked MINDEF about the major current security threats — regional great-power conflict, North Korean nuclear tests, terrorism, and cyberattacks. The government emphasised the diversity of threats and prioritising cybersecurity, calling for stronger defensive capability. The core debate: balancing resource allocation and response strategy across traditional and non-traditional security threats.`,
     keyPoints: ['地区大国安全威胁', '恐怖主义持续存在', '网络攻击成新挑战'],
@@ -11818,6 +13191,14 @@ Even after Independence, security became one of our concerns and National Servic
     topics: ['AI Safety & Ethics', 'AI & National Security', 'AI in Public Sector'],
     summary: `议员质询新加坡国防预算，强调国家安全环境复杂多变，包括恐怖主义威胁、南海争端、朝鲜核威胁及海盗问题。政府回应强调新加坡武装力量的建设成就及应对多元安全威胁的必要性。核心争议点在于如何平衡有限资源与多重安全挑战的防御需求。`,
     summaryKo: `의원이 싱가포르 국방 예산을 질의하며, 국가 안보 환경이 복잡하고 변화하고 있음을 강조했습니다. 여기에는 테러리즘 위협, 남중국해 분쟁, 북한 핵 위협 및 해적 문제가 포함됩니다. 정부는 싱가포르 무장 기구의 건설 성과 및 다원적 안보 위협에 대응하는 필요성을 강조하며 대응했습니다. 핵심 논쟁점은 제한된 자원과 다중 안보 과제 사이에서 방어 수요를 어떻게 조화시킬지에 있습니다.`,
+    whyItMatters:
+      '这场 2016 年国防预算辩论只字未提 AI，彼时距新加坡 2019 年推出首份国家 AI 战略仅剩三年，暴露安全叙事长期压过技术转型议程',
+    whyItMattersEn:
+      'This 2016 defence budget debate made no mention whatsoever of AI; at that time, only three years remained until Singapore launched its first National AI Strategy in 2019, revealing that security discourse had long overshadowed the technology transformation agenda',
+    whyItMattersJa:
+      '2016年の国防予算議論ではAIについて全く言及されず、シンガポールが2019年に国家AI戦略を発表するまでの残り3年間、セキュリティ叙事が長期にわたって技術転換アジェンダを圧倒していたことが明らかになった。',
+    whyItMattersKo:
+      '이 2016년 국방 예산 토론은 AI에 대해 한 글자도 언급하지 않았으며, 당시 싱가포르가 2019년 첫 국가 AI 전략을 출범시킬 때까지 겨우 3년이 남아 있었고, 보안 서사가 기술 전환 의제를 오랫동안 압도했음을 노출했습니다.',
     summaryJa: `議員がシンガポール国防予算について質問し、テロの脅威、南シナ海の紛争、朝鮮の核脅威、海賊問題を含む、複雑で変化する国家セキュリティ環境を強調しました。政府はシンガポール武装力の建設成果と複数のセキュリティ脅威に対応する必要性を強調して対応しました。中核的な争点は、限定されたリソースと複数のセキュリティ課題の防御ニーズのバランスをどのように取るかにあります。`,
     summaryEn: `MPs raised the defence budget, emphasising a complex, evolving national security environment including terrorism, South China Sea disputes, North Korea's nuclear threat, and piracy. The government cited SAF's build-up achievements and the need to address diversified security threats. The core debate: balancing limited resources with multi-front defence demands.`,
     keyPoints: ['恐怖主义持续威胁', '南海局势紧张', '朝鲜核威胁升级'],
@@ -11867,6 +13248,13 @@ Quite suddenly, for the first time in history, Singapore was left to take care o
     topics: ['AI Economy & Industry', 'AI & Employment', 'AI in Education', 'AI & National Security'],
     summary: `议员质询新加坡科技与IT行业新增1.5万个岗位的类型、分布、层级及技能要求。政府回应称岗位涵盖多个行业，主要为专业及技术职位，技能需求多样，包括编程、网络安全和数据分析。政府强调技术岗位需求持续增长，配合智慧国战略。核心争议点在于岗位质量及技能匹配，政府承诺后续推出人力发展计划。`,
     summaryKo: `의원이 싱가포르 과학기술 및 IT 업계의 신규 1.5만 개 일자리의 유형, 분포, 계층 및 기술 요구 사항을 질의했습니다. 정부는 일자리가 여러 산업을 포함하며 주로 전문직 및 기술직이며, 기술 수요가 다양함을 응답했습니다. 여기에는 프로그래밍, 사이버 보안 및 데이터 분석이 포함됩니다. 정부는 기술 직책 수요가 지속적으로 증가하고 있으며 스마트국가 전략과 부합함을 강조했습니다. 핵심 논쟁점은 일자리 품질 및 기술 매칭이며, 정부는 후속 인력 개발 계획을 추진하겠다고 약속했습니다.`,
+    whyItMatters: '1.5 万岗位质询暴露新加坡科技岗位强调数量、弱化质量与技能匹配的惯常叙事，倒逼政府补交人力发展计划',
+    whyItMattersEn:
+      "The 15,000-jobs inquiry exposed Singapore's habitual narrative of emphasizing quantity while downplaying quality and skills matching in tech positions, forcing the government to supplement its human development planning",
+    whyItMattersJa:
+      '1万5000職位質疑は、シンガポールのテクノロジー職が数量を強調する一方で質とスキルマッチングを軽視する通常のナラティブを暴露し、政府に人材開発計画の追加提出を迫った。',
+    whyItMattersKo:
+      '1만 5천 개 일자리 질의는 싱가포르 기술 직무가 수량을 강조하고 품질 및 기술 매칭을 약화시키는 관례적 서사를 노출했으며, 정부가 인력 개발 계획을 보충하도록 압박했습니다.',
     summaryJa: `議員がシンガポールのテクノロジー・IT業界における新規15,000職のタイプ、分布、レベル、必要なスキルについて質問しました。政府は、職が複数の産業をカバーし、主にプロフェッショナルおよびテクノロジー職であり、プログラミング、サイバーセキュリティ、データ分析を含む多様なスキルが必要であると対応しました。政府はテクノロジー職の需要の継続的な成長を強調し、Smart Nation戦略と合わせました。中核的な争点は職の品質とスキルマッチングにあり、政府は今後、人材発展プランを推出することを約束しました。`,
     summaryEn: `An MP asked about the type, distribution, hierarchy levels, and skills requirements of the 15,000 new tech and IT jobs announced. The government replied that the roles span multiple industries — mainly professional and technical positions — with diverse skill needs including programming, cybersecurity, and data analytics. The government emphasised continued tech-job demand growth, aligned with the Smart Nation strategy. The core debate: job quality and skills matching; the government committed to follow-up manpower development plans.`,
     keyPoints: ['岗位涵盖多行业', '主要为技术与管理岗', '技能需求多样化'],
@@ -11968,6 +13356,14 @@ The Minister for Communications and Information (Assoc Prof Dr Yaacob Ibrahim)
     topics: ['AI & Employment', 'AI in Education', 'AI in Public Sector'],
     summary: `质询方关注新加坡大学毕业生就业匹配问题，借鉴韩国、中国毕业生高失业率案例，担忧新加坡青年失业风险。强调教育应注重实用技能，呼吁政府通过SkillsFuture推动终身学习，提升就业竞争力。政府回应聚焦投资公民技能，支持未来就业准备。核心争议在于教育与就业市场需求的匹配及青年失业风险防范。`,
     summaryKo: `질의 당사자는 싱가포르 대학 졸업생의 일자리 매칭 문제에 주목했으며, 한국과 중국 졸업생의 높은 실업률 사례를 참고하면서 싱가포르 청년 실업 위험을 우려했습니다. 교육은 실용적 기술에 중점을 두어야 하며, 정부가 SkillsFuture를 통해 평생 학습을 추진하여 고용 경쟁력을 높일 것을 촉구했습니다. 정부는 국민 기술 투자에 집중하고 미래 일자리 준비를 지원하는 것으로 대응했습니다. 핵심 논쟁은 교육과 고용 시장 수요 간의 매칭 및 청년 실업 위험 방지에 있습니다.`,
+    whyItMatters:
+      '新加坡应对技能错配的答案始终是 SkillsFuture 式终身学习而非结构性改革，这套逻辑如今原样搬进 AI 再培训政策',
+    whyItMattersEn:
+      "Singapore's response to skills mismatch has consistently been SkillsFuture-style lifelong learning rather than structural reform; this logic has now been transferred wholesale into AI retraining policy",
+    whyItMattersJa:
+      'スキルミスマッチへの対応としてシンガポールが採用し続けているSkillsFuture型の生涯学習は構造的改革ではなく、このロジックは今やそのままAI再教育政策に導入されている。',
+    whyItMattersKo:
+      '싱가포르의 기술 미스매치에 대한 답변은 항상 구조적 개혁이 아닌 SkillsFuture식 평생학습이었으며, 이러한 논리는 현재 AI 재교육 정책으로 그대로 옮겨졌습니다.',
     summaryJa: `質問側はシンガポール大学卒業生の就職マッチングの問題に懸念を示し、韓国と中国の高失業率の事例を参考にしながら、シンガポール青年失業のリスクを懸念しています。教育が実用的スキルを重視すべきことを強調し、SkillsFutureを通じて生涯学習を推進し就職競争力を向上させるよう政府に呼び掛けました。政府は国民スキルへの投資をフォーカスし、将来の就職準備をサポートすることで対応しました。中核的な争点は教育と就業市場需要のマッチング、および青年失業リスク防止にあります。`,
     summaryEn: `MPs raised the question of graduate employment matching for Singapore universities, citing high graduate unemployment in South Korea and China and worrying about youth unemployment risk in Singapore. They emphasised education should focus on practical skills and called for SkillsFuture to drive lifelong learning and lift employability. The government's response focused on investing in citizen skills to prepare for future employment. The core debate: education-labour market match and prevention of youth unemployment.`,
     keyPoints: ['毕业生就业匹配问题', '教育应注重实用技能', '推动终身学习机制'],
@@ -12052,6 +13448,13 @@ A recent article in The Straits Times caught my eye. In the article, it was repo
     topics: ['AI & National Security', 'AI in Public Sector'],
     summary: `议员质询国防部关于SAF50纪念活动及国民服役历史，强调国民服役需认同防卫对象。政府回应介绍SAF志愿者招募情况，强调国民服役的重要性及历史教训。核心争议在于国民服役的认同感及其演变过程。`,
     summaryKo: `의원이 국방부의 SAF50 기념 활동 및 국민 복무 역사에 대해 질의했으며, 국민 복무가 방위 대상에 대한 인식을 필요로 함을 강조했습니다. 정부는 SAF 자원봉사자 모집 현황을 소개하며 대응했고, 국민 복무의 중요성 및 역사적 교훈을 강조했습니다. 핵심 논쟁은 국민 복무에 대한 인식 및 그 진화 과정에 있습니다.`,
+    whyItMatters: 'SAF50 纪念凸显的认同鸿沟，预示新加坡日后动员全民投入 AI 技能培训同样绕不开身份认同这一关',
+    whyItMattersEn:
+      "The identity gap highlighted by the SAF50 commemorations foreshadows that Singapore's future mobilization of all citizens for AI skills training will likewise not be able to circumvent this identity-recognition barrier",
+    whyItMattersJa:
+      'SAF50記念が浮き彫りにしたアイデンティティ・ギャップは、シンガポール国民全体によるAIスキル育成への今後の動員においても、アイデンティティというこの関門を避けられないことを示唆している。',
+    whyItMattersKo:
+      'SAF50 기념식에서 두드러나는 정체성 간극은 싱가포르가 향후 국민 전체를 AI 기술 교육에 동원할 때 마찬가지로 정체성 인식이라는 관문을 피할 수 없음을 예고합니다.',
     summaryJa: `議員がSAF50周年記念行事および国民兵役の歴史について国防部に質問し、国民兵役が防衛対象への認同を必要とすることを強調しました。政府はSAF志願者募集の状況を紹介し、国民兵役の重要性と歴史的教訓を強調することで対応しました。中核的な争点は国民兵役の認同感およびその変遷にあります。`,
     summaryEn: `MPs asked MINDEF about the SAF50 commemorative events and the history of National Service, stressing that NS needs identification with what is being defended. The government described SAF volunteer recruitment, emphasised the importance of NS, and drew lessons from history. The core debate: identification with NS and its evolution.`,
     keyPoints: ['SAF50纪念意义', '国民服役历史回顾', '服役认同感重要'],

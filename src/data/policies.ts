@@ -135,6 +135,14 @@ export const categories: PolicyCategory[] = [
           'Josephine Teo 在 ATxSummit 2026 公布 NAIS 更新——「双击」而非「重启」。3 个方向、10 项优先方向、4 个国家 AI 任务（先进制造、金融、互联互通、医疗），加 National AI Impact Programme（10000 家 SME 目标）与 Champions of AI 计划。',
         summaryKo:
           'Josephine Teo가 ATxSummit 2026에서 NAIS 업데이트를 공개했습니다. 「더블클릭」이지 「재시작」이 아닙니다. 3가지 방향, 10개의 우선 방향, 4개의 국가 AI 과제(첨단 제조, 금융, 연결성, 의료), National AI Impact Programme(10,000개 SME 목표) 및 Champions of AI 계획을 더합니다.',
+        whyItMatters:
+          '总理 Lawrence Wong 亲任主席的 NAIC 把 AI 治理提到国家最高决策层，10000 家 SME 目标成为可核查的政绩指标',
+        whyItMattersEn:
+          "Prime Minister Lawrence Wong personally chairs NAIC, elevating AI governance to the nation's highest decision-making level, with 10,000 SMEs as a verifiable performance metric",
+        whyItMattersJa:
+          '首相ローレンス・ウォン直属の NAIC は、AI ガバナンスを国家最高決策層へと格上げし、1 万社の中小企業目標が検証可能な政策成果指標となります。',
+        whyItMattersKo:
+          '총리 Lawrence Wong이 직접 의장을 맡은 NAIC가 AI 거버넌스를 국가 최고 의사결정층으로 격상시켰으며, 1만 개 SME 목표가 검증 가능한 정책 성과 지표가 되었습니다.',
         summaryJa:
           'Josephine Teo は ATxSummit 2026 で NAIS アップデートを発表――「ダブルクリック」であって「リセット」ではない。3 つの方向、10 の優先方向、4 つの国家 AI ミッション（先端製造、金融、コネクティビティ、医療）、加えて National AI Impact Programme（中小企業 10000 社の目標）と Champions of AI プログラム。',
         summaryEn:
@@ -233,6 +241,14 @@ Together with same-day announcements of the NVIDIA Singapore AI Research Lab and
           'NVIDIA 在 ATxSummit 2026 公布在新加坡设立第一个研究实验室（亚太第二个），聚焦 embodied AI 与 efficient AI computing。',
         summaryKo:
           'NVIDIA가 ATxSummit 2026에서 싱가포르에 첫 번째 연구 실험실(아시아태평양 두 번째)을 설립한다고 공개했으며, embodied AI와 efficient AI computing에 중점을 두고 있습니다.',
+        whyItMatters:
+          '新加坡贡献 NVIDIA 约 15% 全球营收，此次是其首个研究存在而非商业存在，标志新加坡从 GPU 中转站迈向原创研究节点',
+        whyItMattersEn:
+          "Singapore accounts for approximately 15% of NVIDIA's global revenue; this is its first research presence rather than commercial presence, marking Singapore's transition from a GPU transit hub to an original research node",
+        whyItMattersJa:
+          'シンガポールが NVIDIA の約 15% の全世界売上を占め、今回の設立はシンガポールの初めての研究拠点（商業拠点ではなく）であり、シンガポールが GPU トランジットハブから独創的研究ノードへの移行を示しています。',
+        whyItMattersKo:
+          '싱가포르는 NVIDIA 글로벌 매출의 약 15%를 차지하고 있으며, 이번은 상용이 아닌 연구 거점으로서의 첫 존재를 표징하며, 싱가포르가 GPU 환승지에서 독창 연구 노드로 전환하고 있음을 보여줍니다.',
         summaryJa:
           'NVIDIA は ATxSummit 2026 で、シンガポールに最初の研究ラボを設立すると発表しました（アジア太平洋では 2 番目）。embodied AI と efficient AI computing に焦点を当てます。',
         summaryEn:
@@ -304,6 +320,14 @@ Together with same-day announcements of the NVIDIA Singapore AI Research Lab and
           'IMDA 在 ATxSummit 2026 公布在 Punggol Digital District 建立片区级、多运营商、混合公共环境的 embodied AI testbed，2026 年下半年 launch。首批：Certis、DHL、Grab、QuikBot；配套 Centre for Intelligent Robotics（IMDA + NRP）。',
         summaryKo:
           'IMDA가 ATxSummit 2026에서 Punggol Digital District에 지역 수준, 다중 운영자, 혼합 공공 환경의 embodied AI 테스트베드를 설립한다고 공개했으며, 2026년 하반기에 출시됩니다. 첫 번째: Certis, DHL, Grab, QuikBot; 지원 Centre for Intelligent Robotics(IMDA + NRP).',
+        whyItMatters:
+          '首次以 Active Mobility Act 片区豁免让 Certis、DHL、Grab、QuikBot 四家运营商共址测试，为新加坡 embodied AI 监管建立可复制先例',
+        whyItMattersEn:
+          "For the first time, an Active Mobility Act zonal exemption allows four operators—Certis, DHL, Grab, and QuikBot—to conduct co-located testing, establishing a replicable precedent for Singapore's embodied AI regulation",
+        whyItMattersJa:
+          'Active Mobility Act の地区別適用除外を初めて活用して、Certis、DHL、Grab、QuikBot の 4 社の事業者が共同で試験を実施し、シンガポールの embodied AI 規制に再現可能な先例を確立します。',
+        whyItMattersKo:
+          'Active Mobility Act 지역 면제를 통해 Certis, DHL, Grab, QuikBot 4개 운영사가 공동 위치에서 테스트하게 했으며, 싱가포르의 embodied AI 규제를 위한 복제 가능한 선례를 수립했습니다.',
         summaryJa:
           'IMDA は ATxSummit 2026 で、Punggol Digital District に区域レベル・多事業者・混合公共環境型の embodied AI testbed を 2026 年後半に立ち上げると発表。最初の参加企業：Certis、DHL、Grab、QuikBot；併設の Centre for Intelligent Robotics（IMDA + NRP）。',
         summaryEn:
@@ -401,6 +425,14 @@ Together with same-day announcements of the NVIDIA Singapore AI Research Lab and
           'OpenAI 与 MDDI 在 ATxSummit 2026 公布 OpenAI for Singapore：承诺超过 S$300M，在新加坡建立美国以外首个 Applied AI Lab，并在未来几年创造 200+ 本地技术岗位。',
         summaryKo:
           'OpenAI와 MDDI는 ATxSummit 2026에서 OpenAI for Singapore를 발표했습니다. S$300M 이상을 약속하고, 미국 밖 첫 Applied AI Lab을 싱가포르에 설립하며, 향후 몇 년간 200개 이상의 현지 기술 직무를 창출합니다.',
+        whyItMatters:
+          'OpenAI 首个美国境外 Applied AI Lab 落子新加坡，S$300M 与 200+ 岗位将其工程能力嵌入 NAIC 执行链，暴露新加坡 AI 主权路径仍依赖前沿实验室',
+        whyItMattersEn:
+          "OpenAI's first Applied AI Lab outside the United States lands in Singapore; S$300 million and 200+ positions embed its engineering capabilities into the NAIC execution chain, exposing Singapore's AI sovereignty path's continued reliance on cutting-edge laboratories",
+        whyItMattersJa:
+          'OpenAI の米国外初の Applied AI Lab がシンガポールに立地し、S$3 億と 200 以上の職位がその工学能力を NAIC 実行チェーンに組み込み、シンガポール AI 主権路の達成がなお最先端研究機関に依存する現状を露呈しています。',
+        whyItMattersKo:
+          'OpenAI의 미국 외 첫 번째 Applied AI Lab이 싱가포르에 설립되며, 싱가포르 달러 3억과 200개 이상의 일자리로 그들의 엔지니어링 역량을 NAIC 실행 체계에 내장하나, 이는 싱가포르의 AI 주권 경로가 여전히 첨단 실험실에 의존하고 있음을 드러냅니다.',
         summaryJa:
           'OpenAI と MDDI は ATxSummit 2026 で OpenAI for Singapore を発表。S$300M 超をコミットし、米国外初の Applied AI Lab をシンガポールに設立、今後数年で 200 以上の現地技術職を創出します。',
         summaryEn:
@@ -468,6 +500,14 @@ This is not just a regional-HQ story. It connects OpenAI’s deployment engineer
           'https://www.mddi.gov.sg/newsroom/singapore-invests-over-s-1-billion-in-national-ai-research-and-development-plan-to-strengthen-ai-research-capabilities-and-our-position-as-global-ai-hub/',
         summary: '10 亿新元（7.79 亿美元）公共 AI 研究投资，聚焦负责任和资源高效的 AI。',
         summaryKo: '10억 신원(7.79억 미국 달러) 공공 AI 연구 투자, 책임 있고 자원 효율적인 AI에 초점',
+        whyItMatters:
+          '人均 AI 研发投入达 139 美元，为美国 4 倍、中国 20 倍，标志 MDDI 从追赶转向以资本密度定义全球 AI 枢纽标准',
+        whyItMattersEn:
+          "Per capita AI R&D spending reaches US$139, four times that of the United States and twenty times that of China, marking MDDI's shift from catch-up to defining global AI hub standards through capital density",
+        whyItMattersJa:
+          '一人当たりの AI 研究開発投資が 139 米ドルに達し、これは米国の 4 倍、中国の 20 倍であり、MDDI が追い上げから資本密度によって世界 AI ハブ基準を定義することへの転換を示しています。',
+        whyItMattersKo:
+          '1인당 AI 연구개발 투입이 139달러에 달하며 미국의 4배, 중국의 20배를 기록하고 있으며, MDDI가 추격에서 자본 밀도로 글로벌 AI 허브 표준을 정의하는 방향으로 전환하고 있음을 표징합니다.',
         summaryJa:
           '10 億シンガポール・ドル（7.79 億米ドル）の公開 AI 研究投資。責任ある、リソース効率の高い AI に焦点を当てています。',
         content: `2026 年 1 月 24 日，数字发展与信息部宣布 2026-2030 年间投资超 10 亿新元（约 7.79 亿美元）用于公共 AI 研究。三大方向：一是"负责任和资源高效的 AI"研究，延续 AI Verify 等可信赖 AI 路线；二是全链条 AI 人才培养，从高中预科到大学教师培训；三是支持产业应用，缩短研究到商业化路径。这是继 2024 年 5 亿新元高性能计算资源投资后的又一重大投入，标志着新加坡从"试点探索"进入"规模化建设"阶段。人均 AI 投资达 139 美元，远高于美国（33 美元）和中国（7 美元）。`,
@@ -523,6 +563,13 @@ This is not just a regional-HQ story. It connects OpenAI’s deployment engineer
         summary: '升级版国家 AI 战略，提出 AI for Public Good、AI for Growth 双轨目标，确定九大优先领域。',
         summaryKo:
           '업그레이드된 국가 AI 전략으로, AI for Public Good, AI for Growth 이원 목표를 제시하고 9개 우선 영역을 확정합니다.',
+        whyItMatters: '拨款破 10 亿新元且医疗金融独占九大领域投资重心，标志 NAIS 从示范项目跃升国家级系统投入',
+        whyItMattersEn:
+          "Funding exceeds S$1 billion with healthcare and finance dominating nine major sectors of investment focus, marking NAIS's leap from demonstration projects to national-level systemic investment",
+        whyItMattersJa:
+          '予算配分が 10 億シンガポールドルを超え、医療とファイナンスが 9 つの主要領域の投資重点を独占し、NAIS がパイロットプロジェクトから国家レベルのシステム投資へと躍進したことを示しています。',
+        whyItMattersKo:
+          '기금 배정이 10억 싱가포르 달러를 초과하였고 의료와 금융이 9대 영역 투자 중심을 독점하고 있으며, NAIS가 시범 프로젝트에서 국가급 체계적 투입으로 도약하고 있음을 표징합니다.',
         summaryJa:
           '国家 AI 戦略の改定版。「AI for Public Good」「AI for Growth」の二本柱を掲げ、九つの重点領域を特定しています。',
         content: `NAIS 2.0 将 AI 战略从"重点应用"升级为"系统性赋能"。双轨目标：AI for Public Good 和 AI for Growth。涵盖十五大行动，追加拨款至 10 亿新元以上，建设国家 AI 计算基础设施。确定九大优先领域：交通物流、制造业、金融、安全、网络安全、智慧城市、医疗、教育和政府服务，其中医疗和金融科技获最高投资比重。`,
@@ -606,6 +653,13 @@ This is not just a regional-HQ story. It connects OpenAI’s deployment engineer
         summary: '数字基础设施升级蓝图，涵盖数字政府、数字经济、数字社会三大支柱。',
         summaryKo:
           '디지털 기초 인프라 업그레이드 청사진으로, 디지털 정부, 디지털 경제, 디지털 사회 3대 기둥을 포함합니다.',
+        whyItMatters: '蓝图公布满一年才拨款 1.2 亿新元、锁定五个项目，暴露新加坡 AI 战略愿景与落地之间的执行时滞',
+        whyItMattersEn:
+          "Only S$120 million was allocated to five locked-in projects one year after the blueprint's release, exposing the execution time lag between Singapore's AI strategic vision and implementation",
+        whyItMattersJa:
+          '青写真の公開から満一年が経ってようやく 1.2 億シンガポールドルが予算配分され、5 つのプロジェクトに限定されたことが、シンガポール AI 戦略の理想と実装の間の執行ラグを露呈しています。',
+        whyItMattersKo:
+          '청사진 공개 후 1년이 지나서야 싱가포르 달러 1억 2천만의 기금을 배정하고 5개 프로젝트를 확정했으며, 이는 싱가포르 AI 전략의 비전과 실행 사이의 실행 시차를 드러냅니다.',
         summaryJa: 'デジタル基盤施設のアップグレード計画。デジタル政府、デジタル経済、デジタル社会の三本柱を含みます。',
         content: `Smart Nation 2.0 是 2014 年智慧国家倡议的全面升级，于 2023 年 10 月发布。三大支柱：数字政府——推动政府服务全面数字化和 AI 化；数字经济——支持企业数字化转型和 AI 采纳；数字社会——确保全民具备数字素养，缩小数字鸿沟。2024 年 10 月启动具体落地计划，包括 1.2 亿新元 AI 应用基金，支持五大国家 AI 项目：智能货运规划、市政服务、慢性病预测与管理、个性化教育和边境清关。在基础设施层面，规划了国家级 AI 计算平台、数据共享基础设施和安全的数字身份体系。`,
         contentKo: `Smart Nation 2.0는 2014년의 스마트 싱가포르 이니셔티브의 전면적 업그레이드이며, 2023년 10월에 발표되었습니다. 3대 기둥: 디지털 정부—정부 서비스의 전면적 디지털화·AI화 추진; 디지털 경제—기업의 디지털 변혁 및 AI 도입 지원; 디지털 사회—국민 전체의 디지털 소양 보장 및 디지털 격차 축소. 2024년 10월에 1.2억 신원의 AI 애플리케이션 펀드를 포함한 구체적 실행 계획을 시작했으며, 5개 국가 AI 프로젝트를 지원합니다: 지능형 화물 운송 계획, 시정 서비스, 만성질환 예측 및 관리, 맞춤형 교육 및 국경 통관. 기초 인프라 차원에서는 국가급 AI 컴퓨팅 플랫폼, 데이터 공유 기초 인프라 및 안전한 디지털 신원 체계를 수립했습니다.`,
@@ -637,6 +691,14 @@ This is not just a regional-HQ story. It connects OpenAI’s deployment engineer
         translatedPdfUrl: '/pdfs/nais-1.0-zh.pdf',
         summary: '新加坡首份国家级 AI 战略，确立五大重点领域和三大推动力。',
         summaryKo: '싱가포르의 첫 국가급 AI 전략으로, 5대 중점 영역과 3대 추진력을 수립합니다.',
+        whyItMatters:
+          'AI Singapore 的 100 Experiments 计划由此发端，至今运行近七年，成为衡量新加坡 AI 战略能否落地的标尺',
+        whyItMattersEn:
+          "AI Singapore's 100 Experiments initiative originated from this; operating for nearly seven years, it has become the benchmark for measuring whether Singapore's AI strategy can be implemented",
+        whyItMattersJa:
+          'AI Singapore の 100 Experiments 計画がここから始まり、現在まで約 7 年間運営されており、シンガポール AI 戦略が実装可能かを測定するための物差しとなっています。',
+        whyItMattersKo:
+          'AI Singapore의 100 Experiments 계획이 이로부터 시작되었고, 지금까지 거의 7년간 운영되어 싱가포르 AI 전략의 실행 가능성을 측정하는 척도가 되었습니다.',
         summaryJa: 'シンガポール初の国家レベルの AI 戦略。五つの重点領域と三つの推進力を確立しています。',
         content: `NAIS 1.0 标志着 AI 从技术议题上升为国家战略。五大重点领域：智能交通与物流、智慧城市、医疗健康、教育、安全与保障。三大推动力：三重螺旋合作、AI 人才管道、数据架构与可信 AI。催生了 AI Singapore 项目和 100 Experiments 计划。`,
         contentKo: `NAIS 1.0는 AI가 기술 이슈에서 국가 전략으로 격상됨을 의미합니다. 5대 중점 영역: 지능형 교통·물류, 스마트 시티, 의료 건강, 교육, 안전 및 보장. 3대 추진력: 트리플 헬릭스 협력, AI 인재 파이프라인, 데이터 아키텍처 및 신뢰 AI. AI Singapore 프로젝트와 100 Experiments 계획을 낳았습니다.`,
@@ -677,6 +739,13 @@ This is not just a regional-HQ story. It connects OpenAI’s deployment engineer
         translatedPdfUrl: '/pdfs/smart-nation-initiative-zh.pdf',
         summary: '新加坡数字化转型总体框架，为后续 AI 战略奠定基础。',
         summaryKo: '싱가포르 디지털 전환 종합 프레임워크로 이후 AI 전략의 기초를 마련합니다.',
+        whyItMatters: '由总理办公室而非专责部门牵头，2014 年智慧国倡议把 AI 治理定位为国家统筹事项，而非部门级科技政策',
+        whyItMattersEn:
+          "Led by the Prime Minister's Office rather than a dedicated department, the 2014 Smart Nation initiative positioned AI governance as a national coordinated matter, not a departmental technology policy",
+        whyItMattersJa:
+          '首相官邸が専任部門ではなく主導し、2014 年のスマートネーション・イニシアティブが AI ガバナンスを省庁間調整事項として定位付け、省庁級科学技術政策ではなく国家レベルの事項としました。',
+        whyItMattersKo:
+          '총리 사무실이 전담 부처가 아닌 주도 기관으로서, 2014년 스마트 네이션 이니셔티브는 AI 거버넌스를 부처급 과학기술 정책이 아닌 국가 차원의 통합 조율 사항으로 정위했습니다.',
         summaryJa: 'シンガポールのデジタル変革全体フレームワーク。その後の AI 戦略の基礎を築いています。',
         content: `2014 年，新加坡总理李显龙宣布 Smart Nation Initiative，这是全面数字化转型的总体战略框架。核心目标包括利用数字技术改善市民生活、创造更多经济机会、建设更紧密联系的社区。虽非专门的 AI 政策，但为后续 AI 战略提供了制度基础和政策框架。`,
         contentKo: `2014년, 싱가포르 총리 Lee Hsien Loong이 Smart Nation Initiative를 발표했으며, 이는 포괄적 디지털 변혁의 종합 전략 프레임워크입니다. 핵심 목표는 디지털 기술을 활용하여 시민 생활을 개선하고, 더 많은 경제 기회를 창출하고, 더 긴밀하게 연결된 지역사회를 구축하는 것입니다. 비록 전문적인 AI 정책은 아니지만, 이후 AI 전략을 위한 제도적 기초 및 정책 프레임워크를 제공했습니다.`,
@@ -706,6 +775,14 @@ This is not just a regional-HQ story. It connects OpenAI’s deployment engineer
         sourceUrl: 'https://www.mindef.gov.sg/news-and-events/latest-releases/28oct22_speech',
         summary: 'SAF 第四军种成立——把 AI 与数字情报写进军种结构本身。',
         summaryKo: 'SAF 제4군종 설립—AI와 디지털 정보를 군종 구조 자체에 내재시킵니다.',
+        whyItMatters:
+          '与陆海空同级的第四军种，把 AI 决策支持写进编制而非项目清单，2025 年 DCCOM 与 SAFC4DC 的拆分说明这条路径仍在加码',
+        whyItMattersEn:
+          'As a fourth branch of service on par with land, sea, and air forces, AI decision support has been written into organizational structure rather than project lists; the 2025 split between DCCOM and SAFC4DC shows this pathway is still intensifying',
+        whyItMattersJa:
+          '陸海空と同等の第四の軍種として、AI 意思決定支援を事業項目ではなく組織編成に組み込み、2025 年の DCCOM と SAFC4DC の分割が、この路線がなお強化されていることを示しています。',
+        whyItMattersKo:
+          '육해공과 동급인 네 번째 군종으로서, AI 의사결정 지원을 프로젝트 목록이 아닌 조직 편성에 포함시켰으며, 2025년 DCCOM과 SAFC4DC의 분할은 이 경로가 여전히 강화되고 있음을 보여줍니다.',
         summaryJa: 'SAF 第四軍種の創設。AI とデジタル情報を軍種構造そのものに組み込みます。',
         content: `2022 年 10 月，新加坡国防部正式成立 SAF Digital and Intelligence Service (DIS)，作为陆军、海军、空军之外的第四军种，专责数字与情报作战、网络防御、AI 决策支持。2025 年 DIS 进一步重组为 DCCOM（数字网络指挥部）和 SAFC4DC（C4 与防务计算指挥部）两个司令部。这是新加坡国家级 AI-native 战略最深的结构性动作——把 AI 写进军种本身，而非作为某个部门的项目。配套：DIS × AI Singapore MoU、DIS Sentinel Programme + AI 课程、SAF Digital Range / CyTEC 升级。`,
         contentKo: `2022년 10월, 싱가포르 국방부는 공식적으로 SAF Digital and Intelligence Service(DIS)를 설립했으며, 육군, 해군, 공군 외의 제4군종으로서 디지털 및 정보 작전, 사이버 방위, AI 의사결정 지원을 담당합니다. 2025년 DIS는 DCCOM(디지털 네트워크 사령부)과 SAFC4DC(C4 및 방위 컴퓨팅 사령부) 두 사령부로 추가 개편되었습니다. 이것은 싱가포르 국가급 AI-네이티브 전략의 가장 깊은 구조적 조치입니다—AI를 특정 부서의 프로젝트가 아닌 군종 자체에 내재시킨 것입니다. 보완 사항: DIS × AI Singapore MoU, DIS Sentinel Programme + AI 교육과정, SAF Digital Range / CyTEC 업그레이드.`,
@@ -736,6 +813,14 @@ This is not just a regional-HQ story. It connects OpenAI’s deployment engineer
           'https://www.imda.gov.sg/resources/press-releases-factsheets-and-speeches/factsheets/2024/digital-trust-centre',
         summary: '前沿 AI 安全研究的国家级研究所，承担 Singapore Consensus 协调职能。',
         summaryKo: '선도적 AI 안전 연구의 국가급 연구소로 Singapore Consensus 협력 기능을 담당합니다.',
+        whyItMatters:
+          '新加坡没有新设监管机构，而是把拨款 S$5000 万的 DTC 直接升格为 AISI，说明新加坡押注研究话语权而非监管权，靠 Singapore Consensus 软法撬动全球议程',
+        whyItMattersEn:
+          "Singapore created no new regulatory body; instead, it upgraded the S$50 million DTC directly to AISI, showing Singapore's bet on research discourse authority rather than regulatory authority, leveraging Singapore Consensus soft law to move global agendas",
+        whyItMattersJa:
+          'シンガポールは新しい規制機関を設立せず、S$5000 万の予算配分を受けた DTC を直接 AISI に昇格させることで、規制権ではなく研究の言説権に賭けており、Singapore Consensus ソフトロー活用することでグローバルアジェンダを動かしていることを示しています。',
+        whyItMattersKo:
+          '싱가포르는 새로운 규제 기구를 설립하지 않고, 대신 싱가포르 달러 5천만 기금의 DTC를 AISI로 직접 격상시켰으며, 이는 싱가포르가 규제 권한이 아닌 연구 담론권에 베팅하고 있으며, Singapore Consensus 소프트 로를 통해 글로벌 의제를 견인하고 있음을 나타냅니다.',
         summaryJa: '最先端の AI 安全研究に関する国家レベルの研究所。Singapore Consensus の調整機能を担当しています。',
         content: `2024 年 5 月 22 日，IMDA 把数字信任中心（Digital Trust Centre，DTC）指定为新加坡 AI 安全研究所（AISI）。DTC 成立于 2022 年 6 月，由 IMDA 委托南洋理工大学（NTU）设立、Lam Kwok Yen 教授领衔，初始拨款 S$5,000 万，原本聚焦 AI 测试与隐私增强技术。指定为 AISI 后的分工是：DTC 承担技术研究与测评，IMDA 作为主管政府机构负责基线政策与国际对接。官方公布的四个初始研究方向是测试与评估、安全的模型设计与开发部署、内容保障、治理与政策。AISI 还作为 Singapore Consensus on Global AI Safety Research Priorities 的协调中心，并主办 International Scientific Exchange on AI Safety。官方口径中，Singapore Consensus 来自 2025 年 SCAI: ISE，汇集 11 个国家的 100+ 参与者形成“活文件”，2026 年 ISE 继续更新研究优先级；它不是“11 国签署”的政府间协议。AISI 是新加坡"用 0.07% 全球人口撬动 G7 级 AI 治理话语权"战略最关键的机构。`,
         contentKo: `2024년 5월 22일 IMDA는 디지털 신뢰 센터(Digital Trust Centre, DTC)를 싱가포르 AI 안전 연구소(AISI)로 지정했습니다. DTC는 2022년 6월에 설립되었으며, IMDA의 위탁으로 난양이공대학교(NTU)에 설치되어 Lam Kwok Yen 교수가 이끌었고 초기 자금은 S$5,000만이며, 원래는 AI 테스트와 프라이버시 강화 기술에 중점을 두었습니다. AISI 지정 이후 역할 분담은 DTC가 기술 연구와 평가를 맡고 IMDA가 주무 정부 기관으로서 기준 정책과 국제 협력을 담당하는 것입니다. 공식 발표된 네 가지 초기 연구 영역은 테스트 및 평가, 안전한 모델 설계·개발·배포, 콘텐츠 보증, 거버넌스 및 정책입니다. AISI는 Singapore Consensus on Global AI Safety Research Priorities의 조율 중심이며 International Scientific Exchange on AI Safety를 주최합니다. 공식 구도에서 Singapore Consensus는 2025년 SCAI: ISE에서 나왔고, 11개국의 100명 이상 참여자가 만든 “살아 있는 문서”이며, 2026년 ISE가 연구 우선순위를 계속 업데이트합니다. 이는 “11개국이 서명한” 정부 간 협정이 아닙니다. AISI는 싱가포르의 「0.07% 글로벌 인구로 G7급 AI 거버넌스 발언권을 활용하는」 전략의 가장 중요한 기관입니다.`,
@@ -767,6 +852,13 @@ This is not just a regional-HQ story. It connects OpenAI’s deployment engineer
           '新加坡智慧国家2.0战略旨在实现三个核心目标：信任、增长和社区。这些目标源于公民多年来通过调查、研究和反馈渠道提出的关键关切，反映了政府如何利用技术改善公民生活并为所有人创造繁荣数字未来的承诺。智慧国家2.0战略将随着数字发展的演进而不断迭代和调整。',
         summaryKo:
           '싱가포르 스마트 네이션 2.0 전략은 세 가지 핵심 목표를 달성하는 것을 목표로 합니다: 신뢰, 성장, 커뮤니티. 이러한 목표들은 시민들이 여러 해 동안 조사, 연구, 피드백 채널을 통해 제기한 핵심 관심사에서 비롯되었으며, 정부가 기술을 활용하여 시민의 삶을 개선하고 모든 사람을 위해 번영하는 디지털 미래를 만들겠다는 약속을 반영합니다. 스마트 네이션 2.0 전략은 디지털 발전의 진화에 따라 지속적으로 반복되고 조정될 것입니다.',
+        whyItMatters: 'SNDGO 将信任列为智慧国家 2.0 首要目标，标志着新加坡数字治理评判标准从效率优先转向信任优先',
+        whyItMattersEn:
+          "SNDGO placed trust as the primary goal of Smart Nation 2.0, marking Singapore's shift in digital governance evaluation criteria from efficiency-first to trust-first",
+        whyItMattersJa:
+          'SNDGO がスマートネーション 2.0 の最優先目標として信頼を掲げ、シンガポール デジタルガバナンスの評価基準が効率優先から信頼優先へと転換したことを示しています。',
+        whyItMattersKo:
+          'SNDGO는 신뢰를 스마트 국가 2.0의 주요 목표로 지정했으며, 이는 싱가포르의 디지털 거버넌스 평가 기준이 효율 우선에서 신뢰 우선으로 전환하고 있음을 표징합니다.',
         summaryJa:
           'シンガポールのスマート・ネーション 2.0 戦略は、三つの核心的な目標を達成することを目指しています：信頼、成長、コミュニティ。これらの目標は、長年にわたり調査、研究、フィードバックチャネルを通じて市民から提出された重要な懸念に基づいています。これはテクノロジーを活用して市民の生活を改善し、すべての人のための繁栄したデジタル未来を創造するという政府の約束を反映しています。スマート・ネーション 2.0 戦略は、デジタル発展の進化に伴い継続的に反復され、調整されます。',
         content: `新加坡智慧国家2.0战略旨在实现三个核心目标：信任、增长和社区。这些目标源于公民多年来通过调查、研究和反馈渠道提出的关键关切，反映了政府如何利用技术改善公民生活并为所有人创造繁荣数字未来的承诺。智慧国家2.0战略将随着数字发展的演进而不断迭代和调整。`,
@@ -810,6 +902,14 @@ This is not just a regional-HQ story. It connects OpenAI’s deployment engineer
           '拿个人数据训生成式 AI，同意书上必须说人话。PDPC 要求组织明确写出"用于开发或改进生成式 AI 模型"，不能藏在用户看不懂的宽泛描述里；同时覆盖 AI 价值链各方责任划分与公开数据的尽职调查义务。',
         summaryKo:
           '개인정보로 생성형 AI를 훈련하려면 동의서에 알기 쉽게 써야 합니다. PDPC는 조직이 「생성형 AI 모델의 개발 또는 개선에 사용」한다고 명시적으로 밝히고, 사용자가 이해하기 어려운 광범위한 설명 뒤에 숨기지 말 것을 요구합니다. 또한 AI 밸류체인 각 주체의 책임 구분과 공개 데이터 사용 시의 실사 의무도 다룹니다.',
+        whyItMatters:
+          'PDPC 明确不新增义务,靠具体化同意要求划红线,同日与 IMDA 发布聊天机器人信息卡,印证新加坡软法先行、不设专门 AI 法的监管路线',
+        whyItMattersEn:
+          "PDPC explicitly adds no new obligations, draws red lines through concrete consent requirements, and on the same day released a chatbot information card with IMDA, confirming Singapore's soft law-first regulatory approach without dedicated AI legislation",
+        whyItMattersJa:
+          'PDPC は新しい義務を追加しないことを明確にし、同意要件の具体化により一線を引き、同日に IMDA とともにチャットボット情報カードを発表することで、シンガポールのソフトロー先行・専門 AI 法不要の規制路線を示しています。',
+        whyItMattersKo:
+          'PDPC는 새로운 의무를 추가하지 않으며, 동의 요구를 구체화하여 경계를 설정하고, 같은 날 IMDA와 챗봇 정보 카드를 발표했으며, 이는 싱가포르가 별도의 AI 법을 설립하지 않고 소프트 로 선행 규제 경로를 추진하고 있음을 증명합니다.',
         summaryJa:
           '個人データで生成 AI を訓練するなら、同意書に平易な言葉で書かねばならない。PDPC は組織に対し「生成 AI モデルの開発または改善に使用する」と明示的に述べることを求め、利用者が理解できない広範な記述の陰に隠すことを認めない。あわせて AI バリューチェーン各当事者の責任分担と、公開データ利用時のデューデリジェンス義務も扱う。',
         summaryEn:
@@ -885,6 +985,14 @@ The same day, IMDA launched Generative AI Chatbot Transparency Guidelines callin
           '给聊天机器人配一张"药品说明书"。IMDA 提出聊天机器人信息卡（Chatbot Information Card），把用途、局限、数据处理与申诉渠道集中披露，取代散落在服务条款与隐私声明里、要么太简化要么太技术的现状。',
         summaryKo:
           '챗봇에 「의약품 설명서」를 붙입니다. IMDA는 챗봇 정보 카드(Chatbot Information Card)를 제안하여 용도, 한계, 데이터 처리, 구제 경로를 한곳에 공개하도록 하며, 서비스 약관과 개인정보 처리방침에 흩어져 있고 지나치게 단순하거나 지나치게 기술적인 현재 상황을 대체합니다.',
+        whyItMatters:
+          '与 PDPC 同日推出但不具强制力，延续 AI Verify 路数，显示新加坡生成式 AI 治理仍选择自愿框架而非立法',
+        whyItMattersEn:
+          "Launched on the same day as PDPC but lacking binding force, continuing the AI Verify approach, showing Singapore's generative AI governance still chooses a voluntary framework over legislation",
+        whyItMattersJa:
+          'PDPC と同日に発表されたが拘束力を持たず、AI Verify のアプローチを継続し、シンガポールの生成型 AI ガバナンスが自主的フレームワークを選択し、立法に頼らないアプローチを継続していることを示しています。',
+        whyItMattersKo:
+          'PDPC와 같은 날 출시되었지만 강제력이 없으며, AI Verify 노선을 이어가고 있으며, 싱가포르의 생성형 AI 거버넌스가 입법이 아닌 자발적 프레임워크를 계속 선택하고 있음을 나타냅니다.',
         summaryJa:
           'チャットボットに「医薬品添付文書」を付ける。IMDA はチャットボット情報カード (Chatbot Information Card) を提唱し、用途、限界、データの取り扱い、救済経路を一箇所に開示させ、利用規約やプライバシー通知に散在し、簡略すぎるか技術的すぎる現状を置き換える。',
         summaryEn:
@@ -949,6 +1057,14 @@ It also continues Singapore's consistent pattern: start with a voluntary, operat
           'https://www.imda.gov.sg/resources/press-releases-factsheets-and-speeches/press-releases/2026/singapore-champions-new-global-ai-testing-standardisation-efforts',
         summary: '新加坡在第 17 届 ISO/IEC JTC 1/SC 42 全会提交的全球首个生成式 AI 测试国际标准草案。',
         summaryKo: '싱가포르가 제17회 ISO/IEC JTC 1/SC 42 전회에 제출한 글로벌 최초의 생성형 AI 테스팅 국제 표준 초안.',
+        whyItMatters:
+          '新加坡抢先提交 ISO/IEC 42119-8 草案，把 IMDA 的国内测试工具经验前置为全球生成式 AI 测试规则的起草权',
+        whyItMattersEn:
+          "Singapore took the lead in submitting the ISO/IEC 42119-8 draft, positioning IMDA's domestic testing tool experience ahead as drafting authority for global generative AI testing rules",
+        whyItMattersJa:
+          'シンガポールが先制的に ISO/IEC 42119-8 の草案を提出することで、IMDA の国内テストツール経験をグローバル生成型 AI テスト規則の規範としています。',
+        whyItMattersKo:
+          '싱가포르가 ISO/IEC 42119-8 초안을 선제적으로 제출했으며, IMDA의 국내 테스트 도구 경험을 글로벌 생성형 AI 테스트 규칙의 기안 권한으로 활용했습니다.',
         summaryJa:
           'シンガポールが第 17 回 ISO/IEC JTC 1/SC 42 全体会議で提出した、生成 AI テストに関する世界初の国際標準案。',
         content: `2026 年 4 月 20 日，第 17 届 ISO/IEC JTC 1/SC 42 全体会议在新加坡开幕（首次在东盟举办，由 IMDA 与 Enterprise Singapore 联合主办，35+ 国家、250+ 专家参与）。新加坡正式提交 **ISO/IEC 42119-8** 标准草案——如果通过，这将是全球首个针对生成式 AI 系统的国际测试标准。
@@ -1023,6 +1139,13 @@ ISO standards typically take years from proposal to publication. But once a prop
           'IMDA 于 2026 年 1 月在达沃斯发布全球首个 Agentic AI 治理框架，并在 2026 年 5 月加入 60+ 机构反馈与 10+ 真实部署案例。',
         summaryKo:
           'IMDA는 2026년 1월 다보스에서 세계 최초의 Agentic AI 거버넌스 프레임워크를 발표했고, 2026년 5월 60개 이상의 기관 피드백과 10개 이상의 실제 배포 사례를 추가했습니다.',
+        whyItMatters: '从达沃斯首发到 60+ 机构、10+ 案例背书，IMDA 想让新加坡框架成为全球 agentic AI 治理的事实标准',
+        whyItMattersEn:
+          "From its debut in Davos to endorsement by 60+ institutions and 10+ cases, IMDA aims to make Singapore's framework the de facto standard for global agentic AI governance",
+        whyItMattersJa:
+          'ダボスでの初回発表から 60 以上の機関、10 以上のケース事例の支持を経て、IMDA はシンガポール・フレームワークをグローバル agentic AI ガバナンスの事実上の標準にしようとしています。',
+        whyItMattersKo:
+          '다보스에서의 첫 공개에서 60개 이상의 기관과 10개 이상의 사례 지지까지, IMDA는 싱가포르 프레임워크를 글로벌 agentic AI 거버넌스의 사실상 표준으로 삼으려고 합니다.',
         summaryJa:
           'IMDA は 2026 年 1 月にダボスで世界初の Agentic AI ガバナンスフレームワークを発表し、2026 年 5 月に 60 以上の組織からのフィードバックと 10 以上の実導入事例を追加しました。',
         content: `IMDA 于 2026 年 1 月在世界经济论坛发布 Model AI Governance Framework for Agentic AI，2026 年 5 月 20 日在 ATxSummit 更新版本。
@@ -1084,6 +1207,14 @@ The framework continues to stress that AI agents can raise productivity, but hum
           'Google 与新加坡政府在 2025 年 8 月启动全球首个 AI Agents Sandbox，2026 年 5 月发布白皮书，验证 computer-use agents 在公共服务场景中的机会和风险。',
         summaryKo:
           'Google과 싱가포르 정부는 2025년 8월 세계 최초의 AI Agents Sandbox를 시작했고, 2026년 5월 백서를 발표해 공공 서비스 현장에서 computer-use agents의 기회와 위험을 검증했습니다.',
+        whyItMatters:
+          '全球首个政府级 AI Agents Sandbox 与 Agentic AI Governance Framework 同日配套，实测揭示间接提示注入等风险仍待真实场景验证',
+        whyItMattersEn:
+          "The world's first government-level AI Agents Sandbox and Agentic AI Governance Framework launched on the same day; real-world testing reveals risks like indirect prompt injection still await validation in authentic scenarios",
+        whyItMattersJa:
+          '世界初の政府レベル AI Agents Sandbox と Agentic AI Governance Framework が同日に統合実装され、実地テストが間接プロンプト注入などのリスクがなお実環境での検証を待つ状態であることを明らかにしています。',
+        whyItMattersKo:
+          '글로벌 첫 번째 정부급 AI Agents Sandbox와 Agentic AI Governance Framework이 같은 날 함께 제공되며, 실제 테스트는 간접 프롬프트 주입 등의 위험이 여전히 실제 시나리오의 검증이 필요함을 드러냅니다.',
         summaryJa:
           'Google とシンガポール政府は 2025 年 8 月に世界初の AI Agents Sandbox を開始し、2026 年 5 月にホワイトペーパーを発表。公共サービスにおける computer-use agents の機会とリスクを検証しました。',
         summaryEn:
@@ -1145,6 +1276,14 @@ The official risk themes include human oversight, customisation and control, cyb
           'AI Verify Foundation 推出亚洲首个 AI 测试服务商认可计划，预计 2026 年第三季度开放申请，目标是建立可信 AI assurance 市场。',
         summaryKo:
           'AI Verify Foundation은 아시아 최초의 AI 테스트 서비스 업체 인정 프로그램을 추진하며, 2026년 3분기 신청을 열 예정입니다. 목표는 신뢰 가능한 AI assurance 시장을 구축하는 것입니다.',
+        whyItMatters:
+          'AI TAP 亚洲首创测试商认可制度,标志新加坡从治理原则转向经营认证市场,2026 年 Q3 开放申请将检验这套先发模式能否变现为区域标准',
+        whyItMattersEn:
+          "AI TAP pioneered Asia's testing provider certification scheme, marking Singapore's shift from governance principles to operating a certification market; opening applications in Q3 2026 will test whether this first-mover model can translate into a regional standard",
+        whyItMattersJa:
+          'AI TAP はアジア初の試験事業者認可制度であり、シンガポールがガバナンス原則から認証市場の運営へと転換したことを示し、2026 年 Q3 の申請開放がこの先発モデルを地域標準として確立できるかを検証します。',
+        whyItMattersKo:
+          'AI TAP는 아시아 첫 창안의 테스트 사업자 인정 제도이며, 싱가포르가 거버넌스 원칙에서 인증 시장 운영으로 전환하고 있음을 표징하며, 2026년 Q3 신청 개방은 이 선도 모델이 지역 표준으로 현실화될 수 있는지를 검증할 것입니다.',
         summaryJa:
           'AI Verify Foundation はアジア初の AI テストサービス事業者認定プログラムを開始予定。申請開始は 2026 年第 3 四半期見込みで、信頼できる AI assurance 市場の形成を狙います。',
         summaryEn:
@@ -1193,6 +1332,13 @@ Strategically, this moves AI Verify from tools and frameworks into market infras
         translatedPdfUrl: '/pdfs/genai-governance-zh.pdf',
         summary: '专门针对生成式 AI 的治理框架提案，应对大模型带来的新挑战。',
         summaryKo: '생성형 AI에 특화된 거버넌스 프레임워크 제안으로 대규모 모델이 가져오는 새로운 과제에 대응합니다.',
+        whyItMatters: 'IMDA 用九维度沙盒框架抢先卡位生成式 AI 治理，2024 年 1 月以软法先行，为后续强制立法预留缓冲',
+        whyItMattersEn:
+          'IMDA seized the position in generative AI governance with a nine-dimension sandbox framework, advancing soft law in January 2024 and preserving buffer space for subsequent mandatory legislation',
+        whyItMattersJa:
+          'IMDA は 9 次元のサンドボックス・フレームワークで生成型 AI ガバナンスに先制的にポジションを獲得し、2024 年 1 月にソフトロー先行アプローチを採用し、その後の義務的立法のための緩衝を確保しています。',
+        whyItMattersKo:
+          'IMDA가 9개 차원의 샌드박스 프레임워크로 생성형 AI 거버넌스의 위치를 선제적으로 확보했으며, 2024년 1월 소프트 로 선행으로 후속 강제 입법을 위한 완충 공간을 확보했습니다.',
         summaryJa:
           '生成 AI に特化したガバナンスフレームワークの提案。大規模言語モデルがもたらす新たな課題に対応します。',
         content: `全球较早的专门针对生成式 AI 的治理框架提案。九大维度：问责制、数据治理、可信开发与部署、事件报告、测试与保证、安全、内容来源、使用者素养、辅助措施。采用多利益相关方方法，强调"沙盒式"治理。`,
@@ -1233,6 +1379,14 @@ Strategically, this moves AI Verify from tools and frameworks into market infras
         summary: '全球首个 AI 治理测试框架和工具包，支持企业自测 AI 系统合规性。',
         summaryKo:
           '글로벌 최초의 AI 거버넌스 테스팅 프레임워크 및 툴킷으로 기업이 AI 시스템의 규정 준수 여부를 자체 테스트할 수 있도록 지원합니다.',
+        whyItMatters:
+          '2022 年抢先于欧盟 AI 法案落地自测式治理工具，新加坡借 2023 年 AI Verify Foundation 把轻监管模式输出为全球范本',
+        whyItMattersEn:
+          'Singapore deployed self-testing governance tools ahead of the EU AI Act in 2022; through the 2023 AI Verify Foundation, it exported its light-handed regulatory model as a global reference',
+        whyItMattersJa:
+          '2022 年に欧盟の AI 法案に先立ち自己試験型ガバナンスツールを実装し、シンガポールは 2023 年の AI Verify Foundation を通じてライトタッチ規制モデルをグローバルスタンダードとして輸出しました。',
+        whyItMattersKo:
+          '2022년 유럽연합 AI 법안보다 먼저 자가 평가식 거버넌스 도구를 시행했으며, 싱가포르는 2023년 AI Verify Foundation을 통해 경량 규제 모델을 글로벌 모범으로 수출했습니다.',
         summaryJa:
           'AI ガバナンステストフレームワークとツールキットの世界初。企業が AI システムのコンプライアンスを自己テストすることをサポートします。',
         content: `全球首个 AI 治理测试框架与工具包。11 项可测试指标，开源工具包，与国际标准对齐。2023 年成立 AI Verify Foundation 推动全球协作。将 AI 治理从"原则"推向"可操作"。`,
@@ -1267,6 +1421,13 @@ Strategically, this moves AI Verify from tools and frameworks into market infras
         summary: '亚洲首个 AI 治理框架，提出可解释、透明、以人为本的 AI 治理原则。',
         summaryKo:
           '아시아 최초의 AI 거버넌스 프레임워크로, 해석 가능성, 투명성, 인간 중심의 AI 거버넌스 원칙을 제시합니다.',
+        whyItMatters: '2019 年 IMDA 抢先亚洲立规，以自愿框架而非立法定调，为新加坡赢得国际标准制定话语权',
+        whyItMattersEn:
+          "In 2019, IMDA pioneered regulation across Asia, anchoring it in a voluntary framework rather than legislation, earning Singapore's voice in international standard-setting",
+        whyItMattersJa:
+          '2019 年に IMDA がアジアで先制的に規制を確立し、立法ではなく自主的フレームワークを採用し、シンガポールが国際標準制定の言説権を獲得しました。',
+        whyItMattersKo:
+          '2019년 IMDA가 아시아에서 선제적으로 규칙을 수립했으며, 입법이 아닌 자발적 프레임워크로 톤을 설정하여, 싱가포르가 국제 표준 제정 발언권을 획득했습니다.',
         summaryJa:
           'アジア初の AI ガバナンスフレームワーク。解釈可能性、透明性、人間中心の AI ガバナンス原則を提唱しています。',
         content: `2019 年在达沃斯发布，亚洲首个 AI 治理框架。四大核心原则：内部治理结构与措施、决策中的人类参与、运营管理、利益相关方互动与沟通。被 OECD 引用为最佳实践。`,
@@ -1305,6 +1466,14 @@ Strategically, this moves AI Verify from tools and frameworks into market infras
         translatedPdfUrl: '/pdfs/pdpa-zh.pdf',
         summary: '新加坡核心数据保护法律，2020 年修订加入 AI 相关条款。',
         summaryKo: '싱가포르 핵심 데이터 보호 법률로, 2020년 수정 시 AI 관련 조항이 추가되었습니다.',
+        whyItMatters:
+          '新加坡没有专门 AI 立法，2020 年修订的 PDPA 合法利益例外条款成了生成式 AI 训练数据合规的唯一硬法依据',
+        whyItMattersEn:
+          'Singapore has no dedicated AI legislation; the legitimate interest exception clause in the 2020 revised PDPA became the sole hard law basis for generative AI training data compliance',
+        whyItMattersJa:
+          'シンガポールには専門的な AI 立法がなく、2020 年に改正された PDPA の正当な利益例外条項が、生成型 AI トレーニングデータコンプライアンスの唯一のハードロー基礎となっています。',
+        whyItMattersKo:
+          '싱가포르는 전문적인 AI 입법이 없으며, 2020년 개정된 PDPA의 합법 이익 예외 조항이 생성형 AI 훈련 데이터 준수의 유일한 강제법 근거가 되었습니다.',
         summaryJa: 'シンガポールの中心的なデータ保護法。2020 年の改正では AI 関連条項が追加されました。',
         content: `核心数据保护法律，2012 年通过，2020 年重大修订。引入合法利益例外（Business Improvement Exception）、数据可携带权、加强执法力度。为 AI 数据使用划定法律边界。`,
         contentKo: `핵심 데이터 보호 법률로, 2012년에 통과하고 2020년에 중대 개정되었습니다. 정당한 이익 예외(Business Improvement Exception), 데이터 이동권, 집행력 강화가 도입되었으며, AI 데이터 사용에 대한 법적 경계를 설정합니다.`,
@@ -1348,6 +1517,14 @@ Strategically, this moves AI Verify from tools and frameworks into market infras
         summary: 'GenAI 在金融业的风险框架，24 家机构 + 四大云厂商（Microsoft / AWS / Google / NVIDIA）共建。',
         summaryKo:
           '금융업의 GenAI 위험 프레임워크로, 24개 기관 + 4대 클라우드 기업(Microsoft / AWS / Google / NVIDIA)이 함께 구축했습니다.',
+        whyItMatters:
+          'MindForge 让 MAS 与 24 家机构、四大云厂商同桌共写规则，标志新加坡金融 AI 监管从事后问责转向供应链共治',
+        whyItMattersEn:
+          "MindForge brought MAS, 24 institutions, and four major cloud providers to co-author rules at one table, marking Singapore's financial AI regulation's shift from ex-post accountability to supply-chain co-governance",
+        whyItMattersJa:
+          'MindForge は MAS と 24 の機関、4 大クラウドベンダーが同じテーブルに着いて規則を共同作成し、シンガポール金融 AI 規制が事後的責任追及から供給チェーン共治へと転換したことを示しています。',
+        whyItMattersKo:
+          'MindForge는 MAS와 24개 기관, 4대 클라우드 벤더가 같은 테이블에서 규칙을 공동으로 작성하게 했으며, 싱가포르 금융 AI 규제가 사후 책임 추궁에서 공급망 공동 관리로 전환하고 있음을 표징합니다.',
         summaryJa:
           'GenAI の金融業界向けリスクフレームワーク。24 の機関とメジャー 4 クラウドプロバイダー（Microsoft / AWS / Google / NVIDIA）が共同構築。',
         content: `Project MindForge 是 MAS 主导的金融业 GenAI 风险框架，于 2024 年启动。Consortium 成员包括 24 家金融机构（DBS、UOB、OCBC、HSBC、JPMorgan 等）+ 四大云与 AI 厂商（Microsoft、AWS、Google、NVIDIA）+ 监管机构。框架围绕七大风险维度：模型幻觉、数据泄露、偏差与公平、供应链依赖、可解释性、对抗性攻击、责任分配。MindForge 的特殊之处在于让监管机构、被监管金融机构、技术供应商三方在同一桌上协调——这是新加坡 AI 治理"训练宽松 + 输出严管"哲学在金融业的具体落地，也是 FEAT → Veritas → MindForge → BuildFin.ai 五层堆栈中第三层。`,
@@ -1378,6 +1555,14 @@ Strategically, this moves AI Verify from tools and frameworks into market infras
         sourceUrl: 'https://www.mas.gov.sg/regulation/notices/notice-fsm-n29',
         summary: '金融业 AI 模型风险管理的监管期望书，正式约束银行使用 AI。',
         summaryKo: '금융업 AI 모델 위험 관리에 대한 규제 기대 문서로, 은행의 AI 사용을 정식으로 제약합니다.',
+        whyItMatters:
+          'MAS 把多年自愿性监管指引升级为强制规范，银行第三方 AI 风险和模型漂移从此有法可依，问责压力将传导至云厂商与模型供应商',
+        whyItMattersEn:
+          'MAS upgraded years of voluntary supervisory guidance to mandatory standards; third-party AI risks and model drift in banks now have legal basis, with accountability pressure flowing to cloud providers and model suppliers',
+        whyItMattersJa:
+          'MAS が多年の自主的規制ガイダンスを義務的規範にアップグレードし、銀行の第三者 AI リスクとモデルドリフトが法的根拠を持つようになり、責任追及の圧力がクラウドベンダーとモデルサプライヤーに伝播します。',
+        whyItMattersKo:
+          'MAS는 여러 해의 자발적 규제 지침을 강제 규범으로 업그레이드했으며, 은행의 제3자 AI 위험과 모델 드리프트에 대한 법적 근거가 마련되었고, 책임 추궁 압박이 클라우드 벤더와 모델 공급업체로 전달될 것입니다.',
         summaryJa: '金融業の AI モデルリスク管理に関する監督期待書。銀行の AI 使用を正式に拘束します。',
         content: `MAS 于 2024 年 12 月发布 AI Risk Management Guidelines，把 FEAT / Veritas / MindForge 多年累积的实践经验固化为正式监管期望书。覆盖：模型治理（数据、训练、验证、上线）、第三方 AI 风险（云厂商、模型供应商、API）、模型监控（漂移、偏差、性能）、人在回路、事件应对与责任。配套 BuildFin.ai 平台让被监管机构能持续测试和报告。这是全球首批专门针对银行业 AI 的监管文件，比欧盟 AI Act 金融条款落地更快。`,
         contentKo: `MAS는 2024년 12월 AI Risk Management Guidelines를 발표했으며, FEAT / Veritas / MindForge 다년간 축적된 실무 경험을 정식 규제 기대 문서로 확립했습니다. 모델 거버넌스(데이터, 훈련, 검증, 배포), 제3자 AI 위험(클라우드 기업, 모델 공급업체, API), 모델 모니터링(드리프트, 편향, 성능), 휴먼 인더 루프, 사건 대응 및 책임을 포함합니다. BuildFin.ai 플랫폼과 함께 규제 대상 기관이 지속적으로 테스트하고 보고할 수 있습니다. 이것은 은행업 AI를 위한 첫 번째 전문 규제 문서로, 유럽연합 AI Act 금융 조항보다 더 빠르게 시행되었습니다.`,
@@ -1415,6 +1600,14 @@ Strategically, this moves AI Verify from tools and frameworks into market infras
         contentJa: `シンガポールのデジタル開発・情報省の政務大臣が、オンライン安全とデジタルリテラシーに関する政府の包括的な戦略について説明しています。主要な施策には、「オンライン安全（救済と説明責任）法」に基づくオンライン安全委員会の設立と被害者支援、アプリケーションストアとソーシャルメディアサービスへの年齢認証措置の実施、学校カリキュラムへの人工知能リテラシー統合（「Code for Fun」プログラムの更新を含む）、および低所得家庭、高齢者、身体障害者などの脆弱な層へのデジタル学習支援の提供が含まれます。政府は「デジタル優先、ただしデジタルのみではない」というアプローチを採用することで、包括的な発展を確保することを強調しています。`,
         summaryKo:
           '싱가포르 디지털 발전 및 정보부 정무차관이 온라인 안전 및 디지털 문해력 분야에서 정부의 종합 전략을 설명했습니다. 주요 조치에는 「온라인 안전(구제 및 책임)법」에 따른 온라인 안전 위원회 설립 및 피해자 지원, 앱 스토어 및 소셜 미디어 서비스에 대한 연령 검증 조치 시행, 「Code for Fun」 프로그램 업데이트를 포함하는 학교 교육과정으로의 인공지능 문해력 통합, 그리고 저소득 가정, 노인, 장애인 등 취약 계층에 대한 디지털 학습 지원 제공이 포함됩니다. 정부는 포용적 발전을 보장하기 위해 「디지털 우선이지만 디지털만이 아닌」 방식 채택을 강조했습니다.',
+        whyItMatters:
+          '《在线安全（救济与问责）法》设立在线安全委员会，标志着平台监管从自律倡导转向法定强制，为未来 AI 监管提供先例',
+        whyItMattersEn:
+          'The Online Safety (Remedies and Accountability) Act established an Online Safety Council, marking the shift in platform regulation from self-regulatory advocacy to statutory mandate, setting a precedent for future AI governance',
+        whyItMattersJa:
+          '『オンライン安全（救済と説明責任）法』はオンライン安全委員会を設立し、プラットフォーム規制が自律的提唱から法定強制へと転換し、将来の AI 規制に先例を提供することを示しています。',
+        whyItMattersKo:
+          '온라인 안전(구제 및 책임 추궁) 법이 온라인 안전 위원회를 설립했으며, 이는 플랫폼 규제가 자율 권장에서 법정 강제로 전환되고 있음을 표시하며, 미래 AI 규제에 대한 선례를 제공합니다.',
         contentKo: `싱가포르 디지털 발전 및 정보부 정무차관이 온라인 안전 및 디지털 문해력 분야에서 정부의 종합 전략을 설명했습니다. 주요 조치에는 「온라인 안전(구제 및 책임)법」에 따른 온라인 안전 위원회 설립 및 피해자 지원, 앱 스토어 및 소셜 미디어 서비스에 대한 연령 검증 조치 시행, 「Code for Fun」 프로그램 업데이트를 포함하는 학교 교육과정으로의 인공지능 문해력 통합, 그리고 저소득 가정, 노인, 장애인 등 취약 계층에 대한 디지털 학습 지원 제공이 포함됩니다. 정부는 포용적 발전을 보장하기 위해 「디지털 우선이지만 디지털만이 아닌」 방식 채택을 강조했습니다.`,
         sourceEn: 'Ministry of Digital Development and Information (MDDI)',
         sourceJa: 'デジタル開発情報省 (MDDI)',
@@ -1454,6 +1647,14 @@ Strategically, this moves AI Verify from tools and frameworks into market infras
           '给数据中心和云服务发牌照——AI 算力底座第一次被纳入硬法监管。≥10MW 数据中心与年收入 ≥S$1 亿的 IaaS/PaaS 云服务须申请「重大 FDI 牌照」，≥3MW 数据中心须申请「数据中心牌照」并满足强制 PUE 能效门槛。咨询期 2026 年 7 月 1 日至 7 月 22 日。',
         summaryKo:
           '데이터 센터와 클라우드 서비스에 라이선스를 부여합니다——AI 컴퓨팅 기반이 처음으로 강행법 규제에 편입되었습니다. ≥10MW 데이터 센터와 연간 매출 ≥S$1억의 IaaS/PaaS 클라우드 서비스는 「주요 FDI 라이선스」를 신청해야 하며, ≥3MW 데이터 센터는 「데이터 센터 라이선스」를 신청하고 강제 PUE 에너지 효율 기준을 충족해야 합니다. 협의 기간은 2026년 7월 1일부터 7월 22일까지입니다.',
+        whyItMatters:
+          'DIB 首次把 ≥10MW 数据中心和云服务纳入发牌监管，证明新加坡治理 AI 的路径是管基础设施而非管模型，能效门槛也从自愿转为强制',
+        whyItMattersEn:
+          "For the first time, DIB brought data centres of ≥10MW capacity and cloud services into licensing regulation, proving Singapore's AI governance pathway manages infrastructure rather than models, with energy efficiency thresholds shifting from voluntary to mandatory",
+        whyItMattersJa:
+          'DIB が初めて ≥10MW のデータセンターとクラウドサービスをライセンス規制に組み入れることで、シンガポールが AI を治理する方法がモデル管理ではなくインフラストラクチャ管理であることを証明し、エネルギー効率の基準も自主的から義務的へと転換したことを示しています。',
+        whyItMattersKo:
+          'DIB이 처음으로 ≥10MW 데이터센터와 클라우드 서비스를 인허가 규제에 포함시켰으며, 이는 싱가포르의 AI 거버넌스 경로가 모델 관리가 아닌 기반 시설 관리임을 증명하며, 에너지 효율 기준도 자발적에서 강제로 전환되었습니다.',
         summaryJa:
           'データセンターとクラウドサービスにライセンスを付与する——AI コンピューティング基盤が初めて強行法規制に組み込まれた。≥10MW のデータセンターと年間収益 ≥S$1 億の IaaS/PaaS クラウドサービスは「主要 FDI ライセンス」の申請が必要で、≥3MW のデータセンターは「データセンターライセンス」を申請し、強制 PUE エネルギー効率基準を満たす必要がある。コンサルテーション期間は 2026 年 7 月 1 日から 7 月 22 日まで。',
         summaryEn:
@@ -1517,6 +1718,14 @@ Strategically, this moves AI Verify from tools and frameworks into market infras
         sourceUrl: 'https://www.moh.gov.sg/licensing-and-regulation/artificial-intelligence-in-healthcare',
         summary: '面向医院、医生与 AI 开发者的医疗 AI 安全使用与良好实践指南。',
         summaryKo: '병원, 의사, AI 개발자를 대상으로 하는 의료 AI 안전 사용 및 모범 사례 지침입니다.',
+        whyItMatters:
+          'AIHGle 发布于 2021 年 10 月，比 ChatGPT 问世早一年多，新加坡医疗 AI 合规框架属于提前布局而非事后补课',
+        whyItMattersEn:
+          "AIHGle was released in October 2021, more than a year before ChatGPT's debut, positioning Singapore's healthcare AI compliance framework as proactive planning rather than after-the-fact remediation",
+        whyItMattersJa:
+          'AIHGle は 2021 年 10 月に発表され、ChatGPT の登場より 1 年以上早く、シンガポールの医療 AI コンプライアンスフレームワークは事前配置であり事後的補正ではありません。',
+        whyItMattersKo:
+          'AIHGle은 2021년 10월에 발표되었으며, ChatGPT 출시보다 1년 이상 빨랐으며, 싱가포르의 의료 AI 컴플라이언스 프레임워크는 뒤늦은 대응이 아닌 사전 배치에 해당합니다.',
         summaryJa: '病院、医師、AI 開発者向けの医療 AI の安全な使用とベストプラクティスガイドライン。',
         content: `Artificial Intelligence in Healthcare Guidelines (AIHGle) 于 2021 年 10 月由卫生部 (MOH)、卫生科学局 (HSA) 与当时的 Integrated Health Information Systems (IHiS，2023 年改组为 Synapxe) 联合发布，是新加坡医疗 AI 的核心非约束性指南。两个目标：一是支持安全有效的医疗 AI 部署，二是补充 HSA 对 AI-Medical Devices (AI-MD) 的硬性监管要求。覆盖 AI 开发者与医疗机构两侧的全生命周期：开发阶段的临床有效性证据要求、部署阶段的临床工作流融入与人在回路、上线后的持续监控与不良事件报告、患者沟通与知情同意。AIHGle 与 HSA 基于 Health Products Act 的医疗器械注册要求形成"软指南 + 硬法"双层结构，是 ACE-AI、Synapxe AI 平台等国家级医疗 AI 项目的合规底座。`,
         contentKo: `Artificial Intelligence in Healthcare Guidelines (AIHGle)은 2021년 10월 보건부(MOH), 보건과학청(HSA) 및 당시의 Integrated Health Information Systems(IHiS, 2023년 Synapxe로 개편)에 의해 공동 발표되었으며, 싱가포르 의료 AI의 핵심 비구속 지침입니다. 두 가지 목표가 있습니다: 첫째는 안전하고 효과적인 의료 AI 배포를 지원하는 것이고, 둘째는 HSA의 AI-Medical Devices(AI-MD)에 대한 강제적 규제 요구 사항을 보충하는 것입니다. AI 개발자와 의료 기관 양측의 전체 생명 주기를 포함합니다: 개발 단계의 임상 유효성 증거 요구 사항, 배포 단계의 임상 워크플로우 통합 및 휴먼 인더 루프, 출시 후의 지속적인 모니터링 및 유해 사건 보고, 환자 커뮤니케이션 및 정보 동의. AIHGle과 HSA는 Health Products Act에 기반한 의료 기기 등록 요구 사항을 통해 「소프트 지침 + 하드 법」 이중 구조를 형성하며, ACE-AI, Synapxe AI 플랫폼 등 국가 수준의 의료 AI 프로젝트를 위한 컴플라이언스 기반입니다.`,
@@ -1546,6 +1755,13 @@ Strategically, this moves AI Verify from tools and frameworks into market infras
         sourceUrl: 'https://www.hsa.gov.sg/medical-devices/regulatory-overview',
         summary: '含 AI 的医疗器械须在 HSA 注册——硬法层面的医疗 AI 准入门槛。',
         summaryKo: 'AI가 포함된 의료 기기는 HSA에 등록해야 합니다——강제법 수준의 의료 AI 접근 기준입니다.',
+        whyItMatters: 'HSA 用 2007 年旧法把 AI-MD 纳入监管，印证新加坡以修法而非新增专门 AI 法应对高风险场景',
+        whyItMattersEn:
+          "HSA brought AI-MD under regulation using 2007 legacy law, confirming Singapore's approach of amending existing law rather than enacting dedicated AI legislation for high-risk scenarios",
+        whyItMattersJa:
+          'HSA が 2007 年の既存法を使用して AI-MD を規制に組み込み、シンガポールが新しい専門的 AI 法の制定ではなく法律改正で高リスクシナリオに対応していることを示しています。',
+        whyItMattersKo:
+          'HSA가 2007년 구법으로 AI-MD를 규제에 포함시켰으며, 이는 싱가포르가 새로운 별도 AI 법을 추가하지 않고 법 개정으로 고위험 시나리오에 대응하고 있음을 증명합니다.',
         summaryJa: 'AI を含む医療機器は HSA に登録する必要があります。法律レベルでの医療 AI 参入障壁。',
         content: `Health Products Act 2007 是新加坡医疗器械的核心法律，由卫生科学局 (HSA) 执行。含 AI 组件的医疗设备（AI-Medical Device, AI-MD）——无论是独立软件 (Software as a Medical Device, SaMD) 还是嵌入设备的算法——必须按风险等级在 HSA 注册后方可在新加坡上市或临床使用。配套监管文件：Regulatory Guidelines for Software Medical Devices（2022 修订）专章覆盖 AI-MD 的训练数据质量、模型变更管理 (Change Control Plan)、持续学习系统 (Continuous Learning) 的特殊要求、临床证据等级、网络安全和数据保护。AI-MD 还须遵循 Good Machine Learning Practice (GMLP) 原则，与 FDA 和 Health Canada 的多边协调框架一致。这一条是 W&C tracker 单列的两条 AI 相关存量立法之一——它说明新加坡"没有专门 AI 法"的真实含义：用既有行业法的现代化修订把 AI 纳入硬法监管，而不是另立一部横切法。`,
         contentKo: `Health Products Act 2007은 싱가포르 의료 기기의 핵심 법률로, 보건과학청(HSA)이 집행합니다. AI 구성 요소가 포함된 의료 기기(AI-Medical Device, AI-MD)—독립형 소프트웨어(Software as a Medical Device, SaMD)이든 기기에 내장된 알고리즘이든—은 위험 등급에 따라 HSA에 등록한 후에야 싱가포르에서 시판되거나 임상 사용될 수 있습니다. 관련 규제 문서: Regulatory Guidelines for Software Medical Devices(2022년 개정)는 AI-MD의 훈련 데이터 품질, 모델 변경 관리(Change Control Plan), 지속적 학습 시스템(Continuous Learning)의 특수 요구 사항, 임상 증거 수준, 사이버 보안 및 데이터 보호를 다룹니다. AI-MD는 또한 Good Machine Learning Practice(GMLP) 원칙을 준수해야 하며, FDA 및 Health Canada와의 다자 조율 프레임워크와 일치합니다. 이 항목은 W&C 추적기에서 별도로 나열된 AI 관련 기존 입법 두 조항 중 하나입니다——이는 싱가포르 「전문 AI 법이 없다」는 실제 의미를 설명합니다: 기존 산업법의 현대화 개정을 통해 AI를 강제 규제에 포함시키되, 별도의 횡적 법률을 제정하지 않는다는 의미입니다.`,
@@ -1582,6 +1798,14 @@ Strategically, this moves AI Verify from tools and frameworks into market infras
         sourceUrl: 'https://sso.agc.gov.sg/Act/RTA1961?ProvIds=P1A6C-#pr6C-',
         summary: '2017 修订引入第 6C 节，授权 LTA 监管自动驾驶车辆测试与使用。',
         summaryKo: '2017년 개정은 제6C절을 도입하여 LTA에 자동 운전 차량 테스트 및 사용 감시 권한을 부여합니다.',
+        whyItMatters:
+          '2017 年选择修订已有法律而非另立专法监管自动驾驶，比 NAIS 早两年，为新加坡沿用部门法管 AI 定下先例',
+        whyItMattersEn:
+          "In 2017, Singapore chose to amend existing law rather than enact dedicated legislation to regulate autonomous driving, two years before NAIS, setting a precedent for Singapore's use of sectoral law to govern AI",
+        whyItMattersJa:
+          '2017 年に新しい専門法を制定するのではなく既存法を改正して自動運転を規制することを選択し、NAIS より 2 年早く、シンガポールが部門別法律で AI を管理する先例を示しました。',
+        whyItMattersKo:
+          '2017년 별도의 특별법을 수립하지 않고 기존 법률을 개정하여 자율 주행을 규제했으며, NAIS보다 2년 앞서, 싱가포르가 부처별 법률로 AI를 관리하는 선례를 정립했습니다.',
         summaryJa: '2017 年の改正で第 6C 条を導入。自動運転車の試験と使用を監視する LTA の権限を付与します。',
         content: `Road Traffic Act 1961 通过 2017 年的 Road Traffic (Amendment) Act 增设第 6C 节（Trials and use of autonomous motor vehicles），把自动驾驶 (AV) 写入硬法。核心条款：陆路交通管理局 (LTA) 获授权制定细则、签发 AV 测试与运营许可、设定保险与安全要求、在划定区域 (designated area) 进行豁免。配套是 2017 年颁布的 Road Traffic (Autonomous Motor Vehicles) Rules，覆盖：测试申请与审批、安全员要求、数据记录与事件报告（黑匣子）、与 LTA 的持续报告义务、最低保险额度。新加坡同步建立了 CETRAN (Centre of Excellence for Testing and Research of AVs) 测试中心和 one-north 自动驾驶试验区，把法律授权落到物理基础设施。这条与 Health Products Act 共同构成 W&C tracker 单列的"用既有行业法管 AI"的两个核心样本——也是 NAIS 1.0 五大重点领域之一"智能交通与物流"的法律基座。`,
         contentKo: `Road Traffic Act 1961은 2017년 Road Traffic (Amendment) Act를 통해 제6C절(자율 모터 차량의 시험 및 사용)을 추가하여 자동 운전(AV)을 강제법에 포함시켰습니다. 핵심 조항: 육로교통관리청(LTA)은 세부 규정을 수립하고, AV 테스트 및 운영 허가를 발급하며, 보험 및 안전 요구 사항을 설정하고, 지정된 지역(designated area)에서 면제를 시행할 권한을 부여받습니다. 동반되는 문서는 2017년에 발표된 Road Traffic (Autonomous Motor Vehicles) Rules로, 다음을 포함합니다: 테스트 신청 및 승인, 안전 운전자 요구 사항, 데이터 기록 및 사건 보고(블랙박스), LTA와의 지속적인 보고 의무, 최소 보험 금액. 싱가포르는 동시에 CETRAN(자동 운전 차량 테스트 및 연구 우수 센터) 테스트 센터와 one-north 자동 운전 시험 지역을 설립하여 법적 권한을 물리적 기반 시설에 구현했습니다. 이 조항은 Health Products Act와 함께 W&C 추적기에서 별도로 나열된 「기존 산업법을 사용하여 AI를 관리하는」 두 가지 핵심 사례를 구성합니다——또한 NAIS 1.0의 5대 중점 분야 중 하나인 「지능형 교통 및 물류」의 법적 기초입니다.`,
@@ -1613,6 +1837,13 @@ Strategically, this moves AI Verify from tools and frameworks into market infras
         translatedPdfUrl: '/pdfs/csa-ai-security-zh.pdf',
         summary: 'AI 系统全生命周期安全最佳实践指南。',
         summaryKo: 'AI 시스템 전체 생명 주기 보안 모범 사례 지침입니다.',
+        whyItMatters: 'CSA 8 个月内完成 Agentic AI 安全指南定稿，软法先行为自主 agent 风险治理确立新加坡样板',
+        whyItMattersEn:
+          "CSA finalized the Agentic AI Security Guidelines in eight months; soft law-first approach establishes Singapore's model for autonomous agent risk governance",
+        whyItMattersJa:
+          'CSA が 8 ヶ月以内に Agentic AI セーフティガイドラインの最終版を完成させることで、ソフトロー先行が自律エージェント・リスク治理のシンガポール・モデルを確立しました。',
+        whyItMattersKo:
+          'CSA가 8개월 이내에 Agentic AI 안전 가이드를 정본 확정했으며, 소프트 로 선행으로 자율 agent 위험 거버넌스의 싱가포르 샘플을 확립했습니다.',
         summaryJa: 'AI システムの全ライフサイクル・セキュリティに関するベストプラクティスガイドライン。',
         content: `CSA 于 2024 年 10 月发布 AI 系统安全指南及配套实践手册，填补了 AI 安全领域的治理空白。指南覆盖 AI 系统全生命周期：规划与设计阶段的威胁建模、开发阶段的数据与模型安全、部署阶段的安全测试、运维阶段的监控与事件响应。重点关注对抗性攻击防御、数据投毒防范、模型窃取防护、供应链安全等 AI 特有风险。
 
@@ -1653,6 +1884,13 @@ The companion addendum "Securing Agentic AI" was issued in draft for public cons
           'CSA 2024 年 AI 系统安全指南的 Agentic AI 增补稿：2025 年 10 月 22 日发布草案征求意见，2026 年 6 月 17 日发布定稿。',
         summaryKo:
           'CSA의 2024년 AI 시스템 보안 지침에 대한 Agentic AI 보충 문서: 2025년 10월 22일 초안 공개 협의, 2026년 6월 17일 최종본 공개.',
+        whyItMatters: 'CSA 按自主程度分层定控制措施而非一刀切强制法规，显示新加坡对 Agentic AI 仍走软法分级治理路线',
+        whyItMattersEn:
+          'CSA tiers control measures by autonomy level rather than blanket mandatory regulations, demonstrating that Singapore continues a soft-law tiered governance approach to Agentic AI.',
+        whyItMattersJa:
+          'CSAは自律度に応じて段階的に規制措置を定め、一律強制的な法規ではなく、シンガポールのエージェント型AIに対するソフトロー段階的ガバナンスの継続を示しています。',
+        whyItMattersKo:
+          'CSA가 자율 정도에 따라 계층별로 통제 조치를 정하고 있으며, 일괄적 강제 규제를 적용하지 않고 있습니다. 이는 싱가포르가 Agentic AI에 대해 여전히 소프트로(soft-law) 분급 치리 경로를 취하고 있음을 보여줍니다.',
         summaryJa:
           'CSA の 2024 年 AI システムセキュリティガイドラインに対する Agentic AI 補足文書：2025 年 10 月 22 日に草案を公開協議、2026 年 6 月 17 日に確定版を公表。',
         summaryEn:
@@ -1702,6 +1940,14 @@ The addendum covers three things: identifying and assessing risk according to ag
         translatedPdfUrl: '/pdfs/court-genai-guide-zh.pdf',
         summary: '法律诉讼中使用生成式 AI 工具的原则和指引。',
         summaryKo: '법률 소송에서 생성형 AI 도구 사용의 원칙과 지침.',
+        whyItMatters:
+          "新加坡最高法院用 Registrar's Circular No. 1 of 2024 定调 AI 可用但责任不可转移，早于专门 AI 立法，或成其他监管机构范本",
+        whyItMattersEn:
+          "Singapore's Supreme Court, through Registrar's Circular No. 1 of 2024, established that AI is usable but liability cannot be transferred, predating dedicated AI legislation and potentially serving as a model for other regulators.",
+        whyItMattersJa:
+          "シンガポール最高裁判所は『Registrar's Circular No. 1 of 2024』によってAIの使用は可能だが責任は移転不可との基調を定め、専門的なAI立法に先立ち、他の規制機関の範例となる可能性があります。",
+        whyItMattersKo:
+          "싱가포르 대법원은 「Registrar's Circular No. 1 of 2024」를 통해 AI는 사용 가능하지만 책임은 전이될 수 없다는 기조를 정했습니다. 이는 전담 AI 입법보다 앞서 이루어졌으며, 다른 규제 기구의 모범이 될 수 있습니다.",
         summaryJa: '法的訴訟における生成 AI ツール使用の原則と指導。',
         content: `新加坡最高法院于 2024 年发布生成式 AI 使用指南（Registrar's Circular No. 1 of 2024），适用于所有法院体系。核心原则：律师和当事人对提交法院的所有内容负最终责任，无论是否使用 AI 生成；使用 GenAI 辅助准备的法律文件须披露 AI 使用情况；引用的案例和法律条文须经人工核实。体现了司法系统对 AI 工具的务实态度——不禁止使用，但强调人类责任不可转移。`,
         contentKo: `싱가포르 최고법원은 2024년에 생성형 AI 사용 지침(Registrar's Circular No. 1 of 2024)을 발표했으며, 모든 법원 체계에 적용됩니다. 핵심 원칙: 변호사와 당사자는 법원에 제출한 모든 내용에 대해 AI로 생성되었는지 여부와 관계없이 최종 책임을 지며; GenAI가 준비를 보조한 법률 문서는 AI 사용 현황을 공개해야 하고; 인용한 판례와 법률 조항은 인적 검증을 거쳐야 합니다. 이는 사법 체계가 AI 도구에 대해 현실적인 태도를 취하고 있음을 보여줍니다. 즉, 사용을 금지하지는 않지만 인간의 책임은 이전할 수 없다는 점을 강조합니다.`,
@@ -1731,6 +1977,14 @@ The addendum covers three things: identifying and assessing risk according to ag
         translatedPdfUrl: '/pdfs/mas-veritas-zh.pdf',
         summary: '将 FEAT 原则转化为可操作的评估工具包，提供开源方法论。',
         summaryKo: 'FEAT 원칙을 실행 가능한 평가 툴킷으로 전환하고, 오픈소스 방법론을 제공합니다.',
+        whyItMatters:
+          'MAS 没有止步于 FEAT 文件，联合业界打造开源工具包，把监管姿态从发布原则转向共建工程标准，为免于强制立法的软监管提供样本',
+        whyItMattersEn:
+          'MAS did not stop at the FEAT document but partnered with industry to develop open-source toolkits, shifting regulatory approach from publishing principles to co-creating engineering standards, providing a model for soft regulation without mandatory legislation.',
+        whyItMattersJa:
+          'MASはFEATファイルに止まらず、業界と共同でオープンソースツールキットを構築し、規制姿勢を原則の発表から技術標準の共同構築へと転換し、強制立法を免れるための柔軟規制の見本を提供しています。',
+        whyItMattersKo:
+          'MAS는 FEAT 문서에 그치지 않고 업계와 연합하여 오픈소스 툴킷을 구축했습니다. 규제 태도를 「원칙 발표」에서 「공동 기술 표준 구축」으로 전환하여 강제 입법을 회피하기 위한 소프트 규제의 모범을 제공했습니다.',
         summaryJa: 'FEAT 原則を実装可能な評価ツールキットに転換。オープンソース方法論を提供します。',
         content: `Veritas 倡议是 FEAT 原则的实践延伸，由 MAS 联合金融机构共同开发。项目目标是创建一套开源、可操作的评估方法论和工具包，帮助金融机构将 FEAT 原则落地到具体 AI 应用中。涵盖客户营销公平性评估、信用风险评分透明度评估等场景。Veritas 持续更新迭代，体现新加坡"原则→工具→实践"的渐进式 AI 治理路径。`,
         contentKo: `Veritas 이니셔티브는 FEAT 원칙의 실행 확대이며, MAS가 금융 기관과 함께 공동 개발했습니다. 프로젝트 목표는 오픈소스이고 실행 가능한 평가 방법론과 툴킷 세트를 만들어 금융 기관이 구체적인 AI 애플리케이션에 FEAT 원칙을 실행하도록 돕는 것입니다. 고객 마케팅 공정성 평가, 신용 위험 점수 투명성 평가 등의 시나리오를 포함합니다. Veritas는 지속적으로 업데이트되고 반복되며, 싱가포르의 「원칙→도구→실행」의 점진적 AI 거버넌스 경로를 보여줍니다.`,
@@ -1762,6 +2016,14 @@ The addendum covers three things: identifying and assessing risk according to ag
         summary: 'PDPC 明确 PDPA 在 AI 推荐与决策系统中的合规边界——为企业用个人数据训练和运行 AI 提供确定性。',
         summaryKo:
           'PDPC가 AI 추천 및 의사결정 시스템에서 PDPA의 준수 경계를 명확히 함으로써, 기업이 개인정보를 사용하여 AI를 훈련하고 운영하는 데 명확성을 제공합니다.',
+        whyItMatters:
+          '以 Business Improvement Exception 替代逐案同意，PDPC 2024 年 3 月就把 AI 训练数据合规门槛压到可操作层面，与版权法 244 条构成双重法律基础',
+        whyItMattersEn:
+          'Using Business Improvement Exception to replace case-by-case consent, PDPC by March 2024 had lowered AI training data compliance thresholds to an actionable level, forming a dual legal basis with copyright law section 244.',
+        whyItMattersJa:
+          '『Business Improvement Exception』を用いて個別承認に代え、PDPCは2024年3月にすでにAI訓練データの適合性基準を操作可能なレベルに設定し、著作権法244条と共に二重の法的基礎を構成しています。',
+        whyItMattersKo:
+          '「Business Improvement Exception」으로 사건별 동의를 대체하여, PDPC는 2024년 3월에 AI 훈련 데이터 준수 기준을 실행 가능한 수준으로 설정했습니다. 이는 저작권법 244조와 함께 이중 법률 기초를 이루었습니다.',
         summaryJa:
           'PDPC は AI レコメンデーション・システムと意思決定システムにおける PDPA コンプライアンスの境界を明確にしています。企業が個人データを使用して AI をトレーニングおよび運用する際の確実性を提供します。',
         content: `PDPC 于 2024 年 3 月发布《Advisory Guidelines on Use of Personal Data in AI Recommendation and Decision Systems》，把 PDPA 在 AI 场景下的具体适用方式讲清楚。覆盖三类常见情形：(1) 用个人数据训练、测试、监控 AI 模型——可援引 Business Improvement Exception 或 Research Exception，但需通过合理性测试、数据最小化、去标识化等门槛；(2) 用 AI 进行推荐或决策——须履行通知和同意义务，决策类应用须告知数据主体；(3) 数据保护影响评估（DPIA）的最佳实践模板。这是 PDPC 把 PDPA 2020 修订（合法利益例外、Business Improvement Exception）转化为 AI 落地操作手册的关键文件，与 Copyright Act §244 共同构成新加坡 AI 训练侧"双重法律基础"。`,
@@ -1802,6 +2064,14 @@ The addendum covers three things: identifying and assessing risk according to ag
         translatedPdfUrl: '/pdfs/mas-feat-zh.pdf',
         summary: '金融业 AI 使用的公平性、伦理、问责和透明度原则。',
         summaryKo: '금융업 AI 사용의 공정성, 윤리, 책임성 및 투명성 원칙.',
+        whyItMatters:
+          'MAS 2018 年推出的 FEAT 早于 2019 年新加坡国家人工智能战略，确立金融业软法先行、原则重于立法的监管基调，为后续国家级 AI 治理定下先声',
+        whyItMattersEn:
+          "MAS's FEAT, launched in 2018, preceded Singapore's 2019 National AI Strategy, establishing the regulatory principle that soft law precedes legislation in finance, with principles prioritized over rules—setting the keynote for subsequent national-level AI governance.",
+        whyItMattersJa:
+          'MASが2018年に開始したFEATは2019年のシンガポール国家AI戦略に先行し、金融業におけるソフトロー先行・原則重視の規制基調を確立し、その後の国家級AI統治の先鞭をつけました。',
+        whyItMattersKo:
+          'MAS가 2018년에 출시한 FEAT는 2019년 싱가포르 국가 인공지능 전략보다 앞서 있었습니다. 금융업 소프트로 선행, 원칙을 입법보다 중시하는 규제 기조를 확립하여 후속 국가급 AI 치리의 초석을 마련했습니다.',
         summaryJa: '金融業における AI 使用の公平性、倫理、アカウンタビリティ、透明性原則。',
         content: `MAS 于 2018 年发布 FEAT 原则，为金融机构使用 AI 和数据分析提供治理指引。四大原则：公平性（Fairness）——确保 AI 决策不产生歧视；伦理（Ethics）——AI 使用符合道德标准；问责（Accountability）——明确 AI 决策的责任归属；透明度（Transparency）——AI 决策过程可理解、可解释。2022 年更新版纳入更多实践指导。`,
         contentKo: `MAS는 2018년 FEAT 원칙을 발표했으며, 금융 기관의 AI 및 데이터 분석 사용에 관한 거버넌스 지침을 제공합니다. 네 가지 핵심 원칙: 공정성(Fairness) — AI 의사결정이 차별을 일으키지 않도록 보장; 윤리(Ethics) — AI 사용이 도덕 표준을 준수; 책임성(Accountability) — AI 의사결정의 책임 귀속을 명확히; 투명성(Transparency) — AI 의사결정 프로세스가 이해 가능하고 설명 가능. 2022년 업데이트된 버전은 더 많은 실행 지침을 포함합니다.`,
@@ -1830,6 +2100,14 @@ The addendum covers three things: identifying and assessing risk according to ag
         sourceUrl: 'https://sso.agc.gov.sg/Act/CA2021?ProvIds=P14-#pr244-',
         summary: 'AI 训练免责条款——与日本并列全球最宽松的 AI 训练版权立场。',
         summaryKo: 'AI 훈련 면책 조항 — 일본과 함께 세계에서 가장 느슨한 AI 훈련 저작권 입장.',
+        whyItMatters:
+          '早于 ChatGPT 问世的 2021 年 11 月即锁定训练免责，比欧美更早给 AI 公司确定性，为 EDB 引进 OpenAI、Anthropic 打下法律先手',
+        whyItMattersEn:
+          "As early as November 2021, before ChatGPT's debut, Singapore locked in training liability exemptions, giving AI companies certainty earlier than Europe or America, laying the legal groundwork for EDB to attract OpenAI and Anthropic.",
+        whyItMattersJa:
+          'ChatGPTが世に出るより早い2021年11月に、すでに訓練免責を確定し、欧米よりも早くAI企業に確実性をもたらし、EDBがOpenAI、Anthropicを招致するための法的優位性を築きました。',
+        whyItMattersKo:
+          'ChatGPT 출시보다 먼저 2021년 11월에 이미 훈련 면책을 확정했습니다. 유럽과 미국보다 더 먼저 AI 기업들에 규제 확실성을 제공하여 EDB가 OpenAI와 Anthropic을 유치하기 위한 법률적 우위를 마련했습니다.',
         summaryJa: 'AI トレーニングの免責条項。日本と並んで世界で最も寛容な AI トレーニング著作権スタンス。',
         content: `Copyright Act 2021 第 244 条 "Computational Data Analysis" 给 AI 训练数据使用提供明确的免责条款：合法获取的内容（不论是否有版权）可用于 AI 模型训练、文本与数据挖掘等"计算分析"用途，不构成版权侵权。这与日本《著作权法》第 30-4 条并列为全球最宽松的 AI 训练版权立场——美国仍在 fair use 案例法争议中、欧盟需依赖 Text and Data Mining Exception 的 opt-out 机制。配合 IPOS 的 "When Code Creates" 报告（2024）和"训练宽松 + 输出严管"哲学（OCHA + Elections Bill + Criminal Law Bill + Online Safety Bill 四件套），新加坡为 AI 公司提供了**全球最清晰的法律边界之一**——这是 EDB 能引进 OpenAI / Anthropic / DeepMind 等机构的关键背景之一。`,
         contentKo: `저작권법 2021 제244조의 「컴퓨터 데이터 분석」은 AI 훈련 데이터 사용에 명확한 면책 조항을 제공합니다. 합법적으로 획득한 콘텐츠(저작권 여부와 관계없이)는 AI 모델 훈련, 텍스트 및 데이터 마이닝 등의 「컴퓨터 분석」 목적으로 사용할 수 있으며, 저작권 침해를 구성하지 않습니다. 이는 일본의 《저작권법》 제30-4조와 함께 세계에서 가장 느슨한 AI 훈련 저작권 입장으로 나란히 있습니다 — 미국은 여전히 공정 사용(fair use) 판례법 분쟁 중에 있고, 유럽연합은 텍스트 및 데이터 마이닝 예외(Text and Data Mining Exception)의 옵트아웃(opt-out) 메커니즘에 의존합니다. IPOS의 「코드가 만들 때」(When Code Creates) 보고서(2024)와 「훈련 느슨함 + 출력 엄격함」 철학(OCHA + Elections Bill + Criminal Law Bill + Online Safety Bill 네 가지 패키지)과 함께, 싱가포르는 AI 기업에 **세계에서 가장 명확한 법적 경계 중 하나**를 제공합니다 — 이것이 EDB가 OpenAI / Anthropic / DeepMind 등 기관을 유치할 수 있는 핵심 배경 중 하나입니다.`,
@@ -1870,6 +2148,13 @@ The addendum covers three things: identifying and assessing risk according to ag
         translatedPdfUrl: '/pdfs/budget-2026-zh.pdf',
         summary: '成立国家 AI 委员会、AI 税收减免、one-north AI 园区、AI Mission 计划。',
         summaryKo: '국가 AI 위원회 설립, AI 세제 감면, one-north AI 파크, AI Mission 계획.',
+        whyItMatters: '总理亲自主持 National AI Council，AI 从 IMDA 主导的产业政策升格为总理府统筹的国家最优先事项',
+        whyItMattersEn:
+          "The Prime Minister personally chairs the National AI Council, elevating AI from an industrial policy led by IMDA to a top national priority coordinated by the Prime Minister's Office.",
+        whyItMattersJa:
+          '総理大臣が自ら主宰する『National AI Council』によって、AIはIMDA主導の産業政策から総理府が統括する国家最優先事項へと昇格しました。',
+        whyItMattersKo:
+          '총리가 직접 주재하는 「National AI Council」을 통해, AI는 IMDA 주도의 산업 정책에서 총리실 조율의 국가 최우선 과제로 격상했습니다.',
         summaryJa: '国家 AI 委員会の設立、AI 租税控除、one-north AI パーク、AI Mission 計画。',
         content: `2026 年预算案将 AI 推进提升到前所未有的高度。核心举措：成立由总理亲自主持的 National AI Council；Enterprise Innovation Scheme 的 400% 税务扣除扩展至 AI 相关支出；启动 one-north AI 园区建设；推出 AI Mission 计划聚焦关键领域应用；设立 National AI Literacy Programme 提升全民 AI 素养。这是新加坡 AI 政策从战略到全面执行的标志性预算。`,
         contentKo: `2026년 예산안은 AI 추진을 전례 없는 높이로 끌어올립니다. 핵심 조치: 총리가 직접 주재하는 National AI Council 설립; Enterprise Innovation Scheme의 400% 세제 공제를 AI 관련 지출로 확대; one-north AI 파크 건설 시작; AI Mission 계획을 통해 핵심 분야 응용에 집중; National AI Literacy Programme 설립으로 국민 전체의 AI 소양 향상. 이는 싱가포르 AI 정책이 전략에서 전면 실행으로 나아가는 상징적인 예산입니다.`,
@@ -1935,6 +2220,14 @@ The addendum covers three things: identifying and assessing risk according to ag
         summary: 'ACE-AI 预测工具部署、BRCA1/2 基因检测补贴、MediShield Life 覆盖预防性手术、MediSave 限额提升。',
         summaryKo:
           'ACE-AI 예측 도구 배치, BRCA1/2 유전자 검사 보조금, MediShield Life 예방 수술 보장 범위, MediSave 한도 상향.',
+        whyItMatters:
+          '在正式跨入超老龄社会之际，MOH 将 ACE-AI 推广至 1,100 家诊所仍坚持人在回路原则，为医疗 AI 定下国家级人机分权先例',
+        whyItMattersEn:
+          "As Singapore formally enters a super-aged society, MOH's rollout of ACE-AI to 1,100 clinics maintains the human-in-the-loop principle, setting a national precedent for human-machine governance separation in medical AI.",
+        whyItMattersJa:
+          '本格的な超高齢社会への突入に際し、MOHがACE-AIを1,100の診療所まで推進する中でもヒューマン・イン・ザ・ループの原則を堅持し、医療AIのための国家級ヒューマン・マシン分権の先例を確立しました。',
+        whyItMattersKo:
+          '초고령 사회로 정식 진입하는 가운데 MOH는 ACE-AI를 1,100개 클리닉으로 확대하면서도 여전히 「인간-루프」 원칙을 고수하여, 의료 AI의 국가급 인기 역할 분담 모범을 제시했습니다.',
         summaryJa:
           'ACE-AI 予測ツール導入、BRCA1/2 遺伝子検査補助、MediShield Life の予防手術カバレッジ、MediSave 上限引き上げ。',
         content: `2026 年 3 月卫生部供给委员会辩论，卫生部长王乙康宣布新加坡正式成为超老龄社会（65 岁以上人口超 21%）。核心措施：一、ACE-AI 预测工具（由国家医疗科技局 Synapxe 开发），预测 3 年内糖尿病及高脂血症风险，>75% 风险者由 3 年一检提升至每年检查，2027 年初推广至所有约 1,100 家 Healthier SG 诊所，坚持"AI 增强而非 AI 决定"原则，临床医生保持在决策回路中；二、BRCA1/2 基因检测从 2026 年 12 月起获最高 70% 补贴，每年 2,000+ 人符合条件；三、MediShield Life 扩展覆盖预防性乳房切除术（Q3 2026）及风险降低型输卵管卵巢切除术（Q4 2026）；四、MediSave 慢性病与预防护理限额从 500/700 提至 700/1000（2027 年 1 月起），惠及 91 万+ 患者。`,
@@ -1974,6 +2267,13 @@ The addendum covers three things: identifying and assessing risk according to ag
         translatedPdfUrl: '/pdfs/budget-2025-zh.pdf',
         summary: '黄循财首份预算案，释放大规模 AI 投入信号。',
         summaryKo: 'Huang Xunfai의 첫 예산안, 대규모 AI 투자 신호 발신',
+        whyItMatters: '黄循财首份预算案首次将 AI 列为财政优先项，标志新加坡 AI 战略从规划纸面转入实际拨款阶段',
+        whyItMattersEn:
+          "Lawrence Wong's first budget marked the first time AI was listed as a fiscal priority, signalling Singapore's AI strategy transitioning from planning on paper to actual budget allocation.",
+        whyItMattersJa:
+          'ローレンス・ウォン初の予算案がはじめてAIを財政優先項目に挙げ、シンガポールのAI戦略が企画立案から実際の予算配分段階へと移行したことを示しています。',
+        whyItMattersKo:
+          '황순재의 첫 예산안이 처음으로 AI를 재정 우선 항목으로 지정했으며, 이는 싱가포르 AI 전략이 계획 수립에서 실제 예산 배분으로 진입했음을 표시합니다.',
         summaryJa: 'Lawrence Wong 首相による初代予算案。大規模 AI 投資の信号を発表。',
         content: `2025 年预算案是黄循财出任总理后的首份预算案，首次将 AI 列为财政优先事项。重点措施包括：加速企业数字化转型拨款、扩大 AI 技能培训计划覆盖面、增加 AI 研发投入。预算案为后续 NAIS 2.0 的落地执行提供了财政保障，标志着 AI 从战略规划正式进入财政拨款阶段。`,
         contentKo: `2025년 예산안은 Huang Xuanhui 총리 취임 후의 첫 예산안이며, 처음으로 AI를 재정적 우선순위로 지정했습니다. 주요 조치는 기업 디지털 전환 가속화 지원금, AI 기술 훈련 계획 범위 확대, AI 연구개발 투자 증대를 포함합니다. 예산안은 후속 NAIS 2.0 구현을 위한 재정적 보장을 제공하며, AI가 전략 계획에서 공식적으로 재정적 배분 단계로 진입했음을 표시합니다.`,
@@ -2013,6 +2313,13 @@ The addendum covers three things: identifying and assessing risk according to ag
         translatedPdfUrl: '/pdfs/rie2025-zh.pdf',
         summary: '250 亿新元五年研发计划，AI 列为重点投资领域。',
         summaryKo: '250억 싱가포르달러 5년 연구개발 계획, AI를 주요 투자 분야로 선정',
+        whyItMatters: 'RIE2025 以 250 亿新元确立 AI 为跨领域使能技术，但未单列 AI 专项预算，规模透明度成后续政策隐忧',
+        whyItMattersEn:
+          'RIE2025, with S$25 billion, established AI as a cross-domain enabling technology, but did not earmark a dedicated AI budget, with budget-scale transparency becoming a latent concern for future policy.',
+        whyItMattersJa:
+          'RIE2025は250億シンガポールドルでAIをクロスドメイン対応技術として確立しましたが、AI専用予算を別立てせず、規模の透明性が今後の政策懸念となります。',
+        whyItMattersKo:
+          'RIE2025가 250억 싱가포르 달러로 AI를 분야 횡단 기술 수단으로 확립했으나, AI 전담 예산을 별도 편성하지 않아 예산 규모 투명성이 후속 정책의 잠재적 우려 사항이 되었습니다.',
         summaryJa: '250 億シンガポール・ドルの五年間の研究開発計画。AI を主要投資領域として指定。',
         content: `RIE2025 计划覆盖 2021-2025 年，总投入 250 亿新元，是新加坡历史上最大规模的研发投资。四大战略领域：制造贸易与连接、人类健康与潜能、城市可持续发展与智慧国家、数字经济。AI 贯穿各领域，是核心使能技术。计划支持 AI Singapore 等国家级 AI 研究项目，资助 AI 人才培养、基础研究和产业应用。`,
         contentKo: `RIE2025 프로그램은 2021-2025년을 다루며, 총 250억 싱가포르달러의 투자로 싱가포르 역사상 최대 규모의 연구개발 투자입니다. 네 가지 전략 분야: 제조·무역 및 연결성, 인간의 건강과 잠재력, 도시 지속가능 발전 및 스마트 국가, 디지털 경제. AI는 모든 분야를 관통하며 핵심 실현 기술입니다. 계획은 AI Singapore 등 국가급 AI 연구 프로젝트를 지원하고, AI 인재 양성, 기초 연구 및 산업 응용을 자금 지원합니다.`,
@@ -2070,6 +2377,14 @@ The addendum covers three things: identifying and assessing risk according to ag
           '2026 年 6 月 12 日 ATxSummit 2026 上，IMDA 与微软签署 AI 安全与安全合作备忘录，聚焦三大领域：技术与研究合作（含 agentic AI、多语言 AI 安全评测）、信息共享、可信前沿模型访问的政策框架。IMDA 副局长 Kiren Kumar 与微软首席负责任 AI 官 Natasha Crampton 签署。',
         summaryKo:
           '2026년 6월 12일 ATxSummit 2026에서 IMDA와 Microsoft가 AI 안전 및 보안 협력 양해각서를 체결했으며, 세 가지 영역에 중점을 둡니다: 기술 및 연구 협력(agentic AI, 다국어 AI 안전 평가 포함), 정보 공유, 신뢰할 수 있는 프런티어 모델 접근을 위한 정책 프레임워크. IMDA 부청장 Kiren Kumar와 Microsoft 최고 책임 AI 책임자 Natasha Crampton이 서명했습니다.',
+        whyItMatters:
+          '该 MOU 把主权 AI 访问从政策讨论推进到与微软的具体合作框架，新加坡中立枢纽定位将因绑定单一厂商而受考验',
+        whyItMattersEn:
+          "The MOU advances sovereign AI access from policy discussion to a concrete cooperation framework with Microsoft, testing Singapore's neutral-hub positioning as it binds with a single vendor.",
+        whyItMattersJa:
+          'このMOU（了解覚書）は主権的なAIアクセスを政策討論からマイクロソフトとの具体的協力枠組みへと推し進め、シンガポールの中立的ハブとしての立場は単一企業への依存により試されることになります。',
+        whyItMattersKo:
+          '이 MOU는 주권 AI 접근을 정책 논의에서 마이크로소프트와의 구체적 협력 체계로 진전시켰습니다. 싱가포르의 중립 허브 정위가 단일 기업 종속으로 인해 시험을 받게 될 것입니다.',
         summaryJa:
           '2026 年 6 月 12 日の ATxSummit 2026 で、IMDA と Microsoft が AI 安全・セキュリティ協力覚書を締結しました。3 つの領域に焦点を当てます：技術・研究協力（agentic AI、多言語 AI 安全評価を含む）、情報共有、信頼できるフロンティアモデルアクセスのための政策フレームワーク。IMDA 副長官の Kiren Kumar と Microsoft 最高責任 AI 責任者の Natasha Crampton が署名しました。',
         summaryEn:
@@ -2150,6 +2465,14 @@ Natasha Crampton: "Through this partnership with IMDA, we can combine government
         translatedPdfUrl: '/pdfs/seoul-ai-summit-zh.pdf',
         summary: '参与 Seoul AI Safety Summit，进一步推进 AI 安全治理承诺。',
         summaryKo: 'Seoul AI Safety Summit에 참여하여 AI 안전 거버넌스 약속을 더욱 추진',
+        whyItMatters:
+          '新加坡连续两届签署 AI 安全峰会承诺，境内却无前沿模型实验室受其约束，安全外交暂时跑在监管立法前面',
+        whyItMattersEn:
+          'Singapore signed AI Safety Summit commitments in two consecutive editions, yet has no frontier model laboratory domestically bound by these commitments, with safety diplomacy temporarily outpacing regulatory legislation.',
+        whyItMattersJa:
+          'シンガポールはAI安全サミットの約束に連続2回署名していながら、国内に先端モデル実験室がなくそれに拘束されず、安全外交は一時的に規制立法より先に進んでいます。',
+        whyItMattersKo:
+          '싱가포르는 연속 두 차례 AI 안전 정상회담 약속에 서명했으나, 국내에는 이에 구속받는 최첨단 모델 실험실이 없어 안전 외교가 규제 입법보다 일시적으로 앞서가고 있습니다.',
         summaryJa: 'Seoul AI Safety Summit に参加し、AI 安全ガバナンスの約束をさらに推し進めています。',
         content: `2024 年 5 月，新加坡参加在韩国首尔举行的第二届 AI 安全峰会，签署 Seoul AI Safety Commitment。在 Bletchley Declaration 基础上进一步深化承诺：推动前沿 AI 安全评估标准的制定、支持 AI 安全研究所之间的国际协作、促进 AI 安全测试方法论的共享。新加坡连续参与两届峰会，持续巩固其在全球 AI 治理中的积极参与者角色。`,
         contentKo: `2024년 5월, 싱가포르는 한국 서울에서 개최된 제2회 AI 안전 정상회담에 참가하여 Seoul AI Safety Commitment에 서명했습니다. Bletchley Declaration을 기반으로 약속을 한층 더 심화시켰습니다: 첨단 AI 안전 평가 표준 제정 추진, AI 안전 연구소 간 국제 협력 지원, AI 안전 테스트 방법론의 공유 촉진. 싱가포르는 두 정상회담에 연속으로 참가하여 글로벌 AI 거버넌스에서 적극적 참여자로서의 역할을 지속적으로 강화하고 있습니다.`,
@@ -2181,6 +2504,14 @@ Natasha Crampton: "Through this partnership with IMDA, we can combine government
         translatedPdfUrl: '/pdfs/bletchley-park-zh.pdf',
         summary: '签署 Bletchley Declaration，承诺 AI 安全国际合作。',
         summaryKo: 'Bletchley Declaration에 서명하여 AI 안전 국제 협력을 약속',
+        whyItMatters:
+          '新加坡以 28 个 Bletchley Declaration 签署国之一的身份,提前绑定西方主导的前沿 AI 安全共识,是小国借规则占位而非自定标准的信号',
+        whyItMattersEn:
+          'As one of 28 Bletchley Declaration signatories, Singapore pre-committed to Western-led frontier AI safety consensus, signalling that small nations position themselves through rule-adoption rather than standard-setting.',
+        whyItMattersJa:
+          'シンガポールが28のBletchley Declaration署名国の一国として、西方主導の先端AI安全共識に事前に合意し、小国が規則により立場を占めるのであって自ら基準を定めるのではないというシグナルです。',
+        whyItMattersKo:
+          '싱가포르는 28개 「Bletchley Declaration」 서명국 중 하나로서 서방 주도의 최첨단 AI 안전 공감대에 미리 결속했습니다. 이는 소국이 규칙을 이용해 위상을 선점하면서 자체 기준을 수립하지 않는다는 신호입니다.',
         summaryJa: 'Bletchley Declaration に署名。AI 安全に関する国際協力を約束。',
         content: `2023 年 11 月，新加坡作为 28 个签署国之一参与了在英国 Bletchley Park 举行的首届全球 AI 安全峰会。签署 Bletchley Declaration，核心承诺包括：识别前沿 AI 带来的共同风险、各国承担 AI 安全的相应责任、加强 AI 安全研究的国际合作。宣言特别关注前沿 AI 模型的潜在风险，包括网络安全威胁、生物技术风险和虚假信息。`,
         contentKo: `2023년 11월, 싱가포르는 28개 서명국 중 하나로서 영국 Bletchley Park에서 개최된 첫 번째 글로벌 AI 안전 정상회담에 참가했습니다. Bletchley Declaration에 서명했으며, 핵심 약속은 다음을 포함합니다: 첨단 AI가 가져오는 공동 위험 파악, 각 국가의 AI 안전에 대한 상응하는 책임 이행, AI 안전 연구의 국제 협력 강화. 선언은 첨단 AI 모델의 잠재적 위험, 특히 사이버보안 위협, 생명공학 위험 및 허위정보에 특별히 주목합니다.`,
@@ -2210,6 +2541,13 @@ Natasha Crampton: "Through this partnership with IMDA, we can combine government
         translatedPdfUrl: '/pdfs/gpai-zh.pdf',
         summary: '新加坡成为 GPAI 创始成员，参与负责任 AI 国际治理。',
         summaryKo: '싱가포르는 GPAI 창립 멤버가 되어 책임감 있는 AI 국제 거버넌스에 참여합니다.',
+        whyItMatters: '2020 年以创始成员身份加入 GPAI,新加坡把 AI 全球治理规则制定权提前握在手里,而非被动接受他国标准',
+        whyItMattersEn:
+          "By joining GPAI as a founding member in 2020, Singapore seized global AI governance rule-setting authority ahead of time rather than passively accepting other nations' standards.",
+        whyItMattersJa:
+          '2020年に設立メンバーとしてGPAIに参加し、シンガポールはAI世界治理規則制定権を早期に掌握し、他国の基準を受動的に受け入れるのではなく主導権を保有しています。',
+        whyItMattersKo:
+          '2020년에 창립 회원 자격으로 GPAI에 가입하여 싱가포르는 AI 글로벌 치리 규칙 제정권을 미리 손에 쥐었으며, 다른 국가의 기준을 수동적으로 받아들이지 않고 있습니다.',
         summaryJa: 'シンガポールが GPAI 創設メンバーとなり、責任ある AI の国際ガバナンスに参加。',
         content: `新加坡于 2020 年成为 GPAI 创始成员国之一。GPAI 是由多国政府发起的国际倡议，旨在通过多利益相关方合作推动负责任 AI 的发展和使用。新加坡积极参与 GPAI 的工作组，包括负责任 AI、数据治理、未来工作、创新与商业化等方向。加入 GPAI 体现了新加坡在 AI 治理领域的国际参与意愿，也为本国政策制定引入国际视角和最佳实践。`,
         contentKo: `싱가포르는 2020년 GPAI 창립 멤버국 중 하나가 되었습니다. GPAI는 다국정부가 발의한 국제 이니셔티브로, 다중이해관계자 협력을 통해 책임감 있는 AI의 발전과 사용을 추동하는 것을 목표로 합니다. 싱가포르는 책임감 있는 AI, 데이터 거버넌스, 미래 업무, 혁신 및 상용화 등의 분야를 포함한 GPAI 워킹 그룹에 적극적으로 참여하고 있습니다. GPAI 가입은 AI 거버넌스 분야에서 싱가포르의 국제 참여 의지를 보여주며, 본국 정책 수립에 국제적 관점과 최고의 실행법을 도입합니다.`,
@@ -2242,6 +2580,14 @@ Natasha Crampton: "Through this partnership with IMDA, we can combine government
           '2025 年 SCAI: ISE 产出的全球 AI 安全研究优先级“活文件”：100+ 参与者、11 个国家，并在 2026 年 ISE 继续更新。',
         summaryKo:
           '2025년 SCAI: ISE에서 나온 글로벌 AI 안전 연구 우선순위 “살아 있는 문서”: 100명 이상 참여자, 11개국, 2026년 ISE에서 계속 업데이트.',
+        whyItMatters:
+          '新加坡不靠 11 国签约,而靠 100+ 名学界产业政府代表定义技术议程,2026 年 5 月 ISE 能否续写将检验这条软实力路径的成色',
+        whyItMattersEn:
+          'Singapore relies not on 11-country agreements but on 100+ representatives from academia, industry, and government to shape the technical agenda; whether ISE continues in May 2026 will test the credibility of this soft-power path.',
+        whyItMattersJa:
+          'シンガポールは11か国の署名に頼るのではなく、100名以上の学界・産業・政府代表が技術アジェンダを定義し、ISEが2026年5月に続編を書けるかどうかが、このソフトパワー路線の本色を検証することになります。',
+        whyItMattersKo:
+          '싱가포르는 11개국 서약에 의존하지 않고 100명 이상의 학계, 산업, 정부 대표가 기술 의제를 정의하고 있습니다. 2026년 5월 ISE가 이를 지속할 수 있는지가 이 소프트 파워 경로의 실질을 검증할 것입니다.',
         summaryJa:
           '2025 年 SCAI: ISE から生まれた AI 安全研究優先事項の「living document」。100 名超の参加者、11 カ国、2026 年 ISE で継続更新。',
         content: `Singapore Consensus 是 2025 年 Singapore Conference on AI (SCAI): International Scientific Exchange on AI Safety 的成果文件。官方口径是：2025 年 4 月 26 日，100+ 来自学界、产业和政府的参与者，覆盖 11 个国家，共同识别并形成对高优先级技术 AI 安全研究方向的共识。
@@ -2296,6 +2642,14 @@ This remains one of Singapore’s most important international governance levers
           'https://asean.org/wp-content/uploads/2024/02/ASEAN-Guide-on-AI-Governance-and-Ethics_beautified_201223_v2.pdf',
         summary: 'ASEAN 10 国采纳的 AI 治理指南，新加坡主导起草，IMDA 承担秘书处职能。',
         summaryKo: 'ASEAN 10개국이 채택한 AI 거버넌스 가이드, 싱가포르 주도 기초 작성, IMDA가 비서처 기능 담당.',
+        whyItMatters:
+          'IMDA 主导起草并任 WG-AI 秘书处，2024 年 2 月起新加坡治理框架变成 10 国 ASEAN 默认标准，抢占区域规则制定权',
+        whyItMattersEn:
+          "IMDA led the drafting and serves as secretary of WG-AI; since February 2024, Singapore's governance framework has become the default standard for the 10-country ASEAN, securing regional rule-setting authority.",
+        whyItMattersJa:
+          'IMDAが起草を主導しWG-AIの事務局を務め、2024年2月からシンガポールの統治枠組みが10国ASEANのデフォルト基準となり、地域の規則制定権を先制的に占めました。',
+        whyItMattersKo:
+          'IMDA가 기초 작성을 주도하고 WG-AI 사무국을 담당하여, 2024년 2월부터 싱가포르 치리 체계가 10개국 ASEAN의 기본 표준이 되었습니다. 이로써 지역 규칙 제정권을 선점했습니다.',
         summaryJa:
           'ASEAN 10 カ国が採択した AI ガバナンス・ガイドライン。シンガポール主導起草、IMDA が事務局機能を担当。',
         content: `ASEAN Guide on AI Governance and Ethics 由新加坡主导起草，2024 年 2 月由 ASEAN 数字部长会议正式通过，10 个成员国采纳。指南直接基于新加坡 Model AI Governance Framework，是新加坡治理模板的"区域化版本"。覆盖：组织治理、数据治理、AI 系统全生命周期管理、人在回路、风险分级。新加坡通过 ASEAN Working Group on AI Governance（WG-AI）持续承担秘书处职能。这是新加坡战略的关键杠杆——把本国治理标准变成区域默认标准，让外资在东南亚部署 AI 时**自然地遵循新加坡定义的边界**。延伸：2026 年 ASEAN Hanoi Declaration 进一步深化数字部长合作。`,
@@ -2326,6 +2680,14 @@ This remains one of Singapore’s most important international governance levers
         sourceUrl: 'https://www.mindef.gov.sg/news-and-events/latest-releases/10sep24_nr/',
         summary: 'REAIM Seoul Summit 五个联合主办国之一，把"军事 AI 责任使用"推向国际议程。',
         summaryKo: 'REAIM Seoul Summit 5개 공동 주최국 중 하나, 「군사 AI 책임감 있는 사용」을 국제 의제로 추진.',
+        whyItMatters:
+          '新加坡的 AI 外交版图向国防安全延伸，MINDEF 与 MFA 联手主导军事 AI 议程，靠规则起草权换取大国博弈中的议桌席位',
+        whyItMattersEn:
+          "Singapore's AI diplomatic portfolio extends to defence and security, with MINDEF and MFA jointly leading the military AI agenda, leveraging rule-drafting authority to secure a seat at the table in great-power competition.",
+        whyItMattersJa:
+          'シンガポールのAI外交版図は国防分野へと拡大し、MINDEFとMFAが連携して軍事AIアジェンダを主導し、規則起草権により大国間の博弈における議論の席を確保しています。',
+        whyItMattersKo:
+          '싱가포르의 AI 외교 지도가 국방 안보로 확장되었으며, MINDEF와 MFA가 연합하여 군사 AI 의제를 주도하여, 규칙 기초 제정권으로 대국 경쟁에서의 협상 위치를 확보했습니다.',
         summaryJa:
           'REAIM Seoul Summit の五つの共同主催国の一つ。「軍事 AI の責任ある使用」を国際議題に押し上げています。',
         content: `Responsible AI in the Military Domain (REAIM) Seoul Summit 2024 是 REAIM 系列的第二届，新加坡作为五个联合主办国之一（与韩国、荷兰、英国、肯尼亚），把军事 AI 的责任使用推到国际议程。Summit 通过《Blueprint for Action》——首个把军事 AI 治理写成可操作步骤的多边文件，覆盖：人在指挥链中的位置、自主武器边界、AI 决策的国际人道法适用、跨国信任建立机制。新加坡同时主持 REAIM Asia Regional Consultations，把对话扩到东南亚。这是新加坡用"治理中立区"定位介入最敏感议题（军事 AI）的标志性动作——不靠武力，靠规则起草权。`,
@@ -2357,6 +2719,14 @@ This remains one of Singapore’s most important international governance levers
         summary: '新加坡主办的 AI 安全科学交流机制：2025 年产出 Singapore Consensus，2026 年 5 月继续更新研究优先级。',
         summaryKo:
           '싱가포르가 주최하는 AI 안전 과학 교류 메커니즘: 2025년에 Singapore Consensus를 만들었고, 2026년 5월 연구 우선순위를 계속 업데이트했습니다.',
+        whyItMatters:
+          'ISE 从 2025 年一次性会议变成 2026 年 5 月的年度机制，新加坡靠 Singapore Consensus 把 AI 安全议题变成绕开中美对立的技术合作阵地',
+        whyItMattersEn:
+          'ISE evolved from a one-off conference in 2025 to an annual mechanism in May 2026, with Singapore using the Singapore Consensus to transform AI safety into a technical cooperation arena that circumvents China-US tensions.',
+        whyItMattersJa:
+          'ISEが2025年の一度きりの会議から2026年5月の年次機制へと転換し、シンガポールは『Singapore Consensus』によってAI安全議題を米中対立を迂回する技術協力の陣地へと変えました。',
+        whyItMattersKo:
+          'ISE가 2025년 일회성 회의에서 2026년 5월의 연중 체계로 전환되었으며, 싱가포르는 「Singapore Consensus」로 AI 안전 의제를 중미 대립을 우회하는 기술 협력 진지로 전환했습니다.',
         summaryJa:
           'シンガポール主催の AI 安全科学交流メカニズム。2025 年に Singapore Consensus を生み、2026 年 5 月に研究優先事項を継続更新。',
         content: `International Scientific Exchange on AI Safety (ISE) 是新加坡用科学会议方式推动 AI 安全国际合作的机制，由 IMDA / Singapore AI Safety Institute 牵头。
@@ -2413,6 +2783,14 @@ The design is deliberately a mix of scientists, government, and industry rather 
         contentJa: `シンガポール情報・デジタル発展大臣は、創設メンバーとしてジュネーブを訪問し、グローバル・エーアイ・フォー・グッド委員会の立ち上げと初回会議に参加しました。同委員会はルワンダ大統領ポール・カガメ氏とSalesforce最高経営責任者マーク・ベニオフ氏が共同議長を務め、各国首脳、産業リーダー、国連機関が一堂に集い、信頼の強化とAIアクセスの拡大に取り組みます。シンガポールはAIによる産業の変革、国境を超えた相互運用可能なガバナンス枠組みの構築、および国家AI任務、AI Verifyなどの実装経験の共有に注力しています。`,
         summaryKo:
           '싱가포르 디지털발전정보부 장관이 창립 회원으로서 제네바를 방문하여 글로벌 AI 포 굿 위원회의 출범 및 첫 회의에 참석합니다. 본 위원회는 르완다 대통령 폴 카가메와 Salesforce CEO 마크 베니오프가 공동 의장을 맡고 있으며, 각국 정상, 산업 지도자, 유엔 기구를 한데 모아 신뢰 강화 및 AI 접근 확대를 도모합니다. 싱가포르는 AI 산업 전환 추진, 국경 간 상호운용 가능한 거버넌스 프레임워크 구축, 국가 AI 임무 및 AI Verify 등의 구현 경험 공유를 중점적으로 추진합니다.',
+        whyItMatters:
+          '新加坡 7 月以创始成员身份加入全球向善人工智能委员会，意在把 AI Verify 树立为全球 AI 治理互操作的样板而非被动跟随者',
+        whyItMattersEn:
+          'In July, Singapore joined the Global AI Council for Good as a founding member, aiming to establish AI Verify as a model for global AI governance interoperability rather than as a passive follower.',
+        whyItMattersJa:
+          'シンガポールが7月に創設メンバーとして世界向善AI委員会に参加し、AI Verifyを世界的なAI治理の相互運用性の見本として確立し、受動的な追随者ではなく主導権を発揮することを意図しています。',
+        whyItMattersKo:
+          '싱가포르는 7월에 「글로벌 선한 인공지능 위원회」의 창립 회원 자격으로 가입하여, 「AI Verify」를 글로벌 AI 치리 상호운용성의 모범으로 수립함으로써 수동적 추종자가 아닌 선도자 위상을 표현했습니다.',
         contentKo: `싱가포르 디지털발전정보부 장관이 창립 회원으로서 제네바를 방문하여 글로벌 AI 포 굿 위원회의 출범 및 첫 회의에 참석합니다. 본 위원회는 르완다 대통령 폴 카가메와 Salesforce CEO 마크 베니오프가 공동 의장을 맡고 있으며, 각국 정상, 산업 지도자, 유엔 기구를 한데 모아 신뢰 강화 및 AI 접근 확대를 도모합니다. 싱가포르는 AI 산업 전환 추진, 국경 간 상호운용 가능한 거버넌스 프레임워크 구축, 국가 AI 임무 및 AI Verify 등의 구현 경험 공유를 중점적으로 추진합니다.`,
         sourceEn: 'Ministry of Digital Development and Information (MDDI)',
         sourceJa: 'デジタル開発情報省 (MDDI)',
