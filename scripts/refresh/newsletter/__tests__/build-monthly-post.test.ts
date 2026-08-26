@@ -84,6 +84,32 @@ test('a manual update without href renders unlinked', () => {
   assert.ok(body.includes('- [政策 A](/policies/a/)（2026-08-10）\n'));
 });
 
+test('a manual longform entry links through links[0] and lands in 其他', () => {
+  // Shape of a real MANUAL_UPDATES row: no href, one links[] entry. These
+  // come from sortedUpdates(), not deriveUpdates() — the --emit-post path
+  // must feed the former or every longform piece of the month disappears.
+  const manual = u({
+    type: 'longform',
+    title: '长文：新加坡管 AI 的部门有哪些',
+    href: undefined,
+    summary: '四十多个部委各占一段',
+    links: [
+      { href: '/singapore-ai-agencies-map/', label: '阅读全文', labelEn: 'Read the full piece' },
+      { href: '/about/', label: '关于', labelEn: 'About' },
+    ],
+  });
+  const { body } = buildMonthlyPost([manual, u({ type: 'policy' }), u({ type: 'video', href: '/videos/a/' })], OPTS);
+
+  assert.ok(
+    body.includes('- [长文：新加坡管 AI 的部门有哪些](/singapore-ai-agencies-map/)（2026-08-10）— 四十多个部委各占一段')
+  );
+  // Only the FIRST link is used as the destination.
+  assert.ok(!body.includes('(/about/)'));
+  // longform is not one of the five named sections — it belongs to 其他.
+  assert.equal(sectionOf('longform'), 'other');
+  assert.match(body.split('\n')[0], /^本月站内更新 3 条：1 政策 · 1 视频 · 1 其他 · 阅读约 \d+ 分钟$/);
+});
+
 test('eventDate is shown when it differs from addedAt, otherwise addedAt', () => {
   const { body } = buildMonthlyPost(
     [

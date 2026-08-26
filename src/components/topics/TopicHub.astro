@@ -33,11 +33,21 @@ interface PostRow {
   href: string;
   date: string | undefined;
 }
+// Mirror lookup by canonical slug. The glob loader's `id` carries NO file
+// extension and prefixes the locale as either `en/foo` or `en-foo`
+// (loader-version dependent — same caveat src/utils/blog.ts documents), so
+// matching on `/${slug}.md` never hit and the longform group silently
+// rendered empty on every non-zh locale.
+const mirrorSlug = (id: string, l: Lang): string =>
+  id.replace(/\.(md|mdx)$/i, '').replace(new RegExp(`^${l}[/-]`, 'i'), '');
+
 const postRows: PostRow[] = zhSources
   .map((zh) => {
     const slug = zh.id.replace(/^.*\//, '').replace(/\.md$/, '');
     const mirror =
-      postLang === 'zh' ? zh : allPosts.find((p) => (p.data.lang ?? 'zh') === postLang && p.id.endsWith(`/${slug}.md`));
+      postLang === 'zh'
+        ? zh
+        : allPosts.find((p) => (p.data.lang ?? 'zh') === postLang && mirrorSlug(p.id, postLang) === slug);
     if (!mirror) return null;
     const rawTitle = mirror.data.title;
     return {

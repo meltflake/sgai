@@ -25,7 +25,7 @@ import { mkdirSync, writeFileSync } from 'node:fs';
 import { dirname } from 'node:path';
 
 import { deriveUpdates } from '../../../src/utils/derived-updates';
-import type { Update } from '../../../src/data/updates';
+import { sortedUpdates, type Update } from '../../../src/data/updates';
 import { videos } from '../../../src/data/videos';
 import { debates } from '../../../src/data/debates';
 import { categories as policyCategories } from '../../../src/data/policies';
@@ -168,14 +168,22 @@ function emailBody(updates: Update[], month: string, lang: 'zh' | 'en'): string 
 
 function main() {
   const args = parseArgs(process.argv.slice(2));
-  const updates = deriveUpdates()
-    .filter((u) => u.date.startsWith(args.month))
-    .sort((a, b) => b.date.localeCompare(a.date));
 
   if (!args.emitPost) {
-    process.stdout.write(emailBody(updates, args.month, args.lang));
+    // Email body: unchanged since before --emit-post existed, deliberately
+    // still on deriveUpdates() so the stdout output stays byte-identical.
+    const derived = deriveUpdates()
+      .filter((u) => u.date.startsWith(args.month))
+      .sort((a, b) => b.date.localeCompare(a.date));
+    process.stdout.write(emailBody(derived, args.month, args.lang));
     return;
   }
+
+  // The POST is the month's public record, so it must include the manual
+  // editorial entries (site / fix / longform) that live in MANUAL_UPDATES
+  // and only ever merge in at sortedUpdates() — deriveUpdates() alone drops
+  // every longform piece published that month.
+  const updates = sortedUpdates().filter((u) => u.date.startsWith(args.month));
 
   const post = buildMonthlyPost(updates, {
     month: args.month,

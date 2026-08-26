@@ -279,6 +279,7 @@ npm run check:post-i18n
 
 - `translate-post.ts` 偶发 JSON 解析失败（长文含「」时），**原样重跑即可**，不要去改中文原文。
 - 正文由纯函数 `scripts/refresh/newsletter/build-monthly-post.ts` 的 `buildMonthlyPost()` 组装（无 `src/data` 依赖，单测在 `__tests__/build-monthly-post.test.ts`）。
+- **长文的条目源是 `sortedUpdates()`，不是 `deriveUpdates()`**：`src/data/updates.ts` 的 `MANUAL_UPDATES`（site / fix / longform 这类编辑性事件）只在 `sortedUpdates()` 里合并，用派生层会把当月发布的所有长文整批漏掉。这类条目没有 `href`，出链取 `links[0].href`，两者都没有就渲染成不带链接的标题。邮件正文（不加 `--emit-post`）仍走 `deriveUpdates()`，输出与历史逐字节一致。
 - `topicIds` 从当月 policy / debate / video 三类 record 的 topic 映射取并集；并集为空时回落 `['national-strategy']`，保证 `npm run check:graph` 的 post coverage 门通过。frontmatter 里必须是**单行内联数组**（verify-graph 用 `/^topicIds: \[(.*)\]$/m` 匹配）。
 - **不要只提交 zh 原文**——`check:post-i18n` 要求 en/ja/ko/zh-tw 四个镜像同 PR 齐全。
 - Buttondown 邮件正文 = 站内长文链接 + 那行统计（`本月站内更新 N 条：…`），不要把全文粘进邮件——邮件负责导流，长文负责留存。

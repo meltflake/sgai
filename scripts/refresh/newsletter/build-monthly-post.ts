@@ -82,8 +82,19 @@ function itemDate(u: Update): string {
   return u.date;
 }
 
+/**
+ * Where an item links. Derived records carry `href` (a direct record page);
+ * manual editorial entries (site / fix / longform) have no href and instead
+ * carry a `links[]` array whose first entry is the "read it" destination.
+ * Neither present → the title renders unlinked.
+ */
+function itemHref(u: Update): string | undefined {
+  return u.href ?? u.links?.[0]?.href;
+}
+
 function itemLine(u: Update): string {
-  const title = u.href ? `[${u.title}](${u.href})` : u.title;
+  const href = itemHref(u);
+  const title = href ? `[${u.title}](${href})` : u.title;
   const head = `- ${title}（${itemDate(u)}）`;
   const summary = (u.summary ?? '').trim();
   return summary ? `${head}— ${summary}` : head;
