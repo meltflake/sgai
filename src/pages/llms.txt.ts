@@ -13,6 +13,7 @@ import {
   leverPages,
   startupEntityPages,
 } from '~/utils/entity-pages';
+import { licenseLine } from '~/utils/license';
 
 export const prerender = true;
 
@@ -32,6 +33,7 @@ Primary languages: zh-CN (default), en
 Canonical domain: ${base}
 Sitemap: ${base}/sitemap-index.xml
 Full LLM index: ${base}/llms-full.txt
+${licenseLine('en')}
 
 ## High-value Pages
 
