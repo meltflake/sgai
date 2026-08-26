@@ -147,6 +147,7 @@ npx prettier --write src/
 - SocialChannel：含 CJK 的 `label` 必须配对 `labelEn`。
 - 提交前必跑：`npx tsx scripts/lib/i18n-pair.ts --locales=en,ja <动过的文件>`（emit 时已自动跑，但手工编辑也要跑）+ `npm run build && npm run check:dist`。前者扫源码，后者扫 `dist/` 中文残留 + JSON-LD 合规。
 - 单独验证某 locale 渲染：`node scripts/i18n-check.mjs --lang zh-tw` 或 `--lang ko` 扫 `dist/<lang>/**.html` 的残留。
+- `whyItMatters`（首页"最近更新"那一行判断）：videos / policies 两条 emit 管线**自动产出四语**（`whyItMatters` + `En` / `Ja` / `Ko`），起草器是 [scripts/lib/why-it-matters.ts](scripts/lib/why-it-matters.ts)，批量封装在 [scripts/lib/why-it-matters-batch.ts](scripts/lib/why-it-matters-batch.ts)——起草或翻译失败就四条全不写（绝不只写 zh，`check:i18n-completeness` 会拒），只打一行 WARN，不中断 PR。**debates 走的是 Python hansard 管线，不自动产出**：新辩论落地后手动跑一次 `npx tsx scripts/backfill-why-it-matters.ts --only=debates`。
 - 自动管线已强制：`scripts/lib/auto-discovered-emit.ts` 和各 `emit.ts` 在 emit 后跑 `findUnpairedFields` baseline-vs-after diff，新引入 unpaired 自动 rollback；不会"偷偷"放出单语种数据。11 条 refresh 管线当前自动产出 `*En` + `*Ja`；让它们也产出 `*Ko`，每个 `emit.ts` 找到 `zh→ja` 那行旁边加一行 `zh→ko, targetSuffix: 'Ko'` 即可。
 
 ### 6. sourceUrl 真实性约定（关键 — 最高优先级）

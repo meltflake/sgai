@@ -173,7 +173,7 @@ async function main(): Promise<void> {
 
   // 5. Emit.
   process.stdout.write('\n  Emitting...\n');
-  const emitResult = emit(enrichResult.enriched);
+  const emitResult = await emit(enrichResult.enriched);
   process.stdout.write(`  added ${emitResult.recordsAdded} records, skipped ${emitResult.skipped.length}\n`);
   for (const [cat, n] of Object.entries(emitResult.perCategory)) {
     if (n > 0) process.stdout.write(`    ${cat}: +${n}\n`);
