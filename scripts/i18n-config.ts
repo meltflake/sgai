@@ -150,6 +150,8 @@ export const I18N_CONFIG: FileSchema[] = [
           { field: 'source', locales: FULL_LOCALES, required: true },
           { field: 'summary', locales: FULL_LOCALES, required: true },
           { field: 'content', locales: FULL_LOCALES, required: true },
+          // Optional per record, but once present every locale sibling is required.
+          { field: 'whyItMatters', locales: FULL_LOCALES },
         ],
       },
       {

@@ -90,6 +90,8 @@ const DEFAULT_FIELDS = [
   'name',
   'label',
   'summary',
+  'whyItMatters', // policies / videos / debates one-line judgment (2026-08 backfill); benchmarking already 4-lang
+
   'note',
   'excerpt',
   'tagline',

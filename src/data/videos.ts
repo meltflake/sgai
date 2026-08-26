@@ -20,6 +20,13 @@ export interface VideoItem {
   summaryEn?: string;
   summaryJa?: string;
   summaryKo?: string;
+  /** 一句话：这条对新加坡 AI 战略为什么重要（含一个具体数字 / 日期 / 机构）。
+   *  与 summary（发生了什么）分开。四语同 commit；drafted by
+   *  scripts/lib/why-it-matters.ts, gated by check:i18n-completeness. */
+  whyItMatters?: string;
+  whyItMattersEn?: string;
+  whyItMattersJa?: string;
+  whyItMattersKo?: string;
   topic: string;
   topicEn?: string;
   topicJa?: string;
