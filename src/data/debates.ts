@@ -6540,7 +6540,7 @@ The Deputy Prime Minister (Mr Heng Swee Keat)
     whyItMattersJa:
       '国会が米国輸出管理第2階層への指定について追及し、シンガポールの米国チップに対する自主権がほぼゼロであること、AI戦略がワシントンの分級方針に受動的に従属していることが露呈されました。',
     whyItMattersKo:
-      '국회가 싱가포르가 미국 수출통제 제2등급에 포함되어 있는지 추궁하며 싱가포르의 미국 칩 자주권이 거의 영(零)에 가까운 것을 노출시켰으며, AI 전략이 워싱턴의 분급 결정에 수동적으로 종속되어 있음을 드러냈다',
+      '국회가 싱가포르가 미국 수출통제 제2등급에 포함되어 있는지 추궁하며 싱가포르의 미국 칩 자주권이 거의 제로에 가까운 것을 노출시켰으며, AI 전략이 워싱턴의 분급 결정에 수동적으로 종속되어 있음을 드러냈다',
     summaryJa: `議員は、米国の輸出管制がシンガポール半導体産業および経済に及ぼす影響、ならびに政府がシンガポールを利用した米国制限の回避をいかに防止するかについて質問しました。政府は、シンガポールが法の支配と透明性を備えた国際商業ハブとして、違法行為に厳しく対処し、国家信用を維持することを強調しています。中核的争点は、シンガポールが米国輸出管制の第2層に指定されるかどうか、および米国との信頼関係をいかに修復するかにあります。`,
     summaryEn: `MPs asked about the impact of US export controls on Singapore's semiconductor industry and economy, and how the government will prevent firms from using Singapore to bypass US restrictions. The government stressed that Singapore is a transparent, rule-of-law international business hub that cracks down on violations and protects national reputation. The core debate: whether Singapore is placed in the second tier of US export controls and how trust with the US can be rebuilt.`,
     keyPoints: ['防止规避美出口管制', '维护国际商业信誉', '争取提升出口管制等级'],
