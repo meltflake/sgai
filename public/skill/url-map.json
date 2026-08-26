@@ -1,0 +1,429 @@
+{
+  "$schema": "https://sgai.md/schemas/skill-url-map.v1.json",
+  "version": "0.2.0",
+  "site": "https://sgai.md",
+  "primaryIndex": {
+    "description": "Master LLM index; fetch first on any unknown query, cache for the conversation.",
+    "url": "https://sgai.md/llms-full.txt"
+  },
+  "shortIndex": {
+    "description": "Compact LLM index for narrow queries.",
+    "url": "https://sgai.md/llms.txt"
+  },
+  "domains": [
+    {
+      "id": "policies",
+      "intent": "Singapore AI policy documents — National AI Strategy, Model AI Governance Framework, sector-specific policy notes.",
+      "list": {
+        "zh": "https://sgai.md/zh/policies",
+        "en": "https://sgai.md/policies"
+      },
+      "detail": {
+        "zh": "https://sgai.md/zh/policies/{id}",
+        "en": "https://sgai.md/policies/{id}"
+      },
+      "validIds": [
+        "ai-in-healthcare-guidelines-aihgle",
+        "ai-risk-management-guidelines-for-banks",
+        "ai-tester-accreditation-programme-2026",
+        "ai-verify",
+        "asean-guide-on-ai-governance-and-ethics",
+        "bletchley-declaration-on-ai-safety",
+        "budget-2025-ai-related-measures",
+        "budget-2026-national-ai-acceleration",
+        "copyright-act-2021-section-244-computational-data-analysis-exception",
+        "digital-infrastructure-bill-consultation-2026",
+        "fairness-ethics-accountability-transparency-feat-principles",
+        "global-partnership-on-ai-gpai",
+        "goals-of-smart-nation-20",
+        "google-singapore-ai-agents-sandbox-2026",
+        "guide-on-use-of-generative-ai-tools-by-court-users",
+        "guidelines-on-securing-ai-systems",
+        "health-products-act-ai-medical-devices",
+        "imda-generative-ai-chatbot-transparency-guidelines-2026",
+        "imda-microsoft-ai-safety-security-mou-2026",
+        "international-scientific-exchange-on-ai-safety",
+        "iso-iec-42119-8-generative-ai-testing-standard",
+        "minister-josephine-teo-visit-geneva-ai-for-good-global-commission",
+        "model-ai-governance-framework",
+        "model-ai-governance-framework-for-agentic-ai",
+        "moh-committee-of-supply-2026-healthcare-ai-medisave-reform",
+        "nais-update-2026",
+        "national-ai-strategy-20-nais-20",
+        "national-ai-strategy-nais-10",
+        "nvidia-singapore-ai-research-lab-2026",
+        "openai-for-singapore-2026",
+        "pdd-multi-operator-robot-testbed-2026",
+        "pdpc-advisory-guidelines-on-use-of-personal-data-in-ai",
+        "pdpc-advisory-guidelines-personal-data-in-generative-ai-2026",
+        "personal-data-protection-act-pdpa",
+        "project-mindforge-genai-risk-framework-for-financial-sector",
+        "proposed-model-ai-governance-framework-for-generative-ai",
+        "public-ai-research-investment-2026-2030",
+        "research-innovation-and-enterprise-2025-plan",
+        "responsible-ai-in-the-military-domain-reaim-seoul-summit",
+        "road-traffic-act-autonomous-vehicles",
+        "saf-digital-and-intelligence-service-fourth-service",
+        "securing-agentic-ai-addendum",
+        "seoul-ai-safety-commitment",
+        "singapore-ai-safety-institute",
+        "singapore-consensus-on-global-ai-safety-research-priorities",
+        "smart-nation-20",
+        "smart-nation-initiative",
+        "speech-by-mos-rahayu-mahzam-at-the-committee-of-supply-debate-2026",
+        "veritas-initiative"
+      ]
+    },
+    {
+      "id": "debates",
+      "intent": "Singapore Parliament Hansard debate records on AI topics, with speakers, government/opposition stance, and source link to sprs.parl.gov.sg.",
+      "list": {
+        "zh": "https://sgai.md/zh/debates",
+        "en": "https://sgai.md/debates"
+      },
+      "detail": {
+        "zh": "https://sgai.md/zh/debates/{id}",
+        "en": "https://sgai.md/debates/{id}"
+      },
+      "validIds": [
+        "budget-1112",
+        "budget-1114",
+        "budget-1120",
+        "budget-1131",
+        "budget-1306",
+        "budget-1308",
+        "budget-1313",
+        "budget-1605",
+        "budget-1846",
+        "budget-1851",
+        "budget-1862",
+        "budget-2054",
+        "budget-2072",
+        "budget-2073",
+        "budget-2078",
+        "budget-2325",
+        "budget-2328",
+        "budget-2336",
+        "budget-2338",
+        "budget-2346",
+        "budget-2361",
+        "budget-2362",
+        "budget-2363",
+        "budget-2378",
+        "budget-2570",
+        "budget-2583",
+        "budget-2585",
+        "budget-2592",
+        "budget-2593",
+        "budget-2605",
+        "budget-2610",
+        "budget-2612",
+        "budget-2614",
+        "budget-2620",
+        "budget-2844",
+        "budget-2902",
+        "budget-2905",
+        "budget-2907",
+        "budget-2913",
+        "budget-2914",
+        "budget-2915",
+        "budget-2916",
+        "budget-2918",
+        "budget-2929",
+        "budget-2930",
+        "budget-2934",
+        "budget-2937",
+        "budget-437",
+        "budget-444",
+        "budget-711",
+        "budget-832",
+        "budget-842",
+        "budget-847",
+        "budget-929",
+        "cos-mddi-2026",
+        "cos-moe-2026",
+        "cos-moh-2026",
+        "cos-mom-2026",
+        "cos-mti-2026",
+        "motion-2190",
+        "motion-2194",
+        "motion-2294",
+        "motion-2296",
+        "motion-2970",
+        "motion-2976",
+        "motion-2978",
+        "oral-answer-1251",
+        "oral-answer-1504",
+        "oral-answer-1900",
+        "oral-answer-1902",
+        "oral-answer-1935",
+        "oral-answer-1955",
+        "oral-answer-2047",
+        "oral-answer-2113",
+        "oral-answer-2283",
+        "oral-answer-2352",
+        "oral-answer-2914",
+        "oral-answer-3032",
+        "oral-answer-3193",
+        "oral-answer-3212",
+        "oral-answer-3225",
+        "oral-answer-3240",
+        "oral-answer-3295",
+        "oral-answer-3375",
+        "oral-answer-3383",
+        "oral-answer-3393",
+        "oral-answer-3478",
+        "oral-answer-3495",
+        "oral-answer-3518",
+        "oral-answer-3551",
+        "oral-answer-3564",
+        "oral-answer-3677",
+        "oral-answer-3729",
+        "oral-answer-3738",
+        "oral-answer-3785",
+        "oral-answer-3822",
+        "oral-answer-3852",
+        "oral-answer-3873",
+        "oral-answer-3923",
+        "oral-answer-3927",
+        "oral-answer-3992",
+        "oral-answer-3994",
+        "oral-answer-4013",
+        "oral-answer-4017",
+        "oral-answer-4023",
+        "oral-answer-4051",
+        "oral-answer-4087",
+        "oral-answer-4100",
+        "oral-answer-4115",
+        "oral-answer-4117",
+        "oral-answer-4126",
+        "oral-answer-4127",
+        "oral-answer-4128",
+        "oral-answer-4129",
+        "oral-answer-4132",
+        "oral-answer-4140",
+        "oral-answer-4150",
+        "oral-answer-4152",
+        "oral-answer-4156",
+        "written-answer-12075",
+        "written-answer-12692",
+        "written-answer-12799",
+        "written-answer-13336",
+        "written-answer-13437",
+        "written-answer-13935",
+        "written-answer-14629",
+        "written-answer-15158",
+        "written-answer-15268",
+        "written-answer-15269",
+        "written-answer-15270",
+        "written-answer-15541",
+        "written-answer-15542",
+        "written-answer-16024",
+        "written-answer-16262",
+        "written-answer-17278",
+        "written-answer-17287",
+        "written-answer-17376",
+        "written-answer-17447",
+        "written-answer-18175",
+        "written-answer-18184",
+        "written-answer-18326",
+        "written-answer-18417",
+        "written-answer-18677",
+        "written-answer-19554",
+        "written-answer-19797",
+        "written-answer-19800",
+        "written-answer-20058",
+        "written-answer-20810",
+        "written-answer-20811",
+        "written-answer-20819",
+        "written-answer-20821",
+        "written-answer-20835",
+        "written-answer-21161",
+        "written-answer-21302",
+        "written-answer-21309",
+        "written-answer-21666",
+        "written-answer-21904",
+        "written-answer-21915",
+        "written-answer-22443",
+        "written-answer-22575",
+        "written-answer-22734",
+        "written-answer-22760",
+        "written-answer-22761",
+        "written-answer-23162",
+        "written-answer-23177",
+        "written-answer-23360",
+        "written-answer-23374",
+        "written-answer-23375",
+        "written-answer-23376",
+        "written-answer-23377",
+        "written-answer-23411",
+        "written-answer-23448",
+        "written-answer-23450",
+        "written-answer-23654",
+        "written-answer-23655",
+        "written-answer-23658",
+        "written-answer-23669",
+        "written-answer-23694",
+        "written-answer-3762",
+        "written-answer-4214",
+        "written-answer-4736",
+        "written-answer-5627",
+        "written-answer-5800",
+        "written-answer-6772",
+        "written-answer-8049",
+        "written-answer-9318",
+        "written-answer-9674"
+      ]
+    },
+    {
+      "id": "voices",
+      "intent": "Profiles of individual people in Singapore AI — ministers, agency heads, academics, founders. /voices is the canonical entry for all people; individual pages are at /voices/{slug}.",
+      "list": {
+        "zh": "https://sgai.md/zh/voices",
+        "en": "https://sgai.md/voices"
+      },
+      "detail": {
+        "zh": "https://sgai.md/zh/voices/{slug}",
+        "en": "https://sgai.md/voices/{slug}"
+      }
+    },
+    {
+      "id": "levers",
+      "intent": "The 6 national AI strategy levers. Lever slugs: 1=infrastructure, 2=governance, 3=talent, 4=applications, 5=government-self-use, 6=diplomacy.",
+      "list": {
+        "zh": "https://sgai.md/zh/levers",
+        "en": "https://sgai.md/levers"
+      },
+      "detail": {
+        "zh": "https://sgai.md/zh/levers/{slug}",
+        "en": "https://sgai.md/levers/{slug}"
+      },
+      "detailNote": "Top-level lever slugs: lever-1-infrastructure, lever-2-governance, lever-3-talent, lever-4-applications, lever-5-government-self-use, lever-6-diplomacy. Lever-item pages use their own slugs (e.g., microsoft-data-center) — fetch the list page first to discover them."
+    },
+    {
+      "id": "talent",
+      "intent": "Singapore AI talent / training programs — AISG Apprenticeship, AI Singapore 100E, IMDA TechSkills Accelerator AI track, etc.",
+      "list": {
+        "zh": "https://sgai.md/zh/talent",
+        "en": "https://sgai.md/talent"
+      }
+    },
+    {
+      "id": "ecosystem",
+      "intent": "Singapore AI ecosystem entities — agencies, universities, research centres, funding bodies, key publications.",
+      "list": {
+        "zh": "https://sgai.md/zh/ecosystem",
+        "en": "https://sgai.md/ecosystem"
+      }
+    },
+    {
+      "id": "startups",
+      "intent": "Singapore AI startups and unicorns — sector, funding, valuation.",
+      "list": {
+        "zh": "https://sgai.md/zh/startups",
+        "en": "https://sgai.md/startups"
+      }
+    },
+    {
+      "id": "tracker",
+      "intent": "Quantitative observatory tracking Singapore's AI development across 6 dimensions (investment, talent, compute, adoption, research, governance) vs target.",
+      "list": {
+        "zh": "https://sgai.md/zh/tracker",
+        "en": "https://sgai.md/tracker"
+      }
+    },
+    {
+      "id": "benchmarking",
+      "intent": "Singapore AI strategy benchmarked against 10+ regions — US, China, UK, EU, Canada, Japan, South Korea, India, UAE, etc.",
+      "list": {
+        "zh": "https://sgai.md/zh/benchmarking",
+        "en": "https://sgai.md/benchmarking"
+      }
+    },
+    {
+      "id": "legal-ai",
+      "intent": "Singapore AI legal/regulatory framework cards — PDPA, Model AI Governance Framework, AI Verify, sector regulator guidance.",
+      "list": {
+        "zh": "https://sgai.md/zh/legal-ai",
+        "en": "https://sgai.md/legal-ai"
+      }
+    },
+    {
+      "id": "timeline",
+      "intent": "Chronology of Singapore AI strategy milestones, from early 2010s to present and announced 2027 targets.",
+      "list": {
+        "zh": "https://sgai.md/zh/timeline",
+        "en": "https://sgai.md/timeline"
+      }
+    },
+    {
+      "id": "evolution",
+      "intent": "Long-form narrative of Singapore AI strategy evolution. Use for 'how did we get here' questions.",
+      "list": {
+        "zh": "https://sgai.md/zh/evolution",
+        "en": "https://sgai.md/evolution"
+      }
+    },
+    {
+      "id": "videos",
+      "intent": "Curated official AI videos — minister speeches, agency announcements, research talks. Each entry has YouTube link and bilingual summary.",
+      "list": {
+        "zh": "https://sgai.md/zh/videos",
+        "en": "https://sgai.md/videos"
+      }
+    },
+    {
+      "id": "speeches",
+      "intent": "MDDI and other ministerial speeches on AI. No list page — individual speeches are at /speeches/{slug}, typically linked from /voices/{person} pages or referenced in /debates and /videos.",
+      "detail": {
+        "zh": "https://sgai.md/zh/speeches/{slug}",
+        "en": "https://sgai.md/speeches/{slug}"
+      },
+      "detailNote": "Discover speech slugs via /voices/{person}, /debates, or the master /llms-full.txt index."
+    },
+    {
+      "id": "fieldnotes",
+      "intent": "Case-study research notes on specific Singapore AI deployments — fintech, healthcare, public-sector pilots.",
+      "list": {
+        "zh": "https://sgai.md/zh/fieldnotes",
+        "en": "https://sgai.md/fieldnotes"
+      }
+    },
+    {
+      "id": "challenges",
+      "intent": "Open questions and structural challenges in Singapore AI strategy — talent supply, compute scarcity, governance gaps.",
+      "list": {
+        "zh": "https://sgai.md/zh/challenges",
+        "en": "https://sgai.md/challenges"
+      }
+    },
+    {
+      "id": "community-opensource",
+      "intent": "Singapore-origin open-source AI projects from universities and corporates.",
+      "list": {
+        "zh": "https://sgai.md/zh/community-opensource",
+        "en": "https://sgai.md/community-opensource"
+      }
+    },
+    {
+      "id": "references",
+      "intent": "Curated official-source link library — government documents, academic reports, frameworks, toolkits.",
+      "list": {
+        "zh": "https://sgai.md/zh/references",
+        "en": "https://sgai.md/references"
+      }
+    }
+  ],
+  "intentMatchHints": {
+    "policy_lookup": ["policies", "legal-ai"],
+    "specific_minister_speech": ["voices", "speeches", "videos", "debates"],
+    "investment_or_grant": ["levers", "policies", "tracker"],
+    "training_or_program": ["talent", "ecosystem"],
+    "compare_to_other_country": ["benchmarking"],
+    "ecosystem_who_is_who": ["ecosystem", "voices", "startups"],
+    "regulatory_compliance": ["legal-ai", "policies", "references"],
+    "history_or_chronology": ["timeline", "evolution"],
+    "broad_overview": ["levers", "tracker"],
+    "deep_research_with_sources": ["references", "fieldnotes", "debates"]
+  }
+}

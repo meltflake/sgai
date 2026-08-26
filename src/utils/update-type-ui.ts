@@ -4,6 +4,8 @@
 // (homepage feed, /updates/ listing, masthead delta, RSS titles). Used to be
 // copy-pasted into three components; one drifted copy is one too many.
 
+import { createHash } from 'node:crypto';
+
 import type { Update, UpdateLink, UpdateType } from '~/data/updates';
 import type { DataSource } from '~/utils/derived-updates';
 import { t, type Lang } from '~/i18n';
@@ -85,6 +87,28 @@ export function updateText(u: Update, field: 'title' | 'summary', lang: Lang): s
   const ja = field === 'title' ? u.titleJa : u.summaryJa;
   const ko = field === 'title' ? u.titleKo : u.summaryKo;
   return pickStrict({ zh, en, ja, ko }, lang);
+}
+
+/**
+ * Stable, unique RSS guid for an Update. `@astrojs/rss` defaults the guid to
+ * the item link, but ~70 of the feed's rows share a link (manual editorial
+ * entries fall back to /updates/, id-less startups to /startups/, capital
+ * events to /ecosystem/#capital) and readers dedupe on guid — those rows
+ * would collapse to a handful. Records with an id use it; the rest hash
+ * the title. Type + date keep the key unique even across data files.
+ */
+export function updateGuid(u: Update): string {
+  const key = u.id ?? createHash('sha1').update(u.title).digest('hex').slice(0, 12);
+  return `sgai:${u.type}:${u.date}:${key}`;
+}
+
+/**
+ * Link path for an RSS item. `@astrojs/rss` runs the link through
+ * createCanonicalURL, which appends the trailing slash AFTER any fragment
+ * (`/ecosystem/#capital/`), so anchored hrefs are trimmed to their page.
+ */
+export function updateLinkPath(u: Update): string {
+  return (u.href ?? '/updates/').split('#')[0];
 }
 
 /** Same strict per-lang resolution for a manual entry's link labels. */
