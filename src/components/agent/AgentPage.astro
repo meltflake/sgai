@@ -599,9 +599,10 @@ const licenseHtml = licenseLine(lang).replace(
                 class="not-prose my-6 overflow-x-auto rounded-md border border-subtle bg-gray-50 dark:bg-slate-900"
                 {...sampleAttrs}
               >
-                <pre class="!m-0 !bg-transparent p-4 text-sm leading-relaxed">
-                  <code>{b.lines.join('\n')}</code>
-                </pre>
+                {/* set:text (not a child expression) keeps prettier from
+                    indenting inside <pre>, where whitespace is significant
+                    and would be copy-pasted along with the command. */}
+                <pre class="!m-0 !bg-transparent p-4 text-sm leading-relaxed" set:text={b.lines.join('\n')} />
               </div>
             );
           return (
