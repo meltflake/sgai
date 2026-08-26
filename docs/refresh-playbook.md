@@ -95,6 +95,7 @@ npm run eval:video-transcript -- --include-historical        # 全量审计
   - 扫描落盘 `scripts/videos/data/candidates.json` 走 **merge-write**（按 videoId 并集、剔除已入库），RSS 窗口只有 15 条也不丢候选
   - `state.domains.videos.video_ids` 记录「已 emit 过」的 id——PR 未合并期间不重复 emit；**PR 被拒的视频永久不回来**（人说过的 no 就是 no），要重发就从 state 里删掉该 id
   - emit 失败 → state 不更新 → 次日自动重试；字幕翻译失败 → PR 上 `eval:video-transcript` 红灯挡合并
+  - **`whyItMatters` 自动产出四语**：emit 对每条新视频调 [scripts/lib/why-it-matters.ts](../scripts/lib/why-it-matters.ts) 起草中文判断，再翻 en / ja / ko，四条一起写进 record（`--dry-run` 时跳过，不烧 LLM）。起草或翻译失败只打一行 WARN 并四条全不写——绝不只写 zh（`check:i18n-completeness` 会拒）。debates 走的是 Python hansard 管线不自动产出，新辩论落地后跑 `npx tsx scripts/backfill-why-it-matters.ts --only=debates` 补。
 - **频率**: 日级（cron auto-PR）
 
 #### `/speeches/[id]` + `/voices` + `/voices/[id]`
@@ -140,6 +141,7 @@ npx tsx scripts/refresh/policies/run.ts --no-push              # 仅 commit 不�
 ```
 
 - **失败回退**: emit 后跑 `i18n-pair.ts` 校验，缺 `*En` 字段自动 rollback；任意一步失败邮件标红
+- **`whyItMatters` 自动产出四语**: emit 对每条新政策调 [scripts/lib/why-it-matters.ts](../scripts/lib/why-it-matters.ts) 起草中文判断，再翻 en / ja / ko，四条一起写进 record。起草或翻译失败只打一行 WARN 并四条全不写——绝不只写 zh（`check:i18n-completeness` 会拒）。debates 走的是 Python hansard 管线不自动产出，新辩论落地后跑 `npx tsx scripts/backfill-why-it-matters.ts --only=debates` 补。
 - **频率**: 月级（cron monthly）
 - **置信度**: AI 摘要返回 high/medium/low；low 标 `_pendingReview`，不上首页
 

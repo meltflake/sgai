@@ -23,6 +23,8 @@ import { resolve } from 'node:path';
 
 import { findUnpairedFields } from '../../lib/i18n-pair.ts';
 import { formatWithPrettier } from '../../lib/prettier-format.ts';
+import { draftWhyItMattersBatch, type WhyBatchOptions, type WhyFields } from '../../lib/why-it-matters-batch.ts';
+import type { WhyInput } from '../../lib/why-it-matters.ts';
 import type { EnrichedPolicy } from './enrich.ts';
 import type { PolicyCategoryName } from './sources.ts';
 
@@ -42,7 +44,11 @@ function escapeQuote(s: string): string {
   return s.replace(/'/g, "\\'");
 }
 
-export function formatPolicyRecord(p: EnrichedPolicy, defaultMinistry?: string): string {
+export function formatPolicyRecord(
+  p: EnrichedPolicy,
+  defaultMinistry?: string,
+  why?: WhyFields
+): string {
   const s = p.summary;
   const date = (s.publishedDate || p.pageDate || new Date().toISOString().slice(0, 10)).slice(0, 7);
   const lines: string[] = [];
@@ -70,6 +76,14 @@ export function formatPolicyRecord(p: EnrichedPolicy, defaultMinistry?: string):
   if (s.descriptionKo) {
     lines.push(`        summaryKo: '${escapeQuote(s.descriptionKo)}',`);
     lines.push('        contentKo: `' + escapeBacktick(s.descriptionKo) + '`,');
+  }
+  // All four or none — CLAUDE.md rule #5: once the zh value is present,
+  // check:i18n-completeness requires the en / ja / ko siblings too.
+  if (why && why.whyItMatters && why.whyItMattersEn && why.whyItMattersJa && why.whyItMattersKo) {
+    lines.push(`        whyItMatters: '${escapeQuote(why.whyItMatters)}',`);
+    lines.push(`        whyItMattersEn: '${escapeQuote(why.whyItMattersEn)}',`);
+    lines.push(`        whyItMattersJa: '${escapeQuote(why.whyItMattersJa)}',`);
+    lines.push(`        whyItMattersKo: '${escapeQuote(why.whyItMattersKo)}',`);
   }
   lines.push(`        sourceEn: '${escapeQuote(p.candidate.defaultSourceEn)}',`);
   lines.push(`        sourceJa: '${escapeQuote(p.candidate.defaultSourceJa)}',`);
@@ -131,10 +145,45 @@ function findCategoryArrayCloseLine(lines: string[], categoryName: string): numb
   throw new Error(`Could not find closing ] for ${categoryName}`);
 }
 
-export function emit(
+/**
+ * Draft the one-line `whyItMatters` judgment (zh) for every NEW record and
+ * translate it to en / ja / ko. All-or-nothing per record: a draft that
+ * throws, or an incomplete translation, drops that record from the map and
+ * logs one WARN line — the emit continues without the field.
+ *
+ * `draft` / `translate` are injectable so tests can run offline.
+ */
+export async function draftWhyForPolicies(
+  accepted: EnrichedPolicy[],
+  options: Pick<WhyBatchOptions, 'draft' | 'translate' | 'warn' | 'draftCacheDir' | 'translateCacheDir'> = {}
+): Promise<Map<string, WhyFields>> {
+  const inputs: WhyInput[] = accepted.map((p) => ({
+    kind: 'policy',
+    id: p.id,
+    title: p.summary.title,
+    date: p.summary.publishedDate || p.pageDate || undefined,
+    actors: p.candidate.defaultSource,
+    summary: p.summary.description,
+    // The scraped page text — the richest `content` the emit holds at this
+    // point (the record's own `content` field is just the zh description).
+    detail: p.contentText ? p.contentText.slice(0, 1500) : undefined,
+    sourceUrl: p.candidate.sourceUrl,
+  }));
+  return draftWhyItMattersBatch(inputs, options);
+}
+
+export async function emit(
   enrichedItems: EnrichedPolicy[],
-  options: { filePath?: string; dryRun?: boolean } = {}
-): EmitResult {
+  options: {
+    filePath?: string;
+    dryRun?: boolean;
+    /** Injectable for tests — defaults to the real LLM drafter. */
+    draft?: WhyBatchOptions['draft'];
+    /** Injectable for tests — defaults to the real Claude-CLI translator. */
+    translate?: WhyBatchOptions['translate'];
+    warn?: WhyBatchOptions['warn'];
+  } = {}
+): Promise<EmitResult> {
   const filePath = options.filePath || POLICIES_FILE;
   if (!existsSync(filePath)) throw new Error(`Target file not found: ${filePath}`);
 
@@ -166,6 +215,16 @@ export function emit(
     };
   }
 
+  // whyItMatters (zh + en/ja/ko) per accepted record. Skipped on dryRun so a
+  // scan-only run burns no LLM calls.
+  const whyById = options.dryRun
+    ? new Map<string, WhyFields>()
+    : await draftWhyForPolicies(accepted, {
+        draft: options.draft,
+        translate: options.translate,
+        warn: options.warn,
+      });
+
   // Group by category for efficient single-pass insertion.
   const byCategory = new Map<string, EnrichedPolicy[]>();
   for (const e of accepted) {
@@ -189,7 +248,9 @@ export function emit(
   for (const category of orderedCategories) {
     const closeLine = findCategoryArrayCloseLine(lines, category);
     const records = byCategory.get(category)!;
-    const formatted = records.map((r) => formatPolicyRecord(r, r.candidate.defaultMinistry)).join('\n');
+    const formatted = records
+      .map((r) => formatPolicyRecord(r, r.candidate.defaultMinistry, whyById.get(r.id)))
+      .join('\n');
     lines = [...lines.slice(0, closeLine), formatted, ...lines.slice(closeLine)];
     perCategory[category as PolicyCategoryName] = (perCategory[category as PolicyCategoryName] || 0) + records.length;
   }

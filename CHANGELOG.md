@@ -31,6 +31,11 @@
 - 新 `scripts/lib/why-it-matters.ts`（`draftWhyItMatters`，sonnet 草稿 + 形状校验 + sha256 缓存）与 `scripts/backfill-why-it-matters.ts`（按 `id` 定位、`summaryKo` 值后插 4 行、写前 TS 解析校验、prettier 回流；`--only / --limit / --dry-run / --force / --concurrency`）。
 - 展示：政策 / 辩论 / 视频详情页摘要下加「为什么重要」块；首页「最近更新」与 RSS 的一句话优先用它；`qa-corpus.txt` 每条追加 `Why it matters:`（Ask AI 语料）。
 - 门：`i18n-pair.ts` 的 `DEFAULT_FIELDS` 加 `whyItMatters`（有 zh 就必须四语），`i18n-config.ts` policy schema 登记（可选字段）。
+- videos / policies 两条 refresh 管线**入库即产出**四语 `whyItMatters`：新增 `scripts/lib/why-it-matters-batch.ts`（起草 + en/ja/ko 批量翻译，起草器与翻译器都可注入，缓存目录与回填脚本共用），`scripts/refresh/videos/emit.ts` 与 `scripts/refresh/policies/emit.ts` 对每条**新**记录调用它，四行紧跟 `summaryKo` 写入。dry-run 不起草，不烧 LLM。
+- 失败策略：起草被校验拒绝、LLM 报错、或 en/ja/ko 任一翻译为空，都只打一行 WARN 并**四条全不写**（绝不只写 zh，`check:i18n-completeness` 会当场拒），emit 继续跑完——一条判断缺失不该拖垮整个数据刷新 PR。
+- `scripts/refresh/videos/emit.ts` 改为可被 import：`--ids` 参数校验挪进 `main()`，`main()` 挂入口守卫，导出 `buildEntrySnippet` / `attachWhyItMatters` 供单测使用。`scripts/refresh/policies/emit.ts` 的 `emit()` 改为 async。
+- 新单测（离线，不碰网络与 `claude` CLI）：`scripts/refresh/videos/__tests__/emit-why-it-matters.test.ts` 与 `scripts/refresh/policies/__tests__/emit-why-it-matters.test.ts`，覆盖成功写四行、起草抛错写零行、翻译残缺写零行三种路径。
+- debates 仍走 Python hansard 管线，不自动产出——新辩论落地后跑 `npx tsx scripts/backfill-why-it-matters.ts --only=debates` 补（已写进 CLAUDE.md rule #5 与 refresh-playbook）。
 
 ### 「最近更新」改为每条一行，变化可见
 
