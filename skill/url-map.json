@@ -1,6 +1,6 @@
 {
   "$schema": "https://sgai.md/schemas/skill-url-map.v1.json",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "site": "https://sgai.md",
   "primaryIndex": {
     "description": "Master LLM index; fetch first on any unknown query, cache for the conversation.",

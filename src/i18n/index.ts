@@ -1796,7 +1796,7 @@ export const ja: Partial<Record<keyof typeof zh, string>> = {
   navAgent: 'エージェント連携',
   agentPageTitle: 'エージェント連携',
   agentPageDesc:
-    'Skill・RSS・JSON・Markdown の 4 つの方法で新加坡 AI 観測のデータをエージェントに接続。匿名・読み取り専用・API キー不要。',
+    'Skill・RSS・JSON・Markdown の 4 つの方法でシンガポール AI 観測のデータをエージェントに接続。匿名・読み取り専用・API キー不要。',
   evolutionPageTitle: '政策変遷分析',
   evolutionPageDesc:
     'シンガポール AI 政策変遷の全体像——2014年スマートネイションから2024年 NAIS 2.0 への戦略転換の軌跡。',
