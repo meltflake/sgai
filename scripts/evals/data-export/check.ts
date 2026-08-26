@@ -13,6 +13,12 @@
 // recordLinks(). All three are cheap to assert against the real bytes we
 // are about to ship, and impossible to assert anywhere else.
 //
+// Two of the assertions guard the gate itself rather than the data:
+// EXPECTED_DATASETS pins the six filenames so a route that stops emitting
+// shrinks the sample loudly instead of silently, and checkRecordsOrder()
+// holds records.json to the newest-first ordering that openapi.json and the
+// /agent/ page promise consumers.
+//
 // Run: npm run check:data-export   (part of npm run check:dist)
 //
 // Exit codes:
@@ -20,8 +26,9 @@
 //   1 — at least one violation (file + reason printed)
 //   2 — dist/data missing or empty (build first)
 
-import { existsSync, readdirSync, readFileSync } from 'node:fs';
+import { existsSync, readdirSync, readFileSync, realpathSync } from 'node:fs';
 import { join, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
 
 const REPO_ROOT = resolve(import.meta.dirname, '../../..');
 const DIST_DATA = join(REPO_ROOT, 'dist/data');
@@ -39,6 +46,15 @@ export const LOCALE_PREFIX: Record<string, string> = {
 };
 
 export const LOCALE_KEYS = Object.keys(LOCALE_PREFIX);
+
+/**
+ * The exports that must exist. Listing them by name (rather than trusting
+ * whatever readdir returns) is the difference between "all six datasets are
+ * healthy" and "the four that happened to build are healthy". A route that
+ * stops emitting — a renamed file, a `prerender = false`, a page that threw
+ * during build — would otherwise shrink the sample silently and still pass.
+ */
+export const EXPECTED_DATASETS = ['debates', 'index', 'policies', 'records', 'tracker', 'videos'];
 
 export interface Violation {
   file: string;
@@ -142,11 +158,48 @@ function isPrefixed(path: string): boolean {
   });
 }
 
+/**
+ * Every dataset in EXPECTED_DATASETS must be present. `found` is the list of
+ * .json basenames actually in dist/data.
+ */
+export function checkExpectedFiles(found: string[]): Violation[] {
+  const have = new Set(found.map((f) => f.replace(/\.json$/, '')));
+  return EXPECTED_DATASETS.filter((d) => !have.has(d)).map((d) => ({
+    file: `${d}.json`,
+    reason: 'expected export is missing from dist/data — the route stopped emitting',
+  }));
+}
+
+/**
+ * records.json promises newest-first ordering, in openapi.json and on the
+ * /agent/ page. A consumer polling for what is new reads the head of the
+ * array and stops; if the order silently flips, they see the oldest records
+ * forever and nothing errors. So assert the promise.
+ */
+export function checkRecordsOrder(file: string, items: unknown[]): Violation[] {
+  const out: Violation[] = [];
+  let prev: string | undefined;
+  items.forEach((raw, i) => {
+    const addedAt = (raw as { addedAt?: unknown } | null)?.addedAt;
+    if (typeof addedAt !== 'string' || addedAt === '') {
+      out.push({ file, reason: `items[${i}].addedAt is missing — cannot verify ordering` });
+      return;
+    }
+    if (prev !== undefined && addedAt > prev)
+      out.push({ file, reason: `items[${i}].addedAt (${addedAt}) is newer than items[${i - 1}] (${prev}) — not sorted descending` });
+    prev = addedAt;
+  });
+  return out;
+}
+
 /** Both layers for one parsed file. */
 export function checkFile(file: string, data: unknown): Violation[] {
   const out = checkEnvelope(file, data);
   const items = (data as { items?: unknown } | null)?.items;
-  if (Array.isArray(items)) out.push(...checkItems(file, items));
+  if (Array.isArray(items)) {
+    out.push(...checkItems(file, items));
+    if (file === 'records.json') out.push(...checkRecordsOrder(file, items));
+  }
   return out;
 }
 
@@ -163,7 +216,7 @@ function main(): number {
     return 2;
   }
 
-  const violations: Violation[] = [];
+  const violations: Violation[] = checkExpectedFiles(files);
   for (const file of files.sort()) {
     let parsed: unknown;
     try {
@@ -190,8 +243,25 @@ function main(): number {
     return 1;
   }
 
-  console.log(`✓ data-export: ${files.length} export(s) carry a valid envelope`);
+  console.log(`✓ data-export: ${files.length} export(s) carry a valid envelope (${EXPECTED_DATASETS.join(', ')})`);
   return 0;
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) process.exit(main());
+/** Run as CLI only — importing this module from a unit test must not fire
+ *  fs reads or process.exit.
+ *
+ *  Why realpath and not a string compare against import.meta.url: the naive
+ *  form silently no-ops whenever argv[1] is a symlink or carries a
+ *  percent-encoded character, and a gate that no-ops is worse than no gate —
+ *  check:dist would pass having checked nothing. Same shape as
+ *  scripts/evals/i18n-coverage/check.ts and source-i18n-hardcode/check.ts. */
+function isEntryPoint(): boolean {
+  if (!process.argv[1]) return false;
+  try {
+    return realpathSync(process.argv[1]) === fileURLToPath(import.meta.url);
+  } catch {
+    return false;
+  }
+}
+
+if (isEntryPoint()) process.exit(main());

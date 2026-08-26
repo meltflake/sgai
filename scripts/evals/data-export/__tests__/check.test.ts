@@ -7,7 +7,16 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 
-import { checkEnvelope, checkFile, checkItems, DATA_LICENSE_URL, LOCALE_KEYS } from '../check.ts';
+import {
+  checkEnvelope,
+  checkExpectedFiles,
+  checkFile,
+  checkItems,
+  checkRecordsOrder,
+  DATA_LICENSE_URL,
+  EXPECTED_DATASETS,
+  LOCALE_KEYS,
+} from '../check.ts';
 
 const ORIGIN = 'https://sgai.md';
 
@@ -136,4 +145,62 @@ test('records.json rows need a non-empty English title', () => {
 
 test('all five locales are covered by the check', () => {
   assert.deepEqual([...LOCALE_KEYS].sort(), ['en', 'ja', 'ko', 'zh', 'zh-tw']);
+});
+
+// ── The six exports must all be there ───────────────────────────────────
+
+test('all six expected exports present → no violations', () => {
+  const found = EXPECTED_DATASETS.map((d) => `${d}.json`);
+  assert.deepEqual(checkExpectedFiles(found), []);
+});
+
+test('a missing export is a failure, not a smaller sample', () => {
+  // videos.json stopped emitting — the four healthy files must not hide it.
+  const found = EXPECTED_DATASETS.filter((d) => d !== 'videos').map((d) => `${d}.json`);
+  const v = checkExpectedFiles(found);
+  assert.equal(v.length, 1);
+  assert.equal(v[0].file, 'videos.json');
+  assert.match(v[0].reason, /missing from dist\/data/);
+});
+
+test('an empty dist/data reports every expected export', () => {
+  assert.equal(checkExpectedFiles([]).length, EXPECTED_DATASETS.length);
+});
+
+test('an extra unexpected export is not a failure', () => {
+  const found = [...EXPECTED_DATASETS.map((d) => `${d}.json`), 'experimental.json'];
+  assert.deepEqual(checkExpectedFiles(found), []);
+});
+
+// ── records.json ordering ───────────────────────────────────────────────
+
+const dated = (addedAt: string) => ({ ...goodRecord, addedAt });
+
+test('records sorted newest-first pass; equal dates are allowed', () => {
+  const items = [dated('2026-08-25'), dated('2026-08-25'), dated('2026-08-01'), dated('2025-12-31')];
+  assert.deepEqual(checkRecordsOrder('records.json', items), []);
+});
+
+test('an out-of-order record is rejected', () => {
+  const items = [dated('2026-08-01'), dated('2026-08-25')];
+  const v = checkRecordsOrder('records.json', items);
+  assert.equal(v.length, 1);
+  assert.match(v[0].reason, /not sorted descending/);
+});
+
+test('ordering is enforced through checkFile for records.json only', () => {
+  const items = [dated('2026-08-01'), dated('2026-08-25')];
+  const bad = checkFile('records.json', goodEnvelope('records', items));
+  assert.equal(bad.length, 1);
+  assert.match(bad[0].reason, /not sorted descending/);
+  // debates.json rows are data-file ordered on purpose — no ordering rule.
+  assert.deepEqual(checkFile('debates.json', goodEnvelope('debates', items)), []);
+});
+
+test('a record with no addedAt cannot be ordered and is reported', () => {
+  const noDate = { ...goodRecord } as Record<string, unknown>;
+  delete noDate.addedAt;
+  const v = checkRecordsOrder('records.json', [noDate]);
+  assert.equal(v.length, 1);
+  assert.match(v[0].reason, /addedAt is missing/);
 });
