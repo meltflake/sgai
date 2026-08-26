@@ -8,8 +8,10 @@
     "node": "^18.17.1 || ^20.3.0 || >= 21.0.0"
   },
   "scripts": {
+    "predev": "node scripts/publish-skill.mjs",
     "dev": "astro dev",
     "start": "astro dev",
+    "prebuild": "node scripts/publish-skill.mjs",
     "build": "tsx scripts/build-lastmod.ts && NODE_OPTIONS=--max-old-space-size=8192 astro build",
     "postbuild": "git rev-parse HEAD > dist/.build-commit 2>/dev/null || true",
     "preview": "astro preview",
@@ -33,6 +35,7 @@
     "check:zh-tw-misconversion": "tsx scripts/evals/zh-tw-misconversion/check.ts",
     "check:dist": "npm run check:i18n && npm run check:schema && npm run check:meta && npm run check:zh-tw-misconversion",
     "check:skill-urls": "tsx scripts/skill-url-check.ts",
+    "skill:build-url-map": "tsx scripts/skill/build-url-map.ts",
     "test:lib": "tsx --test scripts/lib/__tests__/*.test.ts scripts/data-relations/__tests__/*.test.ts scripts/evals/addedAt-coverage/__tests__/*.test.ts scripts/evals/coverage-audit/__tests__/*.test.ts scripts/evals/entity-pages-i18n/__tests__/*.test.ts scripts/evals/source-i18n-hardcode/__tests__/*.test.ts scripts/evals/stale-stats/__tests__/*.test.ts scripts/evals/facade-stats/__tests__/*.test.ts scripts/evals/mobile-responsive/__tests__/*.test.ts scripts/refresh/policies/__tests__/*.test.ts scripts/refresh/voices/__tests__/*.test.ts scripts/refresh/jobs-index/__tests__/*.test.ts scripts/refresh/reg-lookahead/__tests__/*.test.ts scripts/refresh/videos/__tests__/*.test.ts",
     "i18n-pair": "tsx scripts/lib/i18n-pair.ts",
     "eval": "tsx scripts/evals/run-all.ts",
