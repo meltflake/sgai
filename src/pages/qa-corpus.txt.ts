@@ -81,6 +81,7 @@ function buildDigest(postLines: string[]): string {
       `### ${d.date} · ${d.titleEn || d.title} (${base}/debates/${d.id}/)`,
       `Type: ${d.type}. Speakers: ${d.speakers.join(', ')}. Topics: ${d.topics.join(', ')}.`,
       clip(d.summaryEn || (d.keyPointsEn || []).join(' '), 500),
+      ...(d.whyItMattersEn ? [`Why it matters: ${clip(d.whyItMattersEn, 200)}`] : []),
       ''
     );
   }
@@ -93,6 +94,7 @@ function buildDigest(postLines: string[]): string {
         `### ${p.date} · ${p.titleEn || p.title} (${base}/policies/${p.id}/)`,
         `Source: ${p.sourceEn || p.source}.`,
         clip(p.summaryEn || p.summary, 500),
+        ...(p.whyItMattersEn ? [`Why it matters: ${clip(p.whyItMattersEn, 200)}`] : []),
         ''
       );
     }
@@ -197,6 +199,7 @@ function buildDigest(postLines: string[]): string {
     push(
       `- ${v.date} · ${v.titleEn || v.title} — ${v.speaker} (${v.speakerTitleEn || v.speakerTitle}) ${base}/videos/${v.id}/`
     );
+    if (v.whyItMattersEn) push(`  Why it matters: ${clip(v.whyItMattersEn, 200)}`);
   }
   push('');
 

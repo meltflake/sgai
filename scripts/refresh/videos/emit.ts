@@ -48,6 +48,8 @@ import { fileURLToPath } from 'node:url';
 import { callLlmJson, ensureClaudeAvailable } from '../../lib/llm.ts';
 import { autoCommit, pushAndOpenPR, buildPRBody } from '../../lib/auto-commit.ts';
 import { findUnpairedFields } from '../../lib/i18n-pair.ts';
+import { draftWhyItMattersBatch, type WhyBatchOptions } from '../../lib/why-it-matters-batch.ts';
+import type { WhyInput } from '../../lib/why-it-matters.ts';
 import { gatherRemoteVideoFacts } from './remote-truth.ts';
 
 // ── Paths ────────────────────────────────────────────────────────────────
@@ -237,11 +239,18 @@ interface BilingualVideoFields {
   speakerTitleJa?: string;
   speakerTitleKo?: string;
   speakerType: SpeakerType;
+  // One-line "why this matters" judgment. All four or none — CLAUDE.md rule
+  // #5: once the zh value is present check:i18n-completeness requires the
+  // en / ja / ko siblings too.
+  whyItMatters?: string;
+  whyItMattersEn?: string;
+  whyItMattersJa?: string;
+  whyItMattersKo?: string;
   model: string;
   generatedAt: string;
 }
 
-interface ApprovedEntry extends Candidate {
+export interface ApprovedEntry extends Candidate {
   id: string;
   duration: string;
   fields: BilingualVideoFields;
@@ -268,10 +277,15 @@ const idsArg = arg('--ids');
 const customCandidatesFile = arg('--input');
 const candidatesPath = customCandidatesFile ? resolve(ROOT, customCandidatesFile) : CANDIDATES_JSON;
 
-if (!allCandidates && !idsArg) {
-  console.error('Error: must pass --ids=<videoId1,videoId2,...> or --all');
-  console.error('Usage: npx tsx scripts/refresh/videos/emit.ts --ids=cRSlrDbcygw,dn1syFajWw0');
-  process.exit(1);
+// NB: the arg check lives in main(), not at module scope — this module is
+// imported by scripts/refresh/videos/__tests__/*.test.ts, where process.argv
+// belongs to the test runner.
+function requireCandidateSelection(): void {
+  if (!allCandidates && !idsArg) {
+    console.error('Error: must pass --ids=<videoId1,videoId2,...> or --all');
+    console.error('Usage: npx tsx scripts/refresh/videos/emit.ts --ids=cRSlrDbcygw,dn1syFajWw0');
+    process.exit(1);
+  }
 }
 
 // ── Helpers ──────────────────────────────────────────────────────────────
@@ -430,8 +444,45 @@ async function generateFields(c: Candidate): Promise<BilingualVideoFields> {
   return fields;
 }
 
+// ── whyItMatters ─────────────────────────────────────────────────────────
+/**
+ * Draft the one-line `whyItMatters` judgment (zh) for every NEW entry and
+ * translate it to en / ja / ko, writing the four siblings onto `e.fields`.
+ *
+ * All-or-nothing per record: a draft that throws, or an incomplete
+ * translation, leaves the entry without any of the four fields and logs one
+ * WARN line — never zh alone, which `check:i18n-completeness` would reject.
+ * Returns how many entries got the field.
+ *
+ * `draft` / `translate` are injectable so tests can run offline.
+ */
+export async function attachWhyItMatters(
+  entries: ApprovedEntry[],
+  options: Pick<WhyBatchOptions, 'draft' | 'translate' | 'warn' | 'draftCacheDir' | 'translateCacheDir'> = {}
+): Promise<number> {
+  const inputs: WhyInput[] = entries.map((e) => ({
+    kind: 'video',
+    id: e.id,
+    title: e.fields.title,
+    date: e.date,
+    actors: `${e.fields.speaker}（${e.fields.speakerTitle}）· ${e.channel}`,
+    summary: e.fields.summary,
+    // The transcript digest does not exist yet at emit time (captions are
+    // fetched after the splice), so the richest material the emit already
+    // holds is the YouTube description.
+    detail: e.description ? e.description.slice(0, 1500) : undefined,
+    sourceUrl: e.youtubeUrl,
+  }));
+  const byId = await draftWhyItMattersBatch(inputs, options);
+  for (const e of entries) {
+    const why = byId.get(e.id);
+    if (why) Object.assign(e.fields, why);
+  }
+  return byId.size;
+}
+
 // ── Snippet building ─────────────────────────────────────────────────────
-function buildEntrySnippet(e: ApprovedEntry): string {
+export function buildEntrySnippet(e: ApprovedEntry): string {
   const f = e.fields;
   const lines = [
     '  {',
@@ -457,6 +508,15 @@ function buildEntrySnippet(e: ApprovedEntry): string {
   );
   if (f.summaryJa) lines.push(`    summaryJa: '${escapeTsString(f.summaryJa)}',`);
   if (f.summaryKo) lines.push(`    summaryKo: '${escapeTsString(f.summaryKo)}',`);
+  // All four or none — see attachWhyItMatters above.
+  if (f.whyItMatters && f.whyItMattersEn && f.whyItMattersJa && f.whyItMattersKo) {
+    lines.push(
+      `    whyItMatters: '${escapeTsString(f.whyItMatters)}',`,
+      `    whyItMattersEn: '${escapeTsString(f.whyItMattersEn)}',`,
+      `    whyItMattersJa: '${escapeTsString(f.whyItMattersJa)}',`,
+      `    whyItMattersKo: '${escapeTsString(f.whyItMattersKo)}',`,
+    );
+  }
   lines.push(
     `    topic: '${escapeTsString(f.topic)}',`,
     `    topicEn: '${escapeTsString(f.topicEn)}',`,
@@ -483,6 +543,7 @@ function spliceIntoVideosTs(content: string, snippets: string[]): string {
 
 // ── Main ─────────────────────────────────────────────────────────────────
 async function main() {
+  requireCandidateSelection();
   ensureClaudeAvailable();
 
   if (!existsSync(candidatesPath)) {
@@ -613,10 +674,14 @@ async function main() {
     console.warn(`  [warn] ja/ko translation failed: ${e instanceof Error ? e.message : e}`);
   }
 
+  // whyItMatters (zh + en/ja/ko) per new entry. Skipped on --dry-run so a
+  // scan-only run burns no LLM calls.
   if (dryRun) {
-    console.log('--dry-run set; not modifying videos.ts.');
+    console.log('--dry-run set; skipping whyItMatters drafting and not modifying videos.ts.');
     return;
   }
+  const withWhy = await attachWhyItMatters(approved, { warn: (m) => console.warn(m) });
+  console.log(`  whyItMatters drafted for ${withWhy}/${approved.length} entries`);
 
   // Splice into videos.ts.
   const snippets = approved.map(buildEntrySnippet);
@@ -741,7 +806,11 @@ ${approved.map((e) => `- ${e.id} [${e.date}] ${e.fields.title}`).join('\n')}`;
   }
 }
 
-main().catch((err) => {
-  console.error(`\n❌ ${err instanceof Error ? err.stack || err.message : String(err)}`);
-  process.exit(1);
-});
+// Only run the pipeline when invoked as a script — importing this module
+// from a test must not start an emit (mirrors scripts/lib/i18n-pair.ts).
+if (import.meta.url === `file://${process.argv[1]}` || process.argv[1]?.endsWith('refresh/videos/emit.ts')) {
+  main().catch((err) => {
+    console.error(`\n❌ ${err instanceof Error ? err.stack || err.message : String(err)}`);
+    process.exit(1);
+  });
+}

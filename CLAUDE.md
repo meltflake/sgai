@@ -36,15 +36,17 @@ npm run fix:prettier  # 仅修复 prettier (prettier -w .)
 
 ```bash
 npm run build && npm run check:dist
-# = check:i18n + check:schema + check:meta + check:zh-tw-misconversion
+# = check:i18n + check:schema + check:meta + check:zh-tw-misconversion + check:markdown-export + check:data-export
 ```
 
-| 命令           | 工具                       | 抓什么                                                                                                                                                                                                                                                                                                                                                                               | 必跑场景                                                               |
-| -------------- | -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------- |
-| `check:i18n`   | `scripts/i18n-check.mjs`   | `dist/**/*.html`（除 `/zh/`）里的中文残留                                                                                                                                                                                                                                                                                                                                            | 动了 EN 页面 / 共享组件 / 双字段数据                                   |
-| `check:schema` | `scripts/check-schema.mjs` | `dist/**/*.html` 里的 `<script type="application/ld+json">` 块。按 `@type` 校验关键字段：BreadcrumbList itemListElement 的 `name` 非空、VideoObject 的 `uploadDate` ISO 8601、Article/NewsArticle/BlogPosting 的 `headline` + `datePublished`、Organization/Person 的 `name`、WebSite 的 `name` + `url`。GSC 报错（"Either name or item.name should be specified" 之类）的本地兜底。 | 动了任何会 emit JSON-LD 的页面 / 组件                                  |
-| `check:meta`   | `scripts/check-meta.mjs`   | `dist/**/*.html` 的 SEO meta 层：title 显示宽度 ≤ 72 加权单位（CJK 字符=2）+ 禁止 `· <板块品牌> · sgai` 双品牌尾巴；description ≤ 165 单位（Metadata.astro 收口层用 `truncateAtBoundary` 钳到 160，词边界截断，裸 `.slice(0,200)` 会当场爆门）；canonical 唯一且指向本站；hreflang 簇 ↔ canonical 自指一致（跨页 canonical 的页面必须无 hreflang，反之必须有全簇 + x-default）。     | 动了 `metadata.title/description`、canonical 覆盖、CommonMeta/Metadata |
-| `check:dist`   | 上面几个串跑               | —                                                                                                                                                                                                                                                                                                                                                                                    | 推荐 PR 前默认跑这个                                                   |
+| 命令                    | 工具                                     | 抓什么                                                                                                                                                                                                                                                                                                                                                                               | 必跑场景                                                                          |
+| ----------------------- | ---------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------- |
+| `check:i18n`            | `scripts/i18n-check.mjs`                 | `dist/**/*.html`（除 `/zh/`）里的中文残留                                                                                                                                                                                                                                                                                                                                            | 动了 EN 页面 / 共享组件 / 双字段数据                                              |
+| `check:schema`          | `scripts/check-schema.mjs`               | `dist/**/*.html` 里的 `<script type="application/ld+json">` 块。按 `@type` 校验关键字段：BreadcrumbList itemListElement 的 `name` 非空、VideoObject 的 `uploadDate` ISO 8601、Article/NewsArticle/BlogPosting 的 `headline` + `datePublished`、Organization/Person 的 `name`、WebSite 的 `name` + `url`。GSC 报错（"Either name or item.name should be specified" 之类）的本地兜底。 | 动了任何会 emit JSON-LD 的页面 / 组件                                             |
+| `check:meta`            | `scripts/check-meta.mjs`                 | `dist/**/*.html` 的 SEO meta 层：title 显示宽度 ≤ 72 加权单位（CJK 字符=2）+ 禁止 `· <板块品牌> · sgai` 双品牌尾巴；description ≤ 165 单位（Metadata.astro 收口层用 `truncateAtBoundary` 钳到 160，词边界截断，裸 `.slice(0,200)` 会当场爆门）；canonical 唯一且指向本站；hreflang 簇 ↔ canonical 自指一致（跨页 canonical 的页面必须无 hreflang，反之必须有全簇 + x-default）。     | 动了 `metadata.title/description`、canonical 覆盖、CommonMeta/Metadata            |
+| `check:markdown-export` | `scripts/evals/markdown-export/check.ts` | `dist/**/*.md` 的详情页 Markdown 孪生（排除 `dist/skill/`）全量扫：断言首行是 `# ` H1、含 `- sgai: https://sgai.md/` 永久链接行、含 `CC BY 4.0` 许可标记、元数据块（首个 `## ` 前）无 `undefined` / `[object Object]` 残留（正文是逐字原文，不做模式匹配）。`check:i18n` 只扫 `*.html`，孪生文件在它的盲区里。                                                                       | 动了 `src/utils/markdown-export.ts`、`[id].md.ts` 路由、`src/utils/license.ts`    |
+| `check:data-export`     | `scripts/evals/data-export/check.ts`     | `dist/data/*.json` 的信封契约：能 parse；`schemaVersion === 1`；`dataset` 等于文件名；`count === items.length`；`license.terms` 指向 DATA-LICENSE.md；凡带 `links.sgai` 的行必须五语齐全、每条都是绝对 `https://sgai.md/` 地址且前缀与 key 一致（en 无前缀）；`records.json` 每行 `title.en` 非空且按 `addedAt` 倒序；六个数据集文件缺一即 fail。                                    | 动了 `src/pages/data/*.ts` / [src/utils/data-export.ts](src/utils/data-export.ts) |
+| `check:dist`            | 上面几个串跑                             | —                                                                                                                                                                                                                                                                                                                                                                                    | 推荐 PR 前默认跑这个                                                              |
 
 凡是动了 EN 页面、共享组件、数据双字段的 PR，必须本地跑通 `check:i18n`。
 凡是动了 schema-emitting 页面 / 组件（`<JsonLd schema={...} />` / `Breadcrumb.astro` / `*Profile.astro` / `[id].astro`）的 PR，必须本地跑通 `check:schema`。
@@ -60,7 +62,6 @@ npm run eval:url                   # 全量扫 sourceUrl 可达性（CLAUDE.md r
 npm run eval:url -- --changed-only # 只扫 PR 改过的 src/data/*.ts
 npm run eval:i18n -- --layer=a     # 数据层：每条 record 的 CJK 字段 *En + *Ja 配对（zero-cost）
 npm run eval:i18n -- --layer=all   # +B sitemap parity / +C hreflang parity / +D 语言纯度（需 build）
-npm run eval:updates-ledger        # 数据文件改了但 src/data/updates.ts 没追加 → fail（防 2026-05-09 那次"最近更新"漏记）
 npm run eval:facade-stats          # README/About 门面数字 vs src/data 真值（辩论/政策/创业/独角兽/经济体/指标），漂移即 fail（PR + 周都跑）
 ```
 
@@ -148,6 +149,7 @@ npx prettier --write src/
 - SocialChannel：含 CJK 的 `label` 必须配对 `labelEn`。
 - 提交前必跑：`npx tsx scripts/lib/i18n-pair.ts --locales=en,ja <动过的文件>`（emit 时已自动跑，但手工编辑也要跑）+ `npm run build && npm run check:dist`。前者扫源码，后者扫 `dist/` 中文残留 + JSON-LD 合规。
 - 单独验证某 locale 渲染：`node scripts/i18n-check.mjs --lang zh-tw` 或 `--lang ko` 扫 `dist/<lang>/**.html` 的残留。
+- `whyItMatters`（首页"最近更新"那一行判断）：videos / policies 两条 emit 管线**自动产出四语**（`whyItMatters` + `En` / `Ja` / `Ko`），起草器是 [scripts/lib/why-it-matters.ts](scripts/lib/why-it-matters.ts)，批量封装在 [scripts/lib/why-it-matters-batch.ts](scripts/lib/why-it-matters-batch.ts)——起草或翻译失败就四条全不写（绝不只写 zh，`check:i18n-completeness` 会拒），只打一行 WARN，不中断 PR。**debates 走的是 Python hansard 管线，不自动产出**：新辩论落地后手动跑一次 `npx tsx scripts/backfill-why-it-matters.ts --only=debates`。
 - 自动管线已强制：`scripts/lib/auto-discovered-emit.ts` 和各 `emit.ts` 在 emit 后跑 `findUnpairedFields` baseline-vs-after diff，新引入 unpaired 自动 rollback；不会"偷偷"放出单语种数据。11 条 refresh 管线当前自动产出 `*En` + `*Ja`；让它们也产出 `*Ko`，每个 `emit.ts` 找到 `zh→ja` 那行旁边加一行 `zh→ko, targetSuffix: 'Ko'` 即可。
 
 ### 6. sourceUrl 真实性约定（关键 — 最高优先级）
@@ -168,9 +170,9 @@ npx prettier --write src/
 
 ### 7. addedAt 约定（关键 — 最高优先级）
 
-> **🔴 顶层硬规则：任何加到 `src/data/{videos,policies,debates,people,tracker,benchmarking,ecosystem,levers,startups,legal-ai,talent}.ts` 的新 record 必须设 `addedAt: 'YYYY-MM-DD'`（写入当天的日期，永不修改）。**
+> **🔴 顶层硬规则：任何加到 `src/data/{videos,policies,debates,people,voices,tracker,benchmarking,ecosystem,levers,startups,legal-ai,talent,reg-lookahead,ai-capital}.ts` 的新 record 必须设 `addedAt: 'YYYY-MM-DD'`（写入当天的日期，永不修改）。**
 >
-> sgai 首页"最近更新"模块（[`src/components/home/RecentUpdates.astro`](src/components/home/RecentUpdates.astro)）的内容**从数据文件派生**——`src/utils/derived-updates.ts` 扫每条 record 的 `addedAt`，按 (date, type) group 后自动产出 update entry，三语齐全。`src/data/updates.ts` 只剩 `site` / `fix` / `longform` 三种**编辑性事件**的 manual override（`MANUAL_TYPES` 在 import 时强制校验，加错 type 会 build error）。
+> sgai 首页"最近更新"模块（[`src/components/home/LatestUpdatesFeed.astro`](src/components/home/LatestUpdatesFeed.astro)）与 `/updates/`、`updates.rss.xml` 的内容**从数据文件派生**——`src/utils/derived-updates.ts` 扫每条 record 的 `addedAt`，**每条 record 产出一个 update entry**（标题、一句 summary、record 自己的事件日期、直链），四语齐全。派生器覆盖的数据文件清单与 `scripts/evals/addedAt-coverage/check.ts` 的 `DATA_FILES` 由单测 `data-files-sync.test.ts` 锁死——新加 harvester 两边都要改。`src/data/updates.ts` 只剩 `site` / `fix` / `longform` 三种**编辑性事件**的 manual override（`MANUAL_TYPES` 在 import 时强制校验，加错 type 会 build error）。
 >
 > 这意味着：**忘了给新 record 加 `addedAt`，首页就看不到它。** 不需要再去碰 `updates.ts`，也不允许往 `updates.ts` 加 video/policy/debate 这类 type 的 entry。
 >
@@ -605,6 +607,16 @@ echo 'export GITHUB_TOKEN=ghp_xxx' >> ~/.zshrc   # 可选，github-stars 5000 re
 ```
 
 **通知零配置**：所有 PR 自动 `--assignee @me`；scan-only 旧管线（hansard/videos/voices）有新内容时调 `gh issue create --assignee @me`。GitHub 原生送邮件 + web 通知。
+
+### Agent 接入（skill 的发布链路）
+
+`skill/`（`SKILL.md` + `url-map.json` + `README.md`）是**唯一真相源**，进 git、走 review。`public/skill/` 是 `prebuild` / `predev` 时由 [scripts/publish-skill.mjs](scripts/publish-skill.mjs) 拷出来的产物，已 gitignore——**永远不要改 `public/skill/`**，改了下次构建就被覆盖。线上安装地址是 `https://sgai.md/skill/SKILL.md`。
+
+- 改了 `policies.ts` / `debates.ts` 的条目集合：跑 `npm run skill:build-url-map` 回填 `url-map.json` 的 `validIds`，提交生成结果。
+- 改了 `url-map.json` 的任何 URL：跑 `npm run check:skill-urls`（联网，逐条 HEAD）。weekly evals 也跑（`run-all.ts` 的 `skill-urls` stage）。
+- URL 形状铁律：**EN 在裸路径，其余四语在 `/<lang>/` 前缀**（`/policies` vs `/zh/policies`）。2026-08 之前整份 url-map 和 SKILL.md 的 URL 表把 zh / en 写反了。
+- 面向人的入口是 `/agent/`（[src/components/agent/AgentPage.astro](src/components/agent/AgentPage.astro)）；页内的 curl / URL / JSON 样例必须包在 `<div data-i18n-allow-en="agent-api-sample">` 里（marker tag 只认 section/div/article/details/aside/p/span，`pre`/`code` 不算），且样例本身必须纯 ASCII。
+- 面向机器的契约是 [public/openapi.json](public/openapi.json)（线上 `https://sgai.md/openapi.json`，手写、OpenAPI 3.0）。七个 GET 路径（六个 JSON + `debates.csv`）全在里面。改了 `src/pages/data/*.ts` 的行结构就要同步改它，并跑 `npx @redocly/cli@latest lint public/openapi.json`。所有 `/data/*.json` 共用 [src/utils/data-export.ts](src/utils/data-export.ts) 的信封（`schemaVersion` / `license` / `count` / `items`），每行带 `links.sgai` 五语页面地址；构建产物层由 `check:data-export` 把门。
 
 ### 添加新管线的 6 步流程
 

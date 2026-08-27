@@ -12,6 +12,7 @@ import {
   leverPages,
   startupEntityPages,
 } from '~/utils/entity-pages';
+import { licenseLine } from '~/utils/license';
 
 export const prerender = true;
 
@@ -38,6 +39,7 @@ const lines = [
   `Last updated: ${SITE_UPDATED}`,
   `Canonical domain: ${base}`,
   'Layout: EN at bare paths (route default), ZH mirrored under /zh/.',
+  licenseLine('en'),
   '',
   '## Core Sections',
   '',
@@ -53,6 +55,15 @@ const lines = [
   `- ${base}/startups/ — AI startup ecosystem (EN)  ·  ${base}/zh/startups/ (ZH)`,
   `- ${base}/community-opensource/ — Community open source (EN)  ·  ${base}/zh/community-opensource/ (ZH)`,
   `- ${base}/updates/ — Recent updates feed (EN, RSS at ${base}/updates.rss.xml)  ·  ${base}/zh/updates/ (ZH, RSS at ${base}/zh/updates.rss.xml)`,
+  '',
+  '## Agent interfaces',
+  '',
+  `- ${base}/agent/ — how to use sgai from an agent (skill / RSS / JSON / Markdown twins); zh mirror at ${base}/zh/agent/.`,
+  `- ${base}/skill/SKILL.md — Claude-style skill; url map at ${base}/skill/url-map.json.`,
+  `- ${base}/data/index.json — dataset catalogue (start here); ${base}/openapi.json — the OpenAPI contract for all of them.`,
+  `- ${base}/data/records.json, ${base}/data/debates.json, ${base}/data/policies.json, ${base}/data/tracker.json, ${base}/data/videos.json, ${base}/data/debates.csv — machine-readable datasets. Each JSON wraps its rows in an envelope (schemaVersion / license / count / items); every row carries links.sgai with its page URL in all five languages.`,
+  `- ${base}/updates.rss.xml — one RSS item per new record (zh/ja/ko/zh-tw mirrors under /<lang>/).`,
+  `- Markdown twin of every debate / policy / video page: same path without the trailing slash, plus .md (e.g. ${base}/debates/<id>.md).`,
   '',
   '## Policy Detail Pages (EN canonical)',
   '',

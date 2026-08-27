@@ -33,6 +33,9 @@ const EXPECTED = {
   'benchmark-case-en-fallback': { attr: 'data-i18n-allow-en', langs: ['ko'] },
   'benchmark-region-en-fallback': { attr: 'data-i18n-allow-en', langs: ['ko'] },
   'about-prose-en-fallback': { attr: 'data-i18n-allow-en', langs: ['ko'] },
+  // Machine-interface samples on /agent/ — ASCII curl / URL / JSON blocks,
+  // identical in every locale. Scoped to the four non-en locales, NOT 'all'.
+  'agent-api-sample': { attr: 'data-i18n-allow-en', langs: ['zh', 'zh-tw', 'ja', 'ko'] },
 };
 
 // The six reasons that are `langs: 'all'` — the trusted verbatim boundary.

@@ -6,7 +6,89 @@
 
 ## Unreleased
 
-- 修复 levers 自动发现管线的 i18n 漏检：待审核分组改用中文底稿并补齐中英日韩标题；生成器提交前改跑与 CI 一致的字段对齐和 schema 完整性校验，避免再次生成必挂 CI 的 PR。
+## 0.26.0 — 2026-08-26
+
+对标 AIHOT 的一整条 PR 栈（#234–#241，计划与执行记录见 [docs/20260825-aihot-learnings.md](docs/20260825-aihot-learnings.md)）。**含破坏性变更**：`/data/*.json` 不再是裸数组，见「数据导出信封」一节。
+
+### 修复 levers 自动发现管线的 i18n 漏检
+
+- 待审核分组改用中文底稿并补齐中英日韩标题；生成器提交前改跑与 CI 一致的字段对齐和 schema 完整性校验，避免再次生成必挂 CI 的 PR。
+
+### 详情页 Markdown 孪生 + 「报告错误」入口
+
+- 每个辩论 / 政策 / 视频详情页新增 Markdown 孪生：`<页面路径去掉尾斜杠>.md`（如 `/zh/debates/oral-answer-4088.md`）。整条记录一次抓取——标题、日期、相关方、来源、永久链接、许可、为什么重要、摘要、要点、全文（辩论另附 Hansard 英文原文）。此前 agent 想读全文只能啃 200 KB 的 HTML，`llms-full.txt` 又只是链接索引。
+- 新增 `src/utils/markdown-export.ts`（`debateToMarkdown` / `policyToMarkdown` / `videoToMarkdown`）：所有本地化字段走 `pickLocalized`，段落标题用 per-heading 的四语字典 + zh-tw 走 `toTraditional`，五语各自成文，不回落中文。
+- 新增 6 条路由（`src/pages/{,[lang]/}{debates,policies,videos}/[id].md.ts`），`getStaticPaths` 与同名 `.astro` 页一一对齐；`public/_headers` 给 `/*.md` 加 `Content-Type: text/markdown` 与 CORS。
+- `CiteBlock.astro` 加「报告错误」与「Markdown 版」两个链接。前者直达 GitHub issue 表单并预填页面 URL——本站的错多是事实层面的（官方译名、日期、机构），读者比我们先看见。
+- 新增 `.github/ISSUE_TEMPLATE/correction.yml`（issue form，字段 `page` / `what` / `should_be` / `source`）与 `config.yml`（保留空白 issue；仓库未开 Discussions，故不加 contact link）。
+- 逐字原文一律带版权行：辩论的 Hansard、政策原文（`© <发布机构>`）、视频字幕（`© <频道>`）在 `## 全文` 下各自加一句「仅供引用」（五语，zh-tw 走 OpenCC）。同时修掉 EN 辩论孪生把 Hansard 全文印两遍的 bug——`getDebateTranscriptParagraphs` 在无本地化轨时返回的就是 `paragraphsEn`，按值判等去重，不加语言分支。
+- 新增门 `npm run check:markdown-export`（挂进 `check:dist`）：全量扫 `dist/**/*.md`，断言首行是 H1、含 `- sgai: https://sgai.md/` 永久链接行、含 CC BY 4.0 许可标记、元数据块内无 `undefined` / `[object Object]` 残留（正文是逐字原文，豁免）。带单测。
+
+### 数据导出信封 + 三个新端点 + OpenAPI（⚠️ 破坏性变更）
+
+- **破坏性**：`/data/debates.json`、`/data/policies.json`、`/data/tracker.json` 不再是裸数组。行现在放在 `.items` 里，外面套一层信封：`schemaVersion`（=1）、`dataset`、`siteVersion`、`dataUpdated`、`license`、`attribution`、`count`、`items`。**下游从 `resp[0]` 改成 `resp.items[0]`。** 原有字段一个没删。
+- 每行新增 `links`：`links.sgai` 是这条记录在五种语言下各自的绝对页面地址（en 裸路径，其余走 `/<lang>/` 前缀），`links.source` 是上游原始链接。以前拿到一行数据没法回链具体页面，等于没法引用本站——这是加信封的主因。
+- 新端点：`/data/videos.json`（全部视频，四语标题 / 摘要 / whyItMatters，不含字幕全文）、`/data/records.json`（`harvestAll()` 的每条 record 一行，按 `addedAt` 倒序，跨域合并——更新流的机器版）、`/data/index.json`（数据集目录：地址 + 当前条数 + 一句话说明）。
+- 新增 [public/openapi.json](public/openapi.json)（OpenAPI 3.0，手写，线上 `https://sgai.md/openapi.json`）：七个 GET 路径（六个 JSON + `debates.csv`）+ `Envelope` / `Links` / 各数据集 item schema。`npx @redocly/cli lint` 通过。
+- `public/_headers` 显式加 `/data/*` 规则（`Access-Control-Allow-Origin: *` + `max-age=300, s-maxage=3600`）。线上的 CORS 头此前来自 Cloudflare 侧的全站规则，仓库里没有任何声明——现在这条保证进了 git。
+- 新增 [src/utils/data-export.ts](src/utils/data-export.ts)（`envelope()` / `recordLinks()`）。`dataUpdated` 取 `SITE_UPDATED`（从数据的 `addedAt` 派生），**不用构建时间戳**——否则每次部署所有数据集字节都变，ETag 全废、也没法从文件本身判断数据到底动没动。
+- 新门 `npm run check:data-export`（[scripts/evals/data-export/check.ts](scripts/evals/data-export/check.ts)），挂进 `check:dist`：扫 `dist/data/*.json` 断言信封契约与 `links.sgai` 的五语完整性 + 前缀匹配。13 个单测挂进 `test:lib`。
+- `/agent/` 页面（四语）与 `llms.txt` / `llms-full.txt` 同步：数据表补三个新端点、curl 样例改 `curl -s https://sgai.md/data/records.json | jq '.items[0]'`、加一句信封说明和 `openapi.json` 链接。
+- `/data/debates.csv` 未改动：加 `#` 注释头会打断 pandas / Excel 的表头解析，而这个文件对外宣传的用途正是「丢进表格或 notebook」。许可信息由同目录的 JSON 与 `openapi.json` 承担。
+
+### Agent 接入：`/agent/` 页面 + 从本站发布 skill
+
+- 新增五语 `/agent/` 页面（`src/components/agent/AgentPage.astro` + `src/pages/agent/index.astro` + `src/pages/[lang]/agent/index.astro`）：一页讲清 skill 安装、RSS、JSON/CSV 数据集、Markdown 孪生页、`llms.txt`，以及署名与核对原始 `sourceUrl` 的规矩。zh / en / ja / ko 四语手写，zh-tw 走 OpenCC 派生。
+- skill 改为从本站发布：`scripts/publish-skill.mjs` 在 `prebuild` / `predev` 把 `skill/` 的三个文件拷进 `public/skill/`（已 gitignore），安装命令从 raw.githubusercontent.com 改为 `https://sgai.md/skill/SKILL.md`。**`skill/` 是唯一真相源，不要改 `public/skill/`。**
+- 修 `skill/url-map.json` 的 zh / en 路径倒挂：本站 EN 在裸路径、ZH 在 `/zh/`，此前整份 map（以及 SKILL.md 的 URL 表、人物示例、footer 模板）写反了；`skill/eval/test-questions.jsonl` 的断言同步翻正。SKILL.md 与 url-map.json 一起升到 `0.2.0`（URL 契约变了），"bilingual (zh/en)" 全部改为五语表述。
+- 新增 `scripts/skill/build-url-map.ts`（`npm run skill:build-url-map`）：从 `policies.ts` / `debates.ts` 回填 `validIds`（49 + 187），让 `check:skill-urls` 能真正展开并逐条 HEAD 检查详情页 URL。补上此前 404 的 `public/schemas/skill-url-map.v1.json`（draft-07）。
+- `llms.txt` / `llms-full.txt` 加 `## Agent interfaces` 段；`robots.txt` 加注释说明 AI 检索爬虫是有意全站放行的。
+- `scripts/evals/run-all.ts` 加 weekly `skill-urls` stage；新 marker reason `agent-api-sample`（仅 zh / zh-tw / ja / ko，非全 locale）并同步 `i18n-allow-reasons.test.ts`。
+
+### 月报落地为站内长文 + 主题页「最近动态」
+
+- `scripts/refresh/newsletter/generate-monthly.ts` 加 `--emit-post`：把当月更新写成 zh 博文 `src/data/post/monthly-YYYY-MM.md`（`--out` / `--publish-date` / `--topics` 可覆盖），月报从此有永久 URL、SEO 和 llms.txt 条目，不再只活在 Buttondown 邮件里。长文取 `sortedUpdates()`——`MANUAL_UPDATES` 里的 site / fix / longform 编辑性条目只在这里合并，用 `deriveUpdates()` 会漏掉当月所有长文；这类条目没有 `href`，按 `links[0].href` 出链。邮件正文仍走 `deriveUpdates()`，stdout 逐字节不变。
+- 正文组装抽成纯函数 `scripts/refresh/newsletter/build-monthly-post.ts` 的 `buildMonthlyPost()`（不依赖 `src/data`，可用假 `Update[]` 单测）：统计行（`本月站内更新 N 条：… · 阅读约 M 分钟`）、`## 本月主线` 手写占位、按 政策 / 辩论 / 视频 / 演讲 / 人物 / 长文 / 其他 分节（`longform` 单独成节——当月的长文最值得读者补看；`site` / `fix` 这类站务事件留在 其他）、每条带 record 自己的事件日期与一句 `whyItMatters` 判断。`topicIds` 取当月 policy / debate / video 的 topic 并集，为空回落 `national-strategy`（`check:graph` 的 post coverage 门）。
+- 主题页（`TopicHub.astro`）在分类分组之上加「最近动态」：跨所有类型 + 博文合并、按日期倒序取 20 条，日期 + 类型徽标 + 标题。不足 3 条有日期的条目就整段不显示。新 i18n key `topicRecentHeading`（中 / 英 / 日 / 韩，繁体自动派生）。
+- 页脚品牌栏加订阅表单 `NewsletterSignup`（`BUTTONDOWN_FORM_ID` 为空时整个组件不渲染，建号后填一行即上线）。
+- 文档：`docs/refresh-playbook.md` 新增「`/updates` + 月报（Newsletter）」一节，写清生成 → 手写主线 → 四语翻译 → `check:post-i18n` → PR 的完整月度流程。
+- 修复主题页长文分组在非中文语言下永远为空：`TopicHub.astro` 用 `p.id.endsWith('/<slug>.md')` 找译文镜像，但 glob loader 的 `id` 不带扩展名（且 locale 前缀可能是 `en/foo` 或 `en-foo`），条件永不成立——`/en/`、`/ja/`、`/ko/` 的主题页从来看不到任何博文。改按规范化 slug 比对。
+- `NewsletterSignup.astro` 加可选 `idSuffix` prop（页脚传 `-footer`），避免同一页面（`/updates/`）出现两个 `id="bd-email"`；组件在 `BUTTONDOWN_FORM_ID` 为空时仍然完全不渲染。
+- 新单测 `scripts/refresh/newsletter/__tests__/build-monthly-post.test.ts`（9 例），已挂进 `test:lib`。
+
+### 「为什么重要」字段（whyItMatters）四语回填
+
+- `Policy` / `VideoItem` / `Debate` 各加 `whyItMatters` + `En / Ja / Ko`：一句话说清这条对新加坡 AI 战略的意义（含具体数字 / 日期 / 机构），与 `summary`（发生了什么）分开。49 政策 + 84 视频 + 187 辩论整批回填。
+- 新 `scripts/lib/why-it-matters.ts`（`draftWhyItMatters`，sonnet 草稿 + 形状校验 + sha256 缓存）与 `scripts/backfill-why-it-matters.ts`（按 `id` 定位、`summaryKo` 值后插 4 行、写前 TS 解析校验、prettier 回流；`--only / --limit / --dry-run / --force / --concurrency`）。
+- 展示：政策 / 辩论 / 视频详情页摘要下加「为什么重要」块；首页「最近更新」与 RSS 的一句话优先用它；`qa-corpus.txt` 每条追加 `Why it matters:`（Ask AI 语料）。
+- 门：`i18n-pair.ts` 的 `DEFAULT_FIELDS` 加 `whyItMatters`（有 zh 就必须四语），`i18n-config.ts` policy schema 登记（可选字段）。
+- videos / policies 两条 refresh 管线**入库即产出**四语 `whyItMatters`：新增 `scripts/lib/why-it-matters-batch.ts`（起草 + en/ja/ko 批量翻译，起草器与翻译器都可注入，缓存目录与回填脚本共用），`scripts/refresh/videos/emit.ts` 与 `scripts/refresh/policies/emit.ts` 对每条**新**记录调用它，四行紧跟 `summaryKo` 写入。dry-run 不起草，不烧 LLM。
+- 失败策略：起草被校验拒绝、LLM 报错、或 en/ja/ko 任一翻译为空，都只打一行 WARN 并**四条全不写**（绝不只写 zh，`check:i18n-completeness` 会当场拒），emit 继续跑完——一条判断缺失不该拖垮整个数据刷新 PR。
+- `scripts/refresh/videos/emit.ts` 改为可被 import：`--ids` 参数校验挪进 `main()`，`main()` 挂入口守卫，导出 `buildEntrySnippet` / `attachWhyItMatters` 供单测使用。`scripts/refresh/policies/emit.ts` 的 `emit()` 改为 async。
+- 新单测（离线，不碰网络与 `claude` CLI）：`scripts/refresh/videos/__tests__/emit-why-it-matters.test.ts` 与 `scripts/refresh/policies/__tests__/emit-why-it-matters.test.ts`，覆盖成功写四行、起草抛错写零行、翻译残缺写零行三种路径。
+- debates 仍走 Python hansard 管线，不自动产出——新辩论落地后跑 `npx tsx scripts/backfill-why-it-matters.ts --only=debates` 补（已写进 CLAUDE.md rule #5 与 refresh-playbook）。
+
+### 「最近更新」改为每条一行，变化可见
+
+- `src/utils/derived-updates.ts`：派生条目从「同日同类合并一行（A、B、C 等 N 条）」改为**每条 record 一行**——标题直链、record 自带的一句 summary、record 自己的事件日期（国会 / 发布 / 宣布）与收录日期并列。新增 `harvestAiCapital`：`ai-capital.ts` 自 2026-08-14 起有 `addedAt` 却没有 harvester，9 条资本事件从未上过首页。
+- 首页 Masthead：总量（187 辩论 …）退居次级，新增「过去 7 天新增 +N（2 辩论 · 3 视频）· 截至 <日期>」，锚在数据里最新的 `addedAt` 而非构建时间；RSS 图标改指 `updates.rss.xml`（原来指向博客 RSS）。
+- 首页 feed 窗口：最近 14 天全部、至少 8 行、最多 20 行；日期头「8月14日 · 星期五 · N 条」。
+- `/updates/`：最近 8 周按 ISO 周分组，更早按月；RSS 链接改 `localizedHref`。
+- 「上次访问后新增 N 条」徽标 + 行首圆点（`SinceLastVisit.astro`，浏览器本地，首页与 `/updates/` 都挂）。
+- `updates.rss.xml`（根 + 各语言）：每条 item 直链到 record 页；非 en 语言的标题 / 摘要改按语言取值（此前全部用中文字段）；去掉没人渲染的 `#date-type` 锚点。
+- 抽 `src/utils/update-type-ui.ts`（chip / 标签 / 严格按语言取文案，不回落中文）和 `src/utils/date-format.ts`；删除死代码 `RecentUpdates.astro`。
+- 新单测 `data-files-sync.test.ts` 锁死 `addedAt-coverage` 的 `DATA_FILES` 与派生器 import 的数据文件清单一致。
+- CLAUDE.md：删掉不存在的 `eval:updates-ledger`，rule #7 文件清单补 voices / reg-lookahead / ai-capital。
+
+## 0.25.6 — 2026-08-26
+
+### 数据许可声明改为字段级
+
+- 新增 `DATA-LICENSE.md`（中英）：sgai 自产内容（摘要、译文、分析、whyItMatters）CC BY 4.0；逐字原文（Hansard、部长演讲、视频字幕、政策原文）© 原权利人，仅供引用、不再授权。此前 About 页笼统写「内容 CC BY 4.0」，把不属于本站的原文一并授权了。
+- `LICENSE.md` 版权行补 sgai.md contributors，头部指向 DATA-LICENSE。
+- 新增 `src/utils/license.ts`：`licenseLine(lang)`（五语，zh-tw 走 OpenCC）+ `licenseObject()`，供 About / llms.txt / llms-full.txt 及后续 `.md` 导出、JSON 接口共用。
+- About 页（zh / en / ja）「反馈与更正」前加「数据许可」段；版本行文案同步。
+- `llms.txt` / `llms-full.txt` 元数据加 License 行。
 
 ## 0.25.5 — 2026-08-20
 

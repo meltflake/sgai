@@ -13,6 +13,7 @@ import {
   leverPages,
   startupEntityPages,
 } from '~/utils/entity-pages';
+import { licenseLine } from '~/utils/license';
 
 export const prerender = true;
 
@@ -32,6 +33,7 @@ Primary languages: zh-CN (default), en
 Canonical domain: ${base}
 Sitemap: ${base}/sitemap-index.xml
 Full LLM index: ${base}/llms-full.txt
+${licenseLine('en')}
 
 ## High-value Pages
 
@@ -48,6 +50,15 @@ Full LLM index: ${base}/llms-full.txt
 - ${base}/startups/ — ${startupEntityCount} Singapore AI startup ecosystem entity profiles.
 - ${base}/community-opensource/ — ${communityOpenSourceCount} community open-source project profiles from universities, corporate labs, and startups.
 - ${base}/references/ — Official sources, reports, datasets, and research references.
+
+## Agent interfaces
+
+- ${base}/agent/ — how to use sgai from an agent (skill / RSS / JSON / Markdown twins); zh mirror at ${base}/zh/agent/.
+- ${base}/skill/SKILL.md — Claude-style skill; url map at ${base}/skill/url-map.json.
+- ${base}/data/index.json — dataset catalogue (start here); ${base}/openapi.json — the OpenAPI contract for all of them.
+- ${base}/data/records.json, ${base}/data/debates.json, ${base}/data/policies.json, ${base}/data/tracker.json, ${base}/data/videos.json, ${base}/data/debates.csv — machine-readable datasets. Each JSON wraps its rows in an envelope (schemaVersion / license / count / items); every row carries links.sgai with its page URL in all five languages.
+- ${base}/updates.rss.xml — one RSS item per new record (zh/ja/ko/zh-tw mirrors under /<lang>/).
+- Markdown twin of every debate / policy / video page: same path without the trailing slash, plus .md (e.g. ${base}/debates/<id>.md).
 
 ## Content Notes
 

@@ -95,6 +95,7 @@ npm run eval:video-transcript -- --include-historical        # 全量审计
   - 扫描落盘 `scripts/videos/data/candidates.json` 走 **merge-write**（按 videoId 并集、剔除已入库），RSS 窗口只有 15 条也不丢候选
   - `state.domains.videos.video_ids` 记录「已 emit 过」的 id——PR 未合并期间不重复 emit；**PR 被拒的视频永久不回来**（人说过的 no 就是 no），要重发就从 state 里删掉该 id
   - emit 失败 → state 不更新 → 次日自动重试；字幕翻译失败 → PR 上 `eval:video-transcript` 红灯挡合并
+  - **`whyItMatters` 自动产出四语**：emit 对每条新视频调 [scripts/lib/why-it-matters.ts](../scripts/lib/why-it-matters.ts) 起草中文判断，再翻 en / ja / ko，四条一起写进 record（`--dry-run` 时跳过，不烧 LLM）。起草或翻译失败只打一行 WARN 并四条全不写——绝不只写 zh（`check:i18n-completeness` 会拒）。debates 走的是 Python hansard 管线不自动产出，新辩论落地后跑 `npx tsx scripts/backfill-why-it-matters.ts --only=debates` 补。
 - **频率**: 日级（cron auto-PR）
 
 #### `/speeches/[id]` + `/voices` + `/voices/[id]`
@@ -140,6 +141,7 @@ npx tsx scripts/refresh/policies/run.ts --no-push              # 仅 commit 不�
 ```
 
 - **失败回退**: emit 后跑 `i18n-pair.ts` 校验，缺 `*En` 字段自动 rollback；任意一步失败邮件标红
+- **`whyItMatters` 自动产出四语**: emit 对每条新政策调 [scripts/lib/why-it-matters.ts](../scripts/lib/why-it-matters.ts) 起草中文判断，再翻 en / ja / ko，四条一起写进 record。起草或翻译失败只打一行 WARN 并四条全不写——绝不只写 zh（`check:i18n-completeness` 会拒）。debates 走的是 Python hansard 管线不自动产出，新辩论落地后跑 `npx tsx scripts/backfill-why-it-matters.ts --only=debates` 补。
 - **频率**: 月级（cron monthly）
 - **置信度**: AI 摘要返回 high/medium/low；low 标 `_pendingReview`，不上首页
 
@@ -248,6 +250,42 @@ GITHUB_TOKEN=ghp_xxx npx tsx scripts/refresh/github-stars.ts    # 提升 rate li
 | `/legal-ai` | `legal-ai.ts` | sso.agc.gov.sg / MAS / PDPC sitemap → AI 分类 → auto-PR | ✅ 已建（half-yearly），新条目入 "Auto-discovered" section 待 Luca 移位 |
 | `/references` | `references.ts` | 自研 | 看到好文章手工加 |
 | `/fieldnotes` | `fieldnotes.ts` | 自研 | 类似博客 |
+
+---
+
+### `/updates` + 月报（Newsletter）
+
+`/updates` 本身无数据文件——它从 `src/data/updates.ts`（编辑性 site/fix/longform）+ `src/utils/derived-updates.ts`（每条 record 的 `addedAt` 派生）合并而来，加 record 就自动出现，无需单独 pipeline。
+
+月报是这条 feed 的月度切片，**两个产物一份数据**：邮件正文（Buttondown）+ 站内长文（`src/data/post/monthly-YYYY-MM.md`，有永久 URL、SEO、llms.txt 条目）。每月初手工跑一次：
+
+```bash
+# 1. 生成 zh 长文（默认写 src/data/post/monthly-YYYY-MM.md）
+npx tsx scripts/refresh/newsletter/generate-monthly.ts --month=2026-08 --emit-post
+#    可选：--out=<path> 换输出路径、--publish-date=YYYY-MM-DD 换发布日、--topics=a,b 覆盖 topicIds
+#    不加 --emit-post 就是老行为：邮件正文打到 stdout（--lang=zh|en）
+
+# 2. 手写「## 本月主线」那段（模板留了占位符 2–3 句）
+
+# 3. 四语：en / ja / ko 真翻译，zh-tw 确定性 OpenCC 派生
+npx tsx scripts/refresh/post-translations/translate-post.ts --src=src/data/post/monthly-2026-08.md --target=en
+npx tsx scripts/refresh/post-translations/translate-post.ts --src=src/data/post/monthly-2026-08.md --target=ja
+npx tsx scripts/refresh/post-translations/translate-post.ts --src=src/data/post/monthly-2026-08.md --target=ko
+npx tsx scripts/hansard/derive-zh-tw-posts.ts monthly-2026-08
+
+# 4. 校验后开 PR
+npm run check:post-i18n
+```
+
+要点：
+
+- `translate-post.ts` 偶发 JSON 解析失败（长文含「」时），**原样重跑即可**，不要去改中文原文。
+- 正文由纯函数 `scripts/refresh/newsletter/build-monthly-post.ts` 的 `buildMonthlyPost()` 组装（无 `src/data` 依赖，单测在 `__tests__/build-monthly-post.test.ts`）。分节顺序固定为 政策 / 辩论 / 视频 / 演讲 / 人物 / 长文 / 其他，只出现当月非空的那几节；`longform` 单独成节，`site` / `fix` 和所有其他类型归 其他。
+- **长文的条目源是 `sortedUpdates()`，不是 `deriveUpdates()`**：`src/data/updates.ts` 的 `MANUAL_UPDATES`（site / fix / longform 这类编辑性事件）只在 `sortedUpdates()` 里合并，用派生层会把当月发布的所有长文整批漏掉。这类条目没有 `href`，出链取 `links[0].href`，两者都没有就渲染成不带链接的标题。邮件正文（不加 `--emit-post`）仍走 `deriveUpdates()`，输出与历史逐字节一致。
+- `topicIds` 从当月 policy / debate / video 三类 record 的 topic 映射取并集；并集为空时回落 `['national-strategy']`，保证 `npm run check:graph` 的 post coverage 门通过。frontmatter 里必须是**单行内联数组**（verify-graph 用 `/^topicIds: \[(.*)\]$/m` 匹配）。
+- **不要只提交 zh 原文**——`check:post-i18n` 要求 en/ja/ko/zh-tw 四个镜像同 PR 齐全。
+- Buttondown 邮件正文 = 站内长文链接 + 那行统计（`本月站内更新 N 条：…`），不要把全文粘进邮件——邮件负责导流，长文负责留存。
+- 订阅表单组件 `src/components/common/NewsletterSignup.astro` 已挂在页脚和 `/updates`，但 `BUTTONDOWN_FORM_ID` 为空时整个组件不渲染；建号后填一行即可上线。
 
 ---
 

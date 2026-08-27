@@ -24,14 +24,29 @@ import { getCanonical } from '~/utils/permalinks';
 export interface Props {
   title: string;
   anchorId: string;
+  /** Path of this page's Markdown twin (e.g. `/zh/debates/foo.md`). The
+   *  "Markdown" link renders only when a page passes it. */
+  markdownHref?: string;
 }
 
-const { title, anchorId } = Astro.props;
+const { title, anchorId, markdownHref } = Astro.props;
 const lang: Lang = getLangFromPath(new URL(Astro.url).pathname);
 
 // getCanonical resolves against the configured site host, so this is the
 // absolute canonical URL of the current (locale-aware) page.
 const canonicalUrl = getCanonical(Astro.url.pathname);
+
+// Correction entry point. sgai's errors are fact-level — an official
+// Chinese name, a date, a ministry attribution — and readers spot them
+// before we do, so every detail page gets a one-click path to a filed
+// issue. The GitHub issue form (.github/ISSUE_TEMPLATE/correction.yml)
+// prefills its `page` field from the query string, so the reporter never
+// has to copy the URL back by hand.
+const correctionTitle = `[correction] ${Astro.url.pathname}`;
+const reportErrorHref =
+  'https://github.com/meltflake/sgai/issues/new?template=correction.yml&labels=correction' +
+  `&title=${encodeURIComponent(correctionTitle)}` +
+  `&page=${encodeURIComponent(String(canonicalUrl))}`;
 
 // Brand in the citation is the locale-aware site name (rule #13): a
 // hardcoded "Singapore AI Observatory" would inject EN sentences onto
@@ -44,15 +59,35 @@ const copyBtnId = `cite-copy-${anchorId}`;
 
 <section class="max-w-4xl mx-auto px-4 sm:px-6 mb-10" aria-label={t(lang, 'citeTitle')}>
   <div class="bg-surface border border-subtle rounded-lg p-5 text-sm">
-    <div class="flex items-center justify-between gap-3 mb-3">
+    <div class="flex flex-wrap items-center justify-between gap-3 mb-3">
       <h2 class="text-xs font-bold uppercase tracking-wider text-gray-500 m-0">{t(lang, 'citeTitle')}</h2>
-      <button
-        id={copyBtnId}
-        type="button"
-        class="text-xs font-medium text-primary hover:text-secondary border border-subtle rounded px-2 py-1"
-      >
-        {t(lang, 'citeCopy')}
-      </button>
+      <div class="flex flex-wrap items-center gap-2">
+        <button
+          id={copyBtnId}
+          type="button"
+          class="text-xs font-medium text-primary hover:text-secondary border border-subtle rounded px-2 py-1"
+        >
+          {t(lang, 'citeCopy')}
+        </button>
+        {
+          markdownHref && (
+            <a
+              href={markdownHref}
+              class="text-xs font-medium text-primary hover:text-secondary border border-subtle rounded px-2 py-1"
+            >
+              {t(lang, 'markdownExportLink')}
+            </a>
+          )
+        }
+        <a
+          href={reportErrorHref}
+          target="_blank"
+          rel="noopener"
+          class="text-xs font-medium text-primary hover:text-secondary border border-subtle rounded px-2 py-1"
+        >
+          {t(lang, 'reportErrorLink')}
+        </a>
+      </div>
     </div>
     <p class="font-serif text-gray-700 dark:text-gray-300 leading-relaxed m-0 break-words">{citation}</p>
   </div>

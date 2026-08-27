@@ -76,3 +76,7 @@ scripts/hansard/data/*.log
 # data-relations review queues are review-in-progress working files;
 # .gitkeep keeps the directory, individual queues stay local
 scripts/data-relations/queue/*.json
+
+# Agent skill is published from `skill/` by scripts/publish-skill.mjs (prebuild).
+# Never edit the generated copy.
+public/skill/

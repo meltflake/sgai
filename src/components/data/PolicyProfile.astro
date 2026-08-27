@@ -29,6 +29,7 @@ const isZh = lang === 'zh';
 const title = pickLocalized<string>(policy, 'title', lang) || policy.title;
 const subtitle = isZh && policy.titleEn && policy.titleEn !== title ? policy.titleEn : undefined;
 const summary = pickLocalized<string>(policy, 'summary', lang) || '';
+const whyItMatters = pickLocalized<string>(policy, 'whyItMatters', lang) || '';
 const content = pickLocalized<string>(policy, 'content', lang) || '';
 const source = pickLocalized<string>(policy, 'source', lang) || policy.source;
 const sourceTextRecord = getPolicySourceText(policy.id);
@@ -323,6 +324,17 @@ function policySource(candidate: Policy): string {
   >
     {summary}
   </p>
+
+  {
+    whyItMatters && (
+      <section class="callout-note rounded-lg p-5 mb-8">
+        <h2 class="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 font-semibold mb-2">
+          {t(lang, 'whyItMattersHeading')}
+        </h2>
+        <p class="text-gray-900 dark:text-white leading-relaxed font-medium">{whyItMatters}</p>
+      </section>
+    )
+  }
 
   <dl
     class="bg-surface rounded-lg border border-subtle p-5 mb-8 grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3 text-sm"

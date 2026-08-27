@@ -1,8 +1,12 @@
 // /data/tracker.json — the six-dimension tracker as data (P2-4).
 // Dimension headlines, judgment, anchors and metric rows — the same
 // content the /tracker/ pages render, minus prose formatting.
+//
+// 2026-08: envelope + per-row `links` (see src/utils/data-export.ts).
+// BREAKING: rows moved from the top-level array to `.items`.
 
 import { dimensions } from '~/data/tracker';
+import { envelope, recordLinks } from '~/utils/data-export';
 
 export const prerender = true;
 
@@ -37,8 +41,9 @@ export const GET = () => {
       sourceUrl: m.sourceUrl,
       asOfDate: 'asOfDate' in m ? ((m as { asOfDate?: string }).asOfDate ?? null) : null,
     })),
+    links: recordLinks(`/tracker/${d.id}/`),
   }));
-  return new Response(JSON.stringify(rows, null, 2), {
+  return new Response(JSON.stringify(envelope('tracker', rows), null, 2), {
     headers: {
       'Content-Type': 'application/json; charset=utf-8',
       'Access-Control-Allow-Origin': '*',

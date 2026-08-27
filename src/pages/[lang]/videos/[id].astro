@@ -40,6 +40,7 @@ const pnNext = _pnIdx >= 0 && _pnIdx < _pnSorted.length - 1 ? _pnSorted[_pnIdx +
 const lang = Astro.params.lang as Lang;
 const isZh = lang === 'zh';
 
+const whyItMatters = pickLocalized<string>(video, 'whyItMatters', lang) || '';
 const transcript = getVideoTranscript(video.id);
 const transcriptParagraphs = getVideoTranscriptParagraphs(video.id, lang);
 const transcriptLanguage = getVideoTranscriptLanguage(video.id, lang);
@@ -161,6 +162,16 @@ const videoSchema = {
     <section class="callout-note rounded-lg p-5 mb-10">
       <h2 class="t-h3 text-gray-900 dark:text-white mb-3">{t(lang, 'coreViewpoint')}</h2>
       <p class="text-gray-800 dark:text-gray-200 leading-[1.85]">{summary}</p>
+      {
+        whyItMatters && (
+          <p class="mt-4 pt-4 border-t border-subtle text-gray-900 dark:text-white leading-relaxed font-medium">
+            <span class="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 font-semibold mr-2">
+              {t(lang, 'whyItMattersHeading')}
+            </span>
+            {whyItMatters}
+          </p>
+        )
+      }
     </section>
 
     {
@@ -282,6 +293,6 @@ const videoSchema = {
     }}
     class="max-w-5xl mx-auto px-4 sm:px-6 mt-8"
   />
-  <CiteBlock title={title} anchorId={video.id} />
+  <CiteBlock title={title} anchorId={video.id} markdownHref={localizedHref(`/videos/${video.id}.md`, lang)} />
   <SameTopicRail lang={lang} kind="video" id={video.id} class="max-w-5xl mx-auto px-4 sm:px-6 pb-16 mt-4" />
 </Layout>

@@ -1,22 +1,30 @@
 ---
 // Front-page latest-updates feed — main-column module, date-grouped like a
-// newspaper's "what's new" river. Same data as RecentUpdates.astro (the
-// merged manual + derived feed from src/data/updates.ts) but denser: one
-// date header per day instead of a date cell per row.
+// newspaper's "what's new" river. One row per record (merged manual +
+// derived feed from src/data/updates.ts): type chip · title (direct link)
+// · one-line summary · the record's own date next to the day it entered
+// the site. A "new since your last visit" badge lights up for returning
+// readers (browser-local, see SinceLastVisit.astro).
 //
-// RecentUpdates.astro stays untouched — /updates/ (UpdatesPage) still
-// consumes it. This component is homepage-only.
+// Window: everything from the last 14 days, at least 8 rows, at most 20 —
+// so a quiet fortnight still shows a page of history and a batch import
+// doesn't flood the front page.
 
-import { recentUpdates, type Update, type UpdateType } from '~/data/updates';
-import { localizedHref, pickLocalized, t, type Lang } from '~/i18n';
+import { recentUpdatesWindow, type Update } from '~/data/updates';
+import { localizedHref, t, type Lang } from '~/i18n';
+import { formatDayHeader, formatEventDate } from '~/utils/date-format';
+import { CHIP_FALLBACK, TYPE_CHIP, eventDateLabelKey, linkLabel, typeLabel, updateText } from '~/utils/update-type-ui';
+import SinceLastVisit from '~/components/common/SinceLastVisit.astro';
 
 interface Props {
   lang: Lang;
-  limit?: number;
+  days?: number;
+  min?: number;
+  max?: number;
 }
 
-const { lang, limit = 8 } = Astro.props;
-const items: Update[] = recentUpdates(limit);
+const { lang, days = 14, min = 8, max = 20 } = Astro.props;
+const items: Update[] = recentUpdatesWindow({ days, min, max });
 
 // Group consecutive same-day updates under one date header.
 const byDate: Array<{ date: string; updates: Update[] }> = [];
@@ -26,42 +34,15 @@ for (const u of items) {
   else byDate.push({ date: u.date, updates: [u] });
 }
 
-const TYPE_CHIP: Record<UpdateType, string> = {
-  policy: 'bg-blue-50 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300',
-  debate: 'bg-amber-50 text-amber-700 dark:bg-amber-900/40 dark:text-amber-300',
-  video: 'bg-rose-50 text-rose-700 dark:bg-rose-900/40 dark:text-rose-300',
-  startup: 'bg-emerald-50 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300',
-  people: 'bg-violet-50 text-violet-700 dark:bg-violet-900/40 dark:text-violet-300',
-  speech: 'bg-fuchsia-50 text-fuchsia-700 dark:bg-fuchsia-900/40 dark:text-fuchsia-300',
-  tracker: 'bg-sky-50 text-sky-700 dark:bg-sky-900/40 dark:text-sky-300',
-  benchmark: 'bg-teal-50 text-teal-700 dark:bg-teal-900/40 dark:text-teal-300',
-  ecosystem: 'bg-lime-50 text-lime-700 dark:bg-lime-900/40 dark:text-lime-300',
-  lever: 'bg-orange-50 text-orange-700 dark:bg-orange-900/40 dark:text-orange-300',
-  longform: 'bg-indigo-50 text-indigo-700 dark:bg-indigo-900/40 dark:text-indigo-300',
-  site: 'bg-gray-100 text-gray-700 dark:bg-slate-800 dark:text-gray-300',
-  fix: 'bg-yellow-50 text-yellow-700 dark:bg-yellow-900/40 dark:text-yellow-300',
-};
-
-const TYPE_LABEL_KEY: Record<UpdateType, Parameters<typeof t>[1]> = {
-  policy: 'updateTypePolicy',
-  debate: 'updateTypeDebate',
-  video: 'updateTypeVideo',
-  startup: 'updateTypeStartup',
-  people: 'updateTypePeople',
-  speech: 'updateTypeSpeech',
-  tracker: 'updateTypeTracker',
-  benchmark: 'updateTypeBenchmark',
-  ecosystem: 'updateTypeEcosystem',
-  lever: 'updateTypeLever',
-  longform: 'updateTypeLongform',
-  site: 'updateTypeSite',
-  fix: 'updateTypeFix',
-};
+const SCOPE = 'latest-updates-feed';
 ---
 
-<div>
+<div id={SCOPE}>
   <div class="flex items-baseline justify-between mb-4 gap-4 flex-wrap">
-    <h2 class="t-h3 text-gray-900 dark:text-white">{t(lang, 'updatesHomeSection')}</h2>
+    <div class="flex items-baseline gap-3 flex-wrap">
+      <h2 class="t-h3 text-gray-900 dark:text-white">{t(lang, 'updatesHomeSection')}</h2>
+      <SinceLastVisit lang={lang} scope={SCOPE} />
+    </div>
     <a
       href={localizedHref('/updates/', lang)}
       class="text-sm text-gray-500 hover:text-primary dark:text-gray-400 transition-colors"
@@ -77,37 +58,55 @@ const TYPE_LABEL_KEY: Record<UpdateType, Parameters<typeof t>[1]> = {
       <div class="space-y-5">
         {byDate.map((group) => (
           <div>
-            <div class="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 tabular-nums border-b border-subtle pb-1.5 mb-3">
-              {group.date}
+            <div class="flex items-baseline justify-between text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 tabular-nums border-b border-subtle pb-1.5 mb-3">
+              <span>{formatDayHeader(group.date, lang)}</span>
+              <span>{t(lang, 'updatesCount').replace('{n}', String(group.updates.length))}</span>
             </div>
             <ul class="space-y-3">
               {group.updates.map((u) => {
-                const chip = TYPE_CHIP[u.type] ?? 'bg-gray-100 text-gray-700 dark:bg-slate-800 dark:text-gray-300';
-                const typeLabel = t(lang, TYPE_LABEL_KEY[u.type]);
-                const title = (pickLocalized(u, 'title', lang) as string | null | undefined) ?? u.title;
-                const summary = (pickLocalized(u, 'summary', lang) as string | null | undefined) ?? u.summary;
+                const chip = TYPE_CHIP[u.type] ?? CHIP_FALLBACK;
+                const title = updateText(u, 'title', lang);
+                const summary = updateText(u, 'summary', lang);
+                const evtKey = u.eventDate ? eventDateLabelKey(u.source) : undefined;
+                const showEvent = evtKey && u.eventDate && u.eventDate !== u.date;
                 return (
-                  <li>
+                  <li data-added={u.date}>
                     <div class="flex items-baseline gap-2 flex-wrap mb-0.5">
+                      <span
+                        data-new-dot
+                        class="hidden w-1.5 h-1.5 rounded-full bg-primary self-center"
+                        aria-hidden="true"
+                      />
                       <span class={`text-[11px] uppercase tracking-wider font-medium px-2 py-0.5 rounded ${chip}`}>
-                        {typeLabel}
+                        {typeLabel(u.type, lang)}
                       </span>
-                      <span class="font-medium text-gray-900 dark:text-white leading-snug">{title}</span>
+                      {u.href ? (
+                        <a
+                          href={localizedHref(u.href, lang)}
+                          class="font-medium text-gray-900 dark:text-white leading-snug hover:text-primary transition-colors"
+                        >
+                          {title}
+                        </a>
+                      ) : (
+                        <span class="font-medium text-gray-900 dark:text-white leading-snug">{title}</span>
+                      )}
+                      {showEvent && (
+                        <span class="text-[11px] text-gray-400 dark:text-gray-500 tabular-nums whitespace-nowrap">
+                          {t(lang, evtKey)} {formatEventDate(u.eventDate!, lang)}
+                        </span>
+                      )}
                     </div>
-                    <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">{summary}</p>
+                    {summary && <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">{summary}</p>}
                     {u.links && u.links.length > 0 && (
                       <div class="mt-1 flex gap-x-4 gap-y-1 flex-wrap text-xs">
-                        {u.links.map((link) => {
-                          const label = (pickLocalized(link, 'label', lang) as string | null | undefined) || link.label;
-                          return (
-                            <a
-                              href={localizedHref(link.href, lang)}
-                              class="text-primary hover:text-secondary underline-offset-4 hover:underline"
-                            >
-                              {label} →
-                            </a>
-                          );
-                        })}
+                        {u.links.map((link) => (
+                          <a
+                            href={localizedHref(link.href, lang)}
+                            class="text-primary hover:text-secondary underline-offset-4 hover:underline"
+                          >
+                            {linkLabel(link, lang)} →
+                          </a>
+                        ))}
                       </div>
                     )}
                   </li>

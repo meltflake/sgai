@@ -1,0 +1,850 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "sgai.md data API",
+    "version": "1.0.0",
+    "description": "Read-only, anonymous, static JSON and CSV exports of sgai.md — the Singapore AI strategy observatory. No API key, no sign-up, no rate limit beyond ordinary CDN fairness. Every JSON endpoint returns the same envelope: schemaVersion, dataset, siteVersion, dataUpdated, license, attribution, count, items. Every item that maps to a page carries links.sgai with the five locale URLs — cite the specific page, not the homepage.\n\nsgai-authored fields (summaries, translations, analysis) are CC BY 4.0. Verbatim source text (Hansard, speeches, transcripts, policy documents) remains copyright its original rights holders and is reproduced for reference only; reuse it via the original sourceUrl. Full terms: https://github.com/meltflake/sgai/blob/main/DATA-LICENSE.md",
+    "contact": {
+      "name": "Singapore AI Observatory / sgai.md",
+      "url": "https://sgai.md/about/"
+    },
+    "license": {
+      "name": "CC BY 4.0 for sgai-authored fields; see DATA-LICENSE.md",
+      "url": "https://github.com/meltflake/sgai/blob/main/DATA-LICENSE.md"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://sgai.md"
+    }
+  ],
+  "security": [],
+  "tags": [
+    {
+      "name": "data",
+      "description": "Static machine-readable exports"
+    }
+  ],
+  "paths": {
+    "/data/index.json": {
+      "get": {
+        "tags": ["data"],
+        "operationId": "getIndex",
+        "summary": "Dataset catalogue",
+        "description": "Every export with its live row count and a one-line description. Fetch this first.",
+        "responses": {
+          "200": {
+            "description": "Envelope whose items are dataset descriptors.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/Envelope"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "items": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/DatasetEntry"
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        }
+      }
+    },
+    "/data/records.json": {
+      "get": {
+        "tags": ["data"],
+        "operationId": "getRecords",
+        "summary": "Every dated record, newest first",
+        "description": "One row per record across every domain, sorted by addedAt descending — the machine twin of the site updates feed. Poll this to see what is new.",
+        "responses": {
+          "200": {
+            "description": "Envelope whose items are cross-domain records.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/Envelope"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "items": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/Record"
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        }
+      }
+    },
+    "/data/debates.json": {
+      "get": {
+        "tags": ["data"],
+        "operationId": "getDebates",
+        "summary": "AI-related parliamentary debate records",
+        "description": "Every tracked Singapore parliamentary debate touching AI. Transcript bodies are not included; follow sourceUrl for the Hansard original.",
+        "responses": {
+          "200": {
+            "description": "Envelope whose items are debate records.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/Envelope"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "items": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/Debate"
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        }
+      }
+    },
+    "/data/policies.json": {
+      "get": {
+        "tags": ["data"],
+        "operationId": "getPolicies",
+        "summary": "Tracked AI policy documents",
+        "description": "Every tracked Singapore AI policy document, grouped by category in the source data and flattened here.",
+        "responses": {
+          "200": {
+            "description": "Envelope whose items are policy records.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/Envelope"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "items": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/Policy"
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        }
+      }
+    },
+    "/data/tracker.json": {
+      "get": {
+        "tags": ["data"],
+        "operationId": "getTracker",
+        "summary": "Observatory tracker dimensions",
+        "description": "Each tracker dimension with its headline figure or qualitative badge, trend, ranking anchors and metric rows.",
+        "responses": {
+          "200": {
+            "description": "Envelope whose items are tracker dimensions.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/Envelope"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "items": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/TrackerDimension"
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        }
+      }
+    },
+    "/data/videos.json": {
+      "get": {
+        "tags": ["data"],
+        "operationId": "getVideos",
+        "summary": "Catalogued talks and interviews",
+        "description": "Every video the site catalogues, with four-language title, summary and why-it-matters lines. Transcript bodies are not included.",
+        "responses": {
+          "200": {
+            "description": "Envelope whose items are video records.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/Envelope"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "items": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/Video"
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        }
+      }
+    },
+    "/data/debates.csv": {
+      "get": {
+        "tags": ["data"],
+        "operationId": "getDebatesCsv",
+        "summary": "Debate dataset as CSV",
+        "description": "Bare CSV, no envelope: a header row plus one row per debate. For spreadsheets and notebooks.",
+        "responses": {
+          "200": {
+            "description": "CSV with columns id, date, type, title, titleEn, topics, speakers, sourceUrl.",
+            "content": {
+              "text/csv": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Envelope": {
+        "type": "object",
+        "description": "Wrapper shared by every JSON export.",
+        "required": [
+          "schemaVersion",
+          "dataset",
+          "siteVersion",
+          "dataUpdated",
+          "license",
+          "attribution",
+          "count",
+          "items"
+        ],
+        "properties": {
+          "schemaVersion": {
+            "type": "integer",
+            "enum": [1],
+            "description": "Bumped only on a breaking row-shape change; new fields do not bump it."
+          },
+          "dataset": {
+            "type": "string",
+            "enum": ["debates", "policies", "tracker", "videos", "records", "index"],
+            "description": "Matches the filename."
+          },
+          "siteVersion": {
+            "type": "string",
+            "example": "0.25.6"
+          },
+          "dataUpdated": {
+            "type": "string",
+            "format": "date",
+            "description": "Newest addedAt across the site's data — derived from the data, not from the build clock, so the bytes only change when the data changes.",
+            "example": "2026-08-26"
+          },
+          "license": {
+            "$ref": "#/components/schemas/License"
+          },
+          "attribution": {
+            "$ref": "#/components/schemas/Attribution"
+          },
+          "count": {
+            "type": "integer",
+            "description": "Always equal to items.length."
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": true
+            }
+          }
+        }
+      },
+      "License": {
+        "type": "object",
+        "description": "Field-level split: what sgai wrote versus what sgai merely reproduces.",
+        "required": ["authored", "verbatim", "terms"],
+        "properties": {
+          "authored": {
+            "type": "object",
+            "additionalProperties": true,
+            "properties": {
+              "name": {
+                "type": "string",
+                "example": "CC BY 4.0"
+              },
+              "url": {
+                "type": "string",
+                "format": "uri"
+              },
+              "scope": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "attribution": {
+                "type": "string"
+              }
+            }
+          },
+          "verbatim": {
+            "type": "object",
+            "additionalProperties": true,
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "scope": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "note": {
+                "type": "string"
+              }
+            }
+          },
+          "terms": {
+            "type": "string",
+            "format": "uri",
+            "example": "https://github.com/meltflake/sgai/blob/main/DATA-LICENSE.md"
+          }
+        }
+      },
+      "Attribution": {
+        "type": "object",
+        "required": ["name", "url", "note"],
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "Singapore AI Observatory / sgai.md"
+          },
+          "url": {
+            "type": "string",
+            "format": "uri",
+            "example": "https://sgai.md"
+          },
+          "note": {
+            "type": "string"
+          }
+        }
+      },
+      "Links": {
+        "type": "object",
+        "description": "Where this record lives. Cite links.sgai in the reader's language.",
+        "required": ["sgai"],
+        "properties": {
+          "sgai": {
+            "type": "object",
+            "description": "Absolute page URL per locale. English is the bare path; the other four carry a /<lang>/ prefix.",
+            "required": ["en", "zh", "zh-tw", "ja", "ko"],
+            "properties": {
+              "en": {
+                "type": "string",
+                "format": "uri",
+                "example": "https://sgai.md/debates/oral-answer-4088/"
+              },
+              "zh": {
+                "type": "string",
+                "format": "uri",
+                "example": "https://sgai.md/zh/debates/oral-answer-4088/"
+              },
+              "zh-tw": {
+                "type": "string",
+                "format": "uri",
+                "example": "https://sgai.md/zh-tw/debates/oral-answer-4088/"
+              },
+              "ja": {
+                "type": "string",
+                "format": "uri",
+                "example": "https://sgai.md/ja/debates/oral-answer-4088/"
+              },
+              "ko": {
+                "type": "string",
+                "format": "uri",
+                "example": "https://sgai.md/ko/debates/oral-answer-4088/"
+              }
+            }
+          },
+          "source": {
+            "type": "string",
+            "format": "uri",
+            "description": "The upstream original (Hansard page, policy PDF, YouTube video) where the record has one. Verify figures and quotations here before reusing them."
+          }
+        }
+      },
+      "LocalizedText": {
+        "type": "object",
+        "description": "One string per authored locale. Traditional Chinese is derived at render time and is therefore absent.",
+        "required": ["zh", "en", "ja", "ko"],
+        "properties": {
+          "zh": {
+            "type": "string",
+            "nullable": true
+          },
+          "en": {
+            "type": "string",
+            "nullable": true
+          },
+          "ja": {
+            "type": "string",
+            "nullable": true
+          },
+          "ko": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "DatasetEntry": {
+        "type": "object",
+        "description": "One row of /data/index.json.",
+        "additionalProperties": true,
+        "required": ["dataset", "url", "count", "description"],
+        "properties": {
+          "dataset": {
+            "type": "string",
+            "example": "debates"
+          },
+          "url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "count": {
+            "type": "integer"
+          },
+          "description": {
+            "type": "string"
+          }
+        }
+      },
+      "Record": {
+        "type": "object",
+        "description": "One row of /data/records.json — a record of any domain, reduced to its shared fields.",
+        "additionalProperties": true,
+        "required": ["type", "source", "addedAt", "title", "links"],
+        "properties": {
+          "type": {
+            "type": "string",
+            "description": "Display taxonomy of the updates feed; coarser than source (legal-ai folds into policy, talent into people, capital into ecosystem).",
+            "example": "debate"
+          },
+          "source": {
+            "type": "string",
+            "description": "Originating data domain.",
+            "enum": [
+              "policy",
+              "debate",
+              "video",
+              "people",
+              "speech",
+              "tracker",
+              "benchmark",
+              "ecosystem",
+              "lever",
+              "startup",
+              "legal",
+              "talent",
+              "capital"
+            ]
+          },
+          "id": {
+            "type": "string",
+            "nullable": true,
+            "description": "Stable record id where the domain has one."
+          },
+          "addedAt": {
+            "type": "string",
+            "format": "date",
+            "description": "When the record entered the site."
+          },
+          "eventDate": {
+            "type": "string",
+            "nullable": true,
+            "description": "The record's own date (sitting, publication, announcement) as written: YYYY-MM-DD, YYYY-MM or YYYY. Display only."
+          },
+          "title": {
+            "$ref": "#/components/schemas/LocalizedText"
+          },
+          "summary": {
+            "type": "object",
+            "nullable": true,
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/LocalizedText"
+              }
+            ],
+            "description": "One-line why-it-matters or summary, where the record carries one. Null when it carries none."
+          },
+          "links": {
+            "$ref": "#/components/schemas/Links"
+          }
+        }
+      },
+      "Debate": {
+        "type": "object",
+        "description": "One row of /data/debates.json.",
+        "additionalProperties": true,
+        "required": ["id", "date", "type", "title", "links"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "oral-answer-4088"
+          },
+          "date": {
+            "type": "string",
+            "format": "date"
+          },
+          "type": {
+            "type": "string",
+            "description": "Hansard report type, e.g. oral answer, written answer, budget debate."
+          },
+          "title": {
+            "type": "string",
+            "description": "Chinese title (translated by sgai)."
+          },
+          "titleEn": {
+            "type": "string",
+            "nullable": true,
+            "description": "English title, usually the Hansard heading."
+          },
+          "summary": {
+            "type": "string",
+            "nullable": true
+          },
+          "summaryEn": {
+            "type": "string",
+            "nullable": true
+          },
+          "topics": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "speakers": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "sourceUrl": {
+            "type": "string",
+            "format": "uri",
+            "description": "The Hansard record."
+          },
+          "links": {
+            "$ref": "#/components/schemas/Links"
+          }
+        }
+      },
+      "Policy": {
+        "type": "object",
+        "description": "One row of /data/policies.json.",
+        "additionalProperties": true,
+        "required": ["title", "date", "links"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "nullable": true,
+            "description": "Null for policies without their own detail page."
+          },
+          "category": {
+            "type": "string"
+          },
+          "categoryEn": {
+            "type": "string",
+            "nullable": true
+          },
+          "title": {
+            "type": "string"
+          },
+          "titleEn": {
+            "type": "string",
+            "nullable": true
+          },
+          "date": {
+            "type": "string",
+            "description": "Publication date; YYYY-MM-DD or a coarser stamp."
+          },
+          "source": {
+            "type": "string",
+            "description": "Issuing body."
+          },
+          "sourceEn": {
+            "type": "string",
+            "nullable": true
+          },
+          "sourceUrl": {
+            "type": "string",
+            "format": "uri",
+            "nullable": true
+          },
+          "summary": {
+            "type": "string",
+            "nullable": true
+          },
+          "summaryEn": {
+            "type": "string",
+            "nullable": true
+          },
+          "links": {
+            "$ref": "#/components/schemas/Links"
+          }
+        }
+      },
+      "TrackerDimension": {
+        "type": "object",
+        "description": "One row of /data/tracker.json.",
+        "additionalProperties": true,
+        "required": ["id", "kind", "title", "links"],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "kind": {
+            "type": "string",
+            "enum": ["quantified", "qualitative"]
+          },
+          "title": {
+            "type": "string"
+          },
+          "titleEn": {
+            "type": "string",
+            "nullable": true
+          },
+          "headline": {
+            "type": "string",
+            "nullable": true,
+            "description": "Quantified dimensions only."
+          },
+          "headlineEn": {
+            "type": "string",
+            "nullable": true
+          },
+          "headlineAsOf": {
+            "type": "string",
+            "nullable": true
+          },
+          "badge": {
+            "type": "string",
+            "nullable": true,
+            "description": "Qualitative dimensions only."
+          },
+          "badgeEn": {
+            "type": "string",
+            "nullable": true
+          },
+          "asOfDate": {
+            "type": "string",
+            "nullable": true
+          },
+          "trend": {
+            "type": "string",
+            "nullable": true
+          },
+          "anchors": {
+            "type": "array",
+            "description": "External rankings that anchor the judgment.",
+            "items": {
+              "type": "object",
+              "additionalProperties": true
+            }
+          },
+          "metrics": {
+            "type": "array",
+            "description": "Individual metric rows, each with its own source and as-of date.",
+            "items": {
+              "type": "object",
+              "additionalProperties": true
+            }
+          },
+          "links": {
+            "$ref": "#/components/schemas/Links"
+          }
+        }
+      },
+      "Video": {
+        "type": "object",
+        "description": "One row of /data/videos.json.",
+        "additionalProperties": true,
+        "required": ["id", "date", "title", "youtubeUrl", "links"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "v001"
+          },
+          "date": {
+            "type": "string",
+            "description": "Publication date of the talk or interview."
+          },
+          "title": {
+            "type": "string"
+          },
+          "titleEn": {
+            "type": "string",
+            "nullable": true
+          },
+          "titleJa": {
+            "type": "string",
+            "nullable": true
+          },
+          "titleKo": {
+            "type": "string",
+            "nullable": true
+          },
+          "speaker": {
+            "type": "string"
+          },
+          "speakerTitle": {
+            "type": "string"
+          },
+          "speakerTitleEn": {
+            "type": "string",
+            "nullable": true
+          },
+          "topic": {
+            "type": "string"
+          },
+          "topicEn": {
+            "type": "string",
+            "nullable": true
+          },
+          "youtubeUrl": {
+            "type": "string",
+            "format": "uri"
+          },
+          "channel": {
+            "type": "string"
+          },
+          "summary": {
+            "type": "string"
+          },
+          "summaryEn": {
+            "type": "string",
+            "nullable": true
+          },
+          "summaryJa": {
+            "type": "string",
+            "nullable": true
+          },
+          "summaryKo": {
+            "type": "string",
+            "nullable": true
+          },
+          "whyItMatters": {
+            "type": "string",
+            "nullable": true
+          },
+          "whyItMattersEn": {
+            "type": "string",
+            "nullable": true
+          },
+          "whyItMattersJa": {
+            "type": "string",
+            "nullable": true
+          },
+          "whyItMattersKo": {
+            "type": "string",
+            "nullable": true
+          },
+          "addedAt": {
+            "type": "string",
+            "format": "date",
+            "nullable": true
+          },
+          "links": {
+            "$ref": "#/components/schemas/Links"
+          }
+        }
+      }
+    },
+    "responses": {
+      "NotFound": {
+        "description": "No such export. These are static files, so a 404 means the path is misspelled or the dataset was renamed. Re-read /data/index.json for the current catalogue.",
+        "content": {
+          "text/html": {
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  }
+}
