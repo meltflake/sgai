@@ -55,7 +55,11 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
   <div
     class:list={[
       'relative text-default py-3 px-3 md:px-6 mx-auto w-full',
-      'md:flex md:items-center md:gap-4',
+      // md–lg (tablets, folded/unfolded Fold, iPad): wordmark + search/lang
+      // on row 1, the nav wraps to a full-width row 2. The single-row layout
+      // only fits from xl — at 1024–1180px the nowrap wordmark and the five
+      // nowrap nav items collided (2026-08-27, iPad / Fold report).
+      'md:flex md:flex-wrap xl:flex-nowrap md:items-center md:gap-x-4 md:gap-y-1',
       {
         'md:justify-between': position !== 'center',
       },
@@ -81,7 +85,7 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
       </div>
     </div>
     <nav
-      class="items-center w-full md:w-auto md:flex-1 hidden md:flex text-default overflow-y-auto overflow-x-hidden md:overflow-y-visible md:overflow-x-visible md:justify-center"
+      class="items-center w-full md:order-last xl:order-none xl:w-auto xl:flex-1 hidden md:flex text-default overflow-y-auto overflow-x-hidden md:overflow-y-visible md:overflow-x-visible md:justify-center"
       aria-label="Main navigation"
     >
       <ul
