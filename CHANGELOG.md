@@ -6,7 +6,11 @@
 
 ## Unreleased
 
-## 0.26.0 — 2026-08-26
+## 0.26.1 — 2026-08-27
+
+### 修复：平板宽度 header 字标与导航重叠
+
+- 768–1180px（iPad、Galaxy Fold 展开）下，`whitespace-nowrap` 的站名字标和五个同样不换行的导航项挤在一行，导航溢出后居中，压到「Latest / 最新」上。`Header.astro` 改为 `md`–`lg` 两行布局（字标 + 搜索/语言在第一行，导航整行居中在第二行），`xl`（1280）以上恢复单行。Playwright 在 6 个宽度 × 5 语言 30 个组合上量包围盒，修前 9 处重叠，修后 0。
 
 对标 AIHOT 的一整条 PR 栈（#234–#241，计划与执行记录见 [docs/20260825-aihot-learnings.md](docs/20260825-aihot-learnings.md)）。**含破坏性变更**：`/data/*.json` 不再是裸数组，见「数据导出信封」一节。
 
