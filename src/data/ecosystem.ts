@@ -654,11 +654,11 @@ But AISG's bottlenecks are real: **talent retention is weak** (apprentices leave
             date: '2026-06-10',
           },
           {
-            label: 'NRF：AI Singapore 计划页',
-            labelKo: 'NRF: AI Singapore 프로그램 페이지',
-            labelJa: 'NRF：AI Singapore プログラムページ',
-            labelEn: 'NRF: AI Singapore programme page',
-            url: 'https://www.nrf.gov.sg/programmes/ai-sg',
+            label: 'AI Singapore 官网',
+            labelKo: 'AI Singapore 공식 웹사이트',
+            labelJa: 'AI Singapore 公式サイト',
+            labelEn: 'AI Singapore official site',
+            url: 'https://aisingapore.org/',
             date: '2026-06-10',
           },
           {
@@ -674,7 +674,7 @@ But AISG's bottlenecks are real: **talent retention is weak** (apprentices leave
             labelKo: 'EDB: 2025–2030년 10억 싱가포르 달러 AI 공공 R&D 투자(2026-01 발표)',
             labelJa: 'EDB：2025–2030 年に 10 億シンガポールドルの AI 公共研究開発投資（2026 年 1 月発表）',
             labelEn: 'EDB: S$1B for AI public research, 2025–2030 (announced Jan 2026)',
-            url: 'https://www.edb.gov.sg/en/business-insights/insights/singapore-to-invest-s1-billion-over-five-years-to-boost-ai-public-research.html',
+            url: 'https://www.edb.gov.sg/en/news-and-insights/singapore-to-invest-s1-billion-over-five-years-to-boost-ai-public-research.html',
             date: '2026-06-10',
           },
           {
@@ -698,7 +698,7 @@ But AISG's bottlenecks are real: **talent retention is weak** (apprentices leave
             labelKo: 'EDB: AI Trailblazers 이니셔티브 발표(MCI/DISG/SNDGO × Google Cloud)',
             labelJa: 'EDB：AI Trailblazers イニシアチブ発表（MCI/DISG/SNDGO × Google Cloud）',
             labelEn: 'EDB: AI Trailblazers initiative launch (MCI/DISG/SNDGO × Google Cloud)',
-            url: 'https://www.edb.gov.sg/en/about-edb/media-releases-publications/mci-disg-sndgo-and-google-cloud-launch-ai-trailblazers-initiative-to-accelerate-the-development-of-impactful-generative-ai-solution-singapore.html',
+            url: 'https://www.edb.gov.sg/en/news-and-insights/mci-disg-sndgo-and-google-cloud-launch-ai-trailblazers-initiative-to-accelerate-the-development-of-impactful-generative-ai-solution-singapore',
             date: '2026-06-10',
           },
         ],
@@ -4597,7 +4597,7 @@ A take: this is Singapore's "small government, big leverage" playbook in action 
             labelKo: 'EDB 보도자료: MCI/DISG/SNDGO와 Google Cloud, AI Trailblazers 발표',
             labelJa: 'EDB プレスリリース：MCI/DISG/SNDGO と Google Cloud が AI Trailblazers を発表',
             labelEn: 'EDB media release: MCI, DISG, SNDGO and Google Cloud launch AI Trailblazers',
-            url: 'https://www.edb.gov.sg/en/about-edb/media-releases-publications/mci-disg-sndgo-and-google-cloud-launch-ai-trailblazers-initiative-to-accelerate-the-development-of-impactful-generative-ai-solution-singapore.html',
+            url: 'https://www.edb.gov.sg/en/news-and-insights/mci-disg-sndgo-and-google-cloud-launch-ai-trailblazers-initiative-to-accelerate-the-development-of-impactful-generative-ai-solution-singapore',
             date: '2026-07-06',
           },
         ],
@@ -6943,7 +6943,7 @@ Bottlenecks to watch: **scale** (a 50-person Foundry is a drop in the bucket aga
             descriptionEn:
               'Hiring 50 Singapore-based AI professionals, starting with financial services and precision health.',
             sourceUrl:
-              'https://www.edb.gov.sg/en/about-edb/media-releases-publications/temus-expands-ai-hiring-launches-foundry-in-singapore.html',
+              'https://www.edb.gov.sg/en/news-and-insights/temus-expands-ai-hiring-launches-foundry-in-singapore',
           },
           {
             date: '2026-07',
@@ -6974,7 +6974,7 @@ Bottlenecks to watch: **scale** (a 50-person Foundry is a drop in the bucket aga
             labelKo: 'EDB: Temus, AI 채용 확대 및 AI Foundry 시작',
             labelJa: 'EDB：Temus が AI 採用を拡大、AI Foundry を始動',
             labelEn: 'EDB: Temus expands AI hiring, launches Foundry in Singapore',
-            url: 'https://www.edb.gov.sg/en/about-edb/media-releases-publications/temus-expands-ai-hiring-launches-foundry-in-singapore.html',
+            url: 'https://www.edb.gov.sg/en/news-and-insights/temus-expands-ai-hiring-launches-foundry-in-singapore',
             date: '2026-05-20',
           },
           {

@@ -205,6 +205,12 @@ function classify(status: number | string, url: string): 'fail' | 'warn' | 'ok' 
   if (typeof status === 'number' && status >= 400 && status < 500 && isBotWalledHost(url)) {
     return 'warn';
   }
+  // 503 is "temporarily unavailable" — by definition retryable, never a
+  // verdict on whether the page exists (web.archive.org rate-limits
+  // automated clients this way while serving browsers fine). Soft-warn.
+  if (status === 503) {
+    return 'warn';
+  }
   return 'fail';
 }
 

@@ -1355,7 +1355,7 @@ export const people: Person[] = [
         role: 'Speaker',
         roleEn: 'Speaker',
         date: '2025',
-        sourceUrl: 'https://www.sicw.gov.sg/speakers/prof-luke-ong/',
+        sourceUrl: 'https://web.archive.org/web/20260513040627/https://www.sicw.gov.sg/speakers/prof-luke-ong/',
       },
     ],
   },
@@ -1950,7 +1950,7 @@ export const people: Person[] = [
           "Sectoral AI Centre of Excellence for Manufacturing launched by Singapore in 2024 under Lim's SERC; has scaled co-innovation projects with SMEs in precision engineering, electronics and biomedical manufacturing.",
         since: '2024',
         sourceUrl:
-          'https://www.edb.gov.sg/en/about-edb/media-releases-publications/new-ai-centre-of-excellence-to-drive-innovation-in-manufacturing.html',
+          'https://www.edb.gov.sg/en/news-and-insights/new-ai-centre-of-excellence-to-drive-innovation-in-manufacturing',
       },
       {
         title: 'A*STAR × SIA / SIAEC 智能维护合作',
