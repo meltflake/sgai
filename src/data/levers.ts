@@ -200,7 +200,7 @@ export const levers: Lever[] = [
             descriptionKo: 'NVIDIA가 싱가포르에서 다중 기관 AI 가속 생태계를 형성합니다',
             descriptionJa: 'NVIDIA がシンガポール内で多機関 AI 加速エコシステムを形成',
             descriptionEn: 'NVIDIA has built a multi-institution AI acceleration network in Singapore',
-            sourceUrl: 'https://www.edb.gov.sg/',
+            sourceUrl: 'https://www.edb.gov.sg/en/industries/artificial-intelligence',
           },
           {
             id: 'openai-apac-区域总部',

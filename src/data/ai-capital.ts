@@ -71,7 +71,7 @@ export const capitalRecords: CapitalRecord[] = [
     isFloor: true,
     amountType: 'envelope',
     parties: ['Singapore Government'],
-    sourceUrl: 'https://www.edb.gov.sg/en/our-industries/artificial-intelligence-in-singapore.html',
+    sourceUrl: 'https://www.edb.gov.sg/en/industries/artificial-intelligence',
     addedAt: '2026-08-14',
   },
   {
@@ -93,7 +93,7 @@ export const capitalRecords: CapitalRecord[] = [
     isFloor: true,
     amountType: 'commitment',
     parties: ['Microsoft', 'Google', 'AWS', 'Equinix', 'NVIDIA'],
-    sourceUrl: 'https://www.edb.gov.sg/en/our-industries/artificial-intelligence-in-singapore.html',
+    sourceUrl: 'https://www.edb.gov.sg/en/industries/artificial-intelligence',
     addedAt: '2026-08-14',
   },
   {
@@ -209,7 +209,7 @@ export function capitalMetricRows(): MetricRow[] {
       sourceEn: 'Site derivation (ai-capital.ts; see the /ecosystem capital section)',
       sourceJa: '当サイト派生（ai-capital.ts、/ecosystem 資本セクション参照）',
       sourceKo: '사이트 파생(ai-capital.ts, /ecosystem 자본 섹션 참조)',
-      sourceUrl: 'https://www.edb.gov.sg/en/our-industries/artificial-intelligence-in-singapore.html',
+      sourceUrl: 'https://www.edb.gov.sg/en/industries/artificial-intelligence',
     },
   ];
 }

@@ -6,7 +6,14 @@
 
 ## Unreleased
 
-## 0.26.1 — 2026-08-27
+### 修复 10 条失效 sourceUrl（weekly url-health 巡检）
+
+- EDB 改版（`/our-industries/`、`/about-edb/media-releases-publications/`、`/business-insights/insights/` → `/en/industries/`、`/en/news-and-insights/`）：ai-capital、ecosystem ×3、levers、people 共 6 处换成 308 重定向后的最终地址（全部实测 200）。
+- `nrf.gov.sg/programmes/ai-sg` 真 404：ecosystem 里该 source 换为 AI Singapore 官网（aisingapore.org），四语 label 同步改。
+- SICW 演讲者页（luke-ong）年度站点下线：换 archive.org 2026-05-13 快照。
+- 香港 LegCo ITB 文件 PDF：legco.gov.hk 证书链不完整（curl / Node fetch 均握手失败，浏览器可开），换 archive.org 2026-02-04 快照以保证机器可验证。
+- `openmmlab.com` 证书过期：source 换为 GitHub 组织页，label 改「OpenMMLab GitHub」四语。
+- 注：url-health 报告里 EDB 各条显示 404 实为「308 → 当时目标 404」的中间态，本周已恢复 200；Facebook / LinkedIn 的 400/404 是反爬（warn 级），不动。
 
 ### 修复：平板宽度 header 字标与导航重叠
 
