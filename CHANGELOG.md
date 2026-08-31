@@ -14,6 +14,7 @@
 - 香港 LegCo ITB 文件 PDF：legco.gov.hk 证书链不完整（curl / Node fetch 均握手失败，浏览器可开），换 archive.org 2026-02-04 快照以保证机器可验证。
 - `openmmlab.com` 证书过期：source 换为 GitHub 组织页，label 改「OpenMMLab GitHub」四语。
 - 注：url-health 报告里 EDB 各条显示 404 实为「308 → 当时目标 404」的中间态，本周已恢复 200；Facebook / LinkedIn 的 400/404 是反爬（warn 级），不动。
+- url-health 分类器：503 从 fail 降为 warn——503 本义即「暂时不可用」（可重试），不构成页面不存在的证据；web.archive.org 对自动化客户端会间歇性限流返回 503（浏览器正常打开）。
 
 ### 修复：平板宽度 header 字标与导航重叠
 
