@@ -145,6 +145,43 @@ export function pickSpeakerTypeLabels(lang: string): Record<string, string> {
 
 export const videos: VideoItem[] = [
   {
+    id: 'v088',
+    title: '新加坡加强知识产权框架应对AI',
+    titleEn: 'Singapore strengthens IP framework amid AI rise',
+    titleJa: 'シンガポール、AI対応のため知識財産枠組みを強化しています。',
+    titleKo: '싱가포르, 인공지능 대응 지적재산권 체계 강화',
+    speaker: 'CNA',
+    speakerTitle: '亚洲新闻台报道',
+    speakerTitleEn: 'CNA report',
+    speakerTitleJa: 'アジアニュース放送による報道',
+    speakerTitleKo: '아시아 뉴스 채널 보도',
+    speakerType: 'industry',
+    date: '2026-08-26',
+    duration: '10:50',
+    summary:
+      '新加坡审视知识产权框架，AI带来版权、专利和所有权问题。政府征求公众意见，探讨版权作品用于AI训练和AI创作的认可问题。',
+    summaryEn:
+      'Singapore examines its IP framework as AI raises copyright and patent questions. The government seeks public feedback on using copyrighted works to train AI and recognizing AI-assisted creators.',
+    summaryJa:
+      'シンガポール、知識財産枠組みを審視しています。AIは著作権、特許、所有権に関する問題をもたらしています。政府は公衆の意見を求め、著作権作品のAI訓練およびAI創作への利用に関する認可問題を検討しています。',
+    summaryKo:
+      '싱가포르는 지적재산권 체계를 검토하고 있습니다. AI는 저작권, 특허, 소유권 문제를 야기합니다. 정부는 대중의 의견을 구하고 있으며, 저작권 작품의 AI 훈련 사용과 AI 생성물의 인정 문제에 대해 논의하고 있습니다.',
+    whyItMatters: 'IPOS 以提示充分程度界定 AI 作品版权归属，抢在诉讼空白期立规，有望成为区域先例',
+    whyItMattersEn:
+      'IPOS defines copyright ownership of AI works based on the sufficiency of prompts, establishing regulations ahead of the litigation gap, with potential to become a regional precedent.',
+    whyItMattersJa:
+      'IPOSはプロンプトの充分度によってAI作品の著作権帰属を界定し、訴訟の空白期間に先制的に規則を立てることで、地域の先例となることが見込まれています。',
+    whyItMattersKo:
+      'IPOS는 프롬프트 충분도에 따라 AI 작품의 저작권 귀속을 정의하고, 소송 공백기를 선점하여 규정을 수립함으로써 지역 선례가 될 것으로 전망된다',
+    topic: 'AI 治理与监管',
+    topicEn: 'AI Governance & Regulation',
+    topicJa: 'AI ガバナンスと規制',
+    topicKo: 'AI 거버넌스와 규제',
+    youtubeUrl: 'https://www.youtube.com/watch?v=nh2H8fmT5ss',
+    channel: 'CNA',
+    addedAt: '2026-08-31',
+  },
+  {
     id: 'v085',
     title: '新型医疗AI平台自动化流程',
     titleEn: 'New AI platform automates healthcare workflows for patient care',
