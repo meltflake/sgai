@@ -111,7 +111,7 @@ export const universityProjects: OpenSourceProject[] = [
     descriptionKo: '분산 딥러닝 훈련 프레임워크로, 거대 모형의 효율적인 훈련을 지원합니다.',
     descriptionJa: '分散型深層学習訓練フレームワーク、大規模モデルの効率的な訓練に対応しています。',
     descriptionEn: 'Distributed deep-learning training framework optimised for efficient large-model training',
-    stars: 41435,
+    stars: 41448,
     url: 'https://github.com/hpcaitech/ColossalAI',
     websiteUrl: 'https://www.colossalai.org',
     language: 'Python',
@@ -371,7 +371,7 @@ The point to watch is how OpenMMLab connects with multimodal, robotics, and edge
     descriptionKo: '첫 번째 임의 모달리티 상호 변환 대규모 언어 모델(텍스트, 이미지, 비디오, 오디오)',
     descriptionJa: '最初の任意モダリティ相互変換大言語モデル（テキスト、画像、動画、音声）',
     descriptionEn: 'An any-to-any multimodal LLM across text, image, video, and audio',
-    stars: 3637,
+    stars: 3635,
     url: 'https://github.com/NExT-GPT/NExT-GPT',
     websiteUrl: 'https://next-gpt.github.io',
     language: 'Python',
@@ -489,7 +489,7 @@ This page is a place to keep adding citations, follow-on models, industrial tran
     descriptionKo: '다중 모달리티 이해 및 생성을 통합하는 단일 Transformer 모델',
     descriptionJa: 'マルチモーダル理解・生成を統一した単一 Transformer モデル',
     descriptionEn: 'A single-Transformer model for unified multimodal understanding and generation',
-    stars: 1971,
+    stars: 1975,
     url: 'https://github.com/showlab/Show-o',
     websiteUrl: 'https://showlab.github.io/Show-o/',
     language: 'Python / Models',
@@ -616,7 +616,7 @@ Future tracking should cover Show Lab’s model series, paper acceptances, Huggi
     descriptionKo: 'GUI Agent 및 Computer Use를 위한 비전-언어-동작 모델',
     descriptionJa: 'GUI Agent および Computer Use に向けた視覚-言語-動作モデル',
     descriptionEn: 'A vision-language-action model for GUI agents and computer use',
-    stars: 1891,
+    stars: 1893,
     url: 'https://github.com/showlab/ShowUI',
     websiteUrl: 'https://showlab.github.io/ShowUI/',
     language: 'Python / Models',
@@ -726,7 +726,7 @@ If GUI agents become a general capability, work such as ShowUI becomes a base mo
     descriptionKo: '비디오 생성 모델을 위한 효율적 시스템 프레임워크',
     descriptionJa: '動画生成モデル向けの効率的なシステムフレームワーク',
     descriptionEn: 'An efficient system framework for video generation models',
-    stars: 2022,
+    stars: 2023,
     url: 'https://github.com/NUS-HPC-AI-Lab/VideoSys',
     language: 'Python',
     license: 'Apache-2.0',
@@ -1192,7 +1192,7 @@ On this site, it is a reminder that Singapore’s AI influence does not only com
     descriptionKo: '오픈소스 멀티모달 통합 모델, 이해 및 생성 포함',
     descriptionJa: 'オープンソースマルチモーダル統一モデル、理解と生成をカバー',
     descriptionEn: 'Open-source unified multimodal model for understanding and generation',
-    stars: 6146,
+    stars: 6160,
     url: 'https://github.com/ByteDance-Seed/BAGEL',
     language: 'Python',
     license: 'Apache-2.0',
@@ -1642,7 +1642,7 @@ Future tracking should watch whether it is used in Sailor or other SAIL model-tr
     descriptionKo: '신형 파이프라인 병렬 훈련 효율 최적화',
     descriptionJa: '新型パイプライン並列化による訓練効率の最適化',
     descriptionEn: 'Pipeline-parallelism technique for improving training efficiency',
-    stars: 465,
+    stars: 466,
     url: 'https://github.com/sail-sg/zero-bubble-pipeline-parallelism',
     language: 'Python',
     license: '未明确',
@@ -1758,7 +1758,7 @@ export const startupProjects: OpenSourceProject[] = [
     descriptionKo: '오프라인 ChatGPT 대체 제품, 로컬 실행 AI 어시스턴트',
     descriptionJa: 'オフライン ChatGPT 代替品、ローカル実行 AI アシスタント',
     descriptionEn: 'Offline ChatGPT alternative; an AI assistant that runs locally',
-    stars: 43998,
+    stars: 44284,
     url: 'https://github.com/janhq/jan',
     websiteUrl: 'https://jan.ai',
     language: 'TypeScript',
@@ -1879,10 +1879,10 @@ export const summary = {
     'シンガポールの AI オープンソース貢献は、政府プロジェクト自体をはるかに上回ります。Salesforce Singapore Lab の BLIP シリーズはグローバルなビジュアル言語 AI の基礎となり、NUS が孵化した Colossal-AI は最も人気のある分散トレーニング フレームワークの 1 つであり、NTU の OpenMMLab はコンピューター ビジョン分野の事実上の標準の 1 つです。',
   noteEn:
     "Singapore's open-source AI work goes well beyond the government's own projects. Salesforce's Singapore lab produced the BLIP family, a cornerstone of global vision-language AI; NUS-incubated Colossal-AI is one of the most popular distributed-training frameworks; and NTU's OpenMMLab is a widely used computer-vision toolbox ecosystem.",
-  dataDate: '2026-08-15',
+  dataDate: '2026-09-01',
 };
 
 export const dataDisclaimer =
-  '数据截至 2026 年 8 月，GitHub stars 为近似值。统计采集：2026-05-04；项目档案更新：2026-05-04。如有遗漏或错误，欢迎提交 Issue。';
+  '数据截至 2026 年 9 月，GitHub stars 为近似值。统计采集：2026-05-04；项目档案更新：2026-05-04。如有遗漏或错误，欢迎提交 Issue。';
 export const dataDisclaimerEn =
-  'Data is current as of August 2026; GitHub star counts are approximate. Stats collected: 2026-05-04; project profiles updated: 2026-05-04. Please open an Issue if you spot omissions or errors.';
+  'Data is current as of September 2026; GitHub star counts are approximate. Stats collected: 2026-05-04; project profiles updated: 2026-05-04. Please open an Issue if you spot omissions or errors.';
