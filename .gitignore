@@ -48,8 +48,6 @@ scripts/voices/data/
 scripts/out/
 
 # refresh pipeline caches (auto-discovered URLs, summaries, raw HTML)
-# dir/* (not dir/) so the reviewer-rejected ledger below can be re-included
-!scripts/refresh/*/data/rejected-urls.json
 scripts/refresh/policies/data/*
 scripts/refresh/ecosystem/data/*
 scripts/refresh/levers/data/*
@@ -62,6 +60,9 @@ scripts/refresh/voices/data/*
 # Reject-decision cache IS tracked: weekly PRs surface drops for review
 # and fresh checkouts inherit the seeded PMO date-floor backlog.
 !scripts/refresh/voices/data/rejected-ids.json
+# Reviewer-rejected candidate ledger (scripts/lib/rejected-urls.ts) — tracked for every domain;
+# the dir rules above are dir/* (not dir/) so this negation can take effect.
+!scripts/refresh/*/data/rejected-urls.json
 
 # i18n translation cache (sha256-keyed claude haiku output)
 scripts/i18n/data/
