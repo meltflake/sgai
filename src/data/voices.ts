@@ -1763,7 +1763,7 @@ export const mddiSpeeches: MddiSpeech[] = [
   },
   {
     titleEn: 'Opening Keynote Address By MOS Jasmin Lau At AIMX Singapore',
-    title: '政务部长刘燕玲在AIMX新加坡的开幕主旨演讲',
+    title: '政务部长刘洁敏在AIMX新加坡的开幕主旨演讲',
     titleJa: 'AIMX Singapore における MOS Jasmin Lau による開会基調講演',
     titleKo: 'AIMX 싱가포르에서의 MOS Jasmin Lau 개막 기조연설',
     speaker: 'Jasmin Lau',
