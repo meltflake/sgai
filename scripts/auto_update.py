@@ -94,7 +94,16 @@ SPRS_API = "https://sprs.parl.gov.sg/search/getHansardTopic/"
 #   budget:         only during Committee of Supply (Feb–Mar); 30 is generous
 HANSARD_ORAL_RANGE = 80
 HANSARD_WRITTEN_RANGE = 300
+# written-answer-na: "Written Answers to Questions for Oral Answer Not Answered
+# by End of Question Time". Shares the written-answer number space but is a
+# separate id family — the 2026-08-04/05 sitting had 14 AI-related items here
+# that the written-answer scan could never see.
+HANSARD_WRITTEN_NA_RANGE = 300
 HANSARD_BUDGET_RANGE = 30
+# A report id known to exist; probed before every scan. If SPRS stops
+# answering (as it did 2026-08 when it started requiring the id in the JSON
+# body), the scan fails loudly instead of reporting "0 new" for weeks.
+HANSARD_SENTINEL_ID = "oral-answer-4156"
 # Title-only keyword matching missed Q's whose title hides the AI angle
 # (e.g. "Safeguards to Ensure Citizen Data Is Not Disclosed..." → about
 # foreign-headquartered AI vendors). We now also scan the first
@@ -199,6 +208,32 @@ def _strip_html(html: str) -> str:
     return text.strip()
 
 
+def _sprs_post(rid: str):
+    """POST getHansardTopic. SPRS (2026-08 onwards) reads the id from the JSON
+    body; the query-string-only form returns 400 for every id."""
+    import requests
+
+    return requests.post(
+        SPRS_API,
+        params={"id": rid},
+        headers={"Content-Type": "application/json"},
+        json={"id": rid},
+        timeout=10,
+    )
+
+
+def probe_sprs(logger) -> None:
+    """Raise if SPRS cannot serve a known-good id (API change / outage)."""
+    resp = _sprs_post(HANSARD_SENTINEL_ID)
+    rh = resp.json().get("resultHTML") if resp.status_code == 200 else None
+    if not rh or not rh.get("title"):
+        raise RuntimeError(
+            f"SPRS sentinel {HANSARD_SENTINEL_ID} returned HTTP {resp.status_code} "
+            f"without a title — API changed or down; refusing to report '0 new'"
+        )
+    logger.info(f"SPRS 探针 OK: {HANSARD_SENTINEL_ID} → {rh['title'][:50]}")
+
+
 def scan_hansard_range(prefix: str, start: int, end: int, logger) -> list[dict]:
     """扫描 SPRS API 指定 ID 范围，返回有效条目（title + content 双扫）"""
     import requests
@@ -207,13 +242,7 @@ def scan_hansard_range(prefix: str, start: int, end: int, logger) -> list[dict]:
     for i in range(start + 1, end + 1):
         rid = f"{prefix}-{i}"
         try:
-            resp = requests.post(
-                SPRS_API,
-                params={"id": rid},
-                headers={"Content-Type": "application/json"},
-                json={},
-                timeout=10,
-            )
+            resp = _sprs_post(rid)
             if resp.status_code != 200:
                 continue
             rh = resp.json().get("resultHTML")
@@ -242,9 +271,12 @@ def run_hansard(state: dict, logger) -> dict:
         "hansard",
         {"max_oral_id": 4117, "max_written_id": 22056, "max_budget_id": 2937},
     )
+    probe_sprs(logger)
     max_oral = hansard_state["max_oral_id"]
     max_written = hansard_state["max_written_id"]
     max_budget = hansard_state.get("max_budget_id", 2937)  # default seeded from prior emit
+    # seeded at the last id of the 2026-08-05 sitting (ingested manually, PR 2026-09-04)
+    max_written_na = hansard_state.get("max_written_na_id", 24297)
 
     logger.info(f"Hansard 扫描: oral-answer-{max_oral + 1}..{max_oral + HANSARD_ORAL_RANGE}")
     oral_results = scan_hansard_range("oral-answer", max_oral, max_oral + HANSARD_ORAL_RANGE, logger)
@@ -254,10 +286,17 @@ def run_hansard(state: dict, logger) -> dict:
         "written-answer", max_written, max_written + HANSARD_WRITTEN_RANGE, logger
     )
 
+    logger.info(
+        f"Hansard 扫描: written-answer-na-{max_written_na + 1}..{max_written_na + HANSARD_WRITTEN_NA_RANGE}"
+    )
+    written_na_results = scan_hansard_range(
+        "written-answer-na", max_written_na, max_written_na + HANSARD_WRITTEN_NA_RANGE, logger
+    )
+
     logger.info(f"Hansard 扫描: budget-{max_budget + 1}..{max_budget + HANSARD_BUDGET_RANGE}")
     budget_results = scan_hansard_range("budget", max_budget, max_budget + HANSARD_BUDGET_RANGE, logger)
 
-    all_results = oral_results + written_results + budget_results
+    all_results = oral_results + written_results + written_na_results + budget_results
     ai_results = [r for r in all_results if r["ai_related"]]
 
     # 更新最高 ID
@@ -272,6 +311,7 @@ def run_hansard(state: dict, logger) -> dict:
 
     new_max_oral = _update_max(oral_results, max_oral)
     new_max_written = _update_max(written_results, max_written)
+    new_max_written_na = _update_max(written_na_results, max_written_na)
     new_max_budget = _update_max(budget_results, max_budget)
 
     logger.info(f"Hansard 扫描完成: {len(all_results)} 条新记录, {len(ai_results)} 条 AI 相关")
@@ -282,6 +322,7 @@ def run_hansard(state: dict, logger) -> dict:
         "scan_range": (
             f"oral {max_oral + 1}..{max_oral + HANSARD_ORAL_RANGE}, "
             f"written {max_written + 1}..{max_written + HANSARD_WRITTEN_RANGE}, "
+            f"written-na {max_written_na + 1}..{max_written_na + HANSARD_WRITTEN_NA_RANGE}, "
             f"budget {max_budget + 1}..{max_budget + HANSARD_BUDGET_RANGE}"
         ),
         "items": [
@@ -290,6 +331,7 @@ def run_hansard(state: dict, logger) -> dict:
         ],
         "new_max_oral": new_max_oral,
         "new_max_written": new_max_written,
+        "new_max_written_na": new_max_written_na,
         "new_max_budget": new_max_budget,
     }
 
@@ -751,6 +793,7 @@ def run_pipelines(selected: list[dict], state: dict, logger, dry_run: bool) -> t
                     results["hansard"] = hansard_result
                     state["domains"]["hansard"]["max_oral_id"] = hansard_result["new_max_oral"]
                     state["domains"]["hansard"]["max_written_id"] = hansard_result["new_max_written"]
+                    state["domains"]["hansard"]["max_written_na_id"] = hansard_result["new_max_written_na"]
                     state["domains"]["hansard"]["max_budget_id"] = hansard_result["new_max_budget"]
                 else:
                     raise RuntimeError(f"unknown python-builtin pipeline id: {pid}")

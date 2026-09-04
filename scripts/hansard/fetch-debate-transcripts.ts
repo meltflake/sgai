@@ -115,7 +115,8 @@ async function fetchTranscript(debate: (typeof debates)[number]): Promise<Transc
         Referer: 'https://sprs.parl.gov.sg/search/',
         'User-Agent': 'Mozilla/5.0',
       },
-      body: '{}',
+      // SPRS (2026-08 onwards) requires the id in the JSON body.
+      body: JSON.stringify({ id: reportId }),
     });
 
     if (!response.ok) throw new Error(`SPRS returned ${response.status}`);

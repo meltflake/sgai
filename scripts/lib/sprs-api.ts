@@ -55,7 +55,9 @@ export async function fetchHansardTopic(reportId: string): Promise<HansardTopic 
   const response = await fetch(url, {
     method: 'POST',
     headers: DEFAULT_HEADERS,
-    body: '{}',
+    // SPRS (2026-08 onwards) reads the report id from the JSON body; the
+    // query-string form returns 400 for every id. Keep both for compatibility.
+    body: JSON.stringify({ id: reportId }),
   });
 
   if (!response.ok) {
