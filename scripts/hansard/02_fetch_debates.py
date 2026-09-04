@@ -147,7 +147,7 @@ def fetch_debate(report_id_info):
         r = requests.post(
             f"{SPRS_BASE}/search/getHansardTopic/?id={report_id}",
             headers=HEADERS,
-            json={},
+            json={'id': report_id},  # SPRS (2026-08+) reads the id from the body
             timeout=15
         )
         

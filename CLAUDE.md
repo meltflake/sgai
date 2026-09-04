@@ -398,7 +398,7 @@ author: '新加坡 AI 观察'
 
 ### SPRS API 使用要点
 
-**API 端点**：`POST https://sprs.parl.gov.sg/search/getHansardTopic/?id={report_id}`
+**API 端点**：`POST https://sprs.parl.gov.sg/search/getHansardTopic/`，JSON body `{"id": "{report_id}"}`（2026-08 起 id 必须放 body；只放 query string 每个 id 都返回 400，扫描会静默得到 0 条）
 
 **响应格式是字典，不是列表**：
 
@@ -419,6 +419,7 @@ const date = rh.sittingDate; // 格式 "12-2-2026" (DD-M-YYYY)
 
 - `oral-answer-XXXX`：4000+ 区间（2026 年数据约 4023–4088）
 - `written-answer-XXXXX`：21000+ 区间（注意是五位数！不要去扫 5000 区间）
+- `written-answer-na-XXXXX`：「口头质询时间内未及答复、改书面答复」的独立 id 家族（reportType "Written Answers to Questions for Oral Answer Not Answered by End of Question Time"），与 written-answer 共用号段但互不重叠。2026-08-04/05 会期 14 条 AI 相关条目全在这一族，只扫 written-answer 永远看不到
 - `budget-XXXX`：2800+ 区间
 - `cos-{ministry}-{year}`：如 `cos-moh-2026`（HTTP 400 表示不存在）
 - Hansard 发布有延迟，一般 sitting 后数周才上线；written answers 通常比 oral 更晚发布
@@ -468,9 +469,8 @@ def scan_ids(prefix, start, end):
         rid = f'{prefix}-{i}'
         resp = requests.post(
             'https://sprs.parl.gov.sg/search/getHansardTopic/',
-            params={'id': rid},
             headers={'Content-Type': 'application/json'},
-            json={}, timeout=10)
+            json={'id': rid}, timeout=10)
         if resp.status_code == 200:
             rh = resp.json().get('resultHTML')
             if rh and rh.get('title'):

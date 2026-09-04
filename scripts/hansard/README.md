@@ -55,9 +55,9 @@ playwright install chromium
 
 **SPRS API 端点**：
 ```
-POST https://sprs.parl.gov.sg/search/getHansardTopic/?id=<report_id>
+POST https://sprs.parl.gov.sg/search/getHansardTopic/
 Content-Type: application/json
-Body: {}
+Body: {"id": "<report_id>"}   # 2026-08 起 id 必须放在 body；只放 query string 会返回 400
 ```
 
 **输出**：`data/all_ai_debates.json`（完整原始数据，~3.8MB）
@@ -189,8 +189,9 @@ npm run check:debate-transcripts
 
 ```
 # 获取单条辩论完整内容
-POST https://sprs.parl.gov.sg/search/getHansardTopic/?id=oral-answer-4023
+POST https://sprs.parl.gov.sg/search/getHansardTopic/
 Content-Type: application/json
+Body: {"id": "oral-answer-4023"}
 
 {}
 
