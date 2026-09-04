@@ -4,5 +4,11 @@
     "reason": "Already covered in depth: benchmarking.ts cites hai.stanford.edu 10 times and the AI Index reports live in the Report Archive (#173); a generic tracker link is redundant.",
     "decidedAt": "2026-08-21",
     "ref": "#204"
+  },
+  {
+    "url": "https://hai.stanford.edu/ai-index/2026-ai-index-report",
+    "reason": "Already in benchmarking.ts (same sourceUrl); AI Index editions live in benchmarking / Report Archive, not tracker (see #204).",
+    "decidedAt": "2026-09-05",
+    "ref": "#269"
   }
 ]
