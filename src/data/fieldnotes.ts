@@ -41,6 +41,152 @@ export interface FieldNote {
 
 export const fieldNotes: FieldNote[] = [
   {
+    id: 'sg-ai-research-2026-08',
+    title: '新加坡 AI 研究月报（2026 年 8 月）',
+    titleEn: 'Singapore AI Research Monthly (2026-08)',
+    titleJa: 'Singapore AI Research 月報（2026-08）',
+    titleKo: '싱가포르 AI 연구 월간 (2026-08)',
+    date: '2026-08',
+    source: 'OpenAlex + 站方筛选',
+    sourceEn: 'OpenAlex + our curation',
+    sourceJa: 'OpenAlex + 当サイトの選定',
+    sourceKo: 'OpenAlex + 사이트 큐레이션',
+    tags: ['研究月报', 'National University of Singapore', 'Agency for Science, Technology and Research'],
+    tagsEn: ['Research monthly', 'National University of Singapore', 'Agency for Science, Technology and Research'],
+    tagsJa: ['研究マンスリー', 'National University of Singapore', 'Agency for Science, Technology and Research'],
+    tagsKo: ['연구 월간', 'National University of Singapore', 'Agency for Science, Technology and Research'],
+    sections: [
+      {
+        heading: 'AI安全与评估',
+        headingEn: 'AI safety & evaluation',
+        headingJa: 'AI安全・評価',
+        headingKo: 'AI 안전성 및 평가',
+        points: [
+          '【National University of Singapore】Mapping LLM Capability Frontiers via Formalized and Calibrated Probes — 由NUS主导的X-RAY通过形式化验证、结构化受控的测试来探测LLM推理，而非原始任务准确度，从而隔离约束相互作用和推理深度等属性。这解决了LLM评估和可解释性中的核心前沿问题，对能力基准测试和安全评估都至关重要。（https://doi.org/10.1145/3770855.3818029）',
+          '【Singapore University of Technology and Design】Auditable Release Control for Pedagogical Leakage in LLM Tutors — SUTD 将 LLM 辅导系统中的过早答案泄露正式定义为"教学泄漏"，并构建了具有授权感知的发布控制机制，包含可重放的失败追踪，针对 Gemini 3 进行了测试。这是一个具有可审查的检查的具体安全机制，而不仅仅是一个基准分数。（https://openalex.org/W7172559148）',
+        ],
+        pointsEn: [
+          '[National University of Singapore] Mapping LLM Capability Frontiers via Formalized and Calibrated Probes — NUS-led X-RAY probes LLM reasoning through formally verified, structurally controlled tests rather than raw task accuracy, isolating properties like constraint interaction and reasoning depth. This tackles a core frontier problem in LLM evaluation and interpretability that matters for both capability benchmarking and safety assessment. (https://doi.org/10.1145/3770855.3818029)',
+          '[Singapore University of Technology and Design] Auditable Release Control for Pedagogical Leakage in LLM Tutors — SUTD formalizes premature answer disclosure in LLM tutors as "pedagogical leakage" and builds an authorization-aware release control with replayable failure traces, tested against Gemini 3. It\'s a concrete safety mechanism with inspectable checks, not just a benchmark score. (https://openalex.org/W7172559148)',
+        ],
+        pointsJa: [
+          '【National University of Singapore】Mapping LLM Capability Frontiers via Formalized and Calibrated Probes — NUS主導のX-RAYは、生のタスク精度ではなく、形式的に検証された構造的に制御されたテストを通じてLLMの推論を調査し、制約相互作用や推論の深さなどの特性を分離しています。これはLLM評価と解釈可能性における中核的なフロンティア課題に取り組むもので、性能ベンチマーキングと安全性評価の両方にとって重要です。（https://doi.org/10.1145/3770855.3818029）',
+          '【Singapore University of Technology and Design】Auditable Release Control for Pedagogical Leakage in LLM Tutors — SUTD は、LLM チューターにおける早期回答開示を「教育的情報漏洩」として正式化し、再現可能な失敗トレースを備えた認可認識型リリース制御を構築し、Gemini 3 に対してテスト済みです。これはベンチマークスコアだけではなく、検査可能なチェックを備えた具体的な安全メカニズムです。（https://openalex.org/W7172559148）',
+        ],
+        pointsKo: [
+          '[National University of Singapore] Mapping LLM Capability Frontiers via Formalized and Calibrated Probes — NUS-led X-RAY는 원시 작업 정확도가 아닌 형식적으로 검증되고 구조적으로 제어된 테스트를 통해 LLM 추론을 탐사하며, 제약 상호작용 및 추론 깊이와 같은 특성들을 격리합니다. 이는 능력 벤치마킹과 안전 평가 모두에 중요한 LLM 평가 및 해석 가능성의 핵심 최전선 문제를 다룹니다. (https://doi.org/10.1145/3770855.3818029)',
+          '[Singapore University of Technology and Design] Auditable Release Control for Pedagogical Leakage in LLM Tutors — SUTD는 거대 언어 모델 튜터에서의 조기 답 공개를 「교육적 유출」로 공식화하고, 재생 가능한 오류 흔적을 갖춘 인가 인식 공개 제어를 구축합니다. 이는 Gemini 3에 대해 테스트되었으며, 단순한 벤치마크 점수가 아니라 검사 가능한 점검을 갖춘 구체적인 안전 메커니즘입니다. (https://openalex.org/W7172559148)',
+        ],
+      },
+      {
+        heading: '科学与健康的人工智能',
+        headingEn: 'AI for science & health',
+        headingJa: '科学・保健のためのAI',
+        headingKo: '과학 및 보건을 위한 AI',
+        points: [
+          '【Agency for Science, Technology and Research】A clinical multimodal vision language foundation model with fine-grain explainability — 科技研究局构建了一个具有细粒度可解释性的临床多模态视觉语言基础模型，将前沿多模态架构与临床医生信任人工智能输出所需的可解释性相结合。这标志着新加坡致力于自主开发生物医学基础模型，而不是改造通用系统。（https://doi.org/10.5281/zenodo.21772694）',
+          '【Nanyang Technological University】The Words of Proteins: Motif-Level Language Modeling for Interpretable Protein Generation — 南洋理工大学提出了蛋白质生成的基序级语言建模方法，使用结构基序而非原始残基作为建模单元，使生成型蛋白质设计更具可解释性。这将LLM风格的架构选择引入蛋白质基础模型，这是新加坡正在建立存在感的一个领域。（https://doi.org/10.1145/3770855.3819054）',
+        ],
+        pointsEn: [
+          "[Agency for Science, Technology and Research] A clinical multimodal vision language foundation model with fine-grain explainability — A*STAR built a clinical multimodal vision-language foundation model with fine-grained explainability, pairing frontier multimodal architecture with the interpretability clinicians need to trust AI output. It signals Singapore's push toward home-grown biomedical foundation models rather than adapting generic systems. (https://doi.org/10.5281/zenodo.21772694)",
+          '[Nanyang Technological University] The Words of Proteins: Motif-Level Language Modeling for Interpretable Protein Generation — NTU proposes motif-level language modeling for protein generation, using structural motifs instead of raw residues as the modeling unit to make generative protein design more interpretable. It brings LLM-style architecture choices into protein foundation models, an area Singapore is building presence in. (https://doi.org/10.1145/3770855.3819054)',
+        ],
+        pointsJa: [
+          '【Agency for Science, Technology and Research】A clinical multimodal vision language foundation model with fine-grain explainability — A*STARは、最先端のマルチモーダルアーキテクチャと、臨床医がAI出力を信頼するために必要な解釈可能性を融合させることで、粒度の細かい説明可能性を備えた臨床用マルチモーダル画像言語基盤モデルを開発しました。これはシンガポールが汎用システムの採用ではなく、国内開発のバイオメディカル基盤モデルへ推進していることを示唆するものです。（https://doi.org/10.5281/zenodo.21772694）',
+          '【Nanyang Technological University】The Words of Proteins: Motif-Level Language Modeling for Interpretable Protein Generation — NTUはモチーフレベル言語モデリングによるタンパク質生成を提案しています。生のアミノ酸残基ではなく構造モチーフをモデリング単位として使用し、生成タンパク質設計をより解釈可能にしています。このアプローチは、LLMスタイルのアーキテクチャ選択をタンパク質ファウンデーションモデルに導入するもので、Singaporeが存在感を構築している領域です。（https://doi.org/10.1145/3770855.3819054）',
+        ],
+        pointsKo: [
+          '[Agency for Science, Technology and Research] A clinical multimodal vision language foundation model with fine-grain explainability — A*STAR는 세분화된 설명가능성을 갖춘 임상용 다중모달 비전-언어 파운데이션 모델을 개발했으며, 첨단 다중모달 아키텍처를 임상의들이 AI 출력을 신뢰하는 데 필요한 해석가능성과 결합했습니다. 이는 일반 시스템을 적응시키기보다는 싱가포르가 자체 개발한 생의학 파운데이션 모델로 나아가는 추진을 나타냅니다. (https://doi.org/10.5281/zenodo.21772694)',
+          '[Nanyang Technological University] The Words of Proteins: Motif-Level Language Modeling for Interpretable Protein Generation — NTU는 단백질 생성을 위한 모티프 수준의 언어 모델링을 제안합니다. 원시 잔기 대신 구조적 모티프를 모델링 단위로 사용하여 생성적 단백질 설계를 더 해석 가능하도록 만듭니다. 이는 LLM 스타일 아키텍처 선택을 단백질 파운데이션 모델에 가져오는 것으로, 싱가포르가 입지를 구축하고 있는 분야입니다. (https://doi.org/10.1145/3770855.3819054)',
+        ],
+      },
+      {
+        heading: '多模态与视觉',
+        headingEn: 'Multimodal & vision',
+        headingJa: 'マルチモーダル・ビジョン',
+        headingKo: '멀티모달 & 비전',
+        points: [
+          '【Agency for Science, Technology and Research】Improving Temporal Action Segmentation via Constraint-Aware Decoding — 一个科技研究局-NTU-IHPC 联合团队推出了约束感知解码方法，用于改进时序动作分割，这是支撑机器人和监视管道的核心视频理解任务。这是一项扎实的、新加坡多机构计算机视觉贡献，而非单个实验室的微调。（https://doi.org/10.1007/978-3-032-31452-9_5）',
+          '【Agency for Science, Technology and Research】Causal Scaffolding for Physical Reasoning: A Benchmark for Causally-Informed Physical World Understanding in VLMs — 科技研究局与NTU共同开发了CausalPhys，这是一个包含3,000多个问题的基准测试，配有由专家标注的因果图，用于检验视觉-语言模型是否能够推理物理因果关系或仅仅进行模式匹配。该基准针对当前VLMs的已知弱点，采用可解释的、基于因果图的评估指标。（https://doi.org/10.1145/3770855.3817582）',
+        ],
+        pointsEn: [
+          "[Agency for Science, Technology and Research] Improving Temporal Action Segmentation via Constraint-Aware Decoding — A joint A*STAR-NTU-IHPC team introduces constraint-aware decoding to improve temporal action segmentation, a core video-understanding task underlying robotics and surveillance pipelines. It's a solid, multi-institution SG computer-vision contribution rather than a single-lab incremental tweak. (https://doi.org/10.1007/978-3-032-31452-9_5)",
+          '[Agency for Science, Technology and Research] Causal Scaffolding for Physical Reasoning: A Benchmark for Causally-Informed Physical World Understanding in VLMs — A*STAR and NTU built CausalPhys, a 3,000-plus question benchmark with expert-annotated causal graphs testing whether vision-language models reason about physical causality or just pattern-match. It targets a known weakness in current VLMs with an interpretable, causal-graph-grounded evaluation metric. (https://doi.org/10.1145/3770855.3817582)',
+        ],
+        pointsJa: [
+          '【Agency for Science, Technology and Research】Improving Temporal Action Segmentation via Constraint-Aware Decoding — A*STAR-NTU-IHPCの共同チームが、ロボティクスと監視パイプラインの基礎となるコア動画理解タスクである時間的行動セグメンテーションを改善するため、制約対応デコーディングを導入しています。これはシンガポール複数機関によるコンピュータビジョン分野への堅実な貢献であり、単一研究室による段階的な調整ではありません。（https://doi.org/10.1007/978-3-032-31452-9_5）',
+          '【Agency for Science, Technology and Research】Causal Scaffolding for Physical Reasoning: A Benchmark for Causally-Informed Physical World Understanding in VLMs — A*STARとNTUはCausalPhysを構築しました。これは3000以上の質問からなるベンチマークで、専門家が注釈を付けた因果グラフを備えており、ビジョン・言語モデルが物理的因果関係について実際に推論しているのか、それとも単にパターンマッチングしているのかをテストします。現在のVLMsの既知の弱点に対応し、解釈可能で因果グラフに基づいた評価指標を提供しています。（https://doi.org/10.1145/3770855.3817582）',
+        ],
+        pointsKo: [
+          '[Agency for Science, Technology and Research] Improving Temporal Action Segmentation via Constraint-Aware Decoding — A*STAR-NTU-IHPC 공동 팀이 제약-인식 디코딩을 도입하여 시간적 행동 분할을 개선합니다. 이는 로봇공학 및 감시 파이프라인의 기반이 되는 핵심 비디오 이해 작업입니다. 단일 실험실의 점진적 개선이 아닌, SG의 견고한 다기관 컴퓨터 비전 기여입니다. (https://doi.org/10.1007/978-3-032-31452-9_5)',
+          '[Agency for Science, Technology and Research] Causal Scaffolding for Physical Reasoning: A Benchmark for Causally-Informed Physical World Understanding in VLMs — A*STAR과 NTU는 CausalPhys를 구축했습니다. 이는 3,000개 이상의 질문과 전문가가 주석을 단 인과 그래프를 포함하는 벤치마크로, 시각-언어 모델이 물리적 인과관계에 대해 추론하는지 아니면 단순히 패턴 매칭만 하는지를 검증합니다. 현재 VLM의 알려진 약점을 해석 가능하고 인과 그래프 기반의 평가 지표로 다룹니다. (https://doi.org/10.1145/3770855.3817582)',
+        ],
+      },
+      {
+        heading: '系统与效率',
+        headingEn: 'Systems & efficiency',
+        headingJa: 'システムと効率',
+        headingKo: '시스템 & 효율성',
+        points: [
+          '【Agency for Science, Technology and Research】Standing Peg-in-Hole Insertion: Demonstrations, Trained Policies, Evaluation Episodes, and Simulation Environment — 这个科技研究局机器人包在亚毫米间隙插销入孔组装中隔离了感知或策略导致的故障，并发布了演示、已训练的策略和仿真环境供重用。这是对具身人工智能和机器人学习的具体开源基础设施贡献，与新加坡的先进制造业人工智能重点相一致。（https://doi.org/10.5281/zenodo.21287317）',
+        ],
+        pointsEn: [
+          "[Agency for Science, Technology and Research] Standing Peg-in-Hole Insertion: Demonstrations, Trained Policies, Evaluation Episodes, and Simulation Environment — This A*STAR robotics bundle isolates whether perception or policy causes failures in sub-millimeter-clearance peg-in-hole assembly, releasing demonstrations, trained policies, and a simulation environment for reuse. It's a concrete open infrastructure contribution to embodied-AI and robot learning, aligned with Singapore's advanced-manufacturing AI focus. (https://doi.org/10.5281/zenodo.21287317)",
+        ],
+        pointsJa: [
+          '【Agency for Science, Technology and Research】Standing Peg-in-Hole Insertion: Demonstrations, Trained Policies, Evaluation Episodes, and Simulation Environment — このA*STARロボティクスバンドルは、サブミリメートルクリアランスペグインホール組立において、知覚またはポリシーのいずれが失敗の原因かを特定し、デモンストレーション、訓練されたポリシー、およびシミュレーション環境を再利用のために公開しています。これはエンボディドAIとロボット学習に対する具体的なオープンインフラストラクチャ貢献であり、シンガポール先端製造分野のAI焦点と一致しています。（https://doi.org/10.5281/zenodo.21287317）',
+        ],
+        pointsKo: [
+          '[Agency for Science, Technology and Research] Standing Peg-in-Hole Insertion: Demonstrations, Trained Policies, Evaluation Episodes, and Simulation Environment — 이 A*STAR 로보틱스 번들은 서브밀리미터 공차의 페그-인-홀 조립에서 지각이나 정책이 실패를 초래하는지를 판별하고, 시연, 훈련된 정책, 그리고 재사용을 위한 시뮬레이션 환경을 공개합니다. 이는 체화 AI 및 로봇 학습을 위한 구체적인 개방 인프라 기여이며, 싱가포르의 첨단 제조 AI 초점과 부합합니다. (https://doi.org/10.5281/zenodo.21287317)',
+        ],
+      },
+      {
+        heading: 'LLMs 与 智能体',
+        headingEn: 'LLMs & agents',
+        headingJa: 'LLMsとエージェント',
+        headingKo: 'LLMs와 에이전트',
+        points: [
+          '【Nanyang Technological University】Toward Plasticity-Preserving KL Regularization for Capability Retention in LLM Reinforcement Learning — NTU研究人员针对一个核心的大语言模型后训练问题：强化学习微调会侵蚀基础模型已有的能力。他们的正确性条件化KL约束是前沿模型训练方法的一个贡献，而不是下游应用。（https://openalex.org/W7172557801）',
+        ],
+        pointsEn: [
+          '[Nanyang Technological University] Toward Plasticity-Preserving KL Regularization for Capability Retention in LLM Reinforcement Learning — NTU researchers target a core LLM post-training problem: RL fine-tuning that erodes capabilities the base model already has. Their correctness-conditioned KL constraint is a methods contribution to how frontier models get trained, not a downstream application. (https://openalex.org/W7172557801)',
+        ],
+        pointsJa: [
+          '【Nanyang Technological University】Toward Plasticity-Preserving KL Regularization for Capability Retention in LLM Reinforcement Learning — NTU 研究者は LLM のポストトレーニングにおける中核的な問題に取り組んでいます。それは、RL ファインチューニングがベースモデルが既に有する能力を侵食することです。彼らの正確性条件付き KL 制約は、最先端モデルがどのように学習されるかに関する手法的貢献であり、ダウンストリーム応用ではありません。（https://openalex.org/W7172557801）',
+        ],
+        pointsKo: [
+          '[Nanyang Technological University] Toward Plasticity-Preserving KL Regularization for Capability Retention in LLM Reinforcement Learning — NTU 연구자들은 핵심 LLM 사후 학습 문제를 다루고 있습니다: 기반 모델이 이미 갖고 있는 능력을 약화시키는 RL 미세 조정입니다. 그들의 정확성 조건부 KL 제약은 최첨단 모델이 학습되는 방식에 대한 방법론 기여이며, 다운스트림 응용이 아닙니다. (https://openalex.org/W7172557801)',
+        ],
+      },
+      {
+        heading: '其他',
+        headingEn: 'Other',
+        headingJa: 'その他',
+        headingKo: '기타',
+        points: [
+          '【National University of Singapore】Copyright Law and Generative AI — 一部由NUS撰写的比较法著作,阐述美国、中国、欧盟、日本、英国和新加坡的版权例外对生成式AI训练和输出的适用。它直接涉及监管机构和AI开发者正在处理的法律不确定性,这对于以政策为重点的观察机构具有重要意义。（https://doi.org/10.4324/9781003655602）',
+        ],
+        pointsEn: [
+          '[National University of Singapore] Copyright Law and Generative AI — An NUS-authored comparative law book on how copyright exceptions in the US, China, EU, Japan, UK, and Singapore apply to generative AI training and outputs. It speaks directly to the legal uncertainty regulators and AI developers are working through, which matters for a policy-focused observatory. (https://doi.org/10.4324/9781003655602)',
+        ],
+        pointsJa: [
+          '【National University of Singapore】Copyright Law and Generative AI — NUS著による比較法書籍で、US、China、EU、Japan、UK、Singaporeの著作権例外が生成AI訓練および出力にどのように適用されるかについて述べています。規制当局とAI開発者が取り組んでいる法的不確実性に直接的に対応するもので、ポリシー指向のオブザーバトリーにとって重要です。（https://doi.org/10.4324/9781003655602）',
+        ],
+        pointsKo: [
+          '[National University of Singapore] Copyright Law and Generative AI — NUS 저자의 비교법 서적으로, US, 중국, EU, 일본, UK, 싱가포르의 저작권 예외가 생성형 AI 학습 및 출력물에 어떻게 적용되는지를 다룹니다. 규제 당국과 AI 개발자가 해결해 나가고 있는 법적 불확실성을 직접적으로 다루고 있으며, 정책 중심의 관측소에 중요한 의미를 갖습니다. (https://doi.org/10.4324/9781003655602)',
+        ],
+      },
+    ],
+    takeaway:
+      '新加坡八月的研究轨迹显示了从通用模型扩展向领域就绪、可解释的人工智能系统的成熟演进：该月涵盖形式化的大语言模型评估和安全方法（X-RAY探针、保持可塑性的强化学习、教学泄漏检测）、具有细粒度可解释性的临床视觉语言模型、蛋白质基础模型和开源机器人基础设施。这反映了一个战略转变，即构建能够被临床医生、监管机构和制造商进行检查和信任的人工智能系统——由多机构合作（科技研究局、NUS、NTU、SUTD、IHPC）和政策分析（版权框架）所支撑——而不是追求前沿能力指标。',
+    takeawayEn:
+      "Singapore's August research trajectory shows a maturation from general-purpose model scaling toward domain-ready, interpretable AI systems: the month spans formal LLM evaluation and safety methods (X-RAY probes, plasticity-preserving RL, pedagogical leakage detection), clinical vision-language models with fine-grained explainability, protein foundation models, and open-source robotics infrastructure. This reflects a strategic shift toward building AI systems that clinicians, regulators, and manufacturers can inspect and trust—anchored by multi-institutional collaboration (A*STAR, NUS, NTU, SUTD, IHPC) and policy analysis (copyright frameworks)—rather than chasing frontier capability metrics.",
+    takeawayJa:
+      'シンガポールの8月の研究軌跡は、汎用モデルのスケーリングからドメイン対応可能で解釈可能なAIシステムへの成熟を示しています。この月は、正式なLLM評価と安全性方法（X-RAY probes、可塑性保持RL、教育的漏洩検出）、細粒度の説明可能性を備えた臨床ビジョン言語モデル、タンパク質基礎モデル、およびオープンソースロボティクスインフラストラクチャにわたっています。これは、臨床医、規制当局、およびメーカーが検査して信頼できるAIシステムを構築する戦略的転換—多機関協業（A*STAR、NUS、NTU、SUTD、IHPC）および政策分析（著作権枠組み）によって支えられている—を反映しており、フロンティア能力指標を追求するのではなく。',
+    takeawayKo:
+      '싱가포르의 8월 연구 궤적은 일반 목적 모델 스케일링에서 도메인 특화, 해석 가능한 AI 시스템으로의 성숙을 보여줍니다. 이 달은 공식적인 LLM 평가 및 안전 방법(X-RAY 프로브, 가소성 보존 RL, 교육학적 누수 탐지), 세밀한 설명 가능성을 갖춘 임상용 비전-언어 모델, 단백질 기반 모델, 오픈소스 로봇공학 인프라를 포괄합니다. 이는 임상의, 규제자, 제조업체가 검사하고 신뢰할 수 있는 AI 시스템을 구축하려는 전략적 전환을 반영하며, 다기관 협력(A*STAR, NUS, NTU, SUTD, IHPC)과 정책 분석(저작권 체계)을 바탕으로 최첨단 능력 지표를 추구하기보다는 이러한 방향을 지향하고 있습니다.',
+  },
+  {
     id: 'sg-ai-research-2026-07',
     title: '新加坡 AI 研究月报（2026 年 7 月）',
     titleEn: 'Singapore AI Research Monthly (2026-07)',

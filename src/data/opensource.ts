@@ -5,7 +5,7 @@ export const seaLionStats = {
   topModel: 'Gemma-SEA-LION-v4-27B-IT',
   topModelDownloads: 5034,
   dataSource: 'HuggingFace API',
-  dataDate: '2026-09-01',
+  dataDate: '2026-09-04',
   huggingfaceUrl: 'https://huggingface.co/aisingapore',
 };
 
@@ -235,7 +235,7 @@ export const openSourceProjects: OfficialOpenSourceProject[] = [
     descriptionKo: 'AI 거버넌스 원칙을 실행 가능한 테스트의 오픈소스 프레임워크로 변환',
     descriptionJa: 'AI治理原則を実行可能なテストのオープンソースフレームワークに変換する',
     descriptionEn: 'An open-source framework that turns AI governance principles into executable tests',
-    stars: 94,
+    stars: 93,
     language: 'TypeScript',
     url: 'https://github.com/aiverify-foundation/aiverify',
     websiteUrl: 'https://aiverifyfoundation.sg/',
@@ -377,7 +377,7 @@ For sgai.md, it should be tracked as a long-running entity: tooling evolution, d
     descriptionKo: '동남아 언어 및 문화 맥락을 대상으로 하는 대규모 언어모델 가족',
     descriptionJa: '東南アジアの言語および文化的文脈に向けた大規模言語モデルファミリー',
     descriptionEn: 'A large-model family for Southeast Asian languages and cultural contexts',
-    stars: 423,
+    stars: 424,
     language: 'Python / Models',
     url: 'https://github.com/aisingapore/sealion',
     websiteUrl: 'https://sea-lion.ai/',
