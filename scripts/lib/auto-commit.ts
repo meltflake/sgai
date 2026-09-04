@@ -108,8 +108,31 @@ export function getCurrentBranch(): string {
  * before comparing against `git status --porcelain` output (which is
  * always repo-root-relative).
  */
+/**
+ * Pipeline state / cache paths that any pipeline may leave modified without
+ * committing (reject ledgers, summary caches, translation caches). They are
+ * never a reason to refuse another pipeline's commit.
+ *
+ * Why: on 2026-09-04 the voices run (0 new speeches) left
+ * scripts/refresh/voices/data/rejected-ids.json modified and never committed;
+ * every later pipeline in the same full run then refused with "unexpected
+ * dirty paths", so six domains' outputs piled up uncommitted (#266).
+ */
+export const PIPELINE_STATE_PATH_PATTERNS: RegExp[] = [
+  /^scripts\/refresh\/[^/]+\/data\//,
+  /^scripts\/i18n\/data\//,
+  /^scripts\/data\//,
+];
+
+export function isPipelineStatePath(path: string): boolean {
+  return PIPELINE_STATE_PATH_PATTERNS.some((re) => re.test(path));
+}
+
 export function getUnexpectedDirty(allowDirtyPaths: string[] = [], targetFiles: string[] = []): string[] {
-  const r = git(['status', '--porcelain']);
+  // --untracked-files=all: list every untracked file instead of collapsing
+  // them to the top untracked directory (`scripts/`), so pipeline state files
+  // can be matched individually against PIPELINE_STATE_PATH_PATTERNS.
+  const r = git(['status', '--porcelain', '--untracked-files=all']);
   if (r.code !== 0) {
     throw new Error(`git status --porcelain failed: ${r.stderr.trim()}`);
   }
@@ -127,6 +150,7 @@ export function getUnexpectedDirty(allowDirtyPaths: string[] = [], targetFiles: 
     if (!m) continue;
     const path = m[1];
     if (allowed.has(path)) continue;
+    if (isPipelineStatePath(path)) continue;
     if (allowedPrefixes.some((prefix) => path === prefix || path.startsWith(prefix.endsWith('/') ? prefix : `${prefix}/`))) continue;
     dirty.push(path);
   }

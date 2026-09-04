@@ -10,6 +10,7 @@ import { ensureClaudeAuthed } from '../../lib/llm.ts';
 import { scan, readExistingEcosystemUrls } from './scan.ts';
 import { enrich } from './enrich.ts';
 import { emit } from './emit.ts';
+import { mergeRejectedUrls } from '../../lib/rejected-urls.ts';
 
 interface CliFlags {
   dryRun: boolean;
@@ -52,6 +53,8 @@ async function main(): Promise<void> {
 
   const existingUrls = readExistingEcosystemUrls();
   process.stdout.write(`  existing ecosystem URLs: ${existingUrls.size}\n`);
+  const rejectedCount = mergeRejectedUrls('ecosystem', existingUrls);
+  if (rejectedCount > 0) process.stdout.write(`  rejected ecosystem URLs (skipped): ${rejectedCount}\n`);
 
   const state = loadState();
   const scanResult = await scan({
