@@ -152,3 +152,27 @@ test('resolveBaseRef: explicit override wins', () => {
   assert.equal(got, 'release/x');
   rmSync(dir, { recursive: true, force: true });
 });
+
+import { getUnexpectedDirty, isPipelineStatePath } from '../auto-commit.ts';
+import { mkdirSync, realpathSync } from 'node:fs';
+
+test('isPipelineStatePath: refresh data / i18n cache / scan state are pipeline state; code and src are not', () => {
+  assert.equal(isPipelineStatePath('scripts/refresh/voices/data/rejected-ids.json'), true);
+  assert.equal(isPipelineStatePath('scripts/refresh/tracker/data/summaries/x.json'), true);
+  assert.equal(isPipelineStatePath('scripts/i18n/data/ja-cache/abc.json'), true);
+  assert.equal(isPipelineStatePath('scripts/data/last_scan_state.json'), true);
+  assert.equal(isPipelineStatePath('scripts/refresh/voices/run.ts'), false);
+  assert.equal(isPipelineStatePath('src/data/voices.ts'), false);
+});
+
+test('getUnexpectedDirty: ignores another pipeline\'s leftover state file but still flags foreign data edits', () => {
+  // realpath: macOS tmpdir is a symlink (/var → /private/var) and git reports the real root.
+  const dir = realpathSync(tempRepo('main'));
+  mkdirSync(join(dir, 'scripts/refresh/voices/data'), { recursive: true });
+  writeFileSync(join(dir, 'scripts/refresh/voices/data/rejected-ids.json'), '{}\n');
+  writeFileSync(join(dir, 'unrelated.txt'), 'x\n');
+  writeFileSync(join(dir, 'data.txt'), 'v2\n');
+  const dirty = inDir(dir, () => getUnexpectedDirty([], [join(dir, 'data.txt')]));
+  assert.deepEqual(dirty, ['unrelated.txt']);
+  rmSync(dir, { recursive: true, force: true });
+});

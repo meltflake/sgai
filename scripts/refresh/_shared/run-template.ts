@@ -18,6 +18,7 @@ import { isEmptyShellSummary } from '../../lib/empty-shell.ts';
 import { autoCommit, pushAndOpenPR, buildPRBody } from '../../lib/auto-commit.ts';
 import { appendAutoDiscovered } from '../../lib/auto-discovered-emit.ts';
 import { judgeAiRelevance } from '../../lib/judge-ai-relevance.ts';
+import { mergeRejectedUrls } from '../../lib/rejected-urls.ts';
 import { ensureClaudeAuthed } from '../../lib/llm.ts';
 import { loadState, saveState } from '../../lib/state.ts';
 import {
@@ -188,6 +189,9 @@ export async function runPipeline(config: PipelineConfig): Promise<void> {
 
   const existingUrls = await readExistingUrls(targetAbs, config.urlExtractRegex);
   process.stdout.write(`  existing ${config.domain} URLs: ${existingUrls.size}\n`);
+  // Reviewer-rejected candidates (closed auto-PRs) must not come back — see lib/rejected-urls.ts.
+  const rejectedCount = mergeRejectedUrls(config.domain, existingUrls);
+  if (rejectedCount > 0) process.stdout.write(`  rejected ${config.domain} URLs (skipped): ${rejectedCount}\n`);
 
   const candidates = await scanSources(config.sources, existingUrls, flags.limit);
   process.stdout.write(`  candidates: ${candidates.length}\n`);
