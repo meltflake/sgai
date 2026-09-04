@@ -1817,3 +1817,40 @@ export const dimensions: Dimension[] = [
     relatedLeverNumbers: [2, 6],
   },
 ];
+
+export interface AutoDiscoveredEntry {
+  title: string;
+  titleEn: string;
+  titleJa?: string;
+  titleKo?: string;
+  description: string;
+  descriptionEn: string;
+  descriptionJa?: string;
+  descriptionKo?: string;
+  category: string;
+  confidence: 'high' | 'medium' | 'low';
+  sourceUrl: string;
+  discoveredAt: string;
+  reasonForLowConfidence?: string;
+}
+
+export const autoDiscovered: AutoDiscoveredEntry[] = [
+  {
+    title: '2026年AI指数报告',
+    titleEn: 'The 2026 AI Index Report',
+    titleJa: '2026年AI指数報告',
+    titleKo: '2026년 AI 지수 보고서',
+    description:
+      '斯坦福大学HAI发布的2026年AI指数报告对全球AI发展进行了全面数据分析,覆盖研究开发、技术性能、经济、政策和公众舆论等九个维度。报告主要发现包括:AI能力加速发展,前沿模型已达到博士级别水平;美中AI模型性能差距消失;消费者采用率达53%;但全球芯片供应链严重依赖单一台湾晶圆厂。同时,负责任AI发展滞后于能力增长,事件数量急剧上升,美国尽管在投资和创业方面领先,但吸引AI人才的能力在下降。',
+    descriptionEn:
+      'The 2026 AI Index Report from Stanford HAI provides comprehensive data-driven analysis of global AI trends across nine dimensions including research and development, technical performance, economics, policy, and public opinion. Key findings reveal accelerating AI capabilities with frontier models exceeding PhD-level performance, a closed U.S.-China model performance gap, and rapid consumer adoption reaching 53% globally, though the global chip supply chain remains critically dependent on a single Taiwanese foundry. Responsible AI development is lagging behind capability growth with incidents rising sharply, and the U.S. faces declining ability to attract AI talent despite leading in investment and entrepreneurship.',
+    descriptionJa:
+      'スタンフォード大学HAIが発表した2026年AI指数報告は、グローバルなAI発展について包括的なデータ分析を行い、研究開発、技術性能、経済、政策および世論など九つの次元をカバーしています。報告書の主な発見は以下の通りです：AI能力が加速度的に発展し、最先端モデルはすでに博士号レベルの水準に達しており、米国と中国のAIモデル性能の格差は消滅し、消費者採用率は53%に達しています。しかし、グローバルなチップサプライチェーンは台湾のウェーハー工場への深刻な単一依存を示しており、同時に責任あるAI開発は能力増長に遅れを取っており、事件数は急激に増加し、米国は投資と起業の面でリードしているにもかかわらず、AI人材を惹きつける能力が低下しています。',
+    descriptionKo:
+      'Stanford 대학교의 HAI가 발표한 2026년 AI 지수 보고서는 전 세계 AI 발전에 대한 포괄적 데이터 분석을 실시했으며, 연구 개발, 기술 성능, 경제, 정책, 공중 여론 등 9개 차원을 포괄하고 있습니다. 보고서의 주요 발견 사항은 다음과 같습니다: AI 역량이 가속화되고 최첨단 모델이 박사급 수준에 도달했습니다. 미국과 중국의 AI 모델 성능 격차가 소멸했습니다. 소비자 채택률이 53%에 도달했습니다. 그러나 전 세계 반도체 공급망이 단일 대만 파운드리에 심각하게 의존하고 있습니다. 동시에 책임 있는 AI 발전이 역량 증가를 따라가지 못하고 있으며, 관련 사건 건수가 급격하게 증가하고 있습니다. 미국은 투자 및 창업 부문에서 앞서 있으나, AI 인재 유치 능력은 감소하고 있습니다.',
+    category: '研究',
+    confidence: 'high',
+    sourceUrl: 'https://hai.stanford.edu/ai-index/2026-ai-index-report',
+    discoveredAt: '2026-09-04',
+  },
+];
