@@ -145,6 +145,149 @@ export function pickSpeakerTypeLabels(lang: string): Record<string, string> {
 
 export const videos: VideoItem[] = [
   {
+    id: 'v089',
+    title: '新加坡监狱署启动机器人试验',
+    titleEn: 'Robot Trials in Prison',
+    titleJa: 'シンガポール監獄局がロボット試験を開始',
+    titleKo: '싱가포르 교도소 로봇 시범 사업 개시',
+    speaker: 'CNA',
+    speakerTitle: '亚洲新闻台报道',
+    speakerTitleEn: 'CNA report',
+    speakerTitleJa: 'アジアニュース放送による報道',
+    speakerTitleKo: '아시아 뉴스 채널 보도',
+    speakerType: 'industry',
+    date: '2026-09-03',
+    duration: '02:42',
+    summary: '新加坡监狱署试验 AI 机器人，用于囚犯监督和应急响应。',
+    summaryEn: 'Singapore prisons are testing AI-powered robots for inmate supervision and incident response.',
+    summaryJa: 'シンガポール監獄はAIロボット試験を実施しており、受刑者監視と緊急対応に用いられています。',
+    summaryKo: '싱가포르 교도소는 수감자 감시 및 긴급 대응을 위해 AI 로봇 시범을 진행합니다.',
+    whyItMatters: '500 公斤机器人进驻监狱执勤，新加坡把 AI 试验首次推进到监禁与强制力一线',
+    whyItMattersEn:
+      '500-kilogram robot deployed to prison duty; Singapore advances AI pilot to the front line of incarceration and coercive force for the first time',
+    whyItMattersJa:
+      '500kg ロボット、シンガポール監獄勤務に配置——シンガポールが初めてAI試験を監禁・強制力の最前線に推し進める',
+    whyItMattersKo:
+      '500킬로그램 로봇이 감옥에 배치되어 근무하고 있으며, 싱가포르가 AI 시험을 처음으로 투옥과 강제력의 최전선으로 추진했다',
+    topic: 'AI 产业与应用',
+    topicEn: 'AI Industry & Applications',
+    topicJa: 'AI 産業と応用',
+    topicKo: 'AI 산업 및 응용',
+    youtubeUrl: 'https://www.youtube.com/watch?v=-vdqbrcUDRI',
+    channel: 'CNA',
+    addedAt: '2026-09-04',
+  },
+  {
+    id: 'v090',
+    title: '新加坡酒店获补助采用AI礼宾方案',
+    titleEn: 'Singapore hotels to access grants for AI concierge solutions',
+    titleJa: 'シンガポールのホテル、補助金でAIコンシェルジュを導入へ',
+    titleKo: '싱가포르 호텔, AI 콘시어지 방안 도입 지원금 획득',
+    speaker: 'CNA',
+    speakerTitle: '亚洲新闻台报道',
+    speakerTitleEn: 'CNA report',
+    speakerTitleJa: 'アジアニュース放送による報道',
+    speakerTitleKo: '아시아 뉴스 채널 보도',
+    speakerType: 'industry',
+    date: '2026-09-03',
+    duration: '02:36',
+    summary: '新加坡酒店可获补助采用AI礼宾方案，处理日常任务以解决人手短缺。',
+    summaryEn:
+      'Hotels can access productivity grants to adopt AI concierge solutions for handling routine guest tasks. This aims to address manpower crunch and free up staff for guest engagement.',
+    summaryJa:
+      'シンガポールのホテルは補助金を受けてAIコンシェルジュソリューションを採用でき、日常業務を処理して人手不足を解決できます。',
+    summaryKo:
+      '싱가포르 호텔은 AI 콘시어지 방안 도입 지원금을 받을 수 있으며, 일상 업무를 처리하여 인력 부족 문제를 해결합니다.',
+    whyItMatters: '新加坡用补助换酒店采纳 AI 礼宾解决缺工，这套补贴换技术的路径可能扩散到更多劳动密集型服务业',
+    whyItMattersEn:
+      'Singapore uses subsidies to incentivize hotels to adopt AI concierge to address staff shortages; this subsidy-for-technology pathway may spread to more labour-intensive service industries',
+    whyItMattersJa:
+      'シンガポール、補助金を使ってホテルに AI コンシェルジの採用を促し、人手不足を解決——この「補助金で技術を買う」モデルはさらに多くの労働集約的なサービス業に拡大する可能性',
+    whyItMattersKo:
+      '싱가포르가 보조금을 사용하여 호텔이 AI 컨시어지를 채택하도록 유도하고 인력 부족을 해결하고 있으며, 이러한 보조금-기술 교환 방식이 더 많은 노동집약형 서비스업으로 확산될 수 있다',
+    topic: 'AI 产业与应用',
+    topicEn: 'AI Industry & Applications',
+    topicJa: 'AI 産業と応用',
+    topicKo: 'AI 산업 및 응용',
+    youtubeUrl: 'https://www.youtube.com/watch?v=24eLQSN_s7E',
+    channel: 'CNA',
+    addedAt: '2026-09-04',
+  },
+  {
+    id: 'v091',
+    title: '新加坡监狱署试用自主安保机器人',
+    titleEn: 'Singapore Prison Service trials autonomous security robot',
+    titleJa: 'シンガポール監獄局が自律型セキュリティロボットを試用',
+    titleKo: '싱가포르 교도소 당국, 자율형 보안 로봇 시범 운영',
+    speaker: 'The Straits Times',
+    speakerTitle: '海峡时报报道',
+    speakerTitleEn: 'The Straits Times report',
+    speakerTitleJa: 'ストレイツ・タイムズの報道',
+    speakerTitleKo: '스트레이츠 타임스 보도',
+    speakerType: 'industry',
+    date: '2026-09-03',
+    duration: '00:51',
+    summary: '新加坡监狱署与 HTX 合作开发 PROTECT 机器人，将于 10 月起进行为期三个月的自主巡逻试验。',
+    summaryEn:
+      'Singapore Prison Service and HTX jointly developed PROTECT, a 510kg autonomous robot equipped with pepper spray capability, for a three-month trial starting October.',
+    summaryJa:
+      'シンガポール監獄局はHTXと協力してPROTECTロボットを開発し、10月から3ヶ月間の自律パトロール試験を実施します。',
+    summaryKo:
+      '싱가포르 교도소 당국은 HTX와 협력하여 PROTECT 로봇을 개발했으며, 10월부터 3개월간의 자율 순찰 시범을 실시할 예정입니다.',
+    whyItMatters:
+      'HTX 让机器人首次自主用胡椒喷雾应对监狱骚乱，为新加坡公共部门自主用武定下先例，三个月试验期将检验能否推广',
+    whyItMattersEn:
+      "HTX allows robot to autonomously use pepper spray against prison unrest for the first time, setting a precedent for Singapore's public sector autonomous use of force; a three-month pilot period will test whether it can be scaled up",
+    whyItMattersJa:
+      'HTX、ロボットが初めてペッパースプレーを自主的に使って獄中騒乱に対応——シンガポール公共部門の自主的武力使用に先例を示し、3ヶ月の試験期間が推進の可能性を検証',
+    whyItMattersKo:
+      'HTX가 로봇으로 하여금 처음으로 자율적으로 페퍼 스프레이를 사용해 감옥 소동에 대응하도록 했으며, 이는 싱가포르 공공부문의 자율적 무력 사용을 위한 선례를 세우는 것이고, 3개월 시험 기간이 확대 가능성을 검증할 것이다',
+    topic: 'AI 产业与应用',
+    topicEn: 'AI Industry & Applications',
+    topicJa: 'AI 産業と応用',
+    topicKo: 'AI 산업 및 응용',
+    youtubeUrl: 'https://www.youtube.com/watch?v=GqIq7cJkJPg',
+    channel: 'The Straits Times',
+    addedAt: '2026-09-04',
+  },
+  {
+    id: 'v092',
+    title: '东盟AI就绪计划',
+    titleEn: 'Building an AI-Ready ASEAN',
+    titleJa: 'AI Ready ASEAN計画',
+    titleKo: 'AI Ready ASEAN',
+    speaker: 'AI Singapore',
+    speakerTitle: 'AI 研究与人才培养机构',
+    speakerTitleEn: 'AI research and talent-development organisation',
+    speakerTitleJa: 'AI 研究と人材育成機関',
+    speakerTitleKo: 'AI 연구 및 인재 양성 기관',
+    speakerType: 'academic',
+    date: '2026-08-31',
+    duration: '02:14',
+    summary: 'AI Ready ASEAN通过Master Trainers项目，为东盟550万公民传授AI知识和应用技能。',
+    summaryEn:
+      'AI Ready ASEAN, supported by Google.org and implemented locally by AI Singapore, trains Master Trainers to equip ASEAN citizens with AI literacy and responsible AI knowledge.',
+    summaryJa:
+      'AI Ready ASEANはMaster Trainersプロジェクトを通じて、ASEAN550万市民にAI知識と応用スキルを教えています。',
+    summaryKo:
+      'AI Ready ASEAN은 Master Trainers 프로그램을 통해 ASEAN 550만 시민에게 AI 지식 및 응용 기술을 교육합니다.',
+    whyItMatters:
+      'AI Ready ASEAN 计划 2026 年前培训 550 万人，如今只剩四个月，新加坡执行方 AI Singapore 的完成进度尚未公开',
+    whyItMattersEn:
+      "AI Ready ASEAN plan to train 5.5 million people by 2026; with four months remaining, Singapore's implementing agency AI Singapore has yet to publicly release completion progress",
+    whyItMattersJa:
+      'AI Ready ASEAN計画は2026年までに550万人を育成する予定だが、現在あと4ヶ月しか残っていない。シンガポール実行機関の AI Singapore の進捗状況はまだ公開されていない',
+    whyItMattersKo:
+      'AI Ready ASEAN 계획은 2026년 이전에 550만 명을 훈련하기로 했으나, 현재 단 4개월이 남았으며, 싱가포르 실행 기관인 AI Singapore의 완성 진도는 아직 공개되지 않았다',
+    topic: 'AI 人才与教育',
+    topicEn: 'AI Talent & Education',
+    topicJa: 'AI 人材と教育',
+    topicKo: 'AI 인재와 교육',
+    youtubeUrl: 'https://www.youtube.com/watch?v=B1eJ_A1U7og',
+    channel: 'AI Singapore',
+    addedAt: '2026-09-04',
+  },
+  {
     id: 'v088',
     title: '新加坡加强知识产权框架应对AI',
     titleEn: 'Singapore strengthens IP framework amid AI rise',
