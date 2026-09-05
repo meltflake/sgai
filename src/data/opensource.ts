@@ -5,7 +5,7 @@ export const seaLionStats = {
   topModel: 'Gemma-SEA-LION-v4-27B-IT',
   topModelDownloads: 5034,
   dataSource: 'HuggingFace API',
-  dataDate: '2026-09-04',
+  dataDate: '2026-09-05',
   huggingfaceUrl: 'https://huggingface.co/aisingapore',
 };
 
@@ -646,7 +646,7 @@ If SEA-LION is to enter sensitive sectors such as government, education, healthc
     descriptionKo: '무료 RPA 웹/데스크톱 자동화 도구',
     descriptionJa: '無料の RPA ウェブ/デスクトップ自動化ツール',
     descriptionEn: 'Free RPA tool for web and desktop automation',
-    stars: 6326,
+    stars: 6327,
     language: 'JavaScript',
     url: 'https://github.com/aisingapore/TagUI',
     websiteUrl: 'https://tagui.readthedocs.io/',
