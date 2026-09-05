@@ -6,6 +6,18 @@
 
 ## Unreleased
 
+---
+
+## 0.27.0 — 2026-09-05
+
+### 长文：新加坡的 AI 法律，和主要国家的对比
+
+- 新增五语长文 `singapore-ai-law-vs-major-jurisdictions`：新加坡 10 条硬法 + 11 条软法逐条列表，按「训练侧放开、输出侧严管、治理靠软法」三条线讲；再把欧盟、美国、中国、日本、韩国、英国、越南截至 2026 年 9 月的立法状态放进一张表对比（综合 AI 法、状态、罚则、训练数据版权、深伪与生成内容）。外国部分逐条核过 2026 年内的变化（欧盟数字综合法案、科罗拉多缩水推迟、韩国生效、越南生效、英国维持版权现状、中国综合立法入计划）。
+
+### 数据回填：两部 2025 年法律的生效日期
+
+- `legal-ai.ts`：刑法（杂项修正）法 2025 由「已颁布 / 2025」改为「已生效」——2025-11-04 通过，诈骗类刑罚条款 2025-12-30 先行，私密图像与 AI 相关条款 2026-08-17 生效；网络安全（救济与问责）法 2025 同样改「已生效」——2025-11-05 通过，OSC 与法定侵权条款 2026-06-29 生效。两条补 sourceUrl（MHA / MDDI 生效公告）、四语 date 与 body，标题「法案」改「法」。
+
 ### 修复 10 条失效 sourceUrl（weekly url-health 巡检）
 
 - EDB 改版（`/our-industries/`、`/about-edb/media-releases-publications/`、`/business-insights/insights/` → `/en/industries/`、`/en/news-and-insights/`）：ai-capital、ecosystem ×3、levers、people 共 6 处换成 308 重定向后的最终地址（全部实测 200）。
