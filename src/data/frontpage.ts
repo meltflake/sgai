@@ -19,16 +19,12 @@ export interface FeaturedPointer {
   id: string;
 }
 
-// 2026-08-20: lead with the agencies map — the reference piece for "who runs
-// AI in Singapore", covering 40+ ministries and statutory boards across eight
-// segments. It is evergreen rather than news-pegged, so it holds the slot
-// until a dated story outranks it.
-// Previous: 'openai-signals-chatgpt-at-work-2026' (2026-08-07, OpenAI's first
-// country-by-country ChatGPT release, Singapore #1 of 147 on messages per
-// capita). Swap to the Digital Infrastructure Bill
-// ('digital-infrastructure-bill-consultation-2026') when it is tabled in
-// Parliament, or to whatever bigger story lands next.
-export const FEATURED: FeaturedPointer | null = {
-  kind: 'post',
-  id: 'singapore-ai-agencies-map',
-};
+// 2026-09-05: null — the focus slot follows the latest longform post
+// automatically. Editorial rule: every new longform piece takes the slot when
+// it is published, so there is nothing to hand-edit here per post. Pin a
+// debate / policy / video only when a dated story should outrank the latest
+// post (e.g. the Digital Infrastructure Bill being tabled), then set it back
+// to null once that story ages out.
+// Previous pins: 'singapore-ai-agencies-map' (2026-08-20),
+// 'openai-signals-chatgpt-at-work-2026' (2026-08-07).
+export const FEATURED: FeaturedPointer | null = null;
