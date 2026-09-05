@@ -89,6 +89,31 @@ const MANUAL_TYPES = new Set<UpdateType>(['site', 'fix', 'longform']);
 // sort regardless. Add new entries at the top.
 export const MANUAL_UPDATES: Update[] = [
   {
+    date: '2026-09-05',
+    type: 'longform',
+    title: '长文：新加坡的 AI 法律，和主要国家的对比',
+    titleEn: "Longform: Singapore's AI laws, compared with the major jurisdictions",
+    titleJa: '長文：シンガポールの AI 法律、主要国との比較',
+    titleKo: '장문: 싱가포르의 AI 법률, 주요국과의 비교',
+    summary:
+      '新加坡没有一部叫「人工智能法」的法律，但和 AI 直接相关的硬法 10 条、软法 11 条。逐条列出后，和欧盟、美国、中国、日本、韩国、英国、越南截至 2026 年 9 月的立法状态放进一张表：谁立了横切法、谁在推迟、训练数据版权谁写进了法条、深伪各国怎么管。2026 年横切法在往后退，新加坡「训练放开、输出严管、治理靠软法」的路线成了多数国家的实际状态。',
+    summaryEn:
+      'Singapore has no statute called an "AI Act", but it has 10 hard laws and 11 soft-law instruments that bear directly on AI. The piece lists them one by one, then sets them against the EU, US, China, Japan, Korea, UK and Vietnam as of September 2026: who has a horizontal AI law, who is delaying, who wrote training-data copyright into statute, how each handles deepfakes. Horizontal laws slipped in 2026; Singapore\'s "open on training, strict on output, soft law for governance" line is where most jurisdictions actually stand.',
+    summaryJa:
+      'シンガポールに「AI 法」という名の法律はないが、AI に直接関わる硬法が 10 本、ソフトローが 11 本ある。それらを一つずつ列挙した上で、EU・米国・中国・日本・韓国・英国・ベトナムの 2026 年 9 月時点の立法状況を一つの表に並べる：横断的 AI 法があるのはどこか、先送りしているのはどこか、学習データの著作権を法文に書いたのはどこか、ディープフェイクを各国はどう扱うか。2026 年は横断法が後退した年で、シンガポールの「学習は開放、出力は厳格、ガバナンスはソフトロー」という路線が多くの国の実態になった。',
+    summaryKo:
+      '싱가포르에는 「AI 법」이라는 이름의 법률이 없지만, AI와 직접 관련된 경성법 10건과 연성법 11건이 있다. 이를 하나씩 나열한 뒤 EU·미국·중국·일본·한국·영국·베트남의 2026년 9월 기준 입법 상황을 한 표에 놓고 비교한다: 누가 수평적 AI 법을 만들었는지, 누가 연기하고 있는지, 학습 데이터 저작권을 법조문에 쓴 곳은 어디인지, 딥페이크를 각국이 어떻게 다루는지. 2026년은 수평적 법이 뒤로 물러난 해이며, 싱가포르의 「학습은 개방, 출력은 엄격, 거버넌스는 연성법」 노선이 대다수 국가의 실제 상태가 되었다.',
+    links: [
+      {
+        href: '/singapore-ai-law-vs-major-jurisdictions/',
+        label: '阅读全文',
+        labelEn: 'Read the full piece',
+        labelJa: '全文を読む',
+        labelKo: '전문 읽기',
+      },
+    ],
+  },
+  {
     date: '2026-08-20',
     type: 'longform',
     title: '长文：新加坡管 AI 的部门有哪些，各自管哪一段',
