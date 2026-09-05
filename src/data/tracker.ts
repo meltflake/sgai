@@ -1817,3 +1817,40 @@ export const dimensions: Dimension[] = [
     relatedLeverNumbers: [2, 6],
   },
 ];
+
+export interface AutoDiscoveredEntry {
+  title: string;
+  titleEn: string;
+  titleJa?: string;
+  titleKo?: string;
+  description: string;
+  descriptionEn: string;
+  descriptionJa?: string;
+  descriptionKo?: string;
+  category: string;
+  confidence: 'high' | 'medium' | 'low';
+  sourceUrl: string;
+  discoveredAt: string;
+  reasonForLowConfidence?: string;
+}
+
+export const autoDiscovered: AutoDiscoveredEntry[] = [
+  {
+    title: '哪些国家在人工智能领域处于领先地位？| 斯坦福HAI',
+    titleEn: 'Which countries are leading in AI? | Stanford HAI',
+    titleJa: 'どの国がAI分野で主導的地位にあるか？| スタンフォード HAI',
+    titleKo: '어느 국가들이 인공지능 분야에서 선도적 위치에 있는가? | 스탠포드 HAI',
+    description:
+      '斯坦福大学HAI开发的全球AI活力工具是一个交互式可视化平台，可跨越36个国家进行AI发展对比分析，使用23个指标组织在7个支柱中。该工具提供2017年至2024年的年度排名，追踪39个指标的时间序列数据，现已覆盖66个国家。用户可自定义支柱和指标的权重以反映其观点，为评估国家AI地位和指导政策决策提供透明灵活的框架。',
+    descriptionEn:
+      'The Global AI Vibrancy Tool from Stanford HAI is an interactive visualization platform enabling cross-country comparisons of AI development across up to 36 countries using 23 indicators organized into 7 pillars. The tool provides annual rankings from 2017 to 2024, tracks trends across 39 metrics, and now covers data for 66 countries. Users can customize weighting of pillars and indicators to reflect their perspectives, providing a transparent framework for evaluating national AI standing and guiding policy decisions.',
+    descriptionJa:
+      'スタンフォード大学のHAIが開発した世界AI活力ツールは、36の国にわたってAI発展の比較分析を行うことができるインタラクティブな可視化プラットフォームです。7つの柱に組織された23の指標を使用しており、2017年から2024年の年度ランキングを提供し、39の指標の時系列データを追跡しています。現在66の国をカバーしています。ユーザーは柱と指標の重みをカスタマイズしてその観点を反映させることができ、国家のAI地位を評価し政策決定を指導するための透明で柔軟なフレームワークを提供します。',
+    descriptionKo:
+      '스탠포드 대학교 HAI가 개발한 글로벌 AI 활력 도구는 36개 국가에 걸쳐 AI 발전 비교 분석을 수행할 수 있는 대화형 시각화 플랫폼으로, 23개의 지표가 7개의 축으로 구성되어 있습니다. 이 도구는 2017년부터 2024년까지의 연간 순위를 제공하며, 39개 지표의 시계열 데이터를 추적하고 있으며, 현재 66개 국가를 포함합니다. 사용자는 축과 지표의 가중치를 사용자 정의하여 자신의 관점을 반영할 수 있으며, 국가의 AI 지위 평가 및 정책 결정 지도를 위한 투명하고 유연한 프레임워크를 제공합니다.',
+    category: '研究',
+    confidence: 'high',
+    sourceUrl: 'https://hai.stanford.edu/ai-index/global-vibrancy-tool',
+    discoveredAt: '2026-09-05',
+  },
+];
