@@ -595,7 +595,7 @@ npx tsx scripts/voices/prospect-stubs.mjs sync-from-people [<id>...] [--dry-run]
 3. 收到邮件：`[sgai] data-refresh: <domain> +N entries — review PR #123`，正文带 PR 链接
 4. 在 GitHub UI 上 Approve & Merge → Cloudflare 自动重新构建上线
 5. \_pendingReview 条目：合并前在 PR 改 `_pendingReview: true → false`（或删字段），listing 立刻显示
-6. **不合并直接关掉的 auto-PR**：把它的 URL 和理由追加进该域的 `scripts/refresh/<域>/data/rejected-urls.json`（[scripts/lib/rejected-urls.ts](scripts/lib/rejected-urls.ts)），否则去重只看数据文件里已有的 URL，下个周期同一条候选会原样回来（2026-08-15 关掉的 #204 / #205 三条在 09-04 全部复现）。
+6. **不合并直接关掉的 auto-PR**：把它的 URL 和理由追加进拒绝台账（[scripts/lib/rejected-urls.ts](scripts/lib/rejected-urls.ts)），否则去重只看数据文件里已有的 URL，下个周期同一条候选会原样回来（2026-08-15 关掉的 #204 / #205 三条在 09-04 全部复现）。两个台账二选一：理由是「站内别处已经覆盖」就写 `scripts/refresh/_shared/data/rejected-urls.json`（所有域生效——只写域文件会被换域绕过，#205 的 Vibrancy Tool 三周后从 tracker 域回流，见 #273）；理由是「不适合本域」就写 `scripts/refresh/<域>/data/rejected-urls.json`。
 
 ### gh CLI / claude CLI 准备（无需 OpenAI / SMTP）
 

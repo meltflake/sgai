@@ -8,8 +8,17 @@
  * came back verbatim on 2026-09-04). Closing a PR should therefore also add
  * the URL here — the file is committed on main and consulted before scan.
  *
- * File: scripts/refresh/<domain>/data/rejected-urls.json
+ * Two files are consulted for every domain:
+ *   scripts/refresh/<domain>/data/rejected-urls.json  — this domain only
+ *   scripts/refresh/_shared/data/rejected-urls.json   — every domain
+ * Entries look like:
  *   [{ "url": "...", "reason": "...", "decidedAt": "YYYY-MM-DD", "ref": "#204" }]
+ *
+ * The shared file exists because a per-domain ledger is escapable: the Global
+ * AI Vibrancy Tool was rejected for benchmarking in #205 and came back three
+ * weeks later as a tracker candidate (#273). "Already covered elsewhere on the
+ * site" is a site-wide judgement, so it belongs in the shared file; reasons
+ * that are about fit for one domain stay in that domain's file.
  */
 import { existsSync, readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
@@ -25,6 +34,8 @@ export function rejectedUrlsPath(domain: string): string {
   return resolve(`scripts/refresh/${domain}/data/rejected-urls.json`);
 }
 
+export const SHARED_REJECTED_URLS_PATH = resolve('scripts/refresh/_shared/data/rejected-urls.json');
+
 export function loadRejectedUrls(domain: string, path = rejectedUrlsPath(domain)): RejectedUrl[] {
   if (!existsSync(path)) return [];
   const raw = JSON.parse(readFileSync(path, 'utf8')) as unknown;
@@ -37,9 +48,16 @@ export function loadRejectedUrls(domain: string, path = rejectedUrlsPath(domain)
   });
 }
 
-/** Add every rejected URL for `domain` into `existing` (mutates and returns it). */
+/**
+ * Add every rejected URL for `domain` into `existing` (mutates it); returns how
+ * many were added. Reads the domain ledger plus the shared one. Passing an
+ * explicit `path` reads only that file (used by tests).
+ */
 export function mergeRejectedUrls(domain: string, existing: Set<string>, path?: string): number {
-  const rejected = loadRejectedUrls(domain, path);
+  const rejected =
+    path === undefined
+      ? [...loadRejectedUrls(domain), ...loadRejectedUrls('_shared', SHARED_REJECTED_URLS_PATH)]
+      : loadRejectedUrls(domain, path);
   for (const r of rejected) existing.add(r.url);
   return rejected.length;
 }

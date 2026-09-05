@@ -188,6 +188,16 @@ export function uniqueBranchName(domain: string, dateOverride?: string): string 
   throw new Error(`Could not find unique branch name for ${base}`);
 }
 
+/** True when any of `files` is modified or untracked. Lets a caller skip a
+ *  commit that autoCommit() would reject with "No changes detected". */
+export function hasUncommittedChanges(files: string[]): boolean {
+  if (files.length === 0) return false;
+  const stagedDiff = gitOk(['diff', '--name-only', '--', ...files]);
+  const untrackedR = git(['ls-files', '--others', '--exclude-standard', '--', ...files]);
+  const untracked = untrackedR.code === 0 ? untrackedR.stdout.trim() : '';
+  return Boolean(stagedDiff || untracked);
+}
+
 export function autoCommit(options: AutoCommitOptions): AutoCommitResult {
   const allowDirty = options.allowDirtyPaths || [];
   const dirty = getUnexpectedDirty(allowDirty, options.files);
@@ -198,10 +208,7 @@ export function autoCommit(options: AutoCommitOptions): AutoCommitResult {
   }
 
   // Ensure the target files actually have changes.
-  const stagedDiff = gitOk(['diff', '--name-only', '--', ...options.files]);
-  const untrackedR = git(['ls-files', '--others', '--exclude-standard', '--', ...options.files]);
-  const untracked = untrackedR.code === 0 ? untrackedR.stdout.trim() : '';
-  if (!stagedDiff && !untracked) {
+  if (!hasUncommittedChanges(options.files)) {
     throw new Error('No changes detected in target files; nothing to commit.');
   }
 

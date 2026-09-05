@@ -33,3 +33,23 @@ test('loadRejectedUrls: rejects a non-array file', () => {
   assert.throws(() => loadRejectedUrls('t', p), /expected a JSON array/);
   rmSync(dir, { recursive: true, force: true });
 });
+
+test('mergeRejectedUrls: the shared ledger applies to every domain', () => {
+  // Regression for #273: rejected for benchmarking in #205, re-proposed for
+  // tracker three weeks later because the ledger was per-domain only.
+  const existing = new Set<string>();
+  const n = mergeRejectedUrls('tracker', existing);
+  assert.ok(n > 0, 'expected the shared ledger to contribute entries');
+  assert.ok(existing.has('https://hai.stanford.edu/ai-index/global-vibrancy-tool'));
+  assert.ok(existing.has('https://hai.stanford.edu/ai-index/2026-ai-index-report'));
+});
+
+test('mergeRejectedUrls: a domain-only reject does not leak into another domain', () => {
+  const eco = new Set<string>();
+  mergeRejectedUrls('ecosystem', eco);
+  const blog = 'https://aisingapore.org/leveraging-generative-ai-in-project-management/';
+  assert.ok(eco.has(blog));
+  const tracker = new Set<string>();
+  mergeRejectedUrls('tracker', tracker);
+  assert.equal(tracker.has(blog), false);
+});
