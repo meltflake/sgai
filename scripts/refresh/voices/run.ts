@@ -25,7 +25,7 @@
 import { resolve } from 'node:path';
 
 import { loadState, saveState } from '../../lib/state.ts';
-import { autoCommit, pushAndOpenPR, buildPRBody } from '../../lib/auto-commit.ts';
+import { autoCommit, pushAndOpenPR, buildPRBody, hasUncommittedChanges } from '../../lib/auto-commit.ts';
 import { translateBatch } from '../../lib/translate.ts';
 import { callLlmJson, ensureClaudeAuthed } from '../../lib/llm.ts';
 import {
@@ -266,6 +266,52 @@ function humaniseSlug(slug: string): string {
     .join(' ');
 }
 
+/**
+ * Commit (and PR) the reject ledger on its own.
+ *
+ * The ledger is written to disk as soon as a speech is judged pre-floor or
+ * non-AI, but the only autoCommit() call rides on a successful emit — so on a
+ * run where every candidate is rejected (the common case: 2026-09-04 and
+ * 2026-09-05 both), the decisions stayed uncommitted forever. Every later run
+ * then re-judged the same speeches (wasted LLM calls) and a fresh checkout had
+ * no memory of them. The PR is also the documented veto path: a wrong drop is
+ * undone by deleting its line in review.
+ */
+async function commitRejectLedgerOnly(rejectCount: number, flags: CliFlags): Promise<void> {
+  const ledger = resolve('scripts/refresh/voices/data/rejected-ids.json');
+  if (rejectCount === 0 || flags.noCommit) return;
+  if (!hasUncommittedChanges([ledger])) return;
+
+  process.stdout.write('\n  Committing reject decisions (nothing emitted this run)...\n');
+  const commit = autoCommit({
+    domain: 'voices',
+    files: [ledger],
+    message: `chore(voices): record ${rejectCount} reject decision(s)`,
+    allowDirtyPaths: ['scripts/refresh/voices/data/', 'scripts/i18n/data/'],
+  });
+  process.stdout.write(`  branch: ${commit.branch}\n  sha: ${commit.sha}\n`);
+  if (flags.noPush) return;
+
+  const prResult = await pushAndOpenPR({
+    branch: commit.branch,
+    title: `[data-refresh] voices: ${rejectCount} reject decision(s)`,
+    body: [
+      '## Summary',
+      `- Domain: \`voices\``,
+      '- New speeches: **0** — every candidate was dropped (pre-floor date or non-AI).',
+      '',
+      'This PR records the drop decisions so later runs skip those speeches instead of',
+      're-judging them. To veto a wrong drop, delete its line here before merging; the',
+      'next run re-examines that speech.',
+      '',
+      '```',
+      commit.diffStat,
+      '```',
+    ].join('\n'),
+  });
+  if (prResult.pr) process.stdout.write(`  PR: ${prResult.pr.url}\n`);
+}
+
 async function main(): Promise<void> {
   const flags = parseFlags();
   const startedAt = Date.now();
@@ -429,6 +475,7 @@ async function main(): Promise<void> {
 
   if (aiRelevant.length === 0) {
     process.stdout.write('\n[voices-refresh] no AI-relevant speeches. exiting.\n');
+    await commitRejectLedgerOnly(droppedPreFloor + droppedNonAi, flags);
     return;
   }
 
@@ -457,6 +504,7 @@ async function main(): Promise<void> {
 
   if (unique.length === 0) {
     process.stdout.write('\n[voices-refresh] nothing to emit. exiting.\n');
+    await commitRejectLedgerOnly(droppedPreFloor + droppedNonAi, flags);
     return;
   }
 
@@ -472,6 +520,7 @@ async function main(): Promise<void> {
 
   if (emitResult.recordsAdded === 0) {
     process.stdout.write('\n[voices-refresh] nothing emitted. exiting.\n');
+    await commitRejectLedgerOnly(droppedPreFloor + droppedNonAi, flags);
     return;
   }
 

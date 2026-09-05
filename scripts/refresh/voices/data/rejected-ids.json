@@ -15,10 +15,20 @@
     "date": "2023-04-12",
     "decidedAt": "2026-08-31"
   },
+  "brief-remarks-by-minister-at-the-opening-of-through-the-lens-photo-exhibition": {
+    "reason": "pre-floor",
+    "date": "2019-10-04",
+    "decidedAt": "2026-09-05"
+  },
   "brief-remarks-by-mr-s-iswaran-at-the-launch-my-digital-bootcamp": {
     "reason": "pre-floor",
     "date": "2019-09-03",
     "decidedAt": "2026-09-04"
+  },
+  "closing-address-by-minister-josephine-teo-at-the-mddi-ips-forum-on-fostering-child-safe-digital-environments-on-social-media": {
+    "reason": "non-ai",
+    "decidedAt": "2026-09-05",
+    "note": "Speech addresses child online safety and social media regulation through platform design responsibility and government i"
   },
   "mas--edqp-reawakening-2026-unlocking-the-next-value-up-cycle-for-singapore-equities": {
     "reason": "non-ai",
@@ -39,6 +49,11 @@
     "reason": "non-ai",
     "decidedAt": "2026-09-04",
     "note": "The speech concerns Singapore's financial contributions to IMF trust funds for global poverty reduction and debt relief;"
+  },
+  "mas--keynote-speech-by-mr-gan-kim-yong-at-the-financial-industry-fiesta-2026": {
+    "reason": "non-ai",
+    "decidedAt": "2026-09-05",
+    "note": "The speech's primary substance addresses education-to-work pathways and employment support in the financial sector; whil"
   },
   "moh--addenda-to-president-s-address-caring-society": {
     "reason": "pre-floor",
@@ -7710,6 +7725,11 @@
     "date": "2025-12-15",
     "decidedAt": "2026-08-03"
   },
+  "pmo--dpm-gan-kim-yong-opening-remarks-at-the-ips-singapore-perspectives-2026": {
+    "reason": "non-ai",
+    "decidedAt": "2026-09-05",
+    "note": "The speech centers on fraternity and social capital in Singapore; AI appears only once as a passing mention ('Artificial"
+  },
   "pmo--dpm-gan-kim-yongs-remarks-at-the-opening-of-capitalands-dc-centre-in-navi-mumbai": {
     "reason": "pre-floor",
     "date": "2025-08-12",
@@ -8084,6 +8104,11 @@
     "reason": "pre-floor",
     "date": "2016-11-01",
     "decidedAt": "2026-08-03"
+  },
+  "pmo--pm-lee-hsien-loong-dialogue-us-chamber-commerce-us-asean-business-council-reception": {
+    "reason": "pre-floor",
+    "date": "2016-08-01",
+    "decidedAt": "2026-09-05"
   },
   "pmo--pm-lee-hsien-loong-doorstop-remarks-at-the-singapore-indonesia-leaders-retreat-2022": {
     "reason": "pre-floor",

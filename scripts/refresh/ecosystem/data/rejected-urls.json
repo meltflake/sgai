@@ -4,5 +4,23 @@
     "reason": "A web page about an award, not an ecosystem entity; the Pints AI fact is tracked in startups.ts autoDiscovered.",
     "decidedAt": "2026-09-05",
     "ref": "#267"
+  },
+  {
+    "url": "https://aisingapore.org/leveraging-generative-ai-in-project-management/",
+    "reason": "AISG blog article, not an ecosystem entity (same precedent as 4bdad60 / #186).",
+    "decidedAt": "2026-09-05",
+    "ref": "#272"
+  },
+  {
+    "url": "https://www.businesstimes.com.sg/international/asean/thailand-puts-49-data-centres-hold-over-resource-strain-community-impact",
+    "reason": "Foreign news event (Thailand), no Singapore nexus, and not an entity.",
+    "decidedAt": "2026-09-05",
+    "ref": "#272"
+  },
+  {
+    "url": "https://www.businesstimes.com.sg/international/china-15-years-behind-top-chipmaking-tools-says-asml-supplier",
+    "reason": "Foreign news event (China/ASML), no Singapore nexus, and not an entity.",
+    "decidedAt": "2026-09-05",
+    "ref": "#272"
   }
 ]
