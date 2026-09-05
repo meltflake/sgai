@@ -2,6 +2,8 @@ import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 
 import { join, resolve } from 'node:path';
 import { spawnSync } from 'node:child_process';
 
+import { buildGlossaryHint } from '../lib/translate.ts';
+
 import { debates } from '../../src/data/debates';
 
 interface TranscriptRecord {
@@ -91,9 +93,20 @@ function parseParagraphs(content: string): string[] {
   return parsed.paragraphs as string[];
 }
 
+// Base instruction. The glossary hint is appended per batch — without it the
+// model transliterates Singapore MPs phonetically (motion-3008/3010, 2026-09-05:
+// Jamus Jerome Lim came out as 林俊杰 / 林占祥 / 詹姆斯·杰罗姆·林, Kenneth Tiong as
+// 张国贤 / 陈炳辉). lib/translate.ts already guards its own pipelines this way;
+// this script had its own OpenAI call and never picked the guard up.
+const BASE_SYSTEM_PROMPT =
+  'You are a professional translator for a Chinese policy-analysis website. Translate Singapore Hansard transcript paragraphs from English into clear, faithful Simplified Chinese. Preserve names, institutions, numbers, dates, policy terms, bill names, and acronyms. Never invent a phonetic Chinese rendering for a person: use the official Chinese name when the terminology block below gives one, otherwise keep the name in Latin script exactly as written. Do not summarize. Do not omit content. Do not add commentary. Return only JSON: {"paragraphs":["..."]}. The output array must have exactly the same number of items as the input array.';
+
 async function translateBatch(paragraphs: string[], model: string): Promise<string[]> {
   const apiKey = process.env.OPENAI_API_KEY;
   if (!apiKey) throw new Error('OPENAI_API_KEY is required to translate Hansard transcripts.');
+
+  const hint = buildGlossaryHint(paragraphs, 'zh');
+  const systemPrompt = hint ? `${BASE_SYSTEM_PROMPT}\n\n${hint}` : BASE_SYSTEM_PROMPT;
 
   const payload = {
     model,
@@ -102,8 +115,7 @@ async function translateBatch(paragraphs: string[], model: string): Promise<stri
     messages: [
       {
         role: 'system',
-        content:
-          'You are a professional translator for a Chinese policy-analysis website. Translate Singapore Hansard transcript paragraphs from English into clear, faithful Simplified Chinese. Preserve names, institutions, numbers, dates, policy terms, bill names, and acronyms. Do not summarize. Do not omit content. Do not add commentary. Return only JSON: {"paragraphs":["..."]}. The output array must have exactly the same number of items as the input array.',
+        content: systemPrompt,
       },
       {
         role: 'user',

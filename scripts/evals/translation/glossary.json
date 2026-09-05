@@ -1,67 +1,286 @@
 {
   "_comment": "Term-level expectations for Singapore AI translation. zh source → expected en + ja translations. Used by translation eval to assert proper-noun fidelity. Add new terms when you spot them mistranslated in PR review.",
   "people": {
-    "黄循财": {
+    "严燕松": {
       "en": [
-        "Lawrence Wong"
+        "Gerald Giam",
+        "Gerald Giam Yean Song"
       ],
       "ja": [
-        "ローレンス・ウォン"
+        "Gerald Giam Yean Song"
+      ],
+      "ko": [
+        "Gerald Giam Yean Song"
       ]
     },
-    "李显龙": {
+    "任梓铭": {
       "en": [
-        "Lee Hsien Loong"
+        "Alex Yam Ziming"
       ],
       "ja": [
-        "リー・シェンロン"
+        "Alex Yam Ziming"
+      ],
+      "ko": [
+        "Alex Yam Ziming"
       ]
     },
-    "陈振声": {
+    "何伟伦": {
       "en": [
-        "Chan Chun Sing"
+        "Terence Ho"
       ],
       "ja": [
-        "チャン・チュンシン"
+        "Terence Ho"
+      ],
+      "ko": [
+        "Terence Ho"
       ]
     },
-    "杨莉明": {
+    "何廷儒": {
       "en": [
-        "Josephine Teo",
-        "Mrs Teo"
+        "He Ting Ru"
       ],
       "ja": [
-        "ジョセフィン・テオ"
+        "He Ting Ru"
+      ],
+      "ko": [
+        "He Ting Ru"
       ]
     },
-    "王瑞杰": {
+    "何德华": {
       "en": [
-        "Heng Swee Keat"
+        "Ho Teck Hua"
+      ]
+    },
+    "何礼娜": {
+      "en": [
+        "Hazlina Abdul Halim"
       ],
       "ja": [
-        "ヘン・スイキャット"
+        "Hazlina Abdul Halim"
+      ],
+      "ko": [
+        "Hazlina Abdul Halim"
       ]
     },
-    "陈杰豪": {
+    "佳馥梅": {
       "en": [
-        "Tan Kiat How"
+        "Mariam Jaafar"
       ],
       "ja": [
-        "タン・キアットハウ"
+        "Mariam Jaafar"
+      ],
+      "ko": [
+        "Mariam Jaafar"
       ]
     },
-    "颜金勇": {
+    "傅丽珊": {
       "en": [
-        "Gan Kim Yong"
+        "Poh Li San"
       ],
       "ja": [
-        "ガン・キムヨン"
+        "Poh Li San"
+      ],
+      "ko": [
+        "Poh Li San"
       ]
     },
-    "普杰立": {
+    "傅海燕": {
       "en": [
-        "Janil Puthucheary",
-        "Dr Janil"
+        "Grace Fu Hai Yien"
+      ],
+      "ja": [
+        "Grace Fu Hai Yien"
+      ],
+      "ko": [
+        "Grace Fu Hai Yien"
+      ]
+    },
+    "刘宇扬": {
+      "en": [
+        "Andre Low",
+        "Low Wu Yang Andre"
+      ],
+      "ja": [
+        "Low Wu Yang Andre"
+      ],
+      "ko": [
+        "Low Wu Yang Andre"
+      ]
+    },
+    "刘洁敏": {
+      "en": [
+        "Jasmin Lau"
+      ],
+      "ja": [
+        "ジャスミン・ラウ"
+      ],
+      "ko": [
+        "Jasmin Lau"
+      ]
+    },
+    "刘燕玲": {
+      "en": [
+        "Low Yen Ling"
+      ],
+      "ja": [
+        "Low Yen Ling"
+      ],
+      "ko": [
+        "Low Yen Ling"
+      ]
+    },
+    "叶汉荣": {
+      "en": [
+        "Yip Hon Weng"
+      ],
+      "ja": [
+        "Yip Hon Weng"
+      ],
+      "ko": [
+        "Yip Hon Weng"
+      ]
+    },
+    "吕思憓": {
+      "en": [
+        "Cassandra Lee"
+      ],
+      "ja": [
+        "Cassandra Lee"
+      ],
+      "ko": [
+        "Cassandra Lee"
+      ]
+    },
+    "吴函燕": {
+      "en": [
+        "Goh Hanyan"
+      ],
+      "ja": [
+        "Goh Hanyan"
+      ],
+      "ko": [
+        "Goh Hanyan"
+      ]
+    },
+    "吴培铭": {
+      "en": [
+        "Goh Pei Ming"
+      ],
+      "ja": [
+        "Goh Pei Ming"
+      ],
+      "ko": [
+        "Goh Pei Ming"
+      ]
+    },
+    "吴多泉": {
+      "en": [
+        "Kenneth Goh"
+      ],
+      "ja": [
+        "Kenneth Goh"
+      ],
+      "ko": [
+        "Kenneth Goh"
+      ]
+    },
+    "吴诗琪": {
+      "en": [
+        "Gho Sze Kee"
+      ],
+      "ja": [
+        "Gho Sze Kee"
+      ],
+      "ko": [
+        "Gho Sze Kee"
+      ]
+    },
+    "周凯年": {
+      "en": [
+        "Zhulkarnain Abdul Rahim"
+      ],
+      "ja": [
+        "Zhulkarnain Abdul Rahim"
+      ],
+      "ko": [
+        "Zhulkarnain Abdul Rahim"
+      ]
+    },
+    "哈雷什·辛加拉朱": {
+      "en": [
+        "Haresh Singaraju"
+      ],
+      "ja": [
+        "Haresh Singaraju"
+      ],
+      "ko": [
+        "Haresh Singaraju"
+      ]
+    },
+    "唐振辉": {
+      "en": [
+        "Edwin Tong Chun Fai"
+      ],
+      "ja": [
+        "Edwin Tong Chun Fai"
+      ],
+      "ko": [
+        "Edwin Tong Chun Fai"
+      ]
+    },
+    "娜蒂雅": {
+      "en": [
+        "Nadia Ahmad Samdin"
+      ],
+      "ja": [
+        "Nadia Ahmad Samdin"
+      ],
+      "ko": [
+        "Nadia Ahmad Samdin"
+      ]
+    },
+    "孙雪玲": {
+      "en": [
+        "Sun Xueling"
+      ],
+      "ja": [
+        "Sun Xueling"
+      ],
+      "ko": [
+        "Sun Xueling"
+      ]
+    },
+    "安迪": {
+      "en": [
+        "Saktiandi Supaat"
+      ],
+      "ja": [
+        "Saktiandi Supaat"
+      ],
+      "ko": [
+        "Saktiandi Supaat"
+      ]
+    },
+    "尚杰夫": {
+      "en": [
+        "Sanjeev Kumar Tiwari"
+      ],
+      "ja": [
+        "Sanjeev Kumar Tiwari"
+      ],
+      "ko": [
+        "Sanjeev Kumar Tiwari"
+      ]
+    },
+    "尚穆根": {
+      "en": [
+        "K Shanmugam"
+      ],
+      "ja": [
+        "K Shanmugam"
+      ],
+      "ko": [
+        "K Shanmugam"
       ]
     },
     "尚达曼": {
@@ -78,35 +297,80 @@
         "Teo Chee Hean"
       ]
     },
-    "维文": {
+    "张文杰": {
       "en": [
-        "Vivian Balakrishnan"
+        "Kenneth Tiong"
       ],
       "ja": [
-        "ビビアン・バラクリシュナン"
+        "Kenneth Tiong"
+      ],
+      "ko": [
+        "Kenneth Tiong"
       ]
     },
-    "王乙康": {
+    "彭丽燕": {
       "en": [
-        "Ong Ye Kung"
+        "Diana Pang Li Yen"
+      ],
+      "ja": [
+        "Diana Pang Li Yen"
+      ],
+      "ko": [
+        "Diana Pang Li Yen"
       ]
     },
     "徐芳达": {
       "en": [
         "Chee Hong Tat"
-      ]
-    },
-    "马善高": {
-      "en": [
-        "Masagos Zulkifli"
       ],
       "ja": [
-        "マサゴス・ズルキフリ"
+        "Chee Hong Tat"
+      ],
+      "ko": [
+        "Chee Hong Tat"
       ]
     },
-    "陈诗龙": {
+    "扎吉": {
       "en": [
-        "Tan See Leng"
+        "Zaqy Mohamad"
+      ]
+    },
+    "扎吉哈": {
+      "en": [
+        "Zaqy Mohamad"
+      ],
+      "ja": [
+        "Zaqy Mohamad"
+      ],
+      "ko": [
+        "Zaqy Mohamad"
+      ]
+    },
+    "拉哈尤 玛赞": {
+      "en": [
+        "Rahayu Mahzam"
+      ],
+      "ja": [
+        "Rahayu Mahzam"
+      ],
+      "ko": [
+        "Rahayu Mahzam"
+      ]
+    },
+    "拉哈尤·玛赞": {
+      "en": [
+        "Rahayu Mahzam"
+      ]
+    },
+    "文礼佳": {
+      "en": [
+        "Wan Rizal"
+      ],
+      "ja": [
+        "Wan Rizal"
+      ],
+      "ko": [
+        "Wan Rizal"
       ]
     },
     "易华仁": {
@@ -115,52 +379,862 @@
         "Iswaran"
       ]
     },
-    "扎吉": {
+    "普杰立": {
       "en": [
-        "Zaqy Mohamad"
-      ]
-    },
-    "英兰妮": {
-      "en": [
-        "Indranee Rajah"
-      ]
-    },
-    "刘洁敏": {
-      "en": [
-        "Jasmin Lau"
+        "Dr Janil",
+        "Janil Puthucheary"
       ],
       "ja": [
-        "ジャスミン・ラウ"
+        "Janil Puthucheary"
+      ],
+      "ko": [
+        "Janil Puthucheary"
       ]
     },
-    "吴函燕": {
+    "朱佩玲": {
       "en": [
-        "Goh Hanyan"
+        "Choo Pei Ling"
+      ],
+      "ja": [
+        "Choo Pei Ling"
+      ],
+      "ko": [
+        "Choo Pei Ling"
       ]
     },
-    "拉哈尤·玛赞": {
+    "朱倍庆": {
       "en": [
-        "Rahayu Mahzam"
+        "Desmond Choo"
+      ],
+      "ja": [
+        "Desmond Choo"
+      ],
+      "ko": [
+        "Desmond Choo"
       ]
     },
-    "谢曜全": {
+    "李乃怡": {
       "en": [
-        "Xie Yao Quan"
+        "Valerie Lee"
+      ],
+      "ja": [
+        "Valerie Lee"
+      ],
+      "ko": [
+        "Valerie Lee"
       ]
     },
-    "何德华": {
+    "李坚辉": {
       "en": [
-        "Ho Teck Hua"
+        "Mark Lee"
+      ],
+      "ja": [
+        "Mark Lee"
+      ],
+      "ko": [
+        "Mark Lee"
       ]
     },
-    "萧振祥": {
+    "李宏壮": {
       "en": [
-        "Jeffrey Siow"
+        "Lee Hong Chuang BBM"
+      ],
+      "ja": [
+        "Lee Hong Chuang BBM"
+      ],
+      "ko": [
+        "Lee Hong Chuang BBM"
+      ]
+    },
+    "李显龙": {
+      "en": [
+        "Lee Hsien Loong"
+      ],
+      "ja": [
+        "リー・シェンロン"
+      ],
+      "ko": [
+        "Lee Hsien Loong"
+      ]
+    },
+    "李智陞": {
+      "en": [
+        "Desmond Lee"
+      ],
+      "ja": [
+        "Desmond Lee"
+      ],
+      "ko": [
+        "Desmond Lee"
+      ]
+    },
+    "李蕙莹": {
+      "en": [
+        "Lee Hui Ying"
+      ],
+      "ja": [
+        "Lee Hui Ying"
+      ],
+      "ko": [
+        "Lee Hui Ying"
+      ]
+    },
+    "杨涴淩": {
+      "en": [
+        "Yeo Wan Ling"
+      ],
+      "ja": [
+        "Yeo Wan Ling"
+      ],
+      "ko": [
+        "Yeo Wan Ling"
+      ]
+    },
+    "杨益财": {
+      "en": [
+        "Melvin Yong Yik Chye"
+      ],
+      "ja": [
+        "Melvin Yong Yik Chye"
+      ],
+      "ko": [
+        "Melvin Yong Yik Chye"
+      ]
+    },
+    "杨莉明": {
+      "en": [
+        "Josephine Teo",
+        "Mrs Teo"
+      ],
+      "ja": [
+        "ジョセフィン・テオ"
+      ],
+      "ko": [
+        "Josephine Teo"
+      ]
+    },
+    "杨陞才": {
+      "en": [
+        "Alex Yeo"
+      ],
+      "ja": [
+        "Alex Yeo"
+      ],
+      "ko": [
+        "Alex Yeo"
       ]
     },
     "杨颖仪": {
       "en": [
         "Yong Ying-I"
+      ]
+    },
+    "杰乐": {
+      "en": [
+        "Darryl David"
+      ],
+      "ja": [
+        "Darryl David"
+      ],
+      "ko": [
+        "Darryl David"
+      ]
+    },
+    "林志蔚": {
+      "en": [
+        "James Lim",
+        "Jamus Jerome Lim",
+        "Jamus Lim"
+      ],
+      "ja": [
+        "Jamus Jerome Lim"
+      ],
+      "ko": [
+        "Jamus Jerome Lim"
+      ]
+    },
+    "林瑞莲": {
+      "en": [
+        "Sylvia Lim"
+      ],
+      "ja": [
+        "Sylvia Lim"
+      ],
+      "ko": [
+        "Sylvia Lim"
+      ]
+    },
+    "林纬量": {
+      "en": [
+        "Jackson Lam"
+      ],
+      "ja": [
+        "Jackson Lam"
+      ],
+      "ko": [
+        "Jackson Lam"
+      ]
+    },
+    "柯文婷": {
+      "en": [
+        "Kuah Boon Theng"
+      ],
+      "ja": [
+        "Kuah Boon Theng"
+      ],
+      "ko": [
+        "Kuah Boon Theng"
+      ]
+    },
+    "梁国民": {
+      "en": [
+        "Neo Kok Beng"
+      ],
+      "ja": [
+        "Neo Kok Beng"
+      ],
+      "ko": [
+        "Neo Kok Beng"
+      ]
+    },
+    "梁振伟": {
+      "en": [
+        "David Neo"
+      ],
+      "ja": [
+        "David Neo"
+      ],
+      "ko": [
+        "David Neo"
+      ]
+    },
+    "毕丹星": {
+      "en": [
+        "Pritam Singh"
+      ],
+      "ja": [
+        "Pritam Singh"
+      ],
+      "ko": [
+        "Pritam Singh"
+      ]
+    },
+    "沈颖": {
+      "en": [
+        "Sim Ann"
+      ],
+      "ja": [
+        "Sim Ann"
+      ],
+      "ko": [
+        "Sim Ann"
+      ]
+    },
+    "沙礼尔": {
+      "en": [
+        "Sharael Taha"
+      ],
+      "ja": [
+        "Sharael Taha"
+      ],
+      "ko": [
+        "Sharael Taha"
+      ]
+    },
+    "洪维能": {
+      "en": [
+        "Ang Wei Neng"
+      ],
+      "ja": [
+        "Ang Wei Neng"
+      ],
+      "ko": [
+        "Ang Wei Neng"
+      ]
+    },
+    "潘丽萍": {
+      "en": [
+        "Denise Phua Lay Peng"
+      ],
+      "ja": [
+        "Denise Phua Lay Peng"
+      ],
+      "ko": [
+        "Denise Phua Lay Peng"
+      ]
+    },
+    "潘健龙": {
+      "en": [
+        "Kenneth Poon"
+      ],
+      "ja": [
+        "Kenneth Poon"
+      ],
+      "ko": [
+        "Kenneth Poon"
+      ]
+    },
+    "王乙康": {
+      "en": [
+        "Ong Ye Kung"
+      ],
+      "ja": [
+        "Ong Ye Kung"
+      ],
+      "ko": [
+        "Ong Ye Kung"
+      ]
+    },
+    "王心妍": {
+      "en": [
+        "Rachel Ong"
+      ],
+      "ja": [
+        "Rachel Ong"
+      ],
+      "ko": [
+        "Rachel Ong"
+      ]
+    },
+    "王瑞杰": {
+      "en": [
+        "Heng Swee Keat"
+      ],
+      "ja": [
+        "ヘン・スイキャット"
+      ]
+    },
+    "祖安清心": {
+      "en": [
+        "Joan Pereira"
+      ],
+      "ja": [
+        "Joan Pereira"
+      ],
+      "ko": [
+        "Joan Pereira"
+      ]
+    },
+    "穆仁理": {
+      "en": [
+        "Murali Pillai"
+      ],
+      "ja": [
+        "Murali Pillai"
+      ],
+      "ko": [
+        "Murali Pillai"
+      ]
+    },
+    "穆海民": {
+      "en": [
+        "Abdul Muhaimin Abdul Malik"
+      ],
+      "ja": [
+        "Abdul Muhaimin Abdul Malik"
+      ],
+      "ko": [
+        "Abdul Muhaimin Abdul Malik"
+      ]
+    },
+    "符策翔": {
+      "en": [
+        "Foo Cexiang"
+      ],
+      "ja": [
+        "Foo Cexiang"
+      ],
+      "ko": [
+        "Foo Cexiang"
+      ]
+    },
+    "维凯": {
+      "en": [
+        "Vikram Nair"
+      ],
+      "ja": [
+        "Vikram Nair"
+      ],
+      "ko": [
+        "Vikram Nair"
+      ]
+    },
+    "维文": {
+      "en": [
+        "Vivian Balakrishnan"
+      ],
+      "ja": [
+        "ビビアン・バラクリシュナン"
+      ],
+      "ko": [
+        "Vivian Balakrishnan"
+      ]
+    },
+    "罗守恩": {
+      "en": [
+        "Shawn Loh"
+      ],
+      "ja": [
+        "Shawn Loh"
+      ],
+      "ko": [
+        "Shawn Loh"
+      ]
+    },
+    "苏慧敏": {
+      "en": [
+        "Hany Soh"
+      ],
+      "ja": [
+        "Hany Soh"
+      ],
+      "ko": [
+        "Hany Soh"
+      ]
+    },
+    "英兰妮": {
+      "en": [
+        "Indranee Rajah"
+      ],
+      "ja": [
+        "Indranee Rajah"
+      ],
+      "ko": [
+        "Indranee Rajah"
+      ]
+    },
+    "莫哈默法理": {
+      "en": [
+        "Fadli Fawzi"
+      ],
+      "ja": [
+        "Fadli Fawzi"
+      ],
+      "ko": [
+        "Fadli Fawzi"
+      ]
+    },
+    "萧振祥": {
+      "en": [
+        "Jeffrey Siow"
+      ],
+      "ja": [
+        "Jeffrey Siow"
+      ],
+      "ko": [
+        "Jeffrey Siow"
+      ]
+    },
+    "蒋佩姗": {
+      "en": [
+        "Eileen Chong",
+        "Eileen Chong Pei Shan"
+      ],
+      "ja": [
+        "Eileen Chong Pei Shan"
+      ],
+      "ko": [
+        "Eileen Chong Pei Shan"
+      ]
+    },
+    "蓝延理": {
+      "en": [
+        "Gabriel Lam"
+      ],
+      "ja": [
+        "Gabriel Lam"
+      ],
+      "ko": [
+        "Gabriel Lam"
+      ]
+    },
+    "蔡庆威": {
+      "en": [
+        "Chua Kheng Wee Louis",
+        "Louis Chua"
+      ],
+      "ja": [
+        "Chua Kheng Wee Louis"
+      ],
+      "ko": [
+        "Chua Kheng Wee Louis"
+      ]
+    },
+    "蔡引舟": {
+      "en": [
+        "Cai Yinzhou"
+      ],
+      "ja": [
+        "Cai Yinzhou"
+      ],
+      "ko": [
+        "Cai Yinzhou"
+      ]
+    },
+    "蔡瑞隆": {
+      "en": [
+        "Eric Chua"
+      ],
+      "ja": [
+        "Eric Chua"
+      ],
+      "ko": [
+        "Eric Chua"
+      ]
+    },
+    "许宝琨": {
+      "en": [
+        "Koh Poh Koon"
+      ],
+      "ja": [
+        "Koh Poh Koon"
+      ],
+      "ko": [
+        "Koh Poh Koon"
+      ]
+    },
+    "许德财": {
+      "en": [
+        "David Hoe"
+      ],
+      "ja": [
+        "David Hoe"
+      ],
+      "ko": [
+        "David Hoe"
+      ]
+    },
+    "谢健平": {
+      "en": [
+        "Seah Kian Peng"
+      ],
+      "ja": [
+        "Seah Kian Peng"
+      ],
+      "ko": [
+        "Seah Kian Peng"
+      ]
+    },
+    "谢曜全": {
+      "en": [
+        "Xie Yao Quan"
+      ],
+      "ja": [
+        "Xie Yao Quan"
+      ],
+      "ko": [
+        "Xie Yao Quan"
+      ]
+    },
+    "谢秉辉": {
+      "en": [
+        "Edward Chia",
+        "Edward Chia Bing Hui"
+      ],
+      "ja": [
+        "Edward Chia Bing Hui"
+      ],
+      "ko": [
+        "Edward Chia Bing Hui"
+      ]
+    },
+    "贺明": {
+      "en": [
+        "Hamid Razak"
+      ],
+      "ja": [
+        "Hamid Razak"
+      ],
+      "ko": [
+        "Hamid Razak"
+      ]
+    },
+    "赖添发": {
+      "en": [
+        "Victor Lye"
+      ],
+      "ja": [
+        "Victor Lye"
+      ],
+      "ko": [
+        "Victor Lye"
+      ]
+    },
+    "赛义德哈伦": {
+      "en": [
+        "Syed Harun Alhabsyi"
+      ],
+      "ja": [
+        "Syed Harun Alhabsyi"
+      ],
+      "ko": [
+        "Syed Harun Alhabsyi"
+      ]
+    },
+    "连荣华": {
+      "en": [
+        "Liang Eng Hwa"
+      ],
+      "ja": [
+        "Liang Eng Hwa"
+      ],
+      "ko": [
+        "Liang Eng Hwa"
+      ]
+    },
+    "迪内希": {
+      "en": [
+        "Dinesh Vasu Dash"
+      ],
+      "ja": [
+        "Dinesh Vasu Dash"
+      ],
+      "ko": [
+        "Dinesh Vasu Dash"
+      ]
+    },
+    "迪舒沙": {
+      "en": [
+        "Christopher de Souza"
+      ],
+      "ja": [
+        "Christopher de Souza"
+      ],
+      "ko": [
+        "Christopher de Souza"
+      ]
+    },
+    "郑德源": {
+      "en": [
+        "Patrick Tay",
+        "Patrick Tay Teck Guan"
+      ],
+      "ja": [
+        "Patrick Tay Teck Guan"
+      ],
+      "ko": [
+        "Patrick Tay Teck Guan"
+      ]
+    },
+    "郭献川": {
+      "en": [
+        "Kwek Hian Chuan Henry"
+      ],
+      "ja": [
+        "Kwek Hian Chuan Henry"
+      ],
+      "ko": [
+        "Kwek Hian Chuan Henry"
+      ]
+    },
+    "阿扎尔·奥斯曼": {
+      "en": [
+        "Azhar Othman"
+      ],
+      "ja": [
+        "Azhar Othman"
+      ],
+      "ko": [
+        "Azhar Othman"
+      ]
+    },
+    "陈以君": {
+      "en": [
+        "Charlene Chen"
+      ],
+      "ja": [
+        "Charlene Chen"
+      ],
+      "ko": [
+        "Charlene Chen"
+      ]
+    },
+    "陈佩玲": {
+      "en": [
+        "Tin Pei Ling"
+      ],
+      "ja": [
+        "Tin Pei Ling"
+      ],
+      "ko": [
+        "Tin Pei Ling"
+      ]
+    },
+    "陈国明": {
+      "en": [
+        "Desmond Tan"
+      ],
+      "ja": [
+        "Desmond Tan"
+      ],
+      "ko": [
+        "Desmond Tan"
+      ]
+    },
+    "陈圣辉": {
+      "en": [
+        "Alvin Tan"
+      ],
+      "ja": [
+        "Alvin Tan"
+      ],
+      "ko": [
+        "Alvin Tan"
+      ]
+    },
+    "陈振声": {
+      "en": [
+        "Chan Chun Sing"
+      ],
+      "ja": [
+        "チャン・チュンシン"
+      ],
+      "ko": [
+        "Chan Chun Sing"
+      ]
+    },
+    "陈杰豪": {
+      "en": [
+        "Tan Kiat How"
+      ],
+      "ja": [
+        "タン・キアットハウ"
+      ],
+      "ko": [
+        "Tan Kiat How"
+      ]
+    },
+    "陈立峰": {
+      "en": [
+        "Dennis Tan Lip Fong"
+      ],
+      "ja": [
+        "Dennis Tan Lip Fong"
+      ],
+      "ko": [
+        "Dennis Tan Lip Fong"
+      ]
+    },
+    "陈舜娘": {
+      "en": [
+        "Jessica Tan Soon Neo"
+      ],
+      "ja": [
+        "Jessica Tan Soon Neo"
+      ],
+      "ko": [
+        "Jessica Tan Soon Neo"
+      ]
+    },
+    "陈诗韵": {
+      "en": [
+        "Elysa Chen"
+      ],
+      "ja": [
+        "Elysa Chen"
+      ],
+      "ko": [
+        "Elysa Chen"
+      ]
+    },
+    "陈诗龙": {
+      "en": [
+        "Tan See Leng"
+      ],
+      "ja": [
+        "Tan See Leng"
+      ],
+      "ko": [
+        "Tan See Leng"
+      ]
+    },
+    "颜晓芳": {
+      "en": [
+        "Gan Siow Huang"
+      ],
+      "ja": [
+        "Gan Siow Huang"
+      ],
+      "ko": [
+        "Gan Siow Huang"
+      ]
+    },
+    "颜金勇": {
+      "en": [
+        "Gan Kim Yong"
+      ],
+      "ja": [
+        "ガン・キムヨン"
+      ],
+      "ko": [
+        "Gan Kim Yong"
+      ]
+    },
+    "马善高": {
+      "en": [
+        "Masagos Zulkifli",
+        "Masagos Zulkifli Bin Masagos Mohamad"
+      ],
+      "ja": [
+        "マサゴス・ズルキフリ"
+      ],
+      "ko": [
+        "Masagos Zulkifli Bin Masagos Mohamad"
+      ]
+    },
+    "马炎庆": {
+      "en": [
+        "Baey Yam Keng"
+      ],
+      "ja": [
+        "Baey Yam Keng"
+      ],
+      "ko": [
+        "Baey Yam Keng"
+      ]
+    },
+    "黄伟中": {
+      "en": [
+        "Shawn Huang Wei Zhong"
+      ],
+      "ja": [
+        "Shawn Huang Wei Zhong"
+      ],
+      "ko": [
+        "Shawn Huang Wei Zhong"
+      ]
+    },
+    "黄士轩": {
+      "en": [
+        "Ng Shi Xuan"
+      ],
+      "ja": [
+        "Ng Shi Xuan"
+      ],
+      "ko": [
+        "Ng Shi Xuan"
+      ]
+    },
+    "黄循财": {
+      "en": [
+        "Lawrence Wong"
+      ],
+      "ja": [
+        "ローレンス・ウォン"
+      ],
+      "ko": [
+        "Lawrence Wong"
+      ]
+    },
+    "黄志明": {
+      "en": [
+        "Ng Chee Meng"
+      ],
+      "ja": [
+        "Ng Chee Meng"
+      ],
+      "ko": [
+        "Ng Chee Meng"
       ]
     }
   },
