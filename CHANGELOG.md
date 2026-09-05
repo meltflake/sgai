@@ -6,6 +6,8 @@
 
 ## Unreleased
 
+- 首页焦点头条改为自动跟随最新长文：`frontpage.ts` 的 `FEATURED` 设为 null，发长文时不再手动改指针；只在 dated story 需要压过最新长文时才 pin。
+
 ---
 
 ## 0.27.0 — 2026-09-05
