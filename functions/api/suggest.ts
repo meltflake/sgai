@@ -12,6 +12,7 @@
 // the page falls back to its static preset pool.
 
 import { chatCompletionJson } from '../_lib/deepseek';
+import { matchesLangScript } from '../_lib/lang-script';
 import { ASK_PRESET_DATA, type AskPresetLang } from '../../src/config/ask-presets-data';
 import { ASK_LANGS, type AskLang, type Env, type PagesContext } from '../_lib/types';
 
@@ -78,6 +79,10 @@ async function refreshSuggestions(env: Env, lang: AskLang, trace?: string[]): Pr
     if (typeof row.q !== 'string') continue;
     const q = row.q.replace(/\s+/g, ' ').trim();
     if (q.length < 8 || q.length > 100) continue;
+    // The D1 `lang` column is the page language, not the text language —
+    // visitors do type Chinese on the EN page. Drop script mismatches here;
+    // the judge's language rule alone let one through (2026-08-19).
+    if (!matchesLangScript(q, lang)) continue;
     const n = normalize(q);
     if (staticNorms.has(n) || seen.has(n)) continue;
     seen.add(n);

@@ -172,9 +172,9 @@ npx prettier --write src/
 
 > **🔴 顶层硬规则：任何加到 `src/data/{videos,policies,debates,people,voices,tracker,benchmarking,ecosystem,levers,startups,legal-ai,talent,reg-lookahead,ai-capital}.ts` 的新 record 必须设 `addedAt: 'YYYY-MM-DD'`（写入当天的日期，永不修改）。**
 >
-> sgai 首页"最近更新"模块（[`src/components/home/LatestUpdatesFeed.astro`](src/components/home/LatestUpdatesFeed.astro)）与 `/updates/`、`updates.rss.xml` 的内容**从数据文件派生**——`src/utils/derived-updates.ts` 扫每条 record 的 `addedAt`，**每条 record 产出一个 update entry**（标题、一句 summary、record 自己的事件日期、直链），四语齐全。派生器覆盖的数据文件清单与 `scripts/evals/addedAt-coverage/check.ts` 的 `DATA_FILES` 由单测 `data-files-sync.test.ts` 锁死——新加 harvester 两边都要改。`src/data/updates.ts` 只剩 `site` / `fix` / `longform` 三种**编辑性事件**的 manual override（`MANUAL_TYPES` 在 import 时强制校验，加错 type 会 build error）。
+> sgai 首页"最近更新"模块（[`src/components/home/LatestUpdatesFeed.astro`](src/components/home/LatestUpdatesFeed.astro)）与 `/updates/`、`updates.rss.xml` 的内容**从数据文件派生**——`src/utils/derived-updates.ts` 扫每条 record 的 `addedAt`，**每条 record 产出一个 update entry**（标题、一句 summary、record 自己的事件日期、直链），四语齐全。派生器覆盖的数据文件清单与 `scripts/evals/addedAt-coverage/check.ts` 的 `DATA_FILES` 由单测 `data-files-sync.test.ts` 锁死——新加 harvester 两边都要改。长文（`src/data/post/*.md`）按 `publishDate` 同样派生，发一篇长文不用再往 `updates.ts` 加条目（2026-09-05 起；手动 `longform` 条目若指向某篇 post 且日期等于其 publishDate，import 时直接报错）。`src/data/updates.ts` 只剩 `site` / `fix` 两种**编辑性事件**，加上不是发布本身的 `longform` 事件（新栏目、旧文整篇更新）的 manual override（`MANUAL_TYPES` 在 import 时强制校验，加错 type 会 build error）。
 >
-> 这意味着：**忘了给新 record 加 `addedAt`，首页就看不到它。** 不需要再去碰 `updates.ts`，也不允许往 `updates.ts` 加 video/policy/debate 这类 type 的 entry。
+> 这意味着：**忘了给新 record 加 `addedAt`，首页就看不到它。** 不需要再去碰 `updates.ts`，也不允许往 `updates.ts` 加 video/policy/debate 这类 type 的 entry；长文同理，发布即上首页（焦点头条 `frontpage.ts` 的 `FEATURED` 为 null 时也自动取最新长文）。
 >
 > - ✅ 走标准 emit 管线：`scripts/refresh/<domain>/emit.ts` 已经自动写 `addedAt: today`。
 > - ✅ 手动加 record（fix PR / 补漏 / 回填 / agent 直接编辑）：record 字面量里写 `addedAt: '今天的日期',`。

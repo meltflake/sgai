@@ -10,16 +10,22 @@
 // │  1. DERIVED  — synthesised from each data record's `addedAt`     │
 // │                timestamp by src/utils/derived-updates.ts. Covers │
 // │                video / policy / debate / people / tracker /      │
-// │                benchmark / ecosystem / lever / startup types.    │
-// │                Always fresh, always 3-lang, never drifts. Adding │
-// │                a record with an `addedAt` is the ONLY thing      │
-// │                needed to surface it on the homepage.             │
+// │                benchmark / ecosystem / lever / startup types,    │
+// │                and every longform post (src/data/post/*.md, by   │
+// │                publishDate). Always fresh, always 3-lang, never  │
+// │                drifts. Adding a record with an `addedAt` — or    │
+// │                publishing a post — is the ONLY thing needed to   │
+// │                surface it on the homepage.                       │
 // │                                                                  │
-// │  2. MANUAL   — site refactors, fix announcements, longform       │
-// │                publications. These are editorial events that do  │
-// │                not correspond to a data record, so they live in  │
-// │                the MANUAL_UPDATES array below. Allowed types:    │
-// │                'site' / 'fix' / 'longform'.                      │
+// │  2. MANUAL   — site refactors, fix announcements, and longform   │
+// │                events that are not a post publication (a new     │
+// │                column, a full rewrite of an old piece). Editorial │
+// │                events without a data record live in the          │
+// │                MANUAL_UPDATES array below. Allowed types:        │
+// │                'site' / 'fix' / 'longform'. A 'longform' entry   │
+// │                that points at a post on its publishDate is       │
+// │                rejected at import time — the derive layer already │
+// │                emits that row.                                   │
 // │                                                                  │
 // │ Both sources merge in recentUpdates() / sortedUpdates() — date    │
 // │ desc, ties broken by source order (manual before derived).       │
@@ -89,83 +95,6 @@ const MANUAL_TYPES = new Set<UpdateType>(['site', 'fix', 'longform']);
 // sort regardless. Add new entries at the top.
 export const MANUAL_UPDATES: Update[] = [
   {
-    date: '2026-09-05',
-    type: 'longform',
-    title: '长文：新加坡的 AI 法律，和主要国家的对比',
-    titleEn: "Longform: Singapore's AI laws, compared with the major jurisdictions",
-    titleJa: '長文：シンガポールの AI 法律、主要国との比較',
-    titleKo: '장문: 싱가포르의 AI 법률, 주요국과의 비교',
-    summary:
-      '新加坡没有一部叫「人工智能法」的法律，但和 AI 直接相关的硬法 10 条、软法 11 条。逐条列出后，和欧盟、美国、中国、日本、韩国、英国、越南截至 2026 年 9 月的立法状态放进一张表：谁立了横切法、谁在推迟、训练数据版权谁写进了法条、深伪各国怎么管。2026 年横切法在往后退，新加坡「训练放开、输出严管、治理靠软法」的路线成了多数国家的实际状态。',
-    summaryEn:
-      'Singapore has no statute called an "AI Act", but it has 10 hard laws and 11 soft-law instruments that bear directly on AI. The piece lists them one by one, then sets them against the EU, US, China, Japan, Korea, UK and Vietnam as of September 2026: who has a horizontal AI law, who is delaying, who wrote training-data copyright into statute, how each handles deepfakes. Horizontal laws slipped in 2026; Singapore\'s "open on training, strict on output, soft law for governance" line is where most jurisdictions actually stand.',
-    summaryJa:
-      'シンガポールに「AI 法」という名の法律はないが、AI に直接関わる硬法が 10 本、ソフトローが 11 本ある。それらを一つずつ列挙した上で、EU・米国・中国・日本・韓国・英国・ベトナムの 2026 年 9 月時点の立法状況を一つの表に並べる：横断的 AI 法があるのはどこか、先送りしているのはどこか、学習データの著作権を法文に書いたのはどこか、ディープフェイクを各国はどう扱うか。2026 年は横断法が後退した年で、シンガポールの「学習は開放、出力は厳格、ガバナンスはソフトロー」という路線が多くの国の実態になった。',
-    summaryKo:
-      '싱가포르에는 「AI 법」이라는 이름의 법률이 없지만, AI와 직접 관련된 경성법 10건과 연성법 11건이 있다. 이를 하나씩 나열한 뒤 EU·미국·중국·일본·한국·영국·베트남의 2026년 9월 기준 입법 상황을 한 표에 놓고 비교한다: 누가 수평적 AI 법을 만들었는지, 누가 연기하고 있는지, 학습 데이터 저작권을 법조문에 쓴 곳은 어디인지, 딥페이크를 각국이 어떻게 다루는지. 2026년은 수평적 법이 뒤로 물러난 해이며, 싱가포르의 「학습은 개방, 출력은 엄격, 거버넌스는 연성법」 노선이 대다수 국가의 실제 상태가 되었다.',
-    links: [
-      {
-        href: '/singapore-ai-law-vs-major-jurisdictions/',
-        label: '阅读全文',
-        labelEn: 'Read the full piece',
-        labelJa: '全文を読む',
-        labelKo: '전문 읽기',
-      },
-    ],
-  },
-  {
-    date: '2026-08-20',
-    type: 'longform',
-    title: '长文：新加坡管 AI 的部门有哪些，各自管哪一段',
-    titleEn: 'Longform: Which Singapore agencies run AI, and what each one owns',
-    titleJa: '長文：シンガポールで AI を所管する官庁はどこで、それぞれ何を担うのか',
-    titleKo: '장문: 싱가포르에서 AI를 담당하는 부처는 어디이고, 각각 무엇을 맡는가',
-    summary:
-      '新加坡没有「AI 部」，40 多个部委和法定机构各占一段。按八段梳理：PMO/NAIC 与 MDDI 定方向，IMDA、PDPC、MAS、CSA、AISI、MinLaw 各管一块规矩，MOF/MTI/EDB/EnterpriseSG 出钱引资，NRF/A*STAR/AISG/SSG 供人和研究，GovTech 让政府自己先用，各行业部委自行落地。国防（MINDEF+DSTA+DSO+DIS）和内政（MHA+HTX+SPF+ICA）是两条线——HTX 归内政部，常被误挂到国防部。',
-    summaryEn:
-      'Singapore has no "AI ministry"; more than forty ministries and statutory boards each own a slice. Eight segments: PMO/NAIC and MDDI set direction; IMDA, PDPC, MAS, CSA, AISI and MinLaw each hold a piece of the rulebook; MOF/MTI/EDB/EnterpriseSG fund and attract investment; NRF/A*STAR/AISG/SSG supply talent and research; GovTech puts AI inside government first; line ministries deploy per sector. Defence (MINDEF+DSTA+DSO+DIS) and home affairs (MHA+HTX+SPF+ICA) are separate chains — HTX sits under MHA and is often misattributed to MINDEF.',
-    summaryJa:
-      'シンガポールに「AI 省」はなく、40 を超える省庁と法定機関がそれぞれ一区画を担う。8 区分で整理：PMO/NAIC と MDDI が方向を定め、IMDA・PDPC・MAS・CSA・AISI・法務省がルールを分担し、MOF/MTI/EDB/EnterpriseSG が資金と投資誘致、NRF/A*STAR/AISG/SSG が人材と研究、GovTech が政府自身の利用、各省庁が産業ごとに実装する。国防（MINDEF+DSTA+DSO+DIS）と内政（MHA+HTX+SPF+ICA）は別系統——HTX は内務省の所属で、国防省と誤解されやすい。',
-    summaryKo:
-      '싱가포르에는 "AI 부처"가 없고 40개가 넘는 부처와 법정기관이 각자 한 구간을 맡는다. 여덟 구간으로 정리: PMO/NAIC와 MDDI가 방향을 정하고, IMDA·PDPC·MAS·CSA·AISI·법무부가 규칙을 나눠 맡으며, MOF/MTI/EDB/EnterpriseSG가 자금과 투자 유치를, NRF/A*STAR/AISG/SSG가 인재와 연구를, GovTech가 정부 자체 활용을, 각 부처가 산업별 적용을 담당한다. 국방(MINDEF+DSTA+DSO+DIS)과 내무(MHA+HTX+SPF+ICA)는 별개 계통이며, HTX는 내무부 소속인데 국방부로 잘못 알려지는 경우가 많다.',
-    links: [
-      {
-        href: '/singapore-ai-agencies-map/',
-        label: '阅读全文',
-        labelEn: 'Read the full piece',
-        labelJa: '全文を読む',
-        labelKo: '전문 읽기',
-      },
-    ],
-  },
-
-  {
-    date: '2026-08-14',
-    type: 'longform',
-    title: '长文：AISG 是什么——新加坡 AI 的执行引擎',
-    titleEn: "Longform: What AISG Is — Singapore AI's execution engine",
-    titleJa: '長文：AISG とは何か——シンガポール AI の実行エンジン',
-    titleKo: '장문: AISG란 무엇인가 — 싱가포르 AI의 실행 엔진',
-    summary:
-      'AISG 2017 年成立，NRF 初始资助 5 年最高 S$1.5 亿，累计超 S$5 亿。研究、人才、产品、治理四块都做：SEA-LION 面向东南亚 11 种语言，AIAP 22 批毕业约 500–600 人，NOAI 奥赛两届 4 金。文中澄清两个常被挂错的名字（AI Trailblazers、Kampong AI），并讲清 100E 归档后的瓶颈：AIAP 每批 60 人的产能。',
-    summaryEn:
-      'AISG launched in 2017 with up to S$150M over five years from NRF, over S$500M cumulatively. It runs research, talent, products and governance at once: SEA-LION covers 11 Southeast Asian languages, AIAP has graduated about 500–600 apprentices across 22 cohorts, and NOAI has taken four golds across two IOAI editions. The piece also clears up two names often misattributed to AISG (AI Trailblazers, Kampong AI) and the bottleneck after 100E was archived: AIAP capacity of about 60 apprentices per cohort.',
-    summaryJa:
-      'AISG は 2017 年設立、NRF が当初 5 年間で最大 S$1.5 億を拠出し、累計 S$5 億超。研究・人材・製品・ガバナンスの 4 つを同時に手がける：SEA-LION は東南アジア 11 言語に対応、AIAP は 22 期で約 500–600 人を輩出、NOAI は 2 大会で金 4 個。AISG のものと誤解されやすい 2 つの名前（AI Trailblazers、Kampong AI）を整理し、100E アーカイブ後のボトルネック——AIAP の 1 バッチ 60 人の生産能力——を解説。',
-    summaryKo:
-      'AISG는 2017년 출범해 NRF가 5년간 최대 S$1.5억을 지원했고 누적 S$5억을 넘습니다. 연구·인재·제품·거버넌스 네 가지를 동시에 합니다: SEA-LION은 동남아 11개 언어를 다루고, AIAP는 22기에서 약 500–600명을 배출했으며, NOAI는 두 대회에서 금메달 4개를 땄습니다. AISG의 것으로 오해되기 쉬운 두 이름(AI Trailblazers, Kampong AI)을 정리하고, 100E 아카이빙 이후의 병목 — AIAP의 기수당 60명 생산능력 — 을 짚습니다.',
-    links: [
-      {
-        href: '/aisg-explained/',
-        label: '阅读全文',
-        labelEn: 'Read the full piece',
-        labelJa: '全文を読む',
-        labelKo: '전문 읽기',
-      },
-    ],
-  },
-
-  {
     date: '2026-08-14',
     type: 'site',
     title: '上线 AI 问答：就新加坡 AI 随便提问，基于全站数据回答',
@@ -187,81 +116,6 @@ export const MANUAL_UPDATES: Update[] = [
         labelEn: 'Ask a question',
         labelJa: '質問してみる',
         labelKo: '질문하러 가기',
-      },
-    ],
-  },
-  {
-    date: '2026-08-14',
-    type: 'longform',
-    title: '长文：新加坡 AI 2026 全景盘点——六个维度、三条判断',
-    titleEn: 'Longform: State of Singapore AI 2026 — six dimensions, three judgments',
-    titleJa: '長文：シンガポール AI 2026 全景レビュー——6 つの次元、3 つの判断',
-    titleKo: '장문: 싱가포르 AI 2026 종합 점검——6개 차원과 3가지 판단',
-    summary:
-      '本站第一份年度全景盘点：把执行追踪的六个维度（投资、人才、算力、采用、研究、治理）合成一页——人均政府 AI 投入 S$139、AI 从业者 5,000/15,000、算力 1.4 GW、大企业采用 62.5% / SME 14.5%、人均论文全球第一、规则制定者地位。三条判断：放大倍数（每 S$1 政府投入约拉动 S$13 超大规模厂商承诺）才是真指标；SME 断层是未来 2–3 年主战场；规则制定不等于规则被遵守。全文不新增任何数字，每个数字带数据截至日期与来源。',
-    summaryEn:
-      "The site's first annual synthesis: the tracker's six dimensions (investment, talent, compute, adoption, research, governance) on one page — S$139 per-capita government AI spend, 5,000 of 15,000 AI practitioners, 1.4 GW of compute, 62.5% large-enterprise vs 14.5% SME adoption, per-capita papers #1, and rule-maker status. Three judgments: the amplification ratio (roughly S$13 of hyperscaler commitments per S$1 of government spend) is the real metric; the SME gap is the main battlefield for the next 2–3 years; rule-making is not rule-enforcement. No new numbers — every figure carries its own as-of date and source.",
-    summaryJa:
-      '当サイト初の年間全景レビュー。実行トラッカーの 6 つの次元（投資・人材・計算力・採用・研究・ガバナンス）を 1 ページに合成——1 人当たり政府 AI 投資 S$139、AI 人材 5,000/15,000 人、計算力 1.4 GW、大企業採用率 62.5% / SME 14.5%、1 人当たり論文数世界 1 位、ルール制定者としての地位。3 つの判断：政府投資 1 ドルあたり約 13 ドルのハイパースケーラー投資を引き出す「増幅倍率」こそ真の指標、SME の格差は今後 2〜3 年の主戦場、ルール制定はルール遵守ではない。新規の数字は一切なし——すべての数字にデータ基準日と出典を付記。',
-    summaryKo:
-      '사이트 첫 연간 종합 점검: 실행 트래커의 여섯 차원(투자·인재·컴퓨팅·도입·연구·거버넌스)을 한 페이지로 합성——1인당 정부 AI 투자 S$139, AI 인력 5,000/15,000명, 컴퓨팅 1.4GW, 대기업 도입률 62.5% / SME 14.5%, 1인당 논문 세계 1위, 규칙 제정자 지위. 세 가지 판단: 정부 투자 1달러당 약 13달러의 하이퍼스케일러 투자를 끌어내는 증폭 배수가 진짜 지표, SME 격차는 향후 2~3년의 주 전장, 규칙 제정은 규칙 준수가 아니다. 새로운 숫자는 전혀 없으며 모든 수치에 데이터 기준일과 출처가 붙어 있습니다.',
-    links: [
-      {
-        href: '/state-of-singapore-ai-2026/',
-        label: '阅读全文',
-        labelEn: 'Read the full piece',
-        labelJa: '全文を読む',
-        labelKo: '전문 읽기',
-      },
-    ],
-  },
-  {
-    date: '2026-08-07',
-    type: 'longform',
-    title: '长文：淡马锡年报 2026 里的 AI——从 6% 到 15%',
-    titleEn: 'Longform: The AI Chapter in Temasek Review 2026 — from 6% to 15%',
-    titleJa: '長文：テマセク年次報告書 2026 の AI——6%から 15%へ',
-    titleKo: '장문: 테마섹 연차보고서 2026의 AI——6%에서 15%로',
-    summary:
-      '淡马锡 2026-07-08 发布的年报给 AI 单开一章（§3.3 Our AI Strategy），带日期的数字承诺只有一条：AI 相关投资现占组合 6%，2031 年 3 月 31 日前提到 10–15%——按 5,180 亿新元的组合总值，涨到 15% 意味着 AI 持仓翻一倍多。本文梳理四根支柱、年内买入清单（Anthropic / OpenAI / xAI / CuspAI / PhysicsX / Lam Research 等），和落在新加坡本地的机构：Temus AI Foundry、Aicadium × gategroup、Resaro、与斯坦福商学院合办的 AI Leadership Programme。',
-    summaryEn:
-      "Temasek's annual review, published 2026-07-08, gives AI its own chapter (§3.3 Our AI Strategy). It carries exactly one dated numeric commitment: AI-related investments now make up 6% of the portfolio, to be raised to 10–15% by 31 March 2031 — against a S$518 billion portfolio, reaching 15% means more than doubling AI holdings. The piece walks through the four pillars, the year's purchases (Anthropic / OpenAI / xAI / CuspAI / PhysicsX / Lam Research and others), and what lands in Singapore: Temus's AI Foundry, Aicadium × gategroup, Resaro, and the AI Leadership Programme run with Stanford Graduate School of Business.",
-    summaryJa:
-      'テマセクが 2026-07-08 に発表した年次報告書は AI に独立した章（§3.3 Our AI Strategy）を設けました。日付付きの数値コミットメントは 1 つだけ：AI 関連投資は現在ポートフォリオの 6%で、2031 年 3 月 31 日までに 10–15%へ引き上げる——5,180 億シンガポールドルのポートフォリオ総額では、15%への拡大は AI 保有額が倍以上になることを意味します。本稿は 4 つの柱、年内の購入リスト（Anthropic / OpenAI / xAI / CuspAI / PhysicsX / Lam Research など）、そしてシンガポール現地に根づく機関——Temus の AI Foundry、Aicadium × gategroup、Resaro、スタンフォード大学経営大学院と共催の AI Leadership Programme——を整理します。',
-    summaryKo:
-      '테마섹이 2026-07-08 발표한 연차보고서는 AI에 별도의 장(§3.3 Our AI Strategy)을 신설했습니다. 날짜가 명시된 수치 약속은 하나뿐입니다: AI 관련 투자가 현재 포트폴리오의 6%이며, 2031년 3월 31일까지 10–15%로 확대합니다——5,180억 싱가포르달러의 포트폴리오 총액 기준으로 15%까지 늘리면 AI 보유 자산이 두 배 이상이 됩니다. 이 글은 네 개의 기둥, 연중 매입 목록(Anthropic / OpenAI / xAI / CuspAI / PhysicsX / Lam Research 등), 그리고 싱가포르 현지에 자리 잡는 기관들——Temus의 AI Foundry, Aicadium × gategroup, Resaro, 스탠퍼드 경영대학원과 공동 개최한 AI Leadership Programme——을 정리합니다.',
-    links: [
-      {
-        href: '/temasek-review-2026-ai/',
-        label: '阅读全文',
-        labelEn: 'Read the full piece',
-        labelJa: '全文を読む',
-        labelKo: '전문 읽기',
-      },
-    ],
-  },
-  {
-    date: '2026-08-07',
-    type: 'longform',
-    title: '译介：OpenAI 首份国家级 ChatGPT 使用数据，新加坡人均第一',
-    titleEn: "Translated: OpenAI's first country-level ChatGPT data puts Singapore #1 per capita",
-    titleJa: '翻訳：OpenAI 初の国別 ChatGPT 利用データ、シンガポールが一人当たり世界一',
-    titleKo: '번역: OpenAI 첫 국가별 ChatGPT 이용 데이터, 싱가포르 1인당 세계 1위',
-    summary:
-      'OpenAI 于 2026-08-06 首次公布按国家拆分的 ChatGPT 使用数据。配套 Signals 数据集显示，2026 年第二季度新加坡人均消息量在 147 个国家中排第一（阿联酋第 6、美国第 51、日本第 57、印尼第 101）。这是继 Anthropic（AUI 5.53，116 地区第一）和微软（采用率 60.9%，全球第二）之后，第三家独立厂商数据把新加坡排进最前列。原文里新加坡唯一一次出场是反例——35 岁以上用户消息占比只涨 1.2 个百分点，各国中位数 5.1；站方补注解释了这个数字为何量的是消息构成而非采用水平。',
-    summaryEn:
-      "On 2026-08-06 OpenAI published country-by-country ChatGPT usage data for the first time. The accompanying Signals dataset ranks Singapore #1 of 147 countries on messages per capita for Q2 2026 (UAE #6, United States #51, Japan #57, Indonesia #101). This is the third independent vendor dataset to place Singapore at or near the top, after Anthropic (AUI 5.53, 1st of 116 regions) and Microsoft (60.9% adoption, 2nd globally). Singapore appears in the article body only as a counter-example — the share of messages from users aged 35+ rose just 1.2 percentage points against a 5.1-point country median; our editor's note explains why that figure measures message composition rather than adoption.",
-    summaryJa:
-      'OpenAI は 2026-08-06、国別に分解した ChatGPT 利用データを初めて公開しました。付随する Signals データセットでは、2026 年第 2 四半期の一人当たりメッセージ数でシンガポールが 147 か国中 1 位（UAE 6 位、米国 51 位、日本 57 位、インドネシア 101 位）。Anthropic（AUI 5.53、116 地域中 1 位）、マイクロソフト（採用率 60.9%、世界 2 位）に続き、独立した 3 社目のデータがシンガポールを最上位に置いたことになります。本文でのシンガポールへの唯一の言及は反例として——35 歳以上ユーザーのメッセージ比率の伸びが 1.2 ポイントにとどまり、各国中央値 5.1 を大きく下回った点です。編集部注でこの数値が採用水準ではなくメッセージ構成を測るものである理由を解説しています。',
-    summaryKo:
-      'OpenAI는 2026-08-06 국가별로 나눈 ChatGPT 이용 데이터를 처음 공개했습니다. 함께 공개된 Signals 데이터셋에서 2026년 2분기 1인당 메시지 수 기준 싱가포르가 147개국 중 1위(UAE 6위, 미국 51위, 일본 57위, 인도네시아 101위)를 기록했습니다. Anthropic(AUI 5.53, 116개 지역 중 1위)과 마이크로소프트(채택률 60.9%, 세계 2위)에 이어 세 번째 독립 업체 데이터가 싱가포르를 최상위에 올린 것입니다. 본문에서 싱가포르는 반례로 한 번 등장하는데, 35세 이상 사용자의 메시지 비중이 1.2%p 상승에 그쳐 국가 중앙값 5.1%p에 크게 못 미쳤습니다. 편집자 주에서 이 수치가 채택 수준이 아니라 메시지 구성을 측정한다는 점을 설명합니다.',
-    links: [
-      {
-        href: '/openai-signals-chatgpt-at-work-2026/',
-        label: '阅读全文翻译',
-        labelEn: 'Read the full translation',
-        labelJa: '全文翻訳を読む',
-        labelKo: '전문 번역 읽기',
       },
     ],
   },
@@ -312,31 +166,6 @@ export const MANUAL_UPDATES: Update[] = [
         labelEn: 'Read the first issue',
         labelJa: '創刊号を読む',
         labelKo: '첫 호 읽기',
-      },
-    ],
-  },
-  {
-    date: '2026-07-17',
-    type: 'longform',
-    title: '新发布：几个关于 AI 的问答',
-    titleEn: 'New essay: A few Q&As about AI',
-    titleJa: '新規公開：AI をめぐるいくつかの問答',
-    titleKo: '신규 공개: AI에 관한 몇 가지 문답',
-    summary:
-      'sgai 编辑在 NUS 新全球企业家新加坡论坛的圆桌发言整理：企业如何选模型（一个原则、两个例外）、模型趋同后为何押注 Data、CEO 为何要亲自把最聪明模型的额度用光，以及什么才是围绕数据组织的 AI Native Company。中英日韩繁体五语同步。',
-    summaryEn:
-      'Notes from an sgai editor on a panel at the NUS Global Entrepreneurship Singapore forum: how enterprises should choose models (one principle, two exceptions), why Data becomes the real moat once model capabilities converge, why a CEO must personally burn through the quota of the smartest model, and what actually makes a company AI-native — being organized around its data. Published in all five languages.',
-    summaryJa:
-      'sgai 編集者が NUS 新グローバル起業家シンガポール・フォーラムのパネルで語った内容の整理：企業はどうモデルを選ぶか（一つの原則と二つの例外）、モデルが収束した後の本当の堀はなぜ Data なのか、CEO はなぜ最も賢いモデルの枠を自ら使い切るべきか、そしてデータを軸に組織された真の AI ネイティブ企業とは何か。5 言語で同時公開。',
-    summaryKo:
-      'sgai 편집자가 NUS 글로벌 기업가 싱가포르 포럼 패널에서 밝힌 내용 정리: 기업이 모델을 어떻게 고를지(하나의 원칙과 두 가지 예외), 모델이 수렴한 뒤 진짜 해자가 왜 Data인지, CEO가 왜 가장 똑똑한 모델의 할당량을 직접 다 써야 하는지, 그리고 데이터를 중심으로 조직된 진정한 AI 네이티브 기업이란 무엇인가. 5개 언어로 동시 공개.',
-    links: [
-      {
-        href: '/enterprise-ai-four-questions/',
-        label: '阅读全文',
-        labelEn: 'Read the article',
-        labelJa: '記事を読む',
-        labelKo: '글 읽기',
       },
     ],
   },
@@ -441,31 +270,6 @@ export const MANUAL_UPDATES: Update[] = [
     ],
   },
   {
-    date: '2026-06-09',
-    type: 'longform',
-    title: '新发布：GIC 与淡马锡在 AI 上投了什么',
-    titleEn: 'New: What GIC and Temasek have invested in AI',
-    titleJa: '新規公開：GIC とテマセクは AI に何を投資したか',
-    titleKo: '신규 공개: GIC와 테마섹은 AI에 무엇을 투자했나',
-    summary:
-      '系统梳理新加坡两家主权基金在 AI 上的已公开投资：GIC 连续三轮加注 Anthropic（两轮领投级），淡马锡同时入股 OpenAI 和 Anthropic，外加数据中心与 Databricks 仓位。每笔注明时间、规模和信源等级，全部链接经可达性验证。中英日韩繁体五语同步。',
-    summaryEn:
-      "A systematic survey of the public record of Singapore's two sovereign funds in AI: GIC backing Anthropic across three consecutive rounds (two at lead level), Temasek holding both OpenAI and Anthropic, plus data centre and Databricks positions. Every deal carries its date, scale, and source tier, with all links verified. Published in all five languages.",
-    summaryJa:
-      'シンガポールの 2 つのソブリンファンドの AI 投資の公開記録を体系的に整理：GIC は Anthropic に 3 ラウンド連続で投資（うち 2 回はリード級）、テマセクは OpenAI と Anthropic の両方を保有し、データセンターと Databricks のポジションも持つ。各件に時期・規模・情報源の等級を付記し、全リンクの到達性を検証済み。5 言語で同時公開。',
-    summaryKo:
-      '싱가포르 두 국부펀드의 AI 투자 공개 기록을 체계적으로 정리: GIC는 Anthropic에 3개 라운드 연속 투자(그중 2회는 리드급), 테마섹은 OpenAI와 Anthropic을 동시 보유하며 데이터센터와 Databricks 포지션도 보유. 각 건에 시기·규모·정보원 등급을 표기했고 모든 링크의 도달성을 검증했습니다. 5개 언어 동시 공개.',
-    links: [
-      {
-        href: '/sovereign-capital-frontier-ai/',
-        label: '阅读全文',
-        labelEn: 'Read the article',
-        labelJa: '記事を読む',
-        labelKo: '글 읽기',
-      },
-    ],
-  },
-  {
     date: '2026-06-10',
     type: 'site',
     title: '议员档案页新增「国会 AI 发言记录」派生区块',
@@ -491,31 +295,6 @@ export const MANUAL_UPDATES: Update[] = [
     ],
   },
   {
-    date: '2026-05-29',
-    type: 'longform',
-    title: '新发布：新加坡的 Claude 使用强度全球第一',
-    titleEn: 'New: Singapore tops the world in Claude usage intensity',
-    titleJa: '新規公開：シンガポール、Claude 利用強度で世界一',
-    titleKo: '신규 공개: 싱가포르, Claude 사용 강도 세계 1위',
-    summary:
-      'Anthropic 2026 年 3 月 Economic Index 报告的 country usage 排名里，新加坡以 AI Usage Index 5.53 居首。文章拆解这个指标量的是人均普及强度——不是绝对用量，也不是使用复杂度——并说明算法为何偏向小而富、说英语、知识工作者密集的城市国家，以及新加坡政策如何持续把它推高。中英日韩繁体五语同步。',
-    summaryEn:
-      "In the country-usage ranking of Anthropic's March 2026 Economic Index, Singapore leads with an AI Usage Index of 5.53. The piece unpacks what the index measures — per-capita adoption intensity, not absolute volume or sophistication — why the formula favors small, rich, English-speaking, knowledge-worker-dense city-states, and how Singapore's policies keep pushing it up. Published in all five languages.",
-    summaryJa:
-      'Anthropic の 2026 年 3 月 Economic Index の country usage ランキングで、シンガポールが AI Usage Index 5.53 で首位に立ちました。本記事はこの指標が測るのは一人当たりの普及強度であって絶対量でも使用の高度さでもないことを解きほぐし、アルゴリズムが小規模で豊か・英語圏・知識労働者が密集する都市国家を有利にする理由、そしてシンガポールの政策がそれを押し上げ続ける仕組みを説明します。5 言語で同時公開。',
-    summaryKo:
-      'Anthropic의 2026년 3월 Economic Index country usage 순위에서 싱가포르가 AI Usage Index 5.53으로 1위를 차지했습니다. 이 글은 이 지표가 측정하는 것이 절대 사용량이나 사용 복잡도가 아니라 1인당 보급 강도임을 풀어내고, 알고리즘이 작고 부유하며 영어를 쓰고 지식 노동자가 밀집한 도시국가에 유리한 이유, 그리고 싱가포르의 정책이 이를 계속 끌어올리는 방식을 설명합니다. 5개 언어로 동시 공개.',
-    links: [
-      {
-        href: '/anthropic-economic-index-singapore/',
-        label: '阅读全文',
-        labelEn: 'Read the article',
-        labelJa: '記事を読む',
-        labelKo: '글 읽기',
-      },
-    ],
-  },
-  {
     date: '2026-05-27',
     type: 'fix',
     title: 'SEO：批量重写页面 title / description 提高 CTR',
@@ -530,31 +309,6 @@ export const MANUAL_UPDATES: Update[] = [
       '5/2–5/24 の Google Search Console データ（95k インプレッション / 0.27% CTR）を踏まえ、voices / policies / debates / levers / startups / talent / ecosystem の詳細・一覧ページ metadata を一括書き換え。数字シグナル（「153 件の議会討論 · 2015–2026」など）、キーワード前置、ブランド接尾辞を 5 言語すべてに追加。debates 一覧は実レコード数と年範囲を動的に注入、voice ページは議会発言・政策・動画件数を description に組み込み。zh-tw 分岐はすべて toTraditional() を経由し繁体出力を清浄に保ちます。',
     summaryKo:
       '5/2–5/24 Google Search Console 데이터(노출 95k / CTR 0.27%)를 바탕으로 voices / policies / debates / levers / startups / talent / ecosystem 상세·목록 페이지 메타데이터를 일괄 재작성. 숫자 시그널(예: "153건 토론 · 2015–2026"), 키워드 전치, 브랜드 접미사를 5개 언어 모두에 추가. debates 목록은 실제 레코드 수·연도 범위를 동적 주입, voice 페이지는 국회 발언·정책·영상 수를 설명에 삽입. zh-tw 분기는 모두 toTraditional()을 거쳐 번체 출력을 깨끗하게 유지.',
-  },
-  {
-    date: '2026-05-26',
-    type: 'longform',
-    title: '新发布：新加坡公布四项 National AI Missions',
-    titleEn: 'New: Singapore unveils four National AI Missions',
-    titleJa: '新規公開：シンガポール、4 つの National AI Missions を発表',
-    titleKo: '신규 공개: 싱가포르, 4개 National AI Missions 발표',
-    summary:
-      '5/20 ATxSummit 上 Josephine Teo 公布 NAIS Update 与四项 Missions（先进制造、互联互通、金融、医疗），同日还公布 NVIDIA Singapore AI Research Lab 和 Punggol Digital District 多运营商机器人 testbed。新闻体长文，中英日韩繁体中文五语同步。',
-    summaryEn:
-      'At ATxSummit on 20 May, Josephine Teo unveiled the NAIS Update and four National AI Missions (Advanced Manufacturing, Connectivity, Finance, Healthcare); the same day brought announcements of the NVIDIA Singapore AI Research Lab and the Punggol Digital District multi-operator robot testbed. News-style long-form, published in all five languages.',
-    summaryJa:
-      '5/20 の ATxSummit で Josephine Teo が NAIS アップデートと 4 つの National AI Missions（先端製造、コネクティビティ、金融、医療）を発表。同日 NVIDIA Singapore AI Research Lab と Punggol Digital District 多事業者ロボット testbed も公表されました。報道体の長文記事を 5 言語で同時公開。',
-    summaryKo:
-      '5/20 ATxSummit에서 Josephine Teo가 NAIS 업데이트와 4개 National AI Missions(첨단 제조, 연결성, 금융, 의료)를 발표했습니다. 같은 날 NVIDIA Singapore AI Research Lab과 Punggol Digital District 다중 운영자 로봇 테스트베드도 공개되었습니다. 보도체 장문 기사를 5개 언어로 동시 공개합니다.',
-    links: [
-      {
-        href: '/national-ai-missions-2026/',
-        label: '阅读全文',
-        labelEn: 'Read the article',
-        labelJa: '記事を読む',
-        labelKo: '글 읽기',
-      },
-    ],
   },
   {
     date: '2026-05-26',
@@ -763,6 +517,29 @@ for (const u of MANUAL_UPDATES) {
         `Manual entries must be 'site' / 'fix' / 'longform' only. Data-driven types (video / policy / debate / ...) ` +
         `come from the derive layer (src/utils/derived-updates.ts) — set addedAt on the data record instead.`
     );
+  }
+}
+
+// A post publication is derived from src/data/post by publishDate. A manual
+// 'longform' row that links to a post on that same date would print the
+// piece twice on the homepage. Keep 'longform' for events that are not a
+// publication — a new column, a full rewrite dated later than publishDate.
+{
+  const postRows = new Map(
+    deriveUpdates()
+      .filter((u) => u.source === 'post' && u.href)
+      .map((u) => [u.href as string, u.date])
+  );
+  for (const u of MANUAL_UPDATES) {
+    if (u.type !== 'longform') continue;
+    for (const l of u.links ?? []) {
+      if (postRows.get(l.href) === u.date) {
+        throw new Error(
+          `[updates.ts] MANUAL_UPDATES longform entry (date=${u.date}, title="${u.title}") duplicates the post at ${l.href}: ` +
+            `post publications are derived from src/data/post/<slug>.md publishDate. Remove the manual entry.`
+        );
+      }
+    }
   }
 }
 
