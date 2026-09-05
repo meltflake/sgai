@@ -5,6 +5,7 @@ import type { Post } from '~/types';
 import { APP_BLOG } from 'astrowind:config';
 import { cleanSlug, trimSlash, BLOG_BASE, POST_PERMALINK_PATTERN, CATEGORY_BASE, TAG_BASE } from './permalinks';
 import { ROUTE_DEFAULT_LOCALE } from '~/i18n';
+import { rankRelatedPosts } from '~/utils/related-posts-score';
 
 const generatePermalink = async ({
   id,
@@ -302,39 +303,9 @@ export const getStaticPathsBlogTag = async ({ paginate }: { paginate: PaginateFu
 /** */
 export async function getRelatedPosts(originalPost: Post, maxResults: number = 4): Promise<Post[]> {
   // Constrain related posts to the same lang as the host post so EN posts
-  // never surface zh siblings (and vice versa).
+  // never surface zh siblings (and vice versa). Scoring lives in
+  // related-posts-score.ts (pure, unit-tested).
   const targetLang = originalPost.lang ?? 'zh';
   const allPosts = (await fetchPosts()).filter((p) => (p.lang ?? 'zh') === targetLang);
-  const originalTagsSet = new Set(originalPost.tags ? originalPost.tags.map((tag) => tag.slug) : []);
-
-  const postsWithScores = allPosts.reduce((acc: { post: Post; score: number }[], iteratedPost: Post) => {
-    if (iteratedPost.slug === originalPost.slug) return acc;
-
-    let score = 0;
-    if (iteratedPost.category && originalPost.category && iteratedPost.category.slug === originalPost.category.slug) {
-      score += 5;
-    }
-
-    if (iteratedPost.tags) {
-      iteratedPost.tags.forEach((tag) => {
-        if (originalTagsSet.has(tag.slug)) {
-          score += 1;
-        }
-      });
-    }
-
-    acc.push({ post: iteratedPost, score });
-    return acc;
-  }, []);
-
-  postsWithScores.sort((a, b) => b.score - a.score);
-
-  const selectedPosts: Post[] = [];
-  let i = 0;
-  while (selectedPosts.length < maxResults && i < postsWithScores.length) {
-    selectedPosts.push(postsWithScores[i].post);
-    i++;
-  }
-
-  return selectedPosts;
+  return rankRelatedPosts(originalPost, allPosts, maxResults);
 }
