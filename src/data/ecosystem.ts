@@ -3589,6 +3589,38 @@ Worth watching going forward: **when MAS will allow GenAI in direct customer-fac
         updated: '2026-08-01',
         addedAt: '2026-08-03',
       },
+      // i18n-allow-unpaired — auto-discovered stub; complete required fields on promotion
+      {
+        id: 'thailand-puts-49-data-centres-on-hold-over-resource-strain-community-impact',
+        name: '泰国暂停49个数据中心项目以应对资源压力与社区影响',
+        nameEn: 'Thailand puts 49 data centres on hold over resource strain, community impact',
+        nameJa: 'タイが資源圧力とコミュニティへの影響に対応するため49個のデータセンタープロジェクトを一時停止',
+        nameKo: '태국 49개 데이터 센터 프로젝트 일시 중단, 자원 압박과 지역사회 영향 대응',
+        description:
+          '泰国政府决定暂停49个数据中心项目的施工,以制定新的行业监管规程。财政部长埃克尼蒂·尼蒂坦普拉帕斯在首次数据中心监督委员会会议上宣布了这一决定,预计新规将在一个月内发布。暂停源于对数据中心高耗电和用水对社区影响的关切,特别是在曼谷等人口密集区域。',
+        descriptionEn:
+          "Thailand's government suspended construction of 49 data centre projects to develop new industry regulations. Finance Minister Ekniti Nitithanprapas announced the decision at the inaugural data centre supervision commission meeting, with new regulations expected within one month. The suspension reflects growing concerns about data centres' power and water consumption and their impact on communities, particularly in densely populated areas like Bangkok.",
+        descriptionJa:
+          'タイ政府は新しい業界規制規程を制定するため、49個のデータセンタープロジェクトの建設を一時停止することを決定しました。財務省（MOF）長官エクニティ・ニティタンプラパスは初回のデータセンター監督委員会会議でこの決定を発表しました。新規程は1ヶ月以内に発表される予定です。この一時停止は、データセンターの高い電力消費と用水がコミュニティに与える影響についての懸念に由来しています。特にバンコクなどの人口密集地域での懸念が大きいです。',
+        descriptionKo:
+          '태국 정부는 새로운 업계 규제 규정을 제정하기 위해 49개 데이터 센터 프로젝트의 건설을 일시 중단하기로 결정했습니다. 재무장관 에크니디·니디탄푸라파스는 첫 번째 데이터 센터 감독 위원회 회의에서 이 결정을 발표했으며, 새로운 규정이 한 달 이내에 발표될 것으로 예상됩니다. 일시 중단은 데이터 센터의 높은 전력 소비와 용수 사용이 지역사회에 미치는 영향에 대한 우려에서 비롯되었으며, 특히 방콕 등 인구 밀집 지역에서의 영향이 주요 원인입니다.',
+        url: 'https://www.businesstimes.com.sg/international/asean/thailand-puts-49-data-centres-hold-over-resource-strain-community-impact',
+        entityType: 'product',
+        status: 'active',
+        founded: '2026-09',
+        sources: [
+          // i18n-allow-unpaired — provenance for the pending-review stub above
+          {
+            label: 'Business Times Tech',
+            url: 'https://www.businesstimes.com.sg/international/asean/thailand-puts-49-data-centres-hold-over-resource-strain-community-impact',
+            date: '2026-09-04',
+          },
+        ],
+        updated: '2026-09-05',
+        _pendingReview: true,
+        discoveryNote:
+          'Auto-discovered via Business Times Tech; confidence=low; Article focuses on Thai government data centre regulation policy, not a Singapore company, research institute, programme, or ecosystem entity. While relevant to regional AI infrastructure governance, it does not describe a specific organization suitable for the Singapore AI ecosystem observatory catalog.',
+      },
     ],
   },
   {
@@ -4471,6 +4503,37 @@ A take: Aquarium is not AISG's flagship external product, but it is the engineer
         ],
         updated: '2026-05-02',
       },
+      // i18n-allow-unpaired — auto-discovered stub; complete required fields on promotion
+      {
+        id: 'china-15-years-behind-in-top-chipmaking-tools-says-asml-supplier',
+        name: '中国在顶级芯片制造工具上落后15年，ASML供应商称',
+        nameEn: 'China 15 years behind in top chipmaking tools, says ASML supplier',
+        nameJa: '中国、先進的なチップ製造ツール分野で15年遅れ、ASML供給業者が指摘',
+        nameKo: 'ASML 공급업체 주장: 중국, 최고급 칩 제조 도구에서 15년 뒤떨어져',
+        description:
+          '德国蔡司集团（Zeiss）半导体部门负责人弗兰克·罗姆德表示，中国在开发极紫外（EUV）光刻机方面至少需要15年，落后西方约15年。EUV光刻技术对制造先进AI芯片至关重要，是美国出口管制的重点。虽然中国在深紫外（DUV）光刻技术上取得进展，国内企业已能生产相关设备，但蔡司表示仍然保持领先地位。',
+        descriptionEn:
+          "Frank Rohmund, head of Zeiss Group's semiconductor division, states that China needs approximately 15 years to develop extreme ultraviolet (EUV) lithography machines, falling 15 years behind the West in this critical technology. EUV technology is essential for producing advanced AI chips and is a key target of US export restrictions. While China has made progress in deep ultraviolet (DUV) lithography with domestic companies now producing such equipment, Zeiss maintains it remains ahead. The article discusses the technological gap in chipmaking capabilities amid US efforts to restrict advanced semiconductor equipment sales to China.",
+        descriptionJa:
+          'ドイツのツァイス・グループ（Zeiss）の半導体部門責任者フランク・ロムド氏は、中国が極紫外線（EUV）露光装置の開発において少なくとも15年を要し、西洋に対して約15年遅れていると述べています。EUV露光技術は先進的なAIチップの製造に不可欠であり、米国の輸出管制の重点です。中国が深紫外線（DUV）露光技術において進展を達成し、国内企業がすでに関連機器を生産できるようになっていますが、ツァイスは依然としてリーディング地位を維持していると述べています。',
+        descriptionKo:
+          '독일 자이스 그룹(Zeiss) 반도체 부문 책임자 프랑크 롬드는 중국이 극자외선(EUV) 리소그래피 기계 개발에 최소 15년이 필요하며 서방 국가보다 약 15년 뒤떨어져 있다고 밝혔습니다. EUV 리소그래피 기술은 첨단 AI 칩 제조에 매우 중요하며 미국 수출 규제의 중점입니다. 중국이 심자외선(DUV) 리소그래피 기술에서 진전을 이루었고 국내 기업이 이미 관련 장비를 생산할 수 있지만, 자이스는 여전히 선도적 지위를 유지하고 있다고 밝혔습니다.',
+        url: 'https://www.businesstimes.com.sg/international/china-15-years-behind-top-chipmaking-tools-says-asml-supplier',
+        entityType: 'product',
+        status: 'active',
+        founded: '2026-09',
+        sources: [
+          // i18n-allow-unpaired — provenance for the pending-review stub above
+          {
+            label: 'Business Times Tech',
+            url: 'https://www.businesstimes.com.sg/international/china-15-years-behind-top-chipmaking-tools-says-asml-supplier',
+            date: '2026-09-03',
+          },
+        ],
+        updated: '2026-09-05',
+        _pendingReview: true,
+        discoveryNote: 'Auto-discovered via Business Times Tech; confidence=high',
+      },
     ],
   },
   {
@@ -5267,6 +5330,36 @@ A take: LADP solves AIAP's long-standing "applicant pool too small" problem — 
           },
         ],
         updated: '2026-05-02',
+      },
+      // i18n-allow-unpaired — auto-discovered stub; complete required fields on promotion
+      {
+        id: 'leveraging-generative-ai-in-project-management',
+        name: '在项目管理中应用生成式AI',
+        nameEn: 'Leveraging Generative AI in Project Management',
+        nameJa: 'プロジェクト管理における生成AIの応用',
+        nameKo: '프로젝트 관리에 생성형 AI 적용',
+        description:
+          'AI Singapore介绍了生成式AI在项目管理中的两大应用实例：自动化会议纪要总结和项目启动演示幻灯片生成。通过利用GPT-4等AI模型从会议录音和提案文档中提取关键信息，这些实现大幅减少了人工负担，改善了团队沟通和信息一致性。尽管自动化提升了效率，但组织强调了人工审核的必要性和敏感项目数据的数据保护措施的重要性。',
+        descriptionEn:
+          'AI Singapore demonstrates practical applications of generative AI in project management, focusing on two key use cases: automated meeting minutes summarization and automated generation of project kickoff slides. The implementation uses AI models like GPT-4 to extract key information from meetings and proposal documents, significantly reducing manual workload and improving team communication. While automation enhances efficiency and consistency, the organization emphasizes the continued importance of human oversight and robust data protection measures for sensitive project information.',
+        descriptionJa:
+          'AI Singaporeは、プロジェクト管理における生成AIの2つの主要な応用例を紹介しました。具体的には、会議記録の自動要約生成とプロジェクト立ち上げ時のプレゼンテーションスライド自動生成です。GPT-4などのAIモデルを活用して、会議音声記録と提案文書から重要情報を抽出することにより、これらの実装は人的負担を大幅に削減し、チームコミュニケーションと情報の一貫性を改善しました。ただし、自動化は効率性を向上させる一方で、組織は人による審査の必要性と機密プロジェクトデータの保護措置の重要性を強調しています。',
+        descriptionKo:
+          'AI Singapore는 프로젝트 관리에서 생성형 AI의 두 가지 주요 응용 사례를 소개했습니다. 자동화된 회의록 요약과 프로젝트 킥오프 프레젠테이션 슬라이드 생성입니다. GPT-4 같은 AI 모델을 활용해 회의 녹음과 제안 문서에서 핵심 정보를 추출함으로써, 이러한 구현들은 인력 부담을 크게 줄였고 팀 소통과 정보 일관성을 개선했습니다. 자동화가 효율성을 높였지만, 조직은 수동 검토의 필요성과 민감한 프로젝트 데이터에 대한 데이터 보호 조치의 중요성을 강조했습니다.',
+        url: 'https://aisingapore.org/leveraging-generative-ai-in-project-management/',
+        entityType: 'program',
+        status: 'active',
+        sources: [
+          // i18n-allow-unpaired — provenance for the pending-review stub above
+          {
+            label: 'AI Singapore',
+            url: 'https://aisingapore.org/leveraging-generative-ai-in-project-management/',
+            date: '2026-09-05',
+          },
+        ],
+        updated: '2026-09-05',
+        _pendingReview: true,
+        discoveryNote: 'Auto-discovered via AI Singapore; confidence=high',
       },
     ],
   },
