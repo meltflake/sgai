@@ -4,7 +4,8 @@
 // data record (videos, policies, debates, people, speeches, tracker
 // dimensions, benchmarking cases + report editions, ecosystem entities,
 // levers, startups, legal-ai items, reg-lookahead, talent programmes,
-// ai-capital events).
+// ai-capital events), plus one row per longform post (src/data/post/*.md,
+// keyed on publishDate — a post has no addedAt; its publication IS the event).
 //
 // Why this exists: src/data/updates.ts used to be a manually maintained
 // ledger that drifted from the underlying data files whenever someone
@@ -50,6 +51,10 @@ import { consultations as regConsultations, bills as regBills } from '~/data/reg
 import type { ConsultationItem, BillItem } from '~/data/reg-lookahead';
 import { programmes as talentProgrammes, type TalentProgramme } from '~/data/talent';
 import { capitalRecords, type CapitalRecord } from '~/data/ai-capital';
+import { readdirSync, readFileSync, existsSync } from 'node:fs';
+import { resolve, join } from 'node:path';
+import yaml from 'js-yaml';
+
 import { legalItemSlug } from '~/utils/entity-pages';
 import { shiftIsoDate } from '~/utils/date-format';
 import { t } from '~/i18n';
@@ -76,7 +81,8 @@ export type DataSource =
   | 'startup'
   | 'legal'
   | 'talent'
-  | 'capital';
+  | 'capital'
+  | 'post';
 
 export interface Harvested {
   type: UpdateType;
@@ -500,6 +506,79 @@ function harvestAiCapital(rs: CapitalRecord[]): Harvested[] {
   return out;
 }
 
+// ── Longform posts ──────────────────────────────────────────────────────
+
+interface PostFrontmatter {
+  publishDate?: unknown;
+  title?: unknown;
+  excerpt?: unknown;
+  draft?: unknown;
+}
+
+/** YAML front matter of a markdown file, or undefined when the file has none. */
+function readFrontmatter(path: string): PostFrontmatter | undefined {
+  if (!existsSync(path)) return undefined;
+  const m = readFileSync(path, 'utf8').match(/^---\r?\n([\s\S]*?)\r?\n---/);
+  if (!m) return undefined;
+  const fm = yaml.load(m[1]);
+  return fm && typeof fm === 'object' ? (fm as PostFrontmatter) : undefined;
+}
+
+/** `2026-09-05`, `'2026-09-05'` and `2026-09-05T00:00:00.000Z` all → '2026-09-05'. */
+function isoDay(v: unknown): string | undefined {
+  if (v instanceof Date) return Number.isNaN(v.valueOf()) ? undefined : v.toISOString().slice(0, 10);
+  if (typeof v === 'string') {
+    const m = v.match(/^(\d{4}-\d{2}-\d{2})/);
+    return m ? m[1] : undefined;
+  }
+  return undefined;
+}
+
+function str(v: unknown): string | undefined {
+  return typeof v === 'string' && v.trim() ? v : undefined;
+}
+
+/**
+ * One row per zh longform post under `dir` (default: src/data/post). The
+ * en / ja / ko sibling files supply the per-lang title and excerpt; zh-tw is
+ * derived from zh at render time like every other row. Drafts and posts
+ * without a publishDate are skipped. Exported with the directory as a
+ * parameter so the unit test can point it at a fixture.
+ */
+export function harvestPosts(dir: string = resolve(process.cwd(), 'src/data/post')): Harvested[] {
+  if (!existsSync(dir)) return [];
+  const out: Harvested[] = [];
+  for (const file of readdirSync(dir).sort()) {
+    if (!/\.mdx?$/.test(file)) continue;
+    const slug = file.replace(/\.mdx?$/, '');
+    const zh = readFrontmatter(join(dir, file));
+    if (!zh || zh.draft === true) continue;
+    const publishDate = isoDay(zh.publishDate);
+    const zhTitle = str(zh.title);
+    if (!publishDate || !zhTitle) continue;
+    const en = readFrontmatter(join(dir, 'en', file));
+    const ja = readFrontmatter(join(dir, 'ja', file));
+    const ko = readFrontmatter(join(dir, 'ko', file));
+    const enTitle = str(en?.title);
+    out.push({
+      type: 'longform',
+      source: 'post',
+      id: slug,
+      addedAt: publishDate,
+      zhTitle,
+      enTitle: pickEn(zhTitle, enTitle),
+      jaTitle: pickJa(zhTitle, str(ja?.title), enTitle),
+      koTitle: pickKo(zhTitle, str(ko?.title), enTitle),
+      zhSummary: str(zh.excerpt),
+      enSummary: str(en?.excerpt),
+      jaSummary: str(ja?.excerpt),
+      koSummary: str(ko?.excerpt),
+      href: `/${slug}/`,
+    });
+  }
+  return out;
+}
+
 // ── Public entry ────────────────────────────────────────────────────────
 
 /**
@@ -510,8 +589,10 @@ function harvestAiCapital(rs: CapitalRecord[]): Harvested[] {
  *
  * Records without addedAt are skipped (pre-rule historical data).
  * Pending-review ecosystem entries are skipped.
- * Manual editorial entries (site / fix / longform) are NOT produced here —
- * they come from the manual UPDATES array in src/data/updates.ts.
+ * Longform posts are harvested from src/data/post by publishDate.
+ * Manual editorial entries (site / fix, and longform events that are not a
+ * post publication) are NOT produced here — they come from the manual
+ * UPDATES array in src/data/updates.ts.
  */
 export function harvestAll(): Harvested[] {
   return [
@@ -530,6 +611,7 @@ export function harvestAll(): Harvested[] {
     ...harvestRegLookahead(regConsultations, regBills),
     ...harvestTalent(talentProgrammes),
     ...harvestAiCapital(capitalRecords),
+    ...harvestPosts(),
   ];
 }
 

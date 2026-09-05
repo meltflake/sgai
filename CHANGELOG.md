@@ -6,6 +6,7 @@
 
 ## Unreleased
 
+- 长文发布自动进「最近更新」/ `/updates/` / RSS / `records.json`：派生层新增 `harvestPosts()`，按 `src/data/post/*.md` 的 `publishDate` 出一行（source `post`、type `longform`，en/ja/ko 标题摘要取各自 sibling 文件）。删掉 `updates.ts` 里 10 条与 post 发布重复的手写 `longform` 条目；手动 `longform` 若指向某篇 post 且日期等于其 publishDate，import 时报错。`openapi.json` 的 `source` 枚举加 `post`。
 - 首页焦点头条改为自动跟随最新长文：`frontpage.ts` 的 `FEATURED` 设为 null，发长文时不再手动改指针；只在 dated story 需要压过最新长文时才 pin。
 
 ### 修复 AI 问答两处问题
