@@ -8,6 +8,15 @@
 
 - 首页焦点头条改为自动跟随最新长文：`frontpage.ts` 的 `FEATURED` 设为 null，发长文时不再手动改指针；只在 dated story 需要压过最新长文时才 pin。
 
+### 修复 AI 问答两处问题
+
+- `/api/suggest` 回流问题进 AI 评审前先过文字系统检查（新增 `functions/_lib/lang-script.ts` + 单测）：en 不得含汉字/假名/谚文，zh/zh-tw 须含汉字，ja 须含假名，ko 须含谚文。起因：08-19 有人在英文页用中文提问，评审没挡住，英文页推荐栏挂了两周中文。
+- 系统提示新增 rule 9：访客要“全部名单 / 下载 / CSV / API”时指向 `/agent/` 与 `/data/*.json`，不再从摘要里硬凑清单。起因：08-17 有人问 “where can i download all 548 names”。
+
+### AI 问答上线三周使用报告
+
+- 新增 [docs/20260905-ask-ai-usage-report.md](docs/20260905-ask-ai-usage-report.md)：从 D1 `qa_turns` 统计 2026-08-14 至 09-05 的提问量、语言、会话深度、成本，列出自打问题的四类需求与五个待修问题（含 `/api/suggest?lang=en` 回流出中文问题的过滤漏洞）。
+
 ---
 
 ## 0.27.0 — 2026-09-05
