@@ -21,6 +21,7 @@ import { formatWithPrettier } from '../../lib/prettier-format.ts';
 import { ensureClaudeAuthed } from '../../lib/llm.ts';
 import { loadState, saveState } from '../../lib/state.ts';
 import { findLeverI18nIssues, formatLeverItem, injectIntoAutoDiscoveredGroup } from './emit.ts';
+import { mergeRejectedUrls } from '../../lib/rejected-urls.ts';
 
 const TARGET_FILE = resolve('src/data/levers.ts');
 const CACHE_DIR = resolve('scripts/refresh/levers/data/summaries');
@@ -113,6 +114,9 @@ async function main(): Promise<void> {
 
   const existingUrls = readExistingUrls();
   process.stdout.write(`  existing levers URLs: ${existingUrls.size}\n`);
+  // Reviewer-rejected candidates (closed auto-PRs) must not come back — see lib/rejected-urls.ts.
+  const rejectedCount = mergeRejectedUrls('levers', existingUrls);
+  if (rejectedCount > 0) process.stdout.write(`  rejected levers URLs (skipped): ${rejectedCount}\n`);
 
   const candidates = await scanAll(existingUrls, flags.limit);
   process.stdout.write(`  candidates: ${candidates.length}\n`);
