@@ -412,11 +412,34 @@ export function repairJsonInnerQuotes(raw: string): string {
   const isWs = (c: string): boolean => c === ' ' || c === '\t' || c === '\n' || c === '\r';
   let out = '';
   let inString = false;
+  // Container stack + key/value role so that `":` only terminates a string
+  // when that string is an object KEY. Inside a value, a quote followed by a
+  // colon is prose ("trust-based services": cybersecurity) and must be
+  // escaped — the previous flat rule closed the string there.
+  const stack: Array<'{' | '['> = [];
+  let expectKey = false;
+  let currentIsKey = false;
   for (let i = 0; i < raw.length; i += 1) {
     const ch = raw[i];
     if (!inString) {
       out += ch;
-      if (ch === '"') inString = true;
+      if (ch === '{') {
+        stack.push('{');
+        expectKey = true;
+      } else if (ch === '[') {
+        stack.push('[');
+        expectKey = false;
+      } else if (ch === '}' || ch === ']') {
+        stack.pop();
+        expectKey = false;
+      } else if (ch === ':') {
+        expectKey = false;
+      } else if (ch === ',') {
+        expectKey = stack[stack.length - 1] === '{';
+      } else if (ch === '"') {
+        inString = true;
+        currentIsKey = expectKey;
+      }
       continue;
     }
     if (ch === '\\') {
@@ -437,7 +460,9 @@ export function repairJsonInnerQuotes(raw: string): string {
     while (j < raw.length && isWs(raw[j])) j += 1;
     const next = j < raw.length ? raw[j] : '';
     let structural: boolean;
-    if (next === '' || next === ']' || next === '}' || next === ':') {
+    if (currentIsKey) {
+      structural = next === ':';
+    } else if (next === '' || next === ']' || next === '}') {
       structural = true;
     } else if (next === ',') {
       let k = j + 1;
@@ -498,7 +523,13 @@ export async function callLlmJson<T = unknown>(userPrompt: string, options: LlmC
     }
   }
   const last = attempts[attempts.length - 1];
+  let repairError = '';
+  try {
+    JSON.parse(repairJsonInnerQuotes(last.raw));
+  } catch (error) {
+    repairError = ` (after inner-quote repair: ${(error as Error).message})`;
+  }
   throw new Error(
-    `callLlmJson: model output is not valid JSON after 2 attempts: ${last.error.message}\nraw: ${last.raw.slice(0, 400)}`
+    `callLlmJson: model output is not valid JSON after 2 attempts: ${last.error.message}${repairError}\nraw: ${last.raw.slice(0, 400)}`
   );
 }
