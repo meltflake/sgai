@@ -325,6 +325,31 @@ test('repairJsonInnerQuotes: preserves already-escaped inner quotes', () => {
   assert.deepEqual(obj.paragraphs, ['he said "hi" loudly']);
 });
 
+test('repairJsonInnerQuotes: inner quoted phrase followed by a colon is not an object key', () => {
+  // zh→en renders “基于信任的高价值服务”：网络安全 as "trust-based services": cybersecurity.
+  // The old rule treated any `":` as a key terminator and closed the string early
+  // (singapore-esr-2026-explained, 2026-09-06: every batch size down to 1 failed).
+  const broken = '{"paragraphs":["- Expand "trust-based high-value services": cybersecurity, AI governance, audit"]}';
+  const obj = JSON.parse(repairJsonInnerQuotes(broken)) as { paragraphs: string[] };
+  assert.equal(obj.paragraphs.length, 1);
+  assert.equal(obj.paragraphs[0], '- Expand "trust-based high-value services": cybersecurity, AI governance, audit');
+});
+
+test('repairJsonInnerQuotes: still recognises real object keys after a value with inner quote + colon', () => {
+  const broken = '{"tldr":["He called it "plan B": a fallback"],"title":"Budget "2026": the AI year"}';
+  const obj = JSON.parse(repairJsonInnerQuotes(broken)) as { tldr: string[]; title: string };
+  assert.equal(obj.tldr[0], 'He called it "plan B": a fallback');
+  assert.equal(obj.title, 'Budget "2026": the AI year');
+});
+
+test('repairJsonInnerQuotes: nested objects keep key/value roles straight', () => {
+  const broken = '{"a":{"b":"say "hi": now","c":[{"d":"x "y": z"}]},"e":"done"}';
+  const obj = JSON.parse(repairJsonInnerQuotes(broken)) as { a: { b: string; c: { d: string }[] }; e: string };
+  assert.equal(obj.a.b, 'say "hi": now');
+  assert.equal(obj.a.c[0].d, 'x "y": z');
+  assert.equal(obj.e, 'done');
+});
+
 test('callLlmJson: recovers from unescaped inner quotes in model output', async () => {
   await withFakeClaude(
     `#!/bin/bash
