@@ -22,5 +22,17 @@
     "reason": "Foreign news event (China/ASML), no Singapore nexus, and not an entity.",
     "decidedAt": "2026-09-05",
     "ref": "#272"
+  },
+  {
+    "url": "https://www.businesstimes.com.sg/international/global-data-centre-spending-reach-us31-6-trillion-2050-ai-boom-pwc",
+    "reason": "Market-forecast news story (PwC), not an ecosystem entity and no Singapore actor.",
+    "decidedAt": "2026-09-06",
+    "ref": "#285"
+  },
+  {
+    "url": "https://www.businesstimes.com.sg/startups-tech/technology/apple-accuses-openai-destroying-evidence-exchange-barbs",
+    "reason": "US litigation news, unrelated to Singapore's AI ecosystem; the pipeline itself scored it low confidence.",
+    "decidedAt": "2026-09-06",
+    "ref": "#285"
   }
 ]

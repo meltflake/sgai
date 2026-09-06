@@ -27,6 +27,7 @@ import { ensureClaudeAuthed } from '../../lib/llm.ts';
 import { scan, readExistingPolicyUrls } from './scan.ts';
 import { enrich } from './enrich.ts';
 import { emit } from './emit.ts';
+import { mergeRejectedUrls } from '../../lib/rejected-urls.ts';
 
 interface CliFlags {
   dryRun: boolean;
@@ -70,6 +71,9 @@ async function main(): Promise<void> {
   // 1. Existing URLs (dedup set).
   const existingUrls = readExistingPolicyUrls();
   process.stdout.write(`  existing policies sourceUrls: ${existingUrls.size}\n`);
+  // Reviewer-rejected candidates (closed auto-PRs) must not come back — see lib/rejected-urls.ts.
+  const rejectedCount = mergeRejectedUrls('policies', existingUrls);
+  if (rejectedCount > 0) process.stdout.write(`  rejected policies URLs (skipped): ${rejectedCount}\n`);
 
   // 2. State.
   const state = loadState();
