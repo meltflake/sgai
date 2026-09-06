@@ -2998,9 +2998,11 @@ export const mddiSpeeches: MddiSpeech[] = [
     ministry: 'PMO',
   },
   {
-    titleEn: 'Remarks by Mr Chia Der Jiun, Managing Director, MAS, at the MAS Annual Report 2025/2026 Media Conference on 28 July 2026',
-    title: 'MAS总经理谢德俊先生在MAS 2025/2026年度报告媒体发布会上的讲话（2026年7月28日）',
-    titleJa: '2026年7月28日 MAS Annual Report 2025/2026 Media Conference での MAS マネージング・ディレクター チア・ダー・ジウン氏による発言',
+    titleEn:
+      'Remarks by Mr Chia Der Jiun, Managing Director, MAS, at the MAS Annual Report 2025/2026 Media Conference on 28 July 2026',
+    title: 'MAS 总裁谢德俊先生在MAS 2025/2026年度报告媒体发布会上的讲话（2026年7月28日）',
+    titleJa:
+      '2026年7月28日 MAS Annual Report 2025/2026 Media Conference での MAS マネージング・ディレクター チア・ダー・ジウン氏による発言',
     titleKo: 'Chia Der Jiun MAS 최고경영자의 2026년 7월 28일 MAS 연례보고서 2025/2026 미디어 컨퍼런스 발언',
     speaker: 'Chia Der Jiun',
     speakerTitle: '常务董事，新加坡金融管理局',
