@@ -10,6 +10,12 @@
 
 - 新增 [singapore-esr-2026-explained](src/data/post/singapore-esr-2026-explained.md)：拆解 2026 年 6 月发布的《经济战略检讨》最终报告，8 个方向、32 条建议，逐个方向列出建议和政府已宣布的对应动作，附 12 个关键数字、对创业者和上班族直接相关的条目表、五个委员会名单。zh 原文自 wlj.me 读书笔记改写为站内口吻；en / ja / ko 由 translate-post.ts 翻译，zh-tw 由 derive-zh-tw-posts.ts 派生。关联 NAIS 更新 2026 政策、8 月 5 日工人党动议两场辩论、杠杆 3 / 4。
 
+### 修复长文页底部“相关文章”
+
+- 卡片去掉封面图位。站内长文都没有 `image` 字段，模板里固定高度的图片框在每张卡片上都渲染成一块空色块。改成纯文字卡：日期、分类、标题、四行摘要。
+- 标题“Related Posts”和“View All Posts”原来是英文硬编码，zh / ja / ko / zh-tw 页面全部显示英文。改走 `t(lang, …)`，新增 `relatedPostsTitle` / `relatedPostsViewAll` 四语字典；卡片链接和“查看全部”链接改用 `localizedHref`。
+- 排序改用 frontmatter 里的关系字段（`relatedLeverNumbers` / `relatedPolicyIds` / `relatedDebateIds` / `relatedPersonIds` / `relatedTimelineYears`）打分，同分按发布日期倒序。原来只看分类和标签，而几乎每篇都带“观察”标签，等于随机排序。打分逻辑独立成 [src/utils/related-posts-score.ts](src/utils/related-posts-score.ts) 并带单测。
+
 - 长文发布自动进「最近更新」/ `/updates/` / RSS / `records.json`：派生层新增 `harvestPosts()`，按 `src/data/post/*.md` 的 `publishDate` 出一行（source `post`、type `longform`，en/ja/ko 标题摘要取各自 sibling 文件）。删掉 `updates.ts` 里 10 条与 post 发布重复的手写 `longform` 条目；手动 `longform` 若指向某篇 post 且日期等于其 publishDate，import 时报错。`openapi.json` 的 `source` 枚举加 `post`。
 - 首页焦点头条改为自动跟随最新长文：`frontpage.ts` 的 `FEATURED` 设为 null，发长文时不再手动改指针；只在 dated story 需要压过最新长文时才 pin。
 
