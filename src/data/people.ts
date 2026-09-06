@@ -2984,22 +2984,22 @@ export const people: Person[] = [
     nameKo: 'Chia Der Jiun',
     nameJa: '謝德俊',
     aliases: ['Mr Chia Der Jiun', 'Der Jiun Chia'],
-    titleEn: 'Managing Director, MAS (until 2026-05)',
-    title: 'MAS 总裁（任期至 2026-05）',
-    titleKo: 'MAS 총재(임기 2026-05까지)',
-    titleJa: 'MAS 総裁（2026 年 5 月まで）',
+    titleEn: 'Managing Director, MAS (term to 2028-05)',
+    title: 'MAS 总裁（任期至 2028-05）',
+    titleKo: 'MAS 총재(임기 2028-05까지)',
+    titleJa: 'MAS 総裁（2028 年 5 月まで）',
     category: 'government',
     roles: ['civil-servant', 'executive'],
     affiliations: ['MAS'],
     party: null,
     summary:
-      '2024 年 1 月接任 MAS 总裁，任期至 2026-05-31。前 MAS 18 年任职、IMF 东南亚执行董事，主导 MAS 在 AI 和金融科技方向的对外定调。',
+      '2024 年 1 月接任 MAS 总裁，2026 年 5 月获续任两年至 2028-05-31。前 MAS 18 年任职、IMF 东南亚执行董事，主导 MAS 在 AI 和金融科技方向的对外定调。',
     summaryKo:
-      '2024년 1월 MAS 총재에 취임하여 임기는 2026-05-31까지. 전 MAS에서 18년 근무, IMF 동남아 이사로서 MAS의 AI 및 금융과학기술 방향의 대외 기조 설정을 주도했습니다.',
+      '2024년 1월 MAS 총재에 취임했으며, 2026년 5월 2년 연임되어 임기는 2028-05-31까지입니다. 전 MAS에서 18년 근무, IMF 동남아 이사로서 MAS의 AI 및 금융과학기술 방향의 대외 기조 설정을 주도했습니다.',
     summaryJa:
-      '2024 年 1 月に MAS 総裁に就任、任期は 2026 年 5 月 31 日まで。前 MAS 18 年勤務、IMF 東南アジア執行理事。MAS による AI およびフィンテックの対外発信を主導しています。',
+      '2024 年 1 月に MAS 総裁に就任し、2026 年 5 月に 2 年間再任され任期は 2028 年 5 月 31 日まで。前 MAS 18 年勤務、IMF 東南アジア執行理事。MAS による AI およびフィンテックの対外発信を主導しています。',
     summaryEn:
-      "Managing Director of MAS since 1 January 2024 (term ends 31 May 2026). 18 years at MAS prior; former IMF Executive Director for Southeast Asia. Sets MAS's external posture on AI and FinTech.",
+      "Managing Director of MAS since 1 January 2024; re-appointed in May 2026 for a further two years to 31 May 2028. 18 years at MAS prior; former IMF Executive Director for Southeast Asia. Sets MAS's external posture on AI and FinTech.",
     channels: [
       {
         platform: 'linkedin',
