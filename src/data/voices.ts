@@ -2997,4 +2997,25 @@ export const mddiSpeeches: MddiSpeech[] = [
     addedAt: '2026-08-31',
     ministry: 'PMO',
   },
+  {
+    titleEn:
+      'Remarks by Mr Chia Der Jiun, Managing Director, MAS, at the MAS Annual Report 2025/2026 Media Conference on 28 July 2026',
+    title: 'MAS 总裁谢德俊先生在MAS 2025/2026年度报告媒体发布会上的讲话（2026年7月28日）',
+    titleJa:
+      '2026年7月28日 MAS Annual Report 2025/2026 Media Conference での MAS マネージング・ディレクター チア・ダー・ジウン氏による発言',
+    titleKo: 'Chia Der Jiun MAS 최고경영자의 2026년 7월 28일 MAS 연례보고서 2025/2026 미디어 컨퍼런스 발언',
+    speaker: 'Chia Der Jiun',
+    speakerTitle: '常务董事，新加坡金融管理局',
+    speakerTitleJa: 'Monetary Authority of Singapore マネージング・ディレクター',
+    speakerTitleEn: 'Managing Director, Monetary Authority of Singapore',
+    speakerTitleKo: '싱가포르 통화청 관리 이사',
+    date: '2026-07-28',
+    url: 'https://www.mas.gov.sg/news/speeches/2026/md-remarks-for-mas-ar-2025-2026/',
+    eventEn: 'MAS Annual Report 2025/2026 Media Conference on 28 July',
+    event: 'MAS 2025/2026年报媒体发布会（7月28日）',
+    eventJa: 'MAS年次報告書2025/2026 メディア会見 7月28日',
+    eventKo: 'MAS 2025/2026 연간 보고서 미디어 컨퍼런스 (7월 28일)',
+    addedAt: '2026-09-06',
+    ministry: 'MAS',
+  },
 ];
