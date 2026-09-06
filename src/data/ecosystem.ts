@@ -734,6 +734,38 @@ But AISG's bottlenecks are real: **talent retention is weak** (apprentices leave
         ],
         updated: '2026-06-10',
       },
+      // i18n-allow-unpaired — auto-discovered stub; complete required fields on promotion
+      {
+        id: 'global-data-centre-spending-to-reach-us316-trillion-by-2050-on-ai-boom-pwc',
+        name: '普华永道：全球数据中心支出到2050年将达31.6万亿美元（AI热潮驱动）',
+        nameEn: 'Global data centre spending to reach US$31.6 trillion by 2050 on AI boom: PwC',
+        nameJa:
+          'プライスウォーターハウスクーパース：世界のデータセンター支出が2050年までに31.6兆ドルに達する見込み（AI熱潮が駆動）',
+        nameKo: 'PwC: 전 세계 데이터 센터 지출이 2050년까지 31.6조 달러에 도달할 것으로 예상(AI 열풍이 견인)',
+        description:
+          '普华永道预测全球数据中心支出在2050年前将达到31.6万亿美元（若AI采纳加速可达50万亿美元），超过整个美国GDP，远超铁路、互联网等历史性基础设施投资。年度支出将从2026年的8000亿美元增长到2050年的1.8万亿美元，美国占近一半（15.1万亿美元），亚太地区占8.2万亿美元。硬件成本（特别是英伟达芯片）将主导投资周期，且该周期每4至6年重置一次。电力供应、数据主权和芯片供应链是决定各地区获得投资的关键因素，2026年初本地反对已导致75个项目（总价值1300亿美元）被阻止或延迟。',
+        descriptionEn:
+          'PricewaterhouseCoopers projects global data center spending will reach US$31.6 trillion through 2050 (potentially US$50 trillion if AI adoption accelerates), surpassing the entire US GDP and dwarfing historical infrastructure projects like railways and the internet. Annual spending will grow from US$800 billion in 2026 to US$1.8 trillion by 2050, with the US capturing nearly half (US$15.1 trillion) and Asia-Pacific accounting for US$8.2 trillion. Hardware costs, particularly Nvidia chips, will dominate the investment cycle, which resets every 4-6 years unlike traditional capital expenditures. Power availability, data sovereignty, and semiconductor supply chains are critical factors determining regional capture of this investment, as local opposition has already delayed or blocked 75 projects worth US$130 billion in early 2026.',
+        descriptionJa:
+          'プライスウォーターハウスクーパースは、AI採用が加速した場合に50兆ドルに達する可能性がある、世界的なデータセンター支出が2050年までに31.6兆ドルに達すると予測しています。これは米国GDP全体を超え、鉄道やインターネットなどの歴史的なインフラ投資をはるかに超えています。年間支出は2026年の8000億ドルから2050年の1.8兆ドルに増加する見込みです。米国はほぼ半分（15.1兆ドル）を占め、アジア太平洋地域は8.2兆ドルを占めます。ハードウェアコスト（特にエヌビディアチップ）が投資サイクルを支配し、このサイクルは4～6年ごとにリセットされます。電力供給、データ主権、およびチップサプライチェーンは、各地域が投資を獲得するかどうかを決定する重要な要因であり、2026年初めの地元の反対により、75個のプロジェクト（総価値1300億ドル）がすでに阻止または延期されています。',
+        descriptionKo:
+          'PwC는 2050년까지 전 세계 데이터 센터 지출이 31.6조 달러에 도달할 것으로 예상합니다(AI 도입이 가속화될 경우 50조 달러에 도달할 수 있음). 이는 미국 전체 GDP를 초과하며, 철도, 인터넷 등 역사적 기반시설 투자를 훨씬 능가합니다. 연간 지출은 2026년의 8,000억 달러에서 2050년의 1.8조 달러로 증가할 것이며, 미국이 약 절반(15.1조 달러)을 차지하고, 아시아태평양 지역이 8.2조 달러를 차지합니다. 하드웨어 비용(특히 NVIDIA 칩)이 투자 사이클을 주도할 것이며, 이 사이클은 4~6년마다 리셋됩니다. 전력 공급, 데이터 주권, 칩 공급망이 각 지역의 투자 유치를 결정하는 핵심 요소이며, 2026년 초 현지 반발로 이미 75개 프로젝트(총 규모 1,300억 달러)가 차단되거나 지연되었습니다.',
+        url: 'https://www.businesstimes.com.sg/international/global-data-centre-spending-reach-us31-6-trillion-2050-ai-boom-pwc',
+        entityType: 'product',
+        status: 'active',
+        founded: '2026-09',
+        sources: [
+          // i18n-allow-unpaired — provenance for the pending-review stub above
+          {
+            label: 'Business Times Tech',
+            url: 'https://www.businesstimes.com.sg/international/global-data-centre-spending-reach-us31-6-trillion-2050-ai-boom-pwc',
+            date: '2026-09-02',
+          },
+        ],
+        updated: '2026-09-06',
+        _pendingReview: true,
+        discoveryNote: 'Auto-discovered via Business Times Tech; confidence=high',
+      },
     ],
   },
   {
@@ -3588,6 +3620,38 @@ Worth watching going forward: **when MAS will allow GenAI in direct customer-fac
         ],
         updated: '2026-08-01',
         addedAt: '2026-08-03',
+      },
+      // i18n-allow-unpaired — auto-discovered stub; complete required fields on promotion
+      {
+        id: 'apple-accuses-openai-of-destroying-evidence-in-exchange-of-barbs',
+        name: '苹果指控OpenAI销毁证据 双方交互指责',
+        nameEn: 'Apple accuses OpenAI of destroying evidence in exchange of barbs',
+        nameJa: 'アップルがOpenAIの証拠破棄を告発、双方が相互に非難',
+        nameKo: 'Apple, OpenAI의 증거 파괴 혐의 제기 양측 상호 비난',
+        description:
+          '苹果与OpenAI的商业纠纷涉及前iPhone工程师刘常违规使用机密苹果电路图。苹果声称OpenAI正在销毁关键证据，但OpenAI反驳称这是苹果"自作自受"的局面，指责苹果的数据安全和员工离职管理不当。两家公司在贸易秘密盗窃案中持续交锋。',
+        descriptionEn:
+          "Apple filed court documents accusing OpenAI of destroying evidence in an ongoing trade secrets lawsuit, claiming that former iPhone engineer Chang Liu downloaded confidential Apple circuit schematics and used them at OpenAI. OpenAI countered that the dispute stems from Apple's poor data security practices and argued that the company is unfairly restricting employee mobility. The case is scheduled for hearing on October 1.",
+        descriptionJa:
+          'アップルとOpenAIの商業紛争は、元iPhone技術者のルー・チャンが機密のアップル回路図を不正使用したことに関係しています。アップルはOpenAIが重要な証拠を破棄していると主張していますが、OpenAIはこれはアップルの「自業自得」の状況だと反論し、アップルのデータセキュリティと従業員離職管理の不備を非難しています。両社は営業秘密窃盗事件で継続的に対立しています。',
+        descriptionKo:
+          'Apple과 OpenAI 간의 상업 분쟁은 전직 iPhone 엔지니어 Liu Chang이 기밀 Apple 회로도를 무단으로 사용한 것과 관련이 있습니다. Apple은 OpenAI가 핵심 증거를 파괴하고 있다고 주장하지만, OpenAI는 이것이 Apple이 스스로 가져온 상황이라고 반박하며 Apple의 데이터 보안 및 직원 이직 관리가 부실하다고 지적합니다. 두 회사는 거래 비밀 도용 사건에서 계속해서 대립하고 있습니다.',
+        url: 'https://www.businesstimes.com.sg/startups-tech/technology/apple-accuses-openai-destroying-evidence-exchange-barbs',
+        entityType: 'product',
+        status: 'active',
+        founded: '2026-09',
+        sources: [
+          // i18n-allow-unpaired — provenance for the pending-review stub above
+          {
+            label: 'Business Times Tech',
+            url: 'https://www.businesstimes.com.sg/startups-tech/technology/apple-accuses-openai-destroying-evidence-exchange-barbs',
+            date: '2026-09-01',
+          },
+        ],
+        updated: '2026-09-06',
+        _pendingReview: true,
+        discoveryNote:
+          "Auto-discovered via Business Times Tech; confidence=low; This article documents a legal dispute between US-based companies (Apple and OpenAI) and does not address Singapore's AI ecosystem, local institutions, or regional AI development initiatives. While published in a Singapore business outlet, the content is not relevant to an observatory focused on Singapore's AI research and innovation landscape.",
       },
     ],
   },
