@@ -1,59 +1,30 @@
 ---
+// Text-only card for the related-posts grid. Posts on this site carry no
+// cover image (see scripts/generate-og-images.ts), so the template's
+// fixed-height image box rendered as an empty grey block on every card.
 import { APP_BLOG } from 'astrowind:config';
 import type { Post } from '~/types';
 
-import Image from '~/components/common/Image.astro';
-
-import { findImage } from '~/utils/images';
 import { getPermalink } from '~/utils/permalinks';
+import { getFormattedDate } from '~/utils/utils';
+import { getLangFromPath, localizedHref } from '~/i18n';
 
 export interface Props {
   post: Post;
 }
 
 const { post } = Astro.props;
-const image = await findImage(post.image);
-
-const link = APP_BLOG?.post?.isEnabled ? getPermalink(post.permalink, 'post') : '';
+const lang = getLangFromPath(new URL(Astro.url).pathname);
+const link = APP_BLOG?.post?.isEnabled ? localizedHref(getPermalink(post.permalink, 'post'), lang) : '';
 ---
 
 <article
-  class="mb-6 transition intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade"
+  class="mb-6 flex flex-col h-full rounded border border-gray-200 dark:border-slate-700 p-5 transition intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade"
 >
-  <div class="relative md:h-64 bg-gray-400 dark:bg-slate-700 rounded shadow-lg mb-6">
-    {
-      image &&
-        (link ? (
-          <a href={link}>
-            <Image
-              src={image}
-              class="w-full md:h-full rounded shadow-lg bg-gray-400 dark:bg-slate-700"
-              widths={[400, 900]}
-              width={400}
-              sizes="(max-width: 900px) 400px, 900px"
-              alt={post.title}
-              aspectRatio="16:9"
-              layout="cover"
-              loading="lazy"
-              decoding="async"
-            />
-          </a>
-        ) : (
-          <Image
-            src={image}
-            class="w-full md:h-full rounded shadow-lg bg-gray-400 dark:bg-slate-700"
-            widths={[400, 900]}
-            width={400}
-            sizes="(max-width: 900px) 400px, 900px"
-            alt={post.title}
-            aspectRatio="16:9"
-            layout="cover"
-            loading="lazy"
-            decoding="async"
-          />
-        ))
-    }
-  </div>
+  <p class="text-sm text-muted dark:text-slate-400 mb-2">
+    <time datetime={post.publishDate.toISOString()}>{getFormattedDate(post.publishDate, lang)}</time>
+    {post.category && <span> · {post.category.title}</span>}
+  </p>
 
   <h3 class="t-h3 mb-2 dark:text-slate-300">
     {
@@ -67,5 +38,5 @@ const link = APP_BLOG?.post?.isEnabled ? getPermalink(post.permalink, 'post') : 
     }
   </h3>
 
-  <p class="text-muted dark:text-slate-400 text-lg">{post.excerpt}</p>
+  <p class="text-muted dark:text-slate-400 line-clamp-4">{post.excerpt}</p>
 </article>

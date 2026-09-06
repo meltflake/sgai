@@ -357,6 +357,8 @@ export const zh = {
   navBackToBlog: '返回观察',
   postPrevOlder: '← 上一篇（更早）',
   postNextNewer: '下一篇（更新） →',
+  relatedPostsTitle: '相关文章',
+  relatedPostsViewAll: '查看全部文章',
   footerMaintainedBy: '由 {handle} 维护',
 
   // Common UI
@@ -1018,6 +1020,8 @@ export const en: Partial<Record<keyof typeof zh, string>> = {
   navBackToBlog: 'Back to Opinion',
   postPrevOlder: '← Previous (older)',
   postNextNewer: 'Next (newer) →',
+  relatedPostsTitle: 'Related articles',
+  relatedPostsViewAll: 'View all articles',
   footerMaintainedBy: 'Maintained by {handle}',
 
   search: 'Search',
@@ -1708,6 +1712,8 @@ export const ja: Partial<Record<keyof typeof zh, string>> = {
   navBackToBlog: 'コラム一覧へ',
   postPrevOlder: '← 前の投稿（より古い）',
   postNextNewer: '次の投稿（より新しい） →',
+  relatedPostsTitle: '関連記事',
+  relatedPostsViewAll: '記事一覧を見る',
   footerMaintainedBy: '{handle} 個人による運営',
   search: '検索',
   searchPlaceholder: '政策、議論、レバー、人物、ブログ投稿などを検索',
@@ -2385,6 +2391,8 @@ export const ko: Partial<Record<keyof typeof zh, string>> = {
   navBackToBlog: '컬럼 목록으로',
   postPrevOlder: '← 이전 글(더 오래된)',
   postNextNewer: '다음 글(업데이트) →',
+  relatedPostsTitle: '관련 글',
+  relatedPostsViewAll: '전체 글 보기',
   footerMaintainedBy: '{handle}이(가) 관리합니다',
   search: '검색',
   searchPlaceholder: '정책, 토론, 레버, 인물, 블로그 글을 검색하세요……',
