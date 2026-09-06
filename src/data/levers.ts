@@ -440,6 +440,35 @@ export const levers: Lever[] = [
           },
         ],
       },
+      {
+        title: '自动发现（待审核）',
+        titleEn: 'Auto-discovered (pending review)',
+        titleJa: 'Auto-discovered（レビュー待ち）',
+        titleKo: '자동 발견됨(검토 대기)',
+        items: [
+          {
+            id: '30-per-cent-increase-in-fy2020-ict-spend-to-accelerate-digitalisation-and-suppor',
+            name: '2020财年信息通信技术支出增加30%以加快数字化建设并支持企业发展',
+            nameEn: '30 per cent increase in FY2020 ICT spend to accelerate digitalisation and support businesses',
+            nameJa: '2020会計年度の情報通信技術支出が30%増加し、デジタル化建設の加速と企業発展を支援',
+            nameKo: '2020 회계년도 정보통신기술 지출 30% 증가로 디지털 변환 가속화 및 기업 발전 지원',
+            ministry: 'Auto: 待审核',
+            ministryEn: 'Auto: pending review',
+            ministryJa: 'Auto: 審査待機中',
+            ministryKo: 'Auto: 검토 대기 중',
+            description:
+              '新加坡政府宣布2020财年信息通信技术采购支出增至35亿元，较前一年增长30%。此举旨在加快政府数字化建设，支持企业从COVID-19中恢复。中小企业可参与80%的政府采购机会。政府重点投资COVID-19应对技术、云系统、基础设施现代化及人工智能应用等五个关键领域。',
+            descriptionEn:
+              'Singapore announced a 30 per cent increase in government ICT procurement spending to $3.5 billion for FY2020, aimed at accelerating digitalisation and supporting business recovery from COVID-19. SMEs are eligible to participate in 80 per cent of procurement opportunities. Government spending focuses on five areas: COVID-19 response technology, citizen and business-centric digital services, cloud-based ICT systems, government infrastructure modernisation, and AI/data analytics applications.',
+            descriptionJa:
+              'シンガポール政府は、2020会計年度の情報通信技術調達支出が35億シンガポールドルに増加し、前年比で30%の増加であることを発表しました。この措置は、政府のデジタル化建設の加速および企業のCOVID-19からの回復を支援することを目的としています。中小企業は政府調達機会の80%に参加することができます。政府は、COVID-19対応技術、クラウドシステム、インフラの現代化およびAI応用など5つの重要分野に重点投資する予定です。',
+            descriptionKo:
+              '싱가포르 정부는 2020 회계년도 정보통신기술 조달 지출을 35억 싱가포르 달러로 증대한다고 발표했으며, 이는 전년도 대비 30% 증가한 것입니다. 이러한 조치는 정부의 디지털 변환을 가속화하고 기업의 코로나19 회복을 지원하기 위한 것입니다. 중소기업은 정부 조달 기회의 80%에 참여할 수 있습니다. 정부는 코로나19 대응 기술, 클라우드 시스템, 인프라 현대화 및 인공지능 응용 등 5대 핵심 분야에 중점적으로 투자합니다.',
+            sourceUrl:
+              'https://www.tech.gov.sg/media/thirty-percent-increase-fy2020-ict-spend-to-accelerate-digitalisation-and-support-businesses/',
+          },
+        ],
+      },
     ],
     insight: '国家把企业最大的固定成本（算力 + 数据）变成公共物品。',
     insightKo: '국가가 기업의 최대 고정 비용(컴퓨팅 파워 + 데이터)을 공공재로 전환합니다.',
