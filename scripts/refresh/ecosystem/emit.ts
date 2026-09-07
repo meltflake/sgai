@@ -25,9 +25,16 @@ function escapeQuote(s: string): string {
   return s.replace(/'/g, "\\'");
 }
 
-export function formatEntity(e: EnrichedEntity): string {
+export function formatEntity(e: EnrichedEntity, today: string = new Date().toISOString().slice(0, 10)): string {
   const s = e.summary;
-  const today = new Date().toISOString().slice(0, 10);
+  // Name the record after the entity the page is about, never the headline
+  // (#294: "The AI Push Is Becoming an Energy Race: Sembcorp" → "Sembcorp
+  // Industries"). ja/ko names are translated from entity.nameZh in run.ts.
+  const name = e.entity.nameZh || s.title;
+  const nameEn = e.entity.nameEn || s.titleEn;
+  const nameJa = e.entity.nameJa || s.titleJa;
+  const nameKo = e.entity.nameKo || s.titleKo;
+  const entityType = e.entity.entityType || e.candidate.defaultEntityType;
   const lines: string[] = [];
   // Auto-discovered entities are _pendingReview stubs. Their required
   // analytical fields (whatItIs / aiRelevance / singaporeRelevance) and
@@ -36,10 +43,10 @@ export function formatEntity(e: EnrichedEntity): string {
   lines.push('      // i18n-allow-unpaired — auto-discovered stub; complete required fields on promotion');
   lines.push('      {');
   lines.push(`        id: '${e.id}',`);
-  lines.push(`        name: '${escapeQuote(s.title)}',`);
-  lines.push(`        nameEn: '${escapeQuote(s.titleEn)}',`);
-  if (s.titleJa) lines.push(`        nameJa: '${escapeQuote(s.titleJa)}',`);
-  if (s.titleKo) lines.push(`        nameKo: '${escapeQuote(s.titleKo)}',`);
+  lines.push(`        name: '${escapeQuote(name)}',`);
+  lines.push(`        nameEn: '${escapeQuote(nameEn)}',`);
+  if (nameJa) lines.push(`        nameJa: '${escapeQuote(nameJa)}',`);
+  if (nameKo) lines.push(`        nameKo: '${escapeQuote(nameKo)}',`);
   lines.push(`        description: '${escapeQuote(s.description)}',`);
   lines.push(`        descriptionEn:`);
   lines.push(`          '${escapeQuote(s.descriptionEn)}',`);
@@ -52,22 +59,30 @@ export function formatEntity(e: EnrichedEntity): string {
     lines.push(`          '${escapeQuote(s.descriptionKo)}',`);
   }
   lines.push(`        url: '${e.candidate.sourceUrl}',`);
-  lines.push(`        entityType: '${e.candidate.defaultEntityType}',`);
+  lines.push(`        entityType: '${entityType}',`);
   lines.push(`        status: 'active',`);
-  if (s.publishedDate) lines.push(`        founded: '${s.publishedDate.slice(0, 7)}',`);
+  // `founded` only when the source states it. The article date is when
+  // someone wrote about the entity, not when it was founded.
+  if (e.entity.foundedYear) lines.push(`        founded: '${e.entity.foundedYear}',`);
   lines.push('        sources: [');
   lines.push('          // i18n-allow-unpaired — provenance for the pending-review stub above');
   lines.push('          {');
   lines.push(`            label: '${escapeQuote(e.candidate.label)}',`);
   lines.push(`            url: '${e.candidate.sourceUrl}',`);
-  lines.push(`            date: '${(s.publishedDate || today).slice(0, 10)}',`);
+  lines.push(`            date: '${(e.pageDate || s.publishedDate || today).slice(0, 10)}',`);
   lines.push('          },');
   lines.push('        ],');
   lines.push(`        updated: '${today}',`);
   lines.push('        _pendingReview: true,');
-  lines.push(
-    `        discoveryNote: 'Auto-discovered via ${e.candidate.label}; confidence=${s.confidence}${s.reasonForLowConfidence ? `; ${escapeQuote(s.reasonForLowConfidence)}` : ''}',`
-  );
+  const noteParts = [
+    `Auto-discovered via ${e.candidate.label}`,
+    `headline: "${escapeQuote(e.headlineEn)}"`,
+    `confidence=${s.confidence}`,
+    `entity=${e.entity.confidence}`,
+  ];
+  if (s.reasonForLowConfidence) noteParts.push(escapeQuote(s.reasonForLowConfidence));
+  if (e.entity.confidence !== 'high' && e.entity.reason) noteParts.push(`entity note: ${escapeQuote(e.entity.reason)}`);
+  lines.push(`        discoveryNote: '${noteParts.join('; ')}',`);
   lines.push('      },');
   return lines.join('\n');
 }

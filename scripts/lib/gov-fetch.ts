@@ -186,11 +186,32 @@ export async function govFetch(url: string, options: FetchOptions = {}): Promise
   throw new Error(`${url}: ${lastError}`);
 }
 
+export interface SitemapEntry {
+  loc: string;
+  /** <lastmod> as written in the sitemap (ISO-ish), when present. */
+  lastmod?: string;
+}
+
+/** Parse `<url>` blocks (loc + lastmod) from a sitemap body. Exported for tests. */
+export function parseSitemapEntries(xml: string): SitemapEntry[] {
+  const entries: SitemapEntry[] = [];
+  for (const m of xml.matchAll(/<url>([\s\S]*?)<\/url>/gi)) {
+    const block = m[1];
+    const loc = block.match(/<loc>([^<]+)<\/loc>/i)?.[1]?.trim();
+    if (!loc) continue;
+    const lastmod = block.match(/<lastmod>([^<]+)<\/lastmod>/i)?.[1]?.trim();
+    entries.push(lastmod ? { loc, lastmod } : { loc });
+  }
+  if (entries.length > 0) return entries;
+  // Sitemaps without <url> wrappers (rare) — fall back to bare <loc>s.
+  return Array.from(xml.matchAll(/<loc>([^<]+)<\/loc>/gi)).map((m) => ({ loc: m[1].trim() }));
+}
+
 /**
- * Parse a sitemap.xml and return all <loc> URLs. Supports both URL
- * sitemaps and sitemap-index files (recurses one level deep).
+ * Parse a sitemap.xml and return its entries (URL + lastmod when present).
+ * Supports both URL sitemaps and sitemap-index files (recurses one level deep).
  */
-export async function listSitemap(url: string, options: FetchOptions = {}): Promise<string[]> {
+export async function listSitemapEntries(url: string, options: FetchOptions = {}): Promise<SitemapEntry[]> {
   const ctrl = new AbortController();
   const timer = setTimeout(() => ctrl.abort(), options.timeoutMs ?? DEFAULT_TIMEOUT_MS);
   try {
@@ -201,17 +222,16 @@ export async function listSitemap(url: string, options: FetchOptions = {}): Prom
     clearTimeout(timer);
     if (!response.ok) return [];
     const xml = await response.text();
-    const locs = Array.from(xml.matchAll(/<loc>([^<]+)<\/loc>/gi)).map((m) => m[1].trim());
 
     // Detect sitemap-index (has <sitemap><loc>...</loc></sitemap>).
     const isIndex = /<sitemapindex/i.test(xml);
-    if (!isIndex) return locs;
+    if (!isIndex) return parseSitemapEntries(xml);
 
-    const all: string[] = [];
-    for (const childUrl of locs) {
+    const childUrls = Array.from(xml.matchAll(/<loc>([^<]+)<\/loc>/gi)).map((m) => m[1].trim());
+    const all: SitemapEntry[] = [];
+    for (const childUrl of childUrls) {
       try {
-        const childLocs = await listSitemap(childUrl, options);
-        all.push(...childLocs);
+        all.push(...(await listSitemapEntries(childUrl, options)));
       } catch {
         /* ignore */
       }
@@ -221,4 +241,12 @@ export async function listSitemap(url: string, options: FetchOptions = {}): Prom
     clearTimeout(timer);
     return [];
   }
+}
+
+/**
+ * Parse a sitemap.xml and return all <loc> URLs. Supports both URL
+ * sitemaps and sitemap-index files (recurses one level deep).
+ */
+export async function listSitemap(url: string, options: FetchOptions = {}): Promise<string[]> {
+  return (await listSitemapEntries(url, options)).map((e) => e.loc);
 }

@@ -7,9 +7,10 @@ import { resolve } from 'node:path';
 import { loadState, saveState } from '../../lib/state.ts';
 import { autoCommit, pushAndOpenPR, buildPRBody } from '../../lib/auto-commit.ts';
 import { ensureClaudeAuthed } from '../../lib/llm.ts';
-import { scan, readExistingEcosystemUrls } from './scan.ts';
-import { enrich } from './enrich.ts';
+import { scan, readExistingEcosystemUrls, readExistingEcosystemIdentity } from './scan.ts';
+import { enrich, type DroppedCandidate } from './enrich.ts';
 import { emit } from './emit.ts';
+import { DEFAULT_MAX_AGE_DAYS } from './sources.ts';
 import { mergeRejectedUrls } from '../../lib/rejected-urls.ts';
 
 interface CliFlags {
@@ -19,13 +20,20 @@ interface CliFlags {
   noCommit: boolean;
   noPush: boolean;
   force: boolean;
+  /** Old-news window; 0 disables. */
+  maxAgeDays: number;
 }
+
+/** Scan over-collects so enrich can drop stale / off-topic / non-entity
+ *  pages and still reach --limit accepted entries. */
+const SCAN_POOL_MULTIPLIER = 4;
 
 function parseFlags(): CliFlags {
   const argv = process.argv.slice(2);
   const flagSet = new Set(argv.filter((a) => !a.includes('=')));
   const limitArg = argv.find((a) => a.startsWith('--limit='));
   const onlyArg = argv.find((a) => a.startsWith('--only-domain='));
+  const maxAgeArg = argv.find((a) => a.startsWith('--max-age-days='));
   return {
     dryRun: flagSet.has('--dry-run'),
     limit: limitArg ? Number(limitArg.split('=')[1]) : 5,
@@ -33,7 +41,17 @@ function parseFlags(): CliFlags {
     noCommit: flagSet.has('--no-commit'),
     noPush: flagSet.has('--no-push'),
     force: flagSet.has('--force'),
+    maxAgeDays: maxAgeArg ? Number(maxAgeArg.split('=')[1]) : DEFAULT_MAX_AGE_DAYS,
   };
+}
+
+function formatDropped(dropped: DroppedCandidate[]): string {
+  if (dropped.length === 0) return '';
+  const lines = ['', '## Dropped before emit', ''];
+  lines.push('Not proposed. Delete a line from the reject ledger or re-run with `--max-age-days=0` to override.');
+  lines.push('');
+  for (const d of dropped) lines.push(`- **${d.reason}** — ${d.sourceUrl} — ${d.detail}`);
+  return lines.join('\n');
 }
 
 async function main(): Promise<void> {
@@ -42,6 +60,9 @@ async function main(): Promise<void> {
 
   process.stdout.write('\n[ecosystem-refresh] starting\n');
   if (flags.dryRun) process.stdout.write('  --dry-run: scan only\n');
+  process.stdout.write(
+    flags.maxAgeDays > 0 ? `  old-news window: ${flags.maxAgeDays} days\n` : '  old-news window: disabled\n'
+  );
 
   // Preflight: prove `claude -p` can run inference before per-candidate AI
   // work. `claude --version` still passes with an expired token; fail fast here
@@ -57,18 +78,30 @@ async function main(): Promise<void> {
   if (rejectedCount > 0) process.stdout.write(`  rejected ecosystem URLs (skipped): ${rejectedCount}\n`);
 
   const state = loadState();
+  // URLs the old-news gate already dropped on this machine: skip without
+  // re-fetching, so an archive-heavy sitemap cannot clog every run's pool.
+  const knownStale = new Set(state.domains.ecosystem.staleUrls ?? []);
+  if (flags.maxAgeDays > 0) {
+    for (const u of knownStale) existingUrls.add(u);
+    if (knownStale.size > 0) process.stdout.write(`  known-stale URLs (skipped): ${knownStale.size}\n`);
+  }
+
   const scanResult = await scan({
     state,
     existingUrls,
     dryRun: flags.dryRun,
-    limit: flags.limit,
+    limit: flags.limit * SCAN_POOL_MULTIPLIER,
     onlyDomain: flags.onlyDomain || undefined,
+    maxAgeDays: flags.maxAgeDays,
   });
 
-  process.stdout.write(`  scan: ${scanResult.candidates.length} candidates from ${scanResult.perSource.length} sources\n`);
+  process.stdout.write(
+    `  scan: ${scanResult.candidates.length} candidates (pool for --limit=${flags.limit}) from ${scanResult.perSource.length} sources\n`
+  );
   for (const s of scanResult.perSource) {
     const errMark = s.error ? ` ⚠ ${s.error.slice(0, 80)}` : '';
-    process.stdout.write(`    ${s.domain}: ${s.matched}/${s.checked}${errMark}\n`);
+    const staleMark = s.stale > 0 ? `, ${s.stale} stale` : '';
+    process.stdout.write(`    ${s.domain}: ${s.matched}/${s.checked}${staleMark}${errMark}\n`);
   }
 
   if (scanResult.candidates.length === 0) {
@@ -88,67 +121,46 @@ async function main(): Promise<void> {
   }
 
   process.stdout.write('\n  Enriching...\n');
-  const enrichResult = await enrich(scanResult.candidates, { force: flags.force });
-  process.stdout.write(`  enriched: ${enrichResult.enriched.length}, failures: ${enrichResult.failures.length}\n`);
+  // Gates live in enrich.ts (old-news → summary → empty-shell → AI judge →
+  // entity extraction → already-covered); it stops at --limit accepted.
+  const enrichResult = await enrich(scanResult.candidates, {
+    force: flags.force,
+    maxAgeDays: flags.maxAgeDays,
+    targetCount: flags.limit,
+    existing: readExistingEcosystemIdentity(),
+  });
+  process.stdout.write(
+    `  enriched: ${enrichResult.enriched.length}, dropped: ${enrichResult.dropped.length}, failures: ${enrichResult.failures.length}\n`
+  );
+  for (const e of enrichResult.enriched) {
+    process.stdout.write(`    ✓ ${e.entity.nameEn} [${e.entity.entityType ?? e.candidate.defaultEntityType}] ← ${e.headlineEn}\n`);
+  }
 
-  // Content-layer AI-relevance gate (shared). The BusinessTimes source now
-  // admits the whole tech section by document type, so confirm each entity's
-  // body actually concerns AI before emitting — summarizePage only classifies
-  // + scores, it never asks "is this AI?". Conservative: drop only a
-  // high-confidence "no"; low/medium stays for the _pendingReview backstop.
-  {
-    const { judgeAiRelevance } = await import('../../lib/judge-ai-relevance.ts');
-    const kept: typeof enrichResult.enriched = [];
-    let dropped = 0;
-    for (const e of enrichResult.enriched) {
-      const verdict = await judgeAiRelevance(
-        {
-          title: e.summary.titleEn || e.pageTitle,
-          contentText: e.contentText,
-          sourceUrl: e.candidate.sourceUrl,
-        },
-        {
-          kind: 'a company / product / ecosystem news item',
-          scope:
-            'AI / artificial-intelligence companies, products, infrastructure, or ecosystem developments — especially in Singapore',
-          // Entity gate (2026-08-03): the ecosystem map catalogues THINGS,
-          // not writing. The August run passed an AISG how-to blog post
-          // ("Leveraging Generative AI in Project Management") because it
-          // is genuinely about AI — but an article about USING AI is not an
-          // ecosystem entity. requireScope makes entity-ness a second
-          // necessary condition (same mechanism as startups' SG nexus).
-          requireScope:
-            'an identifiable organisation, programme, product, platform, or facility as its subject — a how-to article, opinion piece, or research write-up ABOUT using AI fails',
-        }
-      );
-      if (!verdict.relevant && verdict.confidence === 'high') {
-        dropped += 1;
-        process.stdout.write(`    ⊘ off-topic: ${e.candidate.sourceUrl} — ${verdict.reason.slice(0, 60)}\n`);
-        continue;
-      }
-      kept.push(e);
-    }
-    enrichResult.enriched = kept;
-    if (dropped > 0) process.stdout.write(`  AI gate: kept ${kept.length}, dropped ${dropped} off-topic\n`);
+  // Remember stale URLs so later scans skip them without a fetch.
+  const staleNow = enrichResult.dropped.filter((d) => d.reason === 'stale').map((d) => d.sourceUrl);
+  if (staleNow.length > 0) {
+    const merged = new Set([...(state.domains.ecosystem.staleUrls ?? []), ...staleNow]);
+    state.domains.ecosystem.staleUrls = [...merged].slice(-2000);
   }
 
   if (enrichResult.enriched.length === 0) {
     process.stdout.write('\n[ecosystem-refresh] no enriched items. exiting.\n');
+    saveState(state);
     return;
   }
 
-  // Translate to ja + ko.
+  // Translate entity name + description to ja + ko.
   try {
     const { translateBatch } = await import('../../lib/translate.ts');
-    const flat = enrichResult.enriched.flatMap((e) => [e.summary.title, e.summary.description]);
+    const flat = enrichResult.enriched.flatMap((e) => [e.entity.nameZh, e.summary.description]);
     const [jaValues, koValues] = await Promise.all([
       translateBatch(flat, { direction: 'zh→ja', cacheDir: 'scripts/i18n/data/ja-cache' }),
       translateBatch(flat, { direction: 'zh→ko', cacheDir: 'scripts/i18n/data/ko-cache' }),
     ]);
     for (let i = 0; i < enrichResult.enriched.length; i++) {
-      enrichResult.enriched[i].summary.titleJa = jaValues[i * 2] || undefined;
+      enrichResult.enriched[i].entity.nameJa = jaValues[i * 2] || undefined;
       enrichResult.enriched[i].summary.descriptionJa = jaValues[i * 2 + 1] || undefined;
-      enrichResult.enriched[i].summary.titleKo = koValues[i * 2] || undefined;
+      enrichResult.enriched[i].entity.nameKo = koValues[i * 2] || undefined;
       enrichResult.enriched[i].summary.descriptionKo = koValues[i * 2 + 1] || undefined;
     }
     process.stdout.write(`  translated ${enrichResult.enriched.length} entries to ja + ko\n`);
@@ -189,17 +201,24 @@ async function main(): Promise<void> {
       domain: 'ecosystem',
       diffStat: commit.diffStat,
       newEntries: enrichResult.enriched.map((e) => ({
-        title: `${e.summary.titleEn} (${e.summary.category})`,
+        title: `${e.entity.nameEn} (${e.summary.category}) — from "${e.headlineEn}"`,
         sourceUrl: e.candidate.sourceUrl,
         confidence: e.summary.confidence,
       })),
       failedSources: enrichResult.failures.map((f) => ({ url: f.sourceUrl, error: f.error })),
-      checksPassed: ['i18n-pair (post-emit rollback guard)'],
+      checksPassed: [
+        'i18n-pair (post-emit rollback guard)',
+        `old-news gate (${flags.maxAgeDays} days)`,
+        'entity-name extraction (record named after the entity, not the headline)',
+      ],
     });
     const prResult = await pushAndOpenPR({
       branch: commit.branch,
       title: `[data-refresh] ecosystem: +${emitResult.recordsAdded} entries (pending review)`,
-      body: body + '\n\n> All entries marked `_pendingReview: true` and hidden from listing pages until you flip the flag.',
+      body:
+        body +
+        formatDropped(enrichResult.dropped) +
+        '\n\n> All entries marked `_pendingReview: true` and hidden from listing pages until you flip the flag.',
       labels: ['data-refresh', 'ecosystem', 'pending-review'],
     });
     if (prResult.error) process.stdout.write(`  ⚠ PR step error: ${prResult.error}\n`);
