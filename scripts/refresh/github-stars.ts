@@ -36,6 +36,8 @@ interface UpdateResult {
   error?: string;
 }
 
+const NO_STARS_FIELD = 'No stars field in record; add manually';
+
 const ROOT = resolve(process.cwd());
 const TARGETS = [
   resolve(ROOT, 'src/data/community-opensource.ts'),
@@ -151,10 +153,17 @@ async function refreshFile(filePath: string): Promise<{ file: string; results: U
         oldStars: null,
         newStars,
         changed: false,
-        error: 'No stars field in record; add manually',
+        error: NO_STARS_FIELD,
       });
     }
   }
+
+  // A repo URL can appear more than once in a file (e.g. a nested sub-item
+  // without its own stars line). Drop the "no stars field" noise for repos
+  // that already resolved through another block, otherwise every repo shows
+  // up under "Failed sources" in the PR body.
+  const resolved = new Set(results.filter((r) => !r.error).map((r) => r.repo));
+  const deduped = results.filter((r) => !(r.error === NO_STARS_FIELD && resolved.has(r.repo)));
 
   let updated = lines.join('\n');
   const starsChanged = results.some((r) => r.changed);
@@ -168,7 +177,7 @@ async function refreshFile(filePath: string): Promise<{ file: string; results: U
 
   const willWrite = !dryRun && (starsChanged || dateChanged);
   if (willWrite) writeFileSync(filePath, updated);
-  return { file: filePath, results, wrote: willWrite };
+  return { file: filePath, results: deduped, wrote: willWrite };
 }
 
 function bumpVersionFile(): boolean {
