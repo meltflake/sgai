@@ -734,37 +734,6 @@ But AISG's bottlenecks are real: **talent retention is weak** (apprentices leave
         ],
         updated: '2026-06-10',
       },
-      // i18n-allow-unpaired — auto-discovered stub; complete required fields on promotion
-      {
-        id: '30-increase-in-fy2020-ict-spending-for-digitalisation-and-business-support',
-        name: '2020财年政府ICT支出增加30%加速数字化转型',
-        nameEn: '30% Increase in FY2020 ICT Spending for Digitalisation and Business Support',
-        nameJa: '2020年度政府ICT支出が30%増加しデジタル変革を加速',
-        nameKo: '2020 회계연도 정부 ICT 지출 30% 증가로 디지털 전환 가속화',
-        description:
-          '新加坡政府科技局宣布2020财年信息通信技术(ICT)支出增加30%至35亿元，加速政府数字化转型并支持企业从新冠疫情中恢复。政府重点投资COVID-19应对技术、数字化服务、云基础设施现代化和人工智能应用，中小企业可参与80%的政府采购机会。',
-        descriptionEn:
-          "Singapore's Government Technology Agency (GovTech) announced a 30% increase in FY2020 ICT spending—from $2.7 billion to $3.5 billion—to accelerate government digitalisation and support business recovery from COVID-19. The Government will focus on five key areas: COVID-19 response technologies, citizen and business-centric digital services, cloud infrastructure, ICT modernisation, and AI and sensor deployment. Small and medium-sized enterprises are eligible to participate in 80% of procurement opportunities.",
-        descriptionJa:
-          'シンガポール政府技術庁は、2020年度の情報通信技術(ICT)支出が30%増加して35億ドルに達したことを発表し、政府のデジタル化変革を加速し、企業が新型コロナウイルス感染症の流行から回復することを支援しています。政府は新型コロナウイルス感染症対応技術、デジタルサービス、クラウドインフラストラクチャの最新化およびAI応用に重点的に投資し、中小企業は政府調達機会の80%に参加することができます。',
-        descriptionKo:
-          '싱가포르 정부기술청은 2020 회계연도 정보통신기술(ICT) 지출이 30% 증가하여 35억 싱가포르 달러에 달한다고 발표했습니다. 이는 정부의 디지털 전환을 가속화하고 기업이 신종 코로나바이러스 감염증(COVID-19)에서 회복하도록 지원하기 위한 것입니다. 정부는 COVID-19 대응 기술, 디지털 서비스, 클라우드 기반시설 현대화 및 인공지능 응용에 중점적으로 투자하며, 중소기업은 정부 조달 기회의 80%에 참여할 수 있습니다.',
-        url: 'https://www.tech.gov.sg/media/thirty-percent-increase-fy2020-ict-spend-to-accelerate-digitalisation-and-support-businesses/',
-        entityType: 'platform',
-        status: 'active',
-        founded: '2020-06',
-        sources: [
-          // i18n-allow-unpaired — provenance for the pending-review stub above
-          {
-            label: 'GovTech Singapore',
-            url: 'https://www.tech.gov.sg/media/thirty-percent-increase-fy2020-ict-spend-to-accelerate-digitalisation-and-support-businesses/',
-            date: '2020-06-08',
-          },
-        ],
-        updated: '2026-09-07',
-        _pendingReview: true,
-        discoveryNote: 'Auto-discovered via GovTech Singapore; confidence=high',
-      },
     ],
   },
   {
@@ -9311,36 +9280,107 @@ Worth watching: Alibaba Cloud's actual market share in Singapore, shifts in the 
         ],
         updated: '2026-05-02',
       },
-      // i18n-allow-unpaired — auto-discovered stub; complete required fields on promotion
       {
-        id: 'the-ai-push-is-becoming-an-energy-race-sembcorp',
-        name: 'AI浪潮正成为能源竞赛：胜科工业',
-        nameEn: 'The AI Push Is Becoming an Energy Race: Sembcorp',
-        nameJa: 'AIの波がエネルギー競争となっている：センブコープ・インダストリーズ',
-        nameKo: 'AI 물결, 에너지 경쟁의 중심: Sembcorp Industries',
+        id: 'sembcorp',
+        name: '胜科工业',
+        nameKo: 'Sembcorp Industries',
+        nameJa: 'センブコープ・インダストリーズ',
+        nameEn: 'Sembcorp Industries',
         description:
-          '胜科工业作为能源和城市解决方案提供商，通过可靠的电力基础设施支撑新加坡AI经济增长。该公司目前供应新加坡数据中心和半导体产业约三分之一的电力需求，与Equinix、ST Telemedia、Singtel和Micron等主要客户建立长期购电协议。胜科工业正新建600MW氢气就绪燃气电厂，同时在英国、越南、印尼和澳大利亚拓展AI就绪基础设施。公司内部亦利用AI技术优化运营，包括视频分析和预测性维护平台Hyperspace。',
-        descriptionEn:
-          "Sembcorp Industries, as a provider of energy and urban solutions, supports Singapore's AI economy growth through reliable power infrastructure. The company currently supplies approximately one-third of Singapore's data center and semiconductor sector electricity demand, serving major customers including Equinix, ST Telemedia, Singtel, and Micron through long-term power purchase agreements. Sembcorp is building a 600 MW hydrogen-ready gas-powered plant and expanding AI-ready infrastructure in the UK, Vietnam, Indonesia, and Australia. The company leverages AI technology internally to optimize operations, including video analytics and the predictive maintenance platform Hyperspace.",
-        descriptionJa:
-          'センブコープ・インダストリーズは、エネルギーおよび都市ソリューション提供企業として、信頼性の高い電力インフラストラクチャを通じてシンガポールのAI経済成長を支えています。同社は現在、シンガポールのデータセンターおよび半導体産業の電力需要の約3分の1を供給しており、エクイニックス、STテレメディア、シングテル、マイクロンなどの主要顧客との長期購電契約を締結しています。同社は600MWの水素対応ガス火力発電所を新たに建設中であり、同時に英国、ベトナム、インドネシア、オーストラリアにおいてAI対応インフラストラクチャを拡大しています。同社は社内でもAI技術を活用して運用を最適化しており、動画分析および予測保全プラットフォームのハイパースペースを含みます。',
+          '新加坡能源与城市解决方案公司，供应本地数据中心和半导体行业近三分之一的用电，是 AI 算力背后的供电方',
         descriptionKo:
-          '에너지 및 도시 솔루션 제공업체인 Sembcorp Industries는 신뢰할 수 있는 전력 기반시설을 통해 싱가포르의 AI 경제 성장을 뒷받침하고 있습니다. 동사는 현재 싱가포르 데이터센터 및 반도체 산업 전력 수요의 약 1/3을 공급하고 있으며, Equinix, ST Telemedia, Singtel, Micron 등 주요 고객과 장기 전력 구매 계약을 체결했습니다. 동사는 600MW 규모의 수소 충전 가능 가스 발전소를 신축 중이며, 동시에 영국, 베트남, 인도네시아, 호주에서 AI 대응 기반시설을 확대하고 있습니다. 또한 동사는 영상 분석 및 예측 유지보수 플랫폼 Hyperspace를 포함하여 AI 기술을 활용한 내부 운영 최적화를 진행하고 있습니다.',
-        url: 'https://www.businesstimes.com.sg/startups-tech/technology/ai-push-becoming-energy-race-sembcorp',
-        entityType: 'product',
+          '싱가포르 데이터센터와 반도체 산업 전력 수요의 약 3분의 1을 공급하는 에너지·도시 솔루션 기업으로, AI 컴퓨팅을 뒷받침하는 전력 공급자',
+        descriptionJa:
+          'シンガポールのデータセンターと半導体産業の電力需要の約 3 分の 1 を供給するエネルギー・都市ソリューション企業で、AI 計算能力を支える電力供給者',
+        descriptionEn:
+          "Singapore energy and urban-solutions company supplying close to one-third of the electricity used by the country's data-centre and semiconductor sectors, the power supplier behind AI compute",
+        url: 'https://www.sembcorp.com/',
+        entityType: 'partner',
         status: 'active',
-        founded: '2026-08',
-        sources: [
-          // i18n-allow-unpaired — provenance for the pending-review stub above
+        headquarters: '新加坡',
+        headquartersKo: '싱가포르',
+        headquartersJa: 'シンガポール',
+        headquartersEn: 'Singapore',
+        scale: '供应新加坡数据中心与半导体行业近三分之一的用电；与 Micron 的签约供电容量累计 600 MW',
+        scaleKo: '싱가포르 데이터센터·반도체 산업 전력 수요의 약 3분의 1 공급, Micron과의 계약 공급 용량 총 600 MW',
+        scaleJa:
+          'シンガポールのデータセンター・半導体産業の電力需要の約 3 分の 1 を供給、Micron との契約供給容量は累計 600 MW',
+        scaleEn:
+          "Supplies close to one-third of the electricity demand of Singapore's data-centre and semiconductor sectors; 600 MW total contracted capacity with Micron",
+        summary:
+          '胜科工业是新加坡的能源与城市解决方案公司，业务覆盖燃气发电、可再生能源、储能和城市基础设施。公司目前供应新加坡数据中心和半导体行业近三分之一的用电，通过长期购电协议服务 Equinix、ST Telemedia Global Data Centres 和 Singtel 等客户；与 Micron 追加 150 MW 购电协议后，签约供电容量累计达 600 MW。公司同时把 AI 用在自己的运营上，包括电厂和风光场站的视频分析，以及自研的预测性维护平台 Hyperspace。',
+        summaryKo:
+          'Sembcorp Industries는 가스 발전, 재생에너지, 에너지 저장, 도시 인프라를 아우르는 싱가포르의 에너지·도시 솔루션 기업입니다. 현재 싱가포르 데이터센터와 반도체 산업 전력 수요의 약 3분의 1을 공급하며, 장기 전력 구매 계약을 통해 Equinix, ST Telemedia Global Data Centres, Singtel 등 고객에게 전력을 제공합니다. Micron과 150 MW 계약을 추가해 계약 공급 용량은 총 600 MW에 달했습니다. 또한 발전소와 재생에너지 시설의 영상 분석, 자체 개발한 예지 정비 플랫폼 Hyperspace 등 자사 운영에도 AI를 활용하고 있습니다.',
+        summaryJa:
+          'センブコープ・インダストリーズは、ガス火力発電、再生可能エネルギー、蓄電、都市インフラを手がけるシンガポールのエネルギー・都市ソリューション企業です。現在、シンガポールのデータセンターと半導体産業の電力需要の約 3 分の 1 を供給し、長期電力購入契約を通じて Equinix、ST Telemedia Global Data Centres、Singtel などの顧客に電力を供給しています。Micron と 150 MW の契約を追加し、契約供給容量は累計 600 MW に達しました。また、発電所や再生可能エネルギー施設での映像分析、自社開発の予知保全プラットフォーム Hyperspace など、自社の運営にも AI を活用しています。',
+        summaryEn:
+          "Sembcorp Industries is a Singapore energy and urban-solutions company spanning gas-fired generation, renewables, energy storage, and urban infrastructure. It currently supplies close to one-third of the electricity demand of Singapore's data-centre and semiconductor sectors, serving customers such as Equinix, ST Telemedia Global Data Centres, and Singtel through long-term power purchase agreements. An additional 150 MW agreement with Micron brought total contracted capacity to 600 MW. The company also applies AI to its own operations, including video analytics at power plants and renewable sites and Hyperspace, an in-house predictive-maintenance platform.",
+        whatItIs: `胜科工业和 AI 的交集在两头：
+
+- **给 AI 供电**：通过长期购电协议向数据中心和半导体厂供电，客户包括 Equinix、ST Telemedia Global Data Centres、Singtel 和 Micron；在燃气发电之外也提供可再生能源方案，配合客户的减碳目标
+- **用 AI 运营电力资产**：在燃气电厂、风电场和光伏场站部署 AI 视频分析识别安全风险；由数字团队和工程团队共同开发的 Hyperspace 平台做预测性维护，提前发现设备问题
+
+新加坡之外，公司在英国 Wilton International 数据中心、越南西贡高科技园的 AI 就绪数据中心园区、印尼巴淡岛 Tembesi 创新区建设支撑数据中心的大型电力基础设施，澳大利亚则通过 Alinta Energy 供电。`,
+        whatItIsKo: `Sembcorp와 AI의 접점은 두 방향입니다:
+
+- **AI에 전력 공급**: 장기 전력 구매 계약을 통해 데이터센터와 반도체 공장에 전력을 공급하며, 고객으로는 Equinix, ST Telemedia Global Data Centres, Singtel, Micron이 있음. 가스 발전 외에 고객의 탈탄소 목표에 맞춘 재생에너지 솔루션도 제공
+- **AI로 전력 자산 운영**: 가스 발전소, 풍력 단지, 태양광 단지에 AI 영상 분석을 도입해 안전 위험을 식별. 디지털팀과 엔지니어링팀이 공동 개발한 Hyperspace 플랫폼으로 예지 정비를 수행해 설비 문제를 조기에 발견
+
+싱가포르 밖에서는 영국 Wilton International 데이터센터, 베트남 사이공 하이테크파크의 AI 대응 데이터센터 캠퍼스, 인도네시아 바탐의 Tembesi 혁신지구에 데이터센터용 대규모 전력 인프라를 구축하고 있으며, 호주에서는 Alinta Energy가 AI발 전력 수요에 대응합니다.`,
+        whatItIsJa: `センブコープと AI の接点は二方向にあります：
+
+- **AI に電力を供給**：長期電力購入契約を通じてデータセンターや半導体工場に電力を供給し、顧客には Equinix、ST Telemedia Global Data Centres、Singtel、Micron が含まれる。ガス火力に加え、顧客の脱炭素目標に合わせた再生可能エネルギーも提供
+- **AI で電力資産を運営**：ガス発電所、風力発電所、太陽光発電所に AI 映像分析を導入して安全リスクを検知。デジタル部門とエンジニアリング部門が共同開発した Hyperspace プラットフォームで予知保全を行い、設備の問題を早期に発見
+
+シンガポール国外では、英国の Wilton International データセンター、ベトナム・サイゴンハイテクパークの AI 対応データセンター・キャンパス、インドネシア・バタム島の Tembesi イノベーション地区でデータセンター向けの大規模電力インフラを整備し、オーストラリアでは Alinta Energy が AI 由来の電力需要に対応しています。`,
+        whatItIsEn: `Sembcorp touches AI from both sides:
+
+- **Powering AI**: supplies data centres and semiconductor plants through long-term power purchase agreements with customers including Equinix, ST Telemedia Global Data Centres, Singtel, and Micron; alongside gas-fired power it offers renewable-energy solutions for customers' decarbonisation goals
+- **Running power assets with AI**: AI video analytics at gas plants, wind farms, and solar sites flag safety risks; Hyperspace, a platform co-created by its digital and engineering teams, supports predictive maintenance by spotting equipment issues before they escalate
+
+Outside Singapore, it is building large-scale power infrastructure for data centres at Wilton International in the UK, Vietnam's first AI-ready data-centre campus at Saigon Hi-Tech Park, and the Tembesi Innovation District in Batam, Indonesia, while Alinta Energy serves AI-driven power demand in Australia.`,
+        aiRelevance:
+          'AI 竞赛正在变成能源竞赛。国际能源署预计 AI 设施的全球用电量将从目前约 415 TWh 增至 2030 年约 1000 TWh。数据中心能否落地，越来越取决于能不能拿到稳定电力，胜科工业就处在这个瓶颈上。',
+        aiRelevanceKo:
+          'AI 경쟁은 에너지 경쟁으로 바뀌고 있습니다. 국제에너지기구는 AI 시설의 전 세계 전력 소비량이 현재 약 415 TWh에서 2030년 약 1,000 TWh로 늘어날 것으로 전망합니다. 데이터센터를 지을 수 있느냐는 안정적인 전력을 확보할 수 있느냐에 점점 더 좌우되며, Sembcorp는 바로 그 병목 지점에 있습니다.',
+        aiRelevanceJa:
+          'AI 競争はエネルギー競争に変わりつつあります。国際エネルギー機関は、AI 施設の世界の電力消費量が現在の約 415 TWh から 2030 年には約 1000 TWh に増えると予測しています。データセンターを建設できるかどうかは安定した電力を確保できるかに左右されるようになっており、センブコープはそのボトルネックの位置にいます。',
+        aiRelevanceEn:
+          'The AI race is turning into an energy race. The International Energy Agency projects that electricity consumption by AI facilities will grow from about 415 TWh today to roughly 1,000 TWh by 2030. Whether a data centre can be built increasingly depends on securing reliable power, and Sembcorp sits at that bottleneck.',
+        singaporeRelevance:
+          '新加坡土地和电力都紧，数据中心扩容长期受电力约束。胜科工业供应本地数据中心和半导体行业近三分之一的用电，Equinix、ST Telemedia、Singtel、Micron 这些 AI 基础设施玩家能不能扩产，直接和它的供电能力挂钩。',
+        singaporeRelevanceKo:
+          '싱가포르는 토지와 전력이 모두 부족해 데이터센터 확장이 오랫동안 전력 제약을 받아 왔습니다. Sembcorp는 현지 데이터센터와 반도체 공장 전력 수요의 약 3분의 1을 공급하므로, Equinix, ST Telemedia, Singtel, Micron 같은 AI 인프라 기업이 확장할 수 있는지는 그 공급 능력에 직결됩니다.',
+        singaporeRelevanceJa:
+          'シンガポールは土地も電力も逼迫しており、データセンターの拡張は長らく電力制約を受けてきました。センブコープは国内のデータセンターと半導体工場の電力需要の約 3 分の 1 を供給しており、Equinix、ST Telemedia、Singtel、Micron といった AI インフラ企業が拡張できるかどうかは、その供給能力に直結しています。',
+        singaporeRelevanceEn:
+          'Singapore is short on both land and power, and data-centre expansion has long been constrained by electricity. Sembcorp supplies close to one-third of the electricity used by local data centres and semiconductor plants, so whether AI-infrastructure players such as Equinix, ST Telemedia, Singtel, and Micron can scale is tied directly to its supply capacity.',
+        milestones: [
           {
-            label: 'Business Times Tech',
+            date: '2026-08-31',
+            title:
+              '首席运营官在《商业时报》撰文：与 Micron 购电协议扩至 600 MW，供应本地数据中心和半导体行业近三分之一用电',
+            titleKo:
+              'COO가 비즈니스 타임스에 기고: Micron 전력 계약 600 MW로 확대, 현지 데이터센터·반도체 산업 전력의 약 3분의 1 공급',
+            titleJa:
+              'COO がビジネスタイムズ紙に寄稿：Micron との電力契約を 600 MW に拡大、国内データセンター・半導体産業の電力の約 3 分の 1 を供給',
+            titleEn:
+              'COO writes in The Business Times: Micron power agreement expanded to 600 MW, supplying close to one-third of local data-centre and semiconductor electricity',
+          },
+        ],
+        relatedLeverNumbers: [1],
+        sources: [
+          {
+            label: '商业时报：AI 竞赛正在变成能源竞赛（胜科工业首席运营官撰文）',
+            labelKo: '비즈니스 타임스: AI 경쟁은 에너지 경쟁이 되고 있다 (Sembcorp COO 기고)',
+            labelJa: 'ビジネスタイムズ：AI 競争はエネルギー競争になりつつある（センブコープ COO 寄稿）',
+            labelEn: 'The Business Times: The AI push is becoming an energy race (op-ed by Sembcorp COO)',
             url: 'https://www.businesstimes.com.sg/startups-tech/technology/ai-push-becoming-energy-race-sembcorp',
             date: '2026-08-31',
           },
         ],
-        updated: '2026-09-07',
-        _pendingReview: true,
-        discoveryNote: 'Auto-discovered via Business Times Tech; confidence=high',
+        updated: '2026-08-31',
+        addedAt: '2026-09-07',
       },
     ],
   },
