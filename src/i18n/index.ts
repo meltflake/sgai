@@ -408,6 +408,8 @@ export const zh = {
   heroHeadline2: '在 6 个抓手。',
   heroSubtitle: '把整个国家当作企业 AI-native 转型的"包装层"——国家自己不必成为 AI-native，只要把企业转型速度放大就够。',
   heroSubtitleNeutral: '一个城邦在 AI 时代的国家级转型——政策文件、国会辩论、抓手图谱、创业生态、法律框架的独立分析。',
+  homeIntroTagline: '独立追踪新加坡 AI 战略、政策、资金与生态，随事实更新。',
+  homeOverviewLink: '2026 年新加坡 AI 全景 →',
   ctaReadCore: '阅读核心论证',
   ctaBrowseAll: '浏览全部观察 →',
   freshnessPolicies: '核心政策',
@@ -1072,6 +1074,9 @@ export const en: Partial<Record<keyof typeof zh, string>> = {
     'The state wraps itself around enterprise AI-native transformation. The state itself doesn’t need to become AI-native — it just needs to amplify how fast enterprises do.',
   heroSubtitleNeutral:
     'How one city-state is reorganising itself for the AI era — independent analysis of policy, parliament, levers, startups, and law.',
+  homeIntroTagline:
+    'An independent overview of Singapore’s AI strategy, policies, funding and ecosystem, updated as things change.',
+  homeOverviewLink: 'Singapore AI overview 2026 →',
   ctaReadCore: 'Read the core argument',
   ctaBrowseAll: 'Browse all opinions →',
   freshnessPolicies: 'Core policies',
@@ -1762,6 +1767,9 @@ export const ja: Partial<Record<keyof typeof zh, string>> = {
     '国全体を企業の AI-native トランスフォーメーションの「ラッパー層」として扱う――国自体が AI-native である必要はなく、企業のトランスフォーメーション速度を拡大するだけで十分です。',
   heroSubtitleNeutral:
     'AI 時代における 1 つのシティステートの国家レベルのトランスフォーメーション――政策文書、議会討論、レバーマップ、スタートアップエコシステム、法的枠組みの独立分析。',
+  homeIntroTagline:
+    'シンガポールの AI 戦略・政策・資金・エコシステムを独立した立場で追跡し、事実の変化に合わせて更新します。',
+  homeOverviewLink: 'シンガポール AI 概観 2026 →',
   ctaReadCore: 'コア論証を読む',
   ctaBrowseAll: 'すべてのコラムを閲覧する →',
   freshnessPolicies: 'コア政策',
@@ -2442,6 +2450,8 @@ export const ko: Partial<Record<keyof typeof zh, string>> = {
     '전체 국가를 기업 AI-native 전환의 「포장 계층」으로 취급합니다——국가 자체가 AI-native가 될 필요는 없으며, 기업 전환 속도를 확대하기만 하면 충분합니다.',
   heroSubtitleNeutral:
     '한 도시 국가의 AI 시대 국가 차원 전환 — 정책 문서, 국회 토론, 레버 지도, 스타트업 생태계, 법적 프레임워크의 독립적 분석.',
+  homeIntroTagline: '싱가포르의 AI 전략, 정책, 자금, 생태계를 독립적으로 추적하고 사실이 바뀌면 갱신합니다.',
+  homeOverviewLink: '싱가포르 AI 개관 2026 →',
   ctaReadCore: '핵심 논증 읽기',
   ctaBrowseAll: '모든 컬럼 둘러보기 →',
   freshnessPolicies: '핵심 정책',

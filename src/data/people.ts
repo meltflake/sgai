@@ -140,6 +140,12 @@ export interface Person {
   titleJa?: string;
   titleKo?: string;
   title: string;
+  /** Optional SERP overrides. Read with pickLocalizedOwn (exact locale only,
+   *  zh-tw derived from zh) so an En-only override never leaks into ja/ko. */
+  seoTitle?: string;
+  seoTitleEn?: string;
+  seoTitleJa?: string;
+  seoTitleKo?: string;
   category: 'government' | 'academic' | 'industry';
   // Stored as plain string[] / string — typed widely on purpose because
   // 200+ literal records cause tsserver OOM when the field is a strict union.
@@ -530,9 +536,11 @@ export const people: Person[] = [
     nameJa: '陳傑豪',
     aliases: ['Mr Tan Kiat How'],
     titleEn: 'Senior Minister of State for Digital Development and Information',
-    title: 'MDDI 高级政务部长',
-    titleKo: 'MDDI 선임정무부선임국무장관',
-    titleJa: 'MDDI 上級上級国務大臣',
+    title: '数码发展与信息部（MDDI）高级政务部长',
+    titleKo: '디지털발전정보부(MDDI) 선임국무장관',
+    titleJa: 'デジタル発展・情報省（MDDI）上級国務大臣',
+    seoTitle: '陈杰豪 Tan Kiat How：数码发展与信息部高级政务部长',
+    seoTitleEn: 'Tan Kiat How: Senior Minister of State, MDDI Singapore',
     category: 'government',
     roles: ['minister', 'mp', 'civil-servant'],
     affiliations: ['MDDI', 'IMDA'],

@@ -49,6 +49,16 @@ export interface TalentProgramme {
   nameEn: string;
   nameJa?: string;
   nameKo?: string;
+  /** Optional SERP overrides. Read with pickLocalizedOwn (exact locale only,
+   *  zh-tw derived from zh) so an En-only override never leaks into ja/ko. */
+  seoTitle?: string;
+  seoTitleEn?: string;
+  seoTitleJa?: string;
+  seoTitleKo?: string;
+  seoDescription?: string;
+  seoDescriptionEn?: string;
+  seoDescriptionJa?: string;
+  seoDescriptionKo?: string;
   shortName?: string;
   icon: string;
   category: string;
@@ -1266,6 +1276,9 @@ export const programmes: TalentProgramme[] = [
     nameKo: 'IOAI 2027 싱가포르',
     nameJa: 'IOAI 2027 シンガポール',
     nameEn: 'International Olympiad in AI 2027 Singapore',
+    seoTitleEn: 'IOAI 2027 Singapore: Dates, Venue, Hosts (AISG & NTU)',
+    seoDescriptionEn:
+      'IOAI 2027, the 4th International Olympiad in AI, runs in Singapore from 4 to 10 July 2027, co-hosted by AI Singapore and NTU. Dates, hosts and team selection.',
     shortName: 'IOAI 2027',
     icon: 'tabler:world',
     category: '国际青年赛事',
@@ -1274,13 +1287,14 @@ export const programmes: TalentProgramme[] = [
     categoryEn: 'International youth competition',
     owner: 'AI Singapore + NTU',
     ownerEn: 'AI Singapore + NTU',
-    description: '2027 年第四届 International Olympiad in AI 将在新加坡举行，由 AI Singapore 和南洋理工大学共同主办。',
+    description:
+      '2027 年 7 月 4 日至 10 日，第四届 International Olympiad in AI 将在新加坡举行，由 AI Singapore 和南洋理工大学共同主办。',
     descriptionKo:
-      '2027년 제4회 International Olympiad in AI가 싱가포르에서 개최되며, AI Singapore와 Nanyang Technological University가 공동으로 주최합니다.',
+      '2027년 7월 4일부터 10일까지 제4회 International Olympiad in AI가 싱가포르에서 개최되며, AI Singapore와 Nanyang Technological University가 공동으로 주최합니다.',
     descriptionJa:
-      '2027 年第 4 回 International Olympiad in AI はシンガポールで開催され、AI Singapore および南洋理工大学が共同主催します。',
+      '2027 年 7 月 4 日から 10 日まで、第 4 回 International Olympiad in AI がシンガポールで開催され、AI Singapore および南洋理工大学が共同主催します。',
     descriptionEn:
-      'The 4th International Olympiad in AI will be held in Singapore in 2027, co-hosted by AI Singapore and Nanyang Technological University.',
+      'The 4th International Olympiad in AI will be held in Singapore from 4 to 10 July 2027, co-hosted by AI Singapore and Nanyang Technological University.',
     stats: [
       {
         label: '届数',
@@ -1339,6 +1353,26 @@ export const programmes: TalentProgramme[] = [
     url: 'https://ioai-official.org/singapore-2027/',
     profile: {
       facts: [
+        {
+          label: '日期',
+          labelKo: '일정',
+          labelJa: '日程',
+          labelEn: 'Dates',
+          value: '2027 年 7 月 4 日至 10 日',
+          valueKo: '2027년 7월 4일~10일',
+          valueJa: '2027 年 7 月 4 日〜10 日',
+          valueEn: '4–10 July 2027',
+        },
+        {
+          label: '地点',
+          labelKo: '장소',
+          labelJa: '会場',
+          labelEn: 'Venue',
+          value: '新加坡（具体场地待官方公布）',
+          valueKo: '싱가포르(세부 장소는 공식 발표 예정)',
+          valueJa: 'シンガポール（会場は公式発表待ち）',
+          valueEn: 'Singapore (venue to be announced by the organisers)',
+        },
         {
           label: '共同主办',
           labelKo: '공동 주최',

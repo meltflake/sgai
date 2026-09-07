@@ -9,7 +9,7 @@ import Layout from '~/layouts/PageLayout.astro';
 import SameTopicRail from '~/components/data/SameTopicRail.astro';
 import CiteBlock from '~/components/common/CiteBlock.astro';
 import { categories } from '~/data/policies';
-import { localizedHref, pickLocalized, t } from '~/i18n';
+import { localizedHref, pickLocalized, pickLocalizedOwn, t } from '~/i18n';
 import { synthesizeMetaDescription } from '~/utils/seo-meta';
 
 export const prerender = true;
@@ -44,8 +44,8 @@ const metaDescription = synthesizeMetaDescription([
 ]);
 
 const metadata = {
-  title: `${title}${yearMatch ? ` (${yearMatch})` : ''}`,
-  description: metaDescription,
+  title: pickLocalizedOwn(policy, 'seoTitle', lang) || `${title}${yearMatch ? ` (${yearMatch})` : ''}`,
+  description: pickLocalizedOwn(policy, 'seoDescription', lang) || metaDescription,
 };
 
 const datePadded =

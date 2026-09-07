@@ -58,6 +58,19 @@ if (lang === 'en') heroHeadlineJoiner = ' ';
   <div class="max-w-6xl mx-auto px-4 sm:px-6">
     <div class="grid grid-cols-1 gap-12 md:grid-cols-[2fr_1fr] md:gap-10 lg:gap-14">
       <div class="min-w-0 space-y-12">
+        {/* Site h1 — the page had none (GSC 2026-09). Name + one-line intro + the annual overview. */}
+        <header class="border-b border-subtle pb-6">
+          <h1 class="t-h2 text-gray-900 dark:text-white mb-2">{t(lang, 'siteName')}</h1>
+          <p class="text-sm text-gray-600 dark:text-gray-400 max-w-prose">
+            {t(lang, 'homeIntroTagline')}{' '}
+            <a
+              href={localizedHref('/state-of-singapore-ai-2026/', lang)}
+              class="text-primary hover:text-secondary font-medium underline-offset-4 hover:underline whitespace-nowrap"
+            >
+              {t(lang, 'homeOverviewLink')}
+            </a>
+          </p>
+        </header>
         <FocusHeadline lang={lang} />
         <LatestUpdatesFeed lang={lang} />
         <LatestDebates lang={lang} limit={6} />

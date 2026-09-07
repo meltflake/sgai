@@ -4,6 +4,22 @@
 
 ---
 
+## 0.28.4 — 2026-09-07
+
+### SEO：GSC 首轮数据驱动改进（8 项）
+
+依据 Search Console 近 28 天数据（63,583 曝光 / 504 点击，CTR 从 1.15% 掉到 0.79%），改了曝光高、点击低的页面。分析和证据见 `docs/20260907-gsc-seo-round-3.md`。
+
+- 数据层新增可选 SERP 覆盖字段 `seoTitle*` / `seoDescription*`（Policy / TalentProgramme / EcosystemEntity / LeverItem / Person / BenchmarkDrilldownAnalysis），页面用 `pickLocalizedOwn` 读取：只命中精确语言，zh-tw 由 zh 派生，英文覆盖不会漏到 ja / ko。
+- RIE2025 政策页：title 改为「RIE2025 Singapore: S$25B Plan, Four Strategic Domains」，新增「四大战略领域」章节（四语），修正 contentEn 里领域名称的断句错误。
+- IOAI 2027 人才页：title 直接给日期 / 主办方，事实框新增日期（2027-07-04 至 07-10，来源官方站）和场地状态，description 四语补日期。
+- AI Trailblazers：生态页 title / description 改成品牌词优先；抓手项目页 title 改成分析角度（「AI Trailblazers as a Policy Lever」）避免两页抢同一个词，并新增「完整档案」卡片链回生态页（LeverItem 新增 `relatedEntityIds`）。
+- 香港对标下钻页：数码港超算中心页、AI 资助计划页各给独立 title / description（英文），不再共用「<举措名> · Hong Kong Benchmark」模板。
+- Agentic AI 治理框架：description 改写，正文四语加一段白话摘要；2019 主框架页正文加一句指向 agentic 框架，并在资源里加站内链接。
+- AI Singapore 生态页：description 改写，whatItIs 四语开头直接回答「AI Singapore 是政府机构吗」。
+- 首页：补 h1（站名）+ 一句说明 + 指向《2026 年新加坡 AI 全景》的链接（新增 i18n key `homeIntroTagline` / `homeOverviewLink`）。
+- 陈杰豪人物页：zh title 补职务全称，修正 titleJa 重复词；zh / en 页给 seoTitle。
+
 ## 0.28.3 — 2026-09-07
 
 ### 数据：经济战略检讨、DC-CFA2、SWDA、Kampong AI 补录

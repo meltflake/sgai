@@ -180,8 +180,8 @@ const metaDescription =
     pickLocalizedOwn(entity, 'aiRelevance', lang),
   ]) || description;
 const metadata = {
-  title: titleByLang[lang] || titleByLang.en,
-  description: metaDescription,
+  title: pickLocalizedOwn(entity, 'seoTitle', lang) || titleByLang[lang] || titleByLang.en,
+  description: pickLocalizedOwn(entity, 'seoDescription', lang) || metaDescription,
   robots: { index: !isPendingReview && !isZhStub, follow: true },
 };
 

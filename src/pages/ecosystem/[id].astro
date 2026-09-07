@@ -11,6 +11,7 @@ import { allPeople } from '~/data/people';
 import EcosystemProse from '~/components/data/EcosystemProse.astro';
 import { isStubEcosystemEntity } from '~/utils/quality';
 import { synthesizeMetaDescription } from '~/utils/seo-meta';
+import { pickLocalizedOwn } from '~/i18n';
 
 export const prerender = true;
 
@@ -98,8 +99,8 @@ const isEnStub = isStubEcosystemEntity(entity, 'en');
 // `pick()` above — an English SERP snippet must not carry Chinese).
 const metaDescription = synthesizeMetaDescription([entity.whatItIsEn, entity.aiRelevanceEn]) || description;
 const metadata = {
-  title: `${displayName} — ${categoryName}, Singapore AI`,
-  description: metaDescription,
+  title: pickLocalizedOwn(entity, 'seoTitle', lang) || `${displayName} — ${categoryName}, Singapore AI`,
+  description: pickLocalizedOwn(entity, 'seoDescription', lang) || metaDescription,
   robots: { index: !isPendingReview && !isEnStub, follow: true },
 };
 

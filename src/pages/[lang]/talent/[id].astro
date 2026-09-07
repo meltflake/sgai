@@ -9,7 +9,15 @@ import Layout from '~/layouts/PageLayout.astro';
 import SameTopicRail from '~/components/data/SameTopicRail.astro';
 import { programmes, type TalentProgramme, type TalentStatusTone } from '~/data/talent';
 import { SITE_UPDATED } from '~/version';
-import { NON_DEFAULT_ROUTE_LOCALES, localizedHref, pickLocalized, t, IN_LANGUAGES, type Lang } from '~/i18n';
+import {
+  NON_DEFAULT_ROUTE_LOCALES,
+  localizedHref,
+  pickLocalized,
+  pickLocalizedOwn,
+  t,
+  IN_LANGUAGES,
+  type Lang,
+} from '~/i18n';
 import { toTraditional } from '~/i18n/opencc';
 
 export const prerender = true;
@@ -63,8 +71,9 @@ const brandSuffixByLang: Record<Lang, string> = {
   en: 'Singapore AI talent programme',
 };
 const metadata = {
-  title: `${progName} — ${brandSuffixByLang[lang] || brandSuffixByLang.en}`,
-  description: progDescription,
+  title:
+    pickLocalizedOwn(programme, 'seoTitle', lang) || `${progName} — ${brandSuffixByLang[lang] || brandSuffixByLang.en}`,
+  description: pickLocalizedOwn(programme, 'seoDescription', lang) || progDescription,
 };
 
 // zh readers get a bilingual headline (their H1 is zh, so pairing it with

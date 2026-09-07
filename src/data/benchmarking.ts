@@ -357,6 +357,16 @@ export interface BenchmarkDrilldownAnalysis {
   analysisEn?: string;
   analysisJa?: string;
   analysisKo?: string;
+  /** Optional SERP overrides. Read with pickLocalizedOwn (exact locale only,
+   *  zh-tw derived from zh) so an En-only override never leaks into ja/ko. */
+  seoTitle?: string;
+  seoTitleEn?: string;
+  seoTitleJa?: string;
+  seoTitleKo?: string;
+  seoDescription?: string;
+  seoDescriptionEn?: string;
+  seoDescriptionJa?: string;
+  seoDescriptionKo?: string;
   sources?: BenchmarkAnalysisSource[];
 }
 
@@ -1294,6 +1304,9 @@ export const regionDetails: RegionDetail[] = [
         ],
       },
       'investment-3': {
+        seoTitleEn: 'Hong Kong AI Subsidy Scheme (Cyberport): HK$3B, Eligibility',
+        seoDescriptionEn:
+          'Hong Kong’s HK$3 billion AI Subsidy Scheme (AICP): up to 70% off Cyberport AISC compute for local universities, research bodies and companies, and how to apply.',
         analysis:
           'AI 资助计划（AICP，AI Computing Programme），2024-25 财年预算案宣布，3 年期共 HK$30 亿。机制是为本地大学、研究机构、企业提供 Cyberport AI Supercomputing Centre 算力服务的补贴，最高补贴到 list price 的 70%。AISC 2024 年 12 月开始部署，截至 2025 年中约 20 个项目已获批，AISC 平均使用率近 80%。判断：这是香港 AI 投入中最 surgical 的一笔——直接补贴算力消费，绕过中间机构，对追赶时间窗口很有效。3 年内若不能让足够多研究项目商业化，第二期能否续期是悬念；但当下利用率 80% 是好信号。',
         analysisKo:
@@ -1349,6 +1362,9 @@ export const regionDetails: RegionDetail[] = [
         ],
       },
       'initiative-1': {
+        seoTitleEn: 'Cyberport AI Supercomputing Centre, Hong Kong: 3000 PFLOPS',
+        seoDescriptionEn:
+          'Hong Kong’s Cyberport AI Supercomputing Centre (AISC): 3000 PFLOPS target, phased rollout since December 2024, subsidised access, and a Singapore comparison.',
         analysis:
           'Cyberport AI Supercomputing Centre（AISC），2024 年 12 月开始部署，算力将分阶段达到 3000 PFLOPS。运营模式是"政府基础设施 + 用户付费 + AICP 补贴"——本地大学 / 研究机构 / 企业按市场价付费使用，最多通过 AICP 补回 70% list price。截至 2025 年中，已批 ~20 个项目（来自约 20 所大学、机构、公司），AISC 平均使用率近 80%。判断：3000 PFLOPS 是政策传播口号，但分阶段达到——目前是否真达 3000 PFLOPS 公开信息不全（数字属"承诺"非"实测"），但 80% 利用率显示需求确实存在。这是香港 AI 战略中执行节奏最快的一项。',
         analysisKo:

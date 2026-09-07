@@ -7,10 +7,10 @@ import RelatedRail from '~/components/data/RelatedRail.astro';
 import Layout from '~/layouts/PageLayout.astro';
 import SameTopicRail from '~/components/data/SameTopicRail.astro';
 import { dataDate, publicLeverGroups } from '~/data/levers';
-import { pickLocalized } from '~/i18n';
+import { pickLocalized, pickLocalizedOwn } from '~/i18n';
 import { synthesizeMetaDescription } from '~/utils/seo-meta';
 import { getDebateById, getPolicyById } from '~/utils/graph';
-import { leverItemSlug, leverPages, leverSlug } from '~/utils/entity-pages';
+import { leverItemSlug, leverPages, leverSlug, getEcosystemEntityPage } from '~/utils/entity-pages';
 
 export const prerender = true;
 
@@ -24,6 +24,12 @@ const lever = page.lever;
 const isLever = page.kind === 'lever';
 const itemPolicies = page.kind === 'item' ? (page.item.relatedPolicyIds || []).map(getPolicyById).filter(Boolean) : [];
 const itemDebates = page.kind === 'item' ? (page.item.relatedDebateIds || []).map(getDebateById).filter(Boolean) : [];
+const itemEntities =
+  page.kind === 'item'
+    ? (page.item.relatedEntityIds || [])
+        .map(getEcosystemEntityPage)
+        .filter((p): p is NonNullable<typeof p> => Boolean(p))
+    : [];
 const visibleGroups = publicLeverGroups(lever);
 const projectCount = visibleGroups.reduce((sum, group) => sum + group.items.length, 0);
 
@@ -45,8 +51,9 @@ const metaDescription = synthesizeMetaDescription([
 
 // Lever pages already start with "Lever N ·" — avoid repeating the number
 // in the suffix. Item pages get the lever number as their distinguisher.
+const seoTitle = isLever ? undefined : pickLocalizedOwn(page.item, 'seoTitle', lang);
 const metadata = {
-  title: isLever ? `${title} — Singapore AI` : `${title} · Singapore AI Lever ${lever.number}`,
+  title: seoTitle || (isLever ? `${title} — Singapore AI` : `${title} · Singapore AI Lever ${lever.number}`),
   description: metaDescription,
 };
 
@@ -197,6 +204,19 @@ const schema = {
           <section class="mb-10">
             <h2 class="t-h3 text-gray-900 dark:text-white mb-4">Related Reading</h2>
             <div class="grid gap-3 md:grid-cols-2">
+              {itemEntities.map((ep) => (
+                <a
+                  href={`/ecosystem/${ep.slug}/`}
+                  class="block bg-surface border border-subtle rounded-lg p-4 hover:border-emerald-300 hover:shadow-sm transition-all"
+                >
+                  <h3 class="font-semibold text-gray-900 dark:text-white text-sm">
+                    Full profile: {ep.entity.nameEn || ep.entity.name}
+                  </h3>
+                  <p class="text-xs text-gray-600 dark:text-gray-400 mt-2">
+                    {ep.entity.descriptionEn || ep.entity.description}
+                  </p>
+                </a>
+              ))}
               {itemPolicies.map((policy) => (
                 <a
                   href={policy!.id ? `/policies/${policy!.id}/` : '/policies/'}
@@ -219,7 +239,7 @@ const schema = {
                   <p class="text-xs text-gray-600 dark:text-gray-400 mt-2">{debate!.summaryEn || debate!.summary}</p>
                 </a>
               ))}
-              {itemPolicies.length === 0 && itemDebates.length === 0 && (
+              {itemPolicies.length === 0 && itemDebates.length === 0 && itemEntities.length === 0 && (
                 <a
                   href={`/levers/${leverSlug(lever)}/`}
                   class="block bg-surface border border-subtle rounded-lg p-4 hover:border-emerald-300 hover:shadow-sm transition-all"
