@@ -111,7 +111,7 @@ export const universityProjects: OpenSourceProject[] = [
     descriptionKo: '분산 딥러닝 훈련 프레임워크로, 거대 모형의 효율적인 훈련을 지원합니다.',
     descriptionJa: '分散型深層学習訓練フレームワーク、大規模モデルの効率的な訓練に対応しています。',
     descriptionEn: 'Distributed deep-learning training framework optimised for efficient large-model training',
-    stars: 41444,
+    stars: 41443,
     url: 'https://github.com/hpcaitech/ColossalAI',
     websiteUrl: 'https://www.colossalai.org',
     language: 'Python',
@@ -1879,7 +1879,7 @@ export const summary = {
     'シンガポールの AI オープンソース貢献は、政府プロジェクト自体をはるかに上回ります。Salesforce Singapore Lab の BLIP シリーズはグローバルなビジュアル言語 AI の基礎となり、NUS が孵化した Colossal-AI は最も人気のある分散トレーニング フレームワークの 1 つであり、NTU の OpenMMLab はコンピューター ビジョン分野の事実上の標準の 1 つです。',
   noteEn:
     "Singapore's open-source AI work goes well beyond the government's own projects. Salesforce's Singapore lab produced the BLIP family, a cornerstone of global vision-language AI; NUS-incubated Colossal-AI is one of the most popular distributed-training frameworks; and NTU's OpenMMLab is a widely used computer-vision toolbox ecosystem.",
-  dataDate: '2026-09-06',
+  dataDate: '2026-09-07',
 };
 
 export const dataDisclaimer =

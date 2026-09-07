@@ -5,7 +5,7 @@ export const seaLionStats = {
   topModel: 'Gemma-SEA-LION-v4-27B-IT',
   topModelDownloads: 5034,
   dataSource: 'HuggingFace API',
-  dataDate: '2026-09-05',
+  dataDate: '2026-09-07',
   huggingfaceUrl: 'https://huggingface.co/aisingapore',
 };
 
@@ -235,7 +235,7 @@ export const openSourceProjects: OfficialOpenSourceProject[] = [
     descriptionKo: 'AI 거버넌스 원칙을 실행 가능한 테스트의 오픈소스 프레임워크로 변환',
     descriptionJa: 'AI治理原則を実行可能なテストのオープンソースフレームワークに変換する',
     descriptionEn: 'An open-source framework that turns AI governance principles into executable tests',
-    stars: 93,
+    stars: 94,
     language: 'TypeScript',
     url: 'https://github.com/aiverify-foundation/aiverify',
     websiteUrl: 'https://aiverifyfoundation.sg/',
@@ -646,7 +646,7 @@ If SEA-LION is to enter sensitive sectors such as government, education, healthc
     descriptionKo: '무료 RPA 웹/데스크톱 자동화 도구',
     descriptionJa: '無料の RPA ウェブ/デスクトップ自動化ツール',
     descriptionEn: 'Free RPA tool for web and desktop automation',
-    stars: 6327,
+    stars: 6329,
     language: 'JavaScript',
     url: 'https://github.com/aisingapore/TagUI',
     websiteUrl: 'https://tagui.readthedocs.io/',
