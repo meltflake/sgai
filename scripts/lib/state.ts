@@ -40,6 +40,8 @@ export interface PoliciesState {
 export interface EcosystemState {
   /** Company URLs already seen. */
   scannedCompanies: string[];
+  /** URLs the stale gate dropped (page older than the window); skipped on later scans. */
+  staleUrls?: string[];
 }
 export interface LeversState {
   maxDates: Record<string, string>;

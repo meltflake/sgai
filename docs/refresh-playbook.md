@@ -150,11 +150,16 @@ npx tsx scripts/refresh/policies/run.ts --no-push              # 仅 commit 不�
 - **数据**: `src/data/ecosystem.ts`（272 KB / 10 categories / 几百实体）
 - **来源**: aisingapore.org RSS、businesstimes.com.sg tech RSS、tech.gov.sg sitemap、channelnewsasia.com RSS、news.nus.edu.sg sitemap（2026-08-03 扩源；`scripts/refresh/ecosystem/sources.ts` 可扩展）
 - **现状**: ✅ auto-PR pipeline 已建；schema 已加 `_pendingReview` 字段，自动 emit 的条目 default 标 pending。e27 / govinsider / straitstimes 已于 2026-05-03 因 Cloudflare JS challenge / JS-rendered 无真实 RSS 而弃用（2026-07-04 复测 e27 带浏览器 UA 仍 403，结论不变），换用上面三个已验证可用源
+- **两道门（2026-09-07 加）**:
+  - 旧闻过滤：默认只收 180 天内的页面。扫描阶段看 RSS pubDate / sitemap lastmod / URL 里的年份，抓取后再看页面日期和摘要日期。丢掉的 URL 记进本机 `scripts/data/last_scan_state.json` 的 `staleUrls`，下次不再抓。`--max-age-days=N` 改窗口，`0` 关掉。
+  - 实体名抽取：`scripts/lib/extract-entity.ts` 读正文判断页面主体是哪一个机构 / 项目 / 产品，记录用实体名而不是新闻标题命名，`founded` 只在原文写明时才填。判定“不是实体”（趋势、预算、活动、观点）且高置信的直接丢；实体已在地图上的报 already-covered 不重复加。
+  - 丢掉的候选都列在 PR 正文 “Dropped before emit” 里，方便否决。`--limit` 现在数的是采纳的条目，扫描池是 4 倍。
 - **更新命令**:
 
 ```bash
 npx tsx scripts/refresh/ecosystem/run.ts --dry-run --limit=5
 npx tsx scripts/refresh/ecosystem/run.ts --limit=5
+npx tsx scripts/refresh/ecosystem/run.ts --limit=5 --max-age-days=365   # 放宽旧闻窗口
 ```
 
 - **审核流**: PR 里 `_pendingReview: true` 改为 false 即上线（或删除字段）。listing 页过滤 pending；详情页保留并显示 "Pending review" 角标（待 UI 实现）

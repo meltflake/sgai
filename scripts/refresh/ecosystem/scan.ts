@@ -6,10 +6,11 @@
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 
-import { listSitemap } from '../../lib/gov-fetch.ts';
+import { listSitemapEntries } from '../../lib/gov-fetch.ts';
 import { isGenericOrLanding, normalizeUrl } from '../../lib/scan-filters.ts';
+import { staleVerdict } from '../../lib/stale-gate.ts';
 import type { ScanState } from '../../lib/state.ts';
-import { ECOSYSTEM_SOURCES, type EcosystemSourceEntry } from './sources.ts';
+import { DEFAULT_MAX_AGE_DAYS, ECOSYSTEM_SOURCES, type EcosystemSourceEntry } from './sources.ts';
 
 export interface EcosystemCandidate {
   sourceUrl: string;
@@ -19,13 +20,16 @@ export interface EcosystemCandidate {
   defaultEntityType: string;
   /** RSS title if extracted from feed. */
   hintedTitle?: string;
-  /** RSS pubDate if available. */
+  /** RSS pubDate or sitemap lastmod if available. */
   hintedDate?: string;
+  /** What hintedDate is: a publication date (authoritative) or a
+   *  last-modified stamp (proves old only). */
+  hintedDateKind?: 'published' | 'modified';
 }
 
 export interface EcosystemScanResult {
   candidates: EcosystemCandidate[];
-  perSource: Array<{ domain: string; checked: number; matched: number; error?: string }>;
+  perSource: Array<{ domain: string; checked: number; matched: number; stale: number; error?: string }>;
 }
 
 export interface EcosystemScanOptions {
@@ -34,6 +38,10 @@ export interface EcosystemScanOptions {
   dryRun?: boolean;
   limit?: number;
   onlyDomain?: string;
+  /** Old-news window in days; 0 disables. Default DEFAULT_MAX_AGE_DAYS. */
+  maxAgeDays?: number;
+  /** Injectable clock for tests. */
+  now?: Date;
 }
 
 interface RSSItem {
@@ -77,9 +85,10 @@ async function parseRss(feedUrl: string): Promise<RSSItem[]> {
 
 async function scanSource(
   source: EcosystemSourceEntry,
-  opts: { existingUrls: Set<string> }
-): Promise<{ found: EcosystemCandidate[]; checked: number; error?: string }> {
+  opts: { existingUrls: Set<string>; maxAgeDays: number; now: Date }
+): Promise<{ found: EcosystemCandidate[]; checked: number; stale: number; error?: string }> {
   const found: EcosystemCandidate[] = [];
+  let stale = 0;
   // Normalized keys: catch `?page=N` / trailing-slash / fragment variants of
   // stored URLs, and collapse in-scan duplicates (issue #166).
   const existingKeys = new Set([...opts.existingUrls].map(normalizeUrl));
@@ -95,6 +104,19 @@ async function scanSource(
     return true;
   };
 
+  // Old-news gate, scan stage: cheap hints only (feed date, sitemap lastmod,
+  // year in the URL). A page with no hint passes here and is re-checked in
+  // enrich once its body date is known — see lib/stale-gate.ts.
+  const fresh = (url: string, hint: { published?: string; modified?: string }): boolean => {
+    const v = staleVerdict(
+      { published: [hint.published], modified: [hint.modified], url },
+      opts.maxAgeDays,
+      opts.now
+    );
+    if (v.stale) stale += 1;
+    return !v.stale;
+  };
+
   try {
     if (source.feedType === 'rss') {
       const items = await parseRss(source.feedUrl);
@@ -106,6 +128,7 @@ async function scanSource(
         if (source.urlExcludes?.some((re) => re.test(item.link))) continue;
         if (catExcludes.length && item.categories.some((c) => catExcludes.includes(c.toLowerCase()))) continue;
         if (!admit(item.link)) continue;
+        if (!fresh(item.link, { published: item.pubDate })) continue;
         found.push({
           sourceUrl: item.link,
           domain: source.domain,
@@ -114,27 +137,34 @@ async function scanSource(
           defaultEntityType: source.defaultEntityType,
           hintedTitle: item.title,
           hintedDate: item.pubDate,
+          hintedDateKind: 'published',
         });
       }
     } else {
-      const urls = await listSitemap(source.feedUrl);
-      checked = urls.length;
-      for (const url of urls) {
+      const entries = await listSitemapEntries(source.feedUrl);
+      checked = entries.length;
+      for (const { loc: url, lastmod } of entries) {
         if (!source.urlFilter.test(url)) continue;
         if (source.urlExcludes?.some((re) => re.test(url))) continue;
         if (!admit(url)) continue;
+        // lastmod is "last modified", so it can only prove a page is old
+        // (a recent lastmod on a 2020 press release is common after a CMS
+        // migration). The body date in enrich is the real check.
+        if (!fresh(url, { modified: lastmod })) continue;
         found.push({
           sourceUrl: url,
           domain: source.domain,
           label: source.label,
           defaultCategory: source.defaultCategory,
           defaultEntityType: source.defaultEntityType,
+          hintedDate: lastmod,
+          hintedDateKind: 'modified',
         });
       }
     }
-    return { found, checked };
+    return { found, checked, stale };
   } catch (error) {
-    return { found, checked, error: error instanceof Error ? error.message : String(error) };
+    return { found, checked, stale, error: error instanceof Error ? error.message : String(error) };
   }
 }
 
@@ -147,9 +177,17 @@ export async function scan(options: EcosystemScanOptions): Promise<EcosystemScan
   const perSource: EcosystemScanResult['perSource'] = [];
   const all: EcosystemCandidate[] = [];
 
+  const maxAgeDays = options.maxAgeDays ?? DEFAULT_MAX_AGE_DAYS;
+  const now = options.now ?? new Date();
   for (const source of sources) {
-    const r = await scanSource(source, { existingUrls: options.existingUrls });
-    perSource.push({ domain: source.domain, checked: r.checked, matched: r.found.length, error: r.error });
+    const r = await scanSource(source, { existingUrls: options.existingUrls, maxAgeDays, now });
+    perSource.push({
+      domain: source.domain,
+      checked: r.checked,
+      matched: r.found.length,
+      stale: r.stale,
+      error: r.error,
+    });
     all.push(...r.found);
     if (options.dryRun) break;
   }
@@ -166,4 +204,23 @@ export function readExistingEcosystemUrls(filePath: string = resolve('src/data/e
     urls.add(m[1]);
   }
   return urls;
+}
+
+/**
+ * Every entity `id` and `name` / `nameEn` already in ecosystem.ts, so a
+ * candidate whose extracted entity is already on the map is reported as
+ * "already covered" instead of emitted as a duplicate stub.
+ */
+export function readExistingEcosystemIdentity(filePath: string = resolve('src/data/ecosystem.ts')): {
+  ids: Set<string>;
+  names: Set<string>;
+} {
+  const source = readFileSync(filePath, 'utf8');
+  const ids = new Set<string>();
+  const names = new Set<string>();
+  for (const m of source.matchAll(/^ {8}id:\s*['"]([^'"]+)['"]/gm)) ids.add(m[1]);
+  for (const m of source.matchAll(/^ {8}(?:name|nameEn):\s*\n?\s*['"]([^'"]+)['"]/gm)) {
+    names.add(m[1].trim().toLowerCase());
+  }
+  return { ids, names };
 }

@@ -125,3 +125,37 @@ export const ECOSYSTEM_CATEGORIES = [
 ] as const;
 
 export type EcosystemCategoryName = (typeof ECOSYSTEM_CATEGORIES)[number];
+
+/**
+ * Old-news window. A discovery feed is for what is new; the 2026-09-07 run
+ * (#294) proposed a June 2020 GovTech press release because nothing looked
+ * at a date. Override per run with `--max-age-days=N` (0 disables).
+ */
+export const DEFAULT_MAX_AGE_DAYS = 180;
+
+/**
+ * Closed set for the entity-name extractor. MUST match `EcosystemEntityType`
+ * in src/data/ecosystem.ts.
+ */
+export const ECOSYSTEM_ENTITY_TYPES = [
+  'agency',
+  'institute',
+  'university',
+  'platform',
+  'product',
+  'program',
+  'partner',
+  'initiative',
+] as const;
+
+/** What each entity type means, for the extractor's prompt. */
+export const ECOSYSTEM_ENTITY_TYPE_GLOSS: Readonly<Record<(typeof ECOSYSTEM_ENTITY_TYPES)[number], string>> = {
+  agency: 'a government ministry, statutory board, or public agency',
+  institute: 'a research institute, lab, or centre',
+  university: 'a university or its school / faculty',
+  platform: 'shared infrastructure or a service platform',
+  product: 'a specific product, model, tool, or dataset',
+  program: 'a funding, training, or accelerator programme',
+  partner: 'a company or industry player (local or global) active in Singapore',
+  initiative: 'a named initiative, roadmap, or coalition',
+};

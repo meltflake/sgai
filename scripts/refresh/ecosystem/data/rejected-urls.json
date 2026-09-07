@@ -34,5 +34,11 @@
     "reason": "US litigation news, unrelated to Singapore's AI ecosystem; the pipeline itself scored it low confidence.",
     "decidedAt": "2026-09-06",
     "ref": "#285"
+  },
+  {
+    "url": "https://www.tech.gov.sg/media/thirty-percent-increase-fy2020-ict-spend-to-accelerate-digitalisation-and-support-businesses/",
+    "reason": "June 2020 GovTech press release about FY2020 ICT spending — six-year-old news, not an ecosystem entity. Also the case that motivated the old-news gate.",
+    "decidedAt": "2026-09-07",
+    "ref": "#294"
   }
 ]
