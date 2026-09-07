@@ -118,6 +118,167 @@ export const categories: PolicyCategory[] = [
     icon: '🏛️',
     policies: [
       {
+        id: 'economic-strategy-review-2026',
+        title: '经济战略检讨最终报告 (ESR 2026)',
+        titleKo: '경제 전략 검토 최종 보고서 (ESR 2026)',
+        titleJa: '経済戦略検討 最終報告書 (ESR 2026)',
+        titleEn: 'Economic Strategy Review: Securing Growth and Good Jobs in a Changing World',
+        topicIds: ['national-strategy', 'economy-industry', 'employment-workforce', 'startups-investment'],
+        date: '2026-06',
+        source: '贸工部 (MTI) / 新加坡经济韧性工作组 (SERT)',
+        sourceKo: '통상산업부 (MTI) / 싱가포르 경제 회복력 태스크포스 (SERT)',
+        sourceJa: '貿易産業省 (MTI) / シンガポール経済レジリエンス・タスクフォース (SERT)',
+        sourceEn: 'Ministry of Trade and Industry (MTI) / Singapore Economic Resilience Taskforce (SERT)',
+        sourceOrgUrl: 'https://www.mti.gov.sg/',
+        sourceUrl: 'https://www.gov.sg/features/esr/',
+        pdfUrl: 'https://file.go.gov.sg/esr-finalreport.pdf',
+        summary:
+          '2026 年 6 月发布的《经济战略检讨》最终报告，题为「在变化的世界里守住增长和好工作」。8 个方向、32 条建议，核心判断是增长不再自动带来同样多的工作。方向 2 把新加坡定位为 AI 解决方案的全球领先者，方向 5–7 讲 AI 时代怎么让增长变成工作：不为保岗位而拖慢 AI，但政府补贴企业用 AI 要看工人结果。',
+        summaryKo:
+          '2026년 6월 발표된 「경제 전략 검토」 최종 보고서, 제목은 「변화하는 세계에서 성장과 좋은 일자리를 지키기」. 8가지 방향, 32개 제안. 핵심 판단은 성장이 더 이상 같은 수의 일자리를 자동으로 만들지 못한다는 것. 방향 2는 싱가포르를 AI 솔루션의 글로벌 리더로 자리매김하고, 방향 5–7은 AI 시대에 성장을 일자리로 바꾸는 방법을 다룬다: 일자리 보호를 위해 AI를 늦추지 않되, 기업의 AI 도입에 대한 정부 지원은 노동자 성과를 기준으로 삼는다.',
+        summaryJa:
+          '2026 年 6 月に公表された「経済戦略検討」最終報告書。題名は「変化する世界で成長と良質な雇用を守る」。8 つの方向、32 の提言。核心の判断は、成長がもはや同じだけの雇用を自動的には生まないというもの。方向 2 はシンガポールを AI ソリューションのグローバル・リーダーと位置づけ、方向 5〜7 は AI 時代に成長を雇用へ変える方法を扱う：雇用を守るために AI を減速させないが、企業の AI 導入への政府支援は労働者の成果を条件とする。',
+        summaryEn:
+          'The final report of the Economic Strategy Review, published in June 2026 under the title "Securing Growth and Good Jobs in a Changing World". Eight thrusts and 32 recommendations, built on the judgment that growth no longer automatically brings the same number of jobs. Thrust 2 positions Singapore as a global leader in AI solutions; thrusts 5 to 7 cover how growth turns into jobs in the AI era: no slowing of AI to protect jobs, but government support for enterprise AI must show worker outcomes.',
+        whyItMatters:
+          '这是 2017 年未来经济委员会之后新加坡最重要的经济战略文件，第一次把「增长不等于就业」写成前提，并给 AI 补贴附上工人结果条件；国家 AI 理事会、四个国家 AI 任务、Kampong AI、国家 AI 影响计划都被收进这个框架。',
+        whyItMattersEn:
+          "Singapore's most important economic strategy document since the 2017 Committee on the Future Economy: the first to state that growth no longer equals jobs, and to tie AI subsidies to worker outcomes. The National AI Council, the four National AI Missions, Kampong AI and the National AI Impact Programme all sit inside this framework.",
+        whyItMattersJa:
+          '2017 年の未来経済委員会以来、シンガポールで最も重要な経済戦略文書。「成長は雇用に等しくない」を初めて前提として明記し、AI 補助金に労働者の成果条件を付けた。国家 AI 評議会、4 つの国家 AI ミッション、Kampong AI、国家 AI インパクト・プログラムはすべてこの枠組みの中にある。',
+        whyItMattersKo:
+          '2017년 미래경제위원회 이후 싱가포르에서 가장 중요한 경제 전략 문서. 「성장은 일자리와 같지 않다」를 처음으로 전제로 명시하고, AI 보조금에 노동자 성과 조건을 붙였다. 국가 AI 위원회, 4개 국가 AI 미션, Kampong AI, 국가 AI 임팩트 프로그램이 모두 이 틀 안에 있다.',
+        content: `2025 年 8 月 4 日，副总理颜金勇宣布启动《经济战略检讨》，挂在新加坡经济韧性工作组 (SERT) 下，设 5 个委员会（全球竞争力、科技与创新、创业、人力资本、重组影响管理），每个委员会由两名政治职位持有人担任联合主席。2025 年 8 月至 2026 年 4 月，80 多场咨询接触 7,700 多人。
+
+**时间线**
+- 2026 年 1 月 30 日：中期更新。政府据此成立国家 AI 理事会，并决定合并 SkillsFuture Singapore 和 Workforce Singapore。
+- 2026 年 5 月 13 日：在工商联合总会「未来经济大会」上公布 32 条建议。
+- 2026 年 6 月：最终报告发布，80 多页。财政预算案 2026 已先行回应了其中一部分。
+
+**三个原则**：把价值主张磨尖、更快地调整、效率之外还要有韧性。
+
+**八个方向**：前四个保住增长（在强项上做到全球领先、做 AI 解决方案的全球领先者、从「流量经过的枢纽」变成「流量被组织的枢纽」、让更多新加坡公司能起步做大走出去），后四个创造好工作和韧性（创造更多更多样的好工作、建更强的职业转换和工人支持系统、让工人终身学习、把经济韧性当成核心能力）。
+
+**与 AI 直接相关的内容**：方向 2 明确新加坡不去争最大的模型和最大的数据中心，而是做 AI 解决方案「在真实场景里开发、测试、部署、放大」的地方；由国家 AI 理事会和行业共同出题，选一批本地领军企业做「AI 冠军」。方向 5 的立场最鲜明：不为保岗位而拖慢 AI，但政府支持企业用 AI 要附带对工人结果的明确期望，「AI 的收益不能只归资本」。报告引用的数字：中小企业 AI 使用率 14.5%，大企业 62%（2024 年）。
+
+详见本站长文《新加坡经济战略检讨讲了什么：8 个方向、32 条建议》。`,
+        contentKo: `2025년 8월 4일, 간킴용 부총리가 「경제 전략 검토」 착수를 발표했다. 싱가포르 경제 회복력 태스크포스 (SERT) 산하에 5개 위원회(글로벌 경쟁력, 기술과 혁신, 창업, 인적 자본, 구조 조정 영향 관리)를 두고, 각 위원회는 두 명의 정무직이 공동 의장을 맡았다. 2025년 8월부터 2026년 4월까지 80회 이상의 자문에서 7,700명 이상을 만났다.
+
+**타임라인**
+- 2026년 1월 30일: 중간 업데이트. 정부는 이를 바탕으로 국가 AI 위원회를 설립하고 SkillsFuture Singapore와 Workforce Singapore의 통합을 결정했다.
+- 2026년 5월 13일: 싱가포르 상공연합회 「미래 경제 컨퍼런스」에서 32개 제안 발표.
+- 2026년 6월: 최종 보고서 발표, 80쪽 이상. 2026년 예산안이 그중 일부에 먼저 대응했다.
+
+**세 가지 원칙**: 가치 제안을 날카롭게, 더 빠르게 조정, 효율 외에 회복력도.
+
+**여덟 가지 방향**: 앞의 넷은 성장 지키기(강점 분야에서 글로벌 선도, AI 솔루션의 글로벌 리더, 「흐름이 지나가는 허브」에서 「흐름이 조직되는 허브」로, 더 많은 싱가포르 기업이 창업·성장·해외 진출), 뒤의 넷은 좋은 일자리와 회복력(더 많고 다양한 좋은 일자리, 더 강한 직업 전환과 노동자 지원 체계, 노동자의 평생 학습, 경제 회복력을 핵심 역량으로).
+
+**AI와 직접 관련된 내용**: 방향 2는 싱가포르가 가장 큰 모델이나 가장 큰 데이터센터를 다투지 않고, AI 솔루션이 「실제 현장에서 개발·테스트·배포·확장되는」 곳이 되겠다고 명시한다. 국가 AI 위원회와 업계가 함께 과제를 내고, 현지 선도 기업을 「AI 챔피언」으로 선정한다. 방향 5의 입장이 가장 뚜렷하다: 일자리 보호를 위해 AI를 늦추지 않되, 기업의 AI 도입에 대한 정부 지원에는 노동자 성과에 대한 명확한 기대를 붙인다. 「AI의 이익이 자본에만 돌아가서는 안 된다」. 보고서가 인용한 수치: 중소기업 AI 도입률 14.5%, 대기업 62%(2024년).
+
+자세한 내용은 본 사이트의 장문 「싱가포르 경제 전략 검토가 말하는 것: 8가지 방향, 32개 제안」 참조.`,
+        contentJa: `2025 年 8 月 4 日、ガン・キムヨン副首相が「経済戦略検討」の開始を発表した。シンガポール経済レジリエンス・タスクフォース (SERT) の下に 5 つの委員会（グローバル競争力、技術・イノベーション、起業、人的資本、再編の影響への対応）を置き、各委員会は 2 名の政務職が共同議長を務めた。2025 年 8 月から 2026 年 4 月まで、80 回超の協議で 7,700 人以上と接触した。
+
+**タイムライン**
+- 2026 年 1 月 30 日：中間アップデート。政府はこれに基づき国家 AI 評議会を設立し、SkillsFuture Singapore と Workforce Singapore の統合を決定した。
+- 2026 年 5 月 13 日：シンガポール商業連盟「未来経済会議」で 32 の提言を公表。
+- 2026 年 6 月：最終報告書を公表、80 ページ超。2026 年度予算がその一部に先行して対応した。
+
+**三つの原則**：価値提案を研ぎ澄ます、より速く調整する、効率に加えてレジリエンスを持つ。
+
+**八つの方向**：前半の四つは成長を守る（強みの分野で世界をリードする、AI ソリューションのグローバル・リーダーになる、「流れが通過するハブ」から「流れが組織されるハブ」へ、より多くのシンガポール企業が起業・成長・海外展開できるようにする）、後半の四つは良質な雇用とレジリエンス（より多く多様な良質な雇用、より強い職業転換と労働者支援の仕組み、労働者の生涯学習、経済レジリエンスを中核能力に）。
+
+**AI に直接関わる内容**：方向 2 は、シンガポールが最大のモデルや最大のデータセンターを競うのではなく、AI ソリューションが「実際の現場で開発・検証・展開・拡大される」場所になると明記する。国家 AI 評議会と業界が共同で課題を設定し、地元の先導企業を「AI チャンピオン」として選ぶ。方向 5 の立場が最も鮮明だ：雇用を守るために AI を減速させないが、企業の AI 導入への政府支援には労働者の成果に対する明確な期待を付ける。「AI の利益が資本だけに帰してはならない」。報告書が引用する数字：中小企業の AI 導入率 14.5%、大企業 62%（2024 年）。
+
+詳細は本サイトの長文「シンガポールの経済戦略検討が何を述べているのか：8 つの方向、32 の提案」を参照。`,
+        contentEn: `On 4 August 2025, Deputy Prime Minister Gan Kim Yong launched the Economic Strategy Review under the Singapore Economic Resilience Taskforce (SERT), with five committees (Global Competitiveness, Technology and Innovation, Entrepreneurship, Human Capital, Managing the Impact of Restructuring), each co-chaired by two political office-holders. Between August 2025 and April 2026, more than 80 consultations reached over 7,700 people.
+
+**Timeline**
+- 30 January 2026: mid-term update. On its basis the Government set up the National AI Council and decided to merge SkillsFuture Singapore and Workforce Singapore.
+- 13 May 2026: the 32 recommendations were presented at the Singapore Business Federation's Future Economy Conference.
+- June 2026: final report published, more than 80 pages. Budget 2026 had already responded to part of it.
+
+**Three imperatives**: sharpen the value proposition, enhance agility and adaptability, build resilience alongside efficiency.
+
+**Eight thrusts**: the first four secure growth (lead globally in areas of strength, become a global leader in AI solutions, move from a hub that flows pass through to a hub where flows are organised, help more Singapore companies start, scale and go global); the last four create good jobs and resilience (create more and more diverse good jobs, build a stronger career-transition and worker-support system, enable lifelong learning, treat economic resilience as a core capability).
+
+**What touches AI directly**: Thrust 2 states that Singapore will not compete for the largest models or the largest data centres, but will be the place where AI solutions are "developed, tested, deployed and scaled in real-world settings"; the National AI Council and industry set the problems jointly, and a group of local leading firms become "AI champions". Thrust 5 takes the clearest position: no slowing of AI to protect jobs, but government support for enterprise AI comes with explicit expectations on worker outcomes, and "the benefits of AI cannot accrue only to those with capital". Figures cited: AI adoption 14.5% among SMEs and 62% among large enterprises (2024).
+
+See the site longform "What Singapore's Economic Strategy Review says: 8 directions, 32 recommendations".`,
+        ministry: 'MTI',
+        authorPersonIds: [],
+        relatedDebateIds: ['motion-3008', 'motion-3010'],
+        relatedLeverNumbers: [3, 4],
+        relatedTimelineYears: [2025, 2026],
+        relatedPostSlugs: ['singapore-esr-2026-explained'],
+        addedAt: '2026-09-07',
+      },
+      {
+        id: 'dc-cfa2-200mw-allocation-2026',
+        title: '第二轮数据中心申请 (DC-CFA2)：200 MW 新容量分配给四家运营商',
+        titleKo: '2차 데이터센터 공모 (DC-CFA2): 200 MW 신규 용량을 4개 사업자에 배분',
+        titleJa: '第 2 回データセンター公募 (DC-CFA2)：200 MW の新規容量を 4 社に配分',
+        titleEn: 'Second Data Centre Call for Application (DC-CFA2): 200 MW allocated to four operators',
+        topicIds: ['infrastructure-research'],
+        date: '2026-08',
+        source: '经济发展局 (EDB) / 资讯通信媒体发展局 (IMDA)',
+        sourceKo: '경제개발청 (EDB) / 정보통신미디어개발청 (IMDA)',
+        sourceJa: '経済開発庁 (EDB) / 情報通信メディア開発庁 (IMDA)',
+        sourceEn: 'Economic Development Board (EDB) / Infocomm Media Development Authority (IMDA)',
+        sourceOrgUrl: 'https://www.edb.gov.sg/',
+        sourceUrl:
+          'https://www.edb.gov.sg/en/about-edb/media-releases-publications/four-data-centre-proposals-selected-as-part-of-second-data-centre.html',
+        summary:
+          '2026 年 8 月 21 日，EDB 与 IMDA 宣布第二轮数据中心申请 (DC-CFA2) 结果：Digital Realty、Equinix、Keppel Data Centres、ST Telemedia Global Data Centres 各获 50 MW 临时分配，共 200 MW，全部落在裕廊岛可持续数据中心园区。条件是至少 50% 用电来自低碳能源，并达到 Green Mark DC 白金级。',
+        summaryKo:
+          '2026년 8월 21일, EDB와 IMDA가 2차 데이터센터 공모 (DC-CFA2) 결과를 발표했다: Digital Realty, Equinix, Keppel Data Centres, ST Telemedia Global Data Centres가 각 50 MW씩, 총 200 MW를 잠정 배분받았으며 모두 주롱섬 지속가능 데이터센터 파크에 들어선다. 조건은 전력의 최소 50%를 저탄소 에너지로 조달하고 Green Mark DC 플래티넘 등급을 달성하는 것.',
+        summaryJa:
+          '2026 年 8 月 21 日、EDB と IMDA が第 2 回データセンター公募 (DC-CFA2) の結果を発表：Digital Realty、Equinix、Keppel Data Centres、ST Telemedia Global Data Centres が各 50 MW、計 200 MW の暫定配分を受け、すべてジュロン島の持続可能データセンター・パークに立地する。条件は電力の 50% 以上を低炭素エネルギーで賄い、Green Mark DC プラチナを取得すること。',
+        summaryEn:
+          'On 21 August 2026, EDB and IMDA announced the outcome of the second Data Centre Call for Application (DC-CFA2): Digital Realty, Equinix, Keppel Data Centres and ST Telemedia Global Data Centres each receive a provisional 50 MW, 200 MW in total, all on the Sustainable Data Centre Park on Jurong Island. Conditions: at least 50% of power from low-carbon sources and Green Mark DC Platinum certification.',
+        whyItMatters:
+          '这是 2024 年绿色数据中心路线图承诺的「近期新增至少 300 MW」之后第二笔落地的容量，也是 2019 年暂停以来最大的一次分配；新加坡的算力天花板是电力，200 MW 是这个约束下的实际增量。',
+        whyItMattersEn:
+          'The second tranche of capacity actually delivered after the 2024 Green Data Centre Roadmap promised at least 300 MW in the near term, and the largest single allocation since the 2019 moratorium; power is the ceiling on Singapore compute, and 200 MW is the real increment under that constraint.',
+        whyItMattersJa:
+          '2024 年のグリーン・データセンター・ロードマップが約束した「近い将来に少なくとも 300 MW 追加」の後、実際に配分された 2 回目の容量であり、2019 年のモラトリアム以来最大の一括配分。シンガポールの計算能力の上限は電力であり、200 MW はその制約下での実際の増分だ。',
+        whyItMattersKo:
+          '2024년 그린 데이터센터 로드맵이 약속한 「단기 최소 300 MW 추가」 이후 실제로 배분된 두 번째 용량이자 2019년 모라토리엄 이후 최대 규모의 단일 배분. 싱가포르 연산력의 상한은 전력이며, 200 MW는 그 제약 아래의 실제 증분이다.',
+        content: `**流程**：2025 年 12 月 1 日 EDB 与 IMDA 发起 DC-CFA2，目标至少分配 200 MW 给能证明世界级能效和可持续性的运营商；申请 2026 年 4 月截止；2026 年 8 月 21 日公布结果。
+
+**结果**：四份方案入选，各 50 MW——Digital Realty、Equinix、Keppel Data Centres、ST Telemedia Global Data Centres。四座数据中心都建在裕廊岛的可持续数据中心园区。
+
+**条件**：至少 50% 的用电来自低碳能源（低碳氢、太阳能、生物甲烷等）；采用液冷等高效冷却技术，IT 设备 100% 高能效；取得新加坡 Green Mark DC 白金级认证。
+
+**背景**：新加坡 2019 年起暂停新建数据中心，2022 年试点分配约 80 MW，2024 年 5 月发布绿色数据中心路线图，承诺近期新增至少 300 MW，长期靠绿电再加 200 MW 以上。DC-CFA2 是路线图下第二笔实际分配。EDB 表示视方案质量可能再开第三轮。`,
+        contentKo: `**절차**: 2025년 12월 1일 EDB와 IMDA가 DC-CFA2를 개시, 세계 수준의 에너지 효율과 지속가능성을 입증하는 사업자에게 최소 200 MW를 배분하는 것이 목표. 신청 마감 2026년 4월. 2026년 8월 21일 결과 발표.
+
+**결과**: 4개 제안 선정, 각 50 MW——Digital Realty, Equinix, Keppel Data Centres, ST Telemedia Global Data Centres. 4개 데이터센터 모두 주롱섬 지속가능 데이터센터 파크에 건설.
+
+**조건**: 전력의 최소 50%를 저탄소 에너지(저탄소 수소, 태양광, 바이오메탄 등)로 조달. 액체 냉각 등 고효율 냉각 기술 채택, IT 장비 100% 고효율. 싱가포르 Green Mark DC 플래티넘 인증 취득.
+
+**배경**: 싱가포르는 2019년부터 신규 데이터센터 건설을 중단했고, 2022년 시범적으로 약 80 MW를 배분했으며, 2024년 5월 그린 데이터센터 로드맵을 발표해 단기 최소 300 MW 추가, 장기적으로 녹색 전력을 통해 200 MW 이상 추가를 약속했다. DC-CFA2는 로드맵 아래 두 번째 실제 배분이다. EDB는 제안 품질에 따라 3차 공모 가능성을 언급했다.`,
+        contentJa: `**プロセス**：2025 年 12 月 1 日、EDB と IMDA が DC-CFA2 を開始。世界水準のエネルギー効率と持続可能性を示せる事業者に少なくとも 200 MW を配分することが目標。申請は 2026 年 4 月締切、2026 年 8 月 21 日に結果を公表。
+
+**結果**：4 件の提案が選定され、各 50 MW——Digital Realty、Equinix、Keppel Data Centres、ST Telemedia Global Data Centres。4 つのデータセンターはすべてジュロン島の持続可能データセンター・パークに建設される。
+
+**条件**：電力の 50% 以上を低炭素エネルギー（低炭素水素、太陽光、バイオメタンなど）で賄う。液冷などの高効率冷却技術を採用し、IT 機器は 100% 高効率。シンガポールの Green Mark DC プラチナ認証を取得。
+
+**背景**：シンガポールは 2019 年から新規データセンター建設を停止し、2022 年に試験的に約 80 MW を配分、2024 年 5 月にグリーン・データセンター・ロードマップを公表して近い将来に少なくとも 300 MW、長期的にはグリーン電力でさらに 200 MW 超の追加を約束した。DC-CFA2 はロードマップ下の 2 回目の実配分。EDB は提案の質次第で第 3 回の可能性にも言及した。`,
+        contentEn: `**Process**: EDB and IMDA launched DC-CFA2 on 1 December 2025 to allocate at least 200 MW to operators able to demonstrate world-class efficiency and sustainability; applications closed in April 2026; results were announced on 21 August 2026.
+
+**Outcome**: four proposals selected at 50 MW each: Digital Realty, Equinix, Keppel Data Centres and ST Telemedia Global Data Centres. All four facilities will be built on the Sustainable Data Centre Park on Jurong Island.
+
+**Conditions**: at least 50% of power from low-carbon sources (low-carbon hydrogen, solar, biomethane); efficient cooling such as liquid cooling and 100% energy-efficient IT equipment; Singapore Green Mark DC Platinum certification.
+
+**Background**: Singapore paused new data centres from 2019, allocated about 80 MW in a 2022 pilot, and in May 2024 published the Green Data Centre Roadmap promising at least 300 MW of additional capacity in the near term and 200 MW or more in the longer term through green energy. DC-CFA2 is the second tranche actually allocated under that roadmap. EDB said a third call is possible depending on proposal quality.`,
+        authorPersonIds: [],
+        relatedDebateIds: [],
+        relatedLeverNumbers: [1],
+        relatedTimelineYears: [2025, 2026],
+        relatedPostSlugs: [],
+        addedAt: '2026-09-07',
+      },
+      {
         id: 'nais-update-2026',
         title: '国家 AI 战略更新 (NAIS Update 2026)',
         titleKo: '국가 AI 전략 업데이트 (NAIS Update 2026)',

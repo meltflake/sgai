@@ -853,22 +853,27 @@ export const dimensions: Dimension[] = [
     oneLinerJa: '最先端モデルを実行できるか？',
     oneLinerEn: 'Can it run frontier models?',
     trend: 'flat',
-    // i18n-allow-unpaired — language-neutral metric value (gigawatts); record's zh title is `算力底座`
-    headline: '1.4 GW',
-    headlineEn: '1.4 GW',
+    // i18n-allow-unpaired — language-neutral metric value (megawatts); record's zh title is `算力底座`
+    headline: '1.4 GW + 200 MW',
+    headlineEn: '1.4 GW + 200 MW',
     // 1.4 GW / 70+ facilities comes from the Introl 2025.8 datacentre-market
-    // row; the 300MW allocation note (2025) is the newest dated increment.
-    headlineAsOf: '2025-08',
+    // row; the +200 MW is the DC-CFA2 provisional allocation to four
+    // operators announced by EDB / IMDA on 2026-08-21 (50 MW each, Jurong
+    // Island) — the newest dated increment.
+    headlineAsOf: '2026-08',
     benchmark: '数据中心容量 + 70+ 设施 + NSCC ASPIRE 2A+ 20 PFLOPS',
     benchmarkKo: '데이터센터 용량 + 70+ 설비 + NSCC ASPIRE 2A+ 20 PFLOPS',
     benchmarkJa: 'データセンター容量 + 70+ 施設 + NSCC ASPIRE 2A+ 20 PFLOPS',
     benchmarkEn: 'Data centre capacity + 70+ facilities + NSCC ASPIRE 2A+ at 20 PFLOPS',
     progress: {
-      description: '额外 300MW 已分配 + 80MW 试点 2026–2028（增量在路上，但电力是天花板）',
-      descriptionKo: '추가 300MW 할당 완료 + 80MW 시범 2026–2028(증분은 진행 중, 그러나 전력은 상한선)',
-      descriptionJa: '追加 300MW が既に配分済み + 80MW パイロット 2026–2028（増分在来中だが、電力がボトルネック）',
+      description:
+        '绿色数据中心路线图承诺近期新增 300MW；2026 年 8 月 DC-CFA2 把 200MW 分给四家运营商（各 50MW，裕廊岛，≥50% 低碳电）；80MW 试点 2026–2028（增量在路上，但电力是天花板）',
+      descriptionKo:
+        '그린 데이터센터 로드맵이 단기 300MW 추가를 약속; 2026년 8월 DC-CFA2로 200MW를 4개 사업자에 배분(각 50MW, 주롱섬, 저탄소 전력 50% 이상); 80MW 시범 2026–2028(증분은 진행 중, 그러나 전력은 상한선)',
+      descriptionJa:
+        'グリーン・データセンター・ロードマップが近い将来 300MW 追加を約束；2026 年 8 月の DC-CFA2 で 200MW を 4 社に配分（各 50MW、ジュロン島、低炭素電力 50% 以上）；80MW パイロット 2026–2028（増分は進行中だが、電力がボトルネック）',
       descriptionEn:
-        '300MW additional capacity allocated + 80MW pilot 2026–2028 (incremental supply on the way, but power is the ceiling)',
+        'Green Data Centre Roadmap promises 300MW near-term; DC-CFA2 (Aug 2026) allocated 200MW to four operators (50MW each, Jurong Island, ≥50% low-carbon power); 80MW pilot 2026–2028 (incremental supply on the way, but power is the ceiling)',
     },
     rankingAnchors: [
       {
@@ -910,6 +915,20 @@ export const dimensions: Dimension[] = [
     shortcomingEn:
       'The tension between data-centre power quotas and green-energy commitments will cap expansion over the next 5 years. Frontier chips (H100 / B200) remain import-dependent — geopolitical exposure exists. Domestic chip or custom-ASIC capability is absent. Regional rivals (Malaysia, Indonesia) are competing for capacity — Singapore\'s "compute hub" status is not a given.',
     metrics: [
+      {
+        name: 'DC-CFA2 新增容量分配',
+        nameKo: 'DC-CFA2 신규 용량 배분',
+        nameJa: 'DC-CFA2 新規容量配分',
+        nameEn: 'DC-CFA2 new capacity allocation',
+        value: '200 MW，四家运营商各 50 MW（Digital Realty / Equinix / Keppel / STT GDC），裕廊岛',
+        valueKo: '200 MW, 4개 사업자 각 50 MW(Digital Realty / Equinix / Keppel / STT GDC), 주롱섬',
+        valueJa: '200 MW、4 社各 50 MW（Digital Realty / Equinix / Keppel / STT GDC）、ジュロン島',
+        valueEn: '200 MW, 50 MW each to Digital Realty / Equinix / Keppel / STT GDC, Jurong Island',
+        source: 'EDB / IMDA, 2026.8',
+        sourceEn: 'EDB / IMDA, 2026-08',
+        sourceUrl:
+          'https://www.edb.gov.sg/en/about-edb/media-releases-publications/four-data-centre-proposals-selected-as-part-of-second-data-centre.html',
+      },
       // 11 rows from old "基础设施" section
       {
         name: 'NSCC ASPIRE 2A+',

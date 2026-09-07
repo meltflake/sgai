@@ -4,6 +4,16 @@
 
 ---
 
+## 0.28.3 — 2026-09-07
+
+### 数据：经济战略检讨、DC-CFA2、SWDA、Kampong AI 补录
+
+- policies 新增两条：`economic-strategy-review-2026`（2026 年 6 月最终报告，关联 8 月 5 日两场动议辩论、杠杆 3 / 4、长文）和 `dc-cfa2-200mw-allocation-2026`（2026 年 8 月 21 日 EDB / IMDA 把 200 MW 分给四家运营商）。四语齐全，sourceUrl 均已 HEAD 核验。
+- timeline 新增六条：2025-08-04 ESR 启动、2026-01-30 中期更新、2026-03-02 Kampong AI 公布与试点、2026-05-13 32 条建议（最终报告 6 月）、2026-07-01 SWDA 成立、2026-08-21 DC-CFA2 结果。此前这些只散在辩论、演讲和视频的正文里。
+- tracker「算力底座」：标题从 `1.4 GW`（2025-08）改为 `1.4 GW + 200 MW`（2026-08），progress 描述四语更新，新增 DC-CFA2 指标行。`eval:stale-stats` 对该条的 401 天陈旧告警消除。
+- `skill/url-map.json` 的 validIds 随 policies 回填。
+- README 门面数字：政策文档 49 → 51，关键指标 87 → 88（`eval:facade-stats` 漂移归零）。
+
 ## 0.28.0 — 2026-09-06
 
 ### 长文：新加坡经济战略检讨讲了什么

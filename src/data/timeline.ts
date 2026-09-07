@@ -47,6 +47,29 @@ export const timelineEvents: TimelineEvent[] = [
     tagsKo: ['인재', '국제'],
   },
   {
+    id: 'evt-2026-dc-cfa2-200mw',
+    year: 2026,
+    date: '2026-08-21',
+    title: 'DC-CFA2 结果公布：200 MW 新数据中心容量分配给四家运营商',
+    topicIds: ['infrastructure-research'],
+    titleKo: 'DC-CFA2 결과 발표: 200 MW 신규 데이터센터 용량 4개 사업자에 배분',
+    titleJa: 'DC-CFA2 結果公表：200 MW の新規データセンター容量を 4 社に配分',
+    titleEn: 'DC-CFA2 outcome: 200 MW of new data centre capacity allocated to four operators',
+    description:
+      '8 月 21 日，EDB 与 IMDA 宣布第二轮数据中心申请结果：Digital Realty、Equinix、Keppel Data Centres、ST Telemedia Global Data Centres 各获 50 MW 临时分配，全部落在裕廊岛可持续数据中心园区，条件是至少 50% 用电来自低碳能源并取得 Green Mark DC 白金级。这是 2024 年绿色数据中心路线图之后第二笔实际分配，也是 2019 年暂停以来最大的一次。',
+    descriptionKo:
+      '8월 21일, EDB와 IMDA가 2차 데이터센터 공모 결과를 발표했다: Digital Realty, Equinix, Keppel Data Centres, ST Telemedia Global Data Centres가 각 50 MW를 잠정 배분받았으며 모두 주롱섬 지속가능 데이터센터 파크에 들어선다. 조건은 전력의 최소 50%를 저탄소 에너지로 조달하고 Green Mark DC 플래티넘을 취득하는 것. 2024년 그린 데이터센터 로드맵 이후 두 번째 실제 배분이자 2019년 모라토리엄 이후 최대 규모.',
+    descriptionJa:
+      '8 月 21 日、EDB と IMDA が第 2 回データセンター公募の結果を発表：Digital Realty、Equinix、Keppel Data Centres、ST Telemedia Global Data Centres が各 50 MW の暫定配分を受け、すべてジュロン島の持続可能データセンター・パークに立地。条件は電力の 50% 以上を低炭素エネルギーで賄い、Green Mark DC プラチナを取得すること。2024 年のグリーン・データセンター・ロードマップ以降 2 回目の実配分で、2019 年のモラトリアム以来最大。',
+    descriptionEn:
+      'On 21 August, EDB and IMDA announced the outcome of the second Data Centre Call for Application: Digital Realty, Equinix, Keppel Data Centres and ST Telemedia Global Data Centres each receive a provisional 50 MW, all on the Sustainable Data Centre Park on Jurong Island, on condition that at least 50% of power comes from low-carbon sources and the facilities reach Green Mark DC Platinum. It is the second tranche actually allocated after the 2024 Green Data Centre Roadmap and the largest since the 2019 moratorium.',
+    tags: ['基础设施', '产业'],
+    tagsEn: ['Infrastructure', 'Industry'],
+    tagsJa: ['インフラ', '産業'],
+    tagsKo: ['인프라', '산업'],
+    relatedPolicyIds: ['dc-cfa2-200mw-allocation-2026'],
+  },
+  {
     id: 'evt-2026-manus-unwind',
     year: 2026,
     date: '2026-08-11',
@@ -121,6 +144,31 @@ export const timelineEvents: TimelineEvent[] = [
     ],
   },
   {
+    id: 'evt-2026-swda-established',
+    year: 2026,
+    date: '2026-07-01',
+    title: '技能与劳动力发展局 (SWDA) 成立：SkillsFuture Singapore 与 Workforce Singapore 合并',
+    topicIds: ['talent-education', 'employment-workforce'],
+    titleKo: '기술·인력개발청 (SWDA) 출범: SkillsFuture Singapore와 Workforce Singapore 통합',
+    titleJa: '技能・労働力開発庁 (SWDA) 発足：SkillsFuture Singapore と Workforce Singapore が統合',
+    titleEn:
+      'Skills and Workforce Development Agency (SWDA) established: SkillsFuture Singapore and Workforce Singapore merge',
+    description:
+      '7 月 1 日，合并 SkillsFuture Singapore 和 Workforce Singapore 的新法定机构技能与劳动力发展局 (SWDA) 正式成立，首任主席 Lim Sim Seng，董事会任期至 2028 年 6 月 30 日。合并由总理黄循财在 2026 年财政预算案宣布，国会 5 月 5 日通过法案。目的是让工人和雇主面对一个机构：职业辅导、培训、匹配、裁员支持一站式。这是经济战略检讨中期更新后落地的第一项机构改革。',
+    descriptionKo:
+      '7월 1일, SkillsFuture Singapore와 Workforce Singapore를 통합한 새 법정 기관 기술·인력개발청 (SWDA)이 공식 출범했다. 초대 의장은 Lim Sim Seng, 이사회 임기는 2028년 6월 30일까지. 통합은 로렌스 웡 총리가 2026년 예산안에서 발표했고 법안은 5월 5일 국회를 통과했다. 노동자와 고용주가 하나의 기관을 상대하도록 하는 것이 목적으로, 경력 상담·훈련·매칭·정리해고 지원을 원스톱으로 제공한다. 경제 전략 검토 중간 업데이트 이후 실현된 첫 제도 개혁.',
+    descriptionJa:
+      '7 月 1 日、SkillsFuture Singapore と Workforce Singapore を統合した新法定機関、技能・労働力開発庁 (SWDA) が正式に発足。初代会長は Lim Sim Seng、理事会の任期は 2028 年 6 月 30 日まで。統合はローレンス・ウォン首相が 2026 年度予算で発表し、法案は 5 月 5 日に国会を通過。労働者と雇用主が一つの機関に向き合えるようにする狙いで、キャリア相談、訓練、マッチング、解雇支援をワンストップで提供する。経済戦略検討の中間アップデート後に実現した最初の制度改革。',
+    descriptionEn:
+      'On 1 July, the Skills and Workforce Development Agency (SWDA), the new statutory board merging SkillsFuture Singapore and Workforce Singapore, was established, with Lim Sim Seng as first chairman and a board term to 30 June 2028. The merger was announced by Prime Minister Lawrence Wong in Budget 2026 and the Bill passed Parliament on 5 May. The aim is one agency for workers and employers: career coaching, training, matching and retrenchment support in one place. It is the first institutional change delivered after the Economic Strategy Review mid-term update.',
+    tags: ['人才', '治理'],
+    tagsEn: ['Talent', 'Governance'],
+    tagsJa: ['人材', 'ガバナンス'],
+    tagsKo: ['인재', '거버넌스'],
+    personIds: ['lawrence-wong'],
+    relatedPolicyIds: ['economic-strategy-review-2026', 'budget-2026-national-ai-acceleration'],
+  },
+  {
     id: 'evt-2026-anthropic-series-h-gic-temasek',
     year: 2026,
     date: '2026-05-28',
@@ -174,6 +222,31 @@ export const timelineEvents: TimelineEvent[] = [
       'google-singapore-ai-agents-sandbox-2026',
       'ai-tester-accreditation-programme-2026',
     ],
+  },
+  {
+    id: 'evt-2026-esr-32-recommendations',
+    year: 2026,
+    date: '2026-05-13',
+    title: '经济战略检讨公布 32 条建议，最终报告 6 月发布',
+    topicIds: ['national-strategy', 'economy-industry', 'employment-workforce'],
+    titleKo: '경제 전략 검토 32개 제안 발표, 최종 보고서는 6월 공개',
+    titleJa: '経済戦略検討が 32 の提言を公表、最終報告書は 6 月に公開',
+    titleEn: 'Economic Strategy Review presents 32 recommendations; final report published in June',
+    description:
+      '5 月 13 日，副总理颜金勇在工商联合总会「未来经济大会」上公布经济战略检讨的 32 条建议，分 8 个方向：前四个保住增长，后四个让增长变成工作。方向 2 把新加坡定位为 AI 解决方案的全球领先者，方向 5 明确不为保岗位而拖慢 AI、但政府补贴企业用 AI 要看工人结果。最终报告《在变化的世界里守住增长和好工作》6 月发布，80 多页。8 月 5 日国会就工人党动议围绕这份报告辩论。',
+    descriptionKo:
+      '5월 13일, 간킴용 부총리가 싱가포르 상공연합회 「미래 경제 컨퍼런스」에서 경제 전략 검토의 32개 제안을 발표했다. 8가지 방향으로 나뉘며 앞의 넷은 성장을 지키고 뒤의 넷은 성장을 일자리로 바꾼다. 방향 2는 싱가포르를 AI 솔루션의 글로벌 리더로 자리매김하고, 방향 5는 일자리 보호를 위해 AI를 늦추지 않되 기업 AI 도입에 대한 정부 지원은 노동자 성과를 기준으로 삼는다고 명시했다. 최종 보고서 「변화하는 세계에서 성장과 좋은 일자리를 지키기」는 6월에 공개, 80쪽 이상. 8월 5일 국회는 노동당 동의안을 두고 이 보고서를 중심으로 토론했다.',
+    descriptionJa:
+      '5 月 13 日、ガン・キムヨン副首相がシンガポール商業連盟「未来経済会議」で経済戦略検討の 32 の提言を公表。8 つの方向に分かれ、前半の 4 つは成長を守り、後半の 4 つは成長を雇用に変える。方向 2 はシンガポールを AI ソリューションのグローバル・リーダーと位置づけ、方向 5 は雇用を守るために AI を減速させないが、企業の AI 導入への政府支援は労働者の成果を条件とすると明記。最終報告書「変化する世界で成長と良質な雇用を守る」は 6 月に公開、80 ページ超。8 月 5 日には国会が労働者党の動議をめぐりこの報告書を軸に議論した。',
+    descriptionEn:
+      "On 13 May, Deputy Prime Minister Gan Kim Yong presented the Economic Strategy Review's 32 recommendations at the Singapore Business Federation's Future Economy Conference, grouped into eight thrusts: four to secure growth, four to turn growth into jobs. Thrust 2 positions Singapore as a global leader in AI solutions; Thrust 5 rules out slowing AI to protect jobs while tying government AI support to worker outcomes. The final report, \"Securing Growth and Good Jobs in a Changing World\", followed in June at more than 80 pages. On 5 August Parliament debated a Workers' Party motion built around it.",
+    tags: ['战略', '产业', '人才'],
+    tagsEn: ['Strategy', 'Industry', 'Talent'],
+    tagsJa: ['戦略', '産業', '人材'],
+    tagsKo: ['전략', '산업', '인재'],
+    relatedPolicyIds: ['economic-strategy-review-2026'],
+    relatedDebateIds: ['motion-3008', 'motion-3010'],
+    relatedPostSlugs: ['singapore-esr-2026-explained'],
   },
   {
     id: 'evt-2026-manus-blocked',
@@ -245,6 +318,30 @@ export const timelineEvents: TimelineEvent[] = [
     relatedPostSlugs: ['sovereign-capital-frontier-ai'],
   },
   {
+    id: 'evt-2026-kampong-ai-pilot',
+    year: 2026,
+    date: '2026-03-02',
+    title: 'JTC 公布 Kampong AI：One-North 的 AI 创业者工作加居住园区，试点工位启用',
+    topicIds: ['startups-investment', 'infrastructure-research'],
+    titleKo: 'JTC, Kampong AI 공개: One-North의 AI 스타트업 직주 통합 단지, 파일럿 작업공간 개방',
+    titleJa: 'JTC が Kampong AI を発表：One-North の AI スタートアップ向け職住一体地区、パイロット拠点が開設',
+    titleEn: 'JTC unveils Kampong AI: a work-and-live precinct for AI startups at One-North, pilot workspaces open',
+    description:
+      '3 月 2 日，JTC 公布 LaunchPad @ One-North 的新总体规划，核心是总理黄循财在 2026 年财政预算案宣布的 Kampong AI：把两栋现有楼改造成新加坡第一个工作加居住一体的创业社区，一栋是 14,500 平方米的业务园区单元和活动空间，容纳最多 70 家 AI 公司，另一栋提供 200 多套住宅，2028 年建成，3 月起先开试点工位。经济战略检讨把它列为方向 2「做 AI 解决方案的全球领先者」下已宣布的动作。',
+    descriptionKo:
+      '3월 2일, JTC가 LaunchPad @ One-North의 새 마스터플랜을 공개했다. 핵심은 로렌스 웡 총리가 2026년 예산안에서 발표한 Kampong AI로, 기존 두 동을 개조해 싱가포르 최초의 직주 통합 스타트업 커뮤니티를 만든다. 한 동은 14,500㎡의 비즈니스파크 유닛과 행사 공간으로 최대 70개 AI 기업을 수용하고, 다른 한 동은 200가구 이상의 주거를 제공한다. 2028년 완공, 3월부터 파일럿 작업공간을 먼저 개방. 경제 전략 검토는 이를 방향 2 「AI 솔루션의 글로벌 리더」 아래 이미 발표된 조치로 열거한다.',
+    descriptionJa:
+      '3 月 2 日、JTC が LaunchPad @ One-North の新マスタープランを公表。中心はローレンス・ウォン首相が 2026 年度予算で発表した Kampong AI で、既存の 2 棟を改修してシンガポール初の職住一体型スタートアップ・コミュニティにする。1 棟は 14,500 平方メートルのビジネスパーク区画とイベントスペースで最大 70 社の AI 企業を収容、もう 1 棟は 200 戸超の住宅。2028 年完成、3 月からパイロット拠点を先行開設。経済戦略検討はこれを方向 2「AI ソリューションのグローバル・リーダーになる」の下で既に発表済みの施策として挙げている。',
+    descriptionEn:
+      "On 2 March, JTC unveiled a refreshed masterplan for LaunchPad @ One-North centred on Kampong AI, announced by Prime Minister Lawrence Wong in Budget 2026: two existing blocks repurposed into Singapore's first integrated work-and-live startup community, one with 14,500 sqm of business park units and event space for up to 70 AI companies, the other with more than 200 residential units, completing in 2028, with pilot workspaces opening from March. The Economic Strategy Review lists it as an action already announced under Thrust 2, becoming a global leader in AI solutions.",
+    tags: ['产业', '创新', '基础设施'],
+    tagsEn: ['Industry', 'Innovation', 'Infrastructure'],
+    tagsJa: ['産業', 'イノベーション', 'インフラ'],
+    tagsKo: ['산업', '혁신', '인프라'],
+    personIds: ['lawrence-wong'],
+    relatedPolicyIds: ['budget-2026-national-ai-acceleration', 'economic-strategy-review-2026'],
+  },
+  {
     id: 'evt-2026-gic-anthropic-series-g',
     year: 2026,
     date: '2026-02-12',
@@ -294,6 +391,53 @@ export const timelineEvents: TimelineEvent[] = [
       'moh-committee-of-supply-2026-healthcare-ai-medisave-reform',
     ],
     relatedPostSlugs: ['singapore-ai-native-companies-vs-nations', 'singapore-ai-vs-smart-nation-two-transformations'],
+  },
+  {
+    id: 'evt-2026-esr-midterm-update',
+    year: 2026,
+    date: '2026-01-30',
+    title: '经济战略检讨中期更新：成立国家 AI 理事会，合并 SkillsFuture 与 WSG',
+    topicIds: ['national-strategy', 'talent-education'],
+    titleKo: '경제 전략 검토 중간 업데이트: 국가 AI 위원회 설립, SkillsFuture와 WSG 통합 결정',
+    titleJa: '経済戦略検討の中間アップデート：国家 AI 評議会を設立、SkillsFuture と WSG を統合へ',
+    titleEn: 'Economic Strategy Review mid-term update: National AI Council set up, SkillsFuture and WSG to merge',
+    description:
+      '1 月 30 日，经济韧性工作组发布经济战略检讨中期更新。政府据此成立由总理任主席的国家 AI 理事会，统筹 AI 部署，并决定把 SkillsFuture Singapore 和 Workforce Singapore 合并成一个机构。这两项在两周后的财政预算案 2026 里正式宣布，是 5 个委员会 2025 年 8 月开工以来第一批落地的建议。',
+    descriptionKo:
+      '1월 30일, 싱가포르 경제 회복력 태스크포스가 경제 전략 검토 중간 업데이트를 발표했다. 정부는 이를 바탕으로 총리가 의장을 맡는 국가 AI 위원회를 설립해 AI 배치를 총괄하고, SkillsFuture Singapore와 Workforce Singapore를 하나의 기관으로 통합하기로 했다. 두 조치는 2주 뒤 2026년 예산안에서 공식 발표됐으며, 5개 위원회가 2025년 8월 가동된 이후 처음 실현된 제안이다.',
+    descriptionJa:
+      '1 月 30 日、シンガポール経済レジリエンス・タスクフォースが経済戦略検討の中間アップデートを公表。政府はこれに基づき、首相を議長とする国家 AI 評議会を設立して AI 展開を統括し、SkillsFuture Singapore と Workforce Singapore を一つの機関に統合することを決めた。いずれも 2 週間後の 2026 年度予算で正式発表され、5 つの委員会が 2025 年 8 月に始動して以来、最初に実現した提言となった。',
+    descriptionEn:
+      'On 30 January, the Singapore Economic Resilience Taskforce released the Economic Strategy Review mid-term update. On its basis the Government set up a National AI Council chaired by the Prime Minister to steer AI deployment, and decided to merge SkillsFuture Singapore and Workforce Singapore into one agency. Both were formally announced in Budget 2026 two weeks later, the first recommendations delivered since the five committees started work in August 2025.',
+    tags: ['战略', '治理', '人才'],
+    tagsEn: ['Strategy', 'Governance', 'Talent'],
+    tagsJa: ['戦略', 'ガバナンス', '人材'],
+    tagsKo: ['전략', '거버넌스', '인재'],
+    personIds: ['lawrence-wong'],
+    relatedPolicyIds: ['economic-strategy-review-2026'],
+  },
+  {
+    id: 'evt-2025-esr-launch',
+    year: 2025,
+    date: '2025-08-04',
+    title: '经济战略检讨启动：5 个委员会，AI 与就业列为核心议题',
+    topicIds: ['national-strategy', 'economy-industry'],
+    titleKo: '경제 전략 검토 착수: 5개 위원회, AI와 일자리를 핵심 의제로',
+    titleJa: '経済戦略検討が始動：5 つの委員会、AI と雇用を中核課題に',
+    titleEn: 'Economic Strategy Review launched: five committees, with AI and jobs at the centre',
+    description:
+      '8 月 4 日，副总理颜金勇宣布启动经济战略检讨，挂在新加坡经济韧性工作组下，设全球竞争力、科技与创新、创业、人力资本、重组影响管理 5 个委员会，每个由两名政治职位持有人联合主持，成员来自企业、工会和学界。检讨的出发点是三个变化：世界分裂、AI 和低碳转型重组产业、本地劳动力收缩。建议 2026 年中发布。',
+    descriptionKo:
+      '8월 4일, 간킴용 부총리가 싱가포르 경제 회복력 태스크포스 산하에 경제 전략 검토 착수를 발표했다. 글로벌 경쟁력, 기술과 혁신, 창업, 인적 자본, 구조 조정 영향 관리의 5개 위원회를 두고, 각 위원회는 두 명의 정무직이 공동 의장을 맡으며 기업·노조·학계에서 위원을 모았다. 출발점은 세 가지 변화: 분열하는 세계, AI와 저탄소 전환에 따른 산업 재편, 줄어드는 국내 노동력. 제안은 2026년 중반 발표 예정이었다.',
+    descriptionJa:
+      '8 月 4 日、ガン・キムヨン副首相がシンガポール経済レジリエンス・タスクフォースの下で経済戦略検討の開始を発表。グローバル競争力、技術・イノベーション、起業、人的資本、再編の影響への対応の 5 委員会を設置し、各委員会は 2 名の政務職が共同議長を務め、企業・労組・学界からメンバーを集めた。出発点は三つの変化：分断する世界、AI と低炭素移行による産業再編、縮小する国内労働力。提言は 2026 年半ばに公表予定とされた。',
+    descriptionEn:
+      'On 4 August, Deputy Prime Minister Gan Kim Yong launched the Economic Strategy Review under the Singapore Economic Resilience Taskforce, with five committees (Global Competitiveness, Technology and Innovation, Entrepreneurship, Human Capital, Managing the Impact of Restructuring), each co-chaired by two political office-holders with members from business, unions and academia. Its starting point was three shifts: a fragmenting world, AI and the low-carbon transition restructuring industries, and a shrinking local workforce. Recommendations were due by mid-2026.',
+    tags: ['战略', '产业', '人才'],
+    tagsEn: ['Strategy', 'Industry', 'Talent'],
+    tagsJa: ['戦略', '産業', '人材'],
+    tagsKo: ['전략', '산업', '인재'],
+    relatedPolicyIds: ['economic-strategy-review-2026'],
   },
   {
     id: 'evt-2025-changi-iso42001',
