@@ -43,7 +43,7 @@ const COPY: Partial<Record<Lang, AboutCopy>> = {
   zh: {
     eyebrow: '关于本站',
     headline: '为什么记录新加坡的 AI 战略',
-    lead: '我是 wulujia，坐标新加坡。新加坡 AI 观察由我个人维护，独立运营，没有任何机构或政府背景。',
+    lead: '我是 wulujia，坐标新加坡，个人博客在 <a href="https://wlj.me/" class="text-primary hover:text-secondary">wlj.me</a>。新加坡 AI 观察由我个人维护，独立运营，没有任何机构或政府背景。',
     body: [
       { kind: 'h2', text: '这个站做什么' },
       {
@@ -121,7 +121,7 @@ const COPY: Partial<Record<Lang, AboutCopy>> = {
   en: {
     eyebrow: 'About',
     headline: "Why I track Singapore's AI strategy",
-    lead: "I'm wulujia, based in Singapore. Singapore AI Observatory is independently maintained and operates with no institutional or government backing.",
+    lead: 'I’m wulujia, based in Singapore; my personal blog is at <a href="https://wlj.me/" class="text-primary hover:text-secondary">wlj.me</a>. Singapore AI Observatory is independently maintained and operates with no institutional or government backing.',
     body: [
       { kind: 'h2', text: 'What this site does' },
       {
@@ -202,7 +202,7 @@ const COPY: Partial<Record<Lang, AboutCopy>> = {
   ja: {
     eyebrow: 'このサイトについて',
     headline: 'なぜシンガポールの AI 戦略を記録するのか',
-    lead: '私は wulujia、シンガポール在住です。シンガポール AI 観測は私個人が独立して運営しており、特定の機関や政府の後ろ盾はありません。',
+    lead: '私は wulujia、シンガポール在住です。個人ブログは <a href="https://wlj.me/" class="text-primary hover:text-secondary">wlj.me</a> にあります。シンガポール AI 観測は私個人が独立して運営しており、特定の機関や政府の後ろ盾はありません。',
     body: [
       { kind: 'h2', text: 'このサイトの目的' },
       {
@@ -318,7 +318,7 @@ const usingEnFallback = !COPY[lang] && lang === 'ko';
   <p class="not-prose text-xs uppercase tracking-[0.18em] text-primary font-semibold mb-4">{c.eyebrow}</p>
   <h1 class="t-display !mb-6 not-prose">{c.headline}</h1>
 
-  <p class="lead !text-lg md:!text-xl !leading-[1.85] text-gray-700 dark:text-gray-300">{c.lead}</p>
+  <p class="lead !text-lg md:!text-xl !leading-[1.85] text-gray-700 dark:text-gray-300" set:html={c.lead} />
 
   {
     c.body.map((b) => {
