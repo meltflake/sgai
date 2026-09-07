@@ -734,6 +734,37 @@ But AISG's bottlenecks are real: **talent retention is weak** (apprentices leave
         ],
         updated: '2026-06-10',
       },
+      // i18n-allow-unpaired — auto-discovered stub; complete required fields on promotion
+      {
+        id: '30-increase-in-fy2020-ict-spending-for-digitalisation-and-business-support',
+        name: '2020财年政府ICT支出增加30%加速数字化转型',
+        nameEn: '30% Increase in FY2020 ICT Spending for Digitalisation and Business Support',
+        nameJa: '2020年度政府ICT支出が30%増加しデジタル変革を加速',
+        nameKo: '2020 회계연도 정부 ICT 지출 30% 증가로 디지털 전환 가속화',
+        description:
+          '新加坡政府科技局宣布2020财年信息通信技术(ICT)支出增加30%至35亿元，加速政府数字化转型并支持企业从新冠疫情中恢复。政府重点投资COVID-19应对技术、数字化服务、云基础设施现代化和人工智能应用，中小企业可参与80%的政府采购机会。',
+        descriptionEn:
+          "Singapore's Government Technology Agency (GovTech) announced a 30% increase in FY2020 ICT spending—from $2.7 billion to $3.5 billion—to accelerate government digitalisation and support business recovery from COVID-19. The Government will focus on five key areas: COVID-19 response technologies, citizen and business-centric digital services, cloud infrastructure, ICT modernisation, and AI and sensor deployment. Small and medium-sized enterprises are eligible to participate in 80% of procurement opportunities.",
+        descriptionJa:
+          'シンガポール政府技術庁は、2020年度の情報通信技術(ICT)支出が30%増加して35億ドルに達したことを発表し、政府のデジタル化変革を加速し、企業が新型コロナウイルス感染症の流行から回復することを支援しています。政府は新型コロナウイルス感染症対応技術、デジタルサービス、クラウドインフラストラクチャの最新化およびAI応用に重点的に投資し、中小企業は政府調達機会の80%に参加することができます。',
+        descriptionKo:
+          '싱가포르 정부기술청은 2020 회계연도 정보통신기술(ICT) 지출이 30% 증가하여 35억 싱가포르 달러에 달한다고 발표했습니다. 이는 정부의 디지털 전환을 가속화하고 기업이 신종 코로나바이러스 감염증(COVID-19)에서 회복하도록 지원하기 위한 것입니다. 정부는 COVID-19 대응 기술, 디지털 서비스, 클라우드 기반시설 현대화 및 인공지능 응용에 중점적으로 투자하며, 중소기업은 정부 조달 기회의 80%에 참여할 수 있습니다.',
+        url: 'https://www.tech.gov.sg/media/thirty-percent-increase-fy2020-ict-spend-to-accelerate-digitalisation-and-support-businesses/',
+        entityType: 'platform',
+        status: 'active',
+        founded: '2020-06',
+        sources: [
+          // i18n-allow-unpaired — provenance for the pending-review stub above
+          {
+            label: 'GovTech Singapore',
+            url: 'https://www.tech.gov.sg/media/thirty-percent-increase-fy2020-ict-spend-to-accelerate-digitalisation-and-support-businesses/',
+            date: '2020-06-08',
+          },
+        ],
+        updated: '2026-09-07',
+        _pendingReview: true,
+        discoveryNote: 'Auto-discovered via GovTech Singapore; confidence=high',
+      },
     ],
   },
   {
@@ -9279,6 +9310,37 @@ Worth watching: Alibaba Cloud's actual market share in Singapore, shifts in the 
           },
         ],
         updated: '2026-05-02',
+      },
+      // i18n-allow-unpaired — auto-discovered stub; complete required fields on promotion
+      {
+        id: 'the-ai-push-is-becoming-an-energy-race-sembcorp',
+        name: 'AI浪潮正成为能源竞赛：胜科工业',
+        nameEn: 'The AI Push Is Becoming an Energy Race: Sembcorp',
+        nameJa: 'AIの波がエネルギー競争となっている：センブコープ・インダストリーズ',
+        nameKo: 'AI 물결, 에너지 경쟁의 중심: Sembcorp Industries',
+        description:
+          '胜科工业作为能源和城市解决方案提供商，通过可靠的电力基础设施支撑新加坡AI经济增长。该公司目前供应新加坡数据中心和半导体产业约三分之一的电力需求，与Equinix、ST Telemedia、Singtel和Micron等主要客户建立长期购电协议。胜科工业正新建600MW氢气就绪燃气电厂，同时在英国、越南、印尼和澳大利亚拓展AI就绪基础设施。公司内部亦利用AI技术优化运营，包括视频分析和预测性维护平台Hyperspace。',
+        descriptionEn:
+          "Sembcorp Industries, as a provider of energy and urban solutions, supports Singapore's AI economy growth through reliable power infrastructure. The company currently supplies approximately one-third of Singapore's data center and semiconductor sector electricity demand, serving major customers including Equinix, ST Telemedia, Singtel, and Micron through long-term power purchase agreements. Sembcorp is building a 600 MW hydrogen-ready gas-powered plant and expanding AI-ready infrastructure in the UK, Vietnam, Indonesia, and Australia. The company leverages AI technology internally to optimize operations, including video analytics and the predictive maintenance platform Hyperspace.",
+        descriptionJa:
+          'センブコープ・インダストリーズは、エネルギーおよび都市ソリューション提供企業として、信頼性の高い電力インフラストラクチャを通じてシンガポールのAI経済成長を支えています。同社は現在、シンガポールのデータセンターおよび半導体産業の電力需要の約3分の1を供給しており、エクイニックス、STテレメディア、シングテル、マイクロンなどの主要顧客との長期購電契約を締結しています。同社は600MWの水素対応ガス火力発電所を新たに建設中であり、同時に英国、ベトナム、インドネシア、オーストラリアにおいてAI対応インフラストラクチャを拡大しています。同社は社内でもAI技術を活用して運用を最適化しており、動画分析および予測保全プラットフォームのハイパースペースを含みます。',
+        descriptionKo:
+          '에너지 및 도시 솔루션 제공업체인 Sembcorp Industries는 신뢰할 수 있는 전력 기반시설을 통해 싱가포르의 AI 경제 성장을 뒷받침하고 있습니다. 동사는 현재 싱가포르 데이터센터 및 반도체 산업 전력 수요의 약 1/3을 공급하고 있으며, Equinix, ST Telemedia, Singtel, Micron 등 주요 고객과 장기 전력 구매 계약을 체결했습니다. 동사는 600MW 규모의 수소 충전 가능 가스 발전소를 신축 중이며, 동시에 영국, 베트남, 인도네시아, 호주에서 AI 대응 기반시설을 확대하고 있습니다. 또한 동사는 영상 분석 및 예측 유지보수 플랫폼 Hyperspace를 포함하여 AI 기술을 활용한 내부 운영 최적화를 진행하고 있습니다.',
+        url: 'https://www.businesstimes.com.sg/startups-tech/technology/ai-push-becoming-energy-race-sembcorp',
+        entityType: 'product',
+        status: 'active',
+        founded: '2026-08',
+        sources: [
+          // i18n-allow-unpaired — provenance for the pending-review stub above
+          {
+            label: 'Business Times Tech',
+            url: 'https://www.businesstimes.com.sg/startups-tech/technology/ai-push-becoming-energy-race-sembcorp',
+            date: '2026-08-31',
+          },
+        ],
+        updated: '2026-09-07',
+        _pendingReview: true,
+        discoveryNote: 'Auto-discovered via Business Times Tech; confidence=high',
       },
     ],
   },
