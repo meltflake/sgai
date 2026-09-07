@@ -9,11 +9,19 @@ import RelatedRail from '~/components/data/RelatedRail.astro';
 import Layout from '~/layouts/PageLayout.astro';
 import SameTopicRail from '~/components/data/SameTopicRail.astro';
 import { dataDate, publicLeverGroups } from '~/data/levers';
-import { NON_DEFAULT_ROUTE_LOCALES, IN_LANGUAGES, pickLocalized, localizedHref, t, type Lang } from '~/i18n';
+import {
+  NON_DEFAULT_ROUTE_LOCALES,
+  IN_LANGUAGES,
+  pickLocalized,
+  pickLocalizedOwn,
+  localizedHref,
+  t,
+  type Lang,
+} from '~/i18n';
 import { toTraditional } from '~/i18n/opencc';
 import { synthesizeMetaDescription } from '~/utils/seo-meta';
 import { getDebateById, getPolicyById } from '~/utils/graph';
-import { leverItemSlug, leverPages, leverSlug } from '~/utils/entity-pages';
+import { getEcosystemEntityPage, leverItemSlug, leverPages, leverSlug } from '~/utils/entity-pages';
 
 export const prerender = true;
 
@@ -47,6 +55,7 @@ const LABELS: Record<
     description: string;
     whatStateDoes: string;
     related: string;
+    fullProfile: string;
     viewParent: string;
     source: string;
   }
@@ -68,6 +77,7 @@ const LABELS: Record<
     description: '项目描述',
     whatStateDoes: '国家直接做什么',
     related: '关联阅读',
+    fullProfile: '完整档案',
     viewParent: '查看父抓手',
     source: '来源',
   },
@@ -88,6 +98,7 @@ const LABELS: Record<
     description: '項目描述',
     whatStateDoes: '國家直接做什麼',
     related: '關聯閱讀',
+    fullProfile: '完整檔案',
     viewParent: '查看父抓手',
     source: '來源',
   },
@@ -108,6 +119,7 @@ const LABELS: Record<
     description: 'Project Description',
     whatStateDoes: 'What the State Does',
     related: 'Related Reading',
+    fullProfile: 'Full profile',
     viewParent: 'View parent lever',
     source: 'Source',
   },
@@ -128,6 +140,7 @@ const LABELS: Record<
     description: 'プロジェクト説明',
     whatStateDoes: '国家が直接行うこと',
     related: '関連資料',
+    fullProfile: '完全なプロフィール',
     viewParent: '親レバーを見る',
     source: '出典',
   },
@@ -148,6 +161,7 @@ const LABELS: Record<
     description: '프로젝트 설명',
     whatStateDoes: '국가가 직접 하는 일',
     related: '관련 읽기',
+    fullProfile: '전체 프로필',
     viewParent: '상위 레버 보기',
     source: '출처',
   },
@@ -158,6 +172,12 @@ const lever = page.lever;
 const isLever = page.kind === 'lever';
 const itemPolicies = page.kind === 'item' ? (page.item.relatedPolicyIds || []).map(getPolicyById).filter(Boolean) : [];
 const itemDebates = page.kind === 'item' ? (page.item.relatedDebateIds || []).map(getDebateById).filter(Boolean) : [];
+const itemEntities =
+  page.kind === 'item'
+    ? (page.item.relatedEntityIds || [])
+        .map(getEcosystemEntityPage)
+        .filter((p): p is NonNullable<typeof p> => Boolean(p))
+    : [];
 const visibleGroups = publicLeverGroups(lever);
 const projectCount = visibleGroups.reduce((sum, group) => sum + group.items.length, 0);
 
@@ -195,10 +215,13 @@ const leverTagByLang: Record<Lang, string> = {
   en: 'Singapore AI',
 };
 
+const seoTitle = isLever ? undefined : pickLocalizedOwn(page.item, 'seoTitle', lang);
 const metadata = {
-  title: isLever
-    ? `${title} — ${leverTagByLang[lang] || leverTagByLang.en}`
-    : `${title} · ${brandSuffixByLang[lang] || brandSuffixByLang.en}`,
+  title:
+    seoTitle ||
+    (isLever
+      ? `${title} — ${leverTagByLang[lang] || leverTagByLang.en}`
+      : `${title} · ${brandSuffixByLang[lang] || brandSuffixByLang.en}`),
   description: metaDescription,
 };
 
@@ -353,6 +376,19 @@ const schema = {
           <section class="mb-10">
             <h2 class="t-h3 text-gray-900 dark:text-white mb-4">{L.related}</h2>
             <div class="grid gap-3 md:grid-cols-2">
+              {itemEntities.map((ep) => (
+                <a
+                  href={localizedHref(`/ecosystem/${ep.slug}/`, lang)}
+                  class="block bg-surface border border-subtle rounded-lg p-4 hover:border-emerald-300 hover:shadow-sm transition-all"
+                >
+                  <h3 class="font-semibold text-gray-900 dark:text-white text-sm">
+                    {L.fullProfile}: {pickLocalized(ep.entity, 'name', lang) || ep.entity.name}
+                  </h3>
+                  <p class="text-xs text-gray-600 dark:text-gray-400 mt-2">
+                    {pickLocalized(ep.entity, 'description', lang) || ep.entity.description}
+                  </p>
+                </a>
+              ))}
               {itemPolicies.map((policy) => (
                 <a
                   href={
@@ -377,7 +413,7 @@ const schema = {
                   <p class="text-xs text-gray-600 dark:text-gray-400 mt-2">{pickLocalized(debate!, 'summary', lang)}</p>
                 </a>
               ))}
-              {itemPolicies.length === 0 && itemDebates.length === 0 && (
+              {itemPolicies.length === 0 && itemDebates.length === 0 && itemEntities.length === 0 && (
                 <a
                   href={localizedHref(`/levers/${leverSlug(lever)}/`, lang)}
                   class="block bg-surface border border-subtle rounded-lg p-4 hover:border-emerald-300 hover:shadow-sm transition-all"

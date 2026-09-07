@@ -7,6 +7,16 @@ export interface Policy {
   titleEn: string;
   titleJa?: string;
   titleKo?: string;
+  /** Optional SERP overrides. Read with pickLocalizedOwn (exact locale only,
+   *  zh-tw derived from zh) so an En-only override never leaks into ja/ko. */
+  seoTitle?: string;
+  seoTitleEn?: string;
+  seoTitleJa?: string;
+  seoTitleKo?: string;
+  seoDescription?: string;
+  seoDescriptionEn?: string;
+  seoDescriptionJa?: string;
+  seoDescriptionKo?: string;
   date: string;
   source: string;
   sourceOrgUrl?: string;
@@ -1288,6 +1298,8 @@ ISO standards typically take years from proposal to publication. But once a prop
         titleKo: 'Agentic AI 거버넌스 프레임워크',
         titleJa: 'Agentic AI ガバナンスフレームワーク',
         titleEn: 'Model AI Governance Framework for Agentic AI',
+        seoDescriptionEn:
+          'Singapore’s Model AI Governance Framework for Agentic AI: released by IMDA in January 2026, updated May 2026 with input from 60+ organisations and 10+ cases.',
         date: '2026-01',
         source: '资讯通信媒体发展局 (IMDA)',
         sourceKo: '정보통신매체발전청 (IMDA)',
@@ -1309,24 +1321,32 @@ ISO standards typically take years from proposal to publication. But once a prop
           '다보스에서의 첫 공개에서 60개 이상의 기관과 10개 이상의 사례 지지까지, IMDA는 싱가포르 프레임워크를 글로벌 agentic AI 거버넌스의 사실상 표준으로 삼으려고 합니다.',
         summaryJa:
           'IMDA は 2026 年 1 月にダボスで世界初の Agentic AI ガバナンスフレームワークを発表し、2026 年 5 月に 60 以上の組織からのフィードバックと 10 以上の実導入事例を追加しました。',
-        content: `IMDA 于 2026 年 1 月在世界经济论坛发布 Model AI Governance Framework for Agentic AI，2026 年 5 月 20 日在 ATxSummit 更新版本。
+        content: `先用一句话说清：这是新加坡给 AI 智能体定的规矩。智能体不只是回答问题，还会自己规划和执行任务。框架告诉部署智能体的机构怎么划边界、怎么让人对结果负责、怎么把智能体做过的事查清楚。
+
+IMDA 于 2026 年 1 月在世界经济论坛发布 Model AI Governance Framework for Agentic AI，2026 年 5 月 20 日在 ATxSummit 更新版本。
 
 更新重点不是另起炉灶，而是把几个月内收集到的产业反馈和真实部署案例放回框架中。官方披露：更新版吸收了 **60+ 机构**反馈（包括 AWS、DBS、Google、Salesforce），并加入 **10+ 真实 agentic AI 部署案例**（包括 Ant International、CDL、Cyber Sierra、Dayos、GovTech、Google、OCBC、PwC、Tencent、Workday 等）。
 
 框架继续强调：AI Agent 可以提高生产力，但人类仍对系统结果承担最终责任。新增案例让企业能看到如何处理多 agent 系统、第三方 agent、自动化偏差、风险分级、人类审批和审计等实际问题。`,
-        contentKo: `IMDA는 2026년 1월 세계경제포럼에서 Model AI Governance Framework for Agentic AI를 발표했고, 2026년 5월 20일 ATxSummit에서 업데이트판을 공개했습니다.
+        contentKo: `한 문장으로 말하면, 이것은 싱가포르가 AI 에이전트에 정한 규칙입니다. 에이전트는 질문에 답할 뿐 아니라 스스로 계획하고 실행합니다. 프레임워크는 에이전트를 배포하는 조직에 경계를 어떻게 정하고, 결과에 대해 사람이 어떻게 책임지며, 에이전트가 한 일을 어떻게 확인하는지 알려줍니다.
+
+IMDA는 2026년 1월 세계경제포럼에서 Model AI Governance Framework for Agentic AI를 발표했고, 2026년 5월 20일 ATxSummit에서 업데이트판을 공개했습니다.
 
 업데이트의 핵심은 새 틀을 만드는 것이 아니라, 몇 달 동안 받은 산업 피드백과 실제 배포 사례를 프레임워크에 다시 반영하는 것입니다. 공식 자료에 따르면 업데이트판은 **60개 이상의 기관** 피드백(AWS, DBS, Google, Salesforce 등)을 반영했고, **10개 이상의 실제 agentic AI 배포 사례**(Ant International, CDL, Cyber Sierra, Dayos, GovTech, Google, OCBC, PwC, Tencent, Workday 등)를 포함합니다.
 
 프레임워크는 AI Agent가 생산성을 높일 수 있지만, 시스템 결과에 대한 최종 책임은 여전히 인간에게 있다는 점을 강조합니다. 새 사례들은 기업이 다중 agent 시스템, 제3자 agent, 자동화 편향, 위험 등급, 인간 승인, 감사 같은 실제 문제를 어떻게 처리할지 보여줍니다.`,
-        contentJa: `IMDA は 2026 年 1 月に世界経済フォーラムで Model AI Governance Framework for Agentic AI を発表し、2026 年 5 月 20 日に ATxSummit で更新版を公開しました。
+        contentJa: `一言で言えば、これはシンガポールが AI エージェントに定めたルールです。エージェントは質問に答えるだけでなく、自ら計画して実行します。フレームワークは、エージェントを導入する組織に対して、境界をどう引くか、結果に人がどう責任を持つか、エージェントが行ったことをどう確認するかを示します。
+
+IMDA は 2026 年 1 月に世界経済フォーラムで Model AI Governance Framework for Agentic AI を発表し、2026 年 5 月 20 日に ATxSummit で更新版を公開しました。
 
 更新の焦点は新しい枠組みを作ることではなく、数カ月間に集めた産業界のフィードバックと実導入事例をフレームワークへ戻すことです。公式発表によれば、更新版は **60 以上の組織**からのフィードバック（AWS、DBS、Google、Salesforce など）を取り入れ、**10 以上の実際の agentic AI 導入事例**（Ant International、CDL、Cyber Sierra、Dayos、GovTech、Google、OCBC、PwC、Tencent、Workday など）を追加しました。
 
 フレームワークは、AI Agent が生産性を高め得る一方で、システム結果への最終責任は人間が負うという点を引き続き強調します。新しい事例により、企業はマルチ agent システム、第三者 agent、自動化バイアス、リスク階層、人間の承認、監査などの実務課題への対応を確認できます。`,
         summaryEn:
           'IMDA launched the world’s first Agentic AI governance framework at Davos in January 2026 and updated it in May 2026 with feedback from 60+ organisations and 10+ real-world deployment case studies.',
-        contentEn: `IMDA launched the Model AI Governance Framework for Agentic AI at the World Economic Forum in January 2026, then updated it at ATxSummit on 20 May 2026.
+        contentEn: `In plain terms: this is Singapore’s rulebook for AI agents — systems that plan and act on their own rather than only answer questions. It tells organisations that deploy agents how to set boundaries, keep humans accountable for outcomes, and check what the agents actually did.
+
+IMDA launched the Model AI Governance Framework for Agentic AI at the World Economic Forum in January 2026, then updated it at ATxSummit on 20 May 2026.
 
 The update is not a new framework from scratch. It folds industry feedback and live deployment experience back into the original framework. Officially, the update incorporates feedback from **60+ organisations** including AWS, DBS, Google, and Salesforce, and adds **10+ real-world agentic AI deployment case studies** from contributors such as Ant International, CDL, Cyber Sierra, Dayos, GovTech, Google, OCBC, PwC, Tencent, and Workday.
 
@@ -1591,15 +1611,25 @@ Strategically, this moves AI Verify from tools and frameworks into market infras
           '2019년 IMDA가 아시아에서 선제적으로 규칙을 수립했으며, 입법이 아닌 자발적 프레임워크로 톤을 설정하여, 싱가포르가 국제 표준 제정 발언권을 획득했습니다.',
         summaryJa:
           'アジア初の AI ガバナンスフレームワーク。解釈可能性、透明性、人間中心の AI ガバナンス原則を提唱しています。',
-        content: `2019 年在达沃斯发布，亚洲首个 AI 治理框架。四大核心原则：内部治理结构与措施、决策中的人类参与、运营管理、利益相关方互动与沟通。被 OECD 引用为最佳实践。`,
-        contentKo: `2019년 다보스에서 발표, 아시아 최초의 AI 거버넌스 프레임워크입니다. 네 가지 핵심 원칙: 내부 거버넌스 구조 및 조치, 의사결정의 인간 참여, 운영 관리, 이해관계자 상호작용 및 소통. OECD에서 최고의 실천으로 인용되었습니다.`,
-        contentJa: `2019 年にダボスで発表された、アジア初の AI ガバナンスフレームワークです。4 つの核心原則：内部ガバナンス構造と措置、意思決定における人的参加、運営管理、ステークホルダーの相互作用とコミュニケーション。OECD によってベストプラクティスとして引用されています。`,
+        content: `2019 年在达沃斯发布，亚洲首个 AI 治理框架。四大核心原则：内部治理结构与措施、决策中的人类参与、运营管理、利益相关方互动与沟通。被 OECD 引用为最佳实践。2026 年 1 月，IMDA 在此基础上发布了面向 AI 智能体的 Agentic AI 治理框架，见本页资源。`,
+        contentKo: `2019년 다보스에서 발표, 아시아 최초의 AI 거버넌스 프레임워크입니다. 네 가지 핵심 원칙: 내부 거버넌스 구조 및 조치, 의사결정의 인간 참여, 운영 관리, 이해관계자 상호작용 및 소통. OECD에서 최고의 실천으로 인용되었습니다. 2026년 1월 IMDA는 이를 바탕으로 AI 에이전트를 위한 Agentic AI 거버넌스 프레임워크를 발표했습니다(이 페이지의 자료 참고).`,
+        contentJa: `2019 年にダボスで発表された、アジア初の AI ガバナンスフレームワークです。4 つの核心原則：内部ガバナンス構造と措置、意思決定における人的参加、運営管理、ステークホルダーの相互作用とコミュニケーション。OECD によってベストプラクティスとして引用されています。2026 年 1 月、IMDA はこれを土台に AI エージェント向けの Agentic AI ガバナンスフレームワークを発表しました（本ページの資料を参照）。`,
         summaryEn:
           "Asia's first AI governance framework, articulating principles of explainability, transparency, and human-centric AI governance.",
-        contentEn: `Released at Davos in 2019, this is Asia's first AI governance framework. Four core principles: internal governance structures, human involvement in AI-augmented decisions, operations management, and stakeholder communication. The OECD has cited it as a best practice.`,
+        contentEn: `Released at Davos in 2019, this is Asia's first AI governance framework. Four core principles: internal governance structures, human involvement in AI-augmented decisions, operations management, and stakeholder communication. The OECD has cited it as a best practice. In January 2026 IMDA built on it with the Model AI Governance Framework for Agentic AI (see resources on this page).`,
         sourceEn: 'Infocomm Media Development Authority (IMDA)',
         ministry: undefined,
         authorPersonIds: [],
+        resources: [
+          {
+            label: '延伸：Agentic AI 治理框架（2026）',
+            labelEn: 'Follow-on: Model AI Governance Framework for Agentic AI (2026)',
+            labelJa: '関連：Agentic AI ガバナンスフレームワーク（2026）',
+            labelKo: '후속: Agentic AI 거버넌스 프레임워크(2026)',
+            url: 'https://sgai.md/policies/model-ai-governance-framework-for-agentic-ai/',
+            kind: 'report',
+          },
+        ],
         relatedDebateIds: [
           'budget-2338',
           'oral-answer-3240',
@@ -2465,6 +2495,9 @@ The addendum covers three things: identifying and assessing risk according to ag
         titleKo: 'RIE2025 연구혁신 계획',
         titleJa: 'RIE2025 研究革新計画',
         titleEn: 'Research, Innovation and Enterprise 2025 Plan',
+        seoTitleEn: 'RIE2025 Singapore: S$25B Plan, Four Strategic Domains',
+        seoDescriptionEn:
+          'RIE2025 (2021–2025) is Singapore’s S$25 billion R&D plan: the four strategic domains, the cross-cutting horizontals, where AI sits, and the handover to RIE2030.',
         date: '2020',
         source: '国家研究基金会 (NRF)',
         sourceKo: '국가연구재단(NRF)',
@@ -2486,7 +2519,52 @@ The addendum covers three things: identifying and assessing risk according to ag
         contentKo: `RIE2025 프로그램은 2021-2025년을 다루며, 총 250억 싱가포르달러의 투자로 싱가포르 역사상 최대 규모의 연구개발 투자입니다. 네 가지 전략 분야: 제조·무역 및 연결성, 인간의 건강과 잠재력, 도시 지속가능 발전 및 스마트 국가, 디지털 경제. AI는 모든 분야를 관통하며 핵심 실현 기술입니다. 계획은 AI Singapore 등 국가급 AI 연구 프로젝트를 지원하고, AI 인재 양성, 기초 연구 및 산업 응용을 자금 지원합니다.`,
         contentJa: `RIE2025計画は2021～2025年を対象とし、総投資額250億シンガポールドルで、シンガポール史上最大規模の研究開発投資です。4つの戦略領域は製造・貿易・連携、人間の健康と可能性、都市の持続可能な発展とスマート国家、デジタル経済です。AIはすべての領域を貫くコア的実現技術です。計画はAI Singaporeなどの国家レベルのAI研究プロジェクトを支援し、AI人材育成、基礎研究、産業応用に資金を提供します。`,
         summaryEn: 'S$25 billion five-year R&D plan, with AI designated as a priority investment area.',
-        contentEn: `The RIE2025 plan covers 2021-2025 with a total commitment of S$25 billion — the largest R&D investment in Singapore's history. Four strategic domains: Manufacturing, Trade and Connectivity; Human Health and Potential; Urban Solutions and Sustainability and Smart Nation; and Digital Economy. AI runs across all domains as a core enabling technology. The plan supports national AI research programmes such as AI Singapore and funds AI talent development, fundamental research, and industrial applications.`,
+        contentEn: `The RIE2025 plan covers 2021-2025 with a total commitment of S$25 billion — the largest R&D investment in Singapore's history. Four strategic domains: Manufacturing, Trade and Connectivity; Human Health and Potential; Urban Solutions and Sustainability; and Smart Nation and Digital Economy. AI runs across all domains as a core enabling technology. The plan supports national AI research programmes such as AI Singapore and funds AI talent development, fundamental research, and industrial applications.`,
+        sections: [
+          {
+            title: '概览',
+            titleKo: '개요',
+            titleJa: '概要',
+            titleEn: 'Overview',
+            body: 'RIE2025 计划覆盖 2021-2025 年，总投入 250 亿新元，是新加坡历史上最大规模的研发投资。AI 贯穿四大战略领域，是核心使能技术。计划支持 AI Singapore 等国家级 AI 研究项目，资助 AI 人才培养、基础研究和产业应用。',
+            bodyKo:
+              'RIE2025 프로그램은 2021-2025년을 다루며, 총 250억 싱가포르달러의 투자로 싱가포르 역사상 최대 규모의 연구개발 투자입니다. AI는 네 가지 전략 분야를 관통하는 핵심 실현 기술입니다. 계획은 AI Singapore 등 국가급 AI 연구 프로젝트를 지원하고, AI 인재 양성, 기초 연구 및 산업 응용에 자금을 지원합니다.',
+            bodyJa:
+              'RIE2025 計画は 2021～2025 年を対象とし、総投資額 250 億シンガポールドルで、シンガポール史上最大規模の研究開発投資です。AI は 4 つの戦略領域を貫くコア的実現技術です。計画は AI Singapore などの国家レベルの AI 研究プロジェクトを支援し、AI 人材育成、基礎研究、産業応用に資金を提供します。',
+            bodyEn:
+              'The RIE2025 plan covers 2021-2025 with a total commitment of S$25 billion — the largest R&D investment in Singapore’s history. AI runs across all four strategic domains as a core enabling technology. The plan supports national AI research programmes such as AI Singapore and funds AI talent development, fundamental research, and industrial applications.',
+          },
+          {
+            title: 'RIE2025 四大战略领域',
+            titleKo: 'RIE2025 4대 전략 분야',
+            titleJa: 'RIE2025 の 4 つの戦略領域',
+            titleEn: 'RIE2025 strategic domains',
+            body: `- **制造、贸易与连接**：先进制造、贸易与物流。AI 体现为工业自动化、预测性维护和供应链分析。
+- **人类健康与潜能**：医疗、生物医学与学习。AI 用于诊断、药物研发和精准医疗。
+- **城市解决方案与可持续发展**：建成环境、能源、水资源与气候韧性。AI 用于电网、交通和楼宇优化。
+- **智慧国家与数字经济**：直接承载 AI 的领域，涵盖国家 AI 计划、可信技术和数字经济议程，AI Singapore 归在这里。
+
+横向支撑（人才、基础研究、企业转化）贯穿四大领域。官方说明见 NRF 网站。`,
+            bodyKo: `- **제조·무역 및 연결성**: 첨단 제조, 무역, 물류. AI는 산업 자동화, 예지 정비, 공급망 분석으로 나타납니다.
+- **인간의 건강과 잠재력**: 의료, 생명의학, 학습. AI는 진단, 신약 개발, 정밀 의료에 쓰입니다.
+- **도시 솔루션과 지속가능성**: 건조 환경, 에너지, 물, 기후 회복력. AI는 전력망, 교통, 건물 최적화에 쓰입니다.
+- **스마트 국가와 디지털 경제**: AI를 직접 담는 분야로, 국가 AI 프로그램, 신뢰 기술, 디지털 경제 의제를 포함하며 AI Singapore가 여기에 속합니다.
+
+수평 지원(인재, 기초 연구, 기업 이전)은 네 분야 전체에 걸쳐 있습니다. 공식 설명은 NRF 웹사이트를 참고하세요.`,
+            bodyJa: `- **製造・貿易・連携**：先進製造、貿易、物流。AI は産業自動化、予知保全、サプライチェーン分析として現れます。
+- **人間の健康と可能性**：医療、バイオメディカル、学習。AI は診断、創薬、精密医療に使われます。
+- **都市ソリューションと持続可能性**：建築環境、エネルギー、水、気候レジリエンス。AI は電力網、交通、建物の最適化に使われます。
+- **スマート国家とデジタル経済**：AI を直接担う領域で、国家 AI プログラム、信頼技術、デジタル経済アジェンダを含み、AI Singapore はここに属します。
+
+横断的支援（人材、基礎研究、企業への移転）は 4 領域すべてにまたがります。公式説明は NRF のウェブサイトを参照してください。`,
+            bodyEn: `- **Manufacturing, Trade and Connectivity** — advanced manufacturing, trade and logistics. AI shows up as industrial automation, predictive maintenance and supply-chain analytics.
+- **Human Health and Potential** — healthcare, biomedical sciences and learning. AI in diagnostics, drug discovery and precision medicine.
+- **Urban Solutions and Sustainability** — the built environment, energy, water and climate resilience. AI in grid, transport and building optimisation.
+- **Smart Nation and Digital Economy** — the domain that carries AI directly: the national AI programmes, trust technologies and the digital economy agenda. AI Singapore sits here.
+
+Cross-cutting horizontals (talent, foundational research, enterprise translation) span all four domains. The official overview is on the NRF website.`,
+          },
+        ],
         sourceEn: 'National Research Foundation (NRF)',
         ministry: undefined,
         authorPersonIds: [],

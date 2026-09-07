@@ -16,7 +16,7 @@ import { findPersonId } from '~/utils/people';
 import { getRelated, getPersonCounts } from '~/utils/graph';
 import { buildParliamentarySummary } from '~/utils/parliamentary-record';
 import { isLowSignalPerson } from '~/utils/quality';
-import { channelLabel, pickLocalized } from '~/i18n';
+import { channelLabel, pickLocalized, pickLocalizedOwn } from '~/i18n';
 import { synthesizeMetaDescription } from '~/utils/seo-meta';
 
 export const prerender = true;
@@ -93,7 +93,7 @@ const truncateAtWord = (s: string, max: number): string => {
 };
 const jobTitleSegment = person.titleEn ? truncateAtWord(person.titleEn, 45) : 'Singapore AI policy & speeches';
 const metadata = {
-  title: `${displayName} — ${jobTitleSegment}`,
+  title: pickLocalizedOwn(person, 'seoTitle', 'en') || `${displayName} — ${jobTitleSegment}`,
   description: builtDescription || `${displayName}'s speeches, policy links, and public AI video records in Singapore.`,
   robots: { index: !isLowSignal, follow: true },
 };

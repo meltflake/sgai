@@ -17,7 +17,15 @@ import { getTopicById } from '~/data/topics';
 import { getRelated, getPersonCounts } from '~/utils/graph';
 import { buildParliamentarySummary } from '~/utils/parliamentary-record';
 import { isLowSignalPerson } from '~/utils/quality';
-import { NON_DEFAULT_ROUTE_LOCALES, channelLabel, pickLocalized, localizedHref, t, type Lang } from '~/i18n';
+import {
+  NON_DEFAULT_ROUTE_LOCALES,
+  channelLabel,
+  pickLocalized,
+  pickLocalizedOwn,
+  localizedHref,
+  t,
+  type Lang,
+} from '~/i18n';
 import { toTraditional } from '~/i18n/opencc';
 import { synthesizeMetaDescription } from '~/utils/seo-meta';
 import { personDisplayName, findPersonId } from '~/utils/people';
@@ -180,7 +188,7 @@ const fallbackDesc =
           : `${displayName}'s speeches, policy links, and public AI video records in Singapore.`;
 
 const metadata = {
-  title: `${displayName}${titleSuffix}`,
+  title: pickLocalizedOwn(person, 'seoTitle', lang) || `${displayName}${titleSuffix}`,
   description: synthesizeMetaDescription(descParts) || fallbackDesc,
   robots: { index: !isLowSignal, follow: true },
 };

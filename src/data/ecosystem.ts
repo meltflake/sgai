@@ -74,6 +74,16 @@ export interface EcosystemEntity {
   url?: string;
 
   id?: string;
+  /** Optional SERP overrides. Read with pickLocalizedOwn (exact locale only,
+   *  zh-tw derived from zh) so an En-only override never leaks into ja/ko. */
+  seoTitle?: string;
+  seoTitleEn?: string;
+  seoTitleJa?: string;
+  seoTitleKo?: string;
+  seoDescription?: string;
+  seoDescriptionEn?: string;
+  seoDescriptionJa?: string;
+  seoDescriptionKo?: string;
   entityType?: EcosystemEntityType;
   status?: EcosystemStatus;
 
@@ -174,6 +184,8 @@ export const ecosystemCategories: EcosystemCategory[] = [
         nameJa: 'AI Singapore (AISG)',
         nameKo: 'AI Singapore (AISG)',
         nameEn: 'AI Singapore (AISG)',
+        seoDescriptionEn:
+          'AI Singapore (AISG): national AI programme launched in 2017 by NRF, hosted at NUS, not a statutory board. Funding, programmes (AIAP, SEA-LION), leadership.',
         description: '新加坡国家级 AI 计划，统筹 SEA-LION、AIAP、TagUI、AI Verify 等关键产物',
         descriptionKo: '싱가포르 국가급 AI 계획, SEA-LION, AIAP, TagUI, AI Verify 등 주요 산출물 통합',
         descriptionJa: 'シンガポール国家AI計画で、SEA-LION、AIAP、TagUI、AI Verify などの主要な成果物を統括',
@@ -293,7 +305,9 @@ export const ecosystemCategories: EcosystemCategory[] = [
           'AI Singapore（AISG）は、2017年にシンガポール政府によって設立された国家AI計画で、「シンガポールをAI国家に変える」という実行ミッションを担っています。従来の研究機関ではなく、研究、人材、製品、ガバナンスを統合したハイブリッド体です。SEA-LION（東南アジア多言語大規模言語モデル）、AIAP（AI見習い制度）、TagUI（オープンソースRPA）、AI Verify（ガバナンスフレームワーク）といった、繰り返し引用される「シンガポール AI の名刺」はほぼすべてAISGから生み出されています。',
         summaryEn:
           'AI Singapore (AISG) is a national AI programme set up by the Singapore government in 2017 with a single mandate: turn Singapore into an AI nation. It is not a traditional research institute but a **hybrid of research, talent, products, and governance** — SEA-LION (the Southeast Asian multilingual LLM), AIAP (AI Apprenticeship Programme), TagUI (open-source RPA), and AI Verify (governance framework), the most-cited Singapore AI calling cards, almost all originated from AISG.',
-        whatItIs: `AI Singapore 于 2017 年 5 月 3 日启动，由 NRF 牵头，联合 SNDGO、EDB、IMDA、SGInnovate、IHiS 六方共建，NRF 承诺 5 年投入最高 1.5 亿新元；初始 5 年期满后续期至 2027 年。它所处的国家 AI 公共研发投入还在加码：2019–2023 年累计超 5 亿新元（RIE2020/RIE2025），2026 年 1 月再宣布 2025–2030 年投入 10 亿新元，聚焦基础 AI、应用 AI 与人才三个方向（均由 NRF 管理）。AISG 本身**寄生于 NUS 校园**（COM3 大楼），管理上独立，但能直接调用 NUS、NTU、SMU、SUTD、A*STAR 的研究力量。
+        whatItIs: `**AI Singapore 是政府机构吗？** 不完全是。AISG 是由国家研究基金会（NRF）出资、设在 NUS 校园的国家级计划，不是部委，也不是法定机构，但由政府机构共同设立和资助，任务来自国家 AI 战略。
+
+AI Singapore 于 2017 年 5 月 3 日启动，由 NRF 牵头，联合 SNDGO、EDB、IMDA、SGInnovate、IHiS 六方共建，NRF 承诺 5 年投入最高 1.5 亿新元；初始 5 年期满后续期至 2027 年。它所处的国家 AI 公共研发投入还在加码：2019–2023 年累计超 5 亿新元（RIE2020/RIE2025），2026 年 1 月再宣布 2025–2030 年投入 10 亿新元，聚焦基础 AI、应用 AI 与人才三个方向（均由 NRF 管理）。AISG 本身**寄生于 NUS 校园**（COM3 大楼），管理上独立，但能直接调用 NUS、NTU、SMU、SUTD、A*STAR 的研究力量。
 
 组织上，AISG 由几个并列的支柱组成：
 
@@ -306,7 +320,9 @@ export const ecosystemCategories: EcosystemCategory[] = [
 AISG 的模式被海外多次研究和模仿——它是少数几个由政府直接资助、又能产出全球开源项目的国家级 AI 机构。
 
 **两个常被误挂到 AISG 名下的名字**：AI Trailblazers 是 MCI、DISG、SNDGO 与 Google Cloud 的生成式 AI 共建计划（2023 年 7 月启动，2024 年 1 月扩展为 2.0）；Kampong AI 是 JTC 在 one-north LaunchPad 规划的 AI 创业园区（2026 年 3 月起试点，2028 年建成，14,500 平方米可容纳约 70 家公司，邻栋配 200 余套住宅）。两者都不是 AISG 旗下项目。AISG 自己的青少年赛事入口是 NOAI（全国 AI 奥林匹克）——新加坡队在 IOAI 2024 保加利亚站拿下 2 金、2025 北京站 2 金 5 银——并将与 NTU 联合主办 IOAI 2027，这是该赛事首次落地新加坡。`,
-        whatItIsKo: `AI Singapore는 2017년 5월 3일 출범했으며, NRF가 주도하고 SNDGO, EDB, IMDA, SGInnovate, IHiS 6개 기관이 공동 설립했습니다. NRF는 5년간 최대 1억 5천만 싱가포르 달러 투입을 약속했고, 초기 5년 기한 만료 후 2027년까지 연장되었습니다. 주변의 국가 AI 공공 R&D 투자도 계속 확대되고 있습니다: 2019–2023년 누적 5억 싱가포르 달러 초과(RIE2020/RIE2025), 2026년 1월에는 2025–2030년에 10억 싱가포르 달러를 투입해 기초 AI·응용 AI·인재 세 방향에 집중한다고 발표했습니다(모두 NRF가 관리). AISG 자체는 **NUS 캠퍼스에 자리잡혀 있으며**(COM3 건물), 관리상 독립적이지만 NUS, NTU, SMU, SUTD, A*STAR의 연구 역량을 직접 활용할 수 있습니다.
+        whatItIsKo: `**AI Singapore는 정부 기관인가?** 꼭 그렇지는 않습니다. AISG는 국가연구재단(NRF)이 자금을 대고 NUS 캠퍼스에 자리한 국가급 프로그램으로, 부처도 법정 기관도 아니지만 정부 기관들이 공동으로 설립·지원하며 임무는 국가 AI 전략에서 나옵니다.
+
+AI Singapore는 2017년 5월 3일 출범했으며, NRF가 주도하고 SNDGO, EDB, IMDA, SGInnovate, IHiS 6개 기관이 공동 설립했습니다. NRF는 5년간 최대 1억 5천만 싱가포르 달러 투입을 약속했고, 초기 5년 기한 만료 후 2027년까지 연장되었습니다. 주변의 국가 AI 공공 R&D 투자도 계속 확대되고 있습니다: 2019–2023년 누적 5억 싱가포르 달러 초과(RIE2020/RIE2025), 2026년 1월에는 2025–2030년에 10억 싱가포르 달러를 투입해 기초 AI·응용 AI·인재 세 방향에 집중한다고 발표했습니다(모두 NRF가 관리). AISG 자체는 **NUS 캠퍼스에 자리잡혀 있으며**(COM3 건물), 관리상 독립적이지만 NUS, NTU, SMU, SUTD, A*STAR의 연구 역량을 직접 활용할 수 있습니다.
 
 조직상 AISG는 여러 개의 병렬 기둥으로 구성됩니다:
 
@@ -319,7 +335,9 @@ AISG 的模式被海外多次研究和模仿——它是少数几个由政府直
 AISG 모델은 해외에서 여러 차례 연구되고 모방되어 왔습니다——정부가 직접 자금을 지원하면서도 글로벌 오픈 소스 프로젝트를 산출할 수 있는 몇 안 되는 국가급 AI 기관입니다.
 
 **AISG 프로젝트로 오해받기 쉬운 두 이름**: AI Trailblazers는 MCI, DISG, SNDGO와 Google Cloud의 생성형 AI 공동 프로그램(2023년 7월 시작, 2024년 1월 2.0으로 확대)이고, Kampong AI는 JTC가 one-north LaunchPad에 조성하는 AI 스타트업 캠퍼스(2026년 3월부터 파일럿, 2028년 완공, 14,500제곱미터에 최대 약 70개 기업, 인접 동에 200세대 이상의 주거 공간)입니다. 둘 다 AISG 소속이 아닙니다. AISG 자체의 청소년 대회 입구는 NOAI(전국 AI 올림피아드)이며——싱가포르 대표팀은 IOAI 2024 불가리아 대회에서 금 2개, IOAI 2025 베이징 대회에서 금 2개·은 5개를 획득——NTU와 공동으로 IOAI 2027을 주최합니다. 이 대회의 싱가포르 개최는 처음입니다.`,
-        whatItIsJa: `AI Singapore は 2017 年 5 月 3 日に発足しました。NRF が主導し、SNDGO、EDB、IMDA、SGInnovate、IHiS の 6 機関で共同設立され、NRF は 5 年間で最大 1.5 億シンガポールドルの投入を確約。当初の 5 年期間の満了後、2027 年まで延長されています。周辺の国家 AI 公共研究開発投資も拡大を続けています：2019–2023 年に累計 5 億シンガポールドル超（RIE2020/RIE2025）、さらに 2026 年 1 月には 2025–2030 年に 10 億シンガポールドルを投入し、基礎 AI・応用 AI・人材の 3 領域に注力すると発表されました（いずれも NRF が管理）。AISG 自体は**NUS キャンパスに所在し**（COM3 ビルディング）、管理上は独立していますが、NUS、NTU、SMU、SUTD、A*STAR の研究力を直接活用できます。
+        whatItIsJa: `**AI Singapore は政府機関か？** 厳密には違います。AISG は国家研究財団（NRF）が資金を出し、NUS キャンパスに置かれた国家プログラムで、省庁でも法定機関でもありませんが、政府機関が共同で設立・支援し、任務は国家 AI 戦略に由来します。
+
+AI Singapore は 2017 年 5 月 3 日に発足しました。NRF が主導し、SNDGO、EDB、IMDA、SGInnovate、IHiS の 6 機関で共同設立され、NRF は 5 年間で最大 1.5 億シンガポールドルの投入を確約。当初の 5 年期間の満了後、2027 年まで延長されています。周辺の国家 AI 公共研究開発投資も拡大を続けています：2019–2023 年に累計 5 億シンガポールドル超（RIE2020/RIE2025）、さらに 2026 年 1 月には 2025–2030 年に 10 億シンガポールドルを投入し、基礎 AI・応用 AI・人材の 3 領域に注力すると発表されました（いずれも NRF が管理）。AISG 自体は**NUS キャンパスに所在し**（COM3 ビルディング）、管理上は独立していますが、NUS、NTU、SMU、SUTD、A*STAR の研究力を直接活用できます。
 
 組織的には、AISG は複数の並列の柱で構成されています：
 
@@ -332,7 +350,9 @@ AISG 모델은 해외에서 여러 차례 연구되고 모방되어 왔습니다
 AISG のモデルは海外で何度も研究・模倣されています——それは政府から直接資金提供を受け、かつグローバルなオープンソース・プロジェクトを産出できる数少ない国家級 AI 機構です。
 
 **AISG のプロジェクトと誤解されやすい 2 つの名前**：AI Trailblazers は MCI、DISG、SNDGO と Google Cloud による生成 AI 共創プログラム（2023 年 7 月開始、2024 年 1 月に 2.0 へ拡大）です。Kampong AI は JTC が one-north の LaunchPad に計画する AI スタートアップ・キャンパス（2026 年 3 月からパイロット、2028 年完成、14,500 平方メートルに最大約 70 社、隣接ブロックに 200 戸超の住宅）です。いずれも AISG の傘下ではありません。AISG 自身の青少年向け競技の入口は NOAI（全国 AI オリンピック）で——シンガポール代表は IOAI 2024 ブルガリア大会で金 2、IOAI 2025 北京大会で金 2・銀 5 を獲得——、さらに NTU と共同で IOAI 2027 を主催します。同大会のシンガポール開催は初めてです。`,
-        whatItIsEn: `AISG launched on 3 May 2017, led by NRF together with SNDGO, EDB, IMDA, SGInnovate and IHiS, with NRF committing up to S$150 million over five years; after the initial five-year term it was extended through 2027. The national pool of public AI R&D money around it keeps growing: over S$500 million invested in 2019–2023 (under RIE2020/RIE2025), and another S$1 billion announced in January 2026 for 2025–2030, focused on fundamental AI, applied AI and talent (all administered by NRF). AISG itself is **embedded inside the NUS campus** (COM3 building), operationally independent but with direct access to research talent at NUS, NTU, SMU, SUTD, and A*STAR.
+        whatItIsEn: `**Is AI Singapore a government agency?** Not quite. AISG is a national programme funded by the National Research Foundation (NRF) and hosted on the NUS campus. It is neither a ministry nor a statutory board, but it was set up and is funded by government agencies, and its mandate comes from the national AI strategy.
+
+AISG launched on 3 May 2017, led by NRF together with SNDGO, EDB, IMDA, SGInnovate and IHiS, with NRF committing up to S$150 million over five years; after the initial five-year term it was extended through 2027. The national pool of public AI R&D money around it keeps growing: over S$500 million invested in 2019–2023 (under RIE2020/RIE2025), and another S$1 billion announced in January 2026 for 2025–2030, focused on fundamental AI, applied AI and talent (all administered by NRF). AISG itself is **embedded inside the NUS campus** (COM3 building), operationally independent but with direct access to research talent at NUS, NTU, SMU, SUTD, and A*STAR.
 
 Structurally, AISG is built on several parallel pillars:
 
@@ -4490,6 +4510,9 @@ A take: Aquarium is not AISG's flagship external product, but it is the engineer
         nameJa: 'AI Trailblazers',
         nameKo: 'AI Trailblazers',
         nameEn: 'AI Trailblazers',
+        seoTitleEn: 'AI Trailblazers Initiative Singapore (1.0 & 2.0)',
+        seoDescriptionEn:
+          'AI Trailblazers: Singapore’s GenAI co-creation initiative by MDDI, DISG, SNDGO and Google Cloud. Free Vertex AI workspace, 100-day builds, what 2.0 changed.',
         description: 'MDDI（前 MCI）、DISG、SNDGO 与 Google Cloud 的生成式 AI 共建计划',
         descriptionKo: 'MDDI(전 MCI), DISG, SNDGO와 Google Cloud의 생성형 AI 공동 구축 프로그램',
         descriptionJa: 'MDDI（旧 MCI）、DISG、SNDGO と Google Cloud による生成 AI 共創プログラム',

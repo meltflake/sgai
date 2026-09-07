@@ -25,6 +25,13 @@ export interface LeverItem {
   descriptionJa?: string;
   descriptionKo?: string;
   sourceUrl?: string;
+  /** Optional SERP overrides. Read with pickLocalizedOwn (exact locale only,
+   *  zh-tw derived from zh) so an En-only override never leaks into ja/ko. */
+  seoTitle?: string;
+  seoTitleEn?: string;
+  seoTitleJa?: string;
+  seoTitleKo?: string;
+  relatedEntityIds?: string[]; // → src/data/ecosystem.ts ids ("Full profile" cards on the item page)
   // Phase 1 cross-refs (hand-curated over time).
   relatedPolicyIds?: string[];
   relatedDebateIds?: string[];
@@ -2133,6 +2140,8 @@ export const levers: Lever[] = [
             nameJa: 'AI Trailblazers 1.0 + 2.0',
             nameKo: 'AI Trailblazers 1.0 + 2.0',
             nameEn: 'AI Trailblazers 1.0 + 2.0',
+            seoTitleEn: 'AI Trailblazers as a Policy Lever: Pilot to Production',
+            relatedEntityIds: ['ai-trailblazers'],
             ministry: 'GovTech',
             ministryEn: 'GovTech',
             ministryJa: 'GovTech',

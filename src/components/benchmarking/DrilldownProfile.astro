@@ -5,7 +5,7 @@ import JsonLd from '~/components/common/JsonLd.astro';
 import Layout from '~/layouts/PageLayout.astro';
 import { benchmarkCaseProfileUpdated } from '~/data/benchmarking';
 import { getBenchmarkDrilldownsForRegion, type BenchmarkDrilldownPage } from '~/utils/entity-pages';
-import { IN_LANGUAGES, localizedHref, pickLocalized, t, type Lang } from '~/i18n';
+import { IN_LANGUAGES, localizedHref, pickLocalized, pickLocalizedOwn, t, type Lang } from '~/i18n';
 import { toTraditional } from '~/i18n/opencc';
 import { synthesizeMetaDescription } from '~/utils/seo-meta';
 
@@ -91,9 +91,15 @@ const regionBenchmarkLabelByLang: Record<Lang, string> = {
 // boilerplate that just repeats the title. Both fields are synthesized
 // with full 4-locale siblings (see the note at the top of this file),
 // so no per-locale gating is needed here.
+// Per-drilldown SERP overrides live on the enrichment record (exact locale only).
+const enrichment = page.region.detail?.drilldownEnrichments?.[page.localId];
 const baseMetadata = {
-  title: `${title} · ${regionBenchmarkLabelByLang[lang] || regionBenchmarkLabelByLang.en}`,
-  description: page.analysisPending ? description : synthesizeMetaDescription([description, body]) || description,
+  title:
+    pickLocalizedOwn(enrichment, 'seoTitle', lang) ||
+    `${title} · ${regionBenchmarkLabelByLang[lang] || regionBenchmarkLabelByLang.en}`,
+  description:
+    pickLocalizedOwn(enrichment, 'seoDescription', lang) ||
+    (page.analysisPending ? description : synthesizeMetaDescription([description, body]) || description),
 };
 
 // Until per-drilldown enrichment lands, mark the page noindex,follow so
