@@ -12247,20 +12247,28 @@ export const videoTranscripts: Record<string, VideoTranscript> = {
   v095: {
     videoId: 'v095',
     youtubeId: 'mpGAidoiYIo',
-    captionLanguage: 'zh-Hans',
+    captionLanguage: 'en',
     fetchedAt: '2026-09-10',
     source: 'youtube-subtitles',
     paragraphs: [
-      '所以，如果你 查阅法典和 所有这些改进 每周出版或 每两周一次，然后 他们中的许多人 因为我们 我们将当场查明： 具体如何 使用法典 他有什么问题？ 决定。 那将是 没有工作就不可能实现。 你知道，就像这样 像FDE这样的专家 CD，以及其他许多产品 在 OpenAI 中担任各种职务， 真实地出来 世界并与世界互动 他。',
+      '[音乐] >> 所以如果你看 Codex 以及每周或每两周推出的所有改进，其中很多是由我们从现场学到的东西驱动的，就是它被正确使用 [音乐] 的程度以及正在解决什么问题。没有 FDEs [音乐]、CDs 以及许多开阔视野、走出去与现实世界互动的角色的工作，这是不可能的。>> [音乐] >> 零到一的心态。这种心态就是，好吧，有一个问题，问题还没有真正定义，我只是要弄清楚并继续。不知怎的，我建立了零到一的旅程。不知怎的，我构建了第一个版本的产品，这个产品根本不存在。所以如果这是你，如果你喜欢这种零到一旅程，这对前向部署工程实际上是一个很好的迹象。',
+      '>> 特别是对于 FDEs，这里面也有巨大的人文因素。嗯，所以我之前在政府部门的经历真的教了我很多东西，像对大型组织的同理心，嗯，企业如何思考，你知道，组织内的动态，有时候知道如何驾驭这些事情是非常重要的。>> [音乐] >> 最终，我认为一个前向部署工程师是否被聘用基于 [音乐] 两个问题。你会作为工程师聘用他们吗？还是你会聘用他们去与客户互动？不像商人、顾问或工程师的情况，其中一个需要是对的，在这种情况下两个都必须是对的。',
     ],
     paragraphsKo: [
-      '그래서 법전과 모든 이러한 개선을 매주 또는 2주마다 검토한다면, 그들 중 많은 것들을 우리가 그 자리에서 파악할 것입니다: 구체적으로 법전을 어떻게 사용하는지, 그것이 어떤 문제입니까? 결정. 그것은 일 없이는 불가능할 것입니다. 알다시피, FDE 같은 전문가들, CD, 그리고 OpenAI의 다양한 직책을 가진 다른 많은 제품들이 진정하게 세계로 나와 그것과 상호작용합니다.',
+      '[음악] >> 따라서 Codex를 보고 매주 또는 격주로 출시되는 모든 개선사항을 보면, 그 중 많은 것이 현장에서 우리가 배운 것에 의해 주도됩니다. 즉, 이것이 올바르게 사용되는[음악] 정도와 어떤 문제를 해결하고 있는지에 관한 것입니다. FDE[음악], CD, 그리고 안목을 넓히고 나가서 현실 세계와 상호작용하는 많은 역할들의 업무가 없다면 이는 불가능했을 것입니다. >> [음악] >> 제로에서 원으로의 마음가짐입니다. 이 마음가짐은, 좋아요, 문제가 있는데 그 문제가 아직 진정으로 정의되지 않았고, 나는 단지 그것을 파악하고 계속하려고 합니다. 어떻게든 나는 제로에서 원으로의 여정을 구축했습니다. 어떻게든 나는 제품의 첫 번째 버전을 구축했는데, 이 제품은 원래 존재하지 않았습니다. 따라서 당신이 이러한 유형이고 제로에서 원으로의 여정을 좋아한다면, 이는 실제로 포워드 배포 엔지니어링에 매우 좋은 신호입니다.',
+      '>> 특히 FDE의 경우, 거기에는 또한 엄청난 인문적 요소가 있습니다. 음, 그래서 제가 정부 부서에서의 이전 경험이 정말 저에게 많은 것을 가르쳤습니다. 대형 조직에 대한 공감력, 음, 기업이 어떻게 생각하는지, 당신 알다시피, 조직 내의 역학관계, 때때로 이런 것들을 어떻게 헤쳐나가는지를 아는 것이 매우 중요합니다. >> [음악] >> 궁극적으로, 저는 포워드 배포 엔지니어가 채용되는지 여부는 [음악] 두 가지 질문에 기반한다고 생각합니다. 당신이 엔지니어로서 그들을 채용하겠습니까? 아니면 당신이 고객과 상호작용하도록 그들을 채용하겠습니까? 사업가, 컨설턴트, 또는 엔지니어의 경우와 달리, 하나가 맞으면 되는 것과 다르게, 이 경우에는 둘 다 맞아야 합니다.',
     ],
     paragraphsJa: [
-      'ですので、もし法典とこれらすべての改善を毎週または隔週で公開されるものを参照するのであれば、それからそれらの多くの人々は私たちのために、私たちはその場で明らかにします：具体的にいかに法典を使用するのか、それにはどのような問題があるのか？決定です。それは仕事がなければ実現不可能でしょう。ご存知のように、このようにFDEのような専門家CD、およびOpenAIで様々な職務を担当するその他多くの製品は、本当に世界に出てきて世界と相互作用します。',
+      '[音楽] >> では、Codex と毎週または隔週にリリースされるすべての改善を見ると、そのうち多くは私たちが現場から学んだことによって推し進められています。重要なのは、それがどの程度正しく使用されているか、そして今何が解決されているかということです。FDEs [音楽]、CDs、および視野を広げ、外に出て現実世界と相互作用する多くの役割の仕事がなければ、これは不可能です。>> [音楽] >> ゼロトゥワンのマインドセット。このマインドセットというのは、まあ、問題があり、その問題はまだ本当には定義されていないので、私はただそれを理解して進み続けたいということです。どうにかして、私はゼロトゥワンのジャーニーを構築しました。どうにかして、私は全く存在しなかった製品の最初のバージョンを構築しました。ですから、もしこれがあなたなら、もしあなたがこのようなゼロトゥワンのジャーニーが好きなら、これは Forward Deployed Engineering にとって実は非常に良い兆候です。',
+      '>> 特に FDEs に対して、ここにも巨大な人文的な要素があります。えーと、ですから、以前の政府部門での経験は、私に本当に多くのことを教えてくれました。大型組織に対する共感のような、えーと、企業がどのように思考するか、ご存知のように、組織内の動態。時には、これらのことをどのようにナビゲートするかを知ることは非常に重要です。>> [音楽] >> 最終的に、私は、あるフォワード・デプロイド・エンジニアが採用されるかどうかは [音楽] 2つの質問に基づいていると考えています。あなたはエンジニアとして彼らを採用しますか？それとも、顧客と相互作用するために彼らを採用しますか？セールスマン、コンサルタント、またはエンジニアの場合と異なり、そこでは1つが正しい必要があります。この場合は、両方が正しい必要があります。',
     ],
     translatedAt: '2026-09-10',
-    translationSource: 'source',
+    translationSource: 'claude',
+    paragraphsEn: [
+      "[music] >> So if you look at Codex and all the improvements that are shipping every week or every two weeks, a lot of that is driven by what we learn from the ground in terms of how correct is [music] being used and what problems are being solved. And that wouldn't be possible without the work of you know like FDEs [music] and CDs and a lot of roles that are opening eyes that's going out there and engaging with the real world. >> [music] >> The zero to one mindset. This mindset of okay, there's a problem, the problem isn't really defined, I'm just going to figure it out and run with it. And somehow I built the zero to one journey. Somehow I built the first version of a product that simply hasn't existed. So if this is you, if you like these kind of like zero to one journeys, that's actually a great sign for forward deployed engineering.",
+      ">> Especially for FDEs, there's also a huge human side of it. Um, so my experience previously in the government really taught me a lot things like you know, empathy for big organizations, um, how enterprises think, you know, the dynamics within an organization and sometimes it's very important to know how to navigate these things. >> [music] >> And ultimately, I think whether a forward deploy engineer gets hired is based on [music] two questions. Will you hire them as engineer or will you hire them to face a client? And unlike a business, a consultant or an engineer, it where one has to be yes, in this case both must be a yes.",
+    ],
+    translationModel: 'haiku',
   },
   v096: {
     videoId: 'v096',
