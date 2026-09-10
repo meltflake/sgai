@@ -29,7 +29,11 @@ const RAW_DIR = resolve('scripts/videos/data/transcripts');
 const TRANSLATION_DIR = resolve('scripts/videos/data/translations');
 const TMP_DIR = resolve('scripts/videos/data/transcripts-tmp');
 const OUT_FILE = resolve('src/data/video-transcripts.ts');
-const LANGS = ['en', 'zh-Hans', 'zh-Hant', 'zh'];
+// 'en-orig' is the original-language track YouTube exposes on multi-audio
+// videos (dubbed tracks make plain 'en' an auto-translation that can 429 or
+// be empty); it sits right after 'en' so an English talk never falls through
+// to a machine-translated Chinese track (v095, 2026-09-10).
+const LANGS = ['en', 'en-orig', 'zh-Hans', 'zh-Hant', 'zh'];
 
 const args = new Set(process.argv.slice(2));
 const force = args.has('--force');

@@ -85,7 +85,7 @@ AI_KEYWORDS_STRONG = [
     r"\bLLM\b",
     r"smart nation.*(?:ai|digital|tech)",
     r"(?:ai|digital).*smart nation",
-    r"national ai",
+    r"\bnational ai\b",  # word-bounded: bare "national ai" matched "international airport" (2026-09-08 CNA volcano clips)
     r"ai govern",
     r"ai strateg",
     r"ai safety",
