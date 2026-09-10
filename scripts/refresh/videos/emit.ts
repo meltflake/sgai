@@ -609,6 +609,7 @@ async function main() {
 
   // Generate fields per candidate (cached).
   const approved: ApprovedEntry[] = [];
+  const refused: string[] = [];
   let nextNum = maxId + 1;
   for (const c of fresh) {
     const h = hashOf(c);
@@ -617,7 +618,21 @@ async function main() {
       console.log(`  📦 cache hit: ${c.videoId}`);
     } else {
       console.log(`  🤖 LLM generating bilingual fields for ${c.videoId} ...`);
-      fields = await generateFields(c);
+      try {
+        fields = await generateFields(c);
+      } catch (e) {
+        // An off-topic candidate (the keyword scan is loose) makes the model
+        // answer in prose instead of JSON; callLlmJson gives up after two
+        // attempts. Skip that one video instead of failing the whole batch —
+        // 2026-09-08..10 two volcano news clips blocked five real videos for
+        // three daily runs. Anything else (network, auth) still throws so the
+        // batch retries tomorrow.
+        const msg = e instanceof Error ? e.message : String(e);
+        if (!/not valid JSON/.test(msg)) throw e;
+        console.warn(`  ⏭  Skip ${c.videoId} — model refused to summarise (likely off-topic): ${c.title}`);
+        refused.push(c.videoId);
+        continue;
+      }
       writeCachedFields(c.videoId, h, fields);
     }
     // Re-apply the known-speaker override on every path: cached fields carry
@@ -640,6 +655,13 @@ async function main() {
       fields,
     });
     nextNum += 1;
+  }
+  if (refused.length) {
+    console.warn(`  ⏭  ${refused.length} candidate(s) skipped as off-topic: ${refused.join(', ')}`);
+  }
+  if (!approved.length) {
+    console.log('Nothing new to add.');
+    process.exit(0);
   }
 
   console.log(`\n✅ Built ${approved.length} bilingual entries:\n`);
