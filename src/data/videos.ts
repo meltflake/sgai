@@ -145,6 +145,43 @@ export function pickSpeakerTypeLabels(lang: string): Record<string, string> {
 
 export const videos: VideoItem[] = [
   {
+    id: 'v097',
+    title: '新 AI 门户 BizSG 助企业申请政府补助',
+    titleEn: 'AI-powered BizSG portal helps firms find government grants',
+    titleJa: '「新しいAI ポータル BizSG が企業の政府補助申請を支援」',
+    titleKo: '새 AI 포털 BizSG, 기업의 정부 보조금 신청 지원',
+    speaker: 'Low Yen Ling',
+    speakerTitle: '贸易和工业部高级政务部长',
+    speakerTitleEn: 'Senior Minister of State for Trade and Industry',
+    speakerTitleJa: '「貿易・工業省高級政務部長」',
+    speakerTitleKo: '무역산업부 고급 정무부장관',
+    speakerType: 'government',
+    date: '2026-09-11',
+    duration: '09:25',
+    summary:
+      '贸易和工业部高级政务部长 Low Yen Ling 宣布推出新的 AI 门户网站 BizSG，助企业寻找和申请政府补助及支持计划。',
+    summaryEn:
+      'Senior Minister of State for Trade and Industry Low Yen Ling announces a new AI-powered BizSG portal to help businesses find and apply for government grants and support schemes.',
+    summaryJa:
+      '「貿易・工業省高級政務部長ロー・イェン・リン氏は、企業が政府補助と支援計画を探し申請するのを支援する新しいAI ポータルサイト BizSG の立ち上げを発表しました。」',
+    summaryKo:
+      '무역산업부 고급 정무부장관 로우 옌 링이 기업의 정부 보조금 및 지원 계획 신청을 지원하는 새로운 AI 포털 BizSG의 출범을 발표했습니다.',
+    whyItMatters: 'BizSG 上线暴露新加坡 AI 补助此前卡点是信息分散而非预算不足，政府转向用 AI 工具解决政策触达问题',
+    whyItMattersEn:
+      "BizSG's launch exposes that the prior bottleneck for Singapore AI subsidies was information fragmentation rather than budget shortage; the government is shifting to using AI tools to address policy outreach challenges.",
+    whyItMattersJa:
+      'BizSGのオンライン化により、シンガポールのAI補助における従来の課題が露呈されました。その課題は予算不足ではなく、情報の分散でした。政府はAIツールを活用して政策触達の問題を解決する方向に転換しています。',
+    whyItMattersKo:
+      'BizSG 론칭으로 싱가포르 AI 보조금의 이전 병목이 드러났습니다. 문제는 예산 부족이 아니라 정보 분산이었으며, 정부는 정책 전달 문제를 해결하기 위해 AI 도구 활용으로 전환했습니다.',
+    topic: 'AI 产业与应用',
+    topicEn: 'AI Industry & Applications',
+    topicJa: 'AI 産業と応用',
+    topicKo: 'AI 산업 및 응용',
+    youtubeUrl: 'https://www.youtube.com/watch?v=5VB1zTHd2s0',
+    channel: 'CNA',
+    addedAt: '2026-09-12',
+  },
+  {
     id: 'v093',
     title: '新加坡拟推数据中心云服务许可新规',
     titleEn: 'Singapore considers new licensing rules for data centres and cloud services',
