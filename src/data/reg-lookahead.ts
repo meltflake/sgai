@@ -85,6 +85,28 @@ export interface BillItem {
 
 export const consultations: ConsultationItem[] = [
   {
+    id: 'public-consultation-on-the-digital-infrastructure-bill',
+    agency: 'MDDI',
+    title: '关于《数字基础设施法案》的公众咨询',
+    titleEn: 'Public Consultation on the Digital Infrastructure Bill',
+    titleJa: 'Digital Infrastructure Billに関する公開協議',
+    titleKo: '디지털 인프라 법안에 관한 공개 협의',
+    summary:
+      '该咨询涵盖了《数字基础设施法案》草案，该法案提议对主要数据中心和云服务提供商实施许可制度，以加强安全、韧性和环保可持续性。MDDI和IMDA收到了25份支持意见，涉及实施细节、许可门槛和安全要求框架的反馈。',
+    summaryEn:
+      'The consultation covered the draft Digital Infrastructure Bill, which proposes licensing regimes for major data centres and cloud service providers to strengthen security, resilience, and environmental sustainability. MDDI and IMDA received 25 supportive responses with feedback on implementation details, licensing thresholds, and security requirement frameworks.',
+    summaryJa:
+      '本相談は、主要なデータセンターおよびクラウドサービスプロバイダー向けのライセンシング制度を提案するとともに、セキュリティ、レジリエンス、および環境持続可能性を強化することを目指すデジタルインフラストラクチャー法案（案）を扱いました。MDDIおよびIMDAは、実装の詳細、ライセンシング閾値、およびセキュリティ要件フレームワークに関するフィードバック付きの25件の支持的な回答を受け取りました。',
+    summaryKo:
+      '협의에서는 보안, 회복력, 환경 지속가능성을 강화하기 위해 주요 데이터 센터 및 클라우드 서비스 제공자에 대한 라이선싱 체계를 제안하는 초안 디지털 인프라 법안을 다루었습니다. MDDI와 IMDA는 이행 세부사항, 라이선싱 기준, 보안 요구사항 체계에 관한 피드백이 담긴 25건의 지지 의견을 받았습니다.',
+    status: 'closed',
+    opensAt: '2026-07-01',
+    deadline: '2026-07-22',
+    statusHistory: [{ status: 'closed', observedAt: '2026-09-14' }],
+    sourceUrl: 'https://www.mddi.gov.sg/newsroom/public-consultation-on-the-digital-infrastructure-bill/',
+    addedAt: '2026-09-14',
+  },
+  {
     id: 'public-consultation-on-digital-infrastructure-bill',
     agency: 'MDDI',
     title: '《数字基础设施法案》公众咨询',
@@ -130,6 +152,24 @@ export const consultations: ConsultationItem[] = [
 ];
 
 export const bills: BillItem[] = [
+  {
+    id: 'digital-infrastructure-bill',
+    billNumber: 'Bill 20/2026',
+    title: '数字基础设施法案',
+    titleEn: 'Digital Infrastructure Bill',
+    titleJa: 'Digital Infrastructure Bill',
+    titleKo: '디지털 인프라 법안',
+    summary: '数字基础设施法案，在新加坡国会前。',
+    summaryEn: 'Digital Infrastructure Bill, before the Parliament of Singapore.',
+    summaryJa: 'デジタル基盤法案、シンガポール議会に提出',
+    summaryKo: '디지털 인프라 법안, 싱가포르 의회에 상정.',
+    stage: 'introduced',
+    introducedAt: '2026-09-08',
+    stageHistory: [{ stage: 'introduced', observedAt: '2026-09-14' }],
+    aiRelevance: 'adjacent',
+    sourceUrl: 'https://www.parliament.gov.sg/parliamentary-business/bills-introduced',
+    addedAt: '2026-09-14',
+  },
   {
     id: 'info-communications-media-development-authority-amendment-bill',
     billNumber: 'Bill 9/2026',
