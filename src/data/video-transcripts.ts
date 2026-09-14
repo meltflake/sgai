@@ -12300,6 +12300,36 @@ export const videoTranscripts: Record<string, VideoTranscript> = {
     translationSource: 'claude',
     translationModel: 'haiku',
   },
+  v098: {
+    videoId: 'v098',
+    youtubeId: 'o9J6XmWiER0',
+    captionLanguage: 'en',
+    fetchedAt: '2026-09-14',
+    source: 'youtube-subtitles',
+    paragraphs: [
+      '听说过 AI 亚洲经理吗?越来越多的员工在管理这些机器人,因为公司越来越多地利用这样的数字同事。虽然生产力提升显而易见,但人们担心这对初级员工意味着什么。记者 Jermaine Wong 报道。>> "Foran 现在多任务处理变得容易了。只需点击几下,AI agents 就会为他对工作文件进行完整分析,而他则继续处理其他工作。那大约需要 3 分钟来运行我的员工给我的分析。呃,相比之下,如果让我详细重新审查,这可能需要 2 个小时。" >> "不过,这些 agents 没有最终决定权。" >> "对错误和源于 AI 幻觉的 AI 幻觉的容忍度呃呃呃非常小。事实上,几乎不存在。"',
+      '"所以人类呃呃带来他们的专业判断,同时保持他们的怀疑精神,你知道,还有问责制" >> [笑声] >> "呃,问责制是这里强调的词。呃,这是整个 AI 采用过程中的关键。" >> "目前,人类仍然掌权。但随着 agents 能够做越来越多的工作,分析师表示工作需要改变以包括指导、质疑和检查 AI。AI 改变工作内容的速度远快于改变职位名称的速度,员工的反应是重新设计工作以提升技能,而不是大规模替换工作。员工越来越多地寻找理解他们职能的人,他们能够应用 AI 来提高生产力和重新设计呃工作流和流程,同时更好地利用数据。"',
+      '她在人力资源、财务、法律、风险和市场营销等多个行业都看到了这种情况。软件公司 SAP 进行的一项调查表明,这种转变可能会加速。在新加坡的 200 家公司中,有 92% 的公司目前正在探索或已经采用 Agentic AI,高于去年的 69%。不过,代价可能是批判性判断力减弱和工作中的学习减少,特别是对于初入劳动力市场的人员。最大的风险呃不是那么关于呃初级员工使用 AI。而是初级员工在使用 AI 的同时没有学会自己思考。所以公司需要在工作中保留学徒精神。她补充说,在这个时代成功的组织是那些将可信数据与精心设计的流程结合起来,同时提升其员工的组织。',
+    ],
+    paragraphsEn: [
+      "Ever heard of an AI Asian manager? More workers are managing these bots as companies increasingly tap such digital colleagues. While the productivity gains are clear, there are concerns over what this could mean for junior employees. Jermaine Wong reports. >> Foran multitasking is now easier. With just a few clicks, AI agents are doing a full analysis of working papers for him while he moves on to what's next. that takes about 3 minutes to run the analysis that my staff has uh has given me. Uh as compared to if I'm to re review in detail, this will probably take 2 hours. >> Still, these agents don't get the final say. >> The tolerance for error and AI hallucination arising from AI hallucination uh is is is very thin. In fact, it's almost non-existent.",
+      "So human uh bringing in their professional judgment while maintaining their skepticism, you know, and accountability >> [snorts] >> uh and accountability is the word that's emphasized here. Uh it's key in this entire AI adoption process. >> For now, humans remain in charge. But as agents become capable of doing more of the work, analysts say jobs will have to be changed to include directing, questioning, and checking AI. AI is changing job content much faster than it's changing job titles and the workforce response has been to redesign jobs to upskill rather than to wholesale replace jobs. Employees are increasingly looking for people who understand their function, who can apply AI to improve productivity and to redesign uh workflows and processes as well as make much better use of data.",
+      "She sees this across sectors like HR, finance to legal, risk and marketing. And a survey by software company SAP suggests that the shift might accelerate. Across 200 companies in Singapore, Agentic AI is currently being explored or already in some 92% of firms, up from 69% last year. The cost though could be weaker critical judgment and less on the job learning, especially for those new to the workforce. The greatest risk is uh not so much about uh junior employees using AI. It's juniors using AI without learning to think for themselves. So companies need to preserve the spirit of apprentichip um inside the jobs. She adds that organizations that will succeed in this era will be ones who combine trusted data with well-designed processes while uplifting their workforce.",
+    ],
+    paragraphsKo: [
+      'AI 아시아 매니저라는 말을 들어본 적이 있으신가요? 점점 더 많은 직원들이 이러한 로봇을 관리하고 있습니다. 기업들이 이러한 디지털 동료를 점점 더 활용하고 있기 때문입니다. 생산성 향상이 분명하지만, 이것이 초급 직원들에게 무엇을 의미하는지에 대해 우려하고 있습니다. 기자 Jermaine Wong이 보도합니다. >> 「Foran은 이제 멀티태스킹이 쉬워졌습니다. 몇 번의 클릭만으로 AI 에이전트가 그를 위해 업무 파일에 대한 완전한 분석을 수행하는 동안, 그는 다른 업무를 계속 처리할 수 있습니다. 제 직원이 제공한 분석을 실행하는 데 약 3분이 소요됩니다. 음, 그에 비해 제가 상세히 다시 검토한다면 2시간이 걸릴 수 있습니다.」>> 「하지만 이 에이전트들에게는 최종 결정권이 없습니다.」>> 「오류와 AI 환각으로 인한 것에 대한 관용도는 매우 작습니다. 실제로 거의 존재하지 않습니다.」',
+      '「그래서 인간은 자신의 전문적 판단을 가져오고, 동시에 회의적인 정신을 유지하며, 알다시피, 책임성을 유지합니다」>> [웃음] >> 「음, 책임성이 여기서 강조되는 단어입니다. 음, 이것이 전체 AI 도입 과정의 핵심입니다.」>> 「현재 인간이 여전히 통제권을 가지고 있습니다. 하지만 에이전트들이 점점 더 많은 업무를 할 수 있게 되면서 분석가들은 업무에 지도, 의문 제기, AI 검사가 포함되도록 변해야 한다고 말합니다. AI가 직무 명칭을 바꾸는 속도보다 훨씬 빠르게 업무 내용을 바꾸고 있습니다. 직원들의 대응은 대규모 일자리 대체가 아닌 기술 향상을 위한 업무 재설계입니다. 직원들은 자신의 직무를 이해하고, AI를 적용하여 생산성을 높이며, 업무 흐름과 프로세스를 재설계하고, 동시에 데이터를 더 잘 활용할 수 있는 인재를 점점 더 찾고 있습니다.」',
+      '그녀는 인적자원, 재무, 법률, 위험관리, 마케팅 등 여러 산업에서 이러한 상황을 목격했습니다. 소프트웨어 회사 SAP가 진행한 조사는 이러한 변화가 가속될 수 있음을 시사합니다. 싱가포르의 200개 기업 중 92%가 현재 에이전틱 AI를 탐색하거나 이미 도입하고 있으며, 이는 작년의 69%보다 높습니다. 다만 그 대가는 비판적 판단력 약화와 업무 중 학습 감소일 수 있으며, 특히 노동력 시장에 새로 진입하는 인력에게 그러할 수 있습니다. 가장 큰 위험은 초급 직원들의 AI 사용에 관한 것이 아닙니다. 오히려 초급 직원들이 AI를 사용하면서도 스스로 생각하는 법을 배우지 못하는 것입니다. 따라서 기업들은 업무 중에 도제 정신을 유지해야 합니다. 그녀는 이 시대에 성공하는 조직은 신뢰할 수 있는 데이터를 정교하게 설계된 프로세스와 결합하면서 동시에 직원들을 향상시키는 조직이라고 덧붙였습니다.',
+    ],
+    paragraphsJa: [
+      '「AI アジア・マネージャーについて聞いたことがありますか？」ますます多くの従業員がこれらのロボットを管理するようになっています。企業がますますそのようなデジタル同僚を活用しているためです。生産性の向上は明白ですが、人々はこれがジュニア従業員にとって何を意味するのかについて懸念しています。記者 Jermaine Wong が報道しました。>> 「Foran は現在、マルチタスク処理がより簡単になりました。わずか数回のクリックで、AI agents は彼のために仕事ファイルの完全分析を実行し、彼は他の仕事を処理し続けます。その分析を実行するのに約 3 分かかります。えっと、比較すると、もし私が詳細に再レビューをしたら、これは 2 時間かかるかもしれません。」>> 「ただし、これらの agents には最終決定権がありません。」>> 「エラーと AI ハルシネーションに対する許容度は、えっと、非常に小さいです。実際、ほぼ存在しません。」',
+      '「ですから人間は、彼らの専門的判断をもたらし、同時に彼らの懐疑的精神を保ちます。ご存知のように、説明責任もあります。」>> [笑い声] >> 「えっと、説明責任がここで強調された言葉です。えっと、これは AI 採用プロセス全体の鍵です。」>> 「現在のところ、人間はまだ権力を握っています。しかし、agents がますます多くの仕事ができるようになるとともに、分析者は仕事がガイダンス、質疑、および AI チェックを含むように変わる必要があると述べています。AI は職務名を変更するよりもはるかに速く仕事の内容を変更します。従業員の対応は、大規模な仕事の置き換えではなく、スキルを向上させるために仕事を再設計することです。従業員はますます、自分たちの職務を理解し、AI を適用して生産性を向上させ、ワークフローとプロセスを再設計し、データをより良く活用できる人を探しています。」',
+      '彼女は、人材資源、財務、法律、リスク、マーケティングなど複数の業界でこのような状況を見ています。ソフトウェア企業 SAP が実施した調査では、この転換が加速する可能性があることが示唆されています。シンガポールの 200 社のうち、92% が現在 Agentic AI の導入を検討しているか、すでに採用しており、これは去年の 69% から増加しています。しかし、その代償として、批判的思考力の低下と職場での学習機会の減少が生じる可能性があります。特に労働市場に新規参入した人材にとってそうです。最大のリスクは、初級従業員が AI を使用することではなく、むしろ初級従業員が AI を使用する一方で、自分自身で考えることを学んでいないということです。したがって、企業は職場に見習い精神を保つ必要があります。彼女は、この時代に成功する組織は、信頼できるデータと綿密に設計されたプロセスを組み合わせながら、従業員を向上させる組織であると述べています。',
+    ],
+    translatedAt: '2026-09-14',
+    translationSource: 'claude',
+    translationModel: 'haiku',
+  },
 };
 
 export function getVideoTranscript(videoId: string): VideoTranscript | undefined {

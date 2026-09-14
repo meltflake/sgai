@@ -145,6 +145,43 @@ export function pickSpeakerTypeLabels(lang: string): Record<string, string> {
 
 export const videos: VideoItem[] = [
   {
+    id: 'v098',
+    title: '代理AI：新加坡更多员工管理机器人',
+    titleEn: 'Agentic AI: More Singapore workers managing bots as firms ramp up AI uses',
+    titleJa: 'AI代理：シンガポール、ロボット管理職員が増加しています',
+    titleKo: 'AI 대리: 싱가포르 더 많은 직원이 로봇 관리',
+    speaker: 'Germaine Wong',
+    speakerTitle: '记者',
+    speakerTitleEn: 'Reporter',
+    speakerTitleJa: '記者',
+    speakerTitleKo: '기자',
+    speakerType: 'industry',
+    date: '2026-09-13',
+    duration: '02:51',
+    summary:
+      '随着企业加大AI使用，新加坡有更多员工从事AI机器人管理工作。此举带来生产力提升，但对初级员工的影响令人担忧。',
+    summaryEn:
+      'As companies increasingly adopt agentic AI, more Singapore workers are taking on roles managing AI bots. While productivity gains are evident, there are concerns about the impact on junior employees.',
+    summaryJa:
+      '企業がAI利用を拡大するにつれて、シンガポールではAIロボット管理業務に従事する従業員が増えています。この動きは生産性の向上をもたらしていますが、初級職員への影響が懸念されています。',
+    summaryKo:
+      '기업들이 AI 활용을 늘리면서 싱가포르에서는 AI 로봇 관리 업무에 종사하는 직원이 증가하고 있습니다. 이는 생산성 향상을 가져오지만, 초급 직원들에 미치는 영향이 우려됩니다.',
+    whyItMatters: 'CNA 报道的 AI 机器人管理岗位增多，说明新加坡正拿初级员工的上升通道换取 AI 生产力提升',
+    whyItMattersEn:
+      "CNA's reporting on the rise in AI robot management positions indicates that Singapore is trading junior employees' advancement pathways for AI productivity gains.",
+    whyItMattersJa:
+      'CNA が報道する AI ロボット管理職の増加は、シンガポールが初級従業員のキャリアアップの機会を AI 生産性の向上と引き換えにしていることを示しています。',
+    whyItMattersKo:
+      'CNA의 보도에 따르면 AI 로봇 관리 직책이 증가하고 있으며, 이는 싱가포르가 초급 직원의 경력 상승 경로를 AI 생산성 향상으로 대체하고 있다는 것을 나타냅니다.',
+    topic: 'AI 产业与应用',
+    topicEn: 'AI Industry & Applications',
+    topicJa: 'AI 産業と応用',
+    topicKo: 'AI 산업 및 응용',
+    youtubeUrl: 'https://www.youtube.com/watch?v=o9J6XmWiER0',
+    channel: 'CNA',
+    addedAt: '2026-09-14',
+  },
+  {
     id: 'v093',
     title: '新加坡拟推数据中心云服务许可新规',
     titleEn: 'Singapore considers new licensing rules for data centres and cloud services',
