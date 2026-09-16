@@ -3018,4 +3018,27 @@ export const mddiSpeeches: MddiSpeech[] = [
     addedAt: '2026-09-06',
     ministry: 'MAS',
   },
+  {
+    titleEn:
+      '“Vigilance, Resilience and Trust: Securing APAC’s Financial Sector” – Keynote Address by Ms Ho Hern Shin, Deputy Managing Director (Financial Supervision), Monetary Authority of Singapore, at the FS-ISAC APAC Summit on 14 July 2026',
+    title:
+      '「警惕、韧性与信任：守护亚太金融业」——新加坡金融管理局副局长（金融监管）Ho Hern Shin 女士在 FS-ISAC 亚太峰会上的主题演讲，2026年7月14日',
+    titleJa:
+      '「警戒、レジリエンス、信頼：アジア太平洋の金融セクターを守る」— シンガポール金融管理局（MAS）副局長（金融監督）Ho Hern Shin 氏による FS-ISAC APAC サミット基調講演、2026年7月14日',
+    titleKo:
+      '「경계, 회복력, 신뢰: 아시아태평양 금융 부문 지키기」– 싱가포르 통화청(MAS) 부총재(금융감독) Ho Hern Shin의 FS-ISAC APAC 서밋 기조연설, 2026년 7월 14일',
+    speaker: 'Ho Hern Shin',
+    speakerTitle: '新加坡金融管理局副局长（金融监管）',
+    speakerTitleJa: 'シンガポール金融管理局副局長（金融監督）',
+    speakerTitleEn: 'Deputy Managing Director (Financial Supervision), Monetary Authority of Singapore',
+    speakerTitleKo: '싱가포르 통화청 부총재(금융감독)',
+    date: '2026-07-14',
+    url: 'https://www.mas.gov.sg/news/speeches/2026/dmd-ho-hern-shin-keynote-address-at-fs-isac-summit/',
+    eventEn: 'FS-ISAC APAC Summit on 14 July',
+    event: 'FS-ISAC 亚太峰会（7月14日）',
+    eventJa: 'FS-ISAC APAC サミット（7月14日）',
+    eventKo: 'FS-ISAC APAC 서밋 (7월 14일)',
+    addedAt: '2026-09-14',
+    ministry: 'MAS',
+  },
 ];

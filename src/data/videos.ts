@@ -145,6 +145,80 @@ export function pickSpeakerTypeLabels(lang: string): Record<string, string> {
 
 export const videos: VideoItem[] = [
   {
+    id: 'v098',
+    title: '智能体 AI：企业加大 AI 应用，更多新加坡员工开始管理机器人',
+    titleEn: 'Agentic AI: More Singapore workers managing bots as firms ramp up AI uses',
+    titleJa: 'エージェント型 AI：企業の AI 活用拡大で、ボットを管理するシンガポールの従業員が増加',
+    titleKo: '에이전틱 AI: 기업의 AI 활용 확대로 봇을 관리하는 싱가포르 근로자 증가',
+    speaker: 'Germaine Wong',
+    speakerTitle: '记者',
+    speakerTitleEn: 'Reporter',
+    speakerTitleJa: '記者',
+    speakerTitleKo: '기자',
+    speakerType: 'industry',
+    date: '2026-09-13',
+    duration: '02:51',
+    summary:
+      '随着企业加大智能体 AI 的使用，新加坡有更多员工转而负责管理 AI 机器人。生产力有所提升，但对初级员工的影响令人担忧。',
+    summaryEn:
+      'As companies increasingly adopt agentic AI, more Singapore workers are taking on roles managing AI bots. While productivity gains are evident, there are concerns about the impact on junior employees.',
+    summaryJa:
+      '企業がAI利用を拡大するにつれて、シンガポールではAIロボット管理業務に従事する従業員が増えています。この動きは生産性の向上をもたらしていますが、初級職員への影響が懸念されています。',
+    summaryKo:
+      '기업들이 AI 활용을 늘리면서 싱가포르에서는 AI 로봇 관리 업무에 종사하는 직원이 증가하고 있습니다. 이는 생산성 향상을 가져오지만, 초급 직원들에 미치는 영향이 우려됩니다.',
+    whyItMatters: 'CNA 报道的 AI 机器人管理岗位增多，说明新加坡正拿初级员工的上升通道换取 AI 生产力提升',
+    whyItMattersEn:
+      "CNA's reporting on the rise in AI robot management positions indicates that Singapore is trading junior employees' advancement pathways for AI productivity gains.",
+    whyItMattersJa:
+      'CNA が報道する AI ロボット管理職の増加は、シンガポールが初級従業員のキャリアアップの機会を AI 生産性の向上と引き換えにしていることを示しています。',
+    whyItMattersKo:
+      'CNA의 보도에 따르면 AI 로봇 관리 직책이 증가하고 있으며, 이는 싱가포르가 초급 직원의 경력 상승 경로를 AI 생산성 향상으로 대체하고 있다는 것을 나타냅니다.',
+    topic: 'AI 产业与应用',
+    topicEn: 'AI Industry & Applications',
+    topicJa: 'AI 産業と応用',
+    topicKo: 'AI 산업 및 응용',
+    youtubeUrl: 'https://www.youtube.com/watch?v=o9J6XmWiER0',
+    channel: 'CNA',
+    addedAt: '2026-09-14',
+  },
+  {
+    id: 'v097',
+    title: '新 AI 门户 BizSG 助企业申请政府补助',
+    titleEn: 'AI-powered BizSG portal helps firms find government grants',
+    titleJa: '新 AI ポータル BizSG、企業の政府補助金申請を支援',
+    titleKo: '새 AI 포털 BizSG, 기업의 정부 보조금 신청 지원',
+    speaker: 'Low Yen Ling',
+    speakerTitle: '贸易和工业部高级政务部长',
+    speakerTitleEn: 'Senior Minister of State for Trade and Industry',
+    speakerTitleJa: '貿易産業省上級国務大臣',
+    speakerTitleKo: '통상산업부 선임국무장관',
+    speakerType: 'government',
+    date: '2026-09-11',
+    duration: '09:25',
+    summary:
+      '贸易和工业部高级政务部长 Low Yen Ling 宣布推出新的 AI 门户网站 BizSG，助企业寻找和申请政府补助及支持计划。',
+    summaryEn:
+      'Senior Minister of State for Trade and Industry Low Yen Ling announces a new AI-powered BizSG portal to help businesses find and apply for government grants and support schemes.',
+    summaryJa:
+      '貿易産業省上級国務大臣ロー・イェン・リン氏は、企業が政府補助金と支援制度を探して申請するのを助ける新しい AI ポータル BizSG の立ち上げを発表した。',
+    summaryKo:
+      '통상산업부 선임국무장관 로우 옌 링이 기업의 정부 보조금 및 지원 제도 신청을 돕는 새로운 AI 포털 BizSG의 출범을 발표했다.',
+    whyItMatters: 'BizSG 上线暴露新加坡 AI 补助此前卡点是信息分散而非预算不足，政府转向用 AI 工具解决政策触达问题',
+    whyItMattersEn:
+      "BizSG's launch exposes that the prior bottleneck for Singapore AI subsidies was information fragmentation rather than budget shortage; the government is shifting to using AI tools to address policy outreach challenges.",
+    whyItMattersJa:
+      'BizSG の公開で、シンガポールの AI 補助金のボトルネックは予算不足ではなく情報の分散にあったことが露わになった。政府は AI ツールで政策の周知という課題を解く方向へ転換している。',
+    whyItMattersKo:
+      'BizSG 론칭으로 싱가포르 AI 보조금의 이전 병목이 드러났습니다. 문제는 예산 부족이 아니라 정보 분산이었으며, 정부는 정책 전달 문제를 해결하기 위해 AI 도구 활용으로 전환했습니다.',
+    topic: 'AI 产业与应用',
+    topicEn: 'AI Industry & Applications',
+    topicJa: 'AI 産業と応用',
+    topicKo: 'AI 산업 및 응용',
+    youtubeUrl: 'https://www.youtube.com/watch?v=5VB1zTHd2s0',
+    channel: 'CNA',
+    addedAt: '2026-09-12',
+  },
+  {
     id: 'v093',
     title: '新加坡拟推数据中心云服务许可新规',
     titleEn: 'Singapore considers new licensing rules for data centres and cloud services',
