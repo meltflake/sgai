@@ -85,28 +85,6 @@ export interface BillItem {
 
 export const consultations: ConsultationItem[] = [
   {
-    id: 'public-consultation-on-the-digital-infrastructure-bill',
-    agency: 'MDDI',
-    title: '关于《数字基础设施法案》的公众咨询',
-    titleEn: 'Public Consultation on the Digital Infrastructure Bill',
-    titleJa: 'Digital Infrastructure Billに関する公開協議',
-    titleKo: '디지털 인프라 법안에 관한 공개 협의',
-    summary:
-      '该咨询涵盖了《数字基础设施法案》草案，该法案提议对主要数据中心和云服务提供商实施许可制度，以加强安全、韧性和环保可持续性。MDDI和IMDA收到了25份支持意见，涉及实施细节、许可门槛和安全要求框架的反馈。',
-    summaryEn:
-      'The consultation covered the draft Digital Infrastructure Bill, which proposes licensing regimes for major data centres and cloud service providers to strengthen security, resilience, and environmental sustainability. MDDI and IMDA received 25 supportive responses with feedback on implementation details, licensing thresholds, and security requirement frameworks.',
-    summaryJa:
-      '本相談は、主要なデータセンターおよびクラウドサービスプロバイダー向けのライセンシング制度を提案するとともに、セキュリティ、レジリエンス、および環境持続可能性を強化することを目指すデジタルインフラストラクチャー法案（案）を扱いました。MDDIおよびIMDAは、実装の詳細、ライセンシング閾値、およびセキュリティ要件フレームワークに関するフィードバック付きの25件の支持的な回答を受け取りました。',
-    summaryKo:
-      '협의에서는 보안, 회복력, 환경 지속가능성을 강화하기 위해 주요 데이터 센터 및 클라우드 서비스 제공자에 대한 라이선싱 체계를 제안하는 초안 디지털 인프라 법안을 다루었습니다. MDDI와 IMDA는 이행 세부사항, 라이선싱 기준, 보안 요구사항 체계에 관한 피드백이 담긴 25건의 지지 의견을 받았습니다.',
-    status: 'closed',
-    opensAt: '2026-07-01',
-    deadline: '2026-07-22',
-    statusHistory: [{ status: 'closed', observedAt: '2026-09-14' }],
-    sourceUrl: 'https://www.mddi.gov.sg/newsroom/public-consultation-on-the-digital-infrastructure-bill/',
-    addedAt: '2026-09-14',
-  },
-  {
     id: 'public-consultation-on-digital-infrastructure-bill',
     agency: 'MDDI',
     title: '《数字基础设施法案》公众咨询',
@@ -114,18 +92,23 @@ export const consultations: ConsultationItem[] = [
     titleJa: 'Digital Infrastructure Bill に関する公開協議',
     titleKo: '디지털 기반시설 법안에 대한 공개 협의',
     summary:
-      '关于新加坡《数字基础设施法案》的公众咨询，该法案为主要数据中心和云计算服务提供商建立许可制度。该法案旨在通过新的监管要求，增强数字基础设施服务的安全性、韧性和环保可持续性。',
+      '关于新加坡《数字基础设施法案》的公众咨询（2026 年 7 月 1 日至 22 日），该法案为主要数据中心和云计算服务提供商建立许可制度，旨在增强数字基础设施的安全性、韧性和环保可持续性。MDDI 与 IMDA 于 9 月 8 日发布咨询结果：25 位回应者总体支持法案目标，反馈集中在实施细节、许可门槛和安全要求框架；法案同日提交国会一读（Bill 20/2026）。',
     summaryEn:
-      "Public consultation on Singapore's Digital Infrastructure Bill, which establishes licensing regimes for major data centre and cloud computing service providers. The Bill aims to enhance security, resilience, and environmental sustainability of digital infrastructure services through new regulatory requirements.",
+      "Public consultation (1–22 July 2026) on Singapore's Digital Infrastructure Bill, which establishes licensing regimes for major data centre and cloud service providers to strengthen the security, resilience and environmental sustainability of digital infrastructure. MDDI and IMDA published the outcome on 8 September: 25 respondents were broadly supportive, with feedback on implementation details, licensing thresholds and the security-requirements framework; the Bill was introduced in Parliament the same day (Bill 20/2026).",
     summaryJa:
-      'シンガポールの「Digital Infrastructure Bill」に関する公開協議です。本法案は、主要なデータセンターおよびクラウドコンピューティングサービスプロバイダーに対するライセンス制度を確立するものです。この法案は、新たな規制要件を通じて、デジタルインフラストラクチャサービスのセキュリティ、レジリエンス、および環境持続可能性を強化することを目指しています。',
+      'シンガポールのデジタルインフラ法案に関する公開協議（2026 年 7 月 1 日〜22 日）。本法案は主要なデータセンターとクラウドサービス事業者に対するライセンス制度を設け、デジタルインフラの安全性、レジリエンス、環境持続可能性を高めることを目指す。MDDI と IMDA は 9 月 8 日に協議結果を公表：25 者の回答は法案の目的をおおむね支持し、意見は実施の詳細、ライセンス基準、セキュリティ要件の枠組みに集中した。法案は同日、国会に提出された（Bill 20/2026）。',
     summaryKo:
-      '주요 데이터센터 및 클라우드 컴퓨팅 서비스 제공자에 대한 라이선싱 체계를 수립하는 싱가포르 디지털 인프라 법안에 대한 공공 협의입니다. 본 법안은 새로운 규제 요건을 통해 디지털 인프라 서비스의 보안, 복원력, 환경 지속가능성을 강화하는 것을 목표로 합니다.',
-    status: 'closed',
+      '주요 데이터센터 및 클라우드 서비스 제공자에 대한 라이선스 체계를 수립하는 싱가포르 디지털 인프라 법안에 대한 공개 협의(2026년 7월 1일~22일). 본 법안은 디지털 인프라의 보안, 회복력, 환경 지속가능성을 강화하는 것을 목표로 한다. MDDI와 IMDA는 9월 8일 협의 결과를 발표했다. 25개 응답자가 법안 목표를 대체로 지지했고, 피드백은 이행 세부사항, 라이선스 기준, 보안 요건 체계에 집중됐다. 법안은 같은 날 국회에 상정됐다(Bill 20/2026).',
+    status: 'response-published',
     opensAt: '2026-07-01',
     deadline: '2026-07-22',
-    statusHistory: [{ status: 'closed', observedAt: '2026-08-03' }],
-    sourceUrl: 'https://www.mddi.gov.sg/newsroom/public-consultation-on-digital-infrastructure-bill/',
+    statusHistory: [
+      { status: 'closed', observedAt: '2026-08-03' },
+      { status: 'response-published', observedAt: '2026-09-14' },
+    ],
+    // Consultation outcome page (8 Sep 2026); the original call-for-views
+    // page is .../public-consultation-on-digital-infrastructure-bill/.
+    sourceUrl: 'https://www.mddi.gov.sg/newsroom/public-consultation-on-the-digital-infrastructure-bill/',
     addedAt: '2026-08-03',
   },
   {
@@ -157,16 +140,20 @@ export const bills: BillItem[] = [
     billNumber: 'Bill 20/2026',
     title: '数字基础设施法案',
     titleEn: 'Digital Infrastructure Bill',
-    titleJa: 'Digital Infrastructure Bill',
+    titleJa: 'デジタルインフラ法案',
     titleKo: '디지털 인프라 법안',
-    summary: '数字基础设施法案，在新加坡国会前。',
-    summaryEn: 'Digital Infrastructure Bill, before the Parliament of Singapore.',
-    summaryJa: 'デジタル基盤法案、シンガポール議会に提出',
-    summaryKo: '디지털 인프라 법안, 싱가포르 의회에 상정.',
+    summary:
+      '《数字基础设施法案》（Bill 20/2026）于 2026 年 9 月 8 日在国会一读。法案设立两套许可制度：一是主要数据中心与云服务商的安全与韧性许可，二是数据中心运营的环保可持续许可，具体要求由后续法规规定。',
+    summaryEn:
+      'The Digital Infrastructure Bill (Bill 20/2026) had its first reading in Parliament on 8 September 2026. It establishes two licensing regimes: security and resilience for major data centres and cloud service providers, and environmental sustainability for data-centre operations, with detailed requirements to follow in subsidiary instruments.',
+    summaryJa:
+      'デジタルインフラ法案（Bill 20/2026）は 2026 年 9 月 8 日に国会で第一読会を経た。主要データセンターとクラウドサービス事業者の安全性・レジリエンス、およびデータセンター運営の環境持続可能性という 2 つのライセンス制度を設け、具体的な要件は下位法令で定める。',
+    summaryKo:
+      '디지털 인프라 법안(Bill 20/2026)은 2026년 9월 8일 국회에서 1독회를 거쳤다. 주요 데이터센터·클라우드 서비스 제공자의 보안·회복력, 그리고 데이터센터 운영의 환경 지속가능성이라는 두 가지 라이선스 제도를 신설하며, 세부 요건은 하위 법령으로 정한다.',
     stage: 'introduced',
     introducedAt: '2026-09-08',
     stageHistory: [{ stage: 'introduced', observedAt: '2026-09-14' }],
-    aiRelevance: 'adjacent',
+    aiRelevance: 'core',
     sourceUrl: 'https://www.parliament.gov.sg/parliamentary-business/bills-introduced',
     addedAt: '2026-09-14',
   },

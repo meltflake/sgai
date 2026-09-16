@@ -4,6 +4,15 @@
 
 ---
 
+## 0.28.6 — 2026-09-16
+
+### 数据：合并四个 data-refresh PR（#306 / #307 / #308 / #309）并修正内容
+
+- videos 新增 v097（Low Yen Ling 宣布 AI 门户 BizSG，CNA 9 月 11 日）和 v098（智能体 AI 让更多新加坡员工转做机器人管理，CNA 9 月 13 日），字幕四语齐全。两个 PR 都在数组顶部插入，合并时手动保留双方。v097 的日文标题、职务和摘要去掉了多余的「」；v098 的 zh / ja / ko 标题把「代理 AI」改为「智能体 AI / エージェント型 AI / 에이전틱 AI」。
+- voices 新增 MAS 副局长 Ho Hern Shin 在 FS-ISAC 亚太峰会的主题演讲（7 月 14 日），全文四语。原 PR 的日文标题整句是英文，`check:i18n` 在 ja 页报 EN-sentence 回归；`voices.ts` 还没过 Prettier。日文、韩文标题和职务已改为真翻译，MAS 译名与既有条目一致。
+- reg-lookahead：原 PR 把 MDDI 9 月 8 日的「咨询结果」页当成一条新咨询（slug 多了一个 the，去重没拦住）。改为推进已有记录 `public-consultation-on-digital-infrastructure-bill` 的状态到 `response-published`，statusHistory 追加一条，sourceUrl 指向结果页，四语摘要补上 25 位回应者和法案一读。新增法案记录 `digital-infrastructure-bill`（Bill 20/2026，9 月 8 日一读），摘要改为写清两套许可制度，`aiRelevance` 按文件头注释的定义改为 `core`。
+- 待改进：reg-lookahead 扫描按 slug 去重，同一咨询的公告页和结果页 slug 只差一个冠词就会被当成两条。
+
 ## 0.28.5 — 2026-09-10
 
 ### 修复：视频管线遇到跑题候选不再整批失败
