@@ -723,6 +723,12 @@ This is not just a regional-HQ story. It connects OpenAI’s deployment engineer
         titleKo: '국가 인공지능 전략 2.0',
         titleJa: '国家 AI 戦略 2.0',
         titleEn: 'National AI Strategy 2.0 (NAIS 2.0)',
+        // SERP override (GSC 2026-09): clicks 20 → 9 at avg position 11;
+        // "nais 2.0" alone had 57 impressions and zero clicks. Lead with the
+        // abbreviation people type, keep the full name for the long query.
+        seoTitleEn: 'NAIS 2.0 — Singapore National AI Strategy 2.0 (2023)',
+        seoDescriptionEn:
+          'Singapore’s National AI Strategy 2.0, published by MDDI in December 2023: AI for Public Good and AI for Growth, 15 actions across nine sectors, and what the 2026 update changed.',
         date: '2023-12',
         source: '智慧国家与数字政府办公室 (SNDGO)',
         sourceKo: '스마트 싱가포르 및 디지털 정부 사무실 (SNDGO)',

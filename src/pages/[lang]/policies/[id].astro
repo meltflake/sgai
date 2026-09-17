@@ -34,19 +34,31 @@ const lang = Astro.params.lang as Lang;
 const title = pickLocalized<string>(policy, 'title', lang) || policy.title;
 const summary = pickLocalized<string>(policy, 'summary', lang) || '';
 
-// Year + ministry baked into description. Title carries only the year —
-// Metadata.astro's template already appends the `· sgai` brand token, so a
-// page-level section suffix on top double-branded every title (GSC 2026-07).
-const isCjk = lang === 'zh' || lang === 'zh-tw';
+// Description opens with the summary; ministry + year trail it as a short
+// sentence only when the summary doesn't already name the ministry (the
+// former "2023 · MDDI。" prefix spent the first SERP characters on metadata).
+// Title carries only the year — Metadata.astro's template already appends
+// the `· sgai` brand token — and skips it when the title already ends in a
+// parenthesised token, which produced "（NAIS 2.0）（2023）".
 const yearMatch = (policy.date || '').slice(0, 4);
-const metaPrefix = [yearMatch, policy.ministry].filter(Boolean).join(' · ');
-const metaJoiner = isCjk ? '。' : '. ';
-const metaDescription = synthesizeMetaDescription([
-  metaPrefix && summary ? `${metaPrefix}${metaJoiner}${summary}` : summary || metaPrefix,
-]);
+const summaryNamesMinistry = Boolean(policy.ministry) && summary.includes(policy.ministry!);
+const publishedLineByLang: Record<Lang, (ministry: string, year: string) => string> = {
+  zh: (m, y) => `${m}${y ? ` ${y} 年` : ''}发布。`,
+  'zh-tw': (m, y) => `${m}${y ? ` ${y} 年` : ''}發布。`,
+  ja: (m, y) => `${m}${y ? ` ${y} 年` : ''}発表。`,
+  ko: (m, y) => `${m}${y ? ` ${y}년` : ''} 발표.`,
+  en: (m, y) => `Published by ${m}${y ? ` in ${y}` : ''}.`,
+};
+const publishedLine =
+  policy.ministry && !summaryNamesMinistry
+    ? (publishedLineByLang[lang] || publishedLineByLang.en)(policy.ministry, yearMatch)
+    : '';
+const metaDescription = synthesizeMetaDescription([summary, publishedLine].filter(Boolean));
+const titleEndsParen = /[)）]\s*$/.test(title);
 
 const metadata = {
-  title: pickLocalizedOwn(policy, 'seoTitle', lang) || `${title}${yearMatch ? `（${yearMatch}）` : ''}`,
+  title:
+    pickLocalizedOwn(policy, 'seoTitle', lang) || `${title}${yearMatch && !titleEndsParen ? `（${yearMatch}）` : ''}`,
   description: pickLocalizedOwn(policy, 'seoDescription', lang) || metaDescription,
 };
 

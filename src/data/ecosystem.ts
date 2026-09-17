@@ -184,6 +184,10 @@ export const ecosystemCategories: EcosystemCategory[] = [
         nameJa: 'AI Singapore (AISG)',
         nameKo: 'AI Singapore (AISG)',
         nameEn: 'AI Singapore (AISG)',
+        // GSC 2026-09: "aisg" 108 impressions at position 9.6, zero clicks.
+        // The default "— Core Hub, Singapore AI" suffix is a site category
+        // name; say what the page answers instead.
+        seoTitleEn: 'AI Singapore (AISG): What It Is, Funding, Programmes',
         seoDescriptionEn:
           'AI Singapore (AISG): national AI programme launched in 2017 by NRF, hosted at NUS, not a statutory board. Funding, programmes (AIAP, SEA-LION), leadership.',
         description: '新加坡国家级 AI 计划，统筹 SEA-LION、AIAP、TagUI、AI Verify 等关键产物',

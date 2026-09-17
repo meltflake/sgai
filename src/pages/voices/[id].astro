@@ -79,19 +79,56 @@ if (counts.policyAuthorCount > 0)
   signalParts.push(`${counts.policyAuthorCount} polic${counts.policyAuthorCount === 1 ? 'y' : 'ies'}`);
 if (relatedVideos.length > 0) signalParts.push(`${relatedVideos.length} video${relatedVideos.length === 1 ? '' : 's'}`);
 const signalLine = signalParts.length > 0 ? signalParts.join(' · ') + '.' : '';
-const descParts = [displayTitle ? `${displayTitle}.` : '', bioLine, signalLine].filter(Boolean);
+// Skip the job-title lead when the bio already opens with it — otherwise
+// stub profiles read "Former Member of Parliament. Former Member of
+// Parliament (PAP, …)" (GSC 2026-09: ong-teng-koon).
+const bioRepeatsTitle =
+  Boolean(displayTitle) && bioLine.toLowerCase().startsWith(displayTitle.toLowerCase().replace(/[.。]$/, ''));
+const descParts = [displayTitle && !bioRepeatsTitle ? `${displayTitle}.` : '', bioLine, signalLine].filter(Boolean);
 const builtDescription = synthesizeMetaDescription(descParts);
 
 // SERP title = name + real job title (what people searching a person's
 // name expect to see). Never fall back to the zh `title` here — this is
-// the EN page. Long job titles get cut at a word boundary.
-const truncateAtWord = (s: string, max: number): string => {
-  if (s.length <= max) return s;
-  const cut = s.slice(0, max);
+// the EN page. Long institution names collapse to their abbreviation first,
+// then an over-long segment is cut at a role separator (`;` then `,`) —
+// never mid-phrase (GSC 2026-09: "Managing Director, Singapore Economic").
+const ORG_ABBREVIATIONS: [string, string][] = [
+  ['Singapore Economic Development Board (EDB)', 'EDB'],
+  ['Economic Development Board (EDB)', 'EDB'],
+  ['Ministry of Digital Development and Information (MDDI)', 'MDDI'],
+  ['Digital Development and Information', 'MDDI'],
+  ['Infocomm Media Development Authority (IMDA)', 'IMDA'],
+  ['Personal Data Protection Commission (PDPC)', 'PDPC'],
+  ['Monetary Authority of Singapore (MAS)', 'MAS'],
+  ['National Research Foundation (NRF)', 'NRF'],
+  ['Government Technology Agency (GovTech)', 'GovTech'],
+  ['Smart Nation and Digital Government Office (SNDGO)', 'SNDGO'],
+  ['Agency for Science, Technology and Research (A*STAR)', 'A*STAR'],
+  ['Nanyang Technological University (NTU)', 'NTU'],
+  ['National University of Singapore (NUS)', 'NUS'],
+  ['College of Computing and Data Science (CCDS)', 'CCDS'],
+  ['Centre for Frontier AI Research (CFAR)', 'CFAR'],
+  ['AI Singapore', 'AISG'],
+];
+const TITLE_SEGMENT_MAX = 50;
+const shortenJobTitle = (raw: string): string => {
+  let s = raw;
+  for (const [long, short] of ORG_ABBREVIATIONS) s = s.split(long).join(short);
+  if (s.length <= TITLE_SEGMENT_MAX) return s;
+  // Several roles joined by ';' — keep the first one.
+  const firstRole = s.split(';')[0].trim();
+  if (firstRole.length <= TITLE_SEGMENT_MAX) return firstRole;
+  // Drop trailing ', …' segments until it fits.
+  const parts = firstRole.split(', ');
+  while (parts.length > 1 && parts.join(', ').length > TITLE_SEGMENT_MAX) parts.pop();
+  const byComma = parts.join(', ');
+  if (byComma.length <= TITLE_SEGMENT_MAX) return byComma;
+  // Single long phrase: word-boundary cut as a last resort.
+  const cut = byComma.slice(0, TITLE_SEGMENT_MAX);
   const lastSpace = cut.lastIndexOf(' ');
-  return (lastSpace > max * 0.5 ? cut.slice(0, lastSpace) : cut).replace(/[,;:]$/, '');
+  return (lastSpace > TITLE_SEGMENT_MAX * 0.5 ? cut.slice(0, lastSpace) : cut).replace(/[,;:(]$/, '').trim();
 };
-const jobTitleSegment = person.titleEn ? truncateAtWord(person.titleEn, 45) : 'Singapore AI policy & speeches';
+const jobTitleSegment = person.titleEn ? shortenJobTitle(person.titleEn) : 'Singapore AI policy & speeches';
 const metadata = {
   title: pickLocalizedOwn(person, 'seoTitle', 'en') || `${displayName} — ${jobTitleSegment}`,
   description: builtDescription || `${displayName}'s speeches, policy links, and public AI video records in Singapore.`,

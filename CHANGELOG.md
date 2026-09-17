@@ -4,6 +4,19 @@
 
 ---
 
+## 0.28.7 — 2026-09-17
+
+### SEO：GSC 第四轮，改人物页和政策页的标题描述模板
+
+依据 Search Console 8 月 16 日到 9 月 12 日四周数据（64,021 曝光 / 467 点击，CTR 0.73%）。这一轮不加页面，只改模板和几条数据覆盖。
+
+- 人物页（`voices/[id].astro`）：标题里的职务先把机构全称换成缩写（EDB、MDDI、IMDA、PDPC、MAS、NRF、GovTech、SNDGO、A\*STAR、NTU、NUS、CCDS、CFAR、AISG），仍超 50 字符时按“;”“,”分段截断，不再在词中间切。Jermaine Loy 页标题从“Managing Director, Singapore Economic”变为“Managing Director, EDB”（四周 213 次曝光、排名 8.2、0 点击）。描述在简介已以职务开头时不再前置职务，Ong Teng Koon 页不再出现两遍“Former Member of Parliament”。
+- 政策页（`policies/[id].astro` 及 `[lang]` 版本）：描述去掉“2023 · MDDI.”前缀，改为摘要在前，摘要没提到部门时在句尾补“Published by MDDI in 2023.”（各语言各自写法）。标题本身以括号结尾时不再追加年份，NAIS 2.0 页标题不再是“(NAIS 2.0) (2023)”。
+- `policies.ts`：NAIS 2.0 加英文 seoTitle / seoDescription（本期点击 20 掉到 9，“nais 2.0”57 次曝光 0 点击）。
+- `ecosystem.ts`：AI Singapore 加英文 seoTitle，替换掉“Core Hub, Singapore AI”这个站内分类名（“aisg”108 次曝光、排名 9.6、0 点击）。
+- `_redirects`：香港 `hong-kong-body-4-cyberport` 及各语言版本 301 到 `hong-kong-initiative-1-cyberport-3000-pflops-supercomputing-centre`，三页抢同一批词的情况收成两页（案例页 9 月 7 日已 canonical 指向 initiative-1）。
+- 9 月 15 日分析工具重复列出的 RIE2025、IOAI 2027、香港资助计划三项已在 0.28.4 上线，未重复改。
+
 ## 0.28.6 — 2026-09-16
 
 ### 数据：合并四个 data-refresh PR（#306 / #307 / #308 / #309）并修正内容

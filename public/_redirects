@@ -47,6 +47,13 @@
 /:lang/voices/walter-theseira-2           /:lang/voices/walter-theseira          301
 
 # Phase 2 routing migration (en root + /zh/): old /en/* paths are now at root.
+# Cyberport (Hong Kong) had three pages ranking for the same queries
+# (GSC 2026-09: case page pos 19, initiative-1 pos 7, body-4 pos 45, all
+# zero clicks). The case page already canonicalises to initiative-1; the
+# key-body drilldown adds nothing the initiative page lacks, so it 301s.
+/benchmarking/hong-kong-body-4-cyberport          /benchmarking/hong-kong-initiative-1-cyberport-3000-pflops-supercomputing-centre          301
+/:lang/benchmarking/hong-kong-body-4-cyberport    /:lang/benchmarking/hong-kong-initiative-1-cyberport-3000-pflops-supercomputing-centre    301
+
 # Order matters — keep /en/people consolidation before the catch-all /en/* rule.
 /en/people/:id    /voices/:id          301
 /en/people        /voices              301

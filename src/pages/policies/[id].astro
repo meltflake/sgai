@@ -33,18 +33,27 @@ const { policy } = Astro.props;
 const title = pickLocalized<string>(policy, 'title', lang) || policy.title;
 const summary = pickLocalized<string>(policy, 'summary', lang) || '';
 
-// SERP-optimised: ministry + date prefix in description boosts long-tail
-// keyword density. Title carries only the year — Metadata.astro's template
-// already appends the `· sgai` brand token, so a page-level section suffix
-// on top double-branded every title (GSC 2026-07: 101-char titles).
+// Description opens with the summary sentence; ministry + year trail it as
+// a short sentence only when the summary doesn't already name the ministry.
+// (The former "2023 · MDDI." prefix spent the first ~12 SERP characters on
+// metadata — GSC 2026-09: policies CTR 0.71% at avg position 14.)
+// Title carries only the year — Metadata.astro's template already appends
+// the `· sgai` brand token — and skips it when the title already ends in a
+// parenthesised token, which produced "(NAIS 2.0) (2023)".
 const yearMatch = (policy.date || '').slice(0, 4);
-const metaPrefix = [yearMatch, policy.ministry].filter(Boolean).join(' · ');
-const metaDescription = synthesizeMetaDescription([
-  metaPrefix && summary ? `${metaPrefix}. ${summary}` : summary || metaPrefix,
-]);
+const summaryNamesMinistry = Boolean(policy.ministry) && summary.includes(policy.ministry!);
+const publishedLine =
+  policy.ministry && !summaryNamesMinistry
+    ? `Published by ${policy.ministry}${yearMatch ? ` in ${yearMatch}` : ''}.`
+    : yearMatch && !summary.includes(yearMatch)
+      ? `Published ${yearMatch}.`
+      : '';
+const metaDescription = synthesizeMetaDescription([summary, publishedLine].filter(Boolean));
+const titleEndsParen = /[)）]\s*$/.test(title);
 
 const metadata = {
-  title: pickLocalizedOwn(policy, 'seoTitle', lang) || `${title}${yearMatch ? ` (${yearMatch})` : ''}`,
+  title:
+    pickLocalizedOwn(policy, 'seoTitle', lang) || `${title}${yearMatch && !titleEndsParen ? ` (${yearMatch})` : ''}`,
   description: pickLocalizedOwn(policy, 'seoDescription', lang) || metaDescription,
 };
 
