@@ -37,11 +37,21 @@ callLlm: claude exited 1: Not logged in · Please run /login
 
 这次的 `Not logged in` 是排查环境自身的问题（宿主注入的 `ANTHROPIC_BASE_URL` 和 `CLAUDE_CODE_PROVIDER_MANAGED_BY_HOST` 被子进程继承，而那套凭据不属于 CLI）。cron 环境没有这些变量，不受影响。但截断本身是真问题，它把任何一类 CLI 失败都伪装成同一条噪音。
 
-## 还没解决：120 秒超时
+## 根因三：120 秒超时
 
-cron 日志里有 4 次 `callLlm: timeout after 120000ms`，导致两条候选视频当天没写进数据文件。`getDefaultTimeout()` 默认 120 秒，长段落的批量翻译不够用。CLAUDE.md 规则 #9 已经写明 transcript 翻译要 `SGAI_LLM_TIMEOUT_MS=300000`，但 videos 的 emit 没有带上这个值。
+cron 日志里有 4 次 `callLlm: timeout after 120000ms`，导致两条候选视频当天没写进数据文件。`getDefaultTimeout()` 默认 120 秒，15 段的批量翻译不够用。CLAUDE.md 规则 #9 已经写明 transcript 翻译要 `SGAI_LLM_TIMEOUT_MS=300000`，但那只是命令行上的约定，videos 的 emit 走的是 `scripts/lib/translate.ts`，没带这个值。
 
-下次动 `scripts/refresh/videos/` 时一并处理。
+修法：`translate.ts` 里的 `callLlmJson` 调用直接给 `timeoutMs: 300000`（仍可用 `SGAI_LLM_TIMEOUT_MS` 覆盖）。所有走 `translateRecords` / `translateParagraphs` 的管线一起受益，cron 不用改。
+
+## 审稿时又抓到的
+
+合并前审了一遍 PR，机器翻译的日文和韩文标题有三类问题：
+
+- v100 的日韩标题把“计划三年内投 3.5 亿美元、员工翻倍”写成了已经完成
+- v099–v102 的日韩标题是带句号的完整句子，站上其他记录都是名词短语式标题
+- 日文里混了中文量词和用词：“200 門以上”“AI 課程”“学徒プログラム”，改成“200 以上”“AI 講座”“見習いプログラム”
+
+这类问题 `check:i18n-completeness` 看不出来，它只查字段有没有。
 
 ## 本次落地
 

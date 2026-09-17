@@ -148,8 +148,8 @@ export const videos: VideoItem[] = [
     id: 'v099',
     title: '新加坡启动200余门AI培训课程',
     titleEn: 'Singapore launches over 200 AI training courses',
-    titleJa: 'シンガポールが200門以上のAI研修プログラムを開始しています。',
-    titleKo: '싱가포르가 200개 이상의 AI 교육과정을 시작했습니다.',
+    titleJa: 'シンガポール、200 以上の AI 研修講座を開始',
+    titleKo: '싱가포르, 200개 이상 AI 교육과정 출범',
     speaker: 'Lawrence Wong',
     speakerTitle: '新加坡总理',
     speakerTitleEn: 'Prime Minister of Singapore',
@@ -161,7 +161,8 @@ export const videos: VideoItem[] = [
     summary: '新加坡推出200多门AI课程，符合条件者可获6个月免费AI工具订阅。',
     summaryEn:
       'Singapore launches over 200 AI courses with free six-month premium AI tool access for eligible participants through the new Skills and Workforce Development Agency.',
-    summaryJa: 'シンガポールが200門以上のAI課程をリリースし、条件を満たす者は6ヶ月間のAIツール無料購読を取得できます。',
+    summaryJa:
+      'シンガポールが 200 以上の AI 講座を開始し、条件を満たす人は 6 か月間の AI ツール無料購読を受けられます。',
     summaryKo:
       '싱가포르가 200개 이상의 AI 과정을 출시했으며, 자격 요건을 갖춘 자는 6개월간 무료 AI 도구 구독을 지원받을 수 있습니다.',
     whyItMatters: 'SWDA 新设并补贴 6 个月 AI 工具订阅，政府角色由教技能扩展为直接为工具买单',
@@ -183,8 +184,8 @@ export const videos: VideoItem[] = [
     id: 'v100',
     title: 'Databricks投资超3.5亿美元，新加坡员工翻倍',
     titleEn: 'Databricks to invest over US$350m, double Singapore workforce',
-    titleJa: 'Databricksがシンガポールに3.5億ドルを超える投資をしており、従業員が倍増しています。',
-    titleKo: 'Databricks가 싱가포르에 3.5억 달러 이상을 투자하고 직원 수를 두 배로 늘렸습니다.',
+    titleJa: 'Databricks、シンガポールに 3.5 億米ドル超を投資へ、従業員数を倍増',
+    titleKo: 'Databricks, 싱가포르에 3.5억 달러 이상 투자 계획, 인력 두 배로 확대',
     speaker: 'CNA',
     speakerTitle: '亚洲新闻台报道',
     speakerTitleEn: 'CNA report',
@@ -197,9 +198,9 @@ export const videos: VideoItem[] = [
     summaryEn:
       'Databricks will invest over US$350 million in Singapore over three years, doubling its workforce to over 500 employees and supporting AI and data skills training for 20,000 people.',
     summaryJa:
-      'Databricksがシンガポールに3.5億ドルを超える投資をおこない、3年以内に従業員数を500人以上に倍増させ、20,000人にAIデータスキル研修を提供しています。',
+      'Databricks はシンガポールに 3.5 億米ドル超を投資し、3 年以内に従業員数を 500 人以上へ倍増させ、2 万人に AI・データスキル研修を提供する計画です。',
     summaryKo:
-      'Databricks는 싱가포르에 3.5억 달러 이상을 투자하고, 3년 내에 직원 수를 500명 이상으로 두 배 증원하며, 20,000명에게 AI 데이터 기술 교육을 제공합니다.',
+      'Databricks는 싱가포르에 3.5억 달러 이상을 투자해 3년 내 직원 수를 500명 이상으로 두 배 늘리고, 2만 명에게 AI·데이터 기술 교육을 제공할 계획입니다.',
     whyItMatters: '3.5 亿美元砸下去,新增岗位不到 300 个,新加坡这轮 AI 招商拼的是资本规模和培训覆盖面',
     whyItMattersEn:
       "$350 million deployed, fewer than 300 new jobs created; Singapore's AI investment push competes on capital scale and training coverage",
@@ -219,8 +220,8 @@ export const videos: VideoItem[] = [
     id: 'v101',
     title: '谷歌云在新加坡扩大AI人才招聘',
     titleEn: 'Google Cloud expands AI talent hiring in Singapore',
-    titleJa: 'Google CloudがシンガポールでAI人材の採用を拡大しています。',
-    titleKo: '구글 클라우드가 싱가포르에서 AI 인재 채용을 확대합니다.',
+    titleJa: 'Google Cloud、シンガポールで AI 人材採用を拡大',
+    titleKo: '구글 클라우드, 싱가포르에서 AI 인재 채용 확대',
     speaker: 'CNA',
     speakerTitle: '亚洲新闻台报道',
     speakerTitleEn: 'CNA report',
@@ -255,8 +256,8 @@ export const videos: VideoItem[] = [
     id: 'v102',
     title: '200多个AI技能课程推出，学生获免费工具',
     titleEn: '200+ AI courses launched with free student subscriptions',
-    titleJa: '200門以上のAIスキル課程がリリースされ、学生が無料ツールを取得しています。',
-    titleKo: '200개 이상의 AI 기술 과정이 출시되었으며 학생이 무료 도구를 지원받습니다.',
+    titleJa: '200 以上の AI 講座を開始、学生に無料ツールを提供',
+    titleKo: '200개 이상 AI 과정 출시, 학생에게 무료 도구 제공',
     speaker: 'The Straits Times',
     speakerTitle: '海峡时报报道',
     speakerTitleEn: 'The Straits Times report',
@@ -269,7 +270,7 @@ export const videos: VideoItem[] = [
     summaryEn:
       'Singapore launched over 200 AI SkillsFuture courses covering workplace productivity and business transformation. Eligible citizens age 18+ receive six-month complimentary subscriptions.',
     summaryJa:
-      'シンガポールが200門以上のAI課程をリリースし、職場生産性とビジネストランスフォーメーションをカバーしています。条件を満たす18歳以上の市民は6ヶ月間のAIツール無料購読を取得できます。',
+      'シンガポールが 200 以上の AI 講座を開始し、職場の生産性とビジネス変革をカバーしています。条件を満たす 18 歳以上の市民は 6 か月間の AI ツール無料購読を受けられます。',
     summaryKo:
       '싱가포르가 200개 이상의 AI 과정을 출시했으며, 업무 생산성과 사업 전환을 다룹니다. 자격 요건을 갖춘 18세 이상 시민은 6개월간 무료 AI 도구 구독을 지원받을 수 있습니다.',
     whyItMatters: 'SWDA 向 18 岁以上公民普发 6 个月 AI 工具补贴，新加坡的 AI 竞争策略从抢人才转向全民普及',
@@ -291,7 +292,7 @@ export const videos: VideoItem[] = [
     id: 'v103',
     title: 'AIAP基础课程：AI工程师入门',
     titleEn: 'First Steps to AI Engineering with AIAP',
-    titleJa: 'AIAP基礎課程：AIエンジニア入門',
+    titleJa: 'AIAP 基礎コース：AI エンジニアへの第一歩',
     titleKo: 'AIAP 기초 과정: AI 엔지니어 입문',
     speaker: 'AI Singapore',
     speakerTitle: 'AI 研究与人才培养机构',
@@ -304,7 +305,8 @@ export const videos: VideoItem[] = [
     summary: 'AIAP基础课程是6个月自学项目，教授AI基础技能，为学徒计划做准备。',
     summaryEn:
       'AIAP Foundation is a 6-month, self-paced online programme designed to teach applied AI foundational skills and prepare students for the AI Apprenticeship Programme.',
-    summaryJa: 'AIAP基礎課程は6ヶ月間の自学プログラムで、AI基礎スキルを教え、学徒プログラムの準備をしています。',
+    summaryJa:
+      'AIAP 基礎コースは 6 か月間の自習プログラムで、AI の基礎スキルを教え、見習いプログラムへの準備をします。',
     summaryKo:
       'AIAP 기초 과정은 6개월간의 자기주도 학습 프로젝트로, AI 기초 기술을 가르치며 도제 프로그램을 준비합니다.',
     whyItMatters:

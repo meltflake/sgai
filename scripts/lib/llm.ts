@@ -242,13 +242,10 @@ function stripCodeFence(s: string): string {
  */
 function extractResultText(stdout: string): string {
   try {
-    const parsed: unknown = JSON.parse(stdout);
-    const evt = Array.isArray(parsed)
-      ? (parsed as Array<Record<string, unknown>>).find((e) => e?.type === 'result')
-      : (parsed as Record<string, unknown>);
-    if (!evt) return '';
-    const text = evt.result ?? evt.error ?? evt.subtype;
-    return typeof text === 'string' ? text.slice(0, 800) : '';
+    // Same locator the auth smoke-test uses: it already copes with the
+    // type-less auth-failure object and streamed arrays.
+    const evt = pickSmokeResult(JSON.parse(stdout));
+    return typeof evt?.result === 'string' ? evt.result.slice(0, 800) : '';
   } catch {
     return '';
   }

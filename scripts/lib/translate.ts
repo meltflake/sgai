@@ -310,6 +310,10 @@ async function callClaudeTranslate(
         systemPrompt,
         model: options.model,
         signal: options.signal,
+        // callLlm's 120 s default is too short for a 15-paragraph batch; the
+        // 2026-09-17 videos run burned four timeouts and dropped two videos.
+        // Same floor the transcript translators already use (CLAUDE.md #9).
+        timeoutMs: Number(process.env.SGAI_LLM_TIMEOUT_MS || 300000),
       });
       if (!Array.isArray(parsed.paragraphs) || !parsed.paragraphs.every((item) => typeof item === 'string')) {
         throw new Error('Translation response paragraphs malformed.');
