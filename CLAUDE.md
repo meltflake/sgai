@@ -613,6 +613,8 @@ echo 'export GITHUB_TOKEN=ghp_xxx' >> ~/.zshrc   # 可选，github-stars 5000 re
 
 `skill/`（`SKILL.md` + `url-map.json` + `README.md`）是**唯一真相源**，进 git、走 review。`public/skill/` 是 `prebuild` / `predev` 时由 [scripts/publish-skill.mjs](scripts/publish-skill.mjs) 拷出来的产物，已 gitignore——**永远不要改 `public/skill/`**，改了下次构建就被覆盖。线上安装地址是 `https://sgai.md/skill/SKILL.md`。
 
+> ⚠️ 2026-09-17：这三个产物虽然写在 `.gitignore` 里，却一直留在 git 索引中。#298 改了 `policies.ts` 之后，本地只要构建过一次，`url-map.json` 就会被重写并一直显示为已修改，`autoCommit()` 的安全检查拒绝提交——当天 videos 把 5 条视频都算完了，却开不出 PR，issue 报的是「no new data」。已 `git rm --cached` 移出索引。**往 `.gitignore` 加规则时，同时确认索引里没有残留**（`git ls-files <path>` 为空才算干净）。详见 [docs/20260917-refresh-autocommit-blocker.md](docs/20260917-refresh-autocommit-blocker.md)。
+
 - 改了 `policies.ts` / `debates.ts` 的条目集合：跑 `npm run skill:build-url-map` 回填 `url-map.json` 的 `validIds`，提交生成结果。
 - 改了 `url-map.json` 的任何 URL：跑 `npm run check:skill-urls`（联网，逐条 HEAD）。weekly evals 也跑（`run-all.ts` 的 `skill-urls` stage）。
 - URL 形状铁律：**EN 在裸路径，其余四语在 `/<lang>/` 前缀**（`/policies` vs `/zh/policies`）。2026-08 之前整份 url-map 和 SKILL.md 的 URL 表把 zh / en 写反了。

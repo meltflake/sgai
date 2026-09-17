@@ -236,6 +236,22 @@ function stripCodeFence(s: string): string {
 }
 
 /**
+ * Best-effort pull of the human-readable failure text out of a nonzero-exit
+ * stdout payload. The CLI still emits its result JSON when it fails, and the
+ * `result` / `error` field is where the actual reason lives.
+ */
+function extractResultText(stdout: string): string {
+  try {
+    // Same locator the auth smoke-test uses: it already copes with the
+    // type-less auth-failure object and streamed arrays.
+    const evt = pickSmokeResult(JSON.parse(stdout));
+    return typeof evt?.result === 'string' ? evt.result.slice(0, 800) : '';
+  } catch {
+    return '';
+  }
+}
+
+/**
  * Call the local Claude Code CLI. Returns the model's text output (with
  * markdown fences stripped). Throws on transport / parse errors.
  *
@@ -311,7 +327,11 @@ export async function callLlm(userPrompt: string, options: LlmCallOptions = {}):
       options.signal?.removeEventListener('abort', onAbort);
 
       if (code !== 0) {
-        reject(new Error(`callLlm: claude exited ${code}: ${stderr.trim() || stdout.slice(0, 200)}`));
+        // The CLI reports real failures (usage limits, auth, refusals) inside
+        // the result JSON on stdout, past the usage/session preamble. A 200-char
+        // slice cuts off before `result`, so nonzero exits all look identical.
+        const detail = stderr.trim() || extractResultText(stdout) || stdout.slice(0, 800);
+        reject(new Error(`callLlm: claude exited ${code}: ${detail}`));
         return;
       }
 

@@ -145,6 +145,187 @@ export function pickSpeakerTypeLabels(lang: string): Record<string, string> {
 
 export const videos: VideoItem[] = [
   {
+    id: 'v099',
+    title: '新加坡启动200余门AI培训课程',
+    titleEn: 'Singapore launches over 200 AI training courses',
+    titleJa: 'シンガポール、200 以上の AI 研修講座を開始',
+    titleKo: '싱가포르, 200개 이상 AI 교육과정 출범',
+    speaker: 'Lawrence Wong',
+    speakerTitle: '新加坡总理',
+    speakerTitleEn: 'Prime Minister of Singapore',
+    speakerTitleJa: 'シンガポール首相',
+    speakerTitleKo: '싱가포르 총리',
+    speakerType: 'government',
+    date: '2026-09-16',
+    duration: '04:26',
+    summary: '新加坡推出200多门AI课程，符合条件者可获6个月免费AI工具订阅。',
+    summaryEn:
+      'Singapore launches over 200 AI courses with free six-month premium AI tool access for eligible participants through the new Skills and Workforce Development Agency.',
+    summaryJa:
+      'シンガポールが 200 以上の AI 講座を開始し、条件を満たす人は 6 か月間の AI ツール無料購読を受けられます。',
+    summaryKo:
+      '싱가포르가 200개 이상의 AI 과정을 출시했으며, 자격 요건을 갖춘 자는 6개월간 무료 AI 도구 구독을 지원받을 수 있습니다.',
+    whyItMatters: 'SWDA 新设并补贴 6 个月 AI 工具订阅，政府角色由教技能扩展为直接为工具买单',
+    whyItMattersEn:
+      'SWDA establishes and subsidizes 6-month AI tool subscriptions; government role expands from teaching skills to directly paying for tools',
+    whyItMattersJa:
+      'SWDA は 6 か月間の AI ツール購読を新規設置し補助します。政府の役割はスキル教育からツール購入費用の直接負担へと拡大しています。',
+    whyItMattersKo:
+      'SWDA가 AI 도구 구독을 6개월간 신설하고 보조금을 지급함으로써 정부 역할이 기술 훈련 제공에서 도구 비용 직접 지원으로 확대됨',
+    topic: 'AI 人才与教育',
+    topicEn: 'AI Talent & Education',
+    topicJa: 'AI 人材と教育',
+    topicKo: 'AI 인재와 교육',
+    youtubeUrl: 'https://www.youtube.com/watch?v=EffrDLkW6To',
+    channel: 'CNA',
+    addedAt: '2026-09-17',
+  },
+  {
+    id: 'v100',
+    title: 'Databricks投资超3.5亿美元，新加坡员工翻倍',
+    titleEn: 'Databricks to invest over US$350m, double Singapore workforce',
+    titleJa: 'Databricks、シンガポールに 3.5 億米ドル超を投資へ、従業員数を倍増',
+    titleKo: 'Databricks, 싱가포르에 3.5억 달러 이상 투자 계획, 인력 두 배로 확대',
+    speaker: 'CNA',
+    speakerTitle: '亚洲新闻台报道',
+    speakerTitleEn: 'CNA report',
+    speakerTitleJa: 'アジアニュース放送による報道',
+    speakerTitleKo: '아시아 뉴스 채널 보도',
+    speakerType: 'industry',
+    date: '2026-09-16',
+    duration: '10:47',
+    summary: 'Databricks向新加坡投资超3.5亿美元，三年内员工数翻倍至500多人，并向20000人提供AI数据技能培训。',
+    summaryEn:
+      'Databricks will invest over US$350 million in Singapore over three years, doubling its workforce to over 500 employees and supporting AI and data skills training for 20,000 people.',
+    summaryJa:
+      'Databricks はシンガポールに 3.5 億米ドル超を投資し、3 年以内に従業員数を 500 人以上へ倍増させ、2 万人に AI・データスキル研修を提供する計画です。',
+    summaryKo:
+      'Databricks는 싱가포르에 3.5억 달러 이상을 투자해 3년 내 직원 수를 500명 이상으로 두 배 늘리고, 2만 명에게 AI·데이터 기술 교육을 제공할 계획입니다.',
+    whyItMatters: '3.5 亿美元砸下去,新增岗位不到 300 个,新加坡这轮 AI 招商拼的是资本规模和培训覆盖面',
+    whyItMattersEn:
+      "$350 million deployed, fewer than 300 new jobs created; Singapore's AI investment push competes on capital scale and training coverage",
+    whyItMattersJa:
+      '3.5 億米ドルの投資に対して新規雇用は 300 人未満です。シンガポールのこのラウンドの AI 招致活動では、資本規模と研修カバレッジが競争の焦点になっています。',
+    whyItMattersKo:
+      '3.5억 미국 달러가 투자되었으나 신규 일자리는 300개 미만이며, 싱가포르의 이번 AI 인재 유치는 자본 규모와 훈련 커버리지를 중심으로 경쟁',
+    topic: 'AI 产业与应用',
+    topicEn: 'AI Industry & Applications',
+    topicJa: 'AI 産業と応用',
+    topicKo: 'AI 산업 및 응용',
+    youtubeUrl: 'https://www.youtube.com/watch?v=ULDyznpcm8M',
+    channel: 'CNA',
+    addedAt: '2026-09-17',
+  },
+  {
+    id: 'v101',
+    title: '谷歌云在新加坡扩大AI人才招聘',
+    titleEn: 'Google Cloud expands AI talent hiring in Singapore',
+    titleJa: 'Google Cloud、シンガポールで AI 人材採用を拡大',
+    titleKo: '구글 클라우드, 싱가포르에서 AI 인재 채용 확대',
+    speaker: 'CNA',
+    speakerTitle: '亚洲新闻台报道',
+    speakerTitleEn: 'CNA report',
+    speakerTitleJa: 'アジアニュース放送による報道',
+    speakerTitleKo: '아시아 뉴스 채널 보도',
+    speakerType: 'industry',
+    date: '2026-09-16',
+    duration: '02:33',
+    summary: '谷歌云在新加坡扩建工程中心，招聘更多AI人才开发AI解决方案。',
+    summaryEn:
+      'Google Cloud expands its engineering centre in Singapore to hire more AI talent for developing AI solutions.',
+    summaryJa:
+      'Google Cloudがシンガポールでエンジニアリングセンターを拡張し、より多くのAI人材を採用してAIソリューションを開発しています。',
+    summaryKo:
+      '구글 클라우드가 싱가포르에서 엔지니어링 센터를 확대하여 더 많은 AI 인재를 채용하고 AI 솔루션을 개발합니다.',
+    whyItMatters: '谷歌云在新加坡扩大工程中心招聘凸显该国从区域总部升级为 AI 研发基地，但也加剧与本地企业的人才争夺',
+    whyItMattersEn:
+      "Google Cloud's expansion of engineering center hiring in Singapore underscores the country's upgrade from regional hub to AI research and development base, but also intensifies talent competition with local enterprises",
+    whyItMattersJa:
+      'Google Cloud のシンガポール工学センター採用拡大は、同国が地域本部から AI 研究開発基地へアップグレードされていることを浮き彫りにしています。しかし、これはローカル企業との人材確保競争も激化させています。',
+    whyItMattersKo:
+      '구글 클라우드가 싱가포르에서 엔지니어링 센터 채용을 확대함으로써 싱가포르가 지역 본사에서 AI 연구개발 기지로 격상되는 것을 드러내면서도, 현지 기업과의 인재 쟁탈을 심화시킴',
+    topic: 'AI 人才与教育',
+    topicEn: 'AI Talent & Education',
+    topicJa: 'AI 人材と教育',
+    topicKo: 'AI 인재와 교육',
+    youtubeUrl: 'https://www.youtube.com/watch?v=6TDreHEuLRE',
+    channel: 'CNA',
+    addedAt: '2026-09-17',
+  },
+  {
+    id: 'v102',
+    title: '200多个AI技能课程推出，学生获免费工具',
+    titleEn: '200+ AI courses launched with free student subscriptions',
+    titleJa: '200 以上の AI 講座を開始、学生に無料ツールを提供',
+    titleKo: '200개 이상 AI 과정 출시, 학생에게 무료 도구 제공',
+    speaker: 'The Straits Times',
+    speakerTitle: '海峡时报报道',
+    speakerTitleEn: 'The Straits Times report',
+    speakerTitleJa: 'ストレーツ・タイムズの報道',
+    speakerTitleKo: '스트레이츠 타임즈 보도',
+    speakerType: 'industry',
+    date: '2026-09-16',
+    duration: '01:03',
+    summary: '新加坡推出200多个AI课程，涵盖工作生产力和业务转型。符合条件的18岁以上公民获6个月免费AI工具订阅。',
+    summaryEn:
+      'Singapore launched over 200 AI SkillsFuture courses covering workplace productivity and business transformation. Eligible citizens age 18+ receive six-month complimentary subscriptions.',
+    summaryJa:
+      'シンガポールが 200 以上の AI 講座を開始し、職場の生産性とビジネス変革をカバーしています。条件を満たす 18 歳以上の市民は 6 か月間の AI ツール無料購読を受けられます。',
+    summaryKo:
+      '싱가포르가 200개 이상의 AI 과정을 출시했으며, 업무 생산성과 사업 전환을 다룹니다. 자격 요건을 갖춘 18세 이상 시민은 6개월간 무료 AI 도구 구독을 지원받을 수 있습니다.',
+    whyItMatters: 'SWDA 向 18 岁以上公民普发 6 个月 AI 工具补贴，新加坡的 AI 竞争策略从抢人才转向全民普及',
+    whyItMattersEn:
+      "SWDA universally distributes 6-month AI tool subsidies to citizens aged 18 and above; Singapore's AI competitive strategy shifts from competing for talent to universal adoption",
+    whyItMattersJa:
+      'SWDA は 18 歳以上の市民に 6 か月間の AI ツール補助金を広く配布しています。シンガポールの AI 競争戦略は、人材争奪から国民全体への普及へとシフトしています。',
+    whyItMattersKo:
+      'SWDA가 18세 이상 시민에게 6개월 AI 도구 보조금을 광범위하게 지급하면서 싱가포르의 AI 경쟁 전략이 인재 확보에서 전국민 보급으로 전환',
+    topic: 'AI 人才与教育',
+    topicEn: 'AI Talent & Education',
+    topicJa: 'AI 人材と教育',
+    topicKo: 'AI 인재와 교육',
+    youtubeUrl: 'https://www.youtube.com/watch?v=NYNjgj1BIbA',
+    channel: 'The Straits Times',
+    addedAt: '2026-09-17',
+  },
+  {
+    id: 'v103',
+    title: 'AIAP基础课程：AI工程师入门',
+    titleEn: 'First Steps to AI Engineering with AIAP',
+    titleJa: 'AIAP 基礎コース：AI エンジニアへの第一歩',
+    titleKo: 'AIAP 기초 과정: AI 엔지니어 입문',
+    speaker: 'AI Singapore',
+    speakerTitle: 'AI 研究与人才培养机构',
+    speakerTitleEn: 'AI research and talent-development organisation',
+    speakerTitleJa: 'AI 研究と人材育成機関',
+    speakerTitleKo: 'AI 연구 및 인재 양성 기관',
+    speakerType: 'academic',
+    date: '2026-09-15',
+    duration: '01:13',
+    summary: 'AIAP基础课程是6个月自学项目，教授AI基础技能，为学徒计划做准备。',
+    summaryEn:
+      'AIAP Foundation is a 6-month, self-paced online programme designed to teach applied AI foundational skills and prepare students for the AI Apprenticeship Programme.',
+    summaryJa:
+      'AIAP 基礎コースは 6 か月間の自習プログラムで、AI の基礎スキルを教え、見習いプログラムへの準備をします。',
+    summaryKo:
+      'AIAP 기초 과정은 6개월간의 자기주도 학습 프로젝트로, AI 기초 기술을 가르치며 도제 프로그램을 준비합니다.',
+    whyItMatters:
+      'AI Singapore 靠 6 个月带补贴的自学班把 AIAP 学徒计划的门槛降到只需基础 Python，人才漏斗正从筛选转向自建',
+    whyItMattersEn:
+      'AI Singapore leverages 6-month subsidised self-study classes to lower AIAP apprenticeship programme entry barriers to requiring only basic Python; the talent funnel shifts from screening to in-house development',
+    whyItMattersJa:
+      'AI Singapore は 6 か月間の補助付き自習クラスを活用して、AIAP 見習いプログラムのハードルを基本的な Python のみの習得に引き下げています。人材ファネルは採用選別から自己構築へとシフトしています。',
+    whyItMattersKo:
+      'AI Singapore가 6개월 보조금 지원 자습 과정으로 AIAP 견습 프로그램의 진입 장벽을 기초 Python 수준으로 낮추면서 인재 흐름이 선발에서 자체 양성으로 전환되고 있음',
+    topic: 'AI 人才与教育',
+    topicEn: 'AI Talent & Education',
+    topicJa: 'AI 人材と教育',
+    topicKo: 'AI 인재와 교육',
+    youtubeUrl: 'https://www.youtube.com/watch?v=yo3Ycx8TM28',
+    channel: 'AI Singapore',
+    addedAt: '2026-09-17',
+  },
+  {
     id: 'v098',
     title: '智能体 AI：企业加大 AI 应用，更多新加坡员工开始管理机器人',
     titleEn: 'Agentic AI: More Singapore workers managing bots as firms ramp up AI uses',
