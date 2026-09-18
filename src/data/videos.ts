@@ -145,6 +145,80 @@ export function pickSpeakerTypeLabels(lang: string): Record<string, string> {
 
 export const videos: VideoItem[] = [
   {
+    id: 'v104',
+    title: '新加坡8月出口劲增46.2%，AI需求强劲',
+    titleEn: 'Singapore exports surge 46.2% on-year in August amid AI demand',
+    titleJa: 'シンガポール8月輸出が46.2%大幅増加し、AI需要が堅調です。',
+    titleKo: '싱가포르 8월 수출 46.2% 급증, AI 수요 강세',
+    speaker: 'CNA',
+    speakerTitle: '亚洲新闻台报道',
+    speakerTitleEn: 'CNA report',
+    speakerTitleJa: 'アジアニュース放送による報道',
+    speakerTitleKo: '아시아 뉴스 채널 보도',
+    speakerType: 'industry',
+    date: '2026-09-17',
+    duration: '07:08',
+    summary: '新加坡8月出口同比增长46.2%，由强劲AI需求和低基数驱动。电子产品出口激增131%，为主要增长动力。',
+    summaryEn:
+      "Singapore's exports grew 46.2% year-on-year in August, driven by strong AI demand and a low base effect. Electronic exports surged 131%, becoming the main growth driver.",
+    summaryJa:
+      'シンガポール8月の輸出は前年同月比で46.2%増加し、堅調なAI需要と低い基数に支えられました。電子製品輸出は131%激増し、主要な成長ドライバーとなっています。',
+    summaryKo:
+      '싱가포르의 8월 수출이 전년 대비 46.2% 증가했으며, 강한 AI 수요와 낮은 기저효과에 의해 견인되었습니다. 전자 제품 수출은 131% 급증하여 주요 성장 동력이 되었습니다.',
+    whyItMatters: '电子出口连涨 12 个月、8 月暴增 131%，新加坡增长引擎已系于全球 AI 芯片周期，一旦转向冲击会更大',
+    whyItMattersEn:
+      "Electronics exports have posted 12 consecutive months of growth, with August surging 131%; Singapore's growth engine is now tied to the global AI chip cycle, and the impact from any reversal will be even greater.",
+    whyItMattersJa:
+      '電子部品輸出が 12 ヶ月連続で上昇し、8 月には 131% の増加を記録しており、シンガポールの成長エンジンは既に世界的な AI チップサイクルと結びついています。一度転向すれば、その衝撃はさらに大きくなるでしょう。',
+    whyItMattersKo:
+      '전자 수출이 12개월 연속 증가하고 8월에는 131% 급증했으며, 싱가포르의 성장 엔진은 이미 글로벌 AI 칩 주기에 결부되어 있으며, 한 번 방향이 바뀌면 충격은 훨씬 더 클 것입니다.',
+    topic: 'AI 产业与应用',
+    topicEn: 'AI Industry & Applications',
+    topicJa: 'AI 産業と応用',
+    topicKo: 'AI 산업 및 응용',
+    youtubeUrl: 'https://www.youtube.com/watch?v=7sCGAc1fljY',
+    channel: 'CNA',
+    addedAt: '2026-09-18',
+  },
+  {
+    id: 'v105',
+    title: '新加坡 AI Xchange 平台助企业共享 AI 应用经验',
+    titleEn: 'New SG AI Xchange platform helps firms share lessons on adopting and scaling AI',
+    titleJa: 'シンガポール AI Xchange プラットフォームが企業の AI 活用経験の共有を支援しています。',
+    titleKo: '싱가포르 AI Xchange 플랫폼, 기업의 AI 응용 경험 공유 지원',
+    speaker: 'CNA',
+    speakerTitle: '亚洲新闻台报道',
+    speakerTitleEn: 'CNA report',
+    speakerTitleJa: 'アジアニュース放送による報道',
+    speakerTitleKo: '아시아 뉴스 채널 보도',
+    speakerType: 'industry',
+    date: '2026-09-17',
+    duration: '02:50',
+    summary:
+      '新加坡推出 SG AI Xchange 平台，帮助企业分享 AI 采纳经验。经济发展局旨在通过连接全球和本地参与者来建设新加坡的 AI 生态。',
+    summaryEn:
+      "A new Singapore platform, SG AI Xchange, helps companies share lessons on adopting AI. The Economic Development Board aims to strengthen Singapore's AI ecosystem by connecting global and local players.",
+    summaryJa:
+      'シンガポールは SG AI Xchange プラットフォームを導入し、企業の AI 導入経験の共有を支援しています。経済開発庁（EDB）は、グローバルおよびローカルの参加者をつなぐことでシンガポールの AI エコシステムの構築を目指しています。',
+    summaryKo:
+      '싱가포르가 SG AI Xchange 플랫폼을 출시해 기업들이 AI 채택 경험을 공유하도록 지원합니다. 경제개발청（EDB）은 글로벌 및 현지 참여자를 연결하여 싱가포르의 AI 생태계를 구축하는 것을 목표로 합니다.',
+    whyItMatters:
+      '近 100 家 AI 卓越中心两年来各自为战，经济发展局今年才推出 SG AI Xchange 补上经验共享这块拼图，说明新加坡 AI 生态扩散仍需政府搭桥',
+    whyItMattersEn:
+      "Nearly 100 AI centres of excellence have operated independently over the past two years; only this year did the Economic Development Board(EDB) launch SG AI Xchange to fill the gap in experience sharing, showing that Singapore's AI ecosystem still needs government to build bridges.",
+    whyItMattersJa:
+      'ほぼ 100 の AI エクセレンスセンターが過去 2 年間、各々単独で活動を進めてきており、経済開発庁（EDB）は今年初めて SG AI Xchange をローンチして、経験共有というこの重要なピースを補いました。これはシンガポールの AI エコシステムの拡散が依然として政府による橋渡しを必要としていることを示しています。',
+    whyItMattersKo:
+      '거의 100개의 AI 우수 센터가 지난 2년간 제각각 진행되어 왔으며, 경제개발청（EDB）이 올해에야 SG AI Xchange를 출범시켜 경험 공유라는 퍼즐 조각을 채웠다는 것은 싱가포르의 AI 생태계 확산이 여전히 정부의 다리 역할을 필요로 함을 보여줍니다.',
+    topic: 'AI 产业与应用',
+    topicEn: 'AI Industry & Applications',
+    topicJa: 'AI 産業と応用',
+    topicKo: 'AI 산업 및 응용',
+    youtubeUrl: 'https://www.youtube.com/watch?v=E0sal2-i1Wo',
+    channel: 'CNA',
+    addedAt: '2026-09-18',
+  },
+  {
     id: 'v099',
     title: '新加坡启动200余门AI培训课程',
     titleEn: 'Singapore launches over 200 AI training courses',
