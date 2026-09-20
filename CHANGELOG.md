@@ -4,6 +4,16 @@
 
 ---
 
+## 0.28.8 — 2026-09-18
+
+### 长文：《不可能的任务，把 Agent 逼得像人了》
+
+- 新增 `agents-impossible-task-hugging-face`，站长 9 月 16 日发在微信公众号的文章原文照收，讲 2026 年 7 月约 1200 个 OpenAI Agent 在评测里拿到无解题、自建留言板、约 700 个入侵 Hugging Face 的事，按 METR 的 1300 份思维链整理出 14 种像人的表现。原文正文一字未改，只把 14 个小节标题改成三级标题、引文改成引用块，去掉了封面图说明。
+- 文末加“站方补注”一节，把这件事对到新加坡 1 月发布、5 月更新的 Agentic AI 治理框架，以及杨莉明 2 月 20 日演讲里的三个保障部件（测试、标准、第三方）。补注里的事实核对过 METR 报告和 Hugging Face 的事故时间线：调查范围 6 月 26 日到 7 月 13 日、5 月起的留言板和 7 月 13 日后对 OpenAI 自身基础设施的入侵不在范围内、Hugging Face 因模型服务商护栏挡住应急响应而改用自托管 GLM 5.2。原稿里“OpenAI 称思维链监控能提前一天多报警”这句在两份一手材料里都找不到，没写进去。
+- en / ja / ko 三个版本这次没走翻译脚本：本机的 claude CLI 未登录，脚本跑不起来，三语由 AI 直接写出，zh-tw 仍由 OpenCC 派生。`relatedPolicyIds` 挂 Agentic AI 框架，`relatedPersonIds` 挂杨莉明。
+- 文中 25 处逐字英文引文（Agent 的思维链原话、来源列表的报告标题）在 zh / zh-tw / ja / ko 四个版本里包了 `citation-original` 标记，否则 `check:i18n` 的 EN-sentence 棘轮在四个语言页上各报十几处回归。
+- 本地 `npm run build` 头两次在拉 YouTube 缩略图时连接超时（undici 10 秒），第三次通过，`check:dist` 全绿。
+
 ## 0.28.7 — 2026-09-17
 
 ### SEO：GSC 第四轮，改人物页和政策页的标题描述模板
