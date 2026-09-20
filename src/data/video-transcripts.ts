@@ -12682,6 +12682,40 @@ export const videoTranscripts: Record<string, VideoTranscript> = {
     translationSource: 'claude',
     translationModel: 'haiku',
   },
+  v106: {
+    videoId: 'v106',
+    youtubeId: 'FeXpja-SkYk',
+    captionLanguage: 'en',
+    fetchedAt: '2026-09-20',
+    source: 'youtube-subtitles',
+    paragraphs: [
+      '新加坡将加拿大视为潜在能源来源，因为它预期中东燃料供应会进一步中断。这是包括供应链韧性和人工智能在内的深化合作的一部分。一些交易也可能在未来几个月内达成。外交部长维文·巴拉克·克里什南在圆满完成对渥太华的正式访问后分享了这一信息。沙伦西亚提供更多信息。新加坡和加拿大正在寻求在维文·巴尔·克里什南为期两天的访问后在各个部门深化关系。他和他的加拿大同行安妮塔·阿南德同意了一个新的经济伙伴关系框架，双方都看到在包括人工智能和数字经济等方面建立在各自优势基础上的空间。>>"我们将加拿大视为我们的能源来源。"',
+      '呃有一些需要解决的技术问题。我们也将加拿大视为食品来源，特别是我们还在考虑与加拿大达成更正式的必需品贸易安排的可能性。>>巴拉克·克里什南博士也就加拿大-美国紧张关系发表看法，表示这两个国家保持深度融合。他强调这不是新加坡参与其双边关系的角色，但加拿大经济联系的扩大为新加坡和亚洲创造了机会。',
+      '这是加拿大在大西洋和太平洋两地探索机会的一条无悔之路，因为加拿大确实拥有世界各地都有需求的商品、服务、产品和资源，加拿大应该最大化其在亚太地区和欧洲的贸易和投资机会。>>这也涉及东南亚。新加坡明年将接任东盟主席，届时该集团和加拿大也将庆祝对话关系50周年。巴克·克里什南博士表示，关于东盟-加拿大自由贸易协议的谈判正在进行中，并希望在未来几个月内取得突破。>>巴拉·克里什南博士在访问渥太华前在多哈。他警告中东能源供应将进一步中断，并表示新加坡迄今已通过多元化能源来源应对，但情况仍然令人担忧。',
+      '>>"新加坡和卡塔尔继续坚持航行自由，特别是在用于国际航行的海峡中，如香港海峡。但我们必须等待观察事态如何发展。我认为不会有快速解决方案。实际上，过去一周多发生的后续事件也导致了巴卜埃尔曼德海峡出现问题，呃这来自红海，这将影响沙特阿拉伯的出口。这里。"',
+    ],
+    paragraphsEn: [
+      "Singapore is looking at Canada as a potential energy source as it anticipates further fuel disruptions from the Middle East. This is part of deepening cooperation in areas that also include supply chain resilience and AI. Some deals are also potentially ready to be sealed within the next few months. Foreign Affairs Minister Vivven Balak Krishnan shared this after wrapping up his official visit to Ottawa. Shalencia has more. Singapore and Canada are looking to deepen ties across various sectors following Dr. Vivven Bal Krishnan's two-day visit. He and his Canadian counterpart Anita Anand agreed on a new economic partnership framework with both sides seeing room to build on their strengths that includes AI and the digital economy among others. >> We are looking at Canada as a source of energy for us.",
+      "uh there are technical issues that need to be resolved. We are looking at Canada as a source of food and in particular we're also looking at the possibility of having more formal arrangements for trade in essential supplies with Canada as well. >> Dr. Balak Krishnan also weighed in on Canada US tensions saying the two countries remain deeply integrated. He stresses that it is not Singapore's role to get involved in their bilateral ties, but Canada's broadening of its economic links opens up opportunities in Singapore and Asia.",
+      'It is a path of no regret for Canada to explore opportunities across both the Atlantic and the Pacific because Canada does have goods and services and products and resources which are in demand all over the world and Canada should maximize its opportunities for trade and investment across the Asia-Pacific and in Europe. >> That extends to Southeast Asia. Singapore takes over as ASEAN chair next year when the block and Canada also mark 50 years of dialogue relations. Dr. Bak Krishnan says talks on an ASEAN Canada free trade agreement are ongoing and hopes for a breakthrough in the coming months. >> Dr. Bala Krishnan was in Doha before his visit to Ottawa. He warns of further disruptions to energy supplies from the Middle East and says Singapore has coped so far because of its diversified energy sources, but the situation remains a concern.',
+      ">> Both Qatar and Singapore continue to insist on freedom of navigation, especially in straits used for international navigation like the straight of Hong Kong. But we will have to wait and see how things evolve. I don't see any quick solution. In fact, the subsequent actions in the last week or so which has resulted also in problems in the Babel Elmandep uh which is from the Red Sea which will affect exports from Saudi Arabia. Here.",
+    ],
+    paragraphsKo: [
+      '싱가포르는 중동 연료 공급이 추가로 중단될 것으로 예상되기 때문에 캐나다를 잠재적 에너지 공급원으로 봅니다. 이는 공급망 복원력과 인공지능을 포함한 심화된 협력의 일부입니다. 일부 거래는 향후 몇 개월 내에 체결될 수도 있습니다. 외교부（MFA） 장관 Vivian Balakrishnan은 오타와에 대한 정식 방문을 성공적으로 완료한 후 이 정보를 공유했습니다. 더 많은 정보는 Shalunsia가 제공합니다. 싱가포르와 캐나다는 Vivian Balakrishnan의 2일간 방문 후 여러 부문에서 관계를 심화시키려고 합니다. 그와 그의 캐나다 동료 Anita Anand는 새로운 경제 파트너십 프레임워크에 동의했으며, 양측은 인공지능과 디지털 경제를 포함한 분야에서 각자의 강점을 기반으로 구축할 수 있는 영역을 봅니다. 「우리는 캐나다를 우리의 에너지 공급원으로 봅니다.」',
+      '어, 해결해야 할 기술적 문제들이 있습니다. 우리는 또한 캐나다를 식품 공급원으로 봅니다. 특히, 우리는 캐나다와 더욱 공식적인 필수품 무역 협약을 체결할 가능성을 계속 고려하고 있습니다. Vivian Balakrishnan 박사는 또한 캐나다-미국 긴장 관계에 대해 언급했으며, 두 국가가 깊은 통합을 유지하고 있다고 말했습니다. 그는 이것이 싱가포르가 그들의 양자 관계에 참여하는 역할이 아니라고 강조했지만, 캐나다 경제 연결의 확대는 싱가포르와 아시아에 기회를 창출합니다.',
+      '이것은 캐나다가 대서양과 태평양 양쪽에서 기회를 탐색하는 후회 없는 길입니다. 왜냐하면 캐나다는 실제로 세계 각지에서 수요가 있는 상품, 서비스, 제품 및 자원을 보유하고 있으며, 캐나다는 아시아태평양 지역과 유럽에서의 무역 및 투자 기회를 최대화해야 하기 때문입니다. 이는 또한 동남아시아를 포함합니다. 싱가포르는 내년 ASEAN 의장을 맡을 것이며, 그 시점에 이 그룹과 캐나다도 대화 관계 50주년을 축하할 것입니다. Vivian Balakrishnan 박사는 ASEAN-캐나다 자유무역협정에 관한 협상이 진행 중이며 향후 몇 개월 내에 돌파구를 기대한다고 말했습니다. Vivian Balakrishnan 박사는 오타와 방문 전에 도하에 있었습니다. 그는 중동 에너지 공급이 추가로 중단될 것이라고 경고했으며, 싱가포르가 지금까지 에너지 공급원을 다양화하여 대처했지만 상황은 여전히 우려스럽다고 말했습니다.',
+      '「싱가포르와 카타르는 계속해서 항행의 자유를 고수하고 있으며, 특히 홍콩 해협과 같이 국제 항행에 사용되는 해협에서 그렇습니다. 그러나 우리는 사태가 어떻게 발전할지 지켜봐야 합니다. 나는 빠른 해결책이 없을 것이라고 생각합니다. 실제로 지난 일주일 이상 발생한 후속 사건들은 또한 바브 엘만다브 해협에서도 문제를 야기했습니다. 어, 이것은 홍해에서 비롯되었으며, 이것은 사우디아라비아의 수출에 영향을 미칠 것입니다. 여기입니다.」',
+    ],
+    paragraphsJa: [
+      'シンガポールはカナダを潜在的なエネルギー源と見なしており、中東の燃料供給がさらに断絶されると予想しているためです。これは供給チェーンの強靭性と AI を含む関係深化の一部です。今後数か月以内に一部の取引が成立する可能性もあります。外務大臣ビビアン・バラクリシュナンはオタワへの公式訪問を無事完了した後、この情報を共有しました。シャロンシアがより多くの情報を提供しています。シンガポールとカナダは、ビビアン・バラクリシュナンの 2 日間の訪問後、様々な部門で関係深化を模索しています。彼とカナダの同僚アニータ・アナンドは新しい経済パートナーシップ・フレームワークに合意し、双方は AI とデジタル経済を含む各分野で各自の強みに基づいて構築する余地があると認識しています。>>「われわれはカナダをわれわれのエネルギー源と見なしています。」',
+      'えっと、解決する必要のある技術的な問題があります。われわれはまたカナダを食品供給源と見なしており、特にカナダとの正式な必需品取引に関する取り決めの可能性についてもなお検討中です。>>ビビアン・バラクリシュナン博士はカナダ・米国間の緊張関係についても見解を述べ、この両国は深い統合を維持していると述べました。彼は、これがシンガポールが両国の二国間関係に参与する役割ではないことを強調しましたが、カナダとの経済的つながりの拡大がシンガポールとアジアに機会をもたらしています。',
+      'カナダが大西洋と太平洋の両地域で機会を探索することは、カナダが世界中で需要のある商品、サービス、製品およびリソースを保有していることから、カナダが後悔することなく進むべき道です。カナダはアジア太平洋地域およびヨーロッパでの貿易および投資機会を最大化すべきです。>>これは東南アジアも関係しています。シンガポールは来年 ASEAN の議長国となり、その時点でその組織とカナダも対話関係 50 周年を祝います。ビビアン・バラクリシュナン博士は、ASEAN-カナダ自由貿易協定に関する交渉が進行中であり、今後数か月以内にブレークスルーを期待していると述べました。>>ビビアン・バラクリシュナン博士はオタワ訪問前にドーハにいました。彼は中東のエネルギー供給がさらに中断されると警告し、シンガポールはこれまでエネルギー供給源の多様化を通じて対応してきたが、状況は依然として懸念を呼んでいると述べました。',
+      '「シンガポールとカタールは、引き続き航行の自由、特に国際航海に用いられる海峡、例えば香港海峡における航行の自由を堅持しています。しかし、事態がどのように展開するかを見守る必要があります。迅速な解決策はないと思います。実際のところ、過去 1 週間以上に発生した後続事象はバブエルマンデブ海峡でも問題を引き起こしており、ええと、これは紅海に由来するもので、サウジアラビアの輸出に影響を及ぼすでしょう。」',
+    ],
+    translatedAt: '2026-09-20',
+    translationSource: 'claude',
+    translationModel: 'haiku',
+  },
 };
 
 export function getVideoTranscript(videoId: string): VideoTranscript | undefined {

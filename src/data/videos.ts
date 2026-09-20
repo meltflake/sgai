@@ -145,6 +145,42 @@ export function pickSpeakerTypeLabels(lang: string): Record<string, string> {
 
 export const videos: VideoItem[] = [
   {
+    id: 'v106',
+    title: '新加坡加拿大能源供应链AI合作',
+    titleEn: 'Singapore and Canada on Energy, Supply Chain, and AI',
+    titleJa: 'シンガポール・カナダのエネルギー・サプライチェーン・AI協力',
+    titleKo: '싱가포르와 캐나다 에너지·공급망·AI 협력',
+    speaker: 'Vivian Balakrishnan',
+    speakerTitle: '新加坡外交部长',
+    speakerTitleEn: 'Minister for Foreign Affairs, Singapore',
+    speakerTitleJa: 'シンガポール外交部長',
+    speakerTitleKo: '싱가포르 외교부 장관',
+    speakerType: 'government',
+    date: '2026-09-19',
+    duration: '03:09',
+    summary: '新加坡与加拿大深化能源、供应链和AI合作，预计数月内敲定协议。外交部长巴拉克里什南访问渥太华后宣布此消息。',
+    summaryEn:
+      'Singapore and Canada are deepening cooperation in energy, supply chains, and AI, with deals expected within months. FM Vivian Balakrishnan announced this after visiting Ottawa.',
+    summaryJa:
+      'シンガポールとカナダがエネルギー・サプライチェーン・AI協力を深化させ、数ヶ月以内に協定を確定することが予想されています。外務省（MFA）のバラクリシュナン大臣がオタワを訪問した後、このニュースを発表しました。',
+    summaryKo:
+      '싱가포르와 캐나다가 에너지, 공급망 및 AI 협력을 심화하며, 수개월 내에 협정을 확정할 것으로 예상됩니다. 외교부(MFA) 장관 발라크리슈난이 오타와를 방문한 후 이 소식을 발표했습니다.',
+    whyItMatters: '新加坡把 AI 合作放进能源谈判，想借加拿大减少对中东供应的依赖，协议或数月内落地',
+    whyItMattersEn:
+      'Singapore incorporates AI cooperation into energy negotiations, seeking to leverage Canada to reduce dependence on Middle East supplies, with the agreement potentially finalized within months.',
+    whyItMattersJa:
+      'シンガポールがエネルギー交渉にAI協力を盛り込み、カナダを活用して中東への供給依存を減らしたいと考えており、協議は数ヶ月以内に妥結する見通しです。',
+    whyItMattersKo:
+      '싱가포르가 에너지 협상에 AI 협력을 포함시키면서, 캐나다를 활용하여 중동 에너지 공급에 대한 의존도를 줄이려 하고 있으며, 합의는 수 개월 내에 체결될 것으로 전망됩니다.',
+    topic: '国际合作与对标',
+    topicEn: 'International Cooperation & Benchmarking',
+    topicJa: '国際協力とベンチマーク',
+    topicKo: '국제 협력과 벤치마크',
+    youtubeUrl: 'https://www.youtube.com/watch?v=FeXpja-SkYk',
+    channel: 'CNA',
+    addedAt: '2026-09-20',
+  },
+  {
     id: 'v104',
     title: '新加坡8月出口劲增46.2%，AI需求强劲',
     titleEn: 'Singapore exports surge 46.2% on-year in August amid AI demand',
