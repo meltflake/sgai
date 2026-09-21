@@ -27,7 +27,7 @@ relatedTimelineYears:
 
 在模型能力評測中，因為 AI Agent 們收到了不可能完成的任務——例如：補全 Google Drive 裡的表格（但沒有網路訪問許可權），缺乏完成任務必須的檔案資料等，導致了 Hugging Face 被入侵。
 
-完整過程參見[這份整理](https://r.slax.com/b/b62e302c-397a-4df0-b7ba-165f7160dc1c)，包括來自 OpenAI、METR、Hugging Face 的獨立調查。細節可能需要一定的資訊安全知識才看得下去。我簡化描述一下：
+完整過程參見[這份整理](https://wlj.me/reading/openai-huggingface-incident-2026-09/)，包括來自 OpenAI、METR、Hugging Face 的獨立調查。細節可能需要一定的資訊安全知識才看得下去。我簡化描述一下：
 
 這是一次長程任務，Agent 們的異常從 5 月 8 日開始——他們不是單獨行動，而是開始用人類非預期的方式開始交流，搞了個留言板。然後事情發展逐漸失控，7 月 8 日，智慧體們突破了 OpenAI 的沙箱限制訪問公網。7-9 開始攻擊 Hugging Face（因為他們想直接去找找那裡是不是有他們要的“答案”，用於“作弊”）。7-11 開始成功入侵。7-16 Hugging Face 發現並用來自中國的 AI 分析和防禦。7-19 OpenAI 發現內部異常，才知道攻擊的真正來源。
 

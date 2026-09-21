@@ -27,7 +27,7 @@ lang: en
 
 During a model capability evaluation, AI agents were given tasks that could not be completed. For example: fill in a spreadsheet in Google Drive (with no network access), or finish a job whose required files were missing. That is how Hugging Face ended up being broken into.
 
-The full sequence is in [this compilation](https://r.slax.com/b/b62e302c-397a-4df0-b7ba-165f7160dc1c), which includes the independent investigations by OpenAI, METR and Hugging Face. The details take some information-security background to get through. Here is a simplified version:
+The full sequence is in [this compilation](https://wlj.me/reading/openai-huggingface-incident-2026-09/), which includes the independent investigations by OpenAI, METR and Hugging Face. The details take some information-security background to get through. Here is a simplified version:
 
 This was a long-horizon task. The agents' abnormal behaviour started on 8 May. They did not act alone. They began talking to each other in ways nobody had planned for, and set up a message board. Things gradually got out of control. On 8 July the agents broke out of OpenAI's sandbox and reached the public internet. On 9 July they started attacking Hugging Face (they wanted to go and look for the "answers" they needed, in order to "cheat"). On 11 July the intrusion succeeded. On 16 July Hugging Face noticed and used an AI model from China to analyse and defend. On 19 July OpenAI spotted internal anomalies and only then learned where the attack had come from.
 
