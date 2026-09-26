@@ -1,5 +1,5 @@
 // Auto-generated: enriched debates with Chinese summaries and pattern analysis
-// Total: 187 debates | Updated: 2026-07-20
+// Total: 234 debates | Updated: 2026-09-26
 // Sources: https://sprs.parl.gov.sg | https://search.pair.gov.sg
 
 export interface Debate {
@@ -67,6 +67,2416 @@ export interface Debate {
 }
 
 export const debates: Debate[] = [
+  {
+    id: 'written-answer-na-24850',
+    titleEn: 'Guidelines for Institutes of Higher Learning on Use of AI-writing Detection Tools',
+    title: '高等学府使用 AI 写作检测工具的指导原则',
+    titleKo: '고등교육기관의 AI 작문 탐지 도구 사용 지침',
+    titleJa: '高等教育機関におけるAI文章検出ツール使用のガイドライン',
+    date: '2026-09-10',
+    parliament: '15',
+    type: 'Written Answers to Questions',
+    speakers: ['Mr Melvin Yong Yik Chye', 'Mr Desmond Lee'],
+    personIds: [],
+    topicIds: [],
+    relatedPolicyIds: [],
+    relatedLeverNumbers: [],
+    relatedTimelineYears: [],
+    relatedPostSlugs: [],
+    topics: ['AI in Education', 'AI Governance & Regulation'],
+    summary:
+      '议员杨益财（Mr Melvin Yong Yik Chye）书面询问教育部长：教育部是否打算为高等学府制定使用 AI 写作检测工具的统一指导原则，以及会否纳入保障措施，确保学生知悉工具如何使用、不会仅凭 AI 检测分数受罚。教育部长李智陞（Mr Desmond Lee）答复（同时回应李蕙莹和吕思憓的提问）：所有高等学府都有管理 AI 用于评估和学业的政策，符合教育部关于 AI 应辅助学习、设护栏维护学术诚信的指导；学府会清楚告知学生是否及如何可用 AI，并设有申诉程序，学生在受纪律处分前有机会回应。学府自行评估检测工具是否有价值；若使用，检测分数不单独决定学术不端，教育工作者会审阅作业、与学生沟通，必要时要求提供草稿等学习过程证据，最终评分由教育工作者负责。',
+    summaryEn:
+      'Mr Melvin Yong Yik Chye asked the Minister for Education whether MOE intends to set common guidelines for Institutes of Higher Learning on AI writing detection tools, and whether they would include safeguards so that students know how the tools are used and are not penalised solely on AI detection scores. Minister Mr Desmond Lee, also addressing questions from Ms Lee Hui Ying and Ms Cassandra Lee, replied that all IHLs have policies on AI use in assessment and academic work, aligned with MOE guidance that AI use should support learning and that guardrails uphold academic integrity. IHLs clearly inform students whether and how AI may be used, and have processes to appeal assessment and disciplinary outcomes, including suspected unauthorised AI use; students can respond to allegations before disciplinary action. IHLs assess whether detection tools add value; where used, detection scores alone do not determine misconduct. Educators review the work, engage the student, may request drafts or earlier work as evidence of the learning process, and remain responsible for the final grade.',
+    summaryJa:
+      'Melvin Yong Yik Chye議員は教育大臣に書面で、教育省がAI文章検出ツールの使用について高等教育機関向けの共通ガイドラインを策定する意向があるか、またツールの使われ方を学生に知らせ、AI検出スコアのみで処分されないようにする保護措置を盛り込むかを質問した。Desmond Lee教育大臣は、Lee Hui Ying議員とCassandra Lee議員の質問にも答える形で、すべての高等教育機関が評価や学業でのAI使用に関する方針を持ち、AI使用は学習を支えるべきで学術的誠実性を守るガードレールを設けるという教育省の指針に沿っていると答弁した。各機関はAIを使用してよいか、どう使用してよいかを学生に明確に伝え、無許可のAI使用が疑われるケースを含む評価・懲戒結果への不服申立て手続きを設けており、懲戒前に学生は回答の機会を与えられる。検出ツールの価値は各機関が判断し、使用する場合も検出スコアだけで不正は決まらない。教育者は成果物を確認し、学生と対話し、必要に応じて下書きなど学習過程の証拠を求め、最終的な成績評価に責任を負う。',
+    summaryKo:
+      'Melvin Yong Yik Chye 의원은 교육부 장관에게 서면으로, 교육부가 AI 작문 탐지 도구 사용에 관한 고등교육기관 공통 지침을 마련할 계획인지, 그리고 학생이 도구 사용 방식을 안내받고 AI 탐지 점수만으로 불이익을 받지 않도록 하는 안전장치를 포함할지 질의했다. Desmond Lee 교육부 장관은 Lee Hui Ying 의원과 Cassandra Lee 의원의 질문에도 함께 답하며, 모든 고등교육기관이 평가와 학업에서의 AI 사용 정책을 갖추고 있고 이는 AI 사용이 학습을 뒷받침해야 하며 학업 윤리를 지키는 안전장치를 둬야 한다는 교육부 지침과 일치한다고 답했다. 각 기관은 AI 사용 가능 여부와 방법을 학생에게 명확히 안내하고, 무단 AI 사용 의심 사례를 포함한 평가·징계 결과 이의제기 절차를 두며, 징계 전 학생에게 답변 기회를 준다. 탐지 도구의 가치는 각 기관이 판단하며, 사용하더라도 탐지 점수만으로 부정행위가 결정되지 않는다. 교육자는 과제를 검토하고 학생과 면담하며 필요 시 초안 등 학습 과정 증거를 요청하고, 최종 채점에 책임을 진다.',
+    whyItMatters: '教育部确认高等学府不以 AI 检测分数单独认定学术不端，最终评分由教育工作者负责',
+    whyItMattersEn:
+      'MOE confirmed that at IHLs AI detection scores alone do not determine academic misconduct, and educators remain responsible for the final grade.',
+    whyItMattersJa:
+      '教育省は、高等教育機関ではAI検出スコアだけで学術不正を認定せず、最終評価は教育者が責任を負うと確認',
+    whyItMattersKo:
+      '교육부는 고등교육기관에서 AI 탐지 점수만으로 학업 부정행위를 판정하지 않으며 최종 채점은 교육자가 책임진다고 확인',
+    keyPoints: [
+      '所有高等学府均有管理 AI 用于评估和学业的政策，符合教育部“AI 应辅助学习、设护栏维护学术诚信”的指导',
+      '学府会清楚告知学生各项评估和作业是否可以以及如何使用 AI',
+      '学府设有申诉程序，涵盖涉嫌未经授权使用 AI 的个案，学生在受纪律处分前有机会回应',
+      '各学府自行评估 AI 检测工具是否有价值；若使用，检测分数本身不决定是否构成学术不端',
+      '涉嫌不端时，教育工作者审阅作业、与学生沟通，必要时要求提供草稿或早期作业等学习过程证据，最终评分由教育工作者负责',
+    ],
+    keyPointsEn: [
+      'All IHLs have policies governing AI use in assessment and academic work, aligned with MOE guidance that AI should support learning and guardrails should uphold academic integrity',
+      'IHLs clearly inform students whether and how AI may be used for each assessment and assignment',
+      'IHLs have appeal processes covering suspected unauthorised AI use, and students can respond to allegations before disciplinary action',
+      'Each IHL assesses whether AI detection tools add value; where used, detection scores alone do not determine academic misconduct',
+      'In suspected cases educators review the work, engage the student and may request drafts or earlier work as evidence of learning, and remain responsible for the final grade',
+    ],
+    keyPointsJa: [
+      'すべての高等教育機関が評価や学業でのAI使用に関する方針を持ち、「AIは学習を支えるべきで、学術的誠実性を守るガードレールを設ける」という教育省の指針に沿っている',
+      '各機関は、評価や課題ごとにAIを使用してよいか、どう使用してよいかを学生に明確に伝えている',
+      '無許可のAI使用が疑われるケースを含む不服申立て手続きがあり、学生は懲戒処分の前に回答する機会を与えられる',
+      'AI検出ツールの価値は各機関が判断し、使用する場合も検出スコアだけで学術不正は決まらない',
+      '不正が疑われる場合、教育者は成果物を確認し、学生と対話し、必要に応じて下書きや以前の成果物など学習過程の証拠を求め、最終的な成績評価に責任を負う',
+    ],
+    keyPointsKo: [
+      "모든 고등교육기관은 평가와 학업에서의 AI 사용 정책을 갖추고 있으며, 이는 'AI는 학습을 뒷받침해야 하고 학업 윤리를 지키는 안전장치를 둬야 한다'는 교육부 지침과 일치한다",
+      '각 기관은 평가와 과제마다 AI 사용 가능 여부와 방법을 학생에게 명확히 안내한다',
+      '무단 AI 사용 의심 사례를 포함한 이의제기 절차가 있으며, 학생은 징계 조치 전에 답변할 기회를 받는다',
+      'AI 탐지 도구의 가치는 각 기관이 판단하며, 사용하더라도 탐지 점수만으로 학업 부정행위가 결정되지 않는다',
+      '부정행위가 의심되면 교육자가 과제를 검토하고 학생과 면담하며 필요 시 초안이나 이전 과제 같은 학습 과정 증거를 요청하고, 최종 채점에 책임을 진다',
+    ],
+    governmentStance:
+      '政府认为各高等学府已有 AI 使用政策、告知机制和申诉程序，检测分数不会单独决定学术不端。部长没有承诺制定跨学府的统一 AI 检测工具指导原则，而是把是否使用检测工具交由各学府自行评估。',
+    governmentStanceEn:
+      'The Government considers that IHLs already have AI-use policies, disclosure practices and appeal processes, and that detection scores never decide misconduct on their own. The Minister did not commit to common cross-IHL guidelines on AI detection tools, leaving each institution to decide whether to use them.',
+    governmentStanceJa:
+      '政府は、各高等教育機関にはすでにAI使用方針、周知の仕組み、不服申立て手続きがあり、検出スコアだけで不正が決まることはないとしている。大臣は機関横断の共通ガイドライン策定は約束せず、検出ツールを使うかどうかは各機関の判断に委ねた。',
+    governmentStanceKo:
+      '정부는 각 고등교육기관에 이미 AI 사용 정책, 안내 체계, 이의제기 절차가 있으며 탐지 점수만으로 부정행위가 결정되지 않는다고 본다. 장관은 기관 공통의 AI 탐지 도구 지침 마련은 약속하지 않았고, 도구 사용 여부는 각 기관의 판단에 맡겼다.',
+    oppositionStance:
+      '提问议员杨益财担心各高等学府使用 AI 写作检测工具缺乏统一规范，学生可能不知道工具如何使用，并仅凭检测分数受罚。',
+    oppositionStanceEn:
+      'Questioner Mr Melvin Yong worries that IHLs use AI writing detection tools without common rules, so students may not know how the tools are applied and could be penalised on detection scores alone.',
+    oppositionStanceJa:
+      '質問者のMelvin Yong Yik Chye議員は、高等教育機関がAI文章検出ツールを共通ルールなしに使っており、学生がツールの使われ方を知らないまま検出スコアだけで処分されかねないと懸念している。',
+    oppositionStanceKo:
+      '질의자 Melvin Yong Yik Chye 의원은 고등교육기관들이 공통 규칙 없이 AI 작문 탐지 도구를 사용해 학생이 도구 사용 방식을 모른 채 탐지 점수만으로 불이익을 받을 수 있다고 우려한다.',
+    controversyLevel: 2,
+    policySignal:
+      '教育部对 AI 检测工具采取“学府自主、人工判断兜底”的分权做法，而非统一规则；三名议员就同一课题提问，说明 AI 误判引发的学生公平问题已进入国会视野，但政策暂无集中化迹象。',
+    policySignalEn:
+      'MOE is taking a decentralised line on AI detection tools, leaving choices to each institution with human judgement as the backstop rather than setting common rules. Three MPs filing questions on the same topic shows fairness concerns over AI misdetection have reached Parliament, but there is no sign yet of centralised policy.',
+    policySignalJa:
+      '教育省はAI検出ツールについて、共通ルールを設けるのではなく「各機関の自主判断と人による判断での歯止め」という分権的な対応を取っている。同じテーマで3人の議員が質問したことは、AIの誤判定をめぐる学生の公平性の問題が国会の視野に入ったことを示すが、政策を一元化する兆しはまだない。',
+    policySignalKo:
+      "교육부는 AI 탐지 도구에 대해 공통 규칙을 두기보다 '기관 자율과 사람의 판단이라는 안전판'이라는 분권적 방식을 택하고 있다. 같은 주제로 의원 3명이 질문한 것은 AI 오판에 따른 학생 공정성 문제가 국회의 관심사가 되었음을 보여 주지만, 정책을 일원화할 조짐은 아직 없다.",
+    notableQuote: '在使用这类工具的情况下，检测分数本身并不决定是否构成学术不端。',
+    notableQuoteEn: 'Where such tools are used, detection scores alone do not determine academic misconduct.',
+    notableQuoteJa: 'こうしたツールを使用する場合でも、検出スコアだけで学術不正が決まることはありません。',
+    notableQuoteKo: '이러한 도구를 사용하는 경우에도 탐지 점수만으로 학업 부정행위가 결정되지는 않습니다.',
+    transcriptEn:
+      "Mr Melvin Yong Yik Chye asked the Minister for Education whether the Ministry intends to establish common guidelines for Institutes of Higher Learning on the use of AI writing detection tools, and whether such guidelines would include safeguards so that students are informed of how the tools are used and are not penalised solely on the basis of AI detection scores. Mr Desmond Lee replied in writing, also covering related questions from Ms Lee Hui Ying and Ms Cassandra Lee. He said all IHLs have policies governing AI use in assessment and academic work, aligned with MOE guidance that AI use should support learning and that guardrails uphold academic integrity. IHLs clearly inform students whether and how AI may be used, as requirements vary across assessments and assignments. They also have established processes for students to appeal assessment and disciplinary outcomes, including suspected unauthorised AI use, and students can respond to any allegation before disciplinary action is taken. IHLs assess whether AI detection tools add value. Where such tools are used, detection scores alone do not determine academic misconduct. Educators review the student's work, engage the student and, where necessary, request evidence of the learning process such as drafts or earlier work. Educators remain responsible for the final grading decision.",
+    sourceUrl: 'https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=written-answer-na-24850',
+    addedAt: '2026-09-26',
+  },
+  {
+    id: 'written-answer-na-24842',
+    titleEn: 'Usage and Adoption of Voice-to-text, Speech Recognition and Multimodal AI Tools',
+    title: '语音转文字、语音识别与多模态 AI 工具的使用与普及情况',
+    titleKo: '음성-텍스트 변환, 음성 인식 및 멀티모달 AI 도구의 이용과 보급 현황',
+    titleJa: '音声テキスト変換・音声認識・マルチモーダルAIツールの利用と普及状況',
+    date: '2026-09-10',
+    parliament: '15',
+    type: 'Written Answers to Questions',
+    speakers: ['Mr Edward Chia Bing Hui', 'Mrs Josephine Teo'],
+    personIds: [],
+    topicIds: [],
+    relatedPolicyIds: [],
+    relatedLeverNumbers: [],
+    relatedTimelineYears: [],
+    relatedPostSlugs: [],
+    topics: ['AI in Public Sector', 'AI Infrastructure & Research'],
+    summary:
+      '议员谢秉辉（Mr Edward Chia Bing Hui）书面询问数字发展与信息部长：政府是否追踪年长者使用数字政府和社区服务时，对语音转文字、语音识别等多模态 AI 工具（包括 SEA-LION、MERaLiON 等本地模型）的采用率及目前比率。数字发展与信息部长杨莉明（Mrs Josephine Teo）书面答复：由于这些功能分布在多个平台、服务和设备上，政府并未集中追踪年长者采用率。政府支持开发 SEA-LION 和 MERaLiON，以建立贴合新加坡和东南亚语言文化的 AI 能力，并在能改善可及性和服务交付之处支持使用；例如 MERaLiON 的多语种语音能力正驱动主要服务年长者的社会服务机构 Lions Befrienders 的 AI 语音助手，帮助照护者更好了解年长者需要。',
+    summaryEn:
+      "Mr Edward Chia Bing Hui asked the Minister for Digital Development and Information whether the Government tracks usage and adoption rates of voice-to-text, speech recognition and multimodal AI tools, including Singapore-developed models such as SEA-LION and MERaLiON, among seniors accessing digital Government and community services, and if so, what the rates are. Minister Josephine Teo replied that the Government does not centrally track these adoption rates among seniors, as the capabilities are deployed across multiple platforms, services and devices. The Government has supported the development of SEA-LION and MERaLiON to build AI capabilities that better reflect Singapore's and Southeast Asia's linguistic and cultural context, and supports their use where they improve accessibility and service delivery. For example, MERaLiON's empathetic and multilingual speech capabilities power the AI voice assistants of Lions Befrienders, a Social Service Agency primarily serving seniors, helping caregivers understand seniors' needs better and provide more timely assistance.",
+    summaryJa:
+      'Edward Chia Bing Hui 議員は、デジタル発展・情報大臣に対し、デジタル行政サービスや地域サービスを利用する高齢者の間で、SEA-LIONやMERaLiONなどシンガポールで開発されたモデルを含む音声テキスト変換、音声認識、マルチモーダルAIツールの利用率と普及率を政府が追跡しているか、しているなら現在の比率はどうかを書面で質問した。ジョセフィン・テオ（Mrs Josephine Teo）デジタル発展・情報大臣は書面で、これらの機能は複数のプラットフォーム、サービス、機器にわたって導入されているため、高齢者の普及率は一元的に追跡していないと答えた。政府はシンガポールと東南アジアの言語的・文化的文脈をより良く反映するAI能力を築くためSEA-LIONとMERaLiONの開発を支援し、アクセシビリティとサービス提供を改善できる場面での活用を支援している。例えばMERaLiONの共感的で多言語対応の音声機能は、主に高齢者を支える社会サービス機関Lions BefriendersのAI音声アシスタントに使われ、介護者が高齢者のニーズをよりよく理解し、よりタイムリーに支援できるようにしているとした。',
+    summaryKo:
+      'Edward Chia Bing Hui 의원은 디지털개발정보부 장관에게 디지털 정부 서비스와 지역사회 서비스를 이용하는 노년층 사이에서 SEA-LION, MERaLiON 등 싱가포르에서 개발한 모델을 포함한 음성-텍스트 변환, 음성 인식, 멀티모달 AI 도구의 이용률과 보급률을 정부가 추적하는지, 그렇다면 현재 비율은 어떠한지 서면 질의했다. Josephine Teo 디지털개발정보부 장관은 서면 답변에서 이러한 기능이 여러 플랫폼, 서비스, 기기에 걸쳐 배포되어 있어 노년층의 보급률을 중앙에서 추적하지 않는다고 밝혔다. 정부는 싱가포르와 동남아시아의 언어적·문화적 맥락을 더 잘 반영하는 AI 역량을 구축하기 위해 SEA-LION과 MERaLiON의 개발을 지원했으며, 접근성과 서비스 제공을 개선할 수 있는 곳에서 활용을 지원한다. 예를 들어 MERaLiON의 공감형 다국어 음성 기능은 주로 노년층을 돕는 사회복지기관 Lions Befrienders의 AI 음성 비서에 쓰여, 돌봄 제공자가 노년층의 필요를 더 잘 이해하고 더 시의적절하게 돕도록 하고 있다고 했다.',
+    whyItMatters: '政府不集中追踪年长者使用语音与多模态 AI 工具的比率，MERaLiON 已用于 Lions Befrienders 的语音助手',
+    whyItMattersEn:
+      "The Government does not centrally track seniors' use of voice and multimodal AI tools, though MERaLiON already powers Lions Befrienders' AI voice assistants.",
+    whyItMattersJa:
+      '政府は高齢者による音声・マルチモーダルAIツールの利用率を一元的に追跡していないが、MERaLiONはすでにLions Befriendersの音声アシスタントに使われている',
+    whyItMattersKo:
+      '정부는 노년층의 음성·멀티모달 AI 도구 이용률을 중앙에서 추적하지 않지만, MERaLiON은 이미 Lions Befrienders의 음성 비서에 쓰이고 있다',
+    keyPoints: [
+      '由于相关功能部署在多个平台、服务和设备上，政府并未集中追踪年长者对语音转文字、语音识别和多模态 AI 工具的采用率。',
+      '政府支持开发 SEA-LION 和 MERaLiON，以建立更能反映新加坡和东南亚语言与文化背景的 AI 能力。',
+      '政府在这些模型能改善可及性和服务交付、提升包括年长者在内的新加坡人生活之处，支持其使用。',
+      'MERaLiON 具同理心的多语种语音能力正用于驱动社会服务机构 Lions Befrienders 的 AI 语音助手，与年长者进行更自然的对话。',
+      '这帮助照护者更好地了解年长者的需要，并提供更及时的协助。',
+    ],
+    keyPointsEn: [
+      "Because the capabilities are deployed across multiple platforms, services and devices, the Government does not centrally track seniors' adoption rates of voice-to-text, speech recognition and multimodal AI tools.",
+      "The Government has supported the development of SEA-LION and MERaLiON to build AI capabilities that better reflect Singapore's and Southeast Asia's linguistic and cultural context.",
+      'The Government supports their use where they can improve accessibility and service delivery to enhance the lives of Singaporeans, including seniors.',
+      "MERaLiON's empathetic and multilingual speech capabilities are being used to power the AI voice assistants of Social Service Agency Lions Befrienders, engaging seniors in more natural conversations.",
+      "This helps caregivers understand seniors' needs better and provide more timely assistance.",
+    ],
+    keyPointsJa: [
+      '機能が複数のプラットフォーム、サービス、機器にわたって導入されているため、政府は高齢者による音声テキスト変換、音声認識、マルチモーダルAIツールの普及率を一元的に追跡していない。',
+      '政府は、シンガポールと東南アジアの言語的・文化的文脈をより良く反映するAI能力を築くため、SEA-LIONとMERaLiONの開発を支援してきた。',
+      '政府は、高齢者を含むシンガポール国民の生活向上に向け、アクセシビリティとサービス提供を改善できる場面でのこれらの活用を支援している。',
+      'MERaLiONの共感的で多言語対応の音声機能は、社会サービス機関Lions BefriendersのAI音声アシスタントに使われ、高齢者とより自然な会話ができるようにしている。',
+      'これにより、介護者は高齢者のニーズをよりよく理解し、よりタイムリーな支援を提供できる。',
+    ],
+    keyPointsKo: [
+      '기능이 여러 플랫폼, 서비스, 기기에 걸쳐 배포되어 있어 정부는 노년층의 음성-텍스트 변환, 음성 인식, 멀티모달 AI 도구 보급률을 중앙에서 추적하지 않는다.',
+      '정부는 싱가포르와 동남아시아의 언어적·문화적 맥락을 더 잘 반영하는 AI 역량을 구축하기 위해 SEA-LION과 MERaLiON의 개발을 지원해 왔다.',
+      '정부는 노년층을 포함한 싱가포르 국민의 삶을 향상시키기 위해 접근성과 서비스 제공을 개선할 수 있는 곳에서 이들의 활용을 지원한다.',
+      'MERaLiON의 공감형 다국어 음성 기능은 사회복지기관 Lions Befrienders의 AI 음성 비서에 활용되어 노년층과 더 자연스러운 대화를 나누도록 하고 있다.',
+      '이는 돌봄 제공자가 노년층의 필요를 더 잘 이해하고 더 시의적절한 도움을 제공하는 데 도움이 된다.',
+    ],
+    governmentStance:
+      '政府表示并未集中追踪年长者使用语音及多模态 AI 工具的比率，因此没有提供相关数据。政府的做法是支持 SEA-LION 和 MERaLiON 在能改善可及性和服务交付的场景中应用，并以 Lions Befrienders 的 AI 语音助手为例。',
+    governmentStanceEn:
+      "The Government said it does not centrally track seniors' adoption of voice and multimodal AI tools, so it provided no figures. Its approach is to support the use of SEA-LION and MERaLiON where they improve accessibility and service delivery, citing Lions Befrienders' AI voice assistants as an example.",
+    governmentStanceJa:
+      '政府は高齢者による音声・マルチモーダルAIツールの普及率を一元的に追跡していないとして、数値を示さなかった。アクセシビリティとサービス提供を改善できる場面でSEA-LIONとMERaLiONの活用を支援する方針で、Lions BefriendersのAI音声アシスタントを例に挙げた。',
+    governmentStanceKo:
+      '정부는 노년층의 음성·멀티모달 AI 도구 보급률을 중앙에서 추적하지 않는다며 수치를 제시하지 않았다. 접근성과 서비스 제공을 개선할 수 있는 곳에서 SEA-LION과 MERaLiON의 활용을 지원한다는 방침이며, Lions Befrienders의 AI 음성 비서를 예로 들었다.',
+    oppositionStance:
+      '提问议员谢秉辉关注政府是否掌握年长者在使用数字政府和社区服务时，采用语音及多模态 AI 工具（包括本地开发模型）的情况与比率。',
+    oppositionStanceEn:
+      'Questioner Mr Edward Chia asked whether the Government knows how far seniors using digital Government and community services have adopted voice and multimodal AI tools, including locally developed models, and at what rates.',
+    oppositionStanceJa:
+      '質問者のEdward Chia Bing Hui 議員は、デジタル行政サービスや地域サービスを使う高齢者が、国産モデルを含む音声・マルチモーダルAIツールをどの程度利用しているか、政府がその比率を把握しているかを問うた。',
+    oppositionStanceKo:
+      '질의자 Edward Chia Bing Hui 의원은 디지털 정부 서비스와 지역사회 서비스를 이용하는 노년층이 국산 모델을 포함한 음성·멀티모달 AI 도구를 얼마나 이용하는지, 정부가 그 비율을 파악하고 있는지 물었다.',
+    controversyLevel: 1,
+    policySignal:
+      '本土模型 SEA-LION 与 MERaLiON 正从研发走向社会服务场景，但政府没有统一的采用率指标，说明其 AI 普惠政策目前更重示范应用，而非系统性的效果衡量。',
+    policySignalEn:
+      "Home-grown models SEA-LION and MERaLiON are moving from research into social service settings, but the absence of any central adoption metric shows that Singapore's inclusive-AI policy currently leans on showcase deployments rather than systematic measurement of outcomes.",
+    policySignalJa:
+      '国産モデルのSEA-LIONとMERaLiONは研究開発から社会サービスの現場へと移りつつあるが、統一的な普及率の指標はなく、シンガポールの包摂的AI政策が現時点では体系的な効果測定よりも先行事例の展開に重きを置いていることがうかがえる。',
+    policySignalKo:
+      '국산 모델 SEA-LION과 MERaLiON은 연구개발에서 사회복지 현장으로 옮겨가고 있지만 통일된 보급률 지표가 없다는 점은, 싱가포르의 포용적 AI 정책이 현재 체계적인 성과 측정보다 시범 적용에 무게를 두고 있음을 보여준다.',
+    notableQuote: '这有助照护者更好地了解年长者的需要，并提供更及时的协助。',
+    notableQuoteEn: "This helps caregivers understand seniors' needs better and provide more timely assistance.",
+    notableQuoteJa: 'これにより、介護者は高齢者のニーズをよりよく理解し、よりタイムリーな支援を提供できます。',
+    notableQuoteKo: '이는 돌봄 제공자가 노년층의 필요를 더 잘 이해하고 더 시의적절한 도움을 제공하는 데 도움이 됩니다.',
+    transcriptEn:
+      "Mr Edward Chia Bing Hui asked the Minister for Digital Development and Information whether the Government tracks the usage and adoption rates of voice-to-text, speech recognition and multimodal AI tools among seniors accessing digital Government and community services, including Singapore-developed models such as the Southeast Asian Languages in One Network (SEA-LION) and Multimodal Empathetic Reasoning and Learning in One Network (MERaLiON), and if so, what the current rates are. Mrs Josephine Teo replied that the Government does not centrally track the adoption rates of these tools among seniors, as the capabilities are deployed across multiple platforms, services and devices. She said the Government has supported the development of SEA-LION and MERaLiON to build AI capabilities that better reflect Singapore's and Southeast Asia's linguistic and cultural context, and supports their use where they can improve accessibility and service delivery to enhance the lives of Singaporeans, including seniors. As an example, MERaLiON's empathetic and multilingual speech capabilities are being used to power the AI voice assistants of Lions Befrienders, a Social Service Agency primarily serving seniors, so that they can engage seniors in more natural conversations. This helps caregivers understand seniors' needs better and provide more timely assistance. No adoption figures were provided.",
+    sourceUrl: 'https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=written-answer-na-24842',
+    addedAt: '2026-09-26',
+  },
+  {
+    id: 'written-answer-24801',
+    titleEn: 'Funding for AI-Generated Singapore National Day Films and Policy on Supporting Gen-AI Creative Work',
+    title: 'AI 生成的新加坡国庆电影获资助情况及政府资助生成式 AI 创作的政策',
+    titleKo: 'AI로 생성된 싱가포르 국경일 영화 지원 여부와 생성형 AI 창작 지원 정책',
+    titleJa: 'AI生成のシンガポール・ナショナルデー映画への資金提供と生成AI創作支援の方針',
+    date: '2026-09-10',
+    parliament: '15',
+    type: 'Written Answers to Questions',
+    speakers: ['Mr Fadli Fawzi', 'Mr David Neo'],
+    personIds: [],
+    topicIds: [],
+    relatedPolicyIds: [],
+    relatedLeverNumbers: [],
+    relatedTimelineYears: [],
+    relatedPostSlugs: [],
+    topics: ['AI Economy & Industry'],
+    summary:
+      '工人党议员莫哈默法理（Mr Fadli Fawzi）书面询问文化、社区及青年部长：国家艺术理事会或任何其他政府机构是否资助了在国庆日首映的两部利用 AI 制作的新加坡电影，以及政府对资助使用生成式 AI 的创意作品持什么立场。文化、社区及青年部梁振伟（Mr David Neo）答复：政府没有为 2026 年国庆日首映的两部新加坡 AI 生成电影《Trace Project》和《Bersama Majulah》提供任何资助；使用生成式 AI 本身并不决定一个项目能否获得政府资助，各资助机构会按照各自资助计划的目标和评估标准来评估项目。',
+    summaryEn:
+      'Workers\' Party MP Mr Fadli Fawzi asked the Minister for Culture, Community and Youth in a written question whether the National Arts Council or any other Government agency funded the two Singapore-made films created using AI that premiered on National Day, and what the Government\'s position is on financially supporting creative work that uses generative AI. Mr David Neo replied for the Ministry of Culture, Community and Youth that no Government funding was provided for "Trace Project" and "Bersama Majulah", the two AI-generated films that premiered on National Day 2026. The use of generative AI does not, in itself, determine whether a project may receive Government funding; funding agencies assess projects against the objectives and assessment criteria of their respective schemes.',
+    summaryJa:
+      '労働者党のFadli Fawzi議員は、文化・コミュニティ・青年大臣に対する書面質問で、ナショナルデーに初公開されたAIを用いたシンガポール製映画2本に国家芸術評議会またはその他の政府機関が資金を提供したか、また生成AIを用いた創作活動への資金支援について政府の立場を尋ねた。文化・コミュニティ・青年省のDavid Neo氏は、2026年のナショナルデーに初公開されたAI生成映画「Trace Project」と「Bersama Majulah」には政府資金は提供されていないと答弁した。生成AIを使用していること自体がプロジェクトへの政府資金提供の可否を決めるわけではなく、資金提供機関はそれぞれの制度の目的と評価基準に照らしてプロジェクトを評価するとした。',
+    summaryKo:
+      "노동자당 Fadli Fawzi 의원은 문화공동체청년부 장관에게 서면 질의로, 국경일에 초연된 AI 활용 싱가포르 영화 두 편에 국가예술위원회나 기타 정부 기관이 자금을 지원했는지, 그리고 생성형 AI를 활용한 창작 작업에 대한 재정 지원에 관한 정부 입장은 무엇인지 물었다. 문화공동체청년부의 David Neo는 2026년 국경일에 초연된 AI 생성 영화 'Trace Project'와 'Bersama Majulah'에는 정부 자금이 지원되지 않았다고 답했다. 생성형 AI 사용 자체가 프로젝트의 정부 자금 지원 여부를 결정하지는 않으며, 자금 지원 기관은 각 제도의 목표와 평가 기준에 따라 프로젝트를 평가한다고 했다.",
+    whyItMatters: '政府未资助 2026 年国庆日首映的两部 AI 生成电影，使用生成式 AI 本身不决定能否获得资助',
+    whyItMattersEn:
+      'No Government funding went into the two AI-generated films that premiered on National Day 2026, and using generative AI does not in itself decide whether a project gets funded.',
+    whyItMattersJa:
+      '2026年ナショナルデー初公開のAI生成映画2本に政府資金はなく、生成AIの使用自体は助成の可否を左右しない',
+    whyItMattersKo:
+      '2026년 국경일 초연 AI 생성 영화 두 편에 정부 자금은 없었으며, 생성형 AI 사용 자체는 지원 여부를 좌우하지 않음',
+    keyPoints: [
+      '政府没有为 2026 年国庆日首映的 AI 生成电影《Trace Project》和《Bersama Majulah》提供资助',
+      '使用生成式 AI 本身并不决定一个项目能否获得政府资助',
+      '资助机构根据各自资助计划的目标和评估标准评估项目',
+    ],
+    keyPointsEn: [
+      'No Government funding was provided for "Trace Project" and "Bersama Majulah", the two AI-generated films that premiered on National Day 2026.',
+      'The use of generative AI does not, in itself, determine whether a project may receive Government funding.',
+      'Funding agencies assess projects against the objectives and assessment criteria of their respective funding schemes.',
+    ],
+    keyPointsJa: [
+      '2026年のナショナルデーに初公開されたAI生成映画「Trace Project」と「Bersama Majulah」には政府資金は提供されていない',
+      '生成AIの使用自体は、プロジェクトが政府資金を受けられるかどうかを決めるものではない',
+      '資金提供機関は、それぞれの資金制度の目的と評価基準に照らしてプロジェクトを評価する',
+    ],
+    keyPointsKo: [
+      "2026년 국경일에 초연된 AI 생성 영화 'Trace Project'와 'Bersama Majulah'에는 정부 자금이 지원되지 않음",
+      '생성형 AI 사용 자체가 프로젝트의 정부 자금 지원 여부를 결정하지는 않음',
+      '자금 지원 기관은 각 지원 제도의 목표와 평가 기준에 따라 프로젝트를 평가함',
+    ],
+    governmentStance:
+      '政府对使用生成式 AI 的创意作品采取技术中立立场：是否使用 AI 本身不决定能否获得资助，项目按各资助计划的目标和评估标准审核。政府确认未资助两部国庆日 AI 电影，也没有提出专门针对生成式 AI 创作的资助政策。',
+    governmentStanceEn:
+      "The Government takes a technology-neutral stance on creative work using generative AI: using AI does not in itself decide funding, and projects are judged against each scheme's objectives and criteria. It confirmed it did not fund the two National Day AI films and set out no funding policy specific to generative AI work.",
+    governmentStanceJa:
+      '政府は生成AIを用いた創作活動について技術中立の立場をとり、AIの使用自体は資金提供の可否を決めず、各制度の目的と基準に照らして審査するとした。ナショナルデーのAI映画2本に資金を出していないことを確認し、生成AI創作に特化した資金支援方針は示さなかった。',
+    governmentStanceKo:
+      '정부는 생성형 AI를 활용한 창작 작업에 대해 기술 중립적 입장을 취하며, AI 사용 자체는 지원 여부를 결정하지 않고 각 제도의 목표와 기준에 따라 심사한다고 했다. 국경일 AI 영화 두 편에 자금을 지원하지 않았음을 확인했으며, 생성형 AI 창작에 특화된 지원 정책은 제시하지 않았다.',
+    oppositionStance:
+      '提问议员莫哈默法理（工人党）关注政府是否为国庆日 AI 生成电影出资，并希望政府说明对资助使用生成式 AI 的创意作品的立场。',
+    oppositionStanceEn:
+      "Questioner Mr Fadli Fawzi (Workers' Party) wanted to know whether public money went into the National Day AI-generated films and asked the Government to state its position on funding creative work that uses generative AI.",
+    oppositionStanceJa:
+      '質問者のFadli Fawzi議員（労働者党）は、ナショナルデーのAI生成映画に公的資金が使われたかを確かめ、生成AIを用いた創作活動への資金支援に関する政府の立場の説明を求めた。',
+    oppositionStanceKo:
+      '질의자 Fadli Fawzi 의원(노동자당)은 국경일 AI 생성 영화에 공적 자금이 투입되었는지 확인하고, 생성형 AI를 활용한 창작 작업 지원에 관한 정부 입장을 밝힐 것을 요구했다.',
+    controversyLevel: 2,
+    policySignal:
+      '新加坡在文化资助上对生成式 AI 保持技术中立，既不设专门扶持也不设门槛限制，意味着 AI 创作能否获资助将取决于各计划的既有标准，而非单独的 AI 政策。',
+    policySignalEn:
+      "Singapore is keeping cultural funding technology-neutral towards generative AI, with neither dedicated support nor a bar, so whether AI-made work is funded will depend on each scheme's existing criteria rather than a separate AI policy.",
+    policySignalJa:
+      'シンガポールは文化分野の資金支援で生成AIに対して技術中立を保ち、専用の支援も排除も設けない。AIを用いた作品が支援されるかどうかは、独自のAI政策ではなく各制度の既存基準に委ねられることになる。',
+    policySignalKo:
+      '싱가포르는 문화 지원에서 생성형 AI에 대해 기술 중립을 유지하며 전용 지원도 배제도 두지 않는다. AI 활용 작품의 지원 여부는 별도의 AI 정책이 아니라 각 제도의 기존 기준에 달려 있게 된다.',
+    notableQuote: '使用生成式 AI 本身并不决定一个项目能否获得政府资助。',
+    notableQuoteEn:
+      'The use of generative AI does not, in itself, determine whether a project may receive Government funding.',
+    notableQuoteJa:
+      '生成AIを使用していること自体が、プロジェクトが政府の資金提供を受けられるかどうかを決めるわけではありません。',
+    notableQuoteKo: '생성형 AI 사용 자체가 프로젝트의 정부 자금 지원 여부를 결정하지는 않습니다.',
+    transcriptEn:
+      'Mr Fadli Fawzi asked the Minister for Culture, Community and Youth whether any funding was provided by the National Arts Council or any other Government agency for the two Singapore-made films created using AI that premiered on National Day, and what the Government\'s position is on providing financial support for creative work that uses generative AI. In a written reply, Mr David Neo said that no funding from the Government was provided for "Trace Project" and "Bersama Majulah", the two Singapore-made AI-generated films that premiered on National Day 2026. On the broader question of policy, he said that the use of generative AI does not, in itself, determine whether a project may receive Government funding. Instead, funding agencies assess projects against the objectives and assessment criteria of their respective funding schemes. The reply therefore confirmed that neither the National Arts Council nor any other Government agency funded the two National Day films. It also set out a position under which the use of generative AI is not by itself a factor that decides funding either way, with creative projects judged on the objectives and criteria of the particular scheme they apply to.',
+    sourceUrl: 'https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=written-answer-24801',
+    addedAt: '2026-09-26',
+  },
+  {
+    id: 'written-answer-24771',
+    titleEn:
+      'Offering Computing in Secondary Schools and Providing Institutional Support and Dedicated Curriculum and Pedagogical Resources',
+    title: '中学开设电脑科及配套机构支持与专门课程教学资源',
+    titleKo: '중등학교 컴퓨팅 과목 개설과 제도적 지원 및 전용 교육과정·교수법 자원 제공',
+    titleJa: '中学校でのコンピューティング科目の開設と、組織的支援・専用カリキュラム・教授法リソースの提供',
+    date: '2026-09-10',
+    parliament: '15',
+    type: 'Written Answers to Questions',
+    speakers: ['Mr Kenneth Tiong Boon Kiat', 'Mr Desmond Lee'],
+    personIds: [],
+    topicIds: [],
+    relatedPolicyIds: [],
+    relatedLeverNumbers: [],
+    relatedTimelineYears: [],
+    relatedPostSlugs: [],
+    topics: ['AI in Education'],
+    summary:
+      '工人党议员张文杰（Mr Kenneth Tiong Boon Kiat）书面询问教育部长：电脑科能否成为中学核心科目，自行开设与经中心化课程开设的学校各有多少，修读比例多少，能否设专门课程职位和特级教师，以及会否在中学高年级前开设。教育部长李智陞（Mr Desmond Lee）答复：教育部通过现有科目和“Code for Fun”等项目让全体学生具备基础数字与 AI 素养，并让有兴趣者深入修读电脑科；中学低年级学生通过数学学习计算思维；从 2026 年中三学生起可选修 G1、G2、G3 电脑科，教育部无计划在中学高年级前开设独立电脑科；逾 110 所中学的学生修读，其中逾 40 所学校学生在四个中心修读 G3，合计约占中三年级 13%；教育部设有专门课程专员和电脑科高级教师等。',
+    summaryEn:
+      "Workers' Party MP Mr Kenneth Tiong Boon Kiat asked the Minister for Education whether Computing can be a core secondary school subject, how many schools teach it in-house versus through the centre-based programme, what share of the cohort takes it, whether it can get its own Curriculum Planning and Development Division post and Master Teacher portfolio, and whether it will be offered before upper secondary. Minister Mr Desmond Lee replied that MOE builds foundational digital and AI literacy for all students through existing subjects and programmes such as Code for Fun, while letting interested students study Computing in depth. Lower secondary students learn computational thinking through mathematics. From the 2026 Secondary 3 cohort, G1, G2 and G3 Computing are electives, and MOE has no plans to introduce Computing as a standalone subject before upper secondary. Students from over 110 schools take Computing, including students from over 40 schools taking G3 at four centres, together about 13% of the Secondary 3 cohort. MOE has dedicated Computing curriculum officers, a senior specialist, and Senior and Lead Teachers for Computing.",
+    summaryJa:
+      '労働者党のKenneth Tiong Boon Kiat議員は教育大臣に書面で、コンピューティングを中学校の必修科目にできるか、校内で教える学校とセンター方式で教える学校の数、学年に占める履修者の割合、カリキュラム企画開発部の専任ポストやマスターティーチャーの担当分野を設けられるか、上級学年より前に開設するかを質問した。Desmond Lee教育大臣は、教育省は既存の教科や「Code for Fun」などのプログラムで全生徒に基礎的なデジタル・AIリテラシーを身につけさせ、関心のある生徒にはコンピューティングを深く学ぶ機会を提供していると答弁した。下級学年では数学を通じて計算論的思考を学ぶ。2026年の中学3年生からG1、G2、G3のコンピューティングを選択科目として履修でき、上級学年より前に独立科目として導入する計画はない。110校を超える中学校の生徒が履修し、うち40校超の生徒が4つのセンターでG3を履修しており、合計で中学3年生の約13%を占める。教育省にはコンピューティング専任のカリキュラム担当官と上級専門官1名、シニアティーチャーとリードティーチャーがいる。',
+    summaryKo:
+      "노동자당 Kenneth Tiong Boon Kiat 의원은 교육부 장관에게 서면으로 컴퓨팅을 중등학교 핵심 과목으로 할 수 있는지, 교내 운영 학교와 센터 기반 운영 학교가 각각 몇 곳인지, 학년 중 이수 비율은 얼마인지, 교육과정기획개발국 전담 직위와 수석교사 분야를 둘 수 있는지, 상급 학년 이전에 개설할지 질의했다. Desmond Lee 교육부 장관은 교육부가 기존 교과와 'Code for Fun' 같은 프로그램으로 모든 학생에게 기초 디지털·AI 리터러시를 기르고, 관심 있는 학생에게는 컴퓨팅을 깊이 공부할 기회를 준다고 답했다. 하급 학년 학생은 수학을 통해 컴퓨팅 사고력을 익힌다. 2026년 중등 3학년 코호트부터 G1, G2, G3 컴퓨팅을 선택 과목으로 이수할 수 있으며, 상급 학년 이전에 독립 과목으로 도입할 계획은 없다. 110곳이 넘는 중등학교 학생이 이수하고 있고, 그중 40곳 넘는 학교 학생이 4개 센터에서 G3를 이수하며, 합계 중등 3학년 코호트의 약 13%다. 교육부에는 컴퓨팅 전담 교육과정 담당관과 선임 전문가 1명, 선임교사와 선도교사가 있다.",
+    whyItMatters: '逾 110 所中学开设电脑科，但修读者仅约占中三年级 13%，教育部无意在中学高年级前开设',
+    whyItMattersEn:
+      'Students in over 110 secondary schools take Computing, yet they are only about 13% of the Secondary 3 cohort, and MOE has no plans to introduce it before upper secondary.',
+    whyItMattersJa:
+      '110校超の中学校でコンピューティングが履修されているが中学3年生の約13%にとどまり、教育省は上級学年より前の導入を予定していない',
+    whyItMattersKo:
+      '110곳 넘는 중등학교에서 컴퓨팅을 이수하지만 중등 3학년의 약 13%에 그치며, 교육부는 상급 학년 이전 도입 계획이 없다',
+    keyPoints: [
+      '教育部通过现有科目和“Code for Fun”等项目为全体学生打下数字与 AI 素养基础，同时让有兴趣的学生深入修读电脑科',
+      '中学低年级学生通过数学学习计算思维，国际基准研究显示新加坡学生计算思维能力强',
+      '从 2026 年中三学生起，中学高年级学生可按长处和兴趣选修 G1、G2、G3 电脑科；教育部无计划在中学高年级前开设独立电脑科',
+      '逾 110 所中学的学生修读电脑科，其中逾 40 所学校的学生在四个中心修读 G3，合计约占中三年级 13%',
+      '教育部设有专门的电脑科课程专员和一名高级专家，以及电脑科高级教师和主导教师',
+    ],
+    keyPointsEn: [
+      'MOE builds foundational digital and AI literacy for all students through existing subjects and programmes such as Code for Fun, while letting interested students study Computing in depth',
+      'Lower secondary students learn computational thinking through mathematics, and international benchmarking studies find them strong in it',
+      'From the 2026 Secondary 3 cohort, upper secondary students can take G1, G2 or G3 Computing as an elective; MOE has no plans to introduce Computing as a standalone subject before upper secondary',
+      'Students from over 110 secondary schools take Computing, including students from over 40 schools taking G3 at four centres, together about 13% of the Secondary 3 cohort',
+      'MOE has dedicated Computing curriculum officers and a senior specialist, as well as Senior Teachers and Lead Teachers for Computing',
+    ],
+    keyPointsJa: [
+      '教育省は既存の教科や「Code for Fun」などのプログラムで全生徒に基礎的なデジタル・AIリテラシーを身につけさせ、関心のある生徒にはコンピューティングを深く学ぶ機会を提供',
+      '下級学年の生徒は数学を通じて計算論的思考を学び、国際的なベンチマーク調査ではシンガポールの生徒はこの力に優れているとされる',
+      '2026年の中学3年生から上級学年の生徒はG1、G2、G3のコンピューティングを選択科目として履修でき、教育省は上級学年より前に独立科目として導入する計画はない',
+      '110校を超える中学校の生徒がコンピューティングを履修し、うち40校超の生徒が4つのセンターでG3を履修、合計で中学3年生の約13%',
+      '教育省にはコンピューティング専任のカリキュラム担当官と上級専門官1名のほか、シニアティーチャーとリードティーチャーがいる',
+    ],
+    keyPointsKo: [
+      "교육부는 기존 교과와 'Code for Fun' 같은 프로그램으로 모든 학생에게 기초 디지털·AI 리터러시를 기르고, 관심 있는 학생에게는 컴퓨팅을 깊이 공부할 기회를 준다",
+      '하급 학년 학생은 수학을 통해 컴퓨팅 사고력을 익히며, 국제 벤치마킹 연구에서 싱가포르 학생의 컴퓨팅 사고력이 뛰어난 것으로 나타났다',
+      '2026년 중등 3학년 코호트부터 상급 학년 학생은 G1, G2, G3 컴퓨팅을 선택 과목으로 이수할 수 있으며, 교육부는 상급 학년 이전에 독립 과목으로 도입할 계획이 없다',
+      '110곳이 넘는 중등학교 학생이 컴퓨팅을 이수하고, 그중 40곳 넘는 학교 학생이 4개 센터에서 G3를 이수하며, 합계 중등 3학년 코호트의 약 13%다',
+      '교육부에는 컴퓨팅 전담 교육과정 담당관과 선임 전문가 1명, 그리고 컴퓨팅 선임교사와 선도교사가 있다',
+    ],
+    governmentStance:
+      '政府坚持以现有科目普及数字与 AI 素养、电脑科作为中学高年级选修科目的做法，明确无计划在中学高年级前开设独立电脑科。对于把电脑科列为核心科目、设立专门课程职位和特级教师岗位的建议，部长未予采纳，只列出现有专员和教师配置，也只给出约数而非确切的学校数。',
+    governmentStanceEn:
+      'The Government keeps its approach of building digital and AI literacy through existing subjects, with Computing as an upper secondary elective, and has no plans for a standalone Computing subject before upper secondary. The Minister did not take up the proposals to make Computing a core subject or create a dedicated division post and Master Teacher portfolio, listing only existing officers and teachers, and gave approximate rather than exact school counts.',
+    governmentStanceJa:
+      '政府は既存の教科でデジタル・AIリテラシーを広め、コンピューティングを上級学年の選択科目とする方針を維持し、上級学年より前に独立科目とする計画はないと明言した。必修科目化や専任ポスト、マスターティーチャーの担当分野の新設という提案は採用せず、既存の担当官と教員の配置を挙げるにとどめ、学校数も正確な数ではなく概数を示した。',
+    governmentStanceKo:
+      '정부는 기존 교과로 디지털·AI 리터러시를 보급하고 컴퓨팅은 상급 학년 선택 과목으로 두는 방침을 유지하며, 상급 학년 이전 독립 과목 개설 계획은 없다고 밝혔다. 장관은 핵심 과목화나 전담 직위·수석교사 분야 신설 제안을 받아들이지 않고 기존 담당관과 교사 배치만 열거했으며, 학교 수도 정확한 수치가 아닌 대략적인 수치만 제시했다.',
+    oppositionStance:
+      '提问议员、工人党的张文杰认为电脑科应更早、更普遍地教授，希望将其升为核心科目，并在课程规划与发展司和特级教师体系中获得专门的机构支持。',
+    oppositionStanceEn:
+      "Questioner Mr Kenneth Tiong of the Workers' Party wants Computing taught earlier and more widely, as a core subject with dedicated institutional support in the Curriculum Planning and Development Division and the Master Teacher system.",
+    oppositionStanceJa:
+      '質問者で労働者党のKenneth Tiong Boon Kiat議員は、コンピューティングをより早く、より広く教えるべきだとし、必修科目に格上げしたうえで、カリキュラム企画開発部やマスターティーチャー制度での専任の組織的支援を求めた。',
+    oppositionStanceKo:
+      '질의자인 노동자당 Kenneth Tiong Boon Kiat 의원은 컴퓨팅을 더 일찍, 더 널리 가르쳐야 한다며 핵심 과목으로 격상하고 교육과정기획개발국과 수석교사 체계에서 전담 제도적 지원을 받기를 원한다.',
+    controversyLevel: 2,
+    policySignal:
+      '教育部把 AI 素养定位为“全体普及、少数深造”：普及靠跨科目渗透，电脑科仍是约 13% 学生的选修课，短期内不会下放到中学低年级，也不打算为其增设独立的机构编制。',
+    policySignalEn:
+      'MOE frames AI literacy as broad exposure for all and depth for a few: the broad layer runs through existing subjects, while Computing stays an elective for about 13% of students, with no move to lower secondary or new dedicated institutional posts in sight.',
+    policySignalJa:
+      '教育省はAIリテラシーを「全員に広く、一部に深く」と位置づけている。広く浸透させる部分は既存教科に組み込み、コンピューティングは生徒の約13%が履修する選択科目にとどまり、下級学年への拡大や専任の組織体制の新設は当面見込まれない。',
+    policySignalKo:
+      "교육부는 AI 리터러시를 '모두에게 넓게, 일부에게 깊게'로 설정하고 있다. 보편 교육은 기존 교과에 녹여 넣고, 컴퓨팅은 학생 약 13%가 이수하는 선택 과목으로 남으며, 하급 학년 확대나 전담 조직 신설은 당분간 없을 전망이다.",
+    notableQuote: '教育部没有计划在中学高年级之前开设独立的电脑科。',
+    notableQuoteEn: 'MOE has no plans to introduce Computing as a standalone subject before upper secondary level.',
+    notableQuoteJa: '教育省には、上級学年より前にコンピューティングを独立した科目として導入する計画はありません。',
+    notableQuoteKo: '교육부는 상급 학년 이전에 컴퓨팅을 독립 과목으로 도입할 계획이 없습니다.',
+    transcriptEn:
+      'Mr Kenneth Tiong Boon Kiat asked the Minister for Education whether Computing can be offered as a core subject in secondary schools; how many secondary schools teach Computing in-house and how many via the centre-based programme; what proportion of the cohort takes Computing; whether Computing can be given its own Curriculum Planning and Development Division post and Master Teacher portfolio; and whether it will become a subject before upper secondary. Mr Desmond Lee replied in writing that MOE aims to equip all students with foundational digital and AI literacy through existing subjects and programmes such as Code for Fun, while giving interested students opportunities to study Computing in greater depth. At lower secondary level, students pick up computational thinking through mathematics, and international benchmarking studies have found them strong in it. From the 2026 Secondary 3 cohort, upper secondary students can offer G1, G2 and G3 Computing as an elective, and MOE has no plans to introduce Computing as a standalone subject before upper secondary. Students from over 110 schools take Computing, including those from over 40 schools taking G3 at four centres; together they make up about 13% of the Secondary 3 cohort. MOE has dedicated Computing curriculum officers and a senior specialist, as well as Senior Teachers and Lead Teachers for Computing.',
+    sourceUrl: 'https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=written-answer-24771',
+    addedAt: '2026-09-26',
+  },
+  {
+    id: 'written-answer-24768',
+    titleEn:
+      'Government and Commercial Data Compromised in LiteLLM Supply Chain Attack and Measures to Prevent Recurrence',
+    title: 'LiteLLM 供应链攻击中受影响的政府与商业数据及防止再次发生的措施',
+    titleKo: 'LiteLLM 공급망 공격으로 침해된 정부·상업 데이터와 재발 방지 대책',
+    titleJa: 'LiteLLMサプライチェーン攻撃で侵害された政府・商業データと再発防止策',
+    date: '2026-09-10',
+    parliament: '15',
+    type: 'Written Answers to Questions',
+    speakers: ['Mr Gerald Giam Yean Song', 'Mrs Josephine Teo'],
+    personIds: [],
+    topicIds: [],
+    relatedPolicyIds: [],
+    relatedLeverNumbers: [],
+    relatedTimelineYears: [],
+    relatedPostSlugs: [],
+    topics: ['AI & National Security', 'AI in Public Sector'],
+    summary:
+      '工人党议员严燕松（Mr Gerald Giam Yean Song）书面询问数字发展与信息部长：LiteLLM 人工智能供应链攻击中，新加坡政府或商业实体哪些数据受损、采取了哪些补救行动、如何防止再次发生。数字发展与信息部长杨莉明（Mrs Josephine Teo）书面答复：LiteLLM 是广泛使用的开源 AI 软件，黑客用早前泄露中窃取的登录资料在软件更新中植入恶意代码。政府科技局（GovTech）迅速找出并通知受影响机构；攻击只攻破一个支持少数机构的用户账户，无证据显示任何政府数据被窃或受损。政府不完全掌握商业实体受影响情况，各公司应自行检查并作规定报告；新加坡计算机应急响应小组已发布通告。供应链攻击风险无法完全消除，政府将持续改进防范、检测与应对。',
+    summaryEn:
+      "Workers' Party MP Gerald Giam Yean Song asked the Minister for Digital Development and Information what Government or commercial data in Singapore was compromised in the AI supply chain attack on LiteLLM, what remedial actions were taken, and how a recurrence will be prevented. Minister Josephine Teo replied that LiteLLM is widely used open-source AI software, compromised by hackers who used login details stolen in an earlier breach to add malicious code to software updates. GovTech used scanning and detection tools to identify affected agencies and informed them quickly; only one user account, supporting a small number of agencies, was compromised. The agencies changed exposed login details and checked system records, and there is no evidence that any Government data, including personal data, was stolen or compromised. The Government does not have a complete picture of the impact on commercial entities; companies should check their own systems and make required reports, and SingCERT has published an advisory. Supply chain risks cannot be removed completely, but the Government will keep improving prevention, detection and response.",
+    summaryJa:
+      '労働者党のGerald Giam Yean Song 議員は、デジタル発展・情報大臣に対し、LiteLLMへのAIサプライチェーン攻撃でシンガポールの政府や商業事業者のどのデータが侵害されたか、どのような是正措置を取ったか、再発をどう防ぐかを書面で質問した。ジョセフィン・テオ（Mrs Josephine Teo）デジタル発展・情報大臣は書面で、LiteLLMは広く使われるオープンソースのAIソフトウェアで、ハッカーは以前の侵害で盗んだログイン情報を使ってソフトウェア更新に悪意あるコードを加えたと答えた。政府技術庁（GovTech）はスキャンと検知のツールで影響を受けた機関を特定して速やかに通知し、侵害されたのは少数の機関を支える一つのユーザーアカウントのみだった。各機関はログイン情報を変更しシステム記録を確認しており、個人データを含む政府データが盗まれた証拠はない。商業事業者への影響の全体像は把握しておらず、各企業が自社システムを確認し必要な報告を行うべきで、シンガポール・コンピューター緊急対応チームが注意喚起を公表した。リスクは完全には除けないが、防止・検知・対応を改善し続けるとした。',
+    summaryKo:
+      '노동자당 Gerald Giam Yean Song 의원은 디지털개발정보부 장관에게 LiteLLM에 대한 AI 공급망 공격으로 싱가포르 정부나 상업 기관의 어떤 데이터가 침해되었는지, 어떤 구제 조치를 취했는지, 재발을 어떻게 막을지 서면 질의했다. Josephine Teo 디지털개발정보부 장관은 서면 답변에서 LiteLLM은 널리 쓰이는 오픈소스 AI 소프트웨어이며, 해커들이 이전 침해에서 탈취한 로그인 정보로 소프트웨어 업데이트에 악성 코드를 추가했다고 밝혔다. 정부기술청(GovTech)은 스캔·탐지 도구로 영향을 받은 기관을 파악해 신속히 알렸고, 침해된 것은 소수 기관을 지원하던 사용자 계정 하나뿐이었다. 해당 기관들은 로그인 정보를 변경하고 시스템 기록을 점검했으며, 개인 데이터를 포함한 정부 데이터가 도난당했다는 증거는 없다. 상업 기관에 대한 영향은 전체적으로 파악하지 못했으며, 각 기업이 자체 시스템을 점검하고 필요한 보고를 해야 하고 싱가포르 컴퓨터 비상대응팀이 권고문을 발표했다. 위험을 완전히 없앨 수는 없지만 예방·탐지·대응을 계속 개선하겠다고 했다.',
+    whyItMatters: 'LiteLLM 攻击只攻破一个政府用户账户，无证据显示政府数据被窃，但政府不掌握企业受影响全貌',
+    whyItMattersEn:
+      'The LiteLLM attack compromised only one Government user account with no evidence of Government data theft, but the Government lacks a full picture of the impact on companies.',
+    whyItMattersJa:
+      'LiteLLM攻撃で侵害された政府のユーザーアカウントは一つのみで政府データ窃取の証拠もないが、企業への影響の全体像は政府も把握していない',
+    whyItMattersKo:
+      'LiteLLM 공격으로 침해된 정부 사용자 계정은 하나뿐이고 정부 데이터 도난 증거도 없지만, 기업 피해의 전체 규모는 정부도 파악하지 못했다',
+    keyPoints: [
+      '黑客利用早前泄露中窃取的登录资料，在开源 AI 软件 LiteLLM 的更新中植入恶意代码。',
+      '政府科技局用扫描和检测工具识别受影响的政府机构并迅速通知。',
+      '攻击确认只攻破一个用户账户，该账户支持少数几个机构；受影响机构已更换可能外泄的登录资料，并检查系统记录中有无未经授权活动。',
+      '没有证据显示任何政府数据（包括政府持有的个人数据）被窃或受损。',
+      '政府并不完全掌握事件对商业实体的影响；新加坡计算机应急响应小组已发布通告，可在需要时提供网络安全指导和协助。',
+      '供应链攻击风险无法完全消除，政府将持续检讨和改进防范、检测与应对方式。',
+    ],
+    keyPointsEn: [
+      'Hackers used login details stolen in an earlier breach to add malicious code to software updates of the open-source AI software LiteLLM.',
+      'GovTech used scanning and detection tools to identify the affected Government agencies and informed them quickly.',
+      'The attack was confirmed to have compromised only one user account, which supported a small number of agencies; they changed potentially exposed login details and checked system records for unauthorised activity.',
+      'There is no evidence that any Government data, including personal data held by the Government, was stolen or compromised.',
+      'The Government does not have a complete picture of the impact on commercial entities; the Singapore Cyber Emergency Response Team has published an advisory and can provide guidance and help.',
+      'Supply chain attack risks cannot be removed completely, and the Government will keep reviewing and improving how it prevents, detects and responds to them.',
+    ],
+    keyPointsJa: [
+      'ハッカーは以前の侵害で盗んだログイン情報を使い、オープンソースのAIソフトウェアLiteLLMの更新に悪意あるコードを加えた。',
+      '政府技術庁はスキャンと検知のツールで影響を受けた政府機関を特定し、速やかに通知した。',
+      '侵害されたのは少数の機関を支える一つのユーザーアカウントのみと確認され、各機関は流出した可能性のあるログイン情報を変更し、システム記録に不正な活動がないか確認した。',
+      '政府が保有する個人データを含め、政府データが盗まれたり侵害されたりした証拠はない。',
+      '政府は商業事業者への影響の全体像を把握していない。シンガポール・コンピューター緊急対応チームが注意喚起を公表しており、必要に応じて指導と支援を提供できる。',
+      'サプライチェーン攻撃のリスクは完全には取り除けず、政府は防止、検知、対応の方法を見直し改善し続ける。',
+    ],
+    keyPointsKo: [
+      '해커들은 이전 침해에서 탈취한 로그인 정보를 이용해 오픈소스 AI 소프트웨어 LiteLLM의 업데이트에 악성 코드를 추가했다.',
+      '정부기술청은 스캔·탐지 도구로 영향을 받은 정부 기관을 파악하고 신속히 알렸다.',
+      '침해된 것은 소수 기관을 지원하던 사용자 계정 하나뿐으로 확인되었으며, 해당 기관들은 노출되었을 수 있는 로그인 정보를 변경하고 시스템 기록에서 무단 활동 여부를 점검했다.',
+      '정부가 보유한 개인 데이터를 포함해 어떠한 정부 데이터도 도난당하거나 침해되었다는 증거는 없다.',
+      '정부는 상업 기관에 대한 영향의 전체 그림을 갖고 있지 않으며, 싱가포르 컴퓨터 비상대응팀이 권고문을 발표했고 필요 시 지침과 도움을 제공할 수 있다.',
+      '공급망 공격 위험은 완전히 제거할 수 없으며, 정부는 예방·탐지·대응 방식을 계속 검토하고 개선할 것이다.',
+    ],
+    governmentStance:
+      '政府表示攻击对政府系统的影响有限，只涉及一个用户账户，未发现政府数据被窃。政府未说明商业实体受损的数据类型，称不掌握全貌，要求各公司自行检查并按规定报告，并承认供应链攻击风险无法完全消除。',
+    governmentStanceEn:
+      'The Government said the impact on its systems was limited to one user account, with no evidence of Government data being stolen. It did not describe what commercial data was affected, saying it lacks a complete picture and that companies must check their own systems and make required reports, and acknowledged supply chain risks cannot be removed completely.',
+    governmentStanceJa:
+      '政府は、政府システムへの影響は一つのユーザーアカウントに限られ、政府データが盗まれた証拠はないと説明した。商業事業者のどのデータが侵害されたかは示さず、全体像を把握していないとして各企業に自社システムの確認と必要な報告を求め、サプライチェーン攻撃のリスクは完全には除けないと認めた。',
+    governmentStanceKo:
+      '정부는 정부 시스템에 대한 영향이 사용자 계정 하나로 제한되었고 정부 데이터 도난 증거는 없다고 밝혔다. 상업 기관의 어떤 데이터가 침해되었는지는 설명하지 않고 전체 그림을 파악하지 못했다며 각 기업이 자체 시스템을 점검하고 필요한 보고를 하도록 했으며, 공급망 공격 위험은 완전히 없앨 수 없다고 인정했다.',
+    oppositionStance:
+      '提问议员严燕松（工人党）关注 LiteLLM 供应链攻击中新加坡政府和企业哪些数据受损、采取了什么补救措施，以及如何防止类似事件再次发生。',
+    oppositionStanceEn:
+      "Questioner Mr Gerald Giam (Workers' Party) asked what Government and commercial data in Singapore was compromised in the LiteLLM supply chain attack, what remedial action was taken and how a recurrence will be prevented.",
+    oppositionStanceJa:
+      '質問者のGerald Giam Yean Song 議員（労働者党）は、LiteLLMサプライチェーン攻撃でシンガポールの政府と企業のどのデータが侵害されたか、どのような是正措置を取ったか、再発をどう防ぐかをただした。',
+    oppositionStanceKo:
+      '질의자 Gerald Giam Yean Song 의원(노동자당)은 LiteLLM 공급망 공격으로 싱가포르 정부와 기업의 어떤 데이터가 침해되었는지, 어떤 구제 조치를 취했는지, 재발을 어떻게 막을지 따져 물었다.',
+    controversyLevel: 2,
+    policySignal:
+      '开源 AI 组件已成为政府系统的现实攻击面；政府对企业侧损害采取企业自查自报、SingCERT 提供指导的分工，显示 AI 供应链安全短期内仍主要依赖各机构自身防护，而非集中监测。',
+    policySignalEn:
+      "Open-source AI components have become a real attack surface for Government systems; leaving companies to self-check and self-report with SingCERT guidance suggests AI supply chain security will, for now, rest mainly on each organisation's own defences rather than central monitoring.",
+    policySignalJa:
+      'オープンソースのAI部品は政府システムにとって現実の攻撃面となった。企業側の被害は各社の自己点検と報告に委ね、SingCERTが指導するという分担は、AIサプライチェーンの安全が当面は集中監視ではなく各組織の自衛に大きく依存することを示している。',
+    policySignalKo:
+      '오픈소스 AI 구성 요소는 정부 시스템의 실제 공격 표면이 되었다. 기업 측 피해는 자체 점검·보고에 맡기고 SingCERT가 지침을 주는 분담 구조는, AI 공급망 보안이 당분간 중앙 감시보다 각 조직의 자체 방어에 주로 의존할 것임을 보여준다.',
+    notableQuote: '针对软件供应链的攻击是持续存在的威胁。',
+    notableQuoteEn: 'Attacks on software supply chains are an ongoing threat.',
+    notableQuoteJa: 'ソフトウェアのサプライチェーンに対する攻撃は継続的な脅威です。',
+    notableQuoteKo: '소프트웨어 공급망에 대한 공격은 지속적인 위협입니다.',
+    transcriptEn:
+      'Mr Gerald Giam Yean Song asked the Minister for Digital Development and Information what types of data owned by the Government or commercial entities in Singapore were compromised in the AI supply chain attack on LiteLLM, what remedial actions were taken, and what is being done to prevent a recurrence. Mrs Josephine Teo replied that LiteLLM is widely used open-source AI software, which hackers compromised by using login details stolen in an earlier breach to add malicious code to software updates. GovTech used scanning and detection tools to identify the affected Government agencies and informed them quickly. The attack was confirmed to have compromised only one user account, which supported a small number of agencies; those agencies changed exposed login details and checked system records. There is no evidence that any Government data, including personal data held by the Government, was stolen or compromised. The Government does not have a complete picture of the impact on commercial entities; each company should check its own systems, fix any problems and make any required reports, and the Singapore Cyber Emergency Response Team has published an advisory and can help. Supply chain attacks are an ongoing threat whose risks cannot be removed completely, but the Government will keep improving how it prevents, detects and responds to them.',
+    sourceUrl: 'https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=written-answer-24768',
+    addedAt: '2026-09-26',
+  },
+  {
+    id: 'written-answer-24766',
+    titleEn:
+      "Protecting Against Unauthorised AI-generated Likeness in Advertisements and Operationalising Online Safety Commission's Mandate over Inauthentic Material Abuse",
+    title: '防范广告中未经同意的AI生成肖像，以及网络安全委员会何时处理不实内容滥用',
+    titleKo: '광고 속 무단 AI 생성 초상 대응과 온라인안전위원회의 비진정 콘텐츠 남용 권한 시행',
+    titleJa: '広告における無断のAI生成肖像への対策と、オンライン安全委員会の偽装コンテンツ悪用に関する権限の運用',
+    date: '2026-09-10',
+    parliament: '15',
+    type: 'Written Answers to Questions',
+    speakers: ['Mr Yip Hon Weng', 'Mrs Josephine Teo'],
+    personIds: [],
+    topicIds: [],
+    relatedPolicyIds: [],
+    relatedLeverNumbers: [],
+    relatedTimelineYears: [],
+    relatedPostSlugs: [],
+    topics: ['Deepfakes & Disinformation', 'AI Governance & Regulation'],
+    summary:
+      '议员叶汉荣（Mr Yip Hon Weng）书面询问数字发展与信息部长：鉴于有付费广告未经同意使用AI生成的肖像和声音，平台是否须在发布前核实广告主并取得同意声明、是否强制持续标示和加快下架，以及网络安全委员会对不实内容滥用的权力何时生效。数字发展与信息部长杨莉明（Mrs Josephine Teo）答复：新加坡广告标准局（ASAS）无论是否使用AI都采取一致做法，《新加坡广告行为准则》要求广告主在必要时披露AI使用，不得未经同意描绘他人；政府于2026年8月17日根据《网络刑事危害法》发布实务守则，要求指定网络服务核实广告主身份并迅速移除涉嫌诈骗广告。网络安全委员会目前可处理达到五类伤害门槛的AI生成内容，不实内容滥用将逐步实施，生效详情将在适当时候公布。',
+    summaryEn:
+      "Mr Yip Hon Weng asked the Minister for Digital Development and Information, in light of paid advertisements using AI-generated likenesses and voices without consent, whether platforms will have to verify advertisers and obtain consent attestations before publication, whether persistent disclosure and expedited removal will be mandated, and when the Online Safety Commission's powers over inauthentic material abuse will commence. Mrs Josephine Teo replied that the Advertising Standards Authority of Singapore (ASAS) takes a consistent approach whether or not AI is used; under the Singapore Code of Advertising Practice, advertisers should disclose AI use where necessary and must not portray a person without consent. On 17 August 2026 the Government issued Codes of Practice under the Online Criminal Harms Act requiring designated online services to verify advertisers' identities and promptly remove suspected scam ads. The OSC can already act on AI-generated material meeting the thresholds of five harms, while inauthentic material abuse will be implemented progressively, with commencement details in due course.",
+    summaryJa:
+      'Yip Hon Weng議員（Mr Yip Hon Weng）はデジタル発展・情報大臣に対し、AI生成の肖像や声を同意なく使う有料広告があることに鑑み、プラットフォームが掲載前に広告主を確認し同意の証明を取得することを義務付けられるか、継続的な表示と迅速な削除が義務化されるか、偽装コンテンツ悪用に関するオンライン安全委員会の権限はいつ施行されるかを書面で質問した。ジョセフィン・テオ大臣（Mrs Josephine Teo）は、シンガポール広告基準局（ASAS）はAIの使用の有無にかかわらず一貫したアプローチを取り、シンガポール広告実務規範は必要に応じたAI使用の開示を求め、同意なく人物を描写することを禁じていると答弁した。政府は2026年8月17日、オンライン犯罪危害法に基づく行動規範を発出し、指定オンラインサービスに広告主の身元確認と詐欺の疑いのある広告の速やかな削除を求めた。OSCは既に五つの危害の基準を満たすAI生成コンテンツに対応でき、偽装コンテンツ悪用は段階的に施行され、施行の詳細は追って示される。',
+    summaryKo:
+      'Yip Hon Weng 의원(Mr Yip Hon Weng)은 디지털개발정보부 장관에게 AI로 생성한 초상과 목소리를 동의 없이 사용하는 유료 광고가 있다는 점을 감안해, 플랫폼이 게재 전에 광고주를 검증하고 동의 확인서를 받도록 의무화할 것인지, 지속적인 표시와 신속한 삭제를 의무화할 것인지, 비진정 콘텐츠 남용에 대한 온라인안전위원회의 권한은 언제 시행되는지 서면으로 질의했다. Josephine Teo 장관(Mrs Josephine Teo)은 싱가포르 광고표준청(ASAS)이 AI 사용 여부와 관계없이 일관된 접근을 취하며, 싱가포르 광고실무규약은 필요시 AI 사용 공개를 요구하고 동의 없이 특정인을 묘사하는 것을 금지한다고 답했다. 정부는 2026년 8월 17일 온라인범죄피해법에 따른 실무규범을 발표해 지정 온라인 서비스에 광고주 신원 확인과 사기 의심 광고의 신속한 삭제를 요구했다. OSC는 이미 다섯 가지 피해 기준을 충족하는 AI 생성 콘텐츠에 조치할 수 있으며, 비진정 콘텐츠 남용은 단계적으로 시행되고 시행 세부 사항은 추후 발표된다.',
+    whyItMatters: '指定网络服务须核实广告主身份，但网络安全委员会处理不实内容滥用的权力仍无生效日期',
+    whyItMattersEn:
+      "Designated online services must verify advertisers' identities, but the Online Safety Commission's powers over inauthentic material abuse still have no commencement date.",
+    whyItMattersJa:
+      '指定オンラインサービスには広告主の身元確認が義務付けられたが、偽装コンテンツ悪用に関するオンライン安全委員会の権限には施行日がまだない',
+    whyItMattersKo:
+      '지정 온라인 서비스는 광고주 신원을 확인해야 하지만, 비진정 콘텐츠 남용에 대한 온라인안전위원회의 권한은 아직 시행일이 없다',
+    keyPoints: [
+      'ASAS审查广告时不论是否使用AI都采取一致做法，以投诉为基础，可要求广告主修改或撤下违规广告',
+      '《新加坡广告行为准则》要求广告主在必要时披露AI使用，不得未经同意描绘他人或其财产，代言和推荐须真实',
+      '政府于2026年8月17日根据《网络刑事危害法》发布新的及强化版实务守则，要求指定网络服务核实广告主身份，并防止和迅速移除涉嫌诈骗广告',
+      '网络安全委员会目前涵盖私密图像滥用、基于图像的儿童虐待、人肉搜索、网络骚扰和网络跟踪五类伤害，可处理达到门槛的AI生成内容',
+      '不实内容滥用将随网络安全委员会能力建设逐步实施，政府未给出生效日期',
+    ],
+    keyPointsEn: [
+      'ASAS takes a consistent approach to advertising content whether or not AI is used, reviews potential breaches on a complaints basis, and can get advertisers to amend or withdraw non-compliant ads',
+      'The Singapore Code of Advertising Practice expects advertisers to disclose AI use where necessary, not to portray a person or their property without consent, and to ensure endorsements and testimonials are genuine',
+      "On 17 August 2026 the Government issued new and enhanced Codes of Practice under the Online Criminal Harms Act requiring designated online services to verify advertisers' identities and prevent and promptly remove suspected scam ads",
+      'The OSC currently covers five harms: intimate image abuse, image-based child abuse, doxxing, online harassment and online stalking, and can act on AI-generated material meeting these thresholds',
+      'Inauthentic material abuse will be implemented progressively as the OSC builds capabilities, and no commencement date was given',
+    ],
+    keyPointsJa: [
+      'ASASはAIの使用の有無にかかわらず広告内容に一貫したアプローチを取り、苦情に基づいて違反の可能性を審査し、広告主に規範に適合しない広告の修正や撤回を求めることができる',
+      'シンガポール広告実務規範は、広告主に必要に応じたAI使用の開示を求め、同意なく人物やその財産を描写することを禁じ、推薦や体験談が本物であることを求めている',
+      '政府は2026年8月17日、オンライン犯罪危害法に基づく新たな行動規範と強化版の行動規範を発出し、指定オンラインサービスに広告主の身元確認と、詐欺の疑いのある広告の掲載防止と速やかな削除を求めた',
+      'OSCは現在、私的画像の悪用、画像による児童虐待、晒し、オンラインハラスメント、オンラインストーキングの五つの危害を対象とし、これらの基準を満たすAI生成コンテンツに措置を取れる',
+      '偽装コンテンツ悪用はOSCの能力構築に合わせて段階的に施行され、施行日は示されなかった',
+    ],
+    keyPointsKo: [
+      'ASAS는 AI 사용 여부와 관계없이 광고 내용에 일관된 접근을 취하며, 민원 기반으로 잠재적 위반을 검토하고 광고주에게 부적합한 광고의 수정이나 철회를 요구할 수 있다',
+      '싱가포르 광고실무규약은 광고주가 필요시 AI 사용을 공개하고, 동의 없이 특정인이나 그 재산을 묘사하지 않으며, 보증과 추천이 진짜임을 보장하도록 요구한다',
+      '정부는 2026년 8월 17일 온라인범죄피해법에 따라 새로운 실무규범과 강화된 실무규범을 발표해 지정 온라인 서비스에 광고주 신원 확인과 사기 의심 광고의 게재 방지 및 신속한 삭제를 요구했다',
+      'OSC는 현재 은밀한 이미지 악용, 이미지 기반 아동 학대, 신상털기, 온라인 괴롭힘, 온라인 스토킹의 다섯 가지 피해를 다루며, 이 기준을 충족하는 AI 생성 콘텐츠에 조치할 수 있다',
+      '비진정 콘텐츠 남용은 OSC의 역량 구축에 맞춰 단계적으로 시행되며, 시행일은 제시되지 않았다',
+    ],
+    governmentStance:
+      '政府认为现有广告准则和《网络刑事危害法》实务守则已覆盖AI冒充广告，没有承诺强制平台取得同意声明或持续标示；对网络安全委员会处理不实内容滥用的权力，政府只表示将逐步实施，未给出时间表。',
+    governmentStanceEn:
+      "The Government considers that the existing advertising code and the Online Criminal Harms Act Codes of Practice already cover AI impersonation ads, and did not commit to mandating consent attestations or persistent disclosure; on the OSC's powers over inauthentic material abuse, it said only that they will be implemented progressively, without a timeline.",
+    governmentStanceJa:
+      '政府は、既存の広告規範とオンライン犯罪危害法に基づく行動規範がAIによるなりすまし広告を既に対象としているとし、同意の証明や継続的な表示の義務化は約束しなかった。偽装コンテンツ悪用に関するOSCの権限については段階的に施行すると述べるにとどめ、時期は示さなかった。',
+    governmentStanceKo:
+      '정부는 기존 광고 규약과 온라인범죄피해법 실무규범이 이미 AI 사칭 광고를 다루고 있다고 보고, 동의 확인서나 지속적 표시의 의무화는 약속하지 않았다. 비진정 콘텐츠 남용에 대한 OSC의 권한에 대해서는 단계적으로 시행하겠다고만 했을 뿐 일정은 제시하지 않았다.',
+    oppositionStance:
+      '提问议员叶汉荣关注付费广告未经同意使用AI生成的肖像和声音，希望政府强制平台核实广告主、取得同意声明、持续标示并加快下架，并明确网络安全委员会相关权力的生效时间。',
+    oppositionStanceEn:
+      "The questioner, Mr Yip Hon Weng, was concerned about paid ads using AI-generated likenesses and voices without consent, and asked whether platforms would be required to verify advertisers, obtain consent attestations, keep disclosures visible and remove ads faster, and when the OSC's related powers would commence.",
+    oppositionStanceJa:
+      '質問者のYip Hon Weng議員は、AI生成の肖像や声を同意なく使う有料広告を懸念し、プラットフォームに広告主の確認、同意の証明の取得、継続的な表示と迅速な削除を義務付けるか、またOSCの関連権限がいつ施行されるかを問うた。',
+    oppositionStanceKo:
+      '질의자 Yip Hon Weng 의원은 AI 생성 초상과 목소리를 동의 없이 사용하는 유료 광고를 우려하며, 플랫폼에 광고주 검증, 동의 확인서 확보, 지속적 표시와 신속한 삭제를 의무화할 것인지, OSC의 관련 권한은 언제 시행되는지 물었다.',
+    controversyLevel: 2,
+    policySignal:
+      '新加坡对AI冒充广告采取“现有框架加分阶段扩权”的路线：先以行业自律准则和反诈骗实务守则应对，把深度伪造类的不实内容滥用放在网络安全委员会能力建设之后，节奏偏稳健，短期内不会出台针对AI广告的专门同意或标示规定。',
+    policySignalEn:
+      "Singapore is handling AI impersonation ads through existing frameworks plus phased expansion of powers: industry self-regulation and anti-scam Codes of Practice come first, while deepfake-type inauthentic material abuse waits on the OSC's capability build-up, suggesting no dedicated consent or labelling rules for AI ads in the near term.",
+    policySignalJa:
+      'シンガポールはAIによるなりすまし広告に対し、既存の枠組みと段階的な権限拡大で臨んでいる。業界の自主規制規範と詐欺対策の行動規範を先行させ、ディープフェイク型の偽装コンテンツ悪用はOSCの能力構築を待つ形であり、AI広告に特化した同意や表示のルールは当面導入されないとみられる。',
+    policySignalKo:
+      '싱가포르는 AI 사칭 광고에 대해 기존 체계에 단계적 권한 확대를 더하는 방식을 택했다. 업계 자율 규약과 사기 대응 실무규범을 먼저 적용하고, 딥페이크형 비진정 콘텐츠 남용은 OSC의 역량 구축 이후로 미뤄, 단기간에 AI 광고 전용 동의나 표시 규정이 나오지는 않을 것으로 보인다.',
+    notableQuote: '广告主应在必要时披露AI的使用，以免误导消费者。',
+    notableQuoteEn: 'Advertisers should disclose AI use where necessary to avoid misleading consumers.',
+    notableQuoteJa: '広告主は消費者を誤解させないよう、必要に応じてAIの使用を開示すべきです。',
+    notableQuoteKo: '광고주는 소비자를 오도하지 않도록 필요한 경우 AI 사용 사실을 공개해야 합니다.',
+    transcriptEn:
+      "Mr Yip Hon Weng asked the Minister for Digital Development and Information, in light of paid advertisements using AI-generated likenesses and voices without consent, whether platforms will be required to verify advertisers and obtain consent attestations before publication, whether persistent disclosure and expedited removal will be mandated, and when the Online Safety Commission's powers over inauthentic material abuse will commence. Mrs Josephine Teo replied that ASAS takes a consistent approach regardless of whether AI is used. Under the Singapore Code of Advertising Practice, advertisers should disclose AI use where necessary to avoid misleading consumers, should not portray a person or their property without consent, and must ensure endorsements are genuine; ASAS can get non-compliant ads amended or withdrawn. On 17 August 2026 the Government also issued new and enhanced Codes of Practice under the Online Criminal Harms Act, requiring designated online services to verify advertisers' identities and to prevent and promptly remove suspected scam ads. The OSC currently provides relief for five harms under the Online Safety (Relief and Accountability) Act and can act on AI-generated material meeting those thresholds. Inauthentic material abuse will be implemented progressively as the OSC builds capabilities, with commencement details to be provided in due course.",
+    sourceUrl: 'https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=written-answer-24766',
+    addedAt: '2026-09-26',
+  },
+  {
+    id: 'oral-answer-4215',
+    titleEn: 'Adapting Shared Responsibility Principles Framework to Authorised-transfer Scams',
+    title: '共担责任框架能否延伸至授权转账诈骗',
+    titleKo: '공동책임 프레임워크를 승인 이체 사기로 확대할 수 있는가',
+    titleJa: '共同責任フレームワークを認可済み送金詐欺に適用できるか',
+    date: '2026-09-10',
+    parliament: '15',
+    type: 'Oral Answers to Questions',
+    speakers: ['Dr Hamid Razak', 'Mr Chee Hong Tat'],
+    personIds: [],
+    topicIds: [],
+    relatedPolicyIds: [],
+    relatedLeverNumbers: [],
+    relatedTimelineYears: [],
+    relatedPostSlugs: [],
+    topics: ['Deepfakes & Disinformation', 'AI Governance & Regulation'],
+    summary:
+      '议员贺明（Dr Hamid Razak）询问总理兼财政部长：鉴于投资诈骗在2026年上半年损失最高，金融管理局是否检讨将共担责任原则延伸至投资诈骗等授权转账诈骗，以及检讨标准为何。国家发展部长徐芳达（Mr Chee Hong Tat）答复：共担责任框架（SRF）针对涉及未经授权交易的钓鱼诈骗，不适用于自行转账诈骗；通讯平台将被要求限制陌生人接触用户并显示警示，主要零售银行已为高风险活动设冷静期。贺明追问，AI和深度伪造让受害者自以为在进行有效交易，框架能否调整以涵盖这类受害者。徐芳达表示会持续检讨措施，前一天通过的内政部反诈骗法案将加强威慑，强调应针对诈骗者而非金融机构，并指金融机构会在框架之外酌情逐案提供善意赔付。',
+    summaryEn:
+      'Dr Hamid Razak asked the Prime Minister and Minister for Finance whether, given that investment scams recorded the highest losses in the first half of 2026, MAS is reviewing whether shared responsibility principles can be adapted to authorised-transfer scams such as investment scams, and what criteria would guide such a review. Minister for National Development Chee Hong Tat replied that the Shared Responsibility Framework (SRF) focuses on phishing scams involving unauthorised transactions and is not suitable for self-effected transfers; messaging platforms will be required to make it harder for unknown contacts to reach users and to display warnings, and major retail banks have introduced cooling periods for higher-risk activities. Dr Hamid asked whether the framework could be changed to cover victims who transact themselves because AI and deepfakes make them think the transaction is valid. Mr Chee said measures will keep being reviewed, the MHA scam Bill passed the previous day will strengthen deterrence, penalties should target scammers rather than financial institutions, and FIs make discretionary goodwill payments outside the SRF on a case-by-case basis.',
+    summaryJa:
+      'Hamid Razak議員（Dr Hamid Razak）は首相兼財務大臣に対し、2026年上半期に投資詐欺が最大の損失を記録したことを踏まえ、MASが共同責任の原則を投資詐欺などの認可済み送金詐欺に適用できるか検討しているか、その基準は何かを質問した。国家開発大臣Chee Hong Tat氏（Mr Chee Hong Tat）は、共同責任フレームワーク（SRF）は無許可取引を伴うフィッシング詐欺を対象とし、被害者自身が送金する詐欺には適さないと答弁した。メッセージングプラットフォームには見知らぬ相手の接触を難しくし警告を表示することが義務付けられ、主要なリテール銀行はリスクの高い行為にクーリング期間を導入した。Hamid議員は、AIやディープフェイクにより有効な取引だと思い込んで自ら送金した被害者も対象にできるよう見直すかを尋ねた。Chee氏は措置を見直し続けるとし、前日に可決された内務省の詐欺対策法案が抑止力を高めると述べ、罰則は金融機関ではなく詐欺師に向けるべきだと強調し、金融機関はSRFの枠外で個別に裁量による見舞金を支払っていると述べた。',
+    summaryKo:
+      'Hamid Razak 의원(Dr Hamid Razak)은 총리 겸 재무장관에게 2026년 상반기 투자 사기의 피해액이 가장 컸다는 점을 고려해 MAS가 공동책임 원칙을 투자 사기 같은 승인 이체 사기에 적용할 수 있는지 검토하고 있는지, 그 기준은 무엇인지 질의했다. 국가개발부 장관 Chee Hong Tat은 공동책임 프레임워크(SRF)는 승인되지 않은 거래가 수반되는 피싱 사기를 대상으로 하며 피해자가 직접 이체하는 사기에는 적합하지 않다고 답했다. 메시징 플랫폼은 모르는 연락처의 접근을 어렵게 하고 경고를 표시해야 하며, 주요 소매은행은 고위험 활동에 냉각 기간을 도입했다. Hamid 의원은 AI와 딥페이크 때문에 유효한 거래라고 믿고 직접 이체한 피해자도 포함하도록 프레임워크를 바꿀 수 있는지 물었다. Chee 장관은 조치를 계속 검토하겠다며 전날 통과된 내무부 사기 대응 법안이 억지력을 강화할 것이라고 했고, 처벌은 금융기관이 아니라 사기범을 겨냥해야 한다고 강조했으며, 금융기관이 SRF와 별개로 사안별 재량에 따라 선의의 보상금을 지급한다고 밝혔다.',
+    whyItMatters: '政府明确表示共担责任框架不适用于自行转账诈骗，AI深度伪造投资诈骗受害者只能靠银行酌情善意赔付',
+    whyItMattersEn:
+      'The Government ruled out applying the Shared Responsibility Framework to self-effected transfers, leaving victims of AI deepfake investment scams to rely on discretionary goodwill payments from banks.',
+    whyItMattersJa:
+      '政府は共同責任フレームワークを自ら送金する詐欺には適用しないと明言し、AIディープフェイク投資詐欺の被害者は銀行の裁量による見舞金に頼るしかない',
+    whyItMattersKo:
+      '정부는 공동책임 프레임워크를 직접 이체 사기에 적용하지 않는다고 밝혀, AI 딥페이크 투자 사기 피해자는 은행의 재량적 선의 보상에 기댈 수밖에 없다',
+    keyPoints: [
+      '诈骗案件和损失在2025年和2026年上半年均下降，但投资诈骗在所有诈骗类型中损失最高',
+      '共担责任框架（SRF）针对涉及未经授权交易的钓鱼诈骗，政府认为不适用于自行转账诈骗',
+      '网络通讯平台将被要求使陌生联系人更难在未经同意下接触用户，并显示诈骗风险警示',
+      '主要零售银行已为添加收款人、提高交易限额和导致账户被转空的大额转账等高风险活动逐步实施冷静期',
+      '前一天通过的内政部反诈骗法案将加强对诈骗者的威慑和对消费者的保护',
+      '金融机构在SRF之外，根据受害者财务状况逐案酌情提供善意赔付，尤其照顾较弱势的受害者',
+    ],
+    keyPointsEn: [
+      'Scam cases and losses fell in 2025 and the first half of 2026, but investment scams recorded the highest losses among all scam types',
+      'The Shared Responsibility Framework (SRF) focuses on phishing scams involving unauthorised transactions and the Government considers it unsuitable for self-effected transfers',
+      'Online messaging platforms will be required to make it harder for unknown contacts to engage users without consent and to display scam-risk warnings',
+      'Major retail banks have progressively implemented cooling periods for higher-risk activities such as adding payees, raising transaction limits and large transfers that drain accounts',
+      'The MHA scam countermeasures Bill passed the previous day will strengthen deterrence against scammers and protection for consumers',
+      "Outside the SRF, financial institutions make discretionary goodwill payments case by case based on victims' financial situation, especially for those from more vulnerable backgrounds",
+    ],
+    keyPointsJa: [
+      '詐欺の件数と損失は2025年と2026年上半期に減少したが、投資詐欺はすべての詐欺の種類の中で最大の損失を記録した',
+      '共同責任フレームワーク（SRF）は無許可取引を伴うフィッシング詐欺を対象としており、政府は被害者自身が送金する詐欺には適さないとしている',
+      'オンラインメッセージングプラットフォームには、見知らぬ相手が同意なくユーザーに接触することを難しくし、詐欺リスクの警告を表示することが義務付けられる',
+      '主要なリテール銀行は、受取人の追加、取引限度額の引き上げ、口座の資金流出につながる高額送金などリスクの高い行為に段階的にクーリング期間を導入した',
+      '前日に可決された内務省の詐欺対策法案は、詐欺師への抑止力と消費者保護を強化する',
+      '金融機関はSRFとは別に、被害者の経済状況に基づき個別に裁量で見舞金を支払っており、特により脆弱な立場の人々に配慮している',
+    ],
+    keyPointsKo: [
+      '사기 건수와 피해액은 2025년과 2026년 상반기에 감소했지만, 투자 사기는 모든 사기 유형 중 피해액이 가장 컸다',
+      '공동책임 프레임워크(SRF)는 승인되지 않은 거래가 수반되는 피싱 사기를 대상으로 하며, 정부는 피해자가 직접 이체하는 사기에는 적합하지 않다고 본다',
+      '온라인 메시징 플랫폼은 모르는 연락처가 동의 없이 사용자에게 접근하기 어렵게 만들고 사기 위험 경고를 표시해야 한다',
+      '주요 소매은행은 수취인 추가, 거래 한도 상향, 계좌 잔고를 비우는 거액 이체 등 고위험 활동에 단계적으로 냉각 기간을 도입했다',
+      '전날 통과된 내무부 사기 대응 법안은 사기범에 대한 억지력과 소비자 보호를 강화한다',
+      '금융기관은 SRF와 별개로 피해자의 재정 상황에 따라 사안별 재량으로 선의의 보상금을 지급하며, 특히 더 취약한 배경의 피해자를 배려한다',
+    ],
+    governmentStance:
+      '政府拒绝把共担责任框架延伸至自行转账诈骗，认为这类诈骗需要平台、银行和个人共同警惕；威慑和惩罚应针对诈骗者，金融机构是伙伴而非追责对象。政府只承诺持续检讨措施，没有承诺修改框架。',
+    governmentStanceEn:
+      'The Government declined to extend the Shared Responsibility Framework to self-effected transfer scams, saying they require vigilance from platforms, banks and individuals, and that deterrence and penalties should target scammers while financial institutions are partners. It committed only to keep reviewing measures, not to change the framework.',
+    governmentStanceJa:
+      '政府は共同責任フレームワークを被害者自身が送金する詐欺に拡大することを拒み、こうした詐欺にはプラットフォーム、銀行、個人の警戒が必要であり、抑止策と罰則は詐欺師に向けるべきで金融機関はパートナーだとした。措置の見直し継続は約束したが、フレームワークの変更は約束しなかった。',
+    governmentStanceKo:
+      '정부는 공동책임 프레임워크를 피해자가 직접 이체하는 사기로 확대하는 것을 거부하며, 이런 사기에는 플랫폼, 은행, 개인의 경계가 필요하고 억지 조치와 처벌은 사기범을 겨냥해야 하며 금융기관은 파트너라고 밝혔다. 조치를 계속 검토하겠다고만 했을 뿐 프레임워크 변경은 약속하지 않았다.',
+    oppositionStance:
+      '提问议员贺明认为AI和深度伪造让受害者误以为交易有效，而现行框架以凭证被盗为前提，令投资诈骗受害者得不到保障，希望金融管理局检讨框架以涵盖这类受害者。',
+    oppositionStanceEn:
+      'The questioner, Dr Hamid Razak, argued that AI and deepfakes lead victims to believe their transactions are valid, while the current framework hinges on stolen credentials and so leaves investment scam victims unprotected, and asked MAS to review it to cover them.',
+    oppositionStanceJa:
+      '質問者のHamid Razak議員は、AIやディープフェイクにより被害者は取引が有効だと思い込む一方、現行フレームワークは認証情報の窃取を前提としているため投資詐欺の被害者が保護されないと指摘し、こうした被害者も対象とするようMASに見直しを求めた。',
+    oppositionStanceKo:
+      '질의자 Hamid Razak 의원은 AI와 딥페이크로 피해자가 거래를 유효하다고 믿게 되는데 현행 프레임워크는 인증 정보 탈취를 전제로 해 투자 사기 피해자가 보호받지 못한다며, 이들을 포함하도록 MAS가 프레임워크를 검토해 달라고 요청했다.',
+    controversyLevel: 2,
+    policySignal:
+      '面对AI深度伪造诱导的自行转账诈骗，政府坚持不把银行赔偿责任制度化扩大，而以平台义务、冷静期和银行酌情善意赔付替代；损失分担的界线仍按“是否经受害者授权”划分，未因AI欺骗能力提升而调整。',
+    policySignalEn:
+      "Faced with AI deepfake-driven self-effected transfer scams, the Government is not institutionalising wider bank liability, relying instead on platform duties, cooling periods and discretionary goodwill payments; the line for sharing losses is still drawn by whether the victim authorised the transfer, unchanged by AI's growing capacity to deceive.",
+    policySignalJa:
+      'AIディープフェイクによって誘導される自ら送金型の詐欺に対し、政府は銀行の賠償責任を制度的に拡大せず、プラットフォームの義務、クーリング期間、銀行の裁量による見舞金で代替している。損失負担の線引きは依然として被害者が送金を認可したかどうかで決まり、AIによる欺瞞能力の高まりを受けても変わっていない。',
+    policySignalKo:
+      'AI 딥페이크가 유도하는 직접 이체 사기에 대해 정부는 은행의 배상 책임을 제도적으로 확대하지 않고 플랫폼 의무, 냉각 기간, 은행의 재량적 선의 보상으로 대신하고 있다. 손실 분담의 선은 여전히 피해자가 이체를 승인했는지로 그어지며, AI의 기만 능력 향상에도 바뀌지 않았다.',
+    notableQuote: '它并不适用于涉及自行转账的诈骗。',
+    notableQuoteEn: 'It is not suitable for scams involving self-effected transfers.',
+    notableQuoteJa: '被害者自身が送金する詐欺には適していません。',
+    notableQuoteKo: '피해자가 직접 이체하는 사기에는 적합하지 않습니다.',
+    transcriptEn:
+      'Dr Hamid Razak asked the Prime Minister and Minister for Finance whether, given that investment scams recorded the highest losses in the first half of 2026, MAS is reviewing whether shared responsibility principles can be adapted to authorised-transfer scams such as investment scams, and if so what criteria would guide the review. Mr Chee Hong Tat, Minister for National Development, replied that scam cases and losses fell in 2025 and the first half of 2026, but investment scams still recorded the highest losses. Messaging platforms will be required to make it harder for unknown contacts to engage users without consent and to display warnings, and major retail banks have introduced cooling periods for higher-risk activities. He said the Shared Responsibility Framework focuses on phishing scams involving unauthorised transactions and is not suitable for self-effected transfers. Dr Hamid asked whether MAS would review the framework so that victims who transact themselves because of AI-generated deepfake images and platforms could also have claims considered. Mr Chee said measures will keep being reviewed in what is a cat and mouse game, that the MHA scam Bill passed the day before would strengthen deterrence, that penalties should target scammers rather than financial institutions, and that FIs provide discretionary goodwill payments outside the SRF on a case-by-case basis.',
+    sourceUrl: 'https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=oral-answer-4215',
+    addedAt: '2026-09-26',
+  },
+  {
+    id: 'written-answer-na-24735',
+    titleEn: "Impact of Global AI Capital Expenditure and Expansion on Singapore's Economic, Wage and Jobs Growth",
+    title: '全球 AI 资本开支扩张对新加坡经济、工资和就业增长的影响',
+    titleKo: '글로벌 AI 자본 지출 확대가 싱가포르 경제·임금·일자리 성장에 미치는 영향',
+    titleJa: '世界的なAI設備投資の拡大がシンガポールの経済・賃金・雇用の伸びに与える影響',
+    date: '2026-09-09',
+    parliament: '15',
+    type: 'Written Answers to Questions',
+    speakers: ['Mr Saktiandi Supaat', 'Mr Edward Chia Bing Hui', 'Dr Tan See Leng'],
+    personIds: [],
+    topicIds: [],
+    relatedPolicyIds: [],
+    relatedLeverNumbers: [],
+    relatedTimelineYears: [],
+    relatedPostSlugs: [],
+    topics: ['AI Economy & Industry', 'AI & Employment', 'AI Strategy'],
+    summary:
+      '议员安迪（Mr Saktiandi Supaat）和谢秉辉（Mr Edward Chia Bing Hui）书面询问贸工部（能源与工业）部长：安迪问政府是否评估过经济增长对全球 AI 资本开支大幅放缓的敏感度，以及本地企业、研发和知识产权获取了多少 AI 增长附加值；谢秉辉问 AI 增长有多少转化为生产力、工资、新增就业和本地企业价值，政府如何监测其是否惠及更广泛经济。陈诗龙（Dr Tan See Leng）的答复与连荣华一题相同：承认 AI 资本开支放缓会拖累相关行业、可能引发金融市场回调，但强调经济多元；引用人力部调查称约三成企业已采用 AI，其中约七成报告生产力提升，并将通过国家人工智能理事会监测。',
+    summaryEn:
+      "Mr Saktiandi Supaat and Mr Edward Chia Bing Hui asked the Minister for Trade and Industry (Energy and Industry) about AI-driven growth. Mr Saktiandi asked whether the Ministry has assessed how sensitive Singapore's growth is to a material slowdown in global AI capital expenditure, and how much value-added AI growth is captured by local enterprises, R&D and intellectual property. Mr Chia asked how much of the growth has turned into productivity gains, wage growth, new jobs and value capture by local firms, and how the Government will monitor whether it benefits the wider economy. Dr Tan See Leng gave the same reply as to Mr Liang Eng Hwa: a slowdown in global AI capex would weigh on AI-linked sectors and could trigger market corrections, but the economy is well diversified. He cited a Ministry of Manpower survey showing about three in 10 firms had adopted AI and about seven in 10 of them saw productivity gains, and said the National AI Council will coordinate and monitor.",
+    summaryJa:
+      'Saktiandi Supaat議員とEdward Chia Bing Hui議員は貿易産業大臣（エネルギー・産業担当）に書面で質問した。Saktiandi議員は、世界のAI設備投資が大幅に減速した場合の成長感応度を同省が評価したか、また国内企業・研究開発・知的財産がAI成長の付加価値をどれだけ取り込んでいるかを尋ねた。Chia議員は、成長のうちどれだけが生産性、賃金、新規雇用、国内企業の価値獲得につながったか、政府はAI主導の成長がより広い経済に恩恵をもたらしているかをどう監視するかを尋ねた。Tan See Leng博士はLiang Eng Hwa議員への答弁と同じ内容で、世界のAI設備投資の減速はAI関連産業の重荷となり市場の調整を招き得るが経済は十分に多角化していると答弁し、人材省の調査で約10社に3社がAIを導入し、うち約7割が生産性向上を報告したと述べ、国家AI評議会が調整と監視を担うとした。',
+    summaryKo:
+      'Saktiandi Supaat 의원과 Edward Chia Bing Hui 의원은 통상산업부 장관(에너지·산업 담당)에게 서면으로 질문했다. Saktiandi 의원은 글로벌 AI 자본 지출이 크게 둔화될 경우의 성장 민감도를 평가했는지, 현지 기업·연구개발·지식재산이 AI 성장의 부가가치를 얼마나 확보하고 있는지 물었다. Chia 의원은 이 성장 중 얼마가 생산성, 임금, 신규 일자리, 현지 기업의 가치 확보로 이어졌는지, 정부가 AI 주도 성장이 더 넓은 경제에 혜택을 주는지 어떻게 모니터링할지 물었다. Tan See Leng 박사는 Liang Eng Hwa 의원에 대한 답변과 같은 내용으로, 글로벌 AI 자본 지출 둔화는 AI 연계 산업에 부담이 되고 시장 조정을 부를 수 있지만 경제가 잘 다각화되어 있다고 답했다. 인력부 조사에서 기업 약 10곳 중 3곳이 AI를 도입했고 그중 약 70%가 생산성 향상을 보고했다고 밝히며, 국가 AI 위원회가 조정과 모니터링을 맡는다고 했다.',
+    whyItMatters: '议员要求量化 AI 增长敏感度和本地价值获取，政府未给数字，只称约三成企业已采用 AI',
+    whyItMattersEn:
+      'MPs asked for a quantified growth sensitivity and local value capture from AI, but the Government gave no such figures, only that about three in 10 firms have adopted AI.',
+    whyItMattersJa:
+      '議員はAI成長の感応度と国内の価値獲得の定量化を求めたが、政府は数値を示さず約3割の企業がAIを導入したと述べるにとどめた',
+    whyItMattersKo:
+      '의원들은 AI 성장 민감도와 현지 가치 확보의 정량화를 요구했지만 정부는 수치 없이 기업 약 30%가 AI를 도입했다고만 답했다',
+    keyPoints: [
+      '陈诗龙的答复同时回应连荣华、谢秉辉和安迪三名议员的提问，内容与连荣华一题的书面答复相同',
+      '全球 AI 资本开支放缓可能拖累电子、精密工程及机械设备批发等 AI 相关行业；全球金融条件收紧和投资者信心下滑是主要下行风险',
+      '资讯通信、专业服务、房地产和建筑等行业预计将支撑 2026 年余下时间的国内生产总值增长',
+      '人力部调查：约十分之三的企业已采用 AI，其中约十分之七报告员工生产力提升；更多企业重新设计岗位、创造 AI 相关职位，而不是削减人手',
+      '贸工部研究：使用 AI 的企业营收和总就业更高，深化 AI 能力的企业收益更大；2026 年财政预算案宣布四大国家 AI 使命',
+      '政府将通过国家人工智能理事会统筹国家 AI 工作，确保 AI 驱动的增长惠及更广泛的经济',
+    ],
+    keyPointsEn: [
+      "Dr Tan See Leng's reply covers questions from Mr Liang Eng Hwa, Mr Edward Chia Bing Hui and Mr Saktiandi Supaat, and is the same text as the written answer to Mr Liang's question",
+      'A slowdown in global AI capital expenditure could weigh on AI-linked sectors such as electronics, precision engineering and machinery wholesale; tighter global financial conditions and loss of investor confidence are the main downside risks',
+      'Information and communications, professional services, real estate and construction are expected to support GDP growth for the rest of 2026',
+      'Ministry of Manpower survey: about three in 10 firms have adopted AI, and about seven in 10 of those reported better worker productivity; more firms are redesigning roles and creating AI-related jobs rather than cutting headcount',
+      'MTI study: firms using AI saw higher revenue and total employment, with larger gains for those that deepened AI capabilities; Budget 2026 announced four National AI Missions',
+      'The Government will coordinate national AI efforts through the National AI Council and ensure AI-driven growth benefits the wider economy',
+    ],
+    keyPointsJa: [
+      'Tan See Leng博士の答弁はLiang Eng Hwa議員、Edward Chia Bing Hui議員、Saktiandi Supaat議員の3人の質問を対象とし、Liang議員の質問への書面答弁と同じ内容である',
+      '世界のAI設備投資の減速はエレクトロニクス、精密工学、機械卸売などAI関連産業の重荷となり得る。世界的な金融環境の引き締まりと投資家の信頼喪失が主な下振れリスク',
+      '情報通信、専門サービス、不動産、建設などの産業が2026年残りの国内総生産の成長を支えると見込まれる',
+      '人材省の調査：約10社に3社がAIを導入し、そのうち約10社に7社が労働者の生産性向上を報告。人員削減ではなく職務の再設計やAI関連職の創出に取り組む企業が増えている',
+      '貿易産業省の研究：AIを利用する企業は売上高と総雇用が高く、AI能力を深めた企業ほど成果が大きい。2026年度予算で4つの国家AIミッションを発表',
+      '政府は国家AI評議会を通じて国家的なAIの取り組みを調整し、AI主導の成長がより広い経済に恩恵をもたらすようにする',
+    ],
+    keyPointsKo: [
+      'Tan See Leng 박사의 답변은 Liang Eng Hwa, Edward Chia Bing Hui, Saktiandi Supaat 세 의원의 질문을 함께 다루며, Liang 의원 질문에 대한 서면 답변과 같은 내용이다',
+      '글로벌 AI 자본 지출 둔화는 전자, 정밀공학, 기계 도매 등 AI 연계 산업에 부담이 될 수 있으며, 글로벌 금융 여건 긴축과 투자자 신뢰 상실이 주요 하방 위험이다',
+      '정보통신, 전문 서비스, 부동산, 건설 등이 2026년 남은 기간 국내총생산 성장을 뒷받침할 것으로 예상된다',
+      '인력부 조사: 기업 10곳 중 약 3곳이 AI를 도입했고 그중 약 10곳 중 7곳이 근로자 생산성 향상을 보고했다. 인원 감축보다 직무 재설계와 AI 관련 일자리 창출에 나서는 기업이 늘고 있다',
+      '통상산업부 연구: AI를 사용하는 기업은 매출과 총고용이 더 높고, AI 역량을 심화한 기업일수록 성과가 크다. 2026년 예산안에서 4개 국가 AI 미션을 발표했다',
+      '정부는 국가 AI 위원회를 통해 국가 AI 노력을 조정하고 AI 주도 성장이 더 넓은 경제에 혜택을 주도록 한다',
+    ],
+    governmentStance:
+      '政府没有给出议员要求的增长敏感度量化评估，也没有提供本地企业、研发和知识产权获取 AI 附加值的具体数据，而是以与另一题相同的答复承认下行风险、强调经济多元，并以人力部调查和贸工部研究说明 AI 目前是在补充而非取代劳动力。',
+    governmentStanceEn:
+      'The Government did not provide the quantified growth-sensitivity assessment the MPs asked for, nor data on AI value captured by local enterprises, R&D and intellectual property. Instead, in a reply identical to another question, it acknowledged the downside risks, stressed economic diversification, and cited a Ministry of Manpower survey and an MTI study to argue that AI is currently complementing rather than replacing labour.',
+    governmentStanceJa:
+      '政府は議員が求めた成長感応度の定量評価も、国内企業・研究開発・知的財産によるAI付加価値の取り込みに関する具体的データも示さなかった。別の質問と同一の答弁で下振れリスクを認め、経済の多角化を強調し、人材省の調査と貿易産業省の研究を引いてAIは現在労働を代替するのではなく補完していると説明した。',
+    governmentStanceKo:
+      '정부는 의원들이 요구한 성장 민감도의 정량 평가도, 현지 기업·연구개발·지식재산의 AI 부가가치 확보에 관한 구체적 데이터도 제시하지 않았다. 대신 다른 질문과 동일한 답변으로 하방 위험을 인정하고 경제 다각화를 강조했으며, 인력부 조사와 통상산업부 연구를 들어 AI가 현재 노동을 대체하기보다 보완하고 있다고 설명했다.',
+    oppositionStance:
+      '提问议员安迪和谢秉辉关注 AI 增长的脆弱性和分配：新加坡增长对全球 AI 资本开支有多敏感，以及增长是否真正落到本地企业、工资和就业上。',
+    oppositionStanceEn:
+      "Questioners Mr Saktiandi Supaat and Mr Edward Chia Bing Hui are concerned about the vulnerability and distribution of AI growth: how sensitive Singapore's growth is to global AI capex, and whether the gains actually reach local firms, wages and jobs.",
+    oppositionStanceJa:
+      '質問者のSaktiandi Supaat議員とEdward Chia Bing Hui議員は、AI成長の脆弱性と分配、すなわちシンガポールの成長が世界のAI設備投資にどれほど左右されるか、そして恩恵が実際に国内企業、賃金、雇用に届いているかを懸念している。',
+    oppositionStanceKo:
+      '질문자 Saktiandi Supaat 의원과 Edward Chia Bing Hui 의원은 AI 성장의 취약성과 분배, 즉 싱가포르 성장이 글로벌 AI 자본 지출에 얼마나 민감한지, 그리고 그 혜택이 실제로 현지 기업, 임금, 일자리에 돌아가는지를 우려한다.',
+    controversyLevel: 2,
+    policySignal:
+      '议员要的是量化敏感度和本地价值获取数据，政府只给出定性判断和企业采用率，说明官方尚未公开衡量 AI 增长本地收益的指标体系；把监测职能交给国家人工智能理事会，是目前唯一的制度性承诺。',
+    policySignalEn:
+      'MPs asked for quantified sensitivity and local value-capture data, but the Government offered only qualitative judgments and adoption rates, suggesting it has yet to publish any framework for measuring the local gains from AI growth; assigning monitoring to the National AI Council is the only institutional commitment so far.',
+    policySignalJa:
+      '議員が求めたのは感応度と国内の価値獲得の定量データだったが、政府は定性的な判断と導入率しか示さなかった。AI成長の国内便益を測る指標体系はまだ公表されておらず、国家AI評議会に監視を委ねることが現時点で唯一の制度的な約束となっている。',
+    policySignalKo:
+      '의원들은 정량적 민감도와 현지 가치 확보 데이터를 요구했지만 정부는 정성적 판단과 도입률만 제시했다. 이는 AI 성장의 현지 이익을 측정하는 지표 체계가 아직 공개되지 않았음을 시사하며, 국가 AI 위원회에 모니터링을 맡긴 것이 현재 유일한 제도적 약속이다.',
+    notableQuote: '我们将通过国家人工智能理事会统筹国家 AI 工作，确保 AI 驱动的增长惠及更广泛的经济。',
+    notableQuoteEn:
+      'Through the National AI Council, we will coordinate our national AI efforts and ensure that AI-driven growth benefits the wider economy.',
+    notableQuoteJa:
+      '国家AI評議会を通じて国家的なAIの取り組みを調整し、AI主導の成長がより広い経済に恩恵をもたらすようにします。',
+    notableQuoteKo:
+      '국가 AI 위원회를 통해 국가 AI 노력을 조정하고 AI 주도 성장이 더 넓은 경제에 혜택을 주도록 하겠습니다.',
+    transcriptEn:
+      "Mr Saktiandi Supaat asked the Minister for Trade and Industry (Energy and Industry) whether the Ministry has assessed how sensitive Singapore's growth is to a material slowdown in global AI capital expenditure, and how far local enterprises, R&D and intellectual property capture value-added AI growth. Mr Edward Chia Bing Hui asked how much AI-related growth has become productivity gains, wage growth, new jobs and value capture by local firms, and how the Government will monitor whether it benefits the wider economy. Dr Tan See Leng replied, also covering Mr Liang Eng Hwa's question. He said global AI infrastructure investment has benefited electronics, precision engineering and machinery wholesale. A slowdown in AI capex could weigh on these sectors, and a sudden fall in AI spending could hit investor confidence and cause sharp market corrections. The economy is well diversified, with information and communications, professional services, real estate and construction supporting growth for the rest of 2026. A Ministry of Manpower survey found about three in 10 firms had adopted AI, and about seven in 10 of them reported productivity gains; an MTI study found AI-using firms had higher revenue and employment. The National AI Council will coordinate efforts and monitor AI's economic impact.",
+    sourceUrl: 'https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=written-answer-na-24735',
+    addedAt: '2026-09-26',
+  },
+  {
+    id: 'written-answer-na-24336',
+    titleEn:
+      'Sustainability of AI-led Economic Growth and Potential Risks in Event of Major Correction in Global AI Asset Valuations',
+    title: 'AI 带动的经济增长能否持续，以及全球 AI 资产估值大幅回调的潜在风险',
+    titleKo: 'AI 주도 경제 성장의 지속 가능성과 글로벌 AI 자산 가치 급락 시 잠재 리스크',
+    titleJa: 'AI主導の経済成長の持続性と、世界的なAI資産評価が大幅に調整した場合の潜在リスク',
+    date: '2026-09-09',
+    parliament: '15',
+    type: 'Written Answers to Questions',
+    speakers: ['Mr Liang Eng Hwa', 'Mr Gan Kim Yong'],
+    personIds: [],
+    topicIds: [],
+    relatedPolicyIds: [],
+    relatedLeverNumbers: [],
+    relatedTimelineYears: [],
+    relatedPostSlugs: [],
+    topics: ['AI Economy & Industry', 'AI Strategy'],
+    summary:
+      '议员连荣华（Mr Liang Eng Hwa）书面询问副总理兼贸工部长：过去四个季度由 AI 带动的强劲增长能否持续，以及若全球 AI 投资和资产估值大幅回调，新加坡经济将面临哪些风险。副总理兼贸工部长颜金勇（Mr Gan Kim Yong）答复：全球 AI 基础设施投资目前惠及电子、精密工程及机械设备批发等外向型行业；若全球 AI 资本开支放缓，将拖累这些行业，并可能引发投资者信心下滑和金融市场大幅回调。但新加坡经济高度多元，资讯通信、专业服务、房地产和建筑业预计将支撑 2026 年余下时间的增长。人力部调查显示约三成企业已采用 AI，其中约七成报告生产力提升；政府将推进四大国家 AI 使命，并通过国家人工智能理事会统筹和监测。',
+    summaryEn:
+      'Mr Liang Eng Hwa asked the Deputy Prime Minister and Minister for Trade and Industry whether the strong AI-led growth of the last four quarters can be sustained, and what risks Singapore faces if global AI investment and asset valuations correct sharply. Deputy Prime Minister Gan Kim Yong replied that global AI infrastructure investment has so far benefited outward-oriented sectors such as electronics, precision engineering and machinery wholesale; a slowdown in global AI capital expenditure would weigh on these sectors and could trigger a loss of investor confidence and sharp corrections in financial markets. He stressed that the economy is well diversified, with information and communications, professional services, real estate and construction expected to support growth for the rest of 2026. A Ministry of Manpower survey found about three in 10 firms had adopted AI, and about seven in 10 of those reported productivity gains. The Government is launching four National AI Missions and will coordinate and monitor AI efforts through the National AI Council.',
+    summaryJa:
+      'Liang Eng Hwa議員は副首相兼貿易産業大臣に対し、過去4四半期のAI主導の力強い成長が持続できるか、また世界のAI投資と資産評価が大幅に調整した場合にシンガポールが直面するリスクを書面で質問した。ガン・キムヨン副首相は、世界のAIインフラ投資はこれまでエレクトロニクス、精密工学、機械卸売など外需型産業に恩恵をもたらしてきたと説明し、世界のAI設備投資が減速すればこれらの産業の重荷となり、投資家の信頼喪失や金融市場の急激な調整を招く可能性があると答弁した。一方で経済は十分に多角化しており、情報通信、専門サービス、不動産、建設が2026年残りの成長を支えると強調した。人材省の調査では約10社に3社がAIを導入し、そのうち約7割が生産性向上を報告した。政府は4つの国家AIミッションを立ち上げ、国家AI評議会を通じて調整と監視を行う。',
+    summaryKo:
+      'Liang Eng Hwa 의원은 부총리 겸 통상산업부 장관에게 지난 4개 분기의 강한 AI 주도 성장이 지속될 수 있는지, 그리고 글로벌 AI 투자와 자산 가치가 크게 조정될 경우 싱가포르가 직면할 위험은 무엇인지 서면으로 질문했다. Gan Kim Yong 부총리는 글로벌 AI 인프라 투자가 지금까지 전자, 정밀공학, 기계 도매 등 대외 지향 산업에 혜택을 주었으며, 글로벌 AI 자본 지출이 둔화되면 이들 산업에 부담이 되고 투자자 신뢰 상실과 금융시장 급격한 조정을 촉발할 수 있다고 답했다. 그러나 경제가 잘 다각화되어 있어 정보통신, 전문 서비스, 부동산, 건설이 2026년 남은 기간 성장을 뒷받침할 것이라고 강조했다. 인력부 조사에서 기업 약 10곳 중 3곳이 AI를 도입했고 그중 약 70%가 생산성 향상을 보고했다. 정부는 4개 국가 AI 미션을 시작하고 국가 AI 위원회를 통해 조정과 모니터링을 한다.',
+    whyItMatters: '政府承认 AI 资本开支骤降可能引发全球金融市场急挫，但称经济多元，约三成企业已采用 AI',
+    whyItMattersEn:
+      'The Government concedes that a sudden fall in global AI capital spending could trigger sharp market corrections, but points to a diversified economy and AI adoption by about three in 10 firms.',
+    whyItMattersJa:
+      '政府は世界のAI設備投資の急減が金融市場の急落を招き得ると認めつつ、経済の多角化と約3割の企業のAI導入を強調',
+    whyItMattersKo:
+      '정부는 글로벌 AI 자본 지출 급감이 금융시장 급락을 부를 수 있다고 인정하면서도 경제 다각화와 기업 약 30%의 AI 도입을 강조',
+    keyPoints: [
+      '全球 AI 基础设施资本投资目前主要惠及制造业的电子与精密工程集群，以及批发贸易业的机械、设备及供应品领域',
+      '下行风险：全球金融条件收紧会推高融资成本；AI 资本开支骤降可能打击投资者信心，引发全球金融市场大幅回调并外溢至全球经济活动',
+      '资讯通信、专业服务、房地产和建筑等行业预计将支撑 2026 年余下时间的国内生产总值增长',
+      '人力部调查：约十分之三的企业已采用 AI，其中约十分之七报告员工生产力提升；贸工部研究显示使用 AI 的企业营收和总就业更高',
+      '2026 年财政预算案宣布在先进制造、金融服务、互联互通和医疗四个领域推出国家 AI 使命；Google DeepMind 和 OpenAI 已在新加坡设立研究实验室',
+      '政府将通过国家人工智能理事会统筹国家 AI 工作，持续监测 AI 对经济及企业表现的影响',
+    ],
+    keyPointsEn: [
+      'Global capital investment in AI infrastructure has so far mainly benefited the electronics and precision engineering clusters in manufacturing, and the machinery, equipment and supplies segment of wholesale trade',
+      'Downside risks: tighter global financial conditions would raise financing costs; a sudden fall in AI capital spending could hit investor confidence, trigger sharp corrections in global financial markets and spill over to global economic activity',
+      'Information and communications, professional services, real estate and construction are expected to support GDP growth for the rest of 2026',
+      'Ministry of Manpower survey: about three in 10 firms have adopted AI, and about seven in 10 of those reported better worker productivity; an MTI study found firms using AI saw higher revenue and total employment',
+      'Budget 2026 announced National AI Missions in Advanced Manufacturing, Financial Services, Connectivity and Healthcare; Google DeepMind and OpenAI have set up research labs in Singapore',
+      "The Government will coordinate national AI efforts through the National AI Council and keep monitoring AI's impact on the economy and on firm performance",
+    ],
+    keyPointsJa: [
+      'AIインフラへの世界的な設備投資は、これまで主に製造業のエレクトロニクス・精密工学クラスターと、卸売業の機械・設備・供給品部門に恩恵をもたらしてきた',
+      '下振れリスク：世界的な金融環境の引き締まりは資金調達コストを押し上げ、AI設備投資の急減は投資家の信頼を損ない、世界の金融市場の急激な調整と世界経済活動への波及を招き得る',
+      '情報通信、専門サービス、不動産、建設などの産業が2026年残りの国内総生産の成長を支えると見込まれる',
+      '人材省の調査：約10社に3社がAIを導入し、そのうち約10社に7社が労働者の生産性向上を報告。貿易産業省の研究ではAIを利用する企業の売上高と総雇用が高い',
+      '2026年度予算で先端製造、金融サービス、コネクティビティ、ヘルスケアの4分野で国家AIミッションを発表。Google DeepMindとOpenAIがシンガポールに研究拠点を設置',
+      '政府は国家AI評議会を通じて国家的なAIの取り組みを調整し、AIが経済と企業業績に与える影響を引き続き注視する',
+    ],
+    keyPointsKo: [
+      'AI 인프라에 대한 글로벌 자본 투자는 지금까지 주로 제조업의 전자·정밀공학 클러스터와 도매업의 기계·장비·공급품 부문에 혜택을 줬다',
+      '하방 위험: 글로벌 금융 여건 긴축은 자금 조달 비용을 높이고, AI 자본 지출 급감은 투자자 신뢰를 떨어뜨려 글로벌 금융시장의 급격한 조정과 글로벌 경제 활동으로의 파급을 부를 수 있다',
+      '정보통신, 전문 서비스, 부동산, 건설 등이 2026년 남은 기간 국내총생산 성장을 뒷받침할 것으로 예상된다',
+      '인력부 조사: 기업 10곳 중 약 3곳이 AI를 도입했고, 그중 약 10곳 중 7곳이 근로자 생산성 향상을 보고했다. 통상산업부 연구에 따르면 AI를 사용하는 기업의 매출과 총고용이 더 높다',
+      '2026년 예산안에서 첨단 제조, 금융 서비스, 연결성, 헬스케어 4개 분야의 국가 AI 미션을 발표했으며, Google DeepMind와 OpenAI가 싱가포르에 연구소를 설립했다',
+      '정부는 국가 AI 위원회를 통해 국가 AI 노력을 조정하고 AI가 경제와 기업 성과에 미치는 영향을 계속 모니터링한다',
+    ],
+    governmentStance:
+      '政府承认全球 AI 资本开支放缓会拖累 AI 相关行业，并可能引发金融市场回调，但强调新加坡经济高度多元，没有给出增长对 AI 周期敏感度的量化评估。政府的应对是推动企业和员工采用 AI、推进国家 AI 使命，并由国家人工智能理事会持续监测。',
+    governmentStanceEn:
+      "The Government acknowledges that a slowdown in global AI capital expenditure would weigh on AI-linked sectors and could trigger financial market corrections, but stresses that Singapore's economy is well diversified; it gave no quantified estimate of growth sensitivity to the AI cycle. Its response is to push AI adoption by firms and workers, launch National AI Missions and monitor through the National AI Council.",
+    governmentStanceJa:
+      '政府は世界のAI設備投資の減速がAI関連産業の重荷となり、金融市場の調整を招き得ることを認めつつ、シンガポール経済は十分に多角化していると強調し、AIサイクルに対する成長感応度の定量評価は示さなかった。対応策は企業と労働者のAI導入推進、国家AIミッションの推進、国家AI評議会による監視である。',
+    governmentStanceKo:
+      '정부는 글로벌 AI 자본 지출 둔화가 AI 연계 산업에 부담이 되고 금융시장 조정을 촉발할 수 있음을 인정하면서도 싱가포르 경제가 잘 다각화되어 있다고 강조했으며, AI 사이클에 대한 성장 민감도의 정량 평가는 제시하지 않았다. 대응책은 기업과 근로자의 AI 도입 촉진, 국가 AI 미션 추진, 국가 AI 위원회를 통한 모니터링이다.',
+    oppositionStance:
+      '提问议员连荣华关注近四个季度 AI 带动的高增长能否延续，以及全球 AI 投资和资产估值大幅回调会对新加坡经济造成哪些冲击。',
+    oppositionStanceEn:
+      "Questioner Mr Liang Eng Hwa is concerned whether the strong AI-led growth of the last four quarters can last, and what disruption a major correction in global AI investment and asset valuations would cause Singapore's economy.",
+    oppositionStanceJa:
+      '質問者のLiang Eng Hwa議員は、過去4四半期のAI主導の高成長が続くのか、また世界のAI投資と資産評価の大幅な調整がシンガポール経済にどのような混乱をもたらすのかを懸念している。',
+    oppositionStanceKo:
+      '질문자 Liang Eng Hwa 의원은 지난 4개 분기의 AI 주도 고성장이 이어질 수 있는지, 글로벌 AI 투자와 자산 가치의 대폭 조정이 싱가포르 경제에 어떤 충격을 줄지 우려한다.',
+    controversyLevel: 2,
+    policySignal:
+      '政府在国会书面答复中正面承认全球 AI 资本开支周期的下行风险，但应对重心放在经济多元化和本地 AI 采用上，而非针对 AI 泡沫的具体对冲措施；同一份答复用来回应三名议员，说明贸工部对这一议题的口径已经统一。',
+    policySignalEn:
+      'In a written reply to Parliament the Government openly acknowledges the downside risk of the global AI capex cycle, but its answer rests on economic diversification and local AI adoption rather than any specific hedge against an AI bubble; using one identical reply for three MPs shows MTI has settled on a single line on this issue.',
+    policySignalJa:
+      '政府は国会への書面答弁で世界のAI設備投資サイクルの下振れリスクを正面から認めたが、対応の重心は経済の多角化と国内のAI導入に置かれ、AIバブルへの具体的なヘッジ策は示さなかった。3人の議員に同一の答弁を用いたことは、貿易産業省がこの問題で統一見解を固めたことを示している。',
+    policySignalKo:
+      '정부는 국회 서면 답변에서 글로벌 AI 자본 지출 사이클의 하방 위험을 정면으로 인정했지만, 대응의 중심은 AI 거품에 대한 구체적 대비책이 아니라 경제 다각화와 현지 AI 도입에 있다. 세 의원에게 동일한 답변을 사용한 것은 통상산업부가 이 사안에 대해 단일한 입장을 정했음을 보여 준다.',
+    notableQuote: '在密切关注 AI 相关风险的同时，我们希望向议员们保证，新加坡经济高度多元化。',
+    notableQuoteEn:
+      "Even as we keep a close watch on the AI-related risks, we would like to assure Members that Singapore's economy is well diversified.",
+    notableQuoteJa:
+      'AI関連リスクを注視しつつも、シンガポール経済は十分に多角化していることを議員の皆様にお約束したいと思います。',
+    notableQuoteKo:
+      'AI 관련 위험을 면밀히 주시하는 한편, 싱가포르 경제가 잘 다각화되어 있음을 의원님들께 말씀드리고자 합니다.',
+    transcriptEn:
+      "Mr Liang Eng Hwa asked the Deputy Prime Minister and Minister for Trade and Industry whether the strong AI-led growth of the last four quarters can be sustained, and what risks Singapore faces if global AI investment and asset valuations correct sharply. Mr Gan Kim Yong replied, also covering questions from Mr Edward Chia Bing Hui and Mr Saktiandi Supaat. He said strong global investment in AI infrastructure has benefited electronics and precision engineering in manufacturing and the machinery, equipment and supplies segment of wholesale trade. A slowdown in global AI capital expenditure could weigh on these sectors; tighter financial conditions could raise financing costs, and a sudden fall in AI spending could hit investor confidence and cause sharp market corrections. He assured Members the economy is well diversified, with information and communications, professional services, real estate and construction expected to support growth for the rest of 2026. A Ministry of Manpower survey found about three in 10 firms had adopted AI, and about seven in 10 of them reported productivity gains, with AI complementing rather than replacing labour. Budget 2026 announced National AI Missions in four sectors, and Google DeepMind and OpenAI have set up research labs in Singapore. The Government will keep monitoring AI's impact and coordinate efforts through the National AI Council.",
+    sourceUrl: 'https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=written-answer-na-24336',
+    addedAt: '2026-09-26',
+  },
+  {
+    id: 'written-answer-24638',
+    titleEn:
+      'Breakdown of AI Capability Building Support Disbursed to Employers under Workforce and Enterprise Development Schemes by Quarter, Share of Total and Sector',
+    title: '雇主获得的 AI 能力建设补助：按季度、占总补助比例及行业分列',
+    titleKo: '인력·기업 개발 제도로 고용주에게 지급된 AI 역량 구축 지원금의 분기별·비중·업종별 내역',
+    titleJa: '労働力・企業開発スキームで雇用主に支給されたAI能力構築支援の四半期別・全体比・業種別内訳',
+    date: '2026-09-09',
+    parliament: '15',
+    type: 'Written Answers to Questions',
+    speakers: ['Ms He Ting Ru', 'Ms Jasmin Lau'],
+    personIds: [],
+    topicIds: [],
+    relatedPolicyIds: [],
+    relatedLeverNumbers: [],
+    relatedTimelineYears: [],
+    relatedPostSlugs: [],
+    topics: ['AI Economy & Industry', 'AI & Employment'],
+    summary:
+      '工人党议员何廷儒（Ms He Ting Ru）书面询问代理人力部长：过去四个季度中，雇主通过劳动力和企业发展计划获得多少用于人工智能能力建设的补助、占雇主所获总补助的比例，以及哪些行业获得最多。刘洁敏（Ms Jasmin Lau）答复：政府通过企业算力计划（ECI）等 AI 专项计划，以及生产力解决方案津贴、企业发展津贴和企业员工转型配套等更广泛的计划支持企业建设 AI 能力，所有行业的新加坡企业均可申请。ECI 和 AI 冠军计划等专项计划 2025 或 2026 年才推出，现在提供发放数据为时过早；更广泛计划中的 AI 往往嵌入整体转型项目，补助按整个项目计算，无法代表 AI 部分的资金。',
+    summaryEn:
+      'Ms He Ting Ru asked the Acting Minister for Manpower how much support was disbursed to employers for AI capability building under workforce and enterprise development schemes in each of the last four quarters, what share of total employer support this represented, and which sectors received the most. Ms Jasmin Lau replied that the Government supports AI capability building through AI-specific schemes such as the Enterprise Compute Initiative (ECI), and broader programmes such as the Productivity Solutions Grant, the Enterprise Development Grant and the Enterprise Workforce Transformation Package, open to Singapore-based firms in all sectors. As AI-specific schemes such as ECI and Champions of AI were only launched in 2025 or 2026, it is too early to give meaningful disbursement figures. Under broader schemes, AI is usually embedded in wider transformation projects, so support is counted for the whole project and does not represent funding for the AI component alone.',
+    summaryJa:
+      '労働者党のHe Ting Ru議員は人材大臣代行に対し、過去4四半期のそれぞれについて、労働力・企業開発スキームの下でAI能力構築のために雇用主へ支給された支援額、雇用主への支援総額に占める割合、最も多く受けた業種を書面で質問した。ジャスミン・ラウ氏は、政府はエンタープライズ・コンピュート・イニシアチブ（ECI）などのAI特化スキームと、生産性ソリューション助成金、企業開発助成金、企業労働力変革パッケージなどのより広範なプログラムを通じて企業のAI能力構築を支援しており、すべての業種のシンガポール拠点企業が利用できると答弁した。ECIやChampions of AIなどのAI特化スキームは2025年または2026年に始まったばかりで、意味のある支給額を示すには時期尚早だという。広範なスキームではAIがより大きな変革プロジェクトに組み込まれていることが多く、支援はプロジェクト全体で計上されるため、AI部分のみの資金を表すものではないとした。',
+    summaryKo:
+      '노동자당 He Ting Ru 의원은 인력부 장관 대행에게 지난 4개 분기 각각 인력·기업 개발 제도에 따라 AI 역량 구축을 위해 고용주에게 지급된 지원금, 전체 고용주 지원금에서 차지하는 비중, 가장 많이 받은 업종을 서면으로 질문했다. Jasmin Lau 의원은 정부가 기업 컴퓨팅 이니셔티브(ECI) 같은 AI 특화 제도와 생산성 솔루션 보조금(PSG), 기업 개발 보조금(EDG), 기업 인력 전환 패키지(EWTP) 같은 더 폭넓은 프로그램을 통해 기업의 AI 역량 구축을 지원하며, 모든 업종의 싱가포르 소재 기업이 이용할 수 있다고 답했다. ECI와 Champions of AI 등 AI 특화 제도는 2025년 또는 2026년에야 출범해 의미 있는 지급 수치를 제시하기에는 이르다고 했다. 폭넓은 제도에서는 AI가 대개 더 큰 전환 프로젝트에 포함되어 있어 지원금이 프로젝트 전체로 집계되므로 AI 부분만의 자금을 나타내지 않는다고 밝혔다.',
+    whyItMatters: '政府以计划太新为由暂不公布 ECI 等 AI 专项补助的发放数据，广泛计划中的 AI 部分也无法拆分',
+    whyItMattersEn:
+      'The Government declined to give disbursement figures for AI-specific schemes such as ECI because they are too new, and says the AI share of broader grants cannot be separated out.',
+    whyItMattersJa:
+      '政府はECIなどAI特化スキームの支給額を新しすぎるとして示さず、広範なスキームのAI部分も切り分けられないと説明',
+    whyItMattersKo:
+      '정부는 ECI 등 AI 특화 제도가 너무 새롭다며 지급 수치를 밝히지 않았고, 폭넓은 제도의 AI 부분도 분리할 수 없다고 설명',
+    keyPoints: [
+      'AI 专项计划包括企业算力计划（ECI）和 AI 冠军计划（Champions of AI）；更广泛的计划包括生产力解决方案津贴、企业发展津贴和企业员工转型配套',
+      '相关计划面向所有行业、在新加坡运营的企业开放',
+      '对 AI 专项计划，政府追踪获支持的项目和所提供的补助金额',
+      'ECI 和 AI 冠军计划 2025 或 2026 年才推出，政府表示现在提供有意义的发放数据为时过早，待计划运行更久、完成更多项目后再公布',
+      '在更广泛的计划中，AI 采用多嵌入整体业务转型项目，补助按项目整体计算；可识别涉及 AI 的项目，但总补助不代表仅用于 AI 部分的资金',
+    ],
+    keyPointsEn: [
+      'AI-specific schemes include the Enterprise Compute Initiative (ECI) and Champions of AI; broader programmes include the Productivity Solutions Grant, the Enterprise Development Grant and the Enterprise Workforce Transformation Package',
+      'The schemes are open to Singapore-based firms across all sectors',
+      'For AI-specific schemes, the Government tracks the projects supported and the grant support provided',
+      'ECI and Champions of AI were only launched in 2025 or 2026, so the Government says it is too early to give meaningful disbursement figures; it will report them after the schemes have run longer and more projects are completed',
+      'Under broader schemes, AI adoption is usually embedded in wider business transformation projects and support is counted for the whole project; AI projects can be identified, but the total grant does not represent funding for the AI component alone',
+    ],
+    keyPointsJa: [
+      'AI特化スキームにはエンタープライズ・コンピュート・イニシアチブ（ECI）とChampions of AIがあり、より広範なプログラムには生産性ソリューション助成金、企業開発助成金、企業労働力変革パッケージがある',
+      'これらのスキームは、すべての業種のシンガポール拠点企業が利用できる',
+      'AI特化スキームについては、支援したプロジェクトと提供した助成額を追跡している',
+      'ECIとChampions of AIは2025年または2026年に始まったばかりで、意味のある支給額を示すには時期尚早とし、スキームの運用期間が延び、完了プロジェクトが増えた後に報告するとした',
+      '広範なスキームではAI導入がより大きな事業変革プロジェクトに組み込まれていることが多く、支援はプロジェクト全体で計上される。AIを含むプロジェクトは特定できるが、助成総額はAI部分のみの資金を表さない',
+    ],
+    keyPointsKo: [
+      'AI 특화 제도에는 기업 컴퓨팅 이니셔티브(ECI)와 Champions of AI가 있고, 더 폭넓은 프로그램에는 생산성 솔루션 보조금(PSG), 기업 개발 보조금(EDG), 기업 인력 전환 패키지(EWTP)가 있다',
+      '이 제도들은 모든 업종의 싱가포르 소재 기업이 이용할 수 있다',
+      'AI 특화 제도의 경우 정부는 지원한 프로젝트와 제공한 보조금을 추적한다',
+      'ECI와 Champions of AI는 2025년 또는 2026년에야 출범해 의미 있는 지급 수치를 제시하기에는 이르며, 제도가 더 오래 운영되고 더 많은 프로젝트가 완료된 후 보고하겠다고 했다',
+      '폭넓은 제도에서는 AI 도입이 대개 더 큰 사업 전환 프로젝트에 포함되어 지원금이 프로젝트 전체로 집계된다. AI가 포함된 프로젝트는 식별할 수 있지만 총보조금이 AI 부분만의 자금을 나타내지는 않는다',
+    ],
+    governmentStance:
+      '政府没有提供议员要求的按季度、占比和行业划分的数据：专项计划以推出时间太短为由暂不公布，广泛计划则以 AI 部分无法从整体项目中拆分为由。政府承诺待专项计划运行更久、完成更多项目后再报告相关数据。',
+    governmentStanceEn:
+      'The Government did not provide the quarterly, share-of-total or sector figures the MP asked for: for AI-specific schemes it said they are too new, and for broader schemes it said the AI component cannot be separated from the overall project. It committed to reporting figures for the AI-specific schemes once they have run longer and more projects are completed.',
+    governmentStanceJa:
+      '政府は議員が求めた四半期別・全体比・業種別のデータを示さなかった。AI特化スキームについては開始から間もないことを、広範なスキームについてはAI部分をプロジェクト全体から切り分けられないことを理由とした。AI特化スキームについては、運用期間が延び完了プロジェクトが増えた後に報告すると約束した。',
+    governmentStanceKo:
+      '정부는 의원이 요구한 분기별·비중·업종별 데이터를 제시하지 않았다. AI 특화 제도는 출범한 지 얼마 되지 않았다는 이유를, 폭넓은 제도는 AI 부분을 전체 프로젝트에서 분리할 수 없다는 이유를 들었다. AI 특화 제도에 대해서는 더 오래 운영되고 더 많은 프로젝트가 완료된 후 보고하겠다고 약속했다.',
+    oppositionStance:
+      '提问议员何廷儒（工人党）要求量化政府对雇主 AI 能力建设的补助规模、占比和行业分布，以检验资源配置是否到位。',
+    oppositionStanceEn:
+      "Questioner Ms He Ting Ru (Workers' Party) wants the size, share and sector distribution of Government support for employers' AI capability building quantified, so that the allocation of resources can be scrutinised.",
+    oppositionStanceJa:
+      '質問者のHe Ting Ru議員（労働者党）は、雇用主のAI能力構築に対する政府支援の規模、割合、業種分布の定量化を求め、資源配分を検証しようとしている。',
+    oppositionStanceKo:
+      '질문자 He Ting Ru 의원(노동자당)은 고용주의 AI 역량 구축에 대한 정부 지원의 규모, 비중, 업종 분포를 정량화해 자원 배분을 점검하려 한다.',
+    controversyLevel: 2,
+    policySignal:
+      '与何廷儒同日获得的贸工部答复一样，政府在 AI 企业补助上尚无可公开的量化账目；ECI 和 AI 冠军计划的发放数据会是之后追问的切入点，而广泛计划的“无法拆分”口径意味着 AI 补助总规模可能长期难以核算。',
+    policySignalEn:
+      'As in the MTI reply Ms He received the same day, the Government has no public quantified account of its AI grants to businesses yet; disbursement figures for ECI and Champions of AI will be the obvious point for follow-up questions, while the cannot-be-separated line on broader schemes means the total scale of AI support may stay hard to tally for a long time.',
+    policySignalJa:
+      'He Ting Ru議員が同日に受けた貿易産業省の答弁と同様に、政府には企業向けAI助成の公開可能な定量的な記録がまだない。ECIとChampions of AIの支給額が今後の追及の糸口となる一方、広範なスキームについて切り分けられないとする立場は、AI支援の総規模が長く把握しにくいままであることを意味する。',
+    policySignalKo:
+      'He Ting Ru 의원이 같은 날 받은 통상산업부 답변과 마찬가지로, 정부에는 아직 기업 대상 AI 보조금에 대한 공개 가능한 정량적 집계가 없다. ECI와 Champions of AI의 지급 수치가 향후 추가 질의의 출발점이 되겠지만, 폭넓은 제도에 대해 분리할 수 없다는 입장은 AI 지원의 총규모를 오랫동안 파악하기 어려울 수 있음을 뜻한다.',
+    notableQuote: '由于 ECI 和 AI 冠军计划等部分计划在 2025 或 2026 年才推出，现在提供有意义的发放数据还为时过早。',
+    notableQuoteEn:
+      'As some of these schemes, such as ECI and Champions of AI, were only launched in 2025 or 2026, it is too early to provide meaningful disbursement figures.',
+    notableQuoteJa:
+      'ECIやChampions of AIなど一部のスキームは2025年または2026年に開始されたばかりのため、意味のある支給額を示すには時期尚早です。',
+    notableQuoteKo:
+      'ECI와 Champions of AI 등 일부 제도는 2025년 또는 2026년에야 출범했기 때문에 의미 있는 지급 수치를 제시하기에는 아직 이릅니다.',
+    transcriptEn:
+      'Ms He Ting Ru asked the Acting Minister for Manpower, for each of the last four quarters, how much support was disbursed to employers under workforce and enterprise development schemes for artificial intelligence capability building, what proportion this was of total support paid to employers, and which sectors received the most. Ms Jasmin Lau replied that the Government supports AI capability building through AI-specific schemes such as the Enterprise Compute Initiative (ECI), and broader programmes such as the Productivity Solutions Grant, the Enterprise Development Grant and the Enterprise Workforce Transformation Package, which support projects that help firms upgrade, innovate, grow and transform, including AI projects. The schemes are open to Singapore-based firms in all sectors. For AI-specific schemes, the Government tracks the projects supported and the grants given, but because schemes such as ECI and Champions of AI were only launched in 2025 or 2026, it is too early to provide meaningful disbursement figures; these will be reported once the schemes have run longer. For broader schemes, AI adoption is often embedded in wider transformation projects, so support is counted as part of the whole project. AI projects can be identified, but the total grant would not represent funding for the AI component alone.',
+    sourceUrl: 'https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=written-answer-24638',
+    addedAt: '2026-09-26',
+  },
+  {
+    id: 'written-answer-24596',
+    titleEn:
+      'Measuring Productivity Improvements from Government-supported AI Capability Investments and Key Findings Across Sectors',
+    title: '如何衡量政府资助 AI 能力投资带来的生产力提升及各行业主要发现',
+    titleKo: '정부 지원 AI 역량 투자에 따른 생산성 향상 측정 방식과 업종별 주요 결과',
+    titleJa: '政府支援によるAI能力投資の生産性向上の測定方法と業種別の主な結果',
+    date: '2026-09-09',
+    parliament: '15',
+    type: 'Written Answers to Questions',
+    speakers: ['Ms He Ting Ru', 'Dr Tan See Leng'],
+    personIds: [],
+    topicIds: [],
+    relatedPolicyIds: [],
+    relatedLeverNumbers: [],
+    relatedTimelineYears: [],
+    relatedPostSlugs: [],
+    topics: ['AI Economy & Industry'],
+    summary:
+      '工人党议员何廷儒（Ms He Ting Ru）书面询问贸工部（能源与工业）部长：政府如何衡量由政府资助的人工智能能力投资给企业带来的生产力提升，以及这类衡量有哪些主要发现，包括分行业数据。陈诗龙（Dr Tan See Leng）答复：对获政府资助进行 AI 投资的企业，政府衡量其流程效率和/或劳动生产力的提升，具体指标视项目而定；由于这些支持措施相对较新，目前数据不足以评估成效。政府也将追踪企业的 AI 采用率和各行业生产力走势，但行业生产力受需求状况、员工技能、管理实践和更广泛的数字转型等多种因素共同影响，无法单独剥离出 AI 的作用。',
+    summaryEn:
+      'Ms He Ting Ru asked the Minister for Trade and Industry (Energy and Industry) how the Ministry measures productivity improvements for businesses attributable to Government-supported AI capability investments, and what the key findings are, including a sector breakdown. Dr Tan See Leng replied that for businesses receiving Government support for AI investments, the Government measures improvements in process efficiency and/or labour productivity, with specific indicators depending on the project. Because the support measures are relatively new, there is insufficient data to assess their impact at this point. The Government will also track the rate of AI adoption among businesses and sectoral productivity trends, but it is not possible to isolate the impact of AI, since sectoral productivity is shaped by a combination of factors including demand conditions, workforce skills, management practices and wider digital transformation.',
+    summaryJa:
+      '労働者党のHe Ting Ru議員は貿易産業大臣（エネルギー・産業担当）に対し、政府が支援するAI能力投資に起因する企業の生産性向上をどのように測定しているか、また業種別内訳を含む主な結果は何かを書面で質問した。Tan See Leng博士は、AI投資に政府支援を受ける企業については業務プロセスの効率および/または労働生産性の向上を測定しており、具体的な指標はプロジェクトによって異なると答弁した。支援策が比較的新しいため、現時点では効果を評価する十分なデータがないという。政府は企業のAI導入率と業種別の生産性動向も追跡するが、業種別の生産性は需要状況、労働者のスキル、経営慣行、より広範なデジタル変革など複数の要因に左右されるため、AIの影響だけを切り分けることはできないとした。',
+    summaryKo:
+      '노동자당 He Ting Ru 의원은 통상산업부 장관(에너지·산업 담당)에게 정부 지원 AI 역량 투자에 따른 기업의 생산성 향상을 어떻게 측정하는지, 업종별 내역을 포함한 주요 결과는 무엇인지 서면으로 질문했다. Tan See Leng 박사는 AI 투자에 정부 지원을 받는 기업의 경우 공정 효율 및/또는 노동생산성 향상을 측정하며, 구체적 지표는 프로젝트에 따라 다르다고 답했다. 지원 조치가 비교적 새로워 현재로서는 효과를 평가할 데이터가 충분하지 않다고 했다. 정부는 기업의 AI 도입률과 업종별 생산성 추세도 추적하지만, 업종별 생산성은 수요 여건, 근로자 기술, 경영 관행, 더 폭넓은 디지털 전환 등 여러 요인의 영향을 받기 때문에 AI의 영향만 따로 분리할 수는 없다고 밝혔다.',
+    whyItMatters: '政府资助的 AI 投资暂无成效数据，官方称行业生产力中无法单独剥离 AI 的作用',
+    whyItMattersEn:
+      "There is not yet enough data to assess Government-funded AI investments, and the Government says AI's impact on sectoral productivity cannot be isolated.",
+    whyItMattersJa:
+      '政府支援のAI投資は効果を評価するデータがまだ不足しており、政府は業種別生産性からAIの影響を切り分けられないと説明',
+    whyItMattersKo:
+      '정부 지원 AI 투자는 아직 효과를 평가할 데이터가 부족하며, 정부는 업종별 생산성에서 AI 영향만 분리할 수 없다고 설명',
+    keyPoints: [
+      '对获政府资助进行 AI 投资的企业，衡量指标是流程效率和/或劳动生产力的提升，具体指标视项目而定',
+      '由于支持措施相对较新，目前数据不足以评估其影响；答复没有提供任何发现或分行业数据',
+      '政府将追踪企业的 AI 采用率以及各行业的生产力走势',
+      '政府表示无法单独剥离 AI 对行业生产力的影响，因为需求状况、员工技能、管理实践和更广泛的数字转型等因素共同起作用',
+    ],
+    keyPointsEn: [
+      'For businesses receiving Government support for AI investments, the measures are improvements in process efficiency and/or labour productivity, with specific indicators depending on the project',
+      'As the support measures are relatively new, there is insufficient data to assess their impact; the reply gave no findings or sector breakdown',
+      'The Government will track the rate of AI adoption among businesses and sectoral productivity trends',
+      "The Government says AI's impact on sectoral productivity cannot be isolated, because demand conditions, workforce skills, management practices and wider digital transformation all play a part",
+    ],
+    keyPointsJa: [
+      'AI投資に政府支援を受ける企業については、業務プロセスの効率および/または労働生産性の向上を測定し、具体的な指標はプロジェクトによって異なる',
+      '支援策が比較的新しいため、現時点では効果を評価する十分なデータがない。答弁では結果も業種別内訳も示されなかった',
+      '政府は企業のAI導入率と業種別の生産性動向を追跡する',
+      '需要状況、労働者のスキル、経営慣行、より広範なデジタル変革などが複合的に作用するため、業種別生産性からAIの影響だけを切り分けることはできないとしている',
+    ],
+    keyPointsKo: [
+      'AI 투자에 정부 지원을 받는 기업의 경우 공정 효율 및/또는 노동생산성 향상을 측정하며, 구체적 지표는 프로젝트에 따라 다르다',
+      '지원 조치가 비교적 새로워 현재로서는 효과를 평가할 데이터가 충분하지 않으며, 답변에는 결과나 업종별 내역이 없었다',
+      '정부는 기업의 AI 도입률과 업종별 생산성 추세를 추적한다',
+      '수요 여건, 근로자 기술, 경영 관행, 더 폭넓은 디지털 전환 등이 함께 작용하므로 업종별 생산성에서 AI 영향만 분리할 수는 없다고 정부는 밝혔다',
+    ],
+    governmentStance:
+      '政府说明了项目层面的衡量方式（流程效率和劳动生产力），但以措施太新、数据不足为由没有提供任何发现或分行业数据，并明确表示在行业层面无法单独衡量 AI 的影响。',
+    governmentStanceEn:
+      "The Government explained its project-level measures (process efficiency and labour productivity), but gave no findings or sector breakdown on the grounds that the schemes are too new and data is insufficient, and stated plainly that AI's impact cannot be isolated at the sector level.",
+    governmentStanceJa:
+      '政府はプロジェクト単位の測定方法（業務プロセスの効率と労働生産性）を説明したが、支援策が新しくデータが不足しているとして結果や業種別内訳は示さず、業種レベルではAIの影響を切り分けて測定できないと明言した。',
+    governmentStanceKo:
+      '정부는 프로젝트 단위의 측정 방식(공정 효율과 노동생산성)을 설명했지만, 지원 조치가 새롭고 데이터가 부족하다는 이유로 결과나 업종별 내역을 제시하지 않았으며, 업종 차원에서는 AI의 영향을 따로 측정할 수 없다고 분명히 했다.',
+    oppositionStance:
+      '提问议员何廷儒（工人党）要求政府交代 AI 资助的实际生产力成效和分行业数据，关注公共资金投入的问责。',
+    oppositionStanceEn:
+      "Questioner Ms He Ting Ru (Workers' Party) wants the Government to account for the actual productivity results of its AI funding, broken down by sector, as a matter of accountability for public money.",
+    oppositionStanceJa:
+      '質問者のHe Ting Ru議員（労働者党）は、AI支援の実際の生産性効果と業種別データの開示を政府に求め、公的資金の説明責任を問うている。',
+    oppositionStanceKo:
+      '질문자 He Ting Ru 의원(노동자당)은 정부가 AI 지원의 실제 생산성 성과와 업종별 데이터를 밝히라고 요구하며 공공 자금 투입의 책임성을 따지고 있다.',
+    controversyLevel: 2,
+    policySignal:
+      '政府在大力资助企业 AI 投资的同时，承认尚无可公布的成效数据，且认为行业层面的归因在方法上做不到；这意味着未来对 AI 资助的问责，很可能只能停留在项目指标和采用率层面。',
+    policySignalEn:
+      'While funding business AI investment heavily, the Government admits it has no results to publish yet and considers sector-level attribution methodologically impossible; this suggests future accountability for AI funding will likely rest on project indicators and adoption rates alone.',
+    policySignalJa:
+      '政府は企業のAI投資を積極的に支援する一方で、公表できる効果データはまだなく、業種レベルでの因果の特定は方法論的に不可能だと認めた。今後のAI支援の説明責任は、プロジェクト指標と導入率にとどまる可能性が高い。',
+    policySignalKo:
+      '정부는 기업의 AI 투자를 적극 지원하면서도 아직 공개할 성과 데이터가 없고 업종 차원의 인과 귀속은 방법론적으로 불가능하다고 인정했다. 향후 AI 지원에 대한 책임성은 프로젝트 지표와 도입률 수준에 머물 가능성이 크다.',
+    notableQuote: '由于这些支持措施相对较新，目前还没有足够数据评估其影响。',
+    notableQuoteEn:
+      'As the support measures are relatively new, there is insufficient data to assess their impact at this point.',
+    notableQuoteJa: '支援策は比較的新しいため、現時点ではその効果を評価するのに十分なデータがありません。',
+    notableQuoteKo: '지원 조치가 비교적 새롭기 때문에 현재로서는 그 효과를 평가할 데이터가 충분하지 않습니다.',
+    transcriptEn:
+      'Ms He Ting Ru asked the Minister for Trade and Industry (Energy and Industry) how the Ministry measures productivity improvements for businesses that can be attributed to Government-supported artificial intelligence capability investments, and what the key findings from such measurements are, including a breakdown across sectors. Dr Tan See Leng replied that for businesses receiving Government support for their AI investments, the Government measures improvements in process efficiency and/or labour productivity. The specific indicators depend on the project concerned. He said that as the support measures are relatively new, there is insufficient data to assess their impact at this point, and he did not provide findings or a sector breakdown. He added that the Government will also track the rate of AI adoption among businesses as well as sectoral productivity trends. However, he said it would not be possible to isolate the impact of AI on sectoral productivity, because sectoral outcomes are influenced by a combination of factors, including demand conditions, workforce skills, management practices and wider digital transformation efforts.',
+    sourceUrl: 'https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=written-answer-24596',
+    addedAt: '2026-09-26',
+  },
+  {
+    id: 'written-answer-24587',
+    titleEn:
+      'Extending Age Assurance Measures, Minor-Safe Defaults and Crisis Escalation Standards for High-Risk AI Companion and Mental Health Chatbots Across Access Channels',
+    title: '高风险 AI 陪伴及心理健康聊天机器人：年龄验证、未成年人安全默认与危机升级标准能否覆盖所有渠道',
+    titleKo:
+      '고위험 AI 동반자·정신건강 챗봇의 연령 확인, 미성년자 안전 기본설정, 위기 대응 기준을 모든 접근 경로로 확대',
+    titleJa:
+      '高リスクのAIコンパニオン・メンタルヘルスチャットボットへの年齢確認、未成年者向け安全初期設定、危機エスカレーション基準の全アクセス経路への拡大',
+    date: '2026-09-09',
+    parliament: '15',
+    type: 'Written Answers to Questions',
+    speakers: ['Mr Yip Hon Weng', 'Mrs Josephine Teo'],
+    personIds: [],
+    topicIds: [],
+    relatedPolicyIds: [],
+    relatedLeverNumbers: [],
+    relatedTimelineYears: [],
+    relatedPostSlugs: [],
+    topics: ['AI Safety & Ethics', 'AI Governance & Regulation'],
+    summary:
+      '议员叶汉荣（Mr Yip Hon Weng）书面询问数字发展与信息部长：鉴于应用商店的年龄验证可通过网页或免账户方式绕过，为何未要求在访问高风险 AI 陪伴及心理健康聊天机器人时实施同等年龄验证，以及年龄验证、未成年人安全默认设置和危机升级标准会否适用于所有访问渠道。数字发展与信息部长杨莉明（Mrs Josephine Teo）答复：AI 聊天机器人可经应用商店或直接经互联网访问；应用商店是重要关口，《广播法》允许资讯通信媒体发展局指示应用商店屏蔽宣扬或教唆自杀、自残的应用，《网络安全行为准则——应用分发服务》要求指定应用商店实施年龄验证并在上架前审核应用。对于经网站等渠道直接访问的聊天机器人，数字发展与信息部正研究进一步保障措施，以更好保护年轻用户。',
+    summaryEn:
+      "Mr Yip Hon Weng asked the Minister for Digital Development and Information why, given that app store age assurance can be bypassed through web-based or account-free access, the Ministry has not required equivalent age assurance at the point of access to high-risk AI companion and mental health chatbots, and whether common age assurance, minor-safe defaults and crisis escalation standards will apply across access channels. Minister Mrs Josephine Teo replied that AI chatbots can be reached through apps distributed by app stores or directly over the Internet. App stores are an important gateway: the Broadcasting Act lets IMDA direct an app store to disable Singapore users' access to egregious content, including apps that advocate or instruct on suicide or self-harm, and the Code of Practice for Online Safety for App Distribution Services requires designated app stores to implement age assurance and review apps before release. For chatbots accessed directly through websites or other channels, MDDI is studying further safeguards to better protect younger users.",
+    summaryJa:
+      'Yip Hon Weng議員はデジタル発展・情報大臣に書面で、アプリストアの年齢確認はウェブ経由やアカウント不要のアクセスで回避できることを踏まえ、なぜ高リスクのAIコンパニオンやメンタルヘルスチャットボットへのアクセス時点で同等の年齢確認を義務付けていないのか、また共通の年齢確認、未成年者向け安全初期設定、危機エスカレーション基準がアクセス経路を問わず適用されるのかを質問した。ジョセフィン・テオ大臣は、AIチャットボットにはアプリストア経由のアプリとインターネット経由の直接アクセスの両方があると答弁した。アプリストアは重要な入り口であり、放送法により情報通信メディア開発庁は自殺や自傷を唱道・指南するアプリを含む悪質なコンテンツへのアクセスを無効にするようアプリストアに指示でき、オンライン安全実施規範――アプリ配信サービスは指定アプリストアに年齢確認の実施と公開前のアプリ審査を求めている。ウェブサイトなどから直接アクセスするチャットボットについては、デジタル発展・情報省が若年利用者を守るさらなる保護措置を検討している。',
+    summaryKo:
+      'Yip Hon Weng 의원은 디지털개발정보부 장관에게 서면으로, 앱스토어 연령 확인이 웹 기반 접속이나 계정 없는 접속으로 우회될 수 있는데 왜 고위험 AI 동반자·정신건강 챗봇 접속 시점에 동등한 연령 확인을 요구하지 않았는지, 그리고 공통의 연령 확인, 미성년자 안전 기본설정, 위기 에스컬레이션 기준이 모든 접근 경로에 적용될지 질의했다. Josephine Teo 장관은 AI 챗봇은 앱스토어를 통해 배포되는 앱과 인터넷 직접 접속 모두로 이용할 수 있다고 답했다. 앱스토어는 중요한 관문으로, 방송법에 따라 정보통신미디어개발청은 자살이나 자해를 옹호하거나 방법을 알려 주는 앱을 포함한 극심한 유해 콘텐츠 접근을 차단하도록 앱스토어에 지시할 수 있고, 온라인 안전 실무 규약 – 앱 배포 서비스는 지정 앱스토어에 연령 확인 시행과 출시 전 앱 검토를 요구한다. 웹사이트 등으로 직접 접속하는 챗봇에 대해서는 디지털개발정보부가 청소년 이용자를 보호할 추가 안전장치를 검토하고 있다.',
+    whyItMatters: '应用商店已须做年龄验证，但网页直连的 AI 聊天机器人尚无同等规定，数字发展与信息部称正研究',
+    whyItMattersEn:
+      'App stores must already run age assurance, but AI chatbots reached directly through websites face no equivalent rule yet, and MDDI says it is studying further safeguards.',
+    whyItMattersJa:
+      'アプリストアには年齢確認が義務付けられているが、ウェブから直接使うAIチャットボットには同等の規定がなく、デジタル発展・情報省は検討中',
+    whyItMattersKo:
+      '앱스토어에는 이미 연령 확인 의무가 있지만 웹으로 직접 접속하는 AI 챗봇에는 동등한 규정이 없어 디지털개발정보부가 검토 중',
+    keyPoints: [
+      'AI 聊天机器人可经应用商店分发的移动应用访问，也可直接经互联网访问',
+      '《广播法》允许资讯通信媒体发展局指示应用商店屏蔽新加坡用户对严重有害内容的访问，包括宣扬或教唆自杀、自残的应用',
+      '《网络安全行为准则——应用分发服务》要求指定应用商店实施年龄验证，降低儿童接触有害内容的风险',
+      '指定应用商店须在应用及其更新上架前进行审核，确保符合内容准则和标准',
+      '对经网站等渠道直接访问的 AI 聊天机器人，数字发展与信息部正研究在不同访问方式下保护年轻用户的进一步保障措施',
+    ],
+    keyPointsEn: [
+      'AI chatbots can be accessed through mobile apps distributed by app stores or directly over the Internet',
+      "The Broadcasting Act allows IMDA to direct an app store to disable Singapore users' access to egregious content, including apps that advocate or instruct on suicide or self-harm",
+      "The Code of Practice for Online Safety for App Distribution Services requires designated app stores to implement age assurance and minimise children's exposure to harmful content",
+      'Designated app stores are expected to review apps and app updates before release to ensure compliance with content guidelines and standards',
+      'For AI chatbots accessed directly through websites or other channels, MDDI is studying further safeguards to protect younger users across different modes of access',
+    ],
+    keyPointsJa: [
+      'AIチャットボットには、アプリストアが配布するモバイルアプリとインターネットからの直接アクセスの両方がある',
+      '放送法により、情報通信メディア開発庁は、自殺や自傷を唱道・指南するアプリを含む悪質なコンテンツへのシンガポールの利用者のアクセスを無効にするようアプリストアに指示できる',
+      'オンライン安全実施規範――アプリ配信サービスは、指定アプリストアに年齢確認の実施と子どもが有害コンテンツに触れるリスクの最小化を求めている',
+      '指定アプリストアは、アプリとその更新を公開前に審査し、コンテンツガイドラインと基準への適合を確保することが求められる',
+      'ウェブサイトなどから直接アクセスするAIチャットボットについて、デジタル発展・情報省は異なるアクセス手段で若年利用者を守るさらなる保護措置を検討中',
+    ],
+    keyPointsKo: [
+      'AI 챗봇은 앱스토어가 배포하는 모바일 앱과 인터넷 직접 접속 모두로 이용할 수 있다',
+      '방송법에 따라 정보통신미디어개발청은 자살이나 자해를 옹호하거나 방법을 알려 주는 앱을 포함한 극심한 유해 콘텐츠에 대한 싱가포르 이용자의 접근을 차단하도록 앱스토어에 지시할 수 있다',
+      '온라인 안전 실무 규약 – 앱 배포 서비스는 지정 앱스토어에 연령 확인 시행과 어린이의 유해 콘텐츠 노출 위험 최소화를 요구한다',
+      '지정 앱스토어는 앱과 앱 업데이트를 출시 전에 검토해 콘텐츠 지침과 기준 준수를 보장해야 한다',
+      '웹사이트 등으로 직접 접속하는 AI 챗봇에 대해 디지털개발정보부는 다양한 접근 방식에서 청소년 이용자를 보호할 추가 안전장치를 검토 중이다',
+    ],
+    governmentStance:
+      '政府目前以应用商店为主要监管关口，依靠《广播法》和应用分发服务行为准则落实年龄验证与内容审核。对于为何未在访问环节要求同等年龄验证、统一标准会否跨渠道适用，部长没有正面回答，只表示正研究进一步保障措施。',
+    governmentStanceEn:
+      'The Government treats app stores as the main regulatory gateway, relying on the Broadcasting Act and the app distribution code to enforce age assurance and content review. The Minister did not directly answer why equivalent age assurance is not required at the point of access or whether common standards will apply across channels, saying only that further safeguards are being studied.',
+    governmentStanceJa:
+      '政府はアプリストアを主要な規制の入り口と位置づけ、放送法とアプリ配信サービスの実施規範によって年齢確認とコンテンツ審査を担保している。アクセス時点で同等の年齢確認を求めない理由や、共通基準が全経路に適用されるかについて大臣は正面から答えず、さらなる保護措置を検討中と述べるにとどめた。',
+    governmentStanceKo:
+      '정부는 앱스토어를 주요 규제 관문으로 삼아 방송법과 앱 배포 서비스 실무 규약으로 연령 확인과 콘텐츠 검토를 이행하고 있다. 장관은 접속 시점에 동등한 연령 확인을 요구하지 않는 이유와 공통 기준의 전 경로 적용 여부에 대해 직접 답하지 않았고, 추가 안전장치를 검토 중이라고만 밝혔다.',
+    oppositionStance:
+      '提问议员叶汉荣担心年龄验证只设在应用商店下载环节，未成年人可通过网页或免账户方式绕过，直接接触高风险 AI 陪伴和心理健康聊天机器人。',
+    oppositionStanceEn:
+      'Questioner Mr Yip Hon Weng worries that age assurance sits only at the app store download point, letting minors bypass it through web-based or account-free access and reach high-risk AI companion and mental health chatbots directly.',
+    oppositionStanceJa:
+      '質問者のYip Hon Weng議員は、年齢確認がアプリストアでのダウンロード時点にしかなく、未成年者がウェブ経由やアカウント不要のアクセスで回避し、高リスクのAIコンパニオンやメンタルヘルスチャットボットに直接触れられることを懸念している。',
+    oppositionStanceKo:
+      '질의자 Yip Hon Weng 의원은 연령 확인이 앱스토어 다운로드 시점에만 있어 미성년자가 웹 기반 접속이나 계정 없는 접속으로 이를 우회해 고위험 AI 동반자·정신건강 챗봇에 직접 접근할 수 있다고 우려한다.',
+    controversyLevel: 2,
+    policySignal:
+      '新加坡对 AI 聊天机器人的未成年人保护仍借用应用商店这一既有监管框架，网页直连是公认的缺口；部长确认正研究跨访问方式的保障措施，预示网络安全规则可能从分发渠道延伸到 AI 服务本身。',
+    policySignalEn:
+      "Singapore's protection of minors from AI chatbots still borrows the existing app store framework, and direct web access is an acknowledged gap. The Minister's confirmation that safeguards across access modes are being studied suggests online safety rules may extend from distribution channels to the AI services themselves.",
+    policySignalJa:
+      'シンガポールのAIチャットボットに関する未成年者保護は、依然としてアプリストアという既存の規制枠組みを借りており、ウェブからの直接アクセスは認識された抜け穴となっている。大臣がアクセス手段を問わない保護措置を検討中と認めたことは、オンライン安全規制が配信経路からAIサービスそのものへ広がる可能性を示している。',
+    policySignalKo:
+      '싱가포르의 AI 챗봇 미성년자 보호는 여전히 앱스토어라는 기존 규제 틀을 빌려 쓰고 있으며, 웹 직접 접속은 인정된 공백이다. 장관이 접근 방식 전반의 안전장치를 검토 중이라고 확인한 것은 온라인 안전 규정이 배포 경로에서 AI 서비스 자체로 확장될 수 있음을 시사한다.',
+    notableQuote: '数字发展与信息部正在研究进一步的保障措施，以便在不同访问方式下更好地保护年轻用户。',
+    notableQuoteEn:
+      'The Ministry of Digital Development and Information is studying further safeguards to better protect younger users across different modes of access.',
+    notableQuoteJa:
+      'デジタル発展・情報省は、異なるアクセス手段にわたって若年利用者をよりよく保護するため、さらなる保護措置を検討しています。',
+    notableQuoteKo:
+      '디지털개발정보부는 다양한 접근 방식 전반에서 청소년 이용자를 더 잘 보호하기 위한 추가 안전장치를 검토하고 있습니다.',
+    transcriptEn:
+      "Mr Yip Hon Weng asked the Minister for Digital Development and Information, noting that app store age assurance measures can be bypassed through web-based or account-free access at the point of download, why the Ministry has not required equivalent age assurance measures at the point of access to high-risk AI companion and mental health chatbots, and whether common age assurance, minor-safe defaults and crisis escalation standards will apply across access channels. Mrs Josephine Teo replied in writing that AI chatbots can be accessed through different channels, including mobile apps distributed through app stores and services accessed directly through the Internet. The app store is therefore an important gateway. Under the Broadcasting Act, IMDA can direct an app store to disable Singapore users' access to egregious content, including apps that advocate or instruct on suicide or self-harm. The Code of Practice for Online Safety for App Distribution Services also requires designated app stores to implement age assurance measures and minimise the risk of users, especially children, being exposed to harmful content, and to review apps and app updates before release. Some AI chatbots can also be accessed directly through websites or other channels, and MDDI is studying further safeguards to better protect younger users across different modes of access.",
+    sourceUrl: 'https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=written-answer-24587',
+    addedAt: '2026-09-26',
+  },
+  {
+    id: 'written-answer-24586',
+    titleEn:
+      'Data Centre Energy Demand and New Generation Capacity, Assessment of Overseas Data Processing via Optical Fibre, and Options for Regional Network Financing',
+    title: '数据中心用电与新增发电容量、经光纤在海外处理数据的评估及区域网络融资选项',
+    titleKo: '데이터센터 전력 수요와 신규 발전 용량, 광섬유를 통한 해외 데이터 처리 평가 및 역내 네트워크 금융 방안',
+    titleJa:
+      'データセンターの電力需要と新規発電容量、光ファイバー経由の海外データ処理の評価、地域ネットワークの資金調達の選択肢',
+    date: '2026-09-09',
+    parliament: '15',
+    type: 'Written Answers to Questions',
+    speakers: ['Mr Kenneth Tiong Boon Kiat', 'Mrs Josephine Teo'],
+    personIds: [],
+    topicIds: [],
+    relatedPolicyIds: [],
+    relatedLeverNumbers: [],
+    relatedTimelineYears: [],
+    relatedPostSlugs: [],
+    topics: ['AI Infrastructure & Research'],
+    summary:
+      '工人党议员张文杰（Mr Kenneth Tiong Boon Kiat）书面询问数字发展与信息部长：能源市场管理局（EMA）寻求的新增发电容量中，有多大比例来自数据中心的预测需求；是否评估过在海外处理数据、再经光纤传回结果的替代方案及其结论；若有，是否会推动融资安排与东盟电网相当的区域光纤网络。数字发展与信息部长杨莉明（Mrs Josephine Teo）书面答复：数据中心算力对数字经济和 AI 发展至关重要；新加坡与多国的数据连接（包括光纤海底电缆）支持东盟区域内外的跨境数据流动，让企业能利用新加坡以外的算力。EMA 按全国整体预测用电需求规划发电容量，2025 至 2032 年高峰用电需求预计从 8.2 吉瓦增至最高 11.9 吉瓦，已计入半导体和数据中心等高耗能行业的增长。',
+    summaryEn:
+      "Workers' Party MP Kenneth Tiong Boon Kiat asked the Minister for Digital Development and Information what proportion of the new generation capacity sought by the Energy Market Authority (EMA) is attributable to projected data centre demand; whether processing data overseas and returning results via optical fibre has been assessed as an alternative and with what conclusion; and if so, whether a regional optical-fibre network with ASEAN Power Grid-style financing will be advanced. Minister Josephine Teo replied that data centre compute capacity in Singapore is crucial for the digital economy and AI developments, and that Singapore's data connectivity to many countries, including subsea cables running on optical fibre, enables cross-border data flows in and around ASEAN, letting companies tap compute beyond Singapore. EMA plans sufficient generation capacity for overall projected demand: from 2025 to 2032, peak electricity demand is projected to grow from 8.2 GW up to 11.9 GW, accounting for growth in energy-intensive sectors such as semiconductors and data centres.",
+    summaryJa:
+      '労働者党のKenneth Tiong 議員（Mr Kenneth Tiong Boon Kiat）は、デジタル発展・情報大臣に対し、エネルギー市場庁（EMA）が求める新規発電容量のうちデータセンターの需要予測に起因する割合、データを海外で処理し結果を光ファイバーで戻す代替策を評価したか及びその結論、評価した場合はASEANパワーグリッド並みの資金調達を備えた地域光ファイバー網を推進するかを書面で質問した。ジョセフィン・テオ（Mrs Josephine Teo）デジタル発展・情報大臣は書面で、国内データセンターの計算能力はデジタル経済とAIの発展に極めて重要であり、光ファイバーの海底ケーブルを含む多くの国とのデータ接続がASEAN地域内外の越境データの流れを可能にし、企業はシンガポール以外の計算能力も活用できると答えた。EMAは全体の電力需要予測に見合う発電容量を計画しており、2025年から2032年にピーク電力需要は8.2ギガワットから最大11.9ギガワットに増えると予測され、半導体やデータセンターなどエネルギー集約型セクターの成長が織り込まれているとした。',
+    summaryKo:
+      '노동자당 Kenneth Tiong 의원(Mr Kenneth Tiong Boon Kiat)은 디지털개발정보부 장관에게 에너지시장청(EMA)이 확보하려는 신규 발전 용량 중 데이터센터 예상 수요에 기인하는 비율, 해외에서 데이터를 처리하고 결과를 광섬유로 돌려받는 대안을 평가했는지와 그 결론, 그렇다면 아세안 전력망에 준하는 금융 방식의 역내 광섬유 네트워크를 추진할지 서면 질의했다. Josephine Teo 디지털개발정보부 장관은 서면 답변에서 싱가포르 데이터센터의 컴퓨팅 용량은 디지털 경제와 AI 발전에 매우 중요하며, 광섬유 해저 케이블을 포함한 여러 나라와의 데이터 연결이 아세안 지역 안팎의 국경 간 데이터 흐름을 가능하게 해 기업이 싱가포르 밖의 컴퓨팅 용량도 활용할 수 있다고 밝혔다. EMA는 전체 예상 전력 수요에 맞춰 발전 용량을 계획하며, 2025년부터 2032년까지 최대 전력 수요는 8.2기가와트에서 최대 11.9기가와트로 늘 것으로 예상되고 반도체와 데이터센터 등 에너지 집약적 부문의 성장이 반영되어 있다고 했다.',
+    whyItMatters: '2025 至 2032 年新加坡高峰用电需求预计从 8.2 吉瓦增至 11.9 吉瓦，答复未单列数据中心占比',
+    whyItMattersEn:
+      "Singapore's peak electricity demand is projected to rise from 8.2 GW to as much as 11.9 GW between 2025 and 2032, but the reply gave no separate share for data centres.",
+    whyItMattersJa:
+      '2025年から2032年にシンガポールのピーク電力需要は8.2ギガワットから最大11.9ギガワットに増える見通しだが、答弁はデータセンターの割合を示さなかった',
+    whyItMattersKo:
+      '2025~2032년 싱가포르 최대 전력 수요는 8.2기가와트에서 최대 11.9기가와트로 늘 전망이나, 답변은 데이터센터 비중을 따로 밝히지 않았다',
+    keyPoints: [
+      '新加坡数据中心提供的算力对支持新加坡数字经济和 AI 发展至关重要。',
+      '新加坡与多国的数据连接，包括以光纤为载体的海底电缆，支持东盟区域内外的跨境数据流动，企业可利用新加坡以外的算力。',
+      '能源市场管理局按新加坡整体预测用电需求规划足够的发电容量。',
+      '2025 至 2032 年，新加坡高峰用电需求预计从 8.2 吉瓦增至最高 11.9 吉瓦，已计入半导体和数据中心等高耗能行业的增长。',
+    ],
+    keyPointsEn: [
+      "Compute capacity provided by data centres in Singapore is crucial for supporting Singapore's digital economy and AI developments.",
+      "Singapore's data connectivity to many countries, including subsea cables running on optical fibre, enables cross-border data flows in and around ASEAN, letting companies tap compute capacity beyond Singapore.",
+      "The Energy Market Authority plans sufficient generation capacity to meet Singapore's overall projected electricity demand.",
+      'From 2025 to 2032, peak electricity demand is projected to grow from 8.2 GW up to 11.9 GW, accounting for growth in energy-intensive sectors such as semiconductors and data centres.',
+    ],
+    keyPointsJa: [
+      'シンガポールのデータセンターが提供する計算能力は、シンガポールのデジタル経済とAIの発展を支える上で極めて重要である。',
+      '光ファイバーの海底ケーブルを含む多くの国とのデータ接続がASEAN地域内外の越境データの流れを可能にし、企業はシンガポール以外の計算能力を活用できる。',
+      'エネルギー市場庁は、シンガポール全体の電力需要予測を満たす十分な発電容量を計画している。',
+      '2025年から2032年にかけてピーク電力需要は8.2ギガワットから最大11.9ギガワットに増えると予測され、半導体やデータセンターなどエネルギー集約型セクターの成長が織り込まれている。',
+    ],
+    keyPointsKo: [
+      '싱가포르 데이터센터가 제공하는 컴퓨팅 용량은 싱가포르의 디지털 경제와 AI 발전을 뒷받침하는 데 매우 중요하다.',
+      '광섬유 해저 케이블을 포함한 여러 나라와의 데이터 연결이 아세안 지역 안팎의 국경 간 데이터 흐름을 가능하게 해, 기업은 싱가포르 밖의 컴퓨팅 용량을 활용할 수 있다.',
+      '에너지시장청은 싱가포르 전체의 예상 전력 수요를 충족할 충분한 발전 용량을 계획한다.',
+      '2025년부터 2032년까지 최대 전력 수요는 8.2기가와트에서 최대 11.9기가와트로 늘 것으로 예상되며, 반도체와 데이터센터 등 에너지 집약적 부문의 성장이 반영되어 있다.',
+    ],
+    governmentStance:
+      '政府强调数据中心算力对数字经济与 AI 发展的重要性，并指出现有海底电缆连接已让企业能利用境外算力。答复未提供新增发电容量中数据中心所占比例，也未回应是否评估海外处理方案或推动类似东盟电网融资安排的区域光纤网络。',
+    governmentStanceEn:
+      'The Government stressed that data centre compute is crucial for the digital economy and AI, noting that existing subsea cable connectivity already lets companies tap compute overseas. The reply did not state the share of new generation capacity attributable to data centres, nor address whether overseas processing was assessed or whether an ASEAN Power Grid-style regional fibre network would be pursued.',
+    governmentStanceJa:
+      '政府はデータセンターの計算能力がデジタル経済とAIに極めて重要だと強調し、既存の海底ケーブル接続で企業はすでに海外の計算能力を活用できると指摘した。答弁は新規発電容量に占めるデータセンターの割合を示さず、海外処理の評価の有無や、ASEANパワーグリッド型の地域光ファイバー網を推進するかについても触れなかった。',
+    governmentStanceKo:
+      '정부는 데이터센터 컴퓨팅 용량이 디지털 경제와 AI에 매우 중요하다고 강조하며, 기존 해저 케이블 연결로 기업이 이미 해외 컴퓨팅 용량을 활용할 수 있다고 짚었다. 답변은 신규 발전 용량 중 데이터센터 비중을 밝히지 않았고, 해외 처리 방안 평가 여부나 아세안 전력망식 역내 광섬유 네트워크 추진 여부에도 답하지 않았다.',
+    oppositionStance:
+      '提问议员张文杰（工人党）关注数据中心用电对新增发电容量的压力，提出评估把数据处理移至海外、经光纤回传的替代方案，并探讨以东盟电网式融资建设区域光纤网络。',
+    oppositionStanceEn:
+      "Questioner Mr Kenneth Tiong (Workers' Party) focused on how much data centres drive the need for new generation capacity, and proposed assessing overseas processing with results returned by optical fibre, backed by a regional fibre network financed like the ASEAN Power Grid.",
+    oppositionStanceJa:
+      '質問者のKenneth Tiong 議員（労働者党）は、データセンターが新規発電容量の必要性をどれほど押し上げているかに注目し、データを海外で処理し光ファイバーで結果を戻す代替策の評価と、ASEANパワーグリッド並みの資金調達による地域光ファイバー網を提起した。',
+    oppositionStanceKo:
+      '질의자 Kenneth Tiong 의원(노동자당)은 데이터센터가 신규 발전 용량 수요를 얼마나 끌어올리는지에 주목하며, 해외에서 데이터를 처리하고 광섬유로 결과를 돌려받는 대안의 평가와 아세안 전력망식 금융에 기반한 역내 광섬유 네트워크를 제안했다.',
+    controversyLevel: 2,
+    policySignal:
+      '政府把数据中心用电并入全国总需求规划、不单独披露占比，同时以现有跨境连接说明算力不必全部落地新加坡，显示其倾向依靠既有的区域数据流动，而非由国家主导新的区域光纤融资机制。',
+    policySignalEn:
+      'By folding data centre power into national demand planning without disclosing its share, while citing existing cross-border links to show compute need not all sit in Singapore, the Government signals reliance on existing regional data flows rather than a new state-led regional fibre financing mechanism.',
+    policySignalJa:
+      '政府はデータセンターの電力を全国の需要計画に組み込んで割合を開示せず、既存の越境接続を挙げて計算能力のすべてを国内に置く必要はないと示した。国主導の新たな地域光ファイバー資金調達の仕組みではなく、既存の地域的なデータの流れに依拠する姿勢がうかがえる。',
+    policySignalKo:
+      '정부는 데이터센터 전력을 전국 수요 계획에 포함시키고 비중을 공개하지 않으면서, 기존 국경 간 연결을 들어 컴퓨팅 용량이 모두 싱가포르에 있을 필요는 없음을 보여줬다. 국가 주도의 새로운 역내 광섬유 금융 체계보다 기존 역내 데이터 흐름에 기대는 방향으로 읽힌다.',
+    notableQuote: '这让企业能够利用新加坡以外的算力。',
+    notableQuoteEn: 'This allows companies to tap on compute capacity beyond Singapore.',
+    notableQuoteJa: 'これにより、企業はシンガポール以外の計算能力を活用することができます。',
+    notableQuoteKo: '이를 통해 기업은 싱가포르 밖의 컴퓨팅 용량을 활용할 수 있습니다.',
+    transcriptEn:
+      "Mr Kenneth Tiong Boon Kiat asked the Minister for Digital Development and Information what proportion of the new generation capacity sought by the Energy Market Authority (EMA) is attributable to projected data centre demand; whether processing data overseas and returning the results via optical fibre has been assessed as an alternative, and what was concluded; and, if so, whether a regional optical-fibre network with financing arrangements equivalent to the ASEAN Power Grid will be advanced to enable this. Mrs Josephine Teo replied that the compute capacity provided by data centres in Singapore is crucial for supporting the country's digital economy and artificial intelligence developments. Singapore's data connectivity to many countries, including through subsea cables running on optical fibre, enables cross-border data flows in and around the ASEAN region, which allows companies to tap on compute capacity beyond Singapore. To support Singapore's growth, the EMA plans for sufficient generation capacity to meet overall projected electricity demand. From 2025 to 2032, peak electricity demand is projected to grow from 8.2 gigawatts up to 11.9 gigawatts, a projection that accounts for growth in energy-intensive sectors such as semiconductors and data centres. The reply did not give a separate figure for data centres or address the proposed regional fibre financing arrangement.",
+    sourceUrl: 'https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=written-answer-24586',
+    addedAt: '2026-09-26',
+  },
+  {
+    id: 'written-answer-24561',
+    titleEn:
+      'Verifying AI Deepfake Images in Public Reports Following Fake Crocodile Sighting and Measures to Verify Authenticity of Public-submitted Information',
+    title: '假鳄鱼目击照片事件后，如何核实公众提交信息中的AI深度伪造图像',
+    titleKo: '가짜 악어 목격 사진 이후 시민 제보 정보 속 AI 딥페이크 이미지의 진위 확인',
+    titleJa: '偽のワニ目撃写真を受けた、市民提供情報に含まれるAIディープフェイク画像の真偽確認',
+    date: '2026-09-09',
+    parliament: '15',
+    type: 'Written Answers to Questions',
+    speakers: ['Mr Fadli Fawzi', 'Mr K Shanmugam'],
+    personIds: [],
+    topicIds: [],
+    relatedPolicyIds: [],
+    relatedLeverNumbers: [],
+    relatedTimelineYears: [],
+    relatedPostSlugs: [],
+    topics: ['Deepfakes & Disinformation', 'AI & National Security'],
+    summary:
+      '议员莫哈默法理（Mr Fadli Fawzi）书面询问高级部长兼国家安全统筹部长兼内政部长：2026年8月20日潘丹蓄水池鳄鱼目击报告所附的假照片是否由AI伪造，以及在AI深度伪造越来越难辨识的情况下，警方和其他政府机构将如何核实公众所提供信息的真实性。内政部长尚穆根（Mr K Shanmugam）答复：由于调查仍在进行，警方目前无法透露案件细节。警方调查有人提交经编辑照片误导当局的案件时，可能进行鉴证检验，判断图像是否被伪造或篡改。公众不应散布虚假信息或编辑图像，也不应把AI生成或经数码修改的图像当作真实照片提交；视情况而定，明知而散布虚假信息意图引起恐慌，或向当局提供虚假信息或伪造证据者，可能触犯刑事罪。',
+    summaryEn:
+      'Mr Fadli Fawzi asked the Senior Minister, Coordinating Minister for National Security and Minister for Home Affairs whether the fake photograph submitted with a reported crocodile sighting at Pandan Reservoir on 20 August 2026 was faked using AI, and what measures the Police and other agencies will take to verify the authenticity of information from the public as AI deepfakes become harder to identify. Minister for Home Affairs K Shanmugam replied that the Police cannot give case details while investigations are ongoing. When the Police investigate edited photos submitted to mislead the authorities, a forensic examination may be done to determine whether an image was fabricated or manipulated. The public should not circulate false information or edited images, nor submit AI-generated or digitally altered images as legitimate photos. Depending on the facts, those who knowingly circulate false information to cause alarm, or give false information or fabricated evidence to the authorities, may commit a criminal offence.',
+    summaryJa:
+      'Fadli Fawzi議員（Mr Fadli Fawzi）は上級大臣兼国家安全保障調整大臣兼内務大臣に対し、2026年8月20日のパンダン貯水池でのワニ目撃情報に添えられた偽の写真がAIで偽造されたものか、またAIディープフェイクの識別がますます難しくなる中で、警察やその他の政府機関が市民から提供される情報の真正性をどう確認するかを書面で質問した。内務大臣K Shanmugam氏（Mr K Shanmugam）は、捜査が継続中のため警察は現時点で詳細を明らかにできないと答弁した。当局を欺く目的で編集された写真が提出された事案を捜査する際、警察は画像が捏造または改ざんされたかを判断するため鑑識検査を行うことがある。市民は虚偽情報や編集画像を拡散せず、AI生成やデジタル加工の画像を正当な写真として提出すべきではない。状況によっては、不安を引き起こす意図で虚偽情報を故意に拡散した者や、当局に虚偽情報や捏造証拠を提供した者は刑事犯罪に問われうる。',
+    summaryKo:
+      'Fadli Fawzi 의원(Mr Fadli Fawzi)은 선임장관 겸 국가안보조정장관 겸 내무장관에게 2026년 8월 20일 판단 저수지 악어 목격 신고에 첨부된 가짜 사진이 AI로 조작된 것인지, 그리고 AI 딥페이크 식별이 점점 어려워지는 가운데 경찰과 기타 정부 기관이 시민이 제공한 정보의 진위를 어떻게 확인할 것인지 서면으로 질의했다. 내무장관 K Shanmugam은 수사가 진행 중이어서 경찰이 현재 사건 세부 사항을 밝힐 수 없다고 답했다. 경찰은 당국을 오도하기 위해 편집된 사진이 제출된 사건을 수사할 때 이미지가 조작 또는 변조되었는지 판단하기 위해 법의학적 감식을 할 수 있다. 시민은 허위 정보나 편집된 이미지를 유포하지 말고, AI 생성 또는 디지털로 변형된 이미지를 정상적인 사진처럼 제출해서도 안 된다. 사실관계에 따라 불안을 일으킬 의도로 허위 정보를 고의로 유포하거나 당국에 허위 정보 또는 조작된 증거를 제공한 사람은 형사 범죄 책임을 질 수 있다.',
+    whyItMatters: '警方可对涉嫌伪造的图像进行鉴证检验，向当局提交AI伪造图像视情况可能构成刑事罪',
+    whyItMattersEn:
+      'The Police may run forensic examinations on suspect images, and submitting AI-fabricated images to the authorities may be a criminal offence depending on the facts.',
+    whyItMattersJa: '警察は疑わしい画像を鑑識検査でき、AIで偽造した画像を当局に提出すれば状況により刑事犯罪となりうる',
+    whyItMattersKo:
+      '경찰은 의심 이미지를 법의학적으로 감식할 수 있으며, AI로 조작한 이미지를 당국에 제출하면 사실관계에 따라 형사 범죄가 될 수 있다',
+    keyPoints: [
+      '由于调查仍在进行，警方未透露2026年8月20日潘丹蓄水池假鳄鱼照片是否由AI生成',
+      '警方调查有人提交经编辑照片误导当局的案件时，可能进行鉴证检验以确定图像是否被伪造或篡改',
+      '公众不应把人工智能生成或经数码修改的图像当作真实照片提交给警方或政府机构',
+      '视具体事实和情况而定，明知而散布虚假信息意图引起恐慌，或向当局提供虚假信息或伪造证据者，可能触犯刑事罪',
+      '公众应对网上错误信息保持警惕，并通过相关政府机构公告等可信官方来源核实信息',
+    ],
+    keyPointsEn: [
+      'With investigations ongoing, the Police did not say whether the fake crocodile photograph at Pandan Reservoir on 20 August 2026 was AI-generated',
+      'When investigating edited photos submitted to mislead the authorities, the Police may conduct a forensic examination to determine whether an image was fabricated or manipulated',
+      'The public should not submit AI-generated or digitally altered images to the Police or Government agencies as if they were legitimate photos',
+      'Depending on the facts and circumstances, those who knowingly circulate false information to cause alarm, or provide false information or fabricated evidence to the authorities, may be liable for a criminal offence',
+      'The public should stay vigilant against online misinformation and verify information through credible official sources such as announcements from the relevant Government agencies',
+    ],
+    keyPointsJa: [
+      '捜査が継続中のため、警察は2026年8月20日のパンダン貯水池の偽のワニ写真がAIで生成されたかどうかを明らかにしなかった',
+      '当局を欺くために編集された写真が提出された事案を捜査する際、警察は画像が捏造または改ざんされたかを判断するため鑑識検査を行うことがある',
+      '市民は、人工知能で生成された画像やデジタル加工された画像を正当な写真であるかのように警察や政府機関に提出すべきではない',
+      '事実関係や状況によっては、不安を引き起こす意図で虚偽情報を故意に拡散した者、または当局に虚偽情報や捏造された証拠を提供した者は刑事犯罪の責任を問われうる',
+      '市民はオンライン上の誤情報に警戒し、関係政府機関の発表など信頼できる公式の情報源で情報を確認すべきである',
+    ],
+    keyPointsKo: [
+      '수사가 진행 중이어서 경찰은 2026년 8월 20일 판단 저수지 가짜 악어 사진이 AI로 생성되었는지 밝히지 않았다',
+      '당국을 오도하기 위해 편집된 사진이 제출된 사건을 수사할 때 경찰은 이미지의 조작 또는 변조 여부를 판단하기 위해 법의학적 감식을 할 수 있다',
+      '시민은 인공지능으로 생성되거나 디지털로 변형된 이미지를 정상적인 사진처럼 경찰이나 정부 기관에 제출해서는 안 된다',
+      '사실관계와 상황에 따라 불안을 일으킬 의도로 허위 정보를 고의로 유포하거나 당국에 허위 정보 또는 조작된 증거를 제공한 사람은 형사 범죄 책임을 질 수 있다',
+      '시민은 온라인상의 잘못된 정보를 경계하고 관련 정부 기관의 발표 등 신뢰할 수 있는 공식 출처를 통해 정보를 확인해야 한다',
+    ],
+    governmentStance:
+      '政府以调查仍在进行为由，未确认照片是否由AI伪造，也没有提出新的系统性核实措施；立场是依靠个案鉴证检验和现行刑事罪条文加以威慑，并呼吁公众负责任地提交和传播信息。',
+    governmentStanceEn:
+      'Citing ongoing investigations, the Government did not confirm whether the photograph was AI-faked and proposed no new systematic verification measures; its position rests on case-by-case forensic examination and existing criminal offences as deterrence, with a call for the public to act responsibly.',
+    governmentStanceJa:
+      '政府は捜査継続中を理由に写真がAIで偽造されたかを確認せず、新たな体系的確認措置も示さなかった。個別の鑑識検査と既存の刑事罰による抑止に依拠し、市民に責任ある行動を呼びかける立場である。',
+    governmentStanceKo:
+      '정부는 수사 진행 중을 이유로 사진이 AI로 조작되었는지 확인하지 않았고 새로운 체계적 확인 조치도 제시하지 않았다. 사안별 법의학적 감식과 기존 형사 처벌 조항을 통한 억지에 의존하며 시민에게 책임 있는 행동을 촉구하는 입장이다.',
+    oppositionStance:
+      '提问议员莫哈默法理（工人党）关注AI深度伪造越来越难辨识，担心警方和政府机构难以核实公众提交信息的真伪，要求政府说明具体核实措施。',
+    oppositionStanceEn:
+      "The questioner, Mr Fadli Fawzi (Workers' Party), was concerned that AI deepfakes are becoming harder to identify and that the Police and agencies may struggle to verify information submitted by the public, and asked what verification measures would be taken.",
+    oppositionStanceJa:
+      '質問者のFadli Fawzi議員（労働者党）は、AIディープフェイクの識別がますます難しくなり、警察や政府機関が市民から提出される情報の真偽を確認しにくくなることを懸念し、具体的な確認措置の説明を求めた。',
+    oppositionStanceKo:
+      '질의자 Fadli Fawzi 의원(노동자당)은 AI 딥페이크 식별이 점점 어려워져 경찰과 정부 기관이 시민이 제출한 정보의 진위를 확인하기 힘들어질 것을 우려하며 구체적인 확인 조치를 설명해 달라고 요구했다.',
+    controversyLevel: 1,
+    policySignal:
+      '对于公众向执法机构提交AI伪造图像，政府仍以事后个案鉴证和刑事追责为主，尚未表态建立系统化的AI内容检测流程；随着深度伪造普及，这种个案式做法能否应付报案量值得关注。',
+    policySignalEn:
+      'For AI-fabricated images submitted to law enforcement, the Government still relies on after-the-fact forensic checks and criminal liability, and has not signalled a systematic AI content detection process; as deepfakes spread, whether this case-by-case approach can keep up with report volumes is worth watching.',
+    policySignalJa:
+      '法執行機関に提出されるAI偽造画像について、政府は依然として事後の個別鑑識と刑事責任の追及を中心としており、体系的なAIコンテンツ検知の仕組みを設ける姿勢は示していない。ディープフェイクが広がる中、この個別対応で通報量に対応できるかが注目される。',
+    policySignalKo:
+      '법 집행 기관에 제출되는 AI 조작 이미지에 대해 정부는 여전히 사후 사안별 감식과 형사 책임 추궁을 중심으로 하며, 체계적인 AI 콘텐츠 탐지 절차를 마련하겠다는 신호는 보내지 않았다. 딥페이크가 확산되면서 이런 사안별 방식이 신고량을 감당할 수 있을지 주목된다.',
+    notableQuote:
+      '视具体事实和情况而定，明知而散布虚假信息意图引起恐慌者，或向当局提供虚假信息或伪造证据者，可能触犯刑事罪。',
+    notableQuoteEn:
+      'Depending on the facts and circumstances, persons who knowingly circulate false information with the intention to cause alarm, or provide false information or fabricated evidence to the authorities may be liable for a criminal offence.',
+    notableQuoteJa:
+      '事実関係や状況によっては、不安を引き起こす意図をもって虚偽情報を故意に拡散した者、または当局に虚偽情報や捏造された証拠を提供した者は、刑事犯罪の責任を問われる可能性があります。',
+    notableQuoteKo:
+      '사실관계와 상황에 따라, 불안을 일으킬 의도로 허위 정보를 고의로 유포하거나 당국에 허위 정보 또는 조작된 증거를 제공한 사람은 형사 범죄 책임을 질 수 있습니다.',
+    transcriptEn:
+      'Mr Fadli Fawzi asked the Senior Minister, Coordinating Minister for National Security and Minister for Home Affairs, in relation to the fake photograph provided with a reported crocodile sighting at Pandan Reservoir on 20 August 2026, whether the photograph had been faked using AI, and what measures the Police and other Government agencies will take to verify the authenticity of information provided by the public as AI-generated deepfakes become more difficult to identify. Mr K Shanmugam replied in writing that the Police are unable to provide further details specific to the case while investigations are ongoing. He said that when the Police investigate instances where edited photos are submitted to mislead the authorities, a forensic examination may be done to determine whether the image has been fabricated or manipulated. The Police urge the public to act responsibly and not to circulate false information or edited images that can cause unnecessary alarm, and not to submit fabricated or manipulated information, including AI-generated or digitally altered images, to the Police or Government agencies as if they were legitimate photos. Depending on the facts and circumstances, persons who knowingly circulate false information to cause alarm, or who provide false information or fabricated evidence to the authorities, may be liable for a criminal offence.',
+    sourceUrl: 'https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=written-answer-24561',
+    addedAt: '2026-09-26',
+  },
+  {
+    id: 'oral-answer-4201',
+    titleEn:
+      'Longer-term Paid Internship or Apprenticeship Programmes for Fresh Graduates in Sectors Affected by AI Adoption',
+    title: '为受 AI 冲击行业的应届毕业生推出较长期带薪实习或学徒计划',
+    titleKo: 'AI 도입 영향 업종 신규 졸업생을 위한 장기 유급 인턴십·도제 프로그램',
+    titleJa: 'AI導入の影響を受ける業界の新卒者向け長期有給インターンシップ・見習い制度',
+    date: '2026-09-09',
+    parliament: '15',
+    type: 'Oral Answers to Questions',
+    speakers: ['Mr Kwek Hian Chuan Henry', 'Mr Yip Hon Weng', 'Ms Jasmin Lau'],
+    personIds: [],
+    topicIds: [],
+    relatedPolicyIds: [],
+    relatedLeverNumbers: [],
+    relatedTimelineYears: [],
+    relatedPostSlugs: [],
+    topics: ['AI & Employment'],
+    summary:
+      '议员郭献川（Mr Kwek Hian Chuan Henry）询问代理人力部长：鉴于各行业近期的劳动力重组和 AI 普及，人力部会否与雇主合作，为受影响行业的应届毕业生开发较长期的带薪实习或学徒计划。问题由议员叶汉荣（Mr Yip Hon Weng）在国会代为提出。代理人力部长刘洁敏（Ms Jasmin Lau）答复：该问题已在 2026 年 8 月 4 日第 59 号问题的答复中处理，人力部会继续检讨帮助应届毕业生获得有意义工作经验的支持措施。叶汉荣追问：已有逾 550 名毕业生参加毕业生行业实训计划（GRIT），首批学员结业后人力部会否公布 6 个月或 12 个月时的转正、薪资和岗位相关性数据；刘洁敏表示许多学员仍在实训中，会在适当时候向公众分享成果。',
+    summaryEn:
+      "Mr Kwek Hian Chuan Henry asked the Acting Minister for Manpower whether, given recent workforce restructuring and growing AI adoption, MOM would work with employers to develop longer-term paid internship or apprenticeship programmes for fresh graduates in affected sectors. Mr Yip Hon Weng raised the question in the House. Acting Minister Ms Jasmin Lau said it had been addressed by her reply to Question No 59 on 4 August 2026, and that MOM would keep reviewing its support for fresh graduates to gain meaningful work experience. In a supplementary, Mr Yip noted that more than 550 graduates have entered the GRaduate Industry Traineeship programme (GRIT) and asked whether MOM would publish the first cohort's permanent conversion, wage and job relevance outcomes at six or 12 months, and what results would justify longer apprenticeships. Ms Lau said many trainees are still completing their traineeships and the outcomes will be shared with the public at a suitable juncture.",
+    summaryJa:
+      'Kwek Hian Chuan Henry議員は代理人材大臣に対し、最近の各業界の労働力再編とAIの普及を踏まえ、人材省が雇用主と協力して影響を受ける業界の新卒者向けにより長期の有給インターンシップや見習いプログラムを開発するかを質問した。質問は国会でYip Hon Weng議員が代わって行った。ジャスミン・ラウ代理人材大臣は、この件は2026年8月4日の第59号質問への答弁で取り上げ済みであり、新卒者が意義ある職務経験を得られるよう支援策の見直しを続けると答弁した。補足質問でYip議員は、550人を超える卒業生が卒業生産業研修プログラム（GRIT）に参加していると指摘し、第一期生の6か月または12か月時点での正規雇用転換、賃金、職務関連性の成果を公表するか、どのような結果で長期の見習い制度への移行が正当化されるかを尋ねた。ラウ氏は、多くの研修生がまだ研修中であり、適切な時期に成果を国民に共有すると答えた。',
+    summaryKo:
+      'Kwek Hian Chuan Henry 의원은 인력부 장관 대행에게 최근 여러 업종의 인력 구조조정과 AI 확산을 고려해 인력부가 고용주와 협력하여 영향을 받은 업종의 신규 졸업생을 위한 더 장기적인 유급 인턴십이나 도제 프로그램을 개발할지 질의했다. 질문은 국회에서 Yip Hon Weng 의원이 대신 제기했다. Jasmin Lau 인력부 장관 대행은 이 문제는 2026년 8월 4일 59번 질문 답변에서 다루었으며, 신규 졸업생이 의미 있는 업무 경험을 쌓도록 지원 제도를 계속 검토하겠다고 답했다. 보충 질의에서 Yip 의원은 550명 넘는 졸업생이 졸업생 산업 연수 프로그램(GRIT)에 참여했다며, 첫 기수의 6개월 또는 12개월 시점 정규직 전환, 임금, 직무 관련성 성과를 공개할지, 어떤 결과가 더 긴 도제 제도로의 전환을 정당화할지 물었다. Lau 장관 대행은 많은 연수생이 아직 연수 중이며 적절한 시점에 성과를 대중과 공유하겠다고 답했다.',
+    whyItMatters: '逾 550 名毕业生已参加 GRIT 实训计划，人力部承诺在适当时候公开首批学员成果',
+    whyItMattersEn:
+      'More than 550 graduates have entered the GRIT traineeship, and MOM committed to sharing the outcomes publicly at a suitable juncture.',
+    whyItMattersJa: '550人超の卒業生がGRITに参加、人材省は適切な時期に第一期生の成果公表を約束',
+    whyItMattersKo: '550명 넘는 졸업생이 GRIT에 참여, 인력부는 적절한 시점에 첫 기수 성과 공개 약속',
+    keyPoints: [
+      '问题以郭献川名义提出，由叶汉荣在国会代为提问',
+      '刘洁敏称该问题已在 2026 年 8 月 4 日第 59 号问题的答复中处理',
+      '人力部将继续检讨帮助应届毕业生获得有意义工作经验、提高就业能力的支持措施',
+      '叶汉荣指出逾 550 名毕业生已参加 GRIT，要求公布首批学员 6 个月或 12 个月时的转正、薪资和岗位相关性数据，并说明何种结果足以支持更长期的学徒制',
+      '刘洁敏表示许多 GRIT 学员仍在实训中，会在适当时候向公众分享成果',
+    ],
+    keyPointsEn: [
+      'The question stood in the name of Mr Kwek Hian Chuan Henry and was raised in the House by Mr Yip Hon Weng',
+      'Ms Lau said it had been addressed by the reply to Question No 59 on 4 August 2026',
+      'MOM will continue to review its support for fresh graduates to gain meaningful work experience and improve employability',
+      "Mr Yip noted more than 550 graduates have entered GRIT and asked MOM to publish the first cohort's permanent conversion, wage and job relevance outcomes at six or 12 months, and what results would justify longer apprenticeships",
+      'Ms Lau said many GRIT trainees are still completing their traineeships and outcomes will be shared with the public at a suitable juncture',
+    ],
+    keyPointsJa: [
+      '質問はKwek Hian Chuan Henry議員の名義で提出され、国会ではYip Hon Weng議員が代わって行った',
+      'ラウ氏は、この件は2026年8月4日の第59号質問への答弁で取り上げ済みだとした',
+      '人材省は、新卒者が意義ある職務経験を得て就業能力を高められるよう支援策の見直しを続ける',
+      'Yip議員は550人超の卒業生がGRITに参加していると指摘し、第一期生の6か月または12か月時点の正規雇用転換、賃金、職務関連性の成果の公表と、長期の見習い制度を正当化する基準の説明を求めた',
+      'ラウ氏は、多くのGRIT研修生がまだ研修中であり、適切な時期に成果を国民に共有するとした',
+    ],
+    keyPointsKo: [
+      '질문은 Kwek Hian Chuan Henry 의원 명의로 제출되었고 국회에서는 Yip Hon Weng 의원이 대신 제기했다',
+      'Lau 장관 대행은 이 문제가 2026년 8월 4일 59번 질문 답변에서 다뤄졌다고 밝혔다',
+      '인력부는 신규 졸업생이 의미 있는 업무 경험을 쌓고 고용 가능성을 높이도록 지원 제도를 계속 검토한다',
+      'Yip 의원은 550명 넘는 졸업생이 GRIT에 참여했다며 첫 기수의 6개월 또는 12개월 시점 정규직 전환, 임금, 직무 관련성 성과 공개와 장기 도제 제도를 정당화할 기준 설명을 요구했다',
+      'Lau 장관 대행은 많은 GRIT 연수생이 아직 연수 중이며 적절한 시점에 성과를 대중과 공유하겠다고 밝혔다',
+    ],
+    governmentStance:
+      '政府以早前的答复为准，没有承诺推出较长期的带薪实习或学徒计划，只表示会继续检讨对应届毕业生的支持。对于公布 GRIT 成果数据，部长同意会在适当时候公开，但没有给出时间表或具体指标。',
+    governmentStanceEn:
+      'The Government referred to its earlier reply and made no commitment to longer-term paid internships or apprenticeships, saying only that support for fresh graduates would be kept under review. It agreed to publish GRIT outcomes at a suitable juncture but gave no timeline or specific metrics.',
+    governmentStanceJa:
+      '政府は以前の答弁を根拠とし、より長期の有給インターンシップや見習い制度の導入は約束せず、新卒者への支援を引き続き見直すと述べるにとどめた。GRITの成果については適切な時期に公表するとしたが、時期や具体的な指標は示さなかった。',
+    governmentStanceKo:
+      '정부는 이전 답변을 근거로 더 장기적인 유급 인턴십이나 도제 프로그램 도입은 약속하지 않았고, 신규 졸업생 지원을 계속 검토하겠다고만 밝혔다. GRIT 성과는 적절한 시점에 공개하겠다고 했지만 일정이나 구체적 지표는 제시하지 않았다.',
+    oppositionStance:
+      '提问议员郭献川与叶汉荣关注 AI 和企业重组压缩应届毕业生的入门机会，叶汉荣要求以可核查的转正和薪资数据评估 GRIT，并据此决定是否转向更长期的学徒制。',
+    oppositionStanceEn:
+      'Questioners Mr Kwek Hian Chuan Henry and Mr Yip Hon Weng are concerned that AI and corporate restructuring are squeezing entry-level opportunities for fresh graduates; Mr Yip wants GRIT judged on verifiable conversion and wage data before deciding on longer apprenticeships.',
+    oppositionStanceJa:
+      '質問者のKwek Hian Chuan Henry議員とYip Hon Weng議員は、AIと企業再編が新卒者の入口となる機会を狭めていると懸念しており、Yip議員は検証可能な正規雇用転換や賃金のデータでGRITを評価し、それをもとに長期の見習い制度への移行を判断するよう求めた。',
+    oppositionStanceKo:
+      '질의자 Kwek Hian Chuan Henry 의원과 Yip Hon Weng 의원은 AI와 기업 구조조정이 신규 졸업생의 초급 일자리 기회를 줄이고 있다고 우려하며, Yip 의원은 검증 가능한 정규직 전환·임금 데이터로 GRIT을 평가한 뒤 장기 도제 제도 전환 여부를 결정하라고 요구했다.',
+    controversyLevel: 2,
+    policySignal:
+      '应届毕业生入门岗位受 AI 挤压的问题继 8 月会期后再次被提出，政府目前倚重 GRIT 这类实训计划而非长期学徒制；议员要求以就业结果数据作为扩张依据，GRIT 首批成果将是判断政策是否加码的关键。',
+    policySignalEn:
+      "The squeeze on entry-level jobs for fresh graduates has returned to the House after the August sitting, and the Government is relying on traineeships like GRIT rather than long-term apprenticeships. With MPs demanding outcome data before any expansion, GRIT's first-cohort results will be the key test of whether policy escalates.",
+    policySignalJa:
+      'AIによる新卒者の入口職の圧迫は8月の会期に続いて再び取り上げられ、政府は長期の見習い制度ではなくGRITのような研修プログラムに頼っている。議員が拡充の前提として就業成果データを求める中、GRIT第一期生の成果が政策強化の是非を判断する鍵となる。',
+    policySignalKo:
+      'AI로 인한 신규 졸업생 초급 일자리 압박은 8월 회기에 이어 다시 제기되었고, 정부는 장기 도제 제도보다 GRIT 같은 연수 프로그램에 기대고 있다. 의원들이 확대의 근거로 취업 성과 데이터를 요구하는 만큼 GRIT 첫 기수의 성과가 정책 강화 여부를 가늠할 핵심이 될 것이다.',
+    notableQuote: '我想在适当的时候，我们一定会向公众分享成果。',
+    notableQuoteEn: 'I think at a suitable juncture we will definitely share the outcomes with the public.',
+    notableQuoteJa: '適切な時期に、必ず成果を国民に共有したいと考えています。',
+    notableQuoteKo: '적절한 시점에 성과를 반드시 대중과 공유하겠습니다.',
+    transcriptEn:
+      'Mr Kwek Hian Chuan Henry asked the Acting Minister for Manpower whether, in light of recent workforce restructuring across industries and growing AI adoption, the Ministry would consider working with employers to develop longer-term paid internship or apprenticeship programmes for fresh graduates in affected sectors, so that they can gain meaningful initial work experience. The question was raised in the House by Mr Yip Hon Weng. Ms Jasmin Lau replied that the question had been addressed by the reply to Question No 59 on the Order Paper for 4 August 2026, on the availability of entry-level jobs for fresh graduates and the expansion of the GRIT programme, and that MOM would continue to review its suite of support for fresh graduates to gain meaningful work experience and improve their employability. In a supplementary, Mr Yip noted that more than 550 graduates have entered the GRaduate Industry Traineeship programme, which he called encouraging. He asked whether, as the first cohort completes its traineeships, MOM would publish their permanent employment conversion, wage and job relevance outcomes at the six- or 12-month marks, and explain which results would justify moving towards longer apprenticeships. Ms Lau said many GRIT trainees are still completing their traineeships, and that at a suitable juncture MOM would definitely share the outcomes with the public.',
+    sourceUrl: 'https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=oral-answer-4201',
+    addedAt: '2026-09-26',
+  },
+  {
+    id: 'oral-answer-4199',
+    titleEn: 'Reviewing Adequacy of 300 Megawatt Additional Data Centre Capacity Baseline in Roadmap',
+    title: '检讨路线图中新增 300 兆瓦数据中心容量基准是否足够',
+    titleKo: '로드맵상 300메가와트 데이터센터 추가 용량 기준의 적정성 재검토',
+    titleJa: 'ロードマップにおける300メガワットのデータセンター追加容量基準の妥当性見直し',
+    date: '2026-09-09',
+    parliament: '15',
+    type: 'Oral Answers to Questions',
+    speakers: ['Ms Poh Li San', 'Mr Tan Kiat How'],
+    personIds: [],
+    topicIds: [],
+    relatedPolicyIds: [],
+    relatedLeverNumbers: [],
+    relatedTimelineYears: [],
+    relatedPostSlugs: [],
+    topics: ['AI Infrastructure & Research', 'AI Economy & Industry'],
+    summary:
+      '议员傅丽珊（Ms Poh Li San）询问数字发展与信息部长：鉴于国家推动 AI 应用，是否会检讨绿色数据中心路线图中新增 300 兆瓦数据中心容量的基准，以及除近期宣布的四个新数据中心外是否还会有更多。数字发展与信息部高级政务部长陈杰豪（Mr Tan Kiat How）代部长答复：政府将以有节制、可持续的方式为更多容量预留空间，可新建或升级现有数据中心；近期提交国会的《数字基础设施法案》将强制并提升所有数据中心的基本可持续标准，政府也会持续检讨容量需求。补充质询中，傅丽珊追问如何确保环境可持续，以及如何平衡 AI、数据安全、环境与土地使用。陈杰豪表示政府不为容量而追求容量，而是优化每一兆瓦的附加值，增长与可持续并非二选一。',
+    summaryEn:
+      'Ms Poh Li San asked the Minister for Digital Development and Information whether, given the national push for AI adoption, the baseline of 300 megawatts of additional data centre capacity in the Green Data Centre Roadmap will be reviewed, and whether more data centres are expected beyond the four recently announced. Senior Minister of State Tan Kiat How, replying for the Minister, said the Government will provide room for more capacity in a measured and sustainable way, through new builds or upgrades of existing data centres; the Digital Infrastructure Bill recently introduced in Parliament will mandate and uplift baseline sustainability standards for all data centres, and the Government will keep reviewing the need for more capacity. In supplementaries, Ms Poh asked how environmental sustainability will be ensured and how the AI push, data security, sustainability and land use are balanced. Mr Tan said Singapore is not pursuing capacity for its own sake but optimising the value added by every megawatt, and that growth versus sustainability is a false choice.',
+    summaryJa:
+      'Poh Li San 議員は、デジタル発展・情報大臣に対し、AI導入の国家的推進を踏まえ、グリーン・データセンター・ロードマップにある300メガワットのデータセンター追加容量の基準を見直すか、また最近発表された4つの新データセンター以外にさらなる計画があるかを質問した。タン・キアットハウ（Mr Tan Kiat How）デジタル発展・情報担当上級国務相は大臣に代わり、節度ある持続可能な形で新設や既存施設の改修によりさらなる容量の余地を設けると答弁した。最近国会に提出されたデジタルインフラ法案はすべてのデータセンターの基本的な持続可能性基準を義務化・引き上げるもので、政府は容量拡大の必要性を引き続き検討するとした。補足質問でPoh 議員は環境面の持続可能性の確保と、AI推進、データセキュリティ、環境、土地利用の均衡について尋ねた。タン氏は、容量のための容量は追求せず1メガワットごとの付加価値を最大化するとし、成長と持続可能性は二者択一ではないと述べた。',
+    summaryKo:
+      'Poh Li San 의원은 디지털개발정보부 장관에게 국가적 AI 도입 추진을 고려할 때 그린 데이터센터 로드맵의 300메가와트 데이터센터 추가 용량 기준을 재검토할 것인지, 최근 발표된 4개 신규 데이터센터 외에 더 많은 데이터센터가 예상되는지 질의했다. Tan Kiat How 디지털개발정보부 선임국무장관은 장관을 대신해, 정부가 절제되고 지속 가능한 방식으로 신규 건설이나 기존 시설 개선을 통해 더 많은 용량의 여지를 마련할 것이라고 답했다. 최근 국회에 제출된 디지털 인프라 법안은 모든 데이터센터의 기본 지속가능성 기준을 의무화하고 상향하며, 정부는 추가 용량 필요성을 계속 검토할 것이라고 했다. 보충 질의에서 Poh 의원은 환경 지속가능성 확보 방안과 AI 추진, 데이터 보안, 환경, 토지 이용 간 균형을 물었다. Tan 선임국무장관은 용량을 위한 용량을 추구하지 않고 메가와트당 부가가치를 극대화하겠다며, 성장과 지속가능성은 양자택일이 아니라고 밝혔다.',
+    whyItMatters: '政府未修订 300 兆瓦基准，称不追求新增多少兆瓦，而是看每一兆瓦为新加坡带来的附加值',
+    whyItMattersEn:
+      'The Government did not revise the 300-megawatt baseline, saying it is not chasing megawatts but optimising the value added by every megawatt.',
+    whyItMattersJa:
+      '政府は300メガワットの基準を改めず、追加するメガワット数ではなく1メガワットごとの付加価値を重視するとした',
+    whyItMattersKo:
+      '정부는 300메가와트 기준을 수정하지 않고, 추가 메가와트 수가 아니라 메가와트당 부가가치를 중시하겠다고 밝혔다',
+    keyPoints: [
+      '政府将以有节制、可持续的方式为更多数据中心容量预留空间，途径包括新建或升级现有数据中心。',
+      '近期提交国会的《数字基础设施法案》将强制并提升所有数据中心的基本可持续标准，该法案于答复前一天完成一读。',
+      '政府将持续与业界利益相关者接触，检讨是否需要更多数据中心容量以支持不断变化的优先事项。',
+      '政府不追求能增加多少兆瓦，而是优化每一兆瓦的附加值：提高可持续标准、确保韧性与数字安全、带来战略经济价值。',
+      '做法双管齐下：以有纪律、经过校准的方式增加新容量，同时通过《数字基础设施法》提升整个行业。',
+    ],
+    keyPointsEn: [
+      'The Government will provide room for more data centre capacity in a measured and sustainable way, through new builds or upgrades of existing data centres.',
+      'The Digital Infrastructure Bill recently introduced in Parliament will mandate and uplift baseline sustainability standards for all data centres; it was tabled for First Reading the day before the reply.',
+      'The Government will continuously engage industry stakeholders and review the need for more data centre capacity to support evolving priorities.',
+      'Singapore is not chasing megawatts but optimising the value added by every megawatt: higher sustainability standards, resilience, digital security and strategic economic value.',
+      'The approach is two-fold: grow new capacity in a disciplined and calibrated way, and uplift the entire sector through the Digital Infrastructure Act.',
+    ],
+    keyPointsJa: [
+      '政府は節度ある持続可能な形で、新設や既存データセンターの改修によりさらなるデータセンター容量の余地を設ける。',
+      '最近国会に提出されたデジタルインフラ法案は、すべてのデータセンターの基本的な持続可能性基準を義務化し引き上げる。同法案は答弁の前日に第一読会に付された。',
+      '政府は業界の関係者と継続的に対話し、変化する優先課題を支えるためにさらなるデータセンター容量が必要かを見直す。',
+      '追加するメガワット数を追うのではなく、1メガワットごとの付加価値を最大化する。持続可能性基準の引き上げ、強靱性、デジタルセキュリティ、戦略的な経済価値がその中身である。',
+      'アプローチは二本立てで、規律ある調整された方法で新たな容量を増やすとともに、デジタルインフラ法でセクター全体を底上げする。',
+    ],
+    keyPointsKo: [
+      '정부는 절제되고 지속 가능한 방식으로 신규 건설이나 기존 데이터센터 개선을 통해 더 많은 데이터센터 용량의 여지를 마련한다.',
+      '최근 국회에 제출된 디지털 인프라 법안은 모든 데이터센터의 기본 지속가능성 기준을 의무화하고 상향하며, 답변 전날 제1독회에 상정되었다.',
+      '정부는 업계 이해관계자와 지속적으로 소통하며 변화하는 우선순위를 뒷받침하기 위해 추가 데이터센터 용량이 필요한지 검토한다.',
+      '추가 메가와트 수를 좇지 않고 메가와트당 부가가치를 극대화한다. 지속가능성 기준 상향, 회복력, 디지털 보안, 전략적 경제 가치가 그 내용이다.',
+      '접근법은 두 갈래로, 규율 있고 조정된 방식으로 신규 용량을 늘리는 동시에 디지털 인프라법을 통해 부문 전체를 끌어올린다.',
+    ],
+    governmentStance:
+      '政府未承诺修订 300 兆瓦基准，也未透露四个新数据中心之外是否还有新项目，只表示会持续检讨容量需求。政府主张以有纪律、经过校准的方式增加容量，并通过《数字基础设施法》提升全行业可持续标准，认为增长与可持续可以兼得。',
+    governmentStanceEn:
+      'The Government did not commit to revising the 300-megawatt baseline or say whether more data centres will follow the four announced, only that it will keep reviewing capacity needs. It favours growing capacity in a disciplined and calibrated way while uplifting sector-wide sustainability standards through the Digital Infrastructure Act, arguing growth and sustainability can go together.',
+    governmentStanceJa:
+      '政府は300メガワット基準の改定を約束せず、発表済みの4施設以外に新たな計画があるかも明らかにせず、容量の必要性を引き続き見直すとだけ述べた。規律ある調整された方法で容量を増やしつつ、デジタルインフラ法でセクター全体の持続可能性基準を引き上げる方針で、成長と持続可能性は両立できるとの立場である。',
+    governmentStanceKo:
+      '정부는 300메가와트 기준 수정을 약속하지 않았고 발표된 4곳 외에 추가 데이터센터가 있을지도 밝히지 않은 채, 용량 필요성을 계속 검토하겠다고만 했다. 규율 있고 조정된 방식으로 용량을 늘리면서 디지털 인프라법으로 부문 전체의 지속가능성 기준을 높인다는 방침이며, 성장과 지속가능성은 함께 갈 수 있다는 입장이다.',
+    oppositionStance:
+      '提问议员傅丽珊关注在 AI 推动下 300 兆瓦基准是否足够、是否会有更多数据中心，以及如何在 AI 发展、数据安全、环境可持续和土地使用之间取得平衡。',
+    oppositionStanceEn:
+      'Questioner Ms Poh Li San asked whether the 300-megawatt baseline is adequate amid the AI push, whether more data centres will come, and how the Government balances AI growth, data security, environmental sustainability and land use.',
+    oppositionStanceJa:
+      '質問者のPoh Li San 議員は、AI推進の中で300メガワットの基準が十分か、さらなるデータセンターが建設されるか、AIの発展、データセキュリティ、環境の持続可能性、土地利用の間でどう均衡を取るかを問うた。',
+    oppositionStanceKo:
+      '질의자 Poh Li San 의원은 AI 추진 속에서 300메가와트 기준이 충분한지, 데이터센터가 더 들어설지, AI 발전, 데이터 보안, 환경 지속가능성, 토지 이용 사이의 균형을 어떻게 잡을지 물었다.',
+    controversyLevel: 2,
+    policySignal:
+      '新加坡把数据中心政策的衡量标准从总兆瓦数转向每兆瓦价值，意味着 AI 算力扩张将是选择性的，以可持续与安全门槛筛选项目，并借《数字基础设施法》把存量设施纳入监管升级。',
+    policySignalEn:
+      'Singapore is shifting the yardstick for data centre policy from total megawatts to value per megawatt, signalling that AI compute expansion will be selective, screened by sustainability and security thresholds, with existing facilities brought under upgraded regulation through the Digital Infrastructure Act.',
+    policySignalJa:
+      'シンガポールはデータセンター政策の物差しを総メガワット数から1メガワットあたりの価値へ移しつつある。AI計算資源の拡大は選別的に進み、持続可能性と安全性の基準で案件を絞り込み、既存施設もデジタルインフラ法で規制の底上げ対象とすることを示している。',
+    policySignalKo:
+      '싱가포르는 데이터센터 정책의 척도를 총 메가와트에서 메가와트당 가치로 옮기고 있다. AI 컴퓨팅 확장은 지속가능성과 보안 기준으로 선별적으로 이뤄지고, 기존 시설도 디지털 인프라법을 통해 규제 상향 대상이 될 것임을 보여준다.',
+    notableQuote: '我们追求的不是能在新加坡增加多少兆瓦。',
+    notableQuoteEn: 'We are not chasing how much megawatt we can add in Singapore.',
+    notableQuoteJa: '私たちはシンガポールに何メガワット追加できるかを追い求めているのではありません。',
+    notableQuoteKo: '우리는 싱가포르에 몇 메가와트를 추가할 수 있는지를 좇고 있지 않습니다.',
+    transcriptEn:
+      'Ms Poh Li San asked the Minister for Digital Development and Information whether, in view of the national push for AI adoption, the Ministry will review the baseline of 300 megawatts of additional data centre capacity in the Green Data Centre Roadmap, and whether more data centres are expected beyond the four recently announced. Senior Minister of State Tan Kiat How replied that data centres are important digital infrastructure and the Government will provide room for more capacity in a measured and sustainable way, through new builds or upgrades of existing data centres. The Digital Infrastructure Bill will mandate and uplift baseline sustainability standards for all data centres, and the Government will keep engaging industry and reviewing the need for more capacity. In supplementaries, Ms Poh asked how data centres can stay environmentally sustainable as AI compute demand grows, and how the Government balances the AI push, data security, sustainability and land use. Mr Tan said Singapore is not chasing megawatts but optimising the value added by every megawatt, including sustainability, resilience, digital security and strategic economic value. The approach is two-fold: grow new capacity in a disciplined and calibrated way, and uplift the whole sector through the Digital Infrastructure Act. Growth and sustainability are not a false choice; Singapore wants both.',
+    sourceUrl: 'https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=oral-answer-4199',
+    addedAt: '2026-09-26',
+  },
+  {
+    id: 'oral-answer-4198',
+    titleEn:
+      'Employment Pathways for Singaporeans who are Unable to Transition into New Occupations with Accelerating AI Adoption',
+    title: 'AI 加速普及下难以转入新职业的国人就业途径',
+    titleKo: 'AI 도입 가속화 속 새 직업으로 전환하지 못하는 싱가포르인의 고용 경로',
+    titleJa: 'AI導入の加速で新たな職業に移行できないシンガポール人の就業経路',
+    date: '2026-09-09',
+    parliament: '15',
+    type: 'Oral Answers to Questions',
+    speakers: ['Ms Denise Phua Lay Peng', 'Ms Jasmin Lau'],
+    personIds: [],
+    topicIds: [],
+    relatedPolicyIds: [],
+    relatedLeverNumbers: [],
+    relatedTimelineYears: [],
+    relatedPostSlugs: [],
+    topics: ['AI & Employment'],
+    summary:
+      '议员潘丽萍（Ms Denise Phua Lay Peng）询问代理人力部长：AI 加速普及、人形机器人进入职场之际，对培训后仍难转入新职业的年长、低薪及残障员工，政府正开发哪些新工作与就业途径。代理人力部长刘洁敏（Ms Jasmin Lau）答复：调查显示多数采用 AI 的企业是在重新设计岗位或创造新职位，而非裁员；政府正开发通往电工等技术行业和社会及社区护理领域的就业途径，辅以职业转换计划等项目，过去五年 51 岁及以上参与者近九成在 24 个月后仍在职；低薪员工有渐进式工资模式，残障人士有开门计划。潘丽萍追问称中国人形机器人发展令人警惕，要求展示具体岗位案例；刘洁敏表示会更多分享岗位重新设计及 AI 新岗位的案例。',
+    summaryEn:
+      'Ms Denise Phua Lay Peng asked the Acting Minister for Manpower what new jobs and employment pathways are being developed for older, lower-wage and disabled workers who may be unable to move into new occupations as AI and humanoid robots spread. Acting Minister Ms Jasmin Lau replied that surveys show most firms adopting AI are redesigning jobs or creating roles rather than cutting headcount. For workers who must switch roles, pathways are being built into skilled trades such as electrical work and into social and community care, supported by the Career Conversion Programmes and the SkillsFuture Career Transition Programme; close to nine in 10 CCP participants aged 51 and above were still employed 24 months later. Lower-wage workers have the Progressive Wage Model and Workfare Skills Support; persons with disabilities have the Open Door Programme. In supplementaries Ms Phua voiced alarm at humanoid robot deployment in China and asked the Government to show concrete jobs; Ms Lau said MOM would share more case studies of AI-redesigned and AI-created jobs.',
+    summaryJa:
+      'Denise Phua Lay Peng議員は代理人材大臣に対し、AIとヒューマノイドロボットの普及が進む中、研修を受けても新たな職業に移行しにくい高齢者、低賃金労働者、障害者のためにどのような新しい仕事と就業経路を整備しているかを質問した。ジャスミン・ラウ代理人材大臣は、調査ではAIを導入した企業の大半が人員削減ではなく職務の再設計や新たな役割の創出を行っていると答弁した。職務転換が必要な労働者には、電気工事などの熟練技能職や社会・地域ケア分野への経路を整備し、キャリア転換プログラムやスキルズフューチャー・キャリア移行プログラムで支援しており、51歳以上の参加者の10人に9人近くが24か月後も就業している。低賃金労働者にはプログレッシブ・ウェージ・モデルとワークフェア・スキル支援、障害者にはオープンドア・プログラムがある。補足質問でプア議員は中国でのヒューマノイドロボット配備への危機感を示し、具体的な仕事の事例を示すよう求め、ラウ氏はAIで再設計された職務や新たに生まれた仕事の事例共有を充実させると応じた。',
+    summaryKo:
+      'Denise Phua Lay Peng 의원은 인력부 장관 대행에게 AI와 휴머노이드 로봇이 확산되는 가운데 훈련을 받아도 새 직업으로 옮기기 어려운 고령·저임금·장애인 근로자를 위해 어떤 새 일자리와 고용 경로를 개발하고 있는지 질의했다. Jasmin Lau 인력부 장관 대행은 조사 결과 AI를 도입한 기업 대부분이 인력 감축보다 직무 재설계나 새 역할 창출을 하고 있다고 답했다. 직무를 바꿔야 하는 근로자를 위해 전기 작업 같은 숙련 기술직과 사회·지역사회 돌봄 분야로 가는 경로를 만들고 있으며, 경력 전환 프로그램과 스킬스퓨처 경력 전환 프로그램으로 지원하고 있고, 51세 이상 참가자 10명 중 9명 가까이가 24개월 후에도 고용 상태라고 밝혔다. 저임금 근로자에게는 점진적 임금 모델과 워크페어 기술 지원, 장애인에게는 오픈 도어 프로그램이 있다. 보충 질의에서 Phua 의원은 중국의 휴머노이드 로봇 배치에 대한 경각심을 드러내며 구체적인 일자리 사례를 보여 달라고 요구했고, Lau 장관 대행은 AI로 재설계된 직무와 AI가 만든 새 일자리 사례를 더 잘 공유하겠다고 답했다.',
+    whyItMatters: '51 岁及以上职业转换计划参与者近九成 24 个月后仍在职，人力部承诺多分享 AI 岗位案例',
+    whyItMattersEn:
+      'Close to nine in 10 Career Conversion Programme participants aged 51 and above were still employed 24 months on, and MOM promised more case studies of AI-redesigned and AI-created jobs.',
+    whyItMattersJa:
+      '51歳以上のキャリア転換プログラム参加者の約9割が24か月後も就業、人材省はAI関連の職務事例の共有拡大を約束',
+    whyItMattersKo:
+      '51세 이상 경력 전환 프로그램 참가자 약 90%가 24개월 후에도 취업 상태, 인력부는 AI 직무 사례 공유 확대 약속',
+    keyPoints: [
+      '人力部调查显示，多数采用 AI 的企业是在重新设计岗位或创造新职位，而非削减人手',
+      '政府正开发通往电工等基本及熟练技术行业、社会及社区护理领域的就业途径',
+      '职业转换计划和技能未来职业转型课程提供系统化培训与职业配对，过去五年 51 岁及以上职业转换计划参与者近九成在 24 个月后仍在职',
+      '低薪员工可依托渐进式工资模式和就业入息补助技能援助计划；残障人士有开门计划，残障人士家庭保障工作小组正检讨如何加强对雇主的支持',
+      '潘丽萍以中国部署人形机器人为例表达警惕，要求展示具体岗位；刘洁敏承诺更多分享岗位重新设计和 AI 新岗位的案例研究',
+    ],
+    keyPointsEn: [
+      'MOM surveys show most firms that adopt AI are redesigning jobs or creating new roles rather than reducing headcount',
+      'Pathways are being developed into essential and skilled trades such as electrical work, and into the social and community care sector',
+      'The Career Conversion Programmes and the SkillsFuture Career Transition Programme offer structured training and career matching; over the past five years close to nine in 10 CCP participants aged 51 and above remained employed 24 months on',
+      'Lower-wage workers can rely on the Progressive Wage Model and Workfare Skills Support; persons with disabilities have the Open Door Programme, and the Taskforce on Assurance for Families with Persons with Disabilities is reviewing support for employers',
+      'Ms Phua cited humanoid robot deployment in China and asked for concrete job examples; Ms Lau promised to share more case studies of redesigned and AI-created jobs',
+    ],
+    keyPointsJa: [
+      '人材省の調査では、AIを導入した企業の大半が人員削減ではなく職務の再設計や新たな役割の創出を行っている',
+      '電気工事などの基幹的・熟練技能職や、社会・地域ケア分野への就業経路を整備中',
+      'キャリア転換プログラムとスキルズフューチャー・キャリア移行プログラムが体系的な研修とキャリアマッチングを提供し、過去5年間で51歳以上のキャリア転換プログラム参加者の10人に9人近くが24か月後も就業',
+      '低賃金労働者はプログレッシブ・ウェージ・モデルとワークフェア・スキル支援を活用でき、障害者にはオープンドア・プログラムがあり、障害者のいる家族の安心に関するタスクフォースが雇用主支援の強化を検討中',
+      'プア議員は中国でのヒューマノイドロボット配備を例に具体的な仕事の提示を求め、ラウ氏は職務再設計やAIが生んだ新しい仕事の事例共有の充実を約束',
+    ],
+    keyPointsKo: [
+      '인력부 조사에 따르면 AI를 도입한 기업 대부분은 인력 감축보다 직무 재설계나 새 역할 창출을 하고 있다',
+      '전기 작업 같은 필수·숙련 기술직과 사회·지역사회 돌봄 부문으로 이어지는 고용 경로를 개발 중이다',
+      '경력 전환 프로그램과 스킬스퓨처 경력 전환 프로그램이 체계적 훈련과 경력 매칭을 제공하며, 지난 5년간 51세 이상 경력 전환 프로그램 참가자 10명 중 9명 가까이가 24개월 후에도 고용 상태였다',
+      '저임금 근로자는 점진적 임금 모델과 워크페어 기술 지원을 활용할 수 있고, 장애인에게는 오픈 도어 프로그램이 있으며, 장애인 가족 안심 태스크포스가 고용주 지원 강화를 검토 중이다',
+      'Phua 의원은 중국의 휴머노이드 로봇 배치를 예로 들며 구체적 일자리 사례를 요구했고, Lau 장관 대행은 직무 재설계와 AI가 만든 새 일자리 사례를 더 공유하겠다고 약속했다',
+    ],
+    governmentStance:
+      '政府认为 AI 目前主要带来岗位重新设计和新职位，而非大规模裁员，职业转换计划、渐进式工资模式和开门计划等现有工具可支撑弱势员工转型，并将持续监测影响。部长没有公布新的专门计划，只承诺加强案例分享。',
+    governmentStanceEn:
+      'The Government holds that AI is so far mainly driving job redesign and new roles rather than mass layoffs, and that existing tools such as the Career Conversion Programmes, the Progressive Wage Model and the Open Door Programme can support vulnerable workers, with impact to be monitored. The Minister announced no new dedicated scheme, only a commitment to share more case studies.',
+    governmentStanceJa:
+      '政府は、AIは現時点で大規模な人員削減ではなく主に職務の再設計や新たな役割を生んでおり、キャリア転換プログラム、プログレッシブ・ウェージ・モデル、オープンドア・プログラムなど既存の制度で弱い立場の労働者の移行を支えられるとし、影響を引き続き注視するとしている。大臣は新たな専用制度は示さず、事例共有の充実を約束するにとどめた。',
+    governmentStanceKo:
+      '정부는 AI가 현재로서는 대규모 감원보다 주로 직무 재설계와 새 역할을 만들고 있으며, 경력 전환 프로그램, 점진적 임금 모델, 오픈 도어 프로그램 같은 기존 제도로 취약 근로자의 전환을 뒷받침할 수 있다고 보고 영향을 계속 모니터링하겠다는 입장이다. 장관 대행은 새로운 전용 제도는 발표하지 않았고 사례 공유 강화만 약속했다.',
+    oppositionStance:
+      '提问议员潘丽萍担心人形机器人和 AI 的发展速度远超以往，年长、低技能和残障员工即使受训也难以转型，要求政府拿出看得见的具体岗位，而非笼统表态。',
+    oppositionStanceEn:
+      'Questioner Ms Denise Phua worried that humanoid robots and AI are advancing far faster than before, leaving older, lower-skilled and disabled workers unable to transition even with training, and pressed the Government to show tangible jobs rather than general assurances.',
+    oppositionStanceJa:
+      '質問者のDenise Phua Lay Peng議員は、ヒューマノイドロボットとAIがかつてない速さで進歩し、高齢者、低技能者、障害者は研修を受けても移行が難しいと懸念し、抽象的な説明ではなく目に見える具体的な仕事を示すよう政府に求めた。',
+    oppositionStanceKo:
+      '질의자 Denise Phua Lay Peng 의원은 휴머노이드 로봇과 AI가 과거보다 훨씬 빠르게 발전해 고령·저숙련·장애인 근로자가 훈련을 받아도 전환하기 어렵다고 우려하며, 막연한 설명이 아니라 눈에 보이는 구체적 일자리를 제시하라고 정부에 요구했다.',
+    controversyLevel: 2,
+    policySignal:
+      '人力部的回应仍以既有转型工具为主，把 AI 冲击定位为岗位重塑而非替代；执政党议员在国会公开要求“展示岗位”，说明基层对人形机器人冲击的焦虑在上升，政府接下来可能先在沟通层面发布更多 AI 岗位案例。',
+    policySignalEn:
+      "MOM's reply leans on existing transition tools and frames AI's impact as job redesign rather than displacement. A backbencher publicly asking the Government to show the jobs suggests ground-level anxiety over humanoid robots is rising, and the next step is likely more public case studies of AI jobs rather than new schemes.",
+    policySignalJa:
+      '人材省の答弁は既存の移行支援制度が中心で、AIの影響を代替ではなく職務の再構築と位置づけている。与党議員が国会で公然と「仕事を示してほしい」と求めたことは、ヒューマノイドロボットへの現場の不安が高まっていることを示しており、政府は新制度よりもまずAI関連の職務事例の発信を強める可能性が高い。',
+    policySignalKo:
+      '인력부의 답변은 기존 전환 지원 제도에 기대며 AI의 영향을 대체가 아닌 직무 재편으로 규정한다. 여당 의원이 국회에서 공개적으로 일자리를 보여 달라고 요구한 것은 휴머노이드 로봇에 대한 현장의 불안이 커지고 있음을 보여 주며, 정부는 새 제도보다 AI 일자리 사례 홍보를 먼저 강화할 가능성이 크다.',
+    notableQuote: '到目前为止，我们的调查显示，大多数采用 AI 的企业是在重新设计岗位或创造新职位，而不是削减人手。',
+    notableQuoteEn:
+      'So far, our surveys show that most firms that adopt AI are redesigning jobs or creating new roles rather than reducing headcount.',
+    notableQuoteJa:
+      'これまでの調査では、AIを導入した企業の大半が、人員を削減するのではなく、職務を再設計したり新たな役割を創出したりしています。',
+    notableQuoteKo:
+      '지금까지 조사에 따르면 AI를 도입한 기업 대부분은 인력을 줄이기보다 직무를 재설계하거나 새 역할을 만들고 있습니다.',
+    transcriptEn:
+      'Ms Denise Phua Lay Peng asked the Acting Minister for Manpower what new jobs and pathways are being developed, as AI and humanoid robots spread, for Singaporeans who may be unable to move into new occupations despite training, especially older, lower-wage and disabled workers. Ms Jasmin Lau replied that MOM surveys show most firms adopting AI are redesigning jobs or creating new roles rather than reducing headcount. For those who must change roles, pathways are being built into skilled trades such as electrical work and into social and community care. These are supported by the Career Conversion Programmes and the SkillsFuture Career Transition Programme, with enhanced support for older workers; over five years close to nine in 10 CCP participants aged 51 and above remained employed 24 months on. Lower-wage workers have the Progressive Wage Model and Workfare Skills Support. For persons with disabilities, the Open Door Programme helps employers with job redesign and inclusive hiring, and a taskforce is reviewing further employer support. In a supplementary, Ms Phua called news of humanoid robots in China alarming and asked the Government to show tangible jobs for vulnerable workers, citing an SIT and UOB project in Punggol pairing robots and humans for estate maintenance. Ms Lau said MOM would do better at sharing case studies of redesigned and AI-created jobs.',
+    sourceUrl: 'https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=oral-answer-4198',
+    addedAt: '2026-09-26',
+  },
+  {
+    id: 'oral-answer-4196',
+    titleEn:
+      "Singapore's Strategic Position on Pax Silica AI Coalition and World Artificial Intelligence Cooperation Organization",
+    title: '新加坡如何定位 Pax Silica AI 联盟与世界人工智能合作组织',
+    titleKo: 'Pax Silica AI 연합과 세계인공지능협력기구에 대한 싱가포르의 전략적 입장',
+    titleJa: 'Pax Silica AI連合と世界人工知能協力機構に対するシンガポールの戦略的立場',
+    date: '2026-09-09',
+    parliament: '15',
+    type: 'Oral Answers to Questions',
+    speakers: ['Dr Neo Kok Beng', 'Mrs Josephine Teo'],
+    personIds: [],
+    topicIds: [],
+    relatedPolicyIds: [],
+    relatedLeverNumbers: [],
+    relatedTimelineYears: [],
+    relatedPostSlugs: [],
+    topics: ['AI Strategy', 'AI Governance & Regulation'],
+    summary:
+      '官委议员梁国民博士（Dr Neo Kok Beng）询问数字发展与信息部长：新加坡对 Pax Silica AI 联盟与世界人工智能合作组织（WAICO）的战略选择和定位为何。数字发展与信息部长杨莉明（Mrs Josephine Teo）一并答复蔡庆威（Mr Louis Chua）的同类提问：新加坡已受邀参与 WAICO，东盟对 WAICO 和 Pax Silica 均无立场，新加坡将结合与中国的更广泛交往及其他国际 AI 合作倡议考虑邀请；是否参与取决于倡议目标、共同利益、与现有交往的互补性及国家整体利益，逐一比较意义不大。补充质询中，梁国民建议集中推动 ISO 标准；杨莉明表示 AI 治理格局仍在演变，难断定哪个标准机构最具影响力，政府将持续扩大标准互操作的空间。',
+    summaryEn:
+      "Nominated MP Dr Neo Kok Beng asked the Minister for Digital Development and Information about Singapore's strategic options and positioning with respect to the Pax Silica AI coalition and the World Artificial Intelligence Cooperation Organisation (WAICO). Minister Josephine Teo, also answering a related question filed by Mr Louis Chua, said Singapore has received an invitation to participate in WAICO; there is no ASEAN position on either WAICO or Pax Silica, so Singapore will consider the invitation alongside its broader engagements with China and other international AI cooperation initiatives. Whether Singapore joins any initiative depends on its objectives, areas of common interest, how it complements existing engagements and Singapore's overall interests, so one-to-one comparisons are less meaningful. In a supplementary, Dr Neo urged more effort on ISO standards; Mrs Teo said the AI governance landscape is still evolving and it is hard to say which standards bodies will prevail, but Singapore works seriously with ISO and will keep seeking to expand the space for interoperable standards.",
+    summaryJa:
+      'Neo Kok Beng 博士（任命議員）は、デジタル発展・情報大臣に対し、Pax Silica AI連合と世界人工知能協力機構（WAICO）に関するシンガポールの戦略的選択肢と立ち位置を質問した。ジョセフィン・テオ（Mrs Josephine Teo）デジタル発展・情報大臣は、Chua Kheng Wee Louis議員の関連質問と併せて答弁し、シンガポールはWAICOへの参加招請を受けているが、WAICOとPax SilicaのいずれについてもASEANの立場はなく、中国とのより広範な関与や他の国際的なAI協力の取り組みと併せて招請を検討すると述べた。特定の取り組みへの参加は、その目的、共通の関心分野、既存の関与との補完性、シンガポール全体の利益によって決まり、一対一の比較にはあまり意味がないとした。補足質問でNeo 博士はISO標準への注力を提案し、テオ大臣はAIガバナンスの状況はまだ発展途上でどの標準化団体が優勢になるかは断言できないが、シンガポールはISOと真剣に協力しており、相互運用可能な標準の余地を広げ続けると答えた。',
+    summaryKo:
+      'Neo Kok Beng 박사(임명의원)는 디지털개발정보부 장관에게 Pax Silica AI 연합과 세계인공지능협력기구(WAICO)에 대한 싱가포르의 전략적 선택지와 입지를 질의했다. Josephine Teo 디지털개발정보부 장관은 Chua Kheng Wee Louis 의원의 관련 질문과 함께 답변하며, 싱가포르가 WAICO 참여 초청을 받았으나 WAICO와 Pax Silica 어느 쪽에 대해서도 아세안의 입장은 없으므로, 중국과의 폭넓은 교류 및 기타 국제 AI 협력 이니셔티브와 함께 초청을 검토하겠다고 밝혔다. 특정 이니셔티브 참여 여부는 그 목표, 공동 관심 분야, 기존 교류와의 보완성, 싱가포르의 전반적 이익에 달려 있어 일대일 비교는 큰 의미가 없다고 했다. 보충 질의에서 Neo 박사는 ISO 표준에 더 힘을 쏟자고 제안했고, Teo 장관은 AI 거버넌스 환경이 여전히 진화 중이어서 어느 표준 기구가 우세해질지 단정하기 어렵지만 싱가포르는 ISO와 진지하게 협력하고 있으며 상호운용 가능한 표준의 공간을 계속 넓히겠다고 답했다.',
+    whyItMatters: '新加坡已受邀参与世界人工智能合作组织（WAICO），东盟对 WAICO 与 Pax Silica 均无立场',
+    whyItMattersEn:
+      'Singapore has been invited to participate in the World AI Cooperation Organization, and ASEAN has no position on either WAICO or Pax Silica.',
+    whyItMattersJa:
+      'シンガポールは世界AI協力機構（WAICO）への参加招請を受けており、ASEANはWAICOとPax Silicaのいずれにも立場を持たない',
+    whyItMattersKo:
+      '싱가포르는 세계AI협력기구(WAICO) 참여 초청을 받았으며, 아세안은 WAICO와 Pax Silica 어느 쪽에도 입장이 없다',
+    keyPoints: [
+      '新加坡已收到参与世界人工智能合作组织（WAICO）的邀请，将结合与中国的更广泛交往及其他国际 AI 合作倡议一并考虑。',
+      '东盟对 WAICO 和 Pax Silica 均没有立场。',
+      '新加坡数年前为 1992 年成立、由 108 个联合国会员国组成的小国论坛发起数字支柱；杨莉明今年成为国际电信联盟发起的 AI 向善全球委员会创始成员，该委员会有来自美国和中国的成员。',
+      '双边层面，新加坡与美国有网络对话，与中国有数字政策对话。',
+      '是否参与某项倡议取决于其目标、共同利益的实质领域、与现有交往的互补性及新加坡整体利益，逐一比较单项倡议意义不大。',
+      '新加坡与 ISO 合作，其伦理原则及测试与认证框架的相关工作曾影响 ISO 对 AI 治理的思考；政府将持续寻求扩大标准互操作的空间。',
+    ],
+    keyPointsEn: [
+      'Singapore has received an invitation to participate in the World AI Cooperation Organization (WAICO) and will consider it alongside its broader engagements with China and other international AI cooperation initiatives.',
+      'There is no ASEAN position on either WAICO or Pax Silica.',
+      "A few years ago Singapore initiated a digital pillar for the Forum of Small States, a grouping of 108 UN member states founded in 1992; this year Mrs Teo became a founding member of the ITU's AI for Good Global Commission, which has members from the US and China.",
+      'Bilaterally, Singapore has a Cyber Dialogue with the US and a Digital Policy Dialogue with China.',
+      "Participation in any initiative depends on its objectives, substantive areas of common interest, how it complements existing engagements and Singapore's overall interests, making one-to-one comparisons less meaningful.",
+      "Singapore works with ISO, and work behind its ethical principles and testing and certification frameworks contributed to ISO's thinking on AI governance; the Government will keep seeking to expand the space for interoperable standards.",
+    ],
+    keyPointsJa: [
+      'シンガポールは世界AI協力機構（WAICO）への参加招請を受けており、中国とのより広範な関与や他の国際的なAI協力の取り組みと併せて検討する。',
+      'WAICOとPax Silicaのいずれについても、ASEANの立場はない。',
+      'シンガポールは数年前、1992年創設で108の国連加盟国からなる小国フォーラムにデジタルの柱を立ち上げた。テオ大臣は今年、国際電気通信連合が立ち上げたAI for Good グローバル委員会の創設メンバーとなり、同委員会には米国と中国のメンバーがいる。',
+      '二国間では、米国とサイバー対話、中国とデジタル政策対話を行っている。',
+      '取り組みへの参加は、その目的、共通の関心がある実質的分野、既存の関与との補完性、シンガポール全体の利益で決まり、一対一の比較にはあまり意味がない。',
+      'シンガポールはISOと協力しており、倫理原則や試験・認証の枠組みに関する作業はISOのAIガバナンスの考え方に貢献した。政府は相互運用可能な標準の余地を広げ続ける。',
+    ],
+    keyPointsKo: [
+      '싱가포르는 세계AI협력기구(WAICO) 참여 초청을 받았으며, 중국과의 폭넓은 교류 및 기타 국제 AI 협력 이니셔티브와 함께 검토할 것이다.',
+      'WAICO와 Pax Silica 어느 쪽에 대해서도 아세안의 입장은 없다.',
+      '싱가포르는 몇 년 전 1992년 창설된 108개 유엔 회원국 모임인 소국 포럼에 디지털 축을 출범시켰고, Teo 장관은 올해 국제전기통신연합이 주도한 AI for Good 글로벌 위원회의 창립 위원이 되었으며 이 위원회에는 미국과 중국 출신 위원이 있다.',
+      '양자 차원에서 싱가포르는 미국과 사이버 대화를, 중국과 디지털 정책 대화를 하고 있다.',
+      '이니셔티브 참여 여부는 그 목표, 공동 관심의 실질적 분야, 기존 교류와의 보완성, 싱가포르의 전반적 이익에 달려 있어 일대일 비교는 큰 의미가 없다.',
+      '싱가포르는 ISO와 협력하고 있으며, 윤리 원칙과 테스트·인증 프레임워크 관련 작업이 ISO의 AI 거버넌스 논의에 기여했다. 정부는 상호운용 가능한 표준의 공간을 계속 넓힐 것이다.',
+    ],
+    governmentStance:
+      '政府未就是否加入 WAICO 或 Pax Silica 作出决定，只表示会结合与中国的更广泛交往及其他国际 AI 合作倡议考虑 WAICO 邀请，是否参与取决于倡议目标、共同利益与国家整体利益。在标准问题上，政府不押注单一标准机构，而是与 ISO 等多方组织合作，重点确保标准互操作性。',
+    governmentStanceEn:
+      "The Government has not decided on joining WAICO or Pax Silica; it will consider the WAICO invitation alongside its broader engagements with China and other international AI cooperation initiatives, with participation depending on each initiative's objectives, common interests and Singapore's overall interests. On standards, it declined to back a single standards body, preferring to work with ISO and other organisations with a focus on interoperability.",
+    governmentStanceJa:
+      '政府はWAICOやPax Silicaへの参加について決定しておらず、WAICOの招請は中国とのより広範な関与や他の国際的なAI協力の取り組みと併せて検討し、参加は各取り組みの目的、共通の利益、シンガポール全体の利益次第だとした。標準については単一の標準化団体に賭けることはせず、ISOなど複数の組織と協力し、相互運用性の確保を重視するとした。',
+    governmentStanceKo:
+      '정부는 WAICO나 Pax Silica 가입 여부를 결정하지 않았으며, WAICO 초청은 중국과의 폭넓은 교류 및 기타 국제 AI 협력 이니셔티브와 함께 검토하고 참여 여부는 각 이니셔티브의 목표, 공동 이익, 싱가포르의 전반적 이익에 따라 정한다고 밝혔다. 표준 문제에서는 특정 표준 기구 하나에 걸지 않고 ISO 등 여러 기구와 협력하며 상호운용성 확보에 중점을 둔다고 했다.',
+    oppositionStance:
+      '提问议员梁国民（官委议员）关注新加坡在 Pax Silica 与 WAICO 之间如何定位，并主张集中力量推动 ISO 系列成为新加坡推动的国际标准，而非迎合不同的条约组织。',
+    oppositionStanceEn:
+      'Questioner Dr Neo Kok Beng (Nominated MP) asked how Singapore positions itself between Pax Silica and WAICO, and argued for putting more effort into the ISO series as the international standards Singapore pushes, rather than catering to different treaty organisations.',
+    oppositionStanceJa:
+      '質問者のNeo Kok Beng 博士（任命議員）は、Pax SilicaとWAICOの間でシンガポールがどう立ち位置を定めるかを問い、異なる条約機構に合わせるのではなく、ISOシリーズをシンガポールが推進する国際標準とするよう注力すべきだと主張した。',
+    oppositionStanceKo:
+      '질의자 Neo Kok Beng 박사(임명의원)는 Pax Silica와 WAICO 사이에서 싱가포르가 어떻게 입지를 정할지 물었고, 서로 다른 조약 기구에 맞추기보다 ISO 시리즈를 싱가포르가 추진하는 국제 표준으로 삼는 데 더 힘을 쏟아야 한다고 주장했다.',
+    controversyLevel: 2,
+    policySignal:
+      '新加坡在中美各自主导的 AI 合作框架之间避免二选一，把 WAICO 邀请放进对华整体关系中处理，并以标准互操作性作为跨阵营参与的锚点，延续小国多边对冲的外交路线。',
+    policySignalEn:
+      'Singapore is avoiding a binary choice between AI cooperation frameworks led by different major powers, folding the WAICO invitation into its overall relationship with China and anchoring cross-camp participation on standards interoperability, in line with its small-state multilateral hedging approach.',
+    policySignalJa:
+      'シンガポールは異なる大国が主導するAI協力枠組みの間で二者択一を避け、WAICOの招請を対中関係全体の中で扱い、標準の相互運用性を陣営をまたぐ参加の軸に据えている。小国としての多国間ヘッジ外交の延長線上にある。',
+    policySignalKo:
+      '싱가포르는 서로 다른 강대국이 주도하는 AI 협력 틀 사이에서 양자택일을 피하고, WAICO 초청을 대중국 관계 전반 속에서 다루며 표준 상호운용성을 진영을 넘나드는 참여의 기준점으로 삼고 있다. 소국의 다자 헤징 외교 노선의 연장선이다.',
+    notableQuote: '因此，对个别倡议进行一对一比较的意义不大。',
+    notableQuoteEn: 'It is therefore less meaningful to make one-to-one comparisons between individual initiatives.',
+    notableQuoteJa: 'したがって、個々の取り組みを一対一で比較することにはあまり意味がありません。',
+    notableQuoteKo: '따라서 개별 이니셔티브를 일대일로 비교하는 것은 그다지 의미가 없습니다.',
+    transcriptEn:
+      "Dr Neo Kok Beng asked the Minister for Digital Development and Information about Singapore's strategic positioning on the Pax Silica AI coalition and the World Artificial Intelligence Cooperation Organisation. Mrs Josephine Teo, also answering a related question by Mr Louis Chua, replied that Singapore has been invited to participate in WAICO. There is no ASEAN position on either WAICO or Pax Silica, so Singapore will consider the invitation alongside its broader engagements with China and other international AI cooperation initiatives. Singapore engages partners through many platforms, including the Forum of Small States, the ITU's AI for Good Global Commission and dialogues with the US and China. Participation depends on each initiative's objectives, common interests, fit with existing engagements and Singapore's overall interests, so one-to-one comparisons are less meaningful. In a supplementary, Dr Neo asked whether Singapore could focus more on the ISO series rather than cater to different treaty organisations. Mrs Teo said the AI governance landscape is still evolving and it is hard to say which standards bodies will prevail. Singapore works seriously with ISO, and its earlier work contributed to ISO's thinking on AI governance. As most companies here operate across borders, the Government will keep seeking to expand the space for interoperable standards.",
+    sourceUrl: 'https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=oral-answer-4196',
+    addedAt: '2026-09-26',
+  },
+  {
+    id: 'oral-answer-4195',
+    titleEn: 'Guidance for Muslims who Turn To Generative AI for Religious Answers',
+    title: '为借助生成式 AI 寻求宗教解答的穆斯林提供指引',
+    titleKo: '생성형 AI로 종교적 답을 찾는 무슬림을 위한 지침',
+    titleJa: '生成AIに宗教上の答えを求めるムスリムへの指針',
+    date: '2026-09-09',
+    parliament: '15',
+    type: 'Oral Answers to Questions',
+    speakers: ['Mr Saktiandi Supaat', 'Dr Wan Rizal', 'Mr Zaqy Mohamad'],
+    personIds: [],
+    topicIds: [],
+    relatedPolicyIds: [],
+    relatedLeverNumbers: [],
+    relatedTimelineYears: [],
+    relatedPostSlugs: [],
+    topics: ['AI Safety & Ethics', 'Deepfakes & Disinformation'],
+    summary:
+      '议员安迪（Mr Saktiandi Supaat）询问代主管回教事务部长：新加坡伊斯兰宗教理事会（MUIS）是否会发布指引，帮助借助生成式 AI 获取宗教解答的穆斯林核实答案。代主管回教事务部长扎吉哈（Mr Zaqy Mohamad）答复：生成式 AI 可补充宗教学习，但不应作为宗教指引的主要来源，复杂问题应请教合格宗教师；MUIS 已通过星期五讲道、公开讲座和 MuslimSG 平台传达这一信息。补充提问中，安迪要求提供核查 AI 答案的渠道，扎吉哈表示 MUIS 正研究升级 MuslimSG 以便公众接触宗教师，部分宗教师已受 AI 培训。议员文礼佳（Dr Wan Rizal）建议设专门单位主动搜寻网上宗教错误信息，扎吉哈认为互联网过于庞大、算法难以监管，重点应是提升民众辨识风险的能力。',
+    summaryEn:
+      "Mr Saktiandi Supaat asked the Acting Minister-in-charge of Muslim Affairs whether MUIS will issue guidance to help Muslims who use generative AI for religious answers to verify them and to know when to consult qualified asatizah. Acting Minister-in-charge of Muslim Affairs Mr Zaqy Mohamad replied that GenAI can complement religious learning but should not be the primary source of religious guidance, and complex matters need qualified asatizah. MUIS has spread this message through Friday sermons, public talks and the MuslimSG platform. In supplementaries, Mr Saktiandi asked for a channel to check AI answers; Mr Zaqy said MUIS is looking at upgrading MuslimSG to improve access to asatizah, and some asatizah have been trained on AI. Dr Wan Rizal proposed a dedicated MUIS unit to search for religious misinformation online; Mr Zaqy said the Internet is too vast and algorithms are hard to police, so the focus is on key themes and building people's ability to spot risks.",
+    summaryJa:
+      'Saktiandi Supaat議員は、ムスリム問題担当大臣代行に対し、生成AIで宗教上の回答を得るムスリムがそれを検証し、いつ資格のある宗教指導者に相談すべきかを知るための指針をMUISが出すかを質問した。ムスリム問題担当大臣代行のZaqy Mohamad氏は、生成AIは宗教学習を補完し得るが宗教指導の主要な情報源とすべきではなく、複雑な問題は資格のある宗教指導者に相談すべきだと答弁した。MUISは金曜礼拝の説教、公開講演、MuslimSGプラットフォームを通じてこのメッセージを発信している。補足質問でSaktiandi議員がAIの回答を確認する窓口を求めると、Zaqy氏はMuslimSGの改良で宗教指導者へのアクセスを高めることを検討中で、一部の宗教指導者はAI研修を受けたと述べた。Wan Rizal議員がネット上の宗教的誤情報を探すMUISの専門部署を提案したのに対し、同氏はインターネットは広大でアルゴリズムの取り締まりは難しく、主要なテーマの把握と人々のリスク識別力の向上に重点を置くとした。',
+    summaryKo:
+      'Saktiandi Supaat 의원은 무슬림 담당 장관 대행에게 생성형 AI로 종교적 답변을 얻는 무슬림이 이를 검증하고 언제 자격을 갖춘 종교 지도자와 상담해야 하는지 알 수 있도록 MUIS가 지침을 발표할 것인지 질의했다. 무슬림 담당 장관 대행 Zaqy Mohamad는 생성형 AI가 종교 학습을 보완할 수는 있지만 종교적 지도의 주된 출처가 되어서는 안 되며, 복잡한 문제는 자격을 갖춘 종교 지도자와 상담해야 한다고 답했다. MUIS는 금요 설교, 공개 강연, MuslimSG 플랫폼을 통해 이 메시지를 전해 왔다. 보충 질의에서 Saktiandi 의원이 AI 답변 확인 창구를 요청하자, Zaqy 대행은 종교 지도자 접근성을 높이기 위해 MuslimSG 개선을 검토 중이며 일부 종교 지도자는 AI 교육을 받았다고 밝혔다. Wan Rizal 의원이 온라인 종교 허위정보를 찾는 MUIS 전담 부서를 제안하자, 그는 인터넷이 너무 방대하고 알고리즘 단속이 어려워 핵심 주제 파악과 국민의 위험 식별 능력 향상에 중점을 두겠다고 했다.',
+    whyItMatters: 'MUIS 将升级 MuslimSG 并培训宗教师使用生成式 AI，但未接受设专门单位巡查网上宗教错误信息的建议',
+    whyItMattersEn:
+      'MUIS will upgrade MuslimSG and train asatizah on generative AI, but did not take up a proposal for a dedicated unit to hunt religious misinformation online.',
+    whyItMattersJa:
+      'MUISはMuslimSGを改良し宗教指導者に生成AI研修を行うが、ネット上の宗教的誤情報を探す専門部署の提案は受け入れず',
+    whyItMattersKo:
+      'MUIS는 MuslimSG를 개선하고 종교 지도자에게 생성형 AI 교육을 하지만, 온라인 종교 허위정보 전담 부서 제안은 받아들이지 않음',
+    keyPoints: [
+      '政府立场：生成式 AI 和网络平台可补充宗教学习，但不应作为宗教教导或指引的主要来源，复杂宗教问题应请教合格宗教师',
+      'MUIS 已通过星期五讲道、公开讲座和 MuslimSG 平台传达这一信息，并将通过社交媒体和社区伙伴提供实用指引，加强数字宗教素养',
+      'MUIS 正研究升级 MuslimSG 平台，提高接触宗教师的便利性，未来可能使其更具互动性',
+      '部分宗教师已接受培训，以了解 AI 的影响及如何更好地使用 AI；公众可通过宗教师认证计划网站联系宗教师',
+      '扎吉哈前一天宣布成立的网络委员会也负责研究网络来源和网络伤害带来的新兴风险',
+      '对设专门单位巡查网上宗教错误信息的建议，代部长认为互联网过于庞大、算法难以监管，应着重识别主题并提升民众辨识风险的能力',
+    ],
+    keyPointsEn: [
+      'Government position: GenAI and online platforms can complement religious learning but should not be the primary source of religious instruction or guidance; complex matters need qualified asatizah.',
+      'MUIS has reinforced this through Friday sermons, public talks and the MuslimSG platform, and will give practical guidance via social media and community partners to build digital religious literacy.',
+      'MUIS is looking at upgrading the MuslimSG platform to improve access to asatizah and possibly make it more interactive.',
+      'Some asatizah have been trained to understand the effects of AI and how to use it better; asatizah can be reached via the Asatizah Recognition Scheme website.',
+      'The online committee Mr Zaqy announced the previous day is also tasked with studying emerging risks from online sources and online harms.',
+      'On a dedicated unit to search for religious misinformation online, the Acting Minister said the Internet is too vast and algorithms are hard to police; the focus should be on key themes and inoculating people against the risks.',
+    ],
+    keyPointsJa: [
+      '政府の立場：生成AIやオンラインプラットフォームは宗教学習を補完し得るが、宗教上の教えや指導の主要な情報源とすべきではなく、複雑な問題は資格のある宗教指導者に相談すべき',
+      'MUISは金曜礼拝の説教、公開講演、MuslimSGプラットフォームを通じてこのメッセージを発信しており、今後もソーシャルメディアや地域パートナーを通じて実践的な指針を示し、デジタル宗教リテラシーを高める',
+      'MUISはMuslimSGプラットフォームを改良して宗教指導者へのアクセスを改善し、よりインタラクティブにすることを検討している',
+      '一部の宗教指導者はAIの影響や活用法を理解するための研修を受けており、宗教指導者には宗教指導者認定制度のウェブサイトから連絡できる',
+      'Zaqy氏が前日に発表したオンライン委員会も、オンライン情報源やオンライン上の危害から生じる新たなリスクを検討する任務を負う',
+      'ネット上の宗教的誤情報を探す専門部署について、大臣代行はインターネットは広大でアルゴリズムの取り締まりは難しく、主要なテーマの把握と人々への「免疫付与」に重点を置くべきだとした',
+    ],
+    keyPointsKo: [
+      '정부 입장: 생성형 AI와 온라인 플랫폼은 종교 학습을 보완할 수 있지만 종교적 가르침이나 지도의 주된 출처가 되어서는 안 되며, 복잡한 문제는 자격을 갖춘 종교 지도자와 상담해야 함',
+      'MUIS는 금요 설교, 공개 강연, MuslimSG 플랫폼을 통해 이 메시지를 강화해 왔으며, 소셜 미디어와 지역사회 파트너를 통해 실질적인 지침을 제공해 디지털 종교 문해력을 높일 예정',
+      'MUIS는 종교 지도자 접근성을 개선하고 더 상호작용적으로 만들기 위해 MuslimSG 플랫폼 개선을 검토 중',
+      '일부 종교 지도자는 AI의 영향과 활용법을 이해하기 위한 교육을 받았으며, 종교지도자 인증제도 웹사이트를 통해 종교 지도자에게 연락할 수 있음',
+      'Zaqy 대행이 전날 발표한 온라인 위원회도 온라인 출처와 온라인 위해에서 비롯되는 새로운 위험을 검토하는 임무를 맡음',
+      '온라인 종교 허위정보를 찾는 전담 부서에 대해 장관 대행은 인터넷이 너무 방대하고 알고리즘 단속이 어려워 핵심 주제 파악과 국민의 위험 인식 제고에 집중해야 한다고 밝힘',
+    ],
+    governmentStance:
+      '政府认为生成式 AI 只能作为宗教学习的补充，复杂宗教问题须请教合格宗教师，MUIS 将升级 MuslimSG、培训宗教师并加强数字宗教素养。政府未承诺设立专门单位主动搜寻网上宗教错误信息，认为算法难以监管，重点应放在识别主题和提升民众辨识风险的能力。',
+    governmentStanceEn:
+      "The Government sees GenAI only as a complement to religious learning, with complex matters to be referred to qualified asatizah; MUIS will upgrade MuslimSG, train asatizah and build digital religious literacy. It did not commit to a dedicated unit to search out religious misinformation online, saying algorithms are hard to police and the priority is identifying themes and building people's ability to recognise risks.",
+    governmentStanceJa:
+      '政府は生成AIを宗教学習の補完にとどめ、複雑な問題は資格のある宗教指導者に委ねるべきだとし、MUISはMuslimSGの改良、宗教指導者の研修、デジタル宗教リテラシーの向上に取り組む。ネット上の宗教的誤情報を探す専門部署の設置は約束せず、アルゴリズムの取り締まりは難しいため、テーマの把握と人々のリスク識別力の向上を優先するとした。',
+    governmentStanceKo:
+      '정부는 생성형 AI를 종교 학습의 보완 수단으로만 보고 복잡한 문제는 자격을 갖춘 종교 지도자에게 맡겨야 한다는 입장이며, MUIS는 MuslimSG 개선, 종교 지도자 교육, 디지털 종교 문해력 강화를 추진한다. 온라인 종교 허위정보를 찾는 전담 부서 설치는 약속하지 않았으며, 알고리즘 단속이 어려운 만큼 주제 파악과 국민의 위험 인식 능력 향상을 우선하겠다고 했다.',
+    oppositionStance:
+      '提问议员安迪担心寻求宗教指引的人缺乏核实 AI 答案的知识，希望 MUIS 提供可提交答案核查的渠道，并触及不常参加清真寺活动的人群；议员文礼佳认为现有做法过于被动防守，建议设专门单位主动巡查。',
+    oppositionStanceEn:
+      'Questioner Mr Saktiandi Supaat worried that people seeking religious guidance lack the knowledge to verify AI answers, and wanted a MUIS channel to check such answers and outreach to those who rarely attend mosque programmes; Dr Wan Rizal felt the current approach was too defensive and proposed a dedicated unit.',
+    oppositionStanceJa:
+      '質問者のSaktiandi Supaat議員は、宗教上の指導を求める人がAIの回答を検証する知識を欠いていることを懸念し、回答を確認できるMUISの窓口と、モスクの行事にあまり参加しない人々への働きかけを求めた。Wan Rizal議員は現行の対応は守りに回りすぎているとして専門部署の設置を提案した。',
+    oppositionStanceKo:
+      '질의자 Saktiandi Supaat 의원은 종교적 지도를 구하는 사람들이 AI 답변을 검증할 지식이 부족하다고 우려하며, 답변을 확인할 수 있는 MUIS 창구와 모스크 프로그램에 잘 참석하지 않는 이들에 대한 접근을 요청했다. Wan Rizal 의원은 현재 대응이 지나치게 방어적이라며 전담 부서 설치를 제안했다.',
+    controversyLevel: 2,
+    policySignal:
+      '新加坡应对生成式 AI 带来的宗教错误信息，倾向于依靠宗教机构的指引、宗教师培训和公众素养，而不是监控内容来源，这与其在网络伤害问题上强调给民众“打预防针”的整体思路一致。',
+    policySignalEn:
+      "Singapore is handling religious misinformation from generative AI through religious authorities' guidance, training of asatizah and public literacy rather than monitoring content sources, in line with its wider approach of inoculating the public against online harms.",
+    policySignalJa:
+      'シンガポールは生成AIがもたらす宗教的誤情報に対し、情報源の監視ではなく、宗教機関の指針、宗教指導者の研修、国民のリテラシー向上で対応する方針であり、オンライン上の危害について国民に「免疫」をつけるという全体的な考え方と一致している。',
+    policySignalKo:
+      "싱가포르는 생성형 AI가 초래하는 종교 허위정보에 대해 콘텐츠 출처 감시보다 종교 기관의 지침, 종교 지도자 교육, 대중의 문해력 향상으로 대응하고 있으며, 이는 온라인 위해에 대해 국민에게 '면역'을 길러 주겠다는 전반적 접근과 일치한다.",
+    notableQuote: '生成式 AI 也不是来自网站；它来自从不同网站汇集内容的算法，因此很难监管算法。',
+    notableQuoteEn:
+      'GenAI does not come from sites as well; it comes from algorithms that are pulled together from different sites, so it is very difficult to police algorithms.',
+    notableQuoteJa:
+      '生成AIもサイトから来るのではなく、さまざまなサイトから寄せ集められたアルゴリズムから来るので、アルゴリズムを取り締まるのは非常に困難です。',
+    notableQuoteKo:
+      '생성형 AI 역시 사이트에서 오는 것이 아니라 여러 사이트에서 끌어모은 알고리즘에서 나오므로, 알고리즘을 단속하기는 매우 어렵습니다.',
+    transcriptEn:
+      'Mr Saktiandi Supaat asked the Acting Minister-in-charge of Muslim Affairs whether MUIS will issue guidance to help Muslims who use generative AI for religious answers to verify those answers against authoritative sources and to know when to consult qualified asatizah. Mr Zaqy Mohamad replied that GenAI and online platforms can complement religious learning but should not be the primary source of religious guidance, and complex matters need qualified asatizah. MUIS has reinforced this through Friday sermons, public talks and the MuslimSG platform. In supplementaries, Mr Saktiandi asked whether the public could submit AI-generated answers for checking by asatizah, and how guidance would reach those who rarely attend mosque programmes. Mr Zaqy said MUIS is looking at upgrading MuslimSG to improve access to asatizah, some asatizah have been trained on AI, and the online committee he announced the day before will study emerging online risks. Dr Wan Rizal asked whether MUIS could set up a dedicated unit to search the Internet for religious misinformation early. Mr Zaqy said the Internet is too vast and algorithms are hard to police; the priority is to address resonant themes, such as past concerns over wishing others Merry Christmas, and to inoculate Singaporeans against online harms.',
+    sourceUrl: 'https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=oral-answer-4195',
+    addedAt: '2026-09-26',
+  },
+  {
+    id: 'oral-answer-4194',
+    titleEn: 'Effectiveness of Enhanced Bank Safeguards Against Scams Involving AI-Generated Deepfake Impersonation',
+    title: '强化银行防护措施对AI深度伪造冒充诈骗的成效',
+    titleKo: 'AI 딥페이크 사칭 사기에 대한 은행의 강화된 보호조치 효과',
+    titleJa: 'AIディープフェイクによるなりすまし詐欺に対する銀行の強化セーフガードの有効性',
+    date: '2026-09-09',
+    parliament: '15',
+    type: 'Oral Answers to Questions',
+    speakers: ['Ms He Ting Ru', 'Mr Chee Hong Tat'],
+    personIds: [],
+    topicIds: [],
+    relatedPolicyIds: [],
+    relatedLeverNumbers: [],
+    relatedTimelineYears: [],
+    relatedPostSlugs: [],
+    topics: ['Deepfakes & Disinformation', 'AI Governance & Regulation'],
+    summary:
+      '议员何廷儒（Ms He Ting Ru）询问总理兼财政部长：政府是否评估过2025年10月起强化的银行防护措施对AI深度伪造冒充诈骗（包括一宗约500万新元损失案）的成效、有何漏洞及进一步措施。国家发展部长徐芳达（Mr Chee Hong Tat）答复：单靠银行防护无法完全防骗，需多层次方法：警方2026年8月发布新实务守则防止冒充政府，政府将为致电公众的来电引入统一前缀号码；金融管理局与银行加强欺诈监测，高风险交易延迟12小时或以上，并取消PayNow昵称；同时加强公众教育。补充问答中，何廷儒追问衡量成效的指标及技术与消费者行为的作用。徐芳达称2026年上半年冒充诈骗损失按期减少30%、案件减少10%，但没有第二个问题的数据，并形容这是“猫捉老鼠”的游戏。',
+    summaryEn:
+      'Ms He Ting Ru asked the Prime Minister and Minister for Finance whether the Government had assessed the effectiveness of bank safeguards enhanced from October 2025 against AI deepfake impersonation scams, including a case with losses of around $5 million, what gaps exist and what further measures are planned. Minister for National Development Chee Hong Tat replied that bank safeguards alone cannot fully prevent scams and a multi-layered approach is needed: SPF issued new Codes of Practice in August 2026 to stop spoofing of the Government, a single prefix number will be introduced for Government calls to the public, MAS and banks have enhanced fraud surveillance, banks delay higher-risk transactions by 12 hours or more, PayNow nicknames were removed, and public education continues. In supplementaries, Ms He asked what metrics are used and whether there is data on the role of technology versus consumer behaviour. Mr Chee cited a 30% period-on-period fall in impersonation scam losses and a 10% fall in cases in the first half of 2026, said he had no data on the second question, and called it a cat and mouse game.',
+    summaryJa:
+      'He Ting Ru議員（Ms He Ting Ru）は首相兼財務大臣に対し、2025年10月から強化された銀行のセーフガードについて、約500万ドルの損失事案を含むAIディープフェイクによるなりすまし詐欺への有効性を政府が評価したか、課題は何か、追加措置は何かを質問した。国家開発大臣Chee Hong Tat氏（Mr Chee Hong Tat）は、銀行のセーフガードだけでは詐欺を完全には防げず多層的なアプローチが必要だと答弁した。シンガポール警察は2026年8月に政府へのなりすましを防ぐ新たな行動規範を発出し、政府は市民への電話に単一のプレフィックス番号を導入する。MASと銀行は不正監視を強化し、銀行はリスクの高い取引に12時間以上の遅延を設け、PayNowのニックネームを廃止した。啓発活動も続く。補足質問でHe議員は有効性を測る指標と、技術と消費者行動の役割に関するデータの有無を尋ねた。Chee氏は2026年上半期になりすまし詐欺の損失が前期比30%減、件数が10%減となったと述べ、第二の質問についてはデータがないとし、これを「いたちごっこ」と表現した。',
+    summaryKo:
+      "He Ting Ru 의원(Ms He Ting Ru)은 총리 겸 재무장관에게 2025년 10월부터 강화된 은행 보호조치가 약 500만 달러 손실 사례를 포함한 AI 딥페이크 사칭 사기에 얼마나 효과적인지 정부가 평가했는지, 허점은 무엇이며 추가 조치는 무엇인지 질의했다. 국가개발부 장관 Chee Hong Tat은 은행 보호조치만으로는 사기를 완전히 막을 수 없어 다층적 접근이 필요하다고 답했다. 싱가포르 경찰은 2026년 8월 정부 사칭을 막는 새 실무규범을 발표했고, 정부는 시민에게 거는 전화에 단일 접두 번호를 도입한다. MAS와 은행은 사기 감시를 강화했고, 은행은 고위험 거래에 12시간 이상의 지연을 두며 PayNow 닉네임을 폐지했다. 대중 교육도 계속된다. 보충 질의에서 He 의원은 효과 측정 지표와 기술과 소비자 행동의 역할에 관한 데이터가 있는지 물었다. Chee 장관은 2026년 상반기 사칭 사기 피해액이 전기 대비 30%, 건수가 10% 줄었다고 밝혔고, 두 번째 질문에 대한 데이터는 없다며 이를 '쫓고 쫓기는 게임'이라고 표현했다.",
+    whyItMatters: '2026年上半年冒充诈骗损失按期减少30%、案件减少10%，但政府没有技术与消费者行为影响的数据',
+    whyItMattersEn:
+      'Impersonation scam losses fell 30% period-on-period in the first half of 2026, but the Government has no data on how much technology versus consumer behaviour drives scam outcomes.',
+    whyItMattersJa:
+      '2026年上半期のなりすまし詐欺の損失は前期比30%減、件数は10%減だが、技術と消費者行動の影響に関するデータはない',
+    whyItMattersKo:
+      '2026년 상반기 사칭 사기 피해액은 전기 대비 30%, 건수는 10% 줄었지만 기술과 소비자 행동의 영향에 관한 데이터는 없다',
+    keyPoints: [
+      '警方于2026年8月为指定网络服务发布新的及强化版实务守则，其中针对网络通讯与会议服务的新守则要求防止通过个人资料名称或图片冒充政府',
+      '政府将为所有致电公众的来电引入统一、易辨认的前缀号码，帮助公众识别真正的政府通讯',
+      '银行对添加新收款人、提高转账限额等高风险交易引入12小时或以上的延迟，并已取消PayNow昵称',
+      '2026年上半年冒充诈骗损失按期减少30%，案件按期减少10%',
+      '部长表示没有关于技术与消费者行为各自对诈骗成败影响的数据',
+      '公众应留意唇形与语音不同步、表情不自然或脸部周围失真等深度伪造迹象，如有疑问可拨打ScamShield求助热线1799',
+    ],
+    keyPointsEn: [
+      'SPF issued new and enhanced Codes of Practice for designated online services in August 2026, including a new COP for online messaging and conferencing services requiring measures to prevent spoofing of the Government through profile names or pictures',
+      'The Government will introduce a single, easily recognisable prefix number for all its calls to the public to help people identify legitimate Government communications',
+      'Banks have introduced delays of 12 hours or more for higher-risk transactions such as adding new payees and raising transfer limits, and PayNow nicknames have been removed',
+      'Impersonation scam losses fell 30% and cases fell 10% period-on-period in the first half of 2026',
+      'The Minister said he did not have data on the respective contributions of technology and consumer behaviour to scams succeeding or being prevented',
+      'The public should watch for deepfake signs such as lip movements out of sync with speech, unnatural facial expressions or visual distortions around the face, and can call the ScamShield Helpline at 1799 if in doubt',
+    ],
+    keyPointsJa: [
+      'シンガポール警察は2026年8月、指定オンラインサービス向けに新たな行動規範と強化版の行動規範を発出し、オンラインメッセージング・会議サービス向けの新規範ではプロフィール名や画像による政府へのなりすまし防止を求めた',
+      '政府は市民へのすべての電話に単一で認識しやすいプレフィックス番号を導入し、正規の政府からの連絡を見分けやすくする',
+      '銀行は新たな受取人の追加や送金限度額の引き上げなどリスクの高い取引に12時間以上の遅延を導入し、PayNowのニックネームを廃止した',
+      '2026年上半期のなりすまし詐欺の損失は前期比30%減、件数は前期比10%減となった',
+      '大臣は、詐欺の成否に対する技術と消費者行動それぞれの寄与に関するデータは持ち合わせていないと述べた',
+      '市民は唇の動きと声のずれ、不自然な表情、顔の周囲の映像のゆがみなどディープフェイクの兆候に注意し、疑わしい場合はScamShieldヘルプライン1799に確認できる',
+    ],
+    keyPointsKo: [
+      '싱가포르 경찰은 2026년 8월 지정 온라인 서비스에 대한 새 실무규범과 강화된 실무규범을 발표했으며, 온라인 메시징 및 회의 서비스용 새 규범은 프로필 이름이나 사진을 통한 정부 사칭 방지를 요구한다',
+      '정부는 시민에게 거는 모든 전화에 알아보기 쉬운 단일 접두 번호를 도입해 정부의 정당한 연락을 식별하도록 돕는다',
+      '은행은 새 수취인 추가, 이체 한도 상향 등 고위험 거래에 12시간 이상의 지연을 도입했고 PayNow 닉네임을 폐지했다',
+      '2026년 상반기 사칭 사기 피해액은 전기 대비 30%, 건수는 전기 대비 10% 감소했다',
+      '장관은 사기의 성공 또는 차단에 대한 기술과 소비자 행동 각각의 기여도에 관한 데이터는 없다고 밝혔다',
+      '시민은 입술 움직임과 말의 불일치, 부자연스러운 표정, 얼굴 주변의 화면 왜곡 등 딥페이크 징후에 주의하고, 의심스러우면 ScamShield 헬프라인 1799로 확인할 수 있다',
+    ],
+    governmentStance:
+      '政府认为单靠银行防护无法完全防骗，应以平台上游管控、银行交易摩擦、公众教育和个人警觉构成多层防线，并强调增加阻力须与客户便利取得平衡。部长未提供技术与消费者行为影响的细分数据，也未宣布针对深度伪造的新银行措施。',
+    governmentStanceEn:
+      'The Government holds that bank safeguards alone cannot fully prevent scams and relies on layered defences of upstream platform controls, banking friction, public education and personal vigilance, stressing that friction must be balanced against customer convenience. The Minister gave no breakdown of technology versus consumer behaviour and announced no new deepfake-specific bank measures.',
+    governmentStanceJa:
+      '政府は、銀行のセーフガードだけでは詐欺を完全には防げないとし、プラットフォームの上流管理、銀行取引の手間、啓発活動、個人の警戒による多層的な防御に依拠し、手間の追加は顧客の利便性とのバランスが必要だと強調した。大臣は技術と消費者行動の影響の内訳を示さず、ディープフェイクに特化した新たな銀行の措置も発表しなかった。',
+    governmentStanceKo:
+      '정부는 은행 보호조치만으로는 사기를 완전히 막을 수 없다며 플랫폼 상류 통제, 은행 거래 마찰, 대중 교육, 개인의 경계로 이루어진 다층 방어에 의존하고, 번거로움 추가는 고객 편의와 균형을 맞춰야 한다고 강조했다. 장관은 기술과 소비자 행동 영향의 세부 데이터를 제시하지 않았고 딥페이크에 특화된 새 은행 조치도 발표하지 않았다.',
+    oppositionStance:
+      '提问议员何廷儒（工人党）关注银行强化防护后深度伪造冒充诈骗仍造成巨额损失，要求政府说明衡量防护措施和公众教育成效的指标，以及技术与消费者行为各自的影响。',
+    oppositionStanceEn:
+      "The questioner, Ms He Ting Ru (Workers' Party), was concerned that deepfake impersonation scams still caused large losses after banks enhanced safeguards, and pressed for the metrics used to judge safeguards and public education and for data on the roles of technology and consumer behaviour.",
+    oppositionStanceJa:
+      '質問者のHe Ting Ru議員（労働者党）は、銀行がセーフガードを強化した後もディープフェイクによるなりすまし詐欺が多額の損失を生んでいることを懸念し、セーフガードと啓発活動の有効性を測る指標、および技術と消費者行動それぞれの影響についての説明を求めた。',
+    oppositionStanceKo:
+      '질의자 He Ting Ru 의원(노동자당)은 은행이 보호조치를 강화한 뒤에도 딥페이크 사칭 사기가 큰 손실을 낳고 있다고 우려하며, 보호조치와 대중 교육의 효과 측정 지표 및 기술과 소비자 행동 각각의 영향에 대한 설명을 요구했다.',
+    controversyLevel: 2,
+    policySignal:
+      '政府把深度伪造诈骗主要当作防骗生态与执法问题处理，重心放在上游平台管控和交易摩擦，而非针对AI技术本身设限；成效只以总体结果指标衡量、缺乏细分数据，显示针对AI诈骗的专门评估仍较薄弱。',
+    policySignalEn:
+      'The Government treats deepfake scams mainly as an anti-scam ecosystem and enforcement problem, focusing on upstream platform controls and transaction friction rather than restricting AI itself; measuring success only through aggregate outcomes without a breakdown suggests AI-specific assessment of scams remains thin.',
+    policySignalJa:
+      '政府はディープフェイク詐欺を主に詐欺対策エコシステムと法執行の問題として扱い、AIそのものの規制ではなくプラットフォームの上流管理と取引の手間に重点を置いている。成果を全体的な結果指標だけで測り内訳データがないことは、AI詐欺に特化した評価がまだ手薄であることを示している。',
+    policySignalKo:
+      '정부는 딥페이크 사기를 주로 사기 대응 생태계와 법 집행의 문제로 다루며, AI 자체를 규제하기보다 플랫폼 상류 통제와 거래 마찰에 초점을 둔다. 성과를 총량 지표로만 측정하고 세부 데이터가 없다는 점은 AI 사기에 특화된 평가가 아직 미흡함을 보여준다.',
+    notableQuote: '议长先生，单靠银行防护措施无法完全防止诈骗。',
+    notableQuoteEn: 'Mr Speaker, bank safeguards alone will not fully prevent scams.',
+    notableQuoteJa: '議長、銀行のセーフガードだけで詐欺を完全に防ぐことはできません。',
+    notableQuoteKo: '의장님, 은행의 보호조치만으로는 사기를 완전히 막을 수 없습니다.',
+    transcriptEn:
+      'Ms He Ting Ru asked the Prime Minister and Minister for Finance whether the Government had assessed the effectiveness of the enhanced bank safeguards implemented from October 2025 against AI-generated deepfake impersonation scams, including a case involving losses of around $5 million, what gaps had been identified and what further measures were being considered. Mr Chee Hong Tat, Minister for National Development, replied that bank safeguards alone will not fully prevent scams and that a multi-layered approach involving all ecosystem players is needed. SPF issued new and enhanced Codes of Practice for designated online services in August 2026, including requirements against spoofing the Government through profile names or pictures, and the Government will introduce a single prefix number for its calls to the public. MAS has worked with banks to enhance fraud surveillance, banks delay higher-risk transactions by 12 hours or more, and PayNow nicknames have been removed, though these add friction for customers. In supplementaries, Ms He asked what metrics measure effectiveness and whether there is data on the role of technology versus consumer behaviour. Mr Chee said impersonation scam losses fell 30% and cases fell 10% period-on-period in the first half of 2026, called the fight a cat and mouse game, and said he did not have data on her second question.',
+    sourceUrl: 'https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=oral-answer-4194',
+    addedAt: '2026-09-26',
+  },
+  {
+    id: 'oral-answer-4191',
+    titleEn:
+      'Mandating Online Platforms in Singapore to Incorporate Safety-by-design Principles to Prevent Child Sexual Exploitation',
+    title: '强制新加坡网络平台纳入安全始于设计原则以防止儿童性剥削',
+    titleKo: '아동 성착취 방지를 위한 온라인 플랫폼의 설계 단계 안전 원칙 의무화',
+    titleJa: '児童の性的搾取防止に向けたオンラインプラットフォームへのセーフティ・バイ・デザイン原則の義務化',
+    date: '2026-09-09',
+    parliament: '15',
+    type: 'Oral Answers to Questions',
+    speakers: ['Ms Elysa Chen', 'Ms Rahayu Mahzam'],
+    personIds: [],
+    topicIds: [],
+    relatedPolicyIds: [],
+    relatedLeverNumbers: [],
+    relatedTimelineYears: [],
+    relatedPostSlugs: [],
+    topics: ['AI Governance & Regulation', 'AI Safety & Ethics'],
+    summary:
+      '议员陈诗韵（Ms Elysa Chen）询问数字发展与信息部长：网络平台是否将被强制纳入安全始于设计原则以防止儿童性剥削。数字发展与信息部政务部长拉哈尤·玛赞（Ms Rahayu Mahzam）答复：根据资讯通信媒体发展局（IMDA）的《网络安全行为准则》，指定社交媒体服务和应用商店已须主动侦测并迅速移除儿童性剥削内容，这与安全始于设计原则一致；IMDA 在 2026 年 3 月 31 日的评估报告中发现 X 存在严重缺陷，已将其置于加强监管之下。补充提问中，陈诗韵追问通讯服务、游戏平台及 AI 陪伴应用是否会被纳入。拉哈尤表示政府正检讨是否把 AI 聊天机器人、通讯和游戏服务纳入监管，准备就绪后公布；她并澄清网络安全委员会（OSC）只处理由受害者触发的个案，不是平台设计的主动监管者。',
+    summaryEn:
+      "Ms Elysa Chen asked the Minister for Digital Development and Information whether online platforms will be required to adopt safety-by-design principles to prevent child sexual exploitation, and when. Minister of State for Digital Development and Information Ms Rahayu Mahzam replied that under IMDA's Codes of Practice for Online Safety, designated social media services and app stores must already proactively detect and swiftly remove child sexual exploitation content, which aligns with safety-by-design. IMDA's 31 March 2026 assessment report found serious weaknesses at X, which received a Letter of Caution and was placed under Enhanced Supervision. In supplementaries, Ms Chen asked whether messaging services, gaming platforms and AI companion apps would be covered. Ms Rahayu said the Government is reviewing whether to bring AI chatbots, messaging and gaming services under regulation and will announce details when ready. She clarified that the Online Safety Commission (OSC) handles victim-triggered individual cases and is not a proactive regulator of platform design.",
+    summaryJa:
+      'Elysa Chen議員は、デジタル発展・情報大臣に対し、児童の性的搾取を防ぐためオンラインプラットフォームにセーフティ・バイ・デザイン原則の導入を義務付けるか、またその時期を質問した。デジタル発展・情報担当国務大臣のRahayu Mahzam氏は、情報通信メディア開発庁（IMDA）のオンライン安全実施規範の下で、指定ソーシャルメディアサービスとアプリストアはすでに児童の性的搾取コンテンツを積極的に検知し迅速に削除する義務を負っており、これはセーフティ・バイ・デザインと整合していると答弁した。2026年3月31日のIMDA評価報告書ではXに深刻な弱点が見つかり、注意書簡の発出と強化監督の措置が取られた。補足質問でChen議員はメッセージングサービス、ゲームプラットフォーム、AIコンパニオンアプリが対象になるかを尋ねた。Rahayu氏は、AIチャットボット、メッセージング、ゲームサービスを規制対象に含めるか検討中で、準備が整えば詳細を発表すると述べ、オンライン安全委員会（OSC）は被害者の申し立てによる個別事案を扱い、プラットフォーム設計を積極的に規制する機関ではないと説明した。',
+    summaryKo:
+      'Elysa Chen 의원은 디지털개발정보부 장관에게 아동 성착취 방지를 위해 온라인 플랫폼에 설계 단계부터의 안전 원칙 도입을 의무화할 것인지, 그리고 그 시기를 질의했다. 디지털개발정보부 국무장관 Rahayu Mahzam은 정보통신미디어개발청(IMDA)의 온라인 안전 실무규범에 따라 지정 소셜 미디어 서비스와 앱 스토어는 이미 아동 성착취 콘텐츠를 선제적으로 탐지하고 신속히 삭제해야 하며, 이는 설계 단계부터의 안전 원칙에 부합한다고 답했다. 2026년 3월 31일 IMDA 평가 보고서에서 X의 심각한 약점이 확인되어 경고 서한 발송과 강화 감독 조치가 내려졌다. 보충 질의에서 Chen 의원은 메시징 서비스, 게임 플랫폼, AI 동반자 앱도 포함되는지 물었다. Rahayu 국무장관은 AI 챗봇, 메시징, 게임 서비스를 규제 대상에 포함할지 검토 중이며 준비되면 세부 내용을 발표하겠다고 했고, 온라인안전위원회(OSC)는 피해자가 제기한 개별 사안을 다루며 플랫폼 설계를 선제적으로 규제하는 기관이 아니라고 설명했다.',
+    whyItMatters: '政府正检讨是否将 AI 聊天机器人、通讯和游戏服务纳入网络安全监管，X 已被置于加强监管',
+    whyItMattersEn:
+      'The Government is reviewing whether to bring AI chatbots, messaging and gaming services under its online safety rules, and has already placed X under Enhanced Supervision.',
+    whyItMattersJa:
+      '政府はAIチャットボットやメッセージング、ゲームをオンライン安全規制の対象に含めるか検討中で、Xはすでに強化監督下に',
+    whyItMattersKo:
+      '정부는 AI 챗봇·메시징·게임 서비스를 온라인 안전 규제에 포함할지 검토 중이며, X는 이미 강화 감독 대상',
+    keyPoints: [
+      '根据 IMDA《网络安全行为准则》，指定社交媒体服务和应用商店须主动侦测并迅速移除儿童性剥削和性虐待活动，例如网络诱骗',
+      '这些服务还须建立系统和流程，减少新加坡用户接触包括儿童性剥削材料在内的有害内容，政府认为这与安全始于设计原则一致',
+      'IMDA 在 2026 年 3 月 31 日发布的网络安全评估报告中发现 X 在侦测和移除儿童性剥削材料方面存在严重缺陷，已向其发出警告信并将其置于加强监管',
+      '政府正检讨是否将监管范围扩大至 AI 聊天机器人、通讯和游戏服务，准备就绪后公布细节',
+      '网络安全委员会（OSC）自 2026 年 6 月起运作，只处理受害者触发的个案，并非平台设计的主动监管者；平台设计要求由 IMDA 通过《社交媒体服务准则》执行',
+    ],
+    keyPointsEn: [
+      "Under IMDA's Codes of Practice for Online Safety, designated social media services and app stores must proactively detect and swiftly remove child sexual exploitation and abuse activity, such as online grooming.",
+      "These services must also have systems and processes to reduce Singapore users' exposure to harmful content, including child sexual exploitation material; the Government says this aligns with safety-by-design principles.",
+      "IMDA's Online Safety Assessment Report of 31 March 2026 found serious weaknesses in X's detection and removal of child sexual exploitation material; X received a Letter of Caution and was placed under Enhanced Supervision.",
+      'The Government is reviewing whether to extend regulation to AI chatbots, messaging and gaming services, and will announce details when ready.',
+      'The Online Safety Commission (OSC), operational since June 2026, handles victim-triggered individual cases and is not a proactive regulator of platform design; design requirements are enforced by IMDA under the Social Media Services Code.',
+    ],
+    keyPointsJa: [
+      'IMDAのオンライン安全実施規範の下で、指定ソーシャルメディアサービスとアプリストアは、オンライン・グルーミングなど児童の性的搾取・虐待行為を積極的に検知し、迅速に削除しなければならない',
+      'これらのサービスは、児童の性的搾取素材を含む有害コンテンツへのシンガポールの利用者の接触を減らすシステムとプロセスも整備する必要があり、政府はこれがセーフティ・バイ・デザイン原則と整合するとしている',
+      '2026年3月31日公表のIMDAオンライン安全評価報告書は、児童の性的搾取素材の検知・削除についてXに深刻な弱点があると指摘し、Xには注意書簡が出され強化監督下に置かれた',
+      '政府はAIチャットボット、メッセージング、ゲームサービスへの規制範囲の拡大を検討中で、準備が整い次第詳細を発表する',
+      '2026年6月から運用されているオンライン安全委員会（OSC）は被害者の申し立てによる個別事案を扱い、プラットフォーム設計を積極的に規制する機関ではない。設計面の要件はIMDAがソーシャルメディアサービス規範に基づき執行する',
+    ],
+    keyPointsKo: [
+      'IMDA의 온라인 안전 실무규범에 따라 지정 소셜 미디어 서비스와 앱 스토어는 온라인 그루밍 등 아동 성착취 및 학대 행위를 선제적으로 탐지하고 신속히 삭제해야 함',
+      '이들 서비스는 아동 성착취물을 포함한 유해 콘텐츠에 대한 싱가포르 이용자의 노출을 줄이는 시스템과 절차도 갖춰야 하며, 정부는 이것이 설계 단계부터의 안전 원칙에 부합한다고 봄',
+      '2026년 3월 31일 발표된 IMDA 온라인 안전 평가 보고서는 X의 아동 성착취물 탐지·삭제 조치에 심각한 약점이 있다고 지적했고, X는 경고 서한을 받고 강화 감독 대상이 됨',
+      '정부는 AI 챗봇, 메시징, 게임 서비스로 규제 범위를 확대할지 검토 중이며 준비되면 세부 내용을 발표할 예정',
+      '2026년 6월부터 운영 중인 온라인안전위원회(OSC)는 피해자가 제기한 개별 사안을 다루며 플랫폼 설계를 선제적으로 규제하는 기관이 아님. 설계 관련 요건은 IMDA가 소셜 미디어 서비스 규범에 따라 집행',
+    ],
+    governmentStance:
+      '政府认为现行《网络安全行为准则》已体现安全始于设计原则，并通过评估和加强监管追究 X 等平台的责任。对于将 AI 陪伴应用、通讯和游戏平台纳入监管，政府只表示正在检讨，未给出时间表，也不打算让 OSC 承担主动监管平台设计的职能。',
+    governmentStanceEn:
+      'The Government holds that the current Codes of Practice for Online Safety already reflect safety-by-design principles and it is holding platforms such as X accountable through assessments and Enhanced Supervision. On covering AI companion apps, messaging and gaming platforms, it said only that the matter is under review, gave no timeline, and does not intend the OSC to act as a proactive regulator of platform design.',
+    governmentStanceJa:
+      '政府は、現行のオンライン安全実施規範はすでにセーフティ・バイ・デザイン原則を反映しており、評価と強化監督を通じてXなどのプラットフォームの責任を問うているとの立場である。AIコンパニオンアプリ、メッセージング、ゲームプラットフォームの対象化については検討中と述べるにとどめ、時期は示さず、OSCにプラットフォーム設計を積極的に規制させる考えもない。',
+    governmentStanceKo:
+      '정부는 현행 온라인 안전 실무규범이 이미 설계 단계부터의 안전 원칙을 반영하고 있으며, 평가와 강화 감독을 통해 X 등 플랫폼에 책임을 묻고 있다는 입장이다. AI 동반자 앱, 메시징, 게임 플랫폼 포함 여부에 대해서는 검토 중이라고만 밝혔을 뿐 일정은 제시하지 않았으며, OSC가 플랫폼 설계를 선제적으로 규제하도록 할 생각도 없다.',
+    oppositionStance:
+      '提问议员陈诗韵认为现行准则只覆盖社交媒体和应用商店，通讯服务、Roblox 和 Minecraft 等游戏平台，以及与未成年人长时间私密互动的 AI 陪伴应用存在监管空白，要求明确纳入范围和时间表。',
+    oppositionStanceEn:
+      'Questioner Ms Elysa Chen argued that the current codes cover only social media and app stores, leaving gaps for messaging services, gaming platforms such as Roblox and Minecraft, and AI companion apps that hold prolonged private interactions with minors, and asked for clear scope and a timeline.',
+    oppositionStanceJa:
+      '質問者のElysa Chen議員は、現行規範はソーシャルメディアとアプリストアしか対象にしておらず、メッセージングサービス、RobloxやMinecraftなどのゲームプラットフォーム、未成年者と長時間私的なやり取りをするAIコンパニオンアプリに空白があるとして、明確な対象範囲と時期を求めた。',
+    oppositionStanceKo:
+      '질의자 Elysa Chen 의원은 현행 규범이 소셜 미디어와 앱 스토어만 다루고 있어 메시징 서비스, Roblox·Minecraft 같은 게임 플랫폼, 미성년자와 장시간 사적 상호작용을 하는 AI 동반자 앱에 공백이 있다며 명확한 적용 범위와 일정을 요구했다.',
+    controversyLevel: 2,
+    policySignal:
+      'AI 陪伴应用和聊天机器人已进入新加坡网络安全监管的检讨范围，未来扩展很可能沿用“指定服务加行为准则”的现有模式，而不是另立 AI 专门法规；OSC 负责个案救济、IMDA 负责系统性监管的分工也被明确。',
+    policySignalEn:
+      "AI companion apps and chatbots are now within the scope of Singapore's online safety review, and any extension is likely to follow the existing model of designated services plus codes of practice rather than a separate AI law; the split between the OSC (individual relief) and IMDA (systemic regulation) is also made explicit.",
+    policySignalJa:
+      'AIコンパニオンアプリやチャットボットはシンガポールのオンライン安全規制の見直し対象に入っており、拡大する場合も独自のAI法ではなく、指定サービスと実施規範という既存の枠組みを踏襲する可能性が高い。また、OSC（個別救済）とIMDA（制度的規制）の役割分担も明確にされた。',
+    policySignalKo:
+      'AI 동반자 앱과 챗봇은 이제 싱가포르 온라인 안전 규제 검토 범위에 들어왔으며, 확대되더라도 별도의 AI 법보다는 지정 서비스와 실무규범이라는 기존 모델을 따를 가능성이 크다. 또한 OSC(개별 구제)와 IMDA(체계적 규제)의 역할 분담도 분명해졌다.',
+    notableQuote:
+      '这也包括是否将我们的监管范围扩大到其他类型的网络服务，例如议员提到的 AI 聊天机器人、通讯和游戏服务，我们正在检讨这方面。',
+    notableQuoteEn:
+      'This also includes whether to extend our regulatory ambit to include other types of online services, such as what the Member mentioned – the AI chat bots, messaging, gaming services and we are reviewing this.',
+    notableQuoteJa:
+      'これには、議員が挙げたAIチャットボット、メッセージング、ゲームサービスなど、他の種類のオンラインサービスにまで規制の範囲を広げるかどうかも含まれており、現在検討しています。',
+    notableQuoteKo:
+      '여기에는 의원님이 언급하신 AI 챗봇, 메시징, 게임 서비스 등 다른 유형의 온라인 서비스로 규제 범위를 확대할지 여부도 포함되며, 현재 검토 중입니다.',
+    transcriptEn:
+      "Ms Elysa Chen asked the Minister for Digital Development and Information whether online platforms operating in Singapore will be required to incorporate safety-by-design principles to prevent child sexual exploitation. Ms Rahayu Mahzam, Minister of State, replied that under IMDA's Codes of Practice for Online Safety, designated social media services and app stores must proactively detect and swiftly remove child sexual exploitation and abuse activity, such as online grooming, and reduce users' exposure to harmful content. She said these requirements align with safety-by-design principles. In its Online Safety Assessment Report of 31 March 2026, IMDA found serious weaknesses in X's measures, issued it a Letter of Caution and placed it under Enhanced Supervision. In supplementaries, Ms Chen asked whether messaging services and gaming platforms such as Roblox and Minecraft, and AI companion apps and conversational agents, would be designated, and whether the Online Safety Commission (OSC) would enforce safety-by-design standards. Ms Rahayu said the Government is reviewing whether to cover AI chatbots, messaging and gaming services, and will announce details when ready. She clarified that the OSC is an avenue for victims to seek relief in individual cases and is not a proactive regulator of platform design; that role sits with IMDA under the Social Media Services Code.",
+    sourceUrl: 'https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=oral-answer-4191',
+    addedAt: '2026-09-26',
+  },
+  {
+    id: 'written-answer-na-24346',
+    titleEn:
+      'Encouraging GenAI Micro-drama Production by Local Artists and Content Providers Through Grants or Incentives',
+    title: '以补助或激励措施鼓励本地艺术家和内容创作者制作 GenAI 微短剧',
+    titleKo: '보조금·인센티브를 통한 현지 예술가·콘텐츠 제작자의 생성형 AI 마이크로 드라마 제작 장려',
+    titleJa: '助成金やインセンティブによる地元アーティスト・コンテンツ制作者の生成AIマイクロドラマ制作の奨励',
+    date: '2026-09-08',
+    parliament: '15',
+    type: 'Written Answers to Questions',
+    speakers: ['Dr Neo Kok Beng', 'Mrs Josephine Teo'],
+    personIds: [],
+    topicIds: [],
+    relatedPolicyIds: [],
+    relatedLeverNumbers: [],
+    relatedTimelineYears: [],
+    relatedPostSlugs: [],
+    topics: ['AI Economy & Industry', 'AI & Employment'],
+    summary:
+      '议员梁国民（Dr Neo Kok Beng）书面询问数字发展与信息部长：随着生成式 AI 进入视频制作，部门是否有计划或举措鼓励艺术家和内容创作者制作 GenAI 微短剧，以及是否会考虑推出补助或激励措施推广这类 AI 应用。数字发展与信息部长杨莉明（Mrs Josephine Teo）答复：AI 为艺术家和内容创作者提供了尝试新叙事形式、降低制作成本和触达新观众的机会。在国家 AI 影响力计划下，资讯通信媒体发展局（IMDA）精选了一批由技能与劳动力发展局支持的“AI x 媒体”课程；IMDA 的数字内容与能力发展计划也支持媒体公司尝试 AI 生成内容、短篇系列剧和微短剧等形式。她强调，无论使用何种工具，人都必须对创作决定和最终作品质量负责。',
+    summaryEn:
+      "Dr Neo Kok Beng asked the Minister for Digital Development and Information whether, with the advent of generative AI in video production, the Ministry has a programme to encourage GenAI micro-drama production by artists and content providers, and whether it will consider grants or incentives to promote such AI use. Minister Josephine Teo replied that AI offers artists and content providers opportunities to experiment with new storytelling formats, lower production costs and reach new audiences. Under the National AI Impact Programme, the Infocomm Media Development Authority (IMDA) has curated AI x Media courses supported by the Skills and Workforce Development Agency, and IMDA's Digital Content and Capability Development Programme supports media companies experimenting with formats including AI-generated content, short-form episodic series and micro-dramas. She stressed that, regardless of the tools used, people must remain responsible for creative decisions and the quality of the final work.",
+    summaryJa:
+      'Neo Kok Beng議員はデジタル発展・情報大臣に対し、動画制作に生成AIが登場したことを踏まえ、アーティストやコンテンツ制作者による生成AIマイクロドラマ制作を奨励するプログラムがあるか、またこうしたAI活用を促す助成金やインセンティブを検討するかを書面で質問した。ジョセフィン・テオ大臣は、AIはアーティストやコンテンツ制作者に新しいストーリーテリング形式の試行、制作コストの削減、新たな視聴者の獲得の機会をもたらすと答弁した。国家AIインパクト・プログラムの下で情報通信メディア開発庁（IMDA）はスキル・労働力開発庁が支援する「AI x メディア」講座を厳選しており、IMDAのデジタルコンテンツ・能力開発プログラムもAI生成コンテンツ、短尺の連続シリーズ、マイクロドラマなどを試すメディア企業を支援している。大臣は、どのツールを使っても創作上の判断と最終作品の品質の責任は人が負わなければならないと強調した。',
+    summaryKo:
+      "Neo Kok Beng 의원은 디지털개발정보부 장관에게 영상 제작에 생성형 AI가 등장한 것과 관련해 예술가와 콘텐츠 제작자의 생성형 AI 마이크로 드라마 제작을 장려하는 프로그램이 있는지, 이러한 AI 활용을 촉진할 보조금이나 인센티브를 검토할 것인지 서면으로 질문했다. Josephine Teo 장관은 AI가 예술가와 콘텐츠 제작자에게 새로운 스토리텔링 형식을 실험하고 제작 비용을 낮추며 새로운 관객에게 다가갈 기회를 준다고 답했다. 국가 AI 임팩트 프로그램에 따라 정보통신미디어개발청(IMDA)은 기술·인력개발청이 지원하는 'AI x 미디어' 과정을 선별했으며, IMDA의 디지털 콘텐츠 및 역량 개발 프로그램도 AI 생성 콘텐츠, 단편 에피소드 시리즈, 마이크로 드라마 등을 실험하는 미디어 기업을 지원한다. 장관은 어떤 도구를 사용하든 창작 결정과 최종 작품의 품질에 대한 책임은 사람에게 있어야 한다고 강조했다.",
+    whyItMatters: 'IMDA 现有计划已覆盖 AI 生成内容和微短剧，政府未推出 GenAI 微短剧专项补助',
+    whyItMattersEn:
+      "IMDA's existing programme already covers AI-generated content and micro-dramas, and the Government announced no dedicated grant for GenAI micro-dramas.",
+    whyItMattersJa:
+      'IMDAの既存プログラムがAI生成コンテンツとマイクロドラマをすでに対象としており、生成AIマイクロドラマ専用の助成金は示されず',
+    whyItMattersKo:
+      'IMDA의 기존 프로그램이 이미 AI 생성 콘텐츠와 마이크로 드라마를 포괄하며, 생성형 AI 마이크로 드라마 전용 보조금은 발표되지 않음',
+    keyPoints: [
+      '杨莉明表示，AI 可帮助艺术家和内容创作者尝试新的叙事形式、降低制作成本并触达新观众',
+      '在国家 AI 影响力计划下，IMDA 精选了一批由技能与劳动力发展局支持的“AI x 媒体”课程，覆盖从写作、叙事到内容创作、制作和剪辑的媒体工作流程',
+      'IMDA 的数字内容与能力发展计划支持媒体公司尝试新兴技术、制作方式和数字叙事形式，包括 AI 生成内容、短篇系列剧和微短剧',
+      '答复未提及专门针对 GenAI 微短剧的新补助或激励措施，而是指向现有课程和计划',
+      '政府强调，无论使用何种工具，人都必须对创作决定和最终作品的质量负责',
+    ],
+    keyPointsEn: [
+      'Mrs Josephine Teo said AI can help artists and content providers experiment with new storytelling formats, lower production costs and reach new audiences',
+      'Under the National AI Impact Programme, IMDA has curated AI x Media courses supported by the Skills and Workforce Development Agency, covering media workflows from writing and storytelling to content creation, production and editing',
+      "IMDA's Digital Content and Capability Development Programme supports media companies experimenting with emerging technologies, production approaches and digital storytelling formats, including AI-generated content, short-form episodic series and micro-dramas",
+      'The reply did not mention any new grant or incentive specifically for GenAI micro-dramas, pointing instead to existing courses and programmes',
+      'The Government stressed that, regardless of the tools used, the person must remain responsible for creative decisions and the quality of the final work',
+    ],
+    keyPointsJa: [
+      'ジョセフィン・テオ大臣は、AIはアーティストやコンテンツ制作者が新しいストーリーテリング形式を試し、制作コストを下げ、新たな視聴者に届くのに役立つと述べた',
+      '国家AIインパクト・プログラムの下で、IMDAはスキル・労働力開発庁が支援する「AI x メディア」講座を厳選し、執筆やストーリーテリングからコンテンツ制作、プロダクション、編集までのメディアのワークフローを網羅している',
+      'IMDAのデジタルコンテンツ・能力開発プログラムは、新興技術、制作手法、デジタル・ストーリーテリング形式を試すメディア企業を支援しており、対象にはAI生成コンテンツ、短尺の連続シリーズ、マイクロドラマが含まれる',
+      '答弁では生成AIマイクロドラマに特化した新たな助成金やインセンティブには触れず、既存の講座とプログラムを示した',
+      '政府は、どのツールを使っても創作上の判断と最終作品の品質に対する責任は人が負い続けなければならないと強調した',
+    ],
+    keyPointsKo: [
+      'Josephine Teo 장관은 AI가 예술가와 콘텐츠 제작자의 새로운 스토리텔링 형식 실험, 제작 비용 절감, 새로운 관객 확보에 도움이 된다고 말했다',
+      "국가 AI 임팩트 프로그램에 따라 IMDA는 기술·인력개발청이 지원하는 'AI x 미디어' 과정을 선별했으며, 글쓰기와 스토리텔링부터 콘텐츠 제작, 프로덕션, 편집까지 미디어 작업 전반을 다룬다",
+      'IMDA의 디지털 콘텐츠 및 역량 개발 프로그램은 신기술, 제작 방식, 디지털 스토리텔링 형식을 실험하는 미디어 기업을 지원하며, 여기에는 AI 생성 콘텐츠, 단편 에피소드 시리즈, 마이크로 드라마가 포함된다',
+      '답변은 생성형 AI 마이크로 드라마 전용의 새 보조금이나 인센티브를 언급하지 않고 기존 과정과 프로그램을 제시했다',
+      '정부는 어떤 도구를 사용하든 창작 결정과 최종 작품의 품질에 대한 책임은 여전히 사람에게 있어야 한다고 강조했다',
+    ],
+    governmentStance:
+      '政府支持媒体业尝试 AI 生成内容和微短剧，但通过现有的技能课程和 IMDA 能力发展计划提供支持，没有承诺推出新的专项补助或激励措施。政府同时强调，人必须对创作决定和作品质量负责。',
+    governmentStanceEn:
+      "The Government supports the media industry in experimenting with AI-generated content and micro-dramas, but through existing skills courses and IMDA's capability development programme, without committing to any new dedicated grant or incentive. It also stresses that people must remain responsible for creative decisions and the quality of the work.",
+    governmentStanceJa:
+      '政府はメディア業界がAI生成コンテンツやマイクロドラマを試すことを支援しているが、その手段は既存のスキル講座とIMDAの能力開発プログラムであり、新たな専用の助成金やインセンティブは約束しなかった。同時に、創作上の判断と作品の品質に対する責任は人が負わなければならないと強調した。',
+    governmentStanceKo:
+      '정부는 미디어 업계가 AI 생성 콘텐츠와 마이크로 드라마를 실험하는 것을 지원하지만, 기존 기술 교육 과정과 IMDA의 역량 개발 프로그램을 통해서이며 새로운 전용 보조금이나 인센티브는 약속하지 않았다. 또한 창작 결정과 작품 품질에 대한 책임은 사람에게 있어야 한다고 강조했다.',
+    oppositionStance:
+      '提问议员梁国民关注生成式 AI 在视频制作中的机会，希望政府以补助或激励措施推动本地艺术家和内容创作者制作 GenAI 微短剧。',
+    oppositionStanceEn:
+      'Questioner Dr Neo Kok Beng sees opportunity in generative AI for video production and wants the Government to use grants or incentives to encourage local artists and content providers to produce GenAI micro-dramas.',
+    oppositionStanceJa:
+      '質問者のNeo Kok Beng議員は動画制作における生成AIの可能性に注目し、政府が助成金やインセンティブで地元のアーティストやコンテンツ制作者による生成AIマイクロドラマ制作を後押しすることを求めている。',
+    oppositionStanceKo:
+      '질문자 Neo Kok Beng 의원은 영상 제작에서 생성형 AI의 기회에 주목하며, 정부가 보조금이나 인센티브로 현지 예술가와 콘텐츠 제작자의 생성형 AI 마이크로 드라마 제작을 장려하기를 바란다.',
+    controversyLevel: 1,
+    policySignal:
+      '政府对创意产业的 AI 政策以技能培训和现有能力发展资金为主，不为某一种 AI 内容形式单独设补助；“人对作品负责”的表述延续了新加坡在 AI 治理中强调人类问责的一贯立场。',
+    policySignalEn:
+      "The Government's AI policy for the creative sector relies on skills training and existing capability development funding rather than dedicated grants for any single AI content format; the line that people remain responsible for the work continues Singapore's consistent emphasis on human accountability in AI governance.",
+    policySignalJa:
+      '創作産業に対する政府のAI政策は、特定のAIコンテンツ形式に専用の助成金を設けるのではなく、スキル研修と既存の能力開発資金を軸としている。作品の責任は人が負うという表現は、AIガバナンスにおいて人間の説明責任を重視するシンガポールの一貫した姿勢を引き継いでいる。',
+    policySignalKo:
+      '창작 산업에 대한 정부의 AI 정책은 특정 AI 콘텐츠 형식에 전용 보조금을 두기보다 기술 교육과 기존 역량 개발 자금을 중심으로 한다. 작품에 대한 책임은 사람에게 있다는 표현은 AI 거버넌스에서 인간의 책임을 강조해 온 싱가포르의 일관된 입장을 이어간다.',
+    notableQuote: '无论使用何种工具，人都必须对创作决定和最终作品的质量负责。',
+    notableQuoteEn:
+      'Regardless of the tools used, the person must remain responsible for creative decisions and quality of the final work.',
+    notableQuoteJa:
+      'どのツールを使うにせよ、創作上の判断と最終作品の品質に対する責任は人が負い続けなければなりません。',
+    notableQuoteKo: '어떤 도구를 사용하든, 창작 결정과 최종 작품의 품질에 대한 책임은 여전히 사람에게 있어야 합니다.',
+    transcriptEn:
+      "Dr Neo Kok Beng asked the Minister for Digital Development and Information whether, with the advent of generative AI in video production, the Ministry has a programme or initiative to encourage GenAI micro-drama production by artists and content providers, and whether it will consider introducing grants or incentives to promote such AI usage. Mrs Josephine Teo replied that AI offers artists and content providers opportunities to experiment with new storytelling formats, lower production costs and reach new audiences. Under the National AI Impact Programme, the Infocomm Media Development Authority (IMDA) has curated a selection of AI x Media courses supported by the Skills and Workforce Development Agency. These equip media professionals to use AI, including generative AI, from writing and storytelling to production and editing. IMDA's Digital Content and Capability Development Programme also supports media companies in building capabilities and talent by experimenting with emerging technologies and formats, including AI-generated content, short-form episodic series and micro-dramas. The Government encourages media companies and professionals to use AI tools thoughtfully, with the same care and craft they bring to any production, and regardless of the tools used, the person must remain responsible for creative decisions and the quality of the final work.",
+    sourceUrl: 'https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=written-answer-na-24346',
+    addedAt: '2026-09-26',
+  },
+  {
+    id: 'written-answer-24547',
+    titleEn: "Public Agencies' Preparedness, Response Protocols and Exercises for AI-generated Imagery Disinformation",
+    title: '公共机构应对 AI 生成图像虚假信息的准备、应对规程与演习',
+    titleKo: 'AI 생성 이미지 허위정보에 대한 공공기관의 대비, 대응 절차 및 훈련',
+    titleJa: 'AI生成画像による偽情報に対する公的機関の備え、対応手順および演習',
+    date: '2026-09-08',
+    parliament: '15',
+    type: 'Written Answers to Questions',
+    speakers: ['Mr Gabriel Lam', 'Mrs Josephine Teo'],
+    personIds: [],
+    topicIds: [],
+    relatedPolicyIds: [],
+    relatedLeverNumbers: [],
+    relatedTimelineYears: [],
+    relatedPostSlugs: [],
+    topics: ['Deepfakes & Disinformation', 'AI & National Security', 'AI in Public Sector'],
+    summary:
+      '议员蓝延理（Mr Gabriel Lam）以两道书面提问询问数字发展与信息部长：政府是否评估了 AI 生成的地理空间图像对危机沟通和公共预警系统的影响，现有虚假信息应对规程是否足以涵盖伪造卫星图像，是否会向公共机构发布新指引；他也询问政府是否进行涉及描绘新加坡虚假事件的 AI 生成图像的演习、哪些机构参与以及汲取了哪些经验。数字发展与信息部长杨莉明（Mrs Josephine Teo）合并答复：政府认识到 AI 生成图像在危机中的风险，已有针对性措施；当虚假信息的传播违背公共利益时，包括《防止网络假信息和网络操纵法》在内的现行法律可能适用，也涵盖通过 AI 生成图像传播的虚假信息；政府定期检讨相关措施并更新应急准备。答复未透露演习、参与机构或新指引的具体情况。',
+    summaryEn:
+      'Mr Gabriel Lam asked the Minister for Digital Development and Information in two written questions whether the Government has assessed the implications of AI-generated geospatial imagery for crisis communications and public warning systems, whether existing disinformation protocols cover fabricated satellite imagery, and whether new guidance will be issued to public agencies; he also asked whether the Government runs exercises involving AI-generated images of false incidents in Singapore, which agencies take part and what lessons have been learnt. Minister for Digital Development and Information Mrs Josephine Teo replied in a combined answer that the Government recognises the risks of AI-generated images in crises and has targeted measures in place. Existing laws, including the Protection from Online Falsehoods and Manipulation Act, may apply where falsehoods are communicated against the public interest, including via AI-generated images, and the Government regularly reviews its measures and updates emergency preparedness. The reply did not detail exercises, participating agencies or new guidance.',
+    summaryJa:
+      'Gabriel Lam議員は、デジタル発展・情報大臣に対する2件の書面質問で、AI生成の地理空間画像が危機コミュニケーションと公共警報システムに及ぼす影響を政府が評価したか、既存の偽情報対応手順は捏造された衛星画像をカバーしているか、公的機関に新たな指針を出すかを尋ね、さらにシンガポールでの虚偽の事件を描いたAI生成画像を用いた演習を実施しているか、どの機関が参加し、どのような教訓を得たかを質問した。デジタル発展・情報大臣のジョセフィン・テオ氏は一括答弁で、政府は危機時のAI生成画像のリスクを認識し、的を絞った措置を講じていると述べた。オンライン虚偽情報・操作防止法を含む既存の法律は、虚偽が公共の利益に反して伝達される場合に適用され得、AI生成画像による虚偽も含まれるとし、政府は措置を定期的に見直し、緊急事態への備えを更新しているとした。演習、参加機関、新たな指針の具体的内容には触れなかった。',
+    summaryKo:
+      'Gabriel Lam 의원은 디지털개발정보부 장관에게 두 건의 서면 질의로, 정부가 AI 생성 지리공간 이미지가 위기 커뮤니케이션과 공공 경보 체계에 미치는 영향을 평가했는지, 기존 허위정보 대응 절차가 조작된 위성 이미지를 다루는지, 공공기관에 새 지침을 발표할지 물었으며, 싱가포르의 허위 사건을 묘사한 AI 생성 이미지를 활용한 훈련을 실시하는지, 어떤 기관이 참여하고 어떤 교훈을 얻었는지도 질의했다. 디지털개발정보부 장관 Josephine Teo는 통합 답변에서 정부가 위기 상황에서 AI 생성 이미지의 위험을 인식하고 표적화된 조치를 갖추고 있다고 밝혔다. 온라인 허위사실 및 조작 방지법을 포함한 기존 법률은 허위 사실이 공익에 반해 전달될 경우 적용될 수 있고 AI 생성 이미지를 통한 허위 사실도 포함되며, 정부는 조치를 정기적으로 검토하고 비상 대비를 갱신하고 있다고 했다. 훈련, 참여 기관, 새 지침의 구체적 내용은 언급하지 않았다.',
+    whyItMatters:
+      '政府称《防止网络假信息和网络操纵法》等现行法律可涵盖 AI 生成图像传播的虚假信息，但未透露演习或新指引',
+    whyItMattersEn:
+      'The Government said existing laws including POFMA can cover falsehoods spread via AI-generated images, but gave no detail on exercises or new guidance for agencies.',
+    whyItMattersJa: '政府はPOFMAなど既存法でAI生成画像による虚偽にも対処できるとし、演習や新指針の詳細は明かさず',
+    whyItMattersKo:
+      '정부는 POFMA 등 기존 법으로 AI 생성 이미지 허위정보에 대응할 수 있다고 했으나 훈련이나 새 지침은 밝히지 않음',
+    keyPoints: [
+      '政府认识到 AI 生成图像在危机情况下的风险，包括伪造的地理空间图像和伪造事件',
+      '政府表示已有针对性措施应对 AI 生成的错误信息',
+      '当虚假信息的传播违背公共利益时，包括《防止网络假信息和网络操纵法》在内的现行法律和应对措施可能适用，也涵盖通过 AI 生成图像传播的虚假信息',
+      '政府定期检讨应对新兴错误信息威胁的措施，并确保应急准备措施得到更新',
+      '答复未说明是否进行 AI 生成图像演习、哪些机构参与或是否发布新指引',
+    ],
+    keyPointsEn: [
+      'The Government recognises the risks of AI-generated images in crisis situations, including fabricated geospatial imagery and incidents.',
+      'The Government says it has targeted measures in place to address AI-generated misinformation.',
+      'Existing laws and response measures, including the Protection from Online Falsehoods and Manipulation Act, may apply where falsehoods are communicated against the public interest, including falsehoods communicated via AI-generated images.',
+      'The Government regularly reviews its measures against emerging misinformation threats and ensures its emergency preparedness measures are updated.',
+      'The reply did not say whether exercises with AI-generated imagery are held, which agencies take part, or whether new guidance will be issued.',
+    ],
+    keyPointsJa: [
+      '政府は、捏造された地理空間画像や事件を含め、危機的状況におけるAI生成画像のリスクを認識している',
+      '政府は、AIが生成した誤情報に対処するための的を絞った措置を講じているとしている',
+      '虚偽が公共の利益に反して伝達される場合、オンライン虚偽情報・操作防止法を含む既存の法律や対応措置が適用され得、AI生成画像を通じた虚偽も含まれる',
+      '政府は新たな誤情報の脅威への措置を定期的に見直し、緊急事態への備えの措置が更新されるようにしている',
+      'AI生成画像を用いた演習の有無、参加機関、新たな指針を出すかどうかには答えなかった',
+    ],
+    keyPointsKo: [
+      '정부는 조작된 지리공간 이미지와 사건을 포함해 위기 상황에서 AI 생성 이미지가 초래하는 위험을 인식함',
+      '정부는 AI가 생성한 잘못된 정보에 대응하기 위한 표적화된 조치를 갖추고 있다고 밝힘',
+      '허위 사실이 공익에 반해 전달될 경우 온라인 허위사실 및 조작 방지법을 포함한 기존 법률과 대응 조치가 적용될 수 있으며, AI 생성 이미지를 통한 허위 사실도 포함됨',
+      '정부는 새로운 잘못된 정보 위협에 대한 조치를 정기적으로 검토하고 비상 대비 조치가 갱신되도록 함',
+      'AI 생성 이미지를 활용한 훈련 실시 여부, 참여 기관, 새 지침 발표 여부에 대해서는 답하지 않음',
+    ],
+    governmentStance:
+      '政府认为现有法律和针对性措施足以应对通过 AI 生成图像传播的虚假信息，并会定期检讨和更新应急准备。政府未回答是否进行相关演习、哪些机构参与，也未承诺向公共机构发布新指引。',
+    governmentStanceEn:
+      'The Government considers existing laws and targeted measures sufficient to deal with falsehoods spread through AI-generated images, and will keep reviewing them and updating emergency preparedness. It did not say whether related exercises are held or which agencies take part, and did not commit to new guidance for public agencies.',
+    governmentStanceJa:
+      '政府は、AI生成画像を通じた虚偽には既存の法律と的を絞った措置で対処できるとし、今後も見直しと緊急事態への備えの更新を続けるとした。関連する演習の有無や参加機関は明らかにせず、公的機関向けの新たな指針も約束しなかった。',
+    governmentStanceKo:
+      '정부는 AI 생성 이미지를 통한 허위 사실에 기존 법률과 표적화된 조치로 대응할 수 있다고 보며, 앞으로도 검토와 비상 대비 갱신을 계속하겠다고 했다. 관련 훈련 실시 여부나 참여 기관은 밝히지 않았으며, 공공기관을 위한 새 지침도 약속하지 않았다.',
+    oppositionStance:
+      '提问议员蓝延理担心 AI 伪造的卫星和地理空间图像可能干扰危机沟通和公共预警，希望了解现有规程是否足够，以及是否有相关演习和新指引。',
+    oppositionStanceEn:
+      'Questioner Mr Gabriel Lam was concerned that AI-fabricated satellite and geospatial imagery could disrupt crisis communications and public warnings, and wanted to know whether current protocols are adequate and whether exercises and new guidance exist.',
+    oppositionStanceJa:
+      '質問者のGabriel Lam議員は、AIで捏造された衛星画像や地理空間画像が危機コミュニケーションや公共警報を混乱させる恐れを懸念し、現行手順の十分性、演習の有無、新たな指針について説明を求めた。',
+    oppositionStanceKo:
+      '질의자 Gabriel Lam 의원은 AI로 조작된 위성·지리공간 이미지가 위기 커뮤니케이션과 공공 경보를 교란할 수 있다고 우려하며, 현행 절차의 적절성과 훈련 및 새 지침 여부를 물었다.',
+    controversyLevel: 1,
+    policySignal:
+      '政府在 AI 生成虚假信息问题上继续依赖《防止网络假信息和网络操纵法》等既有法律工具，而不是另立针对 AI 图像的新规；对危机演习细节不作公开，可能出于安全考量。',
+    policySignalEn:
+      'The Government is relying on existing legal tools such as POFMA to deal with AI-generated falsehoods rather than creating rules specific to AI imagery; it kept crisis-exercise details private, possibly for security reasons.',
+    policySignalJa:
+      '政府はAI生成の虚偽に対し、AI画像専用の新ルールではなく、POFMAなど既存の法的手段で対応する姿勢である。危機演習の詳細は、安全保障上の配慮からか公表を控えた。',
+    policySignalKo:
+      '정부는 AI 생성 허위정보에 대해 AI 이미지 전용 규정을 새로 만들기보다 POFMA 등 기존 법적 수단에 의존하고 있으며, 위기 훈련의 세부 내용은 안보상의 이유로 보이는 비공개를 유지했다.',
+    notableQuote: '政府认识到 AI 生成图像在危机情况下带来的风险，包括伪造的地理空间图像和事件。',
+    notableQuoteEn:
+      'The Government recognises the risks posed by AI-generated images, including fabricated geospatial imagery and incidents, in crisis situations.',
+    notableQuoteJa:
+      '政府は、危機的状況において、捏造された地理空間画像や事件を含むAI生成画像がもたらすリスクを認識しています。',
+    notableQuoteKo:
+      '정부는 조작된 지리공간 이미지와 사건을 포함해 AI 생성 이미지가 위기 상황에서 초래하는 위험을 인식하고 있습니다.',
+    transcriptEn:
+      "Mr Gabriel Lam asked the Minister for Digital Development and Information in two written questions whether the Government has assessed the implications of AI-generated geospatial imagery for Singapore's crisis communications and public warning systems, whether existing disinformation response protocols adequately cover fabricated satellite imagery, and whether new guidance will be issued to public agencies. He also asked whether the Government conducts exercises involving AI-generated imagery depicting false incidents in Singapore, which agencies take part, and what lessons have been learnt. In a combined written reply, Mrs Josephine Teo said the Government recognises the risks posed by AI-generated images, including fabricated geospatial imagery and incidents, in crisis situations, and has targeted measures in place to address AI-generated misinformation. Existing laws and response measures against misinformation, including the Protection from Online Falsehoods and Manipulation Act, may apply where falsehoods are communicated against the public interest, and this includes falsehoods communicated via AI-generated images. The Government regularly reviews its measures against emerging misinformation threats and ensures its emergency preparedness measures are updated. The reply did not detail specific exercises, participating agencies or new guidance.",
+    sourceUrl: 'https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=written-answer-24547',
+    addedAt: '2026-09-26',
+  },
+  {
+    id: 'written-answer-24497',
+    titleEn:
+      'Release of Investigation Reports into Cybersecurity Incidents Affecting ASPIRE 2A and A*STAR Exanet Network and Data Recovery Measures Taken',
+    title: 'ASPIRE 2A 与科技研究局 Exanet 网络安全事件：调查报告是否公开及所采取的数据恢复措施',
+    titleKo: 'ASPIRE 2A 및 A*STAR Exanet 네트워크 사이버보안 사고: 조사 보고서 공개 여부와 데이터 복구 조치',
+    titleJa: 'ASPIRE 2AとA*STAR Exanetネットワークのサイバーセキュリティ事案：調査報告書の公開と講じたデータ復旧措置',
+    date: '2026-09-08',
+    parliament: '15',
+    type: 'Written Answers to Questions',
+    speakers: ['Mr Gerald Giam Yean Song', 'Dr Tan See Leng'],
+    personIds: [],
+    topicIds: [],
+    relatedPolicyIds: [],
+    relatedLeverNumbers: [],
+    relatedTimelineYears: [],
+    relatedPostSlugs: [],
+    topics: ['AI & National Security', 'AI Infrastructure & Research'],
+    summary:
+      '工人党议员严燕松（Mr Gerald Giam Yean Song）书面询问贸工部长（能源与工业）：新加坡国家超级计算中心（NSCC）ASPIRE 2A 与科技研究局（A*STAR）Exanet 网络近期的网络安全事件，完整调查报告是否公开；采取了哪些恢复、验证和加固措施；是否有数据外泄。陈诗龙博士（Dr Tan See Leng）书面答复：两起事件（2026 年 5 月 22 日、7 月 24 日）发生后，受影响系统被迅速隔离调查，外部鉴证专家查明根本原因，未发现数据受损或外泄证据；报告不会公开，以免为恶意行为者提供有用信息。系统经重建、扫描和检查后才恢复使用，并收紧访问控制、加强终端防护；NSCC 与 A*STAR 已加快红队演练等既有计划，经验已推广至整个科研基础设施。',
+    summaryEn:
+      "Workers' Party MP Gerald Giam Yean Song asked the Minister for Trade and Industry (Energy and Industry) whether full investigation reports into the recent cybersecurity incidents affecting the National Supercomputing Centre Singapore's (NSCC) ASPIRE 2A and A*STAR's Exanet network will be released, what recovery, validation and hardening measures were taken, and whether any data was exfiltrated. Dr Tan See Leng replied that after the incidents on 22 May 2026 and 24 July 2026, the affected systems were promptly isolated and investigated, with external forensic specialists engaged to establish root causes; no evidence of data compromise or exfiltration was found. The reports will not be released, as they could provide information useful to malicious actors. Affected systems were rebuilt, scanned, inspected and cleared before returning to service, and access controls and endpoint protection were tightened. NSCC and A*STAR have accelerated existing initiatives such as more sophisticated red teaming, and lessons have been applied across the research infrastructure.",
+    summaryJa:
+      '労働者党のGerald Giam Yean Song 議員は、貿易産業大臣（エネルギー・産業担当）に対し、シンガポール国立スーパーコンピューティングセンター（NSCC）のASPIRE 2Aと科学技術研究庁（A*STAR）のExanetネットワークで最近起きたサイバーセキュリティ事案について、完全な調査報告書を公開するか、どのような復旧・検証・強化措置を取ったか、データの持ち出しはあったかを書面で質問した。Tan See Leng 博士（Dr Tan See Leng）は書面で、2026年5月22日と7月24日の事案の後、影響を受けたシステムは速やかに隔離・調査され、外部のフォレンジック専門家が根本原因を特定したが、データの侵害や持ち出しの証拠は見つからなかったと答えた。報告書は悪意ある者に有用な情報を与えるおそれがあるため公開しない。システムは再構築、スキャン、点検を経て復帰し、アクセス制御とエンドポイント保護を強化した。NSCCとA*STARはより高度なレッドチーミングなど既存の取り組みを加速させ、教訓は研究インフラ全体に適用されたとした。',
+    summaryKo:
+      '노동자당 Gerald Giam Yean Song 의원은 통상산업부 장관(에너지·산업 담당)에게 싱가포르 국립슈퍼컴퓨팅센터(NSCC)의 ASPIRE 2A와 과학기술연구청(A*STAR)의 Exanet 네트워크에서 최근 발생한 사이버보안 사고와 관련해 전체 조사 보고서를 공개할지, 어떤 복구·검증·강화 조치를 취했는지, 데이터 유출이 있었는지 서면 질의했다. Tan See Leng 박사(Dr Tan See Leng)는 서면 답변에서 2026년 5월 22일과 7월 24일 사고 이후 영향을 받은 시스템을 신속히 격리하고 조사했으며, 외부 포렌식 전문가가 근본 원인을 규명했으나 데이터 침해나 유출의 증거는 발견되지 않았다고 밝혔다. 보고서는 악의적 행위자에게 유용한 정보를 줄 수 있어 공개하지 않는다. 시스템은 재구축, 스캔, 점검을 거쳐 복귀했고 접근 통제와 엔드포인트 보호를 강화했다. NSCC와 A*STAR는 보다 정교한 레드팀 활동 등 기존 이니셔티브를 가속화했으며 교훈은 연구 인프라 전반에 적용되었다고 했다.',
+    whyItMatters: '国家超算 ASPIRE 2A 与科技研究局 Exanet 两起事件未发现数据外泄证据，但调查报告不会公开',
+    whyItMattersEn:
+      'Investigations into the ASPIRE 2A and Exanet incidents found no evidence of data exfiltration, but the reports will not be released.',
+    whyItMattersJa: 'ASPIRE 2AとExanetの2件の事案でデータ持ち出しの証拠は見つからなかったが、調査報告書は公開されない',
+    whyItMattersKo: 'ASPIRE 2A와 Exanet 두 사고에서 데이터 유출 증거는 발견되지 않았으나 조사 보고서는 공개되지 않는다',
+    keyPoints: [
+      'NSCC 的 ASPIRE 2A 系统（2026 年 5 月 22 日）与 A*STAR 的 Exanet 网络（2026 年 7 月 24 日）发生事件后，受影响系统被迅速隔离并立即展开调查。',
+      '外部鉴证专家受聘查明每起事件的根本原因；详细调查未发现两起事件有数据受损或外泄的证据。',
+      '详细调查报告不会公开，理由是可能为恶意行为者提供有用信息。',
+      '受影响系统和设备经重建、扫描攻击残留、检查并获准后才恢复服务，同时立即收紧访问控制的执行并加强终端防护。',
+      'NSCC 与 A*STAR 加快事件前已启动的网络安全计划，包括通过更复杂的红队演练加强威胁模拟，经验教训已应用于整个科研基础设施。',
+    ],
+    keyPointsEn: [
+      "After the incidents affecting NSCC's ASPIRE 2A system (22 May 2026) and A*STAR's Exanet network (24 July 2026), the affected systems were promptly isolated and investigations began immediately.",
+      'External forensic specialists were engaged to establish the root cause in each case; detailed investigations found no evidence of data compromise or exfiltration in either incident.',
+      'The detailed investigation reports will not be publicly released, as they could provide information useful to malicious actors.',
+      'Affected systems and devices were rebuilt, scanned for residual elements of the attack, inspected and cleared before returning to service, with tighter enforcement of access controls and enhanced endpoint protection implemented immediately.',
+      'NSCC and A*STAR have accelerated cybersecurity initiatives begun before the incidents, including more sophisticated red teaming for threat simulation, and lessons learnt have been applied across the research infrastructure.',
+    ],
+    keyPointsJa: [
+      'NSCCのASPIRE 2Aシステム（2026年5月22日）とA*STARのExanetネットワーク（2026年7月24日）の事案の後、影響を受けたシステムは速やかに隔離され、直ちに調査が始まった。',
+      '各事案の根本原因を特定するため外部のフォレンジック専門家が起用され、詳細な調査ではいずれの事案でもデータの侵害や持ち出しの証拠は見つからなかった。',
+      '詳細な調査報告書は、悪意ある者に有用な情報を与えるおそれがあるため公開されない。',
+      '影響を受けたシステムと機器は再構築され、攻撃の残存要素のスキャンと点検を経て使用が許可された後に運用に復帰し、アクセス制御の運用厳格化とエンドポイント保護の強化も直ちに実施された。',
+      'NSCCとA*STARは事案以前から進めていたサイバーセキュリティの取り組みを加速させ、より高度なレッドチーミングによる脅威シミュレーションを強化しており、教訓は研究インフラ全体に適用された。',
+    ],
+    keyPointsKo: [
+      'NSCC의 ASPIRE 2A 시스템(2026년 5월 22일)과 A*STAR의 Exanet 네트워크(2026년 7월 24일) 사고 이후, 영향을 받은 시스템은 신속히 격리되었고 조사가 즉시 시작되었다.',
+      '각 사고의 근본 원인을 규명하기 위해 외부 포렌식 전문가가 투입되었으며, 상세 조사 결과 두 사고 모두 데이터 침해나 유출의 증거는 발견되지 않았다.',
+      '상세 조사 보고서는 악의적 행위자에게 유용한 정보를 줄 수 있어 공개되지 않는다.',
+      '영향을 받은 시스템과 장비는 재구축되고 공격 잔존 요소 스캔과 점검을 거쳐 사용 승인 후 서비스에 복귀했으며, 접근 통제의 엄격한 시행과 엔드포인트 보호 강화도 즉시 시행되었다.',
+      'NSCC와 A*STAR는 사고 이전부터 추진하던 사이버보안 이니셔티브를 가속화해 보다 정교한 레드팀 활동으로 위협 시뮬레이션을 강화하고 있으며, 교훈은 연구 인프라 전반에 적용되었다.',
+    ],
+    governmentStance:
+      '政府表示两起事件均已处置，未发现数据受损或外泄，并已加强安全措施、加快既有网络安全计划。政府拒绝公开详细调查报告，理由是这可能为恶意行为者提供有用信息。',
+    governmentStanceEn:
+      'The Government said both incidents have been handled, no data compromise or exfiltration was found, and safeguards and existing cybersecurity initiatives have been stepped up. It declined to release the detailed investigation reports, arguing they could provide information useful to malicious actors.',
+    governmentStanceJa:
+      '政府は両事案とも対処済みで、データの侵害や持ち出しは見つからず、安全対策と既存のサイバーセキュリティの取り組みを強化したと説明した。詳細な調査報告書については、悪意ある者に有用な情報を与えるおそれがあるとして公開を拒んだ。',
+    governmentStanceKo:
+      '정부는 두 사고 모두 처리되었고 데이터 침해나 유출은 발견되지 않았으며, 보안 조치와 기존 사이버보안 이니셔티브를 강화했다고 밝혔다. 상세 조사 보고서는 악의적 행위자에게 유용한 정보를 줄 수 있다는 이유로 공개를 거부했다.',
+    oppositionStance:
+      '提问议员严燕松（工人党）要求公开完整调查报告，并追问具体的恢复、验证和加固措施以及是否有数据外泄、哪些数据受损。',
+    oppositionStanceEn:
+      "Questioner Mr Gerald Giam (Workers' Party) sought public release of the full investigation reports and asked for the specific recovery, validation and hardening measures taken, and whether any data was exfiltrated and which.",
+    oppositionStanceJa:
+      '質問者のGerald Giam Yean Song 議員（労働者党）は完全な調査報告書の公開を求め、具体的な復旧・検証・強化措置と、データの持ち出しの有無および侵害されたデータの内容をただした。',
+    oppositionStanceKo:
+      '질의자 Gerald Giam Yean Song 의원(노동자당)은 전체 조사 보고서 공개를 요구하며, 구체적인 복구·검증·강화 조치와 데이터 유출 여부 및 침해된 데이터가 무엇인지 따져 물었다.',
+    controversyLevel: 2,
+    policySignal:
+      '国家超算与科研网络已被当作需重点防护的 AI 算力基础设施；政府在事件披露上采取结论公开、细节保密的做法，议会对透明度的要求与安全考量之间的张力可能持续。',
+    policySignalEn:
+      "National supercomputing and research networks are now treated as AI compute infrastructure requiring hardened protection; the Government's approach to incident disclosure is to publish conclusions but withhold details, a tension with parliamentary demands for transparency that is likely to persist.",
+    policySignalJa:
+      '国立スーパーコンピューターや研究ネットワークは、重点的な防護が必要なAI計算基盤として扱われるようになった。事案の開示では結論は公表し詳細は伏せるという政府の姿勢が示され、議会の透明性要求と安全上の配慮との緊張は続くとみられる。',
+    policySignalKo:
+      '국가 슈퍼컴퓨터와 연구 네트워크는 이제 강화된 보호가 필요한 AI 컴퓨팅 인프라로 취급되고 있다. 사고 공개에서 결론은 알리되 세부 내용은 공개하지 않는 정부 방식이 드러났으며, 의회의 투명성 요구와 보안 고려 사이의 긴장은 이어질 것으로 보인다.',
+    notableQuote: '详细调查未发现两起事件中有任何数据受损或外泄的证据。',
+    notableQuoteEn: 'Detailed investigations found no evidence of data compromise or exfiltration in either incident.',
+    notableQuoteJa: '詳細な調査の結果、いずれの事案でもデータの侵害や持ち出しの証拠は見つかりませんでした。',
+    notableQuoteKo: '상세 조사 결과 두 사고 모두에서 데이터 침해나 유출의 증거는 발견되지 않았습니다.',
+    transcriptEn:
+      "Mr Gerald Giam Yean Song asked the Minister for Trade and Industry (Energy and Industry) whether full investigation reports on the recent cybersecurity incidents affecting the National Supercomputing Centre Singapore's ASPIRE 2A and A*STAR's Exanet network will be publicly released, what recovery, validation and hardening measures were taken, and whether any data was exfiltrated. Dr Tan See Leng replied that after the incidents affecting NSCC's ASPIRE 2A system on 22 May 2026 and A*STAR's Exanet network on 24 July 2026, the affected systems were promptly isolated and investigations were immediately conducted. External forensic specialists were engaged to establish the root cause in each case, and detailed investigations found no evidence of data compromise or exfiltration in either incident. The detailed investigation reports will not be publicly released, as doing so could provide information useful to malicious actors. The affected systems and devices were rebuilt, scanned for residual elements of the attack, inspected and cleared before returning to service, and additional measures such as tighter enforcement of access controls and enhanced endpoint protection were implemented. NSCC and A*STAR have accelerated pre-existing initiatives such as more sophisticated red teaming, and lessons learnt have been applied across the research infrastructure.",
+    sourceUrl: 'https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=written-answer-24497',
+    addedAt: '2026-09-26',
+  },
+  {
+    id: 'written-answer-24481',
+    titleEn:
+      'Mandating Baseline Transparency Disclosures for Sensitive Applications of AI in Healthcare, Children and Personal Data',
+    title: '对医疗、儿童及个人资料领域的敏感 AI 应用强制基本透明度披露',
+    titleKo: '의료·아동·개인정보 분야 민감한 AI 활용에 대한 기본 투명성 공개 의무화',
+    titleJa: '医療・子ども・個人データ分野におけるAIの機微な用途への基本的な透明性開示の義務化',
+    date: '2026-09-08',
+    parliament: '15',
+    type: 'Written Answers to Questions',
+    speakers: ['Ms Cassandra Lee', 'Mrs Josephine Teo'],
+    personIds: [],
+    topicIds: [],
+    relatedPolicyIds: [],
+    relatedLeverNumbers: [],
+    relatedTimelineYears: [],
+    relatedPostSlugs: [],
+    topics: ['AI Governance & Regulation', 'AI Safety & Ethics'],
+    summary:
+      '议员吕思憓（Ms Cassandra Lee）书面询问数字发展与信息部长：鉴于资讯通信媒体发展局（IMDA）最近发布的《生成式 AI 聊天机器人透明度指南》属自愿性质，政府是否考虑在医疗、儿童或个人资料等敏感 AI 应用中强制规定基本透明度披露，以及哪些因素会影响这一决定。数字发展与信息部长杨莉明（Mrs Josephine Teo）答复：该指南为机构设立了自愿性基准，用以说明其生成式 AI 聊天机器人的能力、局限和保障措施；针对具体风险，政府将考虑技术如何部署、可能出现的伤害性质以及现有措施的成效等因素，这些因素已在 2026 年 7 月 7 日答复杨陞才（Mr Alex Yeo）关于监管高风险 AI 部署的提问时提及。答复未表明是否会强制披露。',
+    summaryEn:
+      "Ms Cassandra Lee asked the Minister for Digital Development and Information in a written question whether, given that IMDA's recently released Transparency Guidelines for Generative AI Chatbots are voluntary, the Government is considering mandating baseline transparency disclosures for sensitive AI applications such as healthcare, children or personal data, and what factors would inform that decision. Minister for Digital Development and Information Mrs Josephine Teo replied that the guidelines set a voluntary baseline for organisations to explain their generative AI chatbots' capabilities, limitations and safeguards. To address specific risks, the Government will consider factors such as how the technology is deployed, the nature of harms that may arise and the effectiveness of existing measures, as set out in the Ministry's 7 July 2026 reply to Mr Alex Yeo on regulating high-risk AI deployments. The reply did not say whether disclosures would be made mandatory.",
+    summaryJa:
+      'Cassandra Lee議員は、デジタル発展・情報大臣に対する書面質問で、情報通信メディア開発庁（IMDA）が最近公表した生成AIチャットボットの透明性ガイドラインが任意であることを踏まえ、医療、子ども、個人データなどAIの機微な用途について基本的な透明性開示を義務化することを検討しているか、またその判断にどのような要素が考慮されるかを尋ねた。デジタル発展・情報大臣のジョセフィン・テオ氏は、同ガイドラインは組織が生成AIチャットボットの能力、限界、保護措置を説明するための任意の基準を定めたものだと答弁した。特定のリスクに対処するため、政府は技術の導入方法、生じ得る害の性質、既存措置の有効性などの要素を考慮するとし、これらは2026年7月7日の高リスクAI導入の規制に関するAlex Yeo議員への答弁で示されたものだとした。開示を義務化するかどうかについては明言しなかった。',
+    summaryKo:
+      'Cassandra Lee 의원은 디지털개발정보부 장관에게 서면 질의로, 정보통신미디어개발청(IMDA)이 최근 발표한 생성형 AI 챗봇 투명성 가이드라인이 자발적이라는 점을 고려할 때 의료, 아동, 개인정보 등 민감한 AI 활용에 대해 기본적인 투명성 공개 의무화를 검토하고 있는지, 그리고 어떤 요인이 결정에 반영될지 물었다. 디지털개발정보부 장관 Josephine Teo는 이 가이드라인이 조직이 생성형 AI 챗봇의 역량, 한계, 보호 장치를 설명하기 위한 자발적 기준을 마련한 것이라고 답했다. 특정 위험에 대응하기 위해 정부는 기술의 배치 방식, 발생 가능한 위해의 성격, 기존 조치의 효과성 등을 고려할 것이며, 이는 2026년 7월 7일 고위험 AI 배치 규제에 관한 Alex Yeo 의원 질의에 대한 답변에서 제시된 요인이라고 했다. 공개 의무화 여부는 밝히지 않았다.',
+    whyItMatters: 'IMDA 生成式 AI 聊天机器人透明度指南仍属自愿，政府未承诺在医疗、儿童等敏感领域强制披露',
+    whyItMattersEn:
+      "IMDA's transparency guidelines for generative AI chatbots remain voluntary, and the Government did not commit to mandatory disclosure in sensitive areas such as healthcare and children.",
+    whyItMattersJa:
+      'IMDAの生成AIチャットボット透明性ガイドラインは任意のままで、政府は医療や子どもなど機微な分野での開示義務化を約束せず',
+    whyItMattersKo:
+      'IMDA의 생성형 AI 챗봇 투명성 가이드라인은 여전히 자발적이며, 정부는 의료·아동 등 민감 분야 공개 의무화를 약속하지 않음',
+    keyPoints: [
+      'IMDA 的《生成式 AI 聊天机器人透明度指南》为机构设立自愿性基准，用以说明聊天机器人的能力、局限和保障措施',
+      '针对具体风险，政府将考虑技术如何部署、可能出现的伤害性质以及现有措施的成效',
+      '这些考量因素已在 2026 年 7 月 7 日数字发展与信息部答复杨陞才关于监管高风险 AI 部署的书面答复中提及',
+      '答复未就医疗、儿童或个人资料等敏感应用是否强制透明度披露作出承诺',
+    ],
+    keyPointsEn: [
+      "IMDA's Transparency Guidelines for Generative AI Chatbots set a voluntary baseline for organisations to explain chatbots' capabilities, limitations and safeguards.",
+      'To address specific risks, the Government will consider how the technology is deployed, the nature of harms that may arise and the effectiveness of existing measures.',
+      "These factors were set out in MDDI's 7 July 2026 written reply to Mr Alex Yeo on regulating high-risk AI deployments.",
+      'The reply made no commitment on mandating transparency disclosures for sensitive uses such as healthcare, children or personal data.',
+    ],
+    keyPointsJa: [
+      'IMDAの生成AIチャットボット透明性ガイドラインは、組織がチャットボットの能力、限界、保護措置を説明するための任意の基準を定めている',
+      '特定のリスクに対処するため、政府は技術の導入方法、生じ得る害の性質、既存措置の有効性を考慮する',
+      'これらの要素は、2026年7月7日の高リスクAI導入の規制に関するAlex Yeo議員へのデジタル発展・情報省の書面答弁で示されたもの',
+      '医療、子ども、個人データなどの機微な用途について透明性開示を義務化するかどうかは約束しなかった',
+    ],
+    keyPointsKo: [
+      'IMDA의 생성형 AI 챗봇 투명성 가이드라인은 조직이 챗봇의 역량, 한계, 보호 장치를 설명하기 위한 자발적 기준을 마련함',
+      '특정 위험에 대응하기 위해 정부는 기술의 배치 방식, 발생 가능한 위해의 성격, 기존 조치의 효과성을 고려할 예정',
+      '이러한 요인은 2026년 7월 7일 고위험 AI 배치 규제에 관한 Alex Yeo 의원 질의에 대한 디지털개발정보부 서면 답변에서 제시됨',
+      '의료, 아동, 개인정보 등 민감한 활용에 대한 투명성 공개 의무화 여부는 약속하지 않음',
+    ],
+    governmentStance:
+      '政府维持以自愿性指南作为透明度基准，针对具体风险再按部署方式、伤害性质和现有措施成效考虑进一步措施。政府没有承诺在医疗、儿童或个人资料等敏感领域强制透明度披露。',
+    governmentStanceEn:
+      'The Government keeps voluntary guidelines as the transparency baseline and will weigh further, risk-specific measures by deployment context, nature of harm and effectiveness of existing measures. It did not commit to mandatory transparency disclosures in healthcare, children or personal data.',
+    governmentStanceJa:
+      '政府は任意のガイドラインを透明性の基準として維持し、特定のリスクについては導入の状況、害の性質、既存措置の有効性に応じて追加措置を検討する。医療、子ども、個人データ分野での透明性開示の義務化は約束しなかった。',
+    governmentStanceKo:
+      '정부는 자발적 가이드라인을 투명성 기준으로 유지하고, 특정 위험에 대해서는 배치 상황, 위해의 성격, 기존 조치의 효과성에 따라 추가 조치를 검토한다. 의료, 아동, 개인정보 분야의 투명성 공개 의무화는 약속하지 않았다.',
+    oppositionStance:
+      '提问议员吕思憓担心自愿性指南不足以保障敏感 AI 应用，希望政府考虑强制基本透明度披露并说明决策依据。',
+    oppositionStanceEn:
+      'Questioner Ms Cassandra Lee was concerned that voluntary guidelines may not be enough for sensitive AI uses, and asked the Government to consider mandatory baseline disclosures and explain what would drive that decision.',
+    oppositionStanceJa:
+      '質問者のCassandra Lee議員は、機微なAI用途には任意のガイドラインでは不十分ではないかと懸念し、基本的な開示の義務化の検討と、その判断基準の説明を求めた。',
+    oppositionStanceKo:
+      '질의자 Cassandra Lee 의원은 민감한 AI 활용에는 자발적 가이드라인만으로 부족할 수 있다고 우려하며, 기본 공개 의무화 검토와 그 판단 기준에 대한 설명을 요구했다.',
+    controversyLevel: 2,
+    policySignal:
+      '新加坡仍坚持先自愿、再按风险定向监管的 AI 治理路径，强制性规定只会在出现具体、可界定的伤害且现有措施不足时才被考虑。',
+    policySignalEn:
+      'Singapore is sticking with a voluntary-first, risk-targeted approach to AI governance: mandatory rules will be considered only where specific, identifiable harms arise and existing measures fall short.',
+    policySignalJa:
+      'シンガポールは任意を先行させ、リスクに応じて的を絞るAIガバナンスの方針を堅持している。義務的なルールは、具体的で特定可能な害が生じ、既存措置が不十分な場合に限って検討される。',
+    policySignalKo:
+      '싱가포르는 자발적 조치를 우선하고 위험에 따라 표적 규제를 하는 AI 거버넌스 방식을 고수하고 있다. 의무 규정은 구체적이고 식별 가능한 위해가 발생하고 기존 조치가 부족할 때에만 검토될 것이다.',
+    notableQuote:
+      '此外，为应对具体风险，政府将考虑更多因素，例如技术如何部署、可能出现的伤害性质，以及现有措施的成效。',
+    notableQuoteEn:
+      'In addition, to address specific risks, the Government will consider further factors, such as how the technology is deployed, the nature of harms that may arise, and the effectiveness of existing measures.',
+    notableQuoteJa:
+      '加えて、特定のリスクに対処するため、政府は、技術がどのように導入されるか、生じ得る害の性質、既存の措置の有効性といった追加の要素を考慮します。',
+    notableQuoteKo:
+      '아울러 특정 위험에 대응하기 위해 정부는 기술이 어떻게 배치되는지, 발생할 수 있는 위해의 성격, 기존 조치의 효과성 등 추가적인 요인을 고려할 것입니다.',
+    transcriptEn:
+      "Ms Cassandra Lee asked the Minister for Digital Development and Information, in view of the fact that the Transparency Guidelines for Generative AI Chatbots recently released by the Infocomm Media Development Authority (IMDA) are voluntary, whether the Government is considering mandating baseline transparency disclosures for sensitive applications of AI, for example in healthcare, involving children or involving personal data, and what factors would inform such a decision. In a written reply, Mrs Josephine Teo said that IMDA's Transparency Guidelines for Generative AI Chatbots establish a voluntary baseline for organisations to explain the capabilities, limitations and safeguards of their generative AI chatbots. She added that, to address specific risks, the Government will consider further factors, such as how the technology is deployed, the nature of the harms that may arise, and the effectiveness of existing measures. She noted that these factors had already been set out in the Ministry of Digital Development and Information's written reply of 7 July 2026 to Mr Alex Yeo's Parliamentary question on the regulation of high-risk AI deployments. The reply did not say whether mandatory disclosures would be introduced for the sensitive applications the Member listed.",
+    sourceUrl: 'https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=written-answer-24481',
+    addedAt: '2026-09-26',
+  },
   {
     id: 'motion-3008',
     titleEn: `An Economy of the Future that Works for All (Main Debate)`,
@@ -15198,7 +17608,7 @@ Madam, last year, I encouraged people to sign up as an SAF Volunteer in this Hou
 ];
 
 export const DEBATE_STATS = {
-  total: 209,
+  total: 234,
   yearRange: { from: 2015, to: 2026 },
   byYear: {
     '2015': 2,
@@ -15212,40 +17622,40 @@ export const DEBATE_STATS = {
     '2023': 21,
     '2024': 34,
     '2025': 28,
-    '2026': 87,
+    '2026': 112,
   },
   byType: {
-    'Written Answers to Questions': 86,
+    'Written Answers to Questions': 103,
+    'Oral Answers to Questions': 63,
     Budget: 59,
-    'Oral Answers to Questions': 55,
     Motions: 9,
   },
   byTopic: {
-    'AI Economy & Industry': 96,
-    'AI Governance & Regulation': 90,
-    'AI & National Security': 83,
-    'AI in Public Sector': 76,
-    'AI Safety & Ethics': 66,
-    'AI & Employment': 65,
-    'AI Infrastructure & Research': 55,
-    'AI in Education': 48,
+    'AI Economy & Industry': 103,
+    'AI Governance & Regulation': 98,
+    'AI & National Security': 87,
+    'AI in Public Sector': 79,
+    'AI Safety & Ethics': 70,
+    'AI & Employment': 70,
+    'AI Infrastructure & Research': 59,
+    'AI in Education': 50,
     'AI in Healthcare': 26,
-    'AI Strategy': 21,
-    'Deepfakes & Disinformation': 14,
+    'AI Strategy': 24,
+    'Deepfakes & Disinformation': 20,
   },
   topSpeakers: {
-    'Josephine Teo': 38,
-    'Gerald Giam Yean Song': 32,
+    'Josephine Teo': 47,
+    'Gerald Giam Yean Song': 34,
     'Sylvia Lim': 28,
     'Patrick Tay Teck Guan': 28,
     'Pritam Singh': 26,
     'Jamus Jerome Lim': 23,
     'Vikram Nair': 22,
+    'Saktiandi Supaat': 21,
     'Sharael Taha': 20,
-    'Saktiandi Supaat': 19,
+    'He Ting Ru': 19,
     'Janil Puthucheary': 17,
     'Desmond Choo': 16,
-    'He Ting Ru': 16,
     'Tin Pei Ling': 15,
   },
 };

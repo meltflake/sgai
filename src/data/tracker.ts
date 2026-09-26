@@ -1819,7 +1819,7 @@ export const dimensions: Dimension[] = [
         valueEn: 'Singapore on the Independent International Scientific Panel',
         source: 'UN / MFA',
         sourceEn: 'UN / MFA',
-        sourceUrl: 'https://www.un.org/techenvoy/ai-advisory-body',
+        sourceUrl: 'https://www.un.org/digital-emerging-technologies/ai-advisory-body',
       },
       {
         name: 'MAS Project MindForge',
