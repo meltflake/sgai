@@ -5645,7 +5645,7 @@ export const regionDetails: RegionDetail[] = [
           {
             label: 'Canada Budget 2024',
             labelEn: 'Canada Budget 2024',
-            url: 'https://www.budget.canada.ca/2024/home-accueil-en.html',
+            url: 'https://budget.canada.ca/2024/home-accueil-en.html',
           },
         ],
       },
@@ -5662,7 +5662,7 @@ export const regionDetails: RegionDetail[] = [
           {
             label: 'Canada Budget 2024',
             labelEn: 'Canada Budget 2024',
-            url: 'https://www.budget.canada.ca/2024/home-accueil-en.html',
+            url: 'https://budget.canada.ca/2024/home-accueil-en.html',
           },
           {
             label: 'CIFAR Pan-Canadian AI Strategy',
@@ -5779,7 +5779,7 @@ export const regionDetails: RegionDetail[] = [
           {
             label: 'Canada Budget 2024',
             labelEn: 'Canada Budget 2024',
-            url: 'https://www.budget.canada.ca/2024/home-accueil-en.html',
+            url: 'https://budget.canada.ca/2024/home-accueil-en.html',
           },
         ],
       },
@@ -5796,7 +5796,7 @@ export const regionDetails: RegionDetail[] = [
           {
             label: 'Canada Budget 2024',
             labelEn: 'Canada Budget 2024',
-            url: 'https://www.budget.canada.ca/2024/home-accueil-en.html',
+            url: 'https://budget.canada.ca/2024/home-accueil-en.html',
           },
         ],
       },
@@ -5887,7 +5887,7 @@ export const regionDetails: RegionDetail[] = [
           {
             label: 'Canada Budget 2024',
             labelEn: 'Canada Budget 2024',
-            url: 'https://www.budget.canada.ca/2024/home-accueil-en.html',
+            url: 'https://budget.canada.ca/2024/home-accueil-en.html',
           },
           {
             label: 'Pan-Canadian AI Strategy（ISED，含 CAISI 上下文）',
@@ -5911,7 +5911,7 @@ export const regionDetails: RegionDetail[] = [
           {
             label: 'Canada Budget 2024',
             labelEn: 'Canada Budget 2024',
-            url: 'https://www.budget.canada.ca/2024/home-accueil-en.html',
+            url: 'https://budget.canada.ca/2024/home-accueil-en.html',
           },
         ],
       },
@@ -6002,7 +6002,7 @@ export const regionDetails: RegionDetail[] = [
           {
             label: 'Canada Budget 2024',
             labelEn: 'Canada Budget 2024',
-            url: 'https://www.budget.canada.ca/2024/home-accueil-en.html',
+            url: 'https://budget.canada.ca/2024/home-accueil-en.html',
           },
           {
             label: 'Pan-Canadian AI Strategy（ISED）',

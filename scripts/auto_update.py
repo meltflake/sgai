@@ -100,6 +100,10 @@ HANSARD_WRITTEN_RANGE = 300
 # that the written-answer scan could never see.
 HANSARD_WRITTEN_NA_RANGE = 300
 HANSARD_BUDGET_RANGE = 30
+# A sitting can outgrow one window (8-10 Sep 2026 used written-answer ids
+# 24171..24897, ~730). If ids still exist in the last quarter of a window,
+# scan the next one too; capped so a runaway id space can't loop forever.
+HANSARD_MAX_WINDOWS = 5
 # A report id known to exist; probed before every scan. If SPRS stops
 # answering (as it did 2026-08 when it started requiring the id in the JSON
 # body), the scan fails loudly instead of reporting "0 new" for weeks.
@@ -266,6 +270,21 @@ def scan_hansard_range(prefix: str, start: int, end: int, logger) -> list[dict]:
     return results
 
 
+def scan_hansard_window(prefix: str, start: int, window: int, logger) -> list[dict]:
+    """scan_hansard_range, extended window by window while ids reach the tail."""
+    results: list[dict] = []
+    for _ in range(HANSARD_MAX_WINDOWS):
+        end = start + window
+        batch = scan_hansard_range(prefix, start, end, logger)
+        results += batch
+        top = max((int(r["id"].split("-")[-1]) for r in batch), default=start)
+        if top <= end - window // 4:
+            break
+        logger.info(f"Hansard 扫描: {prefix} 窗口末段仍有记录，续扫 {end + 1}..{end + window}")
+        start = end
+    return results
+
+
 def run_hansard(state: dict, logger) -> dict:
     hansard_state = state.setdefault("domains", {}).setdefault(
         "hansard",
@@ -279,22 +298,20 @@ def run_hansard(state: dict, logger) -> dict:
     max_written_na = hansard_state.get("max_written_na_id", 24297)
 
     logger.info(f"Hansard 扫描: oral-answer-{max_oral + 1}..{max_oral + HANSARD_ORAL_RANGE}")
-    oral_results = scan_hansard_range("oral-answer", max_oral, max_oral + HANSARD_ORAL_RANGE, logger)
+    oral_results = scan_hansard_window("oral-answer", max_oral, HANSARD_ORAL_RANGE, logger)
 
     logger.info(f"Hansard 扫描: written-answer-{max_written + 1}..{max_written + HANSARD_WRITTEN_RANGE}")
-    written_results = scan_hansard_range(
-        "written-answer", max_written, max_written + HANSARD_WRITTEN_RANGE, logger
-    )
+    written_results = scan_hansard_window("written-answer", max_written, HANSARD_WRITTEN_RANGE, logger)
 
     logger.info(
         f"Hansard 扫描: written-answer-na-{max_written_na + 1}..{max_written_na + HANSARD_WRITTEN_NA_RANGE}"
     )
-    written_na_results = scan_hansard_range(
-        "written-answer-na", max_written_na, max_written_na + HANSARD_WRITTEN_NA_RANGE, logger
+    written_na_results = scan_hansard_window(
+        "written-answer-na", max_written_na, HANSARD_WRITTEN_NA_RANGE, logger
     )
 
     logger.info(f"Hansard 扫描: budget-{max_budget + 1}..{max_budget + HANSARD_BUDGET_RANGE}")
-    budget_results = scan_hansard_range("budget", max_budget, max_budget + HANSARD_BUDGET_RANGE, logger)
+    budget_results = scan_hansard_window("budget", max_budget, HANSARD_BUDGET_RANGE, logger)
 
     all_results = oral_results + written_results + written_na_results + budget_results
     ai_results = [r for r in all_results if r["ai_related"]]
@@ -327,7 +344,7 @@ def run_hansard(state: dict, logger) -> dict:
         ),
         "items": [
             {"id": r["id"], "title": r["title"], "date": r["date"]}
-            for r in ai_results[:10]
+            for r in ai_results
         ],
         "new_max_oral": new_max_oral,
         "new_max_written": new_max_written,

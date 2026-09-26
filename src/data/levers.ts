@@ -2828,7 +2828,7 @@ export const levers: Lever[] = [
             descriptionKo: '유엔 수준의 AI 거버넌스 대화 및 과학 패널',
             descriptionJa: '国連レベル AI ガバナンス対話・科学パネル',
             descriptionEn: 'UN-level AI governance dialogue and scientific panel',
-            sourceUrl: 'https://www.un.org/techenvoy/ai-advisory-body',
+            sourceUrl: 'https://www.un.org/digital-emerging-technologies/ai-advisory-body',
           },
           {
             id: 'ai-singapore-undp-全球-ai-素养',
