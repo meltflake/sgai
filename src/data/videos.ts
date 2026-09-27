@@ -145,6 +145,79 @@ export function pickSpeakerTypeLabels(lang: string): Record<string, string> {
 
 export const videos: VideoItem[] = [
   {
+    id: 'v107',
+    title: '自动驾驶CEO谈AI谨慎部署',
+    titleEn: 'Why this driverless car CEO is cautious about letting AI take the wheel',
+    titleJa: '自動運転CEOはAI展開の慎重性について語る',
+    titleKo: '자율주행 CEO, AI의 신중한 배포를 논하다',
+    speaker: 'Gansha Wu',
+    speakerTitle: '文远知行联合创始人兼首席执行官',
+    speakerTitleEn: 'Co-founder and CEO of UISEE',
+    speakerTitleJa: 'ウェライド共同創業者兼最高経営責任者',
+    speakerTitleKo: 'Wenyuan Zhixing 공동 창립자 겸 최고경영자',
+    speakerType: 'industry',
+    date: '2026-09-25',
+    duration: '06:35',
+    summary: '文远知行CEO强调自动驾驶在繁忙路面部署需谨慎，人工监管至关重要。',
+    summaryEn:
+      'UISEE CEO Gansha Wu emphasizes caution in autonomous vehicle deployment on busy roads, stressing human supervision is crucial.',
+    summaryJa:
+      'ウェライドのCEOは、自動運転が繁忙路面への展開には慎重さが不可欠であり、人的監督が極めて重要であることを強調しています。',
+    summaryKo:
+      'Wenyuan Zhixing CEO는 혼잡한 도로에서의 자율주행 배포는 신중할 필요가 있으며, 인간의 감시가 매우 중요함을 강조합니다.',
+    whyItMatters: '文远知行 CEO 在 FutureChina 论坛力挺人工监管优先，呼应新加坡自动驾驶试点长期保留安全员的审慎路线',
+    whyItMattersEn:
+      "WeRide CEO backs human oversight priority at FutureChina forum, aligning with Singapore's cautious approach of maintaining safety drivers long-term in autonomous driving pilots",
+    whyItMattersJa:
+      'ウェライドのCEOがFutureChinaフォーラムで人的監視優先を力強く支持し、シンガポール自動運転試験が長期的に安全運転手を配置する慎重なアプローチに呼応している',
+    whyItMattersKo:
+      '웨라이드 CEO가 FutureChina 포럼에서 인간 감독 우선을 강력히 지지하며, 싱가포르 자동운전 시범에서 장기 안전요원 유지 정책에 호응했습니다',
+    topic: 'AI 产业与应用',
+    topicEn: 'AI Industry & Applications',
+    topicJa: 'AI 産業と応用',
+    topicKo: 'AI 산업 및 응용',
+    youtubeUrl: 'https://www.youtube.com/watch?v=qhKr9fAYX4E',
+    channel: 'CNA',
+    addedAt: '2026-09-27',
+  },
+  {
+    id: 'v108',
+    title: '关税压力促制造商加快采纳AI',
+    titleEn: 'Tariff fears accelerate AI adoption among Chinese manufacturers',
+    titleJa: '関税圧力が製造業者のAI採用加速を促進',
+    titleKo: '관세 압력, 제조업체의 AI 채택 가속화',
+    speaker: 'Zhou Yuxiang',
+    speakerTitle: '黑湖科技创始人兼首席执行官',
+    speakerTitleEn: 'Founder and CEO of Black Lake Technologies',
+    speakerTitleJa: 'ブラックレイク創業者兼最高経営責任者',
+    speakerTitleKo: 'Heihu Technology 창립자 겸 최고경영자',
+    speakerType: 'industry',
+    date: '2026-09-25',
+    duration: '06:19',
+    summary:
+      '黑湖科技创始人兼CEO周宇翔讨论关税压力如何促使中国制造商加快AI采纳，特别是小企业因成本压力而更快接纳新技术。',
+    summaryEn:
+      'Zhou Yuxiang, founder and CEO of Black Lake Technologies, discusses how tariff fears are prompting Chinese manufacturers, especially smaller businesses, to accelerate AI adoption to reduce costs and improve competitiveness.',
+    summaryJa:
+      'ブラックレイク創業者兼CEOシュウユウショウは、関税圧力が中国の製造業者にAI採用の加速を促している方法について論じており、特に小企業がコスト圧力下で新技術をより迅速に採用していることを指摘しています。',
+    summaryKo:
+      'Heihu Technology 창립자 겸 CEO Zhou Yuxiang은 관세 압력이 중국 제조업체의 AI 채택을 가속화하는 방식, 특히 소규모 기업들이 원가 압력으로 인해 신기술을 더 빠르게 도입하는 현상을 논합니다.',
+    whyItMatters: '黑湖科技的关税倒逼案例显示，中国小企业靠外部压力就能加速采纳 AI，反衬新加坡政策补贴式推动的局限',
+    whyItMattersEn:
+      "Heiku Technology's tariff-driven AI adoption case shows that Chinese small enterprises can accelerate AI adoption through external pressure alone, highlighting the limitations of Singapore's subsidy-based policy approach",
+    whyItMattersJa:
+      'ヘイフテックの関税倒逼事例は、中国の中小企業が外部からの圧力によってAI採用を加速できることを示し、シンガポール政策による補助金ベースの推進の限界に対比される',
+    whyItMattersKo:
+      '흑호 기술의 관세 강제 사례는 중국 중소기업이 외부 압력으로도 AI를 빠르게 채택할 수 있음을 보여주며, 싱가포르의 보조금식 정책 추진의 한계를 대비시킵니다',
+    topic: 'AI 产业与应用',
+    topicEn: 'AI Industry & Applications',
+    topicJa: 'AI 産業と応用',
+    topicKo: 'AI 산업 및 응용',
+    youtubeUrl: 'https://www.youtube.com/watch?v=B9Yt8KEEpH0',
+    channel: 'CNA',
+    addedAt: '2026-09-27',
+  },
+  {
     id: 'v106',
     title: '新加坡加拿大能源供应链AI合作',
     titleEn: 'Singapore and Canada on Energy, Supply Chain, and AI',
