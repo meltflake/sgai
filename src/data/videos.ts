@@ -145,6 +145,81 @@ export function pickSpeakerTypeLabels(lang: string): Record<string, string> {
 
 export const videos: VideoItem[] = [
   {
+    id: 'v107',
+    title: '自动驾驶CEO谈AI谨慎部署',
+    titleEn: 'Why this driverless car CEO is cautious about letting AI take the wheel',
+    titleJa: '自動運転CEOはAI展開の慎重性について語る',
+    titleKo: '자율주행 CEO, AI의 신중한 배포를 논하다',
+    speaker: 'Gansha Wu',
+    speakerTitle: '驭势科技联合创始人兼首席执行官',
+    speakerTitleEn: 'Co-founder and CEO of UISEE',
+    speakerTitleJa: 'UISEE共同創業者兼最高経営責任者',
+    speakerTitleKo: 'UISEE 공동 창립자 겸 최고경영자',
+    speakerType: 'industry',
+    date: '2026-09-25',
+    duration: '06:35',
+    summary: '驭势科技CEO吴甘沙强调自动驾驶在繁忙路面部署需谨慎，人工监管至关重要。',
+    summaryEn:
+      'UISEE CEO Gansha Wu emphasizes caution in autonomous vehicle deployment on busy roads, stressing human supervision is crucial.',
+    summaryJa:
+      'UISEEのCEO呉甘沙氏は、自動運転が繁忙路面への展開には慎重さが不可欠であり、人的監督が極めて重要であることを強調しています。',
+    summaryKo:
+      'UISEE CEO Gansha Wu는 혼잡한 도로에서의 자율주행 배포는 신중할 필요가 있으며, 인간의 감시가 매우 중요함을 강조합니다.',
+    whyItMatters:
+      '驭势科技 CEO 吴甘沙在新加坡 FutureChina 论坛表示，繁忙城市路况仍需人随时接管，自动驾驶应先落地机场等招工难、环境恶劣的场景',
+    whyItMattersEn:
+      'At the FutureChina forum in Singapore, UISEE CEO Gansha Wu says busy city traffic still needs a human ready to take over, and that autonomous driving should start in hard-to-staff, harsh settings such as airport aprons',
+    whyItMattersJa:
+      'UISEEのCEO呉甘沙氏はシンガポールのFutureChinaフォーラムで、混雑した都市交通では今も人が即座に運転を引き継げる必要があり、自動運転は空港エプロンなど人手不足で過酷な現場から導入すべきだと述べた',
+    whyItMattersKo:
+      'UISEE CEO Gansha Wu는 싱가포르 FutureChina 포럼에서 혼잡한 도심 교통에서는 여전히 사람이 즉시 운전을 넘겨받을 수 있어야 하며, 자율주행은 공항 계류장처럼 인력난이 심하고 작업 환경이 열악한 현장부터 도입해야 한다고 밝혔습니다',
+    topic: 'AI 产业与应用',
+    topicEn: 'AI Industry & Applications',
+    topicJa: 'AI 産業と応用',
+    topicKo: 'AI 산업 및 응용',
+    youtubeUrl: 'https://www.youtube.com/watch?v=qhKr9fAYX4E',
+    channel: 'CNA',
+    addedAt: '2026-09-27',
+  },
+  {
+    id: 'v108',
+    title: '关税压力促制造商加快采纳AI',
+    titleEn: 'Tariff fears accelerate AI adoption among Chinese manufacturers',
+    titleJa: '関税圧力が製造業者のAI採用加速を促進',
+    titleKo: '관세 압력, 제조업체의 AI 채택 가속화',
+    speaker: 'Zhou Yuxiang',
+    speakerTitle: '黑湖科技创始人兼首席执行官',
+    speakerTitleEn: 'Founder and CEO of Black Lake Technologies',
+    speakerTitleJa: 'ブラックレイク創業者兼最高経営責任者',
+    speakerTitleKo: 'Heihu Technology 창립자 겸 최고경영자',
+    speakerType: 'industry',
+    date: '2026-09-25',
+    duration: '06:19',
+    summary:
+      '黑湖科技创始人兼CEO周宇翔讨论关税压力如何促使中国制造商加快AI采纳，特别是小企业因成本压力而更快接纳新技术。',
+    summaryEn:
+      'Zhou Yuxiang, founder and CEO of Black Lake Technologies, discusses how tariff fears are prompting Chinese manufacturers, especially smaller businesses, to accelerate AI adoption to reduce costs and improve competitiveness.',
+    summaryJa:
+      'ブラックレイク創業者兼CEO周宇翔氏は、関税圧力が中国の製造業者にAI採用の加速を促している方法について論じており、特に小企業がコスト圧力下で新技術をより迅速に採用していることを指摘しています。',
+    summaryKo:
+      'Heihu Technology 창립자 겸 CEO Zhou Yuxiang은 관세 압력이 중국 제조업체의 AI 채택을 가속화하는 방식, 특히 소규모 기업들이 원가 압력으로 인해 신기술을 더 빠르게 도입하는 현상을 논합니다.',
+    whyItMatters:
+      '黑湖科技 CEO 周宇翔在新加坡 FutureChina 论坛称，关税担忧让中国中小制造商加快追加 AI 预算，出海设厂时还把 AI 代理一起带进当地市场',
+    whyItMattersEn:
+      'At the FutureChina forum in Singapore, BlackLake CEO Zhou Yuxiang says tariff fears pushed Chinese SME manufacturers to raise AI budgets faster, and those setting up overseas are taking his AI agents into local markets',
+    whyItMattersJa:
+      'ブラックレイクのCEO周宇翔氏はシンガポールのFutureChinaフォーラムで、関税への懸念が中国の中小製造業者のAI予算拡大を早めており、海外に拠点を設ける顧客はAIエージェントを現地市場に持ち込んでいると述べた',
+    whyItMattersKo:
+      'Heihu Technology CEO Zhou Yuxiang은 싱가포르 FutureChina 포럼에서 관세 우려로 중국 중소 제조업체들이 AI 예산을 더 빨리 늘리고 있으며, 해외에 공장을 세우는 고객들이 AI 에이전트를 현지 시장으로 가져가고 있다고 말했습니다',
+    topic: 'AI 产业与应用',
+    topicEn: 'AI Industry & Applications',
+    topicJa: 'AI 産業と応用',
+    topicKo: 'AI 산업 및 응용',
+    youtubeUrl: 'https://www.youtube.com/watch?v=B9Yt8KEEpH0',
+    channel: 'CNA',
+    addedAt: '2026-09-27',
+  },
+  {
     id: 'v106',
     title: '新加坡加拿大能源供应链AI合作',
     titleEn: 'Singapore and Canada on Energy, Supply Chain, and AI',
