@@ -145,6 +145,76 @@ export function pickSpeakerTypeLabels(lang: string): Record<string, string> {
 
 export const videos: VideoItem[] = [
   {
+    id: 'v109',
+    title: '新加坡呼吁建立联合国AI安全框架',
+    titleEn: 'Singapore calls for UN AI safety framework',
+    titleJa: 'シンガポール、国連AI安全枠組みの構築を呼び掛け',
+    titleKo: '싱가포르, 유엔 AI 안보 프레임워크 수립 촉구',
+    speaker: 'Vivian Balakrishnan',
+    speakerTitle: '新加坡外交部长',
+    speakerTitleEn: 'Minister for Foreign Affairs, Singapore',
+    speakerTitleJa: 'シンガポール外交部長',
+    speakerTitleKo: '싱가포르 외교부 장관',
+    speakerType: 'government',
+    date: '2026-09-27',
+    duration: '03:25',
+    summary: '新加坡外交部长呼吁制定共同的国际AI规则和保障措施，包括建立联合国AI安全框架公约。',
+    summaryEn:
+      "Singapore's Foreign Affairs Minister calls for common international rules and safeguards on AI, proposing a United Nations framework convention on AI safety.",
+    summaryJa:
+      'シンガポール外務大臣が、国連AI安全枠組み公約の構築を含む、共通の国際AI規則と保障措置の制定を呼びかけています。',
+    summaryKo:
+      '싱가포르 외교부（MFA） 장관이 공동의 국제 AI 규칙과 보장 조치 제정을 촉구하고 있으며, 여기에는 유엔 AI 안보 프레임워크 협약 수립이 포함됩니다.',
+    whyItMatters: '新加坡以中小国身份牵头 UN AI 安全框架公约，试图在美中规则真空期抢占多边治理话语权',
+    whyItMattersEn:
+      'Singapore, as a middle power, leads a UN AI Safety Framework Convention, attempting to seize multilateral governance discourse power amid the US-China governance vacuum',
+    whyItMattersJa:
+      'シンガポールは中小国としての立場から UN AI 安全枠組み条約を主導し、米中の規制空白期間に多国間統治における発言権の確保を狙っている',
+    whyItMattersKo:
+      '싱가포르는 중소국으로서 UN AI 안전 프레임워크 협약을 주도하며, 미국과 중국의 규칙 공백기에 다자 거버넌스 담론권을 선점하려고 시도합니다.',
+    topic: '国际合作与对标',
+    topicEn: 'International Cooperation & Benchmarking',
+    topicJa: '国際協力とベンチマーク',
+    topicKo: '국제 협력과 벤치마크',
+    youtubeUrl: 'https://www.youtube.com/watch?v=_MskYKsnQ9U',
+    channel: 'CNA',
+    addedAt: '2026-09-28',
+  },
+  {
+    id: 'v110',
+    title: '维文·巴拉克里什南在联大谈 AI 安全',
+    titleEn: 'Vivian Balakrishnan on AI Safety at UNGA',
+    titleJa: 'ビビアン・バラクリシュナン、国連総会でAI安全について述べる',
+    titleKo: 'Vivian Balakrishnan, 유엔 총회에서 AI 안보 논의',
+    speaker: 'Vivian Balakrishnan',
+    speakerTitle: '新加坡外交部长',
+    speakerTitleEn: 'Minister for Foreign Affairs, Singapore',
+    speakerTitleJa: 'シンガポール外交部長',
+    speakerTitleKo: '싱가포르 외교부 장관',
+    speakerType: 'government',
+    date: '2026-09-27',
+    duration: '02:49',
+    summary: '新加坡外交部长强调 AI 安全重要性，并提议建立联合国框架公约。',
+    summaryEn:
+      "Singapore's Foreign Minister emphasizes AI safety and proposes a UN framework convention during the General Assembly debate.",
+    summaryJa: 'シンガポール外務大臣がAI安全の重要性を強調し、国連AI安全枠組み公約の構築を提議しています。',
+    summaryKo: '싱가포르 외교부（MFA） 장관은 AI 안보의 중요성을 강조하고 유엔 프레임워크 협약 수립을 제안합니다.',
+    whyItMatters: '新加坡在联大提出建立联合国框架公约的倡议，试图在美中主导的 AI 治理格局中争取中立规则制定者位置',
+    whyItMattersEn:
+      'Singapore proposes to the UN General Assembly an initiative for establishing a UN framework convention, attempting to secure a neutral rule-maker position in the AI governance landscape dominated by the US and China',
+    whyItMattersJa:
+      'シンガポールは国連総会で、国連枠組み条約の設立に向けた提案を提出し、米中が主導する AI 統治構造の中で、中立的なルール制定者としての立場を確保しようと試みている',
+    whyItMattersKo:
+      '싱가포르는 UN 총회에 프레임워크 협약 수립 제안을 제출하여, 미국과 중국이 주도하는 AI 거버넌스 구도에서 중립적 규칙 제정자 위치를 확보하려고 시도합니다.',
+    topic: 'AI 治理与监管',
+    topicEn: 'AI Governance & Regulation',
+    topicJa: 'AI ガバナンスと規制',
+    topicKo: 'AI 거버넌스와 규제',
+    youtubeUrl: 'https://www.youtube.com/watch?v=bRI_Spctt38',
+    channel: 'The Straits Times',
+    addedAt: '2026-09-28',
+  },
+  {
     id: 'v107',
     title: '自动驾驶CEO谈AI谨慎部署',
     titleEn: 'Why this driverless car CEO is cautious about letting AI take the wheel',
