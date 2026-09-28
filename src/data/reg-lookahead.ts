@@ -85,6 +85,28 @@ export interface BillItem {
 
 export const consultations: ConsultationItem[] = [
   {
+    id: 'public-consultation-on-the-digital-infrastructure-bill',
+    agency: 'MDDI',
+    title: '关于《数字基础设施法案》的公众咨询',
+    titleEn: 'Public Consultation on the Digital Infrastructure Bill',
+    titleJa: 'デジタルインフラストラクチャ法案に関する公開協議',
+    titleKo: '디지털 인프라 법안에 대한 공개 협의',
+    summary:
+      '数字发展与信息部和资讯通信媒体发展局就《数字基础设施法案》草案进行了公众咨询，以便为主要数据中心和云服务提供商建立许可证制度。该法案旨在提升新加坡数字基础设施部门的安全、韧性和可持续性标准。',
+    summaryEn:
+      "The Ministry of Digital Development and Information and Infocomm Media Development Authority conducted a public consultation on the draft Digital Infrastructure Bill to establish licensing regimes for major data centers and cloud service providers. The Bill aims to uplift security, resilience, and sustainability standards for Singapore's digital infrastructure sector.",
+    summaryJa:
+      'デジタル開発・情報省とInfocomm Media Development Authority (IMDA)は、主要なデータセンターとクラウドサービスプロバイダーのためのライセンス制度を確立するデジタルインフラストラクチャ法案の草案について公開協議を実施しました。本法案は、シンガポールのデジタルインフラストラクチャ部門のセキュリティ、回復力、および持続可能性の基準を向上させることを目的としています。',
+    summaryKo:
+      'MDDI와 IMDA는 주요 데이터 센터 및 클라우드 서비스 제공자에 대한 라이선싱 체계를 수립하기 위해 초안 디지털 인프라 법안에 대한 공개 협의를 진행했습니다. 이 법안은 싱가포르 디지털 인프라 부문의 보안, 복원력, 지속 가능성 표준을 개선하는 것을 목표로 합니다.',
+    status: 'closed',
+    opensAt: '2026-07-01',
+    deadline: '2026-07-22',
+    statusHistory: [{ status: 'closed', observedAt: '2026-09-28' }],
+    sourceUrl: 'https://www.mddi.gov.sg/newsroom/public-consultation-on-the-digital-infrastructure-bill/',
+    addedAt: '2026-09-28',
+  },
+  {
     id: 'public-consultation-on-digital-infrastructure-bill',
     agency: 'MDDI',
     title: '《数字基础设施法案》公众咨询',
