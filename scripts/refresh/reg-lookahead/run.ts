@@ -23,6 +23,7 @@ import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 import { govFetch } from '../../lib/gov-fetch.ts';
+import { normalizeUrl } from '../../lib/scan-filters.ts';
 import { callLlmJson, ensureClaudeAuthed } from '../../lib/llm.ts';
 import { judgeAiRelevance } from '../../lib/judge-ai-relevance.ts';
 import { translateBatch } from '../../lib/translate.ts';
@@ -33,7 +34,14 @@ import {
   type BillItem,
 } from '../../../src/data/reg-lookahead.ts';
 import { scanConsultations } from './consultations.ts';
-import { parseBillsPage, stageFromDates, slugifyBillTitle, BILL_PREFILTER, type ParsedBill } from './bills.ts';
+import {
+  parseBillsPage,
+  stageFromDates,
+  dropFutureDates,
+  slugifyBillTitle,
+  BILL_PREFILTER,
+  type ParsedBill,
+} from './bills.ts';
 import { appendRecord, updateRecordFields, formatConsultation, formatBill, q } from './emit.ts';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -101,7 +109,8 @@ async function main(): Promise<void> {
   // ── Track 1: consultations ──────────────────────────────────────────
   const existingIds = new Set(existingConsultations.map((c) => c.id));
   for (const [slug] of Object.entries(judged)) existingIds.add(slug);
-  const candidates = await scanConsultations(existingIds);
+  const existingUrls = new Set(existingConsultations.map((c) => normalizeUrl(c.sourceUrl)));
+  const candidates = await scanConsultations(existingIds, existingUrls);
   process.stdout.write(`  consultations: ${candidates.length} new candidate(s)\n`);
   for (const c of candidates.slice(0, flags.limit)) {
     process.stdout.write(`    [${c.agency}] ${c.url}\n`);
@@ -114,7 +123,7 @@ async function main(): Promise<void> {
 
   if (flags.dryRun) {
     for (const c of toClose) process.stdout.write(`  would close: ${c.id} (deadline ${c.deadline})\n`);
-    const parsed = await fetchBills();
+    const parsed = (await fetchBills()).map((b) => dropFutureDates(b, today));
     const knownBills = new Map(existingBills.map((b) => [b.id, b]));
     let newAi = 0;
     let transitions = 0;
@@ -218,7 +227,7 @@ async function main(): Promise<void> {
   let billsAdded = 0;
   let billTransitions = 0;
   try {
-    const parsed = await fetchBills();
+    const parsed = (await fetchBills()).map((b) => dropFutureDates(b, today));
     const knownBills = new Map(existingBills.map((b) => [b.id, b]));
     for (const pb of parsed) {
       if (!BILL_PREFILTER.test(pb.title)) continue;

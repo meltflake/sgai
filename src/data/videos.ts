@@ -165,13 +165,13 @@ export const videos: VideoItem[] = [
       'シンガポール外務大臣が、国連AI安全枠組み公約の構築を含む、共通の国際AI規則と保障措置の制定を呼びかけています。',
     summaryKo:
       '싱가포르 외교부（MFA） 장관이 공동의 국제 AI 규칙과 보장 조치 제정을 촉구하고 있으며, 여기에는 유엔 AI 안보 프레임워크 협약 수립이 포함됩니다.',
-    whyItMatters: '新加坡以中小国身份牵头 UN AI 安全框架公约，试图在美中规则真空期抢占多边治理话语权',
+    whyItMatters: '新加坡在联大提议探讨联合国 AI 保障框架公约，想在美中各行其是时把 AI 规则拉回有普遍成员的联合国',
     whyItMattersEn:
-      'Singapore, as a middle power, leads a UN AI Safety Framework Convention, attempting to seize multilateral governance discourse power amid the US-China governance vacuum',
+      'At the UN General Assembly Singapore floated exploring a UN framework convention on AI safeguards, trying to pull AI rule-making back into the one body with universal membership while the US and China go their own way',
     whyItMattersJa:
-      'シンガポールは中小国としての立場から UN AI 安全枠組み条約を主導し、米中の規制空白期間に多国間統治における発言権の確保を狙っている',
+      'シンガポールは国連総会で AI 保障措置に関する国連枠組み条約の検討を提起し、米中がそれぞれ動くなか、AI のルールづくりを普遍的加盟の国連に引き戻そうとしている',
     whyItMattersKo:
-      '싱가포르는 중소국으로서 UN AI 안전 프레임워크 협약을 주도하며, 미국과 중국의 규칙 공백기에 다자 거버넌스 담론권을 선점하려고 시도합니다.',
+      '싱가포르는 유엔 총회에서 AI 안전장치에 관한 유엔 기본협약 검토를 제안하며, 미국과 중국이 각자 움직이는 가운데 AI 규칙 제정을 보편적 회원국을 가진 유엔으로 되돌리려 합니다.',
     topic: '国际合作与对标',
     topicEn: 'International Cooperation & Benchmarking',
     topicJa: '国際協力とベンチマーク',
@@ -194,18 +194,21 @@ export const videos: VideoItem[] = [
     speakerType: 'government',
     date: '2026-09-27',
     duration: '02:49',
-    summary: '新加坡外交部长强调 AI 安全重要性，并提议建立联合国框架公约。',
+    summary:
+      '新加坡外交部长在联大用“强引擎也要好刹车”作比，主张 AI 部署前严格测试、各国共用一套规则，并由人类保留最终控制权。',
     summaryEn:
-      "Singapore's Foreign Minister emphasizes AI safety and proposes a UN framework convention during the General Assembly debate.",
-    summaryJa: 'シンガポール外務大臣がAI安全の重要性を強調し、国連AI安全枠組み公約の構築を提議しています。',
-    summaryKo: '싱가포르 외교부（MFA） 장관은 AI 안보의 중요성을 강조하고 유엔 프레임워크 협약 수립을 제안합니다.',
-    whyItMatters: '新加坡在联大提出建立联合国框架公约的倡议，试图在美中主导的 AI 治理格局中争取中立规则制定者位置',
+      "At the UN General Assembly, Singapore's Foreign Minister compares AI to a high-performance car that needs good brakes, arguing for rigorous pre-deployment testing, shared global rules and final human control.",
+    summaryJa:
+      'シンガポール外相が国連総会で AI を「良いブレーキが要る高性能車」にたとえ、配備前の厳格なテスト、各国共通のルール、そして人間が最終的な統制権を持つことを訴えています。',
+    summaryKo:
+      '싱가포르 외교부 장관이 유엔 총회에서 AI를 좋은 브레이크가 필요한 고성능 자동차에 비유하며, 배포 전 엄격한 테스트, 각국 공통의 규칙, 인간의 최종 통제를 촉구합니다.',
+    whyItMatters: '新加坡把“人类必须掌握最终控制权”和“缺的是信任而非法律框架”摆上联大，为它的 AI 多边规则主张定调',
     whyItMattersEn:
-      'Singapore proposes to the UN General Assembly an initiative for establishing a UN framework convention, attempting to secure a neutral rule-maker position in the AI governance landscape dominated by the US and China',
+      'Singapore puts "humans must stay in control" and "the scarce resource is trust, not legal architecture" before the General Assembly, setting the tone for its case for multilateral AI rules',
     whyItMattersJa:
-      'シンガポールは国連総会で、国連枠組み条約の設立に向けた提案を提出し、米中が主導する AI 統治構造の中で、中立的なルール制定者としての立場を確保しようと試みている',
+      'シンガポールは「最終的な統制は人間が握るべき」「足りないのは法的枠組みではなく信頼」という論点を国連総会に持ち込み、多国間 AI ルールづくりへの主張の基調を定めた',
     whyItMattersKo:
-      '싱가포르는 UN 총회에 프레임워크 협약 수립 제안을 제출하여, 미국과 중국이 주도하는 AI 거버넌스 구도에서 중립적 규칙 제정자 위치를 확보하려고 시도합니다.',
+      '싱가포르는 "인간이 최종 통제권을 가져야 한다", "부족한 것은 법적 틀이 아니라 신뢰"라는 논점을 유엔 총회에 올려, 다자 AI 규칙에 대한 자국 주장의 기조를 세웠습니다.',
     topic: 'AI 治理与监管',
     topicEn: 'AI Governance & Regulation',
     topicJa: 'AI ガバナンスと規制',

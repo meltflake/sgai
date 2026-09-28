@@ -50,7 +50,19 @@ export interface ConsultationCandidate {
   slug: string;
 }
 
-export async function scanConsultations(existingIds: Set<string>): Promise<ConsultationCandidate[]> {
+/** Known by slug id, or by sourceUrl: a record can keep the id of the
+ *  call-for-views page after its sourceUrl moves to the outcome page
+ *  (DIB, re-added as "new" on 2026-09-28). `existingUrls` holds
+ *  normalizeUrl() forms. */
+export function isKnownConsultation(url: string, existingIds: Set<string>, existingUrls: Set<string>): boolean {
+  const slug = slugFromUrl(url);
+  return (slug !== null && existingIds.has(slug)) || existingUrls.has(normalizeUrl(url));
+}
+
+export async function scanConsultations(
+  existingIds: Set<string>,
+  existingUrls: Set<string>
+): Promise<ConsultationCandidate[]> {
   const out: ConsultationCandidate[] = [];
   const seen = new Set<string>();
   for (const source of CONSULTATION_SOURCES) {
@@ -61,7 +73,7 @@ export async function scanConsultations(existingIds: Set<string>): Promise<Consu
         if (!CONSULTATION_PREFILTER.test(url)) continue;
         if (isGenericOrLanding(url)) continue;
         const slug = slugFromUrl(url);
-        if (!slug || existingIds.has(slug) || seen.has(slug)) continue;
+        if (!slug || isKnownConsultation(url, existingIds, existingUrls) || seen.has(slug)) continue;
         seen.add(slug);
         out.push({ agency: source.agency, url: normalizeTrailingSlash(url), slug });
       }

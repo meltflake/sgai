@@ -82,6 +82,16 @@ export function stageFromDates(b: ParsedBill): BillStage {
   return 'introduced';
 }
 
+/** The bills page lists a Second Reading date as soon as the sitting is
+ *  scheduled (DIB showed 06.10.2026 on 2026-09-28). Only dates on or
+ *  before `today` count as observed. */
+export function dropFutureDates(b: ParsedBill, today: string): ParsedBill {
+  const seen = { ...b };
+  if (seen.secondReadingAt && seen.secondReadingAt > today) delete seen.secondReadingAt;
+  if (seen.passedAt && seen.passedAt > today) delete seen.passedAt;
+  return seen;
+}
+
 /** Keyword prefilter before spending a judge call — AI/digital nexus only.
  *  Broad on purpose; the judge is the real gate. */
 export const BILL_PREFILTER =

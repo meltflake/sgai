@@ -9,7 +9,7 @@ import { readFileSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-import { parseBillsPage, stageFromDates, slugifyBillTitle, BILL_PREFILTER } from '../bills.ts';
+import { parseBillsPage, stageFromDates, dropFutureDates, slugifyBillTitle, BILL_PREFILTER } from '../bills.ts';
 
 const fixture = readFileSync(
   join(dirname(fileURLToPath(import.meta.url)), 'fixtures', 'bills-introduced.html'),
@@ -47,4 +47,14 @@ test('prefilter admits digital/AI bills, slugify is url-safe', () => {
     slugifyBillTitle("Info-communications Media Development Authority (Amendment) Bill"),
     'info-communications-media-development-authority-amendment-bill'
   );
+});
+
+test('dropFutureDates ignores scheduled readings that have not happened yet', () => {
+  // Live page 2026-09-28: DIB lists Second Reading 06.10.2026 ahead of the sitting.
+  const pb = { title: 'Digital Infrastructure Bill', introducedAt: '2026-09-08', secondReadingAt: '2026-10-06' };
+  const seen = dropFutureDates(pb, '2026-09-28');
+  assert.equal(seen.secondReadingAt, undefined);
+  assert.equal(seen.introducedAt, '2026-09-08');
+  assert.equal(stageFromDates(seen), 'introduced');
+  assert.equal(stageFromDates(dropFutureDates(pb, '2026-10-06')), 'second-reading');
 });
