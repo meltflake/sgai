@@ -12812,6 +12812,70 @@ export const videoTranscripts: Record<string, VideoTranscript> = {
     translationSource: 'claude',
     translationModel: 'haiku',
   },
+  v109: {
+    videoId: 'v109',
+    youtubeId: '_MskYKsnQ9U',
+    captionLanguage: 'en',
+    fetchedAt: '2026-09-28',
+    source: 'youtube-subtitles',
+    paragraphs: [
+      '新加坡正发出紧急呼吁，要求制定关于人工智能的共同国际规则和防护措施，包括提议建立联合国人工智能安全框架公约。外交部长维文在纽约联合国大会上也为多边主义辩护，指出当前世界由于战争、大国竞争和气候变化而更加分裂。迪维亚·赛提继续报道。>> 「精灵已经从瓶子里逃出来了。」>> 新加坡外交部长维文这样描述人工智能的能力和风险。他表示，虽然现在已经太晚了，无法呼吁停止，但世界需要现在就为合作奠定基础。',
+      '这意味着制定规则和防护措施，以应对人工智能风险，从自主系统失控到恶意行为者利用人工智能开发生物武器。>> 「联合国在建立共识方面发挥着至关重要的作用，因为这是唯一具有普遍成员资格的顶级国际机构。我们必须探索所有选择，包括建立联合国人工智能防护框架公约的想法。」>> 在纽约联合国大会上新加坡的国家声明中，维文博士还强调多边主义在面对持续的战争、加剧的气候变化和供应链中断时仍然特别重要，重申新加坡要求各国维护国际法。>> 「霍尔木兹海峡被关闭了。我们必须集体拒绝这一切。」',
+      '「通过用于国际航行的海峡的过境权是我们所有人的权利。这不是受收费和过路费限制的特权。而且（清了清嗓子）这是习惯国际法，意味着它对所有国家都具有约束力，无论它们是否认为自己是《联合国海洋法公约》(UNCLOS)的当事人。」>> 关于改革多边机构，包括全球贸易体系，他表示各国应该能够在灵活联盟中工作，同时对他人保持开放态度。在向当地媒体发表新加坡声明后，维文博士表示他很高兴中美两国总统在华盛顿会面，并将当前局势描述为休战。',
+      '>> 「从长期来看，他们之所以必须在总统级和高级官员级继续会面，原因是他们必须逐步、一点一点地建立战略信任。有了这种信任，我们希望他们能够处理存在于你知道的、处于他们关系核心的核心难题。」>> 在大国竞争中，新加坡明年将接任东盟主席国，并将专注于整合集团和拓展伙伴关系。维文博士表示，东盟仍然具有召集力量来塑造东南亚的未来。',
+    ],
+    paragraphsEn: [
+      "Singapore is making an urgent call for common international rules and safeguards on artificial intelligence, including a proposal of a United Nations framework convention on AI safety. At the UN General Assembly in New York, Foreign Affairs Minister Vivian Balakrishnan also defended multilateralism in a more fragmented world marked by wars, great power competition, and climate change. And Divya Saiti has more. >> The genie is already out of the bottle. >> That's how Singapore Foreign Affairs Minister Vivian Balakrishnan described the capabilities and risks of artificial intelligence. Even as it's too late to call for a halt, he says the world needs to lay the ground for cooperation now.",
+      "That means creating rules and safeguards addressing AI risks ranging from autonomous systems going out of control to rogue actors using AI to develop bio-weapons. >> The United Nations has a critical role to play in building convergence because this is the only apex international institution with universal membership. We must explore all options, including the idea of a UN framework convention on AI safeguards. >> In Singapore's national statement at the UN General Assembly in New York, Dr. Balakrishnan also highlighted how multilateralism remained particularly important in the face of ongoing wars, worsening climate change, and supply chain disruptions, reiterating Singapore's call for countries to uphold international law. >> The Strait of Hormuz is closed. We have to collectively reject this.",
+      "Transit passage through straits used for international navigation is a right for all of us. It's not a privilege subject to fees and tolls. And [clears throat] this is customary international law, which means it is binding on all states whether or not they consider themselves parties to UNCLOS. >> On reforms of multilateral institutions, including the global trading system, he says countries should be able to work in flexible coalitions while keeping the door open to others. Speaking to local media after delivering Singapore's statement, Dr. Balakrishnan says he's glad the Chinese and US presidents met in Washington and describes the current situation as a truce.",
+      ">> In the longer term, the reason why they have to keep meeting at the presidential level and at the senior officials level is slowly, bit by bit, they have to build strategic trust. And with that trust, then we hope that they can get to grips with the core thorny issues that lie between you know, that that lie at the crux of their relationship. >> And in the midst of superpower rivalry, Singapore takes over the ASEAN chairmanship next year and will focus on integrating the block and broadening partnerships. Dr. Balakrishnan says ASEAN still has convening power to shape Southeast Asia's future.",
+    ],
+    paragraphsKo: [
+      '싱가포르는 인공지능에 관한 공동의 국제 규칙과 보호 조치 수립을 요구하는 긴급 촉구를 발하고 있으며, 여기에는 유엔 인공지능 안전 프레임워크 협약 설립 제안이 포함됩니다. 외교부（MFA） 장관 Vivian Balakrishnan은 뉴욕의 유엔 총회에서 다자주의를 옹호하며, 현재 세계가 전쟁, 강대국 경쟁, 그리고 기후 변화로 인해 더욱 분열되고 있음을 지적했습니다. Divya Saiti가 계속 보도합니다. >> 「정령이 병에서 빠져나왔다.」>> 싱가포르 외교부（MFA） 장관 Vivian Balakrishnan은 인공지능의 능력과 위험을 이렇게 설명했습니다. 그는 이제는 멈추라고 호소하기에는 너무 늦었지만, 세계가 지금 협력의 기초를 마련해야 한다고 표현했습니다.',
+      '이는 자율 시스템의 통제 불능부터 악의적 행위자들이 인공지능을 이용해 생물 무기를 개발하는 것까지, 인공지능 위험에 대응하기 위한 규칙과 보호 조치를 마련하는 것을 의미합니다. >> 「유엔은 공감대 형성에 있어 중추적 역할을 수행하고 있으며, 이는 보편적 회원 자격을 가진 유일한 최고 국제 기구이기 때문입니다. 우리는 유엔 인공지능 안전 프레임워크 협약 설립의 아이디어를 포함하여 모든 선택지를 탐색해야 합니다.」>> 뉴욕의 유엔 총회에서 싱가포르의 국가 성명에서, Vivian Balakrishnan 박사는 지속적인 전쟁, 악화되는 기후 변화, 그리고 공급망 중단에 직면하여 다자주의가 여전히 특히 중요하다고 강조했으며, 싱가포르가 모든 국가가 국제법을 준수할 것을 요구한다고 재확인했습니다. >> 「호르무즈 해협이 폐쇄되었습니다. 우리는 이 모든 것을 집단적으로 거부해야 합니다.」',
+      '「국제 항행을 위한 해협을 통한 통항권은 우리 모두의 권리입니다. 이것은 요금과 통행료로 제한되는 특권이 아닙니다. 그리고 (목을 가다듬으며) 이는 관습 국제법이며, 모든 국가가 유엔해양법협약(UNCLOS)의 당사자라고 생각하든 안 하든 모든 국가에 대해 구속력을 가집니다.」>> 다자 기구 개혁, 특히 글로벌 무역 체계에 관해, 그는 국가들이 유연한 제휴 내에서 활동할 수 있어야 하면서도 타국에 대해 개방적일 수 있어야 한다고 말했습니다. 싱가포르 성명을 현지 매체에 발표한 후, Vivian Balakrishnan 박사는 미국과 중국의 두 대통령이 워싱턴에서 만난 것을 긍정적으로 생각한다고 표현했으며, 현재 상황을 휴전으로 묘사했습니다.',
+      '>> 「장기적 관점에서, 그들이 대통령급 및 고위 관료급에서 계속 만나야 하는 이유는 그들이 단계적으로, 천천히 전략적 신뢰를 구축해야 하기 때문입니다. 이러한 신뢰가 있으면, 당신이 알고 있듯이, 그들의 관계 핵심에 있는 핵심 현안들을 다룰 수 있기를 바랍니다.」>> 대국 경쟁 속에서 싱가포르는 내년에 동남아시아국가연합(ASEAN) 의장국직을 인수할 것이며, 연합의 통합과 파트너십 확대에 중점을 둘 것입니다. Vivian Balakrishnan 박사는 동남아시아국가연합(ASEAN)이 여전히 동남아시아의 미래를 형성할 수 있는 소집 능력을 가지고 있다고 표현했습니다.',
+    ],
+    paragraphsJa: [
+      'シンガポールはAIに関する共通の国際的ルールと防護措置の制定を求める緊急の呼びかけを発出しており、国連AI安全枠組み条約の設置提案を含んでいます。外務大臣のビビアン・バラクリシュナンはニューヨークの国連総会で多国間主義を擁護し、現在の世界が戦争、大国間競争、気候変動によってさらに分裂していることを指摘しました。ディヴィア・セッティが報道を続けています。>> 「精霊は既にボトルから逃げ出してしまった。」>> シンガポール外相のビビアン・バラクリシュナンはこのようにAIの能力とリスクを説明しています。彼は、現在では既に停止を呼びかけることは遅すぎるが、世界は今すぐに協力のための基礎を築く必要があると述べています。',
+      'これはAIのリスクに対処するためのルールと防護措置の制定を意味し、自律システムの暴走から、悪意のある行為者がAIを使って生物兵器を開発することに至るまでをカバーしています。>> 「国連は合意形成において極めて重要な役割を果たしており、これは普遍的加盟資格を有する唯一の最高級国際機関です。すべての選択肢を探索する必要があり、国連AI防護枠組み条約を設立する構想も含めて検討すべきです。」>> ニューヨークの国連総会でのシンガポール国家声明の中で、ビビアン・バラクリシュナン博士はさらに、継続する戦争、悪化する気候変動、サプライチェーン混乱に直面する際には、多国間主義が依然として特に重要であることを強調し、各国が国際法を維持することを求める必要があることを改めて述べました。>> 「ホルムズ海峡は閉鎖されました。われわれはこのすべてを集団で拒否する必要があります。」',
+      '「国際航行に使用される海峡の通峡権は、われわれすべての権利です。これは通行料や通航料によって制限される特権ではありません。そして（喉を清めた）これはカスタマリー国際法であり、すべての国家に対して拘束力を有しており、『国連海洋法条約』(UNCLOS)の当事者であるかどうかにかかわらず、すべての国に対して適用されます。」>> 多国間機関の改革、グローバル貿易体系を含むその改革について、彼は各国が柔軟な連合の枠組みで協力できるべきであり、同時に他者に対して開かれた態度を保つべきであると述べました。シンガポール声明を地元メディアに発表した後、ビビアン・バラクリシュナン博士は、中国とアメリカの大統領がワシントンで会合したことに喜びを示し、現在の状況を休戦として説明しました。',
+      '>> 「長期的に見ると、彼らが大統領レベルおよび高級官僚レベルで継続的に会合し続ける必要がある理由は、段階的に、少しずつ戦略的信頼を構築する必要があるからです。このような信頼があれば、われわれは彼らがご存じの通り関係の中核に存在する中核的な難題に対処できることを望んでいます。」>> 大国間競争の中で、シンガポールは来年ASEAN議長国を引き継ぎ、グループの統合とパートナーシップの拡大に専念する予定です。ビビアン・バラクリシュナン博士は、ASEANは依然として東南アジアの未来を形作る力を有していると述べました。',
+    ],
+    translatedAt: '2026-09-28',
+    translationSource: 'claude',
+    translationModel: 'haiku',
+  },
+  v110: {
+    videoId: 'v110',
+    youtubeId: 'bRI_Spctt38',
+    captionLanguage: 'en',
+    fetchedAt: '2026-09-28',
+    source: 'youtube-subtitles',
+    paragraphs: [
+      '你想让核按钮掌握在人类还是人工智能手中？想想这个问题。人工智能提供了非凡的潜力，但其能力的发展速度远超我们对其风险的认识。但是，阁下们，魔鬼已经逃出了瓶子。现在要求停止已经太晚了，尤其是考虑到超级大国之间的竞争以及已拥有前沿模型公司的巨大经济激励。但让我用一个关于驾驶高性能汽车的比喻。要快速安全地驾驶高性能汽车，你需要强大的发动机。但同样，你也需要良好的制动器。特别是如果你要超越自己的社区或跨越边界，你需要有效的共同规则、交通信号灯、保险、行为规范和安全带。引擎就是创新。',
+      '但话说回来，每个强大的引擎都需要良好的制动器——保障措施。随着人工智能能力的进步，我们的保障措施必须紧跟步伐。我们需要在部署前进行严格的测试和评估。我们需要对自动系统的功能设定明确的限制，并在其行为与我们的意图不符时建立干预机制。由于人工智能的风险不会局限于国界，这意味着我们也需要制定一套规则来形成共同的全球理解，说明我们将如何集体应对这一挑战。就像我们所有人对交通信号灯的理解方式是一样的，无论我们是在纽约、北京、莫斯科还是新加坡。最重要的是，人类必须最终保持控制权和问责。让我给你们讲一个极端的思想实验。',
+      '你想让核按钮掌握在人类还是人工智能手中？想想这个问题。当今稀缺的资源不是法律框架或技术。而是信任。信任风险将被披露，测试将是全面和可信的，合作将是包容性的，而不是被用来获得单边优势。',
+    ],
+    paragraphsEn: [
+      "Do you want the nuclear button to be in the hands of a human being or an AI? Think about that. AI offers what extraordinary potential, but its capability is advancing faster than our appreciation of its risks. But excellencies, the genie is already out of the bottle. It is too late to call for a halt, especially given the superpower rivalry and the huge financial incentives for companies who already have frontier models. But let me offer a metaphor of driving a high-performance car. To drive a high-performance car quickly and safely, you need a powerful engine. But equally, you need good brakes. And especially if you're going to go beyond your neighborhood or cross boundaries, you need effective shared rules, traffic lights, insurance, norms of behavior, seatbelts. The engine is innovation.",
+      "But having said that, every powerful engine needs good brakes, safeguards. As the capabilities of AI advance, our safeguards must keep pace. We need rigorous testing and evaluation before deployment. We need clear limits on what autonomous systems can do and mechanisms to intervene when they behave in ways we do not intend. And since the risks from AI do not remain confined behind borders, it means we also need rules of the road that will form a shared global understanding of how we will collectively confront this challenge. Just as all of us instinctively understand traffic lights the same way, whether we're here in New York or in Beijing, Moscow, or Singapore. Most importantly, human beings must ultimately remain in control and accountable. Let me give you an extreme thought experiment.",
+      'Do you want the nuclear button to be in the hands of a human being or an AI? Think about that. The scarce resource today is not legal architecture or technology. It is trust. Trust that the risk will be disclosed, that testing will be comprehensive and credible, and that cooperation will be inclusive and not be used to secure unilateral advantage.',
+    ],
+    paragraphsKo: [
+      '당신은 핵 버튼을 인간의 손에 두기를 원합니까, 아니면 인공지능의 손에 두기를 원합니까? 이 질문을 생각해 보십시오. 인공지능은 비상한 잠재력을 제공하지만, 그 능력의 발전 속도는 우리가 그 위험을 인식하는 속도를 훨씬 초월합니다. 하지만 여러분, 악마는 이미 병에서 나왔습니다. 지금 멈춤을 요구하기에는 너무 늦었습니다. 특히 초강대국들 간의 경쟁과 첨단 모델 회사를 이미 보유한 거대한 경제적 인센티브를 고려할 때 더욱 그렇습니다. 하지만 고성능 자동차 운전에 관한 비유를 들어보겠습니다. 고성능 자동차를 빠르고 안전하게 운전하려면 강력한 엔진이 필요합니다. 그러나 마찬가지로 좋은 브레이크도 필요합니다. 특히 자신의 공동체를 넘어서거나 국경을 넘을 때는 효과적인 공동 규칙, 신호등, 보험, 행동 규범 및 안전띠가 필요합니다. 엔진은 혁신입니다.',
+      '하지만 다시 말해서, 모든 강력한 엔진은 좋은 브레이크가 필요합니다——보장 조치입니다. 인공지능 능력의 진전에 따라 우리의 보장 조치도 발맞춰야 합니다. 우리는 배포 전에 엄격한 테스트와 평가를 수행해야 합니다. 우리는 자동화 시스템의 기능에 명확한 제약을 설정하고, 그 행동이 우리의 의도와 부합하지 않을 때 개입 메커니즘을 구축해야 합니다. 인공지능의 위험은 국경으로 국한되지 않을 것이므로, 우리는 공동의 글로벌 이해를 형성하고 이 도전에 집단적으로 어떻게 대응할 것인지를 명시하기 위한 규칙을 제정해야 합니다. 마치 우리가 뉴욕, 베이징, 모스크바, 싱가포르 어디에 있든 교통신호등을 같은 방식으로 이해하는 것처럼 말입니다. 가장 중요한 점은 인류가 궁극적으로 통제권과 책임을 유지해야 한다는 것입니다. 제가 극단적인 사고 실험 하나를 들어보겠습니다.',
+      '당신은 핵 버튼을 인간의 손에 두기를 원합니까, 아니면 인공지능의 손에 두기를 원합니까? 이 질문을 생각해 보십시오. 오늘날 부족한 자원은 법적 프레임워크나 기술이 아닙니다. 그것은 신뢰입니다. 신뢰는 위험이 공개되고, 테스트가 포괄적이고 신뢰할 수 있으며, 협력이 포용적이고 일방적 이점을 얻기 위해 사용되지 않는다는 것을 의미합니다.',
+    ],
+    paragraphsJa: [
+      'あなたは核のボタンを人類とAIのどちらが管理すべきかについて考えてください。この問題について深く考えてみてください。AIは非凡なポテンシャルをもたらしていますが、その能力の発展速度は、その危険性についての我々の認識をはるかに上回っています。しかし皆様、魔神はすでにボトルから出てしまいました。今、停止を要求するには遅すぎます。特に、超大国間の競争と、最先端モデル企業をすでに保有している側の巨大な経済的インセンティブを考えると、なおさらです。では、高性能自動車の運転についての比喩を使わせてください。高性能自動車を迅速かつ安全に運転するには、強力なエンジンが必要です。しかし同様に、優れたブレーキも必要です。特に、自分たちのコミュニティを超えたり、境界を越えたりする場合は、効果的な共通ルール、信号機、保険、行為規範、シートベルトが必要です。エンジンはイノベーションなのです。',
+      'しかし考えてみれば、あらゆる強力なエンジンには優れたブレーキが必要です——保障措置です。AI能力の進歩に伴い、我々の保障措置もそのペースについていく必要があります。我々は配置前に厳格なテストと評価を実施する必要があります。我々は自動システムの機能に明確な制限を設定し、その動作が我々の意図と合致しない場合には干渉メカニズムを確立する必要があります。AIのリスクは国境に限定されないため、これは我々が、いかに集団的にこの課題に対処するかについて、共通のグローバルな理解を形成するための一組のルールを制定する必要があることを意味します。これは、我々がニューヨーク、北京、モスクワ、またはシンガポールにいようとも、交通信号についての理解が皆同じであるのと同じです。最も重要なのは、人類は最終的に統制権と説明責任を維持する必要があります。極端な思想実験についてお話しさせてください。',
+      'あなたは核のボタンを人類とAIのどちらが管理すべきかについて考えてください。この問題について深く考えてみてください。現在の希少資源は法的枠組みでも技術でもありません。むしろ信頼です。信頼とは——リスクが開示され、テストが包括的で信頼でき、協力が包括的であり、一方的な優位を獲得するために使用されないことです。',
+    ],
+    translatedAt: '2026-09-28',
+    translationSource: 'claude',
+    translationModel: 'haiku',
+  },
 };
 
 export function getVideoTranscript(videoId: string): VideoTranscript | undefined {

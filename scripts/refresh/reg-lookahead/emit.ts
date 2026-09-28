@@ -66,14 +66,26 @@ export function updateRecordFields(
     }
   }
 
-  // Append to history array: `statusHistory: [ ... ],` — insert before its
-  // closing bracket.
-  const histRe = new RegExp(`(${historyField}: \\[[\\s\\S]*?)(\\n\\s*\\],)`);
-  if (!histRe.test(block)) throw new Error(`${historyField} not found on '${id}'`);
-  block = block.replace(histRe, `$1\n      ${historyEntry}$2`);
+  if (!block.includes(`${historyField}: [`)) throw new Error(`${historyField} not found on '${id}'`);
+  block = appendHistoryEntry(block, historyField, historyEntry);
 
   const updated = original.slice(0, blockStart) + block + original.slice(blockEnd + 5);
   writeGuarded(original, updated);
+}
+
+/** Append `entry` (a `{ ... },` literal) to the record block's history
+ *  array. Prettier keeps a one-entry array on one line
+ *  (`stageHistory: [{ ... }],`) and splits longer ones, so both forms must
+ *  work; writeGuarded re-runs prettier on the result. Entries hold no
+ *  nested brackets, so the first `]` after the field closes the array. */
+export function appendHistoryEntry(block: string, historyField: string, entry: string): string {
+  const open = `${historyField}: [`;
+  const start = block.indexOf(open);
+  const end = start === -1 ? -1 : block.indexOf(']', start);
+  if (end === -1) throw new Error(`${historyField} not found`);
+  const inner = block.slice(start + open.length, end).trim().replace(/,$/, '');
+  const items = inner ? `${inner},\n      ${entry}` : entry;
+  return `${block.slice(0, start)}${open}\n      ${items}\n    ${block.slice(end)}`;
 }
 
 function writeGuarded(original: string, updated: string): void {

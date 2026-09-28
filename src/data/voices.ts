@@ -3041,4 +3041,46 @@ export const mddiSpeeches: MddiSpeech[] = [
     addedAt: '2026-09-14',
     ministry: 'MAS',
   },
+  {
+    titleEn:
+      'Acting Minister for Manpower and Senior Minister of State for Digital Development and Information Ms Jasmin Lau’s Opening Address at the Official Launch of SG AI Xchange',
+    title: '代理人力部长兼数字发展与信息部高级政务部长刘洁敏在 SG AI Xchange 启动仪式上的开幕致辞',
+    titleJa: '人材開発相代行・MDDI 上級国務相 Jasmin Lau による SG AI Xchange 公式発足式での開会挨拶',
+    titleKo: 'Jasmin Lau 인력부 장관 대행 겸 디지털개발정보부 선임 국무장관의 SG AI Xchange 공식 출범식 개회사',
+    speaker: 'Jasmin Lau',
+    speakerTitle: '代理人力部长兼数字发展与信息部高级政务部长',
+    speakerTitleJa: '人材開発相代行・MDDI 上級国務相',
+    speakerTitleEn: 'Acting Minister for Manpower and Senior Minister of State, MDDI',
+    speakerTitleKo: '인력부 장관 대행 겸 MDDI 선임 국무장관',
+    date: '2026-09-17',
+    url: 'https://www.mddi.gov.sg/newsroom/acting-minister-for-manpower-and-senior-minister-of-state-for-digital-development-and-information-ms-jasmin-lau-opening-address-at-the-official-launch-of-sg-ai-xchange/',
+    eventEn: 'Official Launch of SG AI Xchange',
+    event: 'SG AI Xchange 启动仪式',
+    eventJa: 'SG AI Xchange 公式発足式',
+    eventKo: 'SG AI Xchange 공식 출범식',
+    addedAt: '2026-09-28',
+  },
+  {
+    titleEn:
+      '"Building the Financial System of the Future: Trusted, Connected and Resilient" – Special Address by Mr Chia Der Jiun, Managing Director, Monetary Authority of Singapore, at the Global FinTech Fest 2026 on 11 September 2026',
+    title:
+      '「构建未来的金融体系：可信、互联、有韧性」——新加坡金融管理局管理总监 Chia Der Jiun 先生在 Global FinTech Fest 2026 上的特别演讲，2026年9月11日',
+    titleJa:
+      '「将来の金融システムの構築：信頼性、接続性、回復力」— MAS マネージング・ディレクター Chia Der Jiun による特別演説、Global FinTech Fest 2026（2026年9月11日）にて',
+    titleKo:
+      '「미래의 금융 체계 구축: 신뢰할 수 있고 연결되며 회복력 있는」– 싱가포르 통화청(MAS) 관리이사 Chia Der Jiun의 Global FinTech Fest 2026 특별 연설 (2026년 9월 11일)',
+    speaker: 'Chia Der Jiun',
+    speakerTitle: '常务董事，新加坡金融管理局',
+    speakerTitleJa: 'Monetary Authority of Singapore マネージング・ディレクター',
+    speakerTitleEn: 'Managing Director, Monetary Authority of Singapore',
+    speakerTitleKo: '싱가포르 통화청 관리 이사',
+    date: '2026-09-11',
+    url: 'https://www.mas.gov.sg/news/speeches/2026/building-the-financial-system-of-the-future---trusted-connected-and-resilient-by-md-for-gff-2026/',
+    eventEn: 'Global FinTech Fest 2026 on 11 September',
+    event: '全球金融科技节2026年9月11日',
+    eventJa: '2026 年 9 月 11 日の Global FinTech Fest 2026',
+    eventKo: '2026 글로벌 핀테크 페스트, 9월 11일',
+    addedAt: '2026-09-28',
+    ministry: 'MAS',
+  },
 ];

@@ -145,6 +145,79 @@ export function pickSpeakerTypeLabels(lang: string): Record<string, string> {
 
 export const videos: VideoItem[] = [
   {
+    id: 'v109',
+    title: '新加坡呼吁建立联合国AI安全框架',
+    titleEn: 'Singapore calls for UN AI safety framework',
+    titleJa: 'シンガポール、国連AI安全枠組みの構築を呼び掛け',
+    titleKo: '싱가포르, 유엔 AI 안보 프레임워크 수립 촉구',
+    speaker: 'Vivian Balakrishnan',
+    speakerTitle: '新加坡外交部长',
+    speakerTitleEn: 'Minister for Foreign Affairs, Singapore',
+    speakerTitleJa: 'シンガポール外交部長',
+    speakerTitleKo: '싱가포르 외교부 장관',
+    speakerType: 'government',
+    date: '2026-09-27',
+    duration: '03:25',
+    summary: '新加坡外交部长呼吁制定共同的国际AI规则和保障措施，包括建立联合国AI安全框架公约。',
+    summaryEn:
+      "Singapore's Foreign Affairs Minister calls for common international rules and safeguards on AI, proposing a United Nations framework convention on AI safety.",
+    summaryJa:
+      'シンガポール外務大臣が、国連AI安全枠組み公約の構築を含む、共通の国際AI規則と保障措置の制定を呼びかけています。',
+    summaryKo:
+      '싱가포르 외교부（MFA） 장관이 공동의 국제 AI 규칙과 보장 조치 제정을 촉구하고 있으며, 여기에는 유엔 AI 안보 프레임워크 협약 수립이 포함됩니다.',
+    whyItMatters: '新加坡在联大提议探讨联合国 AI 保障框架公约，想在美中各行其是时把 AI 规则拉回有普遍成员的联合国',
+    whyItMattersEn:
+      'At the UN General Assembly Singapore floated exploring a UN framework convention on AI safeguards, trying to pull AI rule-making back into the one body with universal membership while the US and China go their own way',
+    whyItMattersJa:
+      'シンガポールは国連総会で AI 保障措置に関する国連枠組み条約の検討を提起し、米中がそれぞれ動くなか、AI のルールづくりを普遍的加盟の国連に引き戻そうとしている',
+    whyItMattersKo:
+      '싱가포르는 유엔 총회에서 AI 안전장치에 관한 유엔 기본협약 검토를 제안하며, 미국과 중국이 각자 움직이는 가운데 AI 규칙 제정을 보편적 회원국을 가진 유엔으로 되돌리려 합니다.',
+    topic: '国际合作与对标',
+    topicEn: 'International Cooperation & Benchmarking',
+    topicJa: '国際協力とベンチマーク',
+    topicKo: '국제 협력과 벤치마크',
+    youtubeUrl: 'https://www.youtube.com/watch?v=_MskYKsnQ9U',
+    channel: 'CNA',
+    addedAt: '2026-09-28',
+  },
+  {
+    id: 'v110',
+    title: '维文·巴拉克里什南在联大谈 AI 安全',
+    titleEn: 'Vivian Balakrishnan on AI Safety at UNGA',
+    titleJa: 'ビビアン・バラクリシュナン、国連総会でAI安全について述べる',
+    titleKo: 'Vivian Balakrishnan, 유엔 총회에서 AI 안보 논의',
+    speaker: 'Vivian Balakrishnan',
+    speakerTitle: '新加坡外交部长',
+    speakerTitleEn: 'Minister for Foreign Affairs, Singapore',
+    speakerTitleJa: 'シンガポール外交部長',
+    speakerTitleKo: '싱가포르 외교부 장관',
+    speakerType: 'government',
+    date: '2026-09-27',
+    duration: '02:49',
+    summary:
+      '新加坡外交部长在联大用“强引擎也要好刹车”作比，主张 AI 部署前严格测试、各国共用一套规则，并由人类保留最终控制权。',
+    summaryEn:
+      "At the UN General Assembly, Singapore's Foreign Minister compares AI to a high-performance car that needs good brakes, arguing for rigorous pre-deployment testing, shared global rules and final human control.",
+    summaryJa:
+      'シンガポール外相が国連総会で AI を「良いブレーキが要る高性能車」にたとえ、配備前の厳格なテスト、各国共通のルール、そして人間が最終的な統制権を持つことを訴えています。',
+    summaryKo:
+      '싱가포르 외교부 장관이 유엔 총회에서 AI를 좋은 브레이크가 필요한 고성능 자동차에 비유하며, 배포 전 엄격한 테스트, 각국 공통의 규칙, 인간의 최종 통제를 촉구합니다.',
+    whyItMatters: '新加坡把“人类必须掌握最终控制权”和“缺的是信任而非法律框架”摆上联大，为它的 AI 多边规则主张定调',
+    whyItMattersEn:
+      'Singapore puts "humans must stay in control" and "the scarce resource is trust, not legal architecture" before the General Assembly, setting the tone for its case for multilateral AI rules',
+    whyItMattersJa:
+      'シンガポールは「最終的な統制は人間が握るべき」「足りないのは法的枠組みではなく信頼」という論点を国連総会に持ち込み、多国間 AI ルールづくりへの主張の基調を定めた',
+    whyItMattersKo:
+      '싱가포르는 "인간이 최종 통제권을 가져야 한다", "부족한 것은 법적 틀이 아니라 신뢰"라는 논점을 유엔 총회에 올려, 다자 AI 규칙에 대한 자국 주장의 기조를 세웠습니다.',
+    topic: 'AI 治理与监管',
+    topicEn: 'AI Governance & Regulation',
+    topicJa: 'AI ガバナンスと規制',
+    topicKo: 'AI 거버넌스와 규제',
+    youtubeUrl: 'https://www.youtube.com/watch?v=bRI_Spctt38',
+    channel: 'The Straits Times',
+    addedAt: '2026-09-28',
+  },
+  {
     id: 'v107',
     title: '自动驾驶CEO谈AI谨慎部署',
     titleEn: 'Why this driverless car CEO is cautious about letting AI take the wheel',
