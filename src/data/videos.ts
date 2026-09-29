@@ -145,6 +145,40 @@ export function pickSpeakerTypeLabels(lang: string): Record<string, string> {
 
 export const videos: VideoItem[] = [
   {
+    id: 'v111',
+    title: '公司不应将AI用作削减成本的借口：陈杰豪',
+    titleEn: 'Companies should not use AI as an excuse to cut costs: Tan Kiat How',
+    titleJa: '企業はAIをコスト削減の口実として使用すべきではない：タン・キアットハウ',
+    titleKo: '기업은 AI를 비용 절감의 구실로 삼아서는 안 된다: Tan Kiat How',
+    speaker: 'Tan Kiat How',
+    speakerTitle: '通讯及新闻部高级政务部长',
+    speakerTitleEn: 'Senior Minister of State for Digital Development and Information, Singapore',
+    speakerTitleJa: '通信情報省（MCI）シニア政務次官',
+    speakerTitleKo: '통신정보부（MCI） 고위급 정무 장관',
+    speakerType: 'government',
+    date: '2026-09-28',
+    duration: '05:50',
+    summary: '陈杰豪表示，企业不应仅将AI视为削减成本的手段。',
+    summaryEn: 'Tan Kiat How argues that companies should not use AI merely as a cost-cutting measure.',
+    summaryJa: 'タン・キアットハウ氏は、企業がAIをコスト削減の手段としてのみ見なすべきではないと述べました。',
+    summaryKo: 'Tan Kiat How는 기업이 AI를 단지 비용 절감의 수단으로만 여겨서는 안 된다고 밝혔습니다.',
+    whyItMatters:
+      '通讯及新闻部高级政务部长陈杰豪罕见公开否定 AI 即裁员说法，为官方引导企业负责任用 AI、防止借技术裁员定下基调',
+    whyItMattersEn:
+      'Tan Kiat How, Senior Minister of State at the Ministry of Communications and Information(MCI), has made a rare public refutation of claims that AI means retrenchment, setting the official tone for guiding enterprises towards responsible AI use and preventing the misuse of technology for retrenchment.',
+    whyItMattersJa:
+      '通信情報省（MCI）上級政務大臣タン・キアットハウ氏が、AIが人員削減につながるという言説を珍しく公開で否定し、当局が企業にAIの責任ある活用を推奨し、技術を口実とした人員削減を防止することについて、基調を定めた。',
+    whyItMattersKo:
+      '통신정보부(MCI) 고급정무차관 Tan Kiat How는 인공지능(AI) 활용이 곧 감원이라는 주장을 드물게 공개적으로 부인했으며, 이는 정부가 기업들을 상대로 책임감 있는 AI 활용을 유도하고 기술을 핑계로 한 감원을 방지하기 위한 기조를 정립한 것입니다.',
+    topic: 'AI 战略与愿景',
+    topicEn: 'AI Strategy & Vision',
+    topicJa: 'AI 戦略とビジョン',
+    topicKo: 'AI 전략 및 비전',
+    youtubeUrl: 'https://www.youtube.com/watch?v=Wg7B9eISJRs',
+    channel: 'CNA',
+    addedAt: '2026-09-29',
+  },
+  {
     id: 'v109',
     title: '新加坡呼吁建立联合国AI安全框架',
     titleEn: 'Singapore calls for UN AI safety framework',
