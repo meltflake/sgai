@@ -12876,6 +12876,50 @@ export const videoTranscripts: Record<string, VideoTranscript> = {
     translationSource: 'claude',
     translationModel: 'haiku',
   },
+  v112: {
+    videoId: 'v112',
+    youtubeId: '0nDWUuJcThU',
+    captionLanguage: '',
+    fetchedAt: '2026-10-01',
+    source: 'unavailable',
+    paragraphs: [],
+    error: 'No subtitle track was available through yt-dlp.',
+  },
+  v113: {
+    videoId: 'v113',
+    youtubeId: '3SIb5qK0cqk',
+    captionLanguage: '',
+    fetchedAt: '2026-10-01',
+    source: 'unavailable',
+    paragraphs: [],
+    error: 'No subtitle track was available through yt-dlp.',
+  },
+  v114: {
+    videoId: 'v114',
+    youtubeId: 'wX2aPLCZ5QU',
+    captionLanguage: 'en-orig',
+    fetchedAt: '2026-10-01',
+    source: 'youtube-subtitles',
+    paragraphs: [
+      '所以，如果你没有技术学位，你就不能成为工程师——真还是假？让我们听听实习生贾斯汀的想法。>> 就我个人而言，我认为仅有技术学位是不够的。我认为你还需要经验和额外的技能。而我认为这正是AIP为我提供的。回到我的学校时代，在AI方面，我只是浅尝了表面概念。除此之外，我没有项目经验，无法自信地申请工程师职位。所以这就是我申请AE的原因。我很想相信这是假的，因为我没有技术学位或背景。所以在为AIAP做准备时，我决定参加ML和AI相关的课程来提升自己的技能。但现在进入AIAP后，我觉得我学到的一切只是浅尝皮毛。',
+      '在深度技能提升阶段，我从像贾斯汀这样拥有技术背景的人身上获益颇深。在AI领域的同伴学习是对我最有帮助的。你不需要拥有技术背景就能成为一名出色的AI工程师。你需要做的所有事情就是对这个领域充满强烈的热情，并且通过AIP，你将接受培训成为一名出色的工程师。',
+    ],
+    paragraphsEn: [
+      "So if you don't have a tech degree, you cannot become engineer true or force. Let's hear from apprentices Justin. >> Personally for myself, I think that having a technical degree isn't enough. I think you also need the experience and additional skills. And I think that this is what AIP offers me. So back in my school, I only dabbled with the surface level concepts when it comes to AI. And on top of that, I don't really have the project experience for me to confidently apply for a engineering role. So hence, that's why I applied for AE. I would love to believe that it's false because I don't have a a degree or background in tech. So in preparation for AIAP, I decided I needed to upskill myself in courses related to ML and AI. But now coming into AIAP, I feel that whatever I learned was barely scratching the surface.",
+      'During the deep skilling phase, I benefited so much from people like Justin who have that technical background. That peer-to-peer learning in AI is what benefited me. You do not need to have a tech background to excel as an AI engineer. All you need to do is to have a strong passion in this field and through AIP you will train to become excellent engineer.',
+    ],
+    paragraphsKo: [
+      '그래서 기술 학위가 없으면 엔지니어가 될 수 없다는 것이 사실일까요, 거짓일까요? 인턴 저스틴의 의견을 들어봅시다. 「개인적으로, 저는 기술 학위만으로는 충분하지 않다고 생각합니다. 경험과 추가 기술도 필요하다고 생각합니다. 그리고 저는 이것이 바로 AIP가 저에게 제공하는 것이라고 생각합니다. 제 학창 시절을 돌아보면, AI 분야에서 저는 표면적인 개념만 배웠을 뿐입니다. 그 외에 저는 프로젝트 경험이 없어 엔지니어 직책에 자신감 있게 지원할 수 없었습니다. 그래서 이것이 제가 AE에 지원한 이유입니다. 저는 이것이 거짓이기를 정말로 바랍니다. 왜냐하면 저는 기술 학위나 배경이 없기 때문입니다. 그래서 AIAP 준비 중에 ML과 AI 관련 과정을 수강하기로 결정했습니다. 하지만 이제 AIAP에 입학한 후, 제가 배운 모든 것이 겨우 표면만 건드린 것 같습니다.」',
+      '기술 심화 단계에서, 저는 저스틴 같은 기술적 배경을 가진 사람들로부터 큰 도움을 받았습니다. AI 분야에서의 동료 학습이 제게 가장 도움이 되었습니다. AI 엔지니어가 되기 위해 기술적 배경을 가질 필요는 없습니다. 여러분이 해야 할 모든 것은 이 분야에 강한 열정을 갖는 것이며, AIP를 통해 훌륭한 엔지니어가 되도록 교육받을 것입니다.',
+    ],
+    paragraphsJa: [
+      'つまり、技術学位がなければ、エンジニアになることができないのでしょうか。本当でしょうか、それとも嘘でしょうか。インターン生のジャスティンの意見を聞いてみましょう。>> 「個人的には、技術学位だけでは十分ではないと思います。経験と追加のスキルが必要だと考えます。そして、これがAIPが私に提供してくれたものだと思います。学生時代に戻ると、AI分野では、表面的な概念をかじっただけでした。それ以外に、プロジェクト経験がなく、自信を持ってエンジニア職に応募することができませんでした。ですから、これがAEに応募した理由です。技術学位や背景がないので、これが嘘だと信じたいのです。AIAPの準備をしていた時、MLおよびAIに関連する講座を受講して、自分のスキルを向上させることを決めました。しかし、今AIAPに入った後、学んだすべてのことはほんのかじっているだけだと感じます。」',
+      'スキル向上の深い段階では、ジャスティンのような技術的背景を持つ人たちから多くの恩恵を受けました。AI分野での同伴学習が、私にとって最も役に立ちました。AIエンジニアになるために、技術的背景を持つ必要はありません。必要なのは、この分野に対する強い情熱を持つことだけです。そしてAIPを通じて、あなたは優れたエンジニアになるための訓練を受けるでしょう。',
+    ],
+    translatedAt: '2026-10-01',
+    translationSource: 'claude',
+    translationModel: 'haiku',
+  },
 };
 
 export function getVideoTranscript(videoId: string): VideoTranscript | undefined {
