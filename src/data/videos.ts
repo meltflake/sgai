@@ -146,10 +146,10 @@ export function pickSpeakerTypeLabels(lang: string): Record<string, string> {
 export const videos: VideoItem[] = [
   {
     id: 'v112',
-    title: '45家企业因虚假评论被罚道歉',
+    title: '45家企业因虚假评论被责令公开道歉',
     titleEn: '45 Businesses Required to Issue Public Apology for Fake Reviews',
-    titleJa: '45社が虚偽のレビューで罰金と謝罪を命じられた',
-    titleKo: '45개 기업, 허위 평가로 처벌받고 사과',
+    titleJa: '45社、虚偽レビューで公開謝罪を命じられる',
+    titleKo: '45개 기업, 허위 리뷰로 공개 사과 명령',
     speaker: 'Dr Samer El-hajjar',
     speakerTitle: '新加坡国立大学商学院高级讲师',
     speakerTitleEn: 'Senior Lecturer, NUS Business School',
@@ -158,22 +158,21 @@ export const videos: VideoItem[] = [
     speakerType: 'academic',
     date: '2026-09-30',
     duration: '09:04',
-    summary:
-      '新加坡竞争监管机构对45家企业和虚假评论提供商采取行动，要求其停止不公平行为、删除虚假评论，并在线下维持六个月公开道歉。',
+    summary: '新加坡竞争监管机构对45家企业采取行动，要求其因虚假评论公开道歉。生成式 AI 让伪造评论越来越难以识别。',
     summaryEn:
       "Singapore's competition regulator takes action against 45 businesses for fake reviews, requiring public apologies. Generative AI makes detecting fabricated reviews increasingly difficult.",
     summaryJa:
-      'シンガポール競争当局は、45社の企業と虚偽レビュー提供業者に対して措置を講じ、不公正な行為の中止、虚偽レビューの削除、およびオンラインで6ヶ月間にわたる公開謝罪の掲示を要求しました。',
+      'シンガポールの競争当局は45社に対し、虚偽レビューを理由に公開謝罪を命じた。生成AIにより、偽のレビューを見抜くことはますます難しくなっている。',
     summaryKo:
-      '싱가포르 경쟁 규제 기구가 45개 기업 및 허위 평가 제공자를 상대로 조치를 취했으며, 부당한 행위 중단, 허위 평가 삭제, 오프라인에서 6개월간 공개 사과 유지를 요구했습니다.',
+      '싱가포르 경쟁 규제 당국이 허위 리뷰를 이유로 45개 기업에 공개 사과를 요구했다. 생성형 AI로 인해 조작된 리뷰를 가려내기가 점점 더 어려워지고 있다.',
     whyItMatters:
-      'CCCS 的 45 起处罚依然靠消费者保护法而非专门 AI 法规，说明新加坡对生成式 AI 造假内容仍无针对性监管工具',
+      'CCCS 处置这 45 家企业依然靠消费者保护法而非专门 AI 法规，说明新加坡对生成式 AI 造假内容仍无针对性监管工具',
     whyItMattersEn:
-      "CCCS's 45 penalties still rely on the Consumer Protection Act rather than specialized AI regulations, indicating Singapore lacks targeted regulatory tools for generative AI fabricated content.",
+      "CCCS's action against the 45 businesses still relies on the Consumer Protection Act rather than specialized AI regulations, indicating Singapore lacks targeted regulatory tools for generative AI fabricated content.",
     whyItMattersJa:
-      'CCCS の45件の処罰は依然として消費者保護法に基づいており、専門的なAI法規ではないことが、シンガポールが生成式AIの偽造コンテンツに対してまだ的を絞った規制ツールを持っていないことを示している',
+      'CCCS による45社への措置は依然として消費者保護法に基づいており、専門的なAI法規ではないことが、シンガポールが生成式AIの偽造コンテンツに対してまだ的を絞った規制ツールを持っていないことを示している',
     whyItMattersKo:
-      'CCCS의 45건 처벌이 여전히 소비자보호법에 의존하고 있으며 전문 인공지능 법규가 아니라는 점은 싱가포르가 생성형 인공지능의 가짜 콘텐츠에 대한 목표 지정 규제 도구를 여전히 갖추지 못했음을 보여줍니다.',
+      'CCCS의 45개 기업 조치가 여전히 소비자보호법에 의존하고 있으며 전문 인공지능 법규가 아니라는 점은 싱가포르가 생성형 인공지능의 가짜 콘텐츠에 대한 목표 지정 규제 도구를 여전히 갖추지 못했음을 보여줍니다.',
     topic: 'AI 治理与监管',
     topicEn: 'AI Governance & Regulation',
     topicJa: 'AI ガバナンスと規制',
@@ -196,20 +195,20 @@ export const videos: VideoItem[] = [
     speakerType: 'industry',
     date: '2026-09-30',
     duration: '03:17',
-    summary: '新加坡计划于2028年部署人形机器人与警务团队合作,用于调查爆炸现场和处理危险物品。',
+    summary: '新加坡计划于2028年部署人形机器人与警务团队合作，用于调查爆炸现场和处理危险物品。',
     summaryEn:
       'Singapore will deploy humanoid robots to assist Home Team officers by 2028, handling tasks like blast scene investigations and hazardous material handling.',
     summaryJa:
       'シンガポールは2028年に警察チームとの協力の下で人型ロボットを配置し、爆発現場の調査と危険物品の処理を行う計画です。',
     summaryKo:
       '싱가포르는 2028년까지 휴머노이드 로봇을 배치하여 경찰 팀과 협력할 계획이며, 폭발 현장 수사 및 위험물 처리에 사용될 예정입니다.',
-    whyItMatters: '2028 年实战部署目标把人形机器人从展示推向 Home Team 一线,risky 任务外包给机器标志安保科技实用化',
+    whyItMatters: '2028 年实战部署目标把人形机器人从展示推向内政团队一线，把高危任务交给机器，标志安保科技走向实用',
     whyItMattersEn:
       'The 2028 real-world deployment target will advance humanoid robots from showcase to Home Team frontline, outsourcing risky tasks to machines, marking the practical application of security technology.',
     whyItMattersJa:
       '2028年の実戦展開目標は、人型ロボットをデモンストレーションから Home Team の最前線へ推し進め、リスク高いタスクをロボットにアウトソースすることで、セキュリティ技術の実用化を象徴している',
     whyItMattersKo:
-      '2028년 실전 배포 목표는 인형 로봇을 시연에서 Home Team 최일선으로 추진하며, 위험한 작업을 기계에 외주하는 것이 안보 기술의 실용화를 나타냅니다.',
+      '2028년 실전 배포 목표는 휴머노이드 로봇을 시연에서 Home Team 최일선으로 추진하며, 위험한 작업을 기계에 외주하는 것이 안보 기술의 실용화를 나타냅니다.',
     topic: 'AI 产业与应用',
     topicEn: 'AI Industry & Applications',
     topicJa: 'AI 産業と応用',
@@ -222,7 +221,7 @@ export const videos: VideoItem[] = [
     id: 'v114',
     title: '非科班也能成为AI工程师',
     titleEn: 'Non-Tech Paths to AI Engineering',
-    titleJa: '科班出身でなくてもAIエンジニアになれます。',
+    titleJa: '情報系出身でなくてもAIエンジニアになれる',
     titleKo: '전공자가 아니어도 AI 엔지니어가 될 수 있음',
     speaker: 'AI Singapore',
     speakerTitle: 'AI 研究与人才培养机构',
@@ -239,7 +238,7 @@ export const videos: VideoItem[] = [
     summaryKo: 'AIAP 수습생이 기술 배경에 관계없이 AI 엔지니어가 되는 경험을 공유합니다.',
     whyItMatters: 'AIAP 用学徒制证明非科班也能成为 AI 工程师，新加坡人才战略不再独押名校计算机学位',
     whyItMattersEn:
-      "AIAP uses apprenticeship to prove that non-degree holders can become AI engineers, with Singapore's talent strategy no longer betting exclusively on prestigious university computer science degrees.",
+      "AIAP uses apprenticeship to prove that people without a computer science background can become AI engineers, with Singapore's talent strategy no longer betting exclusively on prestigious university computer science degrees.",
     whyItMattersJa:
       'AIAP は見習い制度によって、コンピュータサイエンス専攻でない人材でも AI エンジニアになれることを証明し、シンガポールの人材戦略がもはや一流大学のコンピュータサイエンス学位だけに依存していないことを示している',
     whyItMattersKo:
