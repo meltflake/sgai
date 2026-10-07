@@ -145,6 +145,113 @@ export function pickSpeakerTypeLabels(lang: string): Record<string, string> {
 
 export const videos: VideoItem[] = [
   {
+    id: 'v112',
+    title: '45家企业因虚假评论被责令公开道歉',
+    titleEn: '45 Businesses Required to Issue Public Apology for Fake Reviews',
+    titleJa: '45社、虚偽レビューで公開謝罪を命じられる',
+    titleKo: '45개 기업, 허위 리뷰로 공개 사과 명령',
+    speaker: 'Dr Samer El-hajjar',
+    speakerTitle: '新加坡国立大学商学院高级讲师',
+    speakerTitleEn: 'Senior Lecturer, NUS Business School',
+    speakerTitleJa: 'シンガポール国立大学ビジネススクール上級講師',
+    speakerTitleKo: '싱가포르국립대학교 경영학부 선임 강사',
+    speakerType: 'academic',
+    date: '2026-09-30',
+    duration: '09:04',
+    summary: '新加坡竞争监管机构对45家企业采取行动，要求其因虚假评论公开道歉。生成式 AI 让伪造评论越来越难以识别。',
+    summaryEn:
+      "Singapore's competition regulator takes action against 45 businesses for fake reviews, requiring public apologies. Generative AI makes detecting fabricated reviews increasingly difficult.",
+    summaryJa:
+      'シンガポールの競争当局は45社に対し、虚偽レビューを理由に公開謝罪を命じた。生成AIにより、偽のレビューを見抜くことはますます難しくなっている。',
+    summaryKo:
+      '싱가포르 경쟁 규제 당국이 허위 리뷰를 이유로 45개 기업에 공개 사과를 요구했다. 생성형 AI로 인해 조작된 리뷰를 가려내기가 점점 더 어려워지고 있다.',
+    whyItMatters:
+      'CCCS 处置这 45 家企业依然靠消费者保护法而非专门 AI 法规，说明新加坡对生成式 AI 造假内容仍无针对性监管工具',
+    whyItMattersEn:
+      "CCCS's action against the 45 businesses still relies on the Consumer Protection Act rather than specialized AI regulations, indicating Singapore lacks targeted regulatory tools for generative AI fabricated content.",
+    whyItMattersJa:
+      'CCCS による45社への措置は依然として消費者保護法に基づいており、専門的なAI法規ではないことが、シンガポールが生成式AIの偽造コンテンツに対してまだ的を絞った規制ツールを持っていないことを示している',
+    whyItMattersKo:
+      'CCCS의 45개 기업 조치가 여전히 소비자보호법에 의존하고 있으며 전문 인공지능 법규가 아니라는 점은 싱가포르가 생성형 인공지능의 가짜 콘텐츠에 대한 목표 지정 규제 도구를 여전히 갖추지 못했음을 보여줍니다.',
+    topic: 'AI 治理与监管',
+    topicEn: 'AI Governance & Regulation',
+    topicJa: 'AI ガバナンスと規制',
+    topicKo: 'AI 거버넌스와 규제',
+    youtubeUrl: 'https://www.youtube.com/watch?v=0nDWUuJcThU',
+    channel: 'CNA',
+    addedAt: '2026-10-01',
+  },
+  {
+    id: 'v113',
+    title: '新加坡推进人形机器人警务合作',
+    titleEn: 'Singapore to deploy humanoid robots with police by 2028',
+    titleJa: 'シンガポール、ヒューマノイドロボット警務協力を推進',
+    titleKo: '싱가포르, 휴머노이드 로봇 경찰 협력 추진',
+    speaker: 'Noah Kong',
+    speakerTitle: 'CNA 记者',
+    speakerTitleEn: 'CNA Reporter',
+    speakerTitleJa: 'CNA記者',
+    speakerTitleKo: 'CNA 기자',
+    speakerType: 'industry',
+    date: '2026-09-30',
+    duration: '03:17',
+    summary: '新加坡计划于2028年部署人形机器人与警务团队合作，用于调查爆炸现场和处理危险物品。',
+    summaryEn:
+      'Singapore will deploy humanoid robots to assist Home Team officers by 2028, handling tasks like blast scene investigations and hazardous material handling.',
+    summaryJa:
+      'シンガポールは2028年に警察チームとの協力の下で人型ロボットを配置し、爆発現場の調査と危険物品の処理を行う計画です。',
+    summaryKo:
+      '싱가포르는 2028년까지 휴머노이드 로봇을 배치하여 경찰 팀과 협력할 계획이며, 폭발 현장 수사 및 위험물 처리에 사용될 예정입니다.',
+    whyItMatters: '2028 年实战部署目标把人形机器人从展示推向内政团队一线，把高危任务交给机器，标志安保科技走向实用',
+    whyItMattersEn:
+      'The 2028 real-world deployment target will advance humanoid robots from showcase to Home Team frontline, outsourcing risky tasks to machines, marking the practical application of security technology.',
+    whyItMattersJa:
+      '2028年の実戦展開目標は、人型ロボットをデモンストレーションから Home Team の最前線へ推し進め、リスク高いタスクをロボットにアウトソースすることで、セキュリティ技術の実用化を象徴している',
+    whyItMattersKo:
+      '2028년 실전 배포 목표는 휴머노이드 로봇을 시연에서 Home Team 최일선으로 추진하며, 위험한 작업을 기계에 외주하는 것이 안보 기술의 실용화를 나타냅니다.',
+    topic: 'AI 产业与应用',
+    topicEn: 'AI Industry & Applications',
+    topicJa: 'AI 産業と応用',
+    topicKo: 'AI 산업 및 응용',
+    youtubeUrl: 'https://www.youtube.com/watch?v=3SIb5qK0cqk',
+    channel: 'CNA',
+    addedAt: '2026-10-01',
+  },
+  {
+    id: 'v114',
+    title: '非科班也能成为AI工程师',
+    titleEn: 'Non-Tech Paths to AI Engineering',
+    titleJa: '情報系出身でなくてもAIエンジニアになれる',
+    titleKo: '전공자가 아니어도 AI 엔지니어가 될 수 있음',
+    speaker: 'AI Singapore',
+    speakerTitle: 'AI 研究与人才培养机构',
+    speakerTitleEn: 'AI research and talent-development organisation',
+    speakerTitleJa: 'AI 研究と人材育成機関',
+    speakerTitleKo: 'AI 연구 및 인재 양성 기관',
+    speakerType: 'academic',
+    date: '2026-09-30',
+    duration: '01:10',
+    summary: 'AIAP学徒分享成为AI工程师的经历，无论其技术背景如何。',
+    summaryEn:
+      'Apprentices share their journeys to becoming AI engineers through AIAP, regardless of technical background.',
+    summaryJa: 'AIAP学徒が、技術背景がどうであれ、AIエンジニアになるまでの経験を共有しています。',
+    summaryKo: 'AIAP 수습생이 기술 배경에 관계없이 AI 엔지니어가 되는 경험을 공유합니다.',
+    whyItMatters: 'AIAP 用学徒制证明非科班也能成为 AI 工程师，新加坡人才战略不再独押名校计算机学位',
+    whyItMattersEn:
+      "AIAP uses apprenticeship to prove that people without a computer science background can become AI engineers, with Singapore's talent strategy no longer betting exclusively on prestigious university computer science degrees.",
+    whyItMattersJa:
+      'AIAP は見習い制度によって、コンピュータサイエンス専攻でない人材でも AI エンジニアになれることを証明し、シンガポールの人材戦略がもはや一流大学のコンピュータサイエンス学位だけに依存していないことを示している',
+    whyItMattersKo:
+      'AIAP는 도제제를 통해 비전공자도 AI 엔지니어가 될 수 있음을 증명하며, 싱가포르의 인재 전략이 더 이상 명문대 컴퓨터 학위에만 의존하지 않음을 나타냅니다.',
+    topic: 'AI 人才与教育',
+    topicEn: 'AI Talent & Education',
+    topicJa: 'AI 人材と教育',
+    topicKo: 'AI 인재와 교육',
+    youtubeUrl: 'https://www.youtube.com/watch?v=wX2aPLCZ5QU',
+    channel: 'AI Singapore',
+    addedAt: '2026-10-01',
+  },
+  {
     id: 'v111',
     title: '公司不应将AI用作削减成本的借口：陈杰豪',
     titleEn: 'Companies should not use AI as an excuse to cut costs: Tan Kiat How',
