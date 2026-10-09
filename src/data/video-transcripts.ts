@@ -13307,14 +13307,11 @@ export const videoTranscripts: Record<string, VideoTranscript> = {
   v120: {
     videoId: 'v120',
     youtubeId: 'PFmOUI35KC0',
-    captionLanguage: 'en',
+    captionLanguage: '',
     fetchedAt: '2026-10-09',
-    source: 'youtube-subtitles',
-    paragraphs: ['[音乐] >> 嗚！'],
-    paragraphsEn: ['[music] >> Woo!'],
-    translatedAt: '2026-10-09',
-    translationSource: 'claude',
-    translationModel: 'haiku',
+    source: 'unavailable',
+    paragraphs: [],
+    error: 'Subtitle track held only "[music] >> Woo!", no speech captions.',
   },
 };
 

@@ -199,13 +199,13 @@ export const videos: VideoItem[] = [
     summaryEn: 'Report on AI safety risks and how to understand, create, and use AI responsibly.',
     summaryJa: '報道はAI安全リスク、およびAIを責任を持って理解し、構築し、利用する方法について論じました。',
     summaryKo: '보도는 AI 안전 위험 및 AI를 책임 있게 이해하고, 만들고, 사용하는 방법을 논의했습니다.',
-    whyItMatters: 'CNA 借 AICON 把 AI 安全话题推向大众视野，折射新加坡希望以公众信任支撑 AI 普及，却未见配套监管跟进',
+    whyItMatters: 'CNA 借 AICON 把 AI 安全话题推向大众视野，折射新加坡希望以公众信任支撑 AI 普及',
     whyItMattersEn:
-      "CNA leveraged AICON to bring AI safety into the public eye, reflecting Singapore's hope that public trust will support AI adoption, yet accompanying regulatory measures have not been implemented.",
+      "CNA used AICON to bring AI safety into the public eye, reflecting Singapore's hope that public trust will support AI adoption.",
     whyItMattersJa:
-      '「CNAがAICONを通じてAI安全の話題を大衆の視野に押し出したことは、シンガポールが公衆の信頼を背景にAI普及を進めたいという希望を示唆しています。けれども、対応する規制措置の整備が後に続いていません。」',
+      'CNAがAICONを通じてAI安全の話題を大衆の視野に押し出したことは、シンガポールが公衆の信頼を背景にAI普及を進めたいという希望を示唆しています。',
     whyItMattersKo:
-      'CNA가 AICON을 활용해 AI 안전 주제를 대중 시야로 끌어올렸으며, 이는 싱가포르가 공중 신뢰로 AI 보급을 뒷받침하길 희망함을 보여줍니다. 그러나 이에 맞는 규제 후속이 아직 보이지 않습니다.',
+      'CNA가 AICON을 활용해 AI 안전 주제를 대중 시야로 끌어올렸으며, 이는 싱가포르가 공중 신뢰로 AI 보급을 뒷받침하길 희망함을 보여줍니다.',
     topic: 'AI 治理与监管',
     topicEn: 'AI Governance & Regulation',
     topicJa: 'AI ガバナンスと規制',
