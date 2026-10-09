@@ -409,8 +409,8 @@ On the governance track, AI Verify turned "responsible AI" from principles into 
 
 在「七条传导杠杆」里，AISG 同时落在多条上：
 
-- **杠杆 2（人才）**：AIAP 是新加坡本地 AI 工程师产出的主要渠道，比任何高校都直接
-- **杠杆 3（应用）**：100E 推动企业 AI PoC，LearnAI 培训在职员工
+- **杠杆 3（人才）**：AIAP 是新加坡本地 AI 工程师产出的主要渠道，比任何高校都直接
+- **杠杆 4（应用）**：100E 推动企业 AI PoC，LearnAI 培训在职员工
 - **杠杆 5（政府自用）**：政府部门用 SEA-LION 做本地化 AI 服务的底层模型
 - **杠杆 6（外交）**：SEA-LION 和 AI Verify 是新加坡在国际 AI 治理桌上的「硬通货」
 
@@ -421,9 +421,9 @@ On the governance track, AI Verify turned "responsible AI" from principles into 
 
 「7개 전달 레버」에서 AISG는 동시에 여러 곳에 위치합니다:
 
-- **레버 2(인재)**: AIAP는 싱가포르 현지 AI 엔지니어 배출의 주요 통로이며, 어떤 대학보다 직접적입니다
-- **레버 3(응용)**: 100E는 기업 AI PoC를 추진하고, LearnAI는 직원 교육을 진행합니다
-- **레버 5(정부 자용)**: 정부 부서는 SEA-LION을 사용하여 현지화된 AI 서비스의 기반 모델을 구축합니다
+- **레버 3(인재)**: AIAP는 싱가포르 현지 AI 엔지니어 배출의 주요 통로이며, 어떤 대학보다 직접적입니다
+- **레버 4(애플리케이션)**: 100E는 기업 AI PoC를 추진하고, LearnAI는 직원 교육을 진행합니다
+- **레버 5(정부 자체 사용)**: 정부 부서는 SEA-LION을 사용하여 현지화된 AI 서비스의 기반 모델을 구축합니다
 - **레버 6(외교)**: SEA-LION과 AI Verify는 싱가포르의 국제 AI 거버넌스 테이블에서의 「하드 커런시」입니다
 
 관점: **AISG의 진정한 가치는 그것이 만든 어떤 단일 제품에 있지 않고, 「소국가도 AI를 할 수 있다」는 미-중 이외의 경로를 입증했다는 점**에 있습니다——정부의 명확한 투자, 세분화 초점(동남아시아 언어, 구현 가능한 도구, 거버넌스 표준)에 의존하며, 대형 기업의 범용 대모델과 경쟁하지 않습니다. 이 경로는 EU와 동남아시아 인접국가들에 의해 반복적으로 연구되고 있습니다.
@@ -433,8 +433,8 @@ On the governance track, AI Verify turned "responsible AI" from principles into 
 
 「7 つの伝導レバー」の中で、AISG は同時に複数のレバーに作用しています：
 
-- **レバー 2（人材）**：AIAP はシンガポール現地の AI エンジニア育成の主要経路であり、どの高等教育機関よりも直接的です
-- **レバー 3（応用）**：100E は企業 AI PoC を推進し、LearnAI は在職従業員を訓練します
+- **レバー 3（人材）**：AIAP はシンガポール現地の AI エンジニア育成の主要経路であり、どの高等教育機関よりも直接的です
+- **レバー 4（応用）**：100E は企業 AI PoC を推進し、LearnAI は在職従業員を訓練します
 - **レバー 5（政府自用）**：政府部門は SEA-LION をローカライズされた AI サービスの基盤モデルとして使用します
 - **レバー 6（外交）**：SEA-LION と AI Verify はシンガポールが国際 AI ガバナンスの場での「ハードカレンシー」です
 
@@ -445,10 +445,10 @@ On the governance track, AI Verify turned "responsible AI" from principles into 
 
 In the "seven transmission levers" framework, AISG sits across multiple levers simultaneously:
 
-- **Lever 2 (talent)**: AIAP is the dominant pipeline for local AI engineers, more direct than any university
-- **Lever 3 (applications)**: 100E pushed enterprise AI proofs of concept; LearnAI trains in-service workers
-- **Lever 5 (government adoption)**: government agencies use SEA-LION as the base model for localised AI services
-- **Lever 6 (international)**: SEA-LION and AI Verify are Singapore's "hard currency" at the international AI governance table
+- **Lever 3 (Talent)**: AIAP is the dominant pipeline for local AI engineers, more direct than any university
+- **Lever 4 (Applications)**: 100E pushed enterprise AI proofs of concept; LearnAI trains in-service workers
+- **Lever 5 (Government Self-Use)**: government agencies use SEA-LION as the base model for localised AI services
+- **Lever 6 (Diplomacy)**: SEA-LION and AI Verify are Singapore's "hard currency" at the international AI governance table
 
 A take: **AISG's real value lies not in any single product, but in proving that "small countries can do AI" via a non-US, non-China path** — through clear government bets, focus on specialisation (Southeast Asian languages, deployable tools, governance standards), rather than competing with big tech on general LLMs. This route has been studied repeatedly by the EU and Southeast Asian neighbours.
 
@@ -651,7 +651,7 @@ But AISG's bottlenecks are real: **talent retention is weak** (apprentices leave
             url: 'https://aisingapore.org/talent/national-olympiad-in-artificial-intelligence/',
           },
         ],
-        relatedLeverNumbers: [2, 3, 5, 6],
+        relatedLeverNumbers: [3, 4, 5, 6],
         relatedPolicyIds: [
           'national-ai-strategy-nais-10',
           'national-ai-strategy-20-nais-20',
@@ -922,8 +922,7 @@ On the technical track, A*STAR does not chase "world-best papers" but "industria
 
 在「七条传导杠杆」里：
 
-- **杠杆 1（基础研究）**：A*STAR 是国家研究投入的主要承接方，CFAR 直接对标全球前沿
-- **杠杆 3（产业应用）**：通过 I2R / SIMTech 把 AI 技术转给本地制造业、医疗、金融
+- **杠杆 4（应用）**：A*STAR 是国家研究投入的主要承接方，CFAR 直接对标全球前沿；通过 I2R / SIMTech 把 AI 技术转给本地制造业、医疗、金融
 - **杠杆 5（政府自用）**：政府部门很多 AI 项目（医疗影像、智慧国家平台）都用 A*STAR 的技术栈
 
 观点：**A*STAR 的真正价值不在它的论文产出，而在它扮演了"国家技术转化器"的角色**——把高校的纯研究、企业的具体需求、国家的战略目标，三者粘合起来。这是新加坡少数能做"从基础研究到产品落地"全链条的机构。
@@ -933,8 +932,7 @@ On the technical track, A*STAR does not chase "world-best papers" but "industria
 
 「일곱 개의 전도 레버」에서:
 
-- **레버 1(기초 연구)**：A*STAR은 국가 연구 투입의 주요 담당 기관이며, CFAR은 전 세계 최전선과 직접 벤치마크합니다.
-- **레버 3(산업 응용)**：I2R / SIMTech을 통해 AI 기술을 현지 제조업, 의료, 금융으로 이전합니다.
+- **레버 4(애플리케이션)**：A*STAR은 국가 연구 투입의 주요 담당 기관이며, CFAR은 전 세계 최전선과 직접 벤치마크합니다; I2R / SIMTech을 통해 AI 기술을 현지 제조업, 의료, 금융으로 이전합니다.
 - **레버 5(정부 자체 사용)**：정부 부처의 많은 AI 프로젝트(의료 영상, 스마트 국가 플랫폼)가 A*STAR의 기술 스택을 사용합니다.
 
 의견：**A*STAR의 진정한 가치는 논문 산출에 있지 않고, 「국가 기술 변환기」의 역할에 있습니다**——대학의 순수 연구, 기업의 구체적인 요구, 국가의 전략적 목표를 함께 결합시킵니다. 이것은 싱가포르에서 「기초 연구에서 제품 상용화」 전체 체인을 할 수 있는 드문 기관입니다.
@@ -944,8 +942,7 @@ On the technical track, A*STAR does not chase "world-best papers" but "industria
 
 「7 つの伝導レバー」の中で：
 
-- **レバー 1（基礎研究）**：A*STAR は国家研究投入の主要な受け手であり、CFAR はグローバル前沿と直接ベンチマークしています
-- **レバー 3（産業応用）**：I2R/SIMTech を通じて AI 技術を現地製造業、医療、金融に転移
+- **レバー 4（応用）**：A*STAR は国家研究投入の主要な受け手であり、CFAR はグローバル前沿と直接ベンチマークしています；I2R/SIMTech を通じて AI 技術を現地製造業、医療、金融に転移
 - **レバー 5（政府自用）**：政府部門の多くの AI プロジェクト（医療画像、スマートネーション・プラットフォーム）は A*STAR の技術スタックを使用
 
 観点：**A*STAR の真の価値は、その論文出力にあるのではなく、「国家技術コンバーター」の役割を果たしていることにあります**——高等教育機関の純粋研究、企業の具体的ニーズ、国家の戦略目標の 3 者を接着させます。これはシンガポールで「基礎研究から製品落地」の全チェーンを実行できる数少ない機構です。
@@ -955,9 +952,8 @@ On the technical track, A*STAR does not chase "world-best papers" but "industria
 
 In the seven-lever framework:
 
-- **Lever 1 (foundational research)**: A*STAR is the main recipient of national research funding; CFAR benchmarks directly against the global frontier
-- **Lever 3 (industry adoption)**: through I2R / SIMTech, transfers AI tech to local manufacturing, healthcare, finance
-- **Lever 5 (government adoption)**: many government AI projects (medical imaging, Smart Nation platforms) sit on A*STAR tech stack
+- **Lever 4 (Applications)**: A*STAR is the main recipient of national research funding; CFAR benchmarks directly against the global frontier; through I2R / SIMTech, transfers AI tech to local manufacturing, healthcare, finance
+- **Lever 5 (Government Self-Use)**: many government AI projects (medical imaging, Smart Nation platforms) sit on A*STAR tech stack
 
 A take: **A*STAR's real value lies not in publication output but in its role as a "national tech translator"** — gluing university research, enterprise needs, and national strategy together. It is one of few institutions in Singapore that can do "from foundational research to product deployment" end-to-end.
 
@@ -1011,7 +1007,7 @@ But A*STAR has obvious bottlenecks: **less attractive than universities or big t
             titleEn: 'CFAR contributes to SEA-LION training',
           },
         ],
-        relatedLeverNumbers: [1, 3, 5],
+        relatedLeverNumbers: [4, 5],
         relatedPolicyIds: ['research-innovation-and-enterprise-2025-plan', 'public-ai-research-investment-2026-2030'],
         relatedDebateIds: ['oral-answer-4129', 'cos-mddi-2026', 'cos-mti-2026', 'budget-2570', 'motion-2296'],
         relatedEntityIds: ['ai-singapore', 'sea-lion', 'nus', 'ntu'],
@@ -1218,9 +1214,8 @@ But NUS's AI research has a long-running problem: **talent drain to big tech and
 
 在「七条传导杠杆」里：
 
-- **杠杆 1（基础研究）**：NUS 是新加坡 AI 论文产出的最大单一机构
-- **杠杆 2（人才）**：NUS Computing 是本地 AI 工程师的主要培养基地，AISG 的 AIAP 学徒约 1/3 来自 NUS
-- **杠杆 3（产业应用）**：通过 NUS Enterprise、横向项目把研究转化
+- **杠杆 3（人才）**：NUS Computing 是本地 AI 工程师的主要培养基地，AISG 的 AIAP 学徒约 1/3 来自 NUS
+- **杠杆 4（应用）**：NUS 是新加坡 AI 论文产出的最大单一机构；通过 NUS Enterprise、横向项目把研究转化
 
 观点：**NUS 是少数"既能做世界级研究、又愿意承接国家任务"的高校**——这种平衡在很多研究型大学里很难达到。AISG 嵌入 NUS 是新加坡 AI 战略最关键的体制设计：让国家计划获得高校的研究力量，同时让高校的研究能被国家战略放大。
 
@@ -1229,9 +1224,8 @@ But NUS's AI research has a long-running problem: **talent drain to big tech and
 
 「일곱 가지 전달 레버」에서:
 
-- **레버 1(기초 연구)**: NUS는 싱가포르 AI 논문 산출의 최대 단일 기관
-- **레버 2(인재)**: NUS Computing은 현지 AI 엔지니어의 주요 양성 기지이며, AISG의 AIAP 인턴 약 1/3은 NUS 출신
-- **레버 3(산업 응용)**: NUS Enterprise와 횡단 프로젝트를 통해 연구를 전환
+- **레버 3(인재)**: NUS Computing은 현지 AI 엔지니어의 주요 양성 기지이며, AISG의 AIAP 인턴 약 1/3은 NUS 출신
+- **레버 4(애플리케이션)**: NUS는 싱가포르 AI 논문 산출의 최대 단일 기관; NUS Enterprise와 횡단 프로젝트를 통해 연구를 전환
 
 관점: NUS는 「세계 수준의 연구를 수행하면서 동시에 국가 업무를 기꺼이 수주하는」드문 대학입니다——이러한 균형은 많은 연구형 대학에서 달성하기 어렵습니다. AISG가 NUS에 내장된 것은 싱가포르 AI 전략의 가장 핵심적인 체제 설계입니다: 국가 계획이 대학의 연구 역량을 획득할 수 있도록 하면서 동시에 대학의 연구를 국가 전략으로 증폭시킵니다.
 
@@ -1240,9 +1234,8 @@ But NUS's AI research has a long-running problem: **talent drain to big tech and
 
 「7 つの伝導レバー」の中で：
 
-- **レバー 1（基礎研究）**：NUS はシンガポール AI 論文産出の最大の単一機関です
-- **レバー 2（人材）**：NUS Computing は現地 AI エンジニアの主要な育成基地であり、AISG の AIAP 見習いの約 3 分の 1 は NUS から来ています
-- **レバー 3（産業応用）**：NUS Enterprise と横断的プロジェクトを通じて研究を活用しています
+- **レバー 3（人材）**：NUS Computing は現地 AI エンジニアの主要な育成基地であり、AISG の AIAP 見習いの約 3 分の 1 は NUS から来ています
+- **レバー 4（応用）**：NUS はシンガポール AI 論文産出の最大の単一機関です；NUS Enterprise と横断的プロジェクトを通じて研究を活用しています
 
 観点：**NUS は少数の 「世界レベルの研究ができ、かつ国家的課題を喜んで引き受ける」大学**です——このようなバランスは多くの研究型大学では達成が難しいです。AISG が NUS に埋め込まれることは、シンガポール AI 戦略の最も重要な制度設計です：国家計画が高等教育機関の研究力を獲得でき、同時に高等教育機関の研究が国家戦略によって拡大されるようになります。
 
@@ -1251,9 +1244,8 @@ But NUS's AI research has a long-running problem: **talent drain to big tech and
 
 Across the seven transmission levers:
 
-- **Lever 1 (Foundational Research)**: NUS is the single largest institution producing AI papers in Singapore
-- **Lever 2 (Talent)**: NUS Computing is the main pipeline for local AI engineers; about a third of AISG AIAP apprentices come from NUS
-- **Lever 3 (Industry Application)**: research is converted through NUS Enterprise and horizontal projects
+- **Lever 3 (Talent)**: NUS Computing is the main pipeline for local AI engineers; about a third of AISG AIAP apprentices come from NUS
+- **Lever 4 (Applications)**: NUS is the single largest institution producing AI papers in Singapore; research is converted through NUS Enterprise and horizontal projects
 
 Take: **NUS is one of the few universities that can simultaneously produce world-class research and willingly take on national assignments** — a balance that's rare in research universities. Embedding AISG inside NUS is the most critical institutional design in Singapore's AI strategy: it gives the national programme the research capacity of a university, and amplifies the university's research through national strategy.
 
@@ -1340,7 +1332,7 @@ But NUS AI Institute (founded 2024) is still in its integration phase. **Whether
               'From 31 August, access extends to all students, faculty, and staff; every undergraduate freshman in AY2026/27 must take THE1008 Applied Generative AI. AI Sense Maker is scheduled to launch on 20 August. Codex is not part of this university-wide rollout — it came through the earlier collaboration with the School of Computing, and OpenAI says NUS adoption of Codex runs ahead of similarly sized universities.',
           },
         ],
-        relatedLeverNumbers: [1, 2, 3],
+        relatedLeverNumbers: [3, 4],
         relatedPolicyIds: [
           'national-ai-strategy-nais-10',
           'research-innovation-and-enterprise-2025-plan',
@@ -1556,9 +1548,8 @@ Technically, NTU's presence in GenAI is weaker than NUS — it has no SEA-LION-c
 
 在「七条传导杠杆」里：
 
-- **杠杆 1（基础研究）**：与 NUS 互补，NTU 偏视觉、机器人、工程 AI
-- **杠杆 2（人才）**：NTU CCDS 是新加坡 AI 工程师的另一主要培养基地
-- **杠杆 3（产业应用）**：NTU Garage 与 DBS、SIA 等大企业联合实验室是产业 AI 落地的样板
+- **杠杆 3（人才）**：NTU CCDS 是新加坡 AI 工程师的另一主要培养基地
+- **杠杆 4（应用）**：与 NUS 互补，NTU 偏视觉、机器人、工程 AI；NTU Garage 与 DBS、SIA 等大企业联合实验室是产业 AI 落地的样板
 
 观点：**NTU 的"产业合作"模式是新加坡 AI 应用研究的"商业化样板"**——比 NUS 更接地气，比 A*STAR 更灵活。这种"高校 + 大企业联合实验室"的模式是新加坡产业 AI 落地最有效的机制之一。
 
@@ -1569,9 +1560,8 @@ Technically, NTU's presence in GenAI is weaker than NUS — it has no SEA-LION-c
 
 「일곱 가지 전도 레버」 속에서:
 
-- **레버 1(기초연구)**: NUS와 상호보완적이며, NTU는 시각, 로봇, 공학 AI에 치중
-- **레버 2(인재양성)**: NTU CCDS는 싱가포르 AI 엔지니어의 또 다른 주요 양성기지
-- **레버 3(산업응용)**: NTU Garage와 DBS, SIA 등 대기업 연합 실험실은 산업 AI 착지의 모범
+- **레버 3(인재)**: NTU CCDS는 싱가포르 AI 엔지니어의 또 다른 주요 양성기지
+- **레버 4(애플리케이션)**: NUS와 상호보완적이며, NTU는 시각, 로봇, 공학 AI에 치중; NTU Garage와 DBS, SIA 등 대기업 연합 실험실은 산업 AI 착지의 모범
 
 관점: **NTU의 「산업협력」 모델은 싱가포르 AI 응용연구의 「상용화 모범」**——NUS보다 더 실용적이고, A*STAR보다 더 유연합니다. 이러한 「고등교육기관 + 대기업 연합 실험실」 모델은 싱가포르 산업 AI 착지에서 가장 효과적인 메커니즘 중 하나입니다.
 
@@ -1582,9 +1572,8 @@ Technically, NTU's presence in GenAI is weaker than NUS — it has no SEA-LION-c
 
 「7 つの伝導レバー」において：
 
-- **レバー 1（基礎研究）**：NUS と補完関係にあり、NTU はビジョン、ロボティクス、エンジニアリング AI に傾斜
-- **レバー 2（人材）**：NTU CCDS はシンガポール AI エンジニアのもう 1 つの主要育成基地
-- **レバー 3（産業応用）**：NTU Garage（DBS、SIA との）は産業 AI 展開のモデル
+- **レバー 3（人材）**：NTU CCDS はシンガポール AI エンジニアのもう 1 つの主要育成基地
+- **レバー 4（応用）**：NUS と補完関係にあり、NTU はビジョン、ロボティクス、エンジニアリング AI に傾斜；NTU Garage（DBS、SIA との）は産業 AI 展開のモデル
 
 観点：**NTU の「産業協力」モデルはシンガポール AI アプリケーション研究の「商業化モデル」です**——NUS より実践的で、A*STAR より柔軟です。この「大学 + 大企業共同実験室」モデルは、シンガポール産業 AI 展開の最も効果的なメカニズムの 1 つです。
 
@@ -1595,9 +1584,8 @@ Technically, NTU's presence in GenAI is weaker than NUS — it has no SEA-LION-c
 
 Across the seven transmission levers:
 
-- **Lever 1 (Foundational Research)**: complementary to NUS, NTU leans towards vision, robotics, and engineering AI
-- **Lever 2 (Talent)**: NTU CCDS is the other major pipeline for Singapore's AI engineers
-- **Lever 3 (Industry Application)**: NTU Garage's joint labs with DBS, SIA, and other large enterprises are a model for industrial AI deployment
+- **Lever 3 (Talent)**: NTU CCDS is the other major pipeline for Singapore's AI engineers
+- **Lever 4 (Applications)**: complementary to NUS, NTU leans towards vision, robotics, and engineering AI; NTU Garage's joint labs with DBS, SIA, and other large enterprises are a model for industrial AI deployment
 
 Take: **NTU's "industry partnership" model is the commercialisation template for Singapore's applied AI research** — more grounded than NUS, more flexible than A*STAR. The "university + large enterprise joint lab" pattern is one of the most effective mechanisms for industrial AI deployment in Singapore.
 
@@ -1638,7 +1626,7 @@ Variables to watch: whether the post-integration CCDS produces flagship projects
             descriptionEn: 'SCSE upgraded to consolidate computing and data science research.',
           },
         ],
-        relatedLeverNumbers: [1, 2, 3],
+        relatedLeverNumbers: [3, 4],
         relatedPolicyIds: [
           'singapore-ai-safety-institute',
           'research-innovation-and-enterprise-2025-plan',
@@ -1793,32 +1781,32 @@ Technology is not SMU's strength, but **SMU's signature is producing hybrid tale
 
 在「七条传导杠杆」里：
 
-- **杠杆 3（产业应用）**：商业 AI 应用研究主力
-- **杠杆 4（治理）**：AI 政策与社会影响研究
+- **杠杆 2（治理）**：AI 政策与社会影响研究
+- **杠杆 4（应用）**：商业 AI 应用研究主力
 
 观点：SMU 不是 AI 创新源头，但它是"**技术翻译为商业价值**"的关键节点。新加坡 AI 落地缺的不是技术（NUS / NTU / AISG / A*STAR 已经有），而是能把技术对接到商业场景的人才——SMU 培养的就是这类人。`,
         singaporeRelevanceKo: `SMU는 싱가포르 AI 전략에서 「비즈니스 AI + 정책 AI의 다리」입니다.
 
 「일곱 가지 전도 레버」 속에서:
 
-- **레버 3(산업응용)**: 비즈니스 AI 응용 연구의 주력
-- **레버 4(거버넌스)**: AI 정책 및 사회영향 연구
+- **레버 2(거버넌스)**: AI 정책 및 사회영향 연구
+- **레버 4(애플리케이션)**: 비즈니스 AI 응용 연구의 주력
 
 관점: SMU는 AI 혁신의 원천이 아니지만, 「기술을 비즈니스 가치로 번역」하는 핵심 노드입니다. 싱가포르 AI 착지에 부족한 것은 기술이 아닙니다(NUS / NTU / AISG / A*STAR가 이미 보유). 기술을 비즈니스 시나리오에 대접할 수 있는 인재가 부족합니다——SMU가 양성하는 것이 바로 이런 인재입니다.`,
         singaporeRelevanceJa: `SMU はシンガポール AI 戦略において「ビジネス AI + 政策 AI のブリッジ」です。
 
 「7 つの伝導レバー」において：
 
-- **レバー 3（産業応用）**：ビジネス AI アプリケーション研究の主力
-- **レバー 4（ガバナンス）**：AI 政策と社会的インパクト研究
+- **レバー 2（ガバナンス）**：AI 政策と社会的インパクト研究
+- **レバー 4（応用）**：ビジネス AI アプリケーション研究の主力
 
 観点：SMU は AI イノベーションの源泉ではありませんが、それは「技術をビジネス価値に翻訳する」の重要なノードです。シンガポール AI 展開で不足しているのは技術ではなく（NUS／NTU／AISG／A*STAR がすでに持っている）、技術をビジネスシナリオに対接できる人材です——SMU が育成するのはこのような人です。`,
         singaporeRelevanceEn: `In Singapore's AI strategy, SMU is the "**bridge between business AI and policy AI**".
 
 Across the seven transmission levers:
 
-- **Lever 3 (Industry Application)**: the main force in business AI applied research
-- **Lever 4 (Governance)**: AI policy and societal impact research
+- **Lever 2 (Governance)**: AI policy and societal impact research
+- **Lever 4 (Applications)**: the main force in business AI applied research
 
 Take: SMU is not the source of AI innovation, but it is the key node that **"translates technology into business value"**. What Singapore's AI deployment lacks is not technology (NUS / NTU / AISG / A*STAR already provide that), but talent who can connect technology to business scenarios — and that is exactly what SMU produces.`,
         milestones: [
@@ -1837,7 +1825,7 @@ Take: SMU is not the source of AI innovation, but it is the key node that **"tra
             titleEn: 'School of Information Systems established',
           },
         ],
-        relatedLeverNumbers: [3, 4],
+        relatedLeverNumbers: [2, 4],
         relatedPolicyIds: ['research-innovation-and-enterprise-2025-plan', 'model-ai-governance-framework'],
         relatedDebateIds: ['motion-2976', 'budget-2362', 'written-answer-5627'],
         relatedEntityIds: ['nus', 'ntu', 'mas'],
@@ -1986,32 +1974,32 @@ Technically, SUTD's output is limited in scale (the school is small), but it has
 
 在「七条传导杠杆」里：
 
-- **杠杆 1（基础研究）**：在小众交叉领域的探索
-- **杠杆 2（人才）**：培养"懂设计、懂技术"的复合型 AI 人才
+- **杠杆 3（人才）**：培养"懂设计、懂技术"的复合型 AI 人才
+- **杠杆 4（应用）**：在小众交叉领域的探索
 
 观点：SUTD 的存在让新加坡高校体系**避免了"NUS 和 NTU 同质化竞争"的风险**——它走交叉创新路线，与两所综合性大学形成互补。`,
         singaporeRelevanceKo: `SUTD는 싱가포르 AI 전략에서 「실험적인 소규모 정예 노드」입니다.
 
 「일곱 가지 전도 레버」 속에서:
 
-- **레버 1(기초연구)**: 소수 교차 분야의 탐색
-- **레버 2(인재양성)**: 「디자인을 이해하고 기술도 이해」하는 복합형 AI 인재 양성
+- **레버 3(인재)**: 「디자인을 이해하고 기술도 이해」하는 복합형 AI 인재 양성
+- **레버 4(애플리케이션)**: 소수 교차 분야의 탐색
 
 관점: SUTD의 존재로 인해 싱가포르 고등교육 체계가 「NUS와 NTU의 동질화 경쟁」의 위험을 피했습니다——교차혁신 노선을 걸으며, 두 종합대학과 상호보완을 이룹니다.`,
         singaporeRelevanceJa: `SUTD はシンガポール AI 戦略において「実験的で小さくて精緻なノード」です。
 
 「7 つの伝導レバー」において：
 
-- **レバー 1（基礎研究）**：小さなニッチな交差領域での探索
-- **レバー 2（人材）**：「デザインを理解し、技術を理解する」複合型 AI 人材の育成
+- **レバー 3（人材）**：「デザインを理解し、技術を理解する」複合型 AI 人材の育成
+- **レバー 4（応用）**：小さなニッチな交差領域での探索
 
 観点：SUTD の存在により、シンガポール高等教育体系は「NUS と NTU の同質化競争」のリスクを回避しました——交差イノベーション戦略を取り、2 つの総合型大学と補完関係を形成しています。`,
         singaporeRelevanceEn: `In Singapore's AI strategy, SUTD is the "**experimental small-but-sharp node**".
 
 Across the seven transmission levers:
 
-- **Lever 1 (Foundational Research)**: exploration in niche crossover areas
-- **Lever 2 (Talent)**: cultivating "design + technology" hybrid AI talent
+- **Lever 3 (Talent)**: cultivating "design + technology" hybrid AI talent
+- **Lever 4 (Applications)**: exploration in niche crossover areas
 
 Take: SUTD's existence saves the Singapore university system from **"the risk of NUS-and-NTU homogeneous competition"** — it takes the crossover-innovation route and complements the two comprehensive universities.`,
         milestones: [
@@ -2030,7 +2018,7 @@ Take: SUTD's existence saves the Singapore university system from **"the risk of
             titleEn: 'First cohort enrolled',
           },
         ],
-        relatedLeverNumbers: [1, 2],
+        relatedLeverNumbers: [3, 4],
         relatedPolicyIds: ['research-innovation-and-enterprise-2025-plan'],
         relatedDebateIds: ['motion-2976', 'oral-answer-3393', 'budget-2336', 'budget-2072'],
         relatedEntityIds: ['nus', 'ntu'],
@@ -2360,7 +2348,7 @@ On the technical side, PDPC's guidance has pushed several local practices:
 
 在「七条传导杠杆」里：
 
-- **杠杆 4（治理）**：数据合规的执法主体
+- **杠杆 2（治理）**：数据合规的执法主体
 - **杠杆 6（外交）**：PDPA 与 GDPR 的部分等价让新加坡在数据跨境合作上有优势
 
 观点：**PDPC 的存在让"主权 AI" / "本地化 AI"在新加坡有真实的商业理由**——SEA-LION、本地金融业 LLM 等本地化路线不只是"民族叙事"，而是 PDPA 合规约束的直接结果。如果新加坡没有 PDPA，企业可以无脑用 OpenAI / Anthropic，本地 AI 价值会被稀释。
@@ -2372,7 +2360,7 @@ On the technical side, PDPC's guidance has pushed several local practices:
 
 「7개의 전달 레버」에서：
 
-- **레버 4(거버넌스)**：데이터 준수의 집행 주체
+- **레버 2(거버넌스)**：데이터 준수의 집행 주체
 - **레버 6(외교)**：PDPA와 GDPR의 일부 동등성으로 싱가포르가 데이터 국경 간 협력에서 이점을 보유
 
 관점：**PDPC의 존재는 싱가포르에서 「주권 AI」/ 「로컬화된 AI」에 진정한 상업적 이유를 부여합니다**——SEA-LION, 본지 금융업 LLM 등 로컬화 경로는 단지 「민족 서사」가 아니라 PDPA 준수 제약의 직접적 결과입니다. 싱가포르에 PDPA가 없다면, 기업은 OpenAI / Anthropic을 무분별하게 사용할 수 있고, 본지 AI 가치는 희석될 것입니다.
@@ -2384,7 +2372,7 @@ On the technical side, PDPC's guidance has pushed several local practices:
 
 「7つの伝導レバー」では：
 
-- **レバー 4（ガバナンス）**：データコンプライアンス執行の主体
+- **レバー 2（ガバナンス）**：データコンプライアンス執行の主体
 - **レバー 6（外交）**：PDPA と GDPR の部分的等価性により、シンガポールはデータの越境協力における利点を有します
 
 見方：**PDPC の存在は、シンガポールで「ソブリン AI」/「ローカライズ AI」に真実の商業的根拠をもたらしています**。SEA-LION や地元金融機関の LLM など、ローカライズ戦略は単なる「民族的叙事」ではなく、PDPA コンプライアンス制約の直接的結果です。シンガポールに PDPA がなければ、企業は無思考に OpenAI / Anthropic を使用でき、ローカル AI の価値は希釈されます。
@@ -2396,8 +2384,8 @@ On the technical side, PDPC's guidance has pushed several local practices:
 
 In the "seven transmission levers" framework:
 
-- **Lever 4 (governance)**: the enforcement body for data compliance
-- **Lever 6 (international)**: partial equivalence between PDPA and GDPR gives Singapore an edge on cross-border data cooperation
+- **Lever 2 (Governance)**: the enforcement body for data compliance
+- **Lever 6 (Diplomacy)**: partial equivalence between PDPA and GDPR gives Singapore an edge on cross-border data cooperation
 
 A take: **PDPC's existence gives "sovereign AI" / "localised AI" a real commercial rationale in Singapore** — SEA-LION and local financial-sector LLMs are not just a "national narrative" but a direct consequence of PDPA compliance constraints. Without PDPA, enterprises could mindlessly adopt OpenAI / Anthropic and the value of local AI would be diluted.
 
@@ -2438,7 +2426,7 @@ Tensions worth watching: **PDPC vs MAS coordination** (financial-sector AI sits 
             titleEn: 'Released GenAI Personal Data guidance',
           },
         ],
-        relatedLeverNumbers: [4],
+        relatedLeverNumbers: [2, 6],
         relatedPolicyIds: [
           'personal-data-protection-act-pdpa',
           'pdpc-advisory-guidelines-on-use-of-personal-data-in-ai',
@@ -2633,9 +2621,9 @@ The downside is just as obvious: **voluntary adoption = no teeth**. When an AI s
 
 在「七条传导杠杆」里：
 
-- **杠杆 4（治理）**：IMDA 是新加坡 AI 治理的总设计师
+- **杠杆 2（治理）**：IMDA 是新加坡 AI 治理的总设计师
+- **杠杆 4（应用）**：通过 SMEs Go Digital 等计划推动企业 AI 落地
 - **杠杆 6（外交）**：MGF 和 AI Verify 是新加坡在 GPAI、Bletchley/Seoul 峰会、OECD 的"治理名片"
-- **杠杆 3（产业应用）**：通过 SMEs Go Digital 等计划推动企业 AI 落地
 
 观点：**IMDA 的 AI 治理路线是新加坡"小国大策略"的典型样板**——不和欧盟比立法、不和美国比技术、不和中国比规模，而是抢占"治理工具与标准"这个细分赛道。AI Verify 这一步走得非常聪明：开源 + 国际可用 + 工具化，让新加坡成为"AI 治理的瑞士"。
 
@@ -2644,9 +2632,9 @@ The downside is just as obvious: **voluntary adoption = no teeth**. When an AI s
 
 「7개 전도 레버」 중:
 
-- **레버 4(거버넌스)**: IMDA는 싱가포르 AI 거버넌스의 총설계자입니다
+- **레버 2(거버넌스)**: IMDA는 싱가포르 AI 거버넌스의 총설계자입니다
+- **레버 4(애플리케이션)**: SMEs Go Digital 등의 계획을 통해 기업의 AI 도입을 추진합니다
 - **레버 6(외교)**: MGF와 AI Verify는 GPAI, Bletchley/Seoul 정상회담, OECD에서 싱가포르의 「거버넌스 명함」입니다
-- **레버 3(산업 응용)**: SMEs Go Digital 등의 계획을 통해 기업의 AI 도입을 추진합니다
 
 견해: **IMDA의 AI 거버넌스 경로는 싱가포르 「작은 나라의 큰 전략」의 전형적 표본입니다**——EU와 입법을 비교하지 않고, 미국과 기술을 비교하지 않고, 중국과 규모를 비교하지 않으면서 「거버넌스 도구 및 표준」이라는 틈새 부문을 선점합니다. AI Verify는 매우 영리한 수순입니다: 오픈소스 + 국제 활용 가능 + 도구화로 싱가포르를 「AI 거버넌스의 스위스」로 만듭니다.
 
@@ -2655,9 +2643,9 @@ The downside is just as obvious: **voluntary adoption = no teeth**. When an AI s
 
 「7つの伝導レバー」では：
 
-- **レバー 4（ガバナンス）**：IMDA はシンガポール AI ガバナンスの総合設計者です
+- **レバー 2（ガバナンス）**：IMDA はシンガポール AI ガバナンスの総合設計者です
+- **レバー 4（応用）**：SMEs Go Digital などの計画を通じて、企業 AI 展開を推進します
 - **レバー 6（外交）**：MGF と AI Verify は、GPAI、Bletchley/Seoul サミット、OECD における、シンガポールの「ガバナンスビジネスカード」です
-- **レバー 3（産業応用）**：SMEs Go Digital などの計画を通じて、企業 AI 展開を推進します
 
 見方：**IMDA の AI ガバナンス路線は、シンガポールの「小国大戦略」の典型的な見本です**。EU と立法を競い、米国と技術を競い、中国と規模を競わずに、「ガバナンスツールと標準」というニッチな賽道を占領します。AI Verify はこの一手を非常に賢く進めました：オープンソース + 国際的に使用可能 + ツール化により、シンガポールは「AI ガバナンスのスイス」になります。
 
@@ -2666,9 +2654,9 @@ The downside is just as obvious: **voluntary adoption = no teeth**. When an AI s
 
 In the "seven transmission levers" framework:
 
-- **Lever 4 (governance)**: IMDA is the chief designer of Singapore's AI governance
-- **Lever 6 (international)**: MGF and AI Verify are Singapore's "governance calling cards" at GPAI, the Bletchley/Seoul summits, and the OECD
-- **Lever 3 (industry adoption)**: programmes like SMEs Go Digital push enterprise AI deployment
+- **Lever 2 (Governance)**: IMDA is the chief designer of Singapore's AI governance
+- **Lever 4 (Applications)**: programmes like SMEs Go Digital push enterprise AI deployment
+- **Lever 6 (Diplomacy)**: MGF and AI Verify are Singapore's "governance calling cards" at GPAI, the Bletchley/Seoul summits, and the OECD
 
 A take: **IMDA's AI governance route is a textbook example of Singapore's "small country, big strategy"** — instead of competing with the EU on legislation, the US on technology, or China on scale, it stakes out the "governance tools and standards" niche. AI Verify was a particularly clever move: open-source, internationally usable, and tooled — making Singapore the "Switzerland of AI governance".
 
@@ -2729,7 +2717,7 @@ But IMDA also has structural challenges: **with telecoms, media, and AI all unde
             titleEn: 'Model AI Governance Framework for GenAI released',
           },
         ],
-        relatedLeverNumbers: [3, 4, 6],
+        relatedLeverNumbers: [2, 4, 6],
         relatedPolicyIds: [
           'model-ai-governance-framework',
           'proposed-model-ai-governance-framework-for-generative-ai',
@@ -2906,7 +2894,7 @@ In 2024, the framework was extended to generative AI (Generative AI Verify), add
 
 在「七条传导杠杆」里：
 
-- **杠杆 4（治理）**：把治理框架转化成可商用的工具
+- **杠杆 2（治理）**：把治理框架转化成可商用的工具
 - **杠杆 6（外交）**：通过 Foundation 形式，把"新加坡治理标准"国际化、去政治化
 
 观点：**新加坡用 AI Verify 做了一件其他国家没做的事——把"国家治理标准"变成"全球开源工具"**。欧盟 AI Act 是法律，离开欧盟管辖就没用；NIST AI RMF 是美国官方标准，国际接受度受地缘政治影响；而 AI Verify 是 Apache 协议的开源项目，谁都可以用，谁都不会觉得"被新加坡监管"。
@@ -2918,7 +2906,7 @@ In 2024, the framework was extended to generative AI (Generative AI Verify), add
 
 「7개의 전달 레버」에서:
 
-- **레버 4(거버넌스)**: 거버넌스 프레임워크를 상용화 가능한 도구로 변환
+- **레버 2(거버넌스)**: 거버넌스 프레임워크를 상용화 가능한 도구로 변환
 - **레버 6(외교)**: Foundation 형태를 통해 「싱가포르 거버넌스 표준」을 국제화, 탈정치화
 
 관점: **싱가포르는 AI Verify로 다른 국가들이 하지 않은 일을 했습니다——「국가 거버넌스 표준」을 「글로벌 오픈소스 도구」로 변환했습니다**. EU AI Act는 법이므로 EU 관할권 밖에서는 효력이 없습니다; NIST AI RMF는 미국 공식 표준이므로 국제 수용도가 지정학적 영향을 받습니다; 하지만 AI Verify는 Apache 라이선스의 오픈소스 프로젝트이므로 누구나 사용할 수 있으며, 누구도 「싱가포르의 규제를 받는다」고 느끼지 않을 것입니다.
@@ -2930,7 +2918,7 @@ In 2024, the framework was extended to generative AI (Generative AI Verify), add
 
 「7つの伝導レバー」では：
 
-- **レバー 4（ガバナンス）**：ガバナンスフレームワークを商用化可能なツールに転換
+- **レバー 2（ガバナンス）**：ガバナンスフレームワークを商用化可能なツールに転換
 - **レバー 6（外交）**：Foundation 形式により、「シンガポール ガバナンス標準」を国際化、非政治化
 
 見方：**シンガポールは AI Verify で他国がやっていないことをやりました。「国家ガバナンス標準」を「グローバルオープンソースツール」に変える**ことです。EU AI Act は法律であり、EU 管轄権を離れると無用です；NIST AI RMF は米国の公式標準であり、国際的受け入れは地政学的影響を受けます；一方、AI Verify は Apache 協定のオープンソースプロジェクトであり、誰でも使用でき、誰も「シンガポール監督を受けている」と感じません。
@@ -2942,8 +2930,8 @@ In 2024, the framework was extended to generative AI (Generative AI Verify), add
 
 In the "seven transmission levers" framework:
 
-- **Lever 4 (governance)**: turning the governance framework into a commercially usable tool
-- **Lever 6 (international)**: through the Foundation form, internationalising and de-politicising "Singapore governance standards"
+- **Lever 2 (Governance)**: turning the governance framework into a commercially usable tool
+- **Lever 6 (Diplomacy)**: through the Foundation form, internationalising and de-politicising "Singapore governance standards"
 
 A take: **Singapore did something with AI Verify that no other country has done — converting a "national governance standard" into a "global open-source tool"**. The EU AI Act is law: outside EU jurisdiction it has no power. NIST AI RMF is a US official standard: international acceptance is shaped by geopolitics. AI Verify, by contrast, is an Apache-licensed open-source project — anyone can use it without feeling "regulated by Singapore".
 
@@ -2988,7 +2976,7 @@ Bottlenecks to watch: **the Foundation's funding sustainability** (currently rel
             titleEn: 'Foundation membership exceeds 100',
           },
         ],
-        relatedLeverNumbers: [4, 6],
+        relatedLeverNumbers: [2, 6],
         relatedPolicyIds: [
           'ai-verify',
           'proposed-model-ai-governance-framework-for-generative-ai',
@@ -3148,7 +3136,7 @@ A take: **testing is the "last mile" of governance**. Singapore shipped the fram
 在传导杠杆里：
 
 - **杠杆 2（治理）**：把 CSA / IMDA 的治理要求转化为可采购的商业测试服务
-- **杠杆 6（国际 + 标准）**：新加坡与德国双总部——一头接新加坡的 AI Verify 生态，一头接欧盟 AI Act 催生的合规测试需求
+- **杠杆 6（外交）**：新加坡与德国双总部——一头接新加坡的 AI Verify 生态，一头接欧盟 AI Act 催生的合规测试需求
 
 观点：**主权资本下场做治理基础设施，是新加坡模式的一个独特样本**。政府出框架和认证（IMDA、CSA），国家投资公司出商业实体（Resaro），两条线在「AI 保障」这个新市场上会师。这种安排让「独立第三方」的独立性有一个微妙之处——Resaro 测的对象经常也是淡马锡系或政府系的 AI 系统。
 
@@ -3158,7 +3146,7 @@ A take: **testing is the "last mile" of governance**. Singapore shipped the fram
 전달 레버 프레임워크에서:
 
 - **레버 2(거버넌스)**: CSA / IMDA의 거버넌스 요구를 구매 가능한 상업 테스트 서비스로 변환
-- **레버 6(국제 + 표준)**: 싱가포르와 독일 이중 본사——한쪽은 싱가포르의 AI Verify 생태계에, 다른 쪽은 EU AI Act가 만드는 컴플라이언스 테스트 수요에 연결
+- **레버 6(외교)**: 싱가포르와 독일 이중 본사——한쪽은 싱가포르의 AI Verify 생태계에, 다른 쪽은 EU AI Act가 만드는 컴플라이언스 테스트 수요에 연결
 
 관점: **주권 자본이 직접 거버넌스 인프라를 만드는 것은 싱가포르 모델의 독특한 표본입니다**. 정부가 프레임워크와 인증을 내놓고(IMDA, CSA), 국가 투자회사가 상업 실체를 내놓습니다(Resaro). 두 줄기가 「AI 보증」이라는 새 시장에서 합류합니다. 이 구도는 「독립 제3자」의 독립성에 미묘한 문제를 남깁니다——Resaro가 테스트하는 대상이 종종 테마섹계나 정부계 AI 시스템이기 때문입니다.
 
@@ -3168,7 +3156,7 @@ A take: **testing is the "last mile" of governance**. Singapore shipped the fram
 伝導レバーの枠組みでは：
 
 - **レバー 2（ガバナンス）**：CSA / IMDA のガバナンス要求を、調達可能な商業テストサービスに変換
-- **レバー 6（国際 + 標準）**：シンガポールとドイツの二重本社——一方はシンガポールの AI Verify エコシステムに、もう一方は EU AI Act が生むコンプライアンステスト需要に接続
+- **レバー 6（外交）**：シンガポールとドイツの二重本社——一方はシンガポールの AI Verify エコシステムに、もう一方は EU AI Act が生むコンプライアンステスト需要に接続
 
 見方：**ソブリン資本がガバナンスインフラを自ら作るのは、シンガポールモデルの独特なサンプルです**。政府がフレームワークと認証を出し（IMDA、CSA）、国家投資会社が商業実体を出す（Resaro）。2 つの線が「AI 保証」という新市場で合流します。この構図は「独立第三者」の独立性に微妙な問題を残します——Resaro がテストする対象は、しばしばテマセク系や政府系の AI システムだからです。
 
@@ -3177,8 +3165,8 @@ A take: **testing is the "last mile" of governance**. Singapore shipped the fram
 
 In the transmission levers framework:
 
-- **Lever 2 (governance)**: converting CSA / IMDA governance requirements into commercially procurable testing services
-- **Lever 6 (international + standards)**: dual headquarters in Singapore and Germany — one end plugged into Singapore's AI Verify ecosystem, the other into the compliance-testing demand created by the EU AI Act
+- **Lever 2 (Governance)**: converting CSA / IMDA governance requirements into commercially procurable testing services
+- **Lever 6 (Diplomacy)**: dual headquarters in Singapore and Germany — one end plugged into Singapore's AI Verify ecosystem, the other into the compliance-testing demand created by the EU AI Act
 
 A take: **sovereign capital building governance infrastructure is a distinctly Singaporean pattern**. The government ships frameworks and accreditation (IMDA, CSA); the state investor ships a commercial entity (Resaro); the two lines converge on the new "AI assurance" market. The arrangement gives "independent third party" a subtle wrinkle — the systems Resaro tests are often themselves Temasek-linked or government-linked.
 
@@ -3433,8 +3421,8 @@ This toolkit is actually deployed at DBS, UOB, HSBC, and others — making it **
 
 在「七条传导杠杆」里：
 
-- **杠杆 4（治理）**：金融业 AI 治理的执行主体
-- **杠杆 3（产业应用）**：通过 Sandbox + TechFin 推动金融 AI 落地
+- **杠杆 2（治理）**：金融业 AI 治理的执行主体
+- **杠杆 4（应用）**：通过 Sandbox + TechFin 推动金融 AI 落地
 - **杠杆 6（外交）**：通过 GAIIN 把治理标准国际化
 
 观点：**MAS 是新加坡 AI 治理体系里"最有牙齿"的机构**——和 IMDA 走"自愿采纳 + 软标准"路线不同，MAS 对金融机构有真实的处罚权，FEAT/Veritas 不是建议而是行规。
@@ -3446,8 +3434,8 @@ This toolkit is actually deployed at DBS, UOB, HSBC, and others — making it **
 
 「7가지 전도 레버」에서:
 
-- **레버 4(치리)**: 금융업의 AI 치리 실행 주체
-- **레버 3(산업 응용)**: Sandbox + TechFin을 통해 금융 AI 적용 추진
+- **레버 2(거버넌스)**: 금융업의 AI 치리 실행 주체
+- **레버 4(애플리케이션)**: Sandbox + TechFin을 통해 금융 AI 적용 추진
 - **레버 6(외교)**: GAIIN을 통해 치리 표준 국제화
 
 관점: **MAS는 싱가포르 AI 치리 체계에서 「가장 강력한」기관입니다**——IMDA가 「자발적 도입 + 소프트 표준」노선을 택하는 것과 다르게, MAS는 금융 기관에 대한 실질적 처벌권을 가지고 있으며, FEAT/Veritas는 권고가 아니라 업계 규정입니다.
@@ -3459,8 +3447,8 @@ This toolkit is actually deployed at DBS, UOB, HSBC, and others — making it **
 
 「7 つの伝導レバー」の中で：
 
-- **レバー 4（ガバナンス）**：金融業 AI ガバナンスの実行主体
-- **レバー 3（産業応用）**：Sandbox + TechFin を通じた金融 AI 実装推進
+- **レバー 2（ガバナンス）**：金融業 AI ガバナンスの実行主体
+- **レバー 4（応用）**：Sandbox + TechFin を通じた金融 AI 実装推進
 - **レバー 6（外交）**：GAIIN を通じたガバナンス標準の国際化
 
 見方：**MAS はシンガポール AI ガバナンス体系における「最も歯を持つ機関」です**——IMDA の「自発的採用 + ソフト標準」ルートとは異なり、MAS は金融機関に対して実際の処罰権を持っており、FEAT/Veritas は提案ではなく業界規則です。
@@ -3472,9 +3460,9 @@ This toolkit is actually deployed at DBS, UOB, HSBC, and others — making it **
 
 In the "seven transmission levers" framework:
 
-- **Lever 4 (governance)**: the enforcement body for financial-sector AI governance
-- **Lever 3 (industry adoption)**: pushes financial AI deployment via Sandbox + TechFin
-- **Lever 6 (international)**: internationalises governance standards via GAIIN
+- **Lever 2 (Governance)**: the enforcement body for financial-sector AI governance
+- **Lever 4 (Applications)**: pushes financial AI deployment via Sandbox + TechFin
+- **Lever 6 (Diplomacy)**: internationalises governance standards via GAIIN
 
 A take: **MAS is the institution with the most teeth in Singapore's AI governance system** — unlike IMDA's "voluntary adoption + soft standards" route, MAS has real penalty power over financial institutions; FEAT/Veritas is not advice but industry rule.
 
@@ -3530,7 +3518,7 @@ Worth watching going forward: **when MAS will allow GenAI in direct customer-fac
             descriptionEn: 'Global AI Innovation Network — cross-border regulatory collaboration.',
           },
         ],
-        relatedLeverNumbers: [3, 4, 6],
+        relatedLeverNumbers: [2, 4, 6],
         relatedPolicyIds: [
           'fairness-ethics-accountability-transparency-feat-principles',
           'veritas-initiative',
@@ -3773,9 +3761,9 @@ At a broader level, SEA-LION is also an important case study for "regional adapt
 
 在「七条传导杠杆」里，SEA-LION 同时落在 3 条上：
 
+- **杠杆 4（应用）**：开源后，本地企业（特别是金融、政府、医疗这种敏感数据场景）可以直接微调使用，不必受制于海外 API
 - **杠杆 5（政府自用）**：政府部门基于 SEA-LION 部署本地化 AI 服务，避免把数据交给海外大厂
 - **杠杆 6（外交）**：SEA-LION 是新加坡在 ASEAN AI 合作、GPAI、Bletchley/Seoul 峰会上的「技术名片」，证明小国家也能产出全球开源模型
-- **杠杆 3（产业应用）**：开源后，本地企业（特别是金融、政府、医疗这种敏感数据场景）可以直接微调使用，不必受制于海外 API
 
 观点：**SEA-LION 的真正价值不在它的技术指标，而在它是一个「主权 AI」的样板项目**。它告诉东南亚：「你们也可以有自己的 LLM 基座，不必只用 OpenAI」。这种叙事价值远大于它对任何单个 benchmark 的提升。
 
@@ -3790,9 +3778,9 @@ At a broader level, SEA-LION is also an important case study for "regional adapt
 
 「7가지 전달 레버」에서 SEA-LION은 동시에 3가지에 해당합니다:
 
+- **레버 4(애플리케이션)**：오픈소스 후, 현지 기업(특히 금융, 정부, 의료 등 민감한 데이터 시나리오)은 직접 미세조정하여 사용 가능하며, 해외 API에 의존할 필요 없음
 - **레버 5(정부 자체 사용)**：정부 부서가 SEA-LION을 기반으로 현지화된 AI 서비스를 배포하여 데이터를 해외 대기업에 넘기지 않음
 - **레버 6(외교)**：SEA-LION은 ASEAN AI 협력, GPAI, Bletchley/Seoul 정상회담에서 싱가포르의 「기술 명함」으로, 작은 국가도 전 지구적 오픈소스 모델을 만들 수 있음을 증명
-- **레버 3(산업 응용)**：오픈소스 후, 현지 기업(특히 금융, 정부, 의료 등 민감한 데이터 시나리오)은 직접 미세조정하여 사용 가능하며, 해외 API에 의존할 필요 없음
 
 관점: **SEA-LION의 진정한 가치는 기술 지표에 있지 않고 「주권 AI」의 표본 프로젝트라는 점에 있습니다**. 이것은 동남아에 말합니다: 「여러분도 자신의 LLM 기초 모델을 가질 수 있으며, OpenAI만 사용할 필요는 없습니다」. 이러한 서사 가치는 어떤 단일 벤치마크 개선보다 훨씬 큽니다.
 
@@ -3807,9 +3795,9 @@ At a broader level, SEA-LION is also an important case study for "regional adapt
 
 「7 つの伝導レバー」の中で、SEA-LION は同時に 3 つの上に落ちます：
 
+- **レバー 4（応用）**：オープンソース後、ローカル企業（特に金融、政府、医療といった機密データシーン）は直接ファインチューニングして使用でき、海外 API に拘束される必要がありません
 - **レバー 5（政府自用）**：政府部門が SEA-LION に基づいて現地化 AI サービスを配置し、データを海外大企業に渡すことを避けます
 - **レバー 6（外交）**：SEA-LION はシンガポールが ASEAN AI 協力、GPAI、Bletchley/Seoul サミットにおける「技術名刺」で、小国でもグローバルオープンソースモデルを産出できることを証明します
-- **レバー 3（産業応用）**：オープンソース後、ローカル企業（特に金融、政府、医療といった機密データシーン）は直接ファインチューニングして使用でき、海外 API に拘束される必要がありません
 
 見方：**SEA-LION の真の価値は技術的指標にはなく、それが「主権 AI」のモデルプロジェクトであるという点にあります**。それは東南アジアに以下を告げます：「あなたたちも自らの LLM 基盤を持つことができ、OpenAI だけを使用する必要がありません」。このナラティブの価値は、任意の単一ベンチマークへの向上をはるかに上回ります。
 
@@ -3824,9 +3812,9 @@ At a broader level, SEA-LION is also an important case study for "regional adapt
 
 In the seven-lever framework, SEA-LION sits across three levers:
 
-- **Lever 5 (government adoption)**: government agencies deploy localised AI services on SEA-LION, avoiding sending data to overseas big tech
-- **Lever 6 (international)**: SEA-LION is Singapore's "tech calling card" at ASEAN AI cooperation, GPAI, Bletchley/Seoul summits — proof that small countries can produce globally usable open-source models
-- **Lever 3 (industry adoption)**: once open-sourced, local enterprises (especially in finance, government, healthcare with sensitive data) can fine-tune directly without depending on overseas APIs
+- **Lever 4 (Applications)**: once open-sourced, local enterprises (especially in finance, government, healthcare with sensitive data) can fine-tune directly without depending on overseas APIs
+- **Lever 5 (Government Self-Use)**: government agencies deploy localised AI services on SEA-LION, avoiding sending data to overseas big tech
+- **Lever 6 (Diplomacy)**: SEA-LION is Singapore's "tech calling card" at ASEAN AI cooperation, GPAI, Bletchley/Seoul summits — proof that small countries can produce globally usable open-source models
 
 A take: **SEA-LION's real value is not in its benchmark numbers but in being a "sovereign AI" reference project** — it tells Southeast Asia: "you can also have your own LLM foundation, you don't have to use only OpenAI". This narrative value far exceeds its lift on any single benchmark.
 
@@ -3912,7 +3900,7 @@ These bottlenecks are exactly the questions to be answered in the NAIS 2.0 era �
               'Multiple Singapore government agencies deploy SEA-LION-based internal AI assistants and public service prototypes.',
           },
         ],
-        relatedLeverNumbers: [3, 5, 6],
+        relatedLeverNumbers: [4, 5, 6],
         relatedPolicyIds: ['national-ai-strategy-20-nais-20'],
         relatedDebateIds: ['budget-2362', 'oral-answer-3375'],
         relatedEntityIds: ['ai-singapore', 'sea-helm', 'sea-guard', 'imda'],
@@ -4110,9 +4098,9 @@ This data has become the most important "hard evidence" for SEA-LION's commercia
 
 在「七条传导杠杆」里：
 
+- **杠杆 2（治理）**：评估结果是政府部门 LLM 选型的客观依据
+- **杠杆 4（应用）**：本地企业可以用 SEA-HELM 选择适合自己的 LLM
 - **杠杆 6（外交）**：SEA-HELM 让新加坡在 ASEAN AI 合作中有"区域语言能力测评"的话语权
-- **杠杆 3（产业应用）**：本地企业可以用 SEA-HELM 选择适合自己的 LLM
-- **杠杆 4（治理）**：评估结果是政府部门 LLM 选型的客观依据
 
 观点：**SEA-HELM 是新加坡 AI 战略中"标准之争"的关键一步**。它不是产品，但它定义了"什么算好的东南亚 LLM"——这种定义权比任何单个模型都更持久。如果未来 SEA-LION 被其他模型超越，SEA-HELM 仍然存在；只要东南亚 LLM 还要被评估，新加坡就在标准位置上。
 
@@ -4121,9 +4109,9 @@ This data has become the most important "hard evidence" for SEA-LION's commercia
 
 「일곱 가지 전도 레버」에서:
 
+- **레버 2 (거버넌스)**: 평가 결과는 정부 부처 LLM 선택의 객관적 근거
+- **레버 4 (애플리케이션)**: 현지 기업이 SEA-HELM으로 자신에게 맞는 LLM을 선택할 수 있음
 - **레버 6 (외교)**: SEA-HELM은 싱가포르가 ASEAN AI 협력에서 「지역 언어 능력 평가」의 발언권을 갖도록 함
-- **레버 3 (산업 응용)**: 현지 기업이 SEA-HELM으로 자신에게 맞는 LLM을 선택할 수 있음
-- **레버 4 (거버넌스)**: 평가 결과는 정부 부처 LLM 선택의 객관적 근거
 
 관점: **SEA-HELM은 싱가포르 AI 전략에서 「표준 경쟁」의 핵심 단계입니다**. 이는 제품이 아니지만 「좋은 동남아시아 LLM이란 무엇인가」를 정의합니다 - 이러한 정의 권한은 어떤 단일 모델보다도 더 오래 지속됩니다. 향후 SEA-LION이 다른 모델에 초월당해도 SEA-HELM은 존재하며, 동남아시아 LLM이 평가받아야 하는 한 싱가포르는 표준 위치에 있게 됩니다.
 
@@ -4132,9 +4120,9 @@ This data has become the most important "hard evidence" for SEA-LION's commercia
 
 「7つの伝導レバー」の中で：
 
+- **レバー 2（ガバナンス）**：評価結果は政府部門の LLM 選定の客観的根拠となります
+- **レバー 4（応用）**：地元企業は SEA-HELM を用いて自分たちに適した LLM を選択できます
 - **レバー 6（外交）**：SEA-HELM により、シンガポールは ASEAN AI 協力において「地域言語能力評価」の発言権を得ます
-- **レバー 3（産業応用）**：地元企業は SEA-HELM を用いて自分たちに適した LLM を選択できます
-- **レバー 4（ガバナンス）**：評価結果は政府部門の LLM 選定の客観的根拠となります
 
 見方：**SEA-HELM は、シンガポール AI 戦略における「標準を巡る競い」の重要なステップです**。それは製品ではなく、「何が良い東南アジア LLM か」を定義しています——この定義権は、どの単一のモデルよりも永続的です。将来、SEA-LION が他のモデルに超えられても、SEA-HELM は存在し続けます；東南アジアの LLM が評価される限り、シンガポールは標準的なポジションにあります。
 
@@ -4143,9 +4131,9 @@ This data has become the most important "hard evidence" for SEA-LION's commercia
 
 In the seven-lever framework:
 
-- **Lever 6 (international)**: SEA-HELM gives Singapore a voice on "regional language capability assessment" in ASEAN AI cooperation
-- **Lever 3 (industry adoption)**: local enterprises can use SEA-HELM to pick the right LLM for their needs
-- **Lever 4 (governance)**: evaluation results provide an objective basis for government LLM procurement
+- **Lever 2 (Governance)**: evaluation results provide an objective basis for government LLM procurement
+- **Lever 4 (Applications)**: local enterprises can use SEA-HELM to pick the right LLM for their needs
+- **Lever 6 (Diplomacy)**: SEA-HELM gives Singapore a voice on "regional language capability assessment" in ASEAN AI cooperation
 
 A take: **SEA-HELM is a critical step in the "standards battle" within Singapore's AI strategy**. It is not a product, but it defines "what counts as a good Southeast Asian LLM" — and that definitional power is more durable than any single model. Even if SEA-LION is eventually surpassed by other models, SEA-HELM remains; as long as Southeast Asian LLMs need to be evaluated, Singapore sits on the standard.
 
@@ -4166,7 +4154,7 @@ Worth watching: **how quickly SEA-HELM updates** (GenAI moves fast and benchmark
             titleEn: 'Evaluation suite upgraded alongside SEA-LION v3',
           },
         ],
-        relatedLeverNumbers: [3, 4, 6],
+        relatedLeverNumbers: [2, 4, 6],
         relatedEntityIds: ['sea-lion', 'ai-singapore', 'sea-guard'],
         sources: [
           {
@@ -4308,7 +4296,7 @@ Technical challenges:
 
 在「七条传导杠杆」里：
 
-- **杠杆 3（产业应用）**：让本地企业敢于在生产环境部署 SEA-LION
+- **杠杆 4（应用）**：让本地企业敢于在生产环境部署 SEA-LION
 - **杠杆 5（政府自用）**：政府部门 AI 服务必须有安全过滤
 
 观点：**SEA-Guard 是 AISG"全栈思维"的体现**——不只做模型，还做评估（SEA-HELM）和安全（SEA-Guard），形成"模型 + 评估 + 安全"完整工具链。这是国家级机构相对于初创公司的天然优势：可以做"商业上不性感但生态上必需"的工具。
@@ -4318,7 +4306,7 @@ Technical challenges:
 
 「일곱 가지 전도 레버」에서:
 
-- **레버 3 (산업 응용)**: 현지 기업이 프로덕션 환경에서 SEA-LION 배포를 감행하게 함
+- **레버 4 (애플리케이션)**: 현지 기업이 프로덕션 환경에서 SEA-LION 배포를 감행하게 함
 - **레버 5 (정부 자체 사용)**: 정부 부처 AI 서비스는 반드시 안전 필터링을 갖춰야 함
 
 관점: **SEA-Guard는 AISG의 「풀스택 사고방식」을 구현합니다** - 단순히 모델만 하지 않고 평가(SEA-HELM)와 안전(SEA-Guard)도 하여 「모델 + 평가 + 안전」의 완전한 도구 체인을 형성합니다. 이는 초창기 회사 대비 국가급 기관의 자연스러운 우위입니다: 「상업적으로는 매력적이지 않지만 생태계상 필수적인」 도구를 할 수 있습니다.
@@ -4328,8 +4316,8 @@ Technical challenges:
 
 「7つの伝導レバー」の中で：
 
-- **レバー 3（産業応用）**：本地企業が生産環境に SEA-LION を展開することを可能にします
-- **レバー 5（政府自己利用）**：政府部門の AI サービスは安全フィルタリングが必須です
+- **レバー 4（応用）**：本地企業が生産環境に SEA-LION を展開することを可能にします
+- **レバー 5（政府自用）**：政府部門の AI サービスは安全フィルタリングが必須です
 
 見方：**SEA-Guard は AISG の「フルスタック思考」を体現しています**——モデルだけでなく、評価（SEA-HELM）と安全（SEA-Guard）も行い、「モデル + 評価 + 安全」の完全なツールチェーンを形成しています。これは国家級機関がスタートアップ企業に対して持つ自然なアドバンテージです：「商用的には魅力的ではないが、エコシステムとして必要」なツールを作ることができるのです。
 
@@ -4338,8 +4326,8 @@ Technical challenges:
 
 In the seven-lever framework:
 
-- **Lever 3 (industry adoption)**: gives local enterprises confidence to deploy SEA-LION in production
-- **Lever 5 (government adoption)**: government AI services must have safety filtering
+- **Lever 4 (Applications)**: gives local enterprises confidence to deploy SEA-LION in production
+- **Lever 5 (Government Self-Use)**: government AI services must have safety filtering
 
 A take: **SEA-Guard reflects AISG's "full-stack thinking"** — not just the model, but evaluation (SEA-HELM) and safety (SEA-Guard) too, forming a complete "model + evaluation + safety" toolchain. This is a natural advantage that national-level institutions hold over startups: they can build tools that are "commercially unsexy but ecosystem-essential".
 
@@ -4353,7 +4341,7 @@ But SEA-Guard's maturity is still not enough: **today it is more demo than produ
             titleEn: 'SEA-Guard first version released',
           },
         ],
-        relatedLeverNumbers: [3, 5],
+        relatedLeverNumbers: [4, 5],
         relatedEntityIds: ['sea-lion', 'ai-singapore', 'sea-helm'],
         sources: [
           {
@@ -4457,28 +4445,28 @@ The value lies in:
 
 在「七条传导杠杆」里：
 
-- **杠杆 1（基础设施）**：AISG 内部 ML 工程能力的基础
+- **杠杆 1（基建）**：AISG 内部 ML 工程能力的基础
 
 观点：Aquarium 不是 AISG 对外的旗舰产品，但它是 AISG 能持续高效输出（SEA-LION、TagUI、PeekingDuck 等）的工程基础。`,
         singaporeRelevanceKo: `Aquarium은 AISG의 「공학화」의 내부 구현입니다——**국가급 AI 기관은 엔지니어링 기초 인프라가 필요하지 않으면 인력 비용이 기초 인프라 구축에 소비될 것입니다**。
 
 「일곱 가지 전도 레버」 내에서:
 
-- **레버 1(기초 인프라)**: AISG 내부 ML 엔지니어링 역량의 기초
+- **레버 1(기초 시설)**: AISG 내부 ML 엔지니어링 역량의 기초
 
 관점: Aquarium은 AISG의 대외 기함 제품이 아니지만, Aquarium은 AISG가 지속적으로 효율적으로 출력할 수 있게 하는(SEA-LION, TagUI, PeekingDuck 등) 엔지니어링 기초입니다.`,
         singaporeRelevanceJa: `Aquarium は AISG の「エンジニアリング化」の内部的な表現です——**国家級 AI 機構は工学的基盤インフラが必要です。そうでなければ人的コストが基盤インフラの構築に費やされます**。
 
 「7つの伝導レバー」の中で：
 
-- **レバー 1（基盤インフラ）**：AISG 内部 ML エンジニアリング能力の基礎
+- **レバー 1（インフラ）**：AISG 内部 ML エンジニアリング能力の基礎
 
 見方：Aquarium は AISG の外向きのフラッグシップ製品ではありませんが、AISG が継続的に高い効率で出力（SEA-LION、TagUI、PeekingDuck など）を生成するための工学的基礎です。`,
         singaporeRelevanceEn: `Aquarium reflects AISG's internal "engineering rigour" — **a national-level AI institution needs engineering infrastructure, or labour costs get eaten up by infrastructure-building**.
 
 In the seven-lever framework:
 
-- **Lever 1 (infrastructure)**: the foundation of AISG's internal ML engineering capability
+- **Lever 1 (Infrastructure)**: the foundation of AISG's internal ML engineering capability
 
 A take: Aquarium is not AISG's flagship external product, but it is the engineering foundation that lets AISG keep delivering at high tempo (SEA-LION, TagUI, PeekingDuck, and more).`,
         milestones: [],
@@ -4578,26 +4566,26 @@ It is led by MCI (now MDDI), DISG (the joint EDB-IMDA office) and SNDGO, with Go
         aiRelevanceEn: `AI Trailblazers does no research — it is an **adoption accelerator for generative AI**, driving the cost of the "should we try GenAI" decision to near zero: free tooling, ready-made templates, a prototype in 100 days. It is also the flagship example of Singapore's "ride the hyperscalers" playbook: rather than building a national LLM platform, the government uses Vertex AI as public innovation infrastructure.`,
         singaporeRelevance: `在「七条传导杠杆」里，AI Trailblazers 同时压在两条杠杆上：
 
-- **杠杆 5（政府自用）**：公共部门轨直接产出政府机构的生成式 AI 用例
 - **杠杆 4（应用）**：企业轨把本地企业拉进生成式 AI 采纳曲线
+- **杠杆 5（政府自用）**：公共部门轨直接产出政府机构的生成式 AI 用例
 
 观点：它是新加坡「小政府大杠杆」的典型操作——政府不出钱建平台，用场景和组织力换 Google Cloud 的工具与培训，100 天节奏保证项目不烂尾。注意：它**不是** AI Singapore 的项目（常见误解），牵头方是 MDDI/DISG/SNDGO。`,
         singaporeRelevanceKo: `「일곱 가지 전달 레버」에서 AI Trailblazers는 두 레버에 동시에 걸쳐 있습니다:
 
+- **레버 4(애플리케이션)**: 기업 트랙이 현지 기업을 생성형 AI 도입 곡선으로 끌어들임
 - **레버 5(정부 자체 사용)**: 공공 부문 트랙이 정부 기관의 생성형 AI 유스케이스를 직접 산출
-- **레버 4(응용)**: 기업 트랙이 현지 기업을 생성형 AI 도입 곡선으로 끌어들임
 
 관점: 이는 싱가포르 「작은 정부, 큰 레버」의 전형적인 수법입니다——정부는 플랫폼 구축에 돈을 쓰지 않고, 시나리오와 조직력으로 Google Cloud의 도구와 교육을 교환하며, 100일 리듬으로 프로젝트가 흐지부지되지 않도록 보장합니다. 주의: 이것은 AI Singapore의 프로그램이 **아닙니다**(흔한 오해). 주관은 MDDI/DISG/SNDGO입니다.`,
         singaporeRelevanceJa: `「7 つの伝導レバー」の中で、AI Trailblazers は 2 つのレバーに同時にかかっています：
 
-- **レバー 5（政府自用）**：公共部門トラックが政府機関の生成 AI ユースケースを直接産出
 - **レバー 4（応用）**：企業トラックがローカル企業を生成 AI 採用曲線に引き込む
+- **レバー 5（政府自用）**：公共部門トラックが政府機関の生成 AI ユースケースを直接産出
 
 見解：これはシンガポールの「小さな政府・大きなレバー」の典型的な手法です——政府はプラットフォーム構築に資金を出さず、ユースケースと組織力で Google Cloud のツールとトレーニングを引き出し、100 日のリズムでプロジェクトの停滞を防ぎます。注意：これは AI Singapore のプロジェクトでは**ありません**（よくある誤解）。主導は MDDI/DISG/SNDGO です。`,
         singaporeRelevanceEn: `In the "seven transmission levers" framework, AI Trailblazers presses on two levers at once:
 
-- **Lever 5 (government self-use)**: the public-sector track directly produces GenAI use cases inside agencies
-- **Lever 4 (application)**: the enterprise track pulls local companies onto the GenAI adoption curve
+- **Lever 4 (Applications)**: the enterprise track pulls local companies onto the GenAI adoption curve
+- **Lever 5 (Government Self-Use)**: the public-sector track directly produces GenAI use cases inside agencies
 
 A take: this is Singapore's "small government, big leverage" playbook in action — the state spends no platform money, trading use cases and organising power for Google Cloud's tooling and training, with the 100-day cadence keeping projects from stalling. Note: it is **not** an AI Singapore programme (a common mix-up); it is led by MDDI, DISG and SNDGO.`,
         milestones: [
@@ -4703,7 +4691,7 @@ Timeline: JTC unveiled the refreshed LaunchPad masterplan and started the pilot 
         singaporeRelevanceJa: `「7 つの伝導レバー」の中で、Kampong AI は**レバー 1（インフラ）**の物理インフラ分岐に属します——データセンター、計算クラスターと同列ですが、これが建てるのは「機械の密度」ではなく「人の密度」です。
 
 見解：シンガポールの土地は極めて高く、one-north の地块を AI スタートアップ＋人材住宅に専用で割り当てたことは、財政上の本気の意思表示です。リスクも同様に明白です：キャンパス経済学の成否は誘致の質に依存し、2028 年の完成後に入居率と企業構成を振り返る価値があります。これは AI Singapore のプロジェクトでは**ありません**——オーナーと運営は JTC です。`,
-        singaporeRelevanceEn: `In the "seven transmission levers" framework, Kampong AI belongs to the physical-infrastructure branch of **Lever 1 (infrastructure)** — same column as data centres and compute clusters, except what it builds is density of people rather than density of machines.
+        singaporeRelevanceEn: `In the "seven transmission levers" framework, Kampong AI belongs to the physical-infrastructure branch of **Lever 1 (Infrastructure)** — same column as data centres and compute clusters, except what it builds is density of people rather than density of machines.
 
 A take: land in Singapore is scarce and expensive; dedicating a one-north parcel to AI startups plus talent housing is a genuine fiscal statement. The risk is equally plain: campus economics live or die on tenant quality — worth revisiting occupancy and company mix after completion in 2028. Note it is **not** an AI Singapore project; JTC owns and runs it.`,
         milestones: [
@@ -4850,32 +4838,32 @@ Technically, 100E project outputs varied widely — a few became real products, 
 
 在「七条传导杠杆」里：
 
-- **杠杆 3（产业应用）**：第一次让中小企业接触 AI
-- **杠杆 2（人才）**：给 AIAP 学徒提供真实项目
+- **杠杆 3（人才）**：给 AIAP 学徒提供真实项目
+- **杠杆 4（应用）**：第一次让中小企业接触 AI
 
 观点：**100E 的归档不是失败，是模式成熟的标志**。它建立的"政府出钱 + 学徒出工 + 企业出场景"模式被后续项目继承，本身完成了它"启动新加坡企业 AI 落地"的历史使命。`,
         singaporeRelevanceKo: `100E는 싱가포르의 「국가 + 기업 + 도제 삼방 공동 건설」 모델의 원천입니다.
 
 「일곱 가지 전도 레버」 내에서:
 
-- **레버 3(산업 응용)**: 처음으로 중소기업들이 AI에 접촉하게 함
-- **레버 2(인재)**: AIAP 도제에게 실제 프로젝트 제공
+- **레버 3(인재)**: AIAP 도제에게 실제 프로젝트 제공
+- **레버 4(애플리케이션)**: 처음으로 중소기업들이 AI에 접촉하게 함
 
 관점: **100E의 보관은 실패가 아니라 모델 성숙의 표시입니다**. 그것이 건립한 「정부가 자금을 내고 + 도제가 일하고 + 기업이 시나리오를 제공한다」 모델은 후속 프로젝트에 의해 상속되었고, 본신은 「싱가포르 기업 AI 착지 시작」의 역사적 사명을 완성했습니다.`,
         singaporeRelevanceJa: `100E はシンガポールの「国家 + 企業 + 学徒の三者共同構築」モデルの源です。
 
 「7つの伝導レバー」の中で：
 
-- **レバー 3（産業応用）**：中小企業が初めて AI に接する機会
-- **レバー 2（人材）**：AIAP 学徒に実践的なプロジェクトを提供します
+- **レバー 3（人材）**：AIAP 学徒に実践的なプロジェクトを提供します
+- **レバー 4（応用）**：中小企業が初めて AI に接する機会
 
 見方：**100E のアーカイブは失敗ではなく、モデルが成熟した証です**。それが確立した「政府が資金提供 + 学徒が労働 + 企業がシナリオを提供」というモデルは後続プロジェクトに継承され、自らはシンガポール企業の AI 実装を「始める」という歴史的使命を完了しました。`,
         singaporeRelevanceEn: `100E is the origin of Singapore's "government + enterprise + apprentice" tripartite model.
 
 In the seven-lever framework:
 
-- **Lever 3 (industry adoption)**: the first programme to expose SMEs to AI
-- **Lever 2 (talent)**: gave AIAP apprentices real projects to work on
+- **Lever 3 (Talent)**: gave AIAP apprentices real projects to work on
+- **Lever 4 (Applications)**: the first programme to expose SMEs to AI
 
 A take: **100E being archived is not failure, but a sign that the model has matured**. The "government funds + apprentices work + enterprise provides the scenario" pattern has been inherited by successor programmes — 100E itself completed its historical mission of "kicking off enterprise AI deployment in Singapore".`,
         milestones: [
@@ -4894,7 +4882,7 @@ A take: **100E being archived is not failure, but a sign that the model has matu
             titleEn: '100E formally archived',
           },
         ],
-        relatedLeverNumbers: [2, 3],
+        relatedLeverNumbers: [3, 4],
         relatedPolicyIds: ['national-ai-strategy-nais-10'],
         relatedDebateIds: ['written-answer-9318', 'budget-1112'],
         relatedEntityIds: ['ai-singapore', 'aiap'],
@@ -5020,48 +5008,48 @@ After graduation, around 70% stay in Singapore's AI industry; 30% leave for over
 Singapore's universities produce high-quality but small numbers of CS graduates (NUS / NTU together produce roughly a thousand per year), and only a fraction actually go into AI. Commercial AI teams (DBS, Singtel, Grab) and startups are constantly competing for talent. AIAP gives engineers from "non-CS backgrounds with strong learning ability" a fast track into AI engineering — effectively a "side door" into the local AI talent market.
 
 Technically, AIAP's training intensity is very high — going from zero to writing production-grade AI projects in 9 months requires apprentices to work 10+ hours a day. That intensity filters out those who aren't suited; what remains are people who can genuinely deliver.`,
-        singaporeRelevance: `AIAP 是新加坡 AI 战略**"杠杆 2（人才）"**的核心抓手。
+        singaporeRelevance: `AIAP 是新加坡 AI 战略**"杠杆 3（人才）"**的核心抓手。
 
 在「七条传导杠杆」里：
 
-- **杠杆 2（人才）**：本地 AI 工程师培养主管道
-- **杠杆 3（应用）**：通过 100E 项目让学徒在企业实战
+- **杠杆 3（人才）**：本地 AI 工程师培养主管道
+- **杠杆 4（应用）**：通过 100E 项目让学徒在企业实战
 
 观点：**AIAP 的"学徒 + 项目"模式是新加坡 AI 人才战略的最大创新**。它不是高校能做的（高校太学术），不是企业能做的（企业不愿意花 9 个月慢慢带新人），只能由 AISG 这种"国家计划 + 商业项目桥梁"型机构来做。
 
 但 AIAP 也有结构性挑战：**人才流失率高**——9 个月后学徒进入私企，AISG 留不住自己培养的人；**项目质量依赖企业方**——100E 合作企业的项目水平参差不齐；**规模天花板**——每年 60-80 人的产出对新加坡 AI 行业仍然是杯水车薪。
 
 NAIS 2.0 时期 AIAP 的关键问题：**能否扩大到每年 200+？能否提高留存率？能否产出更高质量的 AI 工程师？**`,
-        singaporeRelevanceKo: `AIAP는 싱가포르 AI 전략의 **「레버 2(인재)」**의 핵심입니다.
+        singaporeRelevanceKo: `AIAP는 싱가포르 AI 전략의 **「레버 3(인재)」**의 핵심입니다.
 
 「일곱 가지 전도 레버」 내에서:
 
-- **레버 2(인재)**: 현지 AI 엔지니어 양성 주요 관도
-- **레버 3(응용)**: 100E 프로젝트를 통해 도제의 기업 실전 지원
+- **레버 3(인재)**: 현지 AI 엔지니어 양성 주요 관도
+- **레버 4(애플리케이션)**: 100E 프로젝트를 통해 도제의 기업 실전 지원
 
 관점: **AIAP의 「도제 + 프로젝트」 모델은 싱가포르 AI 인재 전략에서의 가장 큰 혁신입니다**. 이것은 고등교육이 할 수 있는 것이 아닙니다(고등교육은 너무 학문적), 기업이 할 수 있는 것이 아닙니다(기업은 새로운 사람을 9개월 동안 천천히 이끌고 싶지 않음), AISG 같은 「국가 계획 + 상업 프로젝트 다리」 유형의 기관만 할 수 있습니다.
 
 그러나 AIAP는 또한 구조적 과제가 있습니다: **인재 손실률이 높습니다**——9개월 후 도제가 민간 기업에 진입하고, AISG는 자신이 양성한 사람들을 유지할 수 없습니다; **프로젝트 품질은 기업 쪽에 달려 있습니다**——100E 협력 기업의 프로젝트 수준이 참차불제입니다; **규모 천장**——매년 60-80명의 산출물은 싱가포르 AI 산업에 여전히 물 한 방울입니다.
 
 NAIS 2.0 시기 AIAP의 핵심 문제: **매년 200+로 확대할 수 있을까요? 유지율을 높일 수 있을까요? 더 높은 품질의 AI 엔지니어를 산출할 수 있을까요?**`,
-        singaporeRelevanceJa: `AIAP はシンガポール AI 戦略の**「レバー 2（人材）」**の中核的なレバーです。
+        singaporeRelevanceJa: `AIAP はシンガポール AI 戦略の**「レバー 3（人材）」**の中核的なレバーです。
 
 「7つの伝導レバー」の中で：
 
-- **レバー 2（人材）**：地元 AI エンジニア育成の主要なパイプライン
-- **レバー 3（応用）**：100E プロジェクトを通じて学徒に企業実践経験を提供します
+- **レバー 3（人材）**：地元 AI エンジニア育成の主要なパイプライン
+- **レバー 4（応用）**：100E プロジェクトを通じて学徒に企業実践経験を提供します
 
 見方：**AIAP の「学徒 + プロジェクト」モデルはシンガポール AI 人材戦略の最大の革新です**。高等教育には不可能（大学は学術的すぎる）、民間企業にも不可能（企業は新人に 9 ヶ月をかけたくない）。AISG のような「国家計画 + 商業プロジェクト橋渡し」型機構にのみできます。
 
 しかし AIAP にも構造的な課題があります：**人材流出率が高い**——9 ヶ月後、学徒は民間企業に進み、AISG は自らが育成した人材を保持できません；**プロジェクト品質が企業側に依存**——100E 協力企業のプロジェクトレベルはばらつきがあります；**規模の天井**——毎年 60～80 人の輩出はシンガポール AI 産業にとってまだ焼け石に水です。
 
 NAIS 2.0 期の AIAP の主要課題：**毎年 200 人以上に拡大できるか？保持率を上げられるか？より高品質な AI エンジニアを輩出できるか？**`,
-        singaporeRelevanceEn: `AIAP is the core lever for **"Lever 2 (talent)"** in Singapore's AI strategy.
+        singaporeRelevanceEn: `AIAP is the core lever for **"Lever 3 (Talent)"** in Singapore's AI strategy.
 
 In the seven-lever framework:
 
-- **Lever 2 (talent)**: the main pipeline for training local AI engineers
-- **Lever 3 (application)**: through 100E projects, apprentices get real enterprise experience
+- **Lever 3 (Talent)**: the main pipeline for training local AI engineers
+- **Lever 4 (Applications)**: through 100E projects, apprentices get real enterprise experience
 
 A take: **AIAP's "apprentice + project" model is the biggest innovation in Singapore's AI talent strategy**. Universities cannot do this (too academic), enterprises cannot do this (unwilling to spend 9 months slowly mentoring newcomers) — only an institution like AISG, sitting on the "national programme + commercial project bridge", can pull it off.
 
@@ -5091,7 +5079,7 @@ The key questions for AIAP in the NAIS 2.0 era: **Can it scale to 200+ per year?
             titleEn: 'Alumni exceed 500; cohort 22 begins',
           },
         ],
-        relatedLeverNumbers: [2, 3],
+        relatedLeverNumbers: [3, 4],
         relatedPolicyIds: ['national-ai-strategy-nais-10', 'national-ai-strategy-20-nais-20'],
         relatedDebateIds: ['motion-2976', 'cos-mom-2026', 'budget-2620', 'oral-answer-3738', 'budget-832'],
         relatedEntityIds: ['ai-singapore', 'nus', 'ntu'],
@@ -5248,28 +5236,28 @@ This tiering gives "non-CS background, wanting to switch to AI" people a clear p
 
 在「七条传导杠杆」里：
 
-- **杠杆 2（人才）**：拓宽 AI 人才入口
+- **杠杆 3（人才）**：拓宽 AI 人才入口
 
 观点：LADP 的存在解决了 AIAP 长期"申请池不够大"的问题——通过 LADP 把潜在人才池扩大 5-10 倍。`,
         singaporeRelevanceKo: `LADP는 AIAP의 「용량 확대 전초」입니다——AISG는 LADP를 통해 더 광범위한 잠재적 인재 풀에 접촉하고, 가장 뛰어난 것을 AIAP로 선별합니다.
 
 「일곱 가지 전도 레버」 내에서:
 
-- **레버 2(인재)**: AI 인재 입구 확대
+- **레버 3(인재)**: AI 인재 입구 확대
 
 관점: LADP의 존재는 AIAP의 오랫동안의 「신청 풀이 충분하지 않다」는 문제를 해결합니다——LADP를 통해 잠재적 인재 풀을 5-10배 확대합니다.`,
         singaporeRelevanceJa: `LADP は AIAP の「人材拡充の前線基地」です。AISG は LADP を通じてより広範な潜在人材プールと接触し、最優秀者を AIAP に選抜します。
 
 「7つの伝導レバー」の中で：
 
-- **レバー 2（人材）**：AI 人材の入口を広げる
+- **レバー 3（人材）**：AI 人材の入口を広げる
 
 観点：LADP の存在により、AIAP が長期的に直面していた「申請者が足りない」という問題が解決されます。LADP を通じて、潜在人材プールを 5～10 倍に拡大できます。`,
         singaporeRelevanceEn: `LADP is AIAP's "scale-up forward outpost" — AISG uses LADP to reach a wider potential talent pool, then screens the strongest into AIAP.
 
 In the seven-lever framework:
 
-- **Lever 2 (talent)**: broadens the entry point for AI talent
+- **Lever 3 (Talent)**: broadens the entry point for AI talent
 
 A take: LADP solves AIAP's long-standing "applicant pool too small" problem — by using LADP to expand the potential talent pool 5-10x.`,
         milestones: [
@@ -5281,7 +5269,7 @@ A take: LADP solves AIAP's long-standing "applicant pool too small" problem — 
             titleEn: 'LADP launched',
           },
         ],
-        relatedLeverNumbers: [2],
+        relatedLeverNumbers: [3],
         relatedEntityIds: ['ai-singapore', 'aiap'],
         sources: [
           {
@@ -5464,7 +5452,7 @@ Newer versions of TagUI are also adding more AI capabilities:
 
 在「七条传导杠杆」里：
 
-- **杠杆 3（产业应用）**：降低中小企业 RPA / AI 落地门槛
+- **杠杆 4（应用）**：降低中小企业 RPA / AI 落地门槛
 - **杠杆 6（外交）**：作为新加坡少数有全球影响力的开源项目，展示新加坡软件实力
 
 观点：**TagUI 证明了"国家机构维护开源工具"是有效的战略**——它不直接赚钱，但建立了 AISG 的全球技术声誉，培养了一批 AISG 出品的开源使用者，对 SEA-LION 等后续项目的接受度有正面影响。
@@ -5474,7 +5462,7 @@ Newer versions of TagUI are also adding more AI capabilities:
 
 「일곱 가지 전도 레버」 안에서:
 
-- **레버 3(산업 응용)**: 중소기업 RPA / AI 도입 진입장벽 낮추기
+- **레버 4(애플리케이션)**: 중소기업 RPA / AI 도입 진입장벽 낮추기
 - **레버 6(외교)**: 싱가포르의 몇 안 되는 전 세계 영향력 있는 오픈소스 프로젝트로서 싱가포르 소프트웨어 역량 시연
 
 관점: **TagUI는 「국가 기구가 오픈소스 도구를 유지 보수하는 것」이 효과적인 전략임을 증명했습니다**——직접적으로 돈을 벌지는 않지만 AISG의 전 세계 기술 평판을 확립했으며, AISG가 배출한 오픈소스 사용자 그룹을 양성했고, SEA-LION 등 후속 프로젝트의 수용도에 긍정적 영향을 미쳤습니다.
@@ -5484,7 +5472,7 @@ Newer versions of TagUI are also adding more AI capabilities:
 
 「7つの伝導レバー」の中で：
 
-- **レバー 3（産業応用）**：中小企業の RPA／AI 実装の敷居を下げる
+- **レバー 4（応用）**：中小企業の RPA／AI 実装の敷居を下げる
 - **レバー 6（外交）**：シンガポールが有する数少ない世界的影響力を持つオープンソースプロジェクトとして、シンガポールのソフトウェア実力を示す
 
 観点：**TagUI は「国家機関がオープンソースツールをメンテナンスすることは戦略として有効」であることを証明しています。**直接的な収益にはなりませんが、AISG の世界的な技術的評判を確立し、AISG 産出のオープンソース利用者を育成し、SEA-LION などその後のプロジェクトの受け入れ度を高めるプラスの影響があります。
@@ -5494,7 +5482,7 @@ Newer versions of TagUI are also adding more AI capabilities:
 
 Across the seven transmission levers:
 
-- **Lever 3 (Industry Adoption)**: lowers the barrier for SMEs to adopt RPA / AI
+- **Lever 4 (Applications)**: lowers the barrier for SMEs to adopt RPA / AI
 - **Lever 6 (Diplomacy)**: as one of Singapore's few open-source projects with genuine global reach, it showcases Singapore's software capability
 
 Take: **TagUI proves that "a national institution maintaining open-source tools" can be an effective strategy.** It doesn't generate direct revenue, but it has built AISG's global technical reputation and cultivated a base of users familiar with AISG-produced open source — which positively shaped reception of follow-on projects like SEA-LION.
@@ -5523,7 +5511,7 @@ Worth watching: how TagUI competes and coexists with the next generation of RPA 
             titleEn: 'GitHub stars exceed 5,000',
           },
         ],
-        relatedLeverNumbers: [3, 6],
+        relatedLeverNumbers: [4, 6],
         relatedEntityIds: ['ai-singapore'],
         sources: [
           {
@@ -5644,7 +5632,7 @@ Under the hood it wraps PyTorch, TensorFlow, and other frameworks behind a simpl
 
 在「七条传导杠杆」里：
 
-- **杠杆 3（产业应用）**：让本地中小企业能用上 CV 技术
+- **杠杆 4（应用）**：让本地中小企业能用上 CV 技术
 - **杠杆 6（外交）**：开源项目作为新加坡 AI 输出的载体
 
 观点：PeekingDuck 不是 AISG 最有名的项目，但它体现了 AISG 的工程哲学：**做"够用"的工具而不是 SOTA 工具**。这种务实路线在新加坡这种小市场里是合理的——不和 OpenCV、Meta 比规模，但在易用性上有差异化。`,
@@ -5652,7 +5640,7 @@ Under the hood it wraps PyTorch, TensorFlow, and other frameworks behind a simpl
 
 「7개 전도 레버」 내에서:
 
-- **레버 3(산업 응용)**: 현지 중소기업이 CV 기술을 사용할 수 있도록 함
+- **레버 4(애플리케이션)**: 현지 중소기업이 CV 기술을 사용할 수 있도록 함
 - **레버 6(외교)**: 오픈소스 프로젝트를 싱가포르 AI 수출의 매개체로 삼음
 
 관점: PeekingDuck은 AISG의 가장 유명한 프로젝트는 아니지만, AISG의 엔지니어링 철학을 체현합니다: **「충분한」도구를 만들지 SOTA 도구를 만들지 않습니다.** 이러한 실용적인 경로는 싱가포르와 같은 소규모 시장에서는 합리적입니다——OpenCV, Meta와 규모를 경쟁하지 않지만, 사용 편의성에서 차별화됩니다.`,
@@ -5660,7 +5648,7 @@ Under the hood it wraps PyTorch, TensorFlow, and other frameworks behind a simpl
 
 「7つの伝導レバー」の中で：
 
-- **レバー 3（産業応用）**：ローカルの中小企業が CV 技術を活用できるようにする
+- **レバー 4（応用）**：ローカルの中小企業が CV 技術を活用できるようにする
 - **レバー 6（外交）**：シンガポール AI 输出の担い手としてのオープンソースプロジェクト
 
 観点：PeekingDuck は AISG で最も有名なプロジェクトではありませんが、AISG のエンジニアリング哲学を体現しています：**最新最高のツールではなく、「十分に優れた」ツールを作る**。このプラグマティックなアプローチは、シンガポールのような小さな市場では合理的です。OpenCV や Meta と規模を競わず、使いやすさで差別化します。`,
@@ -5668,7 +5656,7 @@ Under the hood it wraps PyTorch, TensorFlow, and other frameworks behind a simpl
 
 Across the seven transmission levers:
 
-- **Lever 3 (Industry Adoption)**: brings CV technology within reach of local SMEs
+- **Lever 4 (Applications)**: brings CV technology within reach of local SMEs
 - **Lever 6 (Diplomacy)**: an open-source project serving as a vehicle for Singaporean AI exports
 
 Take: PeekingDuck isn't AISG's most famous project, but it embodies AISG's engineering philosophy: **build "good enough" tools rather than SOTA tools.** That pragmatic line is reasonable for a small market like Singapore — don't try to out-scale OpenCV or Meta, but differentiate on ease of use.`,
@@ -5681,7 +5669,7 @@ Take: PeekingDuck isn't AISG's most famous project, but it embodies AISG's engin
             titleEn: 'PeekingDuck open-sourced',
           },
         ],
-        relatedLeverNumbers: [3, 6],
+        relatedLeverNumbers: [4, 6],
         relatedEntityIds: ['ai-singapore'],
         sources: [
           {
@@ -5778,32 +5766,28 @@ Relationship with SEA-LION: as an LLM, SEA-LION covers part of SGNLP's surface a
 
 在「七条传导杠杆」里：
 
-- **杠杆 3（产业应用）**：本地客服、社交媒体分析、政府文本处理
-- **杠杆 1（基础研究）**：Singlish 是少数有学术研究价值的"克里奥尔英语"
+- **杠杆 4（应用）**：本地客服、社交媒体分析、政府文本处理；Singlish 是少数有学术研究价值的"克里奥尔英语"
 
 观点：SGNLP 的存在让 SEA-LION 有了"思想先驱"——同样的"为本地语言做专项 AI"哲学，从 NLP 工具升级到 LLM。`,
         singaporeRelevanceKo: `SGNLP는 싱가포르의 「언어 주권」 서사의 초기 실천입니다——**LLM 시대 이전에 AISG는 이미 「싱가포르를 위해 맞춤형으로 만든 언어 AI」를 만들고 있었습니다.**
 
 「7개 전도 레버」 내에서:
 
-- **레버 3(산업 응용)**: 현지 고객 서비스, 소셜 미디어 분석, 정부 텍스트 처리
-- **레버 1(기초 연구)**: Singlish는 학술 연구 가치가 있는 「크리올 영어」 중 소수입니다.
+- **레버 4(애플리케이션)**: 현지 고객 서비스, 소셜 미디어 분석, 정부 텍스트 처리; Singlish는 학술 연구 가치가 있는 「크리올 영어」 중 소수입니다.
 
 관점: SGNLP의 존재는 SEA-LION에 「사상적 선구자」를 제공합니다——동일한 「현지 언어를 위한 전문 AI 만들기」철학으로, NLP 도구에서 LLM으로 업그레이드됩니다.`,
         singaporeRelevanceJa: `SGNLP はシンガポール「言語主権」ナラティブの初期の実践です。**LLM 時代の前から、AISG は「シンガポール向けにカスタマイズされた言語 AI」を開発していました**。
 
 「7つの伝導レバー」の中で：
 
-- **レバー 3（産業応用）**：ローカルカスタマーサービス、ソーシャルメディア分析、政府文書処理
-- **レバー 1（基礎研究）**：シングリッシュは学術的研究価値を持つ数少ない「クレオール英語」の一つ
+- **レバー 4（応用）**：ローカルカスタマーサービス、ソーシャルメディア分析、政府文書処理；シングリッシュは学術的研究価値を持つ数少ない「クレオール英語」の一つ
 
 観点：SGNLP の存在により、SEA-LION に「思想的先駆者」が生まれました。同じく「ローカル言語に専門 AI を提供する」という哲学が、NLP ツールから LLM へアップグレードされています。`,
         singaporeRelevanceEn: `SGNLP is an early practical expression of Singapore's "language sovereignty" narrative — **even before the LLM era, AISG was already building "language AI tailored for Singapore."**
 
 Across the seven transmission levers:
 
-- **Lever 3 (Industry Adoption)**: local customer service, social media analysis, government text processing
-- **Lever 1 (Foundational Research)**: Singlish is one of the few "creole Englishes" with genuine academic research value
+- **Lever 4 (Applications)**: local customer service, social media analysis, government text processing; Singlish is one of the few "creole Englishes" with genuine academic research value
 
 Take: SGNLP gave SEA-LION a "philosophical predecessor" — the same "build specialty AI for local languages" ethos, simply upgraded from NLP tooling to an LLM.`,
         milestones: [
@@ -5815,7 +5799,7 @@ Take: SGNLP gave SEA-LION a "philosophical predecessor" — the same "build spec
             titleEn: 'SGNLP open-sourced',
           },
         ],
-        relatedLeverNumbers: [1, 3],
+        relatedLeverNumbers: [4],
         relatedEntityIds: ['ai-singapore', 'sea-lion'],
         sources: [
           {
@@ -5902,7 +5886,7 @@ Commercial ASR (OpenAI Whisper, Google Speech-to-Text, etc.) sees noticeable dro
 
 在「七条传导杠杆」里：
 
-- **杠杆 3（产业应用）**：本地客服、政府服务的语音 AI 落地
+- **杠杆 4（应用）**：本地客服、政府服务的语音 AI 落地
 - **杠杆 5（政府自用）**：政府部门多语言服务的语音化
 
 观点：语音 AI 是新加坡 AI 落地最直接的场景——客服、政务、医疗都需要。Speech Lab 的存在让这些场景能用上"懂新加坡话"的 AI。`,
@@ -5910,7 +5894,7 @@ Commercial ASR (OpenAI Whisper, Google Speech-to-Text, etc.) sees noticeable dro
 
 「7개 전도 레버」 내에서:
 
-- **레버 3(산업 응용)**: 현지 고객 서비스, 정부 서비스의 음성 AI 실제 적용
+- **레버 4(애플리케이션)**: 현지 고객 서비스, 정부 서비스의 음성 AI 실제 적용
 - **레버 5(정부 자체 사용)**: 정부 부서의 다국어 서비스 음성화
 
 관점: 음성 AI는 싱가포르 AI 실제 적용의 가장 직접적인 시나리오입니다——고객 서비스, 정부 업무, 의료 모두 필요합니다. Speech Lab의 존재는 이러한 시나리오가 「싱가포르 말을 아는」AI를 사용할 수 있게 합니다.`,
@@ -5918,7 +5902,7 @@ Commercial ASR (OpenAI Whisper, Google Speech-to-Text, etc.) sees noticeable dro
 
 「7つの伝導レバー」の中で：
 
-- **レバー 3（産業応用）**：ローカルカスタマーサービス、政府サービスの音声 AI 実装
+- **レバー 4（応用）**：ローカルカスタマーサービス、政府サービスの音声 AI 実装
 - **レバー 5（政府自用）**：政府部門の多言語サービスの音声化
 
 観点：音声 AI はシンガポール AI 実装で最も直接的なシーンです。カスタマーサービス、政務、医療すべてに必要とされます。Speech Lab の存在により、これらシーンで「シンガポール言語を理解する」AI を活用できます。`,
@@ -5926,12 +5910,12 @@ Commercial ASR (OpenAI Whisper, Google Speech-to-Text, etc.) sees noticeable dro
 
 Across the seven transmission levers:
 
-- **Lever 3 (Industry Adoption)**: rolling out speech AI in local customer service and government services
+- **Lever 4 (Applications)**: rolling out speech AI in local customer service and government services
 - **Lever 5 (Government Self-Use)**: voice-enabling multilingual government service delivery
 
 Take: speech AI is one of the most direct landing points for Singapore AI — customer service, public services, and healthcare all need it. Speech Lab's existence means these scenarios get AI that "understands how Singaporeans actually speak."`,
         milestones: [],
-        relatedLeverNumbers: [3, 5],
+        relatedLeverNumbers: [4, 5],
         relatedEntityIds: ['ai-singapore', 'sgnlp', 'sea-lion'],
         sources: [
           {
@@ -6018,36 +6002,36 @@ That said, commercializing federated learning is hard everywhere in the world �
 
 在「七条传导杠杆」里：
 
-- **杠杆 3（产业应用）**：跨组织数据合作的隐私基础设施
-- **杠杆 4（治理）**：和 PDPC 数据保护要求兼容
+- **杠杆 2（治理）**：和 PDPC 数据保护要求兼容
+- **杠杆 4（应用）**：跨组织数据合作的隐私基础设施
 
 观点：Synergos 是 AISG 的"前沿尝试"——技术上扎实，商业落地慢热，但代表了"隐私保护 + AI"这个全球大方向。`,
         singaporeRelevanceKo: `Synergos는 PDPA 시대 AI 데이터 컴플라이언스의 중요한 도구입니다 — **데이터가 로컬을 떠나지 않는 전제 아래에서도 연합 AI를 수행할 수 있습니다**.
 
 「7개 전도 레버」 내에서:
 
-- **레버 3(산업 응용)**: 조직 간 데이터 협력의 프라이버시 기반시설
-- **레버 4(거버넌스)**: PDPC 데이터 보호 요구사항과 호환
+- **레버 2(거버넌스)**: PDPC 데이터 보호 요구사항과 호환
+- **레버 4(애플리케이션)**: 조직 간 데이터 협력의 프라이버시 기반시설
 
 관점: Synergos는 AISG의 「선도적 시도」입니다 — 기술상 견고하며, 상업 적용은 더디지만, 「프라이버시 보호 + AI」라는 글로벌 대방향을 대표합니다.`,
         singaporeRelevanceJa: `Synergos は PDPA 時代の AI データコンプライアンスの重要なツールです——**データがローカルから出ない前提の下で、依然として共同で AI を実施することができます**。
 
 「７つの伝導レバー」の中で：
 
-- **レバー 3（産業応用）**：クロスオーガナイゼーションデータ協力のプライバシー基盤施設
-- **レバー 4（ガバナンス）**：PDPC データ保護要件と互換性がある
+- **レバー 2（ガバナンス）**：PDPC データ保護要件と互換性がある
+- **レバー 4（応用）**：クロスオーガナイゼーションデータ協力のプライバシー基盤施設
 
 観点：Synergos は AISG の 「前沿的な試み」——技術的には堅実で、商業化は緩やかな進展ですが、「プライバシー保護 + AI」というこのグローバルな大方向を代表しています。`,
         singaporeRelevanceEn: `Synergos is an important tool for AI data compliance in the PDPA era — **enabling joint AI work while keeping data within local jurisdictions.**
 
 Across the seven transmission levers:
 
-- **Lever 3 (Industry Adoption)**: privacy infrastructure for cross-organization data collaboration
-- **Lever 4 (Governance)**: aligned with PDPC data protection requirements
+- **Lever 2 (Governance)**: aligned with PDPC data protection requirements
+- **Lever 4 (Applications)**: privacy infrastructure for cross-organization data collaboration
 
 Take: Synergos is one of AISG's "frontier bets" — solid technically, slow to land commercially, but representing the global "privacy-preserving + AI" direction.`,
         milestones: [],
-        relatedLeverNumbers: [3, 4],
+        relatedLeverNumbers: [2, 4],
         relatedEntityIds: ['ai-singapore', 'pdpc'],
         sources: [
           {
@@ -6180,38 +6164,38 @@ Partners include AWS, Microsoft, IBM, and local universities.`,
 Singapore's SkillsFuture scheme gives every citizen a lifelong training credit, but actual utilization has long been a problem — most people don't know what to spend it on. LearnAI solves the "what to spend it on" problem by turning AISG's content into a SkillsFuture-consumable product.
 
 Technically LearnAI isn't frontier, but it operates well: content updates are quick, SkillsFuture integration is smooth, and assignments and projects are of decent quality.`,
-        singaporeRelevance: `LearnAI 是新加坡 AI 战略**"杠杆 2（人才）"的全民版本**——AIAP 培养 AI 工程师（精英路线），LearnAI 培养"AI literate"的普通在职人员（普及路线）。
+        singaporeRelevance: `LearnAI 是新加坡 AI 战略**"杠杆 3（人才）"的全民版本**——AIAP 培养 AI 工程师（精英路线），LearnAI 培养"AI literate"的普通在职人员（普及路线）。
 
 在「七条传导杠杆」里：
 
-- **杠杆 2（人才）**：扩大 AI 知识普及面
+- **杠杆 3（人才）**：扩大 AI 知识普及面
 
 观点：LearnAI 不培养顶尖人才，但它做了一件更难的事：**让普通新加坡上班族有"AI 基础认知"**。这种基础认知是新加坡 AI 落地的"民意基础"——员工不抗拒 AI，企业 AI 转型阻力小。
 
 这种"人才战略普及版"通常被低估，但它的国家级影响是真实的。`,
-        singaporeRelevanceKo: `LearnAI는 싱가포르 AI 전략 **「레버 2(인재)」의 전국민 버전**입니다 — AIAP는 AI 엔지니어를 양성하고(엘리트 경로), LearnAI는 「AI literate」인 일반 재직자를 양성합니다(보급 경로).
+        singaporeRelevanceKo: `LearnAI는 싱가포르 AI 전략 **「레버 3(인재)」의 전국민 버전**입니다 — AIAP는 AI 엔지니어를 양성하고(엘리트 경로), LearnAI는 「AI literate」인 일반 재직자를 양성합니다(보급 경로).
 
 「7개 전도 레버」 내에서:
 
-- **레버 2(인재)**: AI 지식 보급 범위 확대
+- **레버 3(인재)**: AI 지식 보급 범위 확대
 
 관점: LearnAI는 정상급 인재를 양성하지 않지만, 더 어려운 일을 했습니다: **일반 싱가포르 직장인이 「AI 기본 인식」을 갖도록 했습니다**. 이러한 기본 인식은 싱가포르 AI 적용의 「민의 기초」입니다 — 직원들이 AI를 거부하지 않으면, 기업 AI 전환의 저항이 줄어듭니다.
 
 이러한 「인재 전략 보급 버전」은 보통 과소평가되지만, 국가 수준의 영향은 실질적입니다.`,
-        singaporeRelevanceJa: `LearnAI はシンガポール AI 戦略の 「レバー 2（人材）」の全民版です——AIAP は AI エンジニア（エリート経路）を育成し、LearnAI は 「AI リテラシー」を持つ普通の就業者（普及経路）を育成します。
+        singaporeRelevanceJa: `LearnAI はシンガポール AI 戦略の 「レバー 3（人材）」の全民版です——AIAP は AI エンジニア（エリート経路）を育成し、LearnAI は 「AI リテラシー」を持つ普通の就業者（普及経路）を育成します。
 
 「７つの伝導レバー」の中で：
 
-- **レバー 2（人材）**：AI 知識普及面を拡大する
+- **レバー 3（人材）**：AI 知識普及面を拡大する
 
 観点：LearnAI はトップレベルの人材を育成しませんが、それはより難しいことをしました：**普通のシンガポールのオフィスワーカーに 「AI 基礎的認知」を持たせる**。この基礎的認知はシンガポール AI 実装の 「民意基盤」です——従業員は AI に抵抗しない、企業の AI 変革の阻力は小さい。
 
 この 「人材戦略普及版」は通常、過小評価されていますが、その国家レベルの影響は本当です。`,
-        singaporeRelevanceEn: `LearnAI is the **mass-market version of Singapore's AI strategy "Lever 2 (Talent)"** — AIAP trains AI engineers (the elite track), LearnAI trains "AI literate" working professionals (the broad track).
+        singaporeRelevanceEn: `LearnAI is the **mass-market version of Singapore's AI strategy "Lever 3 (Talent)"** — AIAP trains AI engineers (the elite track), LearnAI trains "AI literate" working professionals (the broad track).
 
 Across the seven transmission levers:
 
-- **Lever 2 (Talent)**: expands AI literacy across the workforce
+- **Lever 3 (Talent)**: expands AI literacy across the workforce
 
 Take: LearnAI doesn't produce top-tier talent, but it does something harder: **giving ordinary working Singaporeans a baseline understanding of AI.** That baseline is the "social license" for AI deployment in Singapore — employees don't push back, and corporate AI transformations face less resistance.
 
@@ -6239,7 +6223,7 @@ This kind of "talent strategy in popularized form" is typically underrated, but 
             titleEn: 'Registered learners exceed 50,000',
           },
         ],
-        relatedLeverNumbers: [2],
+        relatedLeverNumbers: [3],
         relatedEntityIds: ['ai-singapore', 'aiap'],
         sources: [
           {
@@ -6334,32 +6318,32 @@ Features:
 
 在「七条传导杠杆」里：
 
-- **杠杆 2（人才）**：批量培养 AI literate 在职人员
+- **杠杆 3（人才）**：批量培养 AI literate 在职人员
 
 观点：AI4I 不培养 AI 工程师（那是 AIAP 做的），而是让"非 AI 工程师"也能"懂 AI"。这种通识普及对企业 AI 转型的意义巨大——AI 项目失败往往不是技术问题，而是业务方不懂 AI 能做什么。`,
         singaporeRelevanceKo: `AI4I는 싱가포르 AI 보급 전략의 「표준화 과정」입니다.
 
 「7개 전도 레버」 내에서:
 
-- **레버 2(인재)**: 대량으로 AI literate 재직자 양성
+- **레버 3(인재)**: 대량으로 AI literate 재직자 양성
 
 관점: AI4I는 AI 엔지니어를 양성하지 않습니다(그것은 AIAP가 하는 일). 대신 「비 AI 엔지니어」도 「AI를 이해할 수」 있게 합니다. 이러한 통합 보급은 기업 AI 전환에 막대한 의미를 가집니다 — AI 프로젝트 실패는 기술 문제보다 사업부서가 AI가 무엇을 할 수 있는지 모르기 때문인 경우가 많습니다.`,
         singaporeRelevanceJa: `AI4I はシンガポール AI 普及戦略の 「標準化カリキュラム」です。
 
 「７つの伝導レバー」の中で：
 
-- **レバー 2（人材）**：AI リテラシーを持つ就業者を大量に育成する
+- **レバー 3（人材）**：AI リテラシーを持つ就業者を大量に育成する
 
 観点：AI4I は AI エンジニア（それは AIAP がする）を育成しませんが、「非 AI エンジニア」も 「AI を理解する」ことができます。この種の通識普及は企業の AI 変革に対して膨大な意義があります——AI プロジェクトの失敗はしばしば技術問題ではなく、ビジネス側が AI ができることを理解していないのです。`,
         singaporeRelevanceEn: `AI4I is the "standardized curriculum" of Singapore's AI literacy strategy.
 
 Across the seven transmission levers:
 
-- **Lever 2 (Talent)**: training AI-literate professionals at scale
+- **Lever 3 (Talent)**: training AI-literate professionals at scale
 
 Take: AI4I doesn't produce AI engineers (that's AIAP's job) — it lets "non-AI engineers" still "understand AI." That kind of literacy is enormously consequential for corporate AI transformation: AI projects often fail not because of technical issues, but because the business side doesn't understand what AI can actually do.`,
         milestones: [],
-        relatedLeverNumbers: [2],
+        relatedLeverNumbers: [3],
         relatedEntityIds: ['ai-singapore', 'learnai', 'aiap'],
         sources: [
           {
@@ -6450,32 +6434,32 @@ A long-running issue with Singapore's AI talent strategy is that "the top of the
 
 在「七条传导杠杆」里：
 
-- **杠杆 2（人才）**：早期人才识别和培育
+- **杠杆 3（人才）**：早期人才识别和培育
 
 观点：NAISC 的回报周期长达 5-10 年，但它是新加坡能否在 2030 年代仍有充沛 AI 人才的关键变量。`,
         singaporeRelevanceKo: `NAISC는 싱가포르 AI 전략의 **최장기 인재 배치**입니다 — 오늘의 중학생은 2030년대의 AI 엔지니어입니다.
 
 「7개 전도 레버」 내에서:
 
-- **레버 2(인재)**: 조기 인재 식별 및 양성
+- **레버 3(인재)**: 조기 인재 식별 및 양성
 
 관점: NAISC의 회수 기간은 5-10년에 달하지만, 싱가포르가 2030년대에 여전히 충분한 AI 인재를 보유할 수 있는지의 핵심 변수입니다.`,
         singaporeRelevanceJa: `NAISC はシンガポール AI 戦略の **最長線** の人材配置です——今日の中学生は 2030 年代の AI エンジニアです。
 
 「７つの伝導レバー」の中で：
 
-- **レバー 2（人材）**：早期人材識別と育成
+- **レバー 3（人材）**：早期人材識別と育成
 
 観点：NAISC の回報周期は 5～10 年に達していますが、それはシンガポールが 2030 年代に依然として十分な AI 人材を持つことができるかどうかの重要な変数です。`,
         singaporeRelevanceEn: `NAISC is the **longest-horizon** talent bet in Singapore's AI strategy — today's secondary-school students are the AI engineers of the 2030s.
 
 Across the seven transmission levers:
 
-- **Lever 2 (Talent)**: early talent identification and cultivation
+- **Lever 3 (Talent)**: early talent identification and cultivation
 
 Take: NAISC's payback cycle stretches 5-10 years, but it is the key variable for whether Singapore still has abundant AI talent in the 2030s.`,
         milestones: [],
-        relatedLeverNumbers: [2],
+        relatedLeverNumbers: [3],
         relatedEntityIds: ['ai-singapore', 'aiap', 'phd-fellowship'],
         sources: [
           {
@@ -6598,8 +6582,8 @@ By raising the stipend to SGD 6,700/month (about USD 50K/year), the AISG PhD Fel
 
 在「七条传导杠杆」里：
 
-- **杠杆 1（基础研究）**：博士生是高校研究产出的真正主力
-- **杠杆 2（人才）**：留住顶尖博士生才能形成本地 AI 研究"代际传承"
+- **杠杆 3（人才）**：留住顶尖博士生才能形成本地 AI 研究"代际传承"
+- **杠杆 4（应用）**：博士生是高校研究产出的真正主力
 
 观点：**PhD Fellowship 的真正价值要 5-10 年后才能显现**——今天资助的博士生未来可能成为 AI Singapore v3、SEA-LION v6 的核心研究员。这是"看得见花钱、看不见回报"的长期投资，但对一个国家的 AI 生态根基至关重要。
 
@@ -6608,8 +6592,8 @@ By raising the stipend to SGD 6,700/month (about USD 50K/year), the AISG PhD Fel
 
 「일곱 가지 전달 레버」에서:
 
-- **레버 1(기초 연구)**: 박사생은 대학 연구 산출의 실질적 주력
-- **레버 2(인재)**: 정상급 박사생을 유지해야 현지 AI 연구의 「대세대 전승」이 형성됨
+- **레버 3(인재)**: 정상급 박사생을 유지해야 현지 AI 연구의 「대세대 전승」이 형성됨
+- **레버 4(애플리케이션)**: 박사생은 대학 연구 산출의 실질적 주력
 
 관점: **PhD Fellowship의 진정한 가치는 5-10년 후에 드러남** — 오늘 지원하는 박사생은 향후 AI Singapore v3, SEA-LION v6의 핵심 연구원이 될 수 있습니다. 이는 「돈 쓰는 것은 보이고, 회수는 안 보이는」장기 투자이지만 한 국가의 AI 생태계 근간에 매우 중요합니다.
 
@@ -6618,8 +6602,8 @@ By raising the stipend to SGD 6,700/month (about USD 50K/year), the AISG PhD Fel
 
 「7つの伝導レバー」の中で：
 
-- **レバー 1（基礎研究）**：博士課程学生は大学研究成果の本当の主力です
-- **レバー 2（人材）**：トップクラスの博士課程学生を確保することで初めて、現地 AI 研究の「世代間継承」が形成されます
+- **レバー 3（人材）**：トップクラスの博士課程学生を確保することで初めて、現地 AI 研究の「世代間継承」が形成されます
+- **レバー 4（応用）**：博士課程学生は大学研究成果の本当の主力です
 
 見解：**PhD Fellowship の真の価値は 5～10 年後に初めて見えてきます**——今日支援を受けた博士課程学生が、将来 AI Singapore v3、SEA-LION v6 の中核研究者となる可能性があるということです。これは「目に見える支出、見えない見返り」という長期投資ですが、一国の AI エコシステムの基盤として非常に重要です。
 
@@ -6628,8 +6612,8 @@ By raising the stipend to SGD 6,700/month (about USD 50K/year), the AISG PhD Fel
 
 Across the seven transmission levers:
 
-- **Lever 1 (Foundational Research)**: PhD students are the real engine of university research output
-- **Lever 2 (Talent)**: retaining top doctoral candidates is what enables intergenerational continuity in local AI research
+- **Lever 3 (Talent)**: retaining top doctoral candidates is what enables intergenerational continuity in local AI research
+- **Lever 4 (Applications)**: PhD students are the real engine of university research output
 
 Take: **The PhD Fellowship's true value won't be visible for 5-10 years** — students funded today may become core researchers on AI Singapore v3 or SEA-LION v6. It is a "spending you can see, returns you can't" long-term investment, but vital to the bedrock of a country's AI ecosystem.
 
@@ -6650,7 +6634,7 @@ Worth watching: retention rates of recipients (staying in Singapore vs. leaving 
             titleEn: 'Over 100 doctoral students funded cumulatively',
           },
         ],
-        relatedLeverNumbers: [1, 2],
+        relatedLeverNumbers: [3, 4],
         relatedEntityIds: ['ai-singapore', 'nus', 'ntu'],
         sources: [
           {
@@ -6728,32 +6712,32 @@ Positioning: lets undergrads who are "planning to do an AI masters" do it in Sin
 
 在「七条传导杠杆」里：
 
-- **杠杆 2（人才）**：本科到硕士的留存通道
+- **杠杆 3（人才）**：本科到硕士的留存通道
 
 观点：AMP 规模不大，但它和 PhD Fellowship 形成互补——PhD 留住做研究的，AMP 留住去工业的。`,
         singaporeRelevanceKo: `AMP는 AISG 인재 유입 깔때기의 또 다른 단계입니다: **학부 → AMP(석사) → AIAP / 취업 / PhD Fellowship**.
 
 「일곱 가지 전달 레버」에서:
 
-- **레버 2(인재)**: 학부에서 석사로의 유지 통로
+- **레버 3(인재)**: 학부에서 석사로의 유지 통로
 
 관점: AMP 규모는 크지 않지만, PhD Fellowship과 상호 보완 관계를 형성합니다 — PhD는 연구하는 인재를 유지하고, AMP는 산업으로 가는 인재를 유지합니다.`,
         singaporeRelevanceJa: `AMP は AISG 人材漏斗の別の層です：**学部 → AMP（修士） → AIAP / 就職 / PhD Fellowship**。
 
 「7つの伝導レバー」の中で：
 
-- **レバー 2（人材）**：学部から修士への人材確保経路
+- **レバー 3（人材）**：学部から修士への人材確保経路
 
 見解：AMP の規模は大きくありませんが、それは PhD Fellowship と補完的です——PhD は研究職を留保し、AMP は産業職を留保します。`,
         singaporeRelevanceEn: `AMP is another layer of the AISG talent funnel: **undergrad → AMP (masters) → AIAP / industry / PhD Fellowship**.
 
 Across the seven transmission levers:
 
-- **Lever 2 (Talent)**: a retention channel from undergraduate to masters
+- **Lever 3 (Talent)**: a retention channel from undergraduate to masters
 
 Take: AMP isn't large in scale, but it complements the PhD Fellowship — the PhD programme retains those headed for research, AMP retains those headed for industry.`,
         milestones: [],
-        relatedLeverNumbers: [2],
+        relatedLeverNumbers: [3],
         relatedEntityIds: ['ai-singapore', 'phd-fellowship', 'aiap'],
         sources: [
           {
@@ -6890,7 +6874,7 @@ A take: **Temus and Resaro are two pieces of the same game**. The division of la
 在传导杠杆里：
 
 - **杠杆 3（人才）**：Step IT Up 做数字人才转换，AI Foundry 做 AI 专业人才管道；与 IMDA 的 TeSA 合作把私营训练能力接入国家技能体系
-- **杠杆 4（落地）**：AI Foundry 首攻金融服务与精准医疗，与国家 AI 影响计划（NAIIP）的行业旗舰选择同频
+- **杠杆 4（应用）**：AI Foundry 首攻金融服务与精准医疗，与国家 AI 影响计划（NAIIP）的行业旗舰选择同频
 
 观点：**AI Foundry 是「国家计划 + 主权资本」协同的一个小样本**——DISG（EDB 旗下）背书、AISG 合作、行业选择对齐 NAIIP，一家淡马锡系公司把自己的商业扩张嵌进了国家 AI 议程。这符合新加坡的一贯打法：政府不直接下场做交付，让国资背景的商业实体去占位。
 
@@ -6900,7 +6884,7 @@ A take: **Temus and Resaro are two pieces of the same game**. The division of la
 전달 레버 프레임워크에서:
 
 - **레버 3(인재)**: Step IT Up은 디지털 인재 전환을, AI Foundry는 AI 전문 인력 파이프라인을 담당. IMDA와의 TeSA 제휴로 민간 훈련 역량을 국가 스킬 체계에 접속
-- **레버 4(구현)**: AI Foundry는 금융 서비스와 정밀 의료부터 착수——국가 AI 임팩트 프로그램(NAIIP)의 플래그십 업계 선정과 동기화
+- **레버 4(애플리케이션)**: AI Foundry는 금융 서비스와 정밀 의료부터 착수——국가 AI 임팩트 프로그램(NAIIP)의 플래그십 업계 선정과 동기화
 
 관점: **AI Foundry는 「국가 프로그램 + 주권 자본」 협동의 작은 표본입니다**——DISG(EDB 산하)의 지원, AI Singapore와의 협력, NAIIP와 정렬된 업계 선정. 테마섹계 기업이 자사의 상업 확장을 국가 AI 어젠다에 심어 넣은 형태입니다. 정부가 직접 딜리버리를 하지 않고 국유 배경의 상업 실체가 자리를 잡게 하는——싱가포르의 일관된 방식에 부합합니다.
 
@@ -6910,7 +6894,7 @@ A take: **Temus and Resaro are two pieces of the same game**. The division of la
 伝導レバーの枠組みでは：
 
 - **レバー 3（人材）**：Step IT Up がデジタル人材転換を、AI Foundry が AI 専門人材パイプラインを担当。IMDA との TeSA 提携で民間の育成能力を国家スキル体系に接続
-- **レバー 4（実装）**：AI Foundry は金融サービスと精密医療から着手——国家 AI インパクトプログラム（NAIIP）の旗艦業界選定と同期
+- **レバー 4（応用）**：AI Foundry は金融サービスと精密医療から着手——国家 AI インパクトプログラム（NAIIP）の旗艦業界選定と同期
 
 見方：**AI Foundry は「国家プログラム + ソブリン資本」連携の小さな標本です**——DISG（EDB 傘下）の後押し、AISG との連携、NAIIP と整合した業界選定。テマセク系企業が自社の商業拡大を国家 AI アジェンダに埋め込んだ形です。政府は自らデリバリーをせず、国資背景の商業実体にポジションを取らせる——シンガポールの一貫したやり方に合致します。
 
@@ -6919,8 +6903,8 @@ A take: **Temus and Resaro are two pieces of the same game**. The division of la
 
 In the transmission levers framework:
 
-- **Lever 3 (talent)**: Step IT Up converts workers into digital roles; the AI Foundry builds an AI-professional pipeline; the TeSA partnership with IMDA plugs private training capacity into the national skills system
-- **Lever 4 (deployment)**: the AI Foundry opens with financial services and precision health — in step with the flagship sector picks of the National AI Impact Programme (NAIIP)
+- **Lever 3 (Talent)**: Step IT Up converts workers into digital roles; the AI Foundry builds an AI-professional pipeline; the TeSA partnership with IMDA plugs private training capacity into the national skills system
+- **Lever 4 (Applications)**: the AI Foundry opens with financial services and precision health — in step with the flagship sector picks of the National AI Impact Programme (NAIIP)
 
 A take: **the AI Foundry is a small specimen of "national programme + sovereign capital" coordination** — DISG (under EDB) backing, an AI Singapore partnership, sector picks aligned with NAIIP: a Temasek company embedding its commercial expansion into the national AI agenda. This fits Singapore's standing playbook: the government doesn't do delivery itself; state-linked commercial entities take the position.
 
@@ -7240,11 +7224,11 @@ Singapore's participation:
 - **レバー 6（外交）**：多国間 AI ガバナンス参加の主要な経路
 
 見解：GPAI はシンガポールのような小国家に全球 AI ガバナンスのテーブルで「創設メンバー」という地位を与え、シンガポールの実際の経済・技術規模をはるかに上回っています。これはシンガポールの「小国の大戦略」の典型的な事例です。`,
-        singaporeRelevanceEn: `GPAI is one of the core platforms for **Lever 6 (international affairs)** in Singapore's AI strategy.
+        singaporeRelevanceEn: `GPAI is one of the core platforms for **Lever 6 (Diplomacy)** in Singapore's AI strategy.
 
 In the "seven transmission levers" framework:
 
-- **Lever 6 (international)**: the main channel for participation in multilateral AI governance
+- **Lever 6 (Diplomacy)**: the main channel for participation in multilateral AI governance
 
 A take: GPAI gives a small country like Singapore "founding member" status at the global AI governance table — well beyond what its actual economic or technological weight would suggest. It is a textbook case of Singapore's "small country, big strategy" playbook.`,
         milestones: [
@@ -7380,7 +7364,7 @@ Singapore's involvement:
 
 In the "seven transmission levers" framework:
 
-- **Lever 6 (international)**: internationalising domestic governance practice via the OECD
+- **Lever 6 (Diplomacy)**: internationalising domestic governance practice via the OECD
 
 A take: Singapore is not an OECD member yet still participates deeply in OECD AI work — a return on its international image as "open, trusted, and cooperative".`,
         milestones: [
@@ -7507,11 +7491,11 @@ Significance: these summits typically only feature major powers — the G7, the 
 - **レバー 6（外交）**：最高レベルの国際的コミットメント
 
 見解：**シンガポールが AI Safety Summit のテーブルに座れるのは、その「国家ブランド資産」の体現です**——ガバナンスフレームワークが成熟し、法の支配が安定し、AI 中立——英米と中国の両方に対話方として受け入れられることができます。この「中立的信頼できる」ポジションは、AI 地政学化の時代においてますます価値が高まっています。`,
-        singaporeRelevanceEn: `Participation in the AI Safety Summits is the **highest-tier scenario for Lever 6 (international affairs)** in Singapore's AI strategy.
+        singaporeRelevanceEn: `Participation in the AI Safety Summits is the **highest-tier scenario for Lever 6 (Diplomacy)** in Singapore's AI strategy.
 
 In the "seven transmission levers" framework:
 
-- **Lever 6 (international)**: top-tier international commitments
+- **Lever 6 (Diplomacy)**: top-tier international commitments
 
 A take: **Singapore being able to sit at the AI Safety Summit table is a manifestation of its "national brand equity"** — a mature governance framework, rule-of-law stability, and AI neutrality — letting both the US/UK and China accept it as a counterpart. In an era of AI geopoliticisation, this kind of "neutral, trusted" position is becoming more and more valuable.`,
         milestones: [
@@ -7779,7 +7763,7 @@ Technically, Synapxe's AI line is pragmatic:
 
 在「七条传导杠杆」里：
 
-- **杠杆 3（产业应用）**：医疗 AI 落地的执行主体
+- **杠杆 4（应用）**：医疗 AI 落地的执行主体
 - **杠杆 5（政府自用）**：公立医疗系统的 AI 化是政府自用的最大场景
 
 观点：**Synapxe 的体制是新加坡作为"小国家"的天然优势变现**——人口只有 580 万，全国医疗系统集中度高，IT 体制统一。这让它能做美国、日本这种大国做不了的事：**用国家级数据训国家级模型，用国家级部署服务全国民众**。
@@ -7791,7 +7775,7 @@ ACE-AI 是最典型的案例：用全国糖尿病/胆固醇筛查数据训练模
 
 「일곱 가지 전도 레버」 안에서:
 
-- **레버 3(산업 적용)**: 의료 AI 상용화의 실행 주체
+- **레버 4(애플리케이션)**: 의료 AI 상용화의 실행 주체
 - **레버 5(정부 자체 사용)**: 공립의료 시스템의 AI화는 정부 자체 사용의 최대 시나리오입니다
 
 관점: **Synapxe의 체제는 싱가포르를 「소국」으로서의 천연 우위를 현금화한 것입니다**—인구가 580만 명에 불과하고, 전국 의료 시스템의 집중도가 높으며, IT 체제가 통일되어 있습니다. 이것이 미국, 일본 같은 대국이 할 수 없는 일을 하게 합니다: **국가급 데이터로 국가급 모델을 훈련하고, 국가급 배포로 전국민을 서비스합니다**.
@@ -7803,7 +7787,7 @@ ACE-AI는 가장 전형적인 사례입니다: 전국 당뇨병/고지혈증 선
 
 「七条伝導レバー」の中で：
 
-- **レバー 3（産業応用）**：医療 AI 着地の実行主体
+- **レバー 4（応用）**：医療 AI 着地の実行主体
 - **レバー 5（政府自用）**：公立医療システムの AI 化は政府自用の最大シナリオです
 
 観点：**Synapxe の体制は、シンガポールが「小国」としての天然のアドバンテージを具現化したもの**です——人口は 580 万のみで、全国医療システムの集中度が高く、IT 体制が統一されています。これにより、米国や日本のような大国ができないことができます：**国家級データで国家級モデルを訓練し、国家級デプロイメントで全国民にサービスを提供します**。
@@ -7815,8 +7799,8 @@ ACE-AI は最も代表的なケースです：全国の糖尿病/コレステロ
 
 In the "seven transmission levers" framework:
 
-- **Lever 3 (industry adoption)**: the execution body for medical AI deployment
-- **Lever 5 (government adoption)**: AI-enabling the public healthcare system is the largest single government-adoption scenario
+- **Lever 4 (Applications)**: the execution body for medical AI deployment
+- **Lever 5 (Government Self-Use)**: AI-enabling the public healthcare system is the largest single government-adoption scenario
 
 A take: **Synapxe's institutional setup is Singapore's natural "small country" advantage cashed in** — a population of just 5.8 million, high concentration of the national healthcare system, and a unified IT architecture. This lets it do what large countries like the US and Japan cannot: **train national-grade models on national-grade data and deploy them to serve the entire population**.
 
@@ -7864,7 +7848,7 @@ But Synapxe also faces challenges: **medical AI's safety-cautious requirements m
             titleEn: 'ACE-AI scheduled for nationwide rollout',
           },
         ],
-        relatedLeverNumbers: [3, 5],
+        relatedLeverNumbers: [4, 5],
         relatedPolicyIds: [
           'ai-in-healthcare-guidelines-aihgle',
           'moh-committee-of-supply-2026-healthcare-ai-medisave-reform',
@@ -7993,8 +7977,8 @@ This kind of "national-grade data + national-grade deployment" medical AI projec
 
 在「七条传导杠杆」里：
 
+- **杠杆 4（应用）**：医疗 AI 落地的样板
 - **杠杆 5（政府自用）**：医疗系统的国家级 AI 部署
-- **杠杆 3（产业应用）**：医疗 AI 落地的样板
 
 观点：**ACE-AI 证明新加坡的"小国 + 集中医疗体系"在医疗 AI 上是真正的优势**——美国、印尼这种大国就算想做也做不了"全国一套系统"。ACE-AI 的成功（如果成功）会被全球医疗 AI 行业反复研究。
 
@@ -8003,8 +7987,8 @@ This kind of "national-grade data + national-grade deployment" medical AI projec
 
 「일곱 가지 전도 레버」 안에서:
 
+- **레버 4(애플리케이션)**: 의료 AI 상용화의 모범
 - **레버 5(정부 자체 사용)**: 의료 시스템의 국가급 AI 배포
-- **레버 3(산업 적용)**: 의료 AI 상용화의 모범
 
 관점: **ACE-AI는 싱가포르의 「소국 + 집중 의료체계」가 의료 AI에서 진정한 우위임을 증명합니다**—미국, 인도네시아 같은 대국은 가령 원하더라도 「전국 통일 시스템」을 할 수 없습니다. ACE-AI의 성공(만약 성공한다면)은 글로벌 의료 AI 업계에서 반복해서 연구될 것입니다.
 
@@ -8013,8 +7997,8 @@ This kind of "national-grade data + national-grade deployment" medical AI projec
 
 「七条伝導レバー」の中で：
 
+- **レバー 4（応用）**：医療 AI 着地のモデル
 - **レバー 5（政府自用）**：医療システムの国家級 AI デプロイメント
-- **レバー 3（産業応用）**：医療 AI 着地のモデル
 
 観点：**ACE-AI はシンガポールの「小国 + 集中医療体系」が医療 AI で真実のアドバンテージであることを証明しています**——米国やインドネシアのような大国は「全国統一システム」をしたくてもできません。ACE-AI の成功（もし成功すれば）は世界医療 AI 業界によって繰り返し研究されます。
 
@@ -8023,8 +8007,8 @@ This kind of "national-grade data + national-grade deployment" medical AI projec
 
 In the "seven transmission levers" framework:
 
-- **Lever 5 (government adoption)**: a national-scale AI deployment in the healthcare system
-- **Lever 3 (industry adoption)**: a model for medical AI deployment
+- **Lever 4 (Applications)**: a model for medical AI deployment
+- **Lever 5 (Government Self-Use)**: a national-scale AI deployment in the healthcare system
 
 A take: **ACE-AI proves that Singapore's "small country + centralised healthcare system" is a real advantage in medical AI** — large countries like the US or Indonesia could not pull off "one nationwide system" even if they wanted to. ACE-AI's success (if it succeeds) will be studied by the global medical AI industry for years.
 
@@ -8045,7 +8029,7 @@ Worth watching: **actual prediction accuracy**, **clinician adoption** (do docto
             titleEn: 'Planned nationwide rollout',
           },
         ],
-        relatedLeverNumbers: [3, 5],
+        relatedLeverNumbers: [4, 5],
         relatedEntityIds: ['synapxe', 'ai-singapore'],
         sources: [
           {
@@ -8159,7 +8143,7 @@ The joint lab follows a research-to-translation model, allowing outputs to feed 
             titleEn: 'Razer and NUS establish a joint AI research lab',
           },
         ],
-        relatedLeverNumbers: [2, 3],
+        relatedLeverNumbers: [3, 4],
         relatedEntityIds: ['nus'],
         sources: [
           {
@@ -8298,8 +8282,8 @@ Strategically, DeepMind's arrival is part of Google's global AI footprint and st
 
 在「七条传导杠杆」里：
 
-- **杠杆 1（基础研究）**：首次在新加坡有"全球顶级实验室"，研究水平直接接入 Google 全球网络
-- **杠杆 2（人才）**：让新加坡顶尖 AI 人才有"在本地做世界级工作"的选择，减少人才流失
+- **杠杆 3（人才）**：让新加坡顶尖 AI 人才有"在本地做世界级工作"的选择，减少人才流失
+- **杠杆 4（应用）**：首次在新加坡有"全球顶级实验室"，研究水平直接接入 Google 全球网络
 - **杠杆 6（外交）**：是新加坡作为"开放、中立、可靠 AI 节点"叙事的最大具象证据
 
 观点：**DeepMind 选新加坡（而不是东京、首尔、悉尼）是新加坡 AI 国际化定位的重大胜利**——它意味着 Google 把新加坡视为东南亚甚至亚太的 AI 战略中心。这背后有几个原因：
@@ -8314,8 +8298,8 @@ Strategically, DeepMind's arrival is part of Google's global AI footprint and st
 
 「일곱 가지 전도 레버」에서:
 
-- **레버 1(기초 연구)**: 싱가포르에서 처음으로 「글로벌 최상위 실험실」을 갖추게 되어 연구 수준이 Google 글로벌 네트워크에 직결됩니다
-- **레버 2(인재)**: 싱가포르 정상급 AI 인재들이 「현지에서 세계 수준의 업무 수행」이라는 선택지를 갖게 되어 인재 유출 감소
+- **레버 3(인재)**: 싱가포르 정상급 AI 인재들이 「현지에서 세계 수준의 업무 수행」이라는 선택지를 갖게 되어 인재 유출 감소
+- **레버 4(애플리케이션)**: 싱가포르에서 처음으로 「글로벌 최상위 실험실」을 갖추게 되어 연구 수준이 Google 글로벌 네트워크에 직결됩니다
 - **레버 6(외교)**: 싱가포르를 「개방적이고 중립적이며 신뢰할 수 있는 AI 노드」라는 서사의 가장 큰 구체적 증거
 
 관점: **DeepMind가 싱가포르를 선택한 것(도쿄, 서울, 시드니 대신)은 싱가포르의 AI 국제화 포지셔닝의 거대한 승리**입니다. 이는 Google이 싱가포르를 동남아 나아가 아태의 AI 전략 중심으로 본다는 의미입니다. 이 배경에는 여러 이유가 있습니다:
@@ -8330,8 +8314,8 @@ Strategically, DeepMind's arrival is part of Google's global AI footprint and st
 
 「七条伝導レバー」の中で：
 
-- **レバー 1（基礎研究）**：初めてシンガポールに「グローバル トップティア ラボ」があり、研究レベルは Google グローバル ネットワークに直接接続されています
-- **レバー 2（人材）**：シンガポール トップティア AI 人材に「本地で世界級の仕事をする」選択肢があり、人材流出が減少します
+- **レバー 3（人材）**：シンガポール トップティア AI 人材に「本地で世界級の仕事をする」選択肢があり、人材流出が減少します
+- **レバー 4（応用）**：初めてシンガポールに「グローバル トップティア ラボ」があり、研究レベルは Google グローバル ネットワークに直接接続されています
 - **レバー 6（外交）**：シンガポールが「開放的、中立的、信頼できる AI ノード」としての叙事の最大の具象証拠です
 
 観点：**DeepMind がシンガポールを選択した（東京、ソウル、シドニーではなく）ことはシンガポール AI 国際化ポジショニングの大きな勝利**です——Google がシンガポールを東南アジアさらにはアジア太平洋の AI 戦略の中心と見なしていることを意味しています。これの背後には数個の理由があります：
@@ -8346,9 +8330,9 @@ Strategically, DeepMind's arrival is part of Google's global AI footprint and st
 
 In the "seven transmission levers" framework:
 
-- **Lever 1 (foundational research)**: a "global top-tier lab" in Singapore for the first time, with research quality plugged directly into Google's global network
-- **Lever 2 (talent)**: gives Singapore's top AI talent the option to "do world-class work locally", reducing brain drain
-- **Lever 6 (international)**: the most concrete piece of evidence for Singapore's narrative as an "open, neutral, reliable AI node"
+- **Lever 3 (Talent)**: gives Singapore's top AI talent the option to "do world-class work locally", reducing brain drain
+- **Lever 4 (Applications)**: a "global top-tier lab" in Singapore for the first time, with research quality plugged directly into Google's global network
+- **Lever 6 (Diplomacy)**: the most concrete piece of evidence for Singapore's narrative as an "open, neutral, reliable AI node"
 
 A take: **DeepMind picking Singapore (over Tokyo, Seoul, Sydney) is a major win for Singapore's international AI positioning** — it means Google sees Singapore as the AI strategic centre for Southeast Asia or even the wider APAC. Several reasons sit behind this:
 
@@ -8392,7 +8376,7 @@ Key variables to watch: **how big the lab can grow** (100 people? 500?), **wheth
             descriptionEn: "DeepMind's first lab in Southeast Asia.",
           },
         ],
-        relatedLeverNumbers: [1, 2, 6],
+        relatedLeverNumbers: [3, 4, 6],
         relatedPolicyIds: ['google-singapore-ai-agents-sandbox-2026'],
         relatedDebateIds: ['cos-mddi-2026'],
         relatedEntityIds: ['nus', 'a-star', 'ai-singapore'],
@@ -8510,8 +8494,8 @@ Technically, the MSR Asia–NUS IPP collaboration lets PhD students do "half res
 
 在「七条传导杠杆」里：
 
-- **杠杆 1（基础研究）**：再增一个全球顶级研究节点
-- **杠杆 2（人才）**：通过 IPP 模式留住顶尖博士生
+- **杠杆 3（人才）**：通过 IPP 模式留住顶尖博士生
+- **杠杆 4（应用）**：再增一个全球顶级研究节点
 - **杠杆 6（外交）**：双向吸引中美 AI 研究力量
 
 观点：**MSR Asia 在新加坡的存在让 Google DeepMind 不再"独大"**——这种 healthy competition 对新加坡有利：两家都想抢人才、出 paper、影响政策。新加坡可以坐收"两边都要讨好我"的红利。`,
@@ -8519,8 +8503,8 @@ Technically, the MSR Asia–NUS IPP collaboration lets PhD students do "half res
 
 「일곱 가지 전도 레버」에서:
 
-- **레버 1(기초 연구)**: 글로벌 최상급 연구 노드 재증설
-- **레버 2(인재)**: IPP 모델을 통해 정상급 박사과정 학생 유지
+- **레버 3(인재)**: IPP 모델을 통해 정상급 박사과정 학생 유지
+- **레버 4(애플리케이션)**: 글로벌 최상급 연구 노드 재증설
 - **레버 6(외교)**: 중미 AI 연구 역량의 양방향 유치
 
 관점: **MSR Asia의 싱가포르 존재로 Google DeepMind가 더 이상 「독점적」이지 않습니다**. 이러한 healthy competition은 싱가포르에 유리합니다. 양사 모두 인재를 확보하고, 논문을 출판하고, 정책에 영향을 미치기를 원합니다. 싱가포르는 「양쪽 모두 나를 달래야 한다」는 배당금을 거둘 수 있습니다.`,
@@ -8528,8 +8512,8 @@ Technically, the MSR Asia–NUS IPP collaboration lets PhD students do "half res
 
 「7つの伝導レバー」の中で：
 
-- **レバー1（基礎研究）**：グローバル最高峰の研究ノードをさらに1つ追加
-- **レバー2（人材）**：IPP モデルを通じてトップクラスの博士課程学生を留める
+- **レバー3（人材）**：IPP モデルを通じてトップクラスの博士課程学生を留める
+- **レバー4（応用）**：グローバル最高峰の研究ノードをさらに1つ追加
 - **レバー6（外交）**：米中 AI 研究力を双方向で引き付ける
 
 見方：**MSR Asia のシンガポール での存在により、Google DeepMind はもはや「独占」ではなくなった**――このような健全な競争はシンガポール にとって有利です。両社とも人材を引き寄せたい、論文を発表したい、政策に影響を与えたいと考えています。シンガポール は「両者に気に入られる」という利益を享受できます。`,
@@ -8537,9 +8521,9 @@ Technically, the MSR Asia–NUS IPP collaboration lets PhD students do "half res
 
 In the "seven transmission levers" framework:
 
-- **Lever 1 (foundational research)**: another global top-tier research node
-- **Lever 2 (talent)**: retains top PhD students via the IPP model
-- **Lever 6 (international)**: pulls in both US and Chinese AI research strength
+- **Lever 3 (Talent)**: retains top PhD students via the IPP model
+- **Lever 4 (Applications)**: another global top-tier research node
+- **Lever 6 (Diplomacy)**: pulls in both US and Chinese AI research strength
 
 A take: **MSR Asia's presence in Singapore means Google DeepMind no longer "stands alone"** — this kind of healthy competition benefits Singapore: both want to grab talent, publish papers, and influence policy. Singapore gets to collect the "both sides courting me" dividend.`,
         milestones: [
@@ -8558,7 +8542,7 @@ A take: **MSR Asia's presence in Singapore means Google DeepMind no longer "stan
             titleEn: 'Singapore lab announced',
           },
         ],
-        relatedLeverNumbers: [1, 2, 6],
+        relatedLeverNumbers: [3, 4, 6],
         relatedPolicyIds: ['imda-microsoft-ai-safety-security-mou-2026'],
         relatedDebateIds: ['cos-mddi-2026', 'motion-2976'],
         relatedEntityIds: ['nus', 'google-deepmind'],
@@ -8680,32 +8664,32 @@ AWS does not lead research technically, but the boundaries of its services (whic
 
 在「七条传导杠杆」里：
 
-- **杠杆 1（基础设施）**：算力底座
-- **杠杆 3（产业应用）**：通过 Bedrock 等让企业 AI 落地门槛降低
+- **杠杆 1（基建）**：算力底座
+- **杠杆 4（应用）**：通过 Bedrock 等让企业 AI 落地门槛降低
 
 观点：**AWS 投资规模对新加坡是双刃剑**——它带来巨额资金、就业、税收、AI 算力，但也让新加坡 AI 生态对 AWS 高度依赖。如果 Bedrock 调价、AWS 退出某个 AI 服务，本地企业受冲击大。这是新加坡推 SEA-LION（一个不依赖 AWS API 的本地化模型）的部分动机。`,
         singaporeRelevanceKo: `AWS의 USD 90억 투자는 싱가포르 AI 전략의 **「기초 인프라 레버」의 최대 자금 주입**입니다.
 
 「일곱 가지 전도 레버」에서:
 
-- **레버 1(기초 인프라)**: 산력 기반
-- **레버 3(산업 응용)**: Bedrock 등을 통해 기업 AI 착지 문턱 낮추기
+- **레버 1(기초 시설)**: 산력 기반
+- **레버 4(애플리케이션)**: Bedrock 등을 통해 기업 AI 착지 문턱 낮추기
 
 관점: **AWS 투자 규모는 싱가포르에 양날의 검**입니다. 거대 자금, 일자리, 세수, AI 산력을 가져오지만, 싱가포르 AI 생태가 AWS에 고도로 의존하게 됩니다. Bedrock 가격 인상, AWS의 특정 AI 서비스 철수 시 현지 기업 충격이 큽니다. 이는 싱가포르가 SEA-LION(AWS API에 의존하지 않는 현지화 모델)을 추진하는 일부 동기입니다.`,
         singaporeRelevanceJa: `AWS の 90 億 USD 投資は、シンガポール の AI 戦略における**「インフラストラクチャレバー」の最大の資金注入**です。
 
 「7つの伝導レバー」の中で：
 
-- **レバー1（インフラストラクチャ）**：算力のベース
-- **レバー3（産業応用）**：Bedrock などを通じて企業が AI を導入する際のハードルを下げる
+- **レバー1（インフラ）**：算力のベース
+- **レバー4（応用）**：Bedrock などを通じて企業が AI を導入する際のハードルを下げる
 
 見方：**AWS 投資規模はシンガポール にとって両刃の剣である**――それは多額の資金、雇用、税収、AI 算力をもたらしますが、シンガポール の AI エコシステムを AWS に高度に依存させてもいます。Bedrock の価格改定や AWS が AI サービスから撤退する場合、現地企業への影響は大きいです。これはシンガポール が SEA-LION（AWS API に依存しない現地化モデル）を推し進める理由の一部です。`,
         singaporeRelevanceEn: `The AWS USD 9 billion investment is **the single largest funding injection into the "infrastructure lever"** of Singapore's AI strategy.
 
 In the "seven transmission levers" framework:
 
-- **Lever 1 (infrastructure)**: the compute base
-- **Lever 3 (industry adoption)**: services like Bedrock lower the barrier to enterprise AI deployment
+- **Lever 1 (Infrastructure)**: the compute base
+- **Lever 4 (Applications)**: services like Bedrock lower the barrier to enterprise AI deployment
 
 A take: **the scale of the AWS investment is a double-edged sword for Singapore** — it brings massive capital, jobs, tax revenue, and AI compute, but it also makes Singapore's AI ecosystem heavily dependent on AWS. If Bedrock raises prices or AWS exits an AI service, local enterprises take a serious hit. This is part of the motivation for Singapore pushing SEA-LION (a localised model that does not depend on AWS APIs).`,
         milestones: [
@@ -8724,7 +8708,7 @@ A take: **the scale of the AWS investment is a double-edged sword for Singapore*
             titleEn: 'Announced USD 9 billion infrastructure investment',
           },
         ],
-        relatedLeverNumbers: [1, 3],
+        relatedLeverNumbers: [1, 4],
         relatedDebateIds: ['motion-2976', 'motion-2970', 'cos-mti-2026', 'budget-2620', 'budget-2072', 'budget-1862'],
         relatedEntityIds: ['ai-singapore', 'sea-lion', 'nvidia'],
         sources: [
@@ -8840,7 +8824,7 @@ This dependence has become sensitive in the US–China AI competition — US exp
 
 在「七条传导杠杆」里：
 
-- **杠杆 1（基础设施）**：算力的物理基础
+- **杠杆 1（基建）**：算力的物理基础
 - **杠杆 6（外交）**：在中美算力管制中如何定位
 
 观点：**新加坡的"NVIDIA 营收 15%"数字是把双刃剑**——一方面证明新加坡是亚太 AI 中心，另一方面让美国对新加坡的"GPU 转运"嫌疑加强。2024 年开始美国调查新加坡是否将受管制 GPU 转售给中国实体，这是新加坡 AI 战略的真实地缘风险。
@@ -8850,7 +8834,7 @@ This dependence has become sensitive in the US–China AI competition — US exp
 
 「일곱 가지 전달 레버」 중에:
 
-- **레버 1(인프라)**: 컴퓨팅의 물리적 기초
+- **레버 1(기초 시설)**: 컴퓨팅의 물리적 기초
 - **레버 6(외교)**: 미중 컴퓨팅 규제 속에서의 위치결정
 
 견해: **싱가포르의 「NVIDIA 매출 15%」 수치는 양날의 칼**입니다——한편으로는 싱가포르가 아태 AI 중심지임을 증명하지만, 다른 한편으로는 미국의 싱가포르에 대한 「GPU 환적」 의혹을 강화합니다. 2024년부터 미국은 싱가포르가 규제 대상 GPU를 중국 실체에 전매하고 있는지 조사 중이며, 이는 싱가포르 AI 전략의 진정한 지정학적 위험입니다.
@@ -8860,7 +8844,7 @@ This dependence has become sensitive in the US–China AI competition — US exp
 
 「7つの伝導レバー」の中で：
 
-- **レバー1（インフラストラクチャ）**：算力の物理的ベース
+- **レバー1（インフラ）**：算力の物理的ベース
 - **レバー6（外交）**：米中算力規制の中でどう立ち位置を定めるか
 
 見方：**シンガポール の「NVIDIA 営収の 15%」という数字は両刃の剣です**――一方ではシンガポール がアジア太平洋 AI センターであることを証明していますが、他方ではシンガポール の「GPU 転送」疑惑を強めています。2024 年から米国はシンガポール が受規制 GPU を中国企業に転売していないか調査しており、これはシンガポール の AI 戦略における真の地政学的リスクです。
@@ -8870,8 +8854,8 @@ This dependence has become sensitive in the US–China AI competition — US exp
 
 In the "seven transmission levers" framework:
 
-- **Lever 1 (infrastructure)**: the physical foundation of compute
-- **Lever 6 (international)**: how to position itself amid US–China compute controls
+- **Lever 1 (Infrastructure)**: the physical foundation of compute
+- **Lever 6 (Diplomacy)**: how to position itself amid US–China compute controls
 
 A take: **Singapore's "15% of NVIDIA revenue" figure is a double-edged sword** — on one hand it proves Singapore is an APAC AI hub; on the other it sharpens US suspicions of "GPU rerouting" via Singapore. Starting in 2024 the US has investigated whether Singapore is reselling controlled GPUs to Chinese entities — a real geopolitical risk for Singapore's AI strategy.
 
@@ -8997,17 +8981,17 @@ For Singapore, the scarce part is not access to GPT. It is people who can embed 
 在「七条传导杠杆」里：
 
 - **杠杆 1（基建）**：前沿模型和部署工程能力
-- **杠杆 3（产业应用）**：金融、医疗、公共服务、SME 采用
-- **杠杆 6（外交 / 外资）**：让美国前沿 AI 公司把非美国首个 Applied AI Lab 放在新加坡
+- **杠杆 4（应用）**：金融、医疗、公共服务、SME 采用
+- **杠杆 6（外交）**：让美国前沿 AI 公司把非美国首个 Applied AI Lab 放在新加坡
 
 观点：这条新闻比“区域总部”更重。区域总部是商业存在；Applied AI Lab + FDE 是把生产能力放在新加坡。`,
         singaporeRelevanceKo: `OpenAI for Singapore는 “신뢰할 수 있는 AI 배포 실험실로서의 싱가포르”에 대한 강한 신호입니다.
 
 「7가지 전달 레버」에서:
 
-- **레버 1(인프라)**: 프런티어 모델과 배포 엔지니어링 역량
-- **레버 3(산업 응용)**: 금융, 의료, 공공 서비스, SME 도입
-- **레버 6(외교 / 외자)**: 미국 프런티어 AI 회사가 미국 밖 첫 Applied AI Lab을 싱가포르에 두게 함
+- **레버 1(기초 시설)**: 프런티어 모델과 배포 엔지니어링 역량
+- **레버 4(애플리케이션)**: 금융, 의료, 공공 서비스, SME 도입
+- **레버 6(외교)**: 미국 프런티어 AI 회사가 미국 밖 첫 Applied AI Lab을 싱가포르에 두게 함
 
 관점: 이 뉴스는 “지역 본부”보다 중요합니다. 지역 본부는 상업적 존재이고, Applied AI Lab + FDE는 생산 역량을 싱가포르에 두는 것입니다.`,
         singaporeRelevanceJa: `OpenAI for Singapore は「信頼される AI 実装実験室としてのシンガポール」を示す強いシグナルです。
@@ -9015,17 +8999,17 @@ For Singapore, the scarce part is not access to GPT. It is people who can embed 
 「7つの伝導レバー」では：
 
 - **レバー1（インフラ）**：フロンティアモデルと実装エンジニアリング能力
-- **レバー3（産業応用）**：金融、医療、公共サービス、SME 採用
-- **レバー6（外交 / 外資）**：米国のフロンティア AI 企業が米国外初の Applied AI Lab をシンガポールに置く
+- **レバー4（応用）**：金融、医療、公共サービス、SME 採用
+- **レバー6（外交）**：米国のフロンティア AI 企業が米国外初の Applied AI Lab をシンガポールに置く
 
 見方：このニュースは「地域本部」より重いです。地域本部は商業的存在ですが、Applied AI Lab + FDE は生産能力をシンガポールに置くことです。`,
         singaporeRelevanceEn: `OpenAI for Singapore is a strong signal for Singapore as a trusted AI deployment lab.
 
 In the "seven transmission levers" framework:
 
-- **Lever 1 (infrastructure)**: frontier models and deployment engineering capacity
-- **Lever 3 (industry adoption)**: finance, healthcare, public service, and SME adoption
-- **Lever 6 (international / foreign capital)**: getting a US frontier AI company to place its first non-US Applied AI Lab in Singapore
+- **Lever 1 (Infrastructure)**: frontier models and deployment engineering capacity
+- **Lever 4 (Applications)**: finance, healthcare, public service, and SME adoption
+- **Lever 6 (Diplomacy)**: getting a US frontier AI company to place its first non-US Applied AI Lab in Singapore
 
 A take: this is heavier than a “regional HQ” announcement. A regional HQ is commercial presence; an Applied AI Lab plus FDE teams are production capacity on the ground.`,
         milestones: [
@@ -9059,7 +9043,7 @@ A take: this is heavier than a “regional HQ” announcement. A regional HQ is 
               'Access extends to all students, faculty, and staff from 31 August, alongside a compulsory generative-AI module for undergraduate freshmen and AI Sense Maker. Codex is not part of this university-wide rollout; it came through the earlier collaboration with the School of Computing.',
           },
         ],
-        relatedLeverNumbers: [1, 3, 6],
+        relatedLeverNumbers: [1, 4, 6],
         relatedPolicyIds: ['openai-for-singapore-2026'],
         relatedDebateIds: ['oral-answer-4126', 'motion-2976', 'budget-2328'],
         relatedEntityIds: ['ai-singapore', 'nus'],
@@ -9174,7 +9158,7 @@ The collaboration model is light-touch — mostly joint projects and small teams
 
 In the "seven transmission levers" framework:
 
-- **Lever 6 (international)**: adds partner diversity
+- **Lever 6 (Diplomacy)**: adds partner diversity
 
 A take: Sony is small in scale, but it is a necessary piece of the puzzle for Singapore's "internationalisation narrative".`,
         milestones: [],
@@ -9257,7 +9241,7 @@ At the LLM level, Qwen's Chinese-language capability outperforms SEA-LION, while
 
 在「七条传导杠杆」里：
 
-- **杠杆 1（基础设施）**：云算力的"非美国选项"
+- **杠杆 1（基建）**：云算力的"非美国选项"
 - **杠杆 6（外交）**：体现新加坡对中国 AI 力量的开放
 
 观点：**新加坡能否长期容纳"美国 + 中国 AI 公司同时在场"是它"中立"叙事的真实考验**。如果美国施压收紧（如对 NVIDIA GPU 转运的调查），新加坡如何应对将定义其 AI 战略的根本走向。
@@ -9267,7 +9251,7 @@ At the LLM level, Qwen's Chinese-language capability outperforms SEA-LION, while
 
 「7가지 전도 레버」 내에서:
 
-- **레버 1(기반 시설)**: 클라우드 컴퓨팅 파워의 「비미국 선택지」
+- **레버 1(기초 시설)**: 클라우드 컴퓨팅 파워의 「비미국 선택지」
 - **레버 6(외교)**: 싱가포르의 중국 AI 역량에 대한 개방성 표현
 
 관점: **싱가포르가 「미국 + 중국 AI 회사의 동시 존재」를 장기적으로 용인할 수 있는지는 그것의 「중립」서사의 진정한 시험입니다**. 미국이 압력을 가해 긴축하면(예: NVIDIA GPU 전환 조사), 싱가포르의 대응이 그 AI 전략의 근본적 방향을 규정할 것입니다.
@@ -9277,7 +9261,7 @@ At the LLM level, Qwen's Chinese-language capability outperforms SEA-LION, while
 
 「7つの伝導レバー」の中で：
 
-- **レバー1（インフラストラクチャ）**：クラウド算力の「非米国オプション」
+- **レバー1（インフラ）**：クラウド算力の「非米国オプション」
 - **レバー6（外交）**：中国 AI 力へのシンガポール のオープンさを具現化
 
 見方：**シンガポール が長期的に「米国 + 中国 AI 企業が同時に存在」を容認できるかが、その「中立」ナラティブの真の試験です**。米国が圧力をかけて制限する場合（NVIDIA GPU 転送調査など）、シンガポール がどう対応するかはその AI 戦略の根本的な方向性を決定します。
@@ -9287,8 +9271,8 @@ At the LLM level, Qwen's Chinese-language capability outperforms SEA-LION, while
 
 In the "seven transmission levers" framework:
 
-- **Lever 1 (infrastructure)**: a "non-US option" for cloud compute
-- **Lever 6 (international)**: signals Singapore's openness to Chinese AI players
+- **Lever 1 (Infrastructure)**: a "non-US option" for cloud compute
+- **Lever 6 (Diplomacy)**: signals Singapore's openness to Chinese AI players
 
 A take: **whether Singapore can sustainably host "US and Chinese AI companies on stage at the same time" is the real test of its "neutrality" narrative**. If US pressure tightens (e.g. the investigation into NVIDIA GPU rerouting), how Singapore responds will define the fundamental direction of its AI strategy.
 
