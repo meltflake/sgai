@@ -25,6 +25,7 @@ import { resolve } from 'node:path';
 import { videoTranscripts } from '../../src/data/video-transcripts.ts';
 import { translateBatch } from '../lib/translate.ts';
 import { ensureClaudeAvailable } from '../lib/llm.ts';
+import { upsertRecordField } from '../lib/ts-record-fields.ts';
 
 const OUT_FILE = resolve('src/data/video-transcripts.ts');
 const CACHE_DIR = resolve('scripts/videos/data/translate-cache-ko');
@@ -76,55 +77,12 @@ async function translateOne(
   };
 }
 
-// Inject `paragraphsKo: [...]` into the literal record for `videoId` in
-// the current OUT_FILE source. Anchored just after the `paragraphsEn`
-// block when present, otherwise just after `paragraphs: [...]`. Idempotent:
-// if a `paragraphsKo` already exists for this id, replaces it.
+// Upsert `paragraphsKo: [...]` in the literal record for `videoId`.
+// Anchored just after `paragraphsEn` when present, otherwise just after
+// `paragraphs`. Idempotent: replaces an existing `paragraphsKo`.
 function injectParagraphsJa(source: string, videoId: string, paragraphsKo: string[]): string {
-  const recordHeaderRe = new RegExp(`(\\n\\s{2}${escapeRegex(videoId)}:\\s*\\{)`);
-  const headerMatch = recordHeaderRe.exec(source);
-  if (!headerMatch) {
-    throw new Error(`Could not locate record header for ${videoId} in ${OUT_FILE}`);
-  }
-  const openIdx = headerMatch.index + headerMatch[0].length - 1;
-  let depth = 1;
-  let cursor = openIdx + 1;
-  let inStr: string | null = null;
-  while (cursor < source.length && depth > 0) {
-    const ch = source[cursor];
-    const prev = source[cursor - 1];
-    if (inStr) {
-      if (ch === inStr && prev !== '\\') inStr = null;
-    } else {
-      if (ch === '"' || ch === "'") inStr = ch;
-      else if (ch === '{') depth += 1;
-      else if (ch === '}') depth -= 1;
-    }
-    cursor += 1;
-  }
-  const closeIdx = cursor - 1;
-  const recordBody = source.slice(openIdx, closeIdx + 1);
-
-  const indent = '    ';
-  const formatted = formatParagraphsJa(paragraphsKo, indent);
-
-  const existingJaRe = /(\n\s{4}paragraphsKo:\s*\[[\s\S]*?\n\s{4}\],)/;
-  if (existingJaRe.test(recordBody)) {
-    const replacedBody = recordBody.replace(existingJaRe, () => `\n${formatted}`);
-    return source.slice(0, openIdx) + replacedBody + source.slice(closeIdx + 1);
-  }
-
-  const enRe = /(\n\s{4}paragraphsEn:\s*\[[\s\S]*?\n\s{4}\],)/;
-  const zhRe = /(\n\s{4}paragraphs:\s*\[[\s\S]*?\n\s{4}\],)/;
-  let injected: string;
-  if (enRe.test(recordBody)) {
-    injected = recordBody.replace(enRe, (m) => `${m}\n${formatted}`);
-  } else if (zhRe.test(recordBody)) {
-    injected = recordBody.replace(zhRe, (m) => `${m}\n${formatted}`);
-  } else {
-    throw new Error(`No paragraphs block found in record ${videoId}`);
-  }
-  return source.slice(0, openIdx) + injected + source.slice(closeIdx + 1);
+  const formatted = formatParagraphsJa(paragraphsKo, '    ');
+  return upsertRecordField(source, videoId, 'paragraphsKo', formatted, ['paragraphsEn', 'paragraphs']);
 }
 
 function formatParagraphsJa(paragraphs: string[], indent: string): string {
@@ -139,59 +97,10 @@ function formatDigestKo(digest: DigestKo, indent: string): string {
 }
 
 function injectDigestKo(source: string, videoId: string, digestKo: DigestKo): string {
-  const recordHeaderRe = new RegExp(`(\\n\\s{2}${escapeRegex(videoId)}:\\s*\\{)`);
-  const headerMatch = recordHeaderRe.exec(source);
-  if (!headerMatch) {
-    throw new Error(`Could not locate record header for ${videoId} in ${OUT_FILE}`);
-  }
-  const openIdx = headerMatch.index + headerMatch[0].length - 1;
-  let depth = 1;
-  let cursor = openIdx + 1;
-  let inStr: string | null = null;
-  while (cursor < source.length && depth > 0) {
-    const ch = source[cursor];
-    const prev = source[cursor - 1];
-    if (inStr) {
-      if (ch === inStr && prev !== '\\') inStr = null;
-    } else {
-      if (ch === '"' || ch === "'") inStr = ch;
-      else if (ch === '{') depth += 1;
-      else if (ch === '}') depth -= 1;
-    }
-    cursor += 1;
-  }
-  const closeIdx = cursor - 1;
-  const recordBody = source.slice(openIdx, closeIdx + 1);
-
-  const indent = '    ';
-  const formatted = formatDigestKo(digestKo, indent);
-
-  const existingJaRe = /(\n\s{4}digestKo:\s*\{[\s\S]*?\n\s{4}\},)/;
-  if (existingJaRe.test(recordBody)) {
-    const replacedBody = recordBody.replace(existingJaRe, () => `\n${formatted}`);
-    return source.slice(0, openIdx) + replacedBody + source.slice(closeIdx + 1);
-  }
-
-  // Anchor: after digestEn block when present, else after digest, else
-  // after paragraphsKo.
-  const enRe = /(\n\s{4}digestEn:\s*\{[\s\S]*?\n\s{4}\},)/;
-  const zhRe = /(\n\s{4}digest:\s*\{[\s\S]*?\n\s{4}\},)/;
-  const paraJaRe = /(\n\s{4}paragraphsKo:\s*\[[\s\S]*?\n\s{4}\],)/;
-  let injected: string;
-  if (enRe.test(recordBody)) {
-    injected = recordBody.replace(enRe, (m) => `${m}\n${formatted}`);
-  } else if (zhRe.test(recordBody)) {
-    injected = recordBody.replace(zhRe, (m) => `${m}\n${formatted}`);
-  } else if (paraJaRe.test(recordBody)) {
-    injected = recordBody.replace(paraJaRe, (m) => `${m}\n${formatted}`);
-  } else {
-    throw new Error(`No anchor block found in record ${videoId} for digestKo`);
-  }
-  return source.slice(0, openIdx) + injected + source.slice(closeIdx + 1);
-}
-
-function escapeRegex(s: string): string {
-  return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  // Anchor: after digestEn when present, else after digest, else after
+  // paragraphsKo.
+  const formatted = formatDigestKo(digestKo, '    ');
+  return upsertRecordField(source, videoId, 'digestKo', formatted, ['digestEn', 'digest', 'paragraphsKo']);
 }
 
 function ensureInterfaceHasParagraphsJa(source: string): string {

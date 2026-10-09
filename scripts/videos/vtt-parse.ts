@@ -82,3 +82,16 @@ export function vttToParagraphsWithReport(vtt: string): VttParseResult {
 export function vttToParagraphs(vtt: string): string[] {
   return vttToParagraphsWithReport(vtt).paragraphs;
 }
+
+// Fewer word tokens than this, after sound tags are removed, means the
+// caption track has no real speech (e.g. v120: "[music] >> Woo!").
+const MIN_SPEECH_TOKENS = 5;
+
+// False when the paragraphs hold only sound tags like [Music] / [音乐],
+// `>>` speaker marks and a few stray words. One CJK character counts as
+// one token; one Latin/number run counts as one token.
+export function hasSpeech(paragraphs: string[]): boolean {
+  const text = paragraphs.join(' ').replace(/\[[^\]]*\]/g, ' ');
+  const tokens = text.match(/[\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}\p{Script=Hangul}]|[\p{L}\p{N}]+/gu);
+  return (tokens?.length ?? 0) >= MIN_SPEECH_TOKENS;
+}
