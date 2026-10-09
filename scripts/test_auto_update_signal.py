@@ -24,7 +24,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
 
-from auto_update import extract_failure_signal, html_to_markdown  # noqa: E402
+from auto_update import compose_email, extract_failure_signal, html_to_markdown  # noqa: E402
 
 NPM_NOISE = (
     "npm notice\n"
@@ -65,6 +65,24 @@ class ExtractFailureSignalTest(unittest.TestCase):
         self.assertIn("Error: fetch failed after 3 retries", signal)
         self.assertNotIn("npm notice", signal)
 
+    def test_node_error_header_kept_above_long_stack(self):
+        # Issues #333-#338: a thrown Error with a 5-line message plus a
+        # 7-frame stack. A plain last-10-lines cut dropped the header line,
+        # so the issue showed only the hint, never the cause.
+        frames = "".join(f"    at frame{i} (/x/llm.ts:{i}:1)\n" for i in range(7))
+        stderr = (
+            NPM_NOISE + "/x/llm.ts:167\n    throw new Error(\n          ^\n\n"
+            "Error: Claude CLI is not authenticated (API 401): token expired\n"
+            "Re-authenticate the Claude CLI, then retry:\n"
+            "  claude setup-token      # token auth\n"
+            "  claude auth login       # interactive OAuth login\n"
+            "If the CLI lives at a non-standard path, set SGAI_CLAUDE_BIN.\n"
+            + frames + "\nNode.js v22.23.3\n"
+        )
+        sig = extract_failure_signal(1, "[videos-refresh] starting\n", stderr)
+        self.assertIn("Error: Claude CLI is not authenticated (API 401): token expired", sig)
+        self.assertIn("set SGAI_CLAUDE_BIN", sig)
+
     def test_tail_kept_not_head(self):
         """A long stream must keep its END — the old [:300] head slice is
         exactly how three npm notice lines hid every real error."""
@@ -103,6 +121,17 @@ class PreRenderingTest(unittest.TestCase):
     def test_li_with_attributes_still_becomes_bullet(self):
         md = html_to_markdown("<ul>  <li style='color:red'>legacy item</li></ul>")
         self.assertIn("- legacy item", md)
+
+
+class EmailSubjectTest(unittest.TestCase):
+    def test_failed_run_is_not_labelled_no_new_data(self):
+        subject, _ = compose_email({"videos": {"count": 0, "error": "exit 1: x"}}, ["videos: exit 1: x"], 3)
+        self.assertNotIn("no new data", subject)
+        self.assertIn("1 failed", subject)
+
+    def test_clean_empty_run_still_says_no_new_data(self):
+        subject, _ = compose_email({"videos": {"count": 0}}, [], 3)
+        self.assertIn("no new data", subject)
 
 
 if __name__ == "__main__":

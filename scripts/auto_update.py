@@ -365,6 +365,8 @@ def compose_email(results: dict, errors: list[str], elapsed: float) -> tuple[str
         c = r.get("count", 0) or 0
         if c > 0:
             counts.append(f"{pid} +{c}")
+    if errors:
+        counts.append(f"{len(errors)} failed")
     summary = ", ".join(counts) if counts else "no new data"
     if pr_results:
         subject = f"[sgai] data-refresh {date_str}: {summary} — review {len(pr_results)} PR(s)"
@@ -574,6 +576,7 @@ NPM_QUIET_ENV = {
 }
 
 EVAL_SUMMARY_MARKER = "=== Eval Summary ==="
+ERROR_HEADER_RE = re.compile(r"^\s*(?:Uncaught )?(?:[A-Z]\w*)?Error(?: \[\w+\])?: ")
 
 
 def extract_failure_signal(returncode: int, stdout: str, stderr: str) -> str:
@@ -585,6 +588,8 @@ def extract_failure_signal(returncode: int, stdout: str, stderr: str) -> str:
       because the stdout fallback was gated on stderr being empty and one
       surviving `npm notice` line suppressed it.
     - stderr drops npm notice/warn/fund noise lines, then keeps the tail.
+      When stderr holds a Node `Error:` header, keep from that header on
+      and trim the stack to 2 frames (#333-#338 lost the header).
     - The combined signal is TAIL-sliced ([-1500:]), never head-sliced —
       real errors live at the end of the stream ([:300] hid them).
     """
@@ -607,7 +612,25 @@ def extract_failure_signal(returncode: int, stdout: str, stderr: str) -> str:
         if ln.strip() and not ln.lstrip().lower().startswith(NPM_NOISE_PREFIXES)
     ]
     if stderr_lines:
-        parts.append("\n".join(stderr_lines[-10:]))
+        # A thrown Node Error prints its header line, a multi-line message,
+        # then the stack. Keep from the last header on and trim the stack,
+        # or a plain last-10 cut drops the header (#333-#338).
+        header_idx = None
+        for i, ln in enumerate(stderr_lines):
+            if ERROR_HEADER_RE.match(ln):
+                header_idx = i
+        if header_idx is None:
+            parts.append("\n".join(stderr_lines[-10:]))
+        else:
+            kept: list[str] = []
+            frames = 0
+            for ln in stderr_lines[header_idx:]:
+                if ln.lstrip().startswith("at "):
+                    frames += 1
+                    if frames > 2:
+                        continue
+                kept.append(ln)
+            parts.append("\n".join(kept))
 
     signal = "\n".join(p for p in parts if p).strip()
     return f"exit {returncode}: {signal[-1500:]}"
