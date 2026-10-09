@@ -3,7 +3,7 @@ import { existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync
 import { join, resolve } from 'node:path';
 
 import { videos } from '../../src/data/videos';
-import { vttToParagraphsWithReport } from './vtt-parse.ts';
+import { hasSpeech, vttToParagraphsWithReport } from './vtt-parse.ts';
 
 interface TranscriptRecord {
   videoId: string;
@@ -109,7 +109,8 @@ function downloadTranscript(video: (typeof videos)[number]): TranscriptRecord {
 
     const vtt = readFileSync(join(TMP_DIR, vttFile), 'utf8');
     const { paragraphs, cleanup } = vttToParagraphsWithReport(vtt);
-    if (paragraphs.length === 0) continue;
+    // A track of only sound tags ([Music] >> Woo!) is not a transcript.
+    if (!hasSpeech(paragraphs)) continue;
     if (cleanup.stripped) {
       process.stdout.write(
         `\n  ↪ ASR cleanup: dropped start=${cleanup.removedFromStart}, mid=${cleanup.removedFromMiddle}, end=${cleanup.removedFromEnd} (${cleanup.totalSentencesIn} → ${cleanup.totalSentencesOut})\n  `
