@@ -6,7 +6,8 @@
 
 - 中文「信号」，英文 Signals，日文 シグナル，韩文 시그널。
 - 列表页：`/signals/`（en，裸路径）、`/zh/signals/`、`/zh-tw/signals/`、`/ja/signals/`、`/ko/signals/`。
-- 不做单条详情页。每条信号的主链接指向来源原文（规则：链原文，不链快照）。
+- 不做单条详情页。列表页上每条信号的标题链到来源原文（规则：链原文，不链快照）。
+- 站内其他位置（首页「最近更新」、`/updates/`、主题页）的链接指向 `/signals/#<id>`：这些位置都经过 `localizedHref()`，只接受站内路径。列表页每条带 `id` 锚点。
 
 ## 2. 数据
 
@@ -74,7 +75,10 @@ export interface Signal {
 
 1. **scan**（`scan.ts`）：读 `sources.ts`，抓最近 `--days=7` 的条目。来源与类型：
    - RSS：`businesstimes.com.sg/rss/technology`、`aisingapore.org/feed/`（排除 'AI Research' 分类）。
-   - sitemap：`mddi.gov.sg`（newsroom 新闻稿，排除演讲——演讲归 voices）、`imda.gov.sg`、`mas.gov.sg`、`tech.gov.sg`、`channelnewsasia.com`（sitemap-news）、`straitstimes.com`（sitemap-news）。
+   - RSS：CNA 最新新闻（`channelnewsasia.com/api/v1/rss-outbound-feed?_format=xml&category=6511`）、Tech in Asia（`techinasia.com/feed`，区域性，靠 judge 的新加坡条件过滤）。
+   - sitemap：`mddi.gov.sg/newsroom/`（排除演讲，演讲归 voices）、`imda.gov.sg/resources/press-releases-factsheets-and-speeches/`（同样排除演讲）。
+   - 2026-10-16 实测不收：Straits Times（RSS 400、sitemap-news 404）、e27（403）、MAS sitemap（无 lastmod，且演讲已由 voices 覆盖）。
+   - gov sitemap 的 `lastmod` 不可信（IMDA 把 2023 年的 AI Verify 发布稿标成 2026-10-15 修改）。sitemap 来源先按 URL slug 含 AI 关键词粗筛，再在 judge 前用 `govFetch` 取正文发布日期，早于窗口的丢弃；取不到日期的也丢弃（新闻窗口只有一周，没有日期就无法判断）。
    - 每个来源一个 `urlFilter`；复用 `scripts/lib/gov-fetch.ts` 的 `listSitemapEntries` 与 ecosystem 的 RSS 解析。单个来源失败只记 WARN，不中断。
    - 候选去重：排除 `signals.ts` 已有 `sourceUrl`、`voices.ts` / `videos.ts` / `policies.ts` 已收录的 URL、两级拒绝台账（`scripts/refresh/_shared/data/rejected-urls.json` 与 `scripts/refresh/signals/data/rejected-urls.json`）。
 2. **judge**（`judge.ts`）：对每个候选抓正文，Claude（haiku）判两件事：是否同时满足「新加坡」与「AI」；重要性 1 到 5 分并给一句理由。闭集输出，JSON。sha256 缓存到 `data/judgments/`。不满足两个条件或分数 < 4 的，写入域级拒绝台账（`reason: 'non-ai' | 'non-sg' | 'low-signal'`），下周不再出现。
