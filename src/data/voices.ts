@@ -3085,7 +3085,7 @@ export const mddiSpeeches: MddiSpeech[] = [
   },
   {
     titleEn: 'Address by SMS Tan Kiat How at NVIDIA AI Day Singapore',
-    title: 'SMS 陈杰豪在新加坡NVIDIA AI Day上的演讲',
+    title: '陈杰豪高级政务部长在 NVIDIA AI Day Singapore 上的演讲',
     titleJa: 'SMS Tan Kiat How による NVIDIA AI Day Singapore での講演',
     titleKo: 'SMS Tan Kiat How의 NVIDIA AI Day 싱가포르 연설',
     speaker: 'Tan Kiat How',
@@ -3095,10 +3095,10 @@ export const mddiSpeeches: MddiSpeech[] = [
     speakerTitleKo: 'MDDI 선임정무장관',
     date: '2026-09-23',
     url: 'https://www.mddi.gov.sg/newsroom/address-by-sms-tan-kiat-how-at-nvidia-ai-day-singapore/',
-    eventEn: 'How at NVIDIA AI Day Singapore',
-    event: '在新加坡 NVIDIA AI Day 上如何',
-    eventJa: 'NVIDIA AI Day Singaporeでのあり方',
-    eventKo: '싱가포르 NVIDIA AI Day에서 어떻게',
+    eventEn: 'NVIDIA AI Day Singapore',
+    event: 'NVIDIA AI Day Singapore',
+    eventJa: 'NVIDIA AI Day Singapore',
+    eventKo: 'NVIDIA AI Day Singapore',
     addedAt: '2026-10-16',
   },
 ];
