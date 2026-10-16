@@ -29,6 +29,9 @@ export interface SignalSource {
   rssCategoryExcludes?: string[];
   /** URLs carry a /20YY/ segment; drop years older than the window. */
   yearInPath?: boolean;
+  /** Visible release-date pattern in the body (group 1 = "29 Sept 2026");
+   *  wins over page metadata for sites that repost others' releases. */
+  visibleDate?: RegExp;
 }
 
 export const SOURCES: SignalSource[] = [
@@ -88,6 +91,8 @@ export const SOURCES: SignalSource[] = [
     url: 'https://www.edb.gov.sg/sitemap.xml',
     urlFilter: /^https:\/\/www\.edb\.gov\.sg\/en\/news-and-insights\/[^/]+$/,
     requireAiKeyword: true,
+    // EDB reposts company releases; its metadata date is the repost day.
+    visibleDate: /(\d{1,2} [A-Za-z]{3,9} 20\d\d)\s*•\s*\d+ min read/,
   },
   {
     id: 'astar',

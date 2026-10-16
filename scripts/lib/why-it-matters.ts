@@ -64,11 +64,12 @@ const SYSTEM_PROMPT = `你是「新加坡 AI 观察」（sgai.md）的编辑，�
 4. 有判断，别和稀泥：指出方向、缺口、转折或先例。不确定的事实不要编。
 5. 机构名用摘要里已有的写法；人名照抄，不要音译。
 6. 中文与英文 / 数字之间留一个空格（写「NAIC 定调」「10000 家 SME」，不写「NAIC定调」）。
+7. 只用标题、摘要和补充材料里出现的事实。不要引入材料以外的国家对比、数字、年份或背景；材料没说的就不写。
 
 输出 JSON：{"whyItMatters": "……"}，不要输出其他内容。`;
 
 /** Bump when SYSTEM_PROMPT changes so cached drafts are regenerated. */
-const PROMPT_VERSION = 2;
+const PROMPT_VERSION = 3;
 
 function userPrompt(input: WhyInput): string {
   const lines = [
