@@ -51,6 +51,7 @@ import { consultations as regConsultations, bills as regBills } from '~/data/reg
 import type { ConsultationItem, BillItem } from '~/data/reg-lookahead';
 import { programmes as talentProgrammes, type TalentProgramme } from '~/data/talent';
 import { capitalRecords, type CapitalRecord } from '~/data/ai-capital';
+import { signals, type Signal } from '~/data/signals';
 import { readdirSync, readFileSync, existsSync } from 'node:fs';
 import { resolve, join } from 'node:path';
 import yaml from 'js-yaml';
@@ -82,6 +83,7 @@ export type DataSource =
   | 'legal'
   | 'talent'
   | 'capital'
+  | 'signal'
   | 'post';
 
 export interface Harvested {
@@ -594,6 +596,29 @@ export function harvestPosts(dir: string = resolve(process.cwd(), 'src/data/post
  * post publication) are NOT produced here — they come from the manual
  * UPDATES array in src/data/updates.ts.
  */
+/** Signals link to their anchor on /signals/ — the feed's href is always an
+ *  on-site path (rendered through localizedHref); the list page links out. */
+export function harvestSignals(rs: Signal[]): Harvested[] {
+  const out: Harvested[] = [];
+  for (const r of rs) {
+    if (!r.addedAt) continue;
+    out.push({
+      type: 'signal',
+      source: 'signal',
+      id: r.id,
+      addedAt: r.addedAt,
+      eventDate: r.date,
+      zhTitle: r.title,
+      enTitle: r.titleEn,
+      jaTitle: r.titleJa,
+      koTitle: r.titleKo,
+      ...summaries(r),
+      href: `/signals/#${r.id}`,
+    });
+  }
+  return out;
+}
+
 export function harvestAll(): Harvested[] {
   return [
     ...harvestVideos(videos),
@@ -611,6 +636,7 @@ export function harvestAll(): Harvested[] {
     ...harvestRegLookahead(regConsultations, regBills),
     ...harvestTalent(talentProgrammes),
     ...harvestAiCapital(capitalRecords),
+    ...harvestSignals(signals),
     ...harvestPosts(),
   ];
 }

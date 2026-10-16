@@ -23,6 +23,7 @@ import { people } from '~/data/people';
 import { unicorns, verticals, exits, investors } from '~/data/startups';
 import { benchmarkCases } from '~/data/benchmarking';
 import { topics, topicIdSet, type Topic } from '~/data/topics';
+import { signals } from '~/data/signals';
 import {
   debateTopicIds,
   videoTopicIds,
@@ -56,7 +57,8 @@ export type TopicEntryKind =
   | 'benchmark'
   | 'startup'
   | 'ecosystem'
-  | 'person';
+  | 'person'
+  | 'signal';
 
 export interface TopicEntry {
   kind: TopicEntryKind;
@@ -90,6 +92,18 @@ function push(
 
 function buildEntries(): TopicEntry[] {
   const out: TopicEntry[] = [];
+
+  for (const sg of signals) {
+    push(
+      out,
+      'signal',
+      sg.id,
+      sg.topicIds,
+      { title: sg.title, titleEn: sg.titleEn, titleJa: sg.titleJa, titleKo: sg.titleKo },
+      `/signals/#${sg.id}`,
+      sg.date
+    );
+  }
 
   for (const d of debates) {
     push(

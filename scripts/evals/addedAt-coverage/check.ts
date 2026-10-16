@@ -50,6 +50,7 @@ export const DATA_FILES = [
   'src/data/talent.ts',
   'src/data/reg-lookahead.ts', // consultations[] + bills[] drive 'policy' derived updates
   'src/data/ai-capital.ts', // capitalRecords[] drive 'ecosystem' derived updates (/ecosystem/#capital)
+  'src/data/signals.ts', // signals[] drive 'signal' derived updates (/signals/#<id>)
 ];
 
 const REPO_ROOT = resolve(import.meta.dirname, '../../..');

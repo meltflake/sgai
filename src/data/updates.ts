@@ -51,6 +51,7 @@ export type UpdateType =
   | 'benchmark'
   | 'ecosystem'
   | 'lever'
+  | 'signal'
   | 'longform'
   | 'site'
   | 'fix';

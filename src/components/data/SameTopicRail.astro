@@ -43,6 +43,7 @@ const KIND_LABEL_KEY: Record<TopicEntryKind, Parameters<typeof t>[1]> = {
   startup: 'updateTypeStartup',
   ecosystem: 'updateTypeEcosystem',
   person: 'updateTypePeople',
+  signal: 'updateTypeSignal',
 };
 
 const anchorTopics = (anchor?.topicIds ?? []).map((tid) => getTopicById(tid)).filter(Boolean);
