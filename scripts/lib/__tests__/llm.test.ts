@@ -13,6 +13,7 @@ import { join } from 'node:path';
 import {
   callLlm,
   callLlmJson,
+  claudeEnv,
   ensureClaudeAvailable,
   ensureClaudeAuthed,
   extractJsonPayload,
@@ -365,4 +366,49 @@ echo '[{"type":"result","subtype":"success","is_error":false,"result":"{\\"v\\":
       }
     }
   );
+});
+
+// ── claudeEnv: cron starts children without USER; the CLI needs it to find
+//    its keychain credential (daily runs 2026-10-02 → 10-16 failed this way).
+
+test('claudeEnv: keeps a set USER untouched', () => {
+  const base = { USER: 'alice', LOGNAME: 'bob' };
+  assert.equal(claudeEnv(base), base);
+});
+
+test('claudeEnv: fills USER from LOGNAME when USER is missing', () => {
+  const env = claudeEnv({ LOGNAME: 'bob', PATH: '/bin' });
+  assert.equal(env.USER, 'bob');
+  assert.equal(env.PATH, '/bin');
+});
+
+test('claudeEnv: falls back to the process owner when neither USER nor LOGNAME is set', () => {
+  const env = claudeEnv({ PATH: '/bin' });
+  assert.ok(env.USER && env.USER.length > 0);
+});
+
+test('callLlm: the claude child sees USER even when the parent environment lacks it', async () => {
+  const savedUser = process.env.USER;
+  const savedLogname = process.env.LOGNAME;
+  delete process.env.USER;
+  process.env.LOGNAME = 'cron-owner';
+  try {
+    const result = await withFakeClaude(
+      '#!/bin/sh\ncat >/dev/null\nprintf \'{"type":"result","subtype":"success","result":"user=%s"}\' "$USER"\n',
+      async (binPath) => {
+        process.env.SGAI_CLAUDE_BIN = binPath;
+        try {
+          return await callLlm('ping');
+        } finally {
+          delete process.env.SGAI_CLAUDE_BIN;
+        }
+      }
+    );
+    assert.equal(result, 'user=cron-owner');
+  } finally {
+    if (savedUser === undefined) delete process.env.USER;
+    else process.env.USER = savedUser;
+    if (savedLogname === undefined) delete process.env.LOGNAME;
+    else process.env.LOGNAME = savedLogname;
+  }
 });

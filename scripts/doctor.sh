@@ -81,9 +81,20 @@ fi
 # 4. Claude Code CLI (LLM backend) + GITHUB_TOKEN
 echo
 echo "4. Claude Code CLI (LLM backend) / GITHUB_TOKEN"
+# cron starts jobs without USER; the claude CLI resolves its keychain
+# credential through it and reports "Not logged in" when it is absent.
+# auto_update.py injects the same fallback, so check what the pipelines see.
+export USER="${USER:-${LOGNAME:-$(id -un)}}"
 if command -v claude >/dev/null 2>&1; then
   cv=$(claude --version 2>/dev/null | head -1)
   print_ok "claude CLI present: $cv"
+  # `claude --version` exits 0 with an expired or unreadable login; only
+  # `auth status` reports the real state (and it is free — no inference).
+  if claude auth status 2>/dev/null | grep -Eq '"loggedIn": *true'; then
+    print_ok "claude CLI logged in"
+  else
+    print_fail "claude CLI not logged in — run: claude auth login (or claude setup-token for headless)"
+  fi
 else
   print_fail "claude CLI missing — https://docs.claude.com/en/docs/claude-code/quickstart"
 fi

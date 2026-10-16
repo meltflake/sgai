@@ -35,6 +35,7 @@ import html as _html
 import json
 import logging
 import os
+import pwd
 import re
 import sys
 import time
@@ -430,6 +431,27 @@ def compose_email(results: dict, errors: list[str], elapsed: float) -> tuple[str
 
     lines.append(f"<hr><p>运行耗时: {elapsed:.0f}s | 错误: {len(errors)} 个</p>")
     return subject, "\n".join(lines)
+
+
+def ensure_user_env(logger) -> None:
+    """Fill USER for every child process when the environment lacks it.
+
+    cron starts jobs with LOGNAME and HOME but without USER (`man 5
+    crontab`). The claude CLI resolves its keychain credential through
+    $USER, so under cron it answered "Not logged in · Please run /login"
+    although the login keychain held a valid token. Every LLM-backed
+    pipeline (videos daily, voices / reg-lookahead weekly, research-digest
+    monthly, evals) failed at the auth preflight from 2026-10-02 to
+    2026-10-16; the non-LLM ones (github-stars, jobs-index) kept working,
+    which hid the pattern. scripts/lib/llm.ts claudeEnv() applies the same
+    fallback for pipelines started by hand; this covers `gh`, python and
+    anything else the dispatcher spawns.
+    """
+    if os.environ.get("USER"):
+        return
+    name = os.environ.get("LOGNAME") or pwd.getpwuid(os.getuid()).pw_name
+    os.environ["USER"] = name
+    logger.info(f"USER 未设置，已按进程属主注入 USER={name}（claude CLI 靠它定位 keychain 凭证）")
 
 
 def ensure_gh_token(logger) -> None:
@@ -1012,6 +1034,7 @@ def main():
 
     # cron 无 keychain 会话时 gh 会 401——启动即注入 GH_TOKEN，覆盖本进程和
     # 全部子进程（gh issue create / gh pr create / git push）。
+    ensure_user_env(logger)
     ensure_gh_token(logger)
 
     # ── 管理类子命令（不跑管线，处理完即退出）──
