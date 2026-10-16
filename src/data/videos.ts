@@ -148,8 +148,8 @@ export const videos: VideoItem[] = [
     id: 'v121',
     title: '新加坡 OpenAI FDE 训练营',
     titleEn: 'OpenAI for Singapore FDE Bootcamp',
-    titleJa: 'シンガポール OpenAI FDE 訓練キャンプ',
-    titleKo: '싱가포르 OpenAI FDE 훈련 캠프',
+    titleJa: 'OpenAI for Singapore FDE ブートキャンプ',
+    titleKo: 'OpenAI for Singapore FDE 부트캠프',
     speaker: 'AI Singapore',
     speakerTitle: 'AI 研究与人才培养机构',
     speakerTitleEn: 'AI research and talent-development organisation',
@@ -162,9 +162,9 @@ export const videos: VideoItem[] = [
     summaryEn:
       'A three-day bootcamp where AI practitioners learned Forward Deployed Engineering. Participants learned to translate business needs into practical AI solutions for real-world challenges.',
     summaryJa:
-      '3日間の AI 従事者訓練キャンプです。参加者は、ビジネス要件を理解し FDE ソリューションを設計する方法を学びます。',
+      '3日間の AI 実務者向けブートキャンプです。参加者は、ビジネス要件を理解し FDE ソリューションを設計する方法を学びます。',
     summaryKo:
-      '3일간의 AI 종사자 훈련 캠프입니다. 참가자들은 사업 요구사항을 이해하고 FDE 해결방안을 설계하는 방법을 학습합니다.',
+      '3일간의 AI 실무자 부트캠프입니다. 참가자들은 비즈니스 요구사항을 이해하고 FDE 솔루션을 설계하는 방법을 학습합니다.',
     whyItMatters: 'AI Singapore 借 OpenAI 的 FDE 框架培养人才，折射新加坡企业级 AI 部署能力仍依赖海外模型厂商定义标准',
     whyItMattersEn:
       "AI Singapore leverages OpenAI's FDE framework to cultivate talent, revealing that Singapore's enterprise-grade AI deployment capability still depends on standards defined by overseas model vendors",
@@ -187,13 +187,13 @@ export const videos: VideoItem[] = [
     titleJa: 'AI は答えを与えることができるが、子どもはどのように学ぶのか。',
     titleKo: 'AI가 답을 줄 수 있다면, 아이들은 어떻게 배울까요?',
     speaker: 'Liew Wei Li',
-    speakerTitle: '教育总监',
+    speakerTitle: '教育总司长',
     speakerTitleEn: 'Director-General of Education',
-    speakerTitleJa: '教育ディレクター',
-    speakerTitleKo: '교육 담당자',
+    speakerTitleJa: '教育総局長',
+    speakerTitleKo: '교육총국장',
     speakerType: 'government',
     date: '2026-10-15',
-    duration: '00:00',
+    duration: '00:30',
     summary: 'AI 可支持学习，但无法替代人类指导。关键是教孩子何时使用 AI、何时质疑，何时独立思考。',
     summaryEn:
       'AI can support learning but cannot replace human guidance. The key is teaching children when to use AI, when to question it, and when to think independently.',
@@ -202,13 +202,13 @@ export const videos: VideoItem[] = [
     summaryKo:
       'AI는 학습을 지원할 수 있지만 사람의 지도를 대체할 수 없습니다. 핵심은 아이들에게 언제 AI를 사용할지, 언제 의문을 제기할지, 언제 독립적으로 생각할지를 가르치는 것입니다.',
     whyItMatters:
-      '教育总监 Liew Wei Li 借 govsg 定调 AI 教育政策导向：技术辅助而非替代教师，为新加坡课堂划出人机分工先例',
+      '教育总司长 Liew Wei Li 借 govsg 定调 AI 教育政策导向：技术辅助而非替代教师，为新加坡课堂划出人机分工先例',
     whyItMattersEn:
-      'Education Director Liew Wei Li sets the direction of AI education policy through govsg: technology to assist rather than replace teachers, establishing a precedent for human-machine role division in Singapore classrooms',
+      'Director-General of Education Liew Wei Li sets the direction of AI education policy through govsg: technology to assist rather than replace teachers, establishing a precedent for human-machine role division in Singapore classrooms',
     whyItMattersJa:
-      '教育ディレクター Liew Wei Li は govsg を通じて AI 教育政策の方向性を定め、技術は教師を補助するもので替代ではなく、シンガポール教室に人間とマシンの役割分担の先例を確立しました。',
+      '教育総局長 Liew Wei Li は govsg を通じて AI 教育政策の方向性を定め、技術は教師を代替するのではなく補助するものとし、シンガポール教室に人間とマシンの役割分担の先例を確立しました。',
     whyItMattersKo:
-      '교육 국장 Liew Wei Li는 govsg를 통해 AI 교육 정책의 방향을 제시합니다: 기술은 교사를 대체하는 것이 아니라 보조하는 것이며, 싱가포르 교실에서 인간-기계 역할 분담의 선례를 수립합니다.',
+      '교육총국장 Liew Wei Li는 govsg를 통해 AI 교육 정책의 방향을 제시합니다: 기술은 교사를 대체하는 것이 아니라 보조하는 것이며, 싱가포르 교실에서 인간-기계 역할 분담의 선례를 수립합니다.',
     topic: 'AI 人才与教育',
     topicEn: 'AI Talent & Education',
     topicJa: 'AI 人材と教育',
