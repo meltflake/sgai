@@ -570,6 +570,7 @@ npx tsx scripts/voices/prospect-stubs.mjs sync-from-people [<id>...] [--dry-run]
 | **Talent**                      | `npx tsx scripts/refresh/talent/run.ts --limit=3`                                                                        | 半年       | **auto-PR**（入 `autoDiscovered[]`）                                                                 |
 | **Tracker**                     | `npx tsx scripts/refresh/tracker/run.ts --limit=3`                                                                       | 半年       | **auto-PR**（入 `autoDiscovered[]`）                                                                 |
 | **Benchmarking**                | `npx tsx scripts/refresh/benchmarking/run.ts --limit=3`                                                                  | 半年       | **auto-PR**（仅追踪新报告，数字仍需手工提取）                                                        |
+| **Signals 信号**                | `npx tsx scripts/refresh/signals/run.ts --limit=8`                                                                       | 周         | **auto-PR**（新闻与政府发布 → Claude 评分 ≥4 → 四语起草，见 docs/signals/spec.md）                   |
 
 详见 [docs/refresh-playbook.md](docs/refresh-playbook.md) per-page 命令清单。
 

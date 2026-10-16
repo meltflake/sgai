@@ -73,6 +73,7 @@ const KIND_ORDER: TopicEntryKind[] = [
   'legal',
   'benchmark',
   'person',
+  'signal',
 ];
 
 const KIND_LABEL_KEY: Record<TopicEntryKind, Parameters<typeof t>[1]> = {
@@ -88,6 +89,7 @@ const KIND_LABEL_KEY: Record<TopicEntryKind, Parameters<typeof t>[1]> = {
   startup: 'updateTypeStartup',
   ecosystem: 'updateTypeEcosystem',
   person: 'updateTypePeople',
+  signal: 'updateTypeSignal',
 };
 
 // Blog posts are not a TopicEntryKind (they live in the content collection,

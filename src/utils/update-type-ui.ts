@@ -22,6 +22,7 @@ export const TYPE_CHIP: Record<UpdateType, string> = {
   benchmark: 'bg-teal-50 text-teal-700 dark:bg-teal-900/40 dark:text-teal-300',
   ecosystem: 'bg-lime-50 text-lime-700 dark:bg-lime-900/40 dark:text-lime-300',
   lever: 'bg-orange-50 text-orange-700 dark:bg-orange-900/40 dark:text-orange-300',
+  signal: 'bg-red-50 text-red-700 dark:bg-red-900/40 dark:text-red-300',
   longform: 'bg-indigo-50 text-indigo-700 dark:bg-indigo-900/40 dark:text-indigo-300',
   site: 'bg-gray-100 text-gray-700 dark:bg-slate-800 dark:text-gray-300',
   fix: 'bg-yellow-50 text-yellow-700 dark:bg-yellow-900/40 dark:text-yellow-300',
@@ -42,6 +43,7 @@ export const TYPE_LABEL_KEY: Record<UpdateType, DictKey> = {
   benchmark: 'updateTypeBenchmark',
   ecosystem: 'updateTypeEcosystem',
   lever: 'updateTypeLever',
+  signal: 'updateTypeSignal',
   longform: 'updateTypeLongform',
   site: 'updateTypeSite',
   fix: 'updateTypeFix',
@@ -66,6 +68,7 @@ export function eventDateLabelKey(source: DataSource | undefined): DictKey | und
     case 'policy':
     case 'speech':
     case 'legal':
+    case 'signal':
       return 'evtDatePublished';
     case 'capital':
     case 'benchmark':

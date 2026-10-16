@@ -79,6 +79,59 @@ test('govFetch: parses "5 May 2026" inline date when no meta', async () => {
   );
 });
 
+// Regression 2026-10-17: gov.sg pages carry a site-wide "last updated" stamp
+// (footer attribute + a "LAST UPDATED:" line) set to the crawl day. The
+// inline fallback took it as the publication date, so a June 2023 IMDA press
+// release looked published today and passed every old-news gate.
+test('govFetch: ignores gov.sg "last updated" stamps and reads publish_date', async () => {
+  const html = `<html><head><title>Singapore Launches AI Verify Foundation</title></head><body>
+<footer><optical-attributions copyright-text="Government of Singapore" last-updated="16 Oct 2026"></optical-attributions></footer>
+<main><p>Body text about AI Verify.</p></main>
+<p class="detail-content__last-update">LAST UPDATED: <!-- -->16 Oct 2026</p>
+<script>self.__next_f.push([1,"{\\"read_time\\":\\"6\\",\\"publish_date\\":\\"07 Jun 2023\\"}"])</script>
+</body></html>`;
+  const page = await withMockFetch(
+    async () => htmlResponse(html),
+    () => govFetch('https://www.imda.gov.sg/x', { retries: 1 })
+  );
+  assert.equal(page.publishedDate, '2023-06-07');
+});
+
+test('govFetch: JSON-LD datePublished wins over an inline page date', async () => {
+  const html = `<html><head><script type="application/ld+json">{"@type":"NewsArticle","datePublished":"14 Oct 2026"}</script></head>
+<body><p>Updated 16 Oct 2026</p></body></html>`;
+  const page = await withMockFetch(
+    async () => htmlResponse(html),
+    () => govFetch('https://www.edb.gov.sg/x', { retries: 1 })
+  );
+  assert.equal(page.publishedDate, '2026-10-14');
+});
+
+test('govFetch: a page with only a last-updated stamp has no date', async () => {
+  const html = `<html><body><p>Text</p><footer><span last-updated="16 Oct 2026"></span>Last updated: 16 Oct 2026</footer></body></html>`;
+  const page = await withMockFetch(
+    async () => htmlResponse(html),
+    () => govFetch('https://www.mddi.gov.sg/x', { retries: 1 })
+  );
+  assert.equal(page.publishedDate, null);
+});
+
+test('govFetch: reports which rule produced the date; modified_time is flagged', async () => {
+  const modified = `<html><head><meta property="article:modified_time" content="2026-10-16T01:00:00Z"></head><body>x</body></html>`;
+  const page = await withMockFetch(
+    async () => htmlResponse(modified),
+    () => govFetch('https://www.example.gov.sg/x', { retries: 1 })
+  );
+  assert.equal(page.publishedDate, '2026-10-16');
+  assert.equal(page.publishedDateSource, 'modified');
+  const published = `<html><head><meta property="article:published_time" content="2026-10-14T01:00:00Z"></head><body>x</body></html>`;
+  const page2 = await withMockFetch(
+    async () => htmlResponse(published),
+    () => govFetch('https://www.example.gov.sg/y', { retries: 1 })
+  );
+  assert.equal(page2.publishedDateSource, 'published');
+});
+
 test('govFetch: throws on persistent 404', async () => {
   await withMockFetch(
     async () => new Response('not found', { status: 404 }),

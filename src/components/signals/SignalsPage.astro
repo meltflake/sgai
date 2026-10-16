@@ -1,0 +1,98 @@
+---
+// /signals/ listing — shared by the en route and /[lang]/signals/. Weeks
+// newest first; a topic chip bar filters rows in place (no JS → all rows).
+// The selected topic is kept in the URL hash (#topic=<id>).
+import { signals } from '~/data/signals';
+import { getTopicById } from '~/data/topics';
+import { pickLocalized, t, type Lang } from '~/i18n';
+import { formatWeekRange } from '~/utils/date-format';
+import { groupByIsoWeek, topicCounts } from '~/utils/signals';
+import SignalItem from '~/components/signals/SignalItem.astro';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const weeks = groupByIsoWeek(signals);
+const chips = topicCounts(signals)
+  .map(({ id, count }) => ({ id, count, topic: getTopicById(id) }))
+  .filter((c) => c.topic !== undefined)
+  .map((c) => ({ id: c.id, count: c.count, name: pickLocalized<string>(c.topic, 'name', lang) || c.topic!.nameEn }));
+const chipBase = 'px-2.5 py-1 rounded-full border border-subtle text-xs transition-colors';
+---
+
+<section class="px-4 py-16 sm:px-6 mx-auto lg:px-8 max-w-4xl" id="signals-page">
+  <div class="mb-10">
+    <h1 class="t-display text-gray-900 dark:text-white mb-4">{t(lang, 'signalsTitle')}</h1>
+    <p class="t-lead text-gray-700 dark:text-gray-300 max-w-prose">{t(lang, 'signalsIntro')}</p>
+  </div>
+
+  {
+    signals.length === 0 ? (
+      <p class="text-sm text-gray-500 dark:text-gray-400">{t(lang, 'signalsEmpty')}</p>
+    ) : (
+      <>
+        <div class="mb-8 flex gap-2 flex-wrap" role="group" aria-label={t(lang, 'signalsFilterLabel')}>
+          <button type="button" data-topic="" aria-pressed="true" class={chipBase}>
+            {t(lang, 'signalsAllTopics')}
+          </button>
+          {chips.map((c) => (
+            <button type="button" data-topic={c.id} aria-pressed="false" class={chipBase}>
+              {c.name} <span class="tabular-nums text-gray-400">{c.count}</span>
+            </button>
+          ))}
+        </div>
+        <div class="space-y-10">
+          {weeks.map((w) => (
+            <div data-week>
+              <h2 class="flex items-baseline justify-between text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 tabular-nums border-b border-subtle pb-1.5 mb-4">
+                <span>{formatWeekRange(w.monday, w.sunday, lang)}</span>
+                <span>{t(lang, 'updatesCount').replace('{n}', String(w.items.length))}</span>
+              </h2>
+              <ul class="space-y-5">
+                {w.items.map((s) => (
+                  <SignalItem signal={s} lang={lang} />
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </>
+    )
+  }
+</section>
+
+<script is:inline data-astro-rerun>
+  (() => {
+    const root = document.getElementById('signals-page');
+    if (!root) return;
+    const buttons = [...root.querySelectorAll('button[data-topic]')];
+    const apply = (topic) => {
+      for (const b of buttons) {
+        const on = b.dataset.topic === topic;
+        b.setAttribute('aria-pressed', String(on));
+        b.classList.toggle('bg-primary', on);
+        b.classList.toggle('text-white', on);
+      }
+      for (const li of root.querySelectorAll('li[data-topics]')) {
+        li.hidden = topic !== '' && !li.dataset.topics.split(' ').includes(topic);
+      }
+      for (const w of root.querySelectorAll('[data-week]')) {
+        w.hidden = [...w.querySelectorAll('li[data-topics]')].every((li) => li.hidden);
+      }
+    };
+    const fromHash = () => {
+      const m = location.hash.match(/^#topic=([a-z0-9-]+)$/);
+      return m && buttons.some((b) => b.dataset.topic === m[1]) ? m[1] : '';
+    };
+    for (const b of buttons) {
+      b.addEventListener('click', () => {
+        const topic = b.dataset.topic || '';
+        history.replaceState(null, '', topic ? `#topic=${topic}` : location.pathname);
+        apply(topic);
+      });
+    }
+    apply(fromHash());
+  })();
+</script>

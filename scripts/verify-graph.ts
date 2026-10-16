@@ -16,6 +16,8 @@ import { categories } from '../src/data/policies';
 import { levers } from '../src/data/levers';
 import { timelineEvents } from '../src/data/timeline';
 import { allPeople } from '../src/data/people';
+import { signals } from '../src/data/signals';
+import { ecosystemEntityPages, startupEntityPages } from '../src/utils/entity-pages';
 import { ecosystemCategories } from '../src/data/ecosystem';
 import { videos } from '../src/data/videos';
 import { dimensions } from '../src/data/tracker';
@@ -227,6 +229,23 @@ for (const inv of investors) requireCoverage(`investor[${inv.name}]`, startupEnt
 // people: validity only (soft domain — unlabeled people simply don't show
 // in topic hubs).
 for (const p of allPeople) checkTopicIds(`person[${p.id}]`, p.topicIds);
+
+// ── signals.ts ───────────────────────────────────────────────────────────
+{
+  const relatedIds: Record<string, Set<string | number>> = {
+    policy: policyIds as Set<string | number>,
+    person: personIds as Set<string | number>,
+    debate: debateIds as Set<string | number>,
+    video: new Set(videos.map((v) => v.id)),
+    ecosystem: new Set(ecosystemEntityPages.map((pg) => pg.slug)),
+    startup: new Set(startupEntityPages.map((pg) => pg.slug)),
+  };
+  for (const sig of signals) {
+    if (sig.topicIds.length === 0) errors.push(`signal[${sig.id}].topicIds: empty`);
+    checkTopicIds(`signal[${sig.id}]`, sig.topicIds);
+    for (const r of sig.related ?? []) check(`signal[${sig.id}].related.${r.kind}`, [r.id], relatedIds[r.kind]);
+  }
+}
 
 // zh blog posts: frontmatter topicIds required (7 posts, hand-labeled).
 // Translated mirrors under post/<lang>/ derive from the zh source at hub

@@ -258,6 +258,21 @@ GITHUB_TOKEN=ghp_xxx npx tsx scripts/refresh/github-stars.ts    # 提升 rate li
 
 ---
 
+### `/signals`（信号）
+
+数据文件 `src/data/signals.ts`，管线 `scripts/refresh/signals/`，每周一跑（registry `signals`，auto-PR）。规格见 [docs/signals/spec.md](signals/spec.md)。
+
+流程：扫描新闻源与政府 sitemap → 抓正文、按正文发布日期过窗口 → Claude 判断「新加坡 + AI」并打 1 到 5 分 → 取 4 分以上、同一事件只留一条（gov.sg 优先）→ 起草四语标题和「为什么重要」→ 校验原文链接 → 写入并开 PR。
+
+```bash
+npx tsx scripts/refresh/signals/run.ts --dry-run --days=14   # 只扫描和评分，打印候选，不写文件
+npx tsx scripts/refresh/signals/run.ts --limit=8             # 正式跑，开 PR
+```
+
+- 来源与取舍记录在 `scripts/refresh/signals/sources.ts` 文件头（含不收的源和原因）。
+- 判为非新加坡、非 AI 或低于 4 分的链接写进 `scripts/refresh/signals/data/rejected-urls.json`，下周不再出现。PR 里删掉的条目也要手工加进这个台账。
+- 判断结果按内容哈希缓存在 `scripts/refresh/signals/data/judgments/`，重跑不重复计费。
+
 ### `/updates` + 月报（Newsletter）
 
 `/updates` 本身无数据文件——它从 `src/data/updates.ts`（编辑性 site/fix/longform）+ `src/utils/derived-updates.ts`（每条 record 的 `addedAt` 派生）合并而来，加 record 就自动出现，无需单独 pipeline。

@@ -4,6 +4,21 @@
 
 ---
 
+## 0.29.0 — 2026-10-17
+
+### 新功能：信号（Signals）——每周值得关注的新加坡 AI 新闻
+
+- 新页面 `/signals/`（五种语言）：每周 5 到 8 条，每条有一句「为什么重要」、原文链接和 1 到 3 个主题标签。页面按周分组，顶部的主题按钮可以只看某一类。
+- 首页在「最近更新」上方加「本周值得关注」块，取最近 14 天的信号，最多 6 条；不足 3 条时取最新的 6 条，一条都没有时不显示。
+- 信号也进入主题页的「最近动态」和 `/updates/`，链接指向 `/signals/#<id>`。导航「最新」旁和页脚「数据」栏各加一个入口。
+- 新管线 `scripts/refresh/signals/`，每周一随 cron 运行。来源：Business Times、AI Singapore、CNA、MDDI、IMDA、MAS、EDB、A\*STAR。Claude 先判断是否同时关于新加坡和 AI，再按 1 到 5 分评重要性，4 分以上才起草。同一事件多家报道只留一条，政府发布优先。原文链接写入前做 HTTP 校验。被拒的链接进台账，下周不再出现。
+- 不收的源：Straits Times（RSS 返回 400、新闻 sitemap 404）、e27（403）、Tech in Asia（正文付费，feed 只有约 130 字）。
+- 政府 sitemap 的 `lastmod` 不可信（IMDA 把 2023 年的 AI Verify 发布稿标成 2026-10-15 修改），管线按正文发布日期判断新旧。
+- 修共享抓取函数 `scripts/lib/gov-fetch.ts` 的日期提取：gov.sg 每页都带一个「LAST UPDATED」时间戳（当天日期），原来的兜底正则把它当发布日期，2023 年的 IMDA 新闻稿看起来像今天发的。现在先读页面里的 `publish_date` / `datePublished`，跳过「last updated」戳，并标出日期来自哪条规则；只有修改时间的页面不算新。ecosystem / policies 的旧闻过滤同样受益。
+- 站内关联链接只做保守匹配：多词名称（人名、机构名）可出现在标题或正文前 400 字，单词名称（如 Grab）必须出现在标题里。
+- `scripts/verify-graph.ts` 校验信号的 `topicIds` 和站内关联 id。新增单元测试 41 条（管线 29、页面逻辑 6、feed 派生 2、日期提取 4）。
+- 邮件 newsletter 不在本期。
+
 ## 0.28.14 — 2026-10-16
 
 ### 审阅 data-refresh PR #352 / #353 / #354，修管线根因，清理 20 个空人物页

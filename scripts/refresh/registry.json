@@ -215,6 +215,21 @@
       ]
     },
     {
+      "id": "signals",
+      "type": "tsx",
+      "schedule": "weekly",
+      "label": "Signals (weekly noteworthy SG AI news)",
+      "description": "Weekly scan of SG news and gov newsroom feeds (Business Times, AI Singapore, CNA RSS; MDDI, IMDA, MAS, EDB, A*STAR sitemaps). Claude judges Singapore + AI relevance and scores significance 1-5; score >= 4 items are drafted in zh/en/ja/ko with a one-line judgment and topic tags, URL-checked and opened as a PR. Rejected candidates go to the domain rejected-urls ledger. Renders on /signals/, the homepage block, topic hubs and /updates/. Spec: docs/signals/spec.md.",
+      "script": "scripts/refresh/signals/run.ts",
+      "args": [
+        "--limit=8"
+      ],
+      "mode": "auto-pr",
+      "targets": [
+        "src/data/signals.ts"
+      ]
+    },
+    {
       "id": "research-digest",
       "type": "tsx",
       "schedule": "monthly",

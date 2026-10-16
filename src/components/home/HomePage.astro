@@ -22,6 +22,7 @@ import { t, localizedHref, type Lang } from '~/i18n';
 import Masthead from '~/components/home/Masthead.astro';
 import FocusHeadline from '~/components/home/FocusHeadline.astro';
 import LatestUpdatesFeed from '~/components/home/LatestUpdatesFeed.astro';
+import SignalsBlock from '~/components/home/SignalsBlock.astro';
 import LatestDebates from '~/components/home/LatestDebates.astro';
 import HomeSidebar from '~/components/home/HomeSidebar.astro';
 import DomainDirectory from '~/components/home/DomainDirectory.astro';
@@ -72,6 +73,7 @@ if (lang === 'en') heroHeadlineJoiner = ' ';
           </p>
         </header>
         <FocusHeadline lang={lang} />
+        <SignalsBlock lang={lang} />
         <LatestUpdatesFeed lang={lang} />
         <LatestDebates lang={lang} limit={6} />
       </div>

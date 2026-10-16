@@ -1,0 +1,72 @@
+---
+// One signal row. The title links out to the original source; tags link to
+// topic hubs; related links go to on-site entity pages. `compact` drops the
+// related links (homepage block).
+import type { Signal } from '~/data/signals';
+import { getTopicById } from '~/data/topics';
+import { localizedHref, pickLocalized, t, type Lang } from '~/i18n';
+import { formatEventDate } from '~/utils/date-format';
+import { resolveRelated } from '~/utils/signals-related';
+
+interface Props {
+  signal: Signal;
+  lang: Lang;
+  compact?: boolean;
+}
+
+const { signal: s, lang, compact = false } = Astro.props;
+const title = pickLocalized<string>(s, 'title', lang) || s.titleEn;
+const why = pickLocalized<string>(s, 'whyItMatters', lang) || '';
+const tags = s.topicIds
+  .map((id) => getTopicById(id))
+  .filter((tp) => tp !== undefined)
+  .map((tp) => ({ id: tp.id, name: pickLocalized<string>(tp, 'name', lang) || tp.nameEn }));
+const related = compact
+  ? []
+  : (s.related ?? []).map((r) => resolveRelated(r, lang)).filter((r) => r !== null && r.label !== '');
+---
+
+<li id={s.id} data-topics={s.topicIds.join(' ')} class="scroll-mt-24">
+  <div class="flex items-baseline gap-2 flex-wrap text-xs text-gray-500 dark:text-gray-400 mb-0.5">
+    <span class="tabular-nums">{formatEventDate(s.date, lang)}</span>
+    <span aria-hidden="true">·</span>
+    <span>{s.sourceName}</span>
+  </div>
+  <a
+    href={s.sourceUrl}
+    target="_blank"
+    rel="noopener"
+    class="font-medium text-gray-900 dark:text-white leading-snug hover:text-primary transition-colors"
+  >
+    {title}
+    <span class="text-gray-400 text-xs" aria-hidden="true">↗</span>
+  </a>
+  {why && <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mt-0.5">{why}</p>}
+  <div class="mt-1.5 flex gap-x-3 gap-y-1 flex-wrap items-center text-xs">
+    {
+      tags.map((tag) => (
+        <a
+          href={localizedHref(`/topics/${tag.id}/`, lang)}
+          class="px-2 py-0.5 rounded bg-gray-100 text-gray-700 dark:bg-slate-800 dark:text-gray-300 hover:text-primary"
+        >
+          {tag.name}
+        </a>
+      ))
+    }
+    {
+      related.length > 0 && (
+        <span class="text-gray-500 dark:text-gray-400">
+          {t(lang, 'signalsRelated')}:{' '}
+          {related.map((r, i) => (
+            <>
+              {i > 0 && ' · '}
+              <a href={localizedHref(r!.href, lang)} class="text-primary hover:text-secondary">
+                {r!.label}
+              </a>
+            </>
+          ))}
+        </span>
+      )
+    }
+  </div>
+</li>

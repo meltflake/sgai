@@ -1,0 +1,22 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import SignalsPage from '~/components/signals/SignalsPage.astro';
+import { NON_DEFAULT_ROUTE_LOCALES, t, type Lang } from '~/i18n';
+
+export function getStaticPaths() {
+  return NON_DEFAULT_ROUTE_LOCALES.map((lang) => ({ params: { lang } }));
+}
+
+const lang = Astro.params.lang as Lang;
+---
+
+<Layout
+  metadata={{
+    title: t(lang, 'signalsTitle'),
+    description: t(lang, 'signalsIntro'),
+  }}
+  breadcrumbs={[{ label: t(lang, 'navSignals') }]}
+  lang={lang}
+>
+  <SignalsPage lang={lang} />
+</Layout>
