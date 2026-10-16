@@ -4,6 +4,17 @@
 
 ---
 
+## 0.28.13 — 2026-10-16
+
+### 修复：cron 下 claude CLI 报“未登录”，LLM 管线连续 15 天失败
+
+- 根因：cron 启动的进程只有 LOGNAME 和 HOME，没有 USER。claude CLI 靠 `$USER` 定位 keychain 凭证，缺了就回答 "Not logged in · Please run /login"，虽然 keychain 里的 token 有效。2026-10-02 起每天的 videos 管线、10-12 的 voices / reg-lookahead / evals、10-07 的 research-digest 都在 auth 预检这一步退出；github-stars 和 jobs-index 不走 LLM，照常开 PR，掩盖了规律。
+- `scripts/auto_update.py` 新增 `ensure_user_env()`：USER 缺失时按 LOGNAME 或进程属主补上，和 `ensure_gh_token()` 一样在 main 开头执行，覆盖所有子进程。
+- `scripts/lib/llm.ts` 新增 `claudeEnv()`：三处 claude 子进程（`--version`、auth 预检、`callLlm`）都带上补齐后的环境。手工 `npx tsx` 跑管线也受保护。新增 4 条单元测试，其中一条用假 claude 脚本验证子进程确实拿到 USER。
+- `scripts/doctor.sh`：07:50 预检之前只跑 `claude --version`，登录失效也通过。现在再跑 `claude auth status` 读 `loggedIn`，不通过就按失败项报警（macOS 通知 + issue）。它也先补 USER，和管线看到的环境一致。
+- 10-02 到 10-08 的失败在 issue 里显示为“no new data”，是 #339 之前的报告缺陷；#344 到 #350 才写出真实错误。本次一并关闭这 7 个 issue。
+- 详见 [docs/20261016-cron-claude-user-env.md](docs/20261016-cron-claude-user-env.md)。
+
 ## 0.28.11 — 2026-09-28
 
 ### 数据：合并 data-refresh PR #326 / #327，关掉 #328，修 reg-lookahead 管线

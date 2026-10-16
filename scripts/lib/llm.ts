@@ -29,6 +29,7 @@
 //   ensureClaudeAvailable(); // throws with a helpful message if `claude` is missing
 
 import { spawn, spawnSync } from 'node:child_process';
+import { userInfo } from 'node:os';
 
 export interface LlmCallOptions {
   systemPrompt?: string;
@@ -51,6 +52,29 @@ function getDefaultTimeout(): number {
 }
 
 /**
+ * Environment for every `claude` child process.
+ *
+ * The CLI locates its keychain credential through $USER. cron starts jobs
+ * with LOGNAME and HOME but without USER (`man 5 crontab`), and the CLI
+ * then answers "Not logged in · Please run /login" although the login
+ * keychain holds a valid token. Every LLM-backed pipeline failed at the
+ * auth preflight this way from 2026-10-02 to 2026-10-16. Fill USER from
+ * LOGNAME or the process owner when it is absent; never override a set value.
+ */
+export function claudeEnv(base: NodeJS.ProcessEnv = process.env): NodeJS.ProcessEnv {
+  if (base.USER) return base;
+  let name = base.LOGNAME;
+  if (!name) {
+    try {
+      name = userInfo().username;
+    } catch {
+      // No passwd entry for this uid; leave the environment as it is.
+    }
+  }
+  return name ? { ...base, USER: name } : base;
+}
+
+/**
  * Verify the `claude` CLI is on PATH and responding. Useful for doctor.sh
  * and pipeline preflight. Throws with a clear message if not.
  */
@@ -58,7 +82,7 @@ export function ensureClaudeAvailable(): void {
   const bin = getClaudeBin();
   let inner = '';
   try {
-    const r = spawnSync(bin, ['--version'], { encoding: 'utf8' });
+    const r = spawnSync(bin, ['--version'], { encoding: 'utf8', env: claudeEnv() });
     if (r.error) {
       inner = (r.error as NodeJS.ErrnoException).message;
     } else if (r.status !== 0) {
@@ -125,6 +149,7 @@ function runAuthSmokeTest(bin: string, model: string): void {
     input: 'ping',
     encoding: 'utf8',
     cwd: '/tmp',
+    env: claudeEnv(),
     timeout: timeoutMs,
     maxBuffer: 8 * 1024 * 1024,
   });
@@ -278,6 +303,7 @@ export async function callLlm(userPrompt: string, options: LlmCallOptions = {}):
     const child = spawn(bin, args, {
       stdio: ['pipe', 'pipe', 'pipe'],
       cwd: '/tmp',
+      env: claudeEnv(),
     });
 
     let stdout = '';

@@ -89,6 +89,10 @@ claude --version   # 应输出 "<版本> (Claude Code)"
 
 如果没装：[Claude Code 安装指南](https://docs.claude.com/en/docs/claude-code/quickstart)。装完后跑一次 `claude` 互动登录即可，cron 沿用 keychain 凭据。
 
+验证登录状态用 `claude auth status`（看 `"loggedIn": true`）。`claude --version` 在登录失效时照样退出 0，不能当登录检查。
+
+> **cron 下 `USER` 变量缺失会让 claude 报 "Not logged in"**。cron 只设 LOGNAME / HOME，不设 USER，而 claude CLI 靠 `$USER` 定位 keychain 凭证。`scripts/auto_update.py` 的 `ensure_user_env()` 和 `scripts/lib/llm.ts` 的 `claudeEnv()` 会自动补上；手工在 `env -i` 或 launchd 里跑管线时，自己带上 `USER`。2026-10-02 至 10-16 每天的 videos 管线都因此失败，见 [docs/20261016-cron-claude-user-env.md](../docs/20261016-cron-claude-user-env.md)。
+
 可选环境变量：
 
 ```bash
