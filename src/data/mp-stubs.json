@@ -1242,20 +1242,6 @@
     "titleEn": ""
   },
   {
-    "id": "deputy-speaker",
-    "name": "",
-    "title": "",
-    "category": "government",
-    "roles": ["mp"],
-    "affiliations": ["Other"],
-    "party": null,
-    "summary": "[需补充] Deputy Speaker",
-    "summaryEn": "Profile pending.",
-    "channels": [],
-    "nameEn": "Deputy Speaker",
-    "titleEn": ""
-  },
-  {
     "id": "derrick-goh",
     "name": "",
     "title": "",
@@ -1438,20 +1424,6 @@
     "summaryEn": "Profile pending.",
     "channels": [],
     "nameEn": "Lee Yi Shyan",
-    "titleEn": ""
-  },
-  {
-    "id": "community-and-youth",
-    "name": "",
-    "title": "",
-    "category": "government",
-    "roles": ["mp"],
-    "affiliations": ["Other"],
-    "party": null,
-    "summary": "[需补充] Community and Youth",
-    "summaryEn": "Profile pending.",
-    "channels": [],
-    "nameEn": "Community and Youth",
     "titleEn": ""
   },
   {
@@ -1693,20 +1665,6 @@
     "titleEn": ""
   },
   {
-    "id": "senior-parliamentary-secretary-to-the-minister-for-culture",
-    "name": "",
-    "title": "",
-    "category": "government",
-    "roles": ["mp"],
-    "affiliations": ["Other"],
-    "party": null,
-    "summary": "[需补充] Senior Parliamentary Secretary to the Minister for Culture",
-    "summaryEn": "Profile pending.",
-    "channels": [],
-    "nameEn": "Senior Parliamentary Secretary to the Minister for Culture",
-    "titleEn": ""
-  },
-  {
     "id": "tan-yia-swam",
     "name": "",
     "title": "",
@@ -1819,20 +1777,6 @@
     "titleEn": ""
   },
   {
-    "id": "senior-parliamentary-secretary-to-the-ministers-for-education-and-minister-for-social-and-family-development",
-    "name": "",
-    "title": "",
-    "category": "government",
-    "roles": ["mp"],
-    "affiliations": ["Other"],
-    "party": null,
-    "summary": "[需补充] Senior Parliamentary Secretary to the Ministers for Education and Minister for Social and Family Development",
-    "summaryEn": "Profile pending.",
-    "channels": [],
-    "nameEn": "Senior Parliamentary Secretary to the Ministers for Education and Minister for Social and Family Development",
-    "titleEn": ""
-  },
-  {
     "id": "amrin-amin",
     "name": "",
     "title": "",
@@ -1859,34 +1803,6 @@
     "summaryEn": "Profile pending.",
     "channels": [],
     "nameEn": "Randolph Tan",
-    "titleEn": ""
-  },
-  {
-    "id": "parliamentary-secretary-to-the-minister-for-culture",
-    "name": "",
-    "title": "",
-    "category": "government",
-    "roles": ["mp"],
-    "affiliations": ["Other"],
-    "party": null,
-    "summary": "[需补充] Parliamentary Secretary to the Minister for Culture",
-    "summaryEn": "Profile pending.",
-    "channels": [],
-    "nameEn": "Parliamentary Secretary to the Minister for Culture",
-    "titleEn": ""
-  },
-  {
-    "id": "parliamentary-secretary-to-the-minister-for-home-affairs",
-    "name": "",
-    "title": "",
-    "category": "government",
-    "roles": ["mp"],
-    "affiliations": ["Other"],
-    "party": null,
-    "summary": "[需补充] Parliamentary Secretary to the Minister for Home Affairs",
-    "summaryEn": "Profile pending.",
-    "channels": [],
-    "nameEn": "Parliamentary Secretary to the Minister for Home Affairs",
     "titleEn": ""
   },
   {
@@ -2145,76 +2061,6 @@
     "titleEn": ""
   },
   {
-    "id": "senior-minister-of-state",
-    "name": "",
-    "title": "",
-    "category": "government",
-    "roles": ["mp"],
-    "affiliations": ["Other"],
-    "party": null,
-    "summary": "[需补充] Senior Minister of State",
-    "summaryEn": "Profile pending.",
-    "channels": [],
-    "nameEn": "Senior Minister of State",
-    "titleEn": ""
-  },
-  {
-    "id": "community-and-youth-and-trade-and-industry",
-    "name": "",
-    "title": "",
-    "category": "government",
-    "roles": ["mp"],
-    "affiliations": ["Other"],
-    "party": null,
-    "summary": "[需补充] Community and Youth and Trade and Industry",
-    "summaryEn": "Profile pending.",
-    "channels": [],
-    "nameEn": "Community and Youth and Trade and Industry",
-    "titleEn": ""
-  },
-  {
-    "id": "deputy-prime-minister-and-coordinating-minister-for-economic-policies",
-    "name": "",
-    "title": "",
-    "category": "government",
-    "roles": ["mp"],
-    "affiliations": ["Other"],
-    "party": null,
-    "summary": "[需补充] Deputy Prime Minister and Coordinating Minister for Economic Policies",
-    "summaryEn": "Profile pending.",
-    "channels": [],
-    "nameEn": "Deputy Prime Minister and Coordinating Minister for Economic Policies",
-    "titleEn": ""
-  },
-  {
-    "id": "minister-of-state",
-    "name": "",
-    "title": "",
-    "category": "government",
-    "roles": ["mp"],
-    "affiliations": ["Other"],
-    "party": null,
-    "summary": "[需补充] Minister of State",
-    "summaryEn": "Profile pending.",
-    "channels": [],
-    "nameEn": "Minister of State",
-    "titleEn": ""
-  },
-  {
-    "id": "senior-parliamentary-secretary-to-the-minister-for-social-and-family-development",
-    "name": "",
-    "title": "",
-    "category": "government",
-    "roles": ["mp"],
-    "affiliations": ["Other"],
-    "party": null,
-    "summary": "[需补充] Senior Parliamentary Secretary to the Minister for Social and Family Development",
-    "summaryEn": "Profile pending.",
-    "channels": [],
-    "nameEn": "Senior Parliamentary Secretary to the Minister for Social and Family Development",
-    "titleEn": ""
-  },
-  {
     "id": "murali-pillai",
     "name": "",
     "title": "",
@@ -2226,62 +2072,6 @@
     "summaryEn": "Profile pending.",
     "channels": [],
     "nameEn": "Murali Pillai",
-    "titleEn": ""
-  },
-  {
-    "id": "deputy-prime-minister-and-minister-for-finance",
-    "name": "",
-    "title": "",
-    "category": "government",
-    "roles": ["mp"],
-    "affiliations": ["Other"],
-    "party": null,
-    "summary": "[需补充] Deputy Prime Minister and Minister for Finance",
-    "summaryEn": "Profile pending.",
-    "channels": [],
-    "nameEn": "Deputy Prime Minister and Minister for Finance",
-    "titleEn": ""
-  },
-  {
-    "id": "community-and-youth-and-minister-for-social-and-family-development",
-    "name": "",
-    "title": "",
-    "category": "government",
-    "roles": ["mp"],
-    "affiliations": ["Other"],
-    "party": null,
-    "summary": "[需补充] Community and Youth and Minister for Social and Family Development",
-    "summaryEn": "Profile pending.",
-    "channels": [],
-    "nameEn": "Community and Youth and Minister for Social and Family Development",
-    "titleEn": ""
-  },
-  {
-    "id": "deputy-leader-of-the-house",
-    "name": "",
-    "title": "",
-    "category": "government",
-    "roles": ["mp"],
-    "affiliations": ["Other"],
-    "party": null,
-    "summary": "[需补充] Deputy Leader of the House",
-    "summaryEn": "Profile pending.",
-    "channels": [],
-    "nameEn": "Deputy Leader of the House",
-    "titleEn": ""
-  },
-  {
-    "id": "parliamentary-secretary-to-the-minister-for-communications-and-information",
-    "name": "",
-    "title": "",
-    "category": "government",
-    "roles": ["mp"],
-    "affiliations": ["Other"],
-    "party": null,
-    "summary": "[需补充] Parliamentary Secretary to the Minister for Communications and Information",
-    "summaryEn": "Profile pending.",
-    "channels": [],
-    "nameEn": "Parliamentary Secretary to the Minister for Communications and Information",
     "titleEn": ""
   },
   {
@@ -2384,20 +2174,6 @@
     "titleEn": ""
   },
   {
-    "id": "senior-parliamentary-secretary-to-the-ministers-for-foreign-affairs-and-trade-and-industry",
-    "name": "",
-    "title": "",
-    "category": "government",
-    "roles": ["mp"],
-    "affiliations": ["Other"],
-    "party": null,
-    "summary": "[需补充] Senior Parliamentary Secretary to the Ministers for Foreign Affairs and Trade and Industry",
-    "summaryEn": "Profile pending.",
-    "channels": [],
-    "nameEn": "Senior Parliamentary Secretary to the Ministers for Foreign Affairs and Trade and Industry",
-    "titleEn": ""
-  },
-  {
     "id": "government-whip",
     "name": "",
     "title": "",
@@ -2466,48 +2242,6 @@
     "summaryEn": "Profile pending.",
     "channels": [],
     "nameEn": "Sun Xueling",
-    "titleEn": ""
-  },
-  {
-    "id": "parliamentary-secretary-to-the-minister-for-health-and-home-affairs",
-    "name": "",
-    "title": "",
-    "category": "government",
-    "roles": ["mp"],
-    "affiliations": ["Other"],
-    "party": null,
-    "summary": "[需补充] Parliamentary Secretary to the Minister for Health and Home Affairs",
-    "summaryEn": "Profile pending.",
-    "channels": [],
-    "nameEn": "Parliamentary Secretary to the Minister for Health and Home Affairs",
-    "titleEn": ""
-  },
-  {
-    "id": "senior-parliamentary-secretaries-to-the-ministers-for-education-and-trade-and-industry",
-    "name": "",
-    "title": "",
-    "category": "government",
-    "roles": ["mp"],
-    "affiliations": ["Other"],
-    "party": null,
-    "summary": "[需补充] Senior Parliamentary Secretaries to the Ministers for Education and Trade and Industry",
-    "summaryEn": "Profile pending.",
-    "channels": [],
-    "nameEn": "Senior Parliamentary Secretaries to the Ministers for Education and Trade and Industry",
-    "titleEn": ""
-  },
-  {
-    "id": "parliamentary-secretary-to-the-ministers-for-trade-and-industry-and-the-ministers-for-education",
-    "name": "",
-    "title": "",
-    "category": "government",
-    "roles": ["mp"],
-    "affiliations": ["Other"],
-    "party": null,
-    "summary": "[需补充] Parliamentary Secretary to the Ministers for Trade and Industry and the Ministers for Education",
-    "summaryEn": "Profile pending.",
-    "channels": [],
-    "nameEn": "Parliamentary Secretary to the Ministers for Trade and Industry and the Ministers for Education",
     "titleEn": ""
   },
   {
@@ -2620,20 +2354,6 @@
     "summaryEn": "Profile pending.",
     "channels": [],
     "nameEn": "Rita Soh Siow Lan",
-    "titleEn": ""
-  },
-  {
-    "id": "senior-parliamentary-secretary-to-the-minister-for-education-and-minister-for-manpower",
-    "name": "",
-    "title": "",
-    "category": "government",
-    "roles": ["mp"],
-    "affiliations": ["Other"],
-    "party": null,
-    "summary": "[需补充] Senior Parliamentary Secretary to the Minister for Education and Minister for Manpower",
-    "summaryEn": "Profile pending.",
-    "channels": [],
-    "nameEn": "Senior Parliamentary Secretary to the Minister for Education and Minister for Manpower",
     "titleEn": ""
   },
   {

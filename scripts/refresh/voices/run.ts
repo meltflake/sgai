@@ -28,6 +28,7 @@ import { loadState, saveState } from '../../lib/state.ts';
 import { autoCommit, pushAndOpenPR, buildPRBody, hasUncommittedChanges } from '../../lib/auto-commit.ts';
 import { translateBatch } from '../../lib/translate.ts';
 import { callLlmJson, ensureClaudeAuthed } from '../../lib/llm.ts';
+import { extractEventEn } from './event.ts';
 import {
   scan,
   readExistingSpeechUrls,
@@ -90,25 +91,6 @@ function parseFlags(): CliFlags {
           .filter(Boolean)
       : [],
   };
-}
-
-/** Extract event name from a speech titleEn. Patterns ported from
- *  scripts/voices/01_scan_mddi.py extract_event(). Returns '' when no
- *  reliable extraction is possible — caller falls back to the full title. */
-function extractEventEn(titleEn: string): string {
-  const patterns = [
-    /(?:at|for)\s+(?:the\s+)?(.+?)(?:\s*$|\s*\|)/i,
-    /(?:keynote|opening|closing)\s+(?:address|remarks|speech)\s+.*?at\s+(?:the\s+)?(.+?)(?:\s*$)/i,
-  ];
-  for (const p of patterns) {
-    const m = titleEn.match(p);
-    if (!m) continue;
-    let event = m[1].trim();
-    event = event.replace(/\s+on\s+\d{1,2}\s+\w+$/i, '').trim();
-    event = event.replace(/\s*\d{4}\s*$/, '').trim();
-    if (event.length > 5) return event;
-  }
-  return '';
 }
 
 function uniqueBy<T>(arr: T[], keyFn: (v: T) => string): T[] {

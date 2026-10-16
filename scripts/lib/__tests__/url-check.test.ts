@@ -40,3 +40,40 @@ test('isTransient: fetch errors and 5xx are retryable', () => {
 test('isTransient: 4xx and success are deterministic (never retried)', () => {
   for (const s of [200, 301, 401, 403, 404, 410, 429]) assert.equal(isTransient(s), false, `${s}`);
 });
+
+// ── curlStatus: second opinion for ERR:* fetch verdicts (2026-10-16) ──────
+
+import { mkdtempSync, rmSync, writeFileSync, chmodSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
+import { curlStatus } from '../url-check.ts';
+
+function withFakeCurl<T>(body: string, fn: (bin: string) => T): T {
+  const dir = mkdtempSync(join(tmpdir(), 'sgai-curl-test-'));
+  const bin = join(dir, 'curl');
+  writeFileSync(bin, body);
+  chmodSync(bin, 0o755);
+  try {
+    return fn(bin);
+  } finally {
+    rmSync(dir, { recursive: true, force: true });
+  }
+}
+
+test('curlStatus: returns the status code curl prints', () => {
+  const status = withFakeCurl('#!/bin/sh\nprintf 302\n', (bin) => curlStatus('https://example.org/', 5000, bin));
+  assert.equal(status, 302);
+});
+
+test('curlStatus: falls back to GET when HEAD is rejected', () => {
+  // HEAD (-I present) → 405, GET → 200.
+  const body = '#!/bin/sh\ncase " $* " in *" -I "*) printf 405;; *) printf 200;; esac\n';
+  const status = withFakeCurl(body, (bin) => curlStatus('https://example.org/', 5000, bin));
+  assert.equal(status, 200);
+});
+
+test('curlStatus: null when curl cannot connect (exit 28) or is missing', () => {
+  const status = withFakeCurl('#!/bin/sh\nprintf 000\nexit 28\n', (bin) => curlStatus('https://example.org/', 5000, bin));
+  assert.equal(status, null);
+  assert.equal(curlStatus('https://example.org/', 1000, '/nonexistent/curl'), null);
+});

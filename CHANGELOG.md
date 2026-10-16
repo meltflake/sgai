@@ -4,6 +4,18 @@
 
 ---
 
+## 0.28.14 — 2026-10-16
+
+### 审阅 data-refresh PR #352 / #353 / #354，修管线根因，清理 20 个空人物页
+
+- #352 videos 新增 v121（AI Singapore，OpenAI for Singapore FDE 训练营）和 v122（govsg，教育总司长刘慧丽谈 AI 时代孩子如何学）。审阅改正：v122 时长原为 00:00，实为 30 秒；职务「教育总监」改为「教育总司长」，日文「教育ディレクター」改为「教育総局長」，韩文「교육 담당자」改为「교육총국장」；v121 日韩标题里的「訓練キャンプ / 훈련 캠프」改为「ブートキャンプ / 부트캠프」；日文「为何重要」里混入的简体「替代」改为「代替」。
+- #353 voices 新增陈杰豪高级政务部长在 NVIDIA AI Day Singapore 的演讲（9 月 23 日），全文 48 段四语齐全。审阅改正：活动名原为「How at NVIDIA AI Day Singapore」，四语都错，中文标题「SMS 陈杰豪在新加坡NVIDIA AI Day上的演讲」改为站内写法。
+- #354 reg-lookahead 把《数字基础设施法案》从「已提交」改为「已通过」（10 月 6 日二读，10 月 7 日通过），核对无误。
+- 根因一：活动名提取的正则 `(?:at|for)\s+` 没有词边界，命中了 Tan Kiat How 名字里的「at」。加 `\b`，提取函数移到 `scripts/refresh/voices/event.ts`，补 3 条测试。
+- 根因二：yt-dlp 对不足一分钟的视频只输出秒数（如 `30`），emit 的正则不认，写成 00:00。现在转成 `00:SS`。顺手补齐站内 7 条同样为 00:00 的时长（v081 / v083 / v084 / v085 / v086 / v087 / v120）。
+- url-health 周巡检连续报 9 条「断链」（oecd.ai / gpai.ai / helsinki.fi 等），curl 全部可达。Node 的 fetch 对这几个主机 ETIMEDOUT，curl 正常。现在 fetch 重试仍是 `ERR:*` 时用 curl 复核一次，复核拿到状态码就以它为准。补 3 条测试。
+- 删除 `mp-stubs.json` 里 20 条由职务字符串生成的空人物（如 `senior-minister-of-state`、`community-and-youth-and-trade-and-industry`、`deputy-speaker`），它们在五种语言下各有一页，GSC 里都是零点击的僵尸页。`debates.ts` 的 26 处 `personIds` 引用同步删除；`generate-people-stubs.ts` 的职务模式表补上这几类，重新生成不会再出现。
+
 ## 0.28.13 — 2026-10-16
 
 ### 修复：cron 下 claude CLI 报“未登录”，LLM 管线连续 15 天失败
