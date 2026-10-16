@@ -25,7 +25,6 @@ import { spawnSync } from 'node:child_process';
 
 import { ensureClaudeAuthed } from '../../lib/llm.ts';
 import { govFetch } from '../../lib/gov-fetch.ts';
-import { parseDateLoose } from '../../lib/stale-gate.ts';
 import { mergeRejectedUrls, rejectedUrlsPath, loadRejectedUrls, type RejectedUrl } from '../../lib/rejected-urls.ts';
 import { translateBatch } from '../../lib/translate.ts';
 import { draftWhyItMattersBatch } from '../../lib/why-it-matters-batch.ts';
@@ -39,16 +38,37 @@ import { ecosystemEntityPages, startupEntityPages } from '../../../src/utils/ent
 import type { Signal } from '../../../src/data/signals.ts';
 
 import { SOURCES, sourcePriority } from './sources.ts';
-import { decodeEntities, scanAll, type SignalCandidate } from './scan.ts';
+import { scanAll, type SignalCandidate } from './scan.ts';
 import { judgeCandidate } from './judge.ts';
-import { orderForFetch, selectSignals, withinWindow, type Judged } from './select.ts';
+import { orderForFetch, selectSignals, type Judged } from './select.ts';
 import { findRelated, type RelatedIndex } from './related.ts';
 import { insertSignals, signalId } from './emit.ts';
+import { cleanHeadline, resolveCandidate, spaceCjkLatin } from './page.ts';
 
 const DOMAIN = 'signals';
 const SIGNALS_TS = resolve('src/data/signals.ts');
 const DATA_DIR = resolve('scripts/refresh/signals/data');
 const JUDGE_CACHE = resolve(DATA_DIR, 'judgments');
+const TITLE_CACHE = resolve(DATA_DIR, 'title-translations');
+/** Titles are headlines, not sentences. The library's default zh→ja / zh→ko
+ *  prompts ask for the polite sentence register (です・ます / 합쇼체), which
+ *  made the first batch's titles end in しました。/ 합니다. (2026-10-17). */
+const HEADLINE_LANG = { 'zh→en': 'English', 'zh→ja': 'Japanese', 'zh→ko': 'Korean' } as const;
+function headlinePrompt(direction: keyof typeof HEADLINE_LANG): string {
+  const lang = HEADLINE_LANG[direction];
+  return (
+    `You translate news headlines from Simplified Chinese into ${lang} for a policy-analysis website about Singapore AI. ` +
+    'Write each item as a news headline, not a sentence: no sentence-final punctuation and no polite verb endings ' +
+    '(Japanese: no です/ます/しました, use headline style with nouns or plain forms; Korean: no 합니다/했습니다, use headline style). ' +
+    'Keep organisation and product names and acronyms exactly as written (A*STAR, MDDI, IMDA). ' +
+    'Write Singapore-dollar amounts with the S$ prefix before the number (S$40 million, S$4,000万, S$4천만). ' +
+    (direction === 'zh→ja'
+      ? 'Use Japanese shinjitai kanji only, never Simplified-Chinese-only characters; write Chinese proper nouns in katakana or Latin. '
+      : '') +
+    'Return only JSON: {"paragraphs":["..."]}. The output array must have exactly the same number of items as the input array. ' +
+    'Never use ASCII straight quotes inside the text.'
+  );
+}
 const LEDGER = rejectedUrlsPath(DOMAIN);
 /** Upper bound on page fetches per run (sitemaps with re-stamped lastmod can list hundreds). */
 const MAX_FETCH = 250;
@@ -282,8 +302,7 @@ async function main(): Promise<void> {
   });
 }
 
-/** Fetch the page and resolve its publication date. Sitemap candidates
- *  need a page date (lastmod is not trusted); RSS ones may use pubDate. */
+/** Fetch the page and turn it into a judgeable candidate (see page.ts). */
 async function fetchCandidate(
   c: SignalCandidate,
   today: string,
@@ -291,18 +310,13 @@ async function fetchCandidate(
 ): Promise<{ title: string; date: string; text: string } | null> {
   try {
     const page = await govFetch(c.url, { retries: 2, timeoutMs: 20000 });
-    // A last-modified time says nothing about first publication.
-    const pageDate = page.publishedDateSource === 'modified' ? null : parseDateLoose(page.publishedDate);
-    const date = pageDate ?? (c.kind === 'rss' ? (c.hintedDate ?? null) : null);
-    if (!withinWindow(date, today, days)) {
+    const visibleDate = SOURCES.find((s) => s.id === c.sourceId)?.visibleDate;
+    const r = resolveCandidate(page, c, { today, days, visibleDate });
+    if ('skip' in r) {
+      log(`    - skip (${r.skip}): ${c.url}`);
       return null;
     }
-    const text = page.contentText || '';
-    if (text.length < 300) {
-      log(`    - skip (thin body ${text.length} chars): ${c.url}`);
-      return null;
-    }
-    return { title: decodeEntities(c.title || page.title).replace(/\s*\|\s*[^|]+$/, ''), date: date!, text };
+    return r;
   } catch (e) {
     log(`    - skip (fetch ${e instanceof Error ? e.message.slice(0, 80) : String(e)}): ${c.url}`);
     return null;
@@ -333,19 +347,20 @@ async function draft(picked: Judged[], today: string): Promise<Signal[]> {
   const inputs: WhyInput[] = withIds.map(({ p, id }) => ({
     kind: 'signal',
     id,
-    title: p.judgment.titleZh,
+    title: spaceCjkLatin(p.judgment.titleZh),
     date: p.pageDate,
     actors: p.candidate.sourceName,
-    summary: `${p.candidate.title}. ${p.judgment.reason}`,
+    // Headline only: the judge's own reasoning may carry outside knowledge.
+    summary: p.candidate.title,
     detail: p.contentText.slice(0, 3000),
     sourceUrl: p.candidate.url,
   }));
   const why = await draftWhyItMattersBatch(inputs);
 
-  const titlesZh = withIds.map(({ p }) => p.judgment.titleZh);
+  const titlesZh = withIds.map(({ p }) => spaceCjkLatin(p.judgment.titleZh));
   const [en, ja, ko] = await Promise.all(
     (['zh→en', 'zh→ja', 'zh→ko'] as const).map((direction) =>
-      translateBatch(titlesZh, { direction }).catch((e: unknown) => {
+      translateBatch(titlesZh, { direction, systemPrompt: headlinePrompt(direction), cacheDir: TITLE_CACHE }).catch((e: unknown) => {
         log(`  ! title translation ${direction} failed: ${e instanceof Error ? e.message.slice(0, 120) : String(e)}`);
         return [] as string[];
       })
@@ -356,7 +371,7 @@ async function draft(picked: Judged[], today: string): Promise<Signal[]> {
   const out: Signal[] = [];
   withIds.forEach(({ p, id }, i) => {
     const w = why.get(id);
-    const t = [en[i], ja[i], ko[i]].map((x) => (x ?? '').trim());
+    const t = [en[i], ja[i], ko[i]].map((x) => cleanHeadline(x ?? ''));
     if (!w || t.some((x) => !x)) {
       log(`  ! dropping ${id}: missing ${!w ? 'whyItMatters' : 'title translation'}`);
       return;
@@ -365,11 +380,11 @@ async function draft(picked: Judged[], today: string): Promise<Signal[]> {
     out.push({
       id,
       date: p.pageDate,
-      title: p.judgment.titleZh,
+      title: titlesZh[i],
       titleEn: t[0],
       titleJa: t[1],
       titleKo: t[2],
-      whyItMatters: w.whyItMatters,
+      whyItMatters: spaceCjkLatin(w.whyItMatters),
       whyItMattersEn: w.whyItMattersEn,
       whyItMattersJa: w.whyItMattersJa,
       whyItMattersKo: w.whyItMattersKo,
