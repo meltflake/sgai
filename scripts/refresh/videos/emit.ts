@@ -320,7 +320,10 @@ function getDurationViaYtDlp(videoId: string): string {
     return '00:00';
   }
   const out = (r.stdout || '').trim();
-  // yt-dlp returns "1:23" or "12:34" or "1:23:45"; normalise to MM:SS or H:MM:SS as-is
+  // yt-dlp returns "1:23" or "12:34" or "1:23:45"; normalise to MM:SS or H:MM:SS as-is.
+  // Clips under one minute come back as bare seconds ("30"); that used to fall
+  // through to '00:00' (v081/v083/v120/v122 shipped with a zero duration).
+  if (/^\d+$/.test(out)) return `00:${out.padStart(2, '0')}`;
   if (!/^\d+(:\d{1,2}){1,2}$/.test(out)) return '00:00';
   // Pad MM:SS form with leading zero if minutes is single-digit
   const parts = out.split(':');

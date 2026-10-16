@@ -34,6 +34,15 @@ const ROLE_PATTERNS = [
   /^The Prime Minister$/i,
   /^The President$/i,
   /^The Speaker$/i,
+  // Added 2026-10-16: these title strings had become 20 empty-name person
+  // pages (e.g. /voices/senior-minister-of-state/, /voices/community-and-youth/).
+  /^(The )?Deputy Speaker$/i,
+  /^Deputy Leader of the House$/i,
+  /^(Senior )?Minister of State$/i,
+  /^Deputy Prime Minister and /i,
+  /^(Senior )?Parliamentary Secretar(y|ies) /i,
+  // Fragment of "Minister for Culture, Community and Youth" split on the comma.
+  /^Community and Youth\b/i,
 ];
 
 function isRole(raw: string): boolean {

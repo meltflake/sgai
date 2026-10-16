@@ -11,6 +11,8 @@
 // Pipelines that already have ground-truth APIs (hansard SPRS, YouTube)
 // don't need this — the URL is asserted by the upstream API, not invented.
 
+import { spawnSync } from 'node:child_process';
+
 export type UrlCheckEntry = {
   url: string;
   /** Where in the prospect record the url lives, e.g. 'signatureWork[2].sourceUrl'. Used for error reports only. */
@@ -109,7 +111,41 @@ async function checkWithRetry(url: string, timeoutMs: number, retries: number): 
     await sleep(400 * attempt);
     status = await checkOne(url, timeoutMs);
   }
+  // Node's fetch and curl do not share a network stack. oecd.ai / gpai.ai /
+  // helsinki.fi answered curl with 2xx/3xx while fetch hit ETIMEDOUT on every
+  // retry, so the weekly url-health eval reported 9 false "broken" URLs
+  // (2026-10-12). A second opinion from curl settles an `ERR:*` verdict.
+  if (typeof status === 'string') {
+    const second = curlStatus(url, timeoutMs);
+    if (second !== null) return second;
+  }
   return status;
+}
+
+const BROWSER_UA =
+  'Mozilla/5.0 (Macintosh; Intel Mac OS X 13_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36';
+
+/**
+ * HTTP status via the system curl, or null when curl is missing, fails to
+ * connect, or prints something that is not a status code. HEAD first; a
+ * 4xx/5xx HEAD is re-tried as GET because some servers reject HEAD.
+ * `curlBin` is injectable for tests.
+ */
+export function curlStatus(url: string, timeoutMs: number, curlBin = 'curl'): number | null {
+  const maxTime = String(Math.max(1, Math.ceil(timeoutMs / 1000)));
+  const run = (method: 'HEAD' | 'GET'): number | null => {
+    const args = ['-sS', '-o', '/dev/null', '-w', '%{http_code}', '-L', '-m', maxTime, '-A', BROWSER_UA];
+    if (method === 'HEAD') args.push('-I');
+    args.push(url);
+    const r = spawnSync(curlBin, args, { encoding: 'utf8', timeout: timeoutMs * 2 + 2000 });
+    if (r.error || r.status !== 0) return null;
+    const code = Number((r.stdout || '').trim());
+    return Number.isInteger(code) && code >= 100 && code <= 599 ? code : null;
+  };
+  const head = run('HEAD');
+  if (head !== null && head < 400) return head;
+  const get = run('GET');
+  return get ?? head;
 }
 
 async function checkOne(url: string, timeoutMs: number): Promise<number | string> {
