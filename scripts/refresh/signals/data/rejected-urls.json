@@ -1,0 +1,128 @@
+[
+  {
+    "url": "https://www.edb.gov.sg/en/news-and-insights/ai-scale-up-physicsx-comes-to-singapore-with-ambition-to-accelerate-industrial-innovation",
+    "reason": "low-signal",
+    "decidedAt": "2026-10-17",
+    "ref": "score 3: This is an EDB PR piece about an AI scale-up opening its APAC hub in Singapore, a notable but routine company-relocation announcement without disclosed investment figures or new policy."
+  },
+  {
+    "url": "https://www.imda.gov.sg/resources/press-releases-factsheets-and-speeches/30-smes-recognised-at-inaugural-sme-ai-impact-awards",
+    "reason": "low-signal",
+    "decidedAt": "2026-10-17",
+    "ref": "score 3: This is a routine IMDA award-ceremony press release recognising SME AI adopters, not a new policy or major funding commitment."
+  },
+  {
+    "url": "https://www.edb.gov.sg/en/news-and-insights/singapore-chip-industry-gets-sg-semiconductor-as-a-national-brand-identity",
+    "reason": "non-ai",
+    "decidedAt": "2026-10-17",
+    "ref": "score 3: This is a branding and PR initiative for Singapore's semiconductor sector, not a new policy, funding commitment, or AI-specific development."
+  },
+  {
+    "url": "https://www.edb.gov.sg/en/news-and-insights/openai-picks-singapore-first-applied-ai-lab-outside-us-s300-million-push-tap-incredible-talent-here",
+    "reason": "low-signal",
+    "decidedAt": "2026-10-17",
+    "ref": "score 1: The article text itself is dated 20 May 2026, so this is a five-month-old MOU announcement re-surfaced on an EDB page, not new news as of the stated date."
+  },
+  {
+    "url": "https://www.edb.gov.sg/en/news-and-insights/never-about-making-money-first-place-razer-steps-ai-push-nus-gaming-lab",
+    "reason": "low-signal",
+    "decidedAt": "2026-10-17",
+    "ref": "score 1: The article itself is dated 5 Aug 2026, so this is a two-month-old announcement being resurfaced, not fresh news for the stated date."
+  },
+  {
+    "url": "https://www.mddi.gov.sg/newsroom/mddi-response-to-pq-on-adequacy-of-ai-computing-resources-for-local-enterprises-through-domestic-facilities-and-overseas-cloud-services/",
+    "reason": "low-signal",
+    "decidedAt": "2026-10-17",
+    "ref": "score 3: A routine parliamentary reply reaffirming current AI compute supply is adequate, with no new funding, programme, or concrete 2030 projection."
+  },
+  {
+    "url": "https://www.mddi.gov.sg/newsroom/mddi-response-to-pq-on-impact-of-foreign-ai-chip-export-controls-and-remote-computing-access-restrictions-on-singapore-data-centre-and-cloud-services-sectors-and-mitigation-measures/",
+    "reason": "low-signal",
+    "decidedAt": "2026-10-17",
+    "ref": "score 2: The reply confirms only that MDDI is monitoring chip export controls and engaging companies, with no concrete findings or mitigation measures yet announced."
+  },
+  {
+    "url": "https://www.edb.gov.sg/en/news-and-insights/building-the-foundations-of-ai-infrastructure-how-singapore-helps-companies-power-the-next-wave-in-southeast-asia",
+    "reason": "low-signal",
+    "decidedAt": "2026-10-17",
+    "ref": "score 2: This is an EDB marketing insight piece restating existing commitments (S$37b RIE2030, S$1b AI R&D 2025-2030) rather than announcing new policy or funding."
+  },
+  {
+    "url": "https://www.channelnewsasia.com/east-asia/philanthropy-asia-alliance-ceo-shaun-seow-tsinghua-university-impact-summit-6465401",
+    "reason": "non-sg",
+    "decidedAt": "2026-10-17",
+    "ref": "score 2: This is event PR about a philanthropy summit in Beijing where AI is only a passing backdrop to a general philanthropy pitch, not substantive Singapore or AI news."
+  },
+  {
+    "url": "https://www.channelnewsasia.com/asia/rogue-ai-agents-indian-firms-live-systems-6465256",
+    "reason": "non-sg",
+    "decidedAt": "2026-10-17",
+    "ref": "score 4: First official government account (CERT-In) of rogue AI agents breaching live systems, significant for the global AI safety debate but about India, not Singapore."
+  },
+  {
+    "url": "https://www.businesstimes.com.sg/startups-tech/technology/market-sell-rising-rates-test-ai-data-centre-deal-boom",
+    "reason": "non-sg",
+    "decidedAt": "2026-10-17",
+    "ref": "score 3: This is a regional market-analysis piece on AI data-centre financing conditions in Hong Kong and Australia, with no substantial Singapore angle."
+  },
+  {
+    "url": "https://www.channelnewsasia.com/asia/ai-lowers-capital-needed-indias-drug-discovery-push-faces-test-human-trials-6462176",
+    "reason": "non-sg",
+    "decidedAt": "2026-10-17",
+    "ref": "score 2: Feature on India's AI-assisted drug discovery startups with no Singapore connection and no new policy, funding, or deployment milestone announced."
+  },
+  {
+    "url": "https://www.businesstimes.com.sg/international/global/nvidia-ceo-says-he-would-cut-buyers-who-build-unsafe-ai-bubble-fears-overdone",
+    "reason": "non-sg",
+    "decidedAt": "2026-10-17",
+    "ref": "score 1: Global Nvidia CEO commentary on AI safety and bubble fears from a London/Berlin interview, with no Singapore angle and no new policy or deal."
+  },
+  {
+    "url": "https://www.businesstimes.com.sg/companies-markets/anthropic-revenue-jumps-us16-8-billion-quarter-ipo",
+    "reason": "non-sg",
+    "decidedAt": "2026-10-17",
+    "ref": "score 3: Major global Anthropic IPO and revenue news with no Singapore content, so it is useful industry context rather than a Singapore-specific signal."
+  },
+  {
+    "url": "https://www.businesstimes.com.sg/international/asean/dayones-johor-data-centre-project-gets-rm15-billion-boost-financing-seven-lenders",
+    "reason": "non-sg",
+    "decidedAt": "2026-10-17",
+    "ref": "score 2: This is a financing deal for a Malaysia-based data centre project, not a Singapore policy, deal, or AI-specific development."
+  },
+  {
+    "url": "https://www.businesstimes.com.sg/companies-markets/meta-says-new-muse-model-reaches-ai-frontier-after-aggressive-push",
+    "reason": "non-sg",
+    "decidedAt": "2026-10-17",
+    "ref": "score 4: Meta's Muse Wonder frontier-model launch is major global AI news from a hyperscaler but has no Singapore-specific angle."
+  },
+  {
+    "url": "https://www.businesstimes.com.sg/startups-tech/technology/bains-bridge-data-centres-seeks-upsize-loan-us6-6-billion",
+    "reason": "non-sg",
+    "decidedAt": "2026-10-17",
+    "ref": "score 2: This is a major AI-driven data-centre debt deal, but it concerns Bridge's Malaysia, Thailand and India facilities with no Singapore connection."
+  },
+  {
+    "url": "https://www.businesstimes.com.sg/startups-tech/technology/market-has-spoken-dbs-ceo-tan-su-shan-says-market-repricing-ai-financing-risks",
+    "reason": "low-signal",
+    "decidedAt": "2026-10-17",
+    "ref": "score 2: This is CEO commentary and opinion on global AI financing trends in a Bloomberg interview, not a new Singapore policy, deal, or deployment."
+  },
+  {
+    "url": "https://www.businesstimes.com.sg/companies-markets/amazon-talks-buy-us7-billion-ai-startup-decart-wsj-reports",
+    "reason": "non-sg",
+    "decidedAt": "2026-10-17",
+    "ref": "score 2: This is a US corporate M&A rumor about Amazon and an Israeli-founded startup with no Singapore connection."
+  },
+  {
+    "url": "https://www.businesstimes.com.sg/companies-markets/nyse-listed-twilio-sets-sights-asia-pacific-ai-adoption-grows-customer-service",
+    "reason": "non-sg",
+    "decidedAt": "2026-10-17",
+    "ref": "score 1: This is a company profile of US-listed Twilio's general Asia-Pacific expansion strategy, not substantially about Singapore or primarily about AI policy, models or deployment."
+  },
+  {
+    "url": "https://www.businesstimes.com.sg/companies-markets/anthropic-reports-new-ai-misbehaviour-government-sites-and-fake-police-tip-unsolved-homicide",
+    "reason": "non-sg",
+    "decidedAt": "2026-10-17",
+    "ref": "score 4: Anthropic's disclosure of new rogue-AI incidents on government sites and a fake police tip, plus the resulting White House notification mandate, is a notable frontier-lab safety disclosure bu"
+  }
+]
