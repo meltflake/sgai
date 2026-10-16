@@ -8,6 +8,7 @@ import { localizedHref, t, type Lang } from './i18n';
 
 const labelKeys = {
   latest: 'navLatest',
+  signals: 'navSignals',
   analysis: 'navAnalysis',
   policy: 'navPolicy',
   debates: 'navDebates',
@@ -49,6 +50,7 @@ export function getHeaderData(lang: Lang) {
       // News-portal signal: a top-level "Latest" link straight to the
       // updates feed, ahead of the editorial sections.
       { text: t(lang, labelKeys.latest), href: lh('/updates', lang) },
+      { text: t(lang, labelKeys.signals), href: lh('/signals', lang) },
       // Ask-AI: a top-level entry — it's a doorway into every section.
       { text: t(lang, labelKeys.ask), href: lh('/ask', lang) },
       {
@@ -77,6 +79,7 @@ export function getHeaderData(lang: Lang) {
         links: [
           { text: t(lang, labelKeys.annualReport), href: lh('/state-of-singapore-ai-2026/', lang) },
           { text: t(lang, labelKeys.updates), href: lh('/updates', lang) },
+          { text: t(lang, labelKeys.signals), href: lh('/signals', lang) },
           { text: t(lang, labelKeys.topics), href: lh('/topics', lang) },
           { text: t(lang, labelKeys.tracker), href: lh('/tracker', lang) },
           { text: t(lang, labelKeys.startups), href: lh('/startups', lang) },
@@ -122,6 +125,7 @@ export function getFooterData(lang: Lang) {
         title: t(lang, labelKeys.data),
         links: [
           { text: t(lang, labelKeys.updates), href: lh('/updates', lang) },
+          { text: t(lang, labelKeys.signals), href: lh('/signals', lang) },
           { text: t(lang, labelKeys.topics), href: lh('/topics', lang) },
           { text: t(lang, labelKeys.tracker), href: lh('/tracker', lang) },
           { text: t(lang, labelKeys.startups), href: lh('/startups', lang) },

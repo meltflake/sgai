@@ -1,0 +1,38 @@
+---
+// Homepage "worth noting this week" block — sits above the updates feed.
+// Window rule lives in homeSignals(): last 14 days, at most 6, falling back
+// to the newest 6 when the window has fewer than 3. Renders nothing when
+// there are no signals at all.
+import { signals } from '~/data/signals';
+import { localizedHref, t, type Lang } from '~/i18n';
+import { homeSignals } from '~/utils/signals';
+import SignalItem from '~/components/signals/SignalItem.astro';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const items = homeSignals(signals, new Date().toISOString().slice(0, 10));
+---
+
+{
+  items.length > 0 && (
+    <div>
+      <div class="flex items-baseline justify-between mb-4 gap-4 flex-wrap">
+        <h2 class="t-h3 text-gray-900 dark:text-white">{t(lang, 'signalsHomeHeading')}</h2>
+        <a
+          href={localizedHref('/signals/', lang)}
+          class="text-sm text-gray-500 hover:text-primary dark:text-gray-400 transition-colors"
+        >
+          {t(lang, 'signalsHomeCta')}
+        </a>
+      </div>
+      <ul class="space-y-4">
+        {items.map((s) => (
+          <SignalItem signal={s} lang={lang} compact />
+        ))}
+      </ul>
+    </div>
+  )
+}
