@@ -85,6 +85,15 @@ function extractDate(html: string): string | null {
   // Prefer <time datetime="...">
   const timeTag = html.match(/<time[^>]+datetime=["']([^"']+)["']/i);
   if (timeTag) return normalizeDate(timeTag[1]);
+  // Structured publication fields: JSON-LD, and Next.js flight payloads where
+  // the quotes are backslash-escaped (gov.sg sites: "publish_date":"07 Jun 2023").
+  const structured = html.match(
+    /\\?"(?:datePublished|publish_date|publishDate|published_date|date_published)\\?"\s*:\s*\\?"([^"\\]+)/i
+  );
+  if (structured) {
+    const d = normalizeDate(structured[1].trim());
+    if (d) return d;
+  }
   // Common meta tags
   const metas = [
     /<meta\s+(?:property|name)=["']article:published_time["']\s+content=["']([^"']+)["']/i,
@@ -97,8 +106,14 @@ function extractDate(html: string): string | null {
     if (m) return normalizeDate(m[1]);
   }
   // Inline patterns: "Published on 5 May 2026" / "5 May 2026"
-  const inline = html.match(/\b(\d{1,2}\s+(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\s+\d{4})\b/);
-  if (inline) return normalizeDate(inline[1]);
+  // Skip "last updated" stamps: every gov.sg page carries one set to the crawl
+  // day (footer attribute + "LAST UPDATED:" line), and taking it made a 2023
+  // press release look published today (2026-10-17).
+  for (const m of html.matchAll(/\b(\d{1,2}\s+(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\s+\d{4})\b/g)) {
+    const before = html.slice(Math.max(0, (m.index ?? 0) - 60), m.index);
+    if (/last[-_ ]?updated|lastupdated/i.test(before)) continue;
+    return normalizeDate(m[1]);
+  }
   return null;
 }
 

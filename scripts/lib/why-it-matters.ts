@@ -19,7 +19,7 @@ import { join } from 'node:path';
 
 import { callLlmJson } from './llm.ts';
 
-export type WhyKind = 'policy' | 'debate' | 'video';
+export type WhyKind = 'policy' | 'debate' | 'video' | 'signal';
 
 export interface WhyInput {
   kind: WhyKind;
@@ -51,6 +51,7 @@ const KIND_ZH: Record<WhyKind, string> = {
   policy: '政策文件',
   debate: '国会辩论',
   video: '视频',
+  signal: '新闻',
 };
 
 const SYSTEM_PROMPT = `你是「新加坡 AI 观察」（sgai.md）的编辑，读者是关注新加坡 AI 战略的创业者、政策研究者和记者。
