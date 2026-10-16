@@ -13313,6 +13313,70 @@ export const videoTranscripts: Record<string, VideoTranscript> = {
     paragraphs: [],
     error: 'Subtitle track held only "[music] >> Woo!", no speech captions.',
   },
+  v121: {
+    videoId: 'v121',
+    youtubeId: 'yHQGmc1Gcc0',
+    captionLanguage: 'en',
+    fetchedAt: '2026-10-16',
+    source: 'youtube-subtitles',
+    paragraphs: [
+      '[music] >> 前向部署工程师是是一个新机遇[music]，对新加坡人而言，尤其是对我们的人工智能学徒[music]和人工智能工程师而言。我们带来的是我们8-9年的的运营学徒[music]项目的经验，我们的工程师在这里，我们的学徒也在这里。但我认为我们之间有许多东西可以彼此分享和学习，加上训练营的其他参与者。从这个训练营，我们[music]真正希望获得的是理解Open AI关于成为FDE所需条件的观点[music]。这样的话，我们将能够调整我们的学徒项目，以确保它与行业需求保持一致，而我们通过该项目毕业的学徒可能会被各组织聘请为FDE。',
+      '>> 所以作为我们更广泛的Open AI新加坡计划的一部分，提升本地人工智能人才是一个大优先事项，这个FDE训练营是我们朝着实现[music]这个目标迈出的初始步骤之一。新加坡人工智能显然在新加坡人工智能生态系统中根基深厚 >> [music] >> 我们非常重视我们在这里拥有的伙伴关系。所以在过去的几天里，我们与来自新加坡人工智能的人工智能工程师和人工智能学徒进行了许多富有成果的交流[music]，他们也在日常工作中进行非常相似的前向部署工作。[music]但也有一些细微的差异，我们可以彼此学习，了解如何处理部署的不同阶段。',
+      '我对人工智能工程师和来自新加坡[music]人工智能的人工智能学徒在训练营过程中展现的软技能和硬技能的混合印象深刻。例如，在他们解决被提出[music]的问题时运用同理心，思考利益相关者、他们想要实现什么以及如何改善他们的生活，然后将其与深厚的技术技能相结合，以便实际构建为在他们被提出的问题中的利益相关者[music]提供大量价值的解决方案。>> 在过去的3天里，听到人工智能学徒如何关于FD角色真的很有趣。',
+      '[music]这确实给了我对我们在新加坡这里所做工作的更深刻的认识，以及我们如何培训学徒，[music]以及这真的是关于客户及及他们的目的以及他们在我们构建的技术和解决方案之上试图做的事情。AIP，我们教导学徒真正学会如何穿过噪音，真正试图找到正确的问题来解决，而不是为了构建而构建。所以，在项目阶段，我们我通过让他们与客户非常紧密地合作来鼓励这个过程，不断吸收反馈，并以一个非常迭代的过程处理解决方案，并根据所有反馈不断改进。这个训练营真正验证了成为一个伟大的FD意味着什么。呃我们期待着培训下一代FD。',
+      '>> 我在训练营中学到的许多技能是我在AIP中接触到的，看到它如何汇聚在一起以及它如何有助于成为FD真的很酷也很鼓舞人心[music]。>> 在AIP中，我在与一个工程公司的行业项目上工作。这种经验以多种方式帮助了我参加这个训练营。首先，发现方面[music]，我们与客户有许多接触点，从那里我们必须发展[music]对领域的坚实理解，以及理解需要验证什么以及如何验证之前我们可以设计一个[music]最适合他们的解决方案。最后，在整个项目中，我们一直在根据他们的反馈迭代和优化解决方案。',
+      '其中每一个[music]都与FD所做的工作相一致，这是我在AIP中一直在做的事情的延伸。>> 我知道有AIP资深学员已经进入了这个[music]FD角色，这让我放心，我在AIP中学到的技能是可转移的和宝贵的，最终可以成为FD。在过去的3天里，我对FD的工作有了进一步的了解，这绝对是我感兴趣的职业道路。>> [music] >> 嗨。>> [music]',
+    ],
+    paragraphsEn: [
+      "[music] >> The forward deploy engineer is is a new opportunity [music] for Singaporeans and especially our AI apprentices [music] and AI engineers. What we bring to the table is our 8-9 years of of running the apprenticeship [music] program and our engineers are here, our apprentices. But I think there's a lot to share and to learn from each other together with the other participants of the boot camp. From this boot camp, what [music] we hope to get out of it really is to understand Open AI's point of view of what [music] it takes to be a FDE. Then this will allow us to fine-tune our apprenticeship program to make sure that it's aligned to the industry needs and our apprentices graduating through the program can potentially be hired by organizations as FDEs.",
+      ">> So as part of our broader Open AI for Singapore initiative, upskilling local AI talent is a big priority and this FDE boot camp is one of the our initial steps towards achieving [music] that goal. AI Singapore is clearly very deeply rooted in the Singapore AI ecosystem >> [music] >> and we very much value the partnership that we have here. So over the last few days we've had a number of productive exchanges [music] with the AI engineers and AI apprentices from AI Singapore who undertake very similar forward deployed work in their day-to-day lives as well. [music] But there are minor differences and things we can learn from each other in terms of how we tackle the different stages of a deployment.",
+      "I was quite impressed by the mix of soft and hard skills that the AI engineers and AI apprentices from AI [music] Singapore displayed across the course of the boot camp. For example, applying empathy to how they solved the problems that they were presented [music] with, to think about the stakeholders, what they want to achieve and how to make their lives better, and then marrying that with deep technical skills to be able to then actually build solutions that yeah, provide a lot of value to the stakeholders [music] in the problems that they were presented with. >> Over the past 3 days, it's been really interesting to hear how AI apprentices about the FD role.",
+      "[music] And it really gave me a deeper appreciation about what we do here at Singapore, and how we train apprentices, and [music] how it's really about the client and and their purpose and what they're trying to do on top of the technology and the solutions that we built. AIP, we teach apprentices to really learn how to cut through the noise, to really try to find the right problem to solve instead of just building for the sake of it. So, during the project phase, we I encourage this process by really getting them to work very closely with the clients to constantly take feedback in, and to work on the solution in a very iterative process and constantly refining it on all the feedback. This boot camp has really validated what it means to be a great FD. Uh we look forward to training the next generation of FDs.",
+      ">> Many of the skills that I've learned throughout the boot camp is what I've been exposed to in AIP, and it's really cool and encouraging [music] to see how it comes together and how it plays to be an FD. >> In AIP, I'm working on an industry project with an engineering firm. That experience has helped me in several ways for this boot camp. Firstly, the discovery aspect [music] where we had many touch points with the client, and from there we had to develop [music] a solid understanding of the domain and understanding what needs to be verified and how it needs to be verified before we could design a solution [music] that best fits them. And finally, throughout the project, we have been iterating and refining the solution based on their feedback.",
+      "Each of these [music] aligns with what an FD does, and it's an extension of what I've been doing in AIP. >> I have had AIP seniors who have moved on into this [music] FD role, and that reassures me that the skills that I've learned in AIP is transferable and valuable to eventually become an FD. Over the past 3 days, I've gained further exposure to what an FD does, and this is definitely a career path that I'm interested in. >> [music] >> Hey. >> [music]",
+    ],
+    paragraphsKo: [
+      '[music] >> 전향형 배포 엔지니어는 싱가포르 국민 여러분, 특히 저희의 AI 학습자[music]와 AI 엔지니어 여러분에게 새로운 기회를 제시합니다. 저희가 가져온 것은 8~9년간의 운영 학습자[music] 프로그램 경험입니다. 저희의 엔지니어들과 학습자들이 모두 여기 있습니다. 저희 사이에는 서로 공유하고 배울 수 있는 많은 것들이 있다고 봅니다. 훈련 캠프의 다른 참가자들도 포함하여 말입니다. 이 훈련 캠프에서 저희가 정말로 원하는 것은[music] FDE가 되기 위해 필요한 조건에 대한 OpenAI의 관점을 이해하는 것입니다[music]. 그렇게 된다면 저희는 저희의 학습자 프로그램을 조정할 수 있을 것입니다. 산업 수요와 부합하도록 보장하고, 저희 프로그램을 졸업한 학습자들이 여러 조직에서 FDE로 채용될 수 있도록 하기 위함입니다.',
+      '>> 따라서 저희의 더 광범위한 OpenAI 싱가포르 계획의 일부로서, 현지 AI 인재를 육성하는 것은 큰 우선순위입니다. 이 FDE 훈련 캠프는 저희가 이 목표를 달성하기 위해 내디딘 초기 단계 중 하나입니다[music]. AI 싱가포르（AISG）는 분명히 싱가포르의 AI 생태계에 깊이 뿌리를 두고 있습니다 >> [music] >> 저희는 여기서 저희가 보유한 파트너십을 매우 소중히 여깁니다. 지난 며칠 동안 저희는 AI 싱가포르（AISG）의 AI 엔지니어들 및 AI 학습자들과 많은 실질적인 교류를 나누었습니다[music]. 그들도 일상적인 업무에서 매우 유사한 전향형 배포 작업을 수행하고 있습니다. [music]몇 가지 미묘한 차이들도 있어서, 저희는 서로 배울 수 있습니다. 배포의 다양한 단계를 어떻게 다루는지를 말입니다.',
+      '저는 AI 엔지니어들 및 AI 싱가포르（AISG）[music]의 AI 학습자들이 훈련 캠프 과정에서 보여준 소프트 스킬과 하드 스킬의 혼합에 깊은 인상을 받았습니다. 예를 들어, 제시된[music] 문제를 해결할 때 공감을 활용하고, 이해관계자들, 그들이 달성하고자 하는 것, 그리고 그들의 삶을 개선하는 방법을 생각합니다. 그리고 이를 깊은 기술 역량과 결합하여, 제시된 문제의 이해관계자들[music]에게 상당한 가치를 제공하는 솔루션을 실제로 구축합니다. >> 지난 3일 동안 AI 학습자들이 FD 역할에 대해 어떻게 생각하는지 듣는 것이 정말 흥미로웠습니다.',
+      '[music]이것은 정말로 저희가 싱가포르에서 여기서 하고 있는 일에 대한 더욱 깊은 인식을 제게 주었습니다. 저희가 학습자들을 어떻게 훈련하는지[music]도 말입니다. 이것은 정말로 고객과 고객들의 목적, 그리고 그들이 저희가 구축한 기술과 솔루션 위에서 하고자 하는 일에 관한 것입니다. AIP에서 저희는 학습자들에게 정말로 어떻게 소음을 뚫고 나가는지를 배우도록 가르칩니다. 해결할 올바른 문제를 찾으려고 노력하는 것입니다. 단순히 구축하기 위해 구축하는 것이 아니라 말입니다. 따라서 프로젝트 단계에서 저희는 그들이 고객과 매우 긴밀하게 협력하도록 장려합니다. 지속적으로 피드백을 흡수하고, 매우 반복적인 방식으로 솔루션을 다루며, 모든 피드백에 따라 계속 개선하는 것입니다. 이 훈련 캠프는 정말로 훌륭한 FD가 되는 것이 무엇을 의미하는지를 검증했습니다. 저희는 차세대 FD를 훈련시키기를 기대하고 있습니다.',
+      '>> 훈련 캠프에서 제가 배운 많은 스킬들은 제가 AIP에서 접한 것들입니다. 그것들이 어떻게 모아지고 있는지, 그리고 그것이 FD가 되는 것에 어떻게 도움이 되는지 보는 것은 정말 멋있고 고무적입니다[music]. >> AIP에서 저는 공학 회사와의 산업 프로젝트에서 일했습니다. 이 경험은 이 훈련 캠프에 참여하는 것을 여러 방면에서 도와주었습니다. 먼저 발견 측면에서[music], 저희는 고객과 많은 접점을 가지고 있습니다. 그곳에서 저희는[music] 해당 분야에 대한 확실한 이해를 개발해야 합니다. 그리고 무엇을 검증해야 하고 어떻게 검증할 것인지를 이해해야 하며[music], 그 후에야 저희가 그들에게 가장 적합한 솔루션을 설계할 수 있습니다. 마지막으로, 전체 프로젝트 기간 동안 저희는 그들의 피드백에 따라 계속해서 솔루션을 반복하고 최적화했습니다.',
+      '이들 각각[music]은 FD가 하는 일과 부합합니다. 이것은 제가 AIP에서 줄곧 해온 일의 연장입니다. >> 저는 AIP의 선임 학습자 중 이미 이[music] FD 역할로 진출한 사람들이 있다는 것을 알고 있습니다. 이것은 제게 안심을 줍니다. 제가 AIP에서 배운 스킬들이 이전 가능하고 소중하며, 궁극적으로 FD가 될 수 있다는 것을 말입니다. 지난 3일 동안 저는 FD의 일에 대해 더욱 깊이 있게 이해했습니다. 이것은 확실히 제가 관심 있는 직업 경로입니다. >> [music] >> 안녕하세요. >> [music]',
+    ],
+    paragraphsJa: [
+      '「[music] >> フォワード・デプロイメント・エンジニアは、シンガポール人にとって、特に私たちのAI学徒[music]とAIエンジニアにとって新しい機会です[music]。私たちがもたらしているのは、8～9年間の学徒[music]プログラムの運営経験です。私たちのエンジニアがここにいて、私たちの学徒もここにいます。ただし、私たちの間には、お互いに共有し学習できることがたくさんあると考えますし、訓練キャンプの他の参加者もいます。この訓練キャンプから、私たち[music]が本当に得たいのは、FDEになるために必要な条件に関するOpenAIの見解を理解することです[music]。そうすれば、私たちは学徒プログラムを調整して業界の需要に合致させることができ、このプログラムを通じて卒業した私たちの学徒は、様々な組織によってFDEとして採用される可能性があります。」',
+      '「>> ですから、私たちのより広範なOpenAI シンガポール計画の一部として、地元のAI人材の育成は大きな優先事項です。このFDE訓練キャンプは、私たちがこの[music]目標の実現に向けて踏み出す初期段階の1つです。AIシンガポール（AISG）はシンガポールのAIエコシステムに明らかに深く根付いています>> [music] >> 私たちはここで持っているパートナーシップを非常に大切にしています。ですから過去数日間、私たちはAIシンガポール（AISG）のAIエンジニアとAI学徒と多くの実りのある交流[music]を行いました。彼らは日常業務でも非常に似たフォワード・デプロイメント業務を行っています。[music]しかし、細かな違いもあり、お互いに学習でき、デプロイメントの異なる段階をどう対処するかを理解できます。」',
+      '「私はAIエンジニアとAIシンガポール（AISG）[music]のAI学徒が訓練キャンプの過程で示すソフトスキルとハードスキルの混合に感銘を受けました。例えば、彼らが提起された[music]問題を解決する時に共感を示し、ステークホルダーのことを考え、彼らが何を達成したいのか、どのようにして彼らの生活を改善するのかを考えてから、それを深い技術スキルと結合して、彼らが提起した[music]問題のステークホルダー[music]に多大な価値を提供するソリューションを実際に構築します。>> 過去3日間、AI学徒がFDロールについてどのように語ったかを聞くのは本当に興味深かったです。」',
+      '「[music]この訓練キャンプは確かに、私たちがここシンガポールで行っている仕事、そして私たちがどのように学徒を訓練しているかについて、より深い理解を私に与えました[music]。そしてこれは本当に、顧客と彼らの目的、および彼らが私たちが構築したテクノロジーとソリューション上で達成しようとしていることに関するものです。AIPでは、私たちは学徒に、本当にノイズを通り抜け、構築するためではなく、解決すべき正しい問題を見つけることを学ぶように教えています。ですから、プロジェクト段階では、彼らと顧客と非常に密に連携させることでこのプロセスを促進し、継続的にフィードバックを吸収し、非常に反復的なプロセスでソリューションに対処し、すべてのフィードバックに基づいて継続的に改善します。この訓練キャンプは、優れたFDであることの意味を本当に検証しました。私たちは次世代のFDを訓練することを楽しみにしています。」',
+      '「>> 訓練キャンプで学んだ多くのスキルはAIPで接触したものです。どのようにそれらが一緒に来るのか、そしてそれがFDになるのにどのように役立つのかを見るのは本当にクールで励まされます[music]。>> AIPでは、エンジニアリング会社の業界プロジェクトに取り組んでいました。この経験は多くの方法で訓練キャンプへの参加を助けてくれました。まず、発見の面では[music]、私たちは顧客との多くの接触ポイントを持ち、そこから領域についての確固たる理解を発展させ、何を検証する必要があるのか、そしてどのように検証するのかを理解する必要があります。その後初めて、私たちは彼らにとって最も適切なソリューション[music]を設計できます。最後に、プロジェクト全体を通じて、私たちは継続的にフィードバックに基づいてソリューションを反復し最適化してきました。」',
+      '「その各々は[music]、FDが行う仕事と一致しており、これはAIPで私がずっと行ってきたことの延長です。>> AIPの上級学徒がこのFD[music]ロールに既に入っていることを知っており、これは私がAIPで学んだスキルが転移可能で価値があり、最終的にはFDになることができることを安心させてくれます。過去3日間で、私はFDの仕事についてさらに深い理解を得ました。これは絶対に私が興味を持っている職業経路です。>> [music] >> こんにちは。>> [music]」',
+    ],
+    translatedAt: '2026-10-16',
+    translationSource: 'claude',
+    translationModel: 'haiku',
+  },
+  v122: {
+    videoId: 'v122',
+    youtubeId: 'AgwbTnndjy4',
+    captionLanguage: 'en',
+    fetchedAt: '2026-10-16',
+    source: 'youtube-subtitles',
+    paragraphs: [
+      '我们终究需要教学生如何使用人工智能[音乐]，但要以正确的方式使用，使其不会削弱他们的能力。如果你只是试图从中获取答案，那么你就没有学到东西。所以实际上，奋力思考是富有成效的。你如何能够检查人工智能的产出是否正确？在人工智能时代，教师变得更加重要。你需要有人在场，在恰当的地方进行干预。',
+    ],
+    paragraphsEn: [
+      "We have to teach the students how to use AI eventually [music] but use it in the right way such that it does not deskkill them. If you just try to get the answer from it then you wouldn't have learned. So actually struggle is productive. How will you be able to check whether the product of AI is correct? The teacher becomes even more important in the age of AI. You need someone present there to make the interventions at the right places.",
+    ],
+    paragraphsKo: [
+      '우리는 결국 학생들에게 인공지능을 사용하는 방법을 가르쳐야 하지만[음악], 올바른 방식으로 사용하여 그들의 능력을 약화시키지 않도록 해야 합니다. 만약 당신이 단순히 그것으로부터 답을 얻으려고만 한다면, 당신은 아무것도 배우지 못한 것입니다. 따라서 실제로 열심히 생각하는 것은 생산적입니다. 인공지능의 산출물이 올바른지 어떻게 확인할 수 있습니까? 인공지능 시대에 교사는 더욱 중요해졌습니다. 당신은 적절한 시점에 개입하기 위해 현장에 있는 누군가가 필요합니다.',
+    ],
+    paragraphsJa: [
+      '私たちは結局のところ、学生にAIをどのように使用するかを教える必要があります[音楽]。ただし、正しい方法で使用し、それが彼らの能力を弱めないようにしなければなりません。もし単にそこから答えを得ようとしているだけなら、何も学んでいません。ですから実際には、懸命に考えることは生産的です。AIの出力が正しいかどうかをどのように確認できるのでしょうか？AI時代では、教師はより重要になります。適切な場所で介入するために、その場に人がいる必要があります。',
+    ],
+    translatedAt: '2026-10-16',
+    translationSource: 'claude',
+    translationModel: 'haiku',
+  },
 };
 
 export function getVideoTranscript(videoId: string): VideoTranscript | undefined {

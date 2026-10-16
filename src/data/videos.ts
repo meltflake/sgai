@@ -145,6 +145,79 @@ export function pickSpeakerTypeLabels(lang: string): Record<string, string> {
 
 export const videos: VideoItem[] = [
   {
+    id: 'v121',
+    title: '新加坡 OpenAI FDE 训练营',
+    titleEn: 'OpenAI for Singapore FDE Bootcamp',
+    titleJa: 'シンガポール OpenAI FDE 訓練キャンプ',
+    titleKo: '싱가포르 OpenAI FDE 훈련 캠프',
+    speaker: 'AI Singapore',
+    speakerTitle: 'AI 研究与人才培养机构',
+    speakerTitleEn: 'AI research and talent-development organisation',
+    speakerTitleJa: 'AI 研究と人材育成機関',
+    speakerTitleKo: 'AI 연구 및 인재 양성 기관',
+    speakerType: 'academic',
+    date: '2026-10-16',
+    duration: '03:59',
+    summary: '为期三天的 AI 从业者训练营。参与者学习如何理解商业需求并设计 FDE 解决方案。',
+    summaryEn:
+      'A three-day bootcamp where AI practitioners learned Forward Deployed Engineering. Participants learned to translate business needs into practical AI solutions for real-world challenges.',
+    summaryJa:
+      '3日間の AI 従事者訓練キャンプです。参加者は、ビジネス要件を理解し FDE ソリューションを設計する方法を学びます。',
+    summaryKo:
+      '3일간의 AI 종사자 훈련 캠프입니다. 참가자들은 사업 요구사항을 이해하고 FDE 해결방안을 설계하는 방법을 학습합니다.',
+    whyItMatters: 'AI Singapore 借 OpenAI 的 FDE 框架培养人才，折射新加坡企业级 AI 部署能力仍依赖海外模型厂商定义标准',
+    whyItMattersEn:
+      "AI Singapore leverages OpenAI's FDE framework to cultivate talent, revealing that Singapore's enterprise-grade AI deployment capability still depends on standards defined by overseas model vendors",
+    whyItMattersJa:
+      'AI Singapore は OpenAI の FDE フレームワークを活用して人材育成を行っており、シンガポール企業向け AI 展開能力がいまだに海外モデルベンダーの標準定義に依存していることを反映しています。',
+    whyItMattersKo:
+      'AI Singapore가 OpenAI의 FDE 프레임워크를 활용하여 인재를 양성하고 있으며, 이는 싱가포르의 엔터프라이즈급 AI 배포 능력이 여전히 해외 모델 공급업체가 정의하는 표준에 의존하고 있음을 반영합니다.',
+    topic: 'AI 人才与教育',
+    topicEn: 'AI Talent & Education',
+    topicJa: 'AI 人材と教育',
+    topicKo: 'AI 인재와 교육',
+    youtubeUrl: 'https://www.youtube.com/watch?v=yHQGmc1Gcc0',
+    channel: 'AI Singapore',
+    addedAt: '2026-10-16',
+  },
+  {
+    id: 'v122',
+    title: 'AI 能给答案，孩子如何学',
+    titleEn: 'If AI has the answers, how can our kids learn?',
+    titleJa: 'AI は答えを与えることができるが、子どもはどのように学ぶのか。',
+    titleKo: 'AI가 답을 줄 수 있다면, 아이들은 어떻게 배울까요?',
+    speaker: 'Liew Wei Li',
+    speakerTitle: '教育总监',
+    speakerTitleEn: 'Director-General of Education',
+    speakerTitleJa: '教育ディレクター',
+    speakerTitleKo: '교육 담당자',
+    speakerType: 'government',
+    date: '2026-10-15',
+    duration: '00:00',
+    summary: 'AI 可支持学习，但无法替代人类指导。关键是教孩子何时使用 AI、何时质疑，何时独立思考。',
+    summaryEn:
+      'AI can support learning but cannot replace human guidance. The key is teaching children when to use AI, when to question it, and when to think independently.',
+    summaryJa:
+      'AI は学習をサポートできますが、人間の指導に代わることはできません。重要なのは、子どもにいつ AI を使うか、いつ疑問を持つか、いつ独立して考えるかを教えることです。',
+    summaryKo:
+      'AI는 학습을 지원할 수 있지만 사람의 지도를 대체할 수 없습니다. 핵심은 아이들에게 언제 AI를 사용할지, 언제 의문을 제기할지, 언제 독립적으로 생각할지를 가르치는 것입니다.',
+    whyItMatters:
+      '教育总监 Liew Wei Li 借 govsg 定调 AI 教育政策导向：技术辅助而非替代教师，为新加坡课堂划出人机分工先例',
+    whyItMattersEn:
+      'Education Director Liew Wei Li sets the direction of AI education policy through govsg: technology to assist rather than replace teachers, establishing a precedent for human-machine role division in Singapore classrooms',
+    whyItMattersJa:
+      '教育ディレクター Liew Wei Li は govsg を通じて AI 教育政策の方向性を定め、技術は教師を補助するもので替代ではなく、シンガポール教室に人間とマシンの役割分担の先例を確立しました。',
+    whyItMattersKo:
+      '교육 국장 Liew Wei Li는 govsg를 통해 AI 교육 정책의 방향을 제시합니다: 기술은 교사를 대체하는 것이 아니라 보조하는 것이며, 싱가포르 교실에서 인간-기계 역할 분담의 선례를 수립합니다.',
+    topic: 'AI 人才与教育',
+    topicEn: 'AI Talent & Education',
+    topicJa: 'AI 人材と教育',
+    topicKo: 'AI 인재와 교육',
+    youtubeUrl: 'https://www.youtube.com/watch?v=AgwbTnndjy4',
+    channel: 'govsg',
+    addedAt: '2026-10-16',
+  },
+  {
     id: 'v115',
     title: '黄循财谈 AI 机遇与新加坡就业',
     titleEn: 'PM Wong on AI opportunities and Singapore jobs',
