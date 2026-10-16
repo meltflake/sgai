@@ -137,6 +137,8 @@ export const consultations: ConsultationItem[] = [
 export const bills: BillItem[] = [
   {
     id: 'digital-infrastructure-bill',
+    passedAt: '2026-10-07',
+    secondReadingAt: '2026-10-06',
     billNumber: 'Bill 20/2026',
     title: '数字基础设施法案',
     titleEn: 'Digital Infrastructure Bill',
@@ -150,9 +152,12 @@ export const bills: BillItem[] = [
       'デジタルインフラ法案（Bill 20/2026）は 2026 年 9 月 8 日に国会で第一読会を経た。主要データセンターとクラウドサービス事業者の安全性・レジリエンス、およびデータセンター運営の環境持続可能性という 2 つのライセンス制度を設け、具体的な要件は下位法令で定める。',
     summaryKo:
       '디지털 인프라 법안(Bill 20/2026)은 2026년 9월 8일 국회에서 1독회를 거쳤다. 주요 데이터센터·클라우드 서비스 제공자의 보안·회복력, 그리고 데이터센터 운영의 환경 지속가능성이라는 두 가지 라이선스 제도를 신설하며, 세부 요건은 하위 법령으로 정한다.',
-    stage: 'introduced',
+    stage: 'passed',
     introducedAt: '2026-09-08',
-    stageHistory: [{ stage: 'introduced', observedAt: '2026-09-14' }],
+    stageHistory: [
+      { stage: 'introduced', observedAt: '2026-09-14' },
+      { stage: 'passed', observedAt: '2026-10-16' },
+    ],
     aiRelevance: 'core',
     sourceUrl: 'https://www.parliament.gov.sg/parliamentary-business/bills-introduced',
     addedAt: '2026-09-14',
