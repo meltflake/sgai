@@ -79,3 +79,21 @@ test('selectSignals: respects the limit', () => {
   const many = heads.map((h, i) => judged(`https://a.com/${i}`, `${h} pilot deploys assistant`, 4, '2026-10-10', `k${i}`));
   assert.equal(selectSignals(many, 8).length, 8);
 });
+
+// Review fix 2026-10-17: the fetch cap must keep gov sources, which SOURCES lists last.
+import { orderForFetch } from '../select.ts';
+
+test('orderForFetch: gov.sg before institutions before media, newest first within a tier', () => {
+  const c = (url: string, hintedDate?: string) => ({ url, title: '', sourceId: 'x', sourceName: 'X', kind: 'rss' as const, hintedDate });
+  const out = orderForFetch([
+    c('https://www.businesstimes.com.sg/a', '2026-10-16'),
+    c('https://www.imda.gov.sg/old', '2026-10-01'),
+    c('https://aisingapore.org/b', '2026-10-15'),
+    c('https://www.mddi.gov.sg/new', '2026-10-15'),
+    c('https://www.mas.gov.sg/undated'),
+  ]);
+  assert.deepEqual(
+    out.map((x) => x.url),
+    ['https://www.mddi.gov.sg/new', 'https://www.imda.gov.sg/old', 'https://www.mas.gov.sg/undated', 'https://aisingapore.org/b', 'https://www.businesstimes.com.sg/a']
+  );
+});

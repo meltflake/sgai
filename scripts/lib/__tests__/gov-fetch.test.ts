@@ -116,6 +116,22 @@ test('govFetch: a page with only a last-updated stamp has no date', async () => 
   assert.equal(page.publishedDate, null);
 });
 
+test('govFetch: reports which rule produced the date; modified_time is flagged', async () => {
+  const modified = `<html><head><meta property="article:modified_time" content="2026-10-16T01:00:00Z"></head><body>x</body></html>`;
+  const page = await withMockFetch(
+    async () => htmlResponse(modified),
+    () => govFetch('https://www.example.gov.sg/x', { retries: 1 })
+  );
+  assert.equal(page.publishedDate, '2026-10-16');
+  assert.equal(page.publishedDateSource, 'modified');
+  const published = `<html><head><meta property="article:published_time" content="2026-10-14T01:00:00Z"></head><body>x</body></html>`;
+  const page2 = await withMockFetch(
+    async () => htmlResponse(published),
+    () => govFetch('https://www.example.gov.sg/y', { retries: 1 })
+  );
+  assert.equal(page2.publishedDateSource, 'published');
+});
+
 test('govFetch: throws on persistent 404', async () => {
   await withMockFetch(
     async () => new Response('not found', { status: 404 }),

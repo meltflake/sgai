@@ -36,12 +36,13 @@ import { autoCommit, pushAndOpenPR, buildPRBody } from '../../lib/auto-commit.ts
 import { topics } from '../../../src/data/topics.ts';
 import { people } from '../../../src/data/people.ts';
 import { ecosystemEntityPages, startupEntityPages } from '../../../src/utils/entity-pages.ts';
-import type { Signal, SignalRelated } from '../../../src/data/signals.ts';
+import type { Signal } from '../../../src/data/signals.ts';
 
 import { SOURCES, sourcePriority } from './sources.ts';
 import { decodeEntities, scanAll, type SignalCandidate } from './scan.ts';
 import { judgeCandidate } from './judge.ts';
-import { selectSignals, withinWindow, type Judged } from './select.ts';
+import { orderForFetch, selectSignals, withinWindow, type Judged } from './select.ts';
+import { findRelated, type RelatedIndex } from './related.ts';
 import { insertSignals, signalId } from './emit.ts';
 
 const DOMAIN = 'signals';
@@ -110,30 +111,18 @@ function appendRejected(entries: RejectedUrl[]): void {
   writeFileSync(LEDGER, JSON.stringify(merged, null, 2) + '\n');
 }
 
-function escapeRe(s: string): string {
-  return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-}
+const LATIN = /^[A-Za-z0-9 .&'()*-]+$/;
 
-const LATIN = /^[A-Za-z0-9 .&'()-]+$/;
-
-/** Deterministic related-entity match on headline + lead text. At most 3. */
-function findRelated(text: string): SignalRelated[] {
-  const out: SignalRelated[] = [];
-  const has = (name: string): boolean => new RegExp(`(^|[^A-Za-z0-9])${escapeRe(name)}([^A-Za-z0-9]|$)`).test(text);
-  for (const p of people) {
-    const n = p.nameEn;
-    if (n && n.trim().includes(' ') && has(n)) out.push({ kind: 'person', id: p.id });
-  }
+/** Name index for related links: curated people, ecosystem entities, startups. */
+function relatedIndex(): RelatedIndex {
+  const idx: RelatedIndex = [];
+  for (const p of people) if (p.nameEn && /\s/.test(p.nameEn.trim())) idx.push({ kind: 'person', id: p.id, name: p.nameEn });
   for (const pg of ecosystemEntityPages) {
     const n = pg.entity.nameEn || pg.entity.name;
-    if (n && LATIN.test(n) && n.length >= 6 && has(n)) out.push({ kind: 'ecosystem', id: pg.slug });
+    if (n && LATIN.test(n) && n.length >= 4) idx.push({ kind: 'ecosystem', id: pg.slug, name: n });
   }
-  for (const pg of startupEntityPages) {
-    const n = pg.name;
-    if (n && LATIN.test(n) && n.length >= 4 && has(n)) out.push({ kind: 'startup', id: pg.slug });
-  }
-  const seen = new Set<string>();
-  return out.filter((r) => !seen.has(`${r.kind}:${r.id}`) && seen.add(`${r.kind}:${r.id}`)).slice(0, 3);
+  for (const pg of startupEntityPages) if (pg.name && LATIN.test(pg.name) && pg.name.length >= 4) idx.push({ kind: 'startup', id: pg.slug, name: pg.name });
+  return idx;
 }
 
 async function main(): Promise<void> {
@@ -153,7 +142,7 @@ async function main(): Promise<void> {
   // 2. Fetch every candidate body and keep only in-window ones, then spend
   //    the judging budget on the best sources first (gov.sg > institutions
   //    > media), newest first. Fetching is cheap; judging costs a model call.
-  const fetched = await mapLimit(scan.candidates.slice(0, MAX_FETCH), 4, async (c) => {
+  const fetched = await mapLimit(orderForFetch(scan.candidates).slice(0, MAX_FETCH), 4, async (c) => {
     const f = await fetchCandidate(c, today, flags.days);
     return f ? { c: { ...c, title: f.title }, f } : null;
   });
@@ -302,7 +291,8 @@ async function fetchCandidate(
 ): Promise<{ title: string; date: string; text: string } | null> {
   try {
     const page = await govFetch(c.url, { retries: 2, timeoutMs: 20000 });
-    const pageDate = parseDateLoose(page.publishedDate);
+    // A last-modified time says nothing about first publication.
+    const pageDate = page.publishedDateSource === 'modified' ? null : parseDateLoose(page.publishedDate);
     const date = pageDate ?? (c.kind === 'rss' ? (c.hintedDate ?? null) : null);
     if (!withinWindow(date, today, days)) {
       return null;
@@ -362,6 +352,7 @@ async function draft(picked: Judged[], today: string): Promise<Signal[]> {
     )
   );
 
+  const index = relatedIndex();
   const out: Signal[] = [];
   withIds.forEach(({ p, id }, i) => {
     const w = why.get(id);
@@ -370,7 +361,7 @@ async function draft(picked: Judged[], today: string): Promise<Signal[]> {
       log(`  ! dropping ${id}: missing ${!w ? 'whyItMatters' : 'title translation'}`);
       return;
     }
-    const related = findRelated(`${p.candidate.title}\n${p.contentText.slice(0, 1500)}`);
+    const related = findRelated(p.candidate.title, p.contentText, index);
     out.push({
       id,
       date: p.pageDate,

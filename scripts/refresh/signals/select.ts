@@ -59,6 +59,20 @@ function better(x: Judged, y: Judged): Judged {
   return x.judgment.score >= y.judgment.score ? x : y;
 }
 
+/** Fetch order for the per-run cap: gov.sg, then institutions, then media;
+ *  newest hinted date first within a tier, undated last. Stable otherwise. */
+export function orderForFetch<T extends { url: string; hintedDate?: string }>(cands: T[]): T[] {
+  return cands
+    .map((c, i) => ({ c, i }))
+    .sort(
+      (a, b) =>
+        sourcePriority(b.c.url) - sourcePriority(a.c.url) ||
+        (b.c.hintedDate ?? '').localeCompare(a.c.hintedDate ?? '') ||
+        a.i - b.i
+    )
+    .map((x) => x.c);
+}
+
 export function selectSignals(judged: Judged[], limit: number, minScore = 4): Judged[] {
   const eligible = judged.filter((j) => j.judgment.singapore && j.judgment.ai && j.judgment.score >= minScore);
   const groups: Judged[] = [];

@@ -21,10 +21,15 @@ export interface GovPage {
   sourceUrl: string;
   title: string;
   publishedDate: string | null;
+  /** Which rule produced publishedDate. 'modified' means the page only states
+   *  a last-modified time, which says nothing about when it was first published. */
+  publishedDateSource?: DateSource | null;
   contentText: string;
   pdfLinks: string[];
   status: number;
 }
+
+export type DateSource = 'time' | 'published' | 'modified' | 'meta' | 'inline';
 
 export interface FetchOptions {
   retries?: number;
@@ -81,40 +86,50 @@ function extractTitle(html: string): string {
   return '';
 }
 
-function extractDate(html: string): string | null {
+function extractDate(html: string): { date: string | null; source: DateSource | null } {
+  const hit = (raw: string, source: DateSource) => {
+    const date = normalizeDate(raw.trim());
+    return date ? { date, source } : null;
+  };
   // Prefer <time datetime="...">
   const timeTag = html.match(/<time[^>]+datetime=["']([^"']+)["']/i);
-  if (timeTag) return normalizeDate(timeTag[1]);
+  if (timeTag) {
+    const h = hit(timeTag[1], 'time');
+    if (h) return h;
+  }
   // Structured publication fields: JSON-LD, and Next.js flight payloads where
   // the quotes are backslash-escaped (gov.sg sites: "publish_date":"07 Jun 2023").
   const structured = html.match(
     /\\?"(?:datePublished|publish_date|publishDate|published_date|date_published)\\?"\s*:\s*\\?"([^"\\]+)/i
   );
   if (structured) {
-    const d = normalizeDate(structured[1].trim());
-    if (d) return d;
+    const h = hit(structured[1], 'published');
+    if (h) return h;
   }
   // Common meta tags
-  const metas = [
-    /<meta\s+(?:property|name)=["']article:published_time["']\s+content=["']([^"']+)["']/i,
-    /<meta\s+(?:property|name)=["']article:modified_time["']\s+content=["']([^"']+)["']/i,
-    /<meta\s+name=["']publish-date["']\s+content=["']([^"']+)["']/i,
-    /<meta\s+name=["']date["']\s+content=["']([^"']+)["']/i,
+  const metas: Array<[RegExp, DateSource]> = [
+    [/<meta\s+(?:property|name)=["']article:published_time["']\s+content=["']([^"']+)["']/i, 'published'],
+    [/<meta\s+(?:property|name)=["']article:modified_time["']\s+content=["']([^"']+)["']/i, 'modified'],
+    [/<meta\s+name=["']publish-date["']\s+content=["']([^"']+)["']/i, 'published'],
+    [/<meta\s+name=["']date["']\s+content=["']([^"']+)["']/i, 'meta'],
   ];
-  for (const re of metas) {
+  for (const [re, source] of metas) {
     const m = html.match(re);
-    if (m) return normalizeDate(m[1]);
+    if (m) {
+      const h = hit(m[1], source);
+      if (h) return h;
+    }
   }
-  // Inline patterns: "Published on 5 May 2026" / "5 May 2026"
-  // Skip "last updated" stamps: every gov.sg page carries one set to the crawl
-  // day (footer attribute + "LAST UPDATED:" line), and taking it made a 2023
-  // press release look published today (2026-10-17).
+  // Inline "5 May 2026". Skip "last updated" stamps: every gov.sg page carries
+  // one set to the crawl day (footer attribute + "LAST UPDATED:" line), and
+  // taking it made a 2023 press release look published today (2026-10-17).
   for (const m of html.matchAll(/\b(\d{1,2}\s+(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\s+\d{4})\b/g)) {
     const before = html.slice(Math.max(0, (m.index ?? 0) - 60), m.index);
     if (/last[-_ ]?updated|lastupdated/i.test(before)) continue;
-    return normalizeDate(m[1]);
+    const h = hit(m[1], 'inline');
+    if (h) return h;
   }
-  return null;
+  return { date: null, source: null };
 }
 
 function normalizeDate(input: string): string | null {
@@ -184,7 +199,10 @@ export async function govFetch(url: string, options: FetchOptions = {}): Promise
       const result: GovPage = {
         sourceUrl: finalUrl,
         title: extractTitle(html),
-        publishedDate: extractDate(html),
+        ...(() => {
+          const d = extractDate(html);
+          return { publishedDate: d.date, publishedDateSource: d.source };
+        })(),
         contentText: stripTags(html).slice(0, 50000), // cap body to 50 KB
         pdfLinks: extractPdfLinks(html, finalUrl),
         status: response.status,
