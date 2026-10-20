@@ -123,14 +123,19 @@ else
   print_warn "scripts/auto_update_config.py absent — defaults are fine; copy example only if you want to override"
 fi
 
-# 6. crontab
+# 6. schedule — launchd since 2026-10-21 (cron cannot reach the login
+#    keychain and skips runs missed during sleep)
 echo
-echo "6. crontab"
-if crontab -l 2>/dev/null | grep -q sgai; then
-  count=$(crontab -l 2>/dev/null | grep -c "auto_update.py")
-  print_ok "crontab has $count sgai entry/entries"
-else
-  print_warn "no sgai cron entry yet — see scripts/SETUP.md §6"
+echo "6. schedule (launchd)"
+for label in com.sgai.auto-update com.sgai.doctor; do
+  if launchctl print "gui/$(id -u)/$label" >/dev/null 2>&1; then
+    print_ok "LaunchAgent $label loaded"
+  else
+    print_fail "LaunchAgent $label not loaded — run: ~/.venvs/sgai/bin/python scripts/auto_update.py --install-cron"
+  fi
+done
+if crontab -l 2>/dev/null | grep -q "auto_update.py"; then
+  print_warn "legacy sgai crontab line still present — --install-cron removes it"
 fi
 
 # 7. Dropbox sandbox sanity (sgai lives under Dropbox; build artefacts

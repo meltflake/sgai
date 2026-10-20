@@ -21,8 +21,8 @@ sgai 数据自动更新 — 统一包装脚本（registry-driven）。
 定期运行（推荐——一条 cron 心跳驱动所有 cadence）:
   python auto_update.py --due                        # 跑所有「已到期」的 schedule（按 state 里上次成功时间判断）
   python auto_update.py --status                     # 看每个 schedule 上次跑/是否到期/cron 是否装好
-  python auto_update.py --install-cron               # 装一行 managed crontab（每天 08:00 跑 --due），幂等
-  python auto_update.py --uninstall-cron             # 移除 managed crontab 块
+  python auto_update.py --install-cron               # 装 launchd 调度（07:50 doctor + 08:00 --due，唤醒补跑），幂等
+  python auto_update.py --uninstall-cron             # 移除 launchd 调度
 
 为什么用 --due 而不是给每个 cadence 配一条精确 cron：纯 cron 在 Mac 睡眠时会
 静默跳过那一分钟的触发（比如 1 号月度刷新——合盖了就永远不跑）。--due 把 cadence
@@ -914,24 +914,6 @@ def _strip_managed_block(content: str) -> str:
     return "\n".join(out).strip("\n")
 
 
-def build_managed_block(hour: int = DEFAULT_CRON_HOUR) -> str:
-    """One daily heartbeat that calls --due. PATH is baked in so npx/gh/node
-    resolve under cron's minimal environment."""
-    py = sys.executable
-    path = os.environ.get("PATH", "/usr/local/bin:/usr/bin:/bin")
-    return "\n".join(
-        [
-            CRON_BEGIN,
-            f"PATH={path}",
-            "# Daily heartbeat — --due runs whichever schedule level is overdue.",
-            "# Self-heals after sleep/downtime; do not add per-cadence cron lines.",
-            f"{0} {hour} * * *  cd {PROJECT_ROOT} && {py} scripts/auto_update.py --due "
-            f">> {LOG_DIR / 'cron.log'} 2>&1",
-            CRON_END,
-        ]
-    )
-
-
 def _probe_builtin_deps() -> list[str]:
     """Which deps the hansard/videos builtin scans need but the current
     interpreter (= the one cron will use) can't import."""
@@ -944,34 +926,107 @@ def _probe_builtin_deps() -> list[str]:
     return missing
 
 
+# ── launchd 调度（2026-10-21 起取代 crontab）─────────────────────────────────
+# cron runs outside the user's login session: the login keychain (where the
+# claude CLI keeps its login since 2026-10-01) is not on its search list, so
+# every LLM pipeline reported "Not logged in". cron also never runs a job that
+# was missed while the Mac slept (10-19 / 10-20 had no run at all). A user
+# LaunchAgent runs inside the login session and fires a missed
+# StartCalendarInterval job on wake. docs/20261021-launchd-schedule.md.
+LAUNCH_AGENTS_DIR = Path.home() / "Library" / "LaunchAgents"
+LAUNCHD_JOBS = {
+    "pipeline": "com.sgai.auto-update",
+    "doctor": "com.sgai.doctor",
+}
+
+
+def build_launchd_plist(job: str, hour: int = DEFAULT_CRON_HOUR, path: str | None = None) -> bytes:
+    """plist for one LaunchAgent. 'pipeline' runs --due at hour:00, 'doctor'
+    the pre-flight 10 minutes earlier. No RunAtLoad: loading the agent (on
+    install or login) must not start a run from whatever branch is checked
+    out. A run missed during sleep fires on wake; a day missed while the Mac
+    was off is caught up by the next --due."""
+    import plistlib
+
+    log = str(LOG_DIR / "cron.log")
+    if job == "pipeline":
+        args = [sys.executable, str(SCRIPT_DIR / "auto_update.py"), "--due"]
+        when = {"Hour": hour, "Minute": 0}
+    elif job == "doctor":
+        args = ["/bin/bash", str(SCRIPT_DIR / "doctor-cron.sh")]
+        when = {"Hour": hour - 1, "Minute": 50}
+    else:
+        raise ValueError(f"unknown launchd job: {job}")
+    plist = {
+        "Label": LAUNCHD_JOBS[job],
+        "ProgramArguments": args,
+        "WorkingDirectory": str(PROJECT_ROOT),
+        "StartCalendarInterval": when,
+        "EnvironmentVariables": {"PATH": path or os.environ.get("PATH", "/usr/local/bin:/usr/bin:/bin")},
+        "StandardOutPath": log,
+        "StandardErrorPath": log,
+    }
+    return plistlib.dumps(plist)
+
+
+def strip_legacy_cron(content: str) -> str:
+    """Drop the managed crontab block and the doctor-cron line; keep the rest."""
+    kept = [ln for ln in _strip_managed_block(content).splitlines() if "doctor-cron.sh" not in ln]
+    return "\n".join(kept).strip("\n")
+
+
+def _launchctl(*args: str) -> "subprocess.CompletedProcess[str]":
+    import subprocess
+
+    return subprocess.run(["launchctl", *args], capture_output=True, text=True)
+
+
+def launchd_loaded(label: str) -> bool:
+    return _launchctl("print", f"gui/{os.getuid()}/{label}").returncode == 0
+
+
 def cmd_install_cron(logger, hour: int = DEFAULT_CRON_HOUR):
-    base = _strip_managed_block(_read_crontab())
-    block = build_managed_block(hour)
-    new = f"{base}\n\n{block}" if base.strip() else block
-    _write_crontab(new)
-    logger.info(f"✅ 已安装 managed crontab 块（每天 {hour:02d}:00 跑 --due），用解释器: {sys.executable}")
-    for line in block.splitlines():
-        logger.info(f"    {line}")
-    logger.info(
-        "⚠ macOS: 项目在 Dropbox/CloudStorage 下时，需到「系统设置 → 隐私与安全性 → "
-        "完全磁盘访问」给 /usr/sbin/cron 授权，否则 cron 读不到项目文件。"
-    )
+    """Install the two LaunchAgents (idempotent) and remove the legacy cron lines."""
+    LAUNCH_AGENTS_DIR.mkdir(parents=True, exist_ok=True)
+    domain = f"gui/{os.getuid()}"
+    for job, label in LAUNCHD_JOBS.items():
+        plist_path = LAUNCH_AGENTS_DIR / f"{label}.plist"
+        plist_path.write_bytes(build_launchd_plist(job, hour))
+        _launchctl("bootout", f"{domain}/{label}")
+        # bootout returns before the job is gone; bootstrap then fails with
+        # "Bootstrap failed: 5" (seen 2026-10-21). Wait for the unload.
+        for _ in range(50):
+            if not launchd_loaded(label):
+                break
+            time.sleep(0.1)
+        r = _launchctl("bootstrap", domain, str(plist_path))
+        if r.returncode != 0:
+            raise RuntimeError(f"launchctl bootstrap {label} failed: {r.stderr.strip()}")
+        logger.info(f"✅ LaunchAgent {label} → {plist_path}")
+    existing = _read_crontab()
+    cleaned = strip_legacy_cron(existing)
+    if cleaned != existing.strip("\n"):
+        _write_crontab(cleaned)
+        logger.info("🧹 已移除旧的 sgai crontab 行（managed 块 + doctor-cron）")
+    logger.info(f"   每天 {hour - 1:02d}:50 doctor、{hour:02d}:00 --due；睡眠错过的会在唤醒后补跑")
     missing = _probe_builtin_deps()
     if missing:
         logger.warning(
-            f"⚠ 当前解释器缺 {', '.join(missing)}——cron 跑 hansard/videos 时会失败。"
-            f"\n    请改用带依赖的 venv 重装：<venv>/bin/python scripts/auto_update.py --install-cron"
-            f"\n    （建议 venv 放 ~/.venvs/sgai/ 而非 /tmp——/tmp 重启会清空）"
+            f"⚠ 当前解释器缺 {', '.join(missing)}——hansard/videos 会失败。"
+            f"\n    请改用带依赖的 venv 重装：~/.venvs/sgai/bin/python scripts/auto_update.py --install-cron"
         )
 
 
 def cmd_uninstall_cron(logger):
+    domain = f"gui/{os.getuid()}"
+    for label in LAUNCHD_JOBS.values():
+        _launchctl("bootout", f"{domain}/{label}")
+        (LAUNCH_AGENTS_DIR / f"{label}.plist").unlink(missing_ok=True)
+        logger.info(f"🧹 已移除 LaunchAgent {label}")
     existing = _read_crontab()
-    if CRON_BEGIN not in existing:
-        logger.info("没有 managed crontab 块，无需卸载。")
-        return
-    _write_crontab(_strip_managed_block(existing))
-    logger.info("🧹 已移除 managed crontab 块。")
+    cleaned = strip_legacy_cron(existing)
+    if cleaned != existing.strip("\n"):
+        _write_crontab(cleaned)
 
 
 def cmd_status(registry: dict, state: dict, logger):
@@ -989,8 +1044,10 @@ def cmd_status(registry: dict, state: dict, logger):
         iv_s = f"{iv.days}d" if iv else "?"
         print(f"{sched:<14}{last:<22}{iv_s:<10}{'YES' if sched in due else 'no'}")
     print("-" * 54)
-    installed = CRON_BEGIN in _read_crontab()
-    print(f"managed crontab: {'installed' if installed else 'NOT installed (run --install-cron)'}")
+    for label in LAUNCHD_JOBS.values():
+        print(f"launchd {label}: {'loaded' if launchd_loaded(label) else 'NOT loaded (run --install-cron)'}")
+    if CRON_BEGIN in _read_crontab():
+        print("legacy crontab block: still present — run --install-cron to migrate")
     token_ok = bool(os.environ.get("GH_TOKEN") or os.environ.get("GITHUB_TOKEN")) or (
         GH_TOKEN_FILE.exists() and GH_TOKEN_FILE.read_text(encoding="utf-8").strip() != ""
     )
@@ -1020,8 +1077,8 @@ def main():
         help="跑所有「已到期」的 schedule（按 state 里上次成功时间判断）——cron 心跳用这个",
     )
     parser.add_argument("--status", action="store_true", help="打印每个 schedule 的到期状态 + cron 安装情况后退出")
-    parser.add_argument("--install-cron", action="store_true", help="安装 managed crontab（每天 08:00 跑 --due），幂等")
-    parser.add_argument("--uninstall-cron", action="store_true", help="移除 managed crontab 块")
+    parser.add_argument("--install-cron", action="store_true", help="安装 launchd 调度（07:50 doctor、08:00 --due，唤醒补跑），并移除旧 crontab 行；幂等")
+    parser.add_argument("--uninstall-cron", action="store_true", help="移除 launchd 调度（及旧 crontab 行）")
     parser.add_argument(
         "--cron-hour", type=int, default=DEFAULT_CRON_HOUR, help=f"--install-cron 的触发小时（默认 {DEFAULT_CRON_HOUR}）"
     )

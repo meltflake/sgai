@@ -4,6 +4,15 @@
 
 ---
 
+## 0.29.2 — 2026-10-21
+
+### 修复：定时任务改用 launchd，cron 读不到 Claude 登录也不补跑
+
+- 10-16 补 `USER` 后，10-17、10-18 的管线仍报 Claude CLI 未登录。根因是 cron 不在用户登录会话里，看不到登录 keychain，而 Claude CLI 从 10-01 起把登录存在那里。
+- 10-19、10-20 没有运行：电池耗尽后机器在 08:00 前后处于睡眠，cron 不补跑错过的任务。
+- 现在 `auto_update.py --install-cron` 安装两个 LaunchAgent（07:50 doctor、08:00 `--due`），并只删除旧的 sgai crontab 行。LaunchAgent 能读登录 keychain，睡眠错过的任务唤醒后补跑。`--status` 和 doctor 检查两个代理是否加载。
+- 详见 [docs/20261021-launchd-schedule.md](docs/20261021-launchd-schedule.md)。
+
 ## 0.29.1 — 2026-10-17
 
 ### 信号：第一批上线，按首跑暴露的问题修管线

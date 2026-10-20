@@ -91,6 +91,8 @@ claude --version   # 应输出 "<版本> (Claude Code)"
 
 验证登录状态用 `claude auth status`（看 `"loggedIn": true`）。`claude --version` 在登录失效时照样退出 0，不能当登录检查。
 
+> **定时任务用 launchd，不用 cron（2026-10-21 起）**。cron 不在登录会话里，读不到 Claude CLI 存在登录 keychain 里的登录，也不补跑睡眠时错过的任务。装法：`~/.venvs/sgai/bin/python scripts/auto_update.py --install-cron`（装两个 LaunchAgent 并删除旧 crontab 行），见 [docs/20261021-launchd-schedule.md](../docs/20261021-launchd-schedule.md)。
+>
 > **cron 下 `USER` 变量缺失会让 claude 报 "Not logged in"**。cron 只设 LOGNAME / HOME，不设 USER，而 claude CLI 靠 `$USER` 定位 keychain 凭证。`scripts/auto_update.py` 的 `ensure_user_env()` 和 `scripts/lib/llm.ts` 的 `claudeEnv()` 会自动补上；手工在 `env -i` 或 launchd 里跑管线时，自己带上 `USER`。2026-10-02 至 10-16 每天的 videos 管线都因此失败，见 [docs/20261016-cron-claude-user-env.md](../docs/20261016-cron-claude-user-env.md)。
 
 可选环境变量：
@@ -137,7 +139,7 @@ cp scripts/auto_update_config.example.py scripts/auto_update_config.py
 
 ---
 
-## 6. crontab（4 个 schedule）
+## 6. 调度（launchd；下面的 crontab 写法已废弃，仅作历史参考）
 
 ```bash
 crontab -e
