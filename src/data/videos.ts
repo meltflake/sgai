@@ -148,7 +148,7 @@ export const videos: VideoItem[] = [
     id: 'v123',
     title: '新加坡与瑞典签署新兴技术合作宣言',
     titleEn: 'Singapore and Sweden sign declaration on emerging technologies',
-    titleJa: 'シンガポールとスウェーデンが新興技術協力宣言に署名しました。',
+    titleJa: 'シンガポールとスウェーデン、新興技術協力宣言に署名',
     titleKo: '싱가포르와 스웨덴 신흥 기술 협력 선언 체결',
     speaker: 'CNA',
     speakerTitle: '亚洲新闻台报道',
@@ -166,13 +166,13 @@ export const videos: VideoItem[] = [
     summaryKo:
       '싱가포르와 스웨덴이 공동 선언에 서명하여, 인공지능 및 양자 컴퓨팅을 포함한 신흥 기술 협력을 심화합니다.',
     whyItMatters:
-      '2026-10-20 新加坡与瑞典的联合宣言把量子计算提至与 AI 并列位置,显示技术外交正从 AI 单一赛道扩展为量子等前沿组合',
+      '宣言在尚达曼总统国事访问瑞典期间签署，列出四个合作方向：半导体与数字基建供应链、含抗量子加密的网络安全、负责任 AI 及其监管、国际规则与标准制定',
     whyItMattersEn:
-      "2026-10-20 Singapore and Sweden's joint declaration elevates quantum computing to parity with AI, showing that technology diplomacy is expanding from a single AI track to a broader portfolio of frontier technologies including quantum.",
+      "Signed during President Tharman's state visit to Sweden, the declaration names four areas: semiconductor and digital-infrastructure supply chains, cybersecurity including quantum-safe encryption, responsible AI and its regulation, and international rules and standards.",
     whyItMattersJa:
-      '2026-10-20 シンガポール・スウェーデン間の共同宣言は量子計算をAIと並列的な位置に引き上げ、テクノロジー外交がAI単一領域から量子などの最先端の組み合わせへと拡大していることを示しています。',
+      'ターマン大統領のスウェーデン国賓訪問中に署名され、半導体・デジタルインフラのサプライチェーン、耐量子暗号を含むサイバーセキュリティ、責任ある AI とその規制、国際ルールと標準づくりの 4 分野を掲げています。',
     whyItMattersKo:
-      '2026-10-20 싱가포르와 스웨덴의 공동 선언이 양자 컴퓨팅을 AI와 동등한 위치로 격상시켜, 기술 외교가 AI 단일 영역에서 양자 등 첨단 기술의 조합으로 확대되고 있음을 보여줍니다.',
+      '타르만 대통령의 스웨덴 국빈 방문 중 서명된 선언은 반도체·디지털 인프라 공급망, 양자 내성 암호를 포함한 사이버 보안, 책임 있는 AI와 규제, 국제 규범과 표준 마련 등 4개 분야를 담았습니다.',
     topic: '国际合作与对标',
     topicEn: 'International Cooperation & Benchmarking',
     topicJa: '国際協力とベンチマーク',
