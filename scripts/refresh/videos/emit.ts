@@ -184,12 +184,12 @@ const SPEAKER_REGISTRY: Record<
     speakerType: 'government',
   },
   'rahayu mahzam': {
-    speakerTitle: '数字发展及信息部国务部长',
+    speakerTitle: '数码发展及新闻部国务部长',
     speakerTitleEn: 'Minister of State for Digital Development and Information, Singapore',
     speakerType: 'government',
   },
   'jasmin lau': {
-    speakerTitle: '数字发展及信息部、教育部国务部长',
+    speakerTitle: '数码发展及新闻部、教育部国务部长',
     speakerTitleEn: 'Minister of State for Digital Development and Information & Education, Singapore',
     speakerType: 'government',
   },

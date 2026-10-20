@@ -1,7 +1,7 @@
 ---
 publishDate: 2026-05-26
 title: 'シンガポール、4つのNational AI Missionsを発表：先進製造・コネクティビティ・金融・医療'
-excerpt: '2026年5月20日のATxSummitにて、デジタル開発・情報大臣のJosephine TeoがNational AI Strategyの更新を発表し、4つのNational AI Missionsを確立しました：先進製造（Advanced Manufacturing）、コネクティビティ（Connectivity）、金融（Finance）、医療（Healthcare）。同日、NVIDIA Singapore AI Research LabおよびPunggol Digital Districtのマルチオペレーター・ロボットtestbedも発表されました。'
+excerpt: '2026年5月20日のATxSummitにて、デジタル発展・情報大臣のJosephine TeoがNational AI Strategyの更新を発表し、4つのNational AI Missionsを確立しました：先進製造（Advanced Manufacturing）、コネクティビティ（Connectivity）、金融（Finance）、医療（Healthcare）。同日、NVIDIA Singapore AI Research LabおよびPunggol Digital Districtのマルチオペレーター・ロボットtestbedも発表されました。'
 category: '観察'
 tags:
   - 戦略
@@ -32,7 +32,7 @@ relatedPersonIds:
   - josephine-teo
 ---
 
-2026年5月20日、デジタル開発・情報大臣のJosephine TeoはATxSummit 2026の基調講演にてNational AI Strategyの更新を発表し、4つの**National AI Missions**を確立しました：先進製造（Advanced Manufacturing）、コネクティビティ（Connectivity、航空・海事・港湾・物流を含む）、金融（Finance）、医療（Healthcare）。4つの産業を合わせると、シンガポールのGDPの40%以上を占めています。
+2026年5月20日、デジタル発展・情報大臣のJosephine TeoはATxSummit 2026の基調講演にてNational AI Strategyの更新を発表し、4つの**National AI Missions**を確立しました：先進製造（Advanced Manufacturing）、コネクティビティ（Connectivity、航空・海事・港湾・物流を含む）、金融（Finance）、医療（Healthcare）。4つの産業を合わせると、シンガポールのGDPの40%以上を占めています。
 
 この更新は、2026年2月に新設され黄循財（Lawrence Wong）首相が議長を務める**National AI Council（NAIC）**が統括し、2023年に発表されたNAIS 2.0フレームワークの上に構築されています。Teoはこの更新を「double-click rather than a system reboot」と表現しました。
 

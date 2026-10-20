@@ -51,6 +51,9 @@ export interface ProtectedTerm {
 
 export const PROTECTED_TERMS: ReadonlyArray<ProtectedTerm> = [
   // MDDI — Ministry of Digital Development and Information (sg, 2024–).
+  // Official Chinese name (Lianhe Zaobao, government usage) since 2026-10-21;
+  // the older site form below stays protected for any text that still has it.
+  { zh: '数码发展及新闻部', zhTw: '數碼發展及新聞部' },
   // Full name + abbreviation. "信息" must not phrase-convert to "資訊".
   { zh: '数字发展与信息部', zhTw: '數字發展與信息部' },
   { zh: '信息部', zhTw: '信息部' },

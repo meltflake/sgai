@@ -1,7 +1,7 @@
 ---
 publishDate: 2026-05-26
 title: '新加坡公布四项 National AI Missions：先进制造、互联互通、金融、医疗'
-excerpt: '2026 年 5 月 20 日 ATxSummit 上，数字发展与信息部长 Josephine Teo 公布 National AI Strategy 更新，确立四项 National AI Missions：先进制造、互联互通、金融、医疗。同日还公布 NVIDIA Singapore AI Research Lab 和 Punggol Digital District 多运营商机器人 testbed。'
+excerpt: '2026 年 5 月 20 日 ATxSummit 上，数码发展及新闻部长 Josephine Teo 公布 National AI Strategy 更新，确立四项 National AI Missions：先进制造、互联互通、金融、医疗。同日还公布 NVIDIA Singapore AI Research Lab 和 Punggol Digital District 多运营商机器人 testbed。'
 category: '观察'
 topicIds: ['national-strategy', 'advanced-manufacturing', 'connectivity', 'finance', 'healthcare']
 tags:
@@ -32,7 +32,7 @@ relatedPersonIds:
   - josephine-teo
 ---
 
-2026 年 5 月 20 日，数字发展与信息部长 Josephine Teo 在 ATxSummit 2026 主题演讲中公布 National AI Strategy 更新，确立四项 **National AI Missions**：先进制造（Advanced Manufacturing）、互联互通（Connectivity，涵盖航空、海事、港口、物流）、金融（Finance）、医疗（Healthcare）。四个行业合计占新加坡 GDP 超过 40%。
+2026 年 5 月 20 日，数码发展及新闻部长 Josephine Teo 在 ATxSummit 2026 主题演讲中公布 National AI Strategy 更新，确立四项 **National AI Missions**：先进制造（Advanced Manufacturing）、互联互通（Connectivity，涵盖航空、海事、港口、物流）、金融（Finance）、医疗（Healthcare）。四个行业合计占新加坡 GDP 超过 40%。
 
 更新由 2026 年 2 月新成立、总理黄循财任主席的 **National AI Council（NAIC）** 统筹，建立在 NAIS 2.0（2023 年发布）框架之上。Teo 将更新形容为「double-click rather than a system reboot」。
 

@@ -30,7 +30,7 @@
 //   2. src/i18n/protected-terms.ts:`PROTECTED_TERMS` — substring-level
 //      overrides applied *inside* the OpenCC pipeline. Wraps the
 //      converter so any text containing a protected term (e.g.
-//      "数字发展与信息部") gets the term placeholder-swapped before
+//      "数码发展及新闻部") gets the term placeholder-swapped before
 //      OpenCC runs, then swapped back to the correct Traditional form
 //      after. This is what stops OpenCC from mangling Singapore
 //      institutional names regardless of whether the call site went

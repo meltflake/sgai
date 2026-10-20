@@ -296,7 +296,7 @@ See the site longform "What Singapore's Economic Strategy Review says: 8 directi
         titleEn: 'National AI Strategy Update 2026',
         topicIds: ['national-strategy', 'advanced-manufacturing', 'connectivity', 'finance', 'healthcare'],
         date: '2026-05',
-        source: '数字发展与信息部 (MDDI) / 国家 AI 理事会 (NAIC)',
+        source: '数码发展及新闻部 (MDDI) / 国家 AI 理事会 (NAIC)',
         sourceKo: '디지털 개발 및 정보부 (MDDI) / 국가 AI 위원회 (NAIC)',
         sourceJa: 'デジタル発展・情報部 (MDDI) / 国家 AI 評議会 (NAIC)',
         sourceEn: 'Ministry of Digital Development and Information (MDDI) / National AI Council (NAIC)',
@@ -318,7 +318,7 @@ See the site longform "What Singapore's Economic Strategy Review says: 8 directi
           'Josephine Teo は ATxSummit 2026 で NAIS アップデートを発表――「ダブルクリック」であって「リセット」ではない。3 つの方向、10 の優先方向、4 つの国家 AI ミッション（先端製造、金融、コネクティビティ、医療）、加えて National AI Impact Programme（中小企業 10000 社の目標）と Champions of AI プログラム。',
         summaryEn:
           'At ATxSummit 2026, Josephine Teo unveiled an update to NAIS — a "double-click" rather than a "system reboot". Three directions, ten refreshed priorities, four National AI Missions (Advanced Manufacturing, Financial Services, Connectivity, Healthcare), plus the National AI Impact Programme (10,000-SME target) and the Champions of AI programme.',
-        content: `2026 年 5 月 20 日，数字发展与信息部长 Josephine Teo 在 ATxSummit 2026 开幕主题演讲上公布 NAIS 更新。她把更新形容为「双击」而非「系统重启」——延续 NAIS 2.0 的框架，叠加 2026 年 2 月成立、Lawrence Wong 总理亲任主席的**国家 AI 理事会（NAIC）**的更高目标。
+        content: `2026 年 5 月 20 日，数码发展及新闻部长 Josephine Teo 在 ATxSummit 2026 开幕主题演讲上公布 NAIS 更新。她把更新形容为「双击」而非「系统重启」——延续 NAIS 2.0 的框架，叠加 2026 年 2 月成立、Lawrence Wong 总理亲任主席的**国家 AI 理事会（NAIC）**的更高目标。
 
 **3 个方向 + 10 项优先方向**：覆盖部门与公共部门转型、人才与基础设施、治理与国际合作。
 
@@ -586,7 +586,7 @@ Together with same-day announcements of the NVIDIA Singapore AI Research Lab and
         titleJa: 'OpenAI for Singapore 協力計画',
         titleEn: 'OpenAI for Singapore',
         date: '2026-05',
-        source: 'OpenAI / 数字发展与信息部 (MDDI)',
+        source: 'OpenAI / 数码发展及新闻部 (MDDI)',
         sourceKo: 'OpenAI / 디지털 개발 및 정보부 (MDDI)',
         sourceJa: 'OpenAI / デジタル発展・情報部 (MDDI)',
         sourceEn: 'OpenAI / Ministry of Digital Development and Information (MDDI)',
@@ -608,7 +608,7 @@ Together with same-day announcements of the NVIDIA Singapore AI Research Lab and
           'OpenAI と MDDI は ATxSummit 2026 で OpenAI for Singapore を発表。S$300M 超をコミットし、米国外初の Applied AI Lab をシンガポールに設立、今後数年で 200 以上の現地技術職を創出します。',
         summaryEn:
           'OpenAI and MDDI announced OpenAI for Singapore at ATxSummit 2026: a commitment of more than S$300M, OpenAI’s first Applied AI Lab outside the United States, and 200+ Singapore-based technical roles over the next few years.',
-        content: `2026 年 5 月 19 日，OpenAI 宣布与新加坡数字发展与信息部 (MDDI) 推出 **OpenAI for Singapore**，并在 5 月 20 日 ATxSummit 2026 由 IMDA / MDDI 对外纳入同日 AI 落地包。官方口径包括三条主线：前沿 AI 落地、下一代本地 AI 人才、让公民和企业更广泛受益。
+        content: `2026 年 5 月 19 日，OpenAI 宣布与新加坡数码发展及新闻部 (MDDI) 推出 **OpenAI for Singapore**，并在 5 月 20 日 ATxSummit 2026 由 IMDA / MDDI 对外纳入同日 AI 落地包。官方口径包括三条主线：前沿 AI 落地、下一代本地 AI 人才、让公民和企业更广泛受益。
 
 核心事实：
 - **超过 S$300M 承诺**：投入新加坡 AI 生态。
@@ -663,7 +663,7 @@ This is not just a regional-HQ story. It connects OpenAI’s deployment engineer
         titleJa: '公開 AI 研究投資計画 (2026-2030)',
         titleEn: 'Public AI Research Investment 2026-2030',
         date: '2026-01',
-        source: '数字发展与信息部 (MDDI)',
+        source: '数码发展及新闻部 (MDDI)',
         sourceKo: '디지털 개발 및 정보부 (MDDI)',
         sourceJa: 'デジタル発展・情報部 (MDDI)',
         sourceOrgUrl: 'https://www.mddi.gov.sg/',
@@ -681,9 +681,9 @@ This is not just a regional-HQ story. It connects OpenAI’s deployment engineer
           '1인당 AI 연구개발 투입이 139달러에 달하며 미국의 4배, 중국의 20배를 기록하고 있으며, MDDI가 추격에서 자본 밀도로 글로벌 AI 허브 표준을 정의하는 방향으로 전환하고 있음을 표징합니다.',
         summaryJa:
           '10 億シンガポール・ドル（7.79 億米ドル）の公開 AI 研究投資。責任ある、リソース効率の高い AI に焦点を当てています。',
-        content: `2026 年 1 月 24 日，数字发展与信息部宣布 2026-2030 年间投资超 10 亿新元（约 7.79 亿美元）用于公共 AI 研究。三大方向：一是"负责任和资源高效的 AI"研究，延续 AI Verify 等可信赖 AI 路线；二是全链条 AI 人才培养，从高中预科到大学教师培训；三是支持产业应用，缩短研究到商业化路径。这是继 2024 年 5 亿新元高性能计算资源投资后的又一重大投入，标志着新加坡从"试点探索"进入"规模化建设"阶段。人均 AI 投资达 139 美元，远高于美国（33 美元）和中国（7 美元）。`,
+        content: `2026 年 1 月 24 日，数码发展及新闻部宣布 2026-2030 年间投资超 10 亿新元（约 7.79 亿美元）用于公共 AI 研究。三大方向：一是"负责任和资源高效的 AI"研究，延续 AI Verify 等可信赖 AI 路线；二是全链条 AI 人才培养，从高中预科到大学教师培训；三是支持产业应用，缩短研究到商业化路径。这是继 2024 年 5 亿新元高性能计算资源投资后的又一重大投入，标志着新加坡从"试点探索"进入"规模化建设"阶段。人均 AI 投资达 139 美元，远高于美国（33 美元）和中国（7 美元）。`,
         contentKo: `2026년 1월 24일, 디지털 개발 및 정보부가 2026-2030년 간 공공 AI 연구에 10억 신원을 초과(약 7억 7,900만 미국 달러)에 투자한다고 선언했습니다. 세 가지 주요 방향: 첫째, 「책임 있는 자원 효율적인 AI」연구, AI Verify 등 신뢰할 수 있는 AI 경로 계속; 둘째, 전체 체인 AI 인재 양성, 고등학교 예과에서 대학 교사 훈련까지; 셋째, 산업 응용 지원, 연구에서 상용화 경로 단축. 이는 2024년 5억 신원 고성능 컴퓨팅 자원 투자에 이은 또 다른 주요 투입이며, 싱가포르가 「시범 탐색」에서 「규모화 건설」 단계로 진입했음을 나타냅니다. 일인당 AI 투자는 139 미국 달러에 도달했으며, 미국(33 미국 달러)과 중국(7 미국 달러)보다 훨씬 높습니다.`,
-        contentJa: `2026年1月24日、デジタル開発・情報省は2026～2030年間に10億シンガポール・ドル以上（約7.79億米ドル）を公共AI研究に投資することを発表しました。3つの主要な方向があります：1つ目は「責任ある・リソース効率的なAI」研究で、AI Verifyなどの信頼できるAI路線を継続するものです。2つ目は全チェーンのAI人材育成で、高校予科から大学教員研修までをカバーします。3つ目は産業応用を支援し、研究から商業化へのパスを短縮するものです。これは2024年の5億シンガポール・ドルの高性能計算リソース投資に続く重大な投入であり、シンガポールが「パイロット探索」から「規模化構築」段階への移行を示しています。一人当たりのAI投資は139米ドルに達し、米国（33米ドル）と中国（7米ドル）をはるかに上回っています。`,
+        contentJa: `2026年1月24日、デジタル発展・情報省は2026～2030年間に10億シンガポール・ドル以上（約7.79億米ドル）を公共AI研究に投資することを発表しました。3つの主要な方向があります：1つ目は「責任ある・リソース効率的なAI」研究で、AI Verifyなどの信頼できるAI路線を継続するものです。2つ目は全チェーンのAI人材育成で、高校予科から大学教員研修までをカバーします。3つ目は産業応用を支援し、研究から商業化へのパスを短縮するものです。これは2024年の5億シンガポール・ドルの高性能計算リソース投資に続く重大な投入であり、シンガポールが「パイロット探索」から「規模化構築」段階への移行を示しています。一人当たりのAI投資は139米ドルに達し、米国（33米ドル）と中国（7米ドル）をはるかに上回っています。`,
         summaryEn:
           'S$1 billion (US$779 million) in public AI research investment, focused on responsible and resource-efficient AI.',
         contentEn: `On 24 January 2026, the Ministry of Digital Development and Information announced over S$1 billion (about US$779 million) in public AI research funding for 2026-2030. Three priorities: research on "responsible and resource-efficient AI," extending the trusted-AI track that includes AI Verify; full-pipeline AI talent development, from junior college pre-tertiary programmes to university faculty training; and industry applications, shortening the path from research to commercialisation. Coming after 2024's S$500 million in high-performance computing, this marks Singapore's shift from pilot exploration to scaled build-out. Per-capita AI investment reaches US$139 — far above the US (US$33) and China (US$7).`,
@@ -1782,19 +1782,19 @@ Strategically, this moves AI Verify from tools and frameworks into market infras
         titleJa: '2026年予算委員会の議論におけるラハユ・マハザム大臣のスピーチ',
         titleKo: '라하유 마하잠 장관의 2026년 예산위원회 토론 연설',
         date: '2026-03',
-        source: '数字发展与信息部 (MDDI)',
+        source: '数码发展及新闻部 (MDDI)',
         sourceOrgUrl: 'https://www.mddi.gov.sg/',
         sourceUrl:
           'https://www.mddi.gov.sg/newsroom/-speech-by-mos-rahayu-mahzam-at-the-committee-of-supply-debate-2026/',
         summary:
-          '新加坡数码发展及信息部政务部长阐述政府在在线安全和数字素养方面的综合策略。主要举措包括根据《在线安全（救济与问责）法》建立在线安全委员会，为受害者提供支持；对应用商店和社交媒体服务实施年龄验证措施；将人工智能素养融入学校课程，包括更新"Code for Fun"项目；以及为低收入家庭、老年人和残疾人士等弱势群体提供数字学习支持。政府强调采用"数字优先，但并非数字唯一"的方式确保包容性发展。',
-        content: `新加坡数码发展及信息部政务部长阐述政府在在线安全和数字素养方面的综合策略。主要举措包括根据《在线安全（救济与问责）法》建立在线安全委员会，为受害者提供支持；对应用商店和社交媒体服务实施年龄验证措施；将人工智能素养融入学校课程，包括更新"Code for Fun"项目；以及为低收入家庭、老年人和残疾人士等弱势群体提供数字学习支持。政府强调采用"数字优先，但并非数字唯一"的方式确保包容性发展。`,
+          '新加坡数码发展及新闻部政务部长阐述政府在在线安全和数字素养方面的综合策略。主要举措包括根据《在线安全（救济与问责）法》建立在线安全委员会，为受害者提供支持；对应用商店和社交媒体服务实施年龄验证措施；将人工智能素养融入学校课程，包括更新"Code for Fun"项目；以及为低收入家庭、老年人和残疾人士等弱势群体提供数字学习支持。政府强调采用"数字优先，但并非数字唯一"的方式确保包容性发展。',
+        content: `新加坡数码发展及新闻部政务部长阐述政府在在线安全和数字素养方面的综合策略。主要举措包括根据《在线安全（救济与问责）法》建立在线安全委员会，为受害者提供支持；对应用商店和社交媒体服务实施年龄验证措施；将人工智能素养融入学校课程，包括更新"Code for Fun"项目；以及为低收入家庭、老年人和残疾人士等弱势群体提供数字学习支持。政府强调采用"数字优先，但并非数字唯一"的方式确保包容性发展。`,
         summaryEn:
           "Singapore's Minister of State for Digital Development and Information outlines the government's comprehensive strategy on online safety and digital literacy. Key initiatives include establishing the Online Safety Commission under the Online Safety (Relief and Accountability) Act to support victims of online harms; implementing age assurance measures for app stores and social media services; integrating AI literacy into school curricula through the Code for Fun programme; and providing targeted digital learning support for vulnerable groups including low-income families, seniors, and persons with disabilities. The government emphasizes a 'digital first, but not digital-only' approach to ensure inclusive development.",
         contentEn: `Singapore's Minister of State for Digital Development and Information outlines the government's comprehensive strategy on online safety and digital literacy. Key initiatives include establishing the Online Safety Commission under the Online Safety (Relief and Accountability) Act to support victims of online harms; implementing age assurance measures for app stores and social media services; integrating AI literacy into school curricula through the Code for Fun programme; and providing targeted digital learning support for vulnerable groups including low-income families, seniors, and persons with disabilities. The government emphasizes a 'digital first, but not digital-only' approach to ensure inclusive development.`,
         summaryJa:
-          'シンガポールのデジタル開発・情報省の政務大臣が、オンライン安全とデジタルリテラシーに関する政府の包括的な戦略について説明しています。主要な施策には、「オンライン安全（救済と説明責任）法」に基づくオンライン安全委員会の設立と被害者支援、アプリケーションストアとソーシャルメディアサービスへの年齢認証措置の実施、学校カリキュラムへの人工知能リテラシー統合（「Code for Fun」プログラムの更新を含む）、および低所得家庭、高齢者、身体障害者などの脆弱な層へのデジタル学習支援の提供が含まれます。政府は「デジタル優先、ただしデジタルのみではない」というアプローチを採用することで、包括的な発展を確保することを強調しています。',
-        contentJa: `シンガポールのデジタル開発・情報省の政務大臣が、オンライン安全とデジタルリテラシーに関する政府の包括的な戦略について説明しています。主要な施策には、「オンライン安全（救済と説明責任）法」に基づくオンライン安全委員会の設立と被害者支援、アプリケーションストアとソーシャルメディアサービスへの年齢認証措置の実施、学校カリキュラムへの人工知能リテラシー統合（「Code for Fun」プログラムの更新を含む）、および低所得家庭、高齢者、身体障害者などの脆弱な層へのデジタル学習支援の提供が含まれます。政府は「デジタル優先、ただしデジタルのみではない」というアプローチを採用することで、包括的な発展を確保することを強調しています。`,
+          'シンガポールのデジタル発展・情報省の政務大臣が、オンライン安全とデジタルリテラシーに関する政府の包括的な戦略について説明しています。主要な施策には、「オンライン安全（救済と説明責任）法」に基づくオンライン安全委員会の設立と被害者支援、アプリケーションストアとソーシャルメディアサービスへの年齢認証措置の実施、学校カリキュラムへの人工知能リテラシー統合（「Code for Fun」プログラムの更新を含む）、および低所得家庭、高齢者、身体障害者などの脆弱な層へのデジタル学習支援の提供が含まれます。政府は「デジタル優先、ただしデジタルのみではない」というアプローチを採用することで、包括的な発展を確保することを強調しています。',
+        contentJa: `シンガポールのデジタル発展・情報省の政務大臣が、オンライン安全とデジタルリテラシーに関する政府の包括的な戦略について説明しています。主要な施策には、「オンライン安全（救済と説明責任）法」に基づくオンライン安全委員会の設立と被害者支援、アプリケーションストアとソーシャルメディアサービスへの年齢認証措置の実施、学校カリキュラムへの人工知能リテラシー統合（「Code for Fun」プログラムの更新を含む）、および低所得家庭、高齢者、身体障害者などの脆弱な層へのデジタル学習支援の提供が含まれます。政府は「デジタル優先、ただしデジタルのみではない」というアプローチを採用することで、包括的な発展を確保することを強調しています。`,
         summaryKo:
           '싱가포르 디지털 발전 및 정보부 정무차관이 온라인 안전 및 디지털 문해력 분야에서 정부의 종합 전략을 설명했습니다. 주요 조치에는 「온라인 안전(구제 및 책임)법」에 따른 온라인 안전 위원회 설립 및 피해자 지원, 앱 스토어 및 소셜 미디어 서비스에 대한 연령 검증 조치 시행, 「Code for Fun」 프로그램 업데이트를 포함하는 학교 교육과정으로의 인공지능 문해력 통합, 그리고 저소득 가정, 노인, 장애인 등 취약 계층에 대한 디지털 학습 지원 제공이 포함됩니다. 정부는 포용적 발전을 보장하기 위해 「디지털 우선이지만 디지털만이 아닌」 방식 채택을 강조했습니다.',
         whyItMatters:
@@ -1833,7 +1833,7 @@ Strategically, this moves AI Verify from tools and frameworks into market infras
         titleJa: 'デジタルインフラ法案 (DIB) パブリックコンサルテーション',
         titleEn: 'Digital Infrastructure Bill — Public Consultation',
         date: '2026-07',
-        source: '数字发展与信息部 (MDDI) / 资讯通信媒体发展局 (IMDA)',
+        source: '数码发展及新闻部 (MDDI) / 资讯通信媒体发展局 (IMDA)',
         sourceKo: '디지털 개발 및 정보부(MDDI) / 정보통신미디어개발청(IMDA)',
         sourceJa: 'デジタル発展・情報省 (MDDI) / 情報通信メディア開発庁 (IMDA)',
         sourceEn:
@@ -1856,7 +1856,7 @@ Strategically, this moves AI Verify from tools and frameworks into market infras
           'データセンターとクラウドサービスにライセンスを付与する——AI コンピューティング基盤が初めて強行法規制に組み込まれた。≥10MW のデータセンターと年間収益 ≥S$1 億の IaaS/PaaS クラウドサービスは「主要 FDI ライセンス」の申請が必要で、≥3MW のデータセンターは「データセンターライセンス」を申請し、強制 PUE エネルギー効率基準を満たす必要がある。コンサルテーション期間は 2026 年 7 月 1 日から 7 月 22 日まで。',
         summaryEn:
           'Licensing for data centres and cloud services — the first time Singapore brings the AI compute layer under hard-law regulation. Data centres with ≥10MW critical IT load and IaaS/PaaS cloud services earning ≥S$100m/year in Singapore must obtain a "major FDI licence"; data centres ≥3MW must hold a "DC licence" and meet mandatory power usage effectiveness (PUE) requirements. Consultation ran 1–22 July 2026.',
-        content: `2026 年 7 月 1 日，数字发展与信息部 (MDDI) 与资讯通信媒体发展局 (IMDA) 就《数字基础设施法案》(Digital Infrastructure Bill, DIB) 草案启动公众咨询，7 月 22 日上午 10 时截止。这部法案对新加坡 AI 议题的意义在于：**它第一次把「算力底座」本身变成受牌照监管的行业**，而不是只监管跑在上面的模型和应用。
+        content: `2026 年 7 月 1 日，数码发展及新闻部 (MDDI) 与资讯通信媒体发展局 (IMDA) 就《数字基础设施法案》(Digital Infrastructure Bill, DIB) 草案启动公众咨询，7 月 22 日上午 10 时截止。这部法案对新加坡 AI 议题的意义在于：**它第一次把「算力底座」本身变成受牌照监管的行业**，而不是只监管跑在上面的模型和应用。
 
 **两套牌照。** 第一套是「重大基础性数字基础设施牌照」(major FDI licence)，覆盖两类服务：(1) 关键 IT 负载 (critical IT load, CIL) ≥ 10 兆瓦、且对外提供服务的数据中心设施服务（即云与托管型数据中心）；(2) 在新加坡年均收入 ≥ 1 亿新元、属于 IaaS 或 PaaS（不含 SaaS）的云计算服务。持牌方须落实物理与网络安全措施、业务连续性与灾难恢复计划，并向 IMDA 报告网络安全事件与服务中断。第二套是「数据中心牌照」(DC licence)，门槛更低——CIL ≥ 3 兆瓦的数据中心运营商都要申请，重点是能效与可持续性。同时符合两类的运营商须同时持有两张牌照，IMDA 会合并申请流程。
 
@@ -2634,7 +2634,7 @@ Cross-cutting horizontals (talent, foundational research, enterprise translation
           '2026 年 6 月 12 日の ATxSummit 2026 で、IMDA と Microsoft が AI 安全・セキュリティ協力覚書を締結しました。3 つの領域に焦点を当てます：技術・研究協力（agentic AI、多言語 AI 安全評価を含む）、情報共有、信頼できるフロンティアモデルアクセスのための政策フレームワーク。IMDA 副長官の Kiren Kumar と Microsoft 最高責任 AI 責任者の Natasha Crampton が署名しました。',
         summaryEn:
           'On 12 June 2026, at ATxSummit 2026, IMDA and Microsoft signed an MOU to advance AI safety and security, focused on three areas: technical and research collaboration (including agentic AI and multilingual AI safety evaluation), information sharing, and a policy framework for trusted access to frontier models. Signed by IMDA Deputy Chief Executive Kiren Kumar and Microsoft Chief Responsible AI Officer Natasha Crampton.',
-        content: `2026 年 6 月 12 日，在 ATxSummit 2026（ATxSG）上，资讯通信媒体发展局（IMDA）与微软签署一份 AI 安全与安全（AI safety and security）合作备忘录（MOU），由 IMDA 副局长 **Kiren Kumar** 与微软首席负责任 AI 官（Chief Responsible AI Officer）**Natasha Crampton** 签署。数字发展与信息部长 Josephine Teo 在峰会上宣布此合作。
+        content: `2026 年 6 月 12 日，在 ATxSummit 2026（ATxSG）上，资讯通信媒体发展局（IMDA）与微软签署一份 AI 安全与安全（AI safety and security）合作备忘录（MOU），由 IMDA 副局长 **Kiren Kumar** 与微软首席负责任 AI 官（Chief Responsible AI Officer）**Natasha Crampton** 签署。数码发展及新闻部长 Josephine Teo 在峰会上宣布此合作。
 
 **三大合作领域**：
 
@@ -3013,13 +3013,13 @@ The design is deliberately a mix of scientists, government, and industry rather 
           'ジョセフィン・テオ大臣がジュネーブを訪問し、グローバル・エーアイ・フォー・グッド委員会の立ち上げと初回会議に参加',
         titleKo: '조세핀 테오 장관 제네바 방문, 글로벌 AI 포 굿 위원회 출범 및 첫 회의 참석',
         date: '2026-07',
-        source: '数字发展与信息部 (MDDI)',
+        source: '数码发展及新闻部 (MDDI)',
         sourceOrgUrl: 'https://www.mddi.gov.sg/',
         sourceUrl:
           'https://www.mddi.gov.sg/newsroom/-minister-josephine-teo-s-visit-to--geneva--switzerland-for-the-launch-and-inaugural-meeting-of-the--ai-for-good-global-commission-and-related-meetings--7-jul---9-jul-2026-/',
         summary:
-          '新加坡数字发展与信息部长作为创始成员访问日内瓦，参加全球向善人工智能委员会的启动和首届会议。该委员会由卢旺达总统保罗·卡加梅和Salesforce首席执行官马克·贝尼奥夫共同担任主席，汇聚各国首脑、产业领袖和联合国机构，致力于加强信任和扩大AI获取。新加坡重点推动AI的行业转型、建立可跨境互操作的治理框架，并分享其国家AI任务、AI Verify等实施经验。',
-        content: `新加坡数字发展与信息部长作为创始成员访问日内瓦，参加全球向善人工智能委员会的启动和首届会议。该委员会由卢旺达总统保罗·卡加梅和Salesforce首席执行官马克·贝尼奥夫共同担任主席，汇聚各国首脑、产业领袖和联合国机构，致力于加强信任和扩大AI获取。新加坡重点推动AI的行业转型、建立可跨境互操作的治理框架，并分享其国家AI任务、AI Verify等实施经验。`,
+          '新加坡数码发展及新闻部长作为创始成员访问日内瓦，参加全球向善人工智能委员会的启动和首届会议。该委员会由卢旺达总统保罗·卡加梅和Salesforce首席执行官马克·贝尼奥夫共同担任主席，汇聚各国首脑、产业领袖和联合国机构，致力于加强信任和扩大AI获取。新加坡重点推动AI的行业转型、建立可跨境互操作的治理框架，并分享其国家AI任务、AI Verify等实施经验。',
+        content: `新加坡数码发展及新闻部长作为创始成员访问日内瓦，参加全球向善人工智能委员会的启动和首届会议。该委员会由卢旺达总统保罗·卡加梅和Salesforce首席执行官马克·贝尼奥夫共同担任主席，汇聚各国首脑、产业领袖和联合国机构，致力于加强信任和扩大AI获取。新加坡重点推动AI的行业转型、建立可跨境互操作的治理框架，并分享其国家AI任务、AI Verify等实施经验。`,
         summaryEn:
           "Singapore's Minister of Digital Development and Information visits Geneva as a Founding Member of the AI for Good Global Commission, co-chaired by Rwanda's President Paul Kagame and Salesforce CEO Marc Benioff. The Commission convenes Heads of State and Government, industry leaders, and UN agency heads to strengthen trust, expand AI access, and address global challenges. Singapore prioritizes sectoral AI transformation, cross-border interoperable AI governance, and implementation partnerships, showcasing initiatives like its National AI Missions and AI Verify framework.",
         contentEn: `Singapore's Minister of Digital Development and Information visits Geneva as a Founding Member of the AI for Good Global Commission, co-chaired by Rwanda's President Paul Kagame and Salesforce CEO Marc Benioff. The Commission convenes Heads of State and Government, industry leaders, and UN agency heads to strengthen trust, expand AI access, and address global challenges. Singapore prioritizes sectoral AI transformation, cross-border interoperable AI governance, and implementation partnerships, showcasing initiatives like its National AI Missions and AI Verify framework.`,

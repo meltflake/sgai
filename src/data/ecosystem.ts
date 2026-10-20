@@ -3553,7 +3553,7 @@ Worth watching going forward: **when MAS will allow GenAI in direct customer-fac
         nameJa: 'シンガポール取締役会 AI ガイド（SID）',
         nameKo: '싱가포르 이사회 AI 가이드(SID)',
         description:
-          '新加坡董事学会于2026年7月31日发布《新加坡董事会AI指南》，这是一份116页的实用指南，旨在帮助董事会管理人工智能带来的机遇与风险。该指南由OpenAI和微软合作开发，获得新加坡信息通信媒体发展局（IMDA）支持，重点是提升董事会成员的AI素养，将AI治理从被动的技术委员会议题转变为董事会的核心职责。数字发展与信息部长约瑟芬·特奥在论坛的主旨演讲中强调，没有董事会能承受在AI领域投资不足，该指南补充了新加坡《国家AI战略2.0》，为企业提供了整合AI战略、识别机遇和管理风险的实践框架。',
+          '新加坡董事学会于2026年7月31日发布《新加坡董事会AI指南》，这是一份116页的实用指南，旨在帮助董事会管理人工智能带来的机遇与风险。该指南由OpenAI和微软合作开发，获得新加坡信息通信媒体发展局（IMDA）支持，重点是提升董事会成员的AI素养，将AI治理从被动的技术委员会议题转变为董事会的核心职责。数码发展及新闻部长约瑟芬·特奥在论坛的主旨演讲中强调，没有董事会能承受在AI领域投资不足，该指南补充了新加坡《国家AI战略2.0》，为企业提供了整合AI战略、识别机遇和管理风险的实践框架。',
         descriptionEn:
           'The Singapore Institute of Directors launched the "AI Guide for Boards in Singapore" on July 31, 2026, a 116-page practical guide designed to help boards navigate artificial intelligence opportunities and risks. Developed in partnership with OpenAI and Microsoft, with support from the Infocomm Media Development Authority (IMDA), the guide elevates board members\' AI literacy and establishes AI governance as a core boardroom mandate rather than a passive technology committee topic. Minister Josephine Teo highlighted that no board can afford to be under-invested in AI as global competition intensifies, and emphasized the need for boards to balance innovation with effective risk management. The guide complements Singapore\'s National AI Strategy 2.0 and provides practical frameworks for integrating AI into corporate strategy, identifying opportunities, and managing regulatory, cybersecurity, and ethical risks.',
         descriptionJa:
@@ -3578,7 +3578,7 @@ Worth watching going forward: **when MAS will allow GenAI in direct customer-fac
         aiRelevanceKo:
           'AI 거버넌스를 기술 위원회의 수동적 안건에서 이사회의 핵심 책무로 격상합니다——AI 리터러시, 전략 통합, 위험 관리가 이사의 책임 범위에 들어갑니다.',
         singaporeRelevance:
-          '发布现场由数字发展与信息部长杨莉明主旨站台，定位为 NAIS 2.0 在企业治理层的配套——新加坡把「董事会懂 AI」纳入国家 AI 采纳路径的标志。',
+          '发布现场由数码发展及新闻部长杨莉明主旨站台，定位为 NAIS 2.0 在企业治理层的配套——新加坡把「董事会懂 AI」纳入国家 AI 采纳路径的标志。',
         singaporeRelevanceEn:
           'Launched with a keynote by Minister Josephine Teo and positioned as the corporate-governance companion to NAIS 2.0 — a marker of Singapore folding board-level AI literacy into its national adoption path.',
         singaporeRelevanceJa:
@@ -9102,11 +9102,11 @@ A take: this is heavier than a “regional HQ” announcement. A regional HQ is 
         scaleJa: 'アジア太平洋で 5 番目の拠点；GovTech のエンジニア・技術職 1,500 人以上が Claude Code を利用',
         scaleEn: 'Fifth Asia-Pacific office; 1,500+ GovTech engineers and technical staff use Claude Code',
         summary:
-          'Anthropic 于 2026 年 10 月 14 日在新加坡开设亚太第五个办公室，同日与数字发展与信息部（MDDI）签署备忘录，合作范围包括 AI 安全、安保与模型评测，AI 采用及其影响的研究，以及公共和私营部门的负责任采用。它与新加坡的合作始于 2023 年 IMDA 的生成式 AI 评测沙盒。',
+          'Anthropic 于 2026 年 10 月 14 日在新加坡开设亚太第五个办公室，同日与数码发展及新闻部（MDDI）签署备忘录，合作范围包括 AI 安全、安保与模型评测，AI 采用及其影响的研究，以及公共和私营部门的负责任采用。它与新加坡的合作始于 2023 年 IMDA 的生成式 AI 评测沙盒。',
         summaryKo:
           'Anthropic은 2026년 10월 14일 싱가포르에 아시아태평양 다섯 번째 사무소를 열고, 같은 날 디지털개발정보부(MDDI)와 양해각서를 체결했습니다. 협력 범위는 AI 안전·보안·모델 평가, AI 도입과 그 영향에 관한 연구, 공공·민간 부문의 책임 있는 도입입니다. 싱가포르와의 협력은 2023년 IMDA 생성형 AI 평가 샌드박스에서 시작됐습니다.',
         summaryJa:
-          'Anthropic は 2026 年 10 月 14 日、アジア太平洋で 5 番目となるシンガポール拠点を開設し、同日にデジタル開発・情報省（MDDI）と覚書を締結しました。協力範囲は AI の安全・セキュリティ・モデル評価、AI 導入とその影響の研究、官民の責任ある導入です。シンガポールとの協力は 2023 年の IMDA 生成 AI 評価サンドボックスに始まります。',
+          'Anthropic は 2026 年 10 月 14 日、アジア太平洋で 5 番目となるシンガポール拠点を開設し、同日にデジタル発展・情報省（MDDI）と覚書を締結しました。協力範囲は AI の安全・セキュリティ・モデル評価、AI 導入とその影響の研究、官民の責任ある導入です。シンガポールとの協力は 2023 年の IMDA 生成 AI 評価サンドボックスに始まります。',
         summaryEn:
           "Anthropic opened its fifth Asia-Pacific office in Singapore on 14 October 2026 and on the same day signed an MOU with the Ministry of Digital Development and Information (MDDI). The cooperation covers AI safety, security and model evaluation; research on AI adoption and its impact; and responsible adoption across the public and private sectors. Its work with Singapore began in 2023 in IMDA's Generative AI Evaluation Sandbox.",
         whatItIs: `Anthropic 在新加坡的布局（据 2026 年 10 月 14 日 Anthropic 新闻稿）：

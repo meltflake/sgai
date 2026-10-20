@@ -187,7 +187,7 @@ METR はすべてのトランスクリプトを調べ、侵入やカンニング
 
 シンガポールは、エージェント AI のために単独のガバナンス枠組みを書いた最初の政府です。2026 年 1 月 22 日、IMDA はダボスで [Model AI Governance Framework for Agentic AI](/policies/model-ai-governance-framework-for-agentic-ai/) を公開し、5 月には 60 を超える機関からのフィードバックと 10 を超える実際の導入事例を取り込んで更新版を出しました。
 
-2 月 20 日、デジタル開発・情報大臣の Josephine Teo は[「エージェントの影響を監視する準備」フォーラムの開幕基調講演](/speeches/opening-keynote-by-minister-josephine-teo-at-preparing-to-monitor-the-impacts-of-agents--closing-the-global-assurance-divide-for-safe-and-trusted-ai/)で、エージェント AI の保証エコシステムには少なくとも三つの要素、すなわちテスト、標準、第三者の保証提供者が必要だと述べました。テストについては、出力だけでなく中間ステップ、つまり推論がどのように行われ、複数のエージェントがどのように編成されているかも見る必要がある、と一言添えています。
+2 月 20 日、デジタル発展・情報大臣の Josephine Teo は[「エージェントの影響を監視する準備」フォーラムの開幕基調講演](/speeches/opening-keynote-by-minister-josephine-teo-at-preparing-to-monitor-the-impacts-of-agents--closing-the-global-assurance-divide-for-safe-and-trusted-ai/)で、エージェント AI の保証エコシステムには少なくとも三つの要素、すなわちテスト、標準、第三者の保証提供者が必要だと述べました。テストについては、出力だけでなく中間ステップ、つまり推論がどのように行われ、複数のエージェントがどのように編成されているかも見る必要がある、と一言添えています。
 
 Hugging Face の出来事をこの三つの要素の下に置いてみます。
 

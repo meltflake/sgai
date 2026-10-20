@@ -102,8 +102,9 @@ test('bumpStats: recounts total, year, type, topic and existing top speakers', (
 
 import { cleanText } from '../ingest-debates.ts';
 
-test('cleanText: one official MDDI name, no irregular whitespace', () => {
-  assert.equal(cleanText('33号　莫哈默法理议员问数字发展与新闻部长'), '33号 莫哈默法理议员问数字发展与信息部长');
-  assert.equal(cleanText('数码发展及新闻部（MDDI）'), '数字发展与信息部（MDDI）');
+test('cleanText: the official MDDI name 数码发展及新闻部, no irregular whitespace', () => {
+  assert.equal(cleanText('33号　莫哈默法理议员问数字发展与新闻部长'), '33号 莫哈默法理议员问数码发展及新闻部长');
+  assert.equal(cleanText('数字发展与信息部（MDDI）'), '数码发展及新闻部（MDDI）');
+  assert.equal(cleanText('数字发展和信息部'), '数码发展及新闻部');
   assert.equal(cleanText('a b​c'), 'a bc');
 });

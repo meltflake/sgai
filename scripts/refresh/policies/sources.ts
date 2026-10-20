@@ -56,7 +56,7 @@ export const POLICY_SOURCES: PolicySource[] = [
     domain: 'mddi.gov.sg',
     label: 'Ministry of Digital Development and Information',
     defaultCategory: '国家战略',
-    defaultSource: '数字发展与信息部 (MDDI)',
+    defaultSource: '数码发展及新闻部 (MDDI)',
     defaultSourceEn: 'Ministry of Digital Development and Information (MDDI)',
     defaultSourceJa: 'デジタル開発情報省 (MDDI)',
     defaultSourceKo: '디지털개발정보부 (MDDI)',

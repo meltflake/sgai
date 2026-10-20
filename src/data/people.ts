@@ -189,7 +189,7 @@ export interface Person {
 export const people: Person[] = [
   {
     id: 'josephine-teo',
-    bio: '杨莉明(Josephine Teo)是新加坡数码发展与信息部(MDDI)部长,也是新加坡 AI 政策对外最主要的面孔。她主导《国家人工智能战略》(NAIS)的更新与落地,2026 年 5 月在 ATxSummit 上公布四项 National AI Missions,并推动 AI 治理框架、AI Verify、数据中心与信任技术等一系列政策。\n\n在国会,她多次就 AI 战略、生成式 AI 治理、深伪与就业冲击等议题答复质询。本页汇集她的国会发言、MDDI 演讲、主导政策与公开视频,勾勒出她如何把新加坡的 AI 蓝图从愿景一步步推向执行。',
+    bio: '杨莉明(Josephine Teo)是新加坡数码发展及新闻部(MDDI)部长,也是新加坡 AI 政策对外最主要的面孔。她主导《国家人工智能战略》(NAIS)的更新与落地,2026 年 5 月在 ATxSummit 上公布四项 National AI Missions,并推动 AI 治理框架、AI Verify、数据中心与信任技术等一系列政策。\n\n在国会,她多次就 AI 战略、生成式 AI 治理、深伪与就业冲击等议题答复质询。本页汇集她的国会发言、MDDI 演讲、主导政策与公开视频,勾勒出她如何把新加坡的 AI 蓝图从愿景一步步推向执行。',
     bioEn:
       'Josephine Teo is Singapore’s Minister for Digital Development and Information (MDDI) and the most public face of the country’s AI policy. She leads the update and delivery of the National AI Strategy (NAIS), unveiled the four National AI Missions at ATxSummit in May 2026, and drives a run of policy from AI governance frameworks and AI Verify to data centres and trust technologies.\n\nIn Parliament she has fielded questions on AI strategy, generative-AI governance, deepfakes and the employment impact of AI. This page brings together her parliamentary speeches, MDDI addresses, the policies she leads and her public video record — a picture of how she moves Singapore’s AI blueprint from vision to execution.',
     bioJa:
@@ -205,7 +205,7 @@ export const people: Person[] = [
     titleEn: 'Minister for Digital Development and Information',
     title: '数码发展及新闻部长',
     titleKo: '디지털 발전 및 뉴스 장관',
-    titleJa: 'デジタル開発・ニュース相',
+    titleJa: 'デジタル発展・情報相',
     category: 'government',
     roles: ['minister', 'mp'],
     affiliations: ['MDDI', 'PMO'],
@@ -522,7 +522,7 @@ export const people: Person[] = [
   },
   {
     id: 'tan-kiat-how',
-    bio: '陈杰豪(Tan Kiat How)是新加坡数码发展与信息部(MDDI)高级政务部长,是 AI 与数字政策落地层面的关键操盘手之一。他常代表 MDDI 出席行业与社群场合,把 AI 治理、数字包容、企业采用等议题从部长层面的框架落到具体项目。\n\n在国会,他就数字发展、AI 应用与网络安全等议题多次发言与答复。本页汇集他的国会发言、演讲、相关政策与视频,呈现他在新加坡 AI 政策执行链条上的角色。',
+    bio: '陈杰豪(Tan Kiat How)是新加坡数码发展及新闻部(MDDI)高级政务部长,是 AI 与数字政策落地层面的关键操盘手之一。他常代表 MDDI 出席行业与社群场合,把 AI 治理、数字包容、企业采用等议题从部长层面的框架落到具体项目。\n\n在国会,他就数字发展、AI 应用与网络安全等议题多次发言与答复。本页汇集他的国会发言、演讲、相关政策与视频,呈现他在新加坡 AI 政策执行链条上的角色。',
     bioEn:
       'Tan Kiat How is Singapore’s Senior Minister of State at the Ministry of Digital Development and Information (MDDI), one of the key operators turning AI and digital policy into delivery. He often represents MDDI at industry and community events, translating AI governance, digital inclusion and enterprise adoption from ministerial framing into concrete programmes.\n\nIn Parliament he has spoken and replied on digital development, AI applications and cybersecurity. This page gathers his parliamentary speeches, addresses, related policies and videos — his role in the execution chain of Singapore’s AI policy.',
     bioJa:
@@ -536,10 +536,10 @@ export const people: Person[] = [
     nameJa: '陳傑豪',
     aliases: ['Mr Tan Kiat How'],
     titleEn: 'Senior Minister of State for Digital Development and Information',
-    title: '数码发展与信息部（MDDI）高级政务部长',
+    title: '数码发展及新闻部（MDDI）高级政务部长',
     titleKo: '디지털발전정보부(MDDI) 선임국무장관',
     titleJa: 'デジタル発展・情報省（MDDI）上級国務大臣',
-    seoTitle: '陈杰豪 Tan Kiat How：数码发展与信息部高级政务部长',
+    seoTitle: '陈杰豪 Tan Kiat How：数码发展及新闻部高级政务部长',
     seoTitleEn: 'Tan Kiat How: Senior Minister of State, MDDI Singapore',
     category: 'government',
     roles: ['minister', 'mp', 'civil-servant'],

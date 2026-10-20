@@ -308,7 +308,7 @@ export const sections: LegalSection[] = [
         titleJa: 'デジタルインフラ法案（DIB、草案）',
         titleEn: 'Digital Infrastructure Bill (DIB, draft)',
         date: '2026-07',
-        authority: '数字发展与信息部 (MDDI) / 资讯通信媒体发展局 (IMDA)',
+        authority: '数码发展及新闻部 (MDDI) / 资讯通信媒体发展局 (IMDA)',
         authorityKo: '디지털 개발 및 정보부(MDDI) / 정보통신미디어개발청(IMDA)',
         authorityJa: 'デジタル発展・情報省 (MDDI) / 情報通信メディア開発庁 (IMDA)',
         authorityEn:
