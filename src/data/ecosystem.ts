@@ -9081,6 +9081,37 @@ A take: this is heavier than a “regional HQ” announcement. A regional HQ is 
         ],
         updated: '2026-08-11',
       },
+      // i18n-allow-unpaired — auto-discovered stub; complete required fields on promotion
+      {
+        id: 'anthropic',
+        name: 'Anthropic',
+        nameEn: 'Anthropic',
+        nameJa: 'Anthropic',
+        nameKo: 'Anthropic',
+        description:
+          'Claude 模型开发商。2026 年 10 月 14 日在新加坡设亚太第五个办公室，并与 MDDI 签署备忘录，覆盖 AI 安全、模型评测、AI 采用研究和公私部门负责任采用。',
+        descriptionEn:
+          'Developer of the Claude models. Opened its fifth Asia-Pacific office in Singapore on 14 October 2026 and signed an MOU with MDDI covering AI safety, model evaluation, research on AI adoption and responsible adoption across the public and private sectors.',
+        descriptionJa:
+          'Claude モデルの開発企業。2026 年 10 月 14 日にアジア太平洋で 5 番目となるシンガポール拠点を開設し、MDDI と AI 安全、モデル評価、AI 導入の研究、官民の責任ある導入を対象とする覚書を締結しました。',
+        descriptionKo:
+          'Claude 모델 개발사입니다. 2026년 10월 14일 아시아태평양 다섯 번째 사무소를 싱가포르에 열고, MDDI와 AI 안전, 모델 평가, AI 도입 연구, 공공·민간 부문의 책임 있는 도입을 다루는 양해각서를 체결했습니다.',
+        url: 'https://www.anthropic.com/',
+        entityType: 'partner',
+        status: 'active',
+        sources: [
+          // i18n-allow-unpaired — provenance for the pending-review stub above
+          {
+            label: 'EDB (Anthropic press release)',
+            url: 'https://www.edb.gov.sg/en/news-and-insights/anthropic-opens-singapore-office-and-signs-mou-with-government-of-singapore',
+            date: '2026-10-14',
+          },
+        ],
+        updated: '2026-10-21',
+        _pendingReview: true,
+        discoveryNote:
+          'Auto-discovered via Business Times (2026-10-19 share-fund story); rewritten from the 2026-10-14 EDB release on the Singapore office and MDDI MOU. Promote with a full profile (summary / whatItIs / aiRelevance) like the OpenAI entry.',
+      },
       {
         id: 'sony-research',
         name: 'Sony Research',

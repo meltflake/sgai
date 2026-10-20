@@ -40,5 +40,11 @@
     "reason": "June 2020 GovTech press release about FY2020 ICT spending — six-year-old news, not an ecosystem entity. Also the case that motivated the old-news gate.",
     "decidedAt": "2026-09-07",
     "ref": "#294"
+  },
+  {
+    "url": "https://www.businesstimes.com.sg/companies-markets/anthropic-shift-some-shares-new-public-good-fund",
+    "reason": "covered-elsewhere",
+    "decidedAt": "2026-10-21",
+    "ref": "#368 — Anthropic entity sourced from the EDB release instead; US share-fund story has no Singapore angle"
   }
 ]
