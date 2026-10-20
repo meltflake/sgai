@@ -105,6 +105,11 @@ HANSARD_BUDGET_RANGE = 30
 # 24171..24897, ~730). If ids still exist in the last quarter of a window,
 # scan the next one too; capped so a runaway id space can't loop forever.
 HANSARD_MAX_WINDOWS = 5
+# IDs below the high-water mark that are re-checked every scan. SPRS ids are
+# not published in order (oral-answer-4241 is a 2022 record that resolved
+# before the 7 Oct 2026 frontier-AI answer 4231 was published), so a
+# mark-only scan misses late items for good. Already-seen ids are skipped.
+HANSARD_LOOKBACK = {"oral-answer": 40, "written-answer": 150, "written-answer-na": 150, "budget": 10}
 # A report id known to exist; probed before every scan. If SPRS stops
 # answering (as it did 2026-08 when it started requiring the id in the JSON
 # body), the scan fails loudly instead of reporting "0 new" for weeks.
@@ -304,6 +309,28 @@ def scan_hansard_window(prefix: str, start: int, window: int, logger) -> list[di
     return results
 
 
+def scan_with_lookback(prefix: str, max_id: int, window: int, lookback: int, seen: set[int], logger) -> list[dict]:
+    """Forward window scan above max_id plus a re-check of lookback ids below
+    it; drops ids in `seen` (already reported or already in debates.ts)."""
+    results = scan_hansard_range(prefix, max(0, max_id - lookback), max_id, logger)
+    results += scan_hansard_window(prefix, max_id, window, logger)
+    out, have = [], set()
+    for r in results:
+        n = int(r["id"].split("-")[-1])
+        if n in seen or n in have:
+            continue
+        have.add(n)
+        out.append(r)
+    return out
+
+
+def _ids_in_debates() -> set[str]:
+    path = PROJECT_ROOT / "src" / "data" / "debates.ts"
+    if not path.exists():
+        return set()
+    return set(re.findall(r"id: ['\"]((?:oral-answer|written-answer(?:-na)?|budget)-\d+)['\"]", path.read_text(encoding="utf-8")))
+
+
 def run_hansard(state: dict, logger) -> dict:
     hansard_state = state.setdefault("domains", {}).setdefault(
         "hansard",
@@ -316,21 +343,22 @@ def run_hansard(state: dict, logger) -> dict:
     # seeded at the last id of the 2026-08-05 sitting (ingested manually, PR 2026-09-04)
     max_written_na = hansard_state.get("max_written_na_id", 24297)
 
-    logger.info(f"Hansard 扫描: oral-answer-{max_oral + 1}..{max_oral + HANSARD_ORAL_RANGE}")
-    oral_results = scan_hansard_window("oral-answer", max_oral, HANSARD_ORAL_RANGE, logger)
+    # Ids already reported or already in debates.ts are skipped by the lookback.
+    seen_ids = set(hansard_state.get("seen_ids", [])) | _ids_in_debates()
 
-    logger.info(f"Hansard 扫描: written-answer-{max_written + 1}..{max_written + HANSARD_WRITTEN_RANGE}")
-    written_results = scan_hansard_window("written-answer", max_written, HANSARD_WRITTEN_RANGE, logger)
+    def seen_for(prefix: str) -> set[int]:
+        pat = re.compile(rf"^{re.escape(prefix)}-(\d+)$")
+        return {int(m.group(1)) for i in seen_ids if (m := pat.match(i))}
 
-    logger.info(
-        f"Hansard 扫描: written-answer-na-{max_written_na + 1}..{max_written_na + HANSARD_WRITTEN_NA_RANGE}"
-    )
-    written_na_results = scan_hansard_window(
-        "written-answer-na", max_written_na, HANSARD_WRITTEN_NA_RANGE, logger
-    )
+    def scan(prefix: str, mx: int, window: int) -> list[dict]:
+        lb = HANSARD_LOOKBACK[prefix]
+        logger.info(f"Hansard 扫描: {prefix}-{mx - lb + 1}..{mx + window}（含已过高水位的 {lb} 个回看）")
+        return scan_with_lookback(prefix, mx, window, lb, seen_for(prefix), logger)
 
-    logger.info(f"Hansard 扫描: budget-{max_budget + 1}..{max_budget + HANSARD_BUDGET_RANGE}")
-    budget_results = scan_hansard_window("budget", max_budget, HANSARD_BUDGET_RANGE, logger)
+    oral_results = scan("oral-answer", max_oral, HANSARD_ORAL_RANGE)
+    written_results = scan("written-answer", max_written, HANSARD_WRITTEN_RANGE)
+    written_na_results = scan("written-answer-na", max_written_na, HANSARD_WRITTEN_NA_RANGE)
+    budget_results = scan("budget", max_budget, HANSARD_BUDGET_RANGE)
 
     all_results = oral_results + written_results + written_na_results + budget_results
     ai_results = [r for r in all_results if r["ai_related"]]
@@ -369,6 +397,8 @@ def run_hansard(state: dict, logger) -> dict:
         "new_max_written": new_max_written,
         "new_max_written_na": new_max_written_na,
         "new_max_budget": new_max_budget,
+        # AI items already reported; the lookback skips them next time.
+        "seen_ids": sorted(set(hansard_state.get("seen_ids", [])) | {r["id"] for r in ai_results}),
     }
 
 
@@ -903,6 +933,7 @@ def run_pipelines(selected: list[dict], state: dict, logger, dry_run: bool) -> t
                     state["domains"]["hansard"]["max_written_id"] = hansard_result["new_max_written"]
                     state["domains"]["hansard"]["max_written_na_id"] = hansard_result["new_max_written_na"]
                     state["domains"]["hansard"]["max_budget_id"] = hansard_result["new_max_budget"]
+                    state["domains"]["hansard"]["seen_ids"] = hansard_result["seen_ids"]
                 else:
                     raise RuntimeError(f"unknown python-builtin pipeline id: {pid}")
             elif ptype == "tsx":
