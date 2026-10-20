@@ -255,7 +255,7 @@ function sprsUrl(id: string): string {
  *  (ESLint no-irregular-whitespace; Hansard and translations carry U+3000 / NBSP). */
 export function cleanText(s: string): string {
   return s
-    .replace(/数[码字]发展[及与][新信][闻息]部/g, '数字发展与信息部')
+    .replace(/数[码字]发展[及与和][新信资][闻息讯]部/g, '数码发展及新闻部')
     .replace(/[\u00a0\u2000-\u200a\u3000]/g, ' ')
     .replace(/[\u200b\ufeff]/g, '');
 }

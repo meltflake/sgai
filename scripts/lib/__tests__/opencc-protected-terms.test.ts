@@ -98,3 +98,9 @@ test('toTraditional: protected term inside a longer paragraph survives', () => {
   // 数据 should become 資料
   assert.ok(output.includes('資料'), `expected 数据→資料 conversion, got: ${output}`);
 });
+
+// 2026-10-21: the site now uses MDDI's official Chinese name (Lianhe Zaobao,
+// gov usage). s2twp must keep 数码 as 數碼, never the Taiwan phrase 數位.
+test('toTraditional: official MDDI name keeps 數碼', () => {
+  assert.equal(toTraditional('数码发展及新闻部长杨莉明'), '數碼發展及新聞部長楊莉明');
+});

@@ -2090,7 +2090,7 @@ export const speechTranscripts: Record<string, SpeechTranscript> = {
       'ありがとうございました。',
     ],
     paragraphsKo: [
-      '디지털 발전 및 뉴스부 선임국무장관 Janil Puthucheary 박사의 2025년 4월 14일 「ASME와 ITE AI 우수센터」(SME@AITE) 출범식 개막 연설',
+      '디지털개발정보부 선임국무장관 Janil Puthucheary 박사의 2025년 4월 14일 「ASME와 ITE AI 우수센터」(SME@AITE) 출범식 개막 연설',
       '여러분 안녕하세요. 오늘 행사에 저를 초대해주셔서 감사합니다.',
       'SME는 싱가포르 경제의 초석이자 기초입니다——이들은 거의 모든 기업을 대표하고 있으며, 약 70%의 노동력을 고용하고 있습니다. 이들의 활력, 회복력, 그리고 혁신——이는 우리 경제가 활력을 유지하는 핵심입니다——싱가포르와 싱가포르인을 위해 일자리를 창출합니다. 미래를 전망하면——이는 계속될 것입니다.',
       '세계를 보십시오——그리고 제 매일 아침 뉴스 피드를 보십시오——「혼란과 변화」가 빠르게 규범이 되고 있습니다. 상황이 빠르게 변합니다——이것이 우리의 기업, 우리의 교육 방식, 그리고 우리의 사회에 영향을 미칩니다. 그러나 이러한 빠른 변화에 대응하기 위해 우리가 반드시 해야 할 한 가지는——기술을 포용하는 것입니다. 오늘도 그렇고——지난 몇 년도 그랬습니다. 기술이 사회와 비즈니스에서 어떻게 배치되고 사용되는지——이는 경쟁 우위가 될 수 있습니다——또한 새로운 규범이 될 수도 있습니다——마치 우리의 규범 자체가 이미 변화하고 있는 것처럼.',
@@ -2251,7 +2251,7 @@ export const speechTranscripts: Record<string, SpeechTranscript> = {
       `43. Thank you.`,
     ],
     paragraphsJa: [
-      'デジタル開発・ニュース担当シニア上級国務大臣 Tan Kiat How による「アジア人工知能フェスティバル」（AIFA）での開会演説（2025 年 1 月 17 日）',
+      'デジタル発展・情報担当シニア上級国務大臣 Tan Kiat How による「アジア人工知能フェスティバル」（AIFA）での開会演説（2025 年 1 月 17 日）',
       'シンガポール中小企業商工会議所（ASME）会長 Ang Yuit 氏',
       '皆様へ：',
       '1. おはようございます。「アジア AI フェスティバル」に出席できて光栄です。',
@@ -2304,7 +2304,7 @@ export const speechTranscripts: Record<string, SpeechTranscript> = {
       'ありがとうございます。',
     ],
     paragraphsKo: [
-      '디지털 발전 및 뉴스부 선임국무장관 Tan Kiat How의 「아시아 인공지능 축제」(AIFA) 개막 연설(2025년 1월 17일)',
+      '디지털개발정보부 선임국무장관 Tan Kiat How의 「아시아 인공지능 축제」(AIFA) 개막 연설(2025년 1월 17일)',
       '싱가포르 중소기업상의회(ASME) 회장 Ang Yuit 선생님,',
       '여신사 여러분, 신사 여러분：',
       '1. 좋은 아침입니다. 「아시아 AI 축제」에 참석하게 되어 매우 기쁩니다.',
@@ -2942,7 +2942,7 @@ export const speechTranscripts: Record<string, SpeechTranscript> = {
       `21. Thank you so much.`,
     ],
     paragraphsJa: [
-      'デジタル開発・ニュース部次席上級国務大臣 Tan Kiat How による「医学AI中心」（C-AIM）起動式での開幕演説（2024年9月30日）',
+      'デジタル発展・情報省次席上級国務大臣 Tan Kiat How による「医学AI中心」（C-AIM）起動式での開幕演説（2024年9月30日）',
       'シンガポール李光前医学院（LKC Medicine）ガバナンス委員会議長 Lim Chuan Poh 氏；',
       'シンガポール全国医療グループ（NHG）グループCEO Joe Sim 教授；',
       'LKC Medicine 院長・医学AI中心共同主任 Joseph Sung 教授；',
@@ -2971,7 +2971,7 @@ export const speechTranscripts: Record<string, SpeechTranscript> = {
       '21. ありがとうございました。',
     ],
     paragraphsKo: [
-      '디지털발전뉴스부 선임국무장관 Tan Kiat How의 「의료 AI 센터」(C-AIM) 개소식 개막 연설(2024년 9월 30일)',
+      '디지털개발정보부 선임국무장관 Tan Kiat How의 「의료 AI 센터」(C-AIM) 개소식 개막 연설(2024년 9월 30일)',
       '싱가포르 이광천의학대학(LKC Medicine) 지배위원회 주석 Lim Chuan Poh 선생님;',
       '싱가포르 전국의료그룹(NHG) 그룹 최고경영자 Joe Sim 교수님;',
       'LKC Medicine 원장, 의료 AI 센터 공동주임 Joseph Sung 교수님;',
@@ -4822,7 +4822,7 @@ export const speechTranscripts: Record<string, SpeechTranscript> = {
       `Thank you.`,
     ],
     paragraphsJa: [
-      'デジタル開発・ニュース部 Rahayu Mahzam 国務大臣による「IBM AI 時代の未来の労働力」イベントでの開幕演説（2024年8月23日）',
+      'デジタル発展・情報省 Rahayu Mahzam 国務大臣による「IBM AI 時代の未来の労働力」イベントでの開幕演説（2024年8月23日）',
       'IBM グローバル企業社会責任副会長兼チーフインパクト・オフィサー Justina Nixon-Saintil 女史、',
       'IBM アジア太平洋地域企業社会責任責任者 Yean Feng Yue 女史、',
       '皆様、女性の皆様、紳士の皆様：',
@@ -4864,7 +4864,7 @@ export const speechTranscripts: Record<string, SpeechTranscript> = {
       'ありがとうございました。',
     ],
     paragraphsKo: [
-      '디지털발전 및 뉴스부 국무장관 Rahayu Mahzam이 「IBM AI 시대 미래 노동력」 활동의 개막 인사(2024년 8월 23일)',
+      '디지털개발정보부 국무장관 Rahayu Mahzam이 「IBM AI 시대 미래 노동력」 활동의 개막 인사(2024년 8월 23일)',
       'IBM 글로벌 기업사회책임 부회장 겸 최고영향력관 Justina Nixon-Saintil 여사,',
       'IBM 아태지역 기업사회책임 담당자 Yean Feng Yue 여사,',
       '각위 내빈, 여사, 선생님:',
@@ -8412,7 +8412,7 @@ export const speechTranscripts: Record<string, SpeechTranscript> = {
       `19. Thank you and I look forward to discussing public-private partnership in detail at the fireside chat later.`,
     ],
     paragraphsJa: [
-      'デジタル開発・報道省上級国務大臣 Janil Puthucheary 博士による EuroCham『AI: Beyond the Buzz』報告書発表会での講演（2024年10月21日）',
+      'デジタル発展・情報省上級国務大臣 Janil Puthucheary 博士による EuroCham『AI: Beyond the Buzz』報告書発表会での講演（2024年10月21日）',
       '皆様方へ、',
       '皆様、',
       '皆様へ：',
@@ -8718,7 +8718,7 @@ export const speechTranscripts: Record<string, SpeechTranscript> = {
       `I end off by thanking the TIP alliance for your commitment. It is the second-year anniversary, and we hope to have many more years ahead of us, which means that many more years of hard work by everyone. So please give them a round of applause. Thank you so much.`,
     ],
     paragraphsJa: [
-      'デジタル発展・報道部上級上級国務大臣 Tan Kiat How 氏による「シンガポール・コンピュータ学会（SCS）Splash フォーラム」での講演（2024年10月4日）',
+      'デジタル発展・情報省上級上級国務大臣 Tan Kiat How 氏による「シンガポール・コンピュータ学会（SCS）Splash フォーラム」での講演（2024年10月4日）',
       '皆様、おはようございます。初回 SCS Splash フォーラムへようこそ。本日、ここにおられることを大変嬉しく思っています。',
       '本日のテーマは「職業とインターンシップ」です。先ほど Sam Liew 氏がお話しした通り、これは非常に適切なテーマです。本日会場にいる全ての皆様が、前方に広がる「学習、協働、成長」の数多くの機会を受け入れることを望んでいます。',
       'シンガポール政府は、変化する科学技術環境において、スキルを備えた科学技術労働力を育成することに取り組んでいます。',
@@ -8779,7 +8779,7 @@ export const speechTranscripts: Record<string, SpeechTranscript> = {
       'TIP Alliance のコミットメントに感謝することで終わりたいと思います。これは彼らの第二周年です。将来、さらに多くの年が続くことを願っています。これは、皆さんがさらに多くの年にわたって懸命に働き続けることを意味しています。彼らに拍手をお願いします。本当にありがとうございました。',
     ],
     paragraphsKo: [
-      '디지털개발 및 뉴스부 상급 정책선임국무장관 Tan Kiat How 씨의 「싱가포르 컴퓨터 학회(SCS) Splash 포럼」 연설(2024년 10월 4일)',
+      '디지털개발정보부 상급 정책선임국무장관 Tan Kiat How 씨의 「싱가포르 컴퓨터 학회(SCS) Splash 포럼」 연설(2024년 10월 4일)',
       '여러분 안녕하세요——첫 번째 SCS Splash 포럼에 오신 것을 환영합니다. 저는 오늘 여기에 있게 되어 매우 기쁩니다.',
       '오늘의 주제는 「직업과 인턴십」입니다——Sam Liew 씨가 방금 말씀하신 것처럼——이것은 매우 적절한 주제입니다. 오늘 여기 계신 모든 분들이——앞으로의 많은 「학습, 협업, 성장」의 기회를 포용하기를 바랍니다.',
       '싱가포르 정부는 변화하는 과학기술 환경에서 기술력 있는 과학기술 노동력을 육성하기 위해 노력하고 있습니다',
@@ -9435,7 +9435,7 @@ export const speechTranscripts: Record<string, SpeechTranscript> = {
       `17. Thank you.`,
     ],
     paragraphsJa: [
-      'デジタル開発・情報省シニア上級国務大臣 Tan Kiat How による HCLTech AI ラボメディア発表会での演説（2024年11月4日）',
+      'デジタル発展・情報省シニア上級国務大臣 Tan Kiat How による HCLTech AI ラボメディア発表会での演説（2024年11月4日）',
       '1. インド駐シンガポール高等弁務官 Shilpak Ambule 博士閣下、HCLTech からのご友人の皆さま——地元に根を下ろされている方も、再度ご来訪の方も——シンガポールへようこそ。',
       '2. 私は HCLTech とともにまた一つのマイルストーンを祝う機会に恵まれて嬉しく思います。私たちと HCLTech は 40 年以上のパートナーです——このパートナーシップはさまざまな時代を経験してきました——ハードウェアから、ソフトウェア、そして今日の最前線まで——クラウドサービスだけでなく、AI と生成型 AI も含まれています。',
       '3. AI は業界、経済、社会、コミュニティを変革する可能性を秘めた技術の一つです。私たちは HCLTech のようなパートナーがもっと増えることを願っています——私たちとともにこの道を歩み、パートナーシップを次のレベルへ引き上げてくれるパートナーです。',
@@ -10088,7 +10088,7 @@ export const speechTranscripts: Record<string, SpeechTranscript> = {
       `Thank you.`,
     ],
     paragraphsJa: [
-      'デジタル開発・報道省シニア上級国務大臣 Tan Kiat How 氏による Databricks「Data + AI World Tour Singapore」でのスピーチ（2024年8月30日）',
+      'デジタル発展・情報省シニア上級国務大臣 Tan Kiat How 氏による Databricks「Data + AI World Tour Singapore」でのスピーチ（2024年8月30日）',
       'Databricks アジア太平洋・日本地域シニア副社長兼ゼネラルマネージャー Ed Lenta 氏、',
       'ASEAN・大中華地域副社長兼ゼネラルマネージャー Cecily Ng 氏、',
       'アジア太平洋・日本フィールドエンジニアリング副社長 Nick Eayrs 氏、',
@@ -12132,7 +12132,7 @@ export const speechTranscripts: Record<string, SpeechTranscript> = {
       fetchedAt: `2026-05-22`,
       source: 'mddi-newsroom',
       paragraphs: [
-        `39. 陈立锋先生向数字发展与信息部长提问 (a) 该部是否打算审查 2012 年《个人数据保护法》以应对推断或衍生数据的使用，包括由人工智能系统生成的行为档案；以及 (b) 如果是，哪些原则将指导此类审查。`,
+        `39. 陈立锋先生向数码发展及新闻部长提问 (a) 该部是否打算审查 2012 年《个人数据保护法》以应对推断或衍生数据的使用，包括由人工智能系统生成的行为档案；以及 (b) 如果是，哪些原则将指导此类审查。`,
         `答复`,
         `根据《个人数据保护法》，关于可识别个人的数据被视为个人数据，组织有义务保护其掌握或控制的此类数据。这还包括组织在业务过程中从此类个人数据衍生出的关于该个人的数据。`,
         `个人数据保护委员会已发布《在 AI 推荐和决策系统中使用个人数据的咨询指南》。它规定了指导组织和消费者负责任地收集和使用个人数据在 AI 系统中的原则，例如仅将数据用于合法商业目的，并将数据收集限制在所需范围内。`,
@@ -12144,7 +12144,7 @@ export const speechTranscripts: Record<string, SpeechTranscript> = {
         `The Personal Data Protection Commission has published Advisory Guidelines on the Use of Personal Data in AI Recommendation and Decision Systems. It sets out principles to guide organisations and consumers on the responsible collection and use of personal data in AI systems, such as using data only for legitimate business purposes, and limiting data collection to what is needed.`,
       ],
       paragraphsJa: [
-        `39. チェン・リーフェン氏がデジタル開発・情報大臣に質問します：(a) 当該部門は推論またはデリバティブデータの使用に対処するため、2012年の《個人データ保護法》を見直す予定がありますか。これには人工知能システムによって生成された行動プロファイルが含まれます；および (b) もしそうであれば、このようなレビューを導く原則は何ですか。`,
+        `39. チェン・リーフェン氏がデジタル発展・情報大臣に質問します：(a) 当該部門は推論またはデリバティブデータの使用に対処するため、2012年の《個人データ保護法》を見直す予定がありますか。これには人工知能システムによって生成された行動プロファイルが含まれます；および (b) もしそうであれば、このようなレビューを導く原則は何ですか。`,
         '回答',
         `《個人データ保護法》に基づけば、個人を特定できるデータは個人データとみなされ、組織はそれが所有または管理するそのようなデータを保護する義務があります。これには、組織が業務プロセス中にそのような個人データから派生した、当該個人に関するデータも含まれます。`,
         `個人データ保護委員会は《AI推奨・意思決定システムにおける個人データ使用ガイドライン》を発表しました。これは、組織および消費者がAIシステムにおいて個人データを責任を持って収集・使用することを導く原則を規定しており、例えば、データを合法的なビジネス目的のためだけに使用すること、および個人データの収集を必要な範囲に限定することが含まれています。`,
@@ -15411,7 +15411,7 @@ export const speechTranscripts: Record<string, SpeechTranscript> = {
     fetchedAt: `2026-06-21`,
     source: 'mddi-newsroom',
     paragraphs: [
-      `数字发展与信息部部长杨莉明女士于2025年2月9日在托尼·布莱尔全球变化研究所小组讨论「人工智能机遇时代的全球领导力」上的发言`,
+      `数码发展及新闻部部长杨莉明女士于2025年2月9日在托尼·布莱尔全球变化研究所小组讨论「人工智能机遇时代的全球领导力」上的发言`,
       `提问：新加坡在技术采纳方面确实积累了丰富经验。请问您如何看待新加坡应对这场革命、以及人工智能将如何推动贵国变革的思路？`,
       `部长：非常感谢，Benedict（指托尼·布莱尔全球变化研究所首席政策战略官Benedict Macon-Cooney）。我们于2019年首次制定了一套战略，明确自身在人工智能领域的发展愿景。由于不到五年内格局已发生了如此深刻的变化，我们认为有必要对战略进行更新。在2023年初，我们评估认为已到达一个需要反思的节点。`,
       `在私营部门，人工智能采纳的加速显而易见。这一趋势将在全球范围内以及新加坡同步推进。因此，我们的思路是积极支持人工智能的采纳，并促进其顺利落地。我们认为需要更多关注的是：人工智能是否也在为公众服务——能否以直接、切实的方式改善市民的生活？这是我们认为需要额外关注的方面。另一个日益凸显的要点是：无论机遇还是挑战，都需要更大力度的国际合作。`,
@@ -15441,7 +15441,7 @@ export const speechTranscripts: Record<string, SpeechTranscript> = {
       `Minister: I am very curious whether 2025 will turn out to be the year of the two major recalculations. The first one has to do with the cost benefit of AI adoption . The second recalculation that might happen this year is how we are going to approach the question of data centres , how we can meet a certain estimation of the global requirements. But because it was so expensive to get all of this infrastructure built, then there was a lot of incentive for make it far more resource-efficient . And using energy from a sustainability centre, that is really good. But actually I think it can be very good for business too. So I am looking at 2025 and thinking that maybe this is the year with the two major recalculations.`,
     ],
     paragraphsJa: [
-      `デジタル開発・情報大臣ジョセフィン・テオ氏によるパネルディスカッション「AIの機会の時代におけるグローバルリーダーシップ」——Tony Blair Institute of Global Change、2025年2月9日`,
+      `デジタル発展・情報大臣ジョセフィン・テオ氏によるパネルディスカッション「AIの機会の時代におけるグローバルリーダーシップ」——Tony Blair Institute of Global Change、2025年2月9日`,
       `質問：シンガポールでは、技術の導入について多くのことを学んできたと思います。大臣のご見解から、シンガポールはこの革命についてどのようにお考えでしょうか。また、AIが貴国にどのような変化をもたらすとお考えでしょうか。`,
       `大臣：ありがとうございます、Benedict（Tony Blair Institute of Global Change、最高政策戦略責任者のBenedict Macon-Cooney氏を指す）。2019年に、シンガポールはAIに関する自国の抱負を示す一連の戦略を初めて策定しました。5年も経たないうちに状況が大きく変化したため、私たちは戦略を更新したいという立場に立ちました。2023年初頭、私たちは振り返りの時点に達したという評価を行いました。`,
       `民間部門においては、AIの導入が加速しているのは明らかでした。これはシンガポールに限らず、グローバルに起きることでした。そこで私たちは、AIの導入を積極的に支援し、その円滑な実装を促進するという考えに至りました。より大きな注意が必要だと感じたのは、AIが公共のためにも活用されているかどうかという点です。市民の生活を、より直接的かつ具体的な形で改善するために使えるでしょうか。それが追加的な注意を要すると考えた事柄でした。また、もう一点として、機会と課題のいずれにおいても、より一層の国際協力が求められるということが、ますます明確になってきていました。`,
@@ -17117,7 +17117,7 @@ export const speechTranscripts: Record<string, SpeechTranscript> = {
     fetchedAt: `2026-06-21`,
     source: 'mddi-newsroom',
     paragraphs: [
-      `普杰立博士（Dr Janil Puthucheary）在亚马逊云服务亚太区枢纽开幕式上的致辞，普杰立博士现任数字发展与信息部（Ministry of Digital Development and Information）高级政务部长（2025年2月12日）`,
+      `普杰立博士（Dr Janil Puthucheary）在亚马逊云服务亚太区枢纽开幕式上的致辞，普杰立博士现任数码发展及新闻部（Ministry of Digital Development and Information）高级政务部长（2025年2月12日）`,
       `亚马逊云服务（Amazon Web Services）亚太区（APAC）副总裁海梅·巴列斯（Jaime Valles）先生，AWS东南亚（ASEAN）董事总经理杰夫·约翰逊（Jeff Johnson）先生，女士们、先生们：`,
       `引言`,
       `1. 大家早上好，非常感谢今天邀请我出席。能在此共同庆祝亚马逊云服务（"AWS"）亚太区新枢纽的正式开幕，我深感荣幸。`,
@@ -17187,7 +17187,7 @@ export const speechTranscripts: Record<string, SpeechTranscript> = {
       `25. Thank you very much and congratulations.`,
     ],
     paragraphsJa: [
-      'デジタル開発・情報省上級国務大臣 Janil Puthucheary 博士による開会挨拶、Amazon Web Services アジア太平洋ハブ開設式典にて（2025年2月12日）',
+      'デジタル発展・情報省上級国務大臣 Janil Puthucheary 博士による開会挨拶、Amazon Web Services アジア太平洋ハブ開設式典にて（2025年2月12日）',
       `Amazon Web Services アジア太平洋担当副社長 Jaime Valles 様、AWS ASEAN 担当マネージング・ディレクター Jeff Johnson 様、ご列席の皆様、`,
       `はじめに`,
       `1. 皆様、おはようございます。本日はご招待いただき、誠にありがとうございます。Amazon Web Services（以下「AWS」）の新たなアジア太平洋ハブの正式開設を祝う本式典に参加できますことを、大変光栄に存じます。`,
@@ -19385,7 +19385,7 @@ export const speechTranscripts: Record<string, SpeechTranscript> = {
     fetchedAt: `2026-06-21`,
     source: 'mddi-newsroom',
     paragraphs: [
-      `陈杰豪高级政务部长（数字发展与信息部）在ATxSummit第二天（2025年5月29日）的开幕主旨演讲`,
+      `陈杰豪高级政务部长（数码发展及新闻部）在ATxSummit第二天（2025年5月29日）的开幕主旨演讲`,
       `各位阁下、各位嘉宾、女士们、先生们`,
       `我很高兴再次回到新加坡亚洲科技大会（ATxSG）——这里汇聚了科技、商业和政策领域的精英，共同塑造我们数字经济的未来。`,
       `人工智能的快速发展——尤其是生成式AI（GenAI）——开启了巨大的潜力，但也引发了迫切而重要的问题：它将如何影响就业、重塑经济，以及对我们的社会产生怎样的影响。`,
@@ -19519,7 +19519,7 @@ export const speechTranscripts: Record<string, SpeechTranscript> = {
       `Thank you very much.`,
     ],
     paragraphsJa: [
-      'デジタル開発・情報担当上級国務大臣 Tan Kiat How 氏による ATxSummit 第2日目（2025年5月29日）開会基調講演',
+      'デジタル発展・情報担当上級国務大臣 Tan Kiat How 氏による ATxSummit 第2日目（2025年5月29日）開会基調講演',
       `ご列席の閣下、来賓の皆様、ご参加の皆様`,
       `テクノロジー、ビジネス、政策の各分野を代表する方々が一堂に会し、デジタル経済の未来を形作る AsiaTech Singapore（ATxSG）に再びお招きいただき、大変嬉しく思います。`,
       `AI、とりわけ生成 AI（GenAI）の急速な発展は、計り知れない可能性を切り開く一方で、雇用への影響、経済の再編、社会への影響についての緊急かつ重要な問いを浮き彫りにしています。`,
@@ -19837,7 +19837,7 @@ export const speechTranscripts: Record<string, SpeechTranscript> = {
     fetchedAt: `2026-06-21`,
     source: 'mddi-newsroom',
     paragraphs: [
-      `数字发展与新闻部长 JOSEPHINE TEO 女士在 IBM THINK SINGAPORE 2024 上的开幕致辞（2024年8月15日）`,
+      `数码发展及新闻部长 JOSEPHINE TEO 女士在 IBM THINK SINGAPORE 2024 上的开幕致辞（2024年8月15日）`,
       `IBM Consulting 高级副总裁兼首席运营官 Mohamad Ali 先生，IBM 亚太区总经理 Hans Dekkers 先生，IBM Consulting 亚太区总经理兼执行合伙人 Juhi McClelland 女士，IBM 东盟区总经理兼技术负责人 Catherine Lian 女士，各位同仁及朋友，`,
       `1. 早上好，感谢各位的盛情邀请。`,
       `2. 很高兴再次来到 IBM Think 大会。`,
@@ -19999,7 +19999,7 @@ export const speechTranscripts: Record<string, SpeechTranscript> = {
       `2 Source: “Singtel launches Southeast Asia’s first nationwide quantum-safe network, ready for enterprise trials”, Singtel, 8 Aug 2024.`,
     ],
     paragraphsJa: [
-      `IBM THINK SINGAPORE 2024 における デジタル開発・情報大臣 MRS JOSEPHINE TEO の開会挨拶（2024年8月15日）`,
+      `IBM THINK SINGAPORE 2024 における デジタル発展・情報大臣 MRS JOSEPHINE TEO の開会挨拶（2024年8月15日）`,
       `IBM Consulting 上級副社長兼最高執行責任者 Mohamad Ali 氏、IBM アジア太平洋ゼネラルマネージャー Hans Dekkers 氏、IBM Consulting APAC ゼネラルマネージャー兼マネージングパートナー Juhi McClelland 氏、IBM ASEAN ゼネラルマネージャー兼テクノロジーリーダー Catherine Lian 氏、ご列席の皆さま、`,
       `1. おはようございます。ご丁寧なご招待、誠にありがとうございます。`,
       `2. IBM Think Conference に再びお伺いできて嬉しく思います。`,
@@ -20832,7 +20832,7 @@ export const speechTranscripts: Record<string, SpeechTranscript> = {
       `第二，与微软等伙伴合作——面向数字化程度更成熟的企业。你们拥有不同的数据来源、不同的数字解决方案和独特需求，业务可能跨越不同地区和市场，解决方案可能需要更多定制化支持。我们将支持更成熟的中小企业开发自有解决方案。此类企业拥有更多资源和能力，有助于降低风险、提高成功概率并快速扩展。我鼓励有此想法的企业善用"数字领军企业生成式 AI 计划"（Gen AI for Digital Leaders Programme），充分利用这些资源。一旦解决方案开发完成，IMDA 已承诺提供所需的资金支持以助力方案扩展。我们预计未来两年将有逾 200 家企业从这一更成熟的计划中受益。`,
       `我提到了对科技专业人才进行再培训和技能提升，这是我们正在大力推进的工作。借助微软等行业合作伙伴的支持，我们计划在未来三年内，对约 1.8 万名科技专业人才在 AI、软件工程、云计算和移动技术等新兴领域进行技能提升和再培训。这一点至关重要，因为人才是赋能下一版本数字经济的核心资源。因此，如果你们的员工有意愿，请善用政府为支持科技团队再培训和技能提升而提供的各项资源。我们将在下周的发布会上分享更多细节。`,
       `在座各位都是各自领域的领军者，跨越各行各业——包括餐饮业（FnB）等传统行业——积极拥抱数字化，创造属于自己的未来。专家们说："没有夕阳产业，只有夕阳思维。"我向各位致敬，并欢迎大家善用我们正在推出的各项计划。你永远不知道，你所创造的某个解决方案何时会产生深远影响，让我们的旗帜飘扬、在新加坡以外掀起浪潮。我期待与大家携手共创这一未来。`,
-      `最后，MCI 将进行更名。在新加坡，更名并非单纯形式——我们也希望借此体现我们已在推进并将在未来持续聚焦的工作重心。我们即将更名为 MDDI，即数字发展和信息部（Ministry of Digital Development and Information）的缩写。希望下次与大家见面时，我已启动让 AI 生成的联合部长代我发言的项目。`,
+      `最后，MCI 将进行更名。在新加坡，更名并非单纯形式——我们也希望借此体现我们已在推进并将在未来持续聚焦的工作重心。我们即将更名为 MDDI，即数码发展及新闻部（Ministry of Digital Development and Information）的缩写。希望下次与大家见面时，我已启动让 AI 生成的联合部长代我发言的项目。`,
       `谢谢大家。`,
       `演讲 PDF 版本`,
     ],
@@ -20914,7 +20914,7 @@ export const speechTranscripts: Record<string, SpeechTranscript> = {
       `新加坡数字经济目前贡献约70%的GDP，增速超越其他行业；科技从业者总数达21万人，较五年前增加约2万人，但仍有至少1万个岗位空缺。`,
       `与微软及IMDA联合推出的"AI Pinnacle"计划，面向一般中小企业将AI嵌入现有数字解决方案，并通过"面向数字领导者的生成式AI计划"为成熟企业提供定制化支持，IMDA承诺提供规模化资金，预计两年内逾200家企业受益。`,
       `政府与微软计划在未来三年内对约1.8万名科技专业人员开展AI、软件工程、云计算及移动技术方面的技能提升与再培训。`,
-      `新闻、通讯及信息部（MCI）将更名为数字发展与信息部（MDDI），以体现其持续深化的数字发展职能。`,
+      `新闻、通讯及信息部（MCI）将更名为数码发展及新闻部（MDDI），以体现其持续深化的数字发展职能。`,
     ],
     tldrEn: [
       `Singapore's Digital Enterprise Blueprint (DEB), set to launch at end of May 2024, organises enterprise digitalisation around four pillars: Be Smarter (AI and genAI adoption), Scale Faster (interoperable cloud-native infrastructure), Be Safer (cybersecurity), and expanding the tech workforce.`,
@@ -23747,7 +23747,7 @@ export const speechTranscripts: Record<string, SpeechTranscript> = {
       `27. 谢谢。`,
     ],
     paragraphsJa: [
-      `Josephine Teo デジタル開発・情報大臣によるスピーチ、Lianhe Zaobao 新中フォーラム 2024 にて（2024年10月11日）`,
+      `Josephine Teo デジタル発展・情報大臣によるスピーチ、Lianhe Zaobao 新中フォーラム 2024 にて（2024年10月11日）`,
       `「未来都市のガバナンスとイノベーション」`,
       `SPH Media 総裁 陳英傑氏`,
       `华文媒体集団 社長 李慧玲氏`,
@@ -24493,7 +24493,7 @@ export const speechTranscripts: Record<string, SpeechTranscript> = {
     fetchedAt: `2026-06-21`,
     source: 'mddi-newsroom',
     paragraphs: [
-      `数码发展与新闻部长杨莉明女士在2025年新加坡电脑学会晚宴暨科技领袖奖颁奖典礼上的开幕致辞（2025年5月9日）`,
+      `数码发展及新闻部长杨莉明女士在2025年新加坡电脑学会晚宴暨科技领袖奖颁奖典礼上的开幕致辞（2025年5月9日）`,
       `新加坡电脑学会会长林美君女士，`,
       `高级政务部长陈杰豪先生，`,
       `各位嘉宾，`,
@@ -24621,7 +24621,7 @@ export const speechTranscripts: Record<string, SpeechTranscript> = {
       `Have a great evening!`,
     ],
     paragraphsJa: [
-      `デジタル開発・情報担当大臣 Josephine Teo 女史による、SCS Gala Dinner & Tech Leader Awards 2025 における開会挨拶（2025年5月9日）`,
+      `デジタル発展・情報担当大臣 Josephine Teo 女史による、SCS Gala Dinner & Tech Leader Awards 2025 における開会挨拶（2025年5月9日）`,
       `シンガポールコンピュータ学会会長 Lim Bee Kwan 女史、`,
       '上級国務大臣 Tan Kiat How 氏、',
       `ご来賓の皆様、`,
@@ -24799,7 +24799,7 @@ export const speechTranscripts: Record<string, SpeechTranscript> = {
       `首先，我谨向DHL与《商业时报》近四十年来携手合作主办新加坡商业奖表示祝贺。`,
       `a. 就合作关系而言，这段合作已经超越了许多其他合作。`,
       `b. 我们都很高兴商业界能够定期聚集在一起，表彰卓越成就，庆祝各位领袖的贡献。据我所知，即便在疫情期间，SBA依然如期举办，你们继续表彰和褒奖其中的杰出人士。`,
-      `正如许多人所知，总理黄循财三天前宣布，我所在的部门——通讯及新闻部（MCI）将更名为数字发展与新闻部（MDDI）。这是去年将MCI与隶属于总理公署的智慧国数字政府署合并这一重大举措的延续。`,
+      `正如许多人所知，总理黄循财三天前宣布，我所在的部门——通讯及新闻部（MCI）将更名为数码发展及新闻部（MDDI）。这是去年将MCI与隶属于总理公署的智慧国数字政府署合并这一重大举措的延续。`,
       `对我们政府内部人士而言，这一变化其实毫不意外。`,
       `a. 这实际上是部门工作范畴持续扩展的自然延伸。`,
       `b. 我们各团队携手与其他机构合作，就数字经济协议开展谈判，建设数字基础设施与公共服务，投资数字领域的研发，提升企业数字能力，增强数字安全与韧性，打击网络危害，并加强弱势群体的数字包容。`,
@@ -25091,7 +25091,7 @@ export const speechTranscripts: Record<string, SpeechTranscript> = {
       `연설문 PDF 버전`,
     ],
     tldr: [
-      `新加坡通讯与新闻部（MCI）正式更名为数字发展与新闻部（MDDI），以反映其统筹数字经济协议、基础设施、研发及网络安全等扩大职能的现实。`,
+      `新加坡通讯与新闻部（MCI）正式更名为数码发展及新闻部（MDDI），以反映其统筹数字经济协议、基础设施、研发及网络安全等扩大职能的现实。`,
       `新加坡人均GDP自1960年约400美元增长至今约80,000美元，增幅达200倍，过去十年实际中位工资年均增长约2%，维持生产力提升被列为AI成为国家战略重点的核心理由。`,
       `政府强调须推动AI在前沿企业以外广泛普及，使其惠及多个行业，而非仅停留于少数炫目案例，以实现工资与生活水平的持续提升。`,
       `新加坡政府支出约占GDP的18%，不及经合组织平均水平的一半，99%的政府对公众交易已可线上完成；AI被用于提升政府服务的效率、精准度与个性化水平。`,
@@ -25109,7 +25109,7 @@ export const speechTranscripts: Record<string, SpeechTranscript> = {
       `Companies including Google, Microsoft, Oracle, and Amazon have announced plans to equip Singapore's local workforce with AI skills, and the government welcomes further industry partnerships under its vision of “AI for the Public Good for Singapore and the World.”`,
     ],
     tldrJa: [
-      `シンガポールの情報通信省（MCI）は、デジタル経済協定、インフラ、R&D、およびサイバーセキュリティを包括する拡大された権限を反映し、デジタル開発・情報省（MDDI）に改称されました。`,
+      `シンガポールの情報通信省（MCI）は、デジタル経済協定、インフラ、R&D、およびサイバーセキュリティを包括する拡大された権限を反映し、デジタル発展・情報省（MDDI）に改称されました。`,
       `シンガポールの一人当たりGDPは、1960年の約400米ドルから現在の約80,000米ドルへと200倍に成長し、実質中位賃金も過去10年間で年率約2%の上昇を示してきました。こうした実績が、生産性の継続的な向上を目的としてAIを国家戦略上の優先課題と位置づける政府の主張を裏付けています。`,
       `政府は、賃金の継続的な上昇と生活水準の向上を実現するためには、一部の印象的なユースケースにとどまることなく、AIが先端企業を超えて複数の産業全体に幅広く普及しなければならないと強調しました。`,
       `政府支出はGDPの約18%であり、OECD平均の半分以下にとどまっています。また、行政手続きの99%がすでにデジタルで完結可能となっており、政府の効率性・精度・パーソナライゼーションの向上にAIが活用されています。`,
@@ -27707,7 +27707,7 @@ export const speechTranscripts: Record<string, SpeechTranscript> = {
     fetchedAt: `2026-06-21`,
     source: 'mddi-newsroom',
     paragraphs: [
-      `普杰立博士（Dr Janil Puthucheary）于2024年11月15日"创新日2024"上的开幕致辞，他现任数字发展与信息部及卫生部高级政务部长，并兼任GovTech主管部长`,
+      `普杰立博士（Dr Janil Puthucheary）于2024年11月15日"创新日2024"上的开幕致辞，他现任数码发展及新闻部及卫生部高级政务部长，并兼任GovTech主管部长`,
       `1. 早上好，欢迎各位来到创新日。`,
       `2. 今天有许多令人振奋的亮点：`,
       `a. 我们的公务员将展示他们在LAUNCH!计划下开发的原型。LAUNCH!是由GovTech牵头、联合各政府机构及行业合作伙伴（包括AWS、Databricks、Microsoft、Outsystems和Snowflake）推出的一项全新创新计划。`,
@@ -27763,7 +27763,7 @@ export const speechTranscripts: Record<string, SpeechTranscript> = {
       `16. To conclude, I would like to thank everyone involved in Innovation Day for your commitment and for embodying the National AI vision of a trusted, impactful, AI-enabled public service. This journey is just the beginning, and I am excited to see how each of you continues to lead in AI, driving innovation for a better public service and a better Singapore.`,
     ],
     paragraphsJa: [
-      '2024年11月15日開催のInnovation Day 2024におけるデジタル開発・情報省兼保健省上級国務大臣、GovTech担当大臣 DR JANIL PUTHUCHEARYによる開会挨拶',
+      '2024年11月15日開催のInnovation Day 2024におけるデジタル発展・情報省兼保健省上級国務大臣、GovTech担当大臣 DR JANIL PUTHUCHEARYによる開会挨拶',
       `皆さん、おはようございます。Innovation Dayへようこそ。`,
       `本日は多くの見どころがございます。`,
       `a. 本日は、LAUNCH!プログラムのもとで開発されたプロトタイプを職員が披露いたします。LAUNCH!は、GovTechが主導し、AWS、Databricks、Microsoft、Outsystems、Snowflakeなど各省庁および民間パートナーと連携して立ち上げた新しいイノベーション・プログラムです。`,
@@ -28095,7 +28095,7 @@ export const speechTranscripts: Record<string, SpeechTranscript> = {
     fetchedAt: `2026-06-21`,
     source: 'mddi-newsroom',
     paragraphs: [
-      `数字发展与信息部高级政务部长普杰立博士（Dr Janil Puthucheary）在新加坡 Meta Llama 孵化器计划启动仪式上的开幕致辞（2025年3月13日）`,
+      `数码发展及新闻部高级政务部长普杰立博士（Dr Janil Puthucheary）在新加坡 Meta Llama 孵化器计划启动仪式上的开幕致辞（2025年3月13日）`,
       `1. 欢迎出席 Meta Llama 孵化器计划在新加坡的启动仪式。`,
       `2. 本计划收到了逾100份申请，其中不乏许多极具创意的提案，令我深感振奋。`,
       `3. 在座的各支团队，接下来六个月，你们将与导师及合作伙伴携手踏上一段意义非凡的旅程，借助领先的 AI 工具开发应对现实挑战的解决方案。这将是一段令人振奋、充满意义的旅程！`,
@@ -28151,7 +28151,7 @@ export const speechTranscripts: Record<string, SpeechTranscript> = {
       `25. Thank you all very much.`,
     ],
     paragraphsJa: [
-      'シンガポールにおけるMetaのLlama Incubatorプログラム立ち上げに際するJanil Puthucheary上級国務大臣（デジタル開発・情報担当）の開会挨拶（2025年3月13日）',
+      'シンガポールにおけるMetaのLlama Incubatorプログラム立ち上げに際するJanil Puthucheary上級国務大臣（デジタル発展・情報担当）の開会挨拶（2025年3月13日）',
       `シンガポールでのMetaのLlama Incubatorプログラム立ち上げへようこそ。`,
       `100件を超える応募があり、非常に興味深い提案が数多く寄せられたことに、このプログラムに対する皆さんの熱意を感じ、大変心強く思います。`,
       `ここにいるチームの皆さんは、これから6か月間にわたってメンターやパートナーとともに意義深い旅に踏み出し、最先端のAIツールを活用して現実世界の課題に対応するソリューションを開発することになります。きっとワクワクし、意義深い旅となるでしょう！`,
@@ -28249,7 +28249,7 @@ export const speechTranscripts: Record<string, SpeechTranscript> = {
     fetchedAt: `2026-06-21`,
     source: 'mddi-newsroom',
     paragraphs: [
-      `大家下午好。很高兴今天能与大家相聚。我想分享一些政府正在密切关注的技术趋势，尤其是在我负责的数字发展和信息部（MDDI）以及卫生部的职能范围内。这些趋势围绕人工智能展开，包括当前引发广泛关注的智能体AI（agentic AI），以及通过机器、自动化和机器人与物理世界交互的具身AI（embodied AI）。听起来像科幻小说，但这些技术在今天不同领域的实践中已有所呈现。我们看到许多令人振奋的机会，可以利用AI应对极具挑战性的社会问题——从气候变化到疾病预测，再到药物研发，也许在我们有生之年还能治愈某些癌症。这意味着全球无数人的生活质量将得到改善。`,
+      `大家下午好。很高兴今天能与大家相聚。我想分享一些政府正在密切关注的技术趋势，尤其是在我负责的数码发展及新闻部（MDDI）以及卫生部的职能范围内。这些趋势围绕人工智能展开，包括当前引发广泛关注的智能体AI（agentic AI），以及通过机器、自动化和机器人与物理世界交互的具身AI（embodied AI）。听起来像科幻小说，但这些技术在今天不同领域的实践中已有所呈现。我们看到许多令人振奋的机会，可以利用AI应对极具挑战性的社会问题——从气候变化到疾病预测，再到药物研发，也许在我们有生之年还能治愈某些癌症。这意味着全球无数人的生活质量将得到改善。`,
       `当然，在新加坡，AI在经济领域也带来了巨大潜力。AI无法取代你的工作，这一点很明确，但它有助于通过自动化部分任务来简化许多工作，并赋能不同领域的工作者——无论你是作为软件工程师部署代码、作为客户关系经理对接客户，还是在科研或临床环境中工作。`,
       `世界各地的创新中心，包括中国、美国和欧洲部分地区，正在AI和机器人领域快速推进。那么，身处新加坡，我们该如何看待这一问题？今年是我们独立60周年。与世界上许多更大的国家和文明相比，我们是一个非常年轻的国家，但我们已经取得了进步。新加坡对此采取非常务实的态度——只要我们勤奋努力、保持智慧、灵活应变、团结一致，机遇就在眼前。我们希望让所有人都认识到，新技术带来的挑战与第一波技术浪潮——互联网、社交媒体、云计算和企业软件——并无本质区别。每一波技术浪潮都蕴含着机遇。对我们而言，如何建立基础设施和投资生态系统，帮助企业和工作者充分利用这项技术，使新加坡持续与世界保持关联？`,
       `为此，我们首先通过中小企业计划（如SMEs Go Digital）帮助企业建立数字化基础。我们也与星展银行（DBS Bank）在这方面紧密合作。`,
@@ -28565,7 +28565,7 @@ export const speechTranscripts: Record<string, SpeechTranscript> = {
     fetchedAt: `2026-06-21`,
     source: 'mddi-newsroom',
     paragraphs: [
-      `陈杰豪先生（数字发展与信息部高级政务部长）在 Spark GenAI 计划启动仪式上的主题演讲（2024年11月29日）`,
+      `陈杰豪先生（数码发展及新闻部高级政务部长）在 Spark GenAI 计划启动仪式上的主题演讲（2024年11月29日）`,
       `许家祥先生，星展银行（DBS）企业与中小企业银行业务主管`,
       `尊贵的各位来宾`,
       `女士们，先生们`,
@@ -28617,7 +28617,7 @@ export const speechTranscripts: Record<string, SpeechTranscript> = {
       `17. Thank you very much, and I look forward to wonderful partnerships moving forward.`,
     ],
     paragraphsJa: [
-      'デジタル開発・情報省上級国務大臣タン・キアット・ハウ氏による基調講演（Spark GenAI プログラム発足式、2024年11月29日）',
+      'デジタル発展・情報省上級国務大臣タン・キアット・ハウ氏による基調講演（Spark GenAI プログラム発足式、2024年11月29日）',
       `コー・カー・シオン氏、DBS 法人・中小企業バンキング部門長`,
       `ご来賓の皆様`,
       `ご列席の皆様`,
@@ -30838,7 +30838,7 @@ export const speechTranscripts: Record<string, SpeechTranscript> = {
       `在这样的环境下，MDDI大家庭有两项重要的优先工作。`,
       `第一，在更加数字化的未来——尤其是在人工智能（AI）时代——创造并把握增长机遇；`,
       `第二，巩固信任，维护我们数字与信息空间的安全。`,
-      `这正是我们将名称从通讯及新闻部（MCI）更名为数字发展与信息部（MDDI）的原因。随着我们的生活日益数字化、世界愈发充满不确定性，这一更名彰显了帮助新加坡汇聚数字进步成果、同时维护信息空间互信、凝聚社会人心的更清晰使命。`,
+      `这正是我们将名称从通讯及新闻部（MCI）更名为数码发展及新闻部（MDDI）的原因。随着我们的生活日益数字化、世界愈发充满不确定性，这一更名彰显了帮助新加坡汇聚数字进步成果、同时维护信息空间互信、凝聚社会人心的更清晰使命。`,
       `AI预计将颠覆几乎每个行业，改变全球劳动力市场所需的技能组合。新加坡也无法置身事外。AI素养将成为每个人的核心能力。`,
       `AI素养不仅仅是学会编程或理解算法，而是要建立一套能力基础，使个人能够自信地在AI深度融合的世界中驾驭前行。`,
       `我们正采取多管齐下的策略。`,
@@ -30859,7 +30859,7 @@ export const speechTranscripts: Record<string, SpeechTranscript> = {
       `随着我们在工作中更广泛、更深入地使用技术，我欣慰地得知我们的学者们体现了建设更美好新加坡的精神，例如 Jaden——他在完成学业后希望加入 CSA（网络安全局）。在新加坡警察部队服役期间，Jaden 协助过不幸的诈骗受害者度过难关，并受到 ScamShield 等数字工具的启发——ScamShield 正是为保护新加坡人免遭诈骗而开发的——这促使他立志在 CSA 开展职业生涯，以强化新加坡的网络防御。我们看到许多学者正踏上令人振奋的自身转型之旅，并开始应用技术造福更广泛的社区。`,
       `从根本上说，这并不仅仅关乎技术和工具。`,
       `这关乎我们的思维方式和态度——以科技为先，驱动自己不断改进做事方式。自计算机化和数字化的早期阶段起，这便是我们的基因所在。新加坡人需要拥抱这种思维方式和态度，才能充分受益于新一波人工智能技术浪潮。`,
-      `尽管技术采用为增长带来了巨大潜力，尤其是对新加坡这样的小型开放经济体而言，但我们必须努力确保技术不会加剧社会中的分化。这正是 MDDI（数字发展与新闻部）致力于营造更安全的网络空间、建设更具数字包容性社会的工作如此重要的原因。`,
+      `尽管技术采用为增长带来了巨大潜力，尤其是对新加坡这样的小型开放经济体而言，但我们必须努力确保技术不会加剧社会中的分化。这正是 MDDI（数码发展及新闻部）致力于营造更安全的网络空间、建设更具数字包容性社会的工作如此重要的原因。`,
       `第一，在数字时代人们获取信息的方式不断演变的背景下，我们必须创新政府信息的有效传递方式，以凝聚人心，打造一个更加团结的国家，并维护一个服务于所有人的可信数字信息生态系统。`,
       `我们年轻一代的信息学者，例如 Li Xian，带来了在社交媒体时代成长所塑造的全新视角。据我了解，她喜欢通过 Instagram 等社交媒体平台以不同方式与朋友和家人保持联系——这提醒我们，有效的传播方式必须与人们今天的生活和互动方式同步演进。`,
       `对于我们现有的官员来说，提升技能、深化对新趋势的理解同样重要。Heikel 目前在法律部负责传播工作，他即将赴伦敦大学攻读政治传播学硕士学位。他的例子表明，持续学习至关重要，尤其是在瞬息万变的传播环境中。`,
@@ -31349,7 +31349,7 @@ export const speechTranscripts: Record<string, SpeechTranscript> = {
       `Thank you.`,
     ],
     paragraphsJa: [
-      `2025年4月15日のサイバーエッセンシャルズおよびサイバートラスト・マークの拡張ローンチイベントでのデジタル開発・情報担当シニアミニスター Tan Kiat How による開会挨拶`,
+      `2025年4月15日のサイバーエッセンシャルズおよびサイバートラスト・マークの拡張ローンチイベントでのデジタル発展・情報担当シニアミニスター Tan Kiat How による開会挨拶`,
       `著名なご来賓`,
       `皆様`,
       `こんにちは。本日、サイバースペースの保護とともに取り組める対策についての非常に重要なテーマのために、多くの皆様にお集まりいただき、大変嬉しく思います。`,

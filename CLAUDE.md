@@ -241,7 +241,7 @@ npx prettier --write src/
 >
 > 1. **源码层**（即时反馈）：`npm run check:zh-tw-renderers` 静态扫 `src/data/` 和 `src/utils/`，找出有 `lang === 'zh-tw'` 但没 `toTraditional` / `pickLocalized` 的文件。挂在 `npm run check` 里，PR 时跑。
 > 2. **构建层**（构建后真值校验）：`npm run check:i18n`（带 `--all` 跑所有 5 个 locale）扫 `dist/<lang>/**/*.html` 找异种文字残留。挂在 `npm run check:dist` 里，CI 跑。
-> 3. **架构层**（部委名保护）：`npm run check:zh-tw-misconversion` 扫 `dist/zh-tw/**/*.html` 找已知部委名误转 pattern（如 `數字發展與資訊部` → 应为 `數字發展與信息部`）。挂在 `check:dist` 和 weekly evals。
+> 3. **架构层**（部委名保护）：`npm run check:zh-tw-misconversion` 扫 `dist/zh-tw/**/*.html` 找已知部委名误转 pattern（如 `數字發展與資訊部` / `數位發展及新聞部` → 应为官方名 `數碼發展及新聞部`）。挂在 `check:dist` 和 weekly evals。
 > 4. **单元测试**：[`scripts/lib/__tests__/opencc-protected-terms.test.ts`](scripts/lib/__tests__/opencc-protected-terms.test.ts) 13 测试覆盖 PROTECTED_TERMS pipeline，确保未来重构不破坏保护。
 >
 > **加新部委名 / sg-specific 词的流程**：

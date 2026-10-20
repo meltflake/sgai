@@ -51,7 +51,9 @@ interface Misconversion {
 // source corpus only ever uses the 信息 / 社区 forms. Any occurrence
 // of the resp/ 資訊 / 社群 form in dist/zh-tw/ is a real bug.
 const MISCONVERSIONS: ReadonlyArray<Misconversion> = [
-  { pattern: '數字發展與資訊部', expected: '數字發展與信息部', note: 'MDDI full name' },
+  { pattern: '數字發展與資訊部', expected: '數碼發展及新聞部', note: 'MDDI full name' },
+  { pattern: '數字發展與信息部', expected: '數碼發展及新聞部', note: 'MDDI non-official name' },
+  { pattern: '數位發展及新聞部', expected: '數碼發展及新聞部', note: 'MDDI official name, s2twp misconversion' },
   { pattern: '資訊通訊媒體發展部', expected: '信息通信媒體發展部', note: 'IMDA variant (older)' },
   { pattern: '資訊通訊媒體部', expected: '信息通信媒體部', note: 'IMDA variant' },
   { pattern: '資訊通訊及藝術部', expected: '信息通信及藝術部', note: 'MICA variant' },
