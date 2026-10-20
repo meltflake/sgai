@@ -3601,37 +3601,6 @@ Worth watching going forward: **when MAS will allow GenAI in direct customer-fac
         updated: '2026-08-01',
         addedAt: '2026-08-03',
       },
-      // i18n-allow-unpaired — auto-discovered stub; complete required fields on promotion
-      {
-        id: 'anthropic',
-        name: 'Anthropic',
-        nameEn: 'Anthropic',
-        nameJa: 'Anthropic',
-        nameKo: 'Anthropic',
-        description:
-          'Anthropic宣布将5%的股份转入新成立的公益基金,用于解决AI对劳动力市场的影响等社会公益问题。该基金采用有限责任公司形式,可根据公司估值增长增加至7%。此举反映了公司对AI安全和社会责任的承诺,旨在缓解公众对AI可能导致大规模失业的担忧。',
-        descriptionEn:
-          "Anthropic announced plans to establish a public benefit fund with 5% of company shares to address public good issues, particularly labor market impacts from AI. The fund will operate as an LLC and could grow to 7% based on company valuation increases. The initiative reflects Anthropic's commitment to AI safety and social responsibility, aimed at mitigating public concerns about potential job displacement from AI adoption.",
-        descriptionJa:
-          'Anthropicは新たに設立された公益基金に5%の株式を移すことを発表しました。この基金はAI労働力市場への影響などの社会公益問題の解決に用いられます。基金は有限責任会社形式を採用しており、会社の評価額の成長に応じて7%までの増加が可能です。この措置はAI安全性と社会責任に対する会社のコミットメントを反映しており、AIによる大規模失業の可能性に対する一般市民の懸念を緩和することを目指しています。',
-        descriptionKo:
-          'Anthropic이 5% 지분을 새로 설립된 공익 기금으로 양도하겠다고 발표했습니다. 이 기금은 AI의 노동 시장 영향 등 사회 공익 문제 해결을 위해 사용됩니다. 기금은 유한책임회사 형태로 운영되며, 회사 기업가치 성장에 따라 7%까지 증액될 수 있습니다. 이는 AI 안전 및 사회 책임에 대한 Anthropic의 약속을 반영하며, AI로 인한 대규모 실업 가능성에 대한 대중의 우려를 완화하려는 의도입니다.',
-        url: 'https://www.businesstimes.com.sg/companies-markets/anthropic-shift-some-shares-new-public-good-fund',
-        entityType: 'partner',
-        status: 'active',
-        sources: [
-          // i18n-allow-unpaired — provenance for the pending-review stub above
-          {
-            label: 'Business Times Tech',
-            url: 'https://www.businesstimes.com.sg/companies-markets/anthropic-shift-some-shares-new-public-good-fund',
-            date: '2026-10-19',
-          },
-        ],
-        updated: '2026-10-20',
-        _pendingReview: true,
-        discoveryNote:
-          'Auto-discovered via Business Times Tech; headline: "Anthropic to shift some shares into new public good fund"; confidence=high; entity=high',
-      },
     ],
   },
   {
@@ -9111,6 +9080,37 @@ A take: this is heavier than a “regional HQ” announcement. A regional HQ is 
           },
         ],
         updated: '2026-08-11',
+      },
+      // i18n-allow-unpaired — auto-discovered stub; complete required fields on promotion
+      {
+        id: 'anthropic',
+        name: 'Anthropic',
+        nameEn: 'Anthropic',
+        nameJa: 'Anthropic',
+        nameKo: 'Anthropic',
+        description:
+          'Claude 模型开发商。2026 年 10 月 14 日在新加坡设亚太第五个办公室，并与 MDDI 签署备忘录，覆盖 AI 安全、模型评测、AI 采用研究和公私部门负责任采用。',
+        descriptionEn:
+          'Developer of the Claude models. Opened its fifth Asia-Pacific office in Singapore on 14 October 2026 and signed an MOU with MDDI covering AI safety, model evaluation, research on AI adoption and responsible adoption across the public and private sectors.',
+        descriptionJa:
+          'Claude モデルの開発企業。2026 年 10 月 14 日にアジア太平洋で 5 番目となるシンガポール拠点を開設し、MDDI と AI 安全、モデル評価、AI 導入の研究、官民の責任ある導入を対象とする覚書を締結しました。',
+        descriptionKo:
+          'Claude 모델 개발사입니다. 2026년 10월 14일 아시아태평양 다섯 번째 사무소를 싱가포르에 열고, MDDI와 AI 안전, 모델 평가, AI 도입 연구, 공공·민간 부문의 책임 있는 도입을 다루는 양해각서를 체결했습니다.',
+        url: 'https://www.anthropic.com/',
+        entityType: 'partner',
+        status: 'active',
+        sources: [
+          // i18n-allow-unpaired — provenance for the pending-review stub above
+          {
+            label: 'EDB (Anthropic press release)',
+            url: 'https://www.edb.gov.sg/en/news-and-insights/anthropic-opens-singapore-office-and-signs-mou-with-government-of-singapore',
+            date: '2026-10-14',
+          },
+        ],
+        updated: '2026-10-21',
+        _pendingReview: true,
+        discoveryNote:
+          'Auto-discovered via Business Times (2026-10-19 share-fund story); rewritten from the 2026-10-14 EDB release on the Singapore office and MDDI MOU. Promote with a full profile (summary / whatItIs / aiRelevance) like the OpenAI entry.',
       },
       {
         id: 'sony-research',
