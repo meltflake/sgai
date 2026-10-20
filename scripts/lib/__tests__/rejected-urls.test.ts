@@ -4,7 +4,7 @@ import { mkdtempSync, writeFileSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 
-import { loadRejectedUrls, mergeRejectedUrls } from '../rejected-urls.ts';
+import { appendRejectedUrls, loadRejectedUrls, mergeRejectedUrls } from '../rejected-urls.ts';
 
 test('loadRejectedUrls: missing file → empty list', () => {
   assert.deepEqual(loadRejectedUrls('nope', '/definitely/missing/rejected-urls.json'), []);
@@ -52,4 +52,32 @@ test('mergeRejectedUrls: a domain-only reject does not leak into another domain'
   const tracker = new Set<string>();
   mergeRejectedUrls('tracker', tracker);
   assert.equal(tracker.has(blog), false);
+});
+
+// 2026-10-21: pipelines dropped AI-judge off-topic pages without recording
+// them, so the same five pages (a scholarship, a dialect drama, …) headed the
+// policies candidate list every month and used the whole --limit budget.
+test('appendRejectedUrls: creates the file, appends, and skips URLs already present', () => {
+  const dir = mkdtempSync(join(tmpdir(), 'rejected-urls-'));
+  const path = join(dir, 'sub', 'rejected-urls.json');
+  const n1 = appendRejectedUrls('x', [{ url: 'https://a/1', reason: 'off-topic', decidedAt: '2026-10-21' }], path);
+  const n2 = appendRejectedUrls(
+    'x',
+    [
+      { url: 'https://a/1', reason: 'off-topic', decidedAt: '2026-10-22' },
+      { url: 'https://a/2', reason: 'off-topic', decidedAt: '2026-10-22', ref: 'judge: not AI' },
+    ],
+    path
+  );
+  assert.equal(n1, 1);
+  assert.equal(n2, 1);
+  const all = loadRejectedUrls('x', path);
+  assert.deepEqual(
+    all.map((r) => [r.url, r.decidedAt]),
+    [
+      ['https://a/1', '2026-10-21'],
+      ['https://a/2', '2026-10-22'],
+    ]
+  );
+  rmSync(dir, { recursive: true, force: true });
 });

@@ -27,7 +27,7 @@ import { ensureClaudeAuthed } from '../../lib/llm.ts';
 import { scan, readExistingPolicyUrls } from './scan.ts';
 import { enrich } from './enrich.ts';
 import { emit } from './emit.ts';
-import { mergeRejectedUrls } from '../../lib/rejected-urls.ts';
+import { appendRejectedUrls, mergeRejectedUrls } from '../../lib/rejected-urls.ts';
 
 interface CliFlags {
   dryRun: boolean;
@@ -127,6 +127,7 @@ async function main(): Promise<void> {
     const { judgeAiRelevance } = await import('../../lib/judge-ai-relevance.ts');
     const kept: typeof enrichResult.enriched = [];
     let dropped = 0;
+    const offTopic: Array<{ url: string; reason: string }> = [];
     for (const e of enrichResult.enriched) {
       const verdict = await judgeAiRelevance(
         {
@@ -143,12 +144,21 @@ async function main(): Promise<void> {
       if (!verdict.relevant && verdict.confidence === 'high') {
         dropped += 1;
         process.stdout.write(`    ⊘ off-topic: ${e.candidate.sourceUrl} — ${verdict.reason.slice(0, 60)}\n`);
+        offTopic.push({ url: e.candidate.sourceUrl, reason: verdict.reason });
         continue;
       }
       kept.push(e);
     }
     enrichResult.enriched = kept;
     if (dropped > 0) process.stdout.write(`  AI gate: kept ${kept.length}, dropped ${dropped} off-topic\n`);
+    // Remember off-topic verdicts: the same unrelated MDDI pages headed the
+    // candidate list every month and used the whole --limit budget (2026-10-21).
+    const today = new Date().toISOString().slice(0, 10);
+    const recorded = appendRejectedUrls(
+      'policies',
+      offTopic.map((o) => ({ url: o.url, reason: 'off-topic', decidedAt: today, ref: o.reason.slice(0, 160) }))
+    );
+    if (recorded > 0) process.stdout.write(`  recorded ${recorded} off-topic URL(s) in the policies reject ledger\n`);
   }
 
   if (enrichResult.enriched.length === 0) {

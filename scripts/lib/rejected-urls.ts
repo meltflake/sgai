@@ -20,8 +20,8 @@
  * site" is a site-wide judgement, so it belongs in the shared file; reasons
  * that are about fit for one domain stay in that domain's file.
  */
-import { existsSync, readFileSync } from 'node:fs';
-import { resolve } from 'node:path';
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { dirname, resolve } from 'node:path';
 
 export interface RejectedUrl {
   url: string;
@@ -60,4 +60,21 @@ export function mergeRejectedUrls(domain: string, existing: Set<string>, path?: 
       : loadRejectedUrls(domain, path);
   for (const r of rejected) existing.add(r.url);
   return rejected.length;
+}
+
+/**
+ * Record pipeline-side rejections (e.g. the AI-relevance judge said "off-topic")
+ * so the same pages do not come back and use the next run's --limit budget
+ * (2026-10-21: five unrelated MDDI pages headed the policies list every month).
+ * Appends entries whose URL is not already in the file; returns how many.
+ */
+export function appendRejectedUrls(domain: string, entries: RejectedUrl[], path = rejectedUrlsPath(domain)): number {
+  if (entries.length === 0) return 0;
+  const existing = loadRejectedUrls(domain, path);
+  const have = new Set(existing.map((e) => e.url));
+  const fresh = entries.filter((e) => !have.has(e.url) && have.add(e.url));
+  if (fresh.length === 0) return 0;
+  mkdirSync(dirname(path), { recursive: true });
+  writeFileSync(path, JSON.stringify([...existing, ...fresh], null, 2) + '\n');
+  return fresh.length;
 }
