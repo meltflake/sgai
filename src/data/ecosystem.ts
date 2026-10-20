@@ -9081,36 +9081,132 @@ A take: this is heavier than a “regional HQ” announcement. A regional HQ is 
         ],
         updated: '2026-08-11',
       },
-      // i18n-allow-unpaired — auto-discovered stub; complete required fields on promotion
       {
         id: 'anthropic',
         name: 'Anthropic',
-        nameEn: 'Anthropic',
         nameJa: 'Anthropic',
         nameKo: 'Anthropic',
+        nameEn: 'Anthropic',
         description:
-          'Claude 模型开发商。2026 年 10 月 14 日在新加坡设亚太第五个办公室，并与 MDDI 签署备忘录，覆盖 AI 安全、模型评测、AI 采用研究和公私部门负责任采用。',
-        descriptionEn:
-          'Developer of the Claude models. Opened its fifth Asia-Pacific office in Singapore on 14 October 2026 and signed an MOU with MDDI covering AI safety, model evaluation, research on AI adoption and responsible adoption across the public and private sectors.',
-        descriptionJa:
-          'Claude モデルの開発企業。2026 年 10 月 14 日にアジア太平洋で 5 番目となるシンガポール拠点を開設し、MDDI と AI 安全、モデル評価、AI 導入の研究、官民の責任ある導入を対象とする覚書を締結しました。',
+          'Claude 模型开发商：2026 年 10 月在新加坡设亚太第五个办公室，并与 MDDI 签署 AI 安全与模型评测合作备忘录',
         descriptionKo:
-          'Claude 모델 개발사입니다. 2026년 10월 14일 아시아태평양 다섯 번째 사무소를 싱가포르에 열고, MDDI와 AI 안전, 모델 평가, AI 도입 연구, 공공·민간 부문의 책임 있는 도입을 다루는 양해각서를 체결했습니다.',
-        url: 'https://www.anthropic.com/',
+          'Claude 모델 개발사: 2026년 10월 싱가포르에 아시아태평양 다섯 번째 사무소를 열고 MDDI와 AI 안전·모델 평가 협력 MOU 체결',
+        descriptionJa:
+          'Claude モデルの開発企業：2026 年 10 月にアジア太平洋で 5 番目となるシンガポール拠点を開設し、MDDI と AI 安全・モデル評価の覚書を締結',
+        descriptionEn:
+          'Developer of the Claude models: opened its fifth Asia-Pacific office in Singapore in October 2026 and signed an MOU with MDDI on AI safety and model evaluation',
         entityType: 'partner',
         status: 'active',
-        sources: [
-          // i18n-allow-unpaired — provenance for the pending-review stub above
+        scale: '亚太第五个办公室；GovTech 1,500+ 名工程与技术人员使用 Claude Code',
+        scaleKo: '아시아태평양 다섯 번째 사무소; GovTech 엔지니어·기술 인력 1,500명 이상이 Claude Code 사용',
+        scaleJa: 'アジア太平洋で 5 番目の拠点；GovTech のエンジニア・技術職 1,500 人以上が Claude Code を利用',
+        scaleEn: 'Fifth Asia-Pacific office; 1,500+ GovTech engineers and technical staff use Claude Code',
+        summary:
+          'Anthropic 于 2026 年 10 月 14 日在新加坡开设亚太第五个办公室，同日与数码发展及新闻部（MDDI）签署备忘录，合作范围包括 AI 安全、安保与模型评测，AI 采用及其影响的研究，以及公共和私营部门的负责任采用。它与新加坡的合作始于 2023 年 IMDA 的生成式 AI 评测沙盒。',
+        summaryKo:
+          'Anthropic은 2026년 10월 14일 싱가포르에 아시아태평양 다섯 번째 사무소를 열고, 같은 날 디지털개발정보부(MDDI)와 양해각서를 체결했습니다. 협력 범위는 AI 안전·보안·모델 평가, AI 도입과 그 영향에 관한 연구, 공공·민간 부문의 책임 있는 도입입니다. 싱가포르와의 협력은 2023년 IMDA 생성형 AI 평가 샌드박스에서 시작됐습니다.',
+        summaryJa:
+          'Anthropic は 2026 年 10 月 14 日、アジア太平洋で 5 番目となるシンガポール拠点を開設し、同日にデジタル開発・情報省（MDDI）と覚書を締結しました。協力範囲は AI の安全・セキュリティ・モデル評価、AI 導入とその影響の研究、官民の責任ある導入です。シンガポールとの協力は 2023 年の IMDA 生成 AI 評価サンドボックスに始まります。',
+        summaryEn:
+          "Anthropic opened its fifth Asia-Pacific office in Singapore on 14 October 2026 and on the same day signed an MOU with the Ministry of Digital Development and Information (MDDI). The cooperation covers AI safety, security and model evaluation; research on AI adoption and its impact; and responsible adoption across the public and private sectors. Its work with Singapore began in 2023 in IMDA's Generative AI Evaluation Sandbox.",
+        whatItIs: `Anthropic 在新加坡的布局（据 2026 年 10 月 14 日 Anthropic 新闻稿）：
+
+- **办公室**：新加坡是其亚太第五个办公室
+- **MDDI 备忘录**：由 MDDI 常任秘书 Chng Kai Fong 与 Anthropic 联合创始人 Ben Mann 在新加坡国际网络安全周期间签署，部长杨莉明见证
+- **合作内容**：与新加坡的 AI 安全、安保和保证机构就模型评测、测试标准和事件响应开展技术交流；提升 AI 技能、帮助中小企业负责任地采用 AI、支持公务员 AI 能力建设；向政府分享研究与数据（含 Anthropic Economic Index）
+- **既有合作**：2023 年加入 IMDA 与 AI Verify Foundation 的生成式 AI 评测沙盒，之后合作做英语、华语、马来语、淡米尔语的红队测试
+- **本地使用**：GovTech 1,500 多名工程与技术人员使用 Claude Code；网络安全局在探索用 Claude 加强网络防御；DBS、GIC、Grab、Sea 等企业在用`,
+        whatItIsKo: `싱가포르에서의 Anthropic 현황(2026년 10월 14일 Anthropic 보도자료 기준):
+
+- **사무소**: 싱가포르는 아시아태평양 다섯 번째 사무소
+- **MDDI 양해각서**: 싱가포르 국제 사이버 주간 기간에 MDDI 사무차관 Chng Kai Fong과 Anthropic 공동창업자 Ben Mann이 서명했고, Josephine Teo 장관이 참관
+- **협력 내용**: 싱가포르의 AI 안전·보안·보증 기관과 모델 평가, 테스트 기준, 사고 대응에 관한 기술 교류; AI 역량 강화, 중소기업의 책임 있는 AI 도입 지원, 공무원 AI 역량 구축 지원; 정부와 연구·데이터 공유(Anthropic Economic Index 포함)
+- **기존 협력**: 2023년 IMDA와 AI Verify Foundation의 생성형 AI 평가 샌드박스에 참여했고, 이후 영어·중국어·말레이어·타밀어 레드팀 테스트를 함께 진행
+- **현지 활용**: GovTech 엔지니어·기술 인력 1,500명 이상이 Claude Code 사용; 사이버보안청이 사이버 방어에 Claude 활용을 검토; DBS, GIC, Grab, Sea 등이 사용 중`,
+        whatItIsJa: `シンガポールにおける Anthropic の取り組み（2026 年 10 月 14 日の Anthropic プレスリリースによる）：
+
+- **拠点**：シンガポールはアジア太平洋で 5 番目の拠点
+- **MDDI との覚書**：シンガポール国際サイバーウィーク期間中に MDDI 事務次官 Chng Kai Fong と Anthropic 共同創業者 Ben Mann が署名し、Josephine Teo 大臣が立ち会った
+- **協力内容**：シンガポールの AI 安全・セキュリティ・保証機関とのモデル評価、テスト基準、インシデント対応に関する技術交流；AI スキル向上、中小企業の責任ある AI 導入支援、公務員の AI 能力構築支援；研究とデータの政府への共有（Anthropic Economic Index を含む）
+- **これまでの協力**：2023 年に IMDA と AI Verify Foundation の生成 AI 評価サンドボックスに参加し、その後英語・中国語・マレー語・タミル語のレッドチーミングで協力
+- **国内での利用**：GovTech のエンジニア・技術職 1,500 人以上が Claude Code を利用；サイバーセキュリティ庁がサイバー防御への Claude 活用を検討；DBS、GIC、Grab、Sea などが利用`,
+        whatItIsEn: `Anthropic in Singapore (per Anthropic's 14 October 2026 press release):
+
+- **Office**: Singapore is its fifth office in Asia-Pacific
+- **MDDI MOU**: signed by MDDI Permanent Secretary Chng Kai Fong and Anthropic co-founder Ben Mann during Singapore International Cyber Week, witnessed by Minister Josephine Teo
+- **Scope**: technical exchanges with Singapore's AI safety, security and assurance institutions on model evaluation, testing standards and incident response; AI skills, responsible SME adoption, and AI capability for public officers; sharing research and data with the Government, including from the Anthropic Economic Index
+- **Earlier work**: joined the Generative AI Evaluation Sandbox run by IMDA and the AI Verify Foundation in 2023, then partnered on red-teaming in English, Mandarin, Malay and Tamil
+- **Local use**: 1,500+ GovTech engineers and technical staff use Claude Code; the Cyber Security Agency is exploring Claude for cyber defence; DBS, GIC, Grab and Sea are users`,
+        aiRelevance: `Anthropic 的看点在评测而非产品：备忘录的核心是模型评测、测试标准和事件响应的技术交流。
+
+这与 MDDI 10 月 6 日的国会答复一致：政府目前不强制前沿模型在部署前向政府开放，而是与前沿实验室建立信息共享关系，同时由新加坡 AI 安全研究所自建评测能力。Anthropic 的备忘录是这条路线的第一个具体落地。`,
+        aiRelevanceKo: `Anthropic의 핵심은 제품보다 평가에 있습니다. 양해각서의 중심은 모델 평가, 테스트 기준, 사고 대응에 관한 기술 교류입니다.
+
+이는 10월 6일 MDDI 국회 답변과 맞닿아 있습니다. 정부는 현재 프런티어 모델의 배포 전 정부 접근을 의무화하지 않고, 프런티어 연구소와 정보 공유 관계를 쌓는 동시에 싱가포르 AI 안전연구소가 자체 평가 역량을 갖추는 길을 택했습니다. Anthropic 양해각서는 이 노선의 첫 구체적 사례입니다.`,
+        aiRelevanceJa: `Anthropic の注目点は製品よりも評価にあります。覚書の中心は、モデル評価、テスト基準、インシデント対応に関する技術交流です。
+
+これは 10 月 6 日の MDDI 国会答弁と一致します。政府は現時点でフロンティアモデルの導入前アクセスを義務化せず、フロンティア研究所との情報共有関係を築きつつ、シンガポール AI 安全研究所が独自の評価能力を整える方針です。Anthropic との覚書は、この路線の最初の具体例です。`,
+        aiRelevanceEn: `The point of Anthropic here is evaluation rather than product: the core of the MOU is technical exchange on model evaluation, testing standards and incident response.
+
+This matches MDDI's 6 October parliamentary reply: the Government does not currently require pre-deployment access to frontier models, and instead builds information-sharing relationships with frontier labs while the Singapore AI Safety Institute builds its own evaluation capability. The Anthropic MOU is the first concrete instance of that approach.`,
+        singaporeRelevance: `新加坡在 Anthropic 的数据里是高使用率市场：按其 Economic Index，新加坡人均 Claude.ai 使用量在 121 个国家中排第二，约为按人口规模预期的六倍。
+
+在“七条传导杠杆”框架里：
+
+- **杠杆 2（治理）**：模型评测与测试标准的技术交流
+- **杠杆 5（政府自用）**：GovTech 的 Claude Code 使用与公务员 AI 能力建设
+- **杠杆 6（外交）**：美国前沿 AI 公司与新加坡政府签署安全评测合作`,
+        singaporeRelevanceKo: `Anthropic 데이터에서 싱가포르는 사용률이 높은 시장입니다. Economic Index에 따르면 싱가포르의 인구 대비 Claude.ai 사용량은 121개국 중 2위이며, 인구 규모로 예상되는 수준의 약 여섯 배입니다.
+
+'일곱 가지 전달 레버' 틀에서:
+
+- **레버 2(거버넌스)**: 모델 평가와 테스트 기준에 관한 기술 교류
+- **레버 5(정부 자체 활용)**: GovTech의 Claude Code 사용과 공무원 AI 역량 구축
+- **레버 6(외교)**: 미국 프런티어 AI 기업과 싱가포르 정부의 안전 평가 협력`,
+        singaporeRelevanceJa: `Anthropic のデータでシンガポールは利用率の高い市場です。Economic Index によると、シンガポールの人口当たり Claude.ai 利用量は 121 か国中 2 位で、人口規模から予想される水準の約 6 倍です。
+
+「七つの伝達レバー」の枠組みでは：
+
+- **レバー 2（ガバナンス）**：モデル評価とテスト基準に関する技術交流
+- **レバー 5（政府自身の利用）**：GovTech の Claude Code 利用と公務員の AI 能力構築
+- **レバー 6（外交）**：米国のフロンティア AI 企業とシンガポール政府による安全評価協力`,
+        singaporeRelevanceEn: `In Anthropic's own data Singapore is a high-usage market: by its Economic Index, Singapore ranks second of 121 countries in Claude.ai usage relative to population, at nearly six times what its size would predict.
+
+In the "seven transmission levers" framework:
+
+- **Lever 2 (Governance)**: technical exchange on model evaluation and testing standards
+- **Lever 5 (Government's own use)**: GovTech's use of Claude Code and AI capability for public officers
+- **Lever 6 (Diplomacy)**: a US frontier AI company signing a safety-evaluation partnership with the Singapore Government`,
+        milestones: [
           {
-            label: 'EDB (Anthropic press release)',
+            date: '2023',
+            title: '加入 IMDA 与 AI Verify Foundation 的生成式 AI 评测沙盒',
+            titleKo: 'IMDA와 AI Verify Foundation의 생성형 AI 평가 샌드박스 참여',
+            titleJa: 'IMDA と AI Verify Foundation の生成 AI 評価サンドボックスに参加',
+            titleEn: 'Joins the Generative AI Evaluation Sandbox run by IMDA and the AI Verify Foundation',
+          },
+          {
+            date: '2026-10-14',
+            title: '新加坡办公室开业；与 MDDI 签署备忘录',
+            titleKo: '싱가포르 사무소 개설; MDDI와 양해각서 체결',
+            titleJa: 'シンガポール拠点を開設；MDDI と覚書を締結',
+            titleEn: 'Singapore office opens; MOU signed with MDDI',
+          },
+        ],
+        relatedLeverNumbers: [2, 5, 6],
+        relatedEntityIds: ['ai-verify-foundation', 'imda', 'openai'],
+        sources: [
+          {
+            label: 'EDB（转载 Anthropic 新闻稿）',
+            labelKo: 'EDB(Anthropic 보도자료 게재)',
+            labelJa: 'EDB（Anthropic プレスリリース転載）',
+            labelEn: 'EDB (Anthropic press release)',
             url: 'https://www.edb.gov.sg/en/news-and-insights/anthropic-opens-singapore-office-and-signs-mou-with-government-of-singapore',
             date: '2026-10-14',
           },
         ],
         updated: '2026-10-21',
-        _pendingReview: true,
-        discoveryNote:
-          'Auto-discovered via Business Times (2026-10-19 share-fund story); rewritten from the 2026-10-14 EDB release on the Singapore office and MDDI MOU. Promote with a full profile (summary / whatItIs / aiRelevance) like the OpenAI entry.',
+        addedAt: '2026-10-21',
       },
       {
         id: 'sony-research',
