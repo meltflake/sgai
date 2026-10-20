@@ -1,7 +1,7 @@
 // scripts/lib/__tests__/state.test.ts
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { mkdtempSync, rmSync, writeFileSync } from 'node:fs';
+import { mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 
@@ -113,4 +113,27 @@ test('loadState: malformed JSON throws clearly', () => {
     writeFileSync(path, '{ not json');
     assert.throws(() => loadState(path), /Failed to parse/);
   });
+});
+
+// 2026-10-21: loadState rebuilt the object from known fields only, so a TS
+// pipeline's saveState dropped the dispatcher's schedule_runs / retry list.
+test('loadState/saveState: keep unknown top-level keys', () => {
+  const dir = mkdtempSync(join(tmpdir(), 'sgai-state-'));
+  const path = join(dir, 'state.json');
+  writeFileSync(
+    path,
+    JSON.stringify({
+      last_run: null,
+      schedule_runs: { weekly: '2026-10-12T08:11:27' },
+      retry_pipelines: ['policies'],
+      domains: { videos: { video_ids: ['a'] } },
+    })
+  );
+  const s = loadState(path);
+  saveState(s, { path });
+  const after = JSON.parse(readFileSync(path, 'utf8'));
+  assert.deepEqual(after.schedule_runs, { weekly: '2026-10-12T08:11:27' });
+  assert.deepEqual(after.retry_pipelines, ['policies']);
+  assert.deepEqual(after.domains.videos.video_ids, ['a']);
+  rmSync(dir, { recursive: true, force: true });
 });
