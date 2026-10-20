@@ -3601,6 +3601,37 @@ Worth watching going forward: **when MAS will allow GenAI in direct customer-fac
         updated: '2026-08-01',
         addedAt: '2026-08-03',
       },
+      // i18n-allow-unpaired — auto-discovered stub; complete required fields on promotion
+      {
+        id: 'anthropic',
+        name: 'Anthropic',
+        nameEn: 'Anthropic',
+        nameJa: 'Anthropic',
+        nameKo: 'Anthropic',
+        description:
+          'Anthropic宣布将5%的股份转入新成立的公益基金,用于解决AI对劳动力市场的影响等社会公益问题。该基金采用有限责任公司形式,可根据公司估值增长增加至7%。此举反映了公司对AI安全和社会责任的承诺,旨在缓解公众对AI可能导致大规模失业的担忧。',
+        descriptionEn:
+          "Anthropic announced plans to establish a public benefit fund with 5% of company shares to address public good issues, particularly labor market impacts from AI. The fund will operate as an LLC and could grow to 7% based on company valuation increases. The initiative reflects Anthropic's commitment to AI safety and social responsibility, aimed at mitigating public concerns about potential job displacement from AI adoption.",
+        descriptionJa:
+          'Anthropicは新たに設立された公益基金に5%の株式を移すことを発表しました。この基金はAI労働力市場への影響などの社会公益問題の解決に用いられます。基金は有限責任会社形式を採用しており、会社の評価額の成長に応じて7%までの増加が可能です。この措置はAI安全性と社会責任に対する会社のコミットメントを反映しており、AIによる大規模失業の可能性に対する一般市民の懸念を緩和することを目指しています。',
+        descriptionKo:
+          'Anthropic이 5% 지분을 새로 설립된 공익 기금으로 양도하겠다고 발표했습니다. 이 기금은 AI의 노동 시장 영향 등 사회 공익 문제 해결을 위해 사용됩니다. 기금은 유한책임회사 형태로 운영되며, 회사 기업가치 성장에 따라 7%까지 증액될 수 있습니다. 이는 AI 안전 및 사회 책임에 대한 Anthropic의 약속을 반영하며, AI로 인한 대규모 실업 가능성에 대한 대중의 우려를 완화하려는 의도입니다.',
+        url: 'https://www.businesstimes.com.sg/companies-markets/anthropic-shift-some-shares-new-public-good-fund',
+        entityType: 'partner',
+        status: 'active',
+        sources: [
+          // i18n-allow-unpaired — provenance for the pending-review stub above
+          {
+            label: 'Business Times Tech',
+            url: 'https://www.businesstimes.com.sg/companies-markets/anthropic-shift-some-shares-new-public-good-fund',
+            date: '2026-10-19',
+          },
+        ],
+        updated: '2026-10-20',
+        _pendingReview: true,
+        discoveryNote:
+          'Auto-discovered via Business Times Tech; headline: "Anthropic to shift some shares into new public good fund"; confidence=high; entity=high',
+      },
     ],
   },
   {
