@@ -5,10 +5,11 @@
 //   ✅ aisingapore.org/feed/                  RSS (WordPress), paper posts excluded
 //   ✅ channelnewsasia.com rss-outbound-feed  RSS, category 6511 = latest news
 //   ✅ mddi.gov.sg/sitemap.xml                newsroom; speeches excluded (voices owns them)
-//   ✅ imda.gov.sg/sitemap.xml                press releases; speeches excluded
 //   ✅ mas.gov.sg/sitemap.xml                 media releases + PQ replies (year in path); no lastmod
 //   ✅ edb.gov.sg/sitemap.xml                 /en/news-and-insights/; lastmod re-stamped, body date decides
 //   ✅ a-star.edu.sg/sitemap.xml              news + press releases
+//   ❌ imda.gov.sg                            press-release text loads in the browser (~350 chars of server HTML);
+//                                              sitemap lastmod re-stamped daily. MDDI usually carries the same news (2026-10-21)
 //   ❌ techinasia.com/feed                    body paywalled, feed text ~130 chars (2026-10-17)
 //   ❌ straitstimes.com                       RSS 400, sitemap-news 404
 //   ❌ e27.co/feed                            403 (Cloudflare)
@@ -63,15 +64,6 @@ export const SOURCES: SignalSource[] = [
     kind: 'sitemap',
     url: 'https://www.mddi.gov.sg/sitemap.xml',
     urlFilter: /^https:\/\/www\.mddi\.gov\.sg\/newsroom\/[^/]+\/?$/,
-    excludeSpeeches: true,
-    requireAiKeyword: true,
-  },
-  {
-    id: 'imda',
-    name: 'IMDA',
-    kind: 'sitemap',
-    url: 'https://www.imda.gov.sg/sitemap.xml',
-    urlFilter: /\/resources\/press-releases-factsheets-and-speeches\/[^/]+\/?$/,
     excludeSpeeches: true,
     requireAiKeyword: true,
   },

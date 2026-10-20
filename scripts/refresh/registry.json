@@ -215,6 +215,19 @@
       ]
     },
     {
+      "id": "signals-collect",
+      "type": "tsx",
+      "schedule": "daily",
+      "label": "Signals candidate collection (no LLM)",
+      "description": "Daily scan of the Signals sources into scripts/refresh/signals/data/candidates.json. RSS feeds keep only their newest items (Business Times ~16, CNA ~20), so the weekly signals run alone saw a few days of news. No LLM, no writes to src/data; the weekly signals pipeline judges the backlog.",
+      "script": "scripts/refresh/signals/run.ts",
+      "args": [
+        "--collect-only"
+      ],
+      "mode": "scan-only",
+      "targets": []
+    },
+    {
       "id": "signals",
       "type": "tsx",
       "schedule": "weekly",
