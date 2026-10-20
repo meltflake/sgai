@@ -14,7 +14,8 @@
 // Rejected candidates (not SG, not AI, score < 4) go to
 // scripts/refresh/signals/data/rejected-urls.json so they never return.
 //
-// CLI: --dry-run (stop after select, no drafting, no writes)
+// CLI: --collect-only (scan and store candidates, no LLM; run daily)
+//      --dry-run (stop after select, no drafting, no writes)
 //      --limit=N (default 8) --days=N (default 7) --max-judge=N (default 40)
 //      --no-commit --no-push
 // Last stdout line: JSON report for scripts/auto_update.py.
@@ -38,6 +39,8 @@ import { ecosystemEntityPages, startupEntityPages } from '../../../src/utils/ent
 import type { Signal } from '../../../src/data/signals.ts';
 
 import { SOURCES, sourcePriority } from './sources.ts';
+import { loadCandidates, mergeCandidates, saveCandidates } from './candidates.ts';
+import { normalizeUrl } from '../../lib/scan-filters.ts';
 import { scanAll, type SignalCandidate } from './scan.ts';
 import { judgeCandidate } from './judge.ts';
 import { orderForFetch, selectSignals, type Judged } from './select.ts';
@@ -70,12 +73,16 @@ function headlinePrompt(direction: keyof typeof HEADLINE_LANG): string {
   );
 }
 const LEDGER = rejectedUrlsPath(DOMAIN);
+const CANDIDATES = resolve(DATA_DIR, 'candidates.json');
+/** Backlog entries older than this are dropped (the weekly window is 7 days). */
+const KEEP_DAYS = 10;
 /** Upper bound on page fetches per run (sitemaps with re-stamped lastmod can list hundreds). */
 const MAX_FETCH = 250;
 const KNOWN_URL_FILES = ['src/data/signals.ts', 'src/data/voices.ts', 'src/data/videos.ts', 'src/data/policies.ts'];
 
 interface Flags {
   dryRun: boolean;
+  collectOnly: boolean;
   noCommit: boolean;
   noPush: boolean;
   limit: number;
@@ -91,6 +98,7 @@ function parseFlags(argv = process.argv.slice(2)): Flags {
   };
   return {
     dryRun: argv.includes('--dry-run'),
+    collectOnly: argv.includes('--collect-only'),
     noCommit: argv.includes('--no-commit'),
     noPush: argv.includes('--no-push'),
     limit: num('limit', 8),
@@ -151,25 +159,45 @@ async function main(): Promise<void> {
   const today = todaySg();
   log(`\n[signals] starting (today ${today}, window ${flags.days} days, limit ${flags.limit})`);
 
+  // 1. Scan, then merge into the stored backlog (RSS feeds only hold their
+  //    newest items, so a daily collect run fills in the rest of the week).
+  const known = knownUrls();
+  const scan = await scanAll(SOURCES, { today, days: flags.days, known });
+  for (const f of scan.failures) log(`  ! source ${f.sourceId} failed: ${f.error}`);
+  const stored = loadCandidates(CANDIDATES);
+  const backlog = mergeCandidates(stored, scan.candidates, today, KEEP_DAYS);
+  if (!flags.dryRun) saveCandidates(CANDIDATES, backlog);
+  log(`  scan: ${scan.candidates.length} candidate(s) from ${scan.checked} feed item(s); backlog ${stored.length} → ${backlog.length}`);
+
+  if (flags.collectOnly) {
+    log('\n[signals] collect-only: backlog saved, no judging.');
+    report({
+      domain: 'signals-collect',
+      added: 0,
+      collected: backlog.length - stored.length,
+      backlog: backlog.length,
+      failures: scan.failures.length,
+      elapsed_seconds: Math.round((Date.now() - startedAt) / 1000),
+    });
+    return;
+  }
+
   ensureClaudeAuthed();
   log('  preflight: claude auth OK');
-
-  // 1. Scan.
-  const scan = await scanAll(SOURCES, { today, days: flags.days, known: knownUrls() });
-  log(`  scan: ${scan.candidates.length} candidate(s) from ${scan.checked} feed item(s)`);
-  for (const f of scan.failures) log(`  ! source ${f.sourceId} failed: ${f.error}`);
+  const knownKeys = new Set([...known].map(normalizeUrl));
+  const candidates = backlog.filter((c) => !knownKeys.has(normalizeUrl(c.url)));
 
   // 2. Fetch every candidate body and keep only in-window ones, then spend
   //    the judging budget on the best sources first (gov.sg > institutions
   //    > media), newest first. Fetching is cheap; judging costs a model call.
-  const fetched = await mapLimit(orderForFetch(scan.candidates).slice(0, MAX_FETCH), 4, async (c) => {
+  const fetched = await mapLimit(orderForFetch(candidates).slice(0, MAX_FETCH), 4, async (c) => {
     const f = await fetchCandidate(c, today, flags.days);
     return f ? { c: { ...c, title: f.title }, f } : null;
   });
   const queue = fetched
     .filter((x): x is NonNullable<typeof x> => x !== null)
     .sort((a, b) => sourcePriority(b.c.url) - sourcePriority(a.c.url) || b.f.date.localeCompare(a.f.date));
-  log(`  in window: ${queue.length} of ${Math.min(scan.candidates.length, MAX_FETCH)} fetched; judging up to ${flags.maxJudge}`);
+  log(`  in window: ${queue.length} of ${Math.min(candidates.length, MAX_FETCH)} fetched; judging up to ${flags.maxJudge}`);
 
   const judged: Judged[] = [];
   const rejected: RejectedUrl[] = [];
@@ -289,6 +317,11 @@ async function main(): Promise<void> {
       labels: ['data-refresh'],
     });
     prUrl = pr.pr?.url ?? null;
+    if (prUrl) {
+      // Picked items are in the PR now; drop them so next week does not re-pick them.
+      const picked = new Set(final.map((r) => normalizeUrl(r.sourceUrl)));
+      saveCandidates(CANDIDATES, loadCandidates(CANDIDATES).filter((c) => !picked.has(normalizeUrl(c.url))));
+    }
     if (prUrl) log(`  PR opened: ${prUrl}`);
     else if (pr.error) log(`  ! PR step error: ${pr.error}`);
   }

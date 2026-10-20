@@ -272,6 +272,7 @@ npx tsx scripts/refresh/signals/run.ts --limit=8             # 正式跑，开 P
 - 来源与取舍记录在 `scripts/refresh/signals/sources.ts` 文件头（含不收的源和原因）。
 - 判为非新加坡、非 AI 或低于 4 分的链接写进 `scripts/refresh/signals/data/rejected-urls.json`，下周不再出现。PR 里删掉的条目也要手工加进这个台账。
 - 判断结果按内容哈希缓存在 `scripts/refresh/signals/data/judgments/`，重跑不重复计费。
+- 候选每天由 `signals-collect`（`run.ts --collect-only`，不调模型）收进 `scripts/refresh/signals/data/candidates.json`，10 天过期。RSS 只保留最新几条，只靠每周一次扫描会漏掉一周里大部分新闻。
 
 ### `/updates` + 月报（Newsletter）
 
