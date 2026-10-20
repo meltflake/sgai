@@ -4,6 +4,15 @@
 
 ---
 
+## 0.29.4 — 2026-10-21
+
+### 修复：管线记住判为离题的页面，不再每次被同一批页面占满名额
+
+- policies 每月取前 5 个候选，再用 AI 相关性判断过滤。判为离题的页面没有记录，所以同样 5 个 MDDI 页面（奖学金、方言剧、POFMA 公告等）每月都排在最前，把名额用完，8 月和 10 月两次都一条都没收到。policies 最新一条停在 9 月 7 日。
+- 新增 `appendRejectedUrls()`（`scripts/lib/rejected-urls.ts`）。policies 和共享模板 `run-template.ts`（levers、startups、legal-ai、talent、tracker、benchmarking 共用）把高置信度离题页面写进本域拒绝台账；模板同时记录只抓到页面外壳、读不到正文的页面。
+- 把这次补跑判为离题的 5 个页面写进 `scripts/refresh/policies/data/rejected-urls.json`，下个月直接跳过。
+- 新增 1 条单元测试。
+
 ## 0.29.3 — 2026-10-21
 
 ### 信号：每天收集候选，每周评选一次

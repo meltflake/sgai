@@ -18,7 +18,7 @@ import { isEmptyShellSummary } from '../../lib/empty-shell.ts';
 import { autoCommit, pushAndOpenPR, buildPRBody } from '../../lib/auto-commit.ts';
 import { appendAutoDiscovered } from '../../lib/auto-discovered-emit.ts';
 import { judgeAiRelevance } from '../../lib/judge-ai-relevance.ts';
-import { mergeRejectedUrls } from '../../lib/rejected-urls.ts';
+import { appendRejectedUrls, mergeRejectedUrls } from '../../lib/rejected-urls.ts';
 import { ensureClaudeAuthed } from '../../lib/llm.ts';
 import { loadState, saveState } from '../../lib/state.ts';
 import {
@@ -272,6 +272,13 @@ export async function runPipeline(config: PipelineConfig): Promise<void> {
     process.stdout.write(`  dropped ${offTopic.length} off-topic candidate(s) (AI-relevance judge, high-confidence no):\n`);
     for (const o of offTopic) process.stdout.write(`    ${o.url} — ${o.reason.slice(0, 70)}\n`);
   }
+  // Remember both kinds of drop: neither page changes between runs, and
+  // unrecorded they head the candidate list again and use the --limit budget.
+  const recorded = appendRejectedUrls(config.domain, [
+    ...offTopic.map((o) => ({ url: o.url, reason: 'off-topic', decidedAt: today, ref: o.reason.slice(0, 160) })),
+    ...skipped.map((u) => ({ url: u, reason: 'empty-shell', decidedAt: today })),
+  ]);
+  if (recorded > 0) process.stdout.write(`  recorded ${recorded} drop(s) in the ${config.domain} reject ledger\n`);
 
   if (enriched.length === 0) {
     process.stdout.write(`\n[${config.domain}-refresh] no enriched items.\n`);
