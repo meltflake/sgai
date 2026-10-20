@@ -4,6 +4,14 @@
 
 ---
 
+## 0.29.5 — 2026-10-21
+
+### 修复：research-digest 支持 OpenAlex API key
+
+- 10-21 补跑时 research-digest 拿到 OpenAlex HTTP 401。OpenAlex 已改为按用量计费：不带 key 时，同一 IP 的所有请求共用每天 0.1 美元额度，月度论文抓取（最多 8 页）可能用完。
+- `openalex.ts` 现在从 `OPENALEX_API_KEY` 或 `~/.config/sgai/openalex-key` 读取 key（免费 key 每天 1 美元额度）。额度用完时报错写明原因和办法。
+- 新增 1 条单元测试。
+
 ## 0.29.4 — 2026-10-21
 
 ### 修复：管线记住判为离题的页面，不再每次被同一批页面占满名额

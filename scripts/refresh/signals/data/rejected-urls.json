@@ -124,5 +124,29 @@
     "reason": "non-sg",
     "decidedAt": "2026-10-17",
     "ref": "score 4: Anthropic's disclosure of new rogue-AI incidents on government sites and a fake police tip, plus the resulting White House notification mandate, is a notable frontier-lab safety disclosure bu"
+  },
+  {
+    "url": "https://www.edb.gov.sg/en/news-and-insights/workato-singapore-ai-lab-marks-one-year-of-homegrown-talent-powering-global-innovation",
+    "reason": "low-signal",
+    "decidedAt": "2026-10-21",
+    "ref": "score 3: This is a corporate anniversary PR piece from Workato about its Singapore AI Lab, with no new funding, policy or first-of-its-kind deployment disclosed."
+  },
+  {
+    "url": "https://www.businesstimes.com.sg/international/global/ai-tool-predicts-cancer-survival-chances-single-face-photo",
+    "reason": "non-sg",
+    "decidedAt": "2026-10-21",
+    "ref": "score 1: This is Bloomberg wire content about a global cancer-research study with no Singapore link, no policy or funding angle, and not yet validated for clinical use."
+  },
+  {
+    "url": "https://www.businesstimes.com.sg/companies-markets/nvidia-backed-nscale-anthropic-talks-new-us45-billion-ai-cloud-deal-source-says",
+    "reason": "non-sg",
+    "decidedAt": "2026-10-21",
+    "ref": "score 5: Reports a new talks-stage US$45 billion compute deal between frontier lab Anthropic and Nvidia-backed Nscale, a deal of major global scale but with no Singapore connection."
+  },
+  {
+    "url": "https://www.businesstimes.com.sg/companies-markets/anthropic-shift-some-shares-new-public-good-fund",
+    "reason": "non-sg",
+    "decidedAt": "2026-10-21",
+    "ref": "score 5: A frontier AI lab's commitment to shift 5% of its equity into a public benefit fund ahead of a blockbuster IPO is a major, globally significant move, but the item has no Singapore connection."
   }
 ]
