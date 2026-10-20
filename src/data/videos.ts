@@ -145,6 +145,43 @@ export function pickSpeakerTypeLabels(lang: string): Record<string, string> {
 
 export const videos: VideoItem[] = [
   {
+    id: 'v123',
+    title: '新加坡与瑞典签署新兴技术合作宣言',
+    titleEn: 'Singapore and Sweden sign declaration on emerging technologies',
+    titleJa: 'シンガポールとスウェーデンが新興技術協力宣言に署名しました。',
+    titleKo: '싱가포르와 스웨덴 신흥 기술 협력 선언 체결',
+    speaker: 'CNA',
+    speakerTitle: '亚洲新闻台报道',
+    speakerTitleEn: 'CNA report',
+    speakerTitleJa: 'アジアニュース放送による報道',
+    speakerTitleKo: '아시아 뉴스 채널 보도',
+    speakerType: 'industry',
+    date: '2026-10-20',
+    duration: '03:12',
+    summary: '新加坡与瑞典签署联合宣言,深化新兴技术(包括人工智能和量子计算)合作。',
+    summaryEn:
+      'Singapore and Sweden signed a joint declaration to deepen cooperation in emerging technologies including AI and quantum computing.',
+    summaryJa:
+      'シンガポールとスウェーデンが共同宣言に署名し、新興技術(AI および量子コンピューティングを含む)に関する協力を深めています。',
+    summaryKo:
+      '싱가포르와 스웨덴이 공동 선언에 서명하여, 인공지능 및 양자 컴퓨팅을 포함한 신흥 기술 협력을 심화합니다.',
+    whyItMatters:
+      '2026-10-20 新加坡与瑞典的联合宣言把量子计算提至与 AI 并列位置,显示技术外交正从 AI 单一赛道扩展为量子等前沿组合',
+    whyItMattersEn:
+      "2026-10-20 Singapore and Sweden's joint declaration elevates quantum computing to parity with AI, showing that technology diplomacy is expanding from a single AI track to a broader portfolio of frontier technologies including quantum.",
+    whyItMattersJa:
+      '2026-10-20 シンガポール・スウェーデン間の共同宣言は量子計算をAIと並列的な位置に引き上げ、テクノロジー外交がAI単一領域から量子などの最先端の組み合わせへと拡大していることを示しています。',
+    whyItMattersKo:
+      '2026-10-20 싱가포르와 스웨덴의 공동 선언이 양자 컴퓨팅을 AI와 동등한 위치로 격상시켜, 기술 외교가 AI 단일 영역에서 양자 등 첨단 기술의 조합으로 확대되고 있음을 보여줍니다.',
+    topic: '国际合作与对标',
+    topicEn: 'International Cooperation & Benchmarking',
+    topicJa: '国際協力とベンチマーク',
+    topicKo: '국제 협력과 벤치마크',
+    youtubeUrl: 'https://www.youtube.com/watch?v=Du4kI39vnrA',
+    channel: 'CNA',
+    addedAt: '2026-10-20',
+  },
+  {
     id: 'v121',
     title: '新加坡 OpenAI FDE 训练营',
     titleEn: 'OpenAI for Singapore FDE Bootcamp',
