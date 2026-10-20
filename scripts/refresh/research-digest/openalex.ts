@@ -7,9 +7,30 @@
 //   rank:      venue strength + citations + sgShare + SG-last-author bonus
 // The LLM triage (triage.ts) only ever sees the ~40 top-ranked survivors.
 
+import { existsSync, readFileSync } from 'node:fs';
+import { homedir } from 'node:os';
+import { join } from 'node:path';
+
 const API = 'https://api.openalex.org/works';
 /** Polite-pool identification — OpenAlex grants 100k req/day with mailto. */
 const MAILTO = 'wulujia@gmail.com';
+
+/** OpenAlex meters requests (2026). Without a key every client on the same IP
+ *  shares US$0.10 a day; a free key (https://openalex.org/settings/api) gives
+ *  its own US$1 a day. Read from OPENALEX_API_KEY, else
+ *  ~/.config/sgai/openalex-key (same pattern as the gh token file). */
+export function openAlexKey(
+  env: Record<string, string | undefined> = process.env,
+  file = join(homedir(), '.config', 'sgai', 'openalex-key')
+): string {
+  const fromEnv = (env.OPENALEX_API_KEY ?? '').trim();
+  if (fromEnv) return fromEnv;
+  try {
+    return existsSync(file) ? readFileSync(file, 'utf8').trim() : '';
+  } catch {
+    return '';
+  }
+}
 /** AI concept id (artificial intelligence) in OpenAlex's taxonomy. */
 const AI_CONCEPT = 'C154945302';
 
@@ -62,18 +83,26 @@ function isStrongVenue(venue: string): boolean {
 
 export async function fetchMonthWorks(fromDate: string, toDate: string): Promise<OaWork[]> {
   const works: OaWork[] = [];
+  const key = openAlexKey();
   let cursor = '*';
   for (let page = 0; page < 8 && cursor; page += 1) {
     const url =
       `${API}?filter=institutions.country_code:SG,concepts.id:${AI_CONCEPT},` +
       `from_publication_date:${fromDate},to_publication_date:${toDate}` +
       `&per-page=100&cursor=${encodeURIComponent(cursor)}&mailto=${MAILTO}` +
+      (key ? `&api_key=${encodeURIComponent(key)}` : '') +
       `&select=id,doi,title,publication_date,cited_by_count,primary_location,authorships,abstract_inverted_index`;
     const r = await fetch(url, { headers: { Accept: 'application/json' } });
     if (r.status === 429) {
       await new Promise((res) => setTimeout(res, 5000));
       page -= 1;
       continue;
+    }
+    if (r.status === 401 || r.status === 402 || r.status === 403) {
+      throw new Error(
+        `OpenAlex HTTP ${r.status}: ${key ? 'the API key was refused' : 'the shared no-key daily budget is used up'}. ` +
+          'Get a free key at https://openalex.org/settings/api and save it to ~/.config/sgai/openalex-key.'
+      );
     }
     if (!r.ok) throw new Error(`OpenAlex HTTP ${r.status}`);
     const data = (await r.json()) as { results?: OaWork[]; meta?: { next_cursor?: string | null } };
