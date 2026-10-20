@@ -9102,7 +9102,7 @@ A take: this is heavier than a “regional HQ” announcement. A regional HQ is 
         scaleJa: 'アジア太平洋で 5 番目の拠点；GovTech のエンジニア・技術職 1,500 人以上が Claude Code を利用',
         scaleEn: 'Fifth Asia-Pacific office; 1,500+ GovTech engineers and technical staff use Claude Code',
         summary:
-          'Anthropic 于 2026 年 10 月 14 日在新加坡开设亚太第五个办公室，同日与数码发展及新闻部（MDDI）签署备忘录，合作范围包括 AI 安全、安保与模型评测，AI 采用及其影响的研究，以及公共和私营部门的负责任采用。它与新加坡的合作始于 2023 年 IMDA 的生成式 AI 评测沙盒。',
+          'Anthropic 于 2026 年 10 月 14 日在新加坡开设亚太第五个办公室，同日与数字发展与信息部（MDDI）签署备忘录，合作范围包括 AI 安全、安保与模型评测，AI 采用及其影响的研究，以及公共和私营部门的负责任采用。它与新加坡的合作始于 2023 年 IMDA 的生成式 AI 评测沙盒。',
         summaryKo:
           'Anthropic은 2026년 10월 14일 싱가포르에 아시아태평양 다섯 번째 사무소를 열고, 같은 날 디지털개발정보부(MDDI)와 양해각서를 체결했습니다. 협력 범위는 AI 안전·보안·모델 평가, AI 도입과 그 영향에 관한 연구, 공공·민간 부문의 책임 있는 도입입니다. 싱가포르와의 협력은 2023년 IMDA 생성형 AI 평가 샌드박스에서 시작됐습니다.',
         summaryJa:
@@ -9194,6 +9194,7 @@ In the "seven transmission levers" framework:
           },
         ],
         relatedLeverNumbers: [2, 5, 6],
+        relatedDebateIds: ['written-answer-na-25101', 'oral-answer-4231'],
         relatedEntityIds: ['ai-verify-foundation', 'imda', 'openai'],
         sources: [
           {

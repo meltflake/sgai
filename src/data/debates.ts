@@ -68,6 +68,1574 @@ export interface Debate {
 
 export const debates: Debate[] = [
   {
+    id: 'oral-answer-4231',
+    titleEn:
+      'Ensuring Safety of Frontier AI Models Deployed in Singapore, and Setting Up Framework for Tracking and Reporting Serious AI Incidents',
+    title: '前沿 AI 安全监管与跨部门事故报告框架',
+    titleJa: '先端AI安全規制と部門横断事故報告フレームワーク',
+    titleKo: '첨단 AI 안전 규제 및 부서간 사고보고 체계',
+    date: '2026-10-07',
+    parliament: '15',
+    type: 'Oral Answers to Questions',
+    speakers: ['Dr Charlene Chen', 'Mr Alex Yam', 'Dr Choo Pei Ling', 'Mr Yip Hon Weng', 'Mr Tan Kiat How'],
+    personIds: ['charlene-chen', 'alex-yam', 'choo-pei-ling', 'yip-hon-weng', 'tan-kiat-how'],
+    topicIds: [],
+    relatedPolicyIds: [],
+    relatedLeverNumbers: [],
+    relatedTimelineYears: [],
+    relatedPostSlugs: [],
+    topics: ['AI Safety & Ethics', 'AI Governance & Regulation', 'AI & National Security'],
+    summary:
+      '陈以君(Charlene Chen)、朱佩玲(Choo Pei Ling)、叶汉荣(Yip Hon Weng)、任梓铭（Alex Yam）等议员就新加坡 AI 安全院对前沿 AI 模型的独立测试能力、跨部门事故报告框架,以及类似澳大利亚自主 AI 代理越权访问事件对政府系统韧性的影响,询问数字发展与信息部长。高级政务部长陈杰豪(Tan Kiat How)代为答复,指现有网络安全、数据保护与关键信息基础设施监管框架同样适用于代理型 AI 系统,政府正通过 GovTech 等机构试验负责任地部署代理 AI,并持续审视是否需要强化相关框架,但未承诺设定强制性前沿 AI 安全测试的具体门槛或时间表。',
+    summaryEn:
+      "Dr Charlene Chen, Mr Alex Yam, Dr Choo Pei Ling and Mr Yip Hon Weng asked the Minister for Digital Development and Information about the AI Safety Institute's ability to independently test frontier AI models, cross-sector incident-reporting frameworks, and the resilience of government systems following an unauthorised-access incident involving an autonomous AI agent in Australia. Senior Minister of State Tan Kiat How replied, on the Minister's behalf, that existing cybersecurity, data protection and critical-information-infrastructure frameworks already apply to agentic AI systems, that the Government is trialling responsible agentic AI deployment through GovTech and other agencies, and that these frameworks are under review for strengthening, without committing to a specific threshold or timeline for mandatory frontier AI safety testing.",
+    summaryJa:
+      'Charlene Chen、Choo Pei Ling、Yip Hon Weng、Alex Yam Ziming などの議員が、シンガポール AI 安全研究所による最先端 AI モデルの独立テスト能力、部門横断的なインシデント報告メカニズム、およびオーストラリアの自律型 AI エージェントの越権アクセス事件に類似した政府システムのレジリエンスへの影響について、デジタル発展・情報省（MDDI）大臣に質問した。上級大臣タン・キアットハウが代わりに答弁し、既存のサイバーセキュリティ、データ保護、および重要情報基盤規制枠組みはエージェント型 AI システムにも同等に適用され、政府は GovTech などの機関を通じてエージェント型 AI の責任ある展開をテストしており、関連枠組みの強化が必要かどうかを継続的に検討しているが、強制的な最先端 AI 安全テストの具体的なしきい値またはタイムラインの設定は約束していないと述べた。',
+    summaryKo:
+      'Charlene Chen, Choo Pei Ling, Yip Hon Weng, Alex Yam Ziming 등의 의원들이 싱가포르 AI 안전원의 최첨단 AI 모델에 대한 독립적 테스트 역량, 부처 간 사고 보고 체계, 그리고 호주의 자율 AI 에이전트 무단 접근 사건과 유사한 사건이 정부 시스템의 복원력에 미치는 영향에 관해 디지털개발정보부(MDDI) 장관에게 질문했습니다. 상임정무장관 Tan Kiat How가 대신 답변했으며, 현존하는 네트워크 보안, 데이터 보호 및 중요 정보 기반시설 규제 체계가 에이전트형 AI 시스템에도 동등하게 적용된다고 지적했습니다. 정부는 GovTech 등의 기관을 통해 에이전트형 AI의 책임감 있는 배포를 시험하고 있으며, 관련 체계를 강화할 필요가 있는지를 지속적으로 검토하고 있으나, 강제적인 최첨단 AI 안전 테스트의 구체적 기준이나 시간표 설정을 약속하지 않았습니다.',
+    whyItMatters:
+      '陈杰豪在口头追问中表示，现有网络安全、个人数据保护和关键信息基础设施框架已适用于代理式 AI，政府正检讨加强，但未承诺强制安全测试或报告门槛',
+    whyItMattersEn:
+      'In the oral follow-ups, Tan Kiat How said existing cybersecurity, personal data protection and critical-information-infrastructure frameworks already apply to agentic AI and are being reviewed, without committing to mandatory safety testing or a reporting threshold.',
+    whyItMattersJa:
+      'Tan Kiat How 上級政務担当国務相は口頭の追加質問で、既存のサイバーセキュリティ、個人データ保護、重要情報インフラの枠組みはすでにエージェント型 AI に適用され見直し中だとしつつ、安全試験の義務化や報告基準は約束しませんでした。',
+    whyItMattersKo:
+      'Tan Kiat How 선임 정무장관은 구두 보충질의에서 기존 사이버보안, 개인정보 보호, 핵심정보기반시설 체계가 이미 에이전트형 AI에 적용되고 있으며 보완을 검토 중이라고 했으나, 안전 시험 의무화나 보고 기준은 약속하지 않았습니다.',
+    keyPoints: [
+      '现有的指导方针、法规、风险管理流程和监督机制同样适用于代理型 AI 系统,包括维持人类问责的原则。',
+      '政府通过 GovTech 等机构在公共服务领域试验代理 AI 的应用,以了解如何负责任地落实相关系统。',
+      '新加坡 AI 安全院持续与国际同行紧密合作,分享 AI 安全的最佳实践。',
+      '新加坡最近在联合国等多边场合与志同道合的国家签署支持声明,加强 AI 安全领域的国际合作。',
+      '现有事故报告框架(例如个人数据保护法)已设定门槛,不论机构是否使用 AI 工具均需遵守,企业也须管理员工未经批准使用生成式 AI(影子 AI)带来的风险。',
+    ],
+    keyPointsEn: [
+      'Existing guidelines, regulations, risk-management processes and oversight already apply to agentic AI systems, including the principle of maintaining human accountability.',
+      'The Government, through GovTech and other agencies, is trialling the use of agentic AI within the Public Service to understand how to implement it responsibly.',
+      "Singapore's AI Safety Institute continues to work closely with international counterparts to share best practices on AI safety.",
+      'Singapore recently signed a statement of support with like-minded countries, including at the United Nations, for greater international collaboration on AI safety.',
+      'Existing incident-reporting frameworks, such as the Personal Data Protection Act, already set thresholds that apply regardless of whether AI tools are used, and organisations must manage risks from unsanctioned employee use of generative AI ("shadow AI").',
+    ],
+    keyPointsJa: [
+      '既存のガイドライン、法規、リスク管理プロセス、および監視メカニズムはエージェント型 AI システムに同等に適用され、人間の説明責任を維持する原則を含む。',
+      '政府は GovTech などの機関を通じて公共サービス分野でエージェント型 AI の応用をパイロットしており、これらのシステムを責任ある方法で実装する方法を理解することを目指している。',
+      'シンガポール AI 安全研究所は、国際的な同業者と継続的に緊密に協力し、AI 安全のベストプラクティスを共有している。',
+      'シンガポールは最近、国連などの多国間フォーラムで志を同じくする国々と支持声明に署名し、AI 安全分野における国際協力を強化している。',
+      '既存のインシデント報告枠組み（例えば個人データ保護法）は既にしきい値を設定しており、AI ツールを使用しているかどうかに関わらず、すべての組織が準拠する必要があり、企業は従業員による無許可のジェネレーティブ AI（シャドウ AI）の使用がもたらすリスクも管理する必要がある。',
+    ],
+    keyPointsKo: [
+      '현존하는 지침, 규정, 위험 관리 프로세스 및 감시 메커니즘이 에이전트형 AI 시스템에도 동등하게 적용되며, 여기에는 인간 책임 유지의 원칙이 포함됩니다.',
+      '정부는 GovTech 등의 기관을 통해 공공 서비스 영역에서 에이전트형 AI의 응용을 시험하여 이러한 시스템을 책임감 있게 구현하는 방법을 파악하고 있습니다.',
+      '싱가포르 AI 안전원은 국제 동료와 긴밀하게 협력하여 AI 안전의 모범 사례를 공유하고 있습니다.',
+      '싱가포르는 최근 국제연합 등의 다자 간 논의에서 뜻을 같이하는 국가들과 지지 선언을 체결하여 AI 안전 분야의 국제 협력을 강화하고 있습니다.',
+      '현존하는 사고 보고 체계(예: 개인 데이터 보호법)는 이미 기준을 설정했으며, 기관이 AI 도구를 사용하는지 여부와 관계없이 이를 준수해야 하고, 기업은 직원의 승인되지 않은 생성형 AI(섀도우 AI) 사용으로 인한 위험도 관리해야 합니다.',
+    ],
+    governmentStance:
+      '政府立场是,现有网络安全、数据保护及关键信息基础设施监管框架已适用于代理型 AI,相关框架正接受审视并强化,但政府未承诺为前沿 AI 模型设定强制性测试要求或具体门槛和时间表。',
+    governmentStanceEn:
+      "The Government's position is that existing cybersecurity, data protection and critical-information-infrastructure frameworks already apply to agentic AI, and these are being reviewed and strengthened, but it did not commit to mandatory testing requirements or a specific threshold and timeline for frontier AI models.",
+    governmentStanceJa:
+      '政府の立場は、既存のサイバーセキュリティ、データ保護、および重要情報基盤規制枠組みはエージェント型 AI に既に適用されており、関連枠組みは現在見直され強化されているが、政府は最先端 AI モデルに対する強制的テスト要件または具体的なしきい値とタイムラインを設定することは約束していないというものである。',
+    governmentStanceKo:
+      '정부의 입장은 현존하는 네트워크 보안, 데이터 보호 및 중요 정보 기반시설 규제 체계가 에이전트형 AI에 이미 적용되고 있으며, 관련 체계가 검토 및 강화되고 있으나, 정부는 최첨단 AI 모델에 대한 강제적 테스트 요구사항이나 구체적 기준 및 시간표를 설정하기로 약속하지 않았습니다.',
+    oppositionStance:
+      '议员们担心,现有框架可能未能明确界定 AI 事故的报告门槛、及时掌握海外开发商的通报义务,也未能为受 AI 系统影响的公众提供足够的保护与申诉渠道。',
+    oppositionStanceEn:
+      'The questioners were concerned that existing frameworks may not clearly define reportable AI-incident thresholds, ensure timely notification from overseas developers, or give citizens adequate protection and redress when affected by an AI system.',
+    oppositionStanceJa:
+      '議員たちは、既存の枠組みが AI インシデントの報告しきい値を明確に定義できず、海外開発者の通知義務をタイムリーに把握できず、また AI システムの影響を受ける一般市民に十分な保護と申し立て経路を提供できない可能性があることを懸念している。',
+    oppositionStanceKo:
+      '의원들은 현존하는 체계가 AI 사고의 보고 기준을 명확히 정의하지 못할 수 있으며, 해외 개발업체의 통보 의무를 적시에 파악하지 못할 수 있으며, AI 시스템의 영향을 받는 대중에게 충분한 보호와 민원 제기 경로를 제공하지 못할 가능성을 우려하고 있습니다.',
+    controversyLevel: 2,
+    policySignal:
+      '这显示新加坡倾向于将代理型 AI 的风险纳入现有网络安全、数据保护和关键信息基础设施监管体系,而非另立专门的强制性前沿 AI 法规,同时通过内部试验与国际合作逐步调整监管力度。',
+    policySignalEn:
+      'This suggests Singapore favours folding agentic AI risks into its existing cybersecurity, data protection and critical-information-infrastructure regimes rather than creating a standalone mandatory frontier AI law, while adjusting its approach gradually through internal trials and international cooperation.',
+    policySignalJa:
+      'これはシンガポールが、エージェント型 AI のリスクを既存のサイバーセキュリティ、データ保護、および重要情報基盤規制体系に統合する傾向にあり、別途専門的で強制的な最先端 AI 法規を確立するのではなく、同時に内部試験と国際協力を通じて規制力度を段階的に調整していることを示している。',
+    policySignalKo:
+      '이는 싱가포르가 에이전트형 AI의 위험을 현존하는 네트워크 보안, 데이터 보호 및 중요 정보 기반시설 규제 체계에 포함시키되, 별도의 강제적 최첨단 AI 규정을 수립하지 않으면서 내부 시험 및 국제 협력을 통해 규제 강도를 단계적으로 조정하고 있음을 보여줍니다.',
+    notableQuote: '因此,现有的指导方针和法规,包括风险管理流程和监督机制,同样适用于代理型 AI 系统。',
+    notableQuoteEn:
+      'Therefore, existing guidelines and regulations, including risk management processes and oversight also apply to agentic AI systems.',
+    notableQuoteJa:
+      'したがって、リスク管理プロセスと監視メカニズムを含む既存のガイドラインと法規は、エージェント型 AI システムに同等に適用される。',
+    notableQuoteKo:
+      '따라서 위험 관리 프로세스 및 감시 메커니즘을 포함한 현존하는 지침과 규정이 에이전트형 AI 시스템에도 동등하게 적용됩니다.',
+    transcriptEn:
+      "Dr Charlene Chen, Mr Alex Yam, Dr Choo Pei Ling and Mr Yip Hon Weng pressed the Senior Minister of State for Digital Development and Information, Tan Kiat How, on AI safety testing access, incident-reporting thresholds, and the resilience of government systems against agentic AI, following a reported incident in which an autonomous AI agent gained unauthorised access to Australian government systems. Tan Kiat How replied that existing guidelines, risk-management processes and oversight frameworks, including the principle of human accountability, already apply to agentic AI systems, and that these are being reviewed and strengthened. He said the Government, through GovTech and other agencies, is running trials to build internal capability for deploying agentic AI responsibly, and that Singapore's AI Safety Institute works with international counterparts, including through a recent statement of support with like-minded countries at the United Nations. On incident reporting, he said existing frameworks such as the Personal Data Protection Act already set thresholds that apply regardless of whether AI tools are involved, citing a recent case where an employee's personal use of a generative AI tool led to a data leak. He did not commit to a specific threshold or timeline for mandatory frontier AI safety testing, saying this is a rapidly evolving area that the Government will keep monitoring and adapting frameworks for.",
+    sourceUrl: 'https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=oral-answer-4231',
+    addedAt: '2026-10-21',
+  },
+  {
+    id: 'written-answer-25134',
+    titleEn:
+      'Access Controls for SAFER Unit Data Sharing and Ensuring AI Risk Algorithms Avoid Unfair Profiling or Privacy Infringements Against Vulnerable Families',
+    title: 'SAFER 单位数据共享与算法风险把关',
+    titleJa: 'SAFER単位データ共有とアルゴリズムリスク管理',
+    titleKo: 'SAFER 기관 데이터 공유와 알고리즘 위험 관리',
+    date: '2026-10-07',
+    parliament: '15',
+    type: 'Written Answers to Questions',
+    speakers: ['Mr Yip Hon Weng', 'Mr Masagos Zulkifli B M M'],
+    personIds: ['yip-hon-weng'],
+    topicIds: [],
+    relatedPolicyIds: [],
+    relatedLeverNumbers: [],
+    relatedTimelineYears: [],
+    relatedPostSlugs: [],
+    topics: ['AI Governance & Regulation', 'AI Safety & Ethics', 'AI in Public Sector'],
+    summary:
+      '叶汉荣询问马善高，SAFER 单位在跨机构共享高度敏感客户资料时有哪些严格访问管控，以及部门如何确保风险算法不会对弱势家庭造成不公平画像或侵犯隐私。马善高答复，SAFER 整合各机构数据以识别儿童安全隐患个案，所有信息共享均受现行法律和政策保障监督；目前使用的风险算法并未采用人工智能，未来若扩大数据分析或人工智能应用，将继续接受严格保障措施和人为监督。',
+    summaryEn:
+      'Mr Yip Hon Weng asked Mr Masagos Zulkifli what strict access controls govern the sharing of highly sensitive client records in the SAFER unit between public agencies and non-government Social Service Agencies, and how the Ministry ensures AI risk algorithms avoid unfair profiling or privacy infringements against vulnerable families. Mr Masagos replied that SAFER combines data from different agencies to identify cases with child safety concerns, that all information sharing is governed by existing legal and policy safeguards, and that the current risk algorithm does not use any AI, though future expansion of data analytics or AI will remain subject to rigorous safeguards and human oversight.',
+    summaryJa:
+      'Yip Hon Wengがマサゴス・ズルキフリに対し、SAFER部門が機関横断的に高度に機密性の高い顧客情報を共有する際の厳格なアクセス管理は何か、また部門がどのようにしてリスク算法が脆弱家庭に不公正な描写やプライバシー侵害をもたらさないことを確保しているのかを質問しました。マサゴス・ズルキフリは、SAFERは複数の機関のデータを統合して児童安全上のリスク案件を特定し、すべての情報共有は現行法律および政策による保護の監督を受けており、現在使用されているリスク算法はAIを採用していない、今後データ分析またはAIの応用を拡大する場合は、引き続き厳格な保護措置および人的監督を受けると答えました。',
+    summaryKo:
+      'Yip Hon Weng이 Masagos Zulkifli Bin Masagos Mohamad에게 SAFER 단위가 기관 간 공유되는 매우 민감한 자료에 대해 어떠한 엄격한 접근 통제를 실시하고 있으며, 부서에서 위험도 알고리즘이 취약 가정에 불공정한 프로필을 만들거나 개인정보를 침해하지 않도록 어떻게 보장하는지 묻습니다. Masagos Zulkifli Bin Masagos Mohamad는 SAFER가 여러 기관의 데이터를 통합하여 아동 안전 위험 사례를 식별하며, 모든 정보 공유는 현행 법률 및 정책 보호의 감시를 받는다고 답변했습니다. 현재 사용하는 위험도 알고리즘은 인공지능을 채택하지 않았으며, 향후 데이터 분석이나 인공지능 응용을 확대할 경우 계속해서 엄격한 보호 조치와 인적 감시를 받을 것입니다.',
+    whyItMatters:
+      '社会及家庭发展部澄清 SAFER 现有的儿童安全风险算法没有使用 AI；日后扩大数据分析或 AI 使用，须有严格保障和人工监督',
+    whyItMattersEn:
+      "MSF clarified that SAFER's current child-safety risk algorithm uses no AI; any future expansion of data analytics or AI will remain subject to rigorous safeguards and human oversight.",
+    whyItMattersJa:
+      '社会・家族開発省は、SAFER の現在の児童安全リスクアルゴリズムは AI を使っていないと説明し、今後データ分析や AI の利用を広げる場合も厳格な保護措置と人による監督を続けるとしました。',
+    whyItMattersKo:
+      '사회가족개발부는 SAFER의 현재 아동 안전 위험 알고리즘에 AI가 쓰이지 않는다고 밝히고, 향후 데이터 분석이나 AI 사용을 넓히더라도 엄격한 안전장치와 사람의 감독을 유지하겠다고 했습니다.',
+    keyPoints: [
+      'SAFER 整合不同机构的数据，以识别存在儿童安全隐患的个案，供儿童保护人员评估和跟进。',
+      '必要时，SAFER 会向相关社会服务机构提供具体案件资料，支持其评估并确定合适的支援级别。',
+      '无论是政府机构之间还是与社会服务机构之间的信息共享，均受现行法律和政策保障的监督，以防滥用。',
+      '目前 SAFER 所用的风险算法并未采用任何人工智能。',
+      '未来若扩大数据分析或人工智能的应用，将继续接受严格保障措施和人为监督。',
+    ],
+    keyPointsEn: [
+      'SAFER brings together data from different agencies to identify cases with child safety concerns for assessment and follow-up by child protection practitioners.',
+      'Where needed, SAFER escalates cases by giving the specific Social Service Agency relevant case information to support their assessment and determine the right level of support for families.',
+      'All information sharing, whether between Government agencies or with Social Service Agencies, is governed by existing legal and policy safeguards against misuse.',
+      'The current risk algorithm used by SAFER does not utilise any AI.',
+      'Any future expansion in the use of data analytics or AI will continue to be subject to rigorous safeguards and human oversight.',
+    ],
+    keyPointsJa: [
+      'SAFERは異なる機関のデータを統合して児童安全上のリスクがある案件を特定し、児童保護職員の評価と追跡調査に供しています。',
+      '必要な場合、SAFERは関連する社会サービス機関に具体的な案件情報を提供し、その評価と適切な支援レベルの決定を支援しています。',
+      '政府機関間および社会サービス機関との間のいずれの情報共有であれ、現行法律および政策による保護の監督を受けており、乱用を防止しています。',
+      '現在SAFERが使用するリスク算法はAIを採用していません。',
+      '今後、データ分析またはAIの応用を拡大する場合は、引き続き厳格な保護措置と人的監督を受けることになります。',
+    ],
+    keyPointsKo: [
+      'SAFER는 여러 기관의 데이터를 통합하여 아동 안전 위험이 있는 사례를 식별하며, 아동 보호 담당자가 이를 평가하고 추적하도록 제공합니다.',
+      '필요할 때, SAFER는 관련 사회 서비스 기관에 구체적인 사건 자료를 제공하여 이들이 평가하고 적절한 지원 수준을 결정하도록 지원합니다.',
+      '정부 기관 간이든 사회 서비스 기관과의 정보 공유든 관계없이, 모든 정보 공유는 현행 법률 및 정책 보호의 감시를 받으며, 오용을 방지합니다.',
+      '현재 SAFER가 사용하는 위험도 알고리즘은 어떠한 인공지능도 채택하지 않았습니다.',
+      '향후 데이터 분석이나 인공지능의 응용을 확대할 경우, 계속해서 엄격한 보호 조치 및 인적 감시를 받을 것입니다.',
+    ],
+    governmentStance:
+      '政府表示 SAFER 的信息共享已受现行法律和政策充分保障，目前的风险算法也未使用人工智能；但对于未来扩大人工智能应用时将采取哪些具体新增访问管控或算法保障措施，并未作出说明。',
+    governmentStanceEn:
+      'The Government maintains that information sharing under SAFER is already governed by existing legal and policy safeguards, and that the current risk algorithm does not use AI; it did not specify what new access controls or algorithmic safeguards would apply if AI use expands in future.',
+    governmentStanceJa:
+      '政府はSAFERの情報共有が現行法律および政策により十分に保護されており、現在のリスク算法もAIを使用していないと述べました。しかし、今後AI応用を拡大する場合に講じる具体的な新たなアクセス管理またはアルゴリズム保護措置については、明らかにしていません。',
+    governmentStanceKo:
+      '정부는 SAFER의 정보 공유가 현행 법률 및 정책에 의해 충분히 보호되고 있으며, 현재의 위험도 알고리즘도 인공지능을 사용하지 않는다고 표시했습니다. 그러나 향후 인공지능 응용을 확대할 때 어떠한 구체적인 새로운 접근 통제 또는 알고리즘 보호 조치를 취할 것인지에 대해서는 설명하지 않았습니다.',
+    oppositionStance:
+      '叶汉荣关注的是跨机构共享高度敏感儿童保护资料的访问管控是否足够严谨，以及风险算法是否可能对弱势家庭造成不公平画像或侵犯隐私。',
+    oppositionStanceEn:
+      "Mr Yip Hon Weng's concern was whether access controls for sharing highly sensitive child protection records across agencies are strict enough, and whether risk algorithms could unfairly profile or infringe the privacy of vulnerable families.",
+    oppositionStanceJa:
+      'Yip Hon Wengが懸念しているのは、機関横断的に高度に機密性の高い児童保護情報を共有する際のアクセス管理が十分に厳格であるか、およびリスク算法が脆弱家庭に対して不公正な描写またはプライバシー侵害をもたらす可能性があるかどうかです。',
+    oppositionStanceKo:
+      'Yip Hon Weng이 관심을 두는 것은 기관 간 공유되는 매우 민감한 아동 보호 자료의 접근 통제가 충분히 엄격한지 여부와 위험도 알고리즘이 취약 가정에 불공정한 프로필을 만들거나 개인정보를 침해할 가능성이 있는지 여부입니다.',
+    controversyLevel: 2,
+    policySignal:
+      '这显示政府对涉及弱势家庭的敏感数据应用采取审慎渐进的立场，现阶段仍以非人工智能的规则性算法为主，并强调日后扩大人工智能应用须配合严格保障措施与人为监督，但未公开具体技术细节。',
+    policySignalEn:
+      'This shows the Government taking a cautious, incremental approach to sensitive data use involving vulnerable families, currently relying on a non-AI risk algorithm, and signalling that any future AI expansion will require rigorous safeguards and human oversight, without disclosing detailed technical specifics.',
+    policySignalJa:
+      'これは、政府が脆弱家庭に関連する機密データの応用に対して慎重で段階的なアプローチを取っており、現段階では引き続きAIを使用しない規則ベースのアルゴリズムが中心であり、今後AI応用を拡大する場合は厳格な保護措置と人的監督を伴わなければならないが、具体的な技術詳細は公表されていないことを示しています。',
+    policySignalKo:
+      '이는 정부가 취약 가정과 관련된 민감한 데이터 응용에 대해 신중하고 점진적인 입장을 취하고 있음을 보여줍니다. 현 단계에서는 인공지능이 아닌 규칙 기반 알고리즘을 주로 사용하고 있으며, 향후 인공지능 응용을 확대할 때는 엄격한 보호 조치 및 인적 감시를 함께 수반해야 한다고 강조하지만, 구체적인 기술 세부 사항은 공개하지 않았습니다.',
+    notableQuote: '目前的风险算法并未采用任何人工智能。',
+    notableQuoteEn: 'The current risk algorithm does not utilise any AI.',
+    notableQuoteJa: '現在のリスク算法はAIを採用していません。',
+    notableQuoteKo: '현재의 위험도 알고리즘은 어떠한 인공지능도 채택하지 않았습니다.',
+    transcriptEn:
+      'Mr Yip Hon Weng asked the Minister for Social and Family Development what strict access controls govern the sharing of highly sensitive client records between public agencies and non-government Social Service Agencies under the SAFER unit, and how the Ministry ensures AI risk algorithms avoid unfair profiling or privacy infringements against vulnerable families. Mr Masagos Zulkifli replied that SAFER brings together data from different agencies to identify cases with child safety concerns for assessment and follow-up by child protection practitioners. He said that where needed, SAFER escalates cases by giving the specific SSA relevant case information to support its assessment and determine the right level of support, and that all information sharing is governed by existing legal and policy safeguards against misuse. He added that the current risk algorithm does not use any AI, and that any future expansion of data analytics or AI use will remain subject to rigorous safeguards and human oversight.',
+    sourceUrl: 'https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=written-answer-25134',
+    addedAt: '2026-10-21',
+  },
+  {
+    id: 'written-answer-25141',
+    titleEn: "Measures to Assess Students' Ability to Perform Key Learning Tasks without AI Assistance",
+    title: '评估学生不借助 AI 完成学习任务的能力',
+    titleJa: '学生がAI なしで学習課題を完了する能力の評価',
+    titleKo: '학생의 AI 미사용 학습 과제 완료 능력 평가',
+    date: '2026-10-07',
+    parliament: '15',
+    type: 'Written Answers to Questions',
+    speakers: ['Mr Jackson Lam', 'Mr Desmond Lee'],
+    personIds: ['jackson-lam', 'desmond-lee'],
+    topicIds: [],
+    relatedPolicyIds: [],
+    relatedLeverNumbers: [],
+    relatedTimelineYears: [],
+    relatedPostSlugs: [],
+    topics: ['AI in Education'],
+    summary:
+      '林纬量议员询问教育部是否计划制定措施，评估学生在写作、研究和解决问题方面不借助 AI 独立完成学习任务的能力。李智陞答复说，国家级和校本考试通常有监考并禁止使用 AI，以评估学生的独立能力；在适合使用 AI 的任务中，学生须说明使用方式并对自己的作业负责，教育部将随 AI 能力演进持续检讨评估方式。',
+    summaryEn:
+      "Mr Jackson Lam asked the Minister for Education whether MOE intends to develop measures to assess students' ability to perform key learning tasks, particularly in writing, research and problem solving, without AI assistance. Mr Desmond Lee replied that national and school-based examinations are typically proctored and disallow AI use to assess students' independent abilities, while for assessments where AI use is appropriate, students must declare their AI use and remain responsible for their own work; MOE will continue reviewing its assessment approaches as AI capabilities evolve.",
+    summaryJa:
+      'ジャクソン・ラム議員は教育省（MOE）に対し、学生がAIに依存せずに執筆、研究および問題解決の分野で独立して学習課題を完了する能力を評価する措置を策定する計画があるかどうかを質問しました。Desmond Lee氏は、国家試験および学校ベースの試験は通常監督下にあり、学生の独立能力を評価するためAI使用が禁止されていると答えました。AIの使用が適切な課題では、学生はAI使用方法を説明し、自分の作業に対して責任を負う必要があり、教育省（MOE）はAI能力の進化に伴い評価方法を継続的に検討していくと述べました。',
+    summaryKo:
+      'Jackson Lam 의원이 교육부(MOE)에 학생들이 글쓰기, 연구, 문제 해결 영역에서 AI 지원 없이 독립적으로 학습 과제를 완료하는 능력을 평가하는 조치를 마련할 계획이 있는지 물었습니다. Desmond Lee는 국가 수준 및 학교급 시험이 일반적으로 감독 하에 실시되고 AI 사용을 금지하여 학생의 독립 능력을 평가한다고 답변했습니다. AI 사용이 적절한 과제에서는 학생이 AI 활용 방식을 명시하고 자신의 과제에 책임을 져야 하며, 교육부(MOE)는 AI 능력 발전에 따라 평가 방식을 지속적으로 검토할 것이라고 말했습니다.',
+    whyItMatters: '考试照常禁用 AI,课业却默许使用,新加坡用双轨评估为 AI 划线,而非一刀切',
+    whyItMattersEn:
+      'Exams continue to ban AI, but coursework allows its use — Singapore uses dual-track assessment to establish boundaries for AI rather than a blanket ban',
+    whyItMattersJa:
+      '試験は照常 AI を禁止し、課業は却ってその使用を暗に認めています。シンガポールは双軌評価によって AI に対する線を引き、一刀切ではなく対応しています。',
+    whyItMattersKo:
+      '시험에서는 AI를 계속 금지하되, 과제에서는 AI 사용을 기본적으로 허용 - 싱가포르가 이중 궤도 평가로 AI의 경계를 긋다. 일괄적 금지가 아닌 선별적 접근',
+    keyPoints: [
+      '国家级和校本考试通常有监考，并禁止使用 AI，以评估学生的独立能力。',
+      '在适合使用 AI 的研究或课程作业中，学生须说明 AI 的使用方式，并对自己的作业负责。',
+      '即使允许使用 AI，评估设计仍要求学生展现自己的思考、判断和理解。',
+      '教育部重视学生在学习使用 AI 的同时，继续培养扎实的基础知识与技能。',
+      '教育部将随 AI 能力的演进持续检讨评估方式，确保评估反映学生的实际学习成果。',
+    ],
+    keyPointsEn: [
+      "National and school-based examinations are typically proctored and disallow AI use, so students' independent abilities can be assessed.",
+      'For assessments where some AI use is appropriate, such as certain research or coursework, students must state how AI is used and remain responsible for their own work.',
+      'Even where AI is permitted, assessments are designed to require students to demonstrate their own thinking, judgement and understanding.',
+      'MOE places importance on students developing strong foundational knowledge and skills while learning to use AI appropriately and responsibly.',
+      'MOE will continue to review its assessment approaches as AI capabilities evolve, to ensure they reflect what students have learnt and can do.',
+    ],
+    keyPointsJa: [
+      '国家試験および学校ベースの試験は通常監督下で行われ、学生の独立能力を評価するためAI使用が禁止されている。',
+      'AIの使用が適切な研究またはコースワークでは、学生はAI使用方法を説明し、自分の作業に対して責任を持つ必要がある。',
+      'AIの使用が許可される場合であっても、評価設計は学生が自らの思考、判断および理解を示すことを要求している。',
+      '教育省（MOE）は、学生がAI使用を学習する一方で、堅実な基礎知識と技能の継続的な育成を重視している。',
+      '教育省（MOE）はAI能力の進展に伴って評価方法を継続的に見直し、評価が学生の実際の学習成果を反映することを保証する。',
+    ],
+    keyPointsKo: [
+      '국가 수준 및 학교급 시험은 일반적으로 감독 하에 실시되며 AI 사용을 금지하여 학생의 독립 능력을 평가합니다.',
+      'AI 사용이 적절한 연구 또는 과제 작업의 경우, 학생은 AI의 사용 방식을 명시해야 하며 자신의 작업에 책임을 져야 합니다.',
+      'AI 사용이 허용되더라도, 평가 설계는 여전히 학생이 자신의 생각, 판단, 이해를 보여줄 것을 요구합니다.',
+      '교육부(MOE)는 학생들이 AI 활용을 학습하는 동시에 견고한 기초 지식과 기술을 계속 개발하는 것을 중시합니다.',
+      '교육부(MOE)는 AI 능력의 발전에 따라 평가 방식을 지속적으로 검토하여 평가가 학생의 실제 학습 성과를 반영하도록 할 것입니다.',
+    ],
+    governmentStance:
+      '政府立场是通过监考考试禁止 AI 使用、并在容许 AI 的课程作业中要求披露使用方式，来维持对学生独立能力的评估，但未承诺制定专门的新测评工具或具体时间表。',
+    governmentStanceEn:
+      "The Government's position is to safeguard assessment of students' independent abilities through proctored exams that disallow AI and disclosure requirements in AI-permitted coursework, but it did not commit to any new dedicated assessment tool or timeline.",
+    governmentStanceJa:
+      '政府の立場は、監督下の試験でのAI使用禁止およびAIが許可される課程作業でのAI使用方法の開示要求を通じて、学生の独立能力の評価を維持しているが、専門的な新しい評価ツールまたは具体的なタイムラインの制定は約束していない。',
+    governmentStanceKo:
+      '정부의 입장은 감독 시험을 통해 AI 사용을 금지하고, AI 사용이 허용되는 과제 작업에서는 사용 방식 공개를 요구함으로써 학생의 독립 능력 평가를 유지하는 것이지만, 새로운 평가 도구 개발이나 구체적인 시간표 수립을 약속하지는 않았습니다.',
+    oppositionStance: '林纬量议员的提问显示他关注学生可能过度依赖 AI，导致写作、研究和解决问题等核心能力未被充分评估。',
+    oppositionStanceEn:
+      "Mr Jackson Lam's question reflects concern that students may rely too heavily on AI, leaving core abilities in writing, research and problem solving inadequately assessed.",
+    oppositionStanceJa:
+      'ジャクソン・ラム議員の質問は、学生がAIに過度に依存する可能性があり、それが執筆、研究および問題解決などの中核能力が十分に評価されないことにつながるという懸念を示している。',
+    oppositionStanceKo:
+      'Jackson Lam 의원의 질의는 학생들이 AI에 과도하게 의존하여 글쓰기, 연구, 문제 해결 등 핵심 능력이 충분히 평가되지 않을 수 있다는 우려를 드러냅니다.',
+    controversyLevel: 2,
+    policySignal:
+      '这显示新加坡教育政策依靠现有考试监考和课程作业披露规则来应对 AI，而非引入专门的新评估制度，侧重随 AI 发展持续调整，而非一次性新规。',
+    policySignalEn:
+      "This signals that Singapore's education policy relies on existing exam proctoring and coursework disclosure rules to address AI, rather than introducing a dedicated new assessment regime, favouring ongoing adjustment over a one-off new rule.",
+    policySignalJa:
+      'これは、シンガポール教育政策がAIに対応するため既存の試験監督および課程作業開示規則に依存し、新しい評価制度を導入せず、AI発展に伴う継続的な調整に焦点を当て、一度限りの新しい規則ではなく継続的な見直しを重視していることを示している。',
+    policySignalKo:
+      '이는 싱가포르 교육 정책이 AI에 대응하기 위해 기존의 시험 감독과 과제 작업 공개 규칙에 의존하고 있으며, 새로운 평가 체계를 별도로 도입하지 않고 있음을 보여줍니다. 정책은 AI 발전에 따라 지속적으로 조정하는 데 중점을 두고 있으며, 일회성의 새로운 규칙이 아닙니다.',
+    notableQuote: '国家级和校本考试通常有监考，并禁止使用 AI，以便评估学生的独立能力。',
+    notableQuoteEn:
+      "National and school-based examinations are typically proctored and disallow the use of AI, so that students' independent abilities can be assessed.",
+    notableQuoteJa:
+      '国家試験および学校ベースの試験は通常監督下で実施され、学生の独立能力を評価するためにAIの使用を禁止している。',
+    notableQuoteKo:
+      '국가 수준 및 학교급 시험은 일반적으로 감독 하에 실시되며 AI 사용을 금지하여 학생의 독립 능력을 평가합니다.',
+    transcriptEn:
+      "Mr Jackson Lam asked the Minister for Education whether MOE intends to develop measures to assess students' ability to perform key learning tasks without AI assistance, particularly in writing, research and problem solving. Mr Desmond Lee replied that MOE recognises the importance of students developing strong foundational knowledge and skills while learning to use AI appropriately and responsibly. He said assessments are designed according to their purpose, including assessing what students can do independently, and that national and school-based examinations are typically proctored and disallow AI use. For assessments where some AI use is appropriate, such as certain research or coursework, students must state how AI was used and remain responsible for their own work, with assessments designed to require their own thinking, judgement and understanding. He added that MOE will continue to review its assessment approaches as AI capabilities evolve.",
+    sourceUrl: 'https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=written-answer-25141',
+    addedAt: '2026-10-21',
+  },
+  {
+    id: 'written-answer-25148',
+    titleEn:
+      "Modelling and Balancing Additional Electricity and Water Demand Arising from AI Computing and Data Centre Growth with Singapore's Energy and Sustainability Objectives",
+    title: 'AI 与数据中心电力水资源需求评估',
+    titleJa: 'AIとデータセンター電力・水資源需要評価',
+    titleKo: 'AI 및 데이터센터 전력·수자원 수요 평가',
+    date: '2026-10-07',
+    parliament: '15',
+    type: 'Written Answers to Questions',
+    speakers: ['Mr Jackson Lam', 'Dr Tan See Leng'],
+    personIds: ['jackson-lam', 'tan-see-leng'],
+    topicIds: [],
+    relatedPolicyIds: [],
+    relatedLeverNumbers: [],
+    relatedTimelineYears: [],
+    relatedPostSlugs: [],
+    topics: ['AI Infrastructure & Research', 'AI Governance & Regulation'],
+    summary:
+      '林纬量议员询问贸易与工业部长陈诗龙，政府是否已就 AI 计算和数据中心增长带来的未来五至十年电力和用水需求进行建模，并询问政府将如何平衡这些需求与能源安全、水资源安全及减排目标。陈诗龙答复说，数据中心（包括 AI 计算）的预计电力和用水需求已纳入国家基础设施规划，政府自 2019 至 2022 年数据中心行业暂停后，通过数据中心申请征集（DC-CFA）机制调控增长步伐，第二轮 DC-CFA 要求申请者至少 50% 的数据中心容量使用绿色能源。他并指出，即将出台的《数字基础设施法案》将要求新旧数据中心达到设施级用电效率（PUE）标准，该框架也允许日后引入用水效率要求。',
+    summaryEn:
+      'Mr Jackson Lam asked the Minister for Energy, Trade and Industry (Energy and Industry), Dr Tan See Leng, whether the Government has modelled the additional electricity and water demand from AI computing and data centre growth over the next five to 10 years, and how these demands would be balanced against energy security, water security and emissions objectives. Dr Tan replied that projected electricity and water demand from data centres, including AI computing, is factored into national infrastructure planning, and that since the 2019-2022 moratorium on data centre growth, new capacity has been allocated mainly through the Data Centre-Call for Application (DC-CFA) exercise, with the second DC-CFA requiring applicants to power at least 50% of their data centre capacity from green energy sources. He added that the newly introduced Digital Infrastructure Bill will require data centres to meet facility-level Power Usage Effectiveness (PUE) requirements, with a framework allowing water efficiency requirements to be introduced where necessary.',
+    summaryJa:
+      'Jackson Lam議員が貿易・産業相Tan See Leng氏に対し、政府がAI計算とデータセンター拡大による今後5～10年間の電力・用水需要をモデル化したか、また政府がこの需要をエネルギー安全保障、水安全保障および排出削減目標とどう両立させるのかを質問した。Tan See Leng氏は、データセンター（AI計算を含む）の予想される電力・用水需要が国家インフラ計画に組み込まれており、政府が2019～2022年のデータセンター産業の一時停止後、DC-CFAメカニズムを通じて成長ペースを管理し、DC-CFA第2次ラウンドでは申請者に最低50%のデータセンター容量をグリーンエネルギーで供給することを要求していると答弁した。同氏はさらに、近々施行される『デジタルインフラ法』が新旧のデータセンターに施設レベルの電力利用効率（PUE）基準を満たすことを要求し、この枠組みは将来的に用水効率要件を導入することも可能にするだろうと指摘した。',
+    summaryKo:
+      'Jackson Lam 의원이 무역·산업부 장관 Tan See Leng에게, 정부가 AI 컴퓨팅과 데이터센터 성장으로 인한 향후 5~10년의 전력 및 용수 수요를 모델링했는지 여부와, 정부가 이러한 수요를 에너지 안보, 수자원 안보 및 탄소 감축 목표와 어떻게 조화시킬 것인지를 질문했습니다. Tan See Leng은 데이터센터(AI 컴퓨팅 포함)의 예상 전력 및 용수 수요가 이미 국가 기반시설 계획에 포함되었다고 답변했으며, 정부는 2019~2022년 데이터센터 업계 일시 중단 이후 데이터센터 신청 모집(DC-CFA) 메커니즘을 통해 증가 속도를 조절하고 있다고 설명했습니다. 2차 DC-CFA는 신청자가 데이터센터 용량의 최소 50%를 재생에너지로 운영하도록 요구하고 있습니다. 그는 또한 곧 시행될 「디지털 기반시설 법안」이 신·구 데이터센터에 대해 설비 수준의 전력 효율성(PUE) 표준을 충족하도록 요구할 것이며, 이 프레임워크는 향후 용수 효율성 요구사항을 도입할 수 있도록 허용한다고 지적했습니다.',
+    whyItMatters:
+      '《数字基础设施法案》将强制新旧数据中心达到设施级 PUE 要求，水效率要求留待必要时引入；第二轮 DC-CFA 要求至少 50% 容量使用绿色能源',
+    whyItMattersEn:
+      'The Digital Infrastructure Bill will require existing and new data centres to meet facility-level PUE requirements, with water-efficiency rules to be introduced where necessary; the second DC-CFA required at least 50% of capacity to run on green energy.',
+    whyItMattersJa:
+      'デジタルインフラ法案は既存・新設のデータセンターに施設単位の PUE 要件を課し、水効率の要件は必要に応じて導入します。第 2 回 DC-CFA では容量の 50% 以上をグリーンエネルギーで賄うことを求めました。',
+    whyItMattersKo:
+      '디지털인프라법안은 기존·신규 데이터센터에 시설 단위 PUE 요건을 부과하고, 물 효율 요건은 필요할 때 도입합니다. 2차 DC-CFA는 용량의 50% 이상을 친환경 에너지로 공급하도록 요구했습니다.',
+    keyPoints: [
+      '数据中心（包括 AI 计算）的预计电力和用水需求已纳入国家基础设施规划。',
+      '自 2019 至 2022 年数据中心行业暂停后，新增数据中心容量主要通过数据中心申请征集（DC-CFA）机制分配。',
+      '第二轮 DC-CFA 要求申请者至少以 50% 绿色能源为数据中心供电。',
+      '即将出台的《数字基础设施法案》将要求新旧数据中心达到设施级用电效率（PUE）要求。',
+      '该法案框架允许在必要时引入用水效率要求。',
+    ],
+    keyPointsEn: [
+      'Projected electricity and water demand from data centres, including AI computing, is factored into national infrastructure planning.',
+      'Since the 2019-2022 moratorium on data centre sector growth, new DC capacity has been allocated mainly through the Data Centre-Call for Application (DC-CFA) exercise.',
+      'The second DC-CFA exercise required applicants to power at least 50% of their data centre capacity from green energy sources.',
+      'The newly introduced Digital Infrastructure Bill will require existing and new data centres to meet facility-level Power Usage Effectiveness (PUE) requirements.',
+      "The Bill's framework also allows water efficiency requirements to be introduced where necessary.",
+    ],
+    keyPointsJa: [
+      'データセンター（AI計算を含む）の予想される電力・用水需要は既に国家インフラ計画に組み込まれている。',
+      '2019～2022年のデータセンター産業の一時停止後、新規データセンター容量は主にDC-CFAメカニズムを通じて配分されている。',
+      'DC-CFA第2次ラウンドは、申請者に最低50%のグリーンエネルギーでデータセンターに電力を供給することを要求している。',
+      '近々施行される『デジタルインフラ法』は、新旧のデータセンターが施設レベルの電力利用効率（PUE）要件を満たすことを要求するだろう。',
+      'その法案の枠組みは、必要に応じて用水効率要件を導入することを可能にしている。',
+    ],
+    keyPointsKo: [
+      '데이터센터(AI 컴퓨팅 포함)의 예상 전력 및 용수 수요는 이미 국가 기반시설 계획에 포함되어 있습니다.',
+      '2019~2022년 데이터센터 업계 일시 중단 이후, 새로운 데이터센터 용량은 주로 데이터센터 신청 모집(DC-CFA) 메커니즘을 통해 할당되고 있습니다.',
+      '2차 DC-CFA는 신청자가 데이터센터에 최소 50%의 재생에너지를 공급하도록 요구합니다.',
+      '곧 시행될 「디지털 기반시설 법안」은 신·구 데이터센터가 설비 수준의 전력 효율성(PUE) 요구사항을 충족하도록 요구할 것입니다.',
+      '해당 법안의 프레임워크는 필요할 경우 용수 효율성 요구사항을 도입할 수 있도록 허용합니다.',
+    ],
+    governmentStance:
+      '政府立场是数据中心增长需求已纳入规划，并通过 DC-CFA 机制、绿色能源配额及 PUE 要求加以管理，但未说明具体建模数据或水效率要求的实施时间表。',
+    governmentStanceEn:
+      "The Government's position is that data centre demand is factored into planning and managed through the DC-CFA mechanism, green energy quotas and PUE requirements, but it did not disclose specific modelling figures or a timeline for introducing water efficiency requirements.",
+    governmentStanceJa:
+      '政府の立場は、データセンター成長需要が計画に組み込まれており、DC-CFAメカニズム、グリーンエネルギークォータおよびPUE要件により管理されているというものであるが、具体的なモデル化データまたは水効率要件の実装スケジュールについては明示しなかった。',
+    governmentStanceKo:
+      '정부의 입장은 데이터센터 증가 수요가 이미 계획에 포함되었으며, DC-CFA 메커니즘, 재생에너지 할당량 및 PUE 요구사항을 통해 관리되고 있다는 것입니다. 그러나 구체적인 모델링 데이터나 용수 효율성 요구사항의 시행 일정은 명시하지 않았습니다.',
+    oppositionStance: '林纬量关注 AI 计算和数据中心扩张可能对新加坡能源安全、水资源安全及减排目标造成的压力。',
+    oppositionStanceEn:
+      "Mr Jackson Lam's concern was about the pressure that AI computing and data centre expansion could place on Singapore's energy security, water security and emissions objectives.",
+    oppositionStanceJa:
+      'Jackson Lam氏は、AI計算とデータセンター拡張がシンガポールのエネルギー安全保障、水安全保障および排出削減目標に与える可能性のある圧力について懸念を示した。',
+    oppositionStanceKo:
+      'Jackson Lam은 AI 컴퓨팅과 데이터센터 확대가 싱가포르의 에너지 안보, 수자원 안보 및 탄소 감축 목표에 미칠 수 있는 영향을 우려하고 있습니다.',
+    controversyLevel: 2,
+    policySignal:
+      '这显示政府将继续通过 DC-CFA 机制和即将出台的《数字基础设施法案》调控数据中心增长与资源使用，优先确保绿色能源占比和能效标准，而非公开具体需求预测数据。',
+    policySignalEn:
+      'This signals that the Government will continue to manage data centre growth and resource use through the DC-CFA mechanism and the forthcoming Digital Infrastructure Bill, prioritising green energy quotas and efficiency standards over disclosing specific demand forecasts.',
+    policySignalJa:
+      'これは政府が、DC-CFAメカニズムと近々施行される『デジタルインフラ法』を通じてデータセンター成長と資源利用を規制し、グリーンエネルギーの比率とエネルギー効率基準を確保することを優先し、具体的な需要予測データは公開しないことを示唆している。',
+    policySignalKo:
+      '이는 정부가 DC-CFA 메커니즘과 곧 시행될 「디지털 기반시설 법안」을 통해 데이터센터 증가와 자원 사용을 계속 조절하며, 구체적인 수요 예측 데이터를 공개하기보다는 재생에너지 비중과 에너지 효율성 표준을 우선적으로 확보할 것임을 보여줍니다.',
+    notableQuote: '最近提出的《数字基础设施法案》将要求新旧数据中心达到设施级用电效率要求。',
+    notableQuoteEn:
+      'The recently introduced Digital Infrastructure Bill will require existing and new DCs to meet facility-level Power Usage Effectiveness requirements.',
+    notableQuoteJa:
+      '最近提案された『デジタルインフラ法』は、新旧のデータセンターが施設レベルの電力利用効率要件を満たすことを要求するだろう。',
+    notableQuoteKo:
+      '최근 제안된 「디지털 기반시설 법안」은 신·구 데이터센터가 설비 수준의 전력 효율성 요구사항을 충족하도록 요구할 것입니다.',
+    transcriptEn:
+      'Mr Jackson Lam asked whether the Government has modelled the additional electricity and water demand from AI computing and data centre growth over the next five to 10 years, and how this would be balanced against energy security, water security and emissions objectives. Dr Tan See Leng replied that projected electricity and water demand from data centres, including AI computing, is factored into national infrastructure planning. He noted that since the 2019-2022 moratorium on data centre sector growth, new capacity has been calibrated and is now allocated mainly through the Data Centre-Call for Application (DC-CFA) exercise, with the second DC-CFA requiring applicants to power at least 50% of their capacity from green energy. He added that the Government is also improving sector resource efficiency: the newly introduced Digital Infrastructure Bill will require existing and new data centres to meet facility-level Power Usage Effectiveness requirements, and its framework allows water efficiency requirements to be introduced where necessary.',
+    sourceUrl: 'https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=written-answer-25148',
+    addedAt: '2026-10-21',
+  },
+  {
+    id: 'written-answer-25177',
+    titleEn:
+      'Complimentary AI Tool Subscription Scheme Redemption Rates, Uptake Targets and Breakdown of Popular AI Tools Subscribed',
+    title: 'AI 工具订阅计划兑换与目标进度',
+    titleJa: 'AIツール購読計画交換と目標進捗',
+    titleKo: 'AI 도구 구독 계획 환전 및 목표 진행도',
+    date: '2026-10-07',
+    parliament: '15',
+    type: 'Written Answers to Questions',
+    speakers: ['Mr Gerald Giam Yean Song', 'Ms Jasmin Lau'],
+    personIds: ['gerald-giam-yean-song', 'jasmin-lau'],
+    topicIds: [],
+    relatedPolicyIds: [],
+    relatedLeverNumbers: [],
+    relatedTimelineYears: [],
+    relatedPostSlugs: [],
+    topics: ['AI Strategy', 'AI Economy & Industry'],
+    summary:
+      '严燕松（Gerald Giam）询问代理人力部长，有多少新加坡人已兑换六个月免费高级 AI 工具订阅、部门为整体订阅量设定了什么目标、现有兑换数字与目标相比如何，以及受益人订阅的主要 AI 工具分布。刘洁敏（Jasmin Lau）答复，该计划已于 2026 年 9 月 16 日推出，三年内目标覆盖约 20 万人，是政府提升新加坡人 AI 能力及支持企业采用 AI 的更广泛举措的一部分；由于计划推行不足两周，评估达标情况为时尚早。',
+    summaryEn:
+      "Gerald Giam asked the Acting Minister for Manpower how many Singaporeans had redeemed the complimentary six-month premium AI tool subscription, what take-up targets had been set, how current figures compared, and which tools were most popular among beneficiaries. Jasmin Lau replied that the scheme, launched on 16 September 2026, aims to reach around 200,000 individuals over three years as part of broader efforts to build Singaporeans' AI capabilities and support enterprise AI adoption; since the scheme had run for less than two weeks, it was too early to assess take-up against the target.",
+    summaryJa:
+      'Gerald Giam Yean Song議員が人材省（MOM）代理部長に対し、何人のシンガポール国民が6ヶ月間無料のプレミアムAIツール購読を引き換えたか、部門が全体購読量に対してどのような目標を設定しているか、現在の引き換え数が目標とどのように比較されるか、および受益者が購読する主要なAIツール分布について質問しました。ジャスミン・ラウが回答し、このプログラムは2026年9月16日にリリースされ、3年以内に約20万人をカバーすることが目標であり、政府がシンガポール国民のAI能力を向上させ、企業によるAI採用を支援するためのより広範なイニシアティブの一部であると述べました。プログラムが開始されてまだ2週間に満たないため、目標達成状況の評価はまだ時期尚早です。',
+    summaryKo:
+      'Gerald Giam Yean Song 의원이 인력부(MOM) 대행 장관에게 싱가포르인 중 6개월간의 무료 프리미엄 AI 도구 구독을 받은 인원 수, 부처가 전체 구독량에 대해 설정한 목표, 현재의 구독자 수가 목표와 비교해 어느 수준인지, 그리고 수혜자들이 구독한 주요 AI 도구의 분포를 질문했습니다. Jasmin Lau가 답변하여, 이 계획은 2026년 9월 16일에 출시되었으며, 3년 내에 약 20만 명을 포함하는 것을 목표로 하고 있으며, 이는 싱가포르인의 AI 역량 제고 및 기업의 AI 도입 지원을 위한 정부의 광범위한 이니셔티브의 일부라고 설명했습니다. 계획 시행 후 2주 미만이므로, 목표 달성도를 평가하기에는 이른 단계입니다.',
+    whyItMatters:
+      '高级 AI 工具免费订阅计划 9 月 16 日推出，目标三年覆盖约 20 万人；运行不足两周，政府未公布兑换人数和热门工具',
+    whyItMattersEn:
+      'The free premium AI tool subscription launched on 16 September and aims to reach about 200,000 people over three years; after less than two weeks, the Government gave no redemption figures or tool breakdown.',
+    whyItMattersJa:
+      'プレミアム AI ツールの無料購読制度は 9 月 16 日に始まり、3 年で約 20 万人を目標としています。開始 2 週間未満のため、政府は利用者数や人気ツールを示しませんでした。',
+    whyItMattersKo:
+      '프리미엄 AI 도구 무료 구독 제도는 9월 16일 시작돼 3년간 약 20만 명을 목표로 합니다. 시행 2주가 안 돼 정부는 이용자 수와 인기 도구를 공개하지 않았습니다.',
+    keyPoints: [
+      '该计划于 2026 年 9 月 16 日启动，提供六个月免费高级版 AI 工具订阅。',
+      '计划目标是三年内覆盖约 20 万人。',
+      '该计划是政府提升新加坡人 AI 能力、支持企业采用 AI 的更广泛举措的一部分。',
+      '由于计划推行不足两周，现评估达标情况为时尚早。',
+    ],
+    keyPointsEn: [
+      'The scheme launched on 16 September 2026, offering a complimentary six-month subscription to premium AI tools.',
+      'It aims to reach around 200,000 individuals over three years.',
+      'The scheme is part of broader Government efforts to build AI capabilities among Singaporeans and support AI adoption by enterprises.',
+      'As the initiative has been running for less than two weeks, it is too early to assess take-up against the target.',
+    ],
+    keyPointsJa: [
+      'この計画は2026年9月16日に開始され、6ヶ月間無料のプレミアムAIツール購読を提供します。',
+      '計画の目標は3年以内に約20万人をカバーすることです。',
+      'この計画は、政府がシンガポール国民のAI能力を向上させ、企業によるAI採用を支援するためのより広範なイニシアティブの一部です。',
+      '計画の実施がまだ2週間に満たないため、目標達成状況の評価はまだ時期尚早です。',
+    ],
+    keyPointsKo: [
+      '이 계획은 2026년 9월 16일에 시작되었으며, 6개월간의 무료 프리미엄 AI 도구 구독을 제공합니다.',
+      '계획의 목표는 3년 내에 약 20만 명을 포함하는 것입니다.',
+      '이 계획은 싱가포르인의 AI 역량 제고 및 기업의 AI 도입을 지원하기 위한 정부의 광범위한 이니셔티브의 일부입니다.',
+      '이 계획은 시행된 지 2주 미만이므로, 현재 목표 달성도를 평가하기에는 이른 단계입니다.',
+    ],
+    governmentStance:
+      '政府设定三年内覆盖约 20 万人的总体目标，但以计划推行不足两周为由，未提供具体兑换人数、达标进度或受欢迎 AI 工具的细分数据。',
+    governmentStanceEn:
+      'The Government has set an overall target of reaching around 200,000 people over three years, but declined to provide specific redemption numbers, progress against the target, or a breakdown of popular AI tools, citing that the scheme has been running for less than two weeks.',
+    governmentStanceJa:
+      '政府は3年以内に約20万人をカバーするという総合目標を設定しましたが、プログラムの実施がまだ2週間に満たないことを理由に、具体的な引き換え人数、目標達成の進捗状況、および人気のあるAIツール分布の詳細データを提供しませんでした。',
+    governmentStanceKo:
+      '정부는 3년 내에 약 20만 명을 포함하는 전체 목표를 설정했으나, 계획 시행 후 2주 미만이라는 이유로 구체적인 교환 인원 수, 목표 달성도 또는 인기 있는 AI 도구의 세분화된 데이터를 제공하지 않았습니다.',
+    oppositionStance: '严燕松希望了解该补贴计划的实际兑换人数及受欢迎 AI 工具分布，以评估计划进度与成效。',
+    oppositionStanceEn:
+      "Gerald Giam sought details on actual redemption numbers and the popularity of tools used, to gauge the scheme's progress and effectiveness.",
+    oppositionStanceJa:
+      'Gerald Giam Yean Song議員は、当該補助金プログラムの実際の引き換え人数および人気のあるAIツール分布を把握することで、計画の進捗と効果を評価したいと考えています。',
+    oppositionStanceKo:
+      'Gerald Giam Yean Song 의원은 이 보조금 계획의 실제 교환 인원 수와 인기 있는 AI 도구의 분포를 파악하여 계획의 진행 상황과 효과를 평가하기를 원합니다.',
+    controversyLevel: 1,
+    policySignal:
+      '该计划显示新加坡政府正通过大规模补贴个人 AI 工具订阅，提升全民 AI 能力并带动企业采用，但计划仍处早期阶段，尚未建立对外披露进度的机制。',
+    policySignalEn:
+      "The scheme shows Singapore's Government is using large-scale subsidies for personal AI tool subscriptions to build nationwide AI capability and spur enterprise adoption, though the scheme is still in its early stage and progress reporting has yet to be established.",
+    policySignalJa:
+      'この計画は、シンガポール政府が個人のAIツール購読に対する大規模な補助金を通じて、国民全体のAI能力を向上させ、企業によるAI採用を促進していることを示していますが、計画はまだ初期段階にあり、進捗を対外的に開示するためのメカニズムはまだ確立されていません。',
+    policySignalKo:
+      '이 계획은 싱가포르 정부가 개인 AI 도구 구독에 대한 대규모 보조금을 통해 전민의 AI 역량을 제고하고 기업 채택을 촉진하고 있음을 보여줍니다만, 이 계획은 여전히 초기 단계이며 아직 대외적으로 진행 상황을 공개하는 메커니즘을 수립하지 않았습니다.',
+    notableQuote: '由于该计划推行不足两周，现在评估其能否达到这一三年目标还为时尚早。',
+    notableQuoteEn:
+      'As the initiative has been in operation for less than two weeks, it is too early to assess take-up against this three-year target.',
+    notableQuoteJa:
+      'この計画の実施がまだ2週間に満たないため、3年の目標を達成できるかどうかを評価することはまだ時期尚早です。',
+    notableQuoteKo:
+      '이 계획은 시행된 지 2주 미만이므로, 지금 이 3년 목표를 달성할 수 있는지를 평가하기에는 이른 단계입니다.',
+    transcriptEn:
+      'Gerald Giam asked the Acting Minister for Manpower how many Singaporeans had redeemed the complimentary six-month subscription to premium AI tools, what take-up targets the Ministry had set, how current figures compared to those targets, and which AI tools were most popular among beneficiaries. Jasmin Lau replied that the scheme was launched on 16 September 2026 and aims to reach around 200,000 individuals over three years. She said it complements broader Government efforts to build AI capabilities among Singaporeans and support enterprise AI adoption. Lau did not give redemption numbers, a comparison against the target, or a breakdown of popular tools, stating that since the scheme had been running for less than two weeks, it was too early to assess take-up against the three-year target.',
+    sourceUrl: 'https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=written-answer-25177',
+    addedAt: '2026-10-21',
+  },
+  {
+    id: 'written-answer-na-25191',
+    titleEn: 'Measuring Impact of AI Adoption on Job Redesign, Workload and Working Hours',
+    title: 'AI 应用对工作量与工时影响的测量',
+    titleJa: 'AI応用による業務量・勤務時間への影響測定',
+    titleKo: 'AI 응용의 업무량 및 근무시간 영향 측정',
+    date: '2026-10-07',
+    parliament: '15',
+    type: 'Written Answers to Questions',
+    speakers: ['Mr Sanjeev Kumar Tiwari', 'Ms Jasmin Lau'],
+    personIds: ['jasmin-lau'],
+    topicIds: [],
+    relatedPolicyIds: [],
+    relatedLeverNumbers: [],
+    relatedTimelineYears: [],
+    relatedPostSlugs: [],
+    topics: ['AI & Employment'],
+    summary:
+      '尚杰夫议员询问代理人力部长，人力部能否定期测量 AI 应用和工作重新设计对工作量及工时的影响，并询问能否将工作量和任务量指标纳入 iWorkHealth。刘洁敏政务部长答复，人力部的 AI 调查按季度开展，可用来了解 AI 应用对工作量和工时的影响；iWorkHealth 已包含评估工作量和任务要求的问题，但由于使用属自愿性质，数据代表性不足，无法全面评估 AI 对新加坡工作量的整体影响。',
+    summaryEn:
+      "Mr Sanjeev Kumar Tiwari asked the Acting Minister for Manpower whether the Ministry can regularly measure the effect of AI adoption and job redesign on workload and working hours, and whether workload and task-volume measures can be added to iWorkHealth. Ms Jasmin Lau replied that MOM's quarterly AI survey asks employers about job redesign and will help track these effects, and that iWorkHealth already includes workload and task-demand questions, but its voluntary use means the data is not representative enough to assess the overall impact nationally.",
+    summaryJa:
+      'Sanjeev Kumar Tiwari議員は代理人材省（MOM）長官に対し、人材省がAI応用と職務再設計による従業員の業務量および勤務時間への実際の影響を定期的に測定できるかを質問し、業務量と業務量指標をiWorkHealthに組み入れることができるかについても質問した。ジャスミン・ラウ政務部長は答えて、人材省のAI調査は四半期ごとに実施されており、AI応用が業務量と勤務時間に及ぼす影響の理解に用いることができることを述べた。iWorkHealthは既に業務量と業務要件の評価に関する質問を含んでいるが、使用が自主的性質であるため、データの代表性が不足し、AIのシンガポール全体業務量への影響全体を包括的に評価することができないと述べた。',
+    summaryKo:
+      'Sanjeev Kumar Tiwari 의원은 대리 인력부(MOM) 장관에게 인력부가 AI 응용과 업무 재설계가 업무량 및 근로시간에 미치는 영향을 정기적으로 측정할 수 있는지, 그리고 업무량 및 작업량 지표를 iWorkHealth에 포함시킬 수 있는지를 질문했습니다. Jasmin Lau 부장관은 인력부의 AI 조사가 분기별로 이루어지며 AI 응용이 업무량 및 근로시간에 미치는 영향을 파악하는 데 사용될 수 있다고 답변했습니다. iWorkHealth는 이미 업무량 및 작업 요구사항을 평가하는 질문을 포함하고 있지만, 사용이 자발적인 특성상 데이터 대표성이 부족하여 AI가 싱가포르 업무량에 미치는 전반적인 영향을 종합적으로 평가할 수 없습니다.',
+    whyItMatters: '部长承认 iWorkHealth 因自愿参与而数据失真,暴露新加坡尚无制度化工具衡量 AI 对工时工作量的真实冲击',
+    whyItMattersEn:
+      "Minister admits iWorkHealth data is distorted due to voluntary participation, exposing that Singapore still lacks institutionalized tools to measure AI's real impact on working hours and workload.",
+    whyItMattersJa:
+      '大臣は iWorkHealth の自主的な参加に伴うデータの歪みを認め、シンガポール（Singapore）が AI による労働時間および業務量への真の影響を測定するための制度化ツールをまだ持っていないことを明らかにしました。',
+    whyItMattersKo:
+      '장관은 iWorkHealth의 자발적 참여로 인한 데이터 왜곡을 인정했으며, 싱가포르가 AI의 근무 시간 및 업무량에 미치는 실질적 영향을 측정할 제도화된 도구를 여전히 갖추지 못하고 있음을 드러냈습니다.',
+    keyPoints: [
+      '人力部的 AI 调查按季度开展，询问雇主 AI 应用如何影响工作职责的重新设计。',
+      '该调查可用来了解 AI 应用对新加坡员工工作量和工时的影响。',
+      'iWorkHealth 是一项心理社会健康评估工具，帮助雇主识别常见的职场压力源和心理社会风险。',
+      'iWorkHealth 已包含评估员工对工作量和任务要求感受的问题，雇主可用其监测 AI 应用和工作重新设计等举措的影响。',
+      '由于 iWorkHealth 的使用属自愿性质，其数据代表性不足，无法评估 AI 对新加坡整体工作量和任务要求的影响。',
+    ],
+    keyPointsEn: [
+      "MOM's AI survey is conducted quarterly and asks employers how AI adoption affects the redesign of job roles.",
+      'The survey will help understand the effects of AI adoption on workload and working hours among employees in Singapore.',
+      'iWorkHealth is a psychosocial health assessment tool that helps employers identify common workplace stressors and psychosocial risks.',
+      "iWorkHealth already includes questions on employees' perception of workload and task demands, which employers can use to monitor the impact of AI adoption and job redesign.",
+      'Because use of iWorkHealth is voluntary, its data is not representative enough to assess the overall impact of AI on workload and task demands in Singapore.',
+    ],
+    keyPointsJa: [
+      '人材省（MOM）のAI調査は四半期ごとに実施され、AI応用がどのように職務責任の再設計に影響するかについて雇用者に質問する。',
+      '該当調査は、AI応用がシンガポール従業員の業務量と勤務時間に及ぼす影響を理解するために用いることができる。',
+      'iWorkHealthは心理社会的健康評価ツールであり、雇用者が一般的な職場ストレス源と心理社会的リスクを識別するのを支援する。',
+      'iWorkHealthは既に従業員の業務量と業務要件の感受に関する評価質問を含んでおり、雇用者はこれを用いてAI応用と職務再設計などの施策の影響を監視することができる。',
+      'iWorkHealthの使用が自主的な性質を持つため、そのデータの代表性が不足し、AIがシンガポール全体の業務量と業務要件に及ぼす影響を評価することができない。',
+    ],
+    keyPointsKo: [
+      '인력부(MOM)의 AI 조사는 분기별로 이루어지며, 고용주에게 AI 응용이 어떻게 업무 책임의 재설계에 영향을 미치는지를 질문합니다.',
+      '해당 조사는 AI 응용이 싱가포르 직원의 업무량 및 근로시간에 미치는 영향을 파악하는 데 사용될 수 있습니다.',
+      'iWorkHealth는 고용주가 일반적인 직장 스트레스 요인과 심리사회적 위험을 파악하는 데 도움이 되는 심리사회 건강 평가 도구입니다.',
+      'iWorkHealth는 이미 직원이 업무량 및 작업 요구사항에 대해 느끼는 바를 평가하는 질문을 포함하고 있으며, 고용주는 이를 통해 AI 응용 및 업무 재설계 등 조치의 영향을 모니터링할 수 있습니다.',
+      'iWorkHealth의 사용이 자발적인 특성상 그 데이터의 대표성이 부족하여 AI가 싱가포르의 전반적인 업무량 및 작업 요구사항에 미치는 영향을 평가할 수 없습니다.',
+    ],
+    governmentStance:
+      '政府表示将通过季度性的 AI 调查持续追踪 AI 应用对工作量和工时的影响，并鼓励雇主利用 iWorkHealth 监测相关举措的影响，但未承诺将工作量和任务量指标正式纳入 iWorkHealth，并指出该工具因自愿使用而无法提供具有代表性的全国数据。',
+    governmentStanceEn:
+      "The Government said it will keep tracking the effects of AI adoption on workload and working hours through its quarterly AI survey, and noted employers can already use iWorkHealth for this purpose, but it did not commit to formally adding workload and task-volume measures to iWorkHealth, citing the tool's voluntary use as a limit on representative national data.",
+    governmentStanceJa:
+      '政府は、四半期ごとのAI調査を通じてAI応用が業務量と勤務時間に及ぼす影響を継続的に追跡することを表明した。また、雇用者がiWorkHealthを用いて関連施策の影響を監視することを奨励した。しかし、業務量と業務量指標をiWorkHealthに正式に組み入れることは約束しなかった。また、該当ツールは自主的使用であるため代表性のある全国データを提供することができないことを指摘した。',
+    governmentStanceKo:
+      '정부는 분기별 AI 조사를 통해 AI 응용이 업무량 및 근로시간에 미치는 영향을 지속적으로 추적하고, 고용주가 iWorkHealth를 활용하여 관련 조치의 영향을 모니터링하도록 장려하고 있습니다. 다만 업무량 및 작업량 지표를 iWorkHealth에 공식적으로 포함시키겠다는 약속은 하지 않았으며, 자발적 사용으로 인해 해당 도구가 대표성 있는 국가 수준의 데이터를 제공할 수 없다고 지적했습니다.',
+    oppositionStance:
+      '尚杰夫议员关注的是，现有机制能否充分测量 AI 应用和工作重新设计对员工工作量与工时造成的实际影响。',
+    oppositionStanceEn:
+      "Mr Sanjeev Kumar Tiwari's concern was whether existing mechanisms can adequately measure the real impact of AI adoption and job redesign on employees' workload and working hours.",
+    oppositionStanceJa:
+      'Sanjeev Kumar Tiwari議員の関心事は、既存の仕組みがAI応用と職務再設計による従業員の業務量と勤務時間への実際の影響を充分に測定できるかということである。',
+    oppositionStanceKo:
+      'Sanjeev Kumar Tiwari 의원이 관심을 가진 것은 기존 메커니즘이 AI 응용과 업무 재설계가 직원의 업무량과 근로시간에 미치는 실제 영향을 충분히 측정할 수 있는가 하는 점입니다.',
+    controversyLevel: 2,
+    policySignal:
+      '这显示新加坡政府依靠现有的季度 AI 调查和自愿性的 iWorkHealth 工具来监测 AI 对劳动力的影响，而非建立新的强制性数据收集机制，反映出以雇主自愿参与为主、循序渐进扩展现有工具的政策取向。',
+    policySignalEn:
+      "This shows the Government relies on its existing quarterly AI survey and the voluntary iWorkHealth tool to monitor AI's impact on the workforce, rather than building a new mandatory data-collection mechanism, reflecting an incremental approach built on existing voluntary tools.",
+    policySignalJa:
+      'これはシンガポール政府が、AIが労働力に及ぼす影響を監視するために、既存の四半期ごとのAI調査と自主的なiWorkHealthツールに依存しており、新しい強制的なデータ収集メカニズムを確立していないことを示している。これは、雇用者の自主的な参加を主とし、既存ツールを段階的に拡張するという政策の方向性を反映している。',
+    policySignalKo:
+      '이는 싱가포르 정부가 신규 강제 데이터 수집 메커니즘을 구축하기보다는 기존의 분기별 AI 조사와 자발적인 iWorkHealth 도구를 통해 AI가 노동력에 미치는 영향을 모니터링하고 있음을 보여주며, 고용주의 자발적 참여를 중심으로 하고 기존 도구를 점진적으로 확장하는 정책 방향을 반영하고 있습니다.',
+    notableQuote: '由于该工具的使用属自愿性质，相关数据的代表性不足以评估 AI 对新加坡工作量和任务要求的整体影响。',
+    notableQuoteEn:
+      'As the usage of this tool is voluntary, the data will not be sufficiently representative to assess the overall impact of AI on workload and task demands in Singapore.',
+    notableQuoteJa:
+      '該当ツールの使用が自主的な性質を持つため、関連データの代表性が不足し、AIがシンガポール全体の業務量と業務要件に及ぼす影響を評価することができない。',
+    notableQuoteKo:
+      '해당 도구의 사용이 자발적인 특성상 관련 데이터의 대표성이 부족하여 AI가 싱가포르의 업무량 및 작업 요구사항에 미치는 전반적인 영향을 평가할 수 없습니다.',
+    transcriptEn:
+      "Mr Sanjeev Kumar Tiwari asked the Acting Minister for Manpower, in relation to MOM's report on AI adoption among firms, whether the Ministry can regularly measure how AI adoption and job redesign affect workload and working hours, and whether workload and task-volume measures could be added to iWorkHealth. Ms Jasmin Lau replied that MOM's AI survey, conducted quarterly, asks employers how AI adoption affects job redesign and will help track its effects on workload and working hours among employees in Singapore. She explained that iWorkHealth, a psychosocial health assessment tool, already includes questions on employees' perceived workload and task demands, which employers can use to monitor the impact of initiatives such as AI adoption and job redesign. However, she noted that because use of iWorkHealth is voluntary, the data collected is not representative enough to assess AI's overall impact on workload and task demands across Singapore.",
+    sourceUrl: 'https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=written-answer-na-25191',
+    addedAt: '2026-10-21',
+  },
+  {
+    id: 'written-answer-na-25223',
+    titleEn: 'Decision on Introducing Free Premium AI Access for Students in Institutes of Higher Learning',
+    title: '高校免费 AI 服务的监管与风险',
+    titleJa: '大学の無料AIサービスの規制とリスク',
+    titleKo: '대학 무료 AI 서비스의 규제와 위험',
+    date: '2026-10-07',
+    parliament: '15',
+    type: 'Written Answers to Questions',
+    speakers: ['Ms He Ting Ru', 'Mr Desmond Lee'],
+    personIds: ['he-ting-ru', 'desmond-lee'],
+    topicIds: [],
+    relatedPolicyIds: [],
+    relatedLeverNumbers: [],
+    relatedTimelineYears: [],
+    relatedPostSlugs: [],
+    topics: ['AI in Education', 'AI Governance & Regulation'],
+    summary:
+      '何廷儒询问教育部长,在高等院校决定为学生提供免费高级 AI 访问服务时,教育部发挥何种监督作用,如何评估认知外包和过度依赖等风险,以及将采取哪些保障措施防止其损害学习成果。李智陞答复称,教育部为各高等院校提供 AI 使用指南,各院校据此制定机构政策,通过审查课程、教学法和评估方式应对相关风险,在要求学生独立掌握知识的场合禁止使用 AI,并在允许使用 AI 时重新设计评估方式,同时训练学生辨别 AI 的局限性。',
+    summaryEn:
+      "Ms He Ting Ru asked the Minister for Education what oversight role MOE plays when institutes of higher learning introduce free premium AI access for students, how risks such as cognitive offloading and over-reliance are considered, and what safeguards will protect learning outcomes. Mr Desmond Lee replied that MOE provides guidelines to IHLs, which have institutional policies with guardrails against misuse; IHLs review curricula, pedagogy and assessment to manage these risks, ban AI use where independent mastery must be shown, redesign assessments (e.g. presentations and projects) where AI is allowed, and train students in AI's limitations.",
+    summaryJa:
+      'He Ting Ruは教育相に対して、高等教育機関が学生に無料の高度なAIアクセスサービスを提供することを決定する際に、教育省（MOE）がどのような監督的役割を果たすのか、認知外注化と過度な依存などのリスクをどのように評価するのか、および学習成果への害を防ぐためにどのような保障措置を採るのかについて質問しました。Desmond Leeは、教育省（MOE）が各高等教育機関にAI使用ガイドラインを提供し、各機関はこれに基づいて機関方針を策定し、カリキュラム、教授法および評価方法の見直しを通じて関連リスクに対処し、学生が知識を独立して習得することが求められる場合にはAIの使用を禁止し、AIの使用が許可されている場合には評価方法を再設計し、同時に学生にAIの限界を識別する訓練を行うと答えました。',
+    summaryKo:
+      'He Ting Ru가 교육부（MOE） 부장에게 고등교육기관이 학생에게 무료 고급 AI 액세스 서비스를 제공하기로 결정할 때 교육부가 어떤 감시 역할을 하는지, 인지 외주화와 과도한 의존 등의 위험을 어떻게 평가하는지, 그리고 학습 성과에 미치는 해를 방지하기 위해 어떤 보호 조치를 취할 것인지 질문했습니다. Desmond Lee는 응답으로 교육부가 각 고등교육기관에 AI 사용 지침을 제공하고, 각 기관이 이에 따라 기관 정책을 수립하며, 과정, 교수법, 평가 방식을 검토하여 관련 위험에 대응하고, 학생이 지식을 독립적으로 습득해야 하는 경우 AI 사용을 금지하며, AI 사용이 허용되는 경우 평가 방식을 재설계하고 학생들을 AI의 한계를 식별하도록 훈련한다고 답했습니다.',
+    whyItMatters:
+      '教育部不直接审批高校的免费高级 AI 计划，而是通过指导原则和各校政策管理；需要证明独立掌握的评估禁用 AI',
+    whyItMattersEn:
+      "MOE does not approve IHLs' free premium AI plans directly; it manages them through guidelines and institutional policies, and AI is barred where students must show independent mastery.",
+    whyItMattersJa:
+      '教育省は高等教育機関の無料プレミアム AI 計画を直接承認せず、指針と各校の方針で管理しています。自力での習得を示す評価では AI を禁止しています。',
+    whyItMattersKo:
+      '교육부는 고등교육기관의 무료 프리미엄 AI 계획을 직접 승인하지 않고 지침과 각 기관 정책으로 관리하며, 독립적 숙달을 보여야 하는 평가에서는 AI 사용을 금지합니다.',
+    keyPoints: [
+      '教育部向高等院校提供 AI 在教学与评估中使用的指南。',
+      '各高等院校依据指南制定机构政策,设置防范 AI 滥用和不良学习影响的保障措施。',
+      '高等院校通过审查课程、教学法和评估方式,应对认知外包和过度依赖等风险。',
+      '在要求学生展示独立掌握能力的场合,高等院校禁止使用 AI。',
+      '允许使用 AI 的场合,院校会重新设计评估方式(如报告和项目),并训练学生理解 AI 的局限并审慎使用。',
+    ],
+    keyPointsEn: [
+      'MOE provides guidelines to IHLs on using AI in teaching and assessment.',
+      'IHLs set institutional policies under these guidelines, with guardrails against AI misuse and harm to learning.',
+      'IHLs review curricula, pedagogy and assessment practices to address risks like cognitive offloading and overreliance.',
+      'AI use is banned where students must demonstrate independent mastery of concepts.',
+      "Where AI is allowed, IHLs redesign assessments (e.g. presentations and projects) and train students to understand AI's limitations and use it discerningly.",
+    ],
+    keyPointsJa: [
+      '教育省（MOE）は高等教育機関に対して、教育と評価におけるAI使用に関するガイドラインを提供しています。',
+      '各高等教育機関はガイドラインに基づいて機関方針を策定し、AIの不正使用と学習への悪影響を防ぐための保障措置を設置しています。',
+      '高等教育機関は、カリキュラム、教授法および評価方法の見直しを通じて、認知外注化と過度な依存などのリスクに対処しています。',
+      '学生が独立した習得能力を示すことが求められる場合、高等教育機関はAIの使用を禁止しています。',
+      'AIの使用が許可されている場合、機関は評価方法（報告書やプロジェクトなど）を再設計し、学生にAIの限界を理解し、慎重に使用する訓練を行います。',
+    ],
+    keyPointsKo: [
+      '교육부（MOE）는 고등교육기관에 교육과 평가에서 AI 사용에 관한 지침을 제공합니다.',
+      '각 고등교육기관은 지침에 따라 기관 정책을 수립하고 AI 남용 및 부정적 학습 영향을 방지하기 위한 보호 조치를 설정합니다.',
+      '고등교육기관은 과정, 교수법, 평가 방식을 검토하여 인지 외주화 및 과도한 의존 등의 위험에 대응합니다.',
+      '학생이 독립적 습득 능력을 보여야 하는 경우, 고등교육기관은 AI 사용을 금지합니다.',
+      'AI 사용이 허용되는 경우, 기관은 평가 방식을 재설계하고（예: 보고서 및 프로젝트）, 학생들을 AI의 한계를 이해하고 신중하게 사용하도록 훈련합니다.',
+    ],
+    governmentStance:
+      '政府表示教育部通过指南和院校自主政策管理 AI 使用,依靠课程、教学法与评估改革来防范风险,未提出对院校免费 AI 访问计划的直接审批或统一管制措施。',
+    governmentStanceEn:
+      "The Government said MOE manages AI use in IHLs through guidelines and institution-led policies, relying on curriculum, pedagogy and assessment reforms to manage risk, without committing to direct approval or uniform central control over IHLs' free AI access plans.",
+    governmentStanceJa:
+      '政府は、教育省（MOE）がガイドラインと機関の自主的な政策を通じてAI使用を管理し、カリキュラム、教授法および評価改革に依存してリスクを防ぎ、教育機関の無料AIアクセス計画に対する直接的な審査または統一的な規制措置を提案していないことを示しました。',
+    governmentStanceKo:
+      '정부는 교육부가 지침과 기관의 자율 정책을 통해 AI 사용을 관리하고, 과정, 교수법, 평가 개혁에 의존하여 위험을 방지하며, 기관의 무료 AI 액세스 계획에 대한 직접적인 승인이나 통일된 규제 조치를 제시하지 않는다고 밝혔습니다.',
+    oppositionStance: '何廷儒关注高等院校推出免费高级 AI 服务是否会导致学生认知外包和过度依赖 AI,从而损害学习成果。',
+    oppositionStanceEn:
+      "Ms He Ting Ru was concerned that IHLs' free premium AI access could lead to cognitive offloading and over-reliance among students, harming learning outcomes.",
+    oppositionStanceJa:
+      'He Ting Ruは、高等教育機関が無料の高度なAIサービスを導入することが、学生の認知外注化と過度なAI依存をもたらし、学習成果を損傷するかどうかについて懸念しました。',
+    oppositionStanceKo:
+      'He Ting Ru는 고등교육기관이 무료 고급 AI 서비스를 출시하는 것이 학생의 인지 외주화와 AI에 대한 과도한 의존을 초래하여 학습 성과를 해칠 수 있는지를 우려했습니다.',
+    controversyLevel: 2,
+    policySignal:
+      '这显示新加坡的高等教育 AI 政策依赖院校层面的自主治理与课程、评估调整,而非教育部对 AI 工具采购或使用设定统一的集中管控。',
+    policySignalEn:
+      "This signals that Singapore's higher-education AI policy relies on institution-level governance and curriculum/assessment adjustments, rather than centralised MOE control over how IHLs adopt or manage AI tools.",
+    policySignalJa:
+      'これは、シンガポールの高等教育のAI政策が、教育省（MOE）によるAIツール調達または使用に対する統一された集中管理ではなく、機関レベルの自主的な統治および課程・評価の調整に依存していることを示しています。',
+    policySignalKo:
+      '이는 싱가포르의 고등교육 AI 정책이 기관 차원의 자율 거버넌스와 과정, 평가 조정에 의존하며, 교육부가 AI 도구 구매나 사용에 대해 통일된 중앙 통제를 설정하지 않음을 보여줍니다.',
+    notableQuote: '在要求学生展示对概念和知识独立掌握能力的场合,AI 的使用是被禁止的。',
+    notableQuoteEn:
+      'AI use is prohibited where students are required to demonstrate independent mastery of concepts and understanding.',
+    notableQuoteJa:
+      '学生が概念および知識に対する独立した習得能力を示すことが求められる場合、AIの使用は禁止されています。',
+    notableQuoteKo: '학생이 개념과 지식을 독립적으로 습득한 능력을 보여야 하는 경우, AI의 사용은 금지됩니다.',
+    transcriptEn:
+      "Ms He Ting Ru asked the Minister for Education about MOE's oversight role when institutes of higher learning introduce free premium AI access for students, the considerations made regarding risks like cognitive offloading and over-reliance, and the safeguards against harm to learning outcomes. Mr Desmond Lee replied that MOE provides guidelines on AI use in education and assessment, and all IHLs have institutional policies in line with these guidelines, with guardrails against misuse. He said IHLs review curricula, pedagogy and assessment practices to address such risks, prohibiting AI use where students must demonstrate independent mastery. Where AI use is allowed, he said assessments are redesigned to test knowledge, judgement and application, such as through presentations and projects, and IHLs train students to understand AI's limitations and use it discerningly.",
+    sourceUrl: 'https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=written-answer-na-25223',
+    addedAt: '2026-10-21',
+  },
+  {
+    id: 'written-answer-na-25250',
+    titleEn: 'Test Parameters and Safety Settings for Safe Launch of Driverless Ride-hailing Service in Singapore',
+    title: '自动驾驶叫车服务安全评估标准',
+    titleJa: '自動運転配車サービスの安全評価基準',
+    titleKo: '자동운전 호출 서비스 안전 평가 기준',
+    date: '2026-10-07',
+    parliament: '15',
+    type: 'Written Answers to Questions',
+    speakers: ['Assoc Prof Jamus Jerome Lim', 'Mr Jeffrey Siow'],
+    personIds: ['jamus-jerome-lim'],
+    topicIds: [],
+    relatedPolicyIds: [],
+    relatedLeverNumbers: [],
+    relatedTimelineYears: [],
+    relatedPostSlugs: [],
+    topics: ['AI Governance & Regulation', 'AI Safety & Ethics'],
+    summary:
+      '林志蔚（Jamus Jerome Lim）询问交通部长,关于 Waymo 计划 2028 年推出的无人驾驶叫车服务,陆路交通管理局 (LTA) 的部署就绪评估框架在批准无人驾驶运营前,要求达到怎样的无干预里程和最高脱离率标准,以及 LTA 是否会公开各运营商的脱离、事故和碰撞数据。交通部长萧振祥回应,自动驾驶车辆 (AV) 必须先证明能在预期运行条件下安全可靠运行,才可在配备安全员的情况下载客,但未给出具体的量化指标;他并表示运营商须向 LTA 报告涉及第三方或财产损失的事故,交通部与 LTA 正研究定期公开更多 AV 运营数据。',
+    summaryEn:
+      "Assoc Prof Jamus Jerome Lim asked the Minister for Transport about Waymo's driverless ride-hailing service targeted for 2028, specifically what intervention-free distance and maximum disengagement rate LTA's Deployment Readiness Assessment requires before approval, and whether LTA will publish operators' disengagement, incident and crash data. Minister Jeffrey Siow replied that AVs must demonstrate safe and reliable operation within their intended conditions before carrying passengers with a safety operator on board, without giving specific numeric thresholds, and said operators must report incidents to LTA and the Traffic Police, with MOT and LTA looking into publishing more AV data regularly.",
+    summaryJa:
+      'Jamus Jerome Lim は運輸大臣に、Waymo が 2028 年に展開予定の自動運転配車サービスについて、陸上交通庁（LTA）の配置準備評価フレームワークが自動運転事業の認可前に要求する無介入走行マイルおよび最大離脱率の基準が何であるのか、また LTA が各運営事業者の離脱、事故および衝突データを公開するかどうかを質問しました。運輸大臣 Jeffrey Siow は、自動運転車両（AV）は予期される運行条件下で安全かつ確実に運行できることをまず証明する必要があり、初めて安全員を配備した状態で乗客を乗せることができると対応し、ただし具体的な定量指標は示さず、運営事業者は第三者または財産損失に関わる事故について LTA に報告する必要があり、運輸省（MOT）と LTA はより多くの AV 運営データを定期的に公開することを検討中であると述べました。',
+    summaryKo:
+      'Jamus Jerome Lim은 교통부（MOT） 장관에게 웨이모가 2028년에 출시할 예정인 무인 택시 서비스와 관련하여 육상교통청（LTA）의 배포 준비 평가 프레임워크가 무인 운영 승인 전에 요구하는 무개입 주행거리 및 최고 이탈률 기준이 무엇인지, 그리고 LTA가 각 운영자의 이탈 데이터, 사고 및 충돌 데이터를 공개할 것인지를 질문했습니다. 교통부（MOT） 장관 Jeffrey Siow는 자동운전 차량(AV)이 먼저 예상되는 운영 조건에서 안전하고 신뢰할 수 있게 운행할 수 있음을 입증해야만 안전원을 탑승시킨 상태에서 승객을 태울 수 있다고 응답했으나, 구체적인 정량화 지표는 제시하지 않았습니다. 또한 운영자는 제3자와 관련되거나 재산 손실을 초래하는 사고를 LTA에 보고해야 하며, 교통부（MOT）와 LTA는 정기적으로 더 많은 AV 운영 데이터를 공개하는 방안을 연구 중이라고 밝혔습니다.',
+    whyItMatters: 'LTA 没有公布自动驾驶车辆载客前须达到的接管率等具体门槛；运营数据是否定期公开仍在研究',
+    whyItMattersEn:
+      'LTA did not disclose specific thresholds, such as disengagement rates, that autonomous vehicles must meet before carrying passengers; regular publication of operating data is still under study.',
+    whyItMattersJa:
+      'LTA は、自動運転車が乗客を乗せる前に満たすべき離脱率などの具体的な基準を公表しませんでした。運行データの定期公開はなお検討中です。',
+    whyItMattersKo:
+      'LTA는 자율주행차가 승객을 태우기 전에 충족해야 할 개입률 등 구체적 기준을 공개하지 않았으며, 운행 데이터의 정기 공개는 아직 검토 중입니다.',
+    keyPoints: [
+      '根据 LTA 的部署就绪评估框架,自动驾驶车辆必须先证明能在预期运行条件下安全可靠运行,才可配备安全员载客。',
+      '评估还会考虑运行环境以及公众信心与接受程度等因素。',
+      '自动驾驶车辆运营商须报告涉及第三方或财产损失的事故。',
+      'LTA 与交通警察会对每起事故展开调查。',
+      '交通部与 LTA 正研究定期公开更多自动驾驶车辆运营相关数据。',
+    ],
+    keyPointsEn: [
+      "Under LTA's Deployment Readiness Assessment framework, AVs must demonstrate they can operate safely and reliably within their intended operating conditions before being allowed to carry passengers with a safety operator on board.",
+      'The assessment also considers factors such as operating environments and the level of public confidence and acceptance.',
+      'AV operators are required to report incidents involving third parties or property damage.',
+      'LTA and the Traffic Police will investigate each incident.',
+      'The Ministry of Transport and LTA are looking into regularly publishing more data related to AV operations.',
+    ],
+    keyPointsJa: [
+      '陸上交通庁（LTA）の配置準備評価フレームワークによれば、自動運転車両は予期される運行条件下で安全かつ確実に運行できることをまず証明する必要があり、その後初めて安全員を配備して乗客を乗せることができます。',
+      '評価ではさらに、運行環境および公衆の信頼と受け入れ程度などの要因も考慮されます。',
+      '自動運転車両運営事業者は、第三者または財産損失に関わる事故を報告する必要があります。',
+      '陸上交通庁（LTA）と交通警察は、各事故について調査を実施します。',
+      '運輸省（MOT）と陸上交通庁（LTA）は、自動運転車両の運営に関連するより多くのデータを定期的に公開することを検討中です。',
+    ],
+    keyPointsKo: [
+      'LTA의 배포 준비 평가 프레임워크에 따르면, 자동운전 차량은 먼저 예상되는 운영 조건에서 안전하고 신뢰할 수 있게 운행할 수 있음을 입증해야만 안전원을 탑승시킨 상태에서 승객을 태울 수 있습니다.',
+      '평가는 또한 운영 환경 및 대중의 신뢰와 수용도 등의 요인을 고려합니다.',
+      '자동운전 차량 운영자는 제3자와 관련되거나 재산 손실을 초래하는 사고를 보고해야 합니다.',
+      'LTA와 교통 경찰은 각 사고에 대해 조사를 진행합니다.',
+      '교통부（MOT）와 LTA는 정기적으로 더 많은 자동운전 차량 운영 관련 데이터를 공개하는 방안을 연구 중입니다.',
+    ],
+    governmentStance:
+      '政府表示将通过 LTA 的部署就绪评估框架确保自动驾驶车辆在获准载客前达到安全可靠标准,并正研究定期公开更多运营数据,但未给出具体的无干预里程或脱离率量化指标,也未承诺公开各运营商脱离、事故和碰撞数据的具体安排。',
+    governmentStanceEn:
+      "The Government said AVs must meet safety and reliability standards under LTA's framework before carrying passengers, and that it is looking into publishing more operational data regularly, but it did not give specific intervention-free distance or disengagement rate thresholds, nor commit to a specific arrangement for publishing each operator's disengagement, incident and crash data.",
+    governmentStanceJa:
+      '政府は、陸上交通庁（LTA）の配置準備評価フレームワークを通じて、自動運転車両が乗客を乗せることを認可される前に安全で信頼できる基準に達することを確保すると表明し、より多くの運営データを定期的に公開することを検討中です。しかし、無介入走行マイルおよび離脱率に関する具体的な定量指標は示さず、また各運営事業者の離脱、事故および衝突データを公開することについても具体的な取り決めを約束していません。',
+    governmentStanceKo:
+      '정부는 LTA의 배포 준비 평가 프레임워크를 통해 자동운전 차량이 승객 탑승 승인을 받기 전에 안전하고 신뢰할 수 있는 기준에 도달하도록 보장할 것이며, 정기적인 운영 데이터 공개 방안을 연구 중이라고 밝혔습니다. 하지만 구체적인 무개입 주행거리 또는 이탈률 정량화 지표는 제시하지 않았으며, 각 운영자의 이탈, 사고 및 충돌 데이터 공개에 대한 구체적인 계획을 약속하지 않았습니다.',
+    oppositionStance: '林志蔚关注的是无人驾驶叫车服务缺乏明确、可量化的安全门槛,以及运营数据透明度不足的问题。',
+    oppositionStanceEn:
+      "Jamus Jerome Lim's concern was the lack of clear, quantifiable safety thresholds and transparency around operational data for driverless ride-hailing services.",
+    oppositionStanceJa:
+      'Jamus Jerome Lim が関心を持つのは、自動運転配車サービスが明確で定量化可能な安全基準を欠いており、運営データの透明性が不足しているという問題です。',
+    oppositionStanceKo:
+      'Jamus Jerome Lim이 우려하는 점은 무인 택시 서비스가 명확하고 정량화할 수 있는 안전 기준이 부족하고 운영 데이터의 투명성이 불충분하다는 것입니다.',
+    controversyLevel: 2,
+    policySignal:
+      '这显示新加坡对自动驾驶车辆的监管倾向于采用框架性、情境化的安全评估,而非设定公开的量化门槛,数据公开仍处于研究阶段,尚未成为承诺。',
+    policySignalEn:
+      "This signals that Singapore's approach to regulating autonomous vehicles relies on a framework-based, context-dependent safety assessment rather than published quantitative thresholds, with data transparency still under study rather than committed.",
+    policySignalJa:
+      'これは、シンガポールの自動運転車両規制が、公開の定量的基準の設定ではなく、枠組み的で状況依存的な安全評価を採用する傾向を示しており、データの公開はまだ検討段階にあり、まだ約束となっていないことを示しています。',
+    policySignalKo:
+      '이는 싱가포르가 자동운전 차량에 대한 규제에서 공개적인 정량화 기준을 설정하기보다 프레임워크 기반의 상황별 안전 평가를 채택하는 경향을 보이며, 데이터 공개는 여전히 연구 단계이고 아직 공약이 되지 않았음을 보여줍니다.',
+    notableQuote:
+      '根据陆路交通管理局 (LTA) 的部署就绪评估框架,所有在公共道路上运营的自动驾驶车辆 (AV) 必须先证明能够在其预期运行条件下安全可靠地运行,才可在配备安全员的情况下搭载乘客。',
+    notableQuoteEn:
+      "Under the Land Transport Authority's (LTA's) Deployment Readiness Assessment framework, all autonomous vehicles (AV) operating on public roads must demonstrate that they can operate safely and reliably within their intended operating conditions before they are allowed to carry passengers with a safety operator on board.",
+    notableQuoteJa:
+      '陸上交通庁（LTA）の配置準備評価フレームワークによれば、公共道路上で運営される全ての自動運転車両（AV）は、予期される運行条件下で安全かつ確実に運行できることをまず証明する必要があり、その後初めて安全員を配備して乗客を乗せることができます。',
+    notableQuoteKo:
+      '육상교통청（LTA）의 배포 준비 평가 프레임워크에 따르면, 공공 도로에서 운영되는 모든 자동운전 차량(AV)은 먼저 예상되는 운영 조건에서 안전하고 신뢰할 수 있게 운행할 수 있음을 입증해야만 안전원을 탑승시킨 상태에서 승객을 태울 수 있습니다.',
+    transcriptEn:
+      "Assoc Prof Jamus Jerome Lim asked the Minister for Transport, regarding Waymo's driverless ride-hailing service targeted for 2028, what intervention-free distance and maximum disengagement rate must be demonstrated under LTA's Deployment Readiness Assessment before driverless operations are approved, and whether LTA will publish each operator's disengagement, incident and crash data before and after approval. Minister Jeffrey Siow replied that under LTA's Deployment Readiness Assessment framework, all AVs operating on public roads must demonstrate safe and reliable operation within their intended operating conditions before being allowed to carry passengers with a safety operator on board. He added that other factors, such as operating environments and the level of public confidence and acceptance, are also considered. He said AV operators are required to report incidents involving third parties or property damage, and that LTA and the Traffic Police will investigate each incident. He concluded that the Ministry of Transport and LTA are looking into regularly publishing more data related to AV operations.",
+    sourceUrl: 'https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=written-answer-na-25250',
+    addedAt: '2026-10-21',
+  },
+  {
+    id: 'written-answer-na-25263',
+    titleEn: 'Regulations for Use of Smart Glasses with AI Capabilities by Public Service Officers',
+    title: '公务员使用 AI 智能眼镜规范',
+    titleJa: '公務員のAIスマートグラス使用規範',
+    titleKo: '공무원의 AI 스마트 안경 사용 규범',
+    date: '2026-10-07',
+    parliament: '15',
+    type: 'Written Answers to Questions',
+    speakers: ['Ms Hany Soh', 'Mr Chan Chun Sing'],
+    personIds: ['hany-soh', 'chan-chun-sing'],
+    topicIds: [],
+    relatedPolicyIds: [],
+    relatedLeverNumbers: [],
+    relatedTimelineYears: [],
+    relatedPostSlugs: [],
+    topics: ['AI in Public Sector', 'AI Governance & Regulation', 'AI & National Security'],
+    summary:
+      '苏慧敏（Hany Soh）议员询问总理兼财政部长，政府是否认为有必要禁止或限制公务员在工作中使用具备 AI 功能的智能眼镜，以防止或减少违反 1935 年《官方机密法令》的风险。陈振声（Chan Chun Sing）部长（代总理）答复说，现有法律和保障措施已适用于 AI 智能眼镜，公务员须遵守《公务员操守准则》和《官方机密法令》，妥善保护官方机密信息。他强调，无论使用何种电子设备，公务员都须谨慎行事，违规者将受到法律或纪律处分，政府会随技术发展持续检讨保障措施。',
+    summaryEn:
+      "Ms Hany Soh asked the Prime Minister and Minister for Finance whether the Government considers it necessary to ban or restrict public service officers' use of AI-enabled smart glasses at work, to prevent breaches of the Official Secrets Act 1935. Mr Chan Chun Sing (for the Prime Minister) replied that existing laws and safeguards, including rules on photography and recording, already apply to AI-enabled smart glasses, and that officers must comply with the Public Service Code of Conduct and the Official Secrets Act. He added that officers must exercise due care regardless of the device used, that violators face legal action or disciplinary proceedings, and that safeguards will continue to be reviewed as technology evolves.",
+    summaryJa:
+      'Hany Soh議員は総理兼財務省（MOF）長官に対し、公務員が職務中にAI機能付きスマートグラスを使用することを禁止または制限する必要があると政府が考えるかを尋ねました。これは1935年『官方機密法令』違反のリスクを防止または削減するためです。チャン・チュンシン部長（代理総理）は、既存の法律と保障措置はすでにAI機能付きスマートグラスに適用されていると答えました。公務員は『公務員操守準則』と『官方機密法令』を遵守し、官方機密情報を適切に保護する必要があります。彼は、どのような電子機器を使用していても、公務員は慎重に行動する必要があると強調しました。違反者は法律または懲戒処分を受け、政府は技術発展に伴い継続的に保障措置を検討します。',
+    summaryKo:
+      'Hany Soh 의원이 총리 겸 재무부（MOF） 장관에게, 1935년 「공식기밀법령」 위반의 위험을 방지하거나 줄이기 위해 공무원의 업무 중 AI 기능이 있는 스마트 안경 사용을 금지하거나 제한할 필요가 있는지를 질문했습니다. Chan Chun Sing 장관（대행 총리）은 현행 법률과 보호 조치가 이미 AI 스마트 안경에 적용되며, 공무원은 「공무원 윤리 지침」 및 「공식기밀법령」을 준수해야 하고, 공식 기밀 정보를 적절히 보호해야 한다고 답변했습니다. 그는 어떤 전자기기를 사용하든 공무원은 신중하게 행동해야 하고, 위반자는 법적 또는 징계 처분을 받을 것이며, 정부는 기술 발전에 따라 보호 조치를 계속 검토할 것이라고 강조했습니다.',
+    whyItMatters:
+      '陈振声未另立专项规则,径将 AI 智能眼镜纳入 1935 年《官方机密法令》管辖,显示新型 AI 硬件监管仍依赖存量旧法',
+    whyItMattersEn:
+      'Chan Chun Sing did not establish separate specific rules, instead directly placing AI smart glasses under the jurisdiction of the 1935 Official Secrets Act, indicating that regulation of new AI hardware still relies on existing legacy laws.',
+    whyItMattersJa:
+      'チャン・チュンシンは、個別の規則を設けず、AIスマートグラスを1935年の「公式機密法令」の管轄下に直接納めました。これは、新型のAIハードウェアの規制が依然として既存の旧法に依存していることを示しています。',
+    whyItMattersKo:
+      'Chan Chun Sing는 별도의 특별 규칙을 마련하지 않고, AI 스마트 안경을 1935년 「Official Secrets Act」의 관할 범위에 직접 포함시켰으며, 이는 신형 AI 하드웨어 규제가 여전히 기존 구법에 의존하고 있음을 보여줍니다.',
+    keyPoints: [
+      '数字发展与信息部今年已在国会书面答复中说明，现行法律和保障措施适用于具备 AI 功能的智能眼镜，包括拍照及录音录像相关规定。',
+      '《公务员操守准则》要求公务员保护官方信息的机密性。',
+      '公务员必须遵守《1935 年官方机密法令》及政府安全规定。',
+      '公务员须谨慎行事，不得不当记录、保留或泄露机密信息，不论使用的是智能眼镜、手机还是其他电子设备。',
+      '违规公务员将依法或通过内部纪律程序被追究责任，政府将随技术和风险演变持续检讨保障措施。',
+    ],
+    keyPointsEn: [
+      'The Ministry of Digital Development and Information has explained in Parliamentary Q&As this year that existing laws and safeguards, including rules on photography and audio/video recording, apply to AI-enabled smart glasses.',
+      'The Public Service Code of Conduct requires officers to safeguard the confidentiality of official information.',
+      'Officers must comply with the Official Secrets Act 1935 and Government security requirements.',
+      'Officers must exercise due care and must not improperly record, retain or disclose classified information, whether using smart glasses, mobile phones or other electronic devices.',
+      'Officers who fail to comply will face legal action or internal disciplinary proceedings, and the Government will continue to review safeguards as technologies and risks evolve.',
+    ],
+    keyPointsJa: [
+      'デジタル発展・情報省（MDDI）は、今年、国会への書面回答の中で、現行の法律と保障措置がAI機能付きスマートグラスに適用され、写真撮影および音声・動画録音に関する規定を含むことを説明しました。',
+      '『公務員操守準則』は、公務員が官方情報の機密性を保護することを要求しています。',
+      '公務員は『1935年官方機密法令』および政府の安全規定を遵守する必要があります。',
+      '公務員は慎重に行動する必要があり、スマートグラス、携帯電話、その他の電子機器がいずれであろうと、機密情報を不当に記録、保有、または漏洩してはいけません。',
+      '違反した公務員は法律に従いまたは内部懲戒手続を通じて責任を追及され、政府は技術とリスクの進化に伴い継続的に保障措置を検討します。',
+    ],
+    keyPointsKo: [
+      '디지털개발정보부（MDDI）는 올해 국회에 제출한 서면 답변에서 현행 법률과 보호 조치가 AI 기능이 있는 스마트 안경에 적용되며, 사진 촬영 및 음성·영상 녹음 관련 규정을 포함한다고 설명했습니다.',
+      '「공무원 윤리 지침」은 공무원이 공식 정보의 기밀성을 보호할 것을 요구합니다.',
+      '공무원은 「1935년 공식기밀법령」 및 정부 보안 규정을 반드시 준수해야 합니다.',
+      '공무원은 신중하게 행동해야 하며, 스마트 안경, 휴대폰 또는 기타 전자기기를 사용하든 부당하게 기밀 정보를 기록하거나 보관하거나 누설해서는 안 됩니다.',
+      '규칙을 위반한 공무원은 법적으로 또는 내부 징계 절차를 통해 책임을 지게 되며, 정부는 기술 및 위험의 변화에 따라 보호 조치를 계속 검토할 것입니다.',
+    ],
+    governmentStance:
+      '政府认为现有法律、安全规定和《公务员操守准则》已足以涵盖 AI 智能眼镜带来的风险，因此没有宣布专门禁止或限制此类设备，而是强调公务员须自律并遵守现行规则。',
+    governmentStanceEn:
+      'The Government considers that existing laws, security requirements and the Public Service Code of Conduct already address the risks posed by AI-enabled smart glasses, and it did not announce a specific ban or restriction, instead stressing officer compliance with existing rules.',
+    governmentStanceJa:
+      '政府は、既存の法律、安全規定、『公務員操守準則』がAI機能付きスマートグラスのもたらすリスクをカバーするのに十分だと考えています。したがって、このようなデバイスを具体的に禁止または制限する発表を行っていません。代わりに、公務員は自律し、現行の規則を遵守する必要があることを強調しています。',
+    governmentStanceKo:
+      '정부는 현행 법률, 보안 규정 및 「공무원 윤리 지침」이 이미 AI 스마트 안경이 야기하는 위험을 충분히 포함한다고 생각하므로, 이러한 기기를 특별히 금지하거나 제한한다고 발표하지 않았으며, 공무원이 자신을 단속하고 현행 규칙을 준수해야 한다고 강조합니다.',
+    oppositionStance: '提问议员关注公务员在工作中使用 AI 智能眼镜，可能增加违反《官方机密法令》、泄露机密信息的风险。',
+    oppositionStanceEn:
+      "The questioner was concerned that public service officers' use of AI-enabled smart glasses at work could raise the risk of breaches of the Official Secrets Act and leaks of classified information.",
+    oppositionStanceJa:
+      '質問議員は、公務員が職務中にAI機能付きスマートグラスを使用することが『官方機密法令』違反および機密情報の漏洩のリスクを増加させる可能性があることに懸念を示しています。',
+    oppositionStanceKo:
+      '질문한 의원은 공무원이 업무 중 AI 스마트 안경을 사용하면 「공식기밀법령」 위반 및 기밀 정보 누출의 위험이 증가할 수 있다고 우려했습니다.',
+    controversyLevel: 2,
+    policySignal:
+      '这显示新加坡政府倾向于把 AI 智能眼镜等新设备纳入现有法律和操守框架管理，而非为具体技术另立新规，同时保留随技术演变调整保障措施的空间。',
+    policySignalEn:
+      "This signals that Singapore's approach is to manage new devices like AI-enabled smart glasses under existing laws and conduct frameworks rather than issuing device-specific rules, while leaving room to adjust safeguards as technology evolves.",
+    policySignalJa:
+      'シンガポール政府は、AI機能付きスマートグラスなどの新しいデバイスを既存の法律と操守フレームワークの枠内で管理する傾向を示しており、具体的な技術ごとに新規則を設けるのではなく、技術の進化に伴い保障措置を調整する余地を保留しています。',
+    policySignalKo:
+      '이는 싱가포르 정부가 AI 스마트 안경 등 새로운 기기를 기존 법률과 윤리 체계 내에서 관리하려는 경향을 보여주며, 특정 기술을 위해 새로운 규칙을 따로 수립하지 않으면서도 기술 발전에 따라 보호 조치를 조정할 수 있는 여지를 유지하고 있습니다.',
+    notableQuote: '公务员须谨慎行事，不得不当记录、保留或泄露机密信息。',
+    notableQuoteEn:
+      'Public officers are expected to exercise due care and must not improperly record, retain or disclose classified information.',
+    notableQuoteJa: '公務員は慎重に行動し、機密情報を不当に記録、保有、または漏洩してはいけません。',
+    notableQuoteKo: '공무원은 신중하게 행동해야 하며, 부당하게 기밀 정보를 기록하거나 보관하거나 누설해서는 안 됩니다.',
+    transcriptEn:
+      "Ms Hany Soh asked the Prime Minister and Minister for Finance whether the Government considers it necessary to ban or restrict public service officers' use of AI-enabled smart glasses at work, in order to prevent or minimise breaches of the Official Secrets Act 1935. Mr Chan Chun Sing, replying for the Prime Minister, said the Government takes the protection of official information seriously. He noted that the Ministry of Digital Development and Information had already explained this year that existing laws and safeguards, including rules on photography and recording, apply to AI-enabled smart glasses. He added that the Public Service Code of Conduct requires officers to safeguard confidential information and comply with the Official Secrets Act and Government security requirements. Officers must exercise due care and must not improperly record, retain or disclose classified information, regardless of the device used. He concluded that officers who breach the rules will face legal action or disciplinary proceedings, and that safeguards will continue to be reviewed as technology and risks evolve.",
+    sourceUrl: 'https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=written-answer-na-25263',
+    addedAt: '2026-10-21',
+  },
+  {
+    id: 'written-answer-na-25284',
+    titleEn:
+      "Support for Taxi and Private Hire Vehicle Drivers to Transition to New Careers with Waymo's Announced AV Ride-hail Service",
+    title: '自动驾驶冲击下德士私召车司机转型支持',
+    titleJa: '自動運転の衝撃下におけるタクシー・配車運転手の転職支援',
+    titleKo: '자율주행 충격 속 택시·개인운송 운전자 전환 지원',
+    date: '2026-10-07',
+    parliament: '15',
+    type: 'Written Answers to Questions',
+    speakers: [
+      'Assoc Prof Terence Ho',
+      'Assoc Prof Jamus Jerome Lim',
+      'Ms Hany Soh',
+      'Ms Yeo Wan Ling',
+      'Mr Jeffrey Siow',
+    ],
+    personIds: ['terence-ho', 'jamus-jerome-lim', 'hany-soh', 'yeo-wan-ling'],
+    topicIds: [],
+    relatedPolicyIds: [],
+    relatedLeverNumbers: [],
+    relatedTimelineYears: [],
+    relatedPostSlugs: [],
+    topics: ['AI & Employment', 'AI Economy & Industry', 'AI Governance & Regulation'],
+    summary:
+      '何伟伦、林志蔚、苏慧敏和杨涴淩四位议员询问交通部长萧振祥,自动驾驶车(AV)扩张是否会冲击德士与私召车司机的生计,并问及转业培训的参与率、监测指标以及是否该为 AV 数量设上限。萧振祥答复,目前全国仅有 15 辆自动驾驶车在榜鹅运营,相对于 7.2 万名德士与私召车司机的总数占比极小,预计短期内不会冲击司机生计,政府也不会因此设上限。他说明政府已推出自动驾驶专才转业转换计划及点对点司机转巴士驾驶员转换计划,参与雇主可获最高 90% 薪金补贴,首批提供约 350 个职位,人力部目前未追踪平台司机参与 CCP 的比率。',
+    summaryEn:
+      "Assoc Prof Terence Ho, Assoc Prof Jamus Jerome Lim, Ms Hany Soh and Ms Yeo Wan Ling asked Minister for Transport Jeffrey Siow whether the expansion of autonomous vehicles (AVs) would hurt taxi and private hire car drivers' livelihoods, and about take-up of career conversion and training schemes, monitoring indicators, and whether a cap should be placed on AV numbers. Siow replied that there are currently only 15 AVs operating in Punggol, a very small share of the 72,000 active taxi and private hire drivers, so no near-term impact on driver livelihoods is expected, and the Government will not cap AV numbers. He outlined new Career Conversion Programmes for AV specialists and for point-to-point drivers moving to bus captain roles, offering up to 90% salary support with about 350 initial placements, while noting MOM does not currently track platform workers' CCP participation rate.",
+    summaryJa:
+      'Terence Ho、Jamus Jerome Lim、Hany Soh、Yeo Wan Lingの4名の議員が、運輸省（MOT）長Jeffrey Siowに対して、自動運転車（AV）の拡大がタクシーおよび配車運転手の生計に影響するかどうか、職業転換研修への参加率、監視指標、およびAV台数の上限を設けるべきかについて質問しました。Jeffrey Siowは、現在全国ではブオナビスタで15台の自動運転車が運営されており、7万2000人のタクシーおよび配車運転手の総数との割合は極めて小さく、短期的には運転手の生計に影響しないと予想され、政府もそのため上限を設けないと答えました。彼は、政府がすでに自動運転専門人材職業転換計画および点対点運転手からバス運転手への転換計画を開始したことを説明し、参加する雇用主は最高90％の給与補助を受け取ることができ、最初のバッチでは約350職位が提供され、人材省（MOM）は現在プラットフォーム運転手のCCP参加率を追跡していないと述べました。',
+    summaryKo:
+      'Terence Ho, Jamus Jerome Lim, Hany Soh, Yeo Wan Ling 4명의 의원이 교통부(MOT) 장관 Jeffrey Siow에게 자동주행차(AV) 확대가 택시 및 개별 운송 운전기사의 생계에 영향을 미칠지 여부를 질문했으며, 직업전환 교육 참여율, 모니터링 지표, AV 대수에 상한선을 설정해야 하는지에 대해 문의했습니다. Jeffrey Siow는 현재 전국적으로 Buona Vista에서 운영 중인 자동주행차가 15대뿐이고, 택시 및 개별 운송 운전기사 7.2만 명에 비해 극히 미미한 수준이며, 단기 내에 운전기사의 생계에 영향을 미치지 않을 것으로 예상되므로 정부는 상한선을 설정하지 않을 것이라고 답변했습니다. 그는 정부가 자동주행차 전문가 직업전환 계획 및 개별 운송 운전기사의 버스 운전기사 전환 계획을 추진했으며, 참여하는 고용주는 최대 90% 임금 보조금을 받을 수 있고, 첫 배치에서 약 350개의 일자리를 제공하며, 인력부(MOM)는 현재 플랫폼 운전기사의 CCP 참여율을 추적하고 있지 않다고 설명했습니다.',
+    whyItMatters:
+      '萧振祥表示不为自动驾驶车辆设上限，理由是交通需求仍在增长、德士司机老化，并援引当年未限制私召车的先例；两项职业转换计划首批约 350 个名额，政府提供最高 90% 薪金补贴',
+    whyItMattersEn:
+      'Jeffrey Siow ruled out a cap on autonomous vehicles, citing growing transport needs, an ageing taxi workforce and the precedent of not capping private-hire drivers; two career conversion programmes start with about 350 places and up to 90% salary support.',
+    whyItMattersJa:
+      'Jeffrey Siow 運輸相は、交通需要の伸び、タクシー運転手の高齢化、配車サービス運転手を制限しなかった前例を挙げて自動運転車の台数上限を否定しました。2 つの転職支援プログラムは当初約 350 枠で、最大 90% の給与補助があります。',
+    whyItMattersKo:
+      'Jeffrey Siow 교통부 장관은 교통 수요 증가, 택시 기사 고령화, 과거 차량호출 기사 수를 제한하지 않은 선례를 들어 자율주행차 대수 상한을 두지 않겠다고 했습니다. 두 가지 직업 전환 프로그램은 처음 약 350개 자리로 시작하며 최대 90% 임금 보조를 제공합니다.',
+    keyPoints: [
+      '目前新加坡共有 15 辆自动驾驶车在榜鹅运营,Grab 计划未来六个月内增至 50 辆。',
+      'Waymo 将于 2027 年在新加坡西部开始测试与筹备,目标是隔年(2028 年)启动商业服务。',
+      '到 2028 年底,新加坡或有数百辆自动驾驶载客车辆,相对于 7.2 万名德士与私召车司机占比仍极小。',
+      '政府已推出自动驾驶专才转业转换计划(CCP)及点对点司机转巴士驾驶员转换计划,参与雇主可获最高 90% 薪金补贴,首批约提供 350 个职位。',
+      '人力部目前不追踪平台司机参与 CCP 的比率,但政府已准备好在需求超出预期时扩大 CCP 名额。',
+    ],
+    keyPointsEn: [
+      'Singapore currently has 15 autonomous vehicles operating in Punggol, and Grab plans to expand to 50 vehicles within the next six months.',
+      'Waymo will begin testing and preparations in western Singapore in 2027, aiming to start commercial service the following year (2028).',
+      'By end-2028 there may be several hundred autonomous passenger vehicles, still a very small share of the 72,000 active taxi and private hire drivers.',
+      'The Government has launched a Career Conversion Programme (CCP) for autonomous vehicle specialists and a point-to-point driver to bus captain CCP pathway, giving participating employers up to 90% salary support, with about 350 placements catered for a start.',
+      "MOM does not currently track platform workers' participation rate in CCPs, but the Government is prepared to scale up CCP capacity if demand is higher than expected.",
+    ],
+    keyPointsJa: [
+      '現在シンガポールではブオナビスタで15台の自動運転車が運営されており、Grabは今後6ヶ月以内に50台に増やす計画です。',
+      'Waymoは2027年にシンガポール西部でテストと準備を開始し、2028年に商用サービスを開始することを目標としています。',
+      '2028年末までに、シンガポールは数百台の自動運転乗客車両を持つ可能性があり、7万2000人のタクシーおよび配車運転手と比較してシェアは依然として極めて小さいです。',
+      '政府は自動運転専門人材職業転換計画（CCP）および点対点運転手からバス運転手への転換計画をすでに開始しており、参加する雇用主は最高90％の給与補助を受け取ることができ、最初のバッチでは約350職位が提供されています。',
+      '人材省（MOM）は現在プラットフォーム運転手のCCP参加率を追跡していませんが、政府は需要が予想を超えた場合にCCPの枠を拡大する準備ができています。',
+    ],
+    keyPointsKo: [
+      '현재 싱가포르에는 총 15대의 자동주행차가 Buona Vista에서 운영 중이며, Grab은 향후 6개월 내에 50대로 증가할 계획입니다.',
+      'Waymo는 2027년 싱가포르 서부에서 테스트 및 준비를 시작하여 2028년에 상용 서비스를 출범할 계획입니다.',
+      '2028년 말까지 싱가포르에는 수백 대의 자동주행 승객 운송 차량이 있을 수 있지만, 택시 및 개별 운송 운전기사 7.2만 명에 비해 여전히 극히 미미한 비중을 차지합니다.',
+      '정부는 자동주행차 전문가 직업전환 계획(CCP) 및 개별 운송 운전기사의 버스 운전기사 전환 계획을 시행했으며, 참여하는 고용주는 최대 90% 임금 보조금을 받을 수 있고 첫 배치에서 약 350개의 일자리를 제공합니다.',
+      '인력부(MOM)는 현재 플랫폼 운전기사의 CCP 참여율을 추적하고 있지 않지만, 정부는 수요가 예상을 초과할 경우 CCP 모집 인원을 확대할 준비가 되어 있습니다.',
+    ],
+    governmentStance:
+      '政府立场是自动驾驶车现阶段规模很小,短期内不会冲击德士与私召车司机生计,因此不设 AV 数量上限,并以转业转换计划(CCP)和最高 90% 薪金补贴作为预防性支持。不过,政府未承诺追踪平台司机参与 CCP 的比率,也未为新推出的人力转型配套设定具体的转业或培训达标目标。',
+    governmentStanceEn:
+      "The Government's position is that AV deployment is still at a very small scale and will not hurt taxi and private hire driver livelihoods in the near term, so it will not cap AV numbers, relying instead on CCPs and up to 90% salary support as pre-emptive measures. However, it did not commit to tracking platform workers' CCP participation rate, nor did it set concrete conversion or training take-up targets for the new manpower transition package.",
+    governmentStanceJa:
+      '政府の立場は、自動運転車は現段階では規模が小さく、短期的には運転手の生計に影響しないため、AV台数の上限を設けず、職業転換計画（CCP）と最高90％の給与補助を予防的支援として実施するというものです。しかし、政府はプラットフォーム運転手のCCP参加率の追跡を約束しておらず、新たに導入された人力転換支援パッケージについて具体的な職業転換または研修達成目標を設定していません。',
+    governmentStanceKo:
+      '정부의 입장은 현재 단계에서 자동주행차의 규모가 매우 작고 단기 내에 택시 및 개별 운송 운전기사의 생계에 영향을 미치지 않을 것이므로 AV 대수 상한선을 설정하지 않으며, 직업전환 계획(CCP)과 최대 90% 임금 보조금을 예방적 지원으로 활용합니다. 그러나 정부는 플랫폼 운전기사의 CCP 참여율을 추적할 것을 약속하지 않았으며, 새로 도입한 인력 전환 지원 패키지에 대한 구체적인 직업전환 또는 교육 목표를 설정하지 않았습니다.',
+    oppositionStance:
+      '议员们担心自动驾驶车的逐步扩张终将冲击德士与私召车司机的生计,并质疑现有转业支援缺乏明确的监测指标、达标目标及数量上限等安全阀。',
+    oppositionStanceEn:
+      "The MPs were concerned that the gradual expansion of autonomous vehicles would eventually hurt taxi and private hire drivers' livelihoods, and questioned whether existing transition support had clear monitoring indicators, targets, or safeguards such as a cap on AV numbers.",
+    oppositionStanceJa:
+      '議員たちは、自動運転車の段階的な拡大が最終的に運転手の生計に影響すると懸念し、既存の職業転換支援に明確な監視指標、達成目標、および台数上限などの安全弁が欠如していることを疑問視しています。',
+    oppositionStanceKo:
+      '의원들은 자동주행차의 단계적 확대가 결국 택시 및 개별 운송 운전기사의 생계에 영향을 미칠 것으로 우려하고 있으며, 기존의 직업전환 지원이 명확한 모니터링 지표, 달성 목표, 대수 상한선 등의 안전장치를 갖추지 못하고 있다는 점을 문제 삼았습니다.',
+    controversyLevel: 2,
+    policySignal:
+      '这反映新加坡政府对自动驾驶商用化采取循序渐进、以市场需求为导向的策略,优先用转业转换计划与薪金补贴作为司机保障机制,而非通过数量上限等直接管制手段限制技术扩张,显示政策天平目前仍偏向促进技术采用,同时搭配劳工过渡支持。',
+    policySignalEn:
+      "This shows Singapore's Government taking a gradual, demand-led approach to AV commercialisation, favouring career conversion programmes and salary support as the driver safeguard mechanism rather than direct controls such as an AV cap, with policy currently tilted toward enabling adoption alongside labour transition support.",
+    policySignalJa:
+      'これはシンガポール政府が自動運転の商用化に段階的かつ市場需要主導の戦略で対応し、台数上限などの直接的な規制ではなく職業転換計画と給与補助を運転手保護の主軸としており、現在の政策が技術採用の促進を優先しつつ労働者の過渡期支援を組み合わせた形になっていることを反映しています。',
+    policySignalKo:
+      '이는 싱가포르 정부가 자동주행차의 상용화에 대해 단계적이고 시장 수요 중심적인 전략을 취하고 있으며, 직업전환 계획과 임금 보조금을 운전기사 보호 메커니즘으로 우선 활용하면서도 대수 상한선 등의 직접적인 규제 수단으로는 기술 확대를 제한하지 않는다는 점을 보여줍니다. 현재 정책 저울이 여전히 기술 도입 촉진 쪽으로 기울어져 있으면서, 동시에 노동자 전환 지원과 병행하고 있습니다.',
+    notableQuote:
+      '黄循财总理在国庆群众大会上说过,政府不会让(自动驾驶的)采用速度超越我们重新培训、支持受影响司机并协助他们转入新工作的能力。',
+    notableQuoteEn:
+      'Prime Minister Lawrence Wong in his National Day Rally had said that we will not let adoption run ahead of our ability to retrain and support affected drivers and help them move into new jobs.',
+    notableQuoteJa:
+      'ローレンス・ウォン首相は国庆式典で、政府は自動運転の採用スピードが運転手の再研修と影響を受けた運転手への支援および新職への転職支援の能力を上回ることを許さないと述べました。',
+    notableQuoteKo:
+      '총리 Lawrence Wong은 국경일 국민 집회에서 정부가 자동주행차 도입 속도를 운전기사들을 재교육하고 지원하며 새로운 일자리로 전환하도록 돕는 우리의 능력을 초과하도록 하지 않을 것이라고 밝혔습니다.',
+    transcriptEn:
+      "Four MPs — Assoc Prof Terence Ho, Assoc Prof Jamus Jerome Lim, Ms Hany Soh and Ms Yeo Wan Ling — asked Minister for Transport Jeffrey Siow about the impact of AV expansion, including Waymo's entry, on taxi and private hire car drivers, covering career conversion take-up, monitoring indicators, and whether a cap on AVs is needed. Siow replied that AV deployment is at an early stage, with 15 vehicles in Punggol today, Grab adding up to 50 within six months, and Waymo starting testing in western Singapore in 2027 before commercial service in 2028. He said that even by end-2028 AVs would remain a small share of the 72,000 active drivers, so no immediate impact on jobs is expected, and the Government will not cap AV numbers given growing transport demand and an ageing driver workforce. He cited PM Lawrence Wong's pledge that AV adoption will not outpace support for affected drivers, and outlined two new Career Conversion Programmes offering employers up to 90% salary support, with about 350 placements initially and room to scale up if demand rises. He noted MOM does not currently track platform workers' CCP participation rate.",
+    sourceUrl: 'https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=written-answer-na-25284',
+    addedAt: '2026-10-21',
+  },
+  {
+    id: 'written-answer-25057',
+    titleEn:
+      "Impact of Foreign AI Chip Export Controls and Remote Computing Access Restrictions on Singapore's Data Centre and Cloud Services Sectors and Mitigation Measures",
+    title: 'AI 芯片出口管制对数据中心影响',
+    titleJa: 'AI チップ輸出管制のデータセンターへの影響',
+    titleKo: 'AI 칩 수출 규제의 데이터 센터 영향',
+    date: '2026-10-06',
+    parliament: '15',
+    type: 'Written Answers to Questions',
+    speakers: ['Mr Saktiandi Supaat', 'Mrs Josephine Teo'],
+    personIds: ['saktiandi-supaat', 'josephine-teo'],
+    topicIds: [],
+    relatedPolicyIds: [],
+    relatedLeverNumbers: [],
+    relatedTimelineYears: [],
+    relatedPostSlugs: [],
+    topics: ['AI Infrastructure & Research', 'AI Economy & Industry'],
+    summary:
+      '安迪（Saktiandi Supaat）议员询问数字发展与信息部长，外国收紧 AI 芯片出口管制、限制远程访问海外计算设施，是否会影响新加坡的数据中心和云服务行业，政府将如何应对。杨莉明（Josephine Teo）回应说，政府正密切关注相关发展动态，并与企业沟通评估潜在影响，如有必要将考虑采取适当措施加以缓解。',
+    summaryEn:
+      "Mr Saktiandi Supaat asked the Minister for Digital Development and Information whether tighter foreign export controls on AI chips and restrictions on remote access to overseas computing infrastructure would affect Singapore's data centre and cloud services sectors, and what mitigation steps the Government would take. Mrs Josephine Teo replied that the Government is monitoring these developments and engaging companies on potential impact, and will consider appropriate measures if necessary.",
+    summaryJa:
+      'Saktiandi Supaat議員がデジタル発展・情報省（MDDI）大臣に対し、外国がAIチップの出口規制を厳格化し、海外の計算施設への遠隔アクセスを制限することが、シンガポールのデータセンターとクラウドサービス業界に影響を与えるのか、そして政府がどのように対応するのかについて質問しました。ジョセフィン・テオが応答し、政府は関連する発展動向を注視しており、企業と連絡を取ってその潜在的な影響を評価しており、必要に応じて影響を緩和するための適切な措置を講じることを検討していると述べました。',
+    summaryKo:
+      'Saktiandi Supaat 의원이 디지털개발정보부（MDDI） 장관에게, 외국이 AI 칩 수출 규제를 강화하고 해외 컴퓨팅 시설에 대한 원격 액세스를 제한하는 것이 싱가포르의 데이터센터 및 클라우드 서비스 산업에 영향을 미칠 것인지, 정부가 어떻게 대응할 것인지 질문했습니다. Josephine Teo는 정부가 관련 발전 동향을 면밀히 모니터링하고 있으며, 기업과 소통하여 잠재적 영향을 평가하고 있다고 응답했습니다. 필요한 경우, 정부는 적절한 조치를 취하는 것을 고려할 것이라고 말했습니다.',
+    whyItMatters:
+      '杨莉明 10 月 6 日答复只承诺监测 AI 芯片出口管制和远程算力限制、与企业沟通影响，必要时再考虑措施，未公布具体应对办法',
+    whyItMattersEn:
+      "Josephine Teo's 6 October reply commits only to monitoring AI chip export controls and remote-compute restrictions and engaging companies, with measures to be considered if necessary; no specific response was announced.",
+    whyItMattersJa:
+      'Josephine Teo 大臣の 10 月 6 日の答弁は、AI チップ輸出規制と遠隔計算資源の制限を注視し企業と協議することにとどまり、必要なら措置を検討するとして、具体策は示しませんでした。',
+    whyItMattersKo:
+      'Josephine Teo 장관의 10월 6일 답변은 AI 칩 수출 통제와 원격 컴퓨팅 제한을 모니터링하고 기업과 협의하는 데 그쳤으며, 필요하면 조치를 검토하겠다며 구체적 대응책은 밝히지 않았습니다.',
+    keyPoints: [
+      '政府正密切关注 AI 芯片出口管制方面的最新发展。',
+      '政府也在关注对海外计算资源远程访问的限制动态。',
+      '政府正与企业沟通，评估这些限制对新加坡数据中心和云服务行业的潜在影响。',
+      '如有必要，政府将考虑采取适当措施，减轻对新加坡企业的影响。',
+    ],
+    keyPointsEn: [
+      'The Government is monitoring developments on export controls on AI chips.',
+      'The Government is also tracking restrictions on remote access to overseas computing resources.',
+      "The Government is engaging companies to assess the potential impact on Singapore's data centre and cloud services sectors.",
+      'If necessary, the Government will consider appropriate measures to mitigate the impact on Singapore-based companies.',
+    ],
+    keyPointsJa: [
+      '政府はAIチップの出口規制に関する最新の発展動向を注視しています。',
+      '政府はまた、海外の計算資源への遠隔アクセスの制限動向を注視しています。',
+      '政府は企業と連絡を取っており、これらの制限がシンガポールのデータセンターとクラウドサービス業界に与える潜在的な影響を評価しています。',
+      '必要に応じて、政府は新加坡企業への影響を軽減するための適切な措置を検討します。',
+    ],
+    keyPointsKo: [
+      '정부는 AI 칩 수출 규제 측면의 최신 발전을 면밀히 모니터링하고 있습니다.',
+      '정부는 또한 해외 컴퓨팅 자원에 대한 원격 액세스의 제한 동향을 모니터링하고 있습니다.',
+      '정부는 기업과 소통하여 이러한 제한이 싱가포르 데이터센터 및 클라우드 서비스 산업에 미치는 잠재적 영향을 평가하고 있습니다.',
+      '필요한 경우, 정부는 싱가포르 기업에 미치는 영향을 완화하기 위해 적절한 조치를 취하는 것을 고려할 것입니다.',
+    ],
+    governmentStance: '政府目前采取观察与沟通的立场，尚未宣布具体应对措施，只承诺在必要时才考虑采取行动。',
+    governmentStanceEn:
+      'The Government is currently in a monitoring and engagement posture, without announcing specific measures, committing only to consider action if necessary.',
+    governmentStanceJa:
+      '政府は現在のところ、観察と連絡の姿勢を取っており、具体的な対応措置をまだ発表していません。必要な場合にのみ行動を検討することを約束しています。',
+    governmentStanceKo:
+      '정부는 현재 관찰과 소통의 입장을 취하고 있으며, 구체적인 대응 조치를 공표하지 않았고, 필요할 경우에만 조치를 취할 것을 고려하겠다고 약속했습니다.',
+    oppositionStance:
+      '议员担心外国收紧 AI 芯片出口管制及限制远程访问海外计算设施，可能冲击新加坡的数据中心和云服务行业。',
+    oppositionStanceEn:
+      "The MP was concerned that tighter foreign export controls on AI chips and restrictions on remote access to overseas computing infrastructure could affect Singapore's data centre and cloud services sectors.",
+    oppositionStanceJa:
+      '議員は、外国がAIチップの出口規制を厳格化し、海外の計算施設への遠隔アクセスを制限することが、シンガポールのデータセンターとクラウドサービス業界に悪影響を与える可能性があると懸念しています。',
+    oppositionStanceKo:
+      '의원은 외국이 AI 칩 수출 규제를 강화하고 해외 컴퓨팅 시설에 대한 원격 액세스를 제한하면, 싱가포르의 데이터센터 및 클라우드 서비스 산업에 타격을 줄 수 있다고 우려했습니다.',
+    controversyLevel: 2,
+    policySignal:
+      '这显示新加坡政府在 AI 芯片出口管制和计算资源访问限制等外部地缘政治变化上，采取谨慎观察、以企业沟通为先的做法，暂不预设具体干预措施。',
+    policySignalEn:
+      'This signals that the Singapore Government is taking a cautious, watch-and-engage approach to external developments such as AI chip export controls and computing access restrictions, prioritising industry engagement over pre-emptive intervention.',
+    policySignalJa:
+      'これは、新加坡政府がAIチップの出口規制と計算資源へのアクセス制限などの外部地政学的変化に関して、慎重な観察と企業とのコミュニケーションを優先する方法を採用しており、具体的な介入措置をまだ事前に設定していないことを示しています。',
+    policySignalKo:
+      '이는 싱가포르 정부가 AI 칩 수출 규제와 컴퓨팅 자원 접근 제한 등의 외부 지정학적 변화에 대해 신중한 관찰과 기업 소통을 우선시하는 접근을 취하고 있으며, 현재로서는 구체적인 개입 조치를 미리 설정하지 않고 있음을 보여줍니다.',
+    notableQuote: '我们正在密切关注人工智能（AI）芯片出口管制以及远程访问计算资源限制方面的发展动态。',
+    notableQuoteEn:
+      'We are monitoring developments on export controls on artificial intelligence (AI) chips and restrictions on remote access to computing resources.',
+    notableQuoteJa: '私たちはAIチップの出口規制と、計算資源への遠隔アクセス制限の発展動向を注視しています。',
+    notableQuoteKo:
+      '우리는 인공지능(AI) 칩 수출 규제 및 컴퓨팅 자원에 대한 원격 액세스 제한 측면의 발전 동향을 면밀히 모니터링하고 있습니다.',
+    transcriptEn:
+      "Mr Saktiandi Supaat asked the Minister for Digital Development and Information whether tighter foreign export controls on AI chips, and restrictions on remote access to overseas computing infrastructure, would affect Singapore's data centre and cloud services sectors, how they would do so, and what steps the Government would take to mitigate any impact. Mrs Josephine Teo replied that the Government is monitoring developments on export controls on AI chips and restrictions on remote access to computing resources. She said the Government is also engaging companies on the potential impact, if any, on Singapore's data centre and cloud services sectors. She added that if necessary, the Government will consider appropriate measures to mitigate the impact of these developments on Singapore-based companies.",
+    sourceUrl: 'https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=written-answer-25057',
+    addedAt: '2026-10-21',
+  },
+  {
+    id: 'written-answer-25086',
+    titleEn:
+      'AI-detected Bus Lane Offence Accuracy Assessment, Officer Review Requirements and Motorist Appeal Process',
+    title: 'AI 公交车道违规检测准确性与申诉机制',
+    titleJa: 'AIバス車線違反検出の精度と申し立て制度',
+    titleKo: 'AI 버스 전용차로 위반 탐지 정확성 및 항소 제도',
+    date: '2026-10-06',
+    parliament: '15',
+    type: 'Written Answers to Questions',
+    speakers: ['Mr Low Wu Yang Andre', 'Mr Jeffrey Siow'],
+    personIds: ['low-wu-yang-andre'],
+    topicIds: [],
+    relatedPolicyIds: [],
+    relatedLeverNumbers: [],
+    relatedTimelineYears: [],
+    relatedPostSlugs: [],
+    topics: ['AI Governance & Regulation', 'AI in Public Sector'],
+    summary:
+      '刘宇扬议员向交通部提问，询问 LTA 计划采用的公交车道 AI 识别系统的 90% 试验准确率如何计算、是否每起 AI 检测的违例都经官员复核、以及车主如何申诉误判。萧振祥答复说明，该系统在三个月内分析超过 800 小时车载录像，共识别 450 多起违规，正确检测 415 起（约 90%），另有 257 起为误判；目前所有 AI 检测结果仍需人工复核后才会执法，车主可像其他交通违例一样提出申诉，并由人工官员审核。',
+    summaryEn:
+      'Mr Low Wu Yang Andre asked the Minister for Transport how LTA calculated the reported 90% trial accuracy of its AI bus lane encroachment detection system, whether every AI-detected offence would be reviewed by an officer before enforcement, and how motorists could challenge errors. Mr Jeffrey Siow replied that the system analysed over 800 hours of bus camera footage over three months, captured more than 450 encroachments, correctly detected 415 (about 90%) with 257 false positives, and that all AI detections are still manually reviewed before enforcement, with appeals assessed by human officers as with any other traffic offence.',
+    summaryJa:
+      'Low Wu Yang Andre 議員は運輸省（MOT）に質問し、LTA が採用予定のバス専用道路 AI 識別システムの 90% 試験精度がいかに計算されるか、AI 検測される各違例が職員によって復核されるか否か、および車主がいかに誤判に申し立てを行えるかについて尋ねました。Jeffrey Siow が回答説明として述べたところによると、当該システムは 3 ヶ月間に 800 時間を超える車載映像を分析し、合わせて 450 件以上の違規を識別し、415 件を正しく検測（約 90%）し、その他 257 件は誤判でした。目下のところ、すべての AI 検測結果は執行前に人工復核が必要であり、車主は他の交通違例と同様に申し立てを提出でき、人工職員による審査を受けます。',
+    summaryKo:
+      '로우 우양 앙드레 의원이 교통부（MOT）에 LTA가 채택할 계획인 버스 차선 AI 감지 시스템의 90% 시험 정확도 산출 방식, AI 감지된 각 위반에 대해 담당관의 검토 여부, 차주의 오류 판정 이의 절차를 질문했다. 제프리 사이오우가 답변으로 설명하였으며, 해당 시스템이 3개월 내 800시간을 초과하는 차량 탑재 영상을 분석하여 450여 건의 위반을 감지하였고, 이 중 415건을 정확하게 감지하여(약 90%) 257건이 오류 판정이라고 했다. 현재 모든 AI 감지 결과는 수동 검토 후에야 집행되며, 차주는 다른 교통 위반과 동일하게 이의를 제기할 수 있고 인적 담당관이 심사한다고 했다.',
+    whyItMatters: 'LTA 试验中 AI 正确识别 415 宗公交车道违规、误报 257 宗；执法前仍逐宗人工复核，申诉由人工审理',
+    whyItMattersEn:
+      "In LTA's trial the AI correctly detected 415 bus lane encroachments and produced 257 false positives; every detection is still reviewed by an officer before enforcement, and appeals are decided by people.",
+    whyItMattersJa:
+      'LTA の試験で AI はバスレーン侵入 415 件を正しく検出し、誤検出は 257 件でした。取り締まり前には今も全件を職員が確認し、異議申し立ても人が審査します。',
+    whyItMattersKo:
+      'LTA 시험에서 AI는 버스전용차로 위반 415건을 정확히 탐지하고 257건을 오탐했습니다. 단속 전에는 여전히 모든 건을 직원이 확인하며, 이의 제기도 사람이 심사합니다.',
+    keyPoints: [
+      '公交车道 AI 系统在三个月内分析了超过 800 小时的车载摄像头录像。',
+      '系统共捕捉 450 多起车道侵占案例，正确识别 415 起，准确率约为 90%。',
+      '系统另外产生 257 起误判（假阳性）案例。',
+      'LTA 将继续与供应商合作优化系统，以减少误判并逐步减少人工监督需求。',
+      '目前 AI 检测的公交车道违规仍须经人工复核后才会执法，车主的申诉也将继续由人工官员评估。',
+    ],
+    keyPointsEn: [
+      'The bus lane AI system analysed over 800 hours of bus camera footage over three months.',
+      'It captured more than 450 encroachments in total and correctly detected 415, about 90% accuracy.',
+      'The system also produced 257 false-positive cases.',
+      'LTA will keep working with the vendor to refine the tools and reduce false positives, aiming to reduce human oversight over time.',
+      'AI-detected bus lane violations are still manually reviewed before enforcement, and appeals continue to be assessed by human officers.',
+    ],
+    keyPointsJa: [
+      'バス専用道路 AI システムは 3 ヶ月間で 800 時間を超える車載カメラ映像を分析しました。',
+      'システムは合計で 450 件以上の車線侵犯事例を捕捉し、415 件を正しく識別し、精度は約 90% です。',
+      'システムはさらに 257 件の誤判（偽陽性）事例を生成しました。',
+      'LTA はサプライヤーとの協力を継続し、システムを最適化して誤判を減少させ、人工監督需要を段階的に減少させていきます。',
+      '目下のところ、AI が検測したバス専用道路違規は依然として人工復核の後にのみ執法されます。また、車主の申訴は人工職員による評価が継続されます。',
+    ],
+    keyPointsKo: [
+      '버스 차선 AI 시스템은 3개월 내 800시간을 초과하는 차량 탑재 카메라 영상을 분석했다.',
+      '시스템은 총 450여 건의 차선 침범 사건을 포착했으며, 415건을 정확하게 감지하여 정확도는 약 90%이다.',
+      '시스템은 추가로 257건의 오류 판정（거짓 양성） 사건을 발생시켰다.',
+      'LTA는 공급업체와 계속 협력하여 시스템을 최적화하며, 오류 판정을 줄이고 인적 감시 필요성을 단계적으로 감소시킬 것이다.',
+      '현재 AI 감지의 버스 차선 위반은 여전히 수동 검토 후에야 집행되며, 차주의 이의도 계속 인적 담당관이 평가할 것이다.',
+    ],
+    governmentStance:
+      '政府目前仍坚持由人工官员复核每一起 AI 检测的违规及所有申诉，未承诺取消人工监督的时间表，仅表示未来会随技术成熟而减少人工介入。',
+    governmentStanceEn:
+      'The Government maintains human officer review of every AI-detected violation and all appeals for now, and did not commit to a timeline for removing human oversight, only saying this will be reduced as the technology matures.',
+    governmentStanceJa:
+      '政府は現在なお、人工職員による各 AI 検測違規および全申訴の復核を堅持しており、人工監督の廃止時期を承諾していません。単に、将来技術の成熟に伴って人工介入が減少することを述べているだけです。',
+    governmentStanceKo:
+      '정부는 현재 인적 담당관이 모든 AI 감지 위반과 이의를 검토하는 것을 계속 유지하며, 인적 감시를 취소하는 일정을 약속하지 않았고, 향후 기술 성숙에 따라 인적 개입을 줄일 것이라고만 표시했다.',
+    oppositionStance: '刘宇扬议员关注 AI 检测准确率的计算方式及误判率，并关心车主在系统出错时能否有效申诉。',
+    oppositionStanceEn:
+      "Mr Low Wu Yang Andre's concern was how the AI's accuracy rate is calculated, its error rates, and whether motorists have an effective way to challenge wrong detections.",
+    oppositionStanceJa:
+      'Low Wu Yang Andre 議員は AI 検測精度の計算方法および誤判率に関心を有し、またシステム故障時に車主が有効に申し立てを行えるか否かを懸念しています。',
+    oppositionStanceKo:
+      '로우 우양 앙드레 의원은 AI 감지 정확도의 산출 방식 및 오류 판정 비율에 주목하며, 시스템 오류 시 차주가 효과적으로 이의를 제기할 수 있는지를 우려했다.',
+    controversyLevel: 2,
+    policySignal:
+      '这显示新加坡在将 AI 引入执法场景时采取渐进策略，先以人工复核作为安全网，待准确率提升后才逐步扩大 AI 自主判断的范围。',
+    policySignalEn:
+      "This shows Singapore taking a gradual approach to deploying AI in enforcement, keeping human review as a safeguard for now and only expanding the AI's role as accuracy improves.",
+    policySignalJa:
+      'この状況は、シンガポールが AI を執法場面に導入する際に段階的戦略を採択していることを示しており、まず人工復核を安全弁として利用し、精度が向上した後に徐々に AI 自主判断の範囲を拡大しています。',
+    policySignalKo:
+      '이는 싱가포르가 AI를 집행 시나리오에 도입할 때 점진적 전략을 채택하며, 먼저 수동 검토를 안전망으로 활용하고 정확도 향상 후에야 AI 자동 판단의 범위를 단계적으로 확대함을 보여준다.',
+    notableQuote: '与此同时，AI 系统检测到的公交车道违规仍将在采取执法行动前经过人工复核。',
+    notableQuoteEn:
+      'Meanwhile, bus lane violations detected by the AI system will still be manually reviewed before enforcement action is taken.',
+    notableQuoteJa:
+      '同時に、AI システムが検測したバス専用道路違規は、依然として執法行動が採用される前に人工復核が行われます。',
+    notableQuoteKo:
+      '동시에 AI 시스템이 감지한 버스 차선 위반은 집행 조치를 취하기 전에 여전히 수동 검토를 거칠 것이다.',
+    transcriptEn:
+      'Mr Low Wu Yang Andre asked the Minister for Transport how LTA calculated the reported 90% trial accuracy of its AI bus lane encroachment detection system, including sample size and false-positive/false-negative rates, whether every AI-detected offence would be reviewed by an officer before enforcement, and how motorists could challenge an erroneous detection. Mr Jeffrey Siow replied that the AI was trialled across several use cases, including bus lane encroachments, road defects and road works. For bus lanes, the system analysed over 800 hours of footage across three months, capturing more than 450 encroachments, of which it correctly detected 415 (about 90%), while also flagging 257 false positives. He said LTA will keep working with the vendor to cut false positives and reduce the need for human oversight over time, but for now every AI-detected bus lane violation is manually reviewed before enforcement. Motorists can contest or appeal a notice as with any other traffic offence, and such appeals continue to be assessed by human officers. LTA plans to expand bus camera and AI use across more public bus services as the technology matures.',
+    sourceUrl: 'https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=written-answer-25086',
+    addedAt: '2026-10-21',
+  },
+  {
+    id: 'written-answer-25090',
+    titleEn:
+      'Tracking of Adverse Outcomes Among Retained Workers Following AI-related Job Redesign, and Inclusion of Findings in AI Adoption Impact Assessment',
+    title: 'AI 岗位重组后留任员工待遇追踪',
+    titleJa: 'AI職位再編成後の留任従業員待遇追跡',
+    titleKo: 'AI 직무 재편 후 유지 직원 처우 추적',
+    date: '2026-10-06',
+    parliament: '15',
+    type: 'Written Answers to Questions',
+    speakers: ['Mr Gabriel Lam', 'Ms Jasmin Lau'],
+    personIds: ['gabriel-lam', 'jasmin-lau'],
+    topicIds: [],
+    relatedPolicyIds: [],
+    relatedLeverNumbers: [],
+    relatedTimelineYears: [],
+    relatedPostSlugs: [],
+    topics: ['AI & Employment'],
+    summary:
+      '蓝延理议员询问代理人力部长，人力部是否追踪在人工智能相关职务重组后留任、但工资、工时或职位资历下降的员工，以及这类结果是否会纳入人工智能应用对员工影响的评估。刘洁敏回应，人力部的人工智能调查在企业层面了解人工智能对职务重组、新增工作和员工重新安置的影响，但不追踪个别员工的经历；在 "Workforce Development Grant (Job Redesign+)" 等人力转型计划下，人力部追踪工资和就业留任率，但不追踪工时或职位资历的变化。她表示随着人工智能应用深化，人力部将持续加强监测框架和指标范围。',
+    summaryEn:
+      "Mr Gabriel Lam asked the Acting Minister for Manpower whether the Ministry tracks workers who remain employed after AI-related job redesign but see reductions in wages, working hours, or job seniority, and whether such outcomes would be included in assessing AI's impact on workers. Ms Jasmin Lau replied that MOM's AI Survey captures firm-level effects of AI adoption on job redesign, new job creation, and redeployment, but does not cover individual workers' experiences; under schemes like the Workforce Development Grant (Job Redesign+), MOM tracks wages and employment retention but not changes in working hours or job seniority. She added that MOM will keep strengthening its monitoring frameworks and indicators as AI adoption deepens.",
+    summaryJa:
+      'Gabriel Lam議員は代理人材省（MOM）長に、AI関連の職務再編後に留任したが給与、勤務時間、または職位資歴が低下した従業員を追跡しているかどうか、およびこのような結果がAI応用が従業員に与える影響の評価に含まれるかどうかを質問した。ジャスミン・ラウは応答して、人材省（MOM）のAI調査は企業レベルでAIが職務再編、新規職務および従業員の再配置に与える影響を把握しているが、個別の従業員の経験は追跡していないと述べた。「Workforce Development Grant (Job Redesign+)」などの人材転換計画の下では、人材省（MOM）は給与と雇用継続率を追跡しているが、勤務時間または職位資歴の変化は追跡していないと述べた。彼女は、AIアプリケーションが深化するにつれ、人材省（MOM）は監視枠組みと指標範囲の拡張を継続すると述べた。',
+    summaryKo:
+      'Gabriel Lam 의원이 인력부(MOM) 대행 장관에게 인공지능 관련 직무 재조정 후 남아있지만 임금, 근무시간 또는 직급 경력이 감소한 직원을 인력부가 추적하는지 여부와, 이러한 결과를 인공지능 적용이 직원에 미치는 영향 평가에 포함시킬 것인지 여부에 대해 질문했습니다. Jasmin Lau가 답변했습니다. 인력부의 인공지능 조사는 기업 수준에서 인공지능이 직무 재조정, 새로운 업무 및 직원 재배치에 미치는 영향을 파악하지만, 개별 직원의 경험을 추적하지는 않습니다. 「Workforce Development Grant (Job Redesign+)」 등 인력 전환 계획 하에서 인력부는 임금 및 고용 유지율을 추적하지만, 근무시간이나 직급 경력의 변화는 추적하지 않습니다. 그녀는 인공지능 응용이 심화됨에 따라 인력부가 모니터링 체계와 지표 범위를 지속적으로 강화할 것이라고 말했습니다.',
+    whyItMatters: '人力部的 AI 调查只看企业层面；Job Redesign+ 追踪工资和留任，但不追踪工时和职级变化',
+    whyItMattersEn:
+      "MOM's AI Survey looks only at firms; under Job Redesign+ it tracks wages and retention but not changes in working hours or job seniority.",
+    whyItMattersJa:
+      '人材開発省の AI 調査は企業単位のみで、Job Redesign+ では賃金と雇用継続を追跡していますが、労働時間や職位の変化は追跡していません。',
+    whyItMattersKo:
+      '인력부의 AI 조사는 기업 단위만 보며, Job Redesign+에서는 임금과 고용 유지를 추적하지만 근로시간과 직급 변화는 추적하지 않습니다.',
+    keyPoints: [
+      '人力部的人工智能调查在企业层面了解人工智能对职务重组、新增相关岗位和员工重新安置的影响。',
+      '该调查不涵盖个别员工的经历，只比较采用人工智能与未采用人工智能企业之间的员工结果和人力趋势。',
+      '在人力转型计划 "Workforce Development Grant (Job Redesign+)" 下，人力部追踪工资和就业留任等员工结果。',
+      '人力部目前不追踪工时或职位资历的变化。',
+      '随着人工智能应用加深，人力部将持续加强监测框架，并扩大监测职务重组和人力转型对员工影响的指标范围。',
+    ],
+    keyPointsEn: [
+      "MOM's Artificial Intelligence Survey gathers firm-level information on how AI adoption affects job redesign, creation of new AI-related jobs, and redeployment of workers.",
+      "The survey does not cover individual workers' experience, only comparing worker outcomes and workforce trends between AI-adopting and non-adopting firms.",
+      'Under the Workforce Development Grant (Job Redesign+), MOM tracks worker outcomes such as wages and employment retention.',
+      'MOM does not track changes in working hours or job seniority.',
+      'As AI adoption deepens, MOM will keep strengthening its measurement frameworks and expand the range of indicators used to monitor how job redesign and workforce transformation affect worker outcomes.',
+    ],
+    keyPointsJa: [
+      '人材省（MOM）のAI調査は企業レベルでAIが職務再編、新規職務および従業員の再配置に与える影響を把握している。',
+      '当該調査は個別の従業員の経験をカバーせず、AI採用企業と非AI採用企業間の従業員結果と人材トレンドの比較のみを行う。',
+      '人材転換計画「Workforce Development Grant (Job Redesign+)」の下で、人材省（MOM）は給与と雇用継続などの従業員結果を追跡している。',
+      '人材省（MOM）は現在、勤務時間または職位資歴の変化を追跡していない。',
+      'AIアプリケーションが深化するにつれ、人材省（MOM）は監視枠組みの強化を継続し、職務再編と人材転換が従業員に与える影響を監視する指標範囲を拡大する。',
+    ],
+    keyPointsKo: [
+      '인력부의 인공지능 조사는 기업 수준에서 인공지능이 직무 재조정, 새로운 관련 직무 및 직원 재배치에 미치는 영향을 파악합니다.',
+      '이 조사는 개별 직원의 경험은 포함하지 않으며, 인공지능을 채택한 기업과 미채택한 기업 간의 직원 결과 및 인력 추세만을 비교합니다.',
+      '「Workforce Development Grant (Job Redesign+)」 인력 전환 계획 하에서 인력부는 임금 및 고용 유지 등의 직원 결과를 추적합니다.',
+      '인력부는 현재 근무시간이나 직급 경력의 변화를 추적하지 않습니다.',
+      '인공지능 응용이 심화됨에 따라 인력부는 모니터링 체계를 지속적으로 강화하고, 직무 재조정 및 인력 전환이 직원에 미치는 영향을 모니터링하는 지표 범위를 확대할 것입니다.',
+    ],
+    governmentStance:
+      '政府目前通过企业层面调查和特定人力转型计划追踪工资与留任等有限指标，但未承诺追踪工时或职位资历变化，也未对个别员工的结果进行系统追踪。',
+    governmentStanceEn:
+      "The Government currently tracks a limited set of outcomes—such as wages and retention—through firm-level surveys and specific workforce schemes, but has not committed to tracking changes in working hours or job seniority, nor to systematically tracking individual workers' outcomes.",
+    governmentStanceJa:
+      '政府は現在、企業レベルの調査と特定の人材転換計画を通じて給与と留任などの限定的指標を追跡しているが、勤務時間または職位資歴の変化の追跡を約束せず、個別の従業員の結果の体系的追跡も行っていない。',
+    governmentStanceKo:
+      '정부는 현재 기업 수준의 조사와 특정 인력 전환 계획을 통해 임금 및 유지율 등 제한된 지표를 추적하지만, 근무시간이나 직급 경력 변화 추적을 약속하지 않았으며, 개별 직원의 결과에 대한 체계적인 추적도 하지 않습니다.',
+    oppositionStance:
+      '蓝延理议员关注的是，留任员工是否可能在人工智能职务重组后，以工资、工时或职位资历下降的形式承受隐性代价。',
+    oppositionStanceEn:
+      "Mr Gabriel Lam's question reflects concern that workers who remain employed after AI-related job redesign may still bear hidden costs such as reduced wages, working hours, or job seniority.",
+    oppositionStanceJa:
+      'Gabriel Lam議員が懸念していたのは、留任する従業員がAIの職務再編後に給与、勤務時間、または職位資歴の低下の形で隠れた代価を被る可能性があるかどうかである。',
+    oppositionStanceKo:
+      'Gabriel Lam 의원이 우려하는 것은 남아있는 직원들이 인공지능 직무 재조정 후 임금, 근무시간 또는 직급 경력 감소의 형태로 숨겨진 비용을 부담할 가능성이 있는지 여부입니다.',
+    controversyLevel: 2,
+    policySignal:
+      '这显示新加坡目前以企业层面调查和计划层面的有限追踪作为人工智能对员工影响的监测基础，工时与职位资历等结果尚未纳入监测，反映相关监测框架仍在扩展中。',
+    policySignalEn:
+      "This signals that Singapore currently monitors AI's impact on workers mainly through firm-level surveys and limited programme-level tracking, with outcomes such as working hours and job seniority not yet covered, indicating the monitoring framework is still being built out.",
+    policySignalJa:
+      'これはシンガポールが現在、AI対従業員影響の監視の基礎として企業レベルの調査と計画レベルの限定的追跡を使用していることを示し、勤務時間と職位資歴などの結果はまだ監視に含まれておらず、関連する監視枠組みがまだ拡張中であることを反映している。',
+    policySignalKo:
+      '이는 싱가포르가 현재 기업 수준의 조사와 계획 수준의 제한된 추적을 인공지능이 직원에 미치는 영향의 모니터링 기초로 삼고 있으며, 근무시간 및 직급 경력 등의 결과가 아직 모니터링에 포함되지 않았음을 보여주며, 관련 모니터링 체계가 여전히 확대 중임을 반영합니다.',
+    notableQuote: '我们不追踪工时或职位资历的变化。',
+    notableQuoteEn: 'We do not track changes in working hours or job seniority.',
+    notableQuoteJa: '当省は勤務時間または職位資歴の変化を追跡していない。',
+    notableQuoteKo: '우리는 근무시간이나 직급 경력의 변화를 추적하지 않습니다.',
+    transcriptEn:
+      "Mr Gabriel Lam asked the Acting Minister for Manpower whether MOM tracks workers who remain employed after AI-related job redesign but experience reductions in wages, working hours, or job seniority, and whether such outcomes would be included in assessments of AI's impact on Singapore workers. Ms Jasmin Lau replied that MOM's Artificial Intelligence Survey asks employers about how AI adoption affects job redesign, creation of new AI-related jobs, and redeployment at the firm level, comparing outcomes between AI-adopting and non-adopting firms, but it does not cover individual workers' experiences. She said that at the programme level, MOM monitors workforce transformation schemes such as the Workforce Development Grant (Job Redesign+), tracking wages and employment retention, but not changes in working hours or job seniority. She added that as AI adoption deepens, MOM will continue strengthening its measurement frameworks and expand the range of indicators used to monitor how job redesign and workforce transformation affect worker outcomes.",
+    sourceUrl: 'https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=written-answer-25090',
+    addedAt: '2026-10-21',
+  },
+  {
+    id: 'written-answer-na-24934',
+    titleEn:
+      'Adequacy of AI Computing Resources for Local Enterprises through Domestic Facilities and Overseas Cloud Services',
+    title: '本地企业 AI 算力资源评估',
+    titleJa: '地域企業AI算力資源評価',
+    titleKo: '지역 기업 AI 연산력 자원 평가',
+    date: '2026-10-06',
+    parliament: '15',
+    type: 'Written Answers to Questions',
+    speakers: ['Mr Saktiandi Supaat', 'Mrs Josephine Teo'],
+    personIds: ['saktiandi-supaat', 'josephine-teo'],
+    topicIds: [],
+    relatedPolicyIds: [],
+    relatedLeverNumbers: [],
+    relatedTimelineYears: [],
+    relatedPostSlugs: [],
+    topics: ['AI Infrastructure & Research', 'AI Economy & Industry'],
+    summary:
+      '安迪（Saktiandi Supaat）议员询问数字发展与信息部长杨莉明（Josephine Teo），政府是否评估本地企业通过国内设施和海外云服务获得的 AI 算力是否充足，以及到 2030 年本地算力是否会出现缺口。杨莉明回应说，本地企业的 AI 算力需求目前由本地和海外数据中心产能共同满足，业界反馈显示当前供应充足；但算力需求与供应格局尚未成熟、难以预测，政府将持续监测市场动态，并维持多元海外算力来源以支持价格竞争力和供应韧性。',
+    summaryEn:
+      "Mr Saktiandi Supaat asked Mrs Josephine Teo, Minister for Digital Development and Information, whether the Government assesses the adequacy of AI computing resources available to local enterprises through domestic facilities and overseas cloud services, and whether any shortfalls are projected through 2030. Mrs Teo replied that local enterprises' AI computing needs are currently met through a combination of local and overseas data centre capacity, with industry feedback indicating sufficient supply, but that demand and supply conditions have not matured enough to project future shortfalls, so the Government will focus on monitoring market conditions and maintaining diversified overseas compute sources.",
+    summaryJa:
+      'Saktiandi Supaat議員がデジタル発展・情報省（MDDI）のジョセフィン・テオ大臣に対して、政府が国内施設と海外クラウドサービスを通じて地元企業が獲得しているAI計算能力が十分であるかどうかを評価しているか、および2030年までに地元の計算能力に不足が生じるかどうかについて質問しました。ジョセフィン・テオは、地元企業のAI計算能力需要は現在、地元と海外のデータセンターの計算能力によって共同で満たされており、業界からのフィードバックは現在の供給が十分であることを示していると応答しました。ただし、計算能力の需要と供給の状況はまだ成熟しておらず、予測が難しいため、政府は市場の動向を継続的に監視し、価格競争力と供給の強靭性を支援するため複数の海外計算能力源を維持します。',
+    summaryKo:
+      'Saktiandi Supaat 의원이 디지털개발정보부（MDDI） 부장 Josephine Teo에게 정부가 국내 시설과 해외 클라우드 서비스를 통해 국내 기업이 확보한 인공지능 연산 능력이 충분한지 평가했는지, 그리고 2030년까지 국내 연산 능력 부족이 발생할 것인지에 대해 질문했습니다. Josephine Teo는 국내 기업의 인공지능 연산 능력 수요가 현재 국내 및 해외 데이터 센터 용량에 의해 충족되고 있으며, 업계 피드백에 따르면 현재 공급이 충분하다고 답변했습니다. 그러나 연산 능력의 수요와 공급 구조는 아직 성숙하지 않았고 예측하기 어려우므로, 정부는 시장 동향을 지속적으로 모니터링하고 가격 경쟁력과 공급 회복력을 지원하기 위해 다양한 해외 연산 능력 출처를 유지할 것이라고 말했습니다.',
+    whyItMatters:
+      '杨莉明表示本地企业的 AI 算力目前由本地和海外数据中心满足、供应充足，但供需难以预测，不对 2030 年前的缺口作预测',
+    whyItMattersEn:
+      "Josephine Teo said local and overseas data centres currently meet local enterprises' AI compute needs with sufficient supply, but declined to project any shortfall to 2030 because demand and supply are hard to forecast.",
+    whyItMattersJa:
+      'Josephine Teo 大臣は、国内企業の AI 計算資源は国内外のデータセンターで足りているとしつつ、需給は予測が難しいとして 2030 年までの不足見通しは示しませんでした。',
+    whyItMattersKo:
+      'Josephine Teo 장관은 현지 기업의 AI 컴퓨팅 수요를 국내외 데이터센터가 충분히 감당하고 있다면서도, 수급 예측이 어렵다며 2030년까지의 부족 전망은 내놓지 않았습니다.',
+    keyPoints: [
+      '数据中心是数字经济的关键支撑，承载企业和社会所需的 AI 工作负载及数字服务。',
+      '本地企业的 AI 算力需求目前由本地与海外数据中心产能共同满足。',
+      '业界关于市场供应和算力价格的反馈显示，目前供应足以满足现有需求。',
+      '政府将继续推动本地数据中心产能可持续增长，同时保持多元海外算力来源，以应对不同 AI 工作负载对延迟、韧性、安全和数据治理的不同需求。',
+      '算力需求与供应格局尚未成熟、难以预测，政府现阶段将聚焦密切监测需求与市场状况，并保持新加坡与多个算力来源的连接，以支持价格竞争力和供应韧性。',
+    ],
+    keyPointsEn: [
+      'Data centres are a key enabler of the digital economy, supporting AI workloads and digital services for enterprises and society.',
+      "Local enterprises' AI computing needs are currently met through a combination of local and overseas data centre capacity.",
+      'Industry feedback on market availability and price indicators suggests current supply is sufficient to meet existing demand.',
+      'The Government will continue to facilitate sustainable growth of local data centre capacity while maintaining diversified overseas compute sources, to meet varying needs for latency, resilience, security and data governance.',
+      'Compute demand and supply conditions have not matured and are difficult to project, so the Government will focus on closely monitoring demand and market conditions while keeping Singapore connected to multiple compute sources for price competitiveness and supply resilience.',
+    ],
+    keyPointsJa: [
+      'データセンターはデジタル経済の重要な基盤であり、企業と社会が必要とするAI作業負荷とデジタルサービスを支えています。',
+      '地元企業のAI計算能力需要は現在、地元と海外のデータセンターの処理能力によって共同で満たされています。',
+      '業界の市場供給とAI計算能力価格に関するフィードバックは、現在の供給が既存の需要を満たすのに十分であることを示しています。',
+      '政府は引き続き地元データセンターの処理能力の持続可能な成長を推進し、同時に異なるAI作業負荷の遅延、強靭性、セキュリティ、およびデータガバナンスに関する異なる要件に対応するため複数の海外計算能力源を維持します。',
+      '計算能力の需要と供給の状況はまだ成熟しておらず、予測が難しいため、政府は現段階で需要と市場状況の密接な監視に注力し、シンガポールと複数の計算能力源とのつながりを維持し、価格競争力と供給の強靭性を支援します。',
+    ],
+    keyPointsKo: [
+      '데이터 센터는 디지털 경제의 핵심 지원 기반이며, 기업과 사회가 필요로 하는 인공지능 워크로드 및 디지털 서비스를 담당합니다.',
+      '국내 기업의 인공지능 연산 능력 수요는 현재 국내 및 해외 데이터 센터 용량에 의해 충족되고 있습니다.',
+      '시장 공급 및 연산 능력 가격에 대한 업계의 피드백은 현재 공급이 기존 수요를 충족하기에 충분함을 보여 줍니다.',
+      '정부는 국내 데이터 센터 용량의 지속 가능한 성장을 계속 추진하면서, 다양한 해외 연산 능력 출처를 유지하여 다양한 인공지능 워크로드의 지연 시간, 회복력, 보안 및 데이터 거버넌스에 대한 서로 다른 요구 사항에 대응할 계획입니다.',
+      '연산 능력의 수요와 공급 구조는 아직 성숙 단계에 도달하지 않았으며 예측하기 어려우므로, 정부는 현 단계에서 수요와 시장 상황을 긴밀히 모니터링하는 데 집중하고 가격 경쟁력과 공급 회복력을 지원하기 위해 싱가포르와 다양한 연산 능력 출처 간의 연결을 유지할 계획입니다.',
+    ],
+    governmentStance:
+      '政府认为目前本地与海外算力供应足以满足企业需求，将持续推动本地数据中心可持续发展并维持多元海外算力来源，但未就 2030 年是否出现算力缺口做出预测或具体承诺。',
+    governmentStanceEn:
+      'The Government maintains that current local and overseas compute supply is sufficient for enterprise needs, and will keep expanding local data centre capacity sustainably while diversifying overseas sources, but it declined to project or commit to a specific forecast of AI compute shortfalls through 2030.',
+    governmentStanceJa:
+      '政府は現在、地元と海外の計算能力供給は企業の需要を満たすのに十分であると考えており、地元データセンターの持続可能な発展を推進し、複数の海外計算能力源を維持し続けますが、2030年に計算能力不足が生じるかどうかについては予測または具体的な約束をしていません。',
+    governmentStanceKo:
+      '정부는 현재 국내 및 해외 연산 능력 공급이 기업 수요를 충족하기에 충분하다고 판단하며, 국내 데이터 센터의 지속 가능한 개발을 지속적으로 추진하고 다양한 해외 연산 능력 출처를 유지할 계획입니다. 그러나 2030년에 연산 능력 부족이 발생할 것인지에 대해 예측이나 구체적인 약속을 제시하지 않았습니다.',
+    oppositionStance:
+      '安迪议员的提问反映出对本地企业未来是否会面临 AI 算力短缺的关注，尤其是 2030 年前的中长期供需缺口。',
+    oppositionStanceEn:
+      "Mr Saktiandi Supaat's question reflects concern about whether local enterprises could face a shortage of AI computing resources in the medium term, particularly any gap projected through 2030.",
+    oppositionStanceJa:
+      'Saktiandi Supaat議員の質問は、地元企業が将来のAI計算能力不足に直面する可能性についての関心を反映しており、特に2030年前までの中期的な需給ギャップについてです。',
+    oppositionStanceKo:
+      'Saktiandi Supaat 의원의 질문은 국내 기업이 향후 인공지능 연산 능력 부족에 직면할 것인지에 대한 우려를 반영하며, 특히 2030년 이전의 중기 및 장기 수요와 공급의 불균형에 대한 관심을 드러냅니다.',
+    controversyLevel: 1,
+    policySignal:
+      '政府的回应显示，新加坡在 AI 算力政策上采取监测而非预测的务实路径，优先维持本地数据中心可持续增长与海外算力来源多元化，而非对远期供需做出硬性规划。',
+    policySignalEn:
+      'The response signals a pragmatic monitor-rather-than-forecast approach to AI compute policy, prioritising sustainable local data centre growth and diversified overseas compute sources over rigid long-term supply planning.',
+    policySignalJa:
+      '政府の応答は、シンガポール政府がAI計算能力政策において予測ではなく監視という実用的なアプローチを採用していることを示しており、遠期の需給計画ではなく、地元データセンターの持続可能な成長と海外計算能力源の多様化の維持を優先しています。',
+    policySignalKo:
+      '정부의 답변은 싱가포르가 인공지능 연산 능력 정책에서 예측이 아닌 모니터링의 실용적 접근법을 취하고 있음을 보여 줍니다. 정부는 먼 미래의 수요와 공급에 대한 경직된 계획을 수립하기보다는 국내 데이터 센터의 지속 가능한 성장과 해외 연산 능력 출처의 다양화 유지를 우선시하고 있습니다.',
+    notableQuote: '算力的需求和供应情况尚未成熟，难以预测。',
+    notableQuoteEn: 'Compute demand and supply conditions have not matured and are difficult to project.',
+    notableQuoteJa: '計算能力の需要と供給の状況はまだ成熟しておらず、予測が難しいです。',
+    notableQuoteKo: '연산 능력의 수요와 공급 상황은 아직 성숙 단계에 도달하지 않았으며 예측하기 어렵습니다.',
+    transcriptEn:
+      "Mr Saktiandi Supaat asked the Minister for Digital Development and Information whether the Government assesses the adequacy of AI computing resources available to local enterprises through domestic facilities and overseas cloud services, how it does so, and whether any local shortfalls are projected through 2030. Mrs Josephine Teo replied that data centres are a key enabler of Singapore's digital economy, supporting AI workloads and digital services. She said local enterprises' AI computing needs are met through a combination of local and overseas data centre capacity, and that industry feedback on market availability and price indicators suggests current supply is sufficient. She added that the Government will continue to facilitate sustainable growth of local data centre capacity while maintaining access to diversified overseas compute sources, to address varying needs for latency, resilience, security and data governance. On future shortfalls, she said compute demand and supply conditions have not matured and are difficult to project, so the Government will focus on closely monitoring demand and market conditions and keeping Singapore connected to multiple compute sources.",
+    sourceUrl: 'https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=written-answer-na-24934',
+    addedAt: '2026-10-21',
+  },
+  {
+    id: 'written-answer-na-24991',
+    titleEn:
+      'Licensing Regime and Road Traffic Regulations for Autonomous Vehicles Operating as Ride-hailing Vehicles from 2028',
+    title: '2028 年自动驾驶网约车监管框架',
+    titleJa: '2028年自動運転配車サービス規制枠組み',
+    titleKo: '2028년 자율주행 온라인 택시 규제 체계',
+    date: '2026-10-06',
+    parliament: '15',
+    type: 'Written Answers to Questions',
+    speakers: ['Mr Chua Kheng Wee Louis', 'Mr Jeffrey Siow'],
+    personIds: ['chua-kheng-wee-louis'],
+    topicIds: [],
+    relatedPolicyIds: [],
+    relatedLeverNumbers: [],
+    relatedTimelineYears: [],
+    relatedPostSlugs: [],
+    topics: ['AI Governance & Regulation'],
+    summary:
+      '蔡庆威（Chua Kheng Wee Louis）议员询问交通部长,2028 年起自动驾驶载客车辆的监管制度及道路交通法规为何,这些规定与现行人力驾驶私召车规定有何不同,以及部门是否会在全自动驾驶载客服务推出前修订相关道路交通法律。萧振祥（Jeffrey Siow）答复说,目前自动驾驶车辆依据《道路交通(自动机动车)规则 2017》设立的监管沙盒运作,政府正制定更全面的自动驾驶车辆立法框架,预计 2027 年下半年提呈法案。',
+    summaryEn:
+      'Mr Chua Kheng Wee Louis asked the Minister for Transport about the licensing regime and road traffic regulations for autonomous vehicles (AVs) operating as ride-hailing vehicles from 2028, how these would differ from rules for human-driven private hire vehicles, and whether the Ministry would revise legislation ahead of fully driverless ride-hailing. Mr Jeffrey Siow replied that AV deployment today is regulated under a sandbox set out in the Road Traffic (Autonomous Motor Vehicles) Rules 2017, and that a more holistic AV legislative framework is being developed, with the Bill likely tabled in the second half of 2027.',
+    summaryJa:
+      'Chua Kheng Wee Louis議員は運輸省（MOT）大臣に対し、2028年から自動運転乗客輸送車両の監督制度および道路交通法規がいかなるものであるのか、これらの規定が現行の人力運転プライベートハイア車規定とどのように異なるのか、そして関連部門が完全自動運転乗客輸送サービス開始前に関連する道路交通法律を改正するかどうかについて質問しました。Jeffrey Siow氏が答弁し、現在自動運転車両は『道路交通（自動機動車）規則2017』に基づき設立された規制サンドボックスで運営されており、政府はより包括的な自動運転車両立法枠組みを策定中で、2027年下半期に法案提出が予定されていると述べました。',
+    summaryKo:
+      'Chua Kheng Wee Louis 의원이 교통부（MOT） 장관에게 2028년부터 자동주행 승객운송차량의 규제 제도 및 도로교통 법규가 무엇이며, 이들이 현행 인력 운전 호출형 운송 규정과 어떻게 다른지, 그리고 정부가 완전 자동주행 승객운송 서비스 도입 전에 관련 도로교통 법률을 개정할 것인지에 대해 질문했습니다. Jeffrey Siow는 현재 자동주행차량이 「도로교통(자동기동차)규칙 2017」에 따라 설립된 규제 샌드박스에서 운영되고 있으며, 정부가 더 포괄적인 자동주행차량 입법 체계를 제정 중이고 2027년 하반기에 법안을 제출할 예정이라고 답변했습니다.',
+    whyItMatters:
+      '完整的自动驾驶立法框架预计 2027 年下半年提交国会；在此之前，载客服务按 2017 年规则下的沙盒由 LTA 逐案审批',
+    whyItMattersEn:
+      'A full autonomous-vehicle law is expected to be tabled in the second half of 2027; until then, passenger services are approved case by case by LTA under the 2017 sandbox rules.',
+    whyItMattersJa:
+      '包括的な自動運転法案は 2027 年下半期に国会提出の見込みで、それまで旅客サービスは 2017 年規則のサンドボックスの下で LTA が個別に承認します。',
+    whyItMattersKo:
+      '포괄적인 자율주행 법안은 2027년 하반기에 국회에 제출될 전망이며, 그 전까지 여객 서비스는 2017년 규칙의 샌드박스에 따라 LTA가 개별 승인합니다.',
+    keyPoints: [
+      '目前自动驾驶车辆的部署,依据《道路交通(自动机动车)规则 2017》设立的监管沙盒进行管理。',
+      '希望提供载客收费服务的申请者,须在完成安全与运营评估后,获得陆路交通管理局批准。',
+      '政府正制定更全面的自动驾驶车辆立法框架,以明确适用的发牌制度与安全规定。',
+      '新框架将参考《道路交通法》等现行法律,以及英国等其他司法管辖区的类似法案。',
+      '政府预计将在 2027 年下半年提呈法案及相关附属法律修正案。',
+    ],
+    keyPointsEn: [
+      'AV deployment today is regulated under the sandbox set out in the Road Traffic (Autonomous Motor Vehicles) Rules 2017.',
+      'Applicants who wish to provide revenue passenger services must get LTA approval after safety and operational assessments.',
+      'The Ministry is developing a more holistic AV legislative framework to set out the licensing regime and safety regulations for AVs.',
+      'The new framework will draw on existing laws such as the Road Traffic Act and similar laws in other jurisdictions, such as the UK.',
+      'The Government expects to table the Bill and consequential amendments to other legislation likely in the second half of 2027.',
+    ],
+    keyPointsJa: [
+      '現在自動運転車両の展開は、『道路交通（自動機動車）規則2017』に基づき設立された規制サンドボックスに従い管理されています。',
+      '有料乗客輸送サービスの提供を希望する申請者は、安全性および運営評価を完了した後、陸上交通庁（LTA）の承認を得る必要があります。',
+      '政府はより包括的な自動運転車両立法枠組みを策定中で、適用可能な免許制度および安全規定を明確にします。',
+      '新たな枠組みは『道路交通法』などの現行法律、ならびに英国などの他の司法管轄区の類似法案を参考にします。',
+      '政府は2027年下半期に法案および関連する付属法律の修正案を提出する予定です。',
+    ],
+    keyPointsKo: [
+      '현재 자동주행차량의 배치는 「도로교통(자동기동차)규칙 2017」에 의해 설립된 규제 샌드박스에 따라 관리되고 있습니다.',
+      '승객 운송 요금 서비스 제공을 희망하는 신청자는 안전 및 운영 평가 완료 후 육상교통청（LTA）의 승인을 받아야 합니다.',
+      '정부는 적용 가능한 허가 제도와 안전 규정을 명확히 하기 위해 더 포괄적인 자동주행차량 입법 체계를 제정 중입니다.',
+      '새로운 체계는 「도로교통법」 등 현행 법률 및 영국 등 다른 국가의 유사 법안을 참고할 것입니다.',
+      '정부는 2027년 하반기에 법안 및 관련 부칙 법령 개정안을 제출할 예정입니다.',
+    ],
+    governmentStance:
+      '政府说明,目前自动驾驶车辆依据监管沙盒逐案审批运营,并正制定更全面的立法框架,预计 2027 年下半年提呈法案,但未具体说明该框架与现行私召车规定的差异。',
+    governmentStanceEn:
+      'The Government said current AV deployments are approved case-by-case under a regulatory sandbox, and it is developing a more holistic legislative framework, with the Bill likely tabled in the second half of 2027, but it did not specify how the new regulations will differ from current private-hire vehicle rules.',
+    governmentStanceJa:
+      '政府が明示したところ、現在の自動運転車両は規制サンドボックスに基づき逐件審査で承認・運営されており、より包括的な立法枠組みを策定中で、2027年下半期に法案提出が予定されていますが、当該枠組みと現行のプライベートハイア車規定との違いについては具体的に説明されていません。',
+    governmentStanceKo:
+      '정부는 현재 자동주행차량이 규제 샌드박스에 따라 개별 사안별로 심사 승인되어 운영되고 있으며, 더 포괄적인 입법 체계를 제정 중이고 2027년 하반기에 법안을 제출할 예정이라고 설명했지만, 해당 체계와 현행 호출형 운송 규정의 차이에 대해서는 구체적으로 설명하지 않았습니다.',
+    oppositionStance:
+      '蔡庆威议员关注的是,在 2028 年全自动驾驶载客服务推出前,监管制度与道路交通法规能否到位,以及与现行人力驾驶私召车规定有何不同。',
+    oppositionStanceEn:
+      "Mr Chua's concern was whether the licensing regime and road traffic rules would be ready, and how they would differ from current rules for human-driven private hire vehicles, ahead of fully driverless ride-hailing from 2028.",
+    oppositionStanceJa:
+      'Chua Kheng Wee Louis議員が懸念しているのは、2028年に完全自動運転乗客輸送サービスが開始される前に、監督制度および道路交通法規が整備されるのか、そしてそれが現行の人力運転プライベートハイア車規定とどのように異なるのかについてです。',
+    oppositionStanceKo:
+      'Chua Kheng Wee Louis 의원의 관심사는 2028년 완전 자동주행 승객운송 서비스 출시 전에 규제 제도와 도로교통 법규가 제때 갖춰지는지, 그리고 현행 인력 운전 호출형 운송 규정과의 차이점입니다.',
+    controversyLevel: 2,
+    policySignal:
+      '这显示政府正从临时性监管沙盒,逐步过渡到针对自动驾驶车辆的正式立法框架,并参考英国等海外经验,为无人驾驶载客服务的监管做准备。',
+    policySignalEn:
+      'This signals the Government is moving from an ad hoc regulatory sandbox toward a formal legislative framework for autonomous vehicles, drawing on overseas models to prepare for driverless ride-hailing.',
+    policySignalJa:
+      'このことは、政府が一時的な規制サンドボックスから自動運転車両を対象とした正式な立法枠組みへと段階的に移行しており、英国などの海外の経験を参考にしながら、無人運転乗客輸送サービスの監督に向けた準備を進めていることを示しています。',
+    policySignalKo:
+      '이는 정부가 임시적 규제 샌드박스에서 자동주행차량을 대상으로 하는 공식적 입법 체계로 점진적으로 전환하고 있으며, 영국 등 해외 경험을 참고하여 무인주행 승객운송 서비스 규제를 준비하고 있음을 보여줍니다.',
+    notableQuote: '我们预计将在 2027 年下半年提呈法案及其他立法的相应修正案。',
+    notableQuoteEn:
+      'We will table the Bill and consequential amendments to other legislations likely in second half of 2027.',
+    notableQuoteJa: '2027年下半期に法案および他の立法に対する相応の修正案が提出される予定です。',
+    notableQuoteKo: '2027년 하반기에 법안과 기타 입법의 해당 개정안을 제출할 예정입니다.',
+    transcriptEn:
+      "Mr Chua Kheng Wee Louis asked the Minister for Transport about the licensing regime and road traffic regulations for autonomous vehicles (AVs) operating as ride-hailing vehicles from 2028, how these would differ from rules for human-driven private hire vehicles, and whether the Ministry would revise road transport legislation ahead of fully driverless ride-hailing. Mr Jeffrey Siow replied that AV deployment today is regulated under a sandbox set out in the Road Traffic (Autonomous Motor Vehicles) Rules 2017, requiring LTA approval after safety and operational assessments for revenue passenger services. He said the Ministry is developing a more holistic AV legislative framework covering licensing and safety regulations, drawing on the Road Traffic Act and overseas laws such as the UK's. He added that the Bill and consequential amendments would likely be tabled in the second half of 2027.",
+    sourceUrl: 'https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=written-answer-na-24991',
+    addedAt: '2026-10-21',
+  },
+  {
+    id: 'written-answer-na-25101',
+    titleEn: "Assessment of Singapore's Digital Systems' Resilience Against Agentic AI Behaviours",
+    title: '新加坡数字系统应对代理式 AI 韧性评估',
+    titleJa: 'シンガポールデジタルシステムのエージェント型AI対応レジリエンス評価',
+    titleKo: '싱가포르 디지털 시스템의 에이전트식 AI 회복력 평가',
+    date: '2026-10-06',
+    parliament: '15',
+    type: 'Written Answers to Questions',
+    speakers: [
+      'Ms Valerie Lee',
+      'Mr Saktiandi Supaat',
+      'Mr Fadli Fawzi',
+      'Dr Charlene Chen',
+      'Mr Alex Yam',
+      'Mr Yip Hon Weng',
+      'Dr Choo Pei Ling',
+      'Mrs Josephine Teo',
+    ],
+    personIds: [
+      'valerie-lee',
+      'saktiandi-supaat',
+      'fadli-fawzi',
+      'charlene-chen',
+      'alex-yam',
+      'yip-hon-weng',
+      'choo-pei-ling',
+      'josephine-teo',
+    ],
+    topicIds: [],
+    relatedPolicyIds: [],
+    relatedLeverNumbers: [],
+    relatedTimelineYears: [],
+    relatedPostSlugs: [],
+    topics: ['AI Safety & Ethics', 'AI Governance & Regulation', 'AI in Public Sector'],
+    summary:
+      '李乃怡（Valerie Lee）、安迪（Saktiandi Supaat）、莫哈默法理（Fadli Fawzi）等议员就新加坡 AI 安全院的独立测试能力、新加坡对前沿 AI 模型管控国际倡议的后续行动,以及公共部门代理式 AI 的安全防护措施,向数字发展与信息部部长杨莉明（Josephine Teo）提问。杨莉明答复说,政府采取基于风险、多层次的治理方式,AI 安全院正建设技术能力评估先进 AI 系统,并确认目前没有机构收到涉及无人监督 AI 代理的网络攻击报告。',
+    summaryEn:
+      "Ms Valerie Lee, Mr Saktiandi Supaat, Mr Fadli Fawzi and other MPs asked the Minister for Digital Development and Information about the Singapore AI Safety Institute's testing capabilities, the follow-up to Singapore's endorsement of the international call to control frontier AI models, and safeguards against agentic AI risks in the Public Service. Mrs Josephine Teo replied that Singapore takes a risk-based, multi-layered approach, that AISI is building technical capabilities to evaluate advanced AI systems, and that no agency has so far received a report of a cyberattack involving an unsupervised AI agent.",
+    summaryJa:
+      'Valerie Lee、Saktiandi Supaat、Fadli Fawzi などの議員らは、シンガポール AI 安全院の独立的な試験能力、先端 AI モデルの管理に関する国際イニシアティブに対するシンガポールの後続行動、および公共部門の代理人型 AI に関する安全保護措置について、デジタル発展・情報省（MDDI）のジョセフィン・テオ部長に質問しました。ジョセフィン・テオは、政府がリスク基盤・多層的なガバナンスアプローチを採用しており、AI 安全院は高度な AI システムを評価するための技術能力を構築中であり、現在のところ無監視型の AI エージェントに関するサイバー攻撃報告を受けた機関はないと確認したと回答しました。',
+    summaryKo:
+      'Valerie Lee, Saktiandi Supaat, Fadli Fawzi 등 의원들이 싱가포르 AI 안전원의 독립적 시험 능력, 최첨단 AI 모델 관제의 국제 이니셔티브에 대한 싱가포르의 후속 조치, 그리고 공공 부문 에이전트형 AI의 안전 보호 조치에 관해 디지털개발정보부（MDDI） 부장 Josephine Teo에게 질문했습니다. Josephine Teo는 정부가 위험 기반의 다층 거버넌스 방식을 채택하고 있으며, AI 안전원이 선진 AI 시스템을 평가하는 기술 능력을 구축 중이고, 현재까지 무감시 AI 에이전트와 관련된 사이버 공격 보고를 받은 기관이 없다고 확인했다고 답변했습니다.',
+    whyItMatters:
+      '杨莉明一并答复七名议员：政府目前不要求前沿模型部署前向政府开放，改与前沿实验室建立信息共享，由新加坡 AI 安全研究所自建评测能力；至今无机构报告由无人监督 AI 代理发起的网络攻击',
+    whyItMattersEn:
+      'Josephine Teo answered seven MPs together: the Government does not currently require pre-deployment access to frontier models, and instead builds information-sharing with frontier labs while the Singapore AI Safety Institute builds its own evaluation capability; no agency has reported a cyber attack by an unsupervised AI agent.',
+    whyItMattersJa:
+      'Josephine Teo 大臣は 7 人の議員にまとめて答弁し、政府は現時点でフロンティアモデルの導入前アクセスを義務付けず、フロンティア研究所との情報共有を築きつつシンガポール AI 安全研究所が独自の評価能力を整えるとしました。無監督の AI エージェントによるサイバー攻撃の報告はまだありません。',
+    whyItMattersKo:
+      'Josephine Teo 장관은 의원 7명의 질문에 함께 답하며, 정부가 현재 프런티어 모델의 배포 전 접근을 의무화하지 않고 프런티어 연구소와 정보 공유를 쌓는 한편 싱가포르 AI 안전연구소가 자체 평가 역량을 갖춘다고 밝혔습니다. 감독 없는 AI 에이전트에 의한 사이버 공격은 아직 보고된 적이 없습니다.',
+    keyPoints: [
+      'IMDA 推出《代理式 AI 治理框架》和《LLM 应用测试入门工具包》,并通过全球 AI 保障沙盒测试生成式和代理式 AI 的安全防护。',
+      '新加坡 AI 安全院（AISI）正建设技术能力,评估先进 AI 系统并开发测试与保障方法。',
+      '截至目前,没有任何政府机构收到涉及无人监督 AI 代理的网络攻击报告。',
+      '新加坡已认可国际社会关于加强前沿 AI 模型安全保障的呼吁,并由国家 AI 理事会提供战略方向。',
+      'AISI 是“国际先进 AI 测量、评估与科学网络”创始成员,自 2025 年起召集全球专家并制定了《新加坡全球 AI 安全研究优先事项共识》。',
+    ],
+    keyPointsEn: [
+      "IMDA's Model AI Governance Framework for Agentic AI and Starter Kit for Testing LLM-Based Applications guide risk management, and the Global AI Assurance Sandbox tests the safeguards of generative and agentic AI.",
+      'The Singapore AI Safety Institute (AISI) is building technical capabilities to evaluate advanced AI systems and develop testing and assurance methods.',
+      'So far, no government agency has received a report of a cyber attack involving an unsupervised AI agent.',
+      'Singapore has endorsed the international call for stronger safeguards on frontier AI models, with the National AI Council providing strategic direction.',
+      'AISI is a founding member of the International Network of Advanced AI Measurement, Evaluation and Science, and since 2025 has convened global experts and developed the Singapore Consensus on Global AI Safety Research Priorities.',
+    ],
+    keyPointsJa: [
+      'IMDA は「代理人型 AI ガバナンスフレームワーク」と「LLM アプリケーション試験入門ツールキット」を導入し、グローバル AI セキュリティサンドボックスを通じて生成型および代理人型 AI のセキュリティ保護をテストしています。',
+      'シンガポール AI 安全院（AISI）は技術能力を構築中であり、先端 AI システムを評価し、テストおよびセキュリティ保護方法を開発しています。',
+      '現在のところ、無監視型の AI エージェントに関するサイバー攻撃報告を受けた政府機関はありません。',
+      'シンガポールは、先端 AI モデルのセキュリティ保護を強化することに関する国際社会からの呼びかけを支持しており、国家 AI 評議会がその戦略的方向性を提供しています。',
+      'AISI は「国際先端 AI 測定・評価・科学ネットワーク」の創設メンバーであり、2025 年から世界的な専門家を招集し、「シンガポール グローバル AI セキュリティ研究優先事項コンセンサス」を策定しました。',
+    ],
+    keyPointsKo: [
+      'IMDA가 「에이전트형 AI 거버넌스 프레임워크」와 「LLM 애플리케이션 시험 입문 툴킷」을 출시했으며, 글로벌 AI 보장 샌드박스를 통해 생성형 및 에이전트형 AI의 안전 보호 조치를 시험하고 있습니다.',
+      '싱가포르 AI 안전원（AISI）은 기술 능력을 구축하고 있으며, 선진 AI 시스템을 평가하고 시험 및 보장 방법을 개발하고 있습니다.',
+      '현재까지 무감시 AI 에이전트와 관련된 사이버 공격 보고를 받은 정부 기관이 없습니다.',
+      '싱가포르는 최첨단 AI 모델의 안전 보장 강화에 관한 국제 사회의 호소를 인정했으며, 국가 AI 위원회가 전략 방향을 제공하고 있습니다.',
+      'AISI는 「국제 선진 AI 측정, 평가 및 과학 네트워크」의 창립 회원이며, 2025년부터 글로벌 전문가를 소집하여 「싱가포르 글로벌 AI 안전 연구 우선순위 합의」를 수립했습니다.',
+    ],
+    governmentStance:
+      '政府坚持基于风险、分层管理的治理思路,对高风险应用将继续研究是否需要新规定。但政府未承诺把 AI 安全院的评估结果作为前沿 AI 系统部署的强制门槛,也不要求前沿 AI 开发商必须开放模型访问权限。',
+    governmentStanceEn:
+      "The Government maintains a risk-based, multi-layered governance approach and will continue to study whether new requirements are needed for high-risk uses. However, it did not commit to making AISI's evaluations a mandatory gate for deploying frontier AI systems, nor does it require frontier AI developers to grant model access.",
+    governmentStanceJa:
+      '政府はリスク基盤・階層化管理のガバナンスアプローチを維持し、高リスク応用については新規制が必要かどうかの研究を継続します。しかし、政府は AI 安全院の評価結果を先端 AI システム展開の必須閾値として約束しておらず、また先端 AI 開発企業にモデルアクセス権限の開放を要求していません。',
+    governmentStanceKo:
+      '정부는 위험 기반, 계층적 관리의 거버넌스 방식을 견지하고 있으며, 고위험 애플리케이션에 대해 새로운 규정의 필요성을 지속적으로 검토할 것입니다. 그러나 정부는 AI 안전원의 평가 결과를 최첨단 AI 시스템 배포의 강제 기준으로 삼기로 약속하지 않았으며, 최첨단 AI 개발사가 반드시 모델 접근 권한을 개방하도록 요구하지도 않습니다.',
+    oppositionStance:
+      '议员们担心代理式 AI 失控、逃离管控的风险,质疑公共部门现有防护措施及新加坡 AI 安全院的能力是否足以应对前沿 AI 带来的安全乃至生存风险。',
+    oppositionStanceEn:
+      "The MPs voiced concern that agentic AI could escape containment, questioning whether existing Public Service safeguards and AISI's capabilities are sufficient to address the safety and even extinction-level risks posed by frontier AI.",
+    oppositionStanceJa:
+      '議員らは代理人型 AI の制御喪失・規制脱却のリスクを懸念し、公共部門の既存防護対策およびシンガポール AI 安全院の能力が、先端 AI がもたらす安全性および生存リスクに対処するのに十分であるかどうかについて疑問を呈しました。',
+    oppositionStanceKo:
+      '의원들은 에이전트형 AI의 폭주 및 통제 이탈의 위험을 우려하고 있으며, 공공 부문의 현재 보호 조치와 싱가포르 AI 안전원의 능력이 최첨단 AI로 인한 안전 및 생존 위험에 대응하기에 충분한지에 대해 의문을 제기했습니다.',
+    controversyLevel: 2,
+    policySignal:
+      '这表明新加坡在前沿 AI 治理上采取审慎渐进的路线,优先构建技术评估能力和国际合作网络,而非对前沿 AI 开发商施加强制性访问或监管要求。',
+    policySignalEn:
+      'This signals that Singapore is taking a cautious, incremental approach to frontier AI governance, prioritising technical evaluation capacity and international collaboration over mandatory access or regulatory requirements for frontier AI developers.',
+    policySignalJa:
+      'これはシンガポールが先端 AI ガバナンスにおいて慎重で段階的なアプローチを採り、先端 AI 開発企業への強制的アクセス権または規制要件を課すことよりも、技術評価能力および国際協力ネットワークの構築を優先していることを示しています。',
+    policySignalKo:
+      '이는 싱가포르가 최첨단 AI 거버넌스에 신중하고 점진적인 노선을 취하고 있으며, 기술 평가 능력과 국제 협력 네트워크 구축을 우선시하면서, 최첨단 AI 개발사에 강제적인 접근이나 규제 요구를 가하지 않고 있음을 나타냅니다.',
+    notableQuote: '关于莫哈默法理议员的提问,到目前为止,还没有任何机构收到过涉及无人监督 AI 代理的网络攻击报告。',
+    notableQuoteEn:
+      'To the question by Mr Fadli Fawzi, no agency has received a report of a cyber attack against its systems involving an unsupervised AI agent so far.',
+    notableQuoteJa:
+      'Fadli Fawzi 議員の質問に関して、現在のところ、無監視型の AI エージェントに関するサイバー攻撃報告を受けた機関はありません。',
+    notableQuoteKo:
+      'Fadli Fawzi 의원의 질문과 관련하여, 현재까지 무감시 AI 에이전트와 관련된 사이버 공격 보고를 받은 기관이 없습니다.',
+    transcriptEn:
+      "Ms Valerie Lee, Mr Saktiandi Supaat and Mr Fadli Fawzi asked the Minister for Digital Development and Information about AISI's evaluation capabilities compared with other countries, the follow-up to Singapore's endorsement of the international call to control frontier AI models, whether the National AI Council has assessed extinction-risk warnings, and whether Public Service safeguards against agentic AI are robust enough, including any reported cyberattacks by unsupervised AI agents. Mrs Josephine Teo replied that Singapore uses a risk-based, multi-layered approach: calibrating safeguards to risk, strengthening defences against unintended AI actions and misuse, building capabilities to detect risks before and after deployment, and working with international and industry partners. She said AISI is building technical capabilities to evaluate advanced AI systems, is a founding member of the International Network of Advanced AI Measurement, Evaluation and Science, and helped develop the Singapore Consensus on Global AI Safety Research Priorities. She confirmed that no agency has so far received a report of a cyberattack involving an unsupervised AI agent, and that the National AI Council provides strategic direction while agencies implement specific measures. She added that Singapore does not require frontier AI developers to grant model access, preferring collaborative information-sharing instead.",
+    sourceUrl: 'https://sprs.parl.gov.sg/search/#/sprs3topic?reportid=written-answer-na-25101',
+    addedAt: '2026-10-21',
+  },
+  {
     id: 'written-answer-na-24850',
     titleEn: 'Guidelines for Institutes of Higher Learning on Use of AI-writing Detection Tools',
     title: '高等学府使用 AI 写作检测工具的指导原则',
@@ -17584,7 +19152,7 @@ Madam, last year, I encouraged people to sign up as an SAF Volunteer in this Hou
 ];
 
 export const DEBATE_STATS = {
-  total: 234,
+  total: 250,
   yearRange: { from: 2015, to: 2026 },
   byYear: {
     '2015': 2,
@@ -17598,38 +19166,38 @@ export const DEBATE_STATS = {
     '2023': 21,
     '2024': 34,
     '2025': 28,
-    '2026': 112,
+    '2026': 128,
   },
   byType: {
-    'Written Answers to Questions': 103,
-    'Oral Answers to Questions': 63,
+    'Written Answers to Questions': 118,
+    'Oral Answers to Questions': 64,
     Budget: 59,
     Motions: 9,
   },
   byTopic: {
-    'AI Economy & Industry': 103,
-    'AI Governance & Regulation': 98,
-    'AI & National Security': 87,
-    'AI in Public Sector': 79,
-    'AI Safety & Ethics': 70,
-    'AI & Employment': 70,
-    'AI Infrastructure & Research': 59,
-    'AI in Education': 50,
+    'AI Economy & Industry': 107,
+    'AI Governance & Regulation': 108,
+    'AI & National Security': 89,
+    'AI in Public Sector': 83,
+    'AI Safety & Ethics': 74,
+    'AI & Employment': 73,
+    'AI Infrastructure & Research': 62,
+    'AI in Education': 52,
     'AI in Healthcare': 26,
-    'AI Strategy': 24,
+    'AI Strategy': 25,
     'Deepfakes & Disinformation': 20,
   },
   topSpeakers: {
-    'Josephine Teo': 47,
-    'Gerald Giam Yean Song': 34,
+    'Josephine Teo': 50,
+    'Gerald Giam Yean Song': 35,
     'Sylvia Lim': 28,
     'Patrick Tay Teck Guan': 28,
     'Pritam Singh': 26,
-    'Jamus Jerome Lim': 23,
+    'Jamus Jerome Lim': 25,
     'Vikram Nair': 22,
-    'Saktiandi Supaat': 21,
+    'Saktiandi Supaat': 24,
     'Sharael Taha': 20,
-    'He Ting Ru': 19,
+    'He Ting Ru': 20,
     'Janil Puthucheary': 17,
     'Desmond Choo': 16,
     'Tin Pei Ling': 15,

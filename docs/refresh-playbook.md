@@ -258,6 +258,18 @@ GITHUB_TOKEN=ghp_xxx npx tsx scripts/refresh/github-stars.ts    # 提升 rate li
 
 ---
 
+### `/debates`（国会辩论）入库
+
+Hansard 管线每周只扫描、开 issue 列出 AI 相关条目，不写数据。入库用：
+
+```bash
+SGAI_LLM_TIMEOUT_MS=300000 npx tsx scripts/hansard/ingest-debates.ts --draft-only --ids=<id,id,...>   # 起草并缓存到 scripts/hansard/data/ingest/
+# 逐条对照 Hansard 原文审核缓存里的 JSON，改掉推断写成事实的句子
+npx tsx scripts/hansard/ingest-debates.ts --emit-only --ids=<审核通过的 id>                          # 写入 debates.ts / debate-transcripts.ts，重算 DEBATE_STATS
+```
+
+之后改 README 数字（`npm run eval:facade-stats` 会报）、跑 `npm run skill:build-url-map`。2026-10-21 首批的审核记录见 [docs/20261021-hansard-oct-sitting-ingest.md](20261021-hansard-oct-sitting-ingest.md)。
+
 ### `/signals`（信号）
 
 数据文件 `src/data/signals.ts`，管线 `scripts/refresh/signals/`，每周一跑（registry `signals`，auto-PR）。规格见 [docs/signals/spec.md](signals/spec.md)。
