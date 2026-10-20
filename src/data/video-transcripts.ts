@@ -13377,6 +13377,40 @@ export const videoTranscripts: Record<string, VideoTranscript> = {
     translationSource: 'claude',
     translationModel: 'haiku',
   },
+  v123: {
+    videoId: 'v123',
+    youtubeId: 'Du4kI39vnrA',
+    captionLanguage: 'en',
+    fetchedAt: '2026-10-20',
+    source: 'youtube-subtitles',
+    paragraphs: [
+      '新加坡和瑞典承诺在包括人工智能和量子计算在内的新兴科技领域加强合作。双方签署了联合声明，旨在加强各自的科技能力和提升经济竞争力。Nicholas L为您从斯德哥尔摩带来这份报道。这段视频能传输到您的屏幕上，很大程度上要依靠瑞典开发的通信技术，这是瑞典领先的关键科技领域之一。这是因为新加坡的一些电信网络由瑞典公司Ericson建造。这种紧密的关系可能会扩展到未来的通信系统领域，两国的量子通信实验室同意去年进一步加深合作。',
+      '这一安排可能会预示着更多领域的进一步合作。>> "我们都认识到投资于我们的人民以及超越眼前挑战的重要性。我们都通过组织（包括观察交通灯）、创新以及为地区和全球网络增加价值而生存和繁荣。" 总统瑟尔曼（President Thurman）在斯德哥尔摩为其访瑞期间举办的宴会上发表了上述言论。瑞典首都是双方代表签署协议的地点，该协议旨在在双方优势相辅相成的领域进行合作。人工智能是优先事项。列表中还包括物联网（IoT）设备，如智能门铃和传感器，以及量子和电信技术。双方表示他们将致力于在四个主要领域进行合作。',
+      '首先，通过在半导体、先进硬件和数字基础设施方面的合作加强供应链韧性。双方还将重点关注网络安全和安全通信，共享6G技术和加密方法方面的专业知识，这些方法旨在抵御来自量子计算机的威胁。双方还将讨论人工智能的负责任开发和使用，包括其应如何受到监管。双方将在世界舞台上寻求合作，以制定管理新兴科技的国际规则和标准。除了技术协议之外，教育机构间也达成了协议。Lie Kuwanu公共政策学院与瑞典机构签署了两份协议，以深化学术和政策合作。双方表示，这些协议帮助新加坡在特定领域汇聚专业知识以促进创新。',
+      '我们必须记住，当今大多数研究实际上都发生在大学背景下。所以许多研究不仅仅是为了写书和论文，而是实际上产生东西、产生知识产权、产生嗯应用程序、产生产品、产生新创新，那些随后被应用于现实世界。这些协议将使机构在政策和治理方面分享专业知识，特别是在技术开发和创新管理方面。Nicholas，CNA，斯德哥尔摩，瑞典。',
+    ],
+    paragraphsEn: [
+      "Singapore and Sweden have pledged to work more closely on emerging technologies including artificial intelligence and quantum computing. A joint declaration was signed aimed at strengthening their technological capabilities and boosting economic competitiveness. Nicholas L with this report from Stockholm. There's a good chance that the digital backbone which brought this video to your screen was carried by communications technologies developed in Sweden, which is one of the critical technology fields it leads in. That's because some of Singapore's telco networks are built by the Swedish firm Ericson. That close relationship could extend into the communication systems of the future with quantum communications labs of both countries agreeing to deepen cooperation further last year.",
+      "The arrangement could herald even more collaboration across other fields. >> We both understand the importance of investing in our people and looking beyond immediate challenges. We both survive and prosper through organization including watching the traffic lights, innovation and by adding value to regional and global networks. President Thurman was speaking at a banquet in Stockholm held in his honor during his state visit to Sweden. The Swedish capital is where representatives from both sides signed a pact to collaborate on areas where their strengths can complement each other. Artificial intelligence is a priority. Also on the list are Internet of Things or IoT devices like smart doorbells and sensors as well as quantum and telecommunications technologies. Both sides say they'll aim to work together in four main areas.",
+      "first strengthening supply chain resilience through cooperation on semiconductors, advanced hardware and digital infrastructure. They'll also focus on cyber security and secure communications, sharing expertise in 6G technologies and encryption methods designed to withstand threats from quantum computers. They will also discuss the responsible development and use of artificial intelligence, including how it should be regulated. And they'll look to cooperate on the world stage to shape international rules and standards governing emerging technologies. Beyond tech packs are reached between educational institutions too. The Lie Kuwanu School of Public Policy inked two deals with Swedish institutions to deepen academic and policy collaboration. They say such deals help Singapore gather expertise in particular fields to drive innovation.",
+      "We have to remember that most of the research that today happen is actually in the context of universities. So a lot of the research is done it's not just to write books and papers but is actually research that produce things produce IPs produce um apps produce products produce new innovation that that then are applied in the real world. The deals will see the institutions share expertise in policy and governance particularly with technical development and innovation management. Nicholas, CNA, Stockholm, Sweden.",
+    ],
+    paragraphsKo: [
+      '싱가포르와 스웨덴이 인공지능 및 양자컴퓨팅을 포함한 신흥기술 분야에서의 협력을 강화하기로 약속했습니다. 양국은 각자의 과학기술 능력을 강화하고 경제경쟁력을 높이기 위해 공동성명서에 서명했습니다. 니콜라스 엘이 스톡홀름에서 이 보도를 전해드립니다. 이 영상이 여러분의 화면에 전송될 수 있다는 것은 스웨덴이 개발한 통신기술에 크게 의존하고 있으며, 이는 스웨덴이 앞서가는 주요 기술 분야 중 하나입니다. 이는 싱가포르의 일부 통신망이 스웨덴 회사 에릭슨에 의해 구축되었기 때문입니다. 이러한 긴밀한 관계는 향후 통신시스템 분야로 확대될 수 있으며, 양국의 양자통신 실험실은 지난해 협력을 더욱 심화하기로 합의했습니다.',
+      '이러한 협정은 더 많은 분야에서의 추가 협력을 예고할 수 있습니다. >> 「우리는 우리의 인민에게 투자하고 눈앞의 과제를 초월하는 것의 중요성을 모두 인식하고 있습니다. 우리는 조직(교통신호 관찰 포함)을 통해, 혁신을 통해, 그리고 지역 및 글로벌 네트워크에 가치를 더함으로써 생존하고 번영합니다.」 서먼 대통령은 스톡홀름에서 방문 기간 중 개최된 만찬에서 위의 발언을 했습니다. 스웨덴의 수도는 양국 대표가 협의에 서명한 장소이며, 이 협의는 양국의 강점이 상호보완하는 분야에서의 협력을 목표로 합니다. 인공지능이 우선순위입니다. 목록에는 스마트 초인종 및 센서와 같은 사물인터넷(IoT) 기기, 양자 및 통신기술도 포함됩니다. 양국은 네 가지 주요 분야에서 협력하기로 했습니다.',
+      '첫째, 반도체, 첨단 하드웨어 및 디지털 인프라 분야에서의 협력을 통해 공급망 회복력을 강화합니다. 양국은 또한 사이버보안 및 안전한 통신에 중점을 둘 것이며, 양자컴퓨터의 위협에 대항하기 위해 설계된 6G 기술 및 암호화 방법에 관한 전문지식을 공유할 것입니다. 양국은 또한 인공지능의 책임감 있는 개발과 사용에 대해 논의할 것이며, 이것이 어떻게 규제되어야 하는지도 포함됩니다. 양국은 신흥기술을 관리하는 국제규칙 및 표준을 제정하기 위해 세계 무대에서 협력을 추구할 것입니다. 기술 협정 외에도, 교육기관 간에도 협의가 체결되었습니다. 리콴유 공공정책학원이 스웨덴 기관과 함께 학문 및 정책 협력을 심화하기 위해 두 개의 협의에 서명했습니다. 양국은 이러한 협의가 싱가포르가 특정 분야에서 전문지식을 모으고 혁신을 촉진하는 데 도움이 된다고 표시했습니다.',
+      '우리는 오늘날 대부분의 연구가 실제로 대학의 환경에서 이루어진다는 점을 기억해야 합니다. 따라서 많은 연구는 단순히 책과 논문을 쓰기 위한 것이 아니라, 실제로 무언가를 생산하고, 지식재산을 생산하고, 어플리케이션을 생산하고, 상품을 생산하고, 새로운 혁신을 생산하고 있으며, 그것들이 그 후 현실 세계에 적용됩니다. 이러한 협의는 기관들이 기술 개발 및 혁신 관리, 특히 정책 및 거버넌스 측면에서 전문지식을 공유할 수 있게 할 것입니다. 니콜라스, CNA, 스톡홀름, 스웨덴.',
+    ],
+    paragraphsJa: [
+      'シンガポールとスウェーデンは、AIと量子コンピューティングを含む新興技術分野での協力強化を約束しています。両国は、それぞれの技術能力を強化し経済競争力を高めることを目的とした共同声明に署名しました。Nicholas L がストックホルムからこのレポートをお伝えします。スクリーンへの映像伝送は、スウェーデンが開発した通信技術に大きく依存しており、これはスウェーデンの主要な科学技術分野の一つです。シンガポールの一部の通信ネットワークがスウェーデン企業 Ericsson により構築されているためです。この緊密な関係は将来の通信システム分野に拡張される可能性があり、両国の量子通信研究室は昨年協力をさらに深化させることに合意しました。',
+      'この協力は、さらなる分野での協力を示唆している可能性があります。「私たちは皆、私たちの人民への投資と、当面の課題を超えることの重要性を認識しています。私たちは皆、組織（信号機の観察を含む）、革新、および地域的および世界的ネットワークへの価値追加を通じて生存し繁栄しています。」Thurman 大統領はストックホルムで、スウェーデン訪問期間中に開催された晩餐会で上記の発言をしました。スウェーデンの首都は両国代表が協定に署名した場所であり、両国の優位性が互いに補完する分野での協力を目的としています。AIは優先事項です。リストにはスマートドアベルやセンサーなどのIoTデバイス、および量子および通信技術も含まれます。両国は四つの主要分野での協力を推進することを表明しました。',
+      '第一に、半導体、先進ハードウェア、およびデジタルインフラストラクチャーにおける協力を通じてサプライチェーンの靭性を強化することです。両国はまたサイバーセキュリティとセキュアな通信に重点を置き、6G技術と暗号化方法に関する専門知識を共有し、これらの方法は量子コンピューターからの脅威に対抗することを目的としています。両国はまたAIの責任ある開発と利用について議論し、これがどのように規制されるべきかを含みます。両国は世界舞台で協力を求め、新興技術を管理する国際的な規則と基準を制定することを目指しています。技術協定に加えて、教育機関間でも協定が結ばれました。Lee Kuan Yew 公共政策学院はスウェーデンの機関と二つの協定に署名し、学術的および政策的協力を深化させました。両国は、これらの協定がシンガポールの特定の分野での専門知識を集約し、革新を促進するのに役立つと述べました。',
+      '「私たちは覚えておかなければなりません。今日の研究の大部分は実際に大学の環境下で起こっています。したがって、多くの研究は単に書籍や論文を書くためだけではなく、実際に物を生産し、知識産権を生成し、あの、アプリケーションを生成し、製品を生成し、新しいイノベーションを生成しており、それらはその後現実世界に適用されています。」これらの協定は、機関が政策と治理に関する専門知識を共有することを可能にするでしょう。特に技術開発とイノベーション管理の分野でそうです。Nicholas、CNA、ストックホルム、スウェーデン。',
+    ],
+    translatedAt: '2026-10-20',
+    translationSource: 'claude',
+    translationModel: 'haiku',
+  },
 };
 
 export function getVideoTranscript(videoId: string): VideoTranscript | undefined {
