@@ -60,6 +60,9 @@ export interface GithubStarsState {
 
 export interface ScanState {
   last_run: string | null;
+  /** Keys owned by scripts/auto_update.py (schedule_runs, retry_pipelines, …).
+   *  Carried through untouched so a TS saveState never drops them. */
+  [key: string]: unknown;
   domains: {
     videos: VideosState;
     voices: VoicesState;
@@ -116,6 +119,12 @@ export function loadState(path: string = STATE_FILE): ScanState {
 
   const obj = raw as Record<string, unknown>;
   const result = structuredClone(DEFAULTS);
+
+  // Keep top-level keys this module does not model (the Python dispatcher's
+  // schedule_runs / retry_pipelines). Dropping them reset --due cadence.
+  for (const [key, value] of Object.entries(obj)) {
+    if (key !== 'last_run' && key !== 'domains' && !(key in DEFAULTS.domains)) result[key] = value;
+  }
 
   // last_run
   if (typeof obj.last_run === 'string' || obj.last_run === null) {

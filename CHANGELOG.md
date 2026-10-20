@@ -11,6 +11,9 @@
 - 10-16 补 `USER` 后，10-17、10-18 的管线仍报 Claude CLI 未登录。根因是 cron 不在用户登录会话里，看不到登录 keychain，而 Claude CLI 从 10-01 起把登录存在那里。
 - 10-19、10-20 没有运行：电池耗尽后机器在 08:00 前后处于睡眠，cron 不补跑错过的任务。
 - 现在 `auto_update.py --install-cron` 安装两个 LaunchAgent（07:50 doctor、08:00 `--due`），并只删除旧的 sgai crontab 行。LaunchAgent 能读登录 keychain，睡眠错过的任务唤醒后补跑。`--status` 和 doctor 检查两个代理是否加载。
+- 失败的管线不再被当作已完成。10-07 的月度批次里 policies、ecosystem、research-digest 都因登录错误退出，但整个 monthly 被记为成功，要到 11 月才会重跑。现在失败的管线记进 `retry_pipelines`，下一次 `--due` 单独重跑，成功后移出；同批其他管线不重跑，不会重复开 PR。evals 这类靠失败报警的管线不进重试。
+- 状态文件不再互相覆盖。调度器在开始时读一次状态、结束时整份写回，覆盖了 TS 管线中途写入的领域状态（如已送审的视频 id）；TS 的读取函数又会丢掉调度器的 `schedule_runs`。现在调度器保存前重读磁盘，只写回自己负责的领域；TS 端保留不认识的顶层字段。
+- 新增 5 条 Python 测试、1 条 TS 测试。
 - 详见 [docs/20261021-launchd-schedule.md](docs/20261021-launchd-schedule.md)。
 
 ## 0.29.1 — 2026-10-17

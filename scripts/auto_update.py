@@ -176,6 +176,24 @@ def load_state() -> dict:
     }
 
 
+def merge_state_for_save(memory: dict, disk: dict, owned: set[str]) -> dict:
+    """State to write at the end of a run.
+
+    The dispatcher reads the state once at start. TS pipelines save their own
+    domain state while it runs (videos emitted ids, voices urls, …); writing
+    the start-of-run copy back erased those updates. Keep the disk copy of
+    every domain except the ones this process owns (python-builtin pipelines
+    that ran); top-level keys (schedule_runs, retry_pipelines) come from memory.
+    """
+    merged = dict(memory)
+    domains = dict(disk.get("domains", {}))
+    for name in owned:
+        if name in memory.get("domains", {}):
+            domains[name] = memory["domains"][name]
+    merged["domains"] = domains
+    return merged
+
+
 def save_state(state: dict):
     DATA_DIR.mkdir(parents=True, exist_ok=True)
     state["last_run"] = datetime.now().isoformat()
@@ -838,6 +856,34 @@ def select_pipelines(registry: dict, schedules: set[str] | None, only_set: set[s
     return selected
 
 
+def next_retry_list(previous: set[str], results: dict, registry: dict) -> list[str]:
+    """Pipelines to re-run on the next --due regardless of schedule.
+
+    A schedule is stamped done after its run even when some of its pipelines
+    failed (2026-10-07: policies / ecosystem / research-digest died on a
+    Claude login error and would not have retried until November). Failed
+    pipelines are queued here instead; a success clears the entry. Re-stamping
+    is per pipeline, so the rest of a weekly batch does not rerun (and open a
+    second PR) just because one member failed. 'issue-on-fail' pipelines
+    (evals) report by failing, so they are never queued.
+    """
+    mode = {e["id"]: e.get("mode") for e in registry.get("pipelines", [])}
+    out = set(previous)
+    for pid, r in results.items():
+        if r.get("error") and mode.get(pid) != "issue-on-fail":
+            out.add(pid)
+        elif not r.get("error"):
+            out.discard(pid)
+    return sorted(p for p in out if p in mode)
+
+
+def add_retries(selected: list[dict], registry: dict, retry_ids: set[str]) -> list[dict]:
+    """Append queued retry pipelines that the schedule did not already select."""
+    have = {e["id"] for e in selected}
+    extra = [e for e in registry.get("pipelines", []) if e["id"] in retry_ids and e["id"] not in have]
+    return selected + extra
+
+
 def run_pipelines(selected: list[dict], state: dict, logger, dry_run: bool) -> tuple[dict, list[str]]:
     """Run the selected pipelines, returning (results, errors)."""
     results: dict = {}
@@ -1123,10 +1169,13 @@ def main():
     #   都没给       → 全部（None = 不按 schedule 过滤）
     if args.due:
         driven = compute_due_schedules(registry, state)
-        if not driven:
+        retry_ids = set(state.get("retry_pipelines", []))
+        if not driven and not retry_ids:
             logger.info("✅ 没有到期的 schedule，本次 --due 无事可做。")
             return
         logger.info(f"--due 到期 schedule: {sorted(driven)}")
+        if retry_ids:
+            logger.info(f"--due 重试上次失败的管线: {sorted(retry_ids)}")
         schedules: set[str] | None = driven
     elif args.schedule != "all":
         schedules = {args.schedule}
@@ -1134,6 +1183,8 @@ def main():
         schedules = None
 
     selected = select_pipelines(registry, schedules, only_set)
+    if args.due:
+        selected = add_retries(selected, registry, retry_ids)
     logger.info(f"已选 {len(selected)} 条管线: {[e['id'] for e in selected]}")
 
     # ── 运行各管线 ──
@@ -1179,7 +1230,14 @@ def main():
         recorded = schedules if schedules is not None else registry_schedules(registry)
         record_schedule_runs(state, recorded)
 
+    if not args.dry_run:
+        state["retry_pipelines"] = next_retry_list(set(state.get("retry_pipelines", [])), results, registry)
+        if state["retry_pipelines"]:
+            logger.info(f"下次 --due 将重试: {state['retry_pipelines']}")
+
     # ── 保存状态 ──
+    owned = {e["id"] for e in selected if e.get("type") == "python-builtin"}
+    state = merge_state_for_save(state, load_state(), owned)
     save_state(state)
 
     # ── 清理日志 ──

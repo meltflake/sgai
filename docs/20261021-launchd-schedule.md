@@ -17,6 +17,11 @@
 - `--status` 和 `doctor.sh` 检查两个 LaunchAgent 是否已加载。
 - 测试：`scripts/test_auto_update_launchd.py`（plist 内容、只删 sgai 的 cron 行）。
 
+## 同时修的两个调度器缺陷
+
+3. **失败被记成完成。** 调度器在一批运行结束后给整个 schedule 盖「已完成」戳，不管里面的管线是否失败。10-07 的 policies、ecosystem、research-digest 都因登录错误退出，monthly 仍被记为成功，要到 11-06 才会再跑。现在失败的管线进 `retry_pipelines`，下一次 `--due` 只重跑它们（`next_retry_list` / `add_retries`）。
+4. **状态文件互相覆盖。** 调度器开头读一次状态，结尾整份写回，抹掉了 TS 管线中途保存的领域状态；TS 的 `loadState` 只按已知字段重建对象，保存时又丢掉 `schedule_runs`。现在调度器保存前重读磁盘，只写回 python-builtin 管线的领域（`merge_state_for_save`）；TS 端保留未知顶层字段。
+
 ## 验证
 
 - 用 launchd 临时代理运行探针：`loggedIn: true`，keychain 读取返回 0。

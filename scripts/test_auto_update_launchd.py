@@ -65,3 +65,54 @@ class StripLegacyCronTest(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class RetryListTest(unittest.TestCase):
+    """2026-10-07: policies / ecosystem / research-digest failed on auth but the
+    monthly schedule was stamped done, so they would not rerun until November."""
+
+    REG = {
+        "pipelines": [
+            {"id": "videos", "schedule": "daily", "mode": "auto-pr"},
+            {"id": "policies", "schedule": "monthly", "mode": "auto-pr"},
+            {"id": "ecosystem", "schedule": "monthly", "mode": "auto-pr"},
+            {"id": "evals", "schedule": "weekly", "mode": "issue-on-fail"},
+        ]
+    }
+
+    def test_failed_pipelines_are_queued_except_issue_on_fail(self):
+        results = {
+            "videos": {"count": 0},
+            "policies": {"count": 0, "error": "exit 1: Not logged in"},
+            "evals": {"count": 0, "error": "exit 1: url-health"},
+        }
+        self.assertEqual(au.next_retry_list(set(), results, self.REG), ["policies"])
+
+    def test_success_clears_and_untouched_entries_stay(self):
+        results = {"policies": {"count": 2}}
+        self.assertEqual(au.next_retry_list({"policies", "ecosystem"}, results, self.REG), ["ecosystem"])
+
+    def test_retries_are_appended_once_and_unknown_ids_dropped(self):
+        selected = [{"id": "videos"}]
+        out = au.add_retries(selected, self.REG, {"policies", "videos", "gone"})
+        self.assertEqual([e["id"] for e in out], ["videos", "policies"])
+
+
+class MergeStateTest(unittest.TestCase):
+    """2026-10-21: the dispatcher held the state read at start and wrote it
+    back at the end, erasing domain state the TS pipelines saved meanwhile."""
+
+    def test_disk_domains_win_except_python_owned(self):
+        memory = {
+            "schedule_runs": {"daily": "new"},
+            "domains": {"hansard": {"max_oral_id": 9}, "videos": {"video_ids": []}},
+        }
+        disk = {
+            "schedule_runs": {"daily": "old"},
+            "domains": {"hansard": {"max_oral_id": 1}, "videos": {"video_ids": ["x"]}, "signals": {"k": 1}},
+        }
+        out = au.merge_state_for_save(memory, disk, owned={"hansard"})
+        self.assertEqual(out["domains"]["hansard"], {"max_oral_id": 9})
+        self.assertEqual(out["domains"]["videos"], {"video_ids": ["x"]})
+        self.assertEqual(out["domains"]["signals"], {"k": 1})
+        self.assertEqual(out["schedule_runs"], {"daily": "new"})
