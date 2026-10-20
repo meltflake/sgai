@@ -41,6 +41,7 @@ scripts/logs/
 scripts/data/
 scripts/hansard/data/transcripts/
 scripts/hansard/data/translations/
+scripts/hansard/data/ingest/
 scripts/videos/data/
 scripts/voices/data/
 

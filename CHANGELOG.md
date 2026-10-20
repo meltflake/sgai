@@ -4,6 +4,17 @@
 
 ---
 
+## 0.29.6 — 2026-10-21
+
+### 数据：补录 6–7 Oct 2026 会期 16 条 AI 辩论；Anthropic 生态条目；修 Hansard 漏扫
+
+- `debates.ts` / `debate-transcripts.ts` 新增 16 条，四语齐全，总数 234 → 250。包括前沿 AI 安全（口头追问 4231 与书面答复 25101）、AI 芯片出口管制、本地 AI 算力、数据中心电水需求、AI 公交车道执法、学生不借助 AI 的能力评估、高校免费 AI、AI 工具免费订阅计划、AI 岗位重组与工时、公务员 AI 智能眼镜，以及站内首次收录的自动驾驶网约车三条。周扫描报的 28 条里删掉 13 条（交叉引用、已入库、关键词误报）。审核记录见 [docs/20261021-hansard-oct-sitting-ingest.md](docs/20261021-hansard-oct-sitting-ingest.md)。
+- 新脚本 `scripts/hansard/ingest-debates.ts`：按报告编号抓 Hansard、起草四语记录和逐段对齐的转录、重算 `DEBATE_STATS`；每条起草完立即缓存，审核后用 `--emit-only` 写入。7 条单元测试。
+- 修 Hansard 漏扫：扫描器只看高水位以上的编号，2022 年的旧记录 oral-answer-4241 先能查到，把高水位推过了 10 月 7 日才发布的 4231（这次会期最重要的一条）。现在每次扫描回看高水位以下一段，跳过已报告和已入库的编号。2 条测试。
+- 词表给任梓铭补短写法「Alex Yam」；日文、韩文转录改为从中文转译，让词表生效。
+- `ecosystem.ts`：Anthropic 从待审稿升为正式条目，按 10 月 14 日新闻稿写全（新加坡办公室、与 MDDI 的备忘录、2023 年评测沙盒、GovTech 使用情况），关联 25101 与 4231。
+- 补跑 startups、talent、benchmarking、legal-ai 四条管线：都没有合格的新条目；判为离题或读不到正文的页面已记入各自的拒绝台账。
+
 ## 0.29.5 — 2026-10-21
 
 ### 修复：research-digest 支持 OpenAlex API key

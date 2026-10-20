@@ -64,5 +64,26 @@ class ScanWindowTest(unittest.TestCase):
         self.assertEqual(len(results), 10 * auto_update.HANSARD_MAX_WINDOWS)
 
 
+class LookbackTest(unittest.TestCase):
+    """2026-10-21: oral-answer-4231 (the 7 Oct frontier-AI exchange) was never
+    reported. oral-answer-4241, a 2022 record, resolved first and moved the
+    high-water mark past 4231 before 4231 was published; the scan only looks
+    above the mark. Each scan now also re-checks a window below it."""
+
+    def test_finds_late_published_id_below_the_mark_and_skips_seen(self):
+        ids = {4224, 4231, 4241, 4250}
+        with mock.patch.object(auto_update, "scan_hansard_range", fake_range(ids)):
+            results = auto_update.scan_with_lookback(
+                "oral-answer", 4241, window=80, lookback=40, seen={4224, 4241}, logger=LOG
+            )
+        self.assertEqual(sorted(r["id"] for r in results), ["oral-answer-4231", "oral-answer-4250"])
+
+    def test_no_duplicates_between_lookback_and_forward(self):
+        ids = {95, 99, 101}
+        with mock.patch.object(auto_update, "scan_hansard_range", fake_range(ids)):
+            results = auto_update.scan_with_lookback("budget", 100, window=30, lookback=10, seen=set(), logger=LOG)
+        self.assertEqual(sorted(r["id"] for r in results), ["budget-101", "budget-95", "budget-99"])
+
+
 if __name__ == "__main__":
     unittest.main()
