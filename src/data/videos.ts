@@ -145,6 +145,42 @@ export function pickSpeakerTypeLabels(lang: string): Record<string, string> {
 
 export const videos: VideoItem[] = [
   {
+    id: 'v124',
+    title: '新加坡AI使用和采纳领先东南亚',
+    titleEn: 'Singapore leading Southeast Asia in AI use and adoption: Report',
+    titleJa: 'シンガポールのAI利用と採用が東南アジアをリードしています。',
+    titleKo: '싱가포르의 AI 사용 및 도입이 동남아시아를 주도합니다',
+    speaker: 'CNA',
+    speakerTitle: '亚洲新闻台报道',
+    speakerTitleEn: 'CNA report',
+    speakerTitleJa: 'アジアニュース放送による報道',
+    speakerTitleKo: '아시아 뉴스 채널 보도',
+    speakerType: 'industry',
+    date: '2026-10-21',
+    duration: '01:31',
+    summary: '根据谷歌、淡马锡和贝恩咨询联合报告，新加坡AI采纳率领先东南亚，约70%工作人口使用AI。',
+    summaryEn:
+      'According to a report by Google, Temasek, and Bain and Company, Singapore leads Southeast Asia in AI adoption, with about seven in ten workers using AI at nearly six times the regional average.',
+    summaryJa:
+      'Google、Temasek、Bain & Companyの共同報告書によれば、シンガポールのAI採用率は東南アジアをリードしており、労働人口の約70%がAIを使用しています。',
+    summaryKo:
+      'Google, Temasek, Bain의 공동 보고서에 따르면, 싱가포르의 AI 도입률이 동남아시아를 주도하고 있으며, 약 70%의 근로 인구가 AI를 사용하고 있습니다.',
+    whyItMatters: '七成就业人口已用 AI、强度达区域均值 6 倍，新加坡 AI 战略的下一个考验是能否把普及转化为生产率红利',
+    whyItMattersEn:
+      "Seventy per cent of employed people have used AI, with adoption intensity reaching six times the regional average—Singapore's AI strategy now faces its next challenge: whether to convert widespread adoption into productivity gains.",
+    whyItMattersJa:
+      '雇用人口の70%がすでにAIを利用しており、その強度は地域平均の6倍に達しています。シンガポールのAI戦略の次の課題は、この普及を生産性利益に転換できるかどうかにあります。',
+    whyItMattersKo:
+      '직업 인구의 70%가 이미 AI를 이용했고, 강도는 지역 평균의 6배에 이릅니다. 싱가포르 AI 전략이 직면한 다음 과제는 광범위한 보급을 생산성 이익으로 전환할 수 있는지 여부입니다.',
+    topic: '国际合作与对标',
+    topicEn: 'International Cooperation & Benchmarking',
+    topicJa: '国際協力とベンチマーク',
+    topicKo: '국제 협력과 벤치마크',
+    youtubeUrl: 'https://www.youtube.com/watch?v=-RkBXOAO0_M',
+    channel: 'CNA',
+    addedAt: '2026-10-22',
+  },
+  {
     id: 'v123',
     title: '新加坡与瑞典签署新兴技术合作宣言',
     titleEn: 'Singapore and Sweden sign declaration on emerging technologies',
