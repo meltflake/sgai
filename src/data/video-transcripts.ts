@@ -13411,6 +13411,32 @@ export const videoTranscripts: Record<string, VideoTranscript> = {
     translationSource: 'claude',
     translationModel: 'haiku',
   },
+  v124: {
+    videoId: 'v124',
+    youtubeId: '-RkBXOAO0_M',
+    captionLanguage: 'en',
+    fetchedAt: '2026-10-22',
+    source: 'youtube-subtitles',
+    paragraphs: [
+      '根据谷歌、国家投资方淡马锡和贝恩咨询公司的一份新报告，新加坡在人工智能使用和应用上领先东南亚。该报告表示，新加坡工作人口约有七成使用人工智能。这里的使用强度是地区平均水平的近六倍。在整个地区，人工智能使用预计到2030年将增长高达60倍。预计通过更好的产品发现（作为在线广告的关键工具）以及通过人工智能代理增强用户体验来促进数字经济。「这取决于消费者信任。所以，我们需要消费者准备好接受这一点，员工也准备好接受这一点。我们必须具备适当的经济条件。所以，我们必须继续推动人工智能的前期成本下降。」',
+      '「我们必须建立适当的基础设施来支持这种人工智能使用。这最终推动了人工智能的经济潜力释放，帮助促进数字经济中的经济活动增长。」对于新加坡，其数字经济预计今年将达到396亿新加坡元。由在线媒体、出行和餐饮业驱动。估计到2035年将达到753亿新加坡元，其中电子商务增长最快。在整个东南亚，该数字预计到2035年将超过1.2万亿新加坡元。',
+    ],
+    paragraphsEn: [
+      "Singapore is leading Southeast Asia in AI use and adoption, according to a new report by Google, state investor Temasek, and consulting firm Bain& Company. The report says about seven in 10 in Singapore's working population use AI. Usage is also more intense here and nearly six times the regional average. Across the region, AI use is forecast to climb by up to 60 times by 2030. It's expected to boost the digital economy through better product discovery as a key tool in online ads and by enhancing user experience with AI agents. >> It comes off consumer trust. So, we need uh consumers to be ready to embrace this, employees to be ready to embrace this. Uh we have to have the right economic conditions in place. So, we have to continue seeing in front costs go down for AI.",
+      "We have to have the right infrastructure in place to support this AI use. Uh and that ultimately drives the economic unlock with AI um to help drive uplift for um economic activity in the digital economy. >> For Singapore, its digital economy is expected to grow to 39. 6 billion Singapore dollars this year. It's driven by online media and mobility and food. It's estimated to reach 75. 3 billion Singapore dollars by 2035 with e-commerce set to see the greatest growth. Across Southeast Asia, that figure is projected to surpass 1. 2 trillion Singapore dollars by 2035.",
+    ],
+    paragraphsKo: [
+      '구글, 국가투자기관인 테마섹, 베인 앤드 컴퍼니의 새로운 보고서에 따르면, 싱가포르는 인공지능 사용 및 응용 분야에서 동남아시아를 선도하고 있습니다. 보고서는 싱가포르 근로인구의 약 70%가 인공지능을 사용하고 있다고 나타냅니다. 이곳의 사용 강도는 지역 평균 수준의 거의 6배입니다. 지역 전체에서 인공지능 사용은 2030년까지 최대 60배 증가할 것으로 예상됩니다. 더 나은 상품 발견(온라인 광고의 핵심 도구)과 인공지능 에이전트를 통한 사용자 경험 강화를 통해 디지털 경제를 촉진할 것으로 예상됩니다. 「이는 소비자 신뢰에 달려 있습니다. 따라서 소비자가 이를 받아들일 준비가 되어야 하고, 직원도 이를 받아들일 준비가 되어야 합니다. 우리는 적절한 경제 조건을 갖춰야 합니다. 따라서 우리는 인공지능의 초기 비용 감소를 계속 추진해야 합니다.」',
+      '「우리는 이러한 인공지능 사용을 지원하기 위해 적절한 인프라를 구축해야 합니다. 이는 궁극적으로 인공지능의 경제적 잠재력을 해방시키고, 디지털 경제에서의 경제활동 성장을 촉진하는 데 도움이 됩니다.」싱가포르의 경우, 그 디지털 경제는 올해 396억 싱가포르 달러에 도달할 것으로 예상됩니다. 온라인 미디어, 이동성, 음식 및 음료 산업에 의해 주도되고 있습니다. 2035년까지 753억 싱가포르 달러에 도달할 것으로 추정되며, 그 중 전자상거래가 가장 빠르게 성장할 것입니다. 동남아시아 전체에서 이 수치는 2035년까지 1.2조 싱가포르 달러를 초과할 것으로 예상됩니다.',
+    ],
+    paragraphsJa: [
+      'グーグル、国家投資機関テマセク、およびベイン・アンド・カンパニーの新レポートによると、シンガポールは東南アジアにおける AI の使用と応用をリードしています。本レポートによると、シンガポール労働人口の約70％が AI を使用しています。ここでの AI 使用強度は地域平均の約6倍です。地域全体では、AI の使用は2030年までに最大60倍の増加が予想されています。より良い製品発見（オンライン広告の重要なツール）および AI エージェントによる利用者体験の向上を通じてデジタル経済を促進することが予想されています。「これは消費者の信頼に依存しています。したがって、消費者がこれを受け入れる準備ができており、従業員もこれを受け入れる準備ができていることが必要です。適切な経済条件を備える必要があります。したがって、AI の初期費用の低下を引き続き推進する必要があります。」',
+      '「適切なインフラストラクチャを構築して、このような AI の使用をサポートする必要があります。これは最終的に AI の経済的可能性の解放を推進し、デジタル経済における経済活動の成長を促進するのに役立ちます。」シンガポールについては、そのデジタル経済が今年396億シンガポール・ドルに達することが予想されており、オンラインメディア、モビリティ、および飲食業によって駆動されています。2035年までに753億シンガポール・ドルに達することが推定されており、そのうち電子商取引が最も急速に成長しています。東南アジア全体では、この数字が2035年までに1.2兆シンガポール・ドルを超えることが予想されています。',
+    ],
+    translatedAt: '2026-10-22',
+    translationSource: 'claude',
+    translationModel: 'haiku',
+  },
 };
 
 export function getVideoTranscript(videoId: string): VideoTranscript | undefined {
