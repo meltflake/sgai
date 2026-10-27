@@ -145,6 +145,77 @@ export function pickSpeakerTypeLabels(lang: string): Record<string, string> {
 
 export const videos: VideoItem[] = [
   {
+    id: 'v125',
+    title: '从 AIAP Foundation 开始 AI 工程之路',
+    titleEn: 'Finding my starting point with AIAP Foundation',
+    titleJa: 'AIAP Foundationから始めるAIエンジニアへの道',
+    titleKo: 'AIAP Foundation으로 시작한 AI 엔지니어의 길',
+    speaker: 'Kuang Hao',
+    speakerTitle: 'AI学徒',
+    speakerTitleEn: 'AI Apprentice',
+    speakerTitleJa: 'AI学徒',
+    speakerTitleKo: 'AI 견습',
+    speakerType: 'industry',
+    date: '2026-10-23',
+    duration: '01:03',
+    summary: 'Kuang Hao 通过 AIAP Foundation 从非技术背景转向 AI 工程。课程帮助他掌握基础知识，并完成 AI 学徒计划。',
+    summaryEn:
+      'Kuang Hao moved from a non-technical background into AI engineering through AIAP Foundation. The course prepared him to complete the AI Apprenticeship Programme.',
+    summaryJa:
+      'クアン・ハオは非技術系の背景からAIAP Foundationで基礎を学び、AIエンジニアになりました。その後、AI Apprenticeship Programmeを修了しました。',
+    summaryKo:
+      'Kuang Hao는 비기술 분야 출신으로 AIAP Foundation에서 기초를 배우고 AI 엔지니어가 되었습니다. 이후 AI Apprenticeship Programme을 수료했습니다.',
+    whyItMatters: 'AIAP Foundation 通过在线课程和 AI 个性化反馈，帮助非技术背景学员学习 AI 工程。',
+    whyItMattersEn:
+      'AIAP Foundation uses online lessons and personalised AI feedback to help learners from non-technical backgrounds develop AI engineering skills.',
+    whyItMattersJa:
+      'AIAP Foundationは、オンライン授業とAIによる個別フィードバックで、非技術系出身の学習者のAIエンジニアリング学習を支援します。',
+    whyItMattersKo:
+      'AIAP Foundation은 온라인 수업과 AI 맞춤형 피드백으로 비기술 분야 출신 학습자의 AI 엔지니어링 학습을 지원합니다.',
+    topic: 'AI 人才与教育',
+    topicEn: 'AI Talent & Education',
+    topicJa: 'AI 人材と教育',
+    topicKo: 'AI 인재와 교육',
+    youtubeUrl: 'https://www.youtube.com/watch?v=bQ5WUqUb9dM',
+    channel: 'AI Singapore',
+    addedAt: '2026-10-24',
+  },
+  {
+    id: 'v126',
+    title: 'AIAP 第26期新动向',
+    titleEn: "What's Next for AIAP?",
+    titleJa: 'AIAP第26期の新動向',
+    titleKo: 'AIAP 제26기 신동향',
+    speaker: 'AI Singapore',
+    speakerTitle: 'AI 研究与人才培养机构',
+    speakerTitleEn: 'AI research and talent-development organisation',
+    speakerTitleJa: 'AI 研究と人材育成機関',
+    speakerTitleKo: 'AI 연구 및 인재 양성 기관',
+    speakerType: 'academic',
+    date: '2026-10-23',
+    duration: '00:37',
+    summary: '新加坡AI项目预告AIAP第26期新发展,下周将开放申请。',
+    summaryEn:
+      'AI Singapore previews new developments for AIAP Batch 26, with applications opening next week for the evolving apprenticeship programme.',
+    summaryJa: 'シンガポールのAIプロジェクトはAIAP第26期の新展開を予告し、来週から申請が開放されます。',
+    summaryKo:
+      '싱가포르 AI 프로젝트가 AIAP 제26기의 새로운 전개를 공지하고 있으며, 다음 주부터 신청을 받을 예정입니다.',
+    whyItMatters: '连续办到第 26 期证明 AIAP 已从项目试点变成新加坡 AI 人才的常态化供给线,不只是一次性项目',
+    whyItMattersEn:
+      "Running through the 26th cohort demonstrates that AIAP has evolved from a project pilot into a normalized supply pipeline for Singapore's AI talent—not merely a one-off initiative.",
+    whyItMattersJa:
+      '26期までの連続開催により、AIAPは企画試点からシンガポールのAI人材の常態化供給ラインへと変わったことが証明され、単なる一度限りの企画ではないことを示しています。',
+    whyItMattersKo:
+      '26기까지 연속으로 운영된 것은 AIAP이 프로젝트 시범 단계에서 싱가포르 AI 인재의 상시적 공급선으로 변모했음을 증명하며, 단순한 일회성 프로젝트가 아님을 나타냅니다.',
+    topic: 'AI 人才与教育',
+    topicEn: 'AI Talent & Education',
+    topicJa: 'AI 人材と教育',
+    topicKo: 'AI 인재와 교육',
+    youtubeUrl: 'https://www.youtube.com/watch?v=gCtUH84c_BQ',
+    channel: 'AI Singapore',
+    addedAt: '2026-10-24',
+  },
+  {
     id: 'v124',
     title: '新加坡 AI 使用和采纳领先东南亚',
     titleEn: 'Singapore leading Southeast Asia in AI use and adoption: Report',

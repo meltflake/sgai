@@ -13437,6 +13437,41 @@ export const videoTranscripts: Record<string, VideoTranscript> = {
     translationSource: 'claude',
     translationModel: 'haiku',
   },
+  v125: {
+    videoId: 'v125',
+    youtubeId: 'bQ5WUqUb9dM',
+    captionLanguage: 'en-orig',
+    fetchedAt: '2026-10-24',
+    source: 'youtube-subtitles',
+    paragraphs: [
+      '你好，我是龚浩。我是 AIAP Foundation 学员，最近从 AI 学徒计划第 20 期毕业。我来自非技术背景，想要转向 AI 工程领域。我偶然发现了 AIAP，它培训 AI 工程师，我认为这是我的下一步。我差点没有报名参加 AIAP。我一直觉得自己技术能力不足。第一次见到助教时，我觉得需要更多帮助。后来我发现了 AIAP Foundation，它让我明确了从哪里开始。基础知识以易于理解的方式讲解，配有真实示例，展示了何时使用不同的 AI 技术以及如何应用它们。此外还有参考代码，这样我就可以专注于理解概念和代码的结构。',
+      '作业以及个性化反馈让我确信自己走在正确的方向上，也帮助我自检实际理解的程度。我为报名参加感到高兴吗？当然。它为我的基础知识打下了坚实的基础，并为我参加 AIAP 做好了准备，这使我成为了今天的 AI 工程师。如果你对自己的技术能力不足以从事 AI 工程而犹豫不决，AIAP Foundation 是一个很好的起点。',
+    ],
+    paragraphsEn: [
+      "Hi I'm Gong Hao. I was an AIAP Foundation learner and recently graduated from batch 20 of the AI Apprenticeship Program. I was from a non-tech background and I wanted to pivot into AI engineering. I chanced upon AIAP which trains AI engineers and thought that would be my next step. I almost didn't sign up for AIAP. I kept thinking that I'm just not technical enough for it. First seeing the TA, I felt like I needed more help. Then I discovered the AIAP Foundation and it showed me exactly where to start. The fundamentals were explained in a way that made sense to me with real examples that showed me when to use the different AI techniques and how to apply them. There's also reference code so I could focus on understanding the concepts and how the code was structured.",
+      "The assignments and also the personalized feedback gave me the reassurance that I was on the right track and helped me self-check how much I actually understood. Am I glad I signed up? Definitely. It gave me a solid foundation in the fundamentals and prepared me to pursue AIAP which has led me to become the AI engineer I am today. If you're hesitant that you're not technical enough to pursue AI engineering, AIAP Foundation is a great place to start.",
+    ],
+    paragraphsKo: [
+      '안녕하세요. 저는 궁호입니다. 저는 AIAP Foundation 학원생이며, 최근 AI 학도 과정 20기를 졸업했습니다. 저는 비기술 배경에서 출발했으며 AI 공학 분야로의 전환을 원했습니다. 우연히 AIAP를 발견했는데, 이곳은 AI 공학자를 양성하는 기관이며, 저는 이것이 제 다음 단계라고 생각했습니다. 저는 거의 AIAP에 등록하지 않을 뻔했습니다. 저는 항상 기술 능력이 부족하다고 느껴왔습니다. 조교를 처음 만났을 때, 더 많은 도움이 필요하다고 느꼈습니다. 그 후 저는 AIAP Foundation을 발견했고, 이는 어디서부터 시작해야 할지를 명확히 해주었습니다. 기초 지식은 이해하기 쉬운 방식으로 설명되었으며, 실제 사례와 함께 제공되어 다양한 AI 기술을 언제 사용하고 어떻게 적용할지를 보여주었습니다. 또한 참고 코드가 제공되어 개념과 코드 구조를 이해하는 데 집중할 수 있었습니다.',
+      '과제와 개인화된 피드백은 제가 올바른 방향으로 나아가고 있다는 확신을 주었으며, 제 실제 이해 수준을 자가 점검하도록 도와주었습니다. 등록에 만족했나요? 당연합니다. 이는 제 기초 지식을 견고하게 다져주었고, AIAP 참가를 위해 저를 준비시켜 주었으며, 이것이 오늘날의 AI 공학자가 되게 해주었습니다. 만약 기술 능력이 부족해서 AI 공학 분야에서의 일을 주저하고 있다면, AIAP Foundation은 훌륭한 출발점입니다.',
+    ],
+    paragraphsJa: [
+      'こんにちは。私はゴン・ハオです。私はAIAP Foundationの学習者で、最近AIアプレンティスシップ・プログラム（AIAP）の第20期を修了しました。非技術系の背景から来ており、AI工学の分野へ転換したいと考えていました。偶然AIAPを発見しました。AIAPはAI工学者を育成しており、これが私の次のステップだと思いました。AIAP に登録することを躊躇していました。自分の技術能力は不十分だといつも感じていました。初めてティーチングアシスタントに会ったとき、さらなるサポートが必要だと感じました。その後、AIAP Foundationを発見しました。それは、どこから始めるかを明確にしてくれました。基礎知識は理解しやすい方法で説明されており、実世界の例が付属しており、異なるAI技術をいつどのように使用・応用するかを示していました。さらに、参考コードもあったので、概念とコードの構造の理解に集中することができました。',
+      '課題と個別のフィードバックは、正しい方向に進んでいることを確信させてくれ、実際の理解度を自己確認するのに役立ちました。登録して良かったか？もちろんです。それは私の基礎知識に堅実な基盤を与え、AIAP に参加するための準備をしてくれました。そして、それが今日のAI工学者である私をつくってくれたのです。自分のAI工学に必要な技術能力に不安があって躊躇している場合、AIAP Foundation は非常に優れたスタート地点です。',
+    ],
+    translatedAt: '2026-10-24',
+    translationSource: 'claude',
+    translationModel: 'haiku',
+  },
+  v126: {
+    videoId: 'v126',
+    youtubeId: 'gCtUH84c_BQ',
+    captionLanguage: '',
+    fetchedAt: '2026-10-24',
+    source: 'unavailable',
+    paragraphs: [],
+    error: 'No subtitle track was available through yt-dlp.',
+  },
 };
 
 export function getVideoTranscript(videoId: string): VideoTranscript | undefined {
