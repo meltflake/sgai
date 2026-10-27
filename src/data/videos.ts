@@ -146,10 +146,10 @@ export function pickSpeakerTypeLabels(lang: string): Record<string, string> {
 export const videos: VideoItem[] = [
   {
     id: 'v125',
-    title: '我的AIAP基金会起点',
+    title: '从 AIAP Foundation 开始 AI 工程之路',
     titleEn: 'Finding my starting point with AIAP Foundation',
-    titleJa: '私のAIAP基金会の起点',
-    titleKo: '제 AIAP 기금 시작점',
+    titleJa: 'AIAP Foundationから始めるAIエンジニアへの道',
+    titleKo: 'AIAP Foundation으로 시작한 AI 엔지니어의 길',
     speaker: 'Kuang Hao',
     speakerTitle: 'AI学徒',
     speakerTitleEn: 'AI Apprentice',
@@ -158,20 +158,20 @@ export const videos: VideoItem[] = [
     speakerType: 'industry',
     date: '2026-10-23',
     duration: '01:03',
-    summary: 'Kuang Hao通过AIAP基金会从市场营销转向AI工程，获得技术基础和信心。他加入了AI学徒计划。',
+    summary: 'Kuang Hao 通过 AIAP Foundation 从非技术背景转向 AI 工程。课程帮助他掌握基础知识，并完成 AI 学徒计划。',
     summaryEn:
-      'Kuang Hao transitioned from marketing to AI engineering through AIAP Foundation, building technical skills and confidence. He joined the AI Apprenticeship Program.',
+      'Kuang Hao moved from a non-technical background into AI engineering through AIAP Foundation. The course prepared him to complete the AI Apprenticeship Programme.',
     summaryJa:
-      'クアン・ハオはAIAP基金会を通じてマーケティングからAIエンジニアリングへ転職し、技術基盤と自信を得ました。彼はAI学徒計画に参加しました。',
+      'クアン・ハオは非技術系の背景からAIAP Foundationで基礎を学び、AIエンジニアになりました。その後、AI Apprenticeship Programmeを修了しました。',
     summaryKo:
-      'Kuang Hao는 AIAP 기금을 통해 마케팅에서 AI 공학으로 전환했으며, 기술 기초와 자신감을 얻었습니다. 그는 AI 견습 프로그램에 참여했습니다.',
-    whyItMatters: 'AIAP 基金会用 AI 教练而非真人导师带非科班学员入行,为新加坡规模化培养 AI 工程人才探路',
+      'Kuang Hao는 비기술 분야 출신으로 AIAP Foundation에서 기초를 배우고 AI 엔지니어가 되었습니다. 이후 AI Apprenticeship Programme을 수료했습니다.',
+    whyItMatters: 'AIAP Foundation 通过在线课程和 AI 个性化反馈，帮助非技术背景学员学习 AI 工程。',
     whyItMattersEn:
-      "The AIAP Foundation uses AI coaches rather than human mentors to guide learners from non-technical backgrounds into the field, exploring a path to scale Singapore's AI engineering talent cultivation.",
+      'AIAP Foundation uses online lessons and personalised AI feedback to help learners from non-technical backgrounds develop AI engineering skills.',
     whyItMattersJa:
-      'AIAP財団は、人間のメンターではなくAIコーチを用いて、非科班出身の学生をAI業界に導き、シンガポールがAIエンジニア人材を規模化して育成する道を開拓しています。',
+      'AIAP Foundationは、オンライン授業とAIによる個別フィードバックで、非技術系出身の学習者のAIエンジニアリング学習を支援します。',
     whyItMattersKo:
-      'AIAP 재단은 진정한 멘토 대신 AI 코치를 활용하여 비전공 학생들을 업계로 이끌고, 싱가포르에서 AI 엔지니어 인재를 규모화하여 양성하는 경로를 개척하고 있습니다.',
+      'AIAP Foundation은 온라인 수업과 AI 맞춤형 피드백으로 비기술 분야 출신 학습자의 AI 엔지니어링 학습을 지원합니다.',
     topic: 'AI 人才与教育',
     topicEn: 'AI Talent & Education',
     topicJa: 'AI 人材と教育',
