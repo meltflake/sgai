@@ -46,6 +46,48 @@ export interface Signal {
 
 export const signals: Signal[] = [
   {
+    id: 'sig-20261026-singapore-embodied-ai-manufacturing-chal',
+    date: '2026-10-21',
+    title: '新加坡启动首届全国具身智能制造挑战赛',
+    titleEn: 'Singapore launches first national embodied AI manufacturing challenge',
+    titleJa: 'シンガポール初の全国具身化AI製造チャレンジ開始',
+    titleKo: '싱가포르 첫 전국 체화 지능 제조 챌린지 개시',
+    whyItMatters:
+      'Micron 为具身智能挑战赛提供模拟半导体制造任务。参赛队伍在模拟舱内验证方案，测试成果转为工业应用的可行性。',
+    whyItMattersEn:
+      'Micron provides a simulated semiconductor manufacturing task for the embodied AI challenge. Teams test solutions in a mock-up chamber to assess potential industrial applications.',
+    whyItMattersJa:
+      'Micronが具身型AIチャレンジに半導体製造の模擬課題を提供します。参加チームは模擬チャンバー内で解決策を検証し、産業応用の可能性を評価します。',
+    whyItMattersKo:
+      '미크론은 체화 지능 챌린지에 반도체 제조 모의 과제를 제공합니다. 참가팀은 모형 챔버에서 솔루션을 검증하고 산업 적용 가능성을 평가합니다.',
+    sourceUrl:
+      'https://www.a-star.edu.sg/news/press-releases/singapore-launches-first-national-embodied-ai-challenge-to-accelerate-real-world-robotics-deployment-in-manufacturing',
+    sourceName: 'A*STAR',
+    topicIds: ['advanced-manufacturing', 'infrastructure-research', 'talent-education'],
+    addedAt: '2026-10-28',
+  },
+  {
+    id: 'sig-20261021-moonshot-ai-singapore-expansion',
+    date: '2026-10-21',
+    title: '月之暗面据招聘信息拟进军新加坡',
+    titleEn: 'Moonshot AI plans Singapore entry, recruitment postings suggest',
+    titleJa: 'ムーンショット、採用情報からシンガポール進出計画',
+    titleKo: '문샷 AI 싱가포르 진출 계획, 채용공고 기반',
+    whyItMatters:
+      '月之暗面 2023 年便登记新加坡主体,2026 年 6 月改名 Novascent 后才开始招聘,新加坡正成 Tencent、Meituan、China Mobile 系 AI 出海的跳板',
+    whyItMattersEn:
+      "Moonshot AI registered a Singapore entity in 2023 but only started recruiting after renaming to Novascent in June 2026, as Singapore becomes a springboard for Tencent, Meituan, and China Mobile-affiliated AI companies' overseas expansion.",
+    whyItMattersJa:
+      'ゲツノアンメンは2023年にシンガポール法人を登記し、2026年6月にNovascent（ノバセント）に改名した後、初めて採用を開始しました。シンガポールはTencent、Meituan、China Mobile系のAI企業の海外進出の足がかりとなっています。',
+    whyItMattersKo:
+      '월지암면은 2023년 싱가포르 법인을 등록했으며, 2026년 6월 노바센트로 개명한 이후에야 채용을 시작했습니다. 싱가포르는 텐센트, 미투안, 차이나 모바일 계열 AI 해외 진출의 발판이 되고 있습니다.',
+    sourceUrl:
+      'https://www.businesstimes.com.sg/companies-markets/chinas-moonshot-ai-operate-singapore-jobs-post-shows',
+    sourceName: 'The Business Times',
+    topicIds: ['startups-investment', 'economy-industry', 'international'],
+    addedAt: '2026-10-28',
+  },
+  {
     id: 'sig-20261014-anthropic-singapore-office-mou',
     date: '2026-10-14',
     title: 'Anthropic 在新加坡设办公室，与 MDDI 签署合作备忘录',
