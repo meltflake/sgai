@@ -148,5 +148,119 @@
     "reason": "non-sg",
     "decidedAt": "2026-10-21",
     "ref": "score 5: A frontier AI lab's commitment to shift 5% of its equity into a public benefit fund ahead of a blockbuster IPO is a major, globally significant move, but the item has no Singapore connection."
+  },
+  {
+    "url": "https://www.edb.gov.sg/en/news-and-insights/red-hat-opens-singapore-ai-centre-of-excellence-as-strategic-ai-innovation-hub-for-asia-pacific",
+    "reason": "low-signal",
+    "decidedAt": "2026-10-28",
+    "ref": "score 3: A vendor-issued press release about Red Hat opening an EDB-backed Singapore AI centre with a DSTA collaboration, but with no funding figure or unique deployment, it reads as routine corporate"
+  },
+  {
+    "url": "https://www.edb.gov.sg/en/news-and-insights/mid-career-switch-tech-ai-roles-edb",
+    "reason": "non-ai",
+    "decidedAt": "2026-10-28",
+    "ref": "score 2: This is an EDB promotional human-interest piece profiling three individual career switchers, with AI only a minor detail in their job descriptions, not a policy, funding or adoption announcem"
+  },
+  {
+    "url": "https://www.businesstimes.com.sg/international/asean/iran-war-boosts-malaysian-data-centre-appeal-sd-guthrie-says",
+    "reason": "non-sg",
+    "decidedAt": "2026-10-28",
+    "ref": "score 2: This is an executive-interview puff piece about Malaysia's data centre investment climate, with Singapore mentioned only in passing as a land-constrained neighbor."
+  },
+  {
+    "url": "https://www.businesstimes.com.sg/companies-markets/anthropic-mum-investment-grade-it-warns-more-debt",
+    "reason": "non-sg",
+    "decidedAt": "2026-10-28",
+    "ref": "score 5: The item reveals Anthropic's IPO filing details including a US$63 billion bank-and-Blackstone financing package for AI chips, a major frontier-lab capital commitment."
+  },
+  {
+    "url": "https://www.channelnewsasia.com/singapore/asean-labour-statistics-jobs-skills-data-ai-exposure-green-transition-platform-work-6493506",
+    "reason": "non-ai",
+    "decidedAt": "2026-10-28",
+    "ref": "score 3: This is a new ASEAN labour-statistics coordination office hosted by MOM, where AI exposure is only one of three study areas alongside green transition and platform work, not an AI policy move"
+  },
+  {
+    "url": "https://www.channelnewsasia.com/east-asia/south-korea-economic-growth-third-quarter-2026-estimates-6494601",
+    "reason": "non-sg",
+    "decidedAt": "2026-10-28",
+    "ref": "score 1: This is South Korean macroeconomic GDP data driven by semiconductor exports, with no connection to Singapore's AI strategy or ecosystem."
+  },
+  {
+    "url": "https://www.channelnewsasia.com/asia/india-it-ai-reshapes-entry-level-jobs-6485426",
+    "reason": "non-sg",
+    "decidedAt": "2026-10-28",
+    "ref": "score 2: This is a feature on India's IT hiring and training trends with no connection to Singapore's AI strategy or ecosystem."
+  },
+  {
+    "url": "https://www.businesstimes.com.sg/international/global/you-buy-more-picks-and-shovels-because-you-keep-hitting-gold-why-ai-spending-needs-see-results",
+    "reason": "non-sg",
+    "decidedAt": "2026-10-28",
+    "ref": "score 2: This is a global news-analysis piece on AI spending ROI, using quotes from Broadcom and Intel's CEOs at a Singapore-hosted DBS forum, but it is not substantially about Singapore itself."
+  },
+  {
+    "url": "https://www.businesstimes.com.sg/companies-markets/anthropics-claude-accessed-georgia-state-vote-count-data-behind-paywall",
+    "reason": "non-sg",
+    "decidedAt": "2026-10-28",
+    "ref": "score 3: This is a US-only AI safety disclosure about Claude bypassing a paywall on Georgia election data, with no Singapore connection."
+  },
+  {
+    "url": "https://www.businesstimes.com.sg/companies-markets/musk-says-spacex-raised-us40-billion-debt-gpus",
+    "reason": "non-sg",
+    "decidedAt": "2026-10-28",
+    "ref": "score 5: This is a huge ($40B) GPU debt-financing deal underscoring the scale of global AI compute spending, but it involves SpaceX and US banks with no Singapore angle."
+  },
+  {
+    "url": "https://www.businesstimes.com.sg/companies-markets/banking-finance/jpmorgans-private-bank-using-ai-make-advisers-more-efficient",
+    "reason": "non-sg",
+    "decidedAt": "2026-10-28",
+    "ref": "score 1: This is EMEA-focused JPMorgan private banking news with no Singapore connection, so it carries no signal for Singapore's AI strategy."
+  },
+  {
+    "url": "https://www.channelnewsasia.com/asia/thailand-data-centres-water-elephants-6465091",
+    "reason": "non-sg",
+    "decidedAt": "2026-10-28",
+    "ref": "score 1: This is a Thailand-focused environmental story about a reservoir, water supply and wildlife conflict, with data centres only mentioned as background context, not Singapore or AI policy."
+  },
+  {
+    "url": "https://www.businesstimes.com.sg/companies-markets/sk-groups-data-centre-arm-talks-fund-us350-billion-ai-buildout",
+    "reason": "non-sg",
+    "decidedAt": "2026-10-28",
+    "ref": "score 5: SK Hyper's talks to raise US$350 billion for a 15GW South Korean AI data centre buildout is a hyperscaler-scale infrastructure commitment, but it has no Singapore tie-in."
+  },
+  {
+    "url": "https://www.channelnewsasia.com/east-asia/china-first-ai-film-cinemas-ticket-sales-6485401",
+    "reason": "non-sg",
+    "decidedAt": "2026-10-28",
+    "ref": "score 2: A China movie-industry story about weak ticket sales for an AI-generated film, with no link to Singapore policy or strategy."
+  },
+  {
+    "url": "https://www.businesstimes.com.sg/companies-markets/tesla-cuts-spending-potential-spacex-deal-even-musk-bets-future-ai-robots",
+    "reason": "non-sg",
+    "decidedAt": "2026-10-28",
+    "ref": "score 1: This is a Tesla/SpaceX corporate earnings and capex story with no Singapore connection and no AI policy or adoption substance."
+  },
+  {
+    "url": "https://www.channelnewsasia.com/commentary/rogue-chinese-ai-agent-chengdu-zoo-tencent-6478346",
+    "reason": "non-sg",
+    "decidedAt": "2026-10-28",
+    "ref": "score 2: This is a Bloomberg Opinion commentary on a China-based AI agent incident (Tencent cloud, Amap) with no Singapore connection."
+  },
+  {
+    "url": "https://www.businesstimes.com.sg/companies-markets/nvidia-talks-invest-more-ai-cloud-firm-firmus-after-ipo-flop-report",
+    "reason": "non-sg",
+    "decidedAt": "2026-10-28",
+    "ref": "score 2: Nvidia's reported investment talks concern an Australian AI cloud firm with no Singapore link, so it is global industry news rather than a Singapore signal."
+  },
+  {
+    "url": "https://www.channelnewsasia.com/east-asia/china-deepseek-us-ban-ai-government-systems-6477686",
+    "reason": "non-sg",
+    "decidedAt": "2026-10-28",
+    "ref": "score 4: A finalized US federal ban on DeepSeek products in government systems, plus China's retaliation warning, is a notable national-level AI security and regulation action, though it has no Singap"
+  },
+  {
+    "url": "https://www.businesstimes.com.sg/international/global/spacex-profit-beats-estimates-161-revenue-jump-growth-ai-satellite-internet-businesses",
+    "reason": "non-sg",
+    "decidedAt": "2026-10-28",
+    "ref": "score 1: This is a US company's quarterly earnings report with no mention of Singapore, so it carries no direct relevance to Singapore's AI strategy or ecosystem despite strong AI-segment growth figur"
   }
 ]
