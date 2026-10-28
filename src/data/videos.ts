@@ -145,6 +145,41 @@ export function pickSpeakerTypeLabels(lang: string): Record<string, string> {
 
 export const videos: VideoItem[] = [
   {
+    id: 'v127',
+    title: '新加坡-德国关系：数字化和人工智能成战略伙伴关系的重点',
+    titleEn: 'Singapore-Germany ties: Digitalisation, AI to form bigger part of renewed Strategic Partnership',
+    titleJa: 'シンガポール・ドイツ関係：デジタル化と AI が戦略的パートナーシップの重点に',
+    titleKo: '싱가포르-독일 관계: 디지털화 및 인공지능이 전략적 파트너십의 중점',
+    speaker: 'CNA',
+    speakerTitle: '亚洲新闻台报道',
+    speakerTitleEn: 'CNA report',
+    speakerTitleJa: 'アジアニュース放送による報道',
+    speakerTitleKo: '아시아 뉴스 채널 보도',
+    speakerType: 'industry',
+    date: '2026-10-27',
+    duration: '04:43',
+    summary: '报道新加坡与德国更新战略伙伴关系中数字化和人工智能的重要角色。',
+    summaryEn:
+      "Coverage of digitalisation and AI as key components in Singapore and Germany's renewed strategic partnership.",
+    summaryJa:
+      'シンガポールとドイツの戦略的パートナーシップ更新におけるデジタル化と AI の重要な役割についての報道です。',
+    summaryKo: '싱가포르와 독일의 전략적 파트너십 갱신에 있어 디지털화 및 인공지능의 중요한 역할을 보도합니다.',
+    whyItMatters: '新加坡借 2026 年 10 月 27 日与德国的战略伙伴关系更新，将 AI 合作定为对欧外交的支点',
+    whyItMattersEn:
+      'Singapore leverages the 27 October 2026 update to its strategic partnership with Germany to position AI cooperation as a pivot for Europe-facing diplomacy.',
+    whyItMattersJa:
+      'シンガポールは、2026年10月27日のドイツとの戦略パートナーシップ更新を通じて、AI協力を対欧外交の支点として位置づけています。',
+    whyItMattersKo:
+      '싱가포르는 2026년 10월 27일 독일과의 전략적 동반자 관계 갱신을 통해 AI 협력을 유럽 외교의 지렛대로 정의합니다.',
+    topic: '国际合作与对标',
+    topicEn: 'International Cooperation & Benchmarking',
+    topicJa: '国際協力とベンチマーク',
+    topicKo: '국제 협력과 벤치마크',
+    youtubeUrl: 'https://www.youtube.com/watch?v=hR5aalQ9qw0',
+    channel: 'CNA',
+    addedAt: '2026-10-28',
+  },
+  {
     id: 'v125',
     title: '从 AIAP Foundation 开始 AI 工程之路',
     titleEn: 'Finding my starting point with AIAP Foundation',

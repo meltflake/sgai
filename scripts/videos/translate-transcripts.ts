@@ -148,7 +148,8 @@ async function translateRecord(record: TranscriptRecord, model: string): Promise
 }
 
 function regenerateTranscriptData(): void {
-  const result = spawnSync('npx', ['tsx', 'scripts/videos/fetch-transcripts.ts', '--emit-only'], {
+  const selection = requestedIds ? [`--ids=${[...requestedIds].join(',')}`] : [];
+  const result = spawnSync('npx', ['tsx', 'scripts/videos/fetch-transcripts.ts', '--emit-only', ...selection], {
     stdio: 'inherit',
     encoding: 'utf8',
   });
