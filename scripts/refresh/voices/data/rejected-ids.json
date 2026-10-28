@@ -50,6 +50,11 @@
     "date": "2025-09-06",
     "decidedAt": "2026-10-20"
   },
+  "closing-speech-at-mci-insights-conference-by-ps-yong": {
+    "reason": "pre-floor",
+    "date": "2020-11-16",
+    "decidedAt": "2026-10-28"
+  },
   "mas--edqp-reawakening-2026-unlocking-the-next-value-up-cycle-for-singapore-equities": {
     "reason": "non-ai",
     "decidedAt": "2026-08-10",
@@ -79,6 +84,11 @@
     "reason": "non-ai",
     "decidedAt": "2026-09-04",
     "note": "The speech concerns Singapore's financial contributions to IMF trust funds for global poverty reduction and debt relief;"
+  },
+  "mas--keynote-address-by-daniel-wang": {
+    "reason": "non-ai",
+    "decidedAt": "2026-10-28",
+    "note": "AI is mentioned once in a list of emerging risks (alongside climate change and cyber threats) but the speech focuses on "
   },
   "mas--keynote-speech-by-mr-gan-kim-yong-at-the-financial-industry-fiesta-2026": {
     "reason": "non-ai",
@@ -9699,6 +9709,11 @@
     "reason": "non-ai",
     "decidedAt": "2026-10-16",
     "note": "The speech addresses Singapore-Thailand bilateral relations, business cooperation, and historical ties; artificial intel"
+  },
+  "pmo--toast-speech-by-pm-lawrence-wong-at-the-official-dinner-hosted-in-honour-of-the-federal-chancellor-of-the-federal-republic-of-germany-friedrich-merz-oct-2026": {
+    "reason": "non-ai",
+    "decidedAt": "2026-10-28",
+    "note": "Speech centres on Singapore-Germany bilateral relations, defence cooperation, and ASEAN engagement; AI mentioned once in"
   },
   "pmo--toast-speech-by-pm-lawrence-wong-at-the-official-lunch-hosted-by-new-zealand-pm-christopher-luxon--oct-2025-": {
     "reason": "pre-floor",
