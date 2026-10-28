@@ -173,6 +173,8 @@ async function emitData(records: TranscriptRecord[]): Promise<void> {
   // videos.ts ↔ video-transcripts.ts pairing broken (caught by
   // scripts/evals/video-transcript-coverage/).
   const emitted = records
+    // Preserve reviewed transcripts outside an explicit video selection.
+    .filter((record) => !requestedIds || requestedIds.has(record.videoId))
     .map((record) => {
       const isUnavailable = record.source === 'unavailable' && record.paragraphs.length === 0;
       if (isUnavailable) {
