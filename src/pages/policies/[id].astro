@@ -10,7 +10,7 @@ import SameTopicRail from '~/components/data/SameTopicRail.astro';
 import CiteBlock from '~/components/common/CiteBlock.astro';
 import { categories } from '~/data/policies';
 import { localizedHref, pickLocalized, pickLocalizedOwn, t } from '~/i18n';
-import { synthesizeMetaDescription } from '~/utils/seo-meta';
+import { fitTitle, synthesizeMetaDescription } from '~/utils/seo-meta';
 
 export const prerender = true;
 
@@ -53,7 +53,8 @@ const titleEndsParen = /[)）]\s*$/.test(title);
 
 const metadata = {
   title:
-    pickLocalizedOwn(policy, 'seoTitle', lang) || `${title}${yearMatch && !titleEndsParen ? ` (${yearMatch})` : ''}`,
+    pickLocalizedOwn(policy, 'seoTitle', lang) ||
+    fitTitle(`${title}${yearMatch && !titleEndsParen ? ` (${yearMatch})` : ''}`, title),
   description: pickLocalizedOwn(policy, 'seoDescription', lang) || metaDescription,
 };
 

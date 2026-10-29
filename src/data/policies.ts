@@ -228,6 +228,9 @@ See the site longform "What Singapore's Economic Strategy Review says: 8 directi
         titleKo: '2차 데이터센터 공모 (DC-CFA2): 200 MW 신규 용량을 4개 사업자에 배분',
         titleJa: '第 2 回データセンター公募 (DC-CFA2)：200 MW の新規容量を 4 社に配分',
         titleEn: 'Second Data Centre Call for Application (DC-CFA2): 200 MW allocated to four operators',
+        // SERP override (GSC 2026-10): 422 impressions at position 7.2, zero
+        // clicks; the full name was clamped to "…200 MW…".
+        seoTitleEn: 'DC-CFA2: 200 MW of Data Centre Capacity for Four Operators',
         topicIds: ['infrastructure-research'],
         date: '2026-08',
         source: '经济发展局 (EDB) / 资讯通信媒体发展局 (IMDA)',
@@ -1304,6 +1307,10 @@ ISO standards typically take years from proposal to publication. But once a prop
         titleKo: 'Agentic AI 거버넌스 프레임워크',
         titleJa: 'Agentic AI ガバナンスフレームワーク',
         titleEn: 'Model AI Governance Framework for Agentic AI',
+        // SERP override (GSC 2026-10): 279 impressions at position 6.5–9.9 and
+        // zero clicks; searchers type "imda model ai governance framework for
+        // agentic ai", and the old title did not name IMDA.
+        seoTitleEn: 'IMDA Model AI Governance Framework for Agentic AI (2026)',
         seoDescriptionEn:
           'Singapore’s Model AI Governance Framework for Agentic AI: released by IMDA in January 2026, updated May 2026 with input from 60+ organisations and 10+ cases.',
         date: '2026-01',

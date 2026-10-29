@@ -13,7 +13,7 @@ import { debates } from '~/data/debates';
 import { getDebateTranscript, getDebateTranscriptParagraphs } from '~/data/debate-transcripts';
 import { findPersonId, getPerson } from '~/utils/people';
 import { t, pickLocalized, localizedHref } from '~/i18n';
-import { synthesizeMetaDescription } from '~/utils/seo-meta';
+import { fitTitle, synthesizeMetaDescription } from '~/utils/seo-meta';
 import { DEBATE_TOPIC_TO_TOPIC_IDS } from '~/data/topic-mappings';
 
 export const prerender = true;
@@ -95,7 +95,7 @@ const metaDescription = synthesizeMetaDescription([
 ]);
 
 const metadata = {
-  title: `${debate.titleEn || debate.title} (${yearMatch})`,
+  title: fitTitle(`${debate.titleEn || debate.title} (${yearMatch})`, debate.titleEn || debate.title),
   description: metaDescription,
 };
 
