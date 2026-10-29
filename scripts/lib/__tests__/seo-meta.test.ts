@@ -7,7 +7,13 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 
-import { synthesizeMetaDescription, truncateAtBoundary, weightedLength } from '../../../src/utils/seo-meta';
+import {
+  fitTitle,
+  synthesizeMetaDescription,
+  TITLE_BODY_BUDGET,
+  truncateAtBoundary,
+  weightedLength,
+} from '../../../src/utils/seo-meta';
 
 // ── weightedLength ──────────────────────────────────────────────────────
 
@@ -114,4 +120,26 @@ test('synthesizeMetaDescription: default budget is 160 weighted units', () => {
   const out = synthesizeMetaDescription(['word '.repeat(60)]);
   assert.ok(out.endsWith('…'));
   assert.ok(weightedLength(out) <= 160, `got ${weightedLength(out)}`);
+});
+
+// ── fitTitle ────────────────────────────────────────────────────────────
+// GSC 2026-10: 481 of 1320 EN titles were clamped with "…" because a section
+// label or year pushed the page name past the budget.
+
+test('fitTitle: keeps name + distinguisher when it fits', () => {
+  assert.equal(fitTitle('NAISC — Singapore AI talent programme', 'NAISC'), 'NAISC — Singapore AI talent programme');
+});
+
+test('fitTitle: drops the distinguisher instead of cutting the name', () => {
+  const base = 'Cyberport AI Supercomputing Centre (Hong Kong)';
+  const full = `${base} · International Benchmark`;
+  assert.ok(weightedLength(full) > TITLE_BODY_BUDGET);
+  assert.equal(fitTitle(full, base), base);
+});
+
+test('fitTitle: budget is display-width weighted for CJK', () => {
+  const base = '新加坡人工智能战略';
+  const full = `${base}（2026）— 新加坡 AI 人才培养项目与国家计划完整说明`;
+  assert.equal(fitTitle(full, base, 40), base);
+  assert.equal(fitTitle(base, base, 40), base);
 });

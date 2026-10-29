@@ -32,6 +32,8 @@ export interface Topic {
   introJa?: string;
   introKo?: string;
   icon: string; // tabler:* icon name
+  /** Optional EN <title> override for the hub (SERP-driven, EN only). */
+  seoTitleEn?: string;
 }
 
 export const topics: Topic[] = [
@@ -39,6 +41,9 @@ export const topics: Topic[] = [
     id: 'national-strategy',
     name: 'AI 国家战略',
     nameEn: 'National AI Strategy',
+    // SERP override (GSC 2026-10): "singapore national ai strategy" and close
+    // variants ranked 8–9.5 with zero clicks under "National AI Strategy — Singapore AI".
+    seoTitleEn: 'Singapore National AI Strategy: NAIS 1.0, 2.0 and 2026 Update',
     nameJa: 'AI 国家戦略',
     nameKo: 'AI 국가 전략',
     description: 'NAIS 1.0/2.0、National AI Missions、预算与顶层设计——新加坡把 AI 当国家工程来推进的整体框架。',

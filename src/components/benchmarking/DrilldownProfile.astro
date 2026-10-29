@@ -7,7 +7,7 @@ import { benchmarkCaseProfileUpdated } from '~/data/benchmarking';
 import { getBenchmarkDrilldownsForRegion, type BenchmarkDrilldownPage } from '~/utils/entity-pages';
 import { IN_LANGUAGES, localizedHref, pickLocalized, pickLocalizedOwn, t, type Lang } from '~/i18n';
 import { toTraditional } from '~/i18n/opencc';
-import { synthesizeMetaDescription } from '~/utils/seo-meta';
+import { fitTitle, synthesizeMetaDescription } from '~/utils/seo-meta';
 
 interface Props {
   page: BenchmarkDrilldownPage;
@@ -93,10 +93,14 @@ const regionBenchmarkLabelByLang: Record<Lang, string> = {
 // so no per-locale gating is needed here.
 // Per-drilldown SERP overrides live on the enrichment record (exact locale only).
 const enrichment = page.region.detail?.drilldownEnrichments?.[page.localId];
+// Only EN drops the suffix to fit: non-EN drilldown names are often untranslated
+// English, and the localized suffix keeps those titles in-language (i18n-check).
 const baseMetadata = {
   title:
     pickLocalizedOwn(enrichment, 'seoTitle', lang) ||
-    `${title} · ${regionBenchmarkLabelByLang[lang] || regionBenchmarkLabelByLang.en}`,
+    (lang === 'en'
+      ? fitTitle(`${title} · ${regionBenchmarkLabelByLang[lang] || regionBenchmarkLabelByLang.en}`, title)
+      : `${title} · ${regionBenchmarkLabelByLang[lang] || regionBenchmarkLabelByLang.en}`),
   description:
     pickLocalizedOwn(enrichment, 'seoDescription', lang) ||
     (page.analysisPending ? description : synthesizeMetaDescription([description, body]) || description),

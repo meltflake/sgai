@@ -15,6 +15,8 @@ relatedPolicyIds:
 relatedTimelineYears:
   - 2026
 lang: en
+metadata:
+  title: 'Singapore Tops Claude Usage Intensity: What 5.53 Means'
 ---
 
 The Economic Index report Anthropic released in March 2026 came with a country-by-country ranking of AI usage intensity. Singapore sits at the top, at 5.53.

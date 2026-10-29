@@ -30,6 +30,8 @@ relatedTimelineYears:
 relatedPersonIds:
   - lawrence-wong
   - josephine-teo
+metadata:
+  title: "Singapore's Four National AI Missions (May 2026)"
 ---
 
 On 20 May 2026, Minister for Digital Development and Information Josephine Teo announced an update to the National AI Strategy in her keynote address at ATxSummit 2026, establishing four **National AI Missions**: Advanced Manufacturing, Connectivity (spanning aviation, maritime, ports, and logistics), Finance, and Healthcare. The four sectors collectively account for more than 40% of Singapore's GDP.

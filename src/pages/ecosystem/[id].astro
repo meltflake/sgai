@@ -10,7 +10,7 @@ import { getPolicyById, getDebateById, getLeverByNumber } from '~/utils/graph';
 import { allPeople } from '~/data/people';
 import EcosystemProse from '~/components/data/EcosystemProse.astro';
 import { isStubEcosystemEntity } from '~/utils/quality';
-import { synthesizeMetaDescription } from '~/utils/seo-meta';
+import { fitTitle, synthesizeMetaDescription } from '~/utils/seo-meta';
 import { pickLocalizedOwn } from '~/i18n';
 
 export const prerender = true;
@@ -99,7 +99,9 @@ const isEnStub = isStubEcosystemEntity(entity, 'en');
 // `pick()` above — an English SERP snippet must not carry Chinese).
 const metaDescription = synthesizeMetaDescription([entity.whatItIsEn, entity.aiRelevanceEn]) || description;
 const metadata = {
-  title: pickLocalizedOwn(entity, 'seoTitle', lang) || `${displayName} — ${categoryName}, Singapore AI`,
+  title:
+    pickLocalizedOwn(entity, 'seoTitle', lang) ||
+    fitTitle(`${displayName} — ${categoryName}, Singapore AI`, displayName),
   description: pickLocalizedOwn(entity, 'seoDescription', lang) || metaDescription,
   robots: { index: !isPendingReview && !isEnStub, follow: true },
 };

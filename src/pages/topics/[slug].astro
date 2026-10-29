@@ -27,7 +27,7 @@ const url = `https://sgai.md/topics/${topic.id}/`;
 
 const metadata = {
   // Compact geo+domain anchor so the hub targets "<topic> Singapore AI".
-  title: `${name} — Singapore AI`,
+  title: topic.seoTitleEn || `${name} — Singapore AI`,
   description,
 };
 

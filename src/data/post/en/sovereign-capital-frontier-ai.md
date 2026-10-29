@@ -22,6 +22,8 @@ relatedTimelineYears:
   - 2025
   - 2026
 lang: en
+metadata:
+  title: 'GIC and Temasek AI Investments: The Full Public Record'
 ---
 
 In May 2026, Anthropic announced a $65 billion Series H at a $965 billion post-money valuation. The co-lead list includes GIC; the "significant investor" list includes Temasek — Singapore's two sovereign funds, on the same frontier AI company's cap table at the same time.

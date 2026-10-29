@@ -16,7 +16,7 @@ import { DEBATE_TOPIC_TO_TOPIC_IDS } from '~/data/topic-mappings';
 import { findPersonId, getPerson, personDisplayName } from '~/utils/people';
 import { NON_DEFAULT_ROUTE_LOCALES, IN_LANGUAGES, t, pickLocalized, localizedHref, type Lang } from '~/i18n';
 import { toTraditional } from '~/i18n/opencc';
-import { synthesizeMetaDescription } from '~/utils/seo-meta';
+import { fitTitle, synthesizeMetaDescription } from '~/utils/seo-meta';
 
 export const prerender = true;
 
@@ -119,7 +119,7 @@ const metaDescription = synthesizeMetaDescription([
 ]);
 
 const metadata = {
-  title: `${debateTitle}（${yearMatch}）`,
+  title: fitTitle(`${debateTitle}（${yearMatch}）`, debateTitle),
   description: metaDescription,
 };
 

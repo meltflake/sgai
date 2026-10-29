@@ -8,6 +8,7 @@ import SameTopicRail from '~/components/data/SameTopicRail.astro';
 import { programmes, type TalentProgramme, type TalentStatusTone } from '~/data/talent';
 import { SITE_UPDATED } from '~/version';
 import { pickLocalizedOwn } from '~/i18n';
+import { fitTitle } from '~/utils/seo-meta';
 
 export const prerender = true;
 
@@ -33,7 +34,9 @@ const statusClasses: Record<TalentStatusTone, string> = {
 };
 
 const metadata = {
-  title: pickLocalizedOwn(programme, 'seoTitle', lang) || `${programme.nameEn} — Singapore AI talent programme`,
+  title:
+    pickLocalizedOwn(programme, 'seoTitle', lang) ||
+    fitTitle(`${programme.nameEn} — Singapore AI talent programme`, programme.nameEn),
   description: pickLocalizedOwn(programme, 'seoDescription', lang) || programme.descriptionEn,
 };
 
