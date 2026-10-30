@@ -145,6 +145,39 @@ export function pickSpeakerTypeLabels(lang: string): Record<string, string> {
 
 export const videos: VideoItem[] = [
   {
+    id: 'v128',
+    title: '恶意 AI 智能体能否绕过新加坡的安全防护',
+    titleEn: "Could rogue AI agents evade Singapore's safety guardrails?",
+    titleJa: '悪意のあるAIエージェントはシンガポールのセキュリティ防護を回避できるのか',
+    titleKo: '악의적 AI 에이전트가 싱가포르의 보안 방어를 우회할 수 있는가',
+    speaker: 'CNA',
+    speakerTitle: '亚洲新闻台报道',
+    speakerTitleEn: 'CNA report',
+    speakerTitleJa: 'アジアニュース放送による報道',
+    speakerTitleKo: '아시아 뉴스 채널 보도',
+    speakerType: 'industry',
+    date: '2026-10-29',
+    duration: '32:47',
+    summary: '探讨恶意 AI 智能体是否能够绕过新加坡的安全防护。',
+    summaryEn: "Explores whether rogue AI agents could evade Singapore's AI safety guardrails.",
+    summaryJa: '悪意のあるAIエージェントがシンガポールのセキュリティ防護を回避できるかどうかについて検討します。',
+    summaryKo: '악의적 AI 에이전트가 싱가포르의 보안 방어를 우회할 수 있는지를 논의합니다.',
+    whyItMatters: 'CNA 把恶意智能体能否攻破新加坡安全防护摆上主流议程，但答案仍未有定论',
+    whyItMattersEn:
+      "CNA has placed on the mainstream agenda the question of whether malicious AI agents can breach Singapore's security safeguards, but the answer remains undetermined.",
+    whyItMattersJa:
+      'CNA が、悪意あるAIエージェントがシンガポールの防護を突破できるかについて、主流議題に挙げました。しかし、答えは依然として定論に達していません。',
+    whyItMattersKo:
+      'CNA는 악의적 인공지능 행위체가 싱가포르의 보안 방어를 뚫을 수 있는지 여부를 주류 의제에 올렸으나, 이에 대한 결론은 여전히 나지 않았습니다.',
+    topic: 'AI 治理与监管',
+    topicEn: 'AI Governance & Regulation',
+    topicJa: 'AI ガバナンスと規制',
+    topicKo: 'AI 거버넌스와 규제',
+    youtubeUrl: 'https://www.youtube.com/watch?v=5SpoSbY-1Cs',
+    channel: 'CNA',
+    addedAt: '2026-10-30',
+  },
+  {
     id: 'v127',
     title: '新加坡-德国关系：数字化和人工智能成战略伙伴关系的重点',
     titleEn: 'Singapore-Germany ties: Digitalisation, AI to form bigger part of renewed Strategic Partnership',
