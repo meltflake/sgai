@@ -145,6 +145,42 @@ export function pickSpeakerTypeLabels(lang: string): Record<string, string> {
 
 export const videos: VideoItem[] = [
   {
+    id: 'v129',
+    title: 'AIAP 学徒评价：导师来猜测',
+    titleEn: 'Mentors Guess: AIAP Apprentice Ratings',
+    titleJa: 'AIAP見習い評価：メンターの推測',
+    titleKo: 'AIAP 견습생 평가: 멘토의 추측',
+    speaker: 'AI Singapore',
+    speakerTitle: 'AI 研究与人才培养机构',
+    speakerTitleEn: 'AI research and talent-development organisation',
+    speakerTitleJa: 'AI 研究と人材育成機関',
+    speakerTitleKo: 'AI 연구 및 인재 양성 기관',
+    speakerType: 'academic',
+    date: '2026-10-29',
+    duration: '01:31',
+    summary: 'AIAP 导师猜测学徒对项目各模块的评价。视频展示导师的预测是否与学徒实际反馈相符。',
+    summaryEn:
+      "AIAP mentors attempt to guess how their apprentices rated the programme across different modules and challenges. The video reveals whether their predictions match the apprentices' actual feedback.",
+    summaryJa:
+      'AIAPのメンターは、見習いがプロジェクトの各モジュールについての評価を推測します。ビデオはメンターの予測が見習いの実際のフィードバックと一致しているかを示します。',
+    summaryKo:
+      'AIAP 멘토들은 견습생들의 프로젝트 각 모듈에 대한 평가를 추측합니다. 비디오는 멘토의 예측이 견습생의 실제 피드백과 일치하는지를 보여줍니다.',
+    whyItMatters: '该视频与 Batch 26 招生窗口同步推送，说明 AIAP 吸引学徒正转向雇主品牌式内容营销',
+    whyItMattersEn:
+      "The video launched simultaneously with the Batch 26 recruitment window, indicating that AIAP's approach to attracting apprentices is shifting toward employer brand–focused content marketing.",
+    whyItMattersJa:
+      '該動画はBatch 26の募集期間と同時配信されており、AIAPの学徒吸引戦略が雇用者ブランド型のコンテンツマーケティングへシフトしていることを示しています。',
+    whyItMattersKo:
+      '이 영상이 Batch 26 모집 창구와 동시 배포된 것은 AIAP가 도제 모집을 위해 고용주 브랜드식 콘텐츠 마케팅으로 전환하고 있음을 보여줍니다.',
+    topic: 'AI 人才与教育',
+    topicEn: 'AI Talent & Education',
+    topicJa: 'AI 人材と教育',
+    topicKo: 'AI 인재와 교육',
+    youtubeUrl: 'https://www.youtube.com/watch?v=BJyJvOYUkHc',
+    channel: 'AI Singapore',
+    addedAt: '2026-11-02',
+  },
+  {
     id: 'v127',
     title: '新加坡-德国关系：数字化和人工智能成战略伙伴关系的重点',
     titleEn: 'Singapore-Germany ties: Digitalisation, AI to form bigger part of renewed Strategic Partnership',

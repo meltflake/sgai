@@ -13510,6 +13510,32 @@ export const videoTranscripts: Record<string, VideoTranscript> = {
     translationSource: 'claude',
     translationModel: 'haiku',
   },
+  v129: {
+    videoId: 'v129',
+    youtubeId: 'BJyJvOYUkHc',
+    captionLanguage: 'en-orig',
+    fetchedAt: '2026-11-02',
+    source: 'youtube-subtitles',
+    paragraphs: [
+      'AIEP 实习生被要求对自己的经验评分，从 1 到 5。[音乐] 现在，让我们看看导师是否能像实习生一样彼此了解，通过猜测他们的评分。>> [笑声] >> 我想你知道你实习生的评分，对吧？>> 相当了解。>> 你确定吗？>> 我是办公室某样东西，我觉得[音乐]这是学生在课堂上通常学不到的东西。>> [音乐] >> 所以，对我来说，我认为这个模块本身如果他们想进入行业的话会非常有价值。>> 我以为我的评分是 >> 哦。>> [笑声] >> 你认为这不具有挑战性吗？>> 首先，我们必须进行文献综述。我们需要了解当前发生的情况。有很多噪音，很多人提供错误的[音乐]信息。',
+      '所以，你真的必须突破这些噪音，看清正确的信息是什么。我们还需要与赞助商实际想要的东西取得平衡。我们还需要考虑成本方面。>> 3. 5 5. 1，这实际上不那么令人生畏。>> 嗯？>> 实习生一开始发现这很令人生畏，对吧？但是，一旦他们通过技能提升以及导师的指导获得信心，他们所有人都应该能够克服最初的恐惧。[音乐] >> 所以，如果你想体验 AIEP 的所有这些不同方面，请加入我们。',
+    ],
+    paragraphsEn: [
+      "AIEP apprentices have been asked to rate their experience from 1 to 5. [music] Now, let's see if mentors know their apprentices as well as they do by guessing their rating. >> [laughter] >> I got you know your apprentice rating, right? >> Pretty well. >> You sure or not? >> I am a office something that I feel [music] it is something outside what a student typically learn in the classroom. >> [music] >> So, for me, I think the module itself will be very valuable if they are looking to step into the industry. >> I thought my rating is >> Oh. >> [laughter] >> You think it's not challenging? >> Firstly, we have to conduct literature review. We need to understand the landscape of what's going on. There are a lot of noise, a lot of people giving wrong [music] information.",
+      'So, you really have to cut through and see what is the correct information. We also need to balance with what our sponsors actually want out of this. We also need to consider the cost aspect of it. >> 3. 5 5. 1, which is actually not that intimidating. >> Huh? >> Apprentices were finding intimidating at first, right? But, once they gain the confidence through upskilling as well as guidance from the mentors, all of them should be able to overcome that initial intimidation. [music] >> So, if you want to experience all these different aspects of AIEP, come and join us.',
+    ],
+    paragraphsKo: [
+      'AIEP 인턴들은 자신의 경험을 1부터 5까지 평가해야 했습니다. [음악] 이제 멘토들이 인턴들처럼 서로를 잘 알고 있는지 그들의 평가를 맞춰봄으로써 알아봅시다. >> [웃음] >> 당신이 당신의 인턴들의 평가를 알고 계신다고 생각합니다. 맞죠? >> 상당히 알고 있습니다. >> 확실하신가요? >> 저는 사무실의 무언가입니다. 저는 [음악] 학생들이 보통 교실에서 배우지 못하는 것이라고 생각합니다. >> [음악] >> 그래서 제 생각으로는 이 모듈 자체가 그들이 업계에 들어가고 싶다면 매우 가치 있을 것입니다. >> 제 평가가 >> 아. >> [웃음] >> 이것이 도전적이지 않다고 생각하신다고요? >> 먼저 우리는 문헌 검토를 수행해야 합니다. 우리는 현재 일어나고 있는 상황을 이해해야 합니다. 많은 노이즈가 있고 많은 사람들이 잘못된 [음악] 정보를 제공합니다.',
+      '그래서 당신은 정말로 이 노이즈를 뚫고 올바른 정보가 무엇인지 봐야 합니다. 우리는 또한 스폰서가 실제로 원하는 것과의 균형을 맞춰야 합니다. 우리는 또한 비용 측면을 고려해야 합니다. >> 3.5 5.1, 이것은 실제로 그리 무섭지 않습니다. >> 음? >> 인턴들이 처음에는 이것이 무섭다고 느꼈습니다. 맞죠? 하지만 기술 향상과 멘토의 지도를 통해 자신감을 얻으면, 그들 모두가 처음의 두려움을 극복할 수 있어야 합니다. [음악] >> 그래서 AIEP의 이 모든 다양한 측면을 경험하고 싶다면, 저희에게 참여해주세요.',
+    ],
+    paragraphsJa: [
+      'AIEP実習生は自分の経験を1から5の範囲で評価するよう求められました。【音楽】さて、メンターが実習生と同じようにお互いを理解できるかどうか、彼らの評価を推測してみてみましょう。>> 【笑い声】>> 「あなたは実習生の評価を知っていると思いますが、そうですよね?」>> 「かなり理解しています。」>> 「確かですか?」>> 「私はオフィスで何かをしています。【音楽】これは学生が通常教室で学ばないものです。」>> 【音楽】>> 「ですから、私にとっては、このモジュール自体、彼らが業界に入りたいのであれば非常に価値があると思われます。」>> 「私の評価は」>> 「ああ。」>> 【笑い声】>> 「これは挑戦的ではないと思いますか?」>> 「まず、文献レビューを実施する必要があります。現在何が起こっているのかを理解する必要があります。非常に多くのノイズがあり、多くの人々が誤った【音楽】情報を提供しています。」',
+      '「ですから、あなたは本当にこれらのノイズを突き抜けて、正しい情報が何であるかを見る必要があります。私たちはスポンサーが実際に望んでいることとバランスを取る必要があります。私たちはまたコスト面を考慮する必要があります。」>> 「3.5 5.1。これは実際には非常に恐ろしいことではありません。」>> 「えっ?」>> 「実習生は最初、これを恐ろしいと思いましたね?しかし、スキル向上とメンターの指導を通じて自信を得ると、彼ら全員が最初の恐怖を乗り越えることができるはずです。」【音楽】>> 「ですから、もしあなたがAIEPのすべてのこれらの異なる側面を体験したいのであれば、私たちに参加してください。」',
+    ],
+    translatedAt: '2026-11-02',
+    translationSource: 'claude',
+    translationModel: 'haiku',
+  },
 };
 
 export function getVideoTranscript(videoId: string): VideoTranscript | undefined {
