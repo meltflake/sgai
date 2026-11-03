@@ -8,7 +8,7 @@ import Layout from '~/layouts/PageLayout.astro';
 import SameTopicRail from '~/components/data/SameTopicRail.astro';
 import { dataDate, publicLeverGroups } from '~/data/levers';
 import { pickLocalized, pickLocalizedOwn } from '~/i18n';
-import { synthesizeMetaDescription } from '~/utils/seo-meta';
+import { fitTitle, synthesizeMetaDescription } from '~/utils/seo-meta';
 import { getDebateById, getPolicyById } from '~/utils/graph';
 import { leverItemSlug, leverPages, leverSlug, getEcosystemEntityPage } from '~/utils/entity-pages';
 
@@ -53,7 +53,8 @@ const metaDescription = synthesizeMetaDescription([
 // in the suffix. Item pages get the lever number as their distinguisher.
 const seoTitle = isLever ? undefined : pickLocalizedOwn(page.item, 'seoTitle', lang);
 const metadata = {
-  title: seoTitle || (isLever ? `${title} — Singapore AI` : `${title} · Singapore AI Lever ${lever.number}`),
+  title:
+    seoTitle || fitTitle(isLever ? `${title} — Singapore AI` : `${title} · Singapore AI Lever ${lever.number}`, title),
   description: metaDescription,
 };
 

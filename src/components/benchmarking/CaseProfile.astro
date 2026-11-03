@@ -9,7 +9,7 @@ import { benchmarkCasePages, regionPages, type BenchmarkCasePage } from '~/utils
 import { IN_LANGUAGES, localizedHref, pickLocalized, pickLocalizedOwn, t, type Lang } from '~/i18n';
 import { toTraditional } from '~/i18n/opencc';
 import { getCanonical } from '~/utils/permalinks';
-import { synthesizeMetaDescription } from '~/utils/seo-meta';
+import { fitTitle, synthesizeMetaDescription } from '~/utils/seo-meta';
 
 interface Props {
   page: BenchmarkCasePage;
@@ -89,7 +89,11 @@ const metaDescription =
     pickLocalizedOwn(caseItem, 'singaporeTakeaway', lang) || pickLocalizedOwn(caseItem, 'whyItMatters', lang),
   ]) || summary;
 const metadata = {
-  title: `${name} · ${caseSuffixByLang[lang] || caseSuffixByLang.en}`,
+  // EN drops the suffix when it would force a clamp; other locales keep it (see DrilldownProfile).
+  title:
+    lang === 'en'
+      ? fitTitle(`${name} · ${caseSuffixByLang[lang] || caseSuffixByLang.en}`, name)
+      : `${name} · ${caseSuffixByLang[lang] || caseSuffixByLang.en}`,
   description: metaDescription,
   ...canonicalOverride,
 };

@@ -19,6 +19,7 @@ import {
   type Lang,
 } from '~/i18n';
 import { toTraditional } from '~/i18n/opencc';
+import { fitTitle } from '~/utils/seo-meta';
 
 export const prerender = true;
 
@@ -72,7 +73,8 @@ const brandSuffixByLang: Record<Lang, string> = {
 };
 const metadata = {
   title:
-    pickLocalizedOwn(programme, 'seoTitle', lang) || `${progName} — ${brandSuffixByLang[lang] || brandSuffixByLang.en}`,
+    pickLocalizedOwn(programme, 'seoTitle', lang) ||
+    fitTitle(`${progName} — ${brandSuffixByLang[lang] || brandSuffixByLang.en}`, progName),
   description: pickLocalizedOwn(programme, 'seoDescription', lang) || progDescription,
 };
 

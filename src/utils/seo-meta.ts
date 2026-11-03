@@ -66,6 +66,16 @@ export const truncateAtBoundary = (text: string, maxUnits = 160): string => {
   return SENTENCE_END.test(kept) ? kept : `${kept}…`;
 };
 
+/** Title body budget: Metadata.astro clamps a title to 70 units and its
+ *  `· sgai` template takes 7, which leaves 63 units for the page title. */
+export const TITLE_BODY_BUDGET = 63;
+
+/** Return `full` (name + distinguisher such as a section label or year) if it
+ *  fits the title budget, else `base` (the name alone). This stops the clamp
+ *  in Metadata.astro from cutting the page name to make room for a label. */
+export const fitTitle = (full: string, base: string, maxUnits = TITLE_BODY_BUDGET): string =>
+  weightedLength(full) <= maxUnits ? full : base;
+
 /** Build a meta description from prose fragments: strip markdown syntax
  *  (fenced code, links, emphasis, headings, list markers), collapse
  *  whitespace, join with a space, and cut at a word boundary within
