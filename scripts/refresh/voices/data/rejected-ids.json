@@ -55,6 +55,16 @@
     "date": "2020-11-16",
     "decidedAt": "2026-10-28"
   },
+  "closing-speech-by-minister-iswaran-at-the-second-reading-of-the-pdp-bill": {
+    "reason": "pre-floor",
+    "date": "2020-11-02",
+    "decidedAt": "2026-11-05"
+  },
+  "closing-speech-by-minister-josephine-teo-at-the-second-reading-of-the-eliona-bill": {
+    "reason": "pre-floor",
+    "date": "2024-10-15",
+    "decidedAt": "2026-11-04"
+  },
   "mas--edqp-reawakening-2026-unlocking-the-next-value-up-cycle-for-singapore-equities": {
     "reason": "non-ai",
     "decidedAt": "2026-08-10",
@@ -94,6 +104,11 @@
     "reason": "non-ai",
     "decidedAt": "2026-09-05",
     "note": "The speech's primary substance addresses education-to-work pathways and employment support in the financial sector; whil"
+  },
+  "mas--navigating-new-tools-new-terrain-and-new-needs": {
+    "reason": "non-ai",
+    "decidedAt": "2026-11-05",
+    "note": "The speech concerns actuarial risk management and Singapore's economic resilience; AI is mentioned once as a component o"
   },
   "mas--opening-of-nasdaq-new-office-in-singapore": {
     "reason": "non-ai",
@@ -264,6 +279,11 @@
     "reason": "pre-floor",
     "date": "2022-10-05",
     "decidedAt": "2026-08-24"
+  },
+  "moh--closing-speech-by-mr-tan-kiat-how-senior-minister-of-state-mddi-moh-for-the-second-reading-of-the-health-information-bill": {
+    "reason": "non-ai",
+    "decidedAt": "2026-11-05",
+    "note": "Speech concerns health data privacy, access safeguards, and NEHR governance in Singapore; AI mentioned only once in pass"
   },
   "moh--closing-speech-for-allied-health-professions-bill": {
     "reason": "pre-floor",
@@ -9729,6 +9749,11 @@
     "reason": "pre-floor",
     "date": "2025-11-02",
     "decidedAt": "2026-08-03"
+  },
+  "pmo--toast-speech-by-pm-lawrence-wong-at-the-official-lunch-hosted-in-honour-of-prime-minister-of-luxembourg-luc-frieden-sep-2026": {
+    "reason": "non-ai",
+    "decidedAt": "2026-11-04",
+    "note": "The speech is a diplomatic toast on Singapore-Luxembourg bilateral relations and small-state partnerships; AI is name-dr"
   },
   "pmo--toast-speech-by-pm-lawrence-wong-at-the-official-lunch-hosted-in-honour-of-prime-minister-of-thailand-anutin-charnvirakul-nov-2025": {
     "reason": "pre-floor",

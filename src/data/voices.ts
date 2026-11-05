@@ -3101,4 +3101,27 @@ export const mddiSpeeches: MddiSpeech[] = [
     eventKo: 'NVIDIA AI Day Singapore',
     addedAt: '2026-10-16',
   },
+  {
+    titleEn:
+      'Keynote Address by Mr Gan Kim Yong, Deputy Prime Minister and Minister for Trade and Industry, and Chairman of the Monetary Authority of Singapore, at the Institute of Banking and Finance (IBF) Distinction Evening on 24 September 2026',
+    title:
+      '副总理、贸易和工业部长、新加坡金融管理局主席颜金勇先生在银行及金融学会(IBF)荣誉晚宴上的主旨演讲 — 2026年9月24日',
+    titleJa:
+      'ガン・キムヨン副首相兼貿易産業相兼シンガポール金融管理局（MAS）会長による基調演説 — 銀行金融研究所（IBF）ディスティンクション・イブニング、2026年9月24日',
+    titleKo:
+      '2026년 9월 24일 IBF 우수상 저녁 행사에서 발표한 부총리 겸 통상산업부 장관이자 MAS 의장인 간킴용의 기조연설',
+    speaker: 'Gan Kim Yong',
+    speakerTitle: '副总理兼贸工部长',
+    speakerTitleJa: '副首相兼貿易産業相',
+    speakerTitleEn: 'Deputy Prime Minister and Minister for Trade and Industry',
+    speakerTitleKo: '부총리 겸 통상산업부 장관',
+    date: '2026-09-24',
+    url: 'https://www.mas.gov.sg/news/speeches/2026/keynote-address-by-dpm-gan-kim-yong-at-the-ibf-distinction-evening-on-24-september-2026/',
+    eventEn: 'IBF Distinction Evening',
+    event: '银行与金融学院（IBF）卓越之夜',
+    eventJa: 'IBF（銀行金融研究所）ディスティンクション・イブニング',
+    eventKo: 'IBF 우수상 저녁 행사',
+    addedAt: '2026-11-04',
+    ministry: 'MAS',
+  },
 ];
