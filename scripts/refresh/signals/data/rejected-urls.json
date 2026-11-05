@@ -262,5 +262,119 @@
     "reason": "non-sg",
     "decidedAt": "2026-10-28",
     "ref": "score 1: This is a US company's quarterly earnings report with no mention of Singapore, so it carries no direct relevance to Singapore's AI strategy or ecosystem despite strong AI-segment growth figur"
+  },
+  {
+    "url": "https://www.edb.gov.sg/en/news-and-insights/latest-in-singapores-ai-scene-that-businesses-should-know-a-round-up-from-july-to-september-2026",
+    "reason": "low-signal",
+    "decidedAt": "2026-11-04",
+    "ref": "score 2: This is EDB's own quarterly marketing round-up repackaging multiple Jul–Sep 2026 announcements (SG AI Xchange, Waymo, Databricks) rather than a single fresh news event."
+  },
+  {
+    "url": "https://www.businesstimes.com.sg/startups-tech/technology/anthropics-quarterly-loss-shrinks-revenue-jumps-ahead-blockbuster-ipo",
+    "reason": "non-sg",
+    "decidedAt": "2026-11-04",
+    "ref": "score 4: This is major financial disclosure from a frontier AI lab (Anthropic) ahead of a record-setting IPO, but it has no Singapore-specific angle."
+  },
+  {
+    "url": "https://www.businesstimes.com.sg/companies-markets/manufacturings-black-art-retiring-ai-may-be-best-chance-keep-it",
+    "reason": "non-sg",
+    "decidedAt": "2026-11-04",
+    "ref": "score 2: This is an opinion column speculating on AI's general potential to capture retiring manufacturing expertise, with Singapore only a passing example and no concrete policy, deal, or deployment "
+  },
+  {
+    "url": "https://www.channelnewsasia.com/business/hsbc-hong-kong-ai-institute-singapore-launch-6512091",
+    "reason": "non-sg",
+    "decidedAt": "2026-11-04",
+    "ref": "score 2: The news is HSBC's new AI institute in Hong Kong; Singapore appears only as a passing reference to its earlier July hiring announcement, not as new Singapore news."
+  },
+  {
+    "url": "https://www.channelnewsasia.com/east-asia/south-korea-vows-bold-ai-investment-budget-6512016",
+    "reason": "non-sg",
+    "decidedAt": "2026-11-04",
+    "ref": "score 5: South Korea's president announced a record national budget with 21.3 trillion won (about US$16 billion) for AI, semiconductors, physical AI, and AI data centres, a national-level policy commi"
+  },
+  {
+    "url": "https://www.channelnewsasia.com/asia/trump-says-us-looking-closely-report-nvidia-ceo-target-china-spy-plot-6510641",
+    "reason": "non-sg",
+    "decidedAt": "2026-11-04",
+    "ref": "score 1: This is a US political and espionage story about Nvidia's CEO, with Singapore appearing only as a passing reference to an unnamed data-centre company in the underlying NYT report."
+  },
+  {
+    "url": "https://www.businesstimes.com.sg/startups-tech/technology/big-techs-us750-billion-ai-bet-collides-slowing-growth-core-businesses",
+    "reason": "non-sg",
+    "decidedAt": "2026-11-04",
+    "ref": "score 3: It is fresh reporting on US hyperscaler earnings and AI capex strain, a useful global trend but with no Singapore angle and no new policy or deal."
+  },
+  {
+    "url": "https://www.channelnewsasia.com/east-asia/south-korea-ai-smart-glasses-students-cheating-6505571",
+    "reason": "non-sg",
+    "decidedAt": "2026-11-04",
+    "ref": "score 2: This is a South Korea-only education ministry policy on AI-glasses exam cheating, with no link to Singapore's AI strategy or ecosystem."
+  },
+  {
+    "url": "https://www.channelnewsasia.com/east-asia/north-korea-drones-missiles-kim-jong-un-6505466",
+    "reason": "non-sg",
+    "decidedAt": "2026-11-04",
+    "ref": "score 1: This is a North Korea military weapons demonstration story with no Singapore connection, and AI is only a passing phrase in Kim's rhetoric, not the main subject."
+  },
+  {
+    "url": "https://www.businesstimes.com.sg/companies-markets/samsung-sees-ai-chip-shortage-worsening-keeps-investors-suspense-returns",
+    "reason": "non-sg",
+    "decidedAt": "2026-11-04",
+    "ref": "score 2: This is a Samsung/SK Hynix earnings story about the global AI chip shortage and shareholder returns, with no Singapore-specific content."
+  },
+  {
+    "url": "https://www.channelnewsasia.com/east-asia/has-china-ai-bubble-burst-global-tech-boom-6502616",
+    "reason": "non-sg",
+    "decidedAt": "2026-11-04",
+    "ref": "score 2: It is analyst commentary on a China stock-market sell-off, with no Singapore angle and no new policy, funding or deal."
+  },
+  {
+    "url": "https://www.channelnewsasia.com/east-asia/china-lao-gan-ma-denies-layoffs-ai-6502126",
+    "reason": "non-sg",
+    "decidedAt": "2026-11-04",
+    "ref": "score 3: A viral China story about an AI-driven production-line staffing cut (600 to 48 workers) and the company's denial, with no Singapore link."
+  },
+  {
+    "url": "https://www.businesstimes.com.sg/companies-markets/microsofts-cloud-growth-cash-flow-offer-respite-ai-spending-fears",
+    "reason": "non-sg",
+    "decidedAt": "2026-11-04",
+    "ref": "score 2: This is a global Microsoft earnings report with no mention of Singapore, offering only indirect relevance to regional AI infrastructure trends."
+  },
+  {
+    "url": "https://www.channelnewsasia.com/asia/bengaluru-artificial-intelligence-data-centres-water-scarcity-land-acquisition-6495991",
+    "reason": "non-sg",
+    "decidedAt": "2026-11-04",
+    "ref": "score 3: It reports on India's Bengaluru AI data-centre buildout straining water and land, a trend relevant for international comparison but not about Singapore or a major policy/funding event."
+  },
+  {
+    "url": "https://www.channelnewsasia.com/asia/malaysia-airport-customs-seize-advanced-ai-chips-smuggling-6498976",
+    "reason": "non-sg",
+    "decidedAt": "2026-11-04",
+    "ref": "score 3: This is a Malaysia customs enforcement action against AI chip smuggling, not a Singapore policy, funding or deployment event."
+  },
+  {
+    "url": "https://www.mddi.gov.sg/newsroom/mddi-s-response-to-pq-on-ai-capabilities-that-require-domestic-ability-to-operate-and-that-can-be-diversified-to-foreign-providers/",
+    "reason": "low-signal",
+    "decidedAt": "2026-11-05",
+    "ref": "score 3: A parliamentary answer restates Singapore's existing risk-based, multi-provider approach to AI capability sourcing without announcing new policy, funding, or programmes."
+  },
+  {
+    "url": "https://www.businesstimes.com.sg/companies-markets/google-extends-voluntary-buyout-offers-employees-several-countries-amid-heavy-ai-spending",
+    "reason": "non-sg",
+    "decidedAt": "2026-11-05",
+    "ref": "score 2: This is routine global corporate workforce news about Google buyouts in Canada, France, Germany, Japan and Switzerland, with no Singapore angle and AI only as background budget context, not t"
+  },
+  {
+    "url": "https://www.businesstimes.com.sg/international/ai-data-centre-boom-set-upheaval-after-us-election-rout",
+    "reason": "non-sg",
+    "decidedAt": "2026-11-05",
+    "ref": "score 4: Democratic wins in Texas and other US states on anti-data-centre platforms threaten roughly half of planned US AI data centre capacity, a major regulatory shift for global AI infrastructure w"
+  },
+  {
+    "url": "https://www.channelnewsasia.com/east-asia/tencent-wechat-gaming-artificial-intelligence-competition-6519631",
+    "reason": "non-sg",
+    "decidedAt": "2026-11-05",
+    "ref": "score 2: This is a China-focused feature on Tencent's competitive position in the AI race, with no Singapore content and no specific policy, funding, or deployment event."
   }
 ]

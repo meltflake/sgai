@@ -46,6 +46,107 @@ export interface Signal {
 
 export const signals: Signal[] = [
   {
+    id: 'sig-20261103-ipos-gemgpt-openai-trademark-ruling',
+    date: '2026-11-03',
+    title: 'IPOS 裁定 OpenAI 商标异议败诉 GemGPT 过关',
+    titleEn: 'IPOS rules against OpenAI in trademark opposition, GemGPT advances',
+    titleJa: 'IPOS OpenAI商標異議敗訴 GemGPT承認',
+    titleKo: 'IPOS, OpenAI 상표이의 기각…GemGPT 통과',
+    whyItMatters: 'IPOS 认定 GPT 并非 OpenAI 专属用语，为新加坡 AI 初创保留通用技术词的命名空间',
+    whyItMattersEn:
+      "IPOS ruled that GPT is not OpenAI's exclusive term, preserving the namespace for common technical terminology used by Singapore's AI startups.",
+    whyItMattersJa:
+      'IPOSはGPTがOpenAIの専属用語ではないと認定し、シンガポールのAIスタートアップのための汎用技術用語の命名空間を保護しています。',
+    whyItMattersKo:
+      '아이포스가 GPT는 오픈에이아이의 전용 용어가 아니라고 판정하여, 싱가포르 AI 초기업들을 위해 일반 기술 용어의 명명 공간을 보존했습니다.',
+    sourceUrl:
+      'https://www.businesstimes.com.sg/companies-markets/chatgpt-creator-openai-loses-bid-block-singapore-startups-gemgpt-trademark',
+    sourceName: 'The Business Times',
+    topicIds: ['governance-regulation', 'startups-investment'],
+    related: [{ kind: 'ecosystem', id: 'openai' }],
+    addedAt: '2026-11-04',
+  },
+  {
+    id: 'sig-20261030-google-research-hub-singapore-health-ai',
+    date: '2026-10-30',
+    title: '谷歌在新加坡设研究中心深化医疗 AI 合作',
+    titleEn: 'Google establishes Singapore research center to deepen healthcare AI collaboration',
+    titleJa: 'グーグル シンガポール医療AI研究センター設立',
+    titleKo: '구글, 싱가포르에 의료AI 연구센터 설립',
+    whyItMatters: '这是 5 月那份国家级 AI 伙伴关系首次落地为实体机构，新加坡从政策文本升级为谷歌全球研究版图上的节点',
+    whyItMattersEn:
+      "This marks the first time the May national-level AI partnership materialized as a concrete institution. Singapore graduated from policy text to become a node on Google's global research map.",
+    whyItMattersJa:
+      'これは5月の国家級AIパートナーシップが初めて実体機関として確立され、シンガポールが政策文書からGoogleのグローバル研究版図上のノードへと昇格した事例です。',
+    whyItMattersKo:
+      '이는 5월의 그 국가급 AI 파트너십이 처음으로 실체 기관으로 구현된 것이며, 싱가포르는 정책 텍스트에서 구글의 글로벌 연구 지형도상의 노드로 격상되었습니다.',
+    sourceUrl:
+      'https://www.edb.gov.sg/en/news-and-insights/google-and-singapore-deepen-partnership-to-advance-frontier-ai-for-healthcare-and-scientific-discovery',
+    sourceName: 'EDB',
+    topicIds: ['healthcare', 'infrastructure-research', 'national-strategy'],
+    addedAt: '2026-11-04',
+  },
+  {
+    id: 'sig-20261030-astar-marvel-ai-materials-initiative',
+    date: '2026-10-30',
+    title: 'A*STAR 推出 MARVEL-AI 加速先进材料研发',
+    titleEn: 'A*STAR launches MARVEL-AI to accelerate advanced materials research',
+    titleJa: 'A*STAR MARVEL-AI先進材料研究開発加速',
+    titleKo: 'A*STAR, MARVEL-AI 출시 첨단소재 연구개발 가속',
+    whyItMatters:
+      'MARVEL-AI 把 A*STAR 的研发与 METI、EDB、EnterpriseSG 的产业化职能整合进同一闭环,意在消除材料从实验室走向产业化的交接断点',
+    whyItMattersEn:
+      "MARVEL-AI integrates A*STAR's R&D with METI, EDB, and EnterpriseSG's commercialization functions into a single closed loop, aiming to eliminate the handoff gap between laboratory and commercialization stages.",
+    whyItMattersJa:
+      'MARVEL-AIはA*STARの研究開発とMETI、EDB、EnterpriseSGの産業化機能を同一のクローズドループに統合し、材料が実験室から産業化に向かう際の引き継ぎギャップを排除することを意図しています。',
+    whyItMattersKo:
+      'MARVEL-AI는 A*STAR의 연구개발 기능과 METI, EDB, EnterpriseSG의 산업화 기능을 동일한 폐쇄 루프로 통합하여, 재료가 실험실에서 산업화로 전환되는 과정의 인계 단절점을 제거하려는 의도입니다.',
+    sourceUrl:
+      'https://www.a-star.edu.sg/news/press-releases/marvel-ai-accelerating-advanced-materials-innovation-from-discovery-to-deployment',
+    sourceName: 'A*STAR',
+    topicIds: ['advanced-manufacturing', 'infrastructure-research', 'economy-industry'],
+    addedAt: '2026-11-04',
+  },
+  {
+    id: 'sig-20261030-megaspeed-nvidia-china-spy-probe',
+    date: '2026-10-30',
+    title: '黄仁勋回应新加坡芯片商谍案指控',
+    titleEn: 'Jensen Huang responds to Singapore chipmaker espionage case accusations',
+    titleJa: 'ファン・ジェンシュン シンガポール半導体スパイ事件指控に応答',
+    titleKo: '황런훈, 싱가포르 반도체 첩보 혐의 대응',
+    whyItMatters: '黄仁勋亲自为 Megaspeed International 背书，暴露新加坡芯片中转角色已卷入美国出口管制审查前线',
+    whyItMattersEn:
+      "Jensen Huang's personal endorsement of Megaspeed International exposes that Singapore's semiconductor transhipment role has been drawn into the frontline of US export-control scrutiny.",
+    whyItMattersJa:
+      'ジェンセン・ファンはMegaspeed Internationalを個人的に支持し、シンガポールのチップトランシップ役割が既に米国の輸出管制審査の最前線に巻き込まれていることを暴露しています。',
+    whyItMattersKo:
+      '젠슨 황이 메가스피드 인터내셔널을 직접 배서함으로써, 싱가포르의 반도체 중전 역할이 이미 미국 수출 관제 심사 최전선에 휘말렸음을 드러냈습니다.',
+    sourceUrl: 'https://www.channelnewsasia.com/east-asia/nvidia-jensen-huang-megaspeed-international-6505791',
+    sourceName: 'CNA',
+    topicIds: ['national-security', 'international', 'economy-industry'],
+    addedAt: '2026-11-04',
+  },
+  {
+    id: 'sig-20261029-safran-ai-centre-singapore-edb',
+    date: '2026-10-29',
+    title: '赛峰与新加坡经发局签约设 AI 卓越中心',
+    titleEn: 'Safran signs agreement with Singapore EDB to establish AI center of excellence',
+    titleJa: 'サフラン シンガポール経済開発庁 AI卓越センター設立契約',
+    titleKo: '사프랑, 싱가포르경제개발청과 AI 우수센터 설립 협약',
+    whyItMatters:
+      '新加坡拿下 Safran.AI 全球首个海外子公司，但 2027 年一季度才启动招聘、首批仅 50 人，EDB 的航空 AI 卡位仍是试探性落子',
+    whyItMattersEn:
+      "Singapore secured Safran.AI's first global overseas subsidiary, but recruitment will not launch until Q1 2027, with only 50 people in the initial cohort. EDB's aviation-AI positioning remains exploratory.",
+    whyItMattersJa:
+      'シンガポールはSafran.AIのグローバル初の海外子会社を確保しましたが、2027年第1四半期にようやく採用を開始し、初期段階ではわずか50名のみです。EDBの航空AI戦略は依然として試験的なポジショニングに過ぎません。',
+    whyItMattersKo:
+      '싱가포르는 사프란.에이아이의 글로벌 최초 해외 자회사를 확보했으나, 2027년 1분기에야 채용을 시작하고 초기 인원은 50명에 불과하여, EDB의 항공 AI 포지셔닝은 여전히 시험적 움직임에 그칩니다.',
+    sourceUrl: 'https://www.edb.gov.sg/en/news-and-insights/safran-chooses-singapore-for-new-ai-centre-of-excellence',
+    sourceName: 'EDB',
+    topicIds: ['advanced-manufacturing', 'economy-industry', 'startups-investment'],
+    addedAt: '2026-11-04',
+  },
+  {
     id: 'sig-20261026-singapore-embodied-ai-manufacturing-chal',
     date: '2026-10-21',
     title: '新加坡启动首届全国具身智能制造挑战赛',
