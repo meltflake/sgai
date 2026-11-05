@@ -145,6 +145,149 @@ export function pickSpeakerTypeLabels(lang: string): Record<string, string> {
 
 export const videos: VideoItem[] = [
   {
+    id: 'v132',
+    title: '新加坡推出660辆电动巴士,试验AI交通灯',
+    titleEn: 'Singapore deploys 660 electric buses, trials AI traffic lights',
+    titleJa: 'シンガポール、660台の電動バスを導入、AI交通信号を試験',
+    titleKo: '싱가포르, 660대 전기 버스 선보이고 AI 신호등 시험',
+    speaker: 'CNA',
+    speakerTitle: '亚洲新闻台报道',
+    speakerTitleEn: 'CNA report',
+    speakerTitleJa: 'アジアニュース放送による報道',
+    speakerTitleKo: '아시아 뉴스 채널 보도',
+    speakerType: 'industry',
+    date: '2026-11-04',
+    duration: '04:10',
+    summary: '新加坡计划2026年底前部署660辆新电动巴士,并试验AI交通灯管理。',
+    summaryEn:
+      'Singapore plans to deploy 660 new electric buses by end-2026 and trial AI-controlled traffic light management.',
+    summaryJa: 'シンガポールは2026年末までに660台の新型電動バスを配備し、AI交通信号管理を試験する計画です。',
+    summaryKo: '싱가포르는 2026년 연말 이전에 660대의 신형 전기 버스를 배치할 계획이며, AI 신호등 관리를 시험합니다.',
+    whyItMatters: '660 辆电动巴士锁定 2026 年底交付期,AI 交通灯试验让新加坡的交通治理首次接受路面实测',
+    whyItMattersEn:
+      "660 electric buses confirmed for end-2026 delivery; AI traffic light trial enables Singapore's traffic governance to undergo on-road testing for the first time",
+    whyItMattersJa:
+      '660台の電動バスが2026年末納期で確定し、AI交通信号試験がシンガポールの交通管理を初めて路面実測の対象にします',
+    whyItMattersKo:
+      '660대의 전기 버스가 2026년 말 배송으로 확정되었으며, AI 신호등 시험으로 싱가포르의 교통 관리가 처음으로 노상 실측을 받게 됩니다.',
+    topic: 'AI 产业与应用',
+    topicEn: 'AI Industry & Applications',
+    topicJa: 'AI 産業と応用',
+    topicKo: 'AI 산업 및 응용',
+    youtubeUrl: 'https://www.youtube.com/watch?v=7k9X-lJKzho',
+    channel: 'CNA',
+    addedAt: '2026-11-05',
+  },
+  {
+    id: 'v133',
+    title: '建立人工智能代理登记制，林佩玲提议',
+    titleEn: 'Create national registry for AI agents, says Tin Pei Ling',
+    titleJa: 'AI代理登録制度の構築を提案、リム・ペイ・リン',
+    titleKo: '인공지능 에이전트 등록 제도 수립, 림 페이링이 제안',
+    speaker: 'Tin Pei Ling',
+    speakerTitle: '议员',
+    speakerTitleEn: 'Member of Parliament',
+    speakerTitleJa: '議員',
+    speakerTitleKo: '의원',
+    speakerType: 'government',
+    date: '2026-11-04',
+    duration: '02:58',
+    summary: '林佩玲在国会建议建立人工智能代理登记制度，确保 AI 代理可被识别和问责。政府已表示同意。',
+    summaryEn:
+      'Tin Pei Ling proposes in Parliament a national registry for AI agents to ensure they are identifiable and accountable. The government expressed agreement.',
+    summaryJa:
+      'リム・ペイ・リンは国会でAI代理登録制度の構築を提案しました。この制度によってAI代理が識別可能で、説明責任が果たせることが確保されます。政府はすでに同意を表明しています。',
+    summaryKo:
+      '림 페이링은 국회에서 인공지능 에이전트 등록 제도 수립을 제안했으며, 이는 AI 에이전트를 식별할 수 있고 책임을 물을 수 있도록 보장합니다. 정부는 이미 동의를 표시했습니다.',
+    whyItMatters: '林佩玲 11 月 4 日在国会提案，政府当场认同，显示新加坡正加速补上 AI 代理身份与问责的监管空白',
+    whyItMattersEn:
+      'Lim Pei Ling tabled a proposal in Parliament on November 4; the government agreed immediately, indicating that Singapore is accelerating efforts to close regulatory gaps in AI agent identity and accountability',
+    whyItMattersJa:
+      'Lim Pei Lingが11月4日に国会で提案し、政府がその場で認同しました。これはシンガポールがAI代理の身分と問責に関する規制上の空白を補うことを加速していることを示しています',
+    whyItMattersKo:
+      '림페이링이 11월 4일 국회에서 제안했으며, 정부가 즉시 동의했습니다. 이는 싱가포르가 AI 에이전트 신원과 책임의 규제 공백을 메우는 속도를 높이고 있음을 보여줍니다.',
+    topic: 'AI 治理与监管',
+    topicEn: 'AI Governance & Regulation',
+    topicJa: 'AI ガバナンスと規制',
+    topicKo: 'AI 거버넌스와 규제',
+    youtubeUrl: 'https://www.youtube.com/watch?v=Jq3yGKZI-7c',
+    channel: 'The Straits Times',
+    addedAt: '2026-11-05',
+  },
+  {
+    id: 'v130',
+    title: '研究呼吁加强女性AI培训与指导',
+    titleEn: 'Study calls for more AI training, mentorship to help young women lead in tech',
+    titleJa: '女性へのAI訓練と指導の強化を呼びかける研究',
+    titleKo: '연구는 여성 AI 교육 및 지도 강화를 촉구합니다',
+    speaker: 'CNA',
+    speakerTitle: '亚洲新闻台报道',
+    speakerTitleEn: 'CNA report',
+    speakerTitleJa: 'アジアニュース放送による報道',
+    speakerTitleKo: '아시아 뉴스 채널 보도',
+    speakerType: 'industry',
+    date: '2026-11-02',
+    duration: '03:07',
+    summary: '研究显示女性在AI领域缺乏信心。妇女倡导组织呼吁加强AI培训与指导机会。',
+    summaryEn:
+      "A study found young women lack confidence in AI compared to men. A women's advocacy group calls for more AI training, mentorship and opportunities to develop talent in Singapore's AI economy.",
+    summaryJa:
+      '研究は女性がAI分野で自信を欠いていることを示しています。女性団体がAI訓練と指導の機会強化を呼びかけています。',
+    summaryKo:
+      '연구에 따르면 여성은 AI 분야에서 자신감이 부족합니다. 여성권익 단체는 AI 교육 및 지도 기회 강화를 촉구합니다.',
+    whyItMatters:
+      'CNA 在 11 月 2 日披露的这项研究提示，新加坡 AI 人才战略若不正视女性信心缺口，可能白白流失一批潜在人才',
+    whyItMattersEn:
+      "CNA research disclosed on November 2 indicates that Singapore's AI talent strategy may wastefully lose a pool of potential talent if it fails to address the female confidence gap.",
+    whyItMattersJa:
+      'CNA が 11 月 2 日に披露した本研究は、シンガポール AI 人材戦略が女性の信頼感ギャップに正面から対処しなければ、潜在的な人材を無駄に失う可能性があることを示唆しています。',
+    whyItMattersKo:
+      'CNA가 11월 2일 공개한 이 연구는 싱가포르 AI 인재 전략이 여성 신뢰 격차를 정면으로 인식하지 못할 경우 잠재 인재를 낭비할 수 있음을 시사합니다.',
+    topic: 'AI 人才与教育',
+    topicEn: 'AI Talent & Education',
+    topicJa: 'AI 人材と教育',
+    topicKo: 'AI 인재와 교육',
+    youtubeUrl: 'https://www.youtube.com/watch?v=GbnLBh5C9m4',
+    channel: 'CNA',
+    addedAt: '2026-11-03',
+  },
+  {
+    id: 'v131',
+    title: '制造业因 AI 需求乐观',
+    titleEn: 'Manufacturers upbeat as AI drives demand',
+    titleJa: 'AI需要で製造業が楽観的',
+    titleKo: '제조업이 AI 수요에 낙관적입니다',
+    speaker: 'CNA',
+    speakerTitle: '亚洲新闻台报道',
+    speakerTitleEn: 'CNA report',
+    speakerTitleJa: 'アジアニュース放送による報道',
+    speakerTitleKo: '아시아 뉴스 채널 보도',
+    speakerType: 'industry',
+    date: '2026-11-02',
+    duration: '02:37',
+    summary: '新加坡制造业因全球 AI 产品需求乐观。政府调查显示三成企业预期业务改善。',
+    summaryEn:
+      "Singapore manufacturers' optimism strengthened by sustained global demand for AI-related products. A survey shows 30% expect improved conditions in six months, with only 5% foreseeing decline.",
+    summaryJa:
+      'シンガポール製造業は世界的なAI製品需要により楽観的です。政府調査は3割の企業が事業改善を期待していることを示しています。',
+    summaryKo:
+      '싱가포르 제조업이 글로벌 AI 제품 수요에 낙관적입니다. 정부 조사에 따르면 30%의 기업이 사업 개선을 예상하고 있습니다.',
+    whyItMatters: '近三成企业预期改善，仅 5% 看跌，印证 AI 需求已成新加坡制造业信心的主要支柱而非全面复苏信号',
+    whyItMattersEn:
+      "Nearly 30% of enterprises expect improvement, with only 5% expecting decline, confirming that AI demand has become the main pillar of Singapore's manufacturing sector confidence rather than a signal of comprehensive recovery.",
+    whyItMattersJa:
+      '約 30% の企業が改善を期待し、わずか 5% だけが下落を見ており、これは AI 需要がシンガポール製造業の信頼感の主要な支柱となったこと、全面的な復蘇信号ではないことを示唆しています。',
+    whyItMattersKo:
+      '거의 30%의 기업이 개선을 기대하고 단 5%만 하락을 예상하는 점은, AI 수요가 싱가포르 제조업 신뢰의 주요 지주가 되었으며 전면적 회복 신호가 아님을 입증합니다.',
+    topic: 'AI 产业与应用',
+    topicEn: 'AI Industry & Applications',
+    topicJa: 'AI 産業と応用',
+    topicKo: 'AI 산업 및 응용',
+    youtubeUrl: 'https://www.youtube.com/watch?v=b_CitwXi_Bo',
+    channel: 'CNA',
+    addedAt: '2026-11-03',
+  },
+  {
     id: 'v127',
     title: '新加坡-德国关系：数字化和人工智能成战略伙伴关系的重点',
     titleEn: 'Singapore-Germany ties: Digitalisation, AI to form bigger part of renewed Strategic Partnership',
