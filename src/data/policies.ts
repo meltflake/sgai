@@ -1055,6 +1055,47 @@ This is not just a regional-HQ story. It connects OpenAI’s deployment engineer
         relatedTimelineYears: [],
         relatedPostSlugs: [],
       },
+      {
+        id: '2nd-raffles-dialogue-on-human-well-being-and-security-4-september-2017',
+        title: '第二届莱佛士对话：人类福祉与安全 - 2017年9月4日',
+        titleEn: '2nd Raffles Dialogue on Human Well-Being and Security - 4 September 2017',
+        titleJa: '第二回ラッフルズ対話：人類の福祉と安全 - 2017年9月4日',
+        titleKo: '제2회 래플스 대화：인류 복지와 안전 - 2017년 9월 4일',
+        date: '2017-09',
+        source: '数码发展及新闻部 (MDDI)',
+        sourceOrgUrl: 'https://www.mddi.gov.sg/',
+        sourceUrl: 'https://www.mddi.gov.sg/newsroom/2nd-raffles-dialogue-on-human-well-being-and-security-2017/',
+        summary:
+          '新加坡数字发展与信息部长维文·巴拉克里什南强调，解决人类福祉和安全需要通过政策创新管理第四次工业革命，而非仅依靠技术。新加坡的战略包括三个支柱：教育与终身技能提升、研发投资（至2020年拨款新币190亿元）、与全球研究机构的伙伴关系。关键举措包括技能未来计划、科技技能加速器、人工智能新加坡倡议和新加坡数据科学联盟，旨在推广技术民主化并应对中产阶层就业忧虑。',
+        content: `新加坡数字发展与信息部长维文·巴拉克里什南强调，解决人类福祉和安全需要通过政策创新管理第四次工业革命，而非仅依靠技术。新加坡的战略包括三个支柱：教育与终身技能提升、研发投资（至2020年拨款新币190亿元）、与全球研究机构的伙伴关系。关键举措包括技能未来计划、科技技能加速器、人工智能新加坡倡议和新加坡数据科学联盟，旨在推广技术民主化并应对中产阶层就业忧虑。`,
+        summaryEn:
+          "Minister Vivian Balakrishnan emphasized that addressing human well-being and security requires policy innovation to manage the Fourth Industrial Revolution, not technology alone. Singapore's strategy centres on three pillars: education and continuous up-skilling, research and development investment (S$19 billion through 2020), and partnerships with global research leaders. Key initiatives include SkillsFuture for lifelong learning, the Tech Skills Accelerator, AI.SG for artificial intelligence capability development, and the Singapore Data Science Consortium.",
+        contentEn: `Minister Vivian Balakrishnan emphasized that addressing human well-being and security requires policy innovation to manage the Fourth Industrial Revolution, not technology alone. Singapore's strategy centres on three pillars: education and continuous up-skilling, research and development investment (S$19 billion through 2020), and partnerships with global research leaders. Key initiatives include SkillsFuture for lifelong learning, the Tech Skills Accelerator, AI.SG for artificial intelligence capability development, and the Singapore Data Science Consortium.`,
+        summaryJa:
+          'シンガポールデジタル開発・情報相ビビアン・バラクリシュナンは、人類の福祉と安全に関する課題を解決するには、技術に頼るだけではなく、政策革新を通じて第四次産業革命を管理する必要があることを強調しています。シンガポールの戦略は3つの支柱から成り立っています：教育と生涯スキルの向上、研究開発投資（2020年までに総額190億シンガポールドルを配分）、および世界中の研究機関とのパートナーシップです。重要な取り組みには、スキルズフューチャー・シンガポール（SSG）計画、技術スキル・アクセラレータ、AIシンガポール・イニシアティブ、およびシンガポール・データサイエンス・アライアンスが含まれており、これらは技術の民主化を推進し、中産階級の雇用不安に対処することを目的としています。',
+        contentJa: `シンガポールデジタル開発・情報相ビビアン・バラクリシュナンは、人類の福祉と安全に関する課題を解決するには、技術に頼るだけではなく、政策革新を通じて第四次産業革命を管理する必要があることを強調しています。シンガポールの戦略は3つの支柱から成り立っています：教育と生涯スキルの向上、研究開発投資（2020年までに総額190億シンガポールドルを配分）、および世界中の研究機関とのパートナーシップです。重要な取り組みには、スキルズフューチャー・シンガポール（SSG）計画、技術スキル・アクセラレータ、AIシンガポール・イニシアティブ、およびシンガポール・データサイエンス・アライアンスが含まれており、これらは技術の民主化を推進し、中産階級の雇用不安に対処することを目的としています。`,
+        summaryKo:
+          '싱가포르 디지털 발전 및 정보부 장관 Vivian Balakrishnan은 인류의 복지와 안전을 해결하기 위해서는 제4차 산업혁명을 기술에만 의존하지 않고 정책 혁신을 통해 관리해야 한다고 강조했습니다. 싱가포르의 전략은 세 가지 기둥으로 구성됩니다: 교육 및 평생 기술 향상, 연구개발 투자(2020년까지 싱가포르 달러 190억 배정), 그리고 세계 연구 기관과의 파트너십. 주요 계획에는 스킬스퓨처 싱가포르（SSG）, 기술 역량 가속기, AI 싱가포르 이니셔티브, 싱가포르 데이터 과학 컨소시엄이 포함되어 있으며, 이는 기술 민주화를 촉진하고 중산층 고용 우려에 대응하기 위한 것입니다.',
+        contentKo: `싱가포르 디지털 발전 및 정보부 장관 Vivian Balakrishnan은 인류의 복지와 안전을 해결하기 위해서는 제4차 산업혁명을 기술에만 의존하지 않고 정책 혁신을 통해 관리해야 한다고 강조했습니다. 싱가포르의 전략은 세 가지 기둥으로 구성됩니다: 교육 및 평생 기술 향상, 연구개발 투자(2020년까지 싱가포르 달러 190억 배정), 그리고 세계 연구 기관과의 파트너십. 주요 계획에는 스킬스퓨처 싱가포르（SSG）, 기술 역량 가속기, AI 싱가포르 이니셔티브, 싱가포르 데이터 과학 컨소시엄이 포함되어 있으며, 이는 기술 민주화를 촉진하고 중산층 고용 우려에 대응하기 위한 것입니다.`,
+        whyItMatters:
+          '维文把人工智能框定为政策问题而非技术问题，190 亿元研发拨款与人工智能新加坡倡议成为新加坡应对中产再就业焦虑的先手',
+        whyItMattersEn:
+          "Vivian Balakrishnan frames AI as a policy issue rather than a technical issue; S$19 billion in research and development funding and the AI Singapore Initiative become Singapore's first move in addressing middle-income reemployment anxiety.",
+        whyItMattersJa:
+          'ビビアン・バラクリシュナンはAIを技術問題ではなく政策問題として位置付けており、190億元の研究開発予算とAI Singapore Initiative（AISG）がシンガポールの中産階級の再就業不安に対応する先手となっています。',
+        whyItMattersKo:
+          'Vivian Balakrishnan은 인공지능을 기술 문제가 아닌 정책 문제로 규정했으며, 190억 싱가포르 달러의 연구개발 배정과 인공지능 싱가포르 이니셔티브(AISG)는 싱가포르가 중산층의 재취업 불안감에 대응하는 선제조치가 되었습니다.',
+        sourceEn: 'Ministry of Digital Development and Information (MDDI)',
+        sourceJa: 'デジタル開発情報省 (MDDI)',
+        sourceKo: '디지털개발정보부 (MDDI)',
+        ministry: 'MDDI',
+        authorPersonIds: [],
+        relatedDebateIds: [],
+        relatedLeverNumbers: [],
+        relatedTimelineYears: [],
+        relatedPostSlugs: [],
+        addedAt: '2026-11-06',
+      },
     ],
   },
   {
