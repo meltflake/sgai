@@ -145,6 +145,111 @@ export function pickSpeakerTypeLabels(lang: string): Record<string, string> {
 
 export const videos: VideoItem[] = [
   {
+    id: 'v134',
+    title: 'AI时代：年轻新加坡人为何应学习人文学科',
+    titleEn: 'Age of AI: why young Singaporeans should study humanities',
+    titleJa: 'AI時代：若いシンガポール人はなぜ人文学科を学ぶべきなのか',
+    titleKo: 'AI 시대: 젊은 싱가포르인이 인문학을 배워야 하는 이유',
+    speaker: 'CNA',
+    speakerTitle: '亚洲新闻台报道',
+    speakerTitleEn: 'CNA report',
+    speakerTitleJa: 'アジアニュース放送による報道',
+    speakerTitleKo: '아시아 뉴스 채널 보도',
+    speakerType: 'industry',
+    date: '2026-11-05',
+    duration: '19:47',
+    summary: 'AI时代中人文科学教育对年轻新加坡人的重要性分析。',
+    summaryEn: 'Analysis of why humanities education matters for young Singaporeans in the age of AI.',
+    summaryJa: 'AI時代における若いシンガポール人にとって人文科学教育の重要性の分析。',
+    summaryKo: 'AI 시대의 인문학 교육이 젊은 싱가포르인에게 가지는 중요성 분석',
+    whyItMatters: 'CNA 将人文学科重新定位为应对 AI 冲击的能力，提示新加坡若只重理工科培养将留下人才缺口',
+    whyItMattersEn:
+      'CNA repositions humanities as the capability to address AI impact, signalling that Singapore will face a talent shortage if education focuses only on STEM.',
+    whyItMattersJa:
+      'CNA は人文学科を AI 衝撃への対応能力として再位置づけし、シンガポールが理工系教育のみを重視した場合、人材不足が生じるだろうと示唆しています。',
+    whyItMattersKo:
+      'CNA는 인문학을 AI 충격에 대응하는 역량으로 새로이 정위하고 있으며, 싱가포르가 이공계 교육만 중시할 경우 인재 공백이 발생할 것을 시사합니다.',
+    topic: 'AI 人才与教育',
+    topicEn: 'AI Talent & Education',
+    topicJa: 'AI 人材と教育',
+    topicKo: 'AI 인재와 교육',
+    youtubeUrl: 'https://www.youtube.com/watch?v=mbFpeLSat6U',
+    channel: 'CNA',
+    addedAt: '2026-11-06',
+  },
+  {
+    id: 'v135',
+    title: '新加坡数据中心对居民的影响',
+    titleEn: 'Do data centres affect Singaporeans?',
+    titleJa: 'シンガポールのデータセンターが居住者に与える影響',
+    titleKo: '싱가포르 데이터 센터가 주민에 미치는 영향',
+    speaker: 'The Straits Times',
+    speakerTitle: '海峡时报报道',
+    speakerTitleEn: 'The Straits Times report',
+    speakerTitleJa: 'ストレーツ・タイムズの報道',
+    speakerTitleKo: '스트레이츠 타임즈 보도',
+    speakerType: 'industry',
+    date: '2026-11-05',
+    duration: '02:55',
+    summary: '新加坡数据中心行业占用电量10%。调查发现其带来噪音和水污染问题,政府计划加强监管。',
+    summaryEn:
+      "Data centres use 10% of Singapore's electricity and face environmental concerns. The Straits Times investigates noise and pollution issues and how the Government plans to regulate the industry.",
+    summaryJa:
+      'シンガポールのデータセンター産業は電力消費量の10%を占めています。調査により、騒音と水汚染の問題が生じていることが明らかになりました。政府は規制を強化することを計画しています。',
+    summaryKo:
+      '싱가포르 데이터 센터 산업은 전력 사용량의 10%를 차지합니다. 조사에 따르면 소음과 수질 오염 문제를 초래하고 있으며, 정부는 규제 강화를 계획하고 있습니다.',
+    whyItMatters: '数据中心占电力 10% 且持续攀升，监管趋严将成为新加坡 AI 算力扩张的第一道刹车',
+    whyItMattersEn:
+      "Data centres account for 10% of electricity and continue to rise; tightening regulation will become the first brake on Singapore's AI computing-power expansion.",
+    whyItMattersJa:
+      'データセンターが電力の 10% を占め、かつ継続的に増加しており、規制強化がシンガポール AI 算力拡張の第一の制限要因となるでしょう。',
+    whyItMattersKo:
+      '데이터 센터가 전력의 10%를 차지하고 있으며 계속 증가하는 가운데, 규제 강화가 싱가포르의 AI 컴퓨팅 파워 확장에 대한 첫 번째 제약이 될 것입니다.',
+    topic: 'AI 治理与监管',
+    topicEn: 'AI Governance & Regulation',
+    topicJa: 'AI ガバナンスと規制',
+    topicKo: 'AI 거버넌스와 규제',
+    youtubeUrl: 'https://www.youtube.com/watch?v=3jePyh6Vcjg',
+    channel: 'The Straits Times',
+    addedAt: '2026-11-06',
+  },
+  {
+    id: 'v136',
+    title: '通过AIAP基金会为学徒计划做准备',
+    titleEn: 'How AIAP Foundation Prepared Me For AIAP',
+    titleJa: 'AIAPを通じたアプレンティスシップ・プログラムの準備',
+    titleKo: 'AIAP 재단을 통한 견습 프로그램 준비',
+    speaker: 'David',
+    speakerTitle: 'AIAP基金会学员',
+    speakerTitleEn: 'AIAP Foundation learner',
+    speakerTitleJa: 'AIAP受講生',
+    speakerTitleKo: 'AIAP 재단 학습자',
+    speakerType: 'academic',
+    date: '2026-11-04',
+    duration: '00:54',
+    summary: 'David通过AIAP基金会学习，建立了人工智能和机器学习基础，为参加学徒计划做准备。',
+    summaryEn:
+      'David shares how AIAP Foundation helped him build strong technical foundations in AI and Machine Learning to prepare for the AI Apprenticeship Programme.',
+    summaryJa:
+      'ダビッドはAIAPを通じて学習し、AIと機械学習の基礎を構築し、アプレンティスシップ・プログラムに参加するための準備をしています。',
+    summaryKo:
+      'David는 AIAP 재단을 통해 인공지능과 기계 학습의 기초를 다졌으며, 견습 프로그램에 참가하기 위한 준비를 완료했습니다.',
+    whyItMatters: 'AIAP 基金会的加入,暴露出学徒计划存在技术门槛,预备阶段正成为 AI Singapore 人才漏斗的新关卡',
+    whyItMattersEn:
+      "The AIAP Foundation's entry exposes technical barriers within the apprenticeship programme; the preparation phase is becoming a new bottleneck in AI Singapore's talent funnel.",
+    whyItMattersJa:
+      'AIAP 財団の参入により、アプレンティスシップ・プログラムに技術的障壁が存在することが露呈され、準備段階が AI Singapore 人材ファネルの新たな関門となりつつあります。',
+    whyItMattersKo:
+      'AIAP 재단의 참여로 견습 프로그램의 기술적 진입 장벽이 드러났으며, 예비 단계가 AI Singapore 인재 파이프라인의 새로운 관문이 되고 있습니다.',
+    topic: 'AI 人才与教育',
+    topicEn: 'AI Talent & Education',
+    topicJa: 'AI 人材と教育',
+    topicKo: 'AI 인재와 교육',
+    youtubeUrl: 'https://www.youtube.com/watch?v=ajOhuVDZ0g8',
+    channel: 'AI Singapore',
+    addedAt: '2026-11-06',
+  },
+  {
     id: 'v132',
     title: '新加坡推出660辆电动巴士,试验AI交通灯',
     titleEn: 'Singapore deploys 660 electric buses, trials AI traffic lights',
