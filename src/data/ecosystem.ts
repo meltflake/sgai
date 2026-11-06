@@ -9521,6 +9521,37 @@ Outside Singapore, it is building large-scale power infrastructure for data cent
         updated: '2026-08-31',
         addedAt: '2026-09-07',
       },
+      // i18n-allow-unpaired — auto-discovered stub; complete required fields on promotion
+      {
+        id: 'visa',
+        name: 'Visa',
+        nameEn: 'Visa',
+        nameJa: 'Visa',
+        nameKo: 'Visa',
+        description:
+          'Visa在新加坡建立六个全球技术能力中心，Paya Lebar Green新中心配置约1500名员工。中心将专注于代理型人工智能、下一代支付体系（包括数字货币和稳定币）及信任商务。在新加坡开发的技术和解决方案将部署至Visa全球网络，推动数字支付生态的演进。',
+        descriptionEn:
+          "Visa will establish six global tech hubs in Singapore, with 1,500 staff at its Paya Lebar Green centre. The hubs will focus on agentic artificial intelligence, next-generation payments including digital money and stablecoins, and trusted commerce. Technologies and solutions developed in Singapore will deploy across Visa's global network to advance digital payment ecosystems.",
+        descriptionJa:
+          'Visaはシンガポールに6つのグローバル技術能力センターを設立しました。パヤ・レバル・グリーンの新センターには約1,500名の従業員がいます。このセンターはエージェント型AI、次世代決済システム（デジタル通貨とステーブルコインを含む）、および信頼商取引に焦点を当てます。シンガポールで開発された技術とソリューションはVisaのグローバルネットワークに展開され、デジタル決済エコシステムの進化を促進します。',
+        descriptionKo:
+          'Visa는 싱가포르에 여섯 개의 글로벌 기술 역량 센터를 설립했습니다. Paya Lebar Green의 새로운 센터에는 약 1,500명의 직원이 배치되어 있습니다. 센터는 에이전트형 인공지능, 차세대 결제 시스템(디지털 화폐와 스테이블코인 포함), 신뢰 상거래에 중점을 두게 됩니다. 싱가포르에서 개발한 기술 및 솔루션은 Visa의 글로벌 네트워크에 배포되어 디지털 결제 생태계의 발전을 촉진하게 됩니다.',
+        url: 'https://www.businesstimes.com.sg/companies-markets/visa-sets-six-global-tech-hubs-singapore-1500-staff-new-paya-lebar-centre',
+        entityType: 'partner',
+        status: 'active',
+        sources: [
+          // i18n-allow-unpaired — provenance for the pending-review stub above
+          {
+            label: 'Business Times Tech',
+            url: 'https://www.businesstimes.com.sg/companies-markets/visa-sets-six-global-tech-hubs-singapore-1500-staff-new-paya-lebar-centre',
+            date: '2026-11-05',
+          },
+        ],
+        updated: '2026-11-06',
+        _pendingReview: true,
+        discoveryNote:
+          'Auto-discovered via Business Times Tech; headline: "Visa establishes six global tech hubs in Singapore with 1,500 staff at Paya Lebar centre"; confidence=high; entity=high',
+      },
     ],
   },
 ];
