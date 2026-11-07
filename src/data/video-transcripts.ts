@@ -13646,6 +13646,36 @@ export const videoTranscripts: Record<string, VideoTranscript> = {
     translationSource: 'claude',
     translationModel: 'haiku',
   },
+  v137: {
+    videoId: 'v137',
+    youtubeId: 'ILuEe2AlucA',
+    captionLanguage: 'en',
+    fetchedAt: '2026-11-07',
+    source: 'youtube-subtitles',
+    paragraphs: [
+      '新加坡股市随着其他亚洲市场急剧下跌，投资者对人工智能估值过高和美国监管收紧的担忧打压了市场情绪。海峡时报指数是新加坡交易所的关键基准，未能保持在昨日收盘附近，在5,138至5,199之间波动后，以5,179收盘。你在屏幕上看到的这个数字下跌了2.2%。扬子江造船业是受打击最严重的。它下跌6.45%，以4.35美元收盘。新加坡ST工程公司下跌5.51%，以9.26美元收盘。吉宝下跌4.93%至9.45美元。新加坡三大银行——星展、华侨银行和大华银行均下跌。星展下跌2.08%，以69.72美元收盘。华侨银行随后下跌0.72%至27.73美元。大华银行下跌2.46%，以36.88美元收盘。',
+      '现在，作为按市值计算STI中权重最大的三大成分股，银行是指数的关键锚点。新加坡绝不是免疫的。据我们现在的了解，市场今天下跌约3%，但需要理解的是，亚洲还有其他市场下跌幅度甚至更大。所以新加坡是相对的跑赢者。新加坡为什么是跑赢者？因为这个市场上产生收益的股票比例很高。我们把股息收益率视为新加坡的首要考虑因素。新加坡的货币也比其他一些货币强大得多。亚洲科技密集型经济体承受了这次抛售的冲击，韩国的KOSPI指数在某个时刻跌近9%，触发了交易的临时暂停。',
+      '日本和台湾的基准指数跌入熊市领域，那是指价格从近期高位下跌20%或更多时的情况。现在该地区一些最大的科技公司遭受了重创，韩国的三星电子和SK海力士在早盘交易中跌幅超过10%。转向台湾，世界最大的芯片代工制造商台积电在交易开始后不久触及其10%的跌停板。',
+    ],
+    paragraphsEn: [
+      "Singapore's stocks fell sharply along with other Asian markets as concerns over lofty AI valuations and tighter US regulation weighed on investor sentiment today. The Straits Times Index, a key benchmark for that the Singapore Exchange, failing to stay near yesterday's close as it ranged between around 5,138 and 5,199 before ending the session at 5,179. 17 you see there on your screen and that is down 2. 2%. A Yangzijiang Shipbuilding was among the hardest hit. It fell 6. 45% to close at $4. 35. SG ST Engineering, well that shed 5. 51% to close at $9. 26. Keppel dropped 4. 93% to $9. 45. Singapore's three major banks, DBS, OCBC and UOB ended lower. DBS falling 2. 08% to close at $69. 72. OCBC next slipping 0. 72% to $27. 73. UOB dipped 2. 46% to end at $36. 88.",
+      "Now as the three largest constituents of the STI by market weight, the banks are key anchors of the index. >> Singapore is by no means immune. The market's down as we speak about 3% today, but it needs to be understood that there are other markets in Asia with which have fallen even to a to an even greater degree today. So Singapore is a relative outperformer. Why is Singapore an outperformer? Because the very high degree of income generating stocks on this market. We have dividend yield as a paramount consideration in Singapore. Singapore's currency is also a lot stronger than some of the other currencies. >> Tech-heavy economies in Asia bore the brunt of the rout, South Korea's KOSPI plunging almost 9% at one point, triggering a temporary halt in trading.",
+      "Benchmarks for Japan and Taiwan falling into bear market territory, and that's when prices fall by 20% or more from a recent high. Now some of the region's biggest tech names took heavy hits, South Korea's Samsung Electronics and SK Hynix plunging more than 10% in early trade. Over to Taiwan, the world's largest contract chip maker TSMC hits its 10% lower limit shortly after trading began.",
+    ],
+    paragraphsKo: [
+      '싱가포르 주식시장이 다른 아시아 시장들과 함께 급락했으며, 인공지능 밸류에이션 과다에 대한 우려와 미국 규제 강화 우려가 시장 심리를 눌렀습니다. 싱가포르 거래소의 핵심 지수인 스트레이츠 타임스 지수(STI)는 전일 종가 근처를 유지하지 못했으며, 5,138~5,199 사이에서 변동한 후 5,179로 마감했습니다. 화면에 보이는 이 수치는 2.2% 하락했습니다. 양자강 조선이 가장 큰 타격을 받았습니다. 6.45% 하락하여 달러당 4.35로 마감했습니다. 싱가포르의 ST Engineering은 5.51% 하락하여 달러당 9.26으로 마감했습니다. Keppel은 4.93% 하락하여 달러당 9.45로 떨어졌습니다. 싱가포르의 3대 은행인 DBS, OCBC, UOB가 모두 하락했습니다. DBS는 2.08% 하락하여 달러당 69.72로 마감했습니다. 다음으로 OCBC는 0.72% 하락하여 달러당 27.73으로 떨어졌습니다. UOB는 2.46% 하락하여 달러당 36.88로 마감했습니다.',
+      'STI의 시가총액 기준 최고 가중치를 차지하는 3대 구성 종목인 은행들은 이 지수의 핵심 앵커입니다. 싱가포르도 결코 면역이 아닙니다. 우리가 현재 파악한 바로는 이 시장이 오늘 약 3% 하락했지만, 아시아의 다른 시장들은 더 크게 하락했습니다. 따라서 싱가포르는 상대적으로 더 좋은 실적을 냈습니다. 싱가포르는 왜 상대적으로 더 좋은 성과를 냈을까? 이 시장에서 수익을 창출하는 주식의 비중이 높기 때문입니다. 우리는 배당 수익률을 싱가포르의 주요 고려 요소로 봅니다. 싱가포르의 통화도 다른 여러 통화보다 훨씬 강세를 유지하고 있습니다. 아시아의 기술 집약형 경제가 이번 매도의 충격을 받았으며, 한국의 KOSPI 지수는 어느 순간 거의 9% 하락하여 거래 중단을 초래했습니다.',
+      '일본과 대만의 기준 지수가 약세장 영역으로 진입했으며, 이는 가격이 최근 고점에서 20% 이상 하락한 경우를 의미합니다. 현재 이 지역의 주요 기술 기업들이 큰 타격을 입었으며, 한국의 삼성전자와 SK하이닉스는 장초 거래에서 10% 이상 하락했습니다. 대만의 상황을 보면, 세계 최대 반도체 위탁생산업체 TSMC는 거래 개시 직후 10% 낙폭제한선에 닿았습니다.',
+    ],
+    paragraphsJa: [
+      'シンガポール株式市場は他のアジア市場の急落に伴い、AIの評価が過度に高いことおよび米国規制強化についての懸念が市場心理を圧迫しました。ストレーツ・タイムズ指数はシンガポール取引所の主要ベンチマークですが、昨日の終値付近を保つことができず、5,138～5,199の間で上下動した後、5,179で終わりました。画面に表示されるこの数字は2.2%下落しました。ヤンツーチアン造船が最も大きな打撃を受けました。6.45%下落し、4.35米ドルで終わりました。シンガポールのST エンジニアリング社は5.51%下落し、9.26米ドルで終わりました。キーペルは4.93%下落して9.45米ドルになりました。シンガポール三大銀行――DBS銀行、OCBC銀行、UOB銀行――はすべて下落しました。DBS銀行は2.08%下落し、69.72米ドルで終わりました。その後、OCBC銀行は0.72%下落して27.73米ドルになりました。UOB銀行は2.46%下落し、36.88米ドルで終わりました。',
+      '現在、STI内で時価総額加重で最大の3つの構成銘柄として、銀行セクターは指数の主要アンカーです。シンガポールは決して免疫ではありません。現在の理解によれば、市場は本日約3%下落していますが、理解すべき点は、アジアには他の市場でさらに大幅な下落が見られることです。したがって、シンガポールは相対的なアウトパフォーマーです。シンガポールはなぜアウトパフォーマーなのでしょうか？それは、この市場における配当利回り株の割合が非常に高いためです。配当利回りをシンガポール投資の主要な考慮要因として捉えています。また、シンガポール・ドルは他のいくつかの通貨よりもはるかに強いです。アジアのテック集約型経済はこの売却の影響を大きく受けました。韓国のサムスン電子とSK ハイニックスは早場の取引で10%を超える下落を記録しました。',
+      '日本と台湾のベンチマーク指数はベアマーケット領域に突入しました。それは価格が最近の高値から20%以上下落する場合を指しています。現在、該地域の最大級のテック企業の一部が大きな打撃を受けています。韓国のサムスン電子とSK ハイニックスは早場の取引で10%を超える下落を記録しました。台湾に目を向けると、世界最大の半導体受託製造企業TSMCは、取引開始直後に10%の値幅制限に到達しました。',
+    ],
+    translatedAt: '2026-11-07',
+    translationSource: 'claude',
+    translationModel: 'haiku',
+  },
 };
 
 export function getVideoTranscript(videoId: string): VideoTranscript | undefined {
