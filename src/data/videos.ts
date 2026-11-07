@@ -145,6 +145,40 @@ export function pickSpeakerTypeLabels(lang: string): Record<string, string> {
 
 export const videos: VideoItem[] = [
   {
+    id: 'v137',
+    title: '新加坡股市因AI估值和美国监管收紧而下跌',
+    titleEn: 'Singapore stocks fall on AI valuation and US regulation concerns',
+    titleJa: 'シンガポール株式市場がAI評価と米国の規制強化により下落しました。',
+    titleKo: '싱가포르 주식 시장이 AI 밸류에이션과 미국 규제 강화로 인해 하락했습니다.',
+    speaker: 'CNA',
+    speakerTitle: '亚洲新闻台报道',
+    speakerTitleEn: 'CNA report',
+    speakerTitleJa: 'アジアニュース放送による報道',
+    speakerTitleKo: '아시아 뉴스 채널 보도',
+    speakerType: 'industry',
+    date: '2026-11-06',
+    duration: '02:45',
+    summary: '新加坡股市因AI估值过高和美国科技监管收紧而下跌。',
+    summaryEn:
+      'Singapore stock market declines amid concerns about AI company valuations and tightening US technology regulation.',
+    summaryJa: 'シンガポール株式市場がAI銘柄の過度な評価と米国の科学技術規制強化により下落しました。',
+    summaryKo: '싱가포르 주식 시장이 과도한 AI 밸류에이션과 미국의 기술 규제 강화로 인해 하락했습니다.',
+    whyItMatters: '11月6日股市下跌，暴露新加坡科技板块仍深度绑定美股 AI 估值与美国监管周期',
+    whyItMattersEn:
+      "November 6 stock market decline exposes Singapore's technology sector remains deeply bound to US stock market AI valuations and US regulatory cycle",
+    whyItMattersJa:
+      '11月6日の株式市場下落により、シンガポール技術セクターが米国株のAI評価および米国規制周期に依然として深く結びついていることが明らかになりました。',
+    whyItMattersKo:
+      '11월 6일 주식시장 하락으로 싱가포르 기술 부문이 여전히 미국 주식의 AI 밸류에이션과 미국 규제 주기에 깊이 연결되어 있다는 점이 드러났습니다.',
+    topic: 'AI 治理与监管',
+    topicEn: 'AI Governance & Regulation',
+    topicJa: 'AI ガバナンスと規制',
+    topicKo: 'AI 거버넌스와 규제',
+    youtubeUrl: 'https://www.youtube.com/watch?v=ILuEe2AlucA',
+    channel: 'CNA',
+    addedAt: '2026-11-07',
+  },
+  {
     id: 'v132',
     title: '新加坡推出660辆电动巴士,试验AI交通灯',
     titleEn: 'Singapore deploys 660 electric buses, trials AI traffic lights',
