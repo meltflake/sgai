@@ -46,6 +46,28 @@ export interface Signal {
 
 export const signals: Signal[] = [
   {
+    id: 'sig-20261104-mddi-ai-incident-reporting-framework',
+    date: '2026-11-04',
+    title: 'IMDA 与 CSA 研究自主 AI 事故强制报告机制',
+    titleEn: 'IMDA and CSA research mandatory autonomous AI incident reporting mechanism',
+    titleJa: 'IMDA・CSA 自律AI事故の強制報告制度研究',
+    titleKo: 'IMDA와 CSA, 자율 AI 사고 강제 보고 체계 연구',
+    whyItMatters:
+      'IMDA 与 CSA 承认现行个人数据、网络安全报告制度未覆盖自主 AI 近失事故，但 11 月 4 日的答复仍停留在研究而非修法承诺',
+    whyItMattersEn:
+      'IMDA and CSA acknowledge that existing personal data and cybersecurity reporting systems do not cover autonomous AI near-miss incidents, but the 4 November response remains at the research stage rather than a commitment to amend legislation.',
+    whyItMattersJa:
+      'IMDA と CSA は、現行の個人データ・サイバーセキュリティ報告制度が自律 AI のニアミス事案をカバーしていないことを認めています。しかし、11月4日の回答は、依然として研究段階にとどまっており、法律改正への約束ではありません。',
+    whyItMattersKo:
+      'IMDA와 CSA는 현행 개인 데이터 및 사이버보안 보고 제도가 자율형 인공지능 근접 사건을 포괄하지 못함을 인정했지만, 11월 4일의 답변은 여전히 연구 단계에 머물러 있으며 법안 개정을 약속하지 않았습니다.',
+    sourceUrl:
+      'https://www.mddi.gov.sg/newsroom/mddi-s-response-to-pq-on-reporting-of-serious-and-near-miss-incidents-involving-autonomous-ai-systems/',
+    sourceName: 'MDDI',
+    topicIds: ['governance-regulation', 'safety-ethics', 'national-security'],
+    related: [{ kind: 'startup', id: 'near' }],
+    addedAt: '2026-11-11',
+  },
+  {
     id: 'sig-20261103-ipos-gemgpt-openai-trademark-ruling',
     date: '2026-11-03',
     title: 'IPOS 裁定 OpenAI 商标异议败诉 GemGPT 过关',
