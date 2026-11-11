@@ -13646,6 +13646,32 @@ export const videoTranscripts: Record<string, VideoTranscript> = {
     translationSource: 'claude',
     translationModel: 'haiku',
   },
+  v138: {
+    videoId: 'v138',
+    youtubeId: 'wdYwDLoqpzA',
+    captionLanguage: 'en-orig',
+    fetchedAt: '2026-11-11',
+    source: 'youtube-subtitles',
+    paragraphs: [
+      '我尝试过三次AIAP TA，第一次甚至没能完成。在AAP之前，我在生命科学行业工作。我的工作逐渐需要越来越多的数据分析，我意识到我可以用它做更多事情。这随后激发了我对AI的兴趣。AAP的培训项目涵盖了核心AI和ML领域，我将从事一个真实的行业项目。AIAP的选拔过程让我害怕。不过，很明显这是我的下一步。第15批，我看到了TA，不确定我能否通过。所以，我设定了一个更小的目标，至少尝试一下。第16批，我完成了。虽然不完美，但我在等待结果期间一直在学习。第17批，我通过了面试。现在我在新加坡工作，指导这些学员。第一次没有成功？再试一次。从小开始，坚持下去。我就是这样做的。',
+      '看看我现在的位置。',
+    ],
+    paragraphsEn: [
+      "I attempted the AIAP TA three times and the first time I couldn't even finish it. Before AAP, I was in the life sciences industry. My work gradually required more and more data analysis and realized I could do more with it. That subsequently sparked my interest in AI. AAP's training program cover core AI ML domains and I would work on a real world industry project. The AIAP selection process scared me. Still, it was clear this was my next step. Batch 15, I saw the TA and wasn't confident I'll pass. So, I set a smaller goal to at least attempt it. Batch 16, I completed it. Not perfect, but I kept learning while I waited for results. Batch 17, I got through to the interview and passed. Now I'm here working in Singapore mentoring at the apprentices. Didn't make it for the first time? Try again. Start small, keep going. I did.",
+      'Look where I am today.',
+    ],
+    paragraphsKo: [
+      '저는 AIAP TA에 세 번 시도했으며, 첫 번째는 심지어 완료하지 못했습니다. AAP 이전에 저는 생명과학 업계에서 근무했습니다. 업무에서 데이터 분석의 필요성이 점차 증가했고, 이를 통해 더 많은 일을 할 수 있다는 점을 깨달았습니다. 이는 그 후 AI에 대한 관심을 불태웠습니다. AAP 훈련 프로그램은 핵심 AI 및 ML 분야를 다루었으며, 저는 실제 산업 프로젝트에 참여하게 될 것입니다. AIAP의 선발 과정은 저를 두렵게 했습니다. 그러나 명백히 이것이 제 다음 단계였습니다. 15번째 배치에서 저는 TA를 보았고, 통과할 수 있을지 확실하지 않았습니다. 따라서 더 작은 목표를 설정하여 최소한 시도해 보기로 했습니다. 16번째 배치에서 저는 완료했습니다. 완벽하지는 않았지만, 결과를 기다리는 동안 계속 배웠습니다. 17번째 배치에서 저는 면접을 통과했습니다. 현재 저는 싱가포르에서 근무 중이며, 이 학습자들을 지도하고 있습니다. 첫 번째에 성공하지 못했습니까? 다시 시도하십시오. 작게 시작하고 계속하십시오. 저는 그렇게 했습니다.',
+      '현재 제 위치를 보십시오.',
+    ],
+    paragraphsJa: [
+      '私はAIAP TAを3回試しました。最初は完了することさえできませんでした。AAP以前は、生命科学業界で働いていました。仕事は次第により多くのデータ分析を必要とするようになりました。それを使ってもっと多くのことができることに気づきました。その後、AIへの関心が刺激されました。AAPの研修プログラムはコアAIおよびML分野をカバーしており、実在の業界プロジェクトに携わることになりました。AIAPの選抜過程は私を怖がらせました。しかし、これが自分の次のステップであることは明らかでした。第15期では、TAを見かけ、合格できるかどうか確実ではありませんでした。そこで、少なくとも試してみるというより小さな目標を設定しました。第16期では、完了しました。完璧ではありませんでしたが、結果を待つ間、ずっと学習し続けていました。第17期では、面接に合格しました。今、私はシンガポールで働き、これらの研修生を指導しています。最初に成功しなかったのですか？もう一度試してください。小さく始めて、続けてください。それが私のやり方です。',
+      '今の私の位置を見てください。',
+    ],
+    translatedAt: '2026-11-11',
+    translationSource: 'claude',
+    translationModel: 'haiku',
+  },
 };
 
 export function getVideoTranscript(videoId: string): VideoTranscript | undefined {
