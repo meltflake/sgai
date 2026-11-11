@@ -145,6 +145,42 @@ export function pickSpeakerTypeLabels(lang: string): Record<string, string> {
 
 export const videos: VideoItem[] = [
   {
+    id: 'v138',
+    title: '三次尝试进入AIAP',
+    titleEn: 'It Took Three Tries to Get Into AIAP',
+    titleJa: 'AIAPへの3度のチャレンジ',
+    titleKo: 'AIAP에 진입하기 위한 세 번의 시도',
+    speaker: 'Guan Ling',
+    speakerTitle: 'AIAP第17期学员及导师',
+    speakerTitleEn: 'AIAP Batch 17 participant and mentor',
+    speakerTitleJa: 'AIAP第17期の学員及びメンター',
+    speakerTitleKo: 'AIAP 제17기 참여자 및 멘토',
+    speakerType: 'academic',
+    date: '2026-11-10',
+    duration: '00:52',
+    summary: '关玲经历三次尝试才成功进入AIAP第17期，现在帮助指导其他参与者。',
+    summaryEn:
+      'After three attempts and struggles with the technical assessment, Guan Ling earned a place in AIAP Batch 17, where he now mentors others.',
+    summaryJa:
+      'グアンリンはAIAP第17期への参加に3度の試行を経験した後、やっと成功し、現在は他の参加者の指導を支援しています。',
+    summaryKo:
+      'Guan Ling은 세 번의 시도를 거쳐 AIAP 제17기에 성공적으로 진입했으며, 현재 다른 참여자들을 지도하고 있습니다.',
+    whyItMatters: '三次尝试才入围 AIAP 第 17 期的关玲转而成为导师，显示 AI Singapore 正构建学员反哺学员的人才培养闭环',
+    whyItMattersEn:
+      'Guan Ling was admitted to the 17th AIAP cohort only after three attempts and subsequently became a mentor, showing that AI Singapore is building a closed-loop talent development ecosystem where learners give back to learners.',
+    whyItMattersJa:
+      'AIAP第17期への入選に3度の試行を経たクアンリンが、次はメンターに転身した。これはAI Singaporeが、学員による学員への人材育成という好循環を構築していることを示しています。',
+    whyItMattersKo:
+      '세 번의 시도 끝에 AIAP 제 17 기에 입선한 관링이 이제 멘토가 되어, AI Singapore가 학생들이 학생들을 양성하는 인재 육성의 선순환을 구축하고 있음을 보여주고 있습니다.',
+    topic: 'AI 人才与教育',
+    topicEn: 'AI Talent & Education',
+    topicJa: 'AI 人材と教育',
+    topicKo: 'AI 인재와 교육',
+    youtubeUrl: 'https://www.youtube.com/watch?v=wdYwDLoqpzA',
+    channel: 'AI Singapore',
+    addedAt: '2026-11-11',
+  },
+  {
     id: 'v132',
     title: '新加坡推出660辆电动巴士,试验AI交通灯',
     titleEn: 'Singapore deploys 660 electric buses, trials AI traffic lights',
