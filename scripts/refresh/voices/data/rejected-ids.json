@@ -65,6 +65,16 @@
     "date": "2024-10-15",
     "decidedAt": "2026-11-04"
   },
+  "closing-speech-by-s-iswaran-2nd-reading-eta-bill": {
+    "reason": "pre-floor",
+    "date": "2021-02-01",
+    "decidedAt": "2026-11-11"
+  },
+  "mas--building-trusted-foundations-for-digital-finance": {
+    "reason": "non-ai",
+    "decidedAt": "2026-11-11",
+    "note": "The speech focuses entirely on digital finance infrastructure—tokenization, digital assets, stablecoins, CBDCs, distribu"
+  },
   "mas--edqp-reawakening-2026-unlocking-the-next-value-up-cycle-for-singapore-equities": {
     "reason": "non-ai",
     "decidedAt": "2026-08-10",
@@ -334,6 +344,11 @@
     "reason": "pre-floor",
     "date": "2025-10-06",
     "decidedAt": "2026-08-24"
+  },
+  "moh--community-support-services-to-address-gaming-disorder-among-young-adults": {
+    "reason": "non-ai",
+    "decidedAt": "2026-11-11",
+    "note": "The speech addresses gaming addiction public health policy and app-store regulatory measures but does not substantively "
   },
   "moh--cos-speech-by-minister-for-health-gan-kim-yong-better-health-for-all-part-1-of-2-12-march-2013": {
     "reason": "pre-floor",
