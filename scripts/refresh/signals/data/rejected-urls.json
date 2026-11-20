@@ -376,5 +376,23 @@
     "reason": "non-sg",
     "decidedAt": "2026-11-05",
     "ref": "score 2: This is a China-focused feature on Tencent's competitive position in the AI race, with no Singapore content and no specific policy, funding, or deployment event."
+  },
+  {
+    "url": "https://www.mddi.gov.sg/newsroom/mddi-s-response-to-pq-on-assessment-of-risk-of-ai-systems-replicating-across-internet-connected-devices-in-singapore/",
+    "reason": "low-signal",
+    "decidedAt": "2026-11-11",
+    "ref": "score 3: A routine parliamentary Q&A reiterating existing cybersecurity measures rather than announcing any new AI policy or rule"
+  },
+  {
+    "url": "https://www.mddi.gov.sg/newsroom/mddi-s-response-to-pq-on-changes-in-entry-level-hiring-for-software-engineering-and-other-technology-role-arising-from-ai-adoption/",
+    "reason": "low-signal",
+    "decidedAt": "2026-11-11",
+    "ref": "score 3: A routine parliamentary Q&A restating existing IMDA/SWDA programmes on tech hiring, not a new policy, funding, or regulation."
+  },
+  {
+    "url": "https://www.mddi.gov.sg/newsroom/mddi-s-response-to-pq-on-establishing-singapore-as-global-leader-in-agentic-ai-security-and-assurance/",
+    "reason": "low-signal",
+    "decidedAt": "2026-11-11",
+    "ref": "score 3: A parliamentary reply reiterating existing AI Verify accreditation and ISO/IEC 42119-8 contribution with no new programme or commitment announced."
   }
 ]

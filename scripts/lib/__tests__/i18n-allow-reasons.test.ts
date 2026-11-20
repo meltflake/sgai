@@ -35,6 +35,8 @@ const EXPECTED = {
   'about-prose-en-fallback': { attr: 'data-i18n-allow-en', langs: ['ko'] },
   // Machine-interface samples on /agent/ — ASCII curl / URL / JSON blocks,
   // identical in every locale. Scoped to the four non-en locales, NOT 'all'.
+  // Employer names reproduce the legal names in MyCareersFuture records.
+  'employer-legal-name': { attr: 'data-i18n-allow-en', langs: ['zh', 'zh-tw', 'ja', 'ko'] },
   'agent-api-sample': { attr: 'data-i18n-allow-en', langs: ['zh', 'zh-tw', 'ja', 'ko'] },
 };
 
