@@ -10624,5 +10624,25 @@
     "reason": "pre-floor",
     "date": "2016-11-09",
     "decidedAt": "2026-08-03"
+  },
+  "closing-speech-by-s-iswaran-2nd-reading-eta-bill": {
+    "reason": "pre-floor",
+    "date": "2021-02-01",
+    "decidedAt": "2026-11-06"
+  },
+  "mas--opening-address-by-mr-marcus-lim-amd-mas-at-the-gaip-insurance-case-competition-2026-dinner": {
+    "reason": "non-ai",
+    "decidedAt": "2026-11-06",
+    "note": "The speech focuses on insurance protection gaps and consumer behaviour; AI is mentioned once in line 29 as one of severa"
+  },
+  "moh--community-support-services-to-address-gaming-disorder-among-young-adults": {
+    "reason": "non-ai",
+    "decidedAt": "2026-11-06",
+    "note": "Document addresses gaming disorder prevention and youth support services through counselling programs and app store age-"
+  },
+  "mas--building-trusted-foundations-for-digital-finance": {
+    "reason": "non-ai",
+    "decidedAt": "2026-11-11",
+    "note": "The speech focuses entirely on digital finance infrastructure—tokenization, digital assets, stablecoins, CBDCs, distribu"
   }
 }

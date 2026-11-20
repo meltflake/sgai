@@ -103,5 +103,7 @@ export const ALLOW_REASONS = {
   // break it, so there is nothing to localize and nothing to leak. Scoped to
   // the four non-en locales, NOT 'all': on /agent/ (en) the component omits
   // the marker entirely, so seeing it on an EN page would mean a bug.
+  // Employer names reproduce the legal names in MyCareersFuture records.
+  'employer-legal-name': { attr: 'data-i18n-allow-en', langs: ['zh', 'zh-tw', 'ja', 'ko'] },
   'agent-api-sample': { attr: 'data-i18n-allow-en', langs: ['zh', 'zh-tw', 'ja', 'ko'] },
 };

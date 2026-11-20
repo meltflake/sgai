@@ -46,6 +46,26 @@ export interface Signal {
 
 export const signals: Signal[] = [
   {
+    id: 'sig-20261104-mddi-ai-incident-reporting-framework',
+    date: '2026-11-04',
+    title: 'IMDA 与 CSA 研究加强 AI 事故报告',
+    titleEn: 'IMDA and CSA study stronger AI incident reporting',
+    titleJa: 'IMDAとCSAがAI事故報告の強化を検討',
+    titleKo: 'IMDA와 CSA, AI 사고 보고 강화 검토',
+    whyItMatters: '部分 AI 事故可能未达现行报告门槛。两机构正研究额外报告或信息共享安排。',
+    whyItMattersEn:
+      'Some AI incidents may fall below existing reporting thresholds. The agencies are studying additional reporting or information sharing.',
+    whyItMattersJa:
+      '一部のAI事故は現行の報告基準に達しない可能性があります。両機関は追加報告や情報共有を検討しています。',
+    whyItMattersKo:
+      '일부 AI 사고는 현행 보고 기준에 미달할 수 있습니다. 두 기관은 추가 보고나 정보 공유를 검토하고 있습니다.',
+    sourceUrl:
+      'https://www.mddi.gov.sg/newsroom/mddi-s-response-to-pq-on-reporting-of-serious-and-near-miss-incidents-involving-autonomous-ai-systems/',
+    sourceName: 'MDDI',
+    topicIds: ['governance-regulation', 'safety-ethics', 'national-security'],
+    addedAt: '2026-11-11',
+  },
+  {
     id: 'sig-20261103-ipos-gemgpt-openai-trademark-ruling',
     date: '2026-11-03',
     title: 'IPOS 裁定 OpenAI 商标异议败诉 GemGPT 过关',
