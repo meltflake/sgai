@@ -270,6 +270,11 @@
   "editorialComment": "src/data/*.ts files with NO refresh pipeline that are legitimately human-edited or derived. coverage-audit treats these as accounted-for. Adding a new data file means either giving some pipeline a `targets` entry for it or adding it here with a reason.",
   "editorial": [
     {
+      "file": "src/data/fieldnotes.ts",
+      "reason": "研究摘要，research-digest 管线 2026-11-24 停用后不再自动更新；需要时手动运行 scripts/refresh/research-digest/run.ts",
+      "owner": "editorial"
+    },
+    {
       "file": "src/data/timeline.ts",
       "reason": "大事年表，半事件半编辑，重大里程碑时手动追加",
       "owner": "editorial"
