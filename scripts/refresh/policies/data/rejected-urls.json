@@ -34,5 +34,29 @@
     "reason": "off-topic",
     "decidedAt": "2026-11-20",
     "ref": "PR #402 review: historical 2017 speech, not a new policy document. The summary also assigns the speaker an incorrect ministry."
+  },
+  {
+    "url": "https://www.mddi.gov.sg/newsroom/screen-smart-from-the-start-nationwide-movement-launched-at-the-national-family-festival-2026-to-support-families-in-the-digital-age/",
+    "reason": "off-topic",
+    "decidedAt": "2026-11-06",
+    "ref": "The announcement concerns digital wellness and healthy screen habits for children and families, not AI policy, governance, regulation, or infrastructure."
+  },
+  {
+    "url": "https://www.mddi.gov.sg/newsroom/states-times-review-fb-page-declared-online-location-under-pofma/",
+    "reason": "off-topic",
+    "decidedAt": "2026-11-06",
+    "ref": "The article concerns POFMA enforcement against a Facebook page spreading falsehoods; no AI policy, governance, regulation, or infrastructure is mentioned or sub"
+  },
+  {
+    "url": "https://www.mddi.gov.sg/newsroom/1st-asean-digital-ministers-meeting-approves-singapore-led-initiatives/",
+    "reason": "off-topic",
+    "decidedAt": "2026-11-06",
+    "ref": "The article discusses ASEAN regional data governance frameworks, cross-border data flows, business digitalization, and cybersecurity cooperation; artificial int"
+  },
+  {
+    "url": "https://www.mddi.gov.sg/newsroom/2nd-abu-dhabi-smart-cities/",
+    "reason": "off-topic",
+    "decidedAt": "2026-11-06",
+    "ref": "Speech focuses on Singapore's smart city strategy and digital infrastructure (Singpass, PayNow, 5G); AI mentioned only twice in passing (sustainability context "
   }
 ]

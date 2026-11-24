@@ -394,5 +394,149 @@
     "reason": "low-signal",
     "decidedAt": "2026-11-11",
     "ref": "score 3: A parliamentary reply reiterating existing AI Verify accreditation and ISO/IEC 42119-8 contribution with no new programme or commitment announced."
+  },
+  {
+    "url": "https://www.edb.gov.sg/en/news-and-insights/94-percent-of-singapore-small-business-owners-surveyed-say-more-ai-guidance-is-needed",
+    "reason": "low-signal",
+    "decidedAt": "2026-11-18",
+    "ref": "score 3: This is a routine corporate PR about a one-day Meta training event and commissioned survey for Singapore SMEs, not a new policy or major deal."
+  },
+  {
+    "url": "https://www.channelnewsasia.com/asia/baidu-china-ai-adoption-apec-summit-6558021",
+    "reason": "non-sg",
+    "decidedAt": "2026-11-18",
+    "ref": "score 2: This is a Baidu CEO opinion about a global AI bubble risk at APEC, with no Singapore angle or new policy, deal, or deployment."
+  },
+  {
+    "url": "https://www.channelnewsasia.com/east-asia/china-apec-summit-ai-comments-chen-xu-6557811",
+    "reason": "non-sg",
+    "decidedAt": "2026-11-18",
+    "ref": "score 2: Vague diplomatic remarks from an APEC official claiming consensus on AI safety, with no concrete policy, funding, or Singapore connection disclosed."
+  },
+  {
+    "url": "https://www.businesstimes.com.sg/startups-tech/technology/ai-era-being-smaller-may-be-advantage",
+    "reason": "low-signal",
+    "decidedAt": "2026-11-18",
+    "ref": "score 2: This is an opinion commentary using a few Singapore SME case studies to promote AI/Copilot adoption, not a new policy or deal."
+  },
+  {
+    "url": "https://www.businesstimes.com.sg/companies-markets/alibaba-unveils-new-flagship-ai-model-challenge-us-rivals",
+    "reason": "non-sg",
+    "decidedAt": "2026-11-18",
+    "ref": "score 3: This is a vendor-claimed model-launch announcement from a Chinese tech giant with no Singapore angle, fitting the routine-launch/PR tier rather than policy, funding, or first-of-a-kind deploy"
+  },
+  {
+    "url": "https://www.channelnewsasia.com/east-asia/hong-kong-ai-facial-recognition-cctv-network-6554651",
+    "reason": "non-sg",
+    "decidedAt": "2026-11-18",
+    "ref": "score 3: This is a major national surveillance rollout in Hong Kong, not Singapore, so it is useful only as regional context rather than a direct Singapore AI-policy signal."
+  },
+  {
+    "url": "https://www.businesstimes.com.sg/international/china-ai-stocks-hyperscalers-hit-signs-tougher-us-tech-curbs",
+    "reason": "non-sg",
+    "decidedAt": "2026-11-19",
+    "ref": "score 4: Nvidia confirming no China data-centre chip sales and Jensen Huang's ouster mark a concrete escalation of US chip export curbs, though the piece has no Singapore angle."
+  },
+  {
+    "url": "https://www.businesstimes.com.sg/startups-tech/ai-adoption-raises-headcount-growth-among-singapore-firms-all-sizes-linkedin",
+    "reason": "low-signal",
+    "decidedAt": "2026-11-19",
+    "ref": "score 3: This is a LinkedIn platform-data report showing AI-enabled Singapore firms grow headcount faster, a notable but non-binding industry finding rather than policy or a major deal."
+  },
+  {
+    "url": "https://www.channelnewsasia.com/asia/malaysia-says-data-centres-must-comply-us-ai-chip-rules-6562711",
+    "reason": "non-sg",
+    "decidedAt": "2026-11-19",
+    "ref": "score 4: Malaysia's trade minister ordered all 117 approved data centre projects to comply with new US AI chip export curbs, a fresh national-level policy move affecting a $100B regional data centre h"
+  },
+  {
+    "url": "https://www.channelnewsasia.com/asia/malaysia-anthropic-ai-use-influence-campaign-6561886",
+    "reason": "non-sg",
+    "decidedAt": "2026-11-19",
+    "ref": "score 4: Malaysia's government is formally pressing a frontier AI lab (Anthropic) over Claude's misuse in a cross-border election disinformation operation, a notable regional AI-safety and governance "
+  },
+  {
+    "url": "https://www.channelnewsasia.com/asia/malaysia-sees-ai-boom-driving-2027-growth-after-q3-gdp-tops-forecasts-6561456",
+    "reason": "non-sg",
+    "decidedAt": "2026-11-19",
+    "ref": "score 1: This is Malaysian macroeconomic data and central-bank commentary with no Singapore angle, and AI is cited only as a general growth driver, not the substantive subject."
+  },
+  {
+    "url": "https://www.channelnewsasia.com/east-asia/south-korea-national-exam-ai-cheating-scandal-6554101",
+    "reason": "non-sg",
+    "decidedAt": "2026-11-19",
+    "ref": "score 1: This is about South Korea's exam security policy, not Singapore, and AI is only a peripheral concern (smart glasses used for cheating) rather than the main subject."
+  },
+  {
+    "url": "https://www.channelnewsasia.com/singapore/asean-china-summit-lawrence-wong-6553926",
+    "reason": "low-signal",
+    "decidedAt": "2026-11-19",
+    "ref": "score 3: PM Wong made general remarks on AI and digital cooperation at the ASEAN-China Summit, welcoming a proposed 2027 cooperation year but no concrete Singapore policy, funding, or deal."
+  },
+  {
+    "url": "https://www.channelnewsasia.com/world/us-weighs-forcing-us-firms-disclose-chinese-ai-use-6562396",
+    "reason": "non-sg",
+    "decidedAt": "2026-11-20",
+    "ref": "score 4: A Treasury/OSTP-level proposal to require public disclosure of Chinese open-weight AI use marks a notable US regulatory move, but it has no Singapore angle."
+  },
+  {
+    "url": "https://www.channelnewsasia.com/world/us-signed-sales-ai-chips-china-6567216",
+    "reason": "non-sg",
+    "decidedAt": "2026-11-20",
+    "ref": "score 1: This is US-China chip export policy news with no Singapore connection stated in the text."
+  },
+  {
+    "url": "https://www.channelnewsasia.com/asia/ai-investments-returns-asia-growth-imf-dan-katz-6565666",
+    "reason": "non-sg",
+    "decidedAt": "2026-11-20",
+    "ref": "score 2: This is an IMF official's general opinion on Asia-wide AI investment returns versus US chip export curbs, not a Singapore-specific policy, deal, or announcement."
+  },
+  {
+    "url": "https://www.channelnewsasia.com/commentary/nvidia-jensen-huang-affair-us-china-ai-tech-decoupling-6552516",
+    "reason": "non-sg",
+    "decidedAt": "2026-11-20",
+    "ref": "score 2: It is an opinion commentary on Jensen Huang's resignation and US-China decoupling, with Singapore's Megaspeed only a passing mention, not a policy or deal."
+  },
+  {
+    "url": "https://www.channelnewsasia.com/asia/asia-scams-136-billion-global-anti-scam-alliance-summit-ai-threat-6549101",
+    "reason": "non-sg",
+    "decidedAt": "2026-11-20",
+    "ref": "score 2: This is a region-wide scam-loss report from an industry summit in Bangkok, not specific to Singapore and not primarily about AI policy or adoption, with AI only cited as one factor behind ris"
+  },
+  {
+    "url": "https://www.businesstimes.com.sg/international/data-centre-investors-underestimate-climate-risks-see-these-not-priority-report",
+    "reason": "non-sg",
+    "decidedAt": "2026-11-20",
+    "ref": "score 2: This is a private risk-analytics firm's global report on data-centre climate exposure, with no Singapore angle and no new policy, deal, or deployment."
+  },
+  {
+    "url": "https://www.businesstimes.com.sg/international/jensen-huang-exit-us-scrutiny-imperil-us3-billion-chinese-ai-projects-reliant-nvidia",
+    "reason": "non-sg",
+    "decidedAt": "2026-11-20",
+    "ref": "score 3: Major investigative story on China's continued Nvidia chip demand and Huang's exit is significant global AI-chip news but has no substantive Singapore angle."
+  },
+  {
+    "url": "https://www.businesstimes.com.sg/companies-markets/samsung-talks-acquire-data-centre-cooling-firm-modine",
+    "reason": "non-sg",
+    "decidedAt": "2026-11-20",
+    "ref": "score 3: Samsung's reported talks to buy data-centre cooling maker Modine point to consolidation around AI infrastructure demand, but the deal is unconfirmed and has no Singapore connection."
+  },
+  {
+    "url": "https://www.businesstimes.com.sg/property/anthropic-ipo-fans-real-estate-frenzy-major-tech-hubs-see-millions-dollars-overbid",
+    "reason": "non-sg",
+    "decidedAt": "2026-11-21",
+    "ref": "score 1: This is a US real estate market story about wealth spillover from Anthropic's IPO, not substantively about Singapore or AI policy/adoption."
+  },
+  {
+    "url": "https://www.channelnewsasia.com/business/asian-stocks-nikkei-kospi-fall-anthropic-ipo-6568101",
+    "reason": "non-sg",
+    "decidedAt": "2026-11-21",
+    "ref": "score 2: It is a regional stock-market reaction story to Anthropic's IPO and Nvidia turmoil, with no Singapore angle and no new AI policy or deal to report."
+  },
+  {
+    "url": "https://www.channelnewsasia.com/east-asia/south-korea-university-exams-ai-cheating-6566301",
+    "reason": "non-sg",
+    "decidedAt": "2026-11-21",
+    "ref": "score 2: This is a South Korea-only exam-security story with no Singapore link, and AI appears only as the feared cheating method, not as policy or adoption news."
   }
 ]

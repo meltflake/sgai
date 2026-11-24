@@ -145,6 +145,511 @@ export function pickSpeakerTypeLabels(lang: string): Record<string, string> {
 
 export const videos: VideoItem[] = [
   {
+    id: 'v152',
+    title: '印度城市在数据中心扩建时向新加坡学习水安全',
+    titleEn: 'Indian city seeks Singapore water security ideas amid data centre expansion',
+    titleJa: 'インド都市はデータセンター拡張の際、シンガポールから水セキュリティを学んでいます。',
+    titleKo: '인도 도시들이 데이터센터 확장 시 싱가포르로부터 물 안보를 배우고 있습니다',
+    speaker: 'CNA',
+    speakerTitle: '亚洲新闻台报道',
+    speakerTitleEn: 'CNA report',
+    speakerTitleJa: 'アジアニュース放送による報道',
+    speakerTitleKo: '아시아 뉴스 채널 보도',
+    speakerType: 'industry',
+    date: '2026-11-23',
+    duration: '04:03',
+    summary: '印度城市在扩建数据中心之际，向新加坡寻求水安全解决方案。',
+    summaryEn: 'An Indian city seeks water security solutions from Singapore as it expands data centre infrastructure.',
+    summaryJa: 'インド都市はデータセンター拡張の際、シンガポールから水セキュリティの解決策を求めています。',
+    summaryKo: '인도 도시들이 데이터센터 확장 과정에서 싱가포르로부터 물 안보 해결방안을 모색하고 있습니다',
+    whyItMatters: '水安全经验正成为新加坡对外输出的数据中心软实力，CNA 的报道印证了这一点',
+    whyItMattersEn:
+      "Water security expertise is becoming Singapore's internationally-exported data centre soft power, and CNA's reporting confirms this.",
+    whyItMattersJa:
+      '水安全経験がシンガポールの対外に輸出されるデータセンター・ソフトパワーとなりつつあり、CNA の報道がこの点を裏付けています。',
+    whyItMattersKo:
+      '물 안보 경험이 싱가포르의 대외 수출 데이터 중심 소프트 파워로 성장하고 있으며, CNA의 보도가 이를 입증합니다.',
+    topic: '国际合作与对标',
+    topicEn: 'International Cooperation & Benchmarking',
+    topicJa: '国際協力とベンチマーク',
+    topicKo: '국제 협력과 벤치마크',
+    youtubeUrl: 'https://www.youtube.com/watch?v=6IEHQB8q7Ug',
+    channel: 'CNA',
+    addedAt: '2026-11-24',
+  },
+  {
+    id: 'v150',
+    title: '黄循财谈新中升级贸易协议',
+    titleEn: 'PM Wong on Singapore-China upgraded free trade agreement',
+    titleJa: 'ローレンス・ウォンがシンガポール・中国昇級貿易協定について語ります',
+    titleKo: 'Lawrence Wong이 싱가포르-중국 업그레이드 무역협정을 논합니다',
+    speaker: 'Lawrence Wong',
+    speakerTitle: '新加坡总理',
+    speakerTitleEn: 'Prime Minister of Singapore',
+    speakerTitleJa: 'シンガポール首相',
+    speakerTitleKo: '싱가포르 총리',
+    speakerType: 'government',
+    date: '2026-11-21',
+    duration: '02:38',
+    summary: '新加坡总理黄循财介绍新中升级贸易协议，涵盖数字经济和人工智能领域。',
+    summaryEn:
+      "Prime Minister Lawrence Wong discussed Singapore and China's upgraded free trade agreement covering digital economy and AI.",
+    summaryJa:
+      'シンガポール総理ローレンス・ウォンが、デジタル経済とAI分野を包括するシンガポール・中国昇級貿易協定を紹介します。',
+    summaryKo:
+      '싱가포르 총리 Lawrence Wong이 싱가포르-중국 업그레이드 무역협정을 소개합니다. 본 협정은 디지털 경제와 인공지능 분야를 포함합니다.',
+    whyItMatters:
+      '黄循财借 APEC 之行将 AI 与数字经济写入新中自贸协定升级条款，为新加坡在中美科技竞争中寻求对冲提供新先例',
+    whyItMattersEn:
+      'Lawrence Wong leveraged the APEC visit to write AI and the digital economy into Singapore-China FTA upgrade clauses, setting a new precedent for Singapore to seek hedging amid US-China technological competition',
+    whyItMattersJa:
+      'ローレンス・ウォンはAPEC訪問を機にAIとデジタル経済をシンガポール・中国自由貿易協定の格上げ条項に明記することで、米中科学技術競争のなかでシンガポールが模索するヘッジングに新たな先例を提供した。',
+    whyItMattersKo:
+      '로렌스 웡이 APEC 순방을 활용하여 AI와 디지털 경제를 싱가포르-중국 자유무역협정 업그레이드 조항에 포함시켜, 미국-중국 간 과학기술 경쟁에서 싱가포르의 헤징 추구에 새로운 선례를 제시했습니다.',
+    topic: '国际合作与对标',
+    topicEn: 'International Cooperation & Benchmarking',
+    topicJa: '国際協力とベンチマーク',
+    topicKo: '국제 협력과 벤치마크',
+    youtubeUrl: 'https://www.youtube.com/watch?v=QOQc4Pw7qh0',
+    channel: 'CNA',
+    addedAt: '2026-11-22',
+  },
+  {
+    id: 'v151',
+    title: '新加坡助力中国数字经济',
+    titleEn: "Singapore helps China's digital economy",
+    titleJa: 'シンガポールが中国のデジタル経済を支援します',
+    titleKo: '싱가포르, 중국 디지털 경제 지원',
+    speaker: 'Lawrence Wong',
+    speakerTitle: '新加坡总理',
+    speakerTitleEn: 'Prime Minister of Singapore',
+    speakerTitleJa: 'シンガポール首相',
+    speakerTitleKo: '싱가포르 총리',
+    speakerType: 'government',
+    date: '2026-11-21',
+    duration: '01:09',
+    summary: '新加坡将升级与中国的自由贸易协议，涵盖数字经济和人工智能领域的快速发展。',
+    summaryEn:
+      'Singapore will upgrade its Free-Trade Agreement with China to address rapid changes in digital economy and artificial intelligence.',
+    summaryJa: 'シンガポールが中国との自由貿易協定を昇級し、デジタル経済とAI分野の急速な発展を包括します。',
+    summaryKo:
+      '싱가포르는 중국과의 자유무역협정을 업그레이드할 예정입니다. 본 협정은 디지털 경제와 인공지능 분야의 빠른 발전을 포함합니다.',
+    whyItMatters:
+      'Lawrence Wong 在结束 APEC 峰会行程之际宣布升级对华自由贸易协议并纳入 AI 条款，标志着新加坡把 AI 治理写入正式条约而非仅停留在政策宣示',
+    whyItMattersEn:
+      "Upon concluding the APEC summit, Lawrence Wong announced an upgrade to the Singapore-China FTA to include AI provisions, marking Singapore's shift to write AI governance into formal treaties rather than merely policy pronouncements",
+    whyItMattersJa:
+      'ローレンス・ウォンはAPECサミット日程を終える際、シンガポール・中国自由貿易協定の格上げとAI条項の組み込みを発表し、これはシンガポールがAIガバナンスを政策表明に留めるのではなく正式な条約に明記することを示している。',
+    whyItMattersKo:
+      '로렌스 웡이 APEC 정상회의 순방을 마치며 중국과의 자유무역협정 업그레이드 및 AI 조항 포함을 발표했으며, 이는 싱가포르가 AI 거버넌스를 정책 선언에 그칠 것이 아니라 정식 조약에 포함시키는 것을 의미합니다.',
+    topic: 'AI 战略与愿景',
+    topicEn: 'AI Strategy & Vision',
+    topicJa: 'AI 戦略とビジョン',
+    topicKo: 'AI 전략 및 비전',
+    youtubeUrl: 'https://www.youtube.com/watch?v=mGblPRlUDKE',
+    channel: 'The Straits Times',
+    addedAt: '2026-11-22',
+  },
+  {
+    id: 'v147',
+    title: 'MAS警告勿向AI代理提供账户登录信息',
+    titleEn: 'MAS warns against giving AI agents login details of financial accounts',
+    titleJa: 'MASはAIエージェントへのアカウントログイン情報の提供を警告している',
+    titleKo: 'MAS가 AI 에이전트에 계정 로그인 정보 제공하지 말 것을 경고',
+    speaker: 'CNA',
+    speakerTitle: '亚洲新闻台报道',
+    speakerTitleEn: 'CNA report',
+    speakerTitleJa: 'アジアニュース放送による報道',
+    speakerTitleKo: '아시아 뉴스 채널 보도',
+    speakerType: 'industry',
+    date: '2026-11-19',
+    duration: '02:01',
+    summary: '新加坡金管局开发协议验证AI代理，警告用户勿共享账户登录凭证。',
+    summaryEn:
+      "Singapore's MAS develops a protocol to verify AI agents for financial transactions and warns against sharing account login credentials.",
+    summaryJa:
+      'シンガポールのMASはAIエージェント向けのプロトコル検証を開発し、ユーザーがアカウントログイン認証情報を共有しないよう警告している。',
+    summaryKo:
+      '싱가포르 금융관리청이 AI 에이전트 검증 프로토콜을 개발하여 사용자에게 계정 로그인 자격증명을 공유하지 말 것을 경고합니다.',
+    whyItMatters: '协议未推出前用户已可能把登录凭证直接交给 AI 代理，MAS 此时定调意在抢先堵住这一授权漏洞',
+    whyItMattersEn:
+      "Before the protocol is released, users may already hand over login credentials directly to AI agents. MAS's current determination aims to preemptively block this authorization gap.",
+    whyItMattersJa:
+      '協議が推出される以前に、ユーザーがすでにログイン認証情報をAIエージェントに直接提供している可能性があり、MASは現在、この認可ギャップを先制的に塞ぐことを意図した方針を定めています。',
+    whyItMattersKo:
+      '협약 도입 전에 사용자가 이미 로그인 인증정보를 AI 대리인에게 직접 넘겨줄 수 있으므로, MAS는 이 권한 부여 허점을 미리 막으려는 의도로 현재 입장을 정하고 있습니다.',
+    topic: 'AI 治理与监管',
+    topicEn: 'AI Governance & Regulation',
+    topicJa: 'AI ガバナンスと規制',
+    topicKo: 'AI 거버넌스와 규제',
+    youtubeUrl: 'https://www.youtube.com/watch?v=JmM5lmbD5a0',
+    channel: 'CNA',
+    addedAt: '2026-11-20',
+  },
+  {
+    id: 'v148',
+    title: '新加坡基础设施防卫演习中的AI',
+    titleEn: 'Singapore Tests AI in Critical Infrastructure Defence',
+    titleJa: 'シンガポールのインフラ防衛演習におけるAI',
+    titleKo: '싱가포르 기반시설 방어 훈련에서의 AI',
+    speaker: 'CNA',
+    speakerTitle: '亚洲新闻台报道',
+    speakerTitleEn: 'CNA report',
+    speakerTitleJa: 'アジアニュース放送による報道',
+    speakerTitleKo: '아시아 뉴스 채널 보도',
+    speakerType: 'industry',
+    date: '2026-11-19',
+    duration: '03:43',
+    summary:
+      '新加坡网络防卫人员在关键基础设施防卫演习中测试AI代理，自主AI系统试用检测对电力、水和运输等关键服务的模拟攻击。',
+    summaryEn:
+      "Singapore's cyber defenders tested AI agents in a Critical Infrastructure Defence Exercise, with autonomous AI systems trialling detection of simulated attacks on essential services.",
+    summaryJa:
+      'シンガポールのサイバー防衛人員は、重要インフラ防衛演習でAIエージェントを試験し、自律型AIシステムが電力、水道、運輸などの重要サービスへのシミュレーション攻撃の検出を試行している。',
+    summaryKo:
+      '싱가포르 사이버 방어 담당자들이 주요 기반시설 방어 훈련에서 AI 에이전트를 시험하고 있으며, 자율 AI 시스템을 사용하여 전력, 수도, 운송 등 핵심 서비스에 대한 모의 공격을 탐지하는 시범을 실시합니다.',
+    whyItMatters: '数百个 AI 代理数小时内即可接管网络，倒逼新加坡测试电力水务交通可否交由全自主 AI 无人防守',
+    whyItMattersEn:
+      'Hundreds of AI agents can take over networks within hours, forcing Singapore to test whether power, water and transportation can be handed over to fully autonomous AI with no human oversight.',
+    whyItMattersJa:
+      '数百のAIエージェントは数時間内にネットワークを引き継ぐことができ、シンガポール政府に対して、電力、水道、交通インフラを人間の監視なしで完全に自律したAIに委譲できるかをテストするよう強制しています。',
+    whyItMattersKo:
+      '수백 개의 AI 대리인이 수 시간 내에 네트워크를 장악할 수 있다는 점이 싱가포르를 전력, 상수도, 교통을 인간 방어 없이 완전 자율 AI가 운영할 수 있는지 테스트하도록 강요하고 있습니다.',
+    topic: 'AI 产业与应用',
+    topicEn: 'AI Industry & Applications',
+    topicJa: 'AI 産業と応用',
+    topicKo: 'AI 산업 및 응용',
+    youtubeUrl: 'https://www.youtube.com/watch?v=fY8w8V9FIKg',
+    channel: 'CNA',
+    addedAt: '2026-11-20',
+  },
+  {
+    id: 'v149',
+    title: '主权AI：AI工程新前沿',
+    titleEn: 'Sovereign AI: The New Frontier In AI Engineering',
+    titleJa: '主権AI：AI工程の新フロンティア',
+    titleKo: '주권 AI: AI 공학의 새로운 경계',
+    speaker: 'AI Singapore',
+    speakerTitle: 'AI 研究与人才培养机构',
+    speakerTitleEn: 'AI research and talent-development organisation',
+    speakerTitleJa: 'AI 研究と人材育成機関',
+    speakerTitleKo: 'AI 연구 및 인재 양성 기관',
+    speakerType: 'academic',
+    date: '2026-11-19',
+    duration: '01:11',
+    summary: '新加坡需要建立主权AI能力，掌控基础设施，需要技术和具备适应、托管、部署AI的人才。',
+    summaryEn:
+      'Singapore must build sovereign AI capabilities to control and manage its own AI infrastructure. This requires both technological foundation and skilled talent to adapt, host and deploy AI models.',
+    summaryJa:
+      'シンガポールは主権AI能力を確立し、インフラを掌握する必要があり、AIの適応、ホスティング、展開能力を持つ技術と人材が必要である。',
+    summaryKo:
+      '싱가포르는 기반시설을 통제하기 위해 주권 AI 능력을 구축해야 하며, 이를 위해서는 기술과 AI를 적응, 호스팅, 배포할 수 있는 인재가 필요합니다.',
+    whyItMatters:
+      'AI Singapore 把人才列为主权 AI 的决定因素而非基础设施本身，释放出新加坡 AI 战略正从囤算力转向造人才的信号',
+    whyItMattersEn:
+      "AI Singapore lists talent as the determining factor of sovereign AI rather than infrastructure itself, signaling that Singapore's AI strategy is shifting from hoarding computing power to developing talent.",
+    whyItMattersJa:
+      'AI Singaporeは主権AIの決定的要因として人材をインフラストラクチャー自体ではなく列挙することで、シンガポール国家のAI戦略がコンピューティングパワーの蓄積から人材育成へのシフトを示すシグナルを放出しています。',
+    whyItMattersKo:
+      'AI Singapore가 주권 AI의 결정적 요소로 기반시설이 아닌 인재를 지정함으로써, 싱가포르 AI 전략이 연산 능력 축적에서 인재 양성으로 전환하고 있다는 신호를 풀어내고 있습니다.',
+    topic: 'AI 战略与愿景',
+    topicEn: 'AI Strategy & Vision',
+    topicJa: 'AI 戦略とビジョン',
+    topicKo: 'AI 전략 및 비전',
+    youtubeUrl: 'https://www.youtube.com/watch?v=124wqBa188o',
+    channel: 'AI Singapore',
+    addedAt: '2026-11-20',
+  },
+  {
+    id: 'v145',
+    title: '新加坡开发跨银行AI反诈系统',
+    titleEn: 'Singapore develops industry-wide AI system to detect bank scams',
+    titleJa: 'シンガポールが銀行間AI詐欺防止システムを開発しています',
+    titleKo: '싱가포르, 은행간 AI 사기 방지 시스템 개발',
+    speaker: 'Nadirah Zaidi',
+    speakerTitle: '新闻记者',
+    speakerTitleEn: 'Reporter',
+    speakerTitleJa: 'ニュース記者',
+    speakerTitleKo: '언론 기자',
+    speakerType: 'industry',
+    date: '2026-11-18',
+    duration: '02:25',
+    summary: '新加坡计划建立跨银行AI系统检测诈骗。金管局明年初将启动研究，制定系统蓝图。',
+    summaryEn:
+      'Singapore is developing an industry-wide AI system to detect scams across different banks. The Monetary Authority of Singapore will begin a study early next year to develop the blueprint.',
+    summaryJa:
+      'シンガポールは銀行間AI詐欺検出システムの構築を計画しています。MASは来年初に研究を開始し、システムの青写真を策定します。',
+    summaryKo:
+      '싱가포르는 은행간 AI 시스템을 구축하여 사기를 탐지할 계획입니다. MAS는 내년 초에 연구를 시작하여 시스템 청사진을 수립할 것입니다.',
+    whyItMatters: '反诈系统仍处金管局明年初启动的研究阶段跨行数据共享能否真正落地才是关键悬念',
+    whyItMattersEn:
+      'The anti-fraud system remains in the research phase that the Monetary Authority of Singapore will launch in early next year; whether cross-bank data sharing can truly be implemented is the key uncertainty.',
+    whyItMattersJa:
+      '反詐システムは来年初にMASが開始する研究段階にとどまっており、銀行間データ共有が真に実現できるかどうかが重要な課題です。',
+    whyItMattersKo:
+      '사기 방지 시스템은 여전히 MAS가 내년 초에 시작할 연구 단계에 있으며, 업계 간 데이터 공유가 실제로 구현될 수 있을지 여부가 핵심 의문점입니다.',
+    topic: 'AI 产业与应用',
+    topicEn: 'AI Industry & Applications',
+    topicJa: 'AI 産業と応用',
+    topicKo: 'AI 산업 및 응용',
+    youtubeUrl: 'https://www.youtube.com/watch?v=eqNYAmz1Og0',
+    channel: 'CNA',
+    addedAt: '2026-11-19',
+  },
+  {
+    id: 'v146',
+    title: '新加坡协助检查高端芯片数据中心部署',
+    titleEn: 'Singapore to facilitate US chip deployment checks in data centres',
+    titleJa: 'シンガポールがデータセンターのハイエンドチップ配備の検査を支援しています',
+    titleKo: '싱가포르, 고급 칩 데이터센터 배포 검사 협력',
+    speaker: 'Lawrence Wong',
+    speakerTitle: '新加坡总理',
+    speakerTitleEn: 'Prime Minister of Singapore',
+    speakerTitleJa: 'シンガポール首相',
+    speakerTitleKo: '싱가포르 총리',
+    speakerType: 'government',
+    date: '2026-11-18',
+    duration: '04:37',
+    summary: '新加坡准备协助美国检查数据中心高端芯片部署。新加坡将平衡中美关系，推进联合人工智能项目。',
+    summaryEn:
+      'Singapore will facilitate US checks on chip deployment in data centres. As ASEAN chair, Singapore seeks to balance US-China ties while advancing joint AI initiatives.',
+    summaryJa:
+      'シンガポールはアメリカのデータセンターハイエンドチップ配備の検査を支援する準備をしています。シンガポールは中米関係のバランスを取り、共同AI事業を推し進めます。',
+    summaryKo:
+      '싱가포르는 미국의 데이터센터 고급 칩 배포 검사에 협력할 준비를 하고 있습니다. 싱가포르는 중미 관계의 균형을 유지하고 공동 인공지능 프로젝트를 추진할 것입니다.',
+    whyItMatters:
+      '新加坡首次同意配合美国核查芯片流向，恰逢以东盟轮值主席身份筹备东盟与美国关系 50 周年，令其中美平衡策略首次带上履约成本',
+    whyItMattersEn:
+      "Singapore agrees for the first time to cooperate with the United States in verifying semiconductor flows, coinciding with its preparation for the 50th anniversary of ASEAN-US relations in its capacity as ASEAN's rotating chair—bringing compliance costs to its China-US balancing strategy for the first time.",
+    whyItMattersJa:
+      'シンガポールが初めて米国と協力して半導体チップの流向を検証することに同意しました。これはASEAN輪番議長の立場でASEAN・米国関係50周年の準備に当たる時期と重なり、同国の中米バランス戦略が初めて履約成本を負担することになりました。',
+    whyItMattersKo:
+      '싱가포르가 처음으로 미국의 반도체 흐름 검증에 협력하기로 동의했는데, 이는 ASEAN 순회 의장으로서 ASEAN-미국 관계 50주년을 준비하고 있던 시기와 정확히 맞아떨어졌으며, 싱가포르의 미중 균형 전략이 처음으로 약정 이행의 대가를 치르게 했다.',
+    topic: '国际合作与对标',
+    topicEn: 'International Cooperation & Benchmarking',
+    topicJa: '国際協力とベンチマーク',
+    topicKo: '국제 협력과 벤치마크',
+    youtubeUrl: 'https://www.youtube.com/watch?v=MMNezcRGelI',
+    channel: 'CNA',
+    addedAt: '2026-11-19',
+  },
+  {
+    id: 'v143',
+    title: '新加坡保护AI基础设施访问权',
+    titleEn: 'Singapore Safeguards Critical AI Infrastructure Access',
+    titleJa: 'シンガポール、AI基盤インフラへのアクセス権を保護',
+    titleKo: '싱가포르, AI 기반 시설 접근권 보호',
+    speaker: 'Josephine Teo',
+    speakerTitle: '通讯及新闻部长',
+    speakerTitleEn: 'Minister for Digital Development and Information, Singapore',
+    speakerTitleJa: '通信情報省（MCI）大臣',
+    speakerTitleKo: '통신정보부(MCI) 장관',
+    speakerType: 'government',
+    date: '2026-11-17',
+    duration: '03:52',
+    summary:
+      '新加坡将确保合法企业继续获得关键AI基础设施的可信访问权。数字发展和信息部长Josephine Teo在硅谷表示，新加坡正与美国同行接触。',
+    summaryEn:
+      'Singapore will ensure legitimate businesses continue to have trusted access to critical AI infrastructure. Digital Development and Information Minister Josephine Teo made this commitment during a panel discussion in Silicon Valley.',
+    summaryJa:
+      'シンガポールは、合法的な企業が重要なAI基盤インフラへの信頼できるアクセス権を継続して取得できることを確保します。デジタル開発・情報大臣ジョセファイン・テオ氏がシリコンバレーで、シンガポールがアメリカの同僚と接触していると述べました。',
+    summaryKo:
+      '싱가포르는 합법 기업이 핵심 AI 기반 시설에 신뢰할 수 있는 접근권을 계속 확보할 수 있도록 보장할 것입니다. 디지털 발전 및 정보 장관 Josephine Teo는 실리콘밸리에서 싱가포르가 미국 동료들과 접촉하고 있다고 말했습니다.',
+    whyItMatters:
+      '美国新规将新加坡列入芯片出口管制范围，促使数字发展和信息部长 Josephine Teo 赴硅谷斡旋，暴露新加坡 AI 枢纽地位系于美方信任而非自主供应链',
+    whyItMattersEn:
+      "New US regulations list Singapore in semiconductor export controls, prompting Digital Development and Information Minister Josephine Teo to mediate in Silicon Valley, revealing that Singapore's AI hub status depends on US confidence rather than an independent supply chain.",
+    whyItMattersJa:
+      '米国の新規則がシンガポールをチップ輸出管制の範囲に含め、デジタル開発・情報部長ジョセフィン・テオのシリコンバレーでの調整活動を促し、シンガポールのAIハブとしての地位が米国の信頼に左右されており、自主的な供給チェーンに基づくものではないことを暴露している。',
+    whyItMattersKo:
+      '미국의 새로운 규정이 싱가포르를 반도체 수출 통제 범위에 포함시켰으며, 이로 인해 디지털 개발 및 정보부 장관 Josephine Teo가 실리콘밸리로 중재를 위해 나아가게 되었습니다. 이는 싱가포르의 AI 허브 지위가 자체적인 공급망이 아닌 미국의 신뢰에 의존하고 있다는 점을 드러냈습니다.',
+    topic: 'AI 战略与愿景',
+    topicEn: 'AI Strategy & Vision',
+    topicJa: 'AI 戦略とビジョン',
+    topicKo: 'AI 전략 및 비전',
+    youtubeUrl: 'https://www.youtube.com/watch?v=2zMGateRk0Q',
+    channel: 'CNA',
+    addedAt: '2026-11-18',
+  },
+  {
+    id: 'v144',
+    title: '美国AI芯片管制提高新加坡、马来西亚企业合规成本',
+    titleEn: 'US AI chip restrictions raise compliance costs for Singapore and Malaysia',
+    titleJa: '米国のAIチップ規制により、シンガポール・マレーシア企業のコンプライアンスコストが増加',
+    titleKo: '미국 AI 칩 규제, 싱가포르·말레이시아 기업 규정 준수 비용 상승',
+    speaker: 'CNA',
+    speakerTitle: '亚洲新闻台报道',
+    speakerTitleEn: 'CNA report',
+    speakerTitleJa: 'アジアニュース放送による報道',
+    speakerTitleKo: '아시아 뉴스 채널 보도',
+    speakerType: 'industry',
+    date: '2026-11-17',
+    duration: '09:19',
+    summary: '美国AI芯片出口管制导致新加坡和马来西亚企业合规成本上升。',
+    summaryEn: 'US AI chip export restrictions increase compliance costs for companies in Singapore and Malaysia.',
+    summaryJa: '米国のAIチップ輸出規制により、シンガポールとマレーシアの企業のコンプライアンスコストが上昇しています。',
+    summaryKo: '미국의 AI 칩 수출 규제로 싱가포르와 말레이시아 기업의 규정 준수 비용이 상승했습니다.',
+    whyItMatters: '据 CNA 报道，新马企业为美国芯片管制买单，反映两国在全球 AI 供应链规则制定中仍处被动，缺乏议价空间',
+    whyItMattersEn:
+      'According to CNA reporting, Singapore-Malaysia enterprises bear the cost of US semiconductor controls, revealing that the two countries remain passive in global AI supply chain rule-making and lack bargaining power.',
+    whyItMattersJa:
+      'CNAの報道によれば、シンガポール・マレーシア企業が米国のチップ管制の代償を負担させられており、これは両国が世界規模のAI供給チェーン規則の制定においていまだに受動的立場にあり、交渉の余地が限定的であることを反映している。',
+    whyItMattersKo:
+      'CNA 보도에 따르면, 싱가포르와 말레이시아 기업들이 미국의 반도체 통제의 대가를 치르고 있으며, 이는 두 나라가 글로벌 AI 공급망 규칙 제정에서 여전히 수동적인 위치에 있고 협상력이 부족하다는 점을 반영합니다.',
+    topic: 'AI 治理与监管',
+    topicEn: 'AI Governance & Regulation',
+    topicJa: 'AI ガバナンスと規制',
+    topicKo: 'AI 거버넌스와 규제',
+    youtubeUrl: 'https://www.youtube.com/watch?v=Vy4nzEcMN1s',
+    channel: 'CNA',
+    addedAt: '2026-11-18',
+  },
+  {
+    id: 'v142',
+    title: 'AI可为东盟与中国创造机遇',
+    titleEn: 'AI can unlock opportunities for ASEAN and China: Singapore PM Lawrence Wong',
+    titleJa: 'AIはアセアンと中国に機会をもたらす',
+    titleKo: 'AI는 ASEAN과 중국을 위한 기회를 창출할 수 있습니다',
+    speaker: 'Lawrence Wong',
+    speakerTitle: '新加坡总理',
+    speakerTitleEn: 'Prime Minister of Singapore',
+    speakerTitleJa: 'シンガポール首相',
+    speakerTitleKo: '싱가포르 총리',
+    speakerType: 'government',
+    date: '2026-11-16',
+    duration: '01:47',
+    summary: '新加坡总理呼吁东盟与中国加强AI合作，争取联合国支持负责任地采用技术。中国提议2027年为东盟-中国AI合作年。',
+    summaryEn:
+      'Singapore PM Lawrence Wong calls for closer AI cooperation between ASEAN and China with UN support for responsible technology adoption. China proposes 2027 as the Year of ASEAN-China AI Cooperation.',
+    summaryJa:
+      'シンガポール首相は、アセアンと中国がAI協力を強化し、責任ある形での技術導入に向けて国連の支援を求めるよう呼びかけています。中国は2027年をアセアン・中国AI協力年にすることを提案しています。',
+    summaryKo:
+      '싱가포르 총리는 ASEAN과 중국이 AI 협력을 강화하고 기술의 책임감 있는 채택을 위해 유엔의 지지를 획득할 것을 촉구했습니다. 중국은 2027년을 ASEAN-중국 AI 협력년으로 제안했습니다.',
+    whyItMatters:
+      '黄循财为中国 2027 东盟 AI 合作年提案加上联合国背书，把双边合作框架拉向多边规则，为新加坡保留平衡筹码',
+    whyItMattersEn:
+      "Lawrence Wong adds UN backing to China's 2027 ASEAN AI cooperation year proposal, shifting bilateral cooperation frameworks toward multilateral rules while preserving Singapore's balanced leverage",
+    whyItMattersJa:
+      'ローレンス・ウォンが2027年の中国ASEAN AI協力年提案に国連の背書を加えることで、二国間協力枠組みを多国間ルールへと牽引しながら、シンガポールのための均衡がとれたカードを確保する',
+    whyItMattersKo:
+      'Lawrence Wong은 중국의 2027년 ASEAN AI 협력 연도 제안에 UN의 지지를 더하고, 양자 협력 체계를 다자 규칙으로 끌어당기고, 싱가포르를 위해 균형 있는 협상 카드를 보존합니다.',
+    topic: '国际合作与对标',
+    topicEn: 'International Cooperation & Benchmarking',
+    topicJa: '国際協力とベンチマーク',
+    topicKo: '국제 협력과 벤치마크',
+    youtubeUrl: 'https://www.youtube.com/watch?v=UbGwfpT1slQ',
+    channel: 'CNA',
+    addedAt: '2026-11-17',
+  },
+  {
+    id: 'v140',
+    title: '专家警告人形机器人的新风险',
+    titleEn: 'Experts warn of new risks as humanoid robots enter personal spaces',
+    titleJa: '専門家がヒューマノイドロボットの新たなリスクを警告',
+    titleKo: '전문가들이 인형 로봇의 새로운 위험을 경고합니다',
+    speaker: 'CNA',
+    speakerTitle: '亚洲新闻台报道',
+    speakerTitleEn: 'CNA report',
+    speakerTitleJa: 'アジアニュース放送による報道',
+    speakerTitleKo: '아시아 뉴스 채널 보도',
+    speakerType: 'industry',
+    date: '2026-11-13',
+    duration: '02:28',
+    summary: '人形机器人在教育和护理领域构成虚假信息和隐私风险,尤其对儿童和老年人。新加坡正开发培训项目应对治理挑战。',
+    summaryEn:
+      'Humanoid robots in education and eldercare pose misinformation and privacy risks, particularly for children and seniors. Training programmes are being developed to address governance concerns.',
+    summaryJa:
+      'ヒューマノイドロボットは教育・介護分野で虚偽情報とプライバシーリスクをもたらすもので、特に児童と高齢者に対するリスクが懸念されています。シンガポールはこのガバナンスの課題に対応するための訓練プログラムを開発しています。',
+    summaryKo:
+      '휴머노이드 로봇은 교육 및 돌봄 분야에서 거짓정보 및 개인정보 보호 위험을 초래하며, 특히 어린이와 고령자에게 그렇습니다. 싱가포르는 거버넌스 도전에 대처하기 위한 훈련 프로그램을 개발하고 있습니다.',
+    whyItMatters:
+      'SIT 与 Straits Interactive 联合推出培训,显示新加坡应对人形机器人治理仍靠行业教育先行,硬性监管尚未跟上',
+    whyItMattersEn:
+      "SIT and Straits Interactive jointly launch training, showing that Singapore's response to humanoid robot governance still relies on industry education to take the lead, with regulatory enforcement not yet catching up.",
+    whyItMattersJa:
+      'SIT とストレイツ・インタラクティブが共同で立ち上げた研修は、シンガポール政府が人型ロボットのガバナンスへの対応において、依然として業界教育を優先させており、厳格な規制がまだ追いついていないことを示しています。',
+    whyItMattersKo:
+      'SIT와 Straits Interactive가 공동으로 훈련 프로그램을 출시한 것은 싱가포르가 휴머노이드 로봇 규제에 대응할 때 여전히 산업 교육이 선행하고 강제적 규제는 아직 이를 따라잡지 못하고 있음을 보여줍니다.',
+    topic: 'AI 治理与监管',
+    topicEn: 'AI Governance & Regulation',
+    topicJa: 'AI ガバナンスと規制',
+    topicKo: 'AI 거버넌스와 규제',
+    youtubeUrl: 'https://www.youtube.com/watch?v=qsdIu_TijLc',
+    channel: 'CNA',
+    addedAt: '2026-11-14',
+  },
+  {
+    id: 'v141',
+    title: 'Jasmin Lau 谈 AI 与新加坡就业',
+    titleEn: "Jasmin Lau on how AI is affecting Singapore's workforce",
+    titleJa: 'ジャスミン・ラオがAIとシンガポール雇用について語る',
+    titleKo: '자스민 라우가 인공지능과 싱가포르 고용에 관해 논의합니다',
+    speaker: 'Jasmin Lau',
+    speakerTitle: '数码发展及新闻部、教育部国务部长',
+    speakerTitleEn: 'Minister of State for Digital Development and Information & Education, Singapore',
+    speakerTitleJa: 'デジタル発展・情報省（MDDI）、教育省（MOE）国務大臣',
+    speakerTitleKo: '디지털개발정보부（MDDI） 및 교육부（MOE） 국무 부장관',
+    speakerType: 'government',
+    date: '2026-11-13',
+    duration: '01:44',
+    summary: '新加坡人力部代理部长讨论 AI 对劳动力的影响。',
+    summaryEn:
+      "Singapore's Acting Minister for Manpower discusses AI's impact on the country's workforce and worker implications.",
+    summaryJa: 'シンガポール人材省（MOM）の代行部長がAIの労働力への影響について議論する。',
+    summaryKo: '싱가포르 인력부（MOM） 대행 부장관이 인공지능의 노동력에 미치는 영향을 논의합니다.',
+    whyItMatters:
+      'Jasmin Lau 身兼人力部代理部长与数码发展及新闻部要职，她的每日纠结暴露新加坡 AI 推广与保工人之间尚无解的政策张力',
+    whyItMattersEn:
+      'Jasmin Lau serves concurrently as acting Minister of Manpower (MOM) and in a senior role at Ministry of Digital Development and Information (MDDI); her daily struggles expose the unresolved policy tension in Singapore between AI promotion and worker protection.',
+    whyItMattersJa:
+      'ジャスミン・ラウは人材省（MOM）の代理大臣を務める傍ら、デジタル発展・情報省（MDDI）の要職を兼務しています。彼女の日々の葛藤は、シンガポール政府によるAI推進と労働者保護の間に依然として解決されていない政策上の緊張関係を露呈しています。',
+    whyItMattersKo:
+      'Jasmin Lau가 인력부（MOM） 대리 장관과 디지털개발정보부（MDDI）의 중요 직책을 겸하고 있는데, 그녀의 일상의 고뇌는 싱가포르의 AI 추진과 근로자 보호 사이의 여전히 풀리지 않은 정책 긴장을 드러냅니다.',
+    topic: 'AI 战略与愿景',
+    topicEn: 'AI Strategy & Vision',
+    topicJa: 'AI 戦略とビジョン',
+    topicKo: 'AI 전략 및 비전',
+    youtubeUrl: 'https://www.youtube.com/watch?v=0fVKFDszKfQ',
+    channel: 'The Straits Times',
+    addedAt: '2026-11-14',
+  },
+  {
+    id: 'v139',
+    title: 'AIAP 如何为 FDE 工作做准备',
+    titleEn: 'How AIAP Prepared Us for FDE Work',
+    titleJa: 'AIアプレンティスシップ・プログラム（AIAP）がFDE職務にいかに備えるのか',
+    titleKo: 'AIAP가 FDE 업무를 위해 어떻게 준비하는가',
+    speaker: 'Haoming and Xiao Jun',
+    speakerTitle: 'AMD 前沿部署工程师',
+    speakerTitleEn: 'Forward Deployed Engineer, AMD',
+    speakerTitleJa: 'AMDのフロントラインデプロイメントエンジニア',
+    speakerTitleKo: 'AMD 첨단 배포 엔지니어',
+    speakerType: 'industry',
+    date: '2026-11-12',
+    duration: '01:03',
+    summary: '两位 AMD 工程师分享 AI 学徒计划如何为其前沿部署工程师角色做准备。',
+    summaryEn:
+      'AMD engineers discuss how the AI Apprenticeship Programme prepared them for Forward Deployed Engineer roles.',
+    summaryJa:
+      '2人のAMDエンジニアが、AIアプレンティスシップ・プログラム（AIAP）がいかにして彼らのフロントラインデプロイメントエンジニア職への準備を支援するかについて述べます。',
+    summaryKo:
+      '두 명의 AMD 엔지니어가 AI 견습 프로그램이 자신들의 첨단 배포 엔지니어 역할을 위해 어떻게 준비시켰는지를 나눕니다.',
+    whyItMatters: 'AIAP 校友进入 AMD 担任 FDE，证明新加坡的 AI 技能培训已能对接尚未定型的新兴岗位需求',
+    whyItMattersEn:
+      "AIAP alumni joining AMD as FDE proves Singapore's AI skills training can now align with emerging job demands that are still being defined.",
+    whyItMattersJa:
+      'AIAP 校友が AMD で FDE として従事することは、シンガポール の AI 技能訓練が、未だ定型化していない新興職種の需要に対応できることを証明しています。',
+    whyItMattersKo:
+      'AIAP 동문이 AMD에 FDE로 입사한 것은 싱가포르의 AI 기술 훈련이 아직 정형화되지 않은 신흥 직책 수요에 대응할 수 있음을 입증합니다.',
+    topic: 'AI 人才与教育',
+    topicEn: 'AI Talent & Education',
+    topicJa: 'AI 人材と教育',
+    topicKo: 'AI 인재와 교육',
+    youtubeUrl: 'https://www.youtube.com/watch?v=Vp82SVbgV6A',
+    channel: 'AI Singapore',
+    addedAt: '2026-11-13',
+  },
+  {
     id: 'v138',
     title: '三次尝试进入AIAP',
     titleEn: 'It Took Three Tries to Get Into AIAP',
