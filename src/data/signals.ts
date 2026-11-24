@@ -46,6 +46,232 @@ export interface Signal {
 
 export const signals: Signal[] = [
   {
+    id: 'sig-20261120-mistral-singapore-apac-headquarters',
+    date: '2026-11-20',
+    title: 'Mistral 新加坡设亚太总部及科学枢纽',
+    titleEn: 'Mistral Singapore launches Asia-Pacific headquarters and science hub',
+    titleJa: 'Mistralシンガポール、アジア太平洋本社と科学ハブを設置',
+    titleKo: 'Mistral 싱가포르에 아태 본부 및 과학 허브 설립',
+    whyItMatters:
+      'DSO、HTX 的合作经验已塑造 Mistral 全球主权 AI 产品设计，2027 年前 200 人的团队规模表明新加坡将成为区域模型研发源头',
+    whyItMattersEn:
+      "DSO and HTX's collaborative experience has shaped Mistral's global sovereign AI product design. A team size of 200 people before 2027 indicates that Singapore will become the regional source of model research and development.",
+    whyItMattersJa:
+      'DSO、HTXとの協力経験がMistralのグローバル・ソブリンAI製品設計をすでに形成しており、2027年までに200人規模のチームに達することはシンガポールが地域AIモデル研究開発の発祥地になることを示しています',
+    whyItMattersKo:
+      'DSO와 HTX의 협력 경험이 Mistral의 글로벌 주권 AI 제품 설계를 형성했으며, 2027년까지 200명 규모의 팀은 싱가포르가 지역 모델 연구개발의 원천이 될 것임을 나타냅니다.',
+    sourceUrl:
+      'https://www.edb.gov.sg/en/news-and-insights/mistral-opens-singapore-office-as-an-extended-science-hub-for-sovereign-ai-in-asia-pacific',
+    sourceName: 'EDB',
+    topicIds: ['national-strategy', 'infrastructure-research', 'public-sector'],
+    addedAt: '2026-11-21',
+  },
+  {
+    id: 'sig-20261120-dayone-data-centre-ipo-pause',
+    date: '2026-11-20',
+    title: '新加坡 DayOne 数据中心暂缓美国 IPO 计划',
+    titleEn: 'Singapore DayOne data centre postpones US IPO plans',
+    titleJa: 'シンガポールのDayOneデータセンター、米国IPO計画を延期',
+    titleKo: '싱가포르 DayOne 데이터센터, 미국 IPO 계획 연기',
+    whyItMatters:
+      'DayOne 暂缓规模达 50 亿美元的美国 IPO，可能等到 2027 年再重启，说明新加坡数据中心叙事过度绑定 ByteDance 这一家客户，经不起 AI 估值降温',
+    whyItMattersEn:
+      "DayOne is postponing its US$50 billion US IPO and may not resume until 2027, indicating that Singapore's data centre narrative is overly dependent on ByteDance as a single customer and cannot withstand a decline in AI valuations.",
+    whyItMattersJa:
+      'DayOneは規模50億米ドルの米国IPOを延期しており、2027年に再開する可能性があります。これはシンガポールのデータセンター・ナラティブがByteDanceという単一顧客への過度な依存を示しており、AI企業評価の低下に耐えられないことを明らかにしています',
+    whyItMattersKo:
+      'DayOne은 규모 50억 달러의 미국 IPO를 연기했으며, 2027년이 되어서야 다시 시작될 가능성이 있습니다. 이는 싱가포르 데이터센터 내러티브가 ByteDance라는 단 하나의 고객에 과도하게 종속되어 있으며 AI 밸류에이션 냉각을 견디지 못함을 나타냅니다.',
+    sourceUrl:
+      'https://www.businesstimes.com.sg/companies-markets/singapore-based-dayone-said-pause-us-ipo-plans-data-centre-market-concerns',
+    sourceName: 'The Business Times',
+    topicIds: ['infrastructure-research', 'startups-investment', 'economy-industry'],
+    addedAt: '2026-11-21',
+  },
+  {
+    id: 'sig-20261117-us-ai-chip-export-curbs-asean',
+    date: '2026-11-17',
+    title: '美国新规限制新加坡获取 AI 芯片出口',
+    titleEn: 'US rule restricts Singapore AI chip access',
+    titleJa: '米国新規則がシンガポールへのAIチップ輸出を制限',
+    titleKo: '미국 신규 규정, 싱가포르의 AI 칩 수출 제한',
+    whyItMatters:
+      '美芯片出口管制将新加坡列为高风险转运地，需逐案申请美国商务部许可，叠加 Megaspeed 芯片外流疑云，新加坡作为中立 AI 枢纽的信任首次被公开质疑',
+    whyItMattersEn:
+      "US chip export controls designate Singapore as a high-risk transshipment location, requiring case-by-case applications for US Commerce Department approval. Coupled with allegations of Megaspeed chip outflows, Singapore's credibility as a neutral AI hub is openly questioned for the first time.",
+    whyItMattersJa:
+      '米国のチップ輸出管制がシンガポールを高リスク転送地に指定し、米国商務省の許可を案件ごとに申請する必要があります。これにMegaspeedのチップ流出疑惑が重なり、中立的なAIハブとしてのシンガポールの信頼が初めて公開で質疑されています。',
+    whyItMattersKo:
+      '미국 반도체 수출 규제가 싱가포르를 고위험 환적지로 지정하여 사례별 미국 상무부 허가 신청이 필요해지고, 메가스피드 반도체 유출 의혹이 더해지면서 싱가포르의 중립적 AI 허브로서의 신뢰가 처음으로 공개적으로 의문이 제기되었습니다.',
+    sourceUrl: 'https://www.businesstimes.com.sg/international/asean/us-curb-chinese-access-ai-chips-trump-heads-asia',
+    sourceName: 'The Business Times',
+    topicIds: ['national-security', 'governance-regulation', 'infrastructure-research'],
+    addedAt: '2026-11-20',
+  },
+  {
+    id: 'sig-20261113-megaspeed-speedmatrix-ai-chip-diversion',
+    date: '2026-11-13',
+    title: '马来西亚调查 Megaspeed 子公司芯片转运嫌疑',
+    titleEn: 'Malaysia investigates Megaspeed subsidiary chip transshipment',
+    titleJa: 'マレーシア、Megaspeed子会社のチップ転送疑いを調査',
+    titleKo: '말레이시아, Megaspeed 자회사 칩 환적 의혹 조사',
+    whyItMatters: '总部在新加坡的 Megaspeed 卷入芯片转运调查，暴露新加坡作为 AI 算力枢纽在出口管制上的监管缺口',
+    whyItMattersEn:
+      "Megaspeed, headquartered in Singapore, is embroiled in a chip transshipment investigation, exposing Singapore's regulatory gaps in export controls as an AI computing hub.",
+    whyItMattersJa:
+      'シンガポール本社のMegaspeedがチップ転送調査に巻き込まれ、AIコンピューティングハブとしてのシンガポールの輸出管制における規制上の隙間が暴露されています。',
+    whyItMattersKo:
+      '싱가포르에 본사를 둔 메가스피드가 반도체 환적 조사에 연루되면서 싱가포르의 AI 컴퓨팅 허브로서의 수출 규제상 감시 공백을 드러냈습니다.',
+    sourceUrl:
+      'https://www.channelnewsasia.com/asia/malaysia-probe-megaspeed-speedmatrix-ai-alice-huang-nvidia-6548491',
+    sourceName: 'CNA',
+    topicIds: ['national-security', 'governance-regulation', 'infrastructure-research'],
+    addedAt: '2026-11-20',
+  },
+  {
+    id: 'sig-20261118-uob-astar-meralion-mou',
+    date: '2026-11-18',
+    title: '大华银行部署 A*STAR 多语言 AI 客服方案',
+    titleEn: 'UOB deploys A*STAR multilingual AI customer service solution',
+    titleJa: 'OCBC銀行、A*STAR多言語AI顧客サービスソリューション展開へ',
+    titleKo: 'UOB, A*STAR 다국어 AI 고객 서비스 솔루션 배포',
+    whyItMatters:
+      '大华银行成为首家试用 MERaLiON 的银行，让 A*STAR 多语言 AI 从实验室走进 ASEAN 五个市场真实客服场景，检验能否商业化',
+    whyItMattersEn:
+      "UOB becomes the first bank to trial MERaLiON, bringing A*STAR's multilingual AI from the laboratory into real customer-service scenarios across five ASEAN markets to test commercialization viability.",
+    whyItMattersJa:
+      'UOB が MERaLiON を試用する最初の銀行となり、A*STAR の多言語 AI が実験室から ASEAN 五市場の実際の顧客サービスシーンへ進み、商業化の可能性を検証します。',
+    whyItMattersKo:
+      '다화은행이 MERaLiON을 시범 운영하는 첫 은행이 되어, A*STAR의 다국어 AI를 실험실에서 ASEAN 5개 시장의 실제 고객 서비스 환경으로 옮기며, 상용화 가능성을 검증합니다',
+    sourceUrl:
+      'https://www.a-star.edu.sg/iaic/news/press-release/uob-deploy-multilingual-ai-powered-solution-for-customer-engagement',
+    sourceName: 'A*STAR',
+    topicIds: ['finance', 'economy-industry'],
+    related: [{ kind: 'ecosystem', id: 'a-star' }],
+    addedAt: '2026-11-19',
+  },
+  {
+    id: 'sig-20261118-astar-iaic-ffi-finance-mou',
+    date: '2026-11-18',
+    title: '大华渣打试点 A*STAR 多语言 AI 金融模型',
+    titleEn: 'UOB, Standard Chartered pilot A*STAR multilingual AI financial model',
+    titleJa: 'OCBC・スタンダード・チャータード、A*STAR多言語AI金融モデルをパイロット実施へ',
+    titleKo: 'UOB-Standard Chartered, A*STAR 다국어 AI 금융 모델 시범 운영',
+    whyItMatters:
+      'A*STAR IAIC 与 MAS 旗下 FFI 签 MoU，把自研模型 MERaLiON 交给 UOB、渣打做真实业务检验，新加坡 AI 研究第一次要接受金融监管级压力测试',
+    whyItMattersEn:
+      "A*STAR's IAIC and FFI under MAS sign an MoU, handing the proprietary MERaLiON model to UOB and Standard Chartered for real business verification—Singapore's AI research facing banking-regulator-level stress testing for the first time.",
+    whyItMattersJa:
+      'A*STAR IAIC が MAS 傘下の FFI と MoU に署名し、自社開発の MERaLiON モデルを UOB と Standard Chartered に提供して実業務検証を行い、シンガポール AI 研究が初めて金融監督レベルのストレステストを受けます。',
+    whyItMattersKo:
+      'A*STAR IAIC가 MAS 산하 FFI와 MoU를 체결하여, 자체 개발 모델 MERaLiON을 UOB, Standard Chartered에 넘겨 실제 업무 검증을 추진하며, 싱가포르 AI 연구가 금융 감독급 스트레스 테스트를 처음 받게 됩니다',
+    sourceUrl: 'https://www.a-star.edu.sg/iaic/news/press-release/iaic-ffi-bridge-ai-research',
+    sourceName: 'A*STAR',
+    topicIds: ['finance', 'infrastructure-research', 'economy-industry'],
+    related: [{ kind: 'ecosystem', id: 'a-star' }],
+    addedAt: '2026-11-19',
+  },
+  {
+    id: 'sig-20261118-singapore-facilitates-us-chip-export-che',
+    date: '2026-11-18',
+    title: '黄循财：新加坡愿协助美国核查先进芯片流向',
+    titleEn: 'Lawrence Wong: Singapore willing to assist US in verifying advanced chip flows',
+    titleJa: 'ローレンス・ウォン、シンガポール、米国の先進チップ流向検証を支援へ',
+    titleKo: 'Lawrence Wong: 싱가포르, 미국 첨단 칩 흐름 확인 협력 의향',
+    whyItMatters:
+      '黄循财 11 月 17 日松口配合美方核查芯片流向，相当于承认清关芯片未必留在本地的漏洞，新加坡中立转运枢纽的定位将直面美方问责',
+    whyItMattersEn:
+      "Lawrence Wong's November 17 acknowledgment of cooperation with US verification of chip flows amounts to admitting the loophole that customs-cleared chips do not necessarily remain locally—Singapore's positioning as a neutral transshipment hub will directly face US accountability.",
+    whyItMattersJa:
+      'ローレンス・ウォン が 11 月 17 日にチップ流向に関する米国側の調査に協力する意向を表明し、これは通関後のチップが必ずしもシンガポール国内に留まるわけではないという抜け穴を認めたに等しく、シンガポール中立転運ハブとしての位置付けは米国側の問責に直面することになります。',
+    whyItMattersKo:
+      'Lawrence Wong이 11월 17일 미국의 칩 흐름 확인에 협력하겠다고 밝혔으며, 이는 통관 칩이 국내에 반드시 남지 않는다는 허점을 인정한 것과 다름없으며, 싱가포르 중립 중계 허브로서의 지위는 미국의 문책에 직면할 것입니다',
+    sourceUrl: 'https://www.channelnewsasia.com/singapore/ai-chips-us-lawrence-wong-donald-trump-6560086',
+    sourceName: 'CNA',
+    topicIds: ['national-security', 'international', 'infrastructure-research'],
+    addedAt: '2026-11-19',
+  },
+  {
+    id: 'sig-20261116-us-advanced-semiconductor-export-control',
+    date: '2026-11-16',
+    title: '美国半导体出口管制新规 新加坡日本联合回应',
+    titleEn: 'New US semiconductor export control rules; Singapore, Japan respond jointly',
+    titleJa: '米国の半導体輸出管制新規則 シンガポール・日本が共同対応',
+    titleKo: '미국 반도체 수출 규제 신규 정책, 싱가포르·일본 공동 대응',
+    whyItMatters: '美国将新加坡列入许可清单意味着其转口信任地位首次受挑战 MDDI 需在合规与产业吸引力间重新找平衡',
+    whyItMattersEn:
+      'US places Singapore on restricted list, first-time challenge to trusted transshipment status; MDDI must rebalance between compliance and industry attractiveness',
+    whyItMattersJa:
+      '米国がシンガポールを許可リストに追加したことは、同国の転積信頼地位が初めて挑戦を受けることを意味しており、MDDI はコンプライアンスと産業吸引力の間でバランスを改めて見出す必要があります。',
+    whyItMattersKo:
+      '미국이 싱가포르를 규제 대상 목록에 포함시킨 것은 싱가포르의 환적 신뢰 지위가 처음으로 도전을 받는다는 의미입니다. MDDI는 규정 준수와 산업 매력 사이에서 균형을 다시 찾아야 합니다.',
+    sourceUrl:
+      'https://www.mddi.gov.sg/newsroom/mddi-meti-joint-media-statement-on-us-interim-final-rule-on-addressing-remote-access-to-advanced-semiconductors/',
+    sourceName: 'MDDI',
+    topicIds: ['national-security', 'governance-regulation', 'international'],
+    addedAt: '2026-11-18',
+  },
+  {
+    id: 'sig-20261117-us-ai-chip-export-licensing-rule-sea',
+    date: '2026-11-17',
+    title: '美国收紧对华 AI 芯片管制，新加坡受影响',
+    titleEn: 'US tightens AI chip controls on China; Singapore affected',
+    titleJa: '米国、対中 AI チップ管制強化 シンガポール受ける影響',
+    titleKo: '미국 중국 대상 AI 칩 규제 강화, 싱가포르 영향',
+    whyItMatters:
+      '11 月 17 日，美国将新加坡与马来西亚、印尼、泰国一并纳入芯片管制收紧范围，新加坡数据中心枢纽地位恐成对华转运缺口',
+    whyItMattersEn:
+      "On 17 November, US tightens chip controls to include Singapore, Malaysia, Indonesia, and Thailand; Singapore's data centre hub risks becoming a transshipment loophole for China",
+    whyItMattersJa:
+      '11月17日、米国がシンガポールをマレーシア、インドネシア、タイとともにチップ管制の厳格化対象に加え、シンガポールのデータセンターハブ地位が対中転運の抜け穴となるリスクが懸念されています。',
+    whyItMattersKo:
+      '11월 17일, 미국이 싱가포르를 말레이시아, 인도네시아, 태국과 함께 칩 통제 강화 범위에 포함시켰고, 싱가포르의 데이터센터 허브 지위가 대중국 환적의 허점이 될 수 있습니다.',
+    sourceUrl: 'https://www.channelnewsasia.com/asia/us-ai-chips-china-southeast-asia-data-centres-6558256',
+    sourceName: 'CNA',
+    topicIds: ['national-security', 'infrastructure-research', 'international'],
+    addedAt: '2026-11-18',
+  },
+  {
+    id: 'sig-20261117-us-ai-chip-export-license-rule-asia',
+    date: '2026-11-17',
+    title: '美国芯片新规施压东南亚企业选边站',
+    titleEn: 'US chip rules pressure Southeast Asian companies to choose sides',
+    titleJa: '米国チップ新規則が東南アジア企業に圧力、立場選択を迫る',
+    titleKo: '미국 칩 신규제, 동남아 기업 선택 압박',
+    whyItMatters: '美国芯片新规令新加坡十余年不选边策略首次承压，APAC Advisors 直指平衡术难以为继',
+    whyItMattersEn:
+      "US new chip rules pressure Singapore's decade-long non-alignment strategy for first time; APAC Advisors states balancing act cannot be sustained",
+    whyItMattersJa:
+      '米国の新チップ規制により、シンガポールの10年以上にわたるどちらにも与しない政策が初めて圧力を受け、APAC Advisors はバランス戦略の継続が困難だと指摘しています。',
+    whyItMattersKo:
+      '미국의 새로운 칩 규제로 싱가포르의 10년 이상 중립 전략이 처음으로 압박을 받고 있으며, APAC Advisors는 균형 전략이 지속 불가능함을 지적합니다.',
+    sourceUrl:
+      'https://www.channelnewsasia.com/commentary/us-china-chips-singapore-malaysia-licence-nvidia-rules-snap-insight-6558086',
+    sourceName: 'CNA',
+    topicIds: ['national-security', 'governance-regulation', 'infrastructure-research'],
+    addedAt: '2026-11-18',
+  },
+  {
+    id: 'sig-20261111-dassault-systemes-asean-virtual-twin-lab',
+    date: '2026-11-11',
+    title: '达索系统落户新加坡设东盟工业 AI 孪生实验室',
+    titleEn: 'Dassault Systèmes establishes ASEAN industrial AI digital twin lab in Singapore',
+    titleJa: 'ダッソー・システムズがシンガポールで ASEAN 産業 AI ツイン実験室開設',
+    titleKo: '다쏘시스템, 싱가포르에 ASEAN 산업AI 디지털트윈 실험실 개설',
+    whyItMatters:
+      '达索借 EDB 协议落户,30 余个岗位换来覆盖新马泰印菲越的区域枢纽地位,印证新加坡引资重心已转向东盟协调节点而非本地用工规模',
+    whyItMattersEn:
+      "Dassault establishes operations via EDB agreement, gaining 30-plus positions to secure regional hub status across Singapore, Malaysia, Thailand, India, Philippines, Vietnam; this confirms Singapore's investment focus has shifted from local employment scale to ASEAN coordination hub",
+    whyItMattersJa:
+      'ダッソーは EDB 協議により落地し、30を超える職位と引き換えにシンガポール、マレーシア、タイ、インドネシア、フィリピン、ベトナムを覆う地域ハブ地位を獲得し、シンガポールの資本誘致の重点が ASEAN 協調ノードへと転向し、ローカル雇用規模ではなくなったことを示しています。',
+    whyItMattersKo:
+      '다쏘(Dassault)가 EDB 협약을 통해 싱가포르에 정착하면서, 30여 개의 일자리로 싱가포르, 말레이시아, 태국, 인도네시아, 필리핀, 베트남을 아우르는 지역 허브 지위를 얻었으며, 이는 싱가포르의 외자 유치 중심이 현지 일자리 창출이 아닌 ASEAN 조율 거점으로 이미 옮겨갔음을 입증합니다.',
+    sourceUrl:
+      'https://www.edb.gov.sg/en/news-and-insights/dassault-systemes-to-set-up-asean-industrial-ai-virtual-twin-lab-in-singapore',
+    sourceName: 'EDB',
+    topicIds: ['advanced-manufacturing', 'infrastructure-research', 'economy-industry'],
+    addedAt: '2026-11-18',
+  },
+  {
     id: 'sig-20261104-mddi-ai-incident-reporting-framework',
     date: '2026-11-04',
     title: 'IMDA 与 CSA 研究加强 AI 事故报告',

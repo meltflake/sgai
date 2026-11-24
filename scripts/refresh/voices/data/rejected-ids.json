@@ -65,6 +65,41 @@
     "date": "2024-10-15",
     "decidedAt": "2026-11-04"
   },
+  "closing-speech-by-mos-jasmin-lau--for-second-reading-of-public-sector--governance---amendment--bill-on-12-january-2026": {
+    "reason": "non-ai",
+    "decidedAt": "2026-11-19",
+    "note": "The speech concerns data-sharing governance frameworks and cybersecurity standards for Singapore's public sector—data pr"
+  },
+  "closing-speech-by-s-iswaran-2nd-reading-eta-bill": {
+    "reason": "pre-floor",
+    "date": "2021-02-01",
+    "decidedAt": "2026-11-18"
+  },
+  "closing-speech-by-sms-janil-puthucheary-at-the-2nd-reading-of-cybersecurity-amendment-bill": {
+    "reason": "pre-floor",
+    "date": "2024-05-07",
+    "decidedAt": "2026-11-20"
+  },
+  "closing-speech-by-sms-tan-kiat-how-for-second-reading-of-the-info-communications-media-development-authority--amendment--bill": {
+    "reason": "non-ai",
+    "decidedAt": "2026-11-22",
+    "note": "AI is mentioned once at the speech's end as context for future preparedness; the speech substantively concerns media sec"
+  },
+  "closing-speech-sms-sim-ann-second-reading-of-postal-services-amendment-bill": {
+    "reason": "pre-floor",
+    "date": "2021-04-05",
+    "decidedAt": "2026-11-21"
+  },
+  "mas--building-trusted-foundations-for-digital-finance": {
+    "reason": "non-ai",
+    "decidedAt": "2026-11-18",
+    "note": "The speech addresses digital finance infrastructure, tokenization, digital assets, digital money, and distributed ledger"
+  },
+  "mas--connecting-capital-and-opportunity-building-a-trusted-growth-capital-ecosystem": {
+    "reason": "non-ai",
+    "decidedAt": "2026-11-19",
+    "note": "Speech briefly names AI as a structural driver of investment demand, but substantively concerns Singapore's asset manage"
+  },
   "mas--edqp-reawakening-2026-unlocking-the-next-value-up-cycle-for-singapore-equities": {
     "reason": "non-ai",
     "decidedAt": "2026-08-10",
@@ -95,10 +130,20 @@
     "decidedAt": "2026-09-04",
     "note": "The speech concerns Singapore's financial contributions to IMF trust funds for global poverty reduction and debt relief;"
   },
+  "mas--insurance-in-asia-architects-of-resilience-partners-in-growth": {
+    "reason": "non-ai",
+    "decidedAt": "2026-11-20",
+    "note": "The speech concerns Asia's insurance sector, disaster risk financing, climate resilience, and public-private partnership"
+  },
   "mas--keynote-address-by-daniel-wang": {
     "reason": "non-ai",
     "decidedAt": "2026-10-28",
     "note": "AI is mentioned once in a list of emerging risks (alongside climate change and cyber threats) but the speech focuses on "
+  },
+  "mas--keynote-speech-by-dpm-gan-kim-yong-at-wmi-gfoc-summit": {
+    "reason": "non-ai",
+    "decidedAt": "2026-11-21",
+    "note": "Speech mentions AI twice—as one technological change reshaping industries (point 2b) and as a tool for account onboardin"
   },
   "mas--keynote-speech-by-mr-gan-kim-yong-at-the-financial-industry-fiesta-2026": {
     "reason": "non-ai",
@@ -110,10 +155,20 @@
     "decidedAt": "2026-11-05",
     "note": "The speech concerns actuarial risk management and Singapore's economic resilience; AI is mentioned once as a component o"
   },
+  "mas--opening-address-by-mr-marcus-lim-amd-mas-at-the-gaip-insurance-case-competition-2026-dinner": {
+    "reason": "non-ai",
+    "decidedAt": "2026-11-22",
+    "note": "The speech substantively concerns insurance industry challenges, protection gaps, and consumer trust; AI is mentioned on"
+  },
   "mas--opening-of-nasdaq-new-office-in-singapore": {
     "reason": "non-ai",
     "decidedAt": "2026-09-07",
     "note": "Speech concerns Nasdaq office opening, equity market connections, and startup capital schemes; no substantive mention of"
+  },
+  "mas--opening-remarks-by-mr-chia-der-jiun-at-the-lujiazui-forum-2026-on-17-june-2026": {
+    "reason": "non-ai",
+    "decidedAt": "2026-11-23",
+    "note": "Speech addresses global financial governance and economic resilience; AI appears only as one risk factor in the concludi"
   },
   "moh--addenda-to-president-s-address-caring-society": {
     "reason": "pre-floor",
@@ -335,6 +390,16 @@
     "date": "2025-10-06",
     "decidedAt": "2026-08-24"
   },
+  "moh--community-support-services-to-address-gaming-disorder-among-young-adults": {
+    "reason": "non-ai",
+    "decidedAt": "2026-11-18",
+    "note": "Parliamentary question addresses gaming disorder and online safety regulation (age verification, app store safeguards), "
+  },
+  "moh--corrective-measures-taken-to-address-findings-observed-in-auditor-general-s-report-for-2025-2026": {
+    "reason": "non-ai",
+    "decidedAt": "2026-11-20",
+    "note": "Statement addresses governance lapses in a cancer centre construction project; contains no mention of AI, machine learni"
+  },
   "moh--cos-speech-by-minister-for-health-gan-kim-yong-better-health-for-all-part-1-of-2-12-march-2013": {
     "reason": "pre-floor",
     "date": "2013-03-12",
@@ -389,6 +454,16 @@
     "reason": "pre-floor",
     "date": "2013-09-17",
     "decidedAt": "2026-08-24"
+  },
+  "moh--health-sciences-authority-amendment-and-other-matters-bill-2nd-reading-closing-speech-by-mdm-rahayu-mahzam-minister-of-state-ministry-of-digital-development-and-information-ministry-of-health": {
+    "reason": "non-ai",
+    "decidedAt": "2026-11-21",
+    "note": "The speech concerns Health Sciences Authority regulatory consolidation and enforcement reorganization; AI appears once i"
+  },
+  "moh--health-sciences-authority-amendment-and-other-matters-bill-2nd-reading-opening-speech-by-mdm-rahayu-mahzam-minister-of-state-ministry-of-digital-development-and-information-ministry-of-health": {
+    "reason": "non-ai",
+    "decidedAt": "2026-11-22",
+    "note": "The speech's main theme is consolidating health regulatory functions across agencies; AI governance is discussed substan"
   },
   "moh--human-biomedical-research-bill-second-reading-closing-speech-by-minister-of-state-for-health-dr-lam-pin-min": {
     "reason": "pre-floor",
@@ -714,6 +789,11 @@
     "reason": "pre-floor",
     "date": "2025-11-26",
     "decidedAt": "2026-08-24"
+  },
+  "moh--number-of-human-organ-transplants-performed-in-singapore-and-review-of-organ-donation-consent-framework-to-address-organ-shortage": {
+    "reason": "non-ai",
+    "decidedAt": "2026-11-23",
+    "note": "This parliamentary answer addresses organ transplantation policy, donation consent frameworks, and medical practice—with"
   },
   "moh--number-of-speech-and-language-therapists-registered-to-practise-and-waiting-time-to-get-a-first-appointment-through-public-healthcare-system": {
     "reason": "pre-floor",
@@ -7779,6 +7859,11 @@
     "reason": "pre-floor",
     "date": "2025-12-15",
     "decidedAt": "2026-08-03"
+  },
+  "pmo--dpm-gan-kim-yong-closing-remarks-at-the-22nd-jcbc": {
+    "reason": "non-ai",
+    "decidedAt": "2026-11-24",
+    "note": "The speech reports Singapore-China bilateral cooperation on trade services, finance linkages, and public health; 'scienc"
   },
   "pmo--dpm-gan-kim-yong-opening-remarks-at-the-20th-jcbc": {
     "reason": "pre-floor",
