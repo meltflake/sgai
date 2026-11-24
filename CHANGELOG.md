@@ -4,6 +4,13 @@
 
 ---
 
+## 0.29.15 — 2026-11-24
+
+### 停用：每月研究摘要
+
+- 从 `scripts/refresh/registry.json` 移除 research-digest，每日更新不再运行它。原因：缺 OpenAlex key，它每天失败并重试，每日报告因此一直带“failed”，其他故障不易发现。
+- `/fieldnotes` 保留已有的 7 月和 8 月两期，不再更新。脚本 `scripts/refresh/research-digest/` 保留，可手动运行。
+
 ## 0.29.14 — 2026-11-24
 
 ### 修复：每日数据更新连续失败
