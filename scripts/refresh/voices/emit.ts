@@ -240,22 +240,20 @@ function formatVoicesEntry(s: EmittableSpeech, today: string): string {
   return lines.join('\n');
 }
 
-function findArrayCloseLine(lines: string[], openMarker: RegExp): number {
-  let openLine = -1;
-  for (let i = 0; i < lines.length; i += 1) {
-    if (openMarker.test(lines[i])) {
-      openLine = i;
-      break;
-    }
-  }
+/**
+ * Line index of the `];` / `};` that closes the top-level literal opened at
+ * `openMarker`. Prettier puts that close at column 0 and indents everything
+ * inside, so the first column-0 closer after the opener is the right one.
+ *
+ * Do not count brackets: speech text is free prose. A transcript containing
+ * "[moderator)" left the old depth counter unbalanced, and every voices emit
+ * then failed with "Could not find matching close" (2026-11).
+ */
+export function findArrayCloseLine(lines: string[], openMarker: RegExp): number {
+  const openLine = lines.findIndex((line) => openMarker.test(line));
   if (openLine === -1) throw new Error(`Could not locate opening marker ${openMarker}`);
-  let depth = 0;
-  for (let i = openLine; i < lines.length; i += 1) {
-    const opens = (lines[i].match(/[[{]/g) || []).length;
-    const closes = (lines[i].match(/[\]}]/g) || []).length;
-    depth += opens;
-    depth -= closes;
-    if (depth === 0 && i > openLine) return i;
+  for (let i = openLine + 1; i < lines.length; i += 1) {
+    if (/^[\]}];?\s*$/.test(lines[i])) return i;
   }
   throw new Error(`Could not find matching close for ${openMarker}`);
 }
