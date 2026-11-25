@@ -538,5 +538,59 @@
     "reason": "non-sg",
     "decidedAt": "2026-11-21",
     "ref": "score 2: This is a South Korea-only exam-security story with no Singapore link, and AI appears only as the feared cheating method, not as policy or adoption news."
+  },
+  {
+    "url": "https://aisingapore.org/ai-singapore-partners-asean-foundation-to-build-a-scam-ready-asean/",
+    "reason": "non-ai",
+    "decidedAt": "2026-11-25",
+    "ref": "score 3: A routine new programme partnership (scam-awareness training) where AI is only one listed threat among general scam education, not the main subject."
+  },
+  {
+    "url": "https://www.channelnewsasia.com/asia/nvidia-suppliers-startups-asia-cheer-huangs-return-6577521",
+    "reason": "non-sg",
+    "decidedAt": "2026-11-25",
+    "ref": "score 1: The item is Taiwan-centric market and personnel reaction to Jensen Huang's reinstatement, with no Singapore angle and no AI policy or technology substance."
+  },
+  {
+    "url": "https://www.channelnewsasia.com/business/asian-stocks-rally-jensen-huang-nvidia-return-revives-ai-trade-6576636",
+    "reason": "non-sg",
+    "decidedAt": "2026-11-25",
+    "ref": "score 1: This is a global markets story about Nvidia stock and Jensen Huang's return, with no Singapore-specific content and no substantive AI policy or technology subject."
+  },
+  {
+    "url": "https://www.businesstimes.com.sg/startups-tech/technology/trillion-dollar-question-behind-ai-trade",
+    "reason": "non-sg",
+    "decidedAt": "2026-11-25",
+    "ref": "score 2: This is a VC columnist's opinion/analysis piece on AI-trade economics and hyperscaler capex, built around an already-reported Anthropic IPO, with Singapore only named in passing re: chip expo"
+  },
+  {
+    "url": "https://www.businesstimes.com.sg/companies-markets/ai-agents-and-stablecoins-perfect-match-payments-says-metacomps-tin-pei-ling",
+    "reason": "non-ai",
+    "decidedAt": "2026-11-25",
+    "ref": "score 2: This is a marketing-style opinion quote from a payments company executive about AI agents and stablecoins, with no new policy, deal, or deployment."
+  },
+  {
+    "url": "https://www.channelnewsasia.com/asia/india-visakhapatnam-singapore-ideas-water-shortages-6574501",
+    "reason": "non-sg",
+    "decidedAt": "2026-11-25",
+    "ref": "score 2: The story is about Visakhapatnam's water strain from AI data-centre growth and only name-checks Singapore's water model as a possible inspiration, with no concrete Singapore action or deal."
+  },
+  {
+    "url": "https://www.businesstimes.com.sg/international/global/wall-street-banks-set-banner-year-anthropic-spacex-ipos-generate-us1-billion-fees",
+    "reason": "non-sg",
+    "decidedAt": "2026-11-25",
+    "ref": "score 1: This is a Wall Street finance story about IPO underwriting fees with no connection to Singapore or AI policy/tech."
+  },
+  {
+    "url": "https://www.businesstimes.com.sg/international/global/tech-in-asia/anthropics-after-party-south-east-asia-invited",
+    "reason": "non-sg",
+    "decidedAt": "2026-11-25",
+    "ref": "score 2: Opinion piece speculating whether Anthropic's US IPO will loosen VC funding for Southeast Asian AI startups, with only a passing Singapore mention (GIC)."
+  },
+  {
+    "url": "https://www.channelnewsasia.com/east-asia/south-korea-education-chief-resigns-ai-cheating-scandal-suneung-6572626",
+    "reason": "non-sg",
+    "decidedAt": "2026-11-25",
+    "ref": "score 2: South Korea's domestic exam-cheating political fallout has no Singapore link and AI is a peripheral cheating-method detail, not a policy or adoption story."
   }
 ]

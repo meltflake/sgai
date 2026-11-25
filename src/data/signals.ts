@@ -46,6 +46,27 @@ export interface Signal {
 
 export const signals: Signal[] = [
   {
+    id: 'sig-20261124-malaysia-megaspeed-entity-list-advisory',
+    date: '2026-11-24',
+    title: '大马令数据中心断供美国黑名单企业',
+    titleEn: 'Malaysia orders data centres to cut supply to US-blacklisted enterprises',
+    titleJa: 'マレーシア、米国ブラックリスト企業へのデータセンター供給を中止',
+    titleKo: '말레이시아 데이터센터, 미국 블랙리스트 기업에 공급 단절',
+    whyItMatters:
+      '马来西亚投资发展局已勒令数据中心切断与 7 家黑名单企业关联，新加坡公司 Megaspeed 牵涉其中却未见本地监管表态',
+    whyItMattersEn:
+      "Malaysia's Investment Development Authority has ordered data centres to sever ties with 7 blacklisted companies. Singapore-based Megaspeed is implicated, yet local regulators have not responded.",
+    whyItMattersJa:
+      'マレーシア投資開発局がデータセンターに対して7社のブラックリスト企業との関係の切断を命じており、シンガポール企業メガスピードが関与しているにもかかわらず、地元規制当局からの見解が示されていません。',
+    whyItMattersKo:
+      '말레이시아 투자 개발청이 데이터 센터에 블랙리스트 기업 7곳과의 연계를 끊도록 명령했으나, 연루된 싱가포르 회사 Megaspeed에 대해 현지 규제 당국은 입장을 밝히지 않고 있습니다.',
+    sourceUrl:
+      'https://www.channelnewsasia.com/asia/malaysia-data-centres-cut-links-us-blacklisted-firms-megaspeed-6577321',
+    sourceName: 'CNA',
+    topicIds: ['national-security', 'infrastructure-research', 'international'],
+    addedAt: '2026-11-25',
+  },
+  {
     id: 'sig-20261120-mistral-singapore-apac-headquarters',
     date: '2026-11-20',
     title: 'Mistral 新加坡设亚太总部及科学枢纽',
