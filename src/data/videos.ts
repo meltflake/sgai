@@ -218,6 +218,189 @@ export const videos: VideoItem[] = [
     addedAt: '2026-11-27',
   },
   {
+    id: 'v153',
+    title: '美国AI芯片出口管制 马来西亚促数据中心断绝往来',
+    titleEn: 'US AI chip blacklist: Malaysia urges data centres to cut ties with 7 firms',
+    titleJa: 'アメリカのAIチップ輸出管制、マレーシアがデータセンター企業との関係断絶を促す',
+    titleKo: '미국 AI 칩 수출 규제, 말레이시아가 데이터 센터에 관계 단절 촉구',
+    speaker: 'CNA',
+    speakerTitle: '亚洲新闻台报道',
+    speakerTitleEn: 'CNA report',
+    speakerTitleJa: 'アジアニュース放送による報道',
+    speakerTitleKo: '아시아 뉴스 채널 보도',
+    speakerType: 'industry',
+    date: '2026-11-24',
+    duration: '11:15',
+    summary:
+      '美国收紧AI芯片出口管制，促使马来西亚敦促数据中心与被美国列入实体清单的7家公司断绝关系，其中包括总部在新加坡的Megaspeed及其区域关联公司。',
+    summaryEn:
+      "America's AI chip export controls prompted Malaysia to urge data centre operators to cut ties with seven firms on a US Entity List, including Singapore-based Megaspeed and regional affiliates.",
+    summaryJa:
+      'アメリカがAIチップの輸出管制を厳しくしており、マレーシアはデータセンター事業者にアメリカのエンティティ・リストに登録された7社との関係を断つよう強く促しています。これにはシンガポール本社のMegaspeed及びその地域系列企業が含まれています。',
+    summaryKo:
+      '미국이 AI 칩 수출 규제를 강화하면서 말레이시아가 데이터 센터에 미국 실체 명단에 오른 7개 기업과의 관계 단절을 촉구하고 있으며, 여기에는 싱가포르에 본사를 둔 Megaspeed 및 그 지역 계열사가 포함됩니다.',
+    whyItMatters:
+      '新加坡背景的 Megaspeed 被列入美国实体清单后，断供执行权落在马来西亚手里而非新加坡自身，暴露新加坡中立枢纽定位的局限',
+    whyItMattersEn:
+      "After Singapore-backed Megaspeed was added to the US entity list, enforcement authority to impose supply cuts fell to Malaysia rather than Singapore itself, exposing the limitations of Singapore's positioning as a neutral hub.",
+    whyItMattersJa:
+      'シンガポール系のMegaspeedが米国エンティティ・リストに追加された後、供給遮断執行権はシンガポール自身ではなくマレーシアの手に落ち、シンガポールの中立ハブとしての位置付けの限界が露呈しました。',
+    whyItMattersKo:
+      '싱가포르 기반 Megaspeed가 미국 실체목록에 올라간 후, 공급 단절 집행 권한이 싱가포르 자신이 아닌 말레이시아에 귀속되어, 싱가포르의 중립적 허브 위상의 한계를 드러냈습니다',
+    topic: 'AI 治理与监管',
+    topicEn: 'AI Governance & Regulation',
+    topicJa: 'AI ガバナンスと規制',
+    topicKo: 'AI 거버넌스와 규제',
+    youtubeUrl: 'https://www.youtube.com/watch?v=6L5yx14HDJg',
+    channel: 'CNA',
+    addedAt: '2026-11-25',
+  },
+  {
+    id: 'v154',
+    title: '新加坡将2026年GDP增长预测上调至6%，归功于AI需求强劲',
+    titleEn: 'Singapore upgrades 2026 GDP growth forecast to 6%, citing strong AI demand',
+    titleJa: 'シンガポールが2026年GDP成長予測を6%に上方修正、AI需要の強さが背景',
+    titleKo: '싱가포르가 2026년 GDP 성장 예측을 6%로 상향 조정하였으며, 이는 강한 AI 수요에 기인합니다.',
+    speaker: 'CNA',
+    speakerTitle: '亚洲新闻台报道',
+    speakerTitleEn: 'CNA report',
+    speakerTitleJa: 'アジアニュース放送による報道',
+    speakerTitleKo: '아시아 뉴스 채널 보도',
+    speakerType: 'industry',
+    date: '2026-11-24',
+    duration: '08:09',
+    summary: '新加坡上调经济增长预测至6%，反映AI需求成为经济增长主要驱动力。',
+    summaryEn:
+      'Singapore raises its 2026 economic growth forecast to 6%, driven by strong artificial intelligence demand.',
+    summaryJa:
+      'シンガポールが経済成長予測を6%に上方修正しており、AI需要が経済成長の主要な推進力となっていることが反映されています。',
+    summaryKo:
+      '싱가포르가 경제 성장 예측을 6%로 상향 조정하였으며, 이는 AI 수요가 경제 성장의 주요 동력이 되고 있음을 반영합니다.',
+    whyItMatters:
+      '6% 的新增长预测主要归功于 AI 需求而非内需，说明新加坡经济正与全球 AI 资本周期深度绑定，顺周期红利伴随逆周期风险',
+    whyItMattersEn:
+      "The 6% growth forecast is primarily driven by AI demand rather than domestic demand, indicating that Singapore's economy is deeply tied to the global AI capital cycle, with pro-cyclical gains accompanied by counter-cyclical risks.",
+    whyItMattersJa:
+      '6%の新規成長予測は主にAI需要に起因しており、国内需要ではなく、シンガポール経済がグローバルなAI資本周期と深く連動していることを示しています。順周期による利益が逆周期のリスクを伴います。',
+    whyItMattersKo:
+      '6% 신규 성장 전망은 국내 수요가 아닌 AI 수요에 주로 기인하며, 싱가포르 경제가 글로벌 AI 자본 순환과 깊이 연결되어 있음을 보여줍니다. 경기 호황 편익에 경기 침체 위험이 따릅니다',
+    topic: 'AI 战略与愿景',
+    topicEn: 'AI Strategy & Vision',
+    topicJa: 'AI 戦略とビジョン',
+    topicKo: 'AI 전략 및 비전',
+    youtubeUrl: 'https://www.youtube.com/watch?v=mAQG1GXDeXc',
+    channel: 'CNA',
+    addedAt: '2026-11-25',
+  },
+  {
+    id: 'v155',
+    title: '新加坡应该建造更多数据中心吗?',
+    titleEn: 'Should Singapore build more data centres?',
+    titleJa: 'シンガポールはより多くのデータセンターを建設すべきでしょうか。',
+    titleKo: '싱가포르는 더 많은 데이터 센터를 건설해야 합니까?',
+    speaker: 'Rajesh Sreenivasan',
+    speakerTitle: 'Rajah & Tann Asia 律师合伙人',
+    speakerTitleEn: 'Partner, Rajah & Tann Asia',
+    speakerTitleJa: 'ラジャー・アンド・タン・アジア法律事務所 弁護士パートナー',
+    speakerTitleKo: 'Rajah & Tann Asia 변호사 파트너',
+    speakerType: 'industry',
+    date: '2026-11-24',
+    duration: '01:02',
+    summary: '探讨新加坡数据中心扩张对环境和资源的影响,以及运营商的可持续管理举措。',
+    summaryEn:
+      "Discusses how Singapore's data centre expansion balances environmental concerns and resource usage with operator sustainability initiatives.",
+    summaryJa:
+      'シンガポールのデータセンター拡張が環境と資源に及ぼす影響、及び事業者による持続可能な管理施策について検討します。',
+    summaryKo: '싱가포르 데이터 센터 확장이 환경과 자원에 미치는 영향, 및 운영자의 지속 가능한 관리 조치를 논의합니다.',
+    whyItMatters:
+      '由律师而非监管机构出面安抚公众,说明数据中心扩张引发的电力、水资源与电费焦虑,正成为新加坡 AI 算力扩张的社会接受度瓶颈',
+    whyItMattersEn:
+      "Lawyers rather than regulators stepped forward to reassure the public, indicating that concerns over power, water and electricity costs triggered by data centre expansion are becoming a bottleneck for social acceptance of Singapore's AI computing expansion.",
+    whyItMattersJa:
+      '弁護士が（規制当局ではなく）国民をなだめるため前に出たという事実は、データセンター拡張によってもたらされた電力、水資源、および電気代に対する不安が、シンガポールのAI計算能力拡張における社会的受容性のボトルネックになりつつあることを示しています。',
+    whyItMattersKo:
+      '변호사가 규제 기관 대신 나서 대중을 진정시킨 것은, 데이터 센터 확장으로 인한 전력, 수자원, 전기요금 우려가 싱가포르 AI 연산력 확장의 사회적 수용도 병목이 되고 있음을 보여줍니다',
+    topic: 'AI 战略与愿景',
+    topicEn: 'AI Strategy & Vision',
+    topicJa: 'AI 戦略とビジョン',
+    topicKo: 'AI 전략 및 비전',
+    youtubeUrl: 'https://www.youtube.com/watch?v=TmuraWACneE',
+    channel: 'The Straits Times',
+    addedAt: '2026-11-25',
+  },
+  {
+    id: 'v156',
+    title: '黄循财谈新加坡在美中AI竞争中的地位',
+    titleEn: "PM Wong on Singapore's role in US-China AI race",
+    titleJa: 'ローレンス・ウォンがシンガポールの米中AI競争における立場について語る',
+    titleKo: 'Lawrence Wong이 미중 AI 경쟁에서 싱가포르의 위상을 논의',
+    speaker: 'Lawrence Wong',
+    speakerTitle: '新加坡总理',
+    speakerTitleEn: 'Prime Minister of Singapore',
+    speakerTitleJa: 'シンガポール首相',
+    speakerTitleKo: '싱가포르 총리',
+    speakerType: 'government',
+    date: '2026-11-24',
+    duration: '02:16',
+    summary: '总理黄循财表示新加坡不会成为企业规避美国出口管制的途径,并阐述新加坡在美中AI竞争中的立场。',
+    summaryEn:
+      "PM Lawrence Wong addresses Singapore's position in the US-China AI competition and states Singapore will not be used to circumvent US export controls.",
+    summaryJa:
+      '首相ローレンス・ウォンは、シンガポールが企業によるアメリカの輸出管制の回避手段にはならないと述べており、米中AI競争におけるシンガポールの立場を説明しています。',
+    summaryKo:
+      '총리 Lawrence Wong은 싱가포르가 기업의 미국 수출 규제 회피 경로가 되지 않을 것이라고 밝혔으며, 미중 AI 경쟁에서 싱가포르의 입장을 설명하였습니다.',
+    whyItMatters: '黄循财 11 月 24 日亲自回应 Megaspeed 调查，划定新加坡等距外交的底线：配合美国出口管制没有商量余地',
+    whyItMattersEn:
+      "Lawrence Wong personally responded to the Megaspeed investigation on 24 November, drawing a line on Singapore's equidistant diplomacy: compliance with US export controls is non-negotiable.",
+    whyItMattersJa:
+      'ローレンス・ウォンが11月24日にMegaspeedの調査に自ら対応し、シンガポール等距離外交の底線を明確にした：米国の輸出規制への協力に交渉の余地はないということです。',
+    whyItMattersKo:
+      'Lawrence Wong은 11월 24일 Megaspeed 조사에 직접 대응하며 싱가포르 등거리 외교의 하한선을 그었습니다: 미국 수출 관제에 대한 협력은 협상의 여지가 없습니다',
+    topic: '国际合作与对标',
+    topicEn: 'International Cooperation & Benchmarking',
+    topicJa: '国際協力とベンチマーク',
+    topicKo: '국제 협력과 벤치마크',
+    youtubeUrl: 'https://www.youtube.com/watch?v=YsJ3McPT-rc',
+    channel: 'The Straits Times',
+    addedAt: '2026-11-25',
+  },
+  {
+    id: 'v157',
+    title: '新加坡为何对数据中心扩张持谨慎态度?',
+    titleEn: 'Why was Singapore cautious about data centre expansion?',
+    titleJa: 'シンガポールがデータセンター拡張に対して慎重な態度を持つのはなぜか。',
+    titleKo: '싱가포르는 왜 데이터 센터 확장에 신중한 태도를 취하고 있습니까?',
+    speaker: 'The Straits Times',
+    speakerTitle: '海峡时报报道',
+    speakerTitleEn: 'The Straits Times report',
+    speakerTitleJa: 'ストレーツ・タイムズの報道',
+    speakerTitleKo: '스트레이츠 타임즈 보도',
+    speakerType: 'industry',
+    date: '2026-11-24',
+    duration: '38:43',
+    summary: '分析新加坡对数据中心扩张的谨慎态度，及东南亚在AI基础设施与环保间的平衡。',
+    summaryEn:
+      "Examines Singapore's cautious approach to data centre expansion and the balance between AI infrastructure growth and environmental concerns in Southeast Asia.",
+    summaryJa:
+      'シンガポールのデータセンター拡張に対する慎重な態度を分析し、東南アジアにおけるAI基盤施設と環境保全のバランスについて検討します。',
+    summaryKo:
+      '싱가포르의 데이터 센터 확장에 대한 신중한 태도를 분석하고, 동남아가 AI 기반시설과 환경 보호 사이에서 추구하는 균형을 분석합니다.',
+    whyItMatters: '海峡时报将新加坡的谨慎置于东南亚 AI 基建竞速背景中,释放出宁可牺牲数据中心规模也要守住环保底线的信号',
+    whyItMattersEn:
+      "The Straits Times places Singapore's caution in the context of Southeast Asia's AI infrastructure race, signalling a readiness to sacrifice data centre scale to maintain environmental standards.",
+    whyItMattersJa:
+      '『海峡時報』はシンガポールの謹慎さを東南アジアのAI基盤インフラ競争の背景に置き、データセンター規模を犠牲にしてでも環境保全底線を守るという信号を発信しています。',
+    whyItMattersKo:
+      '해협타임스는 싱가포르의 신중함을 동남아 AI 기반시설 경쟁이라는 배경 속에 놓으면서, 데이터 센터 규모를 희생하더라도 환경 보호 하한선을 지키겠다는 신호를 내보냈습니다',
+    topic: 'AI 治理与监管',
+    topicEn: 'AI Governance & Regulation',
+    topicJa: 'AI ガバナンスと規制',
+    topicKo: 'AI 거버넌스와 규제',
+    youtubeUrl: 'https://www.youtube.com/watch?v=xd_P7j2ZEzs',
+    channel: 'The Straits Times',
+    addedAt: '2026-11-25',
+  },
+  {
     id: 'v152',
     title: '印度城市在数据中心扩建时向新加坡学习水安全',
     titleEn: 'Indian city seeks Singapore water security ideas amid data centre expansion',
