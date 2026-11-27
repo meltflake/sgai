@@ -145,6 +145,79 @@ export function pickSpeakerTypeLabels(lang: string): Record<string, string> {
 
 export const videos: VideoItem[] = [
   {
+    id: 'v158',
+    title: 'AI会让医生变懒吗?',
+    titleEn: 'Will AI make doctors lazy?',
+    titleJa: 'AIは医師を怠けさせるのでしょうか？',
+    titleKo: 'AI가 의사를 게으르게 만들까요?',
+    speaker: 'Tan Cher Heng',
+    speakerTitle: '兼职副教授',
+    speakerTitleEn: 'Adjunct Associate Professor',
+    speakerTitleJa: '非常勤准教授',
+    speakerTitleKo: '겸임 부교수',
+    speakerType: 'academic',
+    date: '2026-11-26',
+    duration: '00:30',
+    summary: '探讨医生过度依赖AI建议的风险，强调临床判断和对患者需求的理解对安全有效医疗的重要性。',
+    summaryEn:
+      'Explores risks of doctors relying too much on AI recommendations and why clinical judgment and understanding of patient needs remain crucial for safe and effective care.',
+    summaryJa:
+      '医師によるAI提案への過度な依存のリスクを検討し、臨床判断と患者ニーズの理解が安全で有効な医療に不可欠であることを強調します',
+    summaryKo:
+      '의사가 AI 권고에 과도하게 의존할 위험을 논의하고, 임상 판단 및 환자 필요에 대한 이해가 안전하고 효과적인 의료에 중요함을 강조합니다.',
+    whyItMatters:
+      'govsg 在 2026 年 11 月 26 日借 Tan Cher Heng 之口公开示警，显示官方开始为医疗 AI 应用划定人工判断的底线',
+    whyItMattersEn:
+      'GovSG issued a public warning via Tan Cher Heng on 26 November 2026, showing that the authorities are beginning to establish boundaries for human judgment in medical AI applications.',
+    whyItMattersJa:
+      'govsgは2026年11月26日、Tan Cher Hengを通して公開で警告し、当局が医療AI応用のための人工判断の底線を画定し始めたことを示しています',
+    whyItMattersKo:
+      'govsg는 2026년 11월 26일 Tan Cher Heng을 통해 공개적으로 경고했으며, 이는 관계자들이 의료 AI 응용에서 인간 판단의 기준선을 정하기 시작했음을 보여줍니다.',
+    topic: 'AI 产业与应用',
+    topicEn: 'AI Industry & Applications',
+    topicJa: 'AI 産業と応用',
+    topicKo: 'AI 산업 및 응용',
+    youtubeUrl: 'https://www.youtube.com/watch?v=omT1CnLAAiY',
+    channel: 'govsg',
+    addedAt: '2026-11-27',
+  },
+  {
+    id: 'v159',
+    title: 'AI贸易复苏带动亚洲股市上扬',
+    titleEn: 'US Proposes New Tariffs, Asian Stocks Rise As AI Trade Rebounds',
+    titleJa: 'AI貿易の復興がアジア株式市場上昇を牽引しています',
+    titleKo: 'AI 무역 회복이 아시아 주식 시장을 끌어올립니다',
+    speaker: 'Bloomberg Television',
+    speakerTitle: '财经新闻主播',
+    speakerTitleEn: 'Financial News Anchor',
+    speakerTitleJa: '金融ニュースアンカー',
+    speakerTitleKo: '금융 뉴스 앵커',
+    speakerType: 'industry',
+    date: '2026-11-26',
+    duration: '1:36:49',
+    summary: '美国提议新关税，亚洲股市因AI贸易复苏而上涨。彭博节目探讨纳斯达克期货与关税影响。',
+    summaryEn:
+      'US proposes new tariffs while Asian stocks rise as the AI trade sector rebounds. Bloomberg covers Nasdaq futures gains and upcoming tariff policy.',
+    summaryJa:
+      '米国は新しい関税を提案し、アジア株式市場はAI貿易の復興により上昇しています。ブルームバーグ番組はナスダック先物と関税の影響について検討しています。',
+    summaryKo:
+      '미국이 새로운 관세를 제안하고, 아시아 주식 시장은 AI 무역 회복으로 인해 상승합니다. Bloomberg 프로그램은 Nasdaq 선물과 관세 영향에 관해 논의합니다.',
+    whyItMatters: '亚洲股市靠 AI 乐观情绪冲高，但美国关税终裁要到 2027 年 1 月才落地，政策风险未解',
+    whyItMattersEn:
+      'Asian stock markets surged on AI optimism, but US tariff final determinations will not take effect until January 2027, with policy risks remaining unresolved.',
+    whyItMattersJa:
+      'アジア株式市場はAI楽観的感情に乗って上昇しているが、米国関税の最終裁定は2027年1月まで実施されず、政策的リスクは未だ解決されていない',
+    whyItMattersKo:
+      '아시아 증시가 AI 낙관 심리로 급등했으나, 미국 관세 최종 판정이 2027년 1월로 미루어지면서 정책 위험이 남아 있습니다.',
+    topic: 'AI 产业与应用',
+    topicEn: 'AI Industry & Applications',
+    topicJa: 'AI 産業と応用',
+    topicKo: 'AI 산업 및 응용',
+    youtubeUrl: 'https://www.youtube.com/watch?v=BUqb4zskT7c',
+    channel: 'Bloomberg Television',
+    addedAt: '2026-11-27',
+  },
+  {
     id: 'v152',
     title: '印度城市在数据中心扩建时向新加坡学习水安全',
     titleEn: 'Indian city seeks Singapore water security ideas amid data centre expansion',
