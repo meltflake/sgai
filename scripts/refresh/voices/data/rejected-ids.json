@@ -73,7 +73,7 @@
   "closing-speech-by-s-iswaran-2nd-reading-eta-bill": {
     "reason": "pre-floor",
     "date": "2021-02-01",
-    "decidedAt": "2026-11-18"
+    "decidedAt": "2026-11-06"
   },
   "closing-speech-by-sms-janil-puthucheary-at-the-2nd-reading-of-cybersecurity-amendment-bill": {
     "reason": "pre-floor",
@@ -92,8 +92,8 @@
   },
   "mas--building-trusted-foundations-for-digital-finance": {
     "reason": "non-ai",
-    "decidedAt": "2026-11-18",
-    "note": "The speech addresses digital finance infrastructure, tokenization, digital assets, digital money, and distributed ledger"
+    "decidedAt": "2026-11-11",
+    "note": "The speech focuses entirely on digital finance infrastructure—tokenization, digital assets, stablecoins, CBDCs, distribu"
   },
   "mas--connecting-capital-and-opportunity-building-a-trusted-growth-capital-ecosystem": {
     "reason": "non-ai",
@@ -157,8 +157,8 @@
   },
   "mas--opening-address-by-mr-marcus-lim-amd-mas-at-the-gaip-insurance-case-competition-2026-dinner": {
     "reason": "non-ai",
-    "decidedAt": "2026-11-22",
-    "note": "The speech substantively concerns insurance industry challenges, protection gaps, and consumer trust; AI is mentioned on"
+    "decidedAt": "2026-11-06",
+    "note": "The speech focuses on insurance protection gaps and consumer behaviour; AI is mentioned once in line 29 as one of severa"
   },
   "mas--opening-of-nasdaq-new-office-in-singapore": {
     "reason": "non-ai",
@@ -169,6 +169,11 @@
     "reason": "non-ai",
     "decidedAt": "2026-11-23",
     "note": "Speech addresses global financial governance and economic resilience; AI appears only as one risk factor in the concludi"
+  },
+  "mas--opening-remarks-by-mr-chia-der-jiun-md-mas-at-ubs-asian-investment-conference": {
+    "reason": "non-ai",
+    "decidedAt": "2026-11-25",
+    "note": "Speech centers on global economic resilience to an energy supply shock and Singapore's financial centre positioning; AI "
   },
   "moh--addenda-to-president-s-address-caring-society": {
     "reason": "pre-floor",
@@ -392,8 +397,8 @@
   },
   "moh--community-support-services-to-address-gaming-disorder-among-young-adults": {
     "reason": "non-ai",
-    "decidedAt": "2026-11-18",
-    "note": "Parliamentary question addresses gaming disorder and online safety regulation (age verification, app store safeguards), "
+    "decidedAt": "2026-11-06",
+    "note": "Document addresses gaming disorder prevention and youth support services through counselling programs and app store age-"
   },
   "moh--corrective-measures-taken-to-address-findings-observed-in-auditor-general-s-report-for-2025-2026": {
     "reason": "non-ai",
@@ -7875,6 +7880,11 @@
     "date": "2025-12-15",
     "decidedAt": "2026-08-03"
   },
+  "pmo--dpm-gan-kim-yong-opening-remarks-at-the-22nd-jcbc": {
+    "reason": "non-ai",
+    "decidedAt": "2026-11-25",
+    "note": "The speech concerns Singapore-China bilateral cooperation and the JCBC; technology and digital economy are named as one "
+  },
   "pmo--dpm-gan-kim-yong-opening-remarks-at-the-ips-singapore-perspectives-2026": {
     "reason": "non-ai",
     "decidedAt": "2026-09-05",
@@ -10709,25 +10719,5 @@
     "reason": "pre-floor",
     "date": "2016-11-09",
     "decidedAt": "2026-08-03"
-  },
-  "closing-speech-by-s-iswaran-2nd-reading-eta-bill": {
-    "reason": "pre-floor",
-    "date": "2021-02-01",
-    "decidedAt": "2026-11-06"
-  },
-  "mas--opening-address-by-mr-marcus-lim-amd-mas-at-the-gaip-insurance-case-competition-2026-dinner": {
-    "reason": "non-ai",
-    "decidedAt": "2026-11-06",
-    "note": "The speech focuses on insurance protection gaps and consumer behaviour; AI is mentioned once in line 29 as one of severa"
-  },
-  "moh--community-support-services-to-address-gaming-disorder-among-young-adults": {
-    "reason": "non-ai",
-    "decidedAt": "2026-11-06",
-    "note": "Document addresses gaming disorder prevention and youth support services through counselling programs and app store age-"
-  },
-  "mas--building-trusted-foundations-for-digital-finance": {
-    "reason": "non-ai",
-    "decidedAt": "2026-11-11",
-    "note": "The speech focuses entirely on digital finance infrastructure—tokenization, digital assets, stablecoins, CBDCs, distribu"
   }
 }
